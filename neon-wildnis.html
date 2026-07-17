@@ -61,7 +61,7 @@ canvas{display:block}
 #kprompt .key{display:inline-block;background:#1a2140;border:1px solid #6affc0;border-radius:6px;padding:1px 8px;margin-right:6px;color:#6affc0}
 /* Announce als Pill statt nacktem Riesen-Text — war über hellen Dächern kaum lesbar (Polier-Pass) */
 #announce{position:absolute;top:28%;left:50%;transform:translateX(-50%);width:max-content;max-width:86vw;text-align:center;font-weight:900;font-size:1.55rem;letter-spacing:.04em;text-shadow:0 2px 3px #000,0 0 6px #000;opacity:0;transition:opacity .4s;color:#eafcff;pointer-events:none;padding:8px 22px;background:rgba(8,14,30,.66);border:1px solid rgba(125,227,255,.3);border-radius:16px;box-shadow:0 8px 28px rgba(0,0,0,.45);backdrop-filter:blur(3px)}
-@media(max-width:600px){#announce{font-size:1.15rem;padding:7px 14px}}
+@media(max-width:600px){#announce{font-size:1.15rem;padding:7px 14px;max-width:74vw;top:24%}} /* schmaler + höher → kollidiert nicht mit Zoom-/Minimap-Knöpfen rechts */
 #toast{position:absolute;bottom:200px;left:50%;transform:translateX(-50%);background:rgba(10,14,32,.9);border:1px solid rgba(120,200,255,.35);border-radius:12px;padding:8px 16px;font-weight:700;opacity:0;transition:opacity .3s;max-width:88vw;text-align:center}
 /* Touch-Steuerung */
 #stick{position:absolute;left:calc(20px + env(safe-area-inset-left));bottom:calc(28px + env(safe-area-inset-bottom));width:120px;height:120px;border-radius:50%;background:rgba(20,30,60,.4);border:2px solid rgba(120,200,255,.3);pointer-events:auto}
@@ -129,15 +129,18 @@ canvas{display:block}
 .ccard.sel{border-color:#6affc0;box-shadow:0 6px 22px rgba(100,240,200,.35);background:rgba(30,52,70,.85)}
 #charLbl{color:#9fb3d8;letter-spacing:.2em;font-size:.72rem;text-transform:uppercase;margin-bottom:8px}
 @media(max-width:560px){
-  #invBar{gap:5px;padding:6px 9px}
-  .inv{font-size:.92rem}
-  .inv .ic{font-size:1.05rem}
-  .inv.tool .ic{font-size:1.05rem}
+  #invBar{gap:3px;padding:4px 7px}                 /* schmaler → kollidiert nicht mit 🔊/⏸ rechts */
+  .inv{font-size:.78rem}
+  .inv .ic{font-size:.92rem}
+  .inv.tool .ic{font-size:.92rem}
+  #sysRow{gap:6px}
+  .sysbtn{width:40px;height:40px;font-size:1.1rem} /* kleiner → mehr Abstand zur Inventar-Leiste */
   .inv.tool span:last-child{display:none} /* nur Icon, spart Breite */
   .inv.tool{padding-left:5px;margin-left:1px}
   #topLeft{top:calc(58px + env(safe-area-inset-top))}
-  #quest{top:calc(58px + env(safe-area-inset-top));max-width:56vw;font-size:.88rem;padding:7px 10px}
-  #quest .qt{font-size:.94rem}
+  #onlineBadge{display:block;margin-left:0;margin-top:3px;width:max-content} /* eigene Zeile → liegt nicht hinter der ZIEL-Box */
+  #quest{top:calc(58px + env(safe-area-inset-top));max-width:48vw;font-size:.86rem;padding:7px 10px} /* schmaler → freier Abstand zur Uhr links */
+  #quest .qt{font-size:.9rem}
 }
 
 #perkPick{position:fixed;inset:0;z-index:60;background:rgba(6,10,22,.72);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(3px)}
@@ -304,7 +307,14 @@ var nightSky=new THREE.Group();nightSky.visible=false;scene.add(nightSky);
    Folgt dem Spieler wie eine Skybox, rein kosmetisch (fog:false). */
 var daySky=new THREE.Group();scene.add(daySky);
 (function(){var sd=new THREE.Mesh(new THREE.SphereGeometry(11,20,20),new THREE.MeshBasicMaterial({color:0xfff2c0,transparent:true,opacity:1}));sd.material.fog=false;sd.position.set(150,165,185);daySky.add(sd);
-  var h=new THREE.Mesh(new THREE.SphereGeometry(19,20,20),new THREE.MeshBasicMaterial({color:0xffe0a0,transparent:true,opacity:0.22,side:THREE.BackSide}));h.material.fog=false;sd.add(h);})();
+  var h=new THREE.Mesh(new THREE.SphereGeometry(19,20,20),new THREE.MeshBasicMaterial({color:0xffe0a0,transparent:true,opacity:0.22,side:THREE.BackSide}));h.material.fog=false;sd.add(h);
+  /* ☁️ W8: weiche Wolken (Sprite-Puffs, fog:false) — folgen als Skybox mit, faden per updDayNight-Logik */
+  var ccv=document.createElement("canvas");ccv.width=ccv.height=128;var cc=ccv.getContext("2d");
+  for(var q=0;q<6;q++){var qx=28+Math.random()*72,qy=48+Math.random()*34,qr=16+Math.random()*26;var rg=cc.createRadialGradient(qx,qy,2,qx,qy,qr);rg.addColorStop(0,"rgba(255,255,255,.92)");rg.addColorStop(1,"rgba(255,255,255,0)");cc.fillStyle=rg;cc.beginPath();cc.arc(qx,qy,qr,0,6.283);cc.fill();}
+  var cloudTex=new THREE.CanvasTexture(ccv);
+  for(var i=0;i<(IS_MOB?4:7);i++){var cl=new THREE.Sprite(new THREE.SpriteMaterial({map:cloudTex,transparent:true,opacity:0.5,depthWrite:false}));cl.material.fog=false;
+    var a=Math.random()*6.283,rad=110+Math.random()*95;cl.position.set(Math.cos(a)*rad,72+Math.random()*55,Math.sin(a)*rad);var sc=42+Math.random()*46;cl.scale.set(sc,sc*0.52,1);daySky.add(cl);}
+})();
 /* ✨ W8: Umgebungs-Partikel — Pollen bei Tag, Glühwürmchen bei Nacht. Folgt dem Spieler, driftet sanft.
    Rein kosmetisch (Math.random) → kein seeded-Stream, keine Koop-Auswirkung. */
 var motes=null,moteN=IS_MOB?40:70,moteMat=null,_moteT=0;
@@ -720,7 +730,6 @@ var CHARACTERS=[
   {id:"magier",   emo:"🔮", name:"Magier",     desc:"Skills laden schneller",  file:"class_mage.glb",         scale:1.15, glow:"soft", col:0xb06aff, cls:{skillcd:1.5}},
   {id:"waldlaeufer",emo:"🏹",name:"Waldläufer",desc:"+Tempo & Reichweite",file:"class_ranger.glb",       scale:1.15, glow:"soft", col:0x58c26a, cls:{spd:1.2}},
   {id:"titan",    emo:"🛡️", name:"Titan",      desc:"+25 Leben · zäh",file:"class_titan.glb",        scale:1.2,  glow:"soft", col:0xd08a3a, cls:{hp:25}},
-  {id:"wanderer", emo:"🚶", name:"Wanderer",   desc:"Mensch",       file:"hero.glb",               scale:1.15, glow:"soft", col:0xc8bfa8},
   // 🎌 Anime-Charaktere (Meshy, gerigged idle/walk/run) — echte Anime-Figuren zur Auswahl
   {id:"anime_held",         emo:"🌟", name:"Anime-Held",     desc:"Shonen-Style",       file:"anime_hero.glb",      scale:1.05, glow:"soft"},
   {id:"anime_kriegerin",    emo:"⚔️", name:"Anime-Kriegerin",desc:"Katana & Katzenohr", file:"anime_warrior.glb",   scale:1.05, glow:"soft"},
@@ -735,14 +744,9 @@ var CHARACTERS=[
   {id:"magier2",    emo:"🧙", name:"Zauberer",    desc:"Stab & Magie · schnellere Skills", file:"nwhero_magier.glb", scale:1.05, glow:"soft", col:0x9a6aff, cls:{skillcd:1.5}},
   {id:"elf",        emo:"🧝", name:"Elf",         desc:"Bogen · +Tempo",            file:"nwhero_elf.glb",      scale:1.05, glow:"soft", col:0x7ad9a0, cls:{spd:1.2}},
   {id:"pirat",      emo:"🏴‍☠️", name:"Pirat",     desc:"Säbel & Frechheit",         file:"nwhero_pirat.glb",    scale:1.05, glow:"soft", col:0xc86a5a},
-  {id:"hexe",       emo:"🧹", name:"Hexe",        desc:"Fluch & Besen · schnellere Skills", file:"nwhero_hexe.glb", scale:1.05, glow:"soft", col:0xb06ad0, cls:{skillcd:1.5}},
-  // 👹 Skurrile Helden (Monster-Rig: attack/attack2 + dodge/hit/wave)
-  {id:"held_goblin",emo:"👺", name:"Goblin-Held", desc:"Klein & gemein · flink",    file:"nwhero_goblin.glb",   scale:1.0,  glow:"soft", col:0x8ac86a, cls:{spd:1.2}},
-  {id:"held_ork",   emo:"👹", name:"Ork-Krieger", desc:"Roh & stark · +Leben",      file:"nwhero_ork.glb",      scale:1.1,  glow:"soft", col:0x6a9a5a, cls:{hp:20}},
-  {id:"totenork",   emo:"💀", name:"Toten-Ork",   desc:"Untot & furchtlos",         file:"nwhero_totenork.glb", scale:1.1,  glow:"soft", col:0xd8d0c0},
-  {id:"daemon",     emo:"😈", name:"Dämon",       desc:"Höllisch · +Angriff",       file:"nwhero_daemon.glb",   scale:1.15, glow:"neon", col:0xff5a6a, cls:{atk:1}},
-  {id:"pilzkoenig", emo:"🍄", name:"Pilzkönig",   desc:"Sporig & zäh · +Leben",     file:"nwhero_pilzkoenig.glb",scale:1.1, glow:"soft", col:0xff8ab0, cls:{hp:20}},
-  {id:"yeti",       emo:"🧊", name:"Yeti",        desc:"Frostig & mächtig · zäh",   file:"nwhero_yeti.glb",     scale:1.2,  glow:"soft", col:0xd8f0ff, cls:{hp:25}}
+  {id:"hexe",       emo:"🧹", name:"Hexe",        desc:"Fluch & Besen · schnellere Skills", file:"nwhero_hexe.glb", scale:1.05, glow:"soft", col:0xb06ad0, cls:{skillcd:1.5}}
+  /* 🗑️ Monster-„Helden" (Goblin/Ork/Totenork/Dämon/Pilzkönig/Yeti) + Wanderer-Mannequin entfernt —
+     User: „viele scheiss charakter". Nur noch hochwertige, menschliche/Anime/Fantasy-Helden. */
 ];
 function charById(id){for(var i=0;i<CHARACTERS.length;i++)if(CHARACTERS[i].id===id)return CHARACTERS[i];return CHARACTERS[0];}
 function getChar(){var id="held";try{id=localStorage.getItem("nw_char")||"held";}catch(e){}return charById(id);}
@@ -1326,7 +1330,7 @@ function loadProps(){
   ];
   SPECS.forEach(function(S){
     new THREE.GLTFLoader().load("/models/"+S.file,function(g){
-      var proto=g.scene;proto.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material)toonify(n,true);}});
+      var proto=g.scene;proto.traverse(function(n){if(n.isMesh){n.castShadow=true;if(n.material)toonify(n,true);}}); /* 📱 statische Props frustum-cullen (nicht false) → weniger Draw-Calls auf dem Handy */
       for(var i=0;i<S.n;i++){
         var a=rnd()*6.28,rd=22+rnd()*half;var x=Math.cos(a)*rd,z=Math.sin(a)*rd;
         if(Math.abs(x)<8&&Math.abs(z)<8){i--;continue;}
@@ -1708,6 +1712,17 @@ function emoTexFor(em){if(_emoTexCache[em])return _emoTexCache[em];
   var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");
   c.font="44px sans-serif";c.textAlign="center";c.textBaseline="middle";c.fillText(em,32,36);
   _emoTexCache[em]=new THREE.CanvasTexture(cv);return _emoTexCache[em];}
+/* 😊 W8: Koop-Emote über dem Kopf (Spieler ODER Partner) — kurze, freundliche Kommunikation */
+var floatEmotes=[];
+function showEmoteOver(grp,em){if(!grp)return;
+  var big=(em==="🆘"),s=big?1.5:0.95; /* 🆘 = Hilferuf, größer + länger */
+  var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:emoTexFor(em),transparent:true,depthWrite:false,depthTest:false}));
+  sp.scale.set(s,s,s);sp.position.y=3.0;sp.renderOrder=999;grp.add(sp);floatEmotes.push({sp:sp,life:big?4.5:3});}
+function updEmotes(dt){for(var i=floatEmotes.length-1;i>=0;i--){var e=floatEmotes[i];e.life-=dt;
+  e.sp.material.opacity=Math.max(0,Math.min(1,e.life));e.sp.position.y=3.0+Math.sin((3-e.life)*4)*0.07;
+  if(e.life<=0){if(e.sp.parent)e.sp.parent.remove(e.sp);e.sp.material.dispose();floatEmotes.splice(i,1);}}}
+function sendEmote(em){if(typeof player!=="undefined")showEmoteOver(player,em);
+  try{if(typeof NET!=="undefined"&&NET.on&&NET.s)NET.s.send({t:"emote",e:em,from:NET.role});}catch(e){}}
 // 💨 Schornstein-Rauch über Häusern (Dorf lebendiger)
 var smokeStacks=[],smokePuffs=[],_smokeTex=null;
 function smokeTex(){if(_smokeTex)return _smokeTex;var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");var g=c.createRadialGradient(32,32,2,32,32,30);g.addColorStop(0,"rgba(216,216,222,.85)");g.addColorStop(1,"rgba(216,216,222,0)");c.fillStyle=g;c.fillRect(0,0,64,64);_smokeTex=new THREE.CanvasTexture(cv);return _smokeTex;}
@@ -1849,7 +1864,9 @@ var DEFER_ASSETS=["sv_tent","sv_tent_canvas","sv_campfire","sv_campfire_fish","s
   "bk_archway","bk_gate","bk_column","bk_wall","bk_wall_low","bk_stairs","bk_platform","bk_window_round","bk_door",
   "dk2_coin","dk2_banner","dk2_column","dk2_gate","dk2_rocks","dk2_stairs","dk2_stones","dk2_trap","dk2_woodframe","dk2_woodsupport",
   "an_cow","an_pig","an_chicken","an_dog","an_cat","an_deer","an_rabbit","an_fox","an_boar","an_beaver",
-  "nf_turret_single"]; /* ⚔️ Arena-Tor-Geschütze (Station 4) */
+  "nf_turret_single",
+  "nw_busch_gross","nw_stumpf_alt","nw_pilz_rot_hoch","nw_pilz_braun","nw_schilf","nw_weizen","nw_kuerbis","nw_holzstapel_gross","nw_karren_hoch","nw_wegweiser","nw_fass_offen","nw_topf_gross","nw_schild",
+  "nw_klippe","cc0_pillar","cc0_grass","nf_crystal","nf_crystal_large"]; /* 🌿 mehr Natur/Dorf-Deko + Ruinen/Kristalle */
 /* ===================== 🎯 AKTIVITÄTS-STATIONEN (Wildnis-Fusion) =====================
    ✈️ Flugfeld / 🏃 Parcours / 🏎️ Rennstrecke / ⚔️ Arena — Portale zu neon-flug/jump/racer/survivor als Iframe-Overlay
    (Lebenspfad-Muster). Welt-Rendering pausiert solange offen (2 WebGL-Kontexte!), netTick läuft weiter. */
@@ -1981,7 +1998,11 @@ function decorateWorldLate(){
   var half=MAP/2-40, half2=MAP/2-60;
   var rnd2=mulberry32(((SEED^0x9e3779)>>>0)||1);
   function inVZoneL(x,z){var vc=window._villageClear;if(!vc)return (Math.abs(x)<64&&Math.abs(z)<64);for(var i=0;i<vc.length;i++){var d=vc[i].clear;if((x-vc[i].x)*(x-vc[i].x)+(z-vc[i].z)*(z-vc[i].z)<d*d)return true;}return false;}
-  function farScatter(n,minR,fn){for(var i=0;i<n;i++){var a=rnd2()*6.28,rd=minR+rnd2()*(half-minR);var x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(inVZoneL(x,z))continue;fn(x,z);}}
+  /* 🚫 Überschneidungs-Schutz: Scatter-Belegung, vorbefüllt mit Bäumen/Felsen → neue Props überlappen weder einander noch Ressourcen */
+  var _fsOcc=[];for(var _ri=0;_ri<resources.length;_ri++)_fsOcc.push({x:resources[_ri].x,z:resources[_ri].z});
+  function farScatter(n,minR,fn){for(var i=0;i<n;i++){var a=rnd2()*6.28,rd=minR+rnd2()*(half-minR);var x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(inVZoneL(x,z))continue;
+    var clash=false;for(var k=0;k<_fsOcc.length;k++){var o=_fsOcc[k],ddx=x-o.x,ddz=z-o.z;if(ddx*ddx+ddz*ddz<10.24){clash=true;break;}}if(clash)continue; /* ≥3.2m Abstand */
+    _fsOcc.push({x:x,z:z});fn(x,z);}}
   function spotFar(minR){for(var t=0;t<12;t++){var a=rnd2()*6.28,rd=minR+rnd2()*(half2-minR),x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(!inVZoneL(x,z))return {x:x,z:z};}var a2=rnd2()*6.28,rd2=minR+rnd2()*(half2-minR);return {x:Math.cos(a2)*rd2,z:Math.sin(a2)*rd2};}
   // 📦 Mehr verstreute Gegenstände (Vielfalt) — Fässer/Kisten/Karren/Zäune/Essen
   var STUFF=[["cc0_barrel",1.0],["cc0_crate",1.0],["ftk_cart",1.6],["cc0_fence",1.2],["fd_pie",0.6],["fd_sausage",0.6],["fd_burger",0.6],["cc0_tent",1.8],["ck_catapult",2.2],["ftk_lantern",1.5],["fn_stool",0.9],["fn_chair",0.9],["fn_plant",1.0],["dk_chest",0.9],["cc0_log_stack",1.0],["fn_bookcase",1.3],["cc0_campfire",0.7],
@@ -1990,8 +2011,13 @@ function decorateWorldLate(){
     ["pr_barrel",1.0],["pr_crate",0.9],["pr_crate_bottles",0.9],["pr_chest",0.6],["pr_bottle",0.4],["pr_shovel",1.2],["pr_cannon",0.7],
     ["fu_table",0.8],["fu_chair",0.9],["fu_bench",0.5],["fu_shelf",1.8],["fu_plant",0.7],["fu_cabinet",0.9],
     ["dk2_coin",0.4],["dk2_banner",1.6],["dk2_column",2.0],["dk2_rocks",0.5],["dk2_stones",0.35],["dk2_trap",0.25],["gy_urn",0.35],["gy_pumpkin",0.4],
-    ["wp_potion",0.45],["wp_potion2",0.5],["wp_gem",0.4],["wp_sword",0.9],["wp_dagger",0.6],["wp_shield",0.9]];
-  farScatter(Math.round(150*VF),16,function(x,z){var it=STUFF[(rnd2()*STUFF.length)|0];var m=cc0inst(it[0],it[1]*(0.8+rnd2()*0.5));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd2()*6.28;scene.add(m);});
+    ["wp_potion",0.45],["wp_potion2",0.5],["wp_gem",0.4],["wp_sword",0.9],["wp_dagger",0.6],["wp_shield",0.9],
+    // 🌿 NEU: mehr Natur/Dorf-Deko (bisher ungenutzte nw_*-Modelle) — mehr STL-Vielfalt
+    ["nw_busch_gross",1.4],["nw_stumpf_alt",1.0],["nw_pilz_rot_hoch",0.9],["nw_pilz_braun",0.8],["nw_schilf",1.2],["nw_weizen",1.1],
+    ["nw_kuerbis",0.6],["nw_holzstapel_gross",1.0],["nw_karren_hoch",1.6],["nw_wegweiser",1.8],["nw_fass_offen",1.0],["nw_topf_gross",0.8],["nw_schild",1.3],
+    // 🪨✨ Batch 2: Klippe/Ruinen-Säule/Grasbüschel + Neon-Kristalle (on-theme)
+    ["nw_klippe",1.9],["cc0_pillar",1.9],["cc0_grass",0.6],["nf_crystal",1.0],["nf_crystal_large",1.7]];
+  farScatter(Math.round(190*VF),16,function(x,z){var it=STUFF[(rnd2()*STUFF.length)|0];var m=cc0inst(it[0],it[1]*(0.8+rnd2()*0.5));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd2()*6.28;scene.add(m);});
   // 🐄🦌 Tiere über die Welt verteilt (Vieh nahe Dörfer / Wild in Wäldern) — statische Belebung
   var TAME=[["an_cow",1.4],["an_pig",0.9],["an_chicken",0.4],["an_dog",0.7],["an_cat",0.5],["an_rabbit",0.5]];
   var WILD=[["an_deer",1.4],["an_boar",0.9],["an_fox",0.6],["an_rabbit",0.5],["an_beaver",0.6]];
@@ -3243,27 +3269,52 @@ function dmgDir(src){ /* ⚔️ W8: Schadens-Richtung — roter Rand-Glow zeigt,
   if(!el){el=document.createElement("div");el.id="dmgDir";el.style.cssText="position:fixed;inset:0;pointer-events:none;z-index:44;opacity:0";document.body.appendChild(el);}
   el.style.background="radial-gradient(circle at "+ex.toFixed(0)+"% "+ey.toFixed(0)+"%, rgba(255,40,60,.55), rgba(255,40,60,0) 42%)";
   if(el.animate)el.animate([{opacity:0.9},{opacity:0}],{duration:620,easing:"ease-out"});}
+var _downed=false,_downedT=0,_reviveHoldT=0,_downedTimer=null;
+function _deathVigEl(){var ov=document.getElementById("deathVig");
+  if(!ov){ov=document.createElement("div");ov.id="deathVig";
+    ov.style.cssText="position:fixed;inset:0;z-index:60;pointer-events:none;background:radial-gradient(circle at 50% 45%,rgba(120,0,10,.25),rgba(90,0,8,.72));opacity:0;transition:opacity .35s;display:flex;align-items:center;justify-content:center;text-align:center;color:#ffd0d0;font-weight:900;font-size:1.4rem;text-shadow:0 2px 8px #000;padding:20px";
+    document.body.appendChild(ov);}
+  return ov;}
+function respawnSelf(halfHp){
+  _downed=false;if(_downedTimer){clearTimeout(_downedTimer);_downedTimer=null;}var ov=document.getElementById("deathVig");
+  /* Respawn: Bett (gesetzter Punkt) > Lagerfeuer > Heimdorf */
+  var bp=structures.find(function(s){return s.type==="bett";});
+  var lp=structures.find(function(s){return s.type==="lager";});
+  var spot=bp||lp,rx=spot?spot.x:0,rz=spot?spot.z:0;
+  if(halfHp){rx=player.position.x;rz=player.position.z;} /* Wiederbelebt: an Ort & Stelle */
+  player.position.set(rx,0,rz);
+  hp=halfHp?Math.round(maxHp*0.6):maxHp;dead=false;hpUpd();
+  if(ov)ov.style.opacity="0";
+  burst(rx,groundH(rx,rz)+1,rz,halfHp?[0x8affb0,0xffffff]:(bp?[0x7de3ff,0xc8ffe0]:[0xffb347,0xffd166]),22);
+  announce(halfHp?"🙌 Vom Partner wiederbelebt!":(bp?"🛏️ Zurück am Bett":(lp?"🔥 Zurück am Feuer":"🏡 Zurück im Heimdorf")),"#8affb0");
+  if(typeof sfx==="function")sfx(520,0.12,"triangle",0.05,720);
+  try{if(NET.on&&NET.s)NET.s.send({t:"up",from:NET.role});}catch(e){} /* Partner: „downed"-Marker weg */
+}
 function playerDie(){
   dead=true;announce("💀 Du bist gefallen…","#ff6a6a");
   if(typeof hurtFlash==="function")hurtFlash();shake=Math.min(shake+0.6,0.9);
-  /* 🩸 Tod deutlicher: roter Vollbild-Schleier + kurzer Countdown bis Respawn */
-  var ov=document.getElementById("deathVig");
-  if(!ov){ov=document.createElement("div");ov.id="deathVig";
-    ov.style.cssText="position:fixed;inset:0;z-index:60;pointer-events:none;background:radial-gradient(circle at 50% 45%,rgba(120,0,10,.25),rgba(90,0,8,.72));opacity:0;transition:opacity .35s;display:flex;align-items:center;justify-content:center;color:#ffd0d0;font-weight:900;font-size:1.6rem;text-shadow:0 2px 8px #000";
-    document.body.appendChild(ov);}
-  ov.textContent="";ov.style.opacity="1";
-  setTimeout(function(){
-    /* Respawn: Bett (gesetzter Punkt) > Lagerfeuer > Heimdorf */
-    var bp=structures.find(function(s){return s.type==="bett";});
-    var lp=structures.find(function(s){return s.type==="lager";});
-    var spot=bp||lp,rx=spot?spot.x:0,rz=spot?spot.z:0;
-    player.position.set(rx,0,rz);
-    hp=maxHp;dead=false;hpUpd();
-    if(ov)ov.style.opacity="0";
-    burst(rx,groundH(rx,rz)+1,rz,bp?[0x7de3ff,0xc8ffe0]:[0xffb347,0xffd166],22);
-    announce(bp?"🛏️ Zurück am Bett":(lp?"🔥 Zurück am Feuer":"🏡 Zurück im Heimdorf"),"#8affb0");
-    if(typeof sfx==="function")sfx(520,0.12,"triangle",0.05,720);
-  },1700);
+  var ov=_deathVigEl();ov.style.opacity="1";
+  var partnerAlive=(typeof NET!=="undefined"&&NET.on&&NET.remote&&NET.remote.visible&&(NET.rt.hp==null||NET.rt.hp>0));
+  if(partnerAlive){ /* 🤝 Koop: „downed" — Partner kann aufwecken; garantierter Sicherheits-Timeout (setTimeout, loop-unabhängig) */
+    _downed=true;_downedT=6;ov.textContent="💀 Gefallen — dein Partner kann dich aufwecken! (sonst Respawn in 6s)";
+    try{if(NET.s)NET.s.send({t:"down",from:NET.role});}catch(e){}
+    if(_downedTimer)clearTimeout(_downedTimer);_downedTimer=setTimeout(function(){if(_downed)respawnSelf(false);},6000);
+  } else { ov.textContent="";setTimeout(function(){respawnSelf(false);},1700); }
+}
+var _reviveToastT=0;
+function updDowned(dt){
+  if(_downed){_downedT-=dt;var ov=document.getElementById("deathVig"); /* Countdown-Text (kosmetisch; echter Respawn = setTimeout) */
+    if(ov)ov.textContent="💀 Gefallen — Partner kann dich aufwecken! (Respawn in "+Math.max(0,Math.ceil(_downedT))+"s)";
+    return;}
+  /* Partner-Seite: steht der lebende Spieler nah am gefallenen Partner → nach 1.0s wiederbeleben */
+  if(typeof NET!=="undefined"&&NET.on&&!dead&&NET.remoteDowned&&NET.remote&&NET.remote.visible){
+    var dx=NET.remote.position.x-player.position.x,dz=NET.remote.position.z-player.position.z;
+    if(dx*dx+dz*dz<3.0*3.0){_reviveHoldT+=dt;
+      if(_reviveHoldT>=1.0){_reviveHoldT=0;try{if(NET.s)NET.s.send({t:"revive",from:NET.role});}catch(e){}
+        toast("🙌 Partner wiederbelebt!");NET.remoteDowned=false;}
+      else if(!_reviveToastT||perfNow-_reviveToastT>700){_reviveToastT=perfNow;toast("🔼 Halte Position — belebe Partner…");}
+    } else _reviveHoldT=0;
+  } else _reviveHoldT=0;
 }
 
 // ---------- Toast / Announce ----------
@@ -3720,7 +3771,7 @@ function updCamera(dt){
   var wantY=Math.max(player.position.y+hgt,gMax+3.5);
   camera.position.y+=(wantY-camera.position.y)*Math.min(1,dt*6);
   var sx=(shake>0?(rnd()-.5)*shake:0),sz=(shake>0?(rnd()-.5)*shake:0);
-  camera.lookAt(player.position.x+sx,player.position.y+1.6-nf*1.2,player.position.z+sz+3+nf*5);
+  camera.lookAt(player.position.x+sx,player.position.y+1.5,player.position.z+sz+1); /* 🎯 Held vertikal zentriert (kein großer Vorausblick mehr — User: „Charakter soll immer Mitte sein") */
   if(shake>0)shake=Math.max(0,shake-dt*1.5);
 }
 
@@ -3976,7 +4027,7 @@ function frame(now){
   } else if(heroRig&&(heroRig.cur==="walk"||heroRig.cur==="run")){setAnim(heroRig,"idle",0.2);}
   player.position.y=groundH(player.position.x,player.position.z);
 
-  updDayNight(dt);updAmbience(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updShock(dt);updMotes(dt);updThrow(dt);updDodge(dt);updBolt2(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);_mmT+=dt;if(_mmT>0.15){_mmT=0;updMinimap();}updSmoke(dt);updDucks(dt);updPotions(dt);updNPCs(dt);updHub(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
+  updDayNight(dt);updAmbience(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updShock(dt);updMotes(dt);updDowned(dt);updEmotes(dt);updThrow(dt);updDodge(dt);updBolt2(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);_mmT+=dt;if(_mmT>0.15){_mmT=0;updMinimap();}updSmoke(dt);updDucks(dt);updPotions(dt);updNPCs(dt);updHub(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
   updAnimals(dt);updAnimalSpawns(dt);updAmbient(dt);updSway(dt);updGrassTufts(dt);updWater(dt);updCritters(dt);updLively(dt);
   findNear();updPrompt();
   if(buildMode)updGhost();
@@ -4015,13 +4066,27 @@ function coopStatusMsg(m){var b=document.getElementById("coopStatus");if(b)b.tex
 // 🌐 Online-Anzeige im HUD (User-Wunsch) — zeigt Solo / Warten / Verbunden
 var _onlineState="solo",_onlineTxt="";
 function setOnline(state){_onlineState=state;updOnline();}
+function ensureEmoteBar(){
+  var bar=document.getElementById("emoteBar");
+  if(!bar){bar=document.createElement("div");bar.id="emoteBar";
+    bar.style.cssText="position:fixed;left:50%;transform:translateX(-50%);bottom:calc(96px + env(safe-area-inset-bottom));display:none;gap:8px;z-index:40;pointer-events:auto";
+    ["👋","❤️","😂","🆘"].forEach(function(em){var b=document.createElement("button");b.textContent=em;
+      b.style.cssText="width:44px;height:44px;border-radius:50%;border:2px solid rgba(120,200,255,.4);background:rgba(16,24,46,.82);font-size:1.35rem;cursor:pointer";
+      b.onclick=function(ev){ev.stopPropagation();sendEmote(em);};bar.appendChild(b);});
+    document.body.appendChild(bar);}
+  return bar;}
 function updOnline(){
+  var eb=ensureEmoteBar();eb.style.display=(_onlineState==="connected")?"flex":"none"; /* 😊 Emote-Leiste nur im verbundenen Koop */
   var b=document.getElementById("onlineBadge");if(!b)return;
   var txt,bg,bd,col;
   if(_onlineState==="connected"){txt="🟢 Online · 2 Spieler";bg="rgba(18,44,26,.78)";bd="rgba(120,255,170,.5)";col="#8effc0";}
   else if(_onlineState==="waiting"){txt="🟡 Warte auf Partner"+(NET.s&&NET.s.code?" · "+NET.s.code:"");bg="rgba(48,42,12,.78)";bd="rgba(255,209,102,.5)";col="#ffd77a";}
   else if(_onlineState==="lost"){txt="🟠 Verbindung wackelt…";bg="rgba(52,32,10,.78)";bd="rgba(255,150,80,.5)";col="#ffb27a";}
   else{txt="🔴 Solo";bg="rgba(20,26,34,.7)";bd="rgba(120,160,190,.4)";col="#9fb4c6";}
+  /* 📱 Überschneidung fix: im Solo (Normalfall) Badge ausblenden; im Koop eigene Zeile (block) → liegt nicht hinter der ZIEL-Box */
+  var mob=innerWidth<=560;
+  b.style.display=(_onlineState==="solo")?(mob?"none":"inline-block"):(mob?"block":"inline-block");
+  b.style.marginLeft=(mob&&_onlineState!=="solo")?"0":"8px";b.style.marginTop=(mob&&_onlineState!=="solo")?"3px":"0";
   if(txt===_onlineTxt)return;_onlineTxt=txt;
   b.textContent=txt;b.style.background=bg;b.style.borderColor=bd;b.style.color=col;
 }
@@ -4048,6 +4113,11 @@ function onNetMsg(d){
   if(d.t==="pos"){NET.rt.x=d.x;NET.rt.z=d.z;NET.rt.ry=d.ry;if(d.hp!==undefined)NET.rt.hp=d.hp;if(NET.remote)NET.remote.visible=true;if(d.st!==undefined)remoteStation(d.st);}
   if(d.t==="char"&&d.id&&d.from!==NET.role){loadRemoteHero(d.id);} /* 🧑‍🤝‍🧑 Partner zeigt seinen echten Helden (Eigen-Echo ignorieren) */
   if(d.t==="gear"&&d.from!==NET.role){NET.remoteGear={w:d.w|0,a:d.a|0};applyRemoteGear(d.w,d.a);} /* 🛡️ Partner-Ausrüstung sichtbar */
+  if(d.t==="down"&&d.from!==NET.role){NET.remoteDowned=true;if(typeof toast==="function")toast("💀 Partner gefallen — lauf zu ihm & belebe ihn!");}
+  if(d.t==="up"&&d.from!==NET.role){NET.remoteDowned=false;}
+  if(d.t==="emote"&&d.from!==NET.role&&d.e){showEmoteOver(NET.remote,d.e);
+    if(d.e==="🆘"){if(typeof toast==="function")toast("🆘 Partner braucht Hilfe!");if(typeof sfx==="function")sfx(880,0.12,"square",0.05,660);}} /* 😊 Partner-Emote; 🆘 = deutlicher Hilferuf */
+  if(d.t==="revive"&&d.from!==NET.role&&_downed){respawnSelf(true);}
   if(d.t==="act"&&d.from!==NET.role&&d.intent){heroActRemote(d.intent);} /* ⚔️ Partner-Kampfanimation */
   if(d.t==="chat"&&typeof toast==="function")toast("💬 Partner: "+d.m);
 }
@@ -4263,11 +4333,16 @@ function startGame(fresh){
         if(_lastId!==id)return; // schon weitergeklickt
         clearModel();var o=g.scene;
         o.traverse(function(n){if(n.isMesh){n.frustumCulled=false;if(typeof toonify==="function")toonify(n,C.glow==="neon");}});
-        /* 📏 Vorschau ebenfalls auf feste Hoehe normieren (kein Riesen-Charakter mehr) */
-        var box0=new THREE.Box3().setFromObject(o),h0=box0.max.y-box0.min.y;
-        var pk=(h0>0.01)?(1.65/h0):((C.scale||1.15)*0.55);o.scale.setScalar(Math.max(0.05,Math.min(6,pk)));
-        var box=new THREE.Box3().setFromObject(o),ctr=new THREE.Vector3();box.getCenter(ctr);
-        o.position.x-=ctr.x;o.position.z-=ctr.z;o.position.y-=box.min.y;
+        /* 📏 Vorschau bone-basiert normieren+zentrieren — setFromObject ist bei skinned Meshy-GLBs Müll
+           (→ 6×-Clamp = Riese, Kamera sah nur die Stiefel). Ziel ~1.75 Einheiten, Füße bei y≈0. */
+        function boneBox(){var b=new THREE.Box3(),c=0,V=new THREE.Vector3();o.updateMatrixWorld(true);
+          o.traverse(function(n){if(n.isSkinnedMesh&&n.skeleton)n.skeleton.bones.forEach(function(bo){bo.getWorldPosition(V);b.expandByPoint(V);c++;});});return c?b:null;}
+        var bb=boneBox(),pk;
+        if(bb){var hh=bb.max.y-bb.min.y;pk=(hh>0.3)?(1.75/hh):1;}
+        else{var box0=new THREE.Box3().setFromObject(o),h0=box0.max.y-box0.min.y;pk=(h0>0.8&&h0<6)?(1.75/h0):((C.scale||1.15)*0.55);}
+        o.scale.setScalar(Math.max(0.05,Math.min(4,pk)));
+        var bb2=boneBox()||new THREE.Box3().setFromObject(o),ctr=new THREE.Vector3();bb2.getCenter(ctr);
+        o.position.x-=ctr.x;o.position.z-=ctr.z;o.position.y-=(bb2.min.y-0.04);
         pmodel=o;psc.add(o);
         if(g.animations&&g.animations.length){pmix=new THREE.AnimationMixer(o);
           var idle=null;for(var a=0;a<g.animations.length;a++)if(/idle/i.test(g.animations[a].name)){idle=g.animations[a];break;}
@@ -4290,13 +4365,30 @@ function startGame(fresh){
 (function(){
   var wrap=document.getElementById("charPick");if(!wrap)return;
   var curId=getChar().id;
-  var CATNAMES={klasse:"⚔️ Klassen",anime:"🎌 Anime-Helden",fantasy:"🛡️ Fantasy-Helden",monster:"👹 Skurrile Helden"};
+  var CATNAMES={klasse:"⚔️ Klassen",anime:"🎌 Anime-Helden",fantasy:"🛡️ Fantasy-Helden"};
   function catOf(C){var id=C.id;
     if(id.indexOf("anime_")===0)return "anime";
     if(["ritter","wikinger","magier2","elf","pirat","hexe"].indexOf(id)>=0)return "fantasy";
-    if(["held_goblin","held_ork","totenork","daemon","pilzkoenig","yeti"].indexOf(id)>=0)return "monster";
     return "klasse";}
+  function idxOf(id){for(var i=0;i<CHARACTERS.length;i++)if(CHARACTERS[i].id===id)return i;return 0;}
+  function pick(id){curId=id;try{localStorage.setItem("nw_char",id);}catch(e){}render();}
+  function cycle(dir){var i=(idxOf(curId)+dir+CHARACTERS.length)%CHARACTERS.length;pick(CHARACTERS[i].id);}
+  /* 🎠 W8: Karussell — großer 3D-Held + ◀ Name ▶, damit man den Charakter WIRKLICH sieht (User: „auswahl ist scheisse") */
+  var nav=document.getElementById("charNav");
+  if(!nav){nav=document.createElement("div");nav.id="charNav";
+    nav.style.cssText="display:flex;align-items:center;justify-content:center;gap:10px;margin:2px auto 10px;max-width:400px";
+    var mk=function(t){var b=document.createElement("button");b.textContent=t;b.type="button";
+      b.style.cssText="width:52px;height:52px;flex:0 0 auto;border-radius:50%;border:2px solid rgba(120,200,255,.4);background:rgba(20,30,60,.8);color:#bfe9ff;font-size:1.5rem;cursor:pointer";return b;};
+    var la=mk("◀"),ra=mk("▶");
+    var nm=document.createElement("div");nm.id="charNavName";nm.style.cssText="flex:1 1 auto;text-align:center;min-width:0";
+    la.onclick=function(){cycle(-1);};ra.onclick=function(){cycle(1);};
+    nav.appendChild(la);nav.appendChild(nm);nav.appendChild(ra);
+    wrap.parentNode.insertBefore(nav,wrap); /* zwischen 3D-Vorschau und Karten-Grid */
+  }
   function render(){
+    var C0=CHARACTERS[idxOf(curId)];
+    var nm=document.getElementById("charNavName");
+    if(nm)nm.innerHTML='<div style="font-size:1.15rem;font-weight:900;color:#eaffff">'+C0.emo+' '+C0.name+'</div><div style="font-size:.8rem;color:#9fd0ff">'+C0.desc+'</div><div style="font-size:.7rem;color:#7f97bf;margin-top:2px">'+(idxOf(curId)+1)+' / '+CHARACTERS.length+'</div>';
     wrap.innerHTML="";var lastCat=null;
     CHARACTERS.forEach(function(C){
       var cat=catOf(C);
@@ -4307,7 +4399,7 @@ function startGame(fresh){
       b.className="ccard"+(C.id===curId?" sel":"");b.type="button";
       b.setAttribute("aria-pressed",C.id===curId?"true":"false");
       b.innerHTML='<span class="cemo">'+C.emo+'</span><span class="cnm">'+C.name+'</span><span class="cdesc">'+C.desc+'</span>';
-      b.onclick=function(){curId=C.id;try{localStorage.setItem("nw_char",C.id);}catch(e){}render();};
+      b.onclick=function(){pick(C.id);};
       wrap.appendChild(b);
     });
     if(window.setCharPreview)window.setCharPreview(curId);

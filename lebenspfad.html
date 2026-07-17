@@ -1216,7 +1216,9 @@ function sanCfg(c){ // defensive Prüfung eines (auch fremden/Netz-)Charakter-Lo
   return null;}
 function loadChar(i){ // defensiv lesen: kaputte/fehlende Daten -> hübscher Default (jeder Spieler anders)
   try{var c=sanCfg(JSON.parse(lsGet(CHARKEYS[i]||"")||""));if(c)return c;}catch(e){}
-  return {g:i%2?"m":"f",style:i%4,skin:i%3,hair:-1,pants:i%PANTS.length};}
+  /* 🎌 Frischer Charakter startet als schöne 3D-Anime-Figur (statt blockigem Toon) — „verbessere Charakter".
+     Gespeicherte/eigene Looks bleiben unberührt; per „🧍 Toon"-Pfeil jederzeit auf anpassbaren Toon wechselbar. */
+  return {g:i%2?"m":"f",style:i%4,skin:i%3,hair:-1,pants:i%PANTS.length,meshy:MESHY_CHARS[i%MESHY_CHARS.length].id};}
 function saveChar(i,c){if(CHARKEYS[i])lsSet(CHARKEYS[i],JSON.stringify(c));}
 function seededChar(seed,i){ // Online-Fallback: deterministischer Look aus dem Spiel-Seed (alle Clients gleich)
   var n=(((seed>>>0)+i*2654435761)>>>0);n^=n>>>15;n=(n*2246822519)>>>0;
@@ -2942,7 +2944,7 @@ var _pv=null;
 var PV_CSS_W=110,PV_CSS_H=124,PV_SS=Math.min(window.devicePixelRatio||1,2)*2;
 var PV_W=Math.round(PV_CSS_W*PV_SS),PV_H=Math.round(PV_CSS_H*PV_SS);
 // ===================== Start =====================
-var selN=2;
+var selN=1; /* 🌐 Online-Koop = jeder wählt nur SEINEN 1 Charakter (User); mehr Spieler per Zahl-Auswahl bleibt möglich */
 (function(){var ps=document.getElementById("pselect");
   for(var i=1;i<=4;i++)(function(n){var b=document.createElement("button");b.textContent=n;if(n===selN)b.className="on";
     b.onclick=function(){selN=n;ps.querySelectorAll("button").forEach(function(x){x.className="";});b.className="on";renderNames();var br=document.getElementById("botRow");if(br)br.style.display=(n===1)?"flex":"none";};
@@ -3360,7 +3362,7 @@ function renderNetChar(){ // 🎨 Charakter-Auswahl fuer Online-Spieler (mit 3D-
 }
 function netLobbyShow(){document.getElementById("netSetup").style.display="none";
   document.getElementById("netLobby").style.display="block";
-  document.getElementById("netCodeShow").textContent=NET.code;
+  document.getElementById("netCodeShow").textContent=(NET.code==="OFEN")?"🌍 offen":NET.code;
   (function(){var bb=document.getElementById("netBotBtn");
     if(!bb){bb=document.createElement("button");bb.id="netBotBtn";
       bb.style.cssText="margin-top:8px;border:1px solid #b89ad8;background:#f4ecff;border-radius:10px;padding:6px 12px;font-size:.8rem;font-weight:800;color:#5a3a8a;cursor:pointer";
@@ -3395,7 +3397,7 @@ function netPlayersUpd(){
       chip.textContent=lookEmoji(NET.cfgs&&NET.cfgs[i])+" "+String(nm).slice(0,12).replace(/[<>&]/g,"")+rdy;
       box.appendChild(chip);});}
   if(NET.host)document.getElementById("netStartBtn").style.display=netAllReady()?"inline-block":"none";
-  document.getElementById("netHint").textContent=NET.names.length>=2?(NET.host?(netAllReady()?"Alle bereit — du kannst starten!":"Warte, bis alle auf »bereit« tippen …"):"Warte, bis der Gastgeber startet …"):"Warte auf Mitspieler … Code weitergeben!";
+  document.getElementById("netHint").textContent=NET.names.length>=2?(NET.host?(netAllReady()?"Alle bereit — du kannst starten!":"Warte, bis alle auf »bereit« tippen …"):"Warte, bis der Gastgeber startet …"):(NET.code==="OFEN"?"🌍 Offener Raum bereit — dein Freund tippt einfach denselben grünen Knopf »Sofort online spielen« (kein Code nötig)":"Warte auf Mitspieler … Code weitergeben!");
 }
 function netMyName(){var el=document.getElementById("netName");var n=(el&&el.value.trim())||"Spieler";return n.slice(0,12);}
 function netStartHeartbeat(){ // Gast pingt den Host alle 3s -> Ping-Anzeige + Tot-Erkennung (Pong-Watchdog)
@@ -3601,8 +3603,9 @@ document.getElementById("netReadyBtn").onclick=function(){
   cb.textContent="✓ Kopiert";setTimeout(function(){cb.textContent="📋 Kopieren";},1400);};})();
 // 📲 Einladungs-Link: Freund tippt auf den Link und landet direkt im Raum (kein Code-Tippen)
 (function(){var sb=document.getElementById("netShareBtn");if(!sb)return;sb.onclick=function(){
-  var url=location.origin+location.pathname+"?raum="+NET.code;
-  var txt="🎲 Spiel mit mir Lebenspfad! Tippe auf den Link und du bist direkt im Raum: "+url;
+  /* Offener Raum → statischer ?quick=1-Link (kein Code); sonst der Raum-Code-Link */
+  var url=location.origin+location.pathname+((NET.code==="OFEN")?"?quick=1":("?raum="+NET.code));
+  var txt="🎲 Spiel mit mir Lebenspfad! Tippe auf den Link und du bist direkt dabei: "+url;
   if(navigator.share){navigator.share({title:"Lebenspfad — Online-Koop",text:txt,url:url}).catch(function(){});}
   else{try{if(navigator.clipboard)navigator.clipboard.writeText(url);}catch(e){}
     sb.textContent="✓ Link kopiert";setTimeout(function(){sb.textContent="📲 Link teilen";},1600);}
@@ -3615,6 +3618,14 @@ document.getElementById("netReadyBtn").onclick=function(){
       document.getElementById("netCode").value=code;
       var nb=document.getElementById("netBox");if(nb)nb.scrollIntoView({block:"center"});
       document.getElementById("netJoinBtn").click();}
+    else if(tries>40)clearInterval(iv);},250);})();
+// 🌍 STATISCHER Direkt-Koop-Link: /lebenspfad.html?quick=1 (oder ?coop=1) -> startet sofort 1-Tipp-Quick-Play,
+//    kein Hosten/Code nötig. Ein Link, beide tippen drauf, beide landen im selben offenen Raum.
+(function(){if(!/[?&](quick|coop)=1\b/.test(location.search))return;
+  var tries=0,iv=setInterval(function(){tries++;var qb=document.getElementById("quickPlayBtn");
+    if(typeof Peer!=="undefined"&&qb){clearInterval(iv);
+      var nb=document.getElementById("netBox");if(nb)nb.scrollIntoView({block:"center"});
+      qb.click();}
     else if(tries>40)clearInterval(iv);},250);})();
 function netLaunch(){ // Host: Runde starten / neue Runde — Init an alle + selbst starten
   if(!NET.host)return;
