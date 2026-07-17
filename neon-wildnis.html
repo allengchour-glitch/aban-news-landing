@@ -1723,6 +1723,7 @@ function updEmotes(dt){for(var i=floatEmotes.length-1;i>=0;i--){var e=floatEmote
   e.sp.material.opacity=Math.max(0,Math.min(1,e.life));e.sp.position.y=3.0+Math.sin((3-e.life)*4)*0.07;
   if(e.life<=0){if(e.sp.parent)e.sp.parent.remove(e.sp);e.sp.material.dispose();floatEmotes.splice(i,1);}}}
 function sendEmote(em){if(typeof player!=="undefined")showEmoteOver(player,em);
+  if(em==="🧘"&&typeof heroAct==="function"&&!dead)heroAct("taunt",3.0); /* 🧘 Sitz-/Rast-Geste */
   try{if(typeof NET!=="undefined"&&NET.on&&NET.s)NET.s.send({t:"emote",e:em,from:NET.role});}catch(e){}}
 // 💨 Schornstein-Rauch über Häusern (Dorf lebendiger)
 var smokeStacks=[],smokePuffs=[],_smokeTex=null;
@@ -3394,10 +3395,18 @@ var NPC_LINES=[
 function talkToNpc(){
   if(!nearNpc||!nearNpc.mesh)return;
   sfx(500,0.07);sfx(640,0.07);
-  var line=NPC_LINES[(Math.random()*NPC_LINES.length)|0];
   faceTo(nearNpc.mesh.position.x,nearNpc.mesh.position.z);
-  announce("🗨️ „"+line+"“","#cfe8ff");
   nearNpc.idle=3;nearNpc.emoT=0.1; // NPC bleibt kurz stehen + Emote
+  var px=player.position.x,py=player.position.y,pz=player.position.z;
+  if(!nearNpc.gifted){ /* 🎁 einmalige kleine Belohnung pro NPC (Elden-Ring: NPCs schenken was) */
+    nearNpc.gifted=true;var roll=Math.random();
+    if(roll<0.4){inv.berry=(inv.berry||0)+2;invUpd();announce("🗨️ „Nimm Beeren, Reisende·r!“ 🍓 +2","#8affb0");floatText(px,py+2.4,pz,"+2 🍓","#ff8ab0");}
+    else if(roll<0.7){inv.crystal=(inv.crystal||0)+1;invUpd();announce("🗨️ „Ein Glückskristall für dich.“ 💎 +1","#8affb0");floatText(px,py+2.4,pz,"+1 💎","#7de3ff");}
+    else if(roll<0.9){gainXP(15);announce("🗨️ „Etwas Erfahrung für den Weg.“ ⭐ +15 XP","#8affb0");floatText(px,py+2.4,pz,"+15 XP","#ffe08a");}
+    else{hp=Math.min(maxHp,hp+20);hpUpd();announce("🗨️ „Du siehst müde aus — hier.“ ❤️ +20 HP","#8affb0");floatText(px,py+2.4,pz,"+20 ❤️","#ff9a6c");}
+    if(typeof sfx==="function")sfx(720,0.12,"triangle",0.05,980);return;}
+  var line=NPC_LINES[(Math.random()*NPC_LINES.length)|0];
+  announce("🗨️ „"+line+"“","#cfe8ff");
 }
 function harvest(){
   findNear(); // frisch bestimmen → korrekt auch bei Einzelaufruf/Tap
@@ -4087,7 +4096,7 @@ function ensureEmoteBar(){
   var bar=document.getElementById("emoteBar");
   if(!bar){bar=document.createElement("div");bar.id="emoteBar";
     bar.style.cssText="position:fixed;left:50%;transform:translateX(-50%);bottom:calc(96px + env(safe-area-inset-bottom));display:none;gap:8px;z-index:40;pointer-events:auto";
-    ["👋","❤️","😂","🆘"].forEach(function(em){var b=document.createElement("button");b.textContent=em;
+    ["👋","❤️","😂","🧘","🆘"].forEach(function(em){var b=document.createElement("button");b.textContent=em;
       b.style.cssText="width:44px;height:44px;border-radius:50%;border:2px solid rgba(120,200,255,.4);background:rgba(16,24,46,.82);font-size:1.35rem;cursor:pointer";
       b.onclick=function(ev){ev.stopPropagation();sendEmote(em);};bar.appendChild(b);});
     document.body.appendChild(bar);}
@@ -4133,6 +4142,7 @@ function onNetMsg(d){
   if(d.t==="down"&&d.from!==NET.role){NET.remoteDowned=true;if(typeof toast==="function")toast("💀 Partner gefallen — lauf zu ihm & belebe ihn!");}
   if(d.t==="up"&&d.from!==NET.role){NET.remoteDowned=false;}
   if(d.t==="emote"&&d.from!==NET.role&&d.e){showEmoteOver(NET.remote,d.e);
+    if(d.e==="🧘"&&typeof heroActRemote==="function")heroActRemote("taunt"); /* 🧘 Partner rastet */
     if(d.e==="🆘"){if(typeof toast==="function")toast("🆘 Partner braucht Hilfe!");if(typeof sfx==="function")sfx(880,0.12,"square",0.05,660);}} /* 😊 Partner-Emote; 🆘 = deutlicher Hilferuf */
   if(d.t==="revive"&&d.from!==NET.role&&_downed){respawnSelf(true);}
   if(d.t==="act"&&d.from!==NET.role&&d.intent){heroActRemote(d.intent);} /* ⚔️ Partner-Kampfanimation */
