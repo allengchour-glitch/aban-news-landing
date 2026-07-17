@@ -1705,8 +1705,9 @@ function emoTexFor(em){if(_emoTexCache[em])return _emoTexCache[em];
 /* 😊 W8: Koop-Emote über dem Kopf (Spieler ODER Partner) — kurze, freundliche Kommunikation */
 var floatEmotes=[];
 function showEmoteOver(grp,em){if(!grp)return;
+  var big=(em==="🆘"),s=big?1.5:0.95; /* 🆘 = Hilferuf, größer + länger */
   var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:emoTexFor(em),transparent:true,depthWrite:false,depthTest:false}));
-  sp.scale.set(0.95,0.95,0.95);sp.position.y=3.0;sp.renderOrder=999;grp.add(sp);floatEmotes.push({sp:sp,life:3});}
+  sp.scale.set(s,s,s);sp.position.y=3.0;sp.renderOrder=999;grp.add(sp);floatEmotes.push({sp:sp,life:big?4.5:3});}
 function updEmotes(dt){for(var i=floatEmotes.length-1;i>=0;i--){var e=floatEmotes[i];e.life-=dt;
   e.sp.material.opacity=Math.max(0,Math.min(1,e.life));e.sp.position.y=3.0+Math.sin((3-e.life)*4)*0.07;
   if(e.life<=0){if(e.sp.parent)e.sp.parent.remove(e.sp);e.sp.material.dispose();floatEmotes.splice(i,1);}}}
@@ -4089,7 +4090,8 @@ function onNetMsg(d){
   if(d.t==="gear"&&d.from!==NET.role){NET.remoteGear={w:d.w|0,a:d.a|0};applyRemoteGear(d.w,d.a);} /* 🛡️ Partner-Ausrüstung sichtbar */
   if(d.t==="down"&&d.from!==NET.role){NET.remoteDowned=true;if(typeof toast==="function")toast("💀 Partner gefallen — lauf zu ihm & belebe ihn!");}
   if(d.t==="up"&&d.from!==NET.role){NET.remoteDowned=false;}
-  if(d.t==="emote"&&d.from!==NET.role&&d.e){showEmoteOver(NET.remote,d.e);} /* 😊 Partner-Emote */
+  if(d.t==="emote"&&d.from!==NET.role&&d.e){showEmoteOver(NET.remote,d.e);
+    if(d.e==="🆘"){if(typeof toast==="function")toast("🆘 Partner braucht Hilfe!");if(typeof sfx==="function")sfx(880,0.12,"square",0.05,660);}} /* 😊 Partner-Emote; 🆘 = deutlicher Hilferuf */
   if(d.t==="revive"&&d.from!==NET.role&&_downed){respawnSelf(true);}
   if(d.t==="act"&&d.from!==NET.role&&d.intent){heroActRemote(d.intent);} /* ⚔️ Partner-Kampfanimation */
   if(d.t==="chat"&&typeof toast==="function")toast("💬 Partner: "+d.m);
