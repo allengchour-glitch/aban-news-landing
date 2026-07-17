@@ -1702,6 +1702,16 @@ function emoTexFor(em){if(_emoTexCache[em])return _emoTexCache[em];
   var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");
   c.font="44px sans-serif";c.textAlign="center";c.textBaseline="middle";c.fillText(em,32,36);
   _emoTexCache[em]=new THREE.CanvasTexture(cv);return _emoTexCache[em];}
+/* 😊 W8: Koop-Emote über dem Kopf (Spieler ODER Partner) — kurze, freundliche Kommunikation */
+var floatEmotes=[];
+function showEmoteOver(grp,em){if(!grp)return;
+  var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:emoTexFor(em),transparent:true,depthWrite:false,depthTest:false}));
+  sp.scale.set(0.95,0.95,0.95);sp.position.y=3.0;sp.renderOrder=999;grp.add(sp);floatEmotes.push({sp:sp,life:3});}
+function updEmotes(dt){for(var i=floatEmotes.length-1;i>=0;i--){var e=floatEmotes[i];e.life-=dt;
+  e.sp.material.opacity=Math.max(0,Math.min(1,e.life));e.sp.position.y=3.0+Math.sin((3-e.life)*4)*0.07;
+  if(e.life<=0){if(e.sp.parent)e.sp.parent.remove(e.sp);e.sp.material.dispose();floatEmotes.splice(i,1);}}}
+function sendEmote(em){if(typeof player!=="undefined")showEmoteOver(player,em);
+  try{if(typeof NET!=="undefined"&&NET.on&&NET.s)NET.s.send({t:"emote",e:em,from:NET.role});}catch(e){}}
 // 💨 Schornstein-Rauch über Häusern (Dorf lebendiger)
 var smokeStacks=[],smokePuffs=[],_smokeTex=null;
 function smokeTex(){if(_smokeTex)return _smokeTex;var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");var g=c.createRadialGradient(32,32,2,32,32,30);g.addColorStop(0,"rgba(216,216,222,.85)");g.addColorStop(1,"rgba(216,216,222,0)");c.fillStyle=g;c.fillRect(0,0,64,64);_smokeTex=new THREE.CanvasTexture(cv);return _smokeTex;}
@@ -3995,7 +4005,7 @@ function frame(now){
   } else if(heroRig&&(heroRig.cur==="walk"||heroRig.cur==="run")){setAnim(heroRig,"idle",0.2);}
   player.position.y=groundH(player.position.x,player.position.z);
 
-  updDayNight(dt);updAmbience(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updShock(dt);updMotes(dt);updDowned(dt);updThrow(dt);updDodge(dt);updBolt2(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);_mmT+=dt;if(_mmT>0.15){_mmT=0;updMinimap();}updSmoke(dt);updDucks(dt);updPotions(dt);updNPCs(dt);updHub(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
+  updDayNight(dt);updAmbience(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updShock(dt);updMotes(dt);updDowned(dt);updEmotes(dt);updThrow(dt);updDodge(dt);updBolt2(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);_mmT+=dt;if(_mmT>0.15){_mmT=0;updMinimap();}updSmoke(dt);updDucks(dt);updPotions(dt);updNPCs(dt);updHub(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
   updAnimals(dt);updAnimalSpawns(dt);updAmbient(dt);updSway(dt);updGrassTufts(dt);updWater(dt);updCritters(dt);updLively(dt);
   findNear();updPrompt();
   if(buildMode)updGhost();
@@ -4034,7 +4044,17 @@ function coopStatusMsg(m){var b=document.getElementById("coopStatus");if(b)b.tex
 // 🌐 Online-Anzeige im HUD (User-Wunsch) — zeigt Solo / Warten / Verbunden
 var _onlineState="solo",_onlineTxt="";
 function setOnline(state){_onlineState=state;updOnline();}
+function ensureEmoteBar(){
+  var bar=document.getElementById("emoteBar");
+  if(!bar){bar=document.createElement("div");bar.id="emoteBar";
+    bar.style.cssText="position:fixed;left:50%;transform:translateX(-50%);bottom:calc(96px + env(safe-area-inset-bottom));display:none;gap:8px;z-index:40;pointer-events:auto";
+    ["👋","❤️","😂","🆘"].forEach(function(em){var b=document.createElement("button");b.textContent=em;
+      b.style.cssText="width:44px;height:44px;border-radius:50%;border:2px solid rgba(120,200,255,.4);background:rgba(16,24,46,.82);font-size:1.35rem;cursor:pointer";
+      b.onclick=function(ev){ev.stopPropagation();sendEmote(em);};bar.appendChild(b);});
+    document.body.appendChild(bar);}
+  return bar;}
 function updOnline(){
+  var eb=ensureEmoteBar();eb.style.display=(_onlineState==="connected")?"flex":"none"; /* 😊 Emote-Leiste nur im verbundenen Koop */
   var b=document.getElementById("onlineBadge");if(!b)return;
   var txt,bg,bd,col;
   if(_onlineState==="connected"){txt="🟢 Online · 2 Spieler";bg="rgba(18,44,26,.78)";bd="rgba(120,255,170,.5)";col="#8effc0";}
@@ -4069,6 +4089,7 @@ function onNetMsg(d){
   if(d.t==="gear"&&d.from!==NET.role){NET.remoteGear={w:d.w|0,a:d.a|0};applyRemoteGear(d.w,d.a);} /* 🛡️ Partner-Ausrüstung sichtbar */
   if(d.t==="down"&&d.from!==NET.role){NET.remoteDowned=true;if(typeof toast==="function")toast("💀 Partner gefallen — lauf zu ihm & belebe ihn!");}
   if(d.t==="up"&&d.from!==NET.role){NET.remoteDowned=false;}
+  if(d.t==="emote"&&d.from!==NET.role&&d.e){showEmoteOver(NET.remote,d.e);} /* 😊 Partner-Emote */
   if(d.t==="revive"&&d.from!==NET.role&&_downed){respawnSelf(true);}
   if(d.t==="act"&&d.from!==NET.role&&d.intent){heroActRemote(d.intent);} /* ⚔️ Partner-Kampfanimation */
   if(d.t==="chat"&&typeof toast==="function")toast("💬 Partner: "+d.m);
