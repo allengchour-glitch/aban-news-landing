@@ -61,7 +61,7 @@ canvas{display:block}
 #kprompt .key{display:inline-block;background:#1a2140;border:1px solid #6affc0;border-radius:6px;padding:1px 8px;margin-right:6px;color:#6affc0}
 /* Announce als Pill statt nacktem Riesen-Text — war über hellen Dächern kaum lesbar (Polier-Pass) */
 #announce{position:absolute;top:28%;left:50%;transform:translateX(-50%);width:max-content;max-width:86vw;text-align:center;font-weight:900;font-size:1.55rem;letter-spacing:.04em;text-shadow:0 2px 3px #000,0 0 6px #000;opacity:0;transition:opacity .4s;color:#eafcff;pointer-events:none;padding:8px 22px;background:rgba(8,14,30,.66);border:1px solid rgba(125,227,255,.3);border-radius:16px;box-shadow:0 8px 28px rgba(0,0,0,.45);backdrop-filter:blur(3px)}
-@media(max-width:600px){#announce{font-size:1.15rem;padding:7px 14px}}
+@media(max-width:600px){#announce{font-size:1.15rem;padding:7px 14px;max-width:74vw;top:24%}} /* schmaler + höher → kollidiert nicht mit Zoom-/Minimap-Knöpfen rechts */
 #toast{position:absolute;bottom:200px;left:50%;transform:translateX(-50%);background:rgba(10,14,32,.9);border:1px solid rgba(120,200,255,.35);border-radius:12px;padding:8px 16px;font-weight:700;opacity:0;transition:opacity .3s;max-width:88vw;text-align:center}
 /* Touch-Steuerung */
 #stick{position:absolute;left:calc(20px + env(safe-area-inset-left));bottom:calc(28px + env(safe-area-inset-bottom));width:120px;height:120px;border-radius:50%;background:rgba(20,30,60,.4);border:2px solid rgba(120,200,255,.3);pointer-events:auto}
@@ -129,15 +129,18 @@ canvas{display:block}
 .ccard.sel{border-color:#6affc0;box-shadow:0 6px 22px rgba(100,240,200,.35);background:rgba(30,52,70,.85)}
 #charLbl{color:#9fb3d8;letter-spacing:.2em;font-size:.72rem;text-transform:uppercase;margin-bottom:8px}
 @media(max-width:560px){
-  #invBar{gap:5px;padding:6px 9px}
-  .inv{font-size:.92rem}
-  .inv .ic{font-size:1.05rem}
-  .inv.tool .ic{font-size:1.05rem}
+  #invBar{gap:3px;padding:4px 7px}                 /* schmaler → kollidiert nicht mit 🔊/⏸ rechts */
+  .inv{font-size:.78rem}
+  .inv .ic{font-size:.92rem}
+  .inv.tool .ic{font-size:.92rem}
+  #sysRow{gap:6px}
+  .sysbtn{width:40px;height:40px;font-size:1.1rem} /* kleiner → mehr Abstand zur Inventar-Leiste */
   .inv.tool span:last-child{display:none} /* nur Icon, spart Breite */
   .inv.tool{padding-left:5px;margin-left:1px}
   #topLeft{top:calc(58px + env(safe-area-inset-top))}
-  #quest{top:calc(58px + env(safe-area-inset-top));max-width:56vw;font-size:.88rem;padding:7px 10px}
-  #quest .qt{font-size:.94rem}
+  #onlineBadge{display:block;margin-left:0;margin-top:3px;width:max-content} /* eigene Zeile → liegt nicht hinter der ZIEL-Box */
+  #quest{top:calc(58px + env(safe-area-inset-top));max-width:48vw;font-size:.86rem;padding:7px 10px} /* schmaler → freier Abstand zur Uhr links */
+  #quest .qt{font-size:.9rem}
 }
 
 #perkPick{position:fixed;inset:0;z-index:60;background:rgba(6,10,22,.72);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(3px)}
@@ -4069,6 +4072,10 @@ function updOnline(){
   else if(_onlineState==="waiting"){txt="🟡 Warte auf Partner"+(NET.s&&NET.s.code?" · "+NET.s.code:"");bg="rgba(48,42,12,.78)";bd="rgba(255,209,102,.5)";col="#ffd77a";}
   else if(_onlineState==="lost"){txt="🟠 Verbindung wackelt…";bg="rgba(52,32,10,.78)";bd="rgba(255,150,80,.5)";col="#ffb27a";}
   else{txt="🔴 Solo";bg="rgba(20,26,34,.7)";bd="rgba(120,160,190,.4)";col="#9fb4c6";}
+  /* 📱 Überschneidung fix: im Solo (Normalfall) Badge ausblenden; im Koop eigene Zeile (block) → liegt nicht hinter der ZIEL-Box */
+  var mob=innerWidth<=560;
+  b.style.display=(_onlineState==="solo")?(mob?"none":"inline-block"):(mob?"block":"inline-block");
+  b.style.marginLeft=(mob&&_onlineState!=="solo")?"0":"8px";b.style.marginTop=(mob&&_onlineState!=="solo")?"3px":"0";
   if(txt===_onlineTxt)return;_onlineTxt=txt;
   b.textContent=txt;b.style.background=bg;b.style.borderColor=bd;b.style.color=col;
 }
