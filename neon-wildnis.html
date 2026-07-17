@@ -1865,7 +1865,8 @@ var DEFER_ASSETS=["sv_tent","sv_tent_canvas","sv_campfire","sv_campfire_fish","s
   "dk2_coin","dk2_banner","dk2_column","dk2_gate","dk2_rocks","dk2_stairs","dk2_stones","dk2_trap","dk2_woodframe","dk2_woodsupport",
   "an_cow","an_pig","an_chicken","an_dog","an_cat","an_deer","an_rabbit","an_fox","an_boar","an_beaver",
   "nf_turret_single",
-  "nw_busch_gross","nw_stumpf_alt","nw_pilz_rot_hoch","nw_pilz_braun","nw_schilf","nw_weizen","nw_kuerbis","nw_holzstapel_gross","nw_karren_hoch","nw_wegweiser","nw_fass_offen","nw_topf_gross","nw_schild"]; /* 🌿 mehr Natur/Dorf-Deko */
+  "nw_busch_gross","nw_stumpf_alt","nw_pilz_rot_hoch","nw_pilz_braun","nw_schilf","nw_weizen","nw_kuerbis","nw_holzstapel_gross","nw_karren_hoch","nw_wegweiser","nw_fass_offen","nw_topf_gross","nw_schild",
+  "nw_klippe","cc0_pillar","cc0_grass","nf_crystal","nf_crystal_large"]; /* 🌿 mehr Natur/Dorf-Deko + Ruinen/Kristalle */
 /* ===================== 🎯 AKTIVITÄTS-STATIONEN (Wildnis-Fusion) =====================
    ✈️ Flugfeld / 🏃 Parcours / 🏎️ Rennstrecke / ⚔️ Arena — Portale zu neon-flug/jump/racer/survivor als Iframe-Overlay
    (Lebenspfad-Muster). Welt-Rendering pausiert solange offen (2 WebGL-Kontexte!), netTick läuft weiter. */
@@ -2013,7 +2014,9 @@ function decorateWorldLate(){
     ["wp_potion",0.45],["wp_potion2",0.5],["wp_gem",0.4],["wp_sword",0.9],["wp_dagger",0.6],["wp_shield",0.9],
     // 🌿 NEU: mehr Natur/Dorf-Deko (bisher ungenutzte nw_*-Modelle) — mehr STL-Vielfalt
     ["nw_busch_gross",1.4],["nw_stumpf_alt",1.0],["nw_pilz_rot_hoch",0.9],["nw_pilz_braun",0.8],["nw_schilf",1.2],["nw_weizen",1.1],
-    ["nw_kuerbis",0.6],["nw_holzstapel_gross",1.0],["nw_karren_hoch",1.6],["nw_wegweiser",1.8],["nw_fass_offen",1.0],["nw_topf_gross",0.8],["nw_schild",1.3]];
+    ["nw_kuerbis",0.6],["nw_holzstapel_gross",1.0],["nw_karren_hoch",1.6],["nw_wegweiser",1.8],["nw_fass_offen",1.0],["nw_topf_gross",0.8],["nw_schild",1.3],
+    // 🪨✨ Batch 2: Klippe/Ruinen-Säule/Grasbüschel + Neon-Kristalle (on-theme)
+    ["nw_klippe",1.9],["cc0_pillar",1.9],["cc0_grass",0.6],["nf_crystal",1.0],["nf_crystal_large",1.7]];
   farScatter(Math.round(190*VF),16,function(x,z){var it=STUFF[(rnd2()*STUFF.length)|0];var m=cc0inst(it[0],it[1]*(0.8+rnd2()*0.5));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd2()*6.28;scene.add(m);});
   // 🐄🦌 Tiere über die Welt verteilt (Vieh nahe Dörfer / Wild in Wäldern) — statische Belebung
   var TAME=[["an_cow",1.4],["an_pig",0.9],["an_chicken",0.4],["an_dog",0.7],["an_cat",0.5],["an_rabbit",0.5]];
