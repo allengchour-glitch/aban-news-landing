@@ -1868,7 +1868,8 @@ var DEFER_ASSETS=["sv_tent","sv_tent_canvas","sv_campfire","sv_campfire_fish","s
   "an_cow","an_pig","an_chicken","an_dog","an_cat","an_deer","an_rabbit","an_fox","an_boar","an_beaver",
   "nf_turret_single",
   "nw_busch_gross","nw_stumpf_alt","nw_pilz_rot_hoch","nw_pilz_braun","nw_schilf","nw_weizen","nw_kuerbis","nw_holzstapel_gross","nw_karren_hoch","nw_wegweiser","nw_fass_offen","nw_topf_gross","nw_schild",
-  "nw_klippe","cc0_pillar","cc0_grass","nf_crystal","nf_crystal_large"]; /* 🌿 mehr Natur/Dorf-Deko + Ruinen/Kristalle */
+  "nw_klippe","cc0_pillar","cc0_grass","nf_crystal","nf_crystal_large",
+  "ftk_windmill"]; /* 🌿 mehr Natur/Dorf-Deko + Ruinen/Kristalle + Windmühle-Landmarke */
 /* ===================== 🎯 AKTIVITÄTS-STATIONEN (Wildnis-Fusion) =====================
    ✈️ Flugfeld / 🏃 Parcours / 🏎️ Rennstrecke / ⚔️ Arena — Portale zu neon-flug/jump/racer/survivor als Iframe-Overlay
    (Lebenspfad-Muster). Welt-Rendering pausiert solange offen (2 WebGL-Kontexte!), netTick läuft weiter. */
@@ -2041,6 +2042,16 @@ function decorateWorldLate(){
       var pk=cc0inst("gy_pumpkin",0.5);if(pk){pk.position.set(lx+1,groundH(lx+1,lz),lz);scene.add(pk);}}
     var gL=new THREE.PointLight(0x66ff99,0.6,30);gL.position.set(p.x,groundH(p.x,p.z)+4,p.z);scene.add(gL);
     if(typeof villages!=="undefined")villages.push({x:p.x,z:p.z,big:false,grave:true});})();
+  // 🌬️ WINDMÜHLE-Landmarke + Weizenfelder drumherum
+  (function(){var p=spotFar(72);var wm=cc0inst("ftk_windmill",6.8);if(!wm)return;
+    wm.position.set(p.x,groundH(p.x,p.z),p.z);wm.rotation.y=rnd2()*6.28;scene.add(wm);
+    for(var i=0;i<10;i++){var wa=rnd2()*6.28,wr=5+rnd2()*8,wx=p.x+Math.cos(wa)*wr,wz=p.z+Math.sin(wa)*wr;
+      if(inVZoneL(wx,wz))continue;var we=cc0inst("nw_weizen",1.1*(0.8+rnd2()*0.5));if(we){we.position.set(wx,groundH(wx,wz),wz);we.rotation.y=rnd2()*6.28;scene.add(we);}}
+    if(typeof villages!=="undefined")villages.push({x:p.x,z:p.z,big:false});})(); /* als Zone → keine Überschneidung */
+  // 🚣 BOOT + STEG am Fluss
+  (function(){var pts=window._riverPts||[];if(!pts.length)return;var rp=pts[(rnd2()*pts.length)|0];
+    var dk=cc0inst("wc_dock",2.2);if(dk){dk.position.set(rp.x,groundH(rp.x,rp.z),rp.z);dk.rotation.y=rnd2()*6.28;scene.add(dk);}
+    var bt=cc0inst("wc_rowboat",1.7);if(bt){bt.position.set(rp.x+1.6,groundH(rp.x+1.6,rp.z)+0.1,rp.z);bt.rotation.y=rnd2()*6.28;scene.add(bt);}})();
   // 🏕️ SURVIVAL-CAMP: Zelte + Lagerfeuer + Schlafsack + Holzstapel + Truhe (Rast-Ort)
   (function(){var p=spotFar(70);
     var t1=cc0inst("sv_tent",2.2);if(t1){t1.position.set(p.x-2,groundH(p.x-2,p.z),p.z);t1.rotation.y=0.5;scene.add(t1);}
