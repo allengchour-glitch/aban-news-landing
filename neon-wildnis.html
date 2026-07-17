@@ -291,6 +291,14 @@ var scene=new THREE.Scene();
 var SKY_DAY=new THREE.Color(0x4a74b8),SKY_NIGHT=new THREE.Color(0x081234),SKY_DUSK=new THREE.Color(0xd97b52);
 scene.background=SKY_DAY.clone();
 scene.fog=new THREE.Fog(SKY_DAY.getHex(),90,360); /* etwas weichere Tiefe, Weitsicht bleibt */
+/* 🌅 W9: Verlaufs-Himmel — großer Dome mit vertikalem Farbverlauf (Horizont hell/warm → oben tiefer).
+   Bottom folgt dem Tag/Nacht-Hintergrund (=Nebel), Top ist eine tiefere Variante → schöner, atmosphärischer Himmel. */
+var skyMat=new THREE.ShaderMaterial({
+  uniforms:{topCol:{value:new THREE.Color(0x24406e)},botCol:{value:SKY_DAY.clone()}},
+  vertexShader:"varying vec3 vP;void main(){vP=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}",
+  fragmentShader:"uniform vec3 topCol;uniform vec3 botCol;varying vec3 vP;void main(){float h=clamp(normalize(vP).y*0.72+0.28,0.0,1.0);gl_FragColor=vec4(mix(botCol,topCol,h),1.0);}",
+  side:THREE.BackSide,depthWrite:false});skyMat.fog=false;
+var skyDome=new THREE.Mesh(new THREE.SphereGeometry(480,24,16),skyMat);skyDome.renderOrder=-1;scene.add(skyDome);
 /* 🌙 W7: Nachthimmel — Sternenfeld + Mond, nur nachts sichtbar, folgt dem Spieler wie eine Skybox.
    Rein kosmetisch (Math.random, fog:false) → berührt keinen seeded-Stream, keine Koop-Auswirkung. */
 var nightSky=new THREE.Group();nightSky.visible=false;scene.add(nightSky);
@@ -3675,6 +3683,10 @@ function updDayNight(dt){
   scene.background.copy(SKY_NIGHT).lerp(SKY_DAY,t);
   if(!isNight)scene.background.lerp(SKY_DUSK,warm*0.5); /* Abendrot/Morgenrot in den Himmel mischen */
   scene.fog.color.copy(scene.background);
+  /* 🌅 Verlaufs-Himmel: Horizont = Hintergrund/Nebel, oben eine tiefere Variante; Dome folgt der Kamera */
+  if(typeof skyMat!=="undefined"&&skyMat){skyMat.uniforms.botCol.value.copy(scene.background);
+    skyMat.uniforms.topCol.value.copy(scene.background).multiplyScalar(isNight?0.55:0.62).offsetHSL(0,0.06,0);
+    if(typeof camera!=="undefined")skyDome.position.copy(camera.position);}
   /* 🌙 W7: Nachthimmel ein-/ausblenden — nachts voll, in der Dämmerung sanft rein; folgt dem Spieler (Skybox) */
   if(typeof nightSky!=="undefined"&&nightSky){nightSky.position.set(player.position.x,0,player.position.z);
     var skyV=isNight?1:(f>0.85?(f-0.85)/0.15:0);nightSky.visible=skyV>0.02;
