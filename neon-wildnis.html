@@ -3340,7 +3340,7 @@ function dmgHit(e,dmg){if(!e)return;
   e.hitPop=0.16;}
 
 // ---------- Sammeln ----------
-var nearRes=null,nearMon=null,nearAni=null,nearWork=null,nearMerchant=false,nearNpc=null;
+var nearRes=null,nearMon=null,nearAni=null,nearWork=null,nearMerchant=false,nearNpc=null,nearFire=null;
 var merchant={x:null,z:null};
 function findNear(){
   nearRes=null;nearMon=null;nearAni=null;nearWork=null;var best=3.6*3.6;
@@ -3361,6 +3361,18 @@ function findNear(){
   for(var S=0;S<stations.length;S++){var sx3=stations[S].x-player.position.x,sz3=stations[S].z-player.position.z,dst=sx3*sx3+sz3*sz3;if(dst<bst){bst=dst;nearStation=stations[S];}}
   nearBoard=false; /* 🪧 Quest-Aushang (Hub) */
   if(questBoard){var qbx=questBoard.x-player.position.x,qbz=questBoard.z-player.position.z;if(qbx*qbx+qbz*qbz<3.4*3.4)nearBoard=true;}
+  nearFire=null;var bfr=3.6*3.6; /* 🔥 Lagerfeuer zum Rasten (Elden-Ring „Site of Grace") */
+  for(var F=0;F<structures.length;F++){var sf=structures[F];if(sf.type!=="lager")continue;var fx=sf.x-player.position.x,fz=sf.z-player.position.z,dfr=fx*fx+fz*fz;if(dfr<bfr){bfr=dfr;nearFire=sf;}}
+}
+function restAtFire(){
+  if(dead)return;
+  hp=maxHp;hpUpd();
+  if(typeof heroAct==="function")heroAct("taunt",2.6); /* Rast-Geste (taunt/wave als Sitz-Ersatz) */
+  if(player&&typeof burst==="function")burst(player.position.x,groundH(player.position.x,player.position.z)+1,player.position.z,[0xffb347,0xffd166],20);
+  if(typeof sfx==="function"){sfx(440,0.16,"triangle",0.05,660);setTimeout(function(){sfx(600,0.2,"sine",0.05,820);},160);}
+  announce("🔥 Ausgeruht — volle Gesundheit, Spiel gespeichert","#ffd18a");
+  if(typeof toast==="function")toast("🔥 Am Feuer gerastet · HP voll · gespeichert");
+  if(typeof saveGame==="function")saveGame();
 }
 // 🗨️ NPC-Dialoge (Realm-Merge Teil 3): kurze Sprüche mit Tipps & Leben
 var NPC_LINES=[
@@ -3392,6 +3404,7 @@ function harvest(){
   if(nearNpc&&!nearMon&&!nearRes&&!nearAni&&!nearLoot&&!nearMerchant&&!buildMode){talkToNpc();return;}
   if(nearLoot&&!nearMon&&!nearAni){openLoot(nearLoot);return;}
   if(nearBoard&&!nearMon&&!nearAni&&!buildMode){readBoard();return;} /* 🪧 Quest-Aushang lesen */
+  if(nearFire&&!nearMon&&!nearAni&&!nearRes&&!nearLoot&&!buildMode){restAtFire();return;} /* 🔥 Am Lagerfeuer rasten */
   if(nearStation&&!nearMon&&!nearAni&&!buildMode){openStation(nearStation.i);return;} /* 🎯 Station betreten (vor dem Kampf-Zweig) */
   if(nearMon){ // Kampf
     heroAct("melee",2.2);
@@ -4052,6 +4065,7 @@ function updPrompt(){
   else if(nearLoot){kp.style.opacity=1;document.getElementById("kpKey").textContent=IS_MOB?"🖐️":"E";document.getElementById("kpTxt").textContent="Öffnen";act.textContent="🖐️";}
   else if(nearWork){kp.style.opacity=1;document.getElementById("kpKey").textContent=IS_MOB?"🔧":"E";document.getElementById("kpTxt").textContent="Werkbank öffnen";act.textContent="🔧";}
   else if(nearNpc){kp.style.opacity=1;document.getElementById("kpKey").textContent=IS_MOB?"🗨️":"E";document.getElementById("kpTxt").textContent="Reden";act.textContent="🗨️";}
+  else if(nearFire){kp.style.opacity=1;document.getElementById("kpKey").textContent=IS_MOB?"🔥":"E";document.getElementById("kpTxt").textContent="Rasten";act.textContent="🔥";}
   else{kp.style.opacity=0;act.textContent="⚔️";}
 }
 
