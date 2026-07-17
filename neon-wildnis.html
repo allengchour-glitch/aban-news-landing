@@ -291,6 +291,14 @@ var scene=new THREE.Scene();
 var SKY_DAY=new THREE.Color(0x4a74b8),SKY_NIGHT=new THREE.Color(0x081234),SKY_DUSK=new THREE.Color(0xd97b52);
 scene.background=SKY_DAY.clone();
 scene.fog=new THREE.Fog(SKY_DAY.getHex(),90,360); /* etwas weichere Tiefe, Weitsicht bleibt */
+/* 🌅 W9: Verlaufs-Himmel — großer Dome mit vertikalem Farbverlauf (Horizont hell/warm → oben tiefer).
+   Bottom folgt dem Tag/Nacht-Hintergrund (=Nebel), Top ist eine tiefere Variante → schöner, atmosphärischer Himmel. */
+var skyMat=new THREE.ShaderMaterial({
+  uniforms:{topCol:{value:new THREE.Color(0x24406e)},botCol:{value:SKY_DAY.clone()}},
+  vertexShader:"varying vec3 vP;void main(){vP=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}",
+  fragmentShader:"uniform vec3 topCol;uniform vec3 botCol;varying vec3 vP;void main(){float h=clamp(normalize(vP).y*0.72+0.28,0.0,1.0);gl_FragColor=vec4(mix(botCol,topCol,h),1.0);}",
+  side:THREE.BackSide,depthWrite:false});skyMat.fog=false;
+var skyDome=new THREE.Mesh(new THREE.SphereGeometry(480,24,16),skyMat);skyDome.renderOrder=-1;scene.add(skyDome);
 /* 🌙 W7: Nachthimmel — Sternenfeld + Mond, nur nachts sichtbar, folgt dem Spieler wie eine Skybox.
    Rein kosmetisch (Math.random, fog:false) → berührt keinen seeded-Stream, keine Koop-Auswirkung. */
 var nightSky=new THREE.Group();nightSky.visible=false;scene.add(nightSky);
@@ -1017,7 +1025,8 @@ function updMonsters(dt){
         }
       }
     }
-    if(tel){ if(e.rig&&e.rig.cur!=="attack")setAnim(e.rig,e.rig.actions.idle?"idle":"walk",0.2); } /* Wind-up: Boss steht */
+    if(e.kbT>0){e.kbT-=dt;e.x+=e.kbx*dt;e.z+=e.kbz*dt;} /* 💥 Rückstoß bei Treffer — gibt Schlägen Wucht (Elden-Ring-Feel) */
+    else if(tel){ if(e.rig&&e.rig.cur!=="attack")setAnim(e.rig,e.rig.actions.idle?"idle":"walk",0.2); } /* Wind-up: Boss steht */
     else if(d>1.6){e.x+=dx/d*spd*dt;e.z+=dz/d*spd*dt;
       if(e.rig&&e.rig.cur!=="attack")setAnim(e.rig,e.rig.actions.walk?"walk":"idle",0.2);}
     else{ // Angriff
@@ -1722,6 +1731,7 @@ function updEmotes(dt){for(var i=floatEmotes.length-1;i>=0;i--){var e=floatEmote
   e.sp.material.opacity=Math.max(0,Math.min(1,e.life));e.sp.position.y=3.0+Math.sin((3-e.life)*4)*0.07;
   if(e.life<=0){if(e.sp.parent)e.sp.parent.remove(e.sp);e.sp.material.dispose();floatEmotes.splice(i,1);}}}
 function sendEmote(em){if(typeof player!=="undefined")showEmoteOver(player,em);
+  if(em==="🧘"&&typeof heroAct==="function"&&!dead)heroAct("taunt",3.0); /* 🧘 Sitz-/Rast-Geste */
   try{if(typeof NET!=="undefined"&&NET.on&&NET.s)NET.s.send({t:"emote",e:em,from:NET.role});}catch(e){}}
 // 💨 Schornstein-Rauch über Häusern (Dorf lebendiger)
 var smokeStacks=[],smokePuffs=[],_smokeTex=null;
@@ -1866,7 +1876,8 @@ var DEFER_ASSETS=["sv_tent","sv_tent_canvas","sv_campfire","sv_campfire_fish","s
   "an_cow","an_pig","an_chicken","an_dog","an_cat","an_deer","an_rabbit","an_fox","an_boar","an_beaver",
   "nf_turret_single",
   "nw_busch_gross","nw_stumpf_alt","nw_pilz_rot_hoch","nw_pilz_braun","nw_schilf","nw_weizen","nw_kuerbis","nw_holzstapel_gross","nw_karren_hoch","nw_wegweiser","nw_fass_offen","nw_topf_gross","nw_schild",
-  "nw_klippe","cc0_pillar","cc0_grass","nf_crystal","nf_crystal_large"]; /* 🌿 mehr Natur/Dorf-Deko + Ruinen/Kristalle */
+  "nw_klippe","cc0_pillar","cc0_grass","nf_crystal","nf_crystal_large",
+  "ftk_windmill"]; /* 🌿 mehr Natur/Dorf-Deko + Ruinen/Kristalle + Windmühle-Landmarke */
 /* ===================== 🎯 AKTIVITÄTS-STATIONEN (Wildnis-Fusion) =====================
    ✈️ Flugfeld / 🏃 Parcours / 🏎️ Rennstrecke / ⚔️ Arena — Portale zu neon-flug/jump/racer/survivor als Iframe-Overlay
    (Lebenspfad-Muster). Welt-Rendering pausiert solange offen (2 WebGL-Kontexte!), netTick läuft weiter. */
@@ -2018,6 +2029,12 @@ function decorateWorldLate(){
     // 🪨✨ Batch 2: Klippe/Ruinen-Säule/Grasbüschel + Neon-Kristalle (on-theme)
     ["nw_klippe",1.9],["cc0_pillar",1.9],["cc0_grass",0.6],["nf_crystal",1.0],["nf_crystal_large",1.7]];
   farScatter(Math.round(190*VF),16,function(x,z){var it=STUFF[(rnd2()*STUFF.length)|0];var m=cc0inst(it[0],it[1]*(0.8+rnd2()*0.5));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd2()*6.28;scene.add(m);});
+  // 🌸 BLUMENWIESEN: dichte, bunte Blüten-Cluster für eine schönere Welt (jeweils 2–5 Blumen)
+  var NWFL2=["nw_blume_lila","nw_blume_rot","nw_blume_gelb","nw_blume_gelb_hoch","cc0_flower_purple","nt_flower_red","nt_flower_yellow"];
+  farScatter(Math.round(48*VF),20,function(x,z){var cn=2+((rnd2()*4)|0);
+    for(var ci=0;ci<cn;ci++){var fa=rnd2()*6.28,fr=rnd2()*2.4,fx=x+Math.cos(fa)*fr,fz=z+Math.sin(fa)*fr;
+      var fl=cc0inst(NWFL2[(rnd2()*NWFL2.length)|0],0.6*(0.7+rnd2()*0.7));
+      if(fl){fl.position.set(fx,groundH(fx,fz),fz);fl.rotation.y=rnd2()*6.28;scene.add(fl);}}});
   // 🐄🦌 Tiere über die Welt verteilt (Vieh nahe Dörfer / Wild in Wäldern) — statische Belebung
   var TAME=[["an_cow",1.4],["an_pig",0.9],["an_chicken",0.4],["an_dog",0.7],["an_cat",0.5],["an_rabbit",0.5]];
   var WILD=[["an_deer",1.4],["an_boar",0.9],["an_fox",0.6],["an_rabbit",0.5],["an_beaver",0.6]];
@@ -2039,6 +2056,16 @@ function decorateWorldLate(){
       var pk=cc0inst("gy_pumpkin",0.5);if(pk){pk.position.set(lx+1,groundH(lx+1,lz),lz);scene.add(pk);}}
     var gL=new THREE.PointLight(0x66ff99,0.6,30);gL.position.set(p.x,groundH(p.x,p.z)+4,p.z);scene.add(gL);
     if(typeof villages!=="undefined")villages.push({x:p.x,z:p.z,big:false,grave:true});})();
+  // 🌬️ WINDMÜHLE-Landmarke + Weizenfelder drumherum
+  (function(){var p=spotFar(72);var wm=cc0inst("ftk_windmill",6.8);if(!wm)return;
+    wm.position.set(p.x,groundH(p.x,p.z),p.z);wm.rotation.y=rnd2()*6.28;scene.add(wm);
+    for(var i=0;i<10;i++){var wa=rnd2()*6.28,wr=5+rnd2()*8,wx=p.x+Math.cos(wa)*wr,wz=p.z+Math.sin(wa)*wr;
+      if(inVZoneL(wx,wz))continue;var we=cc0inst("nw_weizen",1.1*(0.8+rnd2()*0.5));if(we){we.position.set(wx,groundH(wx,wz),wz);we.rotation.y=rnd2()*6.28;scene.add(we);}}
+    if(typeof villages!=="undefined")villages.push({x:p.x,z:p.z,big:false});})(); /* als Zone → keine Überschneidung */
+  // 🚣 BOOT + STEG am Fluss
+  (function(){var pts=window._riverPts||[];if(!pts.length)return;var rp=pts[(rnd2()*pts.length)|0];
+    var dk=cc0inst("wc_dock",2.2);if(dk){dk.position.set(rp.x,groundH(rp.x,rp.z),rp.z);dk.rotation.y=rnd2()*6.28;scene.add(dk);}
+    var bt=cc0inst("wc_rowboat",1.7);if(bt){bt.position.set(rp.x+1.6,groundH(rp.x+1.6,rp.z)+0.1,rp.z);bt.rotation.y=rnd2()*6.28;scene.add(bt);}})();
   // 🏕️ SURVIVAL-CAMP: Zelte + Lagerfeuer + Schlafsack + Holzstapel + Truhe (Rast-Ort)
   (function(){var p=spotFar(70);
     var t1=cc0inst("sv_tent",2.2);if(t1){t1.position.set(p.x-2,groundH(p.x-2,p.z),p.z);t1.rotation.y=0.5;scene.add(t1);}
@@ -3136,7 +3163,7 @@ function useSkill(){
   skillCd=Math.max(2,SKILL_CD-PERK.skillcd);var px=player.position.x,pz=player.position.z,R=7,dmg=2+Math.floor(level/2)+weaponAtk(),hit=0;
   burst(px,player.position.y+1,pz,[0x7de3ff,0xc98bff],34);spawnShock(px,pz,R,0x9fd0ff);shake=Math.min(shake+0.45,0.75);heroAct("cast",1.5);
   for(var i=monsters.length-1;i>=0;i--){var e=monsters[i];if((e.x-px)*(e.x-px)+(e.z-pz)*(e.z-pz)<R*R){
-    e.hp-=dmg;hit++;burst(e.x,groundH(e.x,e.z)+1,e.z,0xff8ad8,7);dmgHit(e,dmg);
+    e.hp-=dmg;hit++;burst(e.x,groundH(e.x,e.z)+1,e.z,0xff8ad8,7);dmgHit(e,dmg);knockback(e,px,pz,11); /* 💥 Schockwelle stößt kräftig weg */
     if(e.hp<=0){var _wb=e.boss;scene.remove(e.mesh);monsters.splice(i,1);gainXP(8);kills++;dropLoot(e.x,e.z);if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);clearWarn(e);}updWaveHud();}}}
   toast(hit?("💥 Schockwelle! "+hit+" getroffen"):"💥 Schockwelle!");
 }
@@ -3161,7 +3188,7 @@ function updThrow(dt){
     p.m.position.x+=(tx-p.m.position.x)*Math.min(1,dt*11);p.m.position.z+=(tz-p.m.position.z)*Math.min(1,dt*11);p.m.position.y+=(ty-p.m.position.y)*Math.min(1,dt*11);
     p.m.rotation.y+=dt*12;
     if(p.t>1.2||(alive&&Math.hypot(p.m.position.x-tx,p.m.position.z-tz)<0.8)){
-      if(alive){e.hp-=p.dmg;burst(e.x,groundH(e.x,e.z)+1,e.z,0x7de3ff,10);dmgHit(e,p.dmg);shake=Math.min(shake+0.1,0.4);
+      if(alive){e.hp-=p.dmg;burst(e.x,groundH(e.x,e.z)+1,e.z,0x7de3ff,10);dmgHit(e,p.dmg);knockback(e,player.position.x,player.position.z,7);shake=Math.min(shake+0.1,0.4);
         if(e.hp<=0){var _wb=e.boss;var idx=monsters.indexOf(e);if(idx>=0){scene.remove(e.mesh);monsters.splice(idx,1);}gainXP(8);kills++;if(typeof dropLoot==="function")dropLoot(e.x,e.z);if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);clearWarn(e);}updWaveHud();}}
       scene.remove(p.m);projectiles.splice(i,1);}
   }
@@ -3338,9 +3365,13 @@ function floatText(x,y,z,txt,color){
 function dmgHit(e,dmg){if(!e)return;
   floatText(e.x,groundH(e.x,e.z)+1.9,e.z,"-"+Math.round(dmg),"#ffe14a");
   e.hitPop=0.16;}
+/* 💥 Rückstoß: schiebt den Gegner weg vom Treffer-Ursprung; Bosse widerstehen stärker (Elden-Ring-Wucht) */
+function knockback(e,fromX,fromZ,str){if(!e)return;var kx=e.x-fromX,kz=e.z-fromZ,kd=Math.hypot(kx,kz)||1;var s=(e.boss?str*0.28:str);e.kbx=kx/kd*s;e.kbz=kz/kd*s;e.kbT=0.16;}
+/* 🔊 Wuchtiger Treffer-Klang: tiefer Thud + kurzer Crack (passt zum Rückstoß) */
+function hitSfx(){if(typeof sfx!=="function")return;sfx(92,0.09,"sawtooth",0.06,54);sfx(330,0.05,"square",0.04,150);}
 
 // ---------- Sammeln ----------
-var nearRes=null,nearMon=null,nearAni=null,nearWork=null,nearMerchant=false,nearNpc=null;
+var nearRes=null,nearMon=null,nearAni=null,nearWork=null,nearMerchant=false,nearNpc=null,nearFire=null;
 var merchant={x:null,z:null};
 function findNear(){
   nearRes=null;nearMon=null;nearAni=null;nearWork=null;var best=3.6*3.6;
@@ -3361,6 +3392,18 @@ function findNear(){
   for(var S=0;S<stations.length;S++){var sx3=stations[S].x-player.position.x,sz3=stations[S].z-player.position.z,dst=sx3*sx3+sz3*sz3;if(dst<bst){bst=dst;nearStation=stations[S];}}
   nearBoard=false; /* 🪧 Quest-Aushang (Hub) */
   if(questBoard){var qbx=questBoard.x-player.position.x,qbz=questBoard.z-player.position.z;if(qbx*qbx+qbz*qbz<3.4*3.4)nearBoard=true;}
+  nearFire=null;var bfr=3.6*3.6; /* 🔥 Lagerfeuer zum Rasten (Elden-Ring „Site of Grace") */
+  for(var F=0;F<structures.length;F++){var sf=structures[F];if(sf.type!=="lager")continue;var fx=sf.x-player.position.x,fz=sf.z-player.position.z,dfr=fx*fx+fz*fz;if(dfr<bfr){bfr=dfr;nearFire=sf;}}
+}
+function restAtFire(){
+  if(dead)return;
+  hp=maxHp;hpUpd();
+  if(typeof heroAct==="function")heroAct("taunt",2.6); /* Rast-Geste (taunt/wave als Sitz-Ersatz) */
+  if(player&&typeof burst==="function")burst(player.position.x,groundH(player.position.x,player.position.z)+1,player.position.z,[0xffb347,0xffd166],20);
+  if(typeof sfx==="function"){sfx(440,0.16,"triangle",0.05,660);setTimeout(function(){sfx(600,0.2,"sine",0.05,820);},160);}
+  announce("🔥 Ausgeruht — volle Gesundheit, Spiel gespeichert","#ffd18a");
+  if(typeof toast==="function")toast("🔥 Am Feuer gerastet · HP voll · gespeichert");
+  if(typeof saveGame==="function")saveGame();
 }
 // 🗨️ NPC-Dialoge (Realm-Merge Teil 3): kurze Sprüche mit Tipps & Leben
 var NPC_LINES=[
@@ -3379,10 +3422,18 @@ var NPC_LINES=[
 function talkToNpc(){
   if(!nearNpc||!nearNpc.mesh)return;
   sfx(500,0.07);sfx(640,0.07);
-  var line=NPC_LINES[(Math.random()*NPC_LINES.length)|0];
   faceTo(nearNpc.mesh.position.x,nearNpc.mesh.position.z);
-  announce("🗨️ „"+line+"“","#cfe8ff");
   nearNpc.idle=3;nearNpc.emoT=0.1; // NPC bleibt kurz stehen + Emote
+  var px=player.position.x,py=player.position.y,pz=player.position.z;
+  if(!nearNpc.gifted){ /* 🎁 einmalige kleine Belohnung pro NPC (Elden-Ring: NPCs schenken was) */
+    nearNpc.gifted=true;var roll=Math.random();
+    if(roll<0.4){inv.berry=(inv.berry||0)+2;invUpd();announce("🗨️ „Nimm Beeren, Reisende·r!“ 🍓 +2","#8affb0");floatText(px,py+2.4,pz,"+2 🍓","#ff8ab0");}
+    else if(roll<0.7){inv.crystal=(inv.crystal||0)+1;invUpd();announce("🗨️ „Ein Glückskristall für dich.“ 💎 +1","#8affb0");floatText(px,py+2.4,pz,"+1 💎","#7de3ff");}
+    else if(roll<0.9){gainXP(15);announce("🗨️ „Etwas Erfahrung für den Weg.“ ⭐ +15 XP","#8affb0");floatText(px,py+2.4,pz,"+15 XP","#ffe08a");}
+    else{hp=Math.min(maxHp,hp+20);hpUpd();announce("🗨️ „Du siehst müde aus — hier.“ ❤️ +20 HP","#8affb0");floatText(px,py+2.4,pz,"+20 ❤️","#ff9a6c");}
+    if(typeof sfx==="function")sfx(720,0.12,"triangle",0.05,980);return;}
+  var line=NPC_LINES[(Math.random()*NPC_LINES.length)|0];
+  announce("🗨️ „"+line+"“","#cfe8ff");
 }
 function harvest(){
   findNear(); // frisch bestimmen → korrekt auch bei Einzelaufruf/Tap
@@ -3392,11 +3443,12 @@ function harvest(){
   if(nearNpc&&!nearMon&&!nearRes&&!nearAni&&!nearLoot&&!nearMerchant&&!buildMode){talkToNpc();return;}
   if(nearLoot&&!nearMon&&!nearAni){openLoot(nearLoot);return;}
   if(nearBoard&&!nearMon&&!nearAni&&!buildMode){readBoard();return;} /* 🪧 Quest-Aushang lesen */
+  if(nearFire&&!nearMon&&!nearAni&&!nearRes&&!nearLoot&&!buildMode){restAtFire();return;} /* 🔥 Am Lagerfeuer rasten */
   if(nearStation&&!nearMon&&!nearAni&&!buildMode){openStation(nearStation.i);return;} /* 🎯 Station betreten (vor dem Kampf-Zweig) */
   if(nearMon){ // Kampf
     heroAct("melee",2.2);
     faceTo(nearMon.x,nearMon.z);
-var _md=(1+Math.floor(level/3)+weaponAtk());nearMon.hp-=_md;dmgHit(nearMon,_md);sfx(180,0.05,"sawtooth",0.05);burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x7de3ff,8);shake=Math.min(shake+0.12,0.4);
+var _md=(1+Math.floor(level/3)+weaponAtk());nearMon.hp-=_md;dmgHit(nearMon,_md);knockback(nearMon,player.position.x,player.position.z,9);hitSfx();burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x7de3ff,8);shake=Math.min(shake+0.12,0.4);
     if(nearMon.hp<=0){var _wb=nearMon.boss;var idx=monsters.indexOf(nearMon);if(idx>=0){scene.remove(nearMon.mesh);monsters.splice(idx,1);}if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(nearMon.x,nearMon.z);clearWarn(nearMon);}updWaveHud();
       burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x3ad0ff,10);gainXP(8);kills++;dropLoot(nearMon.x,nearMon.z);
       if(rnd()<0.4){inv.stone+=1;toast("🪨 +1 Stein");floatText(nearMon.x,groundH(nearMon.x,nearMon.z)+1.6,nearMon.z,"+1 🪨","#cfe");invUpd();}}
@@ -3631,6 +3683,10 @@ function updDayNight(dt){
   scene.background.copy(SKY_NIGHT).lerp(SKY_DAY,t);
   if(!isNight)scene.background.lerp(SKY_DUSK,warm*0.5); /* Abendrot/Morgenrot in den Himmel mischen */
   scene.fog.color.copy(scene.background);
+  /* 🌅 Verlaufs-Himmel: Horizont = Hintergrund/Nebel, oben eine tiefere Variante; Dome folgt der Kamera */
+  if(typeof skyMat!=="undefined"&&skyMat){skyMat.uniforms.botCol.value.copy(scene.background);
+    skyMat.uniforms.topCol.value.copy(scene.background).multiplyScalar(isNight?0.55:0.62).offsetHSL(0,0.06,0);
+    if(typeof camera!=="undefined")skyDome.position.copy(camera.position);}
   /* 🌙 W7: Nachthimmel ein-/ausblenden — nachts voll, in der Dämmerung sanft rein; folgt dem Spieler (Skybox) */
   if(typeof nightSky!=="undefined"&&nightSky){nightSky.position.set(player.position.x,0,player.position.z);
     var skyV=isNight?1:(f>0.85?(f-0.85)/0.15:0);nightSky.visible=skyV>0.02;
@@ -4052,6 +4108,7 @@ function updPrompt(){
   else if(nearLoot){kp.style.opacity=1;document.getElementById("kpKey").textContent=IS_MOB?"🖐️":"E";document.getElementById("kpTxt").textContent="Öffnen";act.textContent="🖐️";}
   else if(nearWork){kp.style.opacity=1;document.getElementById("kpKey").textContent=IS_MOB?"🔧":"E";document.getElementById("kpTxt").textContent="Werkbank öffnen";act.textContent="🔧";}
   else if(nearNpc){kp.style.opacity=1;document.getElementById("kpKey").textContent=IS_MOB?"🗨️":"E";document.getElementById("kpTxt").textContent="Reden";act.textContent="🗨️";}
+  else if(nearFire){kp.style.opacity=1;document.getElementById("kpKey").textContent=IS_MOB?"🔥":"E";document.getElementById("kpTxt").textContent="Rasten";act.textContent="🔥";}
   else{kp.style.opacity=0;act.textContent="⚔️";}
 }
 
@@ -4070,7 +4127,7 @@ function ensureEmoteBar(){
   var bar=document.getElementById("emoteBar");
   if(!bar){bar=document.createElement("div");bar.id="emoteBar";
     bar.style.cssText="position:fixed;left:50%;transform:translateX(-50%);bottom:calc(96px + env(safe-area-inset-bottom));display:none;gap:8px;z-index:40;pointer-events:auto";
-    ["👋","❤️","😂","🆘"].forEach(function(em){var b=document.createElement("button");b.textContent=em;
+    ["👋","❤️","😂","🧘","🆘"].forEach(function(em){var b=document.createElement("button");b.textContent=em;
       b.style.cssText="width:44px;height:44px;border-radius:50%;border:2px solid rgba(120,200,255,.4);background:rgba(16,24,46,.82);font-size:1.35rem;cursor:pointer";
       b.onclick=function(ev){ev.stopPropagation();sendEmote(em);};bar.appendChild(b);});
     document.body.appendChild(bar);}
@@ -4116,6 +4173,7 @@ function onNetMsg(d){
   if(d.t==="down"&&d.from!==NET.role){NET.remoteDowned=true;if(typeof toast==="function")toast("💀 Partner gefallen — lauf zu ihm & belebe ihn!");}
   if(d.t==="up"&&d.from!==NET.role){NET.remoteDowned=false;}
   if(d.t==="emote"&&d.from!==NET.role&&d.e){showEmoteOver(NET.remote,d.e);
+    if(d.e==="🧘"&&typeof heroActRemote==="function")heroActRemote("taunt"); /* 🧘 Partner rastet */
     if(d.e==="🆘"){if(typeof toast==="function")toast("🆘 Partner braucht Hilfe!");if(typeof sfx==="function")sfx(880,0.12,"square",0.05,660);}} /* 😊 Partner-Emote; 🆘 = deutlicher Hilferuf */
   if(d.t==="revive"&&d.from!==NET.role&&_downed){respawnSelf(true);}
   if(d.t==="act"&&d.from!==NET.role&&d.intent){heroActRemote(d.intent);} /* ⚔️ Partner-Kampfanimation */
