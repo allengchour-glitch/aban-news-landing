@@ -43,6 +43,7 @@ if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.repl
     background:linear-gradient(92deg,#ffce8a,#c98bff);box-shadow:0 10px 34px rgba(201,139,255,.35);pointer-events:auto}
   #ov .chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:8px 0 16px}
   #ov .chip{background:rgba(255,255,255,.07);border:1px solid rgba(201,139,255,.3);border-radius:12px;padding:5px 12px;font-size:.78rem;font-weight:700;color:#cfc0ff}
+  .nd-notouch #stick,.nd-notouch #bJump,.nd-notouch #bHit{display:none!important}
   #stationBack{position:fixed;top:calc(8px + env(safe-area-inset-top));right:12px;z-index:30;border:1px solid rgba(125,227,255,.45);
     background:rgba(16,24,48,.8);color:#9fdcff;border-radius:12px;padding:7px 13px;font-weight:800;cursor:pointer;pointer-events:auto}
 </style>
@@ -60,7 +61,7 @@ if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.repl
 <div id="ov">
   <h1>🏰 NEON DUNGEON</h1>
   <p>Steig hinab in die <b>Katakomben</b>: meistere den Fackel-Parcours mit <b>Doppelsprung</b> — dann wartet in der Tiefe <b>DER KOLOSS</b>.</p>
-  <div class="chips"><span class="chip">⤴ Doppelsprung</span><span class="chip">💎 Kristalle sammeln</span><span class="chip">🗿 Schockwellen überspringen</span><span class="chip">⚔️ Glühende Fäuste treffen</span></div>
+  <div class="chips" id="ovChips"><span class="chip">⤴ Doppelsprung</span><span class="chip">💎 Kristalle sammeln</span><span class="chip">🗿 Schockwellen überspringen</span><span class="chip">⚔️ Glühende Fäuste treffen</span></div>
   <button class="big" id="startBtn">Hinabsteigen ▶</button>
 </div>
 <button id="stationBack" style="display:none">← Wildnis</button>
@@ -69,8 +70,12 @@ if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.repl
 (function(){
 "use strict";
 var STATION=window.parent!==window&&/[?&]station=1/.test(location.search);
+var TOUCH=(navigator.maxTouchPoints>0)||matchMedia("(pointer:coarse)").matches;
+if(!TOUCH){document.documentElement.classList.add("nd-notouch");
+  addEventListener("touchstart",function once(){document.documentElement.classList.remove("nd-notouch");TOUCH=true;removeEventListener("touchstart",once);},{once:true});} /* Hybrid-Geräte holen die Touch-UI zurück */
 function stationPost(m){try{window.parent.postMessage(typeof m==="string"?m:JSON.stringify(m),"*");}catch(e){}}
 if(STATION){var sb=document.getElementById("stationBack");sb.style.display="block";sb.onclick=function(){stationPost("mini-back");};}
+if(!TOUCH){var _oc=document.getElementById("ovChips");if(_oc)_oc.innerHTML='<span class="chip">WASD laufen</span><span class="chip">LEER ×2 = Doppelsprung</span><span class="chip">E = zuschlagen</span><span class="chip">💎 Kristalle sammeln</span>';}
 
 if(!window.THREE){document.body.innerHTML='<div style="display:flex;height:100vh;align-items:center;justify-content:center;text-align:center;color:#c8b8ff;font-weight:800">3D-Engine nicht geladen —<br>bitte neu laden ↻</div>';throw new Error("THREE fehlt");}
 var W=innerWidth,H=innerHeight;
@@ -162,6 +167,7 @@ for(var ti=0;ti<8;ti++){var ta=ti/8*Math.PI*2;torch(Math.cos(ta)*11,0,CHZ+Math.s
     var p=new THREE.Mesh(new THREE.CylinderGeometry(0.7,0.9,9,6),wallM);
     p.position.set(Math.cos(wa)*13,4.5,CHZ+Math.sin(wa)*13);scene.add(p);}})();
 
+var GEM_TOTAL=gems.length; /* nach allen gem()-Aufrufen */
 /* ---------- Spieler ---------- */
 var player=new THREE.Group();scene.add(player);
 (function(){var body=new THREE.Mesh(new THREE.CylinderGeometry(0.3,0.36,1.1,10),M(0x6ac8f0,0x2a6a99,0.55));
@@ -171,7 +177,7 @@ var player=new THREE.Group();scene.add(player);
   var head=new THREE.Mesh(new THREE.SphereGeometry(0.26,12,10),M(0xd8dcf0,0x555a80,0.35));head.position.y=1.5;player.add(head);
   var visor=new THREE.Mesh(new THREE.BoxGeometry(0.4,0.09,0.12),M(0x7de3ff,0x40b0ff,1));visor.position.set(0,1.52,-0.2);player.add(visor); /* ⚔️ Helm-Visier */
   var lt=new THREE.PointLight(0x9fd0ff,0.5,7);lt.position.y=1.6;player.add(lt);})();
-var px=0,py=0,pz=0,vy=0,onG=true,jumps=0,coyote=0,jBuf=0,ckpt=0,invT=0,gy=0;
+var px=0,py=0,pz=0,vy=0,onG=true,jumps=0,coyote=0,jBuf=0,ckpt=0,invT=0,gy=0,stepT=0;
 var hearts=4,gemN=0,stage=1,running=false,won=false,dead=false;
 var kx=0,kz=0; /* Eingabe */
 
@@ -207,20 +213,29 @@ vRing.rotation.x=-Math.PI/2;vRing.position.y=0.14;vRing.visible=false;scene.add(
 var vLight=new THREE.PointLight(0xc98bff,0,10);scene.add(vLight);
 
 /* ---------- Audio ---------- */
-var AC=null;function sfx(f,d,t,g,sl){try{if(!running)return;AC=AC||new (window.AudioContext||window.webkitAudioContext)();
+var AC=null,ndMaster=null,ndEcho=null;
+function bus(){if(ndMaster)return;
+  var cmp=AC.createDynamicsCompressor();cmp.threshold.value=-14;cmp.ratio.value=8;cmp.connect(AC.destination);ndMaster=cmp;
+  var send=AC.createGain();send.gain.value=0.35;
+  var dly=AC.createDelay(1);dly.delayTime.value=0.27;
+  var damp=AC.createBiquadFilter();damp.type="lowpass";damp.frequency.value=1600;
+  var fb=AC.createGain();fb.gain.value=0.34;
+  send.connect(dly);dly.connect(damp);damp.connect(fb);fb.connect(dly);damp.connect(ndMaster);
+  ndEcho=send;}
+function sfx(f,d,t,g,sl){try{if(!running)return;AC=AC||new (window.AudioContext||window.webkitAudioContext)();
   if(AC.state&&AC.state!=="running"&&AC.resume)AC.resume();
   var o=AC.createOscillator(),ga=AC.createGain();o.type=t||"triangle";o.frequency.value=f;d=d||0.1;
   if(sl)o.frequency.exponentialRampToValueAtTime(sl,AC.currentTime+d);
   ga.gain.setValueAtTime(0.0001,AC.currentTime);ga.gain.exponentialRampToValueAtTime(g||0.05,AC.currentTime+0.005);
   ga.gain.exponentialRampToValueAtTime(0.0001,AC.currentTime+d);
-  o.connect(ga);ga.connect(AC.destination);o.start();o.stop(AC.currentTime+d+0.02);}catch(e){}}
+  o.connect(ga);bus();ga.connect(ndMaster);ga.connect(ndEcho);o.start();o.stop(AC.currentTime+d+0.02);}catch(e){}}
 
 /* ---------- HUD ---------- */
 var annT=0;
 function announce(t,c){var a=document.getElementById("announce");a.textContent=t;a.style.color=c||"#ffd166";a.style.opacity=1;annT=2.4;}
 function hint(t,ms){var h=document.getElementById("hint");h.textContent=t;h.style.opacity=1;clearTimeout(h._t);h._t=setTimeout(function(){h.style.opacity=0;},ms||2800);}
 function updHud(){document.getElementById("hearts").textContent="❤️".repeat(Math.max(0,hearts))+"🖤".repeat(Math.max(0,4-hearts));
-  document.getElementById("gems").textContent="💎 "+gemN;
+  document.getElementById("gems").textContent="💎 "+gemN+"/"+(GEM_TOTAL||"?");
   document.getElementById("stageTag").textContent=bossOn?"🗿 KOLOSS-KAMMER":"🏰 Katakomben · Abschnitt "+stage+"/3";
   document.getElementById("bossBar").style.display=bossOn?"block":"none";
   document.getElementById("bossFill").style.width=Math.max(0,bossHp/6*100)+"%";
@@ -277,9 +292,11 @@ function groundAt(x,z,maxY){var best=-999;if(maxY==null)maxY=1e9;
 function snapCam(){camera.position.set(px,gy+(bossOn?7.5:6.2),pz+(bossOn?11:8.6));} /* Kamera springt beim Respawn mit (kein Weitflug-Lerp) */
 function respawn(){var c=checkpoints[ckpt];px=c.x;py=c.y+0.2;pz=c.z;vy=0;jumps=0;gy=py;snapCam();
   sfx(160,0.3,"sawtooth",0.06,60);announce("💫 Zurück zum Fackel-Halt","#9fd0ff");}
+var hbT=0;
 function damage(){if(dead||won)return;hearts--;invT=1.6;shakeT=Math.max(shakeT,0.35);updHud();sfx(120,0.2,"sawtooth",0.08,50);
   for(var qi=rings.length-1;qi>=0;qi--){scene.remove(rings[qi].m);rings[qi].m.geometry.dispose();rings[qi].m.material.dispose();}rings.length=0; /* keine Ketten-Treffer nach dem Rücksetzen */
   if(hearts<=0){dead=true;player.visible=true;announce("💀 Der Dungeon hat gewonnen …","#8a8a9a");
+    setTimeout(function(){sfx(330,0.3,"triangle",0.06,262);},250);setTimeout(function(){sfx(262,0.3,"triangle",0.06,208);},650);setTimeout(function(){sfx(196,0.5,"triangle",0.07,130);},1050);
     setTimeout(function(){finish(false);},1800);}
   else respawnBoss();}
 function respawnBoss(){px=0;pz=CHZ+9;py=0;vy=0;gy=0;snapCam();}
@@ -305,7 +322,7 @@ function finish(win){if(finish._done)return;finish._done=true;var score=gemN*4+M
   document.getElementById("startBtn").onclick=function(){if(STATION)stationPost("mini-back");else location.reload();};}
 
 function start(){document.getElementById("ov").style.display="none";running=true;
-  hint("🕹️ Laufen · ⤴ zweimal = Doppelsprung",3600);updHud();
+  hint(TOUCH?"🕹️ Laufen · ⤴ zweimal = Doppelsprung":"WASD laufen · LEER ×2 = Doppelsprung · E = zuschlagen",3600);updHud();
   setTimeout(function(){announce("🔥 Folge den Fackeln in die Tiefe!","#ffce8a");},900);
   try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();if(AC.state==="suspended")AC.resume();}catch(e){}}
 document.getElementById("startBtn").onclick=start;
@@ -336,6 +353,7 @@ function frame(now){requestAnimationFrame(frame);
     var il=Math.hypot(ix,iz);if(il>1){ix/=il;iz/=il;}
     var spd=6.2;px+=ix*spd*dt;pz+=iz*spd*dt;
     if(il>0.05)player.rotation.y=Math.atan2(ix,iz);
+    stepT-=dt*il;if(onG&&il>0.3&&stepT<=0){stepT=0.34;sfx(95+Math.random()*25,0.05,"sine",0.02);}
     if(bossOn){var bdx=px,bdz=pz-CHZ,bdl=Math.hypot(bdx,bdz);if(bdl>12){px=bdx/bdl*12;pz=CHZ+bdz/bdl*12;}} /* Arena hält dich im Kampf */
     /* Sprung-Physik: Coyote + Buffer + Doppelsprung */
     var g=groundAt(px,pz,py+1.2); /* nur Plattformen unter/kaum über den Füssen (kein Hochzuppen durch hohe Decks) */
@@ -357,10 +375,11 @@ function frame(now){requestAnimationFrame(frame);
     /* Kristalle */
     for(var g2=0;g2<gems.length;g2++){var gg=gems[g2];if(gg.got)continue;
       if(Math.hypot(px-gg.x,pz-gg.z)<1.1&&Math.abs(py+0.9-gg.m.position.y)<1.6){gg.got=true;gg.m.visible=false;gemN++;
+        if(gemN===GEM_TOTAL)announce("✨ ALLE KRISTALLE!","#c98bff");
         sfx(760,0.12,"triangle",0.05,1100);updHud();}}
     /* Boss-Kammer betreten */
     if(!bossOn&&!won&&pz<CHZ+12){bossOn=true;boss.visible=true;shakeT=0.5;bState="rise";boss.userData.eyeMat.emissiveIntensity=0;hitFx=1.2;
-      announce("🗿 DER KOLOSS ERWACHT","#ff8a5a");hint("Schockwellen ÜBERSPRINGEN · glühende Faust = ⚔️ zuschlagen!",4200);
+      announce("🗿 DER KOLOSS ERWACHT","#ff8a5a");hint(TOUCH?"Schockwellen ÜBERSPRINGEN · glühende Faust = ⚔️ zuschlagen!":"Schockwellen mit LEER überspringen · glühende Faust = E!",4200);
       sfx(60,1.2,"sawtooth",0.1,38);updHud();}
     /* Boss-Verhalten */
     if(bossOn&&!won){bT-=dt;
@@ -392,10 +411,11 @@ function frame(now){requestAnimationFrame(frame);
         var a=slamArm;a.userData.slamTgt=-1.35;
         a.userData.cry.material.emissiveIntensity=1;
         sfx(70,0.5,"sawtooth",0.1,45);hint("⚔️ JETZT die glühende Faust treffen!",4200);}
-      if(vulnT>0){vulnT-=dt;
+      if(vulnT>0){if(vulnT>1&&vulnT-dt<=1)sfx(700,0.05,"square",0.03);
+        vulnT-=dt;
         if(slamArm){slamArm.userData.cry.scale.setScalar(1+Math.sin(t*10)*0.25);
           slamArm.rotation.x+=((slamArm.userData.slamTgt||-1.35)-slamArm.rotation.x)*Math.min(1,dt*10);} /* Arm saust runter */
-        if(vulnT<=0&&slamArm){slamArm.userData.slamTgt=0;slamArm=null;}}
+        if(vulnT<=0&&slamArm){slamArm.userData.slamTgt=0;slamArm=null;sfx(500,0.25,"triangle",0.04,180);}}
       if(boss.userData.armL.rotation.x<-0.02&&boss.userData.armL!==slamArm)boss.userData.armL.rotation.x+=(0-boss.userData.armL.rotation.x)*Math.min(1,dt*5); /* Arme federn zurück */
       if(boss.userData.armR.rotation.x<-0.02&&boss.userData.armR!==slamArm)boss.userData.armR.rotation.x+=(0-boss.userData.armR.rotation.x)*Math.min(1,dt*5);
       if(bState==="stomp"){if(warnD)warnD.material.opacity=0.3+Math.sin(t*14)*0.25;boss.position.y+=(-0.4-boss.position.y)*Math.min(1,dt*8);} /* duckt sich vor dem Stampfer */
@@ -413,6 +433,7 @@ function frame(now){requestAnimationFrame(frame);
     }
     if(boss.userData.falling){boss.rotation.x+=dt*0.5;boss.position.y-=dt*1.4;}
     if(invT>0){invT-=dt;player.visible=invT<=0||Math.sin(t*30)>0;} /* 🛡️ kurze Unverwundbarkeit blinkt */
+    if(hearts===1&&!dead&&!won){hbT-=dt;if(hbT<=0){hbT=1.1;sfx(85,0.1,"sine",0.05);setTimeout(function(){sfx(70,0.12,"sine",0.045);},140);}}
     player.position.set(px,py,pz);
   }
   /* Kamera */
