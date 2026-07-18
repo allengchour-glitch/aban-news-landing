@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="aban-nav" content="off">
 <title>🏰 Neon Dungeon — Katakomben des Koloss | aban news</title>
 <meta name="description" content="Steig hinab in die Katakomben: Fackel-Parcours mit Doppelsprung, dann wartet der KOLOSS. Teil der Neon-Wildnis.">
@@ -74,13 +74,14 @@ if(STATION){var sb=document.getElementById("stationBack");sb.style.display="bloc
 
 if(!window.THREE){document.body.innerHTML='<div style="display:flex;height:100vh;align-items:center;justify-content:center;text-align:center;color:#c8b8ff;font-weight:800">3D-Engine nicht geladen —<br>bitte neu laden ↻</div>';throw new Error("THREE fehlt");}
 var W=innerWidth,H=innerHeight;
-var renderer=new THREE.WebGLRenderer({antialias:true});
-renderer.setPixelRatio(Math.min(devicePixelRatio,1.75));renderer.setSize(W,H);
+var DPR=Math.min(devicePixelRatio||1,1.5);
+var renderer=new THREE.WebGLRenderer({antialias:DPR<1.5});
+renderer.setPixelRatio(DPR);renderer.setSize(W,H);
 renderer.outputEncoding=THREE.sRGBEncoding;document.body.insertBefore(renderer.domElement,document.getElementById("hud"));
 renderer.domElement.addEventListener("webglcontextlost",function(e){e.preventDefault();},false);
 renderer.domElement.addEventListener("webglcontextrestored",function(){location.reload();},false);
 var scene=new THREE.Scene();scene.background=new THREE.Color(0x0a0812);scene.fog=new THREE.Fog(0x0a0812,26,84);
-var camera=new THREE.PerspectiveCamera(58,W/H,0.1,220);
+var camera=new THREE.PerspectiveCamera(58,W/H,0.1,90);
 addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);});
 scene.add(new THREE.HemisphereLight(0x5a4a8e,0x140c20,0.42));
 var amb=new THREE.AmbientLight(0x2a2244,0.3);scene.add(amb);
@@ -159,7 +160,7 @@ var player=new THREE.Group();scene.add(player);
   var head=new THREE.Mesh(new THREE.SphereGeometry(0.26,12,10),M(0xd8dcf0,0x555a80,0.35));head.position.y=1.5;player.add(head);
   var visor=new THREE.Mesh(new THREE.BoxGeometry(0.4,0.09,0.12),M(0x7de3ff,0x40b0ff,1));visor.position.set(0,1.52,-0.2);player.add(visor); /* ⚔️ Helm-Visier */
   var lt=new THREE.PointLight(0x9fd0ff,0.5,7);lt.position.y=1.6;player.add(lt);})();
-var px=0,py=0,pz=0,vy=0,onG=true,jumps=0,coyote=0,jBuf=0,ckpt=0,invT=0;
+var px=0,py=0,pz=0,vy=0,onG=true,jumps=0,coyote=0,jBuf=0,ckpt=0,invT=0,gy=0;
 var hearts=4,gemN=0,stage=1,running=false,won=false,dead=false;
 var kx=0,kz=0; /* Eingabe */
 
@@ -253,14 +254,14 @@ function groundAt(x,z,maxY){var best=-999;if(maxY==null)maxY=1e9;
   for(var i=0;i<plats.length;i++){var p=plats[i];
     if(p.y<=maxY&&Math.abs(x-p.x)<=p.w&&Math.abs(z-p.z)<=p.d&&p.y>best)best=p.y;}
   return best;}
-function respawn(){var c=checkpoints[ckpt];px=c.x;py=c.y+0.2;pz=c.z;vy=0;jumps=0;
+function respawn(){var c=checkpoints[ckpt];px=c.x;py=c.y+0.2;pz=c.z;vy=0;jumps=0;gy=py;
   sfx(160,0.3,"sawtooth",0.06,60);announce("💫 Zurück zum Fackel-Halt","#9fd0ff");}
 function damage(){if(dead||won)return;hearts--;invT=1.6;updHud();sfx(120,0.2,"sawtooth",0.08,50);
   for(var qi=rings.length-1;qi>=0;qi--){scene.remove(rings[qi].m);rings[qi].m.geometry.dispose();rings[qi].m.material.dispose();}rings.length=0; /* keine Ketten-Treffer nach dem Rücksetzen */
   if(hearts<=0){dead=true;player.visible=true;announce("💀 Der Dungeon hat gewonnen …","#8a8a9a");
     setTimeout(function(){finish(false);},1800);}
   else respawnBoss();}
-function respawnBoss(){px=0;pz=CHZ+9;py=0;vy=0;}
+function respawnBoss(){px=0;pz=CHZ+9;py=0;vy=0;gy=0;}
 function winGame(){if(won||dead)return;won=true;bossOn=false;
   announce("🏆 DER KOLOSS FÄLLT!","#ffd166");
   sfx(392,0.3,"triangle",0.07);setTimeout(function(){sfx(523,0.3,"triangle",0.07);},180);
@@ -317,7 +318,7 @@ function frame(now){requestAnimationFrame(frame);
       if(onG||coyote>0){vy=9.2;onG=false;coyote=0;jumps=1;jBuf=0;sfx(340,0.12,"square",0.04,520);}
       else if(jumps<2){var first=(jumps===0);vy=first?9.2:8.8;jumps=first?1:2;jBuf=0;sfx(first?340:430,0.12,"square",0.04,first?520:640);}} /* Kanten-Fall frisst den 1. Sprung nicht */
     var G=vy<-0.5?32:(Math.abs(vy)<2&&!onG?14:22);vy=Math.max(-16,vy-G*dt);py+=vy*dt; /* schneres Fallen, schwebender Apex */
-    if(g>-500&&py<=g&&vy<=0&&py>g-1.2){py=g;vy=0;if(!onG){sfx(150,0.06,"sine",0.03);}onG=true;jumps=0;}
+    if(g>-500&&py<=g&&vy<=0&&py>g-1.2){py=g;vy=0;if(!onG){sfx(150,0.06,"sine",0.03);}onG=true;jumps=0;gy=py;}
     else onG=false;
     if(py<-9){ /* Abgrund: im Parcours GRATIS zurück zum Fackel-Halt (fair!), nur beim Boss kostet es */
       if(bossOn)damage();else respawn();}
@@ -385,17 +386,18 @@ function frame(now){requestAnimationFrame(frame);
     player.position.set(px,py,pz);
   }
   /* Kamera */
-  var cy2=py+ (bossOn?7.5:6.2),cz2=pz+(bossOn?11:8.6);
+  if(py<gy-2.5)gy+=(py-gy)*Math.min(1,dt*4); /* Kamera folgt dem BODEN, nicht jedem Sprung (kein Pumpen) */
+  var cy2=gy+ (bossOn?7.5:6.2),cz2=pz+(bossOn?11:8.6);
   camera.position.x+=(px-camera.position.x)*Math.min(1,dt*5);
   camera.position.y+=(cy2-camera.position.y)*Math.min(1,dt*5);
   camera.position.z+=(cz2-camera.position.z)*Math.min(1,dt*5);
-  camera.lookAt(px,py+1.2,pz-2);
+  camera.lookAt(px,gy+1.2,pz-2);
   if(annT>0){annT-=dt;if(annT<=0)document.getElementById("announce").style.opacity=0;}
   renderer.render(scene,camera);}
 requestAnimationFrame(frame);
 updHud();
 window.__nd={state:function(){return {px:px,py:py,pz:pz,hearts:hearts,gems:gemN,bossOn:bossOn,bossHp:bossHp,won:won};},
-  tp:function(x,z){px=x;pz=z;py=groundAt(x,z,1e9)+0.2;vy=0;},boss:function(){px=0;pz=CHZ+10;py=0;}};
+  tp:function(x,z){px=x;pz=z;py=groundAt(x,z,1e9)+0.2;vy=0;gy=py;},boss:function(){px=0;pz=CHZ+10;py=0;gy=0;}};
 })();
 </script>
 </body>
