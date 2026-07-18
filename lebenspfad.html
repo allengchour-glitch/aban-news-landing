@@ -559,11 +559,11 @@ function terrainH(x,z){
   m.receiveShadow=true;scene.add(m);})();
 // ===================== Felder auf dem Pfad =====================
 // Feld-Typen: e=Ereignis, g+=Geld, g-=Kosten, h=Glück, w=Wissen, f=Freunde, m=Meilenstein (Kapitelende)
-var FTYPE_COL={e:0xffffff,"g+":0xffc21f,"g-":0xff4d4d,h:0xff5db8,w:0x2f7dff,f:0x1fd97a,m:0xff8c1f,q:0x8a5aff,x:0x1fc4c8,r:0xff7a2a};
+var FTYPE_COL={e:0xffffff,"g+":0xffc21f,"g-":0xff4d4d,h:0xff5db8,w:0x2f7dff,f:0x1fd97a,m:0xff8c1f,q:0x8a5aff,x:0x1fc4c8,r:0xff7a2a,z:0xd94fd0};
 var fields=[];
 (function(){
   var seq=["e","g+","e","h","e","w","g-","e","f","e","g+","e","h","e","w","g-","f"]; // 17 + Meilenstein
-  var TSPECIAL={4:"q",22:"q",47:"q",76:"q",115:"q",9:"x",58:"x",79:"x",133:"x",13:"r",65:"r",83:"r",121:"r"}; // ❓ Quiz · 🔄 Tausch · 🏁 Wettrennen (Pass B2)
+  var TSPECIAL={4:"q",22:"q",47:"q",76:"q",115:"q",9:"x",58:"x",79:"x",133:"x",13:"r",65:"r",83:"r",121:"r",7:"z",26:"z",41:"z",62:"z",85:"z",96:"z",118:"z",130:"z"}; // ❓ Quiz · 🔄 Tausch · 🏁 Wettrennen · 🎰 Glücksrad (1×/Kapitel)
   for(var i=0;i<NFIELDS;i++){
     var inChap=i%FIELDS_PER;
     var ty=(inChap===FIELDS_PER-1)?"m":seq[inChap%seq.length];
@@ -937,7 +937,7 @@ function emojiSprite(em,size){var cv=document.createElement("canvas");cv.width=c
   var cx=cv.getContext("2d");cx.font="192px serif";cx.textAlign="center";cx.textBaseline="middle";cx.fillText(em,128,142);
   var tx=crispTex(cv);var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:tx,transparent:true}));
   sp.scale.setScalar(size||1.4);return sp;}
-var FIELD_EMO={"g+":"💰","g-":"🧾",h:"❤️",w:"🧠",f:"👥",m:"⭐",q:"❓",x:"🔄",r:"🏁",e:"✨"};
+var FIELD_EMO={"g+":"💰","g-":"🧾",h:"❤️",w:"🧠",f:"👥",m:"⭐",q:"❓",x:"🔄",r:"🏁",e:"✨",z:"🎰"};
 // Grosses, von oben gut lesbares Icon auf JEDEM Feld (Bedeutung sofort klar); Farbe bleibt unterstützend.
 var fieldSprites=[];
 (function(){for(var i=0;i<fields.length;i++){var f=fields[i];if(!FIELD_EMO[f.type])continue;
@@ -1588,10 +1588,10 @@ function meetPickShow(asReply){var el=document.getElementById("meetPick"),row=do
   if(!el||!row)return;if(!asReply&&!myTurn())return; // wer dran ist wählt — der getroffene Partner darf EINMAL erwidern (asReply)
   window._lpMeetReply=!!asReply;
   row.innerHTML="";MEET_ACTS.forEach(function(a){var bt=document.createElement("button");
-    bt.textContent=a[0];bt.title=a[1];
-    bt.style.cssText="border:2px solid rgba(190,90,140,.35);background:#fff;border-radius:12px;width:46px;height:46px;font-size:1.35rem;cursor:pointer;line-height:1";
+    bt.innerHTML=a[0]+"<small style='display:block;font-size:.5rem;font-weight:800;color:#a05a80;line-height:1.1'>"+a[1]+"</small>";bt.title=a[1]; // 📱 Wort unterm Emoji (Tooltip gibt es mobil nicht)
+    bt.style.cssText="border:2px solid rgba(190,90,140,.35);background:#fff;border-radius:12px;width:52px;height:54px;font-size:1.25rem;cursor:pointer;line-height:1.15;padding:2px 0";
     bt.onclick=function(){meetDoChosen(a[2]);};row.appendChild(bt);});
-  el.classList.remove("hide");clearTimeout(el._t);el._t=setTimeout(function(){el.classList.add("hide");},7000);}
+  el.classList.remove("hide");clearTimeout(el._t);el._t=setTimeout(function(){el.classList.add("hide");},10000);}
 function meetDoChosen(kind){var m=window._lpMeet,el=document.getElementById("meetPick");if(el)el.classList.add("hide");
   if(!m)return;m.pairs.forEach(function(pr){meetTogether(pr.a,pr.b,m.x,m.z,kind);});
   if(NET.on&&(myTurn()||window._lpMeetReply)){netSend({t:"meetact",k:kind});window._lpMeetReply=false;}beep(660,.05,"triangle",.04);} // Partner sieht dieselbe Geste (auch die Erwiderung)
@@ -2191,7 +2191,7 @@ function updDiscBounce(dt){for(var i=discBounce.length-1;i>=0;i--){var db=discBo
 var FIELD_EXPLAIN={"g+":"💰 Geldfeld — hier gewinnst du Geld.","g-":"🧾 Rechnung — hier kostet das Leben etwas Geld.",
   h:"❤️ Glücksfeld — hier wächst dein Glück.",w:"🧠 Wissensfeld — hier lernst du dazu.",
   f:"👥 Freunde-Feld — hier triffst du nette Menschen.",q:"❓ Quiz — beantworte eine Frage und gewinne.",
-  x:"🔄 Tausch-Feld — hier wird getauscht!",r:"🏁 Wettrennen — sei schnell, dann lohnt es sich!",
+  x:"🔄 Tausch-Feld — hier wird getauscht!",r:"🏁 Wettrennen — sei schnell, dann lohnt es sich!",z:"🎰 Glücksrad — dreh am Rad des Lebens!",
   m:"⭐ Meilenstein — ein neues Lebenskapitel beginnt!",e:"✨ Ereignisfeld — das Leben hält eine Überraschung bereit."};
 var _explained=(function(){try{return JSON.parse(lsGet("lp_explained")||"{}")||{};}catch(e){return {};}})();
 function explainField(ty){if(!FIELD_EXPLAIN[ty]||_explained[ty])return;_explained[ty]=1;
@@ -4248,6 +4248,15 @@ function shortMileChain(p){ // ⚡ Kurz-Modus: das große Lebens-Kapitel — Hoc
   if(p.fam.partner&&!p.fam.askedK){p.fam.askedK=true;kidsCard(p,function(){shortMileChain(p);});return;}
   if(!(p.items&&p.items.haus)&&!p.fam.askedH){p.fam.askedH=true;hausCard(p,endTurnSoon);return;}
   endTurnSoon();}
+function glueckswheelCard(p){ // 🎰 Glücksrad des Lebens — deterministischer Lockstep-Draw, Rad nur Visualisierung (wie der Würfelwurf)
+  var n=1+((srand()*6)|0);
+  announce("🎰 GLÜCKSRAD!","#d94fd0");beep(660,.08,"triangle",.05);
+  showWheel(n,function(){
+    var R=[{t:"+4 💰",fx:{geld:4}},{t:"+3 ❤️",fx:{glueck:3}},{t:"+3 🧠",fx:{wissen:3}},{t:"+3 👥",fx:{freunde:3}},{t:"−2 💰 · kleines Pech",fx:{geld:-2}},{t:"JACKPOT! +2 auf ALLES",fx:{geld:2,glueck:2,wissen:2,freunde:2}}][n-1];
+    applyFx(p,R.fx);announce("🎰 "+R.t,n===6?"#ffe98a":(n===5?"#ff8a8a":"#e0a0ff"));
+    if(n===6){confetti(fields[p.tile].x,fields[p.tile].z,0xd94fd0,18);jingle();zoomPunch(0.16);buzz([50,40,90]);}
+    p.bio.push(n===6?"knackte den Jackpot am Glücksrad des Lebens":"drehte mutig am Glücksrad des Lebens");
+    endTurnSoon();});}
 var STAT_FLAVOR={ // 🍃 kleine Geschichten zu den Stat-Feldern (rein kosmetisch)
   h:["Ein Sonnenstrahl nur für dich.","Jemand hat heute an dich gedacht.","Der Tag riecht nach Sommer."],
   w:["Ein Buch, das alles ändert.","Ein Aha-Moment mitten im Alltag.","Plötzlich ergibt alles Sinn."],
@@ -4312,6 +4321,7 @@ function handleField(p,f){
     p.freunde+=fb; // 🐕 Hund bringt gelegentlich +1 👥
     announce((rf<0.1?"🌟 ":"")+"+"+fb+" 👥"+(dogB?" (🐕 wedelt!)":""),"#8affc0");floatStat("+"+fb+" 👥","#8affc0",f.x,f.z);emote(G.turn,"jubel");confetti(f.x,f.z,0x1fd97a,rf<0.1?15:8);
     beep(523,.14,"triangle",.05);setTimeout(function(){beep(523,.14,"triangle",.05);beep(659,.14,"triangle",.04);},140);endTurnSoon();return;}
+  if(f.type==="z"){glueckswheelCard(p);return;} // 🎰 Glücksrad
   if(f.type==="q"){quizCard(p);return;} // ❓ Quiz-Karte
   if(f.type==="x"){tauschCard(p);return;} // 🔄 Tausch-Event
   if(f.type==="r"){raceCard(p);return;} // 🏁 Wettrennen
