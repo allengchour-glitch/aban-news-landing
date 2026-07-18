@@ -1001,7 +1001,8 @@ function updWaveHud(){var el=document.getElementById("waveHud");if(!el)return;
   if(isNight&&(waveActive||monsters.length>0)){el.classList.remove("hide");
     var alive=0;for(var i=0;i<monsters.length;i++)if(!monsters[i].boss)alive++;
     var remain=(waveToSpawn-waveSpawned)+alive;
-    var ws="🌙 Welle "+waveNum+" · 👹 "+Math.max(0,remain);if(el.__last!==ws){el.__last=ws;el.textContent=ws;}}
+    var hasBoss=false;for(var bi2=0;bi2<monsters.length;bi2++)if(monsters[bi2].boss){hasBoss=true;break;}
+    var ws="🌙 Welle "+waveNum+" · 👹 "+Math.max(0,remain)+(hasBoss?" +👑":"");if(el.__last!==ws){el.__last=ws;el.textContent=ws;}}
   else el.classList.add("hide");}
 function updBossBar(){var boss=null;for(var i=0;i<monsters.length;i++)if(monsters[i].boss){boss=monsters[i];break;}
   var el=document.getElementById("bossBar");if(!el)return;
@@ -3790,8 +3791,18 @@ function updDayNight(dt){
     else{day++;waveActive=false;
       if(typeof gainXP==="function")gainXP(10+waveNum*4); // Welle überlebt -> XP-Bonus
       announce("☀️ Tag "+day+" — Welle "+waveNum+" überlebt! +"+(10+waveNum*4)+" XP");
-      // 🏆 Neuer Tages-Rekord? -> extra Belohnung (Sucht-Faktor)
-      try{var _bd=(loadBest()||{}).day||0;if(day>_bd&&_bd>0){setTimeout(function(){announce("🏆 NEUER REKORD — Tag "+day+"! 🌟","#ffd166");inv.crystal+=2;invUpd();},1600);}}catch(e){}
+      if(typeof heroAct==="function")heroAct("victory",1.0); /* 🌅 Dawn-Feier: Sieger-Pose (synct automatisch) */
+      setTimeout(function(){if(typeof sfxSeq==="function")sfxSeq([[523],[659],[784],[1046]]);},350);
+      setTimeout(function(){if(typeof ambChirp==="function")ambChirp();},600);setTimeout(function(){if(typeof ambChirp==="function")ambChirp();},950);
+      (function(){var df=document.getElementById("dawnFlash");
+        if(!df){df=document.createElement("div");df.id="dawnFlash";df.style.cssText="position:fixed;inset:0;pointer-events:none;z-index:44;opacity:0;background:radial-gradient(ellipse at center,rgba(255,230,150,0) 30%,rgba(255,210,110,.4) 100%)";document.body.appendChild(df);}
+        if(df.animate)df.animate([{opacity:0},{opacity:0.7},{opacity:0}],{duration:1100,easing:"ease-out"});})();
+      if(typeof burst==="function")burst(player.position.x,player.position.y+2,player.position.z,0xffe08a,16);
+      if(NET.on&&NET.remote&&NET.remote.visible&&!NET.remoteDowned&&Math.hypot(NET.remote.position.x-player.position.x,NET.remote.position.z-player.position.z)<10){
+        bondGain(2,true);setTimeout(function(){announce("🤝 Gemeinsam überlebt!","#7dffc8");},1200);}
+      try{if(day>(window._runRecDay||0)&&(window._runRecDay||0)>0){window._runRecDay=Infinity; /* 🏆 Rekord nur EINMAL pro Lauf feiern */
+        setTimeout(function(){announce("🏆 NEUER REKORD — Tag "+day+"! 🌟","#ffd166");inv.crystal+=3;invUpd();},1600);}}catch(e){}
+      setTimeout(function(){if(typeof npcs!=="undefined"&&npcs.length)announce("🎁 Die Dorfbewohner haben neue Geschenke für dich!","#8affb0");},5200);
       if(day%2===0){var _rs=0; /* 📦 alle 2 Tage: Truhen/Ruinen respawnen (Welt bleibt erkundenswert; Fässer/Kisten/Gruft NICHT) */
         for(var _li=0;_li<loots.length;_li++){var lt2=loots[_li];
           if((lt2.type==="chest"||lt2.type==="ruin")&&!lt2.bonus&&lt2.opened){lt2.opened=false;_rs++;
@@ -3806,9 +3817,9 @@ function updDayNight(dt){
   ambNight=isNight?1:(dayT<8?1-dayT/8:(f>0.85?(f-0.85)/0.15:0));dayAmt=1-ambNight; /* 🌗 weiche Kreaturen-Blende am Tag/Nacht-Flip */
   var t; // 0=tiefste Nacht,1=heller Tag
   var vig=document.getElementById("nightVig");
-  if(isNight){t=0.08;var rem=Math.ceil(NIGHTLEN-dayT);var lbl="🌙 Tag "+day+" · ☀️ in "+rem+"s ("+monsters.length+"👾)";document.getElementById("clock").textContent=lbl;
+  if(isNight){t=0.08;var rem=Math.ceil(NIGHTLEN-dayT);var lbl="🌙 Tag "+day+" · ☀️ in "+rem+"s";var _ck=document.getElementById("clock");_ck.textContent=lbl;_ck.style.color=""; /* Zähler wohnt im Wellen-HUD */
     if(vig)vig.style.opacity=(0.55+Math.sin(perfNow*0.004)*0.12).toFixed(2);}
-  else{t=0.72+Math.sin(f*Math.PI)*0.28;var ph=f<0.3?"🌅 Morgen":(f<0.7?"☀️ Mittag":"🌇 Abend");document.getElementById("clock").textContent="Tag "+day+" · "+ph; /* Morgen/Abend heller — wirkte fast wie Nacht (Polier-Pass) */
+  else{t=0.72+Math.sin(f*Math.PI)*0.28;var ph=f<0.3?"🌅 Morgen":(f<0.7?"☀️ Mittag":"🌇 Abend");var _ck2=document.getElementById("clock");var lbl2="Tag "+day+" · "+ph;if(f>0.7)lbl2+=" · 🌙 in "+Math.ceil(DAYLEN*(1-f))+"s";_ck2.textContent=lbl2;_ck2.style.color=(f>0.9)?"#ff8a7a":""; /* Abend-Countdown, rot kurz vor der Nacht */
     // Dämmerungs-Warnung kurz vor der Nacht
     if(vig)vig.style.opacity=(f>0.85?(f-0.85)/0.15*0.3:0).toFixed(2);
     if(f>0.9&&!duskWarned){duskWarned=true;announce("🌇 Die Dunkelheit naht — sichere deine Basis!");}
@@ -4538,7 +4549,7 @@ function netStartQuick(){ /* ⚡ 1-Tipp Schnell-Koop ohne Code (öffentlicher Ra
   // 🔗 Auto-Beitritt: ?coop=CODE -> direkt verbinden
   var m=location.search.match(/[?&]coop=([A-Za-z]{4})/);
   if(m){var code=m[1].toUpperCase();var tries=0,iv=setInterval(function(){tries++;
-    if(window.MP){clearInterval(iv);var ci=document.getElementById("coopCode");if(ci)ci.value=code;netStart("join",code);}
+    if(window.MP){clearInterval(iv);var ci=document.getElementById("coopCode");if(ci)ci.value=code;netStart("join",code);var cbx=document.getElementById("coopBox");if(cbx&&cbx.scrollIntoView)cbx.scrollIntoView({block:"center"});}
     else if(tries>40)clearInterval(iv);},250);}
   if(j)j.onclick=function(){if(running){coopStatusMsg("Koop bitte VOR dem Start — erst »Neue Welt starten«.");return;}var c=(document.getElementById("coopCode").value||"").toUpperCase().replace(/[^A-Z]/g,"");if(c.length!==4){coopStatusMsg("Code = 4 Buchstaben");return;}netStart("join",c);};
 })();
@@ -4592,15 +4603,16 @@ function startGame(fresh){
     tri.rotation.x=Math.PI;tri.position.y=2.9;tri.renderOrder=998;player.add(tri);
     worldProps.push({mesh:tri,float:true,base:2.9,ph:0,halo:null});}
   try{_AC=_AC||new (window.AudioContext||window.webkitAudioContext)();if(_AC.state!=="running")_AC.resume();}catch(e){} /* 🔊 Unlock in der Start-Geste */
+  try{window._runRecDay=(loadBest()||{}).day||0;}catch(e){window._runRecDay=0;} /* 🏆 Rekord-Snapshot pro Lauf */
   running=true;paused=false;xpUpd();updOnline();dailyReward();
   announce("🌅 Willkommen in der Wildnis!");
   /* 📖 W7: Einmalige Anfänger-Tipps beim allerersten Start (frisch, solo) — beantwortet „Regeln erklären für Anfänger" */
   if(!sv&&!NET.on&&!lsGet("nw_intro")){lsSet("nw_intro","1");
-    var _tips=["🕹️ Ziehe links den Joystick zum Laufen","⚔️ Rechts = Angriff · 🔨 = Bäume & Steine sammeln","💥 = Spezial-Skill · 💨 = Rolle zum Ausweichen","🌲 Sammle 10 Holz für das erste Ziel!"];
+    var _tips=["🕹️ Ziehe links den Joystick zum Laufen","🪓 Rechts = Bäume fällen & Kämpfen · 🔨 = Bauen","💥 = Spezial-Skill · 💨 = Rolle zum Ausweichen","🌲 Sammle 10 Holz für das erste Ziel!"];
     _tips.forEach(function(tp,ti){setTimeout(function(){if(running&&!dead&&!(ti===0&&window.__moved))announce(tp,"#bfe9ff");},4800+ti*2700);});
     var cb=document.createElement("div"); /* 🕹️ dezente Steuerungs-Leiste, verschwindet nach 12s */
     cb.style.cssText="position:absolute;left:50%;transform:translateX(-50%);bottom:calc(2px + env(safe-area-inset-bottom));z-index:4;background:rgba(10,20,40,.55);border:1px solid rgba(125,227,255,.35);border-radius:12px;padding:4px 12px;font-size:12px;font-weight:800;color:#bfe9ff;pointer-events:none;transition:opacity 1s;white-space:nowrap";
-    cb.textContent="🕹️ laufen · ⚔️ angreifen · 💨 rollen · 🔨 bauen";
+    cb.textContent="🕹️ laufen · 🪓 sammeln/kämpfen · 💨 rollen · 🔨 bauen";
     (document.getElementById("hud")||document.body).appendChild(cb);
     setTimeout(function(){cb.style.opacity=0;setTimeout(function(){if(cb.parentNode)cb.parentNode.removeChild(cb);},1200);},12000);}
 }
