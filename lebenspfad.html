@@ -2846,12 +2846,12 @@ function hildeAnswer(q){
 var camShake=0;
 // 🖐️ Karte frei schwenken (Drag/Swipe) + Pinch/Wheel-Zoom; beim Loslassen sanft zurück zum aktiven Spieler
 var panOff={x:0,z:0},panning=false,zoomK=1;
-(function(){var el=renderer.domElement,pts={},sx=0,sy=0,downX=0,downY=0,moved=false,startDist=0,startZoom=1;
+(function(){var el=renderer.domElement,pts={},sx=0,sy=0,downX=0,downY=0,moved=false,startDist=0,startZoom=1,hadTwo=false;
   el.style.touchAction="none";
   function list(){var a=[];for(var k in pts)a.push(pts[k]);return a;}
   el.addEventListener("pointerdown",function(e){pts[e.pointerId]={x:e.clientX,y:e.clientY};var a=list();
     if(a.length===1){downX=sx=e.clientX;downY=sy=e.clientY;moved=false;}
-    else if(a.length===2){startDist=Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y);startZoom=zoomK;}
+    else if(a.length===2){startDist=Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y);startZoom=zoomK;hadTwo=true;}
     try{el.setPointerCapture(e.pointerId);}catch(_){}});
   el.addEventListener("pointermove",function(e){if(!pts[e.pointerId])return;pts[e.pointerId]={x:e.clientX,y:e.clientY};
     var a=list();
@@ -2861,7 +2861,11 @@ var panOff={x:0,z:0},panning=false,zoomK=1;
     if(moved){panning=true;var f=(camera.position.y*1.7)/H; // Pixel -> Weltmeter (an Kamerahöhe gekoppelt)
       panOff.x=Math.max(-150,Math.min(150,panOff.x-dx*f));
       panOff.z=Math.max(-85,Math.min(85,panOff.z-dy*f));}});
-  function up(e){if(pts[e.pointerId])delete pts[e.pointerId];var a=list();if(a.length<2)startDist=0;if(a.length===0)panning=false;}
+  function up(e){if(pts[e.pointerId])delete pts[e.pointerId];var a=list();if(a.length<2)startDist=0;
+    if(a.length===0){panning=false;
+      if(!moved&&!hadTwo&&running&&G){var pp=G.players[G.turn]; // 👆 Tipp aufs Brett (kein Schwenk/Pinch) -> zeigt, wer dran ist
+        if(pp&&!pp.done)showHint((NET.on&&G.turn===NET.my)?"Du bist dran — 🎲 unten drehen!":"🎲 "+pp.name+" ist dran",1600);}
+      hadTwo=false;}}
   el.addEventListener("pointerup",up);el.addEventListener("pointercancel",up);el.addEventListener("lostpointercapture",up);
   el.addEventListener("wheel",function(e){e.preventDefault();zoomK=Math.max(0.6,Math.min(1.9,zoomK*(e.deltaY>0?1.08:0.93)));},{passive:false});
 })();
@@ -3295,7 +3299,7 @@ function chatBubble(idx,txt){try{
   c.fillStyle="#3a3040";c.textAlign="center";c.fillText(t,128,40);
   var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false}));
   sp.scale.set(3.2,1.05,1);sp.position.y=3.1;pawns[idx].add(sp);
-  setTimeout(function(){if(sp.parent)sp.parent.remove(sp);},7000);}catch(e){}} /* laenger lesbar (User: "leute koennen nicht so schnell lesen") */
+  setTimeout(function(){if(sp.parent)sp.parent.remove(sp);try{if(sp.material.map)sp.material.map.dispose();sp.material.dispose();}catch(e){}},7000);}catch(e){}} /* laenger lesbar; Textur+Material freigeben (kein GPU-Leak) */
 function chatAdd(n,x,idx){var box=document.getElementById("chatMsgs");if(!box)return;
   if(NET.on&&G&&running){var bi=(idx!=null&&idx>=0)?idx:NET.names.indexOf(n);if(bi>=0&&pawns[bi])chatBubble(bi,x);}
   var d=document.createElement("div");d.innerHTML="<b>"+String(n).slice(0,12).replace(/[<>&]/g,"")+":</b> "+String(x).slice(0,140).replace(/[<>&]/g,"");
