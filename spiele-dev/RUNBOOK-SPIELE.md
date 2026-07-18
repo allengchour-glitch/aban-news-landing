@@ -42,6 +42,10 @@
   (Meshy-Refine liefert ~300k Tris / 8+ MB → Ziel <500 KB)
 - `ffmpeg` (apt) — Audio-Transkodierung nach `/audio/` (112–128 kbps)
 
+## 🐍 Monster-Nachschub — Rezept (2026-07-18)
+- **Zuverlässigster Weg (kein Key, kein Download): PROZEDURALE Monster im Code.** Muster `build:fn` in der `MOBS`-Tabelle (neon-wildnis.html) → fn gibt eine `THREE.Group` zurück (flat-shaded, emissive für Neon-Look), Felder `dmg/role("charge"/"caster")/fly/undead`. Spawn-Pfad nutzt `M.build()` automatisch. Verifikation: `window.__nw.spawnMob("id",3,3)` + `__nw.simMon(0.5)`. 5 Beispiele live: schlange/auge/skorpion/qualle/schaedel.
+- **Download-Fallen (getestet, tot über Proxy):** poly.pizza = JS-gerendert + braucht API-Key (`/v1.1/model/<id>` → „need an API key"); Kenney *monster-builder-pack* = NUR 2D-Sprites (PNG), keine GLB; itch.io/GitHub = blockiert. Kenney-**3D**-Kits (nature/dungeon/etc.) gehen per Direkt-ZIP-URL (grep `/media/pages/assets/...zip` auf der Asset-Seite) → Blender-Polish.
+
 ## Assets & APIs
 - **Musik**: echte Tracks in `/audio/` (Zuordnung + CC-BY-Attribution siehe Spiele-Footer;
   Quellen `automation/music/` + CREDITS.txt). Muster: `MUS=new Audio(...)`, `musSync()`
