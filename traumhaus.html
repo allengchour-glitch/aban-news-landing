@@ -908,7 +908,7 @@ function updBrunnen(dt,now){var B=window._brunnen;if(!B)return;
   if((!MPs||mpHost)&&B.cd<=0){for(var q=0;q<sims.length;q++){var sq=sims[q];
     if(sq.mesh.visible&&Math.hypot(sq.x-B.x,sq.z-B.z)<3.4){B.cd=25;
       sims.forEach(function(s2){s2.needs.spass=Math.min(100,s2.needs.spass+14);});
-      if(typeof hearts==="function")hearts(B.x,B.z);simEmoji(sq,"✨");beep(720,.08,"sine",.04);hint("⛲ Erfrischung am Brunnen! +Laune");break;}}}}
+      if(typeof hearts==="function")hearts(B.x,B.z);simEmoji(sq,"✨");beep(720,.08,"sine",.04);hint("⛲ Erfrischung am Brunnen! +Laune");if(MPs)netSend({t:"brunnen",si:q});break;}}}}
 // ===================== Katalog =====================
 var GL=THREE.GLTFLoader?new THREE.GLTFLoader():null;
 var MODELS={};
@@ -1367,10 +1367,14 @@ function onNetMsg(m){
   else if(m.t==="chat")chatAdd(m.n,m.x);
   else if(m.t==="emote")onEmote(m.si,m.k);
   else if(m.t==="ping")onPing(m.x,m.z);
+  else if(m.t==="brunnen"&&!mpHost){var B9=window._brunnen;if(B9)hearts(B9.x,B9.z);if(sims[m.si])simEmoji(sims[m.si],"✨");beep(720,.08,"sine",.04);hint("⛲ Erfrischung am Brunnen! +Laune");}
   else if(m.t==="pickup"&&pickups[m.i]){pickups[m.i].active=m.on;pickups[m.i].mesh.visible=m.on;}
   else if(m.t==="hallo"&&mpHost){netSend({t:"state",sn:snapshot()});chatAdd("System",m.n+" baut jetzt mit!");}
   else if(m.t==="state"&&!mpHost){loadSnapshot(m.sn);startGame();}
   else if(m.t==="sims"&&!mpHost){m.a.forEach(function(sd,i){if(sims[i])sims[i].net=sd;});
+    var cm9=m.ca?((m.ca.vi>=0&&verkehr[m.ca.vi])?verkehr[m.ca.vi]:window.autoRec):null;
+    if(cm9&&cm9.mesh){cm9.mesh.visible=true;cm9.mesh.position.x=m.ca.x;cm9.mesh.position.z=m.ca.z;cm9.mesh.rotation.y=m.ca.r;}
+    if(!arbeiten&&sims[0]&&sims[0].mesh)sims[0].mesh.visible=!m.ca;
     if(m.np){
       while(npcs.length<m.np.length)spawnNpc(m.np[npcs.length].t);
       while(npcs.length>m.np.length){var rem=npcs.pop();scene.remove(rem.mesh);}
@@ -1379,8 +1383,8 @@ function onNetMsg(m){
       m.k.forEach(function(kd,i){if(kinder[i]){kinder[i].net=kd;if(kinder[i].baby!==kd.b){kinder[i].baby=kd.b;scene.remove(kinder[i].mesh);var nm2=mkKind(kd.b);nm2.position.set(kinder[i].x,0,kinder[i].z);scene.add(nm2);kinder[i].mesh=nm2;}}});}}
   else if(m.t==="uhr"&&!mpHost){uhrzeit=m.u;if(tag!==m.d){tag=m.d;applySaison();}}
   else if(m.t==="wetter"&&!mpHost)setWetter(m.w);
-  else if(m.t==="kochBoost"&&mpHost)kochApply(m.s);
-  else if(m.t==="tanzBoost"&&mpHost)tanzApply(m.s);
+  else if(m.t==="kochBoost"&&mpHost){if(m.s>=0.999)stats.kochPerfekt=(stats.kochPerfekt||0)+1;kochApply(m.s);}
+  else if(m.t==="tanzBoost"&&mpHost){if(m.s>=0.999)stats.tanzPerfekt=(stats.tanzPerfekt||0)+1;tanzApply(m.s);}
   else if(m.t==="quest"&&!mpHost)questIdx=m.i;
   else if(m.t==="teamq"&&!mpHost){teamIdx=m.i;}
   else if(m.t==="steer"&&mpHost){if(sims[1])sims[1].netSteer={x:m.x,z:m.z,t:performance.now()};}
@@ -1403,7 +1407,7 @@ function onNetMsg(m){
       netSend({t:"crimeJoin",j:jj});
     else netSend({t:"crimeNo"});}
   else if(m.t==="crimeJoin"){if(crime.ask){crime.ask=false;startCrime(m.j,true);}}
-  else if(m.t==="crimeNo"){if(crime.ask){crime.ask=false;startCrime(0,false);}}
+  else if(m.t==="crimeNo"){if(crime.ask){crime.ask=false;startCrime(crime.askJob||0,false);}}
   else if(m.t==="pi"){partnerAct(m.k,true,m.n);}
   else if(m.t==="crimeGo"){startCrime(m.j,m.a,true);}
   else if(m.t==="crimeEnd"&&!mpHost){crime.on=false;
@@ -1822,6 +1826,7 @@ function ensureNitroFx(){
 var driveKopf=null,driveHeck=null;
 function ensureDriveLights(){if(driveKopf)return;driveKopf=[mkLicht("w"),mkLicht("w")];driveHeck=[mkLicht("r"),mkLicht("r")];}
 function einsteigen(rec,geklaut){
+  if(MPs&&!mpHost){hint("\uD83D\uDE97 Nur der Host kann fahren \u2014 fahrt zusammen mit!");return;}
   var a=rec||window.autoRec;if(!a||fahren)return;
   fahren=true;driveCar=a;driveGeklaut=!!geklaut;
   if(a.state!==undefined)a.state="fahren";
@@ -1842,7 +1847,8 @@ function aussteigen(){
   sims[0].x=a.mesh.position.x+Math.cos(carRot)*1.6;sims[0].z=a.mesh.position.z-Math.sin(carRot)*1.6;
   sims[0].state="idle";sims[0].pose="stand";
   if(a===window.autoRec){a.state="parkt";
-    a.gx=Math.round(a.mesh.position.x/CS+GW/2-0.5);a.gy=Math.round(a.mesh.position.z/CS+GH/2-0.5);}
+    a.gx=Math.round(a.mesh.position.x/CS+GW/2-0.5);a.gy=Math.round(a.mesh.position.z/CS+GH/2-0.5);
+    a.homeX=cx(a.gx);a.homeZ=cz(a.gy);}
   else if(driveGeklaut&&a.route){ // geklautes Auto zurück in den Verkehr
     a.pos=a.route.axis==="x"?a.mesh.position.x:a.mesh.position.z;}
   // Pay'n'Spray: Auto auf dem eigenen Grundstück abstellen = umlackiert → Fahndung fällt
@@ -2006,6 +2012,7 @@ function startRomance(bett){
   [a,b].forEach(function(s,i){var g0=simGrid(s);
     var p=findPath(g0[0],g0[1],bett.gx,bett.gy);
     if(p){s.state="walk";s.path=p;s.target=null;s._rom=true;}});
+  if(!a._rom&&!b._rom)return; // niemand fand einen Weg — Bett nicht dauerhaft blockieren
   bett.busy=true;romPair=bett;romT=-1; // -1 = anlaufen
   netSend({t:"rom",a:0,b:1});}
 function romKuss(){
@@ -2210,7 +2217,7 @@ function updNpcs(dt,now){
 function updSim(s,si,dt,now){
   if(MPs&&!mpHost){ // Gast: Host-Positionen weich übernehmen
     if(s.net){s._netMoved=Math.hypot(s.net.x-s.x,s.net.z-s.z)>0.05;s.x+=(s.net.x-s.x)*Math.min(1,dt*8);s.z+=(s.net.z-s.z)*Math.min(1,dt*8);
-      s.rot=s.net.r;s.pose=s.net.p;if(s.net.e&&s.net.e!==s._lastE){simEmoji(s,s.net.e);s._lastE=s.net.e;}}}
+      s.rot=s.net.r;s.pose=s.net.p;if(s.net.nd)s.needs=s.net.nd;if(s.net.e&&s.net.e!==s._lastE){simEmoji(s,s.net.e);s._lastE=s.net.e;}}}
   else{
     if(s.state==="work")return;
     var sv9=steerVec(si);
@@ -2482,9 +2489,10 @@ function mgDraw(){
   c.fillStyle="#ffd166";c.fillRect(95,8,90,30);
   c.fillStyle="#6aff9e";c.fillRect(120,8,40,30);
   c.fillStyle="#e8443a";c.fillRect(Math.round(MG.pos*272),4,8,38);}
-function mgTick(){
+function mgTick(ts){
   if(!MG.on)return;
-  MG.pos+=MG.dir*MG.speed/60;
+  var dt9=1/60;if(ts!==undefined){if(MG.last)dt9=Math.min(0.05,(ts-MG.last)/1000);MG.last=ts;}
+  MG.pos+=MG.dir*MG.speed*dt9;
   if(MG.pos>=1){MG.pos=1;MG.dir=-1;}if(MG.pos<=0){MG.pos=0;MG.dir=1;}
   mgDraw();MG.raf=requestAnimationFrame(mgTick);}
 var TANZ={on:false,beat:0,t0:0,scores:[],raf:0,hitDone:false,TEMPO:850};
@@ -2667,7 +2675,7 @@ function mgStart(title,sub,cb){
   document.getElementById("mgSub").textContent=sub||"Stoppe den Zeiger im grünen Bereich";
   document.getElementById("mgScore").textContent="Runde 1/3";
   document.getElementById("mg").style.display="flex";
-  MG.pos=0;MG.dir=1;mgTick();}
+  MG.pos=0;MG.dir=1;MG.last=0;mgTick();}
 function mgStop(){
   if(!MG.on)return;
   var center=(MG.pos*272+4)/280;
@@ -2758,7 +2766,7 @@ document.getElementById("crimeBtn").onclick=function(){
   mgStart("🔓 Tresor knacken","Timing entscheidet über deine Coup-Chance!",function(avg){
     crime.mgBonus=avg*0.25-0.08; // -8% bis +17%
     hint(avg>=0.8?"🔓 Sauber geknackt — beste Chancen!":(avg>0.3?"🔧 Ganz ok …":"💥 Das war laut! Riskant …"));
-    if(MPs){netSend({t:"crimeAsk",j:ji,n:myName});hint("Warte auf Komplizen-Antwort … (10s)");
+    if(MPs){crime.askJob=ji;netSend({t:"crimeAsk",j:ji,n:myName});hint("Warte auf Komplizen-Antwort … (10s)");
       crime.ask=true;setTimeout(function(){if(crime.ask){crime.ask=false;startCrime(ji,false);}},10000);}
     else startCrime(ji,false);});};
 document.getElementById("delBtn").onclick=function(){delMode=!delMode;curItem=delMode?null:curItem;
@@ -2916,7 +2924,7 @@ function loop(now){
       if(steerNetT<=0){steerNetT=0.09;var act9=steerActive();
         if(act9||steerWasActive){netFast({t:"steer",x:act9?steer.x:0,z:act9?steer.z:0});steerWasActive=act9;}}}
     simTick+=dt;if(simTick>0.35){simTick=0;updHUD();if(!MPs||mpHost){checkAch();checkQuest();checkTeamQ();}
-      if(MPs&&mpHost)netFast({t:"sims",a:sims.map(function(s){return {x:s.x,z:s.z,r:s.rot,p:s.pose};}),k:kinder.map(function(k){return {x:k.x,z:k.z,r:k.rot,b:k.baby,n:k.name};}),np:npcs.map(function(n){return {t:n.typ,x:n.x,z:n.z,r:n.rot};})});
+      if(MPs&&mpHost)netFast({t:"sims",ca:(fahren&&driveCar?{x:driveCar.mesh.position.x,z:driveCar.mesh.position.z,r:carRot,vi:verkehr.indexOf(driveCar)}:null),a:sims.map(function(s){return {x:s.x,z:s.z,r:s.rot,p:s.pose,nd:s.needs};}),k:kinder.map(function(k){return {x:k.x,z:k.z,r:k.rot,b:k.baby,n:k.name};}),np:npcs.map(function(n){return {t:n.typ,x:n.x,z:n.z,r:n.rot};})});
       if(MPs&&mpHost){netTick++;if(netTick%8===0){netSend({t:"uhr",u:uhrzeit,d:tag});
         netSend({t:"love",v:liebe,ve:verlobt,he:verheiratet,sk:skills,ar:arbeiten,st:stats,ac:achDone});
         var wa9=furn.filter(function(f9){return f9.grow||f9.beet;}).map(function(f9){return {fid:f9.fid,w:f9.wachs||0};});
