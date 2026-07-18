@@ -169,7 +169,7 @@ var boss=new THREE.Group(),bossHp=6,bossOn=false,bossPh=0;
 (function(){var rock=M(0x4a4258,0x1a1428,0.15);
   var torso=new THREE.Mesh(new THREE.BoxGeometry(3.2,3.4,2.2),rock);torso.position.y=4.4;boss.add(torso);
   var head=new THREE.Mesh(new THREE.BoxGeometry(1.5,1.3,1.4),rock);head.position.y=6.9;boss.add(head);
-  var eye1=new THREE.Mesh(new THREE.SphereGeometry(0.16,8,6),M(0xff4020,0xff2000,1));eye1.position.set(-0.35,6.95,0.72);boss.add(eye1);
+  var eye1=new THREE.Mesh(new THREE.SphereGeometry(0.16,8,6),M(0xff4020,0xff2000,1));eye1.position.set(-0.35,6.95,0.72);boss.add(eye1);boss.userData.eyeMat=eye1.material; /* clone teilt das Material -> beide Augen faden gemeinsam */
   var eye2=eye1.clone();eye2.position.x=0.35;boss.add(eye2);
   for(var cr2=0;cr2<5;cr2++){var crk=new THREE.Mesh(new THREE.BoxGeometry(0.1,0.7+Math.random()*0.9,0.08),M(0xff6a30,0xff5020,1)); /* 🔥 glühende Risse */
     crk.position.set((Math.random()-0.5)*2.6,3.6+Math.random()*2.6,1.12);crk.rotation.z=(Math.random()-0.5)*0.9;boss.add(crk);}
@@ -183,7 +183,7 @@ var boss=new THREE.Group(),bossHp=6,bossOn=false,bossPh=0;
     a.position.set(sx,5.6,0);a.userData.fist=fist;a.userData.cry=cry;return a;}
   boss.userData.armL=arm(-2.35);boss.userData.armR=arm(2.35);
   boss.add(boss.userData.armL);boss.add(boss.userData.armR);
-  boss.position.set(0,0,CHZ-4);boss.visible=false;scene.add(boss);})();
+  boss.position.set(0,-8,CHZ-4);boss.visible=false;scene.add(boss);})(); /* startet unterirdisch -> Rise-Inszenierung */
 var rings=[],bState="idle",bT=2.5,slamArm=null,vulnT=0,hitFx=0,warnD=null,_fw=new THREE.Vector3(),shakeT=0;
 var _debris=[];(function(){var dm=M(0x4a4258,0x2a2038,0.4);
   for(var di=0;di<12;di++){var b2=new THREE.Mesh(new THREE.BoxGeometry(0.22,0.22,0.22),dm);b2.visible=false;scene.add(b2);
@@ -239,8 +239,11 @@ function doHit(){if(!bossOn||dead||won)return;
     if(Math.hypot(wp.x-px,wp.z-pz)<4.0){bossHp--;vulnT=0;hitFx=0.5;shakeT=0.25;
       slamArm.userData.cry.material.emissiveIntensity=0.2;slamArm.userData.cry.scale.setScalar(1);slamArm.userData.slamTgt=0;slamArm=null; /* Arm federt zurück statt einzufrieren */
       sfx(180,0.25,"sawtooth",0.09,60);sfx(880,0.15,"square",0.05,1400);announce("💥 TREFFER!","#c98bff");
+      var hh=document.getElementById("hint");clearTimeout(hh._t);hh.style.opacity=0;
       if(bossHp===3){bossPh=1;announce("😡 DER KOLOSS RAST!","#ff5a5a");}
       if(bossHp<=0)winGame();updHud();return;}}
+  if(vulnT>0&&slamArm)hint("Näher an die glühende Faust ran!",2000);
+  else if(!window.__hintVuln){window.__hintVuln=1;hint("⏳ Warte, bis ein Faust-Kristall violett aufglüht!",2600);}
   sfx(220,0.08,"square",0.03);}
 document.getElementById("bJump").addEventListener("touchstart",function(e){e.preventDefault();doJump();},{passive:false});
 document.getElementById("bJump").addEventListener("touchend",endJump);
@@ -343,13 +346,16 @@ function frame(now){requestAnimationFrame(frame);
       if(Math.hypot(px-gg.x,pz-gg.z)<1.1&&Math.abs(py+0.9-gg.m.position.y)<1.6){gg.got=true;gg.m.visible=false;gemN++;
         sfx(760,0.12,"triangle",0.05,1100);updHud();}}
     /* Boss-Kammer betreten */
-    if(!bossOn&&!won&&pz<CHZ+12){bossOn=true;boss.visible=true;shakeT=0.5;
+    if(!bossOn&&!won&&pz<CHZ+12){bossOn=true;boss.visible=true;shakeT=0.5;bState="rise";boss.userData.eyeMat.emissiveIntensity=0;hitFx=1.2;
       announce("🗿 DER KOLOSS ERWACHT","#ff8a5a");hint("Schockwellen ÜBERSPRINGEN · glühende Faust = ⚔️ zuschlagen!",4200);
       sfx(60,1.2,"sawtooth",0.1,38);updHud();}
     /* Boss-Verhalten */
     if(bossOn&&!won){bT-=dt;
       boss.rotation.y=Math.atan2(px-boss.position.x,pz-boss.position.z);
-      if(bState==="idle"&&bT<=0){
+      if(bState==="rise"){boss.position.y=Math.min(0,boss.position.y+dt*6); /* 🗿 der Koloss ERHEBT sich aus dem Boden */
+        boss.userData.eyeMat.emissiveIntensity=Math.min(1,boss.userData.eyeMat.emissiveIntensity+dt*0.8);
+        if(boss.position.y>=0){boss.position.y=0;boss.userData.eyeMat.emissiveIntensity=1;bState="idle";bT=2.0;}}
+      else if(bState==="idle"&&bT<=0){
         if(vulnT<=0&&(bossPh===0?Math.random()<0.65:Math.random()<0.5)){bState="stomp";bT=0.7;
           warnD=new THREE.Mesh(new THREE.RingGeometry(1.6,2.2,32),new THREE.MeshBasicMaterial({color:0xff8a3a,transparent:true,opacity:0.5,side:THREE.DoubleSide,depthWrite:false}));
           warnD.rotation.x=-Math.PI/2;warnD.position.set(boss.position.x,0.10,boss.position.z);scene.add(warnD); /* 🔶 Stampf-Telegraph */
@@ -372,7 +378,7 @@ function frame(now){requestAnimationFrame(frame);
         vulnT=4.2;bState="idle";bT=5.0; /* langes Fenster zum Zuschlagen */
         var a=slamArm;a.userData.slamTgt=-1.35;
         a.userData.cry.material.emissiveIntensity=1;
-        sfx(70,0.5,"sawtooth",0.1,45);hint("⚔️ JETZT die glühende Faust treffen!",2200);}
+        sfx(70,0.5,"sawtooth",0.1,45);hint("⚔️ JETZT die glühende Faust treffen!",4200);}
       if(vulnT>0){vulnT-=dt;
         if(slamArm){slamArm.userData.cry.scale.setScalar(1+Math.sin(t*10)*0.25);
           slamArm.rotation.x+=((slamArm.userData.slamTgt||-1.35)-slamArm.rotation.x)*Math.min(1,dt*10);} /* Arm saust runter */
