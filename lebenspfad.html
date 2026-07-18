@@ -1969,7 +1969,8 @@ function updChapter(){
     var s=document.createElement("small");s.textContent="Runde "+G.round;tt.appendChild(s);})();
   var gt=document.getElementById("goalTag");
   if(gt){if(G.goal){var mine=G.players[G.turn],cur=mine[G.goal.k]||0,ok=cur>=G.goal.n;
-    gt.style.display="block";gt.innerHTML=(ok?"✅ ":"🎯 ")+"Rundenziel: "+G.goal.ic+" "+cur+"/"+G.goal.n;}else gt.style.display="none";}
+    var team=(G.players.length>1)?" · Team "+G.players.filter(goalMet).length+"/"+G.players.length+" ✅":"";
+    gt.style.display="block";gt.innerHTML=(ok?"✅ ":"🎯 ")+"Rundenziel: "+G.goal.ic+" "+cur+"/"+G.goal.n+team;}else gt.style.display="none";}
   // Himmel weich zur Kapitel-Farbe
   window._skyTarget=new THREE.Color(c.sky);
   // 🎵 + 📷 Kapitelwechsel: Lebensphasen-Stinger + Erinnerungs-Foto (nicht beim allerersten Setzen)
@@ -2271,7 +2272,7 @@ function playerDeath(p,how){
   var allDone=G.players.every(function(x){return x.done;});
   setTimeout(function(){if(allDone)showEnd();else nextTurn();},2600);
 }
-function lifeScore(p){return p.geld+p.glueck*2+p.wissen*2+p.freunde*2;}
+function lifeScore(p){return p.geld+p.glueck*2+p.wissen*2+p.freunde*2+(goalMet(p)?12:0);}
 function showEnd(){
   running=false;lsDel(SAVE_KEY);
   // 🔊 Batch 7/7: Loop ausblenden, damit die Siegesfanfare frei steht
@@ -2281,7 +2282,8 @@ function showEnd(){
   var rmb=document.getElementById("rematchBtn");
   if(rmb)rmb.style.display=(NET.on&&NET.host)?"inline-block":"none"; // nur der Gastgeber startet die neue Runde
   var nb=document.getElementById("newBtn");if(nb)nb.textContent=NET.on?"Zurück ins Menü ▶":"Neues Leben ▶";
-  jingle();setTimeout(jingle,500);
+  (function(){var notes=[523,659,784,1047,1319];notes.forEach(function(f,i){setTimeout(function(){beep(f,.18,"triangle",.06);},i*130);});
+    setTimeout(function(){beep(1047,.42,"triangle",.055);beep(1568,.42,"sine",.03);},720);})(); // 🎺 aufsteigende Finale-Fanfare
   var fz=fields[NFIELDS-1];
   for(var cr=0;cr<5;cr++)setTimeout(function(){confetti(fz.x+(Math.random()-0.5)*8,fz.z+(Math.random()-0.5)*8,0xffd166);},cr*280);
   var sc=document.getElementById("scores");sc.innerHTML="";
@@ -2303,6 +2305,9 @@ function showEnd(){
   saveStats();
   G.players.forEach(function(p){ACHIEVEMENTS.forEach(function(a){if(a.cond&&a.cond(p))unlockAch(a.id);});});
   if(newRec)setTimeout(function(){announce("🎉 NEUER REKORD! "+topR.s+" Punkte","#ffd166");},900);
+  (function(){var reached=G.players.filter(goalMet);if(!reached.length)return; // 🎯 Rundenziel-Erfolg feiern (+12 Bonus je Spieler)
+    setTimeout(function(){announce(reached.length>1?"🎯 Ziel erreicht — "+reached.length+" Spieler!":"🎯 Rundenziel erreicht!","#7ad9a0");
+      for(var c=0;c<4;c++)setTimeout(function(){confetti(fz.x+(Math.random()-0.5)*10,fz.z+(Math.random()-0.5)*10,0x7ad9a0);},c*220);},1700);})();
   ranked.forEach(function(r,rank){var p=r.p;
     var d=document.createElement("div");d.className="score"+(rank===0?" win":"");
     var badge=rank<3?MEDAL[rank]:(rank+1)+".";
@@ -3842,6 +3847,7 @@ function begin(saved){
   announce(saved?"Willkommen zurück auf dem Pfad!":"DAS LEBEN BEGINNT","#ffd166");
   if(!saved&&!NET.on&&!lsGet("lp_tut_seen"))setTimeout(function(){showTutorial(0);},900); /* ❓ erstes Spiel: kurzes Anfaenger-Tutorial */
   if(!saved)showHint(G.players.length>1?"Reihum würfeln — trefft ihr euch auf einem Feld, gibt es eine Begegnung! 💫":"Würfle mit LEER oder dem Knopf!",4200);
+  if(!saved&&G.goal)setTimeout(function(){announce("🎯 Ziel: "+G.goal.ic+" "+G.goal.n,"#7ad9a0");},2400); // Rundenziel zu Beginn zeigen (+12 Bonus)
 }
 var menuOpen=false;
 function renderMenu(){
