@@ -25,13 +25,13 @@ if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.repl
   #bossBar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#ff5a5a,#ff9a3a);transition:width .25s}
   #announce{position:absolute;top:26%;left:0;right:0;text-align:center;font-weight:900;font-size:1.7rem;color:#ffd166;
     text-shadow:0 2px 0 #000,0 4px 16px rgba(0,0,0,.7);opacity:0;transition:opacity .35s;pointer-events:none;padding:0 14px}
-  #hint{position:absolute;bottom:calc(178px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);background:rgba(20,14,40,.75);
+  #hint{position:absolute;bottom:calc(196px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);background:rgba(20,14,40,.75);
     border-radius:12px;padding:5px 14px;font-weight:800;font-size:.85rem;color:#cfc0ff;opacity:0;transition:opacity .3s;white-space:nowrap;max-width:94vw;overflow:hidden;text-overflow:ellipsis}
   .btn{position:absolute;pointer-events:auto;border-radius:50%;display:flex;align-items:center;justify-content:center;
     font-size:1.6rem;font-weight:900;border:3px solid;background:rgba(24,16,50,.55);backdrop-filter:blur(3px);cursor:pointer}
   .btn:active{transform:scale(.9);filter:brightness(1.4)}
   #bJump{right:calc(24px + env(safe-area-inset-right));bottom:calc(40px + env(safe-area-inset-bottom));width:76px;height:76px;border-color:#7de3ff;color:#dff}
-  #bHit{right:calc(112px + env(safe-area-inset-right));bottom:calc(112px + env(safe-area-inset-bottom));width:64px;height:64px;border-color:#ff8a5a;color:#ffe}
+  #bHit{right:calc(116px + env(safe-area-inset-right));bottom:calc(112px + env(safe-area-inset-bottom));width:76px;height:76px;border-color:#ff8a5a;color:#ffe}
   #stick{position:absolute;left:calc(22px + env(safe-area-inset-left));bottom:calc(34px + env(safe-area-inset-bottom));width:120px;height:120px;
     border-radius:50%;border:2px solid rgba(160,140,255,.35);background:rgba(30,22,60,.35);pointer-events:auto}
   #knob{position:absolute;left:50%;top:50%;width:52px;height:52px;border-radius:50%;background:rgba(180,160,255,.5);transform:translate(-50%,-50%)}
@@ -180,7 +180,10 @@ var boss=new THREE.Group(),bossHp=6,bossOn=false,bossPh=0;
   boss.userData.armL=arm(-2.35);boss.userData.armR=arm(2.35);
   boss.add(boss.userData.armL);boss.add(boss.userData.armR);
   boss.position.set(0,0,CHZ-4);boss.visible=false;scene.add(boss);})();
-var rings=[],bState="idle",bT=2.5,slamArm=null,vulnT=0,hitFx=0;
+var rings=[],bState="idle",bT=2.5,slamArm=null,vulnT=0,hitFx=0,warnD=null,_fw=new THREE.Vector3();
+var vRing=new THREE.Mesh(new THREE.RingGeometry(3.4,4.0,36),new THREE.MeshBasicMaterial({color:0xc98bff,transparent:true,opacity:0.6,side:THREE.DoubleSide,depthWrite:false}));
+vRing.rotation.x=-Math.PI/2;vRing.position.y=0.14;vRing.visible=false;scene.add(vRing); /* 💜 zeigt die Schlag-Zone am Kristall */
+var vLight=new THREE.PointLight(0xc98bff,0,10);scene.add(vLight);
 
 /* ---------- Audio ---------- */
 var AC=null;function sfx(f,d,t,g,sl){try{if(!running)return;AC=AC||new (window.AudioContext||window.webkitAudioContext)();
@@ -218,7 +221,7 @@ function doJump(){jBuf=0.12;jHeld=true;}
 function endJump(){jHeld=false;if(vy>3.5)vy=3.5;} /* Loslassen kappt den Sprung -> kurze/hohe Sprünge */
 function doHit(){if(!bossOn)return;
   if(vulnT>0&&slamArm){var f=slamArm.userData.fist,wp=new THREE.Vector3();f.getWorldPosition(wp);
-    if(Math.hypot(wp.x-px,wp.z-pz)<3.2){bossHp--;vulnT=0;hitFx=0.5;
+    if(Math.hypot(wp.x-px,wp.z-pz)<4.0){bossHp--;vulnT=0;hitFx=0.5;
       slamArm.userData.cry.material.emissiveIntensity=0.2;slamArm.userData.cry.scale.setScalar(1);slamArm.userData.slamTgt=0;slamArm=null; /* Arm federt zurück statt einzufrieren */
       sfx(180,0.25,"sawtooth",0.09,60);sfx(880,0.15,"square",0.05,1400);announce("💥 TREFFER!","#c98bff");
       if(bossHp===3){bossPh=1;announce("😡 DER KOLOSS RAST!","#ff5a5a");}
@@ -329,6 +332,8 @@ function frame(now){requestAnimationFrame(frame);
       boss.rotation.y=Math.atan2(px-boss.position.x,pz-boss.position.z);
       if(bState==="idle"&&bT<=0){
         if(vulnT<=0&&(bossPh===0?Math.random()<0.65:Math.random()<0.5)){bState="stomp";bT=0.7;
+          warnD=new THREE.Mesh(new THREE.RingGeometry(1.6,2.2,32),new THREE.MeshBasicMaterial({color:0xff8a3a,transparent:true,opacity:0.5,side:THREE.DoubleSide,depthWrite:false}));
+          warnD.rotation.x=-Math.PI/2;warnD.position.set(boss.position.x,0.10,boss.position.z);scene.add(warnD); /* 🔶 Stampf-Telegraph */
           sfx(90,0.6,"sawtooth",0.06,50);}
         else{bState="slam";bT=0.9;slamArm=Math.random()<0.5?boss.userData.armL:boss.userData.armR;
           sfx(200,0.8,"sine",0.05,80);}}
@@ -340,6 +345,7 @@ function frame(now){requestAnimationFrame(frame);
           var rg2=new THREE.Mesh(new THREE.RingGeometry(0.6,1.15,40),new THREE.MeshBasicMaterial({color:0xff5a5a,transparent:true,opacity:0.85,side:THREE.DoubleSide,depthWrite:false}));
           rg2.rotation.x=-Math.PI/2;rg2.position.set(boss.position.x,0.12,boss.position.z);scene.add(rg2);
           rings.push({m:rg2,r:1,hit:false});sfx(65,0.35,"square",0.09,45);},420);}
+        if(warnD){scene.remove(warnD);warnD.geometry.dispose();warnD.material.dispose();warnD=null;}
         boss.position.y=0.5;setTimeout(function(){boss.position.y=0;},120);
         bState="idle";bT=bossPh===1?1.5:2.4;}
       else if(bState==="slam"&&bT<=0){ /* Faust-Slam -> Kristall verwundbar */
@@ -353,6 +359,11 @@ function frame(now){requestAnimationFrame(frame);
         if(vulnT<=0&&slamArm){slamArm.userData.slamTgt=0;slamArm=null;}}
       if(boss.userData.armL.rotation.x<-0.02&&boss.userData.armL!==slamArm)boss.userData.armL.rotation.x+=(0-boss.userData.armL.rotation.x)*Math.min(1,dt*5); /* Arme federn zurück */
       if(boss.userData.armR.rotation.x<-0.02&&boss.userData.armR!==slamArm)boss.userData.armR.rotation.x+=(0-boss.userData.armR.rotation.x)*Math.min(1,dt*5);
+      if(bState==="stomp"){if(warnD)warnD.material.opacity=0.3+Math.sin(t*14)*0.25;boss.position.y+=(-0.4-boss.position.y)*Math.min(1,dt*8);} /* duckt sich vor dem Stampfer */
+      if(vulnT>0&&slamArm){slamArm.userData.fist.getWorldPosition(_fw);
+        vRing.visible=true;vRing.position.set(_fw.x,0.14,_fw.z);vRing.material.opacity=0.35+0.3*Math.abs(Math.sin(t*6));
+        vLight.position.set(_fw.x,1.2,_fw.z);vLight.intensity+=(0.9-vLight.intensity)*Math.min(1,dt*6);}
+      else{vRing.visible=false;vLight.intensity+=(0-vLight.intensity)*Math.min(1,dt*6);}
       if(hitFx>0){hitFx-=dt;boss.position.x=Math.sin(t*60)*0.12*hitFx;}
       /* Ringe expandieren + treffen */
       for(var ri=rings.length-1;ri>=0;ri--){var rr=rings[ri];rr.r+=dt*(bossPh===1?7:5.5);
