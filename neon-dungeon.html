@@ -213,7 +213,9 @@ function updHud(){document.getElementById("hearts").textContent="❤️".repeat(
   function end(e){for(var i=0;i<e.changedTouches.length;i++){if(e.changedTouches[i].identifier===id){id=null;kx=0;kz=0;
     knob.style.transform="translate(-50%,-50%)";}}}
   addEventListener("touchend",end);addEventListener("touchcancel",end);})();
-function doJump(){jBuf=0.12;}
+var jHeld=false;
+function doJump(){jBuf=0.12;jHeld=true;}
+function endJump(){jHeld=false;if(vy>3.5)vy=3.5;} /* Loslassen kappt den Sprung -> kurze/hohe Sprünge */
 function doHit(){if(!bossOn)return;
   if(vulnT>0&&slamArm){var f=slamArm.userData.fist,wp=new THREE.Vector3();f.getWorldPosition(wp);
     if(Math.hypot(wp.x-px,wp.z-pz)<3.2){bossHp--;vulnT=0;hitFx=0.5;
@@ -223,6 +225,9 @@ function doHit(){if(!bossOn)return;
       if(bossHp<=0)winGame();updHud();return;}}
   sfx(220,0.08,"square",0.03);}
 document.getElementById("bJump").addEventListener("touchstart",function(e){e.preventDefault();doJump();},{passive:false});
+document.getElementById("bJump").addEventListener("touchend",endJump);
+document.getElementById("bJump").addEventListener("touchcancel",endJump);
+document.getElementById("bJump").addEventListener("mouseup",endJump);
 document.getElementById("bJump").addEventListener("click",doJump);
 document.getElementById("bHit").addEventListener("touchstart",function(e){e.preventDefault();doHit();},{passive:false});
 document.getElementById("bHit").addEventListener("click",doHit);
@@ -230,7 +235,7 @@ var keys={};
 addEventListener("keydown",function(e){keys[e.key.toLowerCase()]=1;
   if(e.key===" "){e.preventDefault();if(!running){start();return;}doJump();}
   if(e.key.toLowerCase()==="e")doHit();});
-addEventListener("keyup",function(e){keys[e.key.toLowerCase()]=0;});
+addEventListener("keyup",function(e){keys[e.key.toLowerCase()]=0;if(e.key===" ")endJump();});
 
 /* ---------- Spiel-Logik ---------- */
 function groundAt(x,z,maxY){var best=-999;if(maxY==null)maxY=1e9;
@@ -299,9 +304,8 @@ function frame(now){requestAnimationFrame(frame);
     if(onG)coyote=0.18;else coyote-=dt; /* grosszügige Coyote-Zeit */
     if(jBuf>0){jBuf-=dt;
       if(onG||coyote>0){vy=9.2;onG=false;coyote=0;jumps=1;jBuf=0;sfx(340,0.12,"square",0.04,520);}
-      else if(jumps<2){vy=8.8;jumps=2;jBuf=0;sfx(430,0.12,"square",0.04,640);
-        for(var bp=0;bp<5;bp++){} /* Doppelsprung-Puff nur Sound (kompakt) */}}
-    vy-=22*dt;py+=vy*dt;
+      else if(jumps<2){var first=(jumps===0);vy=first?9.2:8.8;jumps=first?1:2;jBuf=0;sfx(first?340:430,0.12,"square",0.04,first?520:640);}} /* Kanten-Fall frisst den 1. Sprung nicht */
+    var G=vy<-0.5?32:(Math.abs(vy)<2&&!onG?14:22);vy=Math.max(-16,vy-G*dt);py+=vy*dt; /* schneres Fallen, schwebender Apex */
     if(g>-500&&py<=g&&vy<=0&&py>g-1.2){py=g;vy=0;if(!onG){sfx(150,0.06,"sine",0.03);}onG=true;jumps=0;}
     else onG=false;
     if(py<-9){ /* Abgrund: im Parcours GRATIS zurück zum Fackel-Halt (fair!), nur beim Boss kostet es */
