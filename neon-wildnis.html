@@ -3312,6 +3312,13 @@ function dropLoot(x,z,force){var ri=(force!=null)?force:rollRarity(),R=LOOT_RARI
   var m=new THREE.Mesh(new THREE.OctahedronGeometry(0.34,0),new THREE.MeshStandardMaterial({color:R.c,emissive:R.c,emissiveIntensity:0.95,flatShading:true}));
   m.position.set(x,groundH(x,z)+0.9,z);scene.add(m);lootOrbs.push({m:m,x:x,z:z,ri:ri,t:0,life:32});
   if(ri>=2)burst(x,groundH(x,z)+0.9,z,R.c,8);}
+/* 🤝 Freundschafts-Band: wächst durch Team-Combos, gemeinsames Rasten & Wiederbeleben — persistent, kleine Perks */
+window._bondPts=parseInt(lsGet("nw_bond")||"0",10)||0;
+function bondUpd(){try{lsSet("nw_bond",String(window._bondPts|0));
+  var lv=Math.floor(Math.sqrt((window._bondPts|0)/3)),prev=window._bondLv|0;
+  if(lv>prev&&prev>=0&&window._bondLv!==undefined){announce("🤝 Euer Band wächst — Stufe "+lv+"! (+1 ❤️ max)","#7dffc8");maxHp+=1;hp=Math.min(maxHp,hp+1);hpUpd();}
+  window._bondLv=lv;}catch(e){}}
+window._bondLv=Math.floor(Math.sqrt((window._bondPts|0)/3));
 function rewardKill(e){var mh=Math.min(30,(e&&e.maxhp)||8);gainXP(Math.round(6+mh*0.7));kills++;if(typeof dropLoot==="function"){if(!e.boss&&mh>=9&&rnd()<0.35)dropLoot(e.x,e.z,rnd()<0.4?3:2);else dropLoot(e.x,e.z);}} /* 💰 Belohnung skaliert mit Gegnerstärke */
 function bossReward(x,z){announce("🏆 Boss besiegt! Legendäre Beute!");gainXP(60);dropLoot(x,z,3);dropLoot(x+1,z,3);dropLoot(x-1,z+1,2);burst(x,groundH(x,z)+1,z,[0xffd166,0xff2d6f],40);shake=0.7;}
 function updLoot(dt){for(var i=lootOrbs.length-1;i>=0;i--){var o=lootOrbs[i];o.t+=dt;o.life-=dt;
@@ -3385,7 +3392,8 @@ function updDowned(dt){
   if(typeof NET!=="undefined"&&NET.on&&!dead&&NET.remoteDowned&&NET.remote&&NET.remote.visible){
     var dx=NET.remote.position.x-player.position.x,dz=NET.remote.position.z-player.position.z;
     if(dx*dx+dz*dz<3.0*3.0){_reviveHoldT+=dt;
-      if(_reviveHoldT>=1.0){_reviveHoldT=0;try{if(NET.s)NET.s.send({t:"revive",from:NET.role});}catch(e){}
+      if(_reviveHoldT>=1.0){_reviveHoldT=0;window._bondPts=(window._bondPts|0)+3;if(typeof bondUpd==="function")bondUpd(); /* 🤝 Wiederbeleben stärkt das Band am meisten */
+        try{if(NET.s)NET.s.send({t:"revive",from:NET.role});}catch(e){}
         toast("🙌 Partner wiederbelebt!");NET.remoteDowned=false;}
       else if(!_reviveToastT||perfNow-_reviveToastT>700){_reviveToastT=perfNow;toast("🔼 Halte Position — belebe Partner…");}
     } else _reviveHoldT=0;
@@ -3450,7 +3458,10 @@ function restAtFire(){
   if(typeof heroAct==="function")heroAct("taunt",2.6); /* Rast-Geste (taunt/wave als Sitz-Ersatz) */
   if(player&&typeof burst==="function")burst(player.position.x,groundH(player.position.x,player.position.z)+1,player.position.z,[0xffb347,0xffd166],20);
   if(typeof sfx==="function"){sfx(440,0.16,"triangle",0.05,660);setTimeout(function(){sfx(600,0.2,"sine",0.05,820);},160);}
-  announce("🔥 Ausgeruht — volle Gesundheit, Spiel gespeichert","#ffd18a");
+  if(NET.on&&NET.remote&&NET.remote.visible&&Math.hypot(NET.remote.position.x-player.position.x,NET.remote.position.z-player.position.z)<7){
+    inv.crystal=(inv.crystal|0)+1;invUpd();window._bondPts=(window._bondPts|0)+2;bondUpd(); /* 🤝 zusammen rasten = inniger Moment */
+    announce("🔥🤝 GEMEINSAM gerastet — +1 💎 & euer Band wächst!","#7dffc8");}
+  else announce("🔥 Ausgeruht — volle Gesundheit, Spiel gespeichert","#ffd18a");
   if(typeof toast==="function")toast("🔥 Am Feuer gerastet · HP voll · gespeichert");
   if(typeof saveGame==="function")saveGame();
 }
@@ -3503,7 +3514,16 @@ function harvest(){
   if(nearMon){ // Kampf
     heroAct("melee",2.2);
     faceTo(nearMon.x,nearMon.z);
-var _md=(1+Math.floor(level/3)+weaponAtk());nearMon.hp-=_md;dmgHit(nearMon,_md);knockback(nearMon,player.position.x,player.position.z,9);hitSfx();hitStop=Math.max(hitStop,0.045);var _ihx=nearMon.x-(nearMon.x-player.position.x)*0.25,_ihz=nearMon.z-(nearMon.z-player.position.z)*0.25;burst(_ihx,groundH(nearMon.x,nearMon.z)+1.1,_ihz,0x7de3ff,10);shake=Math.min(shake+0.22,0.5); /* Funke am Aufschlagpunkt Richtung Spieler */
+var _md=(1+Math.floor(level/3)+weaponAtk());
+    if(NET.on&&NET.remote&&NET.remote.visible&&NET.lastRemoteMelee&&performance.now()-NET.lastRemoteMelee<1500
+      &&Math.hypot(NET.remote.position.x-player.position.x,NET.remote.position.z-player.position.z)<8
+      &&(!window._teamComboT||perfNow-window._teamComboT>2000)){
+      window._teamComboT=perfNow;_md=Math.round(_md*1.5); /* ⚔️🤝 TEAM-COMBO: beide treffen im Fenster -> Bonus-Wucht */
+      floatText(nearMon.x,groundH(nearMon.x,nearMon.z)+2.6,nearMon.z,"ZUSAMMEN! ×1.5","#7dffc8");
+      burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1.4,nearMon.z,0x7dffc8,14);
+      if(typeof sfx==="function"){sfx(520,0.1,"triangle",0.06,780);setTimeout(function(){sfx(780,0.14,"triangle",0.06,1040);},80);}
+      shake=Math.min(shake+0.1,0.5);window._bondPts=(window._bondPts|0)+1;bondUpd();}
+    nearMon.hp-=_md;dmgHit(nearMon,_md);knockback(nearMon,player.position.x,player.position.z,9);hitSfx();hitStop=Math.max(hitStop,0.045);var _ihx=nearMon.x-(nearMon.x-player.position.x)*0.25,_ihz=nearMon.z-(nearMon.z-player.position.z)*0.25;burst(_ihx,groundH(nearMon.x,nearMon.z)+1.1,_ihz,0x7de3ff,10);shake=Math.min(shake+0.22,0.5); /* Funke am Aufschlagpunkt Richtung Spieler */
     if(nearMon.hp<=0){hitStop=Math.max(hitStop,0.08);var _wb=nearMon.boss;var idx=monsters.indexOf(nearMon);if(idx>=0){scene.remove(nearMon.mesh);monsters.splice(idx,1);}if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(nearMon.x,nearMon.z);clearWarn(nearMon);}updWaveHud();
       burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x3ad0ff,10);rewardKill(nearMon);killSfx(_wb);
       if(rnd()<0.4){inv.stone+=1;toast("🪨 +1 Stein");floatText(nearMon.x,groundH(nearMon.x,nearMon.z)+1.6,nearMon.z,"+1 🪨","#cfe");invUpd();}}
@@ -4311,7 +4331,7 @@ function onNetMsg(d){
     if(d.e==="🧘"&&typeof heroActRemote==="function")heroActRemote("taunt"); /* 🧘 Partner rastet */
     if(d.e==="🆘"){if(typeof toast==="function")toast("🆘 Partner braucht Hilfe!");if(typeof sfx==="function")sfx(880,0.12,"square",0.05,660);}} /* 😊 Partner-Emote; 🆘 = deutlicher Hilferuf */
   if(d.t==="revive"&&d.from!==NET.role&&_downed){respawnSelf(true);}
-  if(d.t==="act"&&d.from!==NET.role&&d.intent){heroActRemote(d.intent);} /* ⚔️ Partner-Kampfanimation */
+  if(d.t==="act"&&d.from!==NET.role&&d.intent){heroActRemote(d.intent);if(d.intent==="melee")NET.lastRemoteMelee=performance.now();} /* ⚔️ Partner-Kampfanimation + Combo-Fenster */
   if(d.t==="chat"&&typeof toast==="function")toast("💬 Partner: "+d.m);
 }
 function spawnRemote(){
