@@ -173,7 +173,7 @@ var kx=0,kz=0,keys={};
   function end(e){for(var i=0;i<e.changedTouches.length;i++){if(e.changedTouches[i].identifier===id){id=null;kx=0;kz=0;
     knob.style.transform="translate(-50%,-50%)";}}}
   addEventListener("touchend",end);addEventListener("touchcancel",end);})();
-function doSwap(){if(NETON)return;active=1-active;sfx(560,0.08,"triangle",0.05,720);
+function doSwap(){if(NETON||!running||won)return;active=1-active;sfx(560,0.08,"triangle",0.05,720);
   chars[active].g.userData.ring.material.opacity=0.7;chars[1-active].g.userData.ring.material.opacity=0;
   hint("Jetzt steuerst du "+chars[active].name,1600);}
 function near(c,o,r){return Math.hypot(c.x-o.position.x,c.z-o.position.z)<(r||2.2);}
@@ -210,13 +210,15 @@ addEventListener("keydown",function(e){keys[e.key.toLowerCase()]=1;if(e.repeat)r
 addEventListener("keyup",function(e){keys[e.key.toLowerCase()]=0;});
 
 /* ---------- Koop ---------- */
+var _everConn=false;
 function startCoop(){
   if(!window.MP){document.getElementById("coopStatus").textContent="Koop-Lib fehlt";return;}
+  if(coopWait||NETON)return;var _cb=document.getElementById("coopBtn");if(_cb)_cb.disabled=true; /* Doppel-Tap-Schutz */
   document.getElementById("coopStatus").textContent="⚡ Suche Mitspieler…";
   coopWait=true;document.getElementById("startBtn").style.display="none";
   try{net=MP.quick("tempel2");}catch(e){document.getElementById("coopStatus").textContent="Fehler: "+e.message;coopWait=false;document.getElementById("startBtn").style.display="block";return;}
   net.onStatus(function(st){
-    if(st==="connected"){NETON=true;coopWait=false;mySlot=(net.role==="host")?0:1;active=mySlot;
+    if(st==="connected"){NETON=true;coopWait=false;_everConn=true;mySlot=(net.role==="host")?0:1;active=mySlot;
       document.getElementById("coopStatus").textContent="";
       document.getElementById("bSwap").style.display="none";
       chars[mySlot].g.userData.ring.material.opacity=0.7;
@@ -224,7 +226,7 @@ function startCoop(){
       announce("🌐 Verbunden! Du bist "+chars[mySlot].name,"#7dffc8");updHud();}
     else if(st==="waiting")document.getElementById("coopStatus").textContent="⏳ Warte auf Mitspieler … (Freund tippt denselben Knopf)";
     else if(st==="lost")hint("📡 Verbindung wackelt — verbinde neu …",2400);
-    else if(st==="closed"){NETON=false;coopWait=false;document.getElementById("bSwap").style.display="flex";var _sb2=document.getElementById("startBtn");if(_sb2)_sb2.style.display="block";hint("❌ Partner getrennt — Solo-Wechsel ist wieder an",3200);updHud();}});
+    else if(st==="closed"){NETON=false;coopWait=false;var _cb2=document.getElementById("coopBtn");if(_cb2)_cb2.disabled=false;document.getElementById("bSwap").style.display="flex";var _sb2=document.getElementById("startBtn");if(_sb2)_sb2.style.display="block";if(!_everConn&&!running)document.getElementById("coopStatus").textContent="Kein Mitspieler gefunden — starte solo oder versuch es nochmal.";hint("❌ Partner getrennt — Solo-Wechsel ist wieder an",3200);updHud();}});
   net.onMessage(function(d){if(!d||!d.t)return;
     if(d.t==="pos"&&typeof d.x==="number"){rt.x=d.x;rt.z=d.z;}
     if(d.t==="act"&&d.what)doAct(true,1-mySlot,d.what);
@@ -265,7 +267,8 @@ document.getElementById("startBtn").onclick=function(){start(false);};
 
 /* ---------- Frame ---------- */
 var lastT=performance.now(),sendT=0;
-function frame(now){requestAnimationFrame(frame);
+var _rafId=0;
+function frame(now){_rafId=requestAnimationFrame(frame);
   var dt=Math.min(0.05,(now-lastT)/1000)||0.016;lastT=now;var t=now*0.001;
   for(var fi=0;fi<torches.length;fi++){var tc=torches[fi];
     tc.fl.scale.setScalar(1+Math.sin(t*9+tc.ph)*0.15);tc.lt.intensity=0.5+Math.sin(t*11+tc.ph)*0.15;}
@@ -288,7 +291,7 @@ function frame(now){requestAnimationFrame(frame);
     var onA=chars.some(function(c){return near(c,plateA,1.5);}),onB=chars.some(function(c){return near(c,plateB,1.5);});
     plateA.material.emissiveIntensity=onA?0.9:0.25;plateB.material.emissiveIntensity=onB?0.9:0.25;
     if(onA&&onB&&!gate1.userData.open){openGate(gate1,"⚖️ Beide Platten gedrückt — Tor 1 öffnet sich!");room=2;updHud();
-      hint("🔥 Nur Ember kann die Ranken verbrennen · 💧 nur Aqua die Pflanze giessen",4200);}
+      hint("🔥 Ember (✋ nah an den Ranken) · 💧 Aqua (✋ an der Pflanze) — jede Figur ihre Kraft!",4600);}
     /* Raum 2: beide Hebel */
     if(lever.userData.pulled&&lever2.userData.pulled&&!gate2.userData.open){openGate(gate2,"⚙️ Beide Hebel — Tor 2 öffnet sich!");room=3;updHud();
       hint("⚡ Schlagt BEIDE Schalter fast gleichzeitig!",4200);}
@@ -310,7 +313,8 @@ function frame(now){requestAnimationFrame(frame);
   }
   if(annT>0){annT-=dt;if(annT<=0)document.getElementById("announce").style.opacity=0;}
   renderer.render(scene,camera);}
-requestAnimationFrame(frame);
+_rafId=requestAnimationFrame(frame);
+addEventListener("pagehide",function(){try{cancelAnimationFrame(_rafId);}catch(e){}try{if(net)net.close();}catch(e){}try{if(AC&&AC.close)AC.close();}catch(e){}try{renderer.dispose();}catch(e){}}); /* sauberes Teardown */
 updHud();
 window.__zs={state:function(){return {room:room,gems:gemN,won:won,a:{x:chars[0].x,z:chars[0].z},b:{x:chars[1].x,z:chars[1].z}};},
   tp:function(slot,x,z){chars[slot].x=x;chars[slot].z=z;},act:function(slot){doAct(true,slot);},swap:doSwap};
