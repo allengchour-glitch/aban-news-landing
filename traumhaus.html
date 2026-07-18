@@ -448,6 +448,21 @@ var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var strich=new THREE.Mesh(ne
 })();
 if(THREE.GLTFLoader){["lp_tree.glb"].forEach(function(){
   new THREE.GLTFLoader().load("/models/lp_tree.glb",function(g){
+    // Bonbon-TEXTUR → echte Baumfarben: braune Pixel (Stamm) bleiben, alles Bunte wird Grün
+    // mit gleicher Helligkeit (Schattierung bleibt erhalten)
+    g.scene.traverse(function(n){if(n.isMesh&&n.material&&n.material.map&&n.material.map.image){
+      var img=n.material.map.image,cv=document.createElement("canvas");
+      cv.width=img.width;cv.height=img.height;var c=cv.getContext("2d");
+      c.drawImage(img,0,0);var d=c.getImageData(0,0,cv.width,cv.height);
+      for(var i=0;i<d.data.length;i+=4){var r=d.data[i]/255,g2=d.data[i+1]/255,b=d.data[i+2]/255;
+        var lum=0.3*r+0.6*g2+0.1*b;
+        if(r>=g2&&g2>=b&&(r-b)>0.06){ // rosa-brauner Stamm → echtes Holzbraun
+          d.data[i]=(0.30+lum*0.20)*255|0;d.data[i+1]=(0.20+lum*0.13)*255|0;d.data[i+2]=(0.11+lum*0.07)*255|0;}
+        else{ // Krone/Sockel → sattes Laubgrün
+          d.data[i]=(0.09+lum*0.17)*255|0;d.data[i+1]=(0.27+lum*0.25)*255|0;d.data[i+2]=(0.08+lum*0.11)*255|0;}}
+      c.putImageData(d,0,0);
+      var nt=new THREE.CanvasTexture(cv);nt.flipY=false;nt.encoding=n.material.map.encoding;
+      n.material=n.material.clone();n.material.map=nt;n.material.needsUpdate=true;}});
     [[-78,-50],[78,-50],[-78,50],[78,50]].forEach(function(p,i){
       var t=g.scene.clone(true);var box=new THREE.Box3().setFromObject(t),sz=new THREE.Vector3();box.getSize(sz);
       var k=(7+i%2*2)/(sz.y||1);t.scale.setScalar(k);
