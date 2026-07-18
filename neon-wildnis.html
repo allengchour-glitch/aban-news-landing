@@ -224,7 +224,7 @@ canvas{display:block}
   <h1>NEON WILDNIS</h1>
   <p>Eine riesige leuchtende Wildnis gehört dir. <b>Fälle Bäume</b>, sammle Holz, Stein und Kristalle, <b>baue deine Basis</b> — und überlebe, wenn nachts die Kreaturen kommen.</p>
   <div id="recBar" class="hide" style="margin:6px auto 10px;max-width:420px;padding:8px 12px;border:1px solid rgba(255,209,102,.4);border-radius:12px;background:rgba(40,32,10,.45);color:#ffd166;font-weight:800;font-size:14px"></div>
-  <div style="margin:4px auto 8px;max-width:460px;padding:7px 12px;border:1px solid rgba(125,227,255,.45);border-radius:12px;background:rgba(10,40,60,.5);color:#7de3ff;font-weight:800;font-size:13.5px">✨ NEU in der Welt: ✈️ Flugfeld · 🏃 Parcours · 🏎️ Rennstrecke · ⚔️ Arena — folge den Wegweisern am Quest-Brett!</div>
+  <div style="margin:4px auto 8px;max-width:460px;padding:7px 12px;border:1px solid rgba(125,227,255,.45);border-radius:12px;background:rgba(10,40,60,.5);color:#7de3ff;font-weight:800;font-size:13.5px">✨ NEU in der Welt: 🏰 Dungeon (KOLOSS!) · ✈️ Flugfeld · 🏃 Parcours · 🏎️ Rennstrecke · ⚔️ Arena — folge den Wegweisern am Quest-Brett!</div>
   <div class="ctl">
     <span class="chip"><b>Ziehen</b> laufen</span>
     <span class="chip"><b>🪓</b> Sammeln/Kämpfen</span>
@@ -2026,7 +2026,7 @@ function closeStation(){
 function onStationDone(score){
   if(_stRewarded||_stCur<0)return;_stRewarded=true;
   var st=stations[_stCur];if(!st)return;
-  var cr=st.badge==="gladiator"
+  var cr=(st.badge==="gladiator"||st.badge==="krieger")
     ?Math.max(1,Math.min(12,1+Math.floor((score|0)/40))) /* ⚔️ Arena (Kills+Level·10): grösserer Einsatz, Cap 12 */
     :Math.max(1,Math.min(8,1+Math.floor((score|0)/25))); /* score-skaliert, Cap 8 */
   inv.crystal=(inv.crystal|0)+cr;invUpd();
@@ -2169,6 +2169,7 @@ function decorateWorldLate(){
   addStation(spotFar(60),{kind:"jump", name:"Parcours",   icon:"🏃", url:"/neon-jump.html",  badge:"springer",color:0xff7ad9});
   addStation(spotFar(75),{kind:"racer",name:"Rennstrecke",icon:"🏎️", url:"/neon-racer.html", badge:"raser",   color:0xffd166});
   addStation(spotFar(65),{kind:"arena",name:"Arena",      icon:"⚔️", url:"/neon-survivor.html",badge:"gladiator",color:0xff3b3b}); /* ⚔️ Final-Fusion: Neon Survivor */
+  addStation(spotFar(85),{kind:"dungeon",name:"Dungeon",   icon:"🏰", url:"/neon-dungeon.html",badge:"krieger", color:0xc98bff}); /* 🏰 Katakomben-Parcours + KOLOSS-Boss */
   buildSpawnHub(); /* 🏘️ Phase 2: Spawn-Stadt wird lebendiger Hub (nach den Stationen — Quest-Brett kennt sie dann) */
 }
 /* ===================== 🏘️ SPAWN-STADT-HUB (Wildnis-Fusion Phase 2) =====================
