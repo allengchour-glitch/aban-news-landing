@@ -439,12 +439,15 @@ var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var strich=new THREE.Mesh(ne
   var SZ9=GH*CS/2,tMat=stdMat(0xcfccc2,0.85);
   function tr(w,d,x,z,h){var t=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),tMat);
     t.position.set(x,h/2,z);t.receiveShadow=true;scene.add(t);}
-  [SZ9+12,-(SZ9+12)].forEach(function(zc){ // Nord+Sued: innen + aussen
-    tr(RL,2.2,0,zc>0?zc-6.1:zc+6.1,0.06);
-    tr(RL,2.2,0,zc>0?zc+6.1:zc-6.1,0.06);});
-  [RX,-RX].forEach(function(xc){ // Querstrassen: innen + aussen (minimal flacher gegen Z-Fight an Ecken)
-    tr(2.2,2*SZ9+38,xc-6.1,0,0.05);
-    tr(2.2,2*SZ9+38,xc+6.1,0,0.05);});
+  var RB=RX+5,LR=RL/2-RB; // Querstrassen-Kante + Randstueck-Laenge (keine Ueberschneidung mit Fahrbahnen)
+  [SZ9+12,-(SZ9+12)].forEach(function(zc){ // Nord+Sued: innen + aussen, an den Querstrassen ausgespart
+    [zc>0?zc-6.1:zc+6.1,zc>0?zc+6.1:zc-6.1].forEach(function(z9){
+      tr(2*(RX-5),2.2,0,z9,0.06);       // Mittelteil zwischen den Querstrassen
+      tr(LR,2.2,-(RB+LR/2),z9,0.06);    // West-Rand
+      tr(LR,2.2,(RB+LR/2),z9,0.06);});});// Ost-Rand
+  [RX,-RX].forEach(function(xc){ // Querstrassen: nur zwischen den Hauptstrassen (endet an deren Kante)
+    tr(2.2,2*SZ9+14,xc-6.1,0,0.05);
+    tr(2.2,2*SZ9+14,xc+6.1,0,0.05);});
   // Zebrastreifen an den Kreuzungen (Fussgaenger queren die Hauptstrassen)
   var zMat=new THREE.MeshStandardMaterial({color:0xf0f0ea,roughness:0.8});
   function zebra(x,z,quer){ // quer=true: Streifen laufen in z (ueber eine Ost-West-Strasse)
@@ -532,9 +535,9 @@ var dorfFenster=[];
     for(var c4=0;c4<3;c4++){var kr=new THREE.Mesh(new THREE.SphereGeometry(0.85-c4*0.16,9,7),stdMat(c4%2?0x3a7a3a:0x4a8a44,0.7));
       kr.position.set((c4-1)*0.35,1.7+c4*0.5,(c4%2-0.5)*0.3);kr.castShadow=true;b.add(kr);}
     b.scale.setScalar(k||1);b.position.set(x,0,z);scene.add(b);}
-  [[-33,-SZ-8,1.1],[-8,-SZ-8.5,0.9],[16,-SZ-8,1.2],[40,-SZ-9,1],[-40,SZ+9,1.1],[8,SZ+16,1.3],[42,SZ+10,0.9],[-(RX+6),-SZ+8,1.2],[RX+6,SZ-4,1.1]].forEach(function(p){baum(p[0],p[1],p[2]);});
+  [[-33,-SZ-20,1.1],[-8,-SZ-4.5,0.9],[16,-SZ-20,1.2],[40,-SZ-4.2,1],[-40,SZ+20,1.1],[8,SZ+4,1.3],[42,SZ+20,0.9],[-(RX+6),-SZ+8,1.2],[RX+6,SZ-4,1.1]].forEach(function(p){baum(p[0],p[1],p[2]);}); // von der verbreiterten Strasse auf Gruenstreifen/Aussenseite
   // Laternen an der Hauptstrasse (emissive Kugeln, Bloom uebernimmt das Leuchten)
-  [[-30,SZ+8.6],[0,SZ+8.6],[30,SZ+8.6],[-30,-SZ-8.6],[30,-SZ-8.6]].forEach(function(p){
+  [[-30,SZ+5.9],[0,SZ+5.9],[30,SZ+5.9],[-30,-SZ-5.9],[30,-SZ-5.9]].forEach(function(p){ // Laternen aufs Trottoir
     var lg=new THREE.Group();
     var mast=new THREE.Mesh(new THREE.CylinderGeometry(0.07,0.09,3.1,7),stdMat(0x3a3a42,0.5));mast.position.y=1.55;lg.add(mast);
     var kopf=new THREE.Mesh(new THREE.SphereGeometry(0.2,10,8),
@@ -917,7 +920,7 @@ setTimeout(function baueGebaeude(){
   // Zaun am Bauernhof-Gehege
   bau("th4_zaun_holz.glb",0.95,-74,0,-30,Math.PI/2,false);bau("th4_zaun_holz.glb",0.95,-74,0,-34,Math.PI/2,false);bau("th4_zaun_holz.glb",0.95,-74,0,-38,Math.PI/2,false);
   // Vogelhäuser
-  bau("th4_vogelhaus.glb",2,74,0,-36,0.6,false);bau("th4_vogelhaus.glb",2,-70,0,20,0,false);
+  bau("th4_vogelhaus.glb",2,74,0,-36,0.6,false);bau("th4_vogelhaus.glb",2,-76,0,20,0,false);
   // See: Bogenbrücke ans Ufer, Schwan aufs Wasser, Sonnenschirme
   bau("th4_bruecke.glb",1.1,-90,0,66.5,Math.PI/2,false);
   bau("th4_schwan.glb",0.75,-95,-0.02,74,0.6,false);
