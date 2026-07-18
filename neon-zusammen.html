@@ -22,7 +22,7 @@ if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.repl
   #announce{position:absolute;top:24%;left:0;right:0;text-align:center;font-weight:900;font-size:1.55rem;color:#ffd166;
     text-shadow:0 2px 0 #000,0 4px 16px rgba(0,0,0,.7);opacity:0;transition:opacity .35s;pointer-events:none;padding:0 14px}
   #hint{position:absolute;bottom:calc(180px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);background:rgba(14,30,24,.8);
-    border-radius:12px;padding:5px 14px;font-weight:800;font-size:.85rem;color:#cfeee0;opacity:0;transition:opacity .3s;white-space:nowrap;max-width:94vw;overflow:hidden;text-overflow:ellipsis}
+    border-radius:12px;padding:5px 14px;font-weight:800;font-size:.85rem;color:#cfeee0;opacity:0;transition:opacity .3s;white-space:normal;text-align:center;max-width:94vw}
   .btn{position:absolute;pointer-events:auto;border-radius:50%;display:flex;align-items:center;justify-content:center;
     font-size:1.5rem;font-weight:900;border:3px solid;background:rgba(14,30,26,.6);backdrop-filter:blur(3px);cursor:pointer}
   .btn:active{transform:scale(.9);filter:brightness(1.4)}
@@ -105,7 +105,7 @@ function torch(x,z){var g=new THREE.Group();
 
 /* Tore (sinken bei Lösung) */
 function gate(z){var g=box(0,1.4,z,19,2.8,1.0,GOLD,true);g.userData.open=false;g.userData.z0=1.4;return g;}
-var gate1=gate(-16),gate2=gate(-40),gate3=gate(-62);
+var gate1=gate(-16),gate2=gate(-40),gate3=gate(-62),gates=[gate1,gate2,gate3];
 
 /* Raum 1: zwei Druckplatten (beide gleichzeitig!) */
 function plate(x,z,col){var p=box(x,0.06,z,2.4,0.12,2.4,M(col,col,0.25));p.userData.on=false;return p;}
@@ -141,7 +141,7 @@ var chars=[
   {g:mkChar(0x40a8ff,0x30e0ff),x:2,z:2,name:"💧 Aqua",id:"aqua"}
 ];
 var active=0,gemN=0,room=1,running=false,won=false,t0=0;
-var NETON=false,mySlot=0,net=null,rt={x:2,z:2};
+var NETON=false,mySlot=0,net=null,rt={x:2,z:2},coopWait=false;
 
 /* ---------- Audio ---------- */
 var AC=null;function sfx(f,d,t,g,sl){try{if(!running)return;AC=AC||new (window.AudioContext||window.webkitAudioContext)();
@@ -213,9 +213,10 @@ addEventListener("keyup",function(e){keys[e.key.toLowerCase()]=0;});
 function startCoop(){
   if(!window.MP){document.getElementById("coopStatus").textContent="Koop-Lib fehlt";return;}
   document.getElementById("coopStatus").textContent="⚡ Suche Mitspieler…";
-  try{net=MP.quick("tempel2");}catch(e){document.getElementById("coopStatus").textContent="Fehler: "+e.message;return;}
+  coopWait=true;document.getElementById("startBtn").style.display="none";
+  try{net=MP.quick("tempel2");}catch(e){document.getElementById("coopStatus").textContent="Fehler: "+e.message;coopWait=false;document.getElementById("startBtn").style.display="block";return;}
   net.onStatus(function(st){
-    if(st==="connected"){NETON=true;mySlot=(net.role==="host")?0:1;active=mySlot;
+    if(st==="connected"){NETON=true;coopWait=false;mySlot=(net.role==="host")?0:1;active=mySlot;
       document.getElementById("coopStatus").textContent="";
       document.getElementById("bSwap").style.display="none";
       chars[mySlot].g.userData.ring.material.opacity=0.7;
@@ -223,10 +224,11 @@ function startCoop(){
       announce("🌐 Verbunden! Du bist "+chars[mySlot].name,"#7dffc8");updHud();}
     else if(st==="waiting")document.getElementById("coopStatus").textContent="⏳ Warte auf Mitspieler … (Freund tippt denselben Knopf)";
     else if(st==="lost")hint("📡 Verbindung wackelt — verbinde neu …",2400);
-    else if(st==="closed"){NETON=false;document.getElementById("bSwap").style.display="flex";hint("❌ Partner getrennt — Solo-Wechsel ist wieder an",3200);updHud();}});
+    else if(st==="closed"){NETON=false;coopWait=false;document.getElementById("bSwap").style.display="flex";var _sb2=document.getElementById("startBtn");if(_sb2)_sb2.style.display="block";hint("❌ Partner getrennt — Solo-Wechsel ist wieder an",3200);updHud();}});
   net.onMessage(function(d){if(!d||!d.t)return;
     if(d.t==="pos"&&typeof d.x==="number"){rt.x=d.x;rt.z=d.z;}
     if(d.t==="act"&&d.what)doAct(true,1-mySlot,d.what);
+    if(d.t==="gate"&&gates[d.i])openGate(gates[d.i],null,true);
     if(d.t==="win"&&!won)winGame(true);});
 }
 document.getElementById("coopBtn").onclick=startCoop;
@@ -237,9 +239,10 @@ function blocked(x,z){for(var i=0;i<walls.length;i++){var w=walls[i];if(Math.abs
 function tryMove(c,nx,nz){ /* achsengetrennt: an Wänden entlanggleiten statt kleben */
   if(!blocked(nx,c.z))c.x=nx;
   if(!blocked(c.x,nz))c.z=nz;}
-function openGate(g,msg){if(g.userData.open)return;g.userData.open=true;
+function openGate(g,msg,fromNet){if(g.userData.open)return;g.userData.open=true;
   announce(msg||"🚪 Das Tor öffnet sich!","#7dffc8");sfx(140,0.5,"sawtooth",0.07,60);
-  var wi=walls.findIndex(function(w){return w.m===g;});if(wi>=0)walls.splice(wi,1);}
+  var wi=walls.findIndex(function(w){return w.m===g;});if(wi>=0)walls.splice(wi,1);
+  if(!fromNet&&NETON&&net)try{net.send({t:"gate",i:gates.indexOf(g)});}catch(e){}} /* Tor auf BEIDEN Geräten öffnen */
 function winGame(fromNet){if(won)return;won=true;room=4;updHud();
   var secs=Math.round((performance.now()-t0)/1000);
   var score=gemN*5+40+Math.max(0,60-Math.floor(secs/5));
@@ -253,7 +256,8 @@ function winGame(fromNet){if(won)return;won=true;room=4;updHud();
     var cb=document.getElementById("coopBtn");if(cb)cb.style.display="none";
     var sb2=document.getElementById("startBtn");sb2.textContent=STATION?"← Zurück zur Wildnis":"Nochmal ▶";
     sb2.onclick=function(){if(STATION)stationPost("mini-back");else location.reload();};},2200);}
-function start(coop){document.getElementById("ov").style.display="none";running=true;t0=performance.now();
+function start(coop){if(!coop&&coopWait){hint("⏳ Koop-Suche läuft — warte auf Partner");return;} /* kein Solo-Start während Matchmaking */
+  document.getElementById("ov").style.display="none";running=true;t0=performance.now();
   chars[active].g.userData.ring.material.opacity=NETON?0:0.7;
   try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();if(AC.state!=="running")AC.resume();}catch(e){}
   hint(NETON?"Sprecht euch ab — kein Rätsel geht allein!":"🔁 wechselt zwischen Ember & Aqua",4200);updHud();}
