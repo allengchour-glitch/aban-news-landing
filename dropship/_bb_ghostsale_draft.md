@@ -12,3 +12,12 @@ Ledger: /tmp/bb_draft_done.txt (201 IDs).
 **OFFEN (User):** Moneybox aufladen → dann können auch die 136 verifizierten sicher fulfillen.
 Solange Moneybox=0 ist selbst bei den 136 jede Bestellung ein Refund-Risiko. REVIVE der 201:
 `tag:ghost-sale-schutz-bb-draft` → status ACTIVE, sobald BigBuy finanziert + Stock verifiziert.
+
+## UPDATE (2026-07-18, User: "bigbuy ist doch geld drauf")
+- **Moneybox verifiziert: €1000.00** (live покупка purse.json) — Geld IST da, frühere 0-Lesung war falsch.
+- **Frischer Live-Bestand gezogen** (productsstockbyhandlingdays, 299.060 Produkte): nur **2.669 lagernd (0,9%)**
+  → BigBuy ist zu 99% totes Lager (bestätigt Import-Deaktivierung).
+- **Präziser Fix statt Blanko-Draft:** `/tmp/bb_fix2.py` gleicht alle 469 relevanten BB-Produkte
+  (aktiv + die 201) gegen den frischen Bestand ab: **lagernd → ACTIVE + tracked+DENY+echte Menge**
+  (verkaufbar UND ghost-sale-sicher, weil DENY bei 0 = unkaufbar); **ausverkauft → DRAFT**.
+  Damit sind in-stock BigBuy-Artikel wieder verkaufbar, ohne Refund-Risiko. Ledger /tmp/bb_fix2_done.txt.
