@@ -499,7 +499,15 @@ var FORKS=[
  {at:93,rejoin:100,bulge:9,types:["g+","w","g+","g-","g+","g+"], // Kap.6: gleiche Länge, anderes Profil
   title:"Karriere oder Familie?",txt:"Eine große Entscheidung: der steile Aufstieg — oder der vertraute Weg mit den Liebsten?",
   aL:"🏡 Familienweg",aSub:"✨ Familien-Ereignisse · ❤️ & 👥 · gemütlich",
-  bL:"🏔️ Karriere-Aufstieg",bSub:"4× +💰 · +🧠 · aber 🧾 Rechnungen & kaum ❤️"}
+  bL:"🏔️ Karriere-Aufstieg",bSub:"4× +💰 · +🧠 · aber 🧾 Rechnungen & kaum ❤️"},
+ {at:6,rejoin:12,bulge:8,types:["h","f","e","h","f","e","h"], // Kap.1 Kindheit: Spielplatz-Umweg (7 bunte Felder)
+  title:"Spielplatz oder Schulweg?",txt:"Hinter dem Zaun lockt der große Spielplatz mit der Piratenschiff-Rutsche — der Schulweg wäre schneller …",
+  aL:"🎒 Schulweg",aSub:"direkt und schnell — brav zur Schule",
+  bL:"🛝 Spielplatz-Runde",bSub:"7 bunte Felder · viel ❤️ & 👥 · ein bisschen länger"},
+ {at:129,rejoin:136,bulge:8,types:["e","f","h","w","e","h","g-","h"], // Kap.8 Lebensabend: Weltreise (Traum kostet was)
+  title:"Weltreise oder Schaukelstuhl?",txt:"Ein letzter großer Traum: einmal die Welt sehen! Oder gemütlich im Garten den Enkeln zuschauen?",
+  aL:"🪑 Gemütlich bleiben",aSub:"der kurze, vertraute Weg",
+  bL:"🌍 Weltreise",bSub:"8 Felder · Erinnerungen fürs Leben · 🧾 kostet etwas"}
 ];
 FORKS.forEach(function(fk){ // Kurven-Punkte der Neben-Route; landen in pathPts -> Terrain wird dort flach, Deko meidet sie
   var pa=pathPts[fk.at],pr=pathPts[fk.rejoin];
