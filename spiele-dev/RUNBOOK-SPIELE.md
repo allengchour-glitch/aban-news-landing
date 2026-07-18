@@ -4,6 +4,13 @@
 > `wort-*.html`). Wiederkehrende Aufgaben sind hier als fertige „Skills" dokumentiert —
 > nicht neu erfinden, einfach ausführen. Stand: 2026-07-09.
 
+## 🌱 Lebenspfad-Audit-Welle L1 (2026-07-18): 93-Agenten-Audit → 13 Commits
+- **Vorgehen:** Workflow-Schwarm (18 Dimensionen auditieren → jeden Fund adversarial gegenprüfen → Tech-Lead-Synthese in kollisionsfreie Batches). 74 geprüft, 66 bestätigt, in 11 Batches umgesetzt: Netcode (Rejoin/Quick-Play-Race/Lockstep-Picks/Ziel-Determinismus/Checksum+round+done), Rundenziel-Belohnung (+12, Team-HUD), Lesbarkeit/HUD, Mobile-Perf (DPR 1.5, PCF, 512er-Map, Sonne folgt Spieler), Verlaufs-Himmel + Tageslicht-Bogen pro Kapitel, Audio/Juice, Onboarding, 🎰 Glücksrad-Feld `z` (1×/Kapitel), gegenseitige Begegnungs-Gesten, 🌟 Stern-Twists, 🍀 Comeback, 📳 Haptik, Wolken-Tönung, GLB-Preload.
+- **🔑 LOCKSTEP-REGEL (wichtigste Lehre):** In Online-Brettspiel-Logik darf JEDER stat-verändernde Zufall NUR über `srand()` laufen, an **statisch fester Code-Position** (alle Clients führen handleField identisch aus → gleiche Draw-Reihenfolge). Kosmetik (Konfetti, Flavor-Anzeige) darf Math.random. Neue Felder nach dem Würfelrad-Muster bauen: `n=1+((srand()*6)|0); showWheel(n, done)` — das Rad ist nur Visualisierung.
+- **freshState-Falle:** `freshState()` setzte ein `Math.random`-Rundenziel → online hatte JEDER Client ein anderes Ziel. Fix: in `beginNet` `g0.goal=null` → `begin()` setzt es seed-deterministisch. Muster: alles, was freshState zufällig setzt, muss im Online-Pfad genullt + seed-abgeleitet werden.
+- **#17 bewusst NICHT umgesetzt:** Meshy-Pawns höhen-normalisieren via `setFromObject` — Figuren sind skinned/animiert → gleicher Bug wie der Wildnis-Riesen-Held. Feste Skalierung (0.95) beibehalten.
+- **Workflow-Betrieb:** Ein Hintergrund-Workflow kann bei Session-Neustart STILL sterben (Journal-Zeitstempel prüfen!). `Workflow({scriptPath, resumeFromRunId})` setzt fort — fertige Agenten kommen aus dem Cache.
+
 ## Der Verbesserungs-Loop (jede Runde gleich)
 1. **Implementieren** (python3-Patches mit `assert old in s` — nie blind sed)
 2. **Smoke**: `node tools/game_smoke.cjs <spiel>.html` → muss PASS sein (0 JS-Fehler)
