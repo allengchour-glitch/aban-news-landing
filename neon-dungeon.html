@@ -91,6 +91,7 @@ var camera=new THREE.PerspectiveCamera(58,W/H,0.1,90);
 addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);});
 scene.add(new THREE.HemisphereLight(0x5a4a8e,0x140c20,0.42));
 var amb=new THREE.AmbientLight(0x2a2244,0.3);scene.add(amb);
+var _ambBase=new THREE.Color(0x2a2244),_ambBoss=new THREE.Color(0x3a1a24); /* Kammer-Stimmung kippt ins Rote */
 /* 💜 Abgrund-Glühen: riesige leuchtende Kristalle in der Tiefe (sichtbar beim Springen) */
 (function(){var cvA=document.createElement("canvas");cvA.width=cvA.height=256;var cA=cvA.getContext("2d");
   var gr=cA.createRadialGradient(128,128,10,128,128,128);gr.addColorStop(0,"rgba(160,90,255,.55)");gr.addColorStop(1,"rgba(160,90,255,0)");
@@ -162,6 +163,7 @@ checkpoints.push({x:1,y:2.2,z:-25},{x:0,y:5,z:-59},{x:0,y:1,z:-88});
 gem(0.6,1,-86.8); /* sein letzter Kristall */
 /* Boss-Kammer */
 var CHZ=-104;
+var upLight=new THREE.PointLight(0xff3020,0,26);upLight.position.set(0,1.2,CHZ-4);scene.add(upLight); /* 🔴 rotes Boden-Licht unterm Koloss */
 plat(0,0,CHZ,26,26,STONE2);
 for(var ti=0;ti<8;ti++){var ta=ti/8*Math.PI*2;torch(Math.cos(ta)*11,0,CHZ+Math.sin(ta)*11);}
 (function(){var wallM=M(0x161226);
@@ -189,9 +191,9 @@ var boss=new THREE.Group(),bossHp=6,bossOn=false,bossPh=0;
   var torso=new THREE.Mesh(new THREE.BoxGeometry(3.2,3.4,2.2),rock);torso.position.y=4.4;boss.add(torso);
   var head=new THREE.Mesh(new THREE.BoxGeometry(1.5,1.3,1.4),rock);head.position.y=6.9;boss.add(head);
   var eye1=new THREE.Mesh(new THREE.SphereGeometry(0.16,8,6),M(0xff4020,0xff2000,1));eye1.position.set(-0.35,6.95,0.72);boss.add(eye1);boss.userData.eyeMat=eye1.material; /* clone teilt das Material -> beide Augen faden gemeinsam */
-  var eye2=eye1.clone();eye2.position.x=0.35;boss.add(eye2);
+  var eye2=eye1.clone();eye2.position.x=0.35;boss.add(eye2);boss.userData.eyes=[eye1,eye2];boss.userData.crackMats=[];
   for(var cr2=0;cr2<5;cr2++){var crk=new THREE.Mesh(new THREE.BoxGeometry(0.1,0.7+Math.random()*0.9,0.08),M(0xff6a30,0xff5020,1)); /* 🔥 glühende Risse */
-    crk.position.set((Math.random()-0.5)*2.6,3.6+Math.random()*2.6,1.12);crk.rotation.z=(Math.random()-0.5)*0.9;boss.add(crk);}
+    crk.position.set((Math.random()-0.5)*2.6,3.6+Math.random()*2.6,1.12);crk.rotation.z=(Math.random()-0.5)*0.9;boss.add(crk);boss.userData.crackMats.push(crk.material);}
   var mossB=new THREE.Mesh(new THREE.BoxGeometry(2.4,0.35,1.6),MOSS);mossB.position.y=6.25;boss.add(mossB); /* 🌿 bemooste Schulter */
   var legL=new THREE.Mesh(new THREE.BoxGeometry(1.1,2.8,1.3),rock);legL.position.set(-0.95,1.4,0);boss.add(legL);
   var legR=legL.clone();legR.position.x=0.95;boss.add(legR);
@@ -203,7 +205,7 @@ var boss=new THREE.Group(),bossHp=6,bossOn=false,bossPh=0;
   boss.userData.armL=arm(-2.35);boss.userData.armR=arm(2.35);
   boss.add(boss.userData.armL);boss.add(boss.userData.armR);
   boss.position.set(0,-8,CHZ-4);boss.visible=false;scene.add(boss);})(); /* startet unterirdisch -> Rise-Inszenierung */
-var rings=[],bState="idle",bT=2.5,slamArm=null,vulnT=0,hitFx=0,warnD=null,_fw=new THREE.Vector3(),shakeT=0,stomps=0;
+var rings=[],bState="idle",bT=2.5,slamArm=null,vulnT=0,hitFx=0,warnD=null,_fw=new THREE.Vector3(),shakeT=0,stomps=0,introT=0,introW=0;
 var fx=[],fxGeo=new THREE.OctahedronGeometry(0.12,0); /* shared Geo, nie disposen */
 function burst(x,y,z,n,col){for(var bi=0;bi<n;bi++){var m=new THREE.Mesh(fxGeo,M(col,col,0.8));
   m.position.set(x,y,z);scene.add(m);
@@ -282,7 +284,7 @@ function doHit(){if(!bossOn||dead||won)return;
       var hh=document.getElementById("hint");clearTimeout(hh._t);hh.style.opacity=0;
       burst(wp.x,wp.y,wp.z,5,0xc98bff);
       var _bf=document.getElementById("bossFill");_bf.classList.add("flash");setTimeout(function(){_bf.classList.remove("flash");},160);
-      if(bossHp===3){bossPh=1;announce("😡 DER KOLOSS RAST!","#ff5a5a");}
+      if(bossHp===3){bossPh=1;announce("😡 DER KOLOSS RAST!","#ff5a5a");if(boss.userData.eyes)boss.userData.eyes.forEach(function(ey){ey.scale.setScalar(1.6);});}
       if(bossHp<=0)winGame();updHud();return;}}
   if(vulnT>0&&slamArm)hint("Näher an die glühende Faust ran!",2000);
   else if(!window.__hintVuln){window.__hintVuln=1;hint("⏳ Warte, bis ein Faust-Kristall violett aufglüht!",2600);}
@@ -349,7 +351,12 @@ function frame(now){requestAnimationFrame(frame);
   var dt=Math.min(0.05,(now-lastT)/1000)||0.016;lastT=now;
   var t=now*0.001;
   for(var fi=0;fi<torches.length;fi++){var tc=torches[fi];
-    tc.fl.scale.setScalar(1+Math.sin(t*9+tc.ph)*0.16);tc.lt.intensity=0.75+Math.sin(t*11+tc.ph)*0.22;}
+    tc.fl.scale.setScalar(1+Math.sin(t*9+tc.ph)*0.16);tc.lt.intensity=(tc.lit?0.95:0.75)+Math.sin(t*11+tc.ph)*0.22;}
+  amb.color.lerp(bossOn?_ambBoss:_ambBase,Math.min(1,dt*1.2)); /* 🔴 Kammer-Stimmung */
+  upLight.intensity+=((bossOn&&!won?1.2:0)-upLight.intensity)*Math.min(1,dt*1.2);
+  if(bossOn&&bossPh===1){var _cp2=0.7+0.5*Math.sin(t*8);
+    if(boss.userData.crackMats)for(var cm2=0;cm2<boss.userData.crackMats.length;cm2++)boss.userData.crackMats[cm2].emissiveIntensity=_cp2;
+    upLight.intensity=1.2+Math.sin(t*8)*0.4;}
   if(window.__motes)for(var mo2=0;mo2<window.__motes.length;mo2++){var mt=window.__motes[mo2];
     mt.m.position.set(mt.x+Math.sin(t*mt.sp+mt.ph)*1.6,mt.y+Math.sin(t*mt.sp*0.7+mt.ph)*0.8,mt.z);}
   for(var fi2=fx.length-1;fi2>=0;fi2--){var F2=fx[fi2];F2.life-=dt;
@@ -408,7 +415,7 @@ function frame(now){requestAnimationFrame(frame);
         if(gemN===GEM_TOTAL)announce("✨ ALLE KRISTALLE!","#c98bff");
         sfx(760,0.12,"triangle",0.05,1100);updHud();}}
     /* Boss-Kammer betreten */
-    if(!bossOn&&!won&&pz<CHZ+12){bossOn=true;boss.visible=true;shakeT=0.5;bState="rise";boss.userData.eyeMat.emissiveIntensity=0;hitFx=1.2;
+    if(!bossOn&&!won&&pz<CHZ+12){bossOn=true;boss.visible=true;shakeT=0.5;bState="rise";boss.userData.eyeMat.emissiveIntensity=0;hitFx=1.2;introT=1.4;
       announce("🗿 DER KOLOSS ERWACHT","#ff8a5a");hint(TOUCH?"Schockwellen ÜBERSPRINGEN · glühende Faust = ⚔️ zuschlagen!":"Schockwellen mit LEER überspringen · glühende Faust = E!",4200);
       sfx(60,1.2,"sawtooth",0.1,38);updHud();}
     /* Boss-Verhalten */
@@ -474,7 +481,10 @@ function frame(now){requestAnimationFrame(frame);
   camera.position.y+=(cy2-camera.position.y)*Math.min(1,dt*5);
   camera.position.z+=(cz2-camera.position.z)*Math.min(1,dt*5);
   if(shakeT>0){shakeT-=dt;var sh=shakeT*shakeT*2.4,st3=t*40;camera.position.x+=Math.sin(st3*1.1)*sh*0.3;camera.position.y+=Math.cos(st3*1.7)*sh*0.22;} /* 📳 Impact-Shake, klingt quadratisch ab */
-  camera.lookAt(px,gy+1.2,pz-2);
+  if(introT>0)introT-=dt;
+  introW+=((introT>0?1:0)-introW)*Math.min(1,dt*3.5); /* 🎬 Intro: Blick schwenkt weich zum erwachenden Koloss */
+  if(introW>0.01)camera.lookAt(px+(boss.position.x-px)*introW,gy+1.2+(6.5-(gy+1.2))*introW,pz-2+((CHZ-4)-(pz-2))*introW);
+  else camera.lookAt(px,gy+1.2,pz-2);
   if(annT>0){annT-=dt;if(annT<=0)document.getElementById("announce").style.opacity=0;}
   renderer.render(scene,camera);}
 requestAnimationFrame(frame);
