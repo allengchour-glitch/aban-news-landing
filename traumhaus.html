@@ -813,6 +813,20 @@ setTimeout(function baueTiere(){
   for(var e=0;e<5;e++){var d=mkEnte();scene.add(d);window._tiere.enten.push({mesh:d,ang:e*1.256,r:4.5+(e%3)*1.6,sp:0.14+(e%3)*0.05,cx:-90,cz:80});}
   for(var la=0;la<4;la++){var dog=la%2===0;var m=mkVierbeiner(dog,la);scene.add(m);
     window._tiere.land.push({mesh:m,x:(la%2?1:-1)*(28+la*9),z:(la<2?1:-1)*(20+la*7),head:Math.random()*6.283,sp:dog?1.5:1.05,turnT:1+la,walkT:la});}
+  // Echte Kenney-Cube-Pets (CC0, an_*.glb) ersetzen die Würfeltiere + Hasen/Rehe am Stadtrand
+  function ladeTier(file,zielH,cb){if(!GL){cb(null);return;}
+    GL.load("/models/"+file,function(g){var root=g.scene;
+      var bb=new THREE.Box3().setFromObject(root),sz=new THREE.Vector3();bb.getSize(sz);
+      root.scale.setScalar(zielH/(sz.y||1));
+      var b2=new THREE.Box3().setFromObject(root);root.position.y=-b2.min.y;
+      root.traverse(function(n){if(n.isMesh){n.castShadow=true;if(n.material)n.material.envMapIntensity=0.3;}});
+      var w=new THREE.Group();w.add(root);cb(w);},undefined,function(){cb(null);});}
+  window._tiere.land.forEach(function(rec,i){var dog=i%2===0;
+    ladeTier(dog?"an_dog.glb":"an_cat.glb",dog?0.72:0.5,function(w){if(!w)return;
+      scene.remove(rec.mesh);rec.mesh=w;rec.yaw=Math.PI;scene.add(w);});});
+  [["an_rabbit.glb",0.42,1.9,0.18],["an_rabbit.glb",0.42,1.7,0.18],["an_deer.glb",1.05,1.1,0.05],["an_deer.glb",1.05,0.9,0.05]].forEach(function(td,i){
+    ladeTier(td[0],td[1],function(w){if(!w)return;scene.add(w);
+      window._tiere.land.push({mesh:w,x:(i%2?-1:1)*(74+i*5),z:(i<2?-1:1)*(28+i*8),head:i*1.7,sp:td[2],turnT:2+i,walkT:i,hop:td[3],yaw:Math.PI});});});
 },0);
 function updTiere(dt,now){var T=window._tiere;if(!T)return;
   for(var i=0;i<T.enten.length;i++){var en=T.enten[i];en.ang+=en.sp*dt;
@@ -822,7 +836,7 @@ function updTiere(dt,now){var T=window._tiere;if(!T)return;
     if(an.turnT<=0){an.turnT=2+Math.random()*3;an.head+=(Math.random()-0.5)*1.5;}
     an.x+=Math.sin(an.head)*an.sp*dt;an.z+=Math.cos(an.head)*an.sp*dt;
     var lim=108;if(Math.abs(an.x)>lim||Math.abs(an.z)>lim){an.head+=Math.PI;an.x=Math.max(-lim,Math.min(lim,an.x));an.z=Math.max(-lim,Math.min(lim,an.z));}
-    an.walkT+=dt*8*an.sp;an.mesh.position.set(an.x,Math.abs(Math.sin(an.walkT))*0.04,an.z);an.mesh.rotation.y=an.head;
+    an.walkT+=dt*8*an.sp;an.mesh.position.set(an.x,Math.abs(Math.sin(an.walkT))*(an.hop||0.04),an.z);an.mesh.rotation.y=an.head+(an.yaw||0);
     var lg=an.mesh.userData.legs;if(lg){var sw=Math.sin(an.walkT)*0.5;lg[0].rotation.x=sw;lg[3].rotation.x=sw;lg[1].rotation.x=-sw;lg[2].rotation.x=-sw;}}}
 // ---- Heißluftballon, der über die Stadt zieht ----
 setTimeout(function baueBallon(){
