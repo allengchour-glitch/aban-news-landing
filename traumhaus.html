@@ -1478,6 +1478,7 @@ function onNetMsg(m){
   else if(m.t==="chat")chatAdd(m.n,m.x);
   else if(m.t==="emote")onEmote(m.si,m.k);
   else if(m.t==="ping")onPing(m.x,m.z);
+  else if(m.t==="mitfahrt"&&!mpHost)hint(m.on?"🚗👫 Du fährst als Beifahrer mit!":"🚶 Ausgestiegen — ihr seid wieder zu Fuß");
   else if(m.t==="brunnen"&&!mpHost){var B9=window._brunnen;if(B9)hearts(B9.x,B9.z);if(sims[m.si])simEmoji(sims[m.si],"✨");beep(720,.08,"sine",.04);hint("⛲ Erfrischung am Brunnen! +Laune");}
   else if(m.t==="pickup"&&pickups[m.i]){pickups[m.i].active=m.on;pickups[m.i].mesh.visible=m.on;}
   else if(m.t==="hallo"&&mpHost){netSend({t:"state",sn:snapshot()});chatAdd("System",m.n+" baut jetzt mit!");}
@@ -1950,7 +1951,14 @@ function einsteigen(rec,geklaut){
   if(geklaut){stats.autosGeklaut=(stats.autosGeklaut||0)+1;
     hint("🚗💨 Auto GEKLAUT! Gib Gas — die Polizei kommt! 🚨");
     setTimeout(function(){if(fahren)wantedPlus(2);},1500);}
-  else hint("🚗 Eingestiegen! Lenke mit Joystick/WASD — 🚪 zum Aussteigen");}
+  else hint("🚗 Eingestiegen! Lenke mit Joystick/WASD — 🚪 zum Aussteigen");
+  // Beifahrer: steht der Partner nahe am Auto, faehrt er wirklich mit (Koop: "alles zu 2")
+  var bf=sims[1];
+  if(bf&&Math.hypot(bf.x-a.mesh.position.x,bf.z-a.mesh.position.z)<4.5){
+    if(bf.target){bf.target.busy=false;bf.target=null;}bf.path=null;bf.state="idle";
+    bf._bf=true;bf.mesh.visible=false;
+    hint("🚗👫 "+bf.name+" fährt als Beifahrer mit!");
+    if(MPs)netSend({t:"mitfahrt",on:1});}}
 function aussteigen(){
   if(!fahren)return;fahren=false;
   var a=driveCar||window.autoRec;
@@ -1974,6 +1982,10 @@ function aussteigen(){
   document.getElementById("nitroBtn").style.display="none";
   document.getElementById("hornBtn").style.display="none";
   document.getElementById("speedo").style.display="none";
+  var bf2=sims[1];
+  if(bf2&&bf2._bf){bf2._bf=false;bf2.mesh.visible=true;bf2.pose="stand";bf2.state="idle";
+    bf2.x=a.mesh.position.x-Math.cos(carRot)*1.6;bf2.z=a.mesh.position.z+Math.sin(carRot)*1.6;
+    if(MPs)netSend({t:"mitfahrt",on:0});}
   hint(lackiert?"🎨 Auto umlackiert & versteckt — die Polizei hat die Spur verloren! 😎":"🚶 Ausgestiegen");}
 function autoFahr(dt){
   var a=driveCar||window.autoRec;if(!a){fahren=false;return;}
@@ -2011,6 +2023,8 @@ function autoFahr(dt){
     driveKopf[dl].material.opacity=nn2?0.85:0;
     driveHeck[dl].position.set(m.position.x-fdx*2.0+ppx*0.5*sd2,0.75,m.position.z-fdz*2.0+ppz*0.5*sd2);
     driveHeck[dl].material.opacity=brems?0.95:(nn2?0.55:0);}
+  var bf9=sims[1];
+  if(bf9&&bf9._bf){bf9.x=m.position.x+Math.cos(carRot)*0.8;bf9.z=m.position.z-Math.sin(carRot)*0.8;bf9.rot=carRot;bf9.pose="sit";}
   camTx=m.position.x;camTz=m.position.z;updCam();}
 document.getElementById("exitCar").onclick=aussteigen;
 document.getElementById("nitroBtn").onclick=function(){if(fahren){nitro=1.6;beep(180,.3,"sawtooth",.05);var b=this;b.style.transform="scale(1.2)";setTimeout(function(){b.style.transform="";},200);}};
@@ -2328,9 +2342,10 @@ function updNpcs(dt,now){
 function updSim(s,si,dt,now){
   if(MPs&&!mpHost){ // Gast: Host-Positionen weich übernehmen
     if(s.net){s._netMoved=Math.hypot(s.net.x-s.x,s.net.z-s.z)>0.05;s.x+=(s.net.x-s.x)*Math.min(1,dt*8);s.z+=(s.net.z-s.z)*Math.min(1,dt*8);
-      s.rot=s.net.r;s.pose=s.net.p;if(s.net.nd)s.needs=s.net.nd;if(s.net.e&&s.net.e!==s._lastE){simEmoji(s,s.net.e);s._lastE=s.net.e;}}}
+      s.rot=s.net.r;s.pose=s.net.p;if(s.net.nd)s.needs=s.net.nd;if(s.net.v!==undefined)s.mesh.visible=s.net.v;if(s.net.e&&s.net.e!==s._lastE){simEmoji(s,s.net.e);s._lastE=s.net.e;}}}
   else{
     if(s.state==="work")return;
+    if(s._bf)return; // sitzt als Beifahrer im Auto
     var sv9=steerVec(si);
     if(sv9){
       if(s.state==="use"&&s.target){s.target.busy=false;s.target=null;}
@@ -3045,7 +3060,7 @@ function loop(now){
       if(steerNetT<=0){steerNetT=0.09;var act9=steerActive();
         if(act9||steerWasActive){netFast({t:"steer",x:act9?steer.x:0,z:act9?steer.z:0});steerWasActive=act9;}}}
     simTick+=dt;if(simTick>0.35){simTick=0;updHUD();if(!MPs||mpHost){checkAch();checkQuest();checkTeamQ();}
-      if(MPs&&mpHost)netFast({t:"sims",ca:(fahren&&driveCar?{x:driveCar.mesh.position.x,z:driveCar.mesh.position.z,r:carRot,vi:verkehr.indexOf(driveCar)}:null),a:sims.map(function(s){return {x:s.x,z:s.z,r:s.rot,p:s.pose,nd:s.needs};}),k:kinder.map(function(k){return {x:k.x,z:k.z,r:k.rot,b:k.baby,n:k.name};}),np:npcs.map(function(n){return {t:n.typ,x:n.x,z:n.z,r:n.rot};})});
+      if(MPs&&mpHost)netFast({t:"sims",ca:(fahren&&driveCar?{x:driveCar.mesh.position.x,z:driveCar.mesh.position.z,r:carRot,vi:verkehr.indexOf(driveCar)}:null),a:sims.map(function(s){return {x:s.x,z:s.z,r:s.rot,p:s.pose,nd:s.needs,v:s.mesh.visible};}),k:kinder.map(function(k){return {x:k.x,z:k.z,r:k.rot,b:k.baby,n:k.name};}),np:npcs.map(function(n){return {t:n.typ,x:n.x,z:n.z,r:n.rot};})});
       if(MPs&&mpHost){netTick++;if(netTick%8===0){netSend({t:"uhr",u:uhrzeit,d:tag});
         netSend({t:"love",v:liebe,ve:verlobt,he:verheiratet,sk:skills,ar:arbeiten,st:stats,ac:achDone});
         var wa9=furn.filter(function(f9){return f9.grow||f9.beet;}).map(function(f9){return {fid:f9.fid,w:f9.wachs||0};});
