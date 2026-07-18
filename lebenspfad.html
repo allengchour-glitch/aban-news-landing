@@ -226,7 +226,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 <button id="emoBtn" class="hide" title="Emotes (Tasten 1–6)">😊</button>
 <div id="emoFan" class="hide"></div>
 <!-- 💞 Begegnungs-Aktion wählen (zwei Figuren treffen sich) -->
-<div id="meetPick" class="hide" style="position:fixed;left:50%;bottom:158px;transform:translateX(-50%);z-index:30;display:flex;flex-direction:column;align-items:center;gap:6px;background:rgba(255,253,246,.95);border:2px solid #ff9ecf;border-radius:16px;padding:9px 13px;box-shadow:0 12px 32px rgba(120,40,80,.28);max-width:92vw">
+<div id="meetPick" class="hide" style="position:fixed;left:50%;bottom:158px;transform:translateX(-50%);z-index:30;display:flex;flex-direction:column;align-items:center;gap:6px;background:rgba(255,253,246,.95);border:2px solid #ff9ecf;border-radius:16px;padding:9px 13px;box-shadow:0 12px 32px rgba(120,40,80,.28);max-width:min(480px,calc(100vw - 128px))">
   <div style="font-weight:900;color:#c23a7a;font-size:.82rem">💞 Was macht ihr zusammen?</div>
   <div id="meetPickRow" style="display:flex;gap:7px;flex-wrap:wrap;justify-content:center"></div>
 </div>
@@ -435,6 +435,7 @@ var ACHIEVEMENTS=[
   {id:"allrounder",emoji:"🌈",titel:"Allrounder",cond:function(p){return p.geld>=15&&p.glueck>=15&&p.wissen>=15&&p.freunde>=15;}}
 ];
 function achDef(id){for(var i=0;i<ACHIEVEMENTS.length;i++)if(ACHIEVEMENTS[i].id===id)return ACHIEVEMENTS[i];return null;}
+function buzz(pat){try{if(OPT.motion&&navigator.vibrate)navigator.vibrate(pat||30);}catch(e){}} // 📳 Haptik (folgt dem Bewegung-Schalter)
 function unlockAch(id){if(LPACH[id])return false;var a=achDef(id);if(!a)return false;
   LPACH[id]=Date.now();lsSet("lp_ach",JSON.stringify(LPACH));
   try{announce("🏆 ERFOLG: "+a.emoji+" "+a.titel,"#ffe08a");showHint("Neuer Erfolg freigeschaltet: "+a.emoji+" "+a.titel+" 🎉",3600);
@@ -1583,8 +1584,9 @@ function meetTogether(ai,bi,x,z,kind){ // 🤝 zwei Figuren treffen sich -> wend
   confetti(x,z,kind==="kuss"?0xff6ab0:0x8affc0,kind==="tanz"?34:24);
   beep(kind==="kuss"?988:880,.12,"triangle",.06);setTimeout(function(){beep(1174,.2,"triangle",.06);},140);}
 var MEET_ACTS=[["🤝","High-Five","highfive"],["🫂","Kuscheln","umarmung"],["😘","Küsschen","kuss"],["💃","Tanzen","tanz"],["🎉","Jubeln","jubel"],["👋","Winken","wink"]];
-function meetPickShow(){var el=document.getElementById("meetPick"),row=document.getElementById("meetPickRow");
-  if(!el||!row||!myTurn())return; // nur wer dran ist, wählt die gemeinsame Aktion (Standard-Jubel läuft schon)
+function meetPickShow(asReply){var el=document.getElementById("meetPick"),row=document.getElementById("meetPickRow");
+  if(!el||!row)return;if(!asReply&&!myTurn())return; // wer dran ist wählt — der getroffene Partner darf EINMAL erwidern (asReply)
+  window._lpMeetReply=!!asReply;
   row.innerHTML="";MEET_ACTS.forEach(function(a){var bt=document.createElement("button");
     bt.textContent=a[0];bt.title=a[1];
     bt.style.cssText="border:2px solid rgba(190,90,140,.35);background:#fff;border-radius:12px;width:46px;height:46px;font-size:1.35rem;cursor:pointer;line-height:1";
@@ -1592,7 +1594,7 @@ function meetPickShow(){var el=document.getElementById("meetPick"),row=document.
   el.classList.remove("hide");clearTimeout(el._t);el._t=setTimeout(function(){el.classList.add("hide");},7000);}
 function meetDoChosen(kind){var m=window._lpMeet,el=document.getElementById("meetPick");if(el)el.classList.add("hide");
   if(!m)return;m.pairs.forEach(function(pr){meetTogether(pr.a,pr.b,m.x,m.z,kind);});
-  if(NET.on&&myTurn())netSend({t:"meetact",k:kind});beep(660,.05,"triangle",.04);} // Partner sieht dieselbe Geste
+  if(NET.on&&(myTurn()||window._lpMeetReply)){netSend({t:"meetact",k:kind});window._lpMeetReply=false;}beep(660,.05,"triangle",.04);} // Partner sieht dieselbe Geste (auch die Erwiderung)
 function updEmotes(dt){ /* Limb-sicher: Gruppen-Bewegung fuer ALLE Figuren, Arm-Posen nur wenn Limbs da (Toon) */
   for(var i=0;i<pawns.length;i++){var pw=pawns[i],e=pw.userData.emote;if(!e)continue;
     e.t+=dt;var L=pw.userData.limbs;
@@ -2092,7 +2094,7 @@ function showWheel(n,done){
     var seg=Math.floor(((-Math.PI/2-rot)%(Math.PI/3)+Math.PI/3)%(Math.PI/3)*0+rot/(Math.PI/3));
     if(seg!==lastSeg){lastSeg=seg;if(k<0.96)beep(420+((seg%6)+6)%6*30,.03,"square",.025);}
     if(k<1){requestAnimationFrame(anim);}
-    else{beep(880,.18,"triangle",.07);
+    else{beep(880,.18,"triangle",.07);buzz(40);
       setTimeout(function(){_radDiv.style.opacity=0;_radDiv.style.transform="translate(-50%,-50%) scale(.7)";
         setTimeout(function(){_radDiv.style.display="none";},350);done();},650);}}
   requestAnimationFrame(anim);
@@ -2246,7 +2248,7 @@ function nextTurn(){
 function finishPlayer(p){if(!p.hist)p.hist=[];p.hist.push({g:p.geld,h:p.glueck,w:p.wissen,f:p.freunde});
   p.done=true;announce("🏁 "+p.name+" hat den Lebensabend erreicht!","#f0c8ff");
   p.bio.push("erreichte den Lebensabend nach "+G.round+" Runden voller Geschichten");snap(G.players.indexOf(p),"🏁","Der Lebensabend");
-  beep(880,.4,"triangle",.08);
+  beep(880,.4,"triangle",.08);buzz([60,50,60,50,120]);
   (function(){var f=fields[p.tile];if(f)for(var c=0;c<3;c++)(function(cc){setTimeout(function(){confetti(f.x+(Math.random()-0.5)*4,f.z+(Math.random()-0.5)*4,0xf0c8ff);},cc*200);})(c); // 🎆 Ziel-Erreicht-Höhepunkt
     jingle();setTimeout(jingle,420);zoomPunch(0.18);colorFlash("245,200,255",false);})();
   G.phase="idle";endTurnSoon();
@@ -2260,7 +2262,7 @@ function playerDeath(p,how){
   // Trauer-Moment: Welt verdunkelt sich, Glocke schlägt dreimal
   var mo=document.getElementById("mourn");mo.style.opacity=1;
   setTimeout(function(){mo.style.opacity=0;},3400);
-  tollBell(3);camShake=1.0;window._musDuckUntil=Date.now()+3600; // 🔇 Musik während des Trauer-Moments dämpfen
+  tollBell(3);camShake=1.0;window._musDuckUntil=Date.now()+3600;buzz([120,80,120]); // 🔇 Musik während des Trauer-Moments dämpfen
   announce("⚰️ "+p.name.toUpperCase()+" IST GESTORBEN","#8a8a9a");
   showHint(how||"Das Leben ist kurz — manchmal kürzer.",3800);
   if(pw){pw.rotation.z=Math.PI/2;pw.position.y=0.3;
@@ -3188,7 +3190,8 @@ function netApply(m){
     if(m.cfgs)NET.cfgs=m.cfgs;return;}
   if(m.t==="sync"){netApplySync(m);return;} // 🔄 vollständiger State-Snapshot (Reconnect/Resync)
   if(m.t==="chk"){netCheckChk(m);return;} // Desync-Erkennung per Host-Checksum
-  if(m.t==="meetact"){var mm=window._lpMeet;if(mm)mm.pairs.forEach(function(pr){meetTogether(pr.a,pr.b,mm.x,mm.z,m.k);});return;} // gewählte Begegnungs-Geste beim Partner spielen
+  if(m.t==="meetact"){var mm=window._lpMeet;if(mm){mm.pairs.forEach(function(pr){meetTogether(pr.a,pr.b,mm.x,mm.z,m.k);});
+    if(!mm._replied&&mm.pairs.some(function(pr){return pr.b===NET.my;})){mm._replied=1;meetPickShow(true);showHint("💫 Erwidere die Geste!",2600);}}return;} // Begegnung ist GEGENSEITIG: Getroffener darf einmal antworten
   if(m.t==="pres"){NET.present=m.a||[];renderNetHud();netCheckPause();return;} // Host-Broadcast: wer ist verbunden
   if(m.t==="drop"){
     var di=m.i|0;
@@ -4245,6 +4248,10 @@ function shortMileChain(p){ // ⚡ Kurz-Modus: das große Lebens-Kapitel — Hoc
   if(p.fam.partner&&!p.fam.askedK){p.fam.askedK=true;kidsCard(p,function(){shortMileChain(p);});return;}
   if(!(p.items&&p.items.haus)&&!p.fam.askedH){p.fam.askedH=true;hausCard(p,endTurnSoon);return;}
   endTurnSoon();}
+var STAT_FLAVOR={ // 🍃 kleine Geschichten zu den Stat-Feldern (rein kosmetisch)
+  h:["Ein Sonnenstrahl nur für dich.","Jemand hat heute an dich gedacht.","Der Tag riecht nach Sommer."],
+  w:["Ein Buch, das alles ändert.","Ein Aha-Moment mitten im Alltag.","Plötzlich ergibt alles Sinn."],
+  f:["Ein Wiedersehen am Wegesrand.","Jemand bleibt extra für dich stehen.","Altes Lachen, neue Nähe."]};
 function handleField(p,f){
   var ch=chapterOf(p.tile),acc="#"+("00000"+CHAPTERS[ch].accent.toString(16)).slice(-6);
   if(f.type==="m"){
@@ -4264,7 +4271,13 @@ function handleField(p,f){
       if(ch===5&&p.fam.partner&&!p.fam.askedK){p.fam.askedK=true;kidsCard(p,endTurnSoon);return;} // 👶
       if((ch===5||ch===6)&&!(p.items&&p.items.haus)){hausCard(p,endTurnSoon);return;} // 🏠 Eigenheim
     }
-    var mOpts=[{l:"Weiter auf dem Pfad ▶",sub:"+2 ❤️ Glück",fn:function(){p.glueck+=2;p.bio.push("schloss das Kapitel "+CHAPTERS[Math.max(0,ch-1)].n.toLowerCase()+" ab");endTurnSoon();}}];
+    if(ch>=5&&!p.comeback&&G.players.length>1){var _avg=0;G.players.forEach(function(pp){_avg+=lifeScore(pp);});_avg/=G.players.length; // 🍀 einmaliger Comeback-Schub für Zurückliegende (rein zustandsbasiert -> lockstep-sicher)
+      if(lifeScore(p)<_avg-8){p.comeback=true;p.geld+=3;p.glueck+=3;
+        announce("🍀 Das Leben meint es nochmal gut mit "+p.name+"!","#7ad9a0");
+        floatStat("+3 💰 +3 ❤️","#7ad9a0",fields[p.tile].x,fields[p.tile].z,400);
+        p.bio.push("bekam spät im Leben eine zweite Chance — und ergriff sie");}}
+    var mg=2+Math.min(4,ch); // ⭐ Meilenstein-Glück wächst mit dem Lebensabschnitt
+    var mOpts=[{l:"Weiter auf dem Pfad ▶",sub:"+"+mg+" ❤️ Glück",fn:function(){p.glueck+=mg;p.bio.push("schloss das Kapitel "+CHAPTERS[Math.max(0,ch-1)].n.toLowerCase()+" ab");endTurnSoon();}}];
     var humans=G.players.filter(function(pp){return !pp.bot;}).length;
     if(!NET.on&&humans>=2&&Math.random()<0.9){ /* 🎮 Bonus-Minispiel fast immer anbieten — Minispiele leben jetzt IM Spiel (User-Wunsch), nur lokal + echte Menschen */
       mOpts.push({l:"🎮 Bonus-Minispiel!",sub:"zu zweit spielen · danach +2 ❤️ für ALLE",fn:function(){
@@ -4272,9 +4285,10 @@ function handleField(p,f){
           announce("🎮 Bonus-Runde! +2 ❤️ für alle","#ff9ad9");p.bio.push("forderte alle zu einem Minispiel heraus");endTurnSoon();});}});}
     showCard("Meilenstein · "+CHAPTERS[ch].n,"✨ Ein neues Kapitel",MILESTONES[ch]||"Der Pfad geht weiter.",mOpts);
     camShake=0.15;return;}
-  if(f.type==="g+"){var g=Math.round((3+ch*2)*(p.job?p.job.mult:1));p.geld+=g;announce("+"+g+" 💰","#ffd166");
-    floatStat("+"+g+" 💰","#ffd166",f.x,f.z);emote(G.turn,"jubel");confetti(f.x,f.z,0xffc21f,9);colorFlash("150,255,150");
-    if(g>=8){moneyRain(f.x,f.z,14);zoomPunch(0.17);jingle();} // 💰 grosser Gewinn: Regen + Zoom-Punch + Fanfare
+  if(f.type==="g+"){var rg=srand(),g=Math.round((3+ch*2)*(p.job?p.job.mult:1)); // rg: fester Lockstep-Draw für den 🌟-Twist
+    if(rg<0.1)g*=2;p.geld+=g;announce(rg<0.1?"🌟 GLÜCKSSTERN! +"+g+" 💰":"+"+g+" 💰",rg<0.1?"#ffe98a":"#ffd166");
+    floatStat("+"+g+" 💰","#ffd166",f.x,f.z);emote(G.turn,"jubel");confetti(f.x,f.z,0xffc21f,rg<0.1?16:9);colorFlash("150,255,150");
+    if(g>=8){moneyRain(f.x,f.z,14);zoomPunch(0.17);jingle();buzz([50,40,80]);} // 💰 grosser Gewinn: Regen + Zoom-Punch + Fanfare
     beep(784,.08,"square",.03);setTimeout(function(){beep(1046,.08,"square",.03);},90);setTimeout(function(){beep(1318,.14,"triangle",.05);},180);endTurnSoon();return;}
   if(f.type==="g-"){var c2=2+ch+(p.fam?p.fam.kids:0);
     var short=Math.max(0,c2-p.geld);p.geld=Math.max(0,p.geld-c2);
@@ -4282,9 +4296,10 @@ function handleField(p,f){
     else announce("−"+c2+" 💰 (Rechnungen)","#ff8a8a");
     floatStat("−"+c2+" 💰","#ff8a8a",f.x,f.z);emote(G.turn,"trauer");tears(f.x,f.z);colorFlash("255,90,90",c2>=5); // Figur sackt zusammen + 💧 + roter Blitz
     beep(220,.15,"sawtooth",.05);endTurnSoon();return;}
-  if(f.type==="h"){p.glueck+=2;announce("+2 ❤️","#ff9ad9");floatStat("+2 ❤️","#ff9ad9",f.x,f.z);emote(G.turn,"jubel");confetti(f.x,f.z,0xff5db8,8);beep(659,.12,"triangle",.05);setTimeout(function(){beep(880,.18,"triangle",.05);},110);endTurnSoon();return;}
-  if(f.type==="w"){p.wissen+=2;announce("+2 🧠","#7db8ff");floatStat("+2 🧠","#7db8ff",f.x,f.z);emote(G.turn,"jubel");confetti(f.x,f.z,0x2f7dff,8);beep(523,.1,"triangle",.05);setTimeout(function(){beep(659,.1,"triangle",.05);},100);setTimeout(function(){beep(784,.16,"triangle",.05);},200);endTurnSoon();return;}
-  if(f.type==="f"){var fb=2+((p.fam&&p.fam.dog&&srand()<0.5)?1:0);
+  if(f.type==="h"){var rh=srand(),hv=rh<0.1?4:2;p.glueck+=hv;announce(rh<0.1?"🌟 +4 ❤️":"+2 ❤️","#ff9ad9");floatStat("+"+hv+" ❤️","#ff9ad9",f.x,f.z);if(rh>0.62)showHint(STAT_FLAVOR.h[(rh*97|0)%STAT_FLAVOR.h.length],2600);emote(G.turn,"jubel");confetti(f.x,f.z,0xff5db8,rh<0.1?15:8);beep(659,.12,"triangle",.05);setTimeout(function(){beep(880,.18,"triangle",.05);},110);endTurnSoon();return;}
+  if(f.type==="w"){var rw=srand(),wv=rw<0.1?4:2;p.wissen+=wv;announce(rw<0.1?"🌟 +4 🧠":"+2 🧠","#7db8ff");floatStat("+"+wv+" 🧠","#7db8ff",f.x,f.z);if(rw>0.62)showHint(STAT_FLAVOR.w[(rw*97|0)%STAT_FLAVOR.w.length],2600);emote(G.turn,"jubel");confetti(f.x,f.z,0x2f7dff,rw<0.1?15:8);beep(523,.1,"triangle",.05);setTimeout(function(){beep(659,.1,"triangle",.05);},100);setTimeout(function(){beep(784,.16,"triangle",.05);},200);endTurnSoon();return;}
+  if(f.type==="f"){var rf=srand(),dogB=(p.fam&&p.fam.dog&&srand()<0.5)?1:0,fb=2+dogB;if(rf<0.1)fb+=2; // rf ZUERST (feste Draw-Reihenfolge), 🌟 = +2 extra
+    if(rf>0.62)showHint(STAT_FLAVOR.f[(rf*97|0)%STAT_FLAVOR.f.length],2600);
     var humansF=G.players.filter(function(pp){return !pp.bot;}).length;
     if(!NET.on&&humansF>=2&&Math.random()<0.3){ /* 🎮 Freundschafts-Duell: gelegentliches Minispiel auf dem Freunde-Feld */
       p.freunde+=fb;
@@ -4295,7 +4310,7 @@ function handleField(p,f){
         {l:"Lieber weiterziehen ▶",sub:"+"+fb+" 👥 wie gewohnt",fn:function(){endTurnSoon();}}]);
       floatStat("+"+fb+" 👥","#8affc0",f.x,f.z);return;}
     p.freunde+=fb; // 🐕 Hund bringt gelegentlich +1 👥
-    announce("+"+fb+" 👥"+(fb>2?" (🐕 wedelt!)":""),"#8affc0");floatStat("+"+fb+" 👥","#8affc0",f.x,f.z);emote(G.turn,"jubel");confetti(f.x,f.z,0x1fd97a,8);
+    announce((rf<0.1?"🌟 ":"")+"+"+fb+" 👥"+(dogB?" (🐕 wedelt!)":""),"#8affc0");floatStat("+"+fb+" 👥","#8affc0",f.x,f.z);emote(G.turn,"jubel");confetti(f.x,f.z,0x1fd97a,rf<0.1?15:8);
     beep(523,.14,"triangle",.05);setTimeout(function(){beep(523,.14,"triangle",.05);beep(659,.14,"triangle",.04);},140);endTurnSoon();return;}
   if(f.type==="q"){quizCard(p);return;} // ❓ Quiz-Karte
   if(f.type==="x"){tauschCard(p);return;} // 🔄 Tausch-Event
