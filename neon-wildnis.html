@@ -1011,6 +1011,9 @@ function updMonsters(dt){
     var tel=false;
     if(e.boss){
       if(e.slamCd==null)e.slamCd=4.5+Math.random()*3;
+      if(!e.ph2&&e.maxhp&&e.hp<=e.maxhp*0.5){e.ph2=true;e.spd=(e.spd||3)*1.3; /* 😡 Phase 2 ab halbem Leben: schneller, rot glühend, dichtere Slams */
+        e.mesh.traverse(function(n){if(n.isMesh&&n.material&&n.material.emissive){if(!n.material._enr){n.material=n.material.clone();n.material._enr=1;}n.material.emissive.setHex(0xff2020);n.material.emissiveIntensity=Math.max(n.material.emissiveIntensity||0,0.55);}});
+        if(typeof announce==="function")announce("😡 Der Boss RAST!","#ff5c6a");shake=Math.max(shake,0.5);if(typeof sfx==="function")sfx(90,0.5,"sawtooth",0.08,45);}
       if(e.slamT>0){ tel=true; e.slamT-=dt;
         if(e.warnRing)e.warnRing.material.opacity=0.35+0.5*Math.abs(Math.sin((1.0-e.slamT)*20));
         if(e.slamT<=0){ /* Detonation */
@@ -1019,11 +1022,11 @@ function updMonsters(dt){
           if(typeof spawnShock==="function")spawnShock(e.slamX,e.slamZ,e.slamR*1.4,0xff2d3a);
           shake=Math.max(shake,0.72);if(typeof sfx==="function")sfx(70,0.42,"square",0.09,40);
           if(e.warnRing){scene.remove(e.warnRing);e.warnRing.geometry.dispose();e.warnRing.material.dispose();e.warnRing=null;}
-          e.slamCd=5+Math.random()*3;
+          e.slamCd=e.ph2?(3+Math.random()*2):(5+Math.random()*3);
         }
       } else { e.slamCd-=dt;
         if(e.slamCd<=0&&d<12&&!dead){ /* Slam anwerfen — Zielort = aktuelle Spielerposition (Ausweich-Fenster) */
-          e.slamT=1.0;e.slamX=player.position.x;e.slamZ=player.position.z;e.slamR=4.2;tel=true;
+          e.slamT=1.0;e.slamX=player.position.x;e.slamZ=player.position.z;e.slamR=e.ph2?5.0:4.2;tel=true;
           var wg=new THREE.RingGeometry(e.slamR-0.28,e.slamR,44);wg.rotateX(-Math.PI/2);
           e.warnRing=new THREE.Mesh(wg,new THREE.MeshBasicMaterial({color:0xff2d3a,transparent:true,opacity:0.6,side:THREE.DoubleSide,depthWrite:false}));
           e.warnRing.position.set(e.slamX,groundH(e.slamX,e.slamZ)+0.13,e.slamZ);scene.add(e.warnRing);
@@ -1067,7 +1070,7 @@ function updMonsters(dt){
 }
 
 // ---------- Umgebungs-Deko (instanziert, 1 Draw-Call pro Typ) ----------
-var ambientGroups=[],fireflies=[],fogWisps=[],pollen=[],butterflies=[],leaves=[],birds=[],clouds=[];
+var ambientGroups=[],fireflies=[],fogWisps=[],pollen=[],butterflies=[],leaves=[],birds=[],clouds=[],windA=0;
 var _m4=new THREE.Matrix4(),_q4=new THREE.Quaternion(),_pos3=new THREE.Vector3(),_scl3=new THREE.Vector3(),_up=new THREE.Vector3(0,1,0);
 function instMesh(geo,mat,count){var im=new THREE.InstancedMesh(geo,mat,count);im.castShadow=false;im.receiveShadow=false;scene.add(im);ambientGroups.push(im);return im;}
 function setInst(im,idx,x,y,z,s,ry){_pos3.set(x,y,z);_q4.setFromAxisAngle(_up,ry||0);_scl3.set(s,s,s);_m4.compose(_pos3,_q4,_scl3);im.setMatrixAt(idx,_m4);}
@@ -1185,6 +1188,7 @@ function buildAmbient(){
 function updDucks(dt){if(!window._ducks)return;for(var i=0;i<window._ducks.length;i++){var d=window._ducks[i];d.a+=dt*d.sp;
   var dx=d.cx+Math.cos(d.a)*d.r,dz=d.cz+Math.sin(d.a)*d.r;d.m.position.set(dx,d.y0+Math.sin(d.a*3)*0.03,dz);d.m.rotation.y=-d.a+1.57;}}
 function updAmbient(dt){
+  windA+=dt*0.05;var wdx=Math.cos(windA)*0.5,wdz=Math.sin(windA*0.7)*0.35; /* 🌬️ kohärente Windrichtung — alles driftet gemeinsam */
   // Glühwürmchen nur nachts, um den Spieler herum
   var showFF=isNight;
   for(var i=0;i<fireflies.length;i++){var f=fireflies[i];
@@ -1202,7 +1206,7 @@ function updAmbient(dt){
   for(var pi2=0;pi2<pollen.length;pi2++){var po=pollen[pi2];
     if(!showPo){if(po.m.visible)po.m.visible=false;continue;}
     if(!po.m.visible){po.m.visible=true;po.x=player.position.x+(rnd()-0.5)*40;po.z=player.position.z+(rnd()-0.5)*40;po.y=groundH(po.x,po.z)+0.4+rnd()*4;}
-    po.ph+=dt*po.sp;po.y+=po.vy*dt;po.x+=Math.sin(po.ph)*0.15*dt;
+    po.ph+=dt*po.sp;po.y+=po.vy*dt;po.x+=Math.sin(po.ph)*0.15*dt+wdx*dt;po.z+=wdz*dt;
     if(po.y>groundH(po.x,po.z)+7||Math.hypot(po.x-player.position.x,po.z-player.position.z)>44){po.x=player.position.x+(rnd()-0.5)*40;po.z=player.position.z+(rnd()-0.5)*40;po.y=groundH(po.x,po.z)+0.4;}
     po.m.position.set(po.x,po.y,po.z);po.m.material.opacity=0.35+Math.abs(Math.sin(po.ph))*0.35;}
   // 🦋 Schmetterlinge (Tag): um Spieler flattern, Flügelschlag
@@ -1218,7 +1222,7 @@ function updAmbient(dt){
   for(var li3=0;li3<leaves.length;li3++){var lv=leaves[li3];
     if(isNight){if(lv.m.visible)lv.m.visible=false;continue;}
     if(!lv.m.visible||lv.y<groundH(lv.x,lv.z)+0.1){lv.m.visible=true;lv.x=player.position.x+(rnd()-0.5)*36;lv.z=player.position.z+(rnd()-0.5)*36;lv.y=groundH(lv.x,lv.z)+6+rnd()*3;}
-    lv.ph+=dt*lv.sp;lv.y+=lv.vy*dt;lv.x+=Math.sin(lv.ph)*lv.sway*dt;
+    lv.ph+=dt*lv.sp;lv.y+=lv.vy*dt;lv.x+=Math.sin(lv.ph)*lv.sway*dt+wdx*dt;lv.z+=wdz*dt;
     lv.m.position.set(lv.x,lv.y,lv.z);lv.m.rotation.set(lv.ph,lv.ph*0.7,Math.sin(lv.ph)*0.5);}
   // 🐦 Vögel: über den Spieler kreisen, Flügelschlag (Tag)
   for(var bri=0;bri<birds.length;bri++){var bi5=birds[bri];
@@ -2695,7 +2699,7 @@ function openLoot(lt){
   if(lt.mesh.userData.lid)lt.mesh.userData.lid.rotation.x=-0.9;
   if(lt.mesh.userData.marker)lt.mesh.userData.marker.visible=false;
   var gain,head="📦 Gefunden:";
-  if(lt.type==="chest"){gain={wood:2+((rnd()*4)|0),crystal:1+((rnd()*2)|0),berry:(rnd()*3)|0};}
+  if(lt.type==="chest"){gain={wood:2+((rnd()*4)|0),crystal:1+((rnd()*2)|0),berry:(rnd()*3)|0};if(lt.bonus){gain.crystal+=3+((rnd()*3)|0);head="☄️ KRISTALL-CACHE:";}}
   else if(lt.type==="ruin"){gain={stone:3+((rnd()*4)|0),crystal:(rnd()<0.5?1:0)};}
   else if(lt.type==="barrel"){gain={berry:2+((rnd()*3)|0),meat:(rnd()<0.5?1:0),wood:(rnd()*2)|0};}
   else if(lt.type==="crate"){gain={wood:3+((rnd()*3)|0),stone:1+((rnd()*3)|0)};}
@@ -3005,6 +3009,17 @@ var QUESTS=[
   {t:"Stelle 3 Fackel-Laternen 🔥 an deiner Basis auf",done:function(){return cntStruct("fackel")>=3;},rw:10}
 ];
 var totalWood=0;
+/* 🔁 Endlos-Bounties nach der Quest-Kette: rotierende Tagesziele (eigener RNG — nie rnd/rnd2, Koop-neutral; nur monotone Zähler) */
+var bountyN=0,bounty=null;
+function nextBounty(){var r=mulberry32(((day|0)*31+(bountyN|0))>>>0||1);
+  var pool=[
+    function(){var g=10+((r()*3)|0)*5;return{t:"Erlege "+g+" Monster ⚔️",base:kills,cur:function(){return kills;},goal:g};},
+    function(){var g=2;return{t:"Öffne "+g+" Truhen/Ruinen 📦",base:lootOpened.length,cur:function(){return lootOpened.length;},goal:g};},
+    function(){var g=20+((r()*3)|0)*10;return{t:"Sammle "+g+" Holz 🪵",base:totalWood,cur:function(){return totalWood;},goal:g};},
+    function(){return{t:"Überlebe Welle "+(waveNum+1)+" 🌙",base:waveNum,cur:function(){return waveNum;},goal:1};},
+    function(){var g=6+((r()*2)|0)*3;return{t:"Verdiene "+g+" 💎 in der Arena ⚔️",base:qProg.arenaCr|0,cur:function(){return qProg.arenaCr|0;},goal:g};}
+  ];
+  var b=pool[(r()*pool.length)|0]();b.rw=5+Math.min(10,bountyN);return b;}
 function updNexusProgress(){
   var box=document.getElementById("nexusProg");if(!box)return;
   var active=quest<QUESTS.length&&QUESTS[quest].nexus&&!hasNexus();
@@ -3687,7 +3702,7 @@ function updStructures(dt){
 // ---------- Tag/Nacht ----------
 var monSpawnT=0;
 // 🌙 Nacht-WELLEN (Survivor-Merge Schritt 2): jede Nacht = eskalierende Gegner-Welle
-var waveNum=0,waveToSpawn=0,waveSpawned=0,waveActive=false;
+var waveNum=0,waveToSpawn=0,waveSpawned=0,waveActive=false,_dayCache=null;
 function updDayNight(dt){
   dayT+=dt;var cyc=isNight?NIGHTLEN:DAYLEN;
   if(dayT>=cyc){dayT=0;isNight=!isNight;
@@ -3706,7 +3721,16 @@ function updDayNight(dt){
             if(lt2.mesh&&lt2.mesh.userData){if(lt2.mesh.userData.lid)lt2.mesh.userData.lid.rotation.x=0;if(lt2.mesh.userData.marker)lt2.mesh.userData.marker.visible=true;}}}
         if(_rs>0)setTimeout(function(){announce("📦 Die Wildnis hat neue Schätze versteckt!","#ffd166");},2600);}
       saveGame();
-      monsters.forEach(function(e){scene.remove(e.mesh);clearWarn(e);});monsters.length=0;}
+      monsters.forEach(function(e){scene.remove(e.mesh);clearWarn(e);});monsters.length=0;
+      var rC=mulberry32(((SEED^0x0dca11^(day*2654435761))>>>0)||1); /* ☄️ 50%: Kristall-Cache landet in der Wildnis (eigener RNG, koop-neutral) */
+      if(rC()<0.5){
+        if(_dayCache&&!_dayCache.opened){scene.remove(_dayCache.mesh);var _di=loots.indexOf(_dayCache);if(_di>=0)loots.splice(_di,1);}
+        var _a=rC()*6.28,_rd=120+rC()*(MAP/2-170),_cx2=Math.cos(_a)*_rd,_cz2=Math.sin(_a)*_rd;
+        var _cm=mkChest();_cm.position.set(_cx2,groundH(_cx2,_cz2),_cz2);_cm.rotation.y=rC()*6.28;scene.add(_cm);
+        var _cid="DAY"+day,_co=lootOpened.indexOf(_cid)>=0;
+        _dayCache={id:_cid,type:"chest",bonus:true,mesh:_cm,x:_cx2,z:_cz2,opened:_co};loots.push(_dayCache);
+        if(!_co){var _ci2=compass8(_cx2-player.position.x,_cz2-player.position.z);
+          setTimeout(function(){announce("☄️ Ein Kristall-Cache ist gelandet! "+COMPASS8_AR[_ci2]+" Richtung "+COMPASS8[_ci2]);},2800);}}}
     updWaveHud();}
   var f=dayT/cyc;
   var t; // 0=tiefste Nacht,1=heller Tag
@@ -3901,7 +3925,7 @@ function saveGame(){
     loot:lootOpened,
     fell:resources.filter(function(r){return r.dead;}).map(function(r){return{x:Math.round(r.x),z:Math.round(r.z),rg:r.regrow};}),
     perk:PERK,
-    qp:{f:qProg.flug|0,a:qProg.arenaCr|0,r:qProg.raceWin|0}}; /* 📜 W3-Quest-Fortschritt */
+    qp:{f:qProg.flug|0,a:qProg.arenaCr|0,r:qProg.raceWin|0},bn:bountyN|0}; /* 📜 W3-Quest-Fortschritt + Bounty-Zähler */
   lsSet("nw_save1",JSON.stringify(s));
   // 🏆 Rekord mitschreiben (Sucht-Faktor: eigenen Bestwert schlagen)
   try{var b=JSON.parse(lsGet("nw_best")||"{}");
@@ -4036,7 +4060,12 @@ document.addEventListener("visibilitychange",function(){if(document.visibilitySt
 var _nxT=0;
 function updQuest(dt){
   _nxT-=dt||0;if(_nxT<=0){updNexusProgress();_nxT=0.3;}
-  if(quest>=QUESTS.length)return;
+  if(quest>=QUESTS.length){ /* 🔁 Endlos-Bounties: es gibt IMMER ein nächstes Ziel */
+    if(!bounty){bounty=nextBounty();document.getElementById("questText").textContent="🔁 "+bounty.t;}
+    else if(bounty.cur()-bounty.base>=bounty.goal){var brw=bounty.rw|0;inv.crystal=(inv.crystal|0)+brw;invUpd();
+      burst(player.position.x,player.position.y+2,player.position.z,0xffd166,12);toast("🎁 Bounty erfüllt: +"+brw+" 💎");
+      bountyN++;bounty=nextBounty();document.getElementById("questText").textContent="🔁 "+bounty.t;saveGame();}
+    return;}
   if(QUESTS[quest].done()){
     burst(player.position.x,player.position.y+2,player.position.z,0xffd166,12);
     var wasNexus=QUESTS[quest].nexus;
@@ -4045,7 +4074,7 @@ function updQuest(dt){
     if(rw>0){inv.crystal=(inv.crystal|0)+rw;invUpd();toast("🎁 Quest-Belohnung: +"+rw+" 💎");}
     if(wasNexus)showWinScreen(); /* 🏆 Nexus bleibt der grosse Sieg — Folge-Quests kommen danach */
     if(quest<QUESTS.length){announce("✅ Ziel erreicht! Nächstes Ziel…");document.getElementById("questText").textContent=QUESTS[quest].t;}
-    else{document.getElementById("questText").textContent="🏆 Alle Ziele geschafft — überlebe weiter!";
+    else{document.getElementById("questText").textContent="🏆 Alle Ziele geschafft — überlebe weiter!";bounty=null;
       if(!wasNexus)announce("🏆 Wildnis-Meister!");}
     updNexusProgress();saveGame();
   }
@@ -4129,6 +4158,9 @@ function updMinimap(){var cv=document.getElementById("minimap");if(!cv||!running
     for(var si=0;si<stations.length;si++){var stn=stations[si],sdx=stn.x-px,sdz=stn.z-pz,maxRs=R-8;if(Math.hypot(sdx,sdz)*SC>maxRs){var sa=Math.atan2(sdz,sdx),ex=cx+Math.cos(sa)*maxRs,ey=cy+Math.sin(sa)*maxRs;ctx.font="8px sans-serif";ctx.fillText(stn.icon,ex,ey);ctx.save();ctx.translate(ex,ey);ctx.rotate(sa);ctx.fillStyle="#ffd166";ctx.beginPath();ctx.moveTo(7,0);ctx.lineTo(2,-2.5);ctx.lineTo(2,2.5);ctx.closePath();ctx.fill();ctx.restore();ctx.font="10px sans-serif";}else{var ps=pt(stn.x,stn.z);ctx.fillText(stn.icon,ps[0],ps[1]);}}} /* 📍 Off-Map: Icon+Pfeil am Rand */
   // Ressourcen (grün Baum / grau Fels / cyan Kristall) — nur nahe
   for(var r=0;r<resources.length;r++){var rs=resources[r];if(rs.dead)continue;var dx=rs.x-px,dz=rs.z-pz;if(dx*dx+dz*dz>95*95)continue;var p2=pt(rs.x,rs.z);ctx.fillStyle=rs.type==="tree"?"#3fbf5f":(rs.type==="crystal"?"#7de3ff":(rs.type==="bush"?"#ff6ab0":"#9aa"));ctx.fillRect(p2[0]-1,p2[1]-1,2,2);}
+  if(typeof loots!=="undefined")for(var li=0;li<loots.length;li++){var lt2=loots[li];if(lt2.opened)continue;var ldx=lt2.x-px,ldz=lt2.z-pz;if(ldx*ldx+ldz*ldz>95*95)continue;var pl=pt(lt2.x,lt2.z); /* 📦 ungeöffnete Schätze */
+    if(lt2.type==="chest"||lt2.type==="grave"){ctx.fillStyle=lt2.bonus?"#ffef8a":"#ffd166";ctx.save();ctx.translate(pl[0],pl[1]);ctx.rotate(Math.PI/4);ctx.fillRect(-2,-2,4,4);ctx.restore();}
+    else if(lt2.type==="ruin"){ctx.fillStyle="#7de3ff";ctx.fillRect(pl[0]-2,pl[1]-2,4,4);}}
   // Gegner (rot)
   if(typeof monsters!=="undefined")for(var m=0;m<monsters.length;m++){var e=monsters[m];if(e.boss){var bdx=e.x-px,bdz=e.z-pz;if(Math.hypot(bdx,bdz)*SC>R-8){var ba=Math.atan2(bdz,bdx),bx2=cx+Math.cos(ba)*(R-8),by2=cy+Math.sin(ba)*(R-8);ctx.fillStyle="#ff2d6f";ctx.save();ctx.translate(bx2,by2);ctx.rotate(ba);ctx.beginPath();ctx.moveTo(7,0);ctx.lineTo(1,-3.5);ctx.lineTo(1,3.5);ctx.closePath();ctx.fill();ctx.restore();continue;}}var p3=pt(e.x,e.z);ctx.fillStyle=e.boss?"#ff2d6f":"#ff5a5a";ctx.beginPath();ctx.arc(p3[0],p3[1],e.boss?3:2,0,6.283);ctx.fill();}
   // Partner (Koop, cyan) — IMMER anzeigen: bei Distanz am Minimap-Rand festhalten + Richtungspfeil
@@ -4262,7 +4294,8 @@ function netStart(role,code){
 }
 function onNetMsg(d){
   if(!d)return;
-  if(d.t==="start"&&NET.role!=="host"){NET_FORCE_SEED=d.seed;NET.on=true;spawnRemote();startGame(true);sendMyChar();return;} /* join ODER quick-Gast */
+  if(d.t==="start"&&NET.role!=="host"){if(running){NET.on=true;sendMyChar();return;} /* Welt läuft schon -> kein zweiter startGame (Doppel-Start-Guard) */
+    NET_FORCE_SEED=d.seed;NET.on=true;spawnRemote();startGame(true);sendMyChar();return;} /* join ODER quick-Gast */
   if(d.t==="pos"){if(d.n!=null){if(d.n<=(NET._rseq||0))return;NET._rseq=d.n;}
     var tn=performance.now()*0.001;if(NET.rt.tLast>0){var dtp=Math.max(0.02,Math.min(1,tn-NET.rt.tLast));var nvx=(d.x-NET.rt.x)/dtp,nvz=(d.z-NET.rt.z)/dtp;var sp2=Math.hypot(nvx,nvz);if(sp2>12){nvx*=12/sp2;nvz*=12/sp2;}NET.rt.vx=nvx;NET.rt.vz=nvz;}else{NET.rt.vx=0;NET.rt.vz=0;}NET.rt.tLast=tn; /* 🚀 Dead-Reckoning: Geschwindigkeit schätzen */
     NET.rt.x=d.x;NET.rt.z=d.z;NET.rt.ry=d.ry;if(d.hp!==undefined)NET.rt.hp=d.hp;if(NET.remote)NET.remote.visible=true;if(d.st!==undefined)remoteStation(d.st);}
@@ -4418,6 +4451,7 @@ function startGame(fresh){
     if(sv.maxHp)maxHp=sv.maxHp;if(sv.xp!=null)xp=sv.xp;if(sv.level)level=sv.level;if(sv.kills)kills=sv.kills;
     if(sv.perk)for(var pk in PERK)if(typeof sv.perk[pk]==="number")PERK[pk]=sv.perk[pk]; // gewählte Level-Perks zurück
     if(sv.qp){qProg.flug=sv.qp.f|0;qProg.arenaCr=sv.qp.a|0;qProg.raceWin=sv.qp.r|0;}else{qProg.flug=0;qProg.arenaCr=0;qProg.raceWin=0;} /* 📜 W3: defensiv (alte Saves: 0) */
+    bountyN=sv.bn|0;bounty=null;
     if(sv.fell&&sv.fell.length){ // gefällte Bäume/Felsen wieder als gefällt markieren (waren nach Reload wieder da)
       sv.fell.forEach(function(fr){for(var ri=0;ri<resources.length;ri++){var r=resources[ri];
         if(!r.dead&&Math.round(r.x)===fr.x&&Math.round(r.z)===fr.z){r.dead=true;r.regrow=fr.rg||60;
@@ -4428,7 +4462,7 @@ function startGame(fresh){
     // Quest: gespeicherten Stand nehmen, dann erfüllte überspringen
     if(typeof sv.quest==="number")quest=Math.min(sv.quest,QUESTS.length);
     while(quest<QUESTS.length&&QUESTS[quest].done())quest++;
-  } else {qProg.flug=0;qProg.arenaCr=0;qProg.raceWin=0;inv={wood:0,stone:0,crystal:0,berry:0,meat:0};tools={axe:0,pick:0};hp=100;maxHp=100;xp=0;level=1;kills=0;day=1;dayT=0;isNight=false;nights=0;won=false;normInv();player.position.set(NET.on?(NET.role==="host"?-2.5:2.5):0,0,0);
+  } else {qProg.flug=0;qProg.arenaCr=0;qProg.raceWin=0;bountyN=0;bounty=null;inv={wood:0,stone:0,crystal:0,berry:0,meat:0};tools={axe:0,pick:0};hp=100;maxHp=100;xp=0;level=1;kills=0;day=1;dayT=0;isNight=false;nights=0;won=false;normInv();player.position.set(NET.on?(NET.role==="host"?-2.5:2.5):0,0,0);
     var _c=getChar();if(_c&&_c.cls){ // 🔀 Klassen-Bonus (Realm) einmalig auf den frischen Start
       if(_c.cls.atk)PERK.atk+=_c.cls.atk;if(_c.cls.spd)PERK.spd+=_c.cls.spd;
       if(_c.cls.skillcd)PERK.skillcd+=_c.cls.skillcd;
