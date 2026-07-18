@@ -1,6 +1,6 @@
 # 🌲 Wildnis Audit R2 — Plan (22 Batches, 98 bestätigt · Stand 2026-07-18)
 
-Umgesetzt: Batch 1 (RNG-Hygiene) + Batch 2 (State/Save-Regressionen). Rest offen — Anker vor Anwendung grep-verifizieren!
+Umgesetzt: Batches 1,2,3,4,5,7,15,17,20. OFFEN: 6 (Musik-Rework), 8 (killMonster), 9 (Boss/Slowmo), 10 (Balance), 11 (Krit), 12 (Perfekt-Dodge), 13 (Finisher), 14 (Waffen), 16 (KI), 18 (Atmosphäre), 19 (HUD/A11y), 21 (NPC-Beziehungen), 22 (Perf). Anker vor Anwendung grep-verifizieren!
 
 ---
 Batch 1 — RNG-Hygiene: seeded rnd() raus aus allen Laufzeit-Pfaden
