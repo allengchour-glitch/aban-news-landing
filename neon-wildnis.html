@@ -26,8 +26,9 @@
 <meta property="og:url" content="https://abannews.com/neon-wildnis.html">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{width:100%;height:100%;overflow:hidden;background:#0a0e1e;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#eaf2ff;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
-canvas{display:block}
+html,body{width:100%;height:100%;overflow:hidden;overscroll-behavior:none;background:#0a0e1e;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#eaf2ff;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
+canvas{display:block;touch-action:none}
+#stick,.btn,#zoomBtns{touch-action:none}
 #hud{position:fixed;inset:0;pointer-events:none;z-index:2}
 .hide{display:none!important}
 /* Inventar-Leiste oben, safe-area gegen Notch/Browserleiste */
@@ -68,6 +69,7 @@ canvas{display:block}
 #stick{position:absolute;left:calc(20px + env(safe-area-inset-left));bottom:calc(28px + env(safe-area-inset-bottom));width:120px;height:120px;border-radius:50%;background:rgba(20,30,60,.4);border:2px solid rgba(120,200,255,.3);pointer-events:auto}
 #nub{position:absolute;left:35px;top:35px;width:50px;height:50px;border-radius:50%;background:rgba(120,200,255,.55);border:2px solid rgba(200,240,255,.7)}
 .btn{position:absolute;pointer-events:auto;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.7rem;font-weight:800;border:3px solid;background:rgba(20,30,60,.55);backdrop-filter:blur(3px)}
+.btn::after{content:"";position:absolute;inset:-6px;border-radius:50%} /* unsichtbare größere Hitbox */
 #bAct{right:calc(24px + env(safe-area-inset-right));bottom:calc(40px + env(safe-area-inset-bottom));width:78px;height:78px;border-color:#6affc0;color:#eaffe8}
 #bBuild{right:calc(118px + env(safe-area-inset-right));bottom:calc(56px + env(safe-area-inset-bottom));width:60px;height:60px;border-color:#ffd166;color:#fff}
 #bConfirm{right:calc(24px + env(safe-area-inset-right));bottom:calc(130px + env(safe-area-inset-bottom));width:64px;height:64px;border-color:#7de3ff;color:#dff}
@@ -118,6 +120,7 @@ canvas{display:block}
 #ov .chip{background:rgba(20,30,60,.7);border:1px solid rgba(120,200,255,.3);border-radius:20px;padding:8px 14px;font-size:.95rem}
 #ov .chip b{color:#7de3ff}
 .big{display:inline-block;min-width:200px;padding:16px 28px;font-size:1.4rem;font-weight:900;border:none;border-radius:40px;background:linear-gradient(90deg,#6affc0,#7de3ff);color:#0a1024;cursor:pointer;box-shadow:0 8px 30px rgba(100,240,200,.35)}
+#startBtn{position:sticky;bottom:calc(8px + env(safe-area-inset-bottom,0px));z-index:6;box-shadow:0 8px 30px rgba(100,240,200,.5)}
 .ghost{margin-top:12px;background:none;border:1px solid rgba(180,210,255,.4);color:#cfe;border-radius:30px;padding:10px 22px;font-size:1rem;cursor:pointer}
 #ov a.arc{margin-top:16px;color:#9fb3d8;text-decoration:none;font-size:.95rem}
 #ov a.arc:hover{color:#7de3ff}
@@ -3481,12 +3484,13 @@ function findNear(){
 }
 function restAtFire(){
   if(dead)return;
+  if(perfNow-(window._restT||0)<2500)return;window._restT=perfNow; /* Rast-Spam-Bremse */
   hp=maxHp;hpUpd();
   if(typeof heroAct==="function")heroAct("taunt",2.6); /* Rast-Geste (taunt/wave als Sitz-Ersatz) */
   if(player&&typeof burst==="function")burst(player.position.x,groundH(player.position.x,player.position.z)+1,player.position.z,[0xffb347,0xffd166],20);
   if(typeof sfx==="function"){sfx(440,0.16,"triangle",0.05,660);setTimeout(function(){sfx(600,0.2,"sine",0.05,820);},160);}
-  if(NET.on&&NET.remote&&NET.remote.visible&&Math.hypot(NET.remote.position.x-player.position.x,NET.remote.position.z-player.position.z)<7){
-    inv.crystal=(inv.crystal|0)+1;invUpd();window._bondPts=(window._bondPts|0)+2;bondUpd(); /* 🤝 zusammen rasten = inniger Moment */
+  if(NET.on&&NET.remote&&NET.remote.visible&&Math.hypot(NET.remote.position.x-player.position.x,NET.remote.position.z-player.position.z)<7&&perfNow-(window._restCoopT||0)>30000){
+    window._restCoopT=perfNow;inv.crystal=(inv.crystal|0)+1;invUpd();window._bondPts=(window._bondPts|0)+2;bondUpd(); /* 🤝 zusammen rasten (Grant max. alle 30s) */
     announce("🔥🤝 GEMEINSAM gerastet — +1 💎 & euer Band wächst!","#7dffc8");}
   else announce("🔥 Ausgeruht — volle Gesundheit, Spiel gespeichert","#ffd18a");
   if(typeof toast==="function")toast("🔥 Am Feuer gerastet · HP voll · gespeichert");
@@ -3529,6 +3533,7 @@ function talkToNpc(){
   }
 }
 function harvest(){
+  if(dead||!running||paused||perkChoosing||stationOpen)return; /* Guards für alle 4 Call-Sites (Tap/Halten/E/Space) */
   findNear(); // frisch bestimmen → korrekt auch bei Einzelaufruf/Tap
   // Werkbank in der Nähe (und nichts Wichtigeres) → Crafting öffnen
   if(nearMerchant&&!nearMon&&!nearAni&&!buildMode){openTrade();return;}
@@ -3850,8 +3855,16 @@ function stickMove(e){if(stickId===null)return;var t=null;if(e.changedTouches){f
   var rect=stickEl.getBoundingClientRect(),cx=rect.left+rect.width/2,cy=rect.top+rect.height/2;
   var dx=t.clientX-cx,dy=t.clientY-cy,d=Math.hypot(dx,dy),mx=rect.width/2;if(d>mx){dx=dx/d*mx;dy=dy/d*mx;}
   stickV.x=dx/mx;stickV.y=dy/mx;nub.style.left=(35+dx)+"px";nub.style.top=(35+dy)+"px";}
-function stickEnd(){stickId=null;stickV.x=0;stickV.y=0;nub.style.left="35px";nub.style.top="35px";}
+function stickEnd(){stickId=null;stickV.x=0;stickV.y=0;nub.style.left="35px";nub.style.top="35px";stickEl.style.left="";stickEl.style.top="";stickEl.style.bottom="";}
 stickEl.addEventListener("touchstart",function(e){e.preventDefault();stickStart(e);},{passive:false});
+document.addEventListener("touchstart",function(e){ /* 🕹️ Floating-Joystick: Antippen in der linken unteren Zone versetzt den Stick dorthin */
+  if(stickId!==null||paused||!running)return;
+  var t=e.changedTouches&&e.changedTouches[0];if(!t)return;
+  if(t.clientX>innerWidth*0.4||t.clientY<innerHeight*0.3)return;
+  var el=t.target;if(el&&el.closest&&el.closest("#stick,.btn,.sysbtn,#ov,#invBar,#sysRow,#buildMenu,#craftMenu,#tradeMenu,#minimap,button,input"))return;
+  stickEl.style.left=(t.clientX-60)+"px";stickEl.style.top=(t.clientY-60)+"px";stickEl.style.bottom="auto";
+  stickId=t.identifier;stickMove(e);e.preventDefault();
+},{passive:false});
 addEventListener("touchmove",function(e){if(stickId!==null)stickMove(e);},{passive:false});
 addEventListener("touchend",function(e){if(e.changedTouches)for(var i=0;i<e.changedTouches.length;i++)if(e.changedTouches[i].identifier===stickId)stickEnd();});
 addEventListener("touchcancel",function(e){if(e.changedTouches)for(var i=0;i<e.changedTouches.length;i++)if(e.changedTouches[i].identifier===stickId)stickEnd();});
@@ -3891,7 +3904,7 @@ addEventListener("mouseup",function(){mDrag=false;});
 if(!IS_MOB){stickEl.addEventListener("mousedown",function(e){stickStart(e);});addEventListener("mousemove",function(e){if(stickId==="m")stickMove(e);});addEventListener("mouseup",function(e){if(stickId==="m")stickEnd();});}
 function bindTap(id,fn){var b=document.getElementById(id);if(!b)return;b.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();b.__t=performance.now();b.classList.add("pressed");setTimeout(function(){b.classList.remove("pressed");},150);fn();},{passive:false});b.addEventListener("click",function(e){if(performance.now()-(b.__t||0)>500)fn();});} // Hybrid: Maus-Klick zählt, Touch feuert nicht doppelt
 (function(){var b=document.getElementById("bAct");if(!b)return;var iv=null; /* ⚔️ HALTEN = Dauerangriff (240ms-Takt) — kein Button-Hämmern mehr */
-  function fire(){findNear();if(nearMerchant||nearLoot||nearBoard||nearStation)return;harvest();}
+  function fire(){if(dead||!running||paused)return;findNear();if(!nearMon&&!nearAni&&(nearMerchant||nearLoot||nearBoard||nearStation||nearWork||nearNpc||nearFire))return;harvest();} /* Halten öffnet NIE Menüs im Loop */
   b.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();b.__t=performance.now();
     b.classList.add("pressed");setTimeout(function(){b.classList.remove("pressed");},150);
     harvest();clearInterval(iv);iv=setInterval(fire,240);},{passive:false});
