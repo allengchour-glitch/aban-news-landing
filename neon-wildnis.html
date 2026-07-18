@@ -40,7 +40,8 @@ canvas{display:block}
 #topLeft{position:absolute;top:calc(8px + env(safe-area-inset-top));left:12px;font-weight:800}
 #clock{font-size:1rem;background:rgba(10,14,32,.6);border-radius:12px;padding:5px 10px;display:inline-block;border:1px solid rgba(120,200,255,.2)}
 #hpwrap{margin-top:6px;width:150px;max-width:42vw}
-#hpwrap .bar{height:16px;background:rgba(0,0,0,.45);border-radius:9px;overflow:hidden;border:1px solid rgba(255,255,255,.15)}
+#hpwrap .bar{position:relative;height:16px;background:rgba(0,0,0,.45);border-radius:9px;overflow:hidden;border:1px solid rgba(255,255,255,.15)}
+#hpwrap #hpNum{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:800 11px/1 inherit;color:#fff;text-shadow:0 1px 2px #000;pointer-events:none}
 #xpwrap{margin-top:4px;width:150px;max-width:42vw;display:flex;align-items:center;gap:6px}
 #xpwrap #lvlBadge{font-size:.72rem;font-weight:900;color:#ffe08a;background:rgba(0,0,0,.42);border-radius:8px;padding:1px 7px;white-space:nowrap}
 #xpwrap .xbar{flex:1;height:9px;background:rgba(0,0,0,.45);border-radius:6px;overflow:hidden;border:1px solid rgba(255,255,255,.12)}
@@ -96,7 +97,7 @@ canvas{display:block}
 #nightVig{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:0;transition:opacity 1.6s;box-shadow:inset 0 0 160px 40px rgba(120,0,40,.55),inset 0 0 60px 10px rgba(0,0,20,.5)}
 /* schwebende Sammel-Zahlen */
 #floatLayer{position:fixed;inset:0;pointer-events:none;z-index:3;overflow:hidden}
-.floatN{position:absolute;font-weight:900;font-size:1.25rem;text-shadow:0 2px 8px #000;transform:translate(-50%,-50%);will-change:transform,opacity;animation:floatUp 1s ease-out forwards}
+.floatN{position:absolute;font-weight:900;font-size:1.25rem;-webkit-text-stroke:1px rgba(0,0,0,.92);paint-order:stroke fill;text-shadow:0 0 2px #000,1px 1px 0 #000,-1px 1px 0 #000,1px -1px 0 #000,-1px -1px 0 #000,0 2px 8px #000;transform:translate(-50%,-50%);will-change:transform,opacity;animation:floatUp 1s ease-out forwards}
 @keyframes floatUp{0%{opacity:0;transform:translate(-50%,-40%) scale(.6)}18%{opacity:1;transform:translate(-50%,-70%) scale(1.15)}100%{opacity:0;transform:translate(-50%,-160%) scale(1)}}
 .bcard{width:120px;background:rgba(12,18,40,.94);border:2px solid rgba(120,200,255,.3);border-radius:14px;padding:10px;text-align:center;cursor:pointer;transition:transform .1s}
 .bcard:active{transform:scale(.96)}
@@ -183,7 +184,7 @@ canvas{display:block}
   <div id="topLeft">
     <span id="clock">🌅 Tag 1 · Morgen</span>
     <span id="onlineBadge" style="display:inline-block;margin-left:8px;padding:2px 9px;border-radius:11px;font-size:.8rem;font-weight:800;background:rgba(20,26,34,.7);border:1px solid rgba(120,160,190,.4);color:#9fb4c6">🔴 Solo</span>
-    <div id="hpwrap"><div class="bar"><i id="hpFill"></i></div></div>
+    <div id="hpwrap"><div class="bar"><i id="hpFill"></i><span id="hpNum">100/100</span></div></div>
     <div id="xpwrap"><span id="lvlBadge">Lv 1</span><div class="xbar"><i id="xpFill"></i></div></div>
     <div id="bossBar" class="hide"><span id="bossLbl">⚠️ SERAPH</span><div class="bbar"><i id="bossFill"></i></div></div>
     <div id="waveHud" class="hide"></div>
@@ -333,8 +334,8 @@ var motes=null,moteN=IS_MOB?40:70,moteMat=null,_moteT=0;
   motes=new THREE.Points(mg,moteMat);motes.frustumCulled=false;scene.add(motes);})();
 var camera=new THREE.PerspectiveCamera(55,W/H,0.1,600);
 
-var hemi=new THREE.HemisphereLight(0xcfe0ff,0x33424f,0.66);scene.add(hemi); /* Boden-Anteil wärmer-grünlich statt blau */
-var amb=new THREE.AmbientLight(0x3a4658,0.22);scene.add(amb); // Grund-Fülllicht (Schatten nicht pur schwarz, Boden nicht washed)
+var hemi=new THREE.HemisphereLight(0xcfe0ff,0x3c4a34,0.66);scene.add(hemi); /* Boden-Anteil wärmer-grünlich statt blau */
+var amb=new THREE.AmbientLight(0x424636,0.22);scene.add(amb); // Grund-Fülllicht (Schatten nicht pur schwarz, Boden nicht washed)
 var SUN_NOON=new THREE.Color(0xfff2da),SUN_LOW=new THREE.Color(0xffb166); /* Mittag neutral-warm · Morgen/Abend golden */
 var sun=new THREE.DirectionalLight(0xfff2da,1.0);
 sun.position.set(40,80,30);sun.castShadow=true;
@@ -701,7 +702,7 @@ function buildPawn(col,acc){
 buildPawn();
 player.add(pBody);
 var heroModel=null,heroRig=null,rigs=[];
-var ONESHOT={attack:1,attack2:1,attack3:1,charge_release:1,dash_attack:1,wave:1,hit:1};
+var ONESHOT={attack:1,attack2:1,attack3:1,charge_release:1,dash_attack:1,wave:1,hit:1,cast:1,dodge:1,victory:1,taunt:1};
 function makeRig(o,anims){var r={mixer:new THREE.AnimationMixer(o),actions:{},cur:null};
   for(var i=0;i<anims.length;i++){var a=r.mixer.clipAction(anims[i]);if(ONESHOT[anims[i].name]){a.setLoop(THREE.LoopOnce,1);a.clampWhenFinished=true;}r.actions[anims[i].name]=a;}
   r.mixer.addEventListener("finished",function(e){var ca=r.cur?r.actions[r.cur]:null;if(e.action!==ca)return;var a=r.actions.idle;if(!a){r.cur=null;return;}r.cur="idle";a.reset();a.timeScale=1;a.play();if(e.action!==a)e.action.crossFadeTo(a,0.2,false);});
@@ -1425,6 +1426,7 @@ function loadCC0(files,onAll){
 function cc0inst(name,targetH){
   var p=cc0proto[name];if(!p)return null;
   var m=p.clone(true);var s=targetH/(cc0h[name]||1);m.scale.setScalar(s);
+  if(targetH<1.3){m.traverse(function(n){if(n.isMesh)n.castShadow=false;});} /* 📱 kleine Deko wirft keinen Schatten (Draw-Kosten) */
   return m;
 }
 // Skaliert nach FUSSABDRUCK-Breite (für flache Kacheln wie Straßen, deren Höhe ~0 ist)
@@ -1981,7 +1983,11 @@ function onStationDone(score){
   inv.crystal=(inv.crystal|0)+cr;invUpd();
   if(st.badge==="gladiator")qProg.arenaCr=(qProg.arenaCr|0)+cr; /* 📜 W3-Quest (b): Arena-💎 zaehlen */
   if(st.badge==="raser"&&(score|0)>=40)qProg.raceWin=1; /* 📜 W3-Quest (c): Renn-Sieg ab Score 40 */
-  toast(st.icon+" "+st.name+": +"+cr+" 💎");
+  var bests={};try{bests=JSON.parse(lsGet("nw_stbest")||"{}")||{};}catch(e){bests={};}
+  var prev=bests[st.badge]|0,sc2=score|0;
+  if(sc2>prev){bests[st.badge]=sc2;lsSet("nw_stbest",JSON.stringify(bests));
+    if(prev>0){inv.crystal=(inv.crystal|0)+2;invUpd();toast("🏆 NEUER REKORD! +2 💎");}} /* 🏆 Highscore pro Station */
+  toast(st.icon+" "+st.name+": +"+cr+" 💎"+(prev>0?" · Best: "+Math.max(sc2,prev):""));
   var done=stationsDone();
   if(!done[st.badge]){done[st.badge]=1;lsSet("nw_stations",JSON.stringify(done));}
   saveGame();}
@@ -3082,6 +3088,7 @@ function applyRemoteGear(weapon,armor){ /* 🛡️ Partner-Held bekommt seine Au
 }
 function sendMyGear(){try{if(NET.s&&NET.on)NET.s.send({t:"gear",w:equip.weapon|0,a:equip.armor|0,from:NET.role});}catch(e){}}
 function hpUpd(){document.getElementById("hpFill").style.width=Math.max(0,hp/maxHp*100)+"%";
+  var hn=document.getElementById("hpNum");if(hn){var ht=Math.max(0,Math.round(hp))+"/"+maxHp;if(hn._t!==ht){hn._t=ht;hn.textContent=ht;}}
   /* ❤️ W7: pulsierende Warn-Vignette bei kritischem HP (<25%) — klares Überlebens-Feedback */
   var lv=document.getElementById("lowVig");
   if(!lv){lv=document.createElement("div");lv.id="lowVig";
@@ -3153,7 +3160,7 @@ function updDodge(dt){
   else{dodgeT=0;}
   if(rnd()<0.5)burst(nx,player.position.y+0.4,nz,0x9fe8ff,2);
 }
-function damagePlayer(d,src){if(dead)return;if(dodgeT>0)return;sfx(120,0.14,"sawtooth",0.06);/* 💨 Rolle = unverwundbar */d=Math.max(1,d-((ARMOR_DEF[equip.armor]||0)+PERK.def));hp-=d;hurtFlash();if(src)dmgDir(src);heroAct("hit",1.4);if(hp<=0){hp=0;playerDie();}hpUpd();}
+function damagePlayer(d,src){if(dead)return;if(dodgeT>0)return;sfx(120,0.14,"sawtooth",0.06);/* 💨 Rolle = unverwundbar */d=Math.max(1,d-((ARMOR_DEF[equip.armor]||0)+PERK.def));hp-=d;if(typeof floatText==="function")floatText(player.position.x,player.position.y+2.4,player.position.z,"-"+Math.round(d),"#ff5c6a");hurtFlash();if(src)dmgDir(src);heroAct("hit",1.4);if(hp<=0){hp=0;playerDie();}hpUpd();}
 // 💥 Skill (RPG-Fusion aus realm): Schockwelle — AoE-Schaden auf alle nahen Monster, ab Level 2, Cooldown
 var skillCd=0,SKILL_CD=7,_skillShown=false;
 function useSkill(){
@@ -3425,8 +3432,8 @@ function talkToNpc(){
   faceTo(nearNpc.mesh.position.x,nearNpc.mesh.position.z);
   nearNpc.idle=3;nearNpc.emoT=0.1; // NPC bleibt kurz stehen + Emote
   var px=player.position.x,py=player.position.y,pz=player.position.z;
-  if(!nearNpc.gifted){ /* 🎁 einmalige kleine Belohnung pro NPC (Elden-Ring: NPCs schenken was) */
-    nearNpc.gifted=true;var roll=Math.random();
+  if(nearNpc.giftDay!==day){ /* 🎁 kleine Belohnung pro NPC — jeden Tag neu (Grund, ins Dorf zurückzukehren) */
+    nearNpc.giftDay=day;var roll=Math.random();
     if(roll<0.4){inv.berry=(inv.berry||0)+2;invUpd();announce("🗨️ „Nimm Beeren, Reisende·r!“ 🍓 +2","#8affb0");floatText(px,py+2.4,pz,"+2 🍓","#ff8ab0");}
     else if(roll<0.7){inv.crystal=(inv.crystal||0)+1;invUpd();announce("🗨️ „Ein Glückskristall für dich.“ 💎 +1","#8affb0");floatText(px,py+2.4,pz,"+1 💎","#7de3ff");}
     else if(roll<0.9){gainXP(15);announce("🗨️ „Etwas Erfahrung für den Weg.“ ⭐ +15 XP","#8affb0");floatText(px,py+2.4,pz,"+15 XP","#ffe08a");}
@@ -3666,7 +3673,7 @@ function updDayNight(dt){
   var f=dayT/cyc;
   var t; // 0=tiefste Nacht,1=heller Tag
   var vig=document.getElementById("nightVig");
-  if(isNight){t=0.08;var lbl="🌙 Tag "+day+" · Nacht ("+monsters.length+"👾)";document.getElementById("clock").textContent=lbl;
+  if(isNight){t=0.08;var rem=Math.ceil(NIGHTLEN-dayT);var lbl="🌙 Tag "+day+" · ☀️ in "+rem+"s ("+monsters.length+"👾)";document.getElementById("clock").textContent=lbl;
     if(vig)vig.style.opacity=(0.55+Math.sin(perfNow*0.004)*0.12).toFixed(2);}
   else{t=0.72+Math.sin(f*Math.PI)*0.28;var ph=f<0.3?"🌅 Morgen":(f<0.7?"☀️ Mittag":"🌇 Abend");document.getElementById("clock").textContent="Tag "+day+" · "+ph; /* Morgen/Abend heller — wirkte fast wie Nacht (Polier-Pass) */
     // Dämmerungs-Warnung kurz vor der Nacht
@@ -3835,7 +3842,7 @@ function updCamera(dt){
 function lsGet(k){try{return localStorage.getItem(k);}catch(e){return null;}}
 function lsSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
 function saveGame(){
-  if(!running)return;
+  if(!running||NET.on)return; /* 🌐 Koop-Läufe nicht in den Solo-Save schreiben */
   var s={seed:SEED,inv:inv,tools:tools,equip:equip,hp:hp,maxHp:maxHp,xp:xp,level:level,kills:kills,day:day,dayT:dayT,isNight:isNight,nights:nights,quest:quest,won:won,
     px:player.position.x,pz:player.position.z,
     st:structures.map(function(o){return{t:o.type,x:o.x,z:o.z,hp:o.hp};}),
@@ -4061,7 +4068,7 @@ function frame(now){
   requestAnimationFrame(frame);
   var dt=Math.min(0.05,(now-lastT)/1000)||0.016;lastT=now;perfNow=now;
   if(stationOpen){if(running&&!paused)netTick(dt);return;} /* 🎯 Station offen: Welt pausiert (kein 2. WebGL-Render!), Netz-Ticks laufen weiter (sonst Koop-Disconnect) */
-  if(!running||paused||perkChoosing){renderScene();return;}
+  if(!running||paused||perkChoosing){if(NET.on&&running)netTick(dt);renderScene();return;}
   // Bewegung
   var mx=stickV.x,my=stickV.y;
   if(keys.w||keys.arrowup)my-=1;if(keys.s||keys.arrowdown)my+=1;if(keys.a||keys.arrowleft)mx-=1;if(keys.d||keys.arrowright)mx+=1;
@@ -4248,6 +4255,7 @@ function netTick(dt){
   NET.sendT-=dt;
   if(NET.sendT<=0){NET.sendT=0.05;NET.s.sendFast({t:"pos",x:+player.position.x.toFixed(2),z:+player.position.z.toFixed(2),ry:+player.rotation.y.toFixed(2),st:_stCur,hp:Math.max(0,Math.round(hp/maxHp*100))});} /* st = Stations-Flag; hp = Partner-HP-Balken */
   if(NET.remote&&NET.remote.visible){var r=NET.remote;var ox=r.position.x,oz=r.position.z;
+    var _dx=NET.rt.x-r.position.x,_dz=NET.rt.z-r.position.z;if(_dx*_dx+_dz*_dz>64){r.position.x=NET.rt.x;r.position.z=NET.rt.z;ox=NET.rt.x;oz=NET.rt.z;} /* >8m = Teleport statt Gleiten */
     r.position.x+=(NET.rt.x-r.position.x)*Math.min(1,dt*9);r.position.z+=(NET.rt.z-r.position.z)*Math.min(1,dt*9);r.position.y=groundH(r.position.x,r.position.z);r.rotation.y=NET.rt.ry;
     /* 🧑‍🤝‍🧑 Partner-Held animieren: laufen wenn er sich bewegt, sonst idle */
     if(NET.remoteRig){NET.remoteRig.mixer.update(dt);
@@ -4463,6 +4471,8 @@ function startGame(fresh){
     if(window.setCharPreview)window.setCharPreview(curId);
   }
   render();
+  var _sb=document.getElementById("startBtn"),_nb=document.getElementById("newBtn"); /* ▶ Start-Knopf ÜBER das Helden-Grid (mobil ohne Scrollen startbar) */
+  if(_sb){wrap.parentNode.insertBefore(_sb,wrap);if(_nb)wrap.parentNode.insertBefore(_nb,wrap);}
 })();
 document.getElementById("startBtn").onclick=function(){if(paused){togglePause();return;}startGame(false);};
 document.getElementById("newBtn").onclick=function(){try{localStorage.removeItem("nw_save1");}catch(e){}location.reload();};
