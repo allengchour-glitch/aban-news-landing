@@ -229,6 +229,8 @@ canvas{display:block}
     <span class="chip"><b>Ziehen</b> laufen</span>
     <span class="chip"><b>🪓</b> Sammeln/Kämpfen</span>
     <span class="chip"><b>🔨</b> Bauen</span>
+    <span class="chip"><b>💥</b> Skill · <b>💨</b> Rolle</span>
+    <span class="chip"><b>🍓/🍖</b> tippen = essen</span>
   </div>
   <div id="charLbl">Held wählen — oder direkt starten</div>
   <canvas id="charPrev" width="300" height="368"></canvas>
@@ -318,7 +320,8 @@ var nightSky=new THREE.Group();nightSky.visible=false;scene.add(nightSky);
 /* ☀️ W8: Tag-Himmel — Sonnenscheibe + warmer Halo, tagsüber sichtbar (Gegenstück zum Nachthimmel).
    Folgt dem Spieler wie eine Skybox, rein kosmetisch (fog:false). */
 var daySky=new THREE.Group();scene.add(daySky);
-(function(){var sd=new THREE.Mesh(new THREE.SphereGeometry(11,20,20),new THREE.MeshBasicMaterial({color:0xfff2c0,transparent:true,opacity:1}));sd.material.fog=false;sd.position.set(150,165,185);daySky.add(sd);
+var daySun=null,DSUN_NOON=new THREE.Color(0xfff2c0),DSUN_LOW=new THREE.Color(0xff9a55);
+(function(){var sd=new THREE.Mesh(new THREE.SphereGeometry(11,20,20),new THREE.MeshBasicMaterial({color:0xfff2c0,transparent:true,opacity:1}));sd.material.fog=false;sd.position.set(150,165,185);daySky.add(sd);daySun=sd;
   var h=new THREE.Mesh(new THREE.SphereGeometry(19,20,20),new THREE.MeshBasicMaterial({color:0xffe0a0,transparent:true,opacity:0.22,side:THREE.BackSide}));h.material.fog=false;sd.add(h);
   /* ☁️ W8: weiche Wolken (Sprite-Puffs, fog:false) — folgen als Skybox mit, faden per updDayNight-Logik */
   var ccv=document.createElement("canvas");ccv.width=ccv.height=128;var cc=ccv.getContext("2d");
@@ -915,7 +918,7 @@ function spawnMonster(forceId,fx,fz){ /* ⚔️ W4: optional forceId/fx/fz (nur 
       o.scale.setScalar(k);
       o.position.set(xx,groundH(xx,zz)-bb.min.y*k,zz);scene.add(o);
       var rig=mobRig(o,g.animations); /* ⚔️ W4: Attack/Walk/Idle-Rig */
-      monsters.push({mesh:o,x:xx,z:zz,hp:MM.hp,dmg:MM.dmg,t:rnd()*6,spd:MM.spd,baseScale:k,kind:MM.id,walk:true,fly:false,wings:null,rig:rig});
+      monsters.push({mesh:o,x:xx,z:zz,hp:Math.round(MM.hp*(1+Math.min(1.6,nights*0.12))),dmg:MM.dmg,t:rnd()*6,spd:MM.spd,baseScale:k,kind:MM.id,walk:true,fly:false,wings:null,rig:rig});
       if(rig)setAnim(rig,rig.actions.walk?"walk":"idle",0);
       if(typeof updWaveHud==="function")updWaveHud();
     },undefined,function(){});})(M,x,z);
@@ -928,7 +931,7 @@ function spawnMonster(forceId,fx,fz){ /* ⚔️ W4: optional forceId/fx/fz (nur 
   m.scale.setScalar(sc);
   m.position.set(x,groundH(x,z),z);scene.add(m);
   var rig2=(M.file&&MOB_ANIMS[M.id])?mobRig(m,MOB_ANIMS[M.id]):null; /* ⚔️ W4: Node-Anims binden per Name auch auf Klonen */
-  monsters.push({mesh:m,x:x,z:z,hp:M.hp,dmg:M.dmg,t:rnd()*6,spd:M.spd,baseScale:sc,kind:M.id,walk:(M.id!=="slime"),fly:!!M.fly,wings:m.userData.wings||null,rig:rig2});
+  monsters.push({mesh:m,x:x,z:z,hp:Math.round(M.hp*(1+Math.min(1.6,nights*0.12))),dmg:M.dmg,t:rnd()*6,spd:M.spd,baseScale:sc,kind:M.id,walk:(M.id!=="slime"),fly:!!M.fly,wings:m.userData.wings||null,rig:rig2});
   if(rig2)setAnim(rig2,rig2.actions.walk?"walk":"idle",0);
   return 1;
 }
@@ -1034,7 +1037,7 @@ function updMonsters(dt){
     else if(e.windT>0){e.windT-=dt; /* ⚔️ telegrafierter Wind-up: kurzes Fenster zum Ausweichen */
       if(e.rig&&e.rig.cur!=="attack")setAnim(e.rig,e.rig.actions.idle?"idle":"walk",0.2);
       if(e.windT<=0){var d2=Math.hypot(player.position.x-e.x,player.position.z-e.z);
-        if(d2<1.9)damagePlayer(e.dmg||(e.boss?14:6),e);
+        if(d2<1.9)damagePlayer((e.dmg||(e.boss?14:6))+(e.boss?0:Math.min(5,Math.floor(nights/2))),e); /* Nächte machen Mobs bissiger */
         e.atkCd=(e.rig&&e.rig.actions.attack)?1.15:1;}}
     else if(d>1.6){e.x+=dx/d*spd*dt;e.z+=dz/d*spd*dt;
       if(e.rig&&e.rig.cur!=="attack")setAnim(e.rig,e.rig.actions.walk?"walk":"idle",0.2);}
@@ -1725,7 +1728,7 @@ function updNPCs(dt){
       sp=new THREE.Sprite(new THREE.SpriteMaterial({map:sayTexFor(_arr[(_w3rnd()*_arr.length)|0]),transparent:true,depthWrite:false}));
       sp.scale.set(2.1,0.55,1);
     }else{
-      var _em=NPC_EMO[(rnd()*NPC_EMO.length)|0];if(n.fixedEmo)_em=n.fixedEmo;
+      var _em=NPC_EMO[(rnd()*NPC_EMO.length)|0];if(n.fixedEmo)_em=n.fixedEmo;else if(n.giftDay!==day&&rnd()<0.5)_em="🎁"; /* Geschenk wartet */
       sp=new THREE.Sprite(new THREE.SpriteMaterial({map:emoTexFor(_em),transparent:true,depthWrite:false}));
       sp.scale.set(0.6,0.6,0.6);
     }
@@ -2765,6 +2768,8 @@ function killAnimal(an){
   inv.meat+=drop;toast("🍖 +"+drop+" Fleisch");
   floatText(an.x,groundH(an.x,an.z)+1,an.z,"+"+drop+" 🍖","#ffb38a");
   burst(an.x,groundH(an.x,an.z)+0.5,an.z,0xff9a6c,12);invUpd();
+  if(typeof gainXP==="function")gainXP(2+(S.hp||2)); /* 🏹 Jagd lohnt sich */
+  if(rnd()<0.18&&typeof dropLoot==="function")dropLoot(an.x,an.z,0);
 }
 function updAnimals(dt){
   for(var i=0;i<animals.length;i++){var an=animals[i];if(!an.alive)continue;an.t+=dt;if(an.hurt>0)an.hurt-=dt;
@@ -3457,8 +3462,14 @@ function talkToNpc(){
     else if(roll<0.9){gainXP(15);announce("🗨️ „Etwas Erfahrung für den Weg.“ ⭐ +15 XP","#8affb0");floatText(px,py+2.4,pz,"+15 XP","#ffe08a");}
     else{hp=Math.min(maxHp,hp+20);hpUpd();announce("🗨️ „Du siehst müde aus — hier.“ ❤️ +20 HP","#8affb0");floatText(px,py+2.4,pz,"+20 ❤️","#ff9a6c");}
     if(typeof sfx==="function")sfx(720,0.12,"triangle",0.05,980);return;}
-  var line=NPC_LINES[(Math.random()*NPC_LINES.length)|0];
-  announce("🗨️ „"+line+"“","#cfe8ff");
+  if(typeof stations!=="undefined"&&stations.length&&Math.random()<0.4){ /* 🧭 40%: NPC weist den Weg zu einer Station */
+    var _st=stations[(Math.random()*stations.length)|0];
+    var _ci=compass8(_st.x-player.position.x,_st.z-player.position.z);
+    announce("🗨️ „"+_st.icon+" "+_st.name+"? Geh Richtung "+COMPASS8[_ci]+" "+COMPASS8_AR[_ci]+"!“","#cfe8ff");
+  }else{
+    var line=NPC_LINES[(Math.random()*NPC_LINES.length)|0];
+    announce("🗨️ „"+line+"“","#cfe8ff");
+  }
 }
 function harvest(){
   findNear(); // frisch bestimmen → korrekt auch bei Einzelaufruf/Tap
@@ -3567,7 +3578,9 @@ var TRADES=[
   {ic:"🪨",name:"Stein-Deal",give:{wood:6},get:function(){inv.stone=(inv.stone||0)+5;},desc:"6 🪵 → 5 🪨"},
   {ic:"❤️",name:"Voll-Heilung",give:{crystal:3},get:function(){hp=maxHp;hpUpd();},desc:"3 💎 → volle HP"},
   {ic:"⚡",name:"Erfahrung",give:{crystal:6},get:function(){gainXP(40);},desc:"6 💎 → +40 XP"},
-  {ic:"🍓",name:"Beeren-Korb",give:{stone:4},get:function(){inv.berry=(inv.berry||0)+5;},desc:"4 🪨 → 5 🍓"}
+  {ic:"🍓",name:"Beeren-Korb",give:{stone:4},get:function(){inv.berry=(inv.berry||0)+5;},desc:"4 🪨 → 5 🍓"},
+  {ic:"⚔️",name:"Waffe schärfen",give:{crystal:8},get:function(){PERK.atk+=1;announce("⚔️ Waffe geschärft! +1 Angriff (dauerhaft)","#ffd166");},desc:"8 💎 → +1 Angriff (dauerhaft)"},
+  {ic:"🛡️",name:"Panzer härten",give:{crystal:8},get:function(){PERK.def+=1;announce("🛡️ Panzerung gehärtet! −1 Schaden (dauerhaft)","#7de3ff");},desc:"8 💎 → −1 Schaden (dauerhaft)"}
 ];
 var tradeOpen=false;
 function canTrade(t){for(var k in t.give)if((inv[k]||0)<t.give[k])return false;return true;}
@@ -3721,6 +3734,7 @@ function updDayNight(dt){
     if(daySky.visible)daySky.traverse(function(c){if(c.material&&c.material.transparent){if(c.material._o0==null)c.material._o0=c.material.opacity;c.material.opacity=c.material._o0*dayV;}});}
   var ang=f*Math.PI;sun.position.set(player.position.x+Math.cos(ang)*32,Math.max(85,Math.sin(isNight?0.4:f*Math.PI)*100),player.position.z+Math.sin(ang)*28);
   sun.target.position.copy(player.position); // Schatten-Frustum bleibt zentriert -> kein dunkler Fleck
+  if(daySun){daySun.position.set(Math.cos(ang)*200,Math.max(30,Math.sin(f*Math.PI)*160)+25,Math.sin(ang)*200);daySun.material.color.copy(DSUN_NOON).lerp(DSUN_LOW,warm);} /* ☀️ sichtbare Sonnenscheibe wandert + färbt sich bei Dämmerung */
   // Monster nachts spawnen
   if(isNight&&waveActive){monSpawnT-=dt;var cap=Math.min(4+waveNum,14);
     if(monSpawnT<=0&&waveSpawned<waveToSpawn&&monsters.length<cap){spawnMonster();waveSpawned++;monSpawnT=Math.max(0.5,2.2-waveNum*0.15);updWaveHud();}
@@ -3921,6 +3935,35 @@ function updAmbience(dt){
     if(near){sfx(320+Math.random()*260,0.03+Math.random()*0.03,"sawtooth",0.01);_crackT=0.18+Math.random()*0.4;}
     else _crackT=0.5;}
 }
+/* 🎵 Prozedurale Hintergrundmusik: Tag-Pad / Nacht-Moll / Wellen-Puls — kein Asset, koop-sicher (Math.random, nie rnd) */
+var _musT=0,_musPluckT=3,_musPulseT=0,_musGains=[],_musIdx=0;
+var _MUS_DAY=[[261.6,392.0],[220.0,329.6],[174.6,261.6],[196.0,293.7]],_MUS_NIGHT=[[220.0,329.6],[174.6,261.6],[146.8,220.0],[164.8,246.9]];
+function updMusic(dt){try{
+  if(muted){for(var mi=_musGains.length-1;mi>=0;mi--){try{_musGains[mi].gain.linearRampToValueAtTime(0.0001,_AC.currentTime+0.1);}catch(e){}_musGains.splice(mi,1);}return;}
+  if(!running||paused||!_AC)return;
+  _musT-=dt;
+  if(_musT<=0){_musT=8;
+    var prog=isNight?_MUS_NIGHT:_MUS_DAY,chd=prog[_musIdx%prog.length];_musIdx++;
+    for(var c=0;c<chd.length;c++){
+      var o=_AC.createOscillator(),ga=_AC.createGain();o.type="sine";o.frequency.value=chd[c];
+      ga.gain.setValueAtTime(0.0001,_AC.currentTime);
+      ga.gain.linearRampToValueAtTime(0.018,_AC.currentTime+1.6);
+      ga.gain.linearRampToValueAtTime(0.0001,_AC.currentTime+6.5);
+      o.connect(ga);ga.connect(_MB||_AC.destination);o.start();o.stop(_AC.currentTime+6.8);
+      _musGains.push(ga);(function(g2){setTimeout(function(){var gi=_musGains.indexOf(g2);if(gi>=0)_musGains.splice(gi,1);},7000);})(ga);}}
+  _musPluckT-=dt;
+  if(_musPluckT<=0){_musPluckT=2+Math.random()*3;
+    var pf=[523.3,587.3,659.3,784.0,880.0][(Math.random()*5)|0]*(isNight?0.5:1);
+    var o2=_AC.createOscillator(),g3=_AC.createGain();o2.type="triangle";o2.frequency.value=pf;
+    g3.gain.setValueAtTime(0.0001,_AC.currentTime);g3.gain.linearRampToValueAtTime(0.014,_AC.currentTime+0.03);g3.gain.linearRampToValueAtTime(0.0001,_AC.currentTime+0.4);
+    o2.connect(g3);g3.connect(_MB||_AC.destination);o2.start();o2.stop(_AC.currentTime+0.45);}
+  var _boss=false;for(var bi=0;bi<monsters.length;bi++)if(monsters[bi].boss){_boss=true;break;}
+  if(waveActive||_boss){_musPulseT-=dt;
+    if(_musPulseT<=0){_musPulseT=Math.max(0.25,0.5-waveNum*0.02);
+      var o3=_AC.createOscillator(),g4=_AC.createGain();o3.type="square";o3.frequency.value=55+(waveNum%3)*5;
+      g4.gain.setValueAtTime(0.0001,_AC.currentTime);g4.gain.linearRampToValueAtTime(0.022,_AC.currentTime+0.01);g4.gain.linearRampToValueAtTime(0.0001,_AC.currentTime+0.15);
+      o3.connect(g4);g4.connect(_MB||_AC.destination);o3.start();o3.stop(_AC.currentTime+0.2);}}
+}catch(e){}}
 function sfxSeq(seq){seq.forEach(function(sq,i){setTimeout(function(){sfx(sq[0],sq[1]||0.12,sq[2]||"triangle",sq[3]||0.05);},i*95);});}
 function toggleMute(){muted=!muted;lsSet("nw_mute",muted?"1":"0");
   var mb=document.getElementById("muteBtn2");if(mb)mb.textContent=muted?"🔇":"🔊";}
@@ -4069,6 +4112,7 @@ function updMinimap(){var cv=document.getElementById("minimap");if(!cv||!running
   function pt(x,z){return [cx+(x-px)*SC,cy+(z-pz)*SC];}
   // Dörfer (Haus-Icons)
   if(typeof villages!=="undefined")for(var i=0;i<villages.length;i++){var v=villages[i],p=pt(v.x,v.z);ctx.fillStyle=v.big?"#ffd166":"#c9a15a";ctx.fillRect(p[0]-2,p[1]-2,4,4);}
+  if(questBoard){var hdx=questBoard.x-px,hdz=questBoard.z-pz,hMax=R-9,hx,hy;if(Math.hypot(hdx,hdz)*SC>hMax){var ha=Math.atan2(hdz,hdx);hx=cx+Math.cos(ha)*hMax;hy=cy+Math.sin(ha)*hMax;}else{var hp2=pt(questBoard.x,questBoard.z);hx=hp2[0];hy=hp2[1];}ctx.strokeStyle="#ffd166";ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(hx,hy,7,0,6.283);ctx.stroke();ctx.font="12px sans-serif";ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillText("🏠",hx,hy);} /* 🏠 Heimat-Marker mit Rand-Klammerung */
   /* 🎯 Stationen (Emoji-Icons) */
   if(typeof stations!=="undefined"&&stations.length){ctx.font="10px sans-serif";ctx.textAlign="center";ctx.textBaseline="middle";
     for(var si=0;si<stations.length;si++){var stn=stations[si],sdx=stn.x-px,sdz=stn.z-pz,maxRs=R-8;if(Math.hypot(sdx,sdz)*SC>maxRs){var sa=Math.atan2(sdz,sdx),ex=cx+Math.cos(sa)*maxRs,ey=cy+Math.sin(sa)*maxRs;ctx.font="8px sans-serif";ctx.fillText(stn.icon,ex,ey);ctx.save();ctx.translate(ex,ey);ctx.rotate(sa);ctx.fillStyle="#ffd166";ctx.beginPath();ctx.moveTo(7,0);ctx.lineTo(2,-2.5);ctx.lineTo(2,2.5);ctx.closePath();ctx.fill();ctx.restore();ctx.font="10px sans-serif";}else{var ps=pt(stn.x,stn.z);ctx.fillText(stn.icon,ps[0],ps[1]);}}} /* 📍 Off-Map: Icon+Pfeil am Rand */
@@ -4122,7 +4166,7 @@ function frame(now){
   } else if(heroRig&&(heroRig.cur==="walk"||heroRig.cur==="run")){setAnim(heroRig,"idle",0.2);}
   player.position.y=groundH(player.position.x,player.position.z);
 
-  updDayNight(dt);updAmbience(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updShock(dt);updMotes(dt);updDowned(dt);updEmotes(dt);updThrow(dt);updDodge(dt);updBolt2(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);_mmT+=dt;if(_mmT>0.15){_mmT=0;updMinimap();}updSmoke(dt);updDucks(dt);updPotions(dt);updNPCs(dt);updHub(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
+  updDayNight(dt);updAmbience(dt);updMusic(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updShock(dt);updMotes(dt);updDowned(dt);updEmotes(dt);updThrow(dt);updDodge(dt);updBolt2(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);_mmT+=dt;if(_mmT>0.15){_mmT=0;updMinimap();}updSmoke(dt);updDucks(dt);updPotions(dt);updNPCs(dt);updHub(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
   updAnimals(dt);updAnimalSpawns(dt);updAmbient(dt);updSway(dt);updGrassTufts(dt);updWater(dt);updCritters(dt);updLively(dt);
   findNear();updPrompt();
   if(buildMode)updGhost();
@@ -4146,7 +4190,7 @@ function updPrompt(){
   else if(nearAni){kp.style.opacity=1;document.getElementById("kpKey").textContent=IS_MOB?"🏹":"E";document.getElementById("kpTxt").textContent="Jagen 🍖";act.textContent="🏹";}
   else if(nearLoot){kp.style.opacity=1;document.getElementById("kpKey").textContent=IS_MOB?"🖐️":"E";document.getElementById("kpTxt").textContent="Öffnen";act.textContent="🖐️";}
   else if(nearWork){kp.style.opacity=1;document.getElementById("kpKey").textContent=IS_MOB?"🔧":"E";document.getElementById("kpTxt").textContent="Werkbank öffnen";act.textContent="🔧";}
-  else if(nearNpc){kp.style.opacity=1;document.getElementById("kpKey").textContent=IS_MOB?"🗨️":"E";document.getElementById("kpTxt").textContent="Reden";act.textContent="🗨️";}
+  else if(nearNpc){kp.style.opacity=1;var _gW=nearNpc.giftDay!==day;document.getElementById("kpKey").textContent=IS_MOB?(_gW?"🎁":"🗨️"):"E";document.getElementById("kpTxt").textContent=_gW?"🎁 Geschenk holen":"Reden";act.textContent=_gW?"🎁":"🗨️";}
   else if(nearFire){kp.style.opacity=1;document.getElementById("kpKey").textContent=IS_MOB?"🔥":"E";document.getElementById("kpTxt").textContent="Rasten";act.textContent="🔥";}
   else{kp.style.opacity=0;act.textContent="⚔️";}
 }
@@ -4188,7 +4232,7 @@ function updOnline(){
 }
 function netStart(role,code){
   if(!window.MP){coopStatusMsg("Koop-Lib nicht geladen");return;}
-  NET.role=role;coopStatusMsg("Verbinde…");
+  NET.role=role;NET._seq=0;NET._rseq=0;coopStatusMsg("Verbinde…");
   try{NET.s=(role==="host")?MP.host("wildnis"):MP.join("wildnis",code);}catch(e){coopStatusMsg("Fehler: "+e.message);return;}
   if(role==="host")coopStatusMsg("Raum-Code: "+NET.s.code+" — teile ihn mit dem Partner!");
   setOnline("waiting");
@@ -4206,7 +4250,7 @@ function netStart(role,code){
 function onNetMsg(d){
   if(!d)return;
   if(d.t==="start"&&NET.role!=="host"){NET_FORCE_SEED=d.seed;NET.on=true;spawnRemote();startGame(true);sendMyChar();return;} /* join ODER quick-Gast */
-  if(d.t==="pos"){NET.rt.x=d.x;NET.rt.z=d.z;NET.rt.ry=d.ry;if(d.hp!==undefined)NET.rt.hp=d.hp;if(NET.remote)NET.remote.visible=true;if(d.st!==undefined)remoteStation(d.st);}
+  if(d.t==="pos"){if(d.n!=null){if(d.n<=(NET._rseq||0))return;NET._rseq=d.n;}NET.rt.x=d.x;NET.rt.z=d.z;NET.rt.ry=d.ry;if(d.hp!==undefined)NET.rt.hp=d.hp;if(NET.remote)NET.remote.visible=true;if(d.st!==undefined)remoteStation(d.st);}
   if(d.t==="char"&&d.id&&d.from!==NET.role){loadRemoteHero(d.id);} /* 🧑‍🤝‍🧑 Partner zeigt seinen echten Helden (Eigen-Echo ignorieren) */
   if(d.t==="gear"&&d.from!==NET.role){NET.remoteGear={w:d.w|0,a:d.a|0};applyRemoteGear(d.w,d.a);} /* 🛡️ Partner-Ausrüstung sichtbar */
   if(d.t==="down"&&d.from!==NET.role){NET.remoteDowned=true;if(typeof toast==="function")toast("💀 Partner gefallen — lauf zu ihm & belebe ihn!");}
@@ -4290,7 +4334,7 @@ function sendMyChar(){ /* mehrfach senden gegen Timing-Races; from=eigene Rolle 
 function netTick(dt){
   if(!NET.on||!NET.s)return;
   NET.sendT-=dt;
-  if(NET.sendT<=0){NET.sendT=0.05;NET.s.sendFast({t:"pos",x:+player.position.x.toFixed(2),z:+player.position.z.toFixed(2),ry:+player.rotation.y.toFixed(2),st:_stCur,hp:Math.max(0,Math.round(hp/maxHp*100))});} /* st = Stations-Flag; hp = Partner-HP-Balken */
+  if(NET.sendT<=0){NET.sendT=0.05;NET.s.sendFast({t:"pos",x:+player.position.x.toFixed(2),z:+player.position.z.toFixed(2),ry:+player.rotation.y.toFixed(2),st:_stCur,hp:Math.max(0,Math.round(hp/maxHp*100)),n:(NET._seq=(NET._seq||0)+1)});} /* st = Stations-Flag; hp = Partner-HP-Balken */
   if(NET.remote&&NET.remote.visible){var r=NET.remote;var ox=r.position.x,oz=r.position.z;
     var _dx=NET.rt.x-r.position.x,_dz=NET.rt.z-r.position.z;if(_dx*_dx+_dz*_dz>64){r.position.x=NET.rt.x;r.position.z=NET.rt.z;ox=NET.rt.x;oz=NET.rt.z;} /* >8m = Teleport statt Gleiten */
     r.position.x+=(NET.rt.x-r.position.x)*Math.min(1,dt*9);r.position.z+=(NET.rt.z-r.position.z)*Math.min(1,dt*9);r.position.y=groundH(r.position.x,r.position.z);r.rotation.y=NET.rt.ry;
@@ -4307,7 +4351,7 @@ function netStartQuick(){ /* ⚡ 1-Tipp Schnell-Koop ohne Code (öffentlicher Ra
   if(running){coopStatusMsg("Koop bitte VOR dem Start — erst »Neue Welt starten«.");return;}
   coopStatusMsg("⚡ Suche Mitspieler…");setOnline("waiting");
   try{NET.s=MP.quick("wildnis");}catch(e){coopStatusMsg("Fehler: "+e.message);return;}
-  NET.role="quick"; /* wird bei Verbindung auf host/join gesetzt */
+  NET.role="quick";NET._seq=0;NET._rseq=0; /* wird bei Verbindung auf host/join gesetzt */
   NET.s.onStatus(function(st){
     if(st==="waiting"){coopStatusMsg("⚡ Warte auf Mitspieler… (öffentlicher Raum)");setOnline("waiting");}
     else if(st==="connected"){NET.role=NET.s.role||NET.role;coopStatusMsg("✅ Verbunden!");setOnline("connected");sendMyChar();}
@@ -4390,7 +4434,12 @@ function startGame(fresh){
   /* 📖 W7: Einmalige Anfänger-Tipps beim allerersten Start (frisch, solo) — beantwortet „Regeln erklären für Anfänger" */
   if(!sv&&!NET.on&&!lsGet("nw_intro")){lsSet("nw_intro","1");
     var _tips=["🕹️ Ziehe links den Joystick zum Laufen","⚔️ Rechts = Angriff · 🔨 = Bäume & Steine sammeln","💥 = Spezial-Skill · 💨 = Rolle zum Ausweichen","🌲 Sammle 10 Holz für das erste Ziel!"];
-    _tips.forEach(function(tp,ti){setTimeout(function(){if(running&&!dead&&!(ti===0&&window.__moved))announce(tp,"#bfe9ff");},4800+ti*2700);});}
+    _tips.forEach(function(tp,ti){setTimeout(function(){if(running&&!dead&&!(ti===0&&window.__moved))announce(tp,"#bfe9ff");},4800+ti*2700);});
+    var cb=document.createElement("div"); /* 🕹️ dezente Steuerungs-Leiste, verschwindet nach 12s */
+    cb.style.cssText="position:absolute;left:50%;transform:translateX(-50%);bottom:calc(2px + env(safe-area-inset-bottom));z-index:4;background:rgba(10,20,40,.55);border:1px solid rgba(125,227,255,.35);border-radius:12px;padding:4px 12px;font-size:12px;font-weight:800;color:#bfe9ff;pointer-events:none;transition:opacity 1s;white-space:nowrap";
+    cb.textContent="🕹️ laufen · ⚔️ angreifen · 💨 rollen · 🔨 bauen";
+    (document.getElementById("hud")||document.body).appendChild(cb);
+    setTimeout(function(){cb.style.opacity=0;setTimeout(function(){if(cb.parentNode)cb.parentNode.removeChild(cb);},1200);},12000);}
 }
 // ---------- Charakter-3D-Vorschau im Startscreen (User: „charakter anzeigen an anfang") ----------
 (function(){
