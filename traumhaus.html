@@ -73,6 +73,7 @@ canvas{display:block}
 #emoteBar{position:fixed;right:10px;bottom:calc(122px + env(safe-area-inset-bottom));z-index:22;display:none;flex-direction:column;gap:6px}
 #emoteBar button{width:52px;height:52px;border-radius:50%;border:2px solid #e8b04a;background:rgba(255,253,246,.98);font-size:1.6rem;cursor:pointer;box-shadow:0 4px 12px rgba(60,40,10,.22);line-height:1}
 #emoteBar button:active{transform:scale(.9)}
+#hideBtn{position:fixed;right:130px;bottom:calc(64px + env(safe-area-inset-bottom));z-index:22;width:52px;height:52px;border-radius:50%;border:0;background:rgba(255,200,80,.96);box-shadow:0 6px 18px rgba(120,80,20,.34);font-size:1.4rem;cursor:pointer;display:none}
 #pingBtn{position:fixed;right:70px;bottom:calc(64px + env(safe-area-inset-bottom));z-index:22;width:52px;height:52px;border-radius:50%;border:0;background:rgba(58,208,255,.96);box-shadow:0 6px 18px rgba(20,80,120,.34);font-size:1.4rem;cursor:pointer;display:none}
 #pingBtn:active{transform:scale(.9)}
 #chatSend{border:0;background:#ffd166;padding:0 14px;cursor:pointer;font-weight:800;border-radius:0 0 12px 0}
@@ -100,6 +101,8 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 <button id="chatToggle" title="Chat">💬</button>
 <button id="emoteToggle" title="Emotes">😊</button>
 <button id="pingBtn" title="Treffpunkt setzen">📍</button>
+<button id="hideBtn" title="Verstecken spielen">🙈</button>
+<div id="hideHud" style="position:fixed;top:calc(100px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:16;display:none;background:rgba(40,30,10,.86);color:#fff;border:2px solid #ffc850;border-radius:12px;padding:6px 16px;font-weight:800;font-size:1.05rem"></div>
 <button id="micBtn" title="Voice-Chat">🎙️</button>
 <button id="nitroBtn" style="position:fixed;right:12px;bottom:calc(160px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:50%;width:64px;height:64px;font-size:1.5rem;color:#fff;background:linear-gradient(135deg,#ff9a3a,#ff4a2a);box-shadow:0 6px 20px rgba(255,90,40,.5);cursor:pointer">🚀</button>
 <button id="lieferBtn" style="position:fixed;right:12px;bottom:calc(234px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:50%;width:64px;height:64px;font-size:1.5rem;background:linear-gradient(135deg,#4ab04a,#2a8a3a);box-shadow:0 6px 20px rgba(40,140,60,.5);cursor:pointer">📦</button>
@@ -1483,6 +1486,8 @@ function onNetMsg(m){
   else if(m.t==="chat")chatAdd(m.n,m.x);
   else if(m.t==="emote")onEmote(m.si,m.k);
   else if(m.t==="ping")onPing(m.x,m.z);
+  else if(m.t==="hide"&&!mpHost){if(m.on){hideSpiel={phase:"gast",t:0};hint("🙈 VERSTECK DICH! Du hast 20 Sekunden …");beep(600,.1,"sine",.05);}
+    else{hideSpiel=null;document.getElementById("hideHud").style.display="none";if(m.found){hint("🎉 Gefunden! +100 § — alle haben Spaß!");beep(880,.09,"square",.05);}}}
   else if(m.t==="mitfahrt"&&!mpHost)hint(m.on?"🚗👫 Du fährst als Beifahrer mit!":"🚶 Ausgestiegen — ihr seid wieder zu Fuß");
   else if(m.t==="brunnen"&&!mpHost){var B9=window._brunnen;if(B9)hearts(B9.x,B9.z);if(sims[m.si])simEmoji(sims[m.si],"✨");beep(720,.08,"sine",.04);hint("⛲ Erfrischung am Brunnen! +Laune");}
   else if(m.t==="pickup"&&pickups[m.i]){pickups[m.i].active=m.on;pickups[m.i].mesh.visible=m.on;}
@@ -1579,6 +1584,40 @@ function updPings(dt,now){
     p.pil.material.opacity=0.3*fade;p.sp.material.opacity=fade;}}
 function doPing(){var si=meinSi(),s9=sims[si];if(!s9)return;makePing(s9.x,s9.z);beep(880,.08,"sine",.05);netSend({t:"ping",x:s9.x,z:s9.z});chatAdd("System","📍 Treffpunkt gesetzt — dein Partner sieht ihn");}
 function onPing(x,z){makePing(x,z);beep(760,.08,"sine",.05);}
+// ---- Verstecken spielen: Hide & Seek mit Heiss/Kalt (solo: Mia versteckt sich; Koop: der Partner) ----
+var hideSpiel=null;
+var HIDESPOTS=[[-84,-44],[84,-24],[88,30],[-86,74],[26,70],[-30,70],[80,2],[-76,20],[50,-70],[-52,-70],[94,-12],[-98,-60]];
+function startVerstecken(){
+  if(hideSpiel||fahren)return;
+  if(MPs&&mpHost){hideSpiel={phase:"hide",t:20};netSend({t:"hide",on:1});
+    document.getElementById("hideHud").style.display="block";
+    hint("🙈 Verstecken! Dein Partner hat 20s zum Verstecken …");}
+  else if(!MPs){var sp=HIDESPOTS[(Math.random()*HIDESPOTS.length)|0];
+    var mia=sims[1];if(mia.target){mia.target.busy=false;mia.target=null;}mia.path=null;
+    mia.x=sp[0];mia.z=sp[1];mia.state="idle";mia._hide=true;
+    hideSpiel={phase:"seek",t:0};
+    document.getElementById("hideHud").style.display="block";
+    hint("🙈 Mia hat sich versteckt — finde sie! 🔥=nah ❄️=weit");beep(600,.1,"sine",.05);}}
+function endeVerstecken(gefunden){
+  if(!hideSpiel)return;hideSpiel=null;
+  document.getElementById("hideHud").style.display="none";
+  var mia=sims[1];if(mia)mia._hide=false;
+  if(gefunden){geld+=100;geldSend();stats.versteckt=(stats.versteckt||0)+1;
+    sims.forEach(function(s2){s2.needs.spass=Math.min(100,s2.needs.spass+16);});
+    if(mia)hearts(mia.x,mia.z);simEmoji(sims[0],"🎉");if(mia)simEmoji(mia,"😆");
+    beep(880,.09,"square",.05);setTimeout(function(){beep(1170,.12,"square",.05);},90);
+    hint("🎉 GEFUNDEN! +100 § und alle haben Spaß!");updHUD();
+    if(MPs)netSend({t:"hide",on:0,found:1});}}
+function updVerstecken(dt){
+  if(!hideSpiel)return;
+  var hud=document.getElementById("hideHud");
+  if(hideSpiel.phase==="hide"){hideSpiel.t-=dt;
+    hud.textContent="🙈 Partner versteckt sich … "+Math.max(0,hideSpiel.t|0)+"s";
+    if(hideSpiel.t<=0){hideSpiel.phase="seek";hint("🔎 Los! Finde deinen Partner — 🔥/❄️ hilft dir");}return;}
+  var me=sims[meinSi()],mia=sims[1];if(!me||!mia)return;
+  var d=Math.hypot(me.x-mia.x,me.z-mia.z);
+  hud.textContent=d<6?"🔥🔥🔥 GANZ HEISS!":d<14?"🔥 heiß":d<30?"🌡️ warm":d<55?"❄️ kalt":"❄️❄️ eiskalt";
+  if((!MPs||mpHost)&&d<3)endeVerstecken(true);}
 // ---- Collectibles: Muenzen & Geschenke ueber die Map einsammeln ----
 var pickups=[];
 var PICKPOS=[[30,20],[-35,25],[40,-30],[-40,-28],[64,10],[-64,-6],[16,-62],[-22,64],[72,-56],[-72,58],[54,-52],[-54,50]];
@@ -1611,7 +1650,7 @@ function updPickups(dt,now){
       for(var q=0;q<sims.length;q++){var sq=sims[q];if(sq.mesh.visible&&Math.hypot(sq.x-pk.x,sq.z-pk.z)<2.6){got=true;break;}}
       if(!got&&fahren&&driveCar&&Math.hypot(driveCar.mesh.position.x-pk.x,driveCar.mesh.position.z-pk.z)<3.4)got=true;
       if(got)collectPickup(i);}}}
-(function(){var pb=document.getElementById("pingBtn");if(pb)pb.onclick=doPing;})();
+(function(){var pb=document.getElementById("pingBtn");if(pb)pb.onclick=doPing;var hb=document.getElementById("hideBtn");if(hb)hb.onclick=startVerstecken;})();
 function chatAdd(n,x){var box=document.getElementById("chatMsgs");
   var d=document.createElement("div");d.innerHTML="<b>"+String(n).slice(0,12).replace(/[<>&]/g,"")+":</b> "+String(x).slice(0,140).replace(/[<>&]/g,"");
   box.appendChild(d);box.scrollTop=box.scrollHeight;
@@ -1710,6 +1749,7 @@ function ensurePartnerMark(){
   partnerDist.scale.set(1.7,0.53,1);partnerDist.renderOrder=999;scene.add(partnerDist);
   return partnerMark;}
 function updPartnerMark(dt,now){
+  if(hideSpiel){if(partnerMark)partnerMark.visible=false;if(partnerDist)partnerDist.visible=false;return;} // Verstecken: kein Marker!
   if(!MPs){if(partnerMark)partnerMark.visible=false;if(partnerDist)partnerDist.visible=false;return;}
   var pm=ensurePartnerMark();
   var partner=sims[mpHost?1:0]; // Host verfolgt Mia, Gast verfolgt Max
@@ -2379,6 +2419,7 @@ function updSim(s,si,dt,now){
   else{
     if(s.state==="work")return;
     if(s._bf)return; // sitzt als Beifahrer im Auto
+    if(s._hide)return; // versteckt sich gerade
     var sv9=steerVec(si);
     if(sv9){
       if(s.state==="use"&&s.target){s.target.busy=false;s.target=null;}
@@ -2521,7 +2562,7 @@ function updMinimap(dt){
   // Polizei
   c.fillStyle="#ff3020";for(var q=0;q<polizei.length;q++){var s3=S(polizei[q].mesh.position.x,polizei[q].mesh.position.z);c.beginPath();c.arc(s3[0],s3[1],2.6,0,6.283);c.fill();}
   // Koop-Partner
-  if(MPs){var pa=sims[1-meinSi()];if(pa){var s4=S(pa.x,pa.z);c.fillStyle="#3ad0ff";c.beginPath();c.arc(s4[0],s4[1],3,0,6.283);c.fill();c.strokeStyle="#fff";c.lineWidth=1.2;c.stroke();}}
+  if(MPs&&!hideSpiel){var pa=sims[1-meinSi()];if(pa){var s4=S(pa.x,pa.z);c.fillStyle="#3ad0ff";c.beginPath();c.arc(s4[0],s4[1],3,0,6.283);c.fill();c.strokeStyle="#fff";c.lineWidth=1.2;c.stroke();}}
   c.restore();
   // Spieler-Pfeil in der Mitte (Blickrichtung)
   c.save();c.translate(Cc,Cc);c.rotate(Math.atan2(Math.cos(head),Math.sin(head))+Math.PI/2);
@@ -3083,12 +3124,13 @@ function loop(now){
     updHund(dt,now);
     if(fahren){autoFahr(dt);}
     updGrow(dt);updBeete(dt);if(!fahren)updWork(dt);updAuto(dt);updCrime(dt);updNpcs(dt,now);updPolizei(dt,now);if(!arbeiten&&!crime.on)updLove(dt);
-    updHearts(dt);updWetter(dt);updVerkehr(dt);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);
+    updHearts(dt);updWetter(dt);updVerkehr(dt);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);updVerstecken(dt);
     document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("minimap").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("emoteToggle").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("micBtn").style.display=(running&&!buildMode&&MPs)?"block":"none";
     document.getElementById("pingBtn").style.display=(running&&!buildMode&&MPs)?"block":"none";
+    document.getElementById("hideBtn").style.display=(running&&!buildMode&&!fahren&&(!MPs||mpHost))?"block":"none";
     if(MPs&&!mpHost){steerNetT-=dt;
       if(steerNetT<=0){steerNetT=0.09;var act9=steerActive();
         if(act9||steerWasActive){netFast({t:"steer",x:act9?steer.x:0,z:act9?steer.z:0});steerWasActive=act9;}}}
