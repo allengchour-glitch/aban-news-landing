@@ -258,7 +258,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 <div class="overlay" id="start">
   <div class="kicker">aban news · das große Würfel-Brettspiel · 1–4 Spieler</div>
   <h1>LEBENSPFAD</h1>
-  <p>Würfle dich durch <b>acht Kapitel eines ganzen Lebens</b> — von der Kindheit bis zum Lebensabend. Über <b>100 Ereignisse</b> mit echten Entscheidungen formen deine Werte: <b>💰 Geld · ❤️ Glück · 🧠 Wissen · 👥 Freunde</b>. Trefft ihr euch auf einem Feld, gibt es eine <b>Begegnung</b> — gemeinsam ist das Leben besser. Am Ende schreibt das Spiel <b>deine Biografie</b>.</p>
+  <p>Würfle durch <b>acht Kapitel eines ganzen Lebens</b> — Kindheit bis Lebensabend. Über <b>100 Ereignisse</b> formen deine Werte: <b>💰 Geld · ❤️ Glück · 🧠 Wissen · 👥 Freunde</b>. Am Ende schreibt das Spiel <b>deine Biografie</b>.</p>
   <div id="startStats" style="margin:2px 0 10px"></div>
   <div style="font-size:.85rem;color:#9fb2ff">Wie viele spielen mit (ein Gerät, reihum)?</div>
   <label id="botRow" style="display:none;align-items:center;gap:8px;background:#fffdf6;border:2px solid #cbb8e8;border-radius:12px;padding:8px 14px;font-size:.82rem;color:#3a4252;cursor:pointer;font-weight:700;margin:6px auto 0;width:max-content">
@@ -266,12 +266,12 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
   <div class="pselect" id="pselect"></div>
   <div id="nameRow" style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:6px 0"></div>
   <div id="charRow" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:4px 0 8px"></div>
-  <label style="display:inline-flex;align-items:center;gap:8px;background:#fffdf6;border:2px solid #e8b0b0;border-radius:12px;padding:8px 14px;font-size:.82rem;color:#3a4252;cursor:pointer;font-weight:700">
-    <input type="checkbox" id="adultChk" checked style="width:18px;height:18px;accent-color:#e84a3a;display:none"> <span style="color:#b04a3a;font-weight:800">🔞 Echtes-Leben-Modus ist IMMER an (User-Vorgabe): frecher Humor, echte Risiken — <b>der Tod spielt mit</b></span></label>
-  <label style="display:inline-flex;align-items:center;gap:8px;background:#fffdf6;border:2px solid #a8d0e8;border-radius:12px;padding:8px 14px;font-size:.82rem;color:#3a4252;cursor:pointer;font-weight:700;margin-left:6px">
-    <input type="checkbox" id="kurzChk" style="width:18px;height:18px;accent-color:#2f8cff"> ⚡ Schnelles Leben — 4 Kapitel, ~10 Min</label>
   <button class="btn" id="startBtn">Leben beginnen ▶</button>
   <button class="btn ghost" id="tutBtn" style="font-size:.88rem">❓ So geht's — Regeln für Anfänger</button>
+  <label style="display:inline-flex;align-items:center;gap:8px;background:#fffdf6;border:2px solid #e0cba0;border-radius:12px;padding:8px 14px;font-size:.82rem;color:#3a4252;cursor:pointer;font-weight:700;margin-top:6px">
+    <input type="checkbox" id="adultChk" checked style="width:18px;height:18px;accent-color:#e84a3a;display:none"> <span style="color:#8a6a3a;font-weight:700">🎭 Echtes-Leben-Modus (immer an): frecher Humor & echte Risiken — auch der Tod kann mitspielen.</span></label>
+  <label style="display:inline-flex;align-items:center;gap:8px;background:#fffdf6;border:2px solid #a8d0e8;border-radius:12px;padding:8px 14px;font-size:.82rem;color:#3a4252;cursor:pointer;font-weight:700;margin-left:6px">
+    <input type="checkbox" id="kurzChk" style="width:18px;height:18px;accent-color:#2f8cff"> ⚡ Schnelles Leben — 4 Kapitel, ~10 Min</label>
   <div id="netBox" style="margin-top:14px;padding:12px;border:2px dashed rgba(90,140,200,.45);border-radius:14px;max-width:480px">
     <div style="font-weight:800;color:#2a6ab0">🌐 Online-Koop (2–4 Spieler, je ein Gerät)</div>
     <div id="netSetup" style="margin-top:8px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center">
@@ -3056,6 +3056,11 @@ function renderCharUI(){
     ml=document.createElement("div");ml.className="lbl";
     var mer=document.createElement("button");mer.textContent="▶";mer.title="3D-Figur";mer.onclick=function(){cfg.meshy=nextMeshy(cfg.meshy,1);upd();};
     rMe.appendChild(mel);rMe.appendChild(ml);rMe.appendChild(mer);card.appendChild(rMe);
+    var advT=document.createElement("button");advT.textContent="✨ Feinschliff (Haut, Kleidung …)"; // 👕 Toon-Details einklappen — Figur bleibt sichtbar
+    advT.style.cssText="border:1px dashed #cbb8e8;background:#fffdf6;color:#7a5aa0;border-radius:10px;padding:4px 10px;font-size:.72rem;font-weight:800;cursor:pointer;margin:2px auto 0";
+    var adv=document.createElement("div");adv.style.display="none";adv.style.width="100%";
+    advT.onclick=function(){adv.style.display=(adv.style.display==="none")?"":"none";beep(560,.04,"triangle",.03);};
+    card.appendChild(advT);card.appendChild(adv);
     var r3=document.createElement("div");r3.className="crow wrap"; // Hautton-Punkte + Hosenfarbe (wrap: 10 Knoepfe brauchen 2 Zeilen)
     for(var d=0;d<SKINTONES.length;d++)(function(d){var b=document.createElement("button");b.className="skin";
       b.style.background="#"+("00000"+SKINTONES[d].toString(16)).slice(-6);b.title="Hautton "+(d+1);
@@ -3070,8 +3075,8 @@ function renderCharUI(){
     ofB.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.outfit=((cfg.outfit|0)+1)%3;upd();beep(620,.04,"triangle",.03);};r3.appendChild(ofB);
     tpB=document.createElement("button");tpB.className="skin";tpB.title="🧥 Kleidungs-Stil (Weste/Jacke/Streifen/Latzhose/Schal/Hoodie/Punkte)";tpB.style.width="auto";tpB.style.padding="0 6px";
     tpB.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.top=((cfg.top|0)+1)%TOPS.length;upd();beep(640,.04,"triangle",.03);};r3.appendChild(tpB);
-    card.appendChild(r3);
-    var cp=mkClothPicker(cfg,upd,hex);card.appendChild(cp); // 🎨 Kleiderfarben-Raster (auf/zu per 👕)
+    adv.appendChild(r3);
+    var cp=mkClothPicker(cfg,upd,hex);adv.appendChild(cp); // 🎨 Kleiderfarben-Raster (auf/zu per 👕)
     cr.appendChild(card);upd();
   })(i);}
 
@@ -3665,6 +3670,7 @@ function beginNet(init){
   chatAdd("System","Online-Spiel gestartet — viel Glück! Du bist "+init.names[NET.my]+".");
   rollBtn.disabled=!myTurn();
   announce(myTurn()?"🎲 Du bist dran!":"🎲 "+G.players[G.turn].name+" beginnt","#fff");
+  if(!lsGet("lp_tut_seen"))setTimeout(function(){showTutorial(0);},1200); // 🌐 Online-Neulinge sehen das Tutorial beim echten Start (lokal, blockiert niemanden)
   NET.present=[];for(var pi=0;pi<G.players.length;pi++)NET.present[pi]=true; // Start: alle da
   NET.q=[];NET._qHeadRef=null;NET._desync=0; // saubere Lockstep-Queue pro Runde
   if(NET.host){netBroadcastPres();netStartChkTimer();}else{renderNetHud();netCheckPause();}}
