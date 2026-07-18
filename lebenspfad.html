@@ -2105,7 +2105,7 @@ function updBot(dt){
       var opts=window._cardOpts,best=0,idx=[];
       for(var i=0;i<opts.length;i++)idx.push(i);
       var k=idx[(Math.random()*idx.length)|0]; // simpel & fair: zufällig
-      cardPick(k);}
+      sendPick(k);}
     return;}
   if(G.phase==="idle"&&_botT>1.3){_botT=0;
     if(Math.random()<0.3){var RQ=["Jetzt zeig ich's euch! 🤖","Berechne optimalen Wurf …","Piep-piep — mein Glückstag!","Widerstand ist zwecklos 😄","Meine Schaltkreise kribbeln!"];
@@ -2126,10 +2126,10 @@ function updAfk(dt){
   if(sig!==_afkSig){_afkSig=sig;_afkT=0;_afkWarned=false;}
   _afkT+=dt;
   if(_afkT>40&&!_afkWarned){_afkWarned=true;announce("⏰ "+p.name+" schläft — in 20s übernimmt Robo den Zug …","#ffb46e");
-    netSend({t:"chat",m:"⏰ "+p.name+": noch 20s, dann übernimmt Robo!"});}
+    netSend({t:"chat",n:"System",x:"⏰ "+p.name+": noch 20s, dann übernimmt Robo!"});}
   if(_afkT>60){_afkT=0;_afkWarned=false;
     chatAdd&&chatAdd("System","🤖 Robo übernimmt den Zug von "+p.name);
-    if(window._cardOpts){cardPick((Math.random()*window._cardOpts.length)|0);}
+    if(window._cardOpts){sendPick((Math.random()*window._cardOpts.length)|0);}
     else{netSend({t:"roll"});NET.q.push({t:"roll"});}}
 }
 function updMove(dt){
@@ -3250,13 +3250,14 @@ function netApplySync(m){ // Gast: G aus Snapshot rekonstruieren + Lockstep dete
 function netStartChkTimer(){ // Host: periodischer State-Checksum an alle Gäste
   if(NET._chk)clearInterval(NET._chk);
   NET._chk=setInterval(function(){if(!NET.host||!NET.on||!G||!running)return;
-    netSend({t:"chk",turn:G.turn,round:G.round,tiles:G.players.map(function(p){return p.tile;}),seed:NET.seed>>>0});
+    netSend({t:"chk",turn:G.turn,round:G.round,tiles:G.players.map(function(p){return p.tile;}),done:G.players.map(function(p){return p.done?1:0;}),seed:NET.seed>>>0});
   },5000);}
 function netCheckChk(m){ // Gast: eigenen Stand mit Host-Checksum vergleichen
   if(NET.host||!G||!running)return;
   if(NET.q.length||G.phase!=="idle")return; // nur im Ruhezustand vergleichen -> kein Fehlalarm während einer Aktion
   var mine=G.players.map(function(p){return p.tile;}),ht=m.tiles||[];
-  var ok=(m.turn===G.turn)&&((m.seed>>>0)===(NET.seed>>>0))&&(mine.length===ht.length)&&mine.every(function(t,i){return t===ht[i];});
+  var md=G.players.map(function(p){return p.done?1:0;}),hd=m.done||[];
+  var ok=(m.turn===G.turn)&&(m.round==null||m.round===G.round)&&((m.seed>>>0)===(NET.seed>>>0))&&(mine.length===ht.length)&&mine.every(function(t,i){return t===ht[i];})&&(!m.done||(md.length===hd.length&&md.every(function(d,i){return d===hd[i];})));
   if(ok){NET._desync=0;return;}
   NET._desync=(NET._desync||0)+1;
   if(NET._desync>=2){ // zweimal in Folge daneben -> Overlay + Resync anfordern
@@ -3489,7 +3490,9 @@ function netHostBoot(){ // ID-Kollision (unavailable-id) -> neuen Code würfeln 
   NET.peer.on("call",voiceAnswer); /* 🎙️ eingehende Voice-Anrufe annehmen */
   NET.peer.on("disconnected",function(){try{NET.peer.reconnect();}catch(e){}}); // Signaling-Abriss -> reconnect
   NET.peer.on("error",function(e){var t=e&&e.type;
-    if(t==="unavailable-id"&&NET.pubWanted){NET.pubWanted=false;netStatus("🌍 Es gibt schon einen offenen Raum — einfach »🌍 Offen beitreten« drücken!","#2a7d46");netHostReset();return;}
+    if(t==="unavailable-id"&&NET.pubWanted){netStatus("🌍 Offener Raum existiert schon — ich trete automatisch bei …","#2a7d46"); // Quick-Play-Rennen: statt Sackgasse automatisch dem Sieger-Raum beitreten
+      netHostReset();NET.quick=true; // quick=true: falls der Sieger-Raum doch weg ist, öffne ich selbst einen
+      setTimeout(function(){document.getElementById("netCode").value="OFEN";document.getElementById("netJoinBtn").click();},350);return;}
     if(t==="unavailable-id"&&NET._tries<3){NET._tries++;try{NET.peer.destroy();}catch(_){}netHostBoot();return;}
     if(NET.peer&&NET.peer._opened)return; // Verbindung steht schon — Fehler nicht fatal
     clearTimeout(NET._tmo);
@@ -3514,9 +3517,10 @@ function netHostBoot(){ // ID-Kollision (unavailable-id) -> neuen Code würfeln 
         return;}
       if(m.t==="rejoin"){ // Wiedereintritt im laufenden Spiel -> vollständigen Snapshot schicken
         var ri=m.idx|0;
-        if(!NET.started||ri<0||ri>=NET.names.length||(typeof netPresent==="function"&&netPresent(ri)&&ri!==0)){ // ungültig/besetzt -> ablehnen
+        if(!NET.started||ri<1||ri>=NET.names.length){ // wirklich ungültig -> ablehnen (Slot 0 = Host, nie per Rejoin)
           try{c.send(JSON.stringify({t:"full"}));}catch(e){}
           var cr=NET.conns.indexOf(c);if(cr>=0)NET.conns.splice(cr,1);try{c.close();}catch(e){}return;}
+        NET.conns.forEach(function(oc){if(oc!==c&&oc._idx===ri){try{oc.close();}catch(e){}var oi=NET.conns.indexOf(oc);if(oi>=0)NET.conns.splice(oi,1);}}); // toten alten Kanal desselben Slots schließen -> schneller Reconnect statt Ablehnung
         c._idx=ri;
         if(NET.present)NET.present[ri]=true;
         netSyncTo(c);netBroadcastPres();netConnInfo();
@@ -3669,6 +3673,7 @@ function beginNet(init){
   NET.cfgs=(init.cfgs&&init.cfgs.length)?init.cfgs:[]; // gesyncte Picker-Looks aller Spieler
   document.getElementById("endO").classList.add("hide"); // falls Rematch aus dem Endscreen
   var g0=freshState(init.names.length,init.adult,init.mode);
+  g0.goal=null; // 🎯 zufälliges freshState-Ziel verwerfen -> begin() setzt es seed-deterministisch (sonst hat jeder Client ein anderes Rundenziel)
   for(var i=0;i<g0.players.length;i++){g0.players[i].name=init.names[i];
     if(init.bots&&init.bots[i])g0.players[i].bot=true;} // 🤖 Robo-Sitze auf ALLEN Clients markieren
   begin(g0);
