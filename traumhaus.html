@@ -827,13 +827,39 @@ setTimeout(function baueTiere(){
   [["an_rabbit.glb",0.42,1.9,0.18],["an_rabbit.glb",0.42,1.7,0.18],["an_deer.glb",1.05,1.1,0.05],["an_deer.glb",1.05,0.9,0.05]].forEach(function(td,i){
     ladeTier(td[0],td[1],function(w){if(!w)return;scene.add(w);
       window._tiere.land.push({mesh:w,x:(i%2?-1:1)*(74+i*5),z:(i<2?-1:1)*(28+i*8),head:i*1.7,sp:td[2],turnT:2+i,walkT:i,hop:td[3],yaw:Math.PI});});});
+  // Bauernhof-Tiere grasen bei der Scheune (ortsgebunden, langsam)
+  [["an_cow.glb",1.15,0.4],["an_pig.glb",0.7,0.5],["an_chicken.glb",0.4,0.7]].forEach(function(fa,i){
+    ladeTier(fa[0],fa[1],function(w){if(!w)return;scene.add(w);
+      window._tiere.land.push({mesh:w,x:-82+i*4,z:-32-i*3,head:i*2.1,sp:fa[2],turnT:3+i,walkT:i,yaw:Math.PI,home:{x:-81,z:-33,r:7}});});});
 },0);
-function updTiere(dt,now){var T=window._tiere;if(!T)return;
+// ---- Echte Gebaeude (Kenney/CC0 bd_*.glb aus der Repo-Bibliothek) ----
+setTimeout(function baueGebaeude(){
+  if(!GL)return;
+  function bau(file,zielH,x,y,z,rotY,center,cb){GL.load("/models/"+file,function(g){var root=g.scene;
+    var bb=new THREE.Box3().setFromObject(root),sz=new THREE.Vector3();bb.getSize(sz);
+    root.scale.setScalar(zielH/(sz.y||1));
+    var b2=new THREE.Box3().setFromObject(root);
+    root.position.y=center?-(b2.min.y+b2.max.y)/2:-b2.min.y;
+    root.traverse(function(n){if(n.isMesh){n.castShadow=true;n.receiveShadow=true;if(n.material)n.material.envMapIntensity=0.3;}});
+    var w=new THREE.Group();w.add(root);w.position.set(x,y,z);w.rotation.y=rotY;scene.add(w);
+    if(!window._gebaeude)window._gebaeude=[];window._gebaeude.push(w);if(cb)cb(w,root);},undefined,function(){});}
+  bau("bd_barn.glb",7,-84,0,-40,Math.PI/2,false);        // Scheune (Bauernhof West)
+  bau("bd_market.glb",6,26,0,67,Math.PI,false);           // Markt (Suedzeile)
+  bau("bd_inn.glb",8.5,-28,0,68,Math.PI,false);           // Wirtshaus (Suedzeile)
+  bau("bd_house_a.glb",5.5,50,0,-66,0,false);             // Nordzeile-Luecke Ost
+  bau("bd_house_b.glb",5.5,-52,0,-66,0,false);            // Nordzeile-Luecke West
+  bau("bd_windmill_tower.glb",12,88,0,34,-Math.PI/2,false,function(tw){
+    bau("bd_windmill_blades.glb",8,87.3,9.9,34,-Math.PI/2,true,function(w2,root2){
+      window._muehle=root2;});});
+},0);
+function updTiere(dt,now){var M9=window._muehle;if(M9)M9.rotation.z+=dt*1.1;
+  var T=window._tiere;if(!T)return;
   for(var i=0;i<T.enten.length;i++){var en=T.enten[i];en.ang+=en.sp*dt;
     en.mesh.position.set(en.cx+Math.cos(en.ang)*en.r,-0.02+Math.sin(now*0.003+en.ang*3)*0.045,en.cz+Math.sin(en.ang)*en.r);
     en.mesh.rotation.y=-en.ang+Math.PI/2;}
   for(var j=0;j<T.land.length;j++){var an=T.land[j];an.turnT-=dt;
     if(an.turnT<=0){an.turnT=2+Math.random()*3;an.head+=(Math.random()-0.5)*1.5;}
+    if(an.home&&Math.hypot(an.x-an.home.x,an.z-an.home.z)>an.home.r)an.head=Math.atan2(an.home.x-an.x,an.home.z-an.z);
     an.x+=Math.sin(an.head)*an.sp*dt;an.z+=Math.cos(an.head)*an.sp*dt;
     var lim=108;if(Math.abs(an.x)>lim||Math.abs(an.z)>lim){an.head+=Math.PI;an.x=Math.max(-lim,Math.min(lim,an.x));an.z=Math.max(-lim,Math.min(lim,an.z));}
     an.walkT+=dt*8*an.sp;an.mesh.position.set(an.x,Math.abs(Math.sin(an.walkT))*(an.hop||0.04),an.z);an.mesh.rotation.y=an.head+(an.yaw||0);
