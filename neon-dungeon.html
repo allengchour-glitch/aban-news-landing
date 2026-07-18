@@ -132,7 +132,8 @@ plat(-1.5,1.5,-19,2.6,2.6);gem(-1.5,1.5,-19);
 plat(1,2.2,-25,3,3);torch(1,2.2,-26);
 /* Abschnitt 2: Zickzack + weite Sprünge (Doppelsprung nötig) */
 plat(-3,2.8,-32,2.4,2.4);gem(-3,2.8,-32);
-plat(3,3.4,-38,2.4,2.4).mv={ax:2.2,ay:0,sp:0.7,ph:0}; /* ↔ gleitet seitlich */
+plat(3,3.4,-38,3.0,3.0).mv={ax:1.5,ay:0,sp:0.55,ph:0}; /* ↔ gleitet seitlich (Einstieg: grösser+langsamer) */
+gem(0,3.4,-35); /* Flugbahn-Guide */
 plat(-2,4.0,-45,2.2,2.2);gem(-2,4.0,-45);
 var _p52=plat(3.5,4.4,-52,2.2,2.2);_p52.mv={ax:0,ay:1.1,sp:0.9,ph:2};gem(3.5,4.4,-52); /* ↕ hebt und senkt sich */
 plat(0,5,-59,3.4,3.4);torch(-1.2,5,-60);torch(1.2,5,-60);
@@ -142,6 +143,16 @@ plat(-2.5,3.2,-73,1.6,3).mv={ax:1.8,ay:0,sp:1.1,ph:1};gem(-2.5,3.2,-73);
 plat(2.5,2.2,-80,1.6,3);gem(2.5,2.2,-80);
 plat(0,1,-88,4,4);torch(-1.5,1,-89);torch(1.5,1,-89);
 checkpoints.push({x:1,y:2.2,z:-25},{x:0,y:5,z:-59},{x:0,y:1,z:-88});
+/* 🏛️ Umgebungs-Erzählung: gefallene Säule, alte Trommel, gefallener Ritter (reine Deko, nicht in plats[]) */
+(function(){var stM=M(0x3a3450),drM=M(0x6a4a30);
+  var col=new THREE.Mesh(new THREE.CylinderGeometry(0.5,0.6,3,8),stM);col.rotation.z=1.3;col.position.set(-1.3,5.35,-58);scene.add(col);
+  var drum=new THREE.Mesh(new THREE.CylinderGeometry(0.5,0.5,0.7,10),drM);drum.rotation.x=1.57;drum.position.set(1.2,5.3,-60);scene.add(drum);
+  var kn=new THREE.Group(); /* gefallener Ritter neben dem letzten Halt */
+  var kb=new THREE.Mesh(new THREE.CylinderGeometry(0.26,0.3,0.9,8),M(0x5a6478,0x2a3040,0.3));kb.rotation.z=1.5;kb.position.y=0.28;kn.add(kb);
+  var kh=new THREE.Mesh(new THREE.SphereGeometry(0.22,10,8),M(0x5a6478,0x2a3040,0.3));kh.position.set(0.62,0.28,0);kn.add(kh);
+  var sw=new THREE.Mesh(new THREE.BoxGeometry(0.08,1.1,0.08),M(0x9aa4b8,0x3a4458,0.4));sw.rotation.z=0.5;sw.position.set(-0.5,0.6,0.3);kn.add(sw);
+  kn.position.set(1.4,1,-87.2);scene.add(kn);})();
+gem(0.6,1,-86.8); /* sein letzter Kristall */
 /* Boss-Kammer */
 var CHZ=-104;
 plat(0,0,CHZ,26,26,STONE2);
@@ -184,7 +195,7 @@ var boss=new THREE.Group(),bossHp=6,bossOn=false,bossPh=0;
   boss.userData.armL=arm(-2.35);boss.userData.armR=arm(2.35);
   boss.add(boss.userData.armL);boss.add(boss.userData.armR);
   boss.position.set(0,-8,CHZ-4);boss.visible=false;scene.add(boss);})(); /* startet unterirdisch -> Rise-Inszenierung */
-var rings=[],bState="idle",bT=2.5,slamArm=null,vulnT=0,hitFx=0,warnD=null,_fw=new THREE.Vector3(),shakeT=0;
+var rings=[],bState="idle",bT=2.5,slamArm=null,vulnT=0,hitFx=0,warnD=null,_fw=new THREE.Vector3(),shakeT=0,stomps=0;
 var _debris=[];(function(){var dm=M(0x4a4258,0x2a2038,0.4);
   for(var di=0;di<12;di++){var b2=new THREE.Mesh(new THREE.BoxGeometry(0.22,0.22,0.22),dm);b2.visible=false;scene.add(b2);
     _debris.push({m:b2,vx:0,vy:0,vz:0,life:0});}})();
@@ -236,7 +247,7 @@ function doJump(){jBuf=0.12;jHeld=true;}
 function endJump(){jHeld=false;if(vy>3.5)vy=3.5;} /* Loslassen kappt den Sprung -> kurze/hohe Sprünge */
 function doHit(){if(!bossOn||dead||won)return;
   if(vulnT>0&&slamArm){var f=slamArm.userData.fist,wp=new THREE.Vector3();f.getWorldPosition(wp);
-    if(Math.hypot(wp.x-px,wp.z-pz)<4.0){bossHp--;vulnT=0;hitFx=0.5;shakeT=0.25;
+    if(Math.hypot(wp.x-px,wp.z-pz)<4.0){bossHp--;vulnT=0;bT=Math.min(bT,1.4);hitFx=0.5;shakeT=0.25; /* Treffer -> Kampf zieht sofort an */
       slamArm.userData.cry.material.emissiveIntensity=0.2;slamArm.userData.cry.scale.setScalar(1);slamArm.userData.slamTgt=0;slamArm=null; /* Arm federt zurück statt einzufrieren */
       sfx(180,0.25,"sawtooth",0.09,60);sfx(880,0.15,"square",0.05,1400);announce("💥 TREFFER!","#c98bff");
       var hh=document.getElementById("hint");clearTimeout(hh._t);hh.style.opacity=0;
@@ -295,6 +306,7 @@ function finish(win){if(finish._done)return;finish._done=true;var score=gemN*4+M
 
 function start(){document.getElementById("ov").style.display="none";running=true;
   hint("🕹️ Laufen · ⤴ zweimal = Doppelsprung",3600);updHud();
+  setTimeout(function(){announce("🔥 Folge den Fackeln in die Tiefe!","#ffce8a");},900);
   try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();if(AC.state==="suspended")AC.resume();}catch(e){}}
 document.getElementById("startBtn").onclick=start;
 
@@ -324,6 +336,7 @@ function frame(now){requestAnimationFrame(frame);
     var il=Math.hypot(ix,iz);if(il>1){ix/=il;iz/=il;}
     var spd=6.2;px+=ix*spd*dt;pz+=iz*spd*dt;
     if(il>0.05)player.rotation.y=Math.atan2(ix,iz);
+    if(bossOn){var bdx=px,bdz=pz-CHZ,bdl=Math.hypot(bdx,bdz);if(bdl>12){px=bdx/bdl*12;pz=CHZ+bdz/bdl*12;}} /* Arena hält dich im Kampf */
     /* Sprung-Physik: Coyote + Buffer + Doppelsprung */
     var g=groundAt(px,pz,py+1.2); /* nur Plattformen unter/kaum über den Füssen (kein Hochzuppen durch hohe Decks) */
     if(onG)coyote=0.18;else coyote-=dt; /* grosszügige Coyote-Zeit */
@@ -339,8 +352,8 @@ function frame(now){requestAnimationFrame(frame);
     for(var ci=checkpoints.length-1;ci>0;ci--){var cp=checkpoints[ci];
       if(ci>ckpt&&Math.hypot(px-cp.x,pz-cp.z)<2.6&&Math.abs(py-cp.y)<2){ckpt=ci;
         stage=Math.min(3,ci+0);announce("🔥 Fackel-Halt erreicht!","#ffce8a");sfx(520,0.15,"triangle",0.05,780);updHud();}}
-    if(pz<-28&&stage<2){stage=2;updHud();}
-    if(pz<-62&&stage<3){stage=3;updHud();}
+    if(pz<-28&&stage<2){stage=2;updHud();announce("⚙️ Abschnitt 2 — Bewegte Plattformen","#9fd0ff");hint("⤴⤴ Doppelsprung für weite Lücken!",3200);}
+    if(pz<-62&&stage<3){stage=3;updHud();announce("🌉 Abschnitt 3 — Schmale Stege","#c8b8ff");hint("Langsam laufen — die Stege sind schmal!",3200);}
     /* Kristalle */
     for(var g2=0;g2<gems.length;g2++){var gg=gems[g2];if(gg.got)continue;
       if(Math.hypot(px-gg.x,pz-gg.z)<1.1&&Math.abs(py+0.9-gg.m.position.y)<1.6){gg.got=true;gg.m.visible=false;gemN++;
@@ -356,11 +369,11 @@ function frame(now){requestAnimationFrame(frame);
         boss.userData.eyeMat.emissiveIntensity=Math.min(1,boss.userData.eyeMat.emissiveIntensity+dt*0.8);
         if(boss.position.y>=0){boss.position.y=0;boss.userData.eyeMat.emissiveIntensity=1;bState="idle";bT=2.0;}}
       else if(bState==="idle"&&bT<=0){
-        if(vulnT<=0&&(bossPh===0?Math.random()<0.65:Math.random()<0.5)){bState="stomp";bT=0.7;
+        if(vulnT<=0&&stomps<2&&(bossPh===0?Math.random()<0.6:Math.random()<0.45)){bState="stomp";bT=0.7;stomps++;
           warnD=new THREE.Mesh(new THREE.RingGeometry(1.6,2.2,32),new THREE.MeshBasicMaterial({color:0xff8a3a,transparent:true,opacity:0.5,side:THREE.DoubleSide,depthWrite:false}));
           warnD.rotation.x=-Math.PI/2;warnD.position.set(boss.position.x,0.10,boss.position.z);scene.add(warnD); /* 🔶 Stampf-Telegraph */
           sfx(90,0.6,"sawtooth",0.06,50);}
-        else{bState="slam";bT=0.9;slamArm=Math.random()<0.5?boss.userData.armL:boss.userData.armR;
+        else{bState="slam";bT=0.9;stomps=0;slamArm=Math.random()<0.5?boss.userData.armL:boss.userData.armR;
           sfx(200,0.8,"sine",0.05,80);}}
       else if(bState==="stomp"&&bT<=0){ /* Stampfer -> Schockwellen-Ring */
         var rg=new THREE.Mesh(new THREE.RingGeometry(0.6,1.15,40),new THREE.MeshBasicMaterial({color:0xff8a3a,transparent:true,opacity:0.85,side:THREE.DoubleSide,depthWrite:false}));
@@ -375,7 +388,7 @@ function frame(now){requestAnimationFrame(frame);
         boss.position.y=0.5;setTimeout(function(){boss.position.y=0;},120);
         bState="idle";bT=bossPh===1?1.5:2.4;}
       else if(bState==="slam"&&bT<=0){ /* Faust-Slam -> Kristall verwundbar */
-        vulnT=4.2;bState="idle";bT=5.0; /* langes Fenster zum Zuschlagen */
+        vulnT=4.2;bState="idle";bT=4.4; /* langes Fenster; bT muss >= vulnT bleiben */
         var a=slamArm;a.userData.slamTgt=-1.35;
         a.userData.cry.material.emissiveIntensity=1;
         sfx(70,0.5,"sawtooth",0.1,45);hint("⚔️ JETZT die glühende Faust treffen!",4200);}
