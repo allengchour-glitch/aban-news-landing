@@ -719,11 +719,11 @@ var _combo=0,_comboT=0;
 function heroActBolt(){if(typeof heroAct==="function"&&running&&!dead)heroAct("cast",1.6);}
 function heroHas(n){return !!(heroRig&&heroRig.actions[n]);}
 function heroAct(intent,ts){if(!heroRig)return;
-  var pick;
+  var pick,stufe=0;
   if(intent==="melee"){ /* 3-Treffer-Combo, Reset nach 1.4s Pause */
     if(perfNow-_comboT>1400)_combo=0;_comboT=perfNow;
     var chain=["attack","attack2","attack3"];
-    for(var c=_combo;c<chain.length;c++){if(heroHas(chain[c])){pick=chain[c];_combo=(c+1)%chain.length;break;}}
+    for(var c=_combo;c<chain.length;c++){if(heroHas(chain[c])){pick=chain[c];stufe=c;_combo=(c+1)%chain.length;break;}}
     if(!pick){pick="attack";}
   }else if(intent==="cast"){pick=heroHas("cast")?"cast":(heroHas("charge_release")?"charge_release":(heroHas("attack2")?"attack2":"attack"));}
   else if(intent==="dash"){pick=heroHas("dash_attack")?"dash_attack":(heroHas("attack3")?"attack3":"attack");}
@@ -732,7 +732,7 @@ function heroAct(intent,ts){if(!heroRig)return;
   else if(intent==="victory"){pick=heroHas("victory")?"victory":(heroHas("wave")?"wave":null);}
   else if(intent==="taunt"){pick=heroHas("taunt")?"taunt":(heroHas("wave")?"wave":null);}
   else pick=intent;
-  if(pick&&heroRig.actions[pick])playOnce(heroRig,pick,ts||1.6);
+  if(pick&&heroRig.actions[pick])playOnce(heroRig,pick,(ts||1.6)*(intent==="melee"?([1.05,0.92,0.78][stufe]||1):1)); /* Combo-Stufen werden schneller */
   if(typeof NET!=="undefined"&&NET.on&&typeof sendAct==="function")sendAct(intent);} /* 🌐 Kampfanimation an Partner senden */
 // ---------- Charaktere (einzigartige, wählbare Helden) ----------
 // glow:"neon" = starkes Meshy-Emissive-Tuning; "soft" = moderat für class_*/hero.glb
@@ -853,10 +853,10 @@ function mobRig(o,anims){
     if(back){var b=r.actions[back];b.reset();b.play();}});
   return r;}
 var MOBS=[
-  {id:"slime", file:null,               scale:2.0, hp:3, spd:3.0, minDay:1, w:5, emo:"🟢"},
+  {id:"slime", file:null,               scale:2.0, hp:3, spd:3.0, minDay:1, w:5, emo:"🟢", dmg:4},
   {id:"goblin",file:"mob_goblin.glb",   scale:1.5, hp:4, spd:3.6, minDay:1, w:4, emo:"👹"},
-  {id:"wolf",  file:"mob_wolf.glb",     scale:1.3, hp:3, spd:4.6, minDay:2, w:3, emo:"🐺"},
-  {id:"golem", file:"mob_golem.glb",    scale:2.3, hp:9, spd:1.9, minDay:3, w:2, emo:"🗿"},
+  {id:"wolf",  file:"mob_wolf.glb",     scale:1.3, hp:3, spd:4.6, minDay:2, w:3, emo:"🐺", dmg:5},
+  {id:"golem", file:"mob_golem.glb",    scale:2.3, hp:9, spd:1.9, minDay:3, w:2, emo:"🗿", dmg:9},
   {id:"bat",   build:mkBat,             scale:1.4, hp:2, spd:4.4, minDay:1, w:3, emo:"🦇", fly:true},
   {id:"spider",build:mkSpider,          scale:1.4, hp:5, spd:3.4, minDay:2, w:3, emo:"🕷️"},
   {id:"ghost", build:mkGhost,           scale:1.6, hp:6, spd:2.7, minDay:3, w:2, emo:"👻", fly:true, undead:true},
@@ -869,8 +869,8 @@ var MOBS=[
   {id:"vampir",  file:"mn_vampire.glb",    th:1.8, scale:1.0,  hp:8,  spd:3.8, minDay:4, w:2, emo:"🧛", undead:true},
   {id:"geist",   file:"mn_ghost.glb",      th:1.8, scale:1.0,  hp:6,  spd:3.6, minDay:3, w:2, emo:"👻", undead:true}, /* 👻 W4: Kenney-Geist (Node-Anims, klonbar) */
   {id:"mimic",   file:"mn_mimic.glb",      th:1.0, scale:0.5,  hp:9,  spd:1.6, minDay:4, w:1, emo:"📕"},
-  {id:"daemon",  file:"mn_demon.glb", skinned:true,      th:2.7, scale:0.7,  hp:12, spd:2.6, minDay:5, w:2, emo:"😈"},
-  {id:"yeti",    file:"mn_yeti.glb", skinned:true,       th:2.7, scale:0.65, hp:14, spd:2.2, minDay:6, w:2, emo:"🦍"}
+  {id:"daemon",  file:"mn_demon.glb", skinned:true,      th:2.7, scale:0.7,  hp:12, spd:2.6, minDay:5, w:2, emo:"😈", dmg:9},
+  {id:"yeti",    file:"mn_yeti.glb", skinned:true,       th:2.7, scale:0.65, hp:14, spd:2.2, minDay:6, w:2, emo:"🦍", dmg:10}
 ];
 var mobProtos={}; // id -> THREE.Object3D
 function loadSlime(){
@@ -915,7 +915,7 @@ function spawnMonster(forceId,fx,fz){ /* ⚔️ W4: optional forceId/fx/fz (nur 
       o.scale.setScalar(k);
       o.position.set(xx,groundH(xx,zz)-bb.min.y*k,zz);scene.add(o);
       var rig=mobRig(o,g.animations); /* ⚔️ W4: Attack/Walk/Idle-Rig */
-      monsters.push({mesh:o,x:xx,z:zz,hp:MM.hp,t:rnd()*6,spd:MM.spd,baseScale:k,kind:MM.id,walk:true,fly:false,wings:null,rig:rig});
+      monsters.push({mesh:o,x:xx,z:zz,hp:MM.hp,dmg:MM.dmg,t:rnd()*6,spd:MM.spd,baseScale:k,kind:MM.id,walk:true,fly:false,wings:null,rig:rig});
       if(rig)setAnim(rig,rig.actions.walk?"walk":"idle",0);
       if(typeof updWaveHud==="function")updWaveHud();
     },undefined,function(){});})(M,x,z);
@@ -928,7 +928,7 @@ function spawnMonster(forceId,fx,fz){ /* ⚔️ W4: optional forceId/fx/fz (nur 
   m.scale.setScalar(sc);
   m.position.set(x,groundH(x,z),z);scene.add(m);
   var rig2=(M.file&&MOB_ANIMS[M.id])?mobRig(m,MOB_ANIMS[M.id]):null; /* ⚔️ W4: Node-Anims binden per Name auch auf Klonen */
-  monsters.push({mesh:m,x:x,z:z,hp:M.hp,t:rnd()*6,spd:M.spd,baseScale:sc,kind:M.id,walk:(M.id!=="slime"),fly:!!M.fly,wings:m.userData.wings||null,rig:rig2});
+  monsters.push({mesh:m,x:x,z:z,hp:M.hp,dmg:M.dmg,t:rnd()*6,spd:M.spd,baseScale:sc,kind:M.id,walk:(M.id!=="slime"),fly:!!M.fly,wings:m.userData.wings||null,rig:rig2});
   if(rig2)setAnim(rig2,rig2.actions.walk?"walk":"idle",0);
   return 1;
 }
@@ -1031,12 +1031,17 @@ function updMonsters(dt){
     }
     if(e.kbT>0){e.kbT-=dt;e.x+=e.kbx*dt;e.z+=e.kbz*dt;var _kd=Math.pow(0.0006,dt);e.kbx*=_kd;e.kbz*=_kd;} /* 💥 Rückstoß mit Ease-out-Dämpfung */
     else if(tel){ if(e.rig&&e.rig.cur!=="attack")setAnim(e.rig,e.rig.actions.idle?"idle":"walk",0.2); } /* Wind-up: Boss steht */
+    else if(e.windT>0){e.windT-=dt; /* ⚔️ telegrafierter Wind-up: kurzes Fenster zum Ausweichen */
+      if(e.rig&&e.rig.cur!=="attack")setAnim(e.rig,e.rig.actions.idle?"idle":"walk",0.2);
+      if(e.windT<=0){var d2=Math.hypot(player.position.x-e.x,player.position.z-e.z);
+        if(d2<1.9)damagePlayer(e.dmg||(e.boss?14:6),e);
+        e.atkCd=(e.rig&&e.rig.actions.attack)?1.15:1;}}
     else if(d>1.6){e.x+=dx/d*spd*dt;e.z+=dz/d*spd*dt;
       if(e.rig&&e.rig.cur!=="attack")setAnim(e.rig,e.rig.actions.walk?"walk":"idle",0.2);}
-    else{ // Angriff
+    else{ // Angriff -> nur Wind-up starten (Schaden kommt nach windT, wenn man nicht wegrollt)
       if(!e.atkCd||e.atkCd<=0){
-        if(e.rig&&e.rig.actions.attack)playOnce(e.rig,"attack",1.35); /* ⚔️ W4: Zuschlag-Clip statt nur Schaden-Tick */
-        damagePlayer(e.boss?14:6,e);e.atkCd=(e.rig&&e.rig.actions.attack)?1.15:1;} }
+        e.windT=0.32;e.hitPop=Math.max(e.hitPop||0,0.30);
+        if(e.rig&&e.rig.actions.attack)playOnce(e.rig,"attack",1.35);} }
     if(e.atkCd)e.atkCd-=dt;
     if(e.hitFlash!==undefined){ /* ⚡ weisser Hit-Flash (Material einmalig pro Monster geklont — Prototyp-Sharing!) */
       e.hitFlash-=dt;var _on=e.hitFlash>0;
@@ -1053,7 +1058,7 @@ function updMonsters(dt){
       if(e.wings){var fl=Math.sin(e.t*14)*0.7;e.wings[0].rotation.y=fl;e.wings[1].rotation.y=-fl;}
     }else{ // Slime/Boss: hüpfen + squash
       e.mesh.position.set(e.x,groundH(e.x,e.z)+Math.abs(Math.sin(e.t*6))*0.25*_bsc,e.z);
-      var sc=_bsc*(1+Math.sin(e.t*6)*0.08);e.mesh.scale.set(sc,sc*(1-Math.sin(e.t*6)*0.12),sc);
+      var sc=_bsc*(1+Math.sin(e.t*6)*0.08);if(e.hitPop>0){e.hitPop=Math.max(0,e.hitPop-dt);sc*=1+e.hitPop*1.6;}e.mesh.scale.set(sc,sc*(1-Math.sin(e.t*6)*0.12),sc);
     }
   }
 }
@@ -2696,6 +2701,8 @@ function openLoot(lt){
     if(typeof gainXP==="function")gainXP(40);if(typeof dropLoot==="function")dropLoot(lt.x,lt.z,3);
     // Container-Mesh (CC0) verstecken passiert unten NICHT (Truhen-Mesh bleibt offen sichtbar)
   }else{gain={wood:2};}
+  if(lt.type==="chest"||lt.type==="ruin"){if(typeof gainXP==="function")gainXP(10); /* 📦 Truhen/Ruinen geben XP */
+    if(rnd()<0.15){gain.crystal=(gain.crystal||0)+4;head="🌟 GOLDTRUHE:";if(typeof dropLoot==="function")dropLoot(lt.x,lt.z,3);}}
   if((lt.type==="barrel"||lt.type==="crate")&&lt.mesh)lt.mesh.visible=false; // CC0-Container: nach Öffnen weg (kein Lid-Anim)
   var txt=[];for(var k in gain){if(gain[k]>0){inv[k]=(inv[k]||0)+gain[k];txt.push({wood:"🪵",stone:"🪨",crystal:"💎",berry:"🍓",meat:"🍖"}[k]+gain[k]);}}
   invUpd();burst(lt.x,groundH(lt.x,lt.z)+1,lt.z,lt.type==="grave"?0x66ff99:0xffd166,lt.type==="grave"?20:12);
@@ -3181,7 +3188,7 @@ function useSkill(){
   burst(px,player.position.y+1,pz,[0x7de3ff,0xc98bff],34);spawnShock(px,pz,R,0x9fd0ff);shake=Math.min(shake+0.45,0.75);heroAct("cast",1.5);
   for(var i=monsters.length-1;i>=0;i--){var e=monsters[i];if((e.x-px)*(e.x-px)+(e.z-pz)*(e.z-pz)<R*R){
     e.hp-=dmg;hit++;burst(e.x,groundH(e.x,e.z)+1,e.z,0xff8ad8,7);dmgHit(e,dmg);knockback(e,px,pz,11); /* 💥 Schockwelle stößt kräftig weg */
-    if(e.hp<=0){var _wb=e.boss;scene.remove(e.mesh);monsters.splice(i,1);gainXP(8);kills++;dropLoot(e.x,e.z);if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);clearWarn(e);}updWaveHud();}}}
+    if(e.hp<=0){var _wb=e.boss;scene.remove(e.mesh);monsters.splice(i,1);gainXP(8);kills++;killSfx(_wb);dropLoot(e.x,e.z);if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);clearWarn(e);}updWaveHud();}}}
   toast(hit?("💥 Schockwelle! "+hit+" getroffen"):"💥 Schockwelle!");
 }
 var throwCd=0,THROW_CD=1.1,projectiles=[];
@@ -3206,7 +3213,7 @@ function updThrow(dt){
     p.m.rotation.y+=dt*12;
     if(p.t>1.2||(alive&&Math.hypot(p.m.position.x-tx,p.m.position.z-tz)<0.8)){
       if(alive){e.hp-=p.dmg;burst(e.x,groundH(e.x,e.z)+1,e.z,0x7de3ff,10);dmgHit(e,p.dmg);knockback(e,player.position.x,player.position.z,7);shake=Math.min(shake+0.1,0.4);
-        if(e.hp<=0){var _wb=e.boss;var idx=monsters.indexOf(e);if(idx>=0){scene.remove(e.mesh);monsters.splice(idx,1);}gainXP(8);kills++;if(typeof dropLoot==="function")dropLoot(e.x,e.z);if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);clearWarn(e);}updWaveHud();}}
+        if(e.hp<=0){var _wb=e.boss;var idx=monsters.indexOf(e);if(idx>=0){scene.remove(e.mesh);monsters.splice(idx,1);}gainXP(8);kills++;killSfx(_wb);if(typeof dropLoot==="function")dropLoot(e.x,e.z);if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);clearWarn(e);}updWaveHud();}}
       scene.remove(p.m);projectiles.splice(i,1);}
   }
 }
@@ -3260,7 +3267,7 @@ function useBolt(){heroActBolt();
     burst(e.x,groundH(e.x,e.z)+1,e.z,0x9fe8ff,8);
     e.hp-=dmg;dmgHit(e,dmg);
     if(e.hp<=0){var _wb=e.boss;var idx=monsters.indexOf(e);if(idx>=0){scene.remove(e.mesh);monsters.splice(idx,1);}
-      gainXP(8);kills++;if(typeof dropLoot==="function")dropLoot(e.x,e.z);
+      gainXP(8);kills++;killSfx(_wb);if(typeof dropLoot==="function")dropLoot(e.x,e.z);
       if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);clearWarn(e);}updWaveHud();}
   });
   toast("⚡ Kettenblitz! "+hits.length+" getroffen");
@@ -3386,6 +3393,7 @@ function dmgHit(e,dmg){if(!e)return;
 function knockback(e,fromX,fromZ,str){if(!e)return;var kx=e.x-fromX,kz=e.z-fromZ,kd=Math.hypot(kx,kz)||1;var s=(e.boss?str*0.28:str*1.6);e.kbx=kx/kd*s;e.kbz=kz/kd*s;e.kbT=0.28;} /* länger + gedämpft = Ease-out-Wucht */
 /* 🔊 Wuchtiger Treffer-Klang: tiefer Thud + kurzer Crack (passt zum Rückstoß) */
 function hitSfx(){if(typeof sfx!=="function")return;sfx(92,0.09,"sawtooth",0.06,54);sfx(330,0.05,"square",0.04,150);}
+function killSfx(boss){if(typeof sfx!=="function")return;sfx(boss?150:190,0.22,"sawtooth",0.07,boss?46:70);setTimeout(function(){sfx(boss?900:660,0.10,"square",0.05,boss?1400:990);},60);} /* 💀 eigener Kill-Klang */
 
 // ---------- Sammeln ----------
 var nearRes=null,nearMon=null,nearAni=null,nearWork=null,nearMerchant=false,nearNpc=null,nearFire=null;
@@ -3467,7 +3475,7 @@ function harvest(){
     faceTo(nearMon.x,nearMon.z);
 var _md=(1+Math.floor(level/3)+weaponAtk());nearMon.hp-=_md;dmgHit(nearMon,_md);knockback(nearMon,player.position.x,player.position.z,9);hitSfx();hitStop=Math.max(hitStop,0.045);var _ihx=nearMon.x-(nearMon.x-player.position.x)*0.25,_ihz=nearMon.z-(nearMon.z-player.position.z)*0.25;burst(_ihx,groundH(nearMon.x,nearMon.z)+1.1,_ihz,0x7de3ff,10);shake=Math.min(shake+0.22,0.5); /* Funke am Aufschlagpunkt Richtung Spieler */
     if(nearMon.hp<=0){hitStop=Math.max(hitStop,0.08);var _wb=nearMon.boss;var idx=monsters.indexOf(nearMon);if(idx>=0){scene.remove(nearMon.mesh);monsters.splice(idx,1);}if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(nearMon.x,nearMon.z);clearWarn(nearMon);}updWaveHud();
-      burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x3ad0ff,10);gainXP(8);kills++;dropLoot(nearMon.x,nearMon.z);
+      burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x3ad0ff,10);gainXP(8);kills++;killSfx(_wb);dropLoot(nearMon.x,nearMon.z);
       if(rnd()<0.4){inv.stone+=1;toast("🪨 +1 Stein");floatText(nearMon.x,groundH(nearMon.x,nearMon.z)+1.6,nearMon.z,"+1 🪨","#cfe");invUpd();}}
     return;
   }
@@ -3652,13 +3660,13 @@ function updStructures(dt){
       // Heil-Aura
       if(Math.hypot(s.x-player.position.x,s.z-player.position.z)<5&&hp<maxHp){hp=Math.min(maxHp,hp+4*dt);hpUpd();}}
     if(s.type==="bett"){if(Math.hypot(s.x-player.position.x,s.z-player.position.z)<3.5&&hp<maxHp){hp=Math.min(maxHp,hp+6*dt);hpUpd();}}
-    if(s.type==="falle"){s.cd=(s.cd||0)-dt;if(s.cd<=0){var hitAny=false;for(var mf=0;mf<monsters.length;mf++){var em=monsters[mf];if((em.x-s.x)*(em.x-s.x)+(em.z-s.z)*(em.z-s.z)<2.4*2.4){em.hp-=2;hitAny=true;burst(em.x,groundH(em.x,em.z)+0.6,em.z,0xff6a6a,4);if(em.hp<=0){var idf=monsters.indexOf(em);if(idf>=0){scene.remove(em.mesh);monsters.splice(idf,1);gainXP(8);kills++;updWaveHud();}}}}if(hitAny)s.cd=0.9;else s.cd=0.3;}}
+    if(s.type==="falle"){s.cd=(s.cd||0)-dt;if(s.cd<=0){var hitAny=false;for(var mf=0;mf<monsters.length;mf++){var em=monsters[mf];if((em.x-s.x)*(em.x-s.x)+(em.z-s.z)*(em.z-s.z)<2.4*2.4){em.hp-=2;hitAny=true;burst(em.x,groundH(em.x,em.z)+0.6,em.z,0xff6a6a,4);if(em.hp<=0){var idf=monsters.indexOf(em);if(idf>=0){scene.remove(em.mesh);monsters.splice(idf,1);gainXP(8);kills++;killSfx(em.boss);updWaveHud();}}}}if(hitAny)s.cd=0.9;else s.cd=0.3;}}
     if(s.type==="nexus"){if(s.mesh.userData.orb)s.mesh.userData.orb.rotation.y+=dt*1.2;if(s.mesh.userData.ring)s.mesh.userData.ring.rotation.z+=dt*0.8;
       s.spk=(s.spk||0)-dt;if(s.spk<=0){s.spk=0.4+rnd()*0.3;burst(s.x+(rnd()-.5)*2,groundH(s.x,s.z)+5.6+(rnd()-.5)*2,s.z+(rnd()-.5)*2,0xc98bff,1);}}
     if(s.type==="turm"){s.cd-=dt;if(s.mesh.userData.orb)s.mesh.userData.orb.rotation.y+=dt*2;
       if(isNight&&s.cd<=0){var tgt=null,bd=16*16;for(var m=0;m<monsters.length;m++){var e=monsters[m];var d=(e.x-s.x)*(e.x-s.x)+(e.z-s.z)*(e.z-s.z);if(d<bd){bd=d;tgt=e;}}
         if(tgt){tgt.hp-=1;burst(tgt.x,groundH(tgt.x,tgt.z)+1,tgt.z,0xff8ad8,4);s.cd=0.8;
-          if(tgt.hp<=0){var idx=monsters.indexOf(tgt);if(idx>=0){scene.remove(tgt.mesh);monsters.splice(idx,1);kills++;gainXP(4);}}}}}
+          if(tgt.hp<=0){var idx=monsters.indexOf(tgt);if(idx>=0){scene.remove(tgt.mesh);monsters.splice(idx,1);kills++;killSfx(tgt.boss);gainXP(4);}}}}}
   }
 }
 
@@ -4063,11 +4071,11 @@ function updMinimap(){var cv=document.getElementById("minimap");if(!cv||!running
   if(typeof villages!=="undefined")for(var i=0;i<villages.length;i++){var v=villages[i],p=pt(v.x,v.z);ctx.fillStyle=v.big?"#ffd166":"#c9a15a";ctx.fillRect(p[0]-2,p[1]-2,4,4);}
   /* 🎯 Stationen (Emoji-Icons) */
   if(typeof stations!=="undefined"&&stations.length){ctx.font="10px sans-serif";ctx.textAlign="center";ctx.textBaseline="middle";
-    for(var si=0;si<stations.length;si++){var stn=stations[si],ps=pt(stn.x,stn.z);ctx.fillText(stn.icon,ps[0],ps[1]);}}
+    for(var si=0;si<stations.length;si++){var stn=stations[si],sdx=stn.x-px,sdz=stn.z-pz,maxRs=R-8;if(Math.hypot(sdx,sdz)*SC>maxRs){var sa=Math.atan2(sdz,sdx),ex=cx+Math.cos(sa)*maxRs,ey=cy+Math.sin(sa)*maxRs;ctx.font="8px sans-serif";ctx.fillText(stn.icon,ex,ey);ctx.save();ctx.translate(ex,ey);ctx.rotate(sa);ctx.fillStyle="#ffd166";ctx.beginPath();ctx.moveTo(7,0);ctx.lineTo(2,-2.5);ctx.lineTo(2,2.5);ctx.closePath();ctx.fill();ctx.restore();ctx.font="10px sans-serif";}else{var ps=pt(stn.x,stn.z);ctx.fillText(stn.icon,ps[0],ps[1]);}}} /* 📍 Off-Map: Icon+Pfeil am Rand */
   // Ressourcen (grün Baum / grau Fels / cyan Kristall) — nur nahe
   for(var r=0;r<resources.length;r++){var rs=resources[r];if(rs.dead)continue;var dx=rs.x-px,dz=rs.z-pz;if(dx*dx+dz*dz>95*95)continue;var p2=pt(rs.x,rs.z);ctx.fillStyle=rs.type==="tree"?"#3fbf5f":(rs.type==="crystal"?"#7de3ff":(rs.type==="bush"?"#ff6ab0":"#9aa"));ctx.fillRect(p2[0]-1,p2[1]-1,2,2);}
   // Gegner (rot)
-  if(typeof monsters!=="undefined")for(var m=0;m<monsters.length;m++){var e=monsters[m];var p3=pt(e.x,e.z);ctx.fillStyle=e.boss?"#ff2d6f":"#ff5a5a";ctx.beginPath();ctx.arc(p3[0],p3[1],e.boss?3:2,0,6.283);ctx.fill();}
+  if(typeof monsters!=="undefined")for(var m=0;m<monsters.length;m++){var e=monsters[m];if(e.boss){var bdx=e.x-px,bdz=e.z-pz;if(Math.hypot(bdx,bdz)*SC>R-8){var ba=Math.atan2(bdz,bdx),bx2=cx+Math.cos(ba)*(R-8),by2=cy+Math.sin(ba)*(R-8);ctx.fillStyle="#ff2d6f";ctx.save();ctx.translate(bx2,by2);ctx.rotate(ba);ctx.beginPath();ctx.moveTo(7,0);ctx.lineTo(1,-3.5);ctx.lineTo(1,3.5);ctx.closePath();ctx.fill();ctx.restore();continue;}}var p3=pt(e.x,e.z);ctx.fillStyle=e.boss?"#ff2d6f":"#ff5a5a";ctx.beginPath();ctx.arc(p3[0],p3[1],e.boss?3:2,0,6.283);ctx.fill();}
   // Partner (Koop, cyan) — IMMER anzeigen: bei Distanz am Minimap-Rand festhalten + Richtungspfeil
   if(typeof NET!=="undefined"&&NET.on&&NET.remote&&NET.remote.visible){
     var rx=NET.remote.position.x-px,rz=NET.remote.position.z-pz,maxR=R-6,mx,my,edge=false;
@@ -4098,6 +4106,7 @@ function frame(now){
   var ml=Math.hypot(mx,my);
   var moving=ml>0.15&&!dead;
   if(moving){
+    window.__moved=1;
     var spd=8+PERK.spd,cr=camRel(mx/ml,my/ml); /* vorwärts = Blickrichtung der Kamera */
     var nx=player.position.x+cr.x*spd*dt*Math.min(1,ml),nz=player.position.z+cr.z*spd*dt*Math.min(1,ml);
     // Grenze
@@ -4187,7 +4196,7 @@ function netStart(role,code){
     if(st==="waiting"){coopStatusMsg("Warte auf Partner… Code: "+NET.s.code);setOnline("waiting");}
     else if(st==="connected"){coopStatusMsg("✅ Verbunden!");setOnline("connected");sendMyChar();}
     else if(st==="lost"){coopStatusMsg("⚠️ Verbindung wackelt…");setOnline("lost");}
-    else if(st==="closed"){coopStatusMsg("❌ Getrennt");NET.on=false;setOnline("solo");}});
+    else if(st==="closed"){coopStatusMsg("❌ Getrennt");NET.on=false;setOnline("solo");netHideRemote();}});
   NET.s.onMessage(onNetMsg);
   NET.s.ready.then(function(){
     NET.on=true;
@@ -4229,11 +4238,16 @@ function spawnRemote(){
   var rg=new THREE.Mesh(new THREE.RingGeometry(0.5,0.64,24),new THREE.MeshBasicMaterial({color:0x35d0ff,transparent:true,opacity:0.5,depthTest:false}));rg.rotation.x=-Math.PI/2;rg.position.y=0.06;rg.renderOrder=998;g.add(rg);
   g.visible=false;scene.add(g);NET.remote=g;
 }
+function netHideRemote(){if(NET.remote)NET.remote.visible=false;} /* 👻 Geist-Avatar nach Trennung ausblenden */
+var _heroLoadingId=null;
 function loadRemoteHero(id){ /* 🧑‍🤝‍🧑 W8: Partner als SEIN gewählter Held (frisch laden, gleiche Höhen-Normierung wie loadHero) */
   if(!THREE.GLTFLoader)return;
   if(!NET.remote)spawnRemote();
-  var C=charById(id);if(NET.remoteCharId===C.id&&NET.remoteHero)return;NET.remoteCharId=C.id;
+  var C=charById(id);if(NET.remoteCharId===C.id&&NET.remoteHero)return;
+  if(_heroLoadingId===C.id)return;_heroLoadingId=C.id; /* Dreifach-Laden verhindern */
+  NET.remoteCharId=C.id;
   new THREE.GLTFLoader().load("/models/"+C.file,function(g2){
+    _heroLoadingId=null;
     var o=g2.scene;var TGT=2.3*(C.hscale||1);o.updateMatrixWorld(true);
     var miny=1e9,maxy=-1e9,bn=0,V=new THREE.Vector3();
     o.traverse(function(n){if(n.isSkinnedMesh&&n.skeleton){n.skeleton.bones.forEach(function(bo){bo.getWorldPosition(V);if(V.y<miny)miny=V.y;if(V.y>maxy)maxy=V.y;bn++;});}});
@@ -4246,7 +4260,7 @@ function loadRemoteHero(id){ /* 🧑‍🤝‍🧑 W8: Partner als SEIN gewählt
     if(NET.remoteRig.actions.idle)setAnim(NET.remoteRig,"idle",0);else if(g2.animations&&g2.animations[0])setAnim(NET.remoteRig,g2.animations[0].name,0);
     if(NET.remotePh)NET.remotePh.visible=false; /* Platzhalter aus */
     if(NET.remoteGear)applyRemoteGear(NET.remoteGear.w,NET.remoteGear.a); /* evtl. schon empfangene Ausrüstung anlegen */
-  },undefined,function(){});
+  },undefined,function(){_heroLoadingId=null;});
 }
 function heroActRemote(intent){ /* ⚔️ Partner-Kampfanimation auf dem Partner-Rig abspielen (gleiche Intent→Clip-Logik, tolerant) */
   var rig=NET.remoteRig;if(!rig)return;
@@ -4298,7 +4312,7 @@ function netStartQuick(){ /* ⚡ 1-Tipp Schnell-Koop ohne Code (öffentlicher Ra
     if(st==="waiting"){coopStatusMsg("⚡ Warte auf Mitspieler… (öffentlicher Raum)");setOnline("waiting");}
     else if(st==="connected"){NET.role=NET.s.role||NET.role;coopStatusMsg("✅ Verbunden!");setOnline("connected");sendMyChar();}
     else if(st==="lost"){coopStatusMsg("⚠️ Verbindung wackelt…");setOnline("lost");}
-    else if(st==="closed"){coopStatusMsg("❌ Getrennt");NET.on=false;setOnline("solo");}});
+    else if(st==="closed"){coopStatusMsg("❌ Getrennt");NET.on=false;setOnline("solo");netHideRemote();}});
   NET.s.onMessage(onNetMsg);
   NET.s.ready.then(function(){
     NET.on=true;NET.role=NET.s.role||NET.role;
@@ -4376,7 +4390,7 @@ function startGame(fresh){
   /* 📖 W7: Einmalige Anfänger-Tipps beim allerersten Start (frisch, solo) — beantwortet „Regeln erklären für Anfänger" */
   if(!sv&&!NET.on&&!lsGet("nw_intro")){lsSet("nw_intro","1");
     var _tips=["🕹️ Ziehe links den Joystick zum Laufen","⚔️ Rechts = Angriff · 🔨 = Bäume & Steine sammeln","💥 = Spezial-Skill · 💨 = Rolle zum Ausweichen","🌲 Sammle 10 Holz für das erste Ziel!"];
-    _tips.forEach(function(tp,ti){setTimeout(function(){if(running&&!dead)announce(tp,"#bfe9ff");},2600+ti*2700);});}
+    _tips.forEach(function(tp,ti){setTimeout(function(){if(running&&!dead&&!(ti===0&&window.__moved))announce(tp,"#bfe9ff");},4800+ti*2700);});}
 }
 // ---------- Charakter-3D-Vorschau im Startscreen (User: „charakter anzeigen an anfang") ----------
 (function(){
