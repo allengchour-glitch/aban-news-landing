@@ -16,13 +16,14 @@ if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.repl
   #hud{position:fixed;inset:0;pointer-events:none;z-index:5}
   #topBar{position:absolute;top:calc(8px + env(safe-area-inset-top));left:12px;display:flex;gap:10px;align-items:center;font-weight:900}
   #hearts{font-size:1.15rem;letter-spacing:2px}
-  #gems{background:rgba(20,14,40,.7);border:1px solid rgba(201,139,255,.4);border-radius:12px;padding:3px 10px;font-size:.95rem;color:#e0c8ff}
+  #gems{background:rgba(20,14,40,.7);border:1px solid rgba(201,139,255,.4);border-radius:12px;padding:3px 10px;font-size:.95rem;color:#e0c8ff;transition:transform .18s}
   #stageTag{position:absolute;top:calc(8px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);background:rgba(20,14,40,.7);
     border:1px solid rgba(255,170,80,.4);border-radius:12px;padding:3px 12px;font-weight:900;font-size:.82rem;color:#ffce8a;white-space:nowrap}
   #bossBar{position:absolute;top:calc(44px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);width:min(420px,80vw);display:none}
   #bossBar .lbl{text-align:center;font-weight:900;font-size:.78rem;color:#ff9a8a;letter-spacing:.2em;margin-bottom:3px;text-shadow:0 1px 3px #000}
   #bossBar .bar{height:12px;background:rgba(0,0,0,.55);border-radius:8px;overflow:hidden;border:1px solid rgba(255,90,90,.5)}
   #bossBar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#ff5a5a,#ff9a3a);transition:width .25s}
+  #bossBar i.flash{background:#fff}
   #announce{position:absolute;top:26%;left:0;right:0;text-align:center;font-weight:900;font-size:1.7rem;color:#ffd166;
     text-shadow:0 2px 0 #000,0 4px 16px rgba(0,0,0,.7);opacity:0;transition:opacity .35s;pointer-events:none;padding:0 14px}
   #hint{position:absolute;bottom:calc(196px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);background:rgba(20,14,40,.75);
@@ -202,6 +203,18 @@ var boss=new THREE.Group(),bossHp=6,bossOn=false,bossPh=0;
   boss.add(boss.userData.armL);boss.add(boss.userData.armR);
   boss.position.set(0,-8,CHZ-4);boss.visible=false;scene.add(boss);})(); /* startet unterirdisch -> Rise-Inszenierung */
 var rings=[],bState="idle",bT=2.5,slamArm=null,vulnT=0,hitFx=0,warnD=null,_fw=new THREE.Vector3(),shakeT=0,stomps=0;
+var fx=[],fxGeo=new THREE.OctahedronGeometry(0.12,0); /* shared Geo, nie disposen */
+function burst(x,y,z,n,col){for(var bi=0;bi<n;bi++){var m=new THREE.Mesh(fxGeo,M(col,col,0.8));
+  m.position.set(x,y,z);scene.add(m);
+  fx.push({m:m,vx:(Math.random()-0.5)*4,vy:2+Math.random()*3,vz:(Math.random()-0.5)*4,life:0.5+Math.random()*0.3,kind:"sp"});}}
+var sq=0,dust=[],dustI=0;
+(function(){var cvD=document.createElement("canvas");cvD.width=cvD.height=64;var cD=cvD.getContext("2d");
+  var gD=cD.createRadialGradient(32,32,4,32,32,32);gD.addColorStop(0,"rgba(220,210,255,.7)");gD.addColorStop(1,"rgba(220,210,255,0)");
+  cD.fillStyle=gD;cD.fillRect(0,0,64,64);var dTex=new THREE.CanvasTexture(cvD);
+  for(var dj=0;dj<6;dj++){var sp2=new THREE.Sprite(new THREE.SpriteMaterial({map:dTex,transparent:true,opacity:0,depthWrite:false}));
+    sp2.scale.set(0.7,0.7,1);scene.add(sp2);dust.push({m:sp2,t:0});}})();
+function puff(x,y,z,n){for(var pi=0;pi<n;pi++){var d3=dust[dustI=(dustI+1)%dust.length];
+  d3.t=0.5;d3.m.position.set(x+(Math.random()-0.5)*0.5,y+0.1,z+(Math.random()-0.5)*0.5);d3.m.material.opacity=0.55;}}
 var _debris=[];(function(){var dm=M(0x4a4258,0x2a2038,0.4);
   for(var di=0;di<12;di++){var b2=new THREE.Mesh(new THREE.BoxGeometry(0.22,0.22,0.22),dm);b2.visible=false;scene.add(b2);
     _debris.push({m:b2,vx:0,vy:0,vz:0,life:0});}})();
@@ -266,6 +279,8 @@ function doHit(){if(!bossOn||dead||won)return;
       slamArm.userData.cry.material.emissiveIntensity=0.2;slamArm.userData.cry.scale.setScalar(1);slamArm.userData.slamTgt=0;slamArm=null; /* Arm federt zurück statt einzufrieren */
       sfx(180,0.25,"sawtooth",0.09,60);sfx(880,0.15,"square",0.05,1400);announce("💥 TREFFER!","#c98bff");
       var hh=document.getElementById("hint");clearTimeout(hh._t);hh.style.opacity=0;
+      burst(wp.x,wp.y,wp.z,5,0xc98bff);
+      var _bf=document.getElementById("bossFill");_bf.classList.add("flash");setTimeout(function(){_bf.classList.remove("flash");},160);
       if(bossHp===3){bossPh=1;announce("😡 DER KOLOSS RAST!","#ff5a5a");}
       if(bossHp<=0)winGame();updHud();return;}}
   if(vulnT>0&&slamArm)hint("Näher an die glühende Faust ran!",2000);
@@ -290,7 +305,7 @@ function groundAt(x,z,maxY){var best=-999;if(maxY==null)maxY=1e9;
     if(p.y<=maxY&&Math.abs(x-p.x)<=p.w&&Math.abs(z-p.z)<=p.d&&p.y>best)best=p.y;}
   return best;}
 function snapCam(){camera.position.set(px,gy+(bossOn?7.5:6.2),pz+(bossOn?11:8.6));} /* Kamera springt beim Respawn mit (kein Weitflug-Lerp) */
-function respawn(){var c=checkpoints[ckpt];px=c.x;py=c.y+0.2;pz=c.z;vy=0;jumps=0;gy=py;snapCam();
+function respawn(){var c=checkpoints[ckpt];px=c.x;py=c.y+0.2;pz=c.z;vy=0;jumps=0;gy=py;sq=0;player.scale.set(1,1,1);snapCam();
   sfx(160,0.3,"sawtooth",0.06,60);announce("💫 Zurück zum Fackel-Halt","#9fd0ff");}
 var hbT=0;
 function damage(){if(dead||won)return;hearts--;invT=1.6;shakeT=Math.max(shakeT,0.35);updHud();sfx(120,0.2,"sawtooth",0.08,50);
@@ -336,6 +351,12 @@ function frame(now){requestAnimationFrame(frame);
     tc.fl.scale.setScalar(1+Math.sin(t*9+tc.ph)*0.16);tc.lt.intensity=0.75+Math.sin(t*11+tc.ph)*0.22;}
   if(window.__motes)for(var mo2=0;mo2<window.__motes.length;mo2++){var mt=window.__motes[mo2];
     mt.m.position.set(mt.x+Math.sin(t*mt.sp+mt.ph)*1.6,mt.y+Math.sin(t*mt.sp*0.7+mt.ph)*0.8,mt.z);}
+  for(var fi2=fx.length-1;fi2>=0;fi2--){var F2=fx[fi2];F2.life-=dt;
+    if(F2.life<=0){scene.remove(F2.m);if(F2.kind==="gem"&&F2.m.geometry)F2.m.geometry.dispose();F2.m.material.dispose();fx.splice(fi2,1);continue;}
+    F2.vy-=8*dt;F2.m.position.x+=F2.vx*dt;F2.m.position.y+=F2.vy*dt;F2.m.position.z+=F2.vz*dt;
+    F2.m.rotation.y+=dt*8;if(F2.m.material.opacity!==undefined)F2.m.material.opacity=Math.min(1,F2.life*2.5);}
+  for(var du=0;du<dust.length;du++){var D3=dust[du];if(D3.t<=0)continue;D3.t-=dt;
+    D3.m.position.y+=dt*0.7;D3.m.scale.x+=dt*1.4;D3.m.scale.y+=dt*1.4;D3.m.material.opacity=Math.max(0,D3.t*1.1);}
   for(var dd=0;dd<_debris.length;dd++){var db=_debris[dd];if(db.life<=0){if(db.m.visible)db.m.visible=false;continue;}
     db.life-=dt;db.vy-=14*dt;db.m.position.x+=db.vx*dt;db.m.position.y=Math.max(0.1,db.m.position.y+db.vy*dt);db.m.position.z+=db.vz*dt;
     db.m.rotation.x+=dt*6;db.m.rotation.z+=dt*5;}
@@ -360,9 +381,9 @@ function frame(now){requestAnimationFrame(frame);
     if(onG)coyote=0.18;else coyote-=dt; /* grosszügige Coyote-Zeit */
     if(jBuf>0){jBuf-=dt;
       if(onG||coyote>0){vy=9.2;onG=false;coyote=0;jumps=1;jBuf=0;sfx(340,0.12,"square",0.04,520);}
-      else if(jumps<2){var first=(jumps===0);vy=first?9.2:8.8;jumps=first?1:2;jBuf=0;sfx(first?340:430,0.12,"square",0.04,first?520:640);}} /* Kanten-Fall frisst den 1. Sprung nicht */
+      else if(jumps<2){var first=(jumps===0);vy=first?9.2:8.8;jumps=first?1:2;jBuf=0;sfx(first?340:430,0.12,"square",0.04,first?520:640);if(!first)burst(px,py+0.15,pz,4,0x7de3ff);}} /* Kanten-Fall frisst den 1. Sprung nicht */
     var G=vy<-0.5?32:(Math.abs(vy)<2&&!onG?14:22);vy=Math.max(-16,vy-G*dt);py+=vy*dt; /* schneres Fallen, schwebender Apex */
-    if(g>-500&&py<=g&&vy<=0&&py>g-1.2){py=g;vy=0;if(!onG){sfx(150,0.06,"sine",0.03);}onG=true;jumps=0;gy=py;}
+    if(g>-500&&py<=g&&vy<=0&&py>g-1.2){py=g;vy=0;if(!onG){sfx(150,0.06,"sine",0.03);sq=1;puff(px,g,pz,3);}onG=true;jumps=0;gy=py;}
     else onG=false;
     if(py<-9){ /* Abgrund: im Parcours GRATIS zurück zum Fackel-Halt (fair!), nur beim Boss kostet es */
       if(bossOn)damage();else respawn();}
@@ -374,7 +395,9 @@ function frame(now){requestAnimationFrame(frame);
     if(pz<-62&&stage<3){stage=3;updHud();announce("🌉 Abschnitt 3 — Schmale Stege","#c8b8ff");hint("Langsam laufen — die Stege sind schmal!",3200);}
     /* Kristalle */
     for(var g2=0;g2<gems.length;g2++){var gg=gems[g2];if(gg.got)continue;
-      if(Math.hypot(px-gg.x,pz-gg.z)<1.1&&Math.abs(py+0.9-gg.m.position.y)<1.6){gg.got=true;gg.m.visible=false;gemN++;
+      if(Math.hypot(px-gg.x,pz-gg.z)<1.1&&Math.abs(py+0.9-gg.m.position.y)<1.6){gg.got=true;gemN++;
+        gg.m.material.transparent=true;fx.push({m:gg.m,vx:0,vy:3.2,vz:0,life:0.45,kind:"gem"});burst(gg.x,gg.m.position.y,gg.z,3,0xc98bff);
+        var _ge=document.getElementById("gems");_ge.style.transform="scale(1.25)";clearTimeout(_ge._pt);_ge._pt=setTimeout(function(){_ge.style.transform="";},180);
         if(gemN===GEM_TOTAL)announce("✨ ALLE KRISTALLE!","#c98bff");
         sfx(760,0.12,"triangle",0.05,1100);updHud();}}
     /* Boss-Kammer betreten */
@@ -432,6 +455,7 @@ function frame(now){requestAnimationFrame(frame);
         if(rr.r>18){scene.remove(rr.m);rr.m.geometry.dispose();rr.m.material.dispose();rings.splice(ri,1);}}
     }
     if(boss.userData.falling){boss.rotation.x+=dt*0.5;boss.position.y-=dt*1.4;}
+    if(sq>0){sq=Math.max(0,sq-dt*4);var _sy=1-sq*0.3,_sxz=1+sq*0.22;player.scale.set(_sxz,_sy,_sxz);player.position.y=py;}else if(player.scale.y!==1)player.scale.set(1,1,1); /* 🫠 Lande-Squash */
     if(invT>0){invT-=dt;player.visible=invT<=0||Math.sin(t*30)>0;} /* 🛡️ kurze Unverwundbarkeit blinkt */
     if(hearts===1&&!dead&&!won){hbT-=dt;if(hbT<=0){hbT=1.1;sfx(85,0.1,"sine",0.05);setTimeout(function(){sfx(70,0.12,"sine",0.045);},140);}}
     player.position.set(px,py,pz);
