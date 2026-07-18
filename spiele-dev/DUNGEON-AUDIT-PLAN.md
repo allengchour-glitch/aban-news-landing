@@ -1,6 +1,6 @@
 # 🏰 Dungeon Audit — Plan (18 Batches, 72 bestätigt · Stand 2026-07-18)
 
-Umgesetzt: B1-B6 (Bugfixes, Robustheit, Sprung-Feel, Boss-Lesbarkeit, Render/Kamera, Impact). OFFEN: B7-B18. Anker vor Anwendung grep-verifizieren (Zeilennummern = Audit-Stand, driften durch Umsetzung).
+Umgesetzt: B1-B10 (ohne B9/#30 dyn. Joystick). OFFEN: B9/#30, B11-B18. Anker vor Anwendung grep-verifizieren (Zeilennummern = Audit-Stand, driften durch Umsetzung).
 
 ---
 B1 · Bug-Fixes Kern (Boss-Schaden, Arm-Hänger, groundAt)
