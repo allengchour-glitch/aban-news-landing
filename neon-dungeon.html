@@ -91,7 +91,7 @@ function plat(x,y,z,w,d,mat){var g=new THREE.Group();
   var top=new THREE.Mesh(new THREE.BoxGeometry(w,0.6,d),mat||STONE);top.position.y=-0.3;g.add(top);
   var rim=new THREE.Mesh(new THREE.BoxGeometry(w+0.16,0.14,d+0.16),EDGE);rim.position.y=-0.02;g.add(rim);
   g.position.set(x,y,z);scene.add(g);
-  plats.push({x:x,y:y,z:z,w:w/2,d:d/2,g:g});return g;}
+  var P={x:x,y:y,z:z,w:w/2,d:d/2,g:g,x0:x,y0:y,mv:null};plats.push(P);return P;}
 function gem(x,y,z){var m=new THREE.Mesh(new THREE.OctahedronGeometry(0.34,0),M(0xc98bff,0xa060ff,0.9));
   m.position.set(x,y+0.9,z);scene.add(m);gems.push({m:m,x:x,y:y+0.9,z:z,got:false,ph:Math.random()*6});}
 function torch(x,y,z){var g=new THREE.Group();
@@ -108,13 +108,13 @@ plat(-1.5,1.5,-19,2.6,2.6);gem(-1.5,1.5,-19);
 plat(1,2.2,-25,3,3);torch(1,2.2,-26);
 /* Abschnitt 2: Zickzack + weite Sprünge (Doppelsprung nötig) */
 plat(-3,2.8,-32,2.4,2.4);gem(-3,2.8,-32);
-plat(3,3.4,-38,2.4,2.4);
+plat(3,3.4,-38,2.4,2.4).mv={ax:2.2,ay:0,sp:0.7,ph:0}; /* ↔ gleitet seitlich */
 plat(-2,4.0,-45,2.2,2.2);gem(-2,4.0,-45);
-plat(3.5,4.4,-52,2.2,2.2);gem(3.5,4.4,-52);
+var _p52=plat(3.5,4.4,-52,2.2,2.2);_p52.mv={ax:0,ay:1.1,sp:0.9,ph:2};gem(3.5,4.4,-52); /* ↕ hebt und senkt sich */
 plat(0,5,-59,3.4,3.4);torch(-1.2,5,-60);torch(1.2,5,-60);
 /* Abschnitt 3: schmale Stege hinab zur Kammer */
 plat(0,4.2,-66,1.6,4);
-plat(-2.5,3.2,-73,1.6,3);gem(-2.5,3.2,-73);
+plat(-2.5,3.2,-73,1.6,3).mv={ax:1.8,ay:0,sp:1.1,ph:1};gem(-2.5,3.2,-73);
 plat(2.5,2.2,-80,1.6,3);gem(2.5,2.2,-80);
 plat(0,1,-88,4,4);torch(-1.5,1,-89);torch(1.5,1,-89);
 checkpoints.push({x:1,y:2.2,z:-25},{x:0,y:5,z:-59},{x:0,y:1,z:-88});
@@ -223,6 +223,13 @@ function winGame(){if(won)return;won=true;bossOn=false;
   sfx(392,0.3,"triangle",0.07);setTimeout(function(){sfx(523,0.3,"triangle",0.07);},180);
   setTimeout(function(){sfx(784,0.5,"triangle",0.08);},380);
   boss.userData.falling=true;
+  (function(){for(var vi=0;vi<10;vi++)(function(k){setTimeout(function(){ /* 💎 Kristall-Regen */
+    var vg=new THREE.Mesh(new THREE.OctahedronGeometry(0.3,0),M(0xc98bff,0xa060ff,1));
+    vg.position.set(boss.position.x+(Math.random()-0.5)*6,7+Math.random()*3,boss.position.z+(Math.random()-0.5)*6);
+    scene.add(vg);vg.userData.vy=0;
+    var iv=setInterval(function(){vg.userData.vy-=0.02;vg.position.y+=vg.userData.vy;vg.rotation.y+=0.15;
+      if(vg.position.y<0.3){clearInterval(iv);vg.position.y=0.3;}},16);
+    gemN++;updHud();sfx(700+k*60,0.1,"triangle",0.04,1000+k*80);},k*160);})(vi);})();
   setTimeout(function(){finish(true);},2600);}
 function finish(win){var score=gemN*4+Math.max(0,hearts)*5+(win?30:0);
   if(STATION)stationPost({t:"stationDone",score:score});
@@ -246,6 +253,10 @@ function frame(now){requestAnimationFrame(frame);
     tc.fl.scale.setScalar(1+Math.sin(t*9+tc.ph)*0.16);tc.lt.intensity=0.75+Math.sin(t*11+tc.ph)*0.22;}
   for(var gi=0;gi<gems.length;gi++){var gm=gems[gi];if(gm.got)continue;
     gm.m.rotation.y+=dt*2.2;gm.m.position.y=gm.y+Math.sin(t*2.4+gm.ph)*0.14;}
+  for(var mi2=0;mi2<plats.length;mi2++){var mp=plats[mi2];if(!mp.mv)continue; /* 🛗 bewegliche Plattformen */
+    var ox2=mp.x,om=mp.mv;mp.x=mp.x0+Math.sin(t*om.sp+om.ph)*om.ax;mp.y=mp.y0+Math.sin(t*om.sp+om.ph)*om.ay;
+    mp.g.position.set(mp.x,mp.y,mp.z);
+    if(running&&onG&&Math.abs(px-mp.x)<=mp.w+0.4&&Math.abs(pz-mp.z)<=mp.d+0.4&&Math.abs(py-mp.y)<0.3){px+=mp.x-ox2;py=mp.y;}}
   if(running&&!dead&&!won){
     /* Bewegung (Tastatur überlagert Stick) */
     var ix=kx,iz=kz;
@@ -295,16 +306,23 @@ function frame(now){requestAnimationFrame(frame);
         var rg=new THREE.Mesh(new THREE.RingGeometry(0.6,1.15,40),new THREE.MeshBasicMaterial({color:0xff8a3a,transparent:true,opacity:0.85,side:THREE.DoubleSide,depthWrite:false}));
         rg.rotation.x=-Math.PI/2;rg.position.set(boss.position.x,0.12,boss.position.z);scene.add(rg);
         rings.push({m:rg,r:1,hit:false});sfx(55,0.4,"square",0.1,40);
+        if(bossPh===1){setTimeout(function(){if(won||dead)return; /* 😡 Phase 2: zweiter Ring hinterher */
+          var rg2=new THREE.Mesh(new THREE.RingGeometry(0.6,1.15,40),new THREE.MeshBasicMaterial({color:0xff5a5a,transparent:true,opacity:0.85,side:THREE.DoubleSide,depthWrite:false}));
+          rg2.rotation.x=-Math.PI/2;rg2.position.set(boss.position.x,0.12,boss.position.z);scene.add(rg2);
+          rings.push({m:rg2,r:1,hit:false});sfx(65,0.35,"square",0.09,45);},420);}
         boss.position.y=0.5;setTimeout(function(){boss.position.y=0;},120);
         bState="idle";bT=bossPh===1?1.5:2.4;}
       else if(bState==="slam"&&bT<=0){ /* Faust-Slam -> Kristall verwundbar */
         vulnT=3.2;bState="idle";bT=4.2;
-        var a=slamArm;a.rotation.x=-1.35;
+        var a=slamArm;a.userData.slamTgt=-1.35;
         a.userData.cry.material.emissiveIntensity=1;
         sfx(70,0.5,"sawtooth",0.1,45);hint("⚔️ JETZT die glühende Faust treffen!",2200);}
       if(vulnT>0){vulnT-=dt;
-        if(slamArm)slamArm.userData.cry.scale.setScalar(1+Math.sin(t*10)*0.25);
-        if(vulnT<=0&&slamArm){slamArm.rotation.x=0;slamArm=null;}}
+        if(slamArm){slamArm.userData.cry.scale.setScalar(1+Math.sin(t*10)*0.25);
+          slamArm.rotation.x+=((slamArm.userData.slamTgt||-1.35)-slamArm.rotation.x)*Math.min(1,dt*10);} /* Arm saust runter */
+        if(vulnT<=0&&slamArm){slamArm.userData.slamTgt=0;slamArm=null;}}
+      if(boss.userData.armL.rotation.x<-0.02&&boss.userData.armL!==slamArm)boss.userData.armL.rotation.x+=(0-boss.userData.armL.rotation.x)*Math.min(1,dt*5); /* Arme federn zurück */
+      if(boss.userData.armR.rotation.x<-0.02&&boss.userData.armR!==slamArm)boss.userData.armR.rotation.x+=(0-boss.userData.armR.rotation.x)*Math.min(1,dt*5);
       if(hitFx>0){hitFx-=dt;boss.position.x=Math.sin(t*60)*0.12*hitFx;}
       /* Ringe expandieren + treffen */
       for(var ri=rings.length-1;ri>=0;ri--){var rr=rings[ri];rr.r+=dt*(bossPh===1?9:7);
