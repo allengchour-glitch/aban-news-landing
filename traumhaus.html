@@ -281,6 +281,24 @@ var grasTex=(function(){var cv=document.createElement("canvas");cv.width=cv.heig
   try{t.anisotropy=renderer.capabilities.getMaxAnisotropy();}catch(e){}return t;})();
 var rasen=new THREE.Mesh(new THREE.PlaneGeometry(GW*CS+60,GH*CS+60),new THREE.MeshStandardMaterial({map:grasTex,roughness:0.95,envMapIntensity:0.22}));
 rasen.rotation.x=-Math.PI/2;rasen.position.y=-0.02;rasen.receiveShadow=true;scene.add(rasen);
+// Boden-Variation: EINE große nicht-kachelnde Overlay-Textur bricht das Kachelmuster
+// (weiche rgba-Blotches im Canvas vorgeblendet, gleiche Beleuchtung wie der Rasen darunter)
+(function bodenVariation(){
+  var seed=7;function rnd(){seed=(seed*16807)%2147483647;return seed/2147483647;}
+  var BLOT=[[52,84,36],[92,120,48],[40,66,28],[150,148,88],[112,92,60],[70,104,42]];
+  function blotchTex(n,aMax){var cv=document.createElement("canvas");cv.width=cv.height=512;var c=cv.getContext("2d");
+    for(var i=0;i<n;i++){var x=rnd()*512,y=rnd()*512,r=30+rnd()*85,t=BLOT[(rnd()*BLOT.length)|0];
+      var g=c.createRadialGradient(x,y,2,x,y,r);var a=(0.12+rnd()*aMax);
+      g.addColorStop(0,"rgba("+t[0]+","+t[1]+","+t[2]+","+a.toFixed(2)+")");
+      g.addColorStop(1,"rgba("+t[0]+","+t[1]+","+t[2]+",0)");
+      c.fillStyle=g;c.beginPath();c.arc(x,y,r,0,6.283);c.fill();}
+    return new THREE.CanvasTexture(cv);}
+  function overlay(w,h,y,tex){var m=new THREE.Mesh(new THREE.PlaneGeometry(w,h),
+    new THREE.MeshStandardMaterial({map:tex,transparent:true,roughness:1,depthWrite:false}));
+    m.rotation.x=-Math.PI/2;m.position.y=y;scene.add(m);return m;}
+  overlay(GW*CS+60,GH*CS+60,-0.015,blotchTex(26,0.16)); // nahe Wiese
+  overlay(600,600,-0.06,blotchTex(40,0.2));             // Fern-Ebene
+})();
 // Kaminrauch aus mehreren Häusern (leichte aufsteigende Partikel)
 var rauchPunkte=[[-38.9,-30,7.9],[10,-30,7.6],[46,-33,8.5],[-40,30,8],[8,32,8.8]];
 var rauchGeo=new THREE.BufferGeometry(),rauchN=rauchPunkte.length*8,rauchPos=new Float32Array(rauchN*3),rauchBase=[];
