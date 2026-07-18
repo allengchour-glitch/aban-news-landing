@@ -156,7 +156,7 @@ var player=new THREE.Group();scene.add(player);
   var head=new THREE.Mesh(new THREE.SphereGeometry(0.26,12,10),M(0xd8dcf0,0x555a80,0.35));head.position.y=1.5;player.add(head);
   var visor=new THREE.Mesh(new THREE.BoxGeometry(0.4,0.09,0.12),M(0x7de3ff,0x40b0ff,1));visor.position.set(0,1.52,-0.2);player.add(visor); /* ⚔️ Helm-Visier */
   var lt=new THREE.PointLight(0x9fd0ff,0.5,7);lt.position.y=1.6;player.add(lt);})();
-var px=0,py=0,pz=0,vy=0,onG=true,jumps=0,coyote=0,jBuf=0,ckpt=0;
+var px=0,py=0,pz=0,vy=0,onG=true,jumps=0,coyote=0,jBuf=0,ckpt=0,invT=0;
 var hearts=4,gemN=0,stage=1,running=false,won=false,dead=false;
 var kx=0,kz=0; /* Eingabe */
 
@@ -217,7 +217,7 @@ function doJump(){jBuf=0.12;}
 function doHit(){if(!bossOn)return;
   if(vulnT>0&&slamArm){var f=slamArm.userData.fist,wp=new THREE.Vector3();f.getWorldPosition(wp);
     if(Math.hypot(wp.x-px,wp.z-pz)<3.2){bossHp--;vulnT=0;hitFx=0.5;
-      slamArm.userData.cry.material.emissiveIntensity=0.2;
+      slamArm.userData.cry.material.emissiveIntensity=0.2;slamArm.userData.cry.scale.setScalar(1);slamArm.userData.slamTgt=0;slamArm=null; /* Arm federt zurück statt einzufrieren */
       sfx(180,0.25,"sawtooth",0.09,60);sfx(880,0.15,"square",0.05,1400);announce("💥 TREFFER!","#c98bff");
       if(bossHp===3){bossPh=1;announce("😡 DER KOLOSS RAST!","#ff5a5a");}
       if(bossHp<=0)winGame();updHud();return;}}
@@ -233,14 +233,15 @@ addEventListener("keydown",function(e){keys[e.key.toLowerCase()]=1;
 addEventListener("keyup",function(e){keys[e.key.toLowerCase()]=0;});
 
 /* ---------- Spiel-Logik ---------- */
-function groundAt(x,z){var best=-999;
+function groundAt(x,z,maxY){var best=-999;if(maxY==null)maxY=1e9;
   for(var i=0;i<plats.length;i++){var p=plats[i];
-    if(Math.abs(x-p.x)<=p.w&&Math.abs(z-p.z)<=p.d&&p.y>best)best=p.y;}
+    if(p.y<=maxY&&Math.abs(x-p.x)<=p.w&&Math.abs(z-p.z)<=p.d&&p.y>best)best=p.y;}
   return best;}
 function respawn(){var c=checkpoints[ckpt];px=c.x;py=c.y+0.2;pz=c.z;vy=0;jumps=0;
   sfx(160,0.3,"sawtooth",0.06,60);announce("💫 Zurück zum Fackel-Halt","#9fd0ff");}
-function damage(){if(dead||won)return;hearts--;updHud();sfx(120,0.2,"sawtooth",0.08,50);
-  if(hearts<=0){dead=true;announce("💀 Der Dungeon hat gewonnen …","#8a8a9a");
+function damage(){if(dead||won)return;hearts--;invT=1.6;updHud();sfx(120,0.2,"sawtooth",0.08,50);
+  for(var qi=rings.length-1;qi>=0;qi--){scene.remove(rings[qi].m);rings[qi].m.geometry.dispose();rings[qi].m.material.dispose();}rings.length=0; /* keine Ketten-Treffer nach dem Rücksetzen */
+  if(hearts<=0){dead=true;player.visible=true;announce("💀 Der Dungeon hat gewonnen …","#8a8a9a");
     setTimeout(function(){finish(false);},1800);}
   else respawnBoss();}
 function respawnBoss(){px=0;pz=CHZ+9;py=0;vy=0;}
@@ -294,7 +295,7 @@ function frame(now){requestAnimationFrame(frame);
     var spd=6.2;px+=ix*spd*dt;pz+=iz*spd*dt;
     if(il>0.05)player.rotation.y=Math.atan2(ix,iz);
     /* Sprung-Physik: Coyote + Buffer + Doppelsprung */
-    var g=groundAt(px,pz);
+    var g=groundAt(px,pz,py+1.2); /* nur Plattformen unter/kaum über den Füssen (kein Hochzuppen durch hohe Decks) */
     if(onG)coyote=0.18;else coyote-=dt; /* grosszügige Coyote-Zeit */
     if(jBuf>0){jBuf-=dt;
       if(onG||coyote>0){vy=9.2;onG=false;coyote=0;jumps=1;jBuf=0;sfx(340,0.12,"square",0.04,520);}
@@ -353,10 +354,11 @@ function frame(now){requestAnimationFrame(frame);
       for(var ri=rings.length-1;ri>=0;ri--){var rr=rings[ri];rr.r+=dt*(bossPh===1?7:5.5);
         rr.m.scale.setScalar(rr.r);rr.m.material.opacity=Math.max(0,0.85-rr.r*0.045);
         var pd=Math.hypot(px-boss.position.x,pz-boss.position.z);
-        if(!rr.hit&&Math.abs(pd-rr.r)<0.55&&py<0.55){rr.hit=true;damage();}
+        if(!rr.hit&&invT<=0&&Math.abs(pd-rr.r)<0.55&&py<0.55){rr.hit=true;damage();break;} /* break PFLICHT: damage() leert rings */
         if(rr.r>18){scene.remove(rr.m);rr.m.geometry.dispose();rr.m.material.dispose();rings.splice(ri,1);}}
     }
     if(boss.userData.falling){boss.rotation.x+=dt*0.5;boss.position.y-=dt*1.4;}
+    if(invT>0){invT-=dt;player.visible=invT<=0||Math.sin(t*30)>0;} /* 🛡️ kurze Unverwundbarkeit blinkt */
     player.position.set(px,py,pz);
   }
   /* Kamera */
@@ -370,7 +372,7 @@ function frame(now){requestAnimationFrame(frame);
 requestAnimationFrame(frame);
 updHud();
 window.__nd={state:function(){return {px:px,py:py,pz:pz,hearts:hearts,gems:gemN,bossOn:bossOn,bossHp:bossHp,won:won};},
-  tp:function(x,z){px=x;pz=z;py=groundAt(x,z)+0.2;vy=0;},boss:function(){px=0;pz=CHZ+10;py=0;}};
+  tp:function(x,z){px=x;pz=z;py=groundAt(x,z,1e9)+0.2;vy=0;},boss:function(){px=0;pz=CHZ+10;py=0;}};
 })();
 </script>
 </body>
