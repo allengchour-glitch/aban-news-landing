@@ -396,6 +396,9 @@ if(THREE.RGBELoader&&renderer.capabilities.isWebGL2){try{new THREE.RGBELoader().
 },undefined,function(){});}catch(e){}}
 document.getElementById("wrap").appendChild(renderer.domElement);
 var scene=new THREE.Scene();scene.background=new THREE.Color(0x9fd8ef);scene.fog=new THREE.Fog(0x9fd8ef,130,430);
+// 🌅 Verlaufs-Himmel: Kuppel mit Zenit→Horizont-Gradient, getönt nach Kapitel-Himmel (schönerer Himmel als flache Hintergrundfarbe)
+var lpSkyMat=new THREE.ShaderMaterial({uniforms:{topCol:{value:new THREE.Color(0x6ec2f2)},botCol:{value:new THREE.Color(0x9fd8ef)}},vertexShader:"varying vec3 vP;void main(){vP=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}",fragmentShader:"uniform vec3 topCol;uniform vec3 botCol;varying vec3 vP;void main(){float h=clamp(normalize(vP).y*0.7+0.3,0.0,1.0);gl_FragColor=vec4(mix(botCol,topCol,h),1.0);}",side:THREE.BackSide,depthWrite:false});lpSkyMat.fog=false;
+var lpSkyDome=new THREE.Mesh(new THREE.SphereGeometry(400,24,16),lpSkyMat);lpSkyDome.renderOrder=-1;scene.add(lpSkyDome);
 var camera=new THREE.PerspectiveCamera(50,W/H,0.1,800);
 addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);});
 function mat(c,e,i){return new THREE.MeshStandardMaterial({color:c,emissive:e!==undefined?e:0x000000,emissiveIntensity:i!==undefined?i:0.25,envMapIntensity:0.3,flatShading:true});}
@@ -980,12 +983,18 @@ for(var si=0;si<SEASON_N;si++){seasonPos[si*3]=0;seasonPos[si*3+1]=Math.random()
 seasonGeo.setAttribute("position",new THREE.BufferAttribute(seasonPos,3));
 var seasonMat=new THREE.PointsMaterial({color:0xfff2a8,size:0.5,map:_dotTex,transparent:true,opacity:0.85,depthWrite:false});
 var seasonPts=new THREE.Points(seasonGeo,seasonMat);scene.add(seasonPts);
-var _seasCol=new THREE.Color(0xfff2a8),_seasSunTgt=new THREE.Color();
+var _seasCol=new THREE.Color(0xfff2a8),_seasSunTgt=new THREE.Color(),_hemiSky=new THREE.Color(),_hemiGnd=new THREE.Color();
 // dezente jahreszeitliche Licht-Tönung (Lesbarkeit bleibt — sehr sanfter Lerp)
 var SEASON_SUN={spring:0xfff0dc,summer:0xfff2d0,autumn:0xffe0b0,winter:0xeaf0ff};
+// 🌤️ Tageslicht-Bogen pro Lebensabschnitt: Intensität + Himmel/Boden-Ton (Herbst/Lebensabend goldener, Winter kühl-gedämpft)
+var SEASON_SUN_I={spring:1.05,summer:1.15,autumn:1.04,winter:0.94};
+var SEASON_HEMI={spring:[0xd6e6ff,0x3a5238],summer:[0xdbecff,0x466a3a],autumn:[0xffe6c8,0x5a4630],winter:[0xe8f0ff,0x8290a0]};
 function updSeason(dt,ch){seasonPts.visible=OPT.motion;
   var s=seasonOf(ch);_seasonNow=s;
-  if(sunL){_seasSunTgt.setHex(SEASON_SUN[s]);sunL.color.lerp(_seasSunTgt,Math.min(1,dt*0.6));}
+  if(sunL){_seasSunTgt.setHex(SEASON_SUN[s]);sunL.color.lerp(_seasSunTgt,Math.min(1,dt*0.6));
+    sunL.intensity+=((SEASON_SUN_I[s]||1.08)-sunL.intensity)*Math.min(1,dt*0.6);}
+  if(hemi){var hs=SEASON_HEMI[s]||SEASON_HEMI.spring;_hemiSky.setHex(hs[0]);_hemiGnd.setHex(hs[1]);
+    hemi.color.lerp(_hemiSky,Math.min(1,dt*0.6));hemi.groundColor.lerp(_hemiGnd,Math.min(1,dt*0.6));}
   if(!OPT.motion)return;
   var cfg=SEASON_CFG[s];
   seasonMat.color.lerp(_seasCol.setHex(cfg[0]),Math.min(1,dt*1.6)); // weicher Farb-Übergang beim Kapitelwechsel
@@ -2956,7 +2965,10 @@ function loop(now){
   }
   if(!running)updConfs(dt); // Finale-Konfetti auch nach Spielende animieren
   if(window._skyTarget){scene.background.lerp(window._skyTarget,Math.min(1,dt*1.2));scene.fog.color.copy(scene.background);}
-  if(window._lpBillboards)for(var bb=0;bb<window._lpBillboards.length;bb++)window._lpBillboards[bb].lookAt(camera.position);
+  if(lpSkyMat){lpSkyMat.uniforms.botCol.value.copy(scene.background);lpSkyMat.uniforms.topCol.value.copy(scene.background).multiplyScalar(0.82).offsetHSL(0,0.06,0.03);lpSkyDome.position.copy(camera.position);} // 🌅 Kuppel folgt Kamera, Zenit etwas tiefer/satter
+  if(window._lpBillboards){var _sx=camT.x-110,_sz=camT.z-120; // ☀️ Spielzeug-Sonne wandert mit dem Kamera-Fokus (bleibt im Bild)
+    window._lpBillboards[0].position.set(_sx,64,_sz);if(window._lpBillboards[1])window._lpBillboards[1].position.set(_sx,64,_sz-1);
+    for(var bb=0;bb<window._lpBillboards.length;bb++)window._lpBillboards[bb].lookAt(camera.position);}
   updateCamera(dt);
   renderer.render(scene,camera);
 }
