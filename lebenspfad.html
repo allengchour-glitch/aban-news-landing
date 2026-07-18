@@ -435,7 +435,9 @@ function achDef(id){for(var i=0;i<ACHIEVEMENTS.length;i++)if(ACHIEVEMENTS[i].id=
 function unlockAch(id){if(LPACH[id])return false;var a=achDef(id);if(!a)return false;
   LPACH[id]=Date.now();lsSet("lp_ach",JSON.stringify(LPACH));
   try{announce("🏆 ERFOLG: "+a.emoji+" "+a.titel,"#ffe08a");showHint("Neuer Erfolg freigeschaltet: "+a.emoji+" "+a.titel+" 🎉",3600);
-    beep(880,.1,"triangle",.06);setTimeout(function(){beep(1174,.16,"triangle",.06);},130);}catch(e){}
+    beep(880,.1,"triangle",.06);setTimeout(function(){beep(1174,.16,"triangle",.06);},130);
+    if(typeof camT!=="undefined")for(var _c=0;_c<3;_c++)confetti(camT.x+(Math.random()-0.5)*3,camT.z+(Math.random()-0.5)*3,0xffe08a); // 🎉 Erfolg-Konfetti + Zoom-Punch
+    zoomPunch(0.12);}catch(e){}
   return true;}
 function achGalleryHTML(){var got=0;ACHIEVEMENTS.forEach(function(a){if(LPACH[a.id])got++;});
   var h="<div style='font-size:.74rem;color:#8a6a2a;font-weight:800;letter-spacing:.06em;margin:2px 0 5px'>🏆 ERFOLGE ("+got+"/"+ACHIEVEMENTS.length+")</div><div style='display:flex;flex-wrap:wrap;gap:6px;justify-content:center;max-width:340px;margin:0 auto'>";
@@ -942,7 +944,7 @@ var confs=[];
 function confetti(x,z,accent,n){
   var cols=[0xffa8b8,0x9ac8ff,0xa8e0a0,0xffe09a,0xffc0e0,accent||0xffffff];
   for(var i=0;i<(n||26);i++){var m=new THREE.Mesh(new THREE.PlaneGeometry(0.3,0.18),
-    new THREE.MeshBasicMaterial({color:cols[(Math.random()*cols.length)|0],side:THREE.DoubleSide}));
+    new THREE.MeshBasicMaterial({color:cols[(Math.random()*cols.length)|0],side:THREE.DoubleSide,transparent:true,depthWrite:false}));
     m.position.set(x+(Math.random()-0.5)*2,3.5+Math.random()*2,z+(Math.random()-0.5)*2);
     scene.add(m);
     confs.push({m:m,vx:(Math.random()-0.5)*3,vy:1+Math.random()*2,vz:(Math.random()-0.5)*3,
@@ -2072,8 +2074,9 @@ function showWheel(n,done){
     ctx.restore();}
   // Zielwinkel: Segment n unter dem Zeiger (oben, -90°), + 4 volle Umdrehungen
   var target=-Math.PI/2-(n-0.5)*Math.PI/3+Math.PI*8;
-  var t0=performance.now(),dur=2700,lastSeg=-1;
-  function anim(now){var k=Math.min(1,(now-t0)/dur);var e=1-Math.pow(1-k,3);
+  var t0=performance.now(),dur=2400,lastSeg=-1,skip=false;
+  _radDiv.onclick=function(){skip=true;}; // 👆 Antippen springt zum Ergebnis
+  function anim(now){var k=skip?1:Math.min(1,(now-t0)/dur);var e=1-Math.pow(1-k,3);
     var rot=target*e;draw(rot);
     var seg=Math.floor(((-Math.PI/2-rot)%(Math.PI/3)+Math.PI/3)%(Math.PI/3)*0+rot/(Math.PI/3));
     if(seg!==lastSeg){lastSeg=seg;if(k<0.96)beep(420+((seg%6)+6)%6*30,.03,"square",.025);}
@@ -2224,7 +2227,7 @@ function nextTurn(){
   if(G.players.length>1&&!G.players[G.turn].done){
     if(NET.on&&G.turn===NET.my)announce("🎲 DU BIST DRAN — Drehen!","#8fffb0",5200); /* Koop: eigener Zug unuebersehbar */
     else announce("🎲 "+G.players[G.turn].name+" ist dran!","#"+("00000"+G.players[G.turn].col.toString(16)).slice(-6));}
-  if(!G.players[G.turn].done){beep(523,.14,"triangle",.035);setTimeout(function(){beep(659,.2,"triangle",.03);},140);}
+  if(!G.players[G.turn].done){if(NET.on&&G.turn===NET.my){beep(659,.12,"triangle",.05);setTimeout(function(){beep(880,.12,"triangle",.05);},120);setTimeout(function(){beep(1109,.22,"triangle",.055);},250);} /* 🔔 unverwechselbarer „du bist dran"-Klang online */ else{beep(523,.14,"triangle",.035);setTimeout(function(){beep(659,.2,"triangle",.03);},140);}}
   if(!G.players[G.turn].done){emote(G.turn,"wink");markerPop=1;} // Marker springt zur neuen Figur
   var _mpk=document.getElementById("meetPick");if(_mpk)_mpk.classList.add("hide"); // Begegnungs-Menü schließen beim Zugwechsel
   if(NET.on){renderNetHud();netCheckPause();} // ist der neue Spieler abwesend? -> pausieren + Anzeige aktualisieren
@@ -2233,6 +2236,8 @@ function finishPlayer(p){if(!p.hist)p.hist=[];p.hist.push({g:p.geld,h:p.glueck,w
   p.done=true;announce("🏁 "+p.name+" hat den Lebensabend erreicht!","#f0c8ff");
   p.bio.push("erreichte den Lebensabend nach "+G.round+" Runden voller Geschichten");snap(G.players.indexOf(p),"🏁","Der Lebensabend");
   beep(880,.4,"triangle",.08);
+  (function(){var f=fields[p.tile];if(f)for(var c=0;c<3;c++)(function(cc){setTimeout(function(){confetti(f.x+(Math.random()-0.5)*4,f.z+(Math.random()-0.5)*4,0xf0c8ff);},cc*200);})(c); // 🎆 Ziel-Erreicht-Höhepunkt
+    jingle();setTimeout(jingle,420);zoomPunch(0.18);colorFlash("245,200,255",false);})();
   G.phase="idle";endTurnSoon();
 }
 // ===================== Ende: Punkte + Biografie =====================
@@ -2244,7 +2249,7 @@ function playerDeath(p,how){
   // Trauer-Moment: Welt verdunkelt sich, Glocke schlägt dreimal
   var mo=document.getElementById("mourn");mo.style.opacity=1;
   setTimeout(function(){mo.style.opacity=0;},3400);
-  tollBell(3);camShake=1.0;
+  tollBell(3);camShake=1.0;window._musDuckUntil=Date.now()+3600; // 🔇 Musik während des Trauer-Moments dämpfen
   announce("⚰️ "+p.name.toUpperCase()+" IST GESTORBEN","#8a8a9a");
   showHint(how||"Das Leben ist kurz — manchmal kürzer.",3800);
   if(pw){pw.rotation.z=Math.PI/2;pw.position.y=0.3;
@@ -2393,6 +2398,7 @@ function updMusic(dt){
   // Lebensabend (Kapitel 7-8): Musik dezenter
   var ch=G?chapterOf(G.players[G.turn].tile):0;
   var tgt=(muted||!OPT.music)?0:(ch>=6?0.24:0.34);
+  if(window._musDuckUntil&&Date.now()<window._musDuckUntil)tgt*=0.2; // Trauer-Moment: kurz absenken
   MUS.volume=Math.max(0,Math.min(1,MUS.volume+(tgt-MUS.volume)*Math.min(1,dt*2)));
   if(tgt===0&&MUS.volume<0.01){if(!MUS.paused)MUS.pause();}
   else if(tgt>0&&MUS.paused)MUS.play().catch(function(){});
@@ -3837,6 +3843,7 @@ function begin(saved){
     var bl2=new THREE.Mesh(new THREE.CircleGeometry(0.55,12),new THREE.MeshBasicMaterial({color:0x2a4a2a,transparent:true,opacity:0.22}));
     bl2.rotation.x=-Math.PI/2;bl2.position.y=0.05;scene.add(bl2);pawnBlobs.push(bl2);});
   try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();if(actx.state==="suspended")actx.resume();}catch(e){}
+  try{if(OPT.music&&!muted&&MUS){MUS.volume=0;var _mp=MUS.play();if(_mp&&_mp.catch)_mp.catch(function(){});}}catch(e){} // 🎵 Musik im Start-Gesten-Kontext anstoßen (zuverlässige Mobile-Wiedergabe)
   document.getElementById("start").classList.add("hide");
   document.getElementById("endO").classList.add("hide");
   document.getElementById("hud").classList.remove("hide");
