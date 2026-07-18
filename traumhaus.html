@@ -102,6 +102,8 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 <button id="pingBtn" title="Treffpunkt setzen">📍</button>
 <button id="micBtn" title="Voice-Chat">🎙️</button>
 <button id="nitroBtn" style="position:fixed;right:12px;bottom:calc(160px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:50%;width:64px;height:64px;font-size:1.5rem;color:#fff;background:linear-gradient(135deg,#ff9a3a,#ff4a2a);box-shadow:0 6px 20px rgba(255,90,40,.5);cursor:pointer">🚀</button>
+<button id="lieferBtn" style="position:fixed;right:12px;bottom:calc(234px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:50%;width:64px;height:64px;font-size:1.5rem;background:linear-gradient(135deg,#4ab04a,#2a8a3a);box-shadow:0 6px 20px rgba(40,140,60,.5);cursor:pointer">📦</button>
+<div id="lieferHud" style="position:fixed;left:50%;transform:translateX(-50%);bottom:calc(120px + env(safe-area-inset-bottom));z-index:16;display:none;background:rgba(20,60,25,.88);color:#fff;border:2px solid #4ad06a;border-radius:12px;padding:6px 14px;font-weight:800">📦 <span id="lieferZeit">60</span>s → <span id="lieferZiel">Markt</span></div>
 <button id="hornBtn" style="position:fixed;left:12px;bottom:calc(160px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:50%;width:64px;height:64px;font-size:1.5rem;background:rgba(255,253,246,.96);box-shadow:0 6px 20px rgba(60,40,10,.3);cursor:pointer">📣</button>
 <button id="exitCar" style="position:fixed;left:50%;transform:translateX(-50%);bottom:calc(96px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:30px;padding:13px 24px;font-weight:900;font-size:1.05rem;color:#fff;background:linear-gradient(90deg,#e0703a,#c8502a);box-shadow:0 8px 22px rgba(200,80,40,.4);cursor:pointer">🚪 Aussteigen</button>
 <div id="emoteBar"></div>
@@ -1949,6 +1951,7 @@ function einsteigen(rec,geklaut){
   carRot=a.mesh.rotation.y;camR=Math.max(camR,16);camRT=camR;
   document.getElementById("exitCar").style.display="block";
   document.getElementById("nitroBtn").style.display="block";
+  if(!MPs||mpHost)document.getElementById("lieferBtn").style.display="block";
   document.getElementById("hornBtn").style.display="block";
   document.getElementById("speedo").style.display="block";
   if(geklaut){stats.autosGeklaut=(stats.autosGeklaut||0)+1;
@@ -1983,6 +1986,7 @@ function aussteigen(){
   if(driveKopf){driveKopf[0].material.opacity=driveKopf[1].material.opacity=0;driveHeck[0].material.opacity=driveHeck[1].material.opacity=0;}
   document.getElementById("exitCar").style.display="none";
   document.getElementById("nitroBtn").style.display="none";
+  document.getElementById("lieferBtn").style.display="none";
   document.getElementById("hornBtn").style.display="none";
   document.getElementById("speedo").style.display="none";
   var bf2=sims[1];
@@ -2031,6 +2035,32 @@ function autoFahr(dt){
   camTx=m.position.x;camTz=m.position.z;updCam();}
 document.getElementById("exitCar").onclick=aussteigen;
 document.getElementById("nitroBtn").onclick=function(){if(fahren){nitro=1.6;beep(180,.3,"sawtooth",.05);var b=this;b.style.transform="scale(1.2)";setTimeout(function(){b.style.transform="";},200);}};
+// ---- Blitz-Lieferung: 60s-Fahrjob (Beifahrer = +50% Team-Bonus) ----
+var liefer=null;
+var LIEFERZIELE=[["Markt",26,67],["See-Steg",-80,73],["Spielplatz",84,0],["Bauernhof",-84,-40],["Windmühle",84,30],["Brunnen-Park",84,-26]];
+document.getElementById("lieferBtn").onclick=function(){
+  if(!fahren||liefer)return;
+  var kand=LIEFERZIELE.slice().sort(function(){return 0.5-Math.random();})[0];
+  var m=driveCar.mesh;if(Math.hypot(kand[1]-m.position.x,kand[2]-m.position.z)<20)kand=LIEFERZIELE.filter(function(z){return z[0]!==kand[0];})[0];
+  liefer={n:kand[0],x:kand[1],z:kand[2],t:60};
+  makePing(liefer.x,liefer.z);if(MPs)netSend({t:"ping",x:liefer.x,z:liefer.z});
+  document.getElementById("lieferZiel").textContent=liefer.n;
+  document.getElementById("lieferHud").style.display="block";
+  hint("📦 Blitz-Lieferung zum "+liefer.n+" — 60 Sekunden!");beep(520,.1,"square",.05);};
+function updLiefer(dt){
+  if(!liefer)return;
+  if(!fahren){liefer=null;document.getElementById("lieferHud").style.display="none";hint("📦 Lieferung abgebrochen — du bist ausgestiegen");return;}
+  liefer.t-=dt;document.getElementById("lieferZeit").textContent=Math.max(0,liefer.t)|0;
+  var m=driveCar.mesh;
+  if(Math.hypot(m.position.x-liefer.x,m.position.z-liefer.z)<7){
+    var bonus=(sims[1]&&sims[1]._bf)?1.5:1;
+    var lohn=((80+liefer.t*3)*bonus)|0;
+    geld+=lohn;geldSend();stats.lieferungen=(stats.lieferungen||0)+1;updHUD();
+    hearts(liefer.x,liefer.z);beep(880,.09,"square",.05);setTimeout(function(){beep(1170,.12,"square",.05);},90);
+    hint("📦✅ Geliefert! +"+lohn+" §"+(bonus>1?" (Team-Bonus 👫)":""));
+    liefer=null;document.getElementById("lieferHud").style.display="none";return;}
+  if(liefer.t<=0){liefer=null;document.getElementById("lieferHud").style.display="none";
+    hint("⏱️ Zeit abgelaufen — Lieferung verpasst");beep(200,.25,"sawtooth",.05);}}
 document.getElementById("hornBtn").onclick=function(){if(fahren){beep(340,.18,"square",.06);setTimeout(function(){beep(300,.2,"square",.06);},120);
   npcs.forEach(function(n){if(n.mesh)npcEmoji(n,"😠");});fussg.forEach(function(p){/*erschreckt*/});}};
 // ---- Polizei-Jagd (nach Autoklau) ----
@@ -3053,7 +3083,7 @@ function loop(now){
     updHund(dt,now);
     if(fahren){autoFahr(dt);}
     updGrow(dt);updBeete(dt);if(!fahren)updWork(dt);updAuto(dt);updCrime(dt);updNpcs(dt,now);updPolizei(dt,now);if(!arbeiten&&!crime.on)updLove(dt);
-    updHearts(dt);updWetter(dt);updVerkehr(dt);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);
+    updHearts(dt);updWetter(dt);updVerkehr(dt);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);
     document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("minimap").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("emoteToggle").style.display=(running&&!buildMode)?"block":"none";
