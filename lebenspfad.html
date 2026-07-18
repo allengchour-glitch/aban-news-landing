@@ -384,8 +384,8 @@ if(DIAGON){window.addEventListener("error",function(e){
 }catch(e){}})();
 var IS_COARSE=!!(window.matchMedia&&window.matchMedia("(pointer:coarse)").matches);
 var renderer=new THREE.WebGLRenderer({antialias:true}); // AA IMMER an (auch mobil): simple Szene, ohne AA Treppchen-Kanten an allen Feld-Rändern
-renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(W,H);
-renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+renderer.setPixelRatio(Math.min(devicePixelRatio,IS_COARSE?1.5:2));renderer.setSize(W,H); // 📱 Touch-Geräte: DPR-Deckel 1.5 spart Füllrate
+renderer.shadowMap.enabled=true;renderer.shadowMap.type=IS_COARSE?THREE.PCFShadowMap:THREE.PCFSoftShadowMap; // 📱 mobil: günstigerer Schatten-Filter
 renderer.outputEncoding=THREE.sRGBEncoding;
 // Echtes Himmelslicht (HDRI, PolyHaven CC0) -> realistische Reflexe auf allen Materialien
 if(THREE.RGBELoader&&renderer.capabilities.isWebGL2){try{new THREE.RGBELoader().load("/textures/sky_1k.hdr",function(tex){
@@ -518,9 +518,10 @@ function chapterOf(tile){var bf=fields&&fields[tile]; // Neben-Routen-Felder ken
 // ===================== Licht =====================
 var hemi=new THREE.HemisphereLight(0xd6e6ff,0x3a5238,0.60);scene.add(hemi);
 var sunL=new THREE.DirectionalLight(0xfff2d8,1.08);sunL.position.set(30,60,20);scene.add(sunL);
-sunL.castShadow=true;sunL.shadow.mapSize.set(1024,1024);sunL.shadow.bias=-0.0005;
+sunL.castShadow=true;sunL.shadow.mapSize.set(IS_COARSE?512:1024,IS_COARSE?512:1024);sunL.shadow.bias=-0.0005; // 📱 mobil: kleinere Shadow-Map
 sunL.shadow.normalBias=0.7; // 📱 killt Schatten-Akne (weisse Kratzer auf Feld-Deckeln) auf Mobil-GPUs mit grober Shadow-Map
 sunL.shadow.camera.near=1;sunL.shadow.camera.far=260;sunL.shadow.camera.left=-70;sunL.shadow.camera.right=70;sunL.shadow.camera.top=70;sunL.shadow.camera.bottom=-70;
+sunL.target.position.set(0,0,0);scene.add(sunL.target); // ☀️ Sonne + Schatten-Kamera folgen dem Spieler (board-weite Erdung)
 // ===================== Bunte Landschaft: Terrain mit Kapitel-Farbverlauf =====================
 function hsh(ix,iz){var n=ix*374761393+iz*668265263;n=(n^(n>>13))*1274126177;return ((n^(n>>16))>>>0)/4294967295;}
 function vnoise(x,z){var ix=Math.floor(x),iz=Math.floor(z),fx=x-ix,fz=z-iz;
@@ -2859,6 +2860,7 @@ function updateCamera(dt){
   var p=G?G.players[G.turn]:null;
   var tx=p?pawns[G.turn].position.x:fields[0].x,tz=p?pawns[G.turn].position.z:fields[0].z;
   camT.x+=(tx-camT.x)*Math.min(1,dt*2.2);camT.z+=(tz-camT.z)*Math.min(1,dt*2.2);
+  if(sunL&&sunL.target){sunL.position.set(camT.x+30,60,camT.z+20);sunL.target.position.set(camT.x,0,camT.z);sunL.target.updateMatrixWorld();} // ☀️ Sonne folgt dem Spieler
   if(!panning){var rk=Math.min(1,dt*(OPT.motion?2.4:6));panOff.x+=(0-panOff.x)*rk;panOff.z+=(0-panOff.z)*rk;} // zurück zum Spieler
   var fx=camT.x+panOff.x,fz=camT.z+panOff.z;
   var swayX=(OPT.motion&&!panning)?Math.sin(performance.now()*0.00035)*1.2:0;
