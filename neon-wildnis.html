@@ -918,7 +918,7 @@ function spawnMonster(forceId,fx,fz){ /* ⚔️ W4: optional forceId/fx/fz (nur 
       o.scale.setScalar(k);
       o.position.set(xx,groundH(xx,zz)-bb.min.y*k,zz);scene.add(o);
       var rig=mobRig(o,g.animations); /* ⚔️ W4: Attack/Walk/Idle-Rig */
-      monsters.push({mesh:o,x:xx,z:zz,hp:Math.round(MM.hp*(1+Math.min(1.6,nights*0.12))),maxhp:Math.round(MM.hp*(1+Math.min(1.6,nights*0.12))),dmg:MM.dmg,role:MM.role,t:rnd()*6,spd:MM.spd,baseScale:k,kind:MM.id,walk:true,fly:false,wings:null,rig:rig});
+      monsters.push({mesh:o,x:xx,z:zz,hp:Math.round(MM.hp*(1+Math.min(1.0,nights*0.08))),maxhp:Math.round(MM.hp*(1+Math.min(1.0,nights*0.08))),dmg:MM.dmg,role:MM.role,t:rnd()*6,spd:MM.spd,baseScale:k,kind:MM.id,walk:true,fly:false,wings:null,rig:rig});
       if(rig)setAnim(rig,rig.actions.walk?"walk":"idle",0);
       if(typeof updWaveHud==="function")updWaveHud();
     },undefined,function(){});})(M,x,z);
@@ -931,7 +931,7 @@ function spawnMonster(forceId,fx,fz){ /* ⚔️ W4: optional forceId/fx/fz (nur 
   m.scale.setScalar(sc);
   m.position.set(x,groundH(x,z),z);scene.add(m);
   var rig2=(M.file&&MOB_ANIMS[M.id])?mobRig(m,MOB_ANIMS[M.id]):null; /* ⚔️ W4: Node-Anims binden per Name auch auf Klonen */
-  monsters.push({mesh:m,x:x,z:z,hp:Math.round(M.hp*(1+Math.min(1.6,nights*0.12))),maxhp:Math.round(M.hp*(1+Math.min(1.6,nights*0.12))),dmg:M.dmg,role:M.role,t:rnd()*6,spd:M.spd,baseScale:sc,kind:M.id,walk:(M.id!=="slime"),fly:!!M.fly,wings:m.userData.wings||null,rig:rig2});
+  monsters.push({mesh:m,x:x,z:z,hp:Math.round(M.hp*(1+Math.min(1.0,nights*0.08))),maxhp:Math.round(M.hp*(1+Math.min(1.0,nights*0.08))),dmg:M.dmg,role:M.role,t:rnd()*6,spd:M.spd,baseScale:sc,kind:M.id,walk:(M.id!=="slime"),fly:!!M.fly,wings:m.userData.wings||null,rig:rig2});
   if(rig2)setAnim(rig2,rig2.actions.walk?"walk":"idle",0);
   return 1;
 }
@@ -1018,7 +1018,7 @@ function updMonsters(dt){
         if(e.warnRing)e.warnRing.material.opacity=0.35+0.5*Math.abs(Math.sin((1.0-e.slamT)*20));
         if(e.slamT<=0){ /* Detonation */
           var pdx=player.position.x-e.slamX,pdz=player.position.z-e.slamZ;
-          if(pdx*pdx+pdz*pdz<e.slamR*e.slamR&&!dead&&dodgeT<=0)damagePlayer(e.slamNova?18:22,e);
+          if(pdx*pdx+pdz*pdz<e.slamR*e.slamR&&!dead&&dodgeT<=0)damagePlayer(e.slamNova?14:18,e);
           if(typeof spawnShock==="function")spawnShock(e.slamX,e.slamZ,e.slamR*1.4,0xff2d3a);
           shake=Math.max(shake,0.72);if(typeof sfx==="function")sfx(70,0.42,"square",0.09,40);
           if(e.warnRing){scene.remove(e.warnRing);e.warnRing.geometry.dispose();e.warnRing.material.dispose();e.warnRing=null;}
@@ -1042,7 +1042,7 @@ function updMonsters(dt){
       if(e.role==="charge"){
         if(e.lungeCd==null)e.lungeCd=1.5+Math.random();
         if(e.lungeT>0){e.lungeT-=dt;tel=true;
-          if(e.lungeT<=0){e.kbx=dx/(d||1)*14;e.kbz=dz/(d||1)*14;e.kbT=0.32;e.lungeCd=2.5+Math.random()*1.5;}}
+          if(e.lungeT<=0){e.kbx=dx/(d||1)*12;e.kbz=dz/(d||1)*12;e.kbT=0.32;e.lungeCd=3+Math.random()*1.5;}}
         else{e.lungeCd-=dt;
           if(e.lungeCd<=0&&d>3&&d<9){e.lungeT=0.4;tel=true;e.hitPop=Math.max(e.hitPop||0,0.3);
             if(typeof sfx==="function")sfx(300,0.25,"sawtooth",0.04,90);}}}
@@ -1051,7 +1051,7 @@ function updMonsters(dt){
         if(e.cstT>0){tel=true;e.cstT-=dt;
           if(e.warnRing)e.warnRing.material.opacity=0.35+0.5*Math.abs(Math.sin((0.9-e.cstT)*20));
           if(e.cstT<=0){var cdx=player.position.x-e.cstX,cdz=player.position.z-e.cstZ;
-            if(cdx*cdx+cdz*cdz<2.6*2.6&&!dead&&dodgeT<=0)damagePlayer(8,e);
+            if(cdx*cdx+cdz*cdz<2.6*2.6&&!dead&&dodgeT<=0)damagePlayer(6,e);
             if(typeof spawnShock==="function")spawnShock(e.cstX,e.cstZ,3.6,0x9a7dff);
             if(typeof sfx==="function")sfx(120,0.3,"square",0.06,60);
             clearWarn(e);e.cstCd=3.5+Math.random()*1.5;}}
@@ -1068,7 +1068,7 @@ function updMonsters(dt){
     else if(e.windT>0){e.windT-=dt; /* ⚔️ telegrafierter Wind-up: kurzes Fenster zum Ausweichen */
       if(e.rig&&e.rig.cur!=="attack")setAnim(e.rig,e.rig.actions.idle?"idle":"walk",0.2);
       if(e.windT<=0){var d2=Math.hypot(player.position.x-e.x,player.position.z-e.z);
-        if(d2<1.9)damagePlayer((e.dmg||(e.boss?14:6))+(e.boss?0:Math.min(5,Math.floor(nights/2))),e); /* Nächte machen Mobs bissiger */
+        if(d2<1.9)damagePlayer((e.dmg||(e.boss?14:6))+(e.boss?0:Math.min(3,Math.floor(nights/3))),e); /* Nächte machen Mobs moderat bissiger */
         e.atkCd=(e.rig&&e.rig.actions.attack)?1.15:1;}}
     else if(d>1.6){e.x+=dx/d*spd*dt;e.z+=dz/d*spd*dt;
       if(e.rig&&e.rig.cur!=="attack")setAnim(e.rig,e.rig.actions.walk?"walk":"idle",0.2);}
