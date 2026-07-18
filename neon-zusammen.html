@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="aban-nav" content="off">
+<title>🤝 Tempel der Zwei — Koop-Rätsel wie It Takes Two | aban news</title>
+<meta name="description" content="Ember 🔥 & Aqua 💧: Rätsel, die nur ZU ZWEIT lösbar sind — Druckplatten, Ranken verbrennen, Pflanzen giessen, Gleichklang-Schalter. Online-Koop oder solo mit Charakterwechsel.">
+<script>/* Fusion: Direktbesuch -> Wildnis-Welt; als Station (iframe/?station=1) laeuft das Spiel normal */
+if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.replace("/neon-wildnis.html?von="+location.pathname.replace(/\W/g,""));}</script>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{width:100%;height:100%;overflow:hidden;overscroll-behavior:none;background:#0c1210;font-family:system-ui,-apple-system,sans-serif;color:#e8f2ea;
+    user-select:none;-webkit-user-select:none;touch-action:none}
+  canvas{display:block;touch-action:none}
+  #hud{position:fixed;inset:0;pointer-events:none;z-index:5}
+  #topBar{position:absolute;top:calc(8px + env(safe-area-inset-top));left:12px;display:flex;gap:10px;align-items:center;font-weight:900}
+  #gems{background:rgba(14,30,24,.75);border:1px solid rgba(120,255,190,.35);border-radius:12px;padding:3px 10px;color:#c8ffe0}
+  #roomTag{position:absolute;top:calc(8px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);background:rgba(14,30,24,.75);
+    border:1px solid rgba(255,200,110,.4);border-radius:12px;padding:3px 12px;font-weight:900;font-size:.82rem;color:#ffe0a0;white-space:nowrap;max-width:70vw;overflow:hidden;text-overflow:ellipsis}
+  #coopTag{position:absolute;top:calc(40px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);font-size:.72rem;font-weight:800;color:#8adfc0;background:rgba(14,30,24,.6);border-radius:10px;padding:2px 10px;white-space:nowrap}
+  #announce{position:absolute;top:24%;left:0;right:0;text-align:center;font-weight:900;font-size:1.55rem;color:#ffd166;
+    text-shadow:0 2px 0 #000,0 4px 16px rgba(0,0,0,.7);opacity:0;transition:opacity .35s;pointer-events:none;padding:0 14px}
+  #hint{position:absolute;bottom:calc(180px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);background:rgba(14,30,24,.8);
+    border-radius:12px;padding:5px 14px;font-weight:800;font-size:.85rem;color:#cfeee0;opacity:0;transition:opacity .3s;white-space:nowrap;max-width:94vw;overflow:hidden;text-overflow:ellipsis}
+  .btn{position:absolute;pointer-events:auto;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-size:1.5rem;font-weight:900;border:3px solid;background:rgba(14,30,26,.6);backdrop-filter:blur(3px);cursor:pointer}
+  .btn:active{transform:scale(.9);filter:brightness(1.4)}
+  .btn::after{content:"";position:absolute;inset:-6px;border-radius:50%}
+  #bAct{right:calc(24px + env(safe-area-inset-right));bottom:calc(40px + env(safe-area-inset-bottom));width:76px;height:76px;border-color:#ffce8a;color:#ffe}
+  #bSwap{right:calc(112px + env(safe-area-inset-right));bottom:calc(112px + env(safe-area-inset-bottom));width:64px;height:64px;border-color:#c98bff;color:#f0e0ff;font-size:1.3rem}
+  #stick{position:absolute;left:calc(22px + env(safe-area-inset-left));bottom:calc(34px + env(safe-area-inset-bottom));width:120px;height:120px;
+    border-radius:50%;border:2px solid rgba(140,255,200,.3);background:rgba(16,36,28,.35);pointer-events:auto;touch-action:none}
+  #knob{position:absolute;left:50%;top:50%;width:52px;height:52px;border-radius:50%;background:rgba(150,255,210,.45);transform:translate(-50%,-50%)}
+  #ov{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    background:radial-gradient(ellipse at 50% 30%,#14322a 0%,#0c1210 70%);padding:18px;overflow:auto}
+  #ov h1{font-size:clamp(1.8rem,6.5vw,2.8rem);color:#7dffc8;text-shadow:0 0 24px rgba(125,255,200,.5);letter-spacing:.05em}
+  #ov p{color:#a8d8c2;max-width:470px;margin:10px 0;line-height:1.5;font-size:.93rem}
+  #ov .big{border:0;cursor:pointer;font-weight:900;font-size:1.05rem;padding:13px 32px;border-radius:40px;color:#0a2014;
+    background:linear-gradient(92deg,#7dffc8,#7de3ff);box-shadow:0 10px 34px rgba(125,255,200,.35);pointer-events:auto;margin:4px}
+  #ov .ghost{border:2px solid #2a6a52;background:rgba(14,30,24,.6);color:#8adfc0;font-weight:800;padding:10px 22px;border-radius:40px;cursor:pointer;pointer-events:auto;margin:4px}
+  #ov .chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:8px 0 12px}
+  #ov .chip{background:rgba(255,255,255,.06);border:1px solid rgba(125,255,200,.28);border-radius:12px;padding:5px 12px;font-size:.76rem;font-weight:700;color:#bfeeda}
+  #coopStatus{font-size:.85rem;font-weight:800;color:#8adfc0;min-height:1.2em;margin-top:6px}
+  #stationBack{position:fixed;top:calc(8px + env(safe-area-inset-top));right:12px;z-index:30;border:1px solid rgba(125,227,255,.45);
+    background:rgba(16,24,48,.8);color:#9fdcff;border-radius:12px;padding:7px 13px;font-weight:800;cursor:pointer;pointer-events:auto}
+</style>
+</head>
+<body>
+<div id="hud">
+  <div id="topBar"><span id="gems">💎 0</span></div>
+  <div id="roomTag">🤝 Raum 1 · Die zwei Platten</div>
+  <div id="coopTag">🧍 Solo: 🔁 wechselt die Figur</div>
+  <div id="announce"></div><div id="hint"></div>
+  <div class="btn" id="bAct">✋</div>
+  <div class="btn" id="bSwap">🔁</div>
+  <div id="stick"><div id="knob"></div></div>
+</div>
+<div id="ov">
+  <h1>🤝 TEMPEL DER ZWEI</h1>
+  <p><b>🔥 Ember</b> &amp; <b>💧 Aqua</b> — kein Rätsel hier ist allein lösbar. Ember <b>verbrennt Ranken</b>, Aqua <b>lässt Pflanzen wachsen</b>. Steht zusammen auf Platten, zieht Hebel im <b>Gleichklang</b> — wie in It Takes Two!</p>
+  <div class="chips"><span class="chip">⚖️ Druckplatten zu zweit</span><span class="chip">🔥 Ranken verbrennen</span><span class="chip">💧 Pflanzen giessen</span><span class="chip">⚡ Gleichklang-Schalter</span></div>
+  <button class="big" id="startBtn">🧍 Solo spielen (🔁 Wechsel) ▶</button>
+  <button class="big" id="coopBtn" style="background:linear-gradient(92deg,#ffb066,#7de3ff)">⚡ Online zu zweit — 1 Tipp</button>
+  <div id="coopStatus"></div>
+</div>
+<button id="stationBack" style="display:none">← Wildnis</button>
+<script src="/js/vendor/three.min.js"></script>
+<script src="/js/vendor/peerjs.min.js"></script>
+<script src="/js/mp.js"></script>
+<script>
+(function(){
+"use strict";
+var STATION=window.parent!==window&&/[?&]station=1/.test(location.search);
+function stationPost(m){try{window.parent.postMessage(typeof m==="string"?m:JSON.stringify(m),"*");}catch(e){}}
+if(STATION){var sb=document.getElementById("stationBack");sb.style.display="block";sb.onclick=function(){stationPost("mini-back");};}
+
+var W=innerWidth,H=innerHeight;
+var renderer=new THREE.WebGLRenderer({antialias:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,1.75));renderer.setSize(W,H);
+renderer.outputEncoding=THREE.sRGBEncoding;document.body.insertBefore(renderer.domElement,document.getElementById("hud"));
+var scene=new THREE.Scene();scene.background=new THREE.Color(0x0c1210);scene.fog=new THREE.Fog(0x0c1210,30,90);
+var camera=new THREE.PerspectiveCamera(56,W/H,0.1,220);
+addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);});
+scene.add(new THREE.HemisphereLight(0x6a9e8a,0x101a14,0.55));
+scene.add(new THREE.AmbientLight(0x2a4436,0.4));
+function M(c,e,i){return new THREE.MeshLambertMaterial({color:c,emissive:e||0x000000,emissiveIntensity:i||0});}
+
+/* ---------- Tempel-Layout: 3 Räume hintereinander (z: 0 → -66) ---------- */
+var walls=[],FLOOR=M(0x2e3a30),WALL=M(0x24302a),GOLD=M(0x8a7040,0x4a3410,0.3);
+function box(x,y,z,w,h,d,mat,solid){var m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat||WALL);
+  m.position.set(x,y,z);scene.add(m);if(solid)walls.push({x:x,z:z,w:w/2,d:d/2,m:m});return m;}
+box(0,-0.3,-30,20,0.6,72,FLOOR);                       /* Boden */
+box(-10.4,1.5,-30,0.8,3,72,WALL,true);box(10.4,1.5,-30,0.8,3,72,WALL,true); /* Seitenwände */
+box(0,1.5,6.4,21,3,0.8,WALL,true);                     /* Rückwand */
+/* Fackel-Deko */
+var torches=[];
+function torch(x,z){var g=new THREE.Group();
+  var st=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.08,1.0,6),M(0x4a3a2a));st.position.y=0.5;g.add(st);
+  var fl=new THREE.Mesh(new THREE.ConeGeometry(0.16,0.36,6),M(0xffa040,0xff8020,1));fl.position.y=1.12;g.add(fl);
+  var lt=new THREE.PointLight(0xff9a50,0.6,8);lt.position.y=1.2;g.add(lt);
+  g.position.set(x,0,z);scene.add(g);torches.push({fl:fl,lt:lt,ph:Math.random()*6});}
+[-9,-9,-9,9,9,9].forEach(function(x,i){torch(x,-4-((i%3)*22));});
+
+/* Tore (sinken bei Lösung) */
+function gate(z){var g=box(0,1.4,z,19,2.8,1.0,GOLD,true);g.userData.open=false;g.userData.z0=1.4;return g;}
+var gate1=gate(-16),gate2=gate(-40),gate3=gate(-62);
+
+/* Raum 1: zwei Druckplatten (beide gleichzeitig!) */
+function plate(x,z,col){var p=box(x,0.06,z,2.4,0.12,2.4,M(col,col,0.25));p.userData.on=false;return p;}
+var plateA=plate(-6,-10,0xff8a50),plateB=plate(6,-10,0x50b8ff);
+
+/* Raum 2: Ranken (nur Ember 🔥) + Trockenpflanze (nur Aqua 💧) + Hebel */
+var vines=box(-6,1.3,-27,3.2,2.6,0.9,M(0x3a7a3a,0x123a12,0.4),true);vines.userData.alive=true;
+var plantPot=box(6,0.4,-30,1.6,0.8,1.6,M(0x6a5030));
+var plant=box(6,1.0,-30,0.9,0.5,0.9,M(0x6a8a40,0x203a10,0.2));plant.userData.grown=false;
+var lever=box(-6,1.0,-33,0.5,2.0,0.5,M(0xc0c8d8,0x404858,0.4));lever.userData.pulled=false;
+var lever2=box(6,1.6,-30,0.4,1.4,0.4,M(0xc0c8d8,0x404858,0.4));lever2.userData.pulled=false;lever2.visible=false;
+
+/* Raum 3: Gleichklang-Schalter (beide innerhalb 1.2s) */
+var syncA=box(-6,0.9,-52,1.4,1.8,1.4,M(0xff8a50,0x7a3210,0.5));syncA.userData.t=0;
+var syncB=box(6,0.9,-52,1.4,1.8,1.4,M(0x50b8ff,0x104a7a,0.5));syncB.userData.t=0;
+/* Ziel-Podest */
+box(0,0.15,-66,6,0.3,4,M(0xffd166,0x8a6a20,0.4));
+var gems=[];function gem(x,z){var m=new THREE.Mesh(new THREE.OctahedronGeometry(0.3,0),M(0x7dffc8,0x30c890,0.9));
+  m.position.set(x,1.0,z);scene.add(m);gems.push({m:m,x:x,z:z,got:false,ph:Math.random()*6});}
+gem(-8,-6);gem(8,-14);gem(0,-22);gem(-8,-36);gem(8,-46);gem(0,-58);
+
+/* ---------- Die zwei Figuren ---------- */
+function mkChar(main,accent){var g=new THREE.Group();
+  var body=new THREE.Mesh(new THREE.CylinderGeometry(0.28,0.34,1.0,10),M(main,accent,0.5));body.position.y=0.7;g.add(body);
+  var head=new THREE.Mesh(new THREE.SphereGeometry(0.25,12,10),M(0xffe0c0,0x664422,0.15));head.position.y=1.42;g.add(head);
+  var crown=new THREE.Mesh(new THREE.ConeGeometry(0.18,0.3,6),M(accent,accent,0.9));crown.position.y=1.72;g.add(crown);
+  var lt=new THREE.PointLight(accent,0.45,5);lt.position.y=1.5;g.add(lt);
+  var ring=new THREE.Mesh(new THREE.RingGeometry(0.44,0.56,20),new THREE.MeshBasicMaterial({color:accent,transparent:true,opacity:0.0,side:THREE.DoubleSide}));
+  ring.rotation.x=-Math.PI/2;ring.position.y=0.05;g.add(ring);g.userData.ring=ring;
+  scene.add(g);return g;}
+var chars=[
+  {g:mkChar(0xff7a40,0xff5020),x:-2,z:2,name:"🔥 Ember",id:"ember"},
+  {g:mkChar(0x40a8ff,0x30e0ff),x:2,z:2,name:"💧 Aqua",id:"aqua"}
+];
+var active=0,gemN=0,room=1,running=false,won=false,t0=0;
+var NETON=false,mySlot=0,net=null,rt={x:2,z:2};
+
+/* ---------- Audio ---------- */
+var AC=null;function sfx(f,d,t,g,sl){try{if(!running)return;AC=AC||new (window.AudioContext||window.webkitAudioContext)();
+  if(AC.state!=="running"){try{AC.resume();}catch(e){}}
+  var o=AC.createOscillator(),ga=AC.createGain();o.type=t||"triangle";o.frequency.value=f;d=d||0.1;
+  if(sl)o.frequency.exponentialRampToValueAtTime(sl,AC.currentTime+d);
+  ga.gain.setValueAtTime(0.0001,AC.currentTime);ga.gain.exponentialRampToValueAtTime(g||0.05,AC.currentTime+0.006);
+  ga.gain.exponentialRampToValueAtTime(0.0001,AC.currentTime+d);
+  o.connect(ga);ga.connect(AC.destination);o.start();o.stop(AC.currentTime+d+0.02);}catch(e){}}
+
+var annT=0;
+function announce(t,c){var a=document.getElementById("announce");a.textContent=t;a.style.color=c||"#ffd166";a.style.opacity=1;annT=2.6;}
+function hint(t,ms){var h=document.getElementById("hint");h.textContent=t;h.style.opacity=1;clearTimeout(h._t);h._t=setTimeout(function(){h.style.opacity=0;},ms||3200);}
+function updHud(){document.getElementById("gems").textContent="💎 "+gemN;
+  var names=["🤝 Raum 1 · Die zwei Platten","🔥💧 Raum 2 · Feuer & Wasser","⚡ Raum 3 · Der Gleichklang","🏆 Geschafft!"];
+  document.getElementById("roomTag").textContent=names[Math.min(3,room-1)];
+  document.getElementById("coopTag").textContent=NETON?("🌐 Du bist "+chars[mySlot].name):"🧍 Solo: 🔁 wechselt die Figur";}
+
+/* ---------- Eingabe ---------- */
+var kx=0,kz=0,keys={};
+(function(){var st=document.getElementById("stick"),knob=document.getElementById("knob"),id=null,cx0=0,cy0=0;
+  st.addEventListener("touchstart",function(e){e.preventDefault();var t=e.changedTouches[0];id=t.identifier;
+    var r=st.getBoundingClientRect();cx0=r.left+r.width/2;cy0=r.top+r.height/2;},{passive:false});
+  addEventListener("touchmove",function(e){if(id==null)return;
+    for(var i=0;i<e.changedTouches.length;i++){var t=e.changedTouches[i];if(t.identifier!==id)continue;
+      var dx=t.clientX-cx0,dy=t.clientY-cy0,l=Math.hypot(dx,dy),mx=Math.min(l,46);
+      if(l>4){kx=dx/l*(mx/46);kz=dy/l*(mx/46);}else{kx=0;kz=0;}
+      knob.style.transform="translate(calc(-50% + "+(kx*34)+"px),calc(-50% + "+(kz*34)+"px))";}},{passive:false});
+  function end(e){for(var i=0;i<e.changedTouches.length;i++){if(e.changedTouches[i].identifier===id){id=null;kx=0;kz=0;
+    knob.style.transform="translate(-50%,-50%)";}}}
+  addEventListener("touchend",end);addEventListener("touchcancel",end);})();
+function doSwap(){if(NETON)return;active=1-active;sfx(560,0.08,"triangle",0.05,720);
+  chars[active].g.userData.ring.material.opacity=0.7;chars[1-active].g.userData.ring.material.opacity=0;
+  hint("Jetzt steuerst du "+chars[active].name,1600);}
+function near(c,o,r){return Math.hypot(c.x-o.position.x,c.z-o.position.z)<(r||2.2);}
+function doAct(fromNet,slot){
+  var c=chars[fromNet?slot:(NETON?mySlot:active)];
+  var did=false;
+  if(c.id==="ember"&&vines.userData.alive&&near(c,vines,2.6)){ /* 🔥 Ranken verbrennen */
+    vines.userData.alive=false;vines.visible=false;var wi=walls.indexOf(walls.find(function(w){return w.m===vines;}));if(wi>=0)walls.splice(wi,1);
+    announce("🔥 Ember verbrennt die Ranken!","#ff9a60");sfx(180,0.3,"sawtooth",0.07,70);did=true;}
+  else if(c.id==="aqua"&&!plant.userData.grown&&near(c,plantPot,2.4)){ /* 💧 Pflanze giessen */
+    plant.userData.grown=true;plant.scale.set(2.6,4.2,2.6);plant.position.y=1.6;lever2.visible=true;lever2.position.y=3.4;
+    announce("💧 Aqua lässt die Pflanze wachsen!","#60c8ff");sfx(520,0.25,"sine",0.06,780);did=true;}
+  else if(!lever.userData.pulled&&near(c,lever,2.2)&&!vines.userData.alive){ /* Hebel hinter den Ranken */
+    lever.userData.pulled=true;lever.rotation.x=0.7;announce("⚙️ Hebel 1 gezogen!","#ffd166");sfx(300,0.15,"square",0.06,180);did=true;}
+  else if(!lever2.userData.pulled&&lever2.visible&&near(c,lever2,2.4)&&plant.userData.grown){ /* Hebel oben auf der Pflanze */
+    lever2.userData.pulled=true;lever2.rotation.x=0.7;announce("⚙️ Hebel 2 gezogen!","#ffd166");sfx(340,0.15,"square",0.06,200);did=true;}
+  else if(near(c,syncA,2.0)){syncA.userData.t=1.2;syncA.material.emissiveIntensity=1;sfx(440,0.12,"triangle",0.06);did=true;}
+  else if(near(c,syncB,2.0)){syncB.userData.t=1.2;syncB.material.emissiveIntensity=1;sfx(520,0.12,"triangle",0.06);did=true;}
+  if(!did)sfx(220,0.06,"square",0.03);
+  if(!fromNet&&NETON&&net)try{net.send({t:"act",slot:mySlot});}catch(e){}
+}
+document.getElementById("bAct").addEventListener("touchstart",function(e){e.preventDefault();doAct();},{passive:false});
+document.getElementById("bAct").addEventListener("click",function(){doAct();});
+document.getElementById("bSwap").addEventListener("touchstart",function(e){e.preventDefault();doSwap();},{passive:false});
+document.getElementById("bSwap").addEventListener("click",doSwap);
+addEventListener("keydown",function(e){keys[e.key.toLowerCase()]=1;
+  if(e.key===" "){e.preventDefault();if(!running){start(false);return;}doAct();}
+  if(e.key.toLowerCase()==="q"||e.key==="Tab"){e.preventDefault();doSwap();}
+  if(e.key.toLowerCase()==="e")doAct();});
+addEventListener("keyup",function(e){keys[e.key.toLowerCase()]=0;});
+
+/* ---------- Koop ---------- */
+function startCoop(){
+  if(!window.MP){document.getElementById("coopStatus").textContent="Koop-Lib fehlt";return;}
+  document.getElementById("coopStatus").textContent="⚡ Suche Mitspieler…";
+  try{net=MP.quick("tempel2");}catch(e){document.getElementById("coopStatus").textContent="Fehler: "+e.message;return;}
+  net.onStatus(function(st){
+    if(st==="connected"){NETON=true;mySlot=(net.role==="host")?0:1;active=mySlot;
+      document.getElementById("coopStatus").textContent="";
+      document.getElementById("bSwap").style.display="none";
+      chars[mySlot].g.userData.ring.material.opacity=0.7;
+      if(!running)start(true);
+      announce("🌐 Verbunden! Du bist "+chars[mySlot].name,"#7dffc8");updHud();}
+    else if(st==="waiting")document.getElementById("coopStatus").textContent="⏳ Warte auf Mitspieler … (Freund tippt denselben Knopf)";
+    else if(st==="lost")hint("📡 Verbindung wackelt — verbinde neu …",2400);
+    else if(st==="closed"){NETON=false;document.getElementById("bSwap").style.display="flex";hint("❌ Partner getrennt — Solo-Wechsel ist wieder an",3200);updHud();}});
+  net.onMessage(function(d){if(!d||!d.t)return;
+    if(d.t==="pos"&&typeof d.x==="number"){rt.x=d.x;rt.z=d.z;}
+    if(d.t==="act")doAct(true,1-mySlot);
+    if(d.t==="win"&&!won)winGame(true);});
+}
+document.getElementById("coopBtn").onclick=startCoop;
+
+/* ---------- Spiel-Logik ---------- */
+function tryMove(c,nx,nz){
+  for(var i=0;i<walls.length;i++){var w=walls[i];
+    if(Math.abs(nx-w.x)<w.w+0.42&&Math.abs(nz-w.z)<w.d+0.42)return;}
+  if(nx<-9.6||nx>9.6||nz>5.8||nz<-67)return;
+  c.x=nx;c.z=nz;}
+function openGate(g,msg){if(g.userData.open)return;g.userData.open=true;
+  announce(msg||"🚪 Das Tor öffnet sich!","#7dffc8");sfx(140,0.5,"sawtooth",0.07,60);
+  var wi=walls.findIndex(function(w){return w.m===g;});if(wi>=0)walls.splice(wi,1);}
+function winGame(fromNet){if(won)return;won=true;room=4;updHud();
+  var secs=Math.round((performance.now()-t0)/1000);
+  var score=gemN*5+40+Math.max(0,60-Math.floor(secs/5));
+  announce("🏆 GEMEINSAM GESCHAFFT!","#ffd166");
+  sfx(523,0.2,"triangle",0.07);setTimeout(function(){sfx(659,0.2,"triangle",0.07);},160);setTimeout(function(){sfx(784,0.35,"triangle",0.08);},320);
+  if(!fromNet&&NETON&&net)try{net.send({t:"win"});}catch(e){}
+  if(STATION)stationPost({t:"stationDone",score:score});
+  setTimeout(function(){var ov=document.getElementById("ov");ov.style.display="flex";
+    ov.querySelector("h1").textContent="🏆 TEMPEL GEMEISTERT!";
+    ov.querySelector("p").innerHTML="💎 "+gemN+"/6 Kristalle · ⏱️ "+secs+"s · <b>Score "+score+"</b>";
+    var cb=document.getElementById("coopBtn");if(cb)cb.style.display="none";
+    var sb2=document.getElementById("startBtn");sb2.textContent=STATION?"← Zurück zur Wildnis":"Nochmal ▶";
+    sb2.onclick=function(){if(STATION)stationPost("mini-back");else location.reload();};},2200);}
+function start(coop){document.getElementById("ov").style.display="none";running=true;t0=performance.now();
+  chars[active].g.userData.ring.material.opacity=NETON?0:0.7;
+  try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();if(AC.state!=="running")AC.resume();}catch(e){}
+  hint(NETON?"Sprecht euch ab — kein Rätsel geht allein!":"🔁 wechselt zwischen Ember & Aqua",4200);updHud();}
+document.getElementById("startBtn").onclick=function(){start(false);};
+
+/* ---------- Frame ---------- */
+var lastT=performance.now(),sendT=0;
+function frame(now){requestAnimationFrame(frame);
+  var dt=Math.min(0.05,(now-lastT)/1000)||0.016;lastT=now;var t=now*0.001;
+  for(var fi=0;fi<torches.length;fi++){var tc=torches[fi];
+    tc.fl.scale.setScalar(1+Math.sin(t*9+tc.ph)*0.15);tc.lt.intensity=0.5+Math.sin(t*11+tc.ph)*0.15;}
+  for(var gi=0;gi<gems.length;gi++){var gm=gems[gi];if(gm.got)continue;
+    gm.m.rotation.y+=dt*2.2;gm.m.position.y=1.0+Math.sin(t*2.4+gm.ph)*0.12;}
+  if(running&&!won){
+    var ix=kx,iz=kz;
+    if(keys.a||keys.arrowleft)ix=-1;if(keys.d||keys.arrowright)ix=1;
+    if(keys.w||keys.arrowup)iz=-1;if(keys.s||keys.arrowdown)iz=1;
+    var il=Math.hypot(ix,iz);if(il>1){ix/=il;iz/=il;}
+    var me=chars[NETON?mySlot:active];
+    if(il>0.04){tryMove(me,me.x+ix*5.4*dt,me.z+iz*5.4*dt);me.g.rotation.y=Math.atan2(ix,iz);}
+    if(NETON){var other=chars[1-mySlot];
+      other.x+=(rt.x-other.x)*Math.min(1,dt*9);other.z+=(rt.z-other.z)*Math.min(1,dt*9);
+      sendT-=dt;if(sendT<=0){sendT=0.06;if(net)net.sendFast({t:"pos",x:+me.x.toFixed(2),z:+me.z.toFixed(2)});}}
+    for(var ci=0;ci<2;ci++){var c=chars[ci];c.g.position.set(c.x,0,c.z);
+      for(var g2=0;g2<gems.length;g2++){var gg=gems[g2];if(gg.got)continue;
+        if(Math.hypot(c.x-gg.x,c.z-gg.z)<1.0){gg.got=true;gg.m.visible=false;gemN++;sfx(760,0.12,"triangle",0.05,1100);updHud();}}}
+    /* Raum 1: beide Platten gleichzeitig */
+    var onA=chars.some(function(c){return near(c,plateA,1.5);}),onB=chars.some(function(c){return near(c,plateB,1.5);});
+    plateA.material.emissiveIntensity=onA?0.9:0.25;plateB.material.emissiveIntensity=onB?0.9:0.25;
+    if(onA&&onB&&!gate1.userData.open){openGate(gate1,"⚖️ Beide Platten gedrückt — Tor 1 öffnet sich!");room=2;updHud();
+      hint("🔥 Nur Ember kann die Ranken verbrennen · 💧 nur Aqua die Pflanze giessen",4200);}
+    /* Raum 2: beide Hebel */
+    if(lever.userData.pulled&&lever2.userData.pulled&&!gate2.userData.open){openGate(gate2,"⚙️ Beide Hebel — Tor 2 öffnet sich!");room=3;updHud();
+      hint("⚡ Schlagt BEIDE Schalter fast gleichzeitig!",4200);}
+    /* Raum 3: Gleichklang */
+    if(syncA.userData.t>0){syncA.userData.t-=dt;if(syncA.userData.t<=0)syncA.material.emissiveIntensity=0.5;}
+    if(syncB.userData.t>0){syncB.userData.t-=dt;if(syncB.userData.t<=0)syncB.material.emissiveIntensity=0.5;}
+    if(syncA.userData.t>0&&syncB.userData.t>0&&!gate3.userData.open){openGate(gate3,"⚡ GLEICHKLANG! Das letzte Tor fällt!");}
+    /* Tore absenken */
+    [gate1,gate2,gate3].forEach(function(g){if(g.userData.open&&g.position.y>-1.6)g.position.y-=dt*2.2;});
+    /* Sieg: beide auf dem Podest */
+    if(gate3.userData.open){var fin=chars.every(function(c){return c.z<-63.5;});if(fin)winGame(false);}
+    /* Kamera folgt Mittelpunkt, leicht auf die aktive Figur gewichtet */
+    var fx=(chars[0].x+chars[1].x)/2*0.5+chars[NETON?mySlot:active].x*0.5,
+        fz=(chars[0].z+chars[1].z)/2*0.5+chars[NETON?mySlot:active].z*0.5;
+    camera.position.x+=(fx-camera.position.x)*Math.min(1,dt*4);
+    camera.position.y+=(9.5-camera.position.y)*Math.min(1,dt*4);
+    camera.position.z+=(fz+8.5-camera.position.z)*Math.min(1,dt*4);
+    camera.lookAt(fx,0.8,fz-2);
+  }
+  if(annT>0){annT-=dt;if(annT<=0)document.getElementById("announce").style.opacity=0;}
+  renderer.render(scene,camera);}
+requestAnimationFrame(frame);
+updHud();
+window.__zs={state:function(){return {room:room,gems:gemN,won:won,a:{x:chars[0].x,z:chars[0].z},b:{x:chars[1].x,z:chars[1].z}};},
+  tp:function(slot,x,z){chars[slot].x=x;chars[slot].z=z;},act:function(slot){doAct(true,slot);},swap:doSwap};
+})();
+</script>
+</body>
+</html>

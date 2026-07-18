@@ -227,7 +227,7 @@ canvas{display:block;touch-action:none}
   <h1>NEON WILDNIS</h1>
   <p>Eine riesige leuchtende Wildnis gehört dir. <b>Fälle Bäume</b>, sammle Holz, Stein und Kristalle, <b>baue deine Basis</b> — und überlebe, wenn nachts die Kreaturen kommen.</p>
   <div id="recBar" class="hide" style="margin:6px auto 10px;max-width:420px;padding:8px 12px;border:1px solid rgba(255,209,102,.4);border-radius:12px;background:rgba(40,32,10,.45);color:#ffd166;font-weight:800;font-size:14px"></div>
-  <div style="margin:4px auto 8px;max-width:460px;padding:7px 12px;border:1px solid rgba(125,227,255,.45);border-radius:12px;background:rgba(10,40,60,.5);color:#7de3ff;font-weight:800;font-size:13.5px">✨ NEU in der Welt: 🏰 Dungeon (KOLOSS!) · ✈️ Flugfeld · 🏃 Parcours · 🏎️ Rennstrecke · ⚔️ Arena — folge den Wegweisern am Quest-Brett!</div>
+  <div style="margin:4px auto 8px;max-width:460px;padding:7px 12px;border:1px solid rgba(125,227,255,.45);border-radius:12px;background:rgba(10,40,60,.5);color:#7de3ff;font-weight:800;font-size:13.5px">✨ NEU in der Welt: 🤝 Tempel der Zwei (Koop-Rätsel!) · 🏰 Dungeon (KOLOSS!) · ✈️ Flugfeld · 🏃 Parcours · 🏎️ Rennstrecke · ⚔️ Arena — folge den Wegweisern am Quest-Brett!</div>
   <div class="ctl">
     <span class="chip"><b>Ziehen</b> laufen</span>
     <span class="chip"><b>🪓</b> Sammeln/Kämpfen</span>
@@ -2179,6 +2179,7 @@ function decorateWorldLate(){
   addStation(spotFar(75),{kind:"racer",name:"Rennstrecke",icon:"🏎️", url:"/neon-racer.html", badge:"raser",   color:0xffd166});
   addStation(spotFar(65),{kind:"arena",name:"Arena",      icon:"⚔️", url:"/neon-survivor.html",badge:"gladiator",color:0xff3b3b}); /* ⚔️ Final-Fusion: Neon Survivor */
   addStation(spotFar(85),{kind:"dungeon",name:"Dungeon",   icon:"🏰", url:"/neon-dungeon.html",badge:"krieger", color:0xc98bff}); /* 🏰 Katakomben-Parcours + KOLOSS-Boss */
+  addStation(spotFar(70),{kind:"tempel",name:"Tempel der Zwei",icon:"🤝", url:"/neon-zusammen.html",badge:"partner", color:0x7dffc8}); /* 🤝 It-Takes-Two-Koop-Rätsel (online oder Solo-Wechsel) */
   buildSpawnHub(); /* 🏘️ Phase 2: Spawn-Stadt wird lebendiger Hub (nach den Stationen — Quest-Brett kennt sie dann) */
 }
 /* ===================== 🏘️ SPAWN-STADT-HUB (Wildnis-Fusion Phase 2) =====================
