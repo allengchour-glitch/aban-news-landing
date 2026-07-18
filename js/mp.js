@@ -91,7 +91,7 @@
     function wireFast(c) { c.on("data", recv); }
     function wireMain(c) {
       c.on("open", function () {
-        ever = true; clearTimeout(tmo);
+        ever = true; clearTimeout(tmo); retried = false; /* 1-Versuch-Reconnect-Budget je Abriss erneuern */
         S._setStatus("connected"); startWd();
         if (!isHost) { // 2. Kanal: unreliable für Positions-Spam
           try { fast = peer.connect(pid(gameId, S.code), { label: "fast", reliable: false }); wireFast(fast); } catch (e) {}

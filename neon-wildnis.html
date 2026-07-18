@@ -4122,7 +4122,7 @@ function flashSaved(txt){
 function saveOnLeave(){try{saveGame();}catch(e){}}
 addEventListener("pagehide",saveOnLeave);
 addEventListener("beforeunload",saveOnLeave);
-document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")saveOnLeave();});
+document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")saveOnLeave();else{NET.rt.tLast=0;NET.rt.vx=0;NET.rt.vz=0;NET.sendT=0;}});
 
 // ---------- Quest ----------
 var _nxT=0;
@@ -4343,17 +4343,23 @@ function updOnline(){
   if(txt===_onlineTxt)return;_onlineTxt=txt;
   b.textContent=txt;b.style.background=bg;b.style.borderColor=bd;b.style.color=col;
 }
+var _hbIv=null;
+function hbStart(){if(_hbIv)clearInterval(_hbIv);_hbIv=setInterval(function(){try{if(NET.s&&NET.s.status==="connected")NET.s.send({t:"hb"});}catch(e){}},2000);} /* 💓 Heartbeat hält die Datachannel wach */
+function hbStop(){if(_hbIv){clearInterval(_hbIv);_hbIv=null;}}
+function netResetRemote(){NET.remoteDowned=false;NET.lastRemoteMelee=0;NET.rt.hp=null;NET.rt.tLast=0;NET.rt.vx=NET.rt.vz=0;NET.remoteHpPct=-1;if(NET.remoteHpCv&&typeof drawRemoteHp==="function")drawRemoteHp(100);} /* Partner-Zustand sauber nullen */
 function netStart(role,code){
   if(!window.MP){coopStatusMsg("Koop-Lib nicht geladen");return;}
+  if(NET.s&&NET.s.status==="connected"){coopStatusMsg("Schon verbunden.");return;}
+  try{if(NET.s)NET.s.close();}catch(e){}NET.s=null;netResetRemote();
   NET.role=role;NET._seq=0;NET._rseq=0;coopStatusMsg("Verbinde…");
   try{NET.s=(role==="host")?MP.host("wildnis"):MP.join("wildnis",code);}catch(e){coopStatusMsg("Fehler: "+e.message);return;}
   if(role==="host")coopStatusMsg("Raum-Code: "+NET.s.code+" — teile ihn mit dem Partner!");
   setOnline("waiting");
   NET.s.onStatus(function(st){
     if(st==="waiting"){coopStatusMsg("Warte auf Partner… Code: "+NET.s.code);setOnline("waiting");}
-    else if(st==="connected"){coopStatusMsg("✅ Verbunden!");setOnline("connected");sendMyChar();}
+    else if(st==="connected"){NET._rseq=0;NET.rt.tLast=0;NET.rt.vx=NET.rt.vz=0;NET.remoteDowned=false;coopStatusMsg("✅ Verbunden!");setOnline("connected");if(NET.role==="host"&&running&&NET_FORCE_SEED!=null)try{NET.s.send({t:"start",seed:NET_FORCE_SEED});}catch(e){}sendMyChar();hbStart();}
     else if(st==="lost"){coopStatusMsg("⚠️ Verbindung wackelt…");setOnline("lost");}
-    else if(st==="closed"){coopStatusMsg("❌ Getrennt");NET.on=false;setOnline("solo");netHideRemote();}});
+    else if(st==="closed"){coopStatusMsg("❌ Getrennt");NET.on=false;setOnline("solo");netHideRemote();netResetRemote();hbStop();}});
   NET.s.onMessage(onNetMsg);
   NET.s.ready.then(function(){
     NET.on=true;
@@ -4467,15 +4473,17 @@ function netTick(dt){
 }
 function netStartQuick(){ /* ⚡ 1-Tipp Schnell-Koop ohne Code (öffentlicher Raum, join-oder-host) */
   if(!window.MP){coopStatusMsg("Koop-Lib nicht geladen");return;}
+  if(NET.s&&NET.s.status==="connected"){coopStatusMsg("Schon verbunden.");return;}
+  try{if(NET.s)NET.s.close();}catch(e){}NET.s=null;netResetRemote();
   if(running){coopStatusMsg("Koop bitte VOR dem Start — erst »Neue Welt starten«.");return;}
   coopStatusMsg("⚡ Suche Mitspieler…");setOnline("waiting");
   try{NET.s=MP.quick("wildnis");}catch(e){coopStatusMsg("Fehler: "+e.message);return;}
   NET.role="quick";NET._seq=0;NET._rseq=0; /* wird bei Verbindung auf host/join gesetzt */
   NET.s.onStatus(function(st){
     if(st==="waiting"){coopStatusMsg("⚡ Warte auf Mitspieler… (öffentlicher Raum)");setOnline("waiting");}
-    else if(st==="connected"){NET.role=NET.s.role||NET.role;coopStatusMsg("✅ Verbunden!");setOnline("connected");sendMyChar();}
+    else if(st==="connected"){NET.role=NET.s.role||NET.role;NET._rseq=0;NET.rt.tLast=0;NET.rt.vx=NET.rt.vz=0;NET.remoteDowned=false;coopStatusMsg("✅ Verbunden!");setOnline("connected");if(NET.role==="host"&&running&&NET_FORCE_SEED!=null)try{NET.s.send({t:"start",seed:NET_FORCE_SEED});}catch(e){}sendMyChar();hbStart();}
     else if(st==="lost"){coopStatusMsg("⚠️ Verbindung wackelt…");setOnline("lost");}
-    else if(st==="closed"){coopStatusMsg("❌ Getrennt");NET.on=false;setOnline("solo");netHideRemote();}});
+    else if(st==="closed"){coopStatusMsg("❌ Getrennt");NET.on=false;setOnline("solo");netHideRemote();netResetRemote();hbStop();}});
   NET.s.onMessage(onNetMsg);
   NET.s.ready.then(function(){
     NET.on=true;NET.role=NET.s.role||NET.role;
