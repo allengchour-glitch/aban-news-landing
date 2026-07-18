@@ -445,6 +445,14 @@ var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var strich=new THREE.Mesh(ne
   [RX,-RX].forEach(function(xc){ // Querstrassen: innen + aussen (minimal flacher gegen Z-Fight an Ecken)
     tr(2.2,2*SZ9+38,xc-6.1,0,0.05);
     tr(2.2,2*SZ9+38,xc+6.1,0,0.05);});
+  // Zebrastreifen an den Kreuzungen (Fussgaenger queren die Hauptstrassen)
+  var zMat=new THREE.MeshStandardMaterial({color:0xf0f0ea,roughness:0.8});
+  function zebra(x,z,quer){ // quer=true: Streifen laufen in z (ueber eine Ost-West-Strasse)
+    for(var st9=0;st9<6;st9++){var p=new THREE.Mesh(new THREE.PlaneGeometry(quer?0.5:8.6,quer?8.6:0.5),zMat);
+      p.rotation.x=-Math.PI/2;p.position.set(x+(quer?(st9-2.5)*0.95:0),0.007,z+(quer?0:(st9-2.5)*0.95));
+      p.receiveShadow=true;scene.add(p);}}
+  [RX-12,-(RX-12)].forEach(function(zx){zebra(zx,SZ9+12,true);zebra(zx,-(SZ9+12),true);}); // Nord+Sued
+  [SZ9-2,-(SZ9-2)].forEach(function(zz){zebra(RX,zz,false);zebra(-RX,zz,false);});        // Querstrassen
 })();
 if(THREE.GLTFLoader){["lp_tree.glb"].forEach(function(){
   new THREE.GLTFLoader().load("/models/lp_tree.glb",function(g){
