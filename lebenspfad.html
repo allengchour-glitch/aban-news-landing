@@ -166,7 +166,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 #qTimer{height:10px;background:#f0e4c4;border-radius:6px;margin-top:12px;overflow:hidden}
 #qBar{height:100%;width:100%;background:linear-gradient(90deg,#8fd8a0,#ffd166,#ff7a6a);transition:width 22s linear}
 #emoBtn{position:fixed;right:14px;bottom:160px;z-index:16;width:48px;height:48px;border-radius:50%;border:2px solid rgba(120,110,80,.3);background:rgba(255,253,246,.95);font-size:1.3rem;cursor:pointer;box-shadow:0 3px 12px rgba(60,40,10,.25)}
-#emoFan{position:fixed;right:14px;bottom:216px;z-index:17;display:flex;flex-direction:column;gap:8px}
+#emoFan{position:fixed;right:14px;bottom:216px;z-index:17;display:flex;flex-direction:column;flex-wrap:wrap;gap:8px;max-height:calc(100vh - 300px)}
 #emoFan button{width:48px;height:48px;border-radius:50%;border:2px solid #ffcf3a;background:#fffdf6;font-size:1.05rem;cursor:pointer;box-shadow:0 3px 10px rgba(60,40,10,.25)}
 /* 📷 Foto-Album: HUD-Zähler + Polaroid-Galerie am Spielende */
 #albumBadge{position:fixed;top:10px;right:104px;z-index:16;display:none;align-items:center;gap:5px;height:38px;padding:0 13px;border-radius:19px;border:2px solid rgba(120,110,80,.3);background:rgba(255,253,246,.92);color:#c9821a;font-weight:800;font-size:.9rem;box-shadow:0 2px 8px rgba(60,40,10,.2);pointer-events:none}
@@ -1941,6 +1941,7 @@ function updProgMap(){var pd2=document.getElementById("progDots");pd2.innerHTML=
     pd2.appendChild(d);});}
 function updPlayers(){updProgMap();
   var el=document.getElementById("players");el.innerHTML="";
+  var _lead=-1,_lb=-Infinity;if(G.players.length>1)G.players.forEach(function(p,i){var s=lifeScore(p);if(s>_lb){_lb=s;_lead=i;}}); // 👑 Führender nach Lebenspunkten
   G.players.forEach(function(p,i){
     var d=document.createElement("div");d.className="pcard"+(i===G.turn&&!p.done?" on":"");
     var ST=[["geld","💰","#c9921a","💰 Geld — verdienst du auf Geld-Feldern und mit deinem Beruf. Du brauchst es für Auto, Hochzeit und Haus."],
@@ -1951,7 +1952,7 @@ function updPlayers(){updProgMap();
     var chips=ST.map(function(st){var v=p[st[0]]|0,cls=(pv[st[0]]!==undefined&&v!==pv[st[0]])?(v>pv[st[0]]?" class='up'":" class='dn'"):"";
       pv[st[0]]=v;
       return "<span"+cls+" style='--sc:"+st[2]+"' data-exp=\""+st[3].replace(/"/g,"&quot;")+"\">"+st[1]+" <b>"+v+"</b></span>";}).join("");
-    d.innerHTML="<div class='nm'><span style='flex:0 0 auto;width:10px;height:10px;border-radius:50%;background:#"+("00000"+p.col.toString(16)).slice(-6)+";box-shadow:0 1px 2px #0006'></span>"+(p.dead?"⚰️ ":(p.done?"🏁 ":""))+p.name+(p.job?" <span style='font-weight:600;color:#6a72a0'>"+p.job.i+" "+p.job.n+"</span>":"")+"</div>"+
+    d.innerHTML="<div class='nm'><span style='flex:0 0 auto;width:10px;height:10px;border-radius:50%;background:#"+("00000"+p.col.toString(16)).slice(-6)+";box-shadow:0 1px 2px #0006'></span>"+(i===_lead?"👑 ":"")+(p.dead?"⚰️ ":(p.done?"🏁 ":""))+p.name+(p.job?" <span style='font-weight:600;color:#6a72a0'>"+p.job.i+" "+p.job.n+"</span>":"")+"<span style='margin-left:auto;font-size:.72rem;color:#c9921a;font-weight:800'>⭐"+lifeScore(p)+"</span></div>"+
       "<div class='st'>"+chips+"</div>";
     d.querySelectorAll(".st span").forEach(function(sp2){sp2.onclick=function(ev){ev.stopPropagation();
       showHint(sp2.getAttribute("data-exp"),4200);beep(660,.05,"triangle",.03);};});
@@ -2330,11 +2331,15 @@ function showEnd(){
     d.innerHTML="<div style='font-size:.72rem;color:#9aa0aa;font-weight:800;margin-bottom:2px'>"+badge+" Platz</div>"+
       "<b style='color:#"+("00000"+p.col.toString(16)).slice(-6)+"'>"+(p.dead?"⚰️ ":(rank===0?"👑 ":""))+p.name+"</b>"+r.s+" Lebenspunkte<br><small>"+(p.dead?"ruhe in Frieden · ":"")+"💰"+p.geld+" ❤️"+p.glueck+" 🧠"+p.wissen+" 👥"+p.freunde+"</small>"+goalTxt;
     sc.appendChild(d);});
+  var _teamSum=ranked.reduce(function(a,r){return a+r.s;},0); // 🤝 Team-Gesamtpunktzahl (gemeinsames Erlebnis, nicht nur Konkurrenz)
+  if(G.players.length>1){var td=document.createElement("div");td.className="score";td.style.borderColor="#7db8d8";
+    td.innerHTML="<div style='font-size:.72rem;color:#2a7db0;font-weight:800;margin-bottom:2px'>🤝 Team gemeinsam</div><b style='color:#2a7db0'>"+_teamSum+"</b>Lebenspunkte zusammen<br><small>gemeinsam durchs Leben gewürfelt 💫</small>";
+    sc.appendChild(td);}
   // 📲 Ergebnis teilen (System-Share/Zwischenablage) — bringt neue Mitspieler
   (function(){var sb=document.getElementById("shareEndBtn");if(!sb)return;
     var MED=["🥇","🥈","🥉","4."];
     var lines=ranked.map(function(r,i2){return MED[Math.min(3,i2)]+" "+r.p.name+" — "+r.s+" Lebenspunkte";});
-    var txt="🎲 Wir haben LEBENSPFAD gespielt!\n"+lines.join("\n")+"\nSpiel mit: https://abannews.com/lebenspfad.html";
+    var txt="🎲 Wir haben LEBENSPFAD gespielt!\n"+lines.join("\n")+(G.players.length>1?"\n🤝 Team zusammen: "+_teamSum+" Punkte":"")+"\nSpiel mit: https://abannews.com/lebenspfad.html";
     sb.onclick=function(){
       if(navigator.share){navigator.share({title:"Lebenspfad — Endstand",text:txt}).catch(function(){});}
       else{try{navigator.clipboard.writeText(txt);}catch(e){}
