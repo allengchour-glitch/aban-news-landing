@@ -39,7 +39,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 #players{position:absolute;top:12px;left:12px;display:flex;flex-direction:column;gap:6px;max-width:min(300px,60vw)}
 .pcard{background:linear-gradient(180deg,#fffef9,#fdf6e6);border:2px solid rgba(120,110,80,.25);border-radius:12px;padding:7px 11px;font-size:.78rem;transition:border-color .3s,box-shadow .3s;box-shadow:0 3px 10px rgba(60,40,10,.18),inset 0 2px 0 rgba(255,255,255,.9)}
 .pcard.on{border-color:#ff8c2a;box-shadow:0 0 18px rgba(255,150,40,.45)}
-.pcard .nm{font-weight:900;font-size:.85rem}
+.pcard .nm{font-weight:900;font-size:.85rem;color:#2a3040;display:flex;align-items:center;gap:5px}
 .pcard .st{display:flex;gap:5px;color:#4a5262;margin-top:3px;flex-wrap:wrap;font-weight:600}
 .pcard .st span{white-space:nowrap;background:rgba(255,255,255,.6);border:1px solid rgba(120,110,80,.16);border-left:3px solid var(--sc,#c8b88a);border-radius:9px;padding:1px 7px 1px 5px;cursor:pointer;pointer-events:auto;transition:transform .2s}
 .pcard .st span b{font-weight:900;color:#2a3040}
@@ -47,7 +47,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 .pcard .st span.dn{animation:statDn .9s ease}
 @keyframes statUp{25%{transform:scale(1.25);background:#dcf7dd;border-color:#5ac878}}
 @keyframes statDn{25%{transform:scale(1.25);background:#ffdede;border-color:#e87878}}
-#chapterTag{position:absolute;top:10px;left:50%;transform:translateX(-50%);text-align:center;background:rgba(38,52,72,.42);padding:5px 16px;border-radius:14px;box-shadow:0 3px 12px rgba(30,40,60,.28);max-width:46vw}
+#chapterTag{position:absolute;top:10px;left:50%;transform:translateX(-50%);text-align:center;background:rgba(30,42,60,.6);padding:5px 16px;border-radius:14px;box-shadow:0 3px 12px rgba(30,40,60,.28);max-width:46vw}
 @media(max-width:640px){ /* schmale Screens: rechte Spalte — Banner UNTER den Buttons, TurnTag darunter (nichts überlappt) */
   #chapterTag{left:auto;right:10px;top:52px;transform:none;max-width:44vw;padding:4px 10px}
   #chapterTag b{font-size:.8rem;letter-spacing:.06em}
@@ -57,13 +57,13 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
   .pcard{font-size:.7rem;padding:5px 8px}}
 #chapterTag b{font-size:1rem;letter-spacing:.2em;color:#fff;text-shadow:0 1px 2px rgba(10,20,35,.9),0 2px 8px rgba(10,20,35,.6)}
 #chapterTag small{display:block;color:#fdf3d0;font-size:.72rem;margin-top:1px;text-shadow:0 1px 3px rgba(10,20,35,.85)}
-#turnTag{position:absolute;top:62px;left:50%;transform:translateX(-50%);font-weight:900;font-size:.85rem;color:#ffdf8a;background:rgba(38,52,72,.48);padding:4px 13px;border-radius:12px;text-shadow:0 1px 3px rgba(8,14,26,.95);white-space:nowrap;line-height:1.2}
+#turnTag{position:absolute;top:62px;left:50%;transform:translateX(-50%);font-weight:900;font-size:.85rem;color:#ffe49a;background:rgba(28,40,58,.66);padding:4px 13px;border-radius:12px;text-shadow:0 1px 3px rgba(8,14,26,.95);white-space:nowrap;line-height:1.2}
 #turnTag:empty{display:none}
 #turnTag small{display:block;font-size:.68em;font-weight:800;color:#ffedb8;letter-spacing:.5px;opacity:.9}
 /* Würfel-Knopf */
 @keyframes rollPulse{0%,100%{outline:4px solid rgba(255,209,102,0)}50%{outline:4px solid rgba(255,209,102,.55)}}
 #rollBtn:not(:disabled):not(.hide){animation:rollPulse 2.4s ease-in-out infinite}
-#rollBtn{outline-offset:3px;position:fixed;bottom:26px;left:50%;transform:translateX(-50%);z-index:20;border:0;cursor:pointer;font-weight:900;font-size:1.15rem;padding:16px 42px;border-radius:50px;color:#1a1020;background:linear-gradient(180deg,#ffe08a 0%,#ffd166 30%,#ff7ad9 100%);box-shadow:0 12px 44px rgba(255,180,110,.45),inset 0 3px 0 rgba(255,255,255,.7),inset 0 -3px 6px rgba(160,60,120,.35);transition:transform .12s,opacity .3s}
+#rollBtn{outline-offset:3px;position:fixed;bottom:26px;left:50%;transform:translateX(-50%);z-index:20;border:0;cursor:pointer;font-weight:900;font-size:1.15rem;padding:16px 42px;border-radius:50px;max-width:86vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#1a1020;background:linear-gradient(180deg,#ffe08a 0%,#ffd166 30%,#ff7ad9 100%);box-shadow:0 12px 44px rgba(255,180,110,.45),inset 0 3px 0 rgba(255,255,255,.7),inset 0 -3px 6px rgba(160,60,120,.35);transition:transform .12s,opacity .3s}
 #rollBtn:active{transform:translateX(-50%) scale(0.95)}
 #rollBtn:disabled{opacity:.35;cursor:default}
 #dice{position:fixed;bottom:104px;left:50%;transform:translateX(-50%);font-size:3rem;z-index:20;text-shadow:0 6px 24px rgba(255,209,102,.5);opacity:0;transition:opacity .3s;pointer-events:none}
@@ -81,13 +81,13 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 /* Ereignis-Karte */
 #card{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) scale(.9);width:min(520px,94vw);background:linear-gradient(170deg,#fffdf6,#fff2d8);border:3px solid #ffcf3a;border-radius:20px;padding:22px;z-index:30;opacity:0;pointer-events:none;transition:opacity .45s,transform .45s cubic-bezier(.2,1.1,.4,1);max-height:86vh;overflow:auto;box-shadow:0 18px 50px rgba(60,40,10,.35)}
 #card.on{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:auto}
-#card .kick{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:#c98a1a;margin-bottom:8px;font-weight:800}
+#card .kick{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:#a86c08;margin-bottom:8px;font-weight:800}
 #card h3{font-size:1.2rem;color:#2a3040;margin-bottom:8px;line-height:1.35}
 #card .txt{color:#4a5262;font-size:.94rem;line-height:1.55;margin-bottom:14px}
 #card .opts{display:flex;flex-direction:column;gap:8px}
 #card button{border:2px solid #e8d8b0;background:#fff;color:#2a3040;border-radius:12px;padding:11px 15px;font-weight:700;cursor:pointer;font-size:.88rem;text-align:left;transition:border-color .15s,background .15s,transform .1s;box-shadow:0 3px 0 #e8d8b0}
 #card button:hover{border-color:#ffcf3a;background:#fffbe8;transform:translateY(-1px)}
-#card button small{display:block;color:#8a7a4a;font-weight:600;margin-top:3px;font-size:.76rem}
+#card button small{display:block;color:#6a5a2c;font-weight:600;margin-top:3px;font-size:.76rem}
 /* Overlays */
 .overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;background:linear-gradient(180deg,rgba(110,200,245,.96),rgba(255,244,214,.97));backdrop-filter:blur(5px);padding:20px;z-index:40;overflow:auto}
 .overlay::before,.overlay::after{content:"";flex:1 0 10px} /* Feder: kurz = zentriert, lang = scrollbar ab OBEN (Titel nie abgeschnitten) */
@@ -113,16 +113,20 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
   #rollBtn{padding:18px 46px;font-size:1.2rem}
 }
 @media(max-width:480px){
-  #players{max-width:46vw;gap:4px}
-  .pcard{padding:5px 8px;font-size:.68rem}
+  #players{max-width:50vw;gap:4px}
+  .pcard{padding:5px 8px;font-size:.74rem}
   .pcard .st{gap:6px}
   #chapterTag b{font-size:.82rem;letter-spacing:.12em}
   #chapterTag small{font-size:.62rem}
-  #turnTag{font-size:.72rem;top:62px;left:auto;right:10px;transform:none;max-width:none;text-align:right} /* nowrap + 2 Zeilen (small) statt max-width-Umbruch */
+  #turnTag{font-size:.72rem;top:62px;left:auto;right:10px;transform:none;max-width:56vw;overflow:hidden;text-overflow:ellipsis;text-align:right} /* nowrap + Ellipsis statt Überlauf; small bricht darunter */
   .pcard .items span{font-size:15px;min-width:24px;height:24px;line-height:24px}
   #progMap{bottom:88px;width:92vw}
   #card{padding:16px}
   #card h3{font-size:1.05rem}
+}
+@media(pointer:coarse){ /* grössere Tap-Ziele auf Touch: Stat-Chips + Item-Icons */
+  .pcard .st span{min-height:26px;display:inline-flex;align-items:center}
+  .pcard .items span{min-width:28px;height:28px;line-height:28px}
 }
 #lpvig{position:fixed;inset:0;pointer-events:none;z-index:3;background:radial-gradient(ellipse at 50% 44%,transparent 40%,rgba(26,44,74,.22) 74%,rgba(12,24,46,.44) 100%)}
 #chatBox{position:fixed;left:10px;bottom:96px;z-index:40;width:min(290px,72vw);background:rgba(255,253,246,.96);border:2px solid #ffcf3a;border-radius:14px;display:none;flex-direction:column;box-shadow:0 10px 30px rgba(60,40,10,.3)}
@@ -1913,8 +1917,15 @@ function initProgMap(){var ps2=document.getElementById("progSegs");ps2.innerHTML
   activeChaps().forEach(function(cidx){var c=CHAPTERS[cidx];var d=document.createElement("div");
     d.style.cssText="flex:1;background:#"+("00000"+c.ground.toString(16)).slice(-6);ps2.appendChild(d);});}
 function updProgMap(){var pd2=document.getElementById("progDots");pd2.innerHTML="";
-  G.players.forEach(function(p){var d=document.createElement("div");
-    d.style.cssText="position:absolute;top:-11px;width:10px;height:10px;border-radius:50%;border:2px solid #fff;box-shadow:0 1px 4px #0008;background:#"+("00000"+p.col.toString(16)).slice(-6)+";left:calc("+Math.round(100*routeFrac(p.tile))+"% - 5px)";
+  var fin=document.createElement("div");fin.textContent="🏁"; /* 🏁 Ziel-Marker am Streckenende */
+  fin.style.cssText="position:absolute;top:-15px;right:-4px;font-size:12px;line-height:1;filter:drop-shadow(0 1px 2px #0008)";
+  pd2.appendChild(fin);
+  var used=[]; /* überlappende Spieler-Punkte vertikal auffächern, aktiven Spieler hervorheben */
+  G.players.forEach(function(p,i){var fr=routeFrac(p.tile),lane=0;
+    for(var u=0;u<used.length;u++){if(Math.abs(used[u]-fr)<0.035)lane++;}used.push(fr);
+    var act=(i===G.turn&&!p.done),sz=act?14:10;
+    var d=document.createElement("div");
+    d.style.cssText="position:absolute;top:"+(-11-lane*9)+"px;width:"+sz+"px;height:"+sz+"px;border-radius:50%;border:2px solid #fff;box-shadow:0 1px 4px #0008"+(act?",0 0 8px 2px rgba(255,190,80,.85)":"")+";background:#"+("00000"+p.col.toString(16)).slice(-6)+";left:calc("+Math.round(100*fr)+"% - "+(sz/2)+"px);z-index:"+(act?5:1)+";transition:top .3s,width .2s,height .2s";
     pd2.appendChild(d);});}
 function updPlayers(){updProgMap();
   var el=document.getElementById("players");el.innerHTML="";
@@ -1928,7 +1939,7 @@ function updPlayers(){updProgMap();
     var chips=ST.map(function(st){var v=p[st[0]]|0,cls=(pv[st[0]]!==undefined&&v!==pv[st[0]])?(v>pv[st[0]]?" class='up'":" class='dn'"):"";
       pv[st[0]]=v;
       return "<span"+cls+" style='--sc:"+st[2]+"' data-exp=\""+st[3].replace(/"/g,"&quot;")+"\">"+st[1]+" <b>"+v+"</b></span>";}).join("");
-    d.innerHTML="<div class='nm' style='color:#"+("00000"+p.col.toString(16)).slice(-6)+"'>"+(p.dead?"⚰️ ":(p.done?"🏁 ":""))+p.name+(p.job?" <span style='font-weight:600;color:#9aa6d8'>"+p.job.i+" "+p.job.n+"</span>":"")+"</div>"+
+    d.innerHTML="<div class='nm'><span style='flex:0 0 auto;width:10px;height:10px;border-radius:50%;background:#"+("00000"+p.col.toString(16)).slice(-6)+";box-shadow:0 1px 2px #0006'></span>"+(p.dead?"⚰️ ":(p.done?"🏁 ":""))+p.name+(p.job?" <span style='font-weight:600;color:#6a72a0'>"+p.job.i+" "+p.job.n+"</span>":"")+"</div>"+
       "<div class='st'>"+chips+"</div>";
     d.querySelectorAll(".st span").forEach(function(sp2){sp2.onclick=function(ev){ev.stopPropagation();
       showHint(sp2.getAttribute("data-exp"),4200);beep(660,.05,"triangle",.03);};});
