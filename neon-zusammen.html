@@ -75,6 +75,7 @@ var STATION=window.parent!==window&&/[?&]station=1/.test(location.search);
 function stationPost(m){try{window.parent.postMessage(typeof m==="string"?m:JSON.stringify(m),"*");}catch(e){}}
 if(STATION){var sb=document.getElementById("stationBack");sb.style.display="block";sb.onclick=function(){stationPost("mini-back");};}
 
+if(!window.THREE){document.body.innerHTML='<div style="display:flex;height:100vh;align-items:center;justify-content:center;text-align:center;color:#9adfc0;font-weight:800">3D-Engine nicht geladen — bitte neu laden \u21bb</div>';throw new Error("THREE fehlt");}
 var W=innerWidth,H=innerHeight;
 var renderer=new THREE.WebGLRenderer({antialias:true});
 renderer.setPixelRatio(Math.min(devicePixelRatio,1.75));renderer.setSize(W,H);
@@ -176,29 +177,33 @@ function doSwap(){if(NETON)return;active=1-active;sfx(560,0.08,"triangle",0.05,7
   chars[active].g.userData.ring.material.opacity=0.7;chars[1-active].g.userData.ring.material.opacity=0;
   hint("Jetzt steuerst du "+chars[active].name,1600);}
 function near(c,o,r){return Math.hypot(c.x-o.position.x,c.z-o.position.z)<(r||2.2);}
-function doAct(fromNet,slot){
+function applyById(id){ /* wendet GENAU einen Effekt an (idempotent) — Empfänger repliziert das Ergebnis ohne near()-Recheck */
+  if(id==="vines"){if(vines.userData.alive){vines.userData.alive=false;vines.visible=false;var wi=walls.indexOf(walls.find(function(w){return w.m===vines;}));if(wi>=0)walls.splice(wi,1);announce("🔥 Ember verbrennt die Ranken!","#ff9a60");sfx(180,0.3,"sawtooth",0.07,70);}}
+  else if(id==="plant"){if(!plant.userData.grown){plant.userData.grown=true;plant.scale.set(2.6,4.2,2.6);plant.position.y=1.6;lever2.visible=true;lever2.position.y=3.4;announce("💧 Aqua lässt die Pflanze wachsen!","#60c8ff");sfx(520,0.25,"sine",0.06,780);}}
+  else if(id==="lever"){if(!lever.userData.pulled){lever.userData.pulled=true;lever.rotation.x=0.7;announce("⚙️ Hebel 1 gezogen!","#ffd166");sfx(300,0.15,"square",0.06,180);}}
+  else if(id==="lever2"){if(!lever2.userData.pulled){lever2.userData.pulled=true;lever2.visible=true;lever2.rotation.x=0.7;announce("⚙️ Hebel 2 gezogen!","#ffd166");sfx(340,0.15,"square",0.06,200);}}
+  else if(id==="syncA"){syncA.userData.t=1.2;syncA.material.emissiveIntensity=1;sfx(440,0.12,"triangle",0.06);}
+  else if(id==="syncB"){syncB.userData.t=1.2;syncB.material.emissiveIntensity=1;sfx(520,0.12,"triangle",0.06);}}
+function applyAct(c){ /* lokaler Pfad: prüft near() und liefert die id des ausgeführten Effekts (oder null) */
+  if(c.id==="ember"&&vines.userData.alive&&near(c,vines,2.6)){applyById("vines");return "vines";}
+  if(c.id==="aqua"&&!plant.userData.grown&&near(c,plantPot,2.4)){applyById("plant");return "plant";}
+  if(!lever.userData.pulled&&near(c,lever,2.2)&&!vines.userData.alive){applyById("lever");return "lever";}
+  if(!lever2.userData.pulled&&lever2.visible&&near(c,lever2,2.4)&&plant.userData.grown){applyById("lever2");return "lever2";}
+  if(near(c,syncA,2.0)){applyById("syncA");return "syncA";}
+  if(near(c,syncB,2.0)){applyById("syncB");return "syncB";}
+  return null;}
+function doAct(fromNet,slot,what){
+  if(fromNet&&what){applyById(what);return;} /* Partner-Aktion: identisches Ergebnis anwenden (Koop-Determinismus) */
   var c=chars[fromNet?slot:(NETON?mySlot:active)];
-  var did=false;
-  if(c.id==="ember"&&vines.userData.alive&&near(c,vines,2.6)){ /* 🔥 Ranken verbrennen */
-    vines.userData.alive=false;vines.visible=false;var wi=walls.indexOf(walls.find(function(w){return w.m===vines;}));if(wi>=0)walls.splice(wi,1);
-    announce("🔥 Ember verbrennt die Ranken!","#ff9a60");sfx(180,0.3,"sawtooth",0.07,70);did=true;}
-  else if(c.id==="aqua"&&!plant.userData.grown&&near(c,plantPot,2.4)){ /* 💧 Pflanze giessen */
-    plant.userData.grown=true;plant.scale.set(2.6,4.2,2.6);plant.position.y=1.6;lever2.visible=true;lever2.position.y=3.4;
-    announce("💧 Aqua lässt die Pflanze wachsen!","#60c8ff");sfx(520,0.25,"sine",0.06,780);did=true;}
-  else if(!lever.userData.pulled&&near(c,lever,2.2)&&!vines.userData.alive){ /* Hebel hinter den Ranken */
-    lever.userData.pulled=true;lever.rotation.x=0.7;announce("⚙️ Hebel 1 gezogen!","#ffd166");sfx(300,0.15,"square",0.06,180);did=true;}
-  else if(!lever2.userData.pulled&&lever2.visible&&near(c,lever2,2.4)&&plant.userData.grown){ /* Hebel oben auf der Pflanze */
-    lever2.userData.pulled=true;lever2.rotation.x=0.7;announce("⚙️ Hebel 2 gezogen!","#ffd166");sfx(340,0.15,"square",0.06,200);did=true;}
-  else if(near(c,syncA,2.0)){syncA.userData.t=1.2;syncA.material.emissiveIntensity=1;sfx(440,0.12,"triangle",0.06);did=true;}
-  else if(near(c,syncB,2.0)){syncB.userData.t=1.2;syncB.material.emissiveIntensity=1;sfx(520,0.12,"triangle",0.06);did=true;}
+  var did=applyAct(c);
   if(!did)sfx(220,0.06,"square",0.03);
-  if(!fromNet&&NETON&&net)try{net.send({t:"act",slot:mySlot});}catch(e){}
+  if(!fromNet&&NETON&&net&&did)try{net.send({t:"act",slot:mySlot,what:did});}catch(e){}
 }
 document.getElementById("bAct").addEventListener("touchstart",function(e){e.preventDefault();doAct();},{passive:false});
 document.getElementById("bAct").addEventListener("click",function(){doAct();});
 document.getElementById("bSwap").addEventListener("touchstart",function(e){e.preventDefault();doSwap();},{passive:false});
 document.getElementById("bSwap").addEventListener("click",doSwap);
-addEventListener("keydown",function(e){keys[e.key.toLowerCase()]=1;
+addEventListener("keydown",function(e){keys[e.key.toLowerCase()]=1;if(e.repeat)return; /* kein Auto-Repeat-Spam (net.send/Buzz) */
   if(e.key===" "){e.preventDefault();if(!running){start(false);return;}doAct();}
   if(e.key.toLowerCase()==="q"||e.key==="Tab"){e.preventDefault();doSwap();}
   if(e.key.toLowerCase()==="e")doAct();});
@@ -221,17 +226,17 @@ function startCoop(){
     else if(st==="closed"){NETON=false;document.getElementById("bSwap").style.display="flex";hint("❌ Partner getrennt — Solo-Wechsel ist wieder an",3200);updHud();}});
   net.onMessage(function(d){if(!d||!d.t)return;
     if(d.t==="pos"&&typeof d.x==="number"){rt.x=d.x;rt.z=d.z;}
-    if(d.t==="act")doAct(true,1-mySlot);
+    if(d.t==="act"&&d.what)doAct(true,1-mySlot,d.what);
     if(d.t==="win"&&!won)winGame(true);});
 }
 document.getElementById("coopBtn").onclick=startCoop;
 
 /* ---------- Spiel-Logik ---------- */
-function tryMove(c,nx,nz){
-  for(var i=0;i<walls.length;i++){var w=walls[i];
-    if(Math.abs(nx-w.x)<w.w+0.42&&Math.abs(nz-w.z)<w.d+0.42)return;}
-  if(nx<-9.6||nx>9.6||nz>5.8||nz<-67)return;
-  c.x=nx;c.z=nz;}
+function blocked(x,z){for(var i=0;i<walls.length;i++){var w=walls[i];if(Math.abs(x-w.x)<w.w+0.42&&Math.abs(z-w.z)<w.d+0.42)return true;}
+  return x<-9.6||x>9.6||z>5.8||z<-67;}
+function tryMove(c,nx,nz){ /* achsengetrennt: an Wänden entlanggleiten statt kleben */
+  if(!blocked(nx,c.z))c.x=nx;
+  if(!blocked(c.x,nz))c.z=nz;}
 function openGate(g,msg){if(g.userData.open)return;g.userData.open=true;
   announce(msg||"🚪 Das Tor öffnet sich!","#7dffc8");sfx(140,0.5,"sawtooth",0.07,60);
   var wi=walls.findIndex(function(w){return w.m===g;});if(wi>=0)walls.splice(wi,1);}
