@@ -8,6 +8,9 @@
   try {
     var off = document.querySelector('meta[name="aban-nav"]');
     if (off && off.content === "off") return;
+    /* 🎮 Spiele-Seiten sind Vollbild-Apps: grosse Nav NIE darüberlegen (mobil frisst sie 1/4 Screen).
+       Pfad-Ausnahme zusätzlich zum Meta-Opt-out — greift auch, wenn ein Spiel das Meta vergisst (traumhaus-Falle). */
+    if (/^\/(traumhaus|neon-[a-z0-9-]+|lebenspfad|wort-[a-z0-9-]+)\.html$/i.test(location.pathname)) return;
 
     /* Schnell-Nav oben */
     var NAV = [
