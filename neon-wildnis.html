@@ -85,6 +85,8 @@ canvas{display:block}
 /* ✖-Schliessen-Zeile ganz oben in Bau/Werkbank/Händler (Mobil-Blocker: Menü verdeckte den 🔨-Knopf) */
 .menuX{width:100%;min-height:48px;display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(60,16,30,.94);border:2px solid rgba(255,120,140,.55);border-radius:14px;font-weight:900;font-size:1.05rem;color:#ffd7dd;cursor:pointer;pointer-events:auto}
 .menuX:active{transform:scale(.97)}
+.btn:active,.btn.pressed{transform:scale(.9);filter:brightness(1.35)}
+.sysbtn:active{transform:scale(.92)}
 .menuHead{width:100%;text-align:center;font-weight:900;letter-spacing:.1em;margin-bottom:2px}
 @media (max-width:760px){ /* schmale Handys: kompaktes 2-Spalten-Grid, scrollbar, Button-Reihe bleibt frei */
   #buildMenu,#craftMenu,#tradeMenu{display:grid;grid-template-columns:repeat(2,minmax(118px,1fr));gap:8px;max-height:42vh;overflow-y:auto;bottom:calc(150px + env(safe-area-inset-bottom));max-width:92vw;padding:8px;background:rgba(8,12,28,.6);border-radius:16px;-webkit-overflow-scrolling:touch}
@@ -228,7 +230,7 @@ canvas{display:block}
     <span class="chip"><b>🪓</b> Sammeln/Kämpfen</span>
     <span class="chip"><b>🔨</b> Bauen</span>
   </div>
-  <div id="charLbl">Wähle deinen Helden</div>
+  <div id="charLbl">Held wählen — oder direkt starten</div>
   <canvas id="charPrev" width="300" height="368"></canvas>
   <div id="charPick"></div>
   <button class="big" id="startBtn">▶ Los geht's</button>
@@ -276,7 +278,7 @@ var VF=IS_MOB?0.6:1; // Dichte-Faktor mobil
 var renderer=new THREE.WebGLRenderer({antialias:!IS_COARSE});
 renderer.setPixelRatio(Math.min(devicePixelRatio,IS_MOB?1.5:2)); /* 📱 W7: DPR-Cap 1.5 mobil = spürbar flüssiger auf High-Res-Handys */
 renderer.setSize(W,H);
-renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+renderer.shadowMap.enabled=true;renderer.shadowMap.type=IS_MOB?THREE.PCFShadowMap:THREE.PCFSoftShadowMap; /* 📱 günstigerer Schatten-Filter mobil */
 if(renderer.outputEncoding!==undefined)renderer.outputEncoding=THREE.sRGBEncoding;
 document.body.appendChild(renderer.domElement);
 /* 🖥️ Software-Renderer erkennen (SwiftShader/llvmpipe: Headless-CI, schwache VMs) → teure Optik aus.
@@ -344,7 +346,7 @@ sun.shadow.camera.near=1;sun.shadow.camera.far=200;
 /* 🌞 W7: enger Schatten-Frustum (±52 statt ±100) → ~2× Texel-Dichte am Spieler = knackiger Boden-Schatten
    unter dem Helden. (Sonne folgt dem Spieler bereits in updDayNight → Frustum bleibt zentriert.) */
 sun.shadow.camera.left=-52;sun.shadow.camera.right=52;sun.shadow.camera.top=52;sun.shadow.camera.bottom=-52;
-sun.shadow.bias=-0.0006;sun.shadow.normalBias=0.03;sun.shadow.radius=3;scene.add(sun);scene.add(sun.target);
+sun.shadow.bias=-0.0006;sun.shadow.normalBias=0.03;sun.shadow.radius=IS_MOB?1:3;scene.add(sun);scene.add(sun.target);
 /* Sonnen-Position/-Target folgen dem Spieler bereits in updDayNight (Tag/Nacht-Bogen) — der enge ±52-Frustum
    oben zentriert sich dadurch automatisch am Spieler = knackiger Schatten OHNE separaten updSun-Override. */
 
@@ -1026,7 +1028,7 @@ function updMonsters(dt){
         }
       }
     }
-    if(e.kbT>0){e.kbT-=dt;e.x+=e.kbx*dt;e.z+=e.kbz*dt;} /* 💥 Rückstoß bei Treffer — gibt Schlägen Wucht (Elden-Ring-Feel) */
+    if(e.kbT>0){e.kbT-=dt;e.x+=e.kbx*dt;e.z+=e.kbz*dt;var _kd=Math.pow(0.0006,dt);e.kbx*=_kd;e.kbz*=_kd;} /* 💥 Rückstoß mit Ease-out-Dämpfung */
     else if(tel){ if(e.rig&&e.rig.cur!=="attack")setAnim(e.rig,e.rig.actions.idle?"idle":"walk",0.2); } /* Wind-up: Boss steht */
     else if(d>1.6){e.x+=dx/d*spd*dt;e.z+=dz/d*spd*dt;
       if(e.rig&&e.rig.cur!=="attack")setAnim(e.rig,e.rig.actions.walk?"walk":"idle",0.2);}
@@ -1040,6 +1042,7 @@ function updMonsters(dt){
       var fy=e.fly?(2.4+Math.sin(e.t*3)*0.4):(e.rig?0:Math.abs(Math.sin(e.t*8))*0.12); /* geriggte: Clip statt Wippen */
       e.mesh.position.set(e.x,groundH(e.x,e.z)+fy,e.z);
       e.mesh.rotation.y=Math.atan2(dx,dz);
+      e.mesh.rotation.x=(e.kbT>0)?-0.25*Math.min(1,e.kbT/0.28):0; /* lehnt sich beim Rückstoß zurück */
       if(e.hitPop>0){e.hitPop=Math.max(0,e.hitPop-dt);e.mesh.scale.setScalar(_bsc*(1+e.hitPop*1.6));}else e.mesh.scale.setScalar(_bsc);
       if(e.wings){var fl=Math.sin(e.t*14)*0.7;e.wings[0].rotation.y=fl;e.wings[1].rotation.y=-fl;}
     }else{ // Slime/Boss: hüpfen + squash
@@ -3160,7 +3163,8 @@ function updDodge(dt){
   else{dodgeT=0;}
   if(rnd()<0.5)burst(nx,player.position.y+0.4,nz,0x9fe8ff,2);
 }
-function damagePlayer(d,src){if(dead)return;if(dodgeT>0)return;sfx(120,0.14,"sawtooth",0.06);/* 💨 Rolle = unverwundbar */d=Math.max(1,d-((ARMOR_DEF[equip.armor]||0)+PERK.def));hp-=d;if(typeof floatText==="function")floatText(player.position.x,player.position.y+2.4,player.position.z,"-"+Math.round(d),"#ff5c6a");hurtFlash();if(src)dmgDir(src);heroAct("hit",1.4);if(hp<=0){hp=0;playerDie();}hpUpd();}
+var _lowT=0;
+function damagePlayer(d,src){if(dead)return;if(dodgeT>0)return;sfx(120,0.14,"sawtooth",0.06);/* 💨 Rolle = unverwundbar */d=Math.max(1,d-((ARMOR_DEF[equip.armor]||0)+PERK.def));hp-=d;if(typeof floatText==="function")floatText(player.position.x,player.position.y+2.4,player.position.z,"-"+Math.round(d),"#ff5c6a");hurtFlash();if(src)dmgDir(src);heroAct("hit",1.4);if(hp<=0){hp=0;playerDie();}else if(hp/maxHp<=0.25&&performance.now()-_lowT>2600){_lowT=performance.now();sfx(660,0.07,"sine",0.05);setTimeout(function(){sfx(520,0.09,"sine",0.05);},140);} /* 🚨 Herzschlag-Warnton bei kritischem HP */hpUpd();}
 // 💥 Skill (RPG-Fusion aus realm): Schockwelle — AoE-Schaden auf alle nahen Monster, ab Level 2, Cooldown
 var skillCd=0,SKILL_CD=7,_skillShown=false;
 function useSkill(){
@@ -3373,7 +3377,7 @@ function dmgHit(e,dmg){if(!e)return;
   floatText(e.x,groundH(e.x,e.z)+1.9,e.z,"-"+Math.round(dmg),"#ffe14a");
   e.hitPop=0.16;}
 /* 💥 Rückstoß: schiebt den Gegner weg vom Treffer-Ursprung; Bosse widerstehen stärker (Elden-Ring-Wucht) */
-function knockback(e,fromX,fromZ,str){if(!e)return;var kx=e.x-fromX,kz=e.z-fromZ,kd=Math.hypot(kx,kz)||1;var s=(e.boss?str*0.28:str);e.kbx=kx/kd*s;e.kbz=kz/kd*s;e.kbT=0.16;}
+function knockback(e,fromX,fromZ,str){if(!e)return;var kx=e.x-fromX,kz=e.z-fromZ,kd=Math.hypot(kx,kz)||1;var s=(e.boss?str*0.28:str*1.6);e.kbx=kx/kd*s;e.kbz=kz/kd*s;e.kbT=0.28;} /* länger + gedämpft = Ease-out-Wucht */
 /* 🔊 Wuchtiger Treffer-Klang: tiefer Thud + kurzer Crack (passt zum Rückstoß) */
 function hitSfx(){if(typeof sfx!=="function")return;sfx(92,0.09,"sawtooth",0.06,54);sfx(330,0.05,"square",0.04,150);}
 
@@ -3455,8 +3459,8 @@ function harvest(){
   if(nearMon){ // Kampf
     heroAct("melee",2.2);
     faceTo(nearMon.x,nearMon.z);
-var _md=(1+Math.floor(level/3)+weaponAtk());nearMon.hp-=_md;dmgHit(nearMon,_md);knockback(nearMon,player.position.x,player.position.z,9);hitSfx();burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x7de3ff,8);shake=Math.min(shake+0.12,0.4);
-    if(nearMon.hp<=0){var _wb=nearMon.boss;var idx=monsters.indexOf(nearMon);if(idx>=0){scene.remove(nearMon.mesh);monsters.splice(idx,1);}if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(nearMon.x,nearMon.z);clearWarn(nearMon);}updWaveHud();
+var _md=(1+Math.floor(level/3)+weaponAtk());nearMon.hp-=_md;dmgHit(nearMon,_md);knockback(nearMon,player.position.x,player.position.z,9);hitSfx();hitStop=Math.max(hitStop,0.045);burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x7de3ff,8);shake=Math.min(shake+0.12,0.4);
+    if(nearMon.hp<=0){hitStop=Math.max(hitStop,0.08);var _wb=nearMon.boss;var idx=monsters.indexOf(nearMon);if(idx>=0){scene.remove(nearMon.mesh);monsters.splice(idx,1);}if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(nearMon.x,nearMon.z);clearWarn(nearMon);}updWaveHud();
       burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x3ad0ff,10);gainXP(8);kills++;dropLoot(nearMon.x,nearMon.z);
       if(rnd()<0.4){inv.stone+=1;toast("🪨 +1 Stein");floatText(nearMon.x,groundH(nearMon.x,nearMon.z)+1.6,nearMon.z,"+1 🪨","#cfe");invUpd();}}
     return;
@@ -3771,7 +3775,7 @@ addEventListener("mousedown",function(e){if(!running||IS_MOB)return;if(e.target&
 addEventListener("mousemove",function(e){if(mDrag){camYaw-=(e.clientX-mLX)*0.008;mLX=e.clientX;}});
 addEventListener("mouseup",function(){mDrag=false;});
 if(!IS_MOB){stickEl.addEventListener("mousedown",function(e){stickStart(e);});addEventListener("mousemove",function(e){if(stickId==="m")stickMove(e);});addEventListener("mouseup",function(e){if(stickId==="m")stickEnd();});}
-function bindTap(id,fn){var b=document.getElementById(id);if(!b)return;b.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();b.__t=performance.now();fn();},{passive:false});b.addEventListener("click",function(e){if(performance.now()-(b.__t||0)>500)fn();});} // Hybrid: Maus-Klick zählt, Touch feuert nicht doppelt
+function bindTap(id,fn){var b=document.getElementById(id);if(!b)return;b.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();b.__t=performance.now();b.classList.add("pressed");setTimeout(function(){b.classList.remove("pressed");},150);fn();},{passive:false});b.addEventListener("click",function(e){if(performance.now()-(b.__t||0)>500)fn();});} // Hybrid: Maus-Klick zählt, Touch feuert nicht doppelt
 bindTap("bAct",function(){harvest();});
 bindTap("bSkill",useSkill);bindTap("bThrow",doThrow);bindTap("bDodge",doDodge);bindTap("bBolt",useBolt);
 (function(){var mb=document.getElementById("muteBtn2");if(mb){mb.textContent=muted?"🔇":"🔊";mb.onclick=function(){toggleMute();};}})();bindTap("wMeat",eat);bindTap("wBerry",eat); // 🍖 Essen: Vorrats-Chip antippen (Desktop: R)
@@ -3783,7 +3787,7 @@ document.getElementById("bSound").onclick=function(){muted=!muted;this.textConte
 document.getElementById("bMenu").onclick=function(){togglePause();};
 
 // ---------- Kamera ----------
-var camYaw=0,shake=0;
+var camYaw=0,shake=0,hitStop=0;
 /* 🔍 Zoom (Wildnis-Paket #2): Faktor auf Kamera-Distanz, sanft gelerpt, persistent (nw_zoom) */
 var camZoomT=(function(){var z=parseFloat(lsGet("nw_zoom"));return (z>=0.55&&z<=1.8)?z:1;})(),camZoom=camZoomT;
 function setZoom(v){camZoomT=Math.max(0.55,Math.min(1.8,v));lsSet("nw_zoom",camZoomT.toFixed(3));}
@@ -3833,9 +3837,10 @@ function updCamera(dt){
   gMax=Math.max(gMax,groundH(mgx,mgz));
   var wantY=Math.max(player.position.y+hgt,gMax+3.5);
   camera.position.y+=(wantY-camera.position.y)*Math.min(1,dt*6);
-  var sx=(shake>0?(rnd()-.5)*shake:0),sz=(shake>0?(rnd()-.5)*shake:0);
+  var tr=shake>0?shake*shake:0,st2=performance.now()*0.045;
+  var sx=tr>0?(Math.sin(st2*1.1)+Math.sin(st2*2.3)*0.5)*tr*0.6:0,sz=tr>0?(Math.cos(st2*1.7)+Math.sin(st2*2.9)*0.5)*tr*0.6:0; /* Trauma-Shake (glatt, kein rnd-Verbrauch) */
   camera.lookAt(player.position.x+sx,player.position.y+1.5,player.position.z+sz+1); /* 🎯 Held vertikal zentriert (kein großer Vorausblick mehr — User: „Charakter soll immer Mitte sein") */
-  if(shake>0)shake=Math.max(0,shake-dt*1.5);
+  if(shake>0)shake=Math.max(0,shake-dt*1.8);
 }
 
 // ---------- Save ----------
@@ -3859,14 +3864,15 @@ function loadSave(){var raw=lsGet("nw_save1");if(!raw)return null;try{return JSO
 function loadBest(){try{return JSON.parse(lsGet("nw_best")||"null");}catch(e){return null;}}
 var autoSaveT=0;
 // 🔊 SOUND (WebAudio-Synth, kein Asset nötig) + Mute (persistent)
-var _AC=null,muted=(lsGet("nw_mute")==="1");
+var _AC=null,_MB=null,muted=(lsGet("nw_mute")==="1");
 function sfx(f,d,type,g,slide){if(muted||!running)return;try{
   _AC=_AC||new (window.AudioContext||window.webkitAudioContext)();
+  if(!_MB){try{var _cmp=_AC.createDynamicsCompressor();_cmp.threshold.value=-18;_cmp.knee.value=12;_cmp.ratio.value=8;_cmp.attack.value=0.002;_cmp.release.value=0.12;var _mg=_AC.createGain();_mg.gain.value=0.9;_cmp.connect(_mg);_mg.connect(_AC.destination);_MB=_cmp;}catch(e){_MB=_AC.destination;}} /* 🔊 Master-Bus mit Limiter: viele Sounds clippen nicht */
   var o=_AC.createOscillator(),ga=_AC.createGain();o.type=type||"triangle";
   o.frequency.value=f;d=d||0.1;
   if(slide)o.frequency.exponentialRampToValueAtTime(slide,_AC.currentTime+d);
   ga.gain.value=g||0.045;ga.gain.exponentialRampToValueAtTime(0.0001,_AC.currentTime+d);
-  o.connect(ga);ga.connect(_AC.destination);o.start();o.stop(_AC.currentTime+d+0.02);
+  o.connect(ga);ga.connect(_MB);o.start();o.stop(_AC.currentTime+d+0.02);
 }catch(e){}}
 /* 🔊 Welle 5: Sound-Landschaft — Vögel (Tag) / Grillen (Nacht) / Lagerfeuer-Knistern (nah).
    Timing über Math.random (NICHT rnd/rnd2 — sonst Welt-Desync im Koop). Respektiert muted. */
@@ -4069,6 +4075,7 @@ function frame(now){
   var dt=Math.min(0.05,(now-lastT)/1000)||0.016;lastT=now;perfNow=now;
   if(stationOpen){if(running&&!paused)netTick(dt);return;} /* 🎯 Station offen: Welt pausiert (kein 2. WebGL-Render!), Netz-Ticks laufen weiter (sonst Koop-Disconnect) */
   if(!running||paused||perkChoosing){if(NET.on&&running)netTick(dt);renderScene();return;}
+  if(hitStop>0){hitStop-=dt;if(hitStop>0){netTick(dt);renderScene();return;}} /* ⚔️ Hitstop: Treffer-Pause = Wucht */
   // Bewegung
   var mx=stickV.x,my=stickV.y;
   if(keys.w||keys.arrowup)my-=1;if(keys.s||keys.arrowdown)my+=1;if(keys.a||keys.arrowleft)mx-=1;if(keys.d||keys.arrowright)mx+=1;
@@ -4469,6 +4476,7 @@ function startGame(fresh){
       wrap.appendChild(b);
     });
     if(window.setCharPreview)window.setCharPreview(curId);
+    var sb=document.getElementById("startBtn");if(sb&&!lsGet("nw_save1")&&!paused)sb.textContent="▶ Los als "+C0.emo+" "+C0.name; /* Einfach-los-Signal */
   }
   render();
   var _sb=document.getElementById("startBtn"),_nb=document.getElementById("newBtn"); /* ▶ Start-Knopf ÜBER das Helden-Grid (mobil ohne Scrollen startbar) */
