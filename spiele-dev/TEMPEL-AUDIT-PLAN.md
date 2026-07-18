@@ -1,6 +1,6 @@
 # 🤝 Tempel-der-Zwei Audit — Plan (13 Batches, 63 bestätigt · Stand 2026-07-18)
 
-OFFEN: alle. Anker vor Anwendung grep-verifizieren.
+Umgesetzt: B1 (Koop-Sync-Kern), B2 (deterministische Tore + Solo-Guard), B3 (Robustheit/Teardown). OFFEN: B4-B13. Anker vor Anwendung grep-verifizieren (Zeilennummern driften).
 
 ---
 B1 · Koop-Sync-Kern & Bewegungs-Bug
