@@ -1896,6 +1896,9 @@ function updTurnMarker(dt){
 }
 // ===================== Zustand =====================
 var SAVE_KEY="lp_save1";
+// 🚀 Erststart: Standard-Anime-GLB im Leerlauf in den Browser-Cache holen — Figur steht beim ersten Spiel sofort statt Platzhalter
+window.addEventListener("load",function(){setTimeout(function(){
+  try{if(!lsGet(SAVE_KEY)&&window.fetch)fetch("/models/anime_hero.glb").catch(function(){});}catch(e){}},2500);});
 var G=null,running=false;
 function freshState(np,adult,mode){
   var ps=[];np=Math.max(1,Math.min(4,np|0)); // Overflow nie zulassen: max 4 Spieler
@@ -2440,7 +2443,11 @@ var clouds=[];
   var sm=new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false,fog:false});
   sm.opacity=0.8;var sun=new THREE.Sprite(sm);sun.scale.set(30,30,1);sun.position.set(160,105,-230);scene.add(sun);
 })();
-function updClouds(dt){for(var i=0;i<clouds.length;i++){var g=clouds[i];g.position.x+=g.userData.v*dt;if(g.position.x>240)g.position.x=-200;}}
+var _cloudTint=new THREE.Color(),_cloudWhite=new THREE.Color(0xffffff);
+function updClouds(dt){for(var i=0;i<clouds.length;i++){var g=clouds[i];g.position.x+=g.userData.v*dt;if(g.position.x>240)g.position.x=-200;}
+  if(clouds.length&&clouds[0].children[0]){ // ☁️ Wolken nehmen die Kapitel-Himmelsstimmung an (geteiltes Material, Scratch-Color — 0 Allokation/Frame)
+    _cloudTint.copy(scene.background).lerp(_cloudWhite,0.75);
+    clouds[0].children[0].material.color.lerp(_cloudTint,Math.min(1,dt*0.8));}}
 // Blumenwiese: Punkte-Sprites in 3 Farben, abseits des Pfads
 (function(){
   function flowerTex(col){var cv=document.createElement("canvas");cv.width=cv.height=48;var c=cv.getContext("2d");
