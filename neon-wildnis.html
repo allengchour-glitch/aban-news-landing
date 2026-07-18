@@ -939,17 +939,17 @@ function spawnMonster(forceId,fx,fz){ /* ⚔️ W4: optional forceId/fx/fz (nur 
   return 1;
 }
 function spawnGlbBoss(file,th,label,bhp,x,z,bspd){ /* 👑 W4: Mini-Boss aus mn_*-GLB — frisch laden, th-normiert, mit Attack-Rig */
+  var bl0=document.getElementById("bossLbl");if(bl0)bl0.textContent=label; /* Namens-Moment sofort (nicht erst nach dem Download) */
+  announce(label+" erwacht! Besiege den Boss!");shake=0.6;
   new THREE.GLTFLoader().load("/models/"+file,function(g){
     var o=g.scene;o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material)toonify(n,true);}});
     var bb=new THREE.Box3().setFromObject(o),bh=Math.max(0.001,bb.max.y-bb.min.y);
     var k=Math.max(0.02,Math.min(12,th/bh));o.scale.setScalar(k);
     o.position.set(x,groundH(x,z)-bb.min.y*k,z);scene.add(o);
     var rig=mobRig(o,g.animations);
-    monsters.push({mesh:o,x:x,z:z,hp:bhp,maxhp:bhp,t:0,boss:true,baseScale:k,walk:true,kind:file.replace(".glb",""),spd:bspd||2.4,rig:rig});
+    monsters.push({mesh:o,x:x,z:z,hp:bhp,maxhp:bhp,t:0,boss:true,baseScale:k,walk:true,kind:file.replace(".glb",""),spd:bspd||2.4,rig:rig,lbl:label});
     if(rig)setAnim(rig,rig.actions.walk?"walk":"idle",0);
-    var bl=document.getElementById("bossLbl");if(bl)bl.textContent=label;
-    announce(label+" erwacht! Besiege den Boss!");shake=0.6;
-  },undefined,function(){});}
+  },undefined,function(){spawnSeraph(x,z,bhp);});} /* GLB scheitert -> Fallback-Boss statt bosslose Nacht */
 function bossEntrance(x,z){ /* 👑 W7: epischer Boss-Auftritt — Screen-Flash + Boden-Schockringe + tiefer Klang. KEIN rnd() → koop-deterministisch. */
   if(typeof spawnShock==="function"){spawnShock(x,z,8,0xff2d6f);spawnShock(x,z,4.5,0xc98bff);}
   if(typeof sfx==="function"){sfx(90,0.5,"sawtooth",0.09,42);setTimeout(function(){sfx(66,0.7,"sine",0.08,36);},150);}
@@ -957,6 +957,14 @@ function bossEntrance(x,z){ /* 👑 W7: epischer Boss-Auftritt — Screen-Flash 
   var f=document.getElementById("bossFlash");
   if(!f){f=document.createElement("div");f.id="bossFlash";f.style.cssText="position:fixed;inset:0;pointer-events:none;z-index:45;opacity:0;background:radial-gradient(ellipse at center,rgba(255,45,110,0) 30%,rgba(170,20,55,.55) 100%)";document.body.appendChild(f);}
   if(f.animate)f.animate([{opacity:0},{opacity:0.8},{opacity:0}],{duration:900,easing:"ease-out"});
+}
+function spawnSeraph(x,z,bhp){ /* ⚠️ Fallback-Boss (Slime-Seraph) — auch wenn ein GLB-Load scheitert */
+  var m=slimeProto?slimeProto.clone(true):fallbackSlime();
+  m.traverse(function(n){if(n.isMesh){n.castShadow=true;if(n.material){n.material=n.material.clone();if(n.material.color)n.material.color.setHex(0x8a2ad8);if(n.material.emissive)n.material.emissive.setHex(0xff2d6f);n.material.emissiveIntensity=1.1;}}});
+  m.position.set(x,groundH(x,z),z);scene.add(m);
+  monsters.push({mesh:m,x:x,z:z,hp:bhp,maxhp:bhp,t:Math.random()*6,boss:true,baseScale:slimeProto?4.6:2.4,lbl:"⚠️ SERAPH"});
+  var bl2=document.getElementById("bossLbl");if(bl2)bl2.textContent="⚠️ SERAPH";
+  announce("⚠️ SERAPH erwacht! Besiege den Boss!");shake=0.6;
 }
 function spawnBoss(){ // 🐉 Nacht-Boss — Rotation: Urdrache / 💀 Knochenkönig / 😈 Erzdämon (W4) / Drache / SERAPH
   var a=rnd()*6.28,rd=26+rnd()*8,x=player.position.x+Math.cos(a)*rd,z=player.position.z+Math.sin(a)*rd;
@@ -972,26 +980,22 @@ function spawnBoss(){ // 🐉 Nacht-Boss — Rotation: Urdrache / 💀 Knochenk�
       var k=Math.max(0.02,Math.min(12,6.5/bh));o.scale.setScalar(k);
       o.position.set(xx,groundH(xx,zz)-bb.min.y*k,zz);scene.add(o);
       var rigD=mobRig(o,g.animations); /* ⚔️ W4 */
-      monsters.push({mesh:o,x:xx,z:zz,hp:hh2,maxhp:hh2,t:Math.random()*6,boss:true,baseScale:k,walk:true,kind:"drache2",spd:2.6,rig:rigD});
+      monsters.push({mesh:o,x:xx,z:zz,hp:hh2,maxhp:hh2,t:Math.random()*6,boss:true,baseScale:k,walk:true,kind:"drache2",spd:2.6,rig:rigD,lbl:"🐲 URDRACHE"});
       if(rigD)setAnim(rigD,rigD.actions.walk?"walk":"idle",0);
-      var bl2=document.getElementById("bossLbl");if(bl2)bl2.textContent="🐲 URDRACHE";
-    },undefined,function(){});})(x,z,hp);
+    },undefined,function(){spawnSeraph(xx,zz,hh2);});
+    var blD=document.getElementById("bossLbl");if(blD)blD.textContent="🐲 URDRACHE";
+    announce("🐲 URDRACHE erwacht! Besiege den Boss!");shake=0.6;})(x,z,hp);
     return;
   }
   if(typeof cc0inst==="function"&&cc0proto&&cc0proto["mob_dragon"]){ // 🐉 Drachen-Boss
     var dm=cc0inst("mob_dragon",7);var fit=dm.scale.x;
     dm.traverse(function(n){if(n.isMesh)n.castShadow=true;});
     dm.position.set(x,groundH(x,z),z);scene.add(dm);
-    monsters.push({mesh:dm,x:x,z:z,hp:hp,maxhp:hp,t:Math.random()*6,boss:true,baseScale:fit,walk:true,kind:"dragon",spd:2.4});
+    monsters.push({mesh:dm,x:x,z:z,hp:hp,maxhp:hp,t:Math.random()*6,boss:true,baseScale:fit,walk:true,kind:"dragon",spd:2.4,lbl:"🐉 DRACHE"});
     var bl=document.getElementById("bossLbl");if(bl)bl.textContent="🐉 DRACHE";
     announce("🐉 Ein DRACHE erwacht! Besiege den Boss!");shake=0.7;return;
   }
-  var m=slimeProto?slimeProto.clone(true):fallbackSlime();
-  m.traverse(function(n){if(n.isMesh){n.castShadow=true;if(n.material){n.material=n.material.clone();if(n.material.color)n.material.color.setHex(0x8a2ad8);if(n.material.emissive)n.material.emissive.setHex(0xff2d6f);n.material.emissiveIntensity=1.1;}}});
-  m.position.set(x,groundH(x,z),z);scene.add(m);
-  monsters.push({mesh:m,x:x,z:z,hp:hp,maxhp:hp,t:Math.random()*6,boss:true,baseScale:slimeProto?4.6:2.4});
-  var bl2=document.getElementById("bossLbl");if(bl2)bl2.textContent="⚠️ SERAPH";
-  announce("⚠️ SERAPH erwacht! Besiege den Boss!");shake=0.6;
+  spawnSeraph(x,z,hp);
 }
 function updWaveHud(){var el=document.getElementById("waveHud");if(!el)return;
   if(isNight&&(waveActive||monsters.length>0)){el.classList.remove("hide");
