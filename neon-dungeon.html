@@ -117,8 +117,8 @@ function plat(x,y,z,w,d,mat){var g=new THREE.Group();
   var uc=new THREE.Mesh(new THREE.BoxGeometry(w*0.7,0.9,d*0.7),STONE2);uc.position.y=-1.0;g.add(uc); /* Fels-Unterbau statt schwebender Scheibe */
   g.position.set(x,y,z);scene.add(g);
   var P={x:x,y:y,z:z,w:w/2,d:d/2,g:g,x0:x,y0:y,mv:null};plats.push(P);return P;}
-function gem(x,y,z){var m=new THREE.Mesh(new THREE.OctahedronGeometry(0.34,0),M(0xc98bff,0xa060ff,0.9));
-  m.position.set(x,y+0.9,z);scene.add(m);gems.push({m:m,x:x,y:y+0.9,z:z,got:false,ph:Math.random()*6});}
+function gem(x,y,z,secret){var m=new THREE.Mesh(new THREE.OctahedronGeometry(0.34,0),M(0xc98bff,0xa060ff,0.9));
+  m.position.set(x,y+0.9,z);scene.add(m);gems.push({m:m,x:x,y:y+0.9,z:z,got:false,secret:!!secret,ph:Math.random()*6});}
 function torch(x,y,z){var g=new THREE.Group();
   var st=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.08,1.1,6),M(0x4a3a2a));st.position.y=0.55;g.add(st);
   var fl=new THREE.Mesh(new THREE.ConeGeometry(0.18,0.42,6),M(0xffa040,0xff8020,1));fl.position.y=1.25;g.add(fl);
@@ -128,7 +128,7 @@ function torch(x,y,z){var g=new THREE.Group();
     cG.fillStyle=g2;cG.fillRect(0,0,128,128);window.__glowT=new THREE.CanvasTexture(cvG);}
   var gl=new THREE.Sprite(new THREE.SpriteMaterial({map:window.__glowT,transparent:true,opacity:0.8,depthWrite:false}));
   gl.scale.set(2.1,2.1,1);gl.position.y=1.3;g.add(gl);gl.material.opacity=0.6; /* 🔥 weiches Feuer-Glühen */
-  g.position.set(x,y,z);scene.add(g);torches.push({fl:fl,lt:lt,ph:Math.random()*6});}
+  g.position.set(x,y,z);scene.add(g);torches.push({fl:fl,lt:lt,gl:gl,x:x,z:z,lit:false,ph:Math.random()*6});}
 
 /* Abschnitt 1: gerader Einstieg */
 plat(0,0,0,6,6);torch(-2.4,0,-2.4);torch(2.4,0,-2.4);
@@ -140,6 +140,7 @@ plat(1,2.2,-25,3,3);torch(1,2.2,-26);
 plat(-3,2.8,-32,2.4,2.4);gem(-3,2.8,-32);
 plat(3,3.4,-38,3.0,3.0).mv={ax:1.5,ay:0,sp:0.55,ph:0}; /* ↔ gleitet seitlich (Einstieg: grösser+langsamer) */
 gem(0,3.4,-35); /* Flugbahn-Guide */
+plat(7.5,3.0,-41,2.2,2.2);gem(7.5,3.0,-41,true);gem(8.1,3.0,-41.8,true);gem(6.9,3.0,-40.4,true);torch(7.5,3.0,-41.9); /* 🤫 Geheim-Nische abseits der Route */
 plat(-2,4.0,-45,2.2,2.2);gem(-2,4.0,-45);
 var _p52=plat(3.5,4.4,-52,2.2,2.2);_p52.mv={ax:0,ay:1.1,sp:0.9,ph:2};gem(3.5,4.4,-52); /* ↕ hebt und senkt sich */
 plat(0,5,-59,3.4,3.4);torch(-1.2,5,-60);torch(1.2,5,-60);
@@ -178,7 +179,7 @@ var player=new THREE.Group();scene.add(player);
   var head=new THREE.Mesh(new THREE.SphereGeometry(0.26,12,10),M(0xd8dcf0,0x555a80,0.35));head.position.y=1.5;player.add(head);
   var visor=new THREE.Mesh(new THREE.BoxGeometry(0.4,0.09,0.12),M(0x7de3ff,0x40b0ff,1));visor.position.set(0,1.52,-0.2);player.add(visor); /* ⚔️ Helm-Visier */
   var lt=new THREE.PointLight(0x9fd0ff,0.5,7);lt.position.y=1.6;player.add(lt);})();
-var px=0,py=0,pz=0,vy=0,onG=true,jumps=0,coyote=0,jBuf=0,ckpt=0,invT=0,gy=0,stepT=0;
+var px=0,py=0,pz=0,vy=0,onG=true,jumps=0,coyote=0,jBuf=0,ckpt=0,invT=0,gy=0,stepT=0,secFound=false;
 var hearts=4,gemN=0,stage=1,running=false,won=false,dead=false;
 var kx=0,kz=0; /* Eingabe */
 
@@ -390,12 +391,18 @@ function frame(now){requestAnimationFrame(frame);
     /* Checkpoints + Stage-Anzeige */
     for(var ci=checkpoints.length-1;ci>0;ci--){var cp=checkpoints[ci];
       if(ci>ckpt&&Math.hypot(px-cp.x,pz-cp.z)<2.6&&Math.abs(py-cp.y)<2){ckpt=ci;
+        for(var tf=0;tf<torches.length;tf++){var T4=torches[tf];if(T4.lit)continue;
+          if(Math.hypot(T4.x-cp.x,T4.z-cp.z)<3){T4.lit=true;
+            T4.fl.material.color.setHex(0xb080ff);T4.fl.material.emissive.setHex(0x8050e0);
+            T4.lt.color.setHex(0xb080ff);T4.lt.intensity=1.2;
+            if(T4.gl)T4.gl.material.opacity=0.85;}} /* 💜 Checkpoint-Fackeln brennen violett weiter */
         stage=Math.min(3,ci+0);announce("🔥 Fackel-Halt erreicht!","#ffce8a");sfx(520,0.15,"triangle",0.05,780);updHud();}}
     if(pz<-28&&stage<2){stage=2;updHud();announce("⚙️ Abschnitt 2 — Bewegte Plattformen","#9fd0ff");hint("⤴⤴ Doppelsprung für weite Lücken!",3200);}
     if(pz<-62&&stage<3){stage=3;updHud();announce("🌉 Abschnitt 3 — Schmale Stege","#c8b8ff");hint("Langsam laufen — die Stege sind schmal!",3200);}
     /* Kristalle */
     for(var g2=0;g2<gems.length;g2++){var gg=gems[g2];if(gg.got)continue;
       if(Math.hypot(px-gg.x,pz-gg.z)<1.1&&Math.abs(py+0.9-gg.m.position.y)<1.6){gg.got=true;gemN++;
+        if(gg.secret&&!secFound){secFound=true;announce("🤫 Geheim-Nische entdeckt!","#c98bff");sfx(880,0.2,"triangle",0.06,1320);}
         gg.m.material.transparent=true;fx.push({m:gg.m,vx:0,vy:3.2,vz:0,life:0.45,kind:"gem"});burst(gg.x,gg.m.position.y,gg.z,3,0xc98bff);
         var _ge=document.getElementById("gems");_ge.style.transform="scale(1.25)";clearTimeout(_ge._pt);_ge._pt=setTimeout(function(){_ge.style.transform="";},180);
         if(gemN===GEM_TOTAL)announce("✨ ALLE KRISTALLE!","#c98bff");
