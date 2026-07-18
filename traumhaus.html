@@ -985,6 +985,31 @@ function updFireworks(dt,now){var F=window._fw;if(!F)return;
     for(var i=0;i<bs.vel.length;i++){var v=bs.vel[i];arr[i*3]+=v[0]*dt;arr[i*3+1]+=v[1]*dt;arr[i*3+2]+=v[2]*dt;v[1]-=9*dt;v[0]*=0.98;v[2]*=0.98;}
     bs.pts.geometry.attributes.position.needsUpdate=true;bs.pts.material.opacity=Math.max(0,bs.t/1.7);
     if(bs.t<=0){scene.remove(bs.pts);F.bursts.splice(b,1);}}}
+// ---- Abend-Stadtfest am See (19:30–22:30): Lampions, Extra-Feuerwerk, Spass fuer Besucher ----
+setTimeout(function baueFest(){
+  var g=new THREE.Group();var LF=[0xff5a6a,0xffd23a,0x3ad0ff,0x8aff6a,0xff9a2a,0xd06aff];
+  [[-72,64],[-84,60]].forEach(function(p){var mast=new THREE.Mesh(new THREE.CylinderGeometry(0.07,0.09,3.4,7),new THREE.MeshStandardMaterial({color:0x5a4a38,roughness:0.8}));
+    mast.position.set(p[0],1.7,p[1]);g.add(mast);});
+  var lamps=[];
+  for(var i=0;i<9;i++){var t=i/8;var lx=-72+(-84+72)*t,lz=64+(60-64)*t,ly=3.2-Math.sin(t*Math.PI)*0.7;
+    var la=new THREE.Mesh(new THREE.SphereGeometry(0.22,8,7),new THREE.MeshStandardMaterial({color:LF[i%6],emissive:LF[i%6],emissiveIntensity:0.2,roughness:0.4}));
+    la.position.set(lx,ly,lz);g.add(la);lamps.push(la.material);}
+  g.visible=false;scene.add(g);
+  window._fest={grp:g,lamps:lamps,x:-78,z:64,hintTag:0,cd:0};
+},0);
+function updFest(dt,now){var FE=window._fest;if(!FE)return;
+  var h=uhrzeit/60,aktiv=h>=19.5&&h<=22.5;
+  FE.grp.visible=aktiv;
+  if(!aktiv)return;
+  for(var i=0;i<FE.lamps.length;i++)FE.lamps[i].emissiveIntensity=0.8+Math.sin(now*0.004+i)*0.4;
+  if(FE.hintTag!==tag){FE.hintTag=tag;hint("🎆 Stadtfest am See! Lampions, Feuerwerk — kommt vorbei!");}
+  if(window._dorfNacht&&window._fw&&(window._fw.rockets.length+window._fw.bursts.length)<6&&Math.random()<dt*0.5)
+    launchFirework(FE.x+(Math.random()-0.5)*24,FE.z+(Math.random()-0.5)*18);
+  FE.cd-=dt;
+  if((!MPs||mpHost)&&FE.cd<=0){for(var q=0;q<sims.length;q++){var sq=sims[q];
+    if(sq.mesh.visible&&Math.hypot(sq.x-FE.x,sq.z-FE.z)<14){FE.cd=30;
+      sims.forEach(function(s2){s2.needs.spass=Math.min(100,s2.needs.spass+12);});
+      simEmoji(sq,"🎆");beep(660,.08,"sine",.04);hint("🎆 Festlaune! +Spaß");break;}}}}
 // ---- Brunnen (Landmark, hebt die Laune) ----
 setTimeout(function baueBrunnen(){
   var g=new THREE.Group();var stein=new THREE.MeshStandardMaterial({color:0xbfc4cc,roughness:0.6});
@@ -3124,7 +3149,7 @@ function loop(now){
     updHund(dt,now);
     if(fahren){autoFahr(dt);}
     updGrow(dt);updBeete(dt);if(!fahren)updWork(dt);updAuto(dt);updCrime(dt);updNpcs(dt,now);updPolizei(dt,now);if(!arbeiten&&!crime.on)updLove(dt);
-    updHearts(dt);updWetter(dt);updVerkehr(dt);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);updVerstecken(dt);
+    updHearts(dt);updWetter(dt);updVerkehr(dt);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);updVerstecken(dt);updFest(dt,now);
     document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("minimap").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("emoteToggle").style.display=(running&&!buildMode)?"block":"none";
