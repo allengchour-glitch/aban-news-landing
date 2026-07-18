@@ -918,7 +918,7 @@ function spawnMonster(forceId,fx,fz){ /* ⚔️ W4: optional forceId/fx/fz (nur 
       o.scale.setScalar(k);
       o.position.set(xx,groundH(xx,zz)-bb.min.y*k,zz);scene.add(o);
       var rig=mobRig(o,g.animations); /* ⚔️ W4: Attack/Walk/Idle-Rig */
-      monsters.push({mesh:o,x:xx,z:zz,hp:Math.round(MM.hp*(1+Math.min(1.6,nights*0.12))),dmg:MM.dmg,t:rnd()*6,spd:MM.spd,baseScale:k,kind:MM.id,walk:true,fly:false,wings:null,rig:rig});
+      monsters.push({mesh:o,x:xx,z:zz,hp:Math.round(MM.hp*(1+Math.min(1.6,nights*0.12))),maxhp:Math.round(MM.hp*(1+Math.min(1.6,nights*0.12))),dmg:MM.dmg,t:rnd()*6,spd:MM.spd,baseScale:k,kind:MM.id,walk:true,fly:false,wings:null,rig:rig});
       if(rig)setAnim(rig,rig.actions.walk?"walk":"idle",0);
       if(typeof updWaveHud==="function")updWaveHud();
     },undefined,function(){});})(M,x,z);
@@ -931,7 +931,7 @@ function spawnMonster(forceId,fx,fz){ /* ⚔️ W4: optional forceId/fx/fz (nur 
   m.scale.setScalar(sc);
   m.position.set(x,groundH(x,z),z);scene.add(m);
   var rig2=(M.file&&MOB_ANIMS[M.id])?mobRig(m,MOB_ANIMS[M.id]):null; /* ⚔️ W4: Node-Anims binden per Name auch auf Klonen */
-  monsters.push({mesh:m,x:x,z:z,hp:Math.round(M.hp*(1+Math.min(1.6,nights*0.12))),dmg:M.dmg,t:rnd()*6,spd:M.spd,baseScale:sc,kind:M.id,walk:(M.id!=="slime"),fly:!!M.fly,wings:m.userData.wings||null,rig:rig2});
+  monsters.push({mesh:m,x:x,z:z,hp:Math.round(M.hp*(1+Math.min(1.6,nights*0.12))),maxhp:Math.round(M.hp*(1+Math.min(1.6,nights*0.12))),dmg:M.dmg,t:rnd()*6,spd:M.spd,baseScale:sc,kind:M.id,walk:(M.id!=="slime"),fly:!!M.fly,wings:m.userData.wings||null,rig:rig2});
   if(rig2)setAnim(rig2,rig2.actions.walk?"walk":"idle",0);
   return 1;
 }
@@ -3193,7 +3193,7 @@ function useSkill(){
   burst(px,player.position.y+1,pz,[0x7de3ff,0xc98bff],34);spawnShock(px,pz,R,0x9fd0ff);shake=Math.min(shake+0.45,0.75);heroAct("cast",1.5);
   for(var i=monsters.length-1;i>=0;i--){var e=monsters[i];if((e.x-px)*(e.x-px)+(e.z-pz)*(e.z-pz)<R*R){
     e.hp-=dmg;hit++;burst(e.x,groundH(e.x,e.z)+1,e.z,0xff8ad8,7);dmgHit(e,dmg);knockback(e,px,pz,11); /* 💥 Schockwelle stößt kräftig weg */
-    if(e.hp<=0){var _wb=e.boss;scene.remove(e.mesh);monsters.splice(i,1);gainXP(8);kills++;killSfx(_wb);dropLoot(e.x,e.z);if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);clearWarn(e);}updWaveHud();}}}
+    if(e.hp<=0){var _wb=e.boss;scene.remove(e.mesh);monsters.splice(i,1);rewardKill(e);killSfx(_wb);if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);clearWarn(e);}updWaveHud();}}}
   toast(hit?("💥 Schockwelle! "+hit+" getroffen"):"💥 Schockwelle!");
 }
 var throwCd=0,THROW_CD=1.1,projectiles=[];
@@ -3218,7 +3218,7 @@ function updThrow(dt){
     p.m.rotation.y+=dt*12;
     if(p.t>1.2||(alive&&Math.hypot(p.m.position.x-tx,p.m.position.z-tz)<0.8)){
       if(alive){e.hp-=p.dmg;burst(e.x,groundH(e.x,e.z)+1,e.z,0x7de3ff,10);dmgHit(e,p.dmg);knockback(e,player.position.x,player.position.z,7);shake=Math.min(shake+0.1,0.4);
-        if(e.hp<=0){var _wb=e.boss;var idx=monsters.indexOf(e);if(idx>=0){scene.remove(e.mesh);monsters.splice(idx,1);}gainXP(8);kills++;killSfx(_wb);if(typeof dropLoot==="function")dropLoot(e.x,e.z);if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);clearWarn(e);}updWaveHud();}}
+        if(e.hp<=0){var _wb=e.boss;var idx=monsters.indexOf(e);if(idx>=0){scene.remove(e.mesh);monsters.splice(idx,1);}rewardKill(e);killSfx(_wb);if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);clearWarn(e);}updWaveHud();}}
       scene.remove(p.m);projectiles.splice(i,1);}
   }
 }
@@ -3272,7 +3272,7 @@ function useBolt(){heroActBolt();
     burst(e.x,groundH(e.x,e.z)+1,e.z,0x9fe8ff,8);
     e.hp-=dmg;dmgHit(e,dmg);
     if(e.hp<=0){var _wb=e.boss;var idx=monsters.indexOf(e);if(idx>=0){scene.remove(e.mesh);monsters.splice(idx,1);}
-      gainXP(8);kills++;killSfx(_wb);if(typeof dropLoot==="function")dropLoot(e.x,e.z);
+      rewardKill(e);killSfx(_wb);
       if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);clearWarn(e);}updWaveHud();}
   });
   toast("⚡ Kettenblitz! "+hits.length+" getroffen");
@@ -3294,6 +3294,7 @@ function dropLoot(x,z,force){var ri=(force!=null)?force:rollRarity(),R=LOOT_RARI
   var m=new THREE.Mesh(new THREE.OctahedronGeometry(0.34,0),new THREE.MeshStandardMaterial({color:R.c,emissive:R.c,emissiveIntensity:0.95,flatShading:true}));
   m.position.set(x,groundH(x,z)+0.9,z);scene.add(m);lootOrbs.push({m:m,x:x,z:z,ri:ri,t:0,life:32});
   if(ri>=2)burst(x,groundH(x,z)+0.9,z,R.c,8);}
+function rewardKill(e){var mh=Math.min(30,(e&&e.maxhp)||8);gainXP(Math.round(6+mh*0.7));kills++;if(typeof dropLoot==="function"){if(!e.boss&&mh>=9&&rnd()<0.35)dropLoot(e.x,e.z,rnd()<0.4?3:2);else dropLoot(e.x,e.z);}} /* 💰 Belohnung skaliert mit Gegnerstärke */
 function bossReward(x,z){announce("🏆 Boss besiegt! Legendäre Beute!");gainXP(60);dropLoot(x,z,3);dropLoot(x+1,z,3);dropLoot(x-1,z+1,2);burst(x,groundH(x,z)+1,z,[0xffd166,0xff2d6f],40);shake=0.7;}
 function updLoot(dt){for(var i=lootOrbs.length-1;i>=0;i--){var o=lootOrbs[i];o.t+=dt;o.life-=dt;
   o.m.rotation.y+=dt*2.6;
@@ -3486,7 +3487,7 @@ function harvest(){
     faceTo(nearMon.x,nearMon.z);
 var _md=(1+Math.floor(level/3)+weaponAtk());nearMon.hp-=_md;dmgHit(nearMon,_md);knockback(nearMon,player.position.x,player.position.z,9);hitSfx();hitStop=Math.max(hitStop,0.045);var _ihx=nearMon.x-(nearMon.x-player.position.x)*0.25,_ihz=nearMon.z-(nearMon.z-player.position.z)*0.25;burst(_ihx,groundH(nearMon.x,nearMon.z)+1.1,_ihz,0x7de3ff,10);shake=Math.min(shake+0.22,0.5); /* Funke am Aufschlagpunkt Richtung Spieler */
     if(nearMon.hp<=0){hitStop=Math.max(hitStop,0.08);var _wb=nearMon.boss;var idx=monsters.indexOf(nearMon);if(idx>=0){scene.remove(nearMon.mesh);monsters.splice(idx,1);}if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(nearMon.x,nearMon.z);clearWarn(nearMon);}updWaveHud();
-      burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x3ad0ff,10);gainXP(8);kills++;killSfx(_wb);dropLoot(nearMon.x,nearMon.z);
+      burst(nearMon.x,groundH(nearMon.x,nearMon.z)+1,nearMon.z,0x3ad0ff,10);rewardKill(nearMon);killSfx(_wb);
       if(rnd()<0.4){inv.stone+=1;toast("🪨 +1 Stein");floatText(nearMon.x,groundH(nearMon.x,nearMon.z)+1.6,nearMon.z,"+1 🪨","#cfe");invUpd();}}
     return;
   }
@@ -3673,13 +3674,13 @@ function updStructures(dt){
       // Heil-Aura
       if(Math.hypot(s.x-player.position.x,s.z-player.position.z)<5&&hp<maxHp){hp=Math.min(maxHp,hp+4*dt);hpUpd();}}
     if(s.type==="bett"){if(Math.hypot(s.x-player.position.x,s.z-player.position.z)<3.5&&hp<maxHp){hp=Math.min(maxHp,hp+6*dt);hpUpd();}}
-    if(s.type==="falle"){s.cd=(s.cd||0)-dt;if(s.cd<=0){var hitAny=false;for(var mf=0;mf<monsters.length;mf++){var em=monsters[mf];if((em.x-s.x)*(em.x-s.x)+(em.z-s.z)*(em.z-s.z)<2.4*2.4){em.hp-=2;hitAny=true;burst(em.x,groundH(em.x,em.z)+0.6,em.z,0xff6a6a,4);if(em.hp<=0){var idf=monsters.indexOf(em);if(idf>=0){scene.remove(em.mesh);monsters.splice(idf,1);gainXP(8);kills++;killSfx(em.boss);updWaveHud();}}}}if(hitAny)s.cd=0.9;else s.cd=0.3;}}
+    if(s.type==="falle"){s.cd=(s.cd||0)-dt;if(s.cd<=0){var hitAny=false;for(var mf=0;mf<monsters.length;mf++){var em=monsters[mf];if((em.x-s.x)*(em.x-s.x)+(em.z-s.z)*(em.z-s.z)<2.4*2.4){em.hp-=2;hitAny=true;burst(em.x,groundH(em.x,em.z)+0.6,em.z,0xff6a6a,4);if(em.hp<=0){var idf=monsters.indexOf(em);if(idf>=0){scene.remove(em.mesh);monsters.splice(idf,1);rewardKill(em);killSfx(em.boss);updWaveHud();}}}}if(hitAny)s.cd=0.9;else s.cd=0.3;}}
     if(s.type==="nexus"){if(s.mesh.userData.orb)s.mesh.userData.orb.rotation.y+=dt*1.2;if(s.mesh.userData.ring)s.mesh.userData.ring.rotation.z+=dt*0.8;
       s.spk=(s.spk||0)-dt;if(s.spk<=0){s.spk=0.4+rnd()*0.3;burst(s.x+(rnd()-.5)*2,groundH(s.x,s.z)+5.6+(rnd()-.5)*2,s.z+(rnd()-.5)*2,0xc98bff,1);}}
     if(s.type==="turm"){s.cd-=dt;if(s.mesh.userData.orb)s.mesh.userData.orb.rotation.y+=dt*2;
       if(isNight&&s.cd<=0){var tgt=null,bd=16*16;for(var m=0;m<monsters.length;m++){var e=monsters[m];var d=(e.x-s.x)*(e.x-s.x)+(e.z-s.z)*(e.z-s.z);if(d<bd){bd=d;tgt=e;}}
         if(tgt){tgt.hp-=1;burst(tgt.x,groundH(tgt.x,tgt.z)+1,tgt.z,0xff8ad8,4);s.cd=0.8;
-          if(tgt.hp<=0){var idx=monsters.indexOf(tgt);if(idx>=0){scene.remove(tgt.mesh);monsters.splice(idx,1);kills++;killSfx(tgt.boss);gainXP(4);}}}}}
+          if(tgt.hp<=0){var idx=monsters.indexOf(tgt);if(idx>=0){scene.remove(tgt.mesh);monsters.splice(idx,1);rewardKill(tgt);killSfx(tgt.boss);}}}}}
   }
 }
 
@@ -3698,6 +3699,12 @@ function updDayNight(dt){
       announce("☀️ Tag "+day+" — Welle "+waveNum+" überlebt! +"+(10+waveNum*4)+" XP");
       // 🏆 Neuer Tages-Rekord? -> extra Belohnung (Sucht-Faktor)
       try{var _bd=(loadBest()||{}).day||0;if(day>_bd&&_bd>0){setTimeout(function(){announce("🏆 NEUER REKORD — Tag "+day+"! 🌟","#ffd166");inv.crystal+=2;invUpd();},1600);}}catch(e){}
+      if(day%2===0){var _rs=0; /* 📦 alle 2 Tage: Truhen/Ruinen respawnen (Welt bleibt erkundenswert; Fässer/Kisten/Gruft NICHT) */
+        for(var _li=0;_li<loots.length;_li++){var lt2=loots[_li];
+          if((lt2.type==="chest"||lt2.type==="ruin")&&lt2.opened){lt2.opened=false;_rs++;
+            var _oi=lootOpened.indexOf(lt2.id);if(_oi>=0)lootOpened.splice(_oi,1);
+            if(lt2.mesh&&lt2.mesh.userData){if(lt2.mesh.userData.lid)lt2.mesh.userData.lid.rotation.x=0;if(lt2.mesh.userData.marker)lt2.mesh.userData.marker.visible=true;}}}
+        if(_rs>0)setTimeout(function(){announce("📦 Die Wildnis hat neue Schätze versteckt!","#ffd166");},2600);}
       saveGame();
       monsters.forEach(function(e){scene.remove(e.mesh);clearWarn(e);});monsters.length=0;}
     updWaveHud();}
@@ -3856,6 +3863,10 @@ function camClampDist(px,pz,dx,dz,want){
     var disc=bq*bq-4*cq;if(disc<0)continue;
     var sq=Math.sqrt(disc),t0=(-bq-sq)/2;
     if(t0>1.6&&t0<maxD)maxD=t0-0.4;}
+  if(typeof resources!=="undefined")for(var ri=0;ri<resources.length;ri++){var rs=resources[ri]; /* 🌲 auch Bäume/Felsen blocken die Sicht nicht mehr */
+    if(rs.dead)continue;var rex=px-rs.x,rez=pz-rs.z;if(rex*rex+rez*rez>maxD*maxD+120)continue;
+    var rr2=1.1,bq2=2*(rex*dx+rez*dz),cq2=rex*rex+rez*rez-rr2*rr2,disc2=bq2*bq2-4*cq2;if(disc2<0)continue;
+    var t02=(-bq2-Math.sqrt(disc2))/2;if(t02>1.6&&t02<maxD)maxD=t02-0.4;}
   return Math.max(4.5,maxD);}
 function updCamera(dt){
   // Aspekt-adaptiv: auf hohen Handys Spieler höher ins Bild (gelernt aus neon-realm)
@@ -4125,7 +4136,9 @@ function updMinimap(){var cv=document.getElementById("minimap");if(!cv||!running
     var rx=NET.remote.position.x-px,rz=NET.remote.position.z-pz,maxR=R-6,mx,my,edge=false;
     if(Math.hypot(rx,rz)*SC>maxR){edge=true;var pa=Math.atan2(rz,rx);mx=cx+Math.cos(pa)*maxR;my=cy+Math.sin(pa)*maxR;}
     else{mx=cx+rx*SC;my=cy+rz*SC;}
-    ctx.fillStyle="#35d0ff";ctx.strokeStyle="#eaffff";ctx.lineWidth=1.5;
+    if(NET.remoteDowned){var _pu=0.5+0.5*Math.sin(performance.now()*0.005); /* 💀 gefallener Partner pulsiert rot */
+      ctx.fillStyle="rgba(255,45,90,"+(0.25+0.35*_pu)+")";ctx.beginPath();ctx.arc(mx,my,7+3*_pu,0,6.283);ctx.fill();}
+    ctx.fillStyle=NET.remoteDowned?"#ff2d6f":"#35d0ff";ctx.strokeStyle="#eaffff";ctx.lineWidth=1.5;
     ctx.beginPath();ctx.arc(mx,my,edge?4.5:3.5,0,6.283);ctx.fill();ctx.stroke();
     if(edge){var pa2=Math.atan2(rz,rx);ctx.save();ctx.translate(mx,my);ctx.rotate(pa2);ctx.fillStyle="#eaffff";ctx.beginPath();ctx.moveTo(6,0);ctx.lineTo(1,-3);ctx.lineTo(1,3);ctx.closePath();ctx.fill();ctx.restore();}
   }
@@ -4200,7 +4213,7 @@ function togglePause(){if(!running)return;paused=!paused;var ov=document.getElem
   if(paused){ov.classList.remove("hide");ov.querySelector("h1").textContent="PAUSE";document.getElementById("startBtn").textContent="▶ Weiter";document.getElementById("newBtn").classList.remove("hide");document.getElementById("charLbl").classList.add("hide");document.getElementById("charPick").classList.add("hide");saveGame();}
   else{ov.classList.add("hide");}}
 // ===================== 🌐 KOOP (js/mp.js, WebRTC-P2P) =====================
-var NET={s:null,on:false,role:null,remote:null,rt:{x:0,z:0,ry:0},sendT:0};
+var NET={s:null,on:false,role:null,remote:null,rt:{x:0,z:0,ry:0,vx:0,vz:0,tLast:0},sendT:0};
 var NET_FORCE_SEED=null;
 function coopStatusMsg(m){var b=document.getElementById("coopStatus");if(b)b.textContent=m;}
 // 🌐 Online-Anzeige im HUD (User-Wunsch) — zeigt Solo / Warten / Verbunden
@@ -4250,7 +4263,9 @@ function netStart(role,code){
 function onNetMsg(d){
   if(!d)return;
   if(d.t==="start"&&NET.role!=="host"){NET_FORCE_SEED=d.seed;NET.on=true;spawnRemote();startGame(true);sendMyChar();return;} /* join ODER quick-Gast */
-  if(d.t==="pos"){if(d.n!=null){if(d.n<=(NET._rseq||0))return;NET._rseq=d.n;}NET.rt.x=d.x;NET.rt.z=d.z;NET.rt.ry=d.ry;if(d.hp!==undefined)NET.rt.hp=d.hp;if(NET.remote)NET.remote.visible=true;if(d.st!==undefined)remoteStation(d.st);}
+  if(d.t==="pos"){if(d.n!=null){if(d.n<=(NET._rseq||0))return;NET._rseq=d.n;}
+    var tn=performance.now()*0.001;if(NET.rt.tLast>0){var dtp=Math.max(0.02,Math.min(1,tn-NET.rt.tLast));var nvx=(d.x-NET.rt.x)/dtp,nvz=(d.z-NET.rt.z)/dtp;var sp2=Math.hypot(nvx,nvz);if(sp2>12){nvx*=12/sp2;nvz*=12/sp2;}NET.rt.vx=nvx;NET.rt.vz=nvz;}else{NET.rt.vx=0;NET.rt.vz=0;}NET.rt.tLast=tn; /* 🚀 Dead-Reckoning: Geschwindigkeit schätzen */
+    NET.rt.x=d.x;NET.rt.z=d.z;NET.rt.ry=d.ry;if(d.hp!==undefined)NET.rt.hp=d.hp;if(NET.remote)NET.remote.visible=true;if(d.st!==undefined)remoteStation(d.st);}
   if(d.t==="char"&&d.id&&d.from!==NET.role){loadRemoteHero(d.id);} /* 🧑‍🤝‍🧑 Partner zeigt seinen echten Helden (Eigen-Echo ignorieren) */
   if(d.t==="gear"&&d.from!==NET.role){NET.remoteGear={w:d.w|0,a:d.a|0};applyRemoteGear(d.w,d.a);} /* 🛡️ Partner-Ausrüstung sichtbar */
   if(d.t==="down"&&d.from!==NET.role){NET.remoteDowned=true;if(typeof toast==="function")toast("💀 Partner gefallen — lauf zu ihm & belebe ihn!");}
@@ -4299,7 +4314,8 @@ function loadRemoteHero(id){ /* 🧑‍🤝‍🧑 W8: Partner als SEIN gewählt
     if(hb>0.3)o.scale.setScalar(Math.max(0.15,Math.min(4,TGT/hb)));
     else{var bb=new THREE.Box3().setFromObject(o),h=bb.max.y-bb.min.y;if(h>0.8&&h<6)o.scale.setScalar(Math.max(0.2,Math.min(3.2,TGT/h)));else o.scale.setScalar((C.scale||1.15)*1.18);}
     var neon=C.glow==="neon";o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material){if(neon&&n.material.color)n.material.color.multiplyScalar(2.0);toonify(n,neon);}}});
-    if(NET.remoteHero&&NET.remoteHero.parent)NET.remoteHero.parent.remove(NET.remoteHero);
+    if(NET.remoteHero){if(NET.remoteHero.parent)NET.remoteHero.parent.remove(NET.remoteHero);
+      NET.remoteHero.traverse(function(n){if(n.isMesh&&n.material){if(n.material.map)n.material.map.dispose();if(n.material.emissiveMap)n.material.emissiveMap.dispose();n.material.dispose();}}); /* alte Held-GPU-Ressourcen freigeben (gradientMap geteilt -> nicht disposen) */}
     NET.remote.add(o);NET.remoteHero=o;NET.remoteRig=makeRig(o,g2.animations);
     if(NET.remoteRig.actions.idle)setAnim(NET.remoteRig,"idle",0);else if(g2.animations&&g2.animations[0])setAnim(NET.remoteRig,g2.animations[0].name,0);
     if(NET.remotePh)NET.remotePh.visible=false; /* Platzhalter aus */
@@ -4336,8 +4352,10 @@ function netTick(dt){
   NET.sendT-=dt;
   if(NET.sendT<=0){NET.sendT=0.05;NET.s.sendFast({t:"pos",x:+player.position.x.toFixed(2),z:+player.position.z.toFixed(2),ry:+player.rotation.y.toFixed(2),st:_stCur,hp:Math.max(0,Math.round(hp/maxHp*100)),n:(NET._seq=(NET._seq||0)+1)});} /* st = Stations-Flag; hp = Partner-HP-Balken */
   if(NET.remote&&NET.remote.visible){var r=NET.remote;var ox=r.position.x,oz=r.position.z;
-    var _dx=NET.rt.x-r.position.x,_dz=NET.rt.z-r.position.z;if(_dx*_dx+_dz*_dz>64){r.position.x=NET.rt.x;r.position.z=NET.rt.z;ox=NET.rt.x;oz=NET.rt.z;} /* >8m = Teleport statt Gleiten */
-    r.position.x+=(NET.rt.x-r.position.x)*Math.min(1,dt*9);r.position.z+=(NET.rt.z-r.position.z)*Math.min(1,dt*9);r.position.y=groundH(r.position.x,r.position.z);r.rotation.y=NET.rt.ry;
+    var _dx=NET.rt.x-r.position.x,_dz=NET.rt.z-r.position.z;if(_dx*_dx+_dz*_dz>64){r.position.x=NET.rt.x;r.position.z=NET.rt.z;ox=NET.rt.x;oz=NET.rt.z;NET.rt.vx=NET.rt.vz=0;} /* >8m = Teleport statt Gleiten */
+    var tn2=performance.now()*0.001,ex2=Math.min(0.25,Math.max(0,tn2-NET.rt.tLast));var tx2=NET.rt.x+NET.rt.vx*ex2,tz2=NET.rt.z+NET.rt.vz*ex2; /* extrapolieren bis 250ms */
+    r.position.x+=(tx2-r.position.x)*Math.min(1,dt*9);r.position.z+=(tz2-r.position.z)*Math.min(1,dt*9);r.position.y=groundH(r.position.x,r.position.z);
+    var dr2=NET.rt.ry-r.rotation.y;dr2=Math.atan2(Math.sin(dr2),Math.cos(dr2));r.rotation.y+=dr2*Math.min(1,dt*10);
     /* 🧑‍🤝‍🧑 Partner-Held animieren: laufen wenn er sich bewegt, sonst idle */
     if(NET.remoteRig){NET.remoteRig.mixer.update(dt);
       var mv=Math.hypot(r.position.x-ox,r.position.z-oz)/Math.max(0.0001,dt);
