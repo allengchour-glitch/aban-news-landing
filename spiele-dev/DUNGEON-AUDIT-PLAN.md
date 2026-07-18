@@ -1,6 +1,6 @@
 # 🏰 Dungeon Audit — Plan (18 Batches, 72 bestätigt · Stand 2026-07-18)
 
-OFFEN: alle. Anker vor Anwendung grep-verifizieren (Zeilennummern = Audit-Stand).
+Umgesetzt: B1 (Kern-Bugfixes), B3 (Sprung-Feel), B4 (Boss-Lesbarkeit+Touch). OFFEN: B2, B5-B18. Anker vor Anwendung grep-verifizieren (Zeilennummern = Audit-Stand, driften durch Umsetzung).
 
 ---
 B1 · Bug-Fixes Kern (Boss-Schaden, Arm-Hänger, groundAt)
