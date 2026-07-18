@@ -3454,8 +3454,8 @@ function dmgHit(e,dmg){if(!e)return;
 /* 💥 Rückstoß: schiebt den Gegner weg vom Treffer-Ursprung; Bosse widerstehen stärker (Elden-Ring-Wucht) */
 function knockback(e,fromX,fromZ,str){if(!e)return;var kx=e.x-fromX,kz=e.z-fromZ,kd=Math.hypot(kx,kz)||1;var s=(e.boss?str*0.28:str*1.6);e.kbx=kx/kd*s;e.kbz=kz/kd*s;e.kbT=0.28;} /* länger + gedämpft = Ease-out-Wucht */
 /* 🔊 Wuchtiger Treffer-Klang: tiefer Thud + kurzer Crack (passt zum Rückstoß) */
-function hitSfx(){if(typeof sfx!=="function")return;sfx(92,0.09,"sawtooth",0.06,54);sfx(330,0.05,"square",0.04,150);}
-function killSfx(boss){if(typeof sfx!=="function")return;sfx(boss?150:190,0.22,"sawtooth",0.07,boss?46:70);setTimeout(function(){sfx(boss?900:660,0.10,"square",0.05,boss?1400:990);},60);} /* 💀 eigener Kill-Klang */
+function hitSfx(){if(typeof sfx!=="function")return;var p=0.95+Math.random()*0.1;sfx(92*p,0.09,"sawtooth",0.06,54*p);sfx(330*p,0.05,"square",0.04,150*p);} /* leichte Tonhöhen-Varianz gegen Maschinengewehr-Gefühl */
+function killSfx(boss){if(typeof sfx!=="function")return;var p=boss?1:(0.93+Math.random()*0.14);sfx(boss?150:(190*p),0.22,"sawtooth",0.07,boss?46:(70*p));setTimeout(function(){sfx(boss?900:(660*p),0.10,"square",0.05,boss?1400:(990*p));},60);} /* 💀 eigener Kill-Klang */
 
 // ---------- Sammeln ----------
 var nearRes=null,nearMon=null,nearAni=null,nearWork=null,nearMerchant=false,nearNpc=null,nearFire=null;
@@ -4006,6 +4006,7 @@ var autoSaveT=0;
 var _AC=null,_MB=null,muted=(lsGet("nw_mute")==="1");
 function sfx(f,d,type,g,slide){if(muted||!running)return;try{
   _AC=_AC||new (window.AudioContext||window.webkitAudioContext)();
+  if(_AC.state!=="running"){try{_AC.resume();}catch(e){}} /* 📱 Autoplay-Suspend lösen */
   if(!_MB){try{var _cmp=_AC.createDynamicsCompressor();_cmp.threshold.value=-18;_cmp.knee.value=12;_cmp.ratio.value=8;_cmp.attack.value=0.002;_cmp.release.value=0.12;var _mg=_AC.createGain();_mg.gain.value=0.9;_cmp.connect(_mg);_mg.connect(_AC.destination);_MB=_cmp;}catch(e){_MB=_AC.destination;}} /* 🔊 Master-Bus mit Limiter: viele Sounds clippen nicht */
   var o=_AC.createOscillator(),ga=_AC.createGain();o.type=type||"triangle";
   o.frequency.value=f;d=d||0.1;
@@ -4122,7 +4123,7 @@ function flashSaved(txt){
 function saveOnLeave(){try{saveGame();}catch(e){}}
 addEventListener("pagehide",saveOnLeave);
 addEventListener("beforeunload",saveOnLeave);
-document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")saveOnLeave();else{NET.rt.tLast=0;NET.rt.vx=0;NET.rt.vz=0;NET.sendT=0;}});
+document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")saveOnLeave();else{NET.rt.tLast=0;NET.rt.vx=0;NET.rt.vz=0;NET.sendT=0;try{if(_AC&&_AC.state!=="running")_AC.resume();}catch(e){}}});
 
 // ---------- Quest ----------
 var _nxT=0;
@@ -4561,6 +4562,7 @@ function startGame(fresh){
     var tri=new THREE.Mesh(new THREE.ConeGeometry(0.16,0.3,4),new THREE.MeshBasicMaterial({color:0x7de3ff,transparent:true,opacity:0.85,depthTest:false}));
     tri.rotation.x=Math.PI;tri.position.y=2.9;tri.renderOrder=998;player.add(tri);
     worldProps.push({mesh:tri,float:true,base:2.9,ph:0,halo:null});}
+  try{_AC=_AC||new (window.AudioContext||window.webkitAudioContext)();if(_AC.state!=="running")_AC.resume();}catch(e){} /* 🔊 Unlock in der Start-Geste */
   running=true;paused=false;xpUpd();updOnline();dailyReward();
   announce("🌅 Willkommen in der Wildnis!");
   /* 📖 W7: Einmalige Anfänger-Tipps beim allerersten Start (frisch, solo) — beantwortet „Regeln erklären für Anfänger" */
