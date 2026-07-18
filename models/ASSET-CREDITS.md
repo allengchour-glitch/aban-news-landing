@@ -385,3 +385,8 @@ No, Yes = verworfen). Mapping: Punch→attack, Weapon→attack2, HitReact→hit,
 1 unabhängiger QA-Re-Import, 32 Agenten, 0 Fehler). Eigenwerke, keine externen Quellen:
 Rutsche, Schaukel, Sandkasten, Wippe, Karussell (Spielplatz) · Marktstand, Brezel-/Süßwagen, Kiosk ·
 Litfaßsäule, Briefkasten (CH), Hydrant, Bushäuschen, Blumenkübel · Picknicktisch, Ruderboot, Steg.
+
+## th4_* — Eigenbau Welle 2 (Blender-Schwarm, 2026-07-18)
+14 weitere Eigenwerke (39 Agenten, 0 Fehler, 14/14 QA bestanden): Birke, Tanne, Herbst-Ahorn,
+große Eiche, Blüten-Busch · Stopp-/Tempo-30-Schild, moderne Laterne, Mülleimer, Holzzaun,
+Vogelhaus · Bogenbrücke, Schwan, Sonnenschirm.

@@ -898,6 +898,30 @@ setTimeout(function baueGebaeude(){
   // Park: Picknicktische
   bau("th3_picknick.glb",0.85,74,0,-32,0.4,false);
   bau("th3_picknick.glb",0.85,94,0,-10,-0.5,false);
+  // ---- Welle 2 (th4_*): echte Baum-Sorten, Schilder, Brücke, Schwan & Co. ----
+  // Birken-Hain am See
+  bau("th4_birke.glb",5.2,-72,0,66,0.3,false);bau("th4_birke.glb",4.8,-102,0,72,1.1,false);bau("th4_birke.glb",5.5,-96,0,94,2.2,false);
+  // Tannen-Gruppe Nordwesten + Norden
+  bau("th4_tanne.glb",6,-90,0,-70,0,false);bau("th4_tanne.glb",5.2,-98,0,-58,0.7,false);bau("th4_tanne.glb",6.6,-80,0,-84,1.5,false);bau("th4_tanne.glb",5.6,30,0,-84,2.4,false);
+  // Herbst-Ahorne + große Eichen als Landmarks
+  bau("th4_ahorn.glb",5.1,58,0,76,0.5,false);bau("th4_ahorn.glb",5.4,-34,0,-80,1.8,false);
+  bau("th4_eiche.glb",7.4,0,0,-82,0.9,false);bau("th4_eiche.glb",7,-44,0,74,2.6,false);
+  // Blüten-Büsche an Park + Marktzeile
+  bau("th4_busch_blueten.glb",1.15,90,0,-30,0,false);bau("th4_busch_blueten.glb",1.1,10,0,65,1,false);
+  // Verkehrsschilder auf den Trottoirs
+  bau("th4_schild_stop.glb",2.4,-58,0,-51.9,0,false);bau("th4_schild_tempo.glb",2.45,40,0,51.9,Math.PI,false);
+  // Moderne Laternen an der Süd-Außenseite
+  bau("th4_laterne_modern.glb",4.5,-45,0,64.2,Math.PI,false);bau("th4_laterne_modern.glb",4.5,45,0,64.2,Math.PI,false);
+  // Mülleimer (Haltestelle + Spielplatz)
+  bau("th4_muelleimer.glb",0.9,-5,0,51.9,0,false);bau("th4_muelleimer.glb",0.9,80,0,7,0,false);
+  // Zaun am Bauernhof-Gehege
+  bau("th4_zaun_holz.glb",0.95,-74,0,-30,Math.PI/2,false);bau("th4_zaun_holz.glb",0.95,-74,0,-34,Math.PI/2,false);bau("th4_zaun_holz.glb",0.95,-74,0,-38,Math.PI/2,false);
+  // Vogelhäuser
+  bau("th4_vogelhaus.glb",2,74,0,-36,0.6,false);bau("th4_vogelhaus.glb",2,-70,0,20,0,false);
+  // See: Bogenbrücke ans Ufer, Schwan aufs Wasser, Sonnenschirme
+  bau("th4_bruecke.glb",1.1,-90,0,66.5,Math.PI/2,false);
+  bau("th4_schwan.glb",0.75,-95,-0.02,74,0.6,false);
+  bau("th4_sonnenschirm.glb",2.4,-77,0,69,0.4,false);bau("th4_sonnenschirm.glb",2.4,94,0,-13,1.2,false);
 },0);
 function updTiere(dt,now){var M9=window._muehle;if(M9)M9.rotation.z+=dt*1.1;
   var T=window._tiere;if(!T)return;
