@@ -1018,7 +1018,7 @@ function updMonsters(dt){
         if(e.warnRing)e.warnRing.material.opacity=0.35+0.5*Math.abs(Math.sin((1.0-e.slamT)*20));
         if(e.slamT<=0){ /* Detonation */
           var pdx=player.position.x-e.slamX,pdz=player.position.z-e.slamZ;
-          if(pdx*pdx+pdz*pdz<e.slamR*e.slamR&&!dead&&dodgeT<=0)damagePlayer(22,e);
+          if(pdx*pdx+pdz*pdz<e.slamR*e.slamR&&!dead&&dodgeT<=0)damagePlayer(e.slamNova?18:22,e);
           if(typeof spawnShock==="function")spawnShock(e.slamX,e.slamZ,e.slamR*1.4,0xff2d3a);
           shake=Math.max(shake,0.72);if(typeof sfx==="function")sfx(70,0.42,"square",0.09,40);
           if(e.warnRing){scene.remove(e.warnRing);e.warnRing.geometry.dispose();e.warnRing.material.dispose();e.warnRing=null;}
@@ -1026,9 +1026,12 @@ function updMonsters(dt){
         }
       } else { e.slamCd-=dt;
         if(e.slamCd<=0&&d<12&&!dead){ /* Slam anwerfen — Zielort = aktuelle Spielerposition (Ausweich-Fenster) */
-          e.slamT=1.0;e.slamX=player.position.x;e.slamZ=player.position.z;e.slamR=e.ph2?5.0:4.2;tel=true;
+          e.slamN=(e.slamN|0)+1;var nova=(e.slamN%3===0);e.slamNova=nova; /* 💜 jeder 3. Slam = Nova um den Boss selbst */
+          if(nova){e.slamT=1.2;e.slamX=e.x;e.slamZ=e.z;e.slamR=6.5;}
+          else{e.slamT=1.0;e.slamX=player.position.x;e.slamZ=player.position.z;e.slamR=e.ph2?5.0:4.2;}
+          tel=true;
           var wg=new THREE.RingGeometry(e.slamR-0.28,e.slamR,44);wg.rotateX(-Math.PI/2);
-          e.warnRing=new THREE.Mesh(wg,new THREE.MeshBasicMaterial({color:0xff2d3a,transparent:true,opacity:0.6,side:THREE.DoubleSide,depthWrite:false}));
+          e.warnRing=new THREE.Mesh(wg,new THREE.MeshBasicMaterial({color:nova?0xc98bff:0xff2d3a,transparent:true,opacity:0.6,side:THREE.DoubleSide,depthWrite:false}));
           e.warnRing.position.set(e.slamX,groundH(e.slamX,e.slamZ)+0.13,e.slamZ);scene.add(e.warnRing);
           if(typeof sfx==="function")sfx(200,0.9,"sawtooth",0.05,540);
           if(e.rig&&e.rig.actions.attack)playOnce(e.rig,"attack",1.0);
@@ -1145,7 +1148,7 @@ function buildAmbient(){
   for(;dti<dtBudget;dti++)setInst(dtIM,dti,0,-999,0,0.001,0);dtIM.count=dtBudget;dtIM.instanceMatrix.needsUpdate=true;dtIM.instanceColor.needsUpdate=true;
 
   // --- Glühwürmchen (nachts, gepoolt) ---
-  for(var g=0;g<Math.round(22*VF);g++){var fm=new THREE.Mesh(new THREE.SphereGeometry(0.08,5,5),new THREE.MeshBasicMaterial({color:0xcaffb0}));fm.visible=false;scene.add(fm);
+  for(var g=0;g<Math.round(22*VF);g++){var fm=new THREE.Mesh(new THREE.SphereGeometry(0.08,5,5),new THREE.MeshBasicMaterial({color:0xcaffb0,transparent:true}));fm.visible=false;scene.add(fm);
     fireflies.push({m:fm,bx:0,bz:0,a:rnd()*6.28,r:1+rnd()*3,sp:0.5+rnd(),ph:rnd()*6.28});}
   // --- ✨ Tag-Pollen/Sporen (schwebende Glut-Partikel bei Tag -> lebendige Luft) ---
   for(var pg2=0;pg2<Math.round(34*VF);pg2++){var pm=new THREE.Mesh(new THREE.SphereGeometry(0.06,4,4),new THREE.MeshBasicMaterial({color:0xfff0c0,transparent:true,opacity:0.6}));pm.visible=false;scene.add(pm);
@@ -1165,7 +1168,7 @@ function buildAmbient(){
   clusterScatter(Math.round(28*VF),[1,3],4,300,function(x,z){var st=new THREE.Mesh(new THREE.CylinderGeometry(0.4,0.46,0.5,8),woodM);st.position.set(x,groundH(x,z)+0.25,z);st.castShadow=true;scene.add(st);var tp=new THREE.Mesh(new THREE.CylinderGeometry(0.37,0.37,0.06,8),topM);tp.position.set(x,groundH(x,z)+0.53,z);scene.add(tp);});
   clusterScatter(Math.round(16*VF),[1,2],5,300,function(x,z){var lg=new THREE.Mesh(new THREE.CylinderGeometry(0.33,0.38,2.4,7),woodM);lg.rotation.z=Math.PI/2;lg.rotation.y=rnd()*6.28;lg.position.set(x,groundH(x,z)+0.34,z);lg.castShadow=true;scene.add(lg);});
   // 🐦 Vögel (fliegen tagsüber in loser Formation über die Karte)
-  var birdM=new THREE.MeshBasicMaterial({color:0x2a2a33,side:THREE.DoubleSide});
+  var birdM=new THREE.MeshBasicMaterial({color:0x2a2a33,side:THREE.DoubleSide,transparent:true});
   for(var bd=0;bd<Math.round(10*VF);bd++){var bg=new THREE.Group();
     var wL=new THREE.Mesh(new THREE.PlaneGeometry(0.7,0.28),birdM);wL.position.x=-0.32;wL.rotation.z=0.4;
     var wR=new THREE.Mesh(new THREE.PlaneGeometry(0.7,0.28),birdM);wR.position.x=0.32;wR.rotation.z=-0.4;
@@ -1190,37 +1193,37 @@ function updDucks(dt){if(!window._ducks)return;for(var i=0;i<window._ducks.lengt
 function updAmbient(dt){
   windA+=dt*0.05;var wdx=Math.cos(windA)*0.5,wdz=Math.sin(windA*0.7)*0.35; /* 🌬️ kohärente Windrichtung — alles driftet gemeinsam */
   // Glühwürmchen nur nachts, um den Spieler herum
-  var showFF=isNight;
+  var showFF=ambNight>0.02;
   for(var i=0;i<fireflies.length;i++){var f=fireflies[i];
     if(!showFF){if(f.m.visible)f.m.visible=false;continue;}
     if(!f.m.visible){f.m.visible=true;f.bx=player.position.x+(rnd()-0.5)*30;f.bz=player.position.z+(rnd()-0.5)*30;}
     f.a+=dt*f.sp;f.ph+=dt*2;
     var x=f.bx+Math.cos(f.a)*f.r,z=f.bz+Math.sin(f.a*0.7)*f.r;
     f.m.position.set(x,groundH(x,z)+1.2+Math.sin(f.ph)*0.6,z);
-    var pl=0.4+Math.abs(Math.sin(f.ph))*0.6;f.m.material.color.setRGB(0.7*pl,1.0*pl,0.5*pl);
+    var pl=0.4+Math.abs(Math.sin(f.ph))*0.6;f.m.material.color.setRGB(0.7*pl,1.0*pl,0.5*pl);f.m.material.opacity=ambNight;
     // wandert der Spieler weg → Basis mitziehen
     if(Math.hypot(f.bx-player.position.x,f.bz-player.position.z)>34){f.bx=player.position.x+(rnd()-0.5)*24;f.bz=player.position.z+(rnd()-0.5)*24;}
   }
   // ✨ Tag-Pollen: schweben auf, driften, wrappen um den Spieler
-  var showPo=!isNight;
+  var showPo=dayAmt>0.02;
   for(var pi2=0;pi2<pollen.length;pi2++){var po=pollen[pi2];
     if(!showPo){if(po.m.visible)po.m.visible=false;continue;}
     if(!po.m.visible){po.m.visible=true;po.x=player.position.x+(rnd()-0.5)*40;po.z=player.position.z+(rnd()-0.5)*40;po.y=groundH(po.x,po.z)+0.4+rnd()*4;}
     po.ph+=dt*po.sp;po.y+=po.vy*dt;po.x+=Math.sin(po.ph)*0.15*dt+wdx*dt;po.z+=wdz*dt;
     if(po.y>groundH(po.x,po.z)+7||Math.hypot(po.x-player.position.x,po.z-player.position.z)>44){po.x=player.position.x+(rnd()-0.5)*40;po.z=player.position.z+(rnd()-0.5)*40;po.y=groundH(po.x,po.z)+0.4;}
-    po.m.position.set(po.x,po.y,po.z);po.m.material.opacity=0.35+Math.abs(Math.sin(po.ph))*0.35;}
+    po.m.position.set(po.x,po.y,po.z);po.m.material.opacity=(0.35+Math.abs(Math.sin(po.ph))*0.35)*dayAmt;}
   // 🦋 Schmetterlinge (Tag): um Spieler flattern, Flügelschlag
   for(var bi3=0;bi3<butterflies.length;bi3++){var bt=butterflies[bi3];
-    if(isNight){if(bt.m.visible)bt.m.visible=false;continue;}
+    if(dayAmt<=0.02){if(bt.m.visible)bt.m.visible=false;continue;}
     if(!bt.m.visible){bt.m.visible=true;bt.bx=player.position.x+(rnd()-0.5)*26;bt.bz=player.position.z+(rnd()-0.5)*26;}
     bt.a+=dt*bt.sp;bt.ph+=dt*10;
     var bx=bt.bx+Math.cos(bt.a)*bt.r,bz=bt.bz+Math.sin(bt.a*0.8)*bt.r;
     bt.m.position.set(bx,groundH(bx,bz)+bt.h+Math.sin(bt.a*3)*0.4,bz);
-    var flap=Math.abs(Math.sin(bt.ph))*1.1;bt.wL.rotation.y=flap;bt.wR.rotation.y=-flap;bt.m.rotation.y=bt.a+1.57;
+    var flap=Math.abs(Math.sin(bt.ph))*1.1;bt.wL.rotation.y=flap;bt.wR.rotation.y=-flap;bt.m.rotation.y=bt.a+1.57;if(bt.wL.material.transparent)bt.wL.material.opacity=0.95*dayAmt;
     if(Math.hypot(bt.bx-player.position.x,bt.bz-player.position.z)>30){bt.bx=player.position.x+(rnd()-0.5)*22;bt.bz=player.position.z+(rnd()-0.5)*22;}}
   // 🍂 Fallende Blätter (Tag)
   for(var li3=0;li3<leaves.length;li3++){var lv=leaves[li3];
-    if(isNight){if(lv.m.visible)lv.m.visible=false;continue;}
+    if(dayAmt<=0.02){if(lv.m.visible)lv.m.visible=false;continue;}
     if(!lv.m.visible||lv.y<groundH(lv.x,lv.z)+0.1){lv.m.visible=true;lv.x=player.position.x+(rnd()-0.5)*36;lv.z=player.position.z+(rnd()-0.5)*36;lv.y=groundH(lv.x,lv.z)+6+rnd()*3;}
     lv.ph+=dt*lv.sp;lv.y+=lv.vy*dt;lv.x+=Math.sin(lv.ph)*lv.sway*dt+wdx*dt;lv.z+=wdz*dt;
     lv.m.position.set(lv.x,lv.y,lv.z);lv.m.rotation.set(lv.ph,lv.ph*0.7,Math.sin(lv.ph)*0.5);}
@@ -2985,7 +2988,7 @@ function normInv(){ // defensiv: alte Saves ohne neue Felder auffüllen
 var hp=100,maxHp=100,dead=false;
 var xp=0,level=1; // ⭐ RPG-Progression (Fusion Survival+RPG)
 var kills=0; // 🗡️ Gesamt-Abschüsse (für Rekord/Sucht-Faktor)
-var day=1,dayT=0,DAYLEN=240,NIGHTLEN=90,isNight=false,nights=0,duskWarned=false;
+var day=1,dayT=0,DAYLEN=240,NIGHTLEN=90,isNight=false,nights=0,duskWarned=false,ambNight=0,dayAmt=1;
 var running=false,paused=false,muted=false;
 var buildMode=false,ghost=null,ghostType=null,ghostValid=false;
 var felled=[]; // Regrow-Timer
@@ -3733,6 +3736,7 @@ function updDayNight(dt){
           setTimeout(function(){announce("☄️ Ein Kristall-Cache ist gelandet! "+COMPASS8_AR[_ci2]+" Richtung "+COMPASS8[_ci2]);},2800);}}}
     updWaveHud();}
   var f=dayT/cyc;
+  ambNight=isNight?1:(dayT<8?1-dayT/8:(f>0.85?(f-0.85)/0.15:0));dayAmt=1-ambNight; /* 🌗 weiche Kreaturen-Blende am Tag/Nacht-Flip */
   var t; // 0=tiefste Nacht,1=heller Tag
   var vig=document.getElementById("nightVig");
   if(isNight){t=0.08;var rem=Math.ceil(NIGHTLEN-dayT);var lbl="🌙 Tag "+day+" · ☀️ in "+rem+"s ("+monsters.length+"👾)";document.getElementById("clock").textContent=lbl;
@@ -4157,12 +4161,12 @@ function updMinimap(){var cv=document.getElementById("minimap");if(!cv||!running
   if(typeof stations!=="undefined"&&stations.length){ctx.font="10px sans-serif";ctx.textAlign="center";ctx.textBaseline="middle";
     for(var si=0;si<stations.length;si++){var stn=stations[si],sdx=stn.x-px,sdz=stn.z-pz,maxRs=R-8;if(Math.hypot(sdx,sdz)*SC>maxRs){var sa=Math.atan2(sdz,sdx),ex=cx+Math.cos(sa)*maxRs,ey=cy+Math.sin(sa)*maxRs;ctx.font="8px sans-serif";ctx.fillText(stn.icon,ex,ey);ctx.save();ctx.translate(ex,ey);ctx.rotate(sa);ctx.fillStyle="#ffd166";ctx.beginPath();ctx.moveTo(7,0);ctx.lineTo(2,-2.5);ctx.lineTo(2,2.5);ctx.closePath();ctx.fill();ctx.restore();ctx.font="10px sans-serif";}else{var ps=pt(stn.x,stn.z);ctx.fillText(stn.icon,ps[0],ps[1]);}}} /* 📍 Off-Map: Icon+Pfeil am Rand */
   // Ressourcen (grün Baum / grau Fels / cyan Kristall) — nur nahe
-  for(var r=0;r<resources.length;r++){var rs=resources[r];if(rs.dead)continue;var dx=rs.x-px,dz=rs.z-pz;if(dx*dx+dz*dz>95*95)continue;var p2=pt(rs.x,rs.z);ctx.fillStyle=rs.type==="tree"?"#3fbf5f":(rs.type==="crystal"?"#7de3ff":(rs.type==="bush"?"#ff6ab0":"#9aa"));ctx.fillRect(p2[0]-1,p2[1]-1,2,2);}
+  for(var r=0;r<resources.length;r++){var rs=resources[r];if(rs.dead)continue;var dx=rs.x-px,dz=rs.z-pz;if(dx*dx+dz*dz>95*95)continue;var p2=pt(rs.x,rs.z);ctx.fillStyle=rs.type==="tree"?"#3fbf5f":(rs.type==="crystal"?"#7de3ff":(rs.type==="bush"?"#ff6ab0":"#9aa"));ctx.fillRect(p2[0]-1.5,p2[1]-1.5,3,3);}
   if(typeof loots!=="undefined")for(var li=0;li<loots.length;li++){var lt2=loots[li];if(lt2.opened)continue;var ldx=lt2.x-px,ldz=lt2.z-pz;if(ldx*ldx+ldz*ldz>95*95)continue;var pl=pt(lt2.x,lt2.z); /* 📦 ungeöffnete Schätze */
     if(lt2.type==="chest"||lt2.type==="grave"){ctx.fillStyle=lt2.bonus?"#ffef8a":"#ffd166";ctx.save();ctx.translate(pl[0],pl[1]);ctx.rotate(Math.PI/4);ctx.fillRect(-2,-2,4,4);ctx.restore();}
     else if(lt2.type==="ruin"){ctx.fillStyle="#7de3ff";ctx.fillRect(pl[0]-2,pl[1]-2,4,4);}}
   // Gegner (rot)
-  if(typeof monsters!=="undefined")for(var m=0;m<monsters.length;m++){var e=monsters[m];if(e.boss){var bdx=e.x-px,bdz=e.z-pz;if(Math.hypot(bdx,bdz)*SC>R-8){var ba=Math.atan2(bdz,bdx),bx2=cx+Math.cos(ba)*(R-8),by2=cy+Math.sin(ba)*(R-8);ctx.fillStyle="#ff2d6f";ctx.save();ctx.translate(bx2,by2);ctx.rotate(ba);ctx.beginPath();ctx.moveTo(7,0);ctx.lineTo(1,-3.5);ctx.lineTo(1,3.5);ctx.closePath();ctx.fill();ctx.restore();continue;}}var p3=pt(e.x,e.z);ctx.fillStyle=e.boss?"#ff2d6f":"#ff5a5a";ctx.beginPath();ctx.arc(p3[0],p3[1],e.boss?3:2,0,6.283);ctx.fill();}
+  if(typeof monsters!=="undefined")for(var m=0;m<monsters.length;m++){var e=monsters[m];if(e.boss){var bdx=e.x-px,bdz=e.z-pz;if(Math.hypot(bdx,bdz)*SC>R-8){var ba=Math.atan2(bdz,bdx),bx2=cx+Math.cos(ba)*(R-8),by2=cy+Math.sin(ba)*(R-8);ctx.fillStyle="#ff2d6f";ctx.save();ctx.translate(bx2,by2);ctx.rotate(ba);ctx.beginPath();ctx.moveTo(7,0);ctx.lineTo(1,-3.5);ctx.lineTo(1,3.5);ctx.closePath();ctx.fill();ctx.restore();continue;}}var p3=pt(e.x,e.z);var mr=e.boss?5:4;ctx.fillStyle=e.boss?"#ff2d6f":"#ff5a5a";ctx.strokeStyle="#fff";ctx.lineWidth=1;ctx.beginPath();if(e.boss){ctx.moveTo(p3[0],p3[1]-mr);ctx.lineTo(p3[0]+mr,p3[1]+mr);ctx.lineTo(p3[0]-mr,p3[1]+mr);}else{ctx.moveTo(p3[0],p3[1]-mr);ctx.lineTo(p3[0]+mr,p3[1]);ctx.lineTo(p3[0],p3[1]+mr);ctx.lineTo(p3[0]-mr,p3[1]);}ctx.closePath();ctx.fill();ctx.stroke();} /* Boss=Dreieck, Gegner=Raute (farbenblind-tauglich) */
   // Partner (Koop, cyan) — IMMER anzeigen: bei Distanz am Minimap-Rand festhalten + Richtungspfeil
   if(typeof NET!=="undefined"&&NET.on&&NET.remote&&NET.remote.visible){
     var rx=NET.remote.position.x-px,rz=NET.remote.position.z-pz,maxR=R-6,mx,my,edge=false;
@@ -4206,7 +4210,7 @@ function frame(now){
       if(canWalk(nx,nz)){player.position.x=nx;player.position.z=nz;}
       else if(canWalk(nx,player.position.z)){player.position.x=nx;}
       else if(canWalk(player.position.x,nz)){player.position.z=nz;}}
-    if(!buildMode)player.rotation.y=Math.atan2(cr.x,cr.z);
+    if(!buildMode){var ta=Math.atan2(cr.x,cr.z),rd3=ta-player.rotation.y;while(rd3>Math.PI)rd3-=2*Math.PI;while(rd3<-Math.PI)rd3+=2*Math.PI;player.rotation.y+=rd3*Math.min(1,dt*12);} /* weiches Eindrehen statt Snap */
     if(heroRig&&!ONESHOT[heroRig.cur])setAnim(heroRig,heroRig.actions.walk?"walk":"run",0.2,ml>0.9?1.3:1.0); /* Modelle ohne walk-Clip nutzen run */
   } else if(heroRig&&(heroRig.cur==="walk"||heroRig.cur==="run")){setAnim(heroRig,"idle",0.2);}
   player.position.y=groundH(player.position.x,player.position.z);
