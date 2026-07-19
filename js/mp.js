@@ -279,28 +279,41 @@
       if (room.length !== 4) room = "PUBA";
       var outer = mkSession("quick", room);
       outer.code = room;
-      var inner = null, phase = 0, closedByUs = false, maxPhase = 4;
+      var inner = null, phase = 0, closedByUs = false, maxPhase = 4, everConnected = false, retryT = null;
+      function goNext() { /* abwechselnd: Host des Public-Raums werden ↔ erneut beitreten (kleiner Zufalls-Delay gegen Race) */
+        phase++;
+        var next = (phase % 2 === 1) ? function () { wire(MP._hostFixed(gameId, room)); }
+                                     : function () { wire(MP.join(gameId, room)); };
+        retryT = setTimeout(function () { if (!closedByUs) next(); }, 250 + ((Math.random() * 500) | 0)); /* B2: stornierbar */
+      }
+      function settle() { /* B3: ready-Promise endgültig settlen (idempotent — _rej nach _res ist no-op) */
+        outer.ready.catch(function () {});
+        try { outer._rej(new Error("Kein Mitspieler gefunden")); } catch (e) {}
+      }
       function wire(sess) {
+        if (closedByUs) { try { sess.close(); } catch (e) {} return; } /* B2: Kette nach close() tot */
         inner = sess; outer.code = sess.code; outer.role = sess.role;
         sess.onMessage(function (d) { outer._emit(d); });
         outer.send = function (o) { sess.send(o); };
         outer.sendFast = function (o) { sess.sendFast(o); };
         sess.onStatus(function (st) {
-          if (st === "closed" && !closedByUs && outer.status !== "connected" && phase < maxPhase) {
-            phase++;
-            // abwechselnd: Host des Public-Raums werden ↔ erneut beitreten (mit kleinem Zufalls-Delay gegen Race)
-            var next = (phase % 2 === 1) ? function () { wire(MP._hostFixed(gameId, room)); }
-                                         : function () { wire(MP.join(gameId, room)); };
-            setTimeout(next, 250 + ((Math.random() * 500) | 0));
-            return;
-          }
+          if (st === "connected") everConnected = true; /* B1: nach echter Verbindung NIE re-matchen (sonst joint ein Fremder ins laufende Spiel / Rollen-Kipp) */
+          if (st === "closed" && !closedByUs && !everConnected && phase < maxPhase) { goNext(); return; }
           outer.role = inner ? inner.role : outer.role;
+          if (st === "closed") settle();
           outer._setStatus(st);
         });
         sess.ready.then(function () { outer.role = sess.role; outer._res(outer); }).catch(function () {});
+        if (sess.status === "closed") { /* B4: Session war schon SYNCHRON closed (z.B. PeerJS fehlt) — onStatus feuert nie mehr */
+          setTimeout(function () {
+            if (closedByUs) return;
+            if (!everConnected && phase < maxPhase) goNext();
+            else { settle(); outer._setStatus("closed"); }
+          }, 0);
+        }
       }
       wire(MP.join(gameId, room)); // Phase 0: zuerst Beitreten versuchen
-      outer.close = function () { closedByUs = true; if (inner) inner.close(); outer._setStatus("closed"); };
+      outer.close = function () { closedByUs = true; if (retryT) clearTimeout(retryT); if (inner) inner.close(); settle(); outer._setStatus("closed"); };
       return outer;
     }
   };
