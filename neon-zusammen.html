@@ -66,6 +66,7 @@ if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.repl
 </div>
 <button id="stationBack" style="display:none">← Wildnis</button>
 <script src="/js/vendor/three.min.js"></script>
+<script src="/js/vendor/GLTFLoader.js"></script>
 <script src="/js/vendor/peerjs.min.js"></script>
 <script src="/js/mp.js"></script>
 <script>
@@ -128,17 +129,34 @@ var gems=[];function gem(x,z){var m=new THREE.Mesh(new THREE.OctahedronGeometry(
 gem(-8,-6);gem(8,-14);gem(0,-22);gem(-8,-36);gem(8,-46);gem(0,-58);
 
 /* ---------- Die zwei Figuren ---------- */
-function mkChar(main,accent){var g=new THREE.Group();
-  var body=new THREE.Mesh(new THREE.CylinderGeometry(0.28,0.34,1.0,10),M(main,accent,0.5));body.position.y=0.7;g.add(body);
-  var head=new THREE.Mesh(new THREE.SphereGeometry(0.25,12,10),M(0xffe0c0,0x664422,0.15));head.position.y=1.42;g.add(head);
-  var crown=new THREE.Mesh(new THREE.ConeGeometry(0.18,0.3,6),M(accent,accent,0.9));crown.position.y=1.72;g.add(crown);
-  var lt=new THREE.PointLight(accent,0.45,5);lt.position.y=1.5;g.add(lt);
+var _charMix=[]; /* Animations-Mixer der beiden Anime-Figuren */
+function mkChar(main,accent,glb){var g=new THREE.Group();
+  var ph=new THREE.Group(); /* Platzhalter bis das GLB geladen ist */
+  var body=new THREE.Mesh(new THREE.CylinderGeometry(0.28,0.34,1.0,10),M(main,accent,0.5));body.position.y=0.7;ph.add(body);
+  var head=new THREE.Mesh(new THREE.SphereGeometry(0.25,12,10),M(0xffe0c0,0x664422,0.15));head.position.y=1.42;ph.add(head);
+  g.add(ph);
+  var lt=new THREE.PointLight(accent,0.6,5.5);lt.position.y=1.4;g.add(lt); /* 🔥/💧 Aura-Licht */
   var ring=new THREE.Mesh(new THREE.RingGeometry(0.44,0.56,20),new THREE.MeshBasicMaterial({color:accent,transparent:true,opacity:0.0,side:THREE.DoubleSide}));
   ring.rotation.x=-Math.PI/2;ring.position.y=0.05;g.add(ring);g.userData.ring=ring;
-  scene.add(g);return g;}
+  scene.add(g);
+  if(THREE.GLTFLoader)new THREE.GLTFLoader().load("/models/"+glb,function(gl){
+    var o=gl.scene;o.updateMatrixWorld(true);
+    var miny=1e9,maxy=-1e9,bn=0,V=new THREE.Vector3();
+    o.traverse(function(n){if(n.isSkinnedMesh&&n.skeleton){n.skeleton.bones.forEach(function(bo){bo.getWorldPosition(V);if(V.y<miny)miny=V.y;if(V.y>maxy)maxy=V.y;bn++;});}});
+    var hb=(bn&&maxy>miny)?(maxy-miny):0;
+    var sc=(hb>0.3)?Math.max(0.15,Math.min(4,1.7/hb)):0.95;o.scale.setScalar(sc); /* alle GLEICH gross -> bleiben im Bild */
+    var acc=new THREE.Color(accent);
+    o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;
+      if(n.material&&n.material.emissive){n.material=n.material.clone();n.material.emissive.copy(acc);n.material.emissiveIntensity=0.35;}}}); /* Feuer/Wasser-Schimmer */
+    g.remove(ph);g.add(o);
+    if(gl.animations&&gl.animations.length){var mx=new THREE.AnimationMixer(o);
+      var idle=gl.animations.find(function(a){return /idle/i.test(a.name);})||gl.animations[0];
+      mx.clipAction(idle).play();_charMix.push(mx);}
+  },undefined,function(){}); /* Fehler -> Platzhalter bleibt sichtbar */
+  return g;}
 var chars=[
-  {g:mkChar(0xff7a40,0xff5020),x:-2,z:2,name:"🔥 Ember",id:"ember"},
-  {g:mkChar(0x40a8ff,0x30e0ff),x:2,z:2,name:"💧 Aqua",id:"aqua"}
+  {g:mkChar(0xff7a40,0xff5020,"anime_warrior.glb"),x:-2,z:2,name:"🔥 Ember",id:"ember"},
+  {g:mkChar(0x40a8ff,0x30e0ff,"anime_mage.glb"),x:2,z:2,name:"💧 Aqua",id:"aqua"}
 ];
 var active=0,gemN=0,room=1,running=false,won=false,t0=0;
 var NETON=false,mySlot=0,net=null,rt={x:2,z:2},coopWait=false;
@@ -270,6 +288,7 @@ var lastT=performance.now(),sendT=0;
 var _rafId=0;
 function frame(now){_rafId=requestAnimationFrame(frame);
   var dt=Math.min(0.05,(now-lastT)/1000)||0.016;lastT=now;var t=now*0.001;
+  for(var _mi=0;_mi<_charMix.length;_mi++)_charMix[_mi].update(dt);
   for(var fi=0;fi<torches.length;fi++){var tc=torches[fi];
     tc.fl.scale.setScalar(1+Math.sin(t*9+tc.ph)*0.15);tc.lt.intensity=0.5+Math.sin(t*11+tc.ph)*0.15;}
   for(var gi=0;gi<gems.length;gi++){var gm=gems[gi];if(gm.got)continue;
