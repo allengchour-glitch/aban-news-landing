@@ -992,7 +992,7 @@ function spawnMonster(forceId,fx,fz){ /* ⚔️ W4: optional forceId/fx/fz (nur 
       o.scale.setScalar(k);
       o.position.set(xx,groundH(xx,zz)-bb.min.y*k,zz);scene.add(o);
       var rig=mobRig(o,g.animations); /* ⚔️ W4: Attack/Walk/Idle-Rig */
-      monsters.push({mesh:o,x:xx,z:zz,hp:Math.round(MM.hp*(1+Math.min(1.0,nights*0.08))),maxhp:Math.round(MM.hp*(1+Math.min(1.0,nights*0.08))),dmg:MM.dmg,role:MM.role,t:Math.random()*6,spd:MM.spd,baseScale:k,kind:MM.id,walk:true,fly:false,wings:null,rig:rig});
+      monsters.push({mesh:o,x:xx,z:zz,hp:Math.round(MM.hp*(1+Math.min(1.0,nights*0.08))),maxhp:Math.round(MM.hp*(1+Math.min(1.0,nights*0.08))),dmg:MM.dmg,role:MM.role,t:Math.random()*6,spd:MM.spd,baseScale:k,kind:MM.id,walk:true,fly:false,wings:null,rig:rig,yOff:-bb.min.y*k}); /* G6: Fuß-Erdung persistieren */
       if(rig)setAnim(rig,rig.actions.walk?"walk":"idle",0);
       if(typeof updWaveHud==="function")updWaveHud();
     },undefined,function(){});})(M,x,z);
@@ -1018,7 +1018,7 @@ function spawnGlbBoss(file,th,label,bhp,x,z,bspd){ /* 👑 W4: Mini-Boss aus mn_
     var k=Math.max(0.02,Math.min(12,th/bh));o.scale.setScalar(k);
     o.position.set(x,groundH(x,z)-bb.min.y*k,z);scene.add(o);
     var rig=mobRig(o,g.animations);
-    monsters.push({mesh:o,x:x,z:z,hp:bhp,maxhp:bhp,t:0,boss:true,baseScale:k,walk:true,kind:file.replace(".glb",""),spd:bspd||2.4,rig:rig,lbl:label});
+    monsters.push({mesh:o,x:x,z:z,hp:bhp,maxhp:bhp,t:0,boss:true,baseScale:k,walk:true,kind:file.replace(".glb",""),spd:bspd||2.4,rig:rig,lbl:label,yOff:-bb.min.y*k}); /* G6 */
     if(rig)setAnim(rig,rig.actions.walk?"walk":"idle",0);
   },undefined,function(){spawnSeraph(x,z,bhp);});} /* GLB scheitert -> Fallback-Boss statt bosslose Nacht */
 function bossEntrance(x,z){ /* 👑 W7: epischer Boss-Auftritt — Screen-Flash + Boden-Schockringe + tiefer Klang. KEIN rnd() → koop-deterministisch. */
@@ -1051,7 +1051,7 @@ function spawnBoss(){ // 🐉 Nacht-Boss — Rotation: Urdrache / 💀 Knochenk�
       var k=Math.max(0.02,Math.min(12,6.5/bh));o.scale.setScalar(k);
       o.position.set(xx,groundH(xx,zz)-bb.min.y*k,zz);scene.add(o);
       var rigD=mobRig(o,g.animations); /* ⚔️ W4 */
-      monsters.push({mesh:o,x:xx,z:zz,hp:hh2,maxhp:hh2,t:Math.random()*6,boss:true,baseScale:k,walk:true,kind:"drache2",spd:2.6,rig:rigD,lbl:"🐲 URDRACHE"});
+      monsters.push({mesh:o,x:xx,z:zz,hp:hh2,maxhp:hh2,t:Math.random()*6,boss:true,baseScale:k,walk:true,kind:"drache2",spd:2.6,rig:rigD,lbl:"🐲 URDRACHE",yOff:-bb.min.y*k}); /* G6 */
       if(rigD)setAnim(rigD,rigD.actions.walk?"walk":"idle",0);
     },undefined,function(){spawnSeraph(xx,zz,hh2);});
     var blD=document.getElementById("bossLbl");if(blD)blD.textContent="🐲 URDRACHE";
@@ -1164,13 +1164,13 @@ function updMonsters(dt){
     var _bsc=e.baseScale||(slimeProto?2:1);
     if(e.walk){ // feste Kreaturen (inkl. Drachen-Boss): laufen, zum Spieler gedreht, leichtes Wippen — kein Squash
       var fy=e.fly?(2.4+Math.sin(e.t*3)*0.4):(e.rig?0:Math.abs(Math.sin(e.t*8))*0.12); /* geriggte: Clip statt Wippen */
-      e.mesh.position.set(e.x,groundH(e.x,e.z)+fy,e.z);
+      e.mesh.position.set(e.x,groundH(e.x,e.z)+fy+(e.yOff||0),e.z); /* G6: Fuß-Erdung nicht verwerfen */
       e.mesh.rotation.y=Math.atan2(dx,dz);
       e.mesh.rotation.x=(e.kbT>0)?-0.25*Math.min(1,e.kbT/0.28):0; /* lehnt sich beim Rückstoß zurück */
       if(e.hitPop>0){e.hitPop=Math.max(0,e.hitPop-dt);e.mesh.scale.setScalar(_bsc*(1+e.hitPop*1.6));}else e.mesh.scale.setScalar(_bsc);
       if(e.wings){var fl=Math.sin(e.t*14)*0.7;e.wings[0].rotation.y=fl;e.wings[1].rotation.y=-fl;}
     }else{ // Slime/Boss: hüpfen + squash
-      e.mesh.position.set(e.x,groundH(e.x,e.z)+Math.abs(Math.sin(e.t*6))*0.25*_bsc,e.z);
+      e.mesh.position.set(e.x,groundH(e.x,e.z)+Math.abs(Math.sin(e.t*6))*0.25*_bsc+(e.yOff||0),e.z); /* G6 */
       var sc=_bsc*(1+Math.sin(e.t*6)*0.08);if(e.hitPop>0){e.hitPop=Math.max(0,e.hitPop-dt);sc*=1+e.hitPop*1.6;}e.mesh.scale.set(sc,sc*(1-Math.sin(e.t*6)*0.12),sc);
     }
   }
@@ -2525,7 +2525,7 @@ function decorateWorld(){
     var w=new THREE.Mesh(new THREE.CircleGeometry(r,32),lwm);
     w.rotation.x=-Math.PI/2;w.position.set(p.x,gy+0.06,p.z);scene.add(w);
     window._lakes=(window._lakes||[]);window._lakes.push({x:p.x,z:p.z,r:r,gy:gy}); // für Phase-2-Boote
-    var ring=new THREE.Mesh(new THREE.RingGeometry(r,r+1.4,32),new THREE.MeshBasicMaterial({color:0x4fe0e8,transparent:true,opacity:0.4,side:THREE.DoubleSide}));ring.rotation.x=-Math.PI/2;ring.position.set(p.x,gy+0.09,p.z);scene.add(ring);
+    var ring=new THREE.Mesh(new THREE.RingGeometry(r-0.9,r+0.3,32),new THREE.MeshBasicMaterial({color:0x4fe0e8,transparent:true,opacity:0.45,side:THREE.DoubleSide}));ring.rotation.x=-Math.PI/2;ring.position.set(p.x,gy+0.12,p.z);scene.add(ring); /* G7: Ring knapp INNEN auf der Wasserfläche (statt am steigenden Ufer versinken) */
     for(var re=0;re<16;re++){var ra=re/16*6.28,rx=p.x+Math.cos(ra)*(r+0.4),rz=p.z+Math.sin(ra)*(r+0.4);var reed=new THREE.Mesh(new THREE.ConeGeometry(0.07,1.1,4),new THREE.MeshLambertMaterial({color:0x2e8a50}));reed.position.set(rx,groundH(rx,rz)+0.5,rz);reed.rotation.z=(rnd()-.5)*0.3;scene.add(reed);}
     for(var lp=0;lp<6;lp++){var la=rnd()*6.28,lr=rnd()*r*0.8,lx=p.x+Math.cos(la)*lr,lz=p.z+Math.sin(la)*lr;var pad=new THREE.Mesh(new THREE.CircleGeometry(0.7,7),new THREE.MeshLambertMaterial({color:0x3a8a4a,side:THREE.DoubleSide}));pad.rotation.x=-Math.PI/2;pad.position.set(lx,gy+0.1,lz);scene.add(pad);}
     // 🪷 echte Seerosen-Modelle auf dem Wasser
@@ -2549,6 +2549,7 @@ function decorateWorld(){
       if(bm2){bm2.position.set(bx,groundH(bx,bz),bz);scene.add(bm2);if(typeof regSway==="function")regSway(bm2,0.07,1.4);}}})();}
   // ⛰️ Berge am Kartenrand (Kulisse ringsum)
   var rockM=new THREE.MeshLambertMaterial({color:0x6a6a74,flatShading:true}),snowM=new THREE.MeshLambertMaterial({color:0xeef2ff,flatShading:true});
+  rockM.fog=false;snowM.fog=false; /* G7: Berge liegen jenseits fog.far (360) → ohne Nebel-Ausblendung sichtbar am Horizont */
   for(var mt=0;mt<Math.round(16);mt++){var ma=mt/16*6.28+rnd()*0.15,mrd=MAP/2-18;var mx=Math.cos(ma)*mrd,mz=Math.sin(ma)*mrd;
     var mh=34+rnd()*46,mr=20+rnd()*18;
     var mtn=new THREE.Mesh(new THREE.ConeGeometry(mr,mh,6+((rnd()*3)|0),1),rockM);mtn.position.set(mx,groundH(mx,mz)+mh/2-6,mz);mtn.rotation.y=rnd()*6.28;mtn.castShadow=true;scene.add(mtn);
@@ -3139,7 +3140,7 @@ function nextBounty(){var r=mulberry32(((day|0)*31+(bountyN|0))>>>0||1);
     function(){var g=10+((r()*3)|0)*5;return{t:"Erlege "+g+" Monster ⚔️",base:kills,cur:function(){return kills;},goal:g};},
     function(){var g=2;return{t:"Öffne "+g+" Truhen/Ruinen 📦",base:lootOpenedTotal,cur:function(){return lootOpenedTotal;},goal:g};},
     function(){var g=20+((r()*3)|0)*10;return{t:"Sammle "+g+" Holz 🪵",base:totalWood,cur:function(){return totalWood;},goal:g};},
-    function(){return{t:"Überlebe Welle "+(waveNum+1)+" 🌙",base:waveNum,cur:function(){return waveNum;},goal:1};},
+    function(){return{t:"Überlebe die nächste Nacht 🌙",base:day,cur:function(){return day;},goal:1};}, /* G8: an day (steigt bei Nacht-ÜBERLEBEN/Dämmerung), nicht waveNum (steigt bei Wellen-START → sofort erfüllt) */
     function(){var g=6+((r()*2)|0)*3;return{t:"Verdiene "+g+" 💎 in der Arena ⚔️",base:qProg.arenaCr|0,cur:function(){return qProg.arenaCr|0;},goal:g};}
   ];
   var b=pool[(r()*pool.length)|0]();b.rw=5+Math.min(10,bountyN);return b;}
@@ -3305,7 +3306,7 @@ function doDodge(){
   var l=Math.hypot(mx,my);
   if(l>0.15){var dcr=camRel(mx/l,my/l);dodgeVX=dcr.x;dodgeVZ=dcr.z;} /* kamera-relativ wie das Laufen */
   else{dodgeVX=Math.sin(player.rotation.y);dodgeVZ=Math.cos(player.rotation.y);} /* im Stand: nach VORN rollen */
-  dodgeT=0.26;dodgeCd=1.4;sfx(760,0.09,"triangle",0.04,260);
+  dodgeT=0.38;dodgeCd=0.9;sfx(760,0.09,"triangle",0.04,260); /* G5: längeres i-Frame-Fenster + kürzerer Cooldown (reaktiver) */
   heroAct("dodge",2.4);
   burst(player.position.x,player.position.y+0.7,player.position.z,0x7de3ff,8);
 }
@@ -3322,8 +3323,8 @@ function updDodge(dt){
   else{dodgeT=0;}
   if(Math.random()<0.5)burst(nx,player.position.y+0.4,nz,0x9fe8ff,2);
 }
-var _lowT=0;
-function damagePlayer(d,src){if(dead)return;if(dodgeT>0)return;sfx(120,0.14,"sawtooth",0.06);/* 💨 Rolle = unverwundbar */d=Math.max(1,d-((ARMOR_DEF[equip.armor]||0)+PERK.def));hp-=d;if(typeof floatText==="function")floatText(player.position.x,player.position.y+2.4,player.position.z,"-"+Math.round(d),"#ff5c6a");hurtFlash();if(src)dmgDir(src);heroAct("hit",1.4);if(hp<=0){hp=0;playerDie();}else if(hp/maxHp<=0.25&&performance.now()-_lowT>2600){_lowT=performance.now();sfx(660,0.07,"sine",0.05);setTimeout(function(){sfx(520,0.09,"sine",0.05);},140);} /* 🚨 Herzschlag-Warnton bei kritischem HP */hpUpd();}
+var _lowT=0,_hurtT=0;
+function damagePlayer(d,src){if(dead)return;if(dodgeT>0)return;if(performance.now()-_hurtT<420)return;_hurtT=performance.now();/* G5: kurze Treffer-Unverwundbarkeit → kein Rudel-Burst-Tod in 1s */sfx(120,0.14,"sawtooth",0.06);/* 💨 Rolle = unverwundbar */d=Math.max(1,d-((ARMOR_DEF[equip.armor]||0)+PERK.def));hp-=d;if(typeof floatText==="function")floatText(player.position.x,player.position.y+2.4,player.position.z,"-"+Math.round(d),"#ff5c6a");hurtFlash();if(src)dmgDir(src);heroAct("hit",1.4);if(hp<=0){hp=0;playerDie();}else if(hp/maxHp<=0.25&&performance.now()-_lowT>2600){_lowT=performance.now();sfx(660,0.07,"sine",0.05);setTimeout(function(){sfx(520,0.09,"sine",0.05);},140);} /* 🚨 Herzschlag-Warnton bei kritischem HP */hpUpd();}
 // 💥 Skill (RPG-Fusion aus realm): Schockwelle — AoE-Schaden auf alle nahen Monster, ab Level 2, Cooldown
 var skillCd=0,SKILL_CD=7,_skillShown=false;
 function useSkill(){
@@ -4192,7 +4193,7 @@ var BADGES=[
   {id:"day7",    n:"Eine Woche wild",  ic:"📅", t:function(){return day>=7;}},
   {id:"lvl5",    n:"Aufsteiger",       ic:"⭐", t:function(){return level>=5;}},
   {id:"lvl10",   n:"Held der Wildnis", ic:"🌟", t:function(){return level>=10;}},
-  {id:"wood100", n:"Holzfäller",       ic:"🪵", t:function(){return (inv.wood|0)>=100;}},
+  {id:"wood100", n:"Holzfäller",       ic:"🪵", t:function(){return (inv.wood|0)>=100||totalWood>=100;}}, /* G8: kumulativ (totalWood), nicht nur Ist-Bestand */
   {id:"build5",  n:"Baumeister",       ic:"🔨", t:function(){return structures.length>=5;}},
   {id:"boss1",   n:"Drachentöter",     ic:"🐉", t:function(){return (window.__bossKills|0)>=1;}},
   /* 🎯 Stations-Abzeichen (Wildnis-Fusion): erster abgeschlossener Lauf je Station */
@@ -4200,7 +4201,7 @@ var BADGES=[
   {id:"springer",n:"Springer",         ic:"🏃", t:function(){return !!stationsDone().springer;}},
   {id:"raser",   n:"Raser",            ic:"🏎️", t:function(){return !!stationsDone().raser;}},
   {id:"gladiator",n:"Gladiator",       ic:"⚔️", t:function(){return !!stationsDone().gladiator;}},
-  {id:"krieger", n:"Koloss-Bezwinger", ic:"🏰", t:function(){return !!stationsDone().krieger;}}, /* 🏰 Dungeon */
+  {id:"krieger", n:"Koloss-Bezwinger", ic:"🏰", t:function(){return !!qProg.koloss;}}, /* G8: nur bei echtem Boss-Sieg (qProg.koloss), nicht bei blossem Dungeon-Ende */
   {id:"partner", n:"Seelenverwandt",   ic:"🤝", t:function(){return !!stationsDone().partner;}}, /* 🤝 Tempel der Zwei */
   /* 📜 W3-Folge-Quest-Abzeichen */
   {id:"qflug",   n:"Stations-Besucher",ic:"🛫", t:function(){return !!qProg.flug;}},
