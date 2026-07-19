@@ -67,6 +67,7 @@ if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.repl
 </div>
 <button id="stationBack" style="display:none">← Wildnis</button>
 <script src="/js/vendor/three.min.js"></script>
+<script src="/js/vendor/GLTFLoader.js"></script>
 <script>
 (function(){
 "use strict";
@@ -174,13 +175,28 @@ for(var ti=0;ti<8;ti++){var ta=ti/8*Math.PI*2;torch(Math.cos(ta)*11,0,CHZ+Math.s
 var GEM_TOTAL=gems.length; /* nach allen gem()-Aufrufen */
 /* ---------- Spieler ---------- */
 var player=new THREE.Group();scene.add(player);
-(function(){var body=new THREE.Mesh(new THREE.CylinderGeometry(0.3,0.36,1.1,10),M(0x6ac8f0,0x2a6a99,0.55));
-  body.position.y=0.75;player.add(body);
-  var cape=new THREE.Mesh(new THREE.BoxGeometry(0.56,0.95,0.08),M(0x9a4ae0,0x40208a,0.5));cape.position.set(0,0.85,0.24);player.add(cape); /* 🦸 Umhang */
-  var belt=new THREE.Mesh(new THREE.CylinderGeometry(0.37,0.37,0.12,10),M(0xffce8a,0x8a5a20,0.4));belt.position.y=0.62;player.add(belt);
-  var head=new THREE.Mesh(new THREE.SphereGeometry(0.26,12,10),M(0xd8dcf0,0x555a80,0.35));head.position.y=1.5;player.add(head);
-  var visor=new THREE.Mesh(new THREE.BoxGeometry(0.4,0.09,0.12),M(0x7de3ff,0x40b0ff,1));visor.position.set(0,1.52,-0.2);player.add(visor); /* ⚔️ Helm-Visier */
-  var lt=new THREE.PointLight(0x9fd0ff,0.5,7);lt.position.y=1.6;player.add(lt);})();
+var heroMix=null,heroRig=null;
+/* 🎌 Anime-Held „Kai" (statt Klötzchen). Bone-basierte Höhen-Normierung auf einheitliche 1.7u
+   (setFromObject ist bei skinned GLBs unzuverlässig — dieselbe Lehre wie in der Wildnis). */
+(function(){
+  var ph=new THREE.Group(); /* Platzhalter bis GLB da ist */
+  var b=new THREE.Mesh(new THREE.CylinderGeometry(0.3,0.36,1.1,10),M(0x6ac8f0,0x2a6a99,0.55));b.position.y=0.75;ph.add(b);
+  var h=new THREE.Mesh(new THREE.SphereGeometry(0.26,12,10),M(0xffe0c0,0x664422,0.15));h.position.y=1.5;ph.add(h);
+  player.add(ph);
+  var lt=new THREE.PointLight(0x9fd0ff,0.5,7);lt.position.y=1.6;player.add(lt);
+  if(THREE.GLTFLoader)new THREE.GLTFLoader().load("/models/anime_hero.glb",function(g){
+    var o=g.scene;o.updateMatrixWorld(true);
+    var miny=1e9,maxy=-1e9,bn=0,V=new THREE.Vector3();
+    o.traverse(function(n){if(n.isSkinnedMesh&&n.skeleton){n.skeleton.bones.forEach(function(bo){bo.getWorldPosition(V);if(V.y<miny)miny=V.y;if(V.y>maxy)maxy=V.y;bn++;});}});
+    var hb=(bn&&maxy>miny)?(maxy-miny):0;
+    var sc=(hb>0.3)?Math.max(0.15,Math.min(4,1.7/hb)):0.95;o.scale.setScalar(sc);
+    o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;}});
+    player.remove(ph);player.add(o);
+    if(g.animations&&g.animations.length){heroMix=new THREE.AnimationMixer(o);
+      var idle=g.animations.find(function(a){return /idle/i.test(a.name);})||g.animations[0];
+      heroRig=heroMix.clipAction(idle);heroRig.play();}
+  },undefined,function(){}); /* Fehler -> Platzhalter bleibt */
+})();
 var px=0,py=0,pz=0,vy=0,onG=true,jumps=0,coyote=0,jBuf=0,ckpt=0,invT=0,gy=0,stepT=0,secFound=false;
 var hearts=4,gemN=0,stage=1,running=false,won=false,dead=false;
 var kx=0,kz=0; /* Eingabe */
@@ -350,6 +366,7 @@ var lastT=performance.now();
 function frame(now){requestAnimationFrame(frame);
   var dt=Math.min(0.05,(now-lastT)/1000)||0.016;lastT=now;
   var t=now*0.001;
+  if(heroMix)heroMix.update(dt);
   for(var fi=0;fi<torches.length;fi++){var tc=torches[fi];
     tc.fl.scale.setScalar(1+Math.sin(t*9+tc.ph)*0.16);tc.lt.intensity=(tc.lit?0.95:0.75)+Math.sin(t*11+tc.ph)*0.22;}
   amb.color.lerp(bossOn?_ambBoss:_ambBase,Math.min(1,dt*1.2)); /* 🔴 Kammer-Stimmung */
