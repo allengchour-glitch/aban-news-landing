@@ -78,6 +78,15 @@ canvas{display:block;touch-action:none}
 /* 💨/⚡ hatten keine Position und klebten oben links über der Uhr (Polier-Pass) */
 #bDodge{right:calc(196px + env(safe-area-inset-right));bottom:calc(64px + env(safe-area-inset-bottom));width:56px;height:56px;border-color:#9fe8ff;color:#dff;font-size:1.4rem}
 #bBolt{right:calc(196px + env(safe-area-inset-right));bottom:calc(136px + env(safe-area-inset-bottom));width:56px;height:56px;border-color:#ffe08a;color:#ffd;font-size:1.4rem}
+/* G4: schmale Handys (≤430px) — 💨/⚡ nicht mehr über dem Lauf-Joystick, Wellen-Banner unter die Uhr, Inventar linksbündig */
+@media(max-width:430px){
+  #stick{width:100px;height:100px}
+  #nub{left:28px;top:28px;width:44px;height:44px}
+  #bDodge{right:calc(174px + env(safe-area-inset-right));width:52px;height:52px}
+  #bBolt{right:calc(174px + env(safe-area-inset-right));width:52px;height:52px}
+  #waveHud{top:calc(98px + env(safe-area-inset-top))}
+  #invBar{left:calc(10px + env(safe-area-inset-left));transform:none}
+}
 /* Menü/Sound-Knöpfe oben rechts unter Inventar */
 #sysRow{position:absolute;top:calc(8px + env(safe-area-inset-top));right:12px;display:flex;gap:8px;pointer-events:auto}
 .sysbtn{width:44px;height:44px;border-radius:12px;background:rgba(20,30,60,.6);border:1px solid rgba(120,200,255,.3);display:flex;align-items:center;justify-content:center;font-size:1.2rem;pointer-events:auto;cursor:pointer}
@@ -2003,7 +2012,7 @@ var DEFER_ASSETS=["sv_tent","sv_tent_canvas","sv_campfire","sv_campfire_fish","s
 /* ===================== 🎯 AKTIVITÄTS-STATIONEN (Wildnis-Fusion) =====================
    ✈️ Flugfeld / 🏃 Parcours / 🏎️ Rennstrecke / ⚔️ Arena — Portale zu neon-flug/jump/racer/survivor als Iframe-Overlay
    (Lebenspfad-Muster). Welt-Rendering pausiert solange offen (2 WebGL-Kontexte!), netTick läuft weiter. */
-var stations=[],nearStation=null,stationOpen=false,_stCur=-1,_stRewarded=false;
+var stations=[],nearStation=null,stationOpen=false,_stCur=-1,_stRewarded=false,_stRewardT=0; /* G2: Zeit-Lock statt Dauer-Latch */
 var _chkTex=null;
 function checkerTex(){if(_chkTex)return _chkTex;
   var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");
@@ -2083,19 +2092,28 @@ function openStation(i){
   var ov=document.getElementById("stOv");
   if(!ov){ov=document.createElement("div");ov.id="stOv";
     ov.style.cssText="position:fixed;inset:0;z-index:82;background:#06070f;display:none";
-    ov.innerHTML='<iframe id="stFrame" style="width:100%;height:100%;border:0" allow="fullscreen"></iframe>';
-    document.body.appendChild(ov);}
-  document.getElementById("stFrame").src=st.url+(st.url.indexOf("?")<0?"?":"&")+"station=1";
+    /* G1: immer sichtbarer Notausgang (vom Eltern-Fenster gezeichnet, über dem iframe) — kein Softlock mehr, wenn das Minispiel nicht lädt */
+    ov.innerHTML='<iframe id="stFrame" style="width:100%;height:100%;border:0" allow="fullscreen"></iframe>'+
+      '<button id="stExit" style="position:fixed;top:calc(8px + env(safe-area-inset-top));right:calc(8px + env(safe-area-inset-right));z-index:84;border:1px solid rgba(160,200,255,.5);background:rgba(12,18,34,.88);color:#cfe4ff;border-radius:12px;padding:9px 14px;font-weight:900;font-size:.95rem;cursor:pointer">✕ Wildnis</button>';
+    document.body.appendChild(ov);
+    document.getElementById("stExit").onclick=function(){closeStation();};}
+  var fr=document.getElementById("stFrame");
+  if(window._stLoadT)clearTimeout(window._stLoadT); /* alten Timer verwerfen */
+  fr.onload=function(){if(window._stLoadT){clearTimeout(window._stLoadT);window._stLoadT=null;}};
+  fr.onerror=function(){if(stationOpen){closeStation();announce("⚠️ Station nicht erreichbar","#ff8a6a");}};
+  window._stLoadT=setTimeout(function(){if(stationOpen){closeStation();announce("⚠️ Station lädt nicht — zurück in der Wildnis","#ff8a6a");}},8000); /* G1: 8s-Timeout gegen hängendes iframe */
+  fr.src=st.url+(st.url.indexOf("?")<0?"?":"&")+"station=1";
   ov.style.display="block";
   sfxSeq([[523],[659],[784]]);}
 function closeStation(){
-  if(!stationOpen)return;stationOpen=false;
-  var ov=document.getElementById("stOv");if(ov){ov.style.display="none";var fr=document.getElementById("stFrame");if(fr)fr.src="about:blank";}
+  if(!stationOpen)return;stationOpen=false;paused=false; /* G1: defensiv entpausen, sonst verdeckter Pause-Zustand */
+  if(window._stLoadT){clearTimeout(window._stLoadT);window._stLoadT=null;}
+  var ov=document.getElementById("stOv");if(ov){ov.style.display="none";var fr=document.getElementById("stFrame");if(fr){fr.onload=null;fr.onerror=null;fr.src="about:blank";}}
   var st=stations[_stCur];_stCur=-1;
   lastT=performance.now(); /* kein dt-Sprung nach der Pause */
   if(st)announce("🌲 Zurück in der Wildnis!");}
 function onStationDone(score,win){
-  if(_stRewarded||_stCur<0)return;_stRewarded=true;
+  if(_stCur<0)return;var _now=performance.now();if(_now-(_stRewardT||0)<1200)return;_stRewardT=_now; /* G2: entprellt nur Doppel-Sends desselben Game-Over; In-Station-„Nochmal" belohnt wieder */
   var st=stations[_stCur];if(!st)return;
   var cr=(st.badge==="gladiator"||st.badge==="krieger")
     ?Math.max(1,Math.min(12,1+Math.floor((score|0)/40))) /* ⚔️ Arena (Kills+Level·10): grösserer Einsatz, Cap 12 */
@@ -3935,7 +3953,7 @@ addEventListener("keydown",function(e){keys[e.key.toLowerCase()]=1;
   if(e.key==="Shift"){doDodge();}
   if(e.key.toLowerCase()==="c"){useBolt();}
   if(e.key==="Enter"&&buildMode&&ghost){confirmBuild();}
-  if(e.key==="Escape"){if(buildMode)closeBuild();else togglePause();}
+  if(e.key==="Escape"){if(stationOpen){closeStation();}else if(buildMode)closeBuild();else togglePause();} /* G1: Escape verlässt zuerst die Station (kein verdeckter Pause-Screen) */
 });
 addEventListener("keyup",function(e){keys[e.key.toLowerCase()]=0;});
 // Joystick
@@ -3964,10 +3982,12 @@ var rotId=null,rotLX=0;
 /* 🔍 Pinch-Zoom (2 Finger, Joystick-Finger zählt nicht mit); während Pinch pausiert der Kamera-Drag */
 var pinchIds=null,pinchD0=1,pinchZ0=1;
 function pinchDropTouch(e){if(!pinchIds)return;for(var i=0;i<e.changedTouches.length;i++){var id=e.changedTouches[i].identifier;if(id===pinchIds[0]||id===pinchIds[1]){pinchIds=null;return;}}}
-addEventListener("touchstart",function(e){if(!running)return;
+/* G3: gemeinsame Ausschlussliste für Kamera-Dreh/Pinch (angeglichen an den Joystick-Handler) — sonst dreht/zoomt Craften/UI-Tippen die Welt */
+var _NOROT=".btn,.sysbtn,#stick,#buildMenu,#craftMenu,#tradeMenu,#perkPick,#coopBox,#zoomBtns,#sysRow,#invBar,#emoteBar,#minimap,#ov,button,input";
+addEventListener("touchstart",function(e){if(!running||paused)return; /* G3: auch bei Pause keine Kamera-Grabs */
   var free=[];for(var j=0;j<e.touches.length;j++){var tt=e.touches[j];
     if(tt.identifier===stickId)continue;
-    if(tt.target&&tt.target.closest&&tt.target.closest(".btn,#buildMenu,#tradeMenu,#perkPick,#coopBox,#zoomBtns,#stick"))continue;
+    if(tt.target&&tt.target.closest&&tt.target.closest(_NOROT))continue;
     free.push(tt);}
   if(!pinchIds&&free.length>=2){ /* 2-Finger = Zoom, Drag-Logik pausiert */
     pinchIds=[free[0].identifier,free[1].identifier];
@@ -3975,7 +3995,7 @@ addEventListener("touchstart",function(e){if(!running)return;
     pinchZ0=camZoomT;rotId=null;return;}
   for(var i=0;i<e.changedTouches.length;i++){var t=e.changedTouches[i];
     if(t.identifier===stickId)continue;
-    if(t.clientX>innerWidth*0.4&&rotId===null&&pinchIds===null&&!(t.target&&t.target.closest&&t.target.closest(".btn,#buildMenu,#tradeMenu,#perkPick,#coopBox,#zoomBtns"))){rotId=t.identifier;rotLX=t.clientX;}}},{passive:true});
+    if(t.clientX>innerWidth*0.4&&rotId===null&&pinchIds===null&&!(t.target&&t.target.closest&&t.target.closest(_NOROT))){rotId=t.identifier;rotLX=t.clientX;}}},{passive:true});
 addEventListener("touchmove",function(e){
   if(pinchIds){var a=null,b=null;
     for(var j=0;j<e.touches.length;j++){var tt=e.touches[j];if(tt.identifier===pinchIds[0])a=tt;else if(tt.identifier===pinchIds[1])b=tt;}
@@ -4004,12 +4024,12 @@ function bindTap(id,fn){var b=document.getElementById(id);if(!b)return;b.addEven
   b.addEventListener("click",function(e){if(performance.now()-(b.__t||0)>500)harvest();});
 })();
 bindTap("bSkill",useSkill);bindTap("bThrow",doThrow);bindTap("bDodge",doDodge);bindTap("bBolt",useBolt);
-(function(){var mb=document.getElementById("muteBtn2");if(mb){mb.textContent=muted?"🔇":"🔊";mb.onclick=function(){toggleMute();};}})();bindTap("wMeat",eat);bindTap("wBerry",eat); // 🍖 Essen: Vorrats-Chip antippen (Desktop: R)
+(function(){var mb=document.getElementById("muteBtn2");if(mb){mb.textContent=muted?"🔇":"🔊";mb.onclick=function(){toggleMute();};}var bs=document.getElementById("bSound");if(bs)bs.textContent=muted?"🔇":"🔊";})();bindTap("wMeat",eat);bindTap("wBerry",eat); /* G4: persistierten Mute-Stand anzeigen */ // 🍖 Essen: Vorrats-Chip antippen (Desktop: R)
 bindTap("bBuild",function(){if(buildMode)closeBuild();else openBuild();});
 bindTap("zoomIn",function(){setZoom(camZoomT*0.85);});  /* 🔍 näher ran */
 bindTap("zoomOut",function(){setZoom(camZoomT*1.18);}); /* 🔍 weiter weg */
 bindTap("bConfirm",function(){if(ghost)confirmBuild();else closeBuild();});
-document.getElementById("bSound").onclick=function(){muted=!muted;this.textContent=muted?"🔇":"🔊";};
+document.getElementById("bSound").onclick=function(){toggleMute();}; /* G4: über toggleMute → persistiert in nw_mute */
 document.getElementById("bMenu").onclick=function(){togglePause();};
 
 // ---------- Kamera ----------
@@ -4161,7 +4181,8 @@ function updMusic(dt){try{
 }catch(e){}}
 function sfxSeq(seq){seq.forEach(function(sq,i){setTimeout(function(){sfx(sq[0],sq[1]||0.12,sq[2]||"triangle",sq[3]||0.05);},i*95);});}
 function toggleMute(){muted=!muted;lsSet("nw_mute",muted?"1":"0");
-  var mb=document.getElementById("muteBtn2");if(mb)mb.textContent=muted?"🔇":"🔊";}
+  var mb=document.getElementById("muteBtn2");if(mb)mb.textContent=muted?"🔇":"🔊";
+  var bs=document.getElementById("bSound");if(bs)bs.textContent=muted?"🔇":"🔊";} /* G4: sichtbaren Knopf mitführen */
 // 🏅 ERFOLGE (Abzeichen) — einmalig, persistent, mit Announce (Sucht-Faktor)
 var BADGES=[
   {id:"kill1",   n:"Erster Sieg",      ic:"⚔️", t:function(){return kills>=1;}},
