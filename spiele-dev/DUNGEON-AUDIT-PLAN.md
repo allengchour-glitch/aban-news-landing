@@ -1,6 +1,6 @@
 # 🏰 Dungeon Audit — Plan (18 Batches, 72 bestätigt · Stand 2026-07-18)
 
-Umgesetzt: B1-B10 + B12 + B13 + B15 + B16 (Wildnis-Integration: 🏰-Badge krieger + partner + Koloss-Quest mit win-Flag; verifiziert __nw.simStation → koloss nur bei win=1). B17 (Endgame: rebalancierte Score-Formel #63 Sieg-Min 212/Tod-Max 56, Lauf-Timer #68 mm:ss, Bestzeit in nd-best + 🏆-Feedback + Sieg-Arpeggio). B9/#30 (Floating-Joystick: springt zum Daumen in der linken Bildhälfte, Aktionsknöpfe rechts unberührt). OFFEN: B11 (Boss-Ostinato), B14 (Perf med), B18. Anker vor Anwendung grep-verifizieren (Zeilennummern = Audit-Stand, driften durch Umsetzung).
+Umgesetzt: B1-B10 + B12 + B13 + B15 + B16 (Wildnis-Integration: 🏰-Badge krieger + partner + Koloss-Quest mit win-Flag; verifiziert __nw.simStation → koloss nur bei win=1). B17 (Endgame: rebalancierte Score-Formel #63 Sieg-Min 212/Tod-Max 56, Lauf-Timer #68 mm:ss, Bestzeit in nd-best + 🏆-Feedback + Sieg-Arpeggio). B9/#30 (Floating-Joystick: springt zum Daumen in der linken Bildhälfte, Aktionsknöpfe rechts unberührt), B11 (Höhlen-Ambiente-Drone + Tropfen ab Start #21, Boss-Bass-Ostinato ab dem Aufstehen + Enrage-Tempo + Wut-Riff #23; verifiziert bossOn=true, 0 Fehler). OFFEN: B14 (Perf med), B18. Anker vor Anwendung grep-verifizieren (Zeilennummern = Audit-Stand, driften durch Umsetzung).
 
 ---
 B1 · Bug-Fixes Kern (Boss-Schaden, Arm-Hänger, groundAt)
