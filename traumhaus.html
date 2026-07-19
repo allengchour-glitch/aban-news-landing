@@ -551,7 +551,8 @@ var dorfFenster=[];
       fe.position.set(-w/2+1+fx*1.5,1.35,d/2+0.04);g.add(fe);dorfFenster.push(fe.material);}
     var kamin=new THREE.Mesh(new THREE.BoxGeometry(0.45,1.1,0.45),stdMat(0x8a7a6a,0.8));
     kamin.position.set(-w/2+0.9,h+0.9,-d/4);kamin.castShadow=true;g.add(kamin);
-    g.position.set(x,0,z);g.rotation.y=rotY;scene.add(g);}
+    g.position.set(x,0,z);g.rotation.y=rotY;scene.add(g);
+    (window._immo=window._immo||[]).push({x:x,z:z,grp:g,preis:1800+(seed%5)*600,h:h});}
   // Haeuserzeilen: hinter Nord-/Suedstrasse + entlang der Querstrassen
   var seed=1;
   [-38,-26,-14,-2,10,22,34].forEach(function(hx){haus(hx+((seed*3)%3),-SZ-19,0,seed++);});
@@ -662,6 +663,32 @@ var dorfFenster=[];
 })();
 // Putz-Struktur auf alle Nachbarhaus-Waende (getoent je Hausfarbe)
 ladeTex("textures/th/putz.jpg",2.2,1.2,function(t){(window._wandMats||[]).forEach(function(m){m.map=t;m.needsUpdate=true;});});
+// ---- Immobilien-Imperium: Nachbarhaeuser kaufen, taeglich Miete kassieren ----
+var immo=[]; // gekaufte Haus-Indizes
+function immoFlagge(hs){var fg=new THREE.Group();
+  var mast=new THREE.Mesh(new THREE.CylinderGeometry(0.04,0.04,1.1,5),new THREE.MeshStandardMaterial({color:0x8a8a90}));mast.position.y=0.55;fg.add(mast);
+  var fl=new THREE.Mesh(new THREE.PlaneGeometry(0.7,0.4),new THREE.MeshStandardMaterial({color:0xffd23a,emissive:0xcc9900,emissiveIntensity:0.35,side:THREE.DoubleSide}));
+  fl.position.set(0.35,0.9,0);fg.add(fl);
+  fg.position.set(hs.x,hs.h+1.2,hs.z);scene.add(fg);hs.flagge=fg;}
+function updImmo(dt){
+  if(MPs&&!mpHost)return;
+  var H=window._immo;if(!H)return;
+  window._immoT=(window._immoT||0)-dt;if(window._immoT>0)return;window._immoT=0.4;
+  var me=sims[0],best=-1,bd=6;
+  for(var i=0;i<H.length;i++){if(immo.indexOf(i)>=0)continue;
+    var d=Math.hypot(me.x-H[i].x,me.z-H[i].z);if(d<bd){bd=d;best=i;}}
+  var kb=document.getElementById("kaufBtn");
+  if(best>=0&&!fahren&&!buildMode){kb.style.display="block";kb.textContent="\uD83C\uDFE0 "+H[best].preis+" \u00A7";kb.dataset.idx=best;}
+  else kb.style.display="none";}
+document.addEventListener("DOMContentLoaded",function(){});
+(function(){var kb=document.createElement("button");kb.id="kaufBtn";
+  kb.style.cssText="position:fixed;left:12px;bottom:calc(234px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:14px;padding:12px 16px;font-size:1.05rem;font-weight:800;color:#fff;background:linear-gradient(135deg,#e8b04a,#c88a20);box-shadow:0 6px 20px rgba(160,110,20,.5);cursor:pointer";
+  document.body.appendChild(kb);
+  kb.onclick=function(){var i=+kb.dataset.idx,hs=window._immo&&window._immo[i];if(!hs||immo.indexOf(i)>=0)return;
+    if(geld<hs.preis){hint("\uD83D\uDCB8 Zu teuer \u2014 dir fehlen "+(hs.preis-geld)+" \u00A7");beep(200,.15,"sawtooth",.05);return;}
+    geld-=hs.preis;geldSend();immo.push(i);immoFlagge(hs);stats.immobilien=(stats.immobilien||0)+1;updHUD();
+    beep(660,.09,"square",.05);setTimeout(function(){beep(880,.11,"square",.05);},90);
+    hint("\uD83C\uDFE0\u2705 Haus gekauft! Ab morgen: +150 \u00A7 Miete pro Tag");};})();
 // ---- Verkehr: 6 fahrende Autos + Bus-Linie mit Haltestelle ----
 var verkehr=[],busRec=null;
 var _lichtTexW=null,_lichtTexR=null;
@@ -1525,7 +1552,7 @@ document.getElementById("edSell").onclick=function(){
   if(removeFurnAt(gx,gy)){netSend({t:"del",x:gx,y:gy});hint("💰 Verkauft (50% zurück)");}};
 document.getElementById("edX").onclick=editHide;
 function snapshot(){return {gw:GW,gh:GH,floors:floors,walls:Object.keys(walls).reduce(function(a,k){a[k]=walls[k].co?{t:walls[k].type,c:walls[k].co}:walls[k].type;return a;},{}),
-  furn:furn.map(function(f){return {id:f.id,x:f.gx,y:f.gy,r:f.rot,fid:f.fid,lv:f.lv||1,w:f.wachs||0};}),au:window.autoRec?{id:window.autoRec.id,x:window.autoRec.gx,y:window.autoRec.gy}:null,hu:haustier?{x:haustier.gx||10,y:haustier.gy||10}:null,qb:questBusy,we:wetter,tq:teamIdx,geld:geld,tag:tag,uhr:uhrzeit,rom:romantik,li:liebe,ve:verlobt,he:verheiratet,sk:skills,st:stats,ac:achDone,qi:questIdx,ki:kinder.map(function(k){return {n:k.name,a:k.alter,b:k.baby};})};}
+  furn:furn.map(function(f){return {id:f.id,x:f.gx,y:f.gy,r:f.rot,fid:f.fid,lv:f.lv||1,w:f.wachs||0};}),au:window.autoRec?{id:window.autoRec.id,x:window.autoRec.gx,y:window.autoRec.gy}:null,hu:haustier?{x:haustier.gx||10,y:haustier.gy||10}:null,qb:questBusy,we:wetter,tq:teamIdx,im:immo,geld:geld,tag:tag,uhr:uhrzeit,rom:romantik,li:liebe,ve:verlobt,he:verheiratet,sk:skills,st:stats,ac:achDone,qi:questIdx,ki:kinder.map(function(k){return {n:k.name,a:k.alter,b:k.baby};})};}
 function loadSnapshot(sn){
   var mx9=Math.round((GW-(sn.gw||18))/2),my9=Math.round((GH-(sn.gh||14))/2); // alte Saves mittig einpassen
   Object.keys(wallMeshes).forEach(function(k){scene.remove(wallMeshes[k]);});walls={};wallMeshes={};
@@ -1541,6 +1568,7 @@ function loadSnapshot(sn){
   if(sn.hu&&!haustier)applyFurn("hund",sn.hu.x+mx9,sn.hu.y+my9,0);
   if(sn.qb!==undefined){questBusy=!!sn.qb;if(questBusy)buergermeisterPending=true;}
   if(sn.we)setWetter(sn.we);applySaison();if(sn.tq!==undefined)teamIdx=sn.tq;
+  if(sn.im){immo=sn.im.slice();setTimeout(function(){immo.forEach(function(i){var hs=window._immo&&window._immo[i];if(hs&&!hs.flagge)immoFlagge(hs);});},400);}
   if(sn.geld!==undefined){geld=sn.geld;geldLast=geld;}if(sn.tag)tag=sn.tag;if(sn.uhr!==undefined)uhrzeit=sn.uhr;
   if(sn.rom!==undefined)romantik=sn.rom;if(sn.li!==undefined)liebe=sn.li;verlobt=!!sn.ve;verheiratet=!!sn.he;if(sn.sk)skills=sn.sk;if(sn.st)stats=sn.st;if(sn.ac)achDone=sn.ac;if(sn.qi!==undefined)questIdx=sn.qi;
   kinder.slice().forEach(function(k){scene.remove(k.mesh);});kinder=[];
@@ -3181,7 +3209,7 @@ function loop(now){
   var dt=Math.min(0.05,(now-last)/1000);last=now;
   if(running){
     // Uhr: 1 Spielminute = 0.5s (Host führt, Gast empfängt)
-    if(!MPs||mpHost){uhrzeit+=dt*40;if(uhrzeit>=1440){uhrzeit-=1440;tag++;rollWetter();applySaison();hint(SAISON[calcSaison()][0]+(wetter==="regen"?" · 🌧️ Regen":wetter==="schnee"?" · 🌨️ Schnee":""));}}
+    if(!MPs||mpHost){uhrzeit+=dt*40;if(uhrzeit>=1440){uhrzeit-=1440;tag++;if(immo.length){var miete=immo.length*150;geld+=miete;geldSend();updHUD();hint("\uD83C\uDFE0\uD83D\uDCB0 Mieteinnahmen: +"+miete+" \u00A7 ("+immo.length+" H\u00E4user)");}rollWetter();applySaison();hint(SAISON[calcSaison()][0]+(wetter==="regen"?" · 🌧️ Regen":wetter==="schnee"?" · 🌨️ Schnee":""));}}
     // Tag/Nacht
     var hh=uhrzeit/60,dayA=Math.max(0,Math.sin((hh-6)/12*Math.PI));
     var wDim=wetter==="sonne"?1:0.62;
@@ -3204,7 +3232,7 @@ function loop(now){
     updHund(dt,now);
     if(fahren){autoFahr(dt);}
     updGrow(dt);updBeete(dt);if(!fahren)updWork(dt);updAuto(dt);updCrime(dt);updNpcs(dt,now);updPolizei(dt,now);if(!arbeiten&&!crime.on)updLove(dt);
-    updHearts(dt);updWetter(dt);updVerkehr(dt);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);updVerstecken(dt);updFest(dt,now);
+    updHearts(dt);updWetter(dt);updVerkehr(dt);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);updVerstecken(dt);updFest(dt,now);updImmo(dt);
     document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("minimap").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("emoteToggle").style.display=(running&&!buildMode)?"block":"none";
