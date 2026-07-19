@@ -86,6 +86,7 @@ canvas{display:block;touch-action:none}
   #bBolt{right:calc(174px + env(safe-area-inset-right));width:52px;height:52px}
   #waveHud{top:calc(98px + env(safe-area-inset-top))}
   #invBar{left:calc(10px + env(safe-area-inset-left));transform:none}
+  #kprompt{bottom:calc(206px + env(safe-area-inset-bottom));font-size:.95rem;padding:7px 12px;max-width:92vw;overflow:hidden;text-overflow:ellipsis} /* 🐛-Fix: Prompt sass mitten im Knopf-Cluster (💥 schnitt „Baum fällen" ab) → über die Knöpfe heben */
 }
 /* Menü/Sound-Knöpfe oben rechts unter Inventar */
 #sysRow{position:absolute;top:calc(8px + env(safe-area-inset-top));right:12px;display:flex;gap:8px;pointer-events:auto}
@@ -4069,12 +4070,18 @@ function camRel(mx,my){ /* 🎮 Input -> Welt, relativ zur Kamera-Drehung (User:
 function camClampDist(px,pz,dx,dz,want){
   var maxD=want;
   if(typeof colliders!=="undefined")for(var i=0;i<colliders.length;i++){var c=colliders[i];
-    var rr=c.r+0.8; /* etwas Puffer, damit die Wand nicht am Bildrand klebt */
+    /* 🐛-Fix (User-Screenshot „verbugt"): Walk-Collider (r=3.4) ist viel kleiner als das sichtbare Haus (Scale ~9.5).
+       Für den KAMERA-Test den Radius aufs visuelle Footprint aufblasen — canWalk bleibt unberührt. */
+    var rr=c.r*1.85+0.8;
     var ex=px-c.x,ez=pz-c.z; /* Strahl px+t*dir, Kreis um c */
     var bq=2*(ex*dx+ez*dz),cq=ex*ex+ez*ez-rr*rr; /* a=1 (dir normiert) */
     var disc=bq*bq-4*cq;if(disc<0)continue;
-    var sq=Math.sqrt(disc),t0=(-bq-sq)/2;
-    if(t0>1.6&&t0<maxD)maxD=t0-0.4;}
+    var sq=Math.sqrt(disc),t0=(-bq-sq)/2,t1=(-bq+sq)/2;
+    if(t1<=0||t0>=maxD)continue; /* Footprint liegt hinter dem Spieler oder jenseits der Kamera → egal */
+    if(cq<0&&bq>=0)continue; /* Spieler im Footprint, aber Haus-Zentrum kamera-abgewandt (Tür zur Kamera) → freie Sicht */
+    /* Segment Spieler→Kamera schneidet den Haus-Footprint → clampen. Steht der Spieler an/in der Tür (t0<1.6),
+       geht die Kamera auf Nah-Distanz statt (wie vorher) GAR nicht zu clampen — das war der „Haus füllt den Schirm"-Bug. */
+    maxD=Math.min(maxD, t0>1.6 ? t0-0.4 : 4.8);}
   if(typeof resources!=="undefined")for(var ri=0;ri<resources.length;ri++){var rs=resources[ri]; /* 🌲 auch Bäume/Felsen blocken die Sicht nicht mehr */
     if(rs.dead)continue;var rex=px-rs.x,rez=pz-rs.z;if(rex*rex+rez*rez>maxD*maxD+120)continue;
     var rr2=1.1,bq2=2*(rex*dx+rez*dz),cq2=rex*rex+rez*rez-rr2*rr2,disc2=bq2*bq2-4*cq2;if(disc2<0)continue;
