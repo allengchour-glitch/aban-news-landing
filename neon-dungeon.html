@@ -198,7 +198,7 @@ var heroMix=null,heroRig=null;
   },undefined,function(){}); /* Fehler -> Platzhalter bleibt */
 })();
 var px=0,py=0,pz=0,vy=0,onG=true,jumps=0,coyote=0,jBuf=0,ckpt=0,invT=0,gy=0,stepT=0,secFound=false;
-var hearts=4,gemN=0,stage=1,running=false,won=false,dead=false;
+var hearts=4,gemN=0,stage=1,running=false,won=false,dead=false,runT=0; /* #68 Lauf-Timer */
 var kx=0,kz=0; /* Eingabe */
 
 /* ---------- Koloss ---------- */
@@ -347,11 +347,18 @@ function winGame(){if(won||dead)return;won=true;bossOn=false;shakeT=0.6;
       if(vg.position.y<0.3){clearInterval(iv);vg.position.y=0.3;}},16);
     gemN++;updHud();sfx(700+k*60,0.1,"triangle",0.04,1000+k*80);},k*160);})(vi);})();
   setTimeout(function(){finish(true);},2600);}
-function finish(win){if(finish._done)return;finish._done=true;var score=gemN*4+Math.max(0,hearts)*5+(win?30:0);
+function finish(win){if(finish._done)return;finish._done=true;
+  var score=gemN*8+Math.max(0,hearts)*12+(win?120:0); /* #63 Sieg-Min 212, Tod-Max 56 — Schwelle sauber getrennt (Quest nutzt win-Flag aus B16) */
   if(STATION)stationPost({t:"stationDone",score:score,win:win?1:0}); /* #65 win-Flag für die Koloss-Quest */
+  function fmt(s){s=Math.max(0,Math.round(s));return Math.floor(s/60)+":"+("0"+(s%60)).slice(-2);} /* #68 mm:ss */
+  var isBest=false,best=0;
+  if(win){try{best=parseInt(localStorage.getItem("nd-best")||"0",10)||0;}catch(e){}
+    if(best===0||runT<best){isBest=true;try{localStorage.setItem("nd-best",""+Math.round(runT));}catch(e){}}}
+  if(win){sfx(523,0.16,"triangle",0.06);setTimeout(function(){sfx(659,0.16,"triangle",0.06);},130);setTimeout(function(){sfx(880,0.3,"triangle",0.07);},260);} /* Arpeggio VOR evtl. Audio-Fade */
   var ov=document.getElementById("ov");ov.style.display="flex";
   ov.querySelector("h1").textContent=win?"🏆 KOLOSS BESIEGT!":"💀 GESCHEITERT";
-  ov.querySelector("p").innerHTML="💎 "+gemN+" Kristalle · ❤️ "+Math.max(0,hearts)+" übrig · <b>Score "+score+"</b>";
+  var timeLine=win?" · ⏱️ "+fmt(runT)+(isBest?' <span style="color:#ffd166">🏆 NEUE BESTZEIT!</span>':(best?' <span style="color:#8adfc0">(Best '+fmt(best)+')</span>':"")):"";
+  ov.querySelector("p").innerHTML="💎 "+gemN+" Kristalle · ❤️ "+Math.max(0,hearts)+" übrig · <b>Score "+score+"</b>"+timeLine;
   document.getElementById("startBtn").textContent=STATION?"← Zurück zur Wildnis":"Nochmal ▶";
   document.getElementById("startBtn").onclick=function(){if(STATION)stationPost("mini-back");else location.reload();};}
 
@@ -392,6 +399,7 @@ function frame(now){requestAnimationFrame(frame);
     mp.g.position.set(mp.x,mp.y,mp.z);
     if(running&&onG&&Math.abs(px-mp.x)<=mp.w+0.4&&Math.abs(pz-mp.z)<=mp.d+0.4&&Math.abs(py-mp.y)<0.3){px+=mp.x-ox2;py=mp.y;}}
   if(running&&!dead&&!won){
+    runT+=dt; /* #68 */
     /* Bewegung (Tastatur überlagert Stick) */
     var ix=kx,iz=kz;
     if(keys.a||keys.arrowleft)ix=-1;if(keys.d||keys.arrowright)ix=1;
