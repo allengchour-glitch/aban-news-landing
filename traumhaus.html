@@ -529,8 +529,14 @@ var dorfFenster=[];
     body.position.y=h/2;body.castShadow=true;body.receiveShadow=true;g.add(body);
     // Satteldach aus zwei geneigten Platten + Giebel
     var dl=Math.sqrt((w/2)*(w/2)+1.44)+0.25;
+    if(!window._schindelTex){var scv=document.createElement("canvas");scv.width=scv.height=128;var sc2=scv.getContext("2d");
+      sc2.fillStyle="#e8e8e8";sc2.fillRect(0,0,128,128);
+      for(var sy=0;sy<128;sy+=10){sc2.fillStyle="rgba(0,0,0,0.18)";sc2.fillRect(0,sy+8,128,2);
+        for(var sx=((sy/10)%2)*8;sx<128;sx+=16){sc2.fillStyle="rgba(0,0,0,0.08)";sc2.fillRect(sx,sy,1,8);}}
+      window._schindelTex=new THREE.CanvasTexture(scv);window._schindelTex.wrapS=window._schindelTex.wrapT=THREE.RepeatWrapping;window._schindelTex.repeat.set(2,3);}
     [[-1,1],[1,-1]].forEach(function(sgn){
-      var pl=new THREE.Mesh(new THREE.BoxGeometry(dl,0.14,d+0.5),stdMat(dachC,0.75));
+      var dMat=stdMat(dachC,0.75);dMat.map=window._schindelTex;
+      var pl=new THREE.Mesh(new THREE.BoxGeometry(dl,0.14,d+0.5),dMat);
       pl.position.set(sgn[0]*w/4,h+0.6,0);pl.rotation.z=sgn[1]*Math.atan2(1.2,w/2);pl.castShadow=true;g.add(pl);});
     var giebel=new THREE.Mesh(new THREE.CylinderGeometry(0.01,w/2*0.98,1.15,3,1),stdMat(wandC,0.85));
     // Giebel vorn+hinten als flache Dreiecke
@@ -580,7 +586,8 @@ var dorfFenster=[];
   function block(x,z,rotY,etagen,w,d,farbe){
     var g=new THREE.Group();
     var h=etagen*1.9+0.4;
-    var body=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),stdMat(farbe,0.88));
+    var blkM=stdMat(farbe,0.88);(window._wandMats=window._wandMats||[]).push(blkM);
+    var body=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),blkM);
     body.position.y=h/2;body.castShadow=true;body.receiveShadow=true;g.add(body);
     var att=new THREE.Mesh(new THREE.BoxGeometry(w+0.3,0.25,d+0.3),stdMat(0x8a8a88,0.8));
     att.position.y=h+0.1;g.add(att);
@@ -597,7 +604,9 @@ var dorfFenster=[];
   block(-60,SZ+26,Math.PI/2,3,9,7,0xd0c8ba);block(60,SZ+28,-Math.PI/2,3,9,7,0xc8bcae);
   // Kirche mit Turm + Spitze
   (function(){var g=new THREE.Group();
-    var schiff=new THREE.Mesh(new THREE.BoxGeometry(7,5,11),stdMat(0xe8e2d4,0.85));
+    var kirchM=stdMat(0xe8e2d4,0.85);
+    ladeTex("textures/th/backstein.jpg",3,2,function(t){kirchM.map=t;kirchM.color.setHex(0xd8cfc0);kirchM.needsUpdate=true;});
+    var schiff=new THREE.Mesh(new THREE.BoxGeometry(7,5,11),kirchM);
     schiff.position.y=2.5;schiff.castShadow=true;g.add(schiff);
     [[-1,1],[1,-1]].forEach(function(sg){var pl=new THREE.Mesh(new THREE.BoxGeometry(4.3,0.16,11.5),stdMat(0x6a5648,0.75));
       pl.position.set(sg[0]*1.75,5.9,0);pl.rotation.z=sg[1]*0.52;pl.castShadow=true;g.add(pl);});
@@ -611,7 +620,8 @@ var dorfFenster=[];
   // Laeden-Zeile mit bunten Markisen (Suedstrasse, gegenueber vom Haus)
   [[-8,0xe8443a,"🍞"],[-1,0x3a7ae8,"💉"],[6,0x3aa04a,"🍎"]].forEach(function(sh,i){
     var g=new THREE.Group();
-    var body=new THREE.Mesh(new THREE.BoxGeometry(6.4,3.4,5),stdMat(0xf0e8d8,0.85));
+    var ladM=stdMat(0xf0e8d8,0.85);(window._wandMats=window._wandMats||[]).push(ladM);
+    var body=new THREE.Mesh(new THREE.BoxGeometry(6.4,3.4,5),ladM);
     body.position.y=1.7;body.castShadow=true;body.receiveShadow=true;g.add(body);
     var front=new THREE.Mesh(new THREE.BoxGeometry(4.8,1.6,0.06),
       new THREE.MeshStandardMaterial({color:0x9ec4d8,emissive:0xfff0c0,emissiveIntensity:0,roughness:0.15}));
