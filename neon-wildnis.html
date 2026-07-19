@@ -2117,6 +2117,7 @@ window.addEventListener("message",function(e){
   var d=e&&e.data;
   if(d==="mini-back"){closeStation();return;}
   if(typeof d==="string"&&d.charAt(0)==="{"){try{d=JSON.parse(d);}catch(err){d=null;}}
+  if(d&&d.t==="stationRematch"){var ri=_stCur;closeStation();if(ri>=0)openStation(ri);return;} /* #67 Rematch: Station frisch neu laden (Reward zählt regulär) */
   if(d&&d.t==="stationDone")onStationDone(d.score|0,d.win|0);});
 /* 🗨️ Koop: Partner-Status "ist im Flugfeld" — Flag st fließt im sendFast-pos mit */
 var _remSt=-1,_remStSp=null;

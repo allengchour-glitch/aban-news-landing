@@ -40,8 +40,9 @@ if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.repl
     background:radial-gradient(ellipse at 50% 30%,#241640 0%,#0a0812 70%);padding:20px}
   #ov h1{font-size:clamp(1.9rem,7vw,3rem);color:#c98bff;text-shadow:0 0 24px rgba(201,139,255,.55);letter-spacing:.06em}
   #ov p{color:#b8a8d8;max-width:460px;margin:12px 0;line-height:1.5;font-size:.95rem}
-  #ov .big{border:0;cursor:pointer;font-weight:900;font-size:1.1rem;padding:14px 38px;border-radius:40px;color:#140a20;
+  #ov .big{border:0;cursor:pointer;font-weight:900;font-size:1.1rem;padding:14px 38px;border-radius:40px;color:#140a20;margin:5px;
     background:linear-gradient(92deg,#ffce8a,#c98bff);box-shadow:0 10px 34px rgba(201,139,255,.35);pointer-events:auto}
+  #ov .big.sec{background:rgba(20,14,32,.7);color:#e6d8ff;border:2px solid #6a4a9a;box-shadow:none;font-size:1rem;padding:11px 26px}
   #ov .chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:8px 0 16px}
   #ov .chip{background:rgba(255,255,255,.07);border:1px solid rgba(201,139,255,.3);border-radius:12px;padding:5px 12px;font-size:.78rem;font-weight:700;color:#cfc0ff}
   .nd-notouch #stick,.nd-notouch #bJump,.nd-notouch #bHit{display:none!important}
@@ -72,6 +73,7 @@ if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.repl
 (function(){
 "use strict";
 var STATION=window.parent!==window&&/[?&]station=1/.test(location.search);
+var NG=/[&?]ng=1/.test(location.search); /* #71 Meister-Modus (NG+) */
 var TOUCH=(navigator.maxTouchPoints>0)||matchMedia("(pointer:coarse)").matches;
 if(!TOUCH){document.documentElement.classList.add("nd-notouch");
   addEventListener("touchstart",function once(){document.documentElement.classList.remove("nd-notouch");TOUCH=true;removeEventListener("touchstart",once);},{once:true});} /* Hybrid-Geräte holen die Touch-UI zurück */
@@ -202,7 +204,7 @@ var hearts=4,gemN=0,stage=1,running=false,won=false,dead=false,runT=0; /* #68 La
 var kx=0,kz=0; /* Eingabe */
 
 /* ---------- Koloss ---------- */
-var boss=new THREE.Group(),bossHp=6,bossOn=false,bossPh=0;
+var boss=new THREE.Group(),bossHp=6,bossOn=false,bossPh=(NG?1:0); /* #71 NG+: startet direkt in Enrage */
 (function(){var rock=M(0x4a4258,0x1a1428,0.15);
   var torso=new THREE.Mesh(new THREE.BoxGeometry(3.2,3.4,2.2),rock);torso.position.y=4.4;boss.add(torso);
   var head=new THREE.Mesh(new THREE.BoxGeometry(1.5,1.3,1.4),rock);head.position.y=6.9;boss.add(head);
@@ -279,7 +281,7 @@ function announce(t,c){var a=document.getElementById("announce");a.textContent=t
 function hint(t,ms){var h=document.getElementById("hint");h.textContent=t;h.style.opacity=1;clearTimeout(h._t);h._t=setTimeout(function(){h.style.opacity=0;},ms||2800);}
 function updHud(){document.getElementById("hearts").textContent="❤️".repeat(Math.max(0,hearts))+"🖤".repeat(Math.max(0,4-hearts));
   document.getElementById("gems").textContent="💎 "+gemN+"/"+(GEM_TOTAL||"?");
-  document.getElementById("stageTag").textContent=bossOn?"🗿 KOLOSS-KAMMER":"🏰 Katakomben · Abschnitt "+stage+"/3";
+  document.getElementById("stageTag").textContent=(bossOn?"🗿 KOLOSS-KAMMER":"🏰 Katakomben · Abschnitt "+stage+"/3")+(NG?" · MEISTER":""); /* #71 */
   document.getElementById("bossBar").style.display=bossOn?"block":"none";
   document.getElementById("bossFill").style.width=Math.max(0,bossHp/6*100)+"%";
   document.getElementById("bHit").style.display=bossOn?"flex":"none";}
@@ -318,7 +320,7 @@ function doHit(){if(!bossOn||dead||won)return;
       var hh=document.getElementById("hint");clearTimeout(hh._t);hh.style.opacity=0;
       burst(wp.x,wp.y,wp.z,5,0xc98bff);
       var _bf=document.getElementById("bossFill");_bf.classList.add("flash");setTimeout(function(){_bf.classList.remove("flash");},160);
-      if(bossHp===3){bossPh=1;announce("😡 DER KOLOSS RAST!","#ff5a5a");sfx(110,0.6,"sawtooth",0.07,55);if(boss.userData.eyes)boss.userData.eyes.forEach(function(ey){ey.scale.setScalar(1.6);});} /* #23 Wut-Riff */
+      if(bossHp===3&&bossPh===0){bossPh=1;announce("😡 DER KOLOSS RAST!","#ff5a5a");sfx(110,0.6,"sawtooth",0.07,55);if(boss.userData.eyes)boss.userData.eyes.forEach(function(ey){ey.scale.setScalar(1.6);});} /* #23 Wut-Riff · #71 Guard gegen Announce-Dublette im NG+ */
       if(bossHp<=0)winGame();updHud();return;}}
   if(vulnT>0&&slamArm)hint("Näher an die glühende Faust ran!",2000);
   else if(!window.__hintVuln){window.__hintVuln=1;hint("⏳ Warte, bis ein Faust-Kristall violett aufglüht!",2600);}
@@ -367,19 +369,23 @@ function winGame(){if(won||dead)return;won=true;bossOn=false;shakeT=0.6;
   setTimeout(function(){finish(true);},2600);}
 function finish(win){if(finish._done)return;finish._done=true;
   stopAmbience(); /* #21 Ambiente ausblenden */
-  var score=gemN*8+Math.max(0,hearts)*12+(win?120:0); /* #63 Sieg-Min 212, Tod-Max 56 — Schwelle sauber getrennt (Quest nutzt win-Flag aus B16) */
+  var score=Math.round((gemN*8+Math.max(0,hearts)*12+(win?120:0))*(NG?1.5:1)); /* #63 Sieg-Min 212, Tod-Max 56 · #71 NG+ ×1.5 */
   if(STATION)stationPost({t:"stationDone",score:score,win:win?1:0}); /* #65 win-Flag für die Koloss-Quest */
   function fmt(s){s=Math.max(0,Math.round(s));return Math.floor(s/60)+":"+("0"+(s%60)).slice(-2);} /* #68 mm:ss */
   var isBest=false,best=0;
-  if(win){try{best=parseInt(localStorage.getItem("nd-best")||"0",10)||0;}catch(e){}
+  if(win&&!NG){try{best=parseInt(localStorage.getItem("nd-best")||"0",10)||0;}catch(e){} /* #71 NG+-Läufe schreiben KEINE Bestzeit (unfair schnell) */
     if(best===0||runT<best){isBest=true;try{localStorage.setItem("nd-best",""+Math.round(runT));}catch(e){}}}
   if(win){sfx(523,0.16,"triangle",0.06);setTimeout(function(){sfx(659,0.16,"triangle",0.06);},130);setTimeout(function(){sfx(880,0.3,"triangle",0.07);},260);} /* Arpeggio VOR evtl. Audio-Fade */
   var ov=document.getElementById("ov");ov.style.display="flex";
-  ov.querySelector("h1").textContent=win?"🏆 KOLOSS BESIEGT!":"💀 GESCHEITERT";
-  var timeLine=win?" · ⏱️ "+fmt(runT)+(isBest?' <span style="color:#ffd166">🏆 NEUE BESTZEIT!</span>':(best?' <span style="color:#8adfc0">(Best '+fmt(best)+')</span>':"")):"";
+  ov.querySelector("h1").textContent=(win?"🏆 KOLOSS BESIEGT!":"💀 GESCHEITERT")+(NG?" · MEISTER":"");
+  var timeLine=win&&!NG?" · ⏱️ "+fmt(runT)+(isBest?' <span style="color:#ffd166">🏆 NEUE BESTZEIT!</span>':(best?' <span style="color:#8adfc0">(Best '+fmt(best)+')</span>':"")):(win?" · ⏱️ "+fmt(runT):"");
   ov.querySelector("p").innerHTML="💎 "+gemN+" Kristalle · ❤️ "+Math.max(0,hearts)+" übrig · <b>Score "+score+"</b>"+timeLine;
-  document.getElementById("startBtn").textContent=STATION?"← Zurück zur Wildnis":"Nochmal ▶";
-  document.getElementById("startBtn").onclick=function(){if(STATION)stationPost("mini-back");else location.reload();};}
+  /* #67 Rematch: Station frisch neu laden (Reward zählt regulär), sonst normaler Reload */
+  var sb=document.getElementById("startBtn");sb.textContent="Nochmal ▶";
+  sb.onclick=function(){if(STATION){stationPost({t:"stationRematch"});setTimeout(function(){location.reload();},250);}else location.reload();};
+  var box=sb.parentNode;
+  if(STATION&&!document.getElementById("againBtn")){var ab=document.createElement("button");ab.id="againBtn";ab.className="big sec";ab.textContent="← Wildnis";ab.onclick=function(){stationPost("mini-back");};box.appendChild(ab);}
+  if(win&&!NG&&!document.getElementById("ngBtn")){var ng=document.createElement("button");ng.id="ngBtn";ng.className="big sec";ng.textContent="⚔️ Meister-Abstieg";ng.onclick=function(){var u=location.href;location.href=u+(u.indexOf("?")<0?"?":"&")+"ng=1";};box.appendChild(ng);}}
 
 function start(){document.getElementById("ov").style.display="none";running=true;
   hint(TOUCH?"🕹️ Laufen · ⤴ zweimal = Doppelsprung":"WASD laufen · LEER ×2 = Doppelsprung · E = zuschlagen",3600);updHud();
