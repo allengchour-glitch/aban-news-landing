@@ -481,7 +481,7 @@ function mkTuftGeo(){
   return g;
 }
 function buildGrassTufts(){
-  var N=IS_MOB?250:(SOFT_GPU?300:600);_tuftN=N;
+  var N=IS_MOB?380:(SOFT_GPU?480:850);_tuftN=N; /* dichterer Gras-Teppich (Landschaft wirkte zu kahl) */
   var rndT=mulberry32(((SEED^0x71f3a5)>>>0)||1); /* eigener deterministischer Strom */
   /* MeshBasic (unlit) wie die Blumen: Lambert-DoubleSide beleuchtet Rueckseiten falsch (schwarze Bueschel) */
   var mat=new THREE.MeshBasicMaterial({map:mkTuftTexture(),alphaTest:0.35,side:THREE.DoubleSide,transparent:false});
@@ -502,6 +502,33 @@ function buildGrassTufts(){
   }
   if(_tuftIM.instanceColor)_tuftIM.instanceColor.needsUpdate=true;
   _tuftIM.instanceMatrix.needsUpdate=true;scene.add(_tuftIM);
+}
+/* 🌸 Extra-Blumen-Teppich in Clustern — EIGENER mulberry32-Strom (rnd/rnd2 unberührt → Koop-
+   Determinismus & Save-Kompatibilität), instanziert & unlit = billig; macht die Landschaft bunter. */
+function buildExtraFlora(){
+  if(!scene||typeof groundH!=="function")return;
+  var rndF=mulberry32(((SEED^0x2b9d17)>>>0)||7),half=MAP/2-40;
+  var N=IS_MOB?200:(SOFT_GPU?300:520);
+  var petalG=new THREE.IcosahedronGeometry(0.19,0);petalG.scale(1.5,0.42,1.5);
+  var pIM=new THREE.InstancedMesh(petalG,new THREE.MeshBasicMaterial(),N);
+  pIM.instanceColor=new THREE.InstancedBufferAttribute(new Float32Array(N*3),3);
+  var stemG=new THREE.CylinderGeometry(0.025,0.025,0.42,4);stemG.translate(0,0.21,0);
+  var sIM=new THREE.InstancedMesh(stemG,new THREE.MeshLambertMaterial({color:0x2f7a45}),N);
+  var cols=[[1,0.35,0.62],[1,0.86,0.28],[0.7,0.45,1],[0.35,0.85,1],[1,0.55,0.28],[1,0.45,0.8],[0.96,0.96,0.99]];
+  var o=new THREE.Object3D(),cx=0,cz=0,left=0,k=0,guard=0;
+  while(k<N&&guard<N*4){guard++;
+    if(left<=0){var a=rndF()*6.28,rd=13+Math.sqrt(rndF())*(half-13);cx=Math.cos(a)*rd;cz=Math.sin(a)*rd;left=3+((rndF()*5)|0);}
+    left--;
+    var x=cx+(rndF()-0.5)*4.2,z=cz+(rndF()-0.5)*4.2;
+    if(x*x+z*z<30*30)continue; /* Spawn-Dorf frei lassen */
+    var y=groundH(x,z),s=0.85+rndF()*0.85;
+    o.position.set(x,y+0.5*s,z);o.scale.set(s,s,s);o.rotation.set(0,rndF()*6.28,0);o.updateMatrix();pIM.setMatrixAt(k,o.matrix);
+    var c=cols[(rndF()*cols.length)|0];pIM.instanceColor.setXYZ(k,c[0],c[1],c[2]);
+    o.position.set(x,y,z);o.scale.set(s,s,s);o.updateMatrix();sIM.setMatrixAt(k,o.matrix);
+    k++;
+  }
+  pIM.count=k;sIM.count=k;pIM.instanceMatrix.needsUpdate=true;sIM.instanceMatrix.needsUpdate=true;pIM.instanceColor.needsUpdate=true;
+  pIM.frustumCulled=false;sIM.frustumCulled=false;scene.add(pIM);scene.add(sIM);
 }
 var _tuftO=new THREE.Object3D();
 function updGrassTufts(dt){
@@ -4599,7 +4626,7 @@ function netStartQuick(){ /* ⚡ 1-Tipp Schnell-Koop ohne Code (öffentlicher Ra
 function startGame(fresh){
   var sv=(NET.on||fresh)?null:loadSave(); // Koop: immer frische, geteilte Welt
   SEED=(NET_FORCE_SEED!=null)?NET_FORCE_SEED:(sv?sv.seed:((Math.random()*1e9)|0));rnd=mulberry32(SEED);
-  buildGround();buildRiver();buildGrassTufts();loadNature(function(){placeResources();buildAmbient();placeLoot();if(day>1)spawnDayCache(true);loadProps();
+  buildGround();buildRiver();buildGrassTufts();buildExtraFlora();loadNature(function(){placeResources();buildAmbient();placeLoot();if(day>1)spawnDayCache(true);loadProps();
     // CC0-Welt-Reichtum laden, dann Natur-Vielfalt + Dörfer + Friedhof platzieren
     loadCC0(["cc0_tree_pine","cc0_tree_oak","cc0_tree_default","cc0_tree_palm","cc0_bush","cc0_flower_purple","cc0_mushroom_red","cc0_rock_large","cc0_rock_small","cc0_log_stack","cc0_barrel","cc0_crate","cc0_fence","cc0_tent","cc0_campfire","cc0_crypt","cc0_gravestone_cross","cc0_gravestone_round","cc0_coffin","building_fachwerk","building_werkstatt","building_turm","building_castle","item_relic","item_potion","mob_dragon","item_fountain","ftk_road","ftk_stall","ftk_fountain","ftk_cart","ftk_banner","ftk_lantern","ftk_watermill","ftk_tree","ck_tower","ck_wall","ck_wall_corner","ck_gate","ck_flag","ck_catapult","ck_tree","dk_sword","dk_spear","dk_shield_round","dk_shield_rect","fd_sausage","fd_pie","fd_burger","npc_ma","npc_mb","npc_mc","npc_md","npc_fa","npc_fb","npc_fc","npc_fd","fn_table","fn_chair","fn_chair2","fn_stool","fn_plant","fn_plant2","fn_bookcase","fn_bed","nw_blume_lila","nw_blume_rot","nw_blume_gelb","nw_blume_gelb_hoch","nw_fels_a","nw_fels_b","nw_stein_gross_a","nw_stein_gross_b","nw_meilenstein"].concat(NEW_ASSETS).concat(NEW_ASSETS2).filter(function(n){return DEFER_ASSETS.indexOf(n)<0;}),
       function(){decorateWorld();iblClamp();loadCC0(DEFER_ASSETS,function(){decorateWorldLate();iblClamp();
