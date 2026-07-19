@@ -720,8 +720,8 @@ var pPool=[];
 for(var pi=0;pi<40;pi++){var pm=new THREE.Mesh(new THREE.BoxGeometry(0.18,0.18,0.18),new THREE.MeshBasicMaterial({color:0xffffff}));pm.visible=false;scene.add(pm);pPool.push(pm);}
 function burst(x,y,z,color,n){
   for(var i=0;i<n;i++){var m=pPool.find(function(p){return !p.visible;});if(!m)break;
-    m.material.color.setHex(Array.isArray(color)?color[(rnd()*color.length)|0]:color);m.visible=true;m.position.set(x,y,z);m.scale.setScalar(1);
-    particles.push({m:m,vx:(rnd()-.5)*4,vy:2+rnd()*3,vz:(rnd()-.5)*4,life:0.6+rnd()*0.3,t:0});}
+    m.material.color.setHex(Array.isArray(color)?color[(Math.random()*color.length)|0]:color);m.visible=true;m.position.set(x,y,z);m.scale.setScalar(1);
+    particles.push({m:m,vx:(Math.random()-.5)*4,vy:2+Math.random()*3,vz:(Math.random()-.5)*4,life:0.6+Math.random()*0.3,t:0});} /* K1: reine Kosmetik → Math.random (poisont nicht den geteilten Welt-Strom im Koop) */
 }
 function updParticles(dt){
   for(var i=particles.length-1;i>=0;i--){var p=particles[i];p.t+=dt;
@@ -1400,9 +1400,9 @@ function updLively(dt){
   for(var i=0;i<worldProps.length;i++){var p2=worldProps[i];if(!p2.flick)continue;
     var d=Math.hypot(p2.mesh.position.x-player.position.x,p2.mesh.position.z-player.position.z);if(d<best){best=d;fire=p2.mesh;}}
   for(var si=0;si<sparks.length;si++){var sp=sparks[si];
-    if(sp.t<=0){if(fire&&best<40&&rnd()<0.25){sp.t=0.9+rnd()*0.6;sp.m.visible=true;
-        sp.m.position.set(fire.position.x+(rnd()-0.5)*0.5,fire.position.y+0.4,fire.position.z+(rnd()-0.5)*0.5);
-        sp.vx=(rnd()-0.5)*0.6;sp.vz=(rnd()-0.5)*0.6;sp.vy=1.6+rnd();}
+    if(sp.t<=0){if(fire&&best<40&&Math.random()<0.25){sp.t=0.9+Math.random()*0.6;sp.m.visible=true; /* K1: Kosmetik → Math.random */
+        sp.m.position.set(fire.position.x+(Math.random()-0.5)*0.5,fire.position.y+0.4,fire.position.z+(Math.random()-0.5)*0.5);
+        sp.vx=(Math.random()-0.5)*0.6;sp.vz=(Math.random()-0.5)*0.6;sp.vy=1.6+Math.random();}
       else sp.m.visible=false;continue;}
     sp.t-=dt;sp.m.position.x+=sp.vx*dt;sp.m.position.y+=sp.vy*dt;sp.m.position.z+=sp.vz*dt;sp.vy-=dt*0.8;
     sp.m.material.opacity=Math.max(0,sp.t);if(sp.t<=0)sp.m.visible=false;}
@@ -1413,19 +1413,19 @@ function updLively(dt){
       else{F.m.position.set(F.cx,F.y0+Math.sin(F.ph)*F.jump,F.cz);F.m.rotation.z=(F.ph-1.57)*1.2;}
       continue;}
     F.t-=dt;
-    if(F.t<=0){F.t=6+rnd()*10;
+    if(F.t<=0){F.t=6+Math.random()*10; /* K1: Kosmetik → Math.random */
       var near=window._ducks.filter(function(pd){return Math.hypot(pd.cx-player.position.x,pd.cz-player.position.z)<70;});
-      if(near.length){var pd2=near[(rnd()*near.length)|0];
-        F.cx=pd2.cx+(rnd()-0.5)*pd2.r;F.cz=pd2.cz+(rnd()-0.5)*pd2.r;F.y0=pd2.y0-0.15;F.ph=0;F.jump=1.2+rnd()*0.6;F.m.visible=true;}}}
+      if(near.length){var pd2=near[(Math.random()*near.length)|0];
+        F.cx=pd2.cx+(Math.random()-0.5)*pd2.r;F.cz=pd2.cz+(Math.random()-0.5)*pd2.r;F.y0=pd2.y0-0.15;F.ph=0;F.jump=1.2+Math.random()*0.6;F.m.visible=true;}}}
   // 🌠 Sternschnuppen (nur nachts)
   for(var sh=0;sh<shoots.length;sh++){var S=shoots[sh];
     if(!isNight){S.m.visible=false;continue;}
     if(S.life>0){S.life-=dt;S.m.position.x+=S.vx*dt;S.m.position.y+=S.vy*dt;
       S.m.material.opacity=Math.max(0,S.life);if(S.life<=0)S.m.visible=false;continue;}
     S.t-=dt;
-    if(S.t<=0){S.t=7+rnd()*14;S.life=1.1;S.m.visible=true;S.m.material.opacity=1;
-      S.m.position.set(player.position.x+(rnd()-0.5)*80,46+rnd()*14,player.position.z-30-rnd()*30);
-      S.vx=-8-rnd()*6;S.vy=-7-rnd()*4;S.m.rotation.z=Math.atan2(S.vy,S.vx)+1.57;}}
+    if(S.t<=0){S.t=7+Math.random()*14;S.life=1.1;S.m.visible=true;S.m.material.opacity=1; /* K1: Kosmetik → Math.random */
+      S.m.position.set(player.position.x+(Math.random()-0.5)*80,46+Math.random()*14,player.position.z-30-Math.random()*30);
+      S.vx=-8-Math.random()*6;S.vy=-7-Math.random()*4;S.m.rotation.z=Math.atan2(S.vy,S.vx)+1.57;}}
 }
 
 // ---------- Fund-Objekte: Truhen & Ruinen ----------
@@ -3454,6 +3454,7 @@ function bondGain(n,silent){window._bondPts=(window._bondPts|0)+(n|0);bondUpd();
   if(NET.on&&NET.s&&!silent)try{NET.s.send({t:"bond",n:Math.max(0,Math.min(5,n|0)),from:NET.role});}catch(e){}}
 function rewardKill(e){var mh=Math.min(30,(e&&e.maxhp)||8);gainXP(Math.round(6+mh*0.7));kills++;if(typeof dropLoot==="function"){if(!e.boss&&mh>=9&&Math.random()<0.35)dropLoot(e.x,e.z,Math.random()<0.4?3:2);else dropLoot(e.x,e.z);}} /* 💰 Belohnung skaliert mit Gegnerstärke */
 function bossReward(x,z){var _bl3=document.getElementById("bossLbl");if(NET.on&&NET.s)try{NET.s.send({t:"bosskill",lbl:(_bl3&&_bl3.textContent)||"",from:NET.role});}catch(e){}
+  if(NET.on&&typeof bondGain==="function")bondGain(2); /* K4: Band beim Killer +2 (bondGain sendet {t:bond,n:2} → Partner +2) → symmetrisch, kein nw_bond-Drift */
   announce("🏆 Boss besiegt! Legendäre Beute!");gainXP(60);dropLoot(x,z,3);dropLoot(x+1,z,3);dropLoot(x-1,z+1,2);burst(x,groundH(x,z)+1,z,[0xffd166,0xff2d6f],40);shake=0.7;}
 function updLoot(dt){for(var i=lootOrbs.length-1;i>=0;i--){var o=lootOrbs[i];o.t+=dt;o.life-=dt;
   o.m.rotation.y+=dt*2.6;
@@ -4507,7 +4508,7 @@ function onNetMsg(d){
   if(d.t==="act"&&d.from!==NET.role&&d.intent){heroActRemote(d.intent);if(d.intent==="melee")NET.lastRemoteMelee=performance.now();} /* ⚔️ Partner-Kampfanimation + Combo-Fenster */
   if(d.t==="bond"&&d.from!==NET.role){var _bn=Math.max(0,Math.min(5,d.n|0));window._bondPts=(window._bondPts|0)+_bn;if(typeof bondUpd==="function")bondUpd();} /* 🤝 Band wächst bei BEIDEN */
   if(d.t==="bosskill"&&d.from!==NET.role&&running){announce("🏆 Partner hat "+(d.lbl||"den Boss")+" besiegt!","#7dffc8");
-    window._bondPts=(window._bondPts|0)+2;if(typeof bondUpd==="function")bondUpd();
+    /* K4: Bond kommt jetzt über die {t:bond,n:2}-Message aus bondGain (Killer-Seite) — hier NICHT mehr doppelt addieren */
     if(typeof heroActRemote==="function")heroActRemote("victory");
     if(NET.remote&&NET.remote.visible){if(typeof showEmoteOver==="function")showEmoteOver(NET.remote,"🏆");burst(NET.remote.position.x,NET.remote.position.y+2,NET.remote.position.z,0xffd166,16);}
     if(typeof sfx==="function"){sfx(523,0.14,"triangle",0.06);setTimeout(function(){sfx(784,0.2,"triangle",0.06);},140);}}

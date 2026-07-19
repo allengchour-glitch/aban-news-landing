@@ -19,11 +19,13 @@
 - **G10** ✅ 🔴 Save gefällte Ressourcen: `_fellPend` VOR loadNature parken (Callback kann vor if(sv)-Block feuern) + applyFellPend() nach placeResources. **VERIFIZIERT end-to-end**: Baum gefällt→saveGame→Reload→bleibt tot (matched:1, 0 Fehler).
 - **G11** ✅ THREE/WebGL-Guard vor Renderer (Klartext-Meldung statt schwarzer Screen).
 
-## M4 — 🔴 HOCHRISIKO Koop-Determinismus (eigener PR, Testharness zuerst)
-- **K1** Kosmetik aus geteiltem Strom (updLively/burst/Tier-KI → Math.random).
-- **K2** Weltgen-Strom invariant (natureReady→immer 2 Draws; VF von Platzierung entkoppeln) — SAVE-MIGRATION.
-- **K3** Spawns host-autoritativ ODER dedizierter mulberry32-Strom (Monster/Boss/Tier).
-- **K4** Bond-Persistenz symmetrisch (bossReward bondGain beim Killer, bosskill-Handler entdoppeln).
+## M4 — 🔴 HOCHRISIKO Koop-Determinismus (nur Koop-online relevant; User spielt solo)
+- **K1** (teilweise ✅): reine Partikel-/Ambient-Kosmetik aus dem geteilten Strom → Math.random (burst() Partikel + updLively Funken/Fisch/Sternschnuppen). **Tier-KI-Wander bewusst mit K3 gebündelt** (Tiere sind Gameplay-Entities).
+- **K4** ✅ Bond-Persistenz symmetrisch: bossReward ruft bondGain(2) beim Killer (sendet {t:bond,n:2} → Partner +2), bosskill-Handler addiert nicht mehr doppelt → kein nw_bond-Drift.
+- **K2** ⏸ OFFEN (SAVE-MIGRATION): Weltgen-Strom invariant (natureReady→immer 2 Draws; VF von Platzierung entkoppeln). Braucht Save-Version-Bump + Zwei-Peer-/VF-Hash-Testharness. NICHT ohne Harness anfassen.
+- **K3** ⏸ OFFEN (Netcode): Monster/Boss/Tier-Spawns host-autoritativ (bevorzugt) ODER dedizierter mulberry32-Strom je Welle/Nacht. Grösste Änderung, braucht Zwei-Peer-Durchspiel-Verifikation.
+
+**Status:** K1-Kosmetik + K4 umgesetzt (safe, kein Save/Weltgen berührt). K2+K3 = eigener, sorgfältiger Koop-Härtungs-PR mit Determinismus-Harness — offen, blockiert Solo-Spieler nicht.
 
 ## Fehlalarme/Design (nicht umsetzen)
 - LOW combat „Boss Nacht 2 in Welle" = Design; erst nach G5 neu bewerten.
