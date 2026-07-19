@@ -289,7 +289,9 @@ var IS_MOB=(navigator.maxTouchPoints>0)||IS_COARSE;
 var VF=IS_MOB?0.6:1; // Dichte-Faktor mobil
 
 // ---------- Renderer / Scene ----------
-var renderer=new THREE.WebGLRenderer({antialias:!IS_COARSE});
+if(!window.THREE){document.body.innerHTML='<div style="display:flex;height:100vh;align-items:center;justify-content:center;text-align:center;color:#9adfc0;font-family:system-ui;font-weight:800;padding:24px">3D-Engine nicht geladen — bitte die Seite neu laden ↻</div>';throw new Error("THREE fehlt");} /* G11: Klartext statt schwarzer Screen */
+var renderer;
+try{renderer=new THREE.WebGLRenderer({antialias:!IS_COARSE});}catch(e){document.body.innerHTML='<div style="display:flex;height:100vh;align-items:center;justify-content:center;text-align:center;color:#9adfc0;font-family:system-ui;font-weight:800;padding:24px">Grafik (WebGL) konnte nicht starten — bitte anderen Browser/Tab versuchen ↻</div>';throw e;}
 renderer.setPixelRatio(Math.min(devicePixelRatio,IS_MOB?1.5:2)); /* 📱 W7: DPR-Cap 1.5 mobil = spürbar flüssiger auf High-Res-Handys */
 renderer.setSize(W,H);
 renderer.shadowMap.enabled=true;renderer.shadowMap.type=IS_MOB?THREE.PCFShadowMap:THREE.PCFSoftShadowMap; /* 📱 günstigerer Schatten-Filter mobil */
@@ -495,7 +497,7 @@ function buildGrassTufts(){
   /* MeshBasic (unlit) wie die Blumen: Lambert-DoubleSide beleuchtet Rueckseiten falsch (schwarze Bueschel) */
   var mat=new THREE.MeshBasicMaterial({map:mkTuftTexture(),alphaTest:0.35,side:THREE.DoubleSide,transparent:false});
   _tuftIM=new THREE.InstancedMesh(mkTuftGeo(),mat,N);
-  _tuftIM.castShadow=false;_tuftIM.receiveShadow=false;
+  _tuftIM.castShadow=false;_tuftIM.receiveShadow=false;_tuftIM.frustumCulled=false; /* G9: Gras-Teppich verschwand, sobald die Weltmitte aus dem Bild fiel */
   _tuftBase=new Float32Array(N*7); /* x,y,z,scale,scaleY,ry,phase */
   var o=new THREE.Object3D(),cc=new THREE.Color(),half=MAP/2-40;
   var GC=[0x6fbf7a,0x5fae6e,0x7fcf85,0x55a463,0x8fd98f]; /* unlit → mittlere Gruens statt hell */
@@ -592,6 +594,11 @@ function mkStylizedTree(){var g=new THREE.Group();
   var fm=new THREE.MeshLambertMaterial({color:TREE_GREENS[(Math.random()*TREE_GREENS.length)|0],flatShading:true});
   for(var k=0;k<3;k++){var r=1.7-k*0.45;var bl=new THREE.Mesh(new THREE.IcosahedronGeometry(r,0),fm);bl.position.set((Math.random()-0.5)*0.5,trunkH+0.2+k*0.95,(Math.random()-0.5)*0.5);bl.rotation.set(Math.random()*3,Math.random()*3,Math.random()*3);bl.castShadow=true;g.add(bl);}
   return g;}
+function applyFellPend(){ /* G10: gefällte Bäume/Felsen wieder als abgebaut markieren — NACH placeResources() (resources[] existiert erst dann) */
+  var fp=window._fellPend;if(!fp||!fp.length)return;window._fellPend=null;
+  for(var fi=0;fi<fp.length;fi++){var fr=fp[fi];for(var ri=0;ri<resources.length;ri++){var r=resources[ri];
+    if(!r.dead&&Math.round(r.x)===fr.x&&Math.round(r.z)===fr.z){r.dead=true;r.regrow=fr.rg||60;
+      if(r.mesh)r.mesh.visible=false;if(r.berry)r.berry.visible=false;break;}}}}
 function loadNature(cb){
   if(!THREE.GLTFLoader){cb();return;}
   new THREE.GLTFLoader().load("/models/nature_pack.glb",function(gl){
@@ -662,7 +669,7 @@ function placeResources(){
     var FL=Math.round(360*VF);
     for(var i=0;i<FL;i++){spot();rnd();rnd();rnd();rnd();}
     var GR=Math.round(470*VF),GC=[0x3fa060,0x4fbf6e,0x2e8a50,0x6ac07a,0x9ad46a];
-    var grass=new THREE.InstancedMesh(new THREE.ConeGeometry(0.09,0.6,4),new THREE.MeshLambertMaterial(),GR);grass.castShadow=false;grass.receiveShadow=true;
+    var grass=new THREE.InstancedMesh(new THREE.ConeGeometry(0.09,0.6,4),new THREE.MeshLambertMaterial(),GR);grass.castShadow=false;grass.receiveShadow=true;grass.frustumCulled=false; /* G9 */
     for(var j=0;j<GR;j++){var q=spot();o.position.set(q[0],groundH(q[0],q[1])+0.28,q[1]);o.scale.set(1,0.7+rnd()*0.9,1);o.rotation.set((rnd()-.5)*0.3,rnd()*6.28,(rnd()-.5)*0.3);o.updateMatrix();grass.setMatrixAt(j,o.matrix);cc.setHex(GC[(rnd()*GC.length)|0]);grass.setColorAt(j,cc);}
     grass.instanceColor.needsUpdate=true;scene.add(grass);
   })();
@@ -1179,7 +1186,7 @@ function updMonsters(dt){
 // ---------- Umgebungs-Deko (instanziert, 1 Draw-Call pro Typ) ----------
 var ambientGroups=[],fireflies=[],fogWisps=[],pollen=[],butterflies=[],leaves=[],birds=[],clouds=[],windA=0;
 var _m4=new THREE.Matrix4(),_q4=new THREE.Quaternion(),_pos3=new THREE.Vector3(),_scl3=new THREE.Vector3(),_up=new THREE.Vector3(0,1,0);
-function instMesh(geo,mat,count){var im=new THREE.InstancedMesh(geo,mat,count);im.castShadow=false;im.receiveShadow=false;scene.add(im);ambientGroups.push(im);return im;}
+function instMesh(geo,mat,count){var im=new THREE.InstancedMesh(geo,mat,count);im.castShadow=false;im.receiveShadow=false;im.frustumCulled=false;scene.add(im);ambientGroups.push(im);return im;} /* G9: nie wegcullen (BoundingSphere sitzt in Weltmitte → Deko poppte weg) */
 function setInst(im,idx,x,y,z,s,ry){_pos3.set(x,y,z);_q4.setFromAxisAngle(_up,ry||0);_scl3.set(s,s,s);_m4.compose(_pos3,_q4,_scl3);im.setMatrixAt(idx,_m4);}
 // Cluster-Streuung: dichte Büschel in einem Radius, dazwischen Lücken → wirkt natürlich
 function clusterScatter(nClusters,perCluster,spread,radius,cb){
@@ -1201,7 +1208,7 @@ function buildAmbient(){
   var stemG=new THREE.CylinderGeometry(0.03,0.03,0.5,4);stemG.translate(0,0.25,0);
   var stemIM=instMesh(stemG,new THREE.MeshLambertMaterial({color:0x2f7a45}),flBudget);
   var petalG=new THREE.IcosahedronGeometry(0.2,0);petalG.scale(1.5,0.4,1.5); // flache, breite Blüte
-  var petalIM=new THREE.InstancedMesh(petalG,new THREE.MeshBasicMaterial(),flBudget);scene.add(petalIM);ambientGroups.push(petalIM); // unlit -> immer bunt/hell
+  var petalIM=new THREE.InstancedMesh(petalG,new THREE.MeshBasicMaterial(),flBudget);petalIM.frustumCulled=false;scene.add(petalIM);ambientGroups.push(petalIM); // unlit -> immer bunt/hell · G9: nie cullen
   petalIM.instanceColor=new THREE.InstancedBufferAttribute(new Float32Array(flBudget*3),3);
   var flColors=[[1,0.35,0.62],[1,0.86,0.28],[0.7,0.45,1],[0.35,0.85,1],[1,0.55,0.28],[1,0.45,0.8],[0.95,0.95,0.98],[1,0.72,0.2]];
   var fi=0;
@@ -1875,7 +1882,7 @@ function updSmoke(dt){
     smokePuffs.push({sp:sp,t:0,life:4+Math.random()*2,drift:(Math.random()-0.5)*0.35});}}
   for(var j=smokePuffs.length-1;j>=0;j--){var pf=smokePuffs[j];pf.t+=dt;var fr=pf.t/pf.life;
     pf.sp.position.y+=dt*0.95;pf.sp.position.x+=pf.drift*dt;pf.sp.scale.setScalar(0.9+fr*2.4);pf.sp.material.opacity=0.5*(1-fr);
-    if(pf.t>=pf.life){scene.remove(pf.sp);smokePuffs.splice(j,1);}}
+    if(pf.t>=pf.life){scene.remove(pf.sp);if(pf.sp.material)pf.sp.material.dispose();smokePuffs.splice(j,1);}} /* G9: SpriteMaterial-Leak schließen (map ist geteilt → nicht disposen) */
 }
 // 🌱 Garten-Beet (umzäunt, mit Pflanzen) — Dorf-Detail
 // 🪧 Wegweiser-Schild (zeigt Richtung + Text)
@@ -4327,7 +4334,7 @@ function renderBloom(){
 function resizeBloom(){if(!_bloomOK)return;rtScene.setSize(W,H);bw=Math.max(1,Math.floor(W/2));bh=Math.max(1,Math.floor(H/2));rtA.setSize(bw,bh);rtB.setSize(bw,bh);}
 function renderScene(){if(_bloomOK)renderBloom();else renderer.render(scene,camera);}
 
-var perfNow=0,lastT=0,_mmT=0;
+var perfNow=0,lastT=0,_mmT=0,_fnT=0; /* G9: findNear-Drossel */
 function updMinimap(){var cv=document.getElementById("minimap");if(!cv||!running)return;var ctx=cv.getContext("2d");var W=cv.width,H=cv.height,cx=W/2,cy=H/2,R=W/2;
   ctx.clearRect(0,0,W,H);ctx.save();ctx.beginPath();ctx.arc(cx,cy,R-1,0,6.283);ctx.clip();
   ctx.fillStyle="rgba(30,60,40,.5)";ctx.fillRect(0,0,W,H);
@@ -4397,7 +4404,7 @@ function frame(now){
 
   updDayNight(dt);updAmbience(dt);updMusic(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updShock(dt);updMotes(dt);updDowned(dt);updEmotes(dt);updThrow(dt);updDodge(dt);updBolt2(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);_mmT+=dt;if(_mmT>0.15){_mmT=0;updMinimap();}updSmoke(dt);updDucks(dt);updPotions(dt);updNPCs(dt);updHub(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
   updAnimals(dt);updAnimalSpawns(dt);updAmbient(dt);updSway(dt);updGrassTufts(dt);updWater(dt);updCritters(dt);updLively(dt);
-  findNear();updPrompt();
+  _fnT+=dt;if(_fnT>0.12){_fnT=0;findNear();}updPrompt(); /* G9: findNear ~8×/s statt jeden Frame (Tap/Fire rufen weiterhin direkt) */
   if(buildMode)updGhost();
   for(var ri=0;ri<rigs.length;ri++)rigs[ri].mixer.update(dt);
   updCamera(dt);updQuest(dt);updBadges(dt);
@@ -4648,8 +4655,9 @@ function netStartQuick(){ /* ⚡ 1-Tipp Schnell-Koop ohne Code (öffentlicher Ra
 })();
 function startGame(fresh){
   var sv=(NET.on||fresh)?null:loadSave(); // Koop: immer frische, geteilte Welt
+  window._fellPend=(sv&&sv.fell&&sv.fell.length)?sv.fell:null; /* G10: VOR loadNature parken (dessen Callback kann vor dem if(sv)-Block feuern) */
   SEED=(NET_FORCE_SEED!=null)?NET_FORCE_SEED:(sv?sv.seed:((Math.random()*1e9)|0));rnd=mulberry32(SEED);
-  buildGround();buildRiver();buildGrassTufts();buildExtraFlora();loadNature(function(){placeResources();buildAmbient();placeLoot();if(day>1)spawnDayCache(true);loadProps();
+  buildGround();buildRiver();buildGrassTufts();buildExtraFlora();loadNature(function(){placeResources();applyFellPend();buildAmbient();placeLoot();if(day>1)spawnDayCache(true);loadProps();
     // CC0-Welt-Reichtum laden, dann Natur-Vielfalt + Dörfer + Friedhof platzieren
     loadCC0(["cc0_tree_pine","cc0_tree_oak","cc0_tree_default","cc0_tree_palm","cc0_bush","cc0_flower_purple","cc0_mushroom_red","cc0_rock_large","cc0_rock_small","cc0_log_stack","cc0_barrel","cc0_crate","cc0_fence","cc0_tent","cc0_campfire","cc0_crypt","cc0_gravestone_cross","cc0_gravestone_round","cc0_coffin","building_fachwerk","building_werkstatt","building_turm","building_castle","item_relic","item_potion","mob_dragon","item_fountain","ftk_road","ftk_stall","ftk_fountain","ftk_cart","ftk_banner","ftk_lantern","ftk_watermill","ftk_tree","ck_tower","ck_wall","ck_wall_corner","ck_gate","ck_flag","ck_catapult","ck_tree","dk_sword","dk_spear","dk_shield_round","dk_shield_rect","fd_sausage","fd_pie","fd_burger","npc_ma","npc_mb","npc_mc","npc_md","npc_fa","npc_fb","npc_fc","npc_fd","fn_table","fn_chair","fn_chair2","fn_stool","fn_plant","fn_plant2","fn_bookcase","fn_bed","nw_blume_lila","nw_blume_rot","nw_blume_gelb","nw_blume_gelb_hoch","nw_fels_a","nw_fels_b","nw_stein_gross_a","nw_stein_gross_b","nw_meilenstein"].concat(NEW_ASSETS).concat(NEW_ASSETS2).filter(function(n){return DEFER_ASSETS.indexOf(n)<0;}),
       function(){decorateWorld();iblClamp();loadCC0(DEFER_ASSETS,function(){decorateWorldLate();iblClamp();
@@ -4664,10 +4672,7 @@ function startGame(fresh){
     if(sv.perk)for(var pk in PERK)if(typeof sv.perk[pk]==="number")PERK[pk]=sv.perk[pk]; // gewählte Level-Perks zurück
     if(sv.qp){qProg.flug=sv.qp.f|0;qProg.arenaCr=sv.qp.a|0;qProg.raceWin=sv.qp.r|0;qProg.koloss=sv.qp.k|0;}else{qProg.flug=0;qProg.arenaCr=0;qProg.raceWin=0;qProg.koloss=0;} /* 📜 W3: defensiv (alte Saves: 0) */
     bountyN=sv.bn|0;bounty=null;
-    if(sv.fell&&sv.fell.length){ // gefällte Bäume/Felsen wieder als gefällt markieren (waren nach Reload wieder da)
-      sv.fell.forEach(function(fr){for(var ri=0;ri<resources.length;ri++){var r=resources[ri];
-        if(!r.dead&&Math.round(r.x)===fr.x&&Math.round(r.z)===fr.z){r.dead=true;r.regrow=fr.rg||60;
-          if(r.mesh)r.mesh.visible=false;if(r.berry)r.berry.visible=false;break;}}});}
+    /* G10: _fellPend wird bereits oben (vor loadNature) geparkt */
     if(sv.loot&&sv.loot.length)lootOpened=sv.loot.slice();
     lootOpenedTotal=(sv.lootT!=null?sv.lootT|0:lootOpened.length);
     window._gdPend=sv.gd||null; /* NPC-Geschenke: npcs[] existiert hier noch nicht -> nach decorateWorldLate anwenden */
@@ -4899,6 +4904,7 @@ window.__nw={
   qprog:function(){return {flug:qProg.flug|0,arenaCr:qProg.arenaCr|0,raceWin:qProg.raceWin|0,koloss:qProg.koloss|0};}, /* Test/QA: W3-Folge-Quests */
   setQuest:function(n){quest=Math.max(0,Math.min(QUESTS.length,n|0));document.getElementById("questText").textContent=quest<QUESTS.length?QUESTS[quest].t:"🏆 Überlebe weiter!";return quest;}, /* Test-Only: Quest-Stand vorspulen */
   simStation:function(i,score,win){_stCur=i|0;_stRewarded=false;onStationDone(score|0,win|0);_stCur=-1;return this.qprog();}, /* Test-Only: stationDone-Pfad ohne iframe (win-Flag für Koloss-Quest) */
+  resDead:function(){var n=0,tot=resources.length;for(var i=0;i<resources.length;i++)if(resources[i].dead)n++;return {dead:n,total:tot};}, /* Test/QA: wie viele Ressourcen abgebaut (G10-Verifikation) */
   phase:function(){return dayPhase();}, /* Test/QA: Tagesphase */
   npcInfo:function(){var a=[],w=0,g2=0;for(var i=0;i<npcs.length;i++){var n=npcs[i];if(!n.mesh)continue;if(n.roam)w++;if(n.glb)g2++;a.push({x:+n.mesh.position.x.toFixed(2),z:+n.mesh.position.z.toFixed(2),roam:!!n.roam,vis:n.mesh.visible,sleep:!!n.sleeping,glb:!!n.glb,anim:n.aCur||null});}return {phase:dayPhase(),roamers:w,glbs:g2,glbCap:NPC_GLB_CAP,list:a};}, /* Test/QA: NPC-Tagesablauf + W4-GLB-NPCs */
   dog:function(){if(_dogIdx<0)return null;var d=critters[_dogIdx];return {x:d.m.position.x,z:d.m.position.z,follow:+d.follow.toFixed(2),cd:+d.cd.toFixed(2)};}, /* Test/QA: Dorfhund */

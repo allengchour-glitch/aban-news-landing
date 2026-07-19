@@ -14,10 +14,10 @@
 - **G7** Berge im Nebel (fog=false) + Uferring unter Gelände (groundH-Y).
 - **G8** Quest/Badge: Koloss-Badge→qProg.koloss; Wave-Bounty an nights binden; Holzfäller→totalWood.
 
-## M3 — Perf & Save (🟡/🔴)
-- **G9** Perf: Licht-Budget+Culling (mobil max4, nur Nacht/Radius); updSmoke-SpriteLeak dispose/Pool; findNear drosseln; frustumCulled=false auf InstancedMeshes (_tuftIM 504 + 656/1173/1195/1208/1240).
-- **G10** 🔴 Save: gefällte Ressourcen kehren zurück (Race) → `_fellPend` sync parken, Markier-Schleife in loadNature-Callback nach placeResources (wie _gdPend).
-- **G11** THREE/WebGL-Guard vor Renderer (Klartext statt schwarz).
+## M3 — Perf & Save (🟡/🔴) — UMGESETZT (Licht-Culling bewusst verschoben)
+- **G9** (teilweise): frustumCulled=false auf allen InstancedMeshes (_tuftIM/instMesh-Helper/Kegel-Gras/petalIM → Gras-Verschwinden-Regression behoben); updSmoke SpriteMaterial-Leak (dispose, map geteilt); findNear-Drossel (~8×/s statt jeden Frame). **VERSCHOBEN: Licht-Culling** — Codebase hatte bereits 2 Licht-Perf-Pässe (Hub-Cap + _hubNight-Gating); aggressives globales Cullen riskiert Shader-Recompiles + Dorf-Atmosphäre-Regression → separat & vorsichtig.
+- **G10** ✅ 🔴 Save gefällte Ressourcen: `_fellPend` VOR loadNature parken (Callback kann vor if(sv)-Block feuern) + applyFellPend() nach placeResources. **VERIFIZIERT end-to-end**: Baum gefällt→saveGame→Reload→bleibt tot (matched:1, 0 Fehler).
+- **G11** ✅ THREE/WebGL-Guard vor Renderer (Klartext-Meldung statt schwarzer Screen).
 
 ## M4 — 🔴 HOCHRISIKO Koop-Determinismus (eigener PR, Testharness zuerst)
 - **K1** Kosmetik aus geteiltem Strom (updLively/burst/Tier-KI → Math.random).
