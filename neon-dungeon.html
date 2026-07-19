@@ -225,6 +225,7 @@ var boss=new THREE.Group(),bossHp=6,bossOn=false,bossPh=(NG?1:0); /* #71 NG+: st
   boss.position.set(0,-8,CHZ-4);boss.visible=false;scene.add(boss);})(); /* startet unterirdisch -> Rise-Inszenierung */
 var rings=[],bState="idle",bT=2.5,slamArm=null,vulnT=0,hitFx=0,warnD=null,_fw=new THREE.Vector3(),shakeT=0,stomps=0,introT=0,introW=0,btBeat=1.2,btIdx=0; /* #23 Boss-Ostinato (btBeat Init 1.2 Pflicht, sonst NaN) */
 var fx=[],fxGeo=new THREE.OctahedronGeometry(0.12,0); /* shared Geo, nie disposen */
+var fallGems=[]; /* #57 Kristall-Regen ohne setIntervals (im Frame aktualisiert, überlebt den Sieg) */
 function burst(x,y,z,n,col){for(var bi=0;bi<n;bi++){var m=new THREE.Mesh(fxGeo,M(col,col,0.8));
   m.position.set(x,y,z);scene.add(m);
   fx.push({m:m,vx:(Math.random()-0.5)*4,vy:2+Math.random()*3,vz:(Math.random()-0.5)*4,life:0.5+Math.random()*0.3,kind:"sp"});}}
@@ -359,12 +360,10 @@ function winGame(){if(won||dead)return;won=true;bossOn=false;shakeT=0.6;
   sfx(392,0.3,"triangle",0.07);setTimeout(function(){sfx(523,0.3,"triangle",0.07);},180);
   setTimeout(function(){sfx(784,0.5,"triangle",0.08);},380);
   boss.userData.falling=true;
-  (function(){for(var vi=0;vi<10;vi++)(function(k){setTimeout(function(){ /* 💎 Kristall-Regen */
+  (function(){for(var vi=0;vi<10;vi++)(function(k){setTimeout(function(){ /* 💎 Kristall-Regen (#57 frame-basiert, kein setInterval) */
     var vg=new THREE.Mesh(new THREE.OctahedronGeometry(0.3,0),M(0xc98bff,0xa060ff,1));
     vg.position.set(boss.position.x+(Math.random()-0.5)*6,7+Math.random()*3,boss.position.z+(Math.random()-0.5)*6);
-    scene.add(vg);vg.userData.vy=0;
-    var iv=setInterval(function(){vg.userData.vy-=0.02;vg.position.y+=vg.userData.vy;vg.rotation.y+=0.15;
-      if(vg.position.y<0.3){clearInterval(iv);vg.position.y=0.3;}},16);
+    scene.add(vg);fallGems.push({m:vg,vy:0});
     gemN++;updHud();sfx(700+k*60,0.1,"triangle",0.04,1000+k*80);},k*160);})(vi);})();
   setTimeout(function(){finish(true);},2600);}
 function finish(win){if(finish._done)return;finish._done=true;
@@ -424,6 +423,9 @@ function frame(now){requestAnimationFrame(frame);
     var ox2=mp.x,om=mp.mv;mp.x=mp.x0+Math.sin(t*om.sp+om.ph)*om.ax;mp.y=mp.y0+Math.sin(t*om.sp+om.ph)*om.ay;
     mp.g.position.set(mp.x,mp.y,mp.z);
     if(running&&onG&&Math.abs(px-mp.x)<=mp.w+0.4&&Math.abs(pz-mp.z)<=mp.d+0.4&&Math.abs(py-mp.y)<0.3){px+=mp.x-ox2;py=mp.y;}}
+  for(var fg=0;fg<fallGems.length;fg++){var FG=fallGems[fg];if(FG.m.position.y<=0.3)continue; /* #57 Kristall-Regen top-level (läuft auch nach dem Sieg weiter) */
+    FG.vy-=0.02;FG.m.position.y+=FG.vy;FG.m.rotation.y+=0.15;if(FG.m.position.y<0.3)FG.m.position.y=0.3;}
+  if(boss.userData.falling){boss.rotation.x+=dt*0.5;boss.position.y-=dt*1.4;} /* #57 hochgezogen: Koloss sinkt auch nach dem Sieg weiter */
   if(running&&!dead&&!won){
     runT+=dt; /* #68 */
     /* Bewegung (Tastatur überlagert Stick) */
@@ -520,7 +522,6 @@ function frame(now){requestAnimationFrame(frame);
         if(!rr.hit&&invT<=0&&Math.abs(pd-rr.r)<0.55&&py<0.55){rr.hit=true;damage();break;} /* break PFLICHT: damage() leert rings */
         if(rr.r>18){scene.remove(rr.m);rr.m.geometry.dispose();rr.m.material.dispose();rings.splice(ri,1);}}
     }
-    if(boss.userData.falling){boss.rotation.x+=dt*0.5;boss.position.y-=dt*1.4;}
     if(sq>0){sq=Math.max(0,sq-dt*4);var _sy=1-sq*0.3,_sxz=1+sq*0.22;player.scale.set(_sxz,_sy,_sxz);player.position.y=py;}else if(player.scale.y!==1)player.scale.set(1,1,1); /* 🫠 Lande-Squash */
     if(invT>0){invT-=dt;player.visible=invT<=0||Math.sin(t*30)>0;} /* 🛡️ kurze Unverwundbarkeit blinkt */
     if(hearts===1&&!dead&&!won){hbT-=dt;if(hbT<=0){hbT=1.1;sfx(85,0.1,"sine",0.05);setTimeout(function(){sfx(70,0.12,"sine",0.045);},140);}}
