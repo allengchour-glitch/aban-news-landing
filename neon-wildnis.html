@@ -2076,6 +2076,7 @@ function onStationDone(score){
   inv.crystal=(inv.crystal|0)+cr;invUpd();
   if(st.badge==="gladiator")qProg.arenaCr=(qProg.arenaCr|0)+cr; /* 📜 W3-Quest (b): Arena-💎 zaehlen */
   if(st.badge==="raser"&&(score|0)>=40)qProg.raceWin=1; /* 📜 W3-Quest (c): Renn-Sieg ab Score 40 */
+  if(st.badge==="partner"&&typeof bondGain==="function"){bondGain(3);toast("🤝 Tempel gemeistert — euer Band wächst! +3");} /* #60 Koop-Sieg füttert das Wildnis-Band */
   var bests={};try{bests=JSON.parse(lsGet("nw_stbest")||"{}")||{};}catch(e){bests={};}
   var prev=bests[st.badge]|0,sc2=score|0;
   if(sc2>prev){bests[st.badge]=sc2;lsSet("nw_stbest",JSON.stringify(bests));

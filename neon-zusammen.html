@@ -252,7 +252,7 @@ function doSwap(){if(NETON||!running||won)return;active=1-active;sfx(560,0.08,"t
 function near(c,o,r){return Math.hypot(c.x-o.position.x,c.z-o.position.z)<(r||2.2);}
 function applyById(id){ /* wendet GENAU einen Effekt an (idempotent) — Empfänger repliziert das Ergebnis ohne near()-Recheck */
   if(id==="vines"){if(vines.userData.alive){vines.userData.alive=false;vines.visible=false;var wi=walls.indexOf(walls.find(function(w){return w.m===vines;}));if(wi>=0)walls.splice(wi,1);announce("🔥 Ember verbrennt die Ranken!","#ff9a60");sfx(180,0.3,"sawtooth",0.07,70);noiseSfx("fire");shake=0.35;spark(vines.position.x,1.4,vines.position.z,0xff7a30,18);}}
-  else if(id==="plant"){if(!plant.userData.grown){plant.userData.grown=true;plant.scale.set(2.6,4.2,2.6);plant.position.y=1.6;lever2.visible=true;lever2.position.y=3.4;announce("💧 Aqua lässt die Pflanze wachsen!","#60c8ff");sfx(520,0.25,"sine",0.06,780);noiseSfx("water");spark(plant.position.x,1.2,plant.position.z,0x50c8ff,18);}}
+  else if(id==="plant"){if(!plant.userData.grown){plant.userData.grown=true;plant.userData.tw=0.001;lever2.visible=true;announce("💧 Aqua lässt die Pflanze wachsen!","#60c8ff");sfx(520,0.25,"sine",0.06,780);noiseSfx("water");spark(plant.position.x,1.2,plant.position.z,0x50c8ff,18);}} /* #53 Wachstum wird getweent */
   else if(id==="lever"){if(!lever.userData.pulled){lever.userData.pulled=true;lever.rotation.x=0.7;announce("⚙️ Hebel 1 gezogen!","#ffd166");sfx(300,0.15,"square",0.06,180);}}
   else if(id==="lever2"){if(!lever2.userData.pulled){lever2.userData.pulled=true;lever2.visible=true;lever2.rotation.x=0.7;announce("⚙️ Hebel 2 gezogen!","#ffd166");sfx(340,0.15,"square",0.06,200);}}
   else if(id==="syncA"){syncA.userData.t=1.2;syncA.material.emissiveIntensity=1;sfx(440,0.12,"triangle",0.06);}
@@ -337,14 +337,16 @@ function openGate(g,msg,fromNet){if(g.userData.open)return;g.userData.open=true;
   if(!fromNet&&NETON&&net)try{net.send({t:"gate",i:gates.indexOf(g)});}catch(e){}} /* Tor auf BEIDEN Geräten öffnen */
 function winGame(fromNet){if(won)return;won=true;room=4;updHud();stopAmbient();
   var secs=Math.round((performance.now()-t0)/1000);
-  var score=gemN*5+40+Math.max(0,60-Math.floor(secs/5));
+  var score=40+gemN*10+Math.max(0,70-secs); /* #61 Kristalle (max 60) ~gleich gewichtet wie Tempo (max 70) */
+  var best=0;try{best=parseInt(localStorage.getItem("tempel2_best")||"0",10)||0;}catch(e){} /* #58 */
+  var isRecord=score>best;if(isRecord){try{localStorage.setItem("tempel2_best",""+score);}catch(e){}}
   announce("🏆 GEMEINSAM GESCHAFFT!","#ffd166");
   sfx(523,0.2,"triangle",0.07);setTimeout(function(){sfx(659,0.2,"triangle",0.07);},160);setTimeout(function(){sfx(784,0.35,"triangle",0.08);},320);
   if(!fromNet&&NETON&&net)try{net.send({t:"win"});}catch(e){}
   if(STATION)stationPost({t:"stationDone",score:score});
   setTimeout(function(){var ov=document.getElementById("ov");ov.style.display="flex";
     ov.querySelector("h1").textContent="🏆 TEMPEL GEMEISTERT!";
-    ov.querySelector("p").innerHTML="💎 "+gemN+"/6 Kristalle · ⏱️ "+secs+"s · <b>Score "+score+"</b>";
+    ov.querySelector("p").innerHTML="💎 "+gemN+"/6 Kristalle · ⏱️ "+secs+"s · <b>Score "+score+"</b>"+(isRecord?'<br><span style="color:#ffd166">🥇 Neuer Rekord!</span>':(best?'<br><span style="color:#8adfc0">Bestwert: '+best+'</span>':''));
     var cb=document.getElementById("coopBtn");if(cb)cb.style.display="none";
     var sb2=document.getElementById("startBtn");sb2.textContent=STATION?"← Zurück zur Wildnis":"Nochmal ▶";
     sb2.onclick=function(){if(STATION)stationPost("mini-back");else location.reload();};},2200);}
@@ -371,6 +373,8 @@ function frame(now){_rafId=requestAnimationFrame(frame);
       if(P.fire&&ar[yi]>1.7){ar[yi]=0.35;ar[pi*3]=(Math.random()-0.5)*0.4;ar[pi*3+2]=(Math.random()-0.5)*0.4;}
       if(!P.fire&&ar[yi]<0.1){ar[yi]=1.5;ar[pi*3]=(Math.random()-0.5)*0.4;ar[pi*3+2]=(Math.random()-0.5)*0.4;}}
     P.geo.attributes.position.needsUpdate=true;}
+  if(plant.userData.tw>0&&plant.userData.tw<1){plant.userData.tw=Math.min(1,plant.userData.tw+dt*2.2); /* #53 easeOut-Wachstum */
+    var e=plant.userData.tw,ez=1-Math.pow(1-e,3);plant.scale.set(1+1.6*ez,1+3.2*ez,1+1.6*ez);plant.position.y=1.0+0.6*ez;lever2.position.y=1.6+1.8*ez;}
   for(var gi=0;gi<gems.length;gi++){var gm=gems[gi];
     if(gm.got){if(gm.pop>0){gm.pop-=dt;var ps=1+(0.35-gm.pop)*5;gm.m.scale.setScalar(Math.max(0.01,ps));gm.m.position.y+=dt*2.4;gm.m.material.transparent=true;gm.m.material.opacity=Math.max(0,gm.pop/0.35);if(gm.pop<=0)gm.m.visible=false;}continue;} /* #52 Pickup-Pop */
     gm.m.rotation.y+=dt*2.2;gm.m.position.y=1.0+Math.sin(t*2.4+gm.ph)*0.12;}
