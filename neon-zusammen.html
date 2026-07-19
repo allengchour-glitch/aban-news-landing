@@ -91,6 +91,7 @@ var camera=new THREE.PerspectiveCamera(56,W/H,0.1,220);
 var BASE_HFOV=56*Math.PI/180; /* #45 horizontale Sicht als Invariante (Rätsel x=±6 bleiben sichtbar) */
 function fitFov(){var a=W/H;var vf=56;if(a<1){vf=2*Math.atan(Math.tan(BASE_HFOV/2)/a)*180/Math.PI;vf=Math.min(vf,82);}camera.fov=vf;camera.aspect=a;camera.updateProjectionMatrix();}
 fitFov();
+camera.position.set(0,9.5,10.5);camera.lookAt(0,0.8,0); /* #46 Startposition (Figuren-Mitte z≈2), kein Schwenk aus dem Ursprung */
 addEventListener("resize",function(){W=innerWidth;H=innerHeight;fitFov();renderer.setSize(W,H);});
 scene.add(new THREE.HemisphereLight(0x6a9e8a,0x101a14,0.55));
 scene.add(new THREE.AmbientLight(0x2a4436,0.4));
@@ -177,7 +178,7 @@ var chars=[
   {g:mkChar(0x40a8ff,0x30e0ff,"anime_mage.glb",false),x:2,z:2,name:"💧 Aqua",id:"aqua"}
 ];
 var active=0,gemN=0,room=1,running=false,won=false,t0=0,taughtHalf=false,stuck1=0;
-var lookFx=0,lookFz=0; /* #16 geglätteter Kamera-Blickpunkt */
+var lookFx=0,lookFz=2; /* #16 geglätteter Kamera-Blickpunkt (Start = Figuren-Mitte) */
 var _pOnA=false,_pOnB=false; /* #29 Platten-Flankenerkennung */
 var shake=0; /* #54 Kamera-Punch */
 var _pv=(window.THREE&&THREE.Vector3)?new THREE.Vector3():null; /* #48 Partner-Pfeil-Projektion (hoisted) */
@@ -249,9 +250,10 @@ var kx=0,kz=0,keys={};
   function end(e){for(var i=0;i<e.changedTouches.length;i++){if(e.changedTouches[i].identifier===id){id=null;kx=0;kz=0;
     st.style.left="";st.style.top="";st.style.bottom="";knob.style.transform="translate(-50%,-50%)";}}}
   addEventListener("touchend",end);addEventListener("touchcancel",end);})();
+function activeTag(){var ct=document.getElementById("coopTag");if(ct&&!NETON)ct.textContent="🎮 "+chars[active].name+" aktiv · 🔁 wechseln";} /* #17 persistenter Solo-Indikator */
 function doSwap(){if(NETON||!running||won)return;active=1-active;sfx(560,0.08,"triangle",0.05,720);
   chars[active].g.userData.ring.material.opacity=0.7;chars[1-active].g.userData.ring.material.opacity=0;
-  hint("Jetzt steuerst du "+chars[active].name,1600);}
+  activeTag();hint("Jetzt steuerst du "+chars[active].name,1600);}
 function near(c,o,r){return Math.hypot(c.x-o.position.x,c.z-o.position.z)<(r||2.2);}
 function applyById(id){ /* wendet GENAU einen Effekt an (idempotent) — Empfänger repliziert das Ergebnis ohne near()-Recheck */
   if(id==="vines"){if(vines.userData.alive){vines.userData.alive=false;vines.visible=false;var wi=walls.indexOf(walls.find(function(w){return w.m===vines;}));if(wi>=0)walls.splice(wi,1);announce("🔥 Ember verbrennt die Ranken!","#ff9a60");sfx(180,0.3,"sawtooth",0.07,70);noiseSfx("fire");shake=0.35;spark(vines.position.x,1.4,vines.position.z,0xff7a30,18);}}
@@ -365,6 +367,7 @@ function start(coop){if(!coop&&coopWait){hint("⏳ Koop-Suche läuft — warte a
   chars[active].g.userData.ring.material.opacity=NETON?0:0.7;
   try{audio();if(AC&&AC.state!=="running")AC.resume();}catch(e){}
   startAmbient(); /* #26 Tempel-Ambient */
+  activeTag(); /* #17 */
   hint(NETON?"Sprecht euch ab — kein Rätsel geht allein!":"🔁 wechselt zwischen Ember & Aqua",4200);updHud();}
 document.getElementById("startBtn").onclick=function(){start(false);};
 
@@ -435,12 +438,16 @@ function frame(now){_rafId=requestAnimationFrame(frame);
     [gate1,gate2,gate3].forEach(function(g){if(g.userData.open&&g.position.y>-1.6)g.position.y-=dt*2.2;});
     /* Sieg: beide auf dem Podest */
     if(gate3.userData.open){var fin=chars.every(function(c){return c.z<-63.5;});if(fin)winGame(false);}
-    /* Kamera folgt Mittelpunkt, leicht auf die aktive Figur gewichtet */
-    var fx=(chars[0].x+chars[1].x)/2*0.5+chars[NETON?mySlot:active].x*0.5,
-        fz=(chars[0].z+chars[1].z)/2*0.5+chars[NETON?mySlot:active].z*0.5;
+    /* Kamera folgt Mittelpunkt · #39 zoomt bei getrennten Figuren aus, damit beide im Bild bleiben */
+    var mid=(chars[0].x+chars[1].x)/2,midz=(chars[0].z+chars[1].z)/2;
+    var spread=Math.hypot(chars[0].x-chars[1].x,chars[0].z-chars[1].z);
+    var zoom=Math.min(1.9,1+spread*0.05);var wgt=0.5/zoom; /* je weiter auseinander, desto stärker auf die echte Mitte */
+    var fx=mid*(1-wgt)+chars[NETON?mySlot:active].x*wgt,
+        fz=midz*(1-wgt)+chars[NETON?mySlot:active].z*wgt;
+    var portrait=(W/H)<1?1.14:1; /* Hochformat: etwas weiter raus */
     camera.position.x+=(fx-camera.position.x)*Math.min(1,dt*4);
-    camera.position.y+=(9.5-camera.position.y)*Math.min(1,dt*4);
-    camera.position.z+=(fz+8.5-camera.position.z)*Math.min(1,dt*4);
+    camera.position.y+=(9.5*zoom*portrait-camera.position.y)*Math.min(1,dt*4);
+    camera.position.z+=(fz+8.5*zoom*portrait-camera.position.z)*Math.min(1,dt*4);
     lookFx+=(fx-lookFx)*Math.min(1,dt*5);lookFz+=(fz-lookFz)*Math.min(1,dt*5); /* #16 weicher Fokus-Lerp (kein harter lookAt-Sprung beim 🔁) */
     if(shake>0){shake=Math.max(0,shake-dt*1.6);camera.position.x+=(Math.random()-0.5)*shake*1.1;camera.position.y+=(Math.random()-0.5)*shake*1.1;} /* #54 abklingender Punch */
     camera.lookAt(lookFx,0.8,lookFz-2);
