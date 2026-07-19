@@ -248,7 +248,7 @@ renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
 renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=0.78;
 renderer.outputEncoding=THREE.sRGBEncoding;
 document.getElementById("wrap").appendChild(renderer.domElement);
-var scene=new THREE.Scene();scene.background=new THREE.Color(0x9fd0ea);scene.fog=new THREE.Fog(0x9fd0ea,70,220);
+var scene=new THREE.Scene();scene.background=new THREE.Color(0x9fd0ea);scene.fog=new THREE.Fog(0x9fd0ea,130,340);
 var camera=new THREE.PerspectiveCamera(46,W/H,0.1,600);
 // Echtes Himmelslicht
 if(THREE.RGBELoader&&renderer.capabilities.isWebGL2){try{new THREE.RGBELoader().load("/textures/sky_1k.hdr",function(tex){
@@ -325,13 +325,17 @@ ladeTex("textures/th/rasen.jpg",13,10,function(t){rasen.material.map=t;rasen.mat
 // ---- Open-World-Landschaft rundherum ----
 (function landschaft(){
   // Ferne Grasebene (Horizont) unter allem
-  var fern=new THREE.Mesh(new THREE.PlaneGeometry(600,600),new THREE.MeshStandardMaterial({color:0x7ab04a,roughness:1,envMapIntensity:0.18}));
+  var fernTex=grasTex.clone();fernTex.needsUpdate=true;fernTex.repeat.set(52,52);
+  var fern=new THREE.Mesh(new THREE.PlaneGeometry(600,600),new THREE.MeshStandardMaterial({map:fernTex,color:0xa8c88a,roughness:1,envMapIntensity:0.18}));
   fern.rotation.x=-Math.PI/2;fern.position.y=-0.08;fern.receiveShadow=true;scene.add(fern);
   // Sanfte Huegelkette am Rand (grosse flache Halbkugeln)
-  var hMat=new THREE.MeshStandardMaterial({color:0x6aa044,roughness:1,envMapIntensity:0.16});
+  var hTex=grasTex.clone();hTex.needsUpdate=true;hTex.repeat.set(6,4);
+  var hMat=new THREE.MeshStandardMaterial({map:hTex,color:0x9aba7c,roughness:1,envMapIntensity:0.16});
   for(var h=0;h<14;h++){var a=h/14*6.283,r=95+((h*37)%40);
+    var hx0=Math.cos(a)*r,hz0=Math.sin(a)*r;
+    if(Math.hypot(hx0-(-90),hz0-80)<42)continue; // nicht in den See ragen
     var hue=new THREE.Mesh(new THREE.SphereGeometry(14+((h*7)%12),14,8,0,6.283,0,Math.PI/2),hMat);
-    hue.position.set(Math.cos(a)*r,-3-((h*3)%4),Math.sin(a)*r);
+    hue.position.set(hx0,-3-((h*3)%4),hz0);
     hue.scale.y=0.32+((h%3)*0.06);hue.receiveShadow=true;scene.add(hue);}
   // Blumenfelder (Cluster kleiner farbiger Punkte) auf der fernen Wiese
   var BF=[0xff6b8a,0xffd93d,0xa66bff,0xff9f43,0xffffff];
@@ -379,7 +383,7 @@ ladeTex("textures/th/rasen.jpg",13,10,function(t){rasen.material.map=t;rasen.mat
   (function gleis(){var g=new THREE.Group();
     for(var s3=-120;s3<120;s3+=2.2){var schw=new THREE.Mesh(new THREE.BoxGeometry(3.4,0.16,0.6),stdMat(0x5a4230,0.85));schw.position.set(s3,0.08,0);g.add(schw);}
     [-1.3,1.3].forEach(function(rx){var sch=new THREE.Mesh(new THREE.BoxGeometry(240,0.12,0.16),stdMat(0x88888e,0.4));sch.position.set(0,0.2,rx);g.add(sch);});
-    g.position.set(0,0.01,86);scene.add(g);})();
+    g.position.set(0,0.01,112);scene.add(g);})(); // Gleis weiter raus (schnitt sonst durch den See)
 })();
 // ---- Wetter & Jahreszeiten ----
 var wetter="sonne";
@@ -713,7 +717,7 @@ setTimeout(function baueVerkehr(){
     if(w===0){var kab=new THREE.Mesh(new THREE.BoxGeometry(2,1,2.4),stdMat(0x2a2a34,0.5));kab.position.set(2,3,0);wag.add(kab);}
     for(var r=0;r<2;r++)[-1,1].forEach(function(sn){var rad=new THREE.Mesh(new THREE.CylinderGeometry(0.5,0.5,0.3,12),stdMat(0x1a1a20,0.5));rad.rotation.z=Math.PI/2;rad.position.set(-1.8+r*3.6,0.5,sn*1.1);wag.add(rad);});
     wag.position.set(-w*6.6,0,0);zugG.add(wag);}
-  zugG.position.set(-120,0.01,86);zugG.rotation.y=0;scene.add(zugG);
+  zugG.position.set(-120,0.01,112);zugG.rotation.y=0;scene.add(zugG);
   window._zug={mesh:zugG,pos:-120,speed:14};
   // ---- Helikopter kreist am Himmel ----
   var heliG=new THREE.Group();
@@ -886,12 +890,12 @@ setTimeout(function baueGebaeude(){
     var w=new THREE.Group();w.add(root);w.position.set(x,y,z);w.rotation.y=rotY;scene.add(w);
     if(!window._gebaeude)window._gebaeude=[];window._gebaeude.push(w);if(cb)cb(w,root);},undefined,function(){});}
   bau("bd_barn.glb",7,-84,0,-40,Math.PI/2,false);        // Scheune (Bauernhof West)
-  bau("bd_market.glb",6,26,0,67,Math.PI,false);           // Markt (Suedzeile)
+  bau("bd_market.glb",6,26,0,70.5,Math.PI,false);         // Markt (Suedzeile, hinter dem Gehweg)
   bau("bd_inn.glb",8.5,-28,0,68,Math.PI,false);           // Wirtshaus (Suedzeile)
   bau("bd_house_a.glb",5.5,50,0,-66,0,false);             // Nordzeile-Luecke Ost
   bau("bd_house_b.glb",5.5,-52,0,-66,0,false);            // Nordzeile-Luecke West
   bau("bd_windmill_tower.glb",12,88,0,34,-Math.PI/2,false,function(tw){
-    bau("bd_windmill_blades.glb",8,87.3,9.9,34,-Math.PI/2,true,function(w2,root2){
+    bau("bd_windmill_blades.glb",11.5,86.2,9.6,34,-Math.PI/2,true,function(w2,root2){
       window._muehle=root2;});});
   // ---- 16 selbstgebaute Blender-Props (th3_*, vom Agenten-Schwarm prozedural erstellt) ----
   // Spielplatz neben dem Brunnen-Park (Osten)
@@ -901,7 +905,7 @@ setTimeout(function baueGebaeude(){
   bau("th3_wippe.glb",1.25,79,0,2,Math.PI/2,false);
   bau("th3_karussell.glb",1.3,88,0,5,0,false);
   // Markt-Platz (Suedzeile)
-  bau("th3_marktstand.glb",2.6,33,0,67,Math.PI,false);
+  bau("th3_marktstand.glb",2.6,48,0,67.5,Math.PI,false);
   bau("th3_brezelstand.glb",1.9,19,0,67.5,Math.PI,false);
   // Strassen-Deko
   bau("th3_kiosk.glb",3.0,-16,0,-66,0,false);
@@ -913,10 +917,10 @@ setTimeout(function baueGebaeude(){
   bau("th3_blumenkuebel.glb",0.7,84,0,-31,0,false);
   // See: Steg + Ruderboot
   bau("th3_steg.glb",0.8,-80,0,73,-Math.PI/4,false);
-  bau("th3_ruderboot.glb",0.55,-85,-0.06,76,0.6,false);
+  bau("th3_ruderboot.glb",0.55,-88,-0.04,75,0.6,false);
   // Park: Picknicktische
   bau("th3_picknick.glb",0.85,74,0,-32,0.4,false);
-  bau("th3_picknick.glb",0.85,94,0,-10,-0.5,false);
+  bau("th3_picknick.glb",0.85,90,0,-16,-0.5,false);
   // ---- Welle 2 (th4_*): echte Baum-Sorten, Schilder, Brücke, Schwan & Co. ----
   // Birken-Hain am See
   bau("th4_birke.glb",5.2,-72,0,66,0.3,false);bau("th4_birke.glb",4.8,-102,0,72,1.1,false);bau("th4_birke.glb",5.5,-96,0,94,2.2,false);
@@ -938,7 +942,7 @@ setTimeout(function baueGebaeude(){
   // Vogelhäuser
   bau("th4_vogelhaus.glb",2,74,0,-36,0.6,false);bau("th4_vogelhaus.glb",2,-76,0,20,0,false);
   // See: Bogenbrücke ans Ufer, Schwan aufs Wasser, Sonnenschirme
-  bau("th4_bruecke.glb",1.1,-90,0,66.5,Math.PI/2,false);
+  bau("th4_bruecke.glb",1.1,-93,0,69.5,Math.PI/2,false);
   bau("th4_schwan.glb",0.75,-95,-0.02,74,0.6,false);
   bau("th4_sonnenschirm.glb",2.4,-77,0,69,0.4,false);bau("th4_sonnenschirm.glb",2.4,94,0,-13,1.2,false);
 },0);
