@@ -122,6 +122,8 @@ var lever2=box(6,1.6,-30,0.4,1.4,0.4,M(0xc0c8d8,0x404858,0.4));lever2.userData.p
 /* Raum 3: Gleichklang-Schalter (beide innerhalb 1.2s) */
 var syncA=box(-6,0.9,-52,1.4,1.8,1.4,M(0xff8a50,0x7a3210,0.5));syncA.userData.t=0;
 var syncB=box(6,0.9,-52,1.4,1.8,1.4,M(0x50b8ff,0x104a7a,0.5));syncB.userData.t=0;
+(function(o,col){var r=new THREE.Mesh(new THREE.RingGeometry(0.9,1.1,24),new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:0,side:THREE.DoubleSide}));r.rotation.x=-Math.PI/2;r.position.y=-0.85;o.add(r);o.userData.ring=r;})(syncA,0xff8a50);
+(function(o,col){var r=new THREE.Mesh(new THREE.RingGeometry(0.9,1.1,24),new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:0,side:THREE.DoubleSide}));r.rotation.x=-Math.PI/2;r.position.y=-0.85;o.add(r);o.userData.ring=r;})(syncB,0x50b8ff); /* ⚡ schrumpfender Gleichklang-Marker */
 /* Ziel-Podest */
 box(0,0.15,-66,6,0.3,4,M(0xffd166,0x8a6a20,0.4));
 var gems=[];function gem(x,z){var m=new THREE.Mesh(new THREE.OctahedronGeometry(0.3,0),M(0x7dffc8,0x30c890,0.9));
@@ -166,7 +168,7 @@ var chars=[
   {g:mkChar(0xff7a40,0xff5020,"anime_warrior.glb",true),x:-2,z:2,name:"🔥 Ember",id:"ember"},
   {g:mkChar(0x40a8ff,0x30e0ff,"anime_mage.glb",false),x:2,z:2,name:"💧 Aqua",id:"aqua"}
 ];
-var active=0,gemN=0,room=1,running=false,won=false,t0=0;
+var active=0,gemN=0,room=1,running=false,won=false,t0=0,taughtHalf=false,stuck1=0;
 var NETON=false,mySlot=0,net=null,rt={x:2,z:2},coopWait=false;
 
 /* ---------- Audio ---------- */
@@ -327,14 +329,17 @@ function frame(now){_rafId=requestAnimationFrame(frame);
     /* Raum 1: beide Platten gleichzeitig */
     var onA=chars.some(function(c){return near(c,plateA,1.5);}),onB=chars.some(function(c){return near(c,plateB,1.5);});
     plateA.material.emissiveIntensity=onA?0.9:0.25;plateB.material.emissiveIntensity=onB?0.9:0.25;
+    if((onA!==onB)&&!taughtHalf&&!gate1.userData.open){taughtHalf=true;hint(NETON?"⚖️ 1/2 — der andere auf die zweite Platte!":"⚖️ 1/2! Figur stehen lassen · 🔁 · zweite Platte",3600);sfx(500,0.1,"triangle",0.04);}
+    if(!gate1.userData.open){stuck1+=dt;if(stuck1>9){stuck1=-8;hint(NETON?"⚖️ Beide Platten GLEICHZEITIG — jeder auf eine!":"⚖️ Beide Platten GLEICHZEITIG: eine Figur draufstellen, 🔁, andere Platte",4200);}}
     if(onA&&onB&&!gate1.userData.open){openGate(gate1,"⚖️ Beide Platten gedrückt — Tor 1 öffnet sich!");room=2;updHud();
       hint("🔥 Ember (✋ nah an den Ranken) · 💧 Aqua (✋ an der Pflanze) — jede Figur ihre Kraft!",4600);}
     /* Raum 2: beide Hebel */
     if(lever.userData.pulled&&lever2.userData.pulled&&!gate2.userData.open){openGate(gate2,"⚙️ Beide Hebel — Tor 2 öffnet sich!");room=3;updHud();
       hint("⚡ Schlagt BEIDE Schalter fast gleichzeitig!",4200);}
     /* Raum 3: Gleichklang */
-    if(syncA.userData.t>0){syncA.userData.t-=dt;if(syncA.userData.t<=0)syncA.material.emissiveIntensity=0.5;}
-    if(syncB.userData.t>0){syncB.userData.t-=dt;if(syncB.userData.t<=0)syncB.material.emissiveIntensity=0.5;}
+    if(syncA.userData.t>0){syncA.userData.t-=dt;var sa=Math.max(0,syncA.userData.t/1.2);syncA.material.emissiveIntensity=0.5+sa;syncA.userData.ring.material.opacity=sa>0?0.8:0;syncA.userData.ring.scale.setScalar(sa||0.001);if(syncA.userData.t<=0){syncA.material.emissiveIntensity=0.5;if(!gate3.userData.open)sfx(300,0.25,"sawtooth",0.03,90);}}
+    if(syncB.userData.t>0){syncB.userData.t-=dt;var sb=Math.max(0,syncB.userData.t/1.2);syncB.material.emissiveIntensity=0.5+sb;syncB.userData.ring.material.opacity=sb>0?0.8:0;syncB.userData.ring.scale.setScalar(sb||0.001);if(syncB.userData.t<=0){syncB.material.emissiveIntensity=0.5;if(!gate3.userData.open)sfx(300,0.25,"sawtooth",0.03,90);}}
+    if(((syncA.userData.t>0)!==(syncB.userData.t>0))&&!gate3.userData.open&&!won){var _pr=performance.now();if(_pr-(window._syncPromptT||0)>1500){window._syncPromptT=_pr;hint(NETON?"⚡ JETZT — der andere auf den zweiten Schalter!":"⚡ Schnell die andere Figur (🔁) auf den zweiten Schalter!",1400);}}
     if(syncA.userData.t>0&&syncB.userData.t>0&&!gate3.userData.open){openGate(gate3,"⚡ GLEICHKLANG! Das letzte Tor fällt!");}
     /* Tore absenken */
     [gate1,gate2,gate3].forEach(function(g){if(g.userData.open&&g.position.y>-1.6)g.position.y-=dt*2.2;});
