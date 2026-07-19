@@ -25,7 +25,7 @@ if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.repl
     border-radius:12px;padding:5px 14px;font-weight:800;font-size:.85rem;color:#cfeee0;opacity:0;transition:opacity .3s;white-space:normal;text-align:center;max-width:94vw}
   .btn{position:absolute;pointer-events:auto;border-radius:50%;display:flex;align-items:center;justify-content:center;
     font-size:1.5rem;font-weight:900;border:3px solid;background:rgba(14,30,26,.6);backdrop-filter:blur(3px);cursor:pointer}
-  .btn:active{transform:scale(.9);filter:brightness(1.4)}
+  .btn:active,.btn.pressed{transform:scale(.9);filter:brightness(1.4)}
   .btn::after{content:"";position:absolute;inset:-6px;border-radius:50%}
   #bAct{right:calc(24px + env(safe-area-inset-right));bottom:calc(40px + env(safe-area-inset-bottom));width:76px;height:76px;border-color:#ffce8a;color:#ffe}
   #bSwap{right:calc(112px + env(safe-area-inset-right));bottom:calc(112px + env(safe-area-inset-bottom));width:64px;height:64px;border-color:#c98bff;color:#f0e0ff;font-size:1.3rem}
@@ -63,6 +63,7 @@ if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.repl
   <button class="big" id="startBtn">🧍 Solo spielen (🔁 Wechsel) ▶</button>
   <button class="big" id="coopBtn" style="background:linear-gradient(92deg,#ffb066,#7de3ff)">⚡ Online zu zweit — 1 Tipp</button>
   <div id="coopStatus"></div>
+  <button class="ghost" id="cancelCoop" style="display:none">✖ Suche abbrechen · solo starten</button>
 </div>
 <button id="stationBack" style="display:none">← Wildnis</button>
 <script src="/js/vendor/three.min.js"></script>
@@ -83,7 +84,10 @@ renderer.setPixelRatio(Math.min(devicePixelRatio,1.75));renderer.setSize(W,H);
 renderer.outputEncoding=THREE.sRGBEncoding;document.body.insertBefore(renderer.domElement,document.getElementById("hud"));
 var scene=new THREE.Scene();scene.background=new THREE.Color(0x0c1210);scene.fog=new THREE.Fog(0x0c1210,30,90);
 var camera=new THREE.PerspectiveCamera(56,W/H,0.1,220);
-addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);});
+var BASE_HFOV=56*Math.PI/180; /* #45 horizontale Sicht als Invariante (Rätsel x=±6 bleiben sichtbar) */
+function fitFov(){var a=W/H;var vf=56;if(a<1){vf=2*Math.atan(Math.tan(BASE_HFOV/2)/a)*180/Math.PI;vf=Math.min(vf,82);}camera.fov=vf;camera.aspect=a;camera.updateProjectionMatrix();}
+fitFov();
+addEventListener("resize",function(){W=innerWidth;H=innerHeight;fitFov();renderer.setSize(W,H);});
 scene.add(new THREE.HemisphereLight(0x6a9e8a,0x101a14,0.55));
 scene.add(new THREE.AmbientLight(0x2a4436,0.4));
 function M(c,e,i){return new THREE.MeshLambertMaterial({color:c,emissive:e||0x000000,emissiveIntensity:i||0});}
@@ -169,6 +173,7 @@ var chars=[
   {g:mkChar(0x40a8ff,0x30e0ff,"anime_mage.glb",false),x:2,z:2,name:"💧 Aqua",id:"aqua"}
 ];
 var active=0,gemN=0,room=1,running=false,won=false,t0=0,taughtHalf=false,stuck1=0;
+var lookFx=0,lookFz=0; /* #16 geglätteter Kamera-Blickpunkt */
 var NETON=false,mySlot=0,net=null,rt={x:2,z:2},coopWait=false;
 
 /* ---------- Audio ---------- */
@@ -233,6 +238,10 @@ function doAct(fromNet,slot,what){
   if(!did){sfx(220,0.06,"square",0.03);if(!fromNet){var w=whyNot(c);if(w)hint(w,3000);}}
   if(!fromNet&&NETON&&net&&did)try{net.send({t:"act",slot:mySlot,what:did});}catch(e){}
 }
+["bAct","bSwap"].forEach(function(id){var el=document.getElementById(id); /* #43 Press-Feedback trotz preventDefault */
+  var on=function(){el.classList.add("pressed");},off=function(){el.classList.remove("pressed");};
+  el.addEventListener("touchstart",on,{passive:true});el.addEventListener("touchend",off,{passive:true});el.addEventListener("touchcancel",off,{passive:true});
+  el.addEventListener("mousedown",on);el.addEventListener("mouseup",off);el.addEventListener("mouseleave",off);});
 document.getElementById("bAct").addEventListener("touchstart",function(e){e.preventDefault();doAct();},{passive:false});
 document.getElementById("bAct").addEventListener("click",function(){doAct();});
 document.getElementById("bSwap").addEventListener("touchstart",function(e){e.preventDefault();doSwap();},{passive:false});
@@ -244,15 +253,18 @@ addEventListener("keydown",function(e){keys[e.key.toLowerCase()]=1;if(e.repeat)r
 addEventListener("keyup",function(e){keys[e.key.toLowerCase()]=0;});
 
 /* ---------- Koop ---------- */
-var _everConn=false;
+var _everConn=false,_coopCancelled=false;
 function startCoop(){
   if(!window.MP){document.getElementById("coopStatus").textContent="Koop-Lib fehlt";return;}
   if(coopWait||NETON)return;var _cb=document.getElementById("coopBtn");if(_cb)_cb.disabled=true; /* Doppel-Tap-Schutz */
   document.getElementById("coopStatus").textContent="⚡ Suche Mitspieler…";
-  coopWait=true;document.getElementById("startBtn").style.display="none";
-  try{net=MP.quick("tempel2");}catch(e){document.getElementById("coopStatus").textContent="Fehler: "+e.message;coopWait=false;document.getElementById("startBtn").style.display="block";return;}
+  coopWait=true;_coopCancelled=false;document.getElementById("startBtn").style.display="none";
+  var _cc=document.getElementById("cancelCoop");if(_cc)_cc.style.display="inline-block"; /* #14 Abbrechen sichtbar */
+  try{net=MP.quick("tempel2");}catch(e){document.getElementById("coopStatus").textContent="Fehler: "+e.message;coopWait=false;document.getElementById("startBtn").style.display="block";if(_cc)_cc.style.display="none";return;}
   net.onStatus(function(st){
+    if(_coopCancelled)return; /* #14 Late-Connect nach Abbruch nicht übernehmen (kein Solo-Hijack) */
     if(st==="connected"){NETON=true;coopWait=false;_everConn=true;mySlot=(net.role==="host")?0:1;active=mySlot;
+      var _cc2=document.getElementById("cancelCoop");if(_cc2)_cc2.style.display="none";
       document.getElementById("coopStatus").textContent="";
       document.getElementById("bSwap").style.display="none";
       chars[mySlot].g.userData.ring.material.opacity=0.7;
@@ -260,7 +272,7 @@ function startCoop(){
       announce("🌐 Verbunden! Du bist "+chars[mySlot].name,"#7dffc8");updHud();}
     else if(st==="waiting")document.getElementById("coopStatus").textContent="⏳ Warte auf Mitspieler … (Freund tippt denselben Knopf)";
     else if(st==="lost")hint("📡 Verbindung wackelt — verbinde neu …",2400);
-    else if(st==="closed"){NETON=false;coopWait=false;var _cb2=document.getElementById("coopBtn");if(_cb2)_cb2.disabled=false;document.getElementById("bSwap").style.display="flex";var _sb2=document.getElementById("startBtn");if(_sb2)_sb2.style.display="block";if(!_everConn&&!running)document.getElementById("coopStatus").textContent="Kein Mitspieler gefunden — starte solo oder versuch es nochmal.";hint("❌ Partner getrennt — Solo-Wechsel ist wieder an",3200);updHud();}});
+    else if(st==="closed"){NETON=false;coopWait=false;var _cb2=document.getElementById("coopBtn");if(_cb2)_cb2.disabled=false;document.getElementById("bSwap").style.display="flex";var _sb2=document.getElementById("startBtn");if(_sb2)_sb2.style.display="block";var _cc3=document.getElementById("cancelCoop");if(_cc3)_cc3.style.display="none";if(!_everConn&&!running)document.getElementById("coopStatus").textContent="Kein Mitspieler gefunden — starte solo oder versuch es nochmal.";hint("❌ Partner getrennt — Solo-Wechsel ist wieder an",3200);updHud();}});
   net.onMessage(function(d){if(!d||!d.t)return;
     if(d.t==="pos"&&typeof d.x==="number"){rt.x=d.x;rt.z=d.z;}
     if(d.t==="act"&&d.what)doAct(true,1-mySlot,d.what);
@@ -268,6 +280,10 @@ function startCoop(){
     if(d.t==="win"&&!won)winGame(true);});
 }
 document.getElementById("coopBtn").onclick=startCoop;
+document.getElementById("cancelCoop").onclick=function(){ /* #14 Suche abbrechen ohne Solo-Hijack */
+  _coopCancelled=true;coopWait=false;try{if(net)net.close();}catch(e){}net=null;
+  this.style.display="none";var _cb=document.getElementById("coopBtn");if(_cb)_cb.disabled=false;
+  document.getElementById("coopStatus").textContent="";document.getElementById("startBtn").style.display="block";};
 
 /* ---------- Spiel-Logik ---------- */
 function blocked(x,z){for(var i=0;i<walls.length;i++){var w=walls[i];if(Math.abs(x-w.x)<w.w+0.42&&Math.abs(z-w.z)<w.d+0.42)return true;}
@@ -357,7 +373,8 @@ function frame(now){_rafId=requestAnimationFrame(frame);
     camera.position.x+=(fx-camera.position.x)*Math.min(1,dt*4);
     camera.position.y+=(9.5-camera.position.y)*Math.min(1,dt*4);
     camera.position.z+=(fz+8.5-camera.position.z)*Math.min(1,dt*4);
-    camera.lookAt(fx,0.8,fz-2);
+    lookFx+=(fx-lookFx)*Math.min(1,dt*5);lookFz+=(fz-lookFz)*Math.min(1,dt*5); /* #16 weicher Fokus-Lerp (kein harter lookAt-Sprung beim 🔁) */
+    camera.lookAt(lookFx,0.8,lookFz-2);
     if(running&&!won)document.getElementById('clock').textContent='⏱️ '+((now-t0)/1000|0)+'s';
   }
   if(annT>0){annT-=dt;if(annT<=0)document.getElementById("announce").style.opacity=0;}
