@@ -275,17 +275,24 @@ function updHud(){document.getElementById("hearts").textContent="❤️".repeat(
 
 /* ---------- Eingabe: Joystick + Sprung + Schlag + Tastatur ---------- */
 (function(){var st=document.getElementById("stick"),knob=document.getElementById("knob"),id=null,cx0=0,cy0=0;
-  st.addEventListener("touchstart",function(e){e.preventDefault();var t=e.changedTouches[0];id=t.identifier;
-    var r=st.getBoundingClientRect();cx0=r.left+r.width/2;cy0=r.top+r.height/2;},{passive:false});
+  function begin(e){if(id!=null)return; /* #30 Floating-Joystick: springt zum Daumen (linke Bildhälfte) */
+    for(var i=0;i<e.changedTouches.length;i++){var t=e.changedTouches[i];
+      if(t.clientX>innerWidth*0.55)continue; /* rechte Hälfte = Sprung/Schlag */
+      if(t.target&&t.target.closest&&t.target.closest("#bJump,#bHit,#stationBack,#ov"))continue;
+      id=t.identifier;cx0=t.clientX;cy0=t.clientY;
+      st.style.left=(cx0-60)+"px";st.style.top=(cy0-60)+"px";st.style.bottom="auto";
+      knob.style.transform="translate(-50%,-50%)";e.preventDefault();break;}}
+  window.addEventListener("touchstart",begin,{passive:false});
   addEventListener("touchmove",function(e){if(id==null)return;
     for(var i=0;i<e.changedTouches.length;i++){var t=e.changedTouches[i];if(t.identifier!==id)continue;
       var dx=t.clientX-cx0,dy=t.clientY-cy0,l=Math.hypot(dx,dy),mx=Math.min(l,46);
       if(l>4){kx=dx/l*(mx/46);kz=dy/l*(mx/46);}else{kx=0;kz=0;}
+      e.preventDefault();
       knob.style.transform="translate(calc(-50% + "+(kx*34)+"px),calc(-50% + "+(kz*34)+"px))";}},{passive:false});
   function end(e){for(var i=0;i<e.changedTouches.length;i++){if(e.changedTouches[i].identifier===id){id=null;kx=0;kz=0;
-    knob.style.transform="translate(-50%,-50%)";}}}
+    st.style.left="";st.style.top="";st.style.bottom="";knob.style.transform="translate(-50%,-50%)";}}}
   addEventListener("touchend",end);addEventListener("touchcancel",end);
-  function clearInput(){keys={};id=null;kx=0;kz=0;knob.style.transform="translate(-50%,-50%)";} /* 🧯 Stuck-Input-Schutz */
+  function clearInput(){keys={};id=null;kx=0;kz=0;st.style.left="";st.style.top="";st.style.bottom="";knob.style.transform="translate(-50%,-50%)";} /* 🧯 Stuck-Input-Schutz */
   addEventListener("blur",clearInput);
   document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")clearInput();else{try{if(AC&&AC.state!=="running"&&AC.resume)AC.resume();}catch(e){}}});
 })();
