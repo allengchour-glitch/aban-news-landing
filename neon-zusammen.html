@@ -181,6 +181,7 @@ var active=0,gemN=0,room=1,running=false,won=false,t0=0,taughtHalf=false,stuck1=
 var lookFx=0,lookFz=2; /* #16 geglätteter Kamera-Blickpunkt (Start = Figuren-Mitte) */
 var _pOnA=false,_pOnB=false; /* #29 Platten-Flankenerkennung */
 var shake=0; /* #54 Kamera-Punch */
+var celebrate=0,_cbSpk=0; /* #15 Sieg-Feier */
 var _pv=(window.THREE&&THREE.Vector3)?new THREE.Vector3():null; /* #48 Partner-Pfeil-Projektion (hoisted) */
 var NETON=false,mySlot=0,net=null,rt={x:2,z:2},coopWait=false;
 
@@ -347,7 +348,7 @@ function openGate(g,msg,fromNet){if(g.userData.open)return;g.userData.open=true;
   announce(msg||"🚪 Das Tor öffnet sich!","#7dffc8");sfx(140,0.5,"sawtooth",0.07,60);fanfare();shake=0.5; /* #54 */
   var wi=walls.findIndex(function(w){return w.m===g;});if(wi>=0)walls.splice(wi,1);
   if(!fromNet&&NETON&&net)try{net.send({t:"gate",i:gates.indexOf(g)});}catch(e){}} /* Tor auf BEIDEN Geräten öffnen */
-function winGame(fromNet){if(won)return;won=true;room=4;updHud();stopAmbient();var _pa=document.getElementById("pArrow");if(_pa)_pa.style.display="none";
+function winGame(fromNet){if(won)return;won=true;room=4;celebrate=0.001;updHud();stopAmbient();var _pa=document.getElementById("pArrow");if(_pa)_pa.style.display="none";
   var secs=Math.round((performance.now()-t0)/1000);
   var score=40+gemN*10+Math.max(0,70-secs); /* #61 Kristalle (max 60) ~gleich gewichtet wie Tempo (max 70) */
   var best=0;try{best=parseInt(localStorage.getItem("tempel2_best")||"0",10)||0;}catch(e){} /* #58 */
@@ -419,7 +420,7 @@ function frame(now){_rafId=requestAnimationFrame(frame);
       for(var g2=0;g2<gems.length;g2++){var gg=gems[g2];if(gg.got)continue;
         if(Math.hypot(c.x-gg.x,c.z-gg.z)<1.0){gg.got=true;gg.pop=0.35;gemN++;sfx(760,0.12,"triangle",0.05,1100);spark(gg.x,1.1,gg.z,0xffe0a0,12);pulseHud();updHud();}}}
     /* Raum 1: beide Platten gleichzeitig */
-    var onA=chars.some(function(c){return near(c,plateA,1.5);}),onB=chars.some(function(c){return near(c,plateB,1.5);});
+    var onA=false,onB=false;for(var _pl=0;_pl<2;_pl++){if(near(chars[_pl],plateA,1.5))onA=true;if(near(chars[_pl],plateB,1.5))onB=true;} /* #55 Index-Loop statt some() (kein Closure-GC/Frame) */
     plateA.material.emissiveIntensity=onA?0.9:0.25;plateB.material.emissiveIntensity=onB?0.9:0.25;
     if(onA&&!_pOnA)sfx(90,0.16,"sine",0.06,60);if(onB&&!_pOnB)sfx(90,0.16,"sine",0.06,60);_pOnA=onA;_pOnB=onB; /* #29 Platten-Thunk auf Steige-Flanke */
     if((onA!==onB)&&!taughtHalf&&!gate1.userData.open){taughtHalf=true;hint(NETON?"⚖️ 1/2 — der andere auf die zweite Platte!":"⚖️ 1/2! Figur stehen lassen · 🔁 · zweite Platte",3600);sfx(500,0.1,"triangle",0.04);}
@@ -434,10 +435,10 @@ function frame(now){_rafId=requestAnimationFrame(frame);
     if(syncB.userData.t>0){syncB.userData.t-=dt;var sb=Math.max(0,syncB.userData.t/1.2);syncB.material.emissiveIntensity=0.5+sb;syncB.userData.ring.material.opacity=sb>0?0.8:0;syncB.userData.ring.scale.setScalar(sb||0.001);if(syncB.userData.t<=0){syncB.material.emissiveIntensity=0.5;if(!gate3.userData.open)sfx(300,0.25,"sawtooth",0.03,90);}}
     if(((syncA.userData.t>0)!==(syncB.userData.t>0))&&!gate3.userData.open&&!won){var _pr=performance.now();if(_pr-(window._syncPromptT||0)>1500){window._syncPromptT=_pr;hint(NETON?"⚡ JETZT — der andere auf den zweiten Schalter!":"⚡ Schnell die andere Figur (🔁) auf den zweiten Schalter!",1400);}}
     if(syncA.userData.t>0&&syncB.userData.t>0&&!gate3.userData.open){openGate(gate3,"⚡ GLEICHKLANG! Das letzte Tor fällt!");}
-    /* Tore absenken */
-    [gate1,gate2,gate3].forEach(function(g){if(g.userData.open&&g.position.y>-1.6)g.position.y-=dt*2.2;});
+    /* Tore absenken (#55 Index-Loop) */
+    for(var _gt=0;_gt<gates.length;_gt++){var _g=gates[_gt];if(_g.userData.open&&_g.position.y>-1.6)_g.position.y-=dt*2.2;}
     /* Sieg: beide auf dem Podest */
-    if(gate3.userData.open){var fin=chars.every(function(c){return c.z<-63.5;});if(fin)winGame(false);}
+    if(gate3.userData.open&&chars[0].z<-63.5&&chars[1].z<-63.5)winGame(false);
     /* Kamera folgt Mittelpunkt · #39 zoomt bei getrennten Figuren aus, damit beide im Bild bleiben */
     var mid=(chars[0].x+chars[1].x)/2,midz=(chars[0].z+chars[1].z)/2;
     var spread=Math.hypot(chars[0].x-chars[1].x,chars[0].z-chars[1].z);
@@ -453,6 +454,16 @@ function frame(now){_rafId=requestAnimationFrame(frame);
     camera.lookAt(lookFx,0.8,lookFz-2);
     if(running&&!won)document.getElementById('clock').textContent='⏱️ '+((now-t0)/1000|0)+'s';
     partnerArrow(); /* #48 Offscreen-Partner-Pfeil */
+  } else if(won&&celebrate){ /* #15 Sieg-Feier: Figuren hüpfen, Kamera läuft weiter */
+    celebrate+=dt;
+    for(var _cj=0;_cj<2;_cj++){var _cc=chars[_cj];_cc.g.position.y=Math.max(0,Math.abs(Math.sin(t*4+_cj*0.6))*0.5);_cc.g.rotation.y+=dt*2.2;}
+    _cbSpk-=dt;if(_cbSpk<=0){_cbSpk=0.28;var _sc=chars[(Math.random()*2)|0];spark(_sc.x,1.4,_sc.z,[0x7dffc8,0xffd166,0xff9a60,0x60c8ff][(Math.random()*4)|0],10);}
+    var _fx2=(chars[0].x+chars[1].x)/2,_fz2=(chars[0].z+chars[1].z)/2;
+    camera.position.x+=(_fx2-camera.position.x)*Math.min(1,dt*2);
+    camera.position.y+=(7.5-camera.position.y)*Math.min(1,dt*2);
+    camera.position.z+=(_fz2+7-camera.position.z)*Math.min(1,dt*2);
+    lookFx+=(_fx2-lookFx)*Math.min(1,dt*3);lookFz+=(_fz2-lookFz)*Math.min(1,dt*3);
+    camera.lookAt(lookFx,1.0,lookFz-1);
   }
   if(annT>0){annT-=dt;if(annT<=0)document.getElementById("announce").style.opacity=0;}
   renderer.render(scene,camera);}
