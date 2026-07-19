@@ -612,7 +612,7 @@ function reset(){
   S.xpMul=1+(meta.xp||0)*0.08;
   S.revives=(meta.rev||0);
   S.evolved={}; S.abilityCD=4; S.abilityMax=9;
-  S.skCD={1:0,2:0,3:0}; S.skIfr=0; /* Abyss-Skills: Cooldowns + Blink-i-Frames */
+  S.skCD={1:0,2:0,3:0}; S.skIfr=0; S.hurtIfr=0; /* Abyss-Skills: Cooldowns + Blink-i-Frames · S3: Melee-Treffer-i-Frame */
   var ch=CHARS[loadChar()]||CHARS[0];
   S.weapons={}; S.weapons[ch.weap]=1;
   S.maxhp*=ch.hp; S.hp=S.maxhp; S.dmg*=ch.dmg; S.speed*=ch.spd; S.haste*=ch.haste; S.area*=ch.area;
@@ -630,7 +630,12 @@ addEventListener("keydown",function(e){keys[e.key.toLowerCase()]=true;if((e.key=
 if(running&&!paused&&(e.key==="1"||e.key==="2"||e.key==="3"))castSkill(+e.key);});
 addEventListener("keyup",function(e){keys[e.key.toLowerCase()]=false;});
 var touch=null;
-addEventListener("touchstart",function(e){if(demolishMode&&e.touches[0]){structTapAt(e.touches[0].clientX,e.touches[0].clientY);return;}if(e.touches[0])touch={x:e.touches[0].clientX,y:e.touches[0].clientY,sx:e.touches[0].clientX,sy:e.touches[0].clientY};},{passive:true});
+addEventListener("touchstart",function(e){if(demolishMode&&e.touches[0]){structTapAt(e.touches[0].clientX,e.touches[0].clientY);return;}
+  /* S1: Joystick-Touch NUR im aktiven Spiel starten — sonst bleiben Overlays (Charakter/Shop/Bestenliste/Level-Up/Bau) scrollbar */
+  if(!running||paused)return;
+  var _lu=document.getElementById("levelup"),_bm=document.getElementById("buildmenu");
+  if((_lu&&!_lu.classList.contains("hide"))||(_bm&&!_bm.classList.contains("hide")))return;
+  if(e.touches[0])touch={x:e.touches[0].clientX,y:e.touches[0].clientY,sx:e.touches[0].clientX,sy:e.touches[0].clientY};},{passive:true});
 // Touch-Buttons (⚡/⏸) NUR im Spiel zeigen — im Menü verdecken sie sonst Text + Werkstatt-Buttons
 var COARSE=window.matchMedia&&window.matchMedia("(pointer:coarse)").matches;
 function showTouchBtns(on){if(!COARSE)return;var ab=document.getElementById("abBtn"),pb=document.getElementById("pauseBtn");
@@ -647,7 +652,7 @@ function showTouchBtns(on){if(!COARSE)return;var ab=document.getElementById("abB
   function tgl(e){e.preventDefault&&e.preventDefault();e.stopPropagation();
     if(running&&document.getElementById("levelup").classList.contains("hide")){paused=!paused;pb.textContent=paused?"▶":"⏸";announce(paused?"⏸ Pause":"");}}
   pb.addEventListener("touchstart",tgl,{passive:false});pb.addEventListener("click",tgl);})();
-addEventListener("touchmove",function(e){if(touch&&e.touches[0]){touch.x=e.touches[0].clientX;touch.y=e.touches[0].clientY;}e.preventDefault();},{passive:false});
+addEventListener("touchmove",function(e){if(touch&&e.touches[0]){touch.x=e.touches[0].clientX;touch.y=e.touches[0].clientY;e.preventDefault();}},{passive:false}); /* S1: preventDefault nur bei aktivem Joystick → Overlays scrollen */
 addEventListener("touchend",function(){touch=null;});
 
 function nearestEnemy(){var best=null,bd=1e9;for(var i=0;i<enemies.length;i++){var en=enemies[i];if(!en.active)continue;var dx=en.m.position.x-player.position.x,dz=en.m.position.z-player.position.z;var d=dx*dx+dz*dz;if(d<bd){bd=d;best=en;}}return best;}
@@ -1628,6 +1633,7 @@ function loop(now){
     if(p1Down<=0){weaponTick(dt); updateBlades(dt);} if(S.abilityCD>0)S.abilityCD-=dt;
     for(var _sc2=1;_sc2<=3;_sc2++)if(S.skCD[_sc2]>0)S.skCD[_sc2]-=dt;
     if(S.skIfr>0)S.skIfr-=dt;
+    if(S.hurtIfr>0)S.hurtIfr-=dt; /* S3 */
     // Phasen-Struktur (5×120s) → härter; danach Endboss
     var ph=Math.min(5,1+Math.floor(S.t/PHASE_T));
     if(ph!==S.phase){S.phase=ph;announce("⚠ PHASE "+ph+"/5 — schneller!");beep(160,.3,"sawtooth",.08);}
@@ -1684,7 +1690,7 @@ function loop(now){
       if(e2.flash>0){e2.flash-=dt;var _efl=e2.flash>0;e2.m.material.emissive.setHex(_efl?0xffffff:e2.baseEmissive);
         if(e2.model){var _efm=e2.model.mats;for(var _efi=0;_efi<_efm.length;_efi++){_efm[_efi].emissive.setHex(_efl?0xffffff:e2.m.material.color.getHex());_efm[_efi].emissiveIntensity=_efl?1.1:0.55;}}}
       if(_p1on){var _c1=Math.hypot(player.position.x-e2.m.position.x,player.position.z-e2.m.position.z);
-        if(_c1<1.4&&!(S.skIfr>0)){S.hp-=13*dt;shake=Math.max(shake,0.12);hurt=Math.max(hurt,0.55);}}
+        if(_c1<1.4&&!(S.skIfr>0)&&!(S.hurtIfr>0)){S.hp-=3.4;S.hurtIfr=0.28;shake=Math.max(shake,0.14);hurt=Math.max(hurt,0.55);}} /* S3: EIN gedeckelter Biss pro 0.28s statt pro Gegner pro Frame → kein Rudel-Burst-Tod in 1s */
       if(_p2on&&Math.hypot(P2.g.position.x-e2.m.position.x,P2.g.position.z-e2.m.position.z)<1.4)p2Damage(13*dt);
     }
     // Gegner-Projektile
