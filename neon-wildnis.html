@@ -2067,7 +2067,7 @@ function closeStation(){
   var st=stations[_stCur];_stCur=-1;
   lastT=performance.now(); /* kein dt-Sprung nach der Pause */
   if(st)announce("🌲 Zurück in der Wildnis!");}
-function onStationDone(score){
+function onStationDone(score,win){
   if(_stRewarded||_stCur<0)return;_stRewarded=true;
   var st=stations[_stCur];if(!st)return;
   var cr=(st.badge==="gladiator"||st.badge==="krieger")
@@ -2077,6 +2077,7 @@ function onStationDone(score){
   if(st.badge==="gladiator")qProg.arenaCr=(qProg.arenaCr|0)+cr; /* 📜 W3-Quest (b): Arena-💎 zaehlen */
   if(st.badge==="raser"&&(score|0)>=40)qProg.raceWin=1; /* 📜 W3-Quest (c): Renn-Sieg ab Score 40 */
   if(st.badge==="partner"&&typeof bondGain==="function"){bondGain(3);toast("🤝 Tempel gemeistert — euer Band wächst! +3");} /* #60 Koop-Sieg füttert das Wildnis-Band */
+  if(st.badge==="krieger"&&(win|0)===1)qProg.koloss=1; /* #65 Koloss-Quest nur bei echtem Boss-Sieg */
   var bests={};try{bests=JSON.parse(lsGet("nw_stbest")||"{}")||{};}catch(e){bests={};}
   var prev=bests[st.badge]|0,sc2=score|0;
   if(sc2>prev){bests[st.badge]=sc2;lsSet("nw_stbest",JSON.stringify(bests));
@@ -2089,7 +2090,7 @@ window.addEventListener("message",function(e){
   var d=e&&e.data;
   if(d==="mini-back"){closeStation();return;}
   if(typeof d==="string"&&d.charAt(0)==="{"){try{d=JSON.parse(d);}catch(err){d=null;}}
-  if(d&&d.t==="stationDone")onStationDone(d.score|0);});
+  if(d&&d.t==="stationDone")onStationDone(d.score|0,d.win|0);});
 /* 🗨️ Koop: Partner-Status "ist im Flugfeld" — Flag st fließt im sendFast-pos mit */
 var _remSt=-1,_remStSp=null;
 function remoteStation(i){
@@ -3066,7 +3067,7 @@ var buildMode=false,ghost=null,ghostType=null,ghostValid=false;
 var felled=[]; // Regrow-Timer
 var quest=0;
 /* 📜 W3: Fortschritt der Folge-Quests (Persistenz im Save als qp — defensiv fuer alte Saves) */
-var qProg={flug:0,arenaCr:0,raceWin:0};
+var qProg={flug:0,arenaCr:0,raceWin:0,koloss:0};
 function cntStruct(t){var n=0;for(var i=0;i<structures.length;i++)if(structures[i].type===t)n++;return n;}
 var QUESTS=[
   {t:"Sammle 10 Holz 🪵",done:function(){return inv.wood>=10||totalWood>=10;}},
@@ -3081,7 +3082,8 @@ var QUESTS=[
   {t:"Besuche das Flugfeld ✈️ (Station betreten)",done:function(){return !!qProg.flug;},rw:4},
   {t:"Verdiene 8 💎 in der Arena ⚔️",done:function(){return (qProg.arenaCr|0)>=8;},rw:6},
   {t:"Gewinne ein Rennen 🏎️ (Score ≥ 40)",done:function(){return !!qProg.raceWin;},rw:8},
-  {t:"Stelle 3 Fackel-Laternen 🔥 an deiner Basis auf",done:function(){return cntStruct("fackel")>=3;},rw:10}
+  {t:"Stelle 3 Fackel-Laternen 🔥 an deiner Basis auf",done:function(){return cntStruct("fackel")>=3;},rw:10},
+  {t:"Steig hinab und besiege den KOLOSS 🏰 (Dungeon)",done:function(){return !!qProg.koloss;},rw:12} /* #65 — ans ENDE (Save nutzt Quest-Index) */
 ];
 var totalWood=0;
 /* 🔁 Endlos-Bounties nach der Quest-Kette: rotierende Tagesziele (eigener RNG — nie rnd/rnd2, Koop-neutral; nur monotone Zähler) */
@@ -4052,7 +4054,7 @@ function saveGame(){
     loot:lootOpened,
     fell:resources.filter(function(r){return r.dead;}).map(function(r){return{x:Math.round(r.x),z:Math.round(r.z),rg:r.regrow};}),
     perk:PERK,
-    qp:{f:qProg.flug|0,a:qProg.arenaCr|0,r:qProg.raceWin|0},bn:bountyN|0,lootT:lootOpenedTotal|0,gd:npcs.map(function(n){return n.giftDay===day?1:0;})}; /* 📜 W3-Quest-Fortschritt + Bounty-Zähler */
+    qp:{f:qProg.flug|0,a:qProg.arenaCr|0,r:qProg.raceWin|0,k:qProg.koloss|0},bn:bountyN|0,lootT:lootOpenedTotal|0,gd:npcs.map(function(n){return n.giftDay===day?1:0;})}; /* 📜 W3-Quest-Fortschritt + Bounty-Zähler */
   lsSet("nw_save1",JSON.stringify(s));
   // 🏆 Rekord mitschreiben (Sucht-Faktor: eigenen Bestwert schlagen)
   try{var b=JSON.parse(lsGet("nw_best")||"{}");
@@ -4608,7 +4610,7 @@ function startGame(fresh){
     waveNum=nights|0;if(isNight){waveActive=true;waveToSpawn=6+waveNum*4;waveSpawned=0;if(typeof updWaveHud==="function")updWaveHud();} /* Welle nach Laden korrekt fortsetzen */
     if(sv.maxHp)maxHp=sv.maxHp;if(sv.xp!=null)xp=sv.xp;if(sv.level)level=sv.level;if(sv.kills)kills=sv.kills;
     if(sv.perk)for(var pk in PERK)if(typeof sv.perk[pk]==="number")PERK[pk]=sv.perk[pk]; // gewählte Level-Perks zurück
-    if(sv.qp){qProg.flug=sv.qp.f|0;qProg.arenaCr=sv.qp.a|0;qProg.raceWin=sv.qp.r|0;}else{qProg.flug=0;qProg.arenaCr=0;qProg.raceWin=0;} /* 📜 W3: defensiv (alte Saves: 0) */
+    if(sv.qp){qProg.flug=sv.qp.f|0;qProg.arenaCr=sv.qp.a|0;qProg.raceWin=sv.qp.r|0;qProg.koloss=sv.qp.k|0;}else{qProg.flug=0;qProg.arenaCr=0;qProg.raceWin=0;qProg.koloss=0;} /* 📜 W3: defensiv (alte Saves: 0) */
     bountyN=sv.bn|0;bounty=null;
     if(sv.fell&&sv.fell.length){ // gefällte Bäume/Felsen wieder als gefällt markieren (waren nach Reload wieder da)
       sv.fell.forEach(function(fr){for(var ri=0;ri<resources.length;ri++){var r=resources[ri];
@@ -4622,7 +4624,7 @@ function startGame(fresh){
     // Quest: gespeicherten Stand nehmen, dann erfüllte überspringen
     if(typeof sv.quest==="number")quest=Math.min(sv.quest,QUESTS.length);
     while(quest<QUESTS.length&&QUESTS[quest].done())quest++;
-  } else {qProg.flug=0;qProg.arenaCr=0;qProg.raceWin=0;bountyN=0;bounty=null;lootOpenedTotal=0;inv={wood:0,stone:0,crystal:0,berry:0,meat:0};tools={axe:0,pick:0};hp=100;maxHp=100;xp=0;level=1;kills=0;day=1;dayT=0;isNight=false;nights=0;won=false;normInv();player.position.set(NET.on?(NET.role==="host"?-2.5:2.5):0,0,0);
+  } else {qProg.flug=0;qProg.arenaCr=0;qProg.raceWin=0;qProg.koloss=0;bountyN=0;bounty=null;lootOpenedTotal=0;inv={wood:0,stone:0,crystal:0,berry:0,meat:0};tools={axe:0,pick:0};hp=100;maxHp=100;xp=0;level=1;kills=0;day=1;dayT=0;isNight=false;nights=0;won=false;normInv();player.position.set(NET.on?(NET.role==="host"?-2.5:2.5):0,0,0);
     var _c=getChar();if(_c&&_c.cls){ // 🔀 Klassen-Bonus (Realm) einmalig auf den frischen Start
       if(_c.cls.atk)PERK.atk+=_c.cls.atk;if(_c.cls.spd)PERK.spd+=_c.cls.spd;
       if(_c.cls.skillcd)PERK.skillcd+=_c.cls.skillcd;
@@ -4842,9 +4844,9 @@ window.__nw={
   toLoot:function(){for(var i=0;i<loots.length;i++){if(!loots[i].opened){player.position.x=loots[i].x-1;player.position.z=loots[i].z;return loots[i];}}},
   place:function(t){placeStructure(t,player.position.x+3,player.position.z);return structures[structures.length-1];},
   quest:function(){return quest;},
-  qprog:function(){return {flug:qProg.flug|0,arenaCr:qProg.arenaCr|0,raceWin:qProg.raceWin|0};}, /* Test/QA: W3-Folge-Quests */
+  qprog:function(){return {flug:qProg.flug|0,arenaCr:qProg.arenaCr|0,raceWin:qProg.raceWin|0,koloss:qProg.koloss|0};}, /* Test/QA: W3-Folge-Quests */
   setQuest:function(n){quest=Math.max(0,Math.min(QUESTS.length,n|0));document.getElementById("questText").textContent=quest<QUESTS.length?QUESTS[quest].t:"🏆 Überlebe weiter!";return quest;}, /* Test-Only: Quest-Stand vorspulen */
-  simStation:function(i,score){_stCur=i|0;_stRewarded=false;onStationDone(score|0);_stCur=-1;return this.qprog();}, /* Test-Only: stationDone-Pfad ohne iframe */
+  simStation:function(i,score,win){_stCur=i|0;_stRewarded=false;onStationDone(score|0,win|0);_stCur=-1;return this.qprog();}, /* Test-Only: stationDone-Pfad ohne iframe (win-Flag für Koloss-Quest) */
   phase:function(){return dayPhase();}, /* Test/QA: Tagesphase */
   npcInfo:function(){var a=[],w=0,g2=0;for(var i=0;i<npcs.length;i++){var n=npcs[i];if(!n.mesh)continue;if(n.roam)w++;if(n.glb)g2++;a.push({x:+n.mesh.position.x.toFixed(2),z:+n.mesh.position.z.toFixed(2),roam:!!n.roam,vis:n.mesh.visible,sleep:!!n.sleeping,glb:!!n.glb,anim:n.aCur||null});}return {phase:dayPhase(),roamers:w,glbs:g2,glbCap:NPC_GLB_CAP,list:a};}, /* Test/QA: NPC-Tagesablauf + W4-GLB-NPCs */
   dog:function(){if(_dogIdx<0)return null;var d=critters[_dogIdx];return {x:d.m.position.x,z:d.m.position.z,follow:+d.follow.toFixed(2),cd:+d.cd.toFixed(2)};}, /* Test/QA: Dorfhund */

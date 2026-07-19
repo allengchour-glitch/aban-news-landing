@@ -1,6 +1,6 @@
 # 🏰 Dungeon Audit — Plan (18 Batches, 72 bestätigt · Stand 2026-07-18)
 
-Umgesetzt: B1-B10 + B12 + B13 + B15 (ohne B9/#30 dyn. Joystick). OFFEN: B9/#30, B11, B14, B16, B17, B18. Anker vor Anwendung grep-verifizieren (Zeilennummern = Audit-Stand, driften durch Umsetzung).
+Umgesetzt: B1-B10 + B12 + B13 + B15 + B16 (Wildnis-Integration: 🏰-Badge krieger + partner + Koloss-Quest mit win-Flag; verifiziert __nw.simStation → koloss nur bei win=1). OFFEN: B9/#30 (dyn. Joystick), B11 (Boss-Ostinato), B14 (Perf med), B17 (Endgame finish med), B18. Anker vor Anwendung grep-verifizieren (Zeilennummern = Audit-Stand, driften durch Umsetzung).
 
 ---
 B1 · Bug-Fixes Kern (Boss-Schaden, Arm-Hänger, groundAt)
