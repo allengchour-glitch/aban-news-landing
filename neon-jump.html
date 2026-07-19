@@ -532,7 +532,9 @@ function resetRun(){
   runnerMeshes[1].visible=coopMode;band.visible=coopMode;pGlow2.visible=coopMode;
   coins=0;deaths=0;won=false;elapsed=0;
   inp=[{L:false,R:false,J:false},{L:false,R:false,J:false}];}
-function respawn(pi){var p=PL[pi];p.x=p.ckX;p.y=p.ckY;p.vx=0;p.vy=0;p.atGoal=false;deaths++;shake=0.55;beep(140,.2,"sawtooth",.08);}
+function respawn(pi){ /* J1: zerbröselte Crumble-Plattformen wiederherstellen — sonst harter Softlock in linearen Passagen */
+  for(var _ci=0;_ci<PLAT.length;_ci++){var _cp=PLAT[_ci];if(_cp.crumble&&(_cp.gone||_cp.cT>0)){_cp.gone=false;_cp.cT=0;if(_cp.m){_cp.m.visible=true;_cp.m.rotation.z=0;}}}
+  var p=PL[pi];p.x=p.ckX;p.y=p.ckY;p.vx=0;p.vy=0;p.atGoal=false;deaths++;shake=0.55;beep(140,.2,"sawtooth",.08);}
 function doJump(p){if(p.coyote>0||p.jumps<2){p.vy=JUMPV*(p.jumps===0?1:0.92);p.coyote=0;p.jumps++;p.sq=0.6;beep(560+p.jumps*90,.08,"square",.05);
   if(p.jumps>=2)burst(p.x,p.y-0.1,[FXC.dj2a,FXC.dj2b],3.4);   // Doppelsprung: Cyan + Magenta
   else spawnRing(p.x,p.y-0.6,FXC.dj1,0.34,2.0);}}             // 1. Sprung: dezenter Violett-Puls
@@ -540,8 +542,8 @@ function doJump(p){if(p.coyote>0||p.jumps<2){p.vy=JUMPV*(p.jumps===0?1:0.92);p.c
 addEventListener("keydown",function(e){var k=e.key.toLowerCase();
   if(k==="a")inp[0].L=true;if(k==="d")inp[0].R=true;
   if(k==="arrowleft")inp[coopMode?1:0].L=true;if(k==="arrowright")inp[coopMode?1:0].R=true;
-  if(k==="w"||k===" "){if(!running){startGame(true);}else{inp[0].J=true;}e.preventDefault&&e.preventDefault();}
-  if(k==="arrowup"){if(!running){startGame(true);}else{inp[coopMode?1:0].J=true;}e.preventDefault&&e.preventDefault();}});
+  if(k==="w"||k===" "){if(!running){startGame(coopMode);}else{inp[0].J=true;}e.preventDefault&&e.preventDefault();} /* J5: Modus beibehalten statt Koop erzwingen */
+  if(k==="arrowup"){if(!running){startGame(coopMode);}else{inp[coopMode?1:0].J=true;}e.preventDefault&&e.preventDefault();}});
 addEventListener("keyup",function(e){var k=e.key.toLowerCase();
   if(k==="a")inp[0].L=false;if(k==="d")inp[0].R=false;
   if(k==="arrowleft")inp[coopMode?1:0].L=false;if(k==="arrowright")inp[coopMode?1:0].R=false;});
@@ -651,8 +653,8 @@ function loop(now){
       if(on!==sw2.on){sw2.on=on;beep(on?520:320,.08,"square",.04);}
       sw2.m.position.y=sw2.y-(on?0.24:0.12);
       var gt2=null;for(var gj=0;gj<GATES.length;gj++)if(GATES[gj].id===sw2.id)gt2=GATES[gj];
-      if(gt2){ // Solo: Tor bleibt 3s offen; Koop: nur solange gedrückt
-        if(on){gt2.open=true;gt2.holdT=coopMode?0.15:4.0;}
+      if(gt2){ // J2: Solo → Tor bleibt dauerhaft offen (Schalter liegt hinterm Tor, sonst faktisch unpassierbar); Koop: nur solange gedrückt
+        if(on){gt2.open=true;gt2.holdT=coopMode?0.15:999;}
         else if(gt2.holdT>0){gt2.holdT-=dt;if(gt2.holdT<=0)gt2.open=false;}
         gt2.m.material.opacity+= ((gt2.open?0.12:0.85)-gt2.m.material.opacity)*Math.min(1,dt*8);}
     }
@@ -784,6 +786,7 @@ if(STATION){
   _ob.onclick=function(){stationPost("mini-back");};
   var _ag=document.getElementById("againBtn");_ag.parentNode.insertBefore(_ob,_ag.nextSibling);
   /* Startscreen überspringen — Solo-Auto-Start (Station = Einzelspieler-Lauf) */
+  curLvl=0; /* J8: Station startet immer bei Level 0 (nicht im gespeicherten schweren Level) */
   startGame(false);
 }
 })();
