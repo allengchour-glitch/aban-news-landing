@@ -16,6 +16,8 @@ if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.repl
   #hud{position:fixed;inset:0;pointer-events:none;z-index:5}
   #topBar{position:absolute;top:calc(8px + env(safe-area-inset-top));left:12px;display:flex;gap:10px;align-items:center;font-weight:900}
   #gems{background:rgba(14,30,24,.75);border:1px solid rgba(120,255,190,.35);border-radius:12px;padding:3px 10px;color:#c8ffe0}
+  #gems.pulse{animation:gempulse .4s ease}
+  @keyframes gempulse{0%{transform:scale(1)}40%{transform:scale(1.35);color:#fff;text-shadow:0 0 12px #ffe0a0}100%{transform:scale(1)}}
   #roomTag{position:absolute;top:calc(8px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);background:rgba(14,30,24,.75);
     border:1px solid rgba(255,200,110,.4);border-radius:12px;padding:3px 12px;font-weight:900;font-size:.82rem;color:#ffe0a0;white-space:nowrap;max-width:70vw;overflow:hidden;text-overflow:ellipsis}
   #coopTag{position:absolute;top:calc(40px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);font-size:.72rem;font-weight:800;color:#8adfc0;background:rgba(14,30,24,.6);border-radius:10px;padding:2px 10px;white-space:nowrap}
@@ -145,7 +147,7 @@ function mkChar(main,accent,glb,isFire){var g=new THREE.Group();
   var body=new THREE.Mesh(new THREE.CylinderGeometry(0.28,0.34,1.0,10),M(main,accent,0.5));body.position.y=0.7;ph.add(body);
   var head=new THREE.Mesh(new THREE.SphereGeometry(0.25,12,10),M(0xffe0c0,0x664422,0.15));head.position.y=1.42;ph.add(head);
   g.add(ph);
-  var lt=new THREE.PointLight(accent,0.6,5.5);lt.position.y=1.4;g.add(lt); /* 🔥/💧 Aura-Licht */
+  /* #56 Figuren-PointLight entfernt (Perf): Emissive-Material + Aura-Partikel (B7) tragen den Glow */
   var ring=new THREE.Mesh(new THREE.RingGeometry(0.44,0.56,20),new THREE.MeshBasicMaterial({color:accent,transparent:true,opacity:0.0,side:THREE.DoubleSide}));
   ring.rotation.x=-Math.PI/2;ring.position.y=0.05;g.add(ring);g.userData.ring=ring;
   (function(){var N=16,pos=new Float32Array(N*3),vel=[];for(var i=0;i<N;i++){pos[i*3]=(Math.random()-0.5)*0.5;pos[i*3+1]=0.4+Math.random()*1.2;pos[i*3+2]=(Math.random()-0.5)*0.5;vel.push(0.4+Math.random()*0.6);}
@@ -175,6 +177,7 @@ var chars=[
 var active=0,gemN=0,room=1,running=false,won=false,t0=0,taughtHalf=false,stuck1=0;
 var lookFx=0,lookFz=0; /* #16 geglätteter Kamera-Blickpunkt */
 var _pOnA=false,_pOnB=false; /* #29 Platten-Flankenerkennung */
+var shake=0; /* #54 Kamera-Punch */
 var NETON=false,mySlot=0,net=null,rt={x:2,z:2},coopWait=false;
 
 /* ---------- Audio ---------- */
@@ -217,6 +220,7 @@ function stopAmbient(){_ambOn=false;if(_dripT)clearTimeout(_dripT);try{if(_ambNo
 var annT=0;
 function announce(t,c){var a=document.getElementById("announce");a.textContent=t;a.style.color=c||"#ffd166";a.style.opacity=1;annT=2.6;}
 function hint(t,ms){var h=document.getElementById("hint");h.textContent=t;h.style.opacity=1;clearTimeout(h._t);h._t=setTimeout(function(){h.style.opacity=0;},ms||3200);}
+function pulseHud(){var g=document.getElementById("gems");g.classList.remove("pulse");void g.offsetWidth;g.classList.add("pulse");} /* #52 HUD-Counter-Puls */
 function updHud(){document.getElementById("gems").textContent="💎 "+gemN;
   var names=["🤝 Raum 1 · Die zwei Platten","🔥💧 Raum 2 · Feuer & Wasser","⚡ Raum 3 · Der Gleichklang","🏆 Geschafft!"];
   document.getElementById("roomTag").textContent=names[Math.min(3,room-1)];
@@ -225,22 +229,29 @@ function updHud(){document.getElementById("gems").textContent="💎 "+gemN;
 /* ---------- Eingabe ---------- */
 var kx=0,kz=0,keys={};
 (function(){var st=document.getElementById("stick"),knob=document.getElementById("knob"),id=null,cx0=0,cy0=0;
-  st.addEventListener("touchstart",function(e){e.preventDefault();var t=e.changedTouches[0];id=t.identifier;
-    var r=st.getBoundingClientRect();cx0=r.left+r.width/2;cy0=r.top+r.height/2;},{passive:false});
+  function begin(e){if(id!=null)return; /* #41 Floating-Joystick: springt zum Daumen (linke Bildhälfte) */
+    for(var i=0;i<e.changedTouches.length;i++){var t=e.changedTouches[i];
+      if(t.clientX>innerWidth*0.55)continue; /* rechte Hälfte = Aktionsknöpfe */
+      if(t.target&&t.target.closest&&t.target.closest(".btn,#stationBack,#ov"))continue;
+      id=t.identifier;cx0=t.clientX;cy0=t.clientY;
+      st.style.left=(cx0-60)+"px";st.style.top=(cy0-60)+"px";st.style.bottom="auto";
+      knob.style.transform="translate(-50%,-50%)";e.preventDefault();break;}}
+  window.addEventListener("touchstart",begin,{passive:false});
   addEventListener("touchmove",function(e){if(id==null)return;
     for(var i=0;i<e.changedTouches.length;i++){var t=e.changedTouches[i];if(t.identifier!==id)continue;
       var dx=t.clientX-cx0,dy=t.clientY-cy0,l=Math.hypot(dx,dy),mx=Math.min(l,46);
       if(l>4){kx=dx/l*(mx/46);kz=dy/l*(mx/46);}else{kx=0;kz=0;}
+      e.preventDefault();
       knob.style.transform="translate(calc(-50% + "+(kx*34)+"px),calc(-50% + "+(kz*34)+"px))";}},{passive:false});
   function end(e){for(var i=0;i<e.changedTouches.length;i++){if(e.changedTouches[i].identifier===id){id=null;kx=0;kz=0;
-    knob.style.transform="translate(-50%,-50%)";}}}
+    st.style.left="";st.style.top="";st.style.bottom="";knob.style.transform="translate(-50%,-50%)";}}}
   addEventListener("touchend",end);addEventListener("touchcancel",end);})();
 function doSwap(){if(NETON||!running||won)return;active=1-active;sfx(560,0.08,"triangle",0.05,720);
   chars[active].g.userData.ring.material.opacity=0.7;chars[1-active].g.userData.ring.material.opacity=0;
   hint("Jetzt steuerst du "+chars[active].name,1600);}
 function near(c,o,r){return Math.hypot(c.x-o.position.x,c.z-o.position.z)<(r||2.2);}
 function applyById(id){ /* wendet GENAU einen Effekt an (idempotent) — Empfänger repliziert das Ergebnis ohne near()-Recheck */
-  if(id==="vines"){if(vines.userData.alive){vines.userData.alive=false;vines.visible=false;var wi=walls.indexOf(walls.find(function(w){return w.m===vines;}));if(wi>=0)walls.splice(wi,1);announce("🔥 Ember verbrennt die Ranken!","#ff9a60");sfx(180,0.3,"sawtooth",0.07,70);noiseSfx("fire");spark(vines.position.x,1.4,vines.position.z,0xff7a30,18);}}
+  if(id==="vines"){if(vines.userData.alive){vines.userData.alive=false;vines.visible=false;var wi=walls.indexOf(walls.find(function(w){return w.m===vines;}));if(wi>=0)walls.splice(wi,1);announce("🔥 Ember verbrennt die Ranken!","#ff9a60");sfx(180,0.3,"sawtooth",0.07,70);noiseSfx("fire");shake=0.35;spark(vines.position.x,1.4,vines.position.z,0xff7a30,18);}}
   else if(id==="plant"){if(!plant.userData.grown){plant.userData.grown=true;plant.scale.set(2.6,4.2,2.6);plant.position.y=1.6;lever2.visible=true;lever2.position.y=3.4;announce("💧 Aqua lässt die Pflanze wachsen!","#60c8ff");sfx(520,0.25,"sine",0.06,780);noiseSfx("water");spark(plant.position.x,1.2,plant.position.z,0x50c8ff,18);}}
   else if(id==="lever"){if(!lever.userData.pulled){lever.userData.pulled=true;lever.rotation.x=0.7;announce("⚙️ Hebel 1 gezogen!","#ffd166");sfx(300,0.15,"square",0.06,180);}}
   else if(id==="lever2"){if(!lever2.userData.pulled){lever2.userData.pulled=true;lever2.visible=true;lever2.rotation.x=0.7;announce("⚙️ Hebel 2 gezogen!","#ffd166");sfx(340,0.15,"square",0.06,200);}}
@@ -321,7 +332,7 @@ function tryMove(c,nx,nz){ /* achsengetrennt: an Wänden entlanggleiten statt kl
   if(!blocked(nx,c.z))c.x=nx;
   if(!blocked(c.x,nz))c.z=nz;}
 function openGate(g,msg,fromNet){if(g.userData.open)return;g.userData.open=true;
-  announce(msg||"🚪 Das Tor öffnet sich!","#7dffc8");sfx(140,0.5,"sawtooth",0.07,60);fanfare();
+  announce(msg||"🚪 Das Tor öffnet sich!","#7dffc8");sfx(140,0.5,"sawtooth",0.07,60);fanfare();shake=0.5; /* #54 */
   var wi=walls.findIndex(function(w){return w.m===g;});if(wi>=0)walls.splice(wi,1);
   if(!fromNet&&NETON&&net)try{net.send({t:"gate",i:gates.indexOf(g)});}catch(e){}} /* Tor auf BEIDEN Geräten öffnen */
 function winGame(fromNet){if(won)return;won=true;room=4;updHud();stopAmbient();
@@ -360,7 +371,8 @@ function frame(now){_rafId=requestAnimationFrame(frame);
       if(P.fire&&ar[yi]>1.7){ar[yi]=0.35;ar[pi*3]=(Math.random()-0.5)*0.4;ar[pi*3+2]=(Math.random()-0.5)*0.4;}
       if(!P.fire&&ar[yi]<0.1){ar[yi]=1.5;ar[pi*3]=(Math.random()-0.5)*0.4;ar[pi*3+2]=(Math.random()-0.5)*0.4;}}
     P.geo.attributes.position.needsUpdate=true;}
-  for(var gi=0;gi<gems.length;gi++){var gm=gems[gi];if(gm.got)continue;
+  for(var gi=0;gi<gems.length;gi++){var gm=gems[gi];
+    if(gm.got){if(gm.pop>0){gm.pop-=dt;var ps=1+(0.35-gm.pop)*5;gm.m.scale.setScalar(Math.max(0.01,ps));gm.m.position.y+=dt*2.4;gm.m.material.transparent=true;gm.m.material.opacity=Math.max(0,gm.pop/0.35);if(gm.pop<=0)gm.m.visible=false;}continue;} /* #52 Pickup-Pop */
     gm.m.rotation.y+=dt*2.2;gm.m.position.y=1.0+Math.sin(t*2.4+gm.ph)*0.12;}
   for(var si=_spk.length-1;si>=0;si--){var S=_spk[si];S.life-=dt;
     if(S.life<=0){scene.remove(S.m);S.m.material.dispose();_spk.splice(si,1);continue;}
@@ -377,7 +389,7 @@ function frame(now){_rafId=requestAnimationFrame(frame);
       sendT-=dt;if(sendT<=0){sendT=0.06;if(net)net.sendFast({t:"pos",x:+me.x.toFixed(2),z:+me.z.toFixed(2)});}}
     for(var ci=0;ci<2;ci++){var c=chars[ci];c.g.position.set(c.x,0,c.z);
       for(var g2=0;g2<gems.length;g2++){var gg=gems[g2];if(gg.got)continue;
-        if(Math.hypot(c.x-gg.x,c.z-gg.z)<1.0){gg.got=true;gg.m.visible=false;gemN++;sfx(760,0.12,"triangle",0.05,1100);updHud();}}}
+        if(Math.hypot(c.x-gg.x,c.z-gg.z)<1.0){gg.got=true;gg.pop=0.35;gemN++;sfx(760,0.12,"triangle",0.05,1100);spark(gg.x,1.1,gg.z,0xffe0a0,12);pulseHud();updHud();}}}
     /* Raum 1: beide Platten gleichzeitig */
     var onA=chars.some(function(c){return near(c,plateA,1.5);}),onB=chars.some(function(c){return near(c,plateB,1.5);});
     plateA.material.emissiveIntensity=onA?0.9:0.25;plateB.material.emissiveIntensity=onB?0.9:0.25;
@@ -405,6 +417,7 @@ function frame(now){_rafId=requestAnimationFrame(frame);
     camera.position.y+=(9.5-camera.position.y)*Math.min(1,dt*4);
     camera.position.z+=(fz+8.5-camera.position.z)*Math.min(1,dt*4);
     lookFx+=(fx-lookFx)*Math.min(1,dt*5);lookFz+=(fz-lookFz)*Math.min(1,dt*5); /* #16 weicher Fokus-Lerp (kein harter lookAt-Sprung beim 🔁) */
+    if(shake>0){shake=Math.max(0,shake-dt*1.6);camera.position.x+=(Math.random()-0.5)*shake*1.1;camera.position.y+=(Math.random()-0.5)*shake*1.1;} /* #54 abklingender Punch */
     camera.lookAt(lookFx,0.8,lookFz-2);
     if(running&&!won)document.getElementById('clock').textContent='⏱️ '+((now-t0)/1000|0)+'s';
   }

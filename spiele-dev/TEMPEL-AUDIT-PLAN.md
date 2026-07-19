@@ -1,6 +1,6 @@
 # 🤝 Tempel-der-Zwei Audit — Plan (13 Batches, 63 bestätigt · Stand 2026-07-18)
 
-Umgesetzt: B1 (Koop-Sync-Kern), B2 (deterministische Tore + Solo-Guard), B3 (Robustheit/Teardown), B7 (Signature-Juice: Feuer/Wasser-Auren + Effekt-Bursts), B8 (Rätsel-Sichtbarkeit + Raum-1-Tutorial), B10 (Onboarding-Text + Live-Timer), B4 (Warte-UX/Kamera-Glättung/Portrait-FOV), B9 (Audio: Master-Bus+Hall, Ambient, Feuer/Wasser-Noise, Tor-Fanfare, Platten-Thunk). OFFEN: B5, B6, B11, B12, B13. Anker vor Anwendung grep-verifizieren (Zeilennummern driften).
+Umgesetzt: B1 (Koop-Sync-Kern), B2 (deterministische Tore + Solo-Guard), B3 (Robustheit/Teardown), B7 (Signature-Juice: Feuer/Wasser-Auren + Effekt-Bursts), B8 (Rätsel-Sichtbarkeit + Raum-1-Tutorial), B10 (Onboarding-Text + Live-Timer), B4 (Warte-UX/Kamera-Glättung/Portrait-FOV), B9 (Audio: Master-Bus+Hall, Ambient, Feuer/Wasser-Noise, Tor-Fanfare, Platten-Thunk), B11 (Solo-Feel: Kamera-Punch, Floating-Joystick, Kristall-Pop+HUD-Puls, Figuren-Licht raus/Perf, Wildnis-Abzeichen krieger/partner). OFFEN: B5, B6, B12, B13. Anker vor Anwendung grep-verifizieren (Zeilennummern driften).
 
 ---
 B1 · Koop-Sync-Kern & Bewegungs-Bug
