@@ -277,6 +277,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
     <div id="netSetup" style="margin-top:8px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center">
       <input id="netName" placeholder="Dein Name" maxlength="12" style="padding:10px;border-radius:10px;border:1px solid #b8c8d8;width:150px;font-size:16px;text-align:center">
       <button class="btn" id="quickPlayBtn" style="margin-top:0;flex-basis:100%;max-width:360px;background:linear-gradient(135deg,#5ee0a0,#2fb8ff);font-size:1.02rem">🌍 Sofort online spielen — 1 Tipp, ohne Code</button>
+      <button class="btn" id="netInviteBtn" style="margin-top:0;flex-basis:100%;max-width:360px;background:linear-gradient(135deg,#ffb066,#ff7ad9);font-size:1.02rem">🔗 Freunde einladen — Raum + Einladungslink in 1 Tipp</button>
       <details style="flex-basis:100%">
         <summary style="cursor:pointer;color:#2a6ab0;font-weight:700;font-size:.86rem">👥 Mit Freunden per Code spielen</summary>
         <div style="margin-top:8px;display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap">
@@ -3432,6 +3433,7 @@ function renderNetChar(){ // 🎨 Charakter-Auswahl fuer Online-Spieler (mit 3D-
 function netLobbyShow(){document.getElementById("netSetup").style.display="none";
   document.getElementById("netLobby").style.display="block";
   document.getElementById("netCodeShow").textContent=(NET.code==="OFEN")?"🌍 offen":NET.code;
+  if(NET._autoShare&&NET.host){NET._autoShare=false;setTimeout(netShareInvite,150);} /* 🔗 Ein-Tipp-Einladen: Raum steht → Link sofort teilen */
   (function(){var bb=document.getElementById("netBotBtn");
     if(!bb){bb=document.createElement("button");bb.id="netBotBtn";
       bb.style.cssText="margin-top:8px;border:1px solid #b89ad8;background:#f4ecff;border-radius:10px;padding:6px 12px;font-size:.8rem;font-weight:800;color:#5a3a8a;cursor:pointer";
@@ -3674,14 +3676,23 @@ document.getElementById("netReadyBtn").onclick=function(){
   var t=NET.code;try{if(navigator.clipboard)navigator.clipboard.writeText(t);}catch(e){}
   cb.textContent="✓ Kopiert";setTimeout(function(){cb.textContent="📋 Kopieren";},1400);};})();
 // 📲 Einladungs-Link: Freund tippt auf den Link und landet direkt im Raum (kein Code-Tippen)
-(function(){var sb=document.getElementById("netShareBtn");if(!sb)return;sb.onclick=function(){
+function netShareInvite(){ /* 🔗 Einladungslink teilen (Lobby-Knopf + Ein-Tipp-Einladen nutzen dieselbe Routine) */
   /* Offener Raum → statischer ?quick=1-Link (kein Code); sonst der Raum-Code-Link */
   var url=location.origin+location.pathname+((NET.code==="OFEN")?"?quick=1":("?raum="+NET.code));
   var txt="🎲 Spiel mit mir Lebenspfad! Tippe auf den Link und du bist direkt dabei: "+url;
-  if(navigator.share){navigator.share({title:"Lebenspfad — Online-Koop",text:txt,url:url}).catch(function(){});}
-  else{try{if(navigator.clipboard)navigator.clipboard.writeText(url);}catch(e){}
-    sb.textContent="✓ Link kopiert";setTimeout(function(){sb.textContent="📲 Link teilen";},1600);}
-};})();
+  try{if(navigator.clipboard)navigator.clipboard.writeText(url);}catch(e){} /* immer zusätzlich kopieren (Share kann ohne Geste blocken) */
+  var sb=document.getElementById("netShareBtn");
+  if(navigator.share){navigator.share({title:"Lebenspfad — Online-Koop",text:txt,url:url}).catch(function(){
+    if(sb){sb.textContent="✓ Link kopiert";setTimeout(function(){sb.textContent="📲 Link teilen";},1600);}});}
+  else if(sb){sb.textContent="✓ Link kopiert";setTimeout(function(){sb.textContent="📲 Link teilen";},1600);}
+  netStatus("🔗 Einladungslink bereit — schick ihn deinen Freunden! (auch kopiert 📋)","#2a8a50");
+}
+(function(){var sb=document.getElementById("netShareBtn");if(!sb)return;sb.onclick=netShareInvite;})();
+(function(){var ib=document.getElementById("netInviteBtn");if(!ib)return;ib.onclick=function(){ /* 🔗 1-Tipp: Raum erstellen + Link teilen */
+  if(NET.peer&&NET.code){netShareInvite();return;} /* Raum existiert schon → nur teilen */
+  NET._autoShare=true;ib.textContent="⏳ Raum wird erstellt …";
+  setTimeout(function(){ib.textContent="🔗 Freunde einladen — Raum + Einladungslink in 1 Tipp";},4000);
+  document.getElementById("netHostBtn").click();};})();
 // 🔗 Auto-Beitritt: /lebenspfad.html?raum=CODE -> Code eintragen + automatisch beitreten
 (function(){var m=location.search.match(/[?&]raum=([A-Za-z]{4})/);if(!m)return;
   var code=m[1].toUpperCase();
