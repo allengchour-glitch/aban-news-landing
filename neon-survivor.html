@@ -1634,6 +1634,7 @@ function loop(now){
     for(var _sc2=1;_sc2<=3;_sc2++)if(S.skCD[_sc2]>0)S.skCD[_sc2]-=dt;
     if(S.skIfr>0)S.skIfr-=dt;
     if(S.hurtIfr>0)S.hurtIfr-=dt; /* S3 */
+    if(P2&&P2.hurtIfr>0)P2.hurtIfr-=dt; /* D4 */
     // Phasen-Struktur (5×120s) → härter; danach Endboss
     var ph=Math.min(5,1+Math.floor(S.t/PHASE_T));
     if(ph!==S.phase){S.phase=ph;announce("⚠ PHASE "+ph+"/5 — schneller!");beep(160,.3,"sawtooth",.08);}
@@ -1691,7 +1692,7 @@ function loop(now){
         if(e2.model){var _efm=e2.model.mats;for(var _efi=0;_efi<_efm.length;_efi++){_efm[_efi].emissive.setHex(_efl?0xffffff:e2.m.material.color.getHex());_efm[_efi].emissiveIntensity=_efl?1.1:0.55;}}}
       if(_p1on){var _c1=Math.hypot(player.position.x-e2.m.position.x,player.position.z-e2.m.position.z);
         if(_c1<1.4&&!(S.skIfr>0)&&!(S.hurtIfr>0)){S.hp-=3.4;S.hurtIfr=0.28;shake=Math.max(shake,0.14);hurt=Math.max(hurt,0.55);}} /* S3: EIN gedeckelter Biss pro 0.28s statt pro Gegner pro Frame → kein Rudel-Burst-Tod in 1s */
-      if(_p2on&&Math.hypot(P2.g.position.x-e2.m.position.x,P2.g.position.z-e2.m.position.z)<1.4)p2Damage(13*dt);
+      if(_p2on&&!(P2.hurtIfr>0)&&Math.hypot(P2.g.position.x-e2.m.position.x,P2.g.position.z-e2.m.position.z)<1.4){p2Damage(3.4);P2.hurtIfr=0.28;} /* D4: P2 gleicher Biss-Cap wie P1 (war 13*dt PRO Gegner PRO Frame) */
     }
     // Gegner-Projektile
     for(i=0;i<ebullets.length;i++){var eb=ebullets[i];if(!eb.active)continue;eb.m.position.x+=eb.vx*dt;eb.m.position.z+=eb.vz*dt;eb.life-=dt;
@@ -1699,7 +1700,7 @@ function loop(now){
       var blk=false;for(var sh=0;sh<structures.length;sh++){var shs=structures[sh];if(shs.type!=="shield"||shs.hp<=0)continue;var shx=shs.x-eb.m.position.x,shz=shs.z-eb.m.position.z;if(shx*shx+shz*shz<shs.R*shs.R){blk=true;shs.shieldFlash=0.22;spawnFlash(eb.m.position.x,0.9,eb.m.position.z,0x8fc4ff,0.8,0.14);spawnRing(eb.m.position.x,eb.m.position.z,0x8fc4ff,0.3,1.6,0.25,0.6);beep(520,.04,"sine",.03);break;}}
       if(blk){eb.active=false;eb.m.visible=false;eb.m.position.y=-99;continue;}
       var pdx=player.position.x-eb.m.position.x,pdz=player.position.z-eb.m.position.z;
-      if(p1Down<=0&&pdx*pdx+pdz*pdz<1.4&&!(S.skIfr>0)){S.hp-=7;hurt=Math.max(hurt,0.7);shake=Math.max(shake,0.2);eb.active=false;eb.m.visible=false;eb.m.position.y=-99;}
+      if(p1Down<=0&&pdx*pdx+pdz*pdz<1.4&&!(S.skIfr>0)&&!(S.hurtIfr>0)){S.hp-=7;S.hurtIfr=0.28;hurt=Math.max(hurt,0.7);shake=Math.max(shake,0.2);eb.active=false;eb.m.visible=false;eb.m.position.y=-99;} /* D-b: Boss-Ring (10-14 Kugeln gleichzeitig) → 1 Treffer pro 0.28s statt 84 HP in einem Frame */
       else if(coopOn()&&P2.down<=0&&(P2.g.position.x-eb.m.position.x)*(P2.g.position.x-eb.m.position.x)+(P2.g.position.z-eb.m.position.z)*(P2.g.position.z-eb.m.position.z)<1.4){p2Damage(7);eb.active=false;eb.m.visible=false;eb.m.position.y=-99;}
       else if(eb.life<=0){eb.active=false;eb.m.visible=false;eb.m.position.y=-99;}}
     if(hurt>0)hurt=Math.max(0,hurt-dt*2.2); hurtEl.style.opacity=hurt;
@@ -1884,7 +1885,7 @@ function coopSetup(){ /* nach reset()/applyMap() in start(): P2 aktivieren + HUD
   p1Down=0;p1Rev=0;player.rotation.z=0;
   if(P2){
     P2.active=on;P2.g.visible=on;
-    P2.maxhp=Math.round(S.maxhp);P2.hp=P2.maxhp;P2.down=0;P2.rev=0;P2.vx=0;P2.vz=0;
+    P2.maxhp=Math.round(S.maxhp);P2.hp=P2.maxhp;P2.down=0;P2.rev=0;P2.vx=0;P2.vz=0;P2.hurtIfr=0; /* D4 */
     P2.g.position.set(Math.min(ARENA-1,player.position.x+3),0.9,Math.min(ARENA-1,player.position.z+2));
     P2.g.rotation.set(0,0,0);
     netP2.x=P2.g.position.x;netP2.z=P2.g.position.z;
