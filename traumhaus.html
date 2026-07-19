@@ -258,8 +258,8 @@ if(THREE.RGBELoader&&renderer.capabilities.isWebGL2){try{new THREE.RGBELoader().
 var hemi=new THREE.HemisphereLight(0xdfeeff,0x6a8a58,0.42);scene.add(hemi);
 var sun=new THREE.DirectionalLight(0xfff0d0,1.12);sun.position.set(26,38,18);scene.add(sun);
 sun.castShadow=true;sun.shadow.mapSize.set(IS_TOUCH?1024:2048,IS_TOUCH?1024:2048);sun.shadow.bias=-0.0006;
-sun.shadow.camera.near=5;sun.shadow.camera.far=140;
-sun.shadow.camera.left=-34;sun.shadow.camera.right=34;sun.shadow.camera.top=34;sun.shadow.camera.bottom=-34;
+sun.shadow.camera.near=5;sun.shadow.camera.far=320;
+sun.shadow.camera.left=-115;sun.shadow.camera.right=115;sun.shadow.camera.top=115;sun.shadow.camera.bottom=-115;
 function stdMat(c,rough){var m=new THREE.MeshStandardMaterial({color:c,roughness:rough!==undefined?rough:0.8});m.envMapIntensity=0.35;return m;}
 
 // ===================== Grundstück =====================
@@ -311,7 +311,10 @@ for(var rp=0;rp<rauchPunkte.length;rp++)for(var rq=0;rq<8;rq++){var idx=(rp*8+rq
   rauchPos[idx]=rauchPunkte[rp][0]+(Math.random()-0.5);rauchPos[idx+1]=rauchPunkte[rp][2]+rq*0.6;rauchPos[idx+2]=rauchPunkte[rp][1]+(Math.random()-0.5);
   rauchBase.push({x:rauchPunkte[rp][0],y:rauchPunkte[rp][2],z:rauchPunkte[rp][1],off:rq*0.6});}
 rauchGeo.setAttribute("position",new THREE.BufferAttribute(rauchPos,3));
-var rauch=new THREE.Points(rauchGeo,new THREE.PointsMaterial({color:0xcccccc,size:0.9,transparent:true,opacity:0.35,depthWrite:false}));
+var rauchTex=(function(){var cv=document.createElement("canvas");cv.width=cv.height=32;var c=cv.getContext("2d");
+  var g=c.createRadialGradient(16,16,1,16,16,15);g.addColorStop(0,"rgba(255,255,255,0.9)");g.addColorStop(1,"rgba(255,255,255,0)");
+  c.fillStyle=g;c.fillRect(0,0,32,32);return new THREE.CanvasTexture(cv);})();
+var rauch=new THREE.Points(rauchGeo,new THREE.PointsMaterial({color:0xcccccc,size:1.1,map:rauchTex,transparent:true,opacity:0.25,depthWrite:false}));
 rauch.frustumCulled=false;scene.add(rauch);
 var _rauchFrame=0;
 function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.position.array;
@@ -384,8 +387,8 @@ var SAISON=[["🌸 Frühling",0xc8f0b8],["☀️ Sommer",0xffffff],["🍂 Herbst
 function calcSaison(){return Math.floor((tag-1)/5)%4;}
 function applySaison(){rasen.material.color.setHex(SAISON[calcSaison()][1]);}
 var sterneGeo=new THREE.BufferGeometry(),sternePos=new Float32Array(420*3);
-for(var st5=0;st5<420;st5++){var sa5=Math.random()*6.283,sr5=40+Math.random()*90;
-  sternePos[st5*3]=Math.cos(sa5)*sr5;sternePos[st5*3+1]=28+Math.random()*55;sternePos[st5*3+2]=Math.sin(sa5)*sr5;}
+for(var st5=0;st5<420;st5++){var sa5=Math.random()*6.283,sr5=150+Math.random()*160;
+  sternePos[st5*3]=Math.cos(sa5)*sr5;sternePos[st5*3+1]=60+Math.random()*110;sternePos[st5*3+2]=Math.sin(sa5)*sr5;}
 sterneGeo.setAttribute("position",new THREE.BufferAttribute(sternePos,3));
 var sterne=new THREE.Points(sterneGeo,new THREE.PointsMaterial({color:0xfff8e0,size:0.32,transparent:true,opacity:0,sizeAttenuation:true}));
 sterne.frustumCulled=false;scene.add(sterne);window.sterne=sterne;
@@ -437,8 +440,10 @@ var weg=new THREE.Mesh(new THREE.PlaneGeometry(3,10),stdMat(0xc8beA8,0.9));weg.r
 // Strasse (quer, mit Mittelstreifen + Bordstein)
 var strasse=new THREE.Mesh(new THREE.PlaneGeometry(RL,10),stdMat(0x3a3a40,0.9));
 strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.receiveShadow=true;scene.add(strasse);
-var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var strich=new THREE.Mesh(new THREE.PlaneGeometry(3,0.3),stdMat(0xe8e8d8,0.7));
-  strich.rotation.x=-Math.PI/2;strich.position.set(-RL/2+5+ms*10,0.005,GH*CS/2+12);scene.add(strich);}
+function _dashFrei(x){return Math.abs(Math.abs(x)-RX)>7.5&&Math.abs(Math.abs(x)-(RX-12))>4;} // nicht in Kreuzung/Zebra
+var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_dashFrei(_dx))continue;
+  var strich=new THREE.Mesh(new THREE.PlaneGeometry(3,0.3),stdMat(0xe8e8d8,0.7));
+  strich.rotation.x=-Math.PI/2;strich.position.set(_dx,0.005,GH*CS/2+12);scene.add(strich);}
 // Trottoirs (erhoehte Gehwege) beidseitig aller Strassen — Strasse 10 breit, Kante bei ±5
 (function baueTrottoirs(){
   var SZ9=GH*CS/2,tMat=stdMat(0xcfccc2,0.85);
@@ -495,11 +500,14 @@ var dorfFenster=[];
     st.rotation.x=-Math.PI/2;st.position.set(x,-0.003,z);st.receiveShadow=true;scene.add(st);return st;}
   strasseMesh(RL,10,0,-SZ-12);
   strasseMesh(10,2*SZ+38,-RX,0);strasseMesh(10,2*SZ+38,RX,0);
-  var _NM2=Math.round(RL/10);for(var ms2=0;ms2<_NM2;ms2++){var st2=new THREE.Mesh(new THREE.PlaneGeometry(3,0.3),stdMat(0xe8e8d8,0.7));
-    st2.rotation.x=-Math.PI/2;st2.position.set(-RL/2+5+ms2*10,0.005,-SZ-12);scene.add(st2);}
+  var _NM2=Math.round(RL/10);for(var ms2=0;ms2<_NM2;ms2++){var _dx2=-RL/2+5+ms2*10;if(!_dashFrei(_dx2))continue;
+    var st2=new THREE.Mesh(new THREE.PlaneGeometry(3,0.3),stdMat(0xe8e8d8,0.7));
+    st2.rotation.x=-Math.PI/2;st2.position.set(_dx2,0.005,-SZ-12);scene.add(st2);}
   var _NZ=Math.round((2*SZ+38)/7);for(var ms3=0;ms3<_NZ;ms3++){[-RX,RX].forEach(function(sx){
+    var _dz=-(SZ+13)+ms3*7;
+    if(Math.abs(Math.abs(_dz)-(SZ+12))<7.5||Math.abs(Math.abs(_dz)-(SZ-2))<4)return; // nicht in Kreuzung/Zebra
     var st3=new THREE.Mesh(new THREE.PlaneGeometry(0.3,3),stdMat(0xe8e8d8,0.7));
-    st3.rotation.x=-Math.PI/2;st3.position.set(sx,0.005,-(SZ+13)+ms3*7);scene.add(st3);});}
+    st3.rotation.x=-Math.PI/2;st3.position.set(sx,0.005,_dz);scene.add(st3);});}
   // Nachbarhaus prozedural: Sockel, Waende, Satteldach, Tuer, Fenster, Kamin
   var WANDF=[0xf2e4c8,0xe8d0b0,0xd8e0e8,0xf0d8d8,0xe0e8d0,0xf4ead4,0xd8c8e0,0xe8e2d0];
   var DACHF=[0x8a4a3a,0x5a5a64,0x7a5a40,0x4a5a6a,0x9a5a4a,0x6a6a58];
@@ -688,7 +696,7 @@ setTimeout(function baueVerkehr(){
   var schild=new THREE.Mesh(new THREE.BoxGeometry(1.5,0.44,0.06),new THREE.MeshStandardMaterial({color:0x141417,emissive:0xffa040,emissiveIntensity:0.9}));
   schild.position.set(2.3,2.6,1.24);bg.add(schild);
   scene.add(bg);
-  busRec={mesh:bg,pos:-70,speed:4,wartet:0,z:SZ+9.5,raeder:busRaeder,lichter:busLichter};
+  busRec={mesh:bg,pos:-70,speed:4,wartet:0,z:SZ+14.5,raeder:busRaeder,lichter:busLichter};
   // Haltestelle vor dem Grundstueck
   var hs=new THREE.Group();
   var mast2=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.06,2.6,7),stdMat(0x3a3a42,0.5));mast2.position.y=1.3;hs.add(mast2);
@@ -722,7 +730,7 @@ setTimeout(function baueVerkehr(){
   // ---- Vogelschwarm am Himmel ----
   var voegel=new THREE.Group();window._voegel=[];
   var vcv=document.createElement("canvas");vcv.width=vcv.height=32;var vc=vcv.getContext("2d");
-  vc.strokeStyle="#33333a";vc.lineWidth=3;vc.beginPath();vc.moveTo(4,20);vc.quadraticCurveTo(16,8,28,20);vc.stroke();
+  vc.strokeStyle="#6a6a74";vc.lineWidth=3;vc.beginPath();vc.moveTo(4,20);vc.quadraticCurveTo(16,8,28,20);vc.stroke();
   var vtex=new THREE.CanvasTexture(vcv);
   for(var vb=0;vb<9;vb++){var v=new THREE.Sprite(new THREE.SpriteMaterial({map:vtex,transparent:true,depthWrite:false}));
     v.scale.set(2,2,1);voegel.add(v);
@@ -745,7 +753,7 @@ function updZug(dt){var z=window._zug;if(!z)return;
 function updHeli(dt,now){var h=window._heli;if(!h)return;
   h.ang+=dt*0.25;var r=55;
   h.mesh.position.set(Math.cos(h.ang)*r,32,Math.sin(h.ang)*r);
-  h.mesh.rotation.y=-h.ang+Math.PI/2;
+  h.mesh.rotation.y=-h.ang-Math.PI/2; // Nase voran
   h.rotor.rotation.y+=dt*30;h.heckrotor.rotation.x+=dt*40;}
 function updVerkehr(dt){
   var nn=window._dorfNacht?1:0; // Nacht -> Fahrlicht an
@@ -753,12 +761,14 @@ function updVerkehr(dt){
     if(v===driveCar){if(v.kopf){v.kopf[0].material.opacity=v.kopf[1].material.opacity=0;v.heck[0].material.opacity=v.heck[1].material.opacity=0;}return;}
     var _pv=v.pos;
     v.pos+=v.route.dir*v.route.speed*dt;
-    var lim=(v.route.axis==="x"?GW*CS/2:GH*CS/2)+34; // weit außerhalb der Sicht umkehren
+    var lim=(v.route.axis==="x"?GW*CS/2:GH*CS/2)+80; // weit außerhalb der Sicht (im Dunst) umkehren
     if(v.pos>lim)v.pos=-lim;if(v.pos<-lim)v.pos=lim;
     // an roter/gelber Ampel vor der Kreuzung halten (Haltelinie beim Überfahren clampen)
-    if(ampRed(v.route.axis)){var bd=v.route.axis==="x"?(RX+7):(GH*CS/2+18.5),sl=v.route.dir>0?-bd:bd;
-      if(v.route.dir>0){if(_pv<=sl&&v.pos>sl)v.pos=sl;}
-      else{if(_pv>=sl&&v.pos<sl)v.pos=sl;}}
+    if(ampRed(v.route.axis)){ // Haltelinien vor JEDER Kreuzung der Fahrtrichtung
+      var ctrs=v.route.axis==="x"?[RX,-RX]:[GH*CS/2+12,-(GH*CS/2+12)],off=v.route.axis==="x"?7:7.5;
+      for(var ci=0;ci<2;ci++){var sl=ctrs[ci]-v.route.dir*off;
+        if(v.route.dir>0){if(_pv<=sl&&v.pos>sl)v.pos=sl;}
+        else{if(_pv>=sl&&v.pos<sl)v.pos=sl;}}}
     var px,pz,fx=0,fz=0;
     if(v.route.axis==="x"){px=v.pos;pz=v.route.z;fx=v.route.dir;v.mesh.position.set(px,v.homeY,pz);v.mesh.rotation.y=v.route.dir>0?Math.PI/2:-Math.PI/2;}
     else{px=v.route.x;pz=v.pos;fz=v.route.dir;v.mesh.position.set(px,v.homeY,pz);v.mesh.rotation.y=v.route.dir>0?0:Math.PI;}
@@ -770,7 +780,7 @@ function updVerkehr(dt){
   if(busRec){
     if(busRec.wartet>0){busRec.wartet-=dt;}
     else{var prev9=busRec.pos;busRec.pos+=busRec.speed*dt;
-      var rand9=GW*CS/2+30;
+      var rand9=GW*CS/2+80;
       if(busRec.pos>rand9)busRec.pos=-rand9; // Rueckkehr weit ausserhalb der Sicht
       if(prev9<-8&&busRec.pos>=-8)busRec.wartet=4;
       if(busRec.raeder){var rs=busRec.speed*dt/0.5;busRec.raeder.forEach(function(rd){rd.rotation.y+=rs;});}}
@@ -786,7 +796,8 @@ function updAmpel(dt){if(!window._ampeln)return;
     var t=(_ampelT+(A.grp?5:0))%10; // Gruppe 1 um halben Zyklus versetzt (Querverkehr)
     var r=0.15,y=0.15,gr=0.15;
     if(t<4.5)gr=1.5; else if(t<5.5)y=1.5; else r=1.5; // gruen -> gelb -> rot
-    A.rot.emissiveIntensity=r;A.gelb.emissiveIntensity=y;A.gruen.emissiveIntensity=gr;});}
+    A.rot.emissiveIntensity=r;A.gelb.emissiveIntensity=y;A.gruen.emissiveIntensity=gr;
+    A.rot.color.setHex(r>1?0xff3a3a:0x2a2224);A.gelb.color.setHex(y>1?0xf0c030:0x2a2820);A.gruen.color.setHex(gr>1?0x3ad86a:0x1e2a22);});}
 // ---- Fussgaenger auf den Gehwegen (Ambiente) ----
 var fussg=[];
 setTimeout(function baueFussg(){
@@ -935,7 +946,7 @@ function updTiere(dt,now){var M9=window._muehle;if(M9)M9.rotation.z+=dt*1.1;
   var T=window._tiere;if(!T)return;
   for(var i=0;i<T.enten.length;i++){var en=T.enten[i];en.ang+=en.sp*dt;
     en.mesh.position.set(en.cx+Math.cos(en.ang)*en.r,-0.02+Math.sin(now*0.003+en.ang*3)*0.045,en.cz+Math.sin(en.ang)*en.r);
-    en.mesh.rotation.y=-en.ang+Math.PI/2;}
+    en.mesh.rotation.y=-en.ang-Math.PI/2;} // Schnabel voran
   for(var j=0;j<T.land.length;j++){var an=T.land[j];an.turnT-=dt;
     if(an.turnT<=0){an.turnT=2+Math.random()*3;an.head+=(Math.random()-0.5)*1.5;}
     if(an.home&&Math.hypot(an.x-an.home.x,an.z-an.home.z)>an.home.r)an.head=Math.atan2(an.home.x-an.x,an.home.z-an.z);
@@ -3160,7 +3171,7 @@ function loop(now){
     furn.forEach(function(f){if(f.plight)f.plight.intensity=dayA<0.3?1.1:0;});
     var nacht9=dayA<0.3?1:0;
     if(window._dorfNacht!==nacht9){window._dorfNacht=nacht9;
-      dorfFenster.forEach(function(fm){fm.emissiveIntensity=nacht9?0.9:0;if(fm.transparent&&fm.opacity<=0.5)fm.opacity=nacht9?0.32:0;});}
+      dorfFenster.forEach(function(fm){fm.emissiveIntensity=nacht9?1.8:0;if(fm.transparent&&fm.opacity<=0.5)fm.opacity=nacht9?0.45:0;});}
     if(camAT!==null){camA+=(camAT-camA)*Math.min(1,dt*6);
       if(Math.abs(camAT-camA)<0.002){camA=camAT;camAT=null;}updCam();}
     if(Math.abs(camRT-camR)>0.02){camR+=(camRT-camR)*Math.min(1,dt*8);
