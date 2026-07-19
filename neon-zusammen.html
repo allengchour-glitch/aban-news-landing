@@ -48,7 +48,7 @@ if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.repl
 </head>
 <body>
 <div id="hud">
-  <div id="topBar"><span id="gems">💎 0</span></div>
+  <div id="topBar"><span id="gems">💎 0</span><span id="clock" style="background:rgba(14,30,24,.75);border:1px solid rgba(125,227,255,.35);border-radius:12px;padding:3px 10px;color:#bfe6ff">⏱️ 0s</span></div>
   <div id="roomTag">🤝 Raum 1 · Die zwei Platten</div>
   <div id="coopTag">🧍 Solo: 🔁 wechselt die Figur</div>
   <div id="announce"></div><div id="hint"></div>
@@ -220,11 +220,17 @@ function applyAct(c){ /* lokaler Pfad: prüft near() und liefert die id des ausg
   if(near(c,syncA,2.0)){applyById("syncA");return "syncA";}
   if(near(c,syncB,2.0)){applyById("syncB");return "syncB";}
   return null;}
+function whyNot(c){ /* #36 Kontext-Hinweis statt stummem Buzz, wenn nichts passiert */
+  if(vines.userData.alive&&near(c,vines,2.6))return c.id==="ember"?null:"🔥 Nur Ember kann die Ranken verbrennen — wechsle zu Ember!";
+  if(!plant.userData.grown&&near(c,plantPot,2.4))return c.id==="aqua"?null:"💧 Nur Aqua kann die Pflanze wachsen lassen — wechsle zu Aqua!";
+  if(!lever.userData.pulled&&near(c,lever,2.6)&&vines.userData.alive)return "🌿 Erst die Ranken verbrennen, dann den Hebel ziehen.";
+  if(lever2.visible&&!lever2.userData.pulled&&near(c,lever2,2.6)&&!plant.userData.grown)return "🌱 Erst die Pflanze wachsen lassen, dann diesen Hebel.";
+  return null;}
 function doAct(fromNet,slot,what){
   if(fromNet&&what){applyById(what);return;} /* Partner-Aktion: identisches Ergebnis anwenden (Koop-Determinismus) */
   var c=chars[fromNet?slot:(NETON?mySlot:active)];
   var did=applyAct(c);
-  if(!did)sfx(220,0.06,"square",0.03);
+  if(!did){sfx(220,0.06,"square",0.03);if(!fromNet){var w=whyNot(c);if(w)hint(w,3000);}}
   if(!fromNet&&NETON&&net&&did)try{net.send({t:"act",slot:mySlot,what:did});}catch(e){}
 }
 document.getElementById("bAct").addEventListener("touchstart",function(e){e.preventDefault();doAct();},{passive:false});
@@ -352,6 +358,7 @@ function frame(now){_rafId=requestAnimationFrame(frame);
     camera.position.y+=(9.5-camera.position.y)*Math.min(1,dt*4);
     camera.position.z+=(fz+8.5-camera.position.z)*Math.min(1,dt*4);
     camera.lookAt(fx,0.8,fz-2);
+    if(running&&!won)document.getElementById('clock').textContent='⏱️ '+((now-t0)/1000|0)+'s';
   }
   if(annT>0){annT-=dt;if(annT<=0)document.getElementById("announce").style.opacity=0;}
   renderer.render(scene,camera);}
