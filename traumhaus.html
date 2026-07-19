@@ -442,7 +442,10 @@ gridHelper.material.transparent=true;gridHelper.material.opacity=0.22;gridHelper
 // Weg + Umgebung
 var weg=new THREE.Mesh(new THREE.PlaneGeometry(3,10),stdMat(0xc8beA8,0.9));weg.rotation.x=-Math.PI/2;weg.position.set(0,-0.005,GH*CS/2+5);weg.receiveShadow=true;scene.add(weg);
 // Strasse (quer, mit Mittelstreifen + Bordstein)
-var strasse=new THREE.Mesh(new THREE.PlaneGeometry(RL,10),stdMat(0x3a3a40,0.9));
+var strMatH=stdMat(0x3a3a40,0.9),strMatV=stdMat(0x3a3a40,0.9);
+ladeTex("textures/tex_neon_asphalt.jpg",22,1.5,function(t){strMatH.map=t;strMatH.color.setHex(0x9a9aa0);strMatH.needsUpdate=true;});
+ladeTex("textures/tex_neon_asphalt.jpg",1.5,18,function(t){strMatV.map=t;strMatV.color.setHex(0x9a9aa0);strMatV.needsUpdate=true;});
+var strasse=new THREE.Mesh(new THREE.PlaneGeometry(RL,10),strMatH);
 strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.receiveShadow=true;scene.add(strasse);
 function _dashFrei(x){return Math.abs(Math.abs(x)-RX)>7.5&&Math.abs(Math.abs(x)-(RX-12))>4;} // nicht in Kreuzung/Zebra
 var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_dashFrei(_dx))continue;
@@ -450,8 +453,10 @@ var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_d
   strich.rotation.x=-Math.PI/2;strich.position.set(_dx,0.005,GH*CS/2+12);scene.add(strich);}
 // Trottoirs (erhoehte Gehwege) beidseitig aller Strassen — Strasse 10 breit, Kante bei ±5
 (function baueTrottoirs(){
-  var SZ9=GH*CS/2,tMat=stdMat(0xcfccc2,0.85);
-  function tr(w,d,x,z,h){var t=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),tMat);
+  var SZ9=GH*CS/2,tMat=stdMat(0xcfccc2,0.85),tMatV=stdMat(0xcfccc2,0.85);
+  ladeTex("textures/tex_cobble.png",42,1.2,function(t){tMat.map=t;tMat.color.setHex(0xd8d5cc);tMat.needsUpdate=true;});
+  ladeTex("textures/tex_cobble.png",1.2,26,function(t){tMatV.map=t;tMatV.color.setHex(0xd8d5cc);tMatV.needsUpdate=true;});
+  function tr(w,d,x,z,h){var t=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),w>d?tMat:tMatV);
     t.position.set(x,h/2,z);t.receiveShadow=true;scene.add(t);}
   var RB=RX+5,LR=RL/2-RB; // Querstrassen-Kante + Randstueck-Laenge (keine Ueberschneidung mit Fahrbahnen)
   [SZ9+12,-(SZ9+12)].forEach(function(zc){ // Nord+Sued: innen + aussen, an den Querstrassen ausgespart
@@ -500,7 +505,7 @@ var dorfFenster=[];
 (function baueDorf(){
   var SZ=GH*CS/2; // 14
   // Nordstrasse + zwei Querstrassen (Block-Layout)
-  function strasseMesh(w,h,x,z){var st=new THREE.Mesh(new THREE.PlaneGeometry(w,h),stdMat(0x3a3a40,0.9));
+  function strasseMesh(w,h,x,z){var st=new THREE.Mesh(new THREE.PlaneGeometry(w,h),w>h?strMatH:strMatV);
     st.rotation.x=-Math.PI/2;st.position.set(x,-0.003,z);st.receiveShadow=true;scene.add(st);return st;}
   strasseMesh(RL,10,0,-SZ-12);
   strasseMesh(10,2*SZ+38,-RX,0);strasseMesh(10,2*SZ+38,RX,0);
@@ -519,7 +524,8 @@ var dorfFenster=[];
     var g=new THREE.Group();
     var w=4+(seed%3),d=3.6+((seed*7)%2),h=2.3+((seed*3)%2)*0.5;
     var wandC=WANDF[seed%WANDF.length],dachC=DACHF[seed%DACHF.length];
-    var body=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),stdMat(wandC,0.85));
+    var bMat=stdMat(wandC,0.85);(window._wandMats=window._wandMats||[]).push(bMat);
+    var body=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),bMat);
     body.position.y=h/2;body.castShadow=true;body.receiveShadow=true;g.add(body);
     // Satteldach aus zwei geneigten Platten + Giebel
     var dl=Math.sqrt((w/2)*(w/2)+1.44)+0.25;
@@ -644,6 +650,8 @@ var dorfFenster=[];
     if(!window._ampeln)window._ampeln=[];window._ampeln.push({rot:mats.rot,gelb:mats.gelb,gruen:mats.gruen,grp:grp||0});}
   var AX=RX-7;ampel(-AX,-SZ-5.5,0);ampel(AX,SZ+5.5,0);ampel(-AX,SZ+5.5,1);ampel(AX,-SZ-5.5,1);
 })();
+// Putz-Struktur auf alle Nachbarhaus-Waende (getoent je Hausfarbe)
+ladeTex("textures/th/putz.jpg",2.2,1.2,function(t){(window._wandMats||[]).forEach(function(m){m.map=t;m.needsUpdate=true;});});
 // ---- Verkehr: 6 fahrende Autos + Bus-Linie mit Haltestelle ----
 var verkehr=[],busRec=null;
 var _lichtTexW=null,_lichtTexR=null;
