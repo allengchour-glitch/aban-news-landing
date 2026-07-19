@@ -4888,7 +4888,7 @@ window.__nw={
   harvest:harvest,
   inv:function(){return inv;},
   give:function(k,n){inv[k]=(inv[k]||0)+n;invUpd();},
-  night:function(){isNight=false;dayT=DAYLEN;}, // flippt im nächsten Frame zur Nacht
+  nightSoon:function(){isNight=false;dayT=DAYLEN;}, // Test-Only: flippt im nächsten Frame zur Nacht (früher doppelter 'night'-Key → hatte den parametrisierten night(on) verdeckt)
   forceDay:function(){isNight=false;dayT=DAYLEN*0.5;return dayPhase();}, /* Test-Only: sofort heller Tag */
   giveTool:function(kind,lvl){tools[kind]=lvl;invUpd();},
   craft:function(id){doCraft(id);},
