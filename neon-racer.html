@@ -484,10 +484,15 @@ function reset(){dist=0;speed=42;shipX=centerX(0);steer=0;shield=100;camX=shipX;
 
 addEventListener("keydown",function(e){var k=e.key.toLowerCase();if(k==="arrowleft"||k==="a")keyL=true;if(k==="arrowright"||k==="d")keyR=true;if(k==="arrowdown"||k===" ")brake=true;if((k===" "||k==="enter")&&!running){e.preventDefault&&e.preventDefault();start();}});
 addEventListener("keyup",function(e){var k=e.key.toLowerCase();if(k==="arrowleft"||k==="a")keyL=false;if(k==="arrowright"||k==="d")keyR=false;if(k==="arrowdown"||k===" ")brake=false;});
-var touchX=null;
-addEventListener("touchstart",function(e){if(e.touches[0])touchX=e.touches[0].clientX;var el=e.target;if(el&&el.closest&&el.closest("button,a"))return;if(!running&&document.getElementById("over").classList.contains("hide"))start();},{passive:true});
-addEventListener("touchmove",function(e){if(e.touches[0])touchX=e.touches[0].clientX;e.preventDefault();},{passive:false});
-addEventListener("touchend",function(){touchX=null;});
+var touchX=null,steerId=null;
+addEventListener("touchstart",function(e){ /* R1: nur der Lenk-Finger steuert; Brems-/UI-Finger wird NICHT als Lenkung gelesen */
+  for(var i=0;i<e.changedTouches.length;i++){var t=e.changedTouches[i];
+    if(t.target&&t.target.closest&&t.target.closest("button,a"))continue; /* Bremse/Buttons ignorieren */
+    if(steerId===null){steerId=t.identifier;touchX=t.clientX;}}
+  if(!running&&document.getElementById("over").classList.contains("hide"))start();},{passive:true});
+addEventListener("touchmove",function(e){for(var i=0;i<e.changedTouches.length;i++){var t=e.changedTouches[i];if(t.identifier===steerId){touchX=t.clientX;e.preventDefault();}}},{passive:false});
+function _endSteer(e){for(var i=0;i<e.changedTouches.length;i++){if(e.changedTouches[i].identifier===steerId){steerId=null;touchX=null;}}} /* R1: Lenkung klebt nicht mehr nach dem Loslassen */
+addEventListener("touchend",_endSteer);addEventListener("touchcancel",_endSteer);
 addEventListener("mousemove",function(e){if(running)touchX=e.clientX;}); // "Maus" war im Hinweis versprochen, aber nie verdrahtet
 (function(){var bb=document.getElementById("brakeBtn");if(!bb)return;
   bb.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();brake=true;},{passive:false});
@@ -526,7 +531,7 @@ function loop(now){
   if(running&&!paused){
     // Steuerung
     var sx=0; if(keyL)sx-=1; if(keyR)sx+=1;
-    if(touchX!=null){sx=((touchX/W)*2-1)*1.6;}
+    if(touchX!=null){var _n=(touchX/W)*2-1;sx=(Math.abs(_n)<0.08?0:_n)*1.6;} /* R1: Totzone in der Mitte → ruhiger Daumen fährt gerade */
     steer+=(sx-steer)*0.2;
     brake=keyL||keyR?brake:brake; // (kept simple)
     // Beschleunigung (Zone-Style), Bremse senkt Tempo & schärft Lenkung
