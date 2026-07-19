@@ -3239,7 +3239,9 @@ function showPerkPick(){
   document.getElementById("perkLvl").textContent="⭐ Level "+level+" — wähle ein Upgrade";
   pick.forEach(function(P){var c=document.createElement("div");c.className="perkCard";
     c.innerHTML='<div class="pIc">'+P.ic+'</div><div class="pN">'+P.n+'</div><div class="pD">'+P.d+'</div>';
-    c.onclick=function(){P.fn();invUpd&&invUpd();choosePerk();};cards.appendChild(c);});
+    var fired=false,go=function(){if(fired)return;fired=true;P.fn();invUpd&&invUpd();choosePerk();};
+    c.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();c.classList.add("pressed");go();},{passive:false}); /* Touch feuert direkt (kein Ghost-Click nötig) */
+    c.addEventListener("click",go);cards.appendChild(c);});
   box.classList.remove("hide");
 }
 function choosePerk(){
@@ -3919,10 +3921,10 @@ function stickMove(e){if(stickId===null)return;var t=null;if(e.changedTouches){f
 function stickEnd(){stickId=null;stickV.x=0;stickV.y=0;nub.style.left="35px";nub.style.top="35px";stickEl.style.left="";stickEl.style.top="";stickEl.style.bottom="";}
 stickEl.addEventListener("touchstart",function(e){e.preventDefault();stickStart(e);},{passive:false});
 document.addEventListener("touchstart",function(e){ /* 🕹️ Floating-Joystick: Antippen in der linken unteren Zone versetzt den Stick dorthin */
-  if(stickId!==null||paused||!running)return;
+  if(stickId!==null||paused||!running||perkChoosing||stationOpen)return; /* 🐛-Fix: während Upgrade-Wahl/Station keine Joystick-Grabs (Karten waren nicht drückbar) */
   var t=e.changedTouches&&e.changedTouches[0];if(!t)return;
   if(t.clientX>innerWidth*0.4||t.clientY<innerHeight*0.3)return;
-  var el=t.target;if(el&&el.closest&&el.closest("#stick,.btn,.sysbtn,#ov,#invBar,#sysRow,#buildMenu,#craftMenu,#tradeMenu,#minimap,button,input"))return;
+  var el=t.target;if(el&&el.closest&&el.closest("#stick,.btn,.sysbtn,#ov,#perkPick,#invBar,#sysRow,#buildMenu,#craftMenu,#tradeMenu,#minimap,button,input"))return;
   stickEl.style.left=(t.clientX-60)+"px";stickEl.style.top=(t.clientY-60)+"px";stickEl.style.bottom="auto";
   stickId=t.identifier;stickMove(e);e.preventDefault();
 },{passive:false});
