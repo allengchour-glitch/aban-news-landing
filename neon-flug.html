@@ -249,7 +249,7 @@ function burst(x,y,z,color){
   var g=new THREE.BufferGeometry();var n=24;var p=new Float32Array(n*3);
   for(var k=0;k<n;k++){p[k*3]=x;p[k*3+1]=y;p[k*3+2]=z;}
   g.setAttribute("position",new THREE.BufferAttribute(p,3));
-  var pts=new THREE.Points(g,new THREE.PointsMaterial({color:color,size:0.5,transparent:true,opacity:1,blending:THREE.AdditiveBlending,depthWrite:false}));
+  var pts=new THREE.Points(g,new THREE.PointsMaterial({color:color,size:0.6,map:trailTex,transparent:true,opacity:1,blending:THREE.AdditiveBlending,depthWrite:false})); /* #2 Beauty-Sweep: weiche Glow-Punkte statt grauer Quadrate */
   scene.add(pts);
   var vel=[];for(k=0;k<n;k++){vel.push([(Math.random()-.5)*.7,(Math.random()-.5)*.7,(Math.random()-.5)*.7]);}
   bursts.push({pts:pts,vel:vel,life:1});

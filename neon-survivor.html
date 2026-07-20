@@ -1044,20 +1044,20 @@ function makeStruct(type){var g=new THREE.Group();
     var body=new THREE.Mesh(new THREE.BoxGeometry(4,2.4,1.1),mat(0x5ef2ff,0x2a6f8c));body.position.y=1.2;g.add(body);
     // Neon-Rahmen + 3 Energiezellen für Tiefe
     var frame=new THREE.Mesh(new THREE.TorusGeometry(1.9,0.07,6,4),mat(0x9bffff,0x9bffff));frame.position.set(0,1.2,0.58);frame.rotation.z=Math.PI/4;frame.scale.set(1.05,0.62,1);g.add(frame);
-    for(var wc=0;wc<3;wc++){var cell=new THREE.Mesh(new THREE.OctahedronGeometry(0.24,0),mat(0xd8ffff,0x5ef2ff));cell.position.set(-1.15+wc*1.15,1.2,0.62);g.add(cell);}
+    for(var wc=0;wc<3;wc++){var cell=new THREE.Mesh(new THREE.OctahedronGeometry(0.24,0),mat(0x5ef2ff,0x5ef2ff));cell.position.set(-1.15+wc*1.15,1.2,0.62);g.add(cell);}
     var cap=new THREE.Mesh(new THREE.BoxGeometry(4.1,0.22,1.2),mat(0x9bffff,0x4ad2ff));cap.position.y=2.45;g.add(cap);
   }
   else if(type==="spike"){
     var sbase=new THREE.Mesh(new THREE.BoxGeometry(4,1.5,1.0),mat(0x6aff9e,0x1f7a4a));sbase.position.y=0.75;g.add(sbase);
     var spframe=new THREE.Mesh(new THREE.BoxGeometry(4.1,0.2,1.15),mat(0xbfffd8,0x38c07a));spframe.position.y=1.5;g.add(spframe);
     // Dornen-Reihe (Zacken) — auffällig, verschieden hoch
-    for(var s=0;s<7;s++){var hh=0.8+((s%2)?0.35:0);var sp=new THREE.Mesh(new THREE.ConeGeometry(0.24,hh,5),mat(0xe6ffe6,0x7dffb0));sp.position.set(-1.72+s*0.573,1.6+hh*0.5,0);g.add(sp);}
+    for(var s=0;s<7;s++){var hh=0.8+((s%2)?0.35:0);var sp=new THREE.Mesh(new THREE.ConeGeometry(0.24,hh,5),mat(0x8dffb8,0x7dffb0));sp.position.set(-1.72+s*0.573,1.6+hh*0.5,0);g.add(sp);}
     // vordere & hintere Stachel (Dornen wirken in beide Richtungen)
     for(var sd=0;sd<4;sd++){var sfr=new THREE.Mesh(new THREE.ConeGeometry(0.16,0.6,4),mat(0xd0ffe0,0x6aff9e));sfr.position.set(-1.2+sd*0.8,0.8,0.62);sfr.rotation.x=Math.PI/2;g.add(sfr);}
   }
   else if(type==="tower"){
     var base=new THREE.Mesh(new THREE.CylinderGeometry(0.7,0.95,2.2,10),mat(0xffd166,0x8a6a10));base.position.y=1.1;g.add(base);
-    var head=new THREE.Mesh(new THREE.OctahedronGeometry(0.62,0),mat(0xfff0a0,0xffd166));head.position.y=2.5;g.add(head);
+    var head=new THREE.Mesh(new THREE.OctahedronGeometry(0.62,0),mat(0xffd166,0xffd166));head.position.y=2.5;g.add(head);
     // Detail: 3 Stützstreben + rotierender Fokus-Ring + Sockel-Ring (children[3..])
     var collar=new THREE.Mesh(new THREE.TorusGeometry(0.78,0.09,6,16),mat(0xffe28a,0xffb020));collar.rotation.x=-Math.PI/2;collar.position.y=2.05;g.add(collar);
     var fring=new THREE.Mesh(new THREE.TorusGeometry(0.92,0.05,6,20),mat(0xfff2b0,0xffd166));fring.rotation.x=-Math.PI/2;fring.position.y=2.5;g.add(fring);
@@ -1072,12 +1072,12 @@ function makeStruct(type){var g=new THREE.Group();
   }
   else if(type==="shield"){
     var gen=new THREE.Mesh(new THREE.CylinderGeometry(0.5,0.85,1.6,8),mat(0x8fbaff,0x3a5a9c));gen.position.y=0.8;g.add(gen);
-    var core=new THREE.Mesh(new THREE.IcosahedronGeometry(0.5,0),mat(0xdff0ff,0x6aa0ff));core.position.y=1.95;g.add(core);
+    var core=new THREE.Mesh(new THREE.IcosahedronGeometry(0.5,0),mat(0x9cc8ff,0x6aa0ff));core.position.y=1.95;g.add(core);
     var dome=new THREE.Mesh(new THREE.SphereGeometry(7,16,9,0,Math.PI*2,0,Math.PI/2),new THREE.MeshBasicMaterial({color:0x66aaff,transparent:true,opacity:0.14,side:THREE.FrontSide,depthWrite:false,blending:THREE.AdditiveBlending}));dome.position.y=0.08;g.add(dome);
     var dring=new THREE.Mesh(new THREE.TorusGeometry(7,0.12,8,44),mat(0x8fc4ff,0x66aaff));dring.rotation.x=-Math.PI/2;dring.position.y=0.07;g.add(dring);
     // Energie-Streben zur Kuppel + 3 kreisende Satelliten (children[4..])
     var band=new THREE.Mesh(new THREE.TorusGeometry(4.3,0.05,6,40),new THREE.MeshBasicMaterial({color:0x9bd0ff,transparent:true,opacity:0.4,depthWrite:false,blending:THREE.AdditiveBlending}));band.rotation.x=-Math.PI/2.4;band.position.y=2.4;g.add(band);
-    for(var ss=0;ss<3;ss++){var sat=new THREE.Mesh(new THREE.OctahedronGeometry(0.22,0),mat(0xdff0ff,0x8fc4ff));sat.position.set(Math.cos(ss/3*6.28)*1.6,1.9,Math.sin(ss/3*6.28)*1.6);g.add(sat);}
+    for(var ss=0;ss<3;ss++){var sat=new THREE.Mesh(new THREE.OctahedronGeometry(0.22,0),mat(0x9cc8ff,0x8fc4ff));sat.position.set(Math.cos(ss/3*6.28)*1.6,1.9,Math.sin(ss/3*6.28)*1.6);g.add(sat);}
   }
   else if(type==="slow"){var disc=new THREE.Mesh(new THREE.CircleGeometry(4,30),new THREE.MeshBasicMaterial({color:0x33d0ff,transparent:true,opacity:0.26,side:THREE.DoubleSide,depthWrite:false}));disc.rotation.x=-Math.PI/2;disc.position.y=0.05;g.add(disc);var ring=new THREE.Mesh(new THREE.TorusGeometry(4,0.13,6,34),mat(0x33d0ff,0x33d0ff));ring.rotation.x=-Math.PI/2;ring.position.y=0.07;g.add(ring);
     var ring2=new THREE.Mesh(new THREE.TorusGeometry(2.3,0.09,6,28),mat(0x7ae2ff,0x33d0ff));ring2.rotation.x=-Math.PI/2;ring2.position.y=0.08;g.add(ring2);
@@ -1085,7 +1085,7 @@ function makeStruct(type){var g=new THREE.Group();
   else{var d2=new THREE.Mesh(new THREE.CircleGeometry(3,28),new THREE.MeshBasicMaterial({color:0x44ee88,transparent:true,opacity:0.30,side:THREE.DoubleSide,depthWrite:false}));d2.rotation.x=-Math.PI/2;d2.position.y=0.05;g.add(d2);var r2=new THREE.Mesh(new THREE.TorusGeometry(3,0.13,6,30),mat(0x44ee88,0x44ee88));r2.rotation.x=-Math.PI/2;r2.position.y=0.07;g.add(r2);
     var cross=new THREE.Mesh(new THREE.BoxGeometry(0.9,0.18,0.28),mat(0xd6ffe6,0x44ee88));cross.position.y=0.55;g.add(cross);var cross2=new THREE.Mesh(new THREE.BoxGeometry(0.28,0.18,0.9),mat(0xd6ffe6,0x44ee88));cross2.position.y=0.55;g.add(cross2);
     var hub2=new THREE.Mesh(new THREE.IcosahedronGeometry(0.34,0),mat(0xeafff2,0x44ee88));hub2.position.y=0.9;g.add(hub2);}
-  g.traverse(function(n){if(n.isMesh&&n.material&&n.material.emissive)n.material.emissiveIntensity=0.7;}); // Bloom nicht ausblasen → Farben bleiben lesbar
+  g.traverse(function(n){if(n.isMesh&&n.material&&n.material.emissive)n.material.emissiveIntensity=0.4;}); // #1 Beauty-Sweep: Bloom-Diät — Strukturen behalten Farbidentität → Farben bleiben lesbar
   return g;}
 function validPlace(x,z,type){var m=structFootprint(type);
   if(Math.abs(x)>ARENA-m+0.01||Math.abs(z)>ARENA-m+0.01)return false;
@@ -1527,9 +1527,9 @@ var rtScene=(renderer.capabilities.isWebGL2&&THREE.WebGLMultisampleRenderTarget)
 var bw=Math.max(1,Math.floor(W/2)),bh=Math.max(1,Math.floor(H/2));
 var rtA=new THREE.WebGLRenderTarget(bw,bh,rtOpt),rtB=new THREE.WebGLRenderTarget(bw,bh,rtOpt);
 var qScene=new THREE.Scene(),qCam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
-var brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.72}},vertexShader:bloomVert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
+var brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.80}},vertexShader:bloomVert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
 var blurMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},dir:{value:new THREE.Vector2(1,0)},res:{value:new THREE.Vector2(bw,bh)}},vertexShader:bloomVert,fragmentShader:"uniform sampler2D tDiffuse;uniform vec2 dir;uniform vec2 res;varying vec2 vUv;void main(){vec2 px=dir/res;vec4 s=vec4(0.0);s+=texture2D(tDiffuse,vUv-4.0*px)*0.05;s+=texture2D(tDiffuse,vUv-3.0*px)*0.09;s+=texture2D(tDiffuse,vUv-2.0*px)*0.12;s+=texture2D(tDiffuse,vUv-1.0*px)*0.15;s+=texture2D(tDiffuse,vUv)*0.18;s+=texture2D(tDiffuse,vUv+1.0*px)*0.15;s+=texture2D(tDiffuse,vUv+2.0*px)*0.12;s+=texture2D(tDiffuse,vUv+3.0*px)*0.09;s+=texture2D(tDiffuse,vUv+4.0*px)*0.05;gl_FragColor=s;}"});
-var compMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tBase:{value:null},tBloom:{value:null},strength:{value:0.7},uTime:{value:0}},vertexShader:bloomVert,fragmentShader:[
+var compMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tBase:{value:null},tBloom:{value:null},strength:{value:0.55},uTime:{value:0}},vertexShader:bloomVert,fragmentShader:[
 "uniform sampler2D tBase;uniform sampler2D tBloom;uniform float strength;uniform float uTime;varying vec2 vUv;",
 "void main(){",
 "  vec2 uv=vUv; vec2 d=uv-0.5; float r2=dot(d,d);",

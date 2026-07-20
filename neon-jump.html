@@ -340,9 +340,13 @@ function buildLevel(idx){
     var ccore=new THREE.Mesh(new THREE.SphereGeometry(0.17,14,14),matS(0xffdd55,0xffc21a,1.35));cg.add(ccore);
     cg.position.set(c[0],c[1],0);lvlGroup.add(cg);cg.userData={got:false};coinMeshes.push(cg);});
   (L.spikes||[]).forEach(function(sp){SPIKES.push({x:sp[0],y:sp[1],w:sp[2]});
+    /* #10 Beauty-Sweep: Stacheln glühten WEISS aus (emissive 1.1 über Bloom-Schwelle) — Weiß ist hier aber Belohnungs-Farbe!
+       Jetzt sattes Gefahren-Rot UNTER der Schwelle + dunkle Sockelleiste → als Todeszone sofort lesbar. */
     var n=Math.max(2,Math.round(sp[2]/0.6));
-    for(var k=0;k<n;k++){var spk=new THREE.Mesh(new THREE.ConeGeometry(0.28,0.7,4),mat(0xff4d6d,0xff4d6d,1.1));
-      spk.position.set(sp[0]-sp[2]/2+ (k+0.5)*(sp[2]/n),sp[1],0);lvlGroup.add(spk);}});
+    for(var k=0;k<n;k++){var h=k%2?0.95:0.8;var spk=new THREE.Mesh(new THREE.ConeGeometry(0.34,h,4),mat(0xff2030,0xff2030,0.45));
+      spk.position.set(sp[0]-sp[2]/2+ (k+0.5)*(sp[2]/n),sp[1]+(h-0.7)/2,0);lvlGroup.add(spk);}
+    var base=new THREE.Mesh(roundedBoxGeo(sp[2]+0.4,0.22,1.5,0.08),matS(0x2a0713,0xff2030,0.22));
+    base.position.set(sp[0],sp[1]-0.45,0);lvlGroup.add(base);});
   (L.checks||[]).forEach(function(c){var g=new THREE.Group();
     var pole=new THREE.Mesh(new THREE.BoxGeometry(0.16,2.6,0.16),mat(0xd6c6ff,0xd6c6ff,0.8));pole.position.y=1.3;g.add(pole);
     var fl=new THREE.Mesh(new THREE.BoxGeometry(1.0,0.7,0.08),mat(0x8890b8,0x8890b8,0.6));fl.position.set(0.55,2.1,0);g.add(fl);

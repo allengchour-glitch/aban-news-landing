@@ -103,20 +103,28 @@ function M(c,e,i){return new THREE.MeshLambertMaterial({color:c,emissive:e||0x00
 var _tl=new THREE.TextureLoader();
 function gtex(u,rx,ry){var t=_tl.load(u);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(rx||1,ry||rx||1);return t;}
 function MT(c,tex,e,i){var m=new THREE.MeshLambertMaterial({color:c,emissive:e||0x000000,emissiveIntensity:i||0});m.map=tex;return m;}
-var walls=[],FLOOR=MT(0x53685a,gtex("/textures/tex_cobble.png",5,16)),WALL=MT(0x41564c,gtex("/textures/tex_stone.png",2.5,1.6)),GOLD=M(0x8a7040,0x4a3410,0.3);
+var walls=[],FLOOR=MT(0x53685a,gtex("/textures/tex_cobble.png",5,16)),WALL=MT(0x5a6157,gtex("/textures/tex_stone.png",6,1.4)),GOLD=M(0x8a7040,0x4a3410,0.3);
+var WALL_LONG=MT(0x5a6157,gtex("/textures/tex_stone.png",20,1.4)); /* #8: 72 Einheiten lange Seitenwände brauchen 20er-Repeat — vorher Schmier-Gradient statt Mauerwerk */
 function box(x,y,z,w,h,d,mat,solid){var m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat||WALL);
   m.position.set(x,y,z);scene.add(m);if(solid)walls.push({x:x,z:z,w:w/2,d:d/2,m:m});return m;}
 box(0,-0.3,-30,20,0.6,72,FLOOR);                       /* Boden */
-box(-10.4,1.5,-30,0.8,3,72,WALL,true);box(10.4,1.5,-30,0.8,3,72,WALL,true); /* Seitenwände */
+box(-10.4,1.5,-30,0.8,3,72,WALL_LONG,true);box(10.4,1.5,-30,0.8,3,72,WALL_LONG,true); /* Seitenwände (#8: langer Repeat) */
 box(0,1.5,6.4,21,3,0.8,WALL,true);                     /* Rückwand */
 /* Fackel-Deko */
 var torches=[];
-function torch(x,z){var g=new THREE.Group();
+function torch(x,z,col){col=col||0xffa040;var g=new THREE.Group(); /* #9: Raum-Farbwelten über die Fackeln (keine neuen Lichter, nur Umfärbung) */
   var st=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.08,1.0,6),M(0x4a3a2a));st.position.y=0.5;g.add(st);
-  var fl=new THREE.Mesh(new THREE.ConeGeometry(0.16,0.36,6),M(0xffa040,0xff8020,1));fl.position.y=1.12;g.add(fl);
-  var lt=new THREE.PointLight(0xff9a50,0.6,8);lt.position.y=1.2;g.add(lt);
+  var fl=new THREE.Mesh(new THREE.ConeGeometry(0.16,0.36,6),M(col,col,1));fl.position.y=1.12;g.add(fl);
+  var lt=new THREE.PointLight(col,0.6,8);lt.position.y=1.2;g.add(lt);
   g.position.set(x,0,z);scene.add(g);torches.push({fl:fl,lt:lt,ph:Math.random()*6});}
-[-9,-9,-9,9,9,9].forEach(function(x,i){torch(x,-4-((i%3)*22));});
+/* Raum 1 warm-orange · Raum 2 links Feuer / rechts Wasser · Raum 3 mystisch-violett */
+torch(-9,-4,0xffa040);torch(9,-4,0xffa040);
+torch(-9,-26,0xff6a28);torch(9,-26,0x38c8ff);
+torch(-9,-48,0xc9a0ff);torch(9,-48,0xc9a0ff);
+/* #9: Schwellen-Streifen vor jedem Tor (Farb-Vorschau des nächsten Raums) */
+box(0,0.02,-14.9,19,0.05,0.5,M(0xff6a28,0xff6a28,0.7));
+box(-4.75,0.02,-38.9,9.5,0.05,0.5,M(0xff6a28,0xff6a28,0.7));box(4.75,0.02,-38.9,9.5,0.05,0.5,M(0x38c8ff,0x38c8ff,0.7));
+box(0,0.02,-60.9,19,0.05,0.5,M(0xc9a0ff,0xc9a0ff,0.7));
 
 /* Tore (sinken bei Lösung) */
 function gate(z){var g=box(0,1.4,z,19,2.8,1.0,GOLD,true);g.userData.open=false;g.userData.z0=1.4;return g;}
