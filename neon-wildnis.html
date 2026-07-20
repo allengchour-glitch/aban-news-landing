@@ -415,7 +415,15 @@ var SEED=0,rnd=Math.random; /* ⚠️ rnd = seeded (Welt-Gen). Die Strom-Positio
 var MAP=800, GROUNDSEG=120;
 // 🎨 Prozedurale Texturen (numpy/Pillow generiert) — Boden/Straßen mit echten Details
 var TEXLOADER=new THREE.TextureLoader();
-function gtex(file,rep,srgb){var t=TEXLOADER.load("/textures/"+file);t.wrapS=t.wrapT=THREE.RepeatWrapping;if(rep)t.repeat.set(rep,rep);if(srgb&&THREE.sRGBEncoding!==undefined)t.encoding=THREE.sRGBEncoding;t.anisotropy=(renderer.capabilities&&renderer.capabilities.getMaxAnisotropy)?Math.min(8,renderer.capabilities.getMaxAnisotropy()):4;t.generateMipmaps=true;return t;}
+var _texCache={}; /* 🖼️ Textur-Cache (Schwarm P1): rep als [x,y]-Array wird memoisiert → dieselbe Boden-/Gras-/Kopfstein-Textur wurde sonst dutzendfach (30 Gärten ×2, Wege ×Dörfer) als eigene 1024²-GPU-Textur hochgeladen. */
+function gtex(file,rep,srgb){
+  var isArr=Array.isArray(rep),ck=isArr?(file+"|"+rep[0]+"|"+rep[1]+"|"+(srgb?1:0)):null;
+  if(ck&&_texCache[ck])return _texCache[ck];
+  var t=TEXLOADER.load("/textures/"+file);t.wrapS=t.wrapT=THREE.RepeatWrapping;
+  if(isArr)t.repeat.set(rep[0],rep[1]);else if(rep)t.repeat.set(rep,rep);
+  if(srgb&&THREE.sRGBEncoding!==undefined)t.encoding=THREE.sRGBEncoding;
+  t.anisotropy=(renderer.capabilities&&renderer.capabilities.getMaxAnisotropy)?Math.min(8,renderer.capabilities.getMaxAnisotropy()):4;t.generateMipmaps=true;
+  if(ck)_texCache[ck]=t;return t;}
 var ground;
 function buildGround(){
   var g=new THREE.PlaneGeometry(MAP,MAP,GROUNDSEG,GROUNDSEG);
@@ -821,11 +829,11 @@ var _nwGrad=null;
 function nwGradTex(){if(_nwGrad)return _nwGrad;var c=document.createElement('canvas');c.width=4;c.height=1;var x=c.getContext('2d');
   var d=x.createImageData(4,1),v=[105,165,215,255];for(var i=0;i<4;i++){d.data[i*4]=d.data[i*4+1]=d.data[i*4+2]=v[i];d.data[i*4+3]=255;}
   x.putImageData(d,0,0);var t=new THREE.CanvasTexture(c);t.minFilter=t.magFilter=THREE.NearestFilter;t.generateMipmaps=false;_nwGrad=t;return t;}
-function toonify(mesh,neon){var m=mesh.material;if(!m||m._toon||!m.isMeshStandardMaterial&&!m.isMeshPhysicalMaterial)return;
+function toonify(mesh,neon,isHero){var m=mesh.material;if(!m||m._toon||!m.isMeshStandardMaterial&&!m.isMeshPhysicalMaterial)return;
   var _col=m.color?m.color.clone():new THREE.Color(0xffffff);
   /* 🧑 Haut-Rettung: die nwhero/Quaternius-GLBs haben „Skin"/„Face" als fast schwarze Farbe (#030303, kaputter
-     Export) → unter Toon-Shading wurde das Gesicht schwarz. Nur Haut-/Gesicht-Materialien ohne Textur aufhellen. */
-  (function(){var nm=(m.name||"").toLowerCase();var mx=Math.max(_col.r,_col.g,_col.b);
+     Export) → unter Toon-Shading wurde das Gesicht schwarz. NUR bei Helden (Schwarm-P3: sonst würden Monster/Props/Kisten mit „Head"/„Face"-Materialien mit-umgefärbt). */
+  if(isHero)(function(){var nm=(m.name||"").toLowerCase();var mx=Math.max(_col.r,_col.g,_col.b);
     if(!m.map&&(nm.indexOf("skin")>=0||nm.indexOf("head")>=0||nm.indexOf("hand")>=0)&&mx<0.28){
       var k=0.42/Math.max(0.008,mx);_col.multiplyScalar(k);
       _col.r=Math.min(1,_col.r);_col.g=Math.min(1,_col.g);_col.b=Math.min(1,_col.b);
@@ -861,7 +869,7 @@ function loadHero(){
     var neon=C.glow==="neon";
     o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material){
       if(neon&&n.material.color)n.material.color.multiplyScalar(1.3); /* vorher 2.0 = überstrahlt/detaillos */
-      toonify(n,neon); // Anime-Cel-Look
+      toonify(n,neon,true); // Anime-Cel-Look (isHero=true → Haut/Augen-Rettung)
     }}});
     pBody.visible=false;player.add(o);heroModel=o;heroRig=makeRig(o,g.animations);
     // idle tolerant: manche Modelle (hero.glb) haben andere Clip-Namen → Fallback auf ersten Clip
@@ -1629,7 +1637,7 @@ function roadRibbon(pts,width,cobble,normal){
 }
 function layRoads(cx,cz,rr){
   // 🧱 GANZES Dorf gepflastert: grosse Kopfstein-Scheibe unter allem (Wege/Platz liegen als Detail obendrauf)
-  if(rr){var cbAll=gtex("tex_cobble.png",0,true);cbAll.repeat.set(Math.max(2,rr/3.5),Math.max(2,rr/3.5));
+  if(rr){var _cbR=Math.max(2,rr/3.5),cbAll=gtex("tex_cobble.png",[_cbR,_cbR],true);
     /* Scheibe mit RADIALEN Ringen: CircleGeometry hat nur Zentrum+Rand -> auf Hügeln stiess das Gelände
        mitten durch die flachen Dreiecke (User: 'auf dem hügel dorf sollte auch pflaster sein') */
     var SEGp=48,RINGSp=Math.max(6,Math.min(14,Math.round(rr/4))),posP=[],uvP=[],idxP=[];
@@ -1646,20 +1654,20 @@ function layRoads(cx,cz,rr){
     pg.setIndex(idxP);pg.computeVertexNormals();
     var pav=new THREE.Mesh(pg,new THREE.MeshLambertMaterial({map:cbAll}));
     pav.position.set(cx,0,cz);pav.receiveShadow=true;scene.add(pav);}
-  var cobble=gtex("tex_cobble.png",0,true);cobble.repeat.set(1,1);
-  var normal=gtex("tex_cobble_n.png",0,false);normal.repeat.set(1,1);
+  var cobble=gtex("tex_cobble.png",[1,1],true);
+  var normal=gtex("tex_cobble_n.png",[1,1],false);
   // geschwungener S-Pfad durch das Dorf (seitliches Schwingen -> nie gerade)
   var ang=rnd()*6.28,px=Math.cos(ang),pz=Math.sin(ang),qx=Math.cos(ang+1.57),qz=Math.sin(ang+1.57);
   var pts=[];for(var t=-1;t<=1.0001;t+=0.08){var sMain=t*30,wob=Math.sin(t*3.4+ang*2)*8+Math.sin(t*7.1)*2.5;
     pts.push({x:cx+px*sMain+qx*wob, z:cz+pz*sMain+qz*wob});}
   roadRibbon(pts,6,cobble,normal);
   // zweiter, kürzerer Quer-Pfad (auch geschwungen) für ein organisches Netz
-  var cobble2=gtex("tex_cobble.png",0,true);cobble2.repeat.set(1,1);var n2=gtex("tex_cobble_n.png",0,false);n2.repeat.set(1,1);
+  var cobble2=gtex("tex_cobble.png",[1,1],true);var n2=gtex("tex_cobble_n.png",[1,1],false);
   var pts2=[];for(var u=-1;u<=1.0001;u+=0.1){var sM=u*20,wb=Math.sin(u*4+ang)*6;
     pts2.push({x:cx+qx*sM+px*wb, z:cz+qz*sM+pz*wb});}
   roadRibbon(pts2,5,cobble2,n2);
   // RUNDER Kopfstein-Marktplatz im Zentrum (warm getönt statt Badezimmer-Fliesen-Look)
-  var st=gtex("tex_cobble.png",0,true);st.repeat.set(5,5);var stn=gtex("tex_cobble_n.png",0,false);stn.repeat.set(5,5);
+  var st=gtex("tex_cobble.png",[5,5],true);var stn=gtex("tex_cobble_n.png",[5,5],false);
   var gp=new THREE.CircleGeometry(9.5,40);gp.rotateX(-Math.PI/2);
   var gpp=gp.attributes.position; /* Platz schmiegt sich ans Gelände (Hügel-Dörfer) */
   for(var gv=0;gv<gpp.count;gv++){var gx5=gpp.getX(gv),gz5=gpp.getZ(gv);gpp.setY(gv,groundH(cx+gx5,cz+gz5)-groundH(cx,cz)+0.0);}
@@ -1674,7 +1682,7 @@ function layRoads(cx,cz,rr){
 // 🌷 Schöne Wege von jeder Haustür zum Dorfplatz — gesäumt mit Blumen, Laternen, Topfpflanzen + Türschwelle
 function layVillagePaths(vx,vz,houses){
   if(!houses||!houses.length)return;
-  var cobble=gtex("tex_cobble.png",0,true);cobble.repeat.set(1,1);
+  var cobble=gtex("tex_cobble.png",[1,1],true);
   var FL=["nt_flower_red","nt_flower_yellow","cc0_flower_purple"];
   var stepMat=new THREE.MeshLambertMaterial({color:0xc3bcae,flatShading:true});
   for(var i=0;i<houses.length;i++){
@@ -1929,7 +1937,7 @@ function gardenMats(){if(_gMats)return _gMats;var L=THREE.MeshLambertMaterial,B=
 function mkGarden(gx,gz,ang){
   ang=ang||0;var gy=groundH(gx,gz),M=gardenMats();
   var G=new THREE.Group();G.position.set(gx,gy,gz);G.rotation.y=ang;scene.add(G);
-  var soilTex=(typeof gtex==="function")?gtex("tex_dirt.png",0,true):null;if(soilTex)soilTex.repeat.set(2,1.5);
+  var soilTex=(typeof gtex==="function")?gtex("tex_dirt.png",[2,1.5],true):null;
   var soil=new THREE.Mesh(new THREE.BoxGeometry(3.4,0.2,2.4),soilTex?new THREE.MeshLambertMaterial({map:soilTex}):M.soil);
   soil.position.y=0.12;soil.receiveShadow=true;G.add(soil);
   // Holz-Hochbeet-Rahmen
@@ -1966,9 +1974,9 @@ function mkGarden(gx,gz,ang){
   var can=new THREE.Mesh(new THREE.CylinderGeometry(0.16,0.18,0.26,10),M.metal);can.position.set(1.4,0.32,1.0);G.add(can);
   var spout=new THREE.Mesh(new THREE.CylinderGeometry(0.03,0.05,0.34,6),M.metal);spout.position.set(1.62,0.4,1.0);spout.rotation.z=-0.8;G.add(spout);
   // 🌿 Rasen-Apron ums Beet + Grasbüschel + niedriger Zaun (User: „darf auch rasen sein neben garten … mauer oder zäune")
-  var grassTex=(typeof gtex==="function")?gtex("tex_grass.png",0,true):null;if(grassTex)grassTex.repeat.set(3,2.4);
-  var lawn=new THREE.Mesh(new THREE.BoxGeometry(4.7,0.06,3.7),grassTex?new THREE.MeshLambertMaterial({map:grassTex,color:0xcfe6b6}):new THREE.MeshLambertMaterial({color:0x6aa84e,flatShading:true}));
-  lawn.position.y=0.03;lawn.receiveShadow=true;G.add(lawn);
+  var grassTex=(typeof gtex==="function")?gtex("tex_grass.png",[3,2.4],true):null;
+  var lawn=new THREE.Mesh(new THREE.BoxGeometry(4.7,0.55,3.7),grassTex?new THREE.MeshLambertMaterial({map:grassTex,color:0xcfe6b6}):new THREE.MeshLambertMaterial({color:0x6aa84e,flatShading:true}));
+  lawn.position.y=-0.16;lawn.receiveShadow=true;G.add(lawn); /* Schwarm-P2: dickere, versenkte Platte → Rand schwebt/versinkt nicht mehr auf Hängen */
   [[-2.05,-1.55],[2.05,-1.55],[-2.05,1.55],[2.05,1.55],[-2.05,0],[2.05,0]].forEach(function(t){ // Grasbüschel
     for(var q=0;q<3;q++){var tf=new THREE.Mesh(new THREE.ConeGeometry(0.055,0.28,4),M.leafC);tf.position.set(t[0]+(q-1)*0.11,0.17,t[1]);tf.rotation.z=(q-1)*0.16;G.add(tf);}});
   var fpM=new THREE.MeshLambertMaterial({color:0xe8e2d2,flatShading:true}); // weisse Lattenzaun-Pfosten + Riegel
@@ -2327,7 +2335,7 @@ function compass8(dx,dz){var a=Math.atan2(dx,-dz);if(a<0)a+=Math.PI*2;return Mat
    deterministisch → koop-sicher). Dekorativ (keine Collider) — begrenzt nur optisch die Stadt. */
 function buildCityWall(cx,cz,HR){
   var wallH=6.6,thick=1.9,capH=0.5,merH=1.0,merW=1.0,gapW=10;
-  var stex=(typeof gtex==="function")?gtex("tex_stone.png",0,true):null;if(stex)stex.repeat.set(6,1.4);
+  var stex=(typeof gtex==="function")?gtex("tex_stone.png",[6,1.4],true):null;
   var mat=stex?new THREE.MeshLambertMaterial({map:stex,color:0xbfb7a8}):new THREE.MeshLambertMaterial({color:0x9a948a,flatShading:true});
   var dark=new THREE.MeshLambertMaterial({color:0x726c62,flatShading:true});
   var roofM=new THREE.MeshLambertMaterial({color:0x7c3b33,flatShading:true});
@@ -2780,7 +2788,7 @@ function decorateWorld(){
   (function(){
     if(villages.length<2)return;
     var rndR=mulberry32(((SEED^0x77aa11)>>>0)||1);
-    var cobR=gtex("tex_cobble.png",0,true);cobR.repeat.set(1,1);
+    var cobR=gtex("tex_cobble.png",[1,1],true);
     var gateWood=new THREE.MeshStandardMaterial({color:0x6a4526,roughness:1,flatShading:true});
     var DECO_CAP=IS_MOB?50:90,decoN=0;
     function mkRoadGate(x,z,ux,uz){ /* kleiner Torbogen: 2 Pfosten + Querbalken (Holz) */
@@ -2965,16 +2973,16 @@ function mkAnimal(sp){
   }
   g.visible=false;scene.add(g);return g;
 }
-function pickSpecies(){var r=rnd();return r<0.5?"hase":(r<0.8?"reh":"fuchs");}
+function pickSpecies(){var r=Math.random();return r<0.5?"hase":(r<0.8?"reh":"fuchs");} /* 🎲 Math.random → poisont NICHT den geteilten Welt-Strom (Koop-Wave-Determinismus, Schwarm-Befund P1) */
 function spawnAnimal(px,pz,forceSp){
-  var a=rnd()*6.28,rd=14+rnd()*40;
+  var a=Math.random()*6.28,rd=14+Math.random()*40;
   var x=(px===undefined?player.position.x:px)+Math.cos(a)*rd,z=(pz===undefined?player.position.z:pz)+Math.sin(a)*rd;
   x=Math.max(-MAP/2+12,Math.min(MAP/2-12,x));z=Math.max(-MAP/2+12,Math.min(MAP/2-12,z));
   var sp=forceSp||pickSpecies();
   var slot=null;for(var i=0;i<animals.length;i++){if(!animals[i].alive&&animals[i].sp===sp){slot=animals[i];break;}}
   if(!slot){if(animals.length>=Math.round(14*VF))return null;slot={mesh:mkAnimal(sp),sp:sp};animals.push(slot);}
   var S=SPECIES[sp];
-  slot.alive=true;slot.x=x;slot.z=z;slot.hp=S.hp;slot.state="graze";slot.t=rnd()*6;slot.dir=rnd()*6.28;slot.hop=0;slot.fleeT=0;slot.hurt=0;
+  slot.alive=true;slot.x=x;slot.z=z;slot.hp=S.hp;slot.state="graze";slot.t=Math.random()*6;slot.dir=Math.random()*6.28;slot.hop=0;slot.fleeT=0;slot.hurt=0;
   slot.mesh.visible=true;slot.mesh.position.set(x,groundH(x,z),z);slot.mesh.scale.setScalar(S.scale);
   return slot;
 }
@@ -2996,7 +3004,7 @@ function updAnimals(dt){
       if(an.fleeT>2.2&&pd>10)an.state="graze";}
     else{ // grasen: langsam umherwandern, gelegentlich Richtung wechseln + Grasen-Idle; flieht wenn Spieler nah
       if(pd<S.fleeR&&!isNight){an.state="flee";an.fleeT=0;spd=S.flee;an.dir=Math.atan2(-dx,-dz);}
-      else{spd=S.graze;if(an.t%3<dt)an.dir+=(rnd()-0.5)*2;
+      else{spd=S.graze;if(an.t%3<dt)an.dir+=(Math.random()-0.5)*2;
         // Grasen-Idle: Kopf/Körper leicht wippen, gelegentlich stehenbleiben
         if(Math.sin(an.t*0.7)>0.6)spd*=0.15;}
     }
@@ -3022,7 +3030,7 @@ function updAnimalSpawns(dt){
     var alive=0;for(var i=0;i<animals.length;i++)if(animals[i].alive)alive++;
     var cap=Math.round(5*VF);
     if(alive<cap)spawnAnimal();
-    aniSpawnT=4+rnd()*4;
+    aniSpawnT=4+Math.random()*4;
   }
 }
 
@@ -3934,7 +3942,7 @@ function updStructures(dt){
       // Heil-Aura
       if(Math.hypot(s.x-player.position.x,s.z-player.position.z)<5&&hp<maxHp){hp=Math.min(maxHp,hp+4*dt);hpUpd();}}
     if(s.type==="bett"){if(Math.hypot(s.x-player.position.x,s.z-player.position.z)<3.5&&hp<maxHp){hp=Math.min(maxHp,hp+6*dt);hpUpd();}}
-    if(s.type==="falle"){s.cd=(s.cd||0)-dt;if(s.cd<=0){var hitAny=false;for(var mf=0;mf<monsters.length;mf++){var em=monsters[mf];if((em.x-s.x)*(em.x-s.x)+(em.z-s.z)*(em.z-s.z)<2.4*2.4){em.hp-=2;hitAny=true;burst(em.x,groundH(em.x,em.z)+0.6,em.z,0xff6a6a,4);if(em.hp<=0){var idf=monsters.indexOf(em);if(idf>=0){scene.remove(em.mesh);monsters.splice(idf,1);clearWarn(em);rewardKill(em);killSfx(em.boss);updWaveHud();}}}}if(hitAny)s.cd=0.9;else s.cd=0.3;}}
+    if(s.type==="falle"){s.cd=(s.cd||0)-dt;if(s.cd<=0){var hitAny=false;for(var mf=monsters.length-1;mf>=0;mf--){var em=monsters[mf]; /* Schwarm-P3: rückwärts iterieren → splice überspringt den nächsten Gegner nicht mehr */if((em.x-s.x)*(em.x-s.x)+(em.z-s.z)*(em.z-s.z)<2.4*2.4){em.hp-=2;hitAny=true;burst(em.x,groundH(em.x,em.z)+0.6,em.z,0xff6a6a,4);if(em.hp<=0){var idf=monsters.indexOf(em);if(idf>=0){scene.remove(em.mesh);monsters.splice(idf,1);clearWarn(em);rewardKill(em);killSfx(em.boss);updWaveHud();}}}}if(hitAny)s.cd=0.9;else s.cd=0.3;}}
     if(s.type==="nexus"){if(s.mesh.userData.orb)s.mesh.userData.orb.rotation.y+=dt*1.2;if(s.mesh.userData.ring)s.mesh.userData.ring.rotation.z+=dt*0.8;
       s.spk=(s.spk||0)-dt;if(s.spk<=0){s.spk=0.4+Math.random()*0.3;burst(s.x+(Math.random()-.5)*2,groundH(s.x,s.z)+5.6+(Math.random()-.5)*2,s.z+(Math.random()-.5)*2,0xc98bff,1);}}
     if(s.type==="turm"){s.cd-=dt;if(s.mesh.userData.orb)s.mesh.userData.orb.rotation.y+=dt*2;
@@ -4129,13 +4137,14 @@ var camYaw=0,shake=0,hitStop=0,_shTick=0;
 var camZoomT=(function(){var z=parseFloat(lsGet("nw_zoom"));return (z>=0.55&&z<=1.8)?z:1;})(),camZoom=camZoomT;
 function setZoom(v){camZoomT=Math.max(0.55,Math.min(1.8,v));lsSet("nw_zoom",camZoomT.toFixed(3));}
 var colliders=[],fadeBuildings=[];
-function addCollider(x,z,r,mesh){colliders.push({x:x,z:z,r:r});
+function addCollider(x,z,r,mesh){colliders.push({x:x,z:z,r:r,fade:!!mesh});
   /* 🫥 Gebäude, die zwischen Kamera & Held stehen, werden durchsichtig statt den Helden zu verdecken
      (User „eingesperrt": Haus füllte den Schirm, Held unsichtbar). Materialien klonen → jedes Haus fadet
      unabhängig (cc0inst teilt Materialien zwischen Instanzen). */
-  if(mesh){var mats=[];mesh.traverse(function(n){if(!n.isMesh||!n.material)return;
-      if(Array.isArray(n.material)){n.material=n.material.map(function(m){return m.clone();});n.material.forEach(function(m){mats.push(m);});}
-      else{n.material=n.material.clone();mats.push(n.material);}});
+  if(mesh){var mats=[];var _reg=function(m){m._o0=(m.opacity!==undefined?m.opacity:1);m._t0=!!m.transparent;mats.push(m);}; /* Schwarm-P3: Original-Opazität/Transparenz merken → glas/fenster nicht dauerhaft undurchsichtig machen */
+    mesh.traverse(function(n){if(!n.isMesh||!n.material)return;
+      if(Array.isArray(n.material)){n.material=n.material.map(function(m){return m.clone();});n.material.forEach(_reg);}
+      else{n.material=n.material.clone();_reg(n.material);}});
     if(mats.length)fadeBuildings.push({x:x,z:z,r:r*1.55+1.3,mats:mats,cur:1,_on:false});}
 }
 function canWalk(nx,nz){ /* 🧱 grosse Gegenstaende blockieren (User-Wunsch) */
@@ -4159,6 +4168,7 @@ function camRel(mx,my){ /* 🎮 Input -> Welt, relativ zur Kamera-Drehung (User:
 function camClampDist(px,pz,dx,dz,want){
   var maxD=want;
   if(typeof colliders!=="undefined")for(var i=0;i<colliders.length;i++){var c=colliders[i];
+    if(c.fade)continue; /* 🫥 Schwarm-P2: Fade-Gebäude NICHT klemmen — sonst zieht der Klemm-Radius die Kamera davor und der Fade greift nie. Der Transparenz-Effekt übernimmt die Sicht; nur Gelände + nicht-fadende Solids klemmen. */
     /* 🐛-Fix (User-Screenshot „verbugt"): Walk-Collider (r=3.4) ist viel kleiner als das sichtbare Haus (Scale ~9.5).
        Für den KAMERA-Test den Radius aufs visuelle Footprint aufblasen — canWalk bleibt unberührt. */
     var rr=c.r*1.85+0.8;
@@ -4200,7 +4210,9 @@ function updCamera(dt){
       if(tS>0.05&&tS<0.99){var qx=pX+sdx*tS,qz=pZ+sdz*tS;if((B.x-qx)*(B.x-qx)+(B.z-qz)*(B.z-qz)<B.r*B.r)occl=1;}
       var tgt=occl?0.16:1;B.cur+=(tgt-B.cur)*Math.min(1,dt*9);
       var on=B.cur<0.985;
-      if(on||B._on){B._on=on;for(var mi=0;mi<B.mats.length;mi++){var m=B.mats[mi];m.transparent=on;m.opacity=B.cur;m.depthWrite=B.cur>0.55;}}
+      if(on||B._on){B._on=on;for(var mi=0;mi<B.mats.length;mi++){var m=B.mats[mi];
+        if(on){m.transparent=true;m.opacity=B.cur*m._o0;m.depthWrite=B.cur>0.55&&!m._t0;}
+        else{m.transparent=m._t0;m.opacity=m._o0;m.depthWrite=!m._t0;}}} /* Original wiederherstellen statt hart opak */
     }}
   var tr=shake>0?shake*shake:0,st2=performance.now()*0.045;
   var sx=tr>0?(Math.sin(st2*1.1)+Math.sin(st2*2.3)*0.5)*tr*0.6:0,sz=tr>0?(Math.cos(st2*1.7)+Math.sin(st2*2.9)*0.5)*tr*0.6:0; /* Trauma-Shake (glatt, kein rnd-Verbrauch) */
@@ -4721,7 +4733,7 @@ function loadRemoteHero(id){ /* 🧑‍🤝‍🧑 W8: Partner als SEIN gewählt
     var hb=(bn&&maxy>miny)?(maxy-miny):0;
     if(hb>0.3)o.scale.setScalar(Math.max(0.15,Math.min(4,TGT/hb)));
     else{var bb=new THREE.Box3().setFromObject(o),h=bb.max.y-bb.min.y;if(h>0.8&&h<6)o.scale.setScalar(Math.max(0.2,Math.min(3.2,TGT/h)));else o.scale.setScalar((C.scale||1.15)*1.18);}
-    var neon=C.glow==="neon";o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material){if(neon&&n.material.color)n.material.color.multiplyScalar(2.0);toonify(n,neon);}}});
+    var neon=C.glow==="neon";o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material){if(neon&&n.material.color)n.material.color.multiplyScalar(1.3);toonify(n,neon,true);}}}); /* Schwarm-P3: 1.3 wie loadHero (2.0 überstrahlte den Partner-Held) + isHero */
     if(NET.remoteHero){if(NET.remoteHero.parent)NET.remoteHero.parent.remove(NET.remoteHero);
       NET.remoteHero.traverse(function(n){if(n.isMesh&&n.material){if(n.material.map)n.material.map.dispose();if(n.material.emissiveMap)n.material.emissiveMap.dispose();n.material.dispose();}}); /* alte Held-GPU-Ressourcen freigeben (gradientMap geteilt -> nicht disposen) */}
     NET.remote.add(o);NET.remoteHero=o;NET.remoteRig=makeRig(o,g2.animations);
@@ -4866,7 +4878,7 @@ function startGame(fresh){
   announce("🌅 Willkommen in der Wildnis!");
   /* 📖 W7: Einmalige Anfänger-Tipps beim allerersten Start (frisch, solo) — beantwortet „Regeln erklären für Anfänger" */
   if(!sv&&!NET.on&&!lsGet("nw_intro")){lsSet("nw_intro","1");
-    var _tips=["🕹️ Ziehe links den Joystick zum Laufen","🪓 Rechts = Bäume fällen & Kämpfen · 🔨 = Bauen","💥 = Spezial-Skill · 💨 = Rolle zum Ausweichen","🌲 Sammle 10 Holz für das erste Ziel!"];
+    var _tips=["🕹️ Ziehe links den Joystick zum Laufen","🪓 Rechts = Bäume fällen & Kämpfen · 🔨 = Bauen","💨 = Rolle zum Ausweichen · 💥-Skill kommt ab Level 2","🌲 Sammle 10 Holz für das erste Ziel!"];
     _tips.forEach(function(tp,ti){setTimeout(function(){if(running&&!dead&&!(ti===0&&window.__moved))announce(tp,"#bfe9ff");},4800+ti*2700);});
     var cb=document.createElement("div"); /* 🕹️ dezente Steuerungs-Leiste, verschwindet nach 12s */
     cb.style.cssText="position:absolute;left:50%;transform:translateX(-50%);bottom:calc(2px + env(safe-area-inset-bottom));z-index:4;background:rgba(10,20,40,.55);border:1px solid rgba(125,227,255,.35);border-radius:12px;padding:4px 12px;font-size:12px;font-weight:800;color:#bfe9ff;pointer-events:none;transition:opacity 1s;white-space:nowrap";
@@ -4917,7 +4929,7 @@ function startGame(fresh){
       new THREE.GLTFLoader().load("/models/"+C.file,function(g){
         if(_lastId!==id)return; // schon weitergeklickt
         clearModel();var o=g.scene;
-        o.traverse(function(n){if(n.isMesh){n.frustumCulled=false;if(typeof toonify==="function")toonify(n,C.glow==="neon");}});
+        o.traverse(function(n){if(n.isMesh){n.frustumCulled=false;if(typeof toonify==="function")toonify(n,C.glow==="neon",true);}});
         /* 📏 Vorschau exakt normieren: ECHTE (geskinnte) Vertex-Hülle messen — reine Bone-Box unterschätzt
            Kopf/Füsse, darum quoll z.B. der Ritter oben aus der Box (User: „zu gross für bild"). boneTransform
            liefert die geskinnte Vertex-Position; Fallbacks: Bone-Box → setFromObject. Ziel ~1.6 Einheiten. */
