@@ -21,6 +21,7 @@ if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.repl
   #roomTag{position:absolute;top:calc(8px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);background:rgba(14,30,24,.75);
     border:1px solid rgba(255,200,110,.4);border-radius:12px;padding:3px 12px;font-weight:900;font-size:.82rem;color:#ffe0a0;white-space:nowrap;max-width:70vw;overflow:hidden;text-overflow:ellipsis}
   #coopTag{position:absolute;top:calc(40px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);font-size:.72rem;font-weight:800;color:#8adfc0;background:rgba(14,30,24,.6);border-radius:10px;padding:2px 10px;white-space:nowrap}
+  @media(max-width:430px){#roomTag{top:calc(40px + env(safe-area-inset-top));font-size:.74rem}#coopTag{top:calc(70px + env(safe-area-inset-top))}} /* P2 (Play-Test): Raum-Pill verdeckte die ⏱️-Uhr auf 360px → unter die topBar */
   #announce{position:absolute;top:24%;left:0;right:0;text-align:center;font-weight:900;font-size:1.55rem;color:#ffd166;
     text-shadow:0 2px 0 #000,0 4px 16px rgba(0,0,0,.7);opacity:0;transition:opacity .35s;pointer-events:none;padding:0 14px}
   #hint{position:absolute;bottom:calc(180px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);background:rgba(14,30,24,.8);
@@ -229,7 +230,7 @@ function pulseHud(){var g=document.getElementById("gems");g.classList.remove("pu
 function updHud(){document.getElementById("gems").textContent="💎 "+gemN;
   var names=["🤝 Raum 1 · Die zwei Platten","🔥💧 Raum 2 · Feuer & Wasser","⚡ Raum 3 · Der Gleichklang","🏆 Geschafft!"];
   document.getElementById("roomTag").textContent=names[Math.min(3,room-1)];
-  document.getElementById("coopTag").textContent=NETON?("🌐 Du bist "+chars[mySlot].name):"🧍 Solo: 🔁 wechselt die Figur";}
+  document.getElementById("coopTag").textContent=NETON?("🌐 Du bist "+chars[mySlot].name):(running&&!won?("🎮 "+chars[active].name+" aktiv · 🔁 wechseln"):"🧍 Solo: 🔁 wechselt die Figur");} /* P3: Aktiv-Figur bleibt sichtbar (updHud überschrieb den #17-Text bei jedem Pickup) */
 
 /* ---------- Eingabe ---------- */
 var kx=0,kz=0,keys={};
@@ -368,8 +369,8 @@ function start(coop){if(!coop&&coopWait){hint("⏳ Koop-Suche läuft — warte a
   chars[active].g.userData.ring.material.opacity=NETON?0:0.7;
   try{audio();if(AC&&AC.state!=="running")AC.resume();}catch(e){}
   startAmbient(); /* #26 Tempel-Ambient */
-  activeTag(); /* #17 */
-  hint(NETON?"Sprecht euch ab — kein Rätsel geht allein!":"🔁 wechselt zwischen Ember & Aqua",4200);updHud();}
+  hint(NETON?"Sprecht euch ab — kein Rätsel geht allein!":"🔁 wechselt zwischen Ember & Aqua",4200);updHud();
+  activeTag(); /* #17 — NACH updHud (das überschrieb den Aktiv-Text sonst sofort wieder, P3 Play-Test) */}
 document.getElementById("startBtn").onclick=function(){start(false);};
 
 /* ---------- Frame ---------- */

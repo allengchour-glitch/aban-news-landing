@@ -19,6 +19,7 @@ if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.repl
   #gems{background:rgba(20,14,40,.7);border:1px solid rgba(201,139,255,.4);border-radius:12px;padding:3px 10px;font-size:.95rem;color:#e0c8ff;transition:transform .18s}
   #stageTag{position:absolute;top:calc(8px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);background:rgba(20,14,40,.7);
     border:1px solid rgba(255,170,80,.4);border-radius:12px;padding:3px 12px;font-weight:900;font-size:.82rem;color:#ffce8a;white-space:nowrap}
+  @media(max-width:430px){#stageTag{top:calc(44px + env(safe-area-inset-top));font-size:.74rem;max-width:88vw;overflow:hidden;text-overflow:ellipsis}#bossBar{top:calc(76px + env(safe-area-inset-top))}} /* P2 (Play-Test): Pill verdeckte 💎-Zähler+Herzen auf 360px → unter die topBar */
   #bossBar{position:absolute;top:calc(44px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);width:min(420px,80vw);display:none}
   #bossBar .lbl{text-align:center;font-weight:900;font-size:.78rem;color:#ff9a8a;letter-spacing:.2em;margin-bottom:3px;text-shadow:0 1px 3px #000}
   #bossBar .bar{height:12px;background:rgba(0,0,0,.55);border-radius:8px;overflow:hidden;border:1px solid rgba(255,90,90,.5)}
@@ -27,7 +28,7 @@ if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.repl
   #announce{position:absolute;top:26%;left:0;right:0;text-align:center;font-weight:900;font-size:1.7rem;color:#ffd166;
     text-shadow:0 2px 0 #000,0 4px 16px rgba(0,0,0,.7);opacity:0;transition:opacity .35s;pointer-events:none;padding:0 14px}
   #hint{position:absolute;bottom:calc(196px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);background:rgba(20,14,40,.75);
-    border-radius:12px;padding:5px 14px;font-weight:800;font-size:.85rem;color:#cfc0ff;opacity:0;transition:opacity .3s;white-space:nowrap;max-width:94vw;overflow:hidden;text-overflow:ellipsis}
+    border-radius:12px;padding:5px 14px;font-weight:800;font-size:.85rem;color:#cfc0ff;opacity:0;transition:opacity .3s;white-space:normal;text-align:center;max-width:94vw} /* P3 (Play-Test): Boss-Hint wurde auf 360px zu „…glühen…" abgeschnitten — der ⚔️-Teil IST die Anleitung → umbrechen statt ellipsen */
   .btn{position:absolute;pointer-events:auto;border-radius:50%;display:flex;align-items:center;justify-content:center;
     font-size:1.6rem;font-weight:900;border:3px solid;background:rgba(24,16,50,.55);backdrop-filter:blur(3px);cursor:pointer}
   .btn:active{transform:scale(.9);filter:brightness(1.4)}

@@ -32,7 +32,7 @@ if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.repl
 </script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;overflow:hidden;background:#06070f;font-family:system-ui,Segoe UI,Roboto,sans-serif;color:#fff;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden;background:#06070f;font-family:system-ui,Segoe UI,Roboto,sans-serif;color:#fff;-webkit-tap-highlight-color:transparent;touch-action:none;overscroll-behavior:none} /* P3 (Play-Test): Wisch in der Pause löste Browser-History-Navigation aus → Spielstand weg */
 #wrap{position:fixed;inset:0}
 canvas{display:block}
 /* HUD-Lesbarkeits-Muster (neon-realm): Fliesstext ≥16px, Panels vor Neon-Szene, Touch ≥44px */

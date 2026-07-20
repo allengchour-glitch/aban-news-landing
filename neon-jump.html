@@ -597,7 +597,7 @@ function overlaps(ax,ay,bx,by,bw2,bh2){return Math.abs(ax-bx)<HW+bw2 && Math.abs
 function loop(now){
   gridMesh.material.uniforms.uT.value=now*0.0005;
   requestAnimationFrame(loop);
-  var dt=Math.min(0.033,(now-last)/1000); last=now;
+  var dt=Math.max(0,Math.min(0.033,(now-last)/1000)); last=now; /* P1 (Play-Test): erster rAF-Timestamp kann VOR dem Skriptload-last liegen → negatives dt gab 1 Gratis-Tod + negative Zeit im Stationsstart */
   if(running&&!won){
     elapsed+=dt;
     // bewegliche + bröckelnde Plattformen
