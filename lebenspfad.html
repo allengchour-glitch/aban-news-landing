@@ -2247,7 +2247,7 @@ function nextTurn(){
   var tries=0;
   do{G.turn=(G.turn+1)%G.players.length;if(G.turn===0)G.round++;tries++;}while(G.players[G.turn].done&&tries<8);
   G.phase="idle";rollBtn.disabled=NET.on&&G.turn!==NET.my;
-  if(NET.on)rollBtn.innerHTML=(G.turn===NET.my)?"🎡 Drehen!":"⏳ "+G.players[G.turn].name+" ist dran …";
+  rollBtn.innerHTML=(NET.on&&G.turn!==NET.my)?"⏳ "+G.players[G.turn].name+" ist dran …":"🎡 Drehen!"; /* P5: unconditional — Solo-Start nach Koop-Runde blieb sonst auf „⏳ …" hängen */
   updPlayers();updChapter();saveGame();
   if(G.players.length>1&&!G.players[G.turn].done){
     if(NET.on&&G.turn===NET.my)announce("🎲 DU BIST DRAN — Drehen!","#8fffb0",5200); /* Koop: eigener Zug unuebersehbar */
@@ -3137,11 +3137,12 @@ function netConnInfo(){var el=document.getElementById("netConn");if(!el)return;
 // ===================== 🌐 Online-Präsenz + Auto-Pause (User-Wunsch: „falls man nicht drin ist … Anzeige/Pause/Speichern“) =====================
 function netPresent(i){ // ist Spieler i gerade verbunden?
   if(!NET.on)return true;
+  if(G&&G.players[i]&&G.players[i].bot)return true; /* P5: Robo hat keine Verbindung, ist aber immer „da" — sonst Pause-Overlay bei jedem Bot-Zug */
   if(i===0)return NET.host?true:(NET.conns.length>0); // Host ist immer da; für Gäste = Status des Host-Links
   return !!(NET.present&&NET.present[i]);}
 function netBroadcastPres(){ // nur Host: aktuelle Präsenz-Liste an alle Gäste
   if(!NET.host)return;var a=[];var n=Math.max(NET.names.length,G?G.players.length:0);
-  for(var i=0;i<n;i++)a[i]=(i===0); // Host=0 immer präsent, Rest erst mal false
+  for(var i=0;i<n;i++)a[i]=(i===0)||!!(NET.bots&&NET.bots[i])||!!(G&&G.players[i]&&G.players[i].bot); // Host=0 + Robos immer präsent (P5)
   NET.conns.forEach(function(c){if(c._idx!=null)a[c._idx]=true;});
   NET.present=a;netSend({t:"pres",a:a});renderNetHud();netCheckPause();}
 function renderNetHud(){var el=document.getElementById("netHud");if(!el)return;
@@ -3215,7 +3216,7 @@ function netApply(m){
     if(G&&G.players[di]&&!G.players[di].done)announce("📴 "+G.players[di].name+" hat das Spiel verlassen","#ff8a8a");
     if(G&&running){NET.q.push(m);} // im Spiel: sequenzieren (alle Clients wechseln am selben Punkt)
     else{ // Lobby / kein laufendes G: Liste defensiv pflegen (nie crashen)
-      if(NET.names&&di>=0&&di<NET.names.length){NET.names.splice(di,1);if(NET.cfgs)NET.cfgs.splice(di,1);if(NET.ready)NET.ready.splice(di,1);}
+      if(NET.names&&di>=0&&di<NET.names.length){NET.names.splice(di,1);if(NET.cfgs)NET.cfgs.splice(di,1);if(NET.ready)NET.ready.splice(di,1);if(NET.bots)NET.bots.splice(di,1);} /* P5: Bot-Flags mitverschieben */
       netPlayersUpd();}
     renderNetHud();netCheckPause();return;}
   NET.q.push(m);}
@@ -3581,7 +3582,7 @@ function netHostBoot(){ // ID-Kollision (unavailable-id) -> neuen Code würfeln 
         netBroadcastPres();
       }else if(wasIdx!=null){ // Lobby: Platz KOMPAKTIEREN statt Geisterplatz stehen zu lassen
         if(NET.names[wasIdx])chatAdd("System",NET.names[wasIdx]+" hat die Lobby verlassen");
-        NET.names.splice(wasIdx,1);if(NET.cfgs)NET.cfgs.splice(wasIdx,1);if(NET.ready)NET.ready.splice(wasIdx,1);
+        NET.names.splice(wasIdx,1);if(NET.cfgs)NET.cfgs.splice(wasIdx,1);if(NET.ready)NET.ready.splice(wasIdx,1);if(NET.bots)NET.bots.splice(wasIdx,1); /* P5: Bot-Flags mitverschieben — sonst wird nach einem Leave der falsche Sitz zum Robo */
         NET.conns.forEach(function(cc){if(cc._idx!=null&&cc._idx>wasIdx)cc._idx--; // verbleibende Gäste neu indizieren
           if(cc._idx!=null){try{cc.send(JSON.stringify({t:"welcome",idx:cc._idx}));}catch(e){}}}); // jeder erfährt seinen neuen Index
         netPlayersUpd(); // (Wrapper) broadcastet {t:'lobby',…} -> Liste + Start-Knopf erscheinen wieder korrekt
