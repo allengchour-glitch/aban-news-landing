@@ -2118,7 +2118,13 @@ function addStation(p,def){
   var sp=stationNameSprite(def.icon+" "+def.name);sp.position.y=6.1;g.add(sp);
   var lt=new THREE.PointLight(def.color,0.7,18);lt.position.set(0,4,0);g.add(lt);
   scene.add(g);
-  stations.push({i:stations.length,x:x,z:z,name:def.name,icon:def.icon,url:def.url,badge:def.badge,mesh:g});}
+  stations.push({i:stations.length,x:x,z:z,name:def.name,icon:def.icon,url:def.url,badge:def.badge,mesh:g,nameSprite:sp});}
+/* 🪧 Stations-Schilder nur aus der Nähe zeigen → weit entfernte Schilder klettern sonst über die HUD-Knöpfe (User: „text überschneidet") */
+function updStationLabels(){if(typeof stations==="undefined")return;
+  for(var i=0;i<stations.length;i++){var s=stations[i];if(!s.nameSprite)continue;
+    var dx=s.x-player.position.x,dz=s.z-player.position.z,d=Math.sqrt(dx*dx+dz*dz);
+    var o=d<15?1:(d>30?0:(30-d)/15);var m=s.nameSprite.material;
+    if(m){m.opacity=o;s.nameSprite.visible=o>0.02;}}}
 function stationsDone(){try{return JSON.parse(lsGet("nw_stations")||"{}");}catch(e){return {};}}
 function openStation(i){
   var st=stations[i];if(!st||stationOpen)return;
@@ -4160,6 +4166,7 @@ function updCamera(dt){
   var sx=tr>0?(Math.sin(st2*1.1)+Math.sin(st2*2.3)*0.5)*tr*0.6:0,sz=tr>0?(Math.cos(st2*1.7)+Math.sin(st2*2.9)*0.5)*tr*0.6:0; /* Trauma-Shake (glatt, kein rnd-Verbrauch) */
   camera.lookAt(player.position.x+sx-dirx*1.0,player.position.y+1.5,player.position.z+sz-dirz*1.0); /* 🎯 Held zentriert, minimaler kamerarelativer Lead */
   if(shake>0)shake=Math.max(0,shake-dt*1.8);
+  updStationLabels(); /* 🪧 ferne Stations-Schilder ausblenden (kein HUD-Überlapp) */
 }
 
 // ---------- Save ----------
@@ -4434,6 +4441,58 @@ function updMinimap(){var cv=document.getElementById("minimap");if(!cv||!running
   // Nord-Anzeige
   ctx.fillStyle="#ff8a8a";ctx.font="bold 11px sans-serif";ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillText("N",cx,6);
 }
+/* 🗺️ Weltkarte — Tipp auf die Minimap öffnet die grosse Vollbild-Karte (User: „wenn map klickt sollte man weltkarte sehen") */
+var mapOpen=false,_mapRaf=0;
+function collectMapPoints(){var pts=[];
+  pts.push({x:player.position.x,z:player.position.z,kind:"me"});
+  if(typeof questBoard!=="undefined"&&questBoard)pts.push({x:questBoard.x,z:questBoard.z,kind:"home",icon:"🏠",name:"Stadt"});
+  if(typeof villages!=="undefined")villages.forEach(function(v,i){pts.push({x:v.x,z:v.z,kind:v.big?"city":"village",icon:v.big?"🏰":"🏘️",name:v.big?"Hauptstadt":("Dorf "+i)});});
+  if(typeof stations!=="undefined")stations.forEach(function(s){pts.push({x:s.x,z:s.z,kind:"station",icon:s.icon,name:s.name});});
+  if(typeof NET!=="undefined"&&NET.on&&NET.remote&&NET.remote.visible)pts.push({x:NET.remote.position.x,z:NET.remote.position.z,kind:"friend",name:"Freund"});
+  return pts;}
+function drawWorldMap(){var cv=document.getElementById("wmCanvas");if(!cv)return;var ctx=cv.getContext("2d");
+  var W=cv.width,H=cv.height;ctx.clearRect(0,0,W,H);
+  ctx.fillStyle="#0c1522";ctx.fillRect(0,0,W,H);
+  var pts=collectMapPoints();
+  var minX=1e9,maxX=-1e9,minZ=1e9,maxZ=-1e9;
+  pts.forEach(function(p){if(p.x<minX)minX=p.x;if(p.x>maxX)maxX=p.x;if(p.z<minZ)minZ=p.z;if(p.z>maxZ)maxZ=p.z;});
+  var pad=22;minX-=pad;maxX+=pad;minZ-=pad;maxZ+=pad;
+  var spanX=Math.max(40,maxX-minX),spanZ=Math.max(40,maxZ-minZ),span=Math.max(spanX,spanZ);
+  var m=28,sc=(Math.min(W,H)-m*2)/span,ox=(W-span*sc)/2-minX*sc+(span-spanX)*sc/2,oz=(H-span*sc)/2-minZ*sc+(span-spanZ)*sc/2;
+  function P(x,z){return [ox+x*sc,oz+z*sc];}
+  ctx.strokeStyle="rgba(90,140,190,.14)";ctx.lineWidth=1; /* Gitter */
+  for(var gx=Math.ceil(minX/25)*25;gx<maxX;gx+=25){var a=P(gx,minZ),b=P(gx,maxZ);ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.stroke();}
+  for(var gz=Math.ceil(minZ/25)*25;gz<maxZ;gz+=25){var c=P(minX,gz),d=P(maxX,gz);ctx.beginPath();ctx.moveTo(c[0],c[1]);ctx.lineTo(d[0],d[1]);ctx.stroke();}
+  ctx.textAlign="center";ctx.textBaseline="middle";
+  pts.forEach(function(p){var q=P(p.x,p.z);
+    if(p.kind==="me"){ctx.save();ctx.translate(q[0],q[1]);ctx.rotate(-player.rotation.y);ctx.fillStyle="#7de3ff";ctx.beginPath();ctx.moveTo(0,-13);ctx.lineTo(9,10);ctx.lineTo(-9,10);ctx.closePath();ctx.fill();ctx.restore();
+      ctx.fillStyle="#7de3ff";ctx.font="bold 13px sans-serif";ctx.fillText("Du",q[0],q[1]+22);return;}
+    if(p.kind==="friend"){ctx.fillStyle="#35d0ff";ctx.beginPath();ctx.arc(q[0],q[1],9,0,6.283);ctx.fill();ctx.strokeStyle="#eaffff";ctx.lineWidth=2;ctx.stroke();ctx.fillStyle="#eaffff";ctx.font="bold 13px sans-serif";ctx.fillText("Freund",q[0],q[1]+21);return;}
+    ctx.font=(p.kind==="city"?"30px":(p.kind==="station"?"24px":"22px"))+" sans-serif";ctx.fillText(p.icon||"•",q[0],q[1]);
+    if(p.name){ctx.fillStyle=p.kind==="station"?"#ffd166":"#cfe6ff";ctx.font="bold 12px sans-serif";ctx.fillText(p.name,q[0],q[1]+ (p.kind==="city"?24:19));}
+  });
+}
+function openWorldMap(){if(mapOpen)return;var ov=document.getElementById("wmOv");
+  if(!ov){ov=document.createElement("div");ov.id="wmOv";
+    ov.style.cssText="position:fixed;inset:0;z-index:90;background:rgba(4,8,16,.82);display:none;flex-direction:column;align-items:center;justify-content:center;backdrop-filter:blur(3px);pointer-events:auto";
+    var ttl=document.createElement("div");ttl.textContent="🗺️ Weltkarte";ttl.style.cssText="color:#eaffff;font-weight:900;font-size:20px;margin:6px 0 8px;letter-spacing:.04em";
+    var cvw=document.createElement("canvas");cvw.id="wmCanvas";cvw.style.cssText="max-width:94vw;max-height:74vh;width:min(94vw,560px);height:min(74vh,560px);border-radius:16px;border:2px solid rgba(130,200,255,.5);box-shadow:0 8px 40px rgba(0,0,0,.6)";
+    var leg=document.createElement("div");leg.style.cssText="color:#9fd0ff;font-size:12px;margin-top:8px;text-align:center;max-width:90vw";leg.innerHTML="🏰 Hauptstadt · ✈️🏃🏎️⚔️🏰 Stationen · 🔵 Du · 🟦 Freund — folge den Wegweisern";
+    var cls=document.createElement("button");cls.textContent="✕ Schliessen";cls.type="button";cls.style.cssText="margin-top:12px;padding:11px 26px;border-radius:14px;border:1px solid rgba(130,200,255,.5);background:rgba(20,40,70,.9);color:#bfe9ff;font-weight:800;font-size:15px;cursor:pointer";
+    cls.onclick=closeWorldMap;
+    ov.appendChild(ttl);ov.appendChild(cvw);ov.appendChild(leg);ov.appendChild(cls);
+    ov.addEventListener("click",function(e){if(e.target===ov)closeWorldMap();}); /* Tipp auf Hintergrund schliesst */
+    document.body.appendChild(ov);
+  }
+  var cvw2=document.getElementById("wmCanvas");var dp=Math.min(devicePixelRatio||1,2);cvw2.width=Math.round(560*dp);cvw2.height=Math.round(560*dp);
+  ov.style.display="flex";mapOpen=true;
+  (function loop(){if(!mapOpen)return;drawWorldMap();_mapRaf=requestAnimationFrame(loop);})();
+}
+function closeWorldMap(){mapOpen=false;if(_mapRaf)cancelAnimationFrame(_mapRaf);var ov=document.getElementById("wmOv");if(ov)ov.style.display="none";}
+(function(){var mm=document.getElementById("minimap");if(mm){var _mmt=0;
+  mm.addEventListener("click",function(){openWorldMap();});
+  mm.addEventListener("touchend",function(e){if(performance.now()-_mmt>400){e.preventDefault();openWorldMap();}},{passive:false});
+  mm.addEventListener("touchstart",function(){_mmt=performance.now();},{passive:true});}})();
 function frame(now){
   requestAnimationFrame(frame);
   var dt=Math.min(0.05,(now-lastT)/1000)||0.016;lastT=now;perfNow=now;
