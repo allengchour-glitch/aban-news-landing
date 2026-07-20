@@ -1547,8 +1547,16 @@ document.getElementById("edUp").onclick=function(){
   var gx=f9.gx,gy=f9.gy,rot=f9.rot,id=f9.id;
   if(f9.mesh)scene.remove(f9.mesh);if(f9.plight)scene.remove(f9.plight);
   furn.splice(furn.indexOf(f9),1);netSend({t:"del",x:gx,y:gy});
+  var alteWachs=f9.wachs;
   doPlaceFurn(id,gx,gy,rot,false,undefined,lv0+1);
-  editSel=furn[furn.length-1];editShow(editSel);
+  editSel=furn[furn.length-1];
+  if(editSel){editSel.lv=lv0+1; // Stufe sicherstellen (auch bei Grow/Beet)
+    if(alteWachs!==undefined&&(editSel.grow||editSel.beet)){editSel.wachs=alteWachs; // Fortschritt retten
+      var scU=0.06+alteWachs*0.94;
+      if(editSel.grow&&editSel.krauts)editSel.krauts.forEach(function(kr9,k9){kr9.scale.setScalar(scU*(0.85+(k9%3)*0.1));});
+      if(editSel.beet&&editSel.sprossen){var sbU=0.05+alteWachs*0.95;editSel.sprossen.forEach(function(sp9,k9){sp9.scale.setScalar(sbU*(0.8+((k9*7)%5)*0.08));
+        if(alteWachs>0.85)sp9.material.color.setHex(0xe8722a);});}}}
+  editShow(editSel);
   hint("⬆️ Aufgewertet auf Stufe "+(lv0+1)+" — wirkt besser & steigert den Haus-Wert!");
   beep(700,.08,"triangle",.05);setTimeout(function(){beep(940,.1,"triangle",.06);},110);updHUD();};
 document.getElementById("edSell").onclick=function(){
