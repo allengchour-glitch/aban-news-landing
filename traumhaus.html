@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="aban-nav" content="off"><!-- Vollbild-Spiel: keine Website-Navileiste (sonst frisst sie auf dem Handy den halben Screen) -->
 <title>Traumhaus — Bau-Simulation (Sims-Style, Online-Koop) | aban news</title>
 <meta name="description" content="Traumhaus: baue dein Haus im Browser — Wände, Böden, echte 3D-Möbel, zwei Bewohner mit Bedürfnissen, Tag/Nacht, Romantik-Modus. Solo oder Online-Koop mit Raum-Code. Gratis, kein Download.">
 <link rel="canonical" href="https://abannews.com/traumhaus.html">
@@ -108,7 +109,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 <button id="lieferBtn" style="position:fixed;right:12px;bottom:calc(308px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:50%;width:64px;height:64px;font-size:1.5rem;background:linear-gradient(135deg,#4ab04a,#2a8a3a);box-shadow:0 6px 20px rgba(40,140,60,.5);cursor:pointer">📦</button>
 <div id="lieferHud" style="position:fixed;left:50%;transform:translateX(-50%);bottom:calc(120px + env(safe-area-inset-bottom));z-index:16;display:none;background:rgba(20,60,25,.88);color:#fff;border:2px solid #4ad06a;border-radius:12px;padding:6px 14px;font-weight:800">📦 <span id="lieferZeit">60</span>s → <span id="lieferZiel">Markt</span></div>
 <button id="hornBtn" style="position:fixed;right:12px;bottom:calc(234px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:50%;width:64px;height:64px;font-size:1.5rem;background:rgba(255,253,246,.96);box-shadow:0 6px 20px rgba(60,40,10,.3);cursor:pointer">📣</button>
-<button id="exitCar" style="position:fixed;left:50%;transform:translateX(-50%);bottom:calc(96px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:30px;padding:13px 24px;font-weight:900;font-size:1.05rem;color:#fff;background:linear-gradient(90deg,#e0703a,#c8502a);box-shadow:0 8px 22px rgba(200,80,40,.4);cursor:pointer">🚪 Aussteigen</button>
+<button id="exitCar" style="position:fixed;left:50%;transform:translateX(-50%);bottom:calc(128px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:30px;padding:13px 24px;font-weight:900;font-size:1.05rem;color:#fff;background:linear-gradient(90deg,#e0703a,#c8502a);box-shadow:0 8px 22px rgba(200,80,40,.4);cursor:pointer">🚪 Aussteigen</button>
 <div id="emoteBar"></div>
 <div id="piBar" style="position:fixed;left:66px;bottom:calc(64px + env(safe-area-inset-bottom));z-index:14;display:none;gap:6px">
   <button class="tbtn" id="piWink" title="Winken">👋</button>
@@ -1402,7 +1403,7 @@ function applyFurn(id,gx,gy,rot,fid){
         var ba=bl/5*6.283;blatt.position.set(Math.cos(ba)*0.12,0.3+bl*0.06,Math.sin(ba)*0.12);blatt.scale.set(1.4,0.5,0.6);blatt.rotation.y=ba;kr.add(blatt);}
       kr.position.set(-0.35+gx2*0.7,0.05,-0.35+gy2*0.7);kr.scale.setScalar(0.06);gg.add(kr);krauts.push(kr);}
     gg.position.set(cx(gx),0.01,cz(gy));scene.add(gg);
-    furn.push({fid:fid,id:id,gx:gx,gy:gy,rot:rot,def:def,mesh:gg,busy:false,grow:1,wachs:0,krauts:krauts,glow:pl2});
+    furn.push({fid:fid,id:id,gx:gx,gy:gy,rot:rot,def:def,mesh:gg,busy:false,grow:1,wachs:0,krauts:krauts,glow:pl2,lv:arguments[5]||1});
     return;}
   if(def.teich){ // Gartenteich: Wasser + Steinrand + Seerose
     var tg=new THREE.Group();
@@ -1417,7 +1418,7 @@ function applyFurn(id,gx,gy,rot,fid){
     var blume9=new THREE.Mesh(new THREE.SphereGeometry(0.09,8,6),stdMat(0xf0a8c8,0.5));
     blume9.position.set(0.5,0.2,-0.4);tg.add(blume9);
     tg.position.set(cx(gx),0.01,cz(gy));scene.add(tg);
-    furn.push({fid:fid,id:id,gx:gx,gy:gy,rot:rot,def:def,mesh:tg,busy:false,teich:1});
+    furn.push({fid:fid,id:id,gx:gx,gy:gy,rot:rot,def:def,mesh:tg,busy:false,teich:1,lv:arguments[5]||1});
     return;}
   if(def.stereo){ // Stereoanlage: Boombox auf Ständer, leuchtendes Display
     var sg=new THREE.Group();
@@ -1431,7 +1432,7 @@ function applyFurn(id,gx,gy,rot,fid){
     var disp=new THREE.Mesh(new THREE.BoxGeometry(0.3,0.12,0.02),new THREE.MeshStandardMaterial({color:0x30e0c0,emissive:0x20c0a0,emissiveIntensity:1.1}));
     disp.position.set(0,0.95,0.21);sg.add(disp);
     sg.position.set(cx(gx),0.01,cz(gy));sg.rotation.y=rot*Math.PI/2;scene.add(sg);
-    furn.push({fid:fid,id:id,gx:gx,gy:gy,rot:rot,def:def,mesh:sg,busy:false,stereo:1});
+    furn.push({fid:fid,id:id,gx:gx,gy:gy,rot:rot,def:def,mesh:sg,busy:false,stereo:1,lv:arguments[5]||1});
     return;}
   if(def.beet){ // Gemüsebeet: prozedural (Erde + wachsende Pflanzen)
     var bg=new THREE.Group();
@@ -1442,7 +1443,7 @@ function applyFurn(id,gx,gy,rot,fid){
       var sp3=new THREE.Mesh(new THREE.SphereGeometry(0.11,8,6),stdMat(0x3a8a3a,0.6));
       sp3.position.set(-0.5+bx*0.5,0.24,-0.5+by*0.5);sp3.scale.setScalar(0.05);bg.add(sp3);sprossen.push(sp3);}
     bg.position.set(cx(gx),0.01,cz(gy));scene.add(bg);
-    var brec={fid:fid,id:id,gx:gx,gy:gy,rot:rot,def:def,mesh:bg,busy:false,beet:1,wachs:0,sprossen:sprossen};
+    var brec={fid:fid,id:id,gx:gx,gy:gy,rot:rot,def:def,mesh:bg,busy:false,beet:1,wachs:0,sprossen:sprossen,lv:arguments[5]||1};
     furn.push(brec);return;}
   if(def.pet){ // Hund läuft frei mit, nicht als Möbel im Raster
     if(haustier){scene.remove(haustier.mesh);}
@@ -1476,7 +1477,7 @@ function removeFurnAt(gx,gy,ohneGeld){
     var cells=furnCells(f);
     for(var c=0;c<cells.length;c++)if(cells[c][0]===gx&&cells[c][1]===gy){
       if(f.mesh)scene.remove(f.mesh);if(f.plight)scene.remove(f.plight);
-      if(!ohneGeld)geld+=Math.round(f.def.cost*0.5);
+      if(!ohneGeld){geld+=Math.round(f.def.cost*0.5);geldSend();}
       furn.splice(i,1);updHUD();return true;}}
   return false;}
 function furnCells(f){var s=f.def.size||[1,1],w=s[0],d=s[1];
