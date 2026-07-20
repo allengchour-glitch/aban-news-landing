@@ -175,10 +175,13 @@ var CHZ=-104;
 var upLight=new THREE.PointLight(0xff3020,0,26);upLight.position.set(0,1.2,CHZ-4);scene.add(upLight); /* 🔴 rotes Boden-Licht unterm Koloss */
 plat(0,0,CHZ,26,26,STONE2);
 for(var ti=0;ti<8;ti++){var ta=ti/8*Math.PI*2;torch(Math.cos(ta)*11,0,CHZ+Math.sin(ta)*11);}
-(function(){var wallM=M(0x161226);
+(function(){var wallM=MT(0x4a4270,gtex("/textures/tex_stone.png",1,3)); /* 🪨 Pfeiler texturiert */
   for(var wi=0;wi<14;wi++){var wa=wi/14*Math.PI*2;
-    var p=new THREE.Mesh(new THREE.CylinderGeometry(0.7,0.9,9,6),wallM);
-    p.position.set(Math.cos(wa)*13,4.5,CHZ+Math.sin(wa)*13);scene.add(p);}})();
+    /* User-Feedback „lange Türme? wegen Sicht?": Pfeiler standen bei r=13 — die Arena hält dich bei r=12,
+       die Kamera hängt dahinter → sie schoben sich ZWISCHEN Kamera und Spieler. Jetzt: weiter raus (r=17),
+       schlanker + niedriger → Kammer-Stimmung bleibt, Sicht frei. */
+    var p=new THREE.Mesh(new THREE.CylinderGeometry(0.55,0.75,7,6),wallM);
+    p.position.set(Math.cos(wa)*17,3.5,CHZ+Math.sin(wa)*17);scene.add(p);}})();
 
 var GEM_TOTAL=gems.length; /* nach allen gem()-Aufrufen */
 /* ---------- Spieler ---------- */
