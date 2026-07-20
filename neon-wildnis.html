@@ -4502,8 +4502,9 @@ function collectMapPoints(){var pts=[];
   if(typeof stations!=="undefined")stations.forEach(function(s){pts.push({x:s.x,z:s.z,kind:"station",icon:s.icon,name:s.name});});
   if(typeof NET!=="undefined"&&NET.on&&NET.remote&&NET.remote.visible)pts.push({x:NET.remote.position.x,z:NET.remote.position.z,kind:"friend",name:"Freund"});
   return pts;}
+var _wmHit=[]; /* 🚀 Schnellreise-Trefferflächen (Weltkarte) */
 function drawWorldMap(){var cv=document.getElementById("wmCanvas");if(!cv)return;var ctx=cv.getContext("2d");
-  var W=cv.width,H=cv.height;ctx.clearRect(0,0,W,H);
+  var W=cv.width,H=cv.height;ctx.clearRect(0,0,W,H);_wmHit=[];
   ctx.fillStyle="#0c1522";ctx.fillRect(0,0,W,H);
   var pts=collectMapPoints();
   var minX=1e9,maxX=-1e9,minZ=1e9,maxZ=-1e9;
@@ -4517,6 +4518,7 @@ function drawWorldMap(){var cv=document.getElementById("wmCanvas");if(!cv)return
   for(var gz=Math.ceil(minZ/25)*25;gz<maxZ;gz+=25){var c=P(minX,gz),d=P(maxX,gz);ctx.beginPath();ctx.moveTo(c[0],c[1]);ctx.lineTo(d[0],d[1]);ctx.stroke();}
   ctx.textAlign="center";ctx.textBaseline="middle";
   pts.forEach(function(p){var q=P(p.x,p.z);
+    if(p.kind==="station"||p.kind==="city"||p.kind==="home"||p.kind==="village")_wmHit.push({sx:q[0],sy:q[1],x:p.x,z:p.z,name:p.name||"Ort"}); /* 🚀 anklickbar zum Hinreisen */
     if(p.kind==="me"){ctx.save();ctx.translate(q[0],q[1]);ctx.rotate(-player.rotation.y);ctx.fillStyle="#7de3ff";ctx.beginPath();ctx.moveTo(0,-13);ctx.lineTo(9,10);ctx.lineTo(-9,10);ctx.closePath();ctx.fill();ctx.restore();
       ctx.fillStyle="#7de3ff";ctx.font="bold 13px sans-serif";ctx.fillText("Du",q[0],q[1]+22);return;}
     if(p.kind==="friend"){ctx.fillStyle="#35d0ff";ctx.beginPath();ctx.arc(q[0],q[1],9,0,6.283);ctx.fill();ctx.strokeStyle="#eaffff";ctx.lineWidth=2;ctx.stroke();ctx.fillStyle="#eaffff";ctx.font="bold 13px sans-serif";ctx.fillText("Freund",q[0],q[1]+21);return;}
@@ -4529,7 +4531,12 @@ function openWorldMap(){if(mapOpen)return;var ov=document.getElementById("wmOv")
     ov.style.cssText="position:fixed;inset:0;z-index:90;background:rgba(4,8,16,.82);display:none;flex-direction:column;align-items:center;justify-content:center;backdrop-filter:blur(3px);pointer-events:auto";
     var ttl=document.createElement("div");ttl.textContent="🗺️ Weltkarte";ttl.style.cssText="color:#eaffff;font-weight:900;font-size:20px;margin:6px 0 8px;letter-spacing:.04em";
     var cvw=document.createElement("canvas");cvw.id="wmCanvas";cvw.style.cssText="max-width:94vw;max-height:74vh;width:min(94vw,560px);height:min(74vh,560px);border-radius:16px;border:2px solid rgba(130,200,255,.5);box-shadow:0 8px 40px rgba(0,0,0,.6)";
-    var leg=document.createElement("div");leg.style.cssText="color:#9fd0ff;font-size:12px;margin-top:8px;text-align:center;max-width:90vw";leg.innerHTML="🏰 Hauptstadt · ✈️🏃🏎️⚔️🏰 Stationen · 🔵 Du · 🟦 Freund — folge den Wegweisern";
+    var leg=document.createElement("div");leg.style.cssText="color:#9fd0ff;font-size:12px;margin-top:8px;text-align:center;max-width:90vw";leg.innerHTML="🚀 <b>Tippe ein Ziel an, um dorthin zu reisen</b> · 🏰 Hauptstadt · ✈️🏃🏎️⚔️ Stationen · 🔵 Du · 🟦 Freund";
+    cvw.addEventListener("click",function(e){ /* 🚀 Schnellreise: nächstes Ziel zum Klick anspringen */
+      var r=cvw.getBoundingClientRect(),sx=(e.clientX-r.left)*(cvw.width/r.width),sy=(e.clientY-r.top)*(cvw.height/r.height);
+      var best=null,bd=1e9;for(var i=0;i<_wmHit.length;i++){var h=_wmHit[i],d=(h.sx-sx)*(h.sx-sx)+(h.sy-sy)*(h.sy-sy);if(d<bd){bd=d;best=h;}}
+      var dp=Math.min(devicePixelRatio||1,2);if(best&&bd<(46*dp)*(46*dp)){fastTravel(best);}
+    });
     var cls=document.createElement("button");cls.textContent="✕ Schliessen";cls.type="button";cls.style.cssText="margin-top:12px;padding:11px 26px;border-radius:14px;border:1px solid rgba(130,200,255,.5);background:rgba(20,40,70,.9);color:#bfe9ff;font-weight:800;font-size:15px;cursor:pointer";
     cls.onclick=closeWorldMap;
     ov.appendChild(ttl);ov.appendChild(cvw);ov.appendChild(leg);ov.appendChild(cls);
@@ -4541,6 +4548,16 @@ function openWorldMap(){if(mapOpen)return;var ov=document.getElementById("wmOv")
   (function loop(){if(!mapOpen)return;drawWorldMap();_mapRaf=requestAnimationFrame(loop);})();
 }
 function closeWorldMap(){mapOpen=false;if(_mapRaf)cancelAnimationFrame(_mapRaf);var ov=document.getElementById("wmOv");if(ov)ov.style.display="none";}
+function fastTravel(h){ /* 🚀 Schnellreise zu einem bekannten Ort (User: „riesen map dann mit teleport") */
+  if(!running||dead){closeWorldMap();return;}
+  var d=Math.hypot(h.x,h.z); /* 9 Einheiten Richtung Weltmitte landen → ausserhalb des Stations-Pads (öffnet nicht sofort), Blick zum Ziel */
+  if(d>2){player.position.x=h.x-(h.x/d)*9;player.position.z=h.z-(h.z/d)*9;}
+  else{player.position.x=h.x;player.position.z=h.z+6;}
+  if(typeof camYaw!=="undefined")camYaw=0;
+  if(typeof shake!=="undefined")shake=0.4;
+  closeWorldMap();
+  if(typeof announce==="function")announce("🚀 Gereist zu "+(h.name||"Ort"),"#7de3ff");
+}
 (function(){var mm=document.getElementById("minimap");if(mm){var _mmt=0;
   mm.addEventListener("click",function(){openWorldMap();});
   mm.addEventListener("touchend",function(e){if(performance.now()-_mmt>400){e.preventDefault();openWorldMap();}},{passive:false});
@@ -5054,6 +5071,12 @@ window.__nw={
   fades:function(){return fadeBuildings.map(function(b){return {x:+b.x.toFixed(1),z:+b.z.toFixed(1),r:+b.r.toFixed(1),cur:+b.cur.toFixed(2)};});}, /* QA: Gebäude-Fade */
   occludeTest:function(){if(!fadeBuildings.length)return null;var B=fadeBuildings[0];camYaw=0;player.position.x=B.x;player.position.z=B.z+5;return {x:+B.x.toFixed(1),z:+B.z.toFixed(1)};}, /* Test-Only: Haus zwischen Kamera & Held */
   tp:function(x,z,yaw){player.position.set(x,0,z);if(yaw!=null)camYaw=yaw;return {x:x,z:z};}, /* Test-Only: Teleport */
+  ppos:function(){return {x:+player.position.x.toFixed(1),z:+player.position.z.toFixed(1)};}, /* Test-Only */
+  wmHits:function(){return (typeof _wmHit!=="undefined")?_wmHit.map(function(h){return h.name;}):[];}, /* Test-Only: Weltkarte-Ziele */
+  testTravel:function(){openWorldMap();drawWorldMap();var before={x:+player.position.x.toFixed(1),z:+player.position.z.toFixed(1)};
+    var h=null;for(var i=0;i<_wmHit.length;i++)if(/Flugfeld|Dungeon|Arena|Rennstrecke/.test(_wmHit[i].name)){h=_wmHit[i];break;}
+    if(!h)h=_wmHit[0];if(h)fastTravel(h);
+    return {target:h?h.name:null,before:before,after:{x:+player.position.x.toFixed(1),z:+player.position.z.toFixed(1)},targetPos:h?{x:Math.round(h.x),z:Math.round(h.z)}:null,mapClosed:!mapOpen};}, /* Test-Only: Schnellreise */
   ivRoads:function(){return (window._ivRoads||[]).length;}, /* Test-Only */
   toRoad:function(i){var m=(window._ivRoads||[])[i||0];if(!m)return null;var p=m.geometry.attributes.position;var mi=((p.count/2)|0)&~1;var x=p.getX(mi),z=p.getZ(mi);player.position.x=x;player.position.z=z-4;return {x:x,z:z};}, /* Test-Only */
   texCount:function(re){var n=0;scene.traverse(function(o){if(o.isMesh&&o.material&&o.material.map){var im=o.material.map.image;var s=(im&&(im.currentSrc||im.src))||"";if(new RegExp(re).test(s))n++;}});return n;}, /* Test-Only */
