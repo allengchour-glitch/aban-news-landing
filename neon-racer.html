@@ -486,10 +486,12 @@ addEventListener("keydown",function(e){var k=e.key.toLowerCase();if(k==="arrowle
 addEventListener("keyup",function(e){var k=e.key.toLowerCase();if(k==="arrowleft"||k==="a")keyL=false;if(k==="arrowright"||k==="d")keyR=false;if(k==="arrowdown"||k===" ")brake=false;});
 var touchX=null,steerId=null;
 addEventListener("touchstart",function(e){ /* R1: nur der Lenk-Finger steuert; Brems-/UI-Finger wird NICHT als Lenkung gelesen */
+  var freeTap=false;
   for(var i=0;i<e.changedTouches.length;i++){var t=e.changedTouches[i];
     if(t.target&&t.target.closest&&t.target.closest("button,a"))continue; /* Bremse/Buttons ignorieren */
+    freeTap=true;
     if(steerId===null){steerId=t.identifier;touchX=t.clientX;}}
-  if(!running&&document.getElementById("over").classList.contains("hide"))start();},{passive:true});
+  if(freeTap&&!running&&document.getElementById("over").classList.contains("hide"))start();},{passive:true}); /* P7: Tap auf Mute/Buttons startet NICHT */
 addEventListener("touchmove",function(e){for(var i=0;i<e.changedTouches.length;i++){var t=e.changedTouches[i];if(t.identifier===steerId){touchX=t.clientX;e.preventDefault();}}},{passive:false});
 function _endSteer(e){for(var i=0;i<e.changedTouches.length;i++){if(e.changedTouches[i].identifier===steerId){steerId=null;touchX=null;}}} /* R1: Lenkung klebt nicht mehr nach dem Loslassen */
 addEventListener("touchend",_endSteer);addEventListener("touchcancel",_endSteer);

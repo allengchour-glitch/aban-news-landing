@@ -2107,7 +2107,9 @@ function openStation(i){
     document.getElementById("stExit").onclick=function(){closeStation();};}
   var fr=document.getElementById("stFrame");
   if(window._stLoadT)clearTimeout(window._stLoadT); /* alten Timer verwerfen */
-  fr.onload=function(){if(window._stLoadT){clearTimeout(window._stLoadT);window._stLoadT=null;}};
+  fr.onload=function(){ /* D5: das nachlaufende about:blank-load (vom closeStation des Vor-Laufs) darf den Watchdog nicht killen */
+    try{if(fr.contentWindow&&fr.contentWindow.location&&fr.contentWindow.location.href==="about:blank")return;}catch(e){}
+    if(window._stLoadT){clearTimeout(window._stLoadT);window._stLoadT=null;}};
   fr.onerror=function(){if(stationOpen){closeStation();announce("⚠️ Station nicht erreichbar","#ff8a6a");}};
   window._stLoadT=setTimeout(function(){if(stationOpen){closeStation();announce("⚠️ Station lädt nicht — zurück in der Wildnis","#ff8a6a");}},8000); /* G1: 8s-Timeout gegen hängendes iframe */
   fr.src=st.url+(st.url.indexOf("?")<0?"?":"&")+"station=1";
@@ -3963,7 +3965,7 @@ addEventListener("keydown",function(e){keys[e.key.toLowerCase()]=1;
   if(e.key==="Shift"){doDodge();}
   if(e.key.toLowerCase()==="c"){useBolt();}
   if(e.key==="Enter"&&buildMode&&ghost){confirmBuild();}
-  if(e.key==="Escape"){if(stationOpen){closeStation();}else if(buildMode)closeBuild();else togglePause();} /* G1: Escape verlässt zuerst die Station (kein verdeckter Pause-Screen) */
+  if(e.key==="Escape"){if(stationOpen){closeStation();}else if(buildMode)closeBuild();else if(typeof craftMode!=="undefined"&&craftMode)closeCraft();else if(typeof tradeOpen!=="undefined"&&tradeOpen)closeTrade();else togglePause();} /* G1+P7: Escape schliesst zuerst Station/Bau/Craft/Handel — kein Pause-Overlay über offenem Menü */
 });
 addEventListener("keyup",function(e){keys[e.key.toLowerCase()]=0;});
 // Joystick

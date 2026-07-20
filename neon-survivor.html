@@ -1584,6 +1584,7 @@ function gameOver(){if(!running)return;running=false;shake=1.2;hurt=0;hurtEl.sty
   document.getElementById("over").classList.remove("hide");}
 function win(){if(S.won)return;S.won=true;running=false;shake=1.5;hurt=0;hurtEl.style.opacity=0;stopMusic();
   if(coopMode==='host')netEv({e:'wn',s:Math.floor(S.t),lv:S.lvl,kk:S.kills});showTouchBtns(false);cancelPlacing();closeBuildMenu();closeStructMenu();demolishMode=false;S.bossWave=false;cb_abort();showPlaceButtons(false);updateBuildBtn();
+  var _ws=Math.floor(S.t);if(!dailyMode&&_ws>bestTime())setBest(_ws); /* P7: Sieg zählt auch als Zeit-Rekord (vorher nur gameOver) */
   var earned=Math.floor(S.kills/3)+Math.floor(S.t/8)+150;saveCores(loadCores()+earned);renderShop();
   var _r=recordRun(curName,S.t,S.wave,S.kills); // Sieg zählt auch als gespielte Runde
   document.getElementById("winV").innerHTML="In "+mmss(S.t)+" geschafft · Level "+S.lvl+" · "+S.kills+" Gegner · <b>+"+earned+" ⬢ Kerne</b> · Runde #"+_r.round;
@@ -1604,8 +1605,8 @@ document.getElementById("winShareBtn").onclick=function(){var txt="Neon Survivor
 document.getElementById("shareBtn").onclick=function(){var txt="Neon Survivor 🚀 — "+(dailyMode?"Tages-Challenge #"+dayNo+": ":"")+Math.floor(S.t)+"s überlebt, Lv "+S.lvl+", "+S.kills+" Kills\nabannews.com/neon-wildnis.html";if(navigator.share)navigator.share({text:txt}).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(txt).then(function(){document.getElementById("shareBtn").textContent="Kopiert 📋";});};
 
 // Ambient-Partikel (Atmosphäre)
-var ambN=IS_TOUCH?48:80,ambG=new THREE.BufferGeometry(),ambP=new Float32Array(ambN*3),ambVv=new Float32Array(ambN);
-for(var _ai=0;_ai<ambN;_ai++){ambP[_ai*3]=(Math.random()-.5)*110;ambP[_ai*3+1]=Math.random()*7;ambP[_ai*3+2]=(Math.random()-.5)*110;ambVv[_ai]=0.3+Math.random()*0.9;}
+var amb2N=IS_TOUCH?48:80,ambG=new THREE.BufferGeometry(),ambP=new Float32Array(amb2N*3),ambVv=new Float32Array(amb2N); /* P7: hiess ambN und ÜBERSCHRIEB die ambN der Funken (Z.487) → nur 48/80 von 150 Funken bewegten sich */
+for(var _ai=0;_ai<amb2N;_ai++){ambP[_ai*3]=(Math.random()-.5)*110;ambP[_ai*3+1]=Math.random()*7;ambP[_ai*3+2]=(Math.random()-.5)*110;ambVv[_ai]=0.3+Math.random()*0.9;}
 ambG.setAttribute("position",new THREE.BufferAttribute(ambP,3));
 var ambPts=new THREE.Points(ambG,new THREE.PointsMaterial({color:0x5ef2ff,size:0.3,transparent:true,opacity:.55,blending:THREE.AdditiveBlending,depthWrite:false}));scene.add(ambPts);
 function loop(now){
@@ -1742,7 +1743,7 @@ function loop(now){
   /* Online-Keepalive: am Pause-/Level-Up-/Game-Over-Screen laufen keine Snapshots/Inputs —
      ohne 1/s-Ping würde der 6s-Watchdog in mp.js die Verbindung fälschlich kappen */
   if(netSess&&netSess.status==='connected'&&(!running||paused)&&now-kaLast>=1000){kaLast=now;try{netSess.sendFast({k:'p'});}catch(e){}}
-  for(var _a2=0;_a2<ambN;_a2++){ambP[_a2*3+1]+=ambVv[_a2]*dt;if(ambP[_a2*3+1]>8)ambP[_a2*3+1]=0;}ambG.attributes.position.needsUpdate=true;
+  for(var _a2=0;_a2<amb2N;_a2++){ambP[_a2*3+1]+=ambVv[_a2]*dt;if(ambP[_a2*3+1]>8)ambP[_a2*3+1]=0;}ambG.attributes.position.needsUpdate=true;
   renderBloom();
 }
 function dropOrb(x,z){var o=getMesh(orbs,orbMesh);o.active=true;o.m.visible=true;o.m.position.set(x,0.6,z);}

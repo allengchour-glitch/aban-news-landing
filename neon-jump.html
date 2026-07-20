@@ -580,7 +580,7 @@ function finish(win){running=false;won=win;musSync();shake=win?0.4:0.6;touchEl.s
   document.getElementById("verdict").innerHTML=win?
     ((coins>=coinMeshes.length?"⭐⭐⭐ Alle Münzen! · ":"")+"🪙 "+coins+"/"+coinMeshes.length+" · 💀 "+deaths+(curLvl<LEVELS.length-1?"<br>Weiter zu Level "+(curLvl+2)+"?":"<br>🏆 Alle Level geschafft!")):"Versuch's nochmal!";
   var again=document.getElementById("againBtn");
-  if(win&&curLvl<LEVELS.length-1){again.textContent="Level "+(curLvl+2)+" ▶";again.onclick=function(){curLvl++;try{localStorage.setItem("nj_lvl",String(curLvl));}catch(e){}startGame(coopMode);};}
+  if(win&&curLvl<LEVELS.length-1){again.textContent="Level "+(curLvl+2)+" ▶";again.onclick=function(){curLvl++;try{if(!STATION)localStorage.setItem("nj_lvl",String(curLvl));}catch(e){}startGame(coopMode);};} /* P7: Stations-Lauf überschreibt den Standalone-Fortschritt nicht */
   else{again.textContent="Nochmal ▶";again.onclick=function(){startGame(coopMode);};}
   renderLvlSel();
   var _sc=document.getElementById("stCrys");if(_sc)_sc.innerHTML="💎 <b>+"+(coins*5+(win?25:0))+" Kristalle</b> — bring sie zurück zur Wildnis!"; /* Stations-Inszenierung (nur wenn Element existiert) */
