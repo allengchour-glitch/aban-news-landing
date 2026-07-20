@@ -793,39 +793,48 @@ function heroAct(intent,ts){if(!heroRig)return;
    Jeder wählbare Held hat jetzt einen spürbaren Bonus. */
 var CHARACTERS=[
   // ⚔️ Klassen (Klassen-Boni wirken beim Start auf PERK/HP)
-  {id:"held",     emo:"⚡", name:"Held",       desc:"Allrounder · +1 Angriff",   file:"hero_meshy_combat2.glb", scale:1.15, glow:"neon", col:0x37c8e8, cls:{atk:1}, pick:1},
-  {id:"magier",   emo:"🔮", name:"Magier",     desc:"Skills laden schneller",  file:"class_mage.glb",         scale:1.15, glow:"soft", col:0xb06aff, cls:{skillcd:1.5}, pick:1},
-  {id:"waldlaeufer",emo:"🏹",name:"Waldläufer",desc:"+Tempo & Reichweite",file:"class_ranger.glb",       scale:1.15, glow:"soft", col:0x58c26a, cls:{spd:1.2}, pick:1},
-  {id:"titan",    emo:"🛡️", name:"Titan",      desc:"+25 Leben · zäh",file:"class_titan.glb",        scale:1.2,  glow:"soft", col:0xd08a3a, cls:{hp:25}, pick:1},
-  // 🎌 Anime-Helden (Meshy, gerigged) — die 4 markantesten, jetzt mit eigenem Bonus
-  {id:"anime_held",         emo:"🌟", name:"Anime-Held",     desc:"Shonen-Style · +1 Angriff",  file:"anime_hero.glb",      scale:1.05, glow:"soft", cls:{atk:1}, pick:1},
-  {id:"anime_kriegerin",    emo:"⚔️", name:"Anime-Kriegerin",desc:"Katana & Katzenohr · +Angriff", file:"anime_warrior.glb", scale:1.05, glow:"soft", cls:{atk:1}, pick:1},
-  {id:"anime_ninja",        emo:"🥷", name:"Anime-Ninja",    desc:"Maske & Kapuze · +Tempo",    file:"anime_ninja.glb",     scale:1.05, glow:"soft", cls:{spd:1.2}, pick:1},
-  {id:"anime_schuelerin",   emo:"🎀", name:"Anime-Schülerin",desc:"Sailor-Uniform · +15 Leben", file:"anime_schoolgirl.glb",scale:1.05, glow:"soft", cls:{hp:15}, pick:1},
-  // 🛡️ Fantasy-Helden (Quaternius, 3-Hit-Combo)
+  // 🛡️ Mittelalter-Fantasy-Helden (Quaternius, 3-Hit-Combo) — WÄHLBAR (User: „Held nicht futuristisch, einheitlich mittelalterlich")
   {id:"ritter",     emo:"🛡️", name:"Ritter",      desc:"Schwert & Rüstung · +15 Leben", file:"nwhero_ritter.glb",   scale:1.05, glow:"soft", col:0xbcc4d0, cls:{hp:15}, pick:1},
+  {id:"wikinger",   emo:"🪓", name:"Wikinger",    desc:"Axt & Wut · +1 Angriff",    file:"nwhero_wikinger.glb", scale:1.05, glow:"soft", col:0xd0a060, cls:{atk:1}, pick:1},
+  {id:"elf",        emo:"🧝", name:"Elf",         desc:"Bogen · +Tempo & Reichweite",file:"nwhero_elf.glb",     scale:1.05, glow:"soft", col:0x7ad9a0, cls:{spd:1.2}, pick:1},
+  {id:"magier2",    emo:"🧙", name:"Zauberer",    desc:"Stab & Magie · schnellere Skills", file:"nwhero_magier.glb", scale:1.05, glow:"soft", col:0x9a6aff, cls:{skillcd:1.5}, pick:1},
   {id:"hexe",       emo:"🧹", name:"Hexe",        desc:"Fluch & Besen · schnellere Skills", file:"nwhero_hexe.glb", scale:1.05, glow:"soft", col:0xb06ad0, cls:{skillcd:1.5}, pick:1},
-  // — Nur noch für alte Saves ladbar (nicht wählbar): —
+  {id:"pirat",      emo:"🏴‍☠️", name:"Pirat",     desc:"Säbel & Frechheit · +1 Angriff", file:"nwhero_pirat.glb",  scale:1.05, glow:"soft", col:0xc86a5a, cls:{atk:1}, pick:1},
+  // — Nur noch für ALTE SAVES ladbar (nicht mehr wählbar; Neon/Anime raus aus der mittelalterlichen Welt): —
+  {id:"held",     emo:"⚡", name:"Held",       desc:"Allrounder · +1 Angriff",   file:"hero_meshy_combat2.glb", scale:1.15, glow:"neon", col:0x37c8e8, cls:{atk:1}},
+  {id:"magier",   emo:"🔮", name:"Magier",     desc:"Skills laden schneller",  file:"class_mage.glb",         scale:1.15, glow:"soft", col:0xb06aff, cls:{skillcd:1.5}},
+  {id:"waldlaeufer",emo:"🏹",name:"Waldläufer",desc:"+Tempo & Reichweite",file:"class_ranger.glb",       scale:1.15, glow:"soft", col:0x58c26a, cls:{spd:1.2}},
+  {id:"titan",    emo:"🛡️", name:"Titan",      desc:"+25 Leben · zäh",file:"class_titan.glb",        scale:1.2,  glow:"soft", col:0xd08a3a, cls:{hp:25}},
+  {id:"anime_held",         emo:"🌟", name:"Anime-Held",     desc:"Shonen-Style · +1 Angriff",  file:"anime_hero.glb",      scale:1.05, glow:"soft", cls:{atk:1}},
+  {id:"anime_kriegerin",    emo:"⚔️", name:"Anime-Kriegerin",desc:"Katana & Katzenohr · +Angriff", file:"anime_warrior.glb", scale:1.05, glow:"soft", cls:{atk:1}},
+  {id:"anime_ninja",        emo:"🥷", name:"Anime-Ninja",    desc:"Maske & Kapuze · +Tempo",    file:"anime_ninja.glb",     scale:1.05, glow:"soft", cls:{spd:1.2}},
+  {id:"anime_schuelerin",   emo:"🎀", name:"Anime-Schülerin",desc:"Sailor-Uniform · +15 Leben", file:"anime_schoolgirl.glb",scale:1.05, glow:"soft", cls:{hp:15}},
   {id:"anime_magier",       emo:"🪄", name:"Anime-Magier",   desc:"Hexenhut & Stab",    file:"anime_mage.glb",      scale:1.05, glow:"soft"},
   {id:"anime_maedchen",     emo:"👧", name:"Anime-Mädchen",  desc:"Süß & flink",        file:"anime_girl.glb",      scale:1.05, glow:"soft"},
-  {id:"anime_junge",        emo:"👦", name:"Anime-Junge",    desc:"Cool & blau",        file:"anime_boy.glb",       scale:1.05, glow:"soft"},
-  {id:"wikinger",   emo:"🪓", name:"Wikinger",    desc:"Axt & Wut · +Angriff",      file:"nwhero_wikinger.glb", scale:1.05, glow:"soft", col:0xd0a060, cls:{atk:1}},
-  {id:"magier2",    emo:"🧙", name:"Zauberer",    desc:"Stab & Magie",              file:"nwhero_magier.glb",   scale:1.05, glow:"soft", col:0x9a6aff, cls:{skillcd:1.5}},
-  {id:"elf",        emo:"🧝", name:"Elf",         desc:"Bogen · +Tempo",            file:"nwhero_elf.glb",      scale:1.05, glow:"soft", col:0x7ad9a0, cls:{spd:1.2}},
-  {id:"pirat",      emo:"🏴‍☠️", name:"Pirat",     desc:"Säbel & Frechheit",         file:"nwhero_pirat.glb",    scale:1.05, glow:"soft", col:0xc86a5a}
+  {id:"anime_junge",        emo:"👦", name:"Anime-Junge",    desc:"Cool & blau",        file:"anime_boy.glb",       scale:1.05, glow:"soft"}
 ];
 var PICKABLE=CHARACTERS.filter(function(c){return c.pick;});
 function charById(id){for(var i=0;i<CHARACTERS.length;i++)if(CHARACTERS[i].id===id)return CHARACTERS[i];return CHARACTERS[0];}
-function getChar(){var id="held";try{id=localStorage.getItem("nw_char")||"held";}catch(e){}return charById(id);}
+function getChar(){var id="ritter";try{id=localStorage.getItem("nw_char")||"ritter";}catch(e){}return charById(id);}
 // 🌸 Cel-Shading (Anime-Toon) — MeshToonMaterial + 3-Band-Gradient; Outline auf skinned Meshes in r128 zu heikel -> weggelassen
 var _nwGrad=null;
 function nwGradTex(){if(_nwGrad)return _nwGrad;var c=document.createElement('canvas');c.width=4;c.height=1;var x=c.getContext('2d');
   var d=x.createImageData(4,1),v=[105,165,215,255];for(var i=0;i<4;i++){d.data[i*4]=d.data[i*4+1]=d.data[i*4+2]=v[i];d.data[i*4+3]=255;}
   x.putImageData(d,0,0);var t=new THREE.CanvasTexture(c);t.minFilter=t.magFilter=THREE.NearestFilter;t.generateMipmaps=false;_nwGrad=t;return t;}
 function toonify(mesh,neon){var m=mesh.material;if(!m||m._toon||!m.isMeshStandardMaterial&&!m.isMeshPhysicalMaterial)return;
-  var tm=new THREE.MeshToonMaterial({map:m.map||null,color:m.color?m.color.clone():new THREE.Color(0xffffff),
+  var _col=m.color?m.color.clone():new THREE.Color(0xffffff);
+  /* 🧑 Haut-Rettung: die nwhero/Quaternius-GLBs haben „Skin"/„Face" als fast schwarze Farbe (#030303, kaputter
+     Export) → unter Toon-Shading wurde das Gesicht schwarz. Nur Haut-/Gesicht-Materialien ohne Textur aufhellen. */
+  (function(){var nm=(m.name||"").toLowerCase();
+    if(!m.map&&(nm.indexOf("skin")>=0||nm.indexOf("face")>=0||nm.indexOf("head")>=0||nm.indexOf("hand")>=0)){
+      var mx=Math.max(_col.r,_col.g,_col.b);
+      if(mx<0.28){var k=0.42/Math.max(0.008,mx);_col.multiplyScalar(k);
+        _col.r=Math.min(1,_col.r);_col.g=Math.min(1,_col.g);_col.b=Math.min(1,_col.b);
+        if(_col.r<0.35&&_col.g<0.35&&_col.b<0.35)_col.setRGB(0.86,0.68,0.54);}}})(); /* farbloser Rest → warmer Hautton */
+  var tm=new THREE.MeshToonMaterial({map:m.map||null,color:_col,
     gradientMap:nwGradTex(),emissive:m.emissive?m.emissive.clone():new THREE.Color(0x000000),emissiveMap:m.emissiveMap||null,
     transparent:!!m.transparent,opacity:m.opacity!==undefined?m.opacity:1,side:m.side,alphaTest:m.alphaTest||0});
+  tm.vertexColors=!!m.vertexColors; /* 🎨 Quaternius/nwhero färben per Vertex-Color (Haut/Gesicht) — ohne das blieb das Gesicht schwarz */
   tm.emissiveIntensity=neon?0.5:0.32;tm.skinning=!!mesh.isSkinnedMesh;tm._toon=true;mesh.material=tm;} /* Neon dezenter → Modell-Details bleiben sichtbar (User: „Charaktere sehen nicht toll aus") */
 function loadHero(){
   var C=getChar();
@@ -4809,13 +4818,18 @@ function startGame(fresh){
           });return ok?b:null;}
         function boneBox(){var b=new THREE.Box3(),c=0,V=new THREE.Vector3();o.updateMatrixWorld(true);
           o.traverse(function(n){if(n.isSkinnedMesh&&n.skeleton)n.skeleton.bones.forEach(function(bo){bo.getWorldPosition(V);b.expandByPoint(V);c++;});});return c?b:null;}
-        var mb=skinBox(1),pk;
-        if(mb){var mh=mb.max.y-mb.min.y;pk=(mh>0.3&&mh<200)?(1.6/mh):1;}
-        else{var bb=boneBox();
-          if(bb){var hh=bb.max.y-bb.min.y;pk=(hh>0.3)?(1.6/hh):1;}
-          else{var box0=new THREE.Box3().setFromObject(o),h0=box0.max.y-box0.min.y;pk=(h0>0.8&&h0<6)?(1.6/h0):((C.scale||1.15)*0.5);}}
+        /* ⚠️ boneTransform explodiert bei manchen Rigs (Wikinger/Magier/Hexe → Werte ~2e7) → nur bei
+           PLAUSIBLER Höhe (0.3–40) der geskinnten Hülle vertrauen, sonst Bone-Box (spannt ~78% der
+           Figur → Zielspanne kleiner, damit Kopf/Hut/Federn noch in den Rahmen passen). */
+        function saneH(box){if(!box)return 0;var h=box.max.y-box.min.y;return (h>0.3&&h<40)?h:0;}
+        var mb=skinBox(1),mh=saneH(mb),pk;
+        if(mh){pk=1.6/mh;}
+        else{var bb=boneBox(),bh=bb?(bb.max.y-bb.min.y):0;
+          if(bh>0.2&&bh<40){pk=1.28/bh;}
+          else{var box0=new THREE.Box3().setFromObject(o),h0=box0.max.y-box0.min.y;pk=(h0>0.8&&h0<8)?(1.6/h0):((C.scale||1.15)*0.5);}}
         pk=Math.max(0.02,Math.min(6,pk));
-        var bb2=skinBox(pk)||boneBox()||new THREE.Box3().setFromObject(o),ctr=new THREE.Vector3();bb2.getCenter(ctr);
+        var bb2=skinBox(pk);if(!saneH(bb2)&&(bb2=boneBox(),true)&&!saneH(bb2))bb2=new THREE.Box3().setFromObject(o);
+        var ctr=new THREE.Vector3();bb2.getCenter(ctr);
         o.position.x-=ctr.x;o.position.z-=ctr.z;o.position.y-=(bb2.min.y-0.05);
         pmodel=o;psc.add(o);
         if(g.animations&&g.animations.length){pmix=new THREE.AnimationMixer(o);
@@ -4845,6 +4859,7 @@ function startGame(fresh){
     if(["ritter","wikinger","magier2","elf","pirat","hexe"].indexOf(id)>=0)return "fantasy";
     return "klasse";}
   var LIST=(typeof PICKABLE!=="undefined"&&PICKABLE.length)?PICKABLE:CHARACTERS; /* 🎯 kuratierte Auswahl (alte Saves laden weiter alles via charById) */
+  if(!LIST.some(function(c){return c.id===curId;})){curId=LIST[0].id;try{localStorage.setItem("nw_char",curId);}catch(e){}} /* alte Neon/Anime-Saves → auf Mittelalter-Held (Ritter) schnappen */
   function idxOf(id){for(var i=0;i<LIST.length;i++)if(LIST[i].id===id)return i;return 0;}
   function pick(id){curId=id;try{localStorage.setItem("nw_char",id);}catch(e){}render();}
   function cycle(dir){var i=(idxOf(curId)+dir+LIST.length)%LIST.length;pick(LIST[i].id);}
