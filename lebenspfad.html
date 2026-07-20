@@ -141,7 +141,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 #chatToggle{position:fixed;left:10px;bottom:48px;z-index:40;display:none;border:2px solid #ffcf3a;background:rgba(255,253,246,.94);border-radius:50%;width:44px;height:44px;font-size:1.2rem;cursor:pointer}
 #chatToggle.blink{animation:chatBlink 1s ease-in-out infinite}
 @keyframes chatBlink{50%{box-shadow:0 0 0 6px rgba(255,209,102,.45)}}
-#rad{position:fixed;left:50%;top:44%;transform:translate(-50%,-50%) scale(.7);z-index:26;display:none;opacity:0;transition:opacity .3s,transform .35s cubic-bezier(.2,1.4,.4,1);pointer-events:none;filter:drop-shadow(0 14px 30px rgba(60,40,10,.4))}
+#rad{position:fixed;left:50%;top:44%;transform:translate(-50%,-50%) scale(.7);z-index:26;display:none;opacity:0;transition:opacity .3s,transform .35s cubic-bezier(.2,1.4,.4,1);pointer-events:auto;filter:drop-shadow(0 14px 30px rgba(60,40,10,.4))}
 #radPtr{position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-size:2rem;color:#e8443a;text-shadow:0 2px 4px rgba(0,0,0,.3);z-index:2}
 @keyframes cardPulse{0%,100%{box-shadow:0 3px 10px rgba(60,40,10,.18)}50%{box-shadow:0 3px 18px rgba(255,170,60,.5)}}
 .pcard.on{animation:cardPulse 2.6s ease-in-out infinite}

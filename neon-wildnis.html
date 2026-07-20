@@ -32,7 +32,7 @@ canvas{display:block;touch-action:none}
 #hud{position:fixed;inset:0;pointer-events:none;z-index:2}
 .hide{display:none!important}
 /* Inventar-Leiste oben, safe-area gegen Notch/Browserleiste */
-#invBar{position:absolute;top:calc(8px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);display:flex;gap:8px;background:rgba(10,14,32,.72);border:1px solid rgba(120,200,255,.25);border-radius:16px;padding:8px 14px;backdrop-filter:blur(4px);box-shadow:0 4px 18px rgba(0,0,0,.5)}
+#invBar{pointer-events:auto;position:absolute;top:calc(8px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);display:flex;gap:8px;background:rgba(10,14,32,.72);border:1px solid rgba(120,200,255,.25);border-radius:16px;padding:8px 14px;backdrop-filter:blur(4px);box-shadow:0 4px 18px rgba(0,0,0,.5)}
 .inv{display:flex;align-items:center;gap:5px;font-weight:800;font-size:1.05rem}
 .inv .ic{font-size:1.25rem}
 .inv.tool{padding-left:8px;margin-left:2px;border-left:1px solid rgba(120,200,255,.25);color:#ffd166}
@@ -174,7 +174,7 @@ canvas{display:block;touch-action:none}
 #waveHud.hide{display:none}
 
 /* Minimap unter das Ziel-Panel geschoben — vorher lief der Questtext unter die Karte (Polier-Pass) */
-#minimap{position:fixed;right:calc(12px + env(safe-area-inset-right));top:calc(152px + env(safe-area-inset-top));z-index:20;width:120px;height:120px;border-radius:50%;border:2px solid rgba(130,200,255,.55);background:rgba(8,20,32,.55);box-shadow:0 4px 16px rgba(0,0,0,.4)}
+#minimap{pointer-events:auto;position:fixed;right:calc(12px + env(safe-area-inset-right));top:calc(152px + env(safe-area-inset-top));z-index:20;width:120px;height:120px;border-radius:50%;border:2px solid rgba(130,200,255,.55);background:rgba(8,20,32,.55);box-shadow:0 4px 16px rgba(0,0,0,.4)}
 @media(max-width:600px){#minimap{width:92px;height:92px;top:calc(138px + env(safe-area-inset-top))}}
 /* 🔍 Zoom-Buttons neben/unter der Minimap (Wildnis-Paket #2) */
 #zoomBtns{position:fixed;right:calc(12px + env(safe-area-inset-right));top:calc(280px + env(safe-area-inset-top));z-index:21;display:flex;gap:6px;pointer-events:auto}
@@ -2121,6 +2121,7 @@ function closeStation(){
   var ov=document.getElementById("stOv");if(ov){ov.style.display="none";var fr=document.getElementById("stFrame");if(fr){fr.onload=null;fr.onerror=null;fr.src="about:blank";}}
   var st=stations[_stCur];_stCur=-1;
   lastT=performance.now(); /* kein dt-Sprung nach der Pause */
+  try{var _fr2=document.getElementById("stFrame");if(_fr2)_fr2.blur();document.body.setAttribute("tabindex","-1");document.body.focus({preventScroll:true});}catch(e){} /* Tap-Schwarm P2: Fokus blieb im iframe → Tastatur tot bis Klick */
   if(st)announce("🌲 Zurück in der Wildnis!");}
 function onStationDone(score,win){
   if(_stCur<0)return;var _now=performance.now();if(_now-(_stRewardT||0)<1200)return;_stRewardT=_now; /* G2: entprellt nur Doppel-Sends desselben Game-Over; In-Station-„Nochmal" belohnt wieder */
