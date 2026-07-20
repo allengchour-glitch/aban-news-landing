@@ -2559,7 +2559,8 @@ function decorateWorld(){
       var bm2=cc0inst(["nw_blume_lila","nw_blume_rot","nw_blume_gelb","nw_blume_gelb_hoch"][ti3],0.62+ti3*0.15);
       if(bm2){bm2.position.set(bx,groundH(bx,bz),bz);scene.add(bm2);if(typeof regSway==="function")regSway(bm2,0.07,1.4);}}})();}
   // ⛰️ Berge am Kartenrand (Kulisse ringsum)
-  var rockM=new THREE.MeshLambertMaterial({color:0x6a6a74,flatShading:true}),snowM=new THREE.MeshLambertMaterial({color:0xeef2ff,flatShading:true});
+  var rockM=new THREE.MeshLambertMaterial({color:0xb4b4c2,flatShading:true}),snowM=new THREE.MeshLambertMaterial({color:0xeef2ff,flatShading:true});
+  try{rockM.map=gtex("tex_stone.png",3,true);}catch(e){} /* 🪨 Berge mit echter Fels-Textur (Farbe aufgehellt, Lambert map*color) */
   rockM.fog=false;snowM.fog=false; /* G7: Berge liegen jenseits fog.far (360) → ohne Nebel-Ausblendung sichtbar am Horizont */
   for(var mt=0;mt<Math.round(16);mt++){var ma=mt/16*6.28+rnd()*0.15,mrd=MAP/2-18;var mx=Math.cos(ma)*mrd,mz=Math.sin(ma)*mrd;
     var mh=34+rnd()*46,mr=20+rnd()*18;

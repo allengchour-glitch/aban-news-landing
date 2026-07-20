@@ -99,7 +99,11 @@ scene.add(new THREE.AmbientLight(0x2a4436,0.4));
 function M(c,e,i){return new THREE.MeshLambertMaterial({color:c,emissive:e||0x000000,emissiveIntensity:i||0});}
 
 /* ---------- Tempel-Layout: 3 Räume hintereinander (z: 0 → -66) ---------- */
-var walls=[],FLOOR=M(0x2e3a30),WALL=M(0x24302a),GOLD=M(0x8a7040,0x4a3410,0.3);
+/* 🪨 Echte Stein-/Kopfstein-Texturen (CC0, /textures) statt flacher Farben — Farben ~1.8x heller (Lambert map*color) */
+var _tl=new THREE.TextureLoader();
+function gtex(u,rx,ry){var t=_tl.load(u);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(rx||1,ry||rx||1);return t;}
+function MT(c,tex,e,i){var m=new THREE.MeshLambertMaterial({color:c,emissive:e||0x000000,emissiveIntensity:i||0});m.map=tex;return m;}
+var walls=[],FLOOR=MT(0x53685a,gtex("/textures/tex_cobble.png",5,16)),WALL=MT(0x41564c,gtex("/textures/tex_stone.png",2.5,1.6)),GOLD=M(0x8a7040,0x4a3410,0.3);
 function box(x,y,z,w,h,d,mat,solid){var m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat||WALL);
   m.position.set(x,y,z);scene.add(m);if(solid)walls.push({x:x,z:z,w:w/2,d:d/2,m:m});return m;}
 box(0,-0.3,-30,20,0.6,72,FLOOR);                       /* Boden */

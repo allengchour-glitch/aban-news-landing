@@ -111,7 +111,12 @@ var _ambBase=new THREE.Color(0x2a2244),_ambBoss=new THREE.Color(0x3a1a24); /* Ka
     scene.add(mo);window.__motes.push({m:mo,ph:Math.random()*6,sp:0.3+Math.random()*0.5,x:(Math.random()-0.5)*10,y:1+Math.random()*4,z:-Math.random()*100});}})();
 
 function M(c,e,i){return new THREE.MeshLambertMaterial({color:c,emissive:e||0x000000,emissiveIntensity:i||0});}
-var STONE=M(0x38324e),STONE2=M(0x1c1830),EDGE=M(0x6a58b0,0x4a3a90,0.55),MOSS=M(0x35503e,0x122416,0.22);
+/* 🪨 Echte Stein-Textur (CC0, /textures) statt flacher Farben — Farben ~1.8x aufgehellt, weil Lambert map*color multipliziert */
+var _tl=new THREE.TextureLoader();
+function gtex(u,rx,ry){var t=_tl.load(u);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(rx||1,ry||rx||1);return t;}
+function MT(c,tex,e,i){var m=new THREE.MeshLambertMaterial({color:c,emissive:e||0x000000,emissiveIntensity:i||0});m.map=tex;return m;}
+var stoneT=gtex("/textures/tex_stone.png",2,2),stoneT2=gtex("/textures/tex_stone.png",3,3),cobT=gtex("/textures/tex_cobble.png",6,6);
+var STONE=MT(0x645a8c,stoneT),STONE2=MT(0x38305e,stoneT2),EDGE=M(0x6a58b0,0x4a3a90,0.55),MOSS=M(0x35503e,0x122416,0.22);
 
 /* ---------- Level: Plattform-Parcours (3 Abschnitte) + Boss-Kammer ---------- */
 var plats=[],gems=[],torches=[],checkpoints=[{x:0,y:0,z:0}];
@@ -206,7 +211,7 @@ var kx=0,kz=0; /* Eingabe */
 
 /* ---------- Koloss ---------- */
 var boss=new THREE.Group(),bossHp=6,bossOn=false,bossPh=(NG?1:0); /* #71 NG+: startet direkt in Enrage */
-(function(){var rock=M(0x4a4258,0x1a1428,0.15);
+(function(){var rock=MT(0x8578a0,gtex("/textures/tex_stone.png",1.4,1.4),0x1a1428,0.15); /* 🪨 der KOLOSS ist jetzt echter Fels */
   var torso=new THREE.Mesh(new THREE.BoxGeometry(3.2,3.4,2.2),rock);torso.position.y=4.4;boss.add(torso);
   var head=new THREE.Mesh(new THREE.BoxGeometry(1.5,1.3,1.4),rock);head.position.y=6.9;boss.add(head);
   var eye1=new THREE.Mesh(new THREE.SphereGeometry(0.16,8,6),M(0xff4020,0xff2000,1));eye1.position.set(-0.35,6.95,0.72);boss.add(eye1);boss.userData.eyeMat=eye1.material; /* clone teilt das Material -> beide Augen faden gemeinsam */
