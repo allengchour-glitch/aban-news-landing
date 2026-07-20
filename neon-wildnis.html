@@ -129,6 +129,7 @@ canvas{display:block;touch-action:none}
 #ov .ctl{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:20px}
 #ov .chip{background:rgba(20,30,60,.7);border:1px solid rgba(120,200,255,.3);border-radius:20px;padding:8px 14px;font-size:.95rem}
 #ov .chip b{color:#7de3ff}
+@media(max-width:430px){#ov .chip{padding:5px 10px;font-size:.78rem}#ov p{font-size:.86rem}} /* 🎯 Startscreen kompakter → der Held rückt aufs erste Bild (User: Charakter-Auswahl prominenter) */
 .big{display:inline-block;min-width:200px;padding:16px 28px;font-size:1.4rem;font-weight:900;border:none;border-radius:40px;background:linear-gradient(90deg,#6affc0,#7de3ff);color:#0a1024;cursor:pointer;box-shadow:0 8px 30px rgba(100,240,200,.35)}
 #startBtn{position:sticky;bottom:calc(8px + env(safe-area-inset-bottom,0px));z-index:6;box-shadow:0 8px 30px rgba(100,240,200,.5)}
 .ghost{margin-top:12px;background:none;border:1px solid rgba(180,210,255,.4);color:#cfe;border-radius:30px;padding:10px 22px;font-size:1rem;cursor:pointer}
@@ -786,30 +787,34 @@ function heroAct(intent,ts){if(!heroRig)return;
   if(typeof NET!=="undefined"&&NET.on&&typeof sendAct==="function")sendAct(intent);} /* 🌐 Kampfanimation an Partner senden */
 // ---------- Charaktere (einzigartige, wählbare Helden) ----------
 // glow:"neon" = starkes Meshy-Emissive-Tuning; "soft" = moderat für class_*/hero.glb
+/* 🎯 KURATIERT (User: „charakter muss besser sein, nicht so viel auswahl"): Nur noch 10 klar
+   unterscheidbare Helden WÄHLBAR (pick:1) — Duplikate (2. Magier, Elf≈Waldläufer, Wikinger≈Held,
+   blasse Anime-Varianten) bleiben für ALTE SAVES ladbar, tauchen aber nicht mehr im Picker auf.
+   Jeder wählbare Held hat jetzt einen spürbaren Bonus. */
 var CHARACTERS=[
-  // 🔀 Realm-Merge: Klassen-Boni aus neon-realm (cls wirkt beim Start auf PERK/HP)
-  {id:"held",     emo:"⚡", name:"Held",       desc:"Allrounder · +1 Angriff",   file:"hero_meshy_combat2.glb", scale:1.15, glow:"neon", col:0x37c8e8, cls:{atk:1}},
-  {id:"magier",   emo:"🔮", name:"Magier",     desc:"Skills laden schneller",  file:"class_mage.glb",         scale:1.15, glow:"soft", col:0xb06aff, cls:{skillcd:1.5}},
-  {id:"waldlaeufer",emo:"🏹",name:"Waldläufer",desc:"+Tempo & Reichweite",file:"class_ranger.glb",       scale:1.15, glow:"soft", col:0x58c26a, cls:{spd:1.2}},
-  {id:"titan",    emo:"🛡️", name:"Titan",      desc:"+25 Leben · zäh",file:"class_titan.glb",        scale:1.2,  glow:"soft", col:0xd08a3a, cls:{hp:25}},
-  // 🎌 Anime-Charaktere (Meshy, gerigged idle/walk/run) — echte Anime-Figuren zur Auswahl
-  {id:"anime_held",         emo:"🌟", name:"Anime-Held",     desc:"Shonen-Style",       file:"anime_hero.glb",      scale:1.05, glow:"soft"},
-  {id:"anime_kriegerin",    emo:"⚔️", name:"Anime-Kriegerin",desc:"Katana & Katzenohr", file:"anime_warrior.glb",   scale:1.05, glow:"soft"},
+  // ⚔️ Klassen (Klassen-Boni wirken beim Start auf PERK/HP)
+  {id:"held",     emo:"⚡", name:"Held",       desc:"Allrounder · +1 Angriff",   file:"hero_meshy_combat2.glb", scale:1.15, glow:"neon", col:0x37c8e8, cls:{atk:1}, pick:1},
+  {id:"magier",   emo:"🔮", name:"Magier",     desc:"Skills laden schneller",  file:"class_mage.glb",         scale:1.15, glow:"soft", col:0xb06aff, cls:{skillcd:1.5}, pick:1},
+  {id:"waldlaeufer",emo:"🏹",name:"Waldläufer",desc:"+Tempo & Reichweite",file:"class_ranger.glb",       scale:1.15, glow:"soft", col:0x58c26a, cls:{spd:1.2}, pick:1},
+  {id:"titan",    emo:"🛡️", name:"Titan",      desc:"+25 Leben · zäh",file:"class_titan.glb",        scale:1.2,  glow:"soft", col:0xd08a3a, cls:{hp:25}, pick:1},
+  // 🎌 Anime-Helden (Meshy, gerigged) — die 4 markantesten, jetzt mit eigenem Bonus
+  {id:"anime_held",         emo:"🌟", name:"Anime-Held",     desc:"Shonen-Style · +1 Angriff",  file:"anime_hero.glb",      scale:1.05, glow:"soft", cls:{atk:1}, pick:1},
+  {id:"anime_kriegerin",    emo:"⚔️", name:"Anime-Kriegerin",desc:"Katana & Katzenohr · +Angriff", file:"anime_warrior.glb", scale:1.05, glow:"soft", cls:{atk:1}, pick:1},
+  {id:"anime_ninja",        emo:"🥷", name:"Anime-Ninja",    desc:"Maske & Kapuze · +Tempo",    file:"anime_ninja.glb",     scale:1.05, glow:"soft", cls:{spd:1.2}, pick:1},
+  {id:"anime_schuelerin",   emo:"🎀", name:"Anime-Schülerin",desc:"Sailor-Uniform · +15 Leben", file:"anime_schoolgirl.glb",scale:1.05, glow:"soft", cls:{hp:15}, pick:1},
+  // 🛡️ Fantasy-Helden (Quaternius, 3-Hit-Combo)
+  {id:"ritter",     emo:"🛡️", name:"Ritter",      desc:"Schwert & Rüstung · +15 Leben", file:"nwhero_ritter.glb",   scale:1.05, glow:"soft", col:0xbcc4d0, cls:{hp:15}, pick:1},
+  {id:"hexe",       emo:"🧹", name:"Hexe",        desc:"Fluch & Besen · schnellere Skills", file:"nwhero_hexe.glb", scale:1.05, glow:"soft", col:0xb06ad0, cls:{skillcd:1.5}, pick:1},
+  // — Nur noch für alte Saves ladbar (nicht wählbar): —
   {id:"anime_magier",       emo:"🪄", name:"Anime-Magier",   desc:"Hexenhut & Stab",    file:"anime_mage.glb",      scale:1.05, glow:"soft"},
-  {id:"anime_ninja",        emo:"🥷", name:"Anime-Ninja",    desc:"Maske & Kapuze",     file:"anime_ninja.glb",     scale:1.05, glow:"soft"},
-  {id:"anime_schuelerin",   emo:"🎀", name:"Anime-Schülerin",desc:"Sailor-Uniform",     file:"anime_schoolgirl.glb",scale:1.05, glow:"soft"},
   {id:"anime_maedchen",     emo:"👧", name:"Anime-Mädchen",  desc:"Süß & flink",        file:"anime_girl.glb",      scale:1.05, glow:"soft"},
   {id:"anime_junge",        emo:"👦", name:"Anime-Junge",    desc:"Cool & blau",        file:"anime_boy.glb",       scale:1.05, glow:"soft"},
-  // 🛡️ Fantasy-Helden (Quaternius, 3-Hit-Combo: attack/attack2/attack3 + dodge/hit/victory)
-  {id:"ritter",     emo:"🛡️", name:"Ritter",      desc:"Schwert & Rüstung · Combo", file:"nwhero_ritter.glb",   scale:1.05, glow:"soft", col:0xbcc4d0, cls:{hp:15}},
   {id:"wikinger",   emo:"🪓", name:"Wikinger",    desc:"Axt & Wut · +Angriff",      file:"nwhero_wikinger.glb", scale:1.05, glow:"soft", col:0xd0a060, cls:{atk:1}},
-  {id:"magier2",    emo:"🧙", name:"Zauberer",    desc:"Stab & Magie · schnellere Skills", file:"nwhero_magier.glb", scale:1.05, glow:"soft", col:0x9a6aff, cls:{skillcd:1.5}},
+  {id:"magier2",    emo:"🧙", name:"Zauberer",    desc:"Stab & Magie",              file:"nwhero_magier.glb",   scale:1.05, glow:"soft", col:0x9a6aff, cls:{skillcd:1.5}},
   {id:"elf",        emo:"🧝", name:"Elf",         desc:"Bogen · +Tempo",            file:"nwhero_elf.glb",      scale:1.05, glow:"soft", col:0x7ad9a0, cls:{spd:1.2}},
-  {id:"pirat",      emo:"🏴‍☠️", name:"Pirat",     desc:"Säbel & Frechheit",         file:"nwhero_pirat.glb",    scale:1.05, glow:"soft", col:0xc86a5a},
-  {id:"hexe",       emo:"🧹", name:"Hexe",        desc:"Fluch & Besen · schnellere Skills", file:"nwhero_hexe.glb", scale:1.05, glow:"soft", col:0xb06ad0, cls:{skillcd:1.5}}
-  /* 🗑️ Monster-„Helden" (Goblin/Ork/Totenork/Dämon/Pilzkönig/Yeti) + Wanderer-Mannequin entfernt —
-     User: „viele scheiss charakter". Nur noch hochwertige, menschliche/Anime/Fantasy-Helden. */
+  {id:"pirat",      emo:"🏴‍☠️", name:"Pirat",     desc:"Säbel & Frechheit",         file:"nwhero_pirat.glb",    scale:1.05, glow:"soft", col:0xc86a5a}
 ];
+var PICKABLE=CHARACTERS.filter(function(c){return c.pick;});
 function charById(id){for(var i=0;i<CHARACTERS.length;i++)if(CHARACTERS[i].id===id)return CHARACTERS[i];return CHARACTERS[0];}
 function getChar(){var id="held";try{id=localStorage.getItem("nw_char")||"held";}catch(e){}return charById(id);}
 // 🌸 Cel-Shading (Anime-Toon) — MeshToonMaterial + 3-Band-Gradient; Outline auf skinned Meshes in r128 zu heikel -> weggelassen
@@ -4807,9 +4812,10 @@ function startGame(fresh){
     if(id.indexOf("anime_")===0)return "anime";
     if(["ritter","wikinger","magier2","elf","pirat","hexe"].indexOf(id)>=0)return "fantasy";
     return "klasse";}
-  function idxOf(id){for(var i=0;i<CHARACTERS.length;i++)if(CHARACTERS[i].id===id)return i;return 0;}
+  var LIST=(typeof PICKABLE!=="undefined"&&PICKABLE.length)?PICKABLE:CHARACTERS; /* 🎯 kuratierte Auswahl (alte Saves laden weiter alles via charById) */
+  function idxOf(id){for(var i=0;i<LIST.length;i++)if(LIST[i].id===id)return i;return 0;}
   function pick(id){curId=id;try{localStorage.setItem("nw_char",id);}catch(e){}render();}
-  function cycle(dir){var i=(idxOf(curId)+dir+CHARACTERS.length)%CHARACTERS.length;pick(CHARACTERS[i].id);}
+  function cycle(dir){var i=(idxOf(curId)+dir+LIST.length)%LIST.length;pick(LIST[i].id);}
   /* 🎠 W8: Karussell — großer 3D-Held + ◀ Name ▶, damit man den Charakter WIRKLICH sieht (User: „auswahl ist scheisse") */
   var nav=document.getElementById("charNav");
   if(!nav){nav=document.createElement("div");nav.id="charNav";
@@ -4823,11 +4829,11 @@ function startGame(fresh){
     wrap.parentNode.insertBefore(nav,wrap); /* zwischen 3D-Vorschau und Karten-Grid */
   }
   function render(){
-    var C0=CHARACTERS[idxOf(curId)];
+    var C0=LIST[idxOf(curId)];
     var nm=document.getElementById("charNavName");
-    if(nm)nm.innerHTML='<div style="font-size:1.15rem;font-weight:900;color:#eaffff">'+C0.emo+' '+C0.name+'</div><div style="font-size:.8rem;color:#9fd0ff">'+C0.desc+'</div><div style="font-size:.7rem;color:#7f97bf;margin-top:2px">'+(idxOf(curId)+1)+' / '+CHARACTERS.length+'</div>';
+    if(nm)nm.innerHTML='<div style="font-size:1.15rem;font-weight:900;color:#eaffff">'+C0.emo+' '+C0.name+'</div><div style="font-size:.8rem;color:#9fd0ff">'+C0.desc+'</div><div style="font-size:.7rem;color:#7f97bf;margin-top:2px">'+(idxOf(curId)+1)+' / '+LIST.length+'</div>';
     wrap.innerHTML="";var lastCat=null;
-    CHARACTERS.forEach(function(C){
+    LIST.forEach(function(C){
       var cat=catOf(C);
       if(cat!==lastCat){lastCat=cat;var hd=document.createElement("div");hd.className="cathd";
         hd.textContent=CATNAMES[cat]||"";hd.style.cssText="flex-basis:100%;text-align:center;color:#9fd0ff;font-weight:800;font-size:12px;letter-spacing:.08em;margin:8px 0 2px;opacity:.9";
