@@ -3378,6 +3378,7 @@ var PERKS=[
 function showPerkPick(){
   perkChoosing=true;
   var box=document.getElementById("perkPick");if(!box){perkChoosing=false;return;}
+  if(box.parentNode!==document.body)document.body.appendChild(box); /* Schwarm-P2: aus #hud (z-index:2-Stacking-Context) nach body → z-index:60 gewinnt wirklich über die Koop-Emote-Leiste (z-index:40) */
   var pool=PERKS.slice();var pick=[];for(var k=0;k<3&&pool.length;k++){var idx=(Math.random()*pool.length)|0;pick.push(pool.splice(idx,1)[0]);}
   var cards=document.getElementById("perkCards");cards.innerHTML="";
   document.getElementById("perkLvl").textContent="⭐ Level "+level+" — wähle ein Upgrade";
