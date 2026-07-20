@@ -2322,6 +2322,38 @@ var hubLanterns=[],hubForge=null,hubWheel=null,questBoard=null,nearBoard=false,_
 var COMPASS8=["Norden","Nordosten","Osten","Südosten","Süden","Südwesten","Westen","Nordwesten"];
 var COMPASS8_AR=["⬆️","↗️","➡️","↘️","⬇️","↙️","⬅️","↖️"];
 function compass8(dx,dz){var a=Math.atan2(dx,-dz);if(a<0)a+=Math.PI*2;return Math.round(a/(Math.PI/4))%8;} /* Minimap-Konvention: N = -z */
+/* 🏰 Systematische Stadtmauer (User: „schön systematisch aufgebaut … alles mega gross") — quadratischer
+   Steinwall mit Zinnen, 4 Ecktürmen + 2 Torhäusern. Prozedurale Boxen (orientierungssicher, günstig,
+   deterministisch → koop-sicher). Dekorativ (keine Collider) — begrenzt nur optisch die Stadt. */
+function buildCityWall(cx,cz,HR){
+  var wallH=6.6,thick=1.9,capH=0.5,merH=1.0,merW=1.0,gapW=10;
+  var stex=(typeof gtex==="function")?gtex("tex_stone.png",0,true):null;if(stex)stex.repeat.set(6,1.4);
+  var mat=stex?new THREE.MeshLambertMaterial({map:stex,color:0xbfb7a8}):new THREE.MeshLambertMaterial({color:0x9a948a,flatShading:true});
+  var dark=new THREE.MeshLambertMaterial({color:0x726c62,flatShading:true});
+  var roofM=new THREE.MeshLambertMaterial({color:0x7c3b33,flatShading:true});
+  var corners=[[-HR,-HR],[HR,-HR],[HR,HR],[-HR,HR]];var gateSide={0:1,2:1};
+  function tower(x,z,rad,h){var gy=groundH(x,z);
+    var t=new THREE.Mesh(new THREE.CylinderGeometry(rad,rad*1.12,h,12),mat);t.position.set(x,gy+h/2,z);t.castShadow=true;scene.add(t);
+    var band=new THREE.Mesh(new THREE.CylinderGeometry(rad*1.16,rad*1.16,0.5,12),dark);band.position.set(x,gy+h,z);scene.add(band);
+    var rf=new THREE.Mesh(new THREE.ConeGeometry(rad*1.35,rad*1.7,12),roofM);rf.position.set(x,gy+h+rad*0.85,z);rf.castShadow=true;scene.add(rf);}
+  for(var s=0;s<4;s++){var a=corners[s],b=corners[(s+1)%4];
+    var dx=b[0]-a[0],dz=b[1]-a[1],len=Math.hypot(dx,dz),ux=dx/len,uz=dz/len,yaw=Math.atan2(ux,uz),gate=gateSide[s];
+    var run=function(t0,t1){if(t1-t0<0.6)return;var mid=(t0+t1)/2,w=t1-t0;
+      var mxp=cx+a[0]+ux*mid,mzp=cz+a[1]+uz*mid,gy=groundH(mxp,mzp);
+      var wl=new THREE.Mesh(new THREE.BoxGeometry(thick,wallH,w),mat);wl.position.set(mxp,gy+wallH/2,mzp);wl.rotation.y=yaw;wl.castShadow=true;wl.receiveShadow=true;scene.add(wl);
+      var cap=new THREE.Mesh(new THREE.BoxGeometry(thick+0.3,capH,w),dark);cap.position.set(mxp,gy+wallH+capH/2,mzp);cap.rotation.y=yaw;scene.add(cap);
+      var nM=Math.max(2,Math.floor(w/2.1));for(var mi=0;mi<nM;mi++){var mt=(mi+0.5)/nM,dp=(mt-0.5)*w;
+        var mx=cx+a[0]+ux*(mid+dp),mz=cz+a[1]+uz*(mid+dp);
+        var mer=new THREE.Mesh(new THREE.BoxGeometry(thick+0.34,merH,merW),mat);mer.position.set(mx,gy+wallH+capH+merH/2,mz);mer.rotation.y=yaw;scene.add(mer);}};
+    if(gate){var gc=len/2;run(0,gc-gapW/2);run(gc+gapW/2,len);
+      [gc-gapW/2-0.4,gc+gapW/2+0.4].forEach(function(gt){tower(cx+a[0]+ux*gt,cz+a[1]+uz*gt,2.1,wallH+3.0);});
+      var lgx=cx+a[0]+ux*gc,lgz=cz+a[1]+uz*gc,lgy=groundH(lgx,lgz);
+      var lint=new THREE.Mesh(new THREE.BoxGeometry(thick+0.7,1.5,gapW+1.2),dark);lint.position.set(lgx,lgy+wallH-0.1,lgz);lint.rotation.y=yaw;scene.add(lint);
+      /* 🚩 Torbanner */var ban=cc0inst&&cc0inst("dk2_banner",1.6);if(ban){ban.position.set(lgx,lgy,lgz);scene.add(ban);}
+    } else run(0,len);
+    tower(cx+a[0],cz+a[1],2.6,wallH+3.8); /* Eckturm */
+  }
+}
 function buildSpawnHub(){
   if(typeof villages==="undefined"||!villages.length)return;
   var v=villages[0],vx=v.x,vz=v.z;
@@ -2654,8 +2686,16 @@ function decorateWorld(){
     var fire=new THREE.Mesh(new THREE.ConeGeometry(0.5,1.1,7),new THREE.MeshBasicMaterial({color:0xff9a3d}));fire.position.set(vx,groundH(vx,vz)+0.7,vz);scene.add(fire);
     var fL=new THREE.PointLight(0xffa040,1.4,18);fL.position.set(vx,groundH(vx,vz)+1.2,vz);scene.add(fL);
     worldProps.push({mesh:fire,halo:null,ph:rnd()*6.28,base:fire.position.y,float:false,scl:1,flick:true,light:fL});
-    // Zaun-Ring + Fässer/Kisten/Zelt
-    for(var f=0;f<(isSpawn?20:8);f++){var nF=isSpawn?20:8;var fa=f/nF*6.28,fx=vx+Math.cos(fa)*ringR,fz=vz+Math.sin(fa)*ringR;/* Zaun zieht mit ringR 52 mit (20 Segmente) */var fm=cc0inst("cc0_fence",1.2);if(fm){fm.position.set(fx,groundH(fx,fz),fz);fm.rotation.y=fa+Math.PI/2;scene.add(fm);}}
+    // 🏰 Hauptstadt: echte Steinmauer statt Holzzaun; kleine Dörfer behalten den Zaun-Ring
+    if(isSpawn){buildCityWall(vx,vz,ringR+6);
+      /* Burg-Zitadelle in einer freien Ecke (ausserhalb des Häuser-Rings, innerhalb der Mauer) */
+      var ckx=vx+ringR*0.82,ckz=vz-ringR*0.82,castle=cc0inst("building_castle",8.5);
+      if(castle){castle.position.set(ckx,groundH(ckx,ckz),ckz);castle.rotation.y=Math.atan2(vx-ckx,vz-ckz);scene.add(castle);addCollider(ckx,ckz,6.0,castle);}
+      /* Brunnen am Marktplatz */
+      var fnx=vx+9,fnz=vz+9,foun=cc0inst("ftk_fountain",2.4);if(foun){foun.position.set(fnx,groundH(fnx,fnz),fnz);scene.add(foun);addCollider(fnx,fnz,2.0);}
+    } else {
+      for(var f=0;f<8;f++){var fa=f/8*6.28,fx=vx+Math.cos(fa)*ringR,fz=vz+Math.sin(fa)*ringR;var fm=cc0inst("cc0_fence",1.2);if(fm){fm.position.set(fx,groundH(fx,fz),fz);fm.rotation.y=fa+Math.PI/2;scene.add(fm);}}
+    }
     for(var p2=0;p2<3;p2++){var pa=rnd()*6.28,pr=3+rnd()*5,px=vx+Math.cos(pa)*pr,pz=vz+Math.sin(pa)*pr;var pm2=cc0inst(rnd()<0.5?"cc0_barrel":"cc0_crate",1.0);if(pm2){pm2.position.set(px,groundH(px,pz),pz);pm2.rotation.y=rnd()*6.28;scene.add(pm2);}}
     var tent=cc0inst("cc0_tent",2.0);if(tent){var tx=vx+3,tz=vz-4;tent.position.set(tx,groundH(tx,tz),tz);tent.rotation.y=rnd()*6.28;scene.add(tent);}
     if(isSpawn)window._spawnHouses=_houses.slice(); /* 🏙️ Haus-Positionen für Hub-Abstands-Checks (Phase 2) */
@@ -5001,6 +5041,7 @@ window.__nw={
   houses:function(){return (window._spawnHouses||[]).slice();}, /* Test-Only: Überschneidungs-Probe */
   fades:function(){return fadeBuildings.map(function(b){return {x:+b.x.toFixed(1),z:+b.z.toFixed(1),r:+b.r.toFixed(1),cur:+b.cur.toFixed(2)};});}, /* QA: Gebäude-Fade */
   occludeTest:function(){if(!fadeBuildings.length)return null;var B=fadeBuildings[0];camYaw=0;player.position.x=B.x;player.position.z=B.z+5;return {x:+B.x.toFixed(1),z:+B.z.toFixed(1)};}, /* Test-Only: Haus zwischen Kamera & Held */
+  tp:function(x,z,yaw){player.position.set(x,0,z);if(yaw!=null)camYaw=yaw;return {x:x,z:z};}, /* Test-Only: Teleport */
   ivRoads:function(){return (window._ivRoads||[]).length;}, /* Test-Only */
   toRoad:function(i){var m=(window._ivRoads||[])[i||0];if(!m)return null;var p=m.geometry.attributes.position;var mi=((p.count/2)|0)&~1;var x=p.getX(mi),z=p.getZ(mi);player.position.x=x;player.position.z=z-4;return {x:x,z:z};}, /* Test-Only */
   texCount:function(re){var n=0;scene.traverse(function(o){if(o.isMesh&&o.material&&o.material.map){var im=o.material.map.image;var s=(im&&(im.currentSrc||im.src))||"";if(new RegExp(re).test(s))n++;}});return n;}, /* Test-Only */
