@@ -1980,7 +1980,12 @@ function decoVillageExtras(vx,vz,isSpawn,houses){
   // Gärten neben (fast) jedem Haus, seitlich versetzt
   for(var i=0;i<houses.length;i++){if(!isSpawn&&rnd()<0.4)continue;
     var hx=houses[i].x,hz=houses[i].z,outAng=Math.atan2(hz-vz,hx-vx),perp=outAng+Math.PI/2,side=(i%2?1:-1);
-    var gx=hx+Math.cos(perp)*side*4.2,gz=hz+Math.sin(perp)*side*4.2;
+    /* 🌱 weiter weg vom Haus (7.5 seitlich + leicht nach aussen) — 4.2 überschnitt das grosse Fachwerkhaus (User) */
+    var gx=hx+Math.cos(perp)*side*7.5+Math.cos(outAng)*1.4,gz=hz+Math.sin(perp)*side*7.5+Math.sin(outAng)*1.4;
+    /* 🚫 kein Beet in einem Haus-Footprint (eigenes Haus bei 7.6 frei, Nachbarhäuser werden geprüft) */
+    var clash=false;for(var cgi=0;cgi<colliders.length;cgi++){var cg=colliders[cgi],cr=cg.r*1.5+1.0;
+      if((cg.x-gx)*(cg.x-gx)+(cg.z-gz)*(cg.z-gz)<cr*cr){clash=true;break;}}
+    if(clash)continue;
     mkGarden(gx,gz,outAng);
   }
   // Wimpelketten über dem Platz (2 Achsen im grossen Dorf)
@@ -2329,7 +2334,7 @@ function buildSpawnHub(){
   })();
   /* 3) 🍺 Taverne: bd_inn + Laterne + warmes Licht + Musikant-NPC (♪-Blase, fixedEmo) */
   (function(){var p=hubSpot(2.6,23,8.5),tx=p.x,tz=p.z; /* 📏 Taverne: ≥8.5 zu Häusern */
-    var inn=cc0inst("bd_inn",9.5);if(inn){inn.position.set(tx,groundH(tx,tz),tz);inn.rotation.y=Math.atan2(vx-tx,vz-tz);scene.add(inn);addCollider(tx,tz,4.0);}
+    var inn=cc0inst("bd_inn",9.5);if(inn){inn.position.set(tx,groundH(tx,tz),tz);inn.rotation.y=Math.atan2(vx-tx,vz-tz);scene.add(inn);addCollider(tx,tz,4.0,inn);}
     var dc=vx-tx,ds=vz-tz,dl=Math.hypot(dc,ds)||1;dc/=dl;ds/=dl;
     var dx=tx+dc*4.4,dz=tz+ds*4.4; /* Vorplatz Richtung Zentrum */
     var lan=cc0inst("ftk_lantern",1.8);if(lan){lan.position.set(dx+0.9,groundH(dx+0.9,dz),dz);scene.add(lan);}
@@ -2340,7 +2345,7 @@ function buildSpawnHub(){
   })();
   /* 4) ⚒️ Arbeitende Schmiede: bd_smithy + Amboss + sv_hammer + periodische Funken + Flacker-Licht */
   (function(){var p=hubSpot(4.9,23,8.5),sx=p.x,sz=p.z; /* 📏 Schmiede: ≥8.5 zu Häusern */
-    var sm=cc0inst("bd_smithy",9.0);if(sm){sm.position.set(sx,groundH(sx,sz),sz);sm.rotation.y=Math.atan2(vx-sx,vz-sz);scene.add(sm);addCollider(sx,sz,3.8);}
+    var sm=cc0inst("bd_smithy",9.0);if(sm){sm.position.set(sx,groundH(sx,sz),sz);sm.rotation.y=Math.atan2(vx-sx,vz-sz);scene.add(sm);addCollider(sx,sz,3.8,sm);}
     var dc=vx-sx,ds=vz-sz,dl=Math.hypot(dc,ds)||1;dc/=dl;ds/=dl;
     var ax=sx+dc*4.6,az=sz+ds*4.6,ay=groundH(ax,az);
     var base=new THREE.Mesh(new THREE.CylinderGeometry(0.32,0.4,0.4,8),new THREE.MeshLambertMaterial({color:0x6a4a2c,flatShading:true}));base.position.set(ax,ay+0.2,az);base.castShadow=true;scene.add(base);
@@ -2615,7 +2620,7 @@ function decorateWorld(){
       }
       var hCx=hx+(R()-0.5)*1.5,hCz=hz+(R()-0.5)*1.5;
       var hm=cc0inst(HOUSES[hIdx],hSc)||mkFallbackHouse(hSc*0.9);
-      hm.position.set(hx,groundH(hx,hz),hz);hm.rotation.y=hRy;scene.add(hm);addChimney(hCx,hCz,groundH(hx,hz)+7.5);_houses.push({x:hx,z:hz});addCollider(hx,hz,3.4);
+      hm.position.set(hx,groundH(hx,hz),hz);hm.rotation.y=hRy;scene.add(hm);addChimney(hCx,hCz,groundH(hx,hz)+7.5);_houses.push({x:hx,z:hz});addCollider(hx,hz,3.4,hm);
     }
     // Lagerfeuer-Platz + leuchtendes Feuer in der Dorfmitte
     var cf=cc0inst("cc0_campfire",0.7);if(cf){cf.position.set(vx,groundH(vx,vz),vz);scene.add(cf);}
@@ -2640,10 +2645,10 @@ function decorateWorld(){
           if(ok)return {x:x,z:z};}
         return {x:vx+Math.cos(ang)*(r0+52),z:vz+Math.sin(ang)*(r0+52)};}
       var chp=clearSpot(vx-14,vz-12,4.5);
-      var ch2=cc0inst("bd_church",10);if(ch2){var chx=chp.x,chz=chp.z;ch2.position.set(chx,groundH(chx,chz),chz);ch2.rotation.y=Math.atan2(vx-chx,vz-chz);scene.add(ch2);addCollider(chx,chz,4.5);}
+      var ch2=cc0inst("bd_church",10);if(ch2){var chx=chp.x,chz=chp.z;ch2.position.set(chx,groundH(chx,chz),chz);ch2.rotation.y=Math.atan2(vx-chx,vz-chz);scene.add(ch2);addCollider(chx,chz,4.5,ch2);}
       mkWindmillLive(vx+Math.cos(-2.4)*(ringR+13),vz+Math.sin(-2.4)*(ringR+13),13); // kameraabgewandt, Rotor dreht
       var bp=clearSpot(vx-Math.cos(0.4)*(ringR+6),vz-Math.sin(0.4)*(ringR+6),4.0);
-      var bn=cc0inst("bd_barn",6.5);if(bn){var bx3=bp.x,bz3=bp.z;bn.position.set(bx3,groundH(bx3,bz3),bz3);bn.rotation.y=rnd()*6.28;scene.add(bn);addCollider(bx3,bz3,4.0);}
+      var bn=cc0inst("bd_barn",6.5);if(bn){var bx3=bp.x,bz3=bp.z;bn.position.set(bx3,groundH(bx3,bz3),bz3);bn.rotation.y=rnd()*6.28;scene.add(bn);addCollider(bx3,bz3,4.0,bn);}
       var sp4=clearSpot(vx-Math.cos(0.4)*(ringR+6)+6,vz-Math.sin(0.4)*(ringR+6)+3,3.0);
       var st4=cc0inst("bd_stable",4.5);if(st4){var sx4=sp4.x,sz4=sp4.z;st4.position.set(sx4,groundH(sx4,sz4),sz4);st4.rotation.y=rnd()*6.28;scene.add(st4);addCollider(sx4,sz4,3.0);}}
     if(!isSpawn&&rnd()<0.4){var wa2=rnd()*6.28;mkWindmillLive(vx+Math.cos(wa2)*(ringR+7),vz+Math.sin(wa2)*(ringR+7),12);}
@@ -4056,8 +4061,16 @@ var camYaw=0,shake=0,hitStop=0,_shTick=0;
 /* 🔍 Zoom (Wildnis-Paket #2): Faktor auf Kamera-Distanz, sanft gelerpt, persistent (nw_zoom) */
 var camZoomT=(function(){var z=parseFloat(lsGet("nw_zoom"));return (z>=0.55&&z<=1.8)?z:1;})(),camZoom=camZoomT;
 function setZoom(v){camZoomT=Math.max(0.55,Math.min(1.8,v));lsSet("nw_zoom",camZoomT.toFixed(3));}
-var colliders=[];
-function addCollider(x,z,r){colliders.push({x:x,z:z,r:r});}
+var colliders=[],fadeBuildings=[];
+function addCollider(x,z,r,mesh){colliders.push({x:x,z:z,r:r});
+  /* 🫥 Gebäude, die zwischen Kamera & Held stehen, werden durchsichtig statt den Helden zu verdecken
+     (User „eingesperrt": Haus füllte den Schirm, Held unsichtbar). Materialien klonen → jedes Haus fadet
+     unabhängig (cc0inst teilt Materialien zwischen Instanzen). */
+  if(mesh){var mats=[];mesh.traverse(function(n){if(!n.isMesh||!n.material)return;
+      if(Array.isArray(n.material)){n.material=n.material.map(function(m){return m.clone();});n.material.forEach(function(m){mats.push(m);});}
+      else{n.material=n.material.clone();mats.push(n.material);}});
+    if(mats.length)fadeBuildings.push({x:x,z:z,r:r*1.55+1.3,mats:mats,cur:1,_on:false});}
+}
 function canWalk(nx,nz){ /* 🧱 grosse Gegenstaende blockieren (User-Wunsch) */
   for(var i=0;i<colliders.length;i++){var c=colliders[i];
     var dx=c.x-nx;if(dx>c.r||dx<-c.r)continue;
@@ -4112,6 +4125,16 @@ function updCamera(dt){
   gMax=Math.max(gMax,groundH(mgx,mgz));
   var wantY=Math.max(player.position.y+hgt,gMax+3.5);
   camera.position.y+=(wantY-camera.position.y)*Math.min(1,dt*6);
+  /* 🫥 Häuser zwischen Kamera & Held durchsichtig machen → Held nie mehr „eingesperrt"/verdeckt */
+  if(fadeBuildings.length){var pX=player.position.x,pZ=player.position.z,cX=camera.position.x,cZ=camera.position.z;
+    var sdx=cX-pX,sdz=cZ-pZ,sl2=sdx*sdx+sdz*sdz||1;
+    for(var fb=0;fb<fadeBuildings.length;fb++){var B=fadeBuildings[fb];
+      var tS=((B.x-pX)*sdx+(B.z-pZ)*sdz)/sl2,occl=0;
+      if(tS>0.05&&tS<0.99){var qx=pX+sdx*tS,qz=pZ+sdz*tS;if((B.x-qx)*(B.x-qx)+(B.z-qz)*(B.z-qz)<B.r*B.r)occl=1;}
+      var tgt=occl?0.16:1;B.cur+=(tgt-B.cur)*Math.min(1,dt*9);
+      var on=B.cur<0.985;
+      if(on||B._on){B._on=on;for(var mi=0;mi<B.mats.length;mi++){var m=B.mats[mi];m.transparent=on;m.opacity=B.cur;m.depthWrite=B.cur>0.55;}}
+    }}
   var tr=shake>0?shake*shake:0,st2=performance.now()*0.045;
   var sx=tr>0?(Math.sin(st2*1.1)+Math.sin(st2*2.3)*0.5)*tr*0.6:0,sz=tr>0?(Math.cos(st2*1.7)+Math.sin(st2*2.9)*0.5)*tr*0.6:0; /* Trauma-Shake (glatt, kein rnd-Verbrauch) */
   camera.lookAt(player.position.x+sx-dirx*1.0,player.position.y+1.5,player.position.z+sz-dirz*1.0); /* 🎯 Held zentriert, minimaler kamerarelativer Lead */
@@ -4775,16 +4798,25 @@ function startGame(fresh){
         if(_lastId!==id)return; // schon weitergeklickt
         clearModel();var o=g.scene;
         o.traverse(function(n){if(n.isMesh){n.frustumCulled=false;if(typeof toonify==="function")toonify(n,C.glow==="neon");}});
-        /* 📏 Vorschau bone-basiert normieren+zentrieren — setFromObject ist bei skinned Meshy-GLBs Müll
-           (→ 6×-Clamp = Riese, Kamera sah nur die Stiefel). Ziel ~1.75 Einheiten, Füße bei y≈0. */
+        /* 📏 Vorschau exakt normieren: ECHTE (geskinnte) Vertex-Hülle messen — reine Bone-Box unterschätzt
+           Kopf/Füsse, darum quoll z.B. der Ritter oben aus der Box (User: „zu gross für bild"). boneTransform
+           liefert die geskinnte Vertex-Position; Fallbacks: Bone-Box → setFromObject. Ziel ~1.6 Einheiten. */
+        function skinBox(sc){var b=new THREE.Box3(),V=new THREE.Vector3(),ok=false;
+          o.scale.setScalar(sc);o.position.set(0,0,0);o.updateMatrixWorld(true);
+          o.traverse(function(n){if(!n.isMesh||!n.geometry||!n.geometry.attributes||!n.geometry.attributes.position)return;
+            var p=n.geometry.attributes.position,sk=(n.isSkinnedMesh&&typeof n.boneTransform==="function"),st=Math.max(1,Math.floor(p.count/500));
+            for(var i=0;i<p.count;i+=st){if(sk){n.boneTransform(i,V);}else{V.fromBufferAttribute(p,i);}n.localToWorld(V);b.expandByPoint(V);ok=true;}
+          });return ok?b:null;}
         function boneBox(){var b=new THREE.Box3(),c=0,V=new THREE.Vector3();o.updateMatrixWorld(true);
           o.traverse(function(n){if(n.isSkinnedMesh&&n.skeleton)n.skeleton.bones.forEach(function(bo){bo.getWorldPosition(V);b.expandByPoint(V);c++;});});return c?b:null;}
-        var bb=boneBox(),pk;
-        if(bb){var hh=bb.max.y-bb.min.y;pk=(hh>0.3)?(1.75/hh):1;}
-        else{var box0=new THREE.Box3().setFromObject(o),h0=box0.max.y-box0.min.y;pk=(h0>0.8&&h0<6)?(1.75/h0):((C.scale||1.15)*0.55);}
-        o.scale.setScalar(Math.max(0.05,Math.min(4,pk)));
-        var bb2=boneBox()||new THREE.Box3().setFromObject(o),ctr=new THREE.Vector3();bb2.getCenter(ctr);
-        o.position.x-=ctr.x;o.position.z-=ctr.z;o.position.y-=(bb2.min.y-0.04);
+        var mb=skinBox(1),pk;
+        if(mb){var mh=mb.max.y-mb.min.y;pk=(mh>0.3&&mh<200)?(1.6/mh):1;}
+        else{var bb=boneBox();
+          if(bb){var hh=bb.max.y-bb.min.y;pk=(hh>0.3)?(1.6/hh):1;}
+          else{var box0=new THREE.Box3().setFromObject(o),h0=box0.max.y-box0.min.y;pk=(h0>0.8&&h0<6)?(1.6/h0):((C.scale||1.15)*0.5);}}
+        pk=Math.max(0.02,Math.min(6,pk));
+        var bb2=skinBox(pk)||boneBox()||new THREE.Box3().setFromObject(o),ctr=new THREE.Vector3();bb2.getCenter(ctr);
+        o.position.x-=ctr.x;o.position.z-=ctr.z;o.position.y-=(bb2.min.y-0.05);
         pmodel=o;psc.add(o);
         if(g.animations&&g.animations.length){pmix=new THREE.AnimationMixer(o);
           var idle=null;for(var a=0;a<g.animations.length;a++)if(/idle/i.test(g.animations[a].name)){idle=g.animations[a];break;}
@@ -4881,6 +4913,8 @@ window.__nw={
   toProp:function(){if(worldProps.length){var p=worldProps[0];player.position.x=p.mesh.position.x-4;player.position.z=p.mesh.position.z;return p.mesh.position;}return null;},
   villages:function(){return villages.slice();},
   houses:function(){return (window._spawnHouses||[]).slice();}, /* Test-Only: Überschneidungs-Probe */
+  fades:function(){return fadeBuildings.map(function(b){return {x:+b.x.toFixed(1),z:+b.z.toFixed(1),r:+b.r.toFixed(1),cur:+b.cur.toFixed(2)};});}, /* QA: Gebäude-Fade */
+  occludeTest:function(){if(!fadeBuildings.length)return null;var B=fadeBuildings[0];camYaw=0;player.position.x=B.x;player.position.z=B.z+5;return {x:+B.x.toFixed(1),z:+B.z.toFixed(1)};}, /* Test-Only: Haus zwischen Kamera & Held */
   ivRoads:function(){return (window._ivRoads||[]).length;}, /* Test-Only */
   toRoad:function(i){var m=(window._ivRoads||[])[i||0];if(!m)return null;var p=m.geometry.attributes.position;var mi=((p.count/2)|0)&~1;var x=p.getX(mi),z=p.getZ(mi);player.position.x=x;player.position.z=z-4;return {x:x,z:z};}, /* Test-Only */
   texCount:function(re){var n=0;scene.traverse(function(o){if(o.isMesh&&o.material&&o.material.map){var im=o.material.map.image;var s=(im&&(im.currentSrc||im.src))||"";if(new RegExp(re).test(s))n++;}});return n;}, /* Test-Only */
