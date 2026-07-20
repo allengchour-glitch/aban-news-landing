@@ -63,8 +63,8 @@ canvas{display:block}
 #chatMsgs b{color:#c05a2a}
 #chatRow{display:flex;border-top:1px solid #eee}
 #chatIn{flex:1;border:0;padding:10px;font-size:16px;background:transparent}
-#emoteToggle{position:fixed;right:10px;bottom:calc(64px + env(safe-area-inset-bottom));z-index:22;width:52px;height:52px;border-radius:50%;border:0;background:rgba(255,253,246,.97);box-shadow:0 6px 18px rgba(60,40,10,.28);font-size:1.5rem;cursor:pointer;display:none}
-#micBtn{position:fixed;right:72px;bottom:calc(64px + env(safe-area-inset-bottom));z-index:22;width:52px;height:52px;border-radius:50%;border:0;background:rgba(255,253,246,.97);box-shadow:0 6px 18px rgba(60,40,10,.28);font-size:1.4rem;cursor:pointer;display:none}
+#emoteToggle{position:fixed;right:10px;bottom:calc(124px + env(safe-area-inset-bottom));z-index:22;width:52px;height:52px;border-radius:50%;border:0;background:rgba(255,253,246,.97);box-shadow:0 6px 18px rgba(60,40,10,.28);font-size:1.5rem;cursor:pointer;display:none}
+#micBtn{position:fixed;right:196px;bottom:calc(124px + env(safe-area-inset-bottom));z-index:22;width:52px;height:52px;border-radius:50%;border:0;background:rgba(255,253,246,.97);box-shadow:0 6px 18px rgba(60,40,10,.28);font-size:1.4rem;cursor:pointer;display:none}
 #micBtn.on{background:#e05a4a;color:#fff;animation:micp 1.2s infinite}
 #micBtn.muted{background:#8a8a92;color:#fff}
 @keyframes micp{0%,100%{box-shadow:0 6px 18px rgba(224,90,74,.4)}50%{box-shadow:0 6px 26px rgba(224,90,74,.85)}}
@@ -73,8 +73,8 @@ canvas{display:block}
 #emoteBar{position:fixed;right:10px;bottom:calc(122px + env(safe-area-inset-bottom));z-index:22;display:none;flex-direction:column;gap:6px}
 #emoteBar button{width:52px;height:52px;border-radius:50%;border:2px solid #e8b04a;background:rgba(255,253,246,.98);font-size:1.6rem;cursor:pointer;box-shadow:0 4px 12px rgba(60,40,10,.22);line-height:1}
 #emoteBar button:active{transform:scale(.9)}
-#hideBtn{position:fixed;right:130px;bottom:calc(64px + env(safe-area-inset-bottom));z-index:22;width:52px;height:52px;border-radius:50%;border:0;background:rgba(255,200,80,.96);box-shadow:0 6px 18px rgba(120,80,20,.34);font-size:1.4rem;cursor:pointer;display:none}
-#pingBtn{position:fixed;right:70px;bottom:calc(64px + env(safe-area-inset-bottom));z-index:22;width:52px;height:52px;border-radius:50%;border:0;background:rgba(58,208,255,.96);box-shadow:0 6px 18px rgba(20,80,120,.34);font-size:1.4rem;cursor:pointer;display:none}
+#hideBtn{position:fixed;right:134px;bottom:calc(124px + env(safe-area-inset-bottom));z-index:22;width:52px;height:52px;border-radius:50%;border:0;background:rgba(255,200,80,.96);box-shadow:0 6px 18px rgba(120,80,20,.34);font-size:1.4rem;cursor:pointer;display:none}
+#pingBtn{position:fixed;right:72px;bottom:calc(124px + env(safe-area-inset-bottom));z-index:22;width:52px;height:52px;border-radius:50%;border:0;background:rgba(58,208,255,.96);box-shadow:0 6px 18px rgba(20,80,120,.34);font-size:1.4rem;cursor:pointer;display:none}
 #pingBtn:active{transform:scale(.9)}
 #chatSend{border:0;background:#ffd166;padding:0 14px;cursor:pointer;font-weight:800;border-radius:0 0 12px 0}
 #chatToggle{position:fixed;left:66px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:14;display:none;border:2px solid #e8b04a;background:rgba(255,253,246,.94);border-radius:50%;width:48px;height:48px;font-size:1.2rem;cursor:pointer}
@@ -105,9 +105,9 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 <div id="hideHud" style="position:fixed;top:calc(100px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:16;display:none;background:rgba(40,30,10,.86);color:#fff;border:2px solid #ffc850;border-radius:12px;padding:6px 16px;font-weight:800;font-size:1.05rem"></div>
 <button id="micBtn" title="Voice-Chat">🎙️</button>
 <button id="nitroBtn" style="position:fixed;right:12px;bottom:calc(160px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:50%;width:64px;height:64px;font-size:1.5rem;color:#fff;background:linear-gradient(135deg,#ff9a3a,#ff4a2a);box-shadow:0 6px 20px rgba(255,90,40,.5);cursor:pointer">🚀</button>
-<button id="lieferBtn" style="position:fixed;right:12px;bottom:calc(234px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:50%;width:64px;height:64px;font-size:1.5rem;background:linear-gradient(135deg,#4ab04a,#2a8a3a);box-shadow:0 6px 20px rgba(40,140,60,.5);cursor:pointer">📦</button>
+<button id="lieferBtn" style="position:fixed;right:12px;bottom:calc(308px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:50%;width:64px;height:64px;font-size:1.5rem;background:linear-gradient(135deg,#4ab04a,#2a8a3a);box-shadow:0 6px 20px rgba(40,140,60,.5);cursor:pointer">📦</button>
 <div id="lieferHud" style="position:fixed;left:50%;transform:translateX(-50%);bottom:calc(120px + env(safe-area-inset-bottom));z-index:16;display:none;background:rgba(20,60,25,.88);color:#fff;border:2px solid #4ad06a;border-radius:12px;padding:6px 14px;font-weight:800">📦 <span id="lieferZeit">60</span>s → <span id="lieferZiel">Markt</span></div>
-<button id="hornBtn" style="position:fixed;left:12px;bottom:calc(160px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:50%;width:64px;height:64px;font-size:1.5rem;background:rgba(255,253,246,.96);box-shadow:0 6px 20px rgba(60,40,10,.3);cursor:pointer">📣</button>
+<button id="hornBtn" style="position:fixed;right:12px;bottom:calc(234px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:50%;width:64px;height:64px;font-size:1.5rem;background:rgba(255,253,246,.96);box-shadow:0 6px 20px rgba(60,40,10,.3);cursor:pointer">📣</button>
 <button id="exitCar" style="position:fixed;left:50%;transform:translateX(-50%);bottom:calc(96px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:30px;padding:13px 24px;font-weight:900;font-size:1.05rem;color:#fff;background:linear-gradient(90deg,#e0703a,#c8502a);box-shadow:0 8px 22px rgba(200,80,40,.4);cursor:pointer">🚪 Aussteigen</button>
 <div id="emoteBar"></div>
 <div id="piBar" style="position:fixed;left:66px;bottom:calc(64px + env(safe-area-inset-bottom));z-index:14;display:none;gap:6px">
@@ -682,7 +682,7 @@ function updImmo(dt){
   else kb.style.display="none";}
 document.addEventListener("DOMContentLoaded",function(){});
 (function(){var kb=document.createElement("button");kb.id="kaufBtn";
-  kb.style.cssText="position:fixed;left:12px;bottom:calc(234px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:14px;padding:12px 16px;font-size:1.05rem;font-weight:800;color:#fff;background:linear-gradient(135deg,#e8b04a,#c88a20);box-shadow:0 6px 20px rgba(160,110,20,.5);cursor:pointer";
+  kb.style.cssText="position:fixed;left:12px;bottom:calc(300px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:14px;padding:14px 18px;min-height:48px;font-size:1.05rem;font-weight:800;color:#fff;background:linear-gradient(135deg,#e8b04a,#c88a20);box-shadow:0 6px 20px rgba(160,110,20,.5);cursor:pointer";
   document.body.appendChild(kb);
   kb.onclick=function(){var i=+kb.dataset.idx,hs=window._immo&&window._immo[i];if(!hs||immo.indexOf(i)>=0)return;
     if(Math.hypot(sims[0].x-hs.x,sims[0].z-hs.z)>7){kb.style.display="none";return;} // Distanz frisch pruefen
@@ -3266,9 +3266,9 @@ function loop(now){
     updHearts(dt);updWetter(dt);updVerkehr(dt);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);updVerstecken(dt);updFest(dt,now);updImmo(dt);
     document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("minimap").style.display=(running&&!buildMode)?"block":"none";
-    document.getElementById("emoteToggle").style.display=(running&&!buildMode)?"block":"none";
-    document.getElementById("micBtn").style.display=(running&&!buildMode&&MPs)?"block":"none";
-    document.getElementById("pingBtn").style.display=(running&&!buildMode&&MPs)?"block":"none";
+    document.getElementById("emoteToggle").style.display=(running&&!buildMode&&!fahren)?"block":"none";
+    document.getElementById("micBtn").style.display=(running&&!buildMode&&!fahren&&MPs)?"block":"none";
+    document.getElementById("pingBtn").style.display=(running&&!buildMode&&!fahren&&MPs)?"block":"none";
     document.getElementById("hideBtn").style.display=(running&&!buildMode&&!fahren&&(!MPs||mpHost))?"block":"none";
     if(MPs&&!mpHost){steerNetT-=dt;
       if(steerNetT<=0){steerNetT=0.09;var act9=steerActive();
