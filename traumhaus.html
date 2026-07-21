@@ -477,9 +477,12 @@ var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_d
     tr(2.2,2*SZ9+14,xc+6.1,0,0.05);});
   // Zebrastreifen an den Kreuzungen (Fussgaenger queren die Hauptstrassen)
   var zMat=new THREE.MeshStandardMaterial({color:0xf0f0ea,roughness:0.8});
-  function zebra(x,z,quer){ // quer=true: Streifen laufen in z (ueber eine Ost-West-Strasse)
-    for(var st9=0;st9<6;st9++){var p=new THREE.Mesh(new THREE.PlaneGeometry(quer?0.5:8.6,quer?8.6:0.5),zMat);
-      p.rotation.x=-Math.PI/2;p.position.set(x+(quer?(st9-2.5)*0.95:0),0.007,z+(quer?0:(st9-2.5)*0.95));
+  function zebra(x,z,quer){ // quer=true: Strasse laeuft in X (Nord/Sued) -> Streifen laengs (in X), gestapelt ueber die Fahrbahnbreite (Z)
+    var n=8;for(var st9=0;st9<n;st9++){
+      var w9=quer?4.8:0.62,d9=quer?0.62:4.8; // Streifen laengs zur Fahrtrichtung
+      var p=new THREE.Mesh(new THREE.PlaneGeometry(w9,d9),zMat);
+      p.rotation.x=-Math.PI/2;var off9=(st9-(n-1)/2)*1.15; // gleichmaessig ueber die 10-breite Fahrbahn
+      p.position.set(x+(quer?0:off9),0.008,z+(quer?off9:0));
       p.receiveShadow=true;scene.add(p);}}
   [RX-12,-(RX-12)].forEach(function(zx){zebra(zx,SZ9+12,true);zebra(zx,-(SZ9+12),true);}); // Nord+Sued
   [SZ9-2,-(SZ9-2)].forEach(function(zz){zebra(RX,zz,false);zebra(-RX,zz,false);});        // Querstrassen
