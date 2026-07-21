@@ -324,15 +324,15 @@ var skyDome=new THREE.Mesh(new THREE.SphereGeometry(480,24,16),skyMat);skyDome.r
 /* 🌙 W7: Nachthimmel — Sternenfeld + Mond, nur nachts sichtbar, folgt dem Spieler wie eine Skybox.
    Rein kosmetisch (Math.random, fog:false) → berührt keinen seeded-Stream, keine Koop-Auswirkung. */
 var nightSky=new THREE.Group();nightSky.visible=false;scene.add(nightSky);
-(function(){var N=IS_MOB?220:360,pos=new Float32Array(N*3);
+(function(){var N=IS_MOB?300:560,pos=new Float32Array(N*3); /* ✨ mehr Sterne */
   for(var i=0;i<N;i++){var th=Math.random()*6.2832,ph=0.12+Math.random()*1.15,r=330;
     pos[i*3]=Math.cos(th)*Math.sin(ph)*r;pos[i*3+1]=Math.abs(Math.cos(ph))*r*0.85+55;pos[i*3+2]=Math.sin(th)*Math.sin(ph)*r;}
   var sg=new THREE.BufferGeometry();sg.setAttribute("position",new THREE.BufferAttribute(pos,3));
-  var sm=new THREE.PointsMaterial({color:0xdfe8ff,size:2.0,sizeAttenuation:false,transparent:true,opacity:0.9,depthWrite:false});sm.fog=false;
+  var sm=new THREE.PointsMaterial({color:0xdfe8ff,size:2.4,sizeAttenuation:false,transparent:true,opacity:0.95,depthWrite:false});sm.fog=false;
   nightSky.add(new THREE.Points(sg,sm));
   var moon=new THREE.Mesh(new THREE.SphereGeometry(10,20,20),new THREE.MeshBasicMaterial({color:0xf6f2dc,transparent:true,opacity:1}));moon.material.fog=false;
   moon.position.set(-150,175,-210);nightSky.add(moon);
-  var halo=new THREE.Mesh(new THREE.SphereGeometry(15,20,20),new THREE.MeshBasicMaterial({color:0xbfd4ff,transparent:true,opacity:0.16,side:THREE.BackSide}));halo.material.fog=false;moon.add(halo);})();
+  var halo=new THREE.Mesh(new THREE.SphereGeometry(22,20,20),new THREE.MeshBasicMaterial({color:0xbfd4ff,transparent:true,opacity:0.30,side:THREE.BackSide}));halo.material.fog=false;moon.add(halo);})();
 /* ☀️ W8: Tag-Himmel — Sonnenscheibe + warmer Halo, tagsüber sichtbar (Gegenstück zum Nachthimmel).
    Folgt dem Spieler wie eine Skybox, rein kosmetisch (fog:false). */
 var daySky=new THREE.Group();scene.add(daySky);
@@ -348,11 +348,11 @@ var daySun=null,DSUN_NOON=new THREE.Color(0xfff2c0),DSUN_LOW=new THREE.Color(0xf
 })();
 /* ✨ W8: Umgebungs-Partikel — Pollen bei Tag, Glühwürmchen bei Nacht. Folgt dem Spieler, driftet sanft.
    Rein kosmetisch (Math.random) → kein seeded-Stream, keine Koop-Auswirkung. */
-var motes=null,moteN=IS_MOB?40:70,moteMat=null,_moteT=0;
+var motes=null,moteN=IS_MOB?55:110,moteMat=null,_moteT=0;
 (function(){var mp=new Float32Array(moteN*3);
   for(var i=0;i<moteN;i++){mp[i*3]=(Math.random()-0.5)*40;mp[i*3+1]=0.6+Math.random()*4.2;mp[i*3+2]=(Math.random()-0.5)*40;}
   var mg=new THREE.BufferGeometry();mg.setAttribute("position",new THREE.BufferAttribute(mp,3));
-  moteMat=new THREE.PointsMaterial({color:0xfff2c0,size:0.15,transparent:true,opacity:0.42,depthWrite:false});
+  moteMat=new THREE.PointsMaterial({color:0xfff2c0,size:0.18,transparent:true,opacity:0.52,depthWrite:false});
   motes=new THREE.Points(mg,moteMat);motes.frustumCulled=false;scene.add(motes);})();
 var camera=new THREE.PerspectiveCamera(55,W/H,0.1,600);
 
@@ -633,7 +633,7 @@ function fallbackTree(){
 var resources=[]; // {type,mesh,x,z,hp,maxhp,dead,regrow,baseY}
 function mkRock(cry){
   var col=cry?0x7de3ff:0x8890a8,em=cry?0x2a7a90:0x000000;
-  var m=new THREE.Mesh(new THREE.IcosahedronGeometry(cry?1.1:1.3,0),new THREE.MeshStandardMaterial({color:col,emissive:em,emissiveIntensity:cry?0.9:0,flatShading:true,roughness:.9}));
+  var m=new THREE.Mesh(new THREE.IcosahedronGeometry(cry?1.1:1.3,0),new THREE.MeshStandardMaterial({color:col,emissive:em,emissiveIntensity:cry?1.4:0,flatShading:true,roughness:.9}));
   m.castShadow=true;m.rotation.y=rnd()*6.28;return m;
 }
 function placeResources(){
@@ -1284,10 +1284,10 @@ function buildAmbient(){
   for(;dti<dtBudget;dti++)setInst(dtIM,dti,0,-999,0,0.001,0);dtIM.count=dtBudget;dtIM.instanceMatrix.needsUpdate=true;dtIM.instanceColor.needsUpdate=true;
 
   // --- Glühwürmchen (nachts, gepoolt) ---
-  for(var g=0;g<Math.round(22*VF);g++){var fm=new THREE.Mesh(new THREE.SphereGeometry(0.08,5,5),new THREE.MeshBasicMaterial({color:0xcaffb0,transparent:true}));fm.visible=false;scene.add(fm);
+  for(var g=0;g<Math.round(30*VF);g++){var fm=new THREE.Mesh(new THREE.SphereGeometry(0.08,5,5),new THREE.MeshBasicMaterial({color:0xcaffb0,transparent:true}));fm.visible=false;scene.add(fm);
     fireflies.push({m:fm,bx:0,bz:0,a:rnd()*6.28,r:1+rnd()*3,sp:0.5+rnd(),ph:rnd()*6.28});}
   // --- ✨ Tag-Pollen/Sporen (schwebende Glut-Partikel bei Tag -> lebendige Luft) ---
-  for(var pg2=0;pg2<Math.round(34*VF);pg2++){var pm=new THREE.Mesh(new THREE.SphereGeometry(0.06,4,4),new THREE.MeshBasicMaterial({color:0xfff0c0,transparent:true,opacity:0.6}));pm.visible=false;scene.add(pm);
+  for(var pg2=0;pg2<Math.round(44*VF);pg2++){var pm=new THREE.Mesh(new THREE.SphereGeometry(0.06,4,4),new THREE.MeshBasicMaterial({color:0xfff0c0,transparent:true,opacity:0.6}));pm.visible=false;scene.add(pm);
     pollen.push({m:pm,x:0,y:0,z:0,vy:0.3+rnd()*0.45,ph:rnd()*6.28,sp:0.6+rnd()});}
   // 🦋 Schmetterlinge (tagsüber, bunt, flattern um den Spieler)
   var BFC=[0xff8ad8,0xffd166,0x7de3ff,0xff6a4d,0xc98bff];
@@ -1380,7 +1380,7 @@ function updAmbient(dt){
     fw.m.material.opacity+=(fogOp-fw.m.material.opacity)*Math.min(1,dt);}
   // 💧 Teich-Schimmer
   if(window._wildPonds)for(var p=0;p<window._wildPonds.length;p++){var pd=window._wildPonds[p];pd.ph+=dt*1.5;
-    pd.m.material.emissiveIntensity=0.42+Math.sin(pd.ph)*0.16;pd.m.material.opacity=0.76+Math.sin(pd.ph*0.7)*0.09;}
+    pd.m.material.emissiveIntensity=0.42+Math.sin(pd.ph)*0.24;pd.m.material.opacity=0.76+Math.sin(pd.ph*0.7)*0.13;}
 }
 // ✨🐟🌠 Noch mehr Leben: Lagerfeuer-Funken, Fischsprünge, Sternschnuppen (geteilte Geometrien, kleine Pools)
 var sparks=[],fishes=[],shoots=[];
@@ -1984,7 +1984,7 @@ function mkGarden(gx,gz,ang){
   var grassTex=(typeof gtex==="function")?gtex("tex_grass.png",[3,2.4],true):null;
   var lawn=new THREE.Mesh(new THREE.BoxGeometry(4.7,0.55,3.7),grassTex?new THREE.MeshLambertMaterial({map:grassTex,color:0xcfe6b6}):new THREE.MeshLambertMaterial({color:0x6aa84e,flatShading:true}));
   lawn.position.y=-0.16;lawn.receiveShadow=true;G.add(lawn); /* Schwarm-P2: dickere, versenkte Platte → Rand schwebt/versinkt nicht mehr auf Hängen */
-  [[-2.05,-1.55],[2.05,-1.55],[-2.05,1.55],[2.05,1.55],[-2.05,0],[2.05,0]].forEach(function(t){ // Grasbüschel
+  [[-2.05,-1.55],[2.05,-1.55],[-2.05,1.55],[2.05,1.55],[-2.05,0],[2.05,0],[-0.8,-1.72],[0.8,-1.72],[-0.8,1.72],[0.8,1.72]].forEach(function(t){ // Grasbüschel (auch vorne/hinten → weicher Rand)
     for(var q=0;q<3;q++){var tf=new THREE.Mesh(new THREE.ConeGeometry(0.055,0.28,4),M.leafC);tf.position.set(t[0]+(q-1)*0.11,0.17,t[1]);tf.rotation.z=(q-1)*0.16;G.add(tf);}});
   var fpM=new THREE.MeshLambertMaterial({color:0xe8e2d2,flatShading:true}); // weisse Lattenzaun-Pfosten + Riegel
   var corn=[[-2.3,-1.8],[2.3,-1.8],[2.3,1.8],[-2.3,1.8]];
@@ -3782,9 +3782,9 @@ var _md=(1+Math.floor(level/3)+weaponAtk());
   var dmg=(1+PERK.harvest)|0;dmg=Math.max(1,dmg);if(r.type==="tree")dmg=1+tools.axe+(PERK.harvest>=0.3?1:0);else if(r.type==="rock"||r.type==="crystal")dmg=1+tools.pick+(PERK.harvest>=0.3?1:0);
   r.hp-=dmg;r.hitAnim=0.2;
   var col=r.type==="tree"?0x8a5a2a:(r.type==="crystal"?0x7de3ff:(r.type==="bush"?0xff5c8a:0xaab));
-  burst(r.x,r.baseY+1.2,r.z,col,8); // satter: mehr Splitter
+  burst(r.x,r.baseY+1.2,r.z,col,8);shake=Math.min(shake+0.06,0.22); // satter: mehr Splitter + spürbarer Schlag-Bump je Hieb
   if(r.hp<=0){
-    if(r.type==="tree"){inv.wood+=3;totalWood+=3;gainXP(1);toast("🪵 +3 Holz");floatText(r.x,r.baseY+2.4,r.z,"+3 🪵","#e6b98a");r.falling=0.01;shake=Math.min(shake+0.22,0.5);}
+    if(r.type==="tree"){inv.wood+=3;totalWood+=3;gainXP(1);toast("🪵 +3 Holz");floatText(r.x,r.baseY+2.4,r.z,"+3 🪵","#e6b98a");r.falling=0.01;shake=Math.min(shake+0.22,0.5);sfx(90,0.16,"sawtooth",0.05,55);if(navigator.vibrate)navigator.vibrate(45);} /* 🪵 Baum-Fall: Holz-Thud + Haptik */
     else if(r.type==="rock"){sfx(300,0.07,"square",0.04);inv.stone+=2;gainXP(1);toast("🪨 +2 Stein");floatText(r.x,r.baseY+1.4,r.z,"+2 🪨","#cdd6ea");r.dead=true;r.mesh.visible=false;r.regrow=90;burst(r.x,r.baseY+0.6,r.z,0xaab,6);}
     else if(r.type==="crystal"){sfx(1050,0.1,"triangle",0.045);inv.crystal+=1;inv.stone+=1;gainXP(3);toast("💎 +1 Kristall");floatText(r.x,r.baseY+1.6,r.z,"+1 💎","#7de3ff");r.dead=true;r.mesh.visible=false;r.regrow=140;burst(r.x,r.baseY+0.7,r.z,0x7de3ff,8);}
     else if(r.type==="bush"){sfx(640,0.06);inv.berry+=1;gainXP(1);toast("🍓 +1 Beere");floatText(r.x,r.baseY+1.0,r.z,"+1 🍓","#ff8ab0");r.dead=true;if(r.berry)r.berry.visible=false;r.regrow=45;}
@@ -4032,7 +4032,7 @@ function updDayNight(dt){
   scene.fog.color.copy(scene.background);
   /* 🌅 Verlaufs-Himmel: Horizont = Hintergrund/Nebel, oben eine tiefere Variante; Dome folgt der Kamera */
   if(typeof skyMat!=="undefined"&&skyMat){skyMat.uniforms.botCol.value.copy(scene.background);
-    skyMat.uniforms.topCol.value.copy(scene.background).multiplyScalar(isNight?0.55:0.62).offsetHSL(0,0.06,0);
+    skyMat.uniforms.topCol.value.copy(scene.background).multiplyScalar(isNight?0.48:0.58).offsetHSL(0,0.14,0);
     if(typeof camera!=="undefined")skyDome.position.copy(camera.position);}
   /* 🌙 W7: Nachthimmel ein-/ausblenden — nachts voll, in der Dämmerung sanft rein; folgt dem Spieler (Skybox) */
   if(typeof nightSky!=="undefined"&&nightSky){nightSky.position.set(player.position.x,0,player.position.z);
@@ -4449,7 +4449,7 @@ if(GFX_HI){try{
     "  vec2 d=vUv-0.5; float r2=dot(d,d);",
     "  vec3 col=texture2D(tBase,vUv).rgb+texture2D(tBloom,vUv).rgb*strength;",
     "  float L=dot(col,vec3(0.299,0.587,0.114)); col=mix(vec3(L),col,1.14); col=(col-0.5)*1.06+0.5;", /* 🎨 Farb-Grade: +14% Sättigung + sanfter S-Kontrast (kein Extra-Pass) */
-    "  float vig=smoothstep(1.3,0.35,r2*2.2); col*=mix(0.86,1.0,vig);", /* feine Kanten-Vignette */
+    "  float vig=smoothstep(1.3,0.35,r2*2.2); col*=mix(0.74,1.02,vig);", /* feine Kanten-Vignette */
     "  gl_FragColor=vec4(col,1.0);",
     "}"].join("\n")});
   qMesh=new THREE.Mesh(new THREE.PlaneGeometry(2,2),brightMat);qScene.add(qMesh);
