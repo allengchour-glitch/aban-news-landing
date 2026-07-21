@@ -291,7 +291,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
       <div id="netStatus" style="flex-basis:100%;min-height:1.15em;font-size:.82rem;font-weight:700;color:#7a8a9a"></div>
     </div>
     <div id="netLobby" style="display:none;margin-top:8px">
-      <div>Raum-Code: <b id="netCodeShow" style="font-size:1.3rem;letter-spacing:4px;color:#e8722a"></b> <button id="netCopyBtn" style="border:1px solid #b8c8d8;background:#fff;border-radius:8px;padding:2px 8px;font-size:.75rem;cursor:pointer">📋 Kopieren</button> <button id="netShareBtn" style="border:1px solid #7db88a;background:#eaf9ee;border-radius:8px;padding:2px 8px;font-size:.75rem;cursor:pointer">📲 Link teilen</button></div>
+      <div>Raum-Code: <b id="netCodeShow" style="font-size:1.3rem;letter-spacing:4px;color:#e8722a"></b> <button id="netCopyBtn" style="border:1px solid #b8c8d8;background:#fff;border-radius:8px;padding:2px 8px;font-size:.75rem;cursor:pointer">📋 Kopieren</button> <button id="netShareBtn" style="border:1px solid #7db88a;background:#eaf9ee;border-radius:8px;padding:2px 8px;font-size:.75rem;cursor:pointer">📲 Link teilen</button> <button id="netWaBtn" style="border:1px solid #25c366;background:#e7f9ee;border-radius:8px;padding:2px 8px;font-size:.75rem;cursor:pointer">💬 WhatsApp</button></div>
       <div id="netModeTag" style="font-size:.8rem;font-weight:800;color:#2a6ab0"></div>
       <div id="netPlayers" style="margin:6px 0;font-weight:700;display:flex;flex-wrap:wrap;gap:6px;justify-content:center"></div>
       <div id="netCharWrap" style="margin:8px auto"></div>
@@ -2150,9 +2150,9 @@ function updAfk(dt){
   var sig=G.turn+"|"+G.phase+"|"+(window._cardSeq||0);
   if(sig!==_afkSig){_afkSig=sig;_afkT=0;_afkWarned=false;}
   _afkT+=dt;
-  if(_afkT>40&&!_afkWarned){_afkWarned=true;announce("⏰ "+p.name+" schläft — in 20s übernimmt Robo den Zug …","#ffb46e");
-    netSend({t:"chat",n:"System",x:"⏰ "+p.name+": noch 20s, dann übernimmt Robo!"});}
-  if(_afkT>60){_afkT=0;_afkWarned=false;
+  if(_afkT>120&&!_afkWarned){_afkWarned=true;announce("⏰ "+p.name+" ist dran — in 30s übernimmt Robo den Zug …","#ffb46e"); /* ⏱️ Online-Koop: viel mehr Bedenkzeit (2min + 30s) — Freunde werden nicht rausgeworfen */
+    netSend({t:"chat",n:"System",x:"⏰ "+p.name+": noch 30s, dann übernimmt Robo!"});}
+  if(_afkT>150){_afkT=0;_afkWarned=false;
     chatAdd&&chatAdd("System","🤖 Robo übernimmt den Zug von "+p.name);
     if(window._cardOpts){sendPick((Math.random()*window._cardOpts.length)|0);}
     else{netSend({t:"roll"});NET.q.push({t:"roll"});}}
@@ -3690,6 +3690,14 @@ function netShareInvite(){ /* 🔗 Einladungslink teilen (Lobby-Knopf + Ein-Tipp
   netStatus("🔗 Einladungslink bereit — schick ihn deinen Freunden! (auch kopiert 📋)","#2a8a50");
 }
 (function(){var sb=document.getElementById("netShareBtn");if(!sb)return;sb.onclick=netShareInvite;})();
+function netShareWhatsApp(){ /* 💬 direkt WhatsApp öffnen mit vorformuliertem Einladungslink */
+  var url=location.origin+location.pathname+((NET.code==="OFEN")?"?quick=1":("?raum="+(NET.code||"")));
+  var txt="🎲 Spiel mit mir Lebenspfad! Tippe auf den Link und du bist direkt dabei: "+url;
+  try{if(navigator.clipboard)navigator.clipboard.writeText(url);}catch(e){}
+  window.open("https://wa.me/?text="+encodeURIComponent(txt),"_blank");
+  netStatus("💬 WhatsApp geöffnet — Freund auswählen & senden! (Link auch kopiert 📋)","#2a8a50");
+}
+(function(){var wb=document.getElementById("netWaBtn");if(!wb)return;wb.onclick=function(){if(NET.peer&&NET.code){netShareWhatsApp();}else{netStatus("Erst „Raum erstellen" tippen, dann WhatsApp.","#b06a2a");}};})();
 (function(){var ib=document.getElementById("netInviteBtn");if(!ib)return;ib.onclick=function(){ /* 🔗 1-Tipp: Raum erstellen + Link teilen */
   if(NET.peer&&NET.code){netShareInvite();return;} /* Raum existiert schon → nur teilen */
   NET._autoShare=true;ib.textContent="⏳ Raum wird erstellt …";
