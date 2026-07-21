@@ -75,12 +75,29 @@ if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.repl
 "use strict";
 var STATION=window.parent!==window&&/[?&]station=1/.test(location.search);
 var NG=/[&?]ng=1/.test(location.search); /* #71 Meister-Modus (NG+) */
+/* 🏰 „verschiedene Levels" (User): 3 themed Ebenen — Look (Farben/Fog/Fackeln) + Schwierigkeit (Boss-HP, Plattform-Tempo). Auswahl via ?lvl= oder localStorage; Parcours bleibt gleich. */
+var DLEVELS=[
+  {name:"🏰 Katakomben",    stone:0x7a70a2, stone2:0x38305e, floor:0x4a4276, edge:0x6a58b0, edgeE:0x4a3a90, bg:0x0a0812, fog:0x0a0812, fogBoss:0x160a10, fN:26, fF:84, torch:0xffa040, bossHp:6,  mv:1.0},
+  {name:"❄️ Eis-Katakombe", stone:0x6a86b0, stone2:0x2a4260, floor:0x3a5a76, edge:0x58b0d0, edgeE:0x3a7aa0, bg:0x081018, fog:0x0a1622, fogBoss:0x102838, fN:24, fF:80, torch:0x8fd8ff, bossHp:8,  mv:1.25},
+  {name:"🌋 Lava-Schlucht", stone:0xa0705a, stone2:0x502a24, floor:0x6a3a2a, edge:0xff7040, edgeE:0xd04010, bg:0x160806, fog:0x1a0a06, fogBoss:0x3a1206, fN:22, fF:74, torch:0xff5a20, bossHp:10, mv:1.45}
+];
+var _dlv=(function(){var m=/[?&]lvl=(\d)/.exec(location.search);if(m)return Math.max(0,Math.min(DLEVELS.length-1,+m[1]));try{return Math.max(0,Math.min(DLEVELS.length-1,parseInt(localStorage.getItem("nd_level")||"0",10)||0));}catch(e){return 0;}})();
+var TH=DLEVELS[_dlv];
 var TOUCH=(navigator.maxTouchPoints>0)||matchMedia("(pointer:coarse)").matches;
 if(!TOUCH){document.documentElement.classList.add("nd-notouch");
   addEventListener("touchstart",function once(){document.documentElement.classList.remove("nd-notouch");TOUCH=true;removeEventListener("touchstart",once);},{once:true});} /* Hybrid-Geräte holen die Touch-UI zurück */
 function stationPost(m){try{window.parent.postMessage(typeof m==="string"?m:JSON.stringify(m),"*");}catch(e){}}
 if(STATION){var sb=document.getElementById("stationBack");sb.style.display="block";sb.onclick=function(){stationPost("mini-back");};}
 if(!TOUCH){var _oc=document.getElementById("ovChips");if(_oc)_oc.innerHTML='<span class="chip">WASD laufen</span><span class="chip">LEER ×2 = Doppelsprung</span><span class="chip">E = zuschlagen</span><span class="chip">💎 Kristalle sammeln</span>';}
+/* 🏰 Level-Auswahl (3 Ebenen) im Startscreen */
+(function(){var ov=document.getElementById("ov"),sb=document.getElementById("startBtn");if(!ov||!sb)return;
+  var cap=document.createElement("div");cap.textContent="Wähle deine Ebene:";cap.style.cssText="color:#b8a8e0;font-weight:800;font-size:.9rem;margin-top:6px";
+  var row=document.createElement("div");row.style.cssText="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:6px 0 2px";
+  DLEVELS.forEach(function(L,i){var b=document.createElement("button");b.textContent=L.name;b.type="button";
+    b.style.cssText="padding:9px 13px;border-radius:11px;font-size:.95rem;font-weight:800;cursor:pointer;border:2px solid "+(i===_dlv?"#c8b8ff":"#3a3060")+";background:"+(i===_dlv?"#241a44":"#140f28")+";color:"+(i===_dlv?"#eadfff":"#9a8fc0");
+    b.onclick=function(){if(i===_dlv)return;try{localStorage.setItem("nd_level",""+i);}catch(e){}location.href=location.pathname+"?lvl="+i+(STATION?"&station=1":"")+(NG?"&ng=1":"");};
+    row.appendChild(b);});
+  ov.insertBefore(cap,sb);ov.insertBefore(row,sb);})();
 
 if(!window.THREE){document.body.innerHTML='<div style="display:flex;height:100vh;align-items:center;justify-content:center;text-align:center;color:#c8b8ff;font-weight:800">3D-Engine nicht geladen —<br>bitte neu laden ↻</div>';throw new Error("THREE fehlt");}
 var W=innerWidth,H=innerHeight;
@@ -90,13 +107,13 @@ renderer.setPixelRatio(DPR);renderer.setSize(W,H);
 renderer.outputEncoding=THREE.sRGBEncoding;document.body.insertBefore(renderer.domElement,document.getElementById("hud"));
 renderer.domElement.addEventListener("webglcontextlost",function(e){e.preventDefault();},false);
 renderer.domElement.addEventListener("webglcontextrestored",function(){location.reload();},false);
-var scene=new THREE.Scene();scene.background=new THREE.Color(0x0a0812);scene.fog=new THREE.Fog(0x0a0812,26,84);
+var scene=new THREE.Scene();scene.background=new THREE.Color(TH.bg);scene.fog=new THREE.Fog(TH.fog,TH.fN,TH.fF); /* 🏰 Theme */
 var camera=new THREE.PerspectiveCamera(58,W/H,0.1,90);
 addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);});
 scene.add(new THREE.HemisphereLight(0x5a4a8e,0x140c20,0.42));
 var amb=new THREE.AmbientLight(0x2a2244,0.3);scene.add(amb);
 var _ambBase=new THREE.Color(0x2a2244),_ambBoss=new THREE.Color(0x4a201c); /* #7: Kammer-Stimmung kippt DEUTLICH ins Rote */
-var _fogBase=new THREE.Color(0x0a0812),_fogBoss=new THREE.Color(0x160a10); /* #7: Fog+Hintergrund kippen mit */
+var _fogBase=new THREE.Color(TH.fog),_fogBoss=new THREE.Color(TH.fogBoss); /* #7: Fog+Hintergrund kippen mit (Theme) */
 /* 💜 Abgrund-Glühen: riesige leuchtende Kristalle in der Tiefe (sichtbar beim Springen) */
 (function(){var cvA=document.createElement("canvas");cvA.width=cvA.height=256;var cA=cvA.getContext("2d");
   var gr=cA.createRadialGradient(128,128,10,128,128,128);gr.addColorStop(0,"rgba(160,90,255,.55)");gr.addColorStop(1,"rgba(160,90,255,0)");
@@ -117,7 +134,7 @@ var _tl=new THREE.TextureLoader();
 function gtex(u,rx,ry){var t=_tl.load(u);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(rx||1,ry||rx||1);return t;}
 function MT(c,tex,e,i){var m=new THREE.MeshLambertMaterial({color:c,emissive:e||0x000000,emissiveIntensity:i||0});m.map=tex;return m;}
 var stoneT=gtex("/textures/tex_stone.png",2,2),stoneT2=gtex("/textures/tex_stone.png",3,3),cobT=gtex("/textures/tex_cobble.png",14,14);
-var STONE=MT(0x7a70a2,stoneT),STONE_M=MT(0x7a70a2,gtex("/textures/tex_stone.png",4,4)),COBBLE_FLOOR=MT(0x4a4276,cobT),STONE2=MT(0x38305e,stoneT2),EDGE=M(0x6a58b0,0x4a3a90,0.55),MOSS=M(0x35503e,0x122416,0.22); /* #6: grosse Flächen dichter gekachelt, Farben heller (Lambert map*color) */
+var STONE=MT(TH.stone,stoneT),STONE_M=MT(TH.stone,gtex("/textures/tex_stone.png",4,4)),COBBLE_FLOOR=MT(TH.floor,cobT),STONE2=MT(TH.stone2,stoneT2),EDGE=M(TH.edge,TH.edgeE,0.55),MOSS=M(0x35503e,0x122416,0.22); /* #6 + 🏰 Theme-Farben */
 
 /* ---------- Level: Plattform-Parcours (3 Abschnitte) + Boss-Kammer ---------- */
 var plats=[],gems=[],torches=[],checkpoints=[{x:0,y:0,z:0}];
@@ -132,8 +149,8 @@ function gem(x,y,z,secret){var m=new THREE.Mesh(new THREE.OctahedronGeometry(0.3
   m.position.set(x,y+0.9,z);scene.add(m);gems.push({m:m,x:x,y:y+0.9,z:z,got:false,secret:!!secret,ph:Math.random()*6});}
 function torch(x,y,z){var g=new THREE.Group();
   var st=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.08,1.1,6),M(0x4a3a2a));st.position.y=0.55;g.add(st);
-  var fl=new THREE.Mesh(new THREE.ConeGeometry(0.18,0.42,6),M(0xffa040,0xff8020,1));fl.position.y=1.25;g.add(fl);
-  var lt=new THREE.PointLight(0xff9a50,0.55,8);lt.position.y=1.4;g.add(lt);
+  var fl=new THREE.Mesh(new THREE.ConeGeometry(0.18,0.42,6),M(TH.torch,TH.torch,1));fl.position.y=1.25;g.add(fl); /* 🏰 Theme-Fackel */
+  var lt=new THREE.PointLight(TH.torch,0.55,8);lt.position.y=1.4;g.add(lt);
   if(!window.__glowT){var cvG=document.createElement("canvas");cvG.width=cvG.height=128;var cG=cvG.getContext("2d");
     var g2=cG.createRadialGradient(64,64,4,64,64,64);g2.addColorStop(0,"rgba(255,180,90,.85)");g2.addColorStop(1,"rgba(255,140,60,0)");
     cG.fillStyle=g2;cG.fillRect(0,0,128,128);window.__glowT=new THREE.CanvasTexture(cvG);}
@@ -231,7 +248,7 @@ var hearts=4,gemN=0,stage=1,running=false,won=false,dead=false,runT=0; /* #68 La
 var kx=0,kz=0; /* Eingabe */
 
 /* ---------- Koloss ---------- */
-var boss=new THREE.Group(),bossHp=6,bossOn=false,bossPh=(NG?1:0); /* #71 NG+: startet direkt in Enrage */
+var boss=new THREE.Group(),bossHp=TH.bossHp,bossOn=false,bossPh=(NG?1:0); /* #71 NG+ · 🏰 Boss-HP je Ebene */
 (function(){var rock=MT(0x8578a0,gtex("/textures/tex_stone.png",1.4,1.4),0x1a1428,0.15); /* 🪨 der KOLOSS ist jetzt echter Fels */
   var torso=new THREE.Mesh(new THREE.BoxGeometry(3.2,3.4,2.2),rock);torso.position.y=4.4;boss.add(torso);
   var head=new THREE.Mesh(new THREE.BoxGeometry(1.5,1.3,1.4),rock);head.position.y=6.9;boss.add(head);
@@ -309,9 +326,9 @@ function announce(t,c){var a=document.getElementById("announce");a.textContent=t
 function hint(t,ms){var h=document.getElementById("hint");h.textContent=t;h.style.opacity=1;clearTimeout(h._t);h._t=setTimeout(function(){h.style.opacity=0;},ms||2800);}
 function updHud(){document.getElementById("hearts").textContent="❤️".repeat(Math.max(0,hearts))+"🖤".repeat(Math.max(0,4-hearts));
   document.getElementById("gems").textContent="💎 "+gemN+"/"+(GEM_TOTAL||"?");
-  document.getElementById("stageTag").textContent=(bossOn?"🗿 KOLOSS-KAMMER":"🏰 Katakomben · Abschnitt "+stage+"/3")+(NG?" · MEISTER":""); /* #71 */
+  document.getElementById("stageTag").textContent=(bossOn?"🗿 KOLOSS-KAMMER":TH.name+" · Abschnitt "+stage+"/3")+(NG?" · MEISTER":""); /* #71 · 🏰 Theme-Name */
   document.getElementById("bossBar").style.display=bossOn?"block":"none";
-  document.getElementById("bossFill").style.width=Math.max(0,bossHp/6*100)+"%";
+  document.getElementById("bossFill").style.width=Math.max(0,bossHp/TH.bossHp*100)+"%"; /* 🏰 Max-HP je Ebene */
   document.getElementById("bHit").style.display=bossOn?"flex":"none";}
 
 /* ---------- Eingabe: Joystick + Sprung + Schlag + Tastatur ---------- */
@@ -402,6 +419,7 @@ function finish(win){if(finish._done)return;finish._done=true;
   var isBest=false,best=0;
   if(win&&!NG){try{best=parseInt(localStorage.getItem("nd-best")||"0",10)||0;}catch(e){} /* #71 NG+-Läufe schreiben KEINE Bestzeit (unfair schnell) */
     if(best===0||runT<best){isBest=true;try{localStorage.setItem("nd-best",""+Math.round(runT));}catch(e){}}}
+  if(win&&_dlv<DLEVELS.length-1){try{localStorage.setItem("nd_level",""+(_dlv+1));}catch(e){}} /* 🏰 nächste Ebene freischalten → beim nächsten Start vorgewählt */
   if(win){sfx(523,0.16,"triangle",0.06);setTimeout(function(){sfx(659,0.16,"triangle",0.06);},130);setTimeout(function(){sfx(880,0.3,"triangle",0.07);},260);} /* Arpeggio VOR evtl. Audio-Fade */
   var ov=document.getElementById("ov");ov.style.display="flex";
   ov.querySelector("h1").textContent=(win?"🏆 KOLOSS BESIEGT!":"💀 GESCHEITERT")+(NG?" · MEISTER":"");
@@ -451,7 +469,7 @@ function frame(now){requestAnimationFrame(frame);
   for(var gi=0;gi<gems.length;gi++){var gm=gems[gi];if(gm.got)continue;
     gm.m.rotation.y+=dt*2.2;gm.m.position.y=gm.y+Math.sin(t*2.4+gm.ph)*0.14;}
   for(var mi2=0;mi2<plats.length;mi2++){var mp=plats[mi2];if(!mp.mv)continue; /* 🛗 bewegliche Plattformen */
-    var ox2=mp.x,om=mp.mv;mp.x=mp.x0+Math.sin(t*om.sp+om.ph)*om.ax;mp.y=mp.y0+Math.sin(t*om.sp+om.ph)*om.ay;
+    var ox2=mp.x,om=mp.mv,_sp=om.sp*TH.mv;mp.x=mp.x0+Math.sin(t*_sp+om.ph)*om.ax;mp.y=mp.y0+Math.sin(t*_sp+om.ph)*om.ay; /* 🏰 Plattform-Tempo je Ebene */
     mp.g.position.set(mp.x,mp.y,mp.z);
     if(running&&onG&&Math.abs(px-mp.x)<=mp.w+0.4&&Math.abs(pz-mp.z)<=mp.d+0.4&&Math.abs(py-mp.y)<0.3){px+=mp.x-ox2;py=mp.y;}}
   for(var fg=0;fg<fallGems.length;fg++){var FG=fallGems[fg];if(FG.m.position.y<=0.3)continue; /* #57 Kristall-Regen top-level (läuft auch nach dem Sieg weiter) */
