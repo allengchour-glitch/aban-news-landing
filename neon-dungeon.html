@@ -59,6 +59,8 @@ if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.repl
   <div id="announce"></div><div id="hint"></div>
   <div class="btn" id="bJump">⤴</div>
   <div class="btn" id="bHit" style="display:none">⚔️</div>
+  <div class="btn" id="bWpn" style="right:calc(112px + env(safe-area-inset-right));bottom:calc(196px + env(safe-area-inset-bottom));width:52px;height:52px;font-size:1.3rem">🔄</div>
+  <div id="wpTag" style="position:absolute;right:calc(12px + env(safe-area-inset-right));bottom:calc(258px + env(safe-area-inset-bottom));background:rgba(20,14,40,.7);border:1px solid rgba(160,140,220,.4);border-radius:9px;padding:3px 9px;font-size:.8rem;font-weight:800;color:#c8b8ff;pointer-events:none">⚔️ Schwert</div>
   <div id="stick"><div id="knob"></div></div>
 </div>
 <div id="ov">
@@ -230,10 +232,30 @@ var heroMix=null,heroRig=null;
       if(_run)acts.run=heroMix.clipAction(_run);
       if(_atk){acts.attack=heroMix.clipAction(_atk);acts.attack.setLoop(THREE.LoopOnce,1);acts.attack.clampWhenFinished=true;}
       acts.idle.play();
-      heroRig={mix:heroMix,acts:acts,cur:"idle",lock:0};
+      var _hand=null;o.traverse(function(n){if((n.isBone||n.type==="Bone")&&/righthand/i.test(n.name))_hand=n;}); /* ⚔️ Waffen-Hand */
+      heroRig={mix:heroMix,acts:acts,cur:"idle",lock:0,hand:_hand,scl:sc};
       heroMix.addEventListener("finished",function(){if(heroRig){heroRig.lock=0;heroRig.cur="_none";}});} /* Angriff fertig → zurück auf Locomotion faden */
+    if(typeof equipWeapon==="function")equipWeapon(curWp); /* Waffe ans Handgelenk hängen sobald das Rig da ist */
   },undefined,function(){}); /* Fehler -> Platzhalter bleibt */
 })();
+/* ⚔️ Schwarm/User „waffen mehr guter stl": 4 echte Waffen-GLBs, ans Hand-Bone gehängt, mit eigener Reichweite/Schaden/Cooldown */
+var WEAPONS=[
+  {name:"⚔️ Schwert", model:"/models/wp_sword.glb",  reach:4.2, dmg:1, cd:0.45, scale:2.6, rot:[0,0,-1.2]},
+  {name:"🗡️ Dolch",   model:"/models/wp_dagger.glb", reach:3.0, dmg:1, cd:0.28, scale:2.2, rot:[0,0,-1.2]},
+  {name:"🔨 Hammer",  model:"/models/wp_hammer.glb", reach:4.6, dmg:2, cd:0.85, scale:2.8, rot:[0,0,-1.2]},
+  {name:"🪄 Stab",    model:"/models/wp_staff.glb",  reach:5.6, dmg:1, cd:0.55, scale:3.0, rot:[0,0,-1.2]}
+];
+var curWp=(function(){try{return Math.max(0,Math.min(3,parseInt(localStorage.getItem("nd_wp")||"0",10)||0));}catch(e){return 0;}})(),wpNode=null;
+function equipWeapon(i){curWp=(i+WEAPONS.length)%WEAPONS.length;try{localStorage.setItem("nd_wp",""+curWp);}catch(e){}
+  var wp=document.getElementById("wpTag");if(wp)wp.textContent=WEAPONS[curWp].name;
+  if(!heroRig||!heroRig.hand||!THREE.GLTFLoader)return;var w=WEAPONS[curWp];
+  if(wpNode&&wpNode.parent)wpNode.parent.remove(wpNode);wpNode=null;
+  new THREE.GLTFLoader().load(w.model,function(g){var m=g.scene;
+    m.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;}});
+    m.scale.setScalar(w.scale/(heroRig.scl||1));m.rotation.set(w.rot[0],w.rot[1],w.rot[2]); /* Bone-Weltskala rausrechnen */
+    heroRig.hand.add(m);wpNode=m;},undefined,function(){});
+}
+function cycleWeapon(d){equipWeapon(curWp+(d||1));if(typeof announce==="function")announce(WEAPONS[curWp].name,"#c8b8ff");}
 function heroSet(name){if(!heroRig||!heroRig.acts[name]||heroRig.lock>0||heroRig.cur===name)return;
   var to=heroRig.acts[name],from=heroRig.acts[heroRig.cur];
   to.reset();to.setEffectiveWeight(1);to.fadeIn(0.15);to.play();
@@ -360,7 +382,7 @@ function endJump(){jHeld=false;if(vy>3.5)vy=3.5;} /* Loslassen kappt den Sprung 
 function doHit(){if(!bossOn||dead||won)return;
   heroAtk(); /* 🎬 Angriffs-Animation bei jedem Schlag */
   if(vulnT>0&&slamArm){var f=slamArm.userData.fist,wp=new THREE.Vector3();f.getWorldPosition(wp);
-    if(Math.hypot(wp.x-px,wp.z-pz)<4.0){bossHp--;vulnT=0;bT=Math.min(bT,1.4);hitFx=0.5;shakeT=0.25; /* Treffer -> Kampf zieht sofort an */
+    if(Math.hypot(wp.x-px,wp.z-pz)<WEAPONS[curWp].reach){bossHp-=WEAPONS[curWp].dmg;vulnT=0;bT=Math.min(bT,1.4);hitFx=0.5;shakeT=0.25; /* ⚔️ Reichweite & Schaden je Waffe */
       slamArm.userData.cry.material.emissiveIntensity=0.2;slamArm.userData.cry.scale.setScalar(1);slamArm.userData.slamTgt=0;slamArm=null; /* Arm federt zurück statt einzufrieren */
       sfx(180,0.25,"sawtooth",0.09,60);sfx(880,0.15,"square",0.05,1400);announce("💥 TREFFER!","#c98bff");
       var hh=document.getElementById("hint");clearTimeout(hh._t);hh.style.opacity=0;
@@ -378,8 +400,13 @@ document.getElementById("bJump").addEventListener("mouseup",endJump);
 document.getElementById("bJump").addEventListener("click",doJump);
 document.getElementById("bHit").addEventListener("touchstart",function(e){e.preventDefault();doHit();},{passive:false});
 document.getElementById("bHit").addEventListener("click",doHit);
+(function(){var bw=document.getElementById("bWpn");if(!bw)return; /* ⚔️ Waffen-Wechsel-Knopf (mobil) */
+  bw.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();cycleWeapon(1);},{passive:false});
+  bw.addEventListener("click",function(e){e.stopPropagation();cycleWeapon(1);});})();
 var keys={};
 addEventListener("keydown",function(e){keys[e.key.toLowerCase()]=1;
+  if(e.key>="1"&&e.key<="4"){equipWeapon(+e.key-1);} /* ⚔️ Waffe 1-4 */
+  if(e.key.toLowerCase()==="q")cycleWeapon(1);
   if(e.key===" "){e.preventDefault();if(!running){start();return;}doJump();}
   if(e.key.toLowerCase()==="e")doHit();});
 addEventListener("keyup",function(e){keys[e.key.toLowerCase()]=0;if(e.key===" ")endJump();});
