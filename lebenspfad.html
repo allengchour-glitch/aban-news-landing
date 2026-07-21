@@ -3697,7 +3697,7 @@ function netShareWhatsApp(){ /* 💬 direkt WhatsApp öffnen mit vorformuliertem
   window.open("https://wa.me/?text="+encodeURIComponent(txt),"_blank");
   netStatus("💬 WhatsApp geöffnet — Freund auswählen & senden! (Link auch kopiert 📋)","#2a8a50");
 }
-(function(){var wb=document.getElementById("netWaBtn");if(!wb)return;wb.onclick=function(){if(NET.peer&&NET.code){netShareWhatsApp();}else{netStatus("Erst „Raum erstellen" tippen, dann WhatsApp.","#b06a2a");}};})();
+(function(){var wb=document.getElementById("netWaBtn");if(!wb)return;wb.onclick=function(){if(NET.peer&&NET.code){netShareWhatsApp();}else{netStatus("Erst einen Raum erstellen, dann WhatsApp.","#b06a2a");}};})();
 (function(){var ib=document.getElementById("netInviteBtn");if(!ib)return;ib.onclick=function(){ /* 🔗 1-Tipp: Raum erstellen + Link teilen */
   if(NET.peer&&NET.code){netShareInvite();return;} /* Raum existiert schon → nur teilen */
   NET._autoShare=true;ib.textContent="⏳ Raum wird erstellt …";
