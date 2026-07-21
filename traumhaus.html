@@ -365,11 +365,11 @@ ladeTex("textures/th/rasen.jpg",13,10,function(t){rasen.material.map=t;rasen.mat
   function baum2(x,z,k){var b=new THREE.Group();
     var st=new THREE.Mesh(new THREE.CylinderGeometry(0.18,0.28,1.8,7),new THREE.MeshStandardMaterial({color:0x6a4a30,roughness:0.9}));st.position.y=0.9;b.add(st);
     for(var c=0;c<3;c++){var kr=new THREE.Mesh(new THREE.SphereGeometry(1.1-c*0.22,9,7),new THREE.MeshStandardMaterial({color:c%2?0x3a7a3a:0x4a8a44,roughness:0.85,envMapIntensity:0.2}));kr.position.set((c-1)*0.4,2.1+c*0.6,(c%2-0.5)*0.35);kr.castShadow=true;b.add(kr);}
-    b.scale.setScalar(k||1);b.position.set(x,0,z);scene.add(b);}
-  for(var t2=0;t2<40;t2++){var ta=Math.random()*6.283,tr=(GW*CS/2+10)+Math.random()*70;
-    var tx=Math.cos(ta)*tr,tz=Math.sin(ta)*tr;
+    b.scale.setScalar(k||1);b.rotation.y=Math.random()*6.283;b.position.set(x,0,z);scene.add(b);}
+  for(var t2=0;t2<70;t2++){var ta=Math.random()*6.283,tr=(GW*CS/2+8)+Math.random()*90;
+    var tx=Math.cos(ta)*tr+(Math.random()-0.5)*20,tz=Math.sin(ta)*tr+(Math.random()-0.5)*20; // Jitter gegen Reihen-Wirkung
     if(Math.abs(tx)<GW*CS/2+4&&Math.abs(tz)<GH*CS/2+6)continue;
-    baum2(tx,tz,0.8+Math.random()*0.8);}
+    baum2(tx,tz,0.7+Math.random()*1.0);}
   // ---- Breiter Fluss quer durch die Landschaft (Norden) ----
   machWasser(240,16,0,-78,32);
   // ---- Brücke über den Fluss ----
