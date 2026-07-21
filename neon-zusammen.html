@@ -378,7 +378,7 @@ function winGame(fromNet){if(won)return;won=true;room=4;celebrate=0.001;updHud()
     sb2.onclick=function(){if(STATION)stationPost("mini-back");else location.reload();};},2200);}
 function start(coop){if(!coop&&coopWait){hint("⏳ Koop-Suche läuft — warte auf Partner");return;} /* kein Solo-Start während Matchmaking */
   document.getElementById("ov").style.display="none";running=true;t0=performance.now();
-  chars[active].g.userData.ring.material.opacity=NETON?0:0.7;
+  chars[NETON?mySlot:active].g.userData.ring.material.opacity=0.7; /* 🟢 Schwarm: eigene Figur behält im Koop den Leucht-Ring (sonst „welche bin ich?") */
   try{audio();if(AC&&AC.state!=="running")AC.resume();}catch(e){}
   startAmbient(); /* #26 Tempel-Ambient */
   hint(NETON?"Sprecht euch ab — kein Rätsel geht allein!":"🔁 wechselt zwischen Ember & Aqua",4200);updHud();

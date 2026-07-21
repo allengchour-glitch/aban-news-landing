@@ -279,7 +279,9 @@ function applyBiome(i){var b=BIOMES[i%BIOMES.length];scene.fog.color.setHex(b.fo
  wallR.material.color.setHex(b.accent);wallR.material.color.multiplyScalar(0.16);wallR.material.emissive.setHex(b.accent);
  stripL.material.color.setHex(b.accent);stripL.material.emissive.setHex(b.accent);stripR.material.color.setHex(b.accent);stripR.material.emissive.setHex(b.accent);return b;}
 function announce(txt,colorHex){var a=document.getElementById("announce");a.style.color=hex2css(colorHex);a.textContent=txt;a.style.opacity="1";clearTimeout(window._annT);window._annT=setTimeout(function(){a.style.opacity="0";},1300);}
-function nearMiss(){combo++;comboTimer=comboTime;score+=mult();if(shake<0.25)shake=0.25;beep(720+combo*6,.05,"square",.04);}
+function nearMiss(){combo++;comboTimer=comboTime;score+=mult();if(shake<0.25)shake=0.25;beep(720+combo*6,.05,"square",.04);
+  burst(shipX,0,1.4,BIOMES[biomeIndex%BIOMES.length].accent); /* ✈️ Beinahe-Streifer sichtbar (Partikel-Pop) */
+  if(combo>0&&combo%10===0){var ac=BIOMES[biomeIndex%BIOMES.length].accent;score+=10*mult();announce("COMBO "+combo+"!  ×"+mult(),ac);flash();beep(300+combo*4,.18,"square",.08);}} /* 🔥 Combo-Meilenstein-Belohnung alle 10 */
 function doDash(){if(!running||choosing||paused||dashActive||dashCharge<1)return;dashActive=true;dashTimer=26;dashCharge=0;if(shake<0.6)shake=0.6;burst(shipX,0,1,BIOMES[biomeIndex%BIOMES.length].accent);beep(880,.12,"square",.08);}
 function togglePause(){if(!running||choosing)return;paused=!paused;document.getElementById("pause").classList.toggle("hide",!paused);try{musSync();}catch(e){}}
 // Tages-Challenge: deterministischer Seed pro Tag → alle spielen denselben Lauf, Score vergleichbar/teilbar.

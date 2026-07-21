@@ -1658,7 +1658,7 @@ function loop(now){
         // grösseres Feld → moderat dichter füllen; erste Welle (t<40) bleibt verzeihend (nur 1 Spawn)
         // Während des Boss-Ansturms weniger Beifang, damit der Boss lesbar bleibt.
         if(S.spawnT<=0){spawnEnemy();if(!S.bossWave){if(S.t>40)spawnEnemy();if(S.t>75)spawnEnemy();if(S.phase>=5)spawnEnemy();}S.spawnT=rate*(S.bossWave?1.9:1);}
-        if(S.t>=S.bossT&&!S.bossWave){spawnEnemy(true);announce("⚠️ BOSS!");S.bossT+=45;beep(120,.4,"sawtooth",.1);}
+        if(S.t>=S.bossT&&!S.bossWave){spawnEnemy(true);announce("⚠️ BOSS!");S.bossT+=45;beep(120,.4,"sawtooth",.1);screenFlash("rgba(255,40,90,.22)",0.5,420);spawnRing(player.position.x,player.position.z,0xff2266,1,30,0.9);shake=Math.max(shake,0.85);} /* 💥 Schwarm: periodischer Boss bekommt Auftritt-Wucht wie die Boss-Welle */
         if(S.t>=RUN_T){S.finalBoss=true;S.bossWave=false;cb_start(2);} // Endboss = NEXUS-Koloss (ersetzt spawnFinalBoss)
         else if(S.waveT>=COMBAT_DUR&&!S.bossWave)enterBuildPhase();
       }

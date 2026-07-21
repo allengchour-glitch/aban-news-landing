@@ -4514,7 +4514,7 @@ function collectMapPoints(){var pts=[];
   if(typeof questBoard!=="undefined"&&questBoard)pts.push({x:questBoard.x,z:questBoard.z,kind:"home",icon:"🏠",name:"Stadt"});
   if(typeof villages!=="undefined")villages.forEach(function(v,i){pts.push({x:v.x,z:v.z,kind:v.big?"city":"village",icon:v.big?"🏰":"🏘️",name:v.big?"Hauptstadt":("Dorf "+i)});});
   if(typeof stations!=="undefined")stations.forEach(function(s){pts.push({x:s.x,z:s.z,kind:"station",icon:s.icon,name:s.name});});
-  if(typeof NET!=="undefined"&&NET.on&&NET.remote&&NET.remote.visible)pts.push({x:NET.remote.position.x,z:NET.remote.position.z,kind:"friend",name:"Freund"});
+  if(typeof NET!=="undefined"&&NET.on&&NET.remote&&NET.remote.visible)pts.push({x:NET.remote.position.x,z:NET.remote.position.z,kind:"friend",name:"Freund · "+Math.round(Math.hypot(NET.remote.position.x-player.position.x,NET.remote.position.z-player.position.z))+"m"}); /* 🧭 Distanz zum Freund */
   return pts;}
 var _wmHit=[]; /* 🚀 Schnellreise-Trefferflächen (Weltkarte) */
 function drawWorldMap(){var cv=document.getElementById("wmCanvas");if(!cv)return;var ctx=cv.getContext("2d");
@@ -4535,7 +4535,7 @@ function drawWorldMap(){var cv=document.getElementById("wmCanvas");if(!cv)return
     if(p.kind==="station"||p.kind==="city"||p.kind==="home"||p.kind==="village")_wmHit.push({sx:q[0],sy:q[1],x:p.x,z:p.z,name:p.name||"Ort"}); /* 🚀 anklickbar zum Hinreisen */
     if(p.kind==="me"){ctx.save();ctx.translate(q[0],q[1]);ctx.rotate(-player.rotation.y);ctx.fillStyle="#7de3ff";ctx.beginPath();ctx.moveTo(0,-13);ctx.lineTo(9,10);ctx.lineTo(-9,10);ctx.closePath();ctx.fill();ctx.restore();
       ctx.fillStyle="#7de3ff";ctx.font="bold 13px sans-serif";ctx.fillText("Du",q[0],q[1]+22);return;}
-    if(p.kind==="friend"){ctx.fillStyle="#35d0ff";ctx.beginPath();ctx.arc(q[0],q[1],9,0,6.283);ctx.fill();ctx.strokeStyle="#eaffff";ctx.lineWidth=2;ctx.stroke();ctx.fillStyle="#eaffff";ctx.font="bold 13px sans-serif";ctx.fillText("Freund",q[0],q[1]+21);return;}
+    if(p.kind==="friend"){ctx.fillStyle="#35d0ff";ctx.beginPath();ctx.arc(q[0],q[1],9,0,6.283);ctx.fill();ctx.strokeStyle="#eaffff";ctx.lineWidth=2;ctx.stroke();ctx.fillStyle="#eaffff";ctx.font="bold 13px sans-serif";ctx.fillText(p.name||"Freund",q[0],q[1]+21);return;} /* 🧭 Distanz-Label */
     ctx.font=(p.kind==="city"?"30px":(p.kind==="station"?"24px":"22px"))+" sans-serif";ctx.fillText(p.icon||"•",q[0],q[1]);
     if(p.name){ctx.fillStyle=p.kind==="station"?"#ffd166":"#cfe6ff";ctx.font="bold 12px sans-serif";ctx.fillText(p.name,q[0],q[1]+ (p.kind==="city"?24:19));}
   });
