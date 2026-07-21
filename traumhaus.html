@@ -39,7 +39,7 @@ canvas{display:block}
   #joy{bottom:calc(12px + env(safe-area-inset-bottom)) !important;left:calc(12px + env(safe-area-inset-left)) !important}
   #minimap{width:92px !important;height:92px !important}
   #needsBox{max-height:56vh;overflow-y:auto}
-  #tools{top:96px}
+  #tools{left:calc(10px + env(safe-area-inset-left));right:auto;top:70px;bottom:auto}
 }
 @media (max-width:560px){
   #hud{top:8px;left:8px;right:8px;gap:6px}
@@ -59,9 +59,10 @@ canvas{display:block}
 .pitem{flex:0 0 auto;border:2px solid #d8cdb8;border-radius:12px;background:#fff;padding:6px 10px;text-align:center;cursor:pointer;min-width:74px;min-height:56px}
 .pitem.on{border-color:#e85aa0;box-shadow:0 0 0 3px rgba(232,90,160,.25)}
 .pitem .pe{font-size:1.4rem}.pitem .pn{font-size:.66rem;font-weight:700;color:#5a4a30}.pitem .pp{font-size:.66rem;color:#b8860b;font-weight:800}
-#tools{position:fixed;right:calc(10px + env(safe-area-inset-right));top:112px;display:none;flex-direction:column;gap:8px;z-index:12}
+#tools{position:fixed;right:calc(10px + env(safe-area-inset-right));bottom:calc(252px + env(safe-area-inset-bottom));display:none;flex-direction:column;gap:8px;z-index:13}
 .tbtn{width:48px;height:48px;border-radius:14px;border:2px solid rgba(120,110,80,.25);background:rgba(255,253,248,.94);font-size:1.25rem;cursor:pointer;box-shadow:0 4px 12px rgba(60,40,10,.15)}
 .tbtn.on{border-color:#e85aa0;box-shadow:0 0 0 3px rgba(232,90,160,.3)}
+#modeBtn.building{top:calc(58px + env(safe-area-inset-top));bottom:auto;left:50%;transform:translateX(-50%)}
 #modeBtn{position:fixed;left:calc(10px + env(safe-area-inset-left));bottom:calc(10px + env(safe-area-inset-bottom));z-index:14;display:none;border:0;border-radius:40px;padding:13px 22px;font-weight:900;font-size:1rem;cursor:pointer;color:#fff;background:linear-gradient(90deg,#5a9af0,#7a6af0);box-shadow:0 8px 24px rgba(90,120,240,.4)}
 #hint{position:fixed;bottom:calc(76px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);z-index:11;background:rgba(60,50,30,.75);color:#fff;border-radius:12px;padding:5px 14px;font-size:.85rem;opacity:0;transition:opacity .3s;pointer-events:none;max-width:92vw;text-align:center}
 #romKiss{position:fixed;inset:0;background:radial-gradient(circle at 50% 60%,rgba(60,10,40,.55),rgba(20,5,15,.92));z-index:20;display:none;align-items:center;justify-content:center;flex-direction:column;color:#ffc8e0;font-size:1.4rem;font-weight:800;text-align:center}
@@ -3127,6 +3128,7 @@ document.getElementById("delBtn").onclick=function(){delMode=!delMode;curItem=de
   document.getElementById("delBtn").classList.toggle("on",delMode);renderPalette();refreshGhost();};
 document.getElementById("modeBtn").onclick=function(){buildMode=!buildMode;
   document.getElementById("modeBtn").textContent=buildMode?"👀 Leben":"🔨 Bauen";
+  document.getElementById("modeBtn").classList.toggle("building",buildMode);
   document.getElementById("palette").style.display=buildMode?"block":"none";
   document.getElementById("tools").style.display=buildMode?"flex":"none";
   gridHelper.visible=buildMode;refreshGhost();};
