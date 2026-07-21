@@ -2661,7 +2661,7 @@ function decorateWorld(){
     var vx,vz;
     if(isSpawn){vx=0;vz=0;}else{vx=_vc[v].x;vz=_vc[v].z;} /* Welle 5: Zentrum oben vorberechnet */
     villages.push({x:vx,z:vz,big:isSpawn});
-    var ringR=isSpawn?52:13; // 🏙️ RIESIGE Hauptstadt (User-Wunsch, Paket #2: 42→52 + 3. Ring)
+    var ringR=isSpawn?58:14; // 🏙️ RIESIGE Hauptstadt (Schwarm/User „überschneidet viel": Ringe weiter → Häuser überlappen nicht)
     var nH=isSpawn?30:(2+((rnd()*3)|0));
     var _houses=[];
     for(var h=0;h<nH;h++){
@@ -2669,20 +2669,20 @@ function decorateWorld(){
       /* Ring 3 (h>=22) zieht ALLE Zufälle aus rndP → Haupt-rnd-Strom bleibt exakt wie vor Paket #2 */
       var R3=(isSpawn&&h>=22),R=R3?rndP:rnd;
       if(isSpawn){ // drei Häuser-Ringe: innen 10, mitte 12, aussen 8
-        if(h<10){ha=(h/10)*6.28+rnd()*0.3;hrd=13+rnd()*6;}
-        else if(h<22){ha=((h-10)/12)*6.28+0.26+rnd()*0.25;hrd=27+rnd()*10;}
-        else{ha=((h-22)/8)*6.28+0.13+rndP()*0.22;hrd=40+rndP()*8;}
+        if(h<10){ha=(h/10)*6.28+rnd()*0.3;hrd=18+rnd()*6;}
+        else if(h<22){ha=((h-10)/12)*6.28+0.26+rnd()*0.25;hrd=32+rnd()*10;}
+        else{ha=((h-22)/8)*6.28+0.13+rndP()*0.22;hrd=46+rndP()*8;}
       }else{ha=(h/nH)*6.28+rnd()*0.4;hrd=6+rnd()*7;}
       var hx=vx+Math.cos(ha)*hrd,hz=vz+Math.sin(ha)*hrd;
       /* rnd-Aufrufe unbedingt (identischer Strom mit/ohne GLB → koop-sicher); fehlt das GLB,
          springt ein Primitiv-Haus ein (Welt nie leer, Android-Fetch-Saga). */
-      var hIdx=(R()*HOUSES.length)|0,hSc=9.5*(0.9+R()*0.25),hRy=Math.atan2(vx-hx,vz-hz)+(R()-0.5)*0.4;
-      /* 📏 Mindestabstand 8.5 (Zentrum-zu-Zentrum): Retry-Sampling NUR aus rndP (deterministisch) */
-      var tooClose=function(x,z){for(var q=0;q<_houses.length;q++)if(Math.hypot(_houses[q].x-x,_houses[q].z-z)<8.5)return true;return false;};
+      var hIdx=(R()*HOUSES.length)|0,hSc=8.6*(0.9+R()*0.25),hRy=Math.atan2(vx-hx,vz-hz)+(R()-0.5)*0.4; /* Scale 9.5→8.6: weniger Dach-Überhang */
+      /* 📏 Mindestabstand 11 (Zentrum-zu-Zentrum, „überschneidet viel"): Retry-Sampling NUR aus rndP (deterministisch) */
+      var tooClose=function(x,z){for(var q=0;q<_houses.length;q++)if(Math.hypot(_houses[q].x-x,_houses[q].z-z)<11)return true;return false;};
       var tries=0;
       while(tries<12&&tooClose(hx,hz)){
         var ra,rr2;
-        if(isSpawn){if(h<10){ra=rndP()*6.28;rr2=13+rndP()*6;}else if(h<22){ra=rndP()*6.28;rr2=27+rndP()*10;}else{ra=rndP()*6.28;rr2=40+rndP()*8;}}
+        if(isSpawn){if(h<10){ra=rndP()*6.28;rr2=18+rndP()*6;}else if(h<22){ra=rndP()*6.28;rr2=32+rndP()*10;}else{ra=rndP()*6.28;rr2=46+rndP()*8;}}
         else{ra=rndP()*6.28;rr2=6+rndP()*7;}
         hx=vx+Math.cos(ra)*rr2;hz=vz+Math.sin(ra)*rr2;hRy=Math.atan2(vx-hx,vz-hz)+(rndP()-0.5)*0.4;tries++;
       }
