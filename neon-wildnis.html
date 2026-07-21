@@ -3430,7 +3430,7 @@ function updDodge(dt){
   if(Math.random()<0.5)burst(nx,player.position.y+0.4,nz,0x9fe8ff,2);
 }
 var _lowT=0,_hurtT=0;
-function damagePlayer(d,src){if(dead)return;if(dodgeT>0)return;if(performance.now()-_hurtT<420)return;_hurtT=performance.now();/* G5: kurze Treffer-Unverwundbarkeit → kein Rudel-Burst-Tod in 1s */sfx(120,0.14,"sawtooth",0.06);/* 💨 Rolle = unverwundbar */d=Math.max(1,d-((ARMOR_DEF[equip.armor]||0)+PERK.def));hp-=d;if(typeof floatText==="function")floatText(player.position.x,player.position.y+2.4,player.position.z,"-"+Math.round(d),"#ff5c6a");hurtFlash();if(src)dmgDir(src);heroAct("hit",1.4);if(hp<=0){hp=0;playerDie();}else if(hp/maxHp<=0.25&&performance.now()-_lowT>2600){_lowT=performance.now();sfx(660,0.07,"sine",0.05);setTimeout(function(){sfx(520,0.09,"sine",0.05);},140);} /* 🚨 Herzschlag-Warnton bei kritischem HP */hpUpd();}
+function damagePlayer(d,src){if(dead)return;if(dodgeT>0)return;if(performance.now()-_hurtT<420)return;_hurtT=performance.now();/* G5: kurze Treffer-Unverwundbarkeit → kein Rudel-Burst-Tod in 1s */sfx(120,0.14,"sawtooth",0.06);/* 💨 Rolle = unverwundbar */d=Math.max(1,d-((ARMOR_DEF[equip.armor]||0)+PERK.def));hp-=d;if(typeof floatText==="function")floatText(player.position.x,player.position.y+2.4,player.position.z,"-"+Math.round(d),"#ff5c6a");hurtFlash();if(navigator.vibrate)navigator.vibrate(35);if(src)dmgDir(src);heroAct("hit",1.4); /* 📳 Handy-Haptik bei Treffer */if(hp<=0){hp=0;playerDie();}else if(hp/maxHp<=0.25&&performance.now()-_lowT>2600){_lowT=performance.now();sfx(660,0.07,"sine",0.05);setTimeout(function(){sfx(520,0.09,"sine",0.05);},140);} /* 🚨 Herzschlag-Warnton bei kritischem HP */hpUpd();}
 // 💥 Skill (RPG-Fusion aus realm): Schockwelle — AoE-Schaden auf alle nahen Monster, ab Level 2, Cooldown
 var skillCd=0,SKILL_CD=7,_skillShown=false;
 function useSkill(){
@@ -3551,7 +3551,7 @@ function bondUpd(){try{lsSet("nw_bond",String(window._bondPts|0));
 window._bondLv=Math.floor(Math.sqrt((window._bondPts|0)/3));
 function bondGain(n,silent){window._bondPts=(window._bondPts|0)+(n|0);bondUpd(); /* 🤝 Band wächst BEIDSEITIG (Event an den Partner) */
   if(NET.on&&NET.s&&!silent)try{NET.s.send({t:"bond",n:Math.max(0,Math.min(5,n|0)),from:NET.role});}catch(e){}}
-function rewardKill(e){var mh=Math.min(30,(e&&e.maxhp)||8);gainXP(Math.round(6+mh*0.7));kills++;if(typeof dropLoot==="function"){if(!e.boss&&mh>=9&&Math.random()<0.35)dropLoot(e.x,e.z,Math.random()<0.4?3:2);else dropLoot(e.x,e.z);}} /* 💰 Belohnung skaliert mit Gegnerstärke */
+function rewardKill(e){var mh=Math.min(30,(e&&e.maxhp)||8);gainXP(Math.round(6+mh*0.7));kills++;if(navigator.vibrate)navigator.vibrate(e&&e.boss?90:28); /* 📳 Kill-Haptik (Boss länger) */if(typeof dropLoot==="function"){if(!e.boss&&mh>=9&&Math.random()<0.35)dropLoot(e.x,e.z,Math.random()<0.4?3:2);else dropLoot(e.x,e.z);}} /* 💰 Belohnung skaliert mit Gegnerstärke */
 function bossReward(x,z){var _bl3=document.getElementById("bossLbl");if(NET.on&&NET.s)try{NET.s.send({t:"bosskill",lbl:(_bl3&&_bl3.textContent)||"",from:NET.role});}catch(e){}
   if(NET.on&&typeof bondGain==="function")bondGain(2); /* K4: Band beim Killer +2 (bondGain sendet {t:bond,n:2} → Partner +2) → symmetrisch, kein nw_bond-Drift */
   announce("🏆 Boss besiegt! Legendäre Beute!");gainXP(60);dropLoot(x,z,3);dropLoot(x+1,z,3);dropLoot(x-1,z+1,2);burst(x,groundH(x,z)+1,z,[0xffd166,0xff2d6f],40);shake=0.7;}
@@ -3659,7 +3659,7 @@ function dmgHit(e,dmg){if(!e)return;
 /* 💥 Rückstoß: schiebt den Gegner weg vom Treffer-Ursprung; Bosse widerstehen stärker (Elden-Ring-Wucht) */
 function knockback(e,fromX,fromZ,str){if(!e)return;var kx=e.x-fromX,kz=e.z-fromZ,kd=Math.hypot(kx,kz)||1;var s=(e.boss?str*0.28:str*1.6);e.kbx=kx/kd*s;e.kbz=kz/kd*s;e.kbT=0.28;} /* länger + gedämpft = Ease-out-Wucht */
 /* 🔊 Wuchtiger Treffer-Klang: tiefer Thud + kurzer Crack (passt zum Rückstoß) */
-function hitSfx(){if(typeof sfx!=="function")return;var p=0.95+Math.random()*0.1;sfx(92*p,0.09,"sawtooth",0.06,54*p);sfx(330*p,0.05,"square",0.04,150*p);} /* leichte Tonhöhen-Varianz gegen Maschinengewehr-Gefühl */
+function hitSfx(){if(typeof sfx!=="function")return;var p=0.95+Math.random()*0.1;sfx(92*p,0.09,"sawtooth",0.06,54*p);sfx(330*p,0.05,"square",0.04,150*p);if(navigator.vibrate)navigator.vibrate(12);} /* Tonhöhen-Varianz + 📳 kurzer Treffer-Tick */
 function killSfx(boss){if(typeof sfx!=="function")return;var p=boss?1:(0.93+Math.random()*0.14);sfx(boss?150:(190*p),0.22,"sawtooth",0.07,boss?46:(70*p));setTimeout(function(){sfx(boss?900:(660*p),0.10,"square",0.05,boss?1400:(990*p));},60);} /* 💀 eigener Kill-Klang */
 
 // ---------- Sammeln ----------
@@ -4142,7 +4142,7 @@ document.getElementById("bSound").onclick=function(){toggleMute();}; /* G4: übe
 document.getElementById("bMenu").onclick=function(){togglePause();};
 
 // ---------- Kamera ----------
-var camYaw=0,shake=0,hitStop=0,_shTick=0;
+var camYaw=0,shake=0,hitStop=0,_shTick=0,_stepT=0; /* _stepT: Schritt-Sound-Takt */
 /* 🔍 Zoom (Wildnis-Paket #2): Faktor auf Kamera-Distanz, sanft gelerpt, persistent (nw_zoom) */
 var camZoomT=(function(){var z=parseFloat(lsGet("nw_zoom"));return (z>=0.55&&z<=1.8)?z:1;})(),camZoom=camZoomT;
 function setZoom(v){camZoomT=Math.max(0.55,Math.min(1.8,v));lsSet("nw_zoom",camZoomT.toFixed(3));}
@@ -4448,6 +4448,7 @@ if(GFX_HI){try{
     "void main(){",
     "  vec2 d=vUv-0.5; float r2=dot(d,d);",
     "  vec3 col=texture2D(tBase,vUv).rgb+texture2D(tBloom,vUv).rgb*strength;",
+    "  float L=dot(col,vec3(0.299,0.587,0.114)); col=mix(vec3(L),col,1.14); col=(col-0.5)*1.06+0.5;", /* 🎨 Farb-Grade: +14% Sättigung + sanfter S-Kontrast (kein Extra-Pass) */
     "  float vig=smoothstep(1.3,0.35,r2*2.2); col*=mix(0.86,1.0,vig);", /* feine Kanten-Vignette */
     "  gl_FragColor=vec4(col,1.0);",
     "}"].join("\n")});
@@ -4605,7 +4606,9 @@ function frame(now){
       else if(canWalk(player.position.x,nz)){player.position.z=nz;}}
     if(!buildMode){var ta=Math.atan2(cr.x,cr.z),rd3=ta-player.rotation.y;while(rd3>Math.PI)rd3-=2*Math.PI;while(rd3<-Math.PI)rd3+=2*Math.PI;player.rotation.y+=rd3*Math.min(1,dt*12);} /* weiches Eindrehen statt Snap */
     if(heroRig&&!ONESHOT[heroRig.cur])setAnim(heroRig,heroRig.actions.walk?"walk":"run",0.2,ml>0.9?1.3:1.0); /* Modelle ohne walk-Clip nutzen run */
-  } else if(heroRig&&(heroRig.cur==="walk"||heroRig.cur==="run")){setAnim(heroRig,"idle",0.2);}
+    _stepT+=dt*(1+Math.min(1,ml)*0.4);if(_stepT>=0.32){_stepT-=0.32;sfx(68+Math.random()*22,0.05,"sine",0.026,50);} /* 👣 Schritt-Sound (Takt skaliert mit Tempo) */
+  } else if(heroRig&&(heroRig.cur==="walk"||heroRig.cur==="run")){setAnim(heroRig,"idle",0.2);_stepT=0;}
+  else{_stepT=0;}
   player.position.y=groundH(player.position.x,player.position.z);
 
   updDayNight(dt);updAmbience(dt);updMusic(dt);updMonsters(dt);updResources(dt);updParticles(dt);updStructures(dt);updSkill(dt);updShock(dt);updMotes(dt);updDowned(dt);updEmotes(dt);updThrow(dt);updDodge(dt);updBolt2(dt);updLoot(dt);updBossBar();updWaveHud();updProps(dt);netTick(dt);_mmT+=dt;if(_mmT>0.15){_mmT=0;updMinimap();}updSmoke(dt);updDucks(dt);updPotions(dt);updNPCs(dt);updHub(dt);if(PERK.regen>0&&hp<maxHp&&!dead){hp=Math.min(maxHp,hp+PERK.regen*dt);hpUpd();}
