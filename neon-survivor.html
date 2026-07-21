@@ -985,11 +985,13 @@ function renderUpRow(){var out="";for(var id in S.weapons){if(S.weapons[id])out+
 function buildChoices(){
   var pool=[];
   for(var id in WEAPONS){var L=S.weapons[id]||0,w=WEAPONS[id];
-    if(L>0&&L<w.max)pool.push({i:w.i,n:w.i+" "+w.n+" → Lv"+(L+1),d:w.d,f:(function(id){return function(){S.weapons[id]++;};})(id)});
-    else if(L===0)pool.push({i:w.i,n:"✨ NEU: "+w.n,d:w.d,f:(function(id){return function(){S.weapons[id]=1;S.wt[id]=0;};})(id)});
+    if(L>0&&L<w.max)pool.push({i:w.i,n:w.i+" "+w.n+" → Lv"+(L+1),d:w.d,weap:true,f:(function(id){return function(){S.weapons[id]++;};})(id)});
+    else if(L===0)pool.push({i:w.i,n:"✨ NEU: "+w.n,d:w.d,weap:true,f:(function(id){return function(){S.weapons[id]=1;S.wt[id]=0;};})(id)});
   }
   for(var p=0;p<PASSIVES.length;p++)pool.push(PASSIVES[p]);
-  pool.sort(function(){return rnd()-0.5;});return pool.slice(0,3);
+  pool.sort(function(){return rnd()-0.5;});var picks=pool.slice(0,3); /* 🎯 Schwarm: mind. 1 Waffen-Option garantieren, damit Builds nie blockieren */
+  if(!picks.some(function(p){return p.weap;})){var wOpt=pool.filter(function(p){return p.weap;});if(wOpt.length)picks[2]=wOpt[Math.floor(rnd()*wOpt.length)];}
+  return picks;
 }
 var paused=false;
 function levelUp(){
@@ -1691,7 +1693,9 @@ function loop(now){
       if(structures.length)resolveBlockers(e2,dt);
       if(e2.raider&&tstruct&&tstruct.hp>0){var sdx=tstruct.x-e2.m.position.x,sdz=tstruct.z-e2.m.position.z;if(sdx*sdx+sdz*sdz<(e2.boss?10:4.5)){damageStruct(tstruct,(e2.boss?16:6)*dt);if(e2.boss&&(frame&3)===0){smallSpark(tstruct.x,tstruct.z,0xff8a3a);}e2.m.position.y=(e2.by||0.7)+Math.abs(Math.sin(S.t*13))*0.12;}}
       if(e2.shooter){e2.shootT-=dt;if(e2.shootT<=0&&ped<42){enemyShoot(e2.m.position.x,e2.m.position.z,13,_tp.x,_tp.z);e2.shootT=2.8;}}
-      if(e2.boss){e2.shootT-=dt;if(e2.shootT<=0){var nb=e2.finalBoss?14:(e2.baseWaveBoss?12:10);for(var rr=0;rr<nb;rr++){var ang2=rr/nb*6.283;var eb2=getMesh(ebullets,ebulletMesh);eb2.active=true;eb2.m.visible=true;eb2.m.position.set(e2.m.position.x,0.8,e2.m.position.z);eb2.vx=Math.cos(ang2)*9;eb2.vz=Math.sin(ang2)*9;eb2.life=4;}spawnRing(e2.m.position.x,e2.m.position.z,e2.baseWaveBoss?0xff6a00:0xff2266,1,7,0.4);e2.shootT=e2.finalBoss?3.0:(e2.baseWaveBoss?3.6:4.2);beep(120,.3,"sawtooth",.07);}}
+      if(e2.boss){e2.shootT-=dt;
+        if(e2.shootT>0&&e2.shootT<0.55&&!e2._tele){e2._tele=1;spawnRing(e2.m.position.x,e2.m.position.z,0xffe0e6,7,1,0.5);beep(300,.07,"square",.03);} /* 🎯 Schwarm: 0.5s Warn-Ring (zieht sich zusammen = „gleich kommt was") vor der Salve */
+        if(e2.shootT<=0){var nb=e2.finalBoss?14:(e2.baseWaveBoss?12:10);for(var rr=0;rr<nb;rr++){var ang2=rr/nb*6.283;var eb2=getMesh(ebullets,ebulletMesh);eb2.active=true;eb2.m.visible=true;eb2.m.position.set(e2.m.position.x,0.8,e2.m.position.z);eb2.vx=Math.cos(ang2)*9;eb2.vz=Math.sin(ang2)*9;eb2.life=4;}spawnRing(e2.m.position.x,e2.m.position.z,e2.baseWaveBoss?0xff6a00:0xff2266,1,7,0.4);e2._tele=0;e2.shootT=e2.finalBoss?3.0:(e2.baseWaveBoss?3.6:4.2);beep(120,.3,"sawtooth",.07);}}
       if(e2.flash>0){e2.flash-=dt;var _efl=e2.flash>0;e2.m.material.emissive.setHex(_efl?0xffffff:e2.baseEmissive);
         if(e2.model){var _efm=e2.model.mats;for(var _efi=0;_efi<_efm.length;_efi++){_efm[_efi].emissive.setHex(_efl?0xffffff:e2.m.material.color.getHex());_efm[_efi].emissiveIntensity=_efl?1.1:0.55;}}}
       if(_p1on){var _c1=Math.hypot(player.position.x-e2.m.position.x,player.position.z-e2.m.position.z);
