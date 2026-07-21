@@ -3215,7 +3215,7 @@ var quest=0;
 var qProg={flug:0,arenaCr:0,raceWin:0,koloss:0};
 function cntStruct(t){var n=0;for(var i=0;i<structures.length;i++)if(structures[i].type===t)n++;return n;}
 var QUESTS=[
-  {t:"Sammle 10 Holz 🪵",done:function(){return inv.wood>=10||totalWood>=10;}},
+  {t:"Sammle 10 Holz 🪵",done:function(){return inv.wood>=10||totalWood>=10;},prog:function(){return [Math.min(10,Math.max(inv.wood,totalWood)),10];}},
   {t:"Baue ein Lagerfeuer 🔥",done:function(){return structures.some(function(s){return s.type==="lager";});}},
   {t:"Überlebe die erste Nacht 🌙",done:function(){return day>=2;}},
   {t:"Baue eine Werkbank 🔧",done:function(){return hasWorkbench();}},
@@ -3225,9 +3225,9 @@ var QUESTS=[
   {t:"Baue den NEXUS-TURM 🌌 — stabilisiere die Wildnis!",done:function(){return hasNexus();},nexus:true},
   /* 📜 W3-Folge-Quests (nach der Alt-Kette): Stationen-Bezug + Basis-Ausbau; rw = 💎-Belohnung */
   {t:"Besuche das Flugfeld ✈️ (Station betreten)",done:function(){return !!qProg.flug;},rw:4},
-  {t:"Verdiene 8 💎 in der Arena ⚔️",done:function(){return (qProg.arenaCr|0)>=8;},rw:6},
+  {t:"Verdiene 8 💎 in der Arena ⚔️",done:function(){return (qProg.arenaCr|0)>=8;},prog:function(){return [Math.min(8,qProg.arenaCr|0),8];},rw:6},
   {t:"Gewinne ein Rennen 🏎️ (Score ≥ 40)",done:function(){return !!qProg.raceWin;},rw:8},
-  {t:"Stelle 3 Fackel-Laternen 🔥 an deiner Basis auf",done:function(){return cntStruct("fackel")>=3;},rw:10},
+  {t:"Stelle 3 Fackel-Laternen 🔥 an deiner Basis auf",done:function(){return cntStruct("fackel")>=3;},prog:function(){return [Math.min(3,cntStruct("fackel")),3];},rw:10},
   {t:"Steig hinab und besiege den KOLOSS 🏰 (Dungeon)",done:function(){return !!qProg.koloss;},rw:12} /* #65 — ans ENDE (Save nutzt Quest-Index) */
 ];
 var totalWood=0;
@@ -4372,7 +4372,10 @@ document.addEventListener("visibilitychange",function(){if(document.visibilitySt
 // ---------- Quest ----------
 var _nxT=0;
 function updQuest(dt){
-  _nxT-=dt||0;if(_nxT<=0){updNexusProgress();_nxT=0.3;}
+  _nxT-=dt||0;if(_nxT<=0){updNexusProgress();_nxT=0.3;
+    if(quest<QUESTS.length){var _q=QUESTS[quest],_qt=_q.t; /* 📊 Anfänger: Live-Zähler X/Ziel bei Sammel-/Zählquests */
+      if(_q.prog){var _p=_q.prog();if(_p&&_p[1])_qt+="  "+_p[0]+"/"+_p[1];}
+      var _qe=document.getElementById("questText");if(_qe&&_qe.textContent!==_qt)_qe.textContent=_qt;}}
   if(quest>=QUESTS.length){ /* 🔁 Endlos-Bounties: es gibt IMMER ein nächstes Ziel */
     if(!bounty){bounty=nextBounty();document.getElementById("questText").textContent="🔁 "+bounty.t;}
     else if(bounty.cur()-bounty.base>=bounty.goal){var brw=bounty.rw|0;inv.crystal=(inv.crystal|0)+brw;invUpd();

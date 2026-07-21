@@ -205,11 +205,27 @@ var heroMix=null,heroRig=null;
     var sc=(hb>0.3)?Math.max(0.15,Math.min(4,1.7/hb)):0.95;o.scale.setScalar(sc);
     o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;}});
     player.remove(ph);player.add(o);
-    if(g.animations&&g.animations.length){heroMix=new THREE.AnimationMixer(o);
-      var idle=g.animations.find(function(a){return /idle/i.test(a.name);})||g.animations[0];
-      heroRig=heroMix.clipAction(idle);heroRig.play();}
+    if(g.animations&&g.animations.length){heroMix=new THREE.AnimationMixer(o); /* 🎬 Schwarm-2 P2: walk/run/attack-Clips waren tot — jetzt Aktions-Map + Locomotion + Angriff */
+      var _pick=function(re){for(var i=0;i<g.animations.length;i++)if(re.test(g.animations[i].name))return g.animations[i];return null;};
+      var _idle=_pick(/idle/i)||g.animations[0],_walk=_pick(/walk/i),_run=_pick(/run/i)||_walk,_atk=_pick(/attack|slash|punch|swing|hit/i);
+      var acts={idle:heroMix.clipAction(_idle)};
+      if(_walk)acts.walk=heroMix.clipAction(_walk);
+      if(_run)acts.run=heroMix.clipAction(_run);
+      if(_atk){acts.attack=heroMix.clipAction(_atk);acts.attack.setLoop(THREE.LoopOnce,1);acts.attack.clampWhenFinished=true;}
+      acts.idle.play();
+      heroRig={mix:heroMix,acts:acts,cur:"idle",lock:0};
+      heroMix.addEventListener("finished",function(){if(heroRig){heroRig.lock=0;heroRig.cur="_none";}});} /* Angriff fertig → zurück auf Locomotion faden */
   },undefined,function(){}); /* Fehler -> Platzhalter bleibt */
 })();
+function heroSet(name){if(!heroRig||!heroRig.acts[name]||heroRig.lock>0||heroRig.cur===name)return;
+  var to=heroRig.acts[name],from=heroRig.acts[heroRig.cur];
+  to.reset();to.setEffectiveWeight(1);to.fadeIn(0.15);to.play();
+  if(from&&from!==to&&from.isRunning&&from.isRunning())from.fadeOut(0.15);
+  heroRig.cur=name;}
+function heroAtk(){if(!heroRig||!heroRig.acts.attack)return;var a=heroRig.acts.attack,from=heroRig.acts[heroRig.cur];
+  a.reset();a.setEffectiveWeight(1);a.fadeIn(0.04);a.play();
+  if(from&&from!==a&&from.isRunning&&from.isRunning())from.fadeOut(0.04);
+  heroRig.cur="attack";heroRig.lock=0.5;}
 var px=0,py=0,pz=0,vy=0,onG=true,jumps=0,coyote=0,jBuf=0,ckpt=0,invT=0,gy=0,stepT=0,secFound=false;
 var hearts=4,gemN=0,stage=1,running=false,won=false,dead=false,runT=0; /* #68 Lauf-Timer */
 var kx=0,kz=0; /* Eingabe */
@@ -325,6 +341,7 @@ var jHeld=false;
 function doJump(){jBuf=0.12;jHeld=true;}
 function endJump(){jHeld=false;if(vy>3.5)vy=3.5;} /* Loslassen kappt den Sprung -> kurze/hohe Sprünge */
 function doHit(){if(!bossOn||dead||won)return;
+  heroAtk(); /* 🎬 Angriffs-Animation bei jedem Schlag */
   if(vulnT>0&&slamArm){var f=slamArm.userData.fist,wp=new THREE.Vector3();f.getWorldPosition(wp);
     if(Math.hypot(wp.x-px,wp.z-pz)<4.0){bossHp--;vulnT=0;bT=Math.min(bT,1.4);hitFx=0.5;shakeT=0.25; /* Treffer -> Kampf zieht sofort an */
       slamArm.userData.cry.material.emissiveIntensity=0.2;slamArm.userData.cry.scale.setScalar(1);slamArm.userData.slamTgt=0;slamArm=null; /* Arm federt zurück statt einzufrieren */
@@ -410,6 +427,7 @@ function frame(now){requestAnimationFrame(frame);
   var dt=Math.min(0.05,(now-lastT)/1000)||0.016;lastT=now;
   var t=now*0.001;
   if(heroMix)heroMix.update(dt);
+  if(heroRig&&heroRig.lock>0)heroRig.lock-=dt; /* Angriffs-Sperre auslaufen lassen (Fallback zum finished-Event) */
   for(var fi=0;fi<torches.length;fi++){var tc=torches[fi];
     tc.fl.scale.setScalar(1+Math.sin(t*9+tc.ph)*0.16);tc.lt.intensity=(tc.lit?0.95:0.75)+Math.sin(t*11+tc.ph)*0.22;}
   amb.color.lerp(bossOn?_ambBoss:_ambBase,Math.min(1,dt*1.2)); /* 🔴 Kammer-Stimmung */
@@ -449,6 +467,7 @@ function frame(now){requestAnimationFrame(frame);
     var spd=6.2;px+=ix*spd*dt;pz+=iz*spd*dt;
     if(il>0.05)player.rotation.y=Math.atan2(ix,iz);
     stepT-=dt*il;if(onG&&il>0.3&&stepT<=0){stepT=0.34;sfx(95+Math.random()*25,0.05,"sine",0.02);}
+    if(heroRig&&heroRig.lock<=0)heroSet(il>0.1?(heroRig.acts.run?"run":"walk"):"idle"); /* 🎬 Locomotion-Anim */
     if(bossOn){var bdx=px,bdz=pz-CHZ,bdl=Math.hypot(bdx,bdz);if(bdl>12){px=bdx/bdl*12;pz=CHZ+bdz/bdl*12;}} /* Arena hält dich im Kampf */
     /* Sprung-Physik: Coyote + Buffer + Doppelsprung */
     var g=groundAt(px,pz,py+1.2); /* nur Plattformen unter/kaum über den Füssen (kein Hochzuppen durch hohe Decks) */
