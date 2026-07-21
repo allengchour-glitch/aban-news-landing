@@ -1616,25 +1616,28 @@ function mkFallbackHouse(targetH){
 // 🛣️ Detaillierte Kopfstein-Straßen (Textur + Normal-Map = Tiefe) + Steinplatten-Platz
 // 🛣️ Geschwungene Kopfstein-Wege als Ribbon entlang einer Kurve (nie gerade, folgt dem Boden)
 function roadRibbon(pts,width,cobble,normal){
-  var pos=[],uv=[],idx=[],cum=0,hw=width/2;
+  /* 🌾 Weiche Übergänge (User „schöne übergänge"): 3-Vertex-Querschnitt (Rand transparent → Mitte voll)
+     → die Kopfstein-Wege faden per Vertex-Alpha ins Gras statt harter Kante. r128 kann USE_COLOR_ALPHA. */
+  var pos=[],uv=[],col=[],idx=[],cum=0,hw=width/2;
   for(var i=0;i<pts.length;i++){
     var p=pts[i],pa=pts[Math.max(0,i-1)],pb=pts[Math.min(pts.length-1,i+1)];
     var dx=pb.x-pa.x,dz=pb.z-pa.z,dl=Math.hypot(dx,dz)||1;dx/=dl;dz/=dl;
     var perpx=-dz,perpz=dx;
     if(i>0)cum+=Math.hypot(p.x-pts[i-1].x,p.z-pts[i-1].z);
     var lx=p.x+perpx*hw,lz=p.z+perpz*hw,rx=p.x-perpx*hw,rz=p.z-perpz*hw;
-    pos.push(lx,groundH(lx,lz)+0.13,lz, rx,groundH(rx,rz)+0.13,rz);
-    var v=cum/4;uv.push(0,v, width/4,v);
+    pos.push(lx,groundH(lx,lz)+0.10,lz, p.x,groundH(p.x,p.z)+0.13,p.z, rx,groundH(rx,rz)+0.10,rz); /* Rand tiefer → sinkt zusätzlich ins Gras */
+    var v=cum/4;uv.push(0,v, width/8,v, width/4,v);
+    col.push(1,1,1,0.0, 1,1,1,1.0, 1,1,1,0.0); /* Rand α0 → Mitte α1 */
   }
-  /* 🐛 Paket-#2-Fix: Dreiecke zeigten nach UNTEN (Backface-Cull -> Strassen von oben unsichtbar,
-     Raycast-verifiziert, auch auf main). Winding gedreht = Normale nach oben. */
-  for(var j=0;j<pts.length-1;j++){var a=j*2;idx.push(a,a+2,a+1, a+1,a+2,a+3);}
+  /* Winding = Normale nach oben (Paket-#2-Fix). Zwei Streifen: L-Mitte und Mitte-R. */
+  for(var j=0;j<pts.length-1;j++){var a=j*3;idx.push(a,a+3,a+1, a+1,a+3,a+4, a+1,a+4,a+2, a+2,a+4,a+5);}
   var g=new THREE.BufferGeometry();
   g.setAttribute("position",new THREE.Float32BufferAttribute(pos,3));
   g.setAttribute("uv",new THREE.Float32BufferAttribute(uv,2));
+  g.setAttribute("color",new THREE.Float32BufferAttribute(col,4));
   g.setIndex(idx);g.computeVertexNormals();
-  var m=new THREE.Mesh(g,new THREE.MeshLambertMaterial({map:cobble}));
-  m.receiveShadow=true;scene.add(m);return m;
+  var m=new THREE.Mesh(g,new THREE.MeshLambertMaterial({map:cobble,vertexColors:true,transparent:true,depthWrite:false}));
+  m.renderOrder=1;m.receiveShadow=true;scene.add(m);return m;
 }
 function layRoads(cx,cz,rr){
   // 🧱 GANZES Dorf gepflastert: grosse Kopfstein-Scheibe unter allem (Wege/Platz liegen als Detail obendrauf)
