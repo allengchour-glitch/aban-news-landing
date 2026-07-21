@@ -451,7 +451,7 @@ gridHelper.material.transparent=true;gridHelper.material.opacity=0.22;gridHelper
 var weg=new THREE.Mesh(new THREE.PlaneGeometry(3,10),stdMat(0xc8beA8,0.9));weg.rotation.x=-Math.PI/2;weg.position.set(0,-0.005,GH*CS/2+5);weg.receiveShadow=true;scene.add(weg);
 // Strasse (quer, mit Mittelstreifen + Bordstein)
 var strMatH=stdMat(0x3a3a40,0.9),strMatV=stdMat(0x3a3a40,0.9);
-ladeTex("textures/tex_neon_asphalt.jpg",22,1.5,function(t){strMatH.map=t;strMatH.color.setHex(0x9a9aa0);strMatH.needsUpdate=true;});
+ladeTex("textures/tex_neon_asphalt.jpg",11,1.5,function(t){strMatH.map=t;strMatH.color.setHex(0x9a9aa0);strMatH.needsUpdate=true;});
 ladeTex("textures/tex_neon_asphalt.jpg",1.5,18,function(t){strMatV.map=t;strMatV.color.setHex(0x9a9aa0);strMatV.needsUpdate=true;});
 var strasse=new THREE.Mesh(new THREE.PlaneGeometry(RL,10),strMatH);
 strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.receiveShadow=true;scene.add(strasse);
@@ -539,8 +539,8 @@ var dorfFenster=[];
     var dl=Math.sqrt((w/2)*(w/2)+1.44)+0.25;
     if(!window._schindelTex){var scv=document.createElement("canvas");scv.width=scv.height=128;var sc2=scv.getContext("2d");
       sc2.fillStyle="#e8e8e8";sc2.fillRect(0,0,128,128);
-      for(var sy=0;sy<128;sy+=10){sc2.fillStyle="rgba(0,0,0,0.18)";sc2.fillRect(0,sy+8,128,2);
-        for(var sx=((sy/10)%2)*8;sx<128;sx+=16){sc2.fillStyle="rgba(0,0,0,0.08)";sc2.fillRect(sx,sy,1,8);}}
+      for(var sy=0;sy<128;sy+=8){sc2.fillStyle="rgba(0,0,0,0.42)";sc2.fillRect(0,sy+6,128,2);
+        for(var sx=((sy/8)%2)*8;sx<128;sx+=16){sc2.fillStyle="rgba(0,0,0,0.2)";sc2.fillRect(sx,sy,1,6);}}
       window._schindelTex=new THREE.CanvasTexture(scv);window._schindelTex.wrapS=window._schindelTex.wrapT=THREE.RepeatWrapping;window._schindelTex.repeat.set(2,3);}
     [[-1,1],[1,-1]].forEach(function(sgn){
       var dMat=stdMat(dachC,0.75);dMat.map=window._schindelTex;
@@ -670,7 +670,7 @@ var dorfFenster=[];
   var AX=RX-7;ampel(-AX,-SZ-5.5,0);ampel(AX,SZ+5.5,0);ampel(-AX,SZ+5.5,1);ampel(AX,-SZ-5.5,1);
 })();
 // Putz-Struktur auf alle Nachbarhaus-Waende (getoent je Hausfarbe)
-ladeTex("textures/th/putz.jpg",2.2,1.2,function(t){(window._wandMats||[]).forEach(function(m){m.map=t;m.needsUpdate=true;});});
+ladeTex("textures/th/putz.jpg",4,2.5,function(t){(window._wandMats||[]).forEach(function(m){m.map=t;m.roughness=0.72;m.needsUpdate=true;});});
 // ---- Immobilien-Imperium: Nachbarhaeuser kaufen, taeglich Miete kassieren ----
 var immo=[]; // gekaufte Haus-Indizes
 function immoFlagge(hs){var fg=new THREE.Group();
@@ -971,13 +971,13 @@ setTimeout(function baueGebaeude(){
   bau("th3_blumenkuebel.glb",0.7,84,0,-31,0,false);
   // See: Steg + Ruderboot
   bau("th3_steg.glb",0.8,-80,0,73,-Math.PI/4,false);
-  bau("th3_ruderboot.glb",0.55,-88,-0.04,75,0.6,false);
+  bau("th3_ruderboot.glb",0.55,-91,-0.04,80,0.6,false);
   // Park: Picknicktische
   bau("th3_picknick.glb",0.85,74,0,-32,0.4,false);
   bau("th3_picknick.glb",0.85,90,0,-16,-0.5,false);
   // ---- Welle 2 (th4_*): echte Baum-Sorten, Schilder, Brücke, Schwan & Co. ----
   // Birken-Hain am See
-  bau("th4_birke.glb",5.2,-72,0,66,0.3,false);bau("th4_birke.glb",4.8,-102,0,72,1.1,false);bau("th4_birke.glb",5.5,-96,0,94,2.2,false);
+  bau("th4_birke.glb",5.2,-70,0,64,0.3,false);bau("th4_birke.glb",4.8,-110,0,62,1.1,false);bau("th4_birke.glb",5.5,-100,0,98,2.2,false);
   // Tannen-Gruppe Nordwesten + Norden
   bau("th4_tanne.glb",6,-90,0,-70,0,false);bau("th4_tanne.glb",5.2,-98,0,-58,0.7,false);bau("th4_tanne.glb",6.6,-80,0,-84,1.5,false);bau("th4_tanne.glb",5.6,30,0,-84,2.4,false);
   // Herbst-Ahorne + große Eichen als Landmarks
@@ -992,7 +992,8 @@ setTimeout(function baueGebaeude(){
   // Mülleimer (Haltestelle + Spielplatz)
   bau("th4_muelleimer.glb",0.9,-5,0,51.9,0,false);bau("th4_muelleimer.glb",0.9,80,0,7,0,false);
   // Zaun am Bauernhof-Gehege
-  bau("th4_zaun_holz.glb",0.95,-74,0,-30,Math.PI/2,false);bau("th4_zaun_holz.glb",0.95,-74,0,-34,Math.PI/2,false);bau("th4_zaun_holz.glb",0.95,-74,0,-38,Math.PI/2,false);
+  [-27,-31,-35,-39].forEach(function(zz){bau("th4_zaun_holz.glb",0.95,-73,0,zz,Math.PI/2,false);bau("th4_zaun_holz.glb",0.95,-89,0,zz,Math.PI/2,false);});
+  [-75,-79,-83,-87].forEach(function(xx){bau("th4_zaun_holz.glb",0.95,xx,0,-25,0,false);bau("th4_zaun_holz.glb",0.95,xx,0,-41,0,false);});
   // Vogelhäuser
   bau("th4_vogelhaus.glb",2,74,0,-36,0.6,false);bau("th4_vogelhaus.glb",2,-76,0,20,0,false);
   // See: Bogenbrücke ans Ufer, Schwan aufs Wasser, Sonnenschirme
