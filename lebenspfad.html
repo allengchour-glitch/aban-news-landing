@@ -3575,6 +3575,7 @@ function netHostBoot(){ // ID-Kollision (unavailable-id) -> neuen Code würfeln 
       // 🛡️ Whitelist: Gäste dürfen nur Spiel-Nachrichten senden — Host-Kontrolltypen (full/welcome/init/sync/…) werden verworfen
       if(["roll","pick","chat","emo","ready","meetact","drop"].indexOf(m.t)<0)return;
       if(c._idx!=null)m.i=c._idx; // Identität serverseitig stempeln (Gast kann sich nicht als anderer ausgeben)
+      if((m.t==="roll"||m.t==="pick")&&G&&c._idx!==G.turn)return; /* 🛡️ Schwarm-3 P3: nur der Zug-Inhaber darf würfeln/ziehen (modifizierter Gast kann fremden Zug nicht erzwingen; meetact bleibt erlaubt) */
       netOnMsg(m,c);});
     c.on("close",function(){var wasIdx=c._idx;var ci=NET.conns.indexOf(c);if(ci>=0)NET.conns.splice(ci,1);
       if(NET.on&&running){ // im laufenden Spiel: NICHT auto-rauswerfen -> Präsenz melden + ggf. pausieren (Reconnect möglich)

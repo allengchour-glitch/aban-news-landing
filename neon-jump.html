@@ -265,6 +265,7 @@ function renderBloom(){renderer.setRenderTarget(rtScene);renderer.render(scene,c
 
 // ---- Audio ----
 var actx=null,muted=false;try{muted=localStorage.getItem("nj_muted")==="1";}catch(e){}
+(function(){function _unlock(){try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();if(actx.state!=="running")actx.resume();}catch(e){}}["touchstart","pointerdown","mousedown","keydown"].forEach(function(ev){addEventListener(ev,_unlock,true);});})(); /* 🔊 Schwarm-3 P3: AudioContext in der 1. Nutzer-Geste entsperren (iOS-Autoplay) */
 function beep(f,d,t,v){if(muted)return;try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),g=actx.createGain();o.type=t||"sine";o.frequency.value=f;g.gain.value=v||.05;o.connect(g);g.connect(actx.destination);o.start();g.gain.exponentialRampToValueAtTime(1e-4,actx.currentTime+(d||.1));o.stop(actx.currentTime+(d||.1));}catch(e){}}
 var MUS=new Audio("/audio/electrodoodle.mp3");MUS.loop=true;MUS.volume=0.28;MUS.preload="none";
 function musSync(){if(muted||!running)MUS.pause();else MUS.play().catch(function(){});}
@@ -310,7 +311,7 @@ var LEVELS=[
   goal:{x:128,y:5.5}}
 ];
 var curLvl=0,coopMode=true;
-try{curLvl=Math.min(2,parseInt(localStorage.getItem("nj_lvl")||"0",10)||0);}catch(e){}
+try{curLvl=Math.max(0,Math.min(2,parseInt(localStorage.getItem("nj_lvl")||"0",10)||0));}catch(e){} /* 🛡️ Schwarm-3 P3: negativer nj_lvl kam durch (nur oben geklemmt) → LEVELS[-n] Crash */
 function lvlStars(i){try{return localStorage.getItem("nj_star"+i)||"";}catch(e){return "";}}
 // ---- Level-Bau (Meshes je Level neu) ----
 var lvlGroup=new THREE.Group();scene.add(lvlGroup);

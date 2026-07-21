@@ -462,6 +462,7 @@ function renderBloom(){
 
 // ---- Audio ----
 var actx=null,muted=false; try{muted=localStorage.getItem("nr_muted")==="1";}catch(e){}
+(function(){function _unlock(){try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();if(actx.state!=="running")actx.resume();}catch(e){}}["touchstart","pointerdown","mousedown","keydown"].forEach(function(ev){addEventListener(ev,_unlock,true);});})(); /* 🔊 Schwarm-3 P3: AudioContext in der 1. Nutzer-Geste entsperren (iOS-Autoplay) */
 function beep(f,d,t,v){if(muted)return;try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),g=actx.createGain();o.type=t||"sine";o.frequency.value=f;g.gain.value=v||.05;o.connect(g);g.connect(actx.destination);o.start();g.gain.exponentialRampToValueAtTime(1e-4,actx.currentTime+(d||.1));o.stop(actx.currentTime+(d||.1));}catch(e){}}
 var MUS=new Audio("/audio/voltaic.mp3");MUS.loop=true;MUS.volume=0.3;MUS.preload="none";
 function musSync(){try{if(!muted&&running)MUS.play().catch(function(){});else MUS.pause();}catch(e){}}
@@ -480,7 +481,8 @@ function reset(){dist=0;speed=42;shipX=centerX(0);steer=0;shield=100;camX=shipX;
   ship.position.set(shipX,0.12,0);
   for(var i=0;i<things.length;i++){things[i].active=false;things[i].bar.visible=false;things[i].pad.visible=false;}
   for(i=0;i<coins.length;i++){coins[i].active=false;coins[i].m.visible=false;}
-  var ce=document.getElementById("coins");if(ce)ce.textContent="0";}
+  var ce=document.getElementById("coins");if(ce)ce.textContent="0";
+  touchX=null;steerId=null;keyL=keyR=brake=false;} /* 🏎️ Schwarm-3 P2/P3: Lenk-/Tasten-Zustand beim Neustart leeren (kein Geister-Lenken) */
 
 addEventListener("keydown",function(e){var k=e.key.toLowerCase();if(k==="arrowleft"||k==="a")keyL=true;if(k==="arrowright"||k==="d")keyR=true;if(k==="arrowdown"||k===" ")brake=true;if((k===" "||k==="enter")&&!running){e.preventDefault&&e.preventDefault();start();}});
 addEventListener("keyup",function(e){var k=e.key.toLowerCase();if(k==="arrowleft"||k==="a")keyL=false;if(k==="arrowright"||k==="d")keyR=false;if(k==="arrowdown"||k===" ")brake=false;});
@@ -493,9 +495,11 @@ addEventListener("touchstart",function(e){ /* R1: nur der Lenk-Finger steuert; B
     if(steerId===null){steerId=t.identifier;touchX=t.clientX;}}
   if(freeTap&&!running&&document.getElementById("over").classList.contains("hide"))start();},{passive:true}); /* P7: Tap auf Mute/Buttons startet NICHT */
 addEventListener("touchmove",function(e){for(var i=0;i<e.changedTouches.length;i++){var t=e.changedTouches[i];if(t.identifier===steerId){touchX=t.clientX;e.preventDefault();}}},{passive:false});
-function _endSteer(e){for(var i=0;i<e.changedTouches.length;i++){if(e.changedTouches[i].identifier===steerId){steerId=null;touchX=null;}}} /* R1: Lenkung klebt nicht mehr nach dem Loslassen */
+function _endSteer(e){for(var i=0;i<e.changedTouches.length;i++){if(e.changedTouches[i].identifier===steerId){steerId=null;touchX=null;
+  for(var j=0;j<e.touches.length;j++){var t2=e.touches[j];if(t2.target&&t2.target.closest&&t2.target.closest("button,a"))continue;steerId=t2.identifier;touchX=t2.clientX;break;}}}} /* R1: Lenkung klebt nicht — Schwarm-3 P3: liegender 2. Finger übernimmt die Lenkung */
 addEventListener("touchend",_endSteer);addEventListener("touchcancel",_endSteer);
-addEventListener("mousemove",function(e){if(running)touchX=e.clientX;}); // "Maus" war im Hinweis versprochen, aber nie verdrahtet
+addEventListener("mousemove",function(e){if(IS_COARSE)return;if(running)touchX=e.clientX;}); /* 🖱️ nur echte Maus (Schwarm-3 P2: Touch-Kompat-mousemove re-armte touchX → Geister-Lenken) */
+addEventListener("mouseleave",function(){if(!IS_COARSE)touchX=null;});
 (function(){var bb=document.getElementById("brakeBtn");if(!bb)return;
   bb.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();brake=true;},{passive:false});
   bb.addEventListener("touchend",function(e){e.stopPropagation();brake=false;});
@@ -533,7 +537,7 @@ function loop(now){
   if(running&&!paused){
     // Steuerung
     var sx=0; if(keyL)sx-=1; if(keyR)sx+=1;
-    if(touchX!=null){var _n=(touchX/W)*2-1;sx=(Math.abs(_n)<0.08?0:_n)*1.6;} /* R1: Totzone in der Mitte → ruhiger Daumen fährt gerade */
+    if(touchX!=null&&!keyL&&!keyR){var _n=(touchX/W)*2-1;sx=(Math.abs(_n)<0.08?0:_n)*1.6;} /* R1: Totzone; Schwarm-3 P2: Tastatur gewinnt über alte Maus-Position */
     steer+=(sx-steer)*0.2;
     brake=keyL||keyR?brake:brake; // (kept simple)
     // Beschleunigung (Zone-Style), Bremse senkt Tempo & schärft Lenkung

@@ -298,8 +298,8 @@ var SKINS=[
 ];
 var xp=+(lsGet("aban_neon_xp")||0);
 var selSkin=+(lsGet("aban_neon_skin")||0);
-function unlocked(i){return xp>=SKINS[i].need;}
-function applySkin(i){if(!unlocked(i))i=0;selSkin=i;try{localStorage.setItem("aban_neon_skin",i);}catch(e){}var s=SKINS[i];body.material.color.setHex(s.body);body.material.emissive.setHex(s.em);wing.material.color.setHex(s.wing);}
+function unlocked(i){return SKINS[i]?(xp>=SKINS[i].need):false;} /* 🛡️ Schwarm-3 P3: kaputter/ausser-Reichweite aban_neon_skin → kein Absturz (SKINS[i] undefined) */
+function applySkin(i){if(!SKINS[i]||!unlocked(i))i=0;selSkin=i;try{localStorage.setItem("aban_neon_skin",i);}catch(e){}var s=SKINS[i];body.material.color.setHex(s.body);body.material.emissive.setHex(s.em);wing.material.color.setHex(s.wing);}
 function renderSkins(){var el=document.getElementById("skins");if(!el)return;var next=null;for(var n=0;n<SKINS.length;n++){if(xp<SKINS[n].need){next=SKINS[n];break;}}
   var html="🛸 "+tr("skin")+": "+SKINS.map(function(s,i){var u=unlocked(i);return "<button data-i='"+i+"' style='margin:3px;padding:11px 14px;font-size:1rem;border-radius:10px;cursor:"+(u?"pointer":"default")+";border:1px solid "+(i===selSkin?"#5ef2ff":"#3a4170")+";background:"+(u?"#10142b":"#0a0c18")+";color:"+(u?"#e6e9ff":"#555c80")+"'>"+(u?s.name:tr("locked"))+"</button>";}).join("");
   html+="<div style='margin-top:8px;font-size:1rem;color:#98a0c6'>"+tr("xpTotal")+": "+xp+(next?(" · "+tr("nextSkin")+" "+next.need):" · "+tr("allFree"))+"</div>";
@@ -328,7 +328,7 @@ function renderSettings(){var el=document.getElementById("setBody");if(!el)retur
     "<div style='margin:8px 0'>"+tr("sound")+": <button id='setSound' style='margin:3px;padding:11px 20px;font-size:1rem;border-radius:10px;cursor:pointer;border:1px solid #3a4170;background:#10142b;color:#e6e9ff'>"+(muted?tr("off"):tr("on"))+"</button></div>";
   el.querySelectorAll("button[data-l]").forEach(function(b){b.onclick=function(){lang=b.getAttribute("data-l");applyLang();renderSettings();beep(520,.1,"triangle",.06);};});
   var sb=document.getElementById("setSound");if(sb)sb.onclick=function(){muted=!muted;try{localStorage.setItem("aban_neon_muted",muted?"1":"0");}catch(e){}var mb=document.getElementById("muteBtn");if(mb)mb.textContent=muted?"🔇":"🔊";try{musSync();}catch(e){}renderSettings();};}
-function openSettings(){setWasRunning=running&&!paused;if(setWasRunning)paused=true;renderSettings();document.getElementById("settings").classList.remove("hide");}
+function openSettings(){var _wasHidden=document.getElementById("settings").classList.contains("hide");if(_wasHidden){setWasRunning=running&&!paused;if(setWasRunning)paused=true;} /* 🐛 Schwarm-3 P2: Zustand nur beim ERSTEN Öffnen merken — 2. Gear-Tap setzte setWasRunning=false bei paused=true → Dauer-Freeze */renderSettings();document.getElementById("settings").classList.remove("hide");}
 function closeSettings(){document.getElementById("settings").classList.add("hide");if(setWasRunning){paused=false;setWasRunning=false;}}
 applySkin(selSkin);applyLang();
 

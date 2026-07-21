@@ -658,6 +658,8 @@ addEventListener("touchend",function(){touch=null;});
 function nearestEnemy(){var best=null,bd=1e9;for(var i=0;i<enemies.length;i++){var en=enemies[i];if(!en.active)continue;var dx=en.m.position.x-player.position.x,dz=en.m.position.z-player.position.z;var d=dx*dx+dz*dz;if(d<bd){bd=d;best=en;}}return best;}
 
 function spawnEnemy(boss){
+  if(!boss){var _ae=0;for(var _ai=0;_ai<enemies.length;_ai++)if(enemies[_ai].active)_ae++; /* 🧟 Schwarm-3 P3: harte Gleichzeitig-Grenze → kein Spawn-Runaway/FPS-Kollaps in Phase 5 */
+    if(_ae>=(IS_TOUCH?120:200))return;}
   var en=getMesh(enemies,enemyMesh); en.active=true; en.m.visible=true; en.boss=!!boss;
   en.shooter=false; en.splitter=false; en.shootT=0; en.raider=false; en.baseWaveBoss=false;
   var a=rnd()*Math.PI*2, r=ARENA*0.82;
@@ -848,6 +850,7 @@ function levelUpFx(){var x=player.position.x,z=player.position.z;
   spawnFlash(x,1.2,z,0x9bd0ff,3,0.32);screenFlash("rgba(150,230,255,.28)",0.5,260);}
 
 var actx=null,muted=false; try{muted=localStorage.getItem("ns_muted")==="1";}catch(e){}
+(function(){function _unlock(){try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();if(actx.state!=="running")actx.resume();}catch(e){}}["touchstart","pointerdown","mousedown","keydown"].forEach(function(ev){addEventListener(ev,_unlock,true);});})(); /* 🔊 Schwarm-3 P3: AudioContext in der 1. Nutzer-Geste entsperren (iOS-Autoplay) */
 function beep(f,d,t,v){if(muted)return;try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),g=actx.createGain();o.type=t||"sine";o.frequency.value=f;g.gain.value=v||.05;o.connect(g);g.connect(actx.destination);o.start();g.gain.exponentialRampToValueAtTime(1e-4,actx.currentTime+(d||.1));o.stop(actx.currentTime+(d||.1));}catch(e){}}
 // Prozedurale Hintergrundmusik (WebAudio) — treibender Neon-Loop, Tempo steigt mit der Phase.
 var music={timer:null,next:0,step:0,master:null};
