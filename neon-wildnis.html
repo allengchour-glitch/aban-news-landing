@@ -1644,10 +1644,11 @@ function layRoads(cx,cz,rr){
   if(rr){var _cbR=Math.max(2,rr/3.5),cbAll=gtex("tex_cobble.png",[_cbR,_cbR],true);
     /* Scheibe mit RADIALEN Ringen: CircleGeometry hat nur Zentrum+Rand -> auf Hügeln stiess das Gelände
        mitten durch die flachen Dreiecke (User: 'auf dem hügel dorf sollte auch pflaster sein') */
-    var SEGp=48,RINGSp=Math.max(6,Math.min(14,Math.round(rr/4))),posP=[],uvP=[],idxP=[];
+    var SEGp=48,RINGSp=Math.max(6,Math.min(14,Math.round(rr/4))),posP=[],uvP=[],colP=[],idxP=[];
     for(var rp=0;rp<=RINGSp;rp++){var radP=rr*rp/RINGSp;
+      var alP=rp>=RINGSp?0:(rp>=RINGSp-1?0.45:1); /* 🌾 Rand-Ringe faden ins Gras (weicher Übergang statt harter Pflaster-Kante) */
       for(var sp2=0;sp2<=SEGp;sp2++){var ap=sp2/SEGp*6.283185,xP=Math.cos(ap)*radP,zP=Math.sin(ap)*radP;
-        posP.push(xP,groundH(cx+xP,cz+zP)+0.10,zP);uvP.push(xP/7,zP/7);}}
+        posP.push(xP,groundH(cx+xP,cz+zP)+0.10,zP);uvP.push(xP/7,zP/7);colP.push(1,1,1,alP);}}
     for(var r2p=0;r2p<RINGSp;r2p++)for(var s2p=0;s2p<SEGp;s2p++){
       var a0=r2p*(SEGp+1)+s2p,b0=a0+SEGp+1;
       /* 🐛 Paket-#2-Fix: Winding zeigte nach unten (Pflaster von oben weggecullt) -> gedreht */
@@ -1655,9 +1656,10 @@ function layRoads(cx,cz,rr){
     var pg=new THREE.BufferGeometry();
     pg.setAttribute("position",new THREE.Float32BufferAttribute(posP,3));
     pg.setAttribute("uv",new THREE.Float32BufferAttribute(uvP,2));
+    pg.setAttribute("color",new THREE.Float32BufferAttribute(colP,4));
     pg.setIndex(idxP);pg.computeVertexNormals();
-    var pav=new THREE.Mesh(pg,new THREE.MeshLambertMaterial({map:cbAll}));
-    pav.position.set(cx,0,cz);pav.receiveShadow=true;scene.add(pav);}
+    var pav=new THREE.Mesh(pg,new THREE.MeshLambertMaterial({map:cbAll,vertexColors:true,transparent:true,depthWrite:false}));
+    pav.renderOrder=1;pav.position.set(cx,0,cz);pav.receiveShadow=true;scene.add(pav);}
   var cobble=gtex("tex_cobble.png",[1,1],true);
   var normal=gtex("tex_cobble_n.png",[1,1],false);
   // geschwungener S-Pfad durch das Dorf (seitliches Schwingen -> nie gerade)
