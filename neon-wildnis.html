@@ -1933,7 +1933,8 @@ function gardenMats(){if(_gMats)return _gMats;var L=THREE.MeshLambertMaterial,B=
   _gMats={wood:new L({color:0x8a5a30,flatShading:true}),soil:new L({color:0x4a3220,flatShading:true}),
     leafA:new L({color:0x4faf55,flatShading:true}),leafB:new L({color:0x3f9a48,flatShading:true}),leafC:new L({color:0x6fbf46,flatShading:true}),
     carrot:new L({color:0xe8802a,flatShading:true}),tomato:new B({color:0xe23b2e}),stem:new L({color:0x3a7a3f,flatShading:true}),
-    petal:new B({color:0xffd23f}),core:new L({color:0x6a4020,flatShading:true}),metal:new L({color:0x9fb4c0,flatShading:true})};
+    petal:new B({color:0xffd23f}),core:new L({color:0x6a4020,flatShading:true}),metal:new L({color:0x9fb4c0,flatShading:true}),
+    blooms:[0xff6ab0,0xffd166,0x7de3ff,0xc98bff,0xffffff,0xff8a4d].map(function(c){return new B({color:c});})}; /* Schwarm-2: Blüten-Materialien 1× cachen statt pro Blüte neu (210 Allocs weniger) */
   return _gMats;}
 function mkGarden(gx,gz,ang){
   ang=ang||0;var gy=groundH(gx,gz),M=gardenMats();
@@ -1970,7 +1971,7 @@ function mkGarden(gx,gz,ang){
   var BC=[0xff6ab0,0xffd166,0x7de3ff,0xc98bff,0xffffff,0xff8a4d];
   for(var f=0;f<7;f++){var fx=-1.45+f*0.5;
     var fst=new THREE.Mesh(new THREE.CylinderGeometry(0.02,0.02,0.34,4),M.stem);fst.position.set(fx,0.34,1.05);G.add(fst);
-    var bloom=new THREE.Mesh(new THREE.IcosahedronGeometry(0.09,0),new THREE.MeshBasicMaterial({color:BC[f%BC.length]}));bloom.position.set(fx,0.54,1.05);G.add(bloom);}
+    var bloom=new THREE.Mesh(new THREE.IcosahedronGeometry(0.09,0),M.blooms[f%M.blooms.length]);bloom.position.set(fx,0.54,1.05);G.add(bloom);}
   // 🪣 Giesskanne in der Ecke
   var can=new THREE.Mesh(new THREE.CylinderGeometry(0.16,0.18,0.26,10),M.metal);can.position.set(1.4,0.32,1.0);G.add(can);
   var spout=new THREE.Mesh(new THREE.CylinderGeometry(0.03,0.05,0.34,6),M.metal);spout.position.set(1.62,0.4,1.0);spout.rotation.z=-0.8;G.add(spout);
@@ -2009,6 +2010,7 @@ function mkBunting(cx,cz,ax,az,bx,bz){
 function decoVillageExtras(vx,vz,isSpawn,houses){
   // Gärten neben (fast) jedem Haus, seitlich versetzt
   for(var i=0;i<houses.length;i++){if(!isSpawn&&rnd()<0.4)continue;
+    if(IS_MOB&&(i&1))continue; /* 📱 Schwarm-2 P1: auf dem Handy nur jedes 2. Beet (mkGarden zieht KEIN seeded rnd → koop-sicher, nur lokale Meshes) */
     var hx=houses[i].x,hz=houses[i].z,outAng=Math.atan2(hz-vz,hx-vx),perp=outAng+Math.PI/2,side=(i%2?1:-1);
     /* 🌱 weiter weg vom Haus (7.5 seitlich + leicht nach aussen) — 4.2 überschnitt das grosse Fachwerkhaus (User) */
     var gx=hx+Math.cos(perp)*side*7.5+Math.cos(outAng)*1.4,gz=hz+Math.sin(perp)*side*7.5+Math.sin(outAng)*1.4;
@@ -2701,7 +2703,7 @@ function decorateWorld(){
       var ckx=vx+ringR*0.82,ckz=vz-ringR*0.82,castle=cc0inst("building_castle",8.5);
       if(castle){castle.position.set(ckx,groundH(ckx,ckz),ckz);castle.rotation.y=Math.atan2(vx-ckx,vz-ckz);scene.add(castle);addCollider(ckx,ckz,6.0,castle);}
       /* Brunnen am Marktplatz */
-      var fnx=vx+9,fnz=vz+9,foun=cc0inst("ftk_fountain",2.4);if(foun){foun.position.set(fnx,groundH(fnx,fnz),fnz);scene.add(foun);addCollider(fnx,fnz,2.0);}
+      var fnx=vx+6,fnz=vz+6,foun=cc0inst("ftk_fountain",2.4);if(foun){foun.position.set(fnx,groundH(fnx,fnz),fnz);scene.add(foun);addCollider(fnx,fnz,2.0);} /* Schwarm-2 P3: von r12.7 (Haus-Ring) nach innen auf r8.5 → kein Haus-Clip */
     } else {
       for(var f=0;f<8;f++){var fa=f/8*6.28,fx=vx+Math.cos(fa)*ringR,fz=vz+Math.sin(fa)*ringR;var fm=cc0inst("cc0_fence",1.2);if(fm){fm.position.set(fx,groundH(fx,fz),fz);fm.rotation.y=fa+Math.PI/2;scene.add(fm);}}
     }
@@ -3901,6 +3903,7 @@ function startGhost(type){
   ghost.traverse(function(n){if(n.isMesh&&n.material){n.material=n.material.clone();n.material.transparent=true;n.material.opacity=0.5;}});
   scene.add(ghost);
   document.getElementById("buildMenu").classList.add("hide");
+  if(!lsGet("nw_buildhint")){lsSet("nw_buildhint","1");if(typeof announce==="function")announce("👣 Lauf zur Position — dann "+(IS_MOB?"✓":"Enter")+" zum Bauen","#bfe9ff");} /* Schwarm-2 P2: einmalige Bau-Anleitung für Anfänger */
 }
 function updGhost(){
   if(!ghost)return;
