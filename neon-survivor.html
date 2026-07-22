@@ -661,7 +661,7 @@ function spawnEnemy(boss){
   if(!boss){var _ae=0;for(var _ai=0;_ai<enemies.length;_ai++)if(enemies[_ai].active)_ae++; /* 🧟 Schwarm-3 P3: harte Gleichzeitig-Grenze → kein Spawn-Runaway/FPS-Kollaps in Phase 5 */
     if(_ae>=(IS_TOUCH?120:200))return;}
   var en=getMesh(enemies,enemyMesh); en.active=true; en.m.visible=true; en.boss=!!boss;
-  en.shooter=false; en.splitter=false; en.shootT=0; en.raider=false; en.baseWaveBoss=false;
+  en.shooter=false; en.splitter=false; en.shootT=0; en.raider=false; en.baseWaveBoss=false; en._tele=0; /* 🐛 Schwarm: Warn-Ring-Flag beim Pool-Recycling zurücksetzen (sonst übersprang ein recycelter Boss seinen ersten Telegraph) */
   var a=rnd()*Math.PI*2, r=ARENA*0.82;
   var esx=Math.max(-ARENA+2,Math.min(ARENA-2,player.position.x+Math.cos(a)*r));
   var esz=Math.max(-ARENA+2,Math.min(ARENA-2,player.position.z+Math.sin(a)*r));
