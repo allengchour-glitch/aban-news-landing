@@ -262,6 +262,9 @@ footer a{color:var(--purple);text-decoration:none}
         var t=document.createElement("span");t.className="chip total";
         t.textContent="🏆 Fortschritt in "+withProgress+" von "+GAMES_TOTAL+" Spielen";bar.appendChild(t);
         for(var j=0;j<chips.length;j++){var s=document.createElement("span");s.className="chip";s.textContent=chips[j];bar.appendChild(s);}
+        try{var _xp=+(localStorage.getItem('aban_neon_xp')||0),_co=+(localStorage.getItem('ns_cores')||0); /* 💠 geteilte Cross-Game-Brieftasche sichtbar machen */
+          if(_xp>0){var w=document.createElement('span');w.className='chip';w.textContent='💠 '+_xp+' XP';bar.appendChild(w);}
+          if(_co>0){var w2=document.createElement('span');w2.className='chip';w2.textContent='⬢ '+_co+' Kerne';bar.appendChild(w2);}}catch(e){}
       }else{
         var e0=document.createElement("span");e0.className="chip";
         e0.textContent="✨ Noch keine Rekorde — such dir unten ein Spiel aus!";bar.appendChild(e0);

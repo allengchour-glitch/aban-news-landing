@@ -687,7 +687,7 @@ function placeResources(){
   // 💧 Leuchtende Teiche in Senken + heller Uferring + Schilf -> lebendige Landschaft
   window._wildPonds=[];
   (function(){
-    var N=Math.round(11*VF);
+    var N=Math.round(15*VF);
     for(var i=0;i<N;i++){
       var a=rnd()*6.28,rd=22+rnd()*(half-22),x=Math.cos(a)*rd,z=Math.sin(a)*rd;
       if(Math.abs(x)<12&&Math.abs(z)<12){i--;continue;}
@@ -2182,7 +2182,7 @@ function onStationDone(score,win){
   var cr=(st.badge==="gladiator"||st.badge==="krieger")
     ?Math.max(1,Math.min(12,1+Math.floor((score|0)/40))) /* ⚔️ Arena (Kills+Level·10): grösserer Einsatz, Cap 12 */
     :Math.max(1,Math.min(8,1+Math.floor((score|0)/25))); /* score-skaliert, Cap 8 */
-  inv.crystal=(inv.crystal|0)+cr;invUpd();
+  inv.crystal=(inv.crystal|0)+cr;invUpd();try{var _gx=(+(localStorage.getItem('aban_neon_xp')||0))+cr*3;localStorage.setItem('aban_neon_xp',_gx);}catch(e){} /* 💠 Cross-Game-XP: Arenen zahlen auf dieselbe Brieftasche wie Flug/Survivor */
   if(st.badge==="gladiator")qProg.arenaCr=(qProg.arenaCr|0)+cr; /* 📜 W3-Quest (b): Arena-💎 zaehlen */
   if(st.badge==="raser"&&(score|0)>=40)qProg.raceWin=1; /* 📜 W3-Quest (c): Renn-Sieg ab Score 40 */
   if(st.badge==="partner"&&typeof bondGain==="function"){bondGain(3);toast("🤝 Tempel gemeistert — euer Band wächst! +3");} /* #60 Koop-Sieg füttert das Wildnis-Band */
@@ -4441,9 +4441,9 @@ if(GFX_HI){try{
   bw=Math.max(1,Math.floor(W/2));bh=Math.max(1,Math.floor(H/2));
   rtA=new THREE.WebGLRenderTarget(bw,bh,rtOpt);rtB=new THREE.WebGLRenderTarget(bw,bh,rtOpt);
   qScene=new THREE.Scene();qCam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
-  brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.85}},vertexShader:bloomVert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
+  brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.78}},vertexShader:bloomVert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
   blurMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},dir:{value:new THREE.Vector2(1,0)},res:{value:new THREE.Vector2(bw,bh)}},vertexShader:bloomVert,fragmentShader:"uniform sampler2D tDiffuse;uniform vec2 dir;uniform vec2 res;varying vec2 vUv;void main(){vec2 px=dir/res;vec4 s=vec4(0.0);s+=texture2D(tDiffuse,vUv-4.0*px)*0.05;s+=texture2D(tDiffuse,vUv-3.0*px)*0.09;s+=texture2D(tDiffuse,vUv-2.0*px)*0.12;s+=texture2D(tDiffuse,vUv-1.0*px)*0.15;s+=texture2D(tDiffuse,vUv)*0.18;s+=texture2D(tDiffuse,vUv+1.0*px)*0.15;s+=texture2D(tDiffuse,vUv+2.0*px)*0.12;s+=texture2D(tDiffuse,vUv+3.0*px)*0.09;s+=texture2D(tDiffuse,vUv+4.0*px)*0.05;gl_FragColor=s;}"});
-  compMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tBase:{value:null},tBloom:{value:null},strength:{value:0.35}},vertexShader:bloomVert,fragmentShader:[
+  compMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tBase:{value:null},tBloom:{value:null},strength:{value:0.44}},vertexShader:bloomVert,fragmentShader:[
     "uniform sampler2D tBase;uniform sampler2D tBloom;uniform float strength;varying vec2 vUv;",
     "void main(){",
     "  vec2 d=vUv-0.5; float r2=dot(d,d);",
@@ -4916,7 +4916,7 @@ function startGame(fresh){
   /* 📖 W7: Einmalige Anfänger-Tipps beim allerersten Start (frisch, solo) — beantwortet „Regeln erklären für Anfänger" */
   if(!sv&&!NET.on&&!lsGet("nw_intro")){lsSet("nw_intro","1");
     var _tips=["🕹️ Ziehe links den Joystick zum Laufen","🪓 Rechts = Bäume fällen & Kämpfen · 🔨 = Bauen","💨 = Rolle zum Ausweichen · 💥-Skill kommt ab Level 2","🌲 Sammle 10 Holz für das erste Ziel!"];
-    _tips.forEach(function(tp,ti){setTimeout(function(){if(running&&!dead&&!(ti===0&&window.__moved))announce(tp,"#bfe9ff");},4800+ti*2700);});
+    _tips.forEach(function(tp,ti){setTimeout(function(){if(running&&!dead&&!(ti===0&&window.__moved))announce(tp,"#bfe9ff");},2000+ti*2600);});
     var cb=document.createElement("div"); /* 🕹️ dezente Steuerungs-Leiste, verschwindet nach 12s */
     cb.style.cssText="position:absolute;left:50%;transform:translateX(-50%);bottom:calc(2px + env(safe-area-inset-bottom));z-index:4;background:rgba(10,20,40,.55);border:1px solid rgba(125,227,255,.35);border-radius:12px;padding:4px 12px;font-size:12px;font-weight:800;color:#bfe9ff;pointer-events:none;transition:opacity 1s;white-space:nowrap";
     cb.textContent="🕹️ laufen · 🪓 sammeln/kämpfen · 💨 rollen · 🔨 bauen";

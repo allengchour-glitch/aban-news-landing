@@ -3335,7 +3335,7 @@ function chatAdd(n,x,idx){var box=document.getElementById("chatMsgs");if(!box)re
 // ===================== 😊 Smiley-Fast-Chat (Pass B2, Muster neon-duo): Sprechblasen über der eigenen Figur =====================
 var EMOTES=[["👍","👍"],["❤️","❤️"],["😂","😂"],["😮","😮"],["💪","Gut gemacht!"],["🆘","Hilfe!"]];
 var _emoLast=0;
-function showEmoteB(idx,k){var e=EMOTES[k];if(!e)return;chatBubble(idx,e[1]);}
+function showEmoteB(idx,k){var e=EMOTES[k];if(!e)return;chatBubble(idx,e[1]);if(typeof emote==="function"&&typeof pawns!=="undefined"&&pawns[idx])emote(idx,["jubel","jubel","jubel","wink","jubel","wink"][k]||"wink");} /* 🕺 Emote bewegt die Figur, nicht nur Textblase */
 function sendEmote(k){
   if(!running||!EMOTES[k])return;
   var now=performance.now();if(now-_emoLast<1000)return;_emoLast=now; // Spam-Schutz: 1 Emote/s
