@@ -508,7 +508,7 @@ function brakeBtnVis(on){var bb=document.getElementById("brakeBtn");if(bb)bb.sty
 
 function spawnThing(){
   var t=null;for(var i=0;i<things.length;i++)if(!things[i].active){t=things[i];break;}if(!t)return;
-  t.active=true;t.d=spawnD;t.boost=Math.random()<0.30;
+  t.active=true;t.d=spawnD;t.boost=Math.random()<0.30;t.nm=false; /* 🏎️ Beinahe-Streifer-Flag */
   if(t.boost){t.off=(Math.random()*2-1)*(HALF-3.0);t.pad.visible=true;t.bar.visible=false;}
   else{t.off=(Math.random()*2-1)*(HALF-1.5);t.bar.visible=true;t.pad.visible=false;t.bar.rotation.y=(Math.random()-0.5)*0.5;}
 }
@@ -592,6 +592,7 @@ function loop(now){
         else{shield-=34;speed-=22;shake=Math.max(shake,0.7);sGlow.color.setHex(0xff4d6d);beep(140,.18,"sawtooth",.08);for(e2=0;e2<8;e2++)emitSpark(tx,0.6,tz,0xff5a5a);}
         t.active=false;t.bar.visible=false;t.pad.visible=false;
       }
+      else if(!t.boost&&!t.nm&&Math.abs(tz)<3){var adx=Math.abs(tx-shipX);if(adx>=1.8&&adx<3.5){t.nm=true;coinScore++;speed+=4;shake=Math.max(shake,0.16);emitSpark(shipX,0.5,ship.position.z,0x5ef2ff);beep(1500,.06,"square",.05);var cel=document.getElementById("coins");if(cel)cel.textContent=coinScore;}} /* 🏎️ knapp ausgewichen → Belohnung (Score+Funke+Ping) */
     }
     // Münzen bewegen + einsammeln
     for(i=0;i<coins.length;i++){var co=coins[i];if(!co.active)continue;var cz=-(co.d-dist);var cxx=centerX(co.d)+co.off;
