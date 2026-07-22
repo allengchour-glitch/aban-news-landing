@@ -854,7 +854,7 @@ function toonify(mesh,neon,isHero){var m=mesh.material;if(!m||m._toon||!m.isMesh
   if(isHero)(function(){var nm=(m.name||"").toLowerCase();var mx=Math.max(_col.r,_col.g,_col.b);
     if(!m.map&&(nm.indexOf("skin")>=0||nm.indexOf("head")>=0||nm.indexOf("hand")>=0||nm.indexOf("face")>=0||nm.indexOf("neck")>=0||nm.indexOf("ear")>=0)&&mx<0.30){
       var sat=Math.max(_col.r,_col.g,_col.b)-Math.min(_col.r,_col.g,_col.b);
-      if(sat<0.05){_col.setRGB(0.82,0.60,0.46);} /* farblose (schwarz/grau) Haut → echter warmer Hautton statt Grau */
+      if(sat<0.05){_col.setRGB(0.56,0.39,0.29);} /* farblose (schwarz/grau) Haut → echter mittlerer Hautton (Albedo bewusst < 0.6, sonst brennt matte Haut unter Tageslicht/ACES zu Weiss aus) */
       else{var k=0.58/Math.max(0.01,mx);_col.multiplyScalar(k);_col.r=Math.min(1,_col.r);_col.g=Math.min(1,_col.g);_col.b=Math.min(1,_col.b);}}
     /* 👀 „augen schöner": die „Face"/„Eye"-Fläche der nwhero-GLBs ist ein weisser Blob → dunkle Iris draus machen */
     else if(!m.map&&(nm.indexOf("eye")>=0||nm.indexOf("face")>=0)&&mx>0.45){_col.setRGB(0.10,0.11,0.16);mesh._eyeMat=1;}})();
@@ -4972,17 +4972,17 @@ function startGame(fresh){
   function init(){
     try{pr=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true});}catch(e){return false;}
     pr.setPixelRatio(Math.min(devicePixelRatio,2));pr.setSize(cv.width,cv.height,false);pr.outputEncoding=THREE.sRGBEncoding;
-    if(THREE.ACESFilmicToneMapping!==undefined){pr.toneMapping=THREE.ACESFilmicToneMapping;pr.toneMappingExposure=1.15;} /* 🎬 Held-Vorschau filmisch tonen (gleich wie im Spiel) */
+    if(THREE.ACESFilmicToneMapping!==undefined){pr.toneMapping=THREE.ACESFilmicToneMapping;pr.toneMappingExposure=0.98;} /* 🎬 Held-Vorschau filmisch tonen; Exposure leicht runter → Haut brennt nicht aus */
     psc=new THREE.Scene();
     try{var _pc=document.createElement('canvas');_pc.width=16;_pc.height=64;var _px=_pc.getContext('2d'); /* 🌤️ eigene Gradient-Env (eigener WebGL-Kontext!) → Helden-Metall spiegelt auch im Picker */
       var _pg=_px.createLinearGradient(0,0,0,64);_pg.addColorStop(0,'#9fc4ff');_pg.addColorStop(0.5,'#c7d6ea');_pg.addColorStop(1,'#3a4256');_px.fillStyle=_pg;_px.fillRect(0,0,16,64);
       var _pt=new THREE.CanvasTexture(_pc);_pt.mapping=THREE.EquirectangularReflectionMapping;
       var _ppm=new THREE.PMREMGenerator(pr);psc.environment=_ppm.fromEquirectangular(_pt).texture;_pt.dispose();_ppm.dispose();}catch(e){}
-    psc.add(new THREE.HemisphereLight(0xffffff,0x3a4a66,0.85)); /* 3-Punkt-Setup: Ambient etwas runter, damit Key/Rim Form geben */
-    var dl=new THREE.DirectionalLight(0xfff2e0,1.15);dl.position.set(2.4,4,3);psc.add(dl); /* Key (warm, vorn-rechts) */
-    var pfill=new THREE.DirectionalLight(0xbfd6ff,0.4);pfill.position.set(-3,2,2.5);psc.add(pfill); /* Fill (kühl, links) */
-    var prim=new THREE.DirectionalLight(0x9fc0ff,0.8);prim.position.set(-1.5,3,-4);psc.add(prim); /* Rim (hinten) → Silhouetten-Kante */
-    var pkey=new THREE.PointLight(0xfff0d8,0.6,6,2);pkey.position.set(1.6,1.6,2.2);psc.add(pkey); /* warmes Nah-Fill am Helden */
+    psc.add(new THREE.HemisphereLight(0xffffff,0x3a4a66,0.55)); /* 3-Punkt-Setup: gedämpft, damit matte Haut nicht zu Weiss ausbrennt (0.85 war zu heiss) */
+    var dl=new THREE.DirectionalLight(0xfff2e0,0.85);dl.position.set(2.4,4,3);psc.add(dl); /* Key (warm, vorn-rechts) */
+    var pfill=new THREE.DirectionalLight(0xbfd6ff,0.32);pfill.position.set(-3,2,2.5);psc.add(pfill); /* Fill (kühl, links) */
+    var prim=new THREE.DirectionalLight(0x9fc0ff,0.75);prim.position.set(-1.5,3,-4);psc.add(prim); /* Rim (hinten) → Silhouetten-Kante */
+    var pkey=new THREE.PointLight(0xfff0d8,0.35,6,2);pkey.position.set(1.6,1.6,2.2);psc.add(pkey); /* warmes Nah-Fill am Helden */
     /* 🌑 Boden-Disc + weicher Schatten → Held steht statt zu schweben */
     var _pbT=(function(){var c=document.createElement("canvas");c.width=c.height=64;var x=c.getContext("2d");var g=x.createRadialGradient(32,32,3,32,32,30);g.addColorStop(0,"rgba(0,0,0,.42)");g.addColorStop(1,"rgba(0,0,0,0)");x.fillStyle=g;x.fillRect(0,0,64,64);return new THREE.CanvasTexture(c);})();
     var pblob=new THREE.Mesh(new THREE.CircleGeometry(0.7,20),new THREE.MeshBasicMaterial({map:_pbT,transparent:true,depthWrite:false}));pblob.rotation.x=-Math.PI/2;pblob.position.y=0.01;psc.add(pblob);
