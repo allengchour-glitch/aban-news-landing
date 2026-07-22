@@ -45,7 +45,7 @@ canvas{display:block}
 #xpFill{background:linear-gradient(90deg,#5ef2ff,#b98bff)}
 #hudTop{display:flex;justify-content:space-between;gap:8px;font-size:1rem;white-space:nowrap}
 #hpwrap{max-width:240px} #xpwrap{margin-top:6px;max-width:100%}
-.overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;background:radial-gradient(circle at 50% 40%,rgba(20,24,48,.72),rgba(6,7,15,.93));padding:20px 20px calc(20px + env(safe-area-inset-bottom));backdrop-filter:blur(3px);overflow-y:auto} /* flex-start + Feder = Titel nie abgeschnitten */
+.overlay{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;background:radial-gradient(circle at 50% 40%,rgba(20,24,48,.72),rgba(6,7,15,.93));padding:20px 20px calc(20px + env(safe-area-inset-bottom));backdrop-filter:blur(3px);overflow-y:auto} /* flex-start + Feder = Titel nie abgeschnitten · 🐛-Fix: z-index ÜBER die Touch-Knöpfe (⚡/🔨/Skills z-index 7) — sonst assen die Knöpfe die Taps auf Level-Up-Karten in ihren Ecken (User: „kann kein upgrade wählen") */
 /* Kleine Screens: Overlay-Inhalt scrollbar + "safe center" (Feder-Elemente statt hartem justify-center, sonst wird oben abgeschnitten) */
 .overlay::before,.overlay::after{content:"";flex:1 0 14px}
 .overlay>*{flex-shrink:0}
@@ -612,7 +612,7 @@ function reset(){
   S.xpMul=1+(meta.xp||0)*0.08;
   S.revives=(meta.rev||0);
   S.evolved={}; S.abilityCD=4; S.abilityMax=9;
-  S.skCD={1:0,2:0,3:0}; S.skIfr=0; /* Abyss-Skills: Cooldowns + Blink-i-Frames */
+  S.skCD={1:0,2:0,3:0}; S.skIfr=0; S.hurtIfr=0; /* Abyss-Skills: Cooldowns + Blink-i-Frames · S3: Melee-Treffer-i-Frame */
   var ch=CHARS[loadChar()]||CHARS[0];
   S.weapons={}; S.weapons[ch.weap]=1;
   S.maxhp*=ch.hp; S.hp=S.maxhp; S.dmg*=ch.dmg; S.speed*=ch.spd; S.haste*=ch.haste; S.area*=ch.area;
@@ -630,7 +630,12 @@ addEventListener("keydown",function(e){keys[e.key.toLowerCase()]=true;if((e.key=
 if(running&&!paused&&(e.key==="1"||e.key==="2"||e.key==="3"))castSkill(+e.key);});
 addEventListener("keyup",function(e){keys[e.key.toLowerCase()]=false;});
 var touch=null;
-addEventListener("touchstart",function(e){if(demolishMode&&e.touches[0]){structTapAt(e.touches[0].clientX,e.touches[0].clientY);return;}if(e.touches[0])touch={x:e.touches[0].clientX,y:e.touches[0].clientY,sx:e.touches[0].clientX,sy:e.touches[0].clientY};},{passive:true});
+addEventListener("touchstart",function(e){if(demolishMode&&e.touches[0]){structTapAt(e.touches[0].clientX,e.touches[0].clientY);return;}
+  /* S1: Joystick-Touch NUR im aktiven Spiel starten — sonst bleiben Overlays (Charakter/Shop/Bestenliste/Level-Up/Bau) scrollbar */
+  if(!running||paused)return;
+  var _lu=document.getElementById("levelup"),_bm=document.getElementById("buildmenu");
+  if((_lu&&!_lu.classList.contains("hide"))||(_bm&&!_bm.classList.contains("hide")))return;
+  if(e.touches[0])touch={x:e.touches[0].clientX,y:e.touches[0].clientY,sx:e.touches[0].clientX,sy:e.touches[0].clientY};},{passive:true});
 // Touch-Buttons (⚡/⏸) NUR im Spiel zeigen — im Menü verdecken sie sonst Text + Werkstatt-Buttons
 var COARSE=window.matchMedia&&window.matchMedia("(pointer:coarse)").matches;
 function showTouchBtns(on){if(!COARSE)return;var ab=document.getElementById("abBtn"),pb=document.getElementById("pauseBtn");
@@ -647,12 +652,14 @@ function showTouchBtns(on){if(!COARSE)return;var ab=document.getElementById("abB
   function tgl(e){e.preventDefault&&e.preventDefault();e.stopPropagation();
     if(running&&document.getElementById("levelup").classList.contains("hide")){paused=!paused;pb.textContent=paused?"▶":"⏸";announce(paused?"⏸ Pause":"");}}
   pb.addEventListener("touchstart",tgl,{passive:false});pb.addEventListener("click",tgl);})();
-addEventListener("touchmove",function(e){if(touch&&e.touches[0]){touch.x=e.touches[0].clientX;touch.y=e.touches[0].clientY;}e.preventDefault();},{passive:false});
+addEventListener("touchmove",function(e){if(touch&&e.touches[0]){touch.x=e.touches[0].clientX;touch.y=e.touches[0].clientY;e.preventDefault();}},{passive:false}); /* S1: preventDefault nur bei aktivem Joystick → Overlays scrollen */
 addEventListener("touchend",function(){touch=null;});
 
 function nearestEnemy(){var best=null,bd=1e9;for(var i=0;i<enemies.length;i++){var en=enemies[i];if(!en.active)continue;var dx=en.m.position.x-player.position.x,dz=en.m.position.z-player.position.z;var d=dx*dx+dz*dz;if(d<bd){bd=d;best=en;}}return best;}
 
 function spawnEnemy(boss){
+  if(!boss){var _ae=0;for(var _ai=0;_ai<enemies.length;_ai++)if(enemies[_ai].active)_ae++; /* 🧟 Schwarm-3 P3: harte Gleichzeitig-Grenze → kein Spawn-Runaway/FPS-Kollaps in Phase 5 */
+    if(_ae>=(IS_TOUCH?120:200))return;}
   var en=getMesh(enemies,enemyMesh); en.active=true; en.m.visible=true; en.boss=!!boss;
   en.shooter=false; en.splitter=false; en.shootT=0; en.raider=false; en.baseWaveBoss=false;
   var a=rnd()*Math.PI*2, r=ARENA*0.82;
@@ -843,6 +850,7 @@ function levelUpFx(){var x=player.position.x,z=player.position.z;
   spawnFlash(x,1.2,z,0x9bd0ff,3,0.32);screenFlash("rgba(150,230,255,.28)",0.5,260);}
 
 var actx=null,muted=false; try{muted=localStorage.getItem("ns_muted")==="1";}catch(e){}
+(function(){function _unlock(){try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();if(actx.state!=="running")actx.resume();}catch(e){}}["touchstart","pointerdown","mousedown","keydown"].forEach(function(ev){addEventListener(ev,_unlock,true);});})(); /* 🔊 Schwarm-3 P3: AudioContext in der 1. Nutzer-Geste entsperren (iOS-Autoplay) */
 function beep(f,d,t,v){if(muted)return;try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),g=actx.createGain();o.type=t||"sine";o.frequency.value=f;g.gain.value=v||.05;o.connect(g);g.connect(actx.destination);o.start();g.gain.exponentialRampToValueAtTime(1e-4,actx.currentTime+(d||.1));o.stop(actx.currentTime+(d||.1));}catch(e){}}
 // Prozedurale Hintergrundmusik (WebAudio) — treibender Neon-Loop, Tempo steigt mit der Phase.
 var music={timer:null,next:0,step:0,master:null};
@@ -977,11 +985,13 @@ function renderUpRow(){var out="";for(var id in S.weapons){if(S.weapons[id])out+
 function buildChoices(){
   var pool=[];
   for(var id in WEAPONS){var L=S.weapons[id]||0,w=WEAPONS[id];
-    if(L>0&&L<w.max)pool.push({i:w.i,n:w.i+" "+w.n+" → Lv"+(L+1),d:w.d,f:(function(id){return function(){S.weapons[id]++;};})(id)});
-    else if(L===0)pool.push({i:w.i,n:"✨ NEU: "+w.n,d:w.d,f:(function(id){return function(){S.weapons[id]=1;S.wt[id]=0;};})(id)});
+    if(L>0&&L<w.max)pool.push({i:w.i,n:w.i+" "+w.n+" → Lv"+(L+1),d:w.d,weap:true,f:(function(id){return function(){S.weapons[id]++;};})(id)});
+    else if(L===0)pool.push({i:w.i,n:"✨ NEU: "+w.n,d:w.d,weap:true,f:(function(id){return function(){S.weapons[id]=1;S.wt[id]=0;};})(id)});
   }
   for(var p=0;p<PASSIVES.length;p++)pool.push(PASSIVES[p]);
-  pool.sort(function(){return rnd()-0.5;});return pool.slice(0,3);
+  pool.sort(function(){return rnd()-0.5;});var picks=pool.slice(0,3); /* 🎯 Schwarm: mind. 1 Waffen-Option garantieren, damit Builds nie blockieren */
+  if(!picks.some(function(p){return p.weap;})){var wOpt=pool.filter(function(p){return p.weap;});if(wOpt.length)picks[2]=wOpt[Math.floor(rnd()*wOpt.length)];}
+  return picks;
 }
 var paused=false;
 function levelUp(){
@@ -1039,20 +1049,20 @@ function makeStruct(type){var g=new THREE.Group();
     var body=new THREE.Mesh(new THREE.BoxGeometry(4,2.4,1.1),mat(0x5ef2ff,0x2a6f8c));body.position.y=1.2;g.add(body);
     // Neon-Rahmen + 3 Energiezellen für Tiefe
     var frame=new THREE.Mesh(new THREE.TorusGeometry(1.9,0.07,6,4),mat(0x9bffff,0x9bffff));frame.position.set(0,1.2,0.58);frame.rotation.z=Math.PI/4;frame.scale.set(1.05,0.62,1);g.add(frame);
-    for(var wc=0;wc<3;wc++){var cell=new THREE.Mesh(new THREE.OctahedronGeometry(0.24,0),mat(0xd8ffff,0x5ef2ff));cell.position.set(-1.15+wc*1.15,1.2,0.62);g.add(cell);}
+    for(var wc=0;wc<3;wc++){var cell=new THREE.Mesh(new THREE.OctahedronGeometry(0.24,0),mat(0x5ef2ff,0x5ef2ff));cell.position.set(-1.15+wc*1.15,1.2,0.62);g.add(cell);}
     var cap=new THREE.Mesh(new THREE.BoxGeometry(4.1,0.22,1.2),mat(0x9bffff,0x4ad2ff));cap.position.y=2.45;g.add(cap);
   }
   else if(type==="spike"){
     var sbase=new THREE.Mesh(new THREE.BoxGeometry(4,1.5,1.0),mat(0x6aff9e,0x1f7a4a));sbase.position.y=0.75;g.add(sbase);
     var spframe=new THREE.Mesh(new THREE.BoxGeometry(4.1,0.2,1.15),mat(0xbfffd8,0x38c07a));spframe.position.y=1.5;g.add(spframe);
     // Dornen-Reihe (Zacken) — auffällig, verschieden hoch
-    for(var s=0;s<7;s++){var hh=0.8+((s%2)?0.35:0);var sp=new THREE.Mesh(new THREE.ConeGeometry(0.24,hh,5),mat(0xe6ffe6,0x7dffb0));sp.position.set(-1.72+s*0.573,1.6+hh*0.5,0);g.add(sp);}
+    for(var s=0;s<7;s++){var hh=0.8+((s%2)?0.35:0);var sp=new THREE.Mesh(new THREE.ConeGeometry(0.24,hh,5),mat(0x8dffb8,0x7dffb0));sp.position.set(-1.72+s*0.573,1.6+hh*0.5,0);g.add(sp);}
     // vordere & hintere Stachel (Dornen wirken in beide Richtungen)
     for(var sd=0;sd<4;sd++){var sfr=new THREE.Mesh(new THREE.ConeGeometry(0.16,0.6,4),mat(0xd0ffe0,0x6aff9e));sfr.position.set(-1.2+sd*0.8,0.8,0.62);sfr.rotation.x=Math.PI/2;g.add(sfr);}
   }
   else if(type==="tower"){
     var base=new THREE.Mesh(new THREE.CylinderGeometry(0.7,0.95,2.2,10),mat(0xffd166,0x8a6a10));base.position.y=1.1;g.add(base);
-    var head=new THREE.Mesh(new THREE.OctahedronGeometry(0.62,0),mat(0xfff0a0,0xffd166));head.position.y=2.5;g.add(head);
+    var head=new THREE.Mesh(new THREE.OctahedronGeometry(0.62,0),mat(0xffd166,0xffd166));head.position.y=2.5;g.add(head);
     // Detail: 3 Stützstreben + rotierender Fokus-Ring + Sockel-Ring (children[3..])
     var collar=new THREE.Mesh(new THREE.TorusGeometry(0.78,0.09,6,16),mat(0xffe28a,0xffb020));collar.rotation.x=-Math.PI/2;collar.position.y=2.05;g.add(collar);
     var fring=new THREE.Mesh(new THREE.TorusGeometry(0.92,0.05,6,20),mat(0xfff2b0,0xffd166));fring.rotation.x=-Math.PI/2;fring.position.y=2.5;g.add(fring);
@@ -1067,12 +1077,12 @@ function makeStruct(type){var g=new THREE.Group();
   }
   else if(type==="shield"){
     var gen=new THREE.Mesh(new THREE.CylinderGeometry(0.5,0.85,1.6,8),mat(0x8fbaff,0x3a5a9c));gen.position.y=0.8;g.add(gen);
-    var core=new THREE.Mesh(new THREE.IcosahedronGeometry(0.5,0),mat(0xdff0ff,0x6aa0ff));core.position.y=1.95;g.add(core);
+    var core=new THREE.Mesh(new THREE.IcosahedronGeometry(0.5,0),mat(0x9cc8ff,0x6aa0ff));core.position.y=1.95;g.add(core);
     var dome=new THREE.Mesh(new THREE.SphereGeometry(7,16,9,0,Math.PI*2,0,Math.PI/2),new THREE.MeshBasicMaterial({color:0x66aaff,transparent:true,opacity:0.14,side:THREE.FrontSide,depthWrite:false,blending:THREE.AdditiveBlending}));dome.position.y=0.08;g.add(dome);
     var dring=new THREE.Mesh(new THREE.TorusGeometry(7,0.12,8,44),mat(0x8fc4ff,0x66aaff));dring.rotation.x=-Math.PI/2;dring.position.y=0.07;g.add(dring);
     // Energie-Streben zur Kuppel + 3 kreisende Satelliten (children[4..])
     var band=new THREE.Mesh(new THREE.TorusGeometry(4.3,0.05,6,40),new THREE.MeshBasicMaterial({color:0x9bd0ff,transparent:true,opacity:0.4,depthWrite:false,blending:THREE.AdditiveBlending}));band.rotation.x=-Math.PI/2.4;band.position.y=2.4;g.add(band);
-    for(var ss=0;ss<3;ss++){var sat=new THREE.Mesh(new THREE.OctahedronGeometry(0.22,0),mat(0xdff0ff,0x8fc4ff));sat.position.set(Math.cos(ss/3*6.28)*1.6,1.9,Math.sin(ss/3*6.28)*1.6);g.add(sat);}
+    for(var ss=0;ss<3;ss++){var sat=new THREE.Mesh(new THREE.OctahedronGeometry(0.22,0),mat(0x9cc8ff,0x8fc4ff));sat.position.set(Math.cos(ss/3*6.28)*1.6,1.9,Math.sin(ss/3*6.28)*1.6);g.add(sat);}
   }
   else if(type==="slow"){var disc=new THREE.Mesh(new THREE.CircleGeometry(4,30),new THREE.MeshBasicMaterial({color:0x33d0ff,transparent:true,opacity:0.26,side:THREE.DoubleSide,depthWrite:false}));disc.rotation.x=-Math.PI/2;disc.position.y=0.05;g.add(disc);var ring=new THREE.Mesh(new THREE.TorusGeometry(4,0.13,6,34),mat(0x33d0ff,0x33d0ff));ring.rotation.x=-Math.PI/2;ring.position.y=0.07;g.add(ring);
     var ring2=new THREE.Mesh(new THREE.TorusGeometry(2.3,0.09,6,28),mat(0x7ae2ff,0x33d0ff));ring2.rotation.x=-Math.PI/2;ring2.position.y=0.08;g.add(ring2);
@@ -1080,7 +1090,7 @@ function makeStruct(type){var g=new THREE.Group();
   else{var d2=new THREE.Mesh(new THREE.CircleGeometry(3,28),new THREE.MeshBasicMaterial({color:0x44ee88,transparent:true,opacity:0.30,side:THREE.DoubleSide,depthWrite:false}));d2.rotation.x=-Math.PI/2;d2.position.y=0.05;g.add(d2);var r2=new THREE.Mesh(new THREE.TorusGeometry(3,0.13,6,30),mat(0x44ee88,0x44ee88));r2.rotation.x=-Math.PI/2;r2.position.y=0.07;g.add(r2);
     var cross=new THREE.Mesh(new THREE.BoxGeometry(0.9,0.18,0.28),mat(0xd6ffe6,0x44ee88));cross.position.y=0.55;g.add(cross);var cross2=new THREE.Mesh(new THREE.BoxGeometry(0.28,0.18,0.9),mat(0xd6ffe6,0x44ee88));cross2.position.y=0.55;g.add(cross2);
     var hub2=new THREE.Mesh(new THREE.IcosahedronGeometry(0.34,0),mat(0xeafff2,0x44ee88));hub2.position.y=0.9;g.add(hub2);}
-  g.traverse(function(n){if(n.isMesh&&n.material&&n.material.emissive)n.material.emissiveIntensity=0.7;}); // Bloom nicht ausblasen → Farben bleiben lesbar
+  g.traverse(function(n){if(n.isMesh&&n.material&&n.material.emissive)n.material.emissiveIntensity=0.4;}); // #1 Beauty-Sweep: Bloom-Diät — Strukturen behalten Farbidentität → Farben bleiben lesbar
   return g;}
 function validPlace(x,z,type){var m=structFootprint(type);
   if(Math.abs(x)>ARENA-m+0.01||Math.abs(z)>ARENA-m+0.01)return false;
@@ -1522,9 +1532,9 @@ var rtScene=(renderer.capabilities.isWebGL2&&THREE.WebGLMultisampleRenderTarget)
 var bw=Math.max(1,Math.floor(W/2)),bh=Math.max(1,Math.floor(H/2));
 var rtA=new THREE.WebGLRenderTarget(bw,bh,rtOpt),rtB=new THREE.WebGLRenderTarget(bw,bh,rtOpt);
 var qScene=new THREE.Scene(),qCam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
-var brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.72}},vertexShader:bloomVert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
+var brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.80}},vertexShader:bloomVert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
 var blurMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},dir:{value:new THREE.Vector2(1,0)},res:{value:new THREE.Vector2(bw,bh)}},vertexShader:bloomVert,fragmentShader:"uniform sampler2D tDiffuse;uniform vec2 dir;uniform vec2 res;varying vec2 vUv;void main(){vec2 px=dir/res;vec4 s=vec4(0.0);s+=texture2D(tDiffuse,vUv-4.0*px)*0.05;s+=texture2D(tDiffuse,vUv-3.0*px)*0.09;s+=texture2D(tDiffuse,vUv-2.0*px)*0.12;s+=texture2D(tDiffuse,vUv-1.0*px)*0.15;s+=texture2D(tDiffuse,vUv)*0.18;s+=texture2D(tDiffuse,vUv+1.0*px)*0.15;s+=texture2D(tDiffuse,vUv+2.0*px)*0.12;s+=texture2D(tDiffuse,vUv+3.0*px)*0.09;s+=texture2D(tDiffuse,vUv+4.0*px)*0.05;gl_FragColor=s;}"});
-var compMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tBase:{value:null},tBloom:{value:null},strength:{value:0.7},uTime:{value:0}},vertexShader:bloomVert,fragmentShader:[
+var compMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tBase:{value:null},tBloom:{value:null},strength:{value:0.55},uTime:{value:0}},vertexShader:bloomVert,fragmentShader:[
 "uniform sampler2D tBase;uniform sampler2D tBloom;uniform float strength;uniform float uTime;varying vec2 vUv;",
 "void main(){",
 "  vec2 uv=vUv; vec2 d=uv-0.5; float r2=dot(d,d);",
@@ -1564,14 +1574,15 @@ function start(){
   if(dailyMode)_srng=mulberry32((dayNo*2654435761)>>>0);reset();running=true;document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("win").classList.add("hide");document.getElementById("hud").classList.remove("hide");
   hurt=0;hurtEl.style.opacity=0;showTouchBtns(true);updateBuildBtn();
   var mi=(coopMode==='client'&&pendingMap!=null)?pendingMap:(dailyMode?(dayNo%MAPS.length):Math.floor(rnd()*MAPS.length));
-  curMapIdx=mi;var m=applyMap(mi);coopSetup();announce("» "+m.name+" «");startMusic();}
+  curMapIdx=mi;var m=applyMap(mi);coopSetup();announce("» "+m.name+" «");startMusic();
+  if(!coopMode){try{if(!localStorage.getItem("ns_moveTip")){localStorage.setItem("ns_moveTip","1");setTimeout(function(){if(running&&!paused)announce(IS_TOUCH?"🕹️ Finger ziehen = laufen · 🔫 Schuss automatisch!":"⌨️ WASD/Pfeile = laufen · 🔫 Schuss automatisch!");},1600);}}catch(e){}}} /* 🆕 Anfänger-Hinweis beim allerersten Start */
 function showBest(){var b=bestTime();document.getElementById("best").textContent=b>0?"🏆 Rekord: "+b+"s":"";nsRefreshWelcome();}
 function gameOver(){if(!running)return;running=false;shake=1.2;hurt=0;hurtEl.style.opacity=0;stopMusic();
   if(coopMode==='host')netEv({e:'ov',s:Math.floor(S.t),lv:S.lvl,kk:S.kills,wv:S.wave});showTouchBtns(false);cancelPlacing();closeBuildMenu();closeStructMenu();demolishMode=false;S.bossWave=false;cb_abort();showPlaceButtons(false);updateBuildBtn();var s=Math.floor(S.t),b=bestTime(),rec=!dailyMode&&s>b;if(rec)setBest(s);
   document.getElementById("finalT").textContent="Überlebt: "+s+"s";
   var f=document.getElementById("finalT");f.className=rec?"rec":"";
   var pre=dailyMode?("🗓️ Tages-Challenge #"+dayNo+" · "):(rec&&s>0?"🎉 <b>Neuer Rekord!</b> · ":"🏆 Rekord "+b+"s · ");
-  var earned=Math.floor(S.kills/3)+Math.floor(S.t/8);saveCores(loadCores()+earned);renderShop();
+  var earned=Math.floor(S.kills/3)+Math.floor(S.t/8);saveCores(loadCores()+earned);try{if(!STATION){var _gx=(+(localStorage.getItem('aban_neon_xp')||0)||0)+S.kills+S.lvl*5;localStorage.setItem('aban_neon_xp',_gx);}}catch(e){}renderShop(); /* 💠 Cross-Game-XP — nur solo (als Arena zahlt die Wildnis ein → keine Doppelzählung); ||0 fängt NaN */
   document.getElementById("verdict").innerHTML=pre+"Level "+S.lvl+" · "+S.kills+" Gegner · <b>+"+earned+" ⬢ Kerne</b>";
   // Mehr-Runden-Speicherstand: Run eintragen (Profil + Bestenliste) und Game-Over-Extras füllen
   nsShowGameOver(recordRun(curName,S.t,S.wave,S.kills));
@@ -1579,7 +1590,8 @@ function gameOver(){if(!running)return;running=false;shake=1.2;hurt=0;hurtEl.sty
   document.getElementById("over").classList.remove("hide");}
 function win(){if(S.won)return;S.won=true;running=false;shake=1.5;hurt=0;hurtEl.style.opacity=0;stopMusic();
   if(coopMode==='host')netEv({e:'wn',s:Math.floor(S.t),lv:S.lvl,kk:S.kills});showTouchBtns(false);cancelPlacing();closeBuildMenu();closeStructMenu();demolishMode=false;S.bossWave=false;cb_abort();showPlaceButtons(false);updateBuildBtn();
-  var earned=Math.floor(S.kills/3)+Math.floor(S.t/8)+150;saveCores(loadCores()+earned);renderShop();
+  var _ws=Math.floor(S.t);if(!dailyMode&&_ws>bestTime())setBest(_ws); /* P7: Sieg zählt auch als Zeit-Rekord (vorher nur gameOver) */
+  var earned=Math.floor(S.kills/3)+Math.floor(S.t/8)+150;saveCores(loadCores()+earned);try{if(!STATION){var _gx=(+(localStorage.getItem('aban_neon_xp')||0)||0)+S.kills+S.lvl*5+40;localStorage.setItem('aban_neon_xp',_gx);}}catch(e){}renderShop(); /* 💠 Cross-Game-XP (Sieg) — nur solo */
   var _r=recordRun(curName,S.t,S.wave,S.kills); // Sieg zählt auch als gespielte Runde
   document.getElementById("winV").innerHTML="In "+mmss(S.t)+" geschafft · Level "+S.lvl+" · "+S.kills+" Gegner · <b>+"+earned+" ⬢ Kerne</b> · Runde #"+_r.round;
   if(STATION)stationPost({t:"stationDone",score:S.kills+(S.lvl*10)}); /* 🌲 Wildnis-Arena: Sieg zählt erst recht */
@@ -1599,8 +1611,8 @@ document.getElementById("winShareBtn").onclick=function(){var txt="Neon Survivor
 document.getElementById("shareBtn").onclick=function(){var txt="Neon Survivor 🚀 — "+(dailyMode?"Tages-Challenge #"+dayNo+": ":"")+Math.floor(S.t)+"s überlebt, Lv "+S.lvl+", "+S.kills+" Kills\nabannews.com/neon-wildnis.html";if(navigator.share)navigator.share({text:txt}).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(txt).then(function(){document.getElementById("shareBtn").textContent="Kopiert 📋";});};
 
 // Ambient-Partikel (Atmosphäre)
-var ambN=IS_TOUCH?48:80,ambG=new THREE.BufferGeometry(),ambP=new Float32Array(ambN*3),ambVv=new Float32Array(ambN);
-for(var _ai=0;_ai<ambN;_ai++){ambP[_ai*3]=(Math.random()-.5)*110;ambP[_ai*3+1]=Math.random()*7;ambP[_ai*3+2]=(Math.random()-.5)*110;ambVv[_ai]=0.3+Math.random()*0.9;}
+var amb2N=IS_TOUCH?48:80,ambG=new THREE.BufferGeometry(),ambP=new Float32Array(amb2N*3),ambVv=new Float32Array(amb2N); /* P7: hiess ambN und ÜBERSCHRIEB die ambN der Funken (Z.487) → nur 48/80 von 150 Funken bewegten sich */
+for(var _ai=0;_ai<amb2N;_ai++){ambP[_ai*3]=(Math.random()-.5)*110;ambP[_ai*3+1]=Math.random()*7;ambP[_ai*3+2]=(Math.random()-.5)*110;ambVv[_ai]=0.3+Math.random()*0.9;}
 ambG.setAttribute("position",new THREE.BufferAttribute(ambP,3));
 var ambPts=new THREE.Points(ambG,new THREE.PointsMaterial({color:0x5ef2ff,size:0.3,transparent:true,opacity:.55,blending:THREE.AdditiveBlending,depthWrite:false}));scene.add(ambPts);
 function loop(now){
@@ -1628,6 +1640,8 @@ function loop(now){
     if(p1Down<=0){weaponTick(dt); updateBlades(dt);} if(S.abilityCD>0)S.abilityCD-=dt;
     for(var _sc2=1;_sc2<=3;_sc2++)if(S.skCD[_sc2]>0)S.skCD[_sc2]-=dt;
     if(S.skIfr>0)S.skIfr-=dt;
+    if(S.hurtIfr>0)S.hurtIfr-=dt; /* S3 */
+    if(P2&&P2.hurtIfr>0)P2.hurtIfr-=dt; /* D4 */
     // Phasen-Struktur (5×120s) → härter; danach Endboss
     var ph=Math.min(5,1+Math.floor(S.t/PHASE_T));
     if(ph!==S.phase){S.phase=ph;announce("⚠ PHASE "+ph+"/5 — schneller!");beep(160,.3,"sawtooth",.08);}
@@ -1645,7 +1659,7 @@ function loop(now){
         // grösseres Feld → moderat dichter füllen; erste Welle (t<40) bleibt verzeihend (nur 1 Spawn)
         // Während des Boss-Ansturms weniger Beifang, damit der Boss lesbar bleibt.
         if(S.spawnT<=0){spawnEnemy();if(!S.bossWave){if(S.t>40)spawnEnemy();if(S.t>75)spawnEnemy();if(S.phase>=5)spawnEnemy();}S.spawnT=rate*(S.bossWave?1.9:1);}
-        if(S.t>=S.bossT&&!S.bossWave){spawnEnemy(true);announce("⚠️ BOSS!");S.bossT+=45;beep(120,.4,"sawtooth",.1);}
+        if(S.t>=S.bossT&&!S.bossWave){spawnEnemy(true);announce("⚠️ BOSS!");S.bossT+=45;beep(120,.4,"sawtooth",.1);screenFlash("rgba(255,40,90,.22)",0.5,420);spawnRing(player.position.x,player.position.z,0xff2266,1,30,0.9);shake=Math.max(shake,0.85);} /* 💥 Schwarm: periodischer Boss bekommt Auftritt-Wucht wie die Boss-Welle */
         if(S.t>=RUN_T){S.finalBoss=true;S.bossWave=false;cb_start(2);} // Endboss = NEXUS-Koloss (ersetzt spawnFinalBoss)
         else if(S.waveT>=COMBAT_DUR&&!S.bossWave)enterBuildPhase();
       }
@@ -1680,12 +1694,14 @@ function loop(now){
       if(structures.length)resolveBlockers(e2,dt);
       if(e2.raider&&tstruct&&tstruct.hp>0){var sdx=tstruct.x-e2.m.position.x,sdz=tstruct.z-e2.m.position.z;if(sdx*sdx+sdz*sdz<(e2.boss?10:4.5)){damageStruct(tstruct,(e2.boss?16:6)*dt);if(e2.boss&&(frame&3)===0){smallSpark(tstruct.x,tstruct.z,0xff8a3a);}e2.m.position.y=(e2.by||0.7)+Math.abs(Math.sin(S.t*13))*0.12;}}
       if(e2.shooter){e2.shootT-=dt;if(e2.shootT<=0&&ped<42){enemyShoot(e2.m.position.x,e2.m.position.z,13,_tp.x,_tp.z);e2.shootT=2.8;}}
-      if(e2.boss){e2.shootT-=dt;if(e2.shootT<=0){var nb=e2.finalBoss?14:(e2.baseWaveBoss?12:10);for(var rr=0;rr<nb;rr++){var ang2=rr/nb*6.283;var eb2=getMesh(ebullets,ebulletMesh);eb2.active=true;eb2.m.visible=true;eb2.m.position.set(e2.m.position.x,0.8,e2.m.position.z);eb2.vx=Math.cos(ang2)*9;eb2.vz=Math.sin(ang2)*9;eb2.life=4;}spawnRing(e2.m.position.x,e2.m.position.z,e2.baseWaveBoss?0xff6a00:0xff2266,1,7,0.4);e2.shootT=e2.finalBoss?3.0:(e2.baseWaveBoss?3.6:4.2);beep(120,.3,"sawtooth",.07);}}
+      if(e2.boss){e2.shootT-=dt;
+        if(e2.shootT>0&&e2.shootT<0.55&&!e2._tele){e2._tele=1;spawnRing(e2.m.position.x,e2.m.position.z,0xffe0e6,7,1,0.5);beep(300,.07,"square",.03);} /* 🎯 Schwarm: 0.5s Warn-Ring (zieht sich zusammen = „gleich kommt was") vor der Salve */
+        if(e2.shootT<=0){var nb=e2.finalBoss?14:(e2.baseWaveBoss?12:10);for(var rr=0;rr<nb;rr++){var ang2=rr/nb*6.283;var eb2=getMesh(ebullets,ebulletMesh);eb2.active=true;eb2.m.visible=true;eb2.m.position.set(e2.m.position.x,0.8,e2.m.position.z);eb2.vx=Math.cos(ang2)*9;eb2.vz=Math.sin(ang2)*9;eb2.life=4;}spawnRing(e2.m.position.x,e2.m.position.z,e2.baseWaveBoss?0xff6a00:0xff2266,1,7,0.4);e2._tele=0;e2.shootT=e2.finalBoss?3.0:(e2.baseWaveBoss?3.6:4.2);beep(120,.3,"sawtooth",.07);}}
       if(e2.flash>0){e2.flash-=dt;var _efl=e2.flash>0;e2.m.material.emissive.setHex(_efl?0xffffff:e2.baseEmissive);
         if(e2.model){var _efm=e2.model.mats;for(var _efi=0;_efi<_efm.length;_efi++){_efm[_efi].emissive.setHex(_efl?0xffffff:e2.m.material.color.getHex());_efm[_efi].emissiveIntensity=_efl?1.1:0.55;}}}
       if(_p1on){var _c1=Math.hypot(player.position.x-e2.m.position.x,player.position.z-e2.m.position.z);
-        if(_c1<1.4&&!(S.skIfr>0)){S.hp-=13*dt;shake=Math.max(shake,0.12);hurt=Math.max(hurt,0.55);}}
-      if(_p2on&&Math.hypot(P2.g.position.x-e2.m.position.x,P2.g.position.z-e2.m.position.z)<1.4)p2Damage(13*dt);
+        if(_c1<1.4&&!(S.skIfr>0)&&!(S.hurtIfr>0)){S.hp-=3.4;S.hurtIfr=0.28;shake=Math.max(shake,0.14);hurt=Math.max(hurt,0.55);}} /* S3: EIN gedeckelter Biss pro 0.28s statt pro Gegner pro Frame → kein Rudel-Burst-Tod in 1s */
+      if(_p2on&&!(P2.hurtIfr>0)&&Math.hypot(P2.g.position.x-e2.m.position.x,P2.g.position.z-e2.m.position.z)<1.4){p2Damage(3.4);P2.hurtIfr=0.28;} /* D4: P2 gleicher Biss-Cap wie P1 (war 13*dt PRO Gegner PRO Frame) */
     }
     // Gegner-Projektile
     for(i=0;i<ebullets.length;i++){var eb=ebullets[i];if(!eb.active)continue;eb.m.position.x+=eb.vx*dt;eb.m.position.z+=eb.vz*dt;eb.life-=dt;
@@ -1693,7 +1709,7 @@ function loop(now){
       var blk=false;for(var sh=0;sh<structures.length;sh++){var shs=structures[sh];if(shs.type!=="shield"||shs.hp<=0)continue;var shx=shs.x-eb.m.position.x,shz=shs.z-eb.m.position.z;if(shx*shx+shz*shz<shs.R*shs.R){blk=true;shs.shieldFlash=0.22;spawnFlash(eb.m.position.x,0.9,eb.m.position.z,0x8fc4ff,0.8,0.14);spawnRing(eb.m.position.x,eb.m.position.z,0x8fc4ff,0.3,1.6,0.25,0.6);beep(520,.04,"sine",.03);break;}}
       if(blk){eb.active=false;eb.m.visible=false;eb.m.position.y=-99;continue;}
       var pdx=player.position.x-eb.m.position.x,pdz=player.position.z-eb.m.position.z;
-      if(p1Down<=0&&pdx*pdx+pdz*pdz<1.4&&!(S.skIfr>0)){S.hp-=7;hurt=Math.max(hurt,0.7);shake=Math.max(shake,0.2);eb.active=false;eb.m.visible=false;eb.m.position.y=-99;}
+      if(p1Down<=0&&pdx*pdx+pdz*pdz<1.4&&!(S.skIfr>0)&&!(S.hurtIfr>0)){S.hp-=7;S.hurtIfr=0.28;hurt=Math.max(hurt,0.7);shake=Math.max(shake,0.2);eb.active=false;eb.m.visible=false;eb.m.position.y=-99;} /* D-b: Boss-Ring (10-14 Kugeln gleichzeitig) → 1 Treffer pro 0.28s statt 84 HP in einem Frame */
       else if(coopOn()&&P2.down<=0&&(P2.g.position.x-eb.m.position.x)*(P2.g.position.x-eb.m.position.x)+(P2.g.position.z-eb.m.position.z)*(P2.g.position.z-eb.m.position.z)<1.4){p2Damage(7);eb.active=false;eb.m.visible=false;eb.m.position.y=-99;}
       else if(eb.life<=0){eb.active=false;eb.m.visible=false;eb.m.position.y=-99;}}
     if(hurt>0)hurt=Math.max(0,hurt-dt*2.2); hurtEl.style.opacity=hurt;
@@ -1735,7 +1751,7 @@ function loop(now){
   /* Online-Keepalive: am Pause-/Level-Up-/Game-Over-Screen laufen keine Snapshots/Inputs —
      ohne 1/s-Ping würde der 6s-Watchdog in mp.js die Verbindung fälschlich kappen */
   if(netSess&&netSess.status==='connected'&&(!running||paused)&&now-kaLast>=1000){kaLast=now;try{netSess.sendFast({k:'p'});}catch(e){}}
-  for(var _a2=0;_a2<ambN;_a2++){ambP[_a2*3+1]+=ambVv[_a2]*dt;if(ambP[_a2*3+1]>8)ambP[_a2*3+1]=0;}ambG.attributes.position.needsUpdate=true;
+  for(var _a2=0;_a2<amb2N;_a2++){ambP[_a2*3+1]+=ambVv[_a2]*dt;if(ambP[_a2*3+1]>8)ambP[_a2*3+1]=0;}ambG.attributes.position.needsUpdate=true;
   renderBloom();
 }
 function dropOrb(x,z){var o=getMesh(orbs,orbMesh);o.active=true;o.m.visible=true;o.m.position.set(x,0.6,z);}
@@ -1878,7 +1894,7 @@ function coopSetup(){ /* nach reset()/applyMap() in start(): P2 aktivieren + HUD
   p1Down=0;p1Rev=0;player.rotation.z=0;
   if(P2){
     P2.active=on;P2.g.visible=on;
-    P2.maxhp=Math.round(S.maxhp);P2.hp=P2.maxhp;P2.down=0;P2.rev=0;P2.vx=0;P2.vz=0;
+    P2.maxhp=Math.round(S.maxhp);P2.hp=P2.maxhp;P2.down=0;P2.rev=0;P2.vx=0;P2.vz=0;P2.hurtIfr=0; /* D4 */
     P2.g.position.set(Math.min(ARENA-1,player.position.x+3),0.9,Math.min(ARENA-1,player.position.z+2));
     P2.g.rotation.set(0,0,0);
     netP2.x=P2.g.position.x;netP2.z=P2.g.position.z;

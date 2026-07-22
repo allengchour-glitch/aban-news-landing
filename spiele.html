@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>aban Arcade — kostenlose 3D-Browser-Games &amp; tägliche Rätsel</title>
-<meta name="description" content="Die aban Arcade: zwei grosse kostenlose Spielwelten im Browser — das Brettspiel Lebenspfad (Online-Koop, Voice-Chat, 20 Minispiele) und die offene 3D-Welt Neon Wildnis (Arena, Flugfeld, Parcours, Rennstrecke). Dazu Traumhaus & tägliche Worträtsel. Kein Download.">
+<meta name="description" content="Die aban Arcade: zwei grosse kostenlose Spielwelten im Browser — das Brettspiel Lebenspfad (Online-Koop, Voice-Chat, 20 Minispiele) und die offene 3D-Welt Neon Wildnis (Koop-Tempel, Dungeon, Arena, Flugfeld, Parcours, Rennstrecke). Dazu Traumhaus & tägliche Worträtsel. Kein Download.">
 <link rel="canonical" href="https://abannews.com/spiele.html">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="aban Arcade — kostenlose Neon-Browser-Games">
-<meta property="og:description" content="Zwei grosse Spielwelten: Lebenspfad (Brettspiel, Online-Koop, Voice-Chat) & Neon Wildnis (offene 3D-Welt mit 4 Stationen). Dazu tägliche Rätsel. Gratis im Browser.">
+<meta property="og:description" content="Zwei grosse Spielwelten: Lebenspfad (Brettspiel, Online-Koop, Voice-Chat) & Neon Wildnis (offene 3D-Welt mit 6 Stationen). Dazu tägliche Rätsel. Gratis im Browser.">
 <meta property="og:url" content="https://abannews.com/spiele.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#06070f">
@@ -159,17 +159,20 @@ footer a{color:var(--purple);text-decoration:none}
     <a class="card feat" href="/neon-wildnis.html" style="--c:#6affc0">
       <div class="emo">🌲</div>
       <div class="body">
-        <span class="tag">3D · Offene Welt · Stadt-Hub · 4 Stationen · 🌐 Koop</span>
+        <span class="tag">3D · Offene Welt · Stadt-Hub · 6 Stationen · 🌐 Koop</span>
         <h2>Neon Wildnis</h2>
-        <p>Die offene 3D-Neon-Welt: <b>fälle Bäume</b>, sammle Kristalle, <b>baue deine Basis</b>, erfülle Quests am Quest-Brett und überlebe die Nacht — allein oder im <b>Online-Koop</b>. Von der <b>Stadt</b> aus erreichst du vier Stationen; hier leben die früheren Neon-Spiele (Flug, Jump, Racer, Survivor, Duo, Colossus, Abyss, Realm) weiter:</p>
+        <p>Die offene 3D-Neon-Welt: <b>fälle Bäume</b>, sammle Kristalle, <b>baue deine Basis</b>, erfülle Quests am Quest-Brett und überlebe die Nacht — allein oder im <b>Online-Koop</b>. Von der <b>Stadt</b> aus erreichst du sechs Stationen; hier leben die früheren Neon-Spiele (Flug, Jump, Racer, Survivor, Duo, Colossus, Abyss, Realm) weiter:</p>
         <ul class="feats">
+          <li>🤝 <b>Tempel der Zwei</b> — Koop-Rätsel wie It Takes Two <span style="color:#7dffc8;font-weight:800">NEU</span></li>
+          <li>🏰 <b>Dungeon</b> — Katakomben-Parcours + KOLOSS-Bosskampf <span style="color:#c98bff;font-weight:800">NEU</span></li>
           <li>⚔️ <b>Arena</b> — Roguelite mit Bossen &amp; Online-Koop</li>
           <li>✈️ <b>Flugfeld</b> — Arcade-Flug durch den Canyon</li>
           <li>🏃 <b>Parcours</b> — Koop-Platformer, 3 Level</li>
           <li>🏎️ <b>Rennstrecke</b> — Anti-Grav-Racer</li>
         </ul>
         <div class="recs">
-          <span class="rec" data-best="nr_save1" data-json="lvl" data-icon="⭐" data-prefix="Dein Held: Level " data-suffix="" data-chip="🌲 Wildnis · Level #"></span>
+          <span class="rec" data-best="nw_save1" data-json="level" data-icon="⭐" data-prefix="Dein Held: Level " data-suffix="" data-chip="🌲 Wildnis · Level #"></span> <!-- P7: zeigte nie etwas — las nr_save1/lvl statt nw_save1/level -->
+
           <span class="rec" data-best="ns_best" data-icon="⚔️" data-prefix="Arena: " data-suffix="s überlebt" data-chip="⚔️ Arena · #s"></span>
           <span class="rec" data-best="aban_neon_best" data-icon="✈️" data-prefix="Flugfeld: " data-suffix=" Punkte" data-chip="✈️ Flugfeld · # P"></span>
           <span class="rec" data-best="nj_best" data-icon="🏃" data-prefix="Parcours: " data-suffix="s Bestzeit" data-chip="🏃 Parcours · #s"></span>
@@ -263,6 +266,9 @@ footer a{color:var(--purple);text-decoration:none}
         var e0=document.createElement("span");e0.className="chip";
         e0.textContent="✨ Noch keine Rekorde — such dir unten ein Spiel aus!";bar.appendChild(e0);
       }
+      try{var _xp=+(localStorage.getItem('aban_neon_xp')||0)||0,_co=+(localStorage.getItem('ns_cores')||0)||0; /* 💠 geteilte Cross-Game-Brieftasche IMMER zeigen (auch ohne Rekorde) */
+        if(_xp>0){var w=document.createElement('span');w.className='chip';w.textContent='💠 '+_xp+' XP';bar.appendChild(w);}
+        if(_co>0){var w2=document.createElement('span');w2.className='chip';w2.textContent='⬢ '+_co+' Kerne';bar.appendChild(w2);}}catch(e){}
     }
   }catch(e){}
   // Spieler-Profil (gemeinsam für alle Spiele, localStorage "abanArcade")

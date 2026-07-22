@@ -1,0 +1,632 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="aban-nav" content="off">
+<title>🏰 Neon Dungeon — Katakomben des Koloss | aban news</title>
+<meta name="description" content="Steig hinab in die Katakomben: Fackel-Parcours mit Doppelsprung, dann wartet der KOLOSS. Teil der Neon-Wildnis.">
+<script>/* Fusion: Direktbesuch -> Wildnis-Welt; als Station (iframe/?station=1) laeuft das Spiel normal */
+if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.replace("/neon-wildnis.html?von="+location.pathname.replace(/\W/g,""));}</script>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{width:100%;height:100%;overflow:hidden;background:#0a0812;font-family:system-ui,-apple-system,sans-serif;color:#e8e0ff;
+    user-select:none;-webkit-user-select:none;touch-action:none}
+  canvas{display:block}
+  #hud{position:fixed;inset:0;pointer-events:none;z-index:5}
+  #topBar{position:absolute;top:calc(8px + env(safe-area-inset-top));left:12px;display:flex;gap:10px;align-items:center;font-weight:900}
+  #hearts{font-size:1.15rem;letter-spacing:2px}
+  #gems{background:rgba(20,14,40,.7);border:1px solid rgba(201,139,255,.4);border-radius:12px;padding:3px 10px;font-size:.95rem;color:#e0c8ff;transition:transform .18s}
+  #stageTag{position:absolute;top:calc(8px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);background:rgba(20,14,40,.7);
+    border:1px solid rgba(255,170,80,.4);border-radius:12px;padding:3px 12px;font-weight:900;font-size:.82rem;color:#ffce8a;white-space:nowrap}
+  #bossBar{position:absolute;top:calc(44px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);width:min(420px,80vw);display:none}
+  #bossBar .lbl{text-align:center;font-weight:900;font-size:.78rem;color:#ff9a8a;letter-spacing:.2em;margin-bottom:3px;text-shadow:0 1px 3px #000}
+  #bossBar .bar{height:12px;background:rgba(0,0,0,.55);border-radius:8px;overflow:hidden;border:1px solid rgba(255,90,90,.5)}
+  #bossBar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#ff5a5a,#ff9a3a);transition:width .25s}
+  #bossBar i.flash{background:#fff}
+  #announce{position:absolute;top:26%;left:0;right:0;text-align:center;font-weight:900;font-size:1.7rem;color:#ffd166;
+    text-shadow:0 2px 0 #000,0 4px 16px rgba(0,0,0,.7);opacity:0;transition:opacity .35s;pointer-events:none;padding:0 14px}
+  #hint{position:absolute;bottom:calc(196px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);background:rgba(20,14,40,.75);
+    border-radius:12px;padding:5px 14px;font-weight:800;font-size:.85rem;color:#cfc0ff;opacity:0;transition:opacity .3s;white-space:normal;text-align:center;max-width:94vw} /* P3 (Play-Test): Boss-Hint wurde auf 360px zu „…glühen…" abgeschnitten — der ⚔️-Teil IST die Anleitung → umbrechen statt ellipsen */
+  .btn{position:absolute;pointer-events:auto;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-size:1.6rem;font-weight:900;border:3px solid;background:rgba(24,16,50,.55);backdrop-filter:blur(3px);cursor:pointer}
+  .btn:active{transform:scale(.9);filter:brightness(1.4)}
+  #bJump{right:calc(24px + env(safe-area-inset-right));bottom:calc(40px + env(safe-area-inset-bottom));width:76px;height:76px;border-color:#7de3ff;color:#dff}
+  #bHit{right:calc(116px + env(safe-area-inset-right));bottom:calc(112px + env(safe-area-inset-bottom));width:76px;height:76px;border-color:#ff8a5a;color:#ffe}
+  #stick{position:absolute;left:calc(22px + env(safe-area-inset-left));bottom:calc(34px + env(safe-area-inset-bottom));width:120px;height:120px;
+    border-radius:50%;border:2px solid rgba(160,140,255,.35);background:rgba(30,22,60,.35);pointer-events:auto}
+  #knob{position:absolute;left:50%;top:50%;width:52px;height:52px;border-radius:50%;background:rgba(180,160,255,.5);transform:translate(-50%,-50%)}
+  #ov{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    background:radial-gradient(ellipse at 50% 30%,#241640 0%,#0a0812 70%);padding:20px}
+  #ov h1{font-size:clamp(1.9rem,7vw,3rem);color:#c98bff;text-shadow:0 0 24px rgba(201,139,255,.55);letter-spacing:.06em}
+  #ov p{color:#b8a8d8;max-width:460px;margin:12px 0;line-height:1.5;font-size:.95rem}
+  #ov .big{border:0;cursor:pointer;font-weight:900;font-size:1.1rem;padding:14px 38px;border-radius:40px;color:#140a20;margin:5px;
+    background:linear-gradient(92deg,#ffce8a,#c98bff);box-shadow:0 10px 34px rgba(201,139,255,.35);pointer-events:auto}
+  #ov .big.sec{background:rgba(20,14,32,.7);color:#e6d8ff;border:2px solid #6a4a9a;box-shadow:none;font-size:1rem;padding:11px 26px}
+  #ov .chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:8px 0 16px}
+  #ov .chip{background:rgba(255,255,255,.07);border:1px solid rgba(201,139,255,.3);border-radius:12px;padding:5px 12px;font-size:.78rem;font-weight:700;color:#cfc0ff}
+  .nd-notouch #stick,.nd-notouch #bJump,.nd-notouch #bHit{display:none!important}
+  #stationBack{position:fixed;top:calc(8px + env(safe-area-inset-top));right:12px;z-index:30;border:1px solid rgba(125,227,255,.45);
+    background:rgba(16,24,48,.8);color:#9fdcff;border-radius:12px;padding:7px 13px;font-weight:800;cursor:pointer;pointer-events:auto}
+  @media(max-width:430px){#stageTag{top:calc(44px + env(safe-area-inset-top));font-size:.74rem;max-width:88vw;overflow:hidden;text-overflow:ellipsis}#bossBar{top:calc(76px + env(safe-area-inset-top))}} /* P2+#4 (Beauty-Sweep): Block MUSS nach den Basis-Regeln stehen (gleiche Spezifität, Quellreihenfolge) — Pill verdeckte 💎-Zähler+Herzen auf 360px → unter die topBar */
+</style>
+</head>
+<body>
+<div id="hud">
+  <div id="topBar"><span id="hearts">❤️❤️❤️❤️</span><span id="gems">💎 0</span></div>
+  <div id="stageTag">🏰 Katakomben · Abschnitt 1/3</div>
+  <div id="bossBar"><div class="lbl">🗿 DER KOLOSS</div><div class="bar"><i id="bossFill"></i></div></div>
+  <div id="announce"></div><div id="hint"></div>
+  <div class="btn" id="bJump">⤴</div>
+  <div class="btn" id="bHit" style="display:none">⚔️</div>
+  <div class="btn" id="bWpn" style="right:calc(112px + env(safe-area-inset-right));bottom:calc(196px + env(safe-area-inset-bottom));width:52px;height:52px;font-size:1.3rem">🔄</div>
+  <div id="wpTag" style="position:absolute;right:calc(12px + env(safe-area-inset-right));bottom:calc(258px + env(safe-area-inset-bottom));background:rgba(20,14,40,.7);border:1px solid rgba(160,140,220,.4);border-radius:9px;padding:3px 9px;font-size:.8rem;font-weight:800;color:#c8b8ff;pointer-events:none">⚔️ Schwert</div>
+  <div id="stick"><div id="knob"></div></div>
+</div>
+<div id="ov">
+  <h1>🏰 NEON DUNGEON</h1>
+  <p>Steig hinab in die <b>Katakomben</b>: meistere den Fackel-Parcours mit <b>Doppelsprung</b> — dann wartet in der Tiefe <b>DER KOLOSS</b>.</p>
+  <div class="chips" id="ovChips"><span class="chip">⤴ Doppelsprung</span><span class="chip">💎 Kristalle sammeln</span><span class="chip">🗿 Schockwellen überspringen</span><span class="chip">⚔️ Glühende Fäuste treffen</span></div>
+  <button class="big" id="startBtn">Hinabsteigen ▶</button>
+</div>
+<button id="stationBack" style="display:none">← Wildnis</button>
+<script src="/js/vendor/three.min.js"></script>
+<script src="/js/vendor/GLTFLoader.js"></script>
+<script>
+(function(){
+"use strict";
+var STATION=window.parent!==window&&/[?&]station=1/.test(location.search);
+var NG=/[&?]ng=1/.test(location.search); /* #71 Meister-Modus (NG+) */
+/* 🏰 „verschiedene Levels" (User): 3 themed Ebenen — Look (Farben/Fog/Fackeln) + Schwierigkeit (Boss-HP, Plattform-Tempo). Auswahl via ?lvl= oder localStorage; Parcours bleibt gleich. */
+var DLEVELS=[
+  {name:"🏰 Katakomben",    stone:0x7a70a2, stone2:0x38305e, floor:0x4a4276, edge:0x6a58b0, edgeE:0x4a3a90, bg:0x0a0812, fog:0x0a0812, fogBoss:0x160a10, fN:26, fF:84, torch:0xffa040, bossHp:6,  mv:1.0},
+  {name:"❄️ Eis-Katakombe", stone:0x6a86b0, stone2:0x2a4260, floor:0x3a5a76, edge:0x58b0d0, edgeE:0x3a7aa0, bg:0x081018, fog:0x0a1622, fogBoss:0x102838, fN:24, fF:80, torch:0x8fd8ff, bossHp:8,  mv:1.25},
+  {name:"🌋 Lava-Schlucht", stone:0xa0705a, stone2:0x502a24, floor:0x6a3a2a, edge:0xff7040, edgeE:0xd04010, bg:0x160806, fog:0x1a0a06, fogBoss:0x3a1206, fN:22, fF:74, torch:0xff5a20, bossHp:10, mv:1.45}
+];
+var _dlv=(function(){var m=/[?&]lvl=(\d)/.exec(location.search);if(m)return Math.max(0,Math.min(DLEVELS.length-1,+m[1]));try{return Math.max(0,Math.min(DLEVELS.length-1,parseInt(localStorage.getItem("nd_level")||"0",10)||0));}catch(e){return 0;}})();
+var TH=DLEVELS[_dlv];
+var TOUCH=(navigator.maxTouchPoints>0)||matchMedia("(pointer:coarse)").matches;
+if(!TOUCH){document.documentElement.classList.add("nd-notouch");
+  addEventListener("touchstart",function once(){document.documentElement.classList.remove("nd-notouch");TOUCH=true;removeEventListener("touchstart",once);},{once:true});} /* Hybrid-Geräte holen die Touch-UI zurück */
+function stationPost(m){try{window.parent.postMessage(typeof m==="string"?m:JSON.stringify(m),"*");}catch(e){}}
+if(STATION){var sb=document.getElementById("stationBack");sb.style.display="block";sb.onclick=function(){stationPost("mini-back");};}
+if(!TOUCH){var _oc=document.getElementById("ovChips");if(_oc)_oc.innerHTML='<span class="chip">WASD laufen</span><span class="chip">LEER ×2 = Doppelsprung</span><span class="chip">E = zuschlagen</span><span class="chip">💎 Kristalle sammeln</span>';}
+/* 🏰 Level-Auswahl (3 Ebenen) im Startscreen */
+(function(){var ov=document.getElementById("ov"),sb=document.getElementById("startBtn");if(!ov||!sb)return;
+  var cap=document.createElement("div");cap.textContent="Wähle deine Ebene:";cap.style.cssText="color:#b8a8e0;font-weight:800;font-size:.9rem;margin-top:6px";
+  var row=document.createElement("div");row.style.cssText="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:6px 0 2px";
+  DLEVELS.forEach(function(L,i){var b=document.createElement("button");b.textContent=L.name;b.type="button";
+    b.style.cssText="padding:9px 13px;border-radius:11px;font-size:.95rem;font-weight:800;cursor:pointer;border:2px solid "+(i===_dlv?"#c8b8ff":"#3a3060")+";background:"+(i===_dlv?"#241a44":"#140f28")+";color:"+(i===_dlv?"#eadfff":"#9a8fc0");
+    b.onclick=function(){if(i===_dlv)return;try{localStorage.setItem("nd_level",""+i);}catch(e){}location.href=location.pathname+"?lvl="+i+(STATION?"&station=1":"")+(NG?"&ng=1":"");};
+    row.appendChild(b);});
+  ov.insertBefore(cap,sb);ov.insertBefore(row,sb);})();
+
+if(!window.THREE){document.body.innerHTML='<div style="display:flex;height:100vh;align-items:center;justify-content:center;text-align:center;color:#c8b8ff;font-weight:800">3D-Engine nicht geladen —<br>bitte neu laden ↻</div>';throw new Error("THREE fehlt");}
+var W=innerWidth,H=innerHeight;
+var DPR=Math.min(devicePixelRatio||1,1.5);
+var renderer=new THREE.WebGLRenderer({antialias:DPR<1.5});
+renderer.setPixelRatio(DPR);renderer.setSize(W,H);
+renderer.outputEncoding=THREE.sRGBEncoding;document.body.insertBefore(renderer.domElement,document.getElementById("hud"));
+renderer.domElement.addEventListener("webglcontextlost",function(e){e.preventDefault();},false);
+renderer.domElement.addEventListener("webglcontextrestored",function(){location.reload();},false);
+var scene=new THREE.Scene();scene.background=new THREE.Color(TH.bg);scene.fog=new THREE.Fog(TH.fog,TH.fN,TH.fF); /* 🏰 Theme */
+var camera=new THREE.PerspectiveCamera(58,W/H,0.1,90);
+addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);});
+scene.add(new THREE.HemisphereLight(0x5a4a8e,0x140c20,0.42));
+var amb=new THREE.AmbientLight(0x2a2244,0.3);scene.add(amb);
+var _ambBase=new THREE.Color(0x2a2244),_ambBoss=new THREE.Color(0x4a201c); /* #7: Kammer-Stimmung kippt DEUTLICH ins Rote */
+var _fogBase=new THREE.Color(TH.fog),_fogBoss=new THREE.Color(TH.fogBoss); /* #7: Fog+Hintergrund kippen mit (Theme) */
+/* 💜 Abgrund-Glühen: riesige leuchtende Kristalle in der Tiefe (sichtbar beim Springen) */
+(function(){var cvA=document.createElement("canvas");cvA.width=cvA.height=256;var cA=cvA.getContext("2d");
+  var gr=cA.createRadialGradient(128,128,10,128,128,128);gr.addColorStop(0,"rgba(160,90,255,.55)");gr.addColorStop(1,"rgba(160,90,255,0)");
+  cA.fillStyle=gr;cA.fillRect(0,0,256,256);
+  var glowTex=new THREE.CanvasTexture(cvA);
+  for(var ai=0;ai<9;ai++){var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:glowTex,transparent:true,opacity:0.5,depthWrite:false}));
+    sp.scale.set(14+Math.random()*10,14+Math.random()*10,1);
+    sp.position.set((Math.random()-0.5)*30,-14-Math.random()*6,-Math.random()*110);scene.add(sp);}
+  for(var ki=0;ki<14;ki++){var kr=new THREE.Mesh(new THREE.ConeGeometry(0.8+Math.random()*1.4,3+Math.random()*4,5),M(0x6a4a9e,0x8050e0,0.7));
+    var kxs=(8+Math.random()*10)*(Math.random()<0.5?-1:1);kr.position.set(kxs,-14-Math.random()*5,-Math.random()*110);kr.rotation.z=Math.PI;scene.add(kr);}
+  /* ✨ Staub-Motes */
+  window.__motes=[];for(var mi=0;mi<26;mi++){var mo=new THREE.Mesh(new THREE.SphereGeometry(0.045,5,4),M(0xcab0ff,0x9a80ff,0.8));
+    scene.add(mo);window.__motes.push({m:mo,ph:Math.random()*6,sp:0.3+Math.random()*0.5,x:(Math.random()-0.5)*10,y:1+Math.random()*4,z:-Math.random()*100});}})();
+
+function M(c,e,i){return new THREE.MeshLambertMaterial({color:c,emissive:e||0x000000,emissiveIntensity:i||0});}
+/* 🪨 Echte Stein-Textur (CC0, /textures) statt flacher Farben — Farben ~1.8x aufgehellt, weil Lambert map*color multipliziert */
+var _tl=new THREE.TextureLoader();
+function gtex(u,rx,ry){var t=_tl.load(u);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(rx||1,ry||rx||1);return t;}
+function MT(c,tex,e,i){var m=new THREE.MeshLambertMaterial({color:c,emissive:e||0x000000,emissiveIntensity:i||0});m.map=tex;return m;}
+var stoneT=gtex("/textures/tex_stone.png",2,2),stoneT2=gtex("/textures/tex_stone.png",3,3),cobT=gtex("/textures/tex_cobble.png",14,14);
+var STONE=MT(TH.stone,stoneT),STONE_M=MT(TH.stone,gtex("/textures/tex_stone.png",4,4)),COBBLE_FLOOR=MT(TH.floor,cobT),STONE2=MT(TH.stone2,stoneT2),EDGE=M(TH.edge,TH.edgeE,0.55),MOSS=M(0x35503e,0x122416,0.22); /* #6 + 🏰 Theme-Farben */
+
+/* ---------- Level: Plattform-Parcours (3 Abschnitte) + Boss-Kammer ---------- */
+var plats=[],gems=[],torches=[],checkpoints=[{x:0,y:0,z:0}];
+function plat(x,y,z,w,d,mat){var g=new THREE.Group();
+  var top=new THREE.Mesh(new THREE.BoxGeometry(w,0.6,d),mat||(w<=3.5?STONE:STONE_M));top.position.y=-0.3;g.add(top); /* #6: breite Plattformen mit dichterem Kachel-Repeat */
+  var rim=new THREE.Mesh(new THREE.BoxGeometry(w+0.16,0.14,d+0.16),EDGE);rim.position.y=-0.14;g.add(rim); /* Kante UNTER der Lauffläche -> glüht nur seitlich */
+  if(!mat&&Math.random()<0.5){var ms=new THREE.Mesh(new THREE.BoxGeometry(w*0.55,0.06,d*0.55),MOSS);ms.position.set((Math.random()-0.5)*w*0.3,0.04,(Math.random()-0.5)*d*0.3);g.add(ms);} /* 🌿 Moos-Flecken */
+  var uc=new THREE.Mesh(new THREE.BoxGeometry(w*0.7,0.9,d*0.7),STONE2);uc.position.y=-1.0;g.add(uc); /* Fels-Unterbau statt schwebender Scheibe */
+  g.position.set(x,y,z);scene.add(g);
+  var P={x:x,y:y,z:z,w:w/2,d:d/2,g:g,x0:x,y0:y,mv:null};plats.push(P);return P;}
+function gem(x,y,z,secret){var m=new THREE.Mesh(new THREE.OctahedronGeometry(0.34,0),M(0xc98bff,0xa060ff,0.9));
+  m.position.set(x,y+0.9,z);scene.add(m);gems.push({m:m,x:x,y:y+0.9,z:z,got:false,secret:!!secret,ph:Math.random()*6});}
+function torch(x,y,z){var g=new THREE.Group();
+  var st=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.08,1.1,6),M(0x4a3a2a));st.position.y=0.55;g.add(st);
+  var fl=new THREE.Mesh(new THREE.ConeGeometry(0.18,0.42,6),M(TH.torch,TH.torch,1));fl.position.y=1.25;g.add(fl); /* 🏰 Theme-Fackel */
+  var lt=new THREE.PointLight(TH.torch,0.55,8);lt.position.y=1.4;g.add(lt);
+  if(!window.__glowT){var cvG=document.createElement("canvas");cvG.width=cvG.height=128;var cG=cvG.getContext("2d");
+    var g2=cG.createRadialGradient(64,64,4,64,64,64);g2.addColorStop(0,"rgba(255,180,90,.85)");g2.addColorStop(1,"rgba(255,140,60,0)");
+    cG.fillStyle=g2;cG.fillRect(0,0,128,128);window.__glowT=new THREE.CanvasTexture(cvG);}
+  var gl=new THREE.Sprite(new THREE.SpriteMaterial({map:window.__glowT,transparent:true,opacity:0.8,depthWrite:false}));
+  gl.scale.set(2.1,2.1,1);gl.position.y=1.3;g.add(gl);gl.material.opacity=0.6; /* 🔥 weiches Feuer-Glühen */
+  g.position.set(x,y,z);scene.add(g);torches.push({fl:fl,lt:lt,gl:gl,x:x,z:z,lit:false,ph:Math.random()*6});}
+
+/* Abschnitt 1: gerader Einstieg */
+plat(0,0,0,6,6);torch(-2.4,0,-2.4);torch(2.4,0,-2.4);
+plat(0,0.3,-7,3,3);gem(0,0.3,-7);
+plat(2.5,0.9,-13,2.6,2.6);
+plat(-1.5,1.5,-19,2.6,2.6);gem(-1.5,1.5,-19);
+plat(1,2.2,-25,3,3);torch(1,2.2,-26);
+/* Abschnitt 2: Zickzack + weite Sprünge (Doppelsprung nötig) */
+plat(-3,2.8,-32,2.4,2.4);gem(-3,2.8,-32);
+plat(3,3.4,-38,3.0,3.0).mv={ax:1.5,ay:0,sp:0.55,ph:0}; /* ↔ gleitet seitlich (Einstieg: grösser+langsamer) */
+gem(0,3.4,-35); /* Flugbahn-Guide */
+plat(7.5,3.0,-41,2.2,2.2);gem(7.5,3.0,-41,true);gem(8.1,3.0,-41.8,true);gem(6.9,3.0,-40.4,true);torch(7.5,3.0,-41.9); /* 🤫 Geheim-Nische abseits der Route */
+plat(-2,4.0,-45,2.2,2.2);gem(-2,4.0,-45);
+var _p52=plat(3.5,4.4,-52,2.2,2.2);_p52.mv={ax:0,ay:1.1,sp:0.9,ph:2};gem(3.5,4.4,-52); /* ↕ hebt und senkt sich */
+plat(0,5,-59,3.4,3.4);torch(-1.2,5,-60);torch(1.2,5,-60);
+/* Abschnitt 3: schmale Stege hinab zur Kammer */
+plat(0,4.2,-66,1.6,4);
+plat(-2.5,3.2,-73,1.6,3).mv={ax:1.8,ay:0,sp:1.1,ph:1};gem(-2.5,3.2,-73);
+plat(2.5,2.2,-80,1.6,3);gem(2.5,2.2,-80);
+plat(0,1,-88,4,4);torch(-1.5,1,-89);torch(1.5,1,-89);
+checkpoints.push({x:1,y:2.2,z:-25},{x:0,y:5,z:-59},{x:0,y:1,z:-88});
+/* 🏛️ Umgebungs-Erzählung: gefallene Säule, alte Trommel, gefallener Ritter (reine Deko, nicht in plats[]) */
+(function(){var stM=M(0x3a3450),drM=M(0x6a4a30);
+  var col=new THREE.Mesh(new THREE.CylinderGeometry(0.5,0.6,3,8),stM);col.rotation.z=1.3;col.position.set(-1.3,5.35,-58);scene.add(col);
+  var drum=new THREE.Mesh(new THREE.CylinderGeometry(0.5,0.5,0.7,10),drM);drum.rotation.x=1.57;drum.position.set(1.2,5.3,-60);scene.add(drum);
+  var kn=new THREE.Group(); /* gefallener Ritter neben dem letzten Halt */
+  var kb=new THREE.Mesh(new THREE.CylinderGeometry(0.26,0.3,0.9,8),M(0x5a6478,0x2a3040,0.3));kb.rotation.z=1.5;kb.position.y=0.28;kn.add(kb);
+  var kh=new THREE.Mesh(new THREE.SphereGeometry(0.22,10,8),M(0x5a6478,0x2a3040,0.3));kh.position.set(0.62,0.28,0);kn.add(kh);
+  var sw=new THREE.Mesh(new THREE.BoxGeometry(0.08,1.1,0.08),M(0x9aa4b8,0x3a4458,0.4));sw.rotation.z=0.5;sw.position.set(-0.5,0.6,0.3);kn.add(sw);
+  kn.position.set(1.4,1,-87.2);scene.add(kn);})();
+gem(0.6,1,-86.8); /* sein letzter Kristall */
+/* Boss-Kammer */
+var CHZ=-104;
+var upLight=new THREE.PointLight(0xff3020,0,26);upLight.position.set(0,1.2,CHZ-4);scene.add(upLight); /* 🔴 rotes Boden-Licht unterm Koloss */
+plat(0,0,CHZ,26,26,COBBLE_FLOOR); /* #6: Boss-Kammer-Boden = Kopfstein (14er-Repeat) */
+for(var ti=0;ti<8;ti++){var ta=ti/8*Math.PI*2;torch(Math.cos(ta)*11,0,CHZ+Math.sin(ta)*11);}
+(function(){var wallM=MT(0x4a4270,gtex("/textures/tex_stone.png",1,3)); /* 🪨 Pfeiler texturiert */
+  for(var wi=0;wi<14;wi++){var wa=wi/14*Math.PI*2;
+    /* User-Feedback „lange Türme? wegen Sicht?": Pfeiler r=17 (Arena r=12, Kamera dahinter) + #5 Beauty-Sweep:
+       die 4 KAMERASEITIGEN Pfeiler sind nur noch Ruinen-Stümpfe (h=2) → Ring hinten geschlossen, Sicht komplett frei. */
+    var front=Math.sin(wa)>0.45, h=front?2.0:7;
+    var p=new THREE.Mesh(new THREE.CylinderGeometry(0.55,0.75,h,6),wallM);
+    p.position.set(Math.cos(wa)*17,h/2,CHZ+Math.sin(wa)*17);scene.add(p);
+    if(front){var rb=new THREE.Mesh(new THREE.BoxGeometry(0.5,0.5,0.5),wallM);rb.position.set(Math.cos(wa)*17+0.8,0.25,CHZ+Math.sin(wa)*17+0.4);rb.rotation.y=wi*0.7;scene.add(rb);}}})(); /* Schutt am Stumpf */
+
+var GEM_TOTAL=gems.length; /* nach allen gem()-Aufrufen */
+/* ---------- Spieler ---------- */
+var player=new THREE.Group();scene.add(player);
+var heroMix=null,heroRig=null;
+/* 🎌 Anime-Held „Kai" (statt Klötzchen). Bone-basierte Höhen-Normierung auf einheitliche 1.7u
+   (setFromObject ist bei skinned GLBs unzuverlässig — dieselbe Lehre wie in der Wildnis). */
+(function(){
+  var ph=new THREE.Group(); /* Platzhalter bis GLB da ist */
+  var b=new THREE.Mesh(new THREE.CylinderGeometry(0.3,0.36,1.1,10),M(0x6ac8f0,0x2a6a99,0.55));b.position.y=0.75;ph.add(b);
+  var h=new THREE.Mesh(new THREE.SphereGeometry(0.26,12,10),M(0xffe0c0,0x664422,0.15));h.position.y=1.5;ph.add(h);
+  player.add(ph);
+  var lt=new THREE.PointLight(0x9fd0ff,0.5,7);lt.position.y=1.6;player.add(lt);
+  if(THREE.GLTFLoader)new THREE.GLTFLoader().load("/models/anime_hero.glb",function(g){
+    var o=g.scene;o.updateMatrixWorld(true);
+    var miny=1e9,maxy=-1e9,bn=0,V=new THREE.Vector3();
+    o.traverse(function(n){if(n.isSkinnedMesh&&n.skeleton){n.skeleton.bones.forEach(function(bo){bo.getWorldPosition(V);if(V.y<miny)miny=V.y;if(V.y>maxy)maxy=V.y;bn++;});}});
+    var hb=(bn&&maxy>miny)?(maxy-miny):0;
+    var sc=(hb>0.3)?Math.max(0.15,Math.min(4,1.7/hb)):0.95;o.scale.setScalar(sc);
+    o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;}});
+    player.remove(ph);player.add(o);
+    if(g.animations&&g.animations.length){heroMix=new THREE.AnimationMixer(o); /* 🎬 Schwarm-2 P2: walk/run/attack-Clips waren tot — jetzt Aktions-Map + Locomotion + Angriff */
+      var _pick=function(re){for(var i=0;i<g.animations.length;i++)if(re.test(g.animations[i].name))return g.animations[i];return null;};
+      var _idle=_pick(/idle/i)||g.animations[0],_walk=_pick(/walk/i),_run=_pick(/run/i)||_walk,_atk=_pick(/attack|slash|punch|swing|hit/i);
+      var acts={idle:heroMix.clipAction(_idle)};
+      if(_walk)acts.walk=heroMix.clipAction(_walk);
+      if(_run)acts.run=heroMix.clipAction(_run);
+      if(_atk){acts.attack=heroMix.clipAction(_atk);acts.attack.setLoop(THREE.LoopOnce,1);acts.attack.clampWhenFinished=true;}
+      acts.idle.play();
+      var _hand=null;o.traverse(function(n){if((n.isBone||n.type==="Bone")&&/righthand/i.test(n.name))_hand=n;}); /* ⚔️ Waffen-Hand */
+      heroRig={mix:heroMix,acts:acts,cur:"idle",lock:0,hand:_hand,scl:sc};
+      heroMix.addEventListener("finished",function(){if(heroRig){heroRig.lock=0;heroRig.cur="_none";}});} /* Angriff fertig → zurück auf Locomotion faden */
+    if(typeof equipWeapon==="function")equipWeapon(curWp); /* Waffe ans Handgelenk hängen sobald das Rig da ist */
+  },undefined,function(){}); /* Fehler -> Platzhalter bleibt */
+})();
+/* ⚔️ Schwarm/User „waffen mehr guter stl": 4 echte Waffen-GLBs, ans Hand-Bone gehängt, mit eigener Reichweite/Schaden/Cooldown */
+var WEAPONS=[
+  {name:"⚔️ Schwert", model:"/models/wp_sword.glb",  reach:4.2, dmg:1, cd:0.45, scale:2.6, rot:[0,0,-1.2]},
+  {name:"🗡️ Dolch",   model:"/models/wp_dagger.glb", reach:3.0, dmg:1, cd:0.28, scale:2.2, rot:[0,0,-1.2]},
+  {name:"🔨 Hammer",  model:"/models/wp_hammer.glb", reach:4.6, dmg:2, cd:0.85, scale:2.8, rot:[0,0,-1.2]},
+  {name:"🪄 Stab",    model:"/models/wp_staff.glb",  reach:5.6, dmg:1, cd:0.55, scale:3.0, rot:[0,0,-1.2]}
+];
+var curWp=(function(){try{return Math.max(0,Math.min(3,parseInt(localStorage.getItem("nd_wp")||"0",10)||0));}catch(e){return 0;}})(),wpNode=null;
+var _wpGen=0;
+function equipWeapon(i){curWp=(i+WEAPONS.length)%WEAPONS.length;try{localStorage.setItem("nd_wp",""+curWp);}catch(e){}
+  var wp=document.getElementById("wpTag");if(wp)wp.textContent=WEAPONS[curWp].name;
+  if(!heroRig||!heroRig.hand||!THREE.GLTFLoader)return;var w=WEAPONS[curWp];
+  if(wpNode&&wpNode.parent)wpNode.parent.remove(wpNode);wpNode=null;
+  var _gen=++_wpGen; /* 🐛 Schwarm: schneller Wechsel darf keine alten Waffen an der Hand stapeln */
+  new THREE.GLTFLoader().load(w.model,function(g){if(_gen!==_wpGen){return;} /* veralteter Load → verwerfen */
+    if(wpNode&&wpNode.parent)wpNode.parent.remove(wpNode); /* defensiv: eventuell doch noch eine dran */
+    var m=g.scene;
+    m.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;}});
+    m.scale.setScalar(w.scale/(heroRig.scl||1));m.rotation.set(w.rot[0],w.rot[1],w.rot[2]); /* Bone-Weltskala rausrechnen */
+    heroRig.hand.add(m);wpNode=m;},undefined,function(){});
+}
+function cycleWeapon(d){equipWeapon(curWp+(d||1));if(typeof announce==="function")announce(WEAPONS[curWp].name,"#c8b8ff");}
+function heroSet(name){if(!heroRig||!heroRig.acts[name]||heroRig.lock>0||heroRig.cur===name)return;
+  var to=heroRig.acts[name],from=heroRig.acts[heroRig.cur];
+  to.reset();to.setEffectiveWeight(1);to.fadeIn(0.15);to.play();
+  if(from&&from!==to&&from.isRunning&&from.isRunning())from.fadeOut(0.15);
+  heroRig.cur=name;}
+function heroAtk(){if(!heroRig||!heroRig.acts.attack)return;var a=heroRig.acts.attack,from=heroRig.acts[heroRig.cur];
+  a.reset();a.setEffectiveWeight(1);a.fadeIn(0.04);a.play();
+  if(from&&from!==a&&from.isRunning&&from.isRunning())from.fadeOut(0.04);
+  heroRig.cur="attack";heroRig.lock=0.5;}
+var px=0,py=0,pz=0,vy=0,onG=true,jumps=0,coyote=0,jBuf=0,ckpt=0,invT=0,gy=0,stepT=0,secFound=false;
+var hearts=4,gemN=0,stage=1,running=false,won=false,dead=false,runT=0; /* #68 Lauf-Timer */
+var kx=0,kz=0; /* Eingabe */
+
+/* ---------- Koloss ---------- */
+var boss=new THREE.Group(),bossHp=TH.bossHp,bossOn=false,bossPh=(NG?1:0); /* #71 NG+ · 🏰 Boss-HP je Ebene */
+(function(){var rock=MT(0x8578a0,gtex("/textures/tex_stone.png",1.4,1.4),0x1a1428,0.15); /* 🪨 der KOLOSS ist jetzt echter Fels */
+  var torso=new THREE.Mesh(new THREE.BoxGeometry(3.2,3.4,2.2),rock);torso.position.y=4.4;boss.add(torso);
+  var head=new THREE.Mesh(new THREE.BoxGeometry(1.5,1.3,1.4),rock);head.position.y=6.9;boss.add(head);
+  var eye1=new THREE.Mesh(new THREE.SphereGeometry(0.16,8,6),M(0xff4020,0xff2000,1));eye1.position.set(-0.35,6.95,0.72);boss.add(eye1);boss.userData.eyeMat=eye1.material; /* clone teilt das Material -> beide Augen faden gemeinsam */
+  var eye2=eye1.clone();eye2.position.x=0.35;boss.add(eye2);boss.userData.eyes=[eye1,eye2];boss.userData.crackMats=[];
+  for(var cr2=0;cr2<5;cr2++){var crk=new THREE.Mesh(new THREE.BoxGeometry(0.1,0.7+Math.random()*0.9,0.08),M(0xff6a30,0xff5020,1)); /* 🔥 glühende Risse */
+    crk.position.set((Math.random()-0.5)*2.6,3.6+Math.random()*2.6,1.12);crk.rotation.z=(Math.random()-0.5)*0.9;boss.add(crk);boss.userData.crackMats.push(crk.material);}
+  var mossB=new THREE.Mesh(new THREE.BoxGeometry(2.4,0.35,1.6),MOSS);mossB.position.y=6.25;boss.add(mossB); /* 🌿 bemooste Schulter */
+  var legL=new THREE.Mesh(new THREE.BoxGeometry(1.1,2.8,1.3),rock);legL.position.set(-0.95,1.4,0);boss.add(legL);
+  var legR=legL.clone();legR.position.x=0.95;boss.add(legR);
+  function arm(sx){var a=new THREE.Group();
+    var up=new THREE.Mesh(new THREE.BoxGeometry(0.95,2.6,1.0),rock);up.position.y=-1.3;a.add(up);
+    var fist=new THREE.Mesh(new THREE.BoxGeometry(1.5,1.5,1.5),rock);fist.position.y=-3.1;a.add(fist);
+    var cry=new THREE.Mesh(new THREE.IcosahedronGeometry(0.42,0),M(0xc98bff,0x8040ff,1));cry.position.y=-3.1;cry.position.z=0.85;a.add(cry);
+    a.position.set(sx,5.6,0);a.userData.fist=fist;a.userData.cry=cry;return a;}
+  boss.userData.armL=arm(-2.35);boss.userData.armR=arm(2.35);
+  boss.add(boss.userData.armL);boss.add(boss.userData.armR);
+  boss.position.set(0,-8,CHZ-4);boss.visible=false;scene.add(boss);})(); /* startet unterirdisch -> Rise-Inszenierung */
+var rings=[],bState="idle",bT=2.5,slamArm=null,vulnT=0,hitFx=0,warnD=null,_fw=new THREE.Vector3(),shakeT=0,stomps=0,introT=0,introW=0,btBeat=1.2,btIdx=0; /* #23 Boss-Ostinato (btBeat Init 1.2 Pflicht, sonst NaN) */
+var fx=[],fxGeo=new THREE.OctahedronGeometry(0.12,0); /* shared Geo, nie disposen */
+var fallGems=[]; /* #57 Kristall-Regen ohne setIntervals (im Frame aktualisiert, überlebt den Sieg) */
+function burst(x,y,z,n,col){for(var bi=0;bi<n;bi++){var m=new THREE.Mesh(fxGeo,M(col,col,0.8));
+  m.position.set(x,y,z);scene.add(m);
+  fx.push({m:m,vx:(Math.random()-0.5)*4,vy:2+Math.random()*3,vz:(Math.random()-0.5)*4,life:0.5+Math.random()*0.3,kind:"sp"});}}
+var sq=0,dust=[],dustI=0;
+(function(){var cvD=document.createElement("canvas");cvD.width=cvD.height=64;var cD=cvD.getContext("2d");
+  var gD=cD.createRadialGradient(32,32,4,32,32,32);gD.addColorStop(0,"rgba(220,210,255,.7)");gD.addColorStop(1,"rgba(220,210,255,0)");
+  cD.fillStyle=gD;cD.fillRect(0,0,64,64);var dTex=new THREE.CanvasTexture(cvD);
+  for(var dj=0;dj<6;dj++){var sp2=new THREE.Sprite(new THREE.SpriteMaterial({map:dTex,transparent:true,opacity:0,depthWrite:false}));
+    sp2.scale.set(0.7,0.7,1);scene.add(sp2);dust.push({m:sp2,t:0});}})();
+function puff(x,y,z,n){for(var pi=0;pi<n;pi++){var d3=dust[dustI=(dustI+1)%dust.length];
+  d3.t=0.5;d3.m.position.set(x+(Math.random()-0.5)*0.5,y+0.1,z+(Math.random()-0.5)*0.5);d3.m.material.opacity=0.55;}}
+var _debris=[];(function(){var dm=M(0x4a4258,0x2a2038,0.4);
+  for(var di=0;di<12;di++){var b2=new THREE.Mesh(new THREE.BoxGeometry(0.22,0.22,0.22),dm);b2.visible=false;scene.add(b2);
+    _debris.push({m:b2,vx:0,vy:0,vz:0,life:0});}})();
+function burstDebris(x,z){for(var di=0;di<_debris.length;di++){var d2=_debris[di];
+  d2.m.visible=true;d2.m.position.set(x+(Math.random()-0.5)*1.6,0.4,z+(Math.random()-0.5)*1.6);
+  d2.vx=(Math.random()-0.5)*5;d2.vy=3+Math.random()*4;d2.vz=(Math.random()-0.5)*5;d2.life=0.9+Math.random()*0.4;}} /* 🪨 Fels-Splitter */
+var vRing=new THREE.Mesh(new THREE.RingGeometry(3.4,4.0,36),new THREE.MeshBasicMaterial({color:0xc98bff,transparent:true,opacity:0.6,side:THREE.DoubleSide,depthWrite:false}));
+vRing.rotation.x=-Math.PI/2;vRing.position.y=0.14;vRing.visible=false;scene.add(vRing); /* 💜 zeigt die Schlag-Zone am Kristall */
+var vLight=new THREE.PointLight(0xc98bff,0,10);scene.add(vLight);
+
+/* ---------- Audio ---------- */
+var AC=null,ndMaster=null,ndEcho=null;
+function bus(){if(ndMaster)return;
+  var cmp=AC.createDynamicsCompressor();cmp.threshold.value=-14;cmp.ratio.value=8;cmp.connect(AC.destination);ndMaster=cmp;
+  var send=AC.createGain();send.gain.value=0.35;
+  var dly=AC.createDelay(1);dly.delayTime.value=0.27;
+  var damp=AC.createBiquadFilter();damp.type="lowpass";damp.frequency.value=1600;
+  var fb=AC.createGain();fb.gain.value=0.34;
+  send.connect(dly);dly.connect(damp);damp.connect(fb);fb.connect(dly);damp.connect(ndMaster);
+  ndEcho=send;}
+function sfx(f,d,t,g,sl){try{if(!running)return;AC=AC||new (window.AudioContext||window.webkitAudioContext)();
+  if(AC.state&&AC.state!=="running"&&AC.resume)AC.resume();
+  var o=AC.createOscillator(),ga=AC.createGain();o.type=t||"triangle";o.frequency.value=f;d=d||0.1;
+  if(sl)o.frequency.exponentialRampToValueAtTime(sl,AC.currentTime+d);
+  ga.gain.setValueAtTime(0.0001,AC.currentTime);ga.gain.exponentialRampToValueAtTime(g||0.05,AC.currentTime+0.005);
+  ga.gain.exponentialRampToValueAtTime(0.0001,AC.currentTime+d);
+  o.connect(ga);bus();ga.connect(ndMaster);ga.connect(ndEcho);o.start();o.stop(AC.currentTime+d+0.02);}catch(e){}}
+var ambOn=false,dripT=null,_ambNodes=null,_ambGain=null; /* #21 Höhlen-Ambiente */
+function startAmbience(){if(ambOn||!AC)return;ambOn=true;
+  try{var d1=AC.createOscillator(),d2=AC.createOscillator(),lp=AC.createBiquadFilter(),lfo=AC.createOscillator(),lg=AC.createGain(),ag=AC.createGain();
+    d1.type="sawtooth";d1.frequency.value=55;d2.type="sawtooth";d2.frequency.value=55.7;
+    lp.type="lowpass";lp.frequency.value=140;lfo.frequency.value=0.08;lg.gain.value=40;lfo.connect(lg);lg.connect(lp.frequency);
+    ag.gain.value=0.012;d1.connect(lp);d2.connect(lp);lp.connect(ag);ag.connect(AC.destination); /* bewusst NICHT über den Echo-Bus */
+    d1.start();d2.start();lfo.start();_ambNodes=[d1,d2,lfo];_ambGain=ag;}catch(e){}
+  var drip=function(){if(!ambOn)return;if(Math.random()<0.5)sfx(560+Math.random()*400,0.14,"sine",0.02,260);dripT=setTimeout(drip,1600+Math.random()*3000);};
+  dripT=setTimeout(drip,2000);}
+function stopAmbience(){ambOn=false;if(dripT)clearTimeout(dripT);try{if(_ambGain&&AC)_ambGain.gain.exponentialRampToValueAtTime(0.0001,AC.currentTime+1.2);}catch(e){}
+  try{if(_ambNodes)setTimeout(function(){_ambNodes.forEach(function(n){try{n.stop();}catch(e){}});},1300);}catch(e){}}
+
+/* ---------- HUD ---------- */
+var annT=0;
+function announce(t,c){var a=document.getElementById("announce");a.textContent=t;a.style.color=c||"#ffd166";a.style.opacity=1;annT=2.4;}
+function hint(t,ms){var h=document.getElementById("hint");h.textContent=t;h.style.opacity=1;clearTimeout(h._t);h._t=setTimeout(function(){h.style.opacity=0;},ms||2800);}
+function updHud(){document.getElementById("hearts").textContent="❤️".repeat(Math.max(0,hearts))+"🖤".repeat(Math.max(0,4-hearts));
+  document.getElementById("gems").textContent="💎 "+gemN+"/"+(GEM_TOTAL||"?");
+  document.getElementById("stageTag").textContent=(bossOn?"🗿 KOLOSS-KAMMER":TH.name+" · Abschnitt "+stage+"/3")+(NG?" · MEISTER":""); /* #71 · 🏰 Theme-Name */
+  document.getElementById("bossBar").style.display=bossOn?"block":"none";
+  document.getElementById("bossFill").style.width=Math.max(0,bossHp/TH.bossHp*100)+"%"; /* 🏰 Max-HP je Ebene */
+  document.getElementById("bHit").style.display=bossOn?"flex":"none";}
+
+/* ---------- Eingabe: Joystick + Sprung + Schlag + Tastatur ---------- */
+(function(){var st=document.getElementById("stick"),knob=document.getElementById("knob"),id=null,cx0=0,cy0=0;
+  function begin(e){if(id!=null)return; /* #30 Floating-Joystick: springt zum Daumen (linke Bildhälfte) */
+    for(var i=0;i<e.changedTouches.length;i++){var t=e.changedTouches[i];
+      if(t.clientX>innerWidth*0.55)continue; /* rechte Hälfte = Sprung/Schlag */
+      if(t.target&&t.target.closest&&t.target.closest("#bJump,#bHit,#stationBack,#ov"))continue;
+      id=t.identifier;cx0=t.clientX;cy0=t.clientY;
+      st.style.left=(cx0-60)+"px";st.style.top=(cy0-60)+"px";st.style.bottom="auto";
+      knob.style.transform="translate(-50%,-50%)";e.preventDefault();break;}}
+  window.addEventListener("touchstart",begin,{passive:false});
+  addEventListener("touchmove",function(e){if(id==null)return;
+    for(var i=0;i<e.changedTouches.length;i++){var t=e.changedTouches[i];if(t.identifier!==id)continue;
+      var dx=t.clientX-cx0,dy=t.clientY-cy0,l=Math.hypot(dx,dy),mx=Math.min(l,46);
+      if(l>4){kx=dx/l*(mx/46);kz=dy/l*(mx/46);}else{kx=0;kz=0;}
+      e.preventDefault();
+      knob.style.transform="translate(calc(-50% + "+(kx*34)+"px),calc(-50% + "+(kz*34)+"px))";}},{passive:false});
+  function end(e){for(var i=0;i<e.changedTouches.length;i++){if(e.changedTouches[i].identifier===id){id=null;kx=0;kz=0;
+    st.style.left="";st.style.top="";st.style.bottom="";knob.style.transform="translate(-50%,-50%)";}}}
+  addEventListener("touchend",end);addEventListener("touchcancel",end);
+  function clearInput(){keys={};id=null;kx=0;kz=0;st.style.left="";st.style.top="";st.style.bottom="";knob.style.transform="translate(-50%,-50%)";} /* 🧯 Stuck-Input-Schutz */
+  addEventListener("blur",clearInput);
+  document.addEventListener("visibilitychange",function(){if(document.visibilityState==="hidden")clearInput();else{try{if(AC&&AC.state!=="running"&&AC.resume)AC.resume();}catch(e){}}});
+})();
+var jHeld=false;
+function doJump(){jBuf=0.12;jHeld=true;}
+function endJump(){jHeld=false;if(vy>3.5)vy=3.5;} /* Loslassen kappt den Sprung -> kurze/hohe Sprünge */
+function doHit(){if(!bossOn||dead||won)return;
+  heroAtk(); /* 🎬 Angriffs-Animation bei jedem Schlag */
+  if(vulnT>0&&slamArm){var f=slamArm.userData.fist,wp=new THREE.Vector3();f.getWorldPosition(wp);
+    if(Math.hypot(wp.x-px,wp.z-pz)<WEAPONS[curWp].reach){bossHp-=WEAPONS[curWp].dmg;vulnT=0;bT=Math.min(bT,1.4);hitFx=0.5;shakeT=0.25; /* ⚔️ Reichweite & Schaden je Waffe */
+      slamArm.userData.cry.material.emissiveIntensity=0.2;slamArm.userData.cry.scale.setScalar(1);slamArm.userData.slamTgt=0;slamArm=null; /* Arm federt zurück statt einzufrieren */
+      sfx(180,0.25,"sawtooth",0.09,60);sfx(880,0.15,"square",0.05,1400);announce("💥 TREFFER!","#c98bff");
+      var hh=document.getElementById("hint");clearTimeout(hh._t);hh.style.opacity=0;
+      burst(wp.x,wp.y,wp.z,5,0xc98bff);
+      var _bf=document.getElementById("bossFill");_bf.classList.add("flash");setTimeout(function(){_bf.classList.remove("flash");},160);
+      if(bossHp<=Math.ceil(TH.bossHp/2)&&bossHp>0&&bossPh===0){bossPh=1;announce("😡 DER KOLOSS RAST!","#ff5a5a"); /* 🐛 Schwarm: Enrage skaliert mit Theme-HP (Hammer 2-dmg übersprang bossHp===3) */sfx(110,0.6,"sawtooth",0.07,55);if(boss.userData.eyes)boss.userData.eyes.forEach(function(ey){ey.scale.setScalar(1.6);});} /* #23 Wut-Riff · #71 Guard gegen Announce-Dublette im NG+ */
+      if(bossHp<=0)winGame();updHud();return;}}
+  if(vulnT>0&&slamArm)hint("Näher an die glühende Faust ran!",2000);
+  else if(!window.__hintVuln){window.__hintVuln=1;hint("⏳ Warte, bis ein Faust-Kristall violett aufglüht!",2600);}
+  sfx(220,0.08,"square",0.03);}
+document.getElementById("bJump").addEventListener("touchstart",function(e){e.preventDefault();doJump();},{passive:false});
+document.getElementById("bJump").addEventListener("touchend",endJump);
+document.getElementById("bJump").addEventListener("touchcancel",endJump);
+document.getElementById("bJump").addEventListener("mouseup",endJump);
+document.getElementById("bJump").addEventListener("click",doJump);
+document.getElementById("bHit").addEventListener("touchstart",function(e){e.preventDefault();doHit();},{passive:false});
+document.getElementById("bHit").addEventListener("click",doHit);
+(function(){var bw=document.getElementById("bWpn");if(!bw)return; /* ⚔️ Waffen-Wechsel-Knopf (mobil) */
+  bw.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();cycleWeapon(1);},{passive:false});
+  bw.addEventListener("click",function(e){e.stopPropagation();cycleWeapon(1);});})();
+var keys={};
+addEventListener("keydown",function(e){keys[e.key.toLowerCase()]=1;
+  if(e.key>="1"&&e.key<="4"){equipWeapon(+e.key-1);} /* ⚔️ Waffe 1-4 */
+  if(e.key.toLowerCase()==="q")cycleWeapon(1);
+  if(e.key===" "){e.preventDefault();if(!running){start();return;}doJump();}
+  if(e.key.toLowerCase()==="e")doHit();});
+addEventListener("keyup",function(e){keys[e.key.toLowerCase()]=0;if(e.key===" ")endJump();});
+
+/* ---------- Spiel-Logik ---------- */
+function groundAt(x,z,maxY){var best=-999;if(maxY==null)maxY=1e9;
+  for(var i=0;i<plats.length;i++){var p=plats[i];
+    if(p.y<=maxY&&Math.abs(x-p.x)<=p.w&&Math.abs(z-p.z)<=p.d&&p.y>best)best=p.y;}
+  return best;}
+function snapCam(){camera.position.set(px,gy+(bossOn?7.5:6.2),pz+(bossOn?11:8.6));} /* Kamera springt beim Respawn mit (kein Weitflug-Lerp) */
+function respawn(){var c=checkpoints[ckpt];px=c.x;py=c.y+0.2;pz=c.z;vy=0;jumps=0;gy=py;sq=0;player.scale.set(1,1,1);snapCam();
+  sfx(160,0.3,"sawtooth",0.06,60);announce("💫 Zurück zum Fackel-Halt","#9fd0ff");}
+var hbT=0;
+function damage(){if(dead||won)return;hearts--;invT=1.6;shakeT=Math.max(shakeT,0.35);updHud();sfx(120,0.2,"sawtooth",0.08,50);
+  for(var qi=rings.length-1;qi>=0;qi--){scene.remove(rings[qi].m);rings[qi].m.geometry.dispose();rings[qi].m.material.dispose();}rings.length=0; /* keine Ketten-Treffer nach dem Rücksetzen */
+  if(hearts<=0){dead=true;player.visible=true;announce("💀 Der Dungeon hat gewonnen …","#8a8a9a");
+    setTimeout(function(){sfx(330,0.3,"triangle",0.06,262);},250);setTimeout(function(){sfx(262,0.3,"triangle",0.06,208);},650);setTimeout(function(){sfx(196,0.5,"triangle",0.07,130);},1050);
+    setTimeout(function(){finish(false);},1800);}
+  else respawnBoss();}
+function respawnBoss(){px=0;pz=CHZ+9;py=0;vy=0;gy=0;snapCam();}
+function winGame(){if(won||dead)return;won=true;bossOn=false;shakeT=0.6;
+  announce("🏆 DER KOLOSS FÄLLT!","#ffd166");
+  sfx(392,0.3,"triangle",0.07);setTimeout(function(){sfx(523,0.3,"triangle",0.07);},180);
+  setTimeout(function(){sfx(784,0.5,"triangle",0.08);},380);
+  boss.userData.falling=true;
+  (function(){for(var vi=0;vi<10;vi++)(function(k){setTimeout(function(){ /* 💎 Kristall-Regen (#57 frame-basiert, kein setInterval) */
+    var vg=new THREE.Mesh(new THREE.OctahedronGeometry(0.3,0),M(0xc98bff,0xa060ff,1));
+    vg.position.set(boss.position.x+(Math.random()-0.5)*6,7+Math.random()*3,boss.position.z+(Math.random()-0.5)*6);
+    scene.add(vg);fallGems.push({m:vg,vy:0});
+    gemN++;updHud();sfx(700+k*60,0.1,"triangle",0.04,1000+k*80);},k*160);})(vi);})();
+  setTimeout(function(){finish(true);},2600);}
+function finish(win){if(finish._done)return;finish._done=true;
+  stopAmbience(); /* #21 Ambiente ausblenden */
+  var score=Math.round((gemN*8+Math.max(0,hearts)*12+(win?120:0))*(NG?1.5:1)); /* #63 Sieg-Min 212, Tod-Max 56 · #71 NG+ ×1.5 */
+  if(STATION)stationPost({t:"stationDone",score:score,win:win?1:0}); /* #65 win-Flag für die Koloss-Quest */
+  function fmt(s){s=Math.max(0,Math.round(s));return Math.floor(s/60)+":"+("0"+(s%60)).slice(-2);} /* #68 mm:ss */
+  var isBest=false,best=0;
+  if(win&&!NG){try{best=parseInt(localStorage.getItem("nd-best")||"0",10)||0;}catch(e){} /* #71 NG+-Läufe schreiben KEINE Bestzeit (unfair schnell) */
+    if(best===0||runT<best){isBest=true;try{localStorage.setItem("nd-best",""+Math.round(runT));}catch(e){}}}
+  if(win&&_dlv<DLEVELS.length-1){try{localStorage.setItem("nd_level",""+(_dlv+1));}catch(e){}} /* 🏰 nächste Ebene freischalten → beim nächsten Start vorgewählt */
+  if(win){sfx(523,0.16,"triangle",0.06);setTimeout(function(){sfx(659,0.16,"triangle",0.06);},130);setTimeout(function(){sfx(880,0.3,"triangle",0.07);},260);} /* Arpeggio VOR evtl. Audio-Fade */
+  var ov=document.getElementById("ov");ov.style.display="flex";
+  ov.querySelector("h1").textContent=(win?"🏆 KOLOSS BESIEGT!":"💀 GESCHEITERT")+(NG?" · MEISTER":"");
+  var timeLine=win&&!NG?" · ⏱️ "+fmt(runT)+(isBest?' <span style="color:#ffd166">🏆 NEUE BESTZEIT!</span>':(best?' <span style="color:#8adfc0">(Best '+fmt(best)+')</span>':"")):(win?" · ⏱️ "+fmt(runT):"");
+  ov.querySelector("p").innerHTML="💎 "+gemN+" Kristalle · ❤️ "+Math.max(0,hearts)+" übrig · <b>Score "+score+"</b>"+timeLine;
+  /* #67 Rematch: Station frisch neu laden (Reward zählt regulär), sonst normaler Reload */
+  var sb=document.getElementById("startBtn");sb.textContent="Nochmal ▶";
+  sb.onclick=function(){var _u=location.pathname+"?lvl="+_dlv+(STATION?"&station=1":"")+(NG?"&ng=1":""); /* 🐛 Schwarm: Rematch spielt DIESELBE Ebene (sonst lud der Reload die freigeschaltete nächste) */
+    if(STATION){stationPost({t:"stationRematch"});setTimeout(function(){location.href=_u;},250);}else location.href=_u;};
+  var box=sb.parentNode;
+  if(STATION&&!document.getElementById("againBtn")){var ab=document.createElement("button");ab.id="againBtn";ab.className="big sec";ab.textContent="← Wildnis";ab.onclick=function(){stationPost("mini-back");};box.appendChild(ab);}
+  if(win&&!NG&&!document.getElementById("ngBtn")){var ng=document.createElement("button");ng.id="ngBtn";ng.className="big sec";ng.textContent="⚔️ Meister-Abstieg";ng.onclick=function(){var u=location.href;location.href=u+(u.indexOf("?")<0?"?":"&")+"ng=1";};box.appendChild(ng);}}
+
+function start(){document.getElementById("ov").style.display="none";running=true;
+  hint(TOUCH?"🕹️ Laufen · ⤴ zweimal = Doppelsprung":"WASD laufen · LEER ×2 = Doppelsprung · E = zuschlagen",3600);updHud();
+  setTimeout(function(){announce("🔥 Folge den Fackeln in die Tiefe!","#ffce8a");},900);
+  try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();if(AC.state==="suspended")AC.resume();}catch(e){}
+  startAmbience(); /* #21 */}
+document.getElementById("startBtn").onclick=start;
+
+/* ---------- Frame-Loop ---------- */
+var lastT=performance.now();
+function frame(now){requestAnimationFrame(frame);
+  var dt=Math.min(0.05,(now-lastT)/1000)||0.016;lastT=now;
+  var t=now*0.001;
+  if(heroMix)heroMix.update(dt);
+  if(heroRig&&heroRig.lock>0)heroRig.lock-=dt; /* Angriffs-Sperre auslaufen lassen (Fallback zum finished-Event) */
+  for(var fi=0;fi<torches.length;fi++){var tc=torches[fi];
+    tc.fl.scale.setScalar(1+Math.sin(t*9+tc.ph)*0.16);tc.lt.intensity=(tc.lit?0.95:0.75)+Math.sin(t*11+tc.ph)*0.22;}
+  amb.color.lerp(bossOn?_ambBoss:_ambBase,Math.min(1,dt*1.2)); /* 🔴 Kammer-Stimmung */
+  if(scene.fog)scene.fog.color.lerp(bossOn?_fogBoss:_fogBase,Math.min(1,dt*1.2)); /* #7 */
+  if(scene.background&&scene.background.isColor)scene.background.lerp(bossOn?_fogBoss:_fogBase,Math.min(1,dt*1.2));
+  upLight.intensity+=((bossOn&&!won?1.2:0)-upLight.intensity)*Math.min(1,dt*1.2);
+  if(bossOn&&bossPh===1){var _cp2=0.7+0.5*Math.sin(t*8);
+    if(boss.userData.crackMats)for(var cm2=0;cm2<boss.userData.crackMats.length;cm2++)boss.userData.crackMats[cm2].emissiveIntensity=_cp2;
+    upLight.intensity=1.2+0.6*_cp2;} /* #7: Puls synchron zu den Brust-Rissen */
+  if(window.__motes)for(var mo2=0;mo2<window.__motes.length;mo2++){var mt=window.__motes[mo2];
+    mt.m.position.set(mt.x+Math.sin(t*mt.sp+mt.ph)*1.6,mt.y+Math.sin(t*mt.sp*0.7+mt.ph)*0.8,mt.z);}
+  for(var fi2=fx.length-1;fi2>=0;fi2--){var F2=fx[fi2];F2.life-=dt;
+    if(F2.life<=0){scene.remove(F2.m);if(F2.kind==="gem"&&F2.m.geometry)F2.m.geometry.dispose();F2.m.material.dispose();fx.splice(fi2,1);continue;}
+    F2.vy-=8*dt;F2.m.position.x+=F2.vx*dt;F2.m.position.y+=F2.vy*dt;F2.m.position.z+=F2.vz*dt;
+    F2.m.rotation.y+=dt*8;if(F2.m.material.opacity!==undefined)F2.m.material.opacity=Math.min(1,F2.life*2.5);}
+  for(var du=0;du<dust.length;du++){var D3=dust[du];if(D3.t<=0)continue;D3.t-=dt;
+    D3.m.position.y+=dt*0.7;D3.m.scale.x+=dt*1.4;D3.m.scale.y+=dt*1.4;D3.m.material.opacity=Math.max(0,D3.t*1.1);}
+  for(var dd=0;dd<_debris.length;dd++){var db=_debris[dd];if(db.life<=0){if(db.m.visible)db.m.visible=false;continue;}
+    db.life-=dt;db.vy-=14*dt;db.m.position.x+=db.vx*dt;db.m.position.y=Math.max(0.1,db.m.position.y+db.vy*dt);db.m.position.z+=db.vz*dt;
+    db.m.rotation.x+=dt*6;db.m.rotation.z+=dt*5;}
+  for(var gi=0;gi<gems.length;gi++){var gm=gems[gi];if(gm.got)continue;
+    gm.m.rotation.y+=dt*2.2;gm.m.position.y=gm.y+Math.sin(t*2.4+gm.ph)*0.14;}
+  for(var mi2=0;mi2<plats.length;mi2++){var mp=plats[mi2];if(!mp.mv)continue; /* 🛗 bewegliche Plattformen */
+    var ox2=mp.x,om=mp.mv,_sp=om.sp*TH.mv;mp.x=mp.x0+Math.sin(t*_sp+om.ph)*om.ax;mp.y=mp.y0+Math.sin(t*_sp+om.ph)*om.ay; /* 🏰 Plattform-Tempo je Ebene */
+    mp.g.position.set(mp.x,mp.y,mp.z);
+    if(running&&onG&&Math.abs(px-mp.x)<=mp.w+0.4&&Math.abs(pz-mp.z)<=mp.d+0.4&&Math.abs(py-mp.y)<0.3){px+=mp.x-ox2;py=mp.y;}}
+  for(var fg=0;fg<fallGems.length;fg++){var FG=fallGems[fg];if(FG.m.position.y<=0.3)continue; /* #57 Kristall-Regen top-level (läuft auch nach dem Sieg weiter) */
+    FG.vy-=0.02;FG.m.position.y+=FG.vy;FG.m.rotation.y+=0.15;if(FG.m.position.y<0.3)FG.m.position.y=0.3;}
+  if(boss.userData.falling){boss.rotation.x+=dt*0.5;boss.position.y-=dt*1.4;} /* #57 hochgezogen: Koloss sinkt auch nach dem Sieg weiter */
+  if(running&&!dead&&!won){
+    runT+=dt; /* #68 */
+    /* Bewegung (Tastatur überlagert Stick) */
+    var ix=kx,iz=kz;
+    if(keys.a||keys.arrowleft)ix=-1;if(keys.d||keys.arrowright)ix=1;
+    if(keys.w||keys.arrowup)iz=-1;if(keys.s||keys.arrowdown)iz=1;
+    var il=Math.hypot(ix,iz);if(il>1){ix/=il;iz/=il;}
+    var spd=6.2;px+=ix*spd*dt;pz+=iz*spd*dt;
+    if(il>0.05)player.rotation.y=Math.atan2(ix,iz);
+    stepT-=dt*il;if(onG&&il>0.3&&stepT<=0){stepT=0.34;sfx(95+Math.random()*25,0.05,"sine",0.02);}
+    if(heroRig&&heroRig.lock<=0)heroSet(il>0.1?(heroRig.acts.run?"run":"walk"):"idle"); /* 🎬 Locomotion-Anim */
+    if(bossOn){var bdx=px,bdz=pz-CHZ,bdl=Math.hypot(bdx,bdz);if(bdl>12){px=bdx/bdl*12;pz=CHZ+bdz/bdl*12;}} /* Arena hält dich im Kampf */
+    /* Sprung-Physik: Coyote + Buffer + Doppelsprung */
+    var g=groundAt(px,pz,py+1.2); /* nur Plattformen unter/kaum über den Füssen (kein Hochzuppen durch hohe Decks) */
+    if(onG)coyote=0.18;else coyote-=dt; /* grosszügige Coyote-Zeit */
+    if(jBuf>0){jBuf-=dt;
+      if(onG||coyote>0){vy=9.2;onG=false;coyote=0;jumps=1;jBuf=0;sfx(340,0.12,"square",0.04,520);}
+      else if(jumps<2){var first=(jumps===0);vy=first?9.2:8.8;jumps=first?1:2;jBuf=0;sfx(first?340:430,0.12,"square",0.04,first?520:640);if(!first)burst(px,py+0.15,pz,4,0x7de3ff);}} /* Kanten-Fall frisst den 1. Sprung nicht */
+    var G=vy<-0.5?32:(Math.abs(vy)<2&&!onG?14:22);vy=Math.max(-16,vy-G*dt);py+=vy*dt; /* schneres Fallen, schwebender Apex */
+    if(g>-500&&py<=g&&vy<=0&&py>g-1.2){py=g;vy=0;if(!onG){sfx(150,0.06,"sine",0.03);sq=1;puff(px,g,pz,3);}onG=true;jumps=0;gy=py;}
+    else onG=false;
+    if(py<-9){ /* Abgrund: im Parcours GRATIS zurück zum Fackel-Halt (fair!), nur beim Boss kostet es */
+      if(bossOn)damage();else respawn();}
+    /* Checkpoints + Stage-Anzeige */
+    for(var ci=checkpoints.length-1;ci>0;ci--){var cp=checkpoints[ci];
+      if(ci>ckpt&&Math.hypot(px-cp.x,pz-cp.z)<2.6&&Math.abs(py-cp.y)<2){ckpt=ci;
+        for(var tf=0;tf<torches.length;tf++){var T4=torches[tf];if(T4.lit)continue;
+          if(Math.hypot(T4.x-cp.x,T4.z-cp.z)<3){T4.lit=true;
+            T4.fl.material.color.setHex(0xb080ff);T4.fl.material.emissive.setHex(0x8050e0);
+            T4.lt.color.setHex(0xb080ff);T4.lt.intensity=1.2;
+            if(T4.gl)T4.gl.material.opacity=0.85;}} /* 💜 Checkpoint-Fackeln brennen violett weiter */
+        stage=Math.min(3,ci+0);announce("🔥 Fackel-Halt erreicht!","#ffce8a");sfx(520,0.15,"triangle",0.05,780);updHud();}}
+    if(pz<-28&&stage<2){stage=2;updHud();announce("⚙️ Abschnitt 2 — Bewegte Plattformen","#9fd0ff");hint("⤴⤴ Doppelsprung für weite Lücken!",3200);}
+    if(pz<-62&&stage<3){stage=3;updHud();announce("🌉 Abschnitt 3 — Schmale Stege","#c8b8ff");hint("Langsam laufen — die Stege sind schmal!",3200);}
+    /* Kristalle */
+    for(var g2=0;g2<gems.length;g2++){var gg=gems[g2];if(gg.got)continue;
+      if(Math.hypot(px-gg.x,pz-gg.z)<1.1&&Math.abs(py+0.9-gg.m.position.y)<1.6){gg.got=true;gemN++;
+        if(gg.secret&&!secFound){secFound=true;announce("🤫 Geheim-Nische entdeckt!","#c98bff");sfx(880,0.2,"triangle",0.06,1320);}
+        gg.m.material.transparent=true;fx.push({m:gg.m,vx:0,vy:3.2,vz:0,life:0.45,kind:"gem"});burst(gg.x,gg.m.position.y,gg.z,3,0xc98bff);
+        var _ge=document.getElementById("gems");_ge.style.transform="scale(1.25)";clearTimeout(_ge._pt);_ge._pt=setTimeout(function(){_ge.style.transform="";},180);
+        if(gemN===GEM_TOTAL)announce("✨ ALLE KRISTALLE!","#c98bff");
+        sfx(760,0.12,"triangle",0.05,1100);updHud();}}
+    /* Boss-Kammer betreten */
+    if(!bossOn&&!won&&pz<CHZ+12){bossOn=true;boss.visible=true;shakeT=0.5;bState="rise";boss.userData.eyeMat.emissiveIntensity=0;hitFx=1.2;introT=1.4;
+      announce("🗿 DER KOLOSS ERWACHT","#ff8a5a");hint(TOUCH?"Schockwellen ÜBERSPRINGEN · glühende Faust = ⚔️ zuschlagen!":"Schockwellen mit LEER überspringen · glühende Faust = E!",4200);
+      sfx(60,1.2,"sawtooth",0.1,38);updHud();}
+    /* Boss-Verhalten */
+    if(bossOn&&!won){bT-=dt;
+      boss.rotation.y=Math.atan2(px-boss.position.x,pz-boss.position.z);
+      if(bState!=="rise"){btBeat-=dt;if(btBeat<=0){btBeat=bossPh===1?0.30:0.42;var _bs=[55,55,65.4,49];sfx(_bs[btIdx%4],0.16,"sawtooth",0.05);btIdx++;}} /* #23 Bass-Ostinato ab dem Aufstehen, Enrage schneller */
+      if(bState==="rise"){boss.position.y=Math.min(0,boss.position.y+dt*6); /* 🗿 der Koloss ERHEBT sich aus dem Boden */
+        boss.userData.eyeMat.emissiveIntensity=Math.min(1,boss.userData.eyeMat.emissiveIntensity+dt*0.8);
+        if(boss.position.y>=0){boss.position.y=0;boss.userData.eyeMat.emissiveIntensity=1;bState="idle";bT=2.0;}}
+      else if(bState==="idle"&&bT<=0){
+        if(vulnT<=0&&stomps<2&&(bossPh===0?Math.random()<0.6:Math.random()<0.45)){bState="stomp";bT=0.7;stomps++;
+          warnD=new THREE.Mesh(new THREE.RingGeometry(1.6,2.2,32),new THREE.MeshBasicMaterial({color:0xff8a3a,transparent:true,opacity:0.5,side:THREE.DoubleSide,depthWrite:false}));
+          warnD.rotation.x=-Math.PI/2;warnD.position.set(boss.position.x,0.10,boss.position.z);scene.add(warnD); /* 🔶 Stampf-Telegraph */
+          sfx(90,0.6,"sawtooth",0.06,50);}
+        else{bState="slam";bT=0.9;stomps=0;slamArm=Math.random()<0.5?boss.userData.armL:boss.userData.armR;
+          sfx(200,0.8,"sine",0.05,80);}}
+      else if(bState==="stomp"&&bT<=0){ /* Stampfer -> Schockwellen-Ring */
+        var rg=new THREE.Mesh(new THREE.RingGeometry(0.6,1.15,40),new THREE.MeshBasicMaterial({color:0xff8a3a,transparent:true,opacity:0.85,side:THREE.DoubleSide,depthWrite:false}));
+        rg.rotation.x=-Math.PI/2;rg.position.set(boss.position.x,0.12,boss.position.z);scene.add(rg);
+        rings.push({m:rg,r:1,hit:false});sfx(55,0.4,"square",0.1,40);
+        if(bossPh===1){setTimeout(function(){if(won||dead)return; /* 😡 Phase 2: zweiter Ring hinterher */
+          var rg2=new THREE.Mesh(new THREE.RingGeometry(0.6,1.15,40),new THREE.MeshBasicMaterial({color:0xff5a5a,transparent:true,opacity:0.85,side:THREE.DoubleSide,depthWrite:false}));
+          rg2.rotation.x=-Math.PI/2;rg2.position.set(boss.position.x,0.12,boss.position.z);scene.add(rg2);
+          rings.push({m:rg2,r:1,hit:false});sfx(65,0.35,"square",0.09,45);},420);}
+        if(warnD){scene.remove(warnD);warnD.geometry.dispose();warnD.material.dispose();warnD=null;}
+        shakeT=0.35;burstDebris(boss.position.x,boss.position.z);
+        boss.position.y=0.5;setTimeout(function(){boss.position.y=0;},120);
+        bState="idle";bT=bossPh===1?1.5:2.4;}
+      else if(bState==="slam"&&bT<=0){ /* Faust-Slam -> Kristall verwundbar */
+        vulnT=4.2;bState="idle";bT=4.4; /* langes Fenster; bT muss >= vulnT bleiben */
+        var a=slamArm;a.userData.slamTgt=-1.35;
+        a.userData.cry.material.emissiveIntensity=1;
+        sfx(70,0.5,"sawtooth",0.1,45);hint("⚔️ JETZT die glühende Faust treffen!",4200);}
+      if(vulnT>0){if(vulnT>1&&vulnT-dt<=1)sfx(700,0.05,"square",0.03);
+        vulnT-=dt;
+        if(slamArm){slamArm.userData.cry.scale.setScalar(1+Math.sin(t*10)*0.25);
+          slamArm.rotation.x+=((slamArm.userData.slamTgt||-1.35)-slamArm.rotation.x)*Math.min(1,dt*10);} /* Arm saust runter */
+        if(vulnT<=0&&slamArm){slamArm.userData.slamTgt=0;slamArm=null;sfx(500,0.25,"triangle",0.04,180);}}
+      if(boss.userData.armL.rotation.x<-0.02&&boss.userData.armL!==slamArm)boss.userData.armL.rotation.x+=(0-boss.userData.armL.rotation.x)*Math.min(1,dt*5); /* Arme federn zurück */
+      if(boss.userData.armR.rotation.x<-0.02&&boss.userData.armR!==slamArm)boss.userData.armR.rotation.x+=(0-boss.userData.armR.rotation.x)*Math.min(1,dt*5);
+      if(bState==="stomp"){if(warnD)warnD.material.opacity=0.3+Math.sin(t*14)*0.25;boss.position.y+=(-0.4-boss.position.y)*Math.min(1,dt*8);} /* duckt sich vor dem Stampfer */
+      if(vulnT>0&&slamArm){slamArm.userData.fist.getWorldPosition(_fw);
+        vRing.visible=true;vRing.position.set(_fw.x,0.14,_fw.z);vRing.material.opacity=0.35+0.3*Math.abs(Math.sin(t*6));
+        vLight.position.set(_fw.x,1.2,_fw.z);vLight.intensity+=(0.9-vLight.intensity)*Math.min(1,dt*6);}
+      else{vRing.visible=false;vLight.intensity+=(0-vLight.intensity)*Math.min(1,dt*6);}
+      if(hitFx>0){hitFx-=dt;boss.position.x=Math.sin(t*60)*0.12*hitFx;}
+      /* Ringe expandieren + treffen */
+      for(var ri=rings.length-1;ri>=0;ri--){var rr=rings[ri];rr.r+=dt*(bossPh===1?7:5.5);
+        rr.m.scale.setScalar(rr.r);rr.m.material.opacity=Math.max(0,0.85-rr.r*0.045);
+        var pd=Math.hypot(px-boss.position.x,pz-boss.position.z);
+        if(!rr.hit&&invT<=0&&Math.abs(pd-rr.r)<0.55&&py<0.55){rr.hit=true;damage();break;} /* break PFLICHT: damage() leert rings */
+        if(rr.r>18){scene.remove(rr.m);rr.m.geometry.dispose();rr.m.material.dispose();rings.splice(ri,1);}}
+    }
+    if(sq>0){sq=Math.max(0,sq-dt*4);var _sy=1-sq*0.3,_sxz=1+sq*0.22;player.scale.set(_sxz,_sy,_sxz);player.position.y=py;}else if(player.scale.y!==1)player.scale.set(1,1,1); /* 🫠 Lande-Squash */
+    if(invT>0){invT-=dt;player.visible=invT<=0||Math.sin(t*30)>0;} /* 🛡️ kurze Unverwundbarkeit blinkt */
+    if(hearts===1&&!dead&&!won){hbT-=dt;if(hbT<=0){hbT=1.1;sfx(85,0.1,"sine",0.05);setTimeout(function(){sfx(70,0.12,"sine",0.045);},140);}}
+    player.position.set(px,py,pz);
+  }
+  /* Kamera */
+  if(py<gy-2.5)gy+=(py-gy)*Math.min(1,dt*4); /* Kamera folgt dem BODEN, nicht jedem Sprung (kein Pumpen) */
+  var cy2=gy+ (bossOn?7.5:6.2),cz2=pz+(bossOn?11:8.6);
+  camera.position.x+=(px-camera.position.x)*Math.min(1,dt*5);
+  camera.position.y+=(cy2-camera.position.y)*Math.min(1,dt*5);
+  camera.position.z+=(cz2-camera.position.z)*Math.min(1,dt*5);
+  if(shakeT>0){shakeT-=dt;var sh=shakeT*shakeT*2.4,st3=t*40;camera.position.x+=Math.sin(st3*1.1)*sh*0.3;camera.position.y+=Math.cos(st3*1.7)*sh*0.22;} /* 📳 Impact-Shake, klingt quadratisch ab */
+  if(introT>0)introT-=dt;
+  introW+=((introT>0?1:0)-introW)*Math.min(1,dt*3.5); /* 🎬 Intro: Blick schwenkt weich zum erwachenden Koloss */
+  if(introW>0.01)camera.lookAt(px+(boss.position.x-px)*introW,gy+1.2+(6.5-(gy+1.2))*introW,pz-2+((CHZ-4)-(pz-2))*introW);
+  else camera.lookAt(px,gy+1.2,pz-2);
+  if(annT>0){annT-=dt;if(annT<=0)document.getElementById("announce").style.opacity=0;}
+  renderer.render(scene,camera);}
+requestAnimationFrame(frame);
+updHud();
+window.__nd={state:function(){return {px:px,py:py,pz:pz,hearts:hearts,gems:gemN,bossOn:bossOn,bossHp:bossHp,won:won};},
+  tp:function(x,z){px=x;pz=z;py=groundAt(x,z,1e9)+0.2;vy=0;gy=py;snapCam();},boss:function(){px=0;pz=CHZ+10;py=0;gy=0;}};
+})();
+</script>
+</body>
+</html>
