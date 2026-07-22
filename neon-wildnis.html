@@ -4933,7 +4933,7 @@ function startGame(fresh){
 // ---------- Charakter-3D-Vorschau im Startscreen (User: „charakter anzeigen an anfang") ----------
 (function(){
   var cv=document.getElementById("charPrev");if(!cv||!window.THREE||!THREE.GLTFLoader)return;
-  var pr,psc,pcam,pmix,pmodel,pt=0,_lastId=null;
+  var pr,psc,pcam,pmix,pmodel,pt=0,_lastId=null,pShow=null;
   function emojiFallback(C){ /* kein WebGL-Kontext → wenigstens grosses Emoji statt leerer Box */
     if(document.getElementById("charPrevEmoji"))return;
     cv.style.display="none";
@@ -4957,7 +4957,7 @@ function startGame(fresh){
     pcam=new THREE.PerspectiveCamera(28,cv.width/cv.height,0.1,50);pcam.position.set(0.15,0.92,3.45);pcam.lookAt(0,0.9,0); /* leicht tiefer/heroischer Winkel */
     return true;
   }
-  function clearModel(){if(pmodel){psc.remove(pmodel);pmodel.traverse(function(n){if(n.isMesh&&n.geometry)n.geometry.dispose();});}pmodel=null;pmix=null;}
+  function clearModel(){if(pmodel){psc.remove(pmodel);pmodel.traverse(function(n){if(n.isMesh&&n.geometry)n.geometry.dispose();});}pmodel=null;pmix=null;pShow=null;}
   function showPlaceholder(C){ /* Sofort-Figur in Klassenfarbe, bis das GLB da ist (oder falls es scheitert) */
     clearModel();
     var g=new THREE.Group(),col=(C&&C.col)?C.col:0x37c8e8;
@@ -5007,8 +5007,16 @@ function startGame(fresh){
         o.position.x-=ctr.x;o.position.z-=ctr.z;o.position.y-=(bb2.min.y-0.05);
         pmodel=o;psc.add(o);
         if(g.animations&&g.animations.length){pmix=new THREE.AnimationMixer(o);
-          var idle=null;for(var a=0;a<g.animations.length;a++)if(/idle/i.test(g.animations[a].name)){idle=g.animations[a];break;}
-          pmix.clipAction(idle||g.animations[0]).play();}
+          /* 🎬 „super geile Animationen": der Held führt im Picker seine Moves vor
+             (idle → 3-Hit-Combo → Ausweichrolle → Sieges-Pose → wieder idle), statt nur zu stehen. */
+          var _acts={},_has=function(re){for(var a=0;a<g.animations.length;a++)if(re.test(g.animations[a].name))return g.animations[a];return null;};
+          var _idleC=_has(/idle/i)||g.animations[0];
+          ["idle","walk","run","attack","attack2","attack3","dodge","hit","victory","cast","dash_attack","wave","taunt"].forEach(function(nm){
+            var c=_has(new RegExp("^"+nm+"$","i"));if(c){var ac=pmix.clipAction(c);if(nm!=="idle"&&nm!=="walk"&&nm!=="run"){ac.setLoop(THREE.LoopOnce,1);ac.clampWhenFinished=true;}_acts[nm]=ac;}});
+          var _seq=[];["attack","attack2","attack3","dodge","victory"].forEach(function(n){if(_acts[n])_seq.push(n);}); /* nur vorhandene Moves */
+          _acts.idle=pmix.clipAction(_idleC);_acts.idle.play();
+          pShow={acts:_acts,seq:_seq,i:0,t:1.4,cur:"idle",id:id}; /* 1.4s idle, dann erster Move */
+        } else pShow=null;
       },undefined,function(){ /* Fetch/SW-Zicken: 1x mit Cache-Bust neu versuchen, sonst bleibt die Platzhalter-Figur */
         if(_lastId===id&&++tries<2)setTimeout(loadGLB,600);
       });
@@ -5019,7 +5027,15 @@ function startGame(fresh){
     var ov=document.getElementById("ov");if(!pr||!ov||ov.classList.contains("hide")||paused){_pl=now;return;}
     var dt=Math.min(0.05,(now-_pl)/1000);_pl=now;
     if(pmix)pmix.update(dt);
-    if(pmodel)pmodel.rotation.y+=dt*0.7;
+    if(pShow&&pShow.seq.length){pShow.t-=dt; /* 🎬 Move-Showcase-Sequenzer */
+      if(pShow.t<=0){
+        if(pShow.cur==="idle"){var nm=pShow.seq[pShow.i%pShow.seq.length],mv=pShow.acts[nm];
+          mv.reset().setEffectiveWeight(1).fadeIn(0.14).play();pShow.acts.idle.fadeOut(0.14);
+          pShow.cur=nm;pShow.t=(mv.getClip?mv.getClip().duration:1.2)+0.15;}
+        else{var mv2=pShow.acts[pShow.cur];pShow.acts.idle.reset().setEffectiveWeight(1).fadeIn(0.2).play();if(mv2)mv2.fadeOut(0.2);
+          pShow.cur="idle";pShow.i++;pShow.t=(pShow.i%pShow.seq.length===0)?1.6:0.55;}} /* nach voller Runde längere idle-Pause */
+    }
+    if(pmodel)pmodel.rotation.y+=dt*(pShow&&pShow.cur!=="idle"?0.25:0.7); /* bei Moves langsamer drehen → besser sichtbar */
     pr.render(psc,pcam);
   })(performance.now());
 })();
