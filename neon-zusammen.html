@@ -67,6 +67,12 @@ if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.repl
   <div class="chips"><span class="chip">⚖️ Druckplatten zu zweit</span><span class="chip">🔥 Ranken verbrennen</span><span class="chip">💧 Pflanzen giessen</span><span class="chip">⚡ Gleichklang-Schalter</span></div>
   <button class="big" id="startBtn">🧍 Solo spielen (🔁 Wechsel) ▶</button>
   <button class="big" id="coopBtn" style="background:linear-gradient(92deg,#ffb066,#7de3ff)">⚡ Online zu zweit — 1 Tipp</button>
+  <details style="margin:6px auto;max-width:340px;text-align:center;color:#bfe9ff;font-size:.9rem"><summary style="cursor:pointer;opacity:.85">oder gezielt mit einem Freund ▾</summary>
+    <div style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:8px">
+      <button class="ghost" id="tHostBtn" style="margin:0">🏠 Raum erstellen</button>
+      <input id="tCode" maxlength="4" placeholder="CODE" autocomplete="off" style="width:80px;text-align:center;text-transform:uppercase;letter-spacing:3px;font-weight:800;border-radius:8px;border:1px solid #4a6a8a;background:rgba(255,255,255,.9);color:#123;padding:6px">
+      <button class="ghost" id="tJoinBtn" style="margin:0">🚪 Beitreten</button>
+    </div></details>
   <div id="coopStatus"></div>
   <button class="ghost" id="cancelCoop" style="display:none">✖ Suche abbrechen · solo starten</button>
 </div>
@@ -320,6 +326,10 @@ function startCoop(){
   coopWait=true;_coopCancelled=false;document.getElementById("startBtn").style.display="none";
   var _cc=document.getElementById("cancelCoop");if(_cc)_cc.style.display="inline-block"; /* #14 Abbrechen sichtbar */
   try{net=MP.quick("tempel2");}catch(e){document.getElementById("coopStatus").textContent="Fehler: "+e.message;coopWait=false;document.getElementById("startBtn").style.display="block";if(_cc)_cc.style.display="none";return;}
+  wireCoopNet();
+}
+/* 🤝 Gemeinsame Netz-Verdrahtung — für Zufalls-Match (quick), Raum-Erstellen (host) und Beitreten (join) */
+function wireCoopNet(){
   net.onStatus(function(st){
     if(_coopCancelled)return; /* #14 Late-Connect nach Abbruch nicht übernehmen (kein Solo-Hijack) */
     if(st==="connected"){NETON=true;coopWait=false;_everConn=true;mySlot=(net.role==="host")?0:1;active=mySlot;
@@ -340,12 +350,38 @@ function startCoop(){
     if(d.t==="ping")pingBlink(); /* #12 */
     if(d.t==="win"&&!won)winGame(true);});
 }
+function _coopPre(){ /* gemeinsame Vor-Bereitung für host/join */
+  if(!window.MP){document.getElementById("coopStatus").textContent="Koop-Lib fehlt";return false;}
+  if(coopWait||NETON)return false;var _cb=document.getElementById("coopBtn");if(_cb)_cb.disabled=true;
+  coopWait=true;_coopCancelled=false;document.getElementById("startBtn").style.display="none";
+  var _cc=document.getElementById("cancelCoop");if(_cc)_cc.style.display="inline-block";return true;
+}
+function hostCoop(){ /* 🏠 Raum mit Code erstellen (Freund gezielt einladen) */
+  if(!_coopPre())return;
+  try{net=MP.host("tempel2");}catch(e){document.getElementById("coopStatus").textContent="Fehler: "+e.message;coopWait=false;return;}
+  wireCoopNet();
+  var code=net.code||"",link=location.origin+location.pathname+"?raum="+code;
+  try{if(navigator.clipboard&&code)navigator.clipboard.writeText(link);}catch(e){}
+  document.getElementById("coopStatus").textContent="🏠 Raum-Code: "+code+" — schick ihn (Link kopiert 📋), Freund tippt auf Beitreten.";
+}
+function joinCoop(code){ /* 🚪 Mit Code beitreten */
+  code=(code||"").toUpperCase().replace(/[^A-Z]/g,"");
+  if(code.length<4){document.getElementById("coopStatus").textContent="Bitte 4-stelligen Code eingeben.";return;}
+  if(!_coopPre())return;
+  document.getElementById("coopStatus").textContent="🚪 Trete Raum "+code+" bei…";
+  try{net=MP.join("tempel2",code);}catch(e){document.getElementById("coopStatus").textContent="Fehler: "+e.message;coopWait=false;return;}
+  wireCoopNet();
+}
+/* 🔗 Auto-Beitritt via ?raum=CODE */
+(function(){var m=location.search.match(/[?&]raum=([A-Za-z]{4})/);if(m)setTimeout(function(){joinCoop(m[1]);},400);})();
 function doPing(){if(!NETON)return;sfx(680,0.1,"triangle",0.05,900);if(net)try{net.send({t:"ping"});}catch(e){}hint("📣 Ping gesendet",1000);} /* #12 kosmetisch */
 var _pingBl=0;
 function pingBlink(){var pc=chars[NETON?1-mySlot:1-active];if(pc&&pc.g.userData.ring)pc.g.userData.ring.material.opacity=1;_pingBl=1.2;sfx(760,0.1,"triangle",0.05,980);hint("📣 "+pc.name+" ruft dich!",1400);}
 document.getElementById("bPing").addEventListener("touchstart",function(e){e.preventDefault();doPing();},{passive:false});
 document.getElementById("bPing").addEventListener("click",doPing);
 document.getElementById("coopBtn").onclick=startCoop;
+(function(){var h=document.getElementById("tHostBtn"),j=document.getElementById("tJoinBtn"),c=document.getElementById("tCode");
+  if(h)h.onclick=hostCoop;if(j&&c)j.onclick=function(){joinCoop(c.value);};})();
 document.getElementById("cancelCoop").onclick=function(){ /* #14 Suche abbrechen ohne Solo-Hijack */
   _coopCancelled=true;coopWait=false;try{if(net)net.close();}catch(e){}net=null;
   this.style.display="none";var _cb=document.getElementById("coopBtn");if(_cb)_cb.disabled=false;
