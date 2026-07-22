@@ -852,10 +852,10 @@ function toonify(mesh,neon,isHero){var m=mesh.material;if(!m||m._toon||!m.isMesh
   /* 🧑 Haut-Rettung: die nwhero/Quaternius-GLBs haben „Skin"/„Face" als fast schwarze Farbe (#030303, kaputter
      Export) → unter Toon-Shading wurde das Gesicht schwarz. NUR bei Helden (Schwarm-P3: sonst würden Monster/Props/Kisten mit „Head"/„Face"-Materialien mit-umgefärbt). */
   if(isHero)(function(){var nm=(m.name||"").toLowerCase();var mx=Math.max(_col.r,_col.g,_col.b);
-    if(!m.map&&(nm.indexOf("skin")>=0||nm.indexOf("head")>=0||nm.indexOf("hand")>=0)&&mx<0.28){
-      var k=0.42/Math.max(0.008,mx);_col.multiplyScalar(k);
-      _col.r=Math.min(1,_col.r);_col.g=Math.min(1,_col.g);_col.b=Math.min(1,_col.b);
-      if(_col.r<0.35&&_col.g<0.35&&_col.b<0.35)_col.setRGB(0.86,0.68,0.54);} /* farbloser Rest → warmer Hautton */
+    if(!m.map&&(nm.indexOf("skin")>=0||nm.indexOf("head")>=0||nm.indexOf("hand")>=0||nm.indexOf("face")>=0||nm.indexOf("neck")>=0||nm.indexOf("ear")>=0)&&mx<0.30){
+      var sat=Math.max(_col.r,_col.g,_col.b)-Math.min(_col.r,_col.g,_col.b);
+      if(sat<0.05){_col.setRGB(0.82,0.60,0.46);} /* farblose (schwarz/grau) Haut → echter warmer Hautton statt Grau */
+      else{var k=0.58/Math.max(0.01,mx);_col.multiplyScalar(k);_col.r=Math.min(1,_col.r);_col.g=Math.min(1,_col.g);_col.b=Math.min(1,_col.b);}}
     /* 👀 „augen schöner": die „Face"/„Eye"-Fläche der nwhero-GLBs ist ein weisser Blob → dunkle Iris draus machen */
     else if(!m.map&&(nm.indexOf("eye")>=0||nm.indexOf("face")>=0)&&mx>0.45){_col.setRGB(0.10,0.11,0.16);mesh._eyeMat=1;}})();
   if(isHero){ /* 🛡️ „wie echt": Held bekommt ECHTES PBR-Material — Metall glänzt via scene.environment/IBL + ACES, Haut matt.
