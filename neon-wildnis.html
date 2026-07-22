@@ -375,6 +375,17 @@ var rimLight=new THREE.DirectionalLight(0x8fb8ff,0.35);rimLight.position.set(-30
 /* 🌇 HDR-IBL (wie neon-survivor): sky_1k.hdr → PMREM-EnvMap, nur WebGL2 + echte GPU.
    Dezent (envMapIntensity 0.25) — PBR-Materialien (GLBs, Wasser, Kristalle) kriegen echte Reflexe. */
 var GFX={ibl:false,bloom:false};
+/* 🌤️ Günstige Gradient-Env (Himmel→Boden) als PMREM — Fallback, damit das echte Metall des Helden
+   (metalness ~0.9) IMMER etwas zum Spiegeln hat, auch ohne HDR-IBL (Handy/kein WebGL2). Sonst rendert
+   r128 Metall fast schwarz. Einmal cachen. */
+var _nwEnvCache=null;
+function nwGradEnv(rend){if(_nwEnvCache)return _nwEnvCache;try{
+  var c=document.createElement('canvas');c.width=16;c.height=64;var x=c.getContext('2d');
+  var g=x.createLinearGradient(0,0,0,64);g.addColorStop(0,'#9fc4ff');g.addColorStop(0.5,'#c7d6ea');g.addColorStop(1,'#3a4256');
+  x.fillStyle=g;x.fillRect(0,0,16,64);
+  var t=new THREE.CanvasTexture(c);t.mapping=THREE.EquirectangularReflectionMapping;
+  var pm=new THREE.PMREMGenerator(rend);var env=pm.fromEquirectangular(t).texture;t.dispose();pm.dispose();
+  _nwEnvCache=env;return env;}catch(e){return null;}}
 function iblClamp(){ /* EnvMap dezent halten: Default-Intensität 1 → 0.25 (sonst Plastik-Glanz); Wasser behält seinen Wert */
   if(!GFX.ibl)return;
   scene.traverse(function(n){if(n.isMesh){var ms=Array.isArray(n.material)?n.material:[n.material];ms.forEach(function(mm){if(mm&&mm.isMeshStandardMaterial&&mm.envMapIntensity===1)mm.envMapIntensity=0.25;});}});
@@ -383,7 +394,8 @@ if(THREE.RGBELoader&&renderer.capabilities.isWebGL2&&!SOFT_GPU){try{new THREE.RG
   var pm=new THREE.PMREMGenerator(renderer);pm.compileEquirectangularShader();
   var env=pm.fromEquirectangular(tex).texture;scene.environment=env;tex.dispose();pm.dispose();GFX.ibl=true;
   iblClamp();
-},undefined,function(){});}catch(e){}}
+},undefined,function(){if(!scene.environment)scene.environment=nwGradEnv(renderer);});}catch(e){}}
+if(!scene.environment&&(!renderer.capabilities.isWebGL2||SOFT_GPU)){scene.environment=nwGradEnv(renderer);} /* Handy/kein HDR → Gradient-Env, damit Helden-Metall spiegelt */
 
 /* 🩹 Metal-Fix (Polier-Pass): GLB-Materialien kommen teils mit glTF-Default metalness=1.
    Ohne EnvMap rendert three.js r128 solches Metall fast SCHWARZ (die "schwarzen Würfel"-Bäume
@@ -846,6 +858,22 @@ function toonify(mesh,neon,isHero){var m=mesh.material;if(!m||m._toon||!m.isMesh
       if(_col.r<0.35&&_col.g<0.35&&_col.b<0.35)_col.setRGB(0.86,0.68,0.54);} /* farbloser Rest → warmer Hautton */
     /* 👀 „augen schöner": die „Face"/„Eye"-Fläche der nwhero-GLBs ist ein weisser Blob → dunkle Iris draus machen */
     else if(!m.map&&(nm.indexOf("eye")>=0||nm.indexOf("face")>=0)&&mx>0.45){_col.setRGB(0.10,0.11,0.16);mesh._eyeMat=1;}})();
+  if(isHero){ /* 🛡️ „wie echt": Held bekommt ECHTES PBR-Material — Metall glänzt via scene.environment/IBL + ACES, Haut matt.
+                 Der Rest der Welt bleibt Cel/Toon (kohärenter Look), nur der Held wird realistisch. */
+    var hnm=(m.name||"").toLowerCase();
+    var _met=0.06,_rgh=0.70,_env=0.55;
+    if(/armor|armour|metal|steel|iron|plate|helmet|helm|shield|sword|blade|axe|buckle|chain|mail|gold|silver|visor|weapon|dagger|spear/.test(hnm)){_met=0.92;_rgh=0.32;_env=1.05;}
+    else if(/skin|head|hand|face|neck|ear/.test(hnm)){_met=0.0;_rgh=0.82;_env=0.32;}
+    else if(/hair|beard|fur|brow/.test(hnm)){_met=0.0;_rgh=0.55;_env=0.5;}
+    else if(/leather|belt|boot|strap|wood|staff|bow|handle|horn|cloak|cape|robe|cloth|fabric|tunic|red|detail/.test(hnm)){_met=0.02;_rgh=0.66;_env=0.42;}
+    var hm=new THREE.MeshStandardMaterial({map:m.map||null,color:_col,
+      metalness:_met,roughness:_rgh,envMapIntensity:_env,
+      emissive:m.emissive?m.emissive.clone():new THREE.Color(0x000000),emissiveMap:m.emissiveMap||null,
+      transparent:!!m.transparent,opacity:m.opacity!==undefined?m.opacity:1,side:m.side,alphaTest:m.alphaTest||0});
+    hm.vertexColors=!!m.vertexColors;
+    hm.emissiveIntensity=neon?0.45:(mesh._eyeMat?0.3:0.04);
+    hm.skinning=!!mesh.isSkinnedMesh;hm._toon=true;mesh.material=hm;return;
+  }
   var tm=new THREE.MeshToonMaterial({map:m.map||null,color:_col,
     gradientMap:nwGradTex(),emissive:m.emissive?m.emissive.clone():new THREE.Color(0x000000),emissiveMap:m.emissiveMap||null,
     transparent:!!m.transparent,opacity:m.opacity!==undefined?m.opacity:1,side:m.side,alphaTest:m.alphaTest||0});
@@ -4946,6 +4974,10 @@ function startGame(fresh){
     pr.setPixelRatio(Math.min(devicePixelRatio,2));pr.setSize(cv.width,cv.height,false);pr.outputEncoding=THREE.sRGBEncoding;
     if(THREE.ACESFilmicToneMapping!==undefined){pr.toneMapping=THREE.ACESFilmicToneMapping;pr.toneMappingExposure=1.15;} /* 🎬 Held-Vorschau filmisch tonen (gleich wie im Spiel) */
     psc=new THREE.Scene();
+    try{var _pc=document.createElement('canvas');_pc.width=16;_pc.height=64;var _px=_pc.getContext('2d'); /* 🌤️ eigene Gradient-Env (eigener WebGL-Kontext!) → Helden-Metall spiegelt auch im Picker */
+      var _pg=_px.createLinearGradient(0,0,0,64);_pg.addColorStop(0,'#9fc4ff');_pg.addColorStop(0.5,'#c7d6ea');_pg.addColorStop(1,'#3a4256');_px.fillStyle=_pg;_px.fillRect(0,0,16,64);
+      var _pt=new THREE.CanvasTexture(_pc);_pt.mapping=THREE.EquirectangularReflectionMapping;
+      var _ppm=new THREE.PMREMGenerator(pr);psc.environment=_ppm.fromEquirectangular(_pt).texture;_pt.dispose();_ppm.dispose();}catch(e){}
     psc.add(new THREE.HemisphereLight(0xffffff,0x3a4a66,0.85)); /* 3-Punkt-Setup: Ambient etwas runter, damit Key/Rim Form geben */
     var dl=new THREE.DirectionalLight(0xfff2e0,1.15);dl.position.set(2.4,4,3);psc.add(dl); /* Key (warm, vorn-rechts) */
     var pfill=new THREE.DirectionalLight(0xbfd6ff,0.4);pfill.position.set(-3,2,2.5);psc.add(pfill); /* Fill (kühl, links) */
