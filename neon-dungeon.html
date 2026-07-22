@@ -7,7 +7,7 @@
 <title>🏰 Neon Dungeon — Katakomben des Koloss | aban news</title>
 <meta name="description" content="Steig hinab in die Katakomben: Fackel-Parcours mit Doppelsprung, dann wartet der KOLOSS. Teil der Neon-Wildnis.">
 <script>/* Fusion: Direktbesuch -> Wildnis-Welt; als Station (iframe/?station=1) laeuft das Spiel normal */
-if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.replace("/neon-wildnis.html?von="+location.pathname.replace(/\W/g,""));}</script>
+if(window.parent===window&&!/[?&]station=1/.test(location.search)&&!/[?&]raum=/.test(location.search)){location.replace("/neon-wildnis.html?von="+location.pathname.replace(/\W/g,""));}</script>
 <style>
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{width:100%;height:100%;overflow:hidden;background:#0a0812;font-family:system-ui,-apple-system,sans-serif;color:#e8e0ff;
@@ -68,10 +68,19 @@ if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.repl
   <p>Steig hinab in die <b>Katakomben</b>: meistere den Fackel-Parcours mit <b>Doppelsprung</b> — dann wartet in der Tiefe <b>DER KOLOSS</b>.</p>
   <div class="chips" id="ovChips"><span class="chip">⤴ Doppelsprung</span><span class="chip">💎 Kristalle sammeln</span><span class="chip">🗿 Schockwellen überspringen</span><span class="chip">⚔️ Glühende Fäuste treffen</span></div>
   <button class="big" id="startBtn">Hinabsteigen ▶</button>
+  <button class="big" id="dCoopBtn" style="background:linear-gradient(92deg,#ffb066,#7de3ff);margin-top:8px">🤝 Zu zweit hinabsteigen — 1 Tipp</button>
+  <details style="margin:6px auto;max-width:340px;text-align:center;color:#c8b8ff;font-size:.9rem"><summary style="cursor:pointer;opacity:.85">oder gezielt mit einem Freund ▾</summary>
+    <div style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:8px">
+      <button class="big sec" id="dHostBtn" style="margin:0;font-size:.9rem;padding:9px 13px">🏠 Raum erstellen</button>
+      <input id="dCode" maxlength="4" placeholder="CODE" autocomplete="off" style="width:80px;text-align:center;text-transform:uppercase;letter-spacing:3px;font-weight:800;border-radius:8px;border:1px solid #4a3a70;background:rgba(255,255,255,.92);color:#212;padding:6px">
+      <button class="big sec" id="dJoinBtn" style="margin:0;font-size:.9rem;padding:9px 13px">🚪 Beitreten</button>
+    </div></details>
+  <div id="dCoopStatus" style="color:#9fd0ff;font-weight:800;font-size:.9rem;min-height:1.2em;margin-top:4px"></div>
 </div>
 <button id="stationBack" style="display:none">← Wildnis</button>
 <script src="/js/vendor/three.min.js"></script>
 <script src="/js/vendor/GLTFLoader.js"></script>
+<script src="/js/mp.js"></script>
 <script>
 (function(){
 "use strict";
@@ -260,6 +269,111 @@ function equipWeapon(i){curWp=(i+WEAPONS.length)%WEAPONS.length;try{localStorage
     heroRig.hand.add(m);wpNode=m;},undefined,function(){});
 }
 function cycleWeapon(d){equipWeapon(curWp+(d||1));if(typeof announce==="function")announce(WEAPONS[curWp].name,"#c8b8ff");}
+
+/* ===================== 🤝 DUNGEON-KOOP („wie It Takes Two", User-Auftrag) =====================
+   Online zu zweit via js/mp.js (wie Tempel/Wildnis): Partner-Figur (cyan getönt), Koop-Platten
+   (einer steht drauf → Brücke erscheint für den anderen), geteilte Boss-HP + 🤝 KOOP-COMBO
+   (beide treffen kurz nacheinander → Doppelschaden), ITT-Gnade: im Koop kein Game-Over —
+   Respawn, aber der Koloss heilt +1. Jeder Client simuliert seine eigene Physik/Boss-Choreo;
+   geteilt sind Positionen + Boss-HP (Wildnis-Philosophie: Kosmetik lokal, Kernzustand synchron). */
+var NETON=false,dnet=null,coopWait=false,_dcCancel=false,bossMax=TH.bossHp,_pHitT=0,_netT=0;
+var remote={on:false,x:0,y:0,z:0,tx:0,ty:0,tz:0,grp:null,mix:null,acts:null,cur:"",lock:0};
+function dcStatus(t){var e=document.getElementById("dCoopStatus");if(e)e.textContent=t||"";}
+function buildRemoteAvatar(){
+  if(remote.grp)return;
+  var g=new THREE.Group();scene.add(g);remote.grp=g;
+  var ph=new THREE.Mesh(new THREE.CylinderGeometry(0.3,0.36,1.1,10),M(0x5ef2ff,0x1a6a8a,0.5));ph.position.y=0.75;g.add(ph); /* Platzhalter bis GLB da */
+  var hd=new THREE.Mesh(new THREE.SphereGeometry(0.24,10,8),M(0xbfffff,0x2a8aaa,0.3));hd.position.y=1.5;g.add(hd);
+  var ring=new THREE.Mesh(new THREE.RingGeometry(0.45,0.6,24),new THREE.MeshBasicMaterial({color:0x5ef2ff,transparent:true,opacity:0.55,depthTest:false}));
+  ring.rotation.x=-Math.PI/2;ring.position.y=0.05;ring.renderOrder=990;g.add(ring); /* Partner-Marker durch Wände sichtbar */
+  if(THREE.GLTFLoader)new THREE.GLTFLoader().load("/models/anime_hero.glb",function(gl){ /* skinned NIE clonen (r128) → frisch laden */
+    var o=gl.scene;o.updateMatrixWorld(true);
+    var miny=1e9,maxy=-1e9,bn=0,V=new THREE.Vector3();
+    o.traverse(function(n){if(n.isSkinnedMesh&&n.skeleton){n.skeleton.bones.forEach(function(bo){bo.getWorldPosition(V);if(V.y<miny)miny=V.y;if(V.y>maxy)maxy=V.y;bn++;});}});
+    var hb=(bn&&maxy>miny)?(maxy-miny):0,sc=(hb>0.3)?Math.max(0.15,Math.min(4,1.7/hb)):0.95;o.scale.setScalar(sc);
+    o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;
+      if(n.material){n.material=n.material.clone();if(n.material.color)n.material.color.lerp(new THREE.Color(0x5ef2ff),0.28);}}}); /* cyan-Tönung = Partner */
+    g.remove(ph);g.remove(hd);g.add(o);
+    if(gl.animations&&gl.animations.length){remote.mix=new THREE.AnimationMixer(o);remote.acts={};
+      gl.animations.forEach(function(a){if(/idle/i.test(a.name))remote.acts.idle=remote.mix.clipAction(a);if(/walk/i.test(a.name))remote.acts.walk=remote.mix.clipAction(a);if(/run/i.test(a.name))remote.acts.run=remote.mix.clipAction(a);});
+      if(remote.acts.idle){remote.acts.idle.play();remote.cur="idle";}}
+  },undefined,function(){});
+}
+function remoteSet(n){if(!remote.acts||!remote.acts[n]||remote.cur===n)return;var to=remote.acts[n],fr=remote.acts[remote.cur];
+  to.reset();to.fadeIn(0.15);to.play();if(fr&&fr!==to)fr.fadeOut(0.15);remote.cur=n;}
+/* 🧩 Koop-Platten: Druckplatte + verknüpfte Brücke (nur sichtbar/solide solange EINER draufsteht) */
+var coopPlates=[];
+function mkCoopPlate(pxp,pyp,pzp,bx,by,bz,bw,bd){
+  var disc=new THREE.Mesh(new THREE.CylinderGeometry(1.0,1.1,0.12,14),M(0x7de3ff,0x2a9ac8,0.8));
+  disc.position.set(pxp,pyp+0.06,pzp);scene.add(disc);
+  var bridge=plat(bx,by,bz,bw,bd,COBBLE_FLOOR);bridge.off=true;bridge.g.visible=false;
+  coopPlates.push({x:pxp,y:pyp,z:pzp,disc:disc,bridge:bridge,on:false});
+}
+function buildCoopExtras(){ /* erst bei Verbindung — Solo-Parcours bleibt unberührt */
+  if(coopPlates.length)return;
+  mkCoopPlate(2.4,2.2,-25, -1,2.5,-28.5,2.4,4.4);   /* Abschnitt-2-Einstieg: Partner-Brücke über die erste weite Lücke */
+  mkCoopPlate(1.4,5,-59,  -0.9,4.6,-63,2.2,4.2);    /* Abschnitt-3-Einstieg: Brücke auf den ersten schmalen Steg */
+  hint("🧩 Koop-Platten: Einer steht drauf — der andere läuft über die Licht-Brücke!",4200);
+}
+function updCoop(dt){
+  if(!NETON)return;
+  /* Senden (throttled) */
+  _netT-=dt;if(_netT<=0&&dnet){_netT=0.06;var il=Math.hypot(kx,kz)||((keys.a||keys.d||keys.w||keys.s)?1:0);
+    try{dnet.send({t:"p",x:+px.toFixed(2),y:+py.toFixed(2),z:+pz.toFixed(2),il:il>0.1?1:0});}catch(e){}}
+  /* Partner interpolieren + Anim */
+  if(remote.on&&remote.grp){
+    var ox=remote.x;remote.x+=(remote.tx-remote.x)*Math.min(1,dt*10);remote.y+=(remote.ty-remote.y)*Math.min(1,dt*10);remote.z+=(remote.tz-remote.z)*Math.min(1,dt*10);
+    remote.grp.position.set(remote.x,remote.y,remote.z);
+    var mv=Math.hypot(remote.tx-remote.x,remote.tz-remote.z);
+    remoteSet(mv>0.08?(remote.acts&&remote.acts.run?"run":"walk"):"idle");
+    if(mv>0.02)remote.grp.rotation.y=Math.atan2(remote.tx-remote.x,remote.tz-remote.z);
+    if(remote.mix)remote.mix.update(dt);
+  }
+  /* Koop-Platten: Zustand aus BEIDEN Positionen abgeleitet (beide Clients rechnen gleich) */
+  for(var i=0;i<coopPlates.length;i++){var cp=coopPlates[i];
+    var occL=Math.hypot(px-cp.x,pz-cp.z)<1.5&&Math.abs(py-cp.y)<1.6;
+    var occR=remote.on&&Math.hypot(remote.x-cp.x,remote.z-cp.z)<1.5&&Math.abs(remote.y-cp.y)<1.6;
+    var on=occL||occR;
+    if(on!==cp.on){cp.on=on;cp.bridge.off=!on;cp.bridge.g.visible=on;
+      cp.disc.material.emissiveIntensity=on?1.6:0.8;sfx(on?660:330,0.08,"triangle",0.04,on?880:220);}}
+}
+function wireDungeonNet(){
+  dnet.onStatus(function(st){
+    if(_dcCancel)return;
+    if(st==="connected"){NETON=true;coopWait=false;dcStatus("");
+      buildRemoteAvatar();buildCoopExtras();remote.on=true;
+      if(dnet.role==="host"){try{dnet.send({t:"lvl",max:TH.bossHp,hp:bossHp});}catch(e){}}
+      announce("🤝 Partner verbunden — zusammen in die Tiefe!","#7dffc8");
+      if(!running)start();}
+    else if(st==="waiting")dcStatus((dnet.code&&dnet.role==="host")?("🏠 Raum-Code: "+dnet.code+" — Link kopiert 📋, Freund tippt Beitreten"):"⏳ Warte auf Mitspieler …");
+    else if(st==="lost")hint("📡 Verbindung wackelt …",2200);
+    else if(st==="closed"){NETON=false;remote.on=false;coopWait=false;if(remote.grp)remote.grp.visible=false;
+      for(var i=0;i<coopPlates.length;i++){coopPlates[i].bridge.off=true;coopPlates[i].bridge.g.visible=false;}
+      dcStatus("");announce("📴 Partner getrennt — du kämpfst allein weiter","#ffb46e");}});
+  dnet.onMessage(function(d){if(!d||!d.t)return;
+    if(d.t==="p"){remote.tx=d.x;remote.ty=d.y;remote.tz=d.z;if(!remote.on){remote.on=true;if(remote.grp)remote.grp.visible=true;}}
+    if(d.t==="lvl"){bossMax=d.max||bossMax;if(typeof d.hp==="number")bossHp=d.hp;updHud();}
+    if(d.t==="bhit"){bossHp-=(d.d||1);_pHitT=performance.now();hitFx=Math.max(hitFx,0.35);
+      if(bossHp<=Math.ceil(bossMax/2)&&bossHp>0&&bossPh===0){bossPh=1;announce("😡 DER KOLOSS RAST!","#ff5a5a");}
+      if(bossHp<=0)winGame();updHud();}
+    if(d.t==="bheal"){bossHp=Math.min(bossMax,bossHp+1);updHud();}
+    if(d.t==="bwin"&&!won)winGame();});
+}
+function _dcPre(){if(!window.MP){dcStatus("Koop-Lib fehlt");return false;}
+  if(coopWait||NETON)return false;coopWait=true;_dcCancel=false;dcStatus("⚡ Suche Mitspieler …");return true;}
+function dQuick(){if(!_dcPre())return;try{dnet=MP.quick("dungeon2");}catch(e){dcStatus("Fehler: "+e.message);coopWait=false;return;}wireDungeonNet();}
+function dHost(){if(!_dcPre())return;try{dnet=MP.host("dungeon2");}catch(e){dcStatus("Fehler: "+e.message);coopWait=false;return;}
+  wireDungeonNet();var code=dnet.code||"",link=location.origin+location.pathname+"?raum="+code+"&lvl="+_dlv;
+  try{if(navigator.clipboard&&code)navigator.clipboard.writeText(link);}catch(e){}
+  dcStatus("🏠 Raum-Code: "+code+" — Link kopiert 📋, Freund tippt Beitreten");}
+function dJoin(code){code=(code||"").toUpperCase().replace(/[^A-Z]/g,"");
+  if(code.length<4){dcStatus("Bitte 4-stelligen Code eingeben.");return;}
+  if(!_dcPre())return;dcStatus("🚪 Trete Raum "+code+" bei …");
+  try{dnet=MP.join("dungeon2",code);}catch(e){dcStatus("Fehler: "+e.message);coopWait=false;return;}wireDungeonNet();}
+(function(){var q=document.getElementById("dCoopBtn"),h=document.getElementById("dHostBtn"),j=document.getElementById("dJoinBtn"),c=document.getElementById("dCode");
+  if(q)q.onclick=dQuick;if(h)h.onclick=dHost;if(j&&c)j.onclick=function(){dJoin(c.value);};})();
+(function(){var m=location.search.match(/[?&]raum=([A-Za-z]{4})/);if(m)setTimeout(function(){dJoin(m[1]);},400);})(); /* 🔗 Auto-Beitritt via Einladungslink */
+/* ===================== Ende Dungeon-Koop ===================== */
 function heroSet(name){if(!heroRig||!heroRig.acts[name]||heroRig.lock>0||heroRig.cur===name)return;
   var to=heroRig.acts[name],from=heroRig.acts[heroRig.cur];
   to.reset();to.setEffectiveWeight(1);to.fadeIn(0.15);to.play();
@@ -354,7 +468,7 @@ function updHud(){document.getElementById("hearts").textContent="❤️".repeat(
   document.getElementById("gems").textContent="💎 "+gemN+"/"+(GEM_TOTAL||"?");
   document.getElementById("stageTag").textContent=(bossOn?"🗿 KOLOSS-KAMMER":TH.name+" · Abschnitt "+stage+"/3")+(NG?" · MEISTER":""); /* #71 · 🏰 Theme-Name */
   document.getElementById("bossBar").style.display=bossOn?"block":"none";
-  document.getElementById("bossFill").style.width=Math.max(0,bossHp/TH.bossHp*100)+"%"; /* 🏰 Max-HP je Ebene */
+  document.getElementById("bossFill").style.width=Math.max(0,bossHp/bossMax*100)+"%"; /* 🏰 Max-HP je Ebene (Koop: Host-Max) */
   document.getElementById("bHit").style.display=bossOn?"flex":"none";}
 
 /* ---------- Eingabe: Joystick + Sprung + Schlag + Tastatur ---------- */
@@ -386,13 +500,16 @@ function endJump(){jHeld=false;if(vy>3.5)vy=3.5;} /* Loslassen kappt den Sprung 
 function doHit(){if(!bossOn||dead||won)return;
   heroAtk(); /* 🎬 Angriffs-Animation bei jedem Schlag */
   if(vulnT>0&&slamArm){var f=slamArm.userData.fist,wp=new THREE.Vector3();f.getWorldPosition(wp);
-    if(Math.hypot(wp.x-px,wp.z-pz)<WEAPONS[curWp].reach){bossHp-=WEAPONS[curWp].dmg;vulnT=0;bT=Math.min(bT,1.4);hitFx=0.5;shakeT=0.25; /* ⚔️ Reichweite & Schaden je Waffe */
+    if(Math.hypot(wp.x-px,wp.z-pz)<WEAPONS[curWp].reach){var _dmg=WEAPONS[curWp].dmg;
+      if(NETON&&performance.now()-_pHitT<3000){_dmg*=2;announce("🤝 KOOP-COMBO! Doppelschaden","#7dffc8");sfx(880,0.14,"triangle",0.06,1320);} /* ITT: beide treffen kurz nacheinander */
+      bossHp-=_dmg;if(NETON&&dnet)try{dnet.send({t:"bhit",d:_dmg});}catch(e){}
+      vulnT=0;bT=Math.min(bT,1.4);hitFx=0.5;shakeT=0.25; /* ⚔️ Reichweite & Schaden je Waffe */
       slamArm.userData.cry.material.emissiveIntensity=0.2;slamArm.userData.cry.scale.setScalar(1);slamArm.userData.slamTgt=0;slamArm=null; /* Arm federt zurück statt einzufrieren */
       sfx(180,0.25,"sawtooth",0.09,60);sfx(880,0.15,"square",0.05,1400);announce("💥 TREFFER!","#c98bff");
       var hh=document.getElementById("hint");clearTimeout(hh._t);hh.style.opacity=0;
       burst(wp.x,wp.y,wp.z,5,0xc98bff);
       var _bf=document.getElementById("bossFill");_bf.classList.add("flash");setTimeout(function(){_bf.classList.remove("flash");},160);
-      if(bossHp<=Math.ceil(TH.bossHp/2)&&bossHp>0&&bossPh===0){bossPh=1;announce("😡 DER KOLOSS RAST!","#ff5a5a"); /* 🐛 Schwarm: Enrage skaliert mit Theme-HP (Hammer 2-dmg übersprang bossHp===3) */sfx(110,0.6,"sawtooth",0.07,55);if(boss.userData.eyes)boss.userData.eyes.forEach(function(ey){ey.scale.setScalar(1.6);});} /* #23 Wut-Riff · #71 Guard gegen Announce-Dublette im NG+ */
+      if(bossHp<=Math.ceil(bossMax/2)&&bossHp>0&&bossPh===0){bossPh=1;announce("😡 DER KOLOSS RAST!","#ff5a5a"); /* 🐛 Enrage skaliert mit Max-HP (Hammer 2-dmg übersprang ===3) */sfx(110,0.6,"sawtooth",0.07,55);if(boss.userData.eyes)boss.userData.eyes.forEach(function(ey){ey.scale.setScalar(1.6);});} /* #23 Wut-Riff · #71 Guard gegen Announce-Dublette im NG+ */
       if(bossHp<=0)winGame();updHud();return;}}
   if(vulnT>0&&slamArm)hint("Näher an die glühende Faust ran!",2000);
   else if(!window.__hintVuln){window.__hintVuln=1;hint("⏳ Warte, bis ein Faust-Kristall violett aufglüht!",2600);}
@@ -418,6 +535,7 @@ addEventListener("keyup",function(e){keys[e.key.toLowerCase()]=0;if(e.key===" ")
 /* ---------- Spiel-Logik ---------- */
 function groundAt(x,z,maxY){var best=-999;if(maxY==null)maxY=1e9;
   for(var i=0;i<plats.length;i++){var p=plats[i];
+    if(p.off)continue; /* 🤝 Koop-Brücken sind nur solide, wenn die Platte gedrückt ist */
     if(p.y<=maxY&&Math.abs(x-p.x)<=p.w&&Math.abs(z-p.z)<=p.d&&p.y>best)best=p.y;}
   return best;}
 function snapCam(){camera.position.set(px,gy+(bossOn?7.5:6.2),pz+(bossOn?11:8.6));} /* Kamera springt beim Respawn mit (kein Weitflug-Lerp) */
@@ -426,13 +544,16 @@ function respawn(){var c=checkpoints[ckpt];px=c.x;py=c.y+0.2;pz=c.z;vy=0;jumps=0
 var hbT=0;
 function damage(){if(dead||won)return;hearts--;invT=1.6;shakeT=Math.max(shakeT,0.35);updHud();sfx(120,0.2,"sawtooth",0.08,50);
   for(var qi=rings.length-1;qi>=0;qi--){scene.remove(rings[qi].m);rings[qi].m.geometry.dispose();rings[qi].m.material.dispose();}rings.length=0; /* keine Ketten-Treffer nach dem Rücksetzen */
+  if(hearts<=0&&NETON){hearts=4;bossHp=Math.min(bossMax,bossHp+1);if(dnet)try{dnet.send({t:"bheal"});}catch(e){}
+    announce("💀→❤️ Dein Partner hält die Stellung — du bist zurück! (Koloss +1)","#7de3ff");updHud();respawnBoss();return;} /* 🤝 ITT-Gnade: im Koop kein Game-Over */
   if(hearts<=0){dead=true;player.visible=true;announce("💀 Der Dungeon hat gewonnen …","#8a8a9a");
     setTimeout(function(){sfx(330,0.3,"triangle",0.06,262);},250);setTimeout(function(){sfx(262,0.3,"triangle",0.06,208);},650);setTimeout(function(){sfx(196,0.5,"triangle",0.07,130);},1050);
     setTimeout(function(){finish(false);},1800);}
   else respawnBoss();}
 function respawnBoss(){px=0;pz=CHZ+9;py=0;vy=0;gy=0;snapCam();}
 function winGame(){if(won||dead)return;won=true;bossOn=false;shakeT=0.6;
-  announce("🏆 DER KOLOSS FÄLLT!","#ffd166");
+  if(NETON&&dnet)try{dnet.send({t:"bwin"});}catch(e){} /* 🤝 Sieg synchronisieren */
+  announce(NETON?"🏆 IHR habt den KOLOSS besiegt — zusammen!":"🏆 DER KOLOSS FÄLLT!","#ffd166");
   sfx(392,0.3,"triangle",0.07);setTimeout(function(){sfx(523,0.3,"triangle",0.07);},180);
   setTimeout(function(){sfx(784,0.5,"triangle",0.08);},380);
   boss.userData.falling=true;
@@ -478,6 +599,7 @@ function frame(now){requestAnimationFrame(frame);
   var t=now*0.001;
   if(heroMix)heroMix.update(dt);
   if(heroRig&&heroRig.lock>0)heroRig.lock-=dt; /* Angriffs-Sperre auslaufen lassen (Fallback zum finished-Event) */
+  updCoop(dt); /* 🤝 Partner-Sync + Koop-Platten */
   for(var fi=0;fi<torches.length;fi++){var tc=torches[fi];
     tc.fl.scale.setScalar(1+Math.sin(t*9+tc.ph)*0.16);tc.lt.intensity=(tc.lit?0.95:0.75)+Math.sin(t*11+tc.ph)*0.22;}
   amb.color.lerp(bossOn?_ambBoss:_ambBase,Math.min(1,dt*1.2)); /* 🔴 Kammer-Stimmung */
@@ -625,7 +747,18 @@ function frame(now){requestAnimationFrame(frame);
 requestAnimationFrame(frame);
 updHud();
 window.__nd={state:function(){return {px:px,py:py,pz:pz,hearts:hearts,gems:gemN,bossOn:bossOn,bossHp:bossHp,won:won};},
-  tp:function(x,z){px=x;pz=z;py=groundAt(x,z,1e9)+0.2;vy=0;gy=py;snapCam();},boss:function(){px=0;pz=CHZ+10;py=0;gy=0;}};
+  tp:function(x,z){px=x;pz=z;py=groundAt(x,z,1e9)+0.2;vy=0;gy=py;snapCam();},boss:function(){px=0;pz=CHZ+10;py=0;gy=0;},
+  coopSim:function(){ /* Test-Only: Fake-Koop ohne Netz — Platte/Brücke/Partner-Interpolation prüfen */
+    NETON=true;remote.on=true;buildRemoteAvatar();buildCoopExtras();
+    var cp=coopPlates[0],out={plates:coopPlates.length,fns:[typeof dQuick,typeof dHost,typeof updCoop]};
+    out.offStart=cp.bridge.off===true;out.gOff=groundAt(cp.bridge.x,cp.bridge.z,1e9);
+    px=cp.x;pz=cp.z;py=cp.y+0.2;updCoop(0.05);
+    out.onAfter=cp.on===true&&cp.bridge.off===false;out.gOn=groundAt(cp.bridge.x,cp.bridge.z,1e9);out.bridgeY=cp.bridge.y;
+    px=0;pz=0;remote.tx=cp.x;remote.tz=cp.z;remote.ty=cp.y;remote.x=cp.x;remote.z=cp.z;remote.y=cp.y;updCoop(0.05); /* Partner hält die Platte */
+    out.remoteHolds=cp.on===true;
+    remote.tx=99;remote.tz=99;remote.x=99;remote.z=99;updCoop(0.05);out.offWhenBothAway=cp.on===false&&cp.bridge.off===true;
+    out.dmgCoop=(function(){var h0=4;hearts=1;bossHp=3;damage();var r={hearts:hearts,boss:bossHp,dead:dead};hearts=h0;return r;})(); /* ITT-Gnade */
+    NETON=false;remote.on=false;return out;}};
 })();
 </script>
 </body>
