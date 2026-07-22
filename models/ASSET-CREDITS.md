@@ -379,3 +379,14 @@ No, Yes = verworfen). Mapping: Punch→attack, Weapon→attack2, HitReact→hit,
 > `{id:"ritter", emo:"🛡️", name:"Ritter", desc:"Schwertkämpfer", file:"nwhero_ritter.glb", scale:1.05, glow:"soft"}`.
 > Die Clip-Namen passen bereits auf `heroAct`; `scale` ~1.0–1.1 (Quaternius-Figuren sind ~4 Units hoch, etwas
 > grösser als anime_*). `glow:"soft"` (keine Neon-Emissive-Verstärkung nötig).
+
+## th3_* — Eigenbau-Props (Blender-Agenten-Schwarm, 2026-07-18)
+16 Low-Poly-Stadtprops, prozedural per bpy 5.0.1 vom Agenten-Schwarm gebaut (je Asset 1 Builder +
+1 unabhängiger QA-Re-Import, 32 Agenten, 0 Fehler). Eigenwerke, keine externen Quellen:
+Rutsche, Schaukel, Sandkasten, Wippe, Karussell (Spielplatz) · Marktstand, Brezel-/Süßwagen, Kiosk ·
+Litfaßsäule, Briefkasten (CH), Hydrant, Bushäuschen, Blumenkübel · Picknicktisch, Ruderboot, Steg.
+
+## th4_* — Eigenbau Welle 2 (Blender-Schwarm, 2026-07-18)
+14 weitere Eigenwerke (39 Agenten, 0 Fehler, 14/14 QA bestanden): Birke, Tanne, Herbst-Ahorn,
+große Eiche, Blüten-Busch · Stopp-/Tempo-30-Schild, moderne Laterne, Mülleimer, Holzzaun,
+Vogelhaus · Bogenbrücke, Schwan, Sonnenschirm.
