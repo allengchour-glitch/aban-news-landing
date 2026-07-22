@@ -246,11 +246,15 @@ var WEAPONS=[
   {name:"🪄 Stab",    model:"/models/wp_staff.glb",  reach:5.6, dmg:1, cd:0.55, scale:3.0, rot:[0,0,-1.2]}
 ];
 var curWp=(function(){try{return Math.max(0,Math.min(3,parseInt(localStorage.getItem("nd_wp")||"0",10)||0));}catch(e){return 0;}})(),wpNode=null;
+var _wpGen=0;
 function equipWeapon(i){curWp=(i+WEAPONS.length)%WEAPONS.length;try{localStorage.setItem("nd_wp",""+curWp);}catch(e){}
   var wp=document.getElementById("wpTag");if(wp)wp.textContent=WEAPONS[curWp].name;
   if(!heroRig||!heroRig.hand||!THREE.GLTFLoader)return;var w=WEAPONS[curWp];
   if(wpNode&&wpNode.parent)wpNode.parent.remove(wpNode);wpNode=null;
-  new THREE.GLTFLoader().load(w.model,function(g){var m=g.scene;
+  var _gen=++_wpGen; /* 🐛 Schwarm: schneller Wechsel darf keine alten Waffen an der Hand stapeln */
+  new THREE.GLTFLoader().load(w.model,function(g){if(_gen!==_wpGen){return;} /* veralteter Load → verwerfen */
+    if(wpNode&&wpNode.parent)wpNode.parent.remove(wpNode); /* defensiv: eventuell doch noch eine dran */
+    var m=g.scene;
     m.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;}});
     m.scale.setScalar(w.scale/(heroRig.scl||1));m.rotation.set(w.rot[0],w.rot[1],w.rot[2]); /* Bone-Weltskala rausrechnen */
     heroRig.hand.add(m);wpNode=m;},undefined,function(){});
@@ -388,7 +392,7 @@ function doHit(){if(!bossOn||dead||won)return;
       var hh=document.getElementById("hint");clearTimeout(hh._t);hh.style.opacity=0;
       burst(wp.x,wp.y,wp.z,5,0xc98bff);
       var _bf=document.getElementById("bossFill");_bf.classList.add("flash");setTimeout(function(){_bf.classList.remove("flash");},160);
-      if(bossHp===3&&bossPh===0){bossPh=1;announce("😡 DER KOLOSS RAST!","#ff5a5a");sfx(110,0.6,"sawtooth",0.07,55);if(boss.userData.eyes)boss.userData.eyes.forEach(function(ey){ey.scale.setScalar(1.6);});} /* #23 Wut-Riff · #71 Guard gegen Announce-Dublette im NG+ */
+      if(bossHp<=Math.ceil(TH.bossHp/2)&&bossHp>0&&bossPh===0){bossPh=1;announce("😡 DER KOLOSS RAST!","#ff5a5a"); /* 🐛 Schwarm: Enrage skaliert mit Theme-HP (Hammer 2-dmg übersprang bossHp===3) */sfx(110,0.6,"sawtooth",0.07,55);if(boss.userData.eyes)boss.userData.eyes.forEach(function(ey){ey.scale.setScalar(1.6);});} /* #23 Wut-Riff · #71 Guard gegen Announce-Dublette im NG+ */
       if(bossHp<=0)winGame();updHud();return;}}
   if(vulnT>0&&slamArm)hint("Näher an die glühende Faust ran!",2000);
   else if(!window.__hintVuln){window.__hintVuln=1;hint("⏳ Warte, bis ein Faust-Kristall violett aufglüht!",2600);}
@@ -454,7 +458,8 @@ function finish(win){if(finish._done)return;finish._done=true;
   ov.querySelector("p").innerHTML="💎 "+gemN+" Kristalle · ❤️ "+Math.max(0,hearts)+" übrig · <b>Score "+score+"</b>"+timeLine;
   /* #67 Rematch: Station frisch neu laden (Reward zählt regulär), sonst normaler Reload */
   var sb=document.getElementById("startBtn");sb.textContent="Nochmal ▶";
-  sb.onclick=function(){if(STATION){stationPost({t:"stationRematch"});setTimeout(function(){location.reload();},250);}else location.reload();};
+  sb.onclick=function(){var _u=location.pathname+"?lvl="+_dlv+(STATION?"&station=1":"")+(NG?"&ng=1":""); /* 🐛 Schwarm: Rematch spielt DIESELBE Ebene (sonst lud der Reload die freigeschaltete nächste) */
+    if(STATION){stationPost({t:"stationRematch"});setTimeout(function(){location.href=_u;},250);}else location.href=_u;};
   var box=sb.parentNode;
   if(STATION&&!document.getElementById("againBtn")){var ab=document.createElement("button");ab.id="againBtn";ab.className="big sec";ab.textContent="← Wildnis";ab.onclick=function(){stationPost("mini-back");};box.appendChild(ab);}
   if(win&&!NG&&!document.getElementById("ngBtn")){var ng=document.createElement("button");ng.id="ngBtn";ng.className="big sec";ng.textContent="⚔️ Meister-Abstieg";ng.onclick=function(){var u=location.href;location.href=u+(u.indexOf("?")<0?"?":"&")+"ng=1";};box.appendChild(ng);}}

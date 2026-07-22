@@ -2033,7 +2033,7 @@ function decoVillageExtras(vx,vz,isSpawn,houses){
   var nS=isSpawn?2:1;
   for(var s=0;s<nS;s++){var sa=Math.PI*0.5+s*Math.PI*0.8,srd=7,sx=vx+Math.cos(sa)*srd,sz=vz+Math.sin(sa)*srd;
     var stall=cc0inst("ftk_stall",2.8);if(stall){stall.position.set(sx,groundH(sx,sz),sz);stall.rotation.y=Math.atan2(vz-sz,vx-sx)+Math.PI/2;scene.add(stall);}
-    for(var gi=0;gi<3;gi++){var gm=cc0inst(goods[(rnd()*goods.length)|0],0.55);if(gm){var gox=sx+Math.cos(sa+Math.PI)*0.9,goz=sz+Math.sin(sa+Math.PI)*0.9+(gi-1)*0.5;gm.position.set(gox,groundH(sx,sz)+0.95,goz);gm.rotation.y=rnd()*6.28;scene.add(gm);}}}
+    for(var gi=0;gi<3;gi++){var gm=cc0inst(goods[(rnd()*goods.length)|0],0.55),_gry=rnd()*6.28;if(gm){var gox=sx+Math.cos(sa+Math.PI)*0.9,goz=sz+Math.sin(sa+Math.PI)*0.9+(gi-1)*0.5;gm.position.set(gox,groundH(sx,sz)+0.95,goz);gm.rotation.y=_gry;scene.add(gm);}}}/* 🔴 rnd() vor Null-Guard (Koop-Sync) */
 }
 // 🆕 Neue CC0-Assets (Blender-poliert): Natur, Survival-Camp, Piraten/Küste, Friedhof, Möbel, Dungeon-Loot
 var NEW_ASSETS=["nt_pine","nt_oak","nt_tree","nt_tree_leafy","nt_palm","nt_bush","nt_flower_red","nt_flower_yellow","nt_mushroom","nt_grass","nt_stump","nt_log","nt_rock","nt_rock_tall",
@@ -2239,7 +2239,7 @@ function decorateWorldLate(){
     ["nw_kuerbis",0.6],["nw_holzstapel_gross",1.0],["nw_karren_hoch",1.6],["nw_wegweiser",1.8],["nw_fass_offen",1.0],["nw_topf_gross",0.8],["nw_schild",1.3],
     // 🪨✨ Batch 2: Klippe/Ruinen-Säule/Grasbüschel + Neon-Kristalle (on-theme)
     ["nw_klippe",1.9],["cc0_pillar",1.9],["cc0_grass",0.6],["nf_crystal",1.0],["nf_crystal_large",1.7]];
-  farScatter(Math.round(190*VF),16,function(x,z){var it=STUFF[(rnd2()*STUFF.length)|0];var m=cc0inst(it[0],it[1]*(0.8+rnd2()*0.5));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd2()*6.28;scene.add(m);});
+  farScatter(Math.round(190*VF),16,function(x,z){var it=STUFF[(rnd2()*STUFF.length)|0],_sc=0.8+rnd2()*0.5,_ry=rnd2()*6.28;var m=cc0inst(it[0],it[1]*_sc);if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=_ry;scene.add(m);});/* rnd2 vor Null-Guard */
   // 🌸 BLUMENWIESEN: dichte, bunte Blüten-Cluster für eine schönere Welt (jeweils 2–5 Blumen)
   var NWFL2=["nw_blume_lila","nw_blume_rot","nw_blume_gelb","nw_blume_gelb_hoch","cc0_flower_purple","nt_flower_red","nt_flower_yellow"];
   farScatter(Math.round(48*VF),20,function(x,z){var cn=2+((rnd2()*4)|0);
@@ -2250,7 +2250,7 @@ function decorateWorldLate(){
   var TAME=[["an_cow",1.4],["an_pig",0.9],["an_chicken",0.4],["an_dog",0.7],["an_cat",0.5],["an_rabbit",0.5]];
   var WILD=[["an_deer",1.4],["an_boar",0.9],["an_fox",0.6],["an_rabbit",0.5],["an_beaver",0.6]];
   farScatter(Math.round(70*VF),14,function(x,z){var near=villages.length&&(function(){for(var i=0;i<villages.length;i++){if(Math.hypot(villages[i].x-x,villages[i].z-z)<40)return true;}return false;})();
-    var it=(near?TAME:WILD)[(rnd2()*(near?TAME:WILD).length)|0];var m=cc0inst(it[0],it[1]*(0.85+rnd2()*0.3));if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=rnd2()*6.28;scene.add(m);
+    var it=(near?TAME:WILD)[(rnd2()*(near?TAME:WILD).length)|0],_sc=0.85+rnd2()*0.3,_ry=rnd2()*6.28;var m=cc0inst(it[0],it[1]*_sc);if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=_ry;scene.add(m);/* rnd2 vor Null-Guard */
     var hops=(it[0]==="an_rabbit"||it[0]==="an_fox"||it[0]==="an_cat"||it[0]==="an_chicken");
     regCritter(m,x,z,{range:near?6:12,spd:hops?(0.8+rnd2()*0.8):(0.4+rnd2()*0.5),hop:hops}); // 🐾 wandern/hoppeln
   });
@@ -2712,8 +2712,8 @@ function decorateWorld(){
     } else {
       for(var f=0;f<8;f++){var fa=f/8*6.28,fx=vx+Math.cos(fa)*ringR,fz=vz+Math.sin(fa)*ringR;var fm=cc0inst("cc0_fence",1.2);if(fm){fm.position.set(fx,groundH(fx,fz),fz);fm.rotation.y=fa+Math.PI/2;scene.add(fm);}}
     }
-    for(var p2=0;p2<3;p2++){var pa=rnd()*6.28,pr=3+rnd()*5,px=vx+Math.cos(pa)*pr,pz=vz+Math.sin(pa)*pr;var pm2=cc0inst(rnd()<0.5?"cc0_barrel":"cc0_crate",1.0);if(pm2){pm2.position.set(px,groundH(px,pz),pz);pm2.rotation.y=rnd()*6.28;scene.add(pm2);}}
-    var tent=cc0inst("cc0_tent",2.0);if(tent){var tx=vx+3,tz=vz-4;tent.position.set(tx,groundH(tx,tz),tz);tent.rotation.y=rnd()*6.28;scene.add(tent);}
+    for(var p2=0;p2<3;p2++){var pa=rnd()*6.28,pr=3+rnd()*5,px=vx+Math.cos(pa)*pr,pz=vz+Math.sin(pa)*pr;var pm2=cc0inst(rnd()<0.5?"cc0_barrel":"cc0_crate",1.0),_p2y=rnd()*6.28;if(pm2){pm2.position.set(px,groundH(px,pz),pz);pm2.rotation.y=_p2y;scene.add(pm2);}}/* 🔴 rnd() vor Null-Guard (Koop-Sync) */
+    var tent=cc0inst("cc0_tent",2.0),_tny=rnd()*6.28;if(tent){var tx=vx+3,tz=vz-4;tent.position.set(tx,groundH(tx,tz),tz);tent.rotation.y=_tny;scene.add(tent);}/* 🔴 rnd() vor Null-Guard (Koop-Sync) */
     if(isSpawn)window._spawnHouses=_houses.slice(); /* 🏙️ Haus-Positionen für Hub-Abstands-Checks (Phase 2) */
     // 🛣️ Echte Straßen/Wege durch das Dorf (Kenney-Kacheln, Blender-poliert)
     layRoads(vx,vz,ringR+3);

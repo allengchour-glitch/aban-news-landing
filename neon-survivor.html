@@ -1582,7 +1582,7 @@ function gameOver(){if(!running)return;running=false;shake=1.2;hurt=0;hurtEl.sty
   document.getElementById("finalT").textContent="Überlebt: "+s+"s";
   var f=document.getElementById("finalT");f.className=rec?"rec":"";
   var pre=dailyMode?("🗓️ Tages-Challenge #"+dayNo+" · "):(rec&&s>0?"🎉 <b>Neuer Rekord!</b> · ":"🏆 Rekord "+b+"s · ");
-  var earned=Math.floor(S.kills/3)+Math.floor(S.t/8);saveCores(loadCores()+earned);try{var _gx=(+(localStorage.getItem('aban_neon_xp')||0))+S.kills+S.lvl*5;localStorage.setItem('aban_neon_xp',_gx);}catch(e){}renderShop(); /* 💠 Schwarm: speist die geteilte Cross-Game-XP */
+  var earned=Math.floor(S.kills/3)+Math.floor(S.t/8);saveCores(loadCores()+earned);try{if(!STATION){var _gx=(+(localStorage.getItem('aban_neon_xp')||0)||0)+S.kills+S.lvl*5;localStorage.setItem('aban_neon_xp',_gx);}}catch(e){}renderShop(); /* 💠 Cross-Game-XP — nur solo (als Arena zahlt die Wildnis ein → keine Doppelzählung); ||0 fängt NaN */
   document.getElementById("verdict").innerHTML=pre+"Level "+S.lvl+" · "+S.kills+" Gegner · <b>+"+earned+" ⬢ Kerne</b>";
   // Mehr-Runden-Speicherstand: Run eintragen (Profil + Bestenliste) und Game-Over-Extras füllen
   nsShowGameOver(recordRun(curName,S.t,S.wave,S.kills));
@@ -1591,7 +1591,7 @@ function gameOver(){if(!running)return;running=false;shake=1.2;hurt=0;hurtEl.sty
 function win(){if(S.won)return;S.won=true;running=false;shake=1.5;hurt=0;hurtEl.style.opacity=0;stopMusic();
   if(coopMode==='host')netEv({e:'wn',s:Math.floor(S.t),lv:S.lvl,kk:S.kills});showTouchBtns(false);cancelPlacing();closeBuildMenu();closeStructMenu();demolishMode=false;S.bossWave=false;cb_abort();showPlaceButtons(false);updateBuildBtn();
   var _ws=Math.floor(S.t);if(!dailyMode&&_ws>bestTime())setBest(_ws); /* P7: Sieg zählt auch als Zeit-Rekord (vorher nur gameOver) */
-  var earned=Math.floor(S.kills/3)+Math.floor(S.t/8)+150;saveCores(loadCores()+earned);try{var _gx=(+(localStorage.getItem('aban_neon_xp')||0))+S.kills+S.lvl*5+40;localStorage.setItem('aban_neon_xp',_gx);}catch(e){}renderShop(); /* 💠 Cross-Game-XP (Sieg-Bonus) */
+  var earned=Math.floor(S.kills/3)+Math.floor(S.t/8)+150;saveCores(loadCores()+earned);try{if(!STATION){var _gx=(+(localStorage.getItem('aban_neon_xp')||0)||0)+S.kills+S.lvl*5+40;localStorage.setItem('aban_neon_xp',_gx);}}catch(e){}renderShop(); /* 💠 Cross-Game-XP (Sieg) — nur solo */
   var _r=recordRun(curName,S.t,S.wave,S.kills); // Sieg zählt auch als gespielte Runde
   document.getElementById("winV").innerHTML="In "+mmss(S.t)+" geschafft · Level "+S.lvl+" · "+S.kills+" Gegner · <b>+"+earned+" ⬢ Kerne</b> · Runde #"+_r.round;
   if(STATION)stationPost({t:"stationDone",score:S.kills+(S.lvl*10)}); /* 🌲 Wildnis-Arena: Sieg zählt erst recht */

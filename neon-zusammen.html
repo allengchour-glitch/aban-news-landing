@@ -7,7 +7,7 @@
 <title>🤝 Tempel der Zwei — Koop-Rätsel wie It Takes Two | aban news</title>
 <meta name="description" content="Ember 🔥 & Aqua 💧: Rätsel, die nur ZU ZWEIT lösbar sind — Druckplatten, Ranken verbrennen, Pflanzen giessen, Gleichklang-Schalter. Online-Koop oder solo mit Charakterwechsel.">
 <script>/* Fusion: Direktbesuch -> Wildnis-Welt; als Station (iframe/?station=1) laeuft das Spiel normal */
-if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.replace("/neon-wildnis.html?von="+location.pathname.replace(/\W/g,""));}</script>
+if(window.parent===window&&!/[?&]station=1/.test(location.search)&&!/[?&]raum=/.test(location.search)){location.replace("/neon-wildnis.html?von="+location.pathname.replace(/\W/g,""));}</script>
 <style>
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{width:100%;height:100%;overflow:hidden;overscroll-behavior:none;background:#0c1210;font-family:system-ui,-apple-system,sans-serif;color:#e8f2ea;
@@ -340,7 +340,7 @@ function wireCoopNet(){
       chars[mySlot].g.userData.ring.material.opacity=0.7;
       if(!running)start(true);
       announce("🌐 Verbunden! Du bist "+chars[mySlot].name,"#7dffc8");updHud();}
-    else if(st==="waiting")document.getElementById("coopStatus").textContent="⏳ Warte auf Mitspieler … (Freund tippt denselben Knopf)";
+    else if(st==="waiting"){if(!(net&&net.role==="host"&&net.code)){document.getElementById("coopStatus").textContent="⏳ Warte auf Mitspieler … (Freund tippt denselben Knopf)";}} /* Host: Raum-Code-Meldung nicht überschreiben */
     else if(st==="lost")hint("📡 Verbindung wackelt — verbinde neu …",2400);
     else if(st==="closed"){NETON=false;coopWait=false;var _cb2=document.getElementById("coopBtn");if(_cb2)_cb2.disabled=false;document.getElementById("bSwap").style.display="flex";var _bp2=document.getElementById("bPing");if(_bp2)_bp2.style.display="none"; /* 🔴 Schwarm-3 P1: Ping-Knopf beim Zurück-auf-Solo ausblenden — lag sonst ÜBER dem Figuren-Wechsel-Knopf (gleiche Position) → Wechsel tot, Solo-Softlock */var _sb2=document.getElementById("startBtn");if(_sb2)_sb2.style.display="block";var _cc3=document.getElementById("cancelCoop");if(_cc3)_cc3.style.display="none";if(!_everConn&&!running)document.getElementById("coopStatus").textContent="Kein Mitspieler gefunden — starte solo oder versuch es nochmal.";hint("❌ Partner getrennt — Solo-Wechsel ist wieder an",3200);updHud();}});
   net.onMessage(function(d){if(!d||!d.t)return;
