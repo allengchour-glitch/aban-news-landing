@@ -548,7 +548,7 @@ function loop(t){
   for(i=bursts.length-1;i>=0;i--){var b=bursts[i];var arr=b.pts.geometry.attributes.position.array;
     for(var k=0;k<arr.length/3;k++){arr[k*3]+=b.vel[k][0];arr[k*3+1]+=b.vel[k][1];arr[k*3+2]+=b.vel[k][2];}
     b.pts.geometry.attributes.position.needsUpdate=true;b.life-=0.04;b.pts.material.opacity=Math.max(0,b.life);
-    if(b.life<=0){scene.remove(b.pts);bursts.splice(i,1);}}
+    if(b.life<=0){scene.remove(b.pts);b.pts.geometry.dispose();b.pts.material.dispose();bursts.splice(i,1);}} /* GPU-Leak fix: Geometrie+Material entsorgen (map ist geteilt → bleibt) */
   // scenery scroll
   gridMesh.material.uniforms.uT.value+=(running?speed:0.15)*0.011;
   // Bergketten-Parallax: langsamer als die Welt (fern), nahtloser Wrap über 2 Segmente
