@@ -515,6 +515,55 @@ if(THREE.GLTFLoader){["lp_tree.glb"].forEach(function(){
       t.traverse(function(n){if(n.isMesh)n.castShadow=true;});scene.add(t);});
   },undefined,function(){});});}
 
+// ---- Wildblumen-Wiese auf dem Startgrundstueck: fuellt die leere Rasenflaeche mit Leben
+//      und bricht die monotone Grastextur. Rein dekorativ (InstancedMesh, belegt KEINE
+//      Bau-Zellen — Moebel rendern darueber), nur auf Gras (innerhalb der Strassen). ----
+(function streuNatur(){
+  var LX=57,LZ=43; // Grundstuecksgrenze (innerhalb der Umgehungsstrassen)
+  var dummy=new THREE.Object3D();
+  function frei(x,z){ // nicht mitten auf dem Eingangsweg (z~28..33, schmal)
+    return !(Math.abs(x)<2.2 && z>GH*CS/2-2 && z<GH*CS/2+9);
+  }
+  // 1) Grasbueschel (kleine Kegel, 2 Gruentoene, dichter zum Rand)
+  var tuftGeo=new THREE.ConeGeometry(0.16,0.5,5),
+      tuftMat=new THREE.MeshStandardMaterial({roughness:1,metalness:0,envMapIntensity:0.2});
+  var NT=340,tuft=new THREE.InstancedMesh(tuftGeo,tuftMat,NT);tuft.receiveShadow=true;tuft.castShadow=false;
+  var ti=0,c=new THREE.Color();
+  for(var g=0;g<NT*3&&ti<NT;g++){
+    var x=(Math.random()*2-1)*LX,z=(Math.random()*2-1)*LZ;
+    var rand=Math.max(Math.abs(x)/LX,Math.abs(z)/LZ); // 0 Mitte .. 1 Rand
+    if(Math.random()>0.25+rand*0.75)continue; // Mitte sparsam, Rand dicht
+    if(!frei(x,z))continue;
+    var sc=0.6+Math.random()*0.9;
+    dummy.position.set(x,0.5*0.5*sc-0.02,z);dummy.rotation.set(0,Math.random()*6.28,(Math.random()-0.5)*0.25);
+    dummy.scale.set(sc*(0.8+Math.random()*0.5),sc,sc*(0.8+Math.random()*0.5));dummy.updateMatrix();
+    tuft.setMatrixAt(ti,dummy.matrix);
+    var l=0.5+Math.random()*0.5;c.setRGB(0.16*l+0.04,0.34*l+0.12,0.12*l+0.03);tuft.setColorAt(ti,c);
+    ti++;
+  }
+  tuft.count=ti;tuft.instanceMatrix.needsUpdate=true;if(tuft.instanceColor)tuft.instanceColor.needsUpdate=true;scene.add(tuft);
+  // 2) Wildblumen (kleine Farbtupfer auf duennem Halm)
+  var flGeo=new THREE.SphereGeometry(0.11,6,5),
+      flMat=new THREE.MeshStandardMaterial({roughness:0.7,metalness:0,emissiveIntensity:0});
+  var NF=140,fl=new THREE.InstancedMesh(flGeo,flMat,NF);
+  var FCOL=[0xffffff,0xffd94a,0xff7ab0,0xb98cff,0xff5a4a,0xffe08a];
+  var fi=0;
+  for(var g2=0;g2<NF*4&&fi<NF;g2++){
+    var fx=(Math.random()*2-1)*LX,fz=(Math.random()*2-1)*LZ;
+    if(Math.random()>0.5)continue;if(!frei(fx,fz))continue;
+    var fs=0.7+Math.random()*0.7;
+    dummy.position.set(fx,0.14*fs,fz);dummy.rotation.set(0,0,0);dummy.scale.setScalar(fs);dummy.updateMatrix();
+    fl.setMatrixAt(fi,dummy.matrix);c.setHex(FCOL[(Math.random()*FCOL.length)|0]);fl.setColorAt(fi,c);
+    fi++;
+  }
+  fl.count=fi;fl.instanceMatrix.needsUpdate=true;if(fl.instanceColor)fl.instanceColor.needsUpdate=true;scene.add(fl);
+  // Stiele (ein gemeinsamer duenner Zylinder-Instancer unter den Blueten)
+  var stGeo=new THREE.CylinderGeometry(0.02,0.03,0.28,4),stMat=new THREE.MeshStandardMaterial({color:0x3a6a34,roughness:1});
+  var st=new THREE.InstancedMesh(stGeo,stMat,fi);var sm=new THREE.Matrix4(),v=new THREE.Vector3(),q=new THREE.Quaternion(),sv=new THREE.Vector3(1,1,1);
+  for(var si=0;si<fi;si++){fl.getMatrixAt(si,sm);v.setFromMatrixPosition(sm);v.y=0.14;sm.compose(v,q,sv);st.setMatrixAt(si,sm);}
+  st.instanceMatrix.needsUpdate=true;scene.add(st);
+})();
+
 // ---- Dorf rundherum: Strassen, Nachbarhaeuser, Baeume, Laternen ----
 var dorfFenster=[];
 (function baueDorf(){
