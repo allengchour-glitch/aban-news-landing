@@ -222,6 +222,15 @@ reese_synth/drum_synth/fx_synth + mixdown-Sidechain + Master). Freigegeben: luxe
   Standard = `-clean.mp4` + aktueller **TikTok-Trend-Sound** (Commercial Music Library), jedes Mal ein
   anderer; `luxe-premium.wav` nur noch max. 1 von 4 Posts. Marken-Video → `reels/luxestyle-brand-*-text.mp4`.
 
+## 🔄 Webseite IMMER frisch halten (User-Dauerauftrag 2026-07-23 «aktualisiere immer webseite… karusel… such immer»)
+Die Startseite soll sich **selbst aktualisieren** — Prinzip: **dynamische Smart-Collections (sort=CREATED_DESC)
++ product-list-Reihen darauf** → Shopify zeigt automatisch die neueste Ware, null Wartung. Umgesetzt:
+- `product_list_schweiz` → `erste-august` (Position 1, nach Hero)
+- `product_list_wm2026` (WM war veraltet) umgewidmet → **✨ Neu eingetroffen** (`neu-eingetroffen`, CREATED_DESC, Karussell, Position 2)
+- **⚠️ Startseite ist am 25-Sektionen-Limit** → neue Reihen NUR durch Umwidmen veralteter Sektionen (nicht adden).
+- Bei Saison/Aktion: bestehende Reihe auf die passende Collection umbiegen (Handle + `name`), Backup nach /tmp,
+  JSON validieren, `themeFilesUpsert`. Reihenfolge via `c.order`. Importer taggt neue Ware `neu` → fliesst automatisch rein.
+
 ## Stand
 **📌 2026-07-10 (BigBuy-Bereinigung + Google-Feed + Katalog-Gesundheit — Branch `claude/luxestyle-status-tztnn1`):**
 - **BigBuy „vorsichtig" (User-Entscheidung):** Import DEAKTIVIERT (Flag `_bigbuy_import_disabled`, negative
