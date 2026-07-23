@@ -22,13 +22,15 @@ BATCHES=(
 )
 
 while true; do
-  echo "### FORTURA-RUNDE $(date -u +%H:%M) — Feed frisch ziehen"
-  bash automation/fortura_fetch_feed.sh /tmp/fortura_feed.csv || { echo "Feed-Download-Fehler, 30min Pause"; sleep 1800; continue; }
+  if [ -z "${FT_NOFETCH:-}" ]; then
+    echo "### FORTURA-RUNDE $(date -u +%H:%M) — Feed frisch ziehen"
+    bash automation/fortura_fetch_feed.sh /tmp/fortura_feed.csv || { echo "Feed-Download-Fehler, 30min Pause"; sleep 1800; continue; }
+  else echo "### FORTURA-RUNDE $(date -u +%H:%M) — nutze vorhandenen Feed (Shard-Modus)"; fi
   for B in "${BATCHES[@]}"; do
     FLT="${B%%::*}"; REST="${B#*::}"; TAGS="${REST%%::*}"; BVK="${REST##*::}"
     [ "$BVK" = "$REST" ] && BVK="$MIN_VK"   # kein 3. Feld → globaler MIN_VK
-    echo "### BATCH [$TAGS] MIN_VK=$BVK filter=${FLT:0:40}…  $(date -u +%H:%M)"
-    LIMIT=20000 MIN_VK="$BVK" FT_FILTER="$FLT" FT_TAGS="$TAGS" $NODE automation/fortura_import.mjs 2>&1 | tail -3
+    echo "### BATCH [$TAGS] MIN_VK=$BVK shard=${FT_SHARD:--} filter=${FLT:0:40}…  $(date -u +%H:%M)"
+    LIMIT=20000 MIN_VK="$BVK" FT_FILTER="$FLT" FT_TAGS="$TAGS" FT_SHARD="${FT_SHARD:-}" $NODE automation/fortura_import.mjs 2>&1 | tail -3
     sleep 20
   done
   echo "### RUNDE FERTIG — 12h Pause (Restock/Neuware am nächsten Tag)"
