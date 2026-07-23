@@ -27,8 +27,11 @@ function curlGet(url){
       });
   });
 }
+const MOBILE = process.env.MOBILE === '1';
 const b = await chromium.launch({ executablePath: fs.existsSync(CHROME)?CHROME:undefined, args:['--no-sandbox','--disable-dev-shm-usage'] });
-const ctx = await b.newContext({ viewport:{width:1440,height:H} });
+const ctx = await b.newContext(MOBILE
+  ? { viewport:{width:390,height:H}, deviceScaleFactor:2, isMobile:true, hasTouch:true, userAgent:'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1' }
+  : { viewport:{width:1440,height:H} });
 await ctx.route('**/*', async route=>{
   const u=route.request().url();
   if(!/^https?:/.test(u)) return route.continue();
