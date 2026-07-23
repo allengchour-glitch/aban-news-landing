@@ -31,6 +31,11 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 const SHIP_CH = 9.50;             // DPD Home pro Paket (exkl. MWST) laut Vertrag Ziffer 8
 const MARKUP = 2.2;               // Faktor auf Netto-EK falls keine empfohlene VK vorhanden
 const MIN_MARGIN = 6.0;           // Mindest-Deckungsbeitrag pro Artikel über EK+Versand
+// Kleinticket-Filter (BigBuy-Lektion 15b): Einzelartikel mit UVP < MIN_VK tragen den CHF 9.50
+// DPD-Versand nicht → würden absurd überteuert gepreist (unverkäuflich). Skip. Env-überschreibbar.
+const MIN_VK = parseFloat(process.env.MIN_VK || '14.90');
+const FT_FILTER = process.env.FT_FILTER ? new RegExp(process.env.FT_FILTER, 'i') : null; // optional: nur Kategorie/Thema
+const FT_TAGS = (process.env.FT_TAGS || '').split(',').map(s=>s.trim()).filter(Boolean); // optional: Batch-Collection-Tags
 
 // ── COLMAP: gegen den ECHTEN Feed verifiziert (2026-07-23, 66 Spalten, Delimiter '|', cp1252) ──
 //    Preis-Semantik BELEGT: VP1 = Netto-EK (99% VP1<VP2), VP2 = Nettopreis inkl = UVP (84% identisch).
@@ -107,6 +112,11 @@ for (const rec of recs.slice(0, LIMIT)) {
   const art = pick(rec, COLMAP.art);
   if (!art) { skip++; continue; }
   if (done.has('ft:'+art)) { skip++; continue; }
+  // Optionaler Kategorie/Thema-Filter (z.B. FT_FILTER="1. august|schweiz|edelweiss" für Saison-Batch)
+  if (FT_FILTER) {
+    const catBlob = [rec['Grp-Bez'], rec['ArtikelTitelDE'], rec['Bez1DE'], rec['Thema1DE'], rec['Anlass1DE']].filter(Boolean).join(' ');
+    if (!FT_FILTER.test(catBlob)) { skip++; continue; }
+  }
   // Titel = kuratierter ArtikelTitelDE (Fallback Bez1DE) + Grösse (Kostüme haben viele ArtNr je Grösse → nicht dedupen)
   let baseTitle = pick(rec, COLMAP.titleDE).replace(/[,;]\s*$/,'').trim();
   const gr = pick(rec, COLMAP.groesse);
@@ -119,6 +129,8 @@ for (const rec of recs.slice(0, LIMIT)) {
   const ve = Math.max(1, Math.round(num(pick(rec, COLMAP.ve)) || 1));
   const ekNetto = num(pick(rec, COLMAP.ekNetto));
   const vkEmpf = num(pick(rec, COLMAP.vkEmpf));
+  // Kleinticket-Skip: UVP unter MIN_VK trägt den DPD-Versand nicht (Einzelartikel) → nicht anlegen
+  if (vkEmpf > 0 && vkEmpf < MIN_VK && ve <= 1) { skip++; fs.appendFileSync(LEDGER,'ft:'+art+'\n'); continue; }
   // Verkaufspreis: UVP (VP2) ist der Markt-Anker → daran ausrichten, NIE unter EK+Versand+Marge.
   // Nur wenn keine UVP vorhanden: EK*Faktor. (2.2× würde sonst über die UVP schießen = unverkäuflich.)
   const floor = ekNetto + SHIP_CH + MIN_MARGIN;
@@ -145,7 +157,7 @@ for (const rec of recs.slice(0, LIMIT)) {
   const lieferNote = liefer ? `<p><strong>Lieferumfang:</strong> ${liefer}</p>` : '';
   const desc = `<p>${bodyTxt}</p>${lieferNote}${veNote}<p>🇨🇭 Versand aus der Schweiz · Lieferung 1–2 Werktage (DPD) · Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · Kauf auf Rechnung mit Klarna & TWINT · LuxeStyle</p>`;
   const slug = (normT(title).replace(/\s+/g,'-').slice(0,46)) + '-ft' + String(art).toLowerCase();
-  const tags = [...new Set(['fortura','dropship','ch-lager','schweiz-versand','neu', ...catTags(title)])];
+  const tags = [...new Set(['fortura','dropship','ch-lager','schweiz-versand','neu', ...FT_TAGS, ...catTags(title)])];
   const input = {
     title, handle: slug, productType: 'Fortura-CH', vendor: 'LuxeStyle', status: 'ACTIVE', tags, descriptionHtml: desc,
     seo: { title: `${title} | LuxeStyle`.slice(0,70), description: `${title} – schnelle CH-Lieferung aus der Schweiz, Gratis-Versand ab CHF 50.`.slice(0,320) },
