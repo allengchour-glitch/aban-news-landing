@@ -75,3 +75,10 @@ http://media.fortura.ch/media/import/02226_1.jpg
 http://media.fortura.ch/media/import/02227_1.jpg
 http://media.fortura.ch/media/import/02228_1.jpg
 http://media.fortura.ch/media/import/02250_1.jpg
+http://media.fortura.ch/media/import/02252_1.jpg
+http://media.fortura.ch/media/import/02324_1.jpg
+http://media.fortura.ch/media/import/02327_1.jpg
+http://media.fortura.ch/media/import/02329_1.jpg
+http://media.fortura.ch/media/import/02330_1.jpg
+http://media.fortura.ch/media/import/02331_1.jpg
+http://media.fortura.ch/media/import/02347_1.jpg
