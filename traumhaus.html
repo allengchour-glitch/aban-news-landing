@@ -238,6 +238,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
     <div id="mpLobby" style="display:none;margin-top:8px">
       Raum-Code: <b id="mpCodeShow" style="font-size:1.3rem;letter-spacing:4px;color:#e8722a"></b>
       <div id="mpStatus" style="font-size:.85rem;color:#5a7a9a">Warte auf Mitspieler …</div>
+      <button class="btn ghost" id="mpBackBtn" style="margin-top:8px;display:none;font-size:.9rem;padding:8px 18px">↩ Abbrechen / neuer Versuch</button>
     </div>
   </div>
   <div class="small">Kein Download · <a href="/spiele.html">🕹️ aban Arcade</a> · Speichert automatisch (Solo)</div>
@@ -3189,6 +3190,16 @@ document.getElementById("soloBtn").onclick=function(){
   try{var sv=localStorage.getItem(SAVE);if(sv)loadSnapshot(JSON.parse(sv));}catch(e){}
   applySaison();rollWetter();
   startGame();};
+function mpLobbyFehler(msg){
+  var st=document.getElementById("mpStatus");if(st){st.textContent="⚠️ "+msg;st.style.color="#c0442a";}
+  var b=document.getElementById("mpBackBtn");if(b)b.style.display="inline-block";
+  try{document.getElementById("netBadge").style.background="rgba(190,90,60,.9)";}catch(e){}}
+document.getElementById("mpBackBtn").onclick=function(){
+  try{if(MPs)MPs.close();}catch(e){}MPs=null;mpHost=false;
+  document.getElementById("mpLobby").style.display="none";
+  document.getElementById("mpBackBtn").style.display="none";
+  var st=document.getElementById("mpStatus");if(st)st.style.color="#5a7a9a";
+  document.getElementById("netSetup").style.display="flex";};
 document.getElementById("hostBtn").onclick=function(){
   if(typeof MP==="undefined"){alert("Online-Modul nicht geladen");return;}
   myName=(document.getElementById("mpName").value.trim()||"Host").slice(0,12);
@@ -3198,9 +3209,11 @@ document.getElementById("hostBtn").onclick=function(){
   document.getElementById("mpCodeShow").textContent=MPs.code;
   MPs.onMessage(onNetMsg);
   MPs.onStatus(function(st){
-    document.getElementById("mpStatus").textContent={waiting:"Warte auf Mitspieler …",connected:"Verbunden! Spiel startet …",lost:"Verbindung verloren — versuche Reconnect",closed:"Verbindung beendet"}[st]||st;
+    document.getElementById("mpStatus").textContent={waiting:"Warte auf Mitspieler …",connected:"Verbunden! Spiel startet …",lost:"Verbindung verloren — versuche Reconnect …",closed:"Verbindung beendet"}[st]||st;
     if(st==="connected"&&!running)startGame();
-    document.getElementById("netBadge").style.background=st==="connected"?"rgba(90,150,90,.9)":"rgba(190,90,60,.9)";});};
+    document.getElementById("mpBackBtn").style.display=(st==="closed")?"inline-block":"none";
+    document.getElementById("netBadge").style.background=st==="connected"?"rgba(90,150,90,.9)":"rgba(190,90,60,.9)";});
+  if(MPs.ready&&MPs.ready.catch)MPs.ready.catch(function(err){mpLobbyFehler(err&&err.message||"Verbindung fehlgeschlagen");});};
 document.getElementById("joinBtn").onclick=function(){
   if(typeof MP==="undefined"){alert("Online-Modul nicht geladen");return;}
   myName=(document.getElementById("mpName").value.trim()||"Gast").slice(0,12);
@@ -3214,8 +3227,10 @@ document.getElementById("joinBtn").onclick=function(){
   MPs.onMessage(onNetMsg);
   MPs.onStatus(function(st){
     if(st==="connected"){document.getElementById("mpStatus").textContent="Verbunden — lade Haus …";netSend({t:"hallo",n:myName});}
-    if(st==="closed"||st==="lost")document.getElementById("mpStatus").textContent="Verbindung verloren";
-    document.getElementById("netBadge").style.background=st==="connected"?"rgba(90,150,90,.9)":"rgba(190,90,60,.9)";});};
+    if(st==="lost")document.getElementById("mpStatus").textContent="Verbindung verloren — Reconnect …";
+    if(st==="closed"){document.getElementById("mpStatus").textContent="Verbindung beendet";document.getElementById("mpBackBtn").style.display="inline-block";}
+    document.getElementById("netBadge").style.background=st==="connected"?"rgba(90,150,90,.9)":"rgba(190,90,60,.9)";});
+  if(MPs.ready&&MPs.ready.catch)MPs.ready.catch(function(err){mpLobbyFehler(err&&err.message||"Verbindung fehlgeschlagen");});};
 
 // ===================== Live-Voice-Chat (WebRTC über PeerJS) =====================
 var voice={stream:null,call:null,on:false,muted:false,remoteEl:null};
