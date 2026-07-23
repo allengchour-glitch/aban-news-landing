@@ -245,6 +245,19 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
   <div class="small">Kein Download · <a href="/spiele.html">🕹️ aban Arcade</a> · Speichert automatisch (Solo)</div>
 </div>
 
+<div id="introCard" style="position:fixed;inset:0;z-index:65;display:none;align-items:center;justify-content:center;background:rgba(20,25,35,.74);padding:20px">
+  <div style="background:#fffdf7;border-radius:22px;max-width:430px;width:92vw;padding:24px 22px;text-align:center;box-shadow:0 20px 60px rgba(20,30,50,.5)">
+    <div style="font-size:1.5rem;font-weight:900;color:#e8722a">👋 Willkommen im Traumhaus!</div>
+    <div style="font-size:.9rem;color:#6a7a8a;margin:6px 0 16px">So einfach geht's los:</div>
+    <div style="text-align:left;display:flex;flex-direction:column;gap:13px;font-size:1.02rem;color:#3a4a5a;line-height:1.35">
+      <div>🕹️ <b>Bewegen</b> — Joystick unten links (oder WASD am PC)</div>
+      <div>🔨 <b>Bauen</b> — „Bauen" tippen → etwas wählen → aufs Grundstück tippen</div>
+      <div>💰 <b>Geld verdienen</b> — die Aufträge vom Bürgermeister erfüllen</div>
+      <div>👫 <b>Tipp auf Max/Mia</b> — Kamera folgt. Herd = 🍳 Kochen, Teich = 🎣 Angeln</div>
+    </div>
+    <button id="introOk" style="margin-top:20px;border:0;border-radius:40px;padding:14px 42px;font-size:1.12rem;font-weight:900;color:#fff;background:linear-gradient(90deg,#ff8c5a,#e85aa0);cursor:pointer;min-height:48px;box-shadow:0 8px 24px rgba(232,90,160,.4)">Los geht's! ▶</button>
+  </div>
+</div>
 <div id="crimeWahl" style="position:fixed;inset:0;z-index:28;display:none;align-items:center;justify-content:center;background:rgba(20,15,30,.82)">
   <div style="background:#fffdf6;border:3px solid #7a5aa8;border-radius:18px;padding:18px 20px;text-align:center;max-width:360px;width:90vw;box-shadow:0 16px 44px rgba(30,15,45,.5)">
     <div style="font-size:1.15rem;font-weight:900;color:#5a3a6e">🕶️ Welches krumme Ding?</div>
@@ -3323,6 +3336,9 @@ function startGame(){
   if(MPs){document.getElementById("chatToggle").style.display="block";document.getElementById("netBadge").style.display="block";document.getElementById("piBar").style.display="flex";}
   romantik=document.getElementById("romChk").checked||romantik;
   renderPalette();updHUD();MUS.play().catch(function(){});
+  // Anfänger-Intro einmalig zeigen (für Einsteiger)
+  try{if((!MPs||mpHost)&&!localStorage.getItem("th_intro_seen")){var _ic=document.getElementById("introCard");
+    if(_ic){_ic.style.display="flex";document.getElementById("introOk").onclick=function(){_ic.style.display="none";try{localStorage.setItem("th_intro_seen","1");}catch(e){}};}}}catch(e){}
   hint("🔨 Bauen antippen — dann Boden legen, Wände ziehen, Möbel stellen!");}
 document.getElementById("soloBtn").onclick=function(){
   try{var sv=localStorage.getItem(SAVE);if(sv)loadSnapshot(JSON.parse(sv));}catch(e){}
