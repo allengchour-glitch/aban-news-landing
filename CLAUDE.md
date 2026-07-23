@@ -84,6 +84,14 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
    plattformübergreifend) und (a) wählt nur ready-Zeilen mit NIE gepostetem Video, (b) hat einen harten
    Stopp direkt vorm Post, falls das Video schon im Set ist. Damit kann dasselbe Video nie zweimal raus —
    auch nicht wenn es in 2 Queue-Zeilen steht oder der Status-Flow durcheinanderkam. Lock+Claim+Inhalts-Sperre.
+   **⛔ 4. SCHICHT = LIVE-IG-ABGLEICH (User 2026-07-23 «keine doppelpost mehr, lösche selber das du es lernst»):**
+   Alle 3 bisherigen Wachen prüfen nur LOKALE Ledger — ein Post im ungeschützten Fenster, der NICHT im Ledger
+   landet, umgeht sie alle (genau die 07-12-Lücke). Fix: `meta_reel_post.mjs` → `igLiveHas()` fragt VOR dem Post
+   die letzten 25 IG-Posts ab und bricht bei gleicher Caption-Signatur (norm. erste 40 Zeichen) ab. Die WAHRHEIT
+   auf IG schlägt jeden lokalen Ledger. Lesefehler → 3× Retry, dann Fallback auf lokale Wachen (blockt Posten nicht).
+   Regel für JEDEN Post-Automaten: vor dem Post gegen die Plattform-Wahrheit prüfen, nicht nur gegen eigene Ledger.
+   ⚠️ Meta-Token laufen ~alle 60 Tage ab (Page/User-Token 07-07/07-10 tot) → Löschen alter Doppelposts per API
+   braucht frisches User-Token vom User; danach IG-`DELETE /{media-id}` möglich (Posts >500 Views NIE löschen).
 11. **💸 Gemini-Budget-Schutz (User lud 2026-07-06 CHF 50):** Kostentreiber war **VEO
    (Video-Generierung, ~CHF 3–8/Clip)** — CHF 46 in 6 Tagen. Regel: Veo NUR für einzelne
    Hero-/Kampagnen-Clips (max ~CHF 10 pro Anlass), NIE in Loops/Massenproduktion — tägliche
