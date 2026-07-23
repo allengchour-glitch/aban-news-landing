@@ -36,6 +36,9 @@ const MIN_MARGIN = 6.0;           // Mindest-Deckungsbeitrag pro Artikel über E
 const MIN_VK = parseFloat(process.env.MIN_VK || '14.90');
 const FT_FILTER = process.env.FT_FILTER ? new RegExp(process.env.FT_FILTER, 'i') : null; // optional: nur Kategorie/Thema
 const FT_TAGS = (process.env.FT_TAGS || '').split(',').map(s=>s.trim()).filter(Boolean); // optional: Batch-Collection-Tags
+// Sharding "i/n" → paralleler Voll-Import auf DISJUNKTE ArtNr (kein Duplikat-Risiko trotz Parallellauf)
+const SHARD = (() => { const m = (process.env.FT_SHARD || '').match(/^(\d+)\/(\d+)$/); return m ? { i: +m[1], n: +m[2] } : null; })();
+const shardHash = s => { let h = 0; for (const c of String(s)) h = (h * 31 + c.charCodeAt(0)) >>> 0; return h; };
 // ⛔ AUSSCHLUSS (Marken-/Ad-/Regulatorik-Schutz): Waffen (TikTok/Google sperren!), Kontaktlinsen
 //    (Medizinprodukt, CH-Regulatorik), Erotik, Event-Tickets, Ersatzteile, Bulk-Kartongebinde.
 const EXCLUDE = /pistole|gewehr|revolver|\bwaffe|schwert|dolch|machete|\baxt\b|munition|patrone|halfter|kontaktlinse|\blinsen\b|erotik|dessous|bondage|fifty shades|eintritt|ersatzteil|nachschub|karton à|display à|\bdisplay\b/i;
@@ -99,7 +102,7 @@ if (!fs.existsSync(CSVPATH)) {
   process.exit(0);
 }
 // ── Lockfile gegen PARALLELE Läufe (verhindert Duplikate: 2 Prozesse lesen denselben Ledger-Stand) ──
-const LOCK = '/tmp/fortura_import.lock';
+const LOCK = SHARD ? `/tmp/fortura_import_${SHARD.i}of${SHARD.n}.lock` : '/tmp/fortura_import.lock';
 if (!DRY) {
   try {
     const fd = fs.openSync(LOCK, 'wx'); fs.writeFileSync(fd, String(process.pid)); fs.closeSync(fd);
@@ -128,6 +131,7 @@ let created=0, skip=0, oos=0;
 for (const rec of recs.slice(0, LIMIT)) {
   const art = pick(rec, COLMAP.art);
   if (!art) { skip++; continue; }
+  if (SHARD && (shardHash(art) % SHARD.n) !== SHARD.i) { continue; }   // anderer Shard
   if (done.has('ft:'+art)) { skip++; continue; }
   const catBlob = [rec['Grp-Bez'], rec['ArtikelTitelDE'], rec['Bez1DE'], rec['Thema1DE'], rec['Anlass1DE'], rec['Bez2DE']].filter(Boolean).join(' ');
   // Optionaler Kategorie/Thema-Filter (z.B. FT_FILTER="1. august|schweiz|edelweiss" für Saison-Batch)
