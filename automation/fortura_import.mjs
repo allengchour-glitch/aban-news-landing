@@ -98,6 +98,18 @@ if (!fs.existsSync(CSVPATH)) {
   console.error(`Kein Fortura-Feed unter ${CSVPATH}. Nach Vertragsunterzeichnung: FTP-Feed herunterladen (Kundennr 544341), Pfad via FORTURA_CSV setzen.`);
   process.exit(0);
 }
+// ── Lockfile gegen PARALLELE Läufe (verhindert Duplikate: 2 Prozesse lesen denselben Ledger-Stand) ──
+const LOCK = '/tmp/fortura_import.lock';
+if (!DRY) {
+  try {
+    const fd = fs.openSync(LOCK, 'wx'); fs.writeFileSync(fd, String(process.pid)); fs.closeSync(fd);
+  } catch {
+    const age = (Date.now() - (fs.statSync(LOCK).mtimeMs || 0)) / 60000;
+    if (age < 30) { console.log(`Fortura-Import läuft bereits (Lock ${age.toFixed(1)}min alt) → skip, kein Doppellauf.`); process.exit(0); }
+    fs.writeFileSync(LOCK, String(process.pid));   // veralteter Lock (>30min) → übernehmen
+  }
+  process.on('exit', () => { try { fs.unlinkSync(LOCK); } catch {} });
+}
 const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER,'utf8').split('\n').filter(Boolean) : []);
 const imgSeen = new Set(fs.existsSync(IMG_SEEN) ? fs.readFileSync(IMG_SEEN,'utf8').split('\n').filter(Boolean) : []);
 // lokaler Titel-Abgleich gegen Voll-Export (Dublettenschutz, 16c)

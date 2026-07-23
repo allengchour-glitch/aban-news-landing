@@ -18,6 +18,7 @@ BATCHES=(
   "Fanartikel|Dekoballon|Ballone|Girlande|Partyartikel::party-deko"
   "Weihnacht::weihnachten"
   "Wohndeko|Kerzen|Blumen::party-deko"
+  ".::fortura-katalog::8.90"
 )
 
 while true; do
