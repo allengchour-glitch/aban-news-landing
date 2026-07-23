@@ -395,7 +395,7 @@ if(THREE.RGBELoader&&renderer.capabilities.isWebGL2&&!SOFT_GPU){try{new THREE.RG
   var env=pm.fromEquirectangular(tex).texture;scene.environment=env;tex.dispose();pm.dispose();GFX.ibl=true;
   iblClamp();
 },undefined,function(){if(!scene.environment)scene.environment=nwGradEnv(renderer);});}catch(e){}}
-if(!scene.environment&&(!renderer.capabilities.isWebGL2||SOFT_GPU)){scene.environment=nwGradEnv(renderer);} /* Handy/kein HDR → Gradient-Env, damit Helden-Metall spiegelt */
+if(!scene.environment&&!(THREE.RGBELoader&&renderer.capabilities.isWebGL2&&!SOFT_GPU)){scene.environment=nwGradEnv(renderer);} /* Kein HDR-Pfad (Handy/kein WebGL2 ODER RGBELoader fehlt) → Gradient-Env sofort setzen, damit Helden-Metall nie schwarz bleibt; HDR überschreibt später falls es lädt */
 
 /* 🩹 Metal-Fix (Polier-Pass): GLB-Materialien kommen teils mit glTF-Default metalness=1.
    Ohne EnvMap rendert three.js r128 solches Metall fast SCHWARZ (die "schwarzen Würfel"-Bäume
@@ -863,9 +863,10 @@ function toonify(mesh,neon,isHero){var m=mesh.material;if(!m||m._toon||!m.isMesh
     var hnm=(m.name||"").toLowerCase();
     var _met=0.06,_rgh=0.70,_env=0.55;
     if(/armor|armour|metal|steel|iron|plate|helmet|helm|shield|sword|blade|axe|buckle|chain|mail|gold|silver|visor|weapon|dagger|spear/.test(hnm)){_met=0.92;_rgh=0.32;_env=1.05;}
+    else if(/hair|beard|fur|brow/.test(hnm)){_met=0.0;_rgh=0.78;_env=0.35;} /* Haar/Bart matt (0.55 wirkte plastikartig); vor Haut testen, damit „beard" nicht an „ear" hängenbleibt */
     else if(/skin|head|hand|face|neck|ear/.test(hnm)){_met=0.0;_rgh=0.82;_env=0.32;}
-    else if(/hair|beard|fur|brow/.test(hnm)){_met=0.0;_rgh=0.55;_env=0.5;}
-    else if(/leather|belt|boot|strap|wood|staff|bow|handle|horn|cloak|cape|robe|cloth|fabric|tunic|red|detail/.test(hnm)){_met=0.02;_rgh=0.66;_env=0.42;}
+    else if(/cloak|cape|robe|cloth|fabric|tunic|shirt|dress|skirt|scarf|linen/.test(hnm)){_met=0.0;_rgh=0.9;_env=0.28;} /* Stoff matt (Robe/Kleid/Tunika) statt satiniertem Leder-Look */
+    else if(/leather|belt|boot|strap|wood|staff|bow|handle|horn|red|detail/.test(hnm)){_met=0.02;_rgh=0.66;_env=0.42;}
     var hm=new THREE.MeshStandardMaterial({map:m.map||null,color:_col,
       metalness:_met,roughness:_rgh,envMapIntensity:_env,
       emissive:m.emissive?m.emissive.clone():new THREE.Color(0x000000),emissiveMap:m.emissiveMap||null,
@@ -2416,7 +2417,6 @@ function buildSpawnHub(){
     for(var ka=0;ka<AOFF.length;ka++)for(var k=0;k<12;k++){
       var a2=ang+AOFF[ka],x=vx+Math.cos(a2)*(r+k*2),z=vz+Math.sin(a2)*(r+k*2);
       if(clearOf(x,z,d))return {x:x,z:z};}
-    console.log("[nw] Hub-Overlap akzeptiert (Versuche erschöpft)",ang,r);
     return {x:vx+Math.cos(ang)*r,z:vz+Math.sin(ang)*r};
   }
   /* 1) 🛒 Belebter Marktplatz: 3 Stände mit Essens-Waren obendrauf (decoVillageExtras-Muster) */
@@ -2721,11 +2721,9 @@ function decorateWorld(){
         hx=vx+Math.cos(ra)*rr2;hz=vz+Math.sin(ra)*rr2;hRy=Math.atan2(vx-hx,vz-hz)+(rndP()-0.5)*0.4;tries++;
       }
       if(tries>=12&&tooClose(hx,hz)){ /* 12 Random-Retries erschöpft → deterministisch radial nach aussen nudgen */
-        console.log("[nw] Haus-Overlap nach 12 Versuchen — nudge radial",v,h,Math.round(hx),Math.round(hz));
         var nAng=Math.atan2(hz-vz,hx-vx),nRad=Math.hypot(hx-vx,hz-vz);
         for(var nk=1;nk<=14&&tooClose(hx,hz);nk++){hx=vx+Math.cos(nAng)*(nRad+nk*1.6);hz=vz+Math.sin(nAng)*(nRad+nk*1.6);}
         hRy=Math.atan2(vx-hx,vz-hz)+(rndP()-0.5)*0.4;
-        if(tooClose(hx,hz))console.log("[nw] Haus-Overlap akzeptiert",v,h,Math.round(hx),Math.round(hz));
       }
       var hCx=hx+(R()-0.5)*1.5,hCz=hz+(R()-0.5)*1.5;
       var hm=cc0inst(HOUSES[hIdx],hSc)||mkFallbackHouse(hSc*0.9);
@@ -4989,7 +4987,7 @@ function startGame(fresh){
     pcam=new THREE.PerspectiveCamera(28,cv.width/cv.height,0.1,50);pcam.position.set(0.15,0.92,3.45);pcam.lookAt(0,0.9,0); /* leicht tiefer/heroischer Winkel */
     return true;
   }
-  function clearModel(){if(pmodel){psc.remove(pmodel);pmodel.traverse(function(n){if(n.isMesh&&n.geometry)n.geometry.dispose();});}pmodel=null;pmix=null;pShow=null;}
+  function clearModel(){if(pmodel){psc.remove(pmodel);pmodel.traverse(function(n){if(n.isMesh){if(n.geometry)n.geometry.dispose();var ms=Array.isArray(n.material)?n.material:[n.material];ms.forEach(function(x){if(x){if(x.map)x.map.dispose();if(x.emissiveMap)x.emissiveMap.dispose();x.dispose();}});}});}pmodel=null;pmix=null;pShow=null;} /* 🧹 Material+Textur mit entsorgen — sonst Leak bei jedem Charakterwechsel im Picker */
   function showPlaceholder(C){ /* Sofort-Figur in Klassenfarbe, bis das GLB da ist (oder falls es scheitert) */
     clearModel();
     var g=new THREE.Group(),col=(C&&C.col)?C.col:0x37c8e8;
