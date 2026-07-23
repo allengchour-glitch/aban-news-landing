@@ -32,23 +32,32 @@ const SHIP_CH = 9.50;             // DPD Home pro Paket (exkl. MWST) laut Vertra
 const MARKUP = 2.2;               // Faktor auf Netto-EK falls keine empfohlene VK vorhanden
 const MIN_MARGIN = 6.0;           // Mindest-Deckungsbeitrag pro Artikel über EK+Versand
 
-// ── COLMAP: Vertrags-Feldgruppen (Anlage 1) → echte CSV-Header. NACH erstem echten Feed final prüfen! ──
+// ── COLMAP: gegen den ECHTEN Feed verifiziert (2026-07-23, 66 Spalten, Delimiter '|', cp1252) ──
+//    Preis-Semantik BELEGT: VP1 = Netto-EK (99% VP1<VP2), VP2 = Nettopreis inkl = UVP (84% identisch).
 const COLMAP = {
   art:   ['ArtNr', 'Artikelnummer'],
   ean:   ['EAN', 'EAN2'],
-  titleDE: ['ArtikelTitel', 'Bez1DE', 'Bezeichnung1DE', 'Bez2DE'],
-  descDE: ['InternetTextDE', 'InternetText_DE'],
-  ve:    ['Internet_VE'],                       // artikelbezogene Mindestbestellmenge (>1 = Multiplikator)
+  titleDE: ['ArtikelTitelDE', 'Bez1DE'],         // kuratierter E-Com-Titel, Fallback Kurzbez.
+  zusatzDE: ['ArtikelTitelZusatzDE'],            // Marketing-Zusatztext → in die Beschreibung
+  lieferumfangDE: ['ArtikelLieferumfangDE'],     // Lieferumfang → in die Beschreibung
+  groesse: ['GrösseDE'],
+  farbe: ['FarbeDE'],
+  marke: ['Marke'],
+  descDE: ['InternetTextDE', 'ArtikelLieferumfangDE'],
+  ve:    ['Internet_VE'],                         // artikelbezogene Mindestbestellmenge (>1 = Multiplikator)
   status:['Status'],
   liquidation: ['Liquidation'],
-  stock: ['Lagerbestand Total', 'LagerbestandTotal', 'Lagerbestand_Total', 'Lagerbestand Fortura'],
-  ekNetto: ['Nettopreis', 'VP1', 'VP2'],        // Netto-Einkaufspreis
-  vkEmpf: ['UVP', 'Endverkaufspreis', 'InternetPreisDE'], // unverbindliche VK-Empfehlung inkl. MWST
+  stock: ['Lagerbestand Total'],                  // täglicher CH-Lagerbestand → ghost-sale-sicher
+  ekNetto: ['VP1'],                               // Netto-Einkaufspreis (verifiziert)
+  vkEmpf: ['VP2', 'Nettopreis inkl'],             // UVP inkl. MWST (verifiziert)
   imgs:  ['Bild_1','Bild_2','Bild_3','Bild_4','Bild_5'],
 };
 
-// ── CSV robust parsen (Semikolon ODER Komma; Anführungszeichen) ──
-function detectDelim(headerLine){ return (headerLine.split(';').length > headerLine.split(',').length) ? ';' : ','; }
+// ── CSV robust parsen (Pipe | ODER Semikolon ODER Komma; Anführungszeichen) ──
+function detectDelim(headerLine){
+  const cands = [['|',(headerLine.match(/\|/g)||[]).length],[';',(headerLine.match(/;/g)||[]).length],[',',(headerLine.match(/,/g)||[]).length]];
+  cands.sort((a,b)=>b[1]-a[1]); return cands[0][1] > 0 ? cands[0][0] : ',';
+}
 function parseCSV(text){
   const firstNL = text.indexOf('\n');
   const delim = detectDelim(text.slice(0, firstNL < 0 ? text.length : firstNL));
@@ -85,7 +94,8 @@ const imgSeen = new Set(fs.existsSync(IMG_SEEN) ? fs.readFileSync(IMG_SEEN,'utf8
 const existTitles = new Set();
 try{ for(const l of fs.readFileSync('/tmp/products.jsonl','utf8').split('\n')){ if(!l)continue; try{ existTitles.add(normT(JSON.parse(l).title||'')); }catch{} } }catch{}
 
-const rows = parseCSV(fs.readFileSync(CSVPATH,'utf8'));
+// Feed ist cp1252/latin1 (deutsche Umlaute) — NICHT utf8 lesen (sonst ü/ö/ä kaputt)
+const rows = parseCSV(fs.readFileSync(CSVPATH,'latin1'));
 if (rows.length < 2) { console.error('Feed leer/unlesbar.'); process.exit(0); }
 const header = rows[0].map(h => h.trim());
 const recs = rows.slice(1).map(r => Object.fromEntries(header.map((h,i)=>[h, r[i]])));
@@ -97,16 +107,22 @@ for (const rec of recs.slice(0, LIMIT)) {
   const art = pick(rec, COLMAP.art);
   if (!art) { skip++; continue; }
   if (done.has('ft:'+art)) { skip++; continue; }
-  const title = pick(rec, COLMAP.titleDE).replace(/\s{2,}/g,' ').trim().slice(0,70);
+  // Titel = kuratierter ArtikelTitelDE (Fallback Bez1DE) + Grösse (Kostüme haben viele ArtNr je Grösse → nicht dedupen)
+  let baseTitle = pick(rec, COLMAP.titleDE).replace(/[,;]\s*$/,'').trim();
+  const gr = pick(rec, COLMAP.groesse);
+  let title = baseTitle.replace(/\s{2,}/g,' ').trim();
+  if (gr && gr.length <= 8 && !new RegExp(`\\b${gr.replace(/[^\w]/g,'')}\\b`,'i').test(title)) title += ` · Gr. ${gr}`;
+  title = title.slice(0,70).trim();
   if (!title || title.length < 4) { skip++; fs.appendFileSync(LEDGER,'ft:'+art+'\n'); continue; }
   const status = pick(rec, COLMAP.status).toLowerCase();
   const stock = Math.max(0, Math.round(num(pick(rec, COLMAP.stock))));
   const ve = Math.max(1, Math.round(num(pick(rec, COLMAP.ve)) || 1));
   const ekNetto = num(pick(rec, COLMAP.ekNetto));
   const vkEmpf = num(pick(rec, COLMAP.vkEmpf));
-  // Verkaufspreis: empf. VK, sonst EK*Faktor — immer mind. EK+Versand+Marge
+  // Verkaufspreis: UVP (VP2) ist der Markt-Anker → daran ausrichten, NIE unter EK+Versand+Marge.
+  // Nur wenn keine UVP vorhanden: EK*Faktor. (2.2× würde sonst über die UVP schießen = unverkäuflich.)
   const floor = ekNetto + SHIP_CH + MIN_MARGIN;
-  let price = Math.max(vkEmpf || 0, ekNetto * MARKUP, floor);
+  let price = vkEmpf > 0 ? Math.max(vkEmpf, floor) : Math.max(ekNetto * MARKUP, floor);
   price = Math.round(price*20)/20;               // auf 0.05 runden (CH)
   if (!isFinite(price) || price <= 0) { skip++; fs.appendFileSync(LEDGER,'ft:'+art+'\n'); continue; }
 
@@ -124,7 +140,10 @@ for (const rec of recs.slice(0, LIMIT)) {
   existTitles.add(normT(title));
   if (img) { imgSeen.add(img); fs.appendFileSync(IMG_SEEN, img+'\n'); }
   const veNote = ve > 1 ? `<p>📦 Verkauf in Bündeln zu ${ve} Stück.</p>` : '';
-  const desc = `<p>${pick(rec, COLMAP.descDE) || title}</p>${veNote}<p>🇨🇭 Versand aus der Schweiz · Lieferung 1–2 Werktage (DPD) · Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · Kauf auf Rechnung mit Klarna & TWINT · LuxeStyle</p>`;
+  const bodyTxt = pick(rec, COLMAP.zusatzDE) || pick(rec, COLMAP.descDE) || title;
+  const liefer = pick(rec, COLMAP.lieferumfangDE);
+  const lieferNote = liefer ? `<p><strong>Lieferumfang:</strong> ${liefer}</p>` : '';
+  const desc = `<p>${bodyTxt}</p>${lieferNote}${veNote}<p>🇨🇭 Versand aus der Schweiz · Lieferung 1–2 Werktage (DPD) · Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · Kauf auf Rechnung mit Klarna & TWINT · LuxeStyle</p>`;
   const slug = (normT(title).replace(/\s+/g,'-').slice(0,46)) + '-ft' + String(art).toLowerCase();
   const tags = [...new Set(['fortura','dropship','ch-lager','schweiz-versand','neu', ...catTags(title)])];
   const input = {
