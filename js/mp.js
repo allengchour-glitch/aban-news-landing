@@ -23,9 +23,19 @@
 (function () {
   /* 🌐 Broker-Ersatz: PeerJS-Cloud zeitweise down -> nach Server-Fehler naechsten Broker merken */
   var MP_BROKERS = [null, { host: "peerjs.92k.de", port: 443, secure: true }];
+  /* 🌐 ICE: STUN fuers Standard-NAT + oeffentlicher Gratis-TURN-Relay, damit die
+     Verbindung auch hinter striktem/symmetrischem NAT (Mobilfunk/CGNAT) haelt.
+     Ohne TURN scheitert Online-Koop auf vielen Handys komplett. */
+  var MP_ICE = [
+    { urls: "stun:stun.l.google.com:19302" },
+    { urls: "stun:global.stun.twilio.com:3478" },
+    { urls: "turn:openrelay.metered.ca:80", username: "openrelayproject", credential: "openrelayproject" },
+    { urls: "turn:openrelay.metered.ca:443", username: "openrelayproject", credential: "openrelayproject" },
+    { urls: "turn:openrelay.metered.ca:443?transport=tcp", username: "openrelayproject", credential: "openrelayproject" }
+  ];
   function mpPeerCfg() {
     var i = 0; try { i = (+(localStorage.getItem("aban_broker") || 0)) % MP_BROKERS.length; } catch (e) {}
-    var b = MP_BROKERS[i], o = { debug: 0 };
+    var b = MP_BROKERS[i], o = { debug: 0, config: { iceServers: MP_ICE, sdpSemantics: "unified-plan" } };
     if (b) { o.host = b.host; o.port = b.port; o.secure = b.secure; }
     return o;
   }
@@ -68,7 +78,7 @@
   function peerEngine(S, gameId, isHost, noRegen) {
     if (!window.Peer) { S._setStatus("closed"); S._rej(new Error("PeerJS nicht geladen (js/vendor/peerjs.min.js)")); return; }
     var peer = null, main = null, fast = null, ever = false, byUs = false, tmo = null, tries = 0, retried = false;
-    var lastRecv = 0, wd = null;
+    var lastRecv = 0, wd = null, reconns = 0, MAX_RECONN = 5;
     // Watchdog: DataChannel-close wird bei hartem Abbruch (Tab zu, Netz weg) oft
     // erst nach langem ICE-Timeout gemeldet → Stille >6s bei laufendem Traffic
     // (Spiele senden Snapshots/Pings im Sekundentakt) gilt als Abriss.
@@ -101,8 +111,8 @@
       /* A1 (Rest-Audit): Identitäts-Guards — Events eines ERSETZTEN Kanals (ICE-Timeout
          feuert close oft erst nach dem erfolgreichen Reconnect) dürfen die neue Verbindung nicht töten. */
       c.on("open", function () {
-        if (c !== main) return;
-        ever = true; clearTimeout(tmo); retried = false; /* 1-Versuch-Reconnect-Budget je Abriss erneuern */
+        if (c !== main) return; // Identitaets-Guard (Audit A1)
+        ever = true; clearTimeout(tmo); reconns = 0; // erfolgreicher (Re)Connect -> Reconnect-Budget erneuern
         S._setStatus("connected"); startWd();
         if (!isHost) { // 2. Kanal: unreliable für Positions-Spam
           try { fast = peer.connect(pid(gameId, S.code), { label: "fast", reliable: false }); wireFast(fast); } catch (e) {}
@@ -121,19 +131,22 @@
         if (!ever) fail("Verbindung fehlgeschlagen — Code prüfen und nochmal versuchen.");
       });
     }
-    function lost() { // 1 Reconnect-Versuch bei kurzem Abriss
+    function lost() { // mehrere Reconnect-Versuche mit Backoff bei Abriss
       S._setStatus("lost");
-      if (retried) { giveUp(); return; }
-      retried = true;
+      // mehrere Reconnect-Versuche mit Backoff; bei Erschoepfung giveUp() (zerstoert den
+      // Peer -> gibt die feste Raum-ID frei, Audit A2)
+      if (reconns >= MAX_RECONN) { giveUp(); return; }
+      reconns++;
+      var backoff = Math.min(6000, 600 * Math.pow(1.7, reconns - 1)); // 600ms .. 6s
       if (isHost) {
         main = null; // peer.on("connection") nimmt den Gast wieder an
-        setTimeout(function () { if (S.status === "lost") giveUp(); }, 10000);
+        setTimeout(function () { if (S.status === "lost") lost(); }, backoff + 9000);
       } else {
         setTimeout(function () {
           if (S.status !== "lost") return;
           try { main = peer.connect(pid(gameId, S.code), { reliable: true }); wireMain(main); } catch (e) { giveUp(); return; }
-          setTimeout(function () { if (S.status === "lost") giveUp(); }, 8000);
-        }, 800);
+          setTimeout(function () { if (S.status === "lost") lost(); }, backoff + 7000);
+        }, backoff);
       }
     }
     function boot() {

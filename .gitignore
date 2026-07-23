@@ -54,3 +54,6 @@ game/assets/*.glb
 _lpdbg.html
 _lporig.html
 _lporig2.html
+_thdbg.html
+_thshot_*.html
+_th*.html

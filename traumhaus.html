@@ -29,7 +29,7 @@ canvas{display:block}
 #hud{position:fixed;top:calc(10px + env(safe-area-inset-top));left:calc(10px + env(safe-area-inset-left));right:calc(10px + env(safe-area-inset-right));display:flex;justify-content:space-between;align-items:flex-start;pointer-events:none;z-index:10;gap:8px;flex-wrap:wrap}
 .panel{background:rgba(255,253,248,.92);border:2px solid rgba(120,110,80,.2);border-radius:14px;padding:8px 12px;font-weight:800;box-shadow:0 4px 14px rgba(60,40,10,.15);pointer-events:auto}
 #geld{font-size:1.25rem;font-weight:900;background:linear-gradient(90deg,#fff6dc,#ffe9b8);border-color:#e8b04a}
-#uhr{font-size:1rem}
+#uhr{font-size:1rem;max-width:min(60vw,340px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #geld{color:#b8860b}
 .needs{display:flex;flex-direction:column;gap:3px;font-size:.72rem;min-width:130px}
 .needs .nrow{display:flex;align-items:center;gap:5px}
@@ -37,12 +37,15 @@ canvas{display:block}
 .needs .nbar i{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,#8fd8a0,#5ab86a)}
 @media (orientation:landscape) and (max-height:480px){
   #joy{bottom:calc(12px + env(safe-area-inset-bottom)) !important;left:calc(12px + env(safe-area-inset-left)) !important}
-  #minimap{width:92px !important;height:92px !important}
-  #needsBox{max-height:56vh;overflow-y:auto}
+  #minimap{width:88px !important;height:88px !important}
+  #needsBox{max-height:60vh;overflow-y:auto;font-size:.58rem;min-width:88px;max-width:150px}
+  .needs .nbar{height:5px}
+  #geld{font-size:1rem;padding:6px 11px}
+  #uhr{font-size:.85rem;padding:6px 10px;max-width:44vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   #tools{left:calc(10px + env(safe-area-inset-left));right:auto;top:70px;bottom:auto}
 }
 @media (max-width:560px){
-  #hud{top:8px;left:8px;right:8px;gap:6px}
+  #hud{top:calc(8px + env(safe-area-inset-top));left:calc(8px + env(safe-area-inset-left));right:calc(8px + env(safe-area-inset-right));gap:6px}
   #geld{font-size:1.25rem;padding:10px 15px;font-weight:900}
   #uhr{font-size:1rem;padding:9px 13px;font-weight:900}
   .needs{font-size:.64rem;min-width:104px;gap:2px;padding:7px 9px}
@@ -136,7 +139,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
   <div id="palCats"></div>
   <div id="palItems"></div>
 </div>
-<div id="rotHint" style="position:fixed;inset:0;z-index:60;display:none;flex-direction:column;align-items:center;justify-content:center;background:rgba(30,25,20,.92);color:#fff;text-align:center;padding:24px;font-size:1.1rem">
+<div id="rotHint" style="position:fixed;inset:0;z-index:70;display:none;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(160deg,#241d15,#140f0a);color:#fff;text-align:center;padding:24px;font-size:1.1rem">
   <div style="font-size:3rem;animation:rotwig 1.5s infinite">📱↻</div>
   <div style="margin-top:14px;font-weight:800">Dreh dein Handy quer!</div>
   <div style="margin-top:6px;opacity:.8;font-size:.9rem">Im Querformat spielt sich Traumhaus am besten 🏡</div>
@@ -235,6 +238,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
     <div id="mpLobby" style="display:none;margin-top:8px">
       Raum-Code: <b id="mpCodeShow" style="font-size:1.3rem;letter-spacing:4px;color:#e8722a"></b>
       <div id="mpStatus" style="font-size:.85rem;color:#5a7a9a">Warte auf Mitspieler …</div>
+      <button class="btn ghost" id="mpBackBtn" style="margin-top:8px;display:none;font-size:.9rem;padding:8px 18px">↩ Abbrechen / neuer Versuch</button>
     </div>
   </div>
   <div class="small">Kein Download · <a href="/spiele.html">🕹️ aban Arcade</a> · Speichert automatisch (Solo)</div>
@@ -510,6 +514,55 @@ if(THREE.GLTFLoader){["lp_tree.glb"].forEach(function(){
       var b2=new THREE.Box3().setFromObject(t);t.position.set(p[0],-b2.min.y-0.02,p[1]);
       t.traverse(function(n){if(n.isMesh)n.castShadow=true;});scene.add(t);});
   },undefined,function(){});});}
+
+// ---- Wildblumen-Wiese auf dem Startgrundstueck: fuellt die leere Rasenflaeche mit Leben
+//      und bricht die monotone Grastextur. Rein dekorativ (InstancedMesh, belegt KEINE
+//      Bau-Zellen — Moebel rendern darueber), nur auf Gras (innerhalb der Strassen). ----
+(function streuNatur(){
+  var LX=57,LZ=43; // Grundstuecksgrenze (innerhalb der Umgehungsstrassen)
+  var dummy=new THREE.Object3D();
+  function frei(x,z){ // nicht mitten auf dem Eingangsweg (z~28..33, schmal)
+    return !(Math.abs(x)<2.2 && z>GH*CS/2-2 && z<GH*CS/2+9);
+  }
+  // 1) Grasbueschel (kleine Kegel, 2 Gruentoene, dichter zum Rand)
+  var tuftGeo=new THREE.ConeGeometry(0.16,0.5,5),
+      tuftMat=new THREE.MeshStandardMaterial({roughness:1,metalness:0,envMapIntensity:0.2});
+  var NT=340,tuft=new THREE.InstancedMesh(tuftGeo,tuftMat,NT);tuft.receiveShadow=true;tuft.castShadow=false;
+  var ti=0,c=new THREE.Color();
+  for(var g=0;g<NT*3&&ti<NT;g++){
+    var x=(Math.random()*2-1)*LX,z=(Math.random()*2-1)*LZ;
+    var rand=Math.max(Math.abs(x)/LX,Math.abs(z)/LZ); // 0 Mitte .. 1 Rand
+    if(Math.random()>0.25+rand*0.75)continue; // Mitte sparsam, Rand dicht
+    if(!frei(x,z))continue;
+    var sc=0.6+Math.random()*0.9;
+    dummy.position.set(x,0.5*0.5*sc-0.02,z);dummy.rotation.set(0,Math.random()*6.28,(Math.random()-0.5)*0.25);
+    dummy.scale.set(sc*(0.8+Math.random()*0.5),sc,sc*(0.8+Math.random()*0.5));dummy.updateMatrix();
+    tuft.setMatrixAt(ti,dummy.matrix);
+    var l=0.5+Math.random()*0.5;c.setRGB(0.16*l+0.04,0.34*l+0.12,0.12*l+0.03);tuft.setColorAt(ti,c);
+    ti++;
+  }
+  tuft.count=ti;tuft.instanceMatrix.needsUpdate=true;if(tuft.instanceColor)tuft.instanceColor.needsUpdate=true;scene.add(tuft);
+  // 2) Wildblumen (kleine Farbtupfer auf duennem Halm)
+  var flGeo=new THREE.SphereGeometry(0.11,6,5),
+      flMat=new THREE.MeshStandardMaterial({roughness:0.7,metalness:0,emissiveIntensity:0});
+  var NF=140,fl=new THREE.InstancedMesh(flGeo,flMat,NF);
+  var FCOL=[0xffffff,0xffd94a,0xff7ab0,0xb98cff,0xff5a4a,0xffe08a];
+  var fi=0;
+  for(var g2=0;g2<NF*4&&fi<NF;g2++){
+    var fx=(Math.random()*2-1)*LX,fz=(Math.random()*2-1)*LZ;
+    if(Math.random()>0.5)continue;if(!frei(fx,fz))continue;
+    var fs=0.7+Math.random()*0.7;
+    dummy.position.set(fx,0.14*fs,fz);dummy.rotation.set(0,0,0);dummy.scale.setScalar(fs);dummy.updateMatrix();
+    fl.setMatrixAt(fi,dummy.matrix);c.setHex(FCOL[(Math.random()*FCOL.length)|0]);fl.setColorAt(fi,c);
+    fi++;
+  }
+  fl.count=fi;fl.instanceMatrix.needsUpdate=true;if(fl.instanceColor)fl.instanceColor.needsUpdate=true;scene.add(fl);
+  // Stiele (ein gemeinsamer duenner Zylinder-Instancer unter den Blueten)
+  var stGeo=new THREE.CylinderGeometry(0.02,0.03,0.28,4),stMat=new THREE.MeshStandardMaterial({color:0x3a6a34,roughness:1});
+  var st=new THREE.InstancedMesh(stGeo,stMat,fi);var sm=new THREE.Matrix4(),v=new THREE.Vector3(),q=new THREE.Quaternion(),sv=new THREE.Vector3(1,1,1);
+  for(var si=0;si<fi;si++){fl.getMatrixAt(si,sm);v.setFromMatrixPosition(sm);v.y=0.14;sm.compose(v,q,sv);st.setMatrixAt(si,sm);}
+  st.instanceMatrix.needsUpdate=true;scene.add(st);
+})();
 
 // ---- Dorf rundherum: Strassen, Nachbarhaeuser, Baeume, Laternen ----
 var dorfFenster=[];
@@ -1299,7 +1352,10 @@ function hausWert(){var w=0;
   w+=Object.keys(walls).length*30+Object.keys(floors).length*10;
   if(window.autoRec)w+=defOf(window.autoRec.id).cost;
   return w;}
-function prestigeName(w){return w>=12000?"🏰 Traumvilla":(w>=6000?"🏡 Schmuckstück":(w>=2500?"🏠 Zuhause":"⛺ Hütte"));}
+function prestigeName(w){
+  if(w<2500)return "⛺ Hütte";if(w<6000)return "🏠 Zuhause";if(w<12000)return "🏡 Schmuckstück";
+  if(w<25000)return "🏰 Traumvilla";if(w<50000)return "🏛️ Anwesen";if(w<100000)return "👑 Palast";
+  return "🌟 Legende Stufe "+(Math.floor(Math.log2(w/100000))+1);}
 function checkAch(){
   for(var i=0;i<ACH.length;i++){var a2=ACH[i];
     if(!achDone[a2[0]]&&a2[4]()){achDone[a2[0]]=1;achToast(a2);}}}
@@ -2434,10 +2490,32 @@ var QUESTS=[
  ["karriere","💼","Erreiche Karriere-Level 3",600,function(){return skills.arbeit.lv>=3;}],
  ["villa","🏰","Steigere den Haus-Wert auf 8000 §",800,function(){return hausWert()>=8000;}]
 ];
-function questTxt(){return questIdx<QUESTS.length?QUESTS[questIdx][1]+" "+QUESTS[questIdx][2]+" → "+QUESTS[questIdx][3]+" §":"🎖️ Alle Stadt-Aufträge erledigt!";}
+// Endlose, mitskalierende Stadt-Auftraege nach dem festen Pool — das Spiel geht "ewig".
+// Jede Vorlage nimmt eine Basislinie (b) der kumulativen Stats + ein mit n wachsendes Ziel.
+var PQ_TPL=[
+ function(n,b){var t=3+n*2;return {e:"🎣",tx:"Fang "+t+" Fische fürs Dorffest",rw:300+n*120,ok:function(){return (stats.fische||0)-b.fische>=t;}};},
+ function(n,b){var t=2+n;return {e:"🪑",tx:"Stelle "+t+" neue Möbelstücke auf",rw:280+n*110,ok:function(){return furn.length-b.furn>=t;}};},
+ function(n,b){var t=2+n;return {e:"🥕",tx:"Verkaufe "+t+" Ernten am Markt",rw:320+n*130,ok:function(){return (stats.growSold||0)-b.grow>=t;}};},
+ function(n,b){var t=Math.round((hausWert()+geld+n*1500+2500)/500)*500;return {e:"💎",tx:"Steigere dein Vermögen auf "+t+" §",rw:400+n*160,ok:function(){return hausWert()+geld>=t;}};},
+ function(n,b){var t=1+Math.ceil((n+1)/2);return {e:"🛹",tx:"Lande "+t+" Auto-Stunts",rw:260+n*120,ok:function(){return (stats.stunts||0)-b.stunts>=t;}};},
+ function(n,b){var t=1+Math.ceil((n+1)/2);return {e:"📦",tx:"Erledige "+t+" Lieferungen",rw:300+n*140,ok:function(){return (stats.lieferungen||0)-b.liefer>=t;}};}
+];
+function ensurePQ(){
+  if(window._pq&&window._pq.idx===questIdx)return;
+  var n=questIdx-QUESTS.length;
+  var b={fische:stats.fische||0,furn:furn.length,grow:stats.growSold||0,stunts:stats.stunts||0,liefer:stats.lieferungen||0};
+  var tpl=PQ_TPL[((n%PQ_TPL.length)+PQ_TPL.length)%PQ_TPL.length](n,b);
+  window._pq={idx:questIdx,e:tpl.e,tx:tpl.tx,rw:tpl.rw,ok:tpl.ok};
+}
+function questTxt(){
+  if(questIdx<QUESTS.length)return QUESTS[questIdx][1]+" "+QUESTS[questIdx][2]+" → "+QUESTS[questIdx][3]+" §";
+  ensurePQ();return window._pq.e+" "+window._pq.tx+" → "+window._pq.rw+" §";}
 function checkQuest(){
-  if(questBusy||questIdx>=QUESTS.length)return;
-  if(QUESTS[questIdx][4]()){questBusy=true;buergermeisterPending=true;npcTimer=Math.min(npcTimer,3);
+  if(questBusy)return;
+  var erfuellt;
+  if(questIdx<QUESTS.length)erfuellt=QUESTS[questIdx][4]();
+  else{ensurePQ();erfuellt=window._pq.ok();}
+  if(erfuellt){questBusy=true;buergermeisterPending=true;npcTimer=Math.min(npcTimer,3);
     hint("📜 Auftrag erfüllt! Der Bürgermeister ist unterwegs …");}}
 // ---- Koop-Team-Aufgaben (viele, rotierend, gemeinsame Ziele) ----
 var teamIdx=0,teamBasis=null;
@@ -2509,9 +2587,10 @@ function npcAct(n){
     hint("👮 Die Polizei schaut nochmal vorbei … alle unschuldig pfeifen!");npcEmoji(n,"🚨");
     sims.forEach(function(s4){if(s4.mesh.visible)simEmoji(s4,"😇");});}
   else if(n.typ==="buergermeister"){
-    if(questBusy&&questIdx<QUESTS.length){var q=QUESTS[questIdx];
-      geld+=q[3];stats.quests=(stats.quests||0)+1;questIdx++;questBusy=false;
-      hint("🎖️ Bürgermeister: „Großartig!“ +"+q[3]+" § — "+(questIdx<QUESTS.length?"Neuer Auftrag: "+questTxt():"Das war der letzte Auftrag!"));
+    if(questBusy){
+      var rw=questIdx<QUESTS.length?QUESTS[questIdx][3]:(ensurePQ(),window._pq.rw);
+      geld+=rw;stats.quests=(stats.quests||0)+1;questIdx++;questBusy=false;window._pq=null;
+      hint("🎖️ Bürgermeister: „Großartig!“ +"+rw+" § — Neuer Auftrag: "+questTxt());
       npcEmoji(n,"💰");beep(700,.1,"triangle",.06);setTimeout(function(){beep(940,.16,"triangle",.07);},140);
       geldSend();netSend({t:"quest",i:questIdx});}
     else{hint("🏛️ Der Bürgermeister schaut nur kurz vorbei.");npcEmoji(n,"👋");}}
@@ -3186,6 +3265,16 @@ document.getElementById("soloBtn").onclick=function(){
   try{var sv=localStorage.getItem(SAVE);if(sv)loadSnapshot(JSON.parse(sv));}catch(e){}
   applySaison();rollWetter();
   startGame();};
+function mpLobbyFehler(msg){
+  var st=document.getElementById("mpStatus");if(st){st.textContent="⚠️ "+msg;st.style.color="#c0442a";}
+  var b=document.getElementById("mpBackBtn");if(b)b.style.display="inline-block";
+  try{document.getElementById("netBadge").style.background="rgba(190,90,60,.9)";}catch(e){}}
+document.getElementById("mpBackBtn").onclick=function(){
+  try{if(MPs)MPs.close();}catch(e){}MPs=null;mpHost=false;
+  document.getElementById("mpLobby").style.display="none";
+  document.getElementById("mpBackBtn").style.display="none";
+  var st=document.getElementById("mpStatus");if(st)st.style.color="#5a7a9a";
+  document.getElementById("netSetup").style.display="flex";};
 document.getElementById("hostBtn").onclick=function(){
   if(typeof MP==="undefined"){alert("Online-Modul nicht geladen");return;}
   myName=(document.getElementById("mpName").value.trim()||"Host").slice(0,12);
@@ -3195,9 +3284,11 @@ document.getElementById("hostBtn").onclick=function(){
   document.getElementById("mpCodeShow").textContent=MPs.code;
   MPs.onMessage(onNetMsg);
   MPs.onStatus(function(st){
-    document.getElementById("mpStatus").textContent={waiting:"Warte auf Mitspieler …",connected:"Verbunden! Spiel startet …",lost:"Verbindung verloren — versuche Reconnect",closed:"Verbindung beendet"}[st]||st;
+    document.getElementById("mpStatus").textContent={waiting:"Warte auf Mitspieler …",connected:"Verbunden! Spiel startet …",lost:"Verbindung verloren — versuche Reconnect …",closed:"Verbindung beendet"}[st]||st;
     if(st==="connected"&&!running)startGame();
-    document.getElementById("netBadge").style.background=st==="connected"?"rgba(90,150,90,.9)":"rgba(190,90,60,.9)";});};
+    document.getElementById("mpBackBtn").style.display=(st==="closed")?"inline-block":"none";
+    document.getElementById("netBadge").style.background=st==="connected"?"rgba(90,150,90,.9)":"rgba(190,90,60,.9)";});
+  if(MPs.ready&&MPs.ready.catch)MPs.ready.catch(function(err){mpLobbyFehler(err&&err.message||"Verbindung fehlgeschlagen");});};
 document.getElementById("joinBtn").onclick=function(){
   if(typeof MP==="undefined"){alert("Online-Modul nicht geladen");return;}
   myName=(document.getElementById("mpName").value.trim()||"Gast").slice(0,12);
@@ -3211,8 +3302,10 @@ document.getElementById("joinBtn").onclick=function(){
   MPs.onMessage(onNetMsg);
   MPs.onStatus(function(st){
     if(st==="connected"){document.getElementById("mpStatus").textContent="Verbunden — lade Haus …";netSend({t:"hallo",n:myName});}
-    if(st==="closed"||st==="lost")document.getElementById("mpStatus").textContent="Verbindung verloren";
-    document.getElementById("netBadge").style.background=st==="connected"?"rgba(90,150,90,.9)":"rgba(190,90,60,.9)";});};
+    if(st==="lost")document.getElementById("mpStatus").textContent="Verbindung verloren — Reconnect …";
+    if(st==="closed"){document.getElementById("mpStatus").textContent="Verbindung beendet";document.getElementById("mpBackBtn").style.display="inline-block";}
+    document.getElementById("netBadge").style.background=st==="connected"?"rgba(90,150,90,.9)":"rgba(190,90,60,.9)";});
+  if(MPs.ready&&MPs.ready.catch)MPs.ready.catch(function(err){mpLobbyFehler(err&&err.message||"Verbindung fehlgeschlagen");});};
 
 // ===================== Live-Voice-Chat (WebRTC über PeerJS) =====================
 var voice={stream:null,call:null,on:false,muted:false,remoteEl:null};
