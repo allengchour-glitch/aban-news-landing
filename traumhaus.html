@@ -721,7 +721,7 @@ var dorfFenster=[];
     front.position.set(0,1.1,2.53);g.add(front);dorfFenster.push(front.material);
     var mark=new THREE.Mesh(new THREE.BoxGeometry(5.4,0.08,1.5),stdMat(sh[1],0.6));
     mark.position.set(0,2.6,3.2);mark.rotation.x=0.28;mark.castShadow=true;g.add(mark);
-    g.position.set(sh[0],0,SZ+21);g.rotation.y=Math.PI;scene.add(g);});
+    g.position.set(sh[0],0,SZ+24.5);g.rotation.y=Math.PI;scene.add(g);}); // weiter zurueck: Front nicht mehr aufs Trottoir
   // ---- Skyline: Wolkenkratzer mit Glasfassade (weit draußen) ----
   function turm(x,z,etagen,w,farbe){
     var g=new THREE.Group();var h=etagen*2.0+1;
@@ -846,6 +846,31 @@ setTimeout(function baueVerkehr(){
   var bank2=new THREE.Mesh(new THREE.BoxGeometry(1.8,0.1,0.5),stdMat(0x8a6a48,0.7));bank2.position.set(1.4,0.5,0);hs.add(bank2);
   [[0.7,0],[2.1,0]].forEach(function(bp){var fu=new THREE.Mesh(new THREE.BoxGeometry(0.1,0.5,0.4),stdMat(0x4a4a52,0.6));fu.position.set(bp[0],0.25,0);hs.add(fu);});
   hs.position.set(-8,0.06,SZ+6.1);scene.add(hs);
+  // ---- Parkplätze am Straßenrand (Parktaschen mit Markierung + geparkten Autos) ----
+  (function baueParkplaetze(){
+    var padMat=new THREE.MeshStandardMaterial({color:0x44444c,roughness:0.95});
+    var lineMat=new THREE.MeshStandardMaterial({color:0xe8e8dc,roughness:0.7});
+    // [x, z, noseRotY, faceZ(+1 Nase Richtung +z)]
+    var PADS=[[-40,SZ+22,Math.PI/2],[58,SZ+22,Math.PI/2],[34,-(SZ+22),-Math.PI/2],[-58,-(SZ+22),-Math.PI/2]]; // Grasseite hinter dem Trottoir, nicht auf der Fahrbahn
+    PADS.forEach(function(P){
+      var px=P[0],pz=P[1],rot=P[2];
+      var pad=new THREE.Mesh(new THREE.PlaneGeometry(16,5.2),padMat);
+      pad.rotation.x=-Math.PI/2;pad.position.set(px,0.015,pz);pad.receiveShadow=true;scene.add(pad);
+      for(var sl=-2;sl<=2;sl++){var ln=new THREE.Mesh(new THREE.PlaneGeometry(0.16,5),lineMat);
+        ln.rotation.x=-Math.PI/2;ln.position.set(px+sl*3.6,0.02,pz);scene.add(ln);}
+      // 2 geparkte Autos in die Taschen
+      ["auto_kombi","auto_van"].forEach(function(id,k){
+        loadTH(id,function(tpl){if(!tpl)return;var m=tpl.clone(true);
+          m.traverse(function(n){if(n.isMesh&&n.material){n.material=n.material.clone();
+            n.material.color.lerp(new THREE.Color(k?0x4a7ad0:0xd06a4a),0.4);}});
+          var bb=new THREE.Box3().setFromObject(m),sz=new THREE.Vector3();bb.getSize(sz);
+          m.scale.setScalar(3.9/(Math.max(sz.x,sz.z)||1));
+          var b2=new THREE.Box3().setFromObject(m);
+          m.position.set(px+(k?3.4:-3.4),-b2.min.y+0.02,pz);m.rotation.y=rot;
+          m.traverse(function(n){if(n.isMesh)n.castShadow=true;});scene.add(m);});
+      });
+    });
+  })();
   // ---- Fahrender Zug ----
   var zugG=new THREE.Group();
   var lokF=[0xc23a3a,0x3a5ac2,0x3aa05a];
@@ -1047,10 +1072,10 @@ setTimeout(function baueGebaeude(){
   bau("th3_wippe.glb",1.25,79,0,2,Math.PI/2,false);
   bau("th3_karussell.glb",1.3,88,0,5,0,false);
   // Markt-Platz (Suedzeile)
-  bau("th3_marktstand.glb",2.6,48,0,67.5,Math.PI,false);
-  bau("th3_brezelstand.glb",1.9,19,0,67.5,Math.PI,false);
+  bau("th3_marktstand.glb",2.6,48,0,70.5,Math.PI,false);
+  bau("th3_brezelstand.glb",1.9,19,0,70.5,Math.PI,false);
   // Strassen-Deko
-  bau("th3_kiosk.glb",3.0,-16,0,-66,0,false);
+  bau("th3_kiosk.glb",3.0,-16,0,-69,0,false);
   bau("th3_litfass.glb",2.8,14,0,51.9,0,false);
   bau("th3_briefkasten.glb",1.15,-12,0,51.9,Math.PI,false);
   bau("th3_hydrant.glb",0.8,30,0,51.9,0,false);
