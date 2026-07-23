@@ -3421,7 +3421,7 @@ function loop(now){
     document.getElementById("emoteToggle").style.display=(running&&!buildMode&&!fahren)?"block":"none";
     document.getElementById("micBtn").style.display=(running&&!buildMode&&!fahren&&MPs)?"block":"none";
     document.getElementById("pingBtn").style.display=(running&&!buildMode&&!fahren&&MPs)?"block":"none";
-    document.getElementById("hideBtn").style.display=(running&&!buildMode&&!fahren&&(!MPs||mpHost))?"block":"none";
+    document.getElementById("hideBtn").style.display=(running&&!buildMode&&!fahren&&MPs&&mpHost)?"block":"none"; // nur im Koop (Solo-Verstecken war "doof")
     if(MPs&&!mpHost){steerNetT-=dt;
       if(steerNetT<=0){steerNetT=0.09;var act9=steerActive();
         if(act9||steerWasActive){netFast({t:"steer",x:act9?steer.x:0,z:act9?steer.z:0});steerWasActive=act9;}}}
