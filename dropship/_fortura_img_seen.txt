@@ -5811,3 +5811,5 @@ http://media.fortura.ch/media/import/02318_1.jpg
 http://media.fortura.ch/media/import/41674_1.jpg
 http://media.fortura.ch/media/import/03333_1.jpg
 http://media.fortura.ch/media/import/41758_1.jpg
+http://media.fortura.ch/media/import/02336_1.jpg
+http://media.fortura.ch/media/import/02345_1.jpg
