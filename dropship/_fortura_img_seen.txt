@@ -5489,3 +5489,6 @@ http://media.fortura.ch/media/import/49663_1.jpg
 http://media.fortura.ch/media/import/HB505546_1.jpg
 http://media.fortura.ch/media/import/OR9758L-XL_1.jpg
 http://media.fortura.ch/media/import/68458_1.jpg
+http://media.fortura.ch/media/import/90193_1.jpg
+http://media.fortura.ch/media/import/90196_1.jpg
+http://media.fortura.ch/media/import/90202_1.jpg
