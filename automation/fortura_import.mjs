@@ -36,6 +36,9 @@ const MIN_MARGIN = 6.0;           // Mindest-Deckungsbeitrag pro Artikel über E
 const MIN_VK = parseFloat(process.env.MIN_VK || '14.90');
 const FT_FILTER = process.env.FT_FILTER ? new RegExp(process.env.FT_FILTER, 'i') : null; // optional: nur Kategorie/Thema
 const FT_TAGS = (process.env.FT_TAGS || '').split(',').map(s=>s.trim()).filter(Boolean); // optional: Batch-Collection-Tags
+// ⛔ AUSSCHLUSS (Marken-/Ad-/Regulatorik-Schutz): Waffen (TikTok/Google sperren!), Kontaktlinsen
+//    (Medizinprodukt, CH-Regulatorik), Erotik, Event-Tickets, Ersatzteile, Bulk-Kartongebinde.
+const EXCLUDE = /pistole|gewehr|revolver|\bwaffe|schwert|dolch|machete|\baxt\b|munition|patrone|halfter|kontaktlinse|\blinsen\b|erotik|dessous|bondage|fifty shades|eintritt|ersatzteil|nachschub|karton à|display à|\bdisplay\b/i;
 
 // ── COLMAP: gegen den ECHTEN Feed verifiziert (2026-07-23, 66 Spalten, Delimiter '|', cp1252) ──
 //    Preis-Semantik BELEGT: VP1 = Netto-EK (99% VP1<VP2), VP2 = Nettopreis inkl = UVP (84% identisch).
@@ -112,11 +115,11 @@ for (const rec of recs.slice(0, LIMIT)) {
   const art = pick(rec, COLMAP.art);
   if (!art) { skip++; continue; }
   if (done.has('ft:'+art)) { skip++; continue; }
+  const catBlob = [rec['Grp-Bez'], rec['ArtikelTitelDE'], rec['Bez1DE'], rec['Thema1DE'], rec['Anlass1DE'], rec['Bez2DE']].filter(Boolean).join(' ');
   // Optionaler Kategorie/Thema-Filter (z.B. FT_FILTER="1. august|schweiz|edelweiss" für Saison-Batch)
-  if (FT_FILTER) {
-    const catBlob = [rec['Grp-Bez'], rec['ArtikelTitelDE'], rec['Bez1DE'], rec['Thema1DE'], rec['Anlass1DE']].filter(Boolean).join(' ');
-    if (!FT_FILTER.test(catBlob)) { skip++; continue; }
-  }
+  if (FT_FILTER && !FT_FILTER.test(catBlob)) { skip++; continue; }
+  // ⛔ Ausschluss-Guard: Waffen/Kontaktlinsen/Erotik/Tickets/Ersatzteile nie importieren
+  if (EXCLUDE.test(catBlob)) { skip++; fs.appendFileSync(LEDGER,'ft:'+art+'\n'); continue; }
   // Titel = kuratierter ArtikelTitelDE (Fallback Bez1DE) + Grösse (Kostüme haben viele ArtNr je Grösse → nicht dedupen)
   let baseTitle = pick(rec, COLMAP.titleDE).replace(/[,;]\s*$/,'').trim();
   const gr = pick(rec, COLMAP.groesse);
