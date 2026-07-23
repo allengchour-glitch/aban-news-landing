@@ -1352,7 +1352,10 @@ function hausWert(){var w=0;
   w+=Object.keys(walls).length*30+Object.keys(floors).length*10;
   if(window.autoRec)w+=defOf(window.autoRec.id).cost;
   return w;}
-function prestigeName(w){return w>=12000?"🏰 Traumvilla":(w>=6000?"🏡 Schmuckstück":(w>=2500?"🏠 Zuhause":"⛺ Hütte"));}
+function prestigeName(w){
+  if(w<2500)return "⛺ Hütte";if(w<6000)return "🏠 Zuhause";if(w<12000)return "🏡 Schmuckstück";
+  if(w<25000)return "🏰 Traumvilla";if(w<50000)return "🏛️ Anwesen";if(w<100000)return "👑 Palast";
+  return "🌟 Legende Stufe "+(Math.floor(Math.log2(w/100000))+1);}
 function checkAch(){
   for(var i=0;i<ACH.length;i++){var a2=ACH[i];
     if(!achDone[a2[0]]&&a2[4]()){achDone[a2[0]]=1;achToast(a2);}}}
@@ -2487,10 +2490,32 @@ var QUESTS=[
  ["karriere","💼","Erreiche Karriere-Level 3",600,function(){return skills.arbeit.lv>=3;}],
  ["villa","🏰","Steigere den Haus-Wert auf 8000 §",800,function(){return hausWert()>=8000;}]
 ];
-function questTxt(){return questIdx<QUESTS.length?QUESTS[questIdx][1]+" "+QUESTS[questIdx][2]+" → "+QUESTS[questIdx][3]+" §":"🎖️ Alle Stadt-Aufträge erledigt!";}
+// Endlose, mitskalierende Stadt-Auftraege nach dem festen Pool — das Spiel geht "ewig".
+// Jede Vorlage nimmt eine Basislinie (b) der kumulativen Stats + ein mit n wachsendes Ziel.
+var PQ_TPL=[
+ function(n,b){var t=3+n*2;return {e:"🎣",tx:"Fang "+t+" Fische fürs Dorffest",rw:300+n*120,ok:function(){return (stats.fische||0)-b.fische>=t;}};},
+ function(n,b){var t=2+n;return {e:"🪑",tx:"Stelle "+t+" neue Möbelstücke auf",rw:280+n*110,ok:function(){return furn.length-b.furn>=t;}};},
+ function(n,b){var t=2+n;return {e:"🥕",tx:"Verkaufe "+t+" Ernten am Markt",rw:320+n*130,ok:function(){return (stats.growSold||0)-b.grow>=t;}};},
+ function(n,b){var t=Math.round((hausWert()+geld+n*1500+2500)/500)*500;return {e:"💎",tx:"Steigere dein Vermögen auf "+t+" §",rw:400+n*160,ok:function(){return hausWert()+geld>=t;}};},
+ function(n,b){var t=1+Math.ceil((n+1)/2);return {e:"🛹",tx:"Lande "+t+" Auto-Stunts",rw:260+n*120,ok:function(){return (stats.stunts||0)-b.stunts>=t;}};},
+ function(n,b){var t=1+Math.ceil((n+1)/2);return {e:"📦",tx:"Erledige "+t+" Lieferungen",rw:300+n*140,ok:function(){return (stats.lieferungen||0)-b.liefer>=t;}};}
+];
+function ensurePQ(){
+  if(window._pq&&window._pq.idx===questIdx)return;
+  var n=questIdx-QUESTS.length;
+  var b={fische:stats.fische||0,furn:furn.length,grow:stats.growSold||0,stunts:stats.stunts||0,liefer:stats.lieferungen||0};
+  var tpl=PQ_TPL[((n%PQ_TPL.length)+PQ_TPL.length)%PQ_TPL.length](n,b);
+  window._pq={idx:questIdx,e:tpl.e,tx:tpl.tx,rw:tpl.rw,ok:tpl.ok};
+}
+function questTxt(){
+  if(questIdx<QUESTS.length)return QUESTS[questIdx][1]+" "+QUESTS[questIdx][2]+" → "+QUESTS[questIdx][3]+" §";
+  ensurePQ();return window._pq.e+" "+window._pq.tx+" → "+window._pq.rw+" §";}
 function checkQuest(){
-  if(questBusy||questIdx>=QUESTS.length)return;
-  if(QUESTS[questIdx][4]()){questBusy=true;buergermeisterPending=true;npcTimer=Math.min(npcTimer,3);
+  if(questBusy)return;
+  var erfuellt;
+  if(questIdx<QUESTS.length)erfuellt=QUESTS[questIdx][4]();
+  else{ensurePQ();erfuellt=window._pq.ok();}
+  if(erfuellt){questBusy=true;buergermeisterPending=true;npcTimer=Math.min(npcTimer,3);
     hint("📜 Auftrag erfüllt! Der Bürgermeister ist unterwegs …");}}
 // ---- Koop-Team-Aufgaben (viele, rotierend, gemeinsame Ziele) ----
 var teamIdx=0,teamBasis=null;
@@ -2562,9 +2587,10 @@ function npcAct(n){
     hint("👮 Die Polizei schaut nochmal vorbei … alle unschuldig pfeifen!");npcEmoji(n,"🚨");
     sims.forEach(function(s4){if(s4.mesh.visible)simEmoji(s4,"😇");});}
   else if(n.typ==="buergermeister"){
-    if(questBusy&&questIdx<QUESTS.length){var q=QUESTS[questIdx];
-      geld+=q[3];stats.quests=(stats.quests||0)+1;questIdx++;questBusy=false;
-      hint("🎖️ Bürgermeister: „Großartig!“ +"+q[3]+" § — "+(questIdx<QUESTS.length?"Neuer Auftrag: "+questTxt():"Das war der letzte Auftrag!"));
+    if(questBusy){
+      var rw=questIdx<QUESTS.length?QUESTS[questIdx][3]:(ensurePQ(),window._pq.rw);
+      geld+=rw;stats.quests=(stats.quests||0)+1;questIdx++;questBusy=false;window._pq=null;
+      hint("🎖️ Bürgermeister: „Großartig!“ +"+rw+" § — Neuer Auftrag: "+questTxt());
       npcEmoji(n,"💰");beep(700,.1,"triangle",.06);setTimeout(function(){beep(940,.16,"triangle",.07);},140);
       geldSend();netSend({t:"quest",i:questIdx});}
     else{hint("🏛️ Der Bürgermeister schaut nur kurz vorbei.");npcEmoji(n,"👋");}}
