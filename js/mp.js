@@ -97,24 +97,45 @@
       try { if (peer) peer.destroy(); } catch (e) {}
       S._rej(new Error(msg));
     }
+    /* A2 (Rest-Audit): endgültiges Aufgeben MUSS den Peer zerstören — sonst hält ein
+       Zombie-Peer die feste Raum-ID (PUBA/OFEN/wildnis/tempel2) site-weit besetzt. */
+    function giveUp() {
+      clearTimeout(tmo);
+      if (wd) { clearInterval(wd); wd = null; }
+      S._setStatus("closed");
+      try { if (peer) peer.destroy(); } catch (e) {}
+    }
     function recv(d) { lastRecv = Date.now(); S._emit(d); }
-    function wireFast(c) { c.on("data", recv); }
+    function wireFast(c) { c.on("data", function (d) { if (c !== fast) return; recv(d); }); } /* A1: Zombie-Kanal füttert lastRecv nicht */
     function wireMain(c) {
+      /* A1 (Rest-Audit): Identitäts-Guards — Events eines ERSETZTEN Kanals (ICE-Timeout
+         feuert close oft erst nach dem erfolgreichen Reconnect) dürfen die neue Verbindung nicht töten. */
       c.on("open", function () {
-        ever = true; clearTimeout(tmo); reconns = 0; // erfolgreicher (Re)Connect -> Zaehler zuruecksetzen
+        if (c !== main) return; // Identitaets-Guard (Audit A1)
+        ever = true; clearTimeout(tmo); reconns = 0; // erfolgreicher (Re)Connect -> Reconnect-Budget erneuern
         S._setStatus("connected"); startWd();
         if (!isHost) { // 2. Kanal: unreliable für Positions-Spam
           try { fast = peer.connect(pid(gameId, S.code), { label: "fast", reliable: false }); wireFast(fast); } catch (e) {}
         }
         S._res(S);
       });
-      c.on("data", recv);
-      c.on("close", function () { if (!byUs && S.status !== "closed") lost(); });
-      c.on("error", function () { if (!ever) fail("Verbindung fehlgeschlagen — Code prüfen und nochmal versuchen."); });
+      c.on("data", function (d) { if (c !== main && c !== fast) return; recv(d); });
+      c.on("close", function () {
+        if (c !== main) return;
+        if (isHost && S.status !== "connected") { main = null; return; } /* A3: pending Kanal starb → Raum wieder frei */
+        if (!byUs && S.status !== "closed") lost();
+      });
+      c.on("error", function () {
+        if (c !== main) return;
+        if (isHost && S.status !== "connected") { main = null; return; }
+        if (!ever) fail("Verbindung fehlgeschlagen — Code prüfen und nochmal versuchen.");
+      });
     }
     function lost() { // mehrere Reconnect-Versuche mit Backoff bei Abriss
       S._setStatus("lost");
-      if (reconns >= MAX_RECONN) { S._setStatus("closed"); return; }
+      // mehrere Reconnect-Versuche mit Backoff; bei Erschoepfung giveUp() (zerstoert den
+      // Peer -> gibt die feste Raum-ID frei, Audit A2)
+      if (reconns >= MAX_RECONN) { giveUp(); return; }
       reconns++;
       var backoff = Math.min(6000, 600 * Math.pow(1.7, reconns - 1)); // 600ms .. 6s
       if (isHost) {
@@ -123,7 +144,7 @@
       } else {
         setTimeout(function () {
           if (S.status !== "lost") return;
-          try { main = peer.connect(pid(gameId, S.code), { reliable: true }); wireMain(main); } catch (e) {}
+          try { main = peer.connect(pid(gameId, S.code), { reliable: true }); wireMain(main); } catch (e) { giveUp(); return; }
           setTimeout(function () { if (S.status === "lost") lost(); }, backoff + 7000);
         }, backoff);
       }
@@ -143,8 +164,11 @@
       });
       peer.on("connection", function (conn) {
         if (!isHost) return;
-        if (conn.label === "fast") { fast = conn; wireFast(conn); return; }
-        if (main && main.open) { try { conn.close(); } catch (e) {} return; } // Raum voll (1v1)
+        if (conn.label === "fast") { /* A3: fast nur vom verbundenen Gast, kein Hijack durch Fremde/Doppelte */
+          if (!main || !main.open || conn.peer !== main.peer || (fast && fast.open)) { try { conn.close(); } catch (e) {} return; }
+          fast = conn; wireFast(conn); return;
+        }
+        if (main) { try { conn.close(); } catch (e) {} return; } // Raum voll (1v1) — auch PENDING zählt als belegt (close/error geben den Slot frei)
         main = conn; wireMain(conn);
       });
       peer.on("disconnected", function () { if (!byUs) { try { peer.reconnect(); } catch (e) {} } });
@@ -268,28 +292,41 @@
       if (room.length !== 4) room = "PUBA";
       var outer = mkSession("quick", room);
       outer.code = room;
-      var inner = null, phase = 0, closedByUs = false, maxPhase = 4;
+      var inner = null, phase = 0, closedByUs = false, maxPhase = 4, everConnected = false, retryT = null;
+      function goNext() { /* abwechselnd: Host des Public-Raums werden ↔ erneut beitreten (kleiner Zufalls-Delay gegen Race) */
+        phase++;
+        var next = (phase % 2 === 1) ? function () { wire(MP._hostFixed(gameId, room)); }
+                                     : function () { wire(MP.join(gameId, room)); };
+        retryT = setTimeout(function () { if (!closedByUs) next(); }, 250 + ((Math.random() * 500) | 0)); /* B2: stornierbar */
+      }
+      function settle() { /* B3: ready-Promise endgültig settlen (idempotent — _rej nach _res ist no-op) */
+        outer.ready.catch(function () {});
+        try { outer._rej(new Error("Kein Mitspieler gefunden")); } catch (e) {}
+      }
       function wire(sess) {
+        if (closedByUs) { try { sess.close(); } catch (e) {} return; } /* B2: Kette nach close() tot */
         inner = sess; outer.code = sess.code; outer.role = sess.role;
         sess.onMessage(function (d) { outer._emit(d); });
         outer.send = function (o) { sess.send(o); };
         outer.sendFast = function (o) { sess.sendFast(o); };
         sess.onStatus(function (st) {
-          if (st === "closed" && !closedByUs && outer.status !== "connected" && phase < maxPhase) {
-            phase++;
-            // abwechselnd: Host des Public-Raums werden ↔ erneut beitreten (mit kleinem Zufalls-Delay gegen Race)
-            var next = (phase % 2 === 1) ? function () { wire(MP._hostFixed(gameId, room)); }
-                                         : function () { wire(MP.join(gameId, room)); };
-            setTimeout(next, 250 + ((Math.random() * 500) | 0));
-            return;
-          }
+          if (st === "connected") everConnected = true; /* B1: nach echter Verbindung NIE re-matchen (sonst joint ein Fremder ins laufende Spiel / Rollen-Kipp) */
+          if (st === "closed" && !closedByUs && !everConnected && phase < maxPhase) { goNext(); return; }
           outer.role = inner ? inner.role : outer.role;
+          if (st === "closed") settle();
           outer._setStatus(st);
         });
         sess.ready.then(function () { outer.role = sess.role; outer._res(outer); }).catch(function () {});
+        if (sess.status === "closed") { /* B4: Session war schon SYNCHRON closed (z.B. PeerJS fehlt) — onStatus feuert nie mehr */
+          setTimeout(function () {
+            if (closedByUs) return;
+            if (!everConnected && phase < maxPhase) goNext();
+            else { settle(); outer._setStatus("closed"); }
+          }, 0);
+        }
       }
       wire(MP.join(gameId, room)); // Phase 0: zuerst Beitreten versuchen
-      outer.close = function () { closedByUs = true; if (inner) inner.close(); outer._setStatus("closed"); };
+      outer.close = function () { closedByUs = true; if (retryT) clearTimeout(retryT); if (inner) inner.close(); settle(); outer._setStatus("closed"); };
       return outer;
     }
   };

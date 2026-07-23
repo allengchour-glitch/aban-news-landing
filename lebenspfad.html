@@ -39,7 +39,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 #players{position:absolute;top:12px;left:12px;display:flex;flex-direction:column;gap:6px;max-width:min(300px,60vw)}
 .pcard{background:linear-gradient(180deg,#fffef9,#fdf6e6);border:2px solid rgba(120,110,80,.25);border-radius:12px;padding:7px 11px;font-size:.78rem;transition:border-color .3s,box-shadow .3s;box-shadow:0 3px 10px rgba(60,40,10,.18),inset 0 2px 0 rgba(255,255,255,.9)}
 .pcard.on{border-color:#ff8c2a;box-shadow:0 0 18px rgba(255,150,40,.45)}
-.pcard .nm{font-weight:900;font-size:.85rem}
+.pcard .nm{font-weight:900;font-size:.85rem;color:#2a3040;display:flex;align-items:center;gap:5px}
 .pcard .st{display:flex;gap:5px;color:#4a5262;margin-top:3px;flex-wrap:wrap;font-weight:600}
 .pcard .st span{white-space:nowrap;background:rgba(255,255,255,.6);border:1px solid rgba(120,110,80,.16);border-left:3px solid var(--sc,#c8b88a);border-radius:9px;padding:1px 7px 1px 5px;cursor:pointer;pointer-events:auto;transition:transform .2s}
 .pcard .st span b{font-weight:900;color:#2a3040}
@@ -47,7 +47,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 .pcard .st span.dn{animation:statDn .9s ease}
 @keyframes statUp{25%{transform:scale(1.25);background:#dcf7dd;border-color:#5ac878}}
 @keyframes statDn{25%{transform:scale(1.25);background:#ffdede;border-color:#e87878}}
-#chapterTag{position:absolute;top:10px;left:50%;transform:translateX(-50%);text-align:center;background:rgba(38,52,72,.42);padding:5px 16px;border-radius:14px;box-shadow:0 3px 12px rgba(30,40,60,.28);max-width:46vw}
+#chapterTag{position:absolute;top:10px;left:50%;transform:translateX(-50%);text-align:center;background:rgba(30,42,60,.6);padding:5px 16px;border-radius:14px;box-shadow:0 3px 12px rgba(30,40,60,.28);max-width:46vw}
 @media(max-width:640px){ /* schmale Screens: rechte Spalte — Banner UNTER den Buttons, TurnTag darunter (nichts überlappt) */
   #chapterTag{left:auto;right:10px;top:52px;transform:none;max-width:44vw;padding:4px 10px}
   #chapterTag b{font-size:.8rem;letter-spacing:.06em}
@@ -57,13 +57,13 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
   .pcard{font-size:.7rem;padding:5px 8px}}
 #chapterTag b{font-size:1rem;letter-spacing:.2em;color:#fff;text-shadow:0 1px 2px rgba(10,20,35,.9),0 2px 8px rgba(10,20,35,.6)}
 #chapterTag small{display:block;color:#fdf3d0;font-size:.72rem;margin-top:1px;text-shadow:0 1px 3px rgba(10,20,35,.85)}
-#turnTag{position:absolute;top:62px;left:50%;transform:translateX(-50%);font-weight:900;font-size:.85rem;color:#ffdf8a;background:rgba(38,52,72,.48);padding:4px 13px;border-radius:12px;text-shadow:0 1px 3px rgba(8,14,26,.95);white-space:nowrap;line-height:1.2}
+#turnTag{position:absolute;top:62px;left:50%;transform:translateX(-50%);font-weight:900;font-size:.85rem;color:#ffe49a;background:rgba(28,40,58,.66);padding:4px 13px;border-radius:12px;text-shadow:0 1px 3px rgba(8,14,26,.95);white-space:nowrap;line-height:1.2}
 #turnTag:empty{display:none}
 #turnTag small{display:block;font-size:.68em;font-weight:800;color:#ffedb8;letter-spacing:.5px;opacity:.9}
 /* Würfel-Knopf */
 @keyframes rollPulse{0%,100%{outline:4px solid rgba(255,209,102,0)}50%{outline:4px solid rgba(255,209,102,.55)}}
 #rollBtn:not(:disabled):not(.hide){animation:rollPulse 2.4s ease-in-out infinite}
-#rollBtn{outline-offset:3px;position:fixed;bottom:26px;left:50%;transform:translateX(-50%);z-index:20;border:0;cursor:pointer;font-weight:900;font-size:1.15rem;padding:16px 42px;border-radius:50px;color:#1a1020;background:linear-gradient(180deg,#ffe08a 0%,#ffd166 30%,#ff7ad9 100%);box-shadow:0 12px 44px rgba(255,180,110,.45),inset 0 3px 0 rgba(255,255,255,.7),inset 0 -3px 6px rgba(160,60,120,.35);transition:transform .12s,opacity .3s}
+#rollBtn{outline-offset:3px;position:fixed;bottom:26px;left:50%;transform:translateX(-50%);z-index:20;border:0;cursor:pointer;font-weight:900;font-size:1.15rem;padding:16px 42px;border-radius:50px;max-width:86vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#1a1020;background:linear-gradient(180deg,#ffe08a 0%,#ffd166 30%,#ff7ad9 100%);box-shadow:0 12px 44px rgba(255,180,110,.45),inset 0 3px 0 rgba(255,255,255,.7),inset 0 -3px 6px rgba(160,60,120,.35);transition:transform .12s,opacity .3s}
 #rollBtn:active{transform:translateX(-50%) scale(0.95)}
 #rollBtn:disabled{opacity:.35;cursor:default}
 #dice{position:fixed;bottom:104px;left:50%;transform:translateX(-50%);font-size:3rem;z-index:20;text-shadow:0 6px 24px rgba(255,209,102,.5);opacity:0;transition:opacity .3s;pointer-events:none}
@@ -81,13 +81,13 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 /* Ereignis-Karte */
 #card{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) scale(.9);width:min(520px,94vw);background:linear-gradient(170deg,#fffdf6,#fff2d8);border:3px solid #ffcf3a;border-radius:20px;padding:22px;z-index:30;opacity:0;pointer-events:none;transition:opacity .45s,transform .45s cubic-bezier(.2,1.1,.4,1);max-height:86vh;overflow:auto;box-shadow:0 18px 50px rgba(60,40,10,.35)}
 #card.on{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:auto}
-#card .kick{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:#c98a1a;margin-bottom:8px;font-weight:800}
+#card .kick{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:#a86c08;margin-bottom:8px;font-weight:800}
 #card h3{font-size:1.2rem;color:#2a3040;margin-bottom:8px;line-height:1.35}
 #card .txt{color:#4a5262;font-size:.94rem;line-height:1.55;margin-bottom:14px}
 #card .opts{display:flex;flex-direction:column;gap:8px}
 #card button{border:2px solid #e8d8b0;background:#fff;color:#2a3040;border-radius:12px;padding:11px 15px;font-weight:700;cursor:pointer;font-size:.88rem;text-align:left;transition:border-color .15s,background .15s,transform .1s;box-shadow:0 3px 0 #e8d8b0}
 #card button:hover{border-color:#ffcf3a;background:#fffbe8;transform:translateY(-1px)}
-#card button small{display:block;color:#8a7a4a;font-weight:600;margin-top:3px;font-size:.76rem}
+#card button small{display:block;color:#6a5a2c;font-weight:600;margin-top:3px;font-size:.76rem}
 /* Overlays */
 .overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;background:linear-gradient(180deg,rgba(110,200,245,.96),rgba(255,244,214,.97));backdrop-filter:blur(5px);padding:20px;z-index:40;overflow:auto}
 .overlay::before,.overlay::after{content:"";flex:1 0 10px} /* Feder: kurz = zentriert, lang = scrollbar ab OBEN (Titel nie abgeschnitten) */
@@ -113,16 +113,20 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
   #rollBtn{padding:18px 46px;font-size:1.2rem}
 }
 @media(max-width:480px){
-  #players{max-width:46vw;gap:4px}
-  .pcard{padding:5px 8px;font-size:.68rem}
+  #players{max-width:50vw;gap:4px}
+  .pcard{padding:5px 8px;font-size:.74rem}
   .pcard .st{gap:6px}
   #chapterTag b{font-size:.82rem;letter-spacing:.12em}
   #chapterTag small{font-size:.62rem}
-  #turnTag{font-size:.72rem;top:62px;left:auto;right:10px;transform:none;max-width:none;text-align:right} /* nowrap + 2 Zeilen (small) statt max-width-Umbruch */
+  #turnTag{font-size:.72rem;top:62px;left:auto;right:10px;transform:none;max-width:56vw;overflow:hidden;text-overflow:ellipsis;text-align:right} /* nowrap + Ellipsis statt Überlauf; small bricht darunter */
   .pcard .items span{font-size:15px;min-width:24px;height:24px;line-height:24px}
   #progMap{bottom:88px;width:92vw}
   #card{padding:16px}
   #card h3{font-size:1.05rem}
+}
+@media(pointer:coarse){ /* grössere Tap-Ziele auf Touch: Stat-Chips + Item-Icons */
+  .pcard .st span{min-height:26px;display:inline-flex;align-items:center}
+  .pcard .items span{min-width:28px;height:28px;line-height:28px}
 }
 #lpvig{position:fixed;inset:0;pointer-events:none;z-index:3;background:radial-gradient(ellipse at 50% 44%,transparent 40%,rgba(26,44,74,.22) 74%,rgba(12,24,46,.44) 100%)}
 #chatBox{position:fixed;left:10px;bottom:96px;z-index:40;width:min(290px,72vw);background:rgba(255,253,246,.96);border:2px solid #ffcf3a;border-radius:14px;display:none;flex-direction:column;box-shadow:0 10px 30px rgba(60,40,10,.3)}
@@ -137,7 +141,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 #chatToggle{position:fixed;left:10px;bottom:48px;z-index:40;display:none;border:2px solid #ffcf3a;background:rgba(255,253,246,.94);border-radius:50%;width:44px;height:44px;font-size:1.2rem;cursor:pointer}
 #chatToggle.blink{animation:chatBlink 1s ease-in-out infinite}
 @keyframes chatBlink{50%{box-shadow:0 0 0 6px rgba(255,209,102,.45)}}
-#rad{position:fixed;left:50%;top:44%;transform:translate(-50%,-50%) scale(.7);z-index:26;display:none;opacity:0;transition:opacity .3s,transform .35s cubic-bezier(.2,1.4,.4,1);pointer-events:none;filter:drop-shadow(0 14px 30px rgba(60,40,10,.4))}
+#rad{position:fixed;left:50%;top:44%;transform:translate(-50%,-50%) scale(.7);z-index:26;display:none;opacity:0;transition:opacity .3s,transform .35s cubic-bezier(.2,1.4,.4,1);pointer-events:auto;filter:drop-shadow(0 14px 30px rgba(60,40,10,.4))}
 #radPtr{position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-size:2rem;color:#e8443a;text-shadow:0 2px 4px rgba(0,0,0,.3);z-index:2}
 @keyframes cardPulse{0%,100%{box-shadow:0 3px 10px rgba(60,40,10,.18)}50%{box-shadow:0 3px 18px rgba(255,170,60,.5)}}
 .pcard.on{animation:cardPulse 2.6s ease-in-out infinite}
@@ -162,7 +166,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 #qTimer{height:10px;background:#f0e4c4;border-radius:6px;margin-top:12px;overflow:hidden}
 #qBar{height:100%;width:100%;background:linear-gradient(90deg,#8fd8a0,#ffd166,#ff7a6a);transition:width 22s linear}
 #emoBtn{position:fixed;right:14px;bottom:160px;z-index:16;width:48px;height:48px;border-radius:50%;border:2px solid rgba(120,110,80,.3);background:rgba(255,253,246,.95);font-size:1.3rem;cursor:pointer;box-shadow:0 3px 12px rgba(60,40,10,.25)}
-#emoFan{position:fixed;right:14px;bottom:216px;z-index:17;display:flex;flex-direction:column;gap:8px}
+#emoFan{position:fixed;right:14px;bottom:216px;z-index:17;display:flex;flex-direction:column;flex-wrap:wrap;gap:8px;max-height:calc(100vh - 300px)}
 #emoFan button{width:48px;height:48px;border-radius:50%;border:2px solid #ffcf3a;background:#fffdf6;font-size:1.05rem;cursor:pointer;box-shadow:0 3px 10px rgba(60,40,10,.25)}
 /* 📷 Foto-Album: HUD-Zähler + Polaroid-Galerie am Spielende */
 #albumBadge{position:fixed;top:10px;right:104px;z-index:16;display:none;align-items:center;gap:5px;height:38px;padding:0 13px;border-radius:19px;border:2px solid rgba(120,110,80,.3);background:rgba(255,253,246,.92);color:#c9821a;font-weight:800;font-size:.9rem;box-shadow:0 2px 8px rgba(60,40,10,.2);pointer-events:none}
@@ -222,7 +226,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 <button id="emoBtn" class="hide" title="Emotes (Tasten 1–6)">😊</button>
 <div id="emoFan" class="hide"></div>
 <!-- 💞 Begegnungs-Aktion wählen (zwei Figuren treffen sich) -->
-<div id="meetPick" class="hide" style="position:fixed;left:50%;bottom:158px;transform:translateX(-50%);z-index:30;display:flex;flex-direction:column;align-items:center;gap:6px;background:rgba(255,253,246,.95);border:2px solid #ff9ecf;border-radius:16px;padding:9px 13px;box-shadow:0 12px 32px rgba(120,40,80,.28);max-width:92vw">
+<div id="meetPick" class="hide" style="position:fixed;left:50%;bottom:158px;transform:translateX(-50%);z-index:30;display:flex;flex-direction:column;align-items:center;gap:6px;background:rgba(255,253,246,.95);border:2px solid #ff9ecf;border-radius:16px;padding:9px 13px;box-shadow:0 12px 32px rgba(120,40,80,.28);max-width:min(480px,calc(100vw - 128px))">
   <div style="font-weight:900;color:#c23a7a;font-size:.82rem">💞 Was macht ihr zusammen?</div>
   <div id="meetPickRow" style="display:flex;gap:7px;flex-wrap:wrap;justify-content:center"></div>
 </div>
@@ -254,7 +258,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 <div class="overlay" id="start">
   <div class="kicker">aban news · das große Würfel-Brettspiel · 1–4 Spieler</div>
   <h1>LEBENSPFAD</h1>
-  <p>Würfle dich durch <b>acht Kapitel eines ganzen Lebens</b> — von der Kindheit bis zum Lebensabend. Über <b>100 Ereignisse</b> mit echten Entscheidungen formen deine Werte: <b>💰 Geld · ❤️ Glück · 🧠 Wissen · 👥 Freunde</b>. Trefft ihr euch auf einem Feld, gibt es eine <b>Begegnung</b> — gemeinsam ist das Leben besser. Am Ende schreibt das Spiel <b>deine Biografie</b>.</p>
+  <p>Würfle durch <b>acht Kapitel eines ganzen Lebens</b> — Kindheit bis Lebensabend. Über <b>100 Ereignisse</b> formen deine Werte: <b>💰 Geld · ❤️ Glück · 🧠 Wissen · 👥 Freunde</b>. Am Ende schreibt das Spiel <b>deine Biografie</b>.</p>
   <div id="startStats" style="margin:2px 0 10px"></div>
   <div style="font-size:.85rem;color:#9fb2ff">Wie viele spielen mit (ein Gerät, reihum)?</div>
   <label id="botRow" style="display:none;align-items:center;gap:8px;background:#fffdf6;border:2px solid #cbb8e8;border-radius:12px;padding:8px 14px;font-size:.82rem;color:#3a4252;cursor:pointer;font-weight:700;margin:6px auto 0;width:max-content">
@@ -262,17 +266,18 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
   <div class="pselect" id="pselect"></div>
   <div id="nameRow" style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:6px 0"></div>
   <div id="charRow" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:4px 0 8px"></div>
-  <label style="display:inline-flex;align-items:center;gap:8px;background:#fffdf6;border:2px solid #e8b0b0;border-radius:12px;padding:8px 14px;font-size:.82rem;color:#3a4252;cursor:pointer;font-weight:700">
-    <input type="checkbox" id="adultChk" checked style="width:18px;height:18px;accent-color:#e84a3a;display:none"> <span style="color:#b04a3a;font-weight:800">🔞 Echtes-Leben-Modus ist IMMER an (User-Vorgabe): frecher Humor, echte Risiken — <b>der Tod spielt mit</b></span></label>
-  <label style="display:inline-flex;align-items:center;gap:8px;background:#fffdf6;border:2px solid #a8d0e8;border-radius:12px;padding:8px 14px;font-size:.82rem;color:#3a4252;cursor:pointer;font-weight:700;margin-left:6px">
-    <input type="checkbox" id="kurzChk" style="width:18px;height:18px;accent-color:#2f8cff"> ⚡ Schnelles Leben — 4 Kapitel, ~10 Min</label>
   <button class="btn" id="startBtn">Leben beginnen ▶</button>
   <button class="btn ghost" id="tutBtn" style="font-size:.88rem">❓ So geht's — Regeln für Anfänger</button>
+  <label style="display:inline-flex;align-items:center;gap:8px;background:#fffdf6;border:2px solid #e0cba0;border-radius:12px;padding:8px 14px;font-size:.82rem;color:#3a4252;cursor:pointer;font-weight:700;margin-top:6px">
+    <input type="checkbox" id="adultChk" checked style="width:18px;height:18px;accent-color:#e84a3a;display:none"> <span style="color:#8a6a3a;font-weight:700">🎭 Echtes-Leben-Modus (immer an): frecher Humor & echte Risiken — auch der Tod kann mitspielen.</span></label>
+  <label style="display:inline-flex;align-items:center;gap:8px;background:#fffdf6;border:2px solid #a8d0e8;border-radius:12px;padding:8px 14px;font-size:.82rem;color:#3a4252;cursor:pointer;font-weight:700;margin-left:6px">
+    <input type="checkbox" id="kurzChk" style="width:18px;height:18px;accent-color:#2f8cff"> ⚡ Schnelles Leben — 4 Kapitel, ~10 Min</label>
   <div id="netBox" style="margin-top:14px;padding:12px;border:2px dashed rgba(90,140,200,.45);border-radius:14px;max-width:480px">
     <div style="font-weight:800;color:#2a6ab0">🌐 Online-Koop (2–4 Spieler, je ein Gerät)</div>
     <div id="netSetup" style="margin-top:8px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center">
       <input id="netName" placeholder="Dein Name" maxlength="12" style="padding:10px;border-radius:10px;border:1px solid #b8c8d8;width:150px;font-size:16px;text-align:center">
       <button class="btn" id="quickPlayBtn" style="margin-top:0;flex-basis:100%;max-width:360px;background:linear-gradient(135deg,#5ee0a0,#2fb8ff);font-size:1.02rem">🌍 Sofort online spielen — 1 Tipp, ohne Code</button>
+      <button class="btn" id="netInviteBtn" style="margin-top:0;flex-basis:100%;max-width:360px;background:linear-gradient(135deg,#ffb066,#ff7ad9);font-size:1.02rem">🔗 Freunde einladen — Raum + Einladungslink in 1 Tipp</button>
       <details style="flex-basis:100%">
         <summary style="cursor:pointer;color:#2a6ab0;font-weight:700;font-size:.86rem">👥 Mit Freunden per Code spielen</summary>
         <div style="margin-top:8px;display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap">
@@ -286,7 +291,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
       <div id="netStatus" style="flex-basis:100%;min-height:1.15em;font-size:.82rem;font-weight:700;color:#7a8a9a"></div>
     </div>
     <div id="netLobby" style="display:none;margin-top:8px">
-      <div>Raum-Code: <b id="netCodeShow" style="font-size:1.3rem;letter-spacing:4px;color:#e8722a"></b> <button id="netCopyBtn" style="border:1px solid #b8c8d8;background:#fff;border-radius:8px;padding:2px 8px;font-size:.75rem;cursor:pointer">📋 Kopieren</button> <button id="netShareBtn" style="border:1px solid #7db88a;background:#eaf9ee;border-radius:8px;padding:2px 8px;font-size:.75rem;cursor:pointer">📲 Link teilen</button></div>
+      <div>Raum-Code: <b id="netCodeShow" style="font-size:1.3rem;letter-spacing:4px;color:#e8722a"></b> <button id="netCopyBtn" style="border:1px solid #b8c8d8;background:#fff;border-radius:8px;padding:2px 8px;font-size:.75rem;cursor:pointer">📋 Kopieren</button> <button id="netShareBtn" style="border:1px solid #7db88a;background:#eaf9ee;border-radius:8px;padding:2px 8px;font-size:.75rem;cursor:pointer">📲 Link teilen</button> <button id="netWaBtn" style="border:1px solid #25c366;background:#e7f9ee;border-radius:8px;padding:2px 8px;font-size:.75rem;cursor:pointer">💬 WhatsApp</button></div>
       <div id="netModeTag" style="font-size:.8rem;font-weight:800;color:#2a6ab0"></div>
       <div id="netPlayers" style="margin:6px 0;font-weight:700;display:flex;flex-wrap:wrap;gap:6px;justify-content:center"></div>
       <div id="netCharWrap" style="margin:8px auto"></div>
@@ -380,8 +385,8 @@ if(DIAGON){window.addEventListener("error",function(e){
 }catch(e){}})();
 var IS_COARSE=!!(window.matchMedia&&window.matchMedia("(pointer:coarse)").matches);
 var renderer=new THREE.WebGLRenderer({antialias:true}); // AA IMMER an (auch mobil): simple Szene, ohne AA Treppchen-Kanten an allen Feld-Rändern
-renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(W,H);
-renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+renderer.setPixelRatio(Math.min(devicePixelRatio,IS_COARSE?1.5:2));renderer.setSize(W,H); // 📱 Touch-Geräte: DPR-Deckel 1.5 spart Füllrate
+renderer.shadowMap.enabled=true;renderer.shadowMap.type=IS_COARSE?THREE.PCFShadowMap:THREE.PCFSoftShadowMap; // 📱 mobil: günstigerer Schatten-Filter
 renderer.outputEncoding=THREE.sRGBEncoding;
 // Echtes Himmelslicht (HDRI, PolyHaven CC0) -> realistische Reflexe auf allen Materialien
 if(THREE.RGBELoader&&renderer.capabilities.isWebGL2){try{new THREE.RGBELoader().load("/textures/sky_1k.hdr",function(tex){
@@ -392,6 +397,9 @@ if(THREE.RGBELoader&&renderer.capabilities.isWebGL2){try{new THREE.RGBELoader().
 },undefined,function(){});}catch(e){}}
 document.getElementById("wrap").appendChild(renderer.domElement);
 var scene=new THREE.Scene();scene.background=new THREE.Color(0x9fd8ef);scene.fog=new THREE.Fog(0x9fd8ef,130,430);
+// 🌅 Verlaufs-Himmel: Kuppel mit Zenit→Horizont-Gradient, getönt nach Kapitel-Himmel (schönerer Himmel als flache Hintergrundfarbe)
+var lpSkyMat=new THREE.ShaderMaterial({uniforms:{topCol:{value:new THREE.Color(0x6ec2f2)},botCol:{value:new THREE.Color(0x9fd8ef)}},vertexShader:"varying vec3 vP;void main(){vP=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}",fragmentShader:"uniform vec3 topCol;uniform vec3 botCol;varying vec3 vP;void main(){float h=clamp(normalize(vP).y*0.7+0.3,0.0,1.0);gl_FragColor=vec4(mix(botCol,topCol,h),1.0);}",side:THREE.BackSide,depthWrite:false});lpSkyMat.fog=false;
+var lpSkyDome=new THREE.Mesh(new THREE.SphereGeometry(400,24,16),lpSkyMat);lpSkyDome.renderOrder=-1;scene.add(lpSkyDome);
 var camera=new THREE.PerspectiveCamera(50,W/H,0.1,800);
 addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);});
 function mat(c,e,i){return new THREE.MeshStandardMaterial({color:c,emissive:e!==undefined?e:0x000000,emissiveIntensity:i!==undefined?i:0.25,envMapIntensity:0.3,flatShading:true});}
@@ -428,10 +436,13 @@ var ACHIEVEMENTS=[
   {id:"allrounder",emoji:"🌈",titel:"Allrounder",cond:function(p){return p.geld>=15&&p.glueck>=15&&p.wissen>=15&&p.freunde>=15;}}
 ];
 function achDef(id){for(var i=0;i<ACHIEVEMENTS.length;i++)if(ACHIEVEMENTS[i].id===id)return ACHIEVEMENTS[i];return null;}
+function buzz(pat){try{if(OPT.motion&&navigator.vibrate)navigator.vibrate(pat||30);}catch(e){}} // 📳 Haptik (folgt dem Bewegung-Schalter)
 function unlockAch(id){if(LPACH[id])return false;var a=achDef(id);if(!a)return false;
   LPACH[id]=Date.now();lsSet("lp_ach",JSON.stringify(LPACH));
   try{announce("🏆 ERFOLG: "+a.emoji+" "+a.titel,"#ffe08a");showHint("Neuer Erfolg freigeschaltet: "+a.emoji+" "+a.titel+" 🎉",3600);
-    beep(880,.1,"triangle",.06);setTimeout(function(){beep(1174,.16,"triangle",.06);},130);}catch(e){}
+    beep(880,.1,"triangle",.06);setTimeout(function(){beep(1174,.16,"triangle",.06);},130);
+    if(typeof camT!=="undefined")for(var _c=0;_c<3;_c++)confetti(camT.x+(Math.random()-0.5)*3,camT.z+(Math.random()-0.5)*3,0xffe08a); // 🎉 Erfolg-Konfetti + Zoom-Punch
+    zoomPunch(0.12);}catch(e){}
   return true;}
 function achGalleryHTML(){var got=0;ACHIEVEMENTS.forEach(function(a){if(LPACH[a.id])got++;});
   var h="<div style='font-size:.74rem;color:#8a6a2a;font-weight:800;letter-spacing:.06em;margin:2px 0 5px'>🏆 ERFOLGE ("+got+"/"+ACHIEVEMENTS.length+")</div><div style='display:flex;flex-wrap:wrap;gap:6px;justify-content:center;max-width:340px;margin:0 auto'>";
@@ -489,7 +500,15 @@ var FORKS=[
  {at:93,rejoin:100,bulge:9,types:["g+","w","g+","g-","g+","g+"], // Kap.6: gleiche Länge, anderes Profil
   title:"Karriere oder Familie?",txt:"Eine große Entscheidung: der steile Aufstieg — oder der vertraute Weg mit den Liebsten?",
   aL:"🏡 Familienweg",aSub:"✨ Familien-Ereignisse · ❤️ & 👥 · gemütlich",
-  bL:"🏔️ Karriere-Aufstieg",bSub:"4× +💰 · +🧠 · aber 🧾 Rechnungen & kaum ❤️"}
+  bL:"🏔️ Karriere-Aufstieg",bSub:"4× +💰 · +🧠 · aber 🧾 Rechnungen & kaum ❤️"},
+ {at:6,rejoin:12,bulge:8,types:["h","f","e","h","f","e","h"], // Kap.1 Kindheit: Spielplatz-Umweg (7 bunte Felder)
+  title:"Spielplatz oder Schulweg?",txt:"Hinter dem Zaun lockt der große Spielplatz mit der Piratenschiff-Rutsche — der Schulweg wäre schneller …",
+  aL:"🎒 Schulweg",aSub:"direkt und schnell — brav zur Schule",
+  bL:"🛝 Spielplatz-Runde",bSub:"7 bunte Felder · viel ❤️ & 👥 · ein bisschen länger"},
+ {at:129,rejoin:136,bulge:8,types:["e","f","h","w","e","h","g-","h"], // Kap.8 Lebensabend: Weltreise (Traum kostet was)
+  title:"Weltreise oder Schaukelstuhl?",txt:"Ein letzter großer Traum: einmal die Welt sehen! Oder gemütlich im Garten den Enkeln zuschauen?",
+  aL:"🪑 Gemütlich bleiben",aSub:"der kurze, vertraute Weg",
+  bL:"🌍 Weltreise",bSub:"8 Felder · Erinnerungen fürs Leben · 🧾 kostet etwas"}
 ];
 FORKS.forEach(function(fk){ // Kurven-Punkte der Neben-Route; landen in pathPts -> Terrain wird dort flach, Deko meidet sie
   var pa=pathPts[fk.at],pr=pathPts[fk.rejoin];
@@ -512,9 +531,10 @@ function chapterOf(tile){var bf=fields&&fields[tile]; // Neben-Routen-Felder ken
 // ===================== Licht =====================
 var hemi=new THREE.HemisphereLight(0xd6e6ff,0x3a5238,0.60);scene.add(hemi);
 var sunL=new THREE.DirectionalLight(0xfff2d8,1.08);sunL.position.set(30,60,20);scene.add(sunL);
-sunL.castShadow=true;sunL.shadow.mapSize.set(1024,1024);sunL.shadow.bias=-0.0005;
+sunL.castShadow=true;sunL.shadow.mapSize.set(IS_COARSE?512:1024,IS_COARSE?512:1024);sunL.shadow.bias=-0.0005; // 📱 mobil: kleinere Shadow-Map
 sunL.shadow.normalBias=0.7; // 📱 killt Schatten-Akne (weisse Kratzer auf Feld-Deckeln) auf Mobil-GPUs mit grober Shadow-Map
 sunL.shadow.camera.near=1;sunL.shadow.camera.far=260;sunL.shadow.camera.left=-70;sunL.shadow.camera.right=70;sunL.shadow.camera.top=70;sunL.shadow.camera.bottom=-70;
+sunL.target.position.set(0,0,0);scene.add(sunL.target); // ☀️ Sonne + Schatten-Kamera folgen dem Spieler (board-weite Erdung)
 // ===================== Bunte Landschaft: Terrain mit Kapitel-Farbverlauf =====================
 function hsh(ix,iz){var n=ix*374761393+iz*668265263;n=(n^(n>>13))*1274126177;return ((n^(n>>16))>>>0)/4294967295;}
 function vnoise(x,z){var ix=Math.floor(x),iz=Math.floor(z),fx=x-ix,fz=z-iz;
@@ -548,11 +568,11 @@ function terrainH(x,z){
   m.receiveShadow=true;scene.add(m);})();
 // ===================== Felder auf dem Pfad =====================
 // Feld-Typen: e=Ereignis, g+=Geld, g-=Kosten, h=Glück, w=Wissen, f=Freunde, m=Meilenstein (Kapitelende)
-var FTYPE_COL={e:0xffffff,"g+":0xffc21f,"g-":0xff4d4d,h:0xff5db8,w:0x2f7dff,f:0x1fd97a,m:0xff8c1f,q:0x8a5aff,x:0x1fc4c8,r:0xff7a2a};
+var FTYPE_COL={e:0xffffff,"g+":0xffc21f,"g-":0xff4d4d,h:0xff5db8,w:0x2f7dff,f:0x1fd97a,m:0xff8c1f,q:0x8a5aff,x:0x1fc4c8,r:0xff7a2a,z:0xd94fd0};
 var fields=[];
 (function(){
   var seq=["e","g+","e","h","e","w","g-","e","f","e","g+","e","h","e","w","g-","f"]; // 17 + Meilenstein
-  var TSPECIAL={4:"q",22:"q",47:"q",76:"q",115:"q",9:"x",58:"x",79:"x",133:"x",13:"r",65:"r",83:"r",121:"r"}; // ❓ Quiz · 🔄 Tausch · 🏁 Wettrennen (Pass B2)
+  var TSPECIAL={4:"q",22:"q",47:"q",76:"q",115:"q",9:"x",58:"x",79:"x",133:"x",13:"r",65:"r",83:"r",121:"r",7:"z",26:"z",41:"z",62:"z",85:"z",96:"z",118:"z",130:"z"}; // ❓ Quiz · 🔄 Tausch · 🏁 Wettrennen · 🎰 Glücksrad (1×/Kapitel)
   for(var i=0;i<NFIELDS;i++){
     var inChap=i%FIELDS_PER;
     var ty=(inChap===FIELDS_PER-1)?"m":seq[inChap%seq.length];
@@ -926,7 +946,7 @@ function emojiSprite(em,size){var cv=document.createElement("canvas");cv.width=c
   var cx=cv.getContext("2d");cx.font="192px serif";cx.textAlign="center";cx.textBaseline="middle";cx.fillText(em,128,142);
   var tx=crispTex(cv);var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:tx,transparent:true}));
   sp.scale.setScalar(size||1.4);return sp;}
-var FIELD_EMO={"g+":"💰","g-":"🧾",h:"❤️",w:"🧠",f:"👥",m:"⭐",q:"❓",x:"🔄",r:"🏁",e:"✨"};
+var FIELD_EMO={"g+":"💰","g-":"🧾",h:"❤️",w:"🧠",f:"👥",m:"⭐",q:"❓",x:"🔄",r:"🏁",e:"✨",z:"🎰"};
 // Grosses, von oben gut lesbares Icon auf JEDEM Feld (Bedeutung sofort klar); Farbe bleibt unterstützend.
 var fieldSprites=[];
 (function(){for(var i=0;i<fields.length;i++){var f=fields[i];if(!FIELD_EMO[f.type])continue;
@@ -938,7 +958,7 @@ var confs=[];
 function confetti(x,z,accent,n){
   var cols=[0xffa8b8,0x9ac8ff,0xa8e0a0,0xffe09a,0xffc0e0,accent||0xffffff];
   for(var i=0;i<(n||26);i++){var m=new THREE.Mesh(new THREE.PlaneGeometry(0.3,0.18),
-    new THREE.MeshBasicMaterial({color:cols[(Math.random()*cols.length)|0],side:THREE.DoubleSide}));
+    new THREE.MeshBasicMaterial({color:cols[(Math.random()*cols.length)|0],side:THREE.DoubleSide,transparent:true,depthWrite:false}));
     m.position.set(x+(Math.random()-0.5)*2,3.5+Math.random()*2,z+(Math.random()-0.5)*2);
     scene.add(m);
     confs.push({m:m,vx:(Math.random()-0.5)*3,vy:1+Math.random()*2,vz:(Math.random()-0.5)*3,
@@ -973,12 +993,18 @@ for(var si=0;si<SEASON_N;si++){seasonPos[si*3]=0;seasonPos[si*3+1]=Math.random()
 seasonGeo.setAttribute("position",new THREE.BufferAttribute(seasonPos,3));
 var seasonMat=new THREE.PointsMaterial({color:0xfff2a8,size:0.5,map:_dotTex,transparent:true,opacity:0.85,depthWrite:false});
 var seasonPts=new THREE.Points(seasonGeo,seasonMat);scene.add(seasonPts);
-var _seasCol=new THREE.Color(0xfff2a8),_seasSunTgt=new THREE.Color();
+var _seasCol=new THREE.Color(0xfff2a8),_seasSunTgt=new THREE.Color(),_hemiSky=new THREE.Color(),_hemiGnd=new THREE.Color();
 // dezente jahreszeitliche Licht-Tönung (Lesbarkeit bleibt — sehr sanfter Lerp)
 var SEASON_SUN={spring:0xfff0dc,summer:0xfff2d0,autumn:0xffe0b0,winter:0xeaf0ff};
+// 🌤️ Tageslicht-Bogen pro Lebensabschnitt: Intensität + Himmel/Boden-Ton (Herbst/Lebensabend goldener, Winter kühl-gedämpft)
+var SEASON_SUN_I={spring:1.05,summer:1.15,autumn:1.04,winter:0.94};
+var SEASON_HEMI={spring:[0xd6e6ff,0x3a5238],summer:[0xdbecff,0x466a3a],autumn:[0xffe6c8,0x5a4630],winter:[0xe8f0ff,0x8290a0]};
 function updSeason(dt,ch){seasonPts.visible=OPT.motion;
   var s=seasonOf(ch);_seasonNow=s;
-  if(sunL){_seasSunTgt.setHex(SEASON_SUN[s]);sunL.color.lerp(_seasSunTgt,Math.min(1,dt*0.6));}
+  if(sunL){_seasSunTgt.setHex(SEASON_SUN[s]);sunL.color.lerp(_seasSunTgt,Math.min(1,dt*0.6));
+    sunL.intensity+=((SEASON_SUN_I[s]||1.08)-sunL.intensity)*Math.min(1,dt*0.6);}
+  if(hemi){var hs=SEASON_HEMI[s]||SEASON_HEMI.spring;_hemiSky.setHex(hs[0]);_hemiGnd.setHex(hs[1]);
+    hemi.color.lerp(_hemiSky,Math.min(1,dt*0.6));hemi.groundColor.lerp(_hemiGnd,Math.min(1,dt*0.6));}
   if(!OPT.motion)return;
   var cfg=SEASON_CFG[s];
   seasonMat.color.lerp(_seasCol.setHex(cfg[0]),Math.min(1,dt*1.6)); // weicher Farb-Übergang beim Kapitelwechsel
@@ -1567,16 +1593,17 @@ function meetTogether(ai,bi,x,z,kind){ // 🤝 zwei Figuren treffen sich -> wend
   confetti(x,z,kind==="kuss"?0xff6ab0:0x8affc0,kind==="tanz"?34:24);
   beep(kind==="kuss"?988:880,.12,"triangle",.06);setTimeout(function(){beep(1174,.2,"triangle",.06);},140);}
 var MEET_ACTS=[["🤝","High-Five","highfive"],["🫂","Kuscheln","umarmung"],["😘","Küsschen","kuss"],["💃","Tanzen","tanz"],["🎉","Jubeln","jubel"],["👋","Winken","wink"]];
-function meetPickShow(){var el=document.getElementById("meetPick"),row=document.getElementById("meetPickRow");
-  if(!el||!row||!myTurn())return; // nur wer dran ist, wählt die gemeinsame Aktion (Standard-Jubel läuft schon)
+function meetPickShow(asReply){var el=document.getElementById("meetPick"),row=document.getElementById("meetPickRow");
+  if(!el||!row)return;if(!asReply&&!myTurn())return; // wer dran ist wählt — der getroffene Partner darf EINMAL erwidern (asReply)
+  window._lpMeetReply=!!asReply;
   row.innerHTML="";MEET_ACTS.forEach(function(a){var bt=document.createElement("button");
-    bt.textContent=a[0];bt.title=a[1];
-    bt.style.cssText="border:2px solid rgba(190,90,140,.35);background:#fff;border-radius:12px;width:46px;height:46px;font-size:1.35rem;cursor:pointer;line-height:1";
+    bt.innerHTML=a[0]+"<small style='display:block;font-size:.5rem;font-weight:800;color:#a05a80;line-height:1.1'>"+a[1]+"</small>";bt.title=a[1]; // 📱 Wort unterm Emoji (Tooltip gibt es mobil nicht)
+    bt.style.cssText="border:2px solid rgba(190,90,140,.35);background:#fff;border-radius:12px;width:52px;height:54px;font-size:1.25rem;cursor:pointer;line-height:1.15;padding:2px 0";
     bt.onclick=function(){meetDoChosen(a[2]);};row.appendChild(bt);});
-  el.classList.remove("hide");clearTimeout(el._t);el._t=setTimeout(function(){el.classList.add("hide");},7000);}
+  el.classList.remove("hide");clearTimeout(el._t);el._t=setTimeout(function(){el.classList.add("hide");},10000);}
 function meetDoChosen(kind){var m=window._lpMeet,el=document.getElementById("meetPick");if(el)el.classList.add("hide");
   if(!m)return;m.pairs.forEach(function(pr){meetTogether(pr.a,pr.b,m.x,m.z,kind);});
-  if(NET.on&&myTurn())netSend({t:"meetact",k:kind});beep(660,.05,"triangle",.04);} // Partner sieht dieselbe Geste
+  if(NET.on&&(myTurn()||window._lpMeetReply)){netSend({t:"meetact",k:kind});window._lpMeetReply=false;}beep(660,.05,"triangle",.04);} // Partner sieht dieselbe Geste (auch die Erwiderung)
 function updEmotes(dt){ /* Limb-sicher: Gruppen-Bewegung fuer ALLE Figuren, Arm-Posen nur wenn Limbs da (Toon) */
   for(var i=0;i<pawns.length;i++){var pw=pawns[i],e=pw.userData.emote;if(!e)continue;
     e.t+=dt;var L=pw.userData.limbs;
@@ -1878,6 +1905,9 @@ function updTurnMarker(dt){
 }
 // ===================== Zustand =====================
 var SAVE_KEY="lp_save1";
+// 🚀 Erststart: Standard-Anime-GLB im Leerlauf in den Browser-Cache holen — Figur steht beim ersten Spiel sofort statt Platzhalter
+window.addEventListener("load",function(){setTimeout(function(){
+  try{if(!lsGet(SAVE_KEY)&&window.fetch)fetch("/models/anime_hero.glb").catch(function(){});}catch(e){}},2500);});
 var G=null,running=false;
 function freshState(np,adult,mode){
   var ps=[];np=Math.max(1,Math.min(4,np|0)); // Overflow nie zulassen: max 4 Spieler
@@ -1913,11 +1943,19 @@ function initProgMap(){var ps2=document.getElementById("progSegs");ps2.innerHTML
   activeChaps().forEach(function(cidx){var c=CHAPTERS[cidx];var d=document.createElement("div");
     d.style.cssText="flex:1;background:#"+("00000"+c.ground.toString(16)).slice(-6);ps2.appendChild(d);});}
 function updProgMap(){var pd2=document.getElementById("progDots");pd2.innerHTML="";
-  G.players.forEach(function(p){var d=document.createElement("div");
-    d.style.cssText="position:absolute;top:-11px;width:10px;height:10px;border-radius:50%;border:2px solid #fff;box-shadow:0 1px 4px #0008;background:#"+("00000"+p.col.toString(16)).slice(-6)+";left:calc("+Math.round(100*routeFrac(p.tile))+"% - 5px)";
+  var fin=document.createElement("div");fin.textContent="🏁"; /* 🏁 Ziel-Marker am Streckenende */
+  fin.style.cssText="position:absolute;top:-15px;right:-4px;font-size:12px;line-height:1;filter:drop-shadow(0 1px 2px #0008)";
+  pd2.appendChild(fin);
+  var used=[]; /* überlappende Spieler-Punkte vertikal auffächern, aktiven Spieler hervorheben */
+  G.players.forEach(function(p,i){var fr=routeFrac(p.tile),lane=0;
+    for(var u=0;u<used.length;u++){if(Math.abs(used[u]-fr)<0.035)lane++;}used.push(fr);
+    var act=(i===G.turn&&!p.done),sz=act?14:10;
+    var d=document.createElement("div");
+    d.style.cssText="position:absolute;top:"+(-11-lane*9)+"px;width:"+sz+"px;height:"+sz+"px;border-radius:50%;border:2px solid #fff;box-shadow:0 1px 4px #0008"+(act?",0 0 8px 2px rgba(255,190,80,.85)":"")+";background:#"+("00000"+p.col.toString(16)).slice(-6)+";left:calc("+Math.round(100*fr)+"% - "+(sz/2)+"px);z-index:"+(act?5:1)+";transition:top .3s,width .2s,height .2s";
     pd2.appendChild(d);});}
 function updPlayers(){updProgMap();
   var el=document.getElementById("players");el.innerHTML="";
+  var _lead=-1,_lb=-Infinity;if(G.players.length>1)G.players.forEach(function(p,i){var s=lifeScore(p);if(s>_lb){_lb=s;_lead=i;}}); // 👑 Führender nach Lebenspunkten
   G.players.forEach(function(p,i){
     var d=document.createElement("div");d.className="pcard"+(i===G.turn&&!p.done?" on":"");
     var ST=[["geld","💰","#c9921a","💰 Geld — verdienst du auf Geld-Feldern und mit deinem Beruf. Du brauchst es für Auto, Hochzeit und Haus."],
@@ -1928,7 +1966,7 @@ function updPlayers(){updProgMap();
     var chips=ST.map(function(st){var v=p[st[0]]|0,cls=(pv[st[0]]!==undefined&&v!==pv[st[0]])?(v>pv[st[0]]?" class='up'":" class='dn'"):"";
       pv[st[0]]=v;
       return "<span"+cls+" style='--sc:"+st[2]+"' data-exp=\""+st[3].replace(/"/g,"&quot;")+"\">"+st[1]+" <b>"+v+"</b></span>";}).join("");
-    d.innerHTML="<div class='nm' style='color:#"+("00000"+p.col.toString(16)).slice(-6)+"'>"+(p.dead?"⚰️ ":(p.done?"🏁 ":""))+p.name+(p.job?" <span style='font-weight:600;color:#9aa6d8'>"+p.job.i+" "+p.job.n+"</span>":"")+"</div>"+
+    d.innerHTML="<div class='nm'><span style='flex:0 0 auto;width:10px;height:10px;border-radius:50%;background:#"+("00000"+p.col.toString(16)).slice(-6)+";box-shadow:0 1px 2px #0006'></span>"+(i===_lead?"👑 ":"")+(p.dead?"⚰️ ":(p.done?"🏁 ":""))+p.name+(p.job?" <span style='font-weight:600;color:#6a72a0'>"+p.job.i+" "+p.job.n+"</span>":"")+"<span style='margin-left:auto;font-size:.72rem;color:#c9921a;font-weight:800'>⭐"+lifeScore(p)+"</span></div>"+
       "<div class='st'>"+chips+"</div>";
     d.querySelectorAll(".st span").forEach(function(sp2){sp2.onclick=function(ev){ev.stopPropagation();
       showHint(sp2.getAttribute("data-exp"),4200);beep(660,.05,"triangle",.03);};});
@@ -1958,7 +1996,8 @@ function updChapter(){
     var s=document.createElement("small");s.textContent="Runde "+G.round;tt.appendChild(s);})();
   var gt=document.getElementById("goalTag");
   if(gt){if(G.goal){var mine=G.players[G.turn],cur=mine[G.goal.k]||0,ok=cur>=G.goal.n;
-    gt.style.display="block";gt.innerHTML=(ok?"✅ ":"🎯 ")+"Rundenziel: "+G.goal.ic+" "+cur+"/"+G.goal.n;}else gt.style.display="none";}
+    var team=(G.players.length>1)?" · Team "+G.players.filter(goalMet).length+"/"+G.players.length+" ✅":"";
+    gt.style.display="block";gt.innerHTML=(ok?"✅ ":"🎯 ")+"Rundenziel: "+G.goal.ic+" "+cur+"/"+G.goal.n+team;}else gt.style.display="none";}
   // Himmel weich zur Kapitel-Farbe
   window._skyTarget=new THREE.Color(c.sky);
   // 🎵 + 📷 Kapitelwechsel: Lebensphasen-Stinger + Erinnerungs-Foto (nicht beim allerersten Setzen)
@@ -2060,13 +2099,14 @@ function showWheel(n,done){
     ctx.restore();}
   // Zielwinkel: Segment n unter dem Zeiger (oben, -90°), + 4 volle Umdrehungen
   var target=-Math.PI/2-(n-0.5)*Math.PI/3+Math.PI*8;
-  var t0=performance.now(),dur=2700,lastSeg=-1;
-  function anim(now){var k=Math.min(1,(now-t0)/dur);var e=1-Math.pow(1-k,3);
+  var t0=performance.now(),dur=2400,lastSeg=-1,skip=false;
+  _radDiv.onclick=function(){skip=true;}; // 👆 Antippen springt zum Ergebnis
+  function anim(now){var k=skip?1:Math.min(1,(now-t0)/dur);var e=1-Math.pow(1-k,3);
     var rot=target*e;draw(rot);
     var seg=Math.floor(((-Math.PI/2-rot)%(Math.PI/3)+Math.PI/3)%(Math.PI/3)*0+rot/(Math.PI/3));
     if(seg!==lastSeg){lastSeg=seg;if(k<0.96)beep(420+((seg%6)+6)%6*30,.03,"square",.025);}
     if(k<1){requestAnimationFrame(anim);}
-    else{beep(880,.18,"triangle",.07);
+    else{beep(880,.18,"triangle",.07);buzz(40);
       setTimeout(function(){_radDiv.style.opacity=0;_radDiv.style.transform="translate(-50%,-50%) scale(.7)";
         setTimeout(function(){_radDiv.style.display="none";},350);done();},650);}}
   requestAnimationFrame(anim);
@@ -2090,7 +2130,7 @@ function updBot(dt){
       var opts=window._cardOpts,best=0,idx=[];
       for(var i=0;i<opts.length;i++)idx.push(i);
       var k=idx[(Math.random()*idx.length)|0]; // simpel & fair: zufällig
-      cardPick(k);}
+      sendPick(k);}
     return;}
   if(G.phase==="idle"&&_botT>1.3){_botT=0;
     if(Math.random()<0.3){var RQ=["Jetzt zeig ich's euch! 🤖","Berechne optimalen Wurf …","Piep-piep — mein Glückstag!","Widerstand ist zwecklos 😄","Meine Schaltkreise kribbeln!"];
@@ -2110,11 +2150,11 @@ function updAfk(dt){
   var sig=G.turn+"|"+G.phase+"|"+(window._cardSeq||0);
   if(sig!==_afkSig){_afkSig=sig;_afkT=0;_afkWarned=false;}
   _afkT+=dt;
-  if(_afkT>40&&!_afkWarned){_afkWarned=true;announce("⏰ "+p.name+" schläft — in 20s übernimmt Robo den Zug …","#ffb46e");
-    netSend({t:"chat",m:"⏰ "+p.name+": noch 20s, dann übernimmt Robo!"});}
-  if(_afkT>60){_afkT=0;_afkWarned=false;
+  if(_afkT>120&&!_afkWarned){_afkWarned=true;announce("⏰ "+p.name+" ist dran — in 30s übernimmt Robo den Zug …","#ffb46e"); /* ⏱️ Online-Koop: viel mehr Bedenkzeit (2min + 30s) — Freunde werden nicht rausgeworfen */
+    netSend({t:"chat",n:"System",x:"⏰ "+p.name+": noch 30s, dann übernimmt Robo!"});}
+  if(_afkT>150){_afkT=0;_afkWarned=false;
     chatAdd&&chatAdd("System","🤖 Robo übernimmt den Zug von "+p.name);
-    if(window._cardOpts){cardPick((Math.random()*window._cardOpts.length)|0);}
+    if(window._cardOpts){sendPick((Math.random()*window._cardOpts.length)|0);}
     else{netSend({t:"roll"});NET.q.push({t:"roll"});}}
 }
 function updMove(dt){
@@ -2163,7 +2203,7 @@ function updDiscBounce(dt){for(var i=discBounce.length-1;i>=0;i--){var db=discBo
 var FIELD_EXPLAIN={"g+":"💰 Geldfeld — hier gewinnst du Geld.","g-":"🧾 Rechnung — hier kostet das Leben etwas Geld.",
   h:"❤️ Glücksfeld — hier wächst dein Glück.",w:"🧠 Wissensfeld — hier lernst du dazu.",
   f:"👥 Freunde-Feld — hier triffst du nette Menschen.",q:"❓ Quiz — beantworte eine Frage und gewinne.",
-  x:"🔄 Tausch-Feld — hier wird getauscht!",r:"🏁 Wettrennen — sei schnell, dann lohnt es sich!",
+  x:"🔄 Tausch-Feld — hier wird getauscht!",r:"🏁 Wettrennen — sei schnell, dann lohnt es sich!",z:"🎰 Glücksrad — dreh am Rad des Lebens!",
   m:"⭐ Meilenstein — ein neues Lebenskapitel beginnt!",e:"✨ Ereignisfeld — das Leben hält eine Überraschung bereit."};
 var _explained=(function(){try{return JSON.parse(lsGet("lp_explained")||"{}")||{};}catch(e){return {};}})();
 function explainField(ty){if(!FIELD_EXPLAIN[ty]||_explained[ty])return;_explained[ty]=1;
@@ -2207,12 +2247,12 @@ function nextTurn(){
   var tries=0;
   do{G.turn=(G.turn+1)%G.players.length;if(G.turn===0)G.round++;tries++;}while(G.players[G.turn].done&&tries<8);
   G.phase="idle";rollBtn.disabled=NET.on&&G.turn!==NET.my;
-  if(NET.on)rollBtn.innerHTML=(G.turn===NET.my)?"🎡 Drehen!":"⏳ "+G.players[G.turn].name+" ist dran …";
+  rollBtn.innerHTML=(NET.on&&G.turn!==NET.my)?"⏳ "+G.players[G.turn].name+" ist dran …":"🎡 Drehen!"; /* P5: unconditional — Solo-Start nach Koop-Runde blieb sonst auf „⏳ …" hängen */
   updPlayers();updChapter();saveGame();
   if(G.players.length>1&&!G.players[G.turn].done){
     if(NET.on&&G.turn===NET.my)announce("🎲 DU BIST DRAN — Drehen!","#8fffb0",5200); /* Koop: eigener Zug unuebersehbar */
     else announce("🎲 "+G.players[G.turn].name+" ist dran!","#"+("00000"+G.players[G.turn].col.toString(16)).slice(-6));}
-  if(!G.players[G.turn].done){beep(523,.14,"triangle",.035);setTimeout(function(){beep(659,.2,"triangle",.03);},140);}
+  if(!G.players[G.turn].done){if(NET.on&&G.turn===NET.my){beep(659,.12,"triangle",.05);setTimeout(function(){beep(880,.12,"triangle",.05);},120);setTimeout(function(){beep(1109,.22,"triangle",.055);},250);} /* 🔔 unverwechselbarer „du bist dran"-Klang online */ else{beep(523,.14,"triangle",.035);setTimeout(function(){beep(659,.2,"triangle",.03);},140);}}
   if(!G.players[G.turn].done){emote(G.turn,"wink");markerPop=1;} // Marker springt zur neuen Figur
   var _mpk=document.getElementById("meetPick");if(_mpk)_mpk.classList.add("hide"); // Begegnungs-Menü schließen beim Zugwechsel
   if(NET.on){renderNetHud();netCheckPause();} // ist der neue Spieler abwesend? -> pausieren + Anzeige aktualisieren
@@ -2220,7 +2260,9 @@ function nextTurn(){
 function finishPlayer(p){if(!p.hist)p.hist=[];p.hist.push({g:p.geld,h:p.glueck,w:p.wissen,f:p.freunde});
   p.done=true;announce("🏁 "+p.name+" hat den Lebensabend erreicht!","#f0c8ff");
   p.bio.push("erreichte den Lebensabend nach "+G.round+" Runden voller Geschichten");snap(G.players.indexOf(p),"🏁","Der Lebensabend");
-  beep(880,.4,"triangle",.08);
+  beep(880,.4,"triangle",.08);buzz([60,50,60,50,120]);
+  (function(){var f=fields[p.tile];if(f)for(var c=0;c<3;c++)(function(cc){setTimeout(function(){confetti(f.x+(Math.random()-0.5)*4,f.z+(Math.random()-0.5)*4,0xf0c8ff);},cc*200);})(c); // 🎆 Ziel-Erreicht-Höhepunkt
+    jingle();setTimeout(jingle,420);zoomPunch(0.18);colorFlash("245,200,255",false);})();
   G.phase="idle";endTurnSoon();
 }
 // ===================== Ende: Punkte + Biografie =====================
@@ -2232,7 +2274,7 @@ function playerDeath(p,how){
   // Trauer-Moment: Welt verdunkelt sich, Glocke schlägt dreimal
   var mo=document.getElementById("mourn");mo.style.opacity=1;
   setTimeout(function(){mo.style.opacity=0;},3400);
-  tollBell(3);camShake=1.0;
+  tollBell(3);camShake=1.0;window._musDuckUntil=Date.now()+3600;buzz([120,80,120]); // 🔇 Musik während des Trauer-Moments dämpfen
   announce("⚰️ "+p.name.toUpperCase()+" IST GESTORBEN","#8a8a9a");
   showHint(how||"Das Leben ist kurz — manchmal kürzer.",3800);
   if(pw){pw.rotation.z=Math.PI/2;pw.position.y=0.3;
@@ -2260,7 +2302,7 @@ function playerDeath(p,how){
   var allDone=G.players.every(function(x){return x.done;});
   setTimeout(function(){if(allDone)showEnd();else nextTurn();},2600);
 }
-function lifeScore(p){return p.geld+p.glueck*2+p.wissen*2+p.freunde*2;}
+function lifeScore(p){return p.geld+p.glueck*2+p.wissen*2+p.freunde*2+(goalMet(p)?12:0);}
 function showEnd(){
   running=false;lsDel(SAVE_KEY);
   // 🔊 Batch 7/7: Loop ausblenden, damit die Siegesfanfare frei steht
@@ -2270,7 +2312,8 @@ function showEnd(){
   var rmb=document.getElementById("rematchBtn");
   if(rmb)rmb.style.display=(NET.on&&NET.host)?"inline-block":"none"; // nur der Gastgeber startet die neue Runde
   var nb=document.getElementById("newBtn");if(nb)nb.textContent=NET.on?"Zurück ins Menü ▶":"Neues Leben ▶";
-  jingle();setTimeout(jingle,500);
+  (function(){var notes=[523,659,784,1047,1319];notes.forEach(function(f,i){setTimeout(function(){beep(f,.18,"triangle",.06);},i*130);});
+    setTimeout(function(){beep(1047,.42,"triangle",.055);beep(1568,.42,"sine",.03);},720);})(); // 🎺 aufsteigende Finale-Fanfare
   var fz=fields[NFIELDS-1];
   for(var cr=0;cr<5;cr++)setTimeout(function(){confetti(fz.x+(Math.random()-0.5)*8,fz.z+(Math.random()-0.5)*8,0xffd166);},cr*280);
   var sc=document.getElementById("scores");sc.innerHTML="";
@@ -2292,6 +2335,9 @@ function showEnd(){
   saveStats();
   G.players.forEach(function(p){ACHIEVEMENTS.forEach(function(a){if(a.cond&&a.cond(p))unlockAch(a.id);});});
   if(newRec)setTimeout(function(){announce("🎉 NEUER REKORD! "+topR.s+" Punkte","#ffd166");},900);
+  (function(){var reached=G.players.filter(goalMet);if(!reached.length)return; // 🎯 Rundenziel-Erfolg feiern (+12 Bonus je Spieler)
+    setTimeout(function(){announce(reached.length>1?"🎯 Ziel erreicht — "+reached.length+" Spieler!":"🎯 Rundenziel erreicht!","#7ad9a0");
+      for(var c=0;c<4;c++)setTimeout(function(){confetti(fz.x+(Math.random()-0.5)*10,fz.z+(Math.random()-0.5)*10,0x7ad9a0);},c*220);},1700);})();
   ranked.forEach(function(r,rank){var p=r.p;
     var d=document.createElement("div");d.className="score"+(rank===0?" win":"");
     var badge=rank<3?MEDAL[rank]:(rank+1)+".";
@@ -2299,11 +2345,15 @@ function showEnd(){
     d.innerHTML="<div style='font-size:.72rem;color:#9aa0aa;font-weight:800;margin-bottom:2px'>"+badge+" Platz</div>"+
       "<b style='color:#"+("00000"+p.col.toString(16)).slice(-6)+"'>"+(p.dead?"⚰️ ":(rank===0?"👑 ":""))+p.name+"</b>"+r.s+" Lebenspunkte<br><small>"+(p.dead?"ruhe in Frieden · ":"")+"💰"+p.geld+" ❤️"+p.glueck+" 🧠"+p.wissen+" 👥"+p.freunde+"</small>"+goalTxt;
     sc.appendChild(d);});
+  var _teamSum=ranked.reduce(function(a,r){return a+r.s;},0); // 🤝 Team-Gesamtpunktzahl (gemeinsames Erlebnis, nicht nur Konkurrenz)
+  if(G.players.length>1){var td=document.createElement("div");td.className="score";td.style.borderColor="#7db8d8";
+    td.innerHTML="<div style='font-size:.72rem;color:#2a7db0;font-weight:800;margin-bottom:2px'>🤝 Team gemeinsam</div><b style='color:#2a7db0'>"+_teamSum+"</b>Lebenspunkte zusammen<br><small>gemeinsam durchs Leben gewürfelt 💫</small>";
+    sc.appendChild(td);}
   // 📲 Ergebnis teilen (System-Share/Zwischenablage) — bringt neue Mitspieler
   (function(){var sb=document.getElementById("shareEndBtn");if(!sb)return;
     var MED=["🥇","🥈","🥉","4."];
     var lines=ranked.map(function(r,i2){return MED[Math.min(3,i2)]+" "+r.p.name+" — "+r.s+" Lebenspunkte";});
-    var txt="🎲 Wir haben LEBENSPFAD gespielt!\n"+lines.join("\n")+"\nSpiel mit: https://abannews.com/lebenspfad.html";
+    var txt="🎲 Wir haben LEBENSPFAD gespielt!\n"+lines.join("\n")+(G.players.length>1?"\n🤝 Team zusammen: "+_teamSum+" Punkte":"")+"\nSpiel mit: https://abannews.com/lebenspfad.html";
     sb.onclick=function(){
       if(navigator.share){navigator.share({title:"Lebenspfad — Endstand",text:txt}).catch(function(){});}
       else{try{navigator.clipboard.writeText(txt);}catch(e){}
@@ -2377,6 +2427,7 @@ function updMusic(dt){
   // Lebensabend (Kapitel 7-8): Musik dezenter
   var ch=G?chapterOf(G.players[G.turn].tile):0;
   var tgt=(muted||!OPT.music)?0:(ch>=6?0.24:0.34);
+  if(window._musDuckUntil&&Date.now()<window._musDuckUntil)tgt*=0.2; // Trauer-Moment: kurz absenken
   MUS.volume=Math.max(0,Math.min(1,MUS.volume+(tgt-MUS.volume)*Math.min(1,dt*2)));
   if(tgt===0&&MUS.volume<0.01){if(!MUS.paused)MUS.pause();}
   else if(tgt>0&&MUS.paused)MUS.play().catch(function(){});
@@ -2401,7 +2452,11 @@ var clouds=[];
   var sm=new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false,fog:false});
   sm.opacity=0.8;var sun=new THREE.Sprite(sm);sun.scale.set(30,30,1);sun.position.set(160,105,-230);scene.add(sun);
 })();
-function updClouds(dt){for(var i=0;i<clouds.length;i++){var g=clouds[i];g.position.x+=g.userData.v*dt;if(g.position.x>240)g.position.x=-200;}}
+var _cloudTint=new THREE.Color(),_cloudWhite=new THREE.Color(0xffffff);
+function updClouds(dt){for(var i=0;i<clouds.length;i++){var g=clouds[i];g.position.x+=g.userData.v*dt;if(g.position.x>240)g.position.x=-200;}
+  if(clouds.length&&clouds[0].children[0]){ // ☁️ Wolken nehmen die Kapitel-Himmelsstimmung an (geteiltes Material, Scratch-Color — 0 Allokation/Frame)
+    _cloudTint.copy(scene.background).lerp(_cloudWhite,0.75);
+    clouds[0].children[0].material.color.lerp(_cloudTint,Math.min(1,dt*0.8));}}
 // Blumenwiese: Punkte-Sprites in 3 Farben, abseits des Pfads
 (function(){
   function flowerTex(col){var cv=document.createElement("canvas");cv.width=cv.height=48;var c=cv.getContext("2d");
@@ -2814,12 +2869,12 @@ function hildeAnswer(q){
 var camShake=0;
 // 🖐️ Karte frei schwenken (Drag/Swipe) + Pinch/Wheel-Zoom; beim Loslassen sanft zurück zum aktiven Spieler
 var panOff={x:0,z:0},panning=false,zoomK=1;
-(function(){var el=renderer.domElement,pts={},sx=0,sy=0,downX=0,downY=0,moved=false,startDist=0,startZoom=1;
+(function(){var el=renderer.domElement,pts={},sx=0,sy=0,downX=0,downY=0,moved=false,startDist=0,startZoom=1,hadTwo=false;
   el.style.touchAction="none";
   function list(){var a=[];for(var k in pts)a.push(pts[k]);return a;}
   el.addEventListener("pointerdown",function(e){pts[e.pointerId]={x:e.clientX,y:e.clientY};var a=list();
     if(a.length===1){downX=sx=e.clientX;downY=sy=e.clientY;moved=false;}
-    else if(a.length===2){startDist=Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y);startZoom=zoomK;}
+    else if(a.length===2){startDist=Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y);startZoom=zoomK;hadTwo=true;}
     try{el.setPointerCapture(e.pointerId);}catch(_){}});
   el.addEventListener("pointermove",function(e){if(!pts[e.pointerId])return;pts[e.pointerId]={x:e.clientX,y:e.clientY};
     var a=list();
@@ -2829,7 +2884,11 @@ var panOff={x:0,z:0},panning=false,zoomK=1;
     if(moved){panning=true;var f=(camera.position.y*1.7)/H; // Pixel -> Weltmeter (an Kamerahöhe gekoppelt)
       panOff.x=Math.max(-150,Math.min(150,panOff.x-dx*f));
       panOff.z=Math.max(-85,Math.min(85,panOff.z-dy*f));}});
-  function up(e){if(pts[e.pointerId])delete pts[e.pointerId];var a=list();if(a.length<2)startDist=0;if(a.length===0)panning=false;}
+  function up(e){if(pts[e.pointerId])delete pts[e.pointerId];var a=list();if(a.length<2)startDist=0;
+    if(a.length===0){panning=false;
+      if(!moved&&!hadTwo&&running&&G){var pp=G.players[G.turn]; // 👆 Tipp aufs Brett (kein Schwenk/Pinch) -> zeigt, wer dran ist
+        if(pp&&!pp.done)showHint((NET.on&&G.turn===NET.my)?"Du bist dran — 🎲 unten drehen!":"🎲 "+pp.name+" ist dran",1600);}
+      hadTwo=false;}}
   el.addEventListener("pointerup",up);el.addEventListener("pointercancel",up);el.addEventListener("lostpointercapture",up);
   el.addEventListener("wheel",function(e){e.preventDefault();zoomK=Math.max(0.6,Math.min(1.9,zoomK*(e.deltaY>0?1.08:0.93)));},{passive:false});
 })();
@@ -2837,6 +2896,7 @@ function updateCamera(dt){
   var p=G?G.players[G.turn]:null;
   var tx=p?pawns[G.turn].position.x:fields[0].x,tz=p?pawns[G.turn].position.z:fields[0].z;
   camT.x+=(tx-camT.x)*Math.min(1,dt*2.2);camT.z+=(tz-camT.z)*Math.min(1,dt*2.2);
+  if(sunL&&sunL.target){sunL.position.set(camT.x+30,60,camT.z+20);sunL.target.position.set(camT.x,0,camT.z);sunL.target.updateMatrixWorld();} // ☀️ Sonne folgt dem Spieler
   if(!panning){var rk=Math.min(1,dt*(OPT.motion?2.4:6));panOff.x+=(0-panOff.x)*rk;panOff.z+=(0-panOff.z)*rk;} // zurück zum Spieler
   var fx=camT.x+panOff.x,fz=camT.z+panOff.z;
   var swayX=(OPT.motion&&!panning)?Math.sin(performance.now()*0.00035)*1.2:0;
@@ -2932,7 +2992,10 @@ function loop(now){
   }
   if(!running)updConfs(dt); // Finale-Konfetti auch nach Spielende animieren
   if(window._skyTarget){scene.background.lerp(window._skyTarget,Math.min(1,dt*1.2));scene.fog.color.copy(scene.background);}
-  if(window._lpBillboards)for(var bb=0;bb<window._lpBillboards.length;bb++)window._lpBillboards[bb].lookAt(camera.position);
+  if(lpSkyMat){lpSkyMat.uniforms.botCol.value.copy(scene.background);lpSkyMat.uniforms.topCol.value.copy(scene.background).multiplyScalar(0.82).offsetHSL(0,0.06,0.03);lpSkyDome.position.copy(camera.position);} // 🌅 Kuppel folgt Kamera, Zenit etwas tiefer/satter
+  if(window._lpBillboards){var _sx=camT.x-110,_sz=camT.z-120; // ☀️ Spielzeug-Sonne wandert mit dem Kamera-Fokus (bleibt im Bild)
+    window._lpBillboards[0].position.set(_sx,64,_sz);if(window._lpBillboards[1])window._lpBillboards[1].position.set(_sx,64,_sz-1);
+    for(var bb=0;bb<window._lpBillboards.length;bb++)window._lpBillboards[bb].lookAt(camera.position);}
   updateCamera(dt);
   renderer.render(scene,camera);
 }
@@ -3040,6 +3103,11 @@ function renderCharUI(){
     ml=document.createElement("div");ml.className="lbl";
     var mer=document.createElement("button");mer.textContent="▶";mer.title="3D-Figur";mer.onclick=function(){cfg.meshy=nextMeshy(cfg.meshy,1);upd();};
     rMe.appendChild(mel);rMe.appendChild(ml);rMe.appendChild(mer);card.appendChild(rMe);
+    var advT=document.createElement("button");advT.textContent="✨ Feinschliff (Haut, Kleidung …)"; // 👕 Toon-Details einklappen — Figur bleibt sichtbar
+    advT.style.cssText="border:1px dashed #cbb8e8;background:#fffdf6;color:#7a5aa0;border-radius:10px;padding:4px 10px;font-size:.72rem;font-weight:800;cursor:pointer;margin:2px auto 0";
+    var adv=document.createElement("div");adv.style.display="none";adv.style.width="100%";
+    advT.onclick=function(){adv.style.display=(adv.style.display==="none")?"":"none";beep(560,.04,"triangle",.03);};
+    card.appendChild(advT);card.appendChild(adv);
     var r3=document.createElement("div");r3.className="crow wrap"; // Hautton-Punkte + Hosenfarbe (wrap: 10 Knoepfe brauchen 2 Zeilen)
     for(var d=0;d<SKINTONES.length;d++)(function(d){var b=document.createElement("button");b.className="skin";
       b.style.background="#"+("00000"+SKINTONES[d].toString(16)).slice(-6);b.title="Hautton "+(d+1);
@@ -3054,8 +3122,8 @@ function renderCharUI(){
     ofB.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.outfit=((cfg.outfit|0)+1)%3;upd();beep(620,.04,"triangle",.03);};r3.appendChild(ofB);
     tpB=document.createElement("button");tpB.className="skin";tpB.title="🧥 Kleidungs-Stil (Weste/Jacke/Streifen/Latzhose/Schal/Hoodie/Punkte)";tpB.style.width="auto";tpB.style.padding="0 6px";
     tpB.onclick=function(){if(cfg.meshy)cfg.meshy=null;cfg.top=((cfg.top|0)+1)%TOPS.length;upd();beep(640,.04,"triangle",.03);};r3.appendChild(tpB);
-    card.appendChild(r3);
-    var cp=mkClothPicker(cfg,upd,hex);card.appendChild(cp); // 🎨 Kleiderfarben-Raster (auf/zu per 👕)
+    adv.appendChild(r3);
+    var cp=mkClothPicker(cfg,upd,hex);adv.appendChild(cp); // 🎨 Kleiderfarben-Raster (auf/zu per 👕)
     cr.appendChild(card);upd();
   })(i);}
 
@@ -3069,11 +3137,12 @@ function netConnInfo(){var el=document.getElementById("netConn");if(!el)return;
 // ===================== 🌐 Online-Präsenz + Auto-Pause (User-Wunsch: „falls man nicht drin ist … Anzeige/Pause/Speichern“) =====================
 function netPresent(i){ // ist Spieler i gerade verbunden?
   if(!NET.on)return true;
+  if(G&&G.players[i]&&G.players[i].bot)return true; /* P5: Robo hat keine Verbindung, ist aber immer „da" — sonst Pause-Overlay bei jedem Bot-Zug */
   if(i===0)return NET.host?true:(NET.conns.length>0); // Host ist immer da; für Gäste = Status des Host-Links
   return !!(NET.present&&NET.present[i]);}
 function netBroadcastPres(){ // nur Host: aktuelle Präsenz-Liste an alle Gäste
   if(!NET.host)return;var a=[];var n=Math.max(NET.names.length,G?G.players.length:0);
-  for(var i=0;i<n;i++)a[i]=(i===0); // Host=0 immer präsent, Rest erst mal false
+  for(var i=0;i<n;i++)a[i]=(i===0)||!!(NET.bots&&NET.bots[i])||!!(G&&G.players[i]&&G.players[i].bot); // Host=0 + Robos immer präsent (P5)
   NET.conns.forEach(function(c){if(c._idx!=null)a[c._idx]=true;});
   NET.present=a;netSend({t:"pres",a:a});renderNetHud();netCheckPause();}
 function renderNetHud(){var el=document.getElementById("netHud");if(!el)return;
@@ -3138,7 +3207,8 @@ function netApply(m){
     if(m.cfgs)NET.cfgs=m.cfgs;return;}
   if(m.t==="sync"){netApplySync(m);return;} // 🔄 vollständiger State-Snapshot (Reconnect/Resync)
   if(m.t==="chk"){netCheckChk(m);return;} // Desync-Erkennung per Host-Checksum
-  if(m.t==="meetact"){var mm=window._lpMeet;if(mm)mm.pairs.forEach(function(pr){meetTogether(pr.a,pr.b,mm.x,mm.z,m.k);});return;} // gewählte Begegnungs-Geste beim Partner spielen
+  if(m.t==="meetact"){var mm=window._lpMeet;if(mm){mm.pairs.forEach(function(pr){meetTogether(pr.a,pr.b,mm.x,mm.z,m.k);});
+    if(!mm._replied&&mm.pairs.some(function(pr){return pr.b===NET.my;})){mm._replied=1;meetPickShow(true);showHint("💫 Erwidere die Geste!",2600);}}return;} // Begegnung ist GEGENSEITIG: Getroffener darf einmal antworten
   if(m.t==="pres"){NET.present=m.a||[];renderNetHud();netCheckPause();return;} // Host-Broadcast: wer ist verbunden
   if(m.t==="drop"){
     var di=m.i|0;
@@ -3146,7 +3216,7 @@ function netApply(m){
     if(G&&G.players[di]&&!G.players[di].done)announce("📴 "+G.players[di].name+" hat das Spiel verlassen","#ff8a8a");
     if(G&&running){NET.q.push(m);} // im Spiel: sequenzieren (alle Clients wechseln am selben Punkt)
     else{ // Lobby / kein laufendes G: Liste defensiv pflegen (nie crashen)
-      if(NET.names&&di>=0&&di<NET.names.length){NET.names.splice(di,1);if(NET.cfgs)NET.cfgs.splice(di,1);if(NET.ready)NET.ready.splice(di,1);}
+      if(NET.names&&di>=0&&di<NET.names.length){NET.names.splice(di,1);if(NET.cfgs)NET.cfgs.splice(di,1);if(NET.ready)NET.ready.splice(di,1);if(NET.bots)NET.bots.splice(di,1);} /* P5: Bot-Flags mitverschieben */
       netPlayersUpd();}
     renderNetHud();netCheckPause();return;}
   NET.q.push(m);}
@@ -3223,13 +3293,14 @@ function netApplySync(m){ // Gast: G aus Snapshot rekonstruieren + Lockstep dete
 function netStartChkTimer(){ // Host: periodischer State-Checksum an alle Gäste
   if(NET._chk)clearInterval(NET._chk);
   NET._chk=setInterval(function(){if(!NET.host||!NET.on||!G||!running)return;
-    netSend({t:"chk",turn:G.turn,round:G.round,tiles:G.players.map(function(p){return p.tile;}),seed:NET.seed>>>0});
+    netSend({t:"chk",turn:G.turn,round:G.round,tiles:G.players.map(function(p){return p.tile;}),done:G.players.map(function(p){return p.done?1:0;}),seed:NET.seed>>>0});
   },5000);}
 function netCheckChk(m){ // Gast: eigenen Stand mit Host-Checksum vergleichen
   if(NET.host||!G||!running)return;
   if(NET.q.length||G.phase!=="idle")return; // nur im Ruhezustand vergleichen -> kein Fehlalarm während einer Aktion
   var mine=G.players.map(function(p){return p.tile;}),ht=m.tiles||[];
-  var ok=(m.turn===G.turn)&&((m.seed>>>0)===(NET.seed>>>0))&&(mine.length===ht.length)&&mine.every(function(t,i){return t===ht[i];});
+  var md=G.players.map(function(p){return p.done?1:0;}),hd=m.done||[];
+  var ok=(m.turn===G.turn)&&(m.round==null||m.round===G.round)&&((m.seed>>>0)===(NET.seed>>>0))&&(mine.length===ht.length)&&mine.every(function(t,i){return t===ht[i];})&&(!m.done||(md.length===hd.length&&md.every(function(d,i){return d===hd[i];})));
   if(ok){NET._desync=0;return;}
   NET._desync=(NET._desync||0)+1;
   if(NET._desync>=2){ // zweimal in Folge daneben -> Overlay + Resync anfordern
@@ -3253,7 +3324,7 @@ function chatBubble(idx,txt){try{
   c.fillStyle="#3a3040";c.textAlign="center";c.fillText(t,128,40);
   var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false}));
   sp.scale.set(3.2,1.05,1);sp.position.y=3.1;pawns[idx].add(sp);
-  setTimeout(function(){if(sp.parent)sp.parent.remove(sp);},7000);}catch(e){}} /* laenger lesbar (User: "leute koennen nicht so schnell lesen") */
+  setTimeout(function(){if(sp.parent)sp.parent.remove(sp);try{if(sp.material.map)sp.material.map.dispose();sp.material.dispose();}catch(e){}},7000);}catch(e){}} /* laenger lesbar; Textur+Material freigeben (kein GPU-Leak) */
 function chatAdd(n,x,idx){var box=document.getElementById("chatMsgs");if(!box)return;
   if(NET.on&&G&&running){var bi=(idx!=null&&idx>=0)?idx:NET.names.indexOf(n);if(bi>=0&&pawns[bi])chatBubble(bi,x);}
   var d=document.createElement("div");d.innerHTML="<b>"+String(n).slice(0,12).replace(/[<>&]/g,"")+":</b> "+String(x).slice(0,140).replace(/[<>&]/g,"");
@@ -3264,7 +3335,7 @@ function chatAdd(n,x,idx){var box=document.getElementById("chatMsgs");if(!box)re
 // ===================== 😊 Smiley-Fast-Chat (Pass B2, Muster neon-duo): Sprechblasen über der eigenen Figur =====================
 var EMOTES=[["👍","👍"],["❤️","❤️"],["😂","😂"],["😮","😮"],["💪","Gut gemacht!"],["🆘","Hilfe!"]];
 var _emoLast=0;
-function showEmoteB(idx,k){var e=EMOTES[k];if(!e)return;chatBubble(idx,e[1]);}
+function showEmoteB(idx,k){var e=EMOTES[k];if(!e)return;chatBubble(idx,e[1]);if(typeof emote==="function"&&typeof pawns!=="undefined"&&pawns[idx])emote(idx,["jubel","jubel","jubel","wink","jubel","wink"][k]||"wink");} /* 🕺 Emote bewegt die Figur, nicht nur Textblase */
 function sendEmote(k){
   if(!running||!EMOTES[k])return;
   var now=performance.now();if(now-_emoLast<1000)return;_emoLast=now; // Spam-Schutz: 1 Emote/s
@@ -3363,6 +3434,7 @@ function renderNetChar(){ // 🎨 Charakter-Auswahl fuer Online-Spieler (mit 3D-
 function netLobbyShow(){document.getElementById("netSetup").style.display="none";
   document.getElementById("netLobby").style.display="block";
   document.getElementById("netCodeShow").textContent=(NET.code==="OFEN")?"🌍 offen":NET.code;
+  if(NET._autoShare&&NET.host){NET._autoShare=false;setTimeout(netShareInvite,150);} /* 🔗 Ein-Tipp-Einladen: Raum steht → Link sofort teilen */
   (function(){var bb=document.getElementById("netBotBtn");
     if(!bb){bb=document.createElement("button");bb.id="netBotBtn";
       bb.style.cssText="margin-top:8px;border:1px solid #b89ad8;background:#f4ecff;border-radius:10px;padding:6px 12px;font-size:.8rem;font-weight:800;color:#5a3a8a;cursor:pointer";
@@ -3462,7 +3534,9 @@ function netHostBoot(){ // ID-Kollision (unavailable-id) -> neuen Code würfeln 
   NET.peer.on("call",voiceAnswer); /* 🎙️ eingehende Voice-Anrufe annehmen */
   NET.peer.on("disconnected",function(){try{NET.peer.reconnect();}catch(e){}}); // Signaling-Abriss -> reconnect
   NET.peer.on("error",function(e){var t=e&&e.type;
-    if(t==="unavailable-id"&&NET.pubWanted){NET.pubWanted=false;netStatus("🌍 Es gibt schon einen offenen Raum — einfach »🌍 Offen beitreten« drücken!","#2a7d46");netHostReset();return;}
+    if(t==="unavailable-id"&&NET.pubWanted){netStatus("🌍 Offener Raum existiert schon — ich trete automatisch bei …","#2a7d46"); // Quick-Play-Rennen: statt Sackgasse automatisch dem Sieger-Raum beitreten
+      netHostReset();NET.quick=true; // quick=true: falls der Sieger-Raum doch weg ist, öffne ich selbst einen
+      setTimeout(function(){document.getElementById("netCode").value="OFEN";document.getElementById("netJoinBtn").click();},350);return;}
     if(t==="unavailable-id"&&NET._tries<3){NET._tries++;try{NET.peer.destroy();}catch(_){}netHostBoot();return;}
     if(NET.peer&&NET.peer._opened)return; // Verbindung steht schon — Fehler nicht fatal
     clearTimeout(NET._tmo);
@@ -3487,9 +3561,10 @@ function netHostBoot(){ // ID-Kollision (unavailable-id) -> neuen Code würfeln 
         return;}
       if(m.t==="rejoin"){ // Wiedereintritt im laufenden Spiel -> vollständigen Snapshot schicken
         var ri=m.idx|0;
-        if(!NET.started||ri<0||ri>=NET.names.length||(typeof netPresent==="function"&&netPresent(ri)&&ri!==0)){ // ungültig/besetzt -> ablehnen
+        if(!NET.started||ri<1||ri>=NET.names.length){ // wirklich ungültig -> ablehnen (Slot 0 = Host, nie per Rejoin)
           try{c.send(JSON.stringify({t:"full"}));}catch(e){}
           var cr=NET.conns.indexOf(c);if(cr>=0)NET.conns.splice(cr,1);try{c.close();}catch(e){}return;}
+        NET.conns.forEach(function(oc){if(oc!==c&&oc._idx===ri){try{oc.close();}catch(e){}var oi=NET.conns.indexOf(oc);if(oi>=0)NET.conns.splice(oi,1);}}); // toten alten Kanal desselben Slots schließen -> schneller Reconnect statt Ablehnung
         c._idx=ri;
         if(NET.present)NET.present[ri]=true;
         netSyncTo(c);netBroadcastPres();netConnInfo();
@@ -3500,6 +3575,7 @@ function netHostBoot(){ // ID-Kollision (unavailable-id) -> neuen Code würfeln 
       // 🛡️ Whitelist: Gäste dürfen nur Spiel-Nachrichten senden — Host-Kontrolltypen (full/welcome/init/sync/…) werden verworfen
       if(["roll","pick","chat","emo","ready","meetact","drop"].indexOf(m.t)<0)return;
       if(c._idx!=null)m.i=c._idx; // Identität serverseitig stempeln (Gast kann sich nicht als anderer ausgeben)
+      if((m.t==="roll"||m.t==="pick")&&G&&c._idx!==G.turn)return; /* 🛡️ Schwarm-3 P3: nur der Zug-Inhaber darf würfeln/ziehen (modifizierter Gast kann fremden Zug nicht erzwingen; meetact bleibt erlaubt) */
       netOnMsg(m,c);});
     c.on("close",function(){var wasIdx=c._idx;var ci=NET.conns.indexOf(c);if(ci>=0)NET.conns.splice(ci,1);
       if(NET.on&&running){ // im laufenden Spiel: NICHT auto-rauswerfen -> Präsenz melden + ggf. pausieren (Reconnect möglich)
@@ -3507,7 +3583,7 @@ function netHostBoot(){ // ID-Kollision (unavailable-id) -> neuen Code würfeln 
         netBroadcastPres();
       }else if(wasIdx!=null){ // Lobby: Platz KOMPAKTIEREN statt Geisterplatz stehen zu lassen
         if(NET.names[wasIdx])chatAdd("System",NET.names[wasIdx]+" hat die Lobby verlassen");
-        NET.names.splice(wasIdx,1);if(NET.cfgs)NET.cfgs.splice(wasIdx,1);if(NET.ready)NET.ready.splice(wasIdx,1);
+        NET.names.splice(wasIdx,1);if(NET.cfgs)NET.cfgs.splice(wasIdx,1);if(NET.ready)NET.ready.splice(wasIdx,1);if(NET.bots)NET.bots.splice(wasIdx,1); /* P5: Bot-Flags mitverschieben — sonst wird nach einem Leave der falsche Sitz zum Robo */
         NET.conns.forEach(function(cc){if(cc._idx!=null&&cc._idx>wasIdx)cc._idx--; // verbleibende Gäste neu indizieren
           if(cc._idx!=null){try{cc.send(JSON.stringify({t:"welcome",idx:cc._idx}));}catch(e){}}}); // jeder erfährt seinen neuen Index
         netPlayersUpd(); // (Wrapper) broadcastet {t:'lobby',…} -> Liste + Start-Knopf erscheinen wieder korrekt
@@ -3602,14 +3678,31 @@ document.getElementById("netReadyBtn").onclick=function(){
   var t=NET.code;try{if(navigator.clipboard)navigator.clipboard.writeText(t);}catch(e){}
   cb.textContent="✓ Kopiert";setTimeout(function(){cb.textContent="📋 Kopieren";},1400);};})();
 // 📲 Einladungs-Link: Freund tippt auf den Link und landet direkt im Raum (kein Code-Tippen)
-(function(){var sb=document.getElementById("netShareBtn");if(!sb)return;sb.onclick=function(){
+function netShareInvite(){ /* 🔗 Einladungslink teilen (Lobby-Knopf + Ein-Tipp-Einladen nutzen dieselbe Routine) */
   /* Offener Raum → statischer ?quick=1-Link (kein Code); sonst der Raum-Code-Link */
   var url=location.origin+location.pathname+((NET.code==="OFEN")?"?quick=1":("?raum="+NET.code));
   var txt="🎲 Spiel mit mir Lebenspfad! Tippe auf den Link und du bist direkt dabei: "+url;
-  if(navigator.share){navigator.share({title:"Lebenspfad — Online-Koop",text:txt,url:url}).catch(function(){});}
-  else{try{if(navigator.clipboard)navigator.clipboard.writeText(url);}catch(e){}
-    sb.textContent="✓ Link kopiert";setTimeout(function(){sb.textContent="📲 Link teilen";},1600);}
-};})();
+  try{if(navigator.clipboard)navigator.clipboard.writeText(url);}catch(e){} /* immer zusätzlich kopieren (Share kann ohne Geste blocken) */
+  var sb=document.getElementById("netShareBtn");
+  if(navigator.share){navigator.share({title:"Lebenspfad — Online-Koop",text:txt,url:url}).catch(function(){
+    if(sb){sb.textContent="✓ Link kopiert";setTimeout(function(){sb.textContent="📲 Link teilen";},1600);}});}
+  else if(sb){sb.textContent="✓ Link kopiert";setTimeout(function(){sb.textContent="📲 Link teilen";},1600);}
+  netStatus("🔗 Einladungslink bereit — schick ihn deinen Freunden! (auch kopiert 📋)","#2a8a50");
+}
+(function(){var sb=document.getElementById("netShareBtn");if(!sb)return;sb.onclick=netShareInvite;})();
+function netShareWhatsApp(){ /* 💬 direkt WhatsApp öffnen mit vorformuliertem Einladungslink */
+  var url=location.origin+location.pathname+((NET.code==="OFEN")?"?quick=1":("?raum="+(NET.code||"")));
+  var txt="🎲 Spiel mit mir Lebenspfad! Tippe auf den Link und du bist direkt dabei: "+url;
+  try{if(navigator.clipboard)navigator.clipboard.writeText(url);}catch(e){}
+  window.open("https://wa.me/?text="+encodeURIComponent(txt),"_blank");
+  netStatus("💬 WhatsApp geöffnet — Freund auswählen & senden! (Link auch kopiert 📋)","#2a8a50");
+}
+(function(){var wb=document.getElementById("netWaBtn");if(!wb)return;wb.onclick=function(){if(NET.peer&&NET.code){netShareWhatsApp();}else{netStatus("Erst einen Raum erstellen, dann WhatsApp.","#b06a2a");}};})();
+(function(){var ib=document.getElementById("netInviteBtn");if(!ib)return;ib.onclick=function(){ /* 🔗 1-Tipp: Raum erstellen + Link teilen */
+  if(NET.peer&&NET.code){netShareInvite();return;} /* Raum existiert schon → nur teilen */
+  NET._autoShare=true;ib.textContent="⏳ Raum wird erstellt …";
+  setTimeout(function(){ib.textContent="🔗 Freunde einladen — Raum + Einladungslink in 1 Tipp";},4000);
+  document.getElementById("netHostBtn").click();};})();
 // 🔗 Auto-Beitritt: /lebenspfad.html?raum=CODE -> Code eintragen + automatisch beitreten
 (function(){var m=location.search.match(/[?&]raum=([A-Za-z]{4})/);if(!m)return;
   var code=m[1].toUpperCase();
@@ -3642,6 +3735,7 @@ function beginNet(init){
   NET.cfgs=(init.cfgs&&init.cfgs.length)?init.cfgs:[]; // gesyncte Picker-Looks aller Spieler
   document.getElementById("endO").classList.add("hide"); // falls Rematch aus dem Endscreen
   var g0=freshState(init.names.length,init.adult,init.mode);
+  g0.goal=null; // 🎯 zufälliges freshState-Ziel verwerfen -> begin() setzt es seed-deterministisch (sonst hat jeder Client ein anderes Rundenziel)
   for(var i=0;i<g0.players.length;i++){g0.players[i].name=init.names[i];
     if(init.bots&&init.bots[i])g0.players[i].bot=true;} // 🤖 Robo-Sitze auf ALLEN Clients markieren
   begin(g0);
@@ -3649,6 +3743,7 @@ function beginNet(init){
   chatAdd("System","Online-Spiel gestartet — viel Glück! Du bist "+init.names[NET.my]+".");
   rollBtn.disabled=!myTurn();
   announce(myTurn()?"🎲 Du bist dran!":"🎲 "+G.players[G.turn].name+" beginnt","#fff");
+  if(!lsGet("lp_tut_seen"))setTimeout(function(){showTutorial(0);},1200); // 🌐 Online-Neulinge sehen das Tutorial beim echten Start (lokal, blockiert niemanden)
   NET.present=[];for(var pi=0;pi<G.players.length;pi++)NET.present[pi]=true; // Start: alle da
   NET.q=[];NET._qHeadRef=null;NET._desync=0; // saubere Lockstep-Queue pro Runde
   if(NET.host){netBroadcastPres();netStartChkTimer();}else{renderNetHud();netCheckPause();}}
@@ -3815,6 +3910,7 @@ function begin(saved){
     var bl2=new THREE.Mesh(new THREE.CircleGeometry(0.55,12),new THREE.MeshBasicMaterial({color:0x2a4a2a,transparent:true,opacity:0.22}));
     bl2.rotation.x=-Math.PI/2;bl2.position.y=0.05;scene.add(bl2);pawnBlobs.push(bl2);});
   try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();if(actx.state==="suspended")actx.resume();}catch(e){}
+  try{if(OPT.music&&!muted&&MUS){MUS.volume=0;var _mp=MUS.play();if(_mp&&_mp.catch)_mp.catch(function(){});}}catch(e){} // 🎵 Musik im Start-Gesten-Kontext anstoßen (zuverlässige Mobile-Wiedergabe)
   document.getElementById("start").classList.add("hide");
   document.getElementById("endO").classList.add("hide");
   document.getElementById("hud").classList.remove("hide");
@@ -3831,6 +3927,7 @@ function begin(saved){
   announce(saved?"Willkommen zurück auf dem Pfad!":"DAS LEBEN BEGINNT","#ffd166");
   if(!saved&&!NET.on&&!lsGet("lp_tut_seen"))setTimeout(function(){showTutorial(0);},900); /* ❓ erstes Spiel: kurzes Anfaenger-Tutorial */
   if(!saved)showHint(G.players.length>1?"Reihum würfeln — trefft ihr euch auf einem Feld, gibt es eine Begegnung! 💫":"Würfle mit LEER oder dem Knopf!",4200);
+  if(!saved&&G.goal)setTimeout(function(){announce("🎯 Ziel: "+G.goal.ic+" "+G.goal.n,"#7ad9a0");},2400); // Rundenziel zu Beginn zeigen (+12 Bonus)
 }
 var menuOpen=false;
 function renderMenu(){
@@ -4187,6 +4284,19 @@ function shortMileChain(p){ // ⚡ Kurz-Modus: das große Lebens-Kapitel — Hoc
   if(p.fam.partner&&!p.fam.askedK){p.fam.askedK=true;kidsCard(p,function(){shortMileChain(p);});return;}
   if(!(p.items&&p.items.haus)&&!p.fam.askedH){p.fam.askedH=true;hausCard(p,endTurnSoon);return;}
   endTurnSoon();}
+function glueckswheelCard(p){ // 🎰 Glücksrad des Lebens — deterministischer Lockstep-Draw, Rad nur Visualisierung (wie der Würfelwurf)
+  var n=1+((srand()*6)|0);
+  announce("🎰 GLÜCKSRAD!","#d94fd0");beep(660,.08,"triangle",.05);
+  showWheel(n,function(){
+    var R=[{t:"+4 💰",fx:{geld:4}},{t:"+3 ❤️",fx:{glueck:3}},{t:"+3 🧠",fx:{wissen:3}},{t:"+3 👥",fx:{freunde:3}},{t:"−2 💰 · kleines Pech",fx:{geld:-2}},{t:"JACKPOT! +2 auf ALLES",fx:{geld:2,glueck:2,wissen:2,freunde:2}}][n-1];
+    applyFx(p,R.fx);announce("🎰 "+R.t,n===6?"#ffe98a":(n===5?"#ff8a8a":"#e0a0ff"));
+    if(n===6){confetti(fields[p.tile].x,fields[p.tile].z,0xd94fd0,18);jingle();zoomPunch(0.16);buzz([50,40,90]);}
+    p.bio.push(n===6?"knackte den Jackpot am Glücksrad des Lebens":"drehte mutig am Glücksrad des Lebens");
+    endTurnSoon();});}
+var STAT_FLAVOR={ // 🍃 kleine Geschichten zu den Stat-Feldern (rein kosmetisch)
+  h:["Ein Sonnenstrahl nur für dich.","Jemand hat heute an dich gedacht.","Der Tag riecht nach Sommer."],
+  w:["Ein Buch, das alles ändert.","Ein Aha-Moment mitten im Alltag.","Plötzlich ergibt alles Sinn."],
+  f:["Ein Wiedersehen am Wegesrand.","Jemand bleibt extra für dich stehen.","Altes Lachen, neue Nähe."]};
 function handleField(p,f){
   var ch=chapterOf(p.tile),acc="#"+("00000"+CHAPTERS[ch].accent.toString(16)).slice(-6);
   if(f.type==="m"){
@@ -4206,7 +4316,13 @@ function handleField(p,f){
       if(ch===5&&p.fam.partner&&!p.fam.askedK){p.fam.askedK=true;kidsCard(p,endTurnSoon);return;} // 👶
       if((ch===5||ch===6)&&!(p.items&&p.items.haus)){hausCard(p,endTurnSoon);return;} // 🏠 Eigenheim
     }
-    var mOpts=[{l:"Weiter auf dem Pfad ▶",sub:"+2 ❤️ Glück",fn:function(){p.glueck+=2;p.bio.push("schloss das Kapitel "+CHAPTERS[Math.max(0,ch-1)].n.toLowerCase()+" ab");endTurnSoon();}}];
+    if(ch>=5&&!p.comeback&&G.players.length>1){var _avg=0;G.players.forEach(function(pp){_avg+=lifeScore(pp);});_avg/=G.players.length; // 🍀 einmaliger Comeback-Schub für Zurückliegende (rein zustandsbasiert -> lockstep-sicher)
+      if(lifeScore(p)<_avg-8){p.comeback=true;p.geld+=3;p.glueck+=3;
+        announce("🍀 Das Leben meint es nochmal gut mit "+p.name+"!","#7ad9a0");
+        floatStat("+3 💰 +3 ❤️","#7ad9a0",fields[p.tile].x,fields[p.tile].z,400);
+        p.bio.push("bekam spät im Leben eine zweite Chance — und ergriff sie");}}
+    var mg=2+Math.min(4,ch); // ⭐ Meilenstein-Glück wächst mit dem Lebensabschnitt
+    var mOpts=[{l:"Weiter auf dem Pfad ▶",sub:"+"+mg+" ❤️ Glück",fn:function(){p.glueck+=mg;p.bio.push("schloss das Kapitel "+CHAPTERS[Math.max(0,ch-1)].n.toLowerCase()+" ab");endTurnSoon();}}];
     var humans=G.players.filter(function(pp){return !pp.bot;}).length;
     if(!NET.on&&humans>=2&&Math.random()<0.9){ /* 🎮 Bonus-Minispiel fast immer anbieten — Minispiele leben jetzt IM Spiel (User-Wunsch), nur lokal + echte Menschen */
       mOpts.push({l:"🎮 Bonus-Minispiel!",sub:"zu zweit spielen · danach +2 ❤️ für ALLE",fn:function(){
@@ -4214,9 +4330,10 @@ function handleField(p,f){
           announce("🎮 Bonus-Runde! +2 ❤️ für alle","#ff9ad9");p.bio.push("forderte alle zu einem Minispiel heraus");endTurnSoon();});}});}
     showCard("Meilenstein · "+CHAPTERS[ch].n,"✨ Ein neues Kapitel",MILESTONES[ch]||"Der Pfad geht weiter.",mOpts);
     camShake=0.15;return;}
-  if(f.type==="g+"){var g=Math.round((3+ch*2)*(p.job?p.job.mult:1));p.geld+=g;announce("+"+g+" 💰","#ffd166");
-    floatStat("+"+g+" 💰","#ffd166",f.x,f.z);emote(G.turn,"jubel");confetti(f.x,f.z,0xffc21f,9);colorFlash("150,255,150");
-    if(g>=8){moneyRain(f.x,f.z,14);zoomPunch(0.17);jingle();} // 💰 grosser Gewinn: Regen + Zoom-Punch + Fanfare
+  if(f.type==="g+"){var rg=srand(),g=Math.round((3+ch*2)*(p.job?p.job.mult:1)); // rg: fester Lockstep-Draw für den 🌟-Twist
+    if(rg<0.1)g*=2;p.geld+=g;announce(rg<0.1?"🌟 GLÜCKSSTERN! +"+g+" 💰":"+"+g+" 💰",rg<0.1?"#ffe98a":"#ffd166");
+    floatStat("+"+g+" 💰","#ffd166",f.x,f.z);emote(G.turn,"jubel");confetti(f.x,f.z,0xffc21f,rg<0.1?16:9);colorFlash("150,255,150");
+    if(g>=8){moneyRain(f.x,f.z,14);zoomPunch(0.17);jingle();buzz([50,40,80]);} // 💰 grosser Gewinn: Regen + Zoom-Punch + Fanfare
     beep(784,.08,"square",.03);setTimeout(function(){beep(1046,.08,"square",.03);},90);setTimeout(function(){beep(1318,.14,"triangle",.05);},180);endTurnSoon();return;}
   if(f.type==="g-"){var c2=2+ch+(p.fam?p.fam.kids:0);
     var short=Math.max(0,c2-p.geld);p.geld=Math.max(0,p.geld-c2);
@@ -4224,9 +4341,10 @@ function handleField(p,f){
     else announce("−"+c2+" 💰 (Rechnungen)","#ff8a8a");
     floatStat("−"+c2+" 💰","#ff8a8a",f.x,f.z);emote(G.turn,"trauer");tears(f.x,f.z);colorFlash("255,90,90",c2>=5); // Figur sackt zusammen + 💧 + roter Blitz
     beep(220,.15,"sawtooth",.05);endTurnSoon();return;}
-  if(f.type==="h"){p.glueck+=2;announce("+2 ❤️","#ff9ad9");floatStat("+2 ❤️","#ff9ad9",f.x,f.z);emote(G.turn,"jubel");confetti(f.x,f.z,0xff5db8,8);beep(659,.12,"triangle",.05);setTimeout(function(){beep(880,.18,"triangle",.05);},110);endTurnSoon();return;}
-  if(f.type==="w"){p.wissen+=2;announce("+2 🧠","#7db8ff");floatStat("+2 🧠","#7db8ff",f.x,f.z);emote(G.turn,"jubel");confetti(f.x,f.z,0x2f7dff,8);beep(523,.1,"triangle",.05);setTimeout(function(){beep(659,.1,"triangle",.05);},100);setTimeout(function(){beep(784,.16,"triangle",.05);},200);endTurnSoon();return;}
-  if(f.type==="f"){var fb=2+((p.fam&&p.fam.dog&&srand()<0.5)?1:0);
+  if(f.type==="h"){var rh=srand(),hv=rh<0.1?4:2;p.glueck+=hv;announce(rh<0.1?"🌟 +4 ❤️":"+2 ❤️","#ff9ad9");floatStat("+"+hv+" ❤️","#ff9ad9",f.x,f.z);if(rh>0.62)showHint(STAT_FLAVOR.h[(rh*97|0)%STAT_FLAVOR.h.length],2600);emote(G.turn,"jubel");confetti(f.x,f.z,0xff5db8,rh<0.1?15:8);beep(659,.12,"triangle",.05);setTimeout(function(){beep(880,.18,"triangle",.05);},110);endTurnSoon();return;}
+  if(f.type==="w"){var rw=srand(),wv=rw<0.1?4:2;p.wissen+=wv;announce(rw<0.1?"🌟 +4 🧠":"+2 🧠","#7db8ff");floatStat("+"+wv+" 🧠","#7db8ff",f.x,f.z);if(rw>0.62)showHint(STAT_FLAVOR.w[(rw*97|0)%STAT_FLAVOR.w.length],2600);emote(G.turn,"jubel");confetti(f.x,f.z,0x2f7dff,rw<0.1?15:8);beep(523,.1,"triangle",.05);setTimeout(function(){beep(659,.1,"triangle",.05);},100);setTimeout(function(){beep(784,.16,"triangle",.05);},200);endTurnSoon();return;}
+  if(f.type==="f"){var rf=srand(),dogB=(p.fam&&p.fam.dog&&srand()<0.5)?1:0,fb=2+dogB;if(rf<0.1)fb+=2; // rf ZUERST (feste Draw-Reihenfolge), 🌟 = +2 extra
+    if(rf>0.62)showHint(STAT_FLAVOR.f[(rf*97|0)%STAT_FLAVOR.f.length],2600);
     var humansF=G.players.filter(function(pp){return !pp.bot;}).length;
     if(!NET.on&&humansF>=2&&Math.random()<0.3){ /* 🎮 Freundschafts-Duell: gelegentliches Minispiel auf dem Freunde-Feld */
       p.freunde+=fb;
@@ -4237,8 +4355,9 @@ function handleField(p,f){
         {l:"Lieber weiterziehen ▶",sub:"+"+fb+" 👥 wie gewohnt",fn:function(){endTurnSoon();}}]);
       floatStat("+"+fb+" 👥","#8affc0",f.x,f.z);return;}
     p.freunde+=fb; // 🐕 Hund bringt gelegentlich +1 👥
-    announce("+"+fb+" 👥"+(fb>2?" (🐕 wedelt!)":""),"#8affc0");floatStat("+"+fb+" 👥","#8affc0",f.x,f.z);emote(G.turn,"jubel");confetti(f.x,f.z,0x1fd97a,8);
+    announce((rf<0.1?"🌟 ":"")+"+"+fb+" 👥"+(dogB?" (🐕 wedelt!)":""),"#8affc0");floatStat("+"+fb+" 👥","#8affc0",f.x,f.z);emote(G.turn,"jubel");confetti(f.x,f.z,0x1fd97a,rf<0.1?15:8);
     beep(523,.14,"triangle",.05);setTimeout(function(){beep(523,.14,"triangle",.05);beep(659,.14,"triangle",.04);},140);endTurnSoon();return;}
+  if(f.type==="z"){glueckswheelCard(p);return;} // 🎰 Glücksrad
   if(f.type==="q"){quizCard(p);return;} // ❓ Quiz-Karte
   if(f.type==="x"){tauschCard(p);return;} // 🔄 Tausch-Event
   if(f.type==="r"){raceCard(p);return;} // 🏁 Wettrennen

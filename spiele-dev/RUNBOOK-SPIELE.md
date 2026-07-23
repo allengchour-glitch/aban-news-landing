@@ -4,6 +4,20 @@
 > `wort-*.html`). Wiederkehrende Aufgaben sind hier als fertige „Skills" dokumentiert —
 > nicht neu erfinden, einfach ausführen. Stand: 2026-07-09.
 
+## 🏰 Neon Dungeon + Wildnis-Audit-Welle W10 (2026-07-18): R1-Umsetzung + neues Stations-Spiel
+- **Wildnis R1-Audit umgesetzt** (109 Agenten, 79 bestätigt → Batches 1–8+10 + Signature-Koop in 11 Commits): Hitstop/Knockback-Ease/Hit-Flash/Trauma-Shake, Monster-Windup + Archetypen (charge/caster), Boss-Enrage+Nova, killSfx+rewardKill, prozedurale Musik (updMusic, Master-Bus `_MB` mit Limiter), Endlos-Bounties, Kristall-Cache, Truhen-Respawn, ⚔️ Team-Combo (×1.5 im 1.5s-Fenster) + 🔥 gemeinsames Rasten + 🤝 Freundschafts-Band (`nw_bond`), Dead-Reckoning+Seq-Guard, Minimap-Klammerung/Formen. Vertagt: `spiele-dev/WILDNIS-AUDIT-R1-REST.md`.
+- **🏰 NEU: neon-dungeon.html** — 5. Station (badge `krieger`, grosser 12er-Cap wie Arena): 3 Katakomben-Abschnitte (Doppelsprung mit Coyote-Zeit 0.18 + Sprung-Buffer, bewegliche Plattformen, Fackel-Checkpoints, Parcours-Sturz kostet KEIN Herz) → KOLOSS-Kammer (Schockwellen-Ringe überspringen, Faust-Slam → Kristall 4.2s verwundbar, Enrage-Doppelringe ab HP≤3, Kristallregen). Stations-Protokoll wie neon-jump (`?station=1`, `stationPost({t:"stationDone",score})`, mini-back). Debug `window.__nd` (boss()/tp()/state()).
+- **🔑 LEHRE (Grafik, teuer):** Ein „Kanten-Glow" als SOLIDER Box unter/über der Lauffläche: liegt seine Oberkante auch nur 5cm ÜBER dem Deckel, sieht man von oben NUR das Glühen — ganze Szene wirkt pastell-überstrahlt. Kante IMMER unter die Lauffläche legen (`rim.y=-0.14`), dann glüht nur die Seite. Ebenso: viele Punktlichter addieren sich — 8 Fackeln à 1.0 überstrahlen einen 26er-Boden; 0.55/Range 8 reicht.
+- **Schwierigkeits-Regel (User „nicht so schwer"):** Parcours-Tod nie doppelt bestrafen (Rücksetzen reicht), Nacht-Skalierung Cap 1.0/+0.08, Boss-Slam 18/Nova 14/Caster 6.
+- **three.js-Pfad für Stations-Spiele:** `/js/vendor/three.min.js` (NICHT /js/three.min.js); r128 hat kein konstruierbares CapsuleGeometry.
+
+## 🌱 Lebenspfad-Audit-Welle L1 (2026-07-18): 93-Agenten-Audit → 13 Commits
+- **Vorgehen:** Workflow-Schwarm (18 Dimensionen auditieren → jeden Fund adversarial gegenprüfen → Tech-Lead-Synthese in kollisionsfreie Batches). 74 geprüft, 66 bestätigt, in 11 Batches umgesetzt: Netcode (Rejoin/Quick-Play-Race/Lockstep-Picks/Ziel-Determinismus/Checksum+round+done), Rundenziel-Belohnung (+12, Team-HUD), Lesbarkeit/HUD, Mobile-Perf (DPR 1.5, PCF, 512er-Map, Sonne folgt Spieler), Verlaufs-Himmel + Tageslicht-Bogen pro Kapitel, Audio/Juice, Onboarding, 🎰 Glücksrad-Feld `z` (1×/Kapitel), gegenseitige Begegnungs-Gesten, 🌟 Stern-Twists, 🍀 Comeback, 📳 Haptik, Wolken-Tönung, GLB-Preload.
+- **🔑 LOCKSTEP-REGEL (wichtigste Lehre):** In Online-Brettspiel-Logik darf JEDER stat-verändernde Zufall NUR über `srand()` laufen, an **statisch fester Code-Position** (alle Clients führen handleField identisch aus → gleiche Draw-Reihenfolge). Kosmetik (Konfetti, Flavor-Anzeige) darf Math.random. Neue Felder nach dem Würfelrad-Muster bauen: `n=1+((srand()*6)|0); showWheel(n, done)` — das Rad ist nur Visualisierung.
+- **freshState-Falle:** `freshState()` setzte ein `Math.random`-Rundenziel → online hatte JEDER Client ein anderes Ziel. Fix: in `beginNet` `g0.goal=null` → `begin()` setzt es seed-deterministisch. Muster: alles, was freshState zufällig setzt, muss im Online-Pfad genullt + seed-abgeleitet werden.
+- **#17 bewusst NICHT umgesetzt:** Meshy-Pawns höhen-normalisieren via `setFromObject` — Figuren sind skinned/animiert → gleicher Bug wie der Wildnis-Riesen-Held. Feste Skalierung (0.95) beibehalten.
+- **Workflow-Betrieb:** Ein Hintergrund-Workflow kann bei Session-Neustart STILL sterben (Journal-Zeitstempel prüfen!). `Workflow({scriptPath, resumeFromRunId})` setzt fort — fertige Agenten kommen aus dem Cache.
+
 ## Der Verbesserungs-Loop (jede Runde gleich)
 1. **Implementieren** (python3-Patches mit `assert old in s` — nie blind sed)
 2. **Smoke**: `node tools/game_smoke.cjs <spiel>.html` → muss PASS sein (0 JS-Fehler)
@@ -27,6 +41,10 @@
   `resize --width 512` + `simplify --ratio 0.05 --error 0.001` + `prune`
   (Meshy-Refine liefert ~300k Tris / 8+ MB → Ziel <500 KB)
 - `ffmpeg` (apt) — Audio-Transkodierung nach `/audio/` (112–128 kbps)
+
+## 🐍 Monster-Nachschub — Rezept (2026-07-18)
+- **Zuverlässigster Weg (kein Key, kein Download): PROZEDURALE Monster im Code.** Muster `build:fn` in der `MOBS`-Tabelle (neon-wildnis.html) → fn gibt eine `THREE.Group` zurück (flat-shaded, emissive für Neon-Look), Felder `dmg/role("charge"/"caster")/fly/undead`. Spawn-Pfad nutzt `M.build()` automatisch. Verifikation: `window.__nw.spawnMob("id",3,3)` + `__nw.simMon(0.5)`. 5 Beispiele live: schlange/auge/skorpion/qualle/schaedel.
+- **Download-Fallen (getestet, tot über Proxy):** poly.pizza = JS-gerendert + braucht API-Key (`/v1.1/model/<id>` → „need an API key"); Kenney *monster-builder-pack* = NUR 2D-Sprites (PNG), keine GLB; itch.io/GitHub = blockiert. Kenney-**3D**-Kits (nature/dungeon/etc.) gehen per Direkt-ZIP-URL (grep `/media/pages/assets/...zip` auf der Asset-Seite) → Blender-Polish.
 
 ## Assets & APIs
 - **Musik**: echte Tracks in `/audio/` (Zuordnung + CC-BY-Attribution siehe Spiele-Footer;
@@ -594,6 +612,7 @@ skinned GLB nie simplify>0.35, Bone-Height statt Box3, Headless-Uhr läuft ~5x l
 - **📱 HUD-Überschneidungen** (User „keine überschneidung … steuerung und text"): invBar schmaler + sysbtn 44→40 (Inventar↔🔊/⏸), `onlineBadge` im Solo ausgeblendet/im Koop block (**LEHRE: inline `style=` schlägt CSS-Media → per JS-inline-Style in `updOnline` fixen**), announce schmaler/höher.
 - **🌿 Mehr STL** (18 neue Props: nw_* Natur/Dorf + Klippe/Säule/Neon-Kristalle) im `STUFF`-Scatter (150→190) + **`farScatter` Mindestabstand 3.2m** (Belegung vorbefüllt aus `resources`) → keine Überschneidung. Windmühle+Weizen & Boot+Steg als Landmarken (Zonen). **ftk_windmill = 1 Mesh → keine Flügel-Animation möglich.**
 - **⚡ Perf-FIX (halbiert!):** statische Props (item_shrine/mushroom) hatten `frustumCulled=false` → immer gezeichnet → Draw-Calls **1288→696** mobil. Nur die geriggten Chars/Monster behalten `false` (Skinned-BBox-Pop).
+- **🦋 LEHRE (teuer, 2026-07-17): Ambient-Leben existiert BEREITS — vor dem Hinzufügen prüfen!** Zeile ~1052: `var ambientGroups,fireflies,fogWisps,pollen,butterflies,leaves,birds,clouds`. Die Wildnis hat schon **24 bunte flatternde Schmetterlinge** (Z.1132, 5 Farben, echte Flügel, `updLively`), Glühwürmchen, Pollen, fallende Blätter, Vögel in Formation, Wolken. Ein zweites `var butterflies=[]` weiter oben im selben IIFE **überschreibt** die Referenz nicht — aber die spätere Deklaration `butterflies=[]` (Z.1052) setzt das Array zurück, dann füllt Z.1137 es mit `{m,sp:<Zahl>}`-Objekten → ein eigener `updButterflies` iterierte diese und crashte (`b.sp.position` undefined, `b.sp` ist die Geschwindigkeit-Zahl). **Regel: `grep -n "Schmetterling\|butterfly\|ambient\|firefl"` VOR jedem neuen Deko-System; niemals einen bereits vergebenen `var`-Namen im selben Scope neu deklarieren.**
 
 ## 🎭 Charakter-Overhaul + Koop-Revive — W8+ (2026-07-16, PRs #1957/#1961–#1965)
 - **Wildnis Charakterauswahl** (User: „auswahl ist scheisse, viele scheiss charakter"): 24→**17** Helden — 6 Monster-„Helden" (Goblin/Ork/Yeti…) + `hero.glb`-Mannequin ENTFERNT (per In-Game-Screenshot als schwach bestätigt). **Karussell** (`charNav`: ◀ Name/Bonus/„n von 17" ▶ + `cycle()`) über der 3D-Vorschau. **Vorschau bone-basiert** normiert+zentriert (`boneBox()`, ~1.75u) — vorher zeigte setFromObject-6×-Clamp nur die Stiefel. Neon-Chars entstrahlt (color`*2→*1.3`, emissive`0.9→0.5`).
