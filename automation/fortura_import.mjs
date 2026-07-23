@@ -50,7 +50,9 @@ const COLMAP = {
   lieferumfangDE: ['ArtikelLieferumfangDE'],     // Lieferumfang → in die Beschreibung
   groesse: ['GrösseDE'],
   farbe: ['FarbeDE'],
+  dimension: ['DimensionDE'],                    // Masse
   marke: ['Marke'],
+  anlass: ['Anlass1DE','Thema1DE'],              // Anlass/Thema
   descDE: ['InternetTextDE', 'ArtikelLieferumfangDE'],
   ve:    ['Internet_VE'],                         // artikelbezogene Mindestbestellmenge (>1 = Multiplikator)
   status:['Status'],
@@ -157,11 +159,27 @@ for (const rec of recs.slice(0, LIMIT)) {
 
   existTitles.add(normT(title));
   if (img) { imgSeen.add(img); fs.appendFileSync(IMG_SEEN, img+'\n'); }
-  const veNote = ve > 1 ? `<p>📦 Verkauf in Bündeln zu ${ve} Stück.</p>` : '';
-  const bodyTxt = pick(rec, COLMAP.zusatzDE) || pick(rec, COLMAP.descDE) || title;
-  const liefer = pick(rec, COLMAP.lieferumfangDE);
-  const lieferNote = liefer ? `<p><strong>Lieferumfang:</strong> ${liefer}</p>` : '';
-  const desc = `<p>${bodyTxt}</p>${lieferNote}${veNote}<p>🇨🇭 Versand aus der Schweiz · Lieferung 1–2 Werktage (DPD) · Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · Kauf auf Rechnung mit Klarna & TWINT · LuxeStyle</p>`;
+  // Reichhaltige Beschreibung: Marketing-Text + Spec-Tabelle + Anlass + Trust
+  const marketing = pick(rec, COLMAP.descDE) || pick(rec, COLMAP.zusatzDE) || `${title} – hochwertige Qualität ab Schweizer Lager.`;
+  const specs = [
+    ['Marke', pick(rec, COLMAP.marke)],
+    ['Farbe', pick(rec, COLMAP.farbe)],
+    ['Grösse', pick(rec, COLMAP.groesse)],
+    ['Masse', pick(rec, COLMAP.dimension)],
+    ['Anlass', pick(rec, COLMAP.anlass)],
+    ['Lieferumfang', pick(rec, COLMAP.lieferumfangDE)],
+    ['Artikel-Nr.', String(art)],
+  ].filter(([,v]) => v && v.length);
+  const specTable = specs.length
+    ? `<h4>Details</h4><ul>${specs.map(([k,v]) => `<li><strong>${k}:</strong> ${v}</li>`).join('')}</ul>` : '';
+  const veNote = ve > 1 ? `<p>📦 Verkauf in praktischen Bündeln zu ${ve} Stück.</p>` : '';
+  const desc = `<p>${marketing}</p>${specTable}${veNote}`
+    + `<h4>Warum bei LuxeStyle kaufen?</h4><ul>`
+    + `<li>🇨🇭 <strong>Versand aus der Schweiz</strong> – Lieferung in nur 1–2 Werktagen (DPD)</li>`
+    + `<li>📦 Gratis-Versand ab CHF 50</li>`
+    + `<li>↩️ 30 Tage Rückgaberecht</li>`
+    + `<li>🔒 Kauf auf Rechnung mit Klarna · TWINT · Karten · PayPal · Apple Pay</li>`
+    + `<li>💬 Schweizer Support: info@luxestyle.ch</li></ul>`;
   const slug = (normT(title).replace(/\s+/g,'-').slice(0,46)) + '-ft' + String(art).toLowerCase();
   const tags = [...new Set(['fortura','dropship','ch-lager','schweiz-versand','neu', ...FT_TAGS, ...catTags(title)])];
   const input = {
