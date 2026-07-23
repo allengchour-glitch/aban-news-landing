@@ -124,6 +124,9 @@ for (const rec of recs.slice(0, LIMIT)) {
   let baseTitle = pick(rec, COLMAP.titleDE).replace(/[,;]\s*$/,'').trim();
   const gr = pick(rec, COLMAP.groesse);
   let title = baseTitle.replace(/\s{2,}/g,' ').trim();
+  // Sauber kürzen: an Wortgrenze ≤66 abschneiden, baumelnde Konjunktionen/Kommas strippen (kein Mid-Word-Cut)
+  if (title.length > 66) { title = title.slice(0,66); const sp = title.lastIndexOf(' '); if (sp > 30) title = title.slice(0, sp); }
+  title = title.replace(/[\s,]+(und|mit|inkl\.?|&|für|aus|im|in|zum|zur)\.?$/i,'').replace(/[\s,&]+$/,'').trim();
   if (gr && gr.length <= 8 && !new RegExp(`\\b${gr.replace(/[^\w]/g,'')}\\b`,'i').test(title)) title += ` · Gr. ${gr}`;
   title = title.slice(0,70).trim();
   if (!title || title.length < 4) { skip++; fs.appendFileSync(LEDGER,'ft:'+art+'\n'); continue; }
