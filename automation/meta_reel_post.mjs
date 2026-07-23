@@ -106,6 +106,28 @@ const cand = rows.slice(1).find(r => (r[idx.status] || '').trim() === 'ready'
 if (!cand) { console.log('Nichts fällig (kein ready+instagram+due, oder alle Videos schon gepostet).'); process.exit(0); }
 // Harte Doppelpost-Sperre direkt vor dem Post (Gürtel + Hosenträger + gemeinsamer Ledger)
 if (postedVideos.has(vkey(cand[idx.video_url])) || postSeen(cand[idx.video_url])) { console.error('⛔ Video bereits gepostet — Doppelpost verhindert.'); process.exit(0); }
+
+// ⛔⛔ LIVE-IG-ABGLEICH (GEHIRN 10, «darf kein Doppelpost mehr passieren»): der einzige wasserdichte
+//    Check ist gegen die WAHRHEIT auf IG selbst — fängt Posts, die im ungeschützten Fenster entstanden
+//    und NICHT im Ledger landeten (genau die Lücke, die 2026-07-12 den Doppelpost verursachte).
+//    Normalisierte Caption-Basis (erste ~40 Zeichen, ohne Emoji/Sonderzeichen) als Signatur.
+const capSig = s => (s || '').toLowerCase().replace(/[^a-z0-9 ]/g, '').replace(/\s+/g, ' ').trim().slice(0, 40);
+async function igLiveHas(caption) {
+  const want = capSig(caption);
+  if (!want) return false;
+  for (let a = 0; a < 3; a++) {
+    const d = await api(`${IG}/media`, { fields: 'caption,permalink,timestamp', limit: '25' }, 'GET');
+    if (d && Array.isArray(d.data)) {
+      const hit = d.data.find(p => capSig(p.caption) === want);
+      if (hit) { console.error(`⛔ LIVE-DOPPELPOST verhindert — gleiche Caption ist auf IG schon live: ${hit.permalink}`); return true; }
+      return false;                       // Abfrage erfolgreich, kein Treffer → sauber
+    }
+    await sleep(2000 * (a + 1));           // Lesefehler (Token/Netz) → kurz retry
+  }
+  console.error('⚠️ IG-Live-Abgleich nicht erreichbar (3× Fehler) → verlasse mich auf lokale Wachen.');
+  return false;                            // Nie erreichbar → nicht das Posten blockieren (lokale Wachen greifen)
+}
+if (await igLiveHas(cand[idx.caption])) process.exit(0);
 const [id, , url, caption, tags] = [cand[idx.id], 0, cand[idx.video_url], cand[idx.caption], cand[idx.hashtags]];
 const text = `${caption}\n\n${(tags || '').split(/[,\s]+/).filter(Boolean).slice(0, 12).join(' ')}`;
 console.log(`Post: ${id}\n  Video: ${url.slice(0, 90)}\n  Caption: ${text.slice(0, 100)}…`);
