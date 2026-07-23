@@ -29,7 +29,7 @@ canvas{display:block}
 #hud{position:fixed;top:calc(10px + env(safe-area-inset-top));left:calc(10px + env(safe-area-inset-left));right:calc(10px + env(safe-area-inset-right));display:flex;justify-content:space-between;align-items:flex-start;pointer-events:none;z-index:10;gap:8px;flex-wrap:wrap}
 .panel{background:rgba(255,253,248,.92);border:2px solid rgba(120,110,80,.2);border-radius:14px;padding:8px 12px;font-weight:800;box-shadow:0 4px 14px rgba(60,40,10,.15);pointer-events:auto}
 #geld{font-size:1.25rem;font-weight:900;background:linear-gradient(90deg,#fff6dc,#ffe9b8);border-color:#e8b04a}
-#uhr{font-size:1rem}
+#uhr{font-size:1rem;max-width:min(60vw,340px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #geld{color:#b8860b}
 .needs{display:flex;flex-direction:column;gap:3px;font-size:.72rem;min-width:130px}
 .needs .nrow{display:flex;align-items:center;gap:5px}
@@ -37,12 +37,15 @@ canvas{display:block}
 .needs .nbar i{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,#8fd8a0,#5ab86a)}
 @media (orientation:landscape) and (max-height:480px){
   #joy{bottom:calc(12px + env(safe-area-inset-bottom)) !important;left:calc(12px + env(safe-area-inset-left)) !important}
-  #minimap{width:92px !important;height:92px !important}
-  #needsBox{max-height:56vh;overflow-y:auto}
+  #minimap{width:88px !important;height:88px !important}
+  #needsBox{max-height:60vh;overflow-y:auto;font-size:.58rem;min-width:88px;max-width:150px}
+  .needs .nbar{height:5px}
+  #geld{font-size:1rem;padding:6px 11px}
+  #uhr{font-size:.85rem;padding:6px 10px;max-width:44vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   #tools{left:calc(10px + env(safe-area-inset-left));right:auto;top:70px;bottom:auto}
 }
 @media (max-width:560px){
-  #hud{top:8px;left:8px;right:8px;gap:6px}
+  #hud{top:calc(8px + env(safe-area-inset-top));left:calc(8px + env(safe-area-inset-left));right:calc(8px + env(safe-area-inset-right));gap:6px}
   #geld{font-size:1.25rem;padding:10px 15px;font-weight:900}
   #uhr{font-size:1rem;padding:9px 13px;font-weight:900}
   .needs{font-size:.64rem;min-width:104px;gap:2px;padding:7px 9px}
@@ -136,7 +139,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
   <div id="palCats"></div>
   <div id="palItems"></div>
 </div>
-<div id="rotHint" style="position:fixed;inset:0;z-index:60;display:none;flex-direction:column;align-items:center;justify-content:center;background:rgba(30,25,20,.92);color:#fff;text-align:center;padding:24px;font-size:1.1rem">
+<div id="rotHint" style="position:fixed;inset:0;z-index:70;display:none;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(160deg,#241d15,#140f0a);color:#fff;text-align:center;padding:24px;font-size:1.1rem">
   <div style="font-size:3rem;animation:rotwig 1.5s infinite">📱↻</div>
   <div style="margin-top:14px;font-weight:800">Dreh dein Handy quer!</div>
   <div style="margin-top:6px;opacity:.8;font-size:.9rem">Im Querformat spielt sich Traumhaus am besten 🏡</div>
