@@ -915,8 +915,9 @@ function updVerkehr(dt){
         if(v.route.dir>0){if(_pv<=sl&&v.pos>sl)v.pos=sl;}
         else{if(_pv>=sl&&v.pos<sl)v.pos=sl;}}}
     var px,pz,fx=0,fz=0;
-    if(v.route.axis==="x"){px=v.pos;pz=v.route.z;fx=v.route.dir;v.mesh.position.set(px,v.homeY,pz);v.mesh.rotation.y=v.route.dir>0?Math.PI/2:-Math.PI/2;}
-    else{px=v.route.x;pz=v.pos;fz=v.route.dir;v.mesh.position.set(px,v.homeY,pz);v.mesh.rotation.y=v.route.dir>0?0:Math.PI;}
+    // Modell-Vorderachse ist +x -> Rotation entsprechend (vorher 90° verdreht = seitwaerts)
+    if(v.route.axis==="x"){px=v.pos;pz=v.route.z;fx=v.route.dir;v.mesh.position.set(px,v.homeY,pz);v.mesh.rotation.y=v.route.dir>0?0:Math.PI;}
+    else{px=v.route.x;pz=v.pos;fz=v.route.dir;v.mesh.position.set(px,v.homeY,pz);v.mesh.rotation.y=v.route.dir>0?-Math.PI/2:Math.PI/2;}
     if(v.kopf){var qx=fz,qz=-fx; // senkrecht zur Fahrtrichtung
       var opK=nn?1:0,opH=nn?0.85:0;
       for(var li=0;li<2;li++){var sd=li?1:-1;
