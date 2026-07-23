@@ -268,6 +268,12 @@ if(THREE.RGBELoader&&renderer.capabilities.isWebGL2){try{new THREE.RGBELoader().
   scene.environment=pm.fromEquirectangular(tex).texture;tex.dispose();pm.dispose();
 },undefined,function(){});}catch(e){}}
 var hemi=new THREE.HemisphereLight(0xdfeeff,0x6a8a58,0.42);scene.add(hemi);
+// Warme Strassenlaternen-Lichtpools — nur nachts an (Intensitaet im Tag/Nacht-Loop gesetzt)
+var nachtLampen=[];(function(){
+  var RXl=60+6,SZl=46+12; // grob an Haupt-/Nordstrasse
+  var pts=[[-40,SZl],[0,SZl],[40,SZl],[-40,-SZl],[40,-SZl],[RXl,-20],[RXl,20],[-RXl,0]];
+  pts.forEach(function(p){var L=new THREE.PointLight(0xffb257,0,26,2);L.position.set(p[0],6,p[1]);L.intensity=0;scene.add(L);nachtLampen.push(L);});
+})();
 var sun=new THREE.DirectionalLight(0xfff0d0,1.12);sun.position.set(26,38,18);scene.add(sun);
 sun.castShadow=true;sun.shadow.mapSize.set(IS_TOUCH?1024:2048,IS_TOUCH?1024:2048);sun.shadow.bias=-0.0006;
 sun.shadow.camera.near=5;sun.shadow.camera.far=320;
@@ -362,7 +368,7 @@ ladeTex("textures/th/rasen.jpg",13,10,function(t){rasen.material.map=t;rasen.mat
     grp.position.set(cx0,0,cz0);scene.add(grp);}
   // ---- Schönes animiertes Wasser: See mit Wellen ----
   window._wasser=[];
-  function wasserMat(){return new THREE.MeshStandardMaterial({color:0x2e7fc0,roughness:0.08,metalness:0.35,transparent:true,opacity:0.88,envMapIntensity:0.7});}
+  function wasserMat(){return new THREE.MeshStandardMaterial({color:0x1f6bb0,roughness:0.06,metalness:0.45,transparent:true,opacity:0.92,envMapIntensity:0.9});}
   function machWasser(w,d,x,z,seg){
     var g=new THREE.PlaneGeometry(w,d,seg||16,seg||16);
     var m=new THREE.Mesh(g,wasserMat());m.rotation.x=-Math.PI/2;m.position.set(x,-0.02,z);scene.add(m);
@@ -371,7 +377,8 @@ ladeTex("textures/th/rasen.jpg",13,10,function(t){rasen.material.map=t;rasen.mat
   machWasser(26,26,-90,80,20);
   var see=new THREE.Mesh(new THREE.CircleGeometry(0.01,3),new THREE.MeshBasicMaterial({visible:false}));
   see.rotation.x=-Math.PI/2;see.position.set(-90,-0.03,80);scene.add(see);
-  for(var sr=0;sr<16;sr++){var sa=sr/16*6.283;var stein=new THREE.Mesh(new THREE.DodecahedronGeometry(0.5+Math.sin(sr*3)*0.2,0),new THREE.MeshStandardMaterial({color:sr%2?0x9a9a92:0x7a7a72,roughness:0.9}));stein.position.set(-90+Math.cos(sa)*13.4,0.1,80+Math.sin(sa)*13.4);scene.add(stein);}
+  // Ufersteine: dunkler+matter (kein Styropor-Weiss durch HDRI), weniger, klar am Ufer statt im Wasser
+  for(var sr=0;sr<10;sr++){var sa=sr/10*6.283+0.3;var stein=new THREE.Mesh(new THREE.DodecahedronGeometry(0.45+Math.sin(sr*3)*0.18,0),new THREE.MeshStandardMaterial({color:sr%2?0x6a6558:0x565043,roughness:1,metalness:0,envMapIntensity:0.25}));stein.position.set(-90+Math.cos(sa)*14.6,0.04,80+Math.sin(sa)*14.6);stein.rotation.set(Math.random(),Math.random()*6,Math.random());stein.castShadow=true;scene.add(stein);}
   // Viele Baeume rings um die Stadt (prozedural, gestreut)
   function baum2(x,z,k){var b=new THREE.Group();
     var st=new THREE.Mesh(new THREE.CylinderGeometry(0.18,0.28,1.8,7),new THREE.MeshStandardMaterial({color:0x6a4a30,roughness:0.9}));st.position.y=0.9;b.add(st);
@@ -860,7 +867,10 @@ function updWasser(dt,now){if((++_wasserFrame&1))return; // jeden 2. Frame reich
   
   if(!window._wasser)return;
   window._wasser.forEach(function(w){var pa=w.geo.attributes.position.array,b=w.base;
-    for(var i=0;i<pa.length;i+=3){pa[i+2]=b[i+2]+Math.sin(now*0.002+b[i]*0.3)*0.25+Math.cos(now*0.0015+b[i+1]*0.3)*0.2;}
+    for(var i=0;i<pa.length;i+=3){
+      // Rand-Vertices kaum bewegen (sonst zackige Silhouette), Mitte sanft kraeuseln
+      var edge=Math.max(Math.abs(b[i]),Math.abs(b[i+1])),damp=edge>11?0.15:1;
+      pa[i+2]=b[i+2]+(Math.sin(now*0.002+b[i]*0.3)*0.09+Math.cos(now*0.0015+b[i+1]*0.3)*0.07)*damp;}
     w.geo.attributes.position.needsUpdate=true;});}
 function updZug(dt){var z=window._zug;if(!z)return;
   z.pos+=z.speed*dt;if(z.pos>140)z.pos=-140;z.mesh.position.x=z.pos;}
@@ -3350,7 +3360,8 @@ function loop(now){
     // Tag/Nacht
     var hh=uhrzeit/60,dayA=Math.max(0,Math.sin((hh-6)/12*Math.PI));
     var wDim=wetter==="sonne"?1:0.62;
-    sun.intensity=(0.05+dayA*0.82)*wDim;hemi.intensity=0.1+dayA*0.38;
+    sun.intensity=(0.05+dayA*0.82)*wDim;hemi.intensity=0.12+dayA*0.36;
+    hemi.groundColor.setRGB(0.16+dayA*0.25,0.28+dayA*0.26,0.20+dayA*0.14); // nachts blau-grau statt oliv
     var warm=Math.max(0,1-dayA*1.8); // 1 bei Daemmerung/Nacht, 0 bei hohem Sonnenstand
     sun.color.setHex(0xfff0d0);if(warm>0)sun.color.lerp(new THREE.Color(0xff8a3a),warm*0.8);
     if(window.sterne)sterne.material.opacity=Math.max(0,0.9-dayA*3);
@@ -3363,7 +3374,9 @@ function loop(now){
     furn.forEach(function(f){if(f.plight)f.plight.intensity=dayA<0.3?1.1:0;});
     var nacht9=dayA<0.3?1:0;
     if(window._dorfNacht!==nacht9){window._dorfNacht=nacht9;
-      dorfFenster.forEach(function(fm){fm.emissiveIntensity=nacht9?2.2:0;if(nacht9&&fm.emissive)fm.emissive.setHex(0xffcf80);if(fm.transparent&&fm.opacity<=0.5)fm.opacity=nacht9?0.5:0;});}
+      dorfFenster.forEach(function(fm){fm.emissiveIntensity=nacht9?2.2:0;if(nacht9&&fm.emissive)fm.emissive.setHex(0xffcf80);if(fm.transparent&&fm.opacity<=0.5)fm.opacity=nacht9?0.5:0;});
+      nachtLampen.forEach(function(L){L.intensity=nacht9?7:0;}); // warme Lichtpools auf der Strasse}
+    }
     if(camAT!==null){camA+=(camAT-camA)*Math.min(1,dt*6);
       if(Math.abs(camAT-camA)<0.002){camA=camAT;camAT=null;}updCam();}
     if(Math.abs(camRT-camR)>0.02){camR+=(camRT-camR)*Math.min(1,dt*8);
