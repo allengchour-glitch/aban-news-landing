@@ -5428,3 +5428,6 @@ http://media.fortura.ch/media/import/95145-2_1.jpg
 http://media.fortura.ch/media/import/97480-2_1.jpg
 http://media.fortura.ch/media/import/97356-2_1.jpg
 http://media.fortura.ch/media/import/979320_1.jpg
+http://media.fortura.ch/media/import/BO2175_1.jpg
+http://media.fortura.ch/media/import/BO88516_1.jpg
+http://media.fortura.ch/media/import/BO88555_1.jpg
