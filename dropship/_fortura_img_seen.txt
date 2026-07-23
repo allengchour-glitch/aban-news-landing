@@ -1853,3 +1853,9 @@ http://media.fortura.ch/media/import/BO82376_1.jpg
 http://media.fortura.ch/media/import/BO82416_1.jpg
 http://media.fortura.ch/media/import/BO83516_1.jpg
 http://media.fortura.ch/media/import/BO83517_1.jpg
+http://media.fortura.ch/media/import/BO83546_1.jpg
+http://media.fortura.ch/media/import/BO83547_1.jpg
+http://media.fortura.ch/media/import/BO83642_1.jpg
+http://media.fortura.ch/media/import/BO83672_1.jpg
+http://media.fortura.ch/media/import/BO83673_1.jpg
+http://media.fortura.ch/media/import/BO83674_1.jpg
