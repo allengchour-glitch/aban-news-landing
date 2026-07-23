@@ -37,6 +37,7 @@ canvas{display:block}
 .needs .nbar i{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,#8fd8a0,#5ab86a)}
 @media (orientation:landscape) and (max-height:480px){
   #joy{bottom:calc(12px + env(safe-area-inset-bottom)) !important;left:calc(12px + env(safe-area-inset-left)) !important}
+  #modeBtn:not(.building){bottom:calc(134px + env(safe-area-inset-bottom)) !important;left:calc(12px + env(safe-area-inset-left)) !important} /* ueber den Joystick, sonst Ueberlappung */
   #minimap{width:88px !important;height:88px !important}
   #needsBox{max-height:60vh;overflow-y:auto;font-size:.58rem;min-width:88px;max-width:150px}
   .needs .nbar{height:5px}
@@ -244,6 +245,14 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
   <div class="small">Kein Download · <a href="/spiele.html">🕹️ aban Arcade</a> · Speichert automatisch (Solo)</div>
 </div>
 
+<div id="crimeWahl" style="position:fixed;inset:0;z-index:28;display:none;align-items:center;justify-content:center;background:rgba(20,15,30,.82)">
+  <div style="background:#fffdf6;border:3px solid #7a5aa8;border-radius:18px;padding:18px 20px;text-align:center;max-width:360px;width:90vw;box-shadow:0 16px 44px rgba(30,15,45,.5)">
+    <div style="font-size:1.15rem;font-weight:900;color:#5a3a6e">🕶️ Welches krumme Ding?</div>
+    <div style="font-size:.8rem;color:#8a6a9a;margin:4px 0 12px">Risiko steigt mit der Beute</div>
+    <div id="crimeWahlBtns" style="display:flex;flex-direction:column;gap:8px"></div>
+    <button id="crimeWahlAbbr" style="margin-top:14px;border:0;background:#e8e0e8;border-radius:12px;padding:11px 22px;font-weight:800;cursor:pointer;color:#6a5a7a;min-height:44px">Abbrechen</button>
+  </div>
+</div>
 <script src="/js/vendor/three.min.js"></script>
 <script src="/js/vendor/GLTFLoader.js"></script>
 <script src="/js/vendor/RGBELoader.js"></script>
@@ -1846,7 +1855,7 @@ function collectPickup(i){var pk=pickups[i];if(!pk||!pk.active)return;pk.active=
   hint((pk.gift?"🎁 Geschenk":"💰 Münze")+" gefunden! +"+pk.reward+" §");
   if(pk.gift&&typeof hearts==="function")hearts(pk.x,pk.z);
   if(MPs)netSend({t:"pickup",i:i,on:false});
-  setTimeout(function(){pk.active=true;pk.mesh.visible=true;if(MPs&&mpHost)netSend({t:"pickup",i:i,on:true});},30000);}
+  setTimeout(function(){pk.active=true;pk.mesh.visible=true;if(MPs&&mpHost)netSend({t:"pickup",i:i,on:true});},90000);} // 90s statt 30s: Muenzen nicht farmbar, Jobs lohnen sich
 function updPickups(dt,now){
   for(var i=0;i<pickups.length;i++){var pk=pickups[i];
     if(pk.active){pk.mesh.rotation.y+=dt*2.2;pk.mesh.position.y=1.1+Math.sin(now*0.004+pk.ph)*0.2;}
@@ -2076,9 +2085,9 @@ function loveEvent(kind,silent){
   if(!silent)netSend({t:"loveEv",k:kind});
   updHUD();}
 var CRIMES=[
- {n:"Bonbon-Automat knacken",e:"\U0001F36C",base:250,risk:0.25},
- {n:"Gemälde-Klau in der Galerie",e:"\U0001F5BC️",base:480,risk:0.35},
- {n:"BANK-COUP",e:"\U0001F3E6",base:900,risk:0.45}];
+ {n:"Bonbon-Automat knacken",e:"🍬",base:250,risk:0.25},
+ {n:"Gemälde-Klau in der Galerie",e:"🖼️",base:480,risk:0.35},
+ {n:"BANK-COUP",e:"🏦",base:900,risk:0.45}];
 function growSellAvailable(){var hh=uhrzeit/60;
   return running&&!crime.on&&!arbeiten&&(hh>=21||hh<5)&&!!growReif()&&!MG.on;}
 function crimeAvailable(){
@@ -2095,7 +2104,7 @@ function startCrime(jobIdx,withAccomplice,silent){
   var job=CRIMES[Math.min(jobIdx,CRIMES.length-1)];
   crime.on=true;crime.t=7;crime.job=job;crime.accomplice=!!withAccomplice;
   sims.forEach(function(s2){zielFrei(s2);s2.state="work";s2.pose="stand";s2.mesh.visible=false;});
-  hint("\U0001F576️ "+job.n+" läuft … "+(crime.accomplice?"MIT Komplize!":""));
+  hint("🕶️ "+job.n+" läuft … "+(crime.accomplice?"MIT Komplize!":""));
   if(!silent)netSend({t:"crimeGo",j:jobIdx,a:!!withAccomplice});
   updHUD();}
 function zielFrei(s9){if(s9.target&&s9.target.busy!==undefined)s9.target.busy=false;s9.target=null;s9.path=[];}
@@ -2115,7 +2124,7 @@ function finishCrime(){
   else{polizeiPending=true;wantedPlus(1);var strafe=Math.min(geld,Math.round(beute*0.6)+100);geld-=strafe;
     crimeScene(false,job,strafe);
     skillXp("krimi",1);
-    sims.forEach(function(s2){s2.needs.spass=Math.max(5,s2.needs.spass-25);simEmoji(s2,"\U0001F62C");});}
+    sims.forEach(function(s2){s2.needs.spass=Math.max(5,s2.needs.spass-25);simEmoji(s2,"😬");});}
   geldSend();
   netSend({t:"crimeEnd",ok:ok,j:CRIMES.indexOf(job),v:ok?beute:strafe});
   updHUD();}
@@ -2123,10 +2132,10 @@ function crimeScene(ok,job,betrag){
   var el=document.getElementById("romKiss");
   el.style.display="flex";
   if(ok){el.style.background="radial-gradient(circle at 50% 60%,rgba(20,60,20,.6),rgba(5,20,5,.92))";
-    document.getElementById("romTxt").innerHTML=job.e+" "+job.n+" GEGLÜCKT!<br>+"+betrag+" § Beute \U0001F911";
+    document.getElementById("romTxt").innerHTML=job.e+" "+job.n+" GEGLÜCKT!<br>+"+betrag+" § Beute 🤑";
     [523,659,784,1046].forEach(function(fq,i){setTimeout(function(){beep(fq,.14,"triangle",.06);},i*140);});}
   else{el.style.background="repeating-linear-gradient(90deg,rgba(30,30,150,.75) 0 40px,rgba(150,30,30,.75) 40px 80px)";
-    document.getElementById("romTxt").innerHTML="\U0001F693 ERWISCHT beim "+job.n+"!<br>−"+betrag+" § Strafe … das war knapp!";
+    document.getElementById("romTxt").innerHTML="🚓 ERWISCHT beim "+job.n+"!<br>−"+betrag+" § Strafe … das war knapp!";
     [300,240,300,240].forEach(function(fq,i){setTimeout(function(){beep(fq,.22,"square",.06);},i*240);});}
   setTimeout(function(){el.style.display="none";
     el.style.background="radial-gradient(circle at 50% 60%,rgba(60,10,40,.55),rgba(20,5,15,.92))";},3800);}
@@ -3207,16 +3216,22 @@ document.getElementById("buskBtn").onclick=function(){
 document.getElementById("crimeBtn").onclick=function(){
   if(!crimeAvailable())return;
   var lv=skills.krimi.lv,maxJob=Math.min(CRIMES.length-1,lv);
-  var wahl=CRIMES.map(function(c,i){return i<=maxJob?((i+1)+" = "+c.e+" "+c.n+" (~"+Math.round(c.base*(1+lv*0.4))+" §)"):null;}).filter(Boolean).join("\n");
-  var inp=prompt("🕶️ Welches krumme Ding? (Risiko steigt mit Beute)\n"+wahl+"\n\nNummer eingeben:","1");
-  var ji=Math.max(0,Math.min(maxJob,(parseInt(inp,10)||1)-1));
-  if(inp===null)return;
+  var box=document.getElementById("crimeWahlBtns");box.innerHTML="";
+  for(var i=0;i<=maxJob;i++){(function(ji){var c=CRIMES[ji];
+    var b=document.createElement("button");
+    b.style.cssText="border:0;border-radius:12px;padding:13px 14px;font-weight:800;cursor:pointer;font-size:.95rem;color:#fff;background:linear-gradient(90deg,#5a3a6e,#8a4a8e);text-align:left;min-height:44px;box-shadow:0 4px 12px rgba(60,30,80,.3)";
+    b.innerHTML=c.e+" "+c.n+" <span style='float:right;color:#ffd9a0;font-weight:900'>~"+Math.round(c.base*(1+lv*0.4))+" §</span>";
+    b.onclick=function(){document.getElementById("crimeWahl").style.display="none";crimeGo(ji);};
+    box.appendChild(b);})(i);}
+  document.getElementById("crimeWahl").style.display="flex";};
+document.getElementById("crimeWahlAbbr").onclick=function(){document.getElementById("crimeWahl").style.display="none";};
+function crimeGo(ji){
   mgStart("🔓 Tresor knacken","Timing entscheidet über deine Coup-Chance!",function(avg){
     crime.mgBonus=avg*0.25-0.08; // -8% bis +17%
     hint(avg>=0.8?"🔓 Sauber geknackt — beste Chancen!":(avg>0.3?"🔧 Ganz ok …":"💥 Das war laut! Riskant …"));
     if(MPs){crime.askJob=ji;netSend({t:"crimeAsk",j:ji,n:myName});hint("Warte auf Komplizen-Antwort … (10s)");
       crime.ask=true;setTimeout(function(){if(crime.ask){crime.ask=false;startCrime(ji,false);}},10000);}
-    else startCrime(ji,false);});};
+    else startCrime(ji,false);});}
 document.getElementById("delBtn").onclick=function(){delMode=!delMode;curItem=delMode?null:curItem;
   document.getElementById("delBtn").classList.toggle("on",delMode);renderPalette();refreshGhost();};
 document.getElementById("modeBtn").onclick=function(){buildMode=!buildMode;
