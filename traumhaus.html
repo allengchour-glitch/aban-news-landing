@@ -470,9 +470,14 @@ gridHelper.material.transparent=true;gridHelper.material.opacity=0.22;gridHelper
 // Weg + Umgebung
 var weg=new THREE.Mesh(new THREE.PlaneGeometry(3,10),stdMat(0xc8beA8,0.9));weg.rotation.x=-Math.PI/2;weg.position.set(0,-0.005,GH*CS/2+5);weg.receiveShadow=true;scene.add(weg);
 // Strasse (quer, mit Mittelstreifen + Bordstein)
-var strMatH=stdMat(0x3a3a40,0.9),strMatV=stdMat(0x3a3a40,0.9);
-ladeTex("textures/tex_neon_asphalt.jpg",11,1.5,function(t){strMatH.map=t;strMatH.color.setHex(0x9a9aa0);strMatH.needsUpdate=true;});
-ladeTex("textures/tex_neon_asphalt.jpg",1.5,18,function(t){strMatV.map=t;strMatV.color.setHex(0x9a9aa0);strMatV.needsUpdate=true;});
+// Sauberer, glatter Asphalt (feine Koernung statt haesslicher Riss-/Nahtlinien)
+function _roadTex(){var cv=document.createElement("canvas");cv.width=cv.height=256;var c=cv.getContext("2d");
+  c.fillStyle="#3d3d45";c.fillRect(0,0,256,256);
+  for(var i=0;i<3000;i++){var v=(Math.random()*30)|0;c.fillStyle="rgba("+(60+v)+","+(60+v)+","+(66+v)+",0.05)";c.fillRect(Math.random()*256,Math.random()*256,2,2);}
+  return new THREE.CanvasTexture(cv);}
+var strMatH=stdMat(0x40404a,0.92),strMatV=stdMat(0x40404a,0.92);
+(function(){var a=_roadTex();a.wrapS=a.wrapT=THREE.RepeatWrapping;a.repeat.set(Math.round(RL/6),1);strMatH.map=a;strMatH.needsUpdate=true;
+  var b=_roadTex();b.wrapS=b.wrapT=THREE.RepeatWrapping;b.repeat.set(1,Math.round(RL/6));strMatV.map=b;strMatV.needsUpdate=true;})();
 var strasse=new THREE.Mesh(new THREE.PlaneGeometry(RL,10),strMatH);
 strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.receiveShadow=true;scene.add(strasse);
 function _dashFrei(x){return Math.abs(Math.abs(x)-RX)>7.5&&Math.abs(Math.abs(x)-(RX-12))>4;} // nicht in Kreuzung/Zebra
@@ -481,9 +486,16 @@ var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_d
   strich.rotation.x=-Math.PI/2;strich.position.set(_dx,0.005,GH*CS/2+12);scene.add(strich);}
 // Trottoirs (erhoehte Gehwege) beidseitig aller Strassen — Strasse 10 breit, Kante bei ±5
 (function baueTrottoirs(){
-  var SZ9=GH*CS/2,tMat=stdMat(0xcfccc2,0.85),tMatV=stdMat(0xcfccc2,0.85);
-  ladeTex("textures/tex_cobble.png",42,1.2,function(t){tMat.map=t;tMat.color.setHex(0xd8d5cc);tMat.needsUpdate=true;});
-  ladeTex("textures/tex_cobble.png",1.2,26,function(t){tMatV.map=t;tMatV.color.setHex(0xd8d5cc);tMatV.needsUpdate=true;});
+  // Saubere helle Gehweg-Platten (statt unruhigem dunklem Kopfstein)
+  function _walkTex(long){var cv=document.createElement("canvas");cv.width=cv.height=128;var c=cv.getContext("2d");
+    c.fillStyle="#d0cdc4";c.fillRect(0,0,128,128);
+    c.strokeStyle="rgba(150,146,136,.55)";c.lineWidth=2;
+    for(var i=0;i<=128;i+=32){c.beginPath();c.moveTo(i,0);c.lineTo(i,128);c.stroke();c.beginPath();c.moveTo(0,i);c.lineTo(128,i);c.stroke();}
+    for(var s=0;s<400;s++){var v=(Math.random()*20)|0;c.fillStyle="rgba("+(150+v)+","+(146+v)+","+(136+v)+",0.05)";c.fillRect(Math.random()*128,Math.random()*128,2,2);}
+    return new THREE.CanvasTexture(cv);}
+  var SZ9=GH*CS/2,tMat=stdMat(0xd4d1c8,0.9),tMatV=stdMat(0xd4d1c8,0.9);
+  (function(){var s1=_walkTex();s1.wrapS=s1.wrapT=THREE.RepeatWrapping;s1.repeat.set(Math.round(RL/4),1);tMat.map=s1;tMat.needsUpdate=true;
+    var s2=_walkTex();s2.wrapS=s2.wrapT=THREE.RepeatWrapping;s2.repeat.set(1,Math.round(RL/4));tMatV.map=s2;tMatV.needsUpdate=true;})();
   function tr(w,d,x,z,h){var t=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),w>d?tMat:tMatV);
     t.position.set(x,h/2,z);t.receiveShadow=true;scene.add(t);}
   var RB=RX+5,LR=RL/2-RB; // Querstrassen-Kante + Randstueck-Laenge (keine Ueberschneidung mit Fahrbahnen)
