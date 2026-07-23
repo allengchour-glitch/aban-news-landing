@@ -37,6 +37,7 @@ canvas{display:block}
 .needs .nbar i{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,#8fd8a0,#5ab86a)}
 @media (orientation:landscape) and (max-height:480px){
   #joy{bottom:calc(12px + env(safe-area-inset-bottom)) !important;left:calc(12px + env(safe-area-inset-left)) !important}
+  #modeBtn:not(.building){bottom:calc(134px + env(safe-area-inset-bottom)) !important;left:calc(12px + env(safe-area-inset-left)) !important} /* ueber den Joystick, sonst Ueberlappung */
   #minimap{width:88px !important;height:88px !important}
   #needsBox{max-height:60vh;overflow-y:auto;font-size:.58rem;min-width:88px;max-width:150px}
   .needs .nbar{height:5px}
@@ -244,6 +245,14 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
   <div class="small">Kein Download · <a href="/spiele.html">🕹️ aban Arcade</a> · Speichert automatisch (Solo)</div>
 </div>
 
+<div id="crimeWahl" style="position:fixed;inset:0;z-index:28;display:none;align-items:center;justify-content:center;background:rgba(20,15,30,.82)">
+  <div style="background:#fffdf6;border:3px solid #7a5aa8;border-radius:18px;padding:18px 20px;text-align:center;max-width:360px;width:90vw;box-shadow:0 16px 44px rgba(30,15,45,.5)">
+    <div style="font-size:1.15rem;font-weight:900;color:#5a3a6e">🕶️ Welches krumme Ding?</div>
+    <div style="font-size:.8rem;color:#8a6a9a;margin:4px 0 12px">Risiko steigt mit der Beute</div>
+    <div id="crimeWahlBtns" style="display:flex;flex-direction:column;gap:8px"></div>
+    <button id="crimeWahlAbbr" style="margin-top:14px;border:0;background:#e8e0e8;border-radius:12px;padding:11px 22px;font-weight:800;cursor:pointer;color:#6a5a7a;min-height:44px">Abbrechen</button>
+  </div>
+</div>
 <script src="/js/vendor/three.min.js"></script>
 <script src="/js/vendor/GLTFLoader.js"></script>
 <script src="/js/vendor/RGBELoader.js"></script>
@@ -461,9 +470,14 @@ gridHelper.material.transparent=true;gridHelper.material.opacity=0.22;gridHelper
 // Weg + Umgebung
 var weg=new THREE.Mesh(new THREE.PlaneGeometry(3,10),stdMat(0xc8beA8,0.9));weg.rotation.x=-Math.PI/2;weg.position.set(0,-0.005,GH*CS/2+5);weg.receiveShadow=true;scene.add(weg);
 // Strasse (quer, mit Mittelstreifen + Bordstein)
-var strMatH=stdMat(0x3a3a40,0.9),strMatV=stdMat(0x3a3a40,0.9);
-ladeTex("textures/tex_neon_asphalt.jpg",11,1.5,function(t){strMatH.map=t;strMatH.color.setHex(0x9a9aa0);strMatH.needsUpdate=true;});
-ladeTex("textures/tex_neon_asphalt.jpg",1.5,18,function(t){strMatV.map=t;strMatV.color.setHex(0x9a9aa0);strMatV.needsUpdate=true;});
+// Sauberer, glatter Asphalt (feine Koernung statt haesslicher Riss-/Nahtlinien)
+function _roadTex(){var cv=document.createElement("canvas");cv.width=cv.height=256;var c=cv.getContext("2d");
+  c.fillStyle="#3d3d45";c.fillRect(0,0,256,256);
+  for(var i=0;i<3000;i++){var v=(Math.random()*30)|0;c.fillStyle="rgba("+(60+v)+","+(60+v)+","+(66+v)+",0.05)";c.fillRect(Math.random()*256,Math.random()*256,2,2);}
+  return new THREE.CanvasTexture(cv);}
+var strMatH=stdMat(0x40404a,0.92),strMatV=stdMat(0x40404a,0.92);
+(function(){var a=_roadTex();a.wrapS=a.wrapT=THREE.RepeatWrapping;a.repeat.set(Math.round(RL/6),1);strMatH.map=a;strMatH.needsUpdate=true;
+  var b=_roadTex();b.wrapS=b.wrapT=THREE.RepeatWrapping;b.repeat.set(1,Math.round(RL/6));strMatV.map=b;strMatV.needsUpdate=true;})();
 var strasse=new THREE.Mesh(new THREE.PlaneGeometry(RL,10),strMatH);
 strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.receiveShadow=true;scene.add(strasse);
 function _dashFrei(x){return Math.abs(Math.abs(x)-RX)>7.5&&Math.abs(Math.abs(x)-(RX-12))>4;} // nicht in Kreuzung/Zebra
@@ -472,9 +486,16 @@ var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_d
   strich.rotation.x=-Math.PI/2;strich.position.set(_dx,0.005,GH*CS/2+12);scene.add(strich);}
 // Trottoirs (erhoehte Gehwege) beidseitig aller Strassen — Strasse 10 breit, Kante bei ±5
 (function baueTrottoirs(){
-  var SZ9=GH*CS/2,tMat=stdMat(0xcfccc2,0.85),tMatV=stdMat(0xcfccc2,0.85);
-  ladeTex("textures/tex_cobble.png",42,1.2,function(t){tMat.map=t;tMat.color.setHex(0xd8d5cc);tMat.needsUpdate=true;});
-  ladeTex("textures/tex_cobble.png",1.2,26,function(t){tMatV.map=t;tMatV.color.setHex(0xd8d5cc);tMatV.needsUpdate=true;});
+  // Saubere helle Gehweg-Platten (statt unruhigem dunklem Kopfstein)
+  function _walkTex(long){var cv=document.createElement("canvas");cv.width=cv.height=128;var c=cv.getContext("2d");
+    c.fillStyle="#d0cdc4";c.fillRect(0,0,128,128);
+    c.strokeStyle="rgba(150,146,136,.55)";c.lineWidth=2;
+    for(var i=0;i<=128;i+=32){c.beginPath();c.moveTo(i,0);c.lineTo(i,128);c.stroke();c.beginPath();c.moveTo(0,i);c.lineTo(128,i);c.stroke();}
+    for(var s=0;s<400;s++){var v=(Math.random()*20)|0;c.fillStyle="rgba("+(150+v)+","+(146+v)+","+(136+v)+",0.05)";c.fillRect(Math.random()*128,Math.random()*128,2,2);}
+    return new THREE.CanvasTexture(cv);}
+  var SZ9=GH*CS/2,tMat=stdMat(0xd4d1c8,0.9),tMatV=stdMat(0xd4d1c8,0.9);
+  (function(){var s1=_walkTex();s1.wrapS=s1.wrapT=THREE.RepeatWrapping;s1.repeat.set(Math.round(RL/4),1);tMat.map=s1;tMat.needsUpdate=true;
+    var s2=_walkTex();s2.wrapS=s2.wrapT=THREE.RepeatWrapping;s2.repeat.set(1,Math.round(RL/4));tMatV.map=s2;tMatV.needsUpdate=true;})();
   function tr(w,d,x,z,h){var t=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),w>d?tMat:tMatV);
     t.position.set(x,h/2,z);t.receiveShadow=true;scene.add(t);}
   var RB=RX+5,LR=RL/2-RB; // Querstrassen-Kante + Randstueck-Laenge (keine Ueberschneidung mit Fahrbahnen)
@@ -894,8 +915,9 @@ function updVerkehr(dt){
         if(v.route.dir>0){if(_pv<=sl&&v.pos>sl)v.pos=sl;}
         else{if(_pv>=sl&&v.pos<sl)v.pos=sl;}}}
     var px,pz,fx=0,fz=0;
-    if(v.route.axis==="x"){px=v.pos;pz=v.route.z;fx=v.route.dir;v.mesh.position.set(px,v.homeY,pz);v.mesh.rotation.y=v.route.dir>0?Math.PI/2:-Math.PI/2;}
-    else{px=v.route.x;pz=v.pos;fz=v.route.dir;v.mesh.position.set(px,v.homeY,pz);v.mesh.rotation.y=v.route.dir>0?0:Math.PI;}
+    // Modell-Vorderachse ist +x -> Rotation entsprechend (vorher 90° verdreht = seitwaerts)
+    if(v.route.axis==="x"){px=v.pos;pz=v.route.z;fx=v.route.dir;v.mesh.position.set(px,v.homeY,pz);v.mesh.rotation.y=v.route.dir>0?0:Math.PI;}
+    else{px=v.route.x;pz=v.pos;fz=v.route.dir;v.mesh.position.set(px,v.homeY,pz);v.mesh.rotation.y=v.route.dir>0?-Math.PI/2:Math.PI/2;}
     if(v.kopf){var qx=fz,qz=-fx; // senkrecht zur Fahrtrichtung
       var opK=nn?1:0,opH=nn?0.85:0;
       for(var li=0;li<2;li++){var sd=li?1:-1;
@@ -1846,7 +1868,7 @@ function collectPickup(i){var pk=pickups[i];if(!pk||!pk.active)return;pk.active=
   hint((pk.gift?"🎁 Geschenk":"💰 Münze")+" gefunden! +"+pk.reward+" §");
   if(pk.gift&&typeof hearts==="function")hearts(pk.x,pk.z);
   if(MPs)netSend({t:"pickup",i:i,on:false});
-  setTimeout(function(){pk.active=true;pk.mesh.visible=true;if(MPs&&mpHost)netSend({t:"pickup",i:i,on:true});},30000);}
+  setTimeout(function(){pk.active=true;pk.mesh.visible=true;if(MPs&&mpHost)netSend({t:"pickup",i:i,on:true});},90000);} // 90s statt 30s: Muenzen nicht farmbar, Jobs lohnen sich
 function updPickups(dt,now){
   for(var i=0;i<pickups.length;i++){var pk=pickups[i];
     if(pk.active){pk.mesh.rotation.y+=dt*2.2;pk.mesh.position.y=1.1+Math.sin(now*0.004+pk.ph)*0.2;}
@@ -2076,9 +2098,9 @@ function loveEvent(kind,silent){
   if(!silent)netSend({t:"loveEv",k:kind});
   updHUD();}
 var CRIMES=[
- {n:"Bonbon-Automat knacken",e:"\U0001F36C",base:250,risk:0.25},
- {n:"Gemälde-Klau in der Galerie",e:"\U0001F5BC️",base:480,risk:0.35},
- {n:"BANK-COUP",e:"\U0001F3E6",base:900,risk:0.45}];
+ {n:"Bonbon-Automat knacken",e:"🍬",base:250,risk:0.25},
+ {n:"Gemälde-Klau in der Galerie",e:"🖼️",base:480,risk:0.35},
+ {n:"BANK-COUP",e:"🏦",base:900,risk:0.45}];
 function growSellAvailable(){var hh=uhrzeit/60;
   return running&&!crime.on&&!arbeiten&&(hh>=21||hh<5)&&!!growReif()&&!MG.on;}
 function crimeAvailable(){
@@ -2095,7 +2117,7 @@ function startCrime(jobIdx,withAccomplice,silent){
   var job=CRIMES[Math.min(jobIdx,CRIMES.length-1)];
   crime.on=true;crime.t=7;crime.job=job;crime.accomplice=!!withAccomplice;
   sims.forEach(function(s2){zielFrei(s2);s2.state="work";s2.pose="stand";s2.mesh.visible=false;});
-  hint("\U0001F576️ "+job.n+" läuft … "+(crime.accomplice?"MIT Komplize!":""));
+  hint("🕶️ "+job.n+" läuft … "+(crime.accomplice?"MIT Komplize!":""));
   if(!silent)netSend({t:"crimeGo",j:jobIdx,a:!!withAccomplice});
   updHUD();}
 function zielFrei(s9){if(s9.target&&s9.target.busy!==undefined)s9.target.busy=false;s9.target=null;s9.path=[];}
@@ -2115,7 +2137,7 @@ function finishCrime(){
   else{polizeiPending=true;wantedPlus(1);var strafe=Math.min(geld,Math.round(beute*0.6)+100);geld-=strafe;
     crimeScene(false,job,strafe);
     skillXp("krimi",1);
-    sims.forEach(function(s2){s2.needs.spass=Math.max(5,s2.needs.spass-25);simEmoji(s2,"\U0001F62C");});}
+    sims.forEach(function(s2){s2.needs.spass=Math.max(5,s2.needs.spass-25);simEmoji(s2,"😬");});}
   geldSend();
   netSend({t:"crimeEnd",ok:ok,j:CRIMES.indexOf(job),v:ok?beute:strafe});
   updHUD();}
@@ -2123,10 +2145,10 @@ function crimeScene(ok,job,betrag){
   var el=document.getElementById("romKiss");
   el.style.display="flex";
   if(ok){el.style.background="radial-gradient(circle at 50% 60%,rgba(20,60,20,.6),rgba(5,20,5,.92))";
-    document.getElementById("romTxt").innerHTML=job.e+" "+job.n+" GEGLÜCKT!<br>+"+betrag+" § Beute \U0001F911";
+    document.getElementById("romTxt").innerHTML=job.e+" "+job.n+" GEGLÜCKT!<br>+"+betrag+" § Beute 🤑";
     [523,659,784,1046].forEach(function(fq,i){setTimeout(function(){beep(fq,.14,"triangle",.06);},i*140);});}
   else{el.style.background="repeating-linear-gradient(90deg,rgba(30,30,150,.75) 0 40px,rgba(150,30,30,.75) 40px 80px)";
-    document.getElementById("romTxt").innerHTML="\U0001F693 ERWISCHT beim "+job.n+"!<br>−"+betrag+" § Strafe … das war knapp!";
+    document.getElementById("romTxt").innerHTML="🚓 ERWISCHT beim "+job.n+"!<br>−"+betrag+" § Strafe … das war knapp!";
     [300,240,300,240].forEach(function(fq,i){setTimeout(function(){beep(fq,.22,"square",.06);},i*240);});}
   setTimeout(function(){el.style.display="none";
     el.style.background="radial-gradient(circle at 50% 60%,rgba(60,10,40,.55),rgba(20,5,15,.92))";},3800);}
@@ -3207,16 +3229,22 @@ document.getElementById("buskBtn").onclick=function(){
 document.getElementById("crimeBtn").onclick=function(){
   if(!crimeAvailable())return;
   var lv=skills.krimi.lv,maxJob=Math.min(CRIMES.length-1,lv);
-  var wahl=CRIMES.map(function(c,i){return i<=maxJob?((i+1)+" = "+c.e+" "+c.n+" (~"+Math.round(c.base*(1+lv*0.4))+" §)"):null;}).filter(Boolean).join("\n");
-  var inp=prompt("🕶️ Welches krumme Ding? (Risiko steigt mit Beute)\n"+wahl+"\n\nNummer eingeben:","1");
-  var ji=Math.max(0,Math.min(maxJob,(parseInt(inp,10)||1)-1));
-  if(inp===null)return;
+  var box=document.getElementById("crimeWahlBtns");box.innerHTML="";
+  for(var i=0;i<=maxJob;i++){(function(ji){var c=CRIMES[ji];
+    var b=document.createElement("button");
+    b.style.cssText="border:0;border-radius:12px;padding:13px 14px;font-weight:800;cursor:pointer;font-size:.95rem;color:#fff;background:linear-gradient(90deg,#5a3a6e,#8a4a8e);text-align:left;min-height:44px;box-shadow:0 4px 12px rgba(60,30,80,.3)";
+    b.innerHTML=c.e+" "+c.n+" <span style='float:right;color:#ffd9a0;font-weight:900'>~"+Math.round(c.base*(1+lv*0.4))+" §</span>";
+    b.onclick=function(){document.getElementById("crimeWahl").style.display="none";crimeGo(ji);};
+    box.appendChild(b);})(i);}
+  document.getElementById("crimeWahl").style.display="flex";};
+document.getElementById("crimeWahlAbbr").onclick=function(){document.getElementById("crimeWahl").style.display="none";};
+function crimeGo(ji){
   mgStart("🔓 Tresor knacken","Timing entscheidet über deine Coup-Chance!",function(avg){
     crime.mgBonus=avg*0.25-0.08; // -8% bis +17%
     hint(avg>=0.8?"🔓 Sauber geknackt — beste Chancen!":(avg>0.3?"🔧 Ganz ok …":"💥 Das war laut! Riskant …"));
     if(MPs){crime.askJob=ji;netSend({t:"crimeAsk",j:ji,n:myName});hint("Warte auf Komplizen-Antwort … (10s)");
       crime.ask=true;setTimeout(function(){if(crime.ask){crime.ask=false;startCrime(ji,false);}},10000);}
-    else startCrime(ji,false);});};
+    else startCrime(ji,false);});}
 document.getElementById("delBtn").onclick=function(){delMode=!delMode;curItem=delMode?null:curItem;
   document.getElementById("delBtn").classList.toggle("on",delMode);renderPalette();refreshGhost();};
 document.getElementById("modeBtn").onclick=function(){buildMode=!buildMode;
@@ -3393,7 +3421,7 @@ function loop(now){
     document.getElementById("emoteToggle").style.display=(running&&!buildMode&&!fahren)?"block":"none";
     document.getElementById("micBtn").style.display=(running&&!buildMode&&!fahren&&MPs)?"block":"none";
     document.getElementById("pingBtn").style.display=(running&&!buildMode&&!fahren&&MPs)?"block":"none";
-    document.getElementById("hideBtn").style.display=(running&&!buildMode&&!fahren&&(!MPs||mpHost))?"block":"none";
+    document.getElementById("hideBtn").style.display=(running&&!buildMode&&!fahren&&MPs&&mpHost)?"block":"none"; // nur im Koop (Solo-Verstecken war "doof")
     if(MPs&&!mpHost){steerNetT-=dt;
       if(steerNetT<=0){steerNetT=0.09;var act9=steerActive();
         if(act9||steerWasActive){netFast({t:"steer",x:act9?steer.x:0,z:act9?steer.z:0});steerWasActive=act9;}}}
