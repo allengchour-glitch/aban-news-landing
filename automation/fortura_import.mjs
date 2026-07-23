@@ -15,6 +15,7 @@
  */
 import fs from 'node:fs';
 import { catTags } from './cat_tags.mjs';
+import { fortCatTags } from './fortura_cat.mjs';
 
 const CID = process.env.SHOPIFY_CLIENT_ID, CSEC = process.env.SHOPIFY_CLIENT_SECRET;
 const SHOP = 'au3j0y-hq.myshopify.com', LOC = 'gid://shopify/Location/109350125953';
@@ -197,7 +198,8 @@ for (const rec of recs.slice(0, LIMIT)) {
     + `<li>🔒 Kauf auf Rechnung mit Klarna · TWINT · Karten · PayPal · Apple Pay</li>`
     + `<li>💬 Schweizer Support: info@luxestyle.ch</li></ul>`;
   const slug = (normT(title).replace(/\s+/g,'-').slice(0,46)) + '-ft' + String(art).toLowerCase();
-  const tags = [...new Set(['fortura','dropship','ch-lager','schweiz-versand','neu', ...FT_TAGS, ...catTags(title)])];
+  const tags = [...new Set(['fortura','dropship','ch-lager','schweiz-versand','neu', ...FT_TAGS,
+    ...fortCatTags(rec['Grp-Bez'], rec['Kategorie'], title), ...catTags(title)])];
   const input = {
     title, handle: slug, productType: 'Fortura-CH', vendor: 'LuxeStyle', status: 'ACTIVE', tags, descriptionHtml: desc,
     seo: { title: `${title} | LuxeStyle`.slice(0,70), description: `${title} – schnelle CH-Lieferung aus der Schweiz, Gratis-Versand ab CHF 50.`.slice(0,320) },
