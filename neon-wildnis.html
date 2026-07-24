@@ -1592,9 +1592,11 @@ function updCritters(dt){
     if(c.t<=0){var a=Math.random()*6.28,rd=Math.random()*c.range;c.tx=c.hx+Math.cos(a)*rd;c.tz=c.hz+Math.sin(a)*rd;c.t=2+Math.random()*4;if(Math.random()<0.4){c.rest=1.5+Math.random()*3;}}
     var dx=c.tx-m.position.x,dz=c.tz-m.position.z,d=Math.hypot(dx,dz);
     if(d>0.4){var sp3=(c.follow>0)?Math.max(c.spd,1.7):c.spd; /* 🐕 sprintet beim Folgen */
-      var nx=m.position.x+dx/d*sp3*dt,nz=m.position.z+dz/d*sp3*dt;m.position.x=nx;m.position.z=nz;c.ph+=dt*(c.hop?9:5.5);
-      m.position.y=groundH(nx,nz)+(c.hop?Math.abs(Math.sin(c.ph))*0.28:0);
-      var ty=Math.atan2(dx,dz);var dyaw=ty-m.rotation.y;while(dyaw>Math.PI)dyaw-=6.283;while(dyaw<-Math.PI)dyaw+=6.283;m.rotation.y+=dyaw*Math.min(1,dt*6);
+      var nx=m.position.x+dx/d*sp3*dt,nz=m.position.z+dz/d*sp3*dt;
+      if(canWalk(nx,nz)){m.position.x=nx;m.position.z=nz;c.ph+=dt*(c.hop?9:5.5);
+      m.position.y=groundH(nx,nz)+(c.hop?Math.abs(Math.sin(c.ph))*0.28:0);}
+      else{var ba=Math.random()*6.28,brd=Math.random()*c.range;c.tx=c.hx+Math.cos(ba)*brd;c.tz=c.hz+Math.sin(ba)*brd;c.t=0.5+Math.random();} /* 🧱 nicht durch Häuser/Bäume — neues Ziel wählen */
+      var ty=Math.atan2(dx,dz)+Math.PI;var dyaw=ty-m.rotation.y; /* 🐾 Tier-GLBs forward=-Z → +180° sonst laufen sie rückwärts */while(dyaw>Math.PI)dyaw-=6.283;while(dyaw<-Math.PI)dyaw+=6.283;m.rotation.y+=dyaw*Math.min(1,dt*6);
       m.rotation.x=0;m.rotation.z=Math.sin(c.ph)*0.05;}
     else if(c.follow<=0){c.rest=1+Math.random()*2;}
   }
@@ -1611,7 +1613,7 @@ function loadCC0(files,onAll){
   function prog(){if(window.__loadProg)window.__loadProg(total-left,total);}
   files.forEach(function(name){
     new THREE.GLTFLoader().load("/models/"+name+".glb",function(g){
-      var o=g.scene;o.traverse(function(n){if(n.isMesh){n.castShadow=true;if(n.isSkinnedMesh)n.frustumCulled=false;}});
+      var o=g.scene;o.traverse(function(n){if(n.isMesh){n.castShadow=true;if(n.isSkinnedMesh)n.frustumCulled=false;if(n.material){var mats=n.material.length?n.material:[n.material];for(var mi=0;mi<mats.length;mi++){mats[mi].flatShading=false;mats[mi].needsUpdate=true;}}}}); /* 🐾 weniger kantig: glatte Schattierung erzwingen */
       var bb=new THREE.Box3().setFromObject(o);var h=Math.max(0.001,bb.max.y-bb.min.y);
       cc0proto[name]=o;cc0h[name]=h;cc0box[name]={x:Math.max(0.001,bb.max.x-bb.min.x),y:h,z:Math.max(0.001,bb.max.z-bb.min.z)};
       --left;prog();if(left<=0)onAll&&onAll();
