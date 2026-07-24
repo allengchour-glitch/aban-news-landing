@@ -569,10 +569,10 @@
 #done search:heated blanket usb
 #done search:mug warmer coffee
 #done search:desk lamp led dimmable
-search:matcha whisk set bamboo
-search:cloud slippers memory foam
-search:magnetic eyelashes eyeliner
-search:heatless curls rod headband
+#done search:matcha whisk set bamboo
+#done search:cloud slippers memory foam
+#done search:magnetic eyelashes eyeliner
+#done search:heatless curls rod headband
 search:oversized blanket hoodie
 search:acrylic phone stand desk
 search:knit beanie ribbed
