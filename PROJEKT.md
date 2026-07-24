@@ -13,6 +13,33 @@
 > Browser-CDP: automation/cdp-shot.mjs (Port 9222); PC-Brave aus Cloud nicht erreichbar.
 
 
+## 🔍 2026-07-24 — Externe Kritik (Kimi k3) eingeholt + „Urteil"-Format live
+> User bat um „Kimi-Kritik & Verbesserungen" und gab einen Kimi/Moonshot-API-Key (im Chat → **User muss
+> rotieren**; nicht gespeichert). Via `curl` an `api.moonshot.ai` mit Modell **kimi-k3** eine schonungslose
+> Conversion/Brand-Kritik geholt → voll in **`automation/KIMI-KRITIK.md`**.
+> **Umgesetzt (brand-safe, sofort):**
+> 1. **„Urteil"-Format** (Lohnt sich / Abwarten / Ignorieren) je News — Kimis stärkster Differenzierer.
+>    Echt gemacht: `draft_with_gemini.py` erzeugt eine `URTEIL:`-Zeile (redaktionelle Einschätzung, keine
+>    Fake-Zahl); `build_issue.py` parst sie sauber (kein Body-Leak, getestet) + rendert farbige Badges
+>    (v-yes/v-wait/v-no). Homepage: Lead-Text + Mail-Mock zeigen das Format (`.vtag`-Styles).
+> 2. **Echte Beispiel-Ausgabe direkt am Signup** (`/preview.html`-Link unter dem Formular) — stärkster
+>    Einzel-Conversion-Hebel bei Newslettern; Archiv existiert real (10+ Ausgaben), also ehrlich.
+> **Bewusst NICHT autonom** (User-/Business-Entscheidung, in KIMI-KRITIK.md notiert): Preise von der
+> Startseite entfernen; Gesicht+Story im Hero; Hand-Vertrieb 1 Post/Tag im Urteil-Format (LinkedIn/X).
+> Kimis Kernpunkt: der eigentliche Hebel ist Vertrieb/Vertrauen, nicht „mehr bauen".
+
+## 🔁 2026-06-29 — Loop: Ferien-Anspruch-Rechner (CH) live (Tool #145)
+> Autonomer 3-Brain-Loop (daily_improvement_scan + tool_brain + learn_tool_ideas, alle 100/100).
+> Neu gebaut: **`ferien-anspruch-rechner.html`** — anteilige Ferientage **pro rata** bei Ein-/Austritt
+> unterm Jahr, mit **Pensum** + Arbeitstagen/Woche; Ergebnis in Tagen **und** Wochen, optional „bereits
+> bezogen". Ehrlich: OR 329a = min. 4 Wo. (bis 20 J.: 5), als Input mit „Vertrag/GAV prüfen"-Disclaimer,
+> keine erfundenen Zahlen. Formel: Ferienwochen × Arbeitstage/Wo × Pensum × (gearb. Tage ÷ 365).
+> Getestet 01.07.–31.12.2026 (184 T = 50,4 %) → 10,08 Tage ≈ 2,02 Wo. ✓. JSON-LD (WebApplication+FAQPage),
+> JS, null-bytes, Math, interne Links alle clean; in online-tools.html + sitemap.xml + index-Footer +
+> „Passt dazu" verdrahtet (Links auf existierende Tools geprüft, keine Toten). Brain 2 = 145 Tools 100/100.
+> Backlog jetzt **11 offen / 8 abgedeckt**; nächste P2: Abnehm-Rechner (Kaloriendefizit, kalorien-defizit).
+
+
 ## 🟢 2026-06-25 — MEILENSTEIN: Cloudflare-KI-Bot-Sperre AUFGEHOBEN + AEO-Offensive live
 > **WICHTIGSTE NEUERUNG:** Die Cloudflare-Edge blockte bis 25.06. `PerplexityBot`/`ChatGPT-User`/`GPTBot`/
 > `ClaudeBot` mit **403** (Googlebot+Menschen kamen durch). Damit war jede AEO-Arbeit bei den KI-Engines

@@ -4,10 +4,9 @@
 > baut sie sauber (eigene Recherche/Quellen, keine erfundenen Zahlen), und beim nächsten
 > Lauf fällt sie via Bestands-Dedupe raus. Nicht manuell abarbeiten nötig.
 
-Stand: 2026-06-28 18:55 UTC · 12 offen · 7 bereits abgedeckt
+Stand: 2026-06-29 11:50 UTC · 11 offen · 8 bereits abgedeckt
 
 ## ▶️ Offen (nach Priorität)
-- **P2** `ferien-anspruch-rechner.html` — **Ferien-Anspruch-Rechner**: Anteilige Ferientage pro rata (Eintritt/Austritt, Pensum)
 - **P2** `kalorien-defizit.html` — **Abnehm-Rechner (Kaloriendefizit)**: Defizit & Dauer bis Zielgewicht (mit Disclaimer)
 - **P2** `koerperfett-rechner.html` — **Körperfett-Rechner**: Körperfettanteil per Umfang-Methode (US-Navy)
 - **P2** `quadratmeter-preis.html` — **Quadratmeterpreis-Rechner**: Preis pro m² aus Preis & Fläche (Miete/Kauf vergleichen)
@@ -27,4 +26,5 @@ Stand: 2026-06-28 18:55 UTC · 12 offen · 7 bereits abgedeckt
 - `eigenmietwert-rechner` → vorhanden als `eigenmietwert-rechner.html`
 - `benzin-vs-elektro` → vorhanden als `benzin-vs-elektro.html`
 - `leasing-vs-kauf` → vorhanden als `leasing-vs-kauf.html`
+- `ferien-anspruch-rechner` → vorhanden als `ferien-anspruch-rechner.html`
 - `seo-roi-rechner` → vorhanden als `seo-roi-rechner.html`

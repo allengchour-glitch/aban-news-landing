@@ -248,6 +248,18 @@ Web Analytics (`js/analytics.js`, Token fehlt noch).
 - Offen (nur User): `DOWNLOAD_SALT` in Cloudflare (Kit-Downloads), 3 Newsletter via beehiiv senden.
   YouTube-Ankündigungspaket bereit: `data/youtube-ankuendigung.md`.
 
+**2026-07-24 — 🔍 Externe Kritik (Kimi k3) + „Urteil"-Format live:** Zweitmeinung von kimi-k3 (Moonshot)
+zur Conversion eingeholt → `automation/KIMI-KRITIK.md`. Umgesetzt (brand-safe): **„Urteil"-Format**
+(Lohnt sich/Abwarten/Ignorieren) je News — echt gemacht in `draft_with_gemini.py` (URTEIL-Zeile) +
+`build_issue.py` (farbige Badges), auf der Homepage in Lead + Mail-Mock sichtbar; **Beispiel-Ausgabe-Link
+direkt am Signup**. Offen/nur User: Gesicht+Story im Hero, Preise auf Startseite (Business-Entscheidung),
+Hand-Vertrieb 1 Post/Tag im Urteil-Format. (Kimi-Key war im Chat → User muss ihn rotieren.)
+
+**2026-06-29 — 🔁 Tool-Loop (autonom):** Hub jetzt **145 Tools**. Neu: `eigenmietwert-rechner.html`,
+`seo-roi-rechner.html`, **`ferien-anspruch-rechner.html`** (CH, anteilige Ferientage pro rata + Pensum).
+Idee-Backlog `automation/tool-ideas-learned.md` = **11 offen / 8 abgedeckt**; nächste: kalorien-defizit,
+koerperfett, quadratmeter-preis, rentenluecke (CH), teilzeit-lohn, wasserbedarf. Beide Gehirne 100/100.
+
 **2026-06-28 (NEUE ROLLE) — 🎮🤖 aban Spielentwickler-Bot (User-Auftrag):**
 - Diese Session ist ab jetzt der **Spielentwickler von abannews** + vollautonomer KI-Bot, der **eigene
   Spiele erfindet (Meisterklasse)**, recherchiert, Ideen sammelt und sich laufend verbessert.
