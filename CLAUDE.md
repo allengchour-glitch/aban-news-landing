@@ -90,6 +90,10 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
    die letzten 25 IG-Posts ab und bricht bei gleicher Caption-Signatur (norm. erste 40 Zeichen) ab. Die WAHRHEIT
    auf IG schlägt jeden lokalen Ledger. Lesefehler → 3× Retry, dann Fallback auf lokale Wachen (blockt Posten nicht).
    Regel für JEDEN Post-Automaten: vor dem Post gegen die Plattform-Wahrheit prüfen, nicht nur gegen eigene Ledger.
+   **⛔ BILD-POSTER auch gehärtet (User 2026-07-24 «5 bilder gelöscht zu oft gepostet», IG-Doppelpost «Ring-Set
+   Eternità» ×2):** `social-autopost-meta.mjs` hatte nur URL-Dedup (postSeen) → griff nicht bei GLEICHEM Produkt
+   mit ANDERER Bild-URL. Fix: Caption-Signatur-Set (norm. erste 45 Zeichen, ohne Hashtags) + `igLiveHas()`
+   Live-IG-Abgleich vor jedem Post. Gilt jetzt für Reel- UND Bild-Poster.
    ⚠️ Meta-Token laufen ~alle 60 Tage ab (Page/User-Token 07-07/07-10 tot) → Löschen alter Doppelposts per API
    braucht frisches User-Token vom User; danach IG-`DELETE /{media-id}` möglich (Posts >500 Views NIE löschen).
 11. **💸 Gemini-Budget-Schutz (User lud 2026-07-06 CHF 50):** Kostentreiber war **VEO

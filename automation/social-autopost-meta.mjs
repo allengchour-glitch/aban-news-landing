@@ -150,12 +150,37 @@ console.log(`Konfigurierte Kanäle: ${configured.join('+')||'(keine, DRY)'} · r
 if(!DRY) postLock();                        // ⛔ gemeinsamer Lock mit allen Postern
 let postedCount = 0, anyFail = false;
 
+// ⛔ INHALTS-SPERRE: Caption-Signatur (norm. erste 45 Zeichen) — fängt Dubletten auch bei ANDERER Bild-URL
+//    (gleiches Produkt, anderes Foto → «Ring-Set Eternità»-Doppelpost). Lokaler Ledger + Live-IG-Abgleich.
+const capSig = s => (s||'').toLowerCase().replace(/[#@].*/s,'').replace(/[^a-z0-9 ]/g,'').replace(/\s+/g,' ').trim().slice(0,45);
+const postedCaps = new Set(data.filter(r=>/^posted/.test((r[idx.status]||'').trim())).map(r=>capSig(r[idx.caption]||'')).filter(Boolean));
+async function igLiveHas(caption){
+  const want=capSig(caption); if(!want||!IG_ID||!IG_TOK) return false;
+  for(let a=0;a<3;a++){
+    try{ const r=await fetch(`https://graph.facebook.com/${V}/${IG_ID}/media?fields=caption&limit=25&access_token=${encodeURIComponent(IG_TOK)}`);
+      const j=await r.json();
+      if(Array.isArray(j.data)){ return j.data.some(p=>capSig(p.caption)===want); }
+    }catch{}
+    await new Promise(x=>setTimeout(x,2000*(a+1)));
+  }
+  console.error('⚠️ IG-Live-Abgleich nicht erreichbar → nur lokale Wachen.'); return false;
+}
+
 for(const next of ready.slice(0, MAX)){
   const imageUrl = next[idx.image_url].trim();
   const caption = next[idx.caption] || '';
   if(!DRY && postSeen(imageUrl)){           // ⛔ Bild schon je gepostet → nie zweimal
     console.log(`   ⛔ Bild schon gepostet (gemeinsamer Ledger) → skip: ${imageUrl}`);
     next[idx.status] = 'posted-dup-skip'; fs.writeFileSync(CSV, serialize(rows)); continue;
+  }
+  const sig = capSig(caption);
+  if(!DRY && sig && postedCaps.has(sig)){    // ⛔ gleiches Produkt/Caption schon gepostet (andere Bild-URL)
+    console.log(`   ⛔ Caption schon gepostet (Inhalts-Sperre) → skip: ${sig}`);
+    next[idx.status] = 'posted-dup-caption'; fs.writeFileSync(CSV, serialize(rows)); continue;
+  }
+  if(!DRY && await igLiveHas(caption)){      // ⛔ auf IG bereits live (Wahrheit schlägt Ledger)
+    console.log(`   ⛔ Auf IG bereits live (Live-Abgleich) → skip: ${sig}`);
+    next[idx.status] = 'posted-dup-live'; postMark(imageUrl); fs.writeFileSync(CSV, serialize(rows)); continue;
   }
   if(!isJpg(imageUrl)){
     console.error(`⏭️  Übersprungen (keine JPG-URL, Meta-Pflicht): ${imageUrl}`);
@@ -177,6 +202,7 @@ for(const next of ready.slice(0, MAX)){
   const got = results.filter(x => x && x!==false);
   if(got.length>0){
     if(results[0] && results[0]!==false) postMark(imageUrl);   // IG ok → sofort in gemeinsamen Ledger
+    if(sig) postedCaps.add(sig);                               // Inhalts-Sperre für Folge-Zeilen im selben Lauf
     next[idx.status] = 'posted';
     next[idx.posted_at] = new Date().toISOString();
     next[idx.post_url] = got[0];
