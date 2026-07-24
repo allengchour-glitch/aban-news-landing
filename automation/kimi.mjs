@@ -5,7 +5,7 @@
 import fs from 'node:fs';
 const KEY = (process.env.KIMI_KEY || (fs.existsSync('/tmp/kimi_key') ? fs.readFileSync('/tmp/kimi_key','utf8').trim() : '')).trim();
 const EP = 'https://api.moonshot.ai/v1/chat/completions';
-const MODEL = process.env.KIMI_MODEL || 'kimi-k2.6';
+const MODEL = process.env.KIMI_MODEL || 'kimi-k3';   // k3 liefert sauberen content (k2.6 war Reasoning-Modus → Antwort nur in reasoning_content)
 
 export async function kimi(system, user, opts = {}) {
   if (!KEY) throw new Error('Kein Kimi-Key (/tmp/kimi_key)');
