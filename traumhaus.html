@@ -705,6 +705,22 @@ var dorfFenster=[];
   [-38,-20,20,34].forEach(function(hx){haus(hx,SZ+23.5,Math.PI,seed++);});
   [-42,2,44].forEach(function(hz){haus(-(RX+11),hz,Math.PI/2,seed++);});
   [-44,4].forEach(function(hz){haus(RX+11,hz,-Math.PI/2,seed++);}); // zwischen den Hauptstrassen: nichts ragt in Fahrbahn/Gehweg
+  // Vorgaerten: Plattenweg zur Tuer + Hecken + Blumen (Haeuser wirkten wegelos im Gras)
+  var heckM=stdMat(0x3e6e38,0.95),wegM=stdMat(0xcfc8b8,0.9),
+      blumG=new THREE.SphereGeometry(0.1,6,5),BLF=[0xffd94a,0xff7ab0,0xffffff,0xff5a4a];
+  function vorgarten(hx,hz,dir){ // dir=+1: Strasse liegt Richtung +z
+    var weg9=new THREE.Mesh(new THREE.PlaneGeometry(1.1,2.0),wegM);
+    weg9.rotation.x=-Math.PI/2;weg9.position.set(hx,0.012,hz+dir*4.2);weg9.receiveShadow=true;scene.add(weg9);
+    [-2.7,2.7].forEach(function(off){
+      var he=new THREE.Mesh(new THREE.BoxGeometry(3.2,0.5,0.45),heckM);
+      he.position.set(hx+off,0.25,hz+dir*4.7);he.castShadow=true;scene.add(he);});
+    for(var b9=0;b9<3;b9++){
+      var bl=new THREE.Mesh(blumG,new THREE.MeshStandardMaterial({color:BLF[(b9+hx&3)>=0?(b9+Math.abs(hx|0))%4:0],roughness:0.7}));
+      bl.position.set(hx+(b9-1)*1.5,0.18,hz+dir*3.6);scene.add(bl);
+      var st9=new THREE.Mesh(new THREE.CylinderGeometry(0.02,0.03,0.22,4),heckM);
+      st9.position.set(bl.position.x,0.09,bl.position.z);scene.add(st9);}}
+  [-38,-26,-14,-2,10,22,34].forEach(function(hx){vorgarten(hx,-SZ-23.5,1);});  // Nordreihe -> Strasse im Sueden(+z)
+  [-38,-20,20,34].forEach(function(hx){vorgarten(hx,SZ+23.5,-1);});           // Suedreihe -> Strasse im Norden(-z)
   // Baeume + Hecken + Laternen
   function baum(x,z,k){var b=new THREE.Group();
     var st4=new THREE.Mesh(new THREE.CylinderGeometry(0.14,0.2,1.4,7),stdMat(0x6a4a30,0.8));st4.position.y=0.7;b.add(st4);
