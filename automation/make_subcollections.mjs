@@ -29,7 +29,7 @@ async function previewCount(terms){
   const r=await gql(`query($q:String!){productsCount(query:$q){count}}`,{q});
   return r.data?.productsCount?.count ?? 0;
 }
-async function exists(handle){ const r=await gql(`query($q:String!){collections(first:1,query:$q){edges{node{id}}}}`,{q:'handle:'+handle}); return r.data?.collections?.edges?.[0]?.node?.id||null; }
+async function exists(handle){ const r=await gql(`query($q:String!){collections(first:5,query:$q){edges{node{id handle}}}}`,{q:'handle:'+handle}); return r.data?.collections?.edges?.find(e=>e.node.handle===handle)?.node?.id||null; }  // exakt, kein Fuzzy
 
 TOK=await scc();
 for(const s of SPEC){
