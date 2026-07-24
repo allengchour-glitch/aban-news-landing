@@ -17,7 +17,7 @@ for(let p=0;p<120;p++){
   for(const {node:n} of r.data.products.edges){scanned++;
     if(OLD.test(n.handle)){
       await gql(`mutation($id:ID!){productUpdate(input:{id:$id,status:DRAFT,tags:["alt-einzelgroesse-ersetzt"]}){userErrors{message}}}`,{id:n.id});
-      drafted++; await sleep(150);
+      drafted++; await sleep(60);
     }
   }
   if(!r.data.products.pageInfo.hasNextPage)break; cursor=r.data.products.pageInfo.endCursor;
