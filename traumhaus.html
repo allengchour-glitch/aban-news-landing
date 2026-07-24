@@ -374,7 +374,10 @@ ladeTex("textures/th/rasen.jpg",13,10,function(t){rasen.material.map=t;rasen.mat
   for(var h=0;h<14;h++){var a=h/14*6.283,r=95+((h*37)%40);
     var hx0=Math.cos(a)*r,hz0=Math.sin(a)*r;
     if(Math.hypot(hx0-(-90),hz0-80)<42)continue; // nicht in den See ragen
-    var hue=new THREE.Mesh(new THREE.SphereGeometry(14+((h*7)%12),14,8,0,6.283,0,Math.PI/2),hMat);
+    var hR=14+((h*7)%12);
+    if(Math.abs(hx0)<92+hR&&Math.abs(Math.abs(hz0)-(GH*CS/2+12))<5+hR)continue; // nicht auf Hauptstrassen
+    if(Math.abs(Math.abs(hx0)-RX)<5+hR&&Math.abs(hz0)<78+hR)continue; // nicht auf Querstrassen
+    var hue=new THREE.Mesh(new THREE.SphereGeometry(hR,14,8,0,6.283,0,Math.PI/2),hMat);
     hue.position.set(hx0,-3-((h*3)%4),hz0);
     hue.scale.y=0.32+((h%3)*0.06);hue.receiveShadow=true;scene.add(hue);}
   // Blumenfelder (Cluster kleiner farbiger Punkte) auf der fernen Wiese
@@ -425,7 +428,8 @@ ladeTex("textures/th/rasen.jpg",13,10,function(t){rasen.material.map=t;rasen.mat
   var see=new THREE.Mesh(new THREE.CircleGeometry(0.01,3),new THREE.MeshBasicMaterial({visible:false}));
   see.rotation.x=-Math.PI/2;see.position.set(-90,-0.03,80);scene.add(see);
   // Ufersteine folgen der echten Uferkurve (knapp ausserhalb des Wassers)
-  for(var sr=0;sr<10;sr++){var sa=sr/10*6.283+0.3;var stein=new THREE.Mesh(new THREE.DodecahedronGeometry(0.45+Math.sin(sr*3)*0.18,0),new THREE.MeshStandardMaterial({color:sr%2?0x6a6558:0x565043,roughness:1,metalness:0,envMapIntensity:0.25}));stein.position.set(-90+Math.cos(sa)*(seeR(sa)+1.0),0.04,80+Math.sin(sa)*(seeR(sa)+1.0));stein.rotation.set(Math.random(),Math.random()*6,Math.random());stein.castShadow=true;scene.add(stein);}
+  for(var sr=0;sr<10;sr++){var sa=sr/10*6.283+0.3;var stein=new THREE.Mesh(new THREE.DodecahedronGeometry(0.45+Math.sin(sr*3)*0.18,0),new THREE.MeshStandardMaterial({color:sr%2?0x6a6558:0x565043,roughness:1,metalness:0,envMapIntensity:0.25}));var stz=80+Math.sin(sa)*(seeR(sa)+1.0);if(stz<65)continue; // nicht ins Strassenband
+    stein.position.set(-90+Math.cos(sa)*(seeR(sa)+1.0),0.04,stz);stein.rotation.set(Math.random(),Math.random()*6,Math.random());stein.castShadow=true;scene.add(stein);}
   // Viele Baeume rings um die Stadt (prozedural, gestreut)
   function baum2(x,z,k){var b=new THREE.Group();
     var st=new THREE.Mesh(new THREE.CylinderGeometry(0.18,0.28,1.8,7),new THREE.MeshStandardMaterial({color:0x6a4a30,roughness:0.9}));st.position.y=0.9;b.add(st);
@@ -435,6 +439,8 @@ ladeTex("textures/th/rasen.jpg",13,10,function(t){rasen.material.map=t;rasen.mat
     var tx=Math.cos(ta)*tr+(Math.random()-0.5)*20,tz=Math.sin(ta)*tr+(Math.random()-0.5)*20; // Jitter gegen Reihen-Wirkung
     if(Math.abs(tx)<GW*CS/2+4&&Math.abs(tz)<GH*CS/2+6)continue;
     if(Math.hypot(tx+90,tz-80)<19)continue; // nicht in den See
+    if(Math.abs(Math.abs(tz)-(GH*CS/2+12))<8&&Math.abs(tx)<94)continue; // nicht auf/an Hauptstrassen
+    if(Math.abs(Math.abs(tx)-RX)<8&&Math.abs(tz)<78)continue; // nicht auf/an Querstrassen
     baum2(tx,tz,0.7+Math.random()*1.0);}
   // ---- Breiter Fluss quer durch die Landschaft (Norden) ----
   machWasser(240,16,0,-78,32);
@@ -686,19 +692,19 @@ var dorfFenster=[];
     (window._immo=window._immo||[]).push({x:x,z:z,grp:g,preis:1800+(seed%5)*600,h:h});}
   // Haeuserzeilen: hinter Nord-/Suedstrasse + entlang der Querstrassen
   var seed=1;
-  [-38,-26,-14,-2,10,22,34].forEach(function(hx){haus(hx+((seed*3)%3),-SZ-19,0,seed++);});
-  [-38,-20,20,34].forEach(function(hx){haus(hx,SZ+19,Math.PI,seed++);});
-  [-SZ-4,2,SZ+6].forEach(function(hz){haus(-(RX+7),hz,Math.PI/2,seed++);});
-  [-SZ-2,4].forEach(function(hz){haus(RX+7,hz,-Math.PI/2,seed++);});
+  [-38,-26,-14,-2,10,22,34].forEach(function(hx){haus(hx+((seed*3)%3),-SZ-23.5,0,seed++);});
+  [-38,-20,20,34].forEach(function(hx){haus(hx,SZ+23.5,Math.PI,seed++);});
+  [-42,2,44].forEach(function(hz){haus(-(RX+11),hz,Math.PI/2,seed++);});
+  [-44,4].forEach(function(hz){haus(RX+11,hz,-Math.PI/2,seed++);}); // zwischen den Hauptstrassen: nichts ragt in Fahrbahn/Gehweg
   // Baeume + Hecken + Laternen
   function baum(x,z,k){var b=new THREE.Group();
     var st4=new THREE.Mesh(new THREE.CylinderGeometry(0.14,0.2,1.4,7),stdMat(0x6a4a30,0.8));st4.position.y=0.7;b.add(st4);
     for(var c4=0;c4<3;c4++){var kr=new THREE.Mesh(new THREE.SphereGeometry(0.85-c4*0.16,9,7),stdMat(c4%2?0x3a7a3a:0x4a8a44,0.7));
       kr.position.set((c4-1)*0.35,1.7+c4*0.5,(c4%2-0.5)*0.3);kr.castShadow=true;b.add(kr);}
     b.scale.setScalar(k||1);b.position.set(x,0,z);scene.add(b);}
-  [[-33,-SZ-20,1.1],[-8,-SZ-4.5,0.9],[16,-SZ-20,1.2],[40,-SZ-4.2,1],[-40,SZ+20,1.1],[8,SZ+4,1.3],[42,SZ+20,0.9],[-(RX+6),-SZ+8,1.2],[RX+6,SZ-4,1.1]].forEach(function(p){baum(p[0],p[1],p[2]);}); // von der verbreiterten Strasse auf Gruenstreifen/Aussenseite
+  [[-33,-SZ-20,1.1],[-8,-SZ-4.5,0.9],[16,-SZ-20,1.2],[40,-SZ-4.2,1],[-40,SZ+20,1.1],[8,SZ+4,1.3],[42,SZ+20,0.9],[-(RX+8.5),-SZ+8,1.2],[RX+8.5,SZ-4,1.1]].forEach(function(p){baum(p[0],p[1],p[2]);}); // von der verbreiterten Strasse auf Gruenstreifen/Aussenseite
   // Laternen an der Hauptstrasse (emissive Kugeln, Bloom uebernimmt das Leuchten)
-  [[-30,SZ+5.9],[0,SZ+5.9],[30,SZ+5.9],[-30,-SZ-5.9],[30,-SZ-5.9]].forEach(function(p){ // Laternen aufs Trottoir
+  [[-30,SZ+4.6],[0,SZ+4.6],[30,SZ+4.6],[-30,-SZ-4.6],[30,-SZ-4.6]].forEach(function(p){ // Laternen an die Gehwegkante — Lauflinie frei
     var lg=new THREE.Group();
     var mast=new THREE.Mesh(new THREE.CylinderGeometry(0.07,0.09,3.1,7),stdMat(0x3a3a42,0.5));mast.position.y=1.55;lg.add(mast);
     var kopf=new THREE.Mesh(new THREE.SphereGeometry(0.2,10,8),
@@ -732,7 +738,7 @@ var dorfFenster=[];
   // Wohnbloecke hinter der Nordstrasse (2. Reihe) + Osten/Westen
   block(-30,-SZ-32,0,3,10,7,0xcfc4b0);block(-14,-SZ-33,0,4,9,7,0xb8c0c8);
   block(4,-SZ-32,0,3,11,7,0xd8cabc);block(22,-SZ-33,0,4,8,7,0xc4b8a8);
-  block(-62,-6,Math.PI/2,3,12,7,0xccc2b4);block(62,2,-Math.PI/2,4,10,7,0xbec6cc);
+  block(-79,-18,Math.PI/2,3,12,7,0xccc2b4);block(79,18,-Math.PI/2,4,10,7,0xbec6cc); // hinter die Querstrassen — standen auf der Fahrbahn
   block(-60,SZ+26,Math.PI/2,3,9,7,0xd0c8ba);block(60,SZ+28,-Math.PI/2,3,9,7,0xc8bcae);
   // Kirche mit Turm + Spitze
   (function(){var g=new THREE.Group();
@@ -775,7 +781,7 @@ var dorfFenster=[];
     var klima=new THREE.Mesh(new THREE.BoxGeometry(w*0.24,0.7,w*0.24),stdMat(0x8a8a92,0.5));klima.position.set(w*0.22,h+0.85,-w*0.18);g.add(klima);
     var ant=new THREE.Mesh(new THREE.CylinderGeometry(0.05,0.07,2.6,5),stdMat(0x3a3a42,0.4));ant.position.set(w*0.1,h+1.8,w*0.1);g.add(ant);
     g.position.set(x,0,z);scene.add(g);}
-  [[-80,-70,12,7,0x9aa8bc],[80,-64,10,6,0x88a0b8],[-84,58,14,8,0xa0b0c0],[86,66,11,7,0x94a4b8],[0,-88,13,7,0x9caabe],[-6,90,9,6,0x8ea6ba]].forEach(function(t){turm(t[0],t[1],t[2],t[3],t[4]);});
+  [[-80,-72,12,7,0x9aa8bc],[80,-76,10,6,0x88a0b8],[-84,74,14,8,0xa0b0c0],[86,74,11,7,0x94a4b8],[0,-88,13,7,0x9caabe],[-6,90,9,6,0x8ea6ba]].forEach(function(t){turm(t[0],t[1],t[2],t[3],t[4]);}); // alle Tuerme klar hinter den Strassen
   // ---- Neon-Ladenschilder (leuchten immer) ----
   var NEON=[[-8,"🍞",0xff5a7a],[-1,"💉",0x3ad0ff],[6,"🍎",0x6aff8a]];
   NEON.forEach(function(n){
@@ -1119,11 +1125,11 @@ setTimeout(function baueGebaeude(){
   bau("th3_brezelstand.glb",1.9,19,0,70.5,Math.PI,false);
   // Strassen-Deko
   bau("th3_kiosk.glb",3.0,-16,0,-69,0,false);
-  bau("th3_litfass.glb",2.8,14,0,51.9,0,false);
-  bau("th3_briefkasten.glb",1.15,-12,0,51.9,Math.PI,false);
-  bau("th3_hydrant.glb",0.8,30,0,51.9,0,false);
-  bau("th3_bushalte.glb",2.4,-15,0,50.6,0,false);
-  bau("th3_blumenkuebel.glb",0.7,0,0,51.5,0,false);
+  bau("th3_litfass.glb",2.8,14,0,50.1,0,false);
+  bau("th3_briefkasten.glb",1.15,-12,0,50.2,Math.PI,false);
+  bau("th3_hydrant.glb",0.8,30,0,50.3,0,false);
+  bau("th3_bushalte.glb",2.4,-15,0,49.7,0,false);
+  bau("th3_blumenkuebel.glb",0.7,0,0,50.2,0,false);
   bau("th3_blumenkuebel.glb",0.7,84,0,-31,0,false);
   // See: Steg + Ruderboot
   bau("th3_steg.glb",0.8,-80,0,73,-Math.PI/4,false);
@@ -1142,11 +1148,11 @@ setTimeout(function baueGebaeude(){
   // Blüten-Büsche an Park + Marktzeile
   bau("th4_busch_blueten.glb",1.15,90,0,-30,0,false);bau("th4_busch_blueten.glb",1.1,10,0,65,1,false);
   // Verkehrsschilder auf den Trottoirs
-  bau("th4_schild_stop.glb",2.4,-58,0,-51.9,0,false);bau("th4_schild_tempo.glb",2.45,40,0,51.9,Math.PI,false);
+  bau("th4_schild_stop.glb",2.4,-58,0,-50.2,0,false);bau("th4_schild_tempo.glb",2.45,40,0,50.2,Math.PI,false);
   // Moderne Laternen an der Süd-Außenseite
   bau("th4_laterne_modern.glb",4.5,-45,0,64.2,Math.PI,false);bau("th4_laterne_modern.glb",4.5,45,0,64.2,Math.PI,false);
   // Mülleimer (Haltestelle + Spielplatz)
-  bau("th4_muelleimer.glb",0.9,-5,0,51.9,0,false);bau("th4_muelleimer.glb",0.9,80,0,7,0,false);
+  bau("th4_muelleimer.glb",0.9,-5,0,50.2,0,false);bau("th4_muelleimer.glb",0.9,80,0,7,0,false);
   // Zaun am Bauernhof-Gehege
   [-27,-31,-35,-39].forEach(function(zz){bau("th4_zaun_holz.glb",0.95,-73,0,zz,Math.PI/2,false);bau("th4_zaun_holz.glb",0.95,-89,0,zz,Math.PI/2,false);});
   [-75,-79,-83,-87].forEach(function(xx){bau("th4_zaun_holz.glb",0.95,xx,0,-25,0,false);bau("th4_zaun_holz.glb",0.95,xx,0,-41,0,false);});
@@ -1914,7 +1920,7 @@ function updVerstecken(dt){
   if((!MPs||mpHost)&&d<3)endeVerstecken(true);}
 // ---- Collectibles: Muenzen & Geschenke ueber die Map einsammeln ----
 var pickups=[];
-var PICKPOS=[[30,20],[-35,25],[40,-30],[-40,-28],[64,10],[-64,-6],[16,-62],[-22,64],[72,-56],[-72,58],[54,-52],[-54,50]];
+var PICKPOS=[[30,20],[-35,25],[40,-30],[-40,-28],[74,10],[-74,-6],[16,-70],[-22,70],[76,-70],[-76,70],[54,-50],[-54,50]]; // keine Pickup-Boxen auf Fahrbahnen
 setTimeout(function bauePickups(){
   PICKPOS.forEach(function(p,i){
     var gift=(i%4===0),reward=gift?120:30;
