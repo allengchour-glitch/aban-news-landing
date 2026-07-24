@@ -22,7 +22,10 @@ export async function kimi(system, user, opts = {}) {
       const r = await fetch(EP, { method:'POST', headers:{ 'Content-Type':'application/json', 'Authorization':`Bearer ${KEY}` }, body: JSON.stringify(body), signal: ctrl.signal });
       clearTimeout(to);
       const j = await r.json();
-      if (j.choices?.[0]?.message?.content) return j.choices[0].message.content;
+      const msg = j.choices?.[0]?.message;
+      // kimi-k2.6 ist ein Reasoning-Modell: echte Antwort in content, Denken in reasoning_content (Fallback)
+      const content = (msg?.content && msg.content.trim()) ? msg.content : (msg?.reasoning_content || '');
+      if (content && content.trim()) return content;
       if (j.error) { console.error('Kimi-Fehler:', j.error.message); if (a<2) { await new Promise(x=>setTimeout(x,3000)); continue; } return null; }
     } catch (e) { clearTimeout(to); console.error('Kimi-Timeout/Fehler, Versuch', a+1, e.message); }
     await new Promise(x=>setTimeout(x, 3000*(a+1)));
