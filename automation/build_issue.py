@@ -38,7 +38,7 @@ except Exception:            # noqa: BLE001
     gen_chart = None
 
 SITE = os.environ.get("ABAN_SITE_URL", "https://abannews.com").rstrip("/")
-LABELS = ("INTRO", "UPDATE", "WAS", "QUELLE", "BILD", "TIEFER", "TOOL", "PROMPT", "OUTRO")
+LABELS = ("INTRO", "UPDATE", "URTEIL", "WAS", "QUELLE", "BILD", "TIEFER", "TOOL", "PROMPT", "OUTRO")
 LABEL_RE = re.compile(r"^\s*[#*>\s]*(" + "|".join(LABELS) + r")\s*:\s*(.*)$", re.I)
 
 
@@ -69,8 +69,13 @@ def parse(md: str) -> dict:
             if lab == "INTRO":
                 state = "intro"
             elif lab == "UPDATE":
-                updates.append({"headline": val, "body": [], "was": [], "quelle": "", "bild": ""})
+                updates.append({"headline": val, "body": [], "was": [], "quelle": "", "bild": "", "urteil": ""})
                 state = "ubody"
+                continue
+            elif lab == "URTEIL":
+                if updates:
+                    updates[-1]["urteil"] = val
+                state = None
                 continue
             elif lab == "WAS":
                 state = "was"
@@ -100,6 +105,25 @@ def parse(md: str) -> dict:
     return {"intro": " ".join(intro).strip(), "updates": updates,
             "tiefer": "\n".join(tiefer).strip(), "tool": " ".join(tool).strip(),
             "prompt": "\n".join(prompt).strip(), "outro": " ".join(outro).strip()}
+
+
+def verdict_badge(urteil: str) -> str:
+    """Rendert das redaktionelle Urteil (Lohnt sich / Abwarten / Ignorieren) als farbiges Badge."""
+    low = urteil.lower()
+    if "lohnt" in low:
+        cls, label = "v-yes", "Lohnt sich"
+    elif "ignorier" in low:
+        cls, label = "v-no", "Ignorieren"
+    else:
+        cls, label = "v-wait", "Abwarten"
+    # optionale Begründung nach dem Trennstrich mitnehmen
+    rest = ""
+    for sep in ("—", "–", "-", ":"):
+        if sep in urteil:
+            rest = urteil.split(sep, 1)[1].strip()
+            break
+    tail = f" <span class=src>{html.escape(rest)}</span>" if rest else ""
+    return f"<div><span class='verdict {cls}'>{label}</span>{tail}</div>"
 
 
 def _add(state, val, buf, updates):
@@ -218,6 +242,8 @@ def render(s: dict, date: str, imgdir: Path, sub: str | None = None) -> str:
            f"a{{color:{A}}}.card{{background:#fff;border:1px solid #ece3d4;border-radius:14px;padding:1.1rem 1.2rem;margin:1.2rem 0}}"
            f".was{{background:#fffaf0;border-left:3px solid {A};border-radius:8px;padding:.7rem .9rem;margin:.6rem 0;font-size:.97rem}}"
            ".src{font-size:.85rem;color:#6b7280}"
+           ".verdict{display:inline-block;font-size:.78rem;font-weight:800;letter-spacing:.02em;text-transform:uppercase;padding:.18rem .6rem;border-radius:999px;margin:.2rem 0 .5rem}"
+           ".v-yes{background:#dcfce7;color:#166534}.v-wait{background:#fef3c7;color:#92400e}.v-no{background:#fee2e2;color:#991b1b}"
            f".prompt{{background:#1c2530;color:#f3f4f6;border-radius:12px;padding:1rem 1.2rem}}.prompt pre{{white-space:pre-wrap;margin:0;font-size:.92rem}}"
            f".cta{{text-align:center;margin:2rem 0}}.cta a{{display:inline-block;background:{A};color:#fff;text-decoration:none;font-weight:700;padding:12px 24px;border-radius:10px}}"
            ".cap{font-size:.82rem;color:#6b7280;text-align:center;margin:.2rem 0 0}")
@@ -240,6 +266,8 @@ def render(s: dict, date: str, imgdir: Path, sub: str | None = None) -> str:
                                    prefer="pexels" if i % 2 == 0 else "ai"))
         H.append("<div class=card>")
         H.append(f"<h2 style='margin-top:0'>{html.escape(u['headline'])}</h2>")
+        if u.get("urteil"):
+            H.append(verdict_badge(u["urteil"]))
         H.append(img_tag(rel_url(img, sub), u["headline"]))
         H.append(paras(" ".join(u["body"])))
         if u["was"]:

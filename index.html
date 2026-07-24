@@ -104,6 +104,8 @@
     .nl{list-style:none;margin:0;padding:0}
     .nl li{display:flex;gap:.6rem;padding:.5rem 0;font-size:.92rem;border-bottom:1px solid var(--line)}
     .nl li:last-child{border-bottom:0}.nl .mk{color:var(--amber);font-weight:800}
+    .vtag{margin-left:auto;align-self:center;white-space:nowrap;font-size:.66rem;font-weight:800;text-transform:uppercase;letter-spacing:.03em;padding:.12rem .5rem;border-radius:999px}
+    .vtag.vy{background:#dcfce7;color:#166534}.vtag.vw{background:#fef3c7;color:#92400e}.vtag.vn{background:#fee2e2;color:#991b1b}
 
     /* trust band */
     .stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
@@ -299,7 +301,7 @@
       <div>
         <span class="pill"><span class="pulse"></span> Mo–Fr · kuratiert von Aban in der Schweiz</span>
         <h1>Die wichtigsten <span class="hl">KI-Updates</span> für DACH-Profis — jeden Morgen in 5&nbsp;Minuten.</h1>
-        <p class="lead">Jeden Werktag 7:30 Uhr die 3 KI-Entwicklungen, die dein Business heute betreffen — plus 1 getestetes Tool und 1 Prompt. Ehrlich, ohne Hype.</p>
+        <p class="lead">Jeden Werktag 7:30 Uhr die 3 KI-Entwicklungen, die dein Business heute betreffen — jede mit klarem Urteil: <b>lohnt sich, abwarten oder ignorieren</b>. Plus 1 getestetes Tool und 1 Prompt. Ehrlich, ohne Hype.</p>
         <form class="cta" id="signup" action="https://abannews.beehiiv.com/subscribe" method="get" novalidate>
           <input type="email" name="email" placeholder="deine@mail.de" required autocomplete="email" inputmode="email" aria-label="E-Mail-Adresse">
           <button type="submit" class="btn btn--amber">5-Min-Briefing gratis →</button>
@@ -308,6 +310,7 @@
           <span>Ich willige ein, Mo–Fr eine E-Mail zu erhalten. Bestätigung per Double-Opt-in, Abmeldung jederzeit per Klick. <a href="/datenschutz.html">Datenschutz</a>.</span></label>
         <div class="subcta"><span><b>DSGVO</b>-konform</span><span><b>1-Klick</b>-Abmeldung</span><span>kein Tracking-Pixel</span><span>kein Affiliate-Müll</span></div>
         <p class="leadmag">Gratis-Geschenk zum Reinkommen: <a href="/downloads/10-ki-prompts.pdf">10 erprobte KI-Prompts (PDF) →</a></p>
+        <p class="leadmag">Lieber erst reinschauen? <a href="/preview.html">Echte Beispiel-Ausgabe lesen →</a></p>
         <p class="track">📈 <span><b>Über 25 Ausgaben</b> erschienen · täglich Mo–Fr · von einem Menschen kuratiert</span></p>
       </div>
       <!-- mail mock -->
@@ -317,9 +320,9 @@
           <div class="from" id="mFrom">Von <b>aban news</b> · Mo, 5 Min Lesezeit</div>
           <div class="subj" id="mSubj">☕ 3 KI-Updates, die heute zählen</div>
           <ul class="nl" id="mNl">
-            <li><span class="mk">1.</span> OpenAI senkt API-Preise — was das für deine Automationen heißt.</li>
-            <li><span class="mk">2.</span> Neues DSGVO-Urteil zu KI-Tools: 1 Sache, die du prüfen solltest.</li>
-            <li><span class="mk">3.</span> Claude vs. Gemini im Praxis-Test: wer schreibt bessere E-Mails?</li>
+            <li><span class="mk">1.</span> OpenAI senkt API-Preise — was das für deine Automationen heißt. <span class="vtag vy">Lohnt sich</span></li>
+            <li><span class="mk">2.</span> Neues DSGVO-Urteil zu KI-Tools: 1 Sache, die du prüfen solltest. <span class="vtag vw">Abwarten</span></li>
+            <li><span class="mk">3.</span> Claude vs. Gemini im Praxis-Test: wer schreibt bessere E-Mails? <span class="vtag vy">Lohnt sich</span></li>
             <li><span class="mk">🛠</span> Tool der Woche: ehrlich getestet, mit Datenschutz-Blick.</li>
             <li><span class="mk">💡</span> Prompt zum Kopieren: Meeting-Notizen in 30 Sek. zusammenfassen.</li>
           </ul>

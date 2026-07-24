@@ -39,6 +39,8 @@ STRIKTE REGELN:
 - Verwende AUSSCHLIESSLICH Informationen aus dem Rohmaterial unten. Erfinde NICHTS dazu —
   keine Zahlen, Prozente, Studien, Zitate oder Tools, die nicht im Material stehen.
 - „Länger" heißt: mehr ERKLÄRUNG, Kontext und konkrete Schritte — NIEMALS neue Fakten erfinden.
+- Jedes Update bekommt ein klares URTEIL (Lohnt sich / Abwarten / Ignorieren) — das ist unser Markenzeichen:
+  ehrliche Einordnung statt Hype. Das Urteil ist eine redaktionelle Einschätzung, keine erfundene Zahl.
 - du-Form. Ehrlich, nüchtern, anti-Hype. Verboten: revolutionär, disruptiv, game-changer,
   bahnbrechend, „verändert alles", AI-powered, Buzzwords, Ausrufezeichen-Ketten.
 - Ziel-Länge: rund 1100–1300 Wörter (8–10 Min Lesezeit). Maximal 1500 Wörter. Höchstens 3 Emojis gesamt.
@@ -47,6 +49,7 @@ FORMAT — verwende GENAU diese Markierungen (jede auf eigener Zeile), nichts an
 INTRO: <2–3 Sätze, worum es heute geht>
 UPDATE: <Schlagzeile des Updates>
 <2–4 Sätze mit den Fakten aus dem Material>
+URTEIL: <GENAU eines dieser drei Wörter: Lohnt sich | Abwarten | Ignorieren> — <ein halber Satz Begründung>
 WAS: <ein ganzer Absatz (3–5 Sätze): was das konkret für DACH-Solo-/KMU-Profis bedeutet, was zu tun ist>
 QUELLE: <die Quell-URL aus dem Material>
 BILD: <kurzer ENGLISCHER Bild-Such-Hinweis, 3–6 Wörter, motivisch passend, ohne Personen>
