@@ -3517,14 +3517,14 @@ function loop(now){
     // Uhr: 1 Spielminute = 0.5s (Host führt, Gast empfängt)
     if(!MPs||mpHost){uhrzeit+=dt*40;if(uhrzeit>=1440){uhrzeit-=1440;tag++;if(immo.length){var miete=immo.length*150;geld+=miete;geldSend();updHUD();hint("\uD83C\uDFE0\uD83D\uDCB0 Mieteinnahmen: +"+miete+" \u00A7 ("+immo.length+" H\u00E4user)");}rollWetter();applySaison();hint(SAISON[calcSaison()][0]+(wetter==="regen"?" · 🌧️ Regen":wetter==="schnee"?" · 🌨️ Schnee":""));}}
     // Tag/Nacht
-    var hh=uhrzeit/60,dayA=Math.max(0,Math.sin((hh-5.75)/13*Math.PI)); // Sonne 5:45-18:45 — Abend hat echtes Restlicht
+    var hh=uhrzeit/60,dayA=Math.max(0,Math.sin((hh-5.75)/14*Math.PI)); // Sonne 5:45-19:45 — Abend hat echtes Restlicht
     var wDim=wetter==="sonne"?1:0.62;
     sun.intensity=(0.05+dayA*0.82)*wDim;hemi.intensity=0.12+dayA*0.36;
     hemi.groundColor.setRGB(0.16+dayA*0.25,0.28+dayA*0.26,0.20+dayA*0.14); // nachts blau-grau statt oliv
     var warm=Math.max(0,1-dayA*1.8); // 1 bei Daemmerung/Nacht, 0 bei hohem Sonnenstand
     sun.color.setHex(0xfff0d0);if(warm>0)sun.color.lerp(new THREE.Color(0xff8a3a),warm*0.8);
     if(window.sterne)sterne.material.opacity=Math.max(0,0.9-dayA*3);
-    sun.position.set(Math.cos((hh-5.75)/13*Math.PI)*34,4+dayA*36,18); // tiefer bei Daemmerung -> lange Schatten
+    sun.position.set(Math.cos((hh-5.75)/14*Math.PI)*34,4+dayA*36,18); // tiefer bei Daemmerung -> lange Schatten
     renderer.toneMappingExposure=(0.20+dayA*0.60)*wDim; // Nacht wirklich dunkel -> Emissives poppen
     if(scene.environmentIntensity!==undefined)scene.environmentIntensity=0.10+dayA*0.90;
     var skyC=new THREE.Color(0x9fd0ea).lerp(new THREE.Color(0x141c30),1-Math.min(1,dayA*1.4));
