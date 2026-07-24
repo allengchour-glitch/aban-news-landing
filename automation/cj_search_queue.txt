@@ -573,14 +573,14 @@
 #done search:cloud slippers memory foam
 #done search:magnetic eyelashes eyeliner
 #done search:heatless curls rod headband
-search:oversized blanket hoodie
-search:acrylic phone stand desk
-search:knit beanie ribbed
-search:corduroy tote bag
-search:claw clip matte large
-search:portable neck fan bladeless
-search:electric lint remover fabric
-search:posture corrector back brace
+#done search:oversized blanket hoodie
+#done search:acrylic phone stand desk
+#done search:knit beanie ribbed
+#done search:corduroy tote bag
+#done search:claw clip matte large
+#done search:portable neck fan bladeless
+#done search:electric lint remover fabric
+#done search:posture corrector back brace
 search:travel jewelry organizer case
 search:desk cable organizer clip
 search:led strip lights music sync
