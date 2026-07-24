@@ -248,6 +248,11 @@ Web Analytics (`js/analytics.js`, Token fehlt noch).
 - Offen (nur User): `DOWNLOAD_SALT` in Cloudflare (Kit-Downloads), 3 Newsletter via beehiiv senden.
   YouTube-Ankündigungspaket bereit: `data/youtube-ankuendigung.md`.
 
+**2026-06-29 — 🔁 Tool-Loop (autonom):** Hub jetzt **145 Tools**. Neu: `eigenmietwert-rechner.html`,
+`seo-roi-rechner.html`, **`ferien-anspruch-rechner.html`** (CH, anteilige Ferientage pro rata + Pensum).
+Idee-Backlog `automation/tool-ideas-learned.md` = **11 offen / 8 abgedeckt**; nächste: kalorien-defizit,
+koerperfett, quadratmeter-preis, rentenluecke (CH), teilzeit-lohn, wasserbedarf. Beide Gehirne 100/100.
+
 **2026-06-28 (NEUE ROLLE) — 🎮🤖 aban Spielentwickler-Bot (User-Auftrag):**
 - Diese Session ist ab jetzt der **Spielentwickler von abannews** + vollautonomer KI-Bot, der **eigene
   Spiele erfindet (Meisterklasse)**, recherchiert, Ideen sammelt und sich laufend verbessert.

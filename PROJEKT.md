@@ -13,6 +13,18 @@
 > Browser-CDP: automation/cdp-shot.mjs (Port 9222); PC-Brave aus Cloud nicht erreichbar.
 
 
+## 🔁 2026-06-29 — Loop: Ferien-Anspruch-Rechner (CH) live (Tool #145)
+> Autonomer 3-Brain-Loop (daily_improvement_scan + tool_brain + learn_tool_ideas, alle 100/100).
+> Neu gebaut: **`ferien-anspruch-rechner.html`** — anteilige Ferientage **pro rata** bei Ein-/Austritt
+> unterm Jahr, mit **Pensum** + Arbeitstagen/Woche; Ergebnis in Tagen **und** Wochen, optional „bereits
+> bezogen". Ehrlich: OR 329a = min. 4 Wo. (bis 20 J.: 5), als Input mit „Vertrag/GAV prüfen"-Disclaimer,
+> keine erfundenen Zahlen. Formel: Ferienwochen × Arbeitstage/Wo × Pensum × (gearb. Tage ÷ 365).
+> Getestet 01.07.–31.12.2026 (184 T = 50,4 %) → 10,08 Tage ≈ 2,02 Wo. ✓. JSON-LD (WebApplication+FAQPage),
+> JS, null-bytes, Math, interne Links alle clean; in online-tools.html + sitemap.xml + index-Footer +
+> „Passt dazu" verdrahtet (Links auf existierende Tools geprüft, keine Toten). Brain 2 = 145 Tools 100/100.
+> Backlog jetzt **11 offen / 8 abgedeckt**; nächste P2: Abnehm-Rechner (Kaloriendefizit, kalorien-defizit).
+
+
 ## 🟢 2026-06-25 — MEILENSTEIN: Cloudflare-KI-Bot-Sperre AUFGEHOBEN + AEO-Offensive live
 > **WICHTIGSTE NEUERUNG:** Die Cloudflare-Edge blockte bis 25.06. `PerplexityBot`/`ChatGPT-User`/`GPTBot`/
 > `ClaudeBot` mit **403** (Googlebot+Menschen kamen durch). Damit war jede AEO-Arbeit bei den KI-Engines
