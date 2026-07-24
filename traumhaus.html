@@ -552,6 +552,20 @@ var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_d
   [RX,-RX].forEach(function(xc){ // Querstrassen: nur zwischen den Hauptstrassen (endet an deren Kante)
     tr(2.2,2*SZ9+14,xc-6.1,0,0.05);
     tr(2.2,2*SZ9+14,xc+6.1,0,0.05);});
+  // Bordsteine an den Fahrbahnkanten + weicher Erdstreifen zwischen Gehweg und Rasen
+  var bordM=stdMat(0xbfbcb2,0.85),erdM=new THREE.MeshStandardMaterial({color:0x8f815f,roughness:1});
+  function bord(w,d,x,z){var b=new THREE.Mesh(new THREE.BoxGeometry(w,0.12,d),bordM);
+    b.position.set(x,0.06,z);b.receiveShadow=true;scene.add(b);}
+  function erd(w,d,x,z){var e=new THREE.Mesh(new THREE.PlaneGeometry(w,d),erdM);
+    e.rotation.x=-Math.PI/2;e.position.set(x,0.005,z);e.receiveShadow=true;scene.add(e);}
+  [SZ9+12,-(SZ9+12)].forEach(function(zc){
+    [zc>0?zc-5.05:zc+5.05,zc>0?zc+5.05:zc-5.05].forEach(function(zb){ // Bordstein beidseitig
+      bord(2*(RX-5),0.26,0,zb);bord(LR,0.26,-(RB+LR/2),zb);bord(LR,0.26,(RB+LR/2),zb);});
+    [zc>0?zc-7.55:zc+7.55,zc>0?zc+7.55:zc-7.55].forEach(function(ze){ // Erdstreifen an der Aussenkante der Platten
+      erd(2*(RX-5),0.7,0,ze);erd(LR,0.7,-(RB+LR/2),ze);erd(LR,0.7,(RB+LR/2),ze);});});
+  [RX,-RX].forEach(function(xc){
+    [xc-5.05,xc+5.05].forEach(function(xb){bord(0.26,2*SZ9+14,xb,0);});
+    [xc-7.55,xc+7.55].forEach(function(xe){erd(0.7,2*SZ9+14,xe,0);});});
   // Zebrastreifen an den Kreuzungen (Fussgaenger queren die Hauptstrassen)
   var zMat=new THREE.MeshStandardMaterial({color:0xf0f0ea,roughness:0.8});
   function zebra(x,z,quer){ // quer=true: Strasse laeuft in X (Nord/Sued) -> Streifen laengs (in X), gestapelt ueber die Fahrbahnbreite (Z)
