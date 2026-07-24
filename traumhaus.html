@@ -395,12 +395,37 @@ ladeTex("textures/th/rasen.jpg",13,10,function(t){rasen.material.map=t;rasen.mat
     var g=new THREE.PlaneGeometry(w,d,seg||16,seg||16);
     var m=new THREE.Mesh(g,wasserMat());m.rotation.x=-Math.PI/2;m.position.set(x,-0.02,z);scene.add(m);
     window._wasser.push({mesh:m,geo:g,base:g.attributes.position.array.slice()});return m;}
-  // See (animiert)
-  machWasser(26,26,-90,80,20);
+  // See (animiert) — ORGANISCHE Uferlinie statt Rechteck-Kante
+  function seeR(a){return 13+Math.sin(a*3)*1.8+Math.cos(a*5+1.3)*1.2+Math.sin(a*2+0.7)*0.9;}
+  (function machSee(x,z){
+    var SEG=40,RINGS=5,pos=[0,0,0],idx=[];
+    for(var r9=1;r9<=RINGS;r9++){for(var s9=0;s9<SEG;s9++){var a9=s9/SEG*Math.PI*2,rad=seeR(a9)*(r9/RINGS);
+      pos.push(Math.cos(a9)*rad,Math.sin(a9)*rad,0);}}
+    for(var s=0;s<SEG;s++)idx.push(0,1+s,1+(s+1)%SEG);
+    for(var r=0;r<RINGS-1;r++){var a0=1+r*SEG,b0=1+(r+1)*SEG;
+      for(var s2=0;s2<SEG;s2++){var s3=(s2+1)%SEG;idx.push(a0+s2,b0+s2,b0+s3,a0+s2,b0+s3,a0+s3);}}
+    var g=new THREE.BufferGeometry();
+    g.setAttribute("position",new THREE.Float32BufferAttribute(pos,3));
+    g.setIndex(idx);g.computeVertexNormals();
+    var m=new THREE.Mesh(g,wasserMat());m.rotation.x=-Math.PI/2;m.position.set(x,0.16,z);scene.add(m); // ueber Grasebene: Wellen tauchen nie unter den Boden (sonst gruene Flecken)
+    window._wasser.push({mesh:m,geo:g,base:g.attributes.position.array.slice()});
+    // schmaler Sandring entlang der Uferkurve (weicher Uebergang Wasser->Gras)
+    var sPos=[],sIdx=[];
+    for(var u=0;u<SEG;u++){var au=u/SEG*Math.PI*2,ru=seeR(au);
+      sPos.push(Math.cos(au)*(ru-0.15),Math.sin(au)*(ru-0.15),0);
+      sPos.push(Math.cos(au)*(ru+1.3),Math.sin(au)*(ru+1.3),0);}
+    for(var u2=0;u2<SEG;u2++){var i0=u2*2,i1=((u2+1)%SEG)*2;
+      sIdx.push(i0,i0+1,i1+1,i0,i1+1,i1);} // CCW -> Flaeche zeigt nach oben
+    var sg=new THREE.BufferGeometry();
+    sg.setAttribute("position",new THREE.Float32BufferAttribute(sPos,3));
+    sg.setIndex(sIdx);sg.computeVertexNormals();
+    var sand=new THREE.Mesh(sg,new THREE.MeshStandardMaterial({color:0xcbb890,roughness:1}));
+    sand.rotation.x=-Math.PI/2;sand.position.set(x,-0.015,z);sand.receiveShadow=true;scene.add(sand);
+  })(-90,80);
   var see=new THREE.Mesh(new THREE.CircleGeometry(0.01,3),new THREE.MeshBasicMaterial({visible:false}));
   see.rotation.x=-Math.PI/2;see.position.set(-90,-0.03,80);scene.add(see);
-  // Ufersteine: dunkler+matter (kein Styropor-Weiss durch HDRI), weniger, klar am Ufer statt im Wasser
-  for(var sr=0;sr<10;sr++){var sa=sr/10*6.283+0.3;var stein=new THREE.Mesh(new THREE.DodecahedronGeometry(0.45+Math.sin(sr*3)*0.18,0),new THREE.MeshStandardMaterial({color:sr%2?0x6a6558:0x565043,roughness:1,metalness:0,envMapIntensity:0.25}));stein.position.set(-90+Math.cos(sa)*14.6,0.04,80+Math.sin(sa)*14.6);stein.rotation.set(Math.random(),Math.random()*6,Math.random());stein.castShadow=true;scene.add(stein);}
+  // Ufersteine folgen der echten Uferkurve (knapp ausserhalb des Wassers)
+  for(var sr=0;sr<10;sr++){var sa=sr/10*6.283+0.3;var stein=new THREE.Mesh(new THREE.DodecahedronGeometry(0.45+Math.sin(sr*3)*0.18,0),new THREE.MeshStandardMaterial({color:sr%2?0x6a6558:0x565043,roughness:1,metalness:0,envMapIntensity:0.25}));stein.position.set(-90+Math.cos(sa)*(seeR(sa)+1.0),0.04,80+Math.sin(sa)*(seeR(sa)+1.0));stein.rotation.set(Math.random(),Math.random()*6,Math.random());stein.castShadow=true;scene.add(stein);}
   // Viele Baeume rings um die Stadt (prozedural, gestreut)
   function baum2(x,z,k){var b=new THREE.Group();
     var st=new THREE.Mesh(new THREE.CylinderGeometry(0.18,0.28,1.8,7),new THREE.MeshStandardMaterial({color:0x6a4a30,roughness:0.9}));st.position.y=0.9;b.add(st);
@@ -409,6 +434,7 @@ ladeTex("textures/th/rasen.jpg",13,10,function(t){rasen.material.map=t;rasen.mat
   for(var t2=0;t2<70;t2++){var ta=Math.random()*6.283,tr=(GW*CS/2+8)+Math.random()*90;
     var tx=Math.cos(ta)*tr+(Math.random()-0.5)*20,tz=Math.sin(ta)*tr+(Math.random()-0.5)*20; // Jitter gegen Reihen-Wirkung
     if(Math.abs(tx)<GW*CS/2+4&&Math.abs(tz)<GH*CS/2+6)continue;
+    if(Math.hypot(tx+90,tz-80)<19)continue; // nicht in den See
     baum2(tx,tz,0.7+Math.random()*1.0);}
   // ---- Breiter Fluss quer durch die Landschaft (Norden) ----
   machWasser(240,16,0,-78,32);
@@ -576,7 +602,7 @@ if(THREE.GLTFLoader){["lp_tree.glb"].forEach(function(){
     if(Math.random()>0.25+rand*0.75)continue; // Mitte sparsam, Rand dicht
     if(!frei(x,z))continue;
     var sc=0.6+Math.random()*0.9;
-    dummy.position.set(x,0.5*0.5*sc-0.02,z);dummy.rotation.set(0,Math.random()*6.28,(Math.random()-0.5)*0.25);
+    dummy.position.set(x,0.5*0.5*sc-0.02,z);dummy.rotation.set(0,Math.random()*6.28,0); // aufrecht — schiefe Kegel sahen aus wie Scherben
     dummy.scale.set(sc*(0.8+Math.random()*0.5),sc,sc*(0.8+Math.random()*0.5));dummy.updateMatrix();
     tuft.setMatrixAt(ti,dummy.matrix);
     var l=0.5+Math.random()*0.5;c.setRGB(0.16*l+0.04,0.34*l+0.12,0.12*l+0.03);tuft.setColorAt(ti,c);
@@ -743,7 +769,11 @@ var dorfFenster=[];
     for(var e=0;e<etagen;e++){
       var glas=new THREE.Mesh(new THREE.BoxGeometry(w+0.04,1.3,w+0.04),new THREE.MeshStandardMaterial({color:0x8ab4d8,emissive:0xffe0a0,emissiveIntensity:0,roughness:0.15,metalness:0.3}));
       glas.position.y=1.3+e*2.0;g.add(glas);if(e%2===0)dorfFenster.push(glas.material);}
-    var dach=new THREE.Mesh(new THREE.BoxGeometry(w*0.5,1.5,w*0.5),stdMat(0x5a5a64,0.6));dach.position.y=h+0.7;g.add(dach);
+    // Dachabschluss: Attika-Rand + Aufbauten (Aufzug/Klima) + Antenne — statt flachem Monolith
+    var attika=new THREE.Mesh(new THREE.BoxGeometry(w+0.3,0.5,w+0.3),stdMat(0x6a6a74,0.7));attika.position.y=h+0.25;g.add(attika);
+    var aufb=new THREE.Mesh(new THREE.BoxGeometry(w*0.42,1.4,w*0.36),stdMat(0x5a5a64,0.6));aufb.position.set(-w*0.18,h+1.2,w*0.14);aufb.castShadow=true;g.add(aufb);
+    var klima=new THREE.Mesh(new THREE.BoxGeometry(w*0.24,0.7,w*0.24),stdMat(0x8a8a92,0.5));klima.position.set(w*0.22,h+0.85,-w*0.18);g.add(klima);
+    var ant=new THREE.Mesh(new THREE.CylinderGeometry(0.05,0.07,2.6,5),stdMat(0x3a3a42,0.4));ant.position.set(w*0.1,h+1.8,w*0.1);g.add(ant);
     g.position.set(x,0,z);scene.add(g);}
   [[-80,-70,12,7,0x9aa8bc],[80,-64,10,6,0x88a0b8],[-84,58,14,8,0xa0b0c0],[86,66,11,7,0x94a4b8],[0,-88,13,7,0x9caabe],[-6,90,9,6,0x8ea6ba]].forEach(function(t){turm(t[0],t[1],t[2],t[3],t[4]);});
   // ---- Neon-Ladenschilder (leuchten immer) ----
@@ -811,7 +841,7 @@ setTimeout(function baueVerkehr(){
     {axis:"x",z:-SZ-14.5,dir:1,speed:5.5},{axis:"x",z:-SZ-9.5,dir:-1,speed:4.8},
     {axis:"z",x:-(RX+2.5),dir:1,speed:4.5},{axis:"z",x:RX+2.5,dir:-1,speed:5}];
   var TINT=[0xffffff,0xd84a3a,0x3a6ad8,0x4aa05a,0xe8c43a,0x8a5ac8];
-  ["auto_kombi","auto_flitzer","auto_van","auto_kombi","auto_van","auto_flitzer","auto_kombi","auto_van","auto_flitzer","auto_kombi"].forEach(function(id,i){
+  ["auto_kombi","auto_flitzer","auto_van","auto_kombi","auto_van","auto_flitzer","auto_kombi","auto_van","auto_flitzer","auto_kombi","auto_van","auto_flitzer","auto_kombi","auto_van"].forEach(function(id,i){
     loadTH(id,function(tpl){if(!tpl)return;
       var m=tpl.clone(true);
       m.traverse(function(n){if(n.isMesh&&n.material){n.material=n.material.clone();
