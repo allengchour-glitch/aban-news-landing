@@ -301,6 +301,20 @@ sun.castShadow=true;sun.shadow.mapSize.set(IS_TOUCH?1024:2048,IS_TOUCH?1024:2048
 sun.shadow.camera.near=5;sun.shadow.camera.far=320;
 sun.shadow.camera.left=-115;sun.shadow.camera.right=115;sun.shadow.camera.top=115;sun.shadow.camera.bottom=-115;
 function stdMat(c,rough){var m=new THREE.MeshStandardMaterial({color:c,roughness:rough!==undefined?rough:0.8});m.envMapIntensity=0.35;return m;}
+// Prozedurale Struktur-Texturen gegen flache Einfarb-Flaechen
+function _strukTex(kind){var cv=document.createElement("canvas");cv.width=cv.height=128;var c=cv.getContext("2d");
+  c.fillStyle="#9a9a9a";c.fillRect(0,0,128,128);
+  if(kind==="beton"){for(var i=0;i<2600;i++){var v=(Math.random()*44)|0;c.fillStyle="rgba("+(120+v)+","+(120+v)+","+(118+v)+",0.35)";c.fillRect(Math.random()*128,Math.random()*128,2,2);}
+    c.strokeStyle="rgba(90,90,90,.35)";c.lineWidth=1.5;for(var l=32;l<128;l+=32){c.beginPath();c.moveTo(0,l);c.lineTo(128,l);c.stroke();}}
+  if(kind==="blatt"){c.fillStyle="#8a9a7a";c.fillRect(0,0,128,128);
+    for(var b=0;b<3200;b++){var g2=(Math.random()*70)|0;c.fillStyle="rgba("+(40+(g2>>1))+","+(85+g2)+","+(35+(g2>>1))+",0.5)";
+      c.beginPath();c.arc(Math.random()*128,Math.random()*128,1.4+Math.random()*1.6,0,6.283);c.fill();}}
+  if(kind==="erde"){c.fillStyle="#8a7a5c";c.fillRect(0,0,128,128);
+    for(var e=0;e<2400;e++){var t2=(Math.random()*46)|0;c.fillStyle="rgba("+(110+t2)+","+(95+t2)+","+(64+(t2>>1))+",0.4)";c.fillRect(Math.random()*128,Math.random()*128,2,2);}}
+  var t=new THREE.CanvasTexture(cv);t.wrapS=t.wrapT=THREE.RepeatWrapping;return t;}
+var _texBeton=null,_texBlatt=null,_texErde=null;
+function betMat(c,rough){if(!_texBeton)_texBeton=_strukTex("beton");
+  var m=new THREE.MeshStandardMaterial({color:c,roughness:rough!==undefined?rough:0.85,map:_texBeton});m.envMapIntensity=0.3;return m;}
 
 // ===================== Grundstück =====================
 var GW=60,GH=46,CS=2; // Open-World XXXL 2026-07-18; alt 50x38 → Migration in loadSnapshot
@@ -553,7 +567,9 @@ var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_d
     tr(2.2,2*SZ9+14,xc-6.1,0,0.05);
     tr(2.2,2*SZ9+14,xc+6.1,0,0.05);});
   // Bordsteine an den Fahrbahnkanten + weicher Erdstreifen zwischen Gehweg und Rasen
-  var bordM=stdMat(0xbfbcb2,0.85),erdM=new THREE.MeshStandardMaterial({color:0x8f815f,roughness:1});
+  var bordM=betMat(0xbfbcb2,0.85);
+  if(!_texErde)_texErde=_strukTex("erde");
+  var erdM=new THREE.MeshStandardMaterial({color:0x9a8a68,roughness:1,map:_texErde});
   function bord(w,d,x,z){var b=new THREE.Mesh(new THREE.BoxGeometry(w,0.12,d),bordM);
     b.position.set(x,0.06,z);b.receiveShadow=true;scene.add(b);}
   function erd(w,d,x,z){var e=new THREE.Mesh(new THREE.PlaneGeometry(w,d),erdM);
@@ -721,7 +737,8 @@ var dorfFenster=[];
   [-42,2,44].forEach(function(hz){haus(-(RX+11),hz,Math.PI/2,seed++);});
   [-44,4].forEach(function(hz){haus(RX+11,hz,-Math.PI/2,seed++);}); // zwischen den Hauptstrassen: nichts ragt in Fahrbahn/Gehweg
   // Vorgaerten: Plattenweg zur Tuer + Hecken + Blumen (Haeuser wirkten wegelos im Gras)
-  var heckM=stdMat(0x3e6e38,0.95),wegM=stdMat(0xcfc8b8,0.9),
+  if(!_texBlatt)_texBlatt=_strukTex("blatt");
+  var heckM=new THREE.MeshStandardMaterial({color:0x4a7a42,roughness:0.95,map:_texBlatt}),wegM=betMat(0xcfc8b8,0.9),
       blumG=new THREE.SphereGeometry(0.1,6,5),BLF=[0xffd94a,0xff7ab0,0xffffff,0xff5a4a];
   function vorgarten(hx,hz,dir){ // dir=+1: Strasse liegt Richtung +z
     var weg9=new THREE.Mesh(new THREE.PlaneGeometry(1.1,2.0),wegM);
@@ -764,22 +781,22 @@ var dorfFenster=[];
   var _balkG=new THREE.BoxGeometry(1.4,0.1,0.8),_balkWG=new THREE.BoxGeometry(1.4,0.55,0.05),
       _balkSG=new THREE.BoxGeometry(0.05,0.55,0.75),_rahmG=new THREE.BoxGeometry(1.08,1.18,0.05),
       _balkM=new THREE.MeshStandardMaterial({color:0xcfe4ee,transparent:true,opacity:0.45,roughness:0.2}),
-      _rahmM=stdMat(0x5a544c,0.7),_plattM=stdMat(0xb8b2a6,0.8);
+      _rahmM=stdMat(0x5a544c,0.7),_plattM=betMat(0xb8b2a6,0.8);
   function block(x,z,rotY,etagen,w,d,farbe){
     var g=new THREE.Group();
     var h=etagen*1.9+0.4;
     var blkM=stdMat(farbe,0.88);(window._wandMats=window._wandMats||[]).push(blkM);
     var body=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),blkM);
     body.position.y=h/2;body.castShadow=true;body.receiveShadow=true;g.add(body);
-    var att=new THREE.Mesh(new THREE.BoxGeometry(w+0.3,0.25,d+0.3),stdMat(0x8a8a88,0.8));
+    var att=new THREE.Mesh(new THREE.BoxGeometry(w+0.3,0.25,d+0.3),betMat(0x8a8a88,0.8));
     att.position.y=h+0.1;g.add(att);
-    var sock=new THREE.Mesh(new THREE.BoxGeometry(w+0.5,0.3,d+0.5),stdMat(0xc9c5bc,0.9));
+    var sock=new THREE.Mesh(new THREE.BoxGeometry(w+0.5,0.3,d+0.5),betMat(0xc9c5bc,0.9));
     sock.position.y=0.15;sock.receiveShadow=true;g.add(sock); // Sockel/Plinth
     var tuer=new THREE.Mesh(new THREE.BoxGeometry(1.25,2.15,0.09),stdMat(0x4a4038,0.5));
     tuer.position.set(0,1.07,d/2+0.05);g.add(tuer); // Hauseingang
     var vord=new THREE.Mesh(new THREE.BoxGeometry(1.7,0.1,0.7),stdMat(0x8a8a88,0.7));
     vord.position.set(0,2.35,d/2+0.35);vord.castShadow=true;g.add(vord); // Vordach
-    var aufb=new THREE.Mesh(new THREE.BoxGeometry(w*0.3,1.0,d*0.4),stdMat(0x9a948a,0.7));
+    var aufb=new THREE.Mesh(new THREE.BoxGeometry(w*0.3,1.0,d*0.4),betMat(0x9a948a,0.7));
     aufb.position.set(-w*0.2,h+0.7,0);aufb.castShadow=true;g.add(aufb); // Dachaufbau
     for(var e9=0;e9<etagen;e9++)for(var wx9=0;wx9<Math.floor(w/1.6);wx9++){
       var fx9=-w/2+1.1+wx9*1.6;
@@ -828,9 +845,9 @@ var dorfFenster=[];
     mark.position.set(0,2.6,3.2);mark.rotation.x=0.28;mark.castShadow=true;g.add(mark);
     var tuer=new THREE.Mesh(new THREE.BoxGeometry(1.05,2.0,0.07),stdMat(0x4a3a2c,0.5));
     tuer.position.set(2.35,1.0,2.53);g.add(tuer); // Eingang
-    var att9=new THREE.Mesh(new THREE.BoxGeometry(6.6,0.28,5.2),stdMat(0xc9c0ae,0.8));
+    var att9=new THREE.Mesh(new THREE.BoxGeometry(6.6,0.28,5.2),betMat(0xc9c0ae,0.8));
     att9.position.y=3.5;g.add(att9); // Attika-Dachrand
-    var db9=new THREE.Mesh(new THREE.BoxGeometry(1.2,0.55,1.0),stdMat(0x9a948a,0.7));
+    var db9=new THREE.Mesh(new THREE.BoxGeometry(1.2,0.55,1.0),betMat(0x9a948a,0.7));
     db9.position.set(-1.6,3.9,0.6);g.add(db9); // Lueftung auf dem Dach
     // Neon-Schild direkt an der Fassade (Rahmen + Glyph, leuchtet nachts)
     var ncv=document.createElement("canvas");ncv.width=128;ncv.height=64;var nc=ncv.getContext("2d");
@@ -855,11 +872,15 @@ var dorfFenster=[];
   var _twTex=null,_twEmi=null;
   function _turmTexes(){
     if(_twTex)return;
-    function mk(win,wall){var cv=document.createElement("canvas");cv.width=96;cv.height=64;var c=cv.getContext("2d");
+    function mk(win,wall,noise){var cv=document.createElement("canvas");cv.width=96;cv.height=64;var c=cv.getContext("2d");
       c.fillStyle=wall;c.fillRect(0,0,96,64);
-      for(var f=0;f<3;f++){c.fillStyle=win;c.fillRect(8+f*30,14,20,34);}
+      if(noise){for(var n9=0;n9<700;n9++){var v9=(Math.random()*30)|0;
+        c.fillStyle="rgba("+(165+v9)+","+(162+v9)+","+(156+v9)+",0.35)";c.fillRect(Math.random()*96,Math.random()*64,2,2);}
+        c.fillStyle="rgba(120,118,112,0.55)";c.fillRect(0,0,96,3);c.fillRect(0,61,96,3);} // Etagen-Fuge
+      for(var f=0;f<3;f++){c.fillStyle=win;c.fillRect(8+f*30,14,20,34);
+        if(noise){c.fillStyle="rgba(255,255,255,0.18)";c.fillRect(8+f*30,14,20,5);c.fillStyle=win;}}
       return new THREE.CanvasTexture(cv);}
-    _twTex=mk("#2c3a46","#b8b4ac");_twEmi=mk("#ffffff","#000000");
+    _twTex=mk("#2c3a46","#b8b4ac",true);_twEmi=mk("#ffffff","#000000",false);
     [_twTex,_twEmi].forEach(function(t){t.wrapS=t.wrapT=THREE.RepeatWrapping;});}
   function turm(x,z,etagen,w,farbe){
     _turmTexes();
@@ -870,10 +891,10 @@ var dorfFenster=[];
     dorfFenster.push(bodyM); // nachts leuchten die Fenster der Textur warm
     var body=new THREE.Mesh(new THREE.BoxGeometry(w,h,w),bodyM);body.position.y=h/2;body.castShadow=true;g.add(body);
     // Sockelgeschoss + Eingang, damit die Tuerme nicht nackt aus dem Gras wachsen
-    var sock=new THREE.Mesh(new THREE.BoxGeometry(w+0.6,2.1,w+0.6),stdMat(0x8a867e,0.8));sock.position.y=1.05;sock.receiveShadow=true;g.add(sock);
+    var sock=new THREE.Mesh(new THREE.BoxGeometry(w+0.6,2.1,w+0.6),betMat(0x8a867e,0.8));sock.position.y=1.05;sock.receiveShadow=true;g.add(sock);
     var tuer=new THREE.Mesh(new THREE.BoxGeometry(1.6,1.8,0.1),stdMat(0x3a342c,0.5));tuer.position.set(0,0.9,w/2+0.32);g.add(tuer);
     // Dachabschluss: Attika-Rand + Aufbauten (Aufzug/Klima) + Antenne — statt flachem Monolith
-    var attika=new THREE.Mesh(new THREE.BoxGeometry(w+0.3,0.5,w+0.3),stdMat(0x6a6a74,0.7));attika.position.y=h+0.25;g.add(attika);
+    var attika=new THREE.Mesh(new THREE.BoxGeometry(w+0.3,0.5,w+0.3),betMat(0x6a6a74,0.7));attika.position.y=h+0.25;g.add(attika);
     var aufb=new THREE.Mesh(new THREE.BoxGeometry(w*0.42,1.4,w*0.36),stdMat(0x5a5a64,0.6));aufb.position.set(-w*0.18,h+1.2,w*0.14);aufb.castShadow=true;g.add(aufb);
     var klima=new THREE.Mesh(new THREE.BoxGeometry(w*0.24,0.7,w*0.24),stdMat(0x8a8a92,0.5));klima.position.set(w*0.22,h+0.85,-w*0.18);g.add(klima);
     var ant=new THREE.Mesh(new THREE.CylinderGeometry(0.05,0.07,2.6,5),stdMat(0x3a3a42,0.4));ant.position.set(w*0.1,h+1.8,w*0.1);g.add(ant);
