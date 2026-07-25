@@ -177,6 +177,14 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
    auf DE, Shop liefert nur CH). **83% der Produkte über Google-Benchmark** (BigBuy-Marken) → reprice-Engine
    `reprice_to_benchmark.py` senkt CJ/Eigenware auf Benchmark, BigBuy nur bis Kosten-Boden (nie unter EK+Versand).
 
+
+## 🤖 Kimi-Nutzung — HARTE REGEL (teuer gelernt 2026-07-25)
+Kimi **k3** geht bei STRUKTURIERTEN/mehrfeldigen Prompts (JSON, "DESC:/SEO:"-Format, Artikel) in **Reasoning-Modus**
+→ `content` bleibt leer, Helper fällt auf `reasoning_content` zurück = **englischer Denk-Text statt Copy**
+("2 sales-strong sentences in High German…" landete als Collection-Beschreibung!). NUR für **kurze Einzel-Outputs**
+nutzen (1 Caption, 1 Satz) MIT Validierungs-Guard (z.B. Caption muss `#` enthalten, sonst verwerfen). Für Collection-
+Texte/Artikel/JSON → selbst schreiben. `automation/kimi_caption_engine.mjs` ist safe (verwirft alles ohne `#`).
+
 ## 🎹 Musik-Producer-Skill (User-Auftrag 2026-07-10 «werde immer besser»)
 Vollständige eigene Musikproduktion im Container — 100% royalty-frei, NIE Samples aus echten Songs
 klauen (Content-ID sperrt Uploads!). Setup+Pipeline: `automation/music/produce/SKILL.md`. Methode:
