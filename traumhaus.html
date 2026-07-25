@@ -593,8 +593,8 @@ var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_d
       p.receiveShadow=true;scene.add(p);}}
   // Alle 4 Arme jeder Kreuzung, nah an der Ecke (echtes Stadtbild)
   [[RX,SZ9+12],[RX,-(SZ9+12)],[-RX,SZ9+12],[-RX,-(SZ9+12)]].forEach(function(K){
-    zebra(K[0]-6.2,K[1],true);zebra(K[0]+6.2,K[1],true);
-    zebra(K[0],K[1]-6.1,false);zebra(K[0],K[1]+6.1,false);}); // auf den Gehweg-Achsen: Fussgaenger queren AUF dem Streifen
+    zebra(K[0]-7.1,K[1],true);zebra(K[0]+7.1,K[1],true);
+    zebra(K[0],K[1]-7.0,false);zebra(K[0],K[1]+7.0,false);}); // etwas Luft zur Ecke, deckt weiter die Lauflinien
   // Haltelinien vor den Ampeln (je Fahrspur, hinter dem Zebra)
   function halte(x,z,quer){var hl=new THREE.Mesh(new THREE.PlaneGeometry(quer?0.35:4.6,quer?4.6:0.35),zMat);
     hl.rotation.x=-Math.PI/2;hl.position.set(x,0.009,z);scene.add(hl);}
@@ -964,7 +964,7 @@ var dorfFenster=[];
       lg.position.set(x,0,z);scene.add(lg);}
     [-75,-55,15,55,75].forEach(function(lx){lamp(lx,SZ+4.6);});
     [-75,-55,-15,15,55,75].forEach(function(lx){lamp(lx,-SZ-4.6);});
-    [-30,0,30].forEach(function(lz){lamp(RX-4.6,lz);lamp(-(RX-4.6),lz);});
+    [-30,0,30].forEach(function(lz){lamp(RX-7.7,lz);lamp(-(RX-7.7),lz);}); // an der Gehweg-Kante, nicht auf der Fahrbahn
   })();
   // ---- Ampeln an den Kreuzungen ----
   function ampel(x,z,grp,rot9){var g=new THREE.Group();
@@ -1417,8 +1417,8 @@ setTimeout(function baueRampe(){
     rail.rotation.z=0.26;rail.position.set(0,1.03,sd[0]*1.7);g.add(rail);});
   var stuetz=new THREE.Mesh(new THREE.BoxGeometry(0.3,1.7,3.4),new THREE.MeshStandardMaterial({color:0x3a3a42,roughness:0.8}));
   stuetz.position.set(2.9,0.85,0);g.add(stuetz);
-  g.position.set(-76,0,36);scene.add(g);
-  window._rampe={x:-76,z:36,cd:0};
+  g.position.set(-64,0,28);scene.add(g);
+  window._rampe={x:-64,z:28,cd:0}; // auf der Wiese — stand nach der Map-Verbreiterung auf der Querstrasse
 },0);
 function updFest(dt,now){var FE=window._fest;if(!FE)return;
   var h=uhrzeit/60,aktiv=h>=19.5&&h<=22.5;
