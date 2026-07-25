@@ -581,14 +581,14 @@
 #done search:portable neck fan bladeless
 #done search:electric lint remover fabric
 #done search:posture corrector back brace
-search:travel jewelry organizer case
-search:desk cable organizer clip
-search:led strip lights music sync
-search:gua sha stainless steel
-search:fleece lined leggings women
-search:crossbody phone case chain
-search:mushroom lamp glass
-search:foldable laptop stand aluminum
+#done search:travel jewelry organizer case
+#done search:desk cable organizer clip
+#done search:led strip lights music sync
+#done search:gua sha stainless steel
+#done search:fleece lined leggings women
+#done search:crossbody phone case chain
+#done search:mushroom lamp glass
+#done search:foldable laptop stand aluminum
 search:reusable makeup remover pads
 search:puffer tote bag quilted
 search:mini stapler kawaii
