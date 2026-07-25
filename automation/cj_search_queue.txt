@@ -593,10 +593,10 @@
 #done search:puffer tote bag quilted
 #done search:mini stapler kawaii
 #done search:pill organizer weekly travel
-search:heated gloves rechargeable
-search:corduroy baseball cap
-search:wireless charger 3 in 1 stand
-search:silicone stretch lids set
+#done search:heated gloves rechargeable
+#done search:corduroy baseball cap
+#done search:wireless charger 3 in 1 stand
+#done search:silicone stretch lids set
 search:ankle boots chunky heel women
 search:aroma car diffuser vent
 search:thermal socks wool hiking
