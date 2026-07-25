@@ -865,6 +865,12 @@ var dorfFenster=[];
       rf.position.set(fx8,1.9,-2.53);g.add(rf);dorfFenster.push(rf.material);});
     var ht=new THREE.Mesh(new THREE.BoxGeometry(1.0,1.9,0.07),stdMat(0x5a4a3a,0.6));
     ht.position.set(0,0.95,-2.53);g.add(ht);
+    var tritt=new THREE.Mesh(new THREE.BoxGeometry(1.2,0.08,0.8),betMat(0xb8b2a6,0.9));
+    tritt.position.set(0,0.04,-2.95);g.add(tritt); // Trittplatte — Tuer schwebte im Dreck
+    var tonne=new THREE.Mesh(new THREE.CylinderGeometry(0.38,0.34,0.95,10),stdMat(0x3a5a3a,0.6));
+    tonne.position.set(2.2+((i%2)*0.4),0.48,-3.1);tonne.castShadow=true;g.add(tonne);
+    if(i%2===0){var ki9=new THREE.Mesh(new THREE.BoxGeometry(0.6,0.5,0.6),stdMat(0x9a7a4a,0.85));
+      ki9.position.set(-2.2,0.25,-3.05);ki9.rotation.y=0.4+i;ki9.castShadow=true;g.add(ki9);}
     g.position.set(sh[0],0,SZ+24.5);g.rotation.y=Math.PI;scene.add(g);}); // weiter zurueck: Front nicht mehr aufs Trottoir
   // ---- Skyline: Wolkenkratzer mit Glasfassade (weit draußen) ----
   // Fassaden-Kachel (1 Etage, 3 Fenster) als Textur: Tag = dunkles Glas in warmgrauer Wand,
@@ -944,6 +950,9 @@ var dorfFenster=[];
     villa(96,-22,-Math.PI/2,0x8a5a48);villa(96,-44,-Math.PI/2,0x5a6a78); // Ost-Parzellen
     villa(-96,8,Math.PI/2,0x6a7a58);villa(-96,28,Math.PI/2,0x8a5a48);   // West-Parzellen
   })();
+  // Marktplatz-Pflaster unter den Staenden (statt rohem Erdfleck)
+  (function(){var pl=new THREE.Mesh(new THREE.PlaneGeometry(24,13),betMat(0xc6c0b2,0.9));
+    pl.rotation.x=-Math.PI/2;pl.position.set(40,0.016,72);pl.receiveShadow=true;scene.add(pl);})();
   // ---- Laternen-Reihen (Glow-Pool statt PointLight: billig) ----
   (function laternenReihen(){
     var gcv=document.createElement("canvas");gcv.width=gcv.height=64;var gc=gcv.getContext("2d");
