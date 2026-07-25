@@ -48,10 +48,15 @@ while(made<MAX){
     if(made>=MAX) break outer;
     if(done.has(n.id)) continue;
     done.add(n.id); fs.appendFileSync(LEDGER,n.id+'\n');
-    const cap=await kimi(SYS, `Produkt: "${n.title}". Vorteil: Blitzversand aus der Schweiz, Kauf auf Rechnung. Schreibe die Caption.`, {max_tokens:280,timeout:60000});
-    if(!cap){ nulls++; if(nulls>=3){ console.log('### Kimi liefert 3× null → Guthaben vermutlich leer. STOPP. gemacht='+made); break outer; } continue; }
-    nulls=0;
-    if(!cap.includes('#')) continue;               // unsaubere Antwort überspringen
+    let cap=null;
+    for(let att=0; att<3; att++){
+      const c=await kimi(SYS, `Produkt: "${n.title}". Vorteil: Blitzversand aus der Schweiz, Kauf auf Rechnung. Schreibe NUR die Caption, beginne direkt mit dem Text.`, {max_tokens:280,timeout:30000});
+      if(c===null){ nulls++; break; }
+      nulls=0;
+      if(c.includes('#')){ cap=c; break; }
+    }
+    if(nulls>=3){ console.log('### Kimi 3x null → Guthaben vermutlich leer. STOPP. gemacht='+made); break outer; }
+    if(!cap) continue;
     const sig=norm(cap);
     if(qsig.has(sig)) continue;                     // Doppelpost-Schutz
     qsig.add(sig);
