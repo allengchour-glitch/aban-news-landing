@@ -375,7 +375,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
   for(var i=0;i<rauchBase.length;i++){var b=rauchBase[i];b.off+=dt*0.5;if(b.off>5)b.off=0;
     pp[i*3]=b.x+Math.sin(b.off*1.5)*0.5;pp[i*3+1]=b.y+b.off;pp[i*3+2]=b.z;}
   rauchGeo.attributes.position.needsUpdate=true;}
-ladeTex("textures/th/rasen.jpg",13,10,function(t){rasen.material.map=t;rasen.material.needsUpdate=true;});
+ladeTex("textures/th/rasen.jpg",24,18,function(t){rasen.material.map=t;rasen.material.needsUpdate=true;});
 // ---- Open-World-Landschaft rundherum ----
 (function landschaft(){
   // Ferne Grasebene (Horizont) unter allem
@@ -474,7 +474,7 @@ ladeTex("textures/th/rasen.jpg",13,10,function(t){rasen.material.map=t;rasen.mat
 })();
 // ---- Wetter & Jahreszeiten ----
 var wetter="sonne";
-var SAISON=[["🌸 Frühling",0xc8f0b8],["☀️ Sommer",0xffffff],["🍂 Herbst",0xe8c088],["❄️ Winter",0xdfe8f2]];
+var SAISON=[["🌸 Frühling",0xb8e0a0],["☀️ Sommer",0xaecf7d],["🍂 Herbst",0xe8c088],["❄️ Winter",0xdfe8f2]]; // gruener Tint gegen Stroh-Look
 function calcSaison(){return Math.floor((tag-1)/5)%4;}
 function applySaison(){rasen.material.color.setHex(SAISON[calcSaison()][1]);}
 var sterneGeo=new THREE.BufferGeometry(),sternePos=new Float32Array(420*3);
@@ -583,7 +583,7 @@ var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_d
     [xc-5.05,xc+5.05].forEach(function(xb){bord(0.26,2*SZ9+14,xb,0);});
     [xc-7.55,xc+7.55].forEach(function(xe){erd(0.7,2*SZ9+14,xe,0);});});
   // Zebrastreifen an den Kreuzungen (Fussgaenger queren die Hauptstrassen)
-  var zMat=new THREE.MeshStandardMaterial({color:0xcfcfc6,roughness:0.85});
+  var zMat=new THREE.MeshStandardMaterial({color:0xcfcfc6,roughness:0.85});(window._markMats=window._markMats||[]).push(zMat);
   function zebra(x,z,quer){ // quer=true: Strasse laeuft in X (Nord/Sued) -> Streifen laengs (in X), gestapelt ueber die Fahrbahnbreite (Z)
     var n=8;for(var st9=0;st9<n;st9++){
       var w9=quer?4.8:0.62,d9=quer?0.62:4.8; // Streifen laengs zur Fahrtrichtung
@@ -655,7 +655,7 @@ if(THREE.GLTFLoader){["lp_tree.glb"].forEach(function(){
   }
   tuft.count=ti;tuft.instanceMatrix.needsUpdate=true;if(tuft.instanceColor)tuft.instanceColor.needsUpdate=true;scene.add(tuft);
   // 2) Wildblumen (kleine Farbtupfer auf duennem Halm)
-  var flGeo=new THREE.SphereGeometry(0.19,6,5),
+  var flGeo=new THREE.SphereGeometry(0.11,6,5),
       flMat=new THREE.MeshStandardMaterial({roughness:0.7,metalness:0,transparent:true,opacity:1});
   window._flMat=flMat; // nachts ausfaden (sonst Rausch-Sprenkel im Dunkeln)
   var NF=85,fl=new THREE.InstancedMesh(flGeo,flMat,NF);
@@ -665,7 +665,7 @@ if(THREE.GLTFLoader){["lp_tree.glb"].forEach(function(){
     var fx=(Math.random()*2-1)*LX,fz=(Math.random()*2-1)*LZ;
     if(Math.random()>0.5)continue;if(!frei(fx,fz))continue;
     var fs=0.7+Math.random()*0.7;
-    dummy.position.set(fx,0.14*fs,fz);dummy.rotation.set(0,0,0);dummy.scale.setScalar(fs);dummy.updateMatrix();
+    dummy.position.set(fx,0.28*fs,fz);dummy.rotation.set(0,0,0);dummy.scale.setScalar(fs);dummy.updateMatrix();
     fl.setMatrixAt(fi,dummy.matrix);c.setHex(FCOL[(Math.random()*FCOL.length)|0]);fl.setColorAt(fi,c);
     fi++;
   }
@@ -673,7 +673,7 @@ if(THREE.GLTFLoader){["lp_tree.glb"].forEach(function(){
   // Stiele (ein gemeinsamer duenner Zylinder-Instancer unter den Blueten)
   var stGeo=new THREE.CylinderGeometry(0.02,0.03,0.28,4),stMat=new THREE.MeshStandardMaterial({color:0x3a6a34,roughness:1});
   var st=new THREE.InstancedMesh(stGeo,stMat,fi);var sm=new THREE.Matrix4(),v=new THREE.Vector3(),q=new THREE.Quaternion(),sv=new THREE.Vector3(1,1,1);
-  for(var si=0;si<fi;si++){fl.getMatrixAt(si,sm);v.setFromMatrixPosition(sm);v.y=0.14;sm.compose(v,q,sv);st.setMatrixAt(si,sm);}
+  for(var si=0;si<fi;si++){fl.getMatrixAt(si,sm);var sc7=Math.cbrt(Math.abs(sm.elements[0]*sm.elements[5]*sm.elements[10]))||1;v.setFromMatrixPosition(sm);v.y=0.14*sc7;sv.set(1,sc7,1);sm.compose(v,q,sv);st.setMatrixAt(si,sm);}
   st.instanceMatrix.needsUpdate=true;scene.add(st);
 })();
 
@@ -768,7 +768,7 @@ var dorfFenster=[];
       new THREE.MeshStandardMaterial({color:0xfff4d0,emissive:0xffe8a0,emissiveIntensity:0,roughness:0.3}));
     kopf.position.y=3.2;lg.add(kopf);dorfFenster.push(kopf.material);
     // warmer Lichtschein am Boden (nachts sichtbar)
-    var scheinMat=new THREE.MeshStandardMaterial({color:0xffe8a0,emissive:0xffdd88,emissiveIntensity:0,transparent:true,opacity:0.0,side:THREE.DoubleSide});
+    var scheinMat=new THREE.MeshBasicMaterial({color:0xffd68c,transparent:true,opacity:0.0,blending:THREE.AdditiveBlending,depthWrite:false});
     var schein=new THREE.Mesh(new THREE.CircleGeometry(3.2,20),scheinMat);
     schein.rotation.x=-Math.PI/2;schein.position.set(0,0.04,0);lg.add(schein);
     dorfFenster.push(scheinMat);
@@ -901,6 +901,49 @@ var dorfFenster=[];
     g.position.set(x,0,z);scene.add(g);}
   [[-94,-72,12,7,0x9aa8bc],[94,-76,10,6,0x88a0b8],[-110,42,14,8,0xa0b0c0],[94,74,11,7,0x94a4b8],[0,-112,13,7,0x9caabe],[-6,90,9,6,0x8ea6ba]].forEach(function(t){turm(t[0],t[1],t[2],t[3],t[4]);}); // alle Tuerme klar hinter den Strassen
   // (Neon-Schilder haengen jetzt direkt in den Laden-Gruppen)
+  // ---- Villen-Viertel: grosse Parzellen mit richtigen Haeusern an den Querstrassen ----
+  (function villenViertel(){
+    var vilM=stdMat(0xede4d2,0.85);(window._wandMats=window._wandMats||[]).push(vilM);
+    var zaunM=betMat(0xe8e4da,0.8),einfM=betMat(0xb6b2a8,0.9);
+    if(!_texBlatt)_texBlatt=_strukTex("blatt");
+    var heckM=new THREE.MeshStandardMaterial({color:0x4a7a42,roughness:0.95,map:_texBlatt});
+    function villa(x,z,rotY,dachC){
+      var g=new THREE.Group();
+      // Haus: 2 Etagen + Walmdach
+      var korp=new THREE.Mesh(new THREE.BoxGeometry(8,5.2,6.4),vilM);
+      korp.position.y=2.6;korp.castShadow=true;korp.receiveShadow=true;g.add(korp);
+      var sock=new THREE.Mesh(new THREE.BoxGeometry(8.4,0.4,6.8),betMat(0xb8b2a6,0.9));sock.position.y=0.2;g.add(sock);
+      var dach=new THREE.Mesh(new THREE.ConeGeometry(6.4,2.6,4),stdMat(dachC,0.75));
+      dach.rotation.y=Math.PI/4;dach.scale.set(1.05,1,0.85);dach.position.y=6.5;dach.castShadow=true;
+      if(window._schindelTex)dach.material.map=window._schindelTex;g.add(dach);
+      var kamin=new THREE.Mesh(new THREE.BoxGeometry(0.7,1.6,0.7),betMat(0x8a8078,0.8));kamin.position.set(2.4,6.9,-1.2);g.add(kamin);
+      // Fenster mit Rahmen (2 Etagen x 3), Tuer + Vordach
+      for(var e=0;e<2;e++)for(var fx=0;fx<3;fx++){var px=-2.7+fx*2.7;
+        if(e===0&&fx===1)continue; // Tuer-Platz
+        var ra=new THREE.Mesh(new THREE.BoxGeometry(1.3,1.5,0.06),stdMat(0x6a6258,0.7));ra.position.set(px,1.5+e*2.3,3.21);g.add(ra);
+        var fe=new THREE.Mesh(new THREE.BoxGeometry(1.1,1.3,0.06),
+          new THREE.MeshStandardMaterial({color:0xa8c8dc,emissive:0xffd890,emissiveIntensity:0,roughness:0.25}));
+        fe.position.set(px,1.5+e*2.3,3.24);g.add(fe);if((e+fx)%2===0)dorfFenster.push(fe.material);}
+      var tuer=new THREE.Mesh(new THREE.BoxGeometry(1.3,2.3,0.1),stdMat(0x4a3a2c,0.5));tuer.position.set(0,1.15,3.24);g.add(tuer);
+      var vord=new THREE.Mesh(new THREE.BoxGeometry(1.9,0.12,1.0),betMat(0x9a948a,0.7));vord.position.set(0,2.5,3.6);vord.castShadow=true;g.add(vord);
+      // Garage seitlich mit Tor
+      var gar=new THREE.Mesh(new THREE.BoxGeometry(3.4,2.6,4.4),vilM);gar.position.set(5.7,1.3,0.6);gar.castShadow=true;g.add(gar);
+      var garD=new THREE.Mesh(new THREE.BoxGeometry(3.8,0.3,4.8),betMat(0x9a948a,0.8));garD.position.set(5.7,2.75,0.6);g.add(garD);
+      var tor=new THREE.Mesh(new THREE.BoxGeometry(2.6,1.9,0.08),stdMat(0xcac2b2,0.6));tor.position.set(5.7,0.95,2.82);g.add(tor);
+      // Parzelle: Lattenzaun (18x14), Gartenweg, Einfahrt, Hecken, Baum
+      function zaun(w9,d9,zx,zz){var zn=new THREE.Mesh(new THREE.BoxGeometry(w9,0.7,d9),zaunM);zn.position.set(zx,0.35,zz);g.add(zn);}
+      zaun(18,0.14,0,-7);zaun(0.14,14,-9,0);zaun(0.14,14,9,0);
+      zaun(6.6,0.14,-5.7,7);zaun(4.6,0.14,6.7,7); // Luecken: Gartentor + Einfahrt
+      var weg=new THREE.Mesh(new THREE.PlaneGeometry(1.3,3.6),einfM);weg.rotation.x=-Math.PI/2;weg.position.set(0,0.012,5.2);weg.receiveShadow=true;g.add(weg);
+      var einf=new THREE.Mesh(new THREE.PlaneGeometry(3.0,4.4),einfM);einf.rotation.x=-Math.PI/2;einf.position.set(5.7,0.012,4.9);einf.receiveShadow=true;g.add(einf);
+      [-6.5,-3.2].forEach(function(hx){var he=new THREE.Mesh(new THREE.BoxGeometry(2.6,0.55,0.5),heckM);he.position.set(hx,0.28,6.4);he.castShadow=true;g.add(he);});
+      var bst=new THREE.Mesh(new THREE.CylinderGeometry(0.16,0.22,1.6,7),stdMat(0x6a4a30,0.9));bst.position.set(-6.2,0.8,-3.6);g.add(bst);
+      [0,1,2].forEach(function(k){var kr=new THREE.Mesh(new THREE.SphereGeometry(1.0-k*0.2,9,7),stdMat(k%2?0x3a7a3a:0x4a8a44,0.85));
+        kr.position.set(-6.2+(k-1)*0.35,2.0+k*0.55,-3.6);kr.castShadow=true;g.add(kr);});
+      g.position.set(x,0,z);g.rotation.y=rotY;scene.add(g);}
+    villa(96,-22,-Math.PI/2,0x8a5a48);villa(96,-44,-Math.PI/2,0x5a6a78); // Ost-Parzellen
+    villa(-96,8,Math.PI/2,0x6a7a58);villa(-96,28,Math.PI/2,0x8a5a48);   // West-Parzellen
+  })();
   // ---- Laternen-Reihen (Glow-Pool statt PointLight: billig) ----
   (function laternenReihen(){
     var gcv=document.createElement("canvas");gcv.width=gcv.height=64;var gc=gcv.getContext("2d");
@@ -1257,7 +1300,7 @@ setTimeout(function baueGebaeude(){
   bau("th3_wippe.glb",1.25,91,0,2,Math.PI/2,false);
   bau("th3_karussell.glb",1.3,100,0,5,0,false);
   // Markt-Platz (Suedzeile)
-  bau("th3_marktstand.glb",2.6,54,0,74.5,Math.PI,false); // frei vom Wohnhaus + neuem Parkplatz
+  bau("th3_marktstand.glb",2.6,62,0,80,Math.PI,false); // frei von Kiosk-Dach, Haus und Parkplatz
   bau("th3_brezelstand.glb",1.9,28,0,72.5,Math.PI,false); // weg vom Haus bei x=20 (Markise clippte ins Dach)
   // Strassen-Deko
   bau("th3_kiosk.glb",3.0,-16,0,-69,0,false);
@@ -1293,7 +1336,7 @@ setTimeout(function baueGebaeude(){
   [-27,-31,-35,-39].forEach(function(zz){bau("th4_zaun_holz.glb",0.95,-85,0,zz,Math.PI/2,false);bau("th4_zaun_holz.glb",0.95,-101,0,zz,Math.PI/2,false);});
   [-87,-91,-95,-99].forEach(function(xx){bau("th4_zaun_holz.glb",0.95,xx,0,-25,0,false);bau("th4_zaun_holz.glb",0.95,xx,0,-41,0,false);});
   // Vogelhäuser
-  bau("th4_vogelhaus.glb",2,62,0,-36,0.6,false);bau("th4_vogelhaus.glb",2,-76,0,20,0,false);
+  bau("th4_vogelhaus.glb",2,62,0,-36,0.6,false);bau("th4_vogelhaus.glb",2,-62,0,20,0,false);
   // See: Bogenbrücke ans Ufer, Schwan aufs Wasser, Sonnenschirme
   bau("th4_bruecke.glb",1.1,-93,0,69.5,Math.PI/2,false);
   bau("th4_schwan.glb",0.75,-95,-0.02,74,0.6,false);
@@ -2606,15 +2649,16 @@ function updWork(dt){
   var hh=uhrzeit/60;
   if(!arbeiten&&hh>=9&&hh<17){arbeiten=true;
     if(window.autoRec){window.autoRec.state="los";window.autoRec.mesh.position.set(window.autoRec.homeX,0.01,window.autoRec.homeZ);}
-    sims.forEach(function(s2){zielFrei(s2);s2.state="work";s2.pose="stand";
+    sims.forEach(function(s2,i2){if(i2===0)return; // Spielfigur bleibt sichtbar & steuerbar
+      zielFrei(s2);s2.state="work";s2.pose="stand";
       s2.mesh.visible=false;simEmojiSafe(s2);});
-    hint("💼 Max & Mia arbeiten hart … (bis 17:00)");}
+    hint("💼 Mia ist bei der Arbeit … (bis 17:00)");}
   else if(arbeiten&&(hh>=17||hh<9)){arbeiten=false;
     if(window.autoRec){window.autoRec.state="heim";window.autoRec.mesh.position.set(70,0.01,GH*CS/2+11);window.autoRec.mesh.visible=true;}
     var lohn=2*(100+skills.arbeit.lv*40);
     geld+=lohn;skillXp("arbeit",1);
-    sims.forEach(function(s2,i){s2.state="idle";s2.mesh.visible=true;
-      s2.x=cx(2+i*2);s2.z=cz(GH-1);s2.pose="stand";
+    sims.forEach(function(s2,i){
+      if(i>0){s2.state="idle";s2.mesh.visible=true;s2.x=cx(2+i*2);s2.z=cz(GH-1);s2.pose="stand";}
       s2.needs.hunger=Math.max(10,s2.needs.hunger-18);s2.needs.energie=Math.max(10,s2.needs.energie-20);
       simEmoji(s2,"💰");});
     hint("💰 Feierabend! +"+lohn+" § Gehalt (Karriere-Lv "+skills.arbeit.lv+")");
@@ -3597,7 +3641,7 @@ function loop(now){
   var dt=Math.min(0.05,(now-last)/1000);last=now;
   if(running){
     // Uhr: 1 Spielminute = 0.5s (Host führt, Gast empfängt)
-    if(!MPs||mpHost){uhrzeit+=dt*40;if(uhrzeit>=1440){uhrzeit-=1440;tag++;if(immo.length){var miete=immo.length*150;geld+=miete;geldSend();updHUD();hint("\uD83C\uDFE0\uD83D\uDCB0 Mieteinnahmen: +"+miete+" \u00A7 ("+immo.length+" H\u00E4user)");}rollWetter();applySaison();hint(SAISON[calcSaison()][0]+(wetter==="regen"?" · 🌧️ Regen":wetter==="schnee"?" · 🌨️ Schnee":""));}}
+    if(!MPs||mpHost){uhrzeit+=dt*10;if(uhrzeit>=1440){uhrzeit-=1440;tag++;if(immo.length){var miete=immo.length*150;geld+=miete;geldSend();updHUD();hint("\uD83C\uDFE0\uD83D\uDCB0 Mieteinnahmen: +"+miete+" \u00A7 ("+immo.length+" H\u00E4user)");}rollWetter();applySaison();hint(SAISON[calcSaison()][0]+(wetter==="regen"?" · 🌧️ Regen":wetter==="schnee"?" · 🌨️ Schnee":""));}}
     // Tag/Nacht
     var hh=uhrzeit/60,dayA=Math.max(0,Math.sin((hh-5.75)/14*Math.PI)); // Sonne 5:45-19:45 — Abend hat echtes Restlicht
     var wDim=wetter==="sonne"?1:0.62;
@@ -3619,6 +3663,7 @@ function loop(now){
       nachtLampen.forEach(function(L){L.intensity=nacht9?7:0;}); // warme Lichtpools auf der Strasse}
       if(window._flMat)window._flMat.opacity=nacht9?0.15:1; // Wiesenblumen nachts fast unsichtbar
       (window._lampGlows||[]).forEach(function(gm){gm.opacity=nacht9?0.34:0;}); // Laternen-Lichtpools
+      (window._markMats||[]).forEach(function(mm){mm.color.setHex(nacht9?0x6a7078:0xcfcfc6);}); // Markierungen dimmen mit
     }
     if(camAT!==null){camA+=(camAT-camA)*Math.min(1,dt*6);
       if(Math.abs(camAT-camA)<0.002){camA=camAT;camAT=null;}updCam();}
