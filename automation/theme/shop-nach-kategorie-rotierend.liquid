@@ -1,0 +1,35 @@
+<section class="catrot" style="max-width:1200px;margin:0 auto;padding:8px 1rem 4px;">
+  <h2 style="font-size:clamp(22px,3.5vw,32px);margin:0 0 16px;">Shop nach Kategorie</h2>
+  {% assign cats = "damen-mode|👗 Damen-Mode,fur-ihn|👔 Für Ihn,schuhe|👟 Schuhe,premium-schmuck|💎 Schmuck,uhren|⌚ Uhren,premium-beauty|💄 Beauty,parfum-duefte|🌸 Parfum,trends-gadgets|🔥 Trends,sub-kueche|🍳 Küche,garten-balkon|🌿 Garten,beleuchtung-lampen|💡 Beleuchtung,sub-haustier|🐾 Haustier,spielzeug|🧸 Spielzeug,fitness-training|💪 Fitness,wohnen-dekoration|🏠 Wohnen,bar-wein|🍷 Bar & Wein" | split: "," %}
+  <div class="catrot-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+    {% for c in cats %}
+      {% assign pair = c | split: "|" %}
+      {% assign h = pair[0] %}
+      {% assign label = pair[1] %}
+      {% assign coll = collections[h] %}
+      {% if coll != blank and coll.products_count > 0 %}
+        <a class="catrot-tile" href="/collections/{{ h }}" style="position:relative;display:block;border-radius:14px;overflow:hidden;aspect-ratio:1/1;box-shadow:0 6px 18px rgba(0,0,0,.10);text-decoration:none;background:#f3efe9;">
+          <div class="catrot-imgs" style="position:absolute;inset:0;">
+            {% assign n = 0 %}
+            {% for p in coll.products limit: 4 %}
+              {% if p.featured_image %}
+                {% assign n = n | plus: 1 %}
+                <img src="{{ p.featured_image | image_url: width: 500 }}" loading="lazy" alt="{{ coll.title | escape }}"
+                     class="catrot-img catrot-img-{{ n }}"
+                     style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;animation:catfade 9s infinite;animation-delay:{{ forloop.index0 | times: 2 }}s;">
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div style="position:absolute;left:8px;top:8px;z-index:2;background:rgba(255,255,255,.92);border-radius:8px;padding:5px 10px;font-weight:700;font-size:14px;color:#1a1a1a;">{{ label }}</div>
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+<style>
+  @keyframes catfade { 0%{opacity:0} 3%{opacity:1} 22%{opacity:1} 27%{opacity:0} 100%{opacity:0} }
+  /* Basis: erstes Bild immer sichtbar, damit nie eine Lücke entsteht */
+  .catrot-tile .catrot-img-1 { opacity:1; animation:none; }
+  .catrot-tile:hover .catrot-img { animation-play-state:paused; }
+  @media(max-width:749px){ .catrot-grid{ grid-template-columns:repeat(2,1fr) !important; } }
+</style>
