@@ -422,7 +422,7 @@ ladeTex("textures/th/rasen.jpg",13,10,function(t){rasen.material.map=t;rasen.mat
     var sg=new THREE.BufferGeometry();
     sg.setAttribute("position",new THREE.Float32BufferAttribute(sPos,3));
     sg.setIndex(sIdx);sg.computeVertexNormals();
-    var sand=new THREE.Mesh(sg,new THREE.MeshStandardMaterial({color:0xb2a17c,roughness:1}));
+    var sand=new THREE.Mesh(sg,new THREE.MeshStandardMaterial({color:0x8f7a52,roughness:1,envMapIntensity:0.2}));
     sand.rotation.x=-Math.PI/2;sand.position.set(x,-0.015,z);sand.receiveShadow=true;scene.add(sand);
   })(-90,80);
   var see=new THREE.Mesh(new THREE.CircleGeometry(0.01,3),new THREE.MeshBasicMaterial({visible:false}));
@@ -525,7 +525,7 @@ var strMatH=stdMat(0x4a4a53,0.92),strMatV=stdMat(0x4a4a53,0.92);
   var b=_roadTex();b.wrapS=b.wrapT=THREE.RepeatWrapping;b.repeat.set(1,Math.round(RL/6));strMatV.map=b;strMatV.needsUpdate=true;})();
 var strasse=new THREE.Mesh(new THREE.PlaneGeometry(RL,10),strMatH);
 strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.receiveShadow=true;scene.add(strasse);
-function _dashFrei(x){return Math.abs(Math.abs(x)-RX)>7.5&&Math.abs(Math.abs(x)-(RX-12))>4;} // nicht in Kreuzung/Zebra
+function _dashFrei(x){return Math.abs(Math.abs(x)-RX)>9.2;} // nicht in Kreuzung/Zebra (Zebras bei RX±6.2)
 var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_dashFrei(_dx))continue;
   var strich=new THREE.Mesh(new THREE.PlaneGeometry(3,0.3),stdMat(0xd8d8cc,0.75));
   strich.rotation.x=-Math.PI/2;strich.position.set(_dx,0.005,GH*CS/2+12);scene.add(strich);}
@@ -584,8 +584,8 @@ var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_d
     hl.rotation.x=-Math.PI/2;hl.position.set(x,0.009,z);scene.add(hl);}
   [[RX,SZ9+12],[RX,-(SZ9+12)],[-RX,SZ9+12],[-RX,-(SZ9+12)]].forEach(function(K){
     var so=K[1]>0?2.5:-2.5;
-    halte(K[0]-10.6,K[1]+so,true);halte(K[0]+10.6,K[1]-so,true); // Hauptstrasse (dir+1 haelt westlich)
-    if(K[0]<0)halte(K[0]-2.5,K[1]-10.6,false);else halte(K[0]+2.5,K[1]+10.6,false);}); // Querstrasse
+    halte(K[0]-9.4,K[1]+so,true);halte(K[0]+9.4,K[1]-so,true); // direkt hinter dem Zebra
+    if(K[0]<0)halte(K[0]-2.5,K[1]-9.3,false);else halte(K[0]+2.5,K[1]+9.3,false);});
 })();
 if(THREE.GLTFLoader){["lp_tree.glb"].forEach(function(){
   new THREE.GLTFLoader().load("/models/lp_tree.glb",function(g){
@@ -669,13 +669,13 @@ var dorfFenster=[];
   function strasseMesh(w,h,x,z){var st=new THREE.Mesh(new THREE.PlaneGeometry(w,h),w>h?strMatH:strMatV);
     st.rotation.x=-Math.PI/2;st.position.set(x,-0.003,z);st.receiveShadow=true;scene.add(st);return st;}
   strasseMesh(RL,10,0,-SZ-12);
-  strasseMesh(10,2*SZ+38,-RX,0);strasseMesh(10,2*SZ+38,RX,0);
+  strasseMesh(10,2*SZ+46,-RX,0);strasseMesh(10,2*SZ+46,RX,0); // laenger: aeussere Zebras+Haltelinien liegen auf Asphalt
   var _NM2=Math.round(RL/10);for(var ms2=0;ms2<_NM2;ms2++){var _dx2=-RL/2+5+ms2*10;if(!_dashFrei(_dx2))continue;
     var st2=new THREE.Mesh(new THREE.PlaneGeometry(3,0.3),stdMat(0xe8e8d8,0.7));
     st2.rotation.x=-Math.PI/2;st2.position.set(_dx2,0.005,-SZ-12);scene.add(st2);}
   var _NZ=Math.round((2*SZ+38)/7);for(var ms3=0;ms3<_NZ;ms3++){[-RX,RX].forEach(function(sx){
     var _dz=-(SZ+13)+ms3*7;
-    if(Math.abs(Math.abs(_dz)-(SZ+12))<7.5||Math.abs(Math.abs(_dz)-(SZ-2))<4)return; // nicht in Kreuzung/Zebra
+    if(Math.abs(Math.abs(_dz)-(SZ+12))<9.2)return; // nicht in Kreuzung/Zebra (Zebras bei ±6.1)
     var st3=new THREE.Mesh(new THREE.PlaneGeometry(0.3,3),stdMat(0xe8e8d8,0.7));
     st3.rotation.x=-Math.PI/2;st3.position.set(sx,0.005,_dz);scene.add(st3);});}
   // Nachbarhaus prozedural: Sockel, Waende, Satteldach, Tuer, Fenster, Kamin
@@ -842,6 +842,12 @@ var dorfFenster=[];
     dorfFenster.push(nMat); // nachts hell
     var schild=new THREE.Mesh(new THREE.PlaneGeometry(2.2,0.9),nMat);
     schild.position.set(0,3.05,2.62);g.add(schild);
+    [-1.7,1.7].forEach(function(fx8){ // Rueckseite: war nachts ein schwarzer Klotz
+      var rf=new THREE.Mesh(new THREE.BoxGeometry(1.1,1.0,0.06),
+        new THREE.MeshStandardMaterial({color:0xa8c8dc,emissive:0xffd890,emissiveIntensity:0,roughness:0.25}));
+      rf.position.set(fx8,1.9,-2.53);g.add(rf);dorfFenster.push(rf.material);});
+    var ht=new THREE.Mesh(new THREE.BoxGeometry(1.0,1.9,0.07),stdMat(0x5a4a3a,0.6));
+    ht.position.set(0,0.95,-2.53);g.add(ht);
     g.position.set(sh[0],0,SZ+24.5);g.rotation.y=Math.PI;scene.add(g);}); // weiter zurueck: Front nicht mehr aufs Trottoir
   // ---- Skyline: Wolkenkratzer mit Glasfassade (weit draußen) ----
   // Fassaden-Kachel (1 Etage, 3 Fenster) als Textur: Tag = dunkles Glas in warmgrauer Wand,
@@ -874,6 +880,28 @@ var dorfFenster=[];
     g.position.set(x,0,z);scene.add(g);}
   [[-80,-72,12,7,0x9aa8bc],[80,-76,10,6,0x88a0b8],[-108,42,14,8,0xa0b0c0],[86,74,11,7,0x94a4b8],[0,-112,13,7,0x9caabe],[-6,90,9,6,0x8ea6ba]].forEach(function(t){turm(t[0],t[1],t[2],t[3],t[4]);}); // alle Tuerme klar hinter den Strassen
   // (Neon-Schilder haengen jetzt direkt in den Laden-Gruppen)
+  // ---- Laternen-Reihen (Glow-Pool statt PointLight: billig) ----
+  (function laternenReihen(){
+    var gcv=document.createElement("canvas");gcv.width=gcv.height=64;var gc=gcv.getContext("2d");
+    var gg=gc.createRadialGradient(32,32,2,32,32,31);gg.addColorStop(0,"rgba(255,214,140,0.9)");gg.addColorStop(1,"rgba(255,214,140,0)");
+    gc.fillStyle=gg;gc.fillRect(0,0,64,64);
+    var glowTex=new THREE.CanvasTexture(gcv);
+    window._lampGlows=[];
+    function lamp(x,z){
+      var lg=new THREE.Group();
+      var mast=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.08,3.1,7),stdMat(0x3a3a42,0.5));mast.position.y=1.55;lg.add(mast);
+      var kopf=new THREE.Mesh(new THREE.SphereGeometry(0.18,10,8),
+        new THREE.MeshStandardMaterial({color:0xfff4d0,emissive:0xffe8a0,emissiveIntensity:0,roughness:0.3}));
+      kopf.position.y=3.15;lg.add(kopf);dorfFenster.push(kopf.material);
+      var gm=new THREE.MeshBasicMaterial({map:glowTex,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false});
+      var glow=new THREE.Mesh(new THREE.PlaneGeometry(7.5,7.5),gm);
+      glow.rotation.x=-Math.PI/2;glow.position.y=0.14;lg.add(glow);
+      window._lampGlows.push(gm);
+      lg.position.set(x,0,z);scene.add(lg);}
+    [-75,-55,15,55,75].forEach(function(lx){lamp(lx,SZ+4.6);});
+    [-75,-55,-15,15,55,75].forEach(function(lx){lamp(lx,-SZ-4.6);});
+    [-30,0,30].forEach(function(lz){lamp(RX-4.6,lz);lamp(-(RX-4.6),lz);});
+  })();
   // ---- Ampeln an den Kreuzungen ----
   function ampel(x,z,grp,rot9){var g=new THREE.Group();
     var mast=new THREE.Mesh(new THREE.CylinderGeometry(0.09,0.11,4,7),stdMat(0x2a2a30,0.5));mast.position.y=2;g.add(mast);
@@ -987,7 +1015,7 @@ setTimeout(function baueVerkehr(){
     var padMat=new THREE.MeshStandardMaterial({color:0x44444c,roughness:0.95});
     var lineMat=new THREE.MeshStandardMaterial({color:0xe8e8dc,roughness:0.7});
     // [x, z, noseRotY, faceZ(+1 Nase Richtung +z)]
-    var PADS=[[-40,SZ+22,Math.PI/2],[58,SZ+22,Math.PI/2],[34,-(SZ+22),-Math.PI/2],[-58,-(SZ+22),-Math.PI/2]]; // Grasseite hinter dem Trottoir, nicht auf der Fahrbahn
+    var PADS=[[51,SZ+22,Math.PI/2],[48,-(SZ+22),-Math.PI/2],[-58,-(SZ+22),-Math.PI/2]]; // kollisionsfrei: nicht in Haeusern/Gehwegen
     PADS.forEach(function(P){
       var px=P[0],pz=P[1],rot=P[2];
       var pad=new THREE.Mesh(new THREE.PlaneGeometry(16,5.2),padMat);
@@ -1208,7 +1236,7 @@ setTimeout(function baueGebaeude(){
   bau("th3_wippe.glb",1.25,79,0,2,Math.PI/2,false);
   bau("th3_karussell.glb",1.3,88,0,5,0,false);
   // Markt-Platz (Suedzeile)
-  bau("th3_marktstand.glb",2.6,48,0,70.5,Math.PI,false);
+  bau("th3_marktstand.glb",2.6,54,0,74.5,Math.PI,false); // frei vom Wohnhaus + neuem Parkplatz
   bau("th3_brezelstand.glb",1.9,28,0,72.5,Math.PI,false); // weg vom Haus bei x=20 (Markise clippte ins Dach)
   // Strassen-Deko
   bau("th3_kiosk.glb",3.0,-16,0,-69,0,false);
@@ -3569,6 +3597,7 @@ function loop(now){
       dorfFenster.forEach(function(fm){fm.emissiveIntensity=nacht9?2.2:0;if(nacht9&&fm.emissive)fm.emissive.setHex(0xffcf80);if(fm.transparent&&fm.opacity<=0.5)fm.opacity=nacht9?0.5:0;});
       nachtLampen.forEach(function(L){L.intensity=nacht9?7:0;}); // warme Lichtpools auf der Strasse}
       if(window._flMat)window._flMat.opacity=nacht9?0.15:1; // Wiesenblumen nachts fast unsichtbar
+      (window._lampGlows||[]).forEach(function(gm){gm.opacity=nacht9?0.34:0;}); // Laternen-Lichtpools
     }
     if(camAT!==null){camA+=(camAT-camA)*Math.min(1,dt*6);
       if(Math.abs(camAT-camA)<0.002){camA=camAT;camAT=null;}updCam();}
