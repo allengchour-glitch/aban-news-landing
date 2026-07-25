@@ -577,8 +577,8 @@ var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_d
       p.receiveShadow=true;scene.add(p);}}
   // Alle 4 Arme jeder Kreuzung, nah an der Ecke (echtes Stadtbild)
   [[RX,SZ9+12],[RX,-(SZ9+12)],[-RX,SZ9+12],[-RX,-(SZ9+12)]].forEach(function(K){
-    zebra(K[0]-7.6,K[1],true);zebra(K[0]+7.6,K[1],true);
-    zebra(K[0],K[1]-7.6,false);zebra(K[0],K[1]+7.6,false);});
+    zebra(K[0]-6.2,K[1],true);zebra(K[0]+6.2,K[1],true);
+    zebra(K[0],K[1]-6.1,false);zebra(K[0],K[1]+6.1,false);}); // auf den Gehweg-Achsen: Fussgaenger queren AUF dem Streifen
   // Haltelinien vor den Ampeln (je Fahrspur, hinter dem Zebra)
   function halte(x,z,quer){var hl=new THREE.Mesh(new THREE.PlaneGeometry(quer?0.35:4.6,quer?4.6:0.35),zMat);
     hl.rotation.x=-Math.PI/2;hl.position.set(x,0.009,z);scene.add(hl);}
@@ -604,7 +604,7 @@ if(THREE.GLTFLoader){["lp_tree.glb"].forEach(function(){
       c.putImageData(d,0,0);
       var nt=new THREE.CanvasTexture(cv);nt.flipY=false;nt.encoding=n.material.map.encoding;
       n.material=n.material.clone();n.material.map=nt;n.material.needsUpdate=true;}});
-    [[-78,-50],[78,-50],[-78,50],[78,50]].forEach(function(p,i){
+    [[-94,-80],[94,-80],[-60,88],[60,88]].forEach(function(p,i){ // weg von den Kreuzungen — Erdteller-Riesen dominierten die Ecken
       var t=g.scene.clone(true);var box=new THREE.Box3().setFromObject(t),sz=new THREE.Vector3();box.getSize(sz);
       var k=(7+i%2*2)/(sz.y||1);t.scale.setScalar(k);
       var b2=new THREE.Box3().setFromObject(t);t.position.set(p[0],-b2.min.y-0.02,p[1]);
@@ -639,9 +639,10 @@ if(THREE.GLTFLoader){["lp_tree.glb"].forEach(function(){
   }
   tuft.count=ti;tuft.instanceMatrix.needsUpdate=true;if(tuft.instanceColor)tuft.instanceColor.needsUpdate=true;scene.add(tuft);
   // 2) Wildblumen (kleine Farbtupfer auf duennem Halm)
-  var flGeo=new THREE.SphereGeometry(0.11,6,5),
-      flMat=new THREE.MeshStandardMaterial({roughness:0.7,metalness:0,emissiveIntensity:0});
-  var NF=140,fl=new THREE.InstancedMesh(flGeo,flMat,NF);
+  var flGeo=new THREE.SphereGeometry(0.19,6,5),
+      flMat=new THREE.MeshStandardMaterial({roughness:0.7,metalness:0,transparent:true,opacity:1});
+  window._flMat=flMat; // nachts ausfaden (sonst Rausch-Sprenkel im Dunkeln)
+  var NF=70,fl=new THREE.InstancedMesh(flGeo,flMat,NF);
   var FCOL=[0xffffff,0xffd94a,0xff7ab0,0xb98cff,0xff5a4a,0xffe08a];
   var fi=0;
   for(var g2=0;g2<NF*4&&fi<NF;g2++){
@@ -3564,6 +3565,7 @@ function loop(now){
     if(window._dorfNacht!==nacht9){window._dorfNacht=nacht9;
       dorfFenster.forEach(function(fm){fm.emissiveIntensity=nacht9?2.2:0;if(nacht9&&fm.emissive)fm.emissive.setHex(0xffcf80);if(fm.transparent&&fm.opacity<=0.5)fm.opacity=nacht9?0.5:0;});
       nachtLampen.forEach(function(L){L.intensity=nacht9?7:0;}); // warme Lichtpools auf der Strasse}
+      if(window._flMat)window._flMat.opacity=nacht9?0.15:1; // Wiesenblumen nachts fast unsichtbar
     }
     if(camAT!==null){camA+=(camAT-camA)*Math.min(1,dt*6);
       if(Math.abs(camAT-camA)<0.002){camA=camAT;camAT=null;}updCam();}
