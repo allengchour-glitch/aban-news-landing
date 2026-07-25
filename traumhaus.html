@@ -422,7 +422,7 @@ ladeTex("textures/th/rasen.jpg",13,10,function(t){rasen.material.map=t;rasen.mat
     var sg=new THREE.BufferGeometry();
     sg.setAttribute("position",new THREE.Float32BufferAttribute(sPos,3));
     sg.setIndex(sIdx);sg.computeVertexNormals();
-    var sand=new THREE.Mesh(sg,new THREE.MeshStandardMaterial({color:0xcbb890,roughness:1}));
+    var sand=new THREE.Mesh(sg,new THREE.MeshStandardMaterial({color:0xb2a17c,roughness:1}));
     sand.rotation.x=-Math.PI/2;sand.position.set(x,-0.015,z);sand.receiveShadow=true;scene.add(sand);
   })(-90,80);
   var see=new THREE.Mesh(new THREE.CircleGeometry(0.01,3),new THREE.MeshBasicMaterial({visible:false}));
@@ -517,17 +517,17 @@ var weg=new THREE.Mesh(new THREE.PlaneGeometry(3,10),stdMat(0xc8beA8,0.9));weg.r
 // Strasse (quer, mit Mittelstreifen + Bordstein)
 // Sauberer, glatter Asphalt (feine Koernung statt haesslicher Riss-/Nahtlinien)
 function _roadTex(){var cv=document.createElement("canvas");cv.width=cv.height=256;var c=cv.getContext("2d");
-  c.fillStyle="#3d3d45";c.fillRect(0,0,256,256);
+  c.fillStyle="#45454d";c.fillRect(0,0,256,256);
   for(var i=0;i<3000;i++){var v=(Math.random()*30)|0;c.fillStyle="rgba("+(60+v)+","+(60+v)+","+(66+v)+",0.05)";c.fillRect(Math.random()*256,Math.random()*256,2,2);}
   return new THREE.CanvasTexture(cv);}
-var strMatH=stdMat(0x40404a,0.92),strMatV=stdMat(0x40404a,0.92);
+var strMatH=stdMat(0x4a4a53,0.92),strMatV=stdMat(0x4a4a53,0.92);
 (function(){var a=_roadTex();a.wrapS=a.wrapT=THREE.RepeatWrapping;a.repeat.set(Math.round(RL/6),1);strMatH.map=a;strMatH.needsUpdate=true;
   var b=_roadTex();b.wrapS=b.wrapT=THREE.RepeatWrapping;b.repeat.set(1,Math.round(RL/6));strMatV.map=b;strMatV.needsUpdate=true;})();
 var strasse=new THREE.Mesh(new THREE.PlaneGeometry(RL,10),strMatH);
 strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.receiveShadow=true;scene.add(strasse);
 function _dashFrei(x){return Math.abs(Math.abs(x)-RX)>7.5&&Math.abs(Math.abs(x)-(RX-12))>4;} // nicht in Kreuzung/Zebra
 var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_dashFrei(_dx))continue;
-  var strich=new THREE.Mesh(new THREE.PlaneGeometry(3,0.3),stdMat(0xe8e8d8,0.7));
+  var strich=new THREE.Mesh(new THREE.PlaneGeometry(3,0.3),stdMat(0xd8d8cc,0.75));
   strich.rotation.x=-Math.PI/2;strich.position.set(_dx,0.005,GH*CS/2+12);scene.add(strich);}
 // Trottoirs (erhoehte Gehwege) beidseitig aller Strassen — Strasse 10 breit, Kante bei ±5
 (function baueTrottoirs(){
@@ -567,7 +567,7 @@ var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_d
     [xc-5.05,xc+5.05].forEach(function(xb){bord(0.26,2*SZ9+14,xb,0);});
     [xc-7.55,xc+7.55].forEach(function(xe){erd(0.7,2*SZ9+14,xe,0);});});
   // Zebrastreifen an den Kreuzungen (Fussgaenger queren die Hauptstrassen)
-  var zMat=new THREE.MeshStandardMaterial({color:0xf0f0ea,roughness:0.8});
+  var zMat=new THREE.MeshStandardMaterial({color:0xcfcfc6,roughness:0.85});
   function zebra(x,z,quer){ // quer=true: Strasse laeuft in X (Nord/Sued) -> Streifen laengs (in X), gestapelt ueber die Fahrbahnbreite (Z)
     var n=8;for(var st9=0;st9<n;st9++){
       var w9=quer?4.8:0.62,d9=quer?0.62:4.8; // Streifen laengs zur Fahrtrichtung
