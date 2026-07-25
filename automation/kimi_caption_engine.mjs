@@ -37,7 +37,7 @@ let cursor = fs.existsSync(CURSOR) ? (fs.readFileSync(CURSOR,'utf8').trim()||nul
 let made=0, nulls=0, scanned=0;
 outer:
 while(made<MAX){
-  const r=await g(`query($c:String){products(first:30,query:"status:active",after:$c){pageInfo{hasNextPage endCursor}edges{cursor node{id title featuredImage{url}}}}}`,{c:cursor});
+  const r=await g(`query($c:String){products(first:5,query:"status:active",after:$c){pageInfo{hasNextPage endCursor}edges{cursor node{id title featuredImage{url}}}}}`,{c:cursor});
   if(!r){ await sleep(3000); continue; }
   const edges=r.data.products.edges;
   for(const e of edges){
