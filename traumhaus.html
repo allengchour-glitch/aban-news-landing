@@ -979,7 +979,12 @@ var dorfFenster=[];
     var klima=new THREE.Mesh(new THREE.BoxGeometry(w*0.24,0.7,w*0.24),stdMat(0x8a8a92,0.5));klima.position.set(w*0.22,h+0.85,-w*0.18);g.add(klima);
     var ant=new THREE.Mesh(new THREE.CylinderGeometry(0.05,0.07,2.6,5),stdMat(0x3a3a42,0.4));ant.position.set(w*0.1,h+1.8,w*0.1);g.add(ant);
     g.position.set(x,0,z);scene.add(g);}
-  [[-94,-72,12,7,0x9aa8bc],[94,-76,10,6,0x88a0b8],[-110,42,14,8,0xa0b0c0],[94,74,11,7,0x94a4b8],[0,-112,13,7,0x9caabe],[-6,90,9,6,0x8ea6ba]].forEach(function(t){turm(t[0],t[1],t[2],t[3],t[4]);}); // alle Tuerme klar hinter den Strassen
+  // Downtown-Cluster jenseits des Flusses: dichte Skyline statt verstreuter Einzeltuerme
+  [[-64,-116,18,8,0x9aa8bc],[-50,-108,13,7,0x88a0b8],[-38,-120,21,9,0xa0b0c0],[-26,-107,11,6,0x94a4b8],
+   [-14,-118,16,8,0x9caabe],[-2,-106,9,6,0x8ea6ba],[10,-119,19,8,0x98a6ba],[22,-108,12,7,0x8ea2b4],
+   [34,-117,15,7,0xa2aebe],[46,-107,10,6,0x92a4b6],[58,-115,17,8,0x9caebe],[70,-106,12,7,0x8ca0b2],
+   [-76,-108,14,7,0x96a6b8],[82,-116,20,9,0xa4b0c0]].forEach(function(t){turm(t[0],t[1],t[2],t[3],t[4]);});
+  [[-108,44,14,8,0xa0b0c0],[100,66,11,7,0x94a4b8]].forEach(function(t){turm(t[0],t[1],t[2],t[3],t[4]);});
   // (Neon-Schilder haengen jetzt direkt in den Laden-Gruppen)
   // ---- Villen-Viertel: grosse Parzellen mit richtigen Haeusern an den Querstrassen ----
   (function villenViertel(){
@@ -1034,6 +1039,52 @@ var dorfFenster=[];
       g.position.set(x,0,z);g.rotation.y=rotY;scene.add(g);}
     villa(96,-22,-Math.PI/2,0x8a5a48);villa(96,-44,-Math.PI/2,0x5a6a78); // Ost-Parzellen
     villa(-96,8,Math.PI/2,0x6a7a58);villa(-96,28,Math.PI/2,0x8a5a48);   // West-Parzellen
+  })();
+  // ---- Rathaus am Marktplatz: repraesentative Landmark mit Portikus + Uhrturm ----
+  (function rathaus(){
+    var g=new THREE.Group();
+    var rm=stdMat(0xe4dcc8,0.84);(window._wandMats=window._wandMats||[]).push(rm);
+    var sk=new THREE.Mesh(new THREE.BoxGeometry(21,1.0,12),betMat(0xc2bcae,0.88));sk.position.y=0.5;sk.receiveShadow=true;g.add(sk);
+    var kp=new THREE.Mesh(new THREE.BoxGeometry(19.5,8.5,10.5),rm);kp.position.y=5.25;kp.castShadow=true;kp.receiveShadow=true;g.add(kp);
+    var ges=new THREE.Mesh(new THREE.BoxGeometry(20.4,0.5,11.4),betMat(0xd0c8b8,0.85));ges.position.y=9.75;g.add(ges);
+    var dach=new THREE.Mesh(new THREE.BoxGeometry(20.6,0.7,11.6),stdMat(0x5a6470,0.75));dach.position.y=10.3;dach.castShadow=true;g.add(dach);
+    for(var st=0;st<3;st++){var tr=new THREE.Mesh(new THREE.BoxGeometry(9-st*0.6,0.28,1.1+st*0.5),betMat(0xcac4b6,0.9));
+      tr.position.set(0,0.14+st*0.28,6.2+st*0.55);tr.receiveShadow=true;g.add(tr);}
+    for(var c9=0;c9<6;c9++){
+      var sa=new THREE.Mesh(new THREE.CylinderGeometry(0.38,0.44,6.6,12),betMat(0xece6d8,0.8));
+      sa.position.set(-4.6+c9*1.84,4.3,5.9);sa.castShadow=true;g.add(sa);
+      var kap=new THREE.Mesh(new THREE.BoxGeometry(1.0,0.34,1.0),betMat(0xe0d8c8,0.8));kap.position.set(-4.6+c9*1.84,7.75,5.9);g.add(kap);}
+    var arch=new THREE.Mesh(new THREE.BoxGeometry(11.4,0.6,1.5),betMat(0xe6dece,0.82));arch.position.set(0,8.2,5.9);arch.castShadow=true;g.add(arch);
+    var gieb=new THREE.Mesh(new THREE.ConeGeometry(6.2,2.0,3),stdMat(0xe8e0d0,0.8));
+    gieb.rotation.y=Math.PI/2;gieb.scale.set(1,1,0.28);gieb.position.set(0,9.5,5.9);gieb.castShadow=true;g.add(gieb);
+    for(var e9=0;e9<2;e9++)for(var fx=0;fx<8;fx++){
+      var px=-8.2+fx*2.34;if(Math.abs(px)<5.2&&e9===0)continue;
+      var ra=new THREE.Mesh(new THREE.BoxGeometry(1.35,1.9,0.06),stdMat(0x6a6258,0.7));ra.position.set(px,3.2+e9*3.4,5.29);g.add(ra);
+      var fe=new THREE.Mesh(new THREE.BoxGeometry(1.1,1.65,0.06),
+        new THREE.MeshStandardMaterial({color:0xa8c8dc,emissive:0xffd890,emissiveIntensity:0,roughness:0.25}));
+      fe.position.set(px,3.2+e9*3.4,5.32);g.add(fe);if((e9+fx)%2===0)dorfFenster.push(fe.material);}
+    var por=new THREE.Mesh(new THREE.BoxGeometry(3.0,4.0,0.14),stdMat(0x5a4632,0.5));por.position.set(0,3.0,5.32);g.add(por);
+    var tu=new THREE.Mesh(new THREE.BoxGeometry(4.4,7.5,4.4),rm);tu.position.set(0,14.2,-1.5);tu.castShadow=true;g.add(tu);
+    var tg=new THREE.Mesh(new THREE.BoxGeometry(5.0,0.45,5.0),betMat(0xd0c8b8,0.85));tg.position.set(0,18.1,-1.5);g.add(tg);
+    var rcv=document.createElement("canvas");rcv.width=rcv.height=64;var rc=rcv.getContext("2d");
+    rc.fillStyle="#f8f4e8";rc.beginPath();rc.arc(32,32,30,0,6.283);rc.fill();
+    rc.strokeStyle="#3a3428";rc.lineWidth=3;rc.stroke();
+    for(var m9=0;m9<12;m9++){var ma=m9/12*6.283;rc.beginPath();
+      rc.moveTo(32+Math.cos(ma)*24,32+Math.sin(ma)*24);rc.lineTo(32+Math.cos(ma)*29,32+Math.sin(ma)*29);rc.stroke();}
+    rc.lineWidth=4;rc.beginPath();rc.moveTo(32,32);rc.lineTo(32+13,32+7);rc.stroke();
+    rc.lineWidth=3;rc.beginPath();rc.moveTo(32,32);rc.lineTo(32+6,32-20);rc.stroke();
+    var rtx=new THREE.CanvasTexture(rcv);
+    [[0,2.24],[Math.PI,-2.24]].forEach(function(rf){
+      var zb=new THREE.Mesh(new THREE.CircleGeometry(1.5,22),
+        new THREE.MeshStandardMaterial({map:rtx,emissiveMap:rtx,emissive:new THREE.Color(0xfff0c8),emissiveIntensity:0,roughness:0.4}));
+      zb.position.set(0,15.2,-1.5+rf[1]);zb.rotation.y=rf[0];g.add(zb);dorfFenster.push(zb.material);});
+    var kup=new THREE.Mesh(new THREE.ConeGeometry(3.0,3.2,8),stdMat(0x4a6a72,0.6));kup.position.set(0,19.9,-1.5);kup.castShadow=true;g.add(kup);
+    var fst=new THREE.Mesh(new THREE.CylinderGeometry(0.07,0.07,2.2,6),stdMat(0x6a645a,0.5));fst.position.set(0,22.6,-1.5);g.add(fst);
+    var fah=new THREE.Mesh(new THREE.PlaneGeometry(1.5,0.9),new THREE.MeshStandardMaterial({color:0xd84a4a,roughness:0.8,side:THREE.DoubleSide}));
+    fah.position.set(0.78,23.2,-1.5);g.add(fah);
+    g.position.set(40,0,84);scene.add(g); // Portikus (bei +z) zeigt nach Sueden zum Marktplatz
+    var pl=new THREE.Mesh(new THREE.PlaneGeometry(24,9),betMat(0xcfc9bb,0.9));
+    pl.rotation.x=-Math.PI/2;pl.position.set(40,0.015,80);pl.receiveShadow=true;scene.add(pl);
   })();
   // Wimpelkette ueber dem Marktplatz + Stadt-Uhr als Platzmitte
   (function marktDeko(){
