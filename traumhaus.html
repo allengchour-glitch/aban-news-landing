@@ -769,6 +769,18 @@ var dorfFenster=[];
       td.position.set(bx+bw*0.78,1.05,dep/2+0.05);g.add(td);
       var mk=new THREE.Mesh(new THREE.BoxGeometry(bw*0.62,0.08,0.9),stdMat(ZD[(k*3)%ZD.length],0.6));
       mk.position.set(bx+bw*0.36,2.35,dep/2+0.45);mk.rotation.x=0.22;mk.castShadow=true;g.add(mk);
+      // Ladenschild ueber dem Schaufenster (leuchtet abends)
+      var LS=["🥖","☕","📚","🌸","🧀","🍰","👕","🔧"],lc=["#c8503a","#3a6ac8","#3a8a5a","#a04a8a","#c88a20","#5a5a7a"];
+      var lcv=document.createElement("canvas");lcv.width=128;lcv.height=44;var lx=lcv.getContext("2d");
+      lx.fillStyle=lc[(k*2+n)%lc.length];lx.fillRect(0,0,128,44);
+      lx.fillStyle="rgba(255,255,255,0.9)";lx.fillRect(3,3,122,38);
+      lx.font="26px sans-serif";lx.textAlign="center";lx.textBaseline="middle";
+      lx.fillText(LS[(k*3+n)%LS.length],64,24);
+      var ltx=new THREE.CanvasTexture(lcv);
+      var lm=new THREE.MeshStandardMaterial({map:ltx,emissiveMap:ltx,emissive:new THREE.Color(0xffe8b0),emissiveIntensity:0,roughness:0.5,side:THREE.DoubleSide});
+      dorfFenster.push(lm);
+      var lsch=new THREE.Mesh(new THREE.PlaneGeometry(bw*0.5,0.52),lm);
+      lsch.position.set(bx+bw*0.36,2.95,dep/2+0.09);g.add(lsch);
       // Obergeschosse: Fensterreihen mit Rahmen
       for(var e=1;e<et;e++)for(var fx=0;fx<2;fx++){
         var px=bx+bw*(0.28+fx*0.44);
@@ -783,11 +795,11 @@ var dorfFenster=[];
     g.position.set(xs,0,z);g.rotation.y=rotY;scene.add(g);}
   // Nord- und Suedfront schliessen (die Streusiedlungs-Luecken)
   stadtzeile(-64,-SZ-23.5,3,0);stadtzeile(42,-SZ-23.5,3,0);
-  stadtzeile(46,SZ+23.5,3,Math.PI);stadtzeile(-52,SZ+23.5,3,Math.PI); // Platz fuer das Wirtshaus bei -28
+  stadtzeile(-52,SZ+23.5,3,Math.PI); // Sued-Ost bleibt frei: dort ist der Marktplatz
   // Haeuserzeilen: hinter Nord-/Suedstrasse + entlang der Querstrassen
   var seed=1;
   [-38,-26,-14,-2,10,22,34].forEach(function(hx){haus(hx+((seed*3)%3),-SZ-23.5,0,seed++);});
-  [-38,14,20,34].forEach(function(hx){haus(hx,SZ+23.5,Math.PI,seed++);}); // -20 raus: Wirtshaus (-28) braucht den Platz
+  [-38,14,20].forEach(function(hx){haus(hx,SZ+23.5,Math.PI,seed++);}); // -20/34 raus: Wirtshaus + Marktplatz brauchen den Platz
   [-42,-24,2,20,44].forEach(function(hz){haus(-(RX+11),hz,Math.PI/2,seed++);});
   [-44,-26,4,22,40].forEach(function(hz){haus(RX+11,hz,-Math.PI/2,seed++);}); // zwischen den Hauptstrassen: nichts ragt in Fahrbahn/Gehweg
   // Vorgaerten: Plattenweg zur Tuer + Hecken + Blumen (Haeuser wirkten wegelos im Gras)
@@ -1022,6 +1034,41 @@ var dorfFenster=[];
       g.position.set(x,0,z);g.rotation.y=rotY;scene.add(g);}
     villa(96,-22,-Math.PI/2,0x8a5a48);villa(96,-44,-Math.PI/2,0x5a6a78); // Ost-Parzellen
     villa(-96,8,Math.PI/2,0x6a7a58);villa(-96,28,Math.PI/2,0x8a5a48);   // West-Parzellen
+  })();
+  // Wimpelkette ueber dem Marktplatz + Stadt-Uhr als Platzmitte
+  (function marktDeko(){
+    var WF=[0xe85a5a,0xf0c040,0x4aa0d8,0x5ac06a,0xd86ab0];
+    [[30,73,50,73],[30,77.5,50,77.5]].forEach(function(L,li){
+      var x0=L[0],z0=L[1],x1=L[2],z1=L[3],N=14;
+      for(var w9=0;w9<N;w9++){
+        var t9=w9/(N-1),wx=x0+(x1-x0)*t9,wz=z0+(z1-z0)*t9;
+        var sag=Math.sin(t9*Math.PI)*0.55; // Durchhang
+        var wm=new THREE.Mesh(new THREE.ConeGeometry(0.16,0.38,3),
+          new THREE.MeshStandardMaterial({color:WF[(w9+li)%WF.length],roughness:0.8,side:THREE.DoubleSide}));
+        wm.position.set(wx,3.5-sag,wz);wm.rotation.x=Math.PI;wm.rotation.y=w9*0.7;
+        scene.add(wm);}
+      // Trageseil
+      var sg=new THREE.Mesh(new THREE.CylinderGeometry(0.025,0.025,Math.abs(x1-x0),5),stdMat(0x6a6258,0.7));
+      sg.rotation.z=Math.PI/2;sg.position.set((x0+x1)/2,3.62,z0);scene.add(sg);});
+    // Stadt-Uhr (klassische Platzmitte)
+    var ug=new THREE.Group();
+    var sock=new THREE.Mesh(new THREE.CylinderGeometry(0.55,0.7,0.5,10),betMat(0xb8b2a6,0.85));sock.position.y=0.25;ug.add(sock);
+    var mast=new THREE.Mesh(new THREE.CylinderGeometry(0.13,0.16,3.4,10),stdMat(0x2a3a42,0.5));mast.position.y=2.2;ug.add(mast);
+    var kopf=new THREE.Mesh(new THREE.SphereGeometry(0.5,12,10),stdMat(0x2a3a42,0.5));kopf.position.y=4.05;ug.add(kopf);
+    var ucv=document.createElement("canvas");ucv.width=ucv.height=64;var uc=ucv.getContext("2d");
+    uc.fillStyle="#f6f2e6";uc.beginPath();uc.arc(32,32,30,0,6.283);uc.fill();
+    uc.strokeStyle="#2a3a42";uc.lineWidth=3;uc.stroke();
+    for(var st=0;st<12;st++){var sa=st/12*6.283;uc.beginPath();
+      uc.moveTo(32+Math.cos(sa)*25,32+Math.sin(sa)*25);uc.lineTo(32+Math.cos(sa)*29,32+Math.sin(sa)*29);uc.stroke();}
+    uc.lineWidth=4;uc.beginPath();uc.moveTo(32,32);uc.lineTo(32+14,32-6);uc.stroke();
+    uc.lineWidth=3;uc.beginPath();uc.moveTo(32,32);uc.lineTo(32-4,32-21);uc.stroke();
+    var utx=new THREE.CanvasTexture(ucv);
+    [[0,0.52],[Math.PI,-0.52]].forEach(function(uf){
+      var zb=new THREE.Mesh(new THREE.CircleGeometry(0.42,20),
+        new THREE.MeshStandardMaterial({map:utx,emissiveMap:utx,emissive:new THREE.Color(0xfff0c8),emissiveIntensity:0,roughness:0.4}));
+      zb.position.set(0,4.05,uf[1]);zb.rotation.y=uf[0];ug.add(zb);dorfFenster.push(zb.material);});
+    var spitz=new THREE.Mesh(new THREE.ConeGeometry(0.3,0.6,8),stdMat(0x3a4a52,0.6));spitz.position.y=4.7;ug.add(spitz);
+    ug.position.set(40,0,76.5);scene.add(ug);
   })();
   // Strassencafe vor der Ladenzeile: Terrasse, Tische, Stuehle, Schirme
   (function cafe(){
