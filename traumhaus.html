@@ -3529,7 +3529,7 @@ addEventListener("mouseup",function(e){dragging=false;
   if(performance.now()-downT<260&&Math.hypot(e.clientX-downX,e.clientY-downY)<8)tapAt(e.clientX,e.clientY);});
 renderer.domElement.addEventListener("contextmenu",function(e){e.preventDefault();});
 addEventListener("wheel",function(e){
-  var alt=camRT;camRT=Math.max(7,Math.min(110,camRT*Math.pow(1.0018,e.deltaY)));
+  var alt=camRT;camRT=Math.max(7,Math.min(135,camRT*Math.pow(1.0018,e.deltaY)));
   if(!followSim&&e.deltaY<0&&camRT<alt){ // Reinzoomen zieht sanft zum Punkt unterm Cursor
     mouse.x=(e.clientX/innerWidth)*2-1;mouse.y=-(e.clientY/innerHeight)*2+1;
     ray.setFromCamera(mouse,camera);var P9=new THREE.Vector3();
@@ -3545,7 +3545,7 @@ renderer.domElement.addEventListener("touchmove",function(e){
   if(e.touches.length===1&&dragging){var dx=e.touches[0].clientX-lx,dy=e.touches[0].clientY-ly;lx=e.touches[0].clientX;ly=e.touches[0].clientY;
     camAT=null;camA-=dx*0.006;camB=Math.max(0.25,Math.min(1.35,camB+dy*0.005));updCam();}
   else if(e.touches.length===2){var nd=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
-    camRT=Math.max(7,Math.min(110,camRT-(nd-pinchD)*0.06));pinchD=nd;}
+    camRT=Math.max(7,Math.min(135,camRT-(nd-pinchD)*0.06));pinchD=nd;}
   e.preventDefault();},{passive:false});
 renderer.domElement.addEventListener("touchend",function(e){dragging=false;
   if(e.changedTouches[0]&&performance.now()-downT<300){var t=e.changedTouches[0];
@@ -3635,7 +3635,7 @@ function tapAt(px,py){
   geldSend();
   updHUD();beep(660,.06,"triangle",.04);}
 document.getElementById("zoomIn").onclick=function(){camRT=Math.max(7,camRT*0.8);};
-document.getElementById("zoomOut").onclick=function(){camRT=Math.min(110,camRT*1.25);followSim=null;};
+document.getElementById("zoomOut").onclick=function(){camRT=Math.min(135,camRT*1.25);followSim=null;};
 // ---- Mini-Game: Timing-Bar (3 Runden, Ergebnis 0..1) ----
 var MG={on:false,pos:0,dir:1,speed:1.6,round:0,scores:[],cb:null,raf:0};
 function mgDraw(){
