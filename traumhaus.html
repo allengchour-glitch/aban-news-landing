@@ -984,6 +984,44 @@ var dorfFenster=[];
     villa(96,-22,-Math.PI/2,0x8a5a48);villa(96,-44,-Math.PI/2,0x5a6a78); // Ost-Parzellen
     villa(-96,8,Math.PI/2,0x6a7a58);villa(-96,28,Math.PI/2,0x8a5a48);   // West-Parzellen
   })();
+  // Strassencafe vor der Ladenzeile: Terrasse, Tische, Stuehle, Schirme
+  (function cafe(){
+    var terr=new THREE.Mesh(new THREE.PlaneGeometry(11,5),betMat(0xd8d2c4,0.9));
+    terr.rotation.x=-Math.PI/2;terr.position.set(46,0.014,68);terr.receiveShadow=true;scene.add(terr); // Marktplatz-Nordseite, nicht auf der Fahrbahn
+    [[-4.5,0],[0,0.4],[4.2,-0.2]].forEach(function(tp,ti){
+      var tg=new THREE.Group();
+      var pl=new THREE.Mesh(new THREE.CylinderGeometry(0.62,0.62,0.08,14),stdMat(0xf2ede2,0.6));pl.position.y=0.74;pl.castShadow=true;tg.add(pl);
+      var fu=new THREE.Mesh(new THREE.CylinderGeometry(0.07,0.11,0.72,8),stdMat(0x5a5852,0.5));fu.position.y=0.36;tg.add(fu);
+      var fp=new THREE.Mesh(new THREE.CylinderGeometry(0.34,0.34,0.05,12),stdMat(0x4a4842,0.6));fp.position.y=0.03;tg.add(fp);
+      [0,Math.PI].forEach(function(sa){ // 2 Stuehle
+        var st=new THREE.Group();
+        var si=new THREE.Mesh(new THREE.BoxGeometry(0.42,0.07,0.42),stdMat(0xc85a3a,0.7));si.position.y=0.46;si.castShadow=true;st.add(si);
+        var le=new THREE.Mesh(new THREE.BoxGeometry(0.42,0.5,0.06),stdMat(0xc85a3a,0.7));le.position.set(0,0.7,-0.2);st.add(le);
+        [[-0.16,-0.16],[0.16,-0.16],[-0.16,0.16],[0.16,0.16]].forEach(function(bp){
+          var bn=new THREE.Mesh(new THREE.CylinderGeometry(0.025,0.025,0.46,6),stdMat(0x3a3834,0.5));bn.position.set(bp[0],0.23,bp[1]);st.add(bn);});
+        st.position.set(Math.sin(sa)*1.15,0,Math.cos(sa)*1.15);st.rotation.y=sa;tg.add(st);});
+      if(ti!==1){ // 2 Sonnenschirme
+        var ms=new THREE.Mesh(new THREE.CylinderGeometry(0.05,0.05,2.4,8),stdMat(0x8a8578,0.6));ms.position.y=1.2;tg.add(ms);
+        var sd=new THREE.Mesh(new THREE.ConeGeometry(1.5,0.55,10),stdMat(ti?0xe8d8a8:0xd8e8d0,0.85));
+        sd.position.y=2.4;sd.castShadow=true;tg.add(sd);}
+      tg.position.set(46+tp[0],0,68+tp[1]);scene.add(tg);});
+  })();
+  // Fahrradstaender + 3 Raeder an der Ladenzeile
+  (function raeder(){
+    var bg=new THREE.Group();
+    for(var b9=0;b9<4;b9++){var bu=new THREE.Mesh(new THREE.TorusGeometry(0.28,0.035,6,10,Math.PI),stdMat(0x9aa0a6,0.4));
+      bu.position.set(b9*0.85,0.28,0);bg.add(bu);}
+    [0.4,1.25,2.1].forEach(function(bx,bi){
+      var rad=new THREE.Group();
+      [-0.52,0.52].forEach(function(rz){var rr=new THREE.Mesh(new THREE.TorusGeometry(0.32,0.045,6,12),stdMat(0x24242a,0.5));
+        rr.position.set(rz,0.32,0);rr.rotation.y=Math.PI/2;rad.add(rr);});
+      var rah=new THREE.Mesh(new THREE.BoxGeometry(0.9,0.06,0.05),stdMat(bi===0?0xd84a4a:(bi===1?0x3a7ad8:0x3aa05a),0.5));
+      rah.position.y=0.5;rad.add(rah);
+      var len=new THREE.Mesh(new THREE.BoxGeometry(0.05,0.06,0.42),stdMat(0x3a3a42,0.5));len.position.set(0.4,0.72,0);rad.add(len);
+      var sat=new THREE.Mesh(new THREE.BoxGeometry(0.22,0.07,0.12),stdMat(0x2a2a30,0.6));sat.position.set(-0.35,0.68,0);rad.add(sat);
+      rad.position.set(bx,0,0.1);rad.rotation.y=0.12*(bi-1);bg.add(rad);});
+    bg.position.set(30,0,67.5);bg.rotation.y=Math.PI/2;scene.add(bg); // Marktplatz-Westkante, frei von der Lauflinie
+  })();
   // Marktplatz-Pflaster unter den Staenden (statt rohem Erdfleck)
   (function(){var pl=new THREE.Mesh(new THREE.PlaneGeometry(24,13),betMat(0xc6c0b2,0.9));
     pl.rotation.x=-Math.PI/2;pl.position.set(40,0.016,72);pl.receiveShadow=true;scene.add(pl);})();
@@ -1253,21 +1291,35 @@ setTimeout(function baueFussg(){
    {skin:0xe8b890,hair:0x6a6a72,top:0x5a6a7a,bottom:0x3a3a44,dress:false,longHair:false},
    {skin:0xf6d2ac,hair:0x18181e,top:0xe86aa0,bottom:0xe86aa0,dress:true,longHair:true},
    {skin:0xd8a878,hair:0x4a3a20,top:0x4ac8c0,bottom:0x2f3f52,dress:false,longHair:false}];
-  for(var i=0;i<8;i++){
-    var m=mkBewohner(PAL[i]);m.scale.setScalar(1.15);scene.add(m);
-    var nord=i%2===0;
-    fussg.push({mesh:m,x:-60+i*16,z:(nord?-SZ-5.9:SZ+5.9)+((i%3)-1)*0.5,
-      dir:i%2?1:-1,speed:1.1+(i%4)*0.35,walkT:i*2});}
+  function fg(i,x,z,axis,dir,lim0,lim1,stand,yaw){
+    var m=mkBewohner(PAL[i%PAL.length]);m.scale.setScalar(1.15);scene.add(m);
+    fussg.push({mesh:m,x:x,z:z,axis:axis||"x",dir:dir,speed:1.0+((i*3)%4)*0.32,walkT:i*2,
+      lim0:lim0,lim1:lim1,stand:!!stand,yaw:yaw});}
+  // Hauptstrassen Nord/Sued (mehr Volk als vorher)
+  for(var i=0;i<12;i++)fg(i,-72+i*13,(i%2===0?-SZ-5.9:SZ+5.9)+((i%3)-1)*0.5,"x",i%2?1:-1,-84,84);
+  // Querstrassen West/Ost — bisher lief dort niemand
+  for(var q=0;q<6;q++)fg(q+3,(q%2?1:-1)*(RX-5.9)+((q%3)-1)*0.5,-40+q*16,"z",q%2?1:-1,-46,46);
+  // Marktplatz: 3 Verkaeufer hinter den Staenden + 4 Bummler auf dem Pflaster
+  [[33,76.5],[41,76.5],[49,76.5]].forEach(function(vp,vi){fg(vi+1,vp[0],vp[1],"x",1,0,0,true,Math.PI);});
+  for(var b=0;b<4;b++)fg(b+5,31+b*6,69.5+((b%2)*1.6),"x",b%2?1:-1,29,51);
 },0);
 function updFussg(dt,now){
   var panik=(typeof wanted!=="undefined"&&wanted>0);
   fussg.forEach(function(p){
     var spd=p.speed*(panik?2.6:1);
-    p.x+=p.dir*spd*dt;p.walkT+=dt*7*spd;
-    if(p.x>84){p.dir=-1;}if(p.x<-84){p.dir=1;}
+    if(p.stand){ // Verkaeufer: stehen hinterm Stand, blicken zur Kundschaft
+      p.mesh.position.set(p.x,0.06,p.z);p.mesh.rotation.y=p.yaw||0;
+      var us=p.mesh.userData;if(us&&us.ll){us.ll.rotation.x=0;us.rl.rotation.x=0;us.la.rotation.x=0;us.ra.rotation.x=0;}
+      return;}
+    var az=(p.axis==="z");
+    if(az)p.z+=p.dir*spd*dt;else p.x+=p.dir*spd*dt;
+    p.walkT+=dt*7*spd;
+    var v9=az?p.z:p.x,l0=(p.lim0!==undefined?p.lim0:-84),l1=(p.lim1!==undefined?p.lim1:84);
+    if(v9>l1)p.dir=-1;if(v9<l0)p.dir=1;
     if(panik&&!p._schreck&&Math.random()<0.02){p._schreck=true;fgEmoji(p,"😱");}
     if(!panik)p._schreck=false;
-    p.mesh.position.set(p.x,0.06+(panik?Math.abs(Math.sin(p.walkT))*0.08:0),p.z);p.mesh.rotation.y=p.dir>0?Math.PI/2:-Math.PI/2;
+    p.mesh.position.set(p.x,0.06+(panik?Math.abs(Math.sin(p.walkT))*0.08:0),p.z);
+    p.mesh.rotation.y=az?(p.dir>0?0:Math.PI):(p.dir>0?Math.PI/2:-Math.PI/2);
     var ud=p.mesh.userData;if(ud&&ud.ll){var sw=Math.sin(p.walkT);var amp=panik?0.9:0.55;
       ud.ll.rotation.x=sw*amp;ud.rl.rotation.x=-sw*amp;ud.la.rotation.x=-sw*(amp-0.15);ud.ra.rotation.x=sw*(amp-0.15);
       if(panik){ud.la.rotation.x-=1.5;ud.ra.rotation.x-=1.5;}}});}
