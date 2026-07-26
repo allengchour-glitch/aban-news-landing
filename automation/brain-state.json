@@ -1,7 +1,7 @@
 {
-  "updated": "2026-07-10 21:03 UTC",
-  "score": 100.0,
-  "trend": "→ stabil",
+  "updated": "2026-07-26 07:12 UTC",
+  "score": 0.0,
+  "trend": "↓ -100.0",
   "best": 100.0,
   "history": [
     {
@@ -35,6 +35,14 @@
       "medium": 0,
       "low": 0,
       "score": 100.0
+    },
+    {
+      "date": "2026-07-26",
+      "pages": 2686,
+      "high": 27,
+      "medium": 67,
+      "low": 0,
+      "score": 0.0
     }
   ]
 }
