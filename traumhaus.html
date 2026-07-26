@@ -717,6 +717,8 @@ var dorfFenster=[];
     var w=4+(seed%3),d=3.6+((seed*7)%2),h=2.3+((seed*3)%2)*0.5;
     var wandC=WANDF[seed%WANDF.length],dachC=DACHF[seed%DACHF.length];
     var bMat=stdMat(wandC,0.85);(window._wandMats=window._wandMats||[]).push(bMat);
+    var sokl=new THREE.Mesh(new THREE.BoxGeometry(w+0.5,0.4,d+0.5),betMat(0xc4beb0,0.9));
+    sokl.position.y=0.09;sokl.receiveShadow=true;sokl.castShadow=true;g.add(sokl); // Fundament (ueberstehend, versenkt) — Haus stand nackt im Gras
     var body=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),bMat);
     body.position.y=h/2;body.castShadow=true;body.receiveShadow=true;g.add(body);
     // Satteldach aus zwei geneigten Platten + Giebel
@@ -755,6 +757,8 @@ var dorfFenster=[];
       var wm=stdMat(ZF[(k*3)%ZF.length],0.86);(window._wandMats=window._wandMats||[]).push(wm);
       var kp=new THREE.Mesh(new THREE.BoxGeometry(bw,hh,dep),wm);
       kp.position.set(bx+bw/2,hh/2,0);kp.castShadow=true;kp.receiveShadow=true;g.add(kp);
+      var bas=new THREE.Mesh(new THREE.BoxGeometry(bw+0.2,0.7,dep+0.2),betMat(0xbdb7a9,0.9));
+      bas.position.set(bx+bw/2,0.16,0);bas.receiveShadow=true;bas.castShadow=true;g.add(bas); // Sockelband (ueberstehend, versenkt)
       // Traufgesims + Dachkante (bricht die Wandflaeche)
       var ges=new THREE.Mesh(new THREE.BoxGeometry(bw+0.24,0.28,dep+0.24),betMat(0xc8c2b4,0.85));
       ges.position.set(bx+bw/2,hh+0.14,0);g.add(ges);
