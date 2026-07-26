@@ -541,7 +541,8 @@ var strasse=new THREE.Mesh(new THREE.PlaneGeometry(RL,10),strMatH);
 strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.receiveShadow=true;scene.add(strasse);
 function _dashFrei(x){return Math.abs(Math.abs(x)-RX)>9.2;} // nicht in Kreuzung/Zebra (Zebras bei RX±6.2)
 var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_dashFrei(_dx))continue;
-  var strich=new THREE.Mesh(new THREE.PlaneGeometry(3,0.3),stdMat(0xd8d8cc,0.75));
+  var _sMat=stdMat(0xd8d8cc,0.75);_sMat.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(_sMat);
+  var strich=new THREE.Mesh(new THREE.PlaneGeometry(3,0.3),_sMat);
   strich.rotation.x=-Math.PI/2;strich.position.set(_dx,0.005,GH*CS/2+12);scene.add(strich);}
 // Trottoirs (erhoehte Gehwege) beidseitig aller Strassen — Strasse 10 breit, Kante bei ±5
 (function baueTrottoirs(){
@@ -637,8 +638,18 @@ if(THREE.GLTFLoader){["lp_tree.glb"].forEach(function(){
     return !(Math.abs(x)<2.2 && z>GH*CS/2-2 && z<GH*CS/2+9);
   }
   // 1) Grasbueschel (kleine Kegel, 2 Gruentoene, dichter zum Rand)
-  var tuftGeo=new THREE.ConeGeometry(0.16,0.5,5),
-      tuftMat=new THREE.MeshStandardMaterial({roughness:1,metalness:0,envMapIntensity:0.2});
+  var tuftGeo=(function(){ // 5 gefaecherte Halme (Dreiecke) statt Kegel — echte Gras-Silhouette
+    var pos=[],NH=5;
+    for(var h9=0;h9<NH;h9++){
+      var a9=h9/NH*Math.PI*2+0.4,br=0.055,len=0.34+(h9%3)*0.11,neig=0.12+(h9%2)*0.10;
+      var dx=Math.cos(a9),dz=Math.sin(a9);
+      // Basis links/rechts (senkrecht zur Halm-Richtung) + geneigte Spitze
+      pos.push(-dz*br,0,dx*br,  dz*br,0,-dx*br,  dx*neig,len,dz*neig);
+    }
+    var g9=new THREE.BufferGeometry();
+    g9.setAttribute("position",new THREE.Float32BufferAttribute(pos,3));
+    g9.computeVertexNormals();return g9;})(),
+      tuftMat=new THREE.MeshStandardMaterial({roughness:1,metalness:0,envMapIntensity:0.2,side:THREE.DoubleSide});
   var NT=430,tuft=new THREE.InstancedMesh(tuftGeo,tuftMat,NT);tuft.receiveShadow=true;tuft.castShadow=false;
   var ti=0,c=new THREE.Color();
   for(var g=0;g<NT*3&&ti<NT;g++){
@@ -647,10 +658,10 @@ if(THREE.GLTFLoader){["lp_tree.glb"].forEach(function(){
     if(Math.random()>0.25+rand*0.75)continue; // Mitte sparsam, Rand dicht
     if(!frei(x,z))continue;
     var sc=0.6+Math.random()*0.9;
-    dummy.position.set(x,0.5*0.5*sc-0.02,z);dummy.rotation.set(0,Math.random()*6.28,0); // aufrecht — schiefe Kegel sahen aus wie Scherben
+    dummy.position.set(x,-0.02,z);dummy.rotation.set(0,Math.random()*6.28,0); // Halme sitzen im Boden
     dummy.scale.set(sc*(0.8+Math.random()*0.5),sc,sc*(0.8+Math.random()*0.5));dummy.updateMatrix();
     tuft.setMatrixAt(ti,dummy.matrix);
-    var l=0.5+Math.random()*0.5;c.setRGB(0.16*l+0.04,0.34*l+0.12,0.12*l+0.03);tuft.setColorAt(ti,c);
+    var l=0.5+Math.random()*0.5,hj=Math.random()*0.09;c.setRGB(0.18*l+0.06+hj,0.36*l+0.14,0.10*l+0.03);tuft.setColorAt(ti,c); // Gelbgruen-Streuung
     ti++;
   }
   tuft.count=ti;tuft.instanceMatrix.needsUpdate=true;if(tuft.instanceColor)tuft.instanceColor.needsUpdate=true;scene.add(tuft);
@@ -659,11 +670,14 @@ if(THREE.GLTFLoader){["lp_tree.glb"].forEach(function(){
       flMat=new THREE.MeshStandardMaterial({roughness:0.7,metalness:0,transparent:true,opacity:1});
   window._flMat=flMat; // nachts ausfaden (sonst Rausch-Sprenkel im Dunkeln)
   var NF=85,fl=new THREE.InstancedMesh(flGeo,flMat,NF);
-  var FCOL=[0xffffff,0xffd94a,0xff7ab0,0xb98cff,0xff5a4a,0xffe08a];
+  var FCOL=[0xffd94a,0xff7ab0,0xb98cff,0xff5a4a,0xffe08a,0xffffff,0xffd94a,0xff7ab0,0xffb347,0xe86aa0]; // Weiss nur 1/10
   var fi=0;
+  var FC=[];for(var cz9=0;cz9<12;cz9++)FC.push([(Math.random()*2-1)*LX,(Math.random()*2-1)*LZ]);
+  function gauss(){return (Math.random()+Math.random()+Math.random()-1.5)*2;}
   for(var g2=0;g2<NF*4&&fi<NF;g2++){
-    var fx=(Math.random()*2-1)*LX,fz=(Math.random()*2-1)*LZ;
-    if(Math.random()>0.5)continue;if(!frei(fx,fz))continue;
+    var C9=FC[(Math.random()*FC.length)|0];
+    var fx=C9[0]+gauss()*2.2,fz=C9[1]+gauss()*2.2; // Cluster statt Konfetti
+    if(Math.abs(fx)>LX||Math.abs(fz)>LZ)continue;if(!frei(fx,fz))continue;
     var fs=0.7+Math.random()*0.7;
     dummy.position.set(fx,0.28*fs,fz);dummy.rotation.set(0,0,0);dummy.scale.setScalar(fs);dummy.updateMatrix();
     fl.setMatrixAt(fi,dummy.matrix);c.setHex(FCOL[(Math.random()*FCOL.length)|0]);fl.setColorAt(fi,c);
@@ -686,13 +700,14 @@ var dorfFenster=[];
     st.rotation.x=-Math.PI/2;st.position.set(x,-0.003,z);st.receiveShadow=true;scene.add(st);return st;}
   strasseMesh(RL,10,0,-SZ-12);
   strasseMesh(10,2*SZ+46,-RX,0);strasseMesh(10,2*SZ+46,RX,0); // laenger: aeussere Zebras+Haltelinien liegen auf Asphalt
+  var _qMat=stdMat(0xd8d8cc,0.75);_qMat.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(_qMat);
   var _NM2=Math.round(RL/10);for(var ms2=0;ms2<_NM2;ms2++){var _dx2=-RL/2+5+ms2*10;if(!_dashFrei(_dx2))continue;
-    var st2=new THREE.Mesh(new THREE.PlaneGeometry(3,0.3),stdMat(0xe8e8d8,0.7));
+    var st2=new THREE.Mesh(new THREE.PlaneGeometry(3,0.3),_qMat);
     st2.rotation.x=-Math.PI/2;st2.position.set(_dx2,0.005,-SZ-12);scene.add(st2);}
   var _NZ=Math.round((2*SZ+38)/7);for(var ms3=0;ms3<_NZ;ms3++){[-RX,RX].forEach(function(sx){
     var _dz=-(SZ+13)+ms3*7;
     if(Math.abs(Math.abs(_dz)-(SZ+12))<9.2)return; // nicht in Kreuzung/Zebra (Zebras bei ±6.1)
-    var st3=new THREE.Mesh(new THREE.PlaneGeometry(0.3,3),stdMat(0xe8e8d8,0.7));
+    var st3=new THREE.Mesh(new THREE.PlaneGeometry(0.3,3),_qMat);
     st3.rotation.x=-Math.PI/2;st3.position.set(sx,0.005,_dz);scene.add(st3);});}
   // Nachbarhaus prozedural: Sockel, Waende, Satteldach, Tuer, Fenster, Kamin
   var WANDF=[0xf2e4c8,0xe8d0b0,0xd8e0e8,0xf0d8d8,0xe0e8d0,0xf4ead4,0xd8c8e0,0xe8e2d0];
@@ -1105,9 +1120,9 @@ setTimeout(function baueVerkehr(){
   // ---- Parkplätze am Straßenrand (Parktaschen mit Markierung + geparkten Autos) ----
   (function baueParkplaetze(){
     var padMat=new THREE.MeshStandardMaterial({color:0x44444c,roughness:0.95});
-    var lineMat=new THREE.MeshStandardMaterial({color:0xe8e8dc,roughness:0.7});
+    var lineMat=new THREE.MeshStandardMaterial({color:0xcfcfc6,roughness:0.8});lineMat.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(lineMat);
     // [x, z, noseRotY, faceZ(+1 Nase Richtung +z)]
-    var PADS=[[51,SZ+22,Math.PI/2],[48,-(SZ+22),-Math.PI/2],[-58,-(SZ+22),-Math.PI/2]]; // kollisionsfrei: nicht in Haeusern/Gehwegen
+    var PADS=[[70,SZ+22,Math.PI/2],[48,-(SZ+22),-Math.PI/2],[-58,-(SZ+22),-Math.PI/2]]; // Nordpad weg von der Marktflaeche (x28-52)
     PADS.forEach(function(P){
       var px=P[0],pz=P[1],rot=P[2];
       var pad=new THREE.Mesh(new THREE.PlaneGeometry(16,5.2),padMat);
@@ -1313,7 +1328,12 @@ setTimeout(function baueGebaeude(){
     var w=new THREE.Group();w.add(root);w.position.set(x,y,z);w.rotation.y=rotY;scene.add(w);
     if(!window._gebaeude)window._gebaeude=[];window._gebaeude.push(w);if(cb)cb(w,root);},undefined,function(){});}
   bau("bd_barn.glb",7,-96,0,-40,Math.PI/2,false);        // Scheune (Bauernhof West, hinter der neuen Querstrasse)
-  bau("bd_market.glb",6,26,0,70.5,Math.PI,false);         // Markt (Suedzeile, hinter dem Gehweg)
+  bau("bd_market.glb",6,26,0,70.5,Math.PI,false,function(w9,root9){ // Stray-Face ("Geister-Dreieck") ausblenden
+    root9.traverse(function(n9){if(!n9.isMesh||!n9.geometry)return;
+      n9.geometry.computeBoundingBox();var bb9=n9.geometry.boundingBox,sz9=new THREE.Vector3();bb9.getSize(sz9);
+      var duenn=Math.min(sz9.x,sz9.y,sz9.z)<0.012,gross=Math.max(sz9.x,sz9.y,sz9.z)>0.55;
+      var wenig=n9.geometry.attributes.position&&n9.geometry.attributes.position.count<=6;
+      if(duenn&&gross&&wenig)n9.visible=false;});});
   bau("bd_inn.glb",8.5,-28,0,68,Math.PI,false);           // Wirtshaus (Suedzeile)
   bau("bd_house_a.glb",5.5,50,0,-66,0,false);             // Nordzeile-Luecke Ost
   bau("bd_house_b.glb",5.5,-52,0,-66,0,false);            // Nordzeile-Luecke West
@@ -3691,7 +3711,7 @@ function loop(now){
       nachtLampen.forEach(function(L){L.intensity=nacht9?7:0;}); // warme Lichtpools auf der Strasse}
       if(window._flMat)window._flMat.opacity=nacht9?0.15:1; // Wiesenblumen nachts fast unsichtbar
       (window._lampGlows||[]).forEach(function(gm){gm.opacity=nacht9?0.34:0;}); // Laternen-Lichtpools
-      (window._markMats||[]).forEach(function(mm){mm.color.setHex(nacht9?0x6a7078:0xcfcfc6);}); // Markierungen dimmen mit
+      (window._markMats||[]).forEach(function(mm){mm.color.setHex(nacht9?0x8f949b:0xcfcfc6);}); // Markierungen dimmen mit (aber lesbar)
     }
     if(camAT!==null){camA+=(camAT-camA)*Math.min(1,dt*6);
       if(Math.abs(camAT-camA)<0.002){camA=camAT;camAT=null;}updCam();}
