@@ -2705,20 +2705,20 @@ function decorateWorld(){
       /* Ring 3 (h>=22) zieht ALLE Zufälle aus rndP → Haupt-rnd-Strom bleibt exakt wie vor Paket #2 */
       var R3=(isSpawn&&h>=22),R=R3?rndP:rnd;
       if(isSpawn){ // drei Häuser-Ringe: innen 10, mitte 12, aussen 8
-        if(h<10){ha=(h/10)*6.28+rnd()*0.3;hrd=18+rnd()*6;}
-        else if(h<22){ha=((h-10)/12)*6.28+0.26+rnd()*0.25;hrd=32+rnd()*10;}
-        else{ha=((h-22)/8)*6.28+0.13+rndP()*0.22;hrd=46+rndP()*8;}
+        if(h<10){ha=(h/10)*6.28+rnd()*0.3;hrd=20+rnd()*6;}
+        else if(h<22){ha=((h-10)/12)*6.28+0.26+rnd()*0.25;hrd=35+rnd()*9;}
+        else{ha=((h-22)/8)*6.28+0.13+rndP()*0.22;hrd=48+rndP()*8;}
       }else{ha=(h/nH)*6.28+rnd()*0.4;hrd=6+rnd()*7;}
       var hx=vx+Math.cos(ha)*hrd,hz=vz+Math.sin(ha)*hrd;
       /* rnd-Aufrufe unbedingt (identischer Strom mit/ohne GLB → koop-sicher); fehlt das GLB,
          springt ein Primitiv-Haus ein (Welt nie leer, Android-Fetch-Saga). */
-      var hIdx=(R()*HOUSES.length)|0,hSc=8.6*(0.9+R()*0.25),hRy=Math.atan2(vx-hx,vz-hz)+(R()-0.5)*0.4; /* Scale 9.5→8.6: weniger Dach-Überhang */
+      var hIdx=(R()*HOUSES.length)|0,hSc=10.2*(0.95+R()*0.2),hRy=Math.atan2(vx-hx,vz-hz)+(R()-0.5)*0.4; /* 📐 8.6→10.2 + Jitter-Boden 0.9→0.95: Türen (~25% der Bauhöhe) immer ≥ ~2.3u > Held 1.75u — „Person passt durch jede Tür" */
       /* 📏 Mindestabstand 11 (Zentrum-zu-Zentrum, „überschneidet viel"): Retry-Sampling NUR aus rndP (deterministisch) */
-      var tooClose=function(x,z){for(var q=0;q<_houses.length;q++)if(Math.hypot(_houses[q].x-x,_houses[q].z-z)<11)return true;return false;};
+      var tooClose=function(x,z){for(var q=0;q<_houses.length;q++)if(Math.hypot(_houses[q].x-x,_houses[q].z-z)<13)return true;return false;};
       var tries=0;
       while(tries<12&&tooClose(hx,hz)){
         var ra,rr2;
-        if(isSpawn){if(h<10){ra=rndP()*6.28;rr2=18+rndP()*6;}else if(h<22){ra=rndP()*6.28;rr2=32+rndP()*10;}else{ra=rndP()*6.28;rr2=46+rndP()*8;}}
+        if(isSpawn){if(h<10){ra=rndP()*6.28;rr2=20+rndP()*6;}else if(h<22){ra=rndP()*6.28;rr2=35+rndP()*9;}else{ra=rndP()*6.28;rr2=48+rndP()*8;}}
         else{ra=rndP()*6.28;rr2=6+rndP()*7;}
         hx=vx+Math.cos(ra)*rr2;hz=vz+Math.sin(ra)*rr2;hRy=Math.atan2(vx-hx,vz-hz)+(rndP()-0.5)*0.4;tries++;
       }
@@ -2729,7 +2729,7 @@ function decorateWorld(){
       }
       var hCx=hx+(R()-0.5)*1.5,hCz=hz+(R()-0.5)*1.5;
       var hm=cc0inst(HOUSES[hIdx],hSc)||mkFallbackHouse(hSc*0.9);
-      hm.position.set(hx,groundH(hx,hz),hz);hm.rotation.y=hRy;scene.add(hm);addChimney(hCx,hCz,groundH(hx,hz)+7.5);_houses.push({x:hx,z:hz});addCollider(hx,hz,3.4,hm);
+      hm.position.set(hx,groundH(hx,hz),hz);hm.rotation.y=hRy;scene.add(hm);addChimney(hCx,hCz,groundH(hx,hz)+8.9);_houses.push({x:hx,z:hz});addCollider(hx,hz,4.0,hm);
     }
     // Lagerfeuer-Platz + leuchtendes Feuer in der Dorfmitte
     var cf=cc0inst("cc0_campfire",0.7);if(cf){cf.position.set(vx,groundH(vx,vz),vz);scene.add(cf);}
@@ -3269,7 +3269,17 @@ var QUESTS=[
   {t:"Verdiene 8 💎 in der Arena ⚔️",done:function(){return (qProg.arenaCr|0)>=8;},prog:function(){return [Math.min(8,qProg.arenaCr|0),8];},rw:6},
   {t:"Gewinne ein Rennen 🏎️ (Score ≥ 40)",done:function(){return !!qProg.raceWin;},rw:8},
   {t:"Stelle 3 Fackel-Laternen 🔥 an deiner Basis auf",done:function(){return cntStruct("fackel")>=3;},prog:function(){return [Math.min(3,cntStruct("fackel")),3];},rw:10},
-  {t:"Steig hinab und besiege den KOLOSS 🏰 (Dungeon)",done:function(){return !!qProg.koloss;},rw:12} /* #65 — ans ENDE (Save nutzt Quest-Index) */
+  {t:"Steig hinab und besiege den KOLOSS 🏰 (Dungeon)",done:function(){return !!qProg.koloss;},rw:12}, /* #65 — Save nutzt Quest-Index → NEUE Quests NUR ANHÄNGEN */
+  /* ⚔️ Ausrüstungs-Kette: Quests schalten die SICHTBAREN Waffen/Rüstungen frei (gw/ga = Tier).
+     Nur monotone Zähler (kills/loot/day/cnt/inv) → koop-neutral. */
+  {t:"Erlege 15 Monster ⚔️",done:function(){return kills>=15;},prog:function(){return [Math.min(15,kills),15];},rw:6,gw:1},
+  {t:"Öffne 3 Truhen oder Ruinen 📦",done:function(){return lootOpenedTotal>=3;},prog:function(){return [Math.min(3,lootOpenedTotal),3];},rw:6,ga:1},
+  {t:"Überlebe bis Tag 5 🌙",done:function(){return day>=5;},prog:function(){return [Math.min(5,day),5];},rw:8},
+  {t:"Baue 2 Wächter-Türme 🗼",done:function(){return cntStruct("turm")>=2;},prog:function(){return [Math.min(2,cntStruct("turm")),2];},rw:8},
+  {t:"Erlege 40 Monster — Krieger-Ruhm ⚔️",done:function(){return kills>=40;},prog:function(){return [Math.min(40,kills),40];},rw:10,gw:2},
+  {t:"Habe 15 💎 im Beutel",done:function(){return (inv.crystal|0)>=15;},prog:function(){return [Math.min(15,inv.crystal|0),15];},ga:2},
+  {t:"Verdiene 20 💎 in der Arena ⚔️",done:function(){return (qProg.arenaCr|0)>=20;},prog:function(){return [Math.min(20,qProg.arenaCr|0),20];},rw:12},
+  {t:"Erlege 80 Monster — werde zur LEGENDE 🌟",done:function(){return kills>=80;},prog:function(){return [Math.min(80,kills),80];},rw:15,gw:3,ga:3}
 ];
 var totalWood=0;
 /* 🔁 Endlos-Bounties nach der Quest-Kette: rotierende Tagesziele (eigener RNG — nie rnd/rnd2, Koop-neutral; nur monotone Zähler) */
@@ -4429,8 +4439,11 @@ function updQuest(dt){
     burst(player.position.x,player.position.y+2,player.position.z,0xffd166,12);
     var wasNexus=QUESTS[quest].nexus;
     var rw=QUESTS[quest].rw|0; /* 💎 W3: Quest-Belohnung (Folge-Quests) */
+    var gw=QUESTS[quest].gw|0,ga=QUESTS[quest].ga|0; /* ⚔️🛡️ Ausrüstungs-Belohnung (sichtbar am Helden) */
     quest++;
     if(rw>0){inv.crystal=(inv.crystal|0)+rw;invUpd();toast("🎁 Quest-Belohnung: +"+rw+" 💎");}
+    if(gw>equip.weapon){equip.weapon=gw;gearUpd();toast("🗡️ NEUE WAFFE: "+WEAP_NAME[gw]+" — sieh sie in deiner Hand!");sfxSeq([[660],[880],[1100,0.4]]);}
+    if(ga>equip.armor){equip.armor=ga;gearUpd();toast("🛡️ NEUE RÜSTUNG: "+ARMOR_NAME[ga]+" — sitzt!");sfxSeq([[520],[700],[900,0.4]]);}
     if(wasNexus)showWinScreen(); /* 🏆 Nexus bleibt der grosse Sieg — Folge-Quests kommen danach */
     if(quest<QUESTS.length){announce("✅ Ziel erreicht! Nächstes Ziel…");document.getElementById("questText").textContent=QUESTS[quest].t;}
     else{document.getElementById("questText").textContent="🏆 Alle Ziele geschafft — überlebe weiter!";bounty=null;

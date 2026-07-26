@@ -155,7 +155,10 @@
       clearTimeout(tmo);
       tmo = setTimeout(function () {
         if (S.status === "connected") return;
-        fail(isHost ? "Vermittlungs-Server (0.peerjs.com) nicht erreichbar — Internet prüfen."
+        /* 🔁 1× automatisch auf den anderen Broker wechseln — Host/Gast können auf
+           verschiedenen Vermittlungs-Servern sitzen (aban_broker ist pro Gerät!) */
+        if (!retried) { retried = true; mpNextBroker(); try { if (peer) peer.destroy(); } catch (e) {} boot(); return; }
+        fail(isHost ? "Vermittlungs-Server nicht erreichbar — Internet prüfen."
                     : "Raum " + S.code + " antwortet nicht — Code prüfen, dann nochmal.");
       }, JOIN_TIMEOUT);
       peer.on("open", function () {
@@ -179,9 +182,15 @@
           if (noRegen) { fail("Public-Raum bereits belegt"); return; } // Quick-Match: auf Beitreten wechseln
           if (tries < 3) { tries++; try { peer.destroy(); } catch (e) {} S.code = makeCode(); boot(); return; } // Code-Kollision → neuer Code
         }
-        if (t === "peer-unavailable") fail("Raum " + S.code + " nicht gefunden — Code prüfen!");
-        else if (!ever && (t === "network" || t === "server-error" || t === "socket-error" || t === "socket-closed"))
+        if (t === "peer-unavailable") {
+          /* 🔁 Raum evtl. auf dem ANDEREN Broker → dort automatisch weitersuchen statt aufgeben */
+          if (!retried) { retried = true; mpNextBroker(); clearTimeout(tmo); try { peer.destroy(); } catch (e) {} boot(); return; }
+          fail("Raum " + S.code + " nicht gefunden — Code prüfen!");
+        }
+        else if (!ever && (t === "network" || t === "server-error" || t === "socket-error" || t === "socket-closed")) {
+          if (!retried) { retried = true; clearTimeout(tmo); try { peer.destroy(); } catch (e) {} boot(); return; } /* mpNextBroker lief schon oben */
           fail("Kein Kontakt zum Vermittlungs-Server — Internet prüfen.");
+        }
       });
     }
     S.send = function (o) { try { if (main && main.open) main.send(o); } catch (e) {} };
