@@ -796,8 +796,11 @@ var dorfFenster=[];
     tuer.position.set(0,1.07,d/2+0.05);g.add(tuer); // Hauseingang
     var vord=new THREE.Mesh(new THREE.BoxGeometry(1.7,0.1,0.7),stdMat(0x8a8a88,0.7));
     vord.position.set(0,2.35,d/2+0.35);vord.castShadow=true;g.add(vord); // Vordach
+    var j9=(((x|0)*7+(z|0)*13)%10+10)%10;
     var aufb=new THREE.Mesh(new THREE.BoxGeometry(w*0.3,1.0,d*0.4),betMat(0x9a948a,0.7));
-    aufb.position.set(-w*0.2,h+0.7,0);aufb.castShadow=true;g.add(aufb); // Dachaufbau
+    aufb.position.set(-w*0.2+(j9%3-1)*0.6,h+0.7,(j9%2)*0.7-0.35);
+    aufb.rotation.y=j9%2?Math.PI/2:0;aufb.scale.set(0.85+j9*0.035,0.75+(j9%3)*0.22,0.9);
+    aufb.castShadow=true;g.add(aufb); // Dachaufbau mit Varianz
     for(var e9=0;e9<etagen;e9++)for(var wx9=0;wx9<Math.floor(w/1.6);wx9++){
       var fx9=-w/2+1.1+wx9*1.6;
       if(e9===0&&Math.abs(fx9)<1.3)continue; // Platz fuer die Tuer
@@ -848,7 +851,12 @@ var dorfFenster=[];
     var att9=new THREE.Mesh(new THREE.BoxGeometry(6.6,0.28,5.2),betMat(0xc9c0ae,0.8));
     att9.position.y=3.5;g.add(att9); // Attika-Dachrand
     var db9=new THREE.Mesh(new THREE.BoxGeometry(1.2,0.55,1.0),betMat(0x9a948a,0.7));
-    db9.position.set(-1.6,3.9,0.6);g.add(db9); // Lueftung auf dem Dach
+    db9.position.set(-1.6+((i*5)%3)*0.9,3.9,0.6-((i*3)%2)*0.9);
+    db9.rotation.y=i%2?Math.PI/2:0;db9.scale.set(0.8+i*0.2,0.8+(i%3)*0.3,0.9);g.add(db9); // Lueftung mit Varianz
+    if(i%2===0){var rohr9=new THREE.Mesh(new THREE.CylinderGeometry(0.1,0.1,0.7,8),stdMat(0x7a746a,0.6));
+      rohr9.position.set(1.7,3.95,-0.8);g.add(rohr9);
+      var kap9=new THREE.Mesh(new THREE.CylinderGeometry(0.16,0.16,0.06,8),stdMat(0x6a645a,0.6));
+      kap9.position.set(1.7,4.33,-0.8);g.add(kap9);}
     // Neon-Schild direkt an der Fassade (Rahmen + Glyph, leuchtet nachts)
     var ncv=document.createElement("canvas");ncv.width=128;ncv.height=64;var nc=ncv.getContext("2d");
     nc.fillStyle="#080810";nc.fillRect(0,0,128,64);
@@ -951,8 +959,8 @@ var dorfFenster=[];
       function zaun(w9,d9,zx,zz){var zn=new THREE.Mesh(new THREE.BoxGeometry(w9,0.7,d9),zaunM);zn.position.set(zx,0.35,zz);g.add(zn);}
       zaun(18,0.14,0,-7);zaun(0.14,14,-9,0);zaun(0.14,14,9,0);
       zaun(6.6,0.14,-5.7,7);zaun(4.6,0.14,6.7,7); // Luecken: Gartentor + Einfahrt
-      var weg=new THREE.Mesh(new THREE.PlaneGeometry(1.3,3.6),einfM);weg.rotation.x=-Math.PI/2;weg.position.set(0,0.012,5.2);weg.receiveShadow=true;g.add(weg);
-      var einf=new THREE.Mesh(new THREE.PlaneGeometry(3.0,4.4),einfM);einf.rotation.x=-Math.PI/2;einf.position.set(5.7,0.012,4.9);einf.receiveShadow=true;g.add(einf);
+      var weg=new THREE.Mesh(new THREE.PlaneGeometry(1.3,8.8),einfM);weg.rotation.x=-Math.PI/2;weg.position.set(0,0.012,7.6);weg.receiveShadow=true;g.add(weg); // bis ans Trottoir
+      var einf=new THREE.Mesh(new THREE.PlaneGeometry(3.0,9.2),einfM);einf.rotation.x=-Math.PI/2;einf.position.set(5.7,0.012,7.3);einf.receiveShadow=true;g.add(einf); // Einfahrt bis zur Strasse
       [-6.5,-3.2].forEach(function(hx){var he=new THREE.Mesh(new THREE.BoxGeometry(2.6,0.55,0.5),heckM);he.position.set(hx,0.28,6.4);he.castShadow=true;g.add(he);});
       var bst=new THREE.Mesh(new THREE.CylinderGeometry(0.16,0.22,1.6,7),stdMat(0x6a4a30,0.9));bst.position.set(-6.2,0.8,-3.6);g.add(bst);
       [0,1,2].forEach(function(k){var kr=new THREE.Mesh(new THREE.SphereGeometry(1.0-k*0.2,9,7),stdMat(k%2?0x3a7a3a:0x4a8a44,0.85));
