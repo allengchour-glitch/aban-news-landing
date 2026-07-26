@@ -1263,7 +1263,7 @@ var dorfFenster=[];
         var bk=new THREE.Mesh(new THREE.BoxGeometry(2.2,0.14,0.6),stdMat(0x8a6a48,0.7));bk.position.set(bxx,0.85,-7.4);bk.castShadow=true;g.add(bk);
         var lehn=new THREE.Mesh(new THREE.BoxGeometry(2.2,0.6,0.1),stdMat(0x8a6a48,0.7));lehn.position.set(bxx,1.2,-7.75);g.add(lehn);
         [-0.9,0.9].forEach(function(bf2){var bein=new THREE.Mesh(new THREE.BoxGeometry(0.12,0.7,0.5),stdMat(0x4a4a52,0.6));bein.position.set(bxx+bf2,0.5,-7.4);g.add(bein);});});
-      g.position.set(0,0,102);scene.add(g);
+      g.position.set(0,0,102);g.rotation.y=Math.PI;scene.add(g); // Empfangsseite zur Stadt, Bahnsteig ans Gleis (z=112)
     })();
     // ---- SCHULE mit Pausenhof ----
     (function schule(){
