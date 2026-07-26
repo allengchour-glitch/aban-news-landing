@@ -68,7 +68,7 @@ canvas{display:block;touch-action:none}
 /* Touch-Steuerung */
 #stick{position:absolute;left:calc(20px + env(safe-area-inset-left));bottom:calc(28px + env(safe-area-inset-bottom));width:120px;height:120px;border-radius:50%;background:rgba(20,30,60,.4);border:2px solid rgba(120,200,255,.3);pointer-events:auto}
 #nub{position:absolute;left:35px;top:35px;width:50px;height:50px;border-radius:50%;background:rgba(120,200,255,.55);border:2px solid rgba(200,240,255,.7)}
-.btn{position:absolute;pointer-events:auto;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.7rem;font-weight:800;border:3px solid;background:rgba(20,30,60,.55);backdrop-filter:blur(3px)}
+.btn{position:absolute;pointer-events:auto;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.7rem;font-weight:800;border:3px solid;background:rgba(20,30,60,.78)} /* 🩹 Kimi-P1: backdrop-filter auf 7 Dauer-Buttons kostete pro Frame einen Compositing-Pass (Android) */
 .btn::after{content:"";position:absolute;inset:-6px;border-radius:50%} /* unsichtbare größere Hitbox */
 #bAct{right:calc(24px + env(safe-area-inset-right));bottom:calc(40px + env(safe-area-inset-bottom));width:78px;height:78px;border-color:#6affc0;color:#eaffe8}
 #bBuild{right:calc(118px + env(safe-area-inset-right));bottom:calc(56px + env(safe-area-inset-bottom));width:60px;height:60px;border-color:#ffd166;color:#fff}
@@ -971,7 +971,7 @@ function mkSchaedel(){var g=new THREE.Group();var bm=new THREE.MeshStandardMater
   var skull=new THREE.Mesh(new THREE.SphereGeometry(0.42,10,9),bm);skull.scale.set(1,1.05,0.95);skull.position.y=0.6;g.add(skull);
   var jaw=new THREE.Mesh(new THREE.BoxGeometry(0.5,0.2,0.4),bm);jaw.position.set(0,0.34,0.05);g.add(jaw);
   var em=new THREE.MeshBasicMaterial({color:0x30ff8a});[[-0.16],[0.16]].forEach(function(e){var ey=new THREE.Mesh(new THREE.SphereGeometry(0.11,8,8),em);ey.position.set(e[0],0.64,0.32);g.add(ey);});
-  var fire=new THREE.PointLight(0x30ff8a,0.6,4);fire.position.set(0,0.7,0);g.add(fire);return g;}
+  return g;} /* 🩹 Kimi-P1: PointLight pro Schädel entfernt — Lichtanzahl-Wechsel recompilierte ALLE Shader (Ruckler bei jedem Spawn); Glühen kommt vom emissive-Material */
 /* ⚔️ W4: Monster-Rigs — Attack-/Walk-/Idle-Clips per Regex aus den GLB-Anims gemappt.
    Klon-Mobs (skins:0, Node-Anims) binden Clips per Node-Name auch auf dem Klon;
    geskinnte Mobs bekommen ihr Rig beim Frisch-Laden. */
@@ -2596,14 +2596,15 @@ function decorateWorld(){
   // --- Büsche / Blumen / Pilzgruppen ---
   // 🌿 üppige Büsche (mehrere Grün-Blobs + Blüten-Tupfer) — schöner als flacher cc0-Busch
   var BUSH_G=[0x2e7d4a,0x3a9a5a,0x276b40,0x4faf62],BLOOM=[0xff6ab0,0xffd166,0xffffff,0xff8a4d,0x9a6cff];
+  var _bushM={},_bloomM={}; /* 🩹 Kimi-P1: Material-Cache — vorher 2-3 NEUE Materialien pro Busch (~150 Büsche) */
+  function _bm(hex){if(!_bushM[hex]){_bushM[hex]=[new THREE.MeshLambertMaterial({color:hex,flatShading:true}),new THREE.MeshLambertMaterial({color:new THREE.Color(hex).multiplyScalar(1.2).getHex(),flatShading:true})];}return _bushM[hex];}
   function mkBush(){var g=new THREE.Group();var baseHex=BUSH_G[(rnd()*BUSH_G.length)|0];
-    var gm=new THREE.MeshLambertMaterial({color:baseHex,flatShading:true});
-    var gm2=new THREE.MeshLambertMaterial({color:new THREE.Color(baseHex).multiplyScalar(1.2).getHex(),flatShading:true}); // hellere Oberseite (Licht)
+    var _p=_bm(baseHex),gm=_p[0],gm2=_p[1];
     var nb=4+((rnd()*4)|0);
     for(var b=0;b<nb;b++){var rr=0.42+rnd()*0.4;var up=b<2;var bl=new THREE.Mesh(new THREE.IcosahedronGeometry(rr,0),up?gm2:gm);
       bl.position.set((rnd()-0.5)*1.0,(up?0.55:0.35)+rnd()*0.4,(rnd()-0.5)*1.0);bl.scale.y=0.9;bl.rotation.set(rnd()*3,rnd()*3,rnd()*3);bl.castShadow=true;g.add(bl);}
     // dichter Blüten-Cluster oben (mehr + heller)
-    if(rnd()<0.85){var bhex=BLOOM[(rnd()*BLOOM.length)|0];var bm=new THREE.MeshBasicMaterial({color:bhex});
+    if(rnd()<0.85){var bhex=BLOOM[(rnd()*BLOOM.length)|0];var bm=_bloomM[bhex]||(_bloomM[bhex]=new THREE.MeshBasicMaterial({color:bhex}));
       var nf=6+((rnd()*5)|0);for(var f2=0;f2<nf;f2++){var fl=new THREE.Mesh(new THREE.IcosahedronGeometry(0.08+rnd()*0.06,0),bm);fl.position.set((rnd()-0.5)*1.05,0.6+rnd()*0.5,(rnd()-0.5)*1.05);g.add(fl);}}
     return g;}
   var BUSHES=["nt_bush","cc0_bush","fg_bush","fg_bush_large","fg_bush_small"];
@@ -2667,7 +2668,8 @@ function decorateWorld(){
   for(var fo=0;fo<Math.round(4*VF);fo++){(function(){var p=spotFar(60);for(var t=0;t<22;t++){var ox=p.x+(rnd()-0.5)*30,oz=p.z+(rnd()-0.5)*30;var tm=(rnd()<0.5?mkStylizedTree():cc0inst(["cc0_tree_pine","cc0_tree_oak"][(rnd()*2)|0],5+rnd()*1.5));if(tm){tm.scale.multiplyScalar?tm.scale.multiplyScalar(1):tm.scale.setScalar(0.9+rnd()*0.5);tm.position.set(ox,groundH(ox,oz),oz);tm.rotation.y=rnd()*6.28;scene.add(tm);}}})();}
   // ⛰️ Felsvorsprünge / Klippen (grosse dramatische Felsen)
   for(var cf2=0;cf2<Math.round(5*VF);cf2++){(function(){var p=spotFar(65);for(var i=0;i<5;i++){var ox=p.x+(rnd()-0.5)*7,oz=p.z+(rnd()-0.5)*7;
-    var big=cc0inst("cc0_cliff_rock",3.5+rnd()*4);if(!big)big=cc0inst("cc0_rock_large",4+rnd()*3);
+    var _cs1=3.5+rnd()*4,_cs2=4+rnd()*3; /* 🩹 Kimi-P1: beide rnd IMMER ziehen — sonst Koop-Desync wenn ein GLB nur auf einem Gerät fehlt */
+    var big=cc0inst("cc0_cliff_rock",_cs1);if(!big)big=cc0inst("cc0_rock_large",_cs2);
     if(big){big.position.set(ox,groundH(ox,oz)-0.5+rnd()*2.5,oz);big.rotation.set(rnd()*0.3,rnd()*6.28,rnd()*0.3);scene.add(big);}}})();}
   // 🌸 Grasige Hügel (flache Kuppeln mit Blumen)
   for(var hi=0;hi<Math.round(6*VF);hi++){(function(){var p=spotFar(55),hr=9+rnd()*8;
@@ -3922,7 +3924,7 @@ function openBuild(){
   buildMode=true;renderBuildMenu();document.getElementById("buildMenu").classList.remove("hide");
   if(IS_MOB)document.getElementById("bConfirm").classList.remove("hide");
 }
-function closeBuild(){buildMode=false;document.getElementById("buildMenu").classList.add("hide");document.getElementById("bConfirm").classList.add("hide");if(ghost){scene.remove(ghost);ghost=null;ghostType=null;}}
+function closeBuild(){buildMode=false;document.getElementById("buildMenu").classList.add("hide");document.getElementById("bConfirm").classList.add("hide");if(ghost){disposeGhost();ghostType=null;}}
 /* 📱 Tap auf die Spielfläche AUSSERHALB eines offenen Menüs schliesst es (guarded:
    im Ghost-Platzier-Modus ist das Menü eh zu und der Tap bleibt Platzieren/Kamera). */
 renderer.domElement.addEventListener("pointerdown",function(){
@@ -3946,8 +3948,9 @@ function renderBuildMenu(){
     el.appendChild(d);
   });
 }
+function disposeGhost(){if(!ghost)return;scene.remove(ghost);ghost.traverse(function(n){if(n.isMesh){if(n.geometry)n.geometry.dispose();var ms=Array.isArray(n.material)?n.material:[n.material];ms.forEach(function(m){if(m)m.dispose();});}});ghost=null;} /* 🩹 Kimi-P1: geklonte Ghost-Materialien+Geometrie entsorgen — sonst GPU-Leak pro Bauversuch */
 function startGhost(type){
-  if(ghost)scene.remove(ghost);
+  disposeGhost();
   ghostType=type;ghost=buildMesh(type,player.position.x,player.position.z);
   ghost.traverse(function(n){if(n.isMesh&&n.material){n.material=n.material.clone();n.material.transparent=true;n.material.opacity=0.5;}});
   scene.add(ghost);
@@ -3972,7 +3975,7 @@ function confirmBuild(){
   placeStructure(type,ghost.position.x,ghost.position.z);
   burst(ghost.position.x,ghost.position.y+1,ghost.position.z,0x6affc0,10);
   toast(RECIPES[type].ic+" "+RECIPES[type].name+" gebaut!");
-  scene.remove(ghost);ghost=null;
+  disposeGhost();
   if(type==="nexus"){onNexusBuilt();return;}
   if(structures.length>=STRUCT_CAP){closeBuild();toast("Baugrenze erreicht ("+STRUCT_CAP+")");return;}
   if(!canAfford(type)){closeBuild();}else{renderBuildMenu();document.getElementById("buildMenu").classList.remove("hide");}
@@ -4938,7 +4941,8 @@ function startGame(fresh){
     // Quest: gespeicherten Stand nehmen, dann erfüllte überspringen
     if(typeof sv.quest==="number")quest=Math.min(sv.quest,QUESTS.length);
     while(quest<QUESTS.length&&QUESTS[quest].done())quest++;
-  } else {qProg.flug=0;qProg.arenaCr=0;qProg.raceWin=0;qProg.koloss=0;bountyN=0;bounty=null;lootOpenedTotal=0;inv={wood:0,stone:0,crystal:0,berry:0,meat:0};tools={axe:0,pick:0};hp=100;maxHp=100;xp=0;level=1;kills=0;day=1;dayT=0;isNight=false;nights=0;won=false;normInv();player.position.set(NET.on?(NET.role==="host"?-2.5:2.5):0,0,0);
+  } else {for(var _pk in PERK)PERK[_pk]=0;equip.weapon=0;equip.armor=0; /* 🩹 Kimi-P1: frischer Start muss Perks/Ausrüstung nullen — sonst stapeln sich Klassen-Boni bei Restart */
+    qProg.flug=0;qProg.arenaCr=0;qProg.raceWin=0;qProg.koloss=0;bountyN=0;bounty=null;lootOpenedTotal=0;inv={wood:0,stone:0,crystal:0,berry:0,meat:0};tools={axe:0,pick:0};hp=100;maxHp=100;xp=0;level=1;kills=0;day=1;dayT=0;isNight=false;nights=0;won=false;normInv();player.position.set(NET.on?(NET.role==="host"?-2.5:2.5):0,0,0);
     var _c=getChar();if(_c&&_c.cls){ // 🔀 Klassen-Bonus (Realm) einmalig auf den frischen Start
       if(_c.cls.atk)PERK.atk+=_c.cls.atk;if(_c.cls.spd)PERK.spd+=_c.cls.spd;
       if(_c.cls.skillcd)PERK.skillcd+=_c.cls.skillcd;
