@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>aban Arcade — kostenlose 3D-Browser-Games &amp; tägliche Rätsel</title>
-<meta name="description" content="Die aban Arcade: zwei grosse kostenlose Spielwelten im Browser — das Brettspiel Lebenspfad (Online-Koop, Voice-Chat, 20 Minispiele) und die offene 3D-Welt Neon Wildnis (Koop-Tempel, Dungeon, Arena, Flugfeld, Parcours, Rennstrecke). Dazu Traumhaus & tägliche Worträtsel. Kein Download.">
+<meta name="description" content="Aban Arcade: kostenlose Browser-Games — Neon Wildnis (offene 3D-Welt), Lebenspfad (Brettspiel-Koop), Dungeon, Traumhaus u.v.m. Ohne Download, mit Online-Koop.">
 <link rel="canonical" href="https://abannews.com/spiele.html">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -12,6 +12,8 @@
 <meta property="og:title" content="aban Arcade — kostenlose Neon-Browser-Games">
 <meta property="og:description" content="Zwei grosse Spielwelten: Lebenspfad (Brettspiel, Online-Koop, Voice-Chat) & Neon Wildnis (offene 3D-Welt mit 6 Stationen). Dazu tägliche Rätsel. Gratis im Browser.">
 <meta property="og:url" content="https://abannews.com/spiele.html">
+<meta property="og:image" content="https://abannews.com/og-image.png">
+<meta name="twitter:image" content="https://abannews.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#06070f">
 <link rel="manifest" href="/manifest.webmanifest">
@@ -127,6 +129,24 @@ footer a{color:var(--purple);text-decoration:none}
     <p>Zwei grosse Spielwelten — das Brettspiel <b>Lebenspfad</b> und die offene 3D-Welt <b>Neon Wildnis</b> — plus Traumhaus, Minispiele &amp; tägliche Rätsel. Kein Download, 1 Tap und du spielst.</p>
   </div>
 
+  <div id="contBar" style="display:none;margin:10px 0;padding:12px 16px;border-radius:16px;background:linear-gradient(135deg,rgba(106,255,192,.14),rgba(94,242,255,.10));border:1px solid rgba(106,255,192,.35);text-align:center">
+    <a id="contLink" href="#" style="font-weight:800;font-size:1.05rem;text-decoration:none;color:#6affc0">▶ Weiterspielen: <span id="contName"></span></a>
+  </div>
+  <script>
+  /* 🔁 „Weiterspielen"-Karte: Hub merkt sich den letzten Spiel-Klick (localStorage) → 1-Tipp-Wiedereinstieg */
+  (function(){try{
+    var L=JSON.parse(localStorage.getItem("aban_last_game")||"null");
+    if(L&&L.href&&L.name){document.getElementById("contName").textContent=L.name;
+      document.getElementById("contLink").href=L.href;document.getElementById("contBar").style.display="block";}
+    document.addEventListener("click",function(ev){
+      var a=ev.target&&ev.target.closest?ev.target.closest("a"):null;if(!a)return;
+      var h=a.getAttribute("href")||"";if(!/^\/?(neon-|lebenspfad|traumhaus)/.test(h))return;
+      var nm=(a.querySelector("h2,h3,b,strong")||{}).textContent||a.textContent||"Spiel";
+      try{localStorage.setItem("aban_last_game",JSON.stringify({href:h,name:nm.trim().slice(0,40)}));}catch(e){}
+    },true);
+  }catch(e){}})();
+  </script>
+
   <div class="pbar">
     <button class="pname" id="pName" type="button">👤 Namen wählen</button>
     <button class="pname" id="installBtn" type="button" style="display:none;border-color:#6affc0;color:#eafff5">📲 Als App installieren</button>
@@ -161,7 +181,7 @@ footer a{color:var(--purple);text-decoration:none}
       <div class="body">
         <span class="tag">3D · Offene Welt · Stadt-Hub · 6 Stationen · 🌐 Koop</span>
         <h2>Neon Wildnis</h2>
-        <p>Die offene 3D-Neon-Welt: <b>fälle Bäume</b>, sammle Kristalle, <b>baue deine Basis</b>, erfülle Quests am Quest-Brett und überlebe die Nacht — allein oder im <b>Online-Koop</b>. Von der <b>Stadt</b> aus erreichst du sechs Stationen; hier leben die früheren Neon-Spiele (Flug, Jump, Racer, Survivor, Duo, Colossus, Abyss, Realm) weiter:</p>
+        <p>Die offene 3D-Neon-Welt: <b>fälle Bäume</b>, sammle Kristalle, <b>baue deine Basis</b>, erfülle Quests am Quest-Brett und überlebe die Nacht — allein oder im <b>Online-Koop</b>. Von der <b>Stadt</b> aus erreichst du die Spiel-Stationen; hier leben die früheren Neon-Spiele (Flug, Jump, Racer, Survivor, Duo, Colossus, Abyss, Realm) weiter:</p>
         <ul class="feats">
           <li>🤝 <b>Tempel der Zwei</b> — Koop-Rätsel wie It Takes Two <span style="color:#7dffc8;font-weight:800">NEU</span></li>
           <li>🏰 <b>Dungeon</b> — Katakomben-Parcours + KOLOSS-Bosskampf <span style="color:#c98bff;font-weight:800">NEU</span></li>
