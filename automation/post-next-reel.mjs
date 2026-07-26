@@ -17,6 +17,7 @@
  *   DRY_RUN=1             (optional: nur loggen, nichts senden/schreiben)
  */
 import fs from 'node:fs';
+import { lock as postLock, seen as postSeen, mark as postMark } from './post_guard.mjs';
 
 const CSV = new URL('./reels_seed.csv', import.meta.url).pathname;
 const WEBHOOK = process.env.PUBLISH_WEBHOOK_URL || process.env.MAKE_REEL_WEBHOOK || '';
@@ -53,6 +54,11 @@ if(!next){ console.log('Kein Reel mit status=ready & video_url — nichts zu tun
 const caption = next[idx.caption] || '';
 const hashtags = next[idx.hashtags] || '';
 const videoUrl = next[idx.video_url];
+
+// GEMEINSAME Doppelpost-Sperre (post_guard): EIN Lock für alle Poster + script-übergreifender
+// Medien-Ledger. Verhindert, dass dieser Webhook-Poster denselben Reel wie meta_reel_post schickt.
+if(!DRY) postLock();
+if(!DRY && postSeen(videoUrl)){ console.log('⛔ Video schon gepostet (gemeinsamer Ledger) → skip, kein Doppelpost.'); next[idx.status]='posted'; fs.writeFileSync(CSV, serialize(rows)); process.exit(0); }
 // Webhook-Payload: Reel-Felder + abannews-kompatible Felder (text/url/tags) für social/post.py-artige n8n-Flows.
 const payload = {
   id: next[idx.id], video_url: videoUrl, caption, hashtags,
@@ -92,6 +98,7 @@ if(TG_TOKEN && TG_CHAT){
 
 if(!ok){ console.error('Kein Kanal erfolgreich — Zeile bleibt ready (nächster Lauf versucht erneut).'); process.exit(1); }
 
+postMark(videoUrl);              // sofort in gemeinsamen Ledger: kein anderer Poster wiederholt dieses Video
 next[idx.status] = 'posted';
 next[idx.posted_at] = payload.posted_at;
 fs.writeFileSync(CSV, serialize(rows));

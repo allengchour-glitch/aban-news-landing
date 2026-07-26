@@ -96,6 +96,18 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
    Live-IG-Abgleich vor jedem Post. Gilt jetzt für Reel- UND Bild-Poster.
    ⚠️ Meta-Token laufen ~alle 60 Tage ab (Page/User-Token 07-07/07-10 tot) → Löschen alter Doppelposts per API
    braucht frisches User-Token vom User; danach IG-`DELETE /{media-id}` möglich (Posts >500 Views NIE löschen).
+   **⛔ 5. SCHICHT = GEMEINSAMER LOCK-BUG behoben (User 2026-07-26 «insta post ist immernoch oft doppelt»,
+   Root-Cause-Analyse):** Der gemeinsame `post_guard.lock()` (/tmp/ig_post.lock) war 07-14 in video-/social-/
+   story-autopost + tiktok-autopost eingebaut — aber **`meta_reel_post.mjs` blieb auf seinem EIGENEN
+   `/tmp/meta_reel_post.lock`** → serialisierte NIE gegen die anderen Poster. Dazu lag **dasselbe Video
+   gleichzeitig `ready` in ZWEI Queues** (`reels_seed.csv` UND `social/video_queue.csv`, versch. Captions →
+   capSig griff nicht). Zwei Poster luden denselben Reel im selben Fenster hoch (TOCTOU: `seen()` prüft vorher,
+   `mark()` erst nach Publish) = IG-Doppelpost. **Fix:** (1) `meta_reel_post.mjs` + `post-next-reel.mjs` nutzen
+   jetzt den GEMEINSAMEN `postLock()` → nie zwei Poster gleichzeitig, dadurch greift `_posted_media.txt`
+   script-übergreifend. (2) Cross-Queue-Dedup (`/tmp/dedup_queues.mjs`): Videos die in beiden Queues stehen →
+   in video_queue.csv auf `dup-reel-owner-skip` (reels_seed = Reel-Owner). 3 Kollisionen bereinigt.
+   **Regel: JEDER neue/alte Poster MUSS `postLock()`+`seen()`+`mark()` aus post_guard.mjs nutzen — EIN Lock,
+   EIN Ledger. Nie ein eigener Lockfile, nie dasselbe Video in zwei Queues.**
 11. **💸 Gemini-Budget-Schutz (User lud 2026-07-06 CHF 50):** Kostentreiber war **VEO
    (Video-Generierung, ~CHF 3–8/Clip)** — CHF 46 in 6 Tagen. Regel: Veo NUR für einzelne
    Hero-/Kampagnen-Clips (max ~CHF 10 pro Anlass), NIE in Loops/Massenproduktion — tägliche

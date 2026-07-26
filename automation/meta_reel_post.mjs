@@ -11,7 +11,7 @@
  *      FB_PAGE_ID (Default 1049840534888592) · [DRY=1] · [MIN_GAP_H=48]
  */
 import fs from 'node:fs';
-import { seen as postSeen, mark as postMark } from './post_guard.mjs';
+import { lock as postLock, seen as postSeen, mark as postMark } from './post_guard.mjs';
 const CSV = 'automation/reels_seed.csv';
 const V = 'v21.0';
 const DRY = process.env.DRY === '1';
@@ -45,20 +45,13 @@ function parseCsv(text) {
 }
 const esc = s => /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
 
-// ── Lock gegen parallele Läufe (GEHIRN 10: Doppelpost-Verbot) ──
-const LOCK = '/tmp/meta_reel_post.lock';
-if (!DRY) {
-  try {
-    const fd = fs.openSync(LOCK, 'wx');           // O_EXCL: schlägt fehl wenn Lock existiert
-    fs.writeFileSync(fd, String(process.pid)); fs.closeSync(fd);
-  } catch {
-    const age = fs.existsSync(LOCK) ? (Date.now() - fs.statSync(LOCK).mtimeMs) / 60000 : 999;
-    if (age < 20) { console.log(`Lock aktiv (${age.toFixed(1)}min) → anderer Lauf postet, skip.`); process.exit(0); }
-    fs.writeFileSync(LOCK, String(process.pid));    // veralteter Lock (>20min) → übernehmen
-  }
-}
-const releaseLock = () => { try { if (!DRY) fs.unlinkSync(LOCK); } catch {} };
-process.on('exit', releaseLock);
+// ── GEMEINSAMER Lock (post_guard: /tmp/ig_post.lock) gegen parallele Läufe JEDES Posters.
+//    ⚠️ FRÜHER eigener /tmp/meta_reel_post.lock → serialisierte NICHT gegen video-/social-/
+//    story-autopost (die auf /tmp/ig_post.lock liegen). Zwei Poster konnten denselben Reel
+//    (gleiches Video 'ready' in reels_seed.csv UND video_queue.csv) gleichzeitig hochladen →
+//    Doppelpost auf IG. Jetzt teilen sich ALLE 5 Poster EINEN Lock → nie zwei gleichzeitig,
+//    und der gemeinsame Ledger (_posted_media.txt) greift dadurch script-übergreifend.
+if (!DRY) postLock();
 
 const rows = parseCsv(fs.readFileSync(CSV, 'utf8'));
 const head = rows[0];
