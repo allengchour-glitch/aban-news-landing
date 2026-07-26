@@ -2705,20 +2705,20 @@ function decorateWorld(){
       /* Ring 3 (h>=22) zieht ALLE Zufälle aus rndP → Haupt-rnd-Strom bleibt exakt wie vor Paket #2 */
       var R3=(isSpawn&&h>=22),R=R3?rndP:rnd;
       if(isSpawn){ // drei Häuser-Ringe: innen 10, mitte 12, aussen 8
-        if(h<10){ha=(h/10)*6.28+rnd()*0.3;hrd=18+rnd()*6;}
-        else if(h<22){ha=((h-10)/12)*6.28+0.26+rnd()*0.25;hrd=32+rnd()*10;}
-        else{ha=((h-22)/8)*6.28+0.13+rndP()*0.22;hrd=46+rndP()*8;}
+        if(h<10){ha=(h/10)*6.28+rnd()*0.3;hrd=20+rnd()*6;}
+        else if(h<22){ha=((h-10)/12)*6.28+0.26+rnd()*0.25;hrd=35+rnd()*9;}
+        else{ha=((h-22)/8)*6.28+0.13+rndP()*0.22;hrd=48+rndP()*8;}
       }else{ha=(h/nH)*6.28+rnd()*0.4;hrd=6+rnd()*7;}
       var hx=vx+Math.cos(ha)*hrd,hz=vz+Math.sin(ha)*hrd;
       /* rnd-Aufrufe unbedingt (identischer Strom mit/ohne GLB → koop-sicher); fehlt das GLB,
          springt ein Primitiv-Haus ein (Welt nie leer, Android-Fetch-Saga). */
-      var hIdx=(R()*HOUSES.length)|0,hSc=8.6*(0.9+R()*0.25),hRy=Math.atan2(vx-hx,vz-hz)+(R()-0.5)*0.4; /* Scale 9.5→8.6: weniger Dach-Überhang */
+      var hIdx=(R()*HOUSES.length)|0,hSc=10.2*(0.95+R()*0.2),hRy=Math.atan2(vx-hx,vz-hz)+(R()-0.5)*0.4; /* 📐 8.6→10.2 + Jitter-Boden 0.9→0.95: Türen (~25% der Bauhöhe) immer ≥ ~2.3u > Held 1.75u — „Person passt durch jede Tür" */
       /* 📏 Mindestabstand 11 (Zentrum-zu-Zentrum, „überschneidet viel"): Retry-Sampling NUR aus rndP (deterministisch) */
-      var tooClose=function(x,z){for(var q=0;q<_houses.length;q++)if(Math.hypot(_houses[q].x-x,_houses[q].z-z)<11)return true;return false;};
+      var tooClose=function(x,z){for(var q=0;q<_houses.length;q++)if(Math.hypot(_houses[q].x-x,_houses[q].z-z)<13)return true;return false;};
       var tries=0;
       while(tries<12&&tooClose(hx,hz)){
         var ra,rr2;
-        if(isSpawn){if(h<10){ra=rndP()*6.28;rr2=18+rndP()*6;}else if(h<22){ra=rndP()*6.28;rr2=32+rndP()*10;}else{ra=rndP()*6.28;rr2=46+rndP()*8;}}
+        if(isSpawn){if(h<10){ra=rndP()*6.28;rr2=20+rndP()*6;}else if(h<22){ra=rndP()*6.28;rr2=35+rndP()*9;}else{ra=rndP()*6.28;rr2=48+rndP()*8;}}
         else{ra=rndP()*6.28;rr2=6+rndP()*7;}
         hx=vx+Math.cos(ra)*rr2;hz=vz+Math.sin(ra)*rr2;hRy=Math.atan2(vx-hx,vz-hz)+(rndP()-0.5)*0.4;tries++;
       }
@@ -2729,7 +2729,7 @@ function decorateWorld(){
       }
       var hCx=hx+(R()-0.5)*1.5,hCz=hz+(R()-0.5)*1.5;
       var hm=cc0inst(HOUSES[hIdx],hSc)||mkFallbackHouse(hSc*0.9);
-      hm.position.set(hx,groundH(hx,hz),hz);hm.rotation.y=hRy;scene.add(hm);addChimney(hCx,hCz,groundH(hx,hz)+7.5);_houses.push({x:hx,z:hz});addCollider(hx,hz,3.4,hm);
+      hm.position.set(hx,groundH(hx,hz),hz);hm.rotation.y=hRy;scene.add(hm);addChimney(hCx,hCz,groundH(hx,hz)+8.9);_houses.push({x:hx,z:hz});addCollider(hx,hz,4.0,hm);
     }
     // Lagerfeuer-Platz + leuchtendes Feuer in der Dorfmitte
     var cf=cc0inst("cc0_campfire",0.7);if(cf){cf.position.set(vx,groundH(vx,vz),vz);scene.add(cf);}
