@@ -745,12 +745,51 @@ var dorfFenster=[];
     kamin.position.set(-w/2+0.9,h+0.9,-d/4);kamin.castShadow=true;g.add(kamin);
     g.position.set(x,0,z);g.rotation.y=rotY;scene.add(g);
     (window._immo=window._immo||[]).push({x:x,z:z,grp:g,preis:1800+(seed%5)*600,h:h});}
+  // ---- Geschlossene Stadtzeile: Reihenhaeuser mit gemeinsamer Bauflucht (Stadt statt Streusiedlung)
+  function stadtzeile(xs,z,n,rotY){
+    var ZF=[0xe6dcc8,0xd8cfc0,0xe8ded0,0xcfd8dc,0xe4d2bc,0xdcd8cc],
+        ZD=[0x8a5a48,0x5a6a78,0x7a5a5a,0x6a6a58,0x8a6a4a];
+    var g=new THREE.Group(),bx=0;
+    for(var k=0;k<n;k++){
+      var bw=5.2+((k*7)%3)*0.9,et=2+((k*5)%3),hh=et*2.5+0.5,dep=7.2;
+      var wm=stdMat(ZF[(k*3)%ZF.length],0.86);(window._wandMats=window._wandMats||[]).push(wm);
+      var kp=new THREE.Mesh(new THREE.BoxGeometry(bw,hh,dep),wm);
+      kp.position.set(bx+bw/2,hh/2,0);kp.castShadow=true;kp.receiveShadow=true;g.add(kp);
+      // Traufgesims + Dachkante (bricht die Wandflaeche)
+      var ges=new THREE.Mesh(new THREE.BoxGeometry(bw+0.24,0.28,dep+0.24),betMat(0xc8c2b4,0.85));
+      ges.position.set(bx+bw/2,hh+0.14,0);g.add(ges);
+      var dch=new THREE.Mesh(new THREE.BoxGeometry(bw+0.1,0.5,dep+0.1),stdMat(ZD[(k*2)%ZD.length],0.8));
+      dch.position.set(bx+bw/2,hh+0.53,0);dch.castShadow=true;
+      if(window._schindelTex)dch.material.map=window._schindelTex;g.add(dch);
+      // Erdgeschoss: Schaufenster + Tuer zur Strasse
+      var sf=new THREE.Mesh(new THREE.BoxGeometry(bw*0.5,1.5,0.08),
+        new THREE.MeshStandardMaterial({color:0x9ec4d8,emissive:0xffe0a0,emissiveIntensity:0,roughness:0.15}));
+      sf.position.set(bx+bw*0.36,1.35,dep/2+0.05);g.add(sf);dorfFenster.push(sf.material);
+      var td=new THREE.Mesh(new THREE.BoxGeometry(1.0,2.1,0.09),stdMat(0x4a3a2c,0.55));
+      td.position.set(bx+bw*0.78,1.05,dep/2+0.05);g.add(td);
+      var mk=new THREE.Mesh(new THREE.BoxGeometry(bw*0.62,0.08,0.9),stdMat(ZD[(k*3)%ZD.length],0.6));
+      mk.position.set(bx+bw*0.36,2.35,dep/2+0.45);mk.rotation.x=0.22;mk.castShadow=true;g.add(mk);
+      // Obergeschosse: Fensterreihen mit Rahmen
+      for(var e=1;e<et;e++)for(var fx=0;fx<2;fx++){
+        var px=bx+bw*(0.28+fx*0.44);
+        var ra=new THREE.Mesh(new THREE.BoxGeometry(1.15,1.35,0.05),stdMat(0x6a6258,0.7));
+        ra.position.set(px,0.9+e*2.5,dep/2+0.02);g.add(ra);
+        var fe=new THREE.Mesh(new THREE.BoxGeometry(0.95,1.15,0.05),
+          new THREE.MeshStandardMaterial({color:0xa8c8dc,emissive:0xffd890,emissiveIntensity:0,roughness:0.25}));
+        fe.position.set(px,0.9+e*2.5,dep/2+0.05);g.add(fe);
+        if((e+fx+k)%2===0)dorfFenster.push(fe.material);}
+      bx+=bw; // naechstes Haus direkt anschliessend — geschlossene Front
+    }
+    g.position.set(xs,0,z);g.rotation.y=rotY;scene.add(g);}
+  // Nord- und Suedfront schliessen (die Streusiedlungs-Luecken)
+  stadtzeile(-64,-SZ-23.5,3,0);stadtzeile(42,-SZ-23.5,3,0);
+  stadtzeile(46,SZ+23.5,3,Math.PI);stadtzeile(-52,SZ+23.5,3,Math.PI); // Platz fuer das Wirtshaus bei -28
   // Haeuserzeilen: hinter Nord-/Suedstrasse + entlang der Querstrassen
   var seed=1;
   [-38,-26,-14,-2,10,22,34].forEach(function(hx){haus(hx+((seed*3)%3),-SZ-23.5,0,seed++);});
-  [-38,-20,20,34].forEach(function(hx){haus(hx,SZ+23.5,Math.PI,seed++);});
-  [-42,2,44].forEach(function(hz){haus(-(RX+11),hz,Math.PI/2,seed++);});
-  [-44,4].forEach(function(hz){haus(RX+11,hz,-Math.PI/2,seed++);}); // zwischen den Hauptstrassen: nichts ragt in Fahrbahn/Gehweg
+  [-38,14,20,34].forEach(function(hx){haus(hx,SZ+23.5,Math.PI,seed++);}); // -20 raus: Wirtshaus (-28) braucht den Platz
+  [-42,-24,2,20,44].forEach(function(hz){haus(-(RX+11),hz,Math.PI/2,seed++);});
+  [-44,-26,4,22,40].forEach(function(hz){haus(RX+11,hz,-Math.PI/2,seed++);}); // zwischen den Hauptstrassen: nichts ragt in Fahrbahn/Gehweg
   // Vorgaerten: Plattenweg zur Tuer + Hecken + Blumen (Haeuser wirkten wegelos im Gras)
   if(!_texBlatt)_texBlatt=_strukTex("blatt");
   var heckM=new THREE.MeshStandardMaterial({color:0x4a7a42,roughness:0.95,map:_texBlatt}),wegM=betMat(0xcfc8b8,0.9),
@@ -1387,8 +1426,8 @@ setTimeout(function baueGebaeude(){
       var wenig=n9.geometry.attributes.position&&n9.geometry.attributes.position.count<=6;
       if(duenn&&gross&&wenig)n9.visible=false;});});
   bau("bd_inn.glb",8.5,-28,0,68,Math.PI,false);           // Wirtshaus (Suedzeile)
-  bau("bd_house_a.glb",5.5,50,0,-66,0,false);             // Nordzeile-Luecke Ost
-  bau("bd_house_b.glb",5.5,-52,0,-66,0,false);            // Nordzeile-Luecke West
+  bau("bd_house_a.glb",5.5,68,0,-67,0,false);             // Nordzeile Ost-Ende (neben der Stadtzeile)
+  bau("bd_house_b.glb",5.5,-72,0,-67,0,false);            // Nordzeile West-Ende (neben der Stadtzeile)
   bau("bd_windmill_tower.glb",12,88,0,34,-Math.PI/2,false,function(tw){
     bau("bd_windmill_blades.glb",11.5,86.2,9.6,34,-Math.PI/2,true,function(w2,root2){
       window._muehle=root2;});});
