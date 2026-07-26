@@ -3269,7 +3269,17 @@ var QUESTS=[
   {t:"Verdiene 8 💎 in der Arena ⚔️",done:function(){return (qProg.arenaCr|0)>=8;},prog:function(){return [Math.min(8,qProg.arenaCr|0),8];},rw:6},
   {t:"Gewinne ein Rennen 🏎️ (Score ≥ 40)",done:function(){return !!qProg.raceWin;},rw:8},
   {t:"Stelle 3 Fackel-Laternen 🔥 an deiner Basis auf",done:function(){return cntStruct("fackel")>=3;},prog:function(){return [Math.min(3,cntStruct("fackel")),3];},rw:10},
-  {t:"Steig hinab und besiege den KOLOSS 🏰 (Dungeon)",done:function(){return !!qProg.koloss;},rw:12} /* #65 — ans ENDE (Save nutzt Quest-Index) */
+  {t:"Steig hinab und besiege den KOLOSS 🏰 (Dungeon)",done:function(){return !!qProg.koloss;},rw:12}, /* #65 — Save nutzt Quest-Index → NEUE Quests NUR ANHÄNGEN */
+  /* ⚔️ Ausrüstungs-Kette: Quests schalten die SICHTBAREN Waffen/Rüstungen frei (gw/ga = Tier).
+     Nur monotone Zähler (kills/loot/day/cnt/inv) → koop-neutral. */
+  {t:"Erlege 15 Monster ⚔️",done:function(){return kills>=15;},prog:function(){return [Math.min(15,kills),15];},rw:6,gw:1},
+  {t:"Öffne 3 Truhen oder Ruinen 📦",done:function(){return lootOpenedTotal>=3;},prog:function(){return [Math.min(3,lootOpenedTotal),3];},rw:6,ga:1},
+  {t:"Überlebe bis Tag 5 🌙",done:function(){return day>=5;},prog:function(){return [Math.min(5,day),5];},rw:8},
+  {t:"Baue 2 Wächter-Türme 🗼",done:function(){return cntStruct("turm")>=2;},prog:function(){return [Math.min(2,cntStruct("turm")),2];},rw:8},
+  {t:"Erlege 40 Monster — Krieger-Ruhm ⚔️",done:function(){return kills>=40;},prog:function(){return [Math.min(40,kills),40];},rw:10,gw:2},
+  {t:"Habe 15 💎 im Beutel",done:function(){return (inv.crystal|0)>=15;},prog:function(){return [Math.min(15,inv.crystal|0),15];},ga:2},
+  {t:"Verdiene 20 💎 in der Arena ⚔️",done:function(){return (qProg.arenaCr|0)>=20;},prog:function(){return [Math.min(20,qProg.arenaCr|0),20];},rw:12},
+  {t:"Erlege 80 Monster — werde zur LEGENDE 🌟",done:function(){return kills>=80;},prog:function(){return [Math.min(80,kills),80];},rw:15,gw:3,ga:3}
 ];
 var totalWood=0;
 /* 🔁 Endlos-Bounties nach der Quest-Kette: rotierende Tagesziele (eigener RNG — nie rnd/rnd2, Koop-neutral; nur monotone Zähler) */
@@ -4429,8 +4439,11 @@ function updQuest(dt){
     burst(player.position.x,player.position.y+2,player.position.z,0xffd166,12);
     var wasNexus=QUESTS[quest].nexus;
     var rw=QUESTS[quest].rw|0; /* 💎 W3: Quest-Belohnung (Folge-Quests) */
+    var gw=QUESTS[quest].gw|0,ga=QUESTS[quest].ga|0; /* ⚔️🛡️ Ausrüstungs-Belohnung (sichtbar am Helden) */
     quest++;
     if(rw>0){inv.crystal=(inv.crystal|0)+rw;invUpd();toast("🎁 Quest-Belohnung: +"+rw+" 💎");}
+    if(gw>equip.weapon){equip.weapon=gw;gearUpd();toast("🗡️ NEUE WAFFE: "+WEAP_NAME[gw]+" — sieh sie in deiner Hand!");sfxSeq([[660],[880],[1100,0.4]]);}
+    if(ga>equip.armor){equip.armor=ga;gearUpd();toast("🛡️ NEUE RÜSTUNG: "+ARMOR_NAME[ga]+" — sitzt!");sfxSeq([[520],[700],[900,0.4]]);}
     if(wasNexus)showWinScreen(); /* 🏆 Nexus bleibt der grosse Sieg — Folge-Quests kommen danach */
     if(quest<QUESTS.length){announce("✅ Ziel erreicht! Nächstes Ziel…");document.getElementById("questText").textContent=QUESTS[quest].t;}
     else{document.getElementById("questText").textContent="🏆 Alle Ziele geschafft — überlebe weiter!";bounty=null;
