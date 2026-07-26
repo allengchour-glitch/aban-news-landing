@@ -583,7 +583,7 @@ var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_d
     [xc-5.05,xc+5.05].forEach(function(xb){bord(0.26,2*SZ9+14,xb,0);});
     [xc-7.55,xc+7.55].forEach(function(xe){erd(0.7,2*SZ9+14,xe,0);});});
   // Zebrastreifen an den Kreuzungen (Fussgaenger queren die Hauptstrassen)
-  var zMat=new THREE.MeshStandardMaterial({color:0xcfcfc6,roughness:0.85});(window._markMats=window._markMats||[]).push(zMat);
+  var zMat=new THREE.MeshStandardMaterial({color:0xcfcfc6,roughness:0.85});zMat.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(zMat);
   function zebra(x,z,quer){ // quer=true: Strasse laeuft in X (Nord/Sued) -> Streifen laengs (in X), gestapelt ueber die Fahrbahnbreite (Z)
     var n=8;for(var st9=0;st9<n;st9++){
       var w9=quer?4.8:0.62,d9=quer?0.62:4.8; // Streifen laengs zur Fahrtrichtung
@@ -596,12 +596,12 @@ var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_d
     zebra(K[0]-7.1,K[1],true);zebra(K[0]+7.1,K[1],true);
     zebra(K[0],K[1]-7.0,false);zebra(K[0],K[1]+7.0,false);}); // etwas Luft zur Ecke, deckt weiter die Lauflinien
   // Haltelinien vor den Ampeln (je Fahrspur, hinter dem Zebra)
-  function halte(x,z,quer){var hl=new THREE.Mesh(new THREE.PlaneGeometry(quer?0.35:4.6,quer?4.6:0.35),zMat);
+  function halte(x,z,quer){var hl=new THREE.Mesh(new THREE.PlaneGeometry(quer?0.5:4.6,quer?4.6:0.5),zMat);
     hl.rotation.x=-Math.PI/2;hl.position.set(x,0.009,z);scene.add(hl);}
   [[RX,SZ9+12],[RX,-(SZ9+12)],[-RX,SZ9+12],[-RX,-(SZ9+12)]].forEach(function(K){
     var so=K[1]>0?2.5:-2.5;
-    halte(K[0]-9.4,K[1]+so,true);halte(K[0]+9.4,K[1]-so,true); // direkt hinter dem Zebra
-    if(K[0]<0)halte(K[0]-2.5,K[1]-9.3,false);else halte(K[0]+2.5,K[1]+9.3,false);});
+    halte(K[0]-10.5,K[1]+so,true);halte(K[0]+10.5,K[1]-so,true); // mit Luecke hinter dem Zebra
+    halte(K[0]-2.5,K[1]-10.4,false);halte(K[0]+2.5,K[1]+10.4,false);}); // beide Quer-Anfahrten
 })();
 if(THREE.GLTFLoader){["lp_tree.glb"].forEach(function(){
   new THREE.GLTFLoader().load("/models/lp_tree.glb",function(g){
@@ -931,6 +931,17 @@ var dorfFenster=[];
           new THREE.MeshStandardMaterial({color:0xa8c8dc,emissive:0xffd890,emissiveIntensity:0,roughness:0.25}));
         fe.position.set(px,1.5+e*2.3,3.24);g.add(fe);if((e+fx)%2===0)dorfFenster.push(fe.material);}
       var tuer=new THREE.Mesh(new THREE.BoxGeometry(1.3,2.3,0.1),stdMat(0x4a3a2c,0.5));tuer.position.set(0,1.15,3.24);g.add(tuer);
+      for(var e2=0;e2<2;e2++){ // Rueckseite: 2 Fenster je Etage
+        [-2.2,2.2].forEach(function(px2){
+          var rr=new THREE.Mesh(new THREE.BoxGeometry(1.3,1.5,0.06),stdMat(0x6a6258,0.7));rr.position.set(px2,1.5+e2*2.3,-3.21);g.add(rr);
+          var rf2=new THREE.Mesh(new THREE.BoxGeometry(1.1,1.3,0.06),
+            new THREE.MeshStandardMaterial({color:0xa8c8dc,emissive:0xffd890,emissiveIntensity:0,roughness:0.25}));
+          rf2.position.set(px2,1.5+e2*2.3,-3.24);g.add(rf2);if(e2===1)dorfFenster.push(rf2.material);});
+        // Westseite: 1 Fenster je Etage (Ostseite traegt die Garage)
+        var sr=new THREE.Mesh(new THREE.BoxGeometry(0.06,1.5,1.3),stdMat(0x6a6258,0.7));sr.position.set(-4.03,1.5+e2*2.3,0);g.add(sr);
+        var sf=new THREE.Mesh(new THREE.BoxGeometry(0.06,1.3,1.1),
+          new THREE.MeshStandardMaterial({color:0xa8c8dc,emissive:0xffd890,emissiveIntensity:0,roughness:0.25}));
+        sf.position.set(-4.06,1.5+e2*2.3,0);g.add(sf);}
       var vord=new THREE.Mesh(new THREE.BoxGeometry(1.9,0.12,1.0),betMat(0x9a948a,0.7));vord.position.set(0,2.5,3.6);vord.castShadow=true;g.add(vord);
       // Garage seitlich mit Tor
       var gar=new THREE.Mesh(new THREE.BoxGeometry(3.4,2.6,4.4),vilM);gar.position.set(5.7,1.3,0.6);gar.castShadow=true;g.add(gar);
@@ -964,7 +975,7 @@ var dorfFenster=[];
       var lg=new THREE.Group();
       var mast=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.08,3.1,7),stdMat(0x3a3a42,0.5));mast.position.y=1.55;lg.add(mast);
       var kopf=new THREE.Mesh(new THREE.SphereGeometry(0.18,10,8),
-        new THREE.MeshStandardMaterial({color:0xfff4d0,emissive:0xffe8a0,emissiveIntensity:0,roughness:0.3}));
+        new THREE.MeshStandardMaterial({color:0xffe9c0,emissive:0xffd88a,emissiveIntensity:0,roughness:0.3}));
       kopf.position.y=3.15;lg.add(kopf);dorfFenster.push(kopf.material);
       var gm=new THREE.MeshBasicMaterial({map:glowTex,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false});
       var glow=new THREE.Mesh(new THREE.PlaneGeometry(7.5,7.5),gm);
@@ -1426,7 +1437,7 @@ setTimeout(function baueRampe(){
     rail.rotation.z=0.26;rail.position.set(0,1.03,sd[0]*1.7);g.add(rail);});
   var stuetz=new THREE.Mesh(new THREE.BoxGeometry(0.3,1.7,3.4),new THREE.MeshStandardMaterial({color:0x3a3a42,roughness:0.8}));
   stuetz.position.set(2.9,0.85,0);g.add(stuetz);
-  g.position.set(-64,0,28);scene.add(g);
+  g.position.set(-64,-0.15,28);scene.add(g); // Kante ebenerdig
   window._rampe={x:-64,z:28,cd:0}; // auf der Wiese — stand nach der Map-Verbreiterung auf der Querstrasse
 },0);
 function updFest(dt,now){var FE=window._fest;if(!FE)return;
