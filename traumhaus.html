@@ -391,6 +391,9 @@ ladeTex("textures/th/rasen.jpg",24,18,function(t){rasen.material.map=t;rasen.mat
     var hR=14+((h*7)%12);
     if(Math.abs(hx0)<RL/2+2+hR&&Math.abs(Math.abs(hz0)-(GH*CS/2+12))<5+hR)continue; // nicht auf Hauptstrassen
     if(Math.abs(Math.abs(hx0)-RX)<5+hR&&Math.abs(hz0)<78+hR)continue; // nicht auf Querstrassen
+    if(Math.abs(Math.abs(hx0)-112)<6+hR&&hz0>-108&&hz0<126)continue; // nicht auf der Ringstrasse (x)
+    if((Math.abs(hz0+100)<6+hR||Math.abs(hz0-118)<6+hR)&&Math.abs(hx0)<120+hR)continue; // Ring (z)
+    if(hz0>88&&hz0<118&&Math.abs(hx0)<80)continue; // neues Suedviertel (Bahnhof/Schule/Feuerwache)
     var hue=new THREE.Mesh(new THREE.SphereGeometry(hR,14,8,0,6.283,0,Math.PI/2),hMat);
     hue.position.set(hx0,-3-((h*3)%4),hz0);
     hue.scale.y=0.32+((h%3)*0.06);hue.receiveShadow=true;scene.add(hue);}
@@ -455,6 +458,9 @@ ladeTex("textures/th/rasen.jpg",24,18,function(t){rasen.material.map=t;rasen.mat
     if(Math.hypot(tx+90,tz-80)<19)continue; // nicht in den See
     if(Math.abs(Math.abs(tz)-(GH*CS/2+12))<8&&Math.abs(tx)<RL/2+4)continue; // nicht auf/an Hauptstrassen
     if(Math.abs(Math.abs(tx)-RX)<8&&Math.abs(tz)<78)continue; // nicht auf/an Querstrassen
+    if(Math.abs(Math.abs(tx)-112)<8&&tz>-108&&tz<126)continue; // Ringstrasse
+    if((Math.abs(tz+100)<8||Math.abs(tz-118)<8)&&Math.abs(tx)<120)continue;
+    if(tz>88&&tz<118&&Math.abs(tx)<80)continue; // Suedviertel
     baum2(tx,tz,0.7+Math.random()*1.0);}
   // ---- Breiter Fluss quer durch die Landschaft (Norden) ----
   machWasser(240,16,0,-96,32); // weiter noerdlich — Bloecke/Kirche standen im Fluss
@@ -700,6 +706,28 @@ var dorfFenster=[];
     st.rotation.x=-Math.PI/2;st.position.set(x,-0.003,z);st.receiveShadow=true;scene.add(st);return st;}
   strasseMesh(RL,10,0,-SZ-12);
   strasseMesh(10,2*SZ+46,-RX,0);strasseMesh(10,2*SZ+46,RX,0); // laenger: aeussere Zebras+Haltelinien liegen auf Asphalt
+  // ---- Aeussere Ringstrasse: bindet Downtown (N), Bahnhof (S), Villen (O/W) an ----
+  (function ring(){
+    var RGZ_N=-100,RGZ_S=118,RGX=112,RLEN=2*RGX+10,RTIEF=2*Math.abs(RGZ_N)+2*RGZ_S;
+    strasseMesh(RLEN,9,0,RGZ_N);strasseMesh(RLEN,9,0,RGZ_S);
+    strasseMesh(9,RGZ_S-RGZ_N,-RGX,(RGZ_N+RGZ_S)/2);strasseMesh(9,RGZ_S-RGZ_N,RGX,(RGZ_N+RGZ_S)/2);
+    // Zubringer: Querstrassen-Enden an den Ring anschliessen
+    [RX,-RX].forEach(function(cx8){
+      strasseMesh(9,Math.abs(RGZ_N+SZ+23),cx8,(RGZ_N-(SZ+23))/2);
+      strasseMesh(9,Math.abs(RGZ_S-(SZ+23)),cx8,(RGZ_S+(SZ+23))/2);});
+    // Mittelstreifen auf dem Ring
+    var rmat=stdMat(0xd8d8cc,0.75);rmat.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(rmat);
+    for(var rs=0;rs<Math.round(RLEN/12);rs++){var rx8=-RLEN/2+6+rs*12;
+      if(Math.abs(Math.abs(rx8)-RGX)<8)continue;
+      [RGZ_N,RGZ_S].forEach(function(rz8){
+        var st8=new THREE.Mesh(new THREE.PlaneGeometry(3,0.3),rmat);
+        st8.rotation.x=-Math.PI/2;st8.position.set(rx8,0.005,rz8);scene.add(st8);});}
+    for(var rt=0;rt<Math.round((RGZ_S-RGZ_N)/12);rt++){var rz9=RGZ_N+6+rt*12;
+      if(Math.abs(rz9-RGZ_N)<8||Math.abs(rz9-RGZ_S)<8)continue;
+      [-RGX,RGX].forEach(function(rx9){
+        var st9=new THREE.Mesh(new THREE.PlaneGeometry(0.3,3),rmat);
+        st9.rotation.x=-Math.PI/2;st9.position.set(rx9,0.005,rz9);scene.add(st9);});}
+  })();
   var _qMat=stdMat(0xd8d8cc,0.75);_qMat.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(_qMat);
   var _NM2=Math.round(RL/10);for(var ms2=0;ms2<_NM2;ms2++){var _dx2=-RL/2+5+ms2*10;if(!_dashFrei(_dx2))continue;
     var st2=new THREE.Mesh(new THREE.PlaneGeometry(3,0.3),_qMat);
@@ -1195,6 +1223,138 @@ var dorfFenster=[];
   // Marktplatz-Pflaster unter den Staenden (statt rohem Erdfleck)
   (function(){var pl=new THREE.Mesh(new THREE.PlaneGeometry(24,13),betMat(0xc6c0b2,0.9));
     pl.rotation.x=-Math.PI/2;pl.position.set(40,0.016,72);pl.receiveShadow=true;scene.add(pl);})();
+  // ================= NEUES STADTVIERTEL SUED: Bahnhof, Schule, Feuerwache, Tankstelle, Baustelle =========
+  (function stadtviertel(){
+    // ---- BAHNHOF am Gleis (z=112) ----
+    (function bahnhof(){
+      var g=new THREE.Group();
+      var bm=stdMat(0xe0d4c0,0.85);(window._wandMats=window._wandMats||[]).push(bm);
+      var sok=new THREE.Mesh(new THREE.BoxGeometry(26,0.5,11),betMat(0xc0bab0,0.9));sok.position.y=0.25;sok.receiveShadow=true;g.add(sok);
+      var hal=new THREE.Mesh(new THREE.BoxGeometry(24,6.5,9.5),bm);hal.position.y=3.5;hal.castShadow=true;hal.receiveShadow=true;g.add(hal);
+      var dch=new THREE.Mesh(new THREE.BoxGeometry(25.4,0.6,10.6),stdMat(0x6a5a52,0.75));dch.position.y=7.0;dch.castShadow=true;
+      if(window._schindelTex)dch.material.map=window._schindelTex;g.add(dch);
+      var gie=new THREE.Mesh(new THREE.ConeGeometry(7.0,2.4,3),stdMat(0xe6dac6,0.8));
+      gie.rotation.y=Math.PI/2;gie.scale.set(1,1,0.3);gie.position.set(0,8.1,0);gie.castShadow=true;g.add(gie);
+      // Bogenfenster + Portal
+      for(var bf=0;bf<5;bf++){var bx8=-9+bf*4.5;
+        var ra=new THREE.Mesh(new THREE.BoxGeometry(2.4,3.2,0.07),stdMat(0x6a6258,0.7));ra.position.set(bx8,3.5,4.79);g.add(ra);
+        var fe=new THREE.Mesh(new THREE.BoxGeometry(2.1,2.9,0.07),
+          new THREE.MeshStandardMaterial({color:0xa8c8dc,emissive:0xffd890,emissiveIntensity:0,roughness:0.25}));
+        fe.position.set(bx8,3.5,4.83);g.add(fe);dorfFenster.push(fe.material);}
+      var por=new THREE.Mesh(new THREE.BoxGeometry(3.2,4.2,0.14),stdMat(0x4a3a2c,0.5));por.position.set(0,2.1,4.86);g.add(por);
+      // Bahnhofsuhr
+      var ucv=document.createElement("canvas");ucv.width=ucv.height=64;var uc=ucv.getContext("2d");
+      uc.fillStyle="#f8f4e8";uc.beginPath();uc.arc(32,32,30,0,6.283);uc.fill();
+      uc.strokeStyle="#2a2a2a";uc.lineWidth=4;uc.stroke();
+      for(var t8=0;t8<12;t8++){var ta=t8/12*6.283;uc.beginPath();
+        uc.moveTo(32+Math.cos(ta)*24,32+Math.sin(ta)*24);uc.lineTo(32+Math.cos(ta)*29,32+Math.sin(ta)*29);uc.stroke();}
+      uc.lineWidth=4;uc.beginPath();uc.moveTo(32,32);uc.lineTo(32+15,32-4);uc.stroke();
+      uc.lineWidth=3;uc.beginPath();uc.moveTo(32,32);uc.lineTo(32-8,32-19);uc.stroke();
+      var utx=new THREE.CanvasTexture(ucv);
+      var uhr=new THREE.Mesh(new THREE.CircleGeometry(1.15,20),
+        new THREE.MeshStandardMaterial({map:utx,emissiveMap:utx,emissive:new THREE.Color(0xfff0c8),emissiveIntensity:0,roughness:0.4}));
+      uhr.position.set(0,6.2,4.83);g.add(uhr);dorfFenster.push(uhr.material);
+      // Bahnsteig zum Gleis + Perrondach + Baenke
+      var stg=new THREE.Mesh(new THREE.BoxGeometry(34,0.42,5),betMat(0xcac4b6,0.9));stg.position.set(0,0.21,-8.5);stg.receiveShadow=true;g.add(stg);
+      for(var pd=0;pd<5;pd++){var px8=-13+pd*6.5;
+        var st8=new THREE.Mesh(new THREE.CylinderGeometry(0.11,0.13,3.4,8),stdMat(0x4a5058,0.5));st8.position.set(px8,1.7,-9.6);g.add(st8);}
+      var pdach=new THREE.Mesh(new THREE.BoxGeometry(30,0.28,4.4),stdMat(0x5a6068,0.7));pdach.position.set(0,3.5,-9.4);pdach.castShadow=true;g.add(pdach);
+      [-9,0,9].forEach(function(bxx){
+        var bk=new THREE.Mesh(new THREE.BoxGeometry(2.2,0.14,0.6),stdMat(0x8a6a48,0.7));bk.position.set(bxx,0.85,-7.4);bk.castShadow=true;g.add(bk);
+        var lehn=new THREE.Mesh(new THREE.BoxGeometry(2.2,0.6,0.1),stdMat(0x8a6a48,0.7));lehn.position.set(bxx,1.2,-7.75);g.add(lehn);
+        [-0.9,0.9].forEach(function(bf2){var bein=new THREE.Mesh(new THREE.BoxGeometry(0.12,0.7,0.5),stdMat(0x4a4a52,0.6));bein.position.set(bxx+bf2,0.5,-7.4);g.add(bein);});});
+      g.position.set(0,0,102);scene.add(g);
+    })();
+    // ---- SCHULE mit Pausenhof ----
+    (function schule(){
+      var g=new THREE.Group();
+      var sm=stdMat(0xe8d8c0,0.85);(window._wandMats=window._wandMats||[]).push(sm);
+      var sok=new THREE.Mesh(new THREE.BoxGeometry(22,0.45,12),betMat(0xc2bcae,0.9));sok.position.y=0.22;sok.receiveShadow=true;g.add(sok);
+      var kp=new THREE.Mesh(new THREE.BoxGeometry(20.5,7.6,10.5),sm);kp.position.y=4.0;kp.castShadow=true;kp.receiveShadow=true;g.add(kp);
+      var dch=new THREE.Mesh(new THREE.BoxGeometry(21.4,0.55,11.4),stdMat(0x7a5a4a,0.75));dch.position.y=8.05;dch.castShadow=true;g.add(dch);
+      for(var e7=0;e7<2;e7++)for(var f7=0;f7<7;f7++){
+        var px7=-8.4+f7*2.8;
+        var ra=new THREE.Mesh(new THREE.BoxGeometry(1.9,1.8,0.06),stdMat(0x6a6258,0.7));ra.position.set(px7,2.6+e7*3.2,5.29);g.add(ra);
+        var fe=new THREE.Mesh(new THREE.BoxGeometry(1.65,1.55,0.06),
+          new THREE.MeshStandardMaterial({color:0xa8c8dc,emissive:0xffd890,emissiveIntensity:0,roughness:0.25}));
+        fe.position.set(px7,2.6+e7*3.2,5.32);g.add(fe);if((e7+f7)%2===0)dorfFenster.push(fe.material);}
+      var tur=new THREE.Mesh(new THREE.BoxGeometry(2.6,3.0,0.12),stdMat(0x3a5a8a,0.5));tur.position.set(0,1.5,5.32);g.add(tur);
+      var glo=new THREE.Mesh(new THREE.BoxGeometry(1.6,1.8,1.6),stdMat(0xe0d0b8,0.8));glo.position.set(-7,9.0,0);g.add(glo);
+      var gsp=new THREE.Mesh(new THREE.ConeGeometry(1.2,1.4,4),stdMat(0x8a4a3a,0.7));gsp.position.set(-7,10.6,0);gsp.rotation.y=Math.PI/4;g.add(gsp);
+      // Pausenhof mit Basketballkorb
+      var hof=new THREE.Mesh(new THREE.PlaneGeometry(20,12),betMat(0xc8c2b4,0.9));
+      hof.rotation.x=-Math.PI/2;hof.position.set(0,0.014,-11);hof.receiveShadow=true;g.add(hof);
+      var kst=new THREE.Mesh(new THREE.CylinderGeometry(0.1,0.12,3.6,8),stdMat(0x4a4a52,0.5));kst.position.set(7,1.8,-15);g.add(kst);
+      var brt=new THREE.Mesh(new THREE.BoxGeometry(1.5,1.0,0.08),stdMat(0xf0ece0,0.6));brt.position.set(7,3.5,-15.3);g.add(brt);
+      var rng=new THREE.Mesh(new THREE.TorusGeometry(0.3,0.04,6,12),stdMat(0xe86a2a,0.5));rng.rotation.x=Math.PI/2;rng.position.set(7,3.1,-14.9);g.add(rng);
+      g.position.set(-56,0,100);scene.add(g);
+    })();
+    // ---- FEUERWACHE mit 2 Toren ----
+    (function feuerwache(){
+      var g=new THREE.Group();
+      var fm=stdMat(0xc04a3a,0.8);(window._wandMats=window._wandMats||[]).push(fm);
+      var sok=new THREE.Mesh(new THREE.BoxGeometry(17,0.45,12),betMat(0xc2bcae,0.9));sok.position.y=0.22;sok.receiveShadow=true;g.add(sok);
+      var kp=new THREE.Mesh(new THREE.BoxGeometry(15.5,6.2,10.5),fm);kp.position.y=3.3;kp.castShadow=true;kp.receiveShadow=true;g.add(kp);
+      var dch=new THREE.Mesh(new THREE.BoxGeometry(16.4,0.5,11.4),stdMat(0x4a4a52,0.75));dch.position.y=6.65;dch.castShadow=true;g.add(dch);
+      [-3.9,3.9].forEach(function(tx){ // 2 Tore
+        var tor=new THREE.Mesh(new THREE.BoxGeometry(5.2,4.2,0.14),stdMat(0xe8e4d8,0.55));tor.position.set(tx,2.1,5.32);g.add(tor);
+        for(var r7=0;r7<4;r7++){var ril=new THREE.Mesh(new THREE.BoxGeometry(5.2,0.07,0.05),stdMat(0xbab4a8,0.6));
+          ril.position.set(tx,0.9+r7*0.95,5.4);g.add(ril);}});
+      var sld=new THREE.Mesh(new THREE.BoxGeometry(6.0,0.9,0.1),stdMat(0xf0e8d8,0.6));sld.position.set(0,5.4,5.32);g.add(sld);
+      var trm=new THREE.Mesh(new THREE.BoxGeometry(2.2,9.5,2.2),fm);trm.position.set(-6.6,4.75,-3);trm.castShadow=true;g.add(trm); // Schlauchturm
+      var trd=new THREE.Mesh(new THREE.ConeGeometry(1.9,1.8,4),stdMat(0x4a4a52,0.7));trd.position.set(-6.6,10.3,-3);trd.rotation.y=Math.PI/4;g.add(trd);
+      var vor=new THREE.Mesh(new THREE.PlaneGeometry(17,9),betMat(0xb8b2a4,0.9));
+      vor.rotation.x=-Math.PI/2;vor.position.set(0,0.014,10.5);vor.receiveShadow=true;g.add(vor);
+      g.position.set(56,0,100);scene.add(g);
+    })();
+    // ---- TANKSTELLE ----
+    (function tanke(){
+      var g=new THREE.Group();
+      var pad=new THREE.Mesh(new THREE.PlaneGeometry(16,12),betMat(0xbdb7a9,0.9));
+      pad.rotation.x=-Math.PI/2;pad.position.y=0.014;pad.receiveShadow=true;g.add(pad);
+      var kio=new THREE.Mesh(new THREE.BoxGeometry(6,3.4,4.5),stdMat(0xf0ece0,0.8));kio.position.set(-4.5,1.7,-3);kio.castShadow=true;g.add(kio);
+      var kd=new THREE.Mesh(new THREE.BoxGeometry(6.6,0.3,5.1),stdMat(0x3a7a8a,0.7));kd.position.set(-4.5,3.55,-3);g.add(kd);
+      var kf=new THREE.Mesh(new THREE.BoxGeometry(4.4,1.6,0.07),
+        new THREE.MeshStandardMaterial({color:0xa8c8dc,emissive:0xffe0a0,emissiveIntensity:0,roughness:0.15}));
+      kf.position.set(-4.5,2.0,-0.72);g.add(kf);dorfFenster.push(kf.material);
+      // Vordach auf 4 Stuetzen + 2 Zapfsaeulen
+      [[-2.5,2.5],[5.5,2.5],[-2.5,-2.5],[5.5,-2.5]].forEach(function(sp){
+        var st=new THREE.Mesh(new THREE.CylinderGeometry(0.18,0.2,4.4,8),stdMat(0xd8d4c8,0.5));st.position.set(sp[0],2.2,sp[1]);g.add(st);});
+      var vd=new THREE.Mesh(new THREE.BoxGeometry(10,0.5,7.5),stdMat(0xe8e4d8,0.6));vd.position.set(1.5,4.65,0);vd.castShadow=true;g.add(vd);
+      var band=new THREE.Mesh(new THREE.BoxGeometry(10.2,0.5,0.12),stdMat(0x3a7a8a,0.6));band.position.set(1.5,4.65,3.81);g.add(band);
+      [[0,1.4],[3,-1.4]].forEach(function(zp){
+        var zs=new THREE.Mesh(new THREE.BoxGeometry(0.7,1.5,1.1),stdMat(0xe85a3a,0.6));zs.position.set(zp[0],0.75,zp[1]);zs.castShadow=true;g.add(zs);
+        var di=new THREE.Mesh(new THREE.BoxGeometry(0.5,0.4,0.06),
+          new THREE.MeshStandardMaterial({color:0x203038,emissive:0x4affc0,emissiveIntensity:0.5,roughness:0.2}));
+        di.position.set(zp[0],1.2,zp[1]+0.58);g.add(di);
+        var sc=new THREE.Mesh(new THREE.BoxGeometry(0.12,0.5,0.12),stdMat(0x2a2a30,0.5));sc.position.set(zp[0]+0.42,1.05,zp[1]);g.add(sc);});
+      g.position.set(92,0,-62);scene.add(g);
+    })();
+    // ---- BAUSTELLE mit Kran (die Stadt waechst) ----
+    (function baustelle(){
+      var g=new THREE.Group();
+      var gr=new THREE.Mesh(new THREE.PlaneGeometry(18,14),new THREE.MeshStandardMaterial({color:0x8a7a5c,roughness:1}));
+      gr.rotation.x=-Math.PI/2;gr.position.y=0.012;gr.receiveShadow=true;g.add(gr);
+      var roh=new THREE.Mesh(new THREE.BoxGeometry(9,4.5,7),betMat(0xb0aa9c,0.95));roh.position.set(-2,2.25,0);roh.castShadow=true;g.add(roh);
+      for(var et=0;et<3;et++){var pl8=new THREE.Mesh(new THREE.BoxGeometry(9.4,0.25,7.4),betMat(0xa8a294,0.95));
+        pl8.position.set(-2,1.5+et*1.5,0);g.add(pl8);}
+      // Kran: Mast, Ausleger, Gegengewicht, Haken
+      var km=new THREE.Mesh(new THREE.BoxGeometry(0.8,16,0.8),stdMat(0xf0c030,0.5));km.position.set(6,8,4);km.castShadow=true;g.add(km);
+      var ka=new THREE.Mesh(new THREE.BoxGeometry(20,0.55,0.55),stdMat(0xf0c030,0.5));ka.position.set(0,16.2,4);ka.castShadow=true;g.add(ka);
+      var kg=new THREE.Mesh(new THREE.BoxGeometry(2.2,1.2,1.4),stdMat(0x4a4a52,0.6));kg.position.set(13.5,16.2,4);g.add(kg);
+      var kk=new THREE.Mesh(new THREE.BoxGeometry(1.2,1.2,1.2),stdMat(0xe8e4d8,0.5));kk.position.set(6,15.2,4);g.add(kk);
+      var seil=new THREE.Mesh(new THREE.CylinderGeometry(0.05,0.05,6,5),stdMat(0x3a3a42,0.5));seil.position.set(-3,13,4);g.add(seil);
+      var hak=new THREE.Mesh(new THREE.BoxGeometry(0.4,0.6,0.4),stdMat(0x6a6a72,0.4));hak.position.set(-3,9.7,4);g.add(hak);
+      // Bauzaun + Materialstapel
+      for(var bz=0;bz<7;bz++){var zn=new THREE.Mesh(new THREE.BoxGeometry(2.4,1.8,0.08),
+        new THREE.MeshStandardMaterial({color:0xd8d4c8,roughness:0.8,transparent:true,opacity:0.85}));
+        zn.position.set(-8.6+bz*2.6,0.9,7);g.add(zn);}
+      [[5,-4],[7,-5.4]].forEach(function(mp,mi){
+        for(var st9=0;st9<3;st9++){var br=new THREE.Mesh(new THREE.BoxGeometry(1.6,0.28,0.9),stdMat(mi?0x9a7a5a:0xc08a5a,0.9));
+          br.position.set(mp[0],0.14+st9*0.3,mp[1]);br.rotation.y=mi*0.3;g.add(br);}});
+      g.position.set(-30,0,102);scene.add(g);
+    })();
+  })();
   // ---- Laternen-Reihen (Glow-Pool statt PointLight: billig) ----
   (function laternenReihen(){
     var gcv=document.createElement("canvas");gcv.width=gcv.height=64;var gc=gcv.getContext("2d");
@@ -2806,7 +2966,7 @@ function autoFahr(dt){
     else fx.visible=false;
     m.position.x+=Math.sin(carRot)*sp*dt;
     m.position.z+=Math.cos(carRot)*sp*dt;
-    m.position.x=Math.max(-140,Math.min(140,m.position.x));
+    m.position.x=Math.max(-155,Math.min(155,m.position.x));
     m.position.z=Math.max(-140,Math.min(140,m.position.z));
     m.position.y=(a.homeY||0.01)+Math.abs(Math.sin(performance.now()*0.02))*0.03+carAirY; // Wanken + Sprunghoehe
   }else{carLean*=0.85;m.position.y=(a.homeY||0.01)+carAirY;window._carKmh=Math.round((window._carKmh||0)*0.8);}
@@ -3307,8 +3467,8 @@ function steerMove(s9,sv,dt,sprint){
   var l9=Math.hypot(mx,mz);if(l9>1){mx/=l9;mz/=l9;}
   if(l9<0.05)return;
   var sp9=4.0*(sprint?1.65:1),nx=s9.x+mx*sp9*dt,nz=s9.z+mz*sp9*dt;
-  var lim=GW*CS/2+9,limZ=GH*CS/2+14;
-  nx=Math.max(-lim,Math.min(lim,nx));nz=Math.max(-limZ,Math.min(GH*CS/2+13,nz));
+  var lim=150,limZ=135; // ganze Open World begehbar (Downtown z=-120, Bahnhof z=+112, Villen x=±105)
+  nx=Math.max(-lim,Math.min(lim,nx));nz=Math.max(-limZ,Math.min(limZ,nz));
   function cellX(w){return Math.round(w/CS+GW/2-0.5);}
   function cellY(w){return Math.round(w/CS+GH/2-0.5);}
   var cx1=cellX(s9.x),cy1=cellY(s9.z),cx2=cellX(nx),cy2=cellY(nz);
@@ -3913,17 +4073,17 @@ function loop(now){
   var dt=Math.min(0.05,(now-last)/1000);last=now;
   if(running){
     // Uhr: 1 Spielminute = 0.5s (Host führt, Gast empfängt)
-    if(!MPs||mpHost){uhrzeit+=dt*10;if(uhrzeit>=1440){uhrzeit-=1440;tag++;if(immo.length){var miete=immo.length*150;geld+=miete;geldSend();updHUD();hint("\uD83C\uDFE0\uD83D\uDCB0 Mieteinnahmen: +"+miete+" \u00A7 ("+immo.length+" H\u00E4user)");}rollWetter();applySaison();hint(SAISON[calcSaison()][0]+(wetter==="regen"?" · 🌧️ Regen":wetter==="schnee"?" · 🌨️ Schnee":""));}}
+    if(!MPs||mpHost){uhrzeit+=dt*4;if(uhrzeit>=1440){uhrzeit-=1440;tag++;if(immo.length){var miete=immo.length*150;geld+=miete;geldSend();updHUD();hint("\uD83C\uDFE0\uD83D\uDCB0 Mieteinnahmen: +"+miete+" \u00A7 ("+immo.length+" H\u00E4user)");}rollWetter();applySaison();hint(SAISON[calcSaison()][0]+(wetter==="regen"?" · 🌧️ Regen":wetter==="schnee"?" · 🌨️ Schnee":""));}}
     // Tag/Nacht
     var hh=uhrzeit/60,dayA=Math.max(0,Math.sin((hh-5.75)/14*Math.PI)); // Sonne 5:45-19:45 — Abend hat echtes Restlicht
     var wDim=wetter==="sonne"?1:0.62;
-    sun.intensity=(0.05+dayA*0.82)*wDim;hemi.intensity=0.12+dayA*0.36;
+    sun.intensity=(0.09+dayA*0.80)*wDim;hemi.intensity=0.22+dayA*0.30;
     hemi.groundColor.setRGB(0.16+dayA*0.25,0.28+dayA*0.26,0.20+dayA*0.14); // nachts blau-grau statt oliv
     var warm=Math.max(0,1-dayA*1.8); // 1 bei Daemmerung/Nacht, 0 bei hohem Sonnenstand
     sun.color.setHex(0xfff0d0);if(warm>0)sun.color.lerp(new THREE.Color(0xff8a3a),warm*0.8);
     if(window.sterne)sterne.material.opacity=Math.max(0,0.9-dayA*3);
     sun.position.set(Math.cos((hh-5.75)/14*Math.PI)*34,4+dayA*36,18); // tiefer bei Daemmerung -> lange Schatten
-    renderer.toneMappingExposure=(0.20+dayA*0.60)*wDim; // Nacht wirklich dunkel -> Emissives poppen
+    renderer.toneMappingExposure=(0.34+dayA*0.52)*wDim; // Nacht dunkel, aber man sieht noch was
     if(scene.environmentIntensity!==undefined)scene.environmentIntensity=0.10+dayA*0.90;
     var skyC=new THREE.Color(0x9fd0ea).lerp(new THREE.Color(0x141c30),1-Math.min(1,dayA*1.4));
     if(dayA>0.02&&dayA<0.55)skyC.lerp(new THREE.Color(0xff9a52).setHex(0xff9a52),(0.55-dayA)/0.55*0.5); // Abend-/Morgenrot
