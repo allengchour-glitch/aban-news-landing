@@ -992,8 +992,25 @@ var dorfFenster=[];
   (function(){var g=new THREE.Group();
     var kirchM=stdMat(0xe8e2d4,0.85);
     ladeTex("textures/th/backstein.jpg",3,2,function(t){kirchM.map=t;kirchM.color.setHex(0xd8cfc0);kirchM.needsUpdate=true;});
-    var schiff=new THREE.Mesh(new THREE.BoxGeometry(7,5,11),kirchM);
-    schiff.position.y=2.5;schiff.castShadow=true;g.add(schiff);
+    /* 🚪 W2b: Kirche BEGEHBAR — Wände mit Türöffnung statt massiver Box + eingerichteter Innenraum */
+    function kw(w,h,d,x,y,z){var m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),kirchM);m.position.set(x,y,z);m.castShadow=true;m.receiveShadow=true;g.add(m);return m;}
+    kw(0.24,5,11,-3.38,2.5,0);kw(0.24,5,11,3.38,2.5,0);      /* Seitenwände */
+    kw(7,5,0.24,0,2.5,5.38);                                   /* Rückwand (Turmseite) */
+    kw(2.7,5,0.24,-2.15,2.5,-5.38);kw(2.7,5,0.24,2.15,2.5,-5.38);kw(1.6,2.4,0.24,0,3.8,-5.38); /* Front mit 1.6m-Türöffnung */
+    var kBoden=new THREE.Mesh(new THREE.BoxGeometry(6.8,0.12,10.8),betMat(0xcfc6b2,0.85));kBoden.position.y=0.06;kBoden.receiveShadow=true;g.add(kBoden);
+    var kDecke=new THREE.Mesh(new THREE.BoxGeometry(7,0.1,11),stdMat(0xe8e2d4,0.9));kDecke.position.y=4.95;g.add(kDecke);
+    var holzB=stdMat(0x6a4a2c,0.8),holzD=stdMat(0x50361e,0.75);
+    for(var pr=0;pr<4;pr++){[-1.6,1.6].forEach(function(px){
+      var sitz=new THREE.Mesh(new THREE.BoxGeometry(2.2,0.09,0.5),holzB);sitz.position.set(px,0.5,-3.2+pr*1.5);g.add(sitz);
+      var lehne=new THREE.Mesh(new THREE.BoxGeometry(2.2,0.6,0.08),holzD);lehne.position.set(px,0.85,-2.95+pr*1.5);g.add(lehne);
+      [-0.95,0.95].forEach(function(fx){var fu=new THREE.Mesh(new THREE.BoxGeometry(0.09,0.5,0.45),holzD);fu.position.set(px+fx,0.25,-3.2+pr*1.5);g.add(fu);});});}
+    var altar=new THREE.Mesh(new THREE.BoxGeometry(2.2,1.0,0.9),betMat(0xd8d0be,0.8));altar.position.set(0,0.5,4.2);altar.castShadow=true;g.add(altar);
+    var krM=stdMat(0xc8a84a,0.35);var kr1=new THREE.Mesh(new THREE.BoxGeometry(0.12,1.1,0.12),krM);kr1.position.set(0,1.9,4.6);g.add(kr1);
+    var kr2=new THREE.Mesh(new THREE.BoxGeometry(0.6,0.12,0.12),krM);kr2.position.set(0,2.15,4.6);g.add(kr2);
+    [-1.4,1.4].forEach(function(cx3){var ke=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.07,0.7,8),
+      new THREE.MeshStandardMaterial({color:0xfff2d0,emissive:0xffc860,emissiveIntensity:0.9,roughness:0.5}));
+      ke.position.set(cx3,1.35,4.2);g.add(ke);});
+    var kLicht=new THREE.PointLight(0xffd9a0,0.85,9,2);kLicht.position.set(0,3.2,2.4);g.add(kLicht);
     [[-1,1],[1,-1]].forEach(function(sg){var pl=new THREE.Mesh(new THREE.BoxGeometry(4.3,0.16,11.5),stdMat(0x6a5648,0.75));
       pl.position.set(sg[0]*1.75,5.9,0);pl.rotation.z=sg[1]*0.52;pl.castShadow=true;g.add(pl);});
     var turm=new THREE.Mesh(new THREE.BoxGeometry(2.6,9,2.6),stdMat(0xe0dacb,0.85));
