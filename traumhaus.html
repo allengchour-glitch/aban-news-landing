@@ -1311,8 +1311,9 @@ var dorfFenster=[];
       var hal=new THREE.Mesh(new THREE.BoxGeometry(24,6.5,9.5),bm);hal.position.y=3.5;hal.castShadow=true;hal.receiveShadow=true;g.add(hal);
       var dch=new THREE.Mesh(new THREE.BoxGeometry(25.4,0.6,10.6),stdMat(0x6a5a52,0.75));dch.position.y=7.0;dch.castShadow=true;
       if(window._schindelTex)dch.material.map=window._schindelTex;g.add(dch);
-      var gie=new THREE.Mesh(new THREE.ConeGeometry(7.0,2.4,3),stdMat(0xe6dac6,0.8));
-      gie.rotation.y=Math.PI/2;gie.scale.set(1,1,0.3);gie.position.set(0,8.1,0);gie.castShadow=true;g.add(gie);
+      /* 🩹 Ziergiebel entfernt: der flache 3-seitige Kegel sass quer in der Dachmitte und sah aus wie ein
+         weisses Render-Artefakt (Screenshot-Befund). An der Stirnseite wirkte er ebenso fehlerhaft —
+         das Walmdach sieht ohne ihn sauber aus. Nicht erneut hinzufuegen. */
       // Bogenfenster + Portal
       for(var bf=0;bf<5;bf++){var bx8=-9+bf*4.5;
         var ra=new THREE.Mesh(new THREE.BoxGeometry(2.4,3.2,0.07),stdMat(0x6a6258,0.7));ra.position.set(bx8,3.5,4.79);g.add(ra);
