@@ -1490,7 +1490,7 @@ document.addEventListener("DOMContentLoaded",function(){});
   kb.onclick=function(){var i=+kb.dataset.idx,hs=window._immo&&window._immo[i];if(!hs||immo.indexOf(i)>=0)return;
     if(Math.hypot(sims[0].x-hs.x,sims[0].z-hs.z)>7){kb.style.display="none";return;} // Distanz frisch pruefen
     if(geld<hs.preis){hint("\uD83D\uDCB8 Zu teuer \u2014 dir fehlen "+(hs.preis-geld)+" \u00A7");beep(200,.15,"sawtooth",.05);return;}
-    geld-=hs.preis;geldSend();immo.push(i);if(!hs.flagge)immoFlagge(hs);stats.immobilien=(stats.immobilien||0)+1;updHUD();
+    geld-=hs.preis;geldSend();immo.push(i);if(MPs&&mpHost)netSend({t:"immo",i:i});if(!hs.flagge)immoFlagge(hs);stats.immobilien=(stats.immobilien||0)+1;updHUD(); /* 🩹 Schwarm-P3: Gast erfaehrt vom Hauskauf */
     beep(660,.09,"square",.05);setTimeout(function(){beep(880,.11,"square",.05);},90);
     hint("\uD83C\uDFE0\u2705 Haus gekauft! Ab morgen: +150 \u00A7 Miete pro Tag");};})();
 // ---- Verkehr: 6 fahrende Autos + Bus-Linie mit Haltestelle ----
@@ -2394,7 +2394,7 @@ function removeFurnAt(gx,gy,ohneGeld){
     var cells=furnCells(f);
     for(var c=0;c<cells.length;c++)if(cells[c][0]===gx&&cells[c][1]===gy){
       if(f.mesh)scene.remove(f.mesh);if(f.plight)scene.remove(f.plight);
-      if(!ohneGeld){geld+=Math.round(f.def.cost*0.5);geldSend();}
+      if(!ohneGeld){geld+=Math.round(f.def.cost*(1+0.6*((f.lv||1)-1))*0.5);geldSend();} /* 🩹 Schwarm-P3: Aufwertungen zaehlen beim Verkauf mit */
       furn.splice(i,1);updHUD();return true;}}
   return false;}
 function furnCells(f){var s=f.def.size||[1,1],w=s[0],d=s[1];
@@ -2402,6 +2402,14 @@ function furnCells(f){var s=f.def.size||[1,1],w=s[0],d=s[1];
   var cells=[];
   for(var ix=0;ix<w;ix++)for(var iy=0;iy<d;iy++)cells.push([f.gx+ix-((w-1)>>1),f.gy+iy-((d-1)>>1)]);
   return cells;}
+function footprintFree(def,gx,gy,rot,ignore){ /* 🩹 Schwarm-P2: ALLE Zellen pruefen (Bett 2x2/Sofa 2x1 ueberlappten) */
+  var cells=furnCells({gx:gx,gy:gy,rot:rot||0,def:def});
+  for(var i=0;i<cells.length;i++){var cx9=cells[i][0],cy9=cells[i][1];
+    if(!inLot(cx9,cy9))return false;
+    for(var j=0;j<furn.length;j++){if(ignore&&furn[j]===ignore)continue;
+      var oc=furnCells(furn[j]);
+      for(var k=0;k<oc.length;k++)if(oc[k][0]===cx9&&oc[k][1]===cy9)return false;}}
+  return true;}
 function cellFree(gx,gy){for(var i=0;i<furn.length;i++){var cells=furnCells(furn[i]);
   for(var c=0;c<cells.length;c++)if(cells[c][0]===gx&&cells[c][1]===gy)return false;}return true;}
 
@@ -2439,10 +2447,11 @@ function furnAt(gx,gy){
   return null;}
 function editVerschiebe(nx,ny){
   var f9=editSel;if(!f9)return false;
-  if(!cellFree(nx,ny)||!inLot(nx,ny)){hint("Da ist kein Platz");return false;}
+  if(!footprintFree(f9.def,nx,ny,f9.rot,f9)){hint("Da ist kein Platz");return false;}
+  var _ix=furn.indexOf(f9);if(_ix<0){editHide();return false;} /* 🩹 Schwarm-P2: im Koop schon geloescht → splice(-1,1) haette ein FREMDES Moebel zerstoert */
   var ox=f9.gx,oy=f9.gy,rot=f9.rot,id=f9.id,lv0=f9.lv||1,aw=f9.wachs;
   if(f9.mesh)scene.remove(f9.mesh);if(f9.plight)scene.remove(f9.plight);
-  furn.splice(furn.indexOf(f9),1);
+  furn.splice(_ix,1);
   netSend({t:"del",x:ox,y:oy});
   doPlaceFurn(id,nx,ny,rot,false,undefined,lv0);
   _restoreLvWachs(furn[furn.length-1],lv0,aw);
@@ -2459,9 +2468,10 @@ function _restoreLvWachs(rec,lv0,alteWachs){ /* 🩹 Schwarm-P1: Verschieben/Dre
 document.getElementById("edMove").onclick=function(){editMove=true;hint("Tippe auf den neuen Platz");};
 document.getElementById("edRot").onclick=function(){
   var f9=editSel;if(!f9)return;
+  var _ir=furn.indexOf(f9);if(_ir<0){editHide();return;} /* 🩹 Schwarm-P2 */
   var gx=f9.gx,gy=f9.gy,nr=(f9.rot+1)%4,id=f9.id,lv0=f9.lv||1,aw=f9.wachs;
   if(f9.mesh)scene.remove(f9.mesh);if(f9.plight)scene.remove(f9.plight);
-  furn.splice(furn.indexOf(f9),1);netSend({t:"del",x:gx,y:gy});
+  furn.splice(_ir,1);netSend({t:"del",x:gx,y:gy});
   doPlaceFurn(id,gx,gy,nr,false,undefined,lv0);
   editSel=furn[furn.length-1];_restoreLvWachs(editSel,lv0,aw);editShow(editSel);beep(560,.06,"triangle",.04);};
 document.getElementById("edUp").onclick=function(){
@@ -2471,9 +2481,10 @@ document.getElementById("edUp").onclick=function(){
   var kost=Math.round(f9.def.cost*0.6);
   if(geld<kost){hint("💰 Aufwerten kostet "+kost+" $");return;}
   geld-=kost;geldSend();
+  var _iu=furn.indexOf(f9);if(_iu<0){editHide();return;} /* 🩹 Schwarm-P2 */
   var gx=f9.gx,gy=f9.gy,rot=f9.rot,id=f9.id;
   if(f9.mesh)scene.remove(f9.mesh);if(f9.plight)scene.remove(f9.plight);
-  furn.splice(furn.indexOf(f9),1);netSend({t:"del",x:gx,y:gy});
+  furn.splice(_iu,1);netSend({t:"del",x:gx,y:gy});
   var alteWachs=f9.wachs;
   doPlaceFurn(id,gx,gy,rot,false,undefined,lv0+1);
   editSel=furn[furn.length-1];
@@ -2492,7 +2503,7 @@ document.getElementById("edSell").onclick=function(){
   if(removeFurnAt(gx,gy)){netSend({t:"del",x:gx,y:gy});hint("💰 Verkauft (50% zurück)");}};
 document.getElementById("edX").onclick=editHide;
 function snapshot(){return {gw:GW,gh:GH,floors:floors,walls:Object.keys(walls).reduce(function(a,k){a[k]=walls[k].co?{t:walls[k].type,c:walls[k].co}:walls[k].type;return a;},{}),
-  furn:furn.map(function(f){return {id:f.id,x:f.gx,y:f.gy,r:f.rot,fid:f.fid,lv:f.lv||1,w:f.wachs||0};}),au:window.autoRec?{id:window.autoRec.id,x:window.autoRec.gx,y:window.autoRec.gy}:null,hu:haustier?{x:haustier.gx||10,y:haustier.gy||10}:null,qb:questBusy,we:wetter,tq:teamIdx,im:immo,geld:geld,tag:tag,uhr:uhrzeit,rom:romantik,li:liebe,ve:verlobt,he:verheiratet,sk:skills,st:stats,ac:achDone,qi:questIdx,ki:kinder.map(function(k){return {n:k.name,a:k.alter,b:k.baby};})};}
+  furn:furn.map(function(f){return {id:f.id,x:f.gx,y:f.gy,r:f.rot,fid:f.fid,lv:f.lv||1,w:f.wachs||0};}),au:window.autoRec?{id:window.autoRec.id,x:window.autoRec.gx,y:window.autoRec.gy}:null,hu:haustier?{x:haustier.gx||10,y:haustier.gy||10}:null,qb:questBusy,we:wetter,tq:teamIdx,tb:teamBase,tbg:teamBasis,im:immo,geld:geld,tag:tag,uhr:uhrzeit,rom:romantik,li:liebe,ve:verlobt,he:verheiratet,sk:skills,st:stats,ac:achDone,qi:questIdx,ki:kinder.map(function(k){return {n:k.name,a:k.alter,b:k.baby};})};}
 function loadSnapshot(sn){
   var mx9=Math.round((GW-(sn.gw||18))/2),my9=Math.round((GH-(sn.gh||14))/2); // alte Saves mittig einpassen
   (sn.furn||[]).forEach(function(f9){var m9=/^f(\d+)/.exec(f9.fid||"");if(m9)fidC=Math.max(fidC,+m9[1]+1);}); // fid-Zaehler fortsetzen
@@ -2514,7 +2525,7 @@ function loadSnapshot(sn){
     applyFurn(sn.au.id,sn.au.x+mx9,sn.au.y+my9,0);}
   if(sn.hu&&!haustier)applyFurn("hund",sn.hu.x+mx9,sn.hu.y+my9,0);
   if(sn.qb!==undefined){questBusy=!!sn.qb;if(questBusy)buergermeisterPending=true;}
-  if(sn.we)setWetter(sn.we);applySaison();if(sn.tq!==undefined)teamIdx=sn.tq;
+  if(sn.we)setWetter(sn.we);applySaison();if(sn.tq!==undefined)teamIdx=sn.tq;if(sn.tb)teamBase=sn.tb;if(sn.tbg!==undefined)teamBasis=sn.tbg; /* 🩹 Schwarm-P2: Team-Quest-Basiswerte ueberleben den Reload */
   (window._immo||[]).forEach(function(h9){if(h9.flagge){scene.remove(h9.flagge);h9.flagge=null;}});
   immo=(sn.im||[]).slice();
   setTimeout(function(){immo.forEach(function(i){var hs=window._immo&&window._immo[i];if(hs&&!hs.flagge)immoFlagge(hs);});},400);
@@ -2556,6 +2567,7 @@ function onNetMsg(m){
   else if(m.t==="wetter"&&!mpHost)setWetter(m.w);
   else if(m.t==="kochBoost"&&mpHost){if(m.s>=0.999)stats.kochPerfekt=(stats.kochPerfekt||0)+1;kochApply(m.s);}
   else if(m.t==="fisch"&&mpHost){stats.fische=(stats.fische||0)+1;}
+  else if(m.t==="immo"&&!mpHost){if(immo.indexOf(m.i)<0)immo.push(m.i);} /* 🩹 Schwarm-P3: Gast sieht Hauskaeufe des Hosts */
   else if(m.t==="growSold"&&mpHost){stats.growSold=(stats.growSold||0)+1;} /* 🩹 Gast-Deal zaehlt */
   else if(m.t==="growReset"&&mpHost){for(var _gi=0;_gi<furn.length;_gi++){var _gf=furn[_gi];
     if(_gf.gx===m.x&&_gf.gy===m.y&&_gf.grow){_gf.wachs=0;if(_gf.krauts)_gf.krauts.forEach(function(k5){k5.scale.setScalar(0.06);});break;}}}
@@ -3400,15 +3412,18 @@ var TEAMQ=[
  ["😮","Macht 10 Emotes zusammen",200,function(){return window._emoteCount||0;},10],
  ["💰","Verdient als Paar 4000 $ dazu",500,function(){return teamBasis===null?0:Math.max(0,geld-teamBasis+ (window._teamGeldBonus||0));},4000],
  ["🎖️","Erfüllt 3 Stadt-Aufträge",600,function(){return stats.quests||0;},3]];
-function teamProg(){var q=TEAMQ[teamIdx%TEAMQ.length];return Math.min(q[4],q[3]());}
+var teamBase={}; /* 🩹 Schwarm-P2: Startwert je Aufgabe — sonst zaehlen ab Rotation 2 alte Erfolge mit (Gratis-Geld-Kaskade) */
+function teamArm(){var k=teamIdx%TEAMQ.length;if(teamBase[k]===undefined)teamBase[k]=TEAMQ[k][3]();}
+function teamProg(){var k=teamIdx%TEAMQ.length,q=TEAMQ[k];teamArm();return Math.max(0,Math.min(q[4],q[3]()-teamBase[k]));}
 function teamTxt(){var q=TEAMQ[teamIdx%TEAMQ.length];return q[0]+" "+q[1]+"  ("+teamProg()+"/"+q[4]+")  → +"+q[2]+" $";}
 function checkTeamQ(){
   if(!MPs||!mpHost)return; // nur echte Koop-Runde, Host prüft
   var q=TEAMQ[teamIdx%TEAMQ.length];
-  if(teamBasis===null&&teamIdx===0)teamBasis=geld;
-  if(q[3]()>=q[4]){
+  if(teamBasis===null)teamBasis=geld; /* 🩹 Schwarm-P2: auch nach Reload/Rotation setzen (war nur bei teamIdx===0) */
+  teamArm();
+  if(teamProg()>=q[4]){
     geld+=q[2];geldSend();window._teamGeldBonus=0; // Belohnung syncen, Bonus-Inflation stoppen
-    teamIdx++;teamBasis=geld;
+    teamIdx++;teamBasis=geld;teamBase[teamIdx%TEAMQ.length]=undefined;teamArm(); /* neue Aufgabe frisch einmessen */
     hint("🤝 Team-Aufgabe geschafft! +"+q[2]+" $ — Neu: "+teamTxt());
     netSend({t:"teamq",i:teamIdx});
     beep(700,.1,"triangle",.06);setTimeout(function(){beep(980,.14,"triangle",.07);},130);}}
@@ -3820,7 +3835,7 @@ function tapAt(px,py){
       for(var q9=0;q9<kand.length&&!ok9;q9++)ok9=doPaint(kand[q9][0],kand[q9][1],kand[q9][2],def.paint);}
     if(!ok9){hint("Erst eine Wand bauen, dann streichen 🎨");return;}
     geld-=def.cost;hint("🎨 "+def.n+"!");}
-  else{if(!cellFree(c.gx,c.gy)){hint("Hier steht schon etwas");return;}
+  else{if(!footprintFree(def,c.gx,c.gy,curRot)){hint("Hier steht schon etwas");return;}
     doPlaceFurn(curItem,c.gx,c.gy,curRot);geld-=def.cost;if(MPs&&!mpHost)netSend({t:"moebelStat"});else stats.moebelGekauft++;}
   geldSend();
   updHUD();beep(660,.06,"triangle",.04);}
@@ -3999,6 +4014,7 @@ document.getElementById("kochQuit").onclick=function(){
 function taschendieb(n9){
   if(n9.bestohlen){hint("👀 Der passt jetzt auf seine Taschen auf!");return;}
   if(n9.typ==="polizist"){
+    n9.bestohlen=true; /* 🩹 Schwarm-P3: einmal pro Polizist — vorher kassierte JEDER Tap erneut 80 $ */
     var str9=Math.min(geld,80);geld-=str9;geldSend();updHUD();
     hint("👮 Beim POLIZISTEN?! Busse: −"+str9+" $");
     npcEmoji(n9,"🚨");beep(240,.2,"sawtooth",.06);return;}
