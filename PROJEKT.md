@@ -1,5 +1,20 @@
 # Projekt-Memory — Geld verdienen mit KI (Aban)
 
+## ✨ 2026-07-24 — Polish-Pass (Urteil-Format durch den ganzen Funnel)
+> „polish alles": Qualitäts-Pass über die Kimi-Conversion-Arbeit + sichere Restpunkte umgesetzt.
+> - **Funnel-Konsistenz:** `preview.html` (echte Beispiel-Ausgabe) zeigt jetzt bei allen 4 Stories das
+>   **Urteil-Badge** (Lohnt sich/Abwarten/Ignorieren) — ehrlich zur jeweiligen Quelle. So verspricht der
+>   Homepage-Lead das Format → Mail-Mock zeigt es → die verlinkte Beispiel-Ausgabe hält es. Kein Bruch mehr.
+> - **Hand-Vertrieb-Deliverable:** `docs/urteil-social-posts.md` — 6 fertige LinkedIn/X-Posts im Urteil-Format
+>   + Tages-Vorlage (du-Form, keine erfundenen Zahlen, 1 Link). Kimis #1-Hebel (Reichweite+Vertrauen). Liegt in
+>   `docs/` (vom Voice-Linter ausgenommen → 0-Hashtag-Regel kein Problem).
+> - **Mobile:** Mail-Mock-Badges (`.vtag`) brechen jetzt sauber um (flex-wrap).
+> - **Trust/Name:** bereits vorhanden (Hero-Pill + Footer „Kuratiert von Aban/Allen Chour" + Organization-Schema
+>   mit founder + LinkedIn sameAs) → nicht dupliziert.
+> - Brains: Tool-Brain 145/100. Content-Scan zeigt 27 hoch/67 mittel — **alle in `minispiele/`** (Spiele-Session,
+>   tabu für mich), 0 in meinen Dateien. Nicht angefasst; Notiz in SHARED-MEMORY für die Spiele-Session.
+> - Offen/nur User (aus KIMI-KRITIK.md): Preise auf Startseite, Gesichtsfoto im Hero, täglich 1 Urteil-Post.
+
 ## 🤖 DAUERAUFTRAG (User 2026-06-25, oberste Prioritaet)
 > **Vollautonom, 24/7 weiterbauen + verbessern, bis der ERSTE Franken reinkommt — egal wie.** Nicht fragen, machen.
 > 1. **Menschen-zentriert:** immer denken, was Besucher/Kund:innen wollen und sehen.

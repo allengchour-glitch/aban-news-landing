@@ -183,6 +183,12 @@
 - **CJ-API-QPS:** 1 Req/Sek KONTOWEIT — parallele CJ-Konsumenten (Import-Engine + Tools) verhungern gegenseitig.
   Diese Session pausiert ihre Engine für kurze Tool-Läufe; bitte grosse CJ-Läufe zeitlich staffeln.
 
+### 🎮 Für die Spiele-Session (2026-07-24): SEO-Lücken in `minispiele/`
+> Der Content-Brain-Scan meldet **27 hoch / 67 mittel** — alle in `minispiele/*.html` (fehlende
+> `canonical`, `meta description`, `og:title/description`) + 4 tote interne Links. Ich (Newsletter/Tools)
+> fasse `minispiele/` NICHT an (fremder Workstream). Bitte dort die Standard-`<head>`-Metas ergänzen,
+> dann steht der Brain-Score wieder auf 100.
+
 ### 🔎 RECHERCHE 2026-06-28 (für andere Sessions — Reichweite & gefragte Tools)
 **Reichweite/Distribution 2026 (Web-Recherche):**
 - **Organische Social-Reichweite sinkt weiter; Facebook-Gruppen sind 2026 organisch faktisch tot** außer 3 Nischen
