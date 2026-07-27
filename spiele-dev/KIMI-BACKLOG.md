@@ -381,3 +381,20 @@ benachbarte rnd-in-if-Blöcke (Welt-Orte), Host↔Join OFEN-Restrisiko.
 - P1|perf Geskinnte Mobs: GLB-Fetch+Parse pro Spawn → SkeletonUtils.clone-Cache (Vendor-Datei nötig)
 **Unverifiziert geblieben (Claude-Limit):** 15 der 24 Backlog-Claims (Math.random-Klasse, Origin-Check, Preview-Race,
 placeLoot/Beet/Glühwürmchen/FallbackHouse-Memory, Picker-Dispose) — nächste Session mit frischem Limit prüfen.
+
+---
+## Schwarm-Runde 3 (Claude-Koop-Schwarm, 135 Agenten — 40/41 bestätigt) — Stand nach Umsetzung
+**Umgesetzt (27 Fixes):** ALLE 8 P1 — Traumhaus Bürgermeister-Quest-Freeze, Gast-Fänge zählen (t:fisch),
+Gast-Heartbeat (6s-Watchdog), Koop-Save+Restore (th_save_coop), Save-Backup vor loadSnapshot; Lebenspfad
+Rejoin-bei-offener-Karte; Flug Touch-mousemove-Lenkung; Dungeon ?raum-Verlust bei Rematch (+?lvl=-Redirect-Ausnahme).
+Plus: Flug HUD-Tipp-Dash + keyL/R-Reset; Dungeon e.repeat/Partner-sichtbar/bheal-Delta/Warn-Optik; Jump e.repeat;
+Survivor BossWave-_tele+Krone + Bauphasen-Gate bei lebendem Boss; Lebenspfad Bot-Quiz-hidden + Kapitel-off-by-one;
+mp.js rt-Kettentimer + byUs-Guard + fast-Kanal-Ersatz; Traumhaus Lobby-Code-Refresh.
+**Offen aus Runde 3 (komplexer, für nächsten Block):**
+- P2 traumhaus: Mehrzellen-Möbel-Kollision (3473), Sim-KI klemmt an unerreichbarem Möbel (2549), Remote-del
+  per fid statt Zelle (2125); P3 Endlos-Auftrag-Baseline speichern (3064)
+- P2 lebenspfad: Bot-Timer-Signatur (2137), Reconnect-Slow-Poll statt Aufgeben (3509); P3 Quiz-Text online (4247)
+- P2 dungeon: End-Screen-Koop-Softlock (566), Position-Spam auf sendFast (322)
+- P2 zusammen: Snapshot-Resync bei Reconnect (335); P3 Gem-Sync (469)
+- P3 survivor: Client-HUD-Phase (2032), Client-Progression (2146)
+- P3 racer/flug/jump: Musik pausieren bei visibilitychange

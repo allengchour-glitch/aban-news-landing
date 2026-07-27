@@ -100,7 +100,7 @@
     /* A2 (Rest-Audit): endgültiges Aufgeben MUSS den Peer zerstören — sonst hält ein
        Zombie-Peer die feste Raum-ID (PUBA/OFEN/wildnis/tempel2) site-weit besetzt. */
     function giveUp() {
-      clearTimeout(tmo);
+      clearTimeout(tmo); clearTimeout(rt);
       if (wd) { clearInterval(wd); wd = null; }
       S._setStatus("closed");
       try { if (peer) peer.destroy(); } catch (e) {}
@@ -112,7 +112,7 @@
          feuert close oft erst nach dem erfolgreichen Reconnect) dürfen die neue Verbindung nicht töten. */
       c.on("open", function () {
         if (c !== main) return; // Identitaets-Guard (Audit A1)
-        ever = true; clearTimeout(tmo); reconns = 0; // erfolgreicher (Re)Connect -> Reconnect-Budget erneuern
+        ever = true; clearTimeout(tmo); clearTimeout(rt); reconns = 0; // erfolgreicher (Re)Connect -> Reconnect-Budget erneuern + Kettentimer stoppen
         S._setStatus("connected"); startWd();
         if (!isHost) { // 2. Kanal: unreliable für Positions-Spam
           try { fast = peer.connect(pid(gameId, S.code), { label: "fast", reliable: false }); wireFast(fast); } catch (e) {}
@@ -131,21 +131,21 @@
         if (!ever) fail("Verbindung fehlgeschlagen — Code prüfen und nochmal versuchen.");
       });
     }
+    var rt = null; /* 🩹 Schwarm-P2: Backoff-Kettentimer tracken — alter Timer feuerte nach erfolgreichem Reconnect erneut lost() */
     function lost() { // mehrere Reconnect-Versuche mit Backoff bei Abriss
+      clearTimeout(rt);
       S._setStatus("lost");
-      // mehrere Reconnect-Versuche mit Backoff; bei Erschoepfung giveUp() (zerstoert den
-      // Peer -> gibt die feste Raum-ID frei, Audit A2)
       if (reconns >= MAX_RECONN) { giveUp(); return; }
       reconns++;
       var backoff = Math.min(6000, 600 * Math.pow(1.7, reconns - 1)); // 600ms .. 6s
       if (isHost) {
         main = null; // peer.on("connection") nimmt den Gast wieder an
-        setTimeout(function () { if (S.status === "lost") lost(); }, backoff + 9000);
+        rt = setTimeout(function () { if (S.status === "lost") lost(); }, backoff + 9000);
       } else {
-        setTimeout(function () {
+        rt = setTimeout(function () {
           if (S.status !== "lost") return;
           try { main = peer.connect(pid(gameId, S.code), { reliable: true }); wireMain(main); } catch (e) { giveUp(); return; }
-          setTimeout(function () { if (S.status === "lost") lost(); }, backoff + 7000);
+          rt = setTimeout(function () { if (S.status === "lost") lost(); }, backoff + 7000);
         }, backoff);
       }
     }
@@ -168,7 +168,8 @@
       peer.on("connection", function (conn) {
         if (!isHost) return;
         if (conn.label === "fast") { /* A3: fast nur vom verbundenen Gast, kein Hijack durch Fremde/Doppelte */
-          if (!main || !main.open || conn.peer !== main.peer || (fast && fast.open)) { try { conn.close(); } catch (e) {} return; }
+          if (!main || !main.open || conn.peer !== main.peer) { try { conn.close(); } catch (e) {} return; }
+          if (fast && fast !== conn) { try { fast.close(); } catch (e) {} } /* 🩹 Schwarm-P3: Zombie-fast vom selben Gast ersetzen — nach Reconnect blieb der Spam-Kanal sonst tot */
           fast = conn; wireFast(conn); return;
         }
         if (main) { try { conn.close(); } catch (e) {} return; } // Raum voll (1v1) — auch PENDING zählt als belegt (close/error geben den Slot frei)
@@ -178,6 +179,7 @@
         pInst.on("disconnected", function () { if (!byUs && pInst === peer) { try { pInst.reconnect(); } catch (e) {} } });
       })(peer);
       peer.on("error", function (err) {
+        if (byUs) return; /* 🩹 Schwarm-P2: nach close() darf kein Retry mehr booten (Zombie-Peer) */
       try { var _t = err && err.type; if (_t === "network" || _t === "server-error" || _t === "socket-error" || _t === "socket-closed") mpNextBroker(); } catch (e) {}
         var t = err && err.type;
         if (isHost && t === "unavailable-id") {

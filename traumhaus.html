@@ -147,7 +147,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 </div>
 <div id="hint"></div>
 <div id="wanted" style="position:fixed;top:calc(58px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:15;display:none;background:rgba(20,15,20,.82);border:2px solid #ff5a3a;border-radius:14px;padding:6px 14px;font-size:1.3rem;letter-spacing:3px;box-shadow:0 4px 16px rgba(255,90,40,.5)"></div>
-<div id="editBar" style="position:fixed;left:50%;transform:translateX(-50%);bottom:150px;z-index:16;display:none;display:none;flex-wrap:wrap;justify-content:center;gap:8px;background:rgba(255,253,248,.96);border:2px solid #b8a880;border-radius:16px;padding:8px 10px;box-shadow:0 8px 24px rgba(60,40,10,.25)">
+<div id="editBar" style="position:fixed;left:50%;transform:translateX(-50%);bottom:150px;z-index:16;display:none;flex-wrap:wrap;justify-content:center;gap:8px;background:rgba(255,253,248,.96);border:2px solid #b8a880;border-radius:16px;padding:8px 10px;box-shadow:0 8px 24px rgba(60,40,10,.25)">
   <span id="editName" style="align-self:center;font-weight:800;font-size:.85rem;color:#5a4a30;margin-right:4px"></span>
   <button class="ebtn" id="edMove" style="border:0;background:#e0ecf8;border-radius:10px;padding:12px 14px;min-height:44px;font-size:.85rem;cursor:pointer">↔️ Verschieben</button>
   <button class="ebtn" id="edRot" style="border:0;background:#e8f0dc;border-radius:10px;padding:12px 14px;min-height:44px;font-size:.85rem;cursor:pointer">🔄 Drehen</button>
@@ -2062,7 +2062,7 @@ var ACH=[
  ["autodieb","🚗","Autodieb","Ein fahrendes Auto geklaut",function(){return (stats.autosGeklaut||0)>=1;}],
  ["fluchtprofi","🏁","Fluchtprofi","Der Polizei entkommen",function(){return (stats.entkommen||0)>=1;}],
  ["umlackierer","🎨","Umlackierer","Auto in der Einfahrt versteckt (Fahndung getilgt)",function(){return (stats.lackiert||0)>=1;}],
- ["reich","🤑","Wohlhabend","10.000 § besessen",function(){return geld>=10000;}]
+ ["reich","🤑","Wohlhabend","10.000 $ besessen",function(){return geld>=10000;}]
 ];
 function hausWert(){var w=0;
   furn.forEach(function(f9){w+=Math.round(f9.def.cost*(1+0.6*((f9.lv||1)-1)));});
@@ -2327,7 +2327,7 @@ document.getElementById("edUp").onclick=function(){
   var lv0=f9.lv||1;
   if(lv0>=3){hint("⭐⭐ Ist schon Maximal-Stufe!");return;}
   var kost=Math.round(f9.def.cost*0.6);
-  if(geld<kost){hint("💰 Aufwerten kostet "+kost+" §");return;}
+  if(geld<kost){hint("💰 Aufwerten kostet "+kost+" $");return;}
   geld-=kost;geldSend();
   var gx=f9.gx,gy=f9.gy,rot=f9.rot,id=f9.id;
   if(f9.mesh)scene.remove(f9.mesh);if(f9.plight)scene.remove(f9.plight);
@@ -2394,7 +2394,7 @@ function onNetMsg(m){
   else if(m.t==="hide"&&!mpHost){if(m.on){hideSpiel={phase:"gast",t:0};
       var gh=document.getElementById("hideHud");gh.style.display="block";gh.textContent="🙈 VERSTECK DICH! Der Sucher kommt gleich …";
       hint("🙈 VERSTECK DICH! Du hast 20 Sekunden …");beep(600,.1,"sine",.05);}
-    else{hideSpiel=null;document.getElementById("hideHud").style.display="none";if(m.found){hint("🎉 Gefunden! +100 § — alle haben Spaß!");beep(880,.09,"square",.05);}}}
+    else{hideSpiel=null;document.getElementById("hideHud").style.display="none";if(m.found){hint("🎉 Gefunden! +100 $ — alle haben Spaß!");beep(880,.09,"square",.05);}}}
   else if(m.t==="mitfahrt"&&!mpHost)hint(m.on?"🚗👫 Du fährst als Beifahrer mit!":"🚶 Ausgestiegen — ihr seid wieder zu Fuß");
   else if(m.t==="brunnen"&&!mpHost){var B9=window._brunnen;if(B9)hearts(B9.x,B9.z);if(sims[m.si])simEmoji(sims[m.si],"✨");beep(720,.08,"sine",.04);hint("⛲ Erfrischung am Brunnen! +Laune");}
   else if(m.t==="pickup"&&pickups[m.i]){pickups[m.i].active=m.on;pickups[m.i].mesh.visible=m.on;}
@@ -2413,6 +2413,7 @@ function onNetMsg(m){
   else if(m.t==="uhr"&&!mpHost){uhrzeit=m.u;if(tag!==m.d){tag=m.d;applySaison();}}
   else if(m.t==="wetter"&&!mpHost)setWetter(m.w);
   else if(m.t==="kochBoost"&&mpHost){if(m.s>=0.999)stats.kochPerfekt=(stats.kochPerfekt||0)+1;kochApply(m.s);}
+  else if(m.t==="fisch"&&mpHost){stats.fische=(stats.fische||0)+1;} /* 🩹 Gast-Fang zählt beim Host für Quests/Team-Quests */
   else if(m.t==="tanzBoost"&&mpHost){if(m.s>=0.999)stats.tanzPerfekt=(stats.tanzPerfekt||0)+1;tanzApply(m.s);}
   else if(m.t==="quest"&&!mpHost)questIdx=m.i;
   else if(m.t==="teamq"&&!mpHost){teamIdx=m.i;}
@@ -2516,7 +2517,7 @@ function endeVerstecken(gefunden){
     sims.forEach(function(s2){s2.needs.spass=Math.min(100,s2.needs.spass+16);});
     if(mia)hearts(mia.x,mia.z);simEmoji(sims[0],"🎉");if(mia)simEmoji(mia,"😆");
     beep(880,.09,"square",.05);setTimeout(function(){beep(1170,.12,"square",.05);},90);
-    hint("🎉 GEFUNDEN! +100 § und alle haben Spaß!");updHUD();
+    hint("🎉 GEFUNDEN! +100 $ und alle haben Spaß!");updHUD();
     if(MPs)netSend({t:"hide",on:0,found:1});}}
 function updVerstecken(dt){
   if(!hideSpiel)return;
@@ -2550,7 +2551,7 @@ setTimeout(function bauePickups(){
 function collectPickup(i){var pk=pickups[i];if(!pk||!pk.active)return;pk.active=false;pk.mesh.visible=false;
   geld+=pk.reward;geldSend();updHUD();
   beep(880,.07,"square",.05);setTimeout(function(){beep(1180,.1,"square",.05);},80);
-  hint((pk.gift?"🎁 Geschenk":"💰 Münze")+" gefunden! +"+pk.reward+" §");
+  hint((pk.gift?"🎁 Geschenk":"💰 Münze")+" gefunden! +"+pk.reward+" $");
   if(pk.gift&&typeof hearts==="function")hearts(pk.x,pk.z);
   if(MPs)netSend({t:"pickup",i:i,on:false});
   setTimeout(function(){pk.active=true;pk.mesh.visible=true;if(MPs&&mpHost)netSend({t:"pickup",i:i,on:true});},90000);} // 90s statt 30s: Muenzen nicht farmbar, Jobs lohnen sich
@@ -2830,10 +2831,10 @@ function crimeScene(ok,job,betrag){
   var el=document.getElementById("romKiss");
   el.style.display="flex";
   if(ok){el.style.background="radial-gradient(circle at 50% 60%,rgba(20,60,20,.6),rgba(5,20,5,.92))";
-    document.getElementById("romTxt").innerHTML=job.e+" "+job.n+" GEGLÜCKT!<br>+"+betrag+" § Beute 🤑";
+    document.getElementById("romTxt").innerHTML=job.e+" "+job.n+" GEGLÜCKT!<br>+"+betrag+" $ Beute 🤑";
     [523,659,784,1046].forEach(function(fq,i){setTimeout(function(){beep(fq,.14,"triangle",.06);},i*140);});}
   else{el.style.background="repeating-linear-gradient(90deg,rgba(30,30,150,.75) 0 40px,rgba(150,30,30,.75) 40px 80px)";
-    document.getElementById("romTxt").innerHTML="🚓 ERWISCHT beim "+job.n+"!<br>−"+betrag+" § Strafe … das war knapp!";
+    document.getElementById("romTxt").innerHTML="🚓 ERWISCHT beim "+job.n+"!<br>−"+betrag+" $ Strafe … das war knapp!";
     [300,240,300,240].forEach(function(fq,i){setTimeout(function(){beep(fq,.22,"square",.06);},i*240);});}
   setTimeout(function(){el.style.display="none";
     el.style.background="radial-gradient(circle at 50% 60%,rgba(60,10,40,.55),rgba(20,5,15,.92))";},3800);}
@@ -2865,7 +2866,7 @@ function updBeete(dt){
           f3.wachs=0;f3.sprossen.forEach(function(sp6){sp6.scale.setScalar(0.05);sp6.material.color.setHex(0x3a8a3a);});
           var ertrag=35+skills.arbeit.lv*8;geld+=ertrag;stats.ernten++;geldSend();
           s5.needs.hunger=Math.min(100,s5.needs.hunger+12);
-          simEmoji(s5,"🥕");hint("🥕 Ernte! +"+ertrag+" §");updHUD();break;}}}
+          simEmoji(s5,"🥕");hint("🥕 Ernte! +"+ertrag+" $");updHUD();break;}}}
   }}
 function updAuto(dt){
   var a=window.autoRec;if(!a)return;
@@ -2980,7 +2981,7 @@ function autoFahr(dt){
     if(carAirY<=0&&carVY<0){carVY=0;
       if(carAirT>0.3){var pkt=(carAirT*80)|0;geld+=pkt;geldSend();stats.stunts=(stats.stunts||0)+1;updHUD();
         beep(760,.09,"square",.05);setTimeout(function(){beep(1020,.1,"square",.05);},80);
-        hint("🛹 AIRTIME "+carAirT.toFixed(1)+"s! +"+pkt+" §");}
+        hint("🛹 AIRTIME "+carAirT.toFixed(1)+"s! +"+pkt+" $");}
       carAirT=0;}}
   m.rotation.set(0,carRot,0);m.rotation.z=carLean;
   var _sn=document.getElementById("spNum"),_sb=document.getElementById("spBar");
@@ -3021,7 +3022,7 @@ function updLiefer(dt){
     var lohn=((80+liefer.t*3)*bonus)|0;
     geld+=lohn;geldSend();stats.lieferungen=(stats.lieferungen||0)+1;updHUD();
     hearts(liefer.x,liefer.z);beep(880,.09,"square",.05);setTimeout(function(){beep(1170,.12,"square",.05);},90);
-    hint("📦✅ Geliefert! +"+lohn+" §"+(bonus>1?" (Team-Bonus 👫)":""));
+    hint("📦✅ Geliefert! +"+lohn+" $"+(bonus>1?" (Team-Bonus 👫)":""));
     liefer=null;document.getElementById("lieferHud").style.display="none";return;}
   if(liefer.t<=0){liefer=null;document.getElementById("lieferHud").style.display="none";
     hint("⏱️ Zeit abgelaufen — Lieferung verpasst");beep(200,.25,"sawtooth",.05);}}
@@ -3067,7 +3068,7 @@ function updPolizei(dt,now){
     if(dist<3.2){pj.t+=dt;if(pj.t>1.2){
       var busse=Math.min(geld,200+wanted*150+(skills.krimi.lv||0)*60);geld-=busse;geldSend();updHUD();
       if(fahren)aussteigen();
-      hint("🚔 Geschnappt! Busse: −"+busse+" § (Fahndung "+wanted+"⭐)");
+      hint("🚔 Geschnappt! Busse: −"+busse+" $ (Fahndung "+wanted+"⭐)");
       polizei.forEach(function(p){scene.remove(p.mesh);});polizei=[];wanted=0;updWantedHUD();return;}}else pj.t=0;}
   // Entkommen: alle weit weg für 8 s → Fahndung sinkt um 1 Stern
   if(minDist>55){wantedEntkomm+=dt;if(wantedEntkomm>8){
@@ -3093,7 +3094,7 @@ function updWork(dt){
       if(i>0){s2.state="idle";s2.mesh.visible=true;s2.x=cx(2+i*2);s2.z=cz(GH-1);s2.pose="stand";}
       s2.needs.hunger=Math.max(10,s2.needs.hunger-18);s2.needs.energie=Math.max(10,s2.needs.energie-20);
       simEmoji(s2,"💰");});
-    hint("💰 Feierabend! +"+lohn+" § Gehalt (Karriere-Lv "+skills.arbeit.lv+")");
+    hint("💰 Feierabend! +"+lohn+" $ Gehalt (Karriere-Lv "+skills.arbeit.lv+")");
     geldSend();
     updHUD();}
 }
@@ -3206,7 +3207,7 @@ var QUESTS=[
  ["auto","🚗","Kauf ein Auto für die Familie",400,function(){return !!window.autoRec;}],
  ["hochzeit","💍","Feiere eine Hochzeit im Ort",500,function(){return verheiratet;}],
  ["karriere","💼","Erreiche Karriere-Level 3",600,function(){return skills.arbeit.lv>=3;}],
- ["villa","🏰","Steigere den Haus-Wert auf 8000 §",800,function(){return hausWert()>=8000;}]
+ ["villa","🏰","Steigere den Haus-Wert auf 8000 $",800,function(){return hausWert()>=8000;}]
 ];
 // Endlose, mitskalierende Stadt-Auftraege nach dem festen Pool — das Spiel geht "ewig".
 // Jede Vorlage nimmt eine Basislinie (b) der kumulativen Stats + ein mit n wachsendes Ziel.
@@ -3214,7 +3215,7 @@ var PQ_TPL=[
  function(n,b){var t=3+n*2;return {e:"🎣",tx:"Fang "+t+" Fische fürs Dorffest",rw:300+n*120,ok:function(){return (stats.fische||0)-b.fische>=t;}};},
  function(n,b){var t=2+n;return {e:"🪑",tx:"Stelle "+t+" neue Möbelstücke auf",rw:280+n*110,ok:function(){return furn.length-b.furn>=t;}};},
  function(n,b){var t=2+n;return {e:"🥕",tx:"Verkaufe "+t+" Ernten am Markt",rw:320+n*130,ok:function(){return (stats.growSold||0)-b.grow>=t;}};},
- function(n,b){var t=Math.round((hausWert()+geld+n*1500+2500)/500)*500;return {e:"💎",tx:"Steigere dein Vermögen auf "+t+" §",rw:400+n*160,ok:function(){return hausWert()+geld>=t;}};},
+ function(n,b){var t=Math.round((hausWert()+geld+n*1500+2500)/500)*500;return {e:"💎",tx:"Steigere dein Vermögen auf "+t+" $",rw:400+n*160,ok:function(){return hausWert()+geld>=t;}};},
  function(n,b){var t=1+Math.ceil((n+1)/2);return {e:"🛹",tx:"Lande "+t+" Auto-Stunts",rw:260+n*120,ok:function(){return (stats.stunts||0)-b.stunts>=t;}};},
  function(n,b){var t=1+Math.ceil((n+1)/2);return {e:"📦",tx:"Erledige "+t+" Lieferungen",rw:300+n*140,ok:function(){return (stats.lieferungen||0)-b.liefer>=t;}};}
 ];
@@ -3226,8 +3227,8 @@ function ensurePQ(){
   window._pq={idx:questIdx,e:tpl.e,tx:tpl.tx,rw:tpl.rw,ok:tpl.ok};
 }
 function questTxt(){
-  if(questIdx<QUESTS.length)return QUESTS[questIdx][1]+" "+QUESTS[questIdx][2]+" → "+QUESTS[questIdx][3]+" §";
-  ensurePQ();return window._pq.e+" "+window._pq.tx+" → "+window._pq.rw+" §";}
+  if(questIdx<QUESTS.length)return QUESTS[questIdx][1]+" "+QUESTS[questIdx][2]+" → "+QUESTS[questIdx][3]+" $";
+  ensurePQ();return window._pq.e+" "+window._pq.tx+" → "+window._pq.rw+" $";}
 function checkQuest(){
   if(questBusy)return;
   var erfuellt;
@@ -3244,10 +3245,10 @@ var TEAMQ=[
  ["💃","Legt 2 perfekte Tanz-Sessions hin",300,function(){return stats.tanzPerfekt||0;},2],
  ["🥕","Fahrt zusammen 6 Ernten ein",400,function(){return stats.ernten;},6],
  ["😮","Macht 10 Emotes zusammen",200,function(){return window._emoteCount||0;},10],
- ["💰","Verdient als Paar 4000 § dazu",500,function(){return teamBasis===null?0:Math.max(0,geld-teamBasis+ (window._teamGeldBonus||0));},4000],
+ ["💰","Verdient als Paar 4000 $ dazu",500,function(){return teamBasis===null?0:Math.max(0,geld-teamBasis+ (window._teamGeldBonus||0));},4000],
  ["🎖️","Erfüllt 3 Stadt-Aufträge",600,function(){return stats.quests||0;},3]];
 function teamProg(){var q=TEAMQ[teamIdx%TEAMQ.length];return Math.min(q[4],q[3]());}
-function teamTxt(){var q=TEAMQ[teamIdx%TEAMQ.length];return q[0]+" "+q[1]+"  ("+teamProg()+"/"+q[4]+")  → +"+q[2]+" §";}
+function teamTxt(){var q=TEAMQ[teamIdx%TEAMQ.length];return q[0]+" "+q[1]+"  ("+teamProg()+"/"+q[4]+")  → +"+q[2]+" $";}
 function checkTeamQ(){
   if(!MPs||!mpHost)return; // nur echte Koop-Runde, Host prüft
   var q=TEAMQ[teamIdx%TEAMQ.length];
@@ -3255,7 +3256,7 @@ function checkTeamQ(){
   if(q[3]()>=q[4]){
     geld+=q[2];geldSend();window._teamGeldBonus=0; // Belohnung syncen, Bonus-Inflation stoppen
     teamIdx++;teamBasis=geld;
-    hint("🤝 Team-Aufgabe geschafft! +"+q[2]+" § — Neu: "+teamTxt());
+    hint("🤝 Team-Aufgabe geschafft! +"+q[2]+" $ — Neu: "+teamTxt());
     netSend({t:"teamq",i:teamIdx});
     beep(700,.1,"triangle",.06);setTimeout(function(){beep(980,.14,"triangle",.07);},130);}}
 
@@ -3288,8 +3289,8 @@ function npcAct(n){
   for(var i2=0;i2<sims.length;i2++)if(sims[i2].mesh.visible&&Math.hypot(sims[i2].x-n.x,sims[i2].z-n.z)<6)nah=sims[i2];
   if(n.typ==="postbote"){
     var r=Math.random();
-    if(r<0.34){var betrag=20+((Math.random()*30)|0);geld=Math.max(0,geld-betrag);hint("📬 Post: eine RECHNUNG … −"+betrag+" §");npcEmoji(n,"🧾");}
-    else if(r<0.67){var g2=30+((Math.random()*50)|0);geld+=g2;hint("📬 Post: ein Geschenk von Oma! +"+g2+" §");npcEmoji(n,"🎁");}
+    if(r<0.34){var betrag=20+((Math.random()*30)|0);geld=Math.max(0,geld-betrag);hint("📬 Post: eine RECHNUNG … −"+betrag+" $");npcEmoji(n,"🧾");}
+    else if(r<0.67){var g2=30+((Math.random()*50)|0);geld+=g2;hint("📬 Post: ein Geschenk von Oma! +"+g2+" $");npcEmoji(n,"🎁");}
     else{sims.forEach(function(s3){s3.needs.spass=Math.min(100,s3.needs.spass+8);});liebe=Math.min(100,liebe+4);
       hint("📬 Post: ein Liebesbrief 💌");npcEmoji(n,"💌");hearts(n.x,n.z);}
     geldSend();}
@@ -3298,7 +3299,7 @@ function npcAct(n){
     if(nah){nah.needs.spass=Math.min(100,nah.needs.spass+10);simEmoji(nah,"😄");}}
   else if(n.typ==="haendler"){
     if(geld>=100&&Math.random()<0.8){geld-=100;var wert=40+((Math.random()*210)|0);geld+=wert;
-      hint("🛒 Überraschungskiste gekauft (100 §) … enthielt "+wert+" §"+(wert>100?" — Gewinn! 🎉":" 😅"));
+      hint("🛒 Überraschungskiste gekauft (100 $) … enthielt "+wert+" $"+(wert>100?" — Gewinn! 🎉":" 😅"));
       npcEmoji(n,wert>100?"🤑":"📦");geldSend();}
     else{hint("🛒 Der fliegende Händler zieht weiter …");npcEmoji(n,"👋");}}
   else if(n.typ==="polizist"){
@@ -3308,7 +3309,7 @@ function npcAct(n){
     if(questBusy){
       var rw=questIdx<QUESTS.length?QUESTS[questIdx][3]:(ensurePQ(),window._pq.rw);
       geld+=rw;stats.quests=(stats.quests||0)+1;questIdx++;questBusy=false;window._pq=null;
-      hint("🎖️ Bürgermeister: „Großartig!“ +"+rw+" § — Neuer Auftrag: "+questTxt());
+      hint("🎖️ Bürgermeister: „Großartig!“ +"+rw+" $ — Neuer Auftrag: "+questTxt());
       npcEmoji(n,"💰");beep(700,.1,"triangle",.06);setTimeout(function(){beep(940,.16,"triangle",.07);},140);
       geldSend();netSend({t:"quest",i:questIdx});}
     else{hint("🏛️ Der Bürgermeister schaut nur kurz vorbei.");npcEmoji(n,"👋");}}
@@ -3339,9 +3340,9 @@ function updNpcs(dt,now){
     if(hh>=8&&hh<12)pool.push("postbote","postbote");
     if(hh>=13&&hh<18){pool.push("nachbarin","haendler");if(kinder.length)pool.push("nachbarskind","nachbarskind");}
     pool.push("katze");
-    if(polizeiPending){pool=["polizist"];polizeiPending=false;}
-    else if(buergermeisterPending){pool=["buergermeister"];buergermeisterPending=false;}
-    if(pool.length&&npcs.length<2)spawnNpc(pool[(Math.random()*pool.length)|0]);}
+    var _amt=polizeiPending?"polizist":(buergermeisterPending?"buergermeister":null); /* 🩹 Schwarm-P1: Amts-NPCs umgehen das <2-Gate; Flag fällt erst NACH echtem Spawn — sonst friert die Quest-Kette ein (questBusy bleibt true) */
+    if(_amt){if(spawnNpc(_amt)){if(_amt==="polizist")polizeiPending=false;else buergermeisterPending=false;}}
+    else if(pool.length&&npcs.length<2)spawnNpc(pool[(Math.random()*pool.length)|0]);}
   for(var i=npcs.length-1;i>=0;i--){var n=npcs[i];
     n.walkT+=dt*8;
     if(n.state==="enter"){
@@ -3726,8 +3727,8 @@ function angelResult(ms){
   if(ms<0){txt="💨 Weg ist er … zu langsam!";beep(220,.2,"sawtooth",.05);}
   else{var fi=ms<FISCHE[0][2]?FISCHE[0]:(ms<FISCHE[1][2]?FISCHE[1]:FISCHE[2]);
     ANGEL.fang++;ANGEL.geldSum+=fi[1];
-    stats.fische=(stats.fische||0)+1;
-    txt=fi[0]+"! +"+fi[1]+" § ("+ms+" ms)";beep(880,.14,"triangle",.06);}
+    if(MPs&&!mpHost)netSend({t:"fisch"});else stats.fische=(stats.fische||0)+1; /* 🩹 Schwarm-P1: Gast meldet Fang an Host — lokale Stats werden vom love-Broadcast überschrieben */
+    txt=fi[0]+"! +"+fi[1]+" $ ("+ms+" ms)";beep(880,.14,"triangle",.06);}
   document.getElementById("angelSub").textContent=txt;
   document.getElementById("angelIcon").textContent=ms<0?"🌊":"🎣";
   ANGEL.phase="pause";ANGEL.round++;
@@ -3740,7 +3741,7 @@ function angelEnd(){
   if(ANGEL.geldSum>0){geld+=ANGEL.geldSum;geldSend();updHUD();}
   sims.forEach(function(s2){s2.needs.spass=Math.min(100,s2.needs.spass+8+ANGEL.fang*4);});
   window._angelCd=uhrzeit;
-  hint(ANGEL.fang>0?"🎣 "+ANGEL.fang+" Fisch"+(ANGEL.fang>1?"e":"")+" gefangen · +"+ANGEL.geldSum+" §":"🌊 Heute beißt nichts …");}
+  hint(ANGEL.fang>0?"🎣 "+ANGEL.fang+" Fisch"+(ANGEL.fang>1?"e":"")+" gefangen · +"+ANGEL.geldSum+" $":"🌊 Heute beißt nichts …");}
 document.getElementById("angelZieh").onclick=function(){
   if(!ANGEL.on)return;
   if(ANGEL.phase==="biss"){var ms=Math.round(performance.now()-ANGEL.t0);ANGEL.phase="done";angelResult(ms);}
@@ -3808,7 +3809,7 @@ function taschendieb(n9){
   if(n9.bestohlen){hint("👀 Der passt jetzt auf seine Taschen auf!");return;}
   if(n9.typ==="polizist"){
     var str9=Math.min(geld,80);geld-=str9;geldSend();updHUD();
-    hint("👮 Beim POLIZISTEN?! Busse: −"+str9+" §");
+    hint("👮 Beim POLIZISTEN?! Busse: −"+str9+" $");
     npcEmoji(n9,"🚨");beep(240,.2,"sawtooth",.06);return;}
   n9.bestohlen=true;
   mgStart("🤏 Taschendiebstahl","Ruhige Hand — dreimal sauber treffen, sonst fliegst du auf!",function(avg){
@@ -3817,13 +3818,13 @@ function taschendieb(n9){
       geld+=beute9;stats.diebstahl=(stats.diebstahl||0)+1;skillXp("krimi",1);
       geldSend();updHUD();
       if(Math.random()<0.12){polizeiPending=true;wantedPlus(1);npcTimer=Math.min(npcTimer,5);
-        hint("🤏 +"+beute9+" § … aber jemand hat es GESEHEN! 🚨");}
-      else hint("🤏 Zack — Portemonnaie! +"+beute9+" § (unbemerkt)");
+        hint("🤏 +"+beute9+" $ … aber jemand hat es GESEHEN! 🚨");}
+      else hint("🤏 Zack — Portemonnaie! +"+beute9+" $ (unbemerkt)");
       npcEmoji(n9,"❓");sims.forEach(function(s9){simEmoji(s9,"🤫");});}
     else{
       polizeiPending=true;npcTimer=Math.min(npcTimer,4);
       var str8=Math.min(geld,60+skills.krimi.lv*20);geld-=str8;geldSend();updHUD();
-      hint("💢 Erwischt! "+(n9.typ==="nachbarin"?"Frau Krause":"Das Opfer")+" ruft die Polizei … −"+str8+" §");
+      hint("💢 Erwischt! "+(n9.typ==="nachbarin"?"Frau Krause":"Das Opfer")+" ruft die Polizei … −"+str8+" $");
       npcEmoji(n9,"😠");beep(220,.25,"sawtooth",.06);}});}
 function mgStart(title,sub,cb){
   MG.on=true;MG.round=0;MG.scores=[];MG.cb=cb;MG.speed=1.5;
@@ -3856,7 +3857,7 @@ document.getElementById("achBtn").onclick=function(){
     lst.appendChild(d3);});
   document.getElementById("questTxt").innerHTML=(MPs?"🤝 <b>Koop-Team-Aufgabe:</b> "+teamTxt()+"<br>":"")+"📜 <b>Stadt-Auftrag:</b> "+questTxt();
   var w2=hausWert();
-  document.getElementById("hausWertTxt").textContent=prestigeName(w2)+" · "+w2+" § · "+done+"/"+ACH.length;
+  document.getElementById("hausWertTxt").textContent=prestigeName(w2)+" · "+w2+" $ · "+done+"/"+ACH.length;
   document.getElementById("achPanel").style.display="flex";};
 document.getElementById("achClose").onclick=function(){document.getElementById("achPanel").style.display="none";};
 var hintT=null;
@@ -3872,7 +3873,7 @@ function renderPalette(){
   var it=document.getElementById("palItems");it.innerHTML="";
   var liste=curCat==="alle"?Object.keys(KATALOG).reduce(function(a,k){return a.concat(KATALOG[k]);},[]):KATALOG[curCat];
   liste.forEach(function(d){var b=document.createElement("button");b.className="pitem"+(d.id===curItem?" on":"");
-    b.innerHTML="<div class='pe'>"+d.e+"</div><div class='pn'>"+d.n+"</div><div class='pp'>"+d.cost+" §</div>";
+    b.innerHTML="<div class='pe'>"+d.e+"</div><div class='pn'>"+d.n+"</div><div class='pp'>"+d.cost+" $</div>";
     b.onclick=function(){curItem=d.id;delMode=false;editHide();document.getElementById("delBtn").classList.remove("on");renderPalette();refreshGhost();};
     it.appendChild(b);});}
 var curCat="bau";
@@ -3891,10 +3892,10 @@ document.getElementById("growBtn").onclick=function(){
     var ok2=Math.random()<0.5+avg*0.35+lv2*0.05;
     f5.wachs=0;f5.krauts.forEach(function(kr3){kr3.scale.setScalar(0.06);});
     if(ok2){var erloes=Math.round((180+Math.random()*160)*(1+lv2*0.3));geld+=erloes;stats.growSold++;
-      hint("🌿 Diskret verkauft: +"+erloes+" § … pssst!");skillXp("krimi",2);
+      hint("🌿 Diskret verkauft: +"+erloes+" $ … pssst!");skillXp("krimi",2);
       sims.forEach(function(s6){simEmoji(s6,"🤫");});}
     else{polizeiPending=true;var str2=Math.min(geld,150+lv2*40);geld-=str2;
-      hint("🚔 Aufgeflogen! Ernte beschlagnahmt, −"+str2+" § Strafe");
+      hint("🚔 Aufgeflogen! Ernte beschlagnahmt, −"+str2+" $ Strafe");
       skillXp("krimi",1);
       sims.forEach(function(s7){s7.needs.spass=Math.max(5,s7.needs.spass-20);simEmoji(s7,"😰");});}
     geldSend();updHUD();});};
@@ -3909,7 +3910,7 @@ document.getElementById("buskBtn").onclick=function(){
     sims.forEach(function(s2){s2.needs.spass=Math.min(100,s2.needs.spass+10);});
     window._buskHeute=(window._buskTag===tag?(window._buskHeute||0):0)+1;window._buskTag=tag;
     if(avg>=0.99)stats.buskPerfekt++;
-    hint(avg>=0.8?("🎉 Die Menge tobt! +"+verdienst+" § Trinkgeld"):(avg>0.3?("🎵 Solide Show: +"+verdienst+" §"):("😅 Schräge Töne … trotzdem +"+verdienst+" §")));
+    hint(avg>=0.8?("🎉 Die Menge tobt! +"+verdienst+" $ Trinkgeld"):(avg>0.3?("🎵 Solide Show: +"+verdienst+" $"):("😅 Schräge Töne … trotzdem +"+verdienst+" $")));
     simEmoji(sims[0],"🎸");simEmoji(sims[1],"🎤");hearts(sims[0].x,sims[0].z);
     updHUD();});};
 document.getElementById("crimeBtn").onclick=function(){
@@ -3919,7 +3920,7 @@ document.getElementById("crimeBtn").onclick=function(){
   for(var i=0;i<=maxJob;i++){(function(ji){var c=CRIMES[ji];
     var b=document.createElement("button");
     b.style.cssText="border:0;border-radius:12px;padding:13px 14px;font-weight:800;cursor:pointer;font-size:.95rem;color:#fff;background:linear-gradient(90deg,#5a3a6e,#8a4a8e);text-align:left;min-height:44px;box-shadow:0 4px 12px rgba(60,30,80,.3)";
-    b.innerHTML=c.e+" "+c.n+" <span style='float:right;color:#ffd9a0;font-weight:900'>~"+Math.round(c.base*(1+lv*0.4))+" §</span>";
+    b.innerHTML=c.e+" "+c.n+" <span style='float:right;color:#ffd9a0;font-weight:900'>~"+Math.round(c.base*(1+lv*0.4))+" $</span>";
     b.onclick=function(){document.getElementById("crimeWahl").style.display="none";crimeGo(ji);};
     box.appendChild(b);})(i);}
   document.getElementById("crimeWahl").style.display="flex";};
@@ -3965,7 +3966,7 @@ var MUS=new Audio("/audio/premium.mp3");MUS.loop=true;MUS.volume=0.22;MUS.preloa
 
 // ===================== Start / Netz-Lobby =====================
 var SAVE="th_save1";
-function saveGame(){if(MPs)return;try{localStorage.setItem(SAVE,JSON.stringify(snapshot()));}catch(e){}}
+function saveGame(){if(MPs&&!mpHost)return;try{localStorage.setItem(MPs?"th_save_coop":SAVE,JSON.stringify(snapshot()));}catch(e){}} /* 🩹 Schwarm-P1: Host sichert Koop-Haus unter eigenem Slot — vorher zerstörte EIN Reload alles */
 function startGame(){
   running=true;
   document.getElementById("start").classList.add("hide");
@@ -3978,7 +3979,7 @@ function startGame(){
       n8=st8.d===gest.toDateString()?st8.n+1:1;}
     if(n8>0){localStorage.setItem("th_streak",JSON.stringify({d:heute,n:n8}));
       var bon8=Math.min(40*n8,280);geld+=bon8;geldSend();updHUD();
-      var txt8=n8>1?"🔥 Tag-"+n8+"-Serie! Treue-Bonus +"+bon8+" §":"👋 Willkommen! Tages-Bonus +"+bon8+" §";
+      var txt8=n8>1?"🔥 Tag-"+n8+"-Serie! Treue-Bonus +"+bon8+" $":"👋 Willkommen! Tages-Bonus +"+bon8+" $";
       setTimeout(function(){if(running)hint(txt8);},4500);}
   }catch(e){}}setTimeout(function(){if(running&&questIdx===0&&!questBusy)hint("📜 Stadt-Auftrag vom Bürgermeister: "+questTxt());},9000);document.getElementById("zoomBtns").style.display="flex";
   if(MPs){document.getElementById("chatToggle").style.display="block";document.getElementById("netBadge").style.display="block";document.getElementById("piBar").style.display="flex";}
@@ -3989,7 +3990,9 @@ function startGame(){
     if(_ic){_ic.style.display="flex";document.getElementById("introOk").onclick=function(){_ic.style.display="none";try{localStorage.setItem("th_intro_seen","1");}catch(e){}};}}}catch(e){}
   hint("🔨 Bauen antippen — dann Boden legen, Wände ziehen, Möbel stellen!");}
 document.getElementById("soloBtn").onclick=function(){
-  try{var sv=localStorage.getItem(SAVE);if(sv)loadSnapshot(JSON.parse(sv));}catch(e){}
+  try{var sv=localStorage.getItem(SAVE);
+    if(sv){try{localStorage.setItem(SAVE+"_bak",sv);}catch(_){} /* 🩹 Schwarm-P1: rollendes Backup — kaputter Save wurde sonst still vom 6s-Autosave überschrieben */
+      try{loadSnapshot(JSON.parse(sv));}catch(e2){alert("⚠️ Spielstand beschädigt — starte frisch. Backup liegt unter th_save1_bak.");}}}catch(e){}
   applySaison();rollWetter();
   startGame();};
 function mpLobbyFehler(msg){
@@ -4005,6 +4008,7 @@ document.getElementById("mpBackBtn").onclick=function(){
 document.getElementById("hostBtn").onclick=function(){
   if(typeof MP==="undefined"){alert("Online-Modul nicht geladen");return;}
   myName=(document.getElementById("mpName").value.trim()||"Host").slice(0,12);
+  try{var cs=localStorage.getItem("th_save_coop");if(cs)loadSnapshot(JSON.parse(cs));}catch(e){} /* 🩹 Schwarm-P1: gemeinsames Haus überlebt jetzt einen Host-Reload */
   MPs=MP.host("traumhaus");mpHost=true;window._roomCode=MPs.code;
   document.getElementById("netSetup").style.display="none";
   document.getElementById("mpLobby").style.display="block";
@@ -4012,6 +4016,7 @@ document.getElementById("hostBtn").onclick=function(){
   MPs.onMessage(onNetMsg);
   MPs.onStatus(function(st){
     document.getElementById("mpStatus").textContent={waiting:"Warte auf Mitspieler …",connected:"Verbunden! Spiel startet …",lost:"Verbindung verloren — versuche Reconnect …",closed:"Verbindung beendet"}[st]||st;
+    if(st==="waiting"){document.getElementById("mpCodeShow").textContent=MPs.code;window._roomCode=MPs.code;} /* 🩹 Schwarm-P3: Code kann nach ID-Kollision neu gewürfelt sein */
     if(st==="connected"&&!running)startGame();
     document.getElementById("mpBackBtn").style.display=(st==="closed")?"inline-block":"none";
     document.getElementById("netBadge").style.background=st==="connected"?"rgba(90,150,90,.9)":"rgba(190,90,60,.9)";});
@@ -4116,7 +4121,9 @@ function loop(now){
     document.getElementById("hideBtn").style.display=(running&&!buildMode&&!fahren&&MPs&&mpHost)?"block":"none"; // nur im Koop (Solo-Verstecken war "doof")
     if(MPs&&!mpHost){steerNetT-=dt;
       if(steerNetT<=0){steerNetT=0.09;var act9=steerActive();
-        if(act9||steerWasActive){netFast({t:"steer",x:act9?steer.x:0,z:act9?steer.z:0});steerWasActive=act9;}}}
+        if(act9||steerWasActive){netFast({t:"steer",x:act9?steer.x:0,z:act9?steer.z:0});steerWasActive=act9;}}
+      window._thHbT=(window._thHbT||0)-dt; /* 🩹 Schwarm-P1: Keepalive alle 2s — der 6s-Watchdog in mp.js trennte idle Gäste */
+      if(window._thHbT<=0){window._thHbT=2;netSend({t:"hb"});}}
     simTick+=dt;if(simTick>0.35){simTick=0;updHUD();if(!MPs||mpHost){checkAch();checkQuest();checkTeamQ();}
       if(MPs&&mpHost)netFast({t:"sims",ca:(fahren&&driveCar?{x:driveCar.mesh.position.x,z:driveCar.mesh.position.z,r:carRot,vi:verkehr.indexOf(driveCar)}:null),a:sims.map(function(s){return {x:s.x,z:s.z,r:s.rot,p:s.pose,nd:s.needs,v:s.mesh.visible};}),k:kinder.map(function(k){return {x:k.x,z:k.z,r:k.rot,b:k.baby,n:k.name};}),np:npcs.map(function(n){return {t:n.typ,x:n.x,z:n.z,r:n.rot};})});
       if(MPs&&mpHost){netTick++;if(netTick%8===0){netSend({t:"uhr",u:uhrzeit,d:tag});
