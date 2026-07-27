@@ -394,8 +394,8 @@ def wippe():
     for s in (-1, 1):
         cy = s*(LY - 0.22)
         cz = PZ + s*(LY - 0.22)*math.tan(th)
-        o = box(0, cy, cz + 0.11, 0.40, 0.44, 0.06, SITZ); o.rotation_euler[0] = th
-        o = box(0, cy - s*0.24, cz + 0.16, 0.34, 0.06, 0.16, SITZ); o.rotation_euler[0] = th
+        o = box(0, cy, cz + 0.10, 0.34, 0.40, 0.05, SITZ); o.rotation_euler[0] = th
+        o = box(0, cy - s*0.21, cz + 0.15, 0.30, 0.05, 0.14, SITZ); o.rotation_euler[0] = th
         gy = s*(LY - 0.62)
         gz = PZ + s*(LY - 0.62)*math.tan(th)
         for ox in (-0.16, 0.16):                     # Griffbuegel vor dem Sitz
@@ -403,8 +403,8 @@ def wippe():
         o = zyl(0, gy, gz + 0.44, 0.028, 0.38, GRIF, 10, rot=(0, math.pi/2, 0))
         o.rotation_euler[0] = th
         # Gummipuffer unter beiden Enden; das tiefe Ende sitzt darauf auf
-        zyl(0, s*LY, 0.08, 0.24, 0.16, GUMM, 14)
-        zyl(0, s*LY, 0.16, 0.14, 0.04, GUMM, 12)
+        zyl(0, s*LY, 0.07, 0.21, 0.14, GUMM, 14)
+        zyl(0, s*LY, 0.155, 0.13, 0.03, GUMM, 12)
     export("th16_wippe", 0.014, 2)
 
 # ================================================================ 5) Kinderkarussell
@@ -642,13 +642,13 @@ def basketballplatz():
         by = s*(CY - 0.68)                                           # Brettebene
         box(0, by, Z + 3.42, 1.80, 0.08, 1.05, BRET)                 # Brett 2.90..3.95
         box(0, by - s*0.05, Z + 3.30, 0.62, 0.03, 0.46, RING)        # Zielfeld
-        box(0, by - s*0.09, Z + 2.93, 0.24, 0.12, 0.05, RING)        # Ringtraeger
+        box(0, by - s*0.09, Z + 2.908, 0.24, 0.12, 0.05, RING)       # Ringtraeger
         ry = by - s*0.32
-        torus(0, ry, Z + 2.93, 0.225, 0.022, RING, 16, 6)            # Ring, Oberkante 3.05
+        torus(0, ry, Z + 2.908, 0.225, 0.022, RING, 16, 6)           # Ring: OK exakt 3.050
         for i in range(8):                                           # Netz
             a = i/8*TAU
-            strebe((math.cos(a)*0.225, ry + math.sin(a)*0.225, Z + 2.93),
-                   (math.cos(a)*0.11, ry + math.sin(a)*0.11, Z + 2.53), 0.018, NETZ)
+            strebe((math.cos(a)*0.225, ry + math.sin(a)*0.225, Z + 2.908),
+                   (math.cos(a)*0.11, ry + math.sin(a)*0.11, Z + 2.51), 0.018, NETZ)
         for i in range(8):
             a = (i + 0.5)/8*TAU
             zyl(math.cos(a)*0.17, ry + math.sin(a)*0.17, Z + 2.72, 0.016, 0.10, NETZ, 6,

@@ -837,11 +837,11 @@ def kletterhalle():
     # Bouldermatten
     for k in range(9):
         box(-11.0 + k*2.6, -T/2 + 2.0, FB + 0.20, 2.5, 2.4, 0.40, MAT1 if k % 2 else MAT2)
-    for k in range(6):
-        box(-B/2 + 1.9, -6.5 + k*2.6, FB + 0.20, 2.4, 2.5, 0.40, MAT2 if k % 2 else MAT1)
+    for k in range(5):                              # ab y=-5.0, sonst ueberlappen sie
+        box(-B/2 + 1.9, -5.0 + k*2.6, FB + 0.20, 2.4, 2.5, 0.40, MAT2 if k % 2 else MAT1)
     box(3.0, 2.0, FB + 0.20, 9.4, 8.4, 0.40, MAT1)
-    for k in range(2):                              # k=2 laege im Treppenlauf
-        box(B/2 - 1.9, -6.5 + k*2.6, FB + 0.20, 2.4, 2.5, 0.40, MAT2)
+    for k in range(2):                              # weiter noerdlich laege der Treppenlauf
+        box(B/2 - 1.9, -5.6 + k*2.6, FB + 0.20, 2.4, 2.5, 0.40, MAT2)
     # Sicherungsseile mit Umlenkung ganz oben
     for i in range(8):
         px = -10.5 + i*3.0
@@ -944,11 +944,13 @@ def tennishalle():
         for s in (-1, 1):
             zyl(0, cy + s*(CW/2 + 0.914), FB + 0.585, 0.06, 1.17, STAH, 12)
             zyl(0, cy + s*(CW/2 + 0.914), FB + 1.19, 0.08, 0.06, CHR, 12)
-        box(0, cy, FB + 0.50, 0.05, CW + 1.83, 0.92, NETZ)
-        box(0, cy, FB + 0.945, 0.07, CW + 1.83, 0.07, BAND)
-        box(0, cy, FB + 0.05, 0.10, 0.10, 0.92, BAND)             # Mittelgurt
+        # Netzkante 0.914 m ueber dem Boden — Unterkante sitzt AUF dem Belag,
+        # nicht darunter (sonst rutscht die Modell-Unterkante unter z=0).
+        box(0, cy, FB + 0.457, 0.05, CW + 1.83, 0.914, NETZ)
+        box(0, cy, FB + 0.914, 0.07, CW + 1.83, 0.07, BAND)
+        box(0, cy, FB + 0.457, 0.10, 0.10, 0.914, BAND)           # Mittelgurt
         for k in range(6):
-            box(0, cy + (k - 2.5)*1.9, FB + 0.50, 0.06, 0.05, 0.92, BAND)
+            box(0, cy + (k - 2.5)*1.9, FB + 0.457, 0.06, 0.05, 0.914, BAND)
 
     platz(5.3); platz(-5.3)
     # Trennnetz zwischen den Plaetzen

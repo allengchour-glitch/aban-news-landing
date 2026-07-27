@@ -183,21 +183,28 @@ def drehgestell(cy, m_rahm, m_rad, m_stahl, achs=2.70, r=0.575, br=0.135):
 
 
 def stromabnehmer(cy, zdach, m_rahm, m_iso, m_schleif, ztop=PANT, breite=1.90):
-    """Einarm-Stromabnehmer. Schleifstueck-Oberkante exakt auf `ztop`."""
-    box(0, cy, zdach + 0.06, 2.10, 1.50, 0.12, m_rahm)                      # Grundrahmen
-    for sx in (-0.86, 0.86):
-        for dy in (-0.56, 0.56):
-            zyl(sx, cy + dy, zdach + 0.24, 0.085, 0.26, m_iso, 10)          # Isolatoren
-    zb = zdach + 0.37
-    zk = zb + 0.62 * (ztop - 0.10 - zb)
+    """Einarm-Stromabnehmer, Schleifstueck-Oberkante exakt auf `ztop`.
+    Jedes Gelenk bekommt ein Querrohr und jeder Arm einen Lagerbock — ohne die
+    schweben die Arme frei ueber dem Grundrahmen (erste Fassung sah aus wie
+    hingeworfene Staebe)."""
+    box(0, cy, zdach + 0.07, 2.10, 1.50, 0.14, m_rahm)                      # Grundrahmen
+    zb = zdach + 0.40                                                       # Drehachse
+    for sx in (-0.78, 0.78):
+        for dy in (-0.58, 0.58):
+            zyl(sx, cy + dy, zdach + 0.26, 0.09, 0.24, m_iso, 10)           # Isolatoren
+        box(sx, cy - 0.58, zb - 0.14, 0.20, 0.20, 0.32, m_rahm)             # Lagerbock
+    zyl(0, cy - 0.58, zb, 0.075, 1.80, m_rahm, 12, rot=(0, math.pi / 2, 0))
+    zk = zb + 0.60 * (ztop - 0.16 - zb)
     for sx in (-0.62, 0.62):                                                # Unterarm (V)
-        strebe(cy - 0.60, zb, cy + 0.78, zk, 0.085, m_rahm, sx, 0.085)
-    strebe(cy + 0.78, zk, cy - 0.40, ztop - 0.12, 0.075, m_rahm, 0.0, 0.075)  # Oberarm
-    strebe(cy + 0.30, zk - 0.18, cy - 0.36, ztop - 0.16, 0.045, m_rahm, 0.0, 0.045)
-    box(0, cy - 0.40, ztop - 0.03, breite, 0.20, 0.06, m_schleif)           # Schleifstueck
-    box(0, cy - 0.24, ztop - 0.06, breite * 0.55, 0.16, 0.05, m_schleif)    # OK exakt ztop
+        strebe(cy - 0.58, zb, cy + 0.80, zk, 0.10, m_rahm, sx, 0.10)
+    zyl(0, cy + 0.80, zk, 0.06, 1.30, m_rahm, 12, rot=(0, math.pi / 2, 0))  # Kniegelenk
+    strebe(cy + 0.80, zk, cy - 0.42, ztop - 0.14, 0.085, m_rahm, 0.0, 0.085)  # Oberarm
+    strebe(cy + 0.24, zk - 0.16, cy - 0.38, ztop - 0.20, 0.05, m_rahm, 0.0, 0.05)
+    box(0, cy - 0.42, ztop - 0.10, 0.60, 0.18, 0.12, m_rahm)                # Wippe
+    box(0, cy - 0.42, ztop - 0.03, breite, 0.22, 0.06, m_schleif)           # Schleifstueck
+    box(0, cy - 0.24, ztop - 0.06, breite * 0.50, 0.16, 0.05, m_schleif)    # OK exakt ztop
     for sx in (-1, 1):                                                      # Hoerner
-        box(sx * (breite / 2 - 0.02), cy - 0.32, ztop - 0.09, 0.10, 0.30, 0.05, m_schleif)
+        box(sx * (breite / 2 - 0.02), cy - 0.34, ztop - 0.08, 0.10, 0.34, 0.05, m_schleif)
 
 
 def fensterband(y0, y1, n, z, h, b, xhalb, m_glas, m_rahm, dicke=0.07):
