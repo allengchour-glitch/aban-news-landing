@@ -3243,13 +3243,82 @@ var TOOLLBL=["Faust","Holz","Stein"];
 // ⚔️🛡️ Ausrüstung (Waffe/Rüstung) — Tier 0=nichts, 1-3
 var equip={weapon:0,armor:0};
 var WEAP_ATK=[0,2,4,7], ARMOR_DEF=[0,2,4,7];
+/* 🛒 WAFFEN-SHOP (User: "viele waffen auswahl, beim shop kaufen") — kaufbar an der Schmiede, 💎 als Währung.
+   Einmal gekauft = für immer besessen, jederzeit wechselbar. atk ersetzt den Quest-Tier-Bonus. */
+var WSHOP=[
+  {id:"kurzschwert", n:"Kurzschwert",      emo:"🗡️", cost:6,  atk:3,  st:"schwert", col:0xc8ccd6, gl:0},
+  {id:"jagdmesser",  n:"Jagd-Dolch",       emo:"🔪", cost:8,  atk:3,  st:"dolch",   col:0xd8dce6, gl:0},
+  {id:"streitaxt",   n:"Streitaxt",        emo:"🪓", cost:12, atk:5,  st:"axt",     col:0xb8bcc6, gl:0},
+  {id:"kriegshammer",n:"Kriegshammer",     emo:"🔨", cost:16, atk:6,  st:"hammer",  col:0x9aa0ac, gl:0},
+  {id:"jagdspeer",   n:"Jagdspeer",        emo:"🔱", cost:14, atk:5,  st:"speer",   col:0xd6cbb0, gl:0},
+  {id:"flammenklinge",n:"Flammen-Klinge",  emo:"🔥", cost:26, atk:8,  st:"schwert", col:0xff9a4d, gl:0xff5a2a},
+  {id:"frostaxt",    n:"Frost-Axt",        emo:"❄️", cost:30, atk:9,  st:"axt",     col:0xaee6ff, gl:0x5ac8ff},
+  {id:"schattendolch",n:"Schatten-Dolch",  emo:"🌑", cost:34, atk:10, st:"dolch",   col:0x6a5aa0, gl:0x8a4dff},
+  {id:"sturmspeer",  n:"Sturm-Speer",      emo:"⚡", cost:40, atk:11, st:"speer",   col:0xfff2a0, gl:0xffd94d},
+  {id:"drachenklinge",n:"Drachen-Klinge",  emo:"🐉", cost:55, atk:14, st:"schwert", col:0x7dff9a, gl:0x2aff6a}
+];
+var WSHOP_BY={};WSHOP.forEach(function(w){WSHOP_BY[w.id]=w;});
+function buildShopWeapon(def){
+  var g=new THREE.Group(),gl=def.gl||0,ei=gl?1.2:0.15,em=gl||0x101418;
+  function M2(c){return _mat(c,em,ei,gl?0.3:0.4,0.85);}
+  if(def.st==="schwert"){
+    var bl=new THREE.Mesh(new THREE.BoxGeometry(0.08,1.0,0.18),M2(def.col));bl.position.y=0.6;g.add(bl);
+    var tp=new THREE.Mesh(new THREE.ConeGeometry(0.1,0.22,4),M2(def.col));tp.position.y=1.2;g.add(tp);
+    var gd=new THREE.Mesh(new THREE.BoxGeometry(0.36,0.07,0.1),_mat(0x2b2f45,0,0,0.5,0.7));gd.position.y=0.09;g.add(gd);
+    var hd=new THREE.Mesh(new THREE.CylinderGeometry(0.05,0.05,0.24,8),_mat(0x151826,0,0,0.6,0.4));hd.position.y=-0.06;g.add(hd);}
+  else if(def.st==="dolch"){
+    var b2=new THREE.Mesh(new THREE.BoxGeometry(0.06,0.55,0.13),M2(def.col));b2.position.y=0.36;g.add(b2);
+    var t2=new THREE.Mesh(new THREE.ConeGeometry(0.07,0.16,4),M2(def.col));t2.position.y=0.72;g.add(t2);
+    var h2=new THREE.Mesh(new THREE.CylinderGeometry(0.045,0.05,0.2,8),_mat(0x2a1f14,0,0,0.7,0.2));h2.position.y=-0.02;g.add(h2);}
+  else if(def.st==="axt"){
+    var sh=new THREE.Mesh(new THREE.CylinderGeometry(0.05,0.055,1.0,8),_mat(0x6a4a2c,0,0,0.85,0.1));sh.position.y=0.48;g.add(sh);
+    var hb=new THREE.Mesh(new THREE.BoxGeometry(0.12,0.32,0.46),M2(def.col));hb.position.set(0,0.9,0.16);g.add(hb);
+    var ed=new THREE.Mesh(new THREE.BoxGeometry(0.05,0.38,0.15),M2(def.col));ed.position.set(0,0.9,0.41);g.add(ed);}
+  else if(def.st==="hammer"){
+    var s3=new THREE.Mesh(new THREE.CylinderGeometry(0.055,0.06,1.0,8),_mat(0x6a4a2c,0,0,0.85,0.1));s3.position.y=0.48;g.add(s3);
+    var k3=new THREE.Mesh(new THREE.BoxGeometry(0.3,0.26,0.5),M2(def.col));k3.position.set(0,0.95,0);g.add(k3);}
+  else if(def.st==="speer"){
+    var s4=new THREE.Mesh(new THREE.CylinderGeometry(0.04,0.045,1.5,8),_mat(0x8a6a3c,0,0,0.8,0.1));s4.position.y=0.6;g.add(s4);
+    var t4=new THREE.Mesh(new THREE.ConeGeometry(0.09,0.34,4),M2(def.col));t4.position.y=1.5;g.add(t4);}
+  g.traverse(function(m){if(m.isMesh)m.castShadow=true;});
+  return g;}
 var WEAP_NAME=["Faust","🗡️ Bronze","⚔️ Kriegsaxt","🌟 Neon-Klinge"], ARMOR_NAME=["—","🥋 Leder","🛡️ Eisen","💠 Kristall"];
 function gearStore(k){return (k==="weapon"||k==="armor")?equip:tools;}
-function weaponAtk(){return (WEAP_ATK[equip.weapon]||0)+PERK.atk;}
+function weaponAtk(){if(equip.wid&&WSHOP_BY[equip.wid])return WSHOP_BY[equip.wid].atk+PERK.atk;return (WEAP_ATK[equip.weapon]||0)+PERK.atk;}
+function openWShop(){
+  var ov=document.getElementById("wshopOv");
+  if(!ov){ov=document.createElement("div");ov.id="wshopOv";
+    ov.style.cssText="position:fixed;inset:0;z-index:70;background:rgba(6,10,24,.86);display:flex;align-items:center;justify-content:center;padding:14px;pointer-events:auto";
+    document.body.appendChild(ov);}
+  var rows=WSHOP.map(function(w){
+    var owned=equip.owned.indexOf(w.id)>=0,on=equip.wid===w.id;
+    var btn=on?'<span style="color:#7dffc8;font-weight:800">✔ Angelegt</span>'
+      :owned?'<button data-w="'+w.id+'" class="wbuy" style="border:0;border-radius:10px;padding:8px 14px;font-weight:800;cursor:pointer;background:#3a6ab0;color:#fff">Anlegen</button>'
+      :'<button data-w="'+w.id+'" class="wbuy" style="border:0;border-radius:10px;padding:8px 14px;font-weight:800;cursor:pointer;background:'+((inv.crystal|0)>=w.cost?'#2a8a50':'#555c6a')+';color:#fff">'+w.cost+' 💎</button>';
+    return '<div style="display:flex;align-items:center;gap:10px;padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.08)">'
+      +'<span style="font-size:1.5rem">'+w.emo+'</span><span style="flex:1;font-weight:700">'+w.n+'<br><small style="opacity:.7">⚔️ +'+w.atk+' Angriff</small></span>'+btn+'</div>';
+  }).join("");
+  ov.innerHTML='<div style="background:#101a30;border:1px solid rgba(125,227,255,.35);border-radius:18px;max-width:420px;width:100%;max-height:82vh;overflow-y:auto;padding:16px" onclick="event.stopPropagation()">'
+    +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><b style="font-size:1.15rem">⚒️ Waffen-Schmiede</b><span>💎 '+(inv.crystal|0)+'</span></div>'
+    +'<div style="font-size:.8rem;opacity:.7;margin-bottom:8px">Kaufen mit Kristallen · gekaufte Waffen jederzeit wechseln</div>'
+    +rows+'<button id="wshopClose" style="margin-top:12px;width:100%;border:0;border-radius:12px;padding:12px;font-weight:800;cursor:pointer;background:#243252;color:#cfe6ff">Schliessen ✖</button></div>';
+  ov.style.display="flex";
+  ov.onclick=function(){ov.style.display="none";};
+  document.getElementById("wshopClose").onclick=function(){ov.style.display="none";};
+  ov.querySelectorAll(".wbuy").forEach(function(b){b.onclick=function(ev){ev.stopPropagation();
+    var w=WSHOP_BY[b.getAttribute("data-w")];if(!w)return;
+    var owned=equip.owned.indexOf(w.id)>=0;
+    if(!owned){if((inv.crystal|0)<w.cost){toast("💎 Zu wenig Kristalle für "+w.n+"!");return;}
+      inv.crystal-=w.cost;equip.owned.push(w.id);toast("🛒 "+w.emo+" "+w.n+" gekauft!");}
+    equip.wid=w.id;gearUpd();invUpd();saveGame();
+    if(typeof sfxSeq==="function")sfxSeq([[660],[880,0.3]]);
+    openWShop(); /* neu rendern */
+  };});
+}
 function normInv(){ // defensiv: alte Saves ohne neue Felder auffüllen
   inv.wood=inv.wood||0;inv.stone=inv.stone||0;inv.crystal=inv.crystal||0;inv.berry=inv.berry||0;inv.meat=inv.meat||0;
   tools.axe=tools.axe||0;tools.pick=tools.pick||0;
-  equip.weapon=equip.weapon||0;equip.armor=equip.armor||0;
+  equip.weapon=equip.weapon||0;equip.armor=equip.armor||0;equip.wid=equip.wid||0;equip.owned=equip.owned||[]; /* 🛒 Shop-Waffe + Besitz */
 }
 var hp=100,maxHp=100,dead=false;
 var xp=0,level=1; // ⭐ RPG-Progression (Fusion Survival+RPG)
@@ -3325,7 +3394,7 @@ function invUpd(){
 function gearUpd(){
   var ww=document.getElementById("wWeap"),war=document.getElementById("wArmor");
   if(ww&&war){
-    if(equip.weapon>0){ww.classList.remove("hide");document.getElementById("iWeap").textContent=WEAP_NAME[equip.weapon];}else ww.classList.add("hide");
+    var _wl=(equip.wid&&WSHOP_BY[equip.wid])?(WSHOP_BY[equip.wid].emo+" "+WSHOP_BY[equip.wid].n):(equip.weapon>0?WEAP_NAME[equip.weapon]:null);if(_wl){ww.classList.remove("hide");document.getElementById("iWeap").textContent=_wl;}else ww.classList.add("hide");
     if(equip.armor>0){war.classList.remove("hide");document.getElementById("iArmor").textContent=ARMOR_NAME[equip.armor];}else war.classList.add("hide");
   }
   if(typeof applyGearVisuals==="function")applyGearVisuals();
@@ -3372,13 +3441,13 @@ function _attachNorm(bone,obj,extraScale){ /* Objekt an Knochen hängen, PRO-ACH
   bone.add(obj);
 }
 /* Waffe+Rüstung an EIN Modell hängen; gibt {weapon, armor:[]} zurück (für lokal ODER Partner nutzbar). */
-function _gearOn(model,weapon,armor,old){
+function _gearOn(model,weapon,armor,old,wid){
   if(old){if(old.weapon&&old.weapon.parent)old.weapon.parent.remove(old.weapon);(old.armor||[]).forEach(function(p){if(p&&p.parent)p.parent.remove(p);});}
   var refs={weapon:null,armor:[]};
   if(!model)return refs;
-  if(weapon>0){
+  if(weapon>0||(wid&&WSHOP_BY[wid])){
     var hand=_findBone(/right.?hand|hand.?r|fist.?r|hand_r|wrist.?r|righthand/i,model)||_findBone(/hand|fist/i,model);
-    var w=buildWeapon(weapon);
+    var w=(wid&&WSHOP_BY[wid])?buildShopWeapon(WSHOP_BY[wid]):buildWeapon(weapon);
     if(hand){_attachNorm(hand,w,1.35);w.position.set(0,0.05,0);w.rotation.set(Math.PI*0.15,0,0);}
     else{w.position.set(0.42,1.2,0.15);model.add(w);}
     refs.weapon=w;
@@ -3394,18 +3463,18 @@ function _gearOn(model,weapon,armor,old){
 var _lastGearW=-1,_lastGearA=-1;
 function applyGearVisuals(){
   if(!heroModel)return;
-  if(equip.weapon===_lastGearW&&equip.armor===_lastGearA)return; /* 🩹 Schwarm-P2: nur bei Änderung — vorher Mesh-Rebuild + Koop-Nachricht bei JEDEM Pickup */
+  if(equip.weapon===_lastGearW&&equip.armor===_lastGearA&&equip.wid===window._lastGearWid)return;window._lastGearWid=equip.wid; /* 🩹 Schwarm-P2: nur bei Änderung — vorher Mesh-Rebuild + Koop-Nachricht bei JEDEM Pickup */
   _lastGearW=equip.weapon;_lastGearA=equip.armor;
-  var r=_gearOn(heroModel,equip.weapon,equip.armor,{weapon:_weaponMesh,armor:_armorParts});
+  var r=_gearOn(heroModel,equip.weapon,equip.armor,{weapon:_weaponMesh,armor:_armorParts},equip.wid);
   _weaponMesh=r.weapon;_armorParts=r.armor;
   if(NET.on)sendMyGear(); /* Partner über eigene Ausrüstung informieren */
 }
-function applyRemoteGear(weapon,armor){ /* 🛡️ Partner-Held bekommt seine Ausrüstung sichtbar */
+function applyRemoteGear(weapon,armor,wid){ /* 🛡️ Partner-Held bekommt seine Ausrüstung sichtbar */
   if(!NET.remoteHero)return;
-  var r=_gearOn(NET.remoteHero,weapon|0,armor|0,{weapon:NET.remoteWeapon,armor:NET.remoteArmor});
+  var r=_gearOn(NET.remoteHero,weapon|0,armor|0,{weapon:NET.remoteWeapon,armor:NET.remoteArmor},wid||0);
   NET.remoteWeapon=r.weapon;NET.remoteArmor=r.armor;NET.remoteGear={w:weapon|0,a:armor|0};
 }
-function sendMyGear(){try{if(NET.s&&NET.on)NET.s.send({t:"gear",w:equip.weapon|0,a:equip.armor|0,from:NET.role});}catch(e){}}
+function sendMyGear(){try{if(NET.s&&NET.on)NET.s.send({t:"gear",w:equip.weapon|0,a:equip.armor|0,wid:equip.wid||0,from:NET.role});}catch(e){}}
 function hpUpd(){document.getElementById("hpFill").style.width=Math.max(0,hp/maxHp*100)+"%";
   var hn=document.getElementById("hpNum");if(hn){var ht=Math.max(0,Math.round(hp))+"/"+maxHp;if(hn._t!==ht){hn._t=ht;hn.textContent=ht;}}
   /* ❤️ W7: pulsierende Warn-Vignette bei kritischem HP (<25%) — klares Überlebens-Feedback */
@@ -3738,6 +3807,8 @@ function findNear(){
   for(var S=0;S<stations.length;S++){var sx3=stations[S].x-player.position.x,sz3=stations[S].z-player.position.z,dst=sx3*sx3+sz3*sz3;if(dst<bst){bst=dst;nearStation=stations[S];}}
   nearBoard=false; /* 🪧 Quest-Aushang (Hub) */
   if(questBoard){var qbx=questBoard.x-player.position.x,qbz=questBoard.z-player.position.z;if(qbx*qbx+qbz*qbz<3.4*3.4)nearBoard=true;}
+  window._nearForge=false; /* 🛒 Waffen-Schmiede */
+  if(hubForge){var fdx=hubForge.x-player.position.x,fdz=hubForge.z-player.position.z;if(fdx*fdx+fdz*fdz<4.2*4.2)window._nearForge=true;}
   nearFire=null;var bfr=3.6*3.6; /* 🔥 Lagerfeuer zum Rasten (Elden-Ring „Site of Grace") */
   for(var F=0;F<structures.length;F++){var sf=structures[F];if(sf.type!=="lager")continue;var fx=sf.x-player.position.x,fz=sf.z-player.position.z,dfr=fx*fx+fz*fz;if(dfr<bfr){bfr=dfr;nearFire=sf;}}
 }
@@ -3800,6 +3871,7 @@ function harvest(){
   if(nearWork&&!nearMon&&!nearRes&&!nearAni&&!nearLoot&&!buildMode){openCraft();return;}
   if(nearNpc&&!nearMon&&!nearRes&&!nearAni&&!nearLoot&&!nearMerchant&&!nearBoard&&!nearStation&&!buildMode){talkToNpc();return;}
   if(nearLoot&&!nearMon&&!nearAni){openLoot(nearLoot);return;}
+  if(window._nearForge&&!nearMon&&!nearAni&&!buildMode){openWShop();return;} /* 🛒 Waffen-Shop an der Schmiede */
   if(nearBoard&&!nearMon&&!nearAni&&!buildMode){readBoard();return;} /* 🪧 Quest-Aushang lesen */
   if(nearFire&&!nearMon&&!nearAni&&!nearRes&&!nearLoot&&!buildMode){restAtFire();return;} /* 🔥 Am Lagerfeuer rasten */
   if(nearStation&&!nearMon&&!nearAni&&!buildMode){openStation(nearStation.i);return;} /* 🎯 Station betreten (vor dem Kampf-Zweig) */
@@ -4765,7 +4837,7 @@ function onNetMsg(d){
     var tn=performance.now()*0.001;if(NET.rt.tLast>0){var dtp=Math.max(0.02,Math.min(1,tn-NET.rt.tLast));var nvx=(d.x-NET.rt.x)/dtp,nvz=(d.z-NET.rt.z)/dtp;var sp2=Math.hypot(nvx,nvz);if(sp2>12){nvx*=12/sp2;nvz*=12/sp2;}NET.rt.vx=nvx;NET.rt.vz=nvz;}else{NET.rt.vx=0;NET.rt.vz=0;}NET.rt.tLast=tn; /* 🚀 Dead-Reckoning: Geschwindigkeit schätzen */
     NET.rt.x=d.x;NET.rt.z=d.z;NET.rt.ry=d.ry;if(d.hp!==undefined)NET.rt.hp=d.hp;if(NET.remote)NET.remote.visible=true;if(d.st!==undefined)remoteStation(d.st);}
   if(d.t==="char"&&d.id&&d.from!==NET.role){loadRemoteHero(d.id);} /* 🧑‍🤝‍🧑 Partner zeigt seinen echten Helden (Eigen-Echo ignorieren) */
-  if(d.t==="gear"&&d.from!==NET.role){NET.remoteGear={w:d.w|0,a:d.a|0};applyRemoteGear(d.w,d.a);} /* 🛡️ Partner-Ausrüstung sichtbar */
+  if(d.t==="gear"&&d.from!==NET.role){NET.remoteGear={w:d.w|0,a:d.a|0};applyRemoteGear(d.w,d.a,d.wid||0);} /* 🛡️ Partner-Ausrüstung sichtbar */
   if(d.t==="down"&&d.from!==NET.role){NET.remoteDowned=true;if(typeof toast==="function")toast("💀 Partner gefallen — lauf zu ihm & belebe ihn!");}
   if(d.t==="up"&&d.from!==NET.role){NET.remoteDowned=false;}
   if(d.t==="emote"&&d.from!==NET.role&&d.e){showEmoteOver(NET.remote,d.e);
@@ -5245,6 +5317,8 @@ window.__nw={
   hubPos:function(){return {fountain:{x:hub.fx,z:hub.fz},stands:(hub.standPos||[]).slice(),mill:{x:hub.millX,z:hub.millZ},board:questBoard?{x:questBoard.x,z:questBoard.z}:null,tav:(hub.tavX!=null)?{x:hub.tavX,z:hub.tavZ}:null};},
   toBoard:function(){if(!questBoard)return null;player.position.x=questBoard.x;player.position.z=questBoard.z-2.4;return {x:questBoard.x,z:questBoard.z};}, /* Brett vor der Kamera (+z) */
   readBoard:function(){readBoard();return nearBoard;},
+  wshop:function(){openWShop();return true;},
+  giveCry:function(nn){inv.crystal=(inv.crystal|0)+(nn|0);invUpd();return inv.crystal;}, /* QA */
   toMill:function(){if(!hub.mill)return null;player.position.x=hub.millX;player.position.z=hub.millZ-8;return {x:hub.millX,z:hub.millZ};},
   toForge:function(){if(!hubForge)return null;player.position.x=hubForge.x;player.position.z=hubForge.z-5;return {x:hubForge.x,z:hubForge.z};},
   state:function(){return{x:player.position.x,z:player.position.z,day:day,dayT:dayT,night:isNight,nights:nights,mon:monsters.length,st:structures.length,hp:hp,meat:inv.meat,axe:tools.axe,pick:tools.pick,animals:this.animals(),loot:loots.length,quest:quest,won:won,crystal:inv.crystal,stationOpen:stationOpen,stations:stations.length};}
