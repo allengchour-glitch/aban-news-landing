@@ -2440,21 +2440,30 @@ function furnAt(gx,gy){
 function editVerschiebe(nx,ny){
   var f9=editSel;if(!f9)return false;
   if(!cellFree(nx,ny)||!inLot(nx,ny)){hint("Da ist kein Platz");return false;}
-  var ox=f9.gx,oy=f9.gy,rot=f9.rot,id=f9.id;
+  var ox=f9.gx,oy=f9.gy,rot=f9.rot,id=f9.id,lv0=f9.lv||1,aw=f9.wachs;
   if(f9.mesh)scene.remove(f9.mesh);if(f9.plight)scene.remove(f9.plight);
   furn.splice(furn.indexOf(f9),1);
   netSend({t:"del",x:ox,y:oy});
-  doPlaceFurn(id,nx,ny,rot);
+  doPlaceFurn(id,nx,ny,rot,false,undefined,lv0);
+  _restoreLvWachs(furn[furn.length-1],lv0,aw);
   editHide();hint("↔️ Umgestellt!");beep(620,.07,"triangle",.05);
   return true;}
+function _restoreLvWachs(rec,lv0,alteWachs){ /* 🩹 Schwarm-P1: Verschieben/Drehen loeschte Stufe (Lv2/3→1) und Wachstums-Fortschritt */
+  if(!rec)return;
+  if(lv0&&lv0>1)rec.lv=lv0;
+  if(alteWachs!==undefined&&(rec.grow||rec.beet)){rec.wachs=alteWachs;
+    var scU=0.06+alteWachs*0.94;
+    if(rec.grow&&rec.krauts)rec.krauts.forEach(function(kr9,k9){kr9.scale.setScalar(scU*(0.85+(k9%3)*0.1));});
+    if(rec.beet&&rec.sprossen){var sbU=0.05+alteWachs*0.95;rec.sprossen.forEach(function(sp9,k9){sp9.scale.setScalar(sbU*(0.8+((k9*7)%5)*0.08));
+      if(alteWachs>0.85)sp9.material.color.setHex(0xe8722a);});}}}
 document.getElementById("edMove").onclick=function(){editMove=true;hint("Tippe auf den neuen Platz");};
 document.getElementById("edRot").onclick=function(){
   var f9=editSel;if(!f9)return;
-  var gx=f9.gx,gy=f9.gy,nr=(f9.rot+1)%4,id=f9.id;
+  var gx=f9.gx,gy=f9.gy,nr=(f9.rot+1)%4,id=f9.id,lv0=f9.lv||1,aw=f9.wachs;
   if(f9.mesh)scene.remove(f9.mesh);if(f9.plight)scene.remove(f9.plight);
   furn.splice(furn.indexOf(f9),1);netSend({t:"del",x:gx,y:gy});
-  doPlaceFurn(id,gx,gy,nr);
-  editSel=furn[furn.length-1];editShow(editSel);beep(560,.06,"triangle",.04);};
+  doPlaceFurn(id,gx,gy,nr,false,undefined,lv0);
+  editSel=furn[furn.length-1];_restoreLvWachs(editSel,lv0,aw);editShow(editSel);beep(560,.06,"triangle",.04);};
 document.getElementById("edUp").onclick=function(){
   var f9=editSel;if(!f9)return;
   var lv0=f9.lv||1;
@@ -2538,7 +2547,7 @@ function onNetMsg(m){
     if(cm9&&cm9.mesh){cm9.mesh.visible=true;cm9.mesh.position.x=m.ca.x;cm9.mesh.position.z=m.ca.z;cm9.mesh.rotation.y=m.ca.r;}
     if(!arbeiten&&sims[0]&&sims[0].mesh)sims[0].mesh.visible=!m.ca;
     if(m.np){
-      while(npcs.length<m.np.length)spawnNpc(m.np[npcs.length].t);
+      while(npcs.length<m.np.length){if(!spawnNpc(m.np[npcs.length].t))break;} /* 🩹 Schwarm-P0: spawnNpc kann scheitern (Katze ohne geladenes Hund-Modell) → sonst ENDLOSSCHLEIFE, Gast-Tab friert ein */
       while(npcs.length>m.np.length){var rem=npcs.pop();scene.remove(rem.mesh);}
       m.np.forEach(function(nd,i){if(npcs[i])npcs[i].net=nd;});}
     if(m.k){while(kinder.length<m.k.length){var nk=spawnKind(m.k[kinder.length].b);if(nk)nk.name=m.k[kinder.length].n;}
@@ -2546,7 +2555,13 @@ function onNetMsg(m){
   else if(m.t==="uhr"&&!mpHost){uhrzeit=m.u;if(tag!==m.d){tag=m.d;applySaison();}}
   else if(m.t==="wetter"&&!mpHost)setWetter(m.w);
   else if(m.t==="kochBoost"&&mpHost){if(m.s>=0.999)stats.kochPerfekt=(stats.kochPerfekt||0)+1;kochApply(m.s);}
-  else if(m.t==="fisch"&&mpHost){stats.fische=(stats.fische||0)+1;} /* 🩹 Gast-Fang zählt beim Host für Quests/Team-Quests */
+  else if(m.t==="fisch"&&mpHost){stats.fische=(stats.fische||0)+1;}
+  else if(m.t==="growSold"&&mpHost){stats.growSold=(stats.growSold||0)+1;} /* 🩹 Gast-Deal zaehlt */
+  else if(m.t==="growReset"&&mpHost){for(var _gi=0;_gi<furn.length;_gi++){var _gf=furn[_gi];
+    if(_gf.gx===m.x&&_gf.gy===m.y&&_gf.grow){_gf.wachs=0;if(_gf.krauts)_gf.krauts.forEach(function(k5){k5.scale.setScalar(0.06);});break;}}}
+  else if(m.t==="dieb"&&mpHost){stats.diebstahl=(stats.diebstahl||0)+1;} /* 🩹 Schwarm-P1: Gast-Taschendiebstahl zaehlt */
+  else if(m.t==="busk"&&mpHost){stats.buskPerfekt=(stats.buskPerfekt||0)+1;}
+  else if(m.t==="moebelStat"&&mpHost){stats.moebelGekauft=(stats.moebelGekauft||0)+1;} /* 🩹 Schwarm-P2: Gast-Moebel zaehlen fuer Team-Quest */ /* 🩹 Gast-Fang zählt beim Host für Quests/Team-Quests */
   else if(m.t==="tanzBoost"&&mpHost){if(m.s>=0.999)stats.tanzPerfekt=(stats.tanzPerfekt||0)+1;tanzApply(m.s);}
   else if(m.t==="quest"&&!mpHost)questIdx=m.i;
   else if(m.t==="teamq"&&!mpHost){teamIdx=m.i;}
@@ -3419,7 +3434,7 @@ function spawnNpc(typ){
   var startX=cx(2+((Math.random()*12)|0));
   var n={typ:typ,mesh:m,x:startX,z:cz(GH-1)+10,rot:Math.PI,state:"enter",t:0,walkT:0,
     tx:startX,tz:cz(GH-3),speed:def.speed};
-  m.position.set(n.x,0,n.z);npcs.push(n);
+  m.position.set(n.x,0,n.z);npcs.push(n);return n;
   return n;}
 function npcAct(n){
   n.state="act";n.t=4.5;
@@ -3806,7 +3821,7 @@ function tapAt(px,py){
     if(!ok9){hint("Erst eine Wand bauen, dann streichen 🎨");return;}
     geld-=def.cost;hint("🎨 "+def.n+"!");}
   else{if(!cellFree(c.gx,c.gy)){hint("Hier steht schon etwas");return;}
-    doPlaceFurn(curItem,c.gx,c.gy,curRot);geld-=def.cost;stats.moebelGekauft++;}
+    doPlaceFurn(curItem,c.gx,c.gy,curRot);geld-=def.cost;if(MPs&&!mpHost)netSend({t:"moebelStat"});else stats.moebelGekauft++;}
   geldSend();
   updHUD();beep(660,.06,"triangle",.04);}
 document.getElementById("zoomIn").onclick=function(){camRT=Math.max(7,camRT*0.8);};
@@ -3991,7 +4006,7 @@ function taschendieb(n9){
   mgStart("🤏 Taschendiebstahl","Ruhige Hand — dreimal sauber treffen, sonst fliegst du auf!",function(avg){
     if(avg>=0.65){
       var beute9=Math.round((25+Math.random()*55)*(1+skills.krimi.lv*0.25));
-      geld+=beute9;stats.diebstahl=(stats.diebstahl||0)+1;skillXp("krimi",1);
+      geld+=beute9;if(MPs&&!mpHost)netSend({t:"dieb"});else stats.diebstahl=(stats.diebstahl||0)+1;skillXp("krimi",1);
       geldSend();updHUD();
       if(Math.random()<0.12){polizeiPending=true;wantedPlus(1);npcTimer=Math.min(npcTimer,5);
         hint("🤏 +"+beute9+" $ … aber jemand hat es GESEHEN! 🚨");}
@@ -4067,7 +4082,9 @@ document.getElementById("growBtn").onclick=function(){
     var lv2=skills.krimi.lv;
     var ok2=Math.random()<0.5+avg*0.35+lv2*0.05;
     f5.wachs=0;f5.krauts.forEach(function(kr3){kr3.scale.setScalar(0.06);});
-    if(ok2){var erloes=Math.round((180+Math.random()*160)*(1+lv2*0.3));geld+=erloes;stats.growSold++;
+    if(MPs&&!mpHost)netSend({t:"growReset",x:f5.gx,y:f5.gy}); /* 🩹 Schwarm-P1: Host muss die Ernte auch leeren — sonst endloser Re-Verkauf */
+    if(ok2){var erloes=Math.round((180+Math.random()*160)*(1+lv2*0.3));geld+=erloes;
+      if(MPs&&!mpHost)netSend({t:"growSold"});else stats.growSold++; /* 🩹 Schwarm-P1: Gast meldet den Deal — sonst zaehlte er nie (love-Broadcast ueberschreibt) */
       hint("🌿 Diskret verkauft: +"+erloes+" $ … pssst!");skillXp("krimi",2);
       sims.forEach(function(s6){simEmoji(s6,"🤫");});}
     else{polizeiPending=true;var str2=Math.min(geld,150+lv2*40);geld-=str2;
@@ -4085,7 +4102,7 @@ document.getElementById("buskBtn").onclick=function(){
     geld+=verdienst;geldSend();
     sims.forEach(function(s2){s2.needs.spass=Math.min(100,s2.needs.spass+10);});
     window._buskHeute=(window._buskTag===tag?(window._buskHeute||0):0)+1;window._buskTag=tag;
-    if(avg>=0.99)stats.buskPerfekt++;
+    if(avg>=0.99){if(MPs&&!mpHost)netSend({t:"busk"});else stats.buskPerfekt++;}
     hint(avg>=0.8?("🎉 Die Menge tobt! +"+verdienst+" $ Trinkgeld"):(avg>0.3?("🎵 Solide Show: +"+verdienst+" $"):("😅 Schräge Töne … trotzdem +"+verdienst+" $")));
     simEmoji(sims[0],"🎸");simEmoji(sims[1],"🎤");hearts(sims[0].x,sims[0].z);
     updHUD();});};
