@@ -107,6 +107,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 </div>
 <div id="netBadge">🌐 verbunden</div>
 <button id="modeBtn">🔨 Bauen</button>
+<button id="shopBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;cursor:pointer;color:#3a2a10;background:linear-gradient(90deg,#ffd166,#ffb04a)">🛒 Einkaufen · 60 $</button>
 <button id="villaBtn" style="display:none;position:fixed;left:10px;bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:10px 16px;font-weight:900;cursor:pointer;color:#fff;background:linear-gradient(90deg,#8a5ad0,#5a7ae0)">🏰 Villa-Vorlage · 3500 $</button>
 <button id="buskBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(66px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;font-size:.95rem;cursor:pointer;color:#5a3a10;background:linear-gradient(90deg,#ffd166,#ffb84a);box-shadow:0 8px 24px rgba(200,140,40,.4)">🎸 Straßenmusik machen</button>
 <button id="growBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(122px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;font-size:.95rem;cursor:pointer;color:#d8ffd8;background:linear-gradient(90deg,#1a4a2a,#3a6a3a);box-shadow:0 8px 24px rgba(30,80,40,.5)">🌿 Ernte verkaufen (riskant)</button>
@@ -1852,6 +1853,11 @@ setTimeout(function baueGebaeude(){
     addSolid(96,-110,16.2,11.2,null);                        /* Parkhaus (offen, aber solide Huelle) */
     addSolid(90,-84,20.4,12.4,{a:"z",at:-90.2,c:90,w:5.0});  /* Lagerhalle: Rolltor */
     addSolid(-90,-112,8.2,8.2,null);                         /* Downtown-Turm */
+    /* 💡 Innenraum-Licht für die begehbaren Gebaeude — nachts warm erleuchtet (Fade wie Strassenlampen) */
+    [[-62,30,4.5,0xffe0b0,1.1],[-44,12,3.4,0xffd9a0,0.9],[-44,30,2.6,0xfff0c8,0.9],
+     [-62,50,3.2,0xd8f0ff,0.8],[-58,-62,7.0,0xffd08a,1.2]].forEach(function(L9){
+      var _il=new THREE.PointLight(L9[3],0,16,2);_il.position.set(L9[0],L9[2],L9[1]);scene.add(_il);
+      _il._ti=0;_il._max=L9[4];nachtLampen.push(_il);});
     bau("th8_markthalle_offen.glb",11,-62,0,30,Math.PI/2,false);
     bau("th8_stadthaus_offen.glb",9.2,-44,0,12,Math.PI,false);
     bau("th8_laden_offen.glb",3.9,-44,0,30,-Math.PI/2,false);
@@ -3029,6 +3035,10 @@ function crimeScene(ok,job,betrag){
 function updCrime(dt){
   crimeBtnUpd();buskBtnUpd();
   document.getElementById("growBtn").style.display=growSellAvailable()?"block":"none";
+  (function(){ /* 🛒 Laden betreten → Kauf-Knopf (Innenraum des th8-Ladens bei -44,30) */
+    var b9=document.getElementById("shopBtn");if(!b9)return;
+    var p9=spielerPos(),drin=Math.abs(p9.x+44)<3.8&&Math.abs(p9.z-30)<4.3&&running&&!buildMode;
+    b9.style.display=drin?"block":"none";})();
   if(!crime.on)return;
   crime.t-=dt;
   if(crime.t<=0)finishCrime();}
@@ -3889,6 +3899,12 @@ document.getElementById("zoomIn").onclick=function(){camRT=Math.max(7,camRT*0.8)
 document.getElementById("zoomOut").onclick=function(){camRT=Math.min(135,camRT*1.25);followSim=null;if(egoMode)egoToggle();};
 document.getElementById("egoBtn").onclick=function(){egoToggle();};
 document.getElementById("villaBtn").onclick=function(){stampVilla();};
+document.getElementById("shopBtn").onclick=function(){ /* 🛒 Einkauf: kostet Geld, hebt Laune + zaehlt als Erfolg */
+  if(geld<60){hint("💰 Zu wenig Geld — 60 $ noetig!");return;}
+  geld-=60;geldSend();stats.einkaeufe=(stats.einkaeufe||0)+1;
+  sims.forEach(function(s9){s9.needs.spass=Math.min(100,(s9.needs.spass||100)+15);simEmoji(s9,"🛍️");});
+  hint("🛍️ Eingekauft! Frische Snacks fuer alle (+Laune)");
+  beep(680,.08,"triangle",.05);setTimeout(function(){beep(900,.1,"triangle",.05);},110);updHUD();};
 // ---- Mini-Game: Timing-Bar (3 Runden, Ergebnis 0..1) ----
 var MG={on:false,pos:0,dir:1,speed:1.6,round:0,scores:[],cb:null,raf:0};
 function mgDraw(){
@@ -4376,7 +4392,7 @@ function loop(now){
     var nacht9=dayA<0.3?1:0;
     if(window._dorfNacht!==nacht9){window._dorfNacht=nacht9;
       dorfFenster.forEach(function(fm){fm.emissiveIntensity=nacht9?2.2:0;if(nacht9&&fm.emissive)fm.emissive.setHex(0xffcf80);if(fm.transparent&&fm.opacity<=0.5)fm.opacity=nacht9?0.5:0;});
-      nachtLampen.forEach(function(L){L._ti=nacht9?9:0;}); /* 💡 Ziel — weiches Faden im Frame-Loop (schwacher Rand via decay 2 bleibt physisch) */
+      nachtLampen.forEach(function(L){L._ti=nacht9?(L._max?L._max*7:9):(L._max?L._max*1.6:0);}); /* 💡 Innenlichter brennen auch tagsueber schwach (Raeume ohne Fenster) */ /* 💡 Ziel — weiches Faden im Frame-Loop (schwacher Rand via decay 2 bleibt physisch) */
       if(window._flMat)window._flMat.opacity=nacht9?0.15:1; // Wiesenblumen nachts fast unsichtbar
       (window._lampGlows||[]).forEach(function(gm){gm.opacity=nacht9?0.34:0;}); // Laternen-Lichtpools
       (window._markMats||[]).forEach(function(mm){mm.color.setHex(nacht9?0x8f949b:0xcfcfc6);}); // Markierungen dimmen mit (aber lesbar)
