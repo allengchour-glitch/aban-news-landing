@@ -1126,7 +1126,7 @@ function placeStruct(type,x,z){var g=makeStruct(type);g.position.set(x,0,z);g.sc
   else if(type==="shield"){st.R=7;st.hp=50;st.maxhp=50;st.barY=2.9;}
   attachHpBar(st);
   structures.push(st);S.scrap-=BUILD_DEFS[type].cost;updateScrapHUD();beep(620,.08,"square",.05);burst(x,z,0xffd9a0);return st;}
-function removeStruct(st,idx){if(idx==null)idx=structures.indexOf(st);if(idx<0)return;scene.remove(st.g);if(st.hpBar)scene.remove(st.hpBar);structures.splice(idx,1);}
+function removeStruct(st,idx){if(idx==null)idx=structures.indexOf(st);if(idx<0)return;scene.remove(st.g);st.g.traverse(function(nn){if(nn.isMesh&&nn.geometry)nn.geometry.dispose();});if(st.hpBar){scene.remove(st.hpBar);if(st.hpBar.geometry)st.hpBar.geometry.dispose();}structures.splice(idx,1);} /* 🩹 Kimi-P2: Geometrien mit entsorgen (frisch pro Struktur) — sonst GPU-Leak pro Abriss/Zerstörung */
 // Zerstörung mit Trümmern (Debris-Fetzen fliegen weg) + dramatischer Pop
 function destroyStruct(st){var i=structures.indexOf(st);var col=(st.type==="spike")?0x6aff9e:(st.type==="tower"||st.type==="pylon")?0xffd166:(st.type==="shield")?0x66aaff:0x5ef2ff;
   deathPop(st.x,st.z,0xff6688,true);burst(st.x,st.z,col);burst(st.x,st.z,0xffffff);
@@ -1137,7 +1137,7 @@ function upgradeTower(st){if(!st||st.type!=="tower"||st.lv>=3)return false;var c
   S.scrap-=cost;st.lv++;var hpGain=20;st.maxhp+=hpGain;st.hp+=hpGain;applyTowerLevel(st);st.pop=0.55;
   spawnRing(st.x,st.z,st.color,0.6,6,0.5);spawnRing(st.x,st.z,0xffffff,0.5,3.4,0.32,0.15);spawnFlash(st.x,2.7,st.z,st.color,2.0,0.24);burst(st.x,st.z,st.color);screenFlash("rgba(255,220,130,.16)",0.3,280);shake=Math.max(shake,0.3);
   beep(620,.08,"triangle",.06);setTimeout(function(){beep(990,.12,"triangle",.06);},80);updateScrapHUD();announce("⬆️ Turm Lv "+st.lv+"!");return true;}
-function removeGhost(){if(ghost){scene.remove(ghost);ghost=null;}}
+function removeGhost(){if(ghost){scene.remove(ghost);ghost.traverse(function(nn){if(nn.isMesh){if(nn.geometry)nn.geometry.dispose();if(nn.material&&nn.material.dispose)nn.material.dispose();}});ghost=null;}} /* 🩹 Kimi-P2: Ghost-Klon-Materialien+Geometrie entsorgen — Leak pro Platzierungsvorgang */
 function makeGhost(type){removeGhost();ghost=makeStruct(type);ghost.traverse(function(n){if(n.isMesh){n.material=n.material.clone();n.material.transparent=true;n.material.opacity=0.5;n.material.depthWrite=false;}});scene.add(ghost);ghostType=type;setGhost(player.position.x,player.position.z-4);}
 function setGhost(x,z){if(!ghost)return;var m=structFootprint(placing);
   x=Math.max(-ARENA+m,Math.min(ARENA-m,x));z=Math.max(-ARENA+m,Math.min(ARENA-m,z));
