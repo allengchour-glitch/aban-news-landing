@@ -521,7 +521,7 @@ def fitnessstudio():
     GUM = mat("Gummiboden", (0.16,0.17,0.19), 0.85)
     GUM2= mat("Gummiboden2",(0.21,0.22,0.25), 0.85)
     TURF= mat("Kunstrasen", (0.16,0.36,0.22), 0.85)
-    SPIE= mat("Spiegel",    (0.80,0.85,0.90), 0.10, 0.25)
+    SPIE= mat("Spiegel",    (0.58,0.64,0.72), 0.08, 0.35)   # zu hell = liest sich als Fenster
     STAH= mat("Stahl",      (0.42,0.44,0.48), 0.35, 0.45)
     CHR = mat("Chrom",      (0.74,0.77,0.80), 0.20, 0.55)
     POL = mat("Polster",    (0.14,0.15,0.18), 0.60)
@@ -693,10 +693,10 @@ def eishalle():
     for sx in (-13.0, 13.0):
         box(sx, EY, FB + 0.07, 0.14, ET, 0.02, ROT)
         zyl(sx + (1.0 if sx < 0 else -1.0), EY, FB + 0.075, 1.9, 0.02, BLAU, 20)
-    ring(0, EY, FB + 0.075, 4.5, 0.05, BLAU, 30, 6)
-    for sx in (-8.5, 8.5):
-        for sy in (-5.0, 5.0):
-            ring(sx, EY + sy, FB + 0.075, 4.5, 0.05, ROT, 30, 6)
+    ring(0, EY, FB + 0.075, 4.4, 0.05, BLAU, 30, 6)
+    for sx in (-8.5, 8.5):                       # Bullykreise passend zur 15-m-Breite:
+        for sy in (-3.4, 3.4):                   # R=2.9 bleibt komplett auf dem Eis
+            ring(sx, EY + sy, FB + 0.075, 2.9, 0.05, ROT, 26, 6)
             zyl(sx, EY + sy, FB + 0.075, 0.30, 0.03, ROT, 14)
     zyl(0, EY, FB + 0.08, 0.30, 0.03, BLAU, 14)
     # Bande mit 2 Luecken fuer die Spielerbaenke (auf der Eingangsseite)

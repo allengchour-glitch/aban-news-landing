@@ -721,7 +721,7 @@ def heuballen():
         rot = (0, 0, 0) if stehend else (0, math.pi/2, 0)
         # stehend: die untere Stirnscheibe (0.012 vor + 0.01 halbe Dicke) bestimmt
         # die Unterkante — sonst misst das Modell z_min = -0.02 statt 0.
-        cz = L/2 + 0.025 if stehend else r + 0.012
+        cz = L/2 + 0.045 if stehend else r + 0.012
         rk = r if stehend else r + 0.012
         zyl(px, py, cz, r, L, m_kern, 24, rot=rot)
         for i in range(4):                                        # Wickelbaender

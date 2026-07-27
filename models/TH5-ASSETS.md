@@ -391,6 +391,37 @@ Dachrippen 0,30 und Fahrdraht-Hänger 3,00 laufen über die Modulfuge weiter.
 
 ---
 
+## 1n. Charge 17 — HAFEN UND WASSER (`models/th15_*.glb`)
+
+| Datei | Maße (B×T×H) | Hinweis |
+|---|---|---|
+| `th15_kaimauer_modul.glb` | **12,00** × 3,64 × 5,01 | **x += 12,00**, Poller, Fender, Steigleiter |
+| `th15_containerkran.glb` | 12,00 × 38,95 × 24,84 | Schienen 12,0 → passt aufs Kaimauer-Raster |
+| `th15_containerstapel.glb` | 7,76 × 6,76 × 5,24 | 3 × 2 Container, verschiedene Farben |
+| `th15_frachtschiff.glb` | 15,25 × 45,06 × 18,25 | Aufbauten, Schornstein, Ladeluken, 2 Ladekrane |
+| `th15_segelboot.glb` | 2,70 × 8,03 × 8,91 | Mast, Grosssegel, Cockpit |
+| `th15_leuchtturm.glb` | 7,20 × 8,20 × 22,14 | rot-weiss, Laterne emissiv, Galerie |
+| `th15_steg.glb` | **8,00** × 3,53 × 1,99 | **x += 8,00**, auf Pfählen |
+| `th15_bootshaus.glb` | 11,60 × 16,70 × 6,49 | **begehbar**, offene Wasserseite, Steg innen, Werkbank |
+| `th15_faehranleger.glb` | 10,42 × 27,57 × 5,48 | Rampe, Geländer, Wartehäuschen |
+| `th15_fischerhuette.glb` | 8,80 × 9,80 × 5,07 | **begehbar**, Netze, Kisten, Ofen |
+
+Generator: `tools/assets/mk_th15_hafen.py`
+Neue Helfer: `hull()` loftet einen Schiffsrumpf als **ein** Mesh mit Materialstreifen
+für Unterwasserschiff, Wasserpass, Bordwand und Deck; `schanzkleid()` legt das
+Schanzkleid als gedrehte Balken entlang der Kante.
+
+> ⚠️ **Ein Rumpf aus aneinandergereihten Quadern sieht aus wie eine Treppe.** Alle vier
+> Boote dieser Charge waren zunächst Quaderketten — mit Zinnen-Lücken im Schanzkleid und
+> einem geraden Wasserpass-Brett, das am Bug wie ein Steg herausragte. Für alles mit
+> gekrümmtem Umriss lohnt sich ein geloftetes Mesh.
+
+> ⚠️ **z-Fighting** trat an drei Stellen auf, wo zwei Flächen exakt deckungsgleich lagen
+> (Mauerkrone gegen Kranzbalken, Containergurte, `boden()`-Vorplatz gegen Innenboden —
+> dort gewann der graue Sockel über die Holzdiele). 2 cm Versatz genügen.
+
+---
+
 ## 2. Texturen (`textures/th5/*.png`)
 
 512×512, **nahtlos kachelbar** (Wrap-Arithmetik, verifiziert per 2×2-Kachel-Kontaktbogen).
@@ -488,6 +519,7 @@ python3 tools/assets/mk_th20_verkehrsbauten.py  # Verkehrsbauten -> models/th20_
 python3 tools/assets/mk_th15_texturen.py  # Naturtexturen -> textures/th15/*.png
 python3 tools/assets/mk_th16_park.py      # Park und Spielplatz -> models/th16_*.glb
 python3 tools/assets/mk_th17_bahn.py      # Bahn und Tram -> models/th17_*.glb
+python3 tools/assets/mk_th15_hafen.py     # Hafen und Wasser -> models/th15_*.glb
 ```
 
 Beide brauchen nur **bpy 5.x + numpy** (im Container vorhanden, kein Blender-Binary nötig,
