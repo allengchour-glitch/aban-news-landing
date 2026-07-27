@@ -68,6 +68,39 @@ Generator: `tools/assets/mk_th6_stadt.py`
 
 ---
 
+## 1c. Charge 3 — MODULARE Gebäude + Fahrzeuge (`models/th7_*.glb`)
+
+Mit diesen Modulen baut man **ganze Viertel aus wenigen Teilen**. Modultest gerendert:
+gestapelt/aneinandergereiht entstehen fugenlose Türme und Zeilen.
+
+| Datei | Was | Maße (B×T×H) | Modul-Raster |
+|---|---|---|---|
+| `th7_hochhaus_modul.glb` | Turm-Segment, Fensterbänder + Gesimse | 8,2 × 8,2 × **6,0** | **stapeln: y += 6** |
+| `th7_hochhaus_dach.glb` | Turmabschluss: Attika, Technik, Antenne | 8,3 × 8,3 × 3,6 | oben aufsetzen |
+| `th7_reihenhaus_modul.glb` | Stadthaus mit Satteldach + Haustür | **6,0** × 7,5 × 8,2 | **reihen: x += 6** |
+| `th7_parkhaus.glb` | 3 offene Decks, Stützen, Rampe | 16,2 × 11,2 × 9,8 | frei |
+| `th7_lagerhalle.glb` | Tonnendach, 2 Rolltore, Laderampe | 20,4 × 12,4 × 9,0 | frei |
+| `th7_bruecke_modul.glb` | Straßenbrücke mit Brüstung + Pfeilern | **14,0** × 9,0 × 5,1 | **reihen: x += 14** |
+| `th7_lieferwagen.glb` | Transporter (parkend) | 2,2 × 4,6 × 2,5 | Front auf −z |
+| `th7_lkw.glb` | Sattelzug (parkend) | 2,5 × 10,5 × 3,7 | Front auf −z |
+| `th7_taxi.glb` | Taxi mit Dachschild | 1,9 × 4,3 × 1,7 | Front auf −z |
+| `th7_denkmal.glb` | Denkmal auf Stufensockel | 3,0 × 3,0 × 5,3 | Platzmitte |
+
+Generator: `tools/assets/mk_th7_gebaeude.py`
+
+### So baut man einen Turm
+```js
+for (var e = 0; e < 5; e++) bau("th7_hochhaus_modul.glb", 6.0, x, e*6, z, 0, false);
+bau("th7_hochhaus_dach.glb", 3.6, x, 30, z, 0, false);   // 5*6 = 30
+```
+### So baut man eine Zeile
+```js
+for (var i = 0; i < 6; i++) bau("th7_reihenhaus_modul.glb", 8.2, x0 + i*6, 0, z, rot, false);
+```
+Fassaden-Texturen aus `textures/th6/` (`glasfassade`, `betonfassade`) passen maßstäblich dazu.
+
+---
+
 ## 2. Texturen (`textures/th5/*.png`)
 
 512×512, **nahtlos kachelbar** (Wrap-Arithmetik, verifiziert per 2×2-Kachel-Kontaktbogen).
@@ -117,6 +150,7 @@ python3 tools/assets/mk_th5_modelle.py    # Modelle -> models/th5_*.glb + models
 python3 tools/assets/mk_th5_texturen.py   # Texturen -> textures/th5/*.png
 python3 tools/assets/mk_th6_stadt.py      # Riesenstadt-Modelle -> models/th6_*.glb
 python3 tools/assets/mk_th6_texturen.py   # Fassaden/Belaege -> textures/th6/*.png
+python3 tools/assets/mk_th7_gebaeude.py   # modulare Gebaeude+Fahrzeuge -> models/th7_*.glb
 ```
 
 Beide brauchen nur **bpy 5.x + numpy** (im Container vorhanden, kein Blender-Binary nötig,
