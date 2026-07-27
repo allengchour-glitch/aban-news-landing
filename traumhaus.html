@@ -2425,8 +2425,12 @@ function doPlaceFloor(x,y,idx,silent){applyFloor(x,y,idx);if(!silent)netSend({t:
 function doPlaceFurn(id,gx,gy,rot,silent,fid,lv){var f=fid||("f"+(fidC++)+(mpHost?"h":"g"));applyFurn(id,gx,gy,rot,f,lv);if(!silent)netSend({t:"furn",id:id,x:gx,y:gy,r:rot,fid:f,lv:lv||1});}
 function doDelete(gx,gy,silent){
   var done=removeFurnAt(gx,gy,silent); // Remote-del (silent): KEINE Rueckerstattung — der Sender regelt sein Geld selbst
-  if(!done){var k;["0","1"].forEach(function(d){k=gx+","+gy+","+d;if(walls[k]){applyWall(gx,gy,+d,null);done=true;}});}
-  if(!done&&floors[fkey(gx,gy)]!==undefined){applyFloor(gx,gy,null);done=true;}
+  if(!done){var k;["0","1"].forEach(function(d){k=gx+","+gy+","+d;if(walls[k]){
+    if(!silent){var _wd=defOf(walls[k].type);if(_wd&&_wd.cost){geld+=Math.round(_wd.cost*0.5);geldSend();}} /* 🩹 Schwarm-P3: Abriss zahlt jetzt wirklich 50% (Hinweis versprach es, gab aber 0) */
+    applyWall(gx,gy,+d,null);done=true;}});}
+  if(!done&&floors[fkey(gx,gy)]!==undefined){
+    if(!silent){var _fd=FLOORS[floors[fkey(gx,gy)]];if(_fd&&_fd.cost){geld+=Math.round(_fd.cost*0.5);geldSend();}}
+    applyFloor(gx,gy,null);done=true;}
   if(done&&!silent)netSend({t:"del",x:gx,y:gy});
   return done;}
 var editSel=null,editMove=false,editRing=null;
@@ -2568,6 +2572,7 @@ function onNetMsg(m){
   else if(m.t==="kochBoost"&&mpHost){if(m.s>=0.999)stats.kochPerfekt=(stats.kochPerfekt||0)+1;kochApply(m.s);}
   else if(m.t==="fisch"&&mpHost){stats.fische=(stats.fische||0)+1;}
   else if(m.t==="immo"&&!mpHost){if(immo.indexOf(m.i)<0)immo.push(m.i);} /* 🩹 Schwarm-P3: Gast sieht Hauskaeufe des Hosts */
+  else if(m.t==="wanted"&&!mpHost){wanted=m.w|0;updWantedHUD();if(m.w>0)hint("🚨 Fahndung Stufe "+m.w+" — die Polizei sucht euch!");} /* 🩹 Schwarm-P2: Gast sieht den Fahndungsstand */
   else if(m.t==="growSold"&&mpHost){stats.growSold=(stats.growSold||0)+1;} /* 🩹 Gast-Deal zaehlt */
   else if(m.t==="growReset"&&mpHost){for(var _gi=0;_gi<furn.length;_gi++){var _gf=furn[_gi];
     if(_gf.gx===m.x&&_gf.gy===m.y&&_gf.grow){_gf.wachs=0;if(_gf.krauts)_gf.krauts.forEach(function(k5){k5.scale.setScalar(0.06);});break;}}}
@@ -3220,9 +3225,10 @@ function setWanted(n){
 function wantedPlus(n){
   if(MPs&&!mpHost)return;
   var vor=wanted;setWanted(wanted+n);
+  if(MPs&&mpHost&&wanted!==vor)netSend({t:"wanted",w:wanted}); /* 🩹 Schwarm-P2: Gast sieht den Fahndungsstand (Bussen wirkten sonst wie zufaelliger Geldverlust) */
   if(wanted>vor)hint("🚔 Fahndung: "+"⭐".repeat(wanted)+" — häng sie ab!");}
 function updPolizei(dt,now){
-  if(!polizei.length){if(wanted!==0){wanted=0;updWantedHUD();}return;}
+  if(!polizei.length){if(wanted!==0){wanted=0;updWantedHUD();if(MPs&&mpHost)netSend({t:"wanted",w:0});}return;} /* 🩹 Entwarnung auch an den Gast */
   var sp=spielerPos(),f=(Math.floor(now*0.006)%2)===0,minDist=1e9;
   for(var i=polizei.length-1;i>=0;i--){var pj=polizei[i],m=pj.mesh;
     var dx=sp.x-m.position.x,dz=sp.z-m.position.z,dist=Math.hypot(dx,dz);minDist=Math.min(minDist,dist);
@@ -4286,11 +4292,11 @@ function stampVilla(){
   var W9=VILLA.w,H9=VILLA.h,ax=-1,ay=-1;
   var cands=[[((GW-W9)/2)|0,4],[((GW-W9)/2)|0,((GH-H9)/2)|0],[4,4],[GW-W9-4,4],[4,GH-H9-4],[GW-W9-4,GH-H9-4]];
   for(var ci=0;ci<cands.length&&ax<0;ci++){var cx0=cands[ci][0],cy0=cands[ci][1],ok=true;
-    for(var x=0;x<W9&&ok;x++)for(var y=0;y<H9&&ok;y++){if(!inLot(cx0+x,cy0+y)||!cellFree(cx0+x,cy0+y))ok=false;}
+    for(var x=0;x<W9&&ok;x++)for(var y=0;y<H9&&ok;y++){var _vx=cx0+x,_vy=cy0+y;if(!inLot(_vx,_vy)||!cellFree(_vx,_vy)||floors[fkey(_vx,_vy)]!==undefined||walls[_vx+","+_vy+",0"]||walls[_vx+","+_vy+",1"])ok=false;} /* 🩹 Schwarm-P3: nie ueber Gebautes stempeln */
     if(ok){ax=cx0;ay=cy0;}}
   if(ax<0){ /* voller Scan */
     for(var sy=1;sy<GH-H9&&ax<0;sy++)for(var sx=1;sx<GW-W9&&ax<0;sx++){var ok2=true;
-      for(var x2=0;x2<W9&&ok2;x2++)for(var y2=0;y2<H9&&ok2;y2++){if(!inLot(sx+x2,sy+y2)||!cellFree(sx+x2,sy+y2))ok2=false;}
+      for(var x2=0;x2<W9&&ok2;x2++)for(var y2=0;y2<H9&&ok2;y2++){var _wx=sx+x2,_wy=sy+y2;if(!inLot(_wx,_wy)||!cellFree(_wx,_wy)||floors[fkey(_wx,_wy)]!==undefined||walls[_wx+","+_wy+",0"]||walls[_wx+","+_wy+",1"])ok2=false;}
       if(ok2){ax=sx;ay=sy;}}}
   if(ax<0){hint("🏰 Kein Platz frei — räume eine 20×14-Fläche frei!");return;}
   geld-=3500;geldSend();
