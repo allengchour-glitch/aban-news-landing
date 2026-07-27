@@ -1841,6 +1841,17 @@ setTimeout(function baueGebaeude(){
     addSolid(-44,30,8.6,9.6,{a:"x",at:-39.7,c:30,w:3.0});   /* Laden: Tuer +x (rot=-PI/2) */
     addSolid(-62,50,14.8,12.8,{a:"z",at:56.4,c:-62,w:4.5}); /* Werkstatt: Tor +z (rot=PI) */
     addSolid(-58,-62,27,15,{a:"x",at:-71.5,c:-62,w:4.0});   /* Kathedrale: Portal -x (rot=PI/2) */
+    /* 🧱 Runde 2: restliche feste Gebaeude solide machen (User "polish alles") */
+    addSolid(78,-79,7.4,11.4,{a:"z",at:-73.3,c:78,w:2.2});   /* Dorf-Kirche (RX,-SZ-33), Tuer Sued */
+    [[-8,0],[-1,0],[6,0]].forEach(function(_s){addSolid(_s[0],70.5,6.8,5.4,{a:"z",at:67.8,c:_s[0]+2.35,w:2.0});}); /* Ladenzeile (SZ+24.5): Eingang rechts vorn */
+    [[96,-22],[96,-44]].forEach(function(v){addSolid(v[0],v[1],6.8,8.4,{a:"x",at:v[0]-3.4,c:v[1],w:2.4});});  /* Ost-Villen: Tuer nach Westen (zur Strasse) */
+    [[-96,8],[-96,28]].forEach(function(v){addSolid(v[0],v[1],6.8,8.4,{a:"x",at:v[0]+3.4,c:v[1],w:2.4});});   /* West-Villen: Tuer nach Osten */
+    addSolid(0,102,26,11,{a:"z",at:96.5,c:0,w:6.0});         /* Bahnhof: Empfangsseite zur Stadt */
+    addSolid(-56,100,22,14,{a:"z",at:93,c:-56,w:4.0});       /* Schule */
+    addSolid(56,100,18,12,{a:"z",at:94,c:56,w:5.0});         /* Feuerwache: Tore vorn */
+    addSolid(96,-110,16.2,11.2,null);                        /* Parkhaus (offen, aber solide Huelle) */
+    addSolid(90,-84,20.4,12.4,{a:"z",at:-90.2,c:90,w:5.0});  /* Lagerhalle: Rolltor */
+    addSolid(-90,-112,8.2,8.2,null);                         /* Downtown-Turm */
     bau("th8_markthalle_offen.glb",11,-62,0,30,Math.PI/2,false);
     bau("th8_stadthaus_offen.glb",9.2,-44,0,12,Math.PI,false);
     bau("th8_laden_offen.glb",3.9,-44,0,30,-Math.PI/2,false);
