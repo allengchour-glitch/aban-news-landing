@@ -233,9 +233,9 @@ def gleis_modul():
     """Gerades Gleis, exakt 12.000 m in x. Schotterbett zweistufig, 20 Schwellen
     im 0.60-Raster (erste bei -5.70 -> der Rhythmus laeuft ueber die Fuge weiter)."""
     neu()
-    SCH  = mat("Schotter", (0.25,0.24,0.225), 0.98)
-    SCH2 = mat("SchotterKrone", (0.31,0.30,0.28), 0.96)
-    BET  = mat("Betonschwelle", (0.43,0.42,0.40), 0.90)
+    SCH  = mat("Schotter", (0.21,0.20,0.185), 0.98)
+    SCH2 = mat("SchotterKrone", (0.26,0.25,0.23), 0.96)
+    BET  = mat("Betonschwelle", (0.35,0.34,0.32), 0.90)
     STA  = mat("Schienenfuss", (0.34,0.31,0.28), 0.55, 0.35)
     KOPF = mat("Schienenkopf", (0.74,0.75,0.77), 0.20, 0.60)
     KLE  = mat("Kleineisen", (0.30,0.26,0.22), 0.6, 0.3)
@@ -260,9 +260,9 @@ def gleis_bogen():
     Schotterhoehen, gleiche SOK 0.650) -> stumpf anschliessbar.
     Anfang im Ursprung, Tangente +x, Ende bei (20, 20) mit Tangente +y."""
     neu()
-    SCH  = mat("Schotter", (0.25,0.24,0.225), 0.98)
-    SCH2 = mat("SchotterKrone", (0.31,0.30,0.28), 0.96)
-    BET  = mat("Betonschwelle", (0.43,0.42,0.40), 0.90)
+    SCH  = mat("Schotter", (0.21,0.20,0.185), 0.98)
+    SCH2 = mat("SchotterKrone", (0.26,0.25,0.23), 0.96)
+    BET  = mat("Betonschwelle", (0.35,0.34,0.32), 0.90)
     STA  = mat("Schienenfuss", (0.34,0.31,0.28), 0.55, 0.35)
     KOPF = mat("Schienenkopf", (0.74,0.75,0.77), 0.20, 0.60)
     R  = 20.0
@@ -304,8 +304,8 @@ def bahnsteig_modul():
     weiter. Beide Kanten sind Gleiskanten -> Modulmitte auf y = +-4.70 zur
     Gleisachse setzen, dann steht die Kante NEBEN dem Gleis (Spalt 0.19 m)."""
     neu()
-    BET = mat("Bahnsteigbeton", (0.46,0.45,0.43), 0.92)
-    PLA = mat("Gehwegplatte", (0.55,0.54,0.51), 0.85)
+    BET = mat("Bahnsteigbeton", (0.40,0.39,0.37), 0.92)
+    PLA = mat("Gehwegplatte", (0.48,0.47,0.44), 0.85)
     KAN = mat("Kantenstein", (0.37,0.36,0.34), 0.80)
     WEI = mat("Sicherheitslinie", (0.80,0.79,0.76), 0.70)
     GEL = mat("Blindenstreifen", (0.78,0.60,0.10), 0.75)
@@ -555,13 +555,17 @@ def tram():
         box(sx, 8.20, Z1 + 0.42, 0.70, 3.20, 0.26, DAC)
         box(sx, -8.20, Z1 + 0.42, 0.70, 3.20, 0.26, DAC)
     for s in (-1, 1):                                                 # Bug / Heck
-        box(0, s * 13.85, (Z0 + Z1) / 2, KB - 0.04, 0.30, Z1 - Z0, KAS)   # Bugkappe
+        # Bugkappe als RAHMEN (Brust, Dachband, zwei A-Saeulen). Ein voller Kasten
+        # deckt die zurueckgeneigte Frontscheibe komplett zu — die Front rendert
+        # dann als weisse Wand (genau so passiert, teuerste Stelle dieser Charge).
+        box(0, s * 13.85, 1.22, KB - 0.04, 0.30, 1.00, KAS)           # unter der Scheibe
+        box(0, s * 13.85, 3.23, KB - 0.04, 0.30, 0.14, KAS)           # ueber der Scheibe
+        for sx in (-1, 1):
+            box(sx * (KB / 2 - 0.13), s * 13.85, 2.44, 0.26, 0.30, 1.44, KAS)   # A-Saeule
         tonne_y(0, s * 13.85, Z1, KB / 2 - 0.02, 0.30, DAC, 20, 0.26)
-        # Rahmen HINTER die Scheibe; alle Bugteile enden exakt auf +-14.000.
-        o = box(0, s * 13.76, 2.44, KB - 0.06, 0.10, 1.56, RAH)
-        o.rotation_euler[0] = s * 0.16
-        o = box(0, s * 13.83, 2.44, KB - 0.20, 0.10, 1.44, GLA)       # Frontscheibe
-        o.rotation_euler[0] = s * 0.16
+        box(0, s * 13.82, 2.44, KB - 0.26, 0.10, 1.46, RAH)           # dunkler Grund
+        o = box(0, s * 13.87, 2.44, KB - 0.30, 0.10, 1.34, GLA)       # Frontscheibe
+        o.rotation_euler[0] = s * 0.12                                # Unterkante auf 14.000
         box(0, s * 13.89, 1.36, KB - 0.04, 0.22, 0.72, KAS)           # Bugblende
         box(0, s * 13.90, 0.86, KB - 0.12, 0.20, 0.34, DUN)
         box(0, s * 13.72, 3.30, KB - 0.30, 0.34, 0.34, ANZ)           # Zielanzeige
@@ -578,8 +582,8 @@ def tramhaltestelle():
     Blindenstreifen auf beiden Seiten, verglastem Wartehaeuschen (offen nach +y),
     Fahrplanvitrine, Haltestellenmast und Baenken."""
     neu()
-    BET = mat("Inselbeton", (0.46,0.45,0.43), 0.92)
-    PLA = mat("Platte", (0.55,0.54,0.51), 0.85)
+    BET = mat("Inselbeton", (0.40,0.39,0.37), 0.92)
+    PLA = mat("Platte", (0.48,0.47,0.44), 0.85)
     KAN = mat("Kantenstein", (0.37,0.36,0.34), 0.80)
     GEL = mat("Blindenstreifen", (0.78,0.60,0.10), 0.75)
     STZ = mat("Stuetze", (0.28,0.31,0.34), 0.45, 0.35)

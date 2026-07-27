@@ -454,12 +454,14 @@ def silo():
     box(0.0, R*0.42, ZM + 1.62, 0.80, 0.72, 0.14, DKL)            # Einfuellklappe
     # --- Auslauftrichter und Tuer am Fuss, um 52 Grad aus der Leiterachse gedreht
     # (erste Fassung lag exakt hinter der Leiter und war komplett verdeckt).
-    ang = math.radians(-52)
+    ang = math.radians(-38)
     ax, ay = math.sin(ang), math.cos(ang)
-    kegel(ax*(R + 0.42), ay*(R + 0.42), 1.15, 0.52, 0.20, 0.90, STAHL, 14,
-          rot=(math.radians(-28)*ay, math.radians(28)*ax, 0))
-    o = box(ax*(R + 0.30), ay*(R + 0.30), 0.42, 0.90, 0.55, 0.84, STAHL)
-    o.rotation_euler[2] = -ang
+    aus = math.radians(-16)                       # Auslauf NEBEN der Tuer, nicht davor
+    bx, by = math.sin(aus), math.cos(aus)
+    kegel(bx*(R + 0.42), by*(R + 0.42), 1.15, 0.52, 0.20, 0.90, STAHL, 14,
+          rot=(math.radians(-28)*by, math.radians(28)*bx, 0))
+    o = box(bx*(R + 0.30), by*(R + 0.30), 0.42, 0.90, 0.55, 0.84, STAHL)
+    o.rotation_euler[2] = -aus
     o = box(ax*(R - 0.02), ay*(R - 0.02), 1.65, 1.00, 0.14, 1.80, DKL)   # Wartungstuer
     o.rotation_euler[2] = -ang
     o = box(ax*(R + 0.05), ay*(R + 0.05), 1.65, 0.80, 0.06, 1.55, GELB)
@@ -516,9 +518,9 @@ def gewaechshaus():
     # --- Tonnendach: Achse laengs in y, Bogen ueber die Breite
     tonne_y(0, 0, WH, R, T, GLAS, 28)
     for i in range(11):                                           # Bogenrippen
-        tonne_y(0, -T/2 + 0.30 + i*1.44, WH, R + 0.05, 0.13, RAHM, 28)
-    tonne_y(0,  T/2 - 0.06, WH, R + 0.06, 0.14, RAHM, 28)
-    tonne_y(0, -T/2 + 0.06, WH, R + 0.06, 0.14, RAHM, 28)
+        tonne_y(0, -T/2 + 0.30 + i*1.44, WH, R + 0.05, 0.13, RAHM, 18)
+    tonne_y(0,  T/2 - 0.06, WH, R + 0.06, 0.14, RAHM, 18)
+    tonne_y(0, -T/2 + 0.06, WH, R + 0.06, 0.14, RAHM, 18)
     box(0, 0, WH + R - 0.10, 0.22, T + 0.2, 0.22, RAHM)           # Firstprofil
     for i in range(4):                                            # Lueftungsklappen im Dach
         ph = math.radians(20)                                     # Klappe liegt TANGENTIAL
@@ -553,7 +555,7 @@ def gewaechshaus():
     box(0, 6.10, FB + 0.42, 1.40, 0.60, 0.84, HOLZ)               # Ablage neben der Tuer
     for i in range(3):
         kegel(-0.45 + i*0.45, 6.10, FB + 0.96, 0.16, 0.20, 0.24, TOPF, 10)
-    export("th18_gewaechshaus", 0.016, 2)
+    export("th18_gewaechshaus", 0.014, 1)   # viele duenne Profile: 1 Bevel-Segment
 
 # ================================================================ 5) Traktor
 def traktor():
@@ -708,7 +710,7 @@ def heuballen():
     # Die erste Fassung hatte drei fast gleich helle Ballen — im Render war weder
     # Groesse noch Material zu unterscheiden. Jetzt klar getrennte Toene.
     HEU  = mat("Heu golden", (0.86,0.70,0.24), 0.94)
-    HEU2 = mat("Heu gruenlich", (0.66,0.58,0.22), 0.94)
+    HEU2 = mat("Anwelksilage", (0.38,0.42,0.16), 0.94)
     HEU3 = mat("Wickelnetz", (0.46,0.36,0.14), 0.92)
     HEU4 = mat("Heu Stirnseite", (0.76,0.62,0.22), 0.95)
     FOLIE= mat("Silofolie", (0.92,0.93,0.90), 0.50)
@@ -717,7 +719,9 @@ def heuballen():
         # Wickelbaender stehen 0.012 vor -> Ballenmitte auf r+0.012, sonst laege
         # die Unterkante bei -0.012 statt exakt 0.
         rot = (0, 0, 0) if stehend else (0, math.pi/2, 0)
-        cz = L/2 if stehend else r + 0.012
+        # stehend: die untere Stirnscheibe (0.012 vor + 0.01 halbe Dicke) bestimmt
+        # die Unterkante — sonst misst das Modell z_min = -0.02 statt 0.
+        cz = L/2 + 0.025 if stehend else r + 0.012
         rk = r if stehend else r + 0.012
         zyl(px, py, cz, r, L, m_kern, 24, rot=rot)
         for i in range(4):                                        # Wickelbaender
@@ -727,14 +731,13 @@ def heuballen():
         for s in (-1, 1):                                         # Stirnseiten-Spirale
             for k, rr in enumerate((0.78, 0.52, 0.26)):
                 mm = m_band if k == 1 else m_stirn
-                if stehend: zyl(px, py, cz + s*(L/2 + 0.012), r*rr, 0.02, mm, 20)
-                else:       zyl(px + s*(L/2 + 0.012), py, rk, r*rr, 0.02, mm, 20,
+                off = L/2 + 0.012 + k*0.009       # gestaffelt: koplanare Scheiben
+                if stehend: zyl(px, py, cz + s*off, r*rr, 0.02, mm, 20)   # z-fighten
+                else:       zyl(px + s*off, py, rk, r*rr, 0.02, mm, 20,
                                 rot=(0, math.pi/2, 0))
     ballen(-1.85, 0.10, 0.95, 1.40, HEU,  HEU3, HEU4)             # gross, liegend
     ballen( 0.60, 1.00, 0.68, 1.10, HEU2, HEU3, HEU4)             # mittel, liegend
     ballen( 2.05, -0.70, 0.58, 1.20, FOLIE, FOL2, FOL2, True)     # klein, stehend
-    for i in range(5):                                            # ein paar Heubueschel
-        box(-2.4 + i*1.35, -1.25 + (i % 2)*0.35, 0.06, 0.55, 0.42, 0.12, HEU4)
     export("th18_heuballen", 0.016, 2)
 
 # ================================================================ 8) Zaun-Modul
@@ -756,8 +759,8 @@ def zaun_modul():
         box(px, 0, HP + 0.14, 0.11, 0.11, 0.08, HOLZ2)
     for z, hh in ((0.34, 0.15), (0.74, 0.15), (1.10, 0.13)):      # Riegel, exakt -2.00..2.00
         box(0, -0.085, z, L, 0.06, hh, HOLZ3 if z > 0.5 else HOLZ)
-    for i in range(4):                                            # Zwischenlatten
-        box(-1.50 + i*1.00, -0.10, 0.68, 0.09, 0.05, 1.02, HOLZ)
+    for i in range(4):                                            # Zwischenlatten VOR
+        box(-1.50 + i*1.00, -0.155, 0.67, 0.09, 0.05, 0.98, HOLZ)  # den Riegeln
     for x0, x1 in ((-1.86, -0.06), (0.06, 1.86)):                 # Diagonale je Feld,
         strebe_xz(x0, 0.34, x1, 1.10, -0.055, 0.11, 0.05, HOLZ3)  # gleiche Richtung
     export("th18_zaun_modul", 0.012, 2)
@@ -767,13 +770,13 @@ def feld_modul():
     """Ackerstueck, exakt 10.00 x 10.00 m. Furchenraster 0.50 m -> in x UND y
     kachelbar (10.00 / 0.50 = 20 Furchen, keine halbe Furche am Rand)."""
     neu()
-    ERDE = mat("Ackererde", (0.30,0.20,0.12), 0.96)
-    ERDE2= mat("Erde hell", (0.38,0.27,0.17), 0.95)
-    ERDE3= mat("Furchengrund", (0.17,0.12,0.08), 0.97)            # dunkel, sonst
+    ERDE = mat("Ackererde", (0.13,0.085,0.052), 0.96)
+    ERDE2= mat("Erde hell", (0.17,0.115,0.070), 0.95)
+    ERDE3= mat("Furchengrund", (0.075,0.050,0.032), 0.97)            # dunkel, sonst
     STEIN= mat("Feldstein", (0.40,0.38,0.35), 0.92)               # verschwinden die Rillen
     GRUE = mat("Saatgruen", (0.26,0.46,0.16), 0.90)
     GRUE2= mat("Saat hell", (0.34,0.56,0.20), 0.90)
-    S, PER, RR = 10.0, 0.50, 0.21
+    S, PER, RR = 10.0, 0.50, 0.15
     box(0, 0, 0.06, S, S, 0.12, ERDE3)                            # Krume, exakt 10 x 10
     n = int(S / PER)
     for i in range(n):
@@ -782,11 +785,11 @@ def feld_modul():
     for i in range(n):                                            # Saatreihen auf dem Damm
         if i % 2: continue
         y = -S/2 + PER/2 + i*PER
-        for k in range(20):                                       # Bueschel statt Kugeln —
-            kegel(-4.75 + k*0.50, y, 0.42, 0.13, 0.01, 0.24,      # Kugeln lasen sich als
+        for k in range(25):                                       # Bueschel statt Kugeln —
+            kegel(-4.80 + k*0.40, y, 0.33, 0.105, 0.01, 0.21,     # Kugeln lasen sich als
                   GRUE if k % 2 else GRUE2, 5)                    # Murmeln
     for (sx, sy, rr) in ((-3.1, 2.4, 0.14), (2.6, -3.6, 0.12), (4.1, 1.2, 0.10)):
-        kugel(sx, sy, 0.20, rr, STEIN, 8)     # halb eingegraben, ueberragt die Furche nicht
+        kugel(sx, sy, 0.15, rr, STEIN, 8)     # halb eingegraben, ueberragt die Furche nicht
     export("th18_feld_modul", 0.012, 1)       # flaches Bodenteil: 1 Bevel-Segment reicht
 
 # ================================================================ 10) Windrad

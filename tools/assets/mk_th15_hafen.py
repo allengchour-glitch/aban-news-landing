@@ -199,8 +199,10 @@ FB = 0.30   # Fussboden-Oberkante — Aussensockel UND Innenboden enden hier,
             # damit in der Tuer keine Schwelle steht. Moebel: FB + Hoehe ueber Boden.
 
 def boden(B, T, m_sockel, m_boden, rand=2.0):
-    box(0, 0, FB/2, B + rand, T + rand, FB, m_sockel)     # Vorplatz
-    box(0, 0, FB/2, B, T, FB, m_boden)                    # Innenboden, buendig
+    # Vorplatz 2 cm TIEFER als der Innenboden: deckungsgleiche Oberflaechen
+    # flimmern, und im Render gewann der graue Sockel ueber die Holzdiele.
+    box(0, 0, (FB - 0.02)/2, B + rand, T + rand, FB - 0.02, m_sockel)
+    box(0, 0, FB/2, B, T, FB, m_boden)                    # Innenboden
 
 def wand_mit_tuer(cx, cy, laenge, dicke, hoehe, m, tuer_b=2.4, tuer_h=3.0,
                   achse='x', tuer_off=0.0):
@@ -368,8 +370,10 @@ def container(cx, cy, cz, m_korp, m_akz, m_boden, laenge=6.06, breite=2.44,
             t = (i + 0.5)/sicken - 0.5
             box(cx + sx*breite/2, cy + t*laenge*0.94, zc,
                 0.07, laenge*0.045, hoehe*0.84, m_akz)
-    box(cx, cy, cz + 0.11, breite + 0.03, laenge + 0.02, 0.22, m_akz)      # Untergurt
-    box(cx, cy, cz + hoehe - 0.11, breite + 0.03, laenge + 0.02, 0.22, m_akz)
+    # Gurte bewusst 2 cm INNERHALB der Deckflaechen — deckungsgleiche Flaechen
+    # flimmern (im ersten Render als Ringmuster auf den Containerdeckeln sichtbar).
+    box(cx, cy, cz + 0.12, breite + 0.03, laenge + 0.02, 0.20, m_akz)      # Untergurt
+    box(cx, cy, cz + hoehe - 0.12, breite + 0.03, laenge + 0.02, 0.20, m_akz)
     for sx in (-1, 1):                                        # Eckbeschlaege
         for sy in (-1, 1):
             for zz in (cz + 0.13, cz + hoehe - 0.13):
@@ -444,8 +448,10 @@ def kaimauer_modul():
     SEIL = mat("Tau",        (0.68,0.58,0.38), 0.9)
     GELB = mat("Warnfarbe",  (0.90,0.72,0.12), 0.6)
     L, TW, H = 12.0, 3.0, 4.0
-    # Mauerkoerper: x bleibt EXAKT 12.0, alle Anbauten wachsen nur in y/z
-    box(0, 0, H/2, L, TW, H, BET)
+    # Mauerkoerper: x bleibt EXAKT 12.0, alle Anbauten wachsen nur in y/z.
+    # Die Krone endet 0,14 unter H — waere sie deckungsgleich mit dem Kranzbalken,
+    # flimmern die beiden Deckflaechen (z-Fighting, im ersten Render deutlich).
+    box(0, 0, (H - 0.14)/2, L, TW, H - 0.14, BET)
     box(0, 0, 0.55, L, TW + 0.10, 1.10, DUNK)                 # nasser Sockel
     for k in range(3):                                        # Schalungsfugen
         box(0, 0, 1.45 + k*0.85, L, TW + 0.04, 0.05, DUNK)
@@ -459,9 +465,9 @@ def kaimauer_modul():
         zyl(px, TW/2 + 0.16, 2.00, 0.24, 2.80, GUMM, 12)
         for zz in (0.72, 3.28):
             box(px, TW/2 + 0.10, zz, 0.52, 0.16, 0.14, STAH)
-    for px in (-4.0, 0.0, 4.0):                               # zusaetzliche Autoreifen
+    for px in (-4.0, -2.0, 2.0, 4.0):     # Autoreifen, NICHT auf x=0 (dort die Leiter)
         reifen(px, TW/2 + 0.22, 1.55, 0.38, 0.13, GUMM, 'y')
-        box(px, TW/2 + 0.14, 2.60, 0.05, 0.05, 1.60, SEIL)
+        box(px, TW/2 + 0.14, 2.96, 0.05, 0.05, 2.14, SEIL)    # Tau bis an die Krone
     for px in (-1.6, 1.6):                                    # Festmacherringe
         reifen(px, TW/2 + 0.06, 2.95, 0.17, 0.05, GUSS, 'y', 10, 6)
     # Steigleiter in der Mauerflucht
@@ -469,7 +475,9 @@ def kaimauer_modul():
         box(sx, TW/2 + 0.10, 2.05, 0.07, 0.07, 3.70, STAH)
     for k in range(9):
         box(0, TW/2 + 0.10, 0.45 + k*0.40, 0.48, 0.09, 0.05, STAH)
-    box(0, TW/2 + 0.06, 4.25, 0.60, 0.10, 0.90, STAH)         # Handgriff ueber Kante
+    for sx in (-0.24, 0.24):                                  # Holme ueber die Kante
+        box(sx, TW/2 + 0.10, 4.40, 0.07, 0.07, 0.80, STAH)
+    box(0, TW/2 + 0.10, 4.78, 0.55, 0.09, 0.06, STAH)
     # Poller
     for px in (-3.6, 3.6):
         poller(px, 0.55, H, GUSS, 1.0)
@@ -658,12 +666,14 @@ def frachtschiff():
     gelaender(-4.7, 4.7, -12.30, ZD + 9.74, GRAU, 1.05, 'x', 0.07)
     for sx in (-4.70, 4.70):
         gelaender(-15.9, -12.3, sx, ZD + 9.74, GRAU, 1.05, 'y', 0.07)
-    # Schornstein
-    kegel(0, -17.60, ZD + 7.50, 1.55, 1.28, 5.40, DUNK, 16)
-    box(0, -17.60, ZD + 9.10, 3.00, 3.00, 0.90, ROT)
-    box(0, -17.60, ZD + 10.28, 3.20, 3.20, 0.30, DUNK)
-    for sx in (-1.15, 1.15):
-        zyl(sx, -17.60, ZD + 10.80, 0.10, 0.80, GRAU, 8)
+    # Schornstein — Fuss tief IM Deckshaus (r 1,45 bei y -17,2 bleibt innerhalb
+    # der Achterkante -19,0; vorher schaute er als dunkle Zunge heraus) und hoch
+    # genug, dass er die Bruecke (15,6) ueberragt.
+    kegel(0, -17.20, 13.80, 1.45, 1.20, 6.80, DUNK, 16)
+    box(0, -17.20, 15.90, 2.85, 2.85, 0.90, ROT)
+    box(0, -17.20, 17.25, 3.05, 3.05, 0.30, DUNK)
+    for sx in (-1.05, 1.05):
+        zyl(sx, -17.20, 17.85, 0.10, 0.80, GRAU, 8)
     # Radarmast
     zyl(0, -14.90, ZD + 11.40, 0.13, 3.30, GRAU, 10)
     box(0, -14.90, ZD + 12.10, 1.90, 0.16, 0.14, GRAU)
@@ -704,12 +714,15 @@ def frachtschiff():
     zyl(0, 13.20, ZD + 3.60, 0.17, 7.20, WEIS, 12)
     box(0, 13.20, ZD + 6.10, 2.60, 0.16, 0.14, WEIS)
     kugel(0, 13.20, ZD + 7.35, 0.19, LED, 10)
-    # Anker + Rettungsboot
+    # Anker + Rettungsboote in Davits (aussenbords, sonst stecken sie im Deckshaus)
     for sx in (-1, 1):
         box(sx*3.05, 18.20, 3.00, 0.20, 1.10, 1.30, DUNK)
     for sx in (-1, 1):
-        box(sx*4.15, -15.5, ZD + 3.55, 0.85, 3.40, 1.10, GELB)
-        box(sx*4.15, -15.5, ZD + 4.20, 0.95, 3.60, 0.24, WEIS)
+        box(sx*4.95, -15.5, ZD + 4.30, 0.90, 3.40, 1.00, GELB)
+        box(sx*4.95, -15.5, ZD + 4.92, 1.00, 3.60, 0.24, WEIS)
+        for yy in (-16.9, -14.1):
+            strebe((sx*4.10, yy, ZD + 6.60), (sx*4.95, yy, ZD + 4.90), 0.14, GRAU)
+            box(sx*4.10, yy, ZD + 5.60, 0.16, 0.16, 2.00, GRAU)
     # Reling ums Hauptdeck
     for sx in (-4.45, 4.45):
         gelaender(-11.0, 11.5, sx, ZD + 0.92, GRAU, 0.95, 'y', 0.07)
@@ -732,28 +745,29 @@ def segelboot():
     POLS = mat("Polster", (0.30,0.38,0.46), 0.85)
     ROT  = mat("Fender",  (0.82,0.28,0.20), 0.7)
     ZWL, ZD, LOA = 0.42, 1.15, 8.0
-    N = 16
-    segs = []
-    for i in range(N):
-        t = -1.0 + (i + 0.5)*2.0/N
-        if t >= 0: w = 2.60*max(0.10, 1.0 - t**1.9)
-        else:      w = 2.60*(1.0 - 0.55*abs(t)**3)
-        segs.append((t*LOA/2, LOA/N + 0.02, w, ZD + 0.17*t*t))
-    rumpf(segs, UNT, WEIS, TEAK, WEIS, ZWL, 0.11, (-3.35, -0.55, 0.86), 0.16)
-    box(0, 0, ZWL + 0.06, 2.62, 6.4, 0.09, STRE)              # Zierstreifen
-    box(0, -3.92, 0.62, 1.30, 0.20, 1.24, WEIS)               # Heckspiegel
-    # Plicht (Cockpit)
-    box(0, -1.95, 0.72, 1.90, 2.80, 0.10, TEAK)               # Plichtboden 0,77
+    def wB(y):
+        t = y/(LOA/2)
+        if t >= 0: return 2.60*max(0.10, 1.0 - min(1.0, t)**1.9)
+        return 2.60*(1.0 - 0.55*min(1.0, abs(t))**3)
+    def zB(y): return ZD + 0.17*(y/(LOA/2))**2
+    stB = [-LOA/2 + i*LOA/20 for i in range(21)]
+    hull(stB, wB, zB, ZWL, 0.12, (UNT, STRE, WEIS, TEAK))
+    schanzkleid(stB, wB, zB, 0.12, 0.10, WEIS, 2)             # Scheuerleiste
+    # Plicht (Cockpit) — das Deck ist geschlossen, die Plicht sitzt als Suell
+    # mit Baenken darauf. Sitzhoehe 0,42 ueber Deck.
+    ZC = zB(-1.95)
     for sx in (-1, 1):
-        box(sx*0.86, -1.95, 1.05, 0.12, 2.80, 0.50, WEIS)     # Suell
-        box(sx*0.56, -1.95, 0.86, 0.52, 2.60, 0.12, POLS)     # Baenke 0,92
-        box(sx*0.86, -1.95, 1.32, 0.16, 2.84, 0.06, HOLZ)     # Suellkante
-    box(0, -0.52, 1.05, 1.84, 0.14, 0.50, WEIS)
-    box(0, -3.32, 1.05, 1.84, 0.14, 0.50, WEIS)
-    box(0, -3.05, 1.00, 0.60, 0.44, 0.36, HOLZ)               # Steuerkonsole
-    o = box(0, -2.55, 1.24, 0.07, 1.05, 0.07, HOLZ); o.rotation_euler[0] = 0.12  # Pinne
+        box(sx*0.86, -1.95, ZC + 0.31, 0.12, 2.80, 0.62, WEIS)   # Suell
+        box(sx*0.56, -1.95, ZC + 0.37, 0.52, 2.56, 0.10, POLS)   # Bank, Sitz 0,42
+        box(sx*0.82, -1.95, ZC + 0.19, 0.14, 2.56, 0.38, WEIS)
+        box(sx*0.86, -1.95, ZC + 0.65, 0.16, 2.84, 0.06, HOLZ)   # Suellkante
+    box(0, -0.52, ZC + 0.31, 1.84, 0.14, 0.62, WEIS)
+    box(0, -3.32, ZC + 0.31, 1.84, 0.14, 0.62, WEIS)
+    box(0, -3.05, ZC + 0.22, 0.60, 0.44, 0.44, HOLZ)             # Steuerkonsole
+    o = box(0, -2.55, ZC + 0.48, 0.07, 1.05, 0.07, HOLZ)         # Pinne
+    o.rotation_euler[0] = 0.12
     for sx in (-0.86, 0.86):
-        zyl(sx, -1.05, 1.42, 0.11, 0.20, ALU, 10)             # Schotwinschen
+        zyl(sx, -1.05, ZC + 0.78, 0.11, 0.20, ALU, 10)           # Schotwinschen
     # Kajuetaufbau
     box(0, 1.05, 1.48, 1.72, 3.00, 0.66, WEIS)
     box(0, 1.05, 1.83, 1.86, 3.14, 0.08, TEAK)
@@ -784,9 +798,7 @@ def segelboot():
     for sx in (-1, 1):
         for i in range(6):
             yy = -2.9 + i*1.30
-            t = yy/(LOA/2)
-            w = 2.60*(max(0.10, 1.0 - t**1.9) if t >= 0 else (1.0 - 0.55*abs(t)**3))
-            box(sx*(w/2 - 0.10), yy, ZD + 0.17*t*t + 0.34, 0.055, 0.055, 0.62, ALU)
+            box(sx*(wB(yy)/2 - 0.10), yy, zB(yy) + 0.34, 0.055, 0.055, 0.62, ALU)
         strebe((sx*1.21, -2.9, 1.78), (sx*0.52, 3.72, 1.72), 0.035, ALU)
         strebe((sx*1.21, -2.9, 1.50), (sx*0.52, 3.72, 1.46), 0.030, ALU)
         strebe((sx*0.52, 3.72, 1.72), (0, 3.95, 1.68), 0.035, ALU)
@@ -890,9 +902,10 @@ def steg():
     for i in range(n):
         px = -L/2 + 0.12 + i*(L - 0.24)/(n - 1)
         box(px, 0, 1.17, 0.20, BR, 0.10, HOLZ if i % 3 else HOL2)
-    box(0, 0, 1.20, L, BR + 0.10, 0.05, HOLZ)                 # Randabschluss
-    # Dalben, Klampen, Fender
-    for py in (-1.36, 1.36):
+    for sy in (-1, 1):                                        # NUR Randleisten —
+        box(0, sy*(BR/2 + 0.03), 1.19, L, 0.10, 0.10, HOLZ)   # eine volle Platte
+    # Dalben, Klampen, Fender                                 # deckt sonst den Belag zu
+    for py in (-1.48, 1.48):
         zyl(0, py, 0.95, 0.15, 1.90, PFAH, 12)
         zyl(0, py, 0.30, 0.165, 0.60, NASS, 12)
         reifen(0, py, 1.62, 0.24, 0.05, SEIL, 'z', 12, 6)
@@ -902,7 +915,7 @@ def steg():
             klampe(px, py, 1.22, STAH, 'x')
     for px in (-2.0, 2.0):                                    # haengende Fender
         reifen(px, 1.30, 0.62, 0.32, 0.11, GUMM, 'y')
-        box(px, 1.26, 1.00, 0.05, 0.05, 0.80, SEIL)
+        box(px, 1.26, 1.08, 0.05, 0.05, 0.30, SEIL)           # Tau nur bis zum Reifen
     export("th15_steg", 0.018, 2)
 
 
@@ -981,22 +994,21 @@ def bootshaus():
     for i in range(9):
         box(4.28, -0.15 + i*0.34, FB + 1.14, 0.24, 0.22, 0.22, ROT if i % 3 == 0 else STAH)
         box(4.28, -0.15 + i*0.34, FB + 1.74, 0.26, 0.24, 0.20, WEIS if i % 2 else HOL2)
-    # Kanu haengt an der rechten Wand
-    for i in range(9):
-        t = (i + 0.5)/9.0
-        w = 0.72*(1.0 - (2*t - 1)**2)**0.6 + 0.06
-        box(4.05, -3.6 + i*0.52, 2.90, 0.44, 0.52, w, WEIS if i % 2 else ROT)
-    for yy in (-2.6, 1.0):
-        strebe((4.05, yy, 3.30), (4.05, yy, WH + 0.60), 0.05, SEIL)
-    # Ruderboot im Slip
-    for i in range(11):
-        t = (i + 0.5)/11.0
-        yy = -2.6 + i*0.42
-        w = 1.35*(1.0 - abs(2*t - 1)**2.1) + 0.16
-        box(0, yy, 0.34, w, 0.44, 0.68, ROT)
-        box(0, yy, 0.66, w - 0.14, 0.44, 0.10, WEIS)
-    for yy in (-1.6, 0.4):
-        box(0, yy, 0.60, 1.12, 0.16, 0.07, WEIS)              # Duchten
+    # Kanu haengt an der rechten Wand (geloftet, nicht als Quaderkette)
+    def wK(y): return 0.60*(1.0 - min(1.0, abs(y/2.40))**2.2) + 0.07
+    def zK(y): return 0.50
+    stK = [-2.40 + i*0.24 for i in range(21)]
+    hull(stK, wK, zK, 0.16, 0.07, (WEIS, ROT, WEIS, ROT), 0.80, (4.05, -1.0, 2.60))
+    for yy in (-2.6, 0.6):
+        strebe((4.05, yy, 3.12), (4.05, yy, WH + 0.60), 0.05, SEIL)
+    # Ruderboot im Slip (geloftet)
+    def wR(y): return 1.34*(1.0 - min(1.0, abs(y/2.30))**2.4) + 0.12
+    def zR(y): return 0.64
+    stR = [-2.30 + i*0.23 for i in range(21)]
+    hull(stR, wR, zR, 0.20, 0.09, (ROT, WEIS, ROT, WEIS), 0.74, (0.0, -0.3, 0.0))
+    schanzkleid(stR, wR, zR, 0.10, 0.10, WEIS, 2, (0.0, -0.3, 0.0))
+    for yy in (-1.5, 0.5):
+        box(0, yy, 0.76, 1.10, 0.16, 0.07, WEIS)              # Duchten
     for sx in (-1, 1):
         o = box(sx*0.62, -0.9, 0.82, 0.09, 2.20, 0.09, HOL2)
         o.rotation_euler[2] = sx*0.16
@@ -1140,7 +1152,7 @@ def fischerhuette():
     FEUR = leucht("Feuer", (1.0,0.44,0.12), 3.0)
     LAMP = leucht("Lampe", (1.0,0.88,0.58), 2.4)
     B, T, WH = 6.0, 7.0, 3.20
-    boden(B, T, SOK, DIEL, 2.4)
+    boden(B, T, SOK, DIEL, 2.8)
     for i in range(13):                                       # Dielenfugen
         box(0, -3.0 + i*0.5, FB + 0.01, B - 0.2, 0.05, 0.03, HOL2)
     wand_mit_tuer(0, T/2 + 0.13, B + 0.52, 0.26, WH, BLAU, 2.40, 2.80, 'x')
@@ -1160,7 +1172,10 @@ def fischerhuette():
     box(-2.00, -2.35, FB + 0.50, 0.90, 0.72, 1.00, GUSS)
     box(-2.00, -2.35, FB + 1.04, 1.02, 0.84, 0.10, GUSS)
     box(-2.00, -1.97, FB + 0.52, 0.52, 0.06, 0.42, FEUR)
-    box(-2.00, -1.94, FB + 0.52, 0.58, 0.05, 0.50, GUSS)
+    for sx in (-0.30, 0.30):                                  # Tuerrahmen als RAHMEN —
+        box(-2.00 + sx, -1.95, FB + 0.52, 0.06, 0.05, 0.52, GUSS)   # eine volle Platte
+    for zz in (0.27, 0.77):                                   # verdeckt den Feuerschein
+        box(-2.00, -1.95, FB + zz, 0.62, 0.05, 0.06, GUSS)
     zyl(-2.00, -2.35, FB + 1.10, 0.24, 0.12, GUSS, 12)
     zyl(-2.00, -2.35, FB + 2.30, 0.13, 2.30, GUSS, 12)        # 1,40 - 3,70
     zyl(-2.00, -2.35, FB + 3.95, 0.13, 1.00, GUSS, 12)        # durchs Dach bis 4,55
@@ -1200,19 +1215,21 @@ def fischerhuette():
     box(0, 0.60, WH + 1.20, 0.06, 0.06, 0.50, STAH)
     kegel(0, 0.60, WH + 0.86, 0.28, 0.09, 0.24, STAH, 12)
     kugel(0, 0.60, WH + 0.72, 0.14, LAMP, 10)
-    # Trockengestell + Kisten draussen
-    for sx in (-1.60, 1.60):
+    # Trockengestell + Kisten draussen — NEBEN der Tuer (x -4,0 .. -1,2), nicht
+    # davor: im ersten Render stand das Gestell mittig vor dem Eingang.
+    GX = -2.75          # Tuer liegt bei x -1,20..1,20, Vorplatz endet bei -4,40
+    for sx in (GX - 1.05, GX + 1.05):
         # Fusspunkt bei 0,07: eine schraege Strebe der Staerke 0,11 ragt sonst
         # mit ihrer Ecke unter den Nullpunkt (gemessen -0,01).
-        strebe((sx - 0.55, 4.10, 0.07), (sx, 4.10, 2.40), 0.11, HOL2)
-        strebe((sx + 0.55, 4.10, 0.07), (sx, 4.10, 2.40), 0.11, HOL2)
-    box(0, 4.10, 2.42, 3.90, 0.11, 0.11, HOL2)
-    netz(0, 4.06, 1.55, 3.20, 1.70, NETZ, 'x', 11, 7)
-    for i, xx in enumerate((-1.30, -0.95, 1.05, 1.42)):
+        strebe((sx - 0.40, 4.10, 0.07), (sx, 4.10, 2.40), 0.11, HOL2)
+        strebe((sx + 0.40, 4.10, 0.07), (sx, 4.10, 2.40), 0.11, HOL2)
+    box(GX, 4.10, 2.42, 2.90, 0.11, 0.11, HOL2)
+    netz(GX, 4.06, 1.55, 2.35, 1.70, NETZ, 'x', 9, 7)
+    for i, xx in enumerate((GX - 0.95, GX - 0.60, GX + 0.70, GX + 1.05)):
         kugel(xx, 4.02, 0.62, 0.16, KORK if i % 2 == 0 else KOR2, 10)
-    kiste(2.60, 3.60, FB, 0.70, 0.48, 0.34, HOL2, ROT)
-    kiste(2.60, 3.62, FB + 0.36, 0.70, 0.48, 0.34, HOL2)
-    kiste(-2.70, 3.70, FB, 0.70, 0.48, 0.34, HOL2)
+    kiste(2.70, 3.60, FB, 0.70, 0.48, 0.34, HOL2, ROT)
+    kiste(2.70, 3.62, FB + 0.36, 0.70, 0.48, 0.34, HOL2)
+    kiste(3.40, 2.40, FB, 0.70, 0.48, 0.34, HOL2)
     export("th15_fischerhuette", 0.018, 2)
 
 

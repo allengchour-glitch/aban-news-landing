@@ -360,6 +360,37 @@ Neue Helfer: `rampe()`, `pyramide()`, `bogen_linie()`, `zentriere()`.
 
 ---
 
+## 1m. Charge 16 — BAHN UND TRAM (`models/th17_*.glb`)
+
+Modulare Schieneninfrastruktur. **Schienenoberkante liegt überall auf z = 0,650**,
+der Fahrdraht auf z = 5,600 (= 4,950 über SOK, Höhe der Stromabnehmer).
+
+| Datei | Maße (B×T×H) | Modul-Raster / Hinweis |
+|---|---|---|
+| `th17_gleis_modul.glb` | **12,000** × 5,20 × 0,65 | **x += 12,00**, Spurweite 1,435 m |
+| `th17_gleis_bogen.glb` | 22,72 × 22,72 × 0,65 | 90°, schliesst an die Gerade an |
+| `th17_bahnsteig_modul.glb` | **12,000** × 6,00 × **0,760** | **x += 12,00**, Blindenstreifen, Spalt zum Gleis 0,19 m |
+| `th17_bahnsteigdach.glb` | **12,000** × 5,61 × 4,36 | **x += 12,00**, Stützen im 6-m-Raster |
+| `th17_lokomotive.glb` | 3,11 × 19,02 × 4,95 | E-Lok, Führerstände beidseitig, Stromabnehmer |
+| `th17_personenwagen.glb` | 3,05 × **24,000** × 4,03 | **kuppeln: y += 24,00** |
+| `th17_tram.glb` | 2,55 × **28,000** × 4,95 | 3 Gelenkteile, Türen, Stromabnehmer |
+| `th17_tramhaltestelle.glb` | 18,00 × 3,60 × 3,75 | Insel mit Wartehäuschen und Vitrine |
+| `th17_oberleitungsmast.glb` | **12,000** × 3,70 × 8,01 | **x += 12,00**, Fahrdraht läuft durch |
+| `th17_signal.glb` | 0,92 × 1,07 × 5,91 | 3 Lichter, emissiv, Schauseite −z |
+| `th17_tunnelportal.glb` | 21,35 × 12,54 × 11,20 | lichte Weite ≥ 8 m |
+
+Generator: `tools/assets/mk_th17_bahn.py`
+
+Modultest mit je 3 Modulen gerendert (Gleis, Bahnsteig, Dach, alle zusammen und der
+Bogen an der Geraden): keine Fuge, kein Versatz. Schwellen 0,60, Plattenfugen 1,50,
+Dachrippen 0,30 und Fahrdraht-Hänger 3,00 laufen über die Modulfuge weiter.
+
+> ⚠️ **Zylindersegmente gerade wählen, wenn etwas aufstehen soll.** Ein Rad mit 22
+> Segmenten hat unten keine Kante, sondern eine Ecke — es schwebte 6 mm. Mit 24
+> Segmenten liegt die Unterkante exakt auf 0,000.
+
+---
+
 ## 2. Texturen (`textures/th5/*.png`)
 
 512×512, **nahtlos kachelbar** (Wrap-Arithmetik, verifiziert per 2×2-Kachel-Kontaktbogen).
@@ -456,6 +487,7 @@ python3 tools/assets/mk_th14_spieltische.py  # Casino-Einrichtung -> models/th14
 python3 tools/assets/mk_th20_verkehrsbauten.py  # Verkehrsbauten -> models/th20_*.glb
 python3 tools/assets/mk_th15_texturen.py  # Naturtexturen -> textures/th15/*.png
 python3 tools/assets/mk_th16_park.py      # Park und Spielplatz -> models/th16_*.glb
+python3 tools/assets/mk_th17_bahn.py      # Bahn und Tram -> models/th17_*.glb
 ```
 
 Beide brauchen nur **bpy 5.x + numpy** (im Container vorhanden, kein Blender-Binary nötig,
