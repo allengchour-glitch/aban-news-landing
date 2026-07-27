@@ -233,9 +233,9 @@ def gleis_modul():
     """Gerades Gleis, exakt 12.000 m in x. Schotterbett zweistufig, 20 Schwellen
     im 0.60-Raster (erste bei -5.70 -> der Rhythmus laeuft ueber die Fuge weiter)."""
     neu()
-    SCH  = mat("Schotter", (0.40,0.385,0.365), 0.98)
-    SCH2 = mat("SchotterKrone", (0.47,0.455,0.43), 0.96)
-    BET  = mat("Betonschwelle", (0.60,0.585,0.555), 0.90)
+    SCH  = mat("Schotter", (0.25,0.24,0.225), 0.98)
+    SCH2 = mat("SchotterKrone", (0.31,0.30,0.28), 0.96)
+    BET  = mat("Betonschwelle", (0.43,0.42,0.40), 0.90)
     STA  = mat("Schienenfuss", (0.34,0.31,0.28), 0.55, 0.35)
     KOPF = mat("Schienenkopf", (0.74,0.75,0.77), 0.20, 0.60)
     KLE  = mat("Kleineisen", (0.30,0.26,0.22), 0.6, 0.3)
@@ -260,9 +260,9 @@ def gleis_bogen():
     Schotterhoehen, gleiche SOK 0.650) -> stumpf anschliessbar.
     Anfang im Ursprung, Tangente +x, Ende bei (20, 20) mit Tangente +y."""
     neu()
-    SCH  = mat("Schotter", (0.40,0.385,0.365), 0.98)
-    SCH2 = mat("SchotterKrone", (0.47,0.455,0.43), 0.96)
-    BET  = mat("Betonschwelle", (0.60,0.585,0.555), 0.90)
+    SCH  = mat("Schotter", (0.25,0.24,0.225), 0.98)
+    SCH2 = mat("SchotterKrone", (0.31,0.30,0.28), 0.96)
+    BET  = mat("Betonschwelle", (0.43,0.42,0.40), 0.90)
     STA  = mat("Schienenfuss", (0.34,0.31,0.28), 0.55, 0.35)
     KOPF = mat("Schienenkopf", (0.74,0.75,0.77), 0.20, 0.60)
     R  = 20.0
@@ -304,11 +304,11 @@ def bahnsteig_modul():
     weiter. Beide Kanten sind Gleiskanten -> Modulmitte auf y = +-4.70 zur
     Gleisachse setzen, dann steht die Kante NEBEN dem Gleis (Spalt 0.19 m)."""
     neu()
-    BET = mat("Bahnsteigbeton", (0.62,0.61,0.58), 0.92)
-    PLA = mat("Gehwegplatte", (0.70,0.69,0.66), 0.85)
-    KAN = mat("Kantenstein", (0.50,0.49,0.47), 0.80)
-    WEI = mat("Sicherheitslinie", (0.90,0.89,0.86), 0.70)
-    GEL = mat("Blindenstreifen", (0.86,0.68,0.14), 0.75)
+    BET = mat("Bahnsteigbeton", (0.46,0.45,0.43), 0.92)
+    PLA = mat("Gehwegplatte", (0.55,0.54,0.51), 0.85)
+    KAN = mat("Kantenstein", (0.37,0.36,0.34), 0.80)
+    WEI = mat("Sicherheitslinie", (0.80,0.79,0.76), 0.70)
+    GEL = mat("Blindenstreifen", (0.78,0.60,0.10), 0.75)
     B, T, H = MOD, 6.00, 0.760
     DK = 0.016                       # Deckschicht: Platten, Rippen und Kante enden
                                      # ALLE exakt auf H -> Bauhoehe bleibt 0.760.
@@ -337,7 +337,7 @@ def bahnsteigdach():
     STZ  = mat("Stuetze", (0.30,0.33,0.36), 0.45, 0.35)
     TRA  = mat("Traeger", (0.36,0.39,0.42), 0.45, 0.30)
     DACH = mat("Dachhaut", (0.52,0.55,0.58), 0.55, 0.25)
-    UNT  = mat("Dachuntersicht", (0.78,0.77,0.73), 0.85)
+    UNT  = mat("Dachuntersicht", (0.66,0.65,0.62), 0.85)
     RIN  = mat("Rinne", (0.44,0.46,0.48), 0.45, 0.35)
     SHI  = mat("Stationsschild", (0.10,0.24,0.52), 0.65)
     LAM  = leucht("Deckenleuchte", (1.0,0.93,0.75), 2.2)
@@ -364,10 +364,9 @@ def bahnsteigdach():
         px = -4.5 + i * 3.0
         box(px, 0, 3.95, 0.05, 0.05, 0.42, TRA)
         box(px, 0, 3.68, 1.30, 0.28, 0.12, LAM)
-    for px in (-4.5, 4.5):                                            # Stationsschilder
-        for py in (-0.42, 0.42):
-            box(px, py, 3.30, 0.04, 0.04, 0.72, TRA)
-        box(px, 0, 2.86, 2.20, 0.09, 0.44, SHI)
+    for py in (-0.42, 0.42):                                          # 1 Stationsschild je
+        box(0, py, 3.30, 0.04, 0.04, 0.72, TRA)                       # Modul -> 12.00-Raster
+    box(0, 0, 2.86, 2.20, 0.09, 0.44, SHI)
     export("th17_bahnsteigdach", 0.014, 2)
 
 
@@ -385,7 +384,7 @@ def lokomotive():
     STA = mat("Stahl", (0.52,0.53,0.55), 0.35, 0.55)
     GLA = mat("Scheibe", (0.16,0.26,0.34), 0.12, 0.25)
     GIT = mat("Lueftergitter", (0.30,0.30,0.32), 0.65, 0.30)
-    ISO = mat("Isolator", (0.72,0.70,0.66), 0.35)
+    ISO = mat("Isolator", (0.60,0.57,0.50), 0.35)
     SCL = mat("Schleifstueck", (0.30,0.29,0.28), 0.45, 0.35)
     LMP = leucht("Spitzenlicht", (1.0,0.96,0.84), 2.6)
     RUE = leucht("Schlusslicht", (1.0,0.24,0.20), 2.2)
@@ -445,7 +444,7 @@ def personenwagen():
     Die Wulstfaltenbaelge an beiden Enden bilden die Endflaechen bei y=+-12.000;
     Puffer liegen bewusst INNERHALB, damit nichts ueber das Raster hinausragt."""
     neu()
-    KAS = mat("Wagenkasten", (0.86,0.85,0.83), 0.50)
+    KAS = mat("Wagenkasten", (0.78,0.77,0.75), 0.50)
     STR = mat("Zierstreifen", (0.72,0.14,0.13), 0.50)
     DUN = mat("Schuerze", (0.24,0.25,0.27), 0.60)
     DAC = mat("Wagendach", (0.44,0.45,0.47), 0.60, 0.25)
@@ -498,7 +497,7 @@ def tram():
     """Dreiteilige Gelenk-Strassenbahn, 28.00 m: 9.60 + Balg 0.40 + 8.00 +
     Balg 0.40 + 9.60. Front auf +y, Stromabnehmer auf 4.950 ueber Radunterkante."""
     neu()
-    KAS = mat("Tramkasten", (0.88,0.87,0.85), 0.48)
+    KAS = mat("Tramkasten", (0.80,0.79,0.77), 0.48)
     STR = mat("Zierband", (0.10,0.42,0.30), 0.50)
     DUN = mat("Schuerze", (0.24,0.26,0.28), 0.60)
     DAC = mat("Tramdach", (0.46,0.47,0.49), 0.60, 0.25)
@@ -508,7 +507,7 @@ def tram():
     GLA = mat("Scheibe", (0.18,0.28,0.36), 0.12, 0.25)
     TUE = mat("Tuer", (0.16,0.34,0.28), 0.45)
     BAL = mat("Faltenbalg", (0.15,0.15,0.17), 0.88)
-    ISO = mat("Isolator", (0.72,0.70,0.66), 0.35)
+    ISO = mat("Isolator", (0.60,0.57,0.50), 0.35)
     SCL = mat("Schleifstueck", (0.30,0.29,0.28), 0.45, 0.35)
     LMP = leucht("Scheinwerfer", (1.0,0.96,0.86), 2.6)
     RUE = leucht("Schlusslicht", (1.0,0.26,0.20), 2.2)
@@ -556,19 +555,20 @@ def tram():
         box(sx, 8.20, Z1 + 0.42, 0.70, 3.20, 0.26, DAC)
         box(sx, -8.20, Z1 + 0.42, 0.70, 3.20, 0.26, DAC)
     for s in (-1, 1):                                                 # Bug / Heck
-        yf = s * 14.00
-        # Rahmen HINTER die Scheibe; alle Bugteile bleiben innerhalb +-14.000.
-        o = box(0, yf - s * 0.30, 2.44, KB - 0.06, 0.10, 1.56, RAH)
-        o.rotation_euler[0] = s * 0.20
-        o = box(0, yf - s * 0.23, 2.44, KB - 0.20, 0.16, 1.44, GLA)   # Frontscheibe
-        o.rotation_euler[0] = s * 0.20
-        box(0, yf - s * 0.11, 1.36, KB - 0.04, 0.22, 0.72, KAS)       # Bugblende
-        box(0, yf - s * 0.10, 0.86, KB - 0.12, 0.20, 0.34, DUN)
-        box(0, yf - s * 0.28, 3.30, KB - 0.30, 0.34, 0.34, ANZ)       # Zielanzeige
+        box(0, s * 13.85, (Z0 + Z1) / 2, KB - 0.04, 0.30, Z1 - Z0, KAS)   # Bugkappe
+        tonne_y(0, s * 13.85, Z1, KB / 2 - 0.02, 0.30, DAC, 20, 0.26)
+        # Rahmen HINTER die Scheibe; alle Bugteile enden exakt auf +-14.000.
+        o = box(0, s * 13.76, 2.44, KB - 0.06, 0.10, 1.56, RAH)
+        o.rotation_euler[0] = s * 0.16
+        o = box(0, s * 13.83, 2.44, KB - 0.20, 0.10, 1.44, GLA)       # Frontscheibe
+        o.rotation_euler[0] = s * 0.16
+        box(0, s * 13.89, 1.36, KB - 0.04, 0.22, 0.72, KAS)           # Bugblende
+        box(0, s * 13.90, 0.86, KB - 0.12, 0.20, 0.34, DUN)
+        box(0, s * 13.72, 3.30, KB - 0.30, 0.34, 0.34, ANZ)           # Zielanzeige
         for sx in (-0.86, 0.86):
-            box(sx, yf - s * 0.08, 1.62, 0.36, 0.16, 0.20, LMP if s > 0 else RUE)
-            box(sx, yf - s * 0.08, 1.32, 0.30, 0.16, 0.14, RUE)
-        box(0, yf - s * 0.08, 0.40, KB - 0.30, 0.16, 0.30, DUN)       # Bahnraeumer
+            box(sx, s * 13.92, 1.62, 0.36, 0.16, 0.20, LMP if s > 0 else RUE)
+            box(sx, s * 13.92, 1.32, 0.30, 0.16, 0.14, RUE)
+        box(0, s * 13.92, 0.40, KB - 0.30, 0.16, 0.30, DUN)           # Bahnraeumer
     export("th17_tram", 0.016, 2)
 
 
@@ -578,10 +578,10 @@ def tramhaltestelle():
     Blindenstreifen auf beiden Seiten, verglastem Wartehaeuschen (offen nach +y),
     Fahrplanvitrine, Haltestellenmast und Baenken."""
     neu()
-    BET = mat("Inselbeton", (0.63,0.62,0.59), 0.92)
-    PLA = mat("Platte", (0.71,0.70,0.67), 0.85)
-    KAN = mat("Kantenstein", (0.50,0.49,0.47), 0.80)
-    GEL = mat("Blindenstreifen", (0.86,0.68,0.14), 0.75)
+    BET = mat("Inselbeton", (0.46,0.45,0.43), 0.92)
+    PLA = mat("Platte", (0.55,0.54,0.51), 0.85)
+    KAN = mat("Kantenstein", (0.37,0.36,0.34), 0.80)
+    GEL = mat("Blindenstreifen", (0.78,0.60,0.10), 0.75)
     STZ = mat("Stuetze", (0.28,0.31,0.34), 0.45, 0.35)
     GLA = mat("Glas", (0.62,0.74,0.80), 0.10, 0.20)
     DAC = mat("Dach", (0.40,0.43,0.46), 0.55, 0.30)
@@ -589,7 +589,8 @@ def tramhaltestelle():
     ROT = mat("Signalrot", (0.74,0.16,0.14), 0.55)
     VIT = leucht("Fahrplanlicht", (0.96,0.95,0.88), 1.8)
     LED = leucht("Haltestellenlicht", (1.0,0.94,0.78), 2.0)
-    SCH = mat("Schild", (0.94,0.80,0.10), 0.55)
+    SCH = mat("Schild", (0.90,0.76,0.08), 0.55)
+    GRN = mat("Signalgruen", (0.08,0.34,0.24), 0.55)
     B, T, FB = 18.00, 3.60, 0.240
     box(0, 0, FB / 2, B, T, FB, BET)                                  # Insel
     for ix in range(12):
@@ -630,8 +631,9 @@ def tramhaltestelle():
     MX = 5.60
     zyl(MX, 0, FB + 1.70, 0.075, 3.40, STZ, 12)
     zyl(MX, 0.10, FB + 3.05, 0.46, 0.09, SCH, 20, rot=(math.pi / 2, 0, 0))
-    zyl(MX, 0.16, FB + 3.05, 0.34, 0.05, ROT, 20, rot=(math.pi / 2, 0, 0))
-    box(MX, 0.20, FB + 3.05, 0.44, 0.04, 0.12, SCH)
+    zyl(MX, 0.16, FB + 3.05, 0.34, 0.05, GRN, 20, rot=(math.pi / 2, 0, 0))
+    box(MX, 0.20, FB + 3.05, 0.30, 0.04, 0.10, SCH)
+    box(MX, 0.20, FB + 3.05, 0.10, 0.04, 0.34, SCH)
     box(MX, 0, FB + 2.20, 0.86, 0.10, 0.30, LED)
     # ---- Baenke auf der Insel
     for bx in (7.20, -7.60):
@@ -650,10 +652,10 @@ def oberleitungsmast():
     Der Mast steht bei y=0, der Draht liegt bei y=+3.00: Mast also 3.00 m
     seitlich der Gleisachse setzen."""
     neu()
-    BET = mat("Fundament", (0.60,0.59,0.56), 0.92)
+    BET = mat("Fundament", (0.45,0.44,0.42), 0.92)
     MAS = mat("Mast", (0.38,0.42,0.44), 0.45, 0.40)
     STA = mat("Stahl", (0.50,0.52,0.54), 0.35, 0.55)
-    ISO = mat("Isolator", (0.74,0.72,0.68), 0.35)
+    ISO = mat("Isolator", (0.60,0.57,0.50), 0.35)
     DRA = mat("Fahrdraht", (0.60,0.44,0.24), 0.35, 0.55)
     SEI = mat("Tragseil", (0.44,0.44,0.46), 0.45, 0.45)
     WRN = mat("Warnschild", (0.86,0.72,0.12), 0.60)
@@ -690,13 +692,13 @@ def signal():
     """Lichtsignal: Mast, Signalschirm mit drei emissiven Lichtern (rot/gelb/gruen),
     Sonnenblenden, Mastschild und Kabelkasten. Signalseite auf +y."""
     neu()
-    BET = mat("Fundament", (0.60,0.59,0.56), 0.92)
+    BET = mat("Fundament", (0.45,0.44,0.42), 0.92)
     MAS = mat("Mast", (0.36,0.38,0.40), 0.45, 0.40)
     SCH = mat("Signalschirm", (0.14,0.14,0.15), 0.70)
-    RAN = mat("Schirmrand", (0.90,0.89,0.86), 0.65)
+    RAN = mat("Schirmrand", (0.84,0.83,0.80), 0.65)
     STA = mat("Stahl", (0.50,0.52,0.54), 0.35, 0.55)
     KAB = mat("Kabelkasten", (0.34,0.36,0.34), 0.75)
-    WEI = mat("Mastschild", (0.92,0.91,0.88), 0.60)
+    WEI = mat("Mastschild", (0.84,0.83,0.80), 0.60)
     ROT = leucht("Rot", (1.0,0.16,0.12), 3.0)
     GEL = leucht("Gelb", (1.0,0.74,0.10), 2.6)
     GRU = leucht("Gruen", (0.20,1.0,0.42), 2.8)
@@ -704,20 +706,22 @@ def signal():
     zyl(0, 0, 2.25, 0.10, 3.90, MAS, 12)                              # Mast 0.30-4.20
     for zz in (1.30, 2.60):
         zyl(0, 0, zz, 0.125, 0.08, STA, 12)
-    box(0, -0.02, 4.86, 0.72, 0.42, 1.90, SCH)                        # Signalschirm 3.91-5.81
-    box(0, 0.20, 4.86, 0.86, 0.06, 2.02, SCH)                         # Rueckblende
-    box(0, 0.23, 4.86, 0.78, 0.04, 1.94, RAN)
+    # Signalseite auf +y (three.js -z): Lichter, Blenden und Mastschild nach VORN,
+    # Kabelkasten nach hinten. (Erste Fassung zeigte die Lichter nach -y.)
+    box(0, 0.00, 4.86, 0.72, 0.40, 1.90, SCH)                         # Signalschirm 3.91-5.81
+    box(0, 0.21, 4.86, 0.88, 0.05, 2.06, RAN)                         # weisser Rand
+    box(0, 0.245, 4.86, 0.76, 0.05, 1.94, SCH)                        # schwarze Schauflaeche
     for (zz, m) in ((5.42, ROT), (4.86, GEL), (4.30, GRU)):
-        zyl(0, -0.235, zz, 0.145, 0.10, m, 16, rot=(math.pi / 2, 0, 0))    # Licht
-        zyl(0, -0.20, zz, 0.185, 0.09, SCH, 16, rot=(math.pi / 2, 0, 0))   # Fassung
-        o = box(0, -0.36, zz + 0.20, 0.42, 0.30, 0.05, SCH)                # Sonnenblende
+        zyl(0, 0.245, zz, 0.185, 0.09, SCH, 16, rot=(math.pi / 2, 0, 0))   # Fassung
+        zyl(0, 0.295, zz, 0.145, 0.09, m, 16, rot=(math.pi / 2, 0, 0))     # Licht
+        o = box(0, 0.42, zz + 0.20, 0.42, 0.30, 0.05, SCH)                 # Sonnenblende
         o.rotation_euler[0] = -0.30
-    box(0, -0.16, 5.86, 0.80, 0.34, 0.10, SCH)                        # Deckel
-    box(0, -0.13, 3.20, 0.30, 0.05, 0.66, WEI)                        # Mastschild
-    box(0, 0.30, 1.00, 0.42, 0.34, 1.30, KAB)                         # Kabelkasten
-    box(0, 0.30, 1.68, 0.48, 0.40, 0.08, MAS)
+    box(0, 0.14, 5.86, 0.80, 0.34, 0.10, SCH)                         # Deckel
+    box(0, 0.135, 3.20, 0.30, 0.05, 0.66, WEI)                        # Mastschild
+    box(0, -0.30, 1.00, 0.42, 0.34, 1.30, KAB)                        # Kabelkasten
+    box(0, -0.30, 1.68, 0.48, 0.40, 0.08, MAS)
     for zz in (0.60, 1.30):
-        box(0, 0.13, zz, 0.24, 0.06, 0.10, STA)
+        box(0, -0.13, zz, 0.24, 0.06, 0.10, STA)
     export("th17_signal", 0.014, 2)
 
 
@@ -728,12 +732,12 @@ def tunnelportal():
     Unterkante der Leibung folgt (Fallstrick: eine Spalte darf NIE in die
     Oeffnung ragen -> massgebend ist ihr zur Mitte NAECHSTER Rand)."""
     neu()
-    MAU = mat("Portalmauer", (0.55,0.52,0.47), 0.92)
-    QUA = mat("Quaderstein", (0.62,0.59,0.53), 0.88)
-    GES = mat("Gesims", (0.66,0.63,0.57), 0.85)
-    ROE = mat("Roehreninnen", (0.40,0.39,0.37), 0.95)
+    MAU = mat("Portalmauer", (0.42,0.40,0.36), 0.92)
+    QUA = mat("Quaderstein", (0.49,0.47,0.42), 0.88)
+    GES = mat("Gesims", (0.53,0.51,0.46), 0.85)
+    ROE = mat("Roehreninnen", (0.30,0.29,0.28), 0.95)
     BOD = mat("Tunnelboden", (0.34,0.33,0.32), 0.97)
-    TAF = mat("Jahrestafel", (0.72,0.70,0.64), 0.80)
+    TAF = mat("Jahrestafel", (0.58,0.56,0.51), 0.80)
     LED = leucht("Tunnelleuchte", (1.0,0.90,0.66), 2.2)
     R, KS = 4.30, 4.00               # lichter Radius / Kaempferhoehe
     BW, HW, TD = 15.00, 10.40, 1.60  # Portalbreite / -hoehe / Wanddicke

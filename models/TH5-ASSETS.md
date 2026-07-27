@@ -333,6 +333,33 @@ Spurweite 1,435 m, **Gleis läuft in x** (längs gebaut stünde es quer vor dem 
 
 ---
 
+## 1l. Charge 15 — PARK UND SPIELPLATZ (`models/th16_*.glb`)
+
+| Datei | Maße (B×T×H) | Hinweis |
+|---|---|---|
+| `th16_spielturm.glb` | 4,90 × 6,21 × 3,09 | Turm mit Rutsche, Leiter, Kletternetz |
+| `th16_schaukel.glb` | 3,92 × 2,22 × 2,51 | A-Gestell, 2 Sitze an Ketten |
+| `th16_sandkasten.glb` | 3,08 × 3,08 × 0,59 | Holzrand, Eimer, Schaufel |
+| `th16_wippe.glb` | 0,86 × 3,62 × 1,21 | 2 Sitze mit Griffen, Bodenpuffer |
+| `th16_karussell_klein.glb` | 3,00 × 3,00 × 1,43 | Drehscheibe mit Haltestangen |
+| `th16_pavillon.glb` | 8,68 × 9,00 × 5,61 | **begehbar**, 7 Bänke, 2,95 m licht, Stufen |
+| `th16_teichbruecke.glb` | 1,76 × 7,00 × 1,95 | geschwungen, Geländer folgt dem Bogen |
+| `th16_skate_rampe.glb` | **8,00** × 6,00 × 3,46 | **reihen: x += 8,00**, Coping durchlaufend |
+| `th16_basketballplatz.glb` | 16,00 × 26,00 × 4,07 | Linien, 2 Körbe (Ring exakt 3,050 m), Ballfangzaun |
+| `th16_grillplatz.glb` | 6,82 × 6,87 × 1,25 | Feuerring, Sitzstämme, Holzstapel |
+| `th16_blumenbeet.glb` | **4,00** × 2,00 × 0,71 | **reihen: x += 4,00**, 3 Blütenfarben |
+| `th16_baum_birke.glb` | 3,33 × 3,44 × 9,28 | schlank, heller Stamm — Ergänzung zu Ahorn/Pappel/Fichte |
+
+Generator: `tools/assets/mk_th16_park.py`
+Neue Helfer: `rampe()`, `pyramide()`, `bogen_linie()`, `zentriere()`.
+
+> ⚠️ **`zentriere()` verschiebt auch nach oben.** Beim Spielturm hob es den kompletten
+> Turm 9 cm in die Luft, weil ein Dekostein unter z = 0 lag. Nach dem Zentrieren immer
+> die Bounding-Box nachmessen — bei fünf Modellen dieser Charge lag die Unterkante
+> zunächst unter null (A-Bock-Streben, Brückenträger, Skate-Fahrfläche, Feuerring).
+
+---
+
 ## 2. Texturen (`textures/th5/*.png`)
 
 512×512, **nahtlos kachelbar** (Wrap-Arithmetik, verifiziert per 2×2-Kachel-Kontaktbogen).
@@ -427,6 +454,8 @@ python3 tools/assets/mk_th12_texturen.py  # Casino/Club/Theater -> textures/th12
 python3 tools/assets/mk_th13_jahrmarkt.py    # Jahrmarkt -> models/th13_*.glb
 python3 tools/assets/mk_th14_spieltische.py  # Casino-Einrichtung -> models/th14_*.glb
 python3 tools/assets/mk_th20_verkehrsbauten.py  # Verkehrsbauten -> models/th20_*.glb
+python3 tools/assets/mk_th15_texturen.py  # Naturtexturen -> textures/th15/*.png
+python3 tools/assets/mk_th16_park.py      # Park und Spielplatz -> models/th16_*.glb
 ```
 
 Beide brauchen nur **bpy 5.x + numpy** (im Container vorhanden, kein Blender-Binary nötig,

@@ -706,9 +706,9 @@ def eishalle():
     for sx in (-13.0, 13.0):
         s = 1 if sx < 0 else -1
         for dy in (-0.915, 0.915):
-            zyl(sx, EY + dy, FB + 0.68, 0.055, 1.22, ROT, 10)
-        zyl(sx, EY, FB + 1.28, 0.055, 1.83, ROT, 10, rot=(math.pi/2, 0, 0))
-        box(sx - s*0.50, EY, FB + 0.66, 1.00, 1.90, 0.05, NETZ)      # Netzdach
+            zyl(sx, EY + dy, FB + 0.61, 0.055, 1.22, ROT, 10)        # Pfosten 1.22 m
+        zyl(sx, EY, FB + 1.22, 0.055, 1.83, ROT, 10, rot=(math.pi/2, 0, 0))   # Latte
+        box(sx - s*0.50, EY, FB + 1.20, 1.00, 1.90, 0.05, NETZ)      # Netzdach
         box(sx - s*1.00, EY, FB + 0.62, 0.05, 1.90, 1.24, NETZ)      # Netzrueckwand
         for dy in (-0.915, 0.915):
             box(sx - s*0.50, EY + dy, FB + 0.62, 1.00, 0.05, 1.24, NETZ)
@@ -1062,14 +1062,15 @@ def reithalle():
         box(-6.6, AY1 - 0.20, FB + 0.60 + k*1.10, 4.8, 0.06, 0.14, DUNK)
     # Hindernisse
     def hindernis(px, py, hoehen, breite=3.8, farben=(ROT, WEIS, BLAU)):
+        SO = FB + 0.10                          # Sandoberkante — Hoehen zaehlen ab hier
         for s in (-1, 1):
-            box(px, py + s*(breite/2 + 0.16), FB + 0.86, 0.30, 0.30, 1.52, HOLZ)
+            box(px, py + s*(breite/2 + 0.16), FB + 0.91, 0.30, 0.30, 1.62, HOLZ)
             box(px, py + s*(breite/2 + 0.16), FB + 0.14, 0.90, 0.34, 0.18, DUNK)
             for h in hoehen:
-                box(px + 0.19, py + s*(breite/2 + 0.16), FB + h, 0.10, 0.34, 0.10, DUNK)
+                box(px + 0.19, py + s*(breite/2 + 0.16), SO + h, 0.10, 0.34, 0.10, DUNK)
         for i, h in enumerate(hoehen):
             for k in range(6):
-                zyl(px, py - breite/2 + 0.32 + k*(breite - 0.64)/5.0, FB + h + 0.07,
+                zyl(px, py - breite/2 + 0.32 + k*(breite - 0.64)/5.0, SO + h + 0.07,
                     0.065, (breite - 0.64)/5.0*0.99,
                     farben[(i + k) % len(farben)], 10, rot=(math.pi/2, 0, 0))
     hindernis(-15.0, 2.0, (0.62, 0.98))

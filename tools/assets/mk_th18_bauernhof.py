@@ -337,11 +337,13 @@ def scheune():
     for sx in (-6.4, 0.0, 6.4):                                   # Pfetten dicht unters Dach
         box(sx, 0, H + FH*(1 - abs(sx)/(B/2 + 0.5)) - 0.30, 0.22, T - 2*d, 0.24, HOLZ)
     # --- Heu
-    for k in range(3):                                            # Heuboden voll Ballen
-        for i in range(6):
+    # Heuballen NUR auf der Treppenseite stapeln — die erste Fassung fuellte den
+    # ganzen Heuboden, man stand beim Hochsteigen sofort in einem Ballen.
+    for k in range(3):
+        for i in range(3):
             for j in range(3):
-                if k == 2 and i > 3: continue
-                box(-6.6 + i*2.2, -10.0 + j*2.0 + (k % 2)*0.2, LZ + 0.24 + k*0.46,
+                if k == 2 and j > 1: continue
+                box(-6.0 + i*2.2, -10.4 + j*2.0 + (k % 2)*0.15, LZ + 0.24 + k*0.46,
                     2.00, 1.80, 0.44, HEU if (i + j + k) % 3 else STRO)
     for i in range(4):                                            # Ballen im Erdgeschoss
         box(6.4 - (i % 2)*2.1, -8.6 + (i // 2)*2.0, FB + 0.23, 1.90, 1.75, 0.46, HEU)
@@ -367,19 +369,29 @@ def stall():
     GLAS = mat("Fensterglas", (0.58,0.74,0.80), 0.14)
     TROG = mat("Trog", (0.60,0.58,0.54), 0.75)
     LICHT= mat("Stalllampe", (1.0,0.92,0.72), 0.3, 0.0, (1.0,0.90,0.66), 1.9)
-    B, T, H, d, FH = 16.0, 12.0, 4.20, 0.35, 2.20
+    B, T, H, d, FH = 16.0, 12.0, 4.20, 0.35, 3.20
     boden(B, T, SOCK, BOD, 2.0)
     wand_mit_tuer(0, T/2, B, d, H, W, 3.40, 3.20, 'x')
     box(0, -T/2, H/2, B, d, H, W)
     fensterband(0, -T/2, B - 6.0, d, FB + 2.05, 1.25, HOLZ, GLAS, 3, 'x')
+    for sx in (-5.6, 5.6):                                        # Fenster neben dem Tor
+        fensterband(sx, T/2, 3.6, d, FB + 2.05, 1.25, HOLZ, GLAS, 2, 'x')
     for sx in (-B/2, B/2):
         box(sx, 0, H/2, d, T, H, W)
         fensterband(sx, 0, T - 2.4, d, FB + 2.05, 1.25, HOLZ, GLAS, 4, 'y')
         box(sx, 0, 0.72, d*1.15, T, 0.86, SOCK)                   # Sockelband aussen
+    for sy in (T/2, -T/2):
+        box(0, sy, 0.72, B, d*1.15, 0.86, SOCK)
     for sy in (T/2 - d/2, -T/2 + d/2):
         giebel(0, sy, H, B/2 + 0.4, FH, d, W)
     satteldach(0, 0, B, T, H, FH, 0.26, DACH, 0.4, 0.5)
     box(0, 0, H + FH + 0.10, 0.34, T + 1.1, 0.22, DACH)
+    for sx in (-1.82, 1.82):                                      # Torzarge aus Holz
+        box(sx, T/2 + 0.06, 1.60, 0.24, d + 0.12, 3.20, HOLZ)
+    box(0, T/2 + 0.06, 3.32, 3.88, d + 0.12, 0.24, HOLZ)
+    box(0, T/2 + 0.62, 3.86, 4.60, 1.20, 0.14, HOLZ)              # kleines Vordach
+    for sx in (-1.60, 1.60):
+        strebe_yz(T/2 + 0.10, 3.44, T/2 + 1.16, 3.80, sx, 0.12, 0.12, HOLZ)
     # --- Deckenbalken
     for i in range(6):
         box(0, -4.6 + i*1.85, H - 0.32, B - 2*d, 0.22, 0.28, HOLZ2)
