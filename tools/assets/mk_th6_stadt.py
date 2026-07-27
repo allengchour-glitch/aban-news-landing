@@ -52,18 +52,19 @@ def runden(width=0.016, segments=3, winkel=42):
         o.select_set(True)
         bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
         m = o.modifiers.new("Bevel", 'BEVEL')
-        m.width = width; m.segments = segments
+        d_min = max(1e-4, min(o.dimensions))          # duennste Dimension
+        m.width = min(width, 0.28 * d_min)            # Offset <= ~1/4 der duennsten Kante
+        m.segments = segments
+        m.use_clamp_overlap = True
         m.limit_method = 'ANGLE'; m.angle_limit = math.radians(winkel)
         try: bpy.ops.object.shade_auto_smooth(angle=math.radians(38))
-        except Exception:
-            try: bpy.ops.object.shade_smooth()
-            except Exception: pass
+        except Exception: pass   # KEIN shade_smooth()-Fallback: das mittelt alles rund
 
 def export(name, bevel=0.016, seg=3):
     runden(bevel, seg)
     for o in bpy.context.scene.objects: o.select_set(True)
     p1 = os.path.join(OUT_GLB, name + ".glb")
-    bpy.ops.export_scene.gltf(filepath=p1, export_format='GLB', use_selection=False)
+    bpy.ops.export_scene.gltf(filepath=p1, export_format='GLB', use_selection=False, export_apply=True)
     p2 = os.path.join(OUT_STL, name + ".stl")
     try: bpy.ops.wm.stl_export(filepath=p2)
     except Exception: bpy.ops.export_mesh.stl(filepath=p2)

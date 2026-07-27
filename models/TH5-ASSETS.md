@@ -25,7 +25,14 @@ GLB für three.js, dazu STL als Referenz/Weiterbearbeitung in `models/stl/`.
 | `th5_ortsschild.glb` | Ortsschild am Mast | 1,9 × 0,06 × 2,4 | Tafel leer → beschriftbar |
 
 **Konventionen:** Ursprung mittig, **Unterkante exakt auf y = 0** (kein Versenken nötig),
-Maße in Metern, **+z = Vorderseite/Schauseite**, Materialien als PBR (Base Color + Roughness).
+Maße in Metern, Materialien als PBR (Base Color + Roughness).
+
+> ⚠️ **ACHSEN — bitte lesen, sonst steht alles falsch herum:**
+> Der glTF-Export dreht Blender-Koordinaten. Was in den Generator-Skripten „+y (vorne)" ist,
+> liegt in three.js bei **−z**. Also: **Die Schauseite (Tür, Schaufenster, Portal, Fahrzeugfront)
+> zeigt in three.js nach −z.** Ein Gebäude ohne Rotation schaut nach Norden (−z);
+> soll es nach Süden schauen, `rotation.y = Math.PI` setzen.
+> Selbst per Render verifiziert — die Tabellen unten nennen die Seite bereits in three.js-Konvention.
 
 ### Einbau (bestehendes `bau()` in traumhaus.html)
 ```js
@@ -101,6 +108,34 @@ Fassaden-Texturen aus `textures/th6/` (`glasfassade`, `betonfassade`) passen ma�
 
 ---
 
+## 1d. Charge 4 — BEGEHBARE Gebäude (`models/th8_*.glb`)
+
+Hohl gebaut: echte Wände, **durchgehende Türöffnung**, Boden, Innenausstattung.
+Die Spielfigur (~1,8 m) läuft hinein. Türöffnungen ≥ 2,4 m hoch, Innenhöhe ≥ 3,4 m.
+Alle Innenräume per Render aus **Augenhöhe (1,7 m) vor der Tür** verifiziert.
+
+| Datei | Was | Maße (B×T×H) | Innenausstattung |
+|---|---|---|---|
+| `th8_stadthaus_offen.glb` | 2 Etagen, Wohnhaus | 12,8 × 10,8 × 9,2 | Geschossböden, **Treppe ins OG** mit Podest, Fenster auf allen 4 Seiten |
+| `th8_markthalle_offen.glb` | Große Halle, 3 Tore | 25 × 17 × 11 | Stützenreihe, Hallenboden, Tonnendach, Fensterbänder |
+| `th8_laden_offen.glb` | Ladenlokal | 9,6 × 8,6 × 3,9 | **Verkaufstheke**, 3-stöckige Regalwand mit Ware, Schaufenster + Markise |
+| `th8_kirche_offen.glb` | Kirchenschiff + Turm | 15 × 27 × 21 | **Säulenreihen, 18 Bankreihen, Altar**, hohe Buntglasfenster |
+| `th8_werkstatt_offen.glb` | Werkstatt/Garage | 14,8 × 12,8 × 5,3 | **Hebebühne**, Werkbank, Werkzeugtafel, großes Tor + Nebentür |
+
+Generator: `tools/assets/mk_th8_begehbar.py`
+
+### Einbau — Eingang zur Straße drehen
+```js
+// Tür zeigt ohne Rotation nach -z (Norden). Eingang nach Süden:
+bau("th8_laden_offen.glb", 3.9, x, 0, z, Math.PI, false);
+```
+### Wände selbst bauen
+`wand_mit_tuer(cx, cy, laenge, dicke, hoehe, mat, tuer_b, tuer_h, achse, tuer_off)`
+setzt eine Wand als **links + rechts + Sturz** — dadurch entsteht eine echte Öffnung
+ohne Boolean-Operationen. Für eigene Grundrisse einfach wiederverwenden.
+
+---
+
 ## 2. Texturen (`textures/th5/*.png`)
 
 512×512, **nahtlos kachelbar** (Wrap-Arithmetik, verifiziert per 2×2-Kachel-Kontaktbogen).
@@ -151,6 +186,7 @@ python3 tools/assets/mk_th5_texturen.py   # Texturen -> textures/th5/*.png
 python3 tools/assets/mk_th6_stadt.py      # Riesenstadt-Modelle -> models/th6_*.glb
 python3 tools/assets/mk_th6_texturen.py   # Fassaden/Belaege -> textures/th6/*.png
 python3 tools/assets/mk_th7_gebaeude.py   # modulare Gebaeude+Fahrzeuge -> models/th7_*.glb
+python3 tools/assets/mk_th8_begehbar.py   # BEGEHBARE Gebaeude -> models/th8_*.glb
 ```
 
 Beide brauchen nur **bpy 5.x + numpy** (im Container vorhanden, kein Blender-Binary nötig,
@@ -168,3 +204,15 @@ Beide Chargen wurden vor der Auslieferung gerendert und mit Augen geprüft:
 - Modelle: gemeinsame three.js-Szene, alle 10 laden fehlerfrei, stehen aufrecht auf y=0
 - Texturen: 2×2-Kachelung ohne sichtbare Naht; `kies` und `riffelblech` waren im ersten
   Wurf zu schwach (wolkig bzw. zu fein) und wurden nachgebessert
+
+### Zwei teuer gelernte Fallstricke (bitte nicht wiederholen)
+
+1. **`export_apply=True` ist Pflicht beim GLB-Export.** Ohne den Parameter verwirft
+   `bpy.ops.export_scene.gltf` alle Modifier — die Modelle kamen mit reiner Box-Geometrie
+   an (144 statt 2256 Dreiecke), also *ohne jede Rundung*. Die STL-Exporte waren korrekt
+   und haben den Fehler verdeckt. **Prüfung:** Dreiecke im GLB zählen; eine gebevelte Box
+   hat ~150–200 statt 12.
+2. **Nahaufnahmen zur Abnahme, nicht nur Kontaktbögen.** Ein Skalierungsfehler
+   (`primitive_cube_add(size=1)` liefert bereits Kantenlänge 1 — zusätzliches `/2` halbiert
+   alles) ließ Dächer schweben und Bänke auseinanderfallen. Aus 25 m Entfernung unsichtbar,
+   in der Nahaufnahme sofort klar.
