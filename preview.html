@@ -68,6 +68,9 @@
     .story-cat{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:.2rem .6rem;border-radius:999px;margin-bottom:.55rem}
     .story h3{font-size:1.22rem;line-height:1.22;letter-spacing:-.01em;margin-bottom:.5rem}
     .story p{margin-bottom:.7rem;font-size:.98rem}
+    .story .verdict{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.03em;text-transform:uppercase;padding:.18rem .6rem;border-radius:999px}
+    .story .v-yes{background:#dcfce7;color:#166534}.story .v-wait{background:#fef3c7;color:#92400e}.story .v-no{background:#fee2e2;color:#991b1b}
+    .story .vline{margin:0 0 .7rem;font-size:.9rem;color:var(--muted)}.story .vline .vreason{margin-left:.4rem}
     .story .takeaway{background:var(--cream);border-left:3px solid var(--amber);border-radius:0 8px 8px 0;padding:.6rem .8rem;font-size:.94rem;margin-bottom:.7rem}
     .story .src{font-size:.82rem;color:var(--muted)}
     .read{font-size:.82rem;color:var(--muted);font-weight:600;margin-bottom:.5rem}
@@ -171,6 +174,7 @@
       <div class="story-body">
         <span class="story-cat" style="background:#fef3c7;color:#a16207">Preise · 2 Min</span>
         <h3>DeepSeek viertelt die Preise für V4-Pro</h3>
+        <p class="vline"><span class="verdict v-yes">Lohnt sich</span><span class="vreason">für Bulk-Tasks ohne Personenbezug — A/B-Test diese Woche.</span></p>
         <p>Das chinesische Startup DeepSeek hat sein Top-Modell V4-Pro <strong>dauerhaft auf 25 % des bisherigen Preises</strong> gesenkt. Möglich macht das laut Trending Topics der Wechsel von Nvidia-GPUs auf Huawei Ascend 950 in der Inference-Infrastruktur — kein Sale, kein Aktions-Rabatt, sondern strukturell.</p>
         <p><strong>Hintergrund:</strong> Solche Preissprünge kommen fast immer von billigerer Inference-Hardware, nicht von „schlechterer" Qualität — das Modell selbst bleibt dasselbe. Der Haken für DACH: DeepSeek hostet in China. Für anonyme Massen-Aufgaben (Tagging, Klassifizierung) ist das egal; für alles mit Personenbezug bleibt EU-/DSGVO-Hosting Pflicht — sonst sparst du ein paar Cent und handelst dir ein Datenschutz-Problem ein.</p>
         <p class="takeaway"><strong>Für dich heißt das:</strong> Wenn du für Bulk-Tasks (Klassifizierung, Summary-Pipelines, Batch-Übersetzungen) einen Anbieter neben OpenAI/Anthropic hast, lohnt sich ein A/B-Test diese Woche. Bei meiner eigenen Newsletter-Pipeline rechne ich nach Caching mit Anthropic immer noch günstiger, aber für Pre-Processing-Layer könnte DeepSeek interessant werden. Faustregel: erst die Aufgabe nach „enthält Personenbezug?" sortieren, dann den Anbieter wählen — nicht umgekehrt.</p>
@@ -190,6 +194,7 @@
       <div class="story-body">
         <span class="story-cat" style="background:#fde2e4;color:#be123c">Outreach · 2 Min</span>
         <h3>Paul Graham ignoriert KI-Mails — und du solltest das wissen</h3>
+        <p class="vline"><span class="verdict v-no">Ignorieren</span><span class="vreason">die Taktik „Mail durch ChatGPT jagen und blind absenden" — bringt nichts mehr.</span></p>
         <p>Y-Combinator-Gründer Paul Graham hat öffentlich gesagt: Wer ihm offensichtlich KI-generierte Mails schickt, kriegt keine Antwort. Er empfindet sie als „belügend". Erste Studien (im Decoder-Artikel verlinkt) deuten an: das ist kein Solo-Reflex, sondern wird zum Pattern bei Empfängern, die viel Inbox haben.</p>
         <p><strong>Woran sie es erkennen:</strong> drei Muster verraten die Massen-Mail — makelloses Drei-Absatz-Deutsch ohne jede Ecke, eine Eröffnung wie „Ich hoffe, diese Nachricht erreicht Sie gut", und null konkreter Bezug zum Empfänger. Treffen alle drei zu, liest es sich wie Serienbrief — egal wie höflich. Das Problem ist nicht die KI, sondern die Abwesenheit von dir im Text.</p>
         <p class="takeaway"><strong>Für dich heißt das:</strong> Wenn du Cold-Outreach machst (Sponsoring, Partnerschaften, Lead-Gen), ist „die Mail durch ChatGPT jagen und absenden" gerade aktiv kontraproduktiv geworden. Nicht weil KI-Mails schlecht sind, sondern weil das <em>Muster</em> (Drei-Absätze-perfektes-Deutsch-keine-Persönlichkeit) erkennbar geworden ist.</p>
@@ -209,6 +214,7 @@
       <div class="story-body">
         <span class="story-cat" style="background:#cffafe;color:#0e7490">Tool-News · 1 Min</span>
         <h3>eustella geht in offene Beta — und ist aus Wien</h3>
+        <p class="vline"><span class="verdict v-wait">Abwarten</span><span class="vreason">spannend wegen EU-Hosting — erst mein ehrliches Fazit am Montag.</span></p>
         <p>Das Wiener KI-Startup eustella hat eine Web-Version released und Bildgenerierung via FLUX.2 integriert. Plattformübergreifend: Browser, Android, iPhone. Open Beta, kostenlos.</p>
         <p><strong>Worauf ich beim Test achte:</strong> Sind die deutschsprachigen Antworten wirklich gut (oder nur aus dem Englischen übersetzt)? Wo genau liegen die Server, und gibt es einen AVV zum Unterschreiben? Und trägt das Gratis-Tier den echten Alltag — oder ist es ein Schaufenster, das dich schnell ins Pro-Abo schiebt? Genau das schreibe ich Montag auf, auch wenn das Fazit „nett, aber noch nicht so weit" lauten sollte.</p>
         <p class="takeaway"><strong>Für dich heißt das:</strong> Wenn du dir bei ChatGPT/Claude wegen EU-Hosting Sorgen machst oder einfach mal einen DACH-AI-Companion probieren willst — guter Moment. Ich teste das diese Woche selbst und schreib Mo dazu ein ehrliches Fazit.</p>
@@ -228,6 +234,7 @@
       <div class="story-body">
         <span class="story-cat" style="background:#dbeafe;color:#1e3a8a">Sichtbarkeit · 1 Min</span>
         <h3>Marken-Sichtbarkeit in ChatGPT prüfen — neue Tools</h3>
+        <p class="vline"><span class="verdict v-yes">Lohnt sich</span><span class="vreason">einmal pro Quartal prüfen — bevor es Standard-Reporting wird.</span></p>
         <p>t3n hat heute eine Übersicht zu Software gebracht, mit der du checken kannst, ob und wo deine Marke in KI-Chats auftaucht (Stichwort: GEO / „Generative Engine Optimization"). Tools wie Profound, AthenaHQ und Otterly werden genannt.</p>
         <p><strong>So prüfst du es in 10 Minuten selbst</strong> — ohne Spezial-Tool: Stell ChatGPT, Perplexity und der Google-KI-Übersicht je die Frage, mit der Kund:innen dich suchen würden („beste [Branche] in [Stadt]?") — wortwörtlich, ohne deinen Namen zu nennen. Notiere: Wirst du genannt? An welcher Stelle? Stimmen die Angaben? Wiederhol das einmal im Quartal — nur die Entwicklung über die Zeit ist aussagekräftig, nicht der einzelne Treffer.</p>
         <p class="takeaway"><strong>Für dich heißt das:</strong> Falls du Brand-Verantwortung hast — Brand-Sichtbarkeit in LLMs ist 2026 das, was Google-SERP 2010 war. Lohnt sich, einmal pro Quartal zu prüfen, bevor's Standard-Reporting wird. <a href="/ai-sichtbarkeit.html">Den kostenlosen Check gibt's auch bei uns</a>.</p>
