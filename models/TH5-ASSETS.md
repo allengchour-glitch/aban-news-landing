@@ -184,6 +184,64 @@ bau("th9_museum.glb",        24.1, x, 0, z, Math.PI, false);  // Portikus nach S
 
 ---
 
+## 1f. Charge 6 — BEGEHBARE GROSSBAUTEN (`models/th10_*.glb`)
+
+Öffentliche Häuser, in die die Spielfigur hineinläuft. Deutlich größer als Charge 4
+und mit echtem Innenleben — Treppen, Galerien, Möblierung.
+
+> 🚪 **Der Fußboden liegt bei z = 0,30, nicht bei 0.** Außensockel und Innenboden enden
+> beide auf dieser Höhe, damit in der Tür **keine Schwelle** entsteht. Im Generator ist
+> das die Konstante `FB`; jedes Einrichtungsstück bekommt sein z als `FB + Höhe über Boden`.
+
+| Datei | Was | Maße (B×T×H) | Innenleben |
+|---|---|---|---|
+| `th10_bahnhof.glb` | Bahnhofshalle, 3 Portale | 44,4 × 28,4 × 24,0 | **Glas-Tonnendach** mit 9 Bindern, Bahnsteig, Anzeigetafel (emissiv), Uhr, Schalter, Wartebänke |
+| `th10_einkaufszentrum.glb` | 2 Ebenen mit Atrium | 38,0 × 30,0 × 10,2 | Rolltreppe auf die Galerie, umlaufende Brüstung, 16 Ladenfronten, Oberlicht, Brunnen |
+| `th10_schule.glb` | Foyer, Mittelflur, 4 Klassen | 35,6 × 21,6 × 5,0 | Tafeln, 24 Pulte mit Stühlen, Garderobe |
+| `th10_bibliothek.glb` | Lesesaal mit Galerie | 30,0 × 24,0 × 11,1 | Treppe hinauf, 14 Regalreihen mit Büchern, 4 Lesetische mit Lampen, Ausleihtheke |
+| `th10_sporthalle.glb` | Halle mit Tonnendach | 36,0 × 24,0 × 19,0 | Spielfeld mit Linien, **Körbe auf 3,05 m**, 4-stufige Tribüne, Firstoberlicht |
+| `th10_rathaus.glb` | Foyer mit Freitreppe | 33,0 × 29,1 × 19,5 | 35-stufige Treppe auf die Galerie, Schalterhalle, Portikus, Uhrturm auf der Schauseite |
+| `th10_kino.glb` | Foyer + Saal | 32,0 × 28,4 × 9,8 | 2 Saaleingänge, **9 ansteigende Sitzreihen à 14 Plätze**, Leinwand, Kasse, Marquee |
+| `th10_restaurant.glb` | Gastraum + Terrasse | 24,0 × 21,3 × 4,8 | 6 Tische, Tresen mit Barhockern, offene Küche mit Abzug, Pendelleuchten |
+
+Generator: `tools/assets/mk_th10_grossbauten.py`
+
+### Neue Helfer
+- `boden(B, T, m_sockel, m_boden)` — Sockel + Innenboden bündig auf `FB`, keine Schwelle.
+- `wand_mit_oeffnungen(...)` + `oeffnungs_achsen(laenge, n, off_b)` — die zweite Funktion
+  liefert die Pfeiler-Achsen zurück. **Damit setzt man Stützen und Einbauten neben die
+  Durchgänge statt hinein** — sonst steht beim Eintreten eine Säule im Portal.
+- `bruestung(cx, cy, lb, lt, z, m)` — Geländer an **allen vier** Kanten eines Galerie-Lochs.
+- `treppe(cx, y0, z0, breite, hoehe_ges, m, m_gel, steig, auftritt, richtung)` — Lauf mit
+  begehbarer Steigung (~0,17 m) und mitlaufendem, korrekt geneigtem Handlauf. Gibt
+  `(Stufenzahl, y_ende, Lauflänge)` zurück, damit sich der Anschluss an die Galerie nachrechnen lässt.
+- `tonne(...)` — **halbes** Tonnengewölbe (untere Hälfte per `bmesh` weggeschnitten).
+
+---
+
+## 1g. Charge 7 — INNENAUSSTATTUNG (`models/th11_*.glb`)
+
+Einzelmöbel zum Einstreuen in die begehbaren Häuser. Alle Unterkante 0,00.
+
+| Datei | Maße (B×T×H) | Hinweis |
+|---|---|---|
+| `th11_schreibtisch.glb` | 1,60 × 0,81 × 1,29 | mit Rollcontainer |
+| `th11_buerostuhl.glb` | 0,64 × 0,64 × 1,00 | Fußkreuz mit Rollen, Lendenstütze |
+| `th11_sofa.glb` | 2,12 × 0,90 × 0,82 | 3-Sitzer mit Kissen |
+| `th11_esstisch_stuehle.glb` | 1,50 × 1,92 × 0,92 | Tisch + 4 Stühle als Set |
+| `th11_bett.glb` | 1,62 × 2,12 × 1,10 | Decke mit Umschlag, Kopfteil |
+| `th11_kuechenzeile.glb` | 3,24 × 0,71 × 2,23 | Spüle, Herd, Backofen, Oberschränke, Dunstabzug |
+| `th11_ladenregal.glb` | 2,02 × 0,90 × 1,82 | doppelseitig, mit Ware |
+| `th11_empfangstheke.glb` | 2,90 × 1,28 × 1,14 | geschwungen |
+| `th11_rolltreppe.glb` | 1,28 × 9,43 × 5,27 | überwindet **exakt 4,00 m**, Glasbrüstung, Podeste |
+| `th11_aufzug.glb` | 1,80 × 1,83 × 2,48 | Kabine mit offener Tür, Taster, Etagenanzeige |
+| `th11_treppenlauf.glb` | 1,54 × 6,28 × 5,26 | **exakt 4,00 m Steighöhe, stapelbar: z += 4,0** (in y symmetrisch) |
+| `th11_pflanzkuebel_innen.glb` | 1,02 × 1,02 × 1,94 | große Zimmerpflanze |
+
+Generator: `tools/assets/mk_th11_moebel.py`
+
+---
+
 ## 2. Texturen (`textures/th5/*.png`)
 
 512×512, **nahtlos kachelbar** (Wrap-Arithmetik, verifiziert per 2×2-Kachel-Kontaktbogen).
@@ -222,6 +280,24 @@ Generator: `tools/assets/mk_th6_texturen.py`
 **Fassaden-Tipp:** `glasfassade`/`betonfassade` mit `repeat.set(1, etagen/3)` auf die
 Turmkörper legen — dann sitzt das Fensterraster maßstäblich, ohne Geometrie zu ändern.
 
+### Charge 3 — Grossbauten (`textures/th9/*.png`)
+
+Passend zu den Landmarken der Charge 5. Alle 512×512, nahtlos (Randdifferenz gemessen
+**und** per um 256/256 gerollter Kachel sichtgeprüft — die Naht läuft dann mitten durchs Bild).
+
+| Datei | Motiv | 1 Kachel ≈ | `repeat` pro 20 m | Wofür |
+|---|---|---|---|---|
+| `glasraster.png` | Vorhangfassade, Scheiben einzeln getönt | 12 × 6 m | 1,5–2 breit / 3–4 hoch | Wolkenkratzer, Bürotürme |
+| `bueropaneel.png` | Helle Fassadenpaneele mit Fugen | 5 × 5 m | 4 | Krankenhaus, Mall, Verwaltung |
+| `stadionrasen.png` | Rasen mit gemähten Bahnen | 20 m (8 Bahnen) | 1 | Stadion, Sportplatz — Bahnen längs drehen |
+| `marmorboden.png` | Polierter Marmor mit Adern | 2,4 m | 8 | Museum, Hotel, Rathaus-Foyer |
+| `burgmauer.png` | Unregelmässiges Bruchsteinmauerwerk | 4 m | 5 | Burg, Stützmauern, Altstadt |
+| `betonwerkstein.png` | Grossformatige Platten im halben Verband | 4 m | 5 | Plätze, Parkhaus, Vorfahrten |
+| `metallpaneel.png` | Trapezblech mit Bahnstoss + Schrauben | 3 m | 6–8 | Hallen, Tanks, Werkstätten |
+| `terrazzo.png` | Terrazzo mit kantigen Splittern | 1 m | 20 | Einkaufszentrum, Bahnhofshalle |
+
+Generator: `tools/assets/mk_th9_texturen.py`
+
 ---
 
 ## 3. Nachschub produzieren
@@ -236,6 +312,9 @@ python3 tools/assets/mk_th6_texturen.py   # Fassaden/Belaege -> textures/th6/*.p
 python3 tools/assets/mk_th7_gebaeude.py   # modulare Gebaeude+Fahrzeuge -> models/th7_*.glb
 python3 tools/assets/mk_th8_begehbar.py   # BEGEHBARE Gebaeude -> models/th8_*.glb
 python3 tools/assets/mk_th9_landmarken.py # GROSSE Landmarken -> models/th9_*.glb
+python3 tools/assets/mk_th9_texturen.py   # Grossbau-Texturen -> textures/th9/*.png
+python3 tools/assets/mk_th10_grossbauten.py  # BEGEHBARE Grossbauten -> models/th10_*.glb
+python3 tools/assets/mk_th11_moebel.py    # Innenausstattung -> models/th11_*.glb
 ```
 
 Beide brauchen nur **bpy 5.x + numpy** (im Container vorhanden, kein Blender-Binary nötig,
@@ -275,6 +354,17 @@ Beide Chargen wurden vor der Auslieferung gerendert und mit Augen geprüft:
    braucht es `atan2(B·cos t, −A·sin t)`, sonst klaffen zwischen den Segmenten Schlitze.
 5. **`transform_apply` nie nur mit `rotation=True`,** wenn das Objekt eine nicht-uniforme
    Skalierung hat — sonst wird die Box geschert. Rotation und Skalierung zusammen anwenden.
+6. **Möbel gehören auf die Fußboden-Oberkante, nicht auf z = 0.** In Charge 6 lag der
+   begehbare Boden bei 0,48, die Möbel aber auf 0 — Stühle steckten komplett im Boden,
+   Tische waren 0,31 m hoch. Deshalb gibt es jetzt die Konstante `FB` und jedes
+   Einrichtungsstück wird als `FB + Höhe über Boden` gesetzt. Gleiches Muster gilt für
+   Wandkronen: eine Decke, die 0,6 m über der Wand sitzt, lässt rings einen Himmelsspalt.
+7. **Ein voller Zylinder ist kein Tonnendach und eine skalierte Kugel keine Kuppel.** Die
+   untere Hälfte steckt im Gebäude und verdeckt von innen den ganzen Raum. Beide Formen
+   werden mit `bmesh.ops.bisect_plane` wirklich halbiert (`tonne()`, `halbkugel()`).
+8. **Stützen und Einbauten neben die Durchgänge, nicht hinein.** `oeffnungs_achsen()`
+   liefert die Pfeiler-Achsen — sonst steht beim Eintreten eine Säule im Portal oder ein
+   Schaufenster mauert das Eingangstor zu.
 
 ### Prüfvorgehen, das sich bewährt hat
 Pro Modell **zwei** Renders: eine 3/4-Totale auf die Schauseite (−z) **und** eine
