@@ -19,8 +19,10 @@ def mat(name, rgb, rough=0.7, metal=0.0):
     return m
 
 def box(x, y, z, sx, sy, sz, m=None):
+    # size=1 liefert bereits Kantenlaenge 1 -> Skalierung = gewuenschte Masse (NICHT /2,
+    # sonst sind alle Boxen halb so gross wie ihre Positionen annehmen -> Teile klaffen)
     bpy.ops.mesh.primitive_cube_add(size=1, location=(x, y, z))
-    o = bpy.context.active_object; o.scale = (sx/2, sy/2, sz/2)
+    o = bpy.context.active_object; o.scale = (sx, sy, sz)
     if m: o.data.materials.append(m)
     return o
 
@@ -42,7 +44,27 @@ def kegel(x, y, z, r1, r2, h, m=None, seg=12, rot=(0,0,0)):
     if m: o.data.materials.append(m)
     return o
 
-def export(name):
+def runden(width=0.018, segments=3, winkel=42):
+    """Alle Mesh-Objekte abrunden: Bevel-Modifier + Auto-Smooth.
+    Der User will ausdruecklich keine harten Kanten."""
+    for o in list(bpy.context.scene.objects):
+        if o.type != 'MESH': continue
+        # Skalierung einbacken, sonst ist die Bevel-Breite pro Achse verzerrt
+        bpy.context.view_layer.objects.active = o
+        for s_ in bpy.context.scene.objects: s_.select_set(False)
+        o.select_set(True)
+        bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+        m = o.modifiers.new("Bevel", 'BEVEL')
+        m.width = width; m.segments = segments
+        m.limit_method = 'ANGLE'; m.angle_limit = math.radians(winkel)
+        m.harden_normals = False
+        try: bpy.ops.object.shade_auto_smooth(angle=math.radians(38))
+        except Exception:
+            try: bpy.ops.object.shade_smooth()
+            except Exception: pass
+
+def export(name, bevel=0.018, seg=3):
+    runden(bevel, seg)
     for o in bpy.context.scene.objects: o.select_set(True)
     p_glb = os.path.join(OUT_GLB, name + ".glb")
     bpy.ops.export_scene.gltf(filepath=p_glb, export_format='GLB', use_selection=False)
@@ -112,7 +134,7 @@ def laterne():
     kegel(0, 0, 3.95, 0.30, 0.17, 0.5, glas, 8)                      # Laternenkorpus
     kegel(0, 0, 4.28, 0.34, 0.02, 0.22, eisen, 8)                    # Deckel
     kugel(0, 0, 4.45, 0.07, eisen, 10)                               # Knauf
-    export("th5_laterne_altstadt")
+    export("th5_laterne_altstadt", 0.010, 3)
 
 # ---------------------------------------------------------------- 5) Baum: Spitzahorn
 def baum_ahorn():
@@ -127,7 +149,7 @@ def baum_ahorn():
         k = kugel(ax, ay, az, ar, mm, 12); k.scale[2] = 0.82
     for (bx, by, bz, rz) in ((-0.5,0.2,2.4,0.5), (0.55,-0.2,2.5,-0.5)):
         zyl(bx, by, bz, 0.09, 1.0, holz, 6, rot=(0, rz, 0))          # Aeste
-    export("th5_baum_ahorn")
+    export("th5_baum_ahorn", 0.010, 2)
 
 # ---------------------------------------------------------------- 6) Baum: Saeulenpappel
 def baum_pappel():
@@ -137,7 +159,7 @@ def baum_pappel():
     kegel(0, 0, 1.6, 0.26, 0.17, 3.2, holz, 10)
     for i, (h, r) in enumerate(((3.3,0.95),(4.4,0.85),(5.4,0.68),(6.2,0.45))):
         k = kugel(0.06*(i%2*2-1), 0.05*(i%2), h, r, laub, 12); k.scale[2] = 1.35
-    export("th5_baum_pappel")
+    export("th5_baum_pappel", 0.010, 2)
 
 # ---------------------------------------------------------------- 7) Parkbank
 def parkbank():
@@ -152,7 +174,7 @@ def parkbank():
         box(sx, 0.0, 0.22, 0.07, 0.55, 0.44, guss)                   # Wangen
         box(sx, 0.26, 0.66, 0.07, 0.06, 0.45, guss)                  # Lehnenstuetze
         box(sx, 0.0, 0.03, 0.10, 0.62, 0.06, guss)                   # Fuss
-    export("th5_parkbank")
+    export("th5_parkbank", 0.012, 3)
 
 # ---------------------------------------------------------------- 8) Marktstand
 def marktstand():
@@ -171,7 +193,7 @@ def marktstand():
         box(cx, cy, 1.05, 0.62, 0.5, 0.18, kiste)                    # Kisten
         kugel(cx-0.1, cy, 1.2, 0.12, ware, 10)
         kugel(cx+0.12, cy+0.08, 1.2, 0.11, ware, 10)
-    export("th5_marktstand")
+    export("th5_marktstand", 0.014, 3)
 
 # ---------------------------------------------------------------- 9) Poller-Reihe
 def poller():
@@ -181,7 +203,7 @@ def poller():
         x = -1.8 + i*1.2
         zyl(x, 0, 0.45, 0.11, 0.9, guss, 12)
         kugel(x, 0, 0.92, 0.13, guss, 12)
-    export("th5_poller")
+    export("th5_poller", 0.012, 3)
 
 # ---------------------------------------------------------------- 10) Ortsschild
 def ortsschild():
@@ -192,7 +214,7 @@ def ortsschild():
     zyl(0, 0, 1.1, 0.055, 2.2, mast, 10)
     box(0, 0.02, 2.05, 1.9, 0.06, 0.62, rand)
     box(0, 0.05, 2.05, 1.74, 0.04, 0.48, tafel)
-    export("th5_ortsschild")
+    export("th5_ortsschild", 0.008, 2)
 
 if __name__ == "__main__":
     print("Asset-Charge 1:")
