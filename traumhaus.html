@@ -3761,6 +3761,12 @@ function updMinimap(dt){
   c.fillStyle="#dcdce0";for(var i=0;i<verkehr.length;i++){var p=verkehr[i].mesh.position,s2=S(p.x,p.z);c.fillRect(s2[0]-1.5,s2[1]-1.5,3,3);}
   if(busRec){var bs=S(busRec.pos,busRec.z);c.fillStyle="#f0c030";c.fillRect(bs[0]-2,bs[1]-2,4,4);}
   if(window.pickups){c.fillStyle="#ffe14a";for(var pk9=0;pk9<pickups.length;pk9++){if(!pickups[pk9].active)continue;var sp9=S(pickups[pk9].x,pickups[pk9].z);c.beginPath();c.arc(sp9[0],sp9[1],2,0,6.283);c.fill();}}
+  /* 🗺️ Orte-Symbole (User findet die neuen Gebaeude sonst nie) */
+  var POIS=[[-58,-62,"⛪"],[-62,30,"🥕"],[-44,30,"🛒"],[-62,50,"🔧"],[-44,12,"🏠"],[68,87,"🌳"],[0,102,"🚉"],[-96,-52,"🌬️"],[-232,0,"🌊"]];
+  c.font="9px system-ui";c.textAlign="center";c.textBaseline="middle";
+  for(var pi9=0;pi9<POIS.length;pi9++){var P9=POIS[pi9],sp8=S(P9[0],P9[1]);
+    if(sp8[0]<-6||sp8[0]>W+6||sp8[1]<-6||sp8[1]>W+6)continue; /* ausserhalb des Radars */
+    c.fillText(P9[2],sp8[0],sp8[1]);}
   // Polizei
   c.fillStyle="#ff3020";for(var q=0;q<polizei.length;q++){var s3=S(polizei[q].mesh.position.x,polizei[q].mesh.position.z);c.beginPath();c.arc(s3[0],s3[1],2.6,0,6.283);c.fill();}
   // Koop-Partner
