@@ -68,7 +68,7 @@ canvas{display:block;touch-action:none}
 /* Touch-Steuerung */
 #stick{position:absolute;left:calc(20px + env(safe-area-inset-left));bottom:calc(28px + env(safe-area-inset-bottom));width:120px;height:120px;border-radius:50%;background:rgba(20,30,60,.4);border:2px solid rgba(120,200,255,.3);pointer-events:auto}
 #nub{position:absolute;left:35px;top:35px;width:50px;height:50px;border-radius:50%;background:rgba(120,200,255,.55);border:2px solid rgba(200,240,255,.7)}
-.btn{position:absolute;pointer-events:auto;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.7rem;font-weight:800;border:3px solid;background:rgba(20,30,60,.55);backdrop-filter:blur(3px)}
+.btn{position:absolute;pointer-events:auto;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.7rem;font-weight:800;border:3px solid;background:rgba(20,30,60,.78)} /* 🩹 Kimi-P1: backdrop-filter auf 7 Dauer-Buttons kostete pro Frame einen Compositing-Pass (Android) */
 .btn::after{content:"";position:absolute;inset:-6px;border-radius:50%} /* unsichtbare größere Hitbox */
 #bAct{right:calc(24px + env(safe-area-inset-right));bottom:calc(40px + env(safe-area-inset-bottom));width:78px;height:78px;border-color:#6affc0;color:#eaffe8}
 #bBuild{right:calc(118px + env(safe-area-inset-right));bottom:calc(56px + env(safe-area-inset-bottom));width:60px;height:60px;border-color:#ffd166;color:#fff}
@@ -917,7 +917,7 @@ function loadHero(){
     if(C.file!=="hero_meshy_combat2.glb"){new THREE.GLTFLoader().load("/models/hero_meshy_combat2.glb",function(g){
       var o=g.scene;o.scale.setScalar(1.35);
       o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material){n.material.emissiveIntensity=0.5;if(n.material.color)n.material.color.multiplyScalar(1.3);}}});
-      pBody.visible=false;player.add(o);heroModel=o;heroRig=makeRig(o,g.animations);setAnim(heroRig,"idle",0);
+      pBody.visible=false;player.add(o);heroModel=o;heroRig=makeRig(o,g.animations);setAnim(heroRig,"idle",0);if(typeof applyGearVisuals==="function"){_lastGearW=-1;applyGearVisuals();} /* 🩹 Schwarm-P3: Ausrüstung auch am Fallback-Modell */
     },undefined,function(){});}
   });
 }
@@ -971,7 +971,7 @@ function mkSchaedel(){var g=new THREE.Group();var bm=new THREE.MeshStandardMater
   var skull=new THREE.Mesh(new THREE.SphereGeometry(0.42,10,9),bm);skull.scale.set(1,1.05,0.95);skull.position.y=0.6;g.add(skull);
   var jaw=new THREE.Mesh(new THREE.BoxGeometry(0.5,0.2,0.4),bm);jaw.position.set(0,0.34,0.05);g.add(jaw);
   var em=new THREE.MeshBasicMaterial({color:0x30ff8a});[[-0.16],[0.16]].forEach(function(e){var ey=new THREE.Mesh(new THREE.SphereGeometry(0.11,8,8),em);ey.position.set(e[0],0.64,0.32);g.add(ey);});
-  var fire=new THREE.PointLight(0x30ff8a,0.6,4);fire.position.set(0,0.7,0);g.add(fire);return g;}
+  return g;} /* 🩹 Kimi-P1: PointLight pro Schädel entfernt — Lichtanzahl-Wechsel recompilierte ALLE Shader (Ruckler bei jedem Spawn); Glühen kommt vom emissive-Material */
 /* ⚔️ W4: Monster-Rigs — Attack-/Walk-/Idle-Clips per Regex aus den GLB-Anims gemappt.
    Klon-Mobs (skins:0, Node-Anims) binden Clips per Node-Name auch auf dem Klon;
    geskinnte Mobs bekommen ihr Rig beim Frisch-Laden. */
@@ -1319,15 +1319,17 @@ function buildAmbient(){
   for(;dti<dtBudget;dti++)setInst(dtIM,dti,0,-999,0,0.001,0);dtIM.count=dtBudget;dtIM.instanceMatrix.needsUpdate=true;dtIM.instanceColor.needsUpdate=true;
 
   // --- Glühwürmchen (nachts, gepoolt) ---
-  for(var g=0;g<Math.round(30*VF);g++){var fm=new THREE.Mesh(new THREE.SphereGeometry(0.08,5,5),new THREE.MeshBasicMaterial({color:0xcaffb0,transparent:true}));fm.visible=false;scene.add(fm);
+  var _ffG=new THREE.SphereGeometry(0.08,5,5); /* 🩹 eine Geometrie für alle (Material bleibt individuell — Puls pro Partikel) */
+  for(var g=0;g<Math.round(30*VF);g++){var fm=new THREE.Mesh(_ffG,new THREE.MeshBasicMaterial({color:0xcaffb0,transparent:true}));fm.visible=false;scene.add(fm);
     fireflies.push({m:fm,bx:0,bz:0,a:rnd()*6.28,r:1+rnd()*3,sp:0.5+rnd(),ph:rnd()*6.28});}
   // --- ✨ Tag-Pollen/Sporen (schwebende Glut-Partikel bei Tag -> lebendige Luft) ---
-  for(var pg2=0;pg2<Math.round(44*VF);pg2++){var pm=new THREE.Mesh(new THREE.SphereGeometry(0.06,4,4),new THREE.MeshBasicMaterial({color:0xfff0c0,transparent:true,opacity:0.6}));pm.visible=false;scene.add(pm);
+  var _plG=new THREE.SphereGeometry(0.06,4,4);
+  for(var pg2=0;pg2<Math.round(44*VF);pg2++){var pm=new THREE.Mesh(_plG,new THREE.MeshBasicMaterial({color:0xfff0c0,transparent:true,opacity:0.6}));pm.visible=false;scene.add(pm);
     pollen.push({m:pm,x:0,y:0,z:0,vy:0.3+rnd()*0.45,ph:rnd()*6.28,sp:0.6+rnd()});}
   // 🦋 Schmetterlinge (tagsüber, bunt, flattern um den Spieler)
-  var BFC=[0xff8ad8,0xffd166,0x7de3ff,0xff6a4d,0xc98bff];
+  var BFC=[0xff8ad8,0xffd166,0x7de3ff,0xff6a4d,0xc98bff],_bfG=null;
   for(var bf=0;bf<Math.round(24*VF);bf++){var bg=new THREE.Group();var wm=new THREE.MeshBasicMaterial({color:BFC[(rnd()*BFC.length)|0],side:THREE.DoubleSide,transparent:true,opacity:0.95});
-    var wL=new THREE.Mesh(new THREE.CircleGeometry(0.15,5),wm);wL.position.x=-0.09;var wR=new THREE.Mesh(new THREE.CircleGeometry(0.15,5),wm);wR.position.x=0.09;
+    var wL=new THREE.Mesh(_bfG||(_bfG=new THREE.CircleGeometry(0.15,5)),wm);wL.position.x=-0.09;var wR=new THREE.Mesh(_bfG,wm);wR.position.x=0.09;
     bg.add(wL);bg.add(wR);bg.visible=false;scene.add(bg);
     butterflies.push({m:bg,wL:wL,wR:wR,bx:0,bz:0,a:rnd()*6.28,r:2+rnd()*4,sp:0.5+rnd()*0.7,ph:rnd()*6.28,h:1+rnd()*1.6});}
   // 🍂 Fallende Blätter (tagsüber)
@@ -1636,11 +1638,12 @@ function cc0instW(name,targetW){
 }
 /* 🏠 Primitiv-Fallback-Haus (Box + Walmdach + Tür + Fenster): Dörfer bleiben auch OHNE
    GLBs sichtbar/spielbar (Android-Fetch-Saga). Einheitshöhe 1 → per targetH skaliert. */
+var _fbWallM=null,_fbRoofM=null;
 function mkFallbackHouse(targetH){
   var g=new THREE.Group();
-  var wallM=new THREE.MeshLambertMaterial({color:0xd9cfbc,flatShading:true});
+  var wallM=_fbWallM||(_fbWallM=new THREE.MeshLambertMaterial({color:0xd9cfbc,flatShading:true}));
   var walls=new THREE.Mesh(new THREE.BoxGeometry(0.62,0.55,0.5),wallM);walls.position.y=0.275;walls.castShadow=true;walls.receiveShadow=true;g.add(walls);
-  var roof=new THREE.Mesh(new THREE.ConeGeometry(0.47,0.42,4),new THREE.MeshLambertMaterial({color:0xa5502e,flatShading:true}));
+  var roof=new THREE.Mesh(new THREE.ConeGeometry(0.47,0.42,4),_fbRoofM||(_fbRoofM=new THREE.MeshLambertMaterial({color:0xa5502e,flatShading:true})));
   roof.rotation.y=Math.PI/4;roof.position.y=0.76;roof.castShadow=true;g.add(roof);
   var door=new THREE.Mesh(new THREE.BoxGeometry(0.13,0.24,0.03),new THREE.MeshLambertMaterial({color:0x6a4526}));
   door.position.set(0,0.12,0.255);g.add(door);
@@ -1733,7 +1736,7 @@ function layVillagePaths(vx,vz,houses){
     var outAng=Math.atan2(hz-vz,hx-vx);          // Zentrum -> Haus
     var dc=Math.cos(outAng),ds=Math.sin(outAng);
     var px=-ds,pz=dc;                            // Quer-Richtung
-    var doorX=hx-dc*3.6,doorZ=hz-ds*3.6;         // direkt vor der Tür (Richtung Zentrum)
+    var doorX=hx-dc*4.3,doorZ=hz-ds*4.3;         // direkt vor der Tür (Häuser 10.2 → Vorplatz vor die 4.0-Wand)
     var plX=vx+dc*8.0,plZ=vz+ds*8.0;             // Platzrand auf Haus-Seite
     var STEPS=6,bend=(i%2?1:-1);
     var pts=[];for(var t=0;t<=STEPS;t++){var f=t/STEPS,bx=doorX+(plX-doorX)*f,bz=doorZ+(plZ-doorZ)*f,wob=Math.sin(f*Math.PI)*1.1*bend;pts.push({x:bx+px*wob,z:bz+pz*wob});}
@@ -2233,6 +2236,7 @@ function onStationDone(score,win){
   if(!done[st.badge]){done[st.badge]=1;lsSet("nw_stations",JSON.stringify(done));}
   saveGame();}
 window.addEventListener("message",function(e){
+  if(e.origin&&e.origin!==location.origin&&e.origin!=="null")return; /* 🛡️ nur eigene Stations-iframes — sonst könnte jede fremde Seite Belohnungen posten */
   var d=e&&e.data;
   if(d==="mini-back"){closeStation();return;}
   if(typeof d==="string"&&d.charAt(0)==="{"){try{d=JSON.parse(d);}catch(err){d=null;}}
@@ -2414,7 +2418,7 @@ function buildSpawnHub(){
   var houses=window._spawnHouses||[];
   function clearOf(x,z,d){for(var i=0;i<houses.length;i++){if(Math.hypot(houses[i].x-x,houses[i].z-z)<d)return false;}return true;}
   function hubSpot(ang,r,d){ /* deterministisch: Radius nach aussen + Winkel leicht wackeln, bis hausfrei (d=Mindestabstand) */
-    d=d||5.5;
+    d=d||6.5; /* 🩹 Schwarm-P2: Häuser sind grösser (10.2) — mehr Abstand */
     var AOFF=[0,0.12,-0.12,0.24,-0.24,0.36,-0.36];
     for(var ka=0;ka<AOFF.length;ka++)for(var k=0;k<12;k++){
       var a2=ang+AOFF[ka],x=vx+Math.cos(a2)*(r+k*2),z=vz+Math.sin(a2)*(r+k*2);
@@ -2444,7 +2448,7 @@ function buildSpawnHub(){
       if(rec){rec.spd=0.3;rec.pois=[{x:fx+1.8,z:fz+0.6},{x:fx-1.8,z:fz+0.6},{x:fx,z:fz-2.2}];}} /* bleiben am Brunnen */
   })();
   /* 3) 🍺 Taverne: bd_inn + Laterne + warmes Licht + Musikant-NPC (♪-Blase, fixedEmo) */
-  (function(){var p=hubSpot(2.6,23,8.5),tx=p.x,tz=p.z; /* 📏 Taverne: ≥8.5 zu Häusern */
+  (function(){var p=hubSpot(2.6,23,10.5),tx=p.x,tz=p.z; /* 📏 Taverne: ≥10.5 zu den grösseren Häusern */
     var inn=cc0inst("bd_inn",9.5);if(inn){inn.position.set(tx,groundH(tx,tz),tz);inn.rotation.y=Math.atan2(vx-tx,vz-tz);scene.add(inn);addCollider(tx,tz,4.0,inn);}
     var dc=vx-tx,ds=vz-tz,dl=Math.hypot(dc,ds)||1;dc/=dl;ds/=dl;
     var dx=tx+dc*4.4,dz=tz+ds*4.4; /* Vorplatz Richtung Zentrum */
@@ -2455,7 +2459,7 @@ function buildSpawnHub(){
     if(mus){mus.fixedEmo="🎶";mus.spd=0.25;mus.emoT=1.5;mus.pois=[{x:dx-1.2,z:dz+0.8},{x:dx+1.4,z:dz+1.2},{x:dx,z:dz+2.2}];}
   })();
   /* 4) ⚒️ Arbeitende Schmiede: bd_smithy + Amboss + sv_hammer + periodische Funken + Flacker-Licht */
-  (function(){var p=hubSpot(4.9,23,8.5),sx=p.x,sz=p.z; /* 📏 Schmiede: ≥8.5 zu Häusern */
+  (function(){var p=hubSpot(4.9,23,10.5),sx=p.x,sz=p.z; /* 📏 Schmiede: ≥10.5 zu den grösseren Häusern */
     var sm=cc0inst("bd_smithy",9.0);if(sm){sm.position.set(sx,groundH(sx,sz),sz);sm.rotation.y=Math.atan2(vx-sx,vz-sz);scene.add(sm);addCollider(sx,sz,3.8,sm);}
     var dc=vx-sx,ds=vz-sz,dl=Math.hypot(dc,ds)||1;dc/=dl;ds/=dl;
     var ax=sx+dc*4.6,az=sz+ds*4.6,ay=groundH(ax,az);
@@ -2596,14 +2600,15 @@ function decorateWorld(){
   // --- Büsche / Blumen / Pilzgruppen ---
   // 🌿 üppige Büsche (mehrere Grün-Blobs + Blüten-Tupfer) — schöner als flacher cc0-Busch
   var BUSH_G=[0x2e7d4a,0x3a9a5a,0x276b40,0x4faf62],BLOOM=[0xff6ab0,0xffd166,0xffffff,0xff8a4d,0x9a6cff];
+  var _bushM={},_bloomM={}; /* 🩹 Kimi-P1: Material-Cache — vorher 2-3 NEUE Materialien pro Busch (~150 Büsche) */
+  function _bm(hex){if(!_bushM[hex]){_bushM[hex]=[new THREE.MeshLambertMaterial({color:hex,flatShading:true}),new THREE.MeshLambertMaterial({color:new THREE.Color(hex).multiplyScalar(1.2).getHex(),flatShading:true})];}return _bushM[hex];}
   function mkBush(){var g=new THREE.Group();var baseHex=BUSH_G[(rnd()*BUSH_G.length)|0];
-    var gm=new THREE.MeshLambertMaterial({color:baseHex,flatShading:true});
-    var gm2=new THREE.MeshLambertMaterial({color:new THREE.Color(baseHex).multiplyScalar(1.2).getHex(),flatShading:true}); // hellere Oberseite (Licht)
+    var _p=_bm(baseHex),gm=_p[0],gm2=_p[1];
     var nb=4+((rnd()*4)|0);
     for(var b=0;b<nb;b++){var rr=0.42+rnd()*0.4;var up=b<2;var bl=new THREE.Mesh(new THREE.IcosahedronGeometry(rr,0),up?gm2:gm);
       bl.position.set((rnd()-0.5)*1.0,(up?0.55:0.35)+rnd()*0.4,(rnd()-0.5)*1.0);bl.scale.y=0.9;bl.rotation.set(rnd()*3,rnd()*3,rnd()*3);bl.castShadow=true;g.add(bl);}
     // dichter Blüten-Cluster oben (mehr + heller)
-    if(rnd()<0.85){var bhex=BLOOM[(rnd()*BLOOM.length)|0];var bm=new THREE.MeshBasicMaterial({color:bhex});
+    if(rnd()<0.85){var bhex=BLOOM[(rnd()*BLOOM.length)|0];var bm=_bloomM[bhex]||(_bloomM[bhex]=new THREE.MeshBasicMaterial({color:bhex}));
       var nf=6+((rnd()*5)|0);for(var f2=0;f2<nf;f2++){var fl=new THREE.Mesh(new THREE.IcosahedronGeometry(0.08+rnd()*0.06,0),bm);fl.position.set((rnd()-0.5)*1.05,0.6+rnd()*0.5,(rnd()-0.5)*1.05);g.add(fl);}}
     return g;}
   var BUSHES=["nt_bush","cc0_bush","fg_bush","fg_bush_large","fg_bush_small"];
@@ -2664,11 +2669,13 @@ function decorateWorld(){
     for(var lp2=0;lp2<7;lp2++){var la2=rnd()*6.28,lr2=rnd()*r*0.82,lx2=p.x+Math.cos(la2)*lr2,lz2=p.z+Math.sin(la2)*lr2;var lily=cc0inst(rnd()<0.5?"fg_lilypad":"fg_lilypad_small",0.12);if(lily){lily.position.set(lx2,gy+0.08,lz2);lily.rotation.y=rnd()*6.28;scene.add(lily);}}
   })();}
   // 🌲 Dichte Wald-Haine (viele Bäume eng zusammen)
-  for(var fo=0;fo<Math.round(4*VF);fo++){(function(){var p=spotFar(60);for(var t=0;t<22;t++){var ox=p.x+(rnd()-0.5)*30,oz=p.z+(rnd()-0.5)*30;var tm=(rnd()<0.5?mkStylizedTree():cc0inst(["cc0_tree_pine","cc0_tree_oak"][(rnd()*2)|0],5+rnd()*1.5));if(tm){tm.scale.multiplyScalar?tm.scale.multiplyScalar(1):tm.scale.setScalar(0.9+rnd()*0.5);tm.position.set(ox,groundH(ox,oz),oz);tm.rotation.y=rnd()*6.28;scene.add(tm);}}})();}
+  for(var fo=0;fo<Math.round(4*VF);fo++){(function(){var p=spotFar(60);for(var t=0;t<22;t++){var ox=p.x+(rnd()-0.5)*30,oz=p.z+(rnd()-0.5)*30;var tm=(rnd()<0.5?mkStylizedTree():cc0inst(["cc0_tree_pine","cc0_tree_oak"][(rnd()*2)|0],5+rnd()*1.5));if(tm){var _tsc=0.9+rnd()*0.5;tm.scale.multiplyScalar(_tsc);tm.position.set(ox,groundH(ox,oz),oz); /* 🩹 No-Op-Fix: Grössen-Vielfalt war tot (multiplyScalar(1)) */tm.rotation.y=rnd()*6.28;scene.add(tm);}}})();}
   // ⛰️ Felsvorsprünge / Klippen (grosse dramatische Felsen)
   for(var cf2=0;cf2<Math.round(5*VF);cf2++){(function(){var p=spotFar(65);for(var i=0;i<5;i++){var ox=p.x+(rnd()-0.5)*7,oz=p.z+(rnd()-0.5)*7;
-    var big=cc0inst("cc0_cliff_rock",3.5+rnd()*4);if(!big)big=cc0inst("cc0_rock_large",4+rnd()*3);
-    if(big){big.position.set(ox,groundH(ox,oz)-0.5+rnd()*2.5,oz);big.rotation.set(rnd()*0.3,rnd()*6.28,rnd()*0.3);scene.add(big);}}})();}
+    var _cs1=3.5+rnd()*4,_cs2=4+rnd()*3; /* 🩹 Kimi-P1: beide rnd IMMER ziehen — sonst Koop-Desync wenn ein GLB nur auf einem Gerät fehlt */
+    var _cy=rnd()*2.5,_crx=rnd()*0.3,_cry=rnd()*6.28,_crz=rnd()*0.3; /* 🩹 Schwarm-P2: ALLE 4 Draws unbedingt — sonst Desync wenn GLB einseitig fehlt */
+    var big=cc0inst("cc0_cliff_rock",_cs1);if(!big)big=cc0inst("cc0_rock_large",_cs2);
+    if(big){big.position.set(ox,groundH(ox,oz)-0.5+_cy,oz);big.rotation.set(_crx,_cry,_crz);scene.add(big);}}})();}
   // 🌸 Grasige Hügel (flache Kuppeln mit Blumen)
   for(var hi=0;hi<Math.round(6*VF);hi++){(function(){var p=spotFar(55),hr=9+rnd()*8;
     var hill=new THREE.Mesh(new THREE.SphereGeometry(hr,12,7,0,6.28,0,Math.PI/2.2),new THREE.MeshLambertMaterial({color:0x3f9a54,flatShading:true}));
@@ -2705,31 +2712,31 @@ function decorateWorld(){
       /* Ring 3 (h>=22) zieht ALLE Zufälle aus rndP → Haupt-rnd-Strom bleibt exakt wie vor Paket #2 */
       var R3=(isSpawn&&h>=22),R=R3?rndP:rnd;
       if(isSpawn){ // drei Häuser-Ringe: innen 10, mitte 12, aussen 8
-        if(h<10){ha=(h/10)*6.28+rnd()*0.3;hrd=18+rnd()*6;}
-        else if(h<22){ha=((h-10)/12)*6.28+0.26+rnd()*0.25;hrd=32+rnd()*10;}
-        else{ha=((h-22)/8)*6.28+0.13+rndP()*0.22;hrd=46+rndP()*8;}
+        if(h<10){ha=(h/10)*6.28+rnd()*0.3;hrd=20+rnd()*6;}
+        else if(h<22){ha=((h-10)/12)*6.28+0.26+rnd()*0.25;hrd=35+rnd()*9;}
+        else{ha=((h-22)/8)*6.28+0.13+rndP()*0.22;hrd=46+rndP()*7;} /* 🩹 Schwarm-P1: max 53 — Häuser ragten in die Stadtmauer (R64) */
       }else{ha=(h/nH)*6.28+rnd()*0.4;hrd=6+rnd()*7;}
       var hx=vx+Math.cos(ha)*hrd,hz=vz+Math.sin(ha)*hrd;
       /* rnd-Aufrufe unbedingt (identischer Strom mit/ohne GLB → koop-sicher); fehlt das GLB,
          springt ein Primitiv-Haus ein (Welt nie leer, Android-Fetch-Saga). */
-      var hIdx=(R()*HOUSES.length)|0,hSc=8.6*(0.9+R()*0.25),hRy=Math.atan2(vx-hx,vz-hz)+(R()-0.5)*0.4; /* Scale 9.5→8.6: weniger Dach-Überhang */
+      var hIdx=(R()*HOUSES.length)|0,hSc=10.2*(0.95+R()*0.2),hRy=Math.atan2(vx-hx,vz-hz)+(R()-0.5)*0.4; /* 📐 8.6→10.2 + Jitter-Boden 0.9→0.95: Türen (~25% der Bauhöhe) immer ≥ ~2.3u > Held 1.75u — „Person passt durch jede Tür" */
       /* 📏 Mindestabstand 11 (Zentrum-zu-Zentrum, „überschneidet viel"): Retry-Sampling NUR aus rndP (deterministisch) */
-      var tooClose=function(x,z){for(var q=0;q<_houses.length;q++)if(Math.hypot(_houses[q].x-x,_houses[q].z-z)<11)return true;return false;};
+      var tooClose=function(x,z){for(var q=0;q<_houses.length;q++)if(Math.hypot(_houses[q].x-x,_houses[q].z-z)<13)return true;return false;};
       var tries=0;
       while(tries<12&&tooClose(hx,hz)){
         var ra,rr2;
-        if(isSpawn){if(h<10){ra=rndP()*6.28;rr2=18+rndP()*6;}else if(h<22){ra=rndP()*6.28;rr2=32+rndP()*10;}else{ra=rndP()*6.28;rr2=46+rndP()*8;}}
+        if(isSpawn){if(h<10){ra=rndP()*6.28;rr2=20+rndP()*6;}else if(h<22){ra=rndP()*6.28;rr2=35+rndP()*9;}else{ra=rndP()*6.28;rr2=46+rndP()*7;}}
         else{ra=rndP()*6.28;rr2=6+rndP()*7;}
         hx=vx+Math.cos(ra)*rr2;hz=vz+Math.sin(ra)*rr2;hRy=Math.atan2(vx-hx,vz-hz)+(rndP()-0.5)*0.4;tries++;
       }
       if(tries>=12&&tooClose(hx,hz)){ /* 12 Random-Retries erschöpft → deterministisch radial nach aussen nudgen */
         var nAng=Math.atan2(hz-vz,hx-vx),nRad=Math.hypot(hx-vx,hz-vz);
-        for(var nk=1;nk<=14&&tooClose(hx,hz);nk++){hx=vx+Math.cos(nAng)*(nRad+nk*1.6);hz=vz+Math.sin(nAng)*(nRad+nk*1.6);}
+        for(var nk=1;nk<=14&&tooClose(hx,hz);nk++){var _nr=Math.min(55,nRad+nk*1.6);hx=vx+Math.cos(nAng)*_nr;hz=vz+Math.sin(nAng)*_nr;} /* 🩹 Schwarm-P3: bei 55 klemmen — nicht über die Mauer nudgen */
         hRy=Math.atan2(vx-hx,vz-hz)+(rndP()-0.5)*0.4;
       }
       var hCx=hx+(R()-0.5)*1.5,hCz=hz+(R()-0.5)*1.5;
       var hm=cc0inst(HOUSES[hIdx],hSc)||mkFallbackHouse(hSc*0.9);
-      hm.position.set(hx,groundH(hx,hz),hz);hm.rotation.y=hRy;scene.add(hm);addChimney(hCx,hCz,groundH(hx,hz)+7.5);_houses.push({x:hx,z:hz});addCollider(hx,hz,3.4,hm);
+      hm.position.set(hx,groundH(hx,hz),hz);hm.rotation.y=hRy;scene.add(hm);addChimney(hCx,hCz,groundH(hx,hz)+8.9);_houses.push({x:hx,z:hz});addCollider(hx,hz,4.0,hm);
     }
     // Lagerfeuer-Platz + leuchtendes Feuer in der Dorfmitte
     var cf=cc0inst("cc0_campfire",0.7);if(cf){cf.position.set(vx,groundH(vx,vz),vz);scene.add(cf);}
@@ -2758,7 +2765,7 @@ function decorateWorld(){
       /* 📏 Welle 5: Landmark-Gebäude aus den Häuser-Ringen NACH AUSSEN schieben bis frei (User: keine überschneidung) */
       function clearSpot(x0,z0,br){var ang=Math.atan2(z0-vz,x0-vx),r0=Math.hypot(x0-vx,z0-vz);
         for(var k=0;k<26;k++){var rr=r0+k*2.5,x=vx+Math.cos(ang)*rr,z=vz+Math.sin(ang)*rr,ok=true;
-          for(var hh=0;hh<_houses.length;hh++){if(Math.hypot(_houses[hh].x-x,_houses[hh].z-z)<3.4+br){ok=false;break;}}
+          for(var hh=0;hh<_houses.length;hh++){if(Math.hypot(_houses[hh].x-x,_houses[hh].z-z)<4.2+br){ok=false;break;}}
           if(ok)return {x:x,z:z};}
         return {x:vx+Math.cos(ang)*(r0+52),z:vz+Math.sin(ang)*(r0+52)};}
       var chp=clearSpot(vx-14,vz-12,4.5);
@@ -3269,7 +3276,17 @@ var QUESTS=[
   {t:"Verdiene 8 💎 in der Arena ⚔️",done:function(){return (qProg.arenaCr|0)>=8;},prog:function(){return [Math.min(8,qProg.arenaCr|0),8];},rw:6},
   {t:"Gewinne ein Rennen 🏎️ (Score ≥ 40)",done:function(){return !!qProg.raceWin;},rw:8},
   {t:"Stelle 3 Fackel-Laternen 🔥 an deiner Basis auf",done:function(){return cntStruct("fackel")>=3;},prog:function(){return [Math.min(3,cntStruct("fackel")),3];},rw:10},
-  {t:"Steig hinab und besiege den KOLOSS 🏰 (Dungeon)",done:function(){return !!qProg.koloss;},rw:12} /* #65 — ans ENDE (Save nutzt Quest-Index) */
+  {t:"Steig hinab und besiege den KOLOSS 🏰 (Dungeon)",done:function(){return !!qProg.koloss;},rw:12}, /* #65 — Save nutzt Quest-Index → NEUE Quests NUR ANHÄNGEN */
+  /* ⚔️ Ausrüstungs-Kette: Quests schalten die SICHTBAREN Waffen/Rüstungen frei (gw/ga = Tier).
+     Nur monotone Zähler (kills/loot/day/cnt/inv) → koop-neutral. */
+  {t:"Erlege 15 Monster ⚔️",done:function(){return kills>=15;},prog:function(){return [Math.min(15,kills),15];},rw:6,gw:1},
+  {t:"Öffne 3 Truhen oder Ruinen 📦",done:function(){return lootOpenedTotal>=3;},prog:function(){return [Math.min(3,lootOpenedTotal),3];},rw:6,ga:1},
+  {t:"Überlebe bis Tag 5 🌙",done:function(){return day>=5;},prog:function(){return [Math.min(5,day),5];},rw:8},
+  {t:"Baue 2 Wächter-Türme 🗼",done:function(){return cntStruct("turm")>=2;},prog:function(){return [Math.min(2,cntStruct("turm")),2];},rw:8},
+  {t:"Erlege 40 Monster — Krieger-Ruhm ⚔️",done:function(){return kills>=40;},prog:function(){return [Math.min(40,kills),40];},rw:10,gw:2},
+  {t:"Habe 15 💎 im Beutel",done:function(){return (inv.crystal|0)>=15;},prog:function(){return [Math.min(15,inv.crystal|0),15];},ga:2},
+  {t:"Verdiene 20 💎 in der Arena ⚔️",done:function(){return (qProg.arenaCr|0)>=20;},prog:function(){return [Math.min(20,qProg.arenaCr|0),20];},rw:12},
+  {t:"Erlege 80 Monster — werde zur LEGENDE 🌟",done:function(){return kills>=80;},prog:function(){return [Math.min(80,kills),80];},rw:15,gw:3,ga:3}
 ];
 var totalWood=0;
 /* 🔁 Endlos-Bounties nach der Quest-Kette: rotierende Tagesziele (eigener RNG — nie rnd/rnd2, Koop-neutral; nur monotone Zähler) */
@@ -3374,8 +3391,11 @@ function _gearOn(model,weapon,armor,old){
   }
   return refs;
 }
+var _lastGearW=-1,_lastGearA=-1;
 function applyGearVisuals(){
   if(!heroModel)return;
+  if(equip.weapon===_lastGearW&&equip.armor===_lastGearA)return; /* 🩹 Schwarm-P2: nur bei Änderung — vorher Mesh-Rebuild + Koop-Nachricht bei JEDEM Pickup */
+  _lastGearW=equip.weapon;_lastGearA=equip.armor;
   var r=_gearOn(heroModel,equip.weapon,equip.armor,{weapon:_weaponMesh,armor:_armorParts});
   _weaponMesh=r.weapon;_armorParts=r.armor;
   if(NET.on)sendMyGear(); /* Partner über eigene Ausrüstung informieren */
@@ -3912,7 +3932,7 @@ function openBuild(){
   buildMode=true;renderBuildMenu();document.getElementById("buildMenu").classList.remove("hide");
   if(IS_MOB)document.getElementById("bConfirm").classList.remove("hide");
 }
-function closeBuild(){buildMode=false;document.getElementById("buildMenu").classList.add("hide");document.getElementById("bConfirm").classList.add("hide");if(ghost){scene.remove(ghost);ghost=null;ghostType=null;}}
+function closeBuild(){buildMode=false;document.getElementById("buildMenu").classList.add("hide");document.getElementById("bConfirm").classList.add("hide");if(ghost){disposeGhost();ghostType=null;}}
 /* 📱 Tap auf die Spielfläche AUSSERHALB eines offenen Menüs schliesst es (guarded:
    im Ghost-Platzier-Modus ist das Menü eh zu und der Tap bleibt Platzieren/Kamera). */
 renderer.domElement.addEventListener("pointerdown",function(){
@@ -3936,8 +3956,9 @@ function renderBuildMenu(){
     el.appendChild(d);
   });
 }
+function disposeGhost(){if(!ghost)return;scene.remove(ghost);ghost.traverse(function(n){if(n.isMesh){var ms=Array.isArray(n.material)?n.material:[n.material];ms.forEach(function(m){if(m)m.dispose();});}});ghost=null;} /* 🩹 Schwarm-P3: NUR Materialien (geklont) — Geometrie ist bei cc0-Bauten mit dem Proto geteilt */ /* 🩹 Kimi-P1: geklonte Ghost-Materialien+Geometrie entsorgen — sonst GPU-Leak pro Bauversuch */
 function startGhost(type){
-  if(ghost)scene.remove(ghost);
+  disposeGhost();
   ghostType=type;ghost=buildMesh(type,player.position.x,player.position.z);
   ghost.traverse(function(n){if(n.isMesh&&n.material){n.material=n.material.clone();n.material.transparent=true;n.material.opacity=0.5;}});
   scene.add(ghost);
@@ -3962,7 +3983,7 @@ function confirmBuild(){
   placeStructure(type,ghost.position.x,ghost.position.z);
   burst(ghost.position.x,ghost.position.y+1,ghost.position.z,0x6affc0,10);
   toast(RECIPES[type].ic+" "+RECIPES[type].name+" gebaut!");
-  scene.remove(ghost);ghost=null;
+  disposeGhost();
   if(type==="nexus"){onNexusBuilt();return;}
   if(structures.length>=STRUCT_CAP){closeBuild();toast("Baugrenze erreicht ("+STRUCT_CAP+")");return;}
   if(!canAfford(type)){closeBuild();}else{renderBuildMenu();document.getElementById("buildMenu").classList.remove("hide");}
@@ -4429,8 +4450,11 @@ function updQuest(dt){
     burst(player.position.x,player.position.y+2,player.position.z,0xffd166,12);
     var wasNexus=QUESTS[quest].nexus;
     var rw=QUESTS[quest].rw|0; /* 💎 W3: Quest-Belohnung (Folge-Quests) */
+    var gw=QUESTS[quest].gw|0,ga=QUESTS[quest].ga|0; /* ⚔️🛡️ Ausrüstungs-Belohnung (sichtbar am Helden) */
     quest++;
     if(rw>0){inv.crystal=(inv.crystal|0)+rw;invUpd();toast("🎁 Quest-Belohnung: +"+rw+" 💎");}
+    if(gw>equip.weapon){equip.weapon=gw;gearUpd();toast("🗡️ NEUE WAFFE: "+WEAP_NAME[gw]+" — sieh sie in deiner Hand!");sfxSeq([[660],[880],[1100,0.4]]);}
+    if(ga>equip.armor){equip.armor=ga;gearUpd();toast("🛡️ NEUE RÜSTUNG: "+ARMOR_NAME[ga]+" — sitzt!");sfxSeq([[520],[700],[900,0.4]]);}
     if(wasNexus)showWinScreen(); /* 🏆 Nexus bleibt der grosse Sieg — Folge-Quests kommen danach */
     if(quest<QUESTS.length){announce("✅ Ziel erreicht! Nächstes Ziel…");document.getElementById("questText").textContent=QUESTS[quest].t;}
     else{document.getElementById("questText").textContent="🏆 Alle Ziele geschafft — überlebe weiter!";bounty=null;
@@ -4924,8 +4948,10 @@ function startGame(fresh){
     (sv.st||[]).forEach(function(o){if(!RECIPES[o.t])return;placeStructure(o.t,o.x,o.z);var st=structures[structures.length-1];if(st)st.hp=o.hp;});
     // Quest: gespeicherten Stand nehmen, dann erfüllte überspringen
     if(typeof sv.quest==="number")quest=Math.min(sv.quest,QUESTS.length);
-    while(quest<QUESTS.length&&QUESTS[quest].done())quest++;
-  } else {qProg.flug=0;qProg.arenaCr=0;qProg.raceWin=0;qProg.koloss=0;bountyN=0;bounty=null;lootOpenedTotal=0;inv={wood:0,stone:0,crystal:0,berry:0,meat:0};tools={axe:0,pick:0};hp=100;maxHp=100;xp=0;level=1;kills=0;day=1;dayT=0;isNight=false;nights=0;won=false;normInv();player.position.set(NET.on?(NET.role==="host"?-2.5:2.5):0,0,0);
+    while(quest<QUESTS.length&&QUESTS[quest].done()){var _sq=QUESTS[quest]; /* 🩹 Schwarm-P1: beim Überspringen erledigter Quests Ausrüstung TROTZDEM vergeben */
+      if((_sq.gw|0)>equip.weapon)equip.weapon=_sq.gw|0;if((_sq.ga|0)>equip.armor)equip.armor=_sq.ga|0;quest++;}
+  } else {for(var _pk in PERK)PERK[_pk]=0;equip.weapon=0;equip.armor=0; /* 🩹 Kimi-P1: frischer Start muss Perks/Ausrüstung nullen — sonst stapeln sich Klassen-Boni bei Restart */
+    qProg.flug=0;qProg.arenaCr=0;qProg.raceWin=0;qProg.koloss=0;bountyN=0;bounty=null;lootOpenedTotal=0;inv={wood:0,stone:0,crystal:0,berry:0,meat:0};tools={axe:0,pick:0};hp=100;maxHp=100;xp=0;level=1;kills=0;day=1;dayT=0;isNight=false;nights=0;won=false;normInv();player.position.set(NET.on?(NET.role==="host"?-2.5:2.5):0,0,0);
     var _c=getChar();if(_c&&_c.cls){ // 🔀 Klassen-Bonus (Realm) einmalig auf den frischen Start
       if(_c.cls.atk)PERK.atk+=_c.cls.atk;if(_c.cls.spd)PERK.spd+=_c.cls.spd;
       if(_c.cls.skillcd)PERK.skillcd+=_c.cls.skillcd;

@@ -1,0 +1,383 @@
+# Kimi-Schwarm-Backlog (Wildnis-Optimierung + Web) — offene Befunde
+
+> 24.7.: 2 Kimi-Schwärme (42+15 Jobs, kimi-k3). Umgesetzt: PERK-Reset, Fallback-rnd-Desync,
+> Ghost-Dispose, .btn-backdrop-filter, mkBush-Material-Cache, Schädel-PointLight, Hub-Polish
+> (Weiterspielen-Karte, OG-Bild, Meta, Textfix). Hier die noch OFFENEN verifizierungswürdigen Punkte.
+
+## Wildnis (252 Befunde)
+- **P1|perf** [dim_alloc L0] new THREE.Vector3/Quaternion/Euler pro Frame im rAF-Loop
+  - Fix: Modulweite Scratch-Variablen einmal anlegen (r128-Stil): var _v1=new THREE.Vector3(), _v2=new THREE.Vector3(), _q=new THREE.Quaternion(); Im Loop nur wiederverwenden und in-place arbeiten: _v1.set(dx,0,dz); velocity.add(
+- **P1|perf** [c_02241 L2279] ~500+ einzelne Meshes = 500+ Draw-Calls (keine Instanziierung/Merging)
+  - Fix: Wiederholte Modelle (Blumen, Zäune, Grabsteine, Weizen, Fässer) als THREE.InstancedMesh pro Modell-Key rendern (Matrix pro Instanz), oder statische Deko mit BufferGeometryUtils.mergeBufferGeometries zu wenigen Meshes zus
+- **P1|perf** [c_00981 L1024] frustumCulled=false auf allen Mob-Meshes → permanente Draw-Calls + Shadow-Pass
+  - Fix: frustumCulled=false nur noch für geskinnte Meshes setzen. Bei Klonen Culling an lassen bzw. einmalig geometry.boundingSphere.radius auf die skalierte Größe aufblasen (z.B. radius = th*1.5 nach _fit), statt das Culling ko
+- **P1|perf** [c_00981 L1054] Geskinnte Mobs: kompletter GLB-Download + Parse pro Spawn
+  - Fix: GLB pro file genau einmal laden und cachen; Spawn dann via SkeletonUtils.clone (in r128 unter examples/js/utils verfügbar — das ist der offizielle Fix für das im Kommentar genannte Skinned-Klon-Problem, Object3D.clone is
+- **P1|correctness** [c_00981 L1062] Math.random() statt seeded rnd() → Koop-Desync
+  - Fix: rnd() verwenden und darauf achten, dass alle Spawn-Pfade (normal, Boss, Fallback) auf jedem Peer die gleiche Anzahl rnd()-Aufrufe in gleicher Reihenfolge verbrauchen.
+- **P1|perf** [dim_shadow L0] Shadow-Camera-Bounds der DirectionalLight auf den Sichtbereich klemmen
+  - Fix: shadow.camera.left/right/top/bottom auf den aktiven Bereich um den Spieler setzen (z.B. ±25-40 Einheiten), near/far so eng wie möglich (near kurz vor dem nächsten Castern, far knapp hinter dem fernsten). Camera nachziehe
+- **P1|perf** [dim_shadow L0] castShadow=false für Gras, kleine Steine und Kleinkram
+  - Fix: Per Traversal-Politik: nur Bäume, große Felsen, Gebäude und Charaktere bekommen castShadow=true; alles unter einer Größen-/BoundingBox-Schwelle (z.B. <0.5m) castShadow=false, receiveShadow darf true bleiben. Bei Instance
+- **P1|perf** [dim_shadow L0] Statische Sonne: shadowMap.autoUpdate=false und nur bei Bedarf neu rendern
+  - Fix: renderer.shadowMap.autoUpdate=false setzen und renderer.shadowMap.needsUpdate=true nur auslösen, wenn sich die Sonne bewegt, Caster sich ändern oder die Shadow-Camera dem Spieler nachgeführt wird. Bewegte Charaktere ggf.
+- **P1|perf** [dim_draw L0] Group-Caching reduziert KEINE Draw-Calls (Grund-Missverständnis)
+  - Fix: Statische Geometrie mergen (BufferGeometryUtils.mergeBufferGeometries aus examples/js/utils/BufferGeometryUtils.js) oder InstancedMesh verwenden. Zielmarke: <100 Draw-Calls gesamt. Erfolg objektiv messen: renderer.info.r
+- **P1|perf** [dim_draw L0] Konkrete Empfehlung: statisch mergen, dynamisch instancen (Hybrid)
+  - Fix: Hybrid-Architektur: (a) statische Stadt → gemergte Meshes pro Distrikt und Material, (b) dynamische Props → InstancedMesh pro Prop-Typ, (c) alle Texturen in einen Atlas, damit die gesamte Stadt idealerweise 1–3 Materiali
+- **P1|perf** [dim_draw L0] Migrationsrezept: Einzel-Meshes → Chunk-Merge + Instancing
+  - Fix: 1) Generator umstellen: statt new THREE.Mesh pro Box nur {x,y,z, rotY, sx,sy,sz, materialKey, chunkId} in Listen schreiben. 2) Pro chunkId+materialKey: Basis-BoxGeometry clonen, Matrix aus den Daten bauen (new THREE.Matr
+- **P1|correctness** [dim_tex L0] gtex-Canvas nicht Power-of-Two (NPOT)
+  - Fix: Canvas-Größen strikt POT wählen (256/512/1024, bei Equirect 2:1 wie 1024×512). Bei bewusstem NPOT: wrapS/wrapT=ClampToEdgeWrapping, minFilter=LinearFilter, generateMipmaps=false.
+- **P1|perf** [dim_tex L0] texture.needsUpdate=true pro Frame auf statischem Canvas
+  - Fix: Dirty-Flag: needsUpdate nur setzen, wenn wirklich in den Canvas gezeichnet wurde. Bei dynamischen Canvas (Minimap etc.) auf 10–15 Hz drosseln und Canvas so klein wie möglich halten.
+- **P1|memory** [dim_tex L0] Fehlendes dispose() beim Neu generieren von gtex/nwGradTex
+  - Fix: Vor dem Ersetzen: oldTex.dispose(). Zusätzlich renderer.info.memory.textures im Debug-Overlay überwachen, um Lecks früh zu sehen.
+- **P1|perf** [dim_tex L0] PMREMGenerator.fromEquirectangular()/fromScene() wiederholt aufgerufen
+  - Fix: Einmal pro Environment erzeugen und Ergebnis (rt.texture) cachen. Beim Laden pmremGenerator.compileEquirectangularShader() aufrufen, um den Compile-Hitch in den Ladebildschirm zu verlegen.
+- **P1|memory** [dim_tex L0] PMREM-RenderTarget und PMREMGenerator nicht disposed
+  - Fix: Bei Envmap-Wechsel: oldEnvMapRT.texture.dispose() (bzw. RT dispose) vor Neuzuweisung. pmremGenerator.dispose() sobald keine weiteren Envmaps mehr generiert werden. rt.texture bleibt für Materialien nutzbar.
+- **P1|correctness** [c_00561 L616] Math.random() in mkStylizedTree bricht Koop-Deterministik
+  - Fix: Alle Math.random()-Aufrufe in Z.616–619 durch rnd() ersetzen (festes Draw-Schema: 1× trunkH, 1× Farbe, pro Blob 3× Position/Rotation).
+- **P1|correctness** [c_03781 L3802] Math.random() im Loot-Drop bricht Koop-Deterministik
+  - Fix: Math.random() durch rnd() ersetzen: if(rnd()<0.4){...}. Gleiche Seed-Reihenfolge auf beiden Peers sicherstellen.
+- **P2|memory** [c_01961 L1992] Beet-Geometrien nicht gecacht (~90 neue GPU-Buffer pro Garten)
+  - Fix: Modul-Level-Geometry-Cache analog _gMats einführen (z.B. Map key→Geometry, lazy) und in veg(), Sonnenblumen-, Bordüren- und Grasbüschel-Schleifen wiederverwenden; Meshes teilen sich dann dieselbe Geometry-Instanz.
+- **P2|perf** [c_01961 L2005] ~90 Draw Calls pro Garten, kein Merge/Instancing
+  - Fix: Statische Teile pro Material mit BufferGeometryUtils.mergeBufferGeometries zu wenigen Meshes zusammenfassen (regSway wirkt auf Gruppenebene und funktioniert weiterhin) oder InstancedMesh für Grasbüschel/Blütenblätter/Blü
+- **P2|perf** [c_01961 L2043] ~34 Meshes/Draw Calls pro Wimpelkette
+  - Fix: Seil als ein einziges THREE.Line oder eine gemergte BufferGeometry zeichnen; Fähnchen zu einer Geometry mit Vertex-Farben mergen (oder 6 InstancedMeshes nach Farbe); Richtungsvektor in wiederverwendete Temp-Vector3 schre
+- **P2|memory** [c_01401 L1507] placeLoot: alte Loot-Meshes werden nicht removed/disposed
+  - Fix: Vor loots.length=0 aufräumen: loots.forEach(l=>{scene.remove(l.mesh);l.mesh.traverse(n=>{if(n.isMesh){n.geometry.dispose();var mt=n.material;(Array.isArray(mt)?mt:[mt]).forEach(x=>x.dispose());}});});
+- **P2|perf** [c_01261 L1325] Pollen: 44 Einzel-Meshes = 44 Draw-Calls + 44 Geometrien/Materialien
+  - Fix: Ein einziges THREE.Points (oder InstancedMesh) mit AdditiveBlending; Puls/Fade über Vertex-Farben bzw. instanceColor statt material.opacity. Minimum: eine geteilte SphereGeometry für alle 44.
+- **P2|memory** [c_01261 L1322] Glühwürmchen: 30 identische SphereGeometries + 30 Materials
+  - Fix: Eine geteilte Geometrie; Farb-Logik (Zeile 1374 setRGB pro Frame) über InstancedMesh.instanceColor oder THREE.Points mit per-Point-Color abbilden.
+- **P2|perf** [c_01261 L1339] Stümpfe/Stämme: neue CylinderGeometry pro Mesh, ~100+ Draw-Calls, groundH doppelt
+  - Fix: Drei geteilte Geometrien (stump, top, log) oder InstancedMesh wie bei Gras/Blumen. groundH(x,z) einmal in eine Variable zwischenspeichern.
+- **P2|perf** [c_01261 L1373] groundH() ~120× pro Frame in updAmbient
+  - Fix: Pro Iteration einmal in eine lokale Variable (insb. 1384 und 1398 doppelt). Zusätzlich Höhe cachen und nur neu berechnen, wenn sich x/z um >0.5–1 m geändert hat.
+- **P2|correctness** [c_01261 L1370] Math.random() statt seeded rnd() im Ambient-Loop bricht Koop-Deterministik
+  - Fix: rnd() (oder einen separaten ge seedeten Ambient-RNG) verwenden, falls Ambient-State synchron bleiben soll.
+- **P2|perf** [c_01541 L1546] Halo pro Prop: eigene CircleGeometry + eigenes Material + extra Mesh verdoppelt Draw-Calls
+  - Fix: Ein einziges Unit-CircleGeometry (Radius 1) global teilen und Größe über halo.scale.setScalar(sc*0.9) steuern. side:THREE.FrontSide verwenden. Da Zeile 1563 die Opazität pro Halo animiert, sind geteilte Materialien nur m
+- **P2|perf** [c_01541 L1590] Ruhende Tiere: groundH() wird pro Frame neu berechnet, obwohl Position statisch ist
+  - Fix: Beim Eintritt in den Rest-Zustand (Zeile 1592/1601, wo c.rest gesetzt wird) einmalig c.gy=groundH(...) cachen und im rest-Zweig m.position.y=c.gy setzen.
+- **P2|memory** [c_01541 L1641] mkFallbackHouse: neue Geometrien/Materialien pro Haus statt geteilter Ressourcen
+  - Fix: Geometrien und Materialien einmal als Modul-Level-Konstanten anlegen (z.B. _fhBoxGeo, _fhWallMat …) und in allen Häusern referenzieren; nur Meshes pro Haus neu erstellen.
+- **P2|memory** [c_04901 L4973] Charakter-Vorschau: WebGLRenderer/Szene wird nach Spielstart nie disposed
+  - Fix: Beim Übergang ins Spiel (z.B. in startGame nach 4938) Teardown: clearModel(), psc.environment.dispose(), pr.dispose(), pr.forceContextLoss(), pr=null setzen und Canvas entfernen/verstecken.
+- **P2|memory** [c_03501 L3516] Shock-Ring: Material wird nicht disposed
+  - Fix: if(f>=1){scene.remove(s2.m);s2.m.geometry.dispose();s2.m.material.dispose();shockRings.splice(i,1);}
+- **P2|perf** [c_03501 L3527] getElementById + textContent jeden Frame (Skill-Button)
+  - Fix: var _bSkill=document.getElementById("bSkill") einmal cachen; textContent/opacity/class nur schreiben, wenn der Wert sich tatsächlich geändert hat (letzten Wert in _lastSkillTxt etc. merken).
+- **P2|perf** [c_03501 L3567] getElementById + textContent jeden Frame (Bolt-Button)
+  - Fix: Button-Referenz einmal cachen und DOM-Writes hinter Änderungs-Guards legen (z.B. letzter angezeigter Cooldown-Wert).
+- **P2|correctness** [c_03501 L3574] Math.random() in rollRarity bricht Koop-Deterministik
+  - Fix: rnd() (seeded) statt Math.random() verwenden: var r=rnd(); — oder Drop nur hostseitig würfeln und Ergebnis per NET syncen.
+- **P2|correctness** [c_03501 L3588] Math.random() in rewardKill (Loot-Drop) nicht deterministisch
+  - Fix: Beide Würfe auf rnd() umstellen oder Drop-Entscheid nur auf einer Seite treffen und per Netzwerk-Event verteilen.
+- **P2|memory** [c_03501 L3504] Projektil-Entfernung ohne dispose
+  - Fix: Vor dem Splice: if(p.m.geometry&&!p.m.geometry._shared)p.m.geometry.dispose(); if(p.m.material&&!p.m.material._shared)p.m.material.dispose(); — bzw. ganz auf gepoolte, geteilte Geometry/Materialien umstellen.
+- **P2|perf** [dim_alloc L0] new THREE.Color() / getHSL() ohne Zielobjekt pro Frame
+  - Fix: Einmal anlegen: var _c=new THREE.Color(); var _hsl={h:0,s:0,l:0}; Im Loop: material.color.getHSL(_hsl); _hsl.l=0.5+0.5*Math.sin(t); material.color.setHSL(_hsl.h,_hsl.s,_hsl.l); oder _c.setHSL(...) und material.color.copy
+- **P2|perf** [dim_alloc L0] Array-Literale, map/filter/slice und arr=[] pro Frame
+  - Fix: Listen als modulweite vars vorallokieren: var enemies=[]; Reset mit enemies.length=0 statt enemies=[]; klassische for-Schleife mit gecachter Laenge: for(var i=enemies.length-1;i>=0;i--){var e=enemies[i]; if(e.hp<=0){enem
+- **P2|perf** [dim_alloc L0] String-Konkatenation und DOM-Schreibzugriffe pro Frame (HUD/Debug)
+  - Fix: Nur bei Wertaenderung schreiben: var _lastScore=-1,_lastHp=-1; if(score!==_lastScore){_lastScore=score; scoreEl.textContent='Score: '+(score|0);} Debug-Anzeigen auf 4-10 Hz throtteln: var _hudT=0; _hudT+=dt; if(_hudT>0.2
+- **P2|perf** [dim_alloc L0] Closures/anonyme Funktionen und .bind() im Tick
+  - Fix: Callback einmal ausserhalb definieren und by reference uebergeben: function _visit(o){ if(o.isMesh){...} } im Loop nur scene.traverse(_visit); for-Schleifen statt forEach/map/filter; kein bind im Tick — Kontext ueber var
+- **P2|perf** [c_03361 L3489] Projektil: neue Geometry+Material pro Wurf
+  - Fix: Einmalig auf Modulebene anlegen: var PROJ_GEO=new THREE.IcosahedronGeometry(0.24,0), PROJ_MAT=new THREE.MeshBasicMaterial({color:0x7de3ff}); und in doThrow nur var pm=new THREE.Mesh(PROJ_GEO,PROJ_MAT); — keine dispose-Pf
+- **P2|perf** [c_03361 L3495] updThrow: DOM-Zugriff + Schreibzugriffe jeden Frame
+  - Fix: Button-Referenz einmalig cachen (var bThrowEl=...). textContent nur schreiben, wenn Math.ceil(throwCd) sich ändert (letzten Wert in Variable merken); opacity/classList nur bei Zustandswechsel setzen.
+- **P2|perf** [c_03081 L3193] PointLight pro gebauter Fackel/Lager/Turm — bis zu 18 dynamische Lichter möglich
+  - Fix: Echte Lichter auf 2–3 begrenzen (nur die dem Spieler nächsten Feuer aktiv schalten, Rest über g.userData.light.visible=false). Glow für den Rest günstig faken: emissive Mesh + additive Sprite/Billboard (THREE.Sprite mit 
+- **P2|perf** [c_03081 L3196] Änderung der Lichtanzahl erzwingt synchronen Shader-Recompile (Ruckler beim Bau/Abriss)
+  - Fix: Lichtanzahl konstant halten: Pool fester PointLights einmalig erstellen, mit renderer.compile() bzw. einem initialen Frame vorwärmen und danach nur position/intensity/visible ändern — nie Lichter add/remove im laufenden 
+- **P2|memory** [c_03081 L3189] buildMesh allokiert pro Bau neue Geometrien & Materialien statt geteilter Caches
+  - Fix: Modul-Level-Cache: eine BoxGeometry, eine ConeGeometry, eine Handvoll Standard-Materialien pro Typ anlegen und in allen Strukturen teilen (nur position/rotation/scale pro Mesh setzen). Geteilte Ressourcen müssen beim Abr
+- **P2|perf** [c_01121 L1147] getElementById + style.width jeden Frame (Layout-Invalidierung)
+  - Fix: bossFill-Element einmal global cachen (var _bossFill=document.getElementById("bossFill")) und Breite nur schreiben, wenn sich der gerundete Prozentwert ändert: var p=Math.max(0,Math.round(boss.hp/boss.maxhp*100)); if(el.
+- **P2|correctness** [c_01121 L1191] Math.random steuert Lunge → Monsterpositionen divergieren im Koop
+  - Fix: Zufall für alles, was e.x/e.z/spd beeinflusst, aus rnd() (seeded) oder aus einem host-seitig verteilten Wert ableiten, z.B. e.lungeCd=3+rnd()*1.5; reine Visuals (Telegraph-Farbe, sfx) dürfen Math.random behalten.
+- **P2|perf** [c_01121 L1234] groundH() pro Monster pro Frame
+  - Fix: Höhe cachen: if(e._ghx!==e.x||e._ghz!==e.z){e._gh=groundH(e.x,e.z);e._ghx=e.x;e._ghz=e.z;} und dann e._gh verwenden. Ungenutzte groundH-Aufrufe in 1181/1208 sind selten und ok.
+- **P2|perf** [c_04061 L4108] getBoundingClientRect() bei jedem touchmove (Joystick) erzwingt synchrones Layout
+  - Fix: Rect einmal in stickStart() cachen (z.B. stickRect=stickEl.getBoundingClientRect()) und in stickMove nur das gecachte Rect verwenden; bei resize/orientationchange invalidieren.
+- **P2|perf** [c_04061 L4183] setZoom() schreibt bei jedem Pinch-/Wheel-Event synchron in localStorage
+  - Fix: In setZoom nur camZoomT setzen. Persistenz entkoppeln: Debounce (z.B. 500 ms Timer) oder erst bei touchend/wheel-Ende/Pause/visibilitychange per lsSet speichern.
+- **P2|perf** [c_02521 L2604] castShadow=true auf jedem Busch-Blob verdoppelt deren Renderlast im Shadow-Pass
+  - Fix: Für Deko-Blobs castShadow=false (oder nur dem größten Basis-Blob erlauben). Alternativ global: nur Bäume/Felsen werfen Schatten.
+- **P2|memory** [c_02521 L2603] Neue IcosahedronGeometry pro Blob/Blüte → hunderte duplizierte Geometrien im Speicher
+  - Fix: Zwei geteilte Einheits-Geometrien (var BLOB_G=new THREE.IcosahedronGeometry(1,0); var FLOWER_G=new THREE.IcosahedronGeometry(1,0);) und Radius über bl.scale.setScalar(rr) bzw. fl.scale.setScalar(r) abbilden (scale.y=0.9 
+- **P2|memory** [c_02521 L2644] Pilzhain: pro Pilz neue SphereGeometry + neues MeshBasicMaterial für Glow (50×VF Stück)
+  - Fix: Eine geteilte Geometrie + EIN geteiltes Material außerhalb des Loops anlegen; im Loop nur new THREE.Mesh(SHARED_GEO,SHARED_MAT). Identisches Erscheinungsbild bei einem Bruchteil der Allokationen.
+- **P2|perf** [c_03641 L3684] floatText: DOM-Element + setTimeout pro Treffer-Zahl (Allokation im Kampf)
+  - Fix: Kleinen Pool (z.B. 8–12) wiederverwendbarer floatN-Divs vorhalten: freien Knoten nehmen, Text/Position setzen, per Transition/Timer wieder freigeben; kein createElement/removeChild im Spielbetrieb.
+- **P2|memory** [c_02241 L2246] CanvasTexture/SpriteMaterial bei Stationswechsel nie disposed (GPU-Memory-Leak)
+  - Fix: Beim Entfernen: var m=_remStSp.material; if(m.map)m.map.dispose(); m.dispose(); _remStSp=null; Alternativ Canvas/Texture einmalig halten und per ctx.clearRect + Neuzeichnen + map.needsUpdate=true recyclen (vermeidet auch
+- **P2|perf** [c_02241 L2305] 3 zusätzliche PointLights ohne Not (Friedhof/Lagerfeuer/Leuchtturm) — Forward-Renderer-Kosten auf jedem Fragment
+  - Fix: Für Deko-Feuer/Laternen Fake-Glow verwenden (additives Sprite/Plane mit Emissive-Textur — das 'halo'-Konzept existiert bereits, s. 2324). Höchstens 1–2 echte PointLights nahe dem Spieler, per Distanz umschalten. Lagerfeu
+- **P2|correctness** [c_00981 L1049] Spawn-Position aus lokalem player.position abgeleitet
+  - Fix: Spawn-Anker deterministisch festlegen: entweder nur der Host berechnet x/z und sendet sie mit, oder Anker aus gemeinsamem Welt-State (z.B. älteste Spieler-ID / gemittelte Position aller Peers) ableiten.
+- **P2|perf** [c_00281 L393] HDR-IBL-Pfad läuft auch auf Mobilgeräten mit WebGL2 (Startup-Hitch)
+  - Fix: Bedingung um `!IS_MOB` (oder direkt GFX_HI) ergänzen: `if(!IS_MOB&&THREE.RGBELoader&&renderer.capabilities.isWebGL2&&!SOFT_GPU){...}` — Mobilgeräte nehmen dann sofort den gecachten nwGradEnv.
+- **P2|correctness** [c_00281 L415] Globaler Metal-Fix (metalness→0.12) kann den Helden treffen
+  - Fix: Im Patch ein Opt-out prüfen, z.B. `if(m.userData&&m.userData.keepMetal)continue;` bzw. beim Helden-Material nach dem Laden `userData.keepMetal=true` setzen — oder die Klemme nicht global am Loader, sondern nur in den Nat
+- **P2|perf** [c_02381 L2396] Stadtmauer aus ~100+ Einzel-Meshes → Draw-Call-Flut (auch im Shadow-Pass)
+  - Fix: Statische Teile nach Material gruppieren und mit BufferGeometryUtils.mergeBufferGeometries zu je 1 Mesh pro Material (mat/dark/roofM) zusammenfassen → ~3-4 Draw-Calls statt >150. Alternativ Zinnen als InstancedMesh. Vor 
+- **P2|memory** [c_02381 L2400] Identische Zinnen-Geometrie dutzendfach dupliziert
+  - Fix: Ein einziges merlonGeo=new THREE.BoxGeometry(thick+0.34,merH,merW) vor der Seiten-Schleife (2392) anlegen und in allen Zinnen-Meshes wiederverwenden — oder direkt InstancedMesh nutzen.
+- **P2|memory** [c_02381 L2504] Laternen-Glow-Sphären: identische Geometrie pro Laterne neu allokiert
+  - Fix: Einmalig var glowGeo=new THREE.SphereGeometry(0.13,6,6) neben glowMat anlegen und in allen Glow-Meshes teilen.
+- **P2|correctness** [c_02381 L2443] npcs[npcs.length-1] ohne Erfolgsprüfung nach mkVillager → falscher NPC wird umkonfiguriert
+  - Fix: var n0=npcs.length; mkVillager(...); if(npcs.length>n0){var rec=npcs[npcs.length-1]; ...} — an beiden Stellen (2443/2444 und 2454/2455).
+- **P2|perf** [c_02801 L2812] 3 zusätzliche PointLights (Beacon/Gruft/Burg) treffen im Forward-Renderer ALLE beleuchteten Fragmente
+  - Fix: Lichter durch billige Glow-Illusion ersetzen: emissive Mesh/Sprite (AdditiveBlending-Sprite wie in 2822) am Beacon, Gruft und Burg. Max. 1 dynamisches PointLight behalten; Stimmung über emissive/Vertex-Farben oder Lightm
+- **P2|perf** [c_02801 L2867] Statische Deko als ~100+ Einzelobjekte in der Scene → Draw-Call-Flut auf Mobile
+  - Fix: Wiederholte Props (Blumen, Steine, Grabsteine, Laternen) als THREE.InstancedMesh mit geteilter Geometrie/Material ausgeben; einmalige statische Props pro Typ via BufferGeometryUtils.mergeBufferGeometries zu einem Mesh zu
+- **P2|perf** [c_04201 L4215] camClampDist: Collider-Schleife ohne Early-Out — jeden Frame volle Kreis-Strahl-Mathe (inkl. sqrt) pro Collider
+  - Fix: Vor Z. 4219 denselben billigen Reject wie in Z. 4230 einfügen: var ex=px-c.x,ez=pz-c.z; var rrC=c.r*1.85+0.8; if(ex*ex+ez*ez>(maxD+rrC)*(maxD+rrC))continue; — damit entfallen disc/sqrt für alle fernen Collider.
+- **P2|perf** [dim_shadow L0] PCFSoftShadowMap vermeiden und nur eine Schatten werfende Lichtquelle
+  - Fix: renderer.shadowMap.type=THREE.PCFShadowMap (oder BasicShadowMap für Low-End). Genau eine DirectionalLight mit castShadow=true; alle Point-/Spotlights castShadow=false, deren Schatten bei Bedarf über Blob-Schatten (Textur
+- **P2|perf** [c_05041 L5059] DOM-Zugriff pro Frame im Preview-rAF-Loop
+  - Fix: var ov=document.getElementById("ov") einmal VOR dem Loop (z.B. neben Zeile 5057) cachen und im Loop nur noch die gecachte Referenz prüfen: if(!pr||!ov||ov.classList.contains("hide")||paused){_pl=now;return;}
+- **P2|correctness** [c_05041 L5041] Race Condition: verspätetes GLB-Load überschreibt aktuelle Vorschau
+  - Fix: Erste Zeile im onLoad: if(_lastId!==id)return; — analog zur Retry-Logik in 5053.
+- **P2|perf** [c_05041 L5135] Resize-Handler feuert bei Android-URL-Bar ungedrosselt
+  - Fix: Handler debouncen (z.B. 150-200ms Timeout) und/oder nur reagieren, wenn sich die Breite ändert oder |ΔH| einen Schwellwert (z.B. >120px) überschreitet: var _rzT;addEventListener("resize",function(){clearTimeout(_rzT);_rz
+- **P2|memory** [c_03221 L3359] Memory-Leak: alte Ausrüstung wird nie disposed
+  - Fix: Vor dem Entfernen über old.weapon und old.armor traversieren: n.traverse(function(m){if(m.isMesh){m.geometry.dispose();if(m.material)m.material.dispose();}}); — oder Geometrien/Materialien pro Tier einmal cachen und wied
+- **P2|perf** [c_03221 L3295] updNexusProgress schreibt DOM ohne Dirty-Check
+  - Fix: Letzten pct- und Text-Wert cachen und nur bei Änderung schreiben: if(box._pct!==pct){box._pct=pct;document.getElementById('nexusFill').style.width=pct+'%';} — analog für nexusTxt.
+- **P2|perf** [dim_draw L0] Nicht global mergen: pro Stadtviertel/Zelle chunken
+  - Fix: Stadt in Zellen von ca. 24–48 m Kantenlänge aufteilen und pro Zelle×Material ein Mesh erzeugen. So bleibt Frustum-Culling wirksam, und sichtbare Last skaliert mit dem Kameraausschnitt statt mit der Stadtgröße.
+- **P2|correctness** [dim_draw L0] mergeBufferGeometries: identische Attribute + ein Material erzwingen
+  - Fix: Alle Teile als THREE.BoxGeometry (indexed, position/normal/uv vorhanden) erzeugen; pro Instanz: var g = baseGeo.clone(); g.applyMatrix4(matrix); in Array sammeln; merged = THREE.BufferGeometryUtils.mergeBufferGeometries(
+- **P2|correctness** [dim_draw L0] InstancedMesh in r128: Frustum-Culling ist falsch — manuell behandeln
+  - Fix: Entweder instancedMesh.frustumCulled = false UND Instanzen pro Stadtteil in mehrere InstancedMeshes clustern (damit Culling auf Chunk-Ebene wieder greift), oder geometry.boundingSphere manuell auf eine Sphere setzen, die
+- **P2|perf** [dim_draw L0] Per-Frame-Kosten kappen: matrixAutoUpdate=false, needsUpdate sparsam
+  - Fix: Nach Platzierung jedes statischen Mesh einmal updateMatrix() aufrufen und matrixAutoUpdate=false setzen. Bei InstancedMesh setMatrixAt nur bei echter Änderung und instanceMatrix.needsUpdate nur in diesem Frame setzen, ni
+- **P2|perf** [c_03921 L3957] updGhost(): traverse + Closure-Allokation + setHex auf allen Meshes in jedem Frame
+  - Fix: Mesh-Liste einmal in startGhost() cachen (ghostMeshes=[]; traverse einmal pushen). Letzten ghostValid-Wert merken und Emissive-Update nur bei Wechsel ausführen.
+- **P2|perf** [c_03921 L3989] Redundantes monsters.indexOf(em) trotz bekanntem Index mf — O(n) extra pro Kill
+  - Fix: Direkt monsters.splice(mf,1) verwenden (rückwärts iterieren ist dabei sicher) und indexOf komplett streichen.
+- **P2|memory** [c_03921 L4006] Tages-Cache-Kiste: alte Kiste wird entfernt, aber nicht disposed
+  - Fix: Vor/nach scene.remove: _dayCache.mesh.traverse(function(n){if(n.isMesh){n.geometry.dispose();if(n.material)n.material.dispose();}});
+- **P2|perf** [c_03921 L4049] getElementById('nightVig'/'clock') in jedem Frame
+  - Fix: Beide Elemente einmal beim Init in Modul-Variablen cachen (var vigEl=..., clockEl=...) und hier nur noch referenzieren.
+- **P2|perf** [c_03921 L4050] clock.textContent + style.color werden jeden Frame neu geschrieben
+  - Fix: Letzten String cachen (var _lastClock=''): if(lbl!==_lastClock){_lastClock=lbl;_ck.textContent=lbl;} und color nur bei Wechsel setzen.
+- **P2|perf** [c_04621 L4623] renderScene() läuft im Pause-/Karten-/Perk-Zustand mit voller Framerate weiter
+  - Fix: Beim Eintritt in Pause/Karte/Perk einmalig renderScene() aufrufen und danach im rAF nur noch netTick(dt) ausführen; bei resize bzw. Schließen des Overlays erneut rendern. Alternativ auf 1–2 FPS drosseln.
+- **P2|perf** [c_04621 L4651] updPrompt() schreibt jeden Frame ins DOM (getElementById + textContent + style.opacity)
+  - Fix: Element-Referenzen einmalig global cachen; letzten Prompt-Zustand (Key+Text+Icon) in einer Variable merken und DOM nur bei Änderung schreiben; updPrompt zusätzlich an den vorhandenen _fnT-Throttle (0.12s) koppeln, da nea
+- **P2|perf** [c_01681 L1763] mkTimberWell: ~19 Einzel-Meshes + 7+ Materialien pro Brunnen (Draw-Call- & Material-Flut)
+  - Fix: Statische Teile nach Material gruppiert mit BufferGeometryUtils.mergeBufferGeometries zu 1–2 Meshes zusammenfassen; Materialien und Basis-Geometrien einmal module-level als Konstanten anlegen und teilen; castShadow nur a
+- **P2|perf** [c_01681 L1722] Dorf-Deko: jede Blume/Bank/Laterne eigener Mesh → dutzende Extra-Draw-Calls pro Dorf
+  - Fix: Statische Deko (Bänke, Laternen, Töpfe, Schwellen) pro Dorf zu einem gebatchten Mesh mergen; schwingende Blumen als je ein InstancedMesh pro Blumen-Typ (PF/FL) mit Sway über Instanzmatrizen statt Einzel-Meshes; alternati
+- **P2|correctness** [c_02101 L2235] Keine Origin-Prüfung im message-Listener → Belohnungen fälschbar
+  - Fix: Erste Zeile im Handler: if(e.origin!==location.origin)return; (bzw. Whitelist der Stations-Origins). Zusätzlich d.score plausibilisieren (Cap wie in 2220-2221 bereits vorhanden, aber Quelle absichern).
+- **P2|perf** [c_02101 L2172] Eine PointLight pro Station verteuert ALLE beleuchteten Shader (Forward-Renderer)
+  - Fix: Kein echtes Licht verwenden — Glow per additivem Sprite/Billboard oder emissivem Basic-Mesh faken. Falls dynamisches Licht nötig: EINE gemeinsame PointLight, die zur jeweils nächsten Station versetzt wird.
+- **P2|perf** [dim_tex L0] gtex-Canvas überdimensioniert (z.B. 2048×2048)
+  - Fix: Auf 512×512 deckeln, Tiling/Repeat statt Großflächendetail, Mipmaps aktiviert lassen. Speicherbudget prüfen: Summe aller Canvas-Texturen < ~32 MB auf Low-End.
+- **P2|perf** [dim_tex L0] anisotropy = renderer.capabilities.getMaxAnisotropy() pauschal gesetzt
+  - Fix: Nur Boden-/Grazing-Texturen anisotrop filtern, mobil 2–4 statt Max. Desktop kann höher. Wert dynamisch aus Quality-Settings speisen, nicht hardcoden.
+- **P2|realism** [dim_tex L0] Rohe CanvasTexture direkt als envMap/scene.environment statt PMREM
+  - Fix: Canvas-Equirect einmal durch pmremGenerator.fromEquirectangular() schicken und rt.texture als scene.environment/material.envMap verwenden. Danach Quelltextur dispose()n, falls nicht anderweitig genutzt.
+- **P2|correctness** [dim_tex L0] Equirect-Quell-Canvas für PMREM nicht 2:1-POT
+  - Fix: Gradient-Canvas (nwGradTex) für Envmaps strikt als 1024×512 oder 2048×1024 anlegen. Vor Übergabe an PMREM texture.needsUpdate sicher gesetzt haben, damit der Upload vor dem PMREM-Render abgeschlossen ist.
+- **P2|memory** [c_04761 L4810] Alte Partner-Held-Geometrien und weitere Texturen werden nicht disposed (GPU-Leck bei Heldenwechsel)
+  - Fix: In der Traverse zusätzlich: if(n.geometry)n.geometry.dispose(); und Textur-Slots vollständig räumen, z.B. for(var k in n.material){var v=n.material[k];if(v&&v.isTexture&&k!=='gradientMap')v.dispose();} (gradientMap ist g
+- **P2|perf** [c_00561 L650] mkRock: neue Geometry+Material pro Stein/Kristall
+  - Fix: Zwei modulweit gecachte Geometrien + zwei geteilte Materialien verwenden; Rotation bleibt am Mesh. Auf Android halbiert das spürbar State-Wechsel und Speicher.
+- **P2|perf** [c_00561 L617] Fallback-Bäume: 4 eigene Geometrien + 2 Materialien pro Baum
+  - Fix: Kleinen Pool gecachter Geometrien (z.B. 3 Stamm-Höhen, 3 Blob-Radien) und 2 geteilte Materialien (Stamm/Krone) verwenden; castShadow am Mesh, nicht am Material.
+- **P2|correctness** [c_03781 L3824] Busch wird nach Ernte nicht versteckt (fehlendes r.mesh.visible=false)
+  - Fix: Im bush-Zweig ergänzen: r.dead=true;r.mesh.visible=false;if(r.berry)r.berry.visible=false;r.regrow=45;
+- **P2|memory** [c_03781 L3800] Getötetes Monster: scene.remove ohne dispose der GPU-Ressourcen
+  - Fix: Beim Entfernen: nearMon.mesh.traverse(function(o){if(o.geometry&&o.geometry._own)o.geometry.dispose();if(o.material&&o.material._own)o.material.dispose();}) — bzw. Materialien/Geometries strikt shared halten und dann exp
+- **P2|memory** [c_00841 L876] toonify(): ursprüngliches GLTF-Material wird nie disposed
+  - Fix: Nach der Zuweisung das alte Material freigeben: mesh.material=hm; m.dispose(); (gleiche Zeile analog nach mesh.material=tm in Z. 883).
+- **P2|memory** [c_00841 L910] loadHero(): altes heroModel wird bei Char-Wechsel nicht entfernt/disposed
+  - Fix: Vor player.add(o): if(heroModel){player.remove(heroModel);heroModel.traverse(function(n){if(n.geometry)n.geometry.dispose();var ms=n.material?(Array.isArray(n.material)?n.material:[n.material]):[];ms.forEach(function(mm)
+- **P2|perf** [c_00701 L717] Schilf: 60 Meshes mit je eigener Geometry+Material → 60 Extra-Draw-Calls
+  - Fix: Einmalig var reedGeo=new THREE.ConeGeometry(0.06,0.9,4) und reedMat=new THREE.MeshLambertMaterial({color:0x2e8a50}) außerhalb der Schleife anlegen und in allen Meshes teilen — oder besser: alle Reed-Positionen sammeln un
+- **P2|perf** [c_00701 L734] Pilz-Deko: pro Pilz eigene Geometry+Material → ~150–200 Draw-Calls statisches Dekor
+  - Fix: Ein shared stemGeo/stemMat, ein shared capGeo und 5 vorgefertigte capMats (eine pro caps-Farbe) außerhalb der Schleifen; Farbe per Index wählen statt neues Material. Noch besser: da Pilze statisch sind, alle Stem- bzw. C
+- **P2|perf** [c_00701 L710] Teich-Wasser: 15× MeshStandardMaterial (PBR) + 15× CircleGeometry obwohl nur 3 Varianten
+  - Fix: Drei gesharte Materialien (eines pro i%3-Variante) vor der Schleife erzeugen und waterize nur auf diese 3 anwenden; eine Einheits-CircleGeometry teilen und den Radius per pond.scale.setScalar(r) abbilden. Erwägen: MeshTo
+- **P2|memory** [c_00701 L765] buildPawn() entfernt Kinder ohne dispose → GPU-Memory-Leak bei Neuaufbau
+  - Fix: Vor dem Entfernen über pBody.children iterieren und bei jedem Mesh geometry.dispose() sowie material.dispose() (bei geteilten Materialien wie bm nur einmal) aufrufen, dann entfernen. Alternativ Geometries/Materialien ein
+- **P2|correctness** [c_02661 L2667] tm.scale.multiplyScalar(1) ist No-Op – Zufalls-Skalierung der Bäume tot
+  - Fix: Ein Zweig: tm.scale.multiplyScalar(0.9+rnd()*0.5); (gilt für GLB-Clone und Primitiv-Baum gleichermaßen, rnd-Strom bleibt auf allen Clients identisch).
+- **P2|memory** [c_02661 L2661] 16× identische ConeGeometry + LambertMaterial pro Teich statt geteilt
+  - Fix: Geometrie + Material einmal außerhalb der Schleife (oder global) anlegen und in allen 16 Meshes referenzieren; besser: ein InstancedMesh für alle Schilfe aller Teiche.
+- **P2|perf** [c_02661 L2737] PointLight pro Dorf-Lagerfeuer trotz eigener Light-Warnung
+  - Fix: Feuer-Licht wie Laternen nur im isSpawn-Dorf; andere Dörfer mit emissivem Feuer-Cone + worldProps-Flicker (existiert bereits) ohne Light.
+- **P2|perf** [c_04481 L4512] Minimap: pt()-Closure + Array-Allokation pro Punkt pro Frame
+  - Fix: pt als zwei wiederverwendete Scratch-Variablen ausserhalb: function pt(x,z){_ptx=cx+(x-px)*SC;_pty=(z-pz)*SC;} und Aufrufstellen auf _ptx/_pty umstellen (oder pt(x,z,out) mit einem einmal allozierten Array).
+- **P2|perf** [c_04481 L4507] Minimap: voller 2D-Redraw jeden Frame
+  - Fix: Drosseln: nur alle 100–150 ms zeichnen (if(now-_mmT<120)return; _mmT=now; — _mmT ist in 4506 bereits deklariert) oder nur bei Positions-/Rotationsänderung > Schwelle. 10 Hz reichen für eine Minimap völlig.
+- **P2|perf** [c_04481 L4597] Weltkarte: 60-fps-Redraw mit massenhaft Allokationen solange offen
+  - Fix: Redraw nur bei Bedarf: einmal beim Öffnen + getrosselt (z.B. alle 250 ms) oder bei Bewegung > 2 Einheiten. Punkte/Hits in gepufferte Arrays schreiben (pts.length=0 statt neu), P() auf Scratch-Variablen umstellen.
+- **P2|correctness** [c_01821 L1877] Material-Array-Check ist Dead-Code → Single-Material-Meshes werden unsichtbar
+  - Fix: Vor der Zuweisung merken: var wasArr=Array.isArray(n.material); ... if(!wasArr)n.material=n.material[0];
+- **P2|perf** [c_01821 L1884] AnimationMixer läuft für schlafende/unsichtbare NPCs die ganze Nacht weiter
+  - Fix: if(n.mix&&n.mesh.visible)n.mix.update(dt); bzw. direkt nach dem isNight-Sleep-Block per continue überspringen.
+- **P2|perf** [c_01821 L1947] Bis zu ~70 Rauch-Sprites = ~70 zusätzliche Draw Calls pro Frame
+  - Fix: Ein einziges THREE.Points (70 Vertices, sizeAttenuation, per-Vertex Alpha/Size über Shader oder PointsMaterial+onBeforeCompile) mit der geteilten smokeTex; Puff-Pool statt new pro Spawn, Materialien wiederverwenden statt
+- **P2|correctness** [c_01821 L1845] Math.random in NPC-Spawn-Attributen bricht Koop-Deterministik
+  - Fix: Für verhaltensrelevante Werte _w3rnd() verwenden (t, dir, spd, rotation.y, idle), damit beide Clients identische NPC-Bewegungen simulieren.
+- **P2|perf** [c_00001 L35] backdrop-filter auf dauerhaft sichtbarer Inventar-Leiste
+  - Fix: backdrop-filter streichen, Alpha erhöhen: background:rgba(10,14,32,.85).
+- **P2|perf** [c_00001 L114] will-change + 7-fach text-shadow auf dynamisch gespawnten Schadenszahlen
+  - Fix: will-change entfernen (die CSS-Animation promoted ohnehin während der Laufzeit), text-shadow auf 2–3 reduzieren und im JS (nicht im Ausschnitt) die Zahl gleichzeitig aktiver .floatN-Elemente hart deckeln bzw. poolen.
+- **P2|perf** [c_02941 L3058] groundH() pro Tier pro Frame
+  - Fix: Höhe nur neu berechnen, wenn sich x/z seit letztem Sample signifikant geändert hat (z.B. >0.25 m, Distanzquadrat), oder auf einen N-Frame-Takt legen (i%3===frame%3) und dazwischen letzten Y-Wert lerp-en. Zusätzlich: im G
+- **P2|perf** [c_02941 L2992] 6–8 Einzel-Meshes pro Tier → Draw-Call-Flut inkl. Shadow-Pass
+  - Fix: Geometrien pro Species einmalig erzeugen, mit BufferGeometryUtils.mergeBufferGeometries (manuell, da r128 kein utils mitliefert: Attribute konkatenieren) zu 1–2 Meshes pro Species zusammenfassen und beim Poolen per mesh.
+
+## Web (109 Befunde)
+- **P1|content** [site_trust L0] Kein Impressum vorhanden
+  - Fix: Impressum-Seite anlegen mit: Firmenname, Postadresse, E-Mail/Telefon, ggf. UID-/Handelsregister-Nummer und Verantwortliche Person. Prominent im Footer verlinken (auf jeder Seite erreichbar).
+- **P1|content** [site_trust L0] Marken-Inkonsistenz: 'aban news' vs. 'Aban Arcade'
+  - Fix: Einen verbindlichen Markennamen festlegen und überall konsistent durchziehen: Title-Tags, Header/Logo, Footer, Meta-Descriptions, Alt-Texte, E-Mail-Absender, Social Profiles. Zusätzlich Organization-Schema (schema.org) m
+- **P1|a11y** [site_mobile L0] Viewport-Meta mit viewport-fit=cover und ohne user-scalable=no
+  - Fix: viewport: width=device-width, initial-scale=1, viewport-fit=cover. Kein Zoom-Verbot. Zusätzlich safe-area-insets per env(safe-area-inset-*) für fixierte Header/Footer nutzen.
+- **P1|ux** [site_mobile L0] Touch-Ziele mind. 44x44px bzw. 48x48dp
+  - Fix: min-height/min-width 44px auf alle interaktiven Elemente, Padding statt Margin für Klickfläche, Abstand zwischen benachbarten Links >= 8px. Mit Chrome DevTools 'Tap targets'-Audit (Lighthouse) verifizieren.
+- **P1|ux** [site_mobile L0] Kein Horizontal-Overflow auf 320-360px
+  - Fix: html,body{overflow-x:hidden} nur als Pflaster; Ursachen finden: max-width:100% für img/iframe/video, Grid/Flex mit minmax(0,1fr), Iframes in responsive Wrapper. Auf echtem 360px-Gerät testen.
+- **P1|perf** [site_mobile L0] LCP unter 2.5s: Hero-/Thumbnail-Bilder optimieren
+  - Fix: WebP/AVIF, srcset+sizes, erstes sichtbares Bild mit fetchpriority=high und KEIN lazy loading, Rest loading=lazy + decoding=async, width/height gegen CLS setzen. Ziel: LCP <2.5s, CLS <0.1 auf 4G.
+- **P1|seo** [site_seo L0] Fehlendes VideoGame-Schema (JSON-LD) auf Spiele-Detailseiten
+  - Fix: JSON-LD einbinden mit: @type VideoGame, name, description (deutsch), genre, gamePlatform, aggregateRating (nur wenn echte Bewertungen vorhanden), image, author/Publisher. Mit Google Rich Results Test validieren.
+- **P1|seo** [site_seo L0] Interne Verlinkung ohne beschreibende Ankertexte und ohne 'Ähnliche Spiele'-Modul
+  - Fix: Ankertexte = Spielname + Kontext (z. B. 'Zelda-ähnliche Abenteuerspiele'). Pro Detailseite ein Modul 'Ähnliche Spiele' (4–6 Links nach Genre) und 'Beliebte Spiele' im Footer. Alle Spiele max. 3 Klicks von der Startseite 
+- **P1|seo** [site_seo L0] Title-Tags nicht einzigartig / nicht auf Deutsch optimiert
+  - Fix: Muster je Seite: '[Spielname] – Infos, Review & Tipps | [Sitename]' (max. ~60 Zeichen). Hub: 'Alle Spiele im Überblick – [Sitename]'. Jede URL eindeutig, wichtigstes Keyword vorne.
+- **P1|seo** [site_seo L0] Keine bzw. unvollständige XML-Sitemap
+  - Fix: sitemap.xml mit allen indexierbaren URLs (Hub, Kategorien, alle Spiele) inkl. <lastmod> generieren. In robots.txt referenzieren und in der Google Search Console einreichen. Keine 404-/noindex-URLs aufnehmen.
+- **P1|ux** [site_ia L0] Unklare Positionierung: News, Arcade & Kaufberater ohne erkennbare Klammer
+  - Fix: Klare Value-Proposition in einer Zeile im Hero ('News, Tools & Spiele zu X' – was immer X ist). Darunter drei visuell getrennte Einstiegskacheln: News / Spiele / Kaufberater. Tagline im Header, die den Themenscope präzis
+- **P1|conversion** [site_ia L0] Spiele-Hub ist auf der Landing unsichtbar
+  - Fix: Prominente Teaser-Sektion above the fold oder direkt nach dem Hero: 4-6 Game-Thumbnails, Titel, 'Jetzt spielen'-Button, Link 'Alle Spiele'. Zusätzlich Sticky-Nav-Eintrag 'Spiele' mit Icon. Crosslinks aus News-Artikeln un
+- **P1|conversion** [index_00451 L489] Möglicher Syntaxfehler: Anweisung endet mit 'out.app' — prüfen, ob Demo-Script komplett ist
+  - Fix: Datei prüfen: Zeile muss 'out.appendChild(cb); }' (schliessende Klammer des Clipboard-Blocks) enthalten, bevor 'else if(o.s===429)' kommt. Im Browser DevTools-Console auf SyntaxError testen und einen Klick-Test der Demo 
+- **P1|seo** [index_00151 L240] JSON-LD WebSite-Schema ist abgeschnitten (ungültiges JSON)
+  - Fix: JSON vollständig schliessen (SearchAction, potentialAction, Root) und mit validator.schema.org bzw. Rich-Results-Test prüfen.
+- **P1|seo** [index_00151 L243] Organization-Schema bricht mitten im Wort ab
+  - Fix: "Schweiz" ausschreiben, Objekt korrekt schliessen und eine separate Logo-Datei (z.B. 512×512) referenzieren.
+- **P1|seo** [index_00151 L246] FAQPage-Schema unvollständig
+  - Fix: Alle sichtbaren FAQ-Fragen vollständig ausgeben, JSON schliessen, validieren — oder das Schema ganz streichen.
+- **P1|conversion** [site_conv L0] Continue-Karte / 'Zuletzt gespielt' fehlt als Retention-Anker
+  - Fix: Spielhistorie in localStorage speichern (Spiel-ID, Modus, Fortschritt/Score, Zeitstempel). Auf der Landing direkt unter dem Hero eine Sektion 'Weiterspielen': grosses Thumbnail, Spielname, Kontext ('Level 4 · Score 12'30
+- **P1|conversion** [site_conv L0] Zu viel Reibung vor dem ersten Spiel
+  - Fix: Ein dominanter Hero-CTA 'Jetzt spielen – ohne Anmeldung', der als Gast direkt in ein Spiel startet (1 Klick). Account-Erstellung erst nach der ersten Spielsession anbieten, verknüpft mit konkretem Nutzen ('Score speicher
+- **P1|conversion** [site_conv L0] Koop-Einladung nicht prominent genug
+  - Fix: 'Mit Freunden spielen' als zweiten, klar sichtbaren CTA direkt im Hero UND nach jeder Spielrunde platzieren. Ein Klick erzeugt einen Einladungs-Link (Lobby-Code in URL), mit nativen Share-Optionen: Web Share API auf Mobi
+- **P1|conversion** [spiele_00301 L308] Install-Button wird auf iOS zu breit eingeblendet
+  - Fix: Button nur zeigen, wenn Add-to-Home-Screen realistisch ist und die Seite nicht bereits standalone läuft; in WebViews/unsupported Fällen Primäraktion auf „Jetzt spielen“/spiele.html legen und Installation nur sekundär erk
+- **P2|conversion** [site_trust L0] Keine 'Über uns'-Seite
+  - Fix: About-Seite erstellen: Mission, Team (mit Fotos und Namen), Kurzhistorie, Kontaktmöglichkeit. Aus Hauptnavigation und Footer verlinken; Person- bzw. Organization-Markup ergänzen.
+- **P2|seo** [site_trust L0] Fehlende Open-Graph-/Social-Meta-Tags (OG-Images)
+  - Fix: OG-Tags auf allen Seiten ergänzen: og:title, og:description, og:image (1200×630 px, Marken-Default als Fallback), og:url, og:type, og:locale=de_CH sowie twitter:card=summary_large_image. Mit dem Sharing-Debugger prüfen.
+- **P2|ux** [site_mobile L0] 100vh-Falle / sticky Elemente fressen Viewport
+  - Fix: 100dvh bzw. 100svh mit Fallback verwenden. Sticky-Elemente auf Mobile minimieren; max. ein kompakter Header. Spiel-Player in aspect-ratio-Box statt fixer Höhe.
+- **P2|conversion** [site_mobile L0] PWA-/Install-Hinweis nicht sofort beim ersten Besuch
+  - Fix: beforeinstallprompt abfangen, prompt erst nach Engagement zeigen (z.B. 2. Besuch, Spiel gestartet, 30s aktiv). Dezenten Install-Eintrag im Menü statt Vollbild-Banner. Lighthouse-PWA-Check laufen lassen.
+- **P2|ux** [site_mobile L0] Querformat-Hinweis nur kontextbezogen, kein harter Blocker
+  - Fix: Hinweis per @media (orientation: portrait) und nur im/um den Player einblenden, mit Icon + kurzem Text ('Drehe dein Gerät'). Wo sinnvoll: Screen Orientation API (screen.orientation.lock('landscape')) nach User-Geste im V
+- **P2|ux** [site_mobile L0] Hover-Abhängigkeiten für Touch ersetzen
+  - Fix: Infos/Toggles per Click/Tap steuerbar machen, :hover mit @media (hover:hover) kapseln, Dropdowns auch per Tastatur/Touch bedienbar (aria-expanded).
+- **P2|ux** [site_mobile L0] Input-Schrift >=16px gegen iOS-Auto-Zoom
+  - Fix: input,select,textarea{font-size:16px} auf Mobile; Zoom-Problem damit eliminiert.
+- **P2|seo** [site_mobile L0] Intrusive Interstitials (Cookie + Ad + Newsletter) auf Mobile
+  - Fix: Ein kompaktes, nicht-vollflächiges Consent-Banner; Ads nicht als Interstitial vor dem Content; Newsletter erst nach Scrolltiefe/Exit-Intent. Page-Experience-Report in der Search Console prüfen.
+- **P2|ux** [site_mobile L0] Spiel-Iframes: Vollbild, Scrolling und Fokus sauber lösen
+  - Fix: iframe mit allowfullscreen, allow='gamepad; autoplay', responsiver aspect-ratio-Wrapper, beim Spielstart Vollbild-Button anbieten, overscroll-behavior: contain um den Player.
+- **P2|perf** [site_mobile L0] Third-Party-Skripte (Ads/Tracking) blockieren Interaktion
+  - Fix: Alle Drittskripte async/defer, Consent-gesteuert nachladen, weniger Ad-Slots above the fold, INP <200ms und TBT <200ms in PageSpeed Insights (Mobile) verifizieren.
+- **P2|a11y** [index_00001 L44] Weißer Text auf Amber (#d97706) erfüllt WCAG AA nicht – Haupt-CTA betroffen
+  - Fix: Basis-Farbe für Textflächen auf --amber-dk (#b45309, ~4.8:1) setzen und Hover auf #92400e abdunkeln; --amber nur für große Flächen ohne Text oder als Akzent (Borders, Icons) verwenden.
+- **P2|content** [index_00001 L17] Impact-Affiliate-/Tracking-Script lädt ohne Consent und ohne Werbekennzeichnung
+  - Fix: Script erst nach Consent (CMP oder eigener Banner) laden, Affiliate-Links im Text als 'Werbelink' kennzeichnen und Datenschutzerklärung mit Impact-Verweis im Footer verlinken.
+- **P2|seo** [site_seo L0] Kein ItemList-/BreadcrumbList-Markup auf der Hub-Seite
+  - Fix: Auf der Hub-Seite ItemList mit itemListElement (position, url, name je Spiel) ausgeben. Zusätzlich BreadcrumbList auf allen Unterseiten (Home > Spiele > [Spielname]) mit sichtbarem HTML-Pendant.
+- **P2|seo** [site_seo L0] Meta-Descriptions fehlen oder sind generisch
+  - Fix: Pro Seite eindeutige Description (140–160 Zeichen) auf Deutsch mit Nutzen + CTA, z. B. 'Alles zu [Spielname]: Gameplay, Plattformen, Bewertungen & Tipps. Jetzt entdecken!' Keine Duplikate zwischen Seiten.
+- **P2|seo** [site_seo L0] Mehrere oder fehlende H1-Überschriften
+  - Fix: Genau eine H1 pro Seite = Spielname bzw. 'Alle Spiele' auf dem Hub. H2 für Sektionen (Gameplay, Bewertungen, Ähnliche Spiele). Hierarchie nicht überspringen.
+- **P2|seo** [site_seo L0] Keine Canonical-Tags bei Filter-/Sortier-URLs
+  - Fix: <link rel="canonical"> auf allen Parameter-Varianten auf die saubere Basis-URL setzen. Filter-Kombinationen mit Suchpotenzial (z. B. /spiele/rpg) als eigene statische, indexierbare Kategorieseiten ausbauen.
+- **P2|perf** [site_seo L0] Bilder ohne Alt-Texte und nicht komprimiert
+  - Fix: Alt-Texte mit Spielname + Motiv ('[Spielname] Cover-Art'). Bilder als WebP/AVIF ausliefern, width/height setzen, Lazy Loading unter dem Fold, Hero-Bild mit fetchpriority="high".
+- **P2|ux** [spiele_00151 L283] prompt() als Namens-Eingabe wirkt unprofessionell und ist mobile-feindlich
+  - Fix: Kleines Inline-Modal oder ein Edit-Feld direkt im Profil-Chip bauen: Input mit maxLength, Trim, Enter/Escape-Handling, dann AbanArcade.setName(). Gleiche Funktion, deutlich bessere Wahrnehmung.
+- **P2|content** [spiele_00151 L164] Text widerspricht sich: 'sechs Stationen', aber acht Spielenamen aufgelistet
+  - Fix: Entweder die 8 Alt-Namen streichen und nur die 6 Stationen nennen, oder explizit mappen ('Arena = Survivor + Colossus'). Zahl und Liste müssen übereinstimmen.
+- **P2|seo** [spiele_00001 L15] og:image / twitter:image fehlen komplett
+  - Fix: Ein 1200×630-Preview-Bild (z.B. Screenshot-Collage Lebenspfad + Neon Wildnis) hinterlegen und einbinden: <meta property="og:image" content="https://abannews.com/img/og-arcade.jpg">, dazu og:image:width/height, twitter:im
+- **P2|seo** [spiele_00001 L7] Meta-Description viel zu lang (~290 Zeichen)
+  - Fix: Auf max. 155 Zeichen kürzen, USP vorne: 'aban Arcade: kostenlose Browser-Games ohne Download — Brettspiel Lebenspfad mit Online-Koop & Voice-Chat, 3D-Welt Neon Wildnis, tägliche Rätsel. 1 Tap und du spielst.'
+- **P2|conversion** [spiele_00001 L130] Hero ohne Spiel-CTA, Profil-Leiste blockiert den Weg zu den Games
+  - Fix: Im Hero einen Primary-CTA '▶ Jetzt spielen' (Anker auf #grid-games bzw. direkt auf das Featured-Game) einfügen. .pbar unter das Spiele-Grid verschieben oder kompakt in den Header legen; Chips-Container nur rendern, wenn 
+- **P2|conversion** [index_00751 L831] Formular-Attribut novalidate hebelt required aus
+  - Fix: novalidate entfernen (Browser-Validierung greift dann) oder eigene JS-Validierung mit Fehlermeldung ergänzen.
+- **P2|conversion** [index_00751 L831] Subscribe-Formular verlässt die Seite im selben Tab
+  - Fix: target="_blank" rel="noopener" ans Formular hängen, damit abannews.com im Tab offen bleibt.
+- **P2|seo** [index_00751 L842] Hub-Sektion (#aban-hub) leer im HTML — SEO- und Fallback-Problem
+  - Fix: Kern-Links serverseitig/statisch ins HTML rendern (oder <noscript>-Fallback mit den wichtigsten Tool-Links), JS nur noch erweitern lassen.
+- **P2|seo** [index_00751 L783] FAQ ohne strukturierte Daten
+  - Fix: FAQPage-Schema als JSON-LD im <head> ausgeben, Fragen/Antworten 1:1 mit dem sichtbaren Text spiegeln.
+- **P2|content** [index_00751 L861] Bezahlangebot ohne AGB/Widerruf im Footer
+  - Fix: AGB- und Widerrufs-Seite anlegen, im Footer und auf /founding.html verlinken; Kündigungsbedingungen beim Checkout nennen.
+- **P2|seo** [site_ia L0] Inkonsistente URL-Struktur (/spiele.html vs. saubere Slugs)
+  - Fix: Umstellen auf /spiele/ als Hub und /spiele/<game-name>/ pro Game, alte /spiele.html per 301 weiterleiten. Breadcrumbs (Home > Spiele > Game) einführen, damit die Hierarchie für Google und Nutzer sichtbar ist.
+- **P2|ux** [site_ia L0] ~10 Games ohne Ordnungsstruktur im Hub
+  - Fix: Game-Cards mit Thumbnail, Ein-Zeilen-Beschreibung und Genre-Tag. Sortierung 'Beliebt zuerst' bzw. Badge 'Meistgespielt'/'Neu'. Ab ~10 Games reicht eine einfache Genre-Filterleiste; Suche ist noch nicht nötig.
+- **P2|content** [site_ia L0] Kaufberater ohne redaktionelle Einordnung = Vertrauensproblem
+  - Fix: Eigene Rubrik 'Ratgeber'/'Kaufberater' in der Hauptnavigation, einheitliches Label auf Cards und im Artikelkopf ('Enthält Affiliate-Links' gemäß Transparenzpflicht), klare Trennung von News-Feed.
+- **P2|conversion** [index_00451 L598] Preise nur in Euro + zwei konkurrierende Angebote (€19 Pro vs. €9 Premium) verwirren Schweizer Besucher
+  - Fix: Geo-Logik aus dem Märkte-Script wiederverwenden und für CH/LI CHF-Preise einblenden (z. B. 'CHF 18/Monat'). Die beiden Angebote klar differenzieren (ein Satz: was kann Premium für €9, was Pro für €19) oder auf einen Prim
+- **P2|a11y** [index_00451 L469] Dynamische Ergebnis- und Statusmeldungen ohne aria-live — Screenreader-Nutzer bekommen nichts mit
+  - Fix: #hdMsg role='status' und aria-live='polite' geben, #hdOut aria-live='polite' ergänzen. Während des Requests btn.setAttribute('aria-busy','true') setzen und danach entfernen; nach Erfolg Fokus optional auf #hdOut setzen (
+- **P2|a11y** [index_00151 L211] Sticky Mobile-CTA ist unsichtbar, aber per Tastatur fokussierbar
+  - Fix: Im Ruhezustand visibility:hidden setzen und erst in .mcta.show auf visibility:visible wechseln (oder hidden-Attribut per JS togglen).
+- **P2|conversion** [index_00151 L273] Doppelte Navigation: 12 Header-Links + 18 Quicklinks vor dem Hero
+  - Fix: Quicklinks auf 4–6 echte Einstiege kürzen oder ganz streichen; primärer CTA «Gratis abonnieren» muss dominant bleiben. IA der drei Shop-/Marktplatz-Ziele klären.
+- **P2|ux** [index_00151 L254] Kein Mobile-Verhalten für .hnav im Stylesheet-Ausschnitt
+  - Fix: Hamburger-/details-Menü oder horizontal scrollbare Nav mit white-space:nowrap einbauen und auf 360px Breite testen.
+- **P2|conversion** [site_conv L0] Kein Share-Loop nach dem Spiel
+  - Fix: Auf dem Ergebnis-Screen: 'Fordere deine Freunde heraus'-Button, der einen personalisierten Link teilt (?challenge=score123). Empfänger landen direkt im gleichen Modus mit sichtbarem zu schlagenden Score. Dazu dynamisch g
+- **P2|conversion** [site_conv L0] Kein wiederkehrender Anlass (Daily-Mechanik)
+  - Fix: Tägliche Challenge oder Streak-System einführen ('Heutige Challenge – noch 6h', 'Streak: 3 Tage'). Auf der Landing als Badge/Banner sichtbar. Nach der ersten Session (nie davor) Opt-in für Push/E-Mail-Erinnerung anbieten
+- **P2|conversion** [site_conv L0] Empfehlungen nach Spielende fehlen
+  - Fix: Auf dem Ergebnis-Screen eine Zeile 'Das könnte dir gefallen' mit 3 Spielen (gleiche Kategorie oder 'Spieler, die X spielten, spielten auch Y'). Session-Länge und Spiele-pro-Besuch als KPI messen.
+- **P2|ux** [site_conv L0] Mobile: Wiedereinstieg nicht daumen-erreichbar
+  - Fix: Auf Mobile die Continue-Karte als erste Sektion UND bei wiederkehrenden Nutzern eine sticky Bottom-Bar mit 'Weiterspielen'-Button (min. 48px Höhe, Daumenzone). Auf 375px-Breite testen, Landscape-Nutzung der Spiele selbst
+- **P2|seo** [site_conv L0] Share-Links ohne ansprechende Vorschau
+  - Fix: Statische OG-Tags auf der Landing, dynamische OG-Daten für Challenge-/Einladungs-Links (Spielname, Score, Avatar im og:image, 1200x630). Mit dem WhatsApp-Link-Preview und Twitter Card Validator testen.
+- **P2|ux** [spiele_00301 L303] alert() als Installationsanleitung wirkt unsauber und blockiert
+  - Fix: Durch ein nicht-modales Bottom-Sheet/Popover ersetzen: kurze Schritte, Button „Verstanden“, optional „Arcade jetzt öffnen“, Schliessen per X/ESC und Hinweis nicht mehrfach zeigen.
+- **P2|ux** [spiele_00301 L302] iOS-Erkennung nur per User-Agent ist fragil
+  - Fix: Kontext statt nur UA prüfen: Standalone-Status inkl. navigator.standalone/display-mode, WebView-Erkennung und nur bei echter A2HS-Möglichkeit die iOS-Anleitung zeigen; sonst direkt „Im Browser spielen“ anbieten.
+
+---
+## Schwarm-Runde 2 (Claude, 138 Agenten) — Stand nach Umsetzung
+**Umgesetzt (27 bestätigte Regressions → die kritischen 20):** Lebenspfad Stale-Retry-Timer (P1, zerstörte frisch
+gehosteten OFEN-Raum), untracked 1400ms-Retry (P2, Doppel-Gast), _brkAuto/_brkScan/_autoShare-Resets, Ping-Pong-Kappe,
+Label-Fix; mp.js Zombie-Reconnect (P1), !ever-Guard (P2), stiller unavailable-id-Pfad (P3); Wildnis Quest-Skip vergibt
+jetzt Ausrüstung (P1), applyGearVisuals Change-Guard (P2), Ring-3 unter der Mauer + Nudge-Klemme (P1/P3), Hub-Abstände
+(P2), Tür-Vorplatz 4.3 (P2), Klippen-Determinismus vollständig (P2), disposeGhost materialien-only (P3), Fallback-Held-
+Ausrüstung (P3); spiele.html Continue-Card robust (2×P3).
+**Bewusst offen (P3, akzeptiert):** min-Spacing 13 (seltene Berührung breitester Häuser), Laternen/Stände-Klemmwerte,
+benachbarte rnd-in-if-Blöcke (Welt-Orte), Host↔Join OFEN-Restrisiko.
+**Bestätigt & GROSS (eigener Block nötig, nicht quick-fixbar):**
+- P1|perf decorateWorldLate ~500 Einzel-Meshes → InstancedMesh/Merge-Architektur (grosser Umbau, hoher FPS-Gewinn Handy)
+- P1|perf Geskinnte Mobs: GLB-Fetch+Parse pro Spawn → SkeletonUtils.clone-Cache (Vendor-Datei nötig)
+**Unverifiziert geblieben (Claude-Limit):** 15 der 24 Backlog-Claims (Math.random-Klasse, Origin-Check, Preview-Race,
+placeLoot/Beet/Glühwürmchen/FallbackHouse-Memory, Picker-Dispose) — nächste Session mit frischem Limit prüfen.
