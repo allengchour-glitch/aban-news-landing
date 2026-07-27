@@ -563,6 +563,7 @@ var strMatH=stdMat(0x4a4a53,0.92),strMatV=stdMat(0x4a4a53,0.92);
   window._wasser.push({mesh:meer,geo:meerG,base:meerG.attributes.position.array.slice()}); /* kräuselt mit dem Teich-Animator */
   var sand=new THREE.Mesh(new THREE.PlaneGeometry(14,340),stdMat(0xd8c48e,0.95));
   sand.rotation.x=-Math.PI/2;sand.position.set(-128,-0.02,0);sand.receiveShadow=true;scene.add(sand);
+  if(typeof ladeTex==="function")ladeTex("textures/th/sand.jpg",2,40,function(t){sand.material.map=t;sand.material.needsUpdate=true;}); /* 🏖️ KI-Textur (Pollinations, gratis) */
   /* Zufahrts-Strasse: von der West-Strasse (x=-RX) zur Küste bei z=-30 */
   var zuf=new THREE.Mesh(new THREE.PlaneGeometry(56,10),betMat(0x6b6b72,0.9));
   zuf.rotation.x=-Math.PI/2;zuf.rotation.z=Math.PI/2;zuf.position.set(-RX-28,-0.003,-30);zuf.receiveShadow=true;scene.add(zuf);
