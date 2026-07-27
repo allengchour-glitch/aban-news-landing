@@ -384,25 +384,50 @@ def container(cx, cy, cz, m_korp, m_akz, m_boden, laenge=6.06, breite=2.44,
         box(cx + sx*breite/4, fy + tueren*0.09, zc - 0.15, 0.20, 0.10, 0.10, m_boden)
     box(cx, fy - tueren*0.02, zc + hoehe*0.22, breite*0.34, 0.05, 0.34, m_boden)  # Schild
 
-def rumpf(segmente, m_unter, m_ober, m_deck, m_bulw, z_wl, h_bulw=0.85,
-          deck_luecke=None, deck_rand=0.30):
-    """Schiffsrumpf aus Querschnitts-Segmenten (yc, laenge, breite, z_deck).
-    `deck_luecke` = (y0, y1, halbe_restbreite): dort bleibt die Deckmitte offen
-    (Cockpit) — sonst deckt die Deckplatte die Plicht komplett zu."""
-    for (yc, ln, w, zd) in segmente:
-        if w < 0.22: continue
-        box(0, yc, z_wl/2, w, ln, z_wl, m_unter)
-        box(0, yc, (z_wl + zd)/2, w, ln, zd - z_wl, m_ober)
-        if deck_luecke and deck_luecke[0] < yc < deck_luecke[1]:
-            rest = w/2 - deck_rand/2 - deck_luecke[2]
-            if rest > 0.08:
-                for sx in (-1, 1):
-                    box(sx*(deck_luecke[2] + rest/2), yc, zd + 0.05, rest, ln, 0.10, m_deck)
-        else:
-            box(0, yc, zd + 0.05, max(0.1, w - deck_rand), ln, 0.10, m_deck)
-        if h_bulw > 0.01:
-            for sx in (-1, 1):
-                box(sx*(w/2 - 0.09), yc, zd + h_bulw/2, 0.18, ln, h_bulw, m_bulw)
+def hull(stationen, wfun, zdfun, z_wl, wl_h, mats, kiel=0.70, off=(0.0, 0.0, 0.0)):
+    """Schiffsrumpf als EIN geloftetes Mesh (Stationen in y, Breite/Deckhoehe als
+    Funktion von y). Eine Kette einzelner Quader liest sich als TREPPE — das war
+    an Frachter, Segelboot und Ruderboot der auffaelligste Fehler des ersten Wurfs.
+    mats = (Unterwasser, Wasserpass, Bordwand, Deck) — die Streifen bekommen ihren
+    Materialindex ueber die Mantelflaeche, deshalb braucht es keine Zierleisten-
+    Quader mehr (die ragten am Bug als gerade Bretter aus dem Rumpf)."""
+    verts = []; faces = []; midx = []
+    IDX = [0, 0, 1, 2, 3, 2, 1, 0]          # Materialindex je Mantelstreifen
+    for y in stationen:
+        w = max(0.12, wfun(y)); zd = zdfun(y); bw = w*0.5*kiel
+        verts += [(-bw, y, 0.0), (bw, y, 0.0),
+                  (w/2, y, z_wl), (w/2, y, z_wl + wl_h), (w/2, y, zd),
+                  (-w/2, y, zd), (-w/2, y, z_wl + wl_h), (-w/2, y, z_wl)]
+    n = len(stationen)
+    for i in range(n - 1):
+        a = i*8; b = (i + 1)*8
+        for k in range(8):
+            k2 = (k + 1) % 8
+            faces.append((a + k, a + k2, b + k2, b + k)); midx.append(IDX[k])
+    faces.append(tuple(range(7, -1, -1))); midx.append(2)               # Heckspiegel
+    faces.append(tuple(range((n-1)*8, n*8))); midx.append(2)            # Bug
+    me = bpy.data.meshes.new("Rumpf"); me.from_pydata(verts, [], faces); me.update()
+    o = bpy.data.objects.new("Rumpf", me); bpy.context.collection.objects.link(o)
+    for m in mats: me.materials.append(m)
+    for p, mi in zip(me.polygons, midx): p.material_index = mi
+    o.location = off
+    bpy.context.view_layer.objects.active = o
+    bm = bmesh.new(); bm.from_mesh(me)
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
+    bm.to_mesh(me); bm.free(); me.update()
+    return o
+
+def schanzkleid(stationen, wfun, zdfun, hoehe, breite, m, step=1, off=(0.0, 0.0, 0.0)):
+    """Schanzkleid/Scheuerleiste als gedrehte Balken ENTLANG der Rumpfkante.
+    Gerade Quader je Segment stehen versetzt und lassen Zinnen-Luecken stehen."""
+    st = stationen[::step]
+    if st[-1] != stationen[-1]: st = st + [stationen[-1]]
+    for i in range(len(st) - 1):
+        ya, yb = st[i], st[i+1]
+        for sx in (-1, 1):
+            balken((off[0] + sx*wfun(ya)/2, ya + off[1], off[2] + zdfun(ya) + hoehe/2),
+                   (off[0] + sx*wfun(yb)/2, yb + off[1], off[2] + zdfun(yb) + hoehe/2),
+                   breite, hoehe, m)
 
 
 # ================================================================ 1) Kaimauer-Modul
@@ -602,18 +627,22 @@ def frachtschiff():
     C2   = mat("Cont2", (0.16,0.38,0.64), 0.66); C2A = mat("Cont2A", (0.12,0.30,0.54), 0.72)
     C3   = mat("Cont3", (0.16,0.46,0.30), 0.66); C3A = mat("Cont3A", (0.11,0.37,0.24), 0.72)
     ZWL, ZD = 1.70, 4.60
-    segs = [(0.0, 24.0, 9.20, ZD)]
-    for i in range(14):                                   # Bug 12,0 -> 22,5
-        t = (i + 0.5)/14.0
-        segs.append((12.0 + i*0.75 + 0.375, 0.79,
-                     max(0.55, 9.20*(1.0 - t**1.8)), ZD + 1.05*t*t))
-    for i in range(8):                                    # Heck -12,0 -> -22,4
-        t = (i + 0.5)/8.0
-        segs.append((-12.0 - i*1.30 - 0.65, 1.34,
-                     9.20*(1.0 - 0.62*t**2.6), ZD + 0.35*t*t))
-    rumpf(segs, UNT, RUM, DECK, GRAU, ZWL, 0.90)
-    box(0, 0, ZWL + 0.10, 9.30, 44.6, 0.20, WEIS)         # Wasserpass-Streifen
-    box(0, -22.35, 2.30, 3.60, 0.40, 4.60, RUM)           # Heckspiegel
+    def wS(y):
+        if y > 12.0:
+            t = min(1.0, (y - 12.0)/10.5); return max(0.55, 9.20*(1.0 - t**1.8))
+        if y < -12.0:
+            t = min(1.0, (-12.0 - y)/10.4); return 9.20*(1.0 - 0.62*t**2.6)
+        return 9.20
+    def zS(y):
+        if y > 12.0:
+            t = min(1.0, (y - 12.0)/10.5); return ZD + 1.05*t*t
+        if y < -12.0:
+            t = min(1.0, (-12.0 - y)/10.4); return ZD + 0.35*t*t
+        return ZD
+    st = [-22.40 + i*1.30 for i in range(9)] + [-6.0, 0.0, 6.0, 12.0] \
+         + [12.0 + i*0.875 for i in range(1, 13)]
+    hull(st, wS, zS, ZWL, 0.22, (UNT, WEIS, RUM, DECK))
+    schanzkleid(st, wS, zS, 0.90, 0.20, GRAU)
     # Aufbauten achtern
     box(0, -15.50, ZD + 1.60, 8.00, 7.00, 3.20, WEIS)
     box(0, -15.75, ZD + 4.80, 7.40, 6.50, 3.20, WEIS)
