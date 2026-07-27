@@ -453,6 +453,56 @@ Neue Helfer: `tonne_y()` (Tonnendach mit Fassachse in **y** — `tonne()` liegt 
 
 ---
 
+## 1p. Charge 19 — BÄDER UND SPORTHALLEN (`models/th19_*.glb`)
+
+Alle sechs begehbar und gross. In jeder Innenansicht wurde eine 1,80-m-Massstabsfigur
+mitgerendert.
+
+| Datei | Maße (B×T×H) | Innenleben |
+|---|---|---|
+| `th19_schwimmbad.glb` | 46,0 × 33,5 × 15,0 | 25-m-Becken mit Bahnen und Rinne, Kinderbecken, Sprungbrett, Startblöcke, Liegestühle, Umkleiden, Tonnengewölbe |
+| `th19_eishalle.glb` | 47,0 × 33,3 × 9,6 | Eisfläche mit Bande und Plexiglas, 2 Tore, Spielerbänke, Tribüne, Anzeigetafel |
+| `th19_tennishalle.glb` | 41,0 × 31,1 × 15,4 | 2 Plätze mit Linien, Netzkante exakt 0,914 m, Tonnengewölbe, Zuschauerbank |
+| `th19_reithalle.glb` | 47,0 × 29,1 × 10,2 | Sandplatz mit Bande, Hindernisse ab Sandoberkante gemessen, Tribüne, Tor |
+| `th19_kletterhalle.glb` | 28,5 × 24,9 × 13,5 | Kletterwände mit farbigen Griffen, Überhänge mit Zugstreben, Bouldermatten, Galerie |
+| `th19_fitnessstudio.glb` | 32,5 × 24,9 × 5,4 | Laufbänder, Bänke, Hantelablagen, Seilzug, Spiegelwand, Empfang |
+
+Generator: `tools/assets/mk_th19_baeder.py`
+`platte_mit_loch()` wurde um einen Loch-Versatz erweitert, `tonne(..., fuellen=False)`
+liefert ein offenes Gewölbe mit halbrunden Stirndeckeln.
+
+> ⚠️ **Ein Becken geht nach unten, nicht die Möbel nach oben.** Der Schwimmbadboden
+> liegt auf 0,60 — nur so passt eine 0,30-m-Beckenkante über den Wasserspiegel, ohne
+> dass das Becken unter z = 0 rutscht. Und der Boden muss eine **Ringplatte mit
+> Aussparung** sein, sonst betoniert der Sockel das Becken zu.
+
+---
+
+## 1q. Charge 20 — ZOO UND TIERPARK (`models/th24_*.glb`)
+
+Die Anlagen; die Tiere selbst baut die Spiel-Session.
+
+| Datei | Maße (B×T×H) | Hinweis |
+|---|---|---|
+| `th24_gehege.glb` | 17,5 × 14,2 × 5,3 | Wassergraben, Besucherbrüstung, Felsen, Bäume, Unterstand, Infotafel |
+| `th24_voliere.glb` | 24,4 × 24,4 × 9,3 | **begehbar**, Netzkuppel auf Ringstützen, Bäume, Sitzstangen, Teich |
+| `th24_aquarienhaus.glb` | 26,4 × 32,1 × 6,6 | **begehbar**, dunkler Gang, 8 beleuchtete Becken, Bodenleitlicht |
+| `th24_streichelzoo.glb` | 20,2 × 18,0 × 3,0 | Gatter mit offenem Tor, Unterstand, Heuraufe, Futterautomaten, Bänke |
+| `th24_zoo_eingang.glb` | 32,0 × 20,4 × 8,6 | **begehbar**, Torbogen, 2 Kassen, 3 Drehkreuze, Lageplan, Shop |
+
+Generator: `tools/assets/mk_th24_zoo.py`
+Neue Helfer: `fels()` (gekippter Kegelstumpf), `gitterwand()`, `baumstamm()`.
+`mat()` hat hier zusätzlich einen `alpha`-Parameter.
+
+> ⚠️ **Keinen durchsichtigen Wasserquader vor ein Riff stellen.** three.js sortiert
+> transparente Flächen nicht zuverlässig — das Riff verschwand dahinter. Besser die
+> Rückwand in Wasserfarbe einfärben und die Deko direkt hinter das Glas setzen.
+
+> ⚠️ **Gekippte Objekte sinken unter null.** Der `fels()`-Helfer kippt um 0,10/0,08 rad;
+> ohne Gegenrechnung lag die Unterkante des Geheges bei −0,08.
+
+---
+
 ## 2. Texturen (`textures/th5/*.png`)
 
 512×512, **nahtlos kachelbar** (Wrap-Arithmetik, verifiziert per 2×2-Kachel-Kontaktbogen).
@@ -552,6 +602,8 @@ python3 tools/assets/mk_th16_park.py      # Park und Spielplatz -> models/th16_*
 python3 tools/assets/mk_th17_bahn.py      # Bahn und Tram -> models/th17_*.glb
 python3 tools/assets/mk_th15_hafen.py     # Hafen und Wasser -> models/th15_*.glb
 python3 tools/assets/mk_th18_bauernhof.py # Bauernhof -> models/th18_*.glb
+python3 tools/assets/mk_th19_baeder.py    # Baeder und Sporthallen -> models/th19_*.glb
+python3 tools/assets/mk_th24_zoo.py       # Zoo und Tierpark -> models/th24_*.glb
 ```
 
 Beide brauchen nur **bpy 5.x + numpy** (im Container vorhanden, kein Blender-Binary nötig,

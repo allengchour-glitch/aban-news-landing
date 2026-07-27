@@ -814,7 +814,9 @@ def kletterhalle():
     kletterwand(0, -T/2 + 0.34, B - 1.0, 11.4, 'x', +1)
     kletterwand(-B/2 + 0.34, -1.0, T - 3.0, 11.4, 'y', +1)
     kletterwand(B/2 - 0.34, -5.0, 8.0, 11.4, 'y', -1)
-    # Ueberhang-Sektor an der Rueckwand
+    # Ueberhang-Sektor an der Rueckwand: Untere Kante steckt in der Wand, obere Kante
+    # kragt 1.2 m in den Raum — dazu je eine Zugstrebe zurueck an die Wand, sonst
+    # sieht der Ueberhang aus, als schwebe er frei.
     for i in range(5):
         o = box(-6.0 + i*2.5, -T/2 + 1.35, FB + 8.60, 2.44, 2.60, 0.22, PANEL[i % 4])
         o.rotation_euler[0] = 0.42
@@ -822,6 +824,9 @@ def kletterhalle():
             gb = box(-6.0 + i*2.5 + (g - 1)*0.75, -T/2 + 1.62, FB + 8.30, 0.16, 0.14, 0.12,
                      GRIFFE[(i + g) % 4])
             gb.rotation_euler[0] = 0.42
+        for sx in (-1.1, 1.1):
+            st = box(-6.0 + i*2.5 + sx, -T/2 + 1.50, FB + 9.90, 0.09, 2.61, 0.09, STAH)
+            st.rotation_euler[0] = -0.644
     # Freistehender Boulderblock
     box(3.0, 2.0, FB + 1.60, 5.6, 4.6, 3.20, P2)
     box(3.0, 2.0, FB + 3.36, 6.2, 5.2, 0.32, P4)
@@ -862,8 +867,8 @@ def kletterhalle():
         box(-9.6, 8.9, FB + 0.30 + k*0.52, 4.0, 0.80, 0.06, HOLZ)
     for sx in (-11.5, -7.7):
         box(sx, 8.9, FB + 0.95, 0.08, 0.80, 1.90, HOLZ)
-    bank(0.0, 7.4, FB, 4.0, HOLZ, STAH, 'x', True)          # vor dem Mittelpfeiler
-    bank(-5.0, 6.0, FB, 3.0, HOLZ, STAH, 'x', True)
+    bank(0.0, 7.4, FB, 4.0, HOLZ, STAH, 'x', True)          # beide vor dem Mittelpfeiler,
+    bank(0.0, 5.4, FB, 4.0, HOLZ, STAH, 'x', True)          # nie in einer Portalachse
     # Cafe-Galerie ueber dem Eingangsbereich (Stuetzen NEBEN den Portalen)
     GZ = 4.40
     box(0, 7.5, GZ - 0.16, 23.0, 4.0, 0.32, HOLZ)
