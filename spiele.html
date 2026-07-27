@@ -134,17 +134,19 @@ footer a{color:var(--purple);text-decoration:none}
   </div>
   <script>
   /* 🔁 „Weiterspielen"-Karte: Hub merkt sich den letzten Spiel-Klick (localStorage) → 1-Tipp-Wiedereinstieg */
-  (function(){try{
-    var L=JSON.parse(localStorage.getItem("aban_last_game")||"null");
-    if(L&&L.href&&L.name){document.getElementById("contName").textContent=L.name;
-      document.getElementById("contLink").href=L.href;document.getElementById("contBar").style.display="block";}
+  (function(){
+    try{ /* 🩹 Schwarm-P3: kaputtes JSON darf den Klick-Recorder nicht verhindern */
+      var L=JSON.parse(localStorage.getItem("aban_last_game")||"null");
+      if(L&&L.href&&L.name){document.getElementById("contName").textContent=L.name;
+        document.getElementById("contLink").href=L.href;document.getElementById("contBar").style.display="block";}
+    }catch(e){try{localStorage.removeItem("aban_last_game");}catch(_){}}
     document.addEventListener("click",function(ev){
-      var a=ev.target&&ev.target.closest?ev.target.closest("a"):null;if(!a)return;
+      var a=ev.target&&ev.target.closest?ev.target.closest("a"):null;if(!a||a.id==="contLink")return; /* 🩹 eigener Link zählt nicht (sonst „▶ Weiterspielen:"-Präfix-Schneeball) */
       var h=a.getAttribute("href")||"";if(!/^\/?(neon-|lebenspfad|traumhaus)/.test(h))return;
       var nm=(a.querySelector("h2,h3,b,strong")||{}).textContent||a.textContent||"Spiel";
       try{localStorage.setItem("aban_last_game",JSON.stringify({href:h,name:nm.trim().slice(0,40)}));}catch(e){}
     },true);
-  }catch(e){}})();
+  })();
   </script>
 
   <div class="pbar">

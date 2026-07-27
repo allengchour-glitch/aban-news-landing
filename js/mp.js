@@ -174,15 +174,19 @@
         if (main) { try { conn.close(); } catch (e) {} return; } // Raum voll (1v1) — auch PENDING zählt als belegt (close/error geben den Slot frei)
         main = conn; wireMain(conn);
       });
-      peer.on("disconnected", function () { if (!byUs) { try { peer.reconnect(); } catch (e) {} } });
+      (function (pInst) { /* 🩹 Schwarm-P1: an Instanz binden — nach Broker-Retry darf der ALTE Peer nicht reconnecten (Zombie besetzt sonst die Raum-ID) */
+        pInst.on("disconnected", function () { if (!byUs && pInst === peer) { try { pInst.reconnect(); } catch (e) {} } });
+      })(peer);
       peer.on("error", function (err) {
       try { var _t = err && err.type; if (_t === "network" || _t === "server-error" || _t === "socket-error" || _t === "socket-closed") mpNextBroker(); } catch (e) {}
         var t = err && err.type;
         if (isHost && t === "unavailable-id") {
           if (noRegen) { fail("Public-Raum bereits belegt"); return; } // Quick-Match: auf Beitreten wechseln
           if (tries < 3) { tries++; try { peer.destroy(); } catch (e) {} S.code = makeCode(); boot(); return; } // Code-Kollision → neuer Code
+          fail("Raum-Code-Kollision — bitte nochmal versuchen."); return; /* 🩹 Schwarm-P3: nie still hängen bleiben */
         }
         if (t === "peer-unavailable") {
+          if (ever) return; /* 🩹 Schwarm-P2: mitten im Spiel übernimmt lost() den Reconnect — Boot-Retry würde den Broker-Index kippen */
           /* 🔁 Raum evtl. auf dem ANDEREN Broker → dort automatisch weitersuchen statt aufgeben */
           if (!retried) { retried = true; mpNextBroker(); clearTimeout(tmo); try { peer.destroy(); } catch (e) {} boot(); return; }
           fail("Raum " + S.code + " nicht gefunden — Code prüfen!");
