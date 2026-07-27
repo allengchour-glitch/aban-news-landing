@@ -107,6 +107,8 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 </div>
 <div id="netBadge">🌐 verbunden</div>
 <button id="modeBtn">🔨 Bauen</button>
+<button id="werkBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;cursor:pointer;color:#fff;background:linear-gradient(90deg,#4a7ad0,#2a5aa0)">🔧 Auto umlackieren · 250 $</button>
+<button id="markthalleBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;cursor:pointer;color:#2a3a10;background:linear-gradient(90deg,#8fd86a,#5aba3a)">🥕 Ernte verkaufen</button>
 <button id="shopBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;cursor:pointer;color:#3a2a10;background:linear-gradient(90deg,#ffd166,#ffb04a)">🛒 Einkaufen · 60 $</button>
 <button id="villaBtn" style="display:none;position:fixed;left:10px;bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:10px 16px;font-weight:900;cursor:pointer;color:#fff;background:linear-gradient(90deg,#8a5ad0,#5a7ae0)">🏰 Villa-Vorlage · 3500 $</button>
 <button id="buskBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(66px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;font-size:.95rem;cursor:pointer;color:#5a3a10;background:linear-gradient(90deg,#ffd166,#ffb84a);box-shadow:0 8px 24px rgba(200,140,40,.4)">🎸 Straßenmusik machen</button>
@@ -3035,10 +3037,14 @@ function crimeScene(ok,job,betrag){
 function updCrime(dt){
   crimeBtnUpd();buskBtnUpd();
   document.getElementById("growBtn").style.display=growSellAvailable()?"block":"none";
-  (function(){ /* 🛒 Laden betreten → Kauf-Knopf (Innenraum des th8-Ladens bei -44,30) */
-    var b9=document.getElementById("shopBtn");if(!b9)return;
-    var p9=spielerPos(),drin=Math.abs(p9.x+44)<3.8&&Math.abs(p9.z-30)<4.3&&running&&!buildMode;
-    b9.style.display=drin?"block":"none";})();
+  (function(){ /* 🛒🔧🥕 Innenraum-Interaktionen der begehbaren Gebaeude */
+    var p9=spielerPos(),an=running&&!buildMode;
+    var b9=document.getElementById("shopBtn");
+    if(b9)b9.style.display=(an&&Math.abs(p9.x+44)<3.8&&Math.abs(p9.z-30)<4.3)?"block":"none";
+    var w9=document.getElementById("werkBtn"); /* Werkstatt (-62,50): umlackieren gegen Fahndung */
+    if(w9)w9.style.display=(an&&fahren&&Math.abs(p9.x+62)<6.8&&Math.abs(p9.z-50)<5.8)?"block":"none";
+    var m9=document.getElementById("markthalleBtn"); /* Markthalle (-62,30): Ernte zu Marktpreisen */
+    if(m9)m9.style.display=(an&&!fahren&&Math.abs(p9.x+62)<7.9&&Math.abs(p9.z-30)<11.9&&(stats.ernten||0)>0)?"block":"none";})();
   if(!crime.on)return;
   crime.t-=dt;
   if(crime.t<=0)finishCrime();}
@@ -3899,6 +3905,23 @@ document.getElementById("zoomIn").onclick=function(){camRT=Math.max(7,camRT*0.8)
 document.getElementById("zoomOut").onclick=function(){camRT=Math.min(135,camRT*1.25);followSim=null;if(egoMode)egoToggle();};
 document.getElementById("egoBtn").onclick=function(){egoToggle();};
 document.getElementById("villaBtn").onclick=function(){stampVilla();};
+document.getElementById("werkBtn").onclick=function(){ /* 🔧 Werkstatt: Umlackieren loescht die Fahndung */
+  if(!fahren){hint("🚗 Fahr mit dem Auto in die Werkstatt!");return;}
+  if(geld<250){hint("💰 Umlackieren kostet 250 $");return;}
+  if(wanted<=0){hint("👌 Alles sauber — keine Fahndung.");return;}
+  geld-=250;geldSend();
+  polizei.forEach(function(p){scene.remove(p.mesh);});polizei=[];
+  wanted=0;updWantedHUD();if(MPs&&mpHost)netSend({t:"wanted",w:0});
+  stats.lackiert=(stats.lackiert||0)+1;
+  hint("🎨 Frisch lackiert — die Polizei hat die Spur verloren! 😎");
+  beep(520,.1,"triangle",.05);setTimeout(function(){beep(760,.12,"triangle",.05);},120);updHUD();};
+document.getElementById("markthalleBtn").onclick=function(){ /* 🥕 Markthalle: Ernte zu besseren Preisen */
+  var e9=stats.ernten||0;if(e9<=0){hint("🌱 Erst ernten — dann verkaufen!");return;}
+  var erloes=Math.round(e9*45*(1+skills.arbeit.lv*0.15));
+  geld+=erloes;stats.ernten=0;geldSend();
+  hint("🥕 "+e9+" Ernten verkauft: +"+erloes+" $ (Marktpreis!)");
+  sims.forEach(function(s8){simEmoji(s8,"🤑");});
+  beep(700,.09,"triangle",.05);setTimeout(function(){beep(950,.12,"triangle",.06);},120);updHUD();};
 document.getElementById("shopBtn").onclick=function(){ /* 🛒 Einkauf: kostet Geld, hebt Laune + zaehlt als Erfolg */
   if(geld<60){hint("💰 Zu wenig Geld — 60 $ noetig!");return;}
   geld-=60;geldSend();stats.einkaeufe=(stats.einkaeufe||0)+1;
