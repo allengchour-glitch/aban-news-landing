@@ -333,6 +333,260 @@ Spurweite 1,435 m, **Gleis läuft in x** (längs gebaut stünde es quer vor dem 
 
 ---
 
+## 1l. Charge 15 — PARK UND SPIELPLATZ (`models/th16_*.glb`)
+
+| Datei | Maße (B×T×H) | Hinweis |
+|---|---|---|
+| `th16_spielturm.glb` | 4,90 × 6,21 × 3,09 | Turm mit Rutsche, Leiter, Kletternetz |
+| `th16_schaukel.glb` | 3,92 × 2,22 × 2,51 | A-Gestell, 2 Sitze an Ketten |
+| `th16_sandkasten.glb` | 3,08 × 3,08 × 0,59 | Holzrand, Eimer, Schaufel |
+| `th16_wippe.glb` | 0,86 × 3,62 × 1,21 | 2 Sitze mit Griffen, Bodenpuffer |
+| `th16_karussell_klein.glb` | 3,00 × 3,00 × 1,43 | Drehscheibe mit Haltestangen |
+| `th16_pavillon.glb` | 8,68 × 9,00 × 5,61 | **begehbar**, 7 Bänke, 2,95 m licht, Stufen |
+| `th16_teichbruecke.glb` | 1,76 × 7,00 × 1,95 | geschwungen, Geländer folgt dem Bogen |
+| `th16_skate_rampe.glb` | **8,00** × 6,00 × 3,46 | **reihen: x += 8,00**, Coping durchlaufend |
+| `th16_basketballplatz.glb` | 16,00 × 26,00 × 4,07 | Linien, 2 Körbe (Ring exakt 3,050 m), Ballfangzaun |
+| `th16_grillplatz.glb` | 6,82 × 6,87 × 1,25 | Feuerring, Sitzstämme, Holzstapel |
+| `th16_blumenbeet.glb` | **4,00** × 2,00 × 0,71 | **reihen: x += 4,00**, 3 Blütenfarben |
+| `th16_baum_birke.glb` | 3,33 × 3,44 × 9,28 | schlank, heller Stamm — Ergänzung zu Ahorn/Pappel/Fichte |
+
+Generator: `tools/assets/mk_th16_park.py`
+Neue Helfer: `rampe()`, `pyramide()`, `bogen_linie()`, `zentriere()`.
+
+> ⚠️ **`zentriere()` verschiebt auch nach oben.** Beim Spielturm hob es den kompletten
+> Turm 9 cm in die Luft, weil ein Dekostein unter z = 0 lag. Nach dem Zentrieren immer
+> die Bounding-Box nachmessen — bei fünf Modellen dieser Charge lag die Unterkante
+> zunächst unter null (A-Bock-Streben, Brückenträger, Skate-Fahrfläche, Feuerring).
+
+---
+
+## 1m. Charge 16 — BAHN UND TRAM (`models/th17_*.glb`)
+
+Modulare Schieneninfrastruktur. **Schienenoberkante liegt überall auf z = 0,650**,
+der Fahrdraht auf z = 5,600 (= 4,950 über SOK, Höhe der Stromabnehmer).
+
+| Datei | Maße (B×T×H) | Modul-Raster / Hinweis |
+|---|---|---|
+| `th17_gleis_modul.glb` | **12,000** × 5,20 × 0,65 | **x += 12,00**, Spurweite 1,435 m |
+| `th17_gleis_bogen.glb` | 22,72 × 22,72 × 0,65 | 90°, schliesst an die Gerade an |
+| `th17_bahnsteig_modul.glb` | **12,000** × 6,00 × **0,760** | **x += 12,00**, Blindenstreifen, Spalt zum Gleis 0,19 m |
+| `th17_bahnsteigdach.glb` | **12,000** × 5,61 × 4,36 | **x += 12,00**, Stützen im 6-m-Raster |
+| `th17_lokomotive.glb` | 3,11 × 19,02 × 4,95 | E-Lok, Führerstände beidseitig, Stromabnehmer |
+| `th17_personenwagen.glb` | 3,05 × **24,000** × 4,03 | **kuppeln: y += 24,00** |
+| `th17_tram.glb` | 2,55 × **28,000** × 4,95 | 3 Gelenkteile, Türen, Stromabnehmer |
+| `th17_tramhaltestelle.glb` | 18,00 × 3,60 × 3,75 | Insel mit Wartehäuschen und Vitrine |
+| `th17_oberleitungsmast.glb` | **12,000** × 3,70 × 8,01 | **x += 12,00**, Fahrdraht läuft durch |
+| `th17_signal.glb` | 0,92 × 1,07 × 5,91 | 3 Lichter, emissiv, Schauseite −z |
+| `th17_tunnelportal.glb` | 21,35 × 12,54 × 11,20 | lichte Weite ≥ 8 m |
+
+Generator: `tools/assets/mk_th17_bahn.py`
+
+Modultest mit je 3 Modulen gerendert (Gleis, Bahnsteig, Dach, alle zusammen und der
+Bogen an der Geraden): keine Fuge, kein Versatz. Schwellen 0,60, Plattenfugen 1,50,
+Dachrippen 0,30 und Fahrdraht-Hänger 3,00 laufen über die Modulfuge weiter.
+
+> ⚠️ **Zylindersegmente gerade wählen, wenn etwas aufstehen soll.** Ein Rad mit 22
+> Segmenten hat unten keine Kante, sondern eine Ecke — es schwebte 6 mm. Mit 24
+> Segmenten liegt die Unterkante exakt auf 0,000.
+
+---
+
+## 1n. Charge 17 — HAFEN UND WASSER (`models/th15_*.glb`)
+
+| Datei | Maße (B×T×H) | Hinweis |
+|---|---|---|
+| `th15_kaimauer_modul.glb` | **12,00** × 3,64 × 5,01 | **x += 12,00**, Poller, Fender, Steigleiter |
+| `th15_containerkran.glb` | 12,00 × 38,95 × 24,84 | Schienen 12,0 → passt aufs Kaimauer-Raster |
+| `th15_containerstapel.glb` | 7,76 × 6,76 × 5,24 | 3 × 2 Container, verschiedene Farben |
+| `th15_frachtschiff.glb` | 15,25 × 45,06 × 18,25 | Aufbauten, Schornstein, Ladeluken, 2 Ladekrane |
+| `th15_segelboot.glb` | 2,70 × 8,03 × 8,91 | Mast, Grosssegel, Cockpit |
+| `th15_leuchtturm.glb` | 7,20 × 8,20 × 22,14 | rot-weiss, Laterne emissiv, Galerie |
+| `th15_steg.glb` | **8,00** × 3,53 × 1,99 | **x += 8,00**, auf Pfählen |
+| `th15_bootshaus.glb` | 11,60 × 16,70 × 6,49 | **begehbar**, offene Wasserseite, Steg innen, Werkbank |
+| `th15_faehranleger.glb` | 10,42 × 27,57 × 5,48 | Rampe, Geländer, Wartehäuschen |
+| `th15_fischerhuette.glb` | 8,80 × 9,80 × 5,07 | **begehbar**, Netze, Kisten, Ofen |
+
+Generator: `tools/assets/mk_th15_hafen.py`
+Neue Helfer: `hull()` loftet einen Schiffsrumpf als **ein** Mesh mit Materialstreifen
+für Unterwasserschiff, Wasserpass, Bordwand und Deck; `schanzkleid()` legt das
+Schanzkleid als gedrehte Balken entlang der Kante.
+
+> ⚠️ **Ein Rumpf aus aneinandergereihten Quadern sieht aus wie eine Treppe.** Alle vier
+> Boote dieser Charge waren zunächst Quaderketten — mit Zinnen-Lücken im Schanzkleid und
+> einem geraden Wasserpass-Brett, das am Bug wie ein Steg herausragte. Für alles mit
+> gekrümmtem Umriss lohnt sich ein geloftetes Mesh.
+
+> ⚠️ **z-Fighting** trat an drei Stellen auf, wo zwei Flächen exakt deckungsgleich lagen
+> (Mauerkrone gegen Kranzbalken, Containergurte, `boden()`-Vorplatz gegen Innenboden —
+> dort gewann der graue Sockel über die Holzdiele). 2 cm Versatz genügen.
+
+---
+
+## 1o. Charge 18 — BAUERNHOF UND STADTRAND (`models/th18_*.glb`)
+
+| Datei | Maße (B×T×H) | Hinweis |
+|---|---|---|
+| `th18_scheune.glb` | 20,40 × 27,20 × 12,05 | **begehbar**, breites Tor, Heuboden mit freiem Gang, Balkenwerk |
+| `th18_stall.glb` | 18,00 × 14,22 × 7,61 | **begehbar**, Boxen, Futtertrog, Vordach |
+| `th18_gewaechshaus.glb` | 11,00 × 17,00 × 7,37 | **begehbar**, Tonnendach, Glas mit Alpha 0,34, Pflanztische |
+| `th18_silo.glb` | 6,70 × 7,82 × 14,27 | Kegeldach, Aussenleiter, Wartungstür, Auslauftrichter |
+| `th18_traktor.glb` | 2,66 × 5,32 × 3,26 | grosse Hinterräder, Kabine, Frontgewichte |
+| `th18_anhaenger.glb` | 2,51 × 6,36 × 2,55 | Kipper mit Bordwänden und Deichsel |
+| `th18_heuballen.glb` | 5,23 × 2,98 × 1,92 | 3 Rundballen als Gruppe |
+| `th18_zaun_modul.glb` | **4,00** × 0,27 × 1,46 | **x += 4,00**, Pfostenraster 2,0 — keine Doppelpfosten an der Fuge |
+| `th18_feld_modul.glb` | **10,00 × 10,00** × 0,44 | **kachelbar in x UND y**, Furchenraster 0,50 |
+| `th18_windrad.glb` | 14,44 × 5,44 × 28,60 | 3 Rotorblätter, Gondel |
+| `th18_wassertank.glb` | 3,29 × 3,46 × 6,04 | Holzgestell, Leiter, Zapfhahn, Tränketrog |
+
+Generator: `tools/assets/mk_th18_bauernhof.py`
+Neue Helfer: `tonne_y()` (Tonnendach mit Fassachse in **y** — `tonne()` liegt in x),
+`satteldach()` (Traufe exakt auf z0, Neigung per `atan2` statt geschätzt), dazu
+`strebe_xz/_yz/_xy`, `ring()`, `leiter()`, `pflanze()`.
+
+> ⚠️ **`kegel(vertices=4)` legt die Ecken auf die Achsen, nicht die Flächen.** Ein
+> Pfostenkopf ragte dadurch 4 cm über das Raster und machte das Zaunmodul 4,08 statt
+> 4,00 m breit — also unbrauchbar zum Reihen. Für achsparallele Pyramidenstümpfe
+> lieber zwei Quader nehmen.
+
+> ⚠️ **Erde und andere dunkle Materialien rendern in three.js deutlich heller als der
+> Blender-Wert.** Das Ackerfeld musste dreimal nachgedunkelt werden.
+
+---
+
+## 1p. Charge 19 — BÄDER UND SPORTHALLEN (`models/th19_*.glb`)
+
+Alle sechs begehbar und gross. In jeder Innenansicht wurde eine 1,80-m-Massstabsfigur
+mitgerendert.
+
+| Datei | Maße (B×T×H) | Innenleben |
+|---|---|---|
+| `th19_schwimmbad.glb` | 46,0 × 33,5 × 15,0 | 25-m-Becken mit Bahnen und Rinne, Kinderbecken, Sprungbrett, Startblöcke, Liegestühle, Umkleiden, Tonnengewölbe |
+| `th19_eishalle.glb` | 47,0 × 33,3 × 9,6 | Eisfläche mit Bande und Plexiglas, 2 Tore, Spielerbänke, Tribüne, Anzeigetafel |
+| `th19_tennishalle.glb` | 41,0 × 31,1 × 15,4 | 2 Plätze mit Linien, Netzkante exakt 0,914 m, Tonnengewölbe, Zuschauerbank |
+| `th19_reithalle.glb` | 47,0 × 29,1 × 10,2 | Sandplatz mit Bande, Hindernisse ab Sandoberkante gemessen, Tribüne, Tor |
+| `th19_kletterhalle.glb` | 28,5 × 24,9 × 13,5 | Kletterwände mit farbigen Griffen, Überhänge mit Zugstreben, Bouldermatten, Galerie |
+| `th19_fitnessstudio.glb` | 32,5 × 24,9 × 5,4 | Laufbänder, Bänke, Hantelablagen, Seilzug, Spiegelwand, Empfang |
+
+Generator: `tools/assets/mk_th19_baeder.py`
+`platte_mit_loch()` wurde um einen Loch-Versatz erweitert, `tonne(..., fuellen=False)`
+liefert ein offenes Gewölbe mit halbrunden Stirndeckeln.
+
+> ⚠️ **Ein Becken geht nach unten, nicht die Möbel nach oben.** Der Schwimmbadboden
+> liegt auf 0,60 — nur so passt eine 0,30-m-Beckenkante über den Wasserspiegel, ohne
+> dass das Becken unter z = 0 rutscht. Und der Boden muss eine **Ringplatte mit
+> Aussparung** sein, sonst betoniert der Sockel das Becken zu.
+
+---
+
+## 1q. Charge 20 — ZOO UND TIERPARK (`models/th24_*.glb`)
+
+Die Anlagen; die Tiere selbst baut die Spiel-Session.
+
+| Datei | Maße (B×T×H) | Hinweis |
+|---|---|---|
+| `th24_gehege.glb` | 17,5 × 14,2 × 5,3 | Wassergraben, Besucherbrüstung, Felsen, Bäume, Unterstand, Infotafel |
+| `th24_voliere.glb` | 24,4 × 24,4 × 9,3 | **begehbar**, Netzkuppel auf Ringstützen, Bäume, Sitzstangen, Teich |
+| `th24_aquarienhaus.glb` | 26,4 × 32,1 × 6,6 | **begehbar**, dunkler Gang, 8 beleuchtete Becken, Bodenleitlicht |
+| `th24_streichelzoo.glb` | 20,2 × 18,0 × 3,0 | Gatter mit offenem Tor, Unterstand, Heuraufe, Futterautomaten, Bänke |
+| `th24_zoo_eingang.glb` | 32,0 × 20,4 × 8,6 | **begehbar**, Torbogen, 2 Kassen, 3 Drehkreuze, Lageplan, Shop |
+
+Generator: `tools/assets/mk_th24_zoo.py`
+Neue Helfer: `fels()` (gekippter Kegelstumpf), `gitterwand()`, `baumstamm()`.
+`mat()` hat hier zusätzlich einen `alpha`-Parameter.
+
+> ⚠️ **Keinen durchsichtigen Wasserquader vor ein Riff stellen.** three.js sortiert
+> transparente Flächen nicht zuverlässig — das Riff verschwand dahinter. Besser die
+> Rückwand in Wasserfarbe einfärben und die Deko direkt hinter das Glas setzen.
+
+> ⚠️ **Gekippte Objekte sinken unter null.** Der `fels()`-Helfer kippt um 0,10/0,08 rad;
+> ohne Gegenrechnung lag die Unterkante des Geheges bei −0,08.
+
+---
+
+## 1r. Charge 21 — ÖFFENTLICHE PUBLIKUMSBAUTEN (`models/th23_*.glb`)
+
+Alle sechs begehbar, Masse zur 1,8-m-Figur geprüft (Theken 1,10, Sitze 0,45, Tische 0,75).
+
+| Datei | Maße (B×T×H) | Innenleben |
+|---|---|---|
+| `th23_post.glb` | 30,5 × 24,9 × 6,1 | 5 Schalter, Paketannahme, Schliessfachwand, Wartebereich, Automaten |
+| `th23_bank.glb` | 33,0 × 25,9 × 7,2 | Kassenhalle, Beratungskabinen, Geldautomaten-Nische, Marmorboden |
+| `th23_polizeiwache.glb` | 28,5 × 22,5 × 5,8 | Empfangstheke, Wartebank, Büroreihe hinter Glas, blaues Fassadenband |
+| `th23_gericht.glb` | 43,0 × 37,7 × 13,4 | Portikus, Freitreppe, Foyer mit Bänken, Saal mit Richterbank und Zuschauerbänken |
+| `th23_arztpraxis.glb` | 24,0 × 19,7 × 5,1 | Empfang, Wartezimmer, 3 Behandlungsräume, heller Flur |
+| `th23_apotheke.glb` | 18,0 × 15,5 × 4,8 | Sichttresen als echte Vitrine, Schubladenwand, Kordel, Leuchtkreuz |
+
+Generator: `tools/assets/mk_th23_oeffentlich.py`
+
+> ⚠️ **Der Glas-Fallstrick gilt auch für Möbel.** Beim Apotheken-Sichttresen sass die
+> Scheibe 3 cm hinter der Tresenfront und die Auslage steckte im massiven Korpus — von
+> aussen ein blinder Klotz. Und ein `regal()` als Vollkorpus lässt die Ware unsichtbar
+> im Block verschwinden: Regale gehören offen gebaut (Rückwand + Wangen + Deckel + Böden),
+> mit so gerechnetem Bodenabstand, dass die oberste Warenreihe unter dem Deckel bleibt.
+
+---
+
+## 1s. Charge 22 — BAUSTELLE (`models/th21_*.glb`)
+
+| Datei | Maße (B×T×H) | Modul-Raster / Hinweis |
+|---|---|---|
+| `th21_turmdrehkran.glb` | 5,33 × 32,91 × **34,02** | Gitterturm, Ausleger, Gegenausleger mit Ballast, Laufkatze, Haken |
+| `th21_geruest_modul.glb` | **6,000** × 1,39 × **8,000** | **x += 6,00**, Ständerraster 2,00, keine Doppelständer an der Fuge |
+| `th21_bauzaun_modul.glb` | **3,500** × 0,78 × 2,10 | **x += 3,50**, an jeder Fuge genau eine Klemme |
+| `th21_baucontainer.glb` | **2,440** × 7,71 × **2,600** | **stapeln: z += 2,60**, Eckbeschläge bündig |
+| `th21_rohbau.glb` | **12,000 × 12,000 × 3,200** | **begehbar**, **stapeln: z += 3,20**, Treppe läuft durchs Deckenauge |
+| `th21_bagger.glb` | 3,22 × 8,08 × 4,76 | Ketten, Drehkranz, Ausleger, eingerollter Löffel |
+| `th21_radlader.glb` | 2,74 × 7,03 × 2,97 | Schaufel, Knicklenkung, Kabine |
+| `th21_betonmischer.glb` | 3,26 × 9,81 × 4,26 | drehbare Trommel, Rutsche |
+| `th21_materialstapel.glb` | 5,53 × 3,73 × 1,57 | Paletten mit Ziegeln, Rohren, Zementsäcken |
+| `th21_sandhaufen.glb` | 10,52 × 5,64 × 1,65 | Sand und Kies, Trennwand |
+| `th21_betonrohre.glb` | 7,56 × 4,70 × 3,42 | Pyramidenstapel |
+
+Generator: `tools/assets/mk_th21_baustelle.py`
+
+Der Rohbau hat bewusst **kein** Geländer am Deckenauge und die Treppe keinen Handlauf —
+beides würde über 3,20 m ragen und den fugenlosen Stapel zerstören.
+
+> ⚠️ **`read_factory_settings(use_empty=True)` reicht nicht immer.** Ein Lauf lieferte
+> trotzdem einen Default-Würfel mit Unterkante −1,00 ins Modell. Das `neu()` dieser
+> Charge löscht zusätzlich alle Objekte.
+
+> ⚠️ **Gedrehte Körper: den Versatz senkrecht zur Achse rechnen.** Eine Treppenwange
+> tauchte 7 cm unter den Boden, weil der senkrechte statt des achsnormalen Versatzes
+> angesetzt war (`0,15 · cos α`). Für gekippte Quader gilt `(b·sin α + h·cos α)/2`.
+
+---
+
+## 1t. Charge 23 — WOHNBAUTEN (`models/th22_*.glb`)
+
+| Datei | Maße (B×T×H) | Modul-Raster / Hinweis |
+|---|---|---|
+| `th22_altbau_modul.glb` | **8,000** × 11,45 × **16,000** | **x += 8,00**, Erker, Stuckbänder, hohe Fenster |
+| `th22_altbau_eck.glb` | 12,50 × 13,02 × 21,50 | Eckhaus mit Turmhaube, Brandwand exakt bei x = −6,000 |
+| `th22_plattenbau_modul.glb` | **12,000** × 14,11 × **15,000** | **x += 12,00**, durchgehende Balkonreihe |
+| `th22_dachterrasse.glb` | **12,000** × 8,00 × 3,15 | Aufsatz für Flachdächer, Pergola, Pflanzen |
+| `th22_villa.glb` | 23,00 × 17,00 × 10,43 | Walmdach, Erker, Garage, Vorgarten |
+| `th22_bungalow.glb` | 25,00 × 19,00 × 4,50 | Terrasse, Carport |
+| `th22_doppelhaus.glb` | 22,00 × 17,00 × 10,74 | 2 Hälften, gemeinsame Wand, 2 Eingänge |
+| `th22_hinterhof.glb` | 29,00 × 27,00 × 14,07 | **begehbar**, Toreinfahrt, Innenhof, Treppenhäuser, Fahrradständer |
+| `th22_balkon_modul.glb` | 3,60 × 2,32 × 3,10 | vorgehängt, zum Anbauen |
+| `th22_garage.glb` | 6,60 × 8,94 × 3,82 | **begehbar**, Kipptor, Werkbank, Regal |
+
+Generator: `tools/assets/mk_th22_wohnen.py`
+Neue Helfer: `walmdach()` (echtes Mesh — vier gekippte Platten lassen an den Graten
+Schlitze), `satteldach_x()` (First in x, für Reihen- und Doppelhäuser), `giebel_quer()`
+(Giebel über Objektrotation, weil ein von Hand gespiegeltes Mesh die Normalen umdreht)
+und `dachrand()`.
+
+> ⚠️ **Attika als Vollplatte macht jedes Flachdach zu einem weissen Klotz** — sie deckt
+> die dunkle Dachhaut zu. `dachrand()` legt nur einen Ring. Betraf hier vier Modelle.
+
+> ⚠️ **Anbauteile sprengen das Modulraster.** Portallampen machten das Altbau-Modul
+> 8,17 statt 8,00 m breit, Schornsteine 16,55 statt 16,00 m hoch, ein Handlauf die
+> Dachterrasse 12,06 statt 12,00. Bei Modulen nach jedem Detail neu messen.
+
+---
+
 ## 2. Texturen (`textures/th5/*.png`)
 
 512×512, **nahtlos kachelbar** (Wrap-Arithmetik, verifiziert per 2×2-Kachel-Kontaktbogen).
@@ -427,6 +681,16 @@ python3 tools/assets/mk_th12_texturen.py  # Casino/Club/Theater -> textures/th12
 python3 tools/assets/mk_th13_jahrmarkt.py    # Jahrmarkt -> models/th13_*.glb
 python3 tools/assets/mk_th14_spieltische.py  # Casino-Einrichtung -> models/th14_*.glb
 python3 tools/assets/mk_th20_verkehrsbauten.py  # Verkehrsbauten -> models/th20_*.glb
+python3 tools/assets/mk_th15_texturen.py  # Naturtexturen -> textures/th15/*.png
+python3 tools/assets/mk_th16_park.py      # Park und Spielplatz -> models/th16_*.glb
+python3 tools/assets/mk_th17_bahn.py      # Bahn und Tram -> models/th17_*.glb
+python3 tools/assets/mk_th15_hafen.py     # Hafen und Wasser -> models/th15_*.glb
+python3 tools/assets/mk_th18_bauernhof.py # Bauernhof -> models/th18_*.glb
+python3 tools/assets/mk_th19_baeder.py    # Baeder und Sporthallen -> models/th19_*.glb
+python3 tools/assets/mk_th24_zoo.py       # Zoo und Tierpark -> models/th24_*.glb
+python3 tools/assets/mk_th23_oeffentlich.py # Publikumsbauten -> models/th23_*.glb
+python3 tools/assets/mk_th21_baustelle.py # Baustelle -> models/th21_*.glb
+python3 tools/assets/mk_th22_wohnen.py    # Wohnbauten -> models/th22_*.glb
 ```
 
 Beide brauchen nur **bpy 5.x + numpy** (im Container vorhanden, kein Blender-Binary nötig,
