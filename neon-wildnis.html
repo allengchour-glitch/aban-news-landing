@@ -1319,15 +1319,17 @@ function buildAmbient(){
   for(;dti<dtBudget;dti++)setInst(dtIM,dti,0,-999,0,0.001,0);dtIM.count=dtBudget;dtIM.instanceMatrix.needsUpdate=true;dtIM.instanceColor.needsUpdate=true;
 
   // --- Glühwürmchen (nachts, gepoolt) ---
-  for(var g=0;g<Math.round(30*VF);g++){var fm=new THREE.Mesh(new THREE.SphereGeometry(0.08,5,5),new THREE.MeshBasicMaterial({color:0xcaffb0,transparent:true}));fm.visible=false;scene.add(fm);
+  var _ffG=new THREE.SphereGeometry(0.08,5,5); /* 🩹 eine Geometrie für alle (Material bleibt individuell — Puls pro Partikel) */
+  for(var g=0;g<Math.round(30*VF);g++){var fm=new THREE.Mesh(_ffG,new THREE.MeshBasicMaterial({color:0xcaffb0,transparent:true}));fm.visible=false;scene.add(fm);
     fireflies.push({m:fm,bx:0,bz:0,a:rnd()*6.28,r:1+rnd()*3,sp:0.5+rnd(),ph:rnd()*6.28});}
   // --- ✨ Tag-Pollen/Sporen (schwebende Glut-Partikel bei Tag -> lebendige Luft) ---
-  for(var pg2=0;pg2<Math.round(44*VF);pg2++){var pm=new THREE.Mesh(new THREE.SphereGeometry(0.06,4,4),new THREE.MeshBasicMaterial({color:0xfff0c0,transparent:true,opacity:0.6}));pm.visible=false;scene.add(pm);
+  var _plG=new THREE.SphereGeometry(0.06,4,4);
+  for(var pg2=0;pg2<Math.round(44*VF);pg2++){var pm=new THREE.Mesh(_plG,new THREE.MeshBasicMaterial({color:0xfff0c0,transparent:true,opacity:0.6}));pm.visible=false;scene.add(pm);
     pollen.push({m:pm,x:0,y:0,z:0,vy:0.3+rnd()*0.45,ph:rnd()*6.28,sp:0.6+rnd()});}
   // 🦋 Schmetterlinge (tagsüber, bunt, flattern um den Spieler)
-  var BFC=[0xff8ad8,0xffd166,0x7de3ff,0xff6a4d,0xc98bff];
+  var BFC=[0xff8ad8,0xffd166,0x7de3ff,0xff6a4d,0xc98bff],_bfG=null;
   for(var bf=0;bf<Math.round(24*VF);bf++){var bg=new THREE.Group();var wm=new THREE.MeshBasicMaterial({color:BFC[(rnd()*BFC.length)|0],side:THREE.DoubleSide,transparent:true,opacity:0.95});
-    var wL=new THREE.Mesh(new THREE.CircleGeometry(0.15,5),wm);wL.position.x=-0.09;var wR=new THREE.Mesh(new THREE.CircleGeometry(0.15,5),wm);wR.position.x=0.09;
+    var wL=new THREE.Mesh(_bfG||(_bfG=new THREE.CircleGeometry(0.15,5)),wm);wL.position.x=-0.09;var wR=new THREE.Mesh(_bfG,wm);wR.position.x=0.09;
     bg.add(wL);bg.add(wR);bg.visible=false;scene.add(bg);
     butterflies.push({m:bg,wL:wL,wR:wR,bx:0,bz:0,a:rnd()*6.28,r:2+rnd()*4,sp:0.5+rnd()*0.7,ph:rnd()*6.28,h:1+rnd()*1.6});}
   // 🍂 Fallende Blätter (tagsüber)
@@ -1636,11 +1638,12 @@ function cc0instW(name,targetW){
 }
 /* 🏠 Primitiv-Fallback-Haus (Box + Walmdach + Tür + Fenster): Dörfer bleiben auch OHNE
    GLBs sichtbar/spielbar (Android-Fetch-Saga). Einheitshöhe 1 → per targetH skaliert. */
+var _fbWallM=null,_fbRoofM=null;
 function mkFallbackHouse(targetH){
   var g=new THREE.Group();
-  var wallM=new THREE.MeshLambertMaterial({color:0xd9cfbc,flatShading:true});
+  var wallM=_fbWallM||(_fbWallM=new THREE.MeshLambertMaterial({color:0xd9cfbc,flatShading:true}));
   var walls=new THREE.Mesh(new THREE.BoxGeometry(0.62,0.55,0.5),wallM);walls.position.y=0.275;walls.castShadow=true;walls.receiveShadow=true;g.add(walls);
-  var roof=new THREE.Mesh(new THREE.ConeGeometry(0.47,0.42,4),new THREE.MeshLambertMaterial({color:0xa5502e,flatShading:true}));
+  var roof=new THREE.Mesh(new THREE.ConeGeometry(0.47,0.42,4),_fbRoofM||(_fbRoofM=new THREE.MeshLambertMaterial({color:0xa5502e,flatShading:true})));
   roof.rotation.y=Math.PI/4;roof.position.y=0.76;roof.castShadow=true;g.add(roof);
   var door=new THREE.Mesh(new THREE.BoxGeometry(0.13,0.24,0.03),new THREE.MeshLambertMaterial({color:0x6a4526}));
   door.position.set(0,0.12,0.255);g.add(door);
@@ -2233,6 +2236,7 @@ function onStationDone(score,win){
   if(!done[st.badge]){done[st.badge]=1;lsSet("nw_stations",JSON.stringify(done));}
   saveGame();}
 window.addEventListener("message",function(e){
+  if(e.origin&&e.origin!==location.origin&&e.origin!=="null")return; /* 🛡️ nur eigene Stations-iframes — sonst könnte jede fremde Seite Belohnungen posten */
   var d=e&&e.data;
   if(d==="mini-back"){closeStation();return;}
   if(typeof d==="string"&&d.charAt(0)==="{"){try{d=JSON.parse(d);}catch(err){d=null;}}
@@ -2665,7 +2669,7 @@ function decorateWorld(){
     for(var lp2=0;lp2<7;lp2++){var la2=rnd()*6.28,lr2=rnd()*r*0.82,lx2=p.x+Math.cos(la2)*lr2,lz2=p.z+Math.sin(la2)*lr2;var lily=cc0inst(rnd()<0.5?"fg_lilypad":"fg_lilypad_small",0.12);if(lily){lily.position.set(lx2,gy+0.08,lz2);lily.rotation.y=rnd()*6.28;scene.add(lily);}}
   })();}
   // 🌲 Dichte Wald-Haine (viele Bäume eng zusammen)
-  for(var fo=0;fo<Math.round(4*VF);fo++){(function(){var p=spotFar(60);for(var t=0;t<22;t++){var ox=p.x+(rnd()-0.5)*30,oz=p.z+(rnd()-0.5)*30;var tm=(rnd()<0.5?mkStylizedTree():cc0inst(["cc0_tree_pine","cc0_tree_oak"][(rnd()*2)|0],5+rnd()*1.5));if(tm){tm.scale.multiplyScalar?tm.scale.multiplyScalar(1):tm.scale.setScalar(0.9+rnd()*0.5);tm.position.set(ox,groundH(ox,oz),oz);tm.rotation.y=rnd()*6.28;scene.add(tm);}}})();}
+  for(var fo=0;fo<Math.round(4*VF);fo++){(function(){var p=spotFar(60);for(var t=0;t<22;t++){var ox=p.x+(rnd()-0.5)*30,oz=p.z+(rnd()-0.5)*30;var tm=(rnd()<0.5?mkStylizedTree():cc0inst(["cc0_tree_pine","cc0_tree_oak"][(rnd()*2)|0],5+rnd()*1.5));if(tm){var _tsc=0.9+rnd()*0.5;tm.scale.multiplyScalar(_tsc);tm.position.set(ox,groundH(ox,oz),oz); /* 🩹 No-Op-Fix: Grössen-Vielfalt war tot (multiplyScalar(1)) */tm.rotation.y=rnd()*6.28;scene.add(tm);}}})();}
   // ⛰️ Felsvorsprünge / Klippen (grosse dramatische Felsen)
   for(var cf2=0;cf2<Math.round(5*VF);cf2++){(function(){var p=spotFar(65);for(var i=0;i<5;i++){var ox=p.x+(rnd()-0.5)*7,oz=p.z+(rnd()-0.5)*7;
     var _cs1=3.5+rnd()*4,_cs2=4+rnd()*3; /* 🩹 Kimi-P1: beide rnd IMMER ziehen — sonst Koop-Desync wenn ein GLB nur auf einem Gerät fehlt */
