@@ -1811,10 +1811,46 @@ setTimeout(function baueGebaeude(){
     var weg=new THREE.Mesh(new THREE.PlaneGeometry(5,26),betMat(0xcfc8b8,0.9));
     weg.rotation.x=-Math.PI/2;weg.position.set(68,-0.009,68);weg.receiveShadow=true;scene.add(weg); /* Weg von der Strasse zum Platz */
     bau("th4_eiche.glb",7.2,50,0,80,0.4,false);bau("th4_eiche.glb",6.8,88,0,82,1.7,false);
-    bau("th4_ahorn.glb",5.4,52,0,95,2.1,false);bau("th4_ahorn.glb",5.2,86,0,95,0.9,false);
+    bau("th4_ahorn.glb",5.4,46,0,80,2.1,false);bau("th4_ahorn.glb",5.2,86,0,95,0.9,false);
     bau("th4_birke.glb",5.0,58,0,78,1.2,false);bau("th4_birke.glb",5.3,80,0,78,2.6,false);
-    bau("th3_picknick.glb",0.85,54,0,94,0.5,false);bau("th3_picknick.glb",0.85,82,0,93,-0.7,false);
+    bau("th3_picknick.glb",0.85,58,0,76,0.5,false);bau("th3_picknick.glb",0.85,82,0,93,-0.7,false);
     bau("th4_busch_blueten.glb",1.1,50,0,88,0,false);bau("th4_busch_blueten.glb",1.15,87,0,89,1,false);
+    /* ── th5: Park-/Strassen-Moblierung (Asset-Session) ── */
+    bau("th5_parkbrunnen.glb",2.2,74,0,74,0,false);
+    bau("th5_parkbank.glb",0.9,56,0,79,Math.PI,false);bau("th5_parkbank.glb",0.9,80,0,79,Math.PI,false);
+    bau("th5_parkbank.glb",0.9,54,0,88,-Math.PI/2,false);bau("th5_parkbank.glb",0.9,84,0,88,Math.PI/2,false);
+    bau("th5_laterne_altstadt.glb",4.5,52,0,79,0,false);bau("th5_laterne_altstadt.glb",4.5,84,0,79,0,false);
+    bau("th5_laterne_altstadt.glb",4.5,52,0,93,0,false);bau("th5_laterne_altstadt.glb",4.5,84,0,93,0,false);
+    bau("th5_baum_pappel.glb",7.0,63,0,60,0,false);bau("th5_baum_pappel.glb",7.0,73,0,60,0.5,false);
+    bau("th5_baum_pappel.glb",7.0,63,0,68,1.1,false);bau("th5_baum_pappel.glb",7.0,73,0,68,1.7,false);
+    bau("th5_baum_ahorn.glb",4.7,48,0,78,0.4,false);bau("th5_baum_ahorn.glb",4.7,88,0,78,1.3,false);
+    bau("th5_ortsschild.glb",2.4,64,0,58,Math.PI,false);
+    bau("th5_telefonzelle.glb",2.7,73,0,57,Math.PI,false);
+    bau("th5_poller.glb",1.05,68,0,56,0,false);
+    bau("th5_marktstand.glb",1.9,48,0,86,-Math.PI/2,false);
+    /* ── th6: Stadt-Kleinzeug ── */
+    bau("th6_papierkorb.glb",0.9,58,0,80,0,false);bau("th6_papierkorb.glb",0.9,78,0,88,0,false);
+    bau("th6_blumenkuebel.glb",0.7,60,0,79,0,false);bau("th6_blumenkuebel.glb",0.7,76,0,79,0,false);
+    [80,83,86,89].forEach(function(hz9){bau("th6_hecke_modul.glb",1.1,48,0,hz9,Math.PI/2,false);});
+    bau("th6_fichte.glb",5.5,46,0,90,0,false);bau("th6_fichte.glb",5.5,90,0,84,1,false);
+    bau("th6_billboard.glb",6.0,0,0,-84,Math.PI,false);
+    /* ── th8: BEGEHBARE Gebäude (Altstadt-Band West; Tür = -z → rot dreht sie zur Strasse) ── */
+    bau("th8_markthalle_offen.glb",11,-62,0,30,Math.PI/2,false);
+    bau("th8_stadthaus_offen.glb",9.2,-44,0,12,Math.PI,false);
+    bau("th8_laden_offen.glb",3.9,-44,0,30,-Math.PI/2,false);
+    bau("th8_werkstatt_offen.glb",5.3,-62,0,50,Math.PI,false);
+    bau("th8_kirche_offen.glb",21,-58,0,-62,Math.PI/2,false);
+    bau("th6_muellcontainer.glb",1.4,-54,0,48,0.4,false);
+    bau("th6_stromkasten.glb",1.3,-38,0,54,0,false);
+    /* ── th7: Downtown-Plus (modularer Turm, Parkhaus, Lagerhalle, Fahrzeuge, Denkmal) ── */
+    for(var _tw=0;_tw<4;_tw++)bau("th7_hochhaus_modul.glb",6.0,-90,_tw*6,-112,0,false);
+    bau("th7_hochhaus_dach.glb",3.6,-90,24,-112,0,false);
+    bau("th7_parkhaus.glb",9.8,96,0,-110,0,false);
+    bau("th7_lagerhalle.glb",9.0,90,0,-84,0,false);
+    bau("th7_taxi.glb",1.7,6,0,94,Math.PI/2,false);
+    bau("th7_lieferwagen.glb",2.5,12,0,55,Math.PI/2,false);
+    bau("th7_lkw.glb",3.7,90,0,-74,0,false);
+    bau("th7_denkmal.glb",5.3,68,0,92,Math.PI,false);
   })(); /* 📏 2.6→1.7: Stand war doppelt so gross wie die Person (User-Screenshot) */ // auf dem Platz, mit Theke fuer die Verkaeufer
   bau("th3_brezelstand.glb",1.55,54,0,86,Math.PI,false); // weg vom Haus bei x=20 (Markise clippte ins Dach)
   // Strassen-Deko
