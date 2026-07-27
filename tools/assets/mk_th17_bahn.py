@@ -410,14 +410,12 @@ def lokomotive():
     for cy in (-6.4, 6.4):
         box(0, cy, Z1 + 0.36, 1.90, 1.80, 0.28, GRA)                  # Klimakaesten
     box(0, 0, Z1 + 0.32, 0.14, 9.0, 0.10, STA)                        # Dachleitung
-    for cy in (-3.5, 3.5):
-        for sx in (-0.75, 0.75):
-            zyl(sx, cy, Z1 + 0.36, 0.09, 0.28, ISO, 10)
+    for cy in (-4.4, -1.5, 1.5, 4.4):                                 # Stuetzisolatoren —
+        zyl(0, cy, Z1 + 0.29, 0.075, 0.16, ISO, 10)                   # sonst schwebt sie
     stromabnehmer(3.20, Z1 + 0.22, STA, ISO, SCL, PANT, 1.90)         # angehoben
-    box(0, -3.60, Z1 + 0.30, 2.00, 1.40, 0.14, STA)                   # zweiter, abgelegt
-    strebe(-4.20, Z1 + 0.36, -2.95, Z1 + 0.62, 0.08, STA, 0.0, 0.08)
-    strebe(-2.95, Z1 + 0.62, -4.05, Z1 + 0.50, 0.07, STA, 0.0, 0.07)
-    box(0, -4.10, Z1 + 0.56, 1.80, 0.16, 0.05, SCL)
+    box(0, -3.80, Z1 + 0.34, 2.00, 2.20, 0.24, GRA)                   # Hauptschalter-Kasten
+    for sx in (-0.62, 0.62):
+        zyl(sx, -3.80, Z1 + 0.60, 0.10, 0.28, ISO, 10)
     for s in (-1, 1):                                                 # Fuehrerstaende
         yf = s * (LB / 2)
         box(0, yf + s * 0.18, 1.62, KB - 0.02, 0.36, 1.04, KAS)       # Bugunterteil
@@ -517,20 +515,23 @@ def tram():
     ANZ = leucht("Zielanzeige", (1.0,0.72,0.16), 2.0)
     KB, RR = 2.40, 0.330
     Z0, Z1 = 0.72, 3.30                    # Wagenboden / Dachansatz
-    SEK = ((9.20, 4.40, 14.00), (0.00, -4.00, 4.00), (-9.20, -14.00, -4.40))
-    for cy in (10.00, 0.00, -10.00):       # Drehgestelle (kleine Trambraeder)
-        drehgestell(cy, RAH, RAD, STA, 1.80, RR, 0.115)
-    for (cy, y0, y1) in SEK:
+    # (cy, y0, y1, Drehgestell-y). Die Endsektionen enden bei +-13.70; die letzten
+    # 0.30 m sind die Bugkappe — die Frontscheibe MUSS vor dem Kasten liegen, sonst
+    # steckt sie im massiven Wagenkasten und die Front rendert als weisse Wand.
+    SEK = ((9.05, 4.40, 13.70, 10.00), (0.00, -4.00, 4.00, 0.00),
+           (-9.05, -13.70, -4.40, -10.00))
+    for (_, _, _, bg) in SEK:              # Drehgestelle (kleine Trambraeder)
+        drehgestell(bg, RAH, RAD, STA, 1.80, RR, 0.115)
+    for (cy, y0, y1, bg) in SEK:
         ln = y1 - y0
         box(0, cy, (Z0 + Z1) / 2, KB, ln, Z1 - Z0, KAS)               # Kasten
         box(0, cy, Z0 - 0.14, KB - 0.06, ln - 0.10, 0.28, DUN)        # Untergurt
         box(0, cy, 1.12, KB + 0.04, ln, 0.14, STR)                    # Zierband
         box(0, cy, 3.16, KB + 0.04, ln, 0.12, STR)
         tonne_y(0, cy, Z1, KB / 2, ln, DAC, 20, 0.26)                 # Dach
-    for (cy, y0, y1) in SEK:                                          # Schuerzen nur zwischen
-        for (a, b) in ((y0 + 0.4, cy - 1.6), (cy + 1.6, y1 - 0.4)):   # den Drehgestellen ->
-            if b - a > 0.6:                                           # Raeder bleiben sichtbar
-                box(0, (a + b) / 2, 0.52, KB - 0.10, b - a, 0.40, DUN)
+        for (a, b) in ((y0 + 0.35, bg - 1.55), (bg + 1.55, y1 - 0.35)):  # Schuerzen nur
+            if b - a > 0.6:                                              # zwischen den
+                box(0, (a + b) / 2, 0.52, KB - 0.10, b - a, 0.40, DUN)   # Drehgestellen
     for cy in (7.00, 2.00, -2.00, -7.00, 11.60, -11.60):              # Tueren beidseitig
         tuer(cy, KB / 2, Z0 + 0.02, 2.02, 1.30, TUE, GLA, RAH)
         box(0, cy, Z0 - 0.20, 2.46, 1.34, 0.12, DUN)
