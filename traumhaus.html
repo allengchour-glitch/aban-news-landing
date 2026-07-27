@@ -569,10 +569,16 @@ var strMatH=stdMat(0x4a4a53,0.92),strMatV=stdMat(0x4a4a53,0.92);
   window._wasser.push({mesh:meer,geo:meerG,base:meerG.attributes.position.array.slice()}); /* kräuselt mit dem Teich-Animator */
   var sand=new THREE.Mesh(new THREE.PlaneGeometry(14,340),stdMat(0xd8c48e,0.95));
   sand.rotation.x=-Math.PI/2;sand.position.set(-128,-0.02,0);sand.receiveShadow=true;scene.add(sand);
-  if(typeof ladeTex==="function")ladeTex("textures/th/sand.jpg",2,40,function(t){sand.material.map=t;sand.material.needsUpdate=true;}); /* 🏖️ KI-Textur (Pollinations, gratis) */
+  if(typeof ladeTex==="function")ladeTex("textures/th/sand.jpg",7,140,function(t){sand.material.map=t;sand.material.needsUpdate=true;}); /* 🏖️ ~2u/Kachel statt 7-8u — sonst wirken die Sandwellen riesig */ /* 🏖️ KI-Textur (Pollinations, gratis) */
   /* Zufahrts-Strasse: von der West-Strasse (x=-RX) zur Küste bei z=-30 */
   var zuf=new THREE.Mesh(new THREE.PlaneGeometry(56,10),betMat(0x6b6b72,0.9));
   zuf.rotation.x=-Math.PI/2;zuf.rotation.z=Math.PI/2;zuf.position.set(-RX-28,-0.003,-30);zuf.receiveShadow=true;scene.add(zuf);
+  /* 🅿️ Wendeplatz am Strand statt abrupt endender Fahrbahn */
+  var wp=new THREE.Mesh(new THREE.CircleGeometry(9,24),betMat(0x6b6b72,0.9));
+  wp.rotation.x=-Math.PI/2;wp.position.set(-132,-0.0025,-30);wp.receiveShadow=true;scene.add(wp); /* ans WESTENDE der Zufahrt (-134..-78), nicht mittendrauf */
+  for(var _pk=0;_pk<7;_pk++){var _pa=Math.PI*0.55+_pk*(Math.PI*0.9/6); /* Poller zur MEER-Seite (West) */
+    var _pl=new THREE.Mesh(new THREE.CylinderGeometry(0.16,0.18,0.9,7),stdMat(0xd8d2c4,0.7));
+    _pl.position.set(-132+Math.cos(_pa)*9.4,0.45,-30+Math.sin(_pa)*9.4);_pl.castShadow=true;scene.add(_pl);}
   /* Eisenbahnbrücke bei z=-30: Pfeiler + Fahrbahn + Schienen + Geländer */
   var BX0=-128,BX1=-320,BY=3.4,bl=BX0-BX1;
   var deck=new THREE.Mesh(new THREE.BoxGeometry(bl,0.5,3.6),betMat(0x9a948a,0.85));
