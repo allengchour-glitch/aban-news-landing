@@ -7,7 +7,7 @@
 <title>🏰 Neon Dungeon — Katakomben des Koloss | aban news</title>
 <meta name="description" content="Steig hinab in die Katakomben: Fackel-Parcours mit Doppelsprung, dann wartet der KOLOSS. Teil der Neon-Wildnis.">
 <script>/* Fusion: Direktbesuch -> Wildnis-Welt; als Station (iframe/?station=1) laeuft das Spiel normal */
-if(window.parent===window&&!/[?&]station=1/.test(location.search)&&!/[?&]raum=/.test(location.search)){location.replace("/neon-wildnis.html?von="+location.pathname.replace(/\W/g,""));}</script>
+if(window.parent===window&&!/[?&](station=1|raum=|lvl=)/.test(location.search)){location.replace("/neon-wildnis.html?von="+location.pathname.replace(/\W/g,""));} /* 🩹 Schwarm-P1: ?lvl= (Rematch-URLs) nicht mehr wegleiten */</script>
 <style>
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{width:100%;height:100%;overflow:hidden;background:#0a0812;font-family:system-ui,-apple-system,sans-serif;color:#e8e0ff;
@@ -341,7 +341,7 @@ function wireDungeonNet(){
   dnet.onStatus(function(st){
     if(_dcCancel)return;
     if(st==="connected"){NETON=true;coopWait=false;dcStatus("");
-      buildRemoteAvatar();buildCoopExtras();remote.on=true;
+      buildRemoteAvatar();buildCoopExtras();remote.on=true;if(remote.grp)remote.grp.visible=true; /* 🩹 Schwarm-P3: Avatar blieb nach Re-Pairing unsichtbar */
       if(dnet.role==="host"){try{dnet.send({t:"lvl",max:TH.bossHp,hp:bossHp});}catch(e){}}
       announce("🤝 Partner verbunden — zusammen in die Tiefe!","#7dffc8");
       if(!running)start();}
@@ -356,7 +356,7 @@ function wireDungeonNet(){
     if(d.t==="bhit"){bossHp-=(d.d||1);_pHitT=performance.now();hitFx=Math.max(hitFx,0.35);
       if(bossHp<=Math.ceil(bossMax/2)&&bossHp>0&&bossPh===0){bossPh=1;announce("😡 DER KOLOSS RAST!","#ff5a5a");}
       if(bossHp<=0)winGame();updHud();}
-    if(d.t==="bheal"){bossHp=Math.min(bossMax,bossHp+1);updHud();}
+    if(d.t==="bheal"){bossHp=Math.min(bossMax,bossHp+(d.d!=null?d.d:1));updHud();} /* 🩹 Schwarm-P3: Delta anwenden statt beidseitig zu clampen */
     if(d.t==="bwin"&&!won)winGame();});
 }
 function _dcPre(){if(!window.MP){dcStatus("Koop-Lib fehlt");return false;}
@@ -525,7 +525,7 @@ document.getElementById("bHit").addEventListener("click",doHit);
   bw.addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();cycleWeapon(1);},{passive:false});
   bw.addEventListener("click",function(e){e.stopPropagation();cycleWeapon(1);});})();
 var keys={};
-addEventListener("keydown",function(e){keys[e.key.toLowerCase()]=1;
+addEventListener("keydown",function(e){if(e.repeat)return;keys[e.key.toLowerCase()]=1; /* 🩹 Schwarm-P3: Key-Auto-Repeat verheizte den Doppelsprung */
   if(e.key>="1"&&e.key<="4"){equipWeapon(+e.key-1);} /* ⚔️ Waffe 1-4 */
   if(e.key.toLowerCase()==="q")cycleWeapon(1);
   if(e.key===" "){e.preventDefault();if(!running){start();return;}doJump();}
@@ -544,14 +544,14 @@ function respawn(){var c=checkpoints[ckpt];px=c.x;py=c.y+0.2;pz=c.z;vy=0;jumps=0
 var hbT=0;
 function damage(){if(dead||won)return;hearts--;invT=1.6;shakeT=Math.max(shakeT,0.35);updHud();sfx(120,0.2,"sawtooth",0.08,50);
   for(var qi=rings.length-1;qi>=0;qi--){scene.remove(rings[qi].m);rings[qi].m.geometry.dispose();rings[qi].m.material.dispose();}rings.length=0; /* keine Ketten-Treffer nach dem Rücksetzen */
-  if(hearts<=0&&NETON){hearts=4;bossHp=Math.min(bossMax,bossHp+1);if(dnet)try{dnet.send({t:"bheal"});}catch(e){}
+  if(hearts<=0&&NETON){hearts=4;bossHp=Math.min(bossMax,bossHp+1);if(dnet)try{(function(){var _h=Math.min(1,bossMax-bossHp);bossHp+=_h;dnet.send({t:"bheal",d:_h});})();}catch(e){}
     announce("💀→❤️ Dein Partner hält die Stellung — du bist zurück! (Koloss +1)","#7de3ff");updHud();respawnBoss();return;} /* 🤝 ITT-Gnade: im Koop kein Game-Over */
   if(hearts<=0){dead=true;player.visible=true;announce("💀 Der Dungeon hat gewonnen …","#8a8a9a");
     setTimeout(function(){sfx(330,0.3,"triangle",0.06,262);},250);setTimeout(function(){sfx(262,0.3,"triangle",0.06,208);},650);setTimeout(function(){sfx(196,0.5,"triangle",0.07,130);},1050);
     setTimeout(function(){finish(false);},1800);}
   else respawnBoss();}
 function respawnBoss(){px=0;pz=CHZ+9;py=0;vy=0;gy=0;snapCam();}
-function winGame(){if(won||dead)return;won=true;bossOn=false;shakeT=0.6;
+function winGame(){if(won||dead)return;won=true;bossOn=false;shakeT=0.6;try{vRing.visible=false;vLight.intensity=0;if(warnD){scene.remove(warnD);warnD=null;}}catch(e){} /* 🩹 Schwarm-P3: eingefrorene Warn-Optik nach Sieg */
   if(NETON&&dnet)try{dnet.send({t:"bwin"});}catch(e){} /* 🤝 Sieg synchronisieren */
   announce(NETON?"🏆 IHR habt den KOLOSS besiegt — zusammen!":"🏆 DER KOLOSS FÄLLT!","#ffd166");
   sfx(392,0.3,"triangle",0.07);setTimeout(function(){sfx(523,0.3,"triangle",0.07);},180);
@@ -579,7 +579,7 @@ function finish(win){if(finish._done)return;finish._done=true;
   ov.querySelector("p").innerHTML="💎 "+gemN+" Kristalle · ❤️ "+Math.max(0,hearts)+" übrig · <b>Score "+score+"</b>"+timeLine;
   /* #67 Rematch: Station frisch neu laden (Reward zählt regulär), sonst normaler Reload */
   var sb=document.getElementById("startBtn");sb.textContent="Nochmal ▶";
-  sb.onclick=function(){var _u=location.pathname+"?lvl="+_dlv+(STATION?"&station=1":"")+(NG?"&ng=1":""); /* 🐛 Schwarm: Rematch spielt DIESELBE Ebene (sonst lud der Reload die freigeschaltete nächste) */
+  sb.onclick=function(){var _ra=(location.search.match(/[?&]raum=([A-Za-z]{4})/)||[])[1]||"";var _u=location.pathname+"?lvl="+_dlv+(STATION?"&station=1":"")+(NG?"&ng=1":"")+(_ra?("&raum="+_ra):""); /* 🩹 Schwarm-P1: raum-Code mitnehmen — Koop-Gast flog beim Rematch raus */ /* 🐛 Schwarm: Rematch spielt DIESELBE Ebene (sonst lud der Reload die freigeschaltete nächste) */
     if(STATION){stationPost({t:"stationRematch"});setTimeout(function(){location.href=_u;},250);}else location.href=_u;};
   var box=sb.parentNode;
   if(STATION&&!document.getElementById("againBtn")){var ab=document.createElement("button");ab.id="againBtn";ab.className="big sec";ab.textContent="← Wildnis";ab.onclick=function(){stationPost("mini-back");};box.appendChild(ab);}

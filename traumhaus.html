@@ -2253,6 +2253,7 @@ function onNetMsg(m){
   else if(m.t==="uhr"&&!mpHost){uhrzeit=m.u;if(tag!==m.d){tag=m.d;applySaison();}}
   else if(m.t==="wetter"&&!mpHost)setWetter(m.w);
   else if(m.t==="kochBoost"&&mpHost){if(m.s>=0.999)stats.kochPerfekt=(stats.kochPerfekt||0)+1;kochApply(m.s);}
+  else if(m.t==="fisch"&&mpHost){stats.fische=(stats.fische||0)+1;} /* 🩹 Gast-Fang zählt beim Host für Quests/Team-Quests */
   else if(m.t==="tanzBoost"&&mpHost){if(m.s>=0.999)stats.tanzPerfekt=(stats.tanzPerfekt||0)+1;tanzApply(m.s);}
   else if(m.t==="quest"&&!mpHost)questIdx=m.i;
   else if(m.t==="teamq"&&!mpHost){teamIdx=m.i;}
@@ -3179,9 +3180,9 @@ function updNpcs(dt,now){
     if(hh>=8&&hh<12)pool.push("postbote","postbote");
     if(hh>=13&&hh<18){pool.push("nachbarin","haendler");if(kinder.length)pool.push("nachbarskind","nachbarskind");}
     pool.push("katze");
-    if(polizeiPending){pool=["polizist"];polizeiPending=false;}
-    else if(buergermeisterPending){pool=["buergermeister"];buergermeisterPending=false;}
-    if(pool.length&&npcs.length<2)spawnNpc(pool[(Math.random()*pool.length)|0]);}
+    var _amt=polizeiPending?"polizist":(buergermeisterPending?"buergermeister":null); /* 🩹 Schwarm-P1: Amts-NPCs umgehen das <2-Gate; Flag fällt erst NACH echtem Spawn — sonst friert die Quest-Kette ein (questBusy bleibt true) */
+    if(_amt){if(spawnNpc(_amt)){if(_amt==="polizist")polizeiPending=false;else buergermeisterPending=false;}}
+    else if(pool.length&&npcs.length<2)spawnNpc(pool[(Math.random()*pool.length)|0]);}
   for(var i=npcs.length-1;i>=0;i--){var n=npcs[i];
     n.walkT+=dt*8;
     if(n.state==="enter"){
@@ -3566,7 +3567,7 @@ function angelResult(ms){
   if(ms<0){txt="💨 Weg ist er … zu langsam!";beep(220,.2,"sawtooth",.05);}
   else{var fi=ms<FISCHE[0][2]?FISCHE[0]:(ms<FISCHE[1][2]?FISCHE[1]:FISCHE[2]);
     ANGEL.fang++;ANGEL.geldSum+=fi[1];
-    stats.fische=(stats.fische||0)+1;
+    if(MPs&&!mpHost)netSend({t:"fisch"});else stats.fische=(stats.fische||0)+1; /* 🩹 Schwarm-P1: Gast meldet Fang an Host — lokale Stats werden vom love-Broadcast überschrieben */
     txt=fi[0]+"! +"+fi[1]+" $ ("+ms+" ms)";beep(880,.14,"triangle",.06);}
   document.getElementById("angelSub").textContent=txt;
   document.getElementById("angelIcon").textContent=ms<0?"🌊":"🎣";
@@ -3805,7 +3806,7 @@ var MUS=new Audio("/audio/premium.mp3");MUS.loop=true;MUS.volume=0.22;MUS.preloa
 
 // ===================== Start / Netz-Lobby =====================
 var SAVE="th_save1";
-function saveGame(){if(MPs)return;try{localStorage.setItem(SAVE,JSON.stringify(snapshot()));}catch(e){}}
+function saveGame(){if(MPs&&!mpHost)return;try{localStorage.setItem(MPs?"th_save_coop":SAVE,JSON.stringify(snapshot()));}catch(e){}} /* 🩹 Schwarm-P1: Host sichert Koop-Haus unter eigenem Slot — vorher zerstörte EIN Reload alles */
 function startGame(){
   running=true;
   document.getElementById("start").classList.add("hide");
@@ -3829,7 +3830,9 @@ function startGame(){
     if(_ic){_ic.style.display="flex";document.getElementById("introOk").onclick=function(){_ic.style.display="none";try{localStorage.setItem("th_intro_seen","1");}catch(e){}};}}}catch(e){}
   hint("🔨 Bauen antippen — dann Boden legen, Wände ziehen, Möbel stellen!");}
 document.getElementById("soloBtn").onclick=function(){
-  try{var sv=localStorage.getItem(SAVE);if(sv)loadSnapshot(JSON.parse(sv));}catch(e){}
+  try{var sv=localStorage.getItem(SAVE);
+    if(sv){try{localStorage.setItem(SAVE+"_bak",sv);}catch(_){} /* 🩹 Schwarm-P1: rollendes Backup — kaputter Save wurde sonst still vom 6s-Autosave überschrieben */
+      try{loadSnapshot(JSON.parse(sv));}catch(e2){alert("⚠️ Spielstand beschädigt — starte frisch. Backup liegt unter th_save1_bak.");}}}catch(e){}
   applySaison();rollWetter();
   startGame();};
 function mpLobbyFehler(msg){
@@ -3845,6 +3848,7 @@ document.getElementById("mpBackBtn").onclick=function(){
 document.getElementById("hostBtn").onclick=function(){
   if(typeof MP==="undefined"){alert("Online-Modul nicht geladen");return;}
   myName=(document.getElementById("mpName").value.trim()||"Host").slice(0,12);
+  try{var cs=localStorage.getItem("th_save_coop");if(cs)loadSnapshot(JSON.parse(cs));}catch(e){} /* 🩹 Schwarm-P1: gemeinsames Haus überlebt jetzt einen Host-Reload */
   MPs=MP.host("traumhaus");mpHost=true;window._roomCode=MPs.code;
   document.getElementById("netSetup").style.display="none";
   document.getElementById("mpLobby").style.display="block";
@@ -3852,6 +3856,7 @@ document.getElementById("hostBtn").onclick=function(){
   MPs.onMessage(onNetMsg);
   MPs.onStatus(function(st){
     document.getElementById("mpStatus").textContent={waiting:"Warte auf Mitspieler …",connected:"Verbunden! Spiel startet …",lost:"Verbindung verloren — versuche Reconnect …",closed:"Verbindung beendet"}[st]||st;
+    if(st==="waiting"){document.getElementById("mpCodeShow").textContent=MPs.code;window._roomCode=MPs.code;} /* 🩹 Schwarm-P3: Code kann nach ID-Kollision neu gewürfelt sein */
     if(st==="connected"&&!running)startGame();
     document.getElementById("mpBackBtn").style.display=(st==="closed")?"inline-block":"none";
     document.getElementById("netBadge").style.background=st==="connected"?"rgba(90,150,90,.9)":"rgba(190,90,60,.9)";});
@@ -3956,7 +3961,9 @@ function loop(now){
     document.getElementById("hideBtn").style.display=(running&&!buildMode&&!fahren&&MPs&&mpHost)?"block":"none"; // nur im Koop (Solo-Verstecken war "doof")
     if(MPs&&!mpHost){steerNetT-=dt;
       if(steerNetT<=0){steerNetT=0.09;var act9=steerActive();
-        if(act9||steerWasActive){netFast({t:"steer",x:act9?steer.x:0,z:act9?steer.z:0});steerWasActive=act9;}}}
+        if(act9||steerWasActive){netFast({t:"steer",x:act9?steer.x:0,z:act9?steer.z:0});steerWasActive=act9;}}
+      window._thHbT=(window._thHbT||0)-dt; /* 🩹 Schwarm-P1: Keepalive alle 2s — der 6s-Watchdog in mp.js trennte idle Gäste */
+      if(window._thHbT<=0){window._thHbT=2;netSend({t:"hb"});}}
     simTick+=dt;if(simTick>0.35){simTick=0;updHUD();if(!MPs||mpHost){checkAch();checkQuest();checkTeamQ();}
       if(MPs&&mpHost)netFast({t:"sims",ca:(fahren&&driveCar?{x:driveCar.mesh.position.x,z:driveCar.mesh.position.z,r:carRot,vi:verkehr.indexOf(driveCar)}:null),a:sims.map(function(s){return {x:s.x,z:s.z,r:s.rot,p:s.pose,nd:s.needs,v:s.mesh.visible};}),k:kinder.map(function(k){return {x:k.x,z:k.z,r:k.rot,b:k.baby,n:k.name};}),np:npcs.map(function(n){return {t:n.typ,x:n.x,z:n.z,r:n.rot};})});
       if(MPs&&mpHost){netTick++;if(netTick%8===0){netSend({t:"uhr",u:uhrzeit,d:tag});

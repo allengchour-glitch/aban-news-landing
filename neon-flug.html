@@ -363,7 +363,7 @@ function applyUpgrade(i){
   beep(520,.12,"triangle",.08);
 }
 
-function reset(){
+function reset(){keyL=false;keyR=false; /* 🩹 Schwarm-P3: Geister-Lenkung nach Restart */
   if(dailyMode)_srng=mulberry32((dayNo*2654435761)>>>0);
   score=0;speed=0.6;targetX=0;shipX=0;shake=0;tick=0;lastSpawn=0;lastGate=0; /* F1: sonst bleibt der Canyon nach „Nochmal" 30-60s leer (Spawn-Drossel vergleicht tick gegen alten Wert) */
   shield=0;magnet=false;orbValue=1;orbsCollected=0;nextUp=6;choosing=false;paused=false;window._orbBoost=0;
@@ -393,16 +393,16 @@ function flash(){var f=document.getElementById("flash");f.style.opacity=".6";set
 
 // Input
 function setTarget(clientX){targetX=((clientX/W)*2-1)*7;}
-window.addEventListener("mousemove",function(e){if(running&&!choosing&&!paused)setTarget(e.clientX);});
+window.addEventListener("mousemove",function(e){if(IS_TOUCH)return;if(running&&!choosing&&!paused)setTarget(e.clientX);}); /* 🩹 Schwarm-P1: synthetische mousemove nach Tap lenkte den Gleiter seitwärts */
 window.addEventListener("touchmove",function(e){if(e.touches[0]){if(Math.hypot(e.touches[0].clientX-tchX,e.touches[0].clientY-tchY)>12)tchMoved=true;if(running&&!choosing&&!paused&&tchMoved){setTarget(e.touches[0].clientX);e.preventDefault();}}},{passive:false}); /* F2+P7: kein Lenken bei Upgrade/Pause; Lenken erst ab echter Bewegung (>12px) — Dash-Tipp mit Mini-Jitter springt nicht mehr seitwärts */
 var keyL=false,keyR=false;
 window.addEventListener("keydown",function(e){var k=e.key.toLowerCase();if(k==="arrowleft"||k==="a")keyL=true;if(k==="arrowright"||k==="d")keyR=true;if((k===" "||k==="enter")&&!running)start();else if((k===" "||k==="arrowup")&&running&&!choosing&&!paused)doDash();if((k==="escape"||k==="p")&&running&&!choosing&&document.getElementById("settings").classList.contains("hide"))togglePause();if(choosing&&(k==="1"||k==="2"||k==="3"))applyUpgrade(+k-1);});
 // Touch: Antippen LENKT (erster Kontakt = Ziel), Dash nur bei kurzem Tipp ohne Wischen
 var tchT=0,tchX=0,tchY=0,tchMoved=false;
-window.addEventListener("touchstart",function(e){if(!e.touches[0])return;tchT=performance.now();tchX=e.touches[0].clientX;tchY=e.touches[0].clientY;tchMoved=false;
+window.addEventListener("touchstart",function(e){if(!e.touches[0])return;tchT=performance.now();tchX=e.touches[0].clientX;tchY=e.touches[0].clientY;tchMoved=false;window._tchBtn=!!(e.target&&e.target.closest&&e.target.closest("button,a")); /* 🩹 Schwarm-P2: Tipp auf HUD-Knopf darf keinen Dash feuern */
   try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();if(actx.state==="suspended")actx.resume();if(typeof musSync==="function")musSync();}catch(_){} /* F2+P7: Audio-Unlock beim ersten Touch — actx LAZY erzeugen (war vorher no-op solange null) + Musik anstossen */
   /* F2: KEIN sofortiges setTarget mehr — reiner Tipp (Dash) zieht nicht seitwärts; Lenken erfolgt im touchmove */},{passive:true});
-window.addEventListener("touchend",function(){if(running&&!choosing&&!paused&&!tchMoved&&performance.now()-tchT<200)doDash();},{passive:true});
+window.addEventListener("touchend",function(){if(running&&!choosing&&!paused&&!tchMoved&&!window._tchBtn&&performance.now()-tchT<200)doDash();},{passive:true});
 window.addEventListener("keyup",function(e){var k=e.key.toLowerCase();if(k==="arrowleft"||k==="a")keyL=false;if(k==="arrowright"||k==="d")keyR=false;});
 
 // Audio (WebAudio, kein Asset)
