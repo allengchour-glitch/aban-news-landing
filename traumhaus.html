@@ -1732,14 +1732,14 @@ setTimeout(function baueGebaeude(){
   bau("th3_wippe.glb",1.25,91,0,2,Math.PI/2,false);
   bau("th3_karussell.glb",1.3,100,0,5,0,false);
   // Markt-Platz (Suedzeile)
-  bau("th3_marktstand.glb",2.6,38,0,73.2,Math.PI,false);bau("th3_marktstand.glb",2.6,46,0,73.2,Math.PI,false); // auf dem Platz, mit Theke fuer die Verkaeufer
-  bau("th3_brezelstand.glb",1.9,28,0,72.5,Math.PI,false); // weg vom Haus bei x=20 (Markise clippte ins Dach)
+  bau("th3_marktstand.glb",1.7,38,0,73.2,Math.PI,false);bau("th3_marktstand.glb",1.7,46,0,73.2,Math.PI,false); /* 📏 2.6→1.7: Stand war doppelt so gross wie die Person (User-Screenshot) */ // auf dem Platz, mit Theke fuer die Verkaeufer
+  bau("th3_brezelstand.glb",1.55,28,0,72.5,Math.PI,false); // weg vom Haus bei x=20 (Markise clippte ins Dach)
   // Strassen-Deko
-  bau("th3_kiosk.glb",3.0,-16,0,-69,0,false);
-  bau("th3_litfass.glb",2.8,14,0,50.1,0,false);
+  bau("th3_kiosk.glb",2.4,-16,0,-69,0,false);
+  bau("th3_litfass.glb",2.3,14,0,50.1,0,false);
   bau("th3_briefkasten.glb",1.15,-12,0,50.2,Math.PI,false);
   bau("th3_hydrant.glb",0.8,30,0,50.3,0,false);
-  bau("th3_bushalte.glb",2.4,-15,0,49.7,0,false);
+  bau("th3_bushalte.glb",2.1,-15,0,49.7,0,false);
   bau("th3_blumenkuebel.glb",0.7,0,0,50.2,0,false);
   bau("th3_blumenkuebel.glb",0.7,84,0,-31,0,false);
   // See: Steg + Ruderboot
@@ -2712,6 +2712,11 @@ function findFurnFor(need){
 var NEEDS=[["hunger","🍽️"],["energie","😴"],["spass","🎉"],["hygiene","🚿"]];
 function simThink(s,si){
   if(s.state!=="idle")return;
+  /* 🕹️ User: „warum läuft charakter automatisch" — nach manueller Steuerung 8s Schonfrist:
+     der Sim bleibt stehen statt sofort wieder loszulaufen (ausser ein Bedürfnis ist KRITISCH <20). */
+  if(s._manualT&&performance.now()-s._manualT<8000){
+    var _crit=false;NEEDS.forEach(function(nd){if(s.needs[nd[0]]<20)_crit=true;});
+    if(!_crit)return;}
   var worst=null,wv=101;
   NEEDS.forEach(function(nd){if(s.needs[nd[0]]<wv){wv=s.needs[nd[0]];worst=nd[0];}});
   // Schlafenszeit: nachts zieht es alle ins Bett
@@ -3373,13 +3378,13 @@ function updSim(s,si,dt,now){
     if(sv9){
       if(s.state==="use"&&s.target){s.target.busy=false;s.target=null;}
       else if(s.state==="walk"&&s.target){s.target.busy=false;s.target=null;s.path=null;}
-      s.state="steer";s.pose="stand";
+      s.state="steer";s.pose="stand";s._manualT=performance.now(); /* 🕹️ merken: Spieler steuert */
       var sprint9=(si===0)?(shiftHeld||joyEdge):(Math.hypot(sv9.x,sv9.z)>0.92);
       steerMove(s,sv9,dt,sprint9);
       if(si===0&&!followSim&&!buildMode)followSim=s;}
     else if(s.state==="steer")s.state="idle";
     var ehe=verheiratet?0.82:1;
-    NEEDS.forEach(function(nd){s.needs[nd[0]]=Math.max(0,s.needs[nd[0]]-dt*ehe*({hunger:0.55,energie:0.4,spass:0.65,hygiene:0.45}[nd[0]]));});
+    NEEDS.forEach(function(nd){s.needs[nd[0]]=100;}); /* 🎮 User: „einfach, ohne Survival — wie GTA" → Bedürfnisse abgeschaltet (immer voll); Sims leben ambient weiter */
     if(s.state==="dance"||s.state==="propose"){s.useT-=dt;if(s.useT<=0){s.state="idle";}}
     if(s.state==="idle")simThink(s,si);
     else if(s.state==="walk")simWalk(s,dt);
@@ -3519,10 +3524,24 @@ function updMinimap(dt){
   c.beginPath();c.moveTo(0,-7);c.lineTo(4.5,5);c.lineTo(0,2);c.lineTo(-4.5,5);c.closePath();c.fill();c.stroke();
   c.restore();}
 var dragging=false,dragBtn=0,lx=0,ly=0,pinchD=0,downT=0,downX=0,downY=0;
-renderer.domElement.addEventListener("mousedown",function(e){dragging=true;dragBtn=e.button;lx=e.clientX;ly=e.clientY;downT=performance.now();downX=e.clientX;downY=e.clientY;});
+/* 🎨 Zieh-Malen (User: „einfaches bauen, mehr Felder"): Boden-Auswahl + Finger/Maus ziehen = Fläche legen.
+   Ein Set pro Zug verhindert Doppel-Abbuchung beim Zurückkreuzen; Geld-Hinweis nur 1× pro Zug. */
+var _paintSet=null,_paintHinted=false;
+function paintFloorAt(px,py){
+  if(!buildMode||!curItem||delMode||curItem.indexOf("boden")!==0)return false;
+  var c=pickCell(px,py);if(!c||!inLot(c.gx,c.gy))return true;
+  var key=c.gx+"_"+c.gy;if(_paintSet&&_paintSet.has(key))return true;
+  var def=defOf(curItem);
+  if(geld<def.cost){if(!_paintHinted){_paintHinted=true;hint("💰 Zu wenig Geld!");}return true;}
+  if(_paintSet)_paintSet.add(key);
+  doPlaceFloor(c.gx,c.gy,+curItem.slice(5));geld-=def.cost;geldSend();updHUD();beep(660,.04,"triangle",.03);
+  return true;}
+renderer.domElement.addEventListener("mousedown",function(e){dragging=true;dragBtn=e.button;lx=e.clientX;ly=e.clientY;downT=performance.now();downX=e.clientX;downY=e.clientY;
+  _paintSet=new Set();_paintHinted=false;if(e.button===0)paintFloorAt(e.clientX,e.clientY);});
 addEventListener("mousemove",function(e){
   if(dragging){var dx=e.clientX-lx,dy=e.clientY-ly;lx=e.clientX;ly=e.clientY;
-    if(dragBtn===2||e.shiftKey){camTx-=(Math.cos(camA)*dx-Math.sin(camA)*dy)*0.03;camTz-=(-Math.sin(camA)*dx-Math.cos(camA)*dy)*0.03;}
+    if(dragBtn===0&&paintFloorAt(e.clientX,e.clientY)){/* 🎨 Boden-Malen frisst den Drag (Kamera-Drehen: rechte Taste/Shift) */}
+    else if(dragBtn===2||e.shiftKey){camTx-=(Math.cos(camA)*dx-Math.sin(camA)*dy)*0.03;camTz-=(-Math.sin(camA)*dx-Math.cos(camA)*dy)*0.03;}
     else{camAT=null;camA-=dx*0.005;camB=Math.max(0.25,Math.min(1.35,camB+dy*0.004));}
     updCam();}
   if(buildMode)ghostFollow(e.clientX,e.clientY);});
@@ -3539,12 +3558,14 @@ addEventListener("wheel",function(e){
       camTz=Math.max(-130,Math.min(130,camTz+(P9.z-camTz)*f9));}}
 },{passive:true});
 renderer.domElement.addEventListener("touchstart",function(e){
-  if(e.touches.length===1){dragging=true;lx=e.touches[0].clientX;ly=e.touches[0].clientY;downT=performance.now();downX=lx;downY=ly;}
+  if(e.touches.length===1){dragging=true;lx=e.touches[0].clientX;ly=e.touches[0].clientY;downT=performance.now();downX=lx;downY=ly;
+    _paintSet=new Set();_paintHinted=false;paintFloorAt(lx,ly);}
   else if(e.touches.length===2){pinchD=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);}
 },{passive:true});
 renderer.domElement.addEventListener("touchmove",function(e){
   if(e.touches.length===1&&dragging){var dx=e.touches[0].clientX-lx,dy=e.touches[0].clientY-ly;lx=e.touches[0].clientX;ly=e.touches[0].clientY;
-    camAT=null;camA-=dx*0.006;camB=Math.max(0.25,Math.min(1.35,camB+dy*0.005));updCam();}
+    if(paintFloorAt(lx,ly)){/* 🎨 Boden-Malen — Kamera drehen geht weiter mit 2 Fingern */}
+    else{camAT=null;camA-=dx*0.006;camB=Math.max(0.25,Math.min(1.35,camB+dy*0.005));updCam();}}
   else if(e.touches.length===2){var nd=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
     camRT=Math.max(7,Math.min(135,camRT-(nd-pinchD)*0.06));pinchD=nd;}
   e.preventDefault();},{passive:false});
@@ -3953,11 +3974,7 @@ function updHUD(){
   var lr=document.createElement("div");lr.className="nrow";
   lr.innerHTML="<span>"+loveHud()+"</span><span class='nbar'><i style='width:"+Math.round(liebe)+"%;background:linear-gradient(90deg,#ff9ab8,#e85aa0)'></i></span>";
   nb.appendChild(lr);
-  sims.forEach(function(s){var head=document.createElement("div");head.style.cssText="font-size:.72rem;color:#5a4a30";head.textContent=s.name;nb.appendChild(head);
-    NEEDS.forEach(function(nd){var row=document.createElement("div");row.className="nrow";
-      var v=Math.round(s.needs[nd[0]]);
-      row.innerHTML="<span>"+nd[1]+"</span><span class='nbar'><i style='width:"+v+"%;"+(v<30?"background:#e85a5a":"")+"'></i></span>";
-      nb.appendChild(row);});});}
+  /* 🎮 GTA-Modus: Bedürfnis-Balken entfernt (User: „Anzeige rechts mit Balken — ohne") — Panel zeigt nur noch Familie/Level/Liebe */}
 
 // ===================== Audio =====================
 var actx=null,muted=false;
