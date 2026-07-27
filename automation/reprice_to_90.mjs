@@ -23,12 +23,15 @@ for(const o of lines){
 console.log(`Produkte zu repricen: ${byProd.size} | Varianten: ${[...byProd.values()].reduce((s,v)=>s+v.length,0)}`);
 let ex=0; for(const [pid,vs] of byProd){ if(ex++<6) console.log('  '+vs[0].old+'→'+vs[0].price+(vs.length>1?` (+${vs.length-1} weitere)`:'')); }
 if(DRY){console.log('(DRY)');process.exit(0);}
+const LED='/tmp/reprice_done.txt';
+const doneSet=new Set(fs.existsSync(LED)?fs.readFileSync(LED,'utf8').split('\n').filter(Boolean):[]);
 TOK=await scc();
-let done=0;
+let done=doneSet.size;
 for(const [pid,vs] of byProd){
+  if(doneSet.has(pid))continue;
   const variants=vs.map(v=>`{id:"${v.id}",price:"${v.price}"}`).join(',');
   const u=await gql(`mutation{productVariantsBulkUpdate(productId:"${pid}",variants:[${variants}]){userErrors{message}}}`,{});
-  if(u&&!(u.data?.productVariantsBulkUpdate?.userErrors||[]).length)done++;
+  if(u&&!(u.data?.productVariantsBulkUpdate?.userErrors||[]).length){done++;fs.appendFileSync(LED,pid+'\n');}
   else if(u?.data?.productVariantsBulkUpdate?.userErrors?.length) console.log('  err',pid.split('/').pop(),JSON.stringify(u.data.productVariantsBulkUpdate.userErrors).slice(0,80));
   if(done%50===0&&done)console.log('  ...',done);
   await sleep(300);
