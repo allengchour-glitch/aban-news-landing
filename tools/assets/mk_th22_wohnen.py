@@ -787,19 +787,24 @@ def villa():
     YF = HT/2                                           # Fassade +y bei 5.00
     # --- Grundstueck
     box(-0.30, 0, FB/2, 23.0, 17.0, FB, RAS)
-    box(-3.50, 6.90, FB + 0.02, 2.60, 4.20, 0.06, WEG)  # Weg zur Haustuer
-    box( 6.20, 6.20, FB + 0.02, 6.40, 5.60, 0.06, WEG)  # Einfahrt
-    hecke(-0.30, 8.05, 22.0, 0.70, FB, 0.85, GRUE, 'x')
+    box(-3.50, 6.65, FB + 0.02, 2.60, 3.60, 0.06, WEG)  # Weg zur Haustuer
+    box( 6.20, 5.92, FB + 0.02, 6.40, 5.05, 0.06, WEG)  # Einfahrt
+    # Hecke MIT Luecken fuer Weg und Einfahrt — sonst laeuft der Weg mitten
+    # durch den Buchs und endet neben der Grundstuecksplatte in der Luft.
+    hecke(-8.10, 8.05,  6.40, 0.70, FB, 0.85, GRUE, 'x')
+    hecke( 0.45, 8.05,  5.10, 0.70, FB, 0.85, GRUE, 'x')
+    hecke(10.05, 8.05,  1.30, 0.70, FB, 0.85, GRUE, 'x', 2)
     hecke(-11.05, 0.0, 16.0, 0.70, FB, 0.85, GRUE, 'y')
     # --- Baukoerper
     box(HX, 0, HW/2, HB, HT, HW, PUTZ)
-    box(HX, 0, 0.50, HB + 0.20, HT + 0.20, 1.00, PUT2)  # Sockelgeschoss
+    box(HX, 0, 0.20, HB + 0.20, HT + 0.20, 0.40, PUT2)  # Sockelband (1.00 hoch
+                                                        # verdeckte die Haustuer)
     box(HX, YF - 0.05, HW/2, HB, 0.10, HW, PUTZ)
     box(HX, 0, HW - 0.16, HB + 0.24, HT + 0.24, 0.32, SOK)   # Traufgesims
     # --- Erker auf der Schauseite
     EX, EB, EY = -7.00, 3.00, YF + 1.10
     box(EX, YF + 0.55, 3.45, EB, 1.10, 6.90, PUTZ)
-    box(EX, YF + 0.55, 0.50, EB + 0.20, 1.30, 1.00, PUT2)
+    box(EX, YF + 0.55, 0.20, EB + 0.20, 1.30, 0.40, PUT2)
     for zz, hh in ((2.30, 2.00), (5.40, 1.70)):
         fenster(EX, zz, 1.30, hh, EY, FEN, GLAS, 1, 'y', SOK, None, 1, 1)
         for sx in (-1, 1):
@@ -807,13 +812,13 @@ def villa():
     walmdach(EX, YF + 0.55, EB, 1.10, 6.90, 0.80, 1.30, ZIEG, 0.30)
     # --- Haustuer mit Vordach
     box(HX, YF + 0.16, 1.60, 2.40, 0.36, 3.20, SOK)
-    box(HX, YF + 0.34, 1.35, 1.60, 0.10, 2.50, TUER)
-    box(HX, YF + 0.40, 1.90, 0.90, 0.05, 1.10, GLAS)
+    box(HX, YF + 0.34, 1.68, 1.60, 0.10, 2.50, TUER)    # Tuerblatt 0.43 .. 2.93
+    box(HX, YF + 0.40, 2.20, 0.90, 0.05, 1.10, GLAS)
     box(HX, YF + 0.90, 3.42, 3.20, 1.80, 0.22, SOK)     # Vordach
     for sx in (-1, 1):
         zyl(HX + sx*1.30, YF + 1.55, (FB + 3.31)/2, 0.16, 3.31 - FB, SOK, 14)
         box(HX + sx*1.44, YF + 0.30, 2.30, 0.18, 0.14, 0.34, LICHT)
-    stufen(HX, YF + 0.30, 0.0, 2.20, FB, SOK, 0.34, 1)
+    stufen(HX, YF + 0.30, 0.0, 2.20, 0.43, SOK, 0.34, 1)
     # --- Fenster Haus
     for sx in (-1.20, 1.30):
         fenster(sx, 2.30, 1.40, 2.00, YF, FEN, GLAS, 1, 'y', SOK, None, 1, 1, LADE)
@@ -836,7 +841,7 @@ def villa():
     box(-8.60, -2.60, 10.34, 1.06, 1.06, 0.18, SOK)
     # --- Garage
     box(GX, 0, GW/2, GB, GT, GW, PUTZ)
-    box(GX, 0, 0.50, GB + 0.16, GT + 0.16, 1.00, PUT2)
+    box(GX, 0, 0.20, GB + 0.16, GT + 0.16, 0.40, PUT2)
     box(GX, 0, GW + 0.16, GB + 0.60, GT + 0.60, 0.32, FLAD)  # Dachplatte buendig
     dachrand(GX, 0, GB + 0.66, GT + 0.66, GW + 0.44, 0.24, 0.28, PUT2)
     box(GX, GT/2 + 0.06, 1.30, 4.60, 0.20, 2.60, SOK)        # Torlaibung
@@ -886,7 +891,8 @@ def bungalow():
     for i in range(11):
         box(-5.0 + i*1.0, 6.80, FB + 0.06, 0.94, 4.52, 0.04, HOL2 if i % 2 else SOK)
     box( 6.60, 6.60, FB + 0.02, 2.40, 5.00, 0.06, WEG)      # Weg zur Haustuer
-    hecke(-2.00, 9.00, 24.0, 0.70, FB, 0.90, GRUE, 'x')
+    hecke(-4.35, 9.00, 19.3, 0.70, FB, 0.90, GRUE, 'x')
+    hecke( 8.95, 9.00,  2.10, 0.70, FB, 0.90, GRUE, 'x', 2)
     # --- Baukoerper
     box(HX, 0, HW/2, HB, HT, HW, PUTZ)
     box(HX, 0, 0.22, HB + 0.24, HT + 0.24, 0.44, SOK)
@@ -966,10 +972,12 @@ def doppelhaus():
     B, T, HW, FH = 15.0, 9.5, 6.40, 3.40
     YF = T/2                                                 # 4.75
     box(0, 0, FB/2, 22.0, 17.0, FB, RAS)
-    hecke(0, 8.05, 21.0, 0.70, FB, 0.90, GRUE, 'x')
+    hecke(-8.35, 8.05, 4.30, 0.70, FB, 0.90, GRUE, 'x')
+    hecke( 0.00, 8.05, 8.40, 0.70, FB, 0.90, GRUE, 'x')
+    hecke( 8.35, 8.05, 4.30, 0.70, FB, 0.90, GRUE, 'x')
     hecke(0, 6.60, 3.20, 0.60, FB, 1.00, GRUE, 'y')          # Trennhecke der Vorgaerten
     for sx in (-5.20, 5.20):
-        box(sx, 6.60, FB + 0.02, 1.80, 3.60, 0.06, WEG)
+        box(sx, 6.65, FB + 0.02, 1.80, 3.70, 0.06, WEG)
     # --- Baukoerper: beide Haelften getrennt, gemeinsame Mittelwand bei x = 0
     for s, mm in ((-1, PUT1), (1, PUT2)):
         box(s*3.75, 0, HW/2, 7.50, T, HW, mm)
@@ -1084,7 +1092,10 @@ def hinterhof():
     box(0, 9.75, 4.52, 4.20, 4.50, 0.16, WERK)       # Durchfahrtsdecke buendig auf 4.60
     for sy in (8.4, 11.1):
         box(0, sy, 4.34, 0.60, 0.24, 0.18, LICHT)    # Deckenleuchten
-    box(0, 12.30, 3.60, 1.80, 0.14, 0.44, WERK)      # Hausnummernschild
+    # Schild auf den PFEILER, nicht auf die Mittelachse: bei x = 0 haengt es frei
+    # in der Durchfahrt und man laeuft dagegen.
+    for sx in (-1, 1):
+        box(sx*2.95, 12.24, 3.60, 0.90, 0.12, 0.38, WERK)   # Hausnummernschilder
     # --- Seitenfluegel und Rueckhaus
     for sx in (-1, 1):
         box(sx*11.0, -0.25, HW/2, 4.0, 15.5, HW, FAS2)
@@ -1360,7 +1371,13 @@ def garage():
         box(sx*(B/2 - d/2), 0, HW/2, d, T, HW, WAND)
         box(sx*(B/2 - d - 0.03), 0, HW/2, 0.06, T - 2*d, HW, WAN2)   # Innenschale
     box(0, -T/2 + d + 0.03, HW/2, B - 2*d, 0.06, HW, WAN2)
-    box(0, 0, 0.50, B + 0.10, T + 0.10, 1.00, SOK)                   # Aussensockel
+    # Sockel NUR als Band um die Waende: ein voller Quader ueber dem Grundriss
+    # mauert die Toroeffnung zu und hebt den Innenboden auf 1.00 (Stufe in der Tuer).
+    # Mitte = halbe Hoehe, sonst liegt die Unterkante bei -0.005 statt exakt 0.000.
+    box(0, -T/2 + d/2, 0.225, B + 0.10, d + 0.10, 0.45, SOK)
+    for sx in (-1, 1):
+        box(sx*(B/2 - d/2), 0, 0.225, d + 0.10, T + 0.10, 0.45, SOK)
+        box(sx*(TB/2 + (B - TB)/4), T/2 - d/2, 0.225, (B - TB)/2 + 0.10, d + 0.10, 0.45, SOK)
     fensterband(B/2 - d/2, -0.60, 4.20, d, FB + 2.30, 0.85, FEN, GLAS, 3, 'y')
     fensterband(-B/2 + d/2, -0.60, 4.20, d, FB + 2.30, 0.85, FEN, GLAS, 3, 'y')
     fensterband(0, -T/2 + d/2, 3.20, d, FB + 2.30, 0.85, FEN, GLAS, 2, 'x')

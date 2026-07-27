@@ -557,6 +557,36 @@ beides würde über 3,20 m ragen und den fugenlosen Stapel zerstören.
 
 ---
 
+## 1t. Charge 23 — WOHNBAUTEN (`models/th22_*.glb`)
+
+| Datei | Maße (B×T×H) | Modul-Raster / Hinweis |
+|---|---|---|
+| `th22_altbau_modul.glb` | **8,000** × 11,45 × **16,000** | **x += 8,00**, Erker, Stuckbänder, hohe Fenster |
+| `th22_altbau_eck.glb` | 12,50 × 13,02 × 21,50 | Eckhaus mit Turmhaube, Brandwand exakt bei x = −6,000 |
+| `th22_plattenbau_modul.glb` | **12,000** × 14,11 × **15,000** | **x += 12,00**, durchgehende Balkonreihe |
+| `th22_dachterrasse.glb` | **12,000** × 8,00 × 3,15 | Aufsatz für Flachdächer, Pergola, Pflanzen |
+| `th22_villa.glb` | 23,00 × 17,00 × 10,43 | Walmdach, Erker, Garage, Vorgarten |
+| `th22_bungalow.glb` | 25,00 × 19,00 × 4,50 | Terrasse, Carport |
+| `th22_doppelhaus.glb` | 22,00 × 17,00 × 10,74 | 2 Hälften, gemeinsame Wand, 2 Eingänge |
+| `th22_hinterhof.glb` | 29,00 × 27,00 × 14,07 | **begehbar**, Toreinfahrt, Innenhof, Treppenhäuser, Fahrradständer |
+| `th22_balkon_modul.glb` | 3,60 × 2,32 × 3,10 | vorgehängt, zum Anbauen |
+| `th22_garage.glb` | 6,60 × 8,94 × 3,82 | **begehbar**, Kipptor, Werkbank, Regal |
+
+Generator: `tools/assets/mk_th22_wohnen.py`
+Neue Helfer: `walmdach()` (echtes Mesh — vier gekippte Platten lassen an den Graten
+Schlitze), `satteldach_x()` (First in x, für Reihen- und Doppelhäuser), `giebel_quer()`
+(Giebel über Objektrotation, weil ein von Hand gespiegeltes Mesh die Normalen umdreht)
+und `dachrand()`.
+
+> ⚠️ **Attika als Vollplatte macht jedes Flachdach zu einem weissen Klotz** — sie deckt
+> die dunkle Dachhaut zu. `dachrand()` legt nur einen Ring. Betraf hier vier Modelle.
+
+> ⚠️ **Anbauteile sprengen das Modulraster.** Portallampen machten das Altbau-Modul
+> 8,17 statt 8,00 m breit, Schornsteine 16,55 statt 16,00 m hoch, ein Handlauf die
+> Dachterrasse 12,06 statt 12,00. Bei Modulen nach jedem Detail neu messen.
+
+---
+
 ## 2. Texturen (`textures/th5/*.png`)
 
 512×512, **nahtlos kachelbar** (Wrap-Arithmetik, verifiziert per 2×2-Kachel-Kontaktbogen).
@@ -660,6 +690,7 @@ python3 tools/assets/mk_th19_baeder.py    # Baeder und Sporthallen -> models/th1
 python3 tools/assets/mk_th24_zoo.py       # Zoo und Tierpark -> models/th24_*.glb
 python3 tools/assets/mk_th23_oeffentlich.py # Publikumsbauten -> models/th23_*.glb
 python3 tools/assets/mk_th21_baustelle.py # Baustelle -> models/th21_*.glb
+python3 tools/assets/mk_th22_wohnen.py    # Wohnbauten -> models/th22_*.glb
 ```
 
 Beide brauchen nur **bpy 5.x + numpy** (im Container vorhanden, kein Blender-Binary nötig,
