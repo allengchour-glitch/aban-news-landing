@@ -139,6 +139,12 @@
       reconns++;
       var backoff = Math.min(6000, 600 * Math.pow(1.7, reconns - 1)); // 600ms .. 6s
       if (isHost) {
+        /* 🩹 Schwarm-P0: BEIDE Kanäle schliessen — sonst bleiben die Kanäle beim Gast offen, der Host
+           spammt weiter über fast (füttert den Gast-Watchdog) und der Gast merkt den Abriss NIE →
+           Koop-Session stirbt endgültig, sobald der Host aufgibt. */
+        try { if (main) main.close(); } catch (e) {}
+        try { if (fast) fast.close(); } catch (e) {}
+        fast = null;
         main = null; // peer.on("connection") nimmt den Gast wieder an
         rt = setTimeout(function () { if (S.status === "lost") lost(); }, backoff + 9000);
       } else {
