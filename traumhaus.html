@@ -107,6 +107,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 </div>
 <div id="netBadge">🌐 verbunden</div>
 <button id="modeBtn">🔨 Bauen</button>
+<button id="kircheBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;cursor:pointer;color:#fff;background:linear-gradient(90deg,#e07ac0,#b04a90)">💒 Kirchlich heiraten · 800 $</button>
 <button id="werkBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;cursor:pointer;color:#fff;background:linear-gradient(90deg,#4a7ad0,#2a5aa0)">🔧 Auto umlackieren · 250 $</button>
 <button id="markthalleBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;cursor:pointer;color:#2a3a10;background:linear-gradient(90deg,#8fd86a,#5aba3a)">🥕 Ernte verkaufen</button>
 <button id="shopBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;cursor:pointer;color:#3a2a10;background:linear-gradient(90deg,#ffd166,#ffb04a)">🛒 Einkaufen · 60 $</button>
@@ -3044,7 +3045,9 @@ function updCrime(dt){
     var w9=document.getElementById("werkBtn"); /* Werkstatt (-62,50): umlackieren gegen Fahndung */
     if(w9)w9.style.display=(an&&fahren&&Math.abs(p9.x+62)<6.8&&Math.abs(p9.z-50)<5.8)?"block":"none";
     var m9=document.getElementById("markthalleBtn"); /* Markthalle (-62,30): Ernte zu Marktpreisen */
-    if(m9)m9.style.display=(an&&!fahren&&Math.abs(p9.x+62)<7.9&&Math.abs(p9.z-30)<11.9&&(stats.ernten||0)>0)?"block":"none";})();
+    if(m9)m9.style.display=(an&&!fahren&&Math.abs(p9.x+62)<7.9&&Math.abs(p9.z-30)<11.9&&(stats.ernten||0)>0)?"block":"none";
+    var k9=document.getElementById("kircheBtn"); /* Kathedrale (-58,-62): kirchlich heiraten */
+    if(k9)k9.style.display=(an&&!fahren&&Math.abs(p9.x+58)<13&&Math.abs(p9.z+62)<7&&verlobt&&!verheiratet&&(!MPs||mpHost))?"block":"none";})();
   if(!crime.on)return;
   crime.t-=dt;
   if(crime.t<=0)finishCrime();}
@@ -3905,6 +3908,16 @@ document.getElementById("zoomIn").onclick=function(){camRT=Math.max(7,camRT*0.8)
 document.getElementById("zoomOut").onclick=function(){camRT=Math.min(135,camRT*1.25);followSim=null;if(egoMode)egoToggle();};
 document.getElementById("egoBtn").onclick=function(){egoToggle();};
 document.getElementById("villaBtn").onclick=function(){stampVilla();};
+document.getElementById("kircheBtn").onclick=function(){ /* 💒 Traumhochzeit in der Kathedrale */
+  if(!verlobt){hint("💎 Erst verloben — dann heiraten!");return;}
+  if(verheiratet){hint("💍 Ihr seid schon verheiratet!");return;}
+  if(geld<800){hint("💰 Die Traumhochzeit kostet 800 $");return;}
+  geld-=800;geldSend();
+  loveEvent("hochzeit");                                /* setzt verheiratet + Feier-Effekte + Koop-Sync */
+  hint("💒 Kirchliche Traumhochzeit in der Kathedrale! 🔔");
+  for(var _gl=0;_gl<8;_gl++)setTimeout(function(){hearts(-58+(Math.random()-0.5)*8,-62+(Math.random()-0.5)*10);},_gl*380);
+  [523,659,784,1046,784,1046].forEach(function(fq,i){setTimeout(function(){beep(fq,.3,"triangle",.07);},i*300);}); /* Glocken */
+  updHUD();};
 document.getElementById("werkBtn").onclick=function(){ /* 🔧 Werkstatt: Umlackieren loescht die Fahndung */
   if(!fahren){hint("🚗 Fahr mit dem Auto in die Werkstatt!");return;}
   if(geld<250){hint("💰 Umlackieren kostet 250 $");return;}
