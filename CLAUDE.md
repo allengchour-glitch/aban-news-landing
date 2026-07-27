@@ -609,3 +609,18 @@ Such-Skripte `dropship/cj_*_search.mjs`, Bilder IMMER HTTP-200 vorprüfen + nach
 create-product (ACTIVE), publishablePublish in alle 6 Publications (IDs im Runbook), Tags inkl.
 gender/kategorie passend zu Smart-Collection-Regeln. **IMMER erst CJ-IMPORT-LOG lesen vor dem Anlegen
 (Doppel-Import-Falle!).** Archiv-Rest löschen (~4.700, Admin-Bulk) weiter offen. Siehe Runbook §8–§10 + Log.
+
+## 🧹 Polish-Session 2026-07-26 (User «pollier alles») — Lehren
+- **Kollektions-Kuratierung IMMER DRY-FIRST (teuer bestätigt):** «Projektor|Beamer» in einer off-theme-Regex
+  für `beleuchtung-lampen` warf auch **Ambient-Licht** raus (Sternenhimmel-/Stimmungslicht-/Sunset-Projektoren
+  = echte Deko-Beleuchtung!) — nur WLAN-HD-**Video**-Beamer gehören nicht rein. Fix-Regel: Ambient-Licht
+  (Projektor+Stimmungslicht/Sternenhimmel/Nachtlicht) BEHALTEN, nur Video-Beamer/Gaming/Nagellampen/Masken raus.
+  Zusätzlich «Sternenhimmel» allein trifft Katzenbett/Uhr/Hoodie/Nägel/Halskette → Lighting-Noun (Projektor/
+  Stimmungslicht/Lampe) verlangen + Nicht-Licht-Nomen ausschliessen. Tools: `collection_curate_erste_august.mjs`.
+- **1.-August-Kollektion (`erste-august`) entrümpelt:** 52 off-theme Produkte (Trachten=bayrisch, Waggis=Basler
+  Fasnacht, Nikolaus=Weihnacht, Zimmermädchen) hatten fälschlich Tag `schweiz-edition` → entfernt (bleiben im Shop).
+- **Dedup-Realität (wichtig für künftige Sessions):** 850 Produkte teilen sich Titel (367 Gruppen), ABER
+  **0 haben ein bild-identisches Hauptbild** — CJ lädt dasselbe Bild pro Listing unter NEUER CDN-URL hoch →
+  `imgKey`-Dedup (dup_title_fix Regel 1) greift NICHT mehr. Titel-only-Draften ist UNSICHER (viele sind echte
+  Kostüm-Grössen/Farb-Varianten). NICHT blind massenhaft draften. `dup_title_fix.mjs`-«2418 Gruppen» war Fehl-
+  messung (stale SRC) — Ground Truth via `sort|uniq -d` = 367 Gruppen/850 Produkte.
