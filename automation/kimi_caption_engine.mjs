@@ -49,7 +49,8 @@ while(made<MAX){
       const c=await kimi(SYS, `Produkt: "${n.title}". Vorteil: Blitzversand aus der Schweiz, Kauf auf Rechnung. Schreibe NUR die Caption, beginne direkt mit dem Text.`, {max_tokens:280,timeout:30000});
       if(c===null){ nulls++; break; }
       nulls=0;
-      if(c.includes('#')){ cap=c; break; }
+      const metaLeak=/\b(the user|der user|we need|i need|caption for|social media caption|sentences with|hochdeutsch|want(s)? (a|me)|let'?s craft|begin directly|advantages?\b)\b/i.test(c);
+      if(c.includes('#') && !metaLeak && c.split('#').length>=4){ cap=c; break; }
     }
     if(nulls>=3){ console.log('### Kimi 3x null → Guthaben leer. STOPP. gemacht='+made); break outer; }
     if(!cap) continue;
