@@ -422,6 +422,37 @@ Schanzkleid als gedrehte Balken entlang der Kante.
 
 ---
 
+## 1o. Charge 18 — BAUERNHOF UND STADTRAND (`models/th18_*.glb`)
+
+| Datei | Maße (B×T×H) | Hinweis |
+|---|---|---|
+| `th18_scheune.glb` | 20,40 × 27,20 × 12,05 | **begehbar**, breites Tor, Heuboden mit freiem Gang, Balkenwerk |
+| `th18_stall.glb` | 18,00 × 14,22 × 7,61 | **begehbar**, Boxen, Futtertrog, Vordach |
+| `th18_gewaechshaus.glb` | 11,00 × 17,00 × 7,37 | **begehbar**, Tonnendach, Glas mit Alpha 0,34, Pflanztische |
+| `th18_silo.glb` | 6,70 × 7,82 × 14,27 | Kegeldach, Aussenleiter, Wartungstür, Auslauftrichter |
+| `th18_traktor.glb` | 2,66 × 5,32 × 3,26 | grosse Hinterräder, Kabine, Frontgewichte |
+| `th18_anhaenger.glb` | 2,51 × 6,36 × 2,55 | Kipper mit Bordwänden und Deichsel |
+| `th18_heuballen.glb` | 5,23 × 2,98 × 1,92 | 3 Rundballen als Gruppe |
+| `th18_zaun_modul.glb` | **4,00** × 0,27 × 1,46 | **x += 4,00**, Pfostenraster 2,0 — keine Doppelpfosten an der Fuge |
+| `th18_feld_modul.glb` | **10,00 × 10,00** × 0,44 | **kachelbar in x UND y**, Furchenraster 0,50 |
+| `th18_windrad.glb` | 14,44 × 5,44 × 28,60 | 3 Rotorblätter, Gondel |
+| `th18_wassertank.glb` | 3,29 × 3,46 × 6,04 | Holzgestell, Leiter, Zapfhahn, Tränketrog |
+
+Generator: `tools/assets/mk_th18_bauernhof.py`
+Neue Helfer: `tonne_y()` (Tonnendach mit Fassachse in **y** — `tonne()` liegt in x),
+`satteldach()` (Traufe exakt auf z0, Neigung per `atan2` statt geschätzt), dazu
+`strebe_xz/_yz/_xy`, `ring()`, `leiter()`, `pflanze()`.
+
+> ⚠️ **`kegel(vertices=4)` legt die Ecken auf die Achsen, nicht die Flächen.** Ein
+> Pfostenkopf ragte dadurch 4 cm über das Raster und machte das Zaunmodul 4,08 statt
+> 4,00 m breit — also unbrauchbar zum Reihen. Für achsparallele Pyramidenstümpfe
+> lieber zwei Quader nehmen.
+
+> ⚠️ **Erde und andere dunkle Materialien rendern in three.js deutlich heller als der
+> Blender-Wert.** Das Ackerfeld musste dreimal nachgedunkelt werden.
+
+---
+
 ## 2. Texturen (`textures/th5/*.png`)
 
 512×512, **nahtlos kachelbar** (Wrap-Arithmetik, verifiziert per 2×2-Kachel-Kontaktbogen).
@@ -520,6 +551,7 @@ python3 tools/assets/mk_th15_texturen.py  # Naturtexturen -> textures/th15/*.png
 python3 tools/assets/mk_th16_park.py      # Park und Spielplatz -> models/th16_*.glb
 python3 tools/assets/mk_th17_bahn.py      # Bahn und Tram -> models/th17_*.glb
 python3 tools/assets/mk_th15_hafen.py     # Hafen und Wasser -> models/th15_*.glb
+python3 tools/assets/mk_th18_bauernhof.py # Bauernhof -> models/th18_*.glb
 ```
 
 Beide brauchen nur **bpy 5.x + numpy** (im Container vorhanden, kein Blender-Binary nötig,
