@@ -503,6 +503,29 @@ Neue Helfer: `fels()` (gekippter Kegelstumpf), `gitterwand()`, `baumstamm()`.
 
 ---
 
+## 1r. Charge 21 — ÖFFENTLICHE PUBLIKUMSBAUTEN (`models/th23_*.glb`)
+
+Alle sechs begehbar, Masse zur 1,8-m-Figur geprüft (Theken 1,10, Sitze 0,45, Tische 0,75).
+
+| Datei | Maße (B×T×H) | Innenleben |
+|---|---|---|
+| `th23_post.glb` | 30,5 × 24,9 × 6,1 | 5 Schalter, Paketannahme, Schliessfachwand, Wartebereich, Automaten |
+| `th23_bank.glb` | 33,0 × 25,9 × 7,2 | Kassenhalle, Beratungskabinen, Geldautomaten-Nische, Marmorboden |
+| `th23_polizeiwache.glb` | 28,5 × 22,5 × 5,8 | Empfangstheke, Wartebank, Büroreihe hinter Glas, blaues Fassadenband |
+| `th23_gericht.glb` | 43,0 × 37,7 × 13,4 | Portikus, Freitreppe, Foyer mit Bänken, Saal mit Richterbank und Zuschauerbänken |
+| `th23_arztpraxis.glb` | 24,0 × 19,7 × 5,1 | Empfang, Wartezimmer, 3 Behandlungsräume, heller Flur |
+| `th23_apotheke.glb` | 18,0 × 15,5 × 4,8 | Sichttresen als echte Vitrine, Schubladenwand, Kordel, Leuchtkreuz |
+
+Generator: `tools/assets/mk_th23_oeffentlich.py`
+
+> ⚠️ **Der Glas-Fallstrick gilt auch für Möbel.** Beim Apotheken-Sichttresen sass die
+> Scheibe 3 cm hinter der Tresenfront und die Auslage steckte im massiven Korpus — von
+> aussen ein blinder Klotz. Und ein `regal()` als Vollkorpus lässt die Ware unsichtbar
+> im Block verschwinden: Regale gehören offen gebaut (Rückwand + Wangen + Deckel + Böden),
+> mit so gerechnetem Bodenabstand, dass die oberste Warenreihe unter dem Deckel bleibt.
+
+---
+
 ## 2. Texturen (`textures/th5/*.png`)
 
 512×512, **nahtlos kachelbar** (Wrap-Arithmetik, verifiziert per 2×2-Kachel-Kontaktbogen).
@@ -604,6 +627,7 @@ python3 tools/assets/mk_th15_hafen.py     # Hafen und Wasser -> models/th15_*.gl
 python3 tools/assets/mk_th18_bauernhof.py # Bauernhof -> models/th18_*.glb
 python3 tools/assets/mk_th19_baeder.py    # Baeder und Sporthallen -> models/th19_*.glb
 python3 tools/assets/mk_th24_zoo.py       # Zoo und Tierpark -> models/th24_*.glb
+python3 tools/assets/mk_th23_oeffentlich.py # Publikumsbauten -> models/th23_*.glb
 ```
 
 Beide brauchen nur **bpy 5.x + numpy** (im Container vorhanden, kein Blender-Binary nötig,
