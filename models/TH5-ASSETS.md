@@ -38,6 +38,69 @@ Sitzhöhe der Bank für NPC-Posen: **0,45** (Schwarm-Befund „NPC steckt in der
 
 ---
 
+## 1b. Charge 2 — Riesenstadt (`models/th6_*.glb`)
+
+Verkehr, Stadtmobiliar und Grün. Gleiche Konventionen (y=0, Meter, +z Schauseite),
+alle mit **Bevel + Auto-Smooth** — keine harten Kanten.
+
+| Datei | Was | Maße (B×T×H) | Hinweis |
+|---|---|---|---|
+| `th6_ampel.glb` | Ampel mit 3 Linsen + Blenden | 0,5 × 0,5 × 4,5 | Linsen auf −z, rote Linse emissiv |
+| `th6_schild_stop.glb` | Stopschild achteckig | 0,85 × 0,1 × 2,4 | Schildfläche auf −z |
+| `th6_hydrant.glb` | Hydrant mit Abgängen | 0,45 × 0,45 × 1,0 | |
+| `th6_pylonen.glb` | 3 Leitkegel in Reihe | 2,0 × 0,45 × 0,7 | Baustellen/Sperrung |
+| `th6_litfasssaeule.glb` | Litfaßsäule mit Dach | ⌀ 1,3 × 2,9 | Plakatfläche umlaufend |
+| `th6_papierkorb.glb` | Abfallkorb am Pfosten | 0,45 × 0,45 × 0,95 | |
+| `th6_blumenkuebel.glb` | Kübel mit Blüten | ⌀ 0,95 × 0,9 | 2 Blütenfarben |
+| `th6_stromkasten.glb` | Verteilerkasten | 0,95 × 0,55 × 1,3 | Tür auf −z |
+| `th6_muellcontainer.glb` | Container auf Rollen | 1,4 × 0,95 × 1,25 | |
+| `th6_kiosk.glb` | Zeitungskiosk | 2,9 × 2,3 × 2,8 | Verkaufsfenster + Auslage auf −z |
+| `th6_billboard.glb` | Werbetafel mit Strahlern | 4,3 × 0,5 × 4,6 | Plakatfläche auf −z, frei bespielbar |
+| `th6_fichte.glb` | Nadelbaum, 4 Etagen | ⌀ 2,7 × 4,8 | Kontrast zu den Laubbäumen |
+| `th6_hecke_modul.glb` | Heckenstück, aneinanderreihbar | 2,4 × 0,7 × 1,25 | **modular**: Abstand 2,4 = fugenlos |
+| `th6_brunnen_trog.glb` | Wandbrunnen mit Trog | 2,2 × 0,9 × 1,3 | Wasserfläche y≈0,52 |
+
+Generator: `tools/assets/mk_th6_stadt.py`
+
+### Modular bauen
+`th6_hecke_modul` im Raster **2,4** aneinanderreihen → durchgehende Hecke ohne Fuge.
+`th6_pylonen` und `th6_poller` (th5) eignen sich als Absperr-Bausteine.
+
+---
+
+## 1c. Charge 3 — MODULARE Gebäude + Fahrzeuge (`models/th7_*.glb`)
+
+Mit diesen Modulen baut man **ganze Viertel aus wenigen Teilen**. Modultest gerendert:
+gestapelt/aneinandergereiht entstehen fugenlose Türme und Zeilen.
+
+| Datei | Was | Maße (B×T×H) | Modul-Raster |
+|---|---|---|---|
+| `th7_hochhaus_modul.glb` | Turm-Segment, Fensterbänder + Gesimse | 8,2 × 8,2 × **6,0** | **stapeln: y += 6** |
+| `th7_hochhaus_dach.glb` | Turmabschluss: Attika, Technik, Antenne | 8,3 × 8,3 × 3,6 | oben aufsetzen |
+| `th7_reihenhaus_modul.glb` | Stadthaus mit Satteldach + Haustür | **6,0** × 7,5 × 8,2 | **reihen: x += 6** |
+| `th7_parkhaus.glb` | 3 offene Decks, Stützen, Rampe | 16,2 × 11,2 × 9,8 | frei |
+| `th7_lagerhalle.glb` | Tonnendach, 2 Rolltore, Laderampe | 20,4 × 12,4 × 9,0 | frei |
+| `th7_bruecke_modul.glb` | Straßenbrücke mit Brüstung + Pfeilern | **14,0** × 9,0 × 5,1 | **reihen: x += 14** |
+| `th7_lieferwagen.glb` | Transporter (parkend) | 2,2 × 4,6 × 2,5 | Front auf −z |
+| `th7_lkw.glb` | Sattelzug (parkend) | 2,5 × 10,5 × 3,7 | Front auf −z |
+| `th7_taxi.glb` | Taxi mit Dachschild | 1,9 × 4,3 × 1,7 | Front auf −z |
+| `th7_denkmal.glb` | Denkmal auf Stufensockel | 3,0 × 3,0 × 5,3 | Platzmitte |
+
+Generator: `tools/assets/mk_th7_gebaeude.py`
+
+### So baut man einen Turm
+```js
+for (var e = 0; e < 5; e++) bau("th7_hochhaus_modul.glb", 6.0, x, e*6, z, 0, false);
+bau("th7_hochhaus_dach.glb", 3.6, x, 30, z, 0, false);   // 5*6 = 30
+```
+### So baut man eine Zeile
+```js
+for (var i = 0; i < 6; i++) bau("th7_reihenhaus_modul.glb", 8.2, x0 + i*6, 0, z, rot, false);
+```
+Fassaden-Texturen aus `textures/th6/` (`glasfassade`, `betonfassade`) passen maßstäblich dazu.
+
+---
+
 ## 2. Texturen (`textures/th5/*.png`)
 
 512×512, **nahtlos kachelbar** (Wrap-Arithmetik, verifiziert per 2×2-Kachel-Kontaktbogen).
@@ -58,6 +121,24 @@ Sitzhöhe der Bank für NPC-Posen: **0,45** (Schwarm-Befund „NPC steckt in der
 ladeTex("textures/th5/kopfstein.png", 8, 8, function(t){ mat.map = t; mat.needsUpdate = true; });
 ```
 
+### Charge 2 — Riesenstadt (`textures/th6/*.png`)
+
+| Datei | Motiv | Empfohlenes `repeat` | Wofür |
+|---|---|---|---|
+| `glasfassade.png` | Glasraster, Scheiben getönt | 1 pro 3 Etagen | **Downtown-Hochhäuser** |
+| `betonfassade.png` | Beton mit Fensterraster + Sims | 1 pro 3 Etagen | Wohnblöcke, Bürobauten |
+| `asphalt.png` | Feine Fahrbahnkörnung | 8–14 pro 20 m | Straßen, Parkplätze |
+| `dachpappe.png` | Bahnen mit Kanten | 3–6 | Flachdächer |
+| `marmor.png` | Adern, hell | 1–2 | Rathaus, Foyers, Denkmäler |
+| `metallgitter.png` | Feines Gitter | 4–8 | Zäune, Roste, Geländer |
+| `acker.png` | Furchen | 4–8 | Bauernhof, Felder |
+| `sand.png` | Wellen | 6–12 | Strand, Seeufer, Spielplatz |
+
+Generator: `tools/assets/mk_th6_texturen.py`
+
+**Fassaden-Tipp:** `glasfassade`/`betonfassade` mit `repeat.set(1, etagen/3)` auf die
+Turmkörper legen — dann sitzt das Fensterraster maßstäblich, ohne Geometrie zu ändern.
+
 ---
 
 ## 3. Nachschub produzieren
@@ -67,6 +148,9 @@ Die Generatoren liegen in `tools/assets/`:
 ```bash
 python3 tools/assets/mk_th5_modelle.py    # Modelle -> models/th5_*.glb + models/stl/
 python3 tools/assets/mk_th5_texturen.py   # Texturen -> textures/th5/*.png
+python3 tools/assets/mk_th6_stadt.py      # Riesenstadt-Modelle -> models/th6_*.glb
+python3 tools/assets/mk_th6_texturen.py   # Fassaden/Belaege -> textures/th6/*.png
+python3 tools/assets/mk_th7_gebaeude.py   # modulare Gebaeude+Fahrzeuge -> models/th7_*.glb
 ```
 
 Beide brauchen nur **bpy 5.x + numpy** (im Container vorhanden, kein Blender-Binary nötig,
