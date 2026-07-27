@@ -107,6 +107,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 </div>
 <div id="netBadge">🌐 verbunden</div>
 <button id="modeBtn">🔨 Bauen</button>
+<button id="villaBtn" style="display:none;position:fixed;left:10px;bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:10px 16px;font-weight:900;cursor:pointer;color:#fff;background:linear-gradient(90deg,#8a5ad0,#5a7ae0)">🏰 Villa-Vorlage · 3500 $</button>
 <button id="buskBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(66px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;font-size:.95rem;cursor:pointer;color:#5a3a10;background:linear-gradient(90deg,#ffd166,#ffb84a);box-shadow:0 8px 24px rgba(200,140,40,.4)">🎸 Straßenmusik machen</button>
 <button id="growBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(122px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;font-size:.95rem;cursor:pointer;color:#d8ffd8;background:linear-gradient(90deg,#1a4a2a,#3a6a3a);box-shadow:0 8px 24px rgba(30,80,40,.5)">🌿 Ernte verkaufen (riskant)</button>
 <button id="crimeBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:13px 22px;font-weight:900;font-size:1rem;cursor:pointer;color:#ffe;background:linear-gradient(90deg,#2a2a3e,#5a3a6e);box-shadow:0 8px 24px rgba(40,20,60,.5)">🕶️ Krummes Ding drehen …</button>
@@ -128,6 +129,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
   <button class="tbtn" id="piDance" title="Tanz vorschlagen">💃</button>
 </div>
 <div id="zoomBtns" style="position:fixed;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:14;display:none;flex-direction:column;gap:8px">
+  <button class="tbtn" id="egoBtn" title="Ego-Perspektive (wie GTA)">👁️</button>
   <button class="tbtn" id="zoomIn" title="Näher">➕</button>
   <button class="tbtn" id="zoomOut" title="Weiter weg">➖</button>
 </div>
@@ -294,7 +296,16 @@ var hemi=new THREE.HemisphereLight(0xdfeeff,0x6a8a58,0.42);scene.add(hemi);
 var nachtLampen=[];(function(){
   var RXl=RX+2,SZl=GH*CS/2+12; // an Quer-/Hauptstrassen (skaliert mit der Map)
   var pts=[[-40,SZl],[0,SZl],[40,SZl],[-40,-SZl],[40,-SZl],[RXl,-20],[RXl,20],[-RXl,0],[30,70],[-4,70],[0,-40]]; // + Marktplatz, Ladenzeile, Brunnen-Park
-  pts.forEach(function(p){var L=new THREE.PointLight(0xffb257,0,26,2);L.position.set(p[0],6,p[1]);L.intensity=0;scene.add(L);nachtLampen.push(L);});
+  pts.forEach(function(p){var L=new THREE.PointLight(0xffb257,0,30,2);L.position.set(p[0],5.4,p[1]);L.intensity=0;scene.add(L);nachtLampen.push(L);
+    /* 🏛️ Kandelaber (User: „Strassenlampe grösser, Strasse besser beleuchten") — sichtbarer Doppelarm-Mast am Lichtpunkt */
+    var kg=new THREE.Group();
+    var fu=new THREE.Mesh(new THREE.CylinderGeometry(0.22,0.3,0.5,8),new THREE.MeshStandardMaterial({color:0x2c343c,roughness:0.6}));fu.position.y=0.25;kg.add(fu);
+    var ma=new THREE.Mesh(new THREE.CylinderGeometry(0.09,0.13,5.0,8),new THREE.MeshStandardMaterial({color:0x2c343c,roughness:0.55}));ma.position.y=2.75;kg.add(ma);
+    var qa=new THREE.Mesh(new THREE.BoxGeometry(2.6,0.09,0.09),new THREE.MeshStandardMaterial({color:0x2c343c,roughness:0.55}));qa.position.y=5.15;kg.add(qa);
+    L._heads=[];[-1.15,1.15].forEach(function(ax){var ko=new THREE.Mesh(new THREE.SphereGeometry(0.2,10,8),
+      new THREE.MeshStandardMaterial({color:0xffe9c0,emissive:0xffc870,emissiveIntensity:0,roughness:0.3}));
+      ko.position.set(ax,5.35,0);kg.add(ko);L._heads.push(ko.material);});
+    kg.position.set(p[0],0,p[1]);kg.rotation.y=(Math.abs(p[0])>Math.abs(p[1]))?Math.PI/2:0;scene.add(kg);});
 })();
 var sun=new THREE.DirectionalLight(0xfff0d0,1.12);sun.position.set(26,38,18);scene.add(sun);
 sun.castShadow=true;sun.shadow.mapSize.set(IS_TOUCH?1024:2048,IS_TOUCH?1024:2048);sun.shadow.bias=-0.0006;
@@ -1358,7 +1369,7 @@ var dorfFenster=[];
   // ---- Laternen-Reihen (Glow-Pool statt PointLight: billig) ----
   (function laternenReihen(){
     var gcv=document.createElement("canvas");gcv.width=gcv.height=64;var gc=gcv.getContext("2d");
-    var gg=gc.createRadialGradient(32,32,2,32,32,31);gg.addColorStop(0,"rgba(255,214,140,0.9)");gg.addColorStop(1,"rgba(255,214,140,0)");
+    var gg=gc.createRadialGradient(32,32,2,32,32,31);gg.addColorStop(0,"rgba(255,214,140,0.9)");gg.addColorStop(0.55,"rgba(255,214,140,0.32)");gg.addColorStop(1,"rgba(255,214,140,0)"); /* 💡 weicher Rand */
     gc.fillStyle=gg;gc.fillRect(0,0,64,64);
     var glowTex=new THREE.CanvasTexture(gcv);
     window._lampGlows=[];
@@ -2021,7 +2032,7 @@ var KATALOG={
   {id:"holzbank",n:"⭐ Holzbank",e:"🪑",cost:220,size:[2,1],norm:1,zielH:0.85,use:{need:"spass",pose:"sit",off:[0,0],dur:6}},
   {id:"gazanie",n:"⭐ Gazanie",e:"🌼",cost:120,size:[1,1],norm:1,zielH:0.25},
   {id:"holzkiste",n:"⭐ Holzkiste",e:"📦",cost:90,size:[1,1],norm:1,zielH:0.5},
-  {id:"strassenlaterne",n:"⭐ Straßenlaterne",e:"🚦",cost:380,size:[1,1],norm:1,zielH:3.5,light:1}]
+  {id:"strassenlaterne",n:"⭐ Kandelaber (Straße)",e:"🚦",cost:380,size:[1,1],norm:1,zielH:4.6,light:2}] /* 💡 grösser + hellere Strasse; kleine Garten-Laterne = Gehweg */
 };
 var CATS=[["alle","🧰 Alles"],["bau","🧱 Bauen"],["moebel","🛋️ Wohnen"],["kueche","🍳 Küche"],["bad","🛁 Bad"],["buero","🖥️ Büro"],["garten","🌳 Garten"],["deko","🪴 Deko"]];
 function defOf(id){for(var k in KATALOG){var l=KATALOG[k];for(var i=0;i<l.length;i++)if(l[i].id===id)return l[i];}return null;}
@@ -2254,7 +2265,7 @@ function applyFurn(id,gx,gy,rot,fid){
       c7.font="44px sans-serif";c7.textAlign="center";c7.fillText(rec.lv>2?"⭐⭐":"⭐",64,48);
       var sp7=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv7),transparent:true,depthWrite:false}));
       sp7.scale.set(1.1,0.55,1);sp7.position.y=1.6;m.add(sp7);}
-    if(def.light){var pl=new THREE.PointLight(0xffe0b0,0,7);pl.position.set(cx(gx),1.7,cz(gy));scene.add(pl);rec.plight=pl;}
+    if(def.light){var pl=new THREE.PointLight(0xffe0b0,0,def.light===2?13:7,2);pl.position.set(cx(gx),def.light===2?4.2:1.7,cz(gy));scene.add(pl);rec.plight=pl;} /* 💡 Kandelaber leuchtet hoch+weit, weicher Rand (decay 2) */
   });}
 function removeFurnAt(gx,gy,ohneGeld){
   for(var i=furn.length-1;i>=0;i--){var f=furn[i];
@@ -3426,9 +3437,28 @@ function updSim(s,si,dt,now){
 
 // ===================== Kamera (Orbit) =====================
 var camA=0.8,camB=0.72,camR=22,camRT=22,camTx=0,camTz=0,followSim=null;var camAT=null; // camRT = Ziel-Zoom (weiches Easing)
+var egoMode=false; /* 👁️ User: „Egoperspektive … man kann immer wechseln wie GTA" */
 function updCam(){
+  if(egoMode&&!buildMode){
+    var _ex,_ez,_ey,_yaw;
+    if(fahren&&(driveCar||window.autoRec)){var _a9=(driveCar||window.autoRec).mesh; /* 🚗 Cockpit */
+      _yaw=carRot;_ex=_a9.position.x+Math.sin(_yaw)*0.35;_ez=_a9.position.z+Math.cos(_yaw)*0.35;_ey=_a9.position.y+1.55;}
+    else{var _me=followSim||sims[meinSi()]||sims[0];if(!_me){egoMode=false;return;}
+      _yaw=Math.PI+camA; /* Blick = Kamera-Yaw → Steuerung bleibt „läuft wohin du schaust" */
+      _ex=_me.x;_ez=_me.z;_ey=1.42;
+      if(_me.mesh&&_me.mesh.visible)_me.mesh.visible=false; /* eigenen Körper ausblenden (sonst Blick in den Kopf) */}
+    var _pit=(0.8-camB)*0.9;
+    camera.position.set(_ex,_ey,_ez);
+    camera.lookAt(_ex+Math.sin(_yaw)*Math.cos(_pit),_ey+Math.sin(_pit),_ez+Math.cos(_yaw)*Math.cos(_pit));
+    return;}
   camera.position.set(camTx+Math.sin(camA)*Math.cos(camB)*camR,Math.sin(camB)*camR+2,camTz+Math.cos(camA)*Math.cos(camB)*camR);
   camera.lookAt(camTx,0.6,camTz);}
+function egoToggle(){
+  egoMode=!egoMode;
+  var _me=sims[meinSi()]||sims[0];
+  if(egoMode){if(!followSim&&_me)followSim=_me;hint("👁️ Ego-Modus — nochmal tippen für Übersicht");}
+  else{if(_me&&_me.mesh)_me.mesh.visible=true;if(followSim&&followSim.mesh)followSim.mesh.visible=true;camB=0.72;camRT=Math.max(camRT,13);hint("🎥 Übersicht");}
+  updCam();}
 updCam();
 // ---- Direkte Steuerung: Joystick + WASD ----
 var steer={x:0,z:0},steerKeys={},steerNetT=0,steerWasActive=false,shiftHeld=false,joyEdge=false;
@@ -3484,7 +3514,8 @@ function steerMove(s9,sv,dt,sprint){
 // Folge-Kamera: beim aktiven Steuern schneller + leicht vorausschauend (fühlt sich flott an)
 function updFollow(dt){
   if(!followSim)return;
-  if(followSim.state==="work"){followSim=null;return;}
+  if(followSim.state==="work"){followSim=null;if(egoMode)egoToggle();return;}
+  if(egoMode){updCam();return;} /* 👁️ Ego: Kamera klebt direkt am Kopf */
   var st=followSim.state==="steer",fr=st?6.5:4,ld=st?2.2:0;
   var tx=followSim.x+Math.sin(followSim.rot||0)*ld,tz=followSim.z+Math.cos(followSim.rot||0)*ld;
   camTx+=(tx-camTx)*Math.min(1,dt*fr);camTz+=(tz-camTz)*Math.min(1,dt*fr);updCam();}
@@ -3657,7 +3688,9 @@ function tapAt(px,py){
   geldSend();
   updHUD();beep(660,.06,"triangle",.04);}
 document.getElementById("zoomIn").onclick=function(){camRT=Math.max(7,camRT*0.8);};
-document.getElementById("zoomOut").onclick=function(){camRT=Math.min(135,camRT*1.25);followSim=null;};
+document.getElementById("zoomOut").onclick=function(){camRT=Math.min(135,camRT*1.25);followSim=null;if(egoMode)egoToggle();};
+document.getElementById("egoBtn").onclick=function(){egoToggle();};
+document.getElementById("villaBtn").onclick=function(){stampVilla();};
 // ---- Mini-Game: Timing-Bar (3 Runden, Ergebnis 0..1) ----
 var MG={on:false,pos:0,dir:1,speed:1.6,round:0,scores:[],cb:null,raf:0};
 function mgDraw(){
@@ -4090,10 +4123,35 @@ document.getElementById("micBtn").onclick=function(){
 
 // ===================== Hauptschleife =====================
 var last=performance.now(),simTick=0,saveTick=0,netTick=0;
+/* 🏰 Villa-Vorlage (User: „Vorlage für grosses Haus … riesige Villa wo man auch rein gehen kann") —
+   fertiger 20x14-Bauplan: 7 Zimmer, Türen/Fenster, voll möbliert. Ein Tipp stempelt sie auf freie Fläche. */
+var VILLA={"name":"Riesen-Villa","w":20,"h":14,"floors":[[0,0,0],[0,1,0],[0,2,0],[0,3,0],[0,4,0],[0,5,0],[1,0,0],[1,1,0],[1,2,0],[1,3,0],[1,4,0],[1,5,0],[2,0,0],[2,1,0],[2,2,0],[2,3,0],[2,4,0],[2,5,0],[3,0,0],[3,1,0],[3,2,0],[3,3,0],[3,4,0],[3,5,0],[4,0,0],[4,1,0],[4,2,0],[4,3,0],[4,4,0],[4,5,0],[5,0,0],[5,1,0],[5,2,0],[5,3,0],[5,4,0],[5,5,0],[6,0,0],[6,1,0],[6,2,0],[6,3,0],[6,4,0],[6,5,0],[7,0,0],[7,1,0],[7,2,0],[7,3,0],[7,4,0],[7,5,0],[8,0,0],[8,1,0],[8,2,0],[8,3,0],[8,4,0],[8,5,0],[9,0,0],[9,1,0],[9,2,0],[9,3,0],[9,4,0],[9,5,0],[10,0,0],[10,1,0],[10,2,0],[10,3,0],[10,4,0],[10,5,0],[11,0,0],[11,1,0],[11,2,0],[11,3,0],[11,4,0],[11,5,0],[12,0,0],[12,1,0],[12,2,0],[12,3,0],[12,4,0],[12,5,0],[13,0,1],[13,1,1],[13,2,1],[13,3,1],[13,4,1],[13,5,1],[14,0,1],[14,1,1],[14,2,1],[14,3,1],[14,4,1],[14,5,1],[15,0,1],[15,1,1],[15,2,1],[15,3,1],[15,4,1],[15,5,1],[16,0,1],[16,1,1],[16,2,1],[16,3,1],[16,4,1],[16,5,1],[17,0,1],[17,1,1],[17,2,1],[17,3,1],[17,4,1],[17,5,1],[18,0,1],[18,1,1],[18,2,1],[18,3,1],[18,4,1],[18,5,1],[19,0,1],[19,1,1],[19,2,1],[19,3,1],[19,4,1],[19,5,1],[0,6,3],[0,7,3],[1,6,3],[1,7,3],[2,6,3],[2,7,3],[3,6,3],[3,7,3],[4,6,3],[4,7,3],[5,6,3],[5,7,3],[6,6,3],[6,7,3],[7,6,3],[7,7,3],[8,6,3],[8,7,3],[9,6,3],[9,7,3],[10,6,3],[10,7,3],[11,6,3],[11,7,3],[12,6,3],[12,7,3],[13,6,3],[13,7,3],[14,6,3],[14,7,3],[15,6,3],[15,7,3],[16,6,3],[16,7,3],[17,6,3],[17,7,3],[18,6,3],[18,7,3],[19,6,3],[19,7,3],[0,8,2],[0,9,2],[0,10,2],[0,11,2],[0,12,2],[0,13,2],[1,8,2],[1,9,2],[1,10,2],[1,11,2],[1,12,2],[1,13,2],[2,8,2],[2,9,2],[2,10,2],[2,11,2],[2,12,2],[2,13,2],[3,8,2],[3,9,2],[3,10,2],[3,11,2],[3,12,2],[3,13,2],[4,8,2],[4,9,2],[4,10,2],[4,11,2],[4,12,2],[4,13,2],[5,8,2],[5,9,2],[5,10,2],[5,11,2],[5,12,2],[5,13,2],[6,8,1],[6,9,1],[6,10,1],[6,11,1],[6,12,1],[6,13,1],[7,8,1],[7,9,1],[7,10,1],[7,11,1],[7,12,1],[7,13,1],[8,8,1],[8,9,1],[8,10,1],[8,11,1],[8,12,1],[8,13,1],[9,8,1],[9,9,1],[9,10,1],[9,11,1],[9,12,1],[9,13,1],[10,8,3],[10,9,3],[10,10,3],[10,11,3],[10,12,3],[10,13,3],[11,8,3],[11,9,3],[11,10,3],[11,11,3],[11,12,3],[11,13,3],[12,8,3],[12,9,3],[12,10,3],[12,11,3],[12,12,3],[12,13,3],[13,8,3],[13,9,3],[13,10,3],[13,11,3],[13,12,3],[13,13,3],[14,8,2],[14,9,2],[14,10,2],[14,11,2],[14,12,2],[14,13,2],[15,8,2],[15,9,2],[15,10,2],[15,11,2],[15,12,2],[15,13,2],[16,8,2],[16,9,2],[16,10,2],[16,11,2],[16,12,2],[16,13,2],[17,8,2],[17,9,2],[17,10,2],[17,11,2],[17,12,2],[17,13,2],[18,8,2],[18,9,2],[18,10,2],[18,11,2],[18,12,2],[18,13,2],[19,8,2],[19,9,2],[19,10,2],[19,11,2],[19,12,2],[19,13,2]],"walls":[[0,0,0,"wand"],[0,14,0,"wand"],[1,0,0,"fenster"],[1,14,0,"wand"],[2,0,0,"wand"],[2,14,0,"fenster"],[3,0,0,"wand"],[3,14,0,"wand"],[4,0,0,"fenster"],[4,14,0,"wand"],[5,0,0,"wand"],[5,14,0,"wand"],[6,0,0,"wand"],[6,14,0,"fenster"],[7,0,0,"fenster"],[7,14,0,"wand"],[8,0,0,"wand"],[8,14,0,"wand"],[9,0,0,"wand"],[9,14,0,"tuer"],[10,0,0,"fenster"],[10,14,0,"tuer"],[11,0,0,"wand"],[11,14,0,"wand"],[12,0,0,"wand"],[12,14,0,"wand"],[13,0,0,"fenster"],[13,14,0,"wand"],[14,0,0,"wand"],[14,14,0,"fenster"],[15,0,0,"wand"],[15,14,0,"wand"],[16,0,0,"fenster"],[16,14,0,"wand"],[17,0,0,"wand"],[17,14,0,"wand"],[18,0,0,"wand"],[18,14,0,"fenster"],[19,0,0,"fenster"],[19,14,0,"wand"],[0,0,1,"wand"],[20,0,1,"wand"],[0,1,1,"fenster"],[20,1,1,"fenster"],[0,2,1,"wand"],[20,2,1,"wand"],[0,3,1,"wand"],[20,3,1,"wand"],[0,4,1,"fenster"],[20,4,1,"fenster"],[0,5,1,"wand"],[20,5,1,"wand"],[0,6,1,"wand"],[20,6,1,"wand"],[0,7,1,"fenster"],[20,7,1,"fenster"],[0,8,1,"wand"],[20,8,1,"wand"],[0,9,1,"wand"],[20,9,1,"wand"],[0,10,1,"fenster"],[20,10,1,"fenster"],[0,11,1,"wand"],[20,11,1,"wand"],[0,12,1,"wand"],[20,12,1,"wand"],[0,13,1,"fenster"],[20,13,1,"fenster"],[0,6,0,"wand"],[1,6,0,"wand"],[2,6,0,"wand"],[3,6,0,"tuer"],[4,6,0,"wand"],[5,6,0,"wand"],[6,6,0,"wand"],[7,6,0,"wand"],[8,6,0,"wand"],[9,6,0,"wand"],[10,6,0,"tuer"],[11,6,0,"wand"],[12,6,0,"wand"],[13,6,0,"wand"],[14,6,0,"wand"],[15,6,0,"wand"],[16,6,0,"tuer"],[17,6,0,"wand"],[18,6,0,"wand"],[19,6,0,"wand"],[0,8,0,"wand"],[1,8,0,"wand"],[2,8,0,"tuer"],[3,8,0,"wand"],[4,8,0,"wand"],[5,8,0,"wand"],[6,8,0,"wand"],[7,8,0,"tuer"],[8,8,0,"wand"],[9,8,0,"wand"],[10,8,0,"wand"],[11,8,0,"tuer"],[12,8,0,"wand"],[13,8,0,"wand"],[14,8,0,"wand"],[15,8,0,"wand"],[16,8,0,"wand"],[17,8,0,"tuer"],[18,8,0,"wand"],[19,8,0,"wand"],[8,0,1,"wand"],[13,0,1,"wand"],[8,1,1,"wand"],[13,1,1,"wand"],[8,2,1,"wand"],[13,2,1,"wand"],[8,3,1,"wand"],[13,3,1,"wand"],[8,4,1,"wand"],[13,4,1,"wand"],[8,5,1,"wand"],[13,5,1,"wand"],[6,8,1,"wand"],[10,8,1,"wand"],[14,8,1,"wand"],[6,9,1,"wand"],[10,9,1,"wand"],[14,9,1,"wand"],[6,10,1,"wand"],[10,10,1,"wand"],[14,10,1,"wand"],[6,11,1,"wand"],[10,11,1,"wand"],[14,11,1,"wand"],[6,12,1,"wand"],[10,12,1,"wand"],[14,12,1,"wand"],[6,13,1,"wand"],[10,13,1,"wand"],[14,13,1,"wand"]],"furn":[["sofa_design",1,1,0],["sessel_ohren",4,1,0],["tv",1,4,0],["lampe",6,1,0],["topfpflanze",6,4,0],["tisch",9,2,0],["stuhl",9,1,0],["stuhl",10,1,0],["stuhl",9,4,0],["stuhl",10,4,0],["deckenlampe",11,3,0],["kueche",14,1,0],["herd",16,1,0],["kuehlschrank",17,1,0],["tisch",15,4,0],["stuhl",15,3,0],["bett",1,10,0],["lampe",4,9,0],["buecherregal",4,12,0],["dusche",7,9,0],["badewanne",7,12,0],["toilette",9,9,0],["schreibtisch",11,9,0],["stuhl",11,10,0],["schreiblampe",12,9,0],["buecherregal",13,12,0],["bett",15,10,0],["sessel",18,9,0],["topfpflanze",18,12,0],["pflanze",7,7,0],["oellampe",12,7,0]]};
+function stampVilla(){
+  if(geld<3500){hint("💰 Villa kostet 3500 $ — zu wenig Geld!");return;}
+  var W9=VILLA.w,H9=VILLA.h,ax=-1,ay=-1;
+  var cands=[[((GW-W9)/2)|0,4],[((GW-W9)/2)|0,((GH-H9)/2)|0],[4,4],[GW-W9-4,4],[4,GH-H9-4],[GW-W9-4,GH-H9-4]];
+  for(var ci=0;ci<cands.length&&ax<0;ci++){var cx0=cands[ci][0],cy0=cands[ci][1],ok=true;
+    for(var x=0;x<W9&&ok;x++)for(var y=0;y<H9&&ok;y++){if(!inLot(cx0+x,cy0+y)||!cellFree(cx0+x,cy0+y))ok=false;}
+    if(ok){ax=cx0;ay=cy0;}}
+  if(ax<0){ /* voller Scan */
+    for(var sy=1;sy<GH-H9&&ax<0;sy++)for(var sx=1;sx<GW-W9&&ax<0;sx++){var ok2=true;
+      for(var x2=0;x2<W9&&ok2;x2++)for(var y2=0;y2<H9&&ok2;y2++){if(!inLot(sx+x2,sy+y2)||!cellFree(sx+x2,sy+y2))ok2=false;}
+      if(ok2){ax=sx;ay=sy;}}}
+  if(ax<0){hint("🏰 Kein Platz frei — räume eine 20×14-Fläche frei!");return;}
+  geld-=3500;geldSend();
+  VILLA.floors.forEach(function(f){doPlaceFloor(ax+f[0],ay+f[1],f[2]);});
+  VILLA.walls.forEach(function(w){doPlaceWall(ax+w[0],ay+w[1],w[2],w[3]);});
+  VILLA.furn.forEach(function(f){doPlaceFurn(f[0],ax+f[1],ay+f[2],f[3]);});
+  stats.moebelGekauft=(stats.moebelGekauft||0)+VILLA.furn.length;
+  updHUD();beep(660,.1,"triangle",.06);setTimeout(function(){beep(880,.14,"triangle",.06);},140);
+  hint("🏰 Riesen-Villa gebaut — geh rein! (7 Zimmer, voll möbliert)");}
 function loop(now){
   requestAnimationFrame(loop);
   var dt=Math.min(0.05,(now-last)/1000);last=now;
   if(running){
+    for(var _li=0;_li<nachtLampen.length;_li++){var _L=nachtLampen[_li];var _t=_L._ti||0; /* 💡 weiches Ein-/Ausfaden der Strassenbeleuchtung */
+      if(Math.abs(_L.intensity-_t)>0.01){_L.intensity+=(_t-_L.intensity)*Math.min(1,dt*1.6);
+        if(_L._heads)for(var _hk=0;_hk<_L._heads.length;_hk++)_L._heads[_hk].emissiveIntensity=_L.intensity/9;}}
     // Uhr: 1 Spielminute = 0.5s (Host führt, Gast empfängt)
     if(!MPs||mpHost){uhrzeit+=dt*4;if(uhrzeit>=1440){uhrzeit-=1440;tag++;if(immo.length){var miete=immo.length*150;geld+=miete;geldSend();updHUD();hint("\uD83C\uDFE0\uD83D\uDCB0 Mieteinnahmen: +"+miete+" \u00A7 ("+immo.length+" H\u00E4user)");}rollWetter();applySaison();hint(SAISON[calcSaison()][0]+(wetter==="regen"?" · 🌧️ Regen":wetter==="schnee"?" · 🌨️ Schnee":""));}}
     // Tag/Nacht
@@ -4110,11 +4168,11 @@ function loop(now){
     var skyC=new THREE.Color(0x9fd0ea).lerp(new THREE.Color(0x141c30),1-Math.min(1,dayA*1.4));
     if(dayA>0.02&&dayA<0.55)skyC.lerp(new THREE.Color(0xff9a52).setHex(0xff9a52),(0.55-dayA)/0.55*0.5); // Abend-/Morgenrot
     scene.background.copy(skyC);scene.fog.color.copy(skyC);
-    furn.forEach(function(f){if(f.plight)f.plight.intensity=dayA<0.3?1.1:0;});
+    furn.forEach(function(f){if(f.plight)f.plight.intensity=dayA<0.3?(f.def&&f.def.light===2?2.2:1.1):0;}); /* 💡 Kandelaber heller als Garten-Laterne */
     var nacht9=dayA<0.3?1:0;
     if(window._dorfNacht!==nacht9){window._dorfNacht=nacht9;
       dorfFenster.forEach(function(fm){fm.emissiveIntensity=nacht9?2.2:0;if(nacht9&&fm.emissive)fm.emissive.setHex(0xffcf80);if(fm.transparent&&fm.opacity<=0.5)fm.opacity=nacht9?0.5:0;});
-      nachtLampen.forEach(function(L){L.intensity=nacht9?7:0;}); // warme Lichtpools auf der Strasse}
+      nachtLampen.forEach(function(L){L._ti=nacht9?9:0;}); /* 💡 Ziel — weiches Faden im Frame-Loop (schwacher Rand via decay 2 bleibt physisch) */
       if(window._flMat)window._flMat.opacity=nacht9?0.15:1; // Wiesenblumen nachts fast unsichtbar
       (window._lampGlows||[]).forEach(function(gm){gm.opacity=nacht9?0.34:0;}); // Laternen-Lichtpools
       (window._markMats||[]).forEach(function(mm){mm.color.setHex(nacht9?0x8f949b:0xcfcfc6);}); // Markierungen dimmen mit (aber lesbar)
@@ -4135,6 +4193,7 @@ function loop(now){
     document.getElementById("emoteToggle").style.display=(running&&!buildMode&&!fahren)?"block":"none";
     document.getElementById("micBtn").style.display=(running&&!buildMode&&!fahren&&MPs)?"block":"none";
     document.getElementById("pingBtn").style.display=(running&&!buildMode&&!fahren&&MPs)?"block":"none";
+    document.getElementById("villaBtn").style.display=(running&&buildMode&&!delMode)?"block":"none"; /* 🏰 nur im Bau-Modus */
     document.getElementById("hideBtn").style.display=(running&&!buildMode&&!fahren&&MPs&&mpHost)?"block":"none"; // nur im Koop (Solo-Verstecken war "doof")
     if(MPs&&!mpHost){steerNetT-=dt;
       if(steerNetT<=0){steerNetT=0.09;var act9=steerActive();
