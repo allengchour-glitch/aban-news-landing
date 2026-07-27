@@ -595,7 +595,7 @@ var strMatH=stdMat(0x4a4a53,0.92),strMatV=stdMat(0x4a4a53,0.92);
   zug.add(lok);
   [0x3a6ab0,0xd8a03a,0x3a8a5a].forEach(function(c,i){var w=wagen(c,3.6);w.position.x=4.9+i*4.3;zug.add(w);});
   zug.position.set(BX0-10,BY+0.28,-30);scene.add(zug);
-  window._zug={g:zug,x:BX0-10,dir:-1,min:BX1+10,max:BX0-6,speed:9};
+  window._seeZug={g:zug,x:BX0-10,dir:-1,min:BX1+10,max:BX0-6,speed:9}; /* 🩹 _zug war schon vergeben (alter Stadt-Zug {mesh,pos}) → Kollision crashte den Loop */
 })();
 var strasse=new THREE.Mesh(new THREE.PlaneGeometry(RL,10),strMatH);
 strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.receiveShadow=true;scene.add(strasse);
@@ -4206,7 +4206,7 @@ function loop(now){
     for(var _li=0;_li<nachtLampen.length;_li++){var _L=nachtLampen[_li];var _t=_L._ti||0; /* 💡 weiches Ein-/Ausfaden der Strassenbeleuchtung */
       if(Math.abs(_L.intensity-_t)>0.01){_L.intensity+=(_t-_L.intensity)*Math.min(1,dt*1.6);
         if(_L._heads)for(var _hk=0;_hk<_L._heads.length;_hk++)_L._heads[_hk].emissiveIntensity=_L.intensity/9;}}
-    if(window._zug){var _z=window._zug;_z.x+=_z.dir*_z.speed*dt; /* 🚂 Zug pendelt über die Meeresbrücke */
+    if(window._seeZug){var _z=window._seeZug;_z.x+=_z.dir*_z.speed*dt; /* 🚂 Brücken-Zug pendelt (eigener Global — _zug gehört dem Stadt-Zug) */
       if(_z.x<_z.min){_z.x=_z.min;_z.dir=1;}else if(_z.x>_z.max){_z.x=_z.max;_z.dir=-1;}
       _z.g.position.x=_z.x;_z.g.rotation.y=_z.dir<0?0:Math.PI;}
     // Uhr: 1 Spielminute = 0.5s (Host führt, Gast empfängt)
