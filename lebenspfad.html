@@ -2138,7 +2138,8 @@ function updBot(dt){
   if(window._cardOpts){ // Karte offen -> nach 1.6s eine Option wählen
     if(_botT>1.6){_botT=0;
       var opts=window._cardOpts,best=0,idx=[];
-      for(var i=0;i<opts.length;i++)idx.push(i);
+      for(var i=0;i<opts.length;i++)if(!opts[i].hidden)idx.push(i); /* 🩹 Schwarm-P3: Bot wählte die versteckte „ZEIT UM"-Option */
+      if(!idx.length)idx.push(0);
       var k=idx[(Math.random()*idx.length)|0]; // simpel & fair: zufällig
       sendPick(k);}
     return;}
@@ -3587,6 +3588,7 @@ function netHostBoot(){ // ID-Kollision (unavailable-id) -> neuen Code würfeln 
         NET.conns.forEach(function(oc){if(oc!==c&&oc._idx===ri){try{oc.close();}catch(e){}var oi=NET.conns.indexOf(oc);if(oi>=0)NET.conns.splice(oi,1);}}); // toten alten Kanal desselben Slots schließen -> schneller Reconnect statt Ablehnung
         c._idx=ri;
         if(NET.present)NET.present[ri]=true;
+        if(window._cardOpts&&G&&G.turn===ri){try{sendPick((Math.random()*window._cardOpts.length)|0);}catch(e){}} /* 🩹 Schwarm-P1: offene Karte des Rückkehrers auflösen — sonst hing der Zug bis zum AFK-Timeout (~2,5 Min Gummiband) */
         netSyncTo(c);netBroadcastPres();netConnInfo();
         if(G&&G.players[ri])chatAdd("System",G.players[ri].name+" ist wieder da");return;}
       if(m.t==="resync"){netSyncTo(c);return;} // Gast hat Desync erkannt -> Snapshot nachliefern
@@ -4356,7 +4358,7 @@ function handleField(p,f){
         floatStat("+3 💰 +3 ❤️","#7ad9a0",fields[p.tile].x,fields[p.tile].z,400);
         p.bio.push("bekam spät im Leben eine zweite Chance — und ergriff sie");}}
     var mg=2+Math.min(4,ch); // ⭐ Meilenstein-Glück wächst mit dem Lebensabschnitt
-    var mOpts=[{l:"Weiter auf dem Pfad ▶",sub:"+"+mg+" ❤️ Glück",fn:function(){p.glueck+=mg;p.bio.push("schloss das Kapitel "+CHAPTERS[Math.max(0,ch-1)].n.toLowerCase()+" ab");endTurnSoon();}}];
+    var mOpts=[{l:"Weiter auf dem Pfad ▶",sub:"+"+mg+" ❤️ Glück",fn:function(){p.glueck+=mg;p.bio.push("schloss das Kapitel "+CHAPTERS[ch].n.toLowerCase()+" ab") /* 🩹 Schwarm-P3: off-by-one */;endTurnSoon();}}];
     var humans=G.players.filter(function(pp){return !pp.bot;}).length;
     if(!NET.on&&humans>=2&&Math.random()<0.9){ /* 🎮 Bonus-Minispiel fast immer anbieten — Minispiele leben jetzt IM Spiel (User-Wunsch), nur lokal + echte Menschen */
       mOpts.push({l:"🎮 Bonus-Minispiel!",sub:"zu zweit spielen · danach +2 ❤️ für ALLE",fn:function(){

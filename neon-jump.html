@@ -544,7 +544,7 @@ function doJump(p){if(p.coyote>0||p.jumps<2){p.vy=JUMPV*(p.jumps===0?1:0.92);p.c
   if(p.jumps>=2)burst(p.x,p.y-0.1,[FXC.dj2a,FXC.dj2b],3.4);   // Doppelsprung: Cyan + Magenta
   else spawnRing(p.x,p.y-0.6,FXC.dj1,0.34,2.0);}}             // 1. Sprung: dezenter Violett-Puls
 // ---- Eingaben: P1 = WAD, P2 = Pfeile; Handy = Zonen für P1(solo) ----
-addEventListener("keydown",function(e){var k=e.key.toLowerCase();
+addEventListener("keydown",function(e){if(e.repeat)return;var k=e.key.toLowerCase(); /* 🩹 Schwarm-P2: Auto-Repeat feuerte Doppelsprung */
   if(k==="a")inp[0].L=true;if(k==="d")inp[0].R=true;
   if(k==="arrowleft")inp[coopMode?1:0].L=true;if(k==="arrowright")inp[coopMode?1:0].R=true;
   if(k==="w"||k===" "){if(!running){startGame(coopMode);}else{inp[0].J=true;}e.preventDefault&&e.preventDefault();} /* J5: Modus beibehalten statt Koop erzwingen */

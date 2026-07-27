@@ -710,7 +710,7 @@ function getBossAdorn(){if(bossAdorn)return bossAdorn;var g=new THREE.Group();
 function spawnBossWave(){if(S.bossWave||S.finalBoss)return;S.bossWave=true;
   announce("⚠ BOSS-ANSTURM! Verteidige die Basis!");beep(85,.7,"sawtooth",.13);beep(120,.5,"square",.06);shake=1.0;hitstop=Math.max(hitstop,0.06);
   screenFlash("rgba(255,60,90,.26)",0.55,460);spawnRing(player.position.x,player.position.z,0xff3355,1,40,1.0);
-  var boss=getMesh(enemies,enemyMesh);boss.active=true;boss.m.visible=true;boss.boss=true;boss.finalBoss=false;boss.raider=true;boss.baseWaveBoss=true;boss.shooter=false;boss.splitter=false;boss.shootT=3.2;
+  var boss=getMesh(enemies,enemyMesh);boss.active=true;boss.m.visible=true;boss.boss=true;boss.finalBoss=false;boss.raider=true;boss.baseWaveBoss=true;boss._tele=0;if(boss._adorned){boss.m.remove(bossAdorn);boss._adorned=false;} /* 🩹 Schwarm-P3/P2: _tele+Krone beim Recycling zurücksetzen */boss.shooter=false;boss.splitter=false;boss.shootT=3.2;
   var a=rnd()*6.283;boss.m.position.set(Math.max(-ARENA+3,Math.min(ARENA-3,player.position.x+Math.cos(a)*ARENA*0.85)),0.9,Math.max(-ARENA+3,Math.min(ARENA-3,player.position.z+Math.sin(a)*ARENA*0.85)));
   boss.hp=90+S.wave*22;boss.maxhp=boss.hp;boss.spd=1.7;boss.xp=24;boss.m.scale.set(3.0,3.0,3.0);
   boss.m.material.color.setHex(0xff7a1a);boss.m.material.emissive.setHex(0xff5a00);boss.baseEmissive=0xff5a00;boss.flash=0;
@@ -1661,7 +1661,7 @@ function loop(now){
         if(S.spawnT<=0){spawnEnemy();if(!S.bossWave){if(S.t>40)spawnEnemy();if(S.t>75)spawnEnemy();if(S.phase>=5)spawnEnemy();}S.spawnT=rate*(S.bossWave?1.9:1);}
         if(S.t>=S.bossT&&!S.bossWave){spawnEnemy(true);announce("⚠️ BOSS!");S.bossT+=45;beep(120,.4,"sawtooth",.1);screenFlash("rgba(255,40,90,.22)",0.5,420);spawnRing(player.position.x,player.position.z,0xff2266,1,30,0.9);shake=Math.max(shake,0.85);} /* 💥 Schwarm: periodischer Boss bekommt Auftritt-Wucht wie die Boss-Welle */
         if(S.t>=RUN_T){S.finalBoss=true;S.bossWave=false;cb_start(2);} // Endboss = NEXUS-Koloss (ersetzt spawnFinalBoss)
-        else if(S.waveT>=COMBAT_DUR&&!S.bossWave)enterBuildPhase();
+        else if(S.waveT>=COMBAT_DUR&&!S.bossWave&&!enemies.some(function(e){return e.active&&e.boss&&!e.cbProxy;}))enterBuildPhase(); /* 🩹 Schwarm-P2: lebender Boss wurde beim Phasenwechsel ohne Belohnung gewiped */
       }
       }
     } else { // Wellenpause — bauen
