@@ -317,7 +317,7 @@ function lvlStars(i){try{return localStorage.getItem("nj_star"+i)||"";}catch(e){
 var lvlGroup=new THREE.Group();scene.add(lvlGroup);
 var PLAT=[],COINS=[],coinMeshes=[],SPIKES=[],SWITCHES=[],GATES=[],CHECKS=[],goalX=0,goalY=0,goalFlag=null;
 function buildLevel(idx){
-  while(lvlGroup.children.length)lvlGroup.remove(lvlGroup.children[0]);
+  while(lvlGroup.children.length){var _lc=lvlGroup.children[0];_lc.traverse(function(nn){if(nn.isMesh&&nn.geometry)nn.geometry.dispose();});lvlGroup.remove(_lc);} /* 🩹 Kimi-P2: Level-Geometrien entsorgen (Materialien geteilt → nicht anfassen) — Leak pro Levelwechsel/Restart */
   var L=LEVELS[idx];PLAT=[];COINS=[];coinMeshes=[];SPIKES=[];SWITCHES=[];GATES=[];CHECKS=[];
   L.plats.forEach(function(pl,pi){
     var P2={x:pl.x,y:pl.y,w:pl.w,h:pl.h,x0:pl.x,y0:pl.y,mv:pl.mv||null,spring:!!pl.spring,crumble:!!pl.crumble,cT:0,gone:false};
