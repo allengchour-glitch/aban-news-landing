@@ -1848,6 +1848,21 @@ setTimeout(function baueGebaeude(){
     bau("th6_fichte.glb",5.5,46,0,90,0,false);bau("th6_fichte.glb",5.5,90,0,84,1,false);
     bau("th6_billboard.glb",6.0,0,0,-84,Math.PI,false);
     /* ── th8: BEGEHBARE Gebäude (Altstadt-Band West; Tür = -z → rot dreht sie zur Strasse) ── */
+    (function altstadtPlatz(){ /* 🧱 Gepflasterter Platz + Gassen — die Gebaeude standen auf blanker Wiese */
+      var pfM=betMat(0xc4bcae,0.92);
+      if(typeof ladeTex==="function")ladeTex("textures/th5/kopfstein.png",14,20,function(t){pfM.map=t;pfM.color.setHex(0xffffff);pfM.needsUpdate=true;});
+      var pf=new THREE.Mesh(new THREE.PlaneGeometry(34,52),pfM);
+      pf.rotation.x=-Math.PI/2;pf.position.set(-53,-0.012,31);pf.receiveShadow=true;scene.add(pf);
+      /* Verbindungsweg zur Nordstrasse (z=-58) */
+      var wg=new THREE.Mesh(new THREE.PlaneGeometry(6,52),pfM.clone());
+      wg.rotation.x=-Math.PI/2;wg.position.set(-53,-0.011,-21);wg.receiveShadow=true;scene.add(wg);
+      /* Baeume + Baenke saeumen den Platz */
+      [[-38,18],[-38,44],[-68,18],[-68,44]].forEach(function(P8,i8){
+        bau("th5_baum_ahorn.glb",4.4,P8[0],0,P8[1],i8*0.9,false);});
+      bau("th5_parkbank.glb",0.9,-53,0,20,0,false);bau("th5_parkbank.glb",0.9,-53,0,42,Math.PI,false);
+      bau("th5_laterne_altstadt.glb",4.5,-40,0,31,0,false);bau("th5_laterne_altstadt.glb",4.5,-66,0,31,0,false);
+      bau("th6_papierkorb.glb",0.9,-49,0,20,0,false);
+    })();
     /* 🧱 Kollider zu den begehbaren Gebaeuden (Masse aus models/TH5-ASSETS.md; rot=PI/2 dreht B/T) */
     addSolid(-62,30,17,25,{a:"x",at:-70.5,c:30,w:4.5});     /* Markthalle: Tor an der -x-Seite */
     addSolid(-44,12,12.8,10.8,{a:"z",at:17.4,c:-44,w:3.0}); /* Stadthaus: Tuer +z (rot=PI) */
