@@ -1046,7 +1046,8 @@ function pickMob(x,z){ // gewichtete Auswahl, härtere Gegner erst an späteren 
 function spawnMonster(forceId,fx,fz){ /* ⚔️ W4: optional forceId/fx/fz (nur Tests) — Spielpfad ruft ohne Argumente auf */
   var x,z;
   if(fx!=null){x=fx;z=fz;}
-  else{var a=rnd()*6.28,rd=32+rnd()*14;x=player.position.x+Math.cos(a)*rd;z=player.position.z+Math.sin(a)*rd;}
+  else{var a=rnd()*6.28,rd=32+rnd()*14;x=player.position.x+Math.cos(a)*rd;z=player.position.z+Math.sin(a)*rd;
+    if(inStadt(x,z,2)){var _mn=Math.max(Math.abs(x),Math.abs(z))||1,_f9=68/_mn;x*=_f9;z*=_f9;}} /* 🏰 nie in der Stadt spawnen — radial vor die Mauer schieben */
   var M=null;
   if(forceId){for(var fi2=0;fi2<MOBS.length;fi2++)if(MOBS[fi2].id===forceId)M=MOBS[fi2];if(!M)return 0;}
   else M=pickMob(x,z);
@@ -1147,6 +1148,7 @@ function updBossBar(){var boss=null;for(var i=0;i<monsters.length;i++)if(monster
   if(boss){el.classList.remove("hide");document.getElementById("bossFill").style.width=Math.max(0,boss.hp/boss.maxhp*100)+"%";}
   else el.classList.add("hide");}
 function clearWarn(e){if(e&&e.warnRing){scene.remove(e.warnRing);e.warnRing.geometry.dispose();e.warnRing.material.dispose();e.warnRing=null;}} /* 👑 W8: Boss-Warnring aufräumen, falls Boss mid-Windup stirbt */
+function inStadt(x,z,pad){return Math.max(Math.abs(x),Math.abs(z))<64+(pad||0);} /* 🏰 Mauer-Quadrat ±64 um (0,0) */
 function updMonsters(dt){
   for(var i=monsters.length-1;i>=0;i--){var e=monsters[i];e.t+=dt;
     if(e.rig)e.rig.mixer.update(dt); /* ⚔️ W4: Monster-Anim-Mixer */
@@ -1216,7 +1218,9 @@ function updMonsters(dt){
       if(e.windT<=0){var d2=Math.hypot(player.position.x-e.x,player.position.z-e.z);
         if(d2<1.9)damagePlayer((e.dmg||(e.boss?14:6))+(e.boss?0:Math.min(3,Math.floor(nights/3))),e); /* Nächte machen Mobs moderat bissiger */
         e.atkCd=(e.rig&&e.rig.actions.attack)?1.15:1;}}
-    else if(d>1.6){e.x+=dx/d*spd*dt;e.z+=dz/d*spd*dt;
+    else if(d>1.6){var _nmx=e.x+dx/d*spd*dt,_nmz=e.z+dz/d*spd*dt; /* 🏰 User: "keine Monster in der Stadt" — Mauer stoppt sie */
+      if(!inStadt(e.x,e.z,-1)&&inStadt(_nmx,_nmz,-1)){ /* würde eindringen → an der Mauer entlang statt hinein */ }
+      else{e.x=_nmx;e.z=_nmz;}
       if(e.rig&&e.rig.cur!=="attack")setAnim(e.rig,e.rig.actions.walk?"walk":"idle",0.2);}
     else{ // Angriff -> nur Wind-up starten (Schaden kommt nach windT, wenn man nicht wegrollt)
       if(!e.atkCd||e.atkCd<=0){
@@ -2263,10 +2267,10 @@ function decorateWorldLate(){
   function inVZoneL(x,z){var vc=window._villageClear;if(!vc)return (Math.abs(x)<64&&Math.abs(z)<64);for(var i=0;i<vc.length;i++){var d=vc[i].clear;if((x-vc[i].x)*(x-vc[i].x)+(z-vc[i].z)*(z-vc[i].z)<d*d)return true;}return false;}
   /* 🚫 Überschneidungs-Schutz: Scatter-Belegung, vorbefüllt mit Bäumen/Felsen → neue Props überlappen weder einander noch Ressourcen */
   var _fsOcc=[];for(var _ri=0;_ri<resources.length;_ri++)_fsOcc.push({x:resources[_ri].x,z:resources[_ri].z});
-  function farScatter(n,minR,fn){for(var i=0;i<n;i++){var a=rnd2()*6.28,rd=minR+rnd2()*(half-minR);var x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(inVZoneL(x,z))continue;
+  function farScatter(n,minR,fn){for(var i=0;i<n;i++){var a=rnd2()*6.28,rd=minR+rnd2()*(half-minR);var x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(inVZoneL(x,z))continue;if(Math.abs(Math.max(Math.abs(x),Math.abs(z))-64)<4)continue; /* 🏰 nicht in die Stadtmauer */
     var clash=false;for(var k=0;k<_fsOcc.length;k++){var o=_fsOcc[k],ddx=x-o.x,ddz=z-o.z;if(ddx*ddx+ddz*ddz<10.24){clash=true;break;}}if(clash)continue; /* ≥3.2m Abstand */
     _fsOcc.push({x:x,z:z});fn(x,z);}}
-  function spotFar(minR){for(var t=0;t<12;t++){var a=rnd2()*6.28,rd=minR+rnd2()*(half2-minR),x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(!inVZoneL(x,z))return {x:x,z:z};}var a2=rnd2()*6.28,rd2=minR+rnd2()*(half2-minR);return {x:Math.cos(a2)*rd2,z:Math.sin(a2)*rd2};}
+  function spotFar(minR){for(var t=0;t<12;t++){var a=rnd2()*6.28,rd=minR+rnd2()*(half2-minR),x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(!inVZoneL(x,z)&&Math.abs(Math.max(Math.abs(x),Math.abs(z))-64)>=4)return {x:x,z:z};}var a2=rnd2()*6.28,rd2=minR+rnd2()*(half2-minR);return {x:Math.cos(a2)*rd2,z:Math.sin(a2)*rd2};}
   // 📦 Mehr verstreute Gegenstände (Vielfalt) — Fässer/Kisten/Karren/Zäune/Essen
   var STUFF=[["cc0_barrel",1.0],["cc0_crate",1.0],["ftk_cart",1.6],["cc0_fence",1.2],["fd_pie",0.6],["fd_sausage",0.6],["fd_burger",0.6],["cc0_tent",1.8],["ck_catapult",2.2],["ftk_lantern",1.5],["fn_stool",0.9],["fn_chair",0.9],["fn_plant",1.0],["dk_chest",0.9],["cc0_log_stack",1.0],["fn_bookcase",1.3],["cc0_campfire",0.7],
     // 🆕 Survival/Piraten/Möbel/Dungeon-Streuprops
@@ -2588,7 +2592,7 @@ function decorateWorld(){
   for(var _iv=1;_iv<_nV;_iv++){var _va=rnd()*6.28,_vrd=70+rnd()*(half-90);_vc.push({x:Math.cos(_va)*_vrd,z:Math.sin(_va)*_vrd,clear:22});}
   window._villageClear=_vc;
   function inVZone(x,z){for(var i=0;i<_vc.length;i++){var d=_vc[i].clear;if((x-_vc[i].x)*(x-_vc[i].x)+(z-_vc[i].z)*(z-_vc[i].z)<d*d)return true;}return false;}
-  function farScatter(n,minR,fn){for(var i=0;i<n;i++){var a=rnd()*6.28,rd=minR+rnd()*(half-minR);var x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(inVZone(x,z))continue;fn(x,z);}}
+  function farScatter(n,minR,fn){for(var i=0;i<n;i++){var a=rnd()*6.28,rd=minR+rnd()*(half-minR);var x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(inVZone(x,z))continue;if(Math.abs(Math.max(Math.abs(x),Math.abs(z))-64)<4)continue;fn(x,z);}} /* 🏰 Mauer-Band frei */
   // --- Deko-Bäume in Sorten (nicht abbaubar, nur Dichte/Look) ---
   var TREES=[["cc0_tree_pine",5.2],["cc0_tree_oak",4.6],["cc0_tree_default",4.4],["cc0_tree_palm",5.8],["ftk_tree",5.0],["ck_tree",5.4],
     ["nt_pine",5.4],["nt_oak",4.8],["nt_tree",4.4],["nt_tree_leafy",4.6],["nt_palm",5.8]];
@@ -2633,7 +2637,7 @@ function decorateWorld(){
   farScatter(Math.round(26*VF),14,function(x,z){var _lry=rnd()*6.28;var m=cc0inst("cc0_log_stack",1.0);if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=_lry;scene.add(m);}); /* Schwarm-2 P1: rnd() vor Early-Return */
   // --- 🌟 Einzigartige Welt-Orte (jede Umgebung anders) ---
   var half2=MAP/2-60;
-  function spotFar(minR){for(var t=0;t<12;t++){var a=rnd()*6.28,rd=minR+rnd()*(half2-minR),x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(!inVZone(x,z))return {x:x,z:z};}var a2=rnd()*6.28,rd2=minR+rnd()*(half2-minR);return {x:Math.cos(a2)*rd2,z:Math.sin(a2)*rd2};}
+  function spotFar(minR){for(var t=0;t<12;t++){var a=rnd()*6.28,rd=minR+rnd()*(half2-minR),x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(!inVZone(x,z)&&Math.abs(Math.max(Math.abs(x),Math.abs(z))-64)>=4)return {x:x,z:z};}var a2=rnd()*6.28,rd2=minR+rnd()*(half2-minR);return {x:Math.cos(a2)*rd2,z:Math.sin(a2)*rd2};}
   // 🌸 Blumenwiese: dichter Farbteppich
   (function(){var p=spotFar(80); /* 🌸 W3: echte GLB-Blumenwiese statt Stiel+Ico-Primitiven */
     var rndF=mulberry32(((SEED^0x33caf1)>>>0)||1); /* eigener Strom fuer Zusatz-Varianz */
@@ -2675,7 +2679,8 @@ function decorateWorld(){
     var _cs1=3.5+rnd()*4,_cs2=4+rnd()*3; /* 🩹 Kimi-P1: beide rnd IMMER ziehen — sonst Koop-Desync wenn ein GLB nur auf einem Gerät fehlt */
     var _cy=rnd()*2.5,_crx=rnd()*0.3,_cry=rnd()*6.28,_crz=rnd()*0.3; /* 🩹 Schwarm-P2: ALLE 4 Draws unbedingt — sonst Desync wenn GLB einseitig fehlt */
     var big=cc0inst("cc0_cliff_rock",_cs1);if(!big)big=cc0inst("cc0_rock_large",_cs2);
-    if(big){big.position.set(ox,groundH(ox,oz)-0.5+_cy,oz);big.rotation.set(_crx,_cry,_crz);scene.add(big);}}})();}
+    if(big){big.position.set(ox,groundH(ox,oz)-0.5+_cy,oz);big.rotation.set(_crx,_cry,_crz);scene.add(big);
+      addCollider(ox,oz,Math.min(4.2,_cs1*0.42)); /* 🧱 User "läuft durch Fels": Klippen sind jetzt solide */}}})();}
   // 🌸 Grasige Hügel (flache Kuppeln mit Blumen)
   for(var hi=0;hi<Math.round(6*VF);hi++){(function(){var p=spotFar(55),hr=9+rnd()*8;
     var hill=new THREE.Mesh(new THREE.SphereGeometry(hr,12,7,0,6.28,0,Math.PI/2.2),new THREE.MeshLambertMaterial({color:0x3f9a54,flatShading:true}));
@@ -3258,6 +3263,22 @@ var WSHOP=[
   {id:"drachenklinge",n:"Drachen-Klinge",  emo:"🐉", cost:55, atk:14, st:"schwert", col:0x7dff9a, gl:0x2aff6a}
 ];
 var WSHOP_BY={};WSHOP.forEach(function(w){WSHOP_BY[w.id]=w;});
+/* 🛡️ RÜSTUNGS-SHOP (Gegenstück zum Waffen-Shop, gleiche Schmiede) */
+var ASHOP=[
+  {id:"wildleder",   n:"Wildleder-Panzer",  emo:"🦌", cost:8,  def:3,  col:0x8a5a30, gl:0},
+  {id:"kettenhemd",  n:"Kettenhemd",        emo:"⛓️", cost:14, def:5,  col:0xaab0bc, gl:0},
+  {id:"ritterplatte",n:"Ritter-Platte",     emo:"🛡️", cost:22, def:7,  col:0xd6dae4, gl:0},
+  {id:"flammenpanzer",n:"Flammen-Panzer",   emo:"🔥", cost:32, def:9,  col:0xff8a4d, gl:0xff4a1a},
+  {id:"frostpanzer", n:"Frost-Panzer",      emo:"❄️", cost:38, def:10, col:0xaee6ff, gl:0x4ac0ff},
+  {id:"drachenpanzer",n:"Drachen-Panzer",   emo:"🐉", cost:52, def:13, col:0x7dff9a, gl:0x2aff6a}
+];
+var ASHOP_BY={};ASHOP.forEach(function(a){ASHOP_BY[a.id]=a;});
+function buildShopPauldron(def){
+  var g=new THREE.Group(),gl=def.gl||0,m=_mat(def.col,gl||0x0a0e14,gl?1.1:0.1,gl?0.3:0.35,0.85);
+  var dome=new THREE.Mesh(new THREE.SphereGeometry(0.2,10,8,0,6.283,0,1.7),m);dome.scale.set(1.25,0.9,1.15);g.add(dome);
+  var sp=new THREE.Mesh(new THREE.ConeGeometry(0.06,0.2,5),m);sp.position.y=0.13;g.add(sp);
+  g.traverse(function(nn){if(nn.isMesh){nn.castShadow=true;nn.frustumCulled=false;}});
+  return g;}
 function buildShopWeapon(def){
   var g=new THREE.Group(),gl=def.gl||0,ei=gl?1.2:0.15,em=gl||0x101418;
   function M2(c){return _mat(c,em,ei,gl?0.3:0.4,0.85);}
@@ -3298,19 +3319,31 @@ function openWShop(){
     return '<div style="display:flex;align-items:center;gap:10px;padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.08)">'
       +'<span style="font-size:1.5rem">'+w.emo+'</span><span style="flex:1;font-weight:700">'+w.n+'<br><small style="opacity:.7">⚔️ +'+w.atk+' Angriff</small></span>'+btn+'</div>';
   }).join("");
+  var arows=ASHOP.map(function(w){
+    var owned=equip.owned.indexOf(w.id)>=0,on=equip.aid===w.id;
+    var btn=on?'<span style="color:#7dffc8;font-weight:800">✔ Angelegt</span>'
+      :owned?'<button data-a="'+w.id+'" class="wbuy" style="border:0;border-radius:10px;padding:8px 14px;font-weight:800;cursor:pointer;background:#3a6ab0;color:#fff">Anlegen</button>'
+      :'<button data-a="'+w.id+'" class="wbuy" style="border:0;border-radius:10px;padding:8px 14px;font-weight:800;cursor:pointer;background:'+((inv.crystal|0)>=w.cost?'#2a8a50':'#555c6a')+';color:#fff">'+w.cost+' 💎</button>';
+    return '<div style="display:flex;align-items:center;gap:10px;padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.08)">'
+      +'<span style="font-size:1.5rem">'+w.emo+'</span><span style="flex:1;font-weight:700">'+w.n+'<br><small style="opacity:.7">🛡️ −'+w.def+' Schaden</small></span>'+btn+'</div>';
+  }).join("");
   ov.innerHTML='<div style="background:#101a30;border:1px solid rgba(125,227,255,.35);border-radius:18px;max-width:420px;width:100%;max-height:82vh;overflow-y:auto;padding:16px" onclick="event.stopPropagation()">'
-    +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><b style="font-size:1.15rem">⚒️ Waffen-Schmiede</b><span>💎 '+(inv.crystal|0)+'</span></div>'
-    +'<div style="font-size:.8rem;opacity:.7;margin-bottom:8px">Kaufen mit Kristallen · gekaufte Waffen jederzeit wechseln</div>'
-    +rows+'<button id="wshopClose" style="margin-top:12px;width:100%;border:0;border-radius:12px;padding:12px;font-weight:800;cursor:pointer;background:#243252;color:#cfe6ff">Schliessen ✖</button></div>';
+    +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><b style="font-size:1.15rem">⚒️ Schmiede</b><span>💎 '+(inv.crystal|0)+'</span></div>'
+    +'<div style="font-size:.8rem;opacity:.7;margin-bottom:8px">Kaufen mit Kristallen · gekaufte Ausrüstung jederzeit wechseln</div>'
+    +'<div style="font-weight:800;color:#ffd166;margin:4px 0">🗡️ Waffen</div>'+rows
+    +'<div style="font-weight:800;color:#8fd8ff;margin:10px 0 4px">🛡️ Rüstungen</div>'+arows
+    +'<button id="wshopClose" style="margin-top:12px;width:100%;border:0;border-radius:12px;padding:12px;font-weight:800;cursor:pointer;background:#243252;color:#cfe6ff">Schliessen ✖</button></div>';
   ov.style.display="flex";
   ov.onclick=function(){ov.style.display="none";};
   document.getElementById("wshopClose").onclick=function(){ov.style.display="none";};
   ov.querySelectorAll(".wbuy").forEach(function(b){b.onclick=function(ev){ev.stopPropagation();
-    var w=WSHOP_BY[b.getAttribute("data-w")];if(!w)return;
+    var isA=!!b.getAttribute("data-a");
+    var w=isA?ASHOP_BY[b.getAttribute("data-a")]:WSHOP_BY[b.getAttribute("data-w")];if(!w)return;
     var owned=equip.owned.indexOf(w.id)>=0;
     if(!owned){if((inv.crystal|0)<w.cost){toast("💎 Zu wenig Kristalle für "+w.n+"!");return;}
       inv.crystal-=w.cost;equip.owned.push(w.id);toast("🛒 "+w.emo+" "+w.n+" gekauft!");}
-    equip.wid=w.id;gearUpd();invUpd();saveGame();
+    if(isA)equip.aid=w.id;else equip.wid=w.id;
+    gearUpd();invUpd();saveGame();
     if(typeof sfxSeq==="function")sfxSeq([[660],[880,0.3]]);
     openWShop(); /* neu rendern */
   };});
@@ -3318,7 +3351,7 @@ function openWShop(){
 function normInv(){ // defensiv: alte Saves ohne neue Felder auffüllen
   inv.wood=inv.wood||0;inv.stone=inv.stone||0;inv.crystal=inv.crystal||0;inv.berry=inv.berry||0;inv.meat=inv.meat||0;
   tools.axe=tools.axe||0;tools.pick=tools.pick||0;
-  equip.weapon=equip.weapon||0;equip.armor=equip.armor||0;equip.wid=equip.wid||0;equip.owned=equip.owned||[]; /* 🛒 Shop-Waffe + Besitz */
+  equip.weapon=equip.weapon||0;equip.armor=equip.armor||0;equip.wid=equip.wid||0;equip.aid=equip.aid||0;equip.owned=equip.owned||[]; /* 🛒 Shop-Waffe + Besitz */
 }
 var hp=100,maxHp=100,dead=false;
 var xp=0,level=1; // ⭐ RPG-Progression (Fusion Survival+RPG)
@@ -3395,7 +3428,7 @@ function gearUpd(){
   var ww=document.getElementById("wWeap"),war=document.getElementById("wArmor");
   if(ww&&war){
     var _wl=(equip.wid&&WSHOP_BY[equip.wid])?(WSHOP_BY[equip.wid].emo+" "+WSHOP_BY[equip.wid].n):(equip.weapon>0?WEAP_NAME[equip.weapon]:null);if(_wl){ww.classList.remove("hide");document.getElementById("iWeap").textContent=_wl;}else ww.classList.add("hide");
-    if(equip.armor>0){war.classList.remove("hide");document.getElementById("iArmor").textContent=ARMOR_NAME[equip.armor];}else war.classList.add("hide");
+    var _al=(equip.aid&&ASHOP_BY[equip.aid])?(ASHOP_BY[equip.aid].emo+" "+ASHOP_BY[equip.aid].n):(equip.armor>0?ARMOR_NAME[equip.armor]:null);if(_al){war.classList.remove("hide");document.getElementById("iArmor").textContent=_al;}else war.classList.add("hide");
   }
   if(typeof applyGearVisuals==="function")applyGearVisuals();
 }
@@ -3441,7 +3474,7 @@ function _attachNorm(bone,obj,extraScale){ /* Objekt an Knochen hängen, PRO-ACH
   bone.add(obj);
 }
 /* Waffe+Rüstung an EIN Modell hängen; gibt {weapon, armor:[]} zurück (für lokal ODER Partner nutzbar). */
-function _gearOn(model,weapon,armor,old,wid){
+function _gearOn(model,weapon,armor,old,wid,aid){
   if(old){if(old.weapon&&old.weapon.parent)old.weapon.parent.remove(old.weapon);(old.armor||[]).forEach(function(p){if(p&&p.parent)p.parent.remove(p);});}
   var refs={weapon:null,armor:[]};
   if(!model)return refs;
@@ -3452,10 +3485,11 @@ function _gearOn(model,weapon,armor,old,wid){
     else{w.position.set(0.42,1.2,0.15);model.add(w);}
     refs.weapon=w;
   }
-  if(armor>0){
+  if(armor>0||(aid&&ASHOP_BY[aid])){
     var shR=_findBone(/right.?shoulder|shoulder.?r|shoulderr/i,model),shL=_findBone(/left.?shoulder|shoulder.?l|shoulderl/i,model);
-    if(shR){var pR=buildPauldron(armor);_attachNorm(shR,pR,1.3);pR.position.set(0,0.02,0);refs.armor.push(pR);}
-    if(shL){var pL=buildPauldron(armor);_attachNorm(shL,pL,1.3);pL.position.set(0,0.02,0);refs.armor.push(pL);}
+    var _mkP=function(){return (aid&&ASHOP_BY[aid])?buildShopPauldron(ASHOP_BY[aid]):buildPauldron(armor);};
+    if(shR){var pR=_mkP();_attachNorm(shR,pR,1.3);pR.position.set(0,0.02,0);refs.armor.push(pR);}
+    if(shL){var pL=_mkP();_attachNorm(shL,pL,1.3);pL.position.set(0,0.02,0);refs.armor.push(pL);}
     if(!shR&&!shL){var t=_findBone(/torso|spine|chest|abdomen/i,model);if(t){var pc=buildPauldron(armor);_attachNorm(t,pc,1.3);pc.position.set(0,0.15,0.12);refs.armor.push(pc);}}
   }
   return refs;
@@ -3463,18 +3497,18 @@ function _gearOn(model,weapon,armor,old,wid){
 var _lastGearW=-1,_lastGearA=-1;
 function applyGearVisuals(){
   if(!heroModel)return;
-  if(equip.weapon===_lastGearW&&equip.armor===_lastGearA&&equip.wid===window._lastGearWid)return;window._lastGearWid=equip.wid; /* 🩹 Schwarm-P2: nur bei Änderung — vorher Mesh-Rebuild + Koop-Nachricht bei JEDEM Pickup */
+  if(equip.weapon===_lastGearW&&equip.armor===_lastGearA&&equip.wid===window._lastGearWid&&equip.aid===window._lastGearAid)return;window._lastGearWid=equip.wid;window._lastGearAid=equip.aid; /* 🩹 Schwarm-P2: nur bei Änderung — vorher Mesh-Rebuild + Koop-Nachricht bei JEDEM Pickup */
   _lastGearW=equip.weapon;_lastGearA=equip.armor;
-  var r=_gearOn(heroModel,equip.weapon,equip.armor,{weapon:_weaponMesh,armor:_armorParts},equip.wid);
+  var r=_gearOn(heroModel,equip.weapon,equip.armor,{weapon:_weaponMesh,armor:_armorParts},equip.wid,equip.aid);
   _weaponMesh=r.weapon;_armorParts=r.armor;
   if(NET.on)sendMyGear(); /* Partner über eigene Ausrüstung informieren */
 }
-function applyRemoteGear(weapon,armor,wid){ /* 🛡️ Partner-Held bekommt seine Ausrüstung sichtbar */
+function applyRemoteGear(weapon,armor,wid,aid){ /* 🛡️ Partner-Held bekommt seine Ausrüstung sichtbar */
   if(!NET.remoteHero)return;
-  var r=_gearOn(NET.remoteHero,weapon|0,armor|0,{weapon:NET.remoteWeapon,armor:NET.remoteArmor},wid||0);
+  var r=_gearOn(NET.remoteHero,weapon|0,armor|0,{weapon:NET.remoteWeapon,armor:NET.remoteArmor},wid||0,arguments[3]||0);
   NET.remoteWeapon=r.weapon;NET.remoteArmor=r.armor;NET.remoteGear={w:weapon|0,a:armor|0};
 }
-function sendMyGear(){try{if(NET.s&&NET.on)NET.s.send({t:"gear",w:equip.weapon|0,a:equip.armor|0,wid:equip.wid||0,from:NET.role});}catch(e){}}
+function sendMyGear(){try{if(NET.s&&NET.on)NET.s.send({t:"gear",w:equip.weapon|0,a:equip.armor|0,wid:equip.wid||0,aid:equip.aid||0,from:NET.role});}catch(e){}}
 function hpUpd(){document.getElementById("hpFill").style.width=Math.max(0,hp/maxHp*100)+"%";
   var hn=document.getElementById("hpNum");if(hn){var ht=Math.max(0,Math.round(hp))+"/"+maxHp;if(hn._t!==ht){hn._t=ht;hn.textContent=ht;}}
   /* ❤️ W7: pulsierende Warn-Vignette bei kritischem HP (<25%) — klares Überlebens-Feedback */
@@ -3553,7 +3587,7 @@ function updDodge(dt){
   if(Math.random()<0.5)burst(nx,player.position.y+0.4,nz,0x9fe8ff,2);
 }
 var _lowT=0,_hurtT=0;
-function damagePlayer(d,src){if(dead)return;if(dodgeT>0)return;if(performance.now()-_hurtT<420)return;_hurtT=performance.now();/* G5: kurze Treffer-Unverwundbarkeit → kein Rudel-Burst-Tod in 1s */sfx(120,0.14,"sawtooth",0.06);/* 💨 Rolle = unverwundbar */d=Math.max(1,d-((ARMOR_DEF[equip.armor]||0)+PERK.def));hp-=d;if(typeof floatText==="function")floatText(player.position.x,player.position.y+2.4,player.position.z,"-"+Math.round(d),"#ff5c6a");hurtFlash();if(navigator.vibrate)navigator.vibrate(35);if(src)dmgDir(src);heroAct("hit",1.4); /* 📳 Handy-Haptik bei Treffer */if(hp<=0){hp=0;playerDie();}else if(hp/maxHp<=0.25&&performance.now()-_lowT>2600){_lowT=performance.now();sfx(660,0.07,"sine",0.05);setTimeout(function(){sfx(520,0.09,"sine",0.05);},140);} /* 🚨 Herzschlag-Warnton bei kritischem HP */hpUpd();}
+function damagePlayer(d,src){if(dead)return;if(dodgeT>0)return;if(performance.now()-_hurtT<420)return;_hurtT=performance.now();/* G5: kurze Treffer-Unverwundbarkeit → kein Rudel-Burst-Tod in 1s */sfx(120,0.14,"sawtooth",0.06);/* 💨 Rolle = unverwundbar */var _adef=(equip.aid&&ASHOP_BY[equip.aid])?ASHOP_BY[equip.aid].def:(ARMOR_DEF[equip.armor]||0);d=Math.max(1,d-(_adef+PERK.def));hp-=d;if(typeof floatText==="function")floatText(player.position.x,player.position.y+2.4,player.position.z,"-"+Math.round(d),"#ff5c6a");hurtFlash();if(navigator.vibrate)navigator.vibrate(35);if(src)dmgDir(src);heroAct("hit",1.4); /* 📳 Handy-Haptik bei Treffer */if(hp<=0){hp=0;playerDie();}else if(hp/maxHp<=0.25&&performance.now()-_lowT>2600){_lowT=performance.now();sfx(660,0.07,"sine",0.05);setTimeout(function(){sfx(520,0.09,"sine",0.05);},140);} /* 🚨 Herzschlag-Warnton bei kritischem HP */hpUpd();}
 // 💥 Skill (RPG-Fusion aus realm): Schockwelle — AoE-Schaden auf alle nahen Monster, ab Level 2, Cooldown
 var skillCd=0,SKILL_CD=7,_skillShown=false;
 function useSkill(){
@@ -4837,7 +4871,7 @@ function onNetMsg(d){
     var tn=performance.now()*0.001;if(NET.rt.tLast>0){var dtp=Math.max(0.02,Math.min(1,tn-NET.rt.tLast));var nvx=(d.x-NET.rt.x)/dtp,nvz=(d.z-NET.rt.z)/dtp;var sp2=Math.hypot(nvx,nvz);if(sp2>12){nvx*=12/sp2;nvz*=12/sp2;}NET.rt.vx=nvx;NET.rt.vz=nvz;}else{NET.rt.vx=0;NET.rt.vz=0;}NET.rt.tLast=tn; /* 🚀 Dead-Reckoning: Geschwindigkeit schätzen */
     NET.rt.x=d.x;NET.rt.z=d.z;NET.rt.ry=d.ry;if(d.hp!==undefined)NET.rt.hp=d.hp;if(NET.remote)NET.remote.visible=true;if(d.st!==undefined)remoteStation(d.st);}
   if(d.t==="char"&&d.id&&d.from!==NET.role){loadRemoteHero(d.id);} /* 🧑‍🤝‍🧑 Partner zeigt seinen echten Helden (Eigen-Echo ignorieren) */
-  if(d.t==="gear"&&d.from!==NET.role){NET.remoteGear={w:d.w|0,a:d.a|0};applyRemoteGear(d.w,d.a,d.wid||0);} /* 🛡️ Partner-Ausrüstung sichtbar */
+  if(d.t==="gear"&&d.from!==NET.role){NET.remoteGear={w:d.w|0,a:d.a|0};applyRemoteGear(d.w,d.a,d.wid||0,d.aid||0);} /* 🛡️ Partner-Ausrüstung sichtbar */
   if(d.t==="down"&&d.from!==NET.role){NET.remoteDowned=true;if(typeof toast==="function")toast("💀 Partner gefallen — lauf zu ihm & belebe ihn!");}
   if(d.t==="up"&&d.from!==NET.role){NET.remoteDowned=false;}
   if(d.t==="emote"&&d.from!==NET.role&&d.e){showEmoteOver(NET.remote,d.e);
@@ -5287,7 +5321,7 @@ window.__nw={
   craft:function(id){doCraft(id);},
   openCraft:openCraft,closeCraft:closeCraft,
   tools:function(){return tools;},
-  gear:function(){return {weapon:equip.weapon,armor:equip.armor,atk:weaponAtk(),def:ARMOR_DEF[equip.armor]||0};},
+  gear:function(){var _ad=(equip.aid&&ASHOP_BY[equip.aid])?ASHOP_BY[equip.aid].def:(ARMOR_DEF[equip.armor]||0);return {weapon:equip.weapon,armor:equip.armor,wid:equip.wid||0,aid:equip.aid||0,atk:weaponAtk(),def:_ad};},
   spawnAnimal:function(sp){return spawnAnimal(player.position.x,player.position.z,sp);},
   toAnimal:function(){for(var i=0;i<animals.length;i++){if(animals[i].alive){player.position.x=animals[i].x-1.5;player.position.z=animals[i].z;return animals[i];}}return spawnAnimal(player.position.x,player.position.z);},
   animals:function(){var n=0;for(var i=0;i<animals.length;i++)if(animals[i].alive)n++;return n;},
