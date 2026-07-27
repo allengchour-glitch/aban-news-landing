@@ -88,9 +88,14 @@ gestapelt/aneinandergereiht entstehen fugenlose Türme und Zeilen.
 | `th7_parkhaus.glb` | 3 offene Decks, Stützen, Rampe | 16,2 × 11,2 × 9,8 | frei |
 | `th7_lagerhalle.glb` | Tonnendach, 2 Rolltore, Laderampe | 20,4 × 12,4 × 9,0 | frei |
 | `th7_bruecke_modul.glb` | Straßenbrücke mit Brüstung + Pfeilern | **14,0** × 9,0 × 5,1 | **reihen: x += 14** |
-| `th7_lieferwagen.glb` | Transporter (parkend) | 2,2 × 4,6 × 2,5 | Front auf −z |
+| `th7_lieferwagen.glb` | Transporter (parkend) | 2,3 × 4,8 × 2,5 | Front auf −z |
 | `th7_lkw.glb` | Sattelzug (parkend) | 2,5 × 10,5 × 3,7 | Front auf −z |
 | `th7_taxi.glb` | Taxi mit Dachschild | 1,9 × 4,3 × 1,7 | Front auf −z |
+
+> 🔧 **Die drei Fahrzeuge wurden am 27.07. neu erzeugt** — bitte die alten GLBs ersetzen.
+> Zwei Fehler waren drin: (a) die Räder standen **quer** (Zylinderachse lag auf der
+> Fahrzeuglängsachse) und ragten seitlich über die Karosserie; (b) die Front zeigte
+> entgegen der Tabelle nach **+z**. Beides ist behoben und per Render belegt.
 | `th7_denkmal.glb` | Denkmal auf Stufensockel | 3,0 × 3,0 × 5,3 | Platzmitte |
 
 Generator: `tools/assets/mk_th7_gebaeude.py`
@@ -133,6 +138,49 @@ bau("th8_laden_offen.glb", 3.9, x, 0, z, Math.PI, false);
 `wand_mit_tuer(cx, cy, laenge, dicke, hoehe, mat, tuer_b, tuer_h, achse, tuer_off)`
 setzt eine Wand als **links + rechts + Sturz** — dadurch entsteht eine echte Öffnung
 ohne Boolean-Operationen. Für eigene Grundrisse einfach wiederverwenden.
+
+---
+
+## 1e. Charge 5 — GROSSE Landmarken (`models/th9_*.glb`)
+
+Bauten, die eine Skyline prägen. Alles deutlich größer als Charge 1–4; gedacht als
+Blickfang an Plätzen, Kreuzungen und am Stadtrand. Alle Höhen sind Meter ab y=0.
+
+| Datei | Was | Maße (B×T×H) | Hinweis |
+|---|---|---|---|
+| `th9_wolkenkratzer.glb` | 3-fach gestufter Turm, Lobby-Portal, Signallicht | 20,0 × 22,8 × **52,6** | höchstes Asset; Portal + Freitreppe auf −z, rote Signalkugel emissiv |
+| `th9_stadion.glb` | Ovale Arena: Rasen, Rang, Traufband, 4 Flutlichtmasten | 55,7 × 43,4 × 24,6 | Masten stehen **außerhalb** der Tribüne; 4 Glas-Tore im Ring |
+| `th9_museum.glb` | Klassizistisch: Kuppel, 8-Säulen-Portikus, Freitreppe | 41,4 × 41,2 × 24,1 | echte Halbkugel-Kuppel auf Tambour; Bronzeportal |
+| `th9_mall.glb` | Einkaufszentrum: Glasfront, Vordach, Werbeturm | 46,0 × 33,0 × 16,3 | Portal mit 2 Türflügeln auf −z, Oberlichter im Dach |
+| `th9_krankenhaus.glb` | H-Grundriss, 6 Etagen, rotes Kreuz, Vorfahrt | 40,4 × 34,3 × 26,5 | überdachte Vorfahrt + Glas-Eingang auf −z |
+| `th9_hotel.glb` | Hochhaus-Hotel, 9 Balkonreihen **beidseitig** | 26,0 × 23,0 × 38,4 | Lobby-Vordach auf −z, Dachterrasse |
+| `th9_burg.glb` | Ringmauer mit Zinnen, echter Tor-Durchlass, 4 Ecktürme, Bergfried | 41,8 × 34,0 × 31,9 | Tor auf −z; Türme haben geschlossenes Deck unter dem Dach |
+| `th9_wasserturm.glb` | Schaft mit Ringgesimsen, Streben, Tank, Kegeldach | 11,1 × 11,2 × 24,2 | gute Landmarke am Stadtrand |
+| `th9_stadtbus.glb` | Gelenkloser Stadtbus mit Zielanzeige | 2,8 × 11,2 × 3,1 | **Front auf −z**, Türen rechts |
+| `th9_feuerwehr.glb` | Löschfahrzeug: Leiter mit Holmen+Sprossen, Blaulicht | 2,8 × 8,1 × 3,0 | **Front auf −z**, Blaulicht emissiv |
+
+Generator: `tools/assets/mk_th9_landmarken.py`
+
+### Platzbedarf beachten
+Diese Bauten sind groß genug, dass sie Straßen und Gehwege verdecken können.
+Grobe Grundflächen zum Freihalten (mit 2 m Luft):
+
+```js
+// Stadion braucht ~60 × 48 m, Wolkenkratzer nur 24 × 27 m (dafür 53 m hoch)
+bau("th9_wolkenkratzer.glb", 52.6, x, 0, z, 0, false);   // Portal schaut nach -z
+bau("th9_stadion.glb",       24.6, x, 0, z, 0, false);
+bau("th9_museum.glb",        24.1, x, 0, z, Math.PI, false);  // Portikus nach Süden
+```
+
+### Neue Helfer im Generator
+- `giebel(cx, cy, cz, halbb, hoehe, tiefe, m)` — Dreiecksgiebel als echtes **Prisma**.
+  (`kegel(vertices=3)` liefert eine Pyramide, keinen Giebel.)
+- `halbkugel(x, y, z, r, m, seg, flach)` — Kuppel, untere Hälfte per `bmesh.ops.bisect_plane`
+  **weggeschnitten** und Loch geschlossen. Basis liegt exakt bei `z`, sitzt also bündig
+  auf einem Tambour. Nur zu skalieren reicht nicht — die untere Hälfte steckt sonst im Bau.
+- `rad(x, y, z, r, breite, m)` — Fahrzeugrad mit korrekter Achse.
+- `dreh180()` / `export(..., drehen=True)` — dreht das fertige Modell um die Welt-Z-Achse.
+  So darf man bequem mit der Front auf Blender −y bauen und landet trotzdem auf three.js −z.
 
 ---
 
@@ -187,6 +235,7 @@ python3 tools/assets/mk_th6_stadt.py      # Riesenstadt-Modelle -> models/th6_*.
 python3 tools/assets/mk_th6_texturen.py   # Fassaden/Belaege -> textures/th6/*.png
 python3 tools/assets/mk_th7_gebaeude.py   # modulare Gebaeude+Fahrzeuge -> models/th7_*.glb
 python3 tools/assets/mk_th8_begehbar.py   # BEGEHBARE Gebaeude -> models/th8_*.glb
+python3 tools/assets/mk_th9_landmarken.py # GROSSE Landmarken -> models/th9_*.glb
 ```
 
 Beide brauchen nur **bpy 5.x + numpy** (im Container vorhanden, kein Blender-Binary nötig,
@@ -216,3 +265,20 @@ Beide Chargen wurden vor der Auslieferung gerendert und mit Augen geprüft:
    (`primitive_cube_add(size=1)` liefert bereits Kantenlänge 1 — zusätzliches `/2` halbiert
    alles) ließ Dächer schweben und Bänke auseinanderfallen. Aus 25 m Entfernung unsichtbar,
    in der Nahaufnahme sofort klar.
+3. **Fensterglas gehört knapp VOR die Wandfläche, nicht hinein.** In Charge 5 saß das Glas
+   0,07 m nach innen versetzt und steckte damit vollständig in der Fassade — die Häuser
+   rendern als weiße Klötze ohne ein einziges Fenster. Offset `−0,02` (leicht vorstehend)
+   plus vorstehende Geschossbänder ergibt die gewünschte Tiefe.
+4. **Zylinderachsen und Ellipsen-Tangenten nachrechnen.** `rot=(π/2,0,0)` legt eine
+   Zylinderachse auf **−y**, nicht auf x — Fahrzeugräder stehen damit quer. Und
+   `rotation_euler[2] = a + π/2` ist nur auf dem **Kreis** die Tangente; auf einer Ellipse
+   braucht es `atan2(B·cos t, −A·sin t)`, sonst klaffen zwischen den Segmenten Schlitze.
+5. **`transform_apply` nie nur mit `rotation=True`,** wenn das Objekt eine nicht-uniforme
+   Skalierung hat — sonst wird die Box geschert. Rotation und Skalierung zusammen anwenden.
+
+### Prüfvorgehen, das sich bewährt hat
+Pro Modell **zwei** Renders: eine 3/4-Totale auf die Schauseite (−z) **und** eine
+Nahaufnahme auf Augenhöhe. Für Rundbauten zusätzlich eine Aufsicht — das Stadion sah
+von schräg unten korrekt aus, erst von oben war zu sehen, dass eine Linienfläche den
+kompletten Rasen zudeckte. Dazu Dreiecke zählen (Bevel-Kontrolle) und die Bounding-Box
+messen (Unterkante muss exakt 0,00 sein).
