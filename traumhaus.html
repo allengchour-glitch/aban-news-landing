@@ -1835,6 +1835,12 @@ setTimeout(function baueGebaeude(){
     bau("th6_fichte.glb",5.5,46,0,90,0,false);bau("th6_fichte.glb",5.5,90,0,84,1,false);
     bau("th6_billboard.glb",6.0,0,0,-84,Math.PI,false);
     /* ── th8: BEGEHBARE Gebäude (Altstadt-Band West; Tür = -z → rot dreht sie zur Strasse) ── */
+    /* 🧱 Kollider zu den begehbaren Gebaeuden (Masse aus models/TH5-ASSETS.md; rot=PI/2 dreht B/T) */
+    addSolid(-62,30,17,25,{a:"x",at:-70.5,c:30,w:4.5});     /* Markthalle: Tor an der -x-Seite */
+    addSolid(-44,12,12.8,10.8,{a:"z",at:17.4,c:-44,w:3.0}); /* Stadthaus: Tuer +z (rot=PI) */
+    addSolid(-44,30,8.6,9.6,{a:"x",at:-39.7,c:30,w:3.0});   /* Laden: Tuer +x (rot=-PI/2) */
+    addSolid(-62,50,14.8,12.8,{a:"z",at:56.4,c:-62,w:4.5}); /* Werkstatt: Tor +z (rot=PI) */
+    addSolid(-58,-62,27,15,{a:"x",at:-71.5,c:-62,w:4.0});   /* Kathedrale: Portal -x (rot=PI/2) */
     bau("th8_markthalle_offen.glb",11,-62,0,30,Math.PI/2,false);
     bau("th8_stadthaus_offen.glb",9.2,-44,0,12,Math.PI,false);
     bau("th8_laden_offen.glb",3.9,-44,0,30,-Math.PI/2,false);
@@ -3655,6 +3661,23 @@ function steerVec(si){
   if(MPs&&mpHost&&si===1){var ns=sims[1]&&sims[1].netSteer;
     if(ns&&performance.now()-ns.t<700&&(Math.abs(ns.x)>0.12||Math.abs(ns.z)>0.12))return {x:ns.x,z:ns.z};}
   return null;}
+/* 🧱 WELT-KOLLISION (User: "wände sollten nicht durchlaufen können"): Rechteck-Ringe pro Gebaeude.
+   Aussenwand blockiert, aber die Tueroeffnung (door: Achse+Mitte+Breite) laesst durch → begehbar bleibt begehbar.
+   Reine Datenliste, keine Physik-Engine: guenstig auf dem Handy. */
+var WORLD_SOLIDS=[];
+function addSolid(cx,cz,w,d,door){WORLD_SOLIDS.push({x:cx,z:cz,hw:w/2,hd:d/2,door:door||null});}
+function inSolid(x,z){
+  for(var i=0;i<WORLD_SOLIDS.length;i++){var s=WORLD_SOLIDS[i];
+    var dx=x-s.x,dz=z-s.z;
+    if(dx<-s.hw||dx>s.hw||dz<-s.hd||dz>s.hd)continue;      /* ausserhalb */
+    var inner=0.55;                                          /* Wandstaerke */
+    if(dx>-s.hw+inner&&dx<s.hw-inner&&dz>-s.hd+inner&&dz<s.hd-inner)continue; /* im Innenraum: frei */
+    if(s.door){                                              /* Tueroeffnung frei lassen */
+      var d9=s.door;
+      if(d9.a==="z"&&Math.abs(dz-(d9.at-s.z))<inner+0.15&&Math.abs(dx-(d9.c-s.x))<d9.w/2)continue;
+      if(d9.a==="x"&&Math.abs(dx-(d9.at-s.x))<inner+0.15&&Math.abs(dz-(d9.c-s.z))<d9.w/2)continue;}
+    return true;}
+  return false;}
 function steerMove(s9,sv,dt,sprint){
   var lx=-Math.sin(camA),lz=-Math.cos(camA),rx=-lz,rz=lx;
   var mx=(-sv.z)*lx+sv.x*rx,mz=(-sv.z)*lz+sv.x*rz;
@@ -3668,6 +3691,8 @@ function steerMove(s9,sv,dt,sprint){
   var cx1=cellX(s9.x),cy1=cellY(s9.z),cx2=cellX(nx),cy2=cellY(nz);
   if(cx2!==cx1&&inLot(cx1,cy1)&&inLot(cx2,cy1)&&edgeBlocked(cx1,cy1,cx2,cy1))nx=s9.x;
   if(cy2!==cy1&&inLot(cx1,cy1)&&inLot(cx1,cy2)&&edgeBlocked(cx1,cy1,cx1,cy2))nz=s9.z;
+  if(inSolid(nx,s9.z))nx=s9.x;  /* 🧱 Gebaeude-Waende: pro Achse pruefen → Entlanggleiten bleibt moeglich */
+  if(inSolid(s9.x,nz))nz=s9.z;
   s9.x=nx;s9.z=nz;s9.rot=Math.atan2(mx,mz);s9.walkT=(s9.walkT||0)+dt*9*(sprint?1.5:1);}
 // Folge-Kamera: beim aktiven Steuern schneller + leicht vorausschauend (fühlt sich flott an)
 function updFollow(dt){
