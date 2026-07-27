@@ -92,11 +92,12 @@ gestapelt/aneinandergereiht entstehen fugenlose Türme und Zeilen.
 | `th7_lkw.glb` | Sattelzug (parkend) | 2,5 × 10,5 × 3,7 | Front auf −z |
 | `th7_taxi.glb` | Taxi mit Dachschild | 1,9 × 4,3 × 1,7 | Front auf −z |
 
+| `th7_denkmal.glb` | Denkmal auf Stufensockel | 3,0 × 3,0 × 5,3 | Platzmitte |
+
 > 🔧 **Die drei Fahrzeuge wurden am 27.07. neu erzeugt** — bitte die alten GLBs ersetzen.
 > Zwei Fehler waren drin: (a) die Räder standen **quer** (Zylinderachse lag auf der
 > Fahrzeuglängsachse) und ragten seitlich über die Karosserie; (b) die Front zeigte
 > entgegen der Tabelle nach **+z**. Beides ist behoben und per Render belegt.
-| `th7_denkmal.glb` | Denkmal auf Stufensockel | 3,0 × 3,0 × 5,3 | Platzmitte |
 
 Generator: `tools/assets/mk_th7_gebaeude.py`
 
@@ -242,6 +243,78 @@ Generator: `tools/assets/mk_th11_moebel.py`
 
 ---
 
+## 1h. Charge 9 — VERGNÜGUNGSVIERTEL, begehbar (`models/th12_*.glb`)
+
+Nachtleben-Bauten, alle betretbar. Familienfreundlich gehalten: die Spieltische sind
+Deko, es gibt kein Spielgeld, keine Gewinnanzeigen und keine Waffen.
+
+| Datei | Was | Maße (B×T×H) | Innenleben |
+|---|---|---|---|
+| `th12_casino.glb` | Spielsaal im Vegas-Look | 43,0 × 40,6 × 12,5 | 48 Automaten, 5 Spieltische mit Filz, Bar mit Hockern, 2 Kronleuchter, Musterteppich, Vorfahrt mit Neon-Vordach, Leuchtschild mit Lauflicht |
+| `th12_nachtclub.glb` | Club über 2 Ebenen | 30,0 × 25,4 × 10,4 | 12 × 12 m Tanzfläche aus Leuchtfeldern, DJ-Podest mit LED-Wand, Bar, Galerie mit Treppe, Discokugel, 6 Lichttraversen |
+| `th12_bowlingbahn.glb` | 6 Bahnen | 36,0 × 28,2 × 6,6 | Bahnen mit Rinnen, je 10 Pins, Kugelrückgabe mit Kugeln, Monitore, Sitzgruppen, Schuhausgabe |
+| `th12_spielhalle.glb` | Arcade | 28,0 × 22,2 × 5,7 | 36 Automaten, 3 Airhockey-Tische, 6 Greifautomaten, Preistheke, viel Neon |
+| `th12_theater.glb` | Bühne + Zuschauerraum | 40,0 × 40,8 × 13,7 | Bühne 1,10 m hoch mit Portal und Samtvorhang, 8 ansteigende Reihen mit Mittelgang, Rang mit zwei Aufgängen, Kronleuchter, Portikus |
+
+Generator: `tools/assets/mk_th12_vergnuegen.py`
+
+### Zusätzliche Helfer
+- `teppich(cx, cy, B, T, z, m1, m2, feld)` — zweifarbiger Musterboden. Ein einfarbiger
+  Saal wirkt in diesen Größen tot.
+- `leuchtband(...)` — Reihe **einzelner** Leuchtkästen statt eines durchgehenden Balkens.
+- `spieltisch(px, py, ...)` — ovaler Tisch, Höhe 0,78 m über Boden.
+- `automat(px, py, ..., rot)` — Spielautomat, Bedienseite auf −y, per `rot` drehbar
+  (Rücken-an-Rücken-Reihen mit `rot=math.pi`).
+
+---
+
+## 1i. Charge 10 — JAHRMARKT (`models/th13_*.glb`)
+
+Fahrgeschäfte und Buden, alle bunt und mit emissiven Lichtern — funktionieren auch im
+Nachtrender.
+
+| Datei | Maße (B×T×H) | Hinweis |
+|---|---|---|
+| `th13_riesenrad.glb` | 24,4 × 12,6 × **26,0** | 12 offene Gondeln, A-Böcke, Lichterkette |
+| `th13_freefall_turm.glb` | 11,0 × 11,1 × **30,4** | Gondelring, Lichter, offener Zaun |
+| `th13_karussell.glb` | 11,6 × 11,8 × 6,3 | 8 Sitze, Mittelsäule, Lichterrand |
+| `th13_autoscooter.glb` | 19,5 × 13,7 × 8,5 | Fahrbahn, Bande, 6 Scooter, Neonschriftzug |
+| `th13_achterbahn_modul.glb` | **12,0** × 2,6 × 6,7 | **reihen: x += 12,0**, knickfrei |
+| `th13_festzelt.glb` | 18,4 × 14,4 × 6,5 | begehbar, Biertischgarnituren, Girlanden |
+| `th13_lichterbogen.glb` | **9,0** × 3,6 × 9,7 | Eingangsbogen, begehbar durch |
+| `th13_losbude.glb` | 6,2 × 5,2 × 4,3 | Theke, Preisregal, Markise |
+| `th13_imbissbude.glb` | 6,0 × 9,6 × 4,3 | Ausgabefenster, Menütafel, Schirm |
+| `th13_zuckerwatte_stand.glb` | 4,0 × 4,1 × 3,3 | Maschine, rosa Markise |
+
+Generator: `tools/assets/mk_th13_jahrmarkt.py`
+
+> ⚠️ **Schrift auf Schildern spiegelt.** Wer von vorn (Blender +y = three.js −z) auf ein
+> Schild schaut, sieht Welt-+x **links**. Buchstaben müssen also in −x laufen, sonst steht
+> der Schriftzug spiegelverkehrt. Der Helfer `dotword()` macht das per Vorgabe richtig.
+
+---
+
+## 1j. Charge 11 — CASINO- UND BAR-EINRICHTUNG (`models/th14_*.glb`)
+
+| Datei | Maße (B×T×H) | Hinweis |
+|---|---|---|
+| `th14_spielautomat.glb` | 1,64 × 0,81 × 1,88 | Automat + Hocker (Sitz 0,64) |
+| `th14_automatenreihe.glb` | **1,60** × 1,70 × 2,17 | 4 Automaten, **modular: x += 1,60** |
+| `th14_roulettetisch.glb` | 2,65 × 1,55 × 1,12 | Platte 0,78, Kessel bis 1,12 |
+| `th14_kartentisch.glb` | 3,12 × 1,31 × 0,94 | halbrund, 5 Hocker |
+| `th14_pokertisch.glb` | 3,89 × 2,98 × 0,95 | 8 Plätze mit Stühlen |
+| `th14_casinobar.glb` | 4,72 × 3,22 × 2,45 | Tresen 1,10, Rückbuffet, 5 Barhocker |
+| `th14_neonschild_gross.glb` | 5,00 × 1,30 × 7,85 | Tafel 5 × 3 m auf z 4,00–7,00 |
+| `th14_dj_pult.glb` | 2,32 × 0,81 × 1,36 | 2 Decks, Mixer, LED-Front |
+| `th14_tanzflaeche.glb` | **6,00 × 6,00** × 0,15 | 8×8 Leuchtfelder, **kachelbar: 6,00** |
+| `th14_samtkordel.glb` | 2,19 × 0,39 × 0,97 | Pfostenabstand 1,80 |
+| `th14_discokugel.glb` | 0,71 × 0,72 × 1,36 | **hängt**: Deckenplatte auf z = 3,60 |
+| `th14_kronleuchter.glb` | 1,87 × 1,88 × 2,05 | **hängt**: Deckenrosette auf z = 4,00 |
+
+Generator: `tools/assets/mk_th14_spieltische.py`
+
+---
+
 ## 2. Texturen (`textures/th5/*.png`)
 
 512×512, **nahtlos kachelbar** (Wrap-Arithmetik, verifiziert per 2×2-Kachel-Kontaktbogen).
@@ -298,7 +371,23 @@ Passend zu den Landmarken der Charge 5. Alle 512×512, nahtlos (Randdifferenz ge
 
 Generator: `tools/assets/mk_th9_texturen.py`
 
+### Charge 4 — Vergnügungsviertel (`textures/th12/*.png`)
+
+| Datei | Wofür | 1 Kachel ≈ | `repeat` pro 20 m |
+|---|---|---|---|
+| `casinoteppich.png` | Casino-/Foyerboden | 1,8 m | 10–12 |
+| `spielfilz.png` | Poker- und Roulettetische | 0,8 m | 24 (1–3 pro Tisch) |
+| `bowlingahorn.png` | Bowlingbahnen, Anlaufzone | 1,2 m | 16–18 |
+| `samtvorhang.png` | Theatervorhang, Wandbespannung | 1,2 m | 16 |
+| `neonkacheln.png` | Tanzfläche, LED-Wände | 2 m | 10 |
+| `sternenhimmel.png` | Theater-/Saaldecke | 4,5 m | 4–5 |
+| `goldstuck.png` | Theaterwände, Casino-Pilaster | 2 m | 10 |
+| `arcade_boden.png` | Spielhalle, Zuschauerbereiche | 2,5 m | 8 |
+
+Generator: `tools/assets/mk_th12_texturen.py`
+
 ---
+
 
 ## 3. Nachschub produzieren
 
@@ -315,6 +404,10 @@ python3 tools/assets/mk_th9_landmarken.py # GROSSE Landmarken -> models/th9_*.gl
 python3 tools/assets/mk_th9_texturen.py   # Grossbau-Texturen -> textures/th9/*.png
 python3 tools/assets/mk_th10_grossbauten.py  # BEGEHBARE Grossbauten -> models/th10_*.glb
 python3 tools/assets/mk_th11_moebel.py    # Innenausstattung -> models/th11_*.glb
+python3 tools/assets/mk_th12_vergnuegen.py   # Vergnuegungsviertel -> models/th12_*.glb
+python3 tools/assets/mk_th12_texturen.py  # Casino/Club/Theater -> textures/th12/*.png
+python3 tools/assets/mk_th13_jahrmarkt.py    # Jahrmarkt -> models/th13_*.glb
+python3 tools/assets/mk_th14_spieltische.py  # Casino-Einrichtung -> models/th14_*.glb
 ```
 
 Beide brauchen nur **bpy 5.x + numpy** (im Container vorhanden, kein Blender-Binary nötig,
@@ -365,6 +458,16 @@ Beide Chargen wurden vor der Auslieferung gerendert und mit Augen geprüft:
 8. **Stützen und Einbauten neben die Durchgänge, nicht hinein.** `oeffnungs_achsen()`
    liefert die Pfeiler-Achsen — sonst steht beim Eintreten eine Säule im Portal oder ein
    Schaufenster mauert das Eingangstor zu.
+9. **`rotation_euler[2] = π` auf einem symmetrischen Quader ist ein No-Op.** Ein damit
+   „gespiegelter" Spielautomat schaute weiter in dieselbe Richtung, und die
+   Rücken-an-Rücken-Reihe stand Front-an-Rücken mit 8 cm Abstand. Gespiegelt wird über
+   das **Vorzeichen der Offsets**, nicht über eine Rotation. Zwei Prüfdurchgänge haben
+   genau diesen Fehler unabhängig voneinander gefunden.
+10. **Metallic über ~0,4 rendert in three.js ohne Environment-Map fast schwarz.** Für
+    Chrom, Messing und Spiegel höchstens 0,6–0,8 bei niedriger Roughness ansetzen.
+11. **Treppenlängen ausrechnen, nicht schätzen.** `n = round(Höhe/Steigung)` bestimmt die
+    Lauflänge; wer den Startpunkt aus einer geratenen Stufenzahl ableitet, landet
+    zuverlässig daneben — und die Treppe endet in der Luft oder rammt die Decke.
 
 ### Prüfvorgehen, das sich bewährt hat
 Pro Modell **zwei** Renders: eine 3/4-Totale auf die Schauseite (−z) **und** eine
