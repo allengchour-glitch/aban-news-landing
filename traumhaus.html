@@ -1890,6 +1890,22 @@ setTimeout(function baueGebaeude(){
     bau("th8_laden_offen.glb",3.9,-44,0,30,-Math.PI/2,false);
     bau("th8_werkstatt_offen.glb",5.3,-62,0,50,Math.PI,false);
     bau("th8_kirche_offen.glb",21,-58,0,-62,Math.PI/2,false);
+    (function glockenturm(){ /* ⛪ Die Kathedrale sah von aussen wie ein schmuckloser Klotz aus — Turm gibt ihr die Silhouette */
+      var g=new THREE.Group(),tm=betMat(0xe4ddcc,0.9),dm=stdMat(0x5a6470,0.65);
+      var sch=new THREE.Mesh(new THREE.BoxGeometry(5.2,26,5.2),tm);sch.position.y=13;sch.castShadow=true;sch.receiveShadow=true;g.add(sch);
+      var gs=new THREE.Mesh(new THREE.BoxGeometry(5.8,0.6,5.8),dm);gs.position.y=26.3;g.add(gs);
+      var sp=new THREE.Mesh(new THREE.ConeGeometry(3.9,8,4),dm);sp.rotation.y=Math.PI/4;sp.position.y=30.6;sp.castShadow=true;g.add(sp);
+      var k1=new THREE.Mesh(new THREE.BoxGeometry(0.22,2.2,0.22),stdMat(0xc8a84a,0.35));k1.position.y=35.6;g.add(k1);
+      var k2=new THREE.Mesh(new THREE.BoxGeometry(1.1,0.22,0.22),stdMat(0xc8a84a,0.35));k2.position.y=36.1;g.add(k2);
+      /* Schallfenster + leuchtendes Zifferblatt (nachts) */
+      [[0,2.68],[0,-2.68],[2.68,0],[-2.68,0]].forEach(function(o){
+        var sf=new THREE.Mesh(new THREE.BoxGeometry(Math.abs(o[0])>0?0.08:1.7,3.2,Math.abs(o[0])>0?1.7:0.08),stdMat(0x3a3f48,0.6));
+        sf.position.set(o[0],21,o[1]);g.add(sf);});
+      var zb=new THREE.Mesh(new THREE.CircleGeometry(1.5,20),new THREE.MeshStandardMaterial({color:0xf4ecd8,emissive:0xffe8a8,emissiveIntensity:0,roughness:0.4}));
+      zb.position.set(0,15.5,2.63);g.add(zb);dorfFenster.push(zb.material);
+      g.position.set(-70.5,0,-68);scene.add(g);
+      addSolid(-70.5,-68,5.2,5.2,null);
+    })();
     bau("th6_muellcontainer.glb",1.4,-54,0,48,0.4,false);
     bau("th6_stromkasten.glb",1.3,-38,0,54,0,false);
     /* ── th7: Downtown-Plus (modularer Turm, Parkhaus, Lagerhalle, Fahrzeuge, Denkmal) ── */
