@@ -53,7 +53,22 @@ def runden(width=0.016, segments=3, winkel=42):
         try: bpy.ops.object.shade_auto_smooth(angle=math.radians(38))
         except Exception: pass   # KEIN shade_smooth()-Fallback: das mittelt alles rund
 
-def export(name, bevel=0.016, seg=3):
+def dreh180():
+    """Modell um die Welt-Z-Achse drehen: Front von -y nach +y (= three.js -z).
+    Die Fahrzeuge sind der Bequemlichkeit halber mit der Front auf -y gebaut,
+    die Bibliotheks-Konvention ist aber Schauseite/Front auf three.js -z."""
+    for o in list(bpy.context.scene.objects):
+        if o.type != 'MESH': continue
+        bpy.context.view_layer.objects.active = o
+        for s_ in bpy.context.scene.objects: s_.select_set(False)
+        o.select_set(True)
+        o.rotation_euler[2] += math.pi
+        o.location = (-o.location[0], -o.location[1], o.location[2])
+        # Rotation UND Skalierung zusammen anwenden, sonst schert die Box.
+        bpy.ops.object.transform_apply(location=False, rotation=True, scale=True)
+
+def export(name, bevel=0.016, seg=3, drehen=False):
+    if drehen: dreh180()
     runden(bevel, seg)
     for o in bpy.context.scene.objects: o.select_set(True)
     p1 = os.path.join(OUT_GLB, name + ".glb")
@@ -181,7 +196,9 @@ def bruecke_modul():
 
 # ============================================================ FAHRZEUGE (parkend)
 def _rad(x, y, z, r=0.36, b=0.24, m=None):
-    zyl(x, y, z, r, b, m, 14, rot=(math.pi/2, 0, 0))
+    # Achse MUSS in x liegen (Fahrzeuglaenge = y). rot=(pi/2,0,0) legt die Zylinderachse
+    # auf -y = Laengsachse -> das Rad steht quer und ragt seitlich raus. Per Render belegt.
+    zyl(x, y, z, r, b, m, 14, rot=(0, math.pi/2, 0))
 
 def lieferwagen():
     neu()
@@ -198,7 +215,7 @@ def lieferwagen():
         _rad(sx,sy,0.40, 0.40,0.26, rad); _rad(sx*1.02,sy,0.40, 0.20,0.28, fel)
     box(-0.85,-2.62,0.85, 0.35,0.10,0.22, mat("Licht",(0.95,0.92,0.80),0.3))
     box( 0.85,-2.62,0.85, 0.35,0.10,0.22, mat("Licht2",(0.95,0.92,0.80),0.3))
-    export("th7_lieferwagen", 0.014, 3)
+    export("th7_lieferwagen", 0.014, 3, drehen=True)
 
 def lkw():
     neu()
@@ -213,7 +230,7 @@ def lkw():
     for sy in (-2.9,-1.2, 0.6, 2.2, 3.8):
         for sx in (-1.06, 1.06):
             _rad(sx, sy, 0.50, 0.50, 0.30, rad)
-    export("th7_lkw", 0.016, 3)
+    export("th7_lkw", 0.016, 3, drehen=True)
 
 def taxi():
     neu()
@@ -227,11 +244,13 @@ def taxi():
     box(0,-1.02,1.22, 1.60,0.10,0.60, glas)             # Front
     box(0, 1.32,1.22, 1.60,0.10,0.60, glas)             # Heck
     for sx in (-0.87, 0.87):
-        box(sx,0.15,1.20, 0.08,2.10,0.58, glas)         # Seitenscheiben
-    box(0,0.15,1.62, 0.70,0.34,0.20, dkl)               # Taxi-Schild
+        for sy,sl in ((-0.45,0.85),(0.72,0.85)):        # 2 Fenster + B-Saeule dazwischen
+            box(sx,sy,1.18, 0.08,sl,0.44, glas)
+    box(0,0.15,1.53, 1.76,2.36,0.12, gelb)              # Dach (sonst wirkt die Kabine wie Glasklotz)
+    box(0,0.15,1.65, 0.70,0.34,0.20, dkl)               # Taxi-Schild
     for sx,sy in ((-0.82,-1.35),(0.82,-1.35),(-0.82,1.35),(0.82,1.35)):
         _rad(sx,sy,0.34, 0.34,0.22, rad); _rad(sx*1.03,sy,0.34, 0.17,0.24, fel)
-    export("th7_taxi", 0.012, 3)
+    export("th7_taxi", 0.012, 3, drehen=True)
 
 # ============================================================ LANDMARKEN
 def denkmal():
