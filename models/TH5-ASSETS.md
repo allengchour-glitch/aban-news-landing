@@ -88,6 +88,24 @@ Generator: `tools/assets/mk_th6_stadt.py`
 ladeTex("textures/th5/kopfstein.png", 8, 8, function(t){ mat.map = t; mat.needsUpdate = true; });
 ```
 
+### Charge 2 — Riesenstadt (`textures/th6/*.png`)
+
+| Datei | Motiv | Empfohlenes `repeat` | Wofür |
+|---|---|---|---|
+| `glasfassade.png` | Glasraster, Scheiben getönt | 1 pro 3 Etagen | **Downtown-Hochhäuser** |
+| `betonfassade.png` | Beton mit Fensterraster + Sims | 1 pro 3 Etagen | Wohnblöcke, Bürobauten |
+| `asphalt.png` | Feine Fahrbahnkörnung | 8–14 pro 20 m | Straßen, Parkplätze |
+| `dachpappe.png` | Bahnen mit Kanten | 3–6 | Flachdächer |
+| `marmor.png` | Adern, hell | 1–2 | Rathaus, Foyers, Denkmäler |
+| `metallgitter.png` | Feines Gitter | 4–8 | Zäune, Roste, Geländer |
+| `acker.png` | Furchen | 4–8 | Bauernhof, Felder |
+| `sand.png` | Wellen | 6–12 | Strand, Seeufer, Spielplatz |
+
+Generator: `tools/assets/mk_th6_texturen.py`
+
+**Fassaden-Tipp:** `glasfassade`/`betonfassade` mit `repeat.set(1, etagen/3)` auf die
+Turmkörper legen — dann sitzt das Fensterraster maßstäblich, ohne Geometrie zu ändern.
+
 ---
 
 ## 3. Nachschub produzieren
@@ -97,6 +115,8 @@ Die Generatoren liegen in `tools/assets/`:
 ```bash
 python3 tools/assets/mk_th5_modelle.py    # Modelle -> models/th5_*.glb + models/stl/
 python3 tools/assets/mk_th5_texturen.py   # Texturen -> textures/th5/*.png
+python3 tools/assets/mk_th6_stadt.py      # Riesenstadt-Modelle -> models/th6_*.glb
+python3 tools/assets/mk_th6_texturen.py   # Fassaden/Belaege -> textures/th6/*.png
 ```
 
 Beide brauchen nur **bpy 5.x + numpy** (im Container vorhanden, kein Blender-Binary nötig,
