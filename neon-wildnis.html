@@ -1046,7 +1046,8 @@ function pickMob(x,z){ // gewichtete Auswahl, härtere Gegner erst an späteren 
 function spawnMonster(forceId,fx,fz){ /* ⚔️ W4: optional forceId/fx/fz (nur Tests) — Spielpfad ruft ohne Argumente auf */
   var x,z;
   if(fx!=null){x=fx;z=fz;}
-  else{var a=rnd()*6.28,rd=32+rnd()*14;x=player.position.x+Math.cos(a)*rd;z=player.position.z+Math.sin(a)*rd;}
+  else{var a=rnd()*6.28,rd=32+rnd()*14;x=player.position.x+Math.cos(a)*rd;z=player.position.z+Math.sin(a)*rd;
+    if(inStadt(x,z,2)){var _mn=Math.max(Math.abs(x),Math.abs(z))||1,_f9=68/_mn;x*=_f9;z*=_f9;}} /* 🏰 nie in der Stadt spawnen — radial vor die Mauer schieben */
   var M=null;
   if(forceId){for(var fi2=0;fi2<MOBS.length;fi2++)if(MOBS[fi2].id===forceId)M=MOBS[fi2];if(!M)return 0;}
   else M=pickMob(x,z);
@@ -1147,6 +1148,7 @@ function updBossBar(){var boss=null;for(var i=0;i<monsters.length;i++)if(monster
   if(boss){el.classList.remove("hide");document.getElementById("bossFill").style.width=Math.max(0,boss.hp/boss.maxhp*100)+"%";}
   else el.classList.add("hide");}
 function clearWarn(e){if(e&&e.warnRing){scene.remove(e.warnRing);e.warnRing.geometry.dispose();e.warnRing.material.dispose();e.warnRing=null;}} /* 👑 W8: Boss-Warnring aufräumen, falls Boss mid-Windup stirbt */
+function inStadt(x,z,pad){return Math.max(Math.abs(x),Math.abs(z))<64+(pad||0);} /* 🏰 Mauer-Quadrat ±64 um (0,0) */
 function updMonsters(dt){
   for(var i=monsters.length-1;i>=0;i--){var e=monsters[i];e.t+=dt;
     if(e.rig)e.rig.mixer.update(dt); /* ⚔️ W4: Monster-Anim-Mixer */
@@ -1216,7 +1218,9 @@ function updMonsters(dt){
       if(e.windT<=0){var d2=Math.hypot(player.position.x-e.x,player.position.z-e.z);
         if(d2<1.9)damagePlayer((e.dmg||(e.boss?14:6))+(e.boss?0:Math.min(3,Math.floor(nights/3))),e); /* Nächte machen Mobs moderat bissiger */
         e.atkCd=(e.rig&&e.rig.actions.attack)?1.15:1;}}
-    else if(d>1.6){e.x+=dx/d*spd*dt;e.z+=dz/d*spd*dt;
+    else if(d>1.6){var _nmx=e.x+dx/d*spd*dt,_nmz=e.z+dz/d*spd*dt; /* 🏰 User: "keine Monster in der Stadt" — Mauer stoppt sie */
+      if(!inStadt(e.x,e.z,-1)&&inStadt(_nmx,_nmz,-1)){ /* würde eindringen → an der Mauer entlang statt hinein */ }
+      else{e.x=_nmx;e.z=_nmz;}
       if(e.rig&&e.rig.cur!=="attack")setAnim(e.rig,e.rig.actions.walk?"walk":"idle",0.2);}
     else{ // Angriff -> nur Wind-up starten (Schaden kommt nach windT, wenn man nicht wegrollt)
       if(!e.atkCd||e.atkCd<=0){
@@ -2263,10 +2267,10 @@ function decorateWorldLate(){
   function inVZoneL(x,z){var vc=window._villageClear;if(!vc)return (Math.abs(x)<64&&Math.abs(z)<64);for(var i=0;i<vc.length;i++){var d=vc[i].clear;if((x-vc[i].x)*(x-vc[i].x)+(z-vc[i].z)*(z-vc[i].z)<d*d)return true;}return false;}
   /* 🚫 Überschneidungs-Schutz: Scatter-Belegung, vorbefüllt mit Bäumen/Felsen → neue Props überlappen weder einander noch Ressourcen */
   var _fsOcc=[];for(var _ri=0;_ri<resources.length;_ri++)_fsOcc.push({x:resources[_ri].x,z:resources[_ri].z});
-  function farScatter(n,minR,fn){for(var i=0;i<n;i++){var a=rnd2()*6.28,rd=minR+rnd2()*(half-minR);var x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(inVZoneL(x,z))continue;
+  function farScatter(n,minR,fn){for(var i=0;i<n;i++){var a=rnd2()*6.28,rd=minR+rnd2()*(half-minR);var x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(inVZoneL(x,z))continue;if(Math.abs(Math.max(Math.abs(x),Math.abs(z))-64)<4)continue; /* 🏰 nicht in die Stadtmauer */
     var clash=false;for(var k=0;k<_fsOcc.length;k++){var o=_fsOcc[k],ddx=x-o.x,ddz=z-o.z;if(ddx*ddx+ddz*ddz<10.24){clash=true;break;}}if(clash)continue; /* ≥3.2m Abstand */
     _fsOcc.push({x:x,z:z});fn(x,z);}}
-  function spotFar(minR){for(var t=0;t<12;t++){var a=rnd2()*6.28,rd=minR+rnd2()*(half2-minR),x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(!inVZoneL(x,z))return {x:x,z:z};}var a2=rnd2()*6.28,rd2=minR+rnd2()*(half2-minR);return {x:Math.cos(a2)*rd2,z:Math.sin(a2)*rd2};}
+  function spotFar(minR){for(var t=0;t<12;t++){var a=rnd2()*6.28,rd=minR+rnd2()*(half2-minR),x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(!inVZoneL(x,z)&&Math.abs(Math.max(Math.abs(x),Math.abs(z))-64)>=4)return {x:x,z:z};}var a2=rnd2()*6.28,rd2=minR+rnd2()*(half2-minR);return {x:Math.cos(a2)*rd2,z:Math.sin(a2)*rd2};}
   // 📦 Mehr verstreute Gegenstände (Vielfalt) — Fässer/Kisten/Karren/Zäune/Essen
   var STUFF=[["cc0_barrel",1.0],["cc0_crate",1.0],["ftk_cart",1.6],["cc0_fence",1.2],["fd_pie",0.6],["fd_sausage",0.6],["fd_burger",0.6],["cc0_tent",1.8],["ck_catapult",2.2],["ftk_lantern",1.5],["fn_stool",0.9],["fn_chair",0.9],["fn_plant",1.0],["dk_chest",0.9],["cc0_log_stack",1.0],["fn_bookcase",1.3],["cc0_campfire",0.7],
     // 🆕 Survival/Piraten/Möbel/Dungeon-Streuprops
@@ -2588,7 +2592,7 @@ function decorateWorld(){
   for(var _iv=1;_iv<_nV;_iv++){var _va=rnd()*6.28,_vrd=70+rnd()*(half-90);_vc.push({x:Math.cos(_va)*_vrd,z:Math.sin(_va)*_vrd,clear:22});}
   window._villageClear=_vc;
   function inVZone(x,z){for(var i=0;i<_vc.length;i++){var d=_vc[i].clear;if((x-_vc[i].x)*(x-_vc[i].x)+(z-_vc[i].z)*(z-_vc[i].z)<d*d)return true;}return false;}
-  function farScatter(n,minR,fn){for(var i=0;i<n;i++){var a=rnd()*6.28,rd=minR+rnd()*(half-minR);var x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(inVZone(x,z))continue;fn(x,z);}}
+  function farScatter(n,minR,fn){for(var i=0;i<n;i++){var a=rnd()*6.28,rd=minR+rnd()*(half-minR);var x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(inVZone(x,z))continue;if(Math.abs(Math.max(Math.abs(x),Math.abs(z))-64)<4)continue;fn(x,z);}} /* 🏰 Mauer-Band frei */
   // --- Deko-Bäume in Sorten (nicht abbaubar, nur Dichte/Look) ---
   var TREES=[["cc0_tree_pine",5.2],["cc0_tree_oak",4.6],["cc0_tree_default",4.4],["cc0_tree_palm",5.8],["ftk_tree",5.0],["ck_tree",5.4],
     ["nt_pine",5.4],["nt_oak",4.8],["nt_tree",4.4],["nt_tree_leafy",4.6],["nt_palm",5.8]];
@@ -2633,7 +2637,7 @@ function decorateWorld(){
   farScatter(Math.round(26*VF),14,function(x,z){var _lry=rnd()*6.28;var m=cc0inst("cc0_log_stack",1.0);if(!m)return;m.position.set(x,groundH(x,z),z);m.rotation.y=_lry;scene.add(m);}); /* Schwarm-2 P1: rnd() vor Early-Return */
   // --- 🌟 Einzigartige Welt-Orte (jede Umgebung anders) ---
   var half2=MAP/2-60;
-  function spotFar(minR){for(var t=0;t<12;t++){var a=rnd()*6.28,rd=minR+rnd()*(half2-minR),x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(!inVZone(x,z))return {x:x,z:z};}var a2=rnd()*6.28,rd2=minR+rnd()*(half2-minR);return {x:Math.cos(a2)*rd2,z:Math.sin(a2)*rd2};}
+  function spotFar(minR){for(var t=0;t<12;t++){var a=rnd()*6.28,rd=minR+rnd()*(half2-minR),x=Math.cos(a)*rd,z=Math.sin(a)*rd;if(!inVZone(x,z)&&Math.abs(Math.max(Math.abs(x),Math.abs(z))-64)>=4)return {x:x,z:z};}var a2=rnd()*6.28,rd2=minR+rnd()*(half2-minR);return {x:Math.cos(a2)*rd2,z:Math.sin(a2)*rd2};}
   // 🌸 Blumenwiese: dichter Farbteppich
   (function(){var p=spotFar(80); /* 🌸 W3: echte GLB-Blumenwiese statt Stiel+Ico-Primitiven */
     var rndF=mulberry32(((SEED^0x33caf1)>>>0)||1); /* eigener Strom fuer Zusatz-Varianz */
@@ -2675,7 +2679,8 @@ function decorateWorld(){
     var _cs1=3.5+rnd()*4,_cs2=4+rnd()*3; /* 🩹 Kimi-P1: beide rnd IMMER ziehen — sonst Koop-Desync wenn ein GLB nur auf einem Gerät fehlt */
     var _cy=rnd()*2.5,_crx=rnd()*0.3,_cry=rnd()*6.28,_crz=rnd()*0.3; /* 🩹 Schwarm-P2: ALLE 4 Draws unbedingt — sonst Desync wenn GLB einseitig fehlt */
     var big=cc0inst("cc0_cliff_rock",_cs1);if(!big)big=cc0inst("cc0_rock_large",_cs2);
-    if(big){big.position.set(ox,groundH(ox,oz)-0.5+_cy,oz);big.rotation.set(_crx,_cry,_crz);scene.add(big);}}})();}
+    if(big){big.position.set(ox,groundH(ox,oz)-0.5+_cy,oz);big.rotation.set(_crx,_cry,_crz);scene.add(big);
+      addCollider(ox,oz,Math.min(4.2,_cs1*0.42)); /* 🧱 User "läuft durch Fels": Klippen sind jetzt solide */}}})();}
   // 🌸 Grasige Hügel (flache Kuppeln mit Blumen)
   for(var hi=0;hi<Math.round(6*VF);hi++){(function(){var p=spotFar(55),hr=9+rnd()*8;
     var hill=new THREE.Mesh(new THREE.SphereGeometry(hr,12,7,0,6.28,0,Math.PI/2.2),new THREE.MeshLambertMaterial({color:0x3f9a54,flatShading:true}));
