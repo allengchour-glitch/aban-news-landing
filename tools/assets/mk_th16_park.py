@@ -260,10 +260,10 @@ def spielturm():
     box(0.88, 0, PH + 0.86, 0.09, 1.80, 0.10, GELB)                # Sturz ueber dem Netz
     # --- Rutsche nach +y, Auslauf beruehrt den Boden
     rampe((0, 0.88, PH - 0.02), (0, 3.62, 0.14), 0.62, 0.10, RUTS)
-    box(0, 3.98, 0.09, 0.62, 0.78, 0.10, RUTS)                     # Auslauf, Oberkante 0.14
+    box(0, 3.94, 0.09, 0.62, 0.88, 0.10, RUTS)                     # Auslauf, Oberkante 0.14
     for sx in (-0.36, 0.36):
         rampe((sx, 0.88, PH + 0.14), (sx, 3.62, 0.30), 0.10, 0.26, RUTS)
-        box(sx, 3.98, 0.24, 0.10, 0.78, 0.26, RUTS)
+        box(sx, 3.94, 0.24, 0.10, 0.88, 0.26, RUTS)
     box(0, 0.90, PH + 0.62, 0.72, 0.10, 0.10, GELB)                # Einstiegsbuegel
     for sy in (1.9, 2.9):                                          # Stuetzen unter der Rutsche
         t = (sy - 0.88)/(3.62 - 0.88)
@@ -274,20 +274,22 @@ def spielturm():
     for sx in (-0.33, 0.33):                                       # Haltegriffe oben
         strebe((sx, -0.88, PH + 0.10), (sx, -1.20, PH + 0.72), 0.055, GELB)
     # --- Kletternetz auf +x
-    box(2.58, 0, 0.60, 0.11, 1.72, 1.20, HOLZ)                     # Ankerbalken
-    for sy in (-0.80, 0.80):
-        box(2.58, sy, 0.30, 0.13, 0.13, 0.60, HOLZ)
+    # Der Anker gehoert auf den BODEN — sass er auf 1.20 m, lief das Netz fast
+    # waagrecht und war als Aufstieg unbrauchbar.
+    box(2.62, 0, 0.15, 0.18, 1.84, 0.30, HOLZ)                     # Bodenanker
+    for sy in (-0.88, 0.88):
+        box(2.62, sy, 0.26, 0.22, 0.22, 0.52, HOLZ)
     for i in range(5):                                             # Laengsseile
         sy = -0.72 + i*0.36
-        strebe((0.90, sy, PH - 0.06), (2.52, sy, 1.14), 0.035, SEIL)
+        strebe((0.92, sy, PH - 0.05), (2.56, sy, 0.32), 0.035, SEIL)
     for k in range(4):                                             # Querseile
-        t = (k + 0.6)/4.4
-        px = 0.90 + (2.52-0.90)*t
-        pz = (PH - 0.06) + (1.14 - (PH - 0.06))*t
+        t = (k + 0.7)/4.7
+        px = 0.92 + (2.56 - 0.92)*t
+        pz = (PH - 0.05) + (0.32 - (PH - 0.05))*t
         zyl(px, 0, pz, 0.032, 1.50, SEIL, 8, rot=(math.pi/2, 0, 0))
     # --- Kleinkram
-    for sx, sy, c in ((-1.00, 1.10, ROT), (1.00, -1.10, BLAU)):    # Sandsteine als Deko
-        kugel(sx*1.9, sy*1.4, 0.13, 0.22, c, 10)
+    for sx, sy, c in ((-1.00, 1.10, ROT), (1.00, -1.10, BLAU)):    # Trittsteine als Deko
+        k = kugel(sx*1.9, sy*1.4, 0.09, 0.30, c, 10); k.scale[2] = 0.30
     export("th16_spielturm", 0.016, 2, zentr=True)
 
 # ================================================================ 2) Doppelschaukel
@@ -305,7 +307,7 @@ def schaukel():
     SZ = 0.45                                        # Sitzoberkante
     for sx in (-1.78, 1.78):                         # A-Boecke
         for sy in (-0.98, 0.98):
-            strebe((sx, sy, 0.0), (sx, 0.0, BH), 0.11, STAHL)
+            strebe((sx, sy, 0.04), (sx, 0.0, BH), 0.11, STAHL)
             box(sx, sy*0.96, 0.05, 0.30, 0.34, 0.10, FUSS)
         box(sx, 0, 1.05, 0.09, 1.28, 0.09, STAHL)    # Querriegel im Bock
     zyl(0, 0, BH, 0.075, 3.92, QUER, 14, rot=(0, math.pi/2, 0))    # Querbalken
@@ -349,15 +351,17 @@ def sandkasten():
     # Eimer (steht im Sand, Oeffnung oben)
     kegel(-0.30, -0.75, 0.335, 0.115, 0.145, 0.23, ROT, 14)
     zyl(-0.30, -0.75, 0.45, 0.135, 0.025, ROT, 14)
-    for i in range(5):                                # Buegel
-        a = math.pi*(i + 0.5)/5
-        box(-0.30 + math.cos(a)*0.135, -0.75, 0.45 + math.sin(a)*0.135,
-            0.05, 0.02, 0.05, GELB)
-    # Schaufel, liegt im Sand
-    o = box(0.90, 0.30, 0.245, 0.16, 0.24, 0.03, BLAU); o.rotation_euler[2] = 0.5
-    o = zyl(1.18, 0.62, 0.28, 0.018, 0.62, BLAU, 8, rot=(math.pi/2, 0, 0))
-    o.rotation_euler[2] = 0.5
-    box(1.30, 0.90, 0.30, 0.13, 0.04, 0.04, BLAU)
+    for i in range(4):                                # Buegel als geschlossener Bogen
+        a0 = math.pi*i/4; a1 = math.pi*(i + 1)/4
+        strebe((-0.30 + math.cos(a0)*0.135, -0.75, 0.455 + math.sin(a0)*0.125),
+               (-0.30 + math.cos(a1)*0.135, -0.75, 0.455 + math.sin(a1)*0.125), 0.028, GELB)
+    # Schaufel: Blatt und Stiel auf EINER Achse — sonst liegen beide getrennt im Sand
+    ang = 0.85; bx, by = 0.62, -0.16
+    o = box(bx, by, 0.245, 0.26, 0.19, 0.03, BLAU); o.rotation_euler[2] = ang
+    ex, ey = bx + math.cos(ang)*0.11, by + math.sin(ang)*0.11
+    fx, fy = bx + math.cos(ang)*0.80, by + math.sin(ang)*0.80
+    strebe((ex, ey, 0.26), (fx, fy, 0.36), 0.032, BLAU)
+    o = box(fx, fy, 0.375, 0.15, 0.05, 0.04, BLAU); o.rotation_euler[2] = ang + math.pi/2
     # Foermchen
     zyl(-0.95, -0.20, 0.265, 0.10, 0.09, GELB, 12)
     zyl(0.35, -1.05, 0.255, 0.09, 0.07, GRUE, 6)
@@ -380,14 +384,13 @@ def wippe():
     th = math.atan2(dz, LY)                          # +y-Ende liegt oben
     # Lagerbock
     for sy in (-0.42, 0.42):
-        strebe((-0.30, sy, 0.0), (0.0, 0.0, PZ), 0.10, HOLZ)
-        strebe(( 0.30, sy, 0.0), (0.0, 0.0, PZ), 0.10, HOLZ)
+        strebe((-0.30, sy, 0.05), (0.0, 0.0, PZ), 0.10, HOLZ)
+        strebe(( 0.30, sy, 0.05), (0.0, 0.0, PZ), 0.10, HOLZ)
     box(0, 0, 0.05, 0.86, 1.02, 0.10, HOLZ)
     zyl(0, 0, PZ, 0.07, 0.46, ACHS, 12, rot=(0, math.pi/2, 0))
     zyl(0, 0, PZ, 0.13, 0.20, HOLZ, 12, rot=(0, math.pi/2, 0))
     # Balken
     b = box(0, 0, PZ, 0.22, 2*LY, 0.14, BALK); b.rotation_euler[0] = th
-    b = box(0, 0, PZ + 0.075, 0.24, 2*LY - 0.2, 0.03, SITZ); b.rotation_euler[0] = th
     for s in (-1, 1):
         cy = s*(LY - 0.22)
         cz = PZ + s*(LY - 0.22)*math.tan(th)
@@ -521,10 +524,14 @@ def teichbruecke():
               PLAN if i % 2 else DECK)
     for s in (-1, 1):                                # flache Auflager, Unterkante 0
         box(0, s*(L + 0.20), D/2, BR, 0.40, D, DECK)
+    # Traeger nur dort, wo unter dem Deck wirklich Platz ist (sonst tauchen sie
+    # an den Bogenenden unter die Nulllinie).
     for sx in (-0.66, 0.66):                         # Laengstraeger unter dem Deck
         for i in range(0, N, 2):
+            if abs(ys[i]) > 2.40 or abs(ys[i+2]) > 2.40: continue
             rampe((sx, ys[i], zt(ys[i]) - D), (sx, ys[i+2], zt(ys[i+2]) - D), 0.12, 0.18, TRAG)
     for i in range(0, N + 1, 3):                     # Querriegel
+        if abs(ys[i]) > 2.40: continue
         o = box(0, ys[i], zt(ys[i]) - D - 0.09, BR + 0.06, 0.10, 0.10, TRAG)
         o.rotation_euler[0] = math.atan2(zt(ys[i]+0.05) - zt(ys[i]-0.05), 0.10)
     for sx in (-(BR/2 - 0.07), BR/2 - 0.07):         # Gelaender beidseits
@@ -554,13 +561,14 @@ def skate_rampe():
     GELB = mat("Markierung", (0.94,0.78,0.16), 0.55)
     B  = 8.00                                        # Modulbreite — reihbar
     R  = 2.20                                        # Transition-Radius
-    G  = 0.10                                        # Bodenplatte
+    G  = 0.10                                        # Asphalt-Bodenplatte
+    S  = G + 0.12                                    # Fahrflaeche am Transitionsfuss
     PT = 1.20                                        # Plattformtiefe hinten
     box(0, -0.40, G/2, B, 6.00, G, ASPH)             # Bodenplatte y=-3.40..+2.60
-    M = 16                                           # Unterbau als waagrechte Lagen
+    M = 22                                           # Unterbau als waagrechte Lagen
     for k in range(M):
-        z0 = G + k*R/M; z1 = G + (k+1)*R/M
-        c = 1.0 - (z1 - G)/R
+        z0 = S + k*R/M; z1 = S + (k+1)*R/M
+        c = 1.0 - (z1 - S)/R
         ys = -R*math.sqrt(max(0.0, 1.0 - c*c))       # Oberflaeche am Lagen-OBERrand
         w = R + ys
         if w < 0.02: continue
@@ -569,18 +577,18 @@ def skate_rampe():
     pts = []
     for i in range(NS + 1):
         t = math.radians(90.0)*(1.0 - i/NS)
-        pts.append((-R*math.sin(t), G + R*(1.0 - math.cos(t))))
+        pts.append((-R*math.sin(t), S + R*(1.0 - math.cos(t))))
     for i in range(NS):
         rampe((0, pts[i][0], pts[i][1]), (0, pts[i+1][0], pts[i+1][1]), B, 0.12,
               DECK if i % 2 else KANT)
-    box(0, 1.30, G + 0.055, B, 2.60, 0.11, DECK)     # Auslauf bis y=+2.60
-    box(0, 2.54, G + 0.13, B, 0.12, 0.05, GELB)
-    box(0, -R - PT/2, (G + R - 0.12)/2 + 0.0, B, PT, G + R - 0.12, RIPP)   # Plattformkasten
-    box(0, -R - PT/2, G + R - 0.06, B, PT, 0.12, DECK)                     # Plattformdeck
-    zyl(0, -R + 0.06, G + R + 0.02, 0.055, B, COP, 14, rot=(0, math.pi/2, 0))   # Coping
+    box(0, 1.30, S - 0.06, B, 2.60, 0.12, DECK)      # Auslauf buendig bis y=+2.60
+    box(0, 2.54, S + 0.025, B, 0.12, 0.05, GELB)
+    box(0, -R - PT/2, (S + R - 0.12)/2, B, PT, S + R - 0.12, RIPP)   # Plattformkasten
+    box(0, -R - PT/2, S + R - 0.06, B, PT, 0.12, DECK)               # Plattformdeck
+    zyl(0, -R + 0.06, S + R + 0.02, 0.055, B, COP, 14, rot=(0, math.pi/2, 0))   # Coping
     for i in range(9):                               # Rippen sichtbar an der Rueckwand
-        box(-3.6 + i*0.9, -R - PT + 0.05, (G + R)/2, 0.10, 0.10, G + R, KANT)
-    zb = G + R
+        box(-3.6 + i*0.9, -R - PT + 0.05, (S + R)/2, 0.10, 0.10, S + R, KANT)
+    zb = S + R
     gelaender_gerade(-3.94, 3.94, -R - PT + 0.10, zb, GEL, 1.00, 'x')      # Absturzsicherung
     for sx in (-3.94, 3.94):
         gelaender_gerade(-R - PT + 0.10, -R - 0.30, sx, zb, GEL, 1.00, 'y')
@@ -626,11 +634,11 @@ def basketballplatz():
         for sx in (-6.60, 6.60):
             box(sx, s*(CY - 0.80), Z + 0.03, 0.06, 1.60, 0.03, LIN)
         # Korbanlage: Mast hinter der Grundlinie, Ausleger, Brett, Ring auf 3.05
-        my = s*(CY + 0.70)
+        my = s*(CY + 0.45)                                           # Abstand zum Zaun
         zyl(0, my, Z + 1.78, 0.10, 3.56, MAST, 12)
-        box(0, my, Z + 0.10, 0.70, 0.70, 0.20, MAST)
-        box(0, s*(CY + 0.02), Z + 3.42, 0.16, 1.42, 0.16, MAST)      # Ausleger
-        strebe((0, my, Z + 2.20), (0, s*(CY + 0.10), Z + 3.34), 0.10, MAST)
+        box(0, my, Z + 0.10, 0.70, 0.58, 0.20, MAST)
+        box(0, s*(CY - 0.11), Z + 3.42, 0.16, 1.14, 0.16, MAST)      # Ausleger
+        strebe((0, my, Z + 2.20), (0, s*(CY - 0.02), Z + 3.34), 0.10, MAST)
         by = s*(CY - 0.68)                                           # Brettebene
         box(0, by, Z + 3.42, 1.80, 0.08, 1.05, BRET)                 # Brett 2.90..3.95
         box(0, by - s*0.05, Z + 3.30, 0.62, 0.03, 0.46, RING)        # Zielfeld
@@ -692,7 +700,7 @@ def grillplatz():
     ring(0, 0, 0.09, RK - 0.10, 26, 0.22, 0.14, STEI2)
     for i in range(13):                              # Steinring um die Feuerstelle
         a = i/13*TAU
-        s = kugel(math.cos(a)*1.05, math.sin(a)*1.05, 0.10, 0.27,
+        s = kugel(math.cos(a)*1.05, math.sin(a)*1.05, 0.18, 0.27,
                   STEIN if i % 2 else STEI2, 10)
         s.scale = (1.0, 0.72, 0.62); s.rotation_euler[2] = a
     zyl(0, 0, 0.115, 0.92, 0.03, ASCH, 20)           # Ascheflaeche
@@ -719,17 +727,17 @@ def grillplatz():
         for s in (-1, 1):                            # Keile gegen Wegrollen
             qx, qy = lok(px, py, a + math.pi/2, s*0.50, 0)
             box(qx, qy, 0.13, 0.14, 0.42, 0.10, RIND).rotation_euler[2] = a + math.pi/2
-    # Holzstapel
-    sx0, sy0 = -1.95, -2.05
+    # Holzstapel — Scheite ALLE laengs x, versetzt in y gestapelt. (Erst lagen sie
+    # diagonal und schoben sich ineinander; ausserdem stand der Stapel in einem Sitzstamm.)
+    sx0, sy0 = 0.0, -2.72
     for r_ in range(3):
         for c_ in range(4):
-            px = sx0 - 0.36 + c_*0.24 + (0.12 if r_ % 2 else 0.0)
-            stamm_liegend(px, sy0, 0.24 + r_*0.22, 0.11, 1.10, 0.9, HOLZ, 10)
-            zyl(px + math.cos(0.9)*0.55, sy0 + math.sin(0.9)*0.55, 0.24 + r_*0.22,
-                0.105, 0.03, SCHN, 10, rot=(0, math.pi/2, 0.9))
+            py = sy0 - 0.36 + c_*0.24 + (0.12 if r_ % 2 else 0.0)
+            pz = 0.21 + r_*0.20
+            stamm_liegend(sx0, py, pz, 0.11, 1.10, 0.0, HOLZ, 10)
+            zyl(sx0 + 0.56, py, pz, 0.105, 0.03, SCHN, 10, rot=(0, math.pi/2, 0.0))
     for s in (-1, 1):                                # Stuetzpfosten des Stapels
-        qx, qy = lok(sx0, sy0, 0.9, s*0.62, 0)
-        zyl(qx, qy, 0.36, 0.055, 0.72, RIND, 8)
+        zyl(sx0 + s*0.62, sy0, 0.38, 0.055, 0.76, RIND, 8)
     zyl(2.10, 1.85, 0.28, 0.30, 0.56, RIND, 14)      # Hackklotz
     zyl(2.10, 1.85, 0.565, 0.295, 0.03, SCHN, 14)
     export("th16_grillplatz", 0.014, 2)
@@ -749,17 +757,18 @@ def blumenbeet():
     B3   = mat("Bluete violett", (0.60,0.28,0.74), 0.60)
     MITT = mat("Bluetenmitte", (0.98,0.88,0.42), 0.55)
     BX, BY, HW = 4.00, 2.00, 0.16                    # Aussenmasse + Wandstaerke
-    for sy in (-BY/2 + HW/2, BY/2 - HW/2):
-        box(0, sy, 0.17, BX, HW, 0.34, HOLZ)
-        box(0, sy, 0.355, BX, HW + 0.04, 0.03, KANT)
-    for sx in (-BX/2 + HW/2, BX/2 - HW/2):
-        box(sx, 0, 0.17, HW, BY - 2*HW, 0.34, HOLZ)
-        box(sx, 0, 0.355, HW, BY - 2*HW + 0.04, 0.03, KANT)
+    # Alle Deckleisten kragen nur nach INNEN aus — sonst waere das Modul 4.04 breit
+    # und die Reihung bekaeme Fugen bzw. Ueberschneidungen.
+    for s in (-1, 1):
+        box(0, s*(BY/2 - HW/2), 0.17, BX, HW, 0.34, HOLZ)
+        box(0, s*(BY/2 - HW/2 - 0.02), 0.355, BX, HW + 0.04, 0.03, KANT)
+        box(s*(BX/2 - HW/2), 0, 0.17, HW, BY - 2*HW, 0.34, HOLZ)
+        box(s*(BX/2 - HW/2 - 0.02), 0, 0.355, HW, BY - 2*HW + 0.04, 0.03, KANT)
     box(0, 0, 0.14, BX - 2*HW, BY - 2*HW, 0.28, ERDE)          # Erde, Oberkante 0.28
     for i in range(4):                               # Pfosten in den Ecken
-        sx = (-1 if i % 2 == 0 else 1)*(BX/2 - HW/2)
-        sy = (-1 if i < 2 else 1)*(BY/2 - HW/2)
-        box(sx, sy, 0.21, HW + 0.04, HW + 0.04, 0.42, KANT)
+        sx = (-1 if i % 2 == 0 else 1)*(BX/2 - 0.10)
+        sy = (-1 if i < 2 else 1)*(BY/2 - 0.10)
+        box(sx, sy, 0.21, 0.20, 0.20, 0.42, KANT)
     farben = (B1, B2, B3)
     for r_ in range(3):
         for c_ in range(9):
@@ -769,10 +778,10 @@ def blumenbeet():
             h = 0.20 + 0.06*((c_ * 7 + r_ * 5) % 3)
             zyl(px, py, 0.28 + h/2, 0.018, h, LAUB, 6)          # Stiel
             k = kugel(px, py, 0.28 + h + 0.055, 0.085, f, 10); k.scale[2] = 0.62
-            for i in range(5):                                  # Bluetenblaetter
-                a = i/5*TAU + c_*0.3
+            for i in range(3):                                  # Bluetenblaetter
+                a = i/3*TAU + c_*0.3
                 p = kugel(px + math.cos(a)*0.075, py + math.sin(a)*0.075,
-                          0.28 + h + 0.045, 0.048, f, 6); p.scale[2] = 0.45
+                          0.28 + h + 0.045, 0.052, f, 6); p.scale[2] = 0.45
             kugel(px, py, 0.28 + h + 0.085, 0.03, MITT, 6)
             for s in (-1, 1):                                   # Blaetter
                 bl = kugel(px + s*0.07, py + s*0.04, 0.30 + h*0.35, 0.075,
@@ -780,7 +789,7 @@ def blumenbeet():
                 bl.scale = (1.0, 0.55, 0.25); bl.rotation_euler[2] = s*0.6
     for (px, py, rr) in ((-1.55, 0.0, 0.24), (1.55, 0.10, 0.22), (0.0, -0.02, 0.20)):
         b = kugel(px, py, 0.30, rr, LAU2, 10); b.scale[2] = 0.70   # Polsterstauden
-    export("th16_blumenbeet", 0.012, 2)
+    export("th16_blumenbeet", 0.012, 1)   # 1 Bevel-Segment: 27 Blueten sonst > 45k Dreiecke
 
 # ================================================================ 12) Birke
 def baum_birke():
@@ -793,20 +802,24 @@ def baum_birke():
     L1   = mat("Laub1", (0.44,0.66,0.24), 0.86)
     L2   = mat("Laub2", (0.52,0.72,0.30), 0.86)
     L3   = mat("Laub3", (0.36,0.58,0.22), 0.86)
-    kegel(0, 0, 0.28, 0.34, 0.24, 0.56, RIND, 12)              # Wurzelanlauf
-    kegel(0, 0, 3.28, 0.24, 0.115, 5.60, RIND, 12)             # Stamm 0.56 - 6.16
-    kegel(0, 0, 7.06, 0.115, 0.045, 1.80, RIND, 10)            # Wipfel 6.16 - 7.96
+    kegel(0, 0, 0.28, 0.28, 0.20, 0.56, RIND, 12)              # Wurzelanlauf
+    kegel(0, 0, 3.28, 0.20, 0.10, 5.60, RIND, 12)              # Stamm 0.56 - 6.16
+    kegel(0, 0, 7.06, 0.10, 0.04, 1.80, RIND, 10)              # Wipfel 6.16 - 7.96
     for i in range(26):                                        # Rindenstriche
         a = i*2.399
         z = 0.55 + (i % 13)*0.42 + 0.14*(i % 3)
-        r = 0.235 - 0.021*z
+        r = 0.195 - 0.018*z
         if r < 0.05: continue
         o = box(math.cos(a)*r, math.sin(a)*r, z, 0.035, 0.16, 0.05, STRI)
         o.rotation_euler[2] = a
-    for (z0, ang, laenge, hoch) in ((3.05, 0.4, 1.05, 0.95), (3.80, 2.6, 0.95, 0.85),
-                                    (4.60, 1.5, 1.15, 1.05), (5.35, 4.0, 1.00, 0.90),
-                                    (6.05, 5.3, 0.85, 0.80), (6.70, 3.2, 0.72, 0.70)):
-        strebe((0, 0, z0), (math.cos(ang)*laenge, math.sin(ang)*laenge, z0 + hoch), 0.065, AST)
+    for (z0, ang, laenge, hoch, kr) in ((3.05, 0.4, 1.05, 0.95, 0.62), (3.80, 2.6, 0.95, 0.85, 0.58),
+                                        (4.60, 1.5, 1.15, 1.05, 0.66), (5.35, 4.0, 1.00, 0.90, 0.62),
+                                        (6.05, 5.3, 0.85, 0.80, 0.58), (6.70, 3.2, 0.72, 0.70, 0.54)):
+        tx, ty, tz = math.cos(ang)*laenge, math.sin(ang)*laenge, z0 + hoch
+        strebe((0, 0, z0), (tx, ty, tz), 0.055, AST)
+        # Jeder Ast bekommt sein Laubpaket — sonst ragen nackte Stoecke aus der Krone.
+        k = kugel(tx*0.94, ty*0.94, tz + kr*0.42, kr, (L1, L2, L3)[int(ang) % 3], 12)
+        k.scale[2] = 1.10
     krone = ((0.00, 0.00, 7.90, 1.05, L1), (0.72, 0.42, 6.95, 0.95, L2),
              (-0.68, 0.30, 6.35, 0.98, L3), (0.30, -0.78, 6.60, 0.92, L1),
              (-0.42, -0.62, 5.55, 0.86, L2), (0.86, -0.18, 5.75, 0.80, L3),

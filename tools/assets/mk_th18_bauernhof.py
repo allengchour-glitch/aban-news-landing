@@ -69,6 +69,14 @@ def kegel(x, y, z, r1, r2, h, m=None, seg=12, rot=(0,0,0)):
     if m: o.data.materials.append(m)
     return o
 
+def ring(x, y, z, r, rr, m=None, seg=16, rseg=8, rot=(0,0,0)):
+    """Echter Ring (Torus). Eine flache Zylinderscheibe waere ein Deckel, kein Buegel."""
+    bpy.ops.mesh.primitive_torus_add(location=(x,y,z), major_radius=r, minor_radius=rr,
+                                     major_segments=seg, minor_segments=rseg, rotation=rot)
+    o = bpy.context.active_object
+    if m: o.data.materials.append(m)
+    return o
+
 def rad(x, y, z, r, breite, m=None, seg=18):
     """Fahrzeugrad. Achse MUSS in x liegen (Fahrzeuglaenge = y)."""
     return zyl(x, y, z, r, breite, m, seg, rot=(0, math.pi/2, 0))
@@ -260,7 +268,7 @@ def pflanze(px, py, pz, r, hoehe, m_gruen, m_topf=None, n=5):
     for i in range(n):
         a = i/n*math.tau
         kugel(px + math.cos(a)*r*0.42, py + math.sin(a)*r*0.42,
-              z + hoehe*0.34 + (i % 2)*hoehe*0.16, r*0.52, m_gruen, 10)
+              z + hoehe*0.34 + (i % 2)*hoehe*0.16, r*0.54, m_gruen, 8)
 
 # ================================================================ 1) Scheune
 def scheune():
@@ -322,12 +330,12 @@ def scheune():
     for i in range(6):
         sy = -10.0 + i*4.0
         box(0, sy, H - 0.42, B - 2*d, 0.26, 0.34, HOLZ)           # Zugbalken
-        box(0, sy, H + FH/2 - 0.30, 0.24, 0.24, FH - 0.60, HOLZ)  # Koenigsstiel
+        box(0, sy, H - 0.42 + (FH + 0.12)/2, 0.24, 0.24, FH + 0.12, HOLZ)   # Koenigsstiel
         for s in (-1, 1):
-            strebe_xz(s*(B/2 - d - 0.2), H - 2.10, s*0.4, H - 0.30, sy, 0.18, 0.20, HOLZ)
+            strebe_xz(s*(B/2 - d - 0.15), H - 1.40, s*6.4, H - 0.55, sy, 0.18, 0.20, HOLZ)
             strebe_xz(s*3.6, H + 0.55, 0.0, H + FH - 1.10, sy, 0.16, 0.18, HOLZ)
-    for sx in (-6.4, 0.0, 6.4):                                   # Pfetten laengs
-        box(sx, 0, H + FH - 0.35 - abs(sx)/(B/2 + 0.5)*(FH - 0.35), 0.22, T - 2*d, 0.24, HOLZ)
+    for sx in (-6.4, 0.0, 6.4):                                   # Pfetten dicht unters Dach
+        box(sx, 0, H + FH*(1 - abs(sx)/(B/2 + 0.5)) - 0.30, 0.22, T - 2*d, 0.24, HOLZ)
     # --- Heu
     for k in range(3):                                            # Heuboden voll Ballen
         for i in range(6):
@@ -386,8 +394,7 @@ def stall():
             box(s*(xg + (xi - xg)/2), sy, FB + 1.44, xi - xg, 0.16, 0.10, HOLZ2)
         for k in range(4):                                        # Boxenfront zum Gang
             cy = -4.35 + k*2.5
-            box(s*xg, cy, FB + 0.03, xi - xg - 0.05, 2.34, 0.06, STRO)   # Einstreu
-            box(s*(xg + (xi - xg)/2), cy, FB + 0.025, xi - xg - 0.08, 2.30, 0.05, STRO)
+            box(s*(xg + (xi - xg)/2), cy, FB + 0.035, xi - xg - 0.10, 2.28, 0.07, STRO)  # Einstreu
             for oy in (-0.86, 0.86):                              # Front, Tuerluecke mittig
                 box(s*xg, cy + oy, FB + 0.50, 0.12, 0.62, 1.00, HOLZ)
                 box(s*xg, cy + oy, FB + 1.45, 0.12, 0.62, 0.10, HOLZ)
@@ -400,10 +407,12 @@ def stall():
     box(0, 0, FB + 0.015, 3.60, T - 2*d, 0.03, BOD)               # Futtergang
     for i in range(9):
         box(0, -4.9 + i*1.22, FB + 0.04, 3.40, 0.10, 0.05, SOCK)  # Rillen im Gang
-    box(0, 4.60, FB + 0.55, 1.60, 0.70, 1.10, HOLZ)               # Schrank neben der Tuer
-    box(0, 4.60, FB + 1.14, 1.74, 0.84, 0.10, HOLZ2)
+    box(-5.5, 5.10, FB + 0.55, 1.80, 0.70, 1.10, HOLZ)            # Schrank in der Quergasse
+    box(-5.5, 5.10, FB + 1.14, 1.94, 0.84, 0.10, HOLZ2)
     for i in range(3):                                            # Eimer
-        zyl(-1.25 + i*0.55, 3.60, FB + 0.16, 0.17, 0.32, STAHL, 12)
+        zyl(4.30 + i*0.55, 5.10, FB + 0.16, 0.17, 0.32, STAHL, 12)
+    box(6.20, 5.10, FB + 0.42, 1.40, 0.90, 0.84, HOLZ2)           # Strohballen als Sitz
+    box(6.20, 5.10, FB + 0.88, 1.44, 0.94, 0.08, STRO)
     export("th18_stall", 0.020, 2)
 
 # ================================================================ 3) Silo
@@ -417,11 +426,11 @@ def silo():
     STAHL= mat("Stahl", (0.55,0.57,0.60), 0.40, 0.5)
     DKL  = mat("Klappe", (0.28,0.30,0.32), 0.7)
     GELB = mat("Warnfarbe", (0.88,0.72,0.14), 0.55)
-    R, Z0, ZM = 3.00, 0.42, 12.30
+    R, Z0, ZM = 3.00, 0.42, 11.50                                 # Gesamthoehe ~14.3 m
     zyl(0, 0, Z0/2, R + 0.35, Z0, BET, 28)                        # Fundamentring
     zyl(0, 0, (Z0 + ZM)/2, R, ZM - Z0, BLECH, 28)                 # Mantel
-    for i in range(11):                                           # Wellblech-Ringe
-        zyl(0, 0, Z0 + 0.55 + i*1.08, R + 0.05, 0.14, RING, 28)
+    for i in range(10):                                           # Wellblech-Ringe
+        zyl(0, 0, Z0 + 0.55 + i*1.05, R + 0.05, 0.14, RING, 28)
     for i in range(8):                                            # Senkrechte Stoesse
         a = i/8*math.tau
         box(math.cos(a)*(R + 0.03), math.sin(a)*(R + 0.03), (Z0 + ZM)/2,
@@ -436,17 +445,20 @@ def silo():
     box(0, R + 0.30, 0.42, 0.90, 0.55, 0.84, STAHL)
     box(0, R - 0.02, 1.65, 1.00, 0.14, 1.80, DKL)                 # Wartungstuer
     box(0, R + 0.05, 1.65, 0.80, 0.06, 1.55, GELB)
-    # --- Aussenleiter mit Rueckenschutz + Plattform
-    leiter(0, R + 0.30, 0.55, ZM + 0.30, STAHL, 0.56, 0.31, 0.07, 'y')
-    for i in range(9):
-        zyl(0, R + 0.62, 3.6 + i*1.0, 0.45, 0.06, STAHL, 12, rot=(math.pi/2, 0, 0))
-    box(0, R + 0.85, (3.6 + 12.6)/2, 0.06, 0.06, 9.0, STAHL)
-    box(0, R + 0.60, ZM + 0.55, 2.60, 1.30, 0.10, STAHL)          # Plattform
-    gelaender(-1.30, 1.30, R + 1.20, ZM + 0.60, STAHL, 1.05, 'x')
-    for sx in (-1.30, 1.30):
-        gelaender(R - 0.02, R + 1.20, sx, ZM + 0.60, STAHL, 1.05, 'y')
-    for i in range(3):                                            # Warnstreifen unten
-        zyl(0, 0, 0.75 + i*0.0, R + 0.07, 0.18, GELB, 28)
+    # --- Aussenleiter mit Rueckenschutz-Buegeln, Leiterkopf bleibt frei
+    leiter(0, R + 0.30, 0.55, ZM + 1.30, STAHL, 0.56, 0.31, 0.07, 'y')
+    for i in range(8):
+        ring(0, R + 0.62, 3.6 + i*1.05, 0.46, 0.035, STAHL, 12, 6, rot=(math.pi/2, 0, 0))
+    box(0, R + 0.94, (3.6 + 11.2)/2, 0.05, 0.05, 7.6, STAHL)
+    # Plattform als U — der Leiterkopf (|x| < 0.32) MUSS ausgespart bleiben,
+    # sonst laeuft die Leiter mitten durch das Podest.
+    for sx in (-0.88, 0.88):
+        box(sx, R + 0.65, ZM + 0.50, 1.05, 1.50, 0.10, STAHL)
+    box(0, R + 1.15, ZM + 0.50, 2.80, 0.50, 0.10, STAHL)
+    gelaender(-1.40, 1.40, R + 1.42, ZM + 0.55, STAHL, 1.05, 'x')
+    for sx in (-1.40, 1.40):
+        gelaender(R - 0.05, R + 1.42, sx, ZM + 0.55, STAHL, 1.05, 'y')
+    zyl(0, 0, 0.78, R + 0.07, 0.22, GELB, 28)                     # Warnring am Fuss
     export("th18_silo", 0.020, 2)
 
 # ================================================================ 4) Gewaechshaus
@@ -490,8 +502,10 @@ def gewaechshaus():
     tonne_y(0, -T/2 + 0.06, WH, R + 0.06, 0.14, RAHM, 28)
     box(0, 0, WH + R - 0.10, 0.22, T + 0.2, 0.22, RAHM)           # Firstprofil
     for i in range(4):                                            # Lueftungsklappen im Dach
-        o = box(1.55, -4.8 + i*3.2, WH + R - 0.62, 1.50, 2.10, 0.09, RAHM)
-        o.rotation_euler[1] = math.radians(-22)
+        ph = math.radians(20)                                     # Klappe liegt TANGENTIAL
+        o = box(math.sin(ph)*(R + 0.05), -4.8 + i*3.2,            # auf dem Bogen — flach
+                WH + math.cos(ph)*(R + 0.05), 1.50, 2.10, 0.09, RAHM)  # gesetzt steckt
+        o.rotation_euler[1] = ph                                  # sie im Glas
     # --- Innenleben
     box(0, 0, FB + 0.02, 2.10, T - 0.4, 0.05, BET)                # Mittelweg
     for s in (-1, 1):                                             # Pflanztische vorn
@@ -500,16 +514,16 @@ def gewaechshaus():
         for k in range(4):
             for ox in (-1.00, 1.00):
                 box(s*2.70 + ox, 1.30 + k*1.90, FB + 0.39, 0.10, 0.10, 0.78, HOLZ)
-        for k in range(9):                                        # Toepfe mit Jungpflanzen
-            for ox in (-0.65, 0.0, 0.65):
-                pflanze(s*2.70 + ox, 1.35 + k*0.72, FB + 0.86, 0.26, 0.52,
-                        GRUE2, TOPF, 4)
+        for k in range(5):                                        # Toepfe mit Jungpflanzen
+            for ox in (-0.72, 0.0, 0.72):
+                pflanze(s*2.70 + ox, 1.60 + k*1.25, FB + 0.86, 0.30, 0.56,
+                        GRUE2, TOPF, 3)
     for s in (-1, 1):                                             # Hochbeete hinten
         box(s*2.70, -3.70, FB + 0.24, 2.40, 6.60, 0.48, HOLZ2)
         box(s*2.70, -3.70, FB + 0.44, 2.16, 6.36, 0.14, ERDE)
-        for k in range(8):
-            for ox in (-0.70, 0.0, 0.70):
-                pflanze(s*2.70 + ox, -6.60 + k*0.82, FB + 0.50, 0.30, 0.80, GRUE, None, 5)
+        for k in range(5):
+            for ox in (-0.74, 0.0, 0.74):
+                pflanze(s*2.70 + ox, -6.30 + k*1.30, FB + 0.50, 0.34, 0.86, GRUE, None, 3)
     for s in (-1, 1):                                             # Tomatenstangen
         for k in range(4):
             zyl(s*3.55, -6.2 + k*1.70, FB + 1.35, 0.045, 1.80, HOLZ, 8)
@@ -536,22 +550,24 @@ def traktor():
     SITZ = mat("Sitz", (0.20,0.19,0.20), 0.85)
     LICHT= mat("Scheinwerfer", (1.0,0.94,0.74), 0.25, 0.0, (1.0,0.92,0.68), 2.2)
     ROT  = mat("Rueckleuchte", (0.86,0.14,0.12), 0.3, 0.0, (0.90,0.12,0.10), 1.8)
-    # --- Raeder (Achse in x!)
+    # --- Raeder (Achse in x!). Die Stollen bilden den AEUSSEREN Radius: Karkasse
+    # 0.88, Stollen bis 0.90 = Achshoehe -> Unterkante exakt 0.00. Umgekehrt
+    # (Stollen ueber der Achshoehe) haengt das Rad unter dem Boden.
     for s in (-1, 1):
-        rad(s*0.90, -1.05, 0.90, 0.90, 0.62, REIF, 20)            # hinten
+        rad(s*0.90, -1.05, 0.90, 0.88, 0.62, REIF, 20)            # hinten
         rad(s*0.90, -1.05, 0.90, 0.44, 0.66, GELB, 16)
         zyl(s*0.90, -1.05, 0.90, 0.16, 0.72, STAHL, 12, rot=(0, math.pi/2, 0))
         for i in range(14):                                       # Stollenprofil
             a = i/14*math.tau
-            o = box(s*0.90, -1.05 + math.cos(a)*0.86, 0.90 + math.sin(a)*0.86,
-                    0.64, 0.22, 0.13, REIF)
+            o = box(s*0.90, -1.05 + math.cos(a)*0.845, 0.90 + math.sin(a)*0.845,
+                    0.64, 0.22, 0.11, REIF)
             o.rotation_euler[0] = a - math.pi/2
-        rad(s*0.80, 1.62, 0.52, 0.52, 0.36, REIF, 18)             # vorn
+        rad(s*0.80, 1.62, 0.52, 0.50, 0.36, REIF, 18)             # vorn
         rad(s*0.80, 1.62, 0.52, 0.26, 0.40, GELB, 14)
         for i in range(10):
             a = i/10*math.tau
-            o = box(s*0.80, 1.62 + math.cos(a)*0.49, 0.52 + math.sin(a)*0.49,
-                    0.38, 0.16, 0.10, REIF)
+            o = box(s*0.80, 1.62 + math.cos(a)*0.475, 0.52 + math.sin(a)*0.475,
+                    0.38, 0.16, 0.09, REIF)
             o.rotation_euler[0] = a - math.pi/2
     # --- Rahmen, Motorhaube
     box(0, 0.30, 0.98, 0.86, 3.30, 0.46, GRUE2)                   # Rahmen
@@ -616,12 +632,12 @@ def anhaenger():
     WARN = mat("Warntafel", (0.90,0.76,0.16), 0.55)
     for s in (-1, 1):                                             # Tandemachse
         for sy in (-0.55, -1.78):
-            rad(s*1.02, sy, 0.52, 0.52, 0.34, REIF, 18)
+            rad(s*1.02, sy, 0.52, 0.50, 0.34, REIF, 18)           # Stollen = Aussenradius
             rad(s*1.02, sy, 0.52, 0.25, 0.38, GELB, 14)
             for i in range(10):
                 a = i/10*math.tau
-                o = box(s*1.02, sy + math.cos(a)*0.49, 0.52 + math.sin(a)*0.49,
-                        0.36, 0.16, 0.10, REIF)
+                o = box(s*1.02, sy + math.cos(a)*0.475, 0.52 + math.sin(a)*0.475,
+                        0.36, 0.16, 0.09, REIF)
                 o.rotation_euler[0] = a - math.pi/2
         box(s*1.02, -1.16, 1.14, 0.46, 2.30, 0.12, STAHL)         # Kotfluegel
         box(s*1.02, -0.02, 1.02, 0.16, 0.30, 0.28, STAHL)
@@ -654,8 +670,7 @@ def anhaenger():
     for s in (-1, 1):
         strebe_xy(s*0.62, 1.86, 0.0, 3.32, 0.90, 0.16, 0.20, STAHL)
     box(0, 3.30, 0.90, 0.26, 0.70, 0.22, STAHL)
-    zyl(0, 3.66, 0.90, 0.13, 0.10, STAHL2, 14, rot=(math.pi/2, 0, 0))
-    zyl(0, 3.66, 0.90, 0.07, 0.14, GRUE2, 12, rot=(math.pi/2, 0, 0))
+    ring(0, 3.62, 0.90, 0.13, 0.045, STAHL2, 14, 6, rot=(math.pi/2, 0, 0))   # Zugoese
     box(0, 2.90, 0.62, 0.16, 0.16, 0.34, STAHL)                   # Stuetzfuss
     zyl(0, 2.90, 0.22, 0.07, 0.44, STAHL2, 10)
     zyl(0, 2.90, 0.03, 0.20, 0.06, STAHL, 12)
@@ -675,9 +690,12 @@ def heuballen():
     FOLIE= mat("Silofolie", (0.90,0.90,0.88), 0.55)
     FOL2 = mat("Foliennaht", (0.78,0.78,0.76), 0.6)
     def ballen(px, py, r, L, m_kern, m_band, spirale=True):
-        zyl(px, py, r, r, L, m_kern, 24, rot=(0, math.pi/2, 0))
+        # Achse in x. Die Wickelbaender stehen 0.012 vor -> Mitte auf r+0.012,
+        # sonst laege die Ballen-Unterkante bei -0.012 statt exakt 0.
+        r = r + 0.012
+        zyl(px, py, r, r - 0.012, L, m_kern, 24, rot=(0, math.pi/2, 0))
         for i in range(4):                                        # Wickelbaender
-            zyl(px - L/2 + L*(i + 0.5)/4, py, r, r + 0.012, L*0.09, m_band, 24,
+            zyl(px - L/2 + L*(i + 0.5)/4, py, r, r, L*0.09, m_band, 24,
                 rot=(0, math.pi/2, 0))
         if spirale:                                               # Stirnseiten-Ringe
             for s in (-1, 1):
@@ -700,12 +718,14 @@ def zaun_modul():
     HOLZ = mat("Zaunholz", (0.56,0.42,0.26), 0.86)
     HOLZ2= mat("Pfostenholz", (0.46,0.33,0.19), 0.88)
     HOLZ3= mat("Riegel hell", (0.62,0.48,0.31), 0.84)
-    ERDE = mat("Erdanlauf", (0.32,0.26,0.18), 0.96)
     L, HP = 4.00, 1.28
-    for px in (-L/2 + 0.09, 0.0):                                 # Pfosten
+    for px in (-L/2 + 0.10, 0.0):                                 # Pfosten
         box(px, 0, HP/2, 0.18, 0.18, HP, HOLZ2)
-        kegel(px, 0, HP + 0.09, 0.14, 0.02, 0.18, HOLZ2, 4)
-        zyl(px, 0, 0.05, 0.22, 0.10, ERDE, 12)
+        # Pfostenkopf aus zwei Quadern statt kegel(seg=4): die 4-Ecken-Grundflaeche
+        # von Blender liegt mit den ECKEN auf den Achsen und ragte 0.04 m ueber
+        # das 4.00-m-Raster hinaus (gemessen: Modulbreite 4.08 statt 4.00).
+        box(px, 0, HP + 0.05, 0.18, 0.18, 0.10, HOLZ2)
+        box(px, 0, HP + 0.14, 0.11, 0.11, 0.08, HOLZ2)
     for z, hh in ((0.34, 0.15), (0.74, 0.15), (1.10, 0.13)):      # Riegel, exakt -2.00..2.00
         box(0, -0.085, z, L, 0.06, hh, HOLZ3 if z > 0.5 else HOLZ)
     for i in range(4):                                            # Zwischenlatten
@@ -735,9 +755,9 @@ def feld_modul():
         y = -S/2 + PER/2 + i*PER
         for k in range(12):
             kugel(-4.6 + k*0.84, y, 0.34, 0.09, GRUE, 8)
-    for (sx, sy, rr) in ((-3.1, 2.4, 0.17), (2.6, -3.6, 0.14), (4.1, 1.2, 0.12),
-                         (-1.4, -1.9, 0.15)):
-        kugel(sx, sy, 0.32, rr, STEIN, 8)
+    for (sx, sy, rr) in ((-3.1, 2.4, 0.15), (2.6, -3.6, 0.13), (4.1, 1.2, 0.11),
+                         (-1.4, -1.9, 0.14)):
+        kugel(sx, sy, 0.20, rr, STEIN, 8)     # halb eingegraben, ueberragt die Furche nicht
     export("th18_feld_modul", 0.014, 2)
 
 # ================================================================ 10) Windrad
@@ -795,50 +815,50 @@ def wassertank():
     STAHL= mat("Stahl", (0.55,0.57,0.60), 0.38, 0.5)
     BET  = mat("Punktfundament", (0.62,0.60,0.56), 0.94)
     BLAU = mat("Wasser", (0.20,0.44,0.58), 0.20)
-    PB, ZP = 1.35, 3.50                                           # Pfosten-Halbraster, Podest
+    PB, ZP = 1.35, 3.30                                           # Pfosten-Halbraster, Podest
     for sx in (-1, 1):
         for sy in (-1, 1):
             box(sx*PB, sy*PB, 0.10, 0.52, 0.52, 0.20, BET)        # Fundamentklotz
             box(sx*PB, sy*PB, (0.20 + ZP)/2, 0.22, 0.22, ZP - 0.20, HOLZ)
-    for z in (1.20, 2.45):                                        # Riegelkraenze
+    for z in (1.15, 2.35):                                        # Riegelkraenze
         for sy in (-1, 1): box(0, sy*PB, z, 2*PB, 0.16, 0.18, HOLZ2)
         for sx in (-1, 1): box(sx*PB, 0, z, 0.16, 2*PB, 0.18, HOLZ2)
     for sy in (-1, 1):                                            # Kreuzstreben laengs x
-        strebe_xz(-PB, 0.30, PB, 1.20, sy*PB, 0.12, 0.10, HOLZ2)
-        strebe_xz(-PB, 1.20, PB, 0.30, sy*PB, 0.12, 0.10, HOLZ2)
-        strebe_xz(-PB, 1.28, PB, 2.45, sy*PB, 0.12, 0.10, HOLZ2)
-        strebe_xz(-PB, 2.45, PB, 1.28, sy*PB, 0.12, 0.10, HOLZ2)
+        strebe_xz(-PB, 0.30, PB, 1.10, sy*PB, 0.12, 0.10, HOLZ2)
+        strebe_xz(-PB, 1.10, PB, 0.30, sy*PB, 0.12, 0.10, HOLZ2)
+        strebe_xz(-PB, 1.24, PB, 2.30, sy*PB, 0.12, 0.10, HOLZ2)
+        strebe_xz(-PB, 2.30, PB, 1.24, sy*PB, 0.12, 0.10, HOLZ2)
     for sx in (-1, 1):                                            # Kreuzstreben laengs y
-        strebe_yz(-PB, 0.30, PB, 1.20, sx*PB, 0.12, 0.10, HOLZ2)
-        strebe_yz(-PB, 1.20, PB, 0.30, sx*PB, 0.12, 0.10, HOLZ2)
+        strebe_yz(-PB, 0.30, PB, 1.10, sx*PB, 0.12, 0.10, HOLZ2)
+        strebe_yz(-PB, 1.10, PB, 0.30, sx*PB, 0.12, 0.10, HOLZ2)
     box(0, 0, ZP + 0.09, 2*PB + 0.50, 2*PB + 0.50, 0.18, HOLZ)    # Kopfrahmen
     for i in range(7):                                            # Podestdielen
-        box(0, -1.50 + i*0.50, ZP + 0.22, 2*PB + 0.50, 0.44, 0.08, DIEL)
-    ZT = ZP + 0.26
-    zyl(0, 0, ZT + 0.95, 1.32, 1.90, TANK, 24)                    # Tank
+        box(0, -1.50 + i*0.50, ZP + 0.22, 2*PB + 0.50, 0.46, 0.08, DIEL)
+    ZT = ZP + 0.26                                                # Tankfuss = Podestoberkante
+    zyl(0, 0, ZT + 0.875, 1.32, 1.75, TANK, 24)                   # Tank 3.56 - 5.31
     for i in range(3):
-        zyl(0, 0, ZT + 0.35 + i*0.62, 1.36, 0.12, RING, 24)
-    zyl(0, 0, ZT + 1.94, 1.38, 0.14, RING, 24)
-    kegel(0, 0, ZT + 2.28, 1.36, 0.30, 0.55, DACH, 24)            # Kegeldeckel
-    zyl(0, 0, ZT + 2.62, 0.32, 0.16, STAHL, 14)                   # Einstiegsluke
-    box(0.34, 0, ZT + 2.72, 0.60, 0.44, 0.06, DACH)
-    zyl(0, 0, ZT + 1.90, 1.20, 0.05, BLAU, 24)                    # Wasserspiegel unter Luke
-    box(-1.44, 0, ZT + 0.95, 0.10, 0.34, 1.60, RING)              # Standrohr-Anzeige
-    zyl(-1.50, 0, ZT + 0.95, 0.05, 1.55, BLAU, 10)
+        zyl(0, 0, ZT + 0.35 + i*0.55, 1.36, 0.12, RING, 24)
+    zyl(0, 0, ZT + 1.79, 1.38, 0.14, RING, 24)
+    kegel(0, 0, ZT + 2.08, 1.36, 0.30, 0.50, DACH, 24)            # Kegeldeckel
+    zyl(0, 0, ZT + 2.36, 0.32, 0.16, STAHL, 14)                   # Einstiegsluke
+    box(0.34, 0, ZT + 2.45, 0.60, 0.44, 0.06, DACH)
+    zyl(0, 0, ZT + 1.72, 1.20, 0.05, BLAU, 24)                    # Wasserspiegel
+    box(-1.44, 0, ZT + 0.875, 0.10, 0.34, 1.50, RING)             # Standrohr-Anzeige
+    zyl(-1.50, 0, ZT + 0.875, 0.05, 1.45, BLAU, 10)
     # --- Fallrohr mit Zapfhahn auf der Schauseite (+y)
-    zyl(0.0, 1.15, (ZT + 0.55)/2 + 0.28, 0.09, ZT - 0.20, STAHL, 12)
-    strebe_yz(0.30, ZT + 0.30, 1.15, ZT - 0.10, 0.0, 0.16, 0.16, STAHL)
+    zyl(0.0, 1.15, 2.06, 0.09, 2.88, STAHL, 12)                   # 0.62 - 3.50
+    strebe_yz(0.30, ZT + 0.16, 1.15, ZT - 0.10, 0.0, 0.16, 0.16, STAHL)
     box(0, 1.15, 0.62, 0.20, 0.44, 0.16, STAHL)
     zyl(0, 1.42, 0.62, 0.055, 0.30, RING, 10, rot=(math.pi/2, 0, 0))
     box(0, 1.30, 0.80, 0.06, 0.06, 0.20, RING)
     zyl(0, 0.90, 0.09, 0.66, 0.18, HOLZ2, 16)                     # Traenketrog darunter
     zyl(0, 0.90, 0.16, 0.56, 0.06, BLAU, 16)
     # --- Leiter auf +y bis aufs Podest
-    leiter(0.72, PB + 0.42, 0.05, ZP + 0.42, HOLZ, 0.50, 0.31, 0.07, 'y')
+    leiter(0.72, PB + 0.42, 0.05, ZP + 0.50, HOLZ, 0.50, 0.31, 0.07, 'y')
     gelaender(-PB - 0.25, PB + 0.25, -PB - 0.25, ZP + 0.26, HOLZ2, 0.95, 'x')
     for sx in (-PB - 0.25, PB + 0.25):
         gelaender(-PB - 0.25, PB + 0.25, sx, ZP + 0.26, HOLZ2, 0.95, 'y')
-    gelaender(-PB - 0.25, 0.30, PB + 0.25, ZP + 0.26, HOLZ2, 0.95, 'x')
+    gelaender(-PB - 0.25, 0.20, PB + 0.25, ZP + 0.26, HOLZ2, 0.95, 'x')
     export("th18_wassertank", 0.016, 2)
 
 
