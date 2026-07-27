@@ -390,7 +390,9 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
   for(var i=0;i<rauchBase.length;i++){var b=rauchBase[i];b.off+=dt*0.5;if(b.off>5)b.off=0;
     pp[i*3]=b.x+Math.sin(b.off*1.5)*0.5;pp[i*3+1]=b.y+b.off;pp[i*3+2]=b.z;}
   rauchGeo.attributes.position.needsUpdate=true;}
-ladeTex("textures/th/rasen.jpg",24,18,function(t){rasen.material.map=t;rasen.material.needsUpdate=true;});
+/* 🌱 KI-Rasen-Textur bewusst NICHT verwendet: auf der 204u-Wiese sichtbar gekachelt (diagonales Muster)
+   und deutlich zu dunkel — die prozedurale Gras-Textur (grasTex) ist genau fuer diese Flaeche gebaut.
+   Die uebrigen KI-Texturen (Innenboeden, Backstein, Putz, Sand) bleiben aktiv. */
 // ---- Open-World-Landschaft rundherum ----
 (function landschaft(){
   // Ferne Grasebene (Horizont) unter allem
