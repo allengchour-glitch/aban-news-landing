@@ -365,3 +365,19 @@
   - Fix: Durch ein nicht-modales Bottom-Sheet/Popover ersetzen: kurze Schritte, Button „Verstanden“, optional „Arcade jetzt öffnen“, Schliessen per X/ESC und Hinweis nicht mehrfach zeigen.
 - **P2|ux** [spiele_00301 L302] iOS-Erkennung nur per User-Agent ist fragil
   - Fix: Kontext statt nur UA prüfen: Standalone-Status inkl. navigator.standalone/display-mode, WebView-Erkennung und nur bei echter A2HS-Möglichkeit die iOS-Anleitung zeigen; sonst direkt „Im Browser spielen“ anbieten.
+
+---
+## Schwarm-Runde 2 (Claude, 138 Agenten) — Stand nach Umsetzung
+**Umgesetzt (27 bestätigte Regressions → die kritischen 20):** Lebenspfad Stale-Retry-Timer (P1, zerstörte frisch
+gehosteten OFEN-Raum), untracked 1400ms-Retry (P2, Doppel-Gast), _brkAuto/_brkScan/_autoShare-Resets, Ping-Pong-Kappe,
+Label-Fix; mp.js Zombie-Reconnect (P1), !ever-Guard (P2), stiller unavailable-id-Pfad (P3); Wildnis Quest-Skip vergibt
+jetzt Ausrüstung (P1), applyGearVisuals Change-Guard (P2), Ring-3 unter der Mauer + Nudge-Klemme (P1/P3), Hub-Abstände
+(P2), Tür-Vorplatz 4.3 (P2), Klippen-Determinismus vollständig (P2), disposeGhost materialien-only (P3), Fallback-Held-
+Ausrüstung (P3); spiele.html Continue-Card robust (2×P3).
+**Bewusst offen (P3, akzeptiert):** min-Spacing 13 (seltene Berührung breitester Häuser), Laternen/Stände-Klemmwerte,
+benachbarte rnd-in-if-Blöcke (Welt-Orte), Host↔Join OFEN-Restrisiko.
+**Bestätigt & GROSS (eigener Block nötig, nicht quick-fixbar):**
+- P1|perf decorateWorldLate ~500 Einzel-Meshes → InstancedMesh/Merge-Architektur (grosser Umbau, hoher FPS-Gewinn Handy)
+- P1|perf Geskinnte Mobs: GLB-Fetch+Parse pro Spawn → SkeletonUtils.clone-Cache (Vendor-Datei nötig)
+**Unverifiziert geblieben (Claude-Limit):** 15 der 24 Backlog-Claims (Math.random-Klasse, Origin-Check, Preview-Race,
+placeLoot/Beet/Glühwürmchen/FallbackHouse-Memory, Picker-Dispose) — nächste Session mit frischem Limit prüfen.

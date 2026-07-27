@@ -917,7 +917,7 @@ function loadHero(){
     if(C.file!=="hero_meshy_combat2.glb"){new THREE.GLTFLoader().load("/models/hero_meshy_combat2.glb",function(g){
       var o=g.scene;o.scale.setScalar(1.35);
       o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material){n.material.emissiveIntensity=0.5;if(n.material.color)n.material.color.multiplyScalar(1.3);}}});
-      pBody.visible=false;player.add(o);heroModel=o;heroRig=makeRig(o,g.animations);setAnim(heroRig,"idle",0);
+      pBody.visible=false;player.add(o);heroModel=o;heroRig=makeRig(o,g.animations);setAnim(heroRig,"idle",0);if(typeof applyGearVisuals==="function"){_lastGearW=-1;applyGearVisuals();} /* 🩹 Schwarm-P3: Ausrüstung auch am Fallback-Modell */
     },undefined,function(){});}
   });
 }
@@ -1733,7 +1733,7 @@ function layVillagePaths(vx,vz,houses){
     var outAng=Math.atan2(hz-vz,hx-vx);          // Zentrum -> Haus
     var dc=Math.cos(outAng),ds=Math.sin(outAng);
     var px=-ds,pz=dc;                            // Quer-Richtung
-    var doorX=hx-dc*3.6,doorZ=hz-ds*3.6;         // direkt vor der Tür (Richtung Zentrum)
+    var doorX=hx-dc*4.3,doorZ=hz-ds*4.3;         // direkt vor der Tür (Häuser 10.2 → Vorplatz vor die 4.0-Wand)
     var plX=vx+dc*8.0,plZ=vz+ds*8.0;             // Platzrand auf Haus-Seite
     var STEPS=6,bend=(i%2?1:-1);
     var pts=[];for(var t=0;t<=STEPS;t++){var f=t/STEPS,bx=doorX+(plX-doorX)*f,bz=doorZ+(plZ-doorZ)*f,wob=Math.sin(f*Math.PI)*1.1*bend;pts.push({x:bx+px*wob,z:bz+pz*wob});}
@@ -2414,7 +2414,7 @@ function buildSpawnHub(){
   var houses=window._spawnHouses||[];
   function clearOf(x,z,d){for(var i=0;i<houses.length;i++){if(Math.hypot(houses[i].x-x,houses[i].z-z)<d)return false;}return true;}
   function hubSpot(ang,r,d){ /* deterministisch: Radius nach aussen + Winkel leicht wackeln, bis hausfrei (d=Mindestabstand) */
-    d=d||5.5;
+    d=d||6.5; /* 🩹 Schwarm-P2: Häuser sind grösser (10.2) — mehr Abstand */
     var AOFF=[0,0.12,-0.12,0.24,-0.24,0.36,-0.36];
     for(var ka=0;ka<AOFF.length;ka++)for(var k=0;k<12;k++){
       var a2=ang+AOFF[ka],x=vx+Math.cos(a2)*(r+k*2),z=vz+Math.sin(a2)*(r+k*2);
@@ -2444,7 +2444,7 @@ function buildSpawnHub(){
       if(rec){rec.spd=0.3;rec.pois=[{x:fx+1.8,z:fz+0.6},{x:fx-1.8,z:fz+0.6},{x:fx,z:fz-2.2}];}} /* bleiben am Brunnen */
   })();
   /* 3) 🍺 Taverne: bd_inn + Laterne + warmes Licht + Musikant-NPC (♪-Blase, fixedEmo) */
-  (function(){var p=hubSpot(2.6,23,8.5),tx=p.x,tz=p.z; /* 📏 Taverne: ≥8.5 zu Häusern */
+  (function(){var p=hubSpot(2.6,23,10.5),tx=p.x,tz=p.z; /* 📏 Taverne: ≥10.5 zu den grösseren Häusern */
     var inn=cc0inst("bd_inn",9.5);if(inn){inn.position.set(tx,groundH(tx,tz),tz);inn.rotation.y=Math.atan2(vx-tx,vz-tz);scene.add(inn);addCollider(tx,tz,4.0,inn);}
     var dc=vx-tx,ds=vz-tz,dl=Math.hypot(dc,ds)||1;dc/=dl;ds/=dl;
     var dx=tx+dc*4.4,dz=tz+ds*4.4; /* Vorplatz Richtung Zentrum */
@@ -2455,7 +2455,7 @@ function buildSpawnHub(){
     if(mus){mus.fixedEmo="🎶";mus.spd=0.25;mus.emoT=1.5;mus.pois=[{x:dx-1.2,z:dz+0.8},{x:dx+1.4,z:dz+1.2},{x:dx,z:dz+2.2}];}
   })();
   /* 4) ⚒️ Arbeitende Schmiede: bd_smithy + Amboss + sv_hammer + periodische Funken + Flacker-Licht */
-  (function(){var p=hubSpot(4.9,23,8.5),sx=p.x,sz=p.z; /* 📏 Schmiede: ≥8.5 zu Häusern */
+  (function(){var p=hubSpot(4.9,23,10.5),sx=p.x,sz=p.z; /* 📏 Schmiede: ≥10.5 zu den grösseren Häusern */
     var sm=cc0inst("bd_smithy",9.0);if(sm){sm.position.set(sx,groundH(sx,sz),sz);sm.rotation.y=Math.atan2(vx-sx,vz-sz);scene.add(sm);addCollider(sx,sz,3.8,sm);}
     var dc=vx-sx,ds=vz-sz,dl=Math.hypot(dc,ds)||1;dc/=dl;ds/=dl;
     var ax=sx+dc*4.6,az=sz+ds*4.6,ay=groundH(ax,az);
@@ -2669,8 +2669,9 @@ function decorateWorld(){
   // ⛰️ Felsvorsprünge / Klippen (grosse dramatische Felsen)
   for(var cf2=0;cf2<Math.round(5*VF);cf2++){(function(){var p=spotFar(65);for(var i=0;i<5;i++){var ox=p.x+(rnd()-0.5)*7,oz=p.z+(rnd()-0.5)*7;
     var _cs1=3.5+rnd()*4,_cs2=4+rnd()*3; /* 🩹 Kimi-P1: beide rnd IMMER ziehen — sonst Koop-Desync wenn ein GLB nur auf einem Gerät fehlt */
+    var _cy=rnd()*2.5,_crx=rnd()*0.3,_cry=rnd()*6.28,_crz=rnd()*0.3; /* 🩹 Schwarm-P2: ALLE 4 Draws unbedingt — sonst Desync wenn GLB einseitig fehlt */
     var big=cc0inst("cc0_cliff_rock",_cs1);if(!big)big=cc0inst("cc0_rock_large",_cs2);
-    if(big){big.position.set(ox,groundH(ox,oz)-0.5+rnd()*2.5,oz);big.rotation.set(rnd()*0.3,rnd()*6.28,rnd()*0.3);scene.add(big);}}})();}
+    if(big){big.position.set(ox,groundH(ox,oz)-0.5+_cy,oz);big.rotation.set(_crx,_cry,_crz);scene.add(big);}}})();}
   // 🌸 Grasige Hügel (flache Kuppeln mit Blumen)
   for(var hi=0;hi<Math.round(6*VF);hi++){(function(){var p=spotFar(55),hr=9+rnd()*8;
     var hill=new THREE.Mesh(new THREE.SphereGeometry(hr,12,7,0,6.28,0,Math.PI/2.2),new THREE.MeshLambertMaterial({color:0x3f9a54,flatShading:true}));
@@ -2709,7 +2710,7 @@ function decorateWorld(){
       if(isSpawn){ // drei Häuser-Ringe: innen 10, mitte 12, aussen 8
         if(h<10){ha=(h/10)*6.28+rnd()*0.3;hrd=20+rnd()*6;}
         else if(h<22){ha=((h-10)/12)*6.28+0.26+rnd()*0.25;hrd=35+rnd()*9;}
-        else{ha=((h-22)/8)*6.28+0.13+rndP()*0.22;hrd=48+rndP()*8;}
+        else{ha=((h-22)/8)*6.28+0.13+rndP()*0.22;hrd=46+rndP()*7;} /* 🩹 Schwarm-P1: max 53 — Häuser ragten in die Stadtmauer (R64) */
       }else{ha=(h/nH)*6.28+rnd()*0.4;hrd=6+rnd()*7;}
       var hx=vx+Math.cos(ha)*hrd,hz=vz+Math.sin(ha)*hrd;
       /* rnd-Aufrufe unbedingt (identischer Strom mit/ohne GLB → koop-sicher); fehlt das GLB,
@@ -2720,13 +2721,13 @@ function decorateWorld(){
       var tries=0;
       while(tries<12&&tooClose(hx,hz)){
         var ra,rr2;
-        if(isSpawn){if(h<10){ra=rndP()*6.28;rr2=20+rndP()*6;}else if(h<22){ra=rndP()*6.28;rr2=35+rndP()*9;}else{ra=rndP()*6.28;rr2=48+rndP()*8;}}
+        if(isSpawn){if(h<10){ra=rndP()*6.28;rr2=20+rndP()*6;}else if(h<22){ra=rndP()*6.28;rr2=35+rndP()*9;}else{ra=rndP()*6.28;rr2=46+rndP()*7;}}
         else{ra=rndP()*6.28;rr2=6+rndP()*7;}
         hx=vx+Math.cos(ra)*rr2;hz=vz+Math.sin(ra)*rr2;hRy=Math.atan2(vx-hx,vz-hz)+(rndP()-0.5)*0.4;tries++;
       }
       if(tries>=12&&tooClose(hx,hz)){ /* 12 Random-Retries erschöpft → deterministisch radial nach aussen nudgen */
         var nAng=Math.atan2(hz-vz,hx-vx),nRad=Math.hypot(hx-vx,hz-vz);
-        for(var nk=1;nk<=14&&tooClose(hx,hz);nk++){hx=vx+Math.cos(nAng)*(nRad+nk*1.6);hz=vz+Math.sin(nAng)*(nRad+nk*1.6);}
+        for(var nk=1;nk<=14&&tooClose(hx,hz);nk++){var _nr=Math.min(55,nRad+nk*1.6);hx=vx+Math.cos(nAng)*_nr;hz=vz+Math.sin(nAng)*_nr;} /* 🩹 Schwarm-P3: bei 55 klemmen — nicht über die Mauer nudgen */
         hRy=Math.atan2(vx-hx,vz-hz)+(rndP()-0.5)*0.4;
       }
       var hCx=hx+(R()-0.5)*1.5,hCz=hz+(R()-0.5)*1.5;
@@ -2760,7 +2761,7 @@ function decorateWorld(){
       /* 📏 Welle 5: Landmark-Gebäude aus den Häuser-Ringen NACH AUSSEN schieben bis frei (User: keine überschneidung) */
       function clearSpot(x0,z0,br){var ang=Math.atan2(z0-vz,x0-vx),r0=Math.hypot(x0-vx,z0-vz);
         for(var k=0;k<26;k++){var rr=r0+k*2.5,x=vx+Math.cos(ang)*rr,z=vz+Math.sin(ang)*rr,ok=true;
-          for(var hh=0;hh<_houses.length;hh++){if(Math.hypot(_houses[hh].x-x,_houses[hh].z-z)<3.4+br){ok=false;break;}}
+          for(var hh=0;hh<_houses.length;hh++){if(Math.hypot(_houses[hh].x-x,_houses[hh].z-z)<4.2+br){ok=false;break;}}
           if(ok)return {x:x,z:z};}
         return {x:vx+Math.cos(ang)*(r0+52),z:vz+Math.sin(ang)*(r0+52)};}
       var chp=clearSpot(vx-14,vz-12,4.5);
@@ -3386,8 +3387,11 @@ function _gearOn(model,weapon,armor,old){
   }
   return refs;
 }
+var _lastGearW=-1,_lastGearA=-1;
 function applyGearVisuals(){
   if(!heroModel)return;
+  if(equip.weapon===_lastGearW&&equip.armor===_lastGearA)return; /* 🩹 Schwarm-P2: nur bei Änderung — vorher Mesh-Rebuild + Koop-Nachricht bei JEDEM Pickup */
+  _lastGearW=equip.weapon;_lastGearA=equip.armor;
   var r=_gearOn(heroModel,equip.weapon,equip.armor,{weapon:_weaponMesh,armor:_armorParts});
   _weaponMesh=r.weapon;_armorParts=r.armor;
   if(NET.on)sendMyGear(); /* Partner über eigene Ausrüstung informieren */
@@ -3948,7 +3952,7 @@ function renderBuildMenu(){
     el.appendChild(d);
   });
 }
-function disposeGhost(){if(!ghost)return;scene.remove(ghost);ghost.traverse(function(n){if(n.isMesh){if(n.geometry)n.geometry.dispose();var ms=Array.isArray(n.material)?n.material:[n.material];ms.forEach(function(m){if(m)m.dispose();});}});ghost=null;} /* 🩹 Kimi-P1: geklonte Ghost-Materialien+Geometrie entsorgen — sonst GPU-Leak pro Bauversuch */
+function disposeGhost(){if(!ghost)return;scene.remove(ghost);ghost.traverse(function(n){if(n.isMesh){var ms=Array.isArray(n.material)?n.material:[n.material];ms.forEach(function(m){if(m)m.dispose();});}});ghost=null;} /* 🩹 Schwarm-P3: NUR Materialien (geklont) — Geometrie ist bei cc0-Bauten mit dem Proto geteilt */ /* 🩹 Kimi-P1: geklonte Ghost-Materialien+Geometrie entsorgen — sonst GPU-Leak pro Bauversuch */
 function startGhost(type){
   disposeGhost();
   ghostType=type;ghost=buildMesh(type,player.position.x,player.position.z);
@@ -4940,7 +4944,8 @@ function startGame(fresh){
     (sv.st||[]).forEach(function(o){if(!RECIPES[o.t])return;placeStructure(o.t,o.x,o.z);var st=structures[structures.length-1];if(st)st.hp=o.hp;});
     // Quest: gespeicherten Stand nehmen, dann erfüllte überspringen
     if(typeof sv.quest==="number")quest=Math.min(sv.quest,QUESTS.length);
-    while(quest<QUESTS.length&&QUESTS[quest].done())quest++;
+    while(quest<QUESTS.length&&QUESTS[quest].done()){var _sq=QUESTS[quest]; /* 🩹 Schwarm-P1: beim Überspringen erledigter Quests Ausrüstung TROTZDEM vergeben */
+      if((_sq.gw|0)>equip.weapon)equip.weapon=_sq.gw|0;if((_sq.ga|0)>equip.armor)equip.armor=_sq.ga|0;quest++;}
   } else {for(var _pk in PERK)PERK[_pk]=0;equip.weapon=0;equip.armor=0; /* 🩹 Kimi-P1: frischer Start muss Perks/Ausrüstung nullen — sonst stapeln sich Klassen-Boni bei Restart */
     qProg.flug=0;qProg.arenaCr=0;qProg.raceWin=0;qProg.koloss=0;bountyN=0;bounty=null;lootOpenedTotal=0;inv={wood:0,stone:0,crystal:0,berry:0,meat:0};tools={axe:0,pick:0};hp=100;maxHp=100;xp=0;level=1;kills=0;day=1;dayT=0;isNight=false;nights=0;won=false;normInv();player.position.set(NET.on?(NET.role==="host"?-2.5:2.5):0,0,0);
     var _c=getChar();if(_c&&_c.cls){ // 🔀 Klassen-Bonus (Realm) einmalig auf den frischen Start

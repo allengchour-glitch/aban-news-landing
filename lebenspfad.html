@@ -3524,7 +3524,7 @@ function netTryReconnect(){ // Gast: mit Backoff neu zum Host verbinden und Snap
       setTimeout(function(){if(!settled&&NET.on&&!(c&&c.open))netTryReconnect();},Math.min(6000,delay+3000)); // Versuch lief ins Leere -> nächster Backoff
     }catch(e){netTryReconnect();}
   },delay);}
-function netHostReset(){try{voiceStop();}catch(e){}NET.host=false;NET.pubWanted=false;try{if(NET.peer)NET.peer.destroy();}catch(e){}NET.peer=null;NET.conns=[];NET.names=[];NET.cfgs=[];NET.ready=[];
+function netHostReset(){try{voiceStop();}catch(e){}NET.host=false;NET.pubWanted=false;NET._brkAuto=false;NET._autoShare=false; /* 🩹 Schwarm-P2/P3: Auto-Failover-Budget + Share-Flag freigeben — sonst nur 1 Failover pro Seiten-Load / verspätetes Share-Sheet */try{if(NET.peer)NET.peer.destroy();}catch(e){}NET.peer=null;NET.conns=[];NET.names=[];NET.cfgs=[];NET.ready=[];
   clearTimeout(NET._tmo);
   var b=document.getElementById("netHostBtn");if(b){b.disabled=false;b.textContent="Raum erstellen";}
   var j=document.getElementById("netJoinBtn");if(j)j.disabled=false;
@@ -3643,11 +3643,14 @@ document.getElementById("netJoinBtn").onclick=function(){
     setTimeout(function(){document.getElementById("netCode").value=code;document.getElementById("netJoinBtn").click();},400);
     return true;}
   function joinReset(msg){try{voiceStop();}catch(e){}
+    clearTimeout(NET._retryT); /* 🩹 Schwarm-P1: hängender 4.5s-Retry-Timer hat sonst den frisch gehosteten OFEN-Raum ~4s nach Erstellung zerstört */
     if(msg&&msg.indexOf("🔁")!==0){NET._brkScan=false;NET._brkJAuto=false;} /* Zyklus fertig → nächster manueller Versuch scannt wieder beide Server */
     if(NET.quick){ /* 🌍 kein offener Raum -> automatisch selbst einen oeffnen */
-      NET.quick=false;clearTimeout(NET._tmo);if(NET._hb)clearInterval(NET._hb);
+      NET.quick=false;NET._brkScan=false;clearTimeout(NET._tmo);if(NET._hb)clearInterval(NET._hb); /* _brkScan freigeben (Schwarm-P3) */
       try{if(NET.peer)NET.peer.destroy();}catch(e){}NET.peer=null;NET.conns=[];
       jb.disabled=false;hb.disabled=false;jb.textContent="Beitreten";
+      if((NET._pubFlip|0)>=2){netStatus("🌍 Offener Raum gerade nicht erreichbar — nochmal tippen oder Freund direkt einladen.","#b06a2a");return;} /* 🩹 Schwarm-P3: Host↔Join-Ping-Pong kappen */
+      NET._pubFlip=(NET._pubFlip|0)+1;
       netStatus("🌍 Kein offener Raum da — ich öffne einen für dich …","#2a7d46");
       setTimeout(function(){document.getElementById("netHostPubBtn").click();},350);
       return;}
@@ -3687,7 +3690,7 @@ document.getElementById("netJoinBtn").onclick=function(){
   NET.peer.on("open",function(){tryConnect();});
   NET.peer.on("error",function(e){var t=e&&e.type;if(opened)return;
     if(t==="peer-unavailable"){ // Host (noch) nicht auffindbar -> nächster Versuch statt sofort aufgeben
-      if(attempt<MAXTRY){setTimeout(tryConnect,1400);}
+      if(attempt<MAXTRY){clearTimeout(NET._retryT);NET._retryT=setTimeout(tryConnect,1400);} /* 🩹 Schwarm-P2: Retry tracken — sonst feuert er in den NÄCHSTEN Join-Zyklus (doppelter Gast in der Lobby) */
       else{clearTimeout(NET._tmo);{if(!joinBrokerScan())joinReset("❌ Raum "+code+" nicht gefunden. Läuft das Spiel beim Gastgeber gerade? Er darf die Seite nicht schliessen/wegwischen. Code prüfen und nochmal.");};}
       return;}
     clearTimeout(NET._tmo);
@@ -3732,7 +3735,7 @@ function netShareWhatsApp(){ /* 💬 direkt WhatsApp öffnen mit vorformuliertem
 (function(){var ib=document.getElementById("netInviteBtn");if(!ib)return;ib.onclick=function(){ /* 🔗 1-Tipp: Raum erstellen + Link teilen */
   if(NET.peer&&NET.code){netShareInvite();return;} /* Raum existiert schon → nur teilen */
   NET._autoShare=true;ib.textContent="⏳ Raum wird erstellt …";
-  setTimeout(function(){ib.textContent="🔗 Freunde einladen — Raum + Einladungslink in 1 Tipp";},4000);
+  setTimeout(function(){ib.textContent="💬 Mit Freund spielen — Link per WhatsApp";},4000);
   document.getElementById("netHostBtn").click();};})();
 // 🔗 Auto-Beitritt: /lebenspfad.html?raum=CODE -> Code eintragen + automatisch beitreten
 (function(){var m=location.search.match(/[?&]raum=([A-Za-z]{4})/);if(!m)return;
