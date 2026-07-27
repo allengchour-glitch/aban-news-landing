@@ -874,16 +874,17 @@ def wassertank():
     zyl(0, 0, ZT + 1.72, 1.20, 0.05, BLAU, 24)                    # Wasserspiegel
     box(-1.44, 0, ZT + 0.875, 0.10, 0.34, 1.50, RING)             # Standrohr-Anzeige
     zyl(-1.50, 0, ZT + 0.875, 0.05, 1.45, BLAU, 10)
-    # --- Fallrohr mit Zapfhahn auf der Schauseite (+y)
-    zyl(0.0, 1.15, 2.06, 0.09, 2.88, STAHL, 12)                   # 0.62 - 3.50
-    strebe_yz(0.30, ZT + 0.16, 1.15, ZT - 0.10, 0.0, 0.16, 0.16, STAHL)
-    box(0, 1.15, 0.62, 0.20, 0.44, 0.16, STAHL)
-    zyl(0, 1.42, 0.62, 0.055, 0.30, RING, 10, rot=(math.pi/2, 0, 0))
-    box(0, 1.30, 0.80, 0.06, 0.06, 0.20, RING)
-    zyl(0, 0.90, 0.09, 0.66, 0.18, HOLZ2, 16)                     # Traenketrog darunter
-    zyl(0, 0.90, 0.16, 0.56, 0.06, BLAU, 16)
-    # --- Leiter auf +y bis aufs Podest
-    leiter(0.72, PB + 0.42, 0.05, ZP + 0.50, HOLZ, 0.50, 0.31, 0.07, 'y')
+    # --- Fallrohr mit Zapfhahn auf der Schauseite (+y), NEBEN der Leiterachse
+    PX = -0.62                                                    # sonst verdeckt die
+    zyl(PX, 1.15, 2.06, 0.09, 2.88, STAHL, 12)                    # Leiter das ganze Rohr
+    strebe_yz(0.30, ZT + 0.16, 1.15, ZT - 0.10, PX, 0.16, 0.16, STAHL)
+    box(PX, 1.15, 0.62, 0.20, 0.44, 0.16, STAHL)
+    zyl(PX, 1.42, 0.62, 0.055, 0.30, RING, 10, rot=(math.pi/2, 0, 0))
+    box(PX, 1.30, 0.80, 0.06, 0.06, 0.20, RING)
+    zyl(PX, 0.95, 0.09, 0.62, 0.18, HOLZ2, 16)                    # Traenketrog darunter
+    zyl(PX, 0.95, 0.16, 0.52, 0.06, BLAU, 16)
+    # --- Leiter auf +y, buendig an der Podestkante (PB+0.25 = 1.60)
+    leiter(0.72, PB + 0.30, 0.05, ZP + 0.50, HOLZ, 0.50, 0.31, 0.07, 'y')
     gelaender(-PB - 0.25, PB + 0.25, -PB - 0.25, ZP + 0.26, HOLZ2, 0.95, 'x')
     for sx in (-PB - 0.25, PB + 0.25):
         gelaender(-PB - 0.25, PB + 0.25, sx, ZP + 0.26, HOLZ2, 0.95, 'y')

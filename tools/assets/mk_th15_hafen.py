@@ -131,6 +131,16 @@ def strebe(p0, p1, d, m=None):
     o.rotation_euler = v.to_track_quat('Z', 'Y').to_euler()
     return o
 
+def balken(p0, p1, breite, hoehe, m=None):
+    """Wie `strebe`, aber mit rechteckigem Querschnitt: `breite` quer, `hoehe`
+    senkrecht. to_track_quat('Z','Y') legt die lokale Y-Achse nach Welt-oben."""
+    p0 = Vector(p0); p1 = Vector(p1); v = p1 - p0; L = v.length
+    if L < 1e-4: return None
+    c = (p0 + p1) / 2.0
+    o = box(c.x, c.y, c.z, breite, hoehe, L, m)
+    o.rotation_euler = v.to_track_quat('Z', 'Y').to_euler()
+    return o
+
 def ring(cx, cy, z, r, n, breite, hoehe, m, start=0.0):
     """Geschlossener Ring aus n tangential gedrehten Boxen (Handlauf, Lichterrand)."""
     ch = 2.0 * r * math.sin(math.pi/n) * 1.06
