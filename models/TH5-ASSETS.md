@@ -315,6 +315,24 @@ Generator: `tools/assets/mk_th14_spieltische.py`
 
 ---
 
+## 1k. Charge 13 — BEGEHBARE VERKEHRSBAUTEN (`models/th20_*.glb`)
+
+| Datei | Maße (B×T×H) | Innenleben |
+|---|---|---|
+| `th20_ubahn_station.glb` | 37,0 × 32,5 × 18,1 | Gewölbehalle, Bahnsteig 0,76 m mit Blindenstreifen, Gleis längs daneben, Fahrkartenautomaten, Anzeigetafel, Sitzbänke |
+| `th20_tankstelle.glb` | 34,0 × 30,0 × 8,8 | Vordach auf 4 Stützen, 4 Zapfsäulen auf Inseln, begehbarer Shop mit Regalen und Kasse, Preismast |
+| `th20_busbahnhof.glb` | 60,0 × 41,5 × 5,5 | 4 überdachte Bussteige mit Kanten, Bänken und Anzeigen, Wartehalle mit Abfahrtstafel |
+| `th20_feuerwache.glb` | 46,3 × 35,0 × 18,6 | Fahrzeughalle mit 3 Toren und Ausfahrtmarkierungen, 17-m-Schlauchturm, Mannschaftstrakt, Blaulichter |
+| `th20_parkgarage.glb` | 37,0 × 25,0 × 7,4 | 2 begehbare Decks, Rampe/Treppe, Stellplatzmarkierung, Brüstungen, Deckenlicht |
+
+Generator: `tools/assets/mk_th20_verkehrsbauten.py`
+
+Neue Helfer: `gleisstueck(cx, cy, laenge, z, ...)` — Schotter, Schwellen, 2 Schienen,
+Spurweite 1,435 m, **Gleis läuft in x** (längs gebaut stünde es quer vor dem Bahnsteig).
+`markierung(...)` setzt Stellplatzstriche im Raster.
+
+---
+
 ## 2. Texturen (`textures/th5/*.png`)
 
 512×512, **nahtlos kachelbar** (Wrap-Arithmetik, verifiziert per 2×2-Kachel-Kontaktbogen).
@@ -408,6 +426,7 @@ python3 tools/assets/mk_th12_vergnuegen.py   # Vergnuegungsviertel -> models/th1
 python3 tools/assets/mk_th12_texturen.py  # Casino/Club/Theater -> textures/th12/*.png
 python3 tools/assets/mk_th13_jahrmarkt.py    # Jahrmarkt -> models/th13_*.glb
 python3 tools/assets/mk_th14_spieltische.py  # Casino-Einrichtung -> models/th14_*.glb
+python3 tools/assets/mk_th20_verkehrsbauten.py  # Verkehrsbauten -> models/th20_*.glb
 ```
 
 Beide brauchen nur **bpy 5.x + numpy** (im Container vorhanden, kein Blender-Binary nötig,
