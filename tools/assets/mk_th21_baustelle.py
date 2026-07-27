@@ -864,7 +864,7 @@ def betonmischer():
     zyl(0, -3.98, 2.38, 0.16, 0.70, GRAU, 14, rot=(0, math.pi/2, 0))
     # Restbeton liegt am BODEN unter dem Auslauf — auf 1.20 schwebte der Klumpen
     box(0, -5.48, 0.05, 0.70, 0.50, 0.10, BET)
-    kugel(0.18, -5.60, 0.06, 0.14, BET, 8)
+    halbkugel(0.18, -5.60, 0.0, 0.16, BET, 10, 0.55)   # Kugel haette -0.08 ergeben
     leiter(0.92, -3.86, 0.62, 3.00, STAH, 0.44, 0.30, 0.05, 'y')  # Aufstieg bis fast
     box(0.92, -4.02, 0.52, 0.60, 0.24, 0.05, STAH)                # zum Trittblech
     box(0.92, -3.55, 3.06, 0.90, 0.80, 0.06, STAH)
@@ -920,21 +920,24 @@ def baucontainer():
     box(0, 0, 0.26, B - 0.24, L - 0.24, 0.08, WEI2)                # Fussboden 0.30
     box(0, 0, H - 0.05, B - 0.06, L - 0.06, 0.10, DACH)            # Dach, Oberkante 2.60
     box(0, 0, H - 0.13, B - 0.02, L - 0.02, 0.05, WEI2)
+    # REIHENFOLGE VON INNEN NACH AUSSEN: Zarge/Rahmen zurueck, Blatt bzw. Scheibe DAVOR.
+    # Erste Fassung hatte die Zarge 3 cm VOR dem Tuerblatt — sie deckte Tuer und
+    # Fenster komplett zu, die Front sah aus wie eine leere weisse Platte.
     TX = 0.45                    # Tuerachse: Podest + Handlauf bleiben in der Breite
-    box(TX, L/2 - 0.09, 1.275, 0.90, 0.10, 1.95, TUER)
-    box(TX, L/2 - 0.055, 1.275, 0.98, 0.05, 2.03, RAHM)
-    box(TX, L/2 - 0.12, 1.275, 0.98, 0.03, 2.03, SCHW)
-    box(TX - 0.34, L/2 - 0.14, 1.20, 0.10, 0.10, 0.28, STAH)
-    box(TX, L/2 - 0.14, 1.90, 0.44, 0.05, 0.40, GLAS)
+    box(TX, L/2 - 0.055, 1.275, 1.04, 0.05, 2.07, RAHM)            # Zarge
+    box(TX, L/2 - 0.03, 1.275, 0.90, 0.08, 1.95, TUER)             # Tuerblatt
+    box(TX - 0.34, L/2 + 0.015, 1.20, 0.10, 0.08, 0.28, STAH)      # Griff
+    box(TX, L/2 + 0.012, 1.90, 0.44, 0.04, 0.40, GLAS)             # Tuerfenster
+    box(TX, L/2 - 0.075, 1.275, 1.10, 0.04, 2.13, SCHW)            # Dichtung dahinter
     for (fx, fy, fb) in ((-0.72, L/2, 0.86), (0.0, -L/2, 1.30)):   # Front-/Heckfenster
         s = 1 if fy > 0 else -1
-        box(fx, fy - s*0.055, 1.62, fb + 0.12, 0.05, 1.12, RAHM)
-        box(fx, fy - s*0.085, 1.62, fb, 0.04, 1.00, GLAS)
-        box(fx, fy - s*0.075, 1.62, 0.06, 0.05, 1.00, RAHM)
+        box(fx, fy - s*0.075, 1.62, fb + 0.12, 0.05, 1.12, RAHM)
+        box(fx, fy - s*0.035, 1.62, fb, 0.04, 1.00, GLAS)
+        box(fx, fy - s*0.025, 1.62, 0.06, 0.04, 1.00, RAHM)
     for sx in (-1, 1):                                             # Seitenfenster
-        box(sx*(B/2 - 0.055), -0.90, 1.62, 0.05, 1.42, 1.12, RAHM)
-        box(sx*(B/2 - 0.085), -0.90, 1.62, 0.04, 1.30, 1.00, GLAS)
-        box(sx*(B/2 - 0.075), -0.90, 1.62, 0.05, 0.06, 1.00, RAHM)
+        box(sx*(B/2 - 0.075), -0.90, 1.62, 0.05, 1.42, 1.12, RAHM)
+        box(sx*(B/2 - 0.045), -0.90, 1.62, 0.04, 1.30, 1.00, GLAS)
+        box(sx*(B/2 - 0.025), -0.90, 1.62, 0.04, 0.06, 1.00, RAHM)
     box(0, 0, H - 0.02, 0.30, 0.30, 0.04, ECK)                     # Dachdurchfuehrung
     # --- Podest mit zwei Stufen (hoechster Punkt 1.35 — bleibt unter 2.60)
     PY = L/2 + 0.50

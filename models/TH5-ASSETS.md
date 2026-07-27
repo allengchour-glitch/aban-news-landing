@@ -526,6 +526,37 @@ Generator: `tools/assets/mk_th23_oeffentlich.py`
 
 ---
 
+## 1s. Charge 22 — BAUSTELLE (`models/th21_*.glb`)
+
+| Datei | Maße (B×T×H) | Modul-Raster / Hinweis |
+|---|---|---|
+| `th21_turmdrehkran.glb` | 5,33 × 32,91 × **34,02** | Gitterturm, Ausleger, Gegenausleger mit Ballast, Laufkatze, Haken |
+| `th21_geruest_modul.glb` | **6,000** × 1,39 × **8,000** | **x += 6,00**, Ständerraster 2,00, keine Doppelständer an der Fuge |
+| `th21_bauzaun_modul.glb` | **3,500** × 0,78 × 2,10 | **x += 3,50**, an jeder Fuge genau eine Klemme |
+| `th21_baucontainer.glb` | **2,440** × 7,71 × **2,600** | **stapeln: z += 2,60**, Eckbeschläge bündig |
+| `th21_rohbau.glb` | **12,000 × 12,000 × 3,200** | **begehbar**, **stapeln: z += 3,20**, Treppe läuft durchs Deckenauge |
+| `th21_bagger.glb` | 3,22 × 8,08 × 4,76 | Ketten, Drehkranz, Ausleger, eingerollter Löffel |
+| `th21_radlader.glb` | 2,74 × 7,03 × 2,97 | Schaufel, Knicklenkung, Kabine |
+| `th21_betonmischer.glb` | 3,26 × 9,81 × 4,26 | drehbare Trommel, Rutsche |
+| `th21_materialstapel.glb` | 5,53 × 3,73 × 1,57 | Paletten mit Ziegeln, Rohren, Zementsäcken |
+| `th21_sandhaufen.glb` | 10,52 × 5,64 × 1,65 | Sand und Kies, Trennwand |
+| `th21_betonrohre.glb` | 7,56 × 4,70 × 3,42 | Pyramidenstapel |
+
+Generator: `tools/assets/mk_th21_baustelle.py`
+
+Der Rohbau hat bewusst **kein** Geländer am Deckenauge und die Treppe keinen Handlauf —
+beides würde über 3,20 m ragen und den fugenlosen Stapel zerstören.
+
+> ⚠️ **`read_factory_settings(use_empty=True)` reicht nicht immer.** Ein Lauf lieferte
+> trotzdem einen Default-Würfel mit Unterkante −1,00 ins Modell. Das `neu()` dieser
+> Charge löscht zusätzlich alle Objekte.
+
+> ⚠️ **Gedrehte Körper: den Versatz senkrecht zur Achse rechnen.** Eine Treppenwange
+> tauchte 7 cm unter den Boden, weil der senkrechte statt des achsnormalen Versatzes
+> angesetzt war (`0,15 · cos α`). Für gekippte Quader gilt `(b·sin α + h·cos α)/2`.
+
+---
+
 ## 2. Texturen (`textures/th5/*.png`)
 
 512×512, **nahtlos kachelbar** (Wrap-Arithmetik, verifiziert per 2×2-Kachel-Kontaktbogen).
@@ -628,6 +659,7 @@ python3 tools/assets/mk_th18_bauernhof.py # Bauernhof -> models/th18_*.glb
 python3 tools/assets/mk_th19_baeder.py    # Baeder und Sporthallen -> models/th19_*.glb
 python3 tools/assets/mk_th24_zoo.py       # Zoo und Tierpark -> models/th24_*.glb
 python3 tools/assets/mk_th23_oeffentlich.py # Publikumsbauten -> models/th23_*.glb
+python3 tools/assets/mk_th21_baustelle.py # Baustelle -> models/th21_*.glb
 ```
 
 Beide brauchen nur **bpy 5.x + numpy** (im Container vorhanden, kein Blender-Binary nötig,
