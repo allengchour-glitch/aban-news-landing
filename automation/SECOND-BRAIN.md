@@ -3,71 +3,92 @@
 > **Auto-generiert** von `automation/second_brain.mjs` (Cron `second-brain.yml`) aus `youtube-learnings.md`
 > + TikTok-Reports. **Nicht manuell editieren.** Jede Session liest hier den DESTILLIERTEN Stand statt der
 > Rohläufe. Wird mit jedem Lauf reicher & genauer. Nur echte, abgeleitete Daten — keine erfundenen Fakten.
-> Stand: 2026-06-27 17:43 UTC · Quellen: 3 YouTube-Läufe, 0 TikTok-Reports.
+> Stand: 2026-07-27 07:14 UTC · Quellen: 12 YouTube-Läufe, 0 TikTok-Reports.
 
 ## 🔝 Konsens-Hashtags (am häufigsten über alle Läufe)
-- #digitalmarketing  _(5×)_
-- #shorts  _(3×)_
-- #tryonhaul  _(3×)_
-- #shopify  _(3×)_
-- #summerfashion  _(2×)_
-- #dropshipping  _(2×)_
-- #ai  _(2×)_
-- #aitools  _(2×)_
-- #aiautomation  _(2×)_
-- #claudeai  _(2×)_
-- #facebookads  _(2×)_
-- #metaads  _(2×)_
-- #facebookads2026  _(2×)_
-- #metaads2026  _(2×)_
-- #performancemarketing  _(2×)_
-- #ecommerceads  _(2×)_
-- #facebookadstutorial  _(2×)_
-- #summer  _(2×)_
-- #style  _(1×)_
-- #outfitideas  _(1×)_
+- #shorts  _(20×)_
+- #fashion  _(19×)_
+- #outfitideas  _(14×)_
+- #ecommerce  _(10×)_
+- #viral  _(10×)_
+- #shopify  _(10×)_
+- #ootd  _(9×)_
+- #summerfashion  _(9×)_
+- #trending  _(8×)_
+- #youtubeshorts  _(8×)_
+- #summer  _(7×)_
+- #shopifydropshipping  _(6×)_
+- #onlinebusiness  _(6×)_
+- #styleinspo  _(6×)_
+- #style  _(6×)_
+- #summeroutfits  _(5×)_
+- #makemoneyonline  _(5×)_
+- #dropshipping  _(5×)_
+- #streetstyle  _(5×)_
+- #tryonhaul  _(4×)_
 
 ## 🪝 Stärkste Hooks (höchste gesehene Views — Inspiration, nicht kopieren)
-- Aaj 9 June ki 3 badi khabar | आज की बड़ी खबर | Ravish Kumar news | #breakingnews​ · 6'332'948
-- Aaj 22 June ki 3 badi khabar | आज की बड़ी खबर | Ravish Kumar news | #breakingnews · 5'080'878
-- Sandeep Chaudhary : 'Iran के भारत में ₹60,000 करोड़ रखे हुए थे' | #petroldieselprice #shor · 4'118'327
-- Google Marketing Live 2026 · 3'981'775
-- Aaj 10 June ki 3 badi khabar | आज की बड़ी खबर | Ravish Kumar news | #breakingnews​ · 3'798'327
-- Sandeep Chaudhary : '41 देशों से तेल खरीद रहा भारत' | #petroldieselprice #goldprice #short · 2'809'350
-- #outfitideas #fashion #outfitinspo #boho #fashionstyle #styling #style #ootdguide #outfit · 1'677'351
-- Shein Summer Try On Haul 📦🌴🍉 Which item is your favorite? ✨ · 1'118'003
-- Myntra summer friendly jeans and trouser finds under budget •9 items #myntrahaul #myntrafi · 1'068'163
-- Hollister order try-on haul #summer #hollister #haul #tryon #clothes #fyp #hollisterhaul · 957'714
-- ✨Sommer Try on Haul✨ · 733'914
-- Zara summer outfits ✨| Zara new in #outfitideas #zarahaul · 650'558
-- SUMMER HAUL 🌴💖@pinkpalmpuff#haul #pinkpalmpuffswimwear #shorts · 509'672
-- Boho Maxi Dresses Haul for summers Vacation| Long Floral Dresses for Summers #myntrahaul # · 290'916
-- Blue hues, boho vibes, and effortless elegance 💙🤍 #shorts #styleinspo #chicstyle #music · 253'773
+- one more chop and we’re good! #miniskirt #summer #fashion · 20'196'091
+- Prada Spring/Summer 2027 Menswear Fashion Show · 15'790'437
+- How to Match Gold & Silver Accessories With Any Outfit ✨ #fashiontips #styletips #goldjewe · 15'350'024
+- Платье + аксессуары ✨💃🏼Сохраняй, чтобы запомнить 🤍 · 11'470'178
+- Summer Short Jeans & Top Outfit Ideas for Women ☀️ | Trendy Summer Fashion 2026 | part 1 # · 10'914'679
+- Men's Spring-Summer 2027 Show I LOUIS VUITTON · 10'838'463
+- Summer Short Jeans & Top Outfit Ideas for Women ☀️ | Trendy Summer Fashion 2026 #shorts · 10'706'120
+- CR7 Outfit Price Breakdown | Luxury Fashion #cristianoronaldo #edit #shorts · 8'538'259
+- summer coord sets ⭐🍒#summer #coordset · 5'675'828
+- 🌸7 Summer Kurtis You Need This Season☀️ #kurti #meeshofinds #fashion #ootdguide #aestheti · 5'609'852
+- Summer school outfits #school #summer · 5'605'785
+- Dresses + accessories guide 👗 | Save all & subscribe for more styling & fashion #style #l · 5'380'940
+- Bali outfits. 🏝️ #outfits #bali #trip #transition #couple #couplegoal #summeroutfits #sum · 5'039'604
+- I Dressed Like It’s 2006 vs 2026 (The Nostalgia Is Real) #y2kfashion #2000s #shorts · 4'418'804
+- SUMMER NEWEST FASHION TRENDS IN MILAN 🇮🇹 #milanfashion #milanstreetstyle #streetstyle · 3'861'390
 
 ## 🔑 Trend-Keywords
-claude _(5)_ · haul _(4)_ · full _(4)_ · shorts _(3)_ · summer _(3)_ · with _(3)_ · tutorial _(3)_ · dropshipping _(3)_ · guide _(3)_ · marketing _(3)_ · fashion _(2)_ · myntra _(2)_ · video _(2)_ · tools _(2)_ · free _(2)_ · that _(2)_ · google _(2)_ · facebook _(2)_ · meta _(2)_ · beginners _(2)_
+fashion _(26)_ · summer _(20)_ · shorts _(18)_ · haul _(14)_ · viral _(14)_ · outfit _(13)_ · gold _(10)_ · with _(9)_ · shopify _(8)_ · video _(8)_ · style _(8)_ · claude _(7)_ · dropshipping _(7)_ · trends _(7)_ · guide _(6)_ · jewelry _(6)_ · trending _(6)_ · shop _(6)_ · full _(5)_ · course _(5)_
 
 ## 💡 Selbst-Verbesserungs-Vorschläge
-- Wenig Daten zu: [LuxeStyle] Mode/Reels-Trends, [LuxeStyle] Fashion Hooks (DACH), [LuxeStyle] Dropshipping/Shopify-Strategie, [abannews] KI-Tools & Reviews, [abannews] KI-News & Trends, [abannews] GEO/AI-Sichtbarkeit & SEO, [abannews] Newsletter/Creator-Wachstum, LuxeStyle Mode/Reels-Trends, Fashion Hooks (DACH), KI-News/Tools (aban-news) → mehr/spezifischere Queries in learn_from_youtube.mjs ergänzen.
-- Konsens-Hashtags in Reels/Posts priorisieren: #digitalmarketing #shorts #tryonhaul #shopify #summerfashion #dropshipping (brain_pools.sh nutzt sie bereits).
-- Diese Hook-Muster ziehen Reichweite — als Caption-Inspiration testen (nicht kopieren): „Aaj 9 June ki 3 badi khabar | आज की बड़ी खबर | Ravish Kumar news | #breakingnews​".
-- Wissensbasis noch jung (3 Läufe) — Aussagekraft steigt, je länger der 24/7-Sammler läuft.
+- Konsens-Hashtags in Reels/Posts priorisieren: #shorts #fashion #outfitideas #ecommerce #viral #shopify (brain_pools.sh nutzt sie bereits).
+- Diese Hook-Muster ziehen Reichweite — als Caption-Inspiration testen (nicht kopieren): „one more chop and we’re good! #miniskirt #summer #fashion".
 
 ## 📈 Themen-Abdeckung (Läufe je Thema)
-- Dropshipping/Shopify-Strategie: 2
-- [LuxeStyle] Mode/Reels-Trends: 1
-- [LuxeStyle] Fashion Hooks (DACH): 1
-- [LuxeStyle] Dropshipping/Shopify-Strategie: 1
-- [abannews] KI-Tools & Reviews: 1
-- [abannews] KI-News & Trends: 1
-- [abannews] GEO/AI-Sichtbarkeit & SEO: 1
-- [abannews] Newsletter/Creator-Wachstum: 1
-- LuxeStyle Mode/Reels-Trends: 1
-- Fashion Hooks (DACH): 1
-- KI-News/Tools (aban-news): 1
+- [LuxeStyle] Mode/Reels-Trends: 12
+- [LuxeStyle] Fashion Hooks (DACH): 12
+- [LuxeStyle] Dropshipping/Shopify-Strategie: 12
+- [LuxeStyle] Schmuck & Accessoires: 12
+- [LuxeStyle] TikTok-Shop/Viral-Produkte: 12
+- [LuxeStyle] Werbevideo-Handwerk (wie macht man gute Ads): 12
 
 ## 🧬 Evolutions-Log (wie das Gehirn wächst)
 <!--LOG-->
-- 2026-06-27 17:43 UTC: 3 Läufe · 96 Hashtags · 57 Hooks · 78 Keywords verdichtet · Konsens-Pool aktualisiert.
-- 2026-06-27 13:42 UTC: 2 Läufe · 38 Hashtags · 18 Hooks · 28 Keywords verdichtet · Konsens-Pool aktualisiert.
+- 2026-07-27 07:14 UTC: 12 Läufe · 356 Hashtags · 292 Hooks · 310 Keywords verdichtet · Konsens-Pool aktualisiert.
+- 2026-07-26 07:13 UTC: 12 Läufe · 351 Hashtags · 293 Hooks · 309 Keywords verdichtet · Konsens-Pool aktualisiert.
+- 2026-07-25 07:12 UTC: 12 Läufe · 350 Hashtags · 297 Hooks · 311 Keywords verdichtet · Konsens-Pool aktualisiert.
+- 2026-07-24 07:13 UTC: 12 Läufe · 358 Hashtags · 302 Hooks · 312 Keywords verdichtet · Konsens-Pool aktualisiert.
+- 2026-07-23 07:14 UTC: 12 Läufe · 371 Hashtags · 307 Hooks · 317 Keywords verdichtet · Konsens-Pool aktualisiert.
+- 2026-07-22 07:16 UTC: 12 Läufe · 376 Hashtags · 308 Hooks · 326 Keywords verdichtet · Konsens-Pool aktualisiert.
+- 2026-07-21 07:13 UTC: 12 Läufe · 381 Hashtags · 298 Hooks · 329 Keywords verdichtet · Konsens-Pool aktualisiert.
+- 2026-07-20 07:21 UTC: 12 Läufe · 377 Hashtags · 289 Hooks · 322 Keywords verdichtet · Konsens-Pool aktualisiert.
+- 2026-07-19 07:14 UTC: 12 Läufe · 369 Hashtags · 285 Hooks · 318 Keywords verdichtet · Konsens-Pool aktualisiert.
+- 2026-07-18 07:12 UTC: 12 Läufe · 373 Hashtags · 290 Hooks · 325 Keywords verdichtet · Konsens-Pool aktualisiert.
+- 2026-07-17 07:19 UTC: 12 Läufe · 369 Hashtags · 295 Hooks · 325 Keywords verdichtet · Konsens-Pool aktualisiert.
+- 2026-07-16 07:18 UTC: 12 Läufe · 374 Hashtags · 298 Hooks · 330 Keywords verdichtet · Konsens-Pool aktualisiert.
+- 2026-07-15 07:14 UTC: 12 Läufe · 384 Hashtags · 299 Hooks · 342 Keywords verdichtet · Konsens-Pool aktualisiert.
+- 2026-07-14 07:19 UTC: 12 Läufe · 375 Hashtags · 296 Hooks · 335 Keywords verdichtet · Konsens-Pool aktualisiert.
+- 2026-07-13 07:20 UTC: 12 Läufe · 376 Hashtags · 296 Hooks · 341 Keywords verdichtet · Konsens-Pool aktualisiert.
+- 2026-07-12 07:14 UTC: 12 Läufe · 386 Hashtags · 302 Hooks · 347 Keywords verdichtet · Konsens-Pool aktualisiert.
+- 2026-07-11 07:19 UTC: 12 Läufe · 379 Hashtags · 303 Hooks · 346 Keywords verdichtet · Konsens-Pool aktualisiert.
+- 2026-07-10 07:15 UTC: 12 Läufe · 380 Hashtags · 303 Hooks · 342 Keywords verdichtet · Konsens-Pool aktualisiert.
+- 2026-07-09 07:14 UTC: 12 Läufe · 372 Hashtags · 305 Hooks · 330 Keywords verdichtet · Konsens-Pool aktualisiert.
+- 2026-07-08 07:15 UTC: 12 Läufe · 356 Hashtags · 294 Hooks · 317 Keywords verdichtet · Konsens-Pool aktualisiert.
+- 2026-07-07 07:14 UTC: 12 Läufe · 346 Hashtags · 280 Hooks · 305 Keywords verdichtet · Konsens-Pool aktualisiert.
+- 2026-07-06 07:15 UTC: 12 Läufe · 339 Hashtags · 271 Hooks · 299 Keywords verdichtet · Konsens-Pool aktualisiert.
+- 2026-07-05 07:13 UTC: 12 Läufe · 355 Hashtags · 278 Hooks · 316 Keywords verdichtet · Konsens-Pool aktualisiert.
+- 2026-07-04 07:12 UTC: 12 Läufe · 344 Hashtags · 265 Hooks · 309 Keywords verdichtet · Konsens-Pool aktualisiert.
+- 2026-07-03 07:14 UTC: 12 Läufe · 312 Hashtags · 242 Hooks · 286 Keywords verdichtet · Konsens-Pool aktualisiert.
+- 2026-07-02 07:18 UTC: 12 Läufe · 288 Hashtags · 219 Hooks · 271 Keywords verdichtet · Konsens-Pool aktualisiert.
+- 2026-07-01 07:14 UTC: 11 Läufe · 259 Hashtags · 190 Hooks · 242 Keywords verdichtet · Konsens-Pool aktualisiert.
+- 2026-06-30 07:15 UTC: 10 Läufe · 226 Hashtags · 163 Hooks · 215 Keywords verdichtet · Konsens-Pool aktualisiert.
+- 2026-06-29 07:24 UTC: 9 Läufe · 185 Hashtags · 133 Hooks · 181 Keywords verdichtet · Konsens-Pool aktualisiert.
+- 2026-06-28 07:13 UTC: 8 Läufe · 150 Hashtags · 108 Hooks · 148 Keywords verdichtet · Konsens-Pool aktualisiert.
 <!--/LOG-->
