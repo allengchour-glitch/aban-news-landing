@@ -19,7 +19,7 @@ const done=new Set(fs.existsSync(LEDGER)?fs.readFileSync(LEDGER,'utf8').split('\
 const esc=x=>/[",\n]/.test(x)?'"'+String(x).replace(/"/g,'""')+'"':x;
 function appendReel(id,url,cap,tags,platforms){
   let csv=fs.readFileSync(CSV,'utf8'); if(!csv.endsWith('\n'))csv+='\n';
-  csv+=[id,new Date().toISOString().slice(0,10),url,esc(cap),tags,platforms,'ready','',''].join(',')+'\n';
+  csv+=[id,new Date().toISOString().slice(0,10),url,esc(cap),esc(tags),esc(platforms),'ready','',''].join(',')+'\n';
   fs.writeFileSync(CSV,csv);
 }
 function catTags(title){ const t=title.toLowerCase(); const m=[];
@@ -32,7 +32,7 @@ let cursor=fs.existsSync(CURSOR)?(fs.readFileSync(CURSOR,'utf8').trim()||null):n
 let made=0, scanned=0;
 outer:
 while(made<BATCH){
-  const r=await gql(`query($c:String){products(first:15,query:"tag:video-hit status:active",after:$c){pageInfo{hasNextPage endCursor}edges{node{id title variants(first:1){edges{node{price}}} media(first:8){edges{node{mediaContentType ... on Video{sources{url height width}}}}}}}}}`,{c:cursor});
+  const r=await gql(`query($c:String){products(first:15,query:"tag:video-hit status:active",after:$c){pageInfo{hasNextPage endCursor}edges{node{id title handle variants(first:1){edges{node{price}}} media(first:8){edges{node{mediaContentType ... on Video{sources{url height width}}}}}}}}}`,{c:cursor});
   if(!r){await sleep(3000);continue;}
   for(const e of r.data.products.edges){
     const n=e.node; scanned++;
@@ -53,7 +53,8 @@ while(made<BATCH){
       if(!fs.existsSync(out)){ console.log('  Render fehlgeschlagen',pid); continue; }
       const url=execFileSync('/opt/node22/bin/node',['automation/upload_to_shopify_cdn.mjs',out,title],{env:{...process.env,SHOPIFY_SHOP:SHOP},encoding:'utf8'}).trim().split('\n').pop().trim();
       if(!/^https/.test(url)){ console.log('  CDN-Upload fehlgeschlagen',pid,url.slice(0,60)); continue; }
-      const cap=`«${title}» ✨ Jetzt bei LuxeStyle${price?` — CHF ${price}`:''}. Blitzversand aus der Schweiz · −10% mit Code WELCOME10 🇨🇭`;
+      const link=`luxestyle.ch/products/${n.handle}`;
+      const cap=`«${title}» ✨ Jetzt bei LuxeStyle${price?` — CHF ${price}`:''}. Blitzversand aus der Schweiz · −10% mit Code WELCOME10 🇨🇭\n🔗 ${link} (Link in Bio)`;
       const tags=[...catTags(title),'#schweiz','#luxestyle','#reels'].join(' ');
       appendReel(`cjreel-${pid}`,url,cap,tags,'instagram,facebook');
       made++; console.log(`  ✅ Reel ${made}/${BATCH}: ${shortT} → queue`);

@@ -24,9 +24,14 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 async function api(path, params, method = 'POST') {
   const body = new URLSearchParams({ ...params, access_token: TOK });
-  const r = await fetch(`https://graph.facebook.com/${V}/${path}${method === 'GET' ? '?' + body : ''}`,
-    method === 'GET' ? {} : { method, body });
-  return r.json();
+  // Retry gegen transiente Netz-/DNS-Fehler (Container-Poll darf nicht crashen)
+  for (let a = 0; a < 5; a++) {
+    try {
+      const r = await fetch(`https://graph.facebook.com/${V}/${path}${method === 'GET' ? '?' + body : ''}`,
+        method === 'GET' ? {} : { method, body });
+      return await r.json();
+    } catch (e) { if (a === 4) return { error: { message: 'net: ' + String(e).slice(0, 60) } }; await sleep(2500); }
+  }
 }
 
 // CSV robust parsen (Anführungszeichen mit Kommas)
