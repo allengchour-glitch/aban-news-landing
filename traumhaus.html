@@ -2,6 +2,11 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
+<!-- ⚡ Die beiden Bewohner-Modelle sind mit 3,1 und 3,5 MB die groessten Dateien der Seite und
+     wurden bisher hinter ~95 kleinen GLBs eingereiht (gemessen: 12,8 s bis fertig). Preload
+     startet sie sofort, damit der Start nicht auf ihnen wartet. -->
+<link rel="preload" as="fetch" type="model/gltf-binary" href="models/th_mann.glb" crossorigin>
+<link rel="preload" as="fetch" type="model/gltf-binary" href="models/th_frau.glb" crossorigin>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="aban-nav" content="off"><!-- Vollbild-Spiel: keine Website-Navileiste (sonst frisst sie auf dem Handy den halben Screen) -->
 <title>Traumhaus — Bau-Simulation (Sims-Style, Online-Koop) | aban news</title>
@@ -336,6 +341,31 @@ function _strukTex(kind){var cv=document.createElement("canvas");cv.width=cv.hei
 var _texBeton=null,_texBlatt=null,_texErde=null;
 function betMat(c,rough){if(!_texBeton)_texBeton=_strukTex("beton");
   var m=new THREE.MeshStandardMaterial({color:c,roughness:rough!==undefined?rough:0.85,map:_texBeton});m.envMapIntensity=0.3;return m;}
+/* 🎨 Verputz-Struktur fuer Fassaden (weisse Basis -> jede Hausfarbe faerbt sie ein).
+   Vorher waren alle Waende einfarbig und wirkten wie Plastik. */
+var _texPutz=null;
+function putzTex(rx,ry){
+  if(!_texPutz){var N=128,cv=document.createElement("canvas");cv.width=cv.height=N;var c=cv.getContext("2d");
+    c.fillStyle="#ffffff";c.fillRect(0,0,N,N);
+    for(var i=0;i<2600;i++){var v=(Math.random()*34)|0;
+      c.fillStyle="rgba("+(255-v)+","+(253-v)+","+(246-v)+",0.5)";
+      c.fillRect(Math.random()*N,Math.random()*N,2,2);}
+    c.strokeStyle="rgba(90,84,74,0.07)";c.lineWidth=1;          /* feine Abzugslinien */
+    for(var y=0;y<N;y+=9){var jy=y+((Math.random()*3)|0);
+      c.beginPath();c.moveTo(0,jy);c.lineTo(N,jy);c.stroke();}
+    for(var k=0;k<18;k++){                                       /* leichte Wolken/Flecken */
+      var g=c.createRadialGradient(Math.random()*N,Math.random()*N,2,Math.random()*N,Math.random()*N,10+Math.random()*20);
+      g.addColorStop(0,"rgba(120,114,104,0.05)");g.addColorStop(1,"rgba(0,0,0,0)");
+      c.fillStyle=g;c.fillRect(0,0,N,N);}
+    _texPutz=new THREE.CanvasTexture(cv);}
+  /* Kleiner Pool statt einer Kopie pro Haus: jede Kopie ist ein eigener GPU-Upload,
+     bei ~40 Gebaeuden hat das den Seitenstart spuerbar verlangsamt. */
+  function q(v){return v<2.5?2:(v<4?3:5);}                      /* grob quantisiert = wenige Varianten */
+  var kx=q(rx||2),ky=q(ry||2),k=kx+"x"+ky;
+  var pool=(putzTex._pool||(putzTex._pool={}));
+  if(!pool[k]){var t=_texPutz.clone();t.needsUpdate=true;
+    t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(kx,ky);pool[k]=t;}
+  return pool[k];}
 
 // ===================== Grundstück =====================
 var GW=72,GH=46,CS=2; // Open-World XXL-BREIT 2026-07-25 (alt 60x46/50x38 → Migration in loadSnapshot)
@@ -351,7 +381,7 @@ var WORLD_POIS=[
   [-26,95,"🥕","Markthalle"],[-24,74,"🛒","Laden"],[-6,88,"🔧","Werkstatt"],[-46,80,"🏠","Stadthaus"],
   [-33,86,"🏛️","Altstadt"],[68,68,"🌳","Grosser Park"],[84,-26,"⛲","Brunnen-Park"],
   [84,0,"🛝","Spielplatz"],[0,102,"🚉","Bahnhof"],[26,67,"🏪","Marktplatz"],
-  [96,-33,"🏰","Villen Ost"],[-96,18,"🏰","Villen West"],[-80,73,"⛵","See-Steg"],[-232,0,"🌊","Meer"]];
+  [96,-33,"🏰","Villen Ost"],[-96,18,"🏰","Villen West"],[10,139,"⛵","Seepark"],[-232,0,"🌊","Meer"]];
 var WORLD_SOLIDS=[];
 /* Gitter-Index (16 m Zellen): inSolid lief linear ueber ALLE Kollider und wird pro
    Bewegungsschritt jedes Bewohners/Autos gerufen. Mit den Landschafts-Hindernissen
@@ -504,16 +534,38 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     sg.setIndex(sIdx);sg.computeVertexNormals();
     var sand=new THREE.Mesh(sg,new THREE.MeshStandardMaterial({color:0x8f7a52,roughness:1,envMapIntensity:0.2}));
     sand.rotation.x=-Math.PI/2;sand.position.set(x,-0.015,z);sand.receiveShadow=true;scene.add(sand);
-  })(-90,80);
+  })(0,146); /* 🛣️ Der See lag bei (-90,80) und ragte mit ~15 m Radius in die West-Zufahrt
+     (Band -82.5..-73.5) — daher „See auf Strasse" und der abgerissene Gehweg. Zwischen
+     Zufahrt und Ringstrasse sind nur 25 m Platz, ein See dieser Groesse passt dort nicht.
+     Westlich der Ringstrasse liegt schon das Meer — jetzt als Seepark suedlich der Bahn,
+     per Freiflaechen-Solver bestimmt, mit Platz fuer eine Uferpromenade rundherum. */
   var see=new THREE.Mesh(new THREE.CircleGeometry(0.01,3),new THREE.MeshBasicMaterial({visible:false}));
-  see.rotation.x=-Math.PI/2;see.position.set(-90,-0.03,80);scene.add(see);
+  see.rotation.x=-Math.PI/2;see.position.set(0,-0.03,146);scene.add(see);
   // Ufersteine folgen der echten Uferkurve (knapp ausserhalb des Wassers)
-  for(var sr=0;sr<10;sr++){var sa=sr/10*6.283+0.3;var stein=new THREE.Mesh(new THREE.DodecahedronGeometry(0.45+Math.sin(sr*3)*0.18,0),new THREE.MeshStandardMaterial({color:sr%2?0x6a6558:0x565043,roughness:1,metalness:0,envMapIntensity:0.25}));var stz=80+Math.sin(sa)*(seeR(sa)+1.0);if(stz<65)continue; // nicht ins Strassenband
-    stein.position.set(-90+Math.cos(sa)*(seeR(sa)+1.0),0.04,stz);stein.rotation.set(Math.random(),Math.random()*6,Math.random());stein.castShadow=true;scene.add(stein);}
+  for(var sr=0;sr<10;sr++){var sa=sr/10*6.283+0.3;var stein=new THREE.Mesh(new THREE.DodecahedronGeometry(0.45+Math.sin(sr*3)*0.18,0),new THREE.MeshStandardMaterial({color:sr%2?0x6a6558:0x565043,roughness:1,metalness:0,envMapIntensity:0.25}));var stz=146+Math.sin(sa)*(seeR(sa)+1.0);
+    stein.position.set(0+Math.cos(sa)*(seeR(sa)+1.0),0.04,stz);stein.rotation.set(Math.random(),Math.random()*6,Math.random());stein.castShadow=true;scene.add(stein);}
   // Viele Baeume rings um die Stadt (prozedural, gestreut)
+  /* Geometrien + Materialien EINMAL bauen und teilen — vorher bekam jeder der ~400
+     Streu-Objekte eigene, was den Seitenstart merklich verlangsamt hat. */
+  var _stammG=new THREE.CylinderGeometry(0.18,0.28,1.8,7),
+      _stammM=new THREE.MeshStandardMaterial({color:0x6a4a30,roughness:0.9}),
+      _kronG=[new THREE.SphereGeometry(1.1,9,7),new THREE.SphereGeometry(0.88,9,7),new THREE.SphereGeometry(0.66,9,7)],
+      _kronM=[new THREE.MeshStandardMaterial({color:0x4a8a44,roughness:0.85,envMapIntensity:0.2}),
+              new THREE.MeshStandardMaterial({color:0x3a7a3a,roughness:0.85,envMapIntensity:0.2})],
+      _buschG=new THREE.SphereGeometry(1,8,6),
+      _buschM=[new THREE.MeshStandardMaterial({color:0x4a8a48,roughness:0.92,envMapIntensity:0.18}),
+               new THREE.MeshStandardMaterial({color:0x3f7a40,roughness:0.92,envMapIntensity:0.18})],
+      _felsG=new THREE.DodecahedronGeometry(1,0),
+      _felsM=[new THREE.MeshStandardMaterial({color:0x726c60,roughness:1,envMapIntensity:0.22}),
+              new THREE.MeshStandardMaterial({color:0x5e584c,roughness:1,envMapIntensity:0.22})],
+      _heuG=new THREE.CylinderGeometry(1.05,1.05,1.5,12),
+      _heuM=new THREE.MeshStandardMaterial({color:0xd8c274,roughness:0.98,envMapIntensity:0.15}),
+      _halmG=new THREE.CylinderGeometry(0.03,0.05,1,4),
+      _halmM=new THREE.MeshStandardMaterial({color:0x8aa04a,roughness:0.95});
   function baum2(x,z,k){var b=new THREE.Group();
-    var st=new THREE.Mesh(new THREE.CylinderGeometry(0.18,0.28,1.8,7),new THREE.MeshStandardMaterial({color:0x6a4a30,roughness:0.9}));st.position.y=0.9;b.add(st);
-    for(var c=0;c<3;c++){var kr=new THREE.Mesh(new THREE.SphereGeometry(1.1-c*0.22,9,7),new THREE.MeshStandardMaterial({color:c%2?0x3a7a3a:0x4a8a44,roughness:0.85,envMapIntensity:0.2}));kr.position.set((c-1)*0.4,2.1+c*0.6,(c%2-0.5)*0.35);kr.castShadow=true;b.add(kr);}
+    var st=new THREE.Mesh(_stammG,_stammM);st.position.y=0.9;b.add(st);
+    for(var c=0;c<3;c++){var kr=new THREE.Mesh(_kronG[c],_kronM[c%2]);
+      kr.position.set((c-1)*0.4,2.1+c*0.6,(c%2-0.5)*0.35);kr.castShadow=true;b.add(kr);}
     b.scale.setScalar(k||1);b.rotation.y=Math.random()*6.283;b.position.set(x,0,z);scene.add(b);}
   /* ⚠️ Baeume/Felsen/Heuballen bewusst NICHT solide. moveSim() prueft nur achsenweise und
      bleibt an einem Hindernis einfach stehen — es weicht nicht aus. ~290 zusaetzliche kleine
@@ -523,60 +575,166 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
   function freiPlatz(x,z,pad){
     pad=pad||0;
     if(Math.abs(x)<GW*CS/2+4+pad&&Math.abs(z)<GH*CS/2+6+pad)return false;      // Baugrundstueck
-    if(Math.hypot(x+90,z-80)<19+pad)return false;                              // See
+    if(Math.hypot(x,z-146)<24+pad)return false;                                // Seepark + Promenade
     if(Math.abs(Math.abs(z)-(GH*CS/2+12))<8+pad&&Math.abs(x)<RL/2+4)return false;  // Haupt-/Querstrassen
     if(Math.abs(Math.abs(x)-RX)<8+pad&&Math.abs(z)<78)return false;
     if(Math.abs(Math.abs(x)-112)<8+pad&&z>-108&&z<126)return false;             // Ringstrasse
     if((Math.abs(z+100)<8+pad||Math.abs(z-118)<8+pad)&&Math.abs(x)<120)return false;
     if(z>88&&z<118&&Math.abs(x)<80)return false;                               // Bahnhofsviertel
     if(z>62&&z<110&&x>-58&&x<8)return false;                                   // Altstadt-Suedviertel
-    if(Math.abs(z+96)<14&&Math.abs(x)<122)return false;                        // Fluss im Norden
+    if(Math.abs(z+91)<10&&x>-122&&x<82)return false;                           // Fluss im Norden
     for(var q=0;q<WORLD_SOLIDS.length;q++){var sq=WORLD_SOLIDS[q];
       if(Math.abs(x-sq.x)<sq.hw+2.5+pad&&Math.abs(z-sq.z)<sq.hd+2.5+pad)return false;}
     return true;}
+  /* In Haeppchen ueber mehrere Frames: alles auf einmal blockierte den Hauptthread
+     so lange, dass die Seite beim Start sekundenlang stand. */
   function streu(n,radMin,radMax,fn,pad){
-    for(var i9=0,tries=0;i9<n&&tries<n*14;tries++){
-      var a9=Math.random()*6.283,r9=radMin+Math.random()*(radMax-radMin);
-      var px=Math.cos(a9)*r9+(Math.random()-0.5)*22,pz=Math.sin(a9)*r9+(Math.random()-0.5)*22;
-      if(!freiPlatz(px,pz,pad))continue;
-      fn(px,pz);i9++;}}
+    var i9=0,tries=0;
+    (function schub(){
+      var bis=Math.min(n,i9+15);
+      while(i9<bis&&tries<n*14){tries++;
+        var a9=Math.random()*6.283,r9=radMin+Math.random()*(radMax-radMin);
+        var px=Math.cos(a9)*r9+(Math.random()-0.5)*22,pz=Math.sin(a9)*r9+(Math.random()-0.5)*22;
+        if(!freiPlatz(px,pz,pad))continue;
+        fn(px,pz);i9++;}
+      if(i9<n&&tries<n*14)setTimeout(schub,0);})();}
   /* Busch-Gruppen + Findlinge + Schilfinseln: fuellen die kahle Wiese zwischen den Vierteln */
   function busch(x,z){var g=new THREE.Group(),n=2+((Math.random()*3)|0);
     for(var i=0;i<n;i++){var k=0.7+Math.random()*0.7;
-      var m=new THREE.Mesh(new THREE.SphereGeometry(k,8,6),new THREE.MeshStandardMaterial({color:i%2?0x4a8a48:0x3f7a40,roughness:0.92,envMapIntensity:0.18}));
-      m.position.set((Math.random()-0.5)*2.2,k*0.72,(Math.random()-0.5)*2.2);m.scale.y=0.82;m.castShadow=true;g.add(m);}
+      var m=new THREE.Mesh(_buschG,_buschM[i%2]);
+      m.position.set((Math.random()-0.5)*2.2,k*0.72,(Math.random()-0.5)*2.2);
+      m.scale.set(k,k*0.82,k);m.castShadow=true;g.add(m);}
     g.position.set(x,0,z);scene.add(g);}
   function findling(x,z){var k=0.6+Math.random()*1.5;
-    var m=new THREE.Mesh(new THREE.DodecahedronGeometry(k,0),new THREE.MeshStandardMaterial({color:Math.random()<0.5?0x726c60:0x5e584c,roughness:1,envMapIntensity:0.22}));
-    m.position.set(x,k*0.45,z);m.rotation.set(Math.random()*3,Math.random()*6,Math.random()*3);m.scale.y=0.7;m.castShadow=true;m.receiveShadow=true;scene.add(m);}
+    var m=new THREE.Mesh(_felsG,_felsM[Math.random()<0.5?0:1]);
+    m.position.set(x,k*0.45,z);m.rotation.set(Math.random()*3,Math.random()*6,Math.random()*3);
+    m.scale.set(k,k*0.7,k);m.castShadow=true;m.receiveShadow=true;scene.add(m);}
   function schilf(x,z){var g=new THREE.Group();
     for(var i=0;i<9;i++){var h=1.1+Math.random()*0.9;
-      var m=new THREE.Mesh(new THREE.CylinderGeometry(0.03,0.05,h,4),new THREE.MeshStandardMaterial({color:0x8aa04a,roughness:0.95}));
-      m.position.set((Math.random()-0.5)*1.6,h/2,(Math.random()-0.5)*1.6);m.rotation.z=(Math.random()-0.5)*0.25;g.add(m);}
+      var m=new THREE.Mesh(_halmG,_halmM);
+      m.position.set((Math.random()-0.5)*1.6,h/2,(Math.random()-0.5)*1.6);
+      m.scale.y=h;m.rotation.z=(Math.random()-0.5)*0.25;g.add(m);}
     g.position.set(x,0,z);scene.add(g);}
-  function heuballen(x,z){var m=new THREE.Mesh(new THREE.CylinderGeometry(1.05,1.05,1.5,12),new THREE.MeshStandardMaterial({color:0xd8c274,roughness:0.98,envMapIntensity:0.15}));
+  function heuballen(x,z){var m=new THREE.Mesh(_heuG,_heuM);
     m.rotation.z=Math.PI/2;m.position.set(x,1.05,z);m.rotation.y=Math.random()*3;m.castShadow=true;scene.add(m);}
-  /* ⏱️ Erst streuen, wenn die Stadt steht — sonst ist WORLD_SOLIDS noch leer
-     und die Baeume landen dort, wo spaeter Haeuser gebaut werden. */
-  setTimeout(function(){
-    streu(190,GW*CS/2+8,GW*CS/2+120,function(x,z){baum2(x,z,0.7+Math.random()*1.1);},1);
-    streu(150,GW*CS/2+6,GW*CS/2+130,busch,0);
-    streu(70,GW*CS/2+10,GW*CS/2+135,findling,0);
-    streu(34,GW*CS/2+14,GW*CS/2+120,heuballen,1);
+  /* ⏱️ Erst streuen, wenn die Stadt steht (sonst ist WORLD_SOLIDS leer und die Baeume
+     landen in spaeteren Haeusern) UND erst nach dem load-Event: die ~450 Streu-Objekte
+     haben sonst waehrend des Ladens Rechenzeit gestohlen und den Start um ~2 s verzoegert. */
+  function _streuStart(){
+    /* 🏙️ STADT-STRUKTUR: Uferboeschung, Alleebaeume an den Hauptstrassen, Parkplatz mit
+       abgestellten Autos. Das sind die Details, die eine Ansammlung von Haeusern erst
+       wie eine Stadt wirken lassen (User: „weiter wie eine stadt machen"). */
+    (function seePromenade(){
+      /* 🚶 User: „um see einen gehweg oder so" — Rundweg ums Wasser, Baenke, Laternen,
+         dazu eine Stichstrasse von der Ringstrasse, damit der See angebunden ist. */
+      var SX=0,SZ2=146,SEG=44;
+      function rad(a){return 13+Math.sin(a*3)*1.8+Math.cos(a*5+1.3)*1.2+Math.sin(a*2+0.7)*0.9;}
+      /* Kies-Ton ohne Textur: die Ring-Geometrie hat keine UVs, eine Textur waere
+         auf einen einzigen Texel gefallen (erster Versuch war tiefschwarz). */
+      var pM=betMat(0xc9c2b2,0.95);
+      var pos=[],idx=[];
+      for(var u=0;u<SEG;u++){var a=u/SEG*Math.PI*2,r=rad(a);
+        pos.push(Math.cos(a)*(r+1.6),Math.sin(a)*(r+1.6),0);
+        pos.push(Math.cos(a)*(r+4.4),Math.sin(a)*(r+4.4),0);}
+      for(var v=0;v<SEG;v++){var i0=v*2,i1=((v+1)%SEG)*2;
+        idx.push(i0,i0+1,i1+1,i0,i1+1,i1);}
+      var g=new THREE.BufferGeometry();
+      g.setAttribute("position",new THREE.Float32BufferAttribute(pos,3));
+      g.setIndex(idx);g.computeVertexNormals();
+      var weg=new THREE.Mesh(g,pM);
+      weg.rotation.x=-Math.PI/2;weg.position.set(SX,-0.008,SZ2);weg.receiveShadow=true;scene.add(weg);
+      /* Stichstrasse von der Sued-Ringstrasse (z=118) hinunter zum Seepark */
+      var zu=new THREE.Mesh(new THREE.PlaneGeometry(8,32),strMatH.clone());
+      zu.rotation.x=-Math.PI/2;zu.position.set(0,-0.003,SZ2-30);zu.receiveShadow=true;scene.add(zu);
+      /* Baenke + Laternen entlang der Promenade (prozedural — bau() gibt es hier noch nicht) */
+      var holzM=stdMat(0x8a6a44,0.85),mastM=stdMat(0x3a3a42,0.5);
+      var sitzG=new THREE.BoxGeometry(1.8,0.12,0.5),lehnG=new THREE.BoxGeometry(1.8,0.5,0.1),
+          beinG=new THREE.BoxGeometry(0.12,0.42,0.45),mastG=new THREE.CylinderGeometry(0.07,0.09,3.2,7),
+          kopfG=new THREE.SphereGeometry(0.22,10,8);
+      for(var b=0;b<10;b++){var ab=b/10*6.283+0.35,rb=rad(ab)+3.0;
+        var bx=SX+Math.cos(ab)*rb,bz=SZ2+Math.sin(ab)*rb;
+        if(b%2===0){var bg2=new THREE.Group();
+          var si=new THREE.Mesh(sitzG,holzM);si.position.y=0.46;si.castShadow=true;bg2.add(si);
+          var le=new THREE.Mesh(lehnG,holzM);le.position.set(0,0.72,-0.2);bg2.add(le);
+          [-0.78,0.78].forEach(function(ox){var be=new THREE.Mesh(beinG,holzM);be.position.set(ox,0.21,0);bg2.add(be);});
+          bg2.position.set(bx,0,bz);bg2.rotation.y=-ab+Math.PI/2;scene.add(bg2);}
+        else{var lg2=new THREE.Group();
+          var ma=new THREE.Mesh(mastG,mastM);ma.position.y=1.6;lg2.add(ma);
+          var ko=new THREE.Mesh(kopfG,new THREE.MeshStandardMaterial({color:0xfff4d0,emissive:0xffe8a0,emissiveIntensity:0,roughness:0.3}));
+          ko.position.y=3.3;lg2.add(ko);
+          if(typeof dorfFenster!=="undefined")dorfFenster.push(ko.material);
+          lg2.position.set(bx,0,bz);scene.add(lg2);}}
+      /* Ein paar Baeume hinter dem Weg */
+      for(var t=0;t<14;t++){var at=t/14*6.283+0.9,rt=rad(at)+6.5+((t*5)%3);
+        baum2(SX+Math.cos(at)*rt,SZ2+Math.sin(at)*rt,0.8+((t*3)%4)*0.12);}
+    })();
+    (function ufer(){ /* weicher Rand statt harter Wasserkante */
+      var uM=new THREE.MeshStandardMaterial({color:0x6f7a4e,roughness:1,envMapIntensity:0.18});
+      [-96.4,-85.6].forEach(function(uz){
+        var u=new THREE.Mesh(new THREE.PlaneGeometry(200,3.4),uM);
+        u.rotation.x=-Math.PI/2;u.position.set(-20,-0.014,uz);u.receiveShadow=true;scene.add(u);});
+      for(var i=0;i<22;i++){var ux=-118+Math.random()*196,uz2=(Math.random()<0.5?-96.2:-85.8)+(Math.random()-0.5)*1.6;
+        var k=0.3+Math.random()*0.5;
+        var st=new THREE.Mesh(new THREE.DodecahedronGeometry(k,0),new THREE.MeshStandardMaterial({color:i%2?0x6a6558:0x565043,roughness:1}));
+        st.position.set(ux,k*0.4,uz2);st.rotation.set(Math.random()*3,Math.random()*6,Math.random()*3);st.castShadow=true;scene.add(st);}
+    })();
+    (function allee(){ /* gleichmaessige Baumreihen an den Hauptstrassen = Stadtbild */
+      var SZa=GH*CS/2;
+      function reihe(fixed,achse,von,bis,schritt){
+        for(var v=von;v<=bis;v+=schritt){
+          var px=achse==="x"?v:fixed,pz=achse==="x"?fixed:v;
+          if(!freiPlatz(px,pz,0))continue;
+          baum2(px,pz,0.85+((Math.abs(v)|0)%3)*0.12);}}
+      [-(SZa+12+8.6),SZa+12+8.6].forEach(function(zf){reihe(zf,"x",-RL/2+14,RL/2-14,13);});
+      [-(RX+8.6),RX+8.6].forEach(function(xf){reihe(xf,"z",-(SZa+34),SZa+34,13);});
+    })();
+    (function parkplatz(){ /* Asphaltflaeche mit Markierung + abgestellte Autos */
+      var PX=30,PZ=104,PW=26,PD=18;  /* Bahnhofs-Parkplatz — per Freiflaechen-Solver gesetzt */
+      var pl=new THREE.Mesh(new THREE.PlaneGeometry(PW,PD),strMatH.clone());
+      pl.rotation.x=-Math.PI/2;pl.position.set(PX,-0.004,PZ);pl.receiveShadow=true;scene.add(pl);
+      var mM=new THREE.MeshStandardMaterial({color:0xd8d8cc,roughness:0.8});mM.envMapIntensity=0.12;
+      for(var b=0;b<=8;b++){var st=new THREE.Mesh(new THREE.PlaneGeometry(0.2,5),mM);
+        st.rotation.x=-Math.PI/2;st.position.set(PX-PW/2+2+b*2.8,0.004,PZ-PD/4);scene.add(st);
+        var st2=new THREE.Mesh(new THREE.PlaneGeometry(0.2,5),mM);
+        st2.rotation.x=-Math.PI/2;st2.position.set(PX-PW/2+2+b*2.8,0.004,PZ+PD/4);scene.add(st2);}
+      var AF=[0xc23b32,0x2f6fb8,0xe8e4dc,0x3a3f47,0x4e9a5a,0xd8a83a,0x8a5ad0];
+      for(var a=0;a<9;a++){
+        var reihe2=a<5?-1:1,idx=a<5?a:a-5;
+        var ax=PX-PW/2+3.4+idx*2.8,az=PZ+reihe2*PD/4;
+        var g=new THREE.Group();
+        var k=new THREE.Mesh(new THREE.BoxGeometry(1.8,0.85,4.0),new THREE.MeshStandardMaterial({color:AF[(a*3)%AF.length],roughness:0.35,metalness:0.3}));
+        k.position.y=0.75;k.castShadow=true;g.add(k);
+        var d=new THREE.Mesh(new THREE.BoxGeometry(1.6,0.62,2.1),new THREE.MeshStandardMaterial({color:0x2a2e34,roughness:0.15,metalness:0.2,transparent:true,opacity:0.85}));
+        d.position.set(0,1.42,-0.25);g.add(d);
+        [[-0.85,1.4],[0.85,1.4],[-0.85,-1.4],[0.85,-1.4]].forEach(function(w){
+          var r=new THREE.Mesh(new THREE.CylinderGeometry(0.33,0.33,0.22,10),stdMat(0x22252a,0.5));
+          r.rotation.z=Math.PI/2;r.position.set(w[0],0.33,w[1]);g.add(r);});
+        g.position.set(ax,0,az);g.rotation.y=(Math.random()-0.5)*0.08;scene.add(g);}
+      addSolid(PX,PZ,PW+1,PD+1,{a:"z",at:PZ-PD/2-0.5,c:PX,w:PW});  /* offene Zufahrt an der Nordseite */
+    })();
+    streu(130,GW*CS/2+8,GW*CS/2+120,function(x,z){baum2(x,z,0.7+Math.random()*1.1);},1);
+    streu(95,GW*CS/2+6,GW*CS/2+130,busch,0);
+    streu(45,GW*CS/2+10,GW*CS/2+135,findling,0);
+    streu(24,GW*CS/2+14,GW*CS/2+120,heuballen,1);
     for(var sc9=0;sc9<26;sc9++){var sa9=sc9/26*6.283,sr9=22+Math.random()*6;
       var sx9=-90+Math.cos(sa9)*sr9,sz9=80+Math.sin(sa9)*sr9;
       if(freiPlatz(sx9,sz9,0))schilf(sx9,sz9);}
-  },0);
+  }
+  if(document.readyState==="complete")setTimeout(_streuStart,60);
+  else window.addEventListener("load",function(){setTimeout(_streuStart,60);});
   // ---- Breiter Fluss quer durch die Landschaft (Norden) ----
-  machWasser(240,16,0,-96,32); // weiter noerdlich — Bloecke/Kirche standen im Fluss
+  /* 🛣️ Der Fluss lag bei z=-96 (Band -104..-88) und ueberdeckte damit die komplette
+     Nord-Ringstrasse (Band -104.5..-95.5) — man fuhr durchs Wasser. Jetzt in den freien
+     Korridor zwischen Ring und Kathedralenviertel, und nicht mehr bis zur Lagerhalle im Osten. */
+  machWasser(200,8,-20,-91,32);
   // ---- Brücke über den Fluss ----
   (function bruecke(){var g=new THREE.Group();
-    var deck=new THREE.Mesh(new THREE.BoxGeometry(9,0.6,22),stdMat(0x8a7358,0.8));deck.position.y=2.4;deck.castShadow=true;g.add(deck);
-    [-4.2,4.2].forEach(function(sx){var gel=new THREE.Mesh(new THREE.BoxGeometry(0.3,1.1,22),stdMat(0x6a5540,0.7));gel.position.set(sx,3.2,0);g.add(gel);
-      for(var pz=-9;pz<=9;pz+=3){var pf=new THREE.Mesh(new THREE.CylinderGeometry(0.16,0.2,2.6,7),stdMat(0x6a5236,0.8));pf.position.set(sx,1.1,pz);g.add(pf);}});
-    [[-9],[9]].forEach(function(bp){[-3.5,3.5].forEach(function(sx){var bo=new THREE.Mesh(new THREE.CylinderGeometry(0.4,0.5,2.6,8),stdMat(0x8a8a88,0.8));bo.position.set(sx,1.2,bp[0]);g.add(bo);});});
-    var bogen=new THREE.Mesh(new THREE.TorusGeometry(7,0.5,8,16,Math.PI),stdMat(0x9a9a98,0.8));bogen.position.set(0,0.2,0);bogen.rotation.y=Math.PI/2;g.add(bogen);
-    g.position.set(0,0,-96);scene.add(g);})();
+    var deck=new THREE.Mesh(new THREE.BoxGeometry(9,0.6,14),stdMat(0x8a7358,0.8));deck.position.y=2.4;deck.castShadow=true;g.add(deck);
+    [-4.2,4.2].forEach(function(sx){var gel=new THREE.Mesh(new THREE.BoxGeometry(0.3,1.1,14),stdMat(0x6a5540,0.7));gel.position.set(sx,3.2,0);g.add(gel);
+      for(var pz=-6;pz<=6;pz+=3){var pf=new THREE.Mesh(new THREE.CylinderGeometry(0.16,0.2,2.6,7),stdMat(0x6a5236,0.8));pf.position.set(sx,1.1,pz);g.add(pf);}});
+    [[-5.5],[5.5]].forEach(function(bp){[-3.5,3.5].forEach(function(sx){var bo=new THREE.Mesh(new THREE.CylinderGeometry(0.4,0.5,2.6,8),stdMat(0x8a8a88,0.8));bo.position.set(sx,1.2,bp[0]);g.add(bo);});});
+    var bogen=new THREE.Mesh(new THREE.TorusGeometry(4.5,0.5,8,16,Math.PI),stdMat(0x9a9a98,0.8));bogen.position.set(0,0.2,0);bogen.rotation.y=Math.PI/2;g.add(bogen);
+    g.position.set(0,0,-91);scene.add(g);})();
   // ---- Gleis am Stadtrand (Süden) ----
   (function gleis(){var g=new THREE.Group();
     for(var s3=-120;s3<120;s3+=2.2){var schw=new THREE.Mesh(new THREE.BoxGeometry(3.4,0.16,0.6),stdMat(0x5a4230,0.85));schw.position.set(s3,0.08,0);g.add(schw);}
@@ -643,7 +801,20 @@ var weg=new THREE.Mesh(new THREE.PlaneGeometry(3,10),stdMat(0xc8beA8,0.9));weg.r
 // Sauberer, glatter Asphalt (feine Koernung statt haesslicher Riss-/Nahtlinien)
 function _roadTex(){var cv=document.createElement("canvas");cv.width=cv.height=256;var c=cv.getContext("2d");
   c.fillStyle="#45454d";c.fillRect(0,0,256,256);
-  for(var i=0;i<3000;i++){var v=(Math.random()*30)|0;c.fillStyle="rgba("+(60+v)+","+(60+v)+","+(66+v)+",0.05)";c.fillRect(Math.random()*256,Math.random()*256,2,2);}
+  /* Asphalt: Splitt-Koernung + Tonflecken + feine Risse — vorher nur ganz schwaches Rauschen */
+  for(var i=0;i<5000;i++){var v=(Math.random()*40)|0;
+    c.fillStyle="rgba("+(58+v)+","+(58+v)+","+(64+v)+",0.3)";
+    c.fillRect(Math.random()*256,Math.random()*256,Math.random()<0.25?3:2,2);}
+  for(var f=0;f<26;f++){
+    var g=c.createRadialGradient(Math.random()*256,Math.random()*256,2,Math.random()*256,Math.random()*256,18+Math.random()*46);
+    var hell=Math.random()<0.5;
+    g.addColorStop(0,hell?"rgba(120,120,128,0.09)":"rgba(24,24,30,0.11)");
+    g.addColorStop(1,"rgba(0,0,0,0)");c.fillStyle=g;c.fillRect(0,0,256,256);}
+  c.strokeStyle="rgba(26,26,32,0.35)";
+  for(var r=0;r<7;r++){c.lineWidth=0.6+Math.random();
+    var rx=Math.random()*256,ry=Math.random()*256;c.beginPath();c.moveTo(rx,ry);
+    for(var seg=0;seg<5;seg++){rx+=(Math.random()-0.5)*46;ry+=(Math.random()-0.5)*46;c.lineTo(rx,ry);}
+    c.stroke();}
   return new THREE.CanvasTexture(cv);}
 var strMatH=stdMat(0x4a4a53,0.92),strMatV=stdMat(0x4a4a53,0.92);
 (function(){var a=_roadTex();a.wrapS=a.wrapT=THREE.RepeatWrapping;a.repeat.set(Math.round(RL/6),1);strMatH.map=a;strMatH.needsUpdate=true;
@@ -744,6 +915,21 @@ var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_d
   [RX,-RX].forEach(function(xc){
     [xc-5.05,xc+5.05].forEach(function(xb){bord(0.26,2*SZ9+14,xb,0);});
     [xc-7.55,xc+7.55].forEach(function(xe){erd(0.7,2*SZ9+14,xe,0);});});
+  /* 🚶 Gehwege an Ringstrasse + Zubringern (User: „dort fehlt trottoir"). Bisher hatten nur
+     die inneren Haupt- und Querstrassen Trottoirs, der ganze aeussere Ring lag nackt im Gras.
+     Ring: z=±? bei -100/118, x=±112, Breite 9 -> Kante ±4.5, Gehweg-Mitte ±5.6.
+     Zubringer: x=±RX zwischen Querstrasse und Ring. */
+  (function ringTrottoirs(){
+    var RGZ_N=-100,RGZ_S=118,RGX=112;
+    [[RGZ_N,-105.6],[RGZ_N,-94.4],[RGZ_S,112.4],[RGZ_S,123.6]].forEach(function(P){
+      tr(2*RGX-8,2.0,0,P[1],0.05);});                    // Ring Nord/Sued, an den Ecken ausgespart
+    [[-RGX,-117.6],[-RGX,-106.4],[RGX,106.4],[RGX,117.6]].forEach(function(P){
+      tr(2.0,RGZ_S-RGZ_N-8,P[1],(RGZ_N+RGZ_S)/2,0.05);});// Ring West/Ost
+    [RX,-RX].forEach(function(xc){                        // Zubringer nach Norden und Sueden
+      [xc-5.6,xc+5.6].forEach(function(xe){
+        tr(2.0,Math.abs(RGZ_N+SZ9+23)-6,xe,(RGZ_N-(SZ9+23))/2,0.05);
+        tr(2.0,Math.abs(RGZ_S-(SZ9+23))-6,xe,(RGZ_S+(SZ9+23))/2,0.05);});});
+  })();
   // Zebrastreifen an den Kreuzungen (Fussgaenger queren die Hauptstrassen)
   var zMat=new THREE.MeshStandardMaterial({color:0xcfcfc6,roughness:0.85});zMat.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(zMat);
   function zebra(x,z,quer){ // quer=true: Strasse laeuft in X (Nord/Sued) -> Streifen laengs (in X), gestapelt ueber die Fahrbahnbreite (Z)
@@ -899,7 +1085,7 @@ var dorfFenster=[];
     var g=new THREE.Group();
     var w=4+(seed%3),d=3.6+((seed*7)%2),h=2.3+((seed*3)%2)*0.5;
     var wandC=WANDF[seed%WANDF.length],dachC=DACHF[seed%DACHF.length];
-    var bMat=stdMat(wandC,0.85);(window._wandMats=window._wandMats||[]).push(bMat);
+    var bMat=stdMat(wandC,0.85);bMat.map=putzTex(w/2.2,h/2.2);(window._wandMats=window._wandMats||[]).push(bMat);
     var sokl=new THREE.Mesh(new THREE.BoxGeometry(w+0.5,0.4,d+0.5),betMat(0xc4beb0,0.9));
     sokl.position.y=0.09;sokl.receiveShadow=true;sokl.castShadow=true;g.add(sokl); // Fundament (ueberstehend, versenkt) — Haus stand nackt im Gras
     var body=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),bMat);
@@ -937,7 +1123,7 @@ var dorfFenster=[];
     var g=new THREE.Group(),bx=0;
     for(var k=0;k<n;k++){
       var bw=5.2+((k*7)%3)*0.9,et=2+((k*5)%3),hh=et*2.5+0.5,dep=7.2;
-      var wm=stdMat(ZF[(k*3)%ZF.length],0.86);(window._wandMats=window._wandMats||[]).push(wm);
+      var wm=stdMat(ZF[(k*3)%ZF.length],0.86);wm.map=putzTex(bw/2.2,hh/2.2);(window._wandMats=window._wandMats||[]).push(wm);
       var kp=new THREE.Mesh(new THREE.BoxGeometry(bw,hh,dep),wm);
       kp.position.set(bx+bw/2,hh/2,0);kp.castShadow=true;kp.receiveShadow=true;g.add(kp);
       var bas=new THREE.Mesh(new THREE.BoxGeometry(bw+0.2,0.7,dep+0.2),betMat(0xbdb7a9,0.9));
@@ -1048,7 +1234,7 @@ var dorfFenster=[];
   function block(x,z,rotY,etagen,w,d,farbe){
     var g=new THREE.Group();
     var h=etagen*1.9+0.4;
-    var blkM=stdMat(farbe,0.88);(window._wandMats=window._wandMats||[]).push(blkM);
+    var blkM=stdMat(farbe,0.88);blkM.map=putzTex(w/2.6,h/2.6);(window._wandMats=window._wandMats||[]).push(blkM);
     var body=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),blkM);
     body.position.y=h/2;body.castShadow=true;body.receiveShadow=true;g.add(body);
     var att=new THREE.Mesh(new THREE.BoxGeometry(w+0.3,0.25,d+0.3),betMat(0x8a8a88,0.8));
@@ -1318,6 +1504,7 @@ var dorfFenster=[];
     var fah=new THREE.Mesh(new THREE.PlaneGeometry(1.5,0.9),new THREE.MeshStandardMaterial({color:0xd84a4a,roughness:0.8,side:THREE.DoubleSide}));
     fah.position.set(0.78,23.2,-1.5);g.add(fah);
     g.position.set(40,0,84);g.rotation.y=Math.PI;scene.add(g); // Portikus zeigt zum Marktplatz (z=72)
+    addSolid(40,84,21.5,12.5,{a:"z",at:77.8,c:40,w:5.0}); /* 🧱 Rathaus war ohne Kollider — man lief mitten durch */
     var pl=new THREE.Mesh(new THREE.PlaneGeometry(24,7),betMat(0xcfc9bb,0.9));
     pl.rotation.x=-Math.PI/2;pl.position.set(40,0.015,75);pl.receiveShadow=true;scene.add(pl); // Vorplatz vor der Treppe
   })();
@@ -1612,7 +1799,11 @@ setTimeout(function baueVerkehr(){
     {axis:"x",z:-SZ-14.5,dir:1,speed:5.5},{axis:"x",z:-SZ-9.5,dir:-1,speed:4.8},
     {axis:"z",x:-(RX+2.5),dir:1,speed:4.5},{axis:"z",x:RX+2.5,dir:-1,speed:5}];
   var TINT=[0xffffff,0xd84a3a,0x3a6ad8,0x4aa05a,0xe8c43a,0x8a5ac8];
-  var _IDS=[];for(var _q=0;_q<22;_q++)_IDS.push(["auto_kombi","auto_flitzer","auto_van"][_q%3]);
+  var _IDS=[];for(var _q=0;_q<22;_q++)_IDS.push("auto_kombi");
+  /* ⚡ Der Verkehr zog frueher alle drei Auto-Modelle (~7 MB) in den kritischen Ladepfad —
+     zusammen mit den Bewohner-Modellen die groessten Dateien der Seite. Jetzt nur noch der
+     Kombi (1,9 MB); die 6 Farbtoene sorgen weiter fuer Abwechslung, Van und Flitzer bleiben
+     kaufbar und werden dann bei Bedarf geladen. */
   _IDS.forEach(function(id,i){
     loadTH(id,function(tpl){if(!tpl)return;
       var m=tpl.clone(true);
@@ -2067,7 +2258,7 @@ setTimeout(function baueGebaeude(){
   bau("th3_blumenkuebel.glb",0.7,0,0,50.2,0,false);
   bau("th3_blumenkuebel.glb",0.7,84,0,-31,0,false);
   // See: Steg + Ruderboot
-  bau("th3_steg.glb",0.8,-80,0,73,-Math.PI/4,false);
+  bau("th3_steg.glb",0.8,10,0,139,-Math.PI/4,false);
   bau("th3_ruderboot.glb",0.55,-91,-0.04,80,0.6,false);
   // Park: Picknicktische
   bau("th3_picknick.glb",0.85,62,0,-32,0.4,false);
@@ -2094,9 +2285,9 @@ setTimeout(function baueGebaeude(){
   // Vogelhäuser
   bau("th4_vogelhaus.glb",2,62,0,-36,0.6,false);bau("th4_vogelhaus.glb",2,-62,0,20,0,false);
   // See: Bogenbrücke ans Ufer, Schwan aufs Wasser, Sonnenschirme
-  bau("th4_bruecke.glb",1.1,-93,0,69.5,Math.PI/2,false);
-  bau("th4_schwan.glb",0.75,-95,-0.02,74,0.6,false);
-  bau("th4_sonnenschirm.glb",2.4,-77,0,69,0.4,false);bau("th4_sonnenschirm.glb",2.4,94,0,-13,1.2,false);
+  bau("th4_bruecke.glb",1.1,-3,0,135.5,Math.PI/2,false);
+  bau("th4_schwan.glb",0.75,-5,-0.02,140,0.6,false);
+  bau("th4_sonnenschirm.glb",2.4,13,0,135,0.4,false);bau("th4_sonnenschirm.glb",2.4,94,0,-13,1.2,false);
 },0);
 function updTiere(dt,now){var M9=window._muehle;if(M9)M9.rotation.z+=dt*1.1;
   var T=window._tiere;if(!T)return;
@@ -3377,7 +3568,7 @@ document.getElementById("exitCar").onclick=aussteigen;
 document.getElementById("nitroBtn").onclick=function(){if(fahren){nitro=1.6;beep(180,.3,"sawtooth",.05);var b=this;b.style.transform="scale(1.2)";setTimeout(function(){b.style.transform="";},200);}};
 // ---- Blitz-Lieferung: 60s-Fahrjob (Beifahrer = +50% Team-Bonus) ----
 var liefer=null;
-var LIEFERZIELE=[["Markt",26,67],["See-Steg",-80,73],["Spielplatz",84,0],["Bauernhof",-84,-40],["Windmühle",-92,-52],["Brunnen-Park",84,-26]];
+var LIEFERZIELE=[["Markt",26,67],["Seepark",10,139],["Spielplatz",84,0],["Bauernhof",-84,-40],["Windmühle",-92,-52],["Brunnen-Park",84,-26]];
 document.getElementById("lieferBtn").onclick=function(){
   if(!fahren||liefer)return;
   var kand=LIEFERZIELE.slice().sort(function(){return 0.5-Math.random();})[0];
