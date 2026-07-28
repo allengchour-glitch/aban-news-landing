@@ -6,7 +6,7 @@ und >= 1.4 m breit, Innenhoehe >= 3.0 m.
 Bauprinzip: Waende werden als EINZELNE Boxen gesetzt und um die Oeffnung herum
 segmentiert (links/rechts/Sturz) — kein Boolean noetig, bleibt sauber und schnell.
 Konventionen wie th5-th7: Unterkante y=0, Meter, +z = Schauseite/Eingang."""
-import bpy, os, math
+import bpy, bmesh, os, math
 
 OUT_GLB = "/home/user/aban-news-landing/models"
 OUT_STL = "/home/user/aban-news-landing/models/stl"
@@ -41,6 +41,24 @@ def kegel(x, y, z, r1, r2, h, m=None, seg=12, rot=(0,0,0)):
     bpy.ops.mesh.primitive_cone_add(radius1=r1, radius2=r2, depth=h, location=(x,y,z), vertices=seg, rotation=rot)
     o = bpy.context.active_object
     if m: o.data.materials.append(m)
+    return o
+
+def tonne(cx, cy, z, r, laenge, m, seg=24, flach=1.0):
+    """HALBES Tonnengewoelbe: Zylinder mit Achse in x, untere Haelfte weggeschnitten.
+    Basis liegt exakt bei z. Ein VOLLER Zylinder taugt nicht — seine untere Haelfte
+    fuellt die Halle, man sieht von der Tuer aus nur eine graue Wand (hier gemessene
+    Unterkante -1,90)."""
+    o = zyl(cx, cy, z, r, laenge, m, seg, rot=(0, math.pi/2, 0))
+    o.scale[2] = flach
+    bpy.context.view_layer.objects.active = o
+    for s_ in bpy.context.scene.objects: s_.select_set(False)
+    o.select_set(True)
+    bpy.ops.object.transform_apply(location=False, rotation=True, scale=True)
+    bm = bmesh.new(); bm.from_mesh(o.data)
+    bmesh.ops.bisect_plane(bm, geom=bm.verts[:] + bm.edges[:] + bm.faces[:],
+                           plane_co=(0, 0, 0), plane_no=(0, 0, 1), clear_inner=True)
+    bmesh.ops.holes_fill(bm, edges=bm.edges[:])
+    bm.to_mesh(o.data); bm.free(); o.data.update()
     return o
 
 def runden(width=0.016, segments=2, winkel=42):
@@ -176,12 +194,18 @@ def markthalle_offen():
     fensterband(0,-T/2-0.02, B*0.8, d*0.5, 4.6, 1.6, RAHM, GLAS, 5, 'x')
     fensterband(-B/2-0.02,0, T*0.8, d*0.5, 4.6, 1.6, RAHM, GLAS, 4, 'y')
     fensterband( B/2+0.02,0, T*0.8, d*0.5, 4.6, 1.6, RAHM, GLAS, 4, 'y')
-    for sx in (-6.5, 0, 6.5):                                     # Stuetzenreihe innen
+    # Stuetzen auf die PFEILER-Achsen (-10.2/-3.4/3.4/10.2), nicht auf die Torachsen
+    # (-6.8/0/6.8) — sonst steht beim Eintreten eine Saeule mitten im Tor.
+    for sx in (-10.2, -3.4, 3.4, 10.2):
         for sy in (-4.0, 4.0):
             zyl(sx, sy, 3.3, 0.28, 6.1, STZ, 12)
-    bpy.ops.mesh.primitive_cylinder_add(radius=8.6, depth=B+0.6, location=(0,0,6.7),
-                                        vertices=20, rotation=(0, math.pi/2, 0))
-    dch = bpy.context.active_object; dch.scale=(1,0.34,1); dch.data.materials.append(DACH)
+    # Gewoelberadius EXAKT auf die Wandflucht (T/2), dann setzt die Tonne genau auf den
+    # Laengswaenden auf. Bei r=8.6 lag der Ansatz 0.6 m ausserhalb und es klaffte rings
+    # ein Himmelsspalt; Giebelfelder helfen dagegen nicht, weil die Tonne laengs x
+    # konstant hoch ist — der Spalt laeuft an den LANGseiten entlang, nicht am Giebel.
+    tonne(0, 0, H, T/2, B + 0.6, DACH, 24, 0.44)
+    for i in range(7):                                    # Binder als Halbbogen
+        tonne(-B/2 + 1.8 + i*(B-3.6)/6, 0, H, T/2 + 0.14, 0.26, STZ, 24, 0.44)
     export("th8_markthalle_offen", 0.018, 2)
 
 # ================================================================ 3) Ladenlokal

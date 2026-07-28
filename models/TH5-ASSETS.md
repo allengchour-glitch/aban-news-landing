@@ -130,6 +130,12 @@ Alle Innenräume per Render aus **Augenhöhe (1,7 m) vor der Tür** verifiziert.
 
 Generator: `tools/assets/mk_th8_begehbar.py`
 
+> 🔧 **Die Markthalle wurde am 28.07. überarbeitet** — bitte das alte GLB ersetzen.
+> Ihr Tonnendach war ein **voller Zylinder**: die untere Hälfte füllte die Halle, von
+> der Tür aus sah man nur eine graue Wand (Unterkante lag bei −1,90). Jetzt halbiert
+> `tonne()` das Gewölbe wirklich, der Radius sitzt exakt auf der Wandflucht (T/2), und
+> die Innenstützen stehen auf den Pfeiler- statt den Torachsen.
+
 ### Einbau — Eingang zur Straße drehen
 ```js
 // Tür zeigt ohne Rotation nach -z (Norden). Eingang nach Süden:
