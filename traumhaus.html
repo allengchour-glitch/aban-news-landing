@@ -1240,6 +1240,14 @@ var dorfFenster=[];
     [RX,-RX].forEach(function(cx8){
       strasseMesh(9,Math.abs(RGZ_N+SZ+23),cx8,(RGZ_N-(SZ+23))/2);
       strasseMesh(9,Math.abs(RGZ_S-(SZ+23)),cx8,(RGZ_S+(SZ+23))/2);});
+    /* 🛣️ Die Ring-Segmente endeten als harte Kante im Gras/Sand — "Kreuzung, dann endet die
+       Strasse" (User). Die vier Ecken bekommen jetzt eine ausgerundete Fahrbahn mit Bordstein,
+       damit der Ring sichtbar geschlossen ist statt abzubrechen. */
+    [[-RGX,RGZ_N],[RGX,RGZ_N],[-RGX,RGZ_S],[RGX,RGZ_S]].forEach(function(E){
+      var eck=new THREE.Mesh(new THREE.CircleGeometry(9,22),strMatH.clone());
+      eck.rotation.x=-Math.PI/2;eck.position.set(E[0],-0.0035,E[1]);eck.receiveShadow=true;scene.add(eck);
+      var bord=new THREE.Mesh(new THREE.RingGeometry(9,10.6,26),betMat(0xd0cdc4,0.9));
+      bord.rotation.x=-Math.PI/2;bord.position.set(E[0],0.02,E[1]);bord.receiveShadow=true;scene.add(bord);});
     // Mittelstreifen auf dem Ring
     var rmat=stdMat(0xd8d8cc,0.75);rmat.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(rmat);
     for(var rs=0;rs<Math.round(RLEN/12);rs++){var rx8=-RLEN/2+6+rs*12;
