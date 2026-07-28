@@ -42,7 +42,11 @@ canvas{display:block}
 .needs .nbar i{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,#8fd8a0,#5ab86a)}
 @media (orientation:landscape) and (max-height:480px){
   #joy{bottom:calc(12px + env(safe-area-inset-bottom)) !important;left:calc(12px + env(safe-area-inset-left)) !important}
-  #modeBtn:not(.building){bottom:calc(134px + env(safe-area-inset-bottom)) !important;left:calc(12px + env(safe-area-inset-left)) !important} /* ueber den Joystick, sonst Ueberlappung */
+  /* Linke Spalte quer: Geld, Pokal(64), Radar(120..238), Bauen, Joystick(unten).
+     Zwischen Radar-Unterkante und Joystick-Oberkante bleiben nur ~50 px — Bauen sitzt
+     genau dort, kleiner und kompakter. */
+  #modeBtn:not(.building){bottom:calc(126px + env(safe-area-inset-bottom)) !important;left:calc(12px + env(safe-area-inset-left)) !important;padding:7px 12px !important;font-size:.8rem !important;min-height:38px !important}
+  #geld{max-width:40vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   #minimap{width:118px !important;height:118px !important}
   #needsBox{max-height:60vh;overflow-y:auto;font-size:.58rem;min-width:88px;max-width:150px}
   .needs .nbar{height:5px}
@@ -850,6 +854,30 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       var sx9=0+Math.cos(sa9)*sr9,sz9=146+Math.sin(sa9)*sr9;   /* mit dem See mitgezogen */
       if(freiPlatz(sx9,sz9,0))schilf(sx9,sz9);}
   }
+  /* 📱 PERFORMANCE: Die Szene hat ueber 2000 Objekte. three.js rechnet fuer jedes in jedem
+     Frame die Weltmatrix neu — auf dem Handy ist das die groesste CPU-Last, obwohl sich
+     Haeuser, Baeume, Laternen und Zaeune nie bewegen. Nach dem Aufbau werden alle Objekte
+     eingefroren, die keine Animation haben; bewegte Dinge (Autos, Bewohner, Zug, Achterbahn,
+     Wasser, Rauch) melden sich vorher per _bewegt an. */
+  function _einfrieren(){
+    var n=0;
+    scene.children.forEach(function(o){
+      if(o._bewegt||o.isLight||o.isCamera)return;
+      if(o.userData&&o.userData.animiert)return;
+      o.updateMatrixWorld(true);
+      o.matrixAutoUpdate=false;n++;});
+    window._eingefroren=n;}
+  function _bewegtMarkieren(){
+    [window._seeZug&&window._seeZug.g,window._coaster&&window._coaster.zug].forEach(function(o){if(o)o._bewegt=true;});
+    (verkehr||[]).forEach(function(v){if(v.mesh)v.mesh._bewegt=true;});
+    (window._wasser||[]).forEach(function(w){if(w.mesh)w.mesh._bewegt=true;});
+    (fussg||[]).forEach(function(f){if(f.mesh)f.mesh._bewegt=true;});
+    (sims||[]).forEach(function(s2){if(s2&&s2.mesh)s2.mesh._bewegt=true;});
+    (polizei||[]).forEach(function(p2){if(p2.mesh)p2.mesh._bewegt=true;});
+    if(window._muehle){var m9=window._muehle;while(m9&&m9.parent!==scene)m9=m9.parent;if(m9)m9._bewegt=true;}}
+  function _spaetEinfrieren(){_bewegtMarkieren();_einfrieren();}
+  if(document.readyState==="complete")setTimeout(_spaetEinfrieren,9000);
+  else window.addEventListener("load",function(){setTimeout(_spaetEinfrieren,9000);});
   if(document.readyState==="complete")setTimeout(_streuStart,60);
   else window.addEventListener("load",function(){setTimeout(_streuStart,60);});
   // ---- Breiter Fluss quer durch die Landschaft (Norden) ----
@@ -2024,7 +2052,9 @@ function updImmo(dt){
   else kb.style.display="none";}
 document.addEventListener("DOMContentLoaded",function(){});
 (function(){var kb=document.createElement("button");kb.id="kaufBtn";
-  kb.style.cssText="position:fixed;left:12px;bottom:calc(300px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:14px;padding:14px 18px;min-height:48px;font-size:1.05rem;font-weight:800;color:#fff;background:linear-gradient(135deg,#e8b04a,#c88a20);box-shadow:0 6px 20px rgba(160,110,20,.5);cursor:pointer";
+  /* 📱 Lag frueher in der linken Spalte auf Hoehe von Radar und Pokal — auf dem Handy quer
+     ueberlappten sich die drei. Jetzt in der Mitte ueber den anderen Aktions-Knoepfen. */
+  kb.style.cssText="position:fixed;left:50%;transform:translateX(-50%);bottom:calc(248px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:14px;padding:14px 18px;min-height:48px;font-size:1.05rem;font-weight:800;color:#fff;background:linear-gradient(135deg,#e8b04a,#c88a20);box-shadow:0 6px 20px rgba(160,110,20,.5);cursor:pointer";
   document.body.appendChild(kb);
   kb.onclick=function(){var i=+kb.dataset.idx,hs=window._immo&&window._immo[i];if(!hs||immo.indexOf(i)>=0)return;
     if(Math.hypot(sims[0].x-hs.x,sims[0].z-hs.z)>7){kb.style.display="none";return;} // Distanz frisch pruefen
