@@ -609,6 +609,54 @@ liest sich als Treppe).
 
 ---
 
+## 1v. Charge 25 — FLUGHAFEN (`models/th25_*.glb`)
+
+| Datei | Maße (B×T×H) | Hinweis |
+|---|---|---|
+| `th25_terminal.glb` | 53,2 × 35,4 × 15,6 | **begehbar**, Check-in-Reihe, Anzeigetafeln, Sitzreihen, Galerie mit Treppe |
+| `th25_tower.glb` | 11,7 × 11,7 × 34,3 | Schaft, auskragende Kanzel mit geneigten Scheiben, Umlaufgalerie |
+| `th25_flugzeug.glb` | 34,8 × 38,6 × 11,8 | Rumpf geloftet, gepfeilte Tragflächen, 2 Triebwerke, Fahrwerk am Boden |
+| `th25_hangar.glb` | 45,2 × 33,4 × 16,9 | **begehbar**, riesiges Tor, Tonnendach, Werkstattzeile, Deckenkran |
+| `th25_fluggastbruecke.glb` | 5,8 × 21,4 × 7,4 | Stützen, Faltenbalg, Rotunde |
+| `th25_landebahn_modul.glb` | **30,0** × 30,0 × 0,68 | **x += 30,00**, Mittellinie und Randbefeuerung laufen durch |
+| `th25_radarturm.glb` | 9,3 × 5,2 × 19,1 | Drehradar auf Gittermast |
+| `th25_gepaeckwagen.glb` | 2,1 × 11,0 × 3,0 | Schlepper mit 2 Anhängern und Koffern |
+| `th25_tankwagen.glb` | 3,3 × 10,1 × 4,2 | Tank, Schlauchtrommel, Kabine |
+
+Generator: `tools/assets/mk_th25_flughafen.py`
+
+## 1w. Charge 26 — BERGWELT (`models/th26_*.glb`)
+
+Ein eigenes Biom für die Openworld.
+
+| Datei | Maße (B×T×H) | Hinweis |
+|---|---|---|
+| `th26_felswand_modul.glb` | **12,00** × 4,21 × **16,00** | **x += 12,00**, Bänder und Vorsprünge laufen durch |
+| `th26_felsformation.glb` | 18,2 × 15,0 × 14,6 | verschachtelte Blöcke mit Verwitterungskanten |
+| `th26_wasserfall.glb` | 27,2 × 24,0 × 14,0 | Felsschlucht mit Sturzbahn, Gischtring, Becken, Geröll |
+| `th26_hoehleneingang.glb` | 23,5 × 25,7 × 11,7 | **begehbar**, Tropfsteine, dunkler Gang |
+| `th26_berghuette.glb` | 16,6 × 16,6 × 6,0 | **begehbar**, Stube mit Ofen, Tisch, Bänken, Holzstapel |
+| `th26_seilbahn_station.glb` | 20,6 × 33,3 × 11,5 | **begehbar**, Umlenkscheibe, Perron, Antriebsraum |
+| `th26_seilbahn_gondel.glb` | 2,5 × 3,6 × 5,2 | 6 Personen, Aufhängung, Laufwerk |
+| `th26_seilbahn_stuetze.glb` | 9,0 × 9,2 × 15,9 | Rollenbatterie, Leiter |
+| `th26_haengebruecke.glb` | 8,2 × 29,9 × 5,2 | Tragseile, Holzbohlen, Seitennetze |
+| `th26_gipfelkreuz.glb` | 9,0 × 8,0 × 9,1 | Steinsockel, Gipfelbuch-Kasten |
+| `th26_bergsee.glb` | 30,5 × 26,2 × 7,1 | Uferfelsen, Schilf, Bootssteg |
+
+Generator: `tools/assets/mk_th26_berge.py`
+Neuer Helfer: `kipp_lift(sx, sy, sz, rx, ry, rz)` — halbe Höhe eines gekippten Quaders
+über die Rotationsmatrix, also genau der Betrag zum Anheben.
+
+> ⚠️ **Nur `rx` gegenzurechnen reicht bei gekippten Quadern nicht.** Eine zusätzliche
+> y-Kippung senkt die Ecke um `sx·|sin ry|` weiter ab. `kipp_lift()` nimmt die dritte
+> Zeile der Rotationsmatrix und ist damit für jede Achsenkombination exakt.
+
+> ⚠️ **Ein Felskessel aus freistehenden gekippten Blöcken liest sich als umfallende
+> Platten.** Erst eine durchlaufende Wand mit einer Kerbe dazwischen ergibt eine
+> Schlucht. Starke Kippungen machen es schlimmer, nicht besser.
+
+---
+
 ## 2. Texturen (`textures/th5/*.png`)
 
 512×512, **nahtlos kachelbar** (Wrap-Arithmetik, verifiziert per 2×2-Kachel-Kontaktbogen).
@@ -680,7 +728,25 @@ Generator: `tools/assets/mk_th9_texturen.py`
 
 Generator: `tools/assets/mk_th12_texturen.py`
 
+### Charge 5 — Stadtdetails (`textures/th28/*.png`)
+
+| Datei | Wofür | `repeat` pro 20 m |
+|---|---|---|
+| `gehwegplatten.png` | Gehwege, Vorplätze | 10 |
+| `fahrbahnmarkierung.png` | Fahrbahnen mit Mittellinie | 4 längs |
+| `graffitiwand.png` | Unterführungen, Hinterhöfe, Bahnmauern | 4 |
+| `rauputz.png` | Wohnhausfassaden | 6 |
+| `rostblech.png` | Container, Schuppen, Baustelle | 6 |
+| `dachpfannen.png` | Sattel- und Walmdächer | 8 |
+| `badfliesen.png` | Bäder, Schwimmbad, Umkleiden | 20 |
+| `auslegware.png` | Büros, Praxen, Hotelflure | 12 |
+| `kopfstein_nass.png` | Altstadtgassen bei Regen | 8 |
+| `gitterrost.png` | Stege, Roste, Industrieböden | 12 |
+
+Generator: `tools/assets/mk_th28_texturen.py`
+
 ---
+
 
 
 ## 3. Nachschub produzieren
@@ -714,6 +780,9 @@ python3 tools/assets/mk_th23_oeffentlich.py # Publikumsbauten -> models/th23_*.g
 python3 tools/assets/mk_th21_baustelle.py # Baustelle -> models/th21_*.glb
 python3 tools/assets/mk_th22_wohnen.py    # Wohnbauten -> models/th22_*.glb
 python3 tools/assets/mk_th29_winter.py    # Winter/Weihnachtsmarkt -> models/th29_*.glb
+python3 tools/assets/mk_th25_flughafen.py # Flughafen -> models/th25_*.glb
+python3 tools/assets/mk_th26_berge.py     # Bergwelt -> models/th26_*.glb
+python3 tools/assets/mk_th28_texturen.py  # Stadtdetails -> textures/th28/*.png
 ```
 
 Beide brauchen nur **bpy 5.x + numpy** (im Container vorhanden, kein Blender-Binary nötig,
