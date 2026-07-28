@@ -2001,7 +2001,9 @@ var dorfFenster=[];
     var gg=gc.createRadialGradient(32,32,2,32,32,31);gg.addColorStop(0,"rgba(255,214,140,0.9)");gg.addColorStop(0.55,"rgba(255,214,140,0.32)");gg.addColorStop(1,"rgba(255,214,140,0)"); /* 💡 weicher Rand */
     gc.fillStyle=gg;gc.fillRect(0,0,64,64);
     var glowTex=new THREE.CanvasTexture(gcv);
-    window._lampGlows=[];
+    /* 🐛 Schwarm-Befund: hier wurde die Liste NEU angelegt und damit die Lichtkegel aller
+       Hauptstrassen-Laternen ueberschrieben — die gingen nachts nie an. Jetzt anhaengen. */
+    window._lampGlows=window._lampGlows||[];
     function lamp(x,z){
       var lg=new THREE.Group();
       var mast=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.08,3.1,7),stdMat(0x3a3a42,0.5));mast.position.y=1.55;lg.add(mast);
@@ -3346,7 +3348,10 @@ function removeFurnAt(gx,gy,ohneGeld){
     var cells=furnCells(f);
     for(var c=0;c<cells.length;c++)if(cells[c][0]===gx&&cells[c][1]===gy){
       if(f.mesh)scene.remove(f.mesh);if(f.plight)scene.remove(f.plight);
-      if(!ohneGeld){geld+=Math.round(f.def.cost*(1+0.6*((f.lv||1)-1))*0.5);geldSend();} /* 🩹 Schwarm-P3: Aufwertungen zaehlen beim Verkauf mit */
+      /* 🐛 Schwarm-Befund: die Villa-Vorlage kostete 3500, ihre Einzelteile brachten beim
+         Abriss aber ~9500 zurueck — beliebig oft wiederholbar. Gestempelte Teile sind mit
+         gratis=1 markiert und zahlen nichts zurueck. */
+      if(!ohneGeld&&!f.gratis){geld+=Math.round(f.def.cost*(1+0.6*((f.lv||1)-1))*0.5);geldSend();}
       furn.splice(i,1);updHUD();return true;}}
   return false;}
 function furnCells(f){var s=f.def.size||[1,1],w=s[0],d=s[1];
@@ -3378,10 +3383,12 @@ function doPlaceFurn(id,gx,gy,rot,silent,fid,lv){var f=fid||("f"+(fidC++)+(mpHos
 function doDelete(gx,gy,silent){
   var done=removeFurnAt(gx,gy,silent); // Remote-del (silent): KEINE Rueckerstattung — der Sender regelt sein Geld selbst
   if(!done){var k;["0","1"].forEach(function(d){k=gx+","+gy+","+d;if(walls[k]){
-    if(!silent){var _wd=defOf(walls[k].type);if(_wd&&_wd.cost){geld+=Math.round(_wd.cost*0.5);geldSend();}} /* 🩹 Schwarm-P3: Abriss zahlt jetzt wirklich 50% (Hinweis versprach es, gab aber 0) */
+    if(!silent&&!(window._gratisBau&&window._gratisBau["w"+k])){var _wd=defOf(walls[k].type);if(_wd&&_wd.cost){geld+=Math.round(_wd.cost*0.5);geldSend();}}
+    if(window._gratisBau)delete window._gratisBau["w"+k];
     applyWall(gx,gy,+d,null);done=true;}});}
   if(!done&&floors[fkey(gx,gy)]!==undefined){
-    if(!silent){var _fd=FLOORS[floors[fkey(gx,gy)]];if(_fd&&_fd.cost){geld+=Math.round(_fd.cost*0.5);geldSend();}}
+    if(!silent&&!(window._gratisBau&&window._gratisBau["f"+fkey(gx,gy)])){var _fd=FLOORS[floors[fkey(gx,gy)]];if(_fd&&_fd.cost){geld+=Math.round(_fd.cost*0.5);geldSend();}}
+    if(window._gratisBau)delete window._gratisBau["f"+fkey(gx,gy)];
     applyFloor(gx,gy,null);done=true;}
   if(done&&!silent)netSend({t:"del",x:gx,y:gy});
   return done;}
@@ -4116,8 +4123,9 @@ function autoFahr(dt){
     if(!inSolid(_cnx,m.position.z))m.position.x=_cnx;else _hit=true;
     if(!inSolid(m.position.x,_cnz))m.position.z=_cnz;else _hit=true;
     if(_hit&&Math.abs(sp)>7){sp*=0.35;if(typeof beep==="function")beep(150,.12,"sawtooth",.05);} /* Rumms: abbremsen + Ton */
-    m.position.x=Math.max(-155,Math.min(155,m.position.x));
-    m.position.z=Math.max(-140,Math.min(140,m.position.z));
+    /* Gleiche Grenze wie zu Fuss (Schwarm P0: 5 von 9 Lieferzielen lagen ausserhalb) */
+    m.position.x=Math.max(-285,Math.min(285,m.position.x));
+    m.position.z=Math.max(-275,Math.min(275,m.position.z));
     m.position.y=(a.homeY||0.01)+Math.abs(Math.sin(performance.now()*0.02))*0.03+carAirY; // Wanken + Sprunghoehe
   }else{carLean*=0.85;m.position.y=(a.homeY||0.01)+carAirY;window._carKmh=Math.round((window._carKmh||0)*0.8);}
   // Rampe + Sprungphysik laufen IMMER (auch ohne Lenk-Input — sonst friert der Flug ein)
@@ -4582,14 +4590,15 @@ function updCam(){
       _yaw=carRot;_ex=_a9.position.x+Math.sin(_yaw)*0.35;_ez=_a9.position.z+Math.cos(_yaw)*0.35;_ey=_a9.position.y+1.55;}
     else{var _me=followSim||sims[meinSi()]||sims[0];if(!_me){egoMode=false;return;}
       _yaw=Math.PI+camA; /* Blick = Kamera-Yaw → Steuerung bleibt „läuft wohin du schaust" */
-      _ex=_me.x;_ez=_me.z;_ey=1.42;
+      _ex=_me.x;_ez=_me.z;_ey=1.42+(window._camHebung||0);   /* Achterbahn: Sitzhoehe mitnehmen */
       if(_me.mesh&&_me.mesh.visible)_me.mesh.visible=false; /* eigenen Körper ausblenden (sonst Blick in den Kopf) */}
     var _pit=(0.8-camB)*0.9;
     camera.position.set(_ex,_ey,_ez);
     camera.lookAt(_ex+Math.sin(_yaw)*Math.cos(_pit),_ey+Math.sin(_pit),_ez+Math.cos(_yaw)*Math.cos(_pit));
     return;}
-  camera.position.set(camTx+Math.sin(camA)*Math.cos(camB)*camR,Math.sin(camB)*camR+2,camTz+Math.cos(camA)*Math.cos(camB)*camR);
-  camera.lookAt(camTx,0.6,camTz);}
+  var _hb=window._camHebung||0;
+  camera.position.set(camTx+Math.sin(camA)*Math.cos(camB)*camR,Math.sin(camB)*camR+2+_hb,camTz+Math.cos(camA)*Math.cos(camB)*camR);
+  camera.lookAt(camTx,0.6+_hb,camTz);}
 /* ═══════ 🎢 ACHTERBAHN FAHREN (Ego-Perspektive, koop-tauglich) ═══════════════════
    Der Zug laeuft ueber den Rundkurs; Geschwindigkeit haengt von der Hoehe ab (bergab
    schneller, bergauf langsamer), mit Kettenlift-Mindesttempo, damit er nie haengen
@@ -4614,8 +4623,11 @@ function updCoaster(dt,now){
   C.zug.rotation.x=-neig;
   if(C.mit){                                     // Spieler sitzt im ersten Wagen
     var me=sims[meinSi()]||sims[0];
-    if(me){me.x=pos.x;me.z=pos.z;me.rot=Math.atan2(tan.x,tan.z);me.pose="sit";}
-    camTx=pos.x;camTz=pos.z;
+    if(me){me.x=pos.x;me.z=pos.z;me.rot=Math.atan2(tan.x,tan.z);me.pose="sit";
+      /* Der Schwarm hat gemeldet: die Mitfahrt uebernahm nur x/z, nie die Hoehe —
+         die Ego-Fahrt blieb am Boden, waehrend der Zug 20 m hoch fuhr. */
+      if(me.mesh)me.mesh.position.y=pos.y;me._hoehe=pos.y;}
+    camTx=pos.x;camTz=pos.z;window._camHebung=pos.y;
     if(!egoMode){camRT=Math.max(14,Math.min(camRT,20));}
     updCam();}
   if(MPs&&mpHost&&C.faehrt){C.netT=(C.netT||0)-dt;
@@ -4629,7 +4641,8 @@ function coasterEinsteigen(){
   if(MPs)netSend({t:"coasterStart"});}
 function coasterAussteigen(){
   var C=window._coaster;if(!C)return;
-  C.mit=false;
+  C.mit=false;window._camHebung=0;
+  var _m0=sims[meinSi()]||sims[0];if(_m0&&_m0.mesh)_m0.mesh.position.y=0;
   var me=sims[meinSi()]||sims[0];
   if(me){me.x=C.CX;me.z=C.CZ-18;me.pose="stand";}
   if(egoMode)egoToggle();
@@ -4736,7 +4749,11 @@ function steerMove(s9,sv,dt,sprint){
   var l9=Math.hypot(mx,mz);if(l9>1){mx/=l9;mz/=l9;}
   if(l9<0.05)return;
   var sp9=4.0*(sprint?1.65:1),nx=s9.x+mx*sp9*dt,nz=s9.z+mz*sp9*dt;
-  var lim=150,limZ=135; // ganze Open World begehbar (Downtown z=-120, Bahnhof z=+112, Villen x=±105)
+  /* 🌍 Die Begrenzung stand auf ±150/±135 — das sperrte die neuen Viertel komplett aus:
+     Gewerbe Ost (x 172), Sportpark (z 216), Freizeitpark (x −190), Bauernhof (z −196),
+     Achterbahn (z 234) und den Strand (x −135). Der Schwarm hat es als P0 gemeldet.
+     Jetzt umfasst die Grenze die ganze bebaute Welt mit Rand. */
+  var lim=280,limZ=270;
   nx=Math.max(-lim,Math.min(lim,nx));nz=Math.max(-limZ,Math.min(limZ,nz));
   function cellX(w){return Math.round(w/CS+GW/2-0.5);}
   function cellY(w){return Math.round(w/CS+GH/2-0.5);}
@@ -4975,7 +4992,12 @@ function tapAt(px,py){
     return;}
   var def=defOf(curItem);
   if(geld<def.cost){hint("💰 Zu wenig Geld!");return;}
-  if(curItem.indexOf("boden")===0){doPlaceFloor(c.gx,c.gy,+curItem.slice(5));geld-=def.cost;}
+  if(curItem.indexOf("boden")===0){
+    /* 🐛 Schwarm-Befund: mousedown malt bereits (paintFloorAt) und bucht ab; dieser Tap-Zweig
+       legte dieselbe Zelle nochmal und buchte ein zweites Mal — jeder Einzelklick auf einen
+       Bodenbelag kostete doppelt. _paintSet kennt die schon bezahlten Zellen dieses Zugs. */
+    if(_paintSet&&_paintSet.has(c.gx+"_"+c.gy))return;
+    doPlaceFloor(c.gx,c.gy,+curItem.slice(5));geld-=def.cost;}
   else if(curItem==="wand"||curItem==="fenster"||curItem==="tuer"){
     var e=nearestEdge(c);doPlaceWall(e.x,e.y,e.d,curItem);geld-=def.cost;}
   else if(def.paint){
@@ -5143,7 +5165,9 @@ document.getElementById("angelZieh").onclick=function(){
       if(ANGEL.round>=3)angelEnd();else angelWurf();},1200);}};
 document.getElementById("angelQuit").onclick=function(){
   ANGEL.on=false;clearTimeout(ANGEL.tmr);document.getElementById("angel").style.display="none";
-  if(ANGEL.geldSum>0){geld+=ANGEL.geldSum;geldSend();updHUD();}};
+  /* 🐛 Schwarm-Befund: hier wurde die Beute ausgezahlt, aber _angelCd nie gesetzt —
+     man konnte sofort wieder anfangen und beliebig Geld farmen. */
+  if(ANGEL.geldSum>0){geld+=ANGEL.geldSum;geldSend();updHUD();window._angelCd=uhrzeit;}};
 var KOCH={on:false,seq:[],pos:0,round:0,hits:0,total:0,tmr:null};
 var ZUTATEN=["🥕","🍅","🧀","🥩","🧅","🌶️"];
 function kochStart(){
@@ -5478,9 +5502,15 @@ function stampVilla(){
       if(ok2){ax=sx;ay=sy;}}}
   if(ax<0){hint("🏰 Kein Platz frei — räume eine 20×14-Fläche frei!");return;}
   geld-=3500;geldSend();
-  VILLA.floors.forEach(function(f){doPlaceFloor(ax+f[0],ay+f[1],f[2]);});
-  VILLA.walls.forEach(function(w){doPlaceWall(ax+w[0],ay+w[1],w[2],w[3]);});
-  VILLA.furn.forEach(function(f){doPlaceFurn(f[0],ax+f[1],ay+f[2],f[3]);});
+  /* 🐛 Schwarm-Befund: 3500 rein, ~9500 beim Abriss zurueck — beliebig oft wiederholbar.
+     Alles Gestempelte wird als gratis markiert und zahlt beim Abriss nichts aus. */
+  window._gratisBau=window._gratisBau||{};
+  VILLA.floors.forEach(function(f){var gx=ax+f[0],gy=ay+f[1];
+    doPlaceFloor(gx,gy,f[2]);window._gratisBau["f"+fkey(gx,gy)]=1;});
+  VILLA.walls.forEach(function(w){var gx=ax+w[0],gy=ay+w[1];
+    doPlaceWall(gx,gy,w[2],w[3]);window._gratisBau["w"+gx+","+gy+","+w[2]]=1;});
+  VILLA.furn.forEach(function(f){doPlaceFurn(f[0],ax+f[1],ay+f[2],f[3]);
+    var _neu=furn[furn.length-1];if(_neu)_neu.gratis=1;});
   stats.moebelGekauft=(stats.moebelGekauft||0)+VILLA.furn.length;
   updHUD();beep(660,.1,"triangle",.06);setTimeout(function(){beep(880,.14,"triangle",.06);},140);
   hint("🏰 Riesen-Villa gebaut — geh rein! (7 Zimmer, voll möbliert)");}
