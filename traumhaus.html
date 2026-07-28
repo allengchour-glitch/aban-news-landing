@@ -371,8 +371,8 @@ var TEXLOADER=new THREE.TextureLoader();
 var WORLD_POIS=[
   [-58,-78,"⛪","Kathedrale"],[-136,-196,"🌬️","Windmühle"],[-40,-196,"🚜","Bauernhof"],
   [-26,95,"🥕","Markthalle"],[-24,74,"🛒","Laden"],[-6,88,"🔧","Werkstatt"],[-46,80,"🏠","Stadthaus"],
-  [-33,86,"🏛️","Altstadt"],[68,68,"🌳","Grosser Park"],[84,-26,"⛲","Brunnen-Park"],
-  [84,0,"🛝","Spielplatz"],[0,102,"🚉","Bahnhof"],[26,67,"🏪","Marktplatz"],
+  [-33,86,"🏛️","Altstadt"],[68,68,"🌳","Grosser Park"],[96,14,"⛲","Brunnen-Park"],
+  [98,-30,"🛝","Spielplatz"],[0,102,"🚉","Bahnhof"],[26,67,"🏪","Marktplatz"],
   [96,-33,"🏰","Villen Ost"],[-96,18,"🏰","Villen West"],[10,139,"⛵","Seepark"],[-232,0,"🌊","Meer"],
   [172,0,"🏢","Gewerbe Ost"],[0,216,"🏟️","Sportpark"],[-190,158,"🎡","Freizeitpark"],[-190,212,"🎢","Achterbahn"]];
 var WORLD_SOLIDS=[];
@@ -1078,16 +1078,17 @@ var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_d
     var mM=new THREE.MeshStandardMaterial({color:0xd8d8cc,roughness:0.8});mM.envMapIntensity=0.12;
     (window._markMats=window._markMats||[]).push(mM);
     [SZp,-SZp].forEach(function(zc){
-      [zc>0?zc-6.4:zc+6.4,zc>0?zc+6.4:zc-6.4].forEach(function(zs,seite){
+      /* Buchten hugen den Bordstein: Fahrbahn ±8, Bucht 2.4 tief bei ±6.6 -> 5.4..7.8 */
+      [zc>0?zc-6.6:zc+6.6,zc>0?zc+6.6:zc-6.6].forEach(function(zs,seite){
         /* Buchten-Belag etwas heller als die Fahrbahn, damit man sie erkennt */
         /* Nur Markierung, KEIN eigener Belag: ein andersfarbiges Rechteck sah aus wie eine
            Textur, die ueber die Strasse gelegt wurde (User). Parkstreifen sind in echt auch
            nur aufgemalt. */
         [[-58,26],[-18,26],[22,26],[62,26]].forEach(function(seg){
           var laengs=new THREE.Mesh(new THREE.PlaneGeometry(seg[1],0.18),mM);
-          laengs.rotation.x=-Math.PI/2;laengs.position.set(seg[0],0.004,zs+(zs>0?-2.3:2.3));scene.add(laengs);
+          laengs.rotation.x=-Math.PI/2;laengs.position.set(seg[0],0.004,zs+(zs>0?-1.3:1.3));scene.add(laengs);
           for(var b=0;b<=Math.round(seg[1]/5.2);b++){                    // Stellplatz-Striche
-            var st=new THREE.Mesh(new THREE.PlaneGeometry(0.18,4.4),mM);
+            var st=new THREE.Mesh(new THREE.PlaneGeometry(0.18,2.4),mM);
             st.rotation.x=-Math.PI/2;st.position.set(seg[0]-seg[1]/2+b*5.2,0.004,zs);scene.add(st);}});});});
     /* Bushaltebucht an der Suedstrasse: Fahrbahn-Ausbuchtung + Wartehaeuschen-Plattform */
     var bx=30,bz=SZp-6.4;
@@ -2250,9 +2251,15 @@ setTimeout(function baueFussg(){
     fussg.push({mesh:m,x:x,z:z,axis:axis||"x",dir:dir,speed:1.0+((i*3)%4)*0.32,walkT:i*2,
       lim0:lim0,lim1:lim1,stand:!!stand,yaw:yaw});}
   // Hauptstrassen Nord/Sued (mehr Volk als vorher)
-  for(var i=0;i<12;i++)fg(i,-72+i*13,(i%2===0?-SZ-5.9:SZ+5.9)+((i%3)-1)*0.5,"x",i%2?1:-1,-84,84);
+  /* 🚶 Die Leute liefen bei ±(SZ+5.9)=±51.9 — seit die Hauptstrasse 16 m breit ist, liegt
+     das MITTEN AUF DER FAHRBAHN (Band 50..66). Gehwegmitten sind 58∓9.1, also SZ+2.9 innen
+     und SZ+21.1 aussen. */
+  for(var i=0;i<12;i++)fg(i,-72+i*13,(i%2===0?-(SZ+2.9):SZ+2.9)*(i%4<2?1:1)+((i%2===0)?0:0),"x",i%2?1:-1,-84,84);
+  for(var i2=0;i2<8;i2++)fg(i2+2,-66+i2*18,(i2%2===0?-(SZ+21.1):SZ+21.1),"x",i2%2?1:-1,-84,84);
   // Querstrassen West/Ost — bisher lief dort niemand
-  for(var q=0;q<6;q++)fg(q+3,(q%2?1:-1)*(RX-5.9)+((q%3)-1)*0.5,-40+q*16,"z",q%2?1:-1,-46,46);
+  /* Querstrassen sind 10 m breit, Gehwegmitte bei RX∓6.1 */
+  for(var q=0;q<6;q++)fg(q+3,(q%2?1:-1)*(RX+6.1),-40+q*16,"z",q%2?1:-1,-46,46);
+  for(var q2=0;q2<4;q2++)fg(q2+1,(q2%2?1:-1)*(RX-6.1),-30+q2*22,"z",q2%2?1:-1,-46,46);
   // Marktplatz: 3 Verkaeufer hinter den Staenden + 4 Bummler auf dem Pflaster
   [[54,87.4],[62,87.4],[74,87.4]].forEach(function(vp,vi){fg(vi+1,vp[0],vp[1],"x",1,0,0,true,Math.PI);}); // 1.4m hinter den Theken
   for(var b=0;b<4;b++)fg(b+5,58+b*6,90.5+((b%2)*1.6),"x",b%2?1:-1,54,82);
@@ -2566,11 +2573,17 @@ setTimeout(function baueGebaeude(){
   addSolid(-136,-196,7,7,null);   /* 🧱 Muehlenturm solide */
   // ---- 16 selbstgebaute Blender-Props (th3_*, vom Agenten-Schwarm prozedural erstellt) ----
   // Spielplatz neben dem Brunnen-Park (Osten)
-  bau("th3_rutsche.glb",2.6,92,0,-4,Math.PI/2,false);
-  bau("th3_schaukel.glb",2.3,100,0,-2,0,false);
-  bau("th3_sandkasten.glb",0.55,96,0,3,0,false);
-  bau("th3_wippe.glb",1.25,91,0,2,Math.PI/2,false);
-  bau("th3_karussell.glb",1.3,100,0,5,0,false);
+  /* 🛝 Der Spielplatz ragte in Gehweg und Laternenmast. Jetzt ein Stueck weiter oestlich
+     komplett auf dem Rasen, mit eigener Sandflaeche darunter. */
+  (function spielRasen(){
+    var sm=new THREE.Mesh(new THREE.PlaneGeometry(26,18),
+      new THREE.MeshStandardMaterial({color:0xd6c08c,roughness:1,envMapIntensity:0.14}));
+    sm.rotation.x=-Math.PI/2;sm.position.set(98,0.004,-30);sm.receiveShadow=true;scene.add(sm);})();
+  bau("th3_rutsche.glb",2.6,92,0,-32,Math.PI/2,false);
+  bau("th3_schaukel.glb",2.3,102,0,-30,0,false);
+  bau("th3_sandkasten.glb",0.55,97,0,-25,0,false);
+  bau("th3_wippe.glb",1.25,91,0,-26,Math.PI/2,false);
+  bau("th3_karussell.glb",1.3,103,0,-23,0,false);
   // Markt-Platz (Suedzeile)
   bau("th3_marktstand.glb",1.35,62,0,86,Math.PI,false);bau("th3_marktstand.glb",1.35,74,0,86,Math.PI,false); /* 🌳 Markt in den PARK verlegt */
   (function riesenPark(){ /* 🌳 W2a: grosser Park rund um den Markt-Platz */
@@ -2903,10 +2916,13 @@ setTimeout(function baueBrunnen(){
   var col=new THREE.Mesh(new THREE.CylinderGeometry(0.4,0.5,1.6,12),stein);col.position.y=1.3;g.add(col);
   var top=new THREE.Mesh(new THREE.CylinderGeometry(1.1,1.1,0.28,16),stein);top.position.y=2.1;g.add(top);
   var jets=[];for(var j=0;j<6;j++){var a=j/6*6.283;var jet=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.02,1.2,5),new THREE.MeshStandardMaterial({color:0x9fd8f0,transparent:true,opacity:0.6,roughness:0.1}));jet.position.set(Math.cos(a)*0.35,2.6,Math.sin(a)*0.35);g.add(jet);jets.push(jet);}
-  g.position.set(84,0,-20);scene.add(g);
-  window._brunnen={grp:g,jets:jets,x:84,z:-20,cd:0};
+  /* ⛲ Der Brunnen sass bei x=84 — mit seinem 9 m breiten Park-Ring reichte er von 75 bis 93
+     und lag damit in der Ost-Querstrasse (Band 73..83). Jetzt weiter oestlich, zwischen
+     Fahrbahn und Villenzeile, mit Abstand zu beiden. */
+  g.position.set(96,0,14);scene.add(g);
+  window._brunnen={grp:g,jets:jets,x:96,z:14,cd:0};
   // Park rundherum: Plattenweg-Ring, Baenke, Blumenbeete, Hecken, Laternen
-  var park=new THREE.Group();park.position.set(84,0,-20);
+  var park=new THREE.Group();park.position.set(96,0,14);
   var weg=new THREE.Mesh(new THREE.RingGeometry(3.6,5.4,28),new THREE.MeshStandardMaterial({color:0xcfc6b4,roughness:0.9}));
   weg.rotation.x=-Math.PI/2;weg.position.y=0.005;weg.receiveShadow=true;park.add(weg);
   var holz=new THREE.MeshStandardMaterial({color:0x8a6a48,roughness:0.8}),eisen=new THREE.MeshStandardMaterial({color:0x3a3a42,roughness:0.6});
@@ -4096,7 +4112,7 @@ document.getElementById("exitCar").onclick=aussteigen;
 document.getElementById("nitroBtn").onclick=function(){if(fahren){nitro=1.6;beep(180,.3,"sawtooth",.05);var b=this;b.style.transform="scale(1.2)";setTimeout(function(){b.style.transform="";},200);}};
 // ---- Blitz-Lieferung: 60s-Fahrjob (Beifahrer = +50% Team-Bonus) ----
 var liefer=null;
-var LIEFERZIELE=[["Markt",26,67],["Seepark",10,139],["Spielplatz",84,0],["Bauernhof",-40,-196],["Windmühle",-136,-196],["Brunnen-Park",84,-26],["Sportpark",0,216],["Freizeitpark",-190,158],["Gewerbe Ost",172,0]];
+var LIEFERZIELE=[["Markt",26,67],["Seepark",10,139],["Spielplatz",98,-30],["Bauernhof",-40,-196],["Windmühle",-136,-196],["Brunnen-Park",96,14],["Sportpark",0,216],["Freizeitpark",-190,158],["Gewerbe Ost",172,0]];
 document.getElementById("lieferBtn").onclick=function(){
   if(!fahren||liefer)return;
   var kand=LIEFERZIELE.slice().sort(function(){return 0.5-Math.random();})[0];
