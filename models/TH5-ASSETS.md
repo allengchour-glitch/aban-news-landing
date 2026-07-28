@@ -587,6 +587,28 @@ und `dachrand()`.
 
 ---
 
+## 1u. Charge 24 — WINTER UND WEIHNACHTSMARKT (`models/th29_*.glb`)
+
+| Datei | Maße (B×T×H) | Hinweis |
+|---|---|---|
+| `th29_weihnachtsbude.glb` | 6,00 × 5,40 × 4,18 | Giebeldach mit Schneeauflage, Theke mit Waren, Regal, Tannengrün, Lichterkette |
+| `th29_christbaum.glb` | 5,25 × 5,38 × 10,30 | Kreuzfuss, Kugeln, Lichter, Schneeauflage, Goldspitze |
+| `th29_eisbahn_freiluft.glb` | 42,4 × 24,9 × 5,72 | Eisfläche mit Bande, 8 Lichtermasten mit Girlanden, Verleihhütte, Bänke |
+| `th29_schneemaenner.glb` | 7,29 × 2,17 × 3,43 | 3 Grössen, Zylinderhut, Schal, Möhrennase, Aststarme |
+| `th29_rodelhang.glb` | 19,5 × 20,0 × 5,44 | **x += 12,00**, Piste zwischen Schneewällen, Strohballen, Streckenfahnen |
+| `th29_skiliftmast.glb` | 3,80 × 1,80 × 9,32 | Rollenbatterie, Seil, 2 Schleppbügel, Steigleiter |
+
+Generator: `tools/assets/mk_th29_winter.py`
+Neue Helfer: `tanne()` (gestapelte Kegel, optional mit Kugeln und Lichtern),
+`lichterkette()` (Segmente per `atan2` ausgerichtet — eine Reihe ungedrehter Boxen
+liest sich als Treppe).
+
+> ⚠️ **Ein um 90° gekippter Kegel legt seinen RADIUS auf die z-Achse** und taucht damit
+> um r unter den Boden (beim Rodelhang gemessene −0,69). Für einen langen Wall lieber
+> Quader plus aufgesetzten Halbzylinder, dessen untere Hälfte im Quader verschwindet.
+
+---
+
 ## 2. Texturen (`textures/th5/*.png`)
 
 512×512, **nahtlos kachelbar** (Wrap-Arithmetik, verifiziert per 2×2-Kachel-Kontaktbogen).
@@ -691,6 +713,7 @@ python3 tools/assets/mk_th24_zoo.py       # Zoo und Tierpark -> models/th24_*.gl
 python3 tools/assets/mk_th23_oeffentlich.py # Publikumsbauten -> models/th23_*.glb
 python3 tools/assets/mk_th21_baustelle.py # Baustelle -> models/th21_*.glb
 python3 tools/assets/mk_th22_wohnen.py    # Wohnbauten -> models/th22_*.glb
+python3 tools/assets/mk_th29_winter.py    # Winter/Weihnachtsmarkt -> models/th29_*.glb
 ```
 
 Beide brauchen nur **bpy 5.x + numpy** (im Container vorhanden, kein Blender-Binary nötig,
