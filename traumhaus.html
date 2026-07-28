@@ -353,9 +353,21 @@ var WORLD_POIS=[
   [84,0,"🛝","Spielplatz"],[0,102,"🚉","Bahnhof"],[26,67,"🏪","Marktplatz"],
   [96,-33,"🏰","Villen Ost"],[-96,18,"🏰","Villen West"],[-80,73,"⛵","See-Steg"],[-232,0,"🌊","Meer"]];
 var WORLD_SOLIDS=[];
-function addSolid(cx,cz,w,d,door){WORLD_SOLIDS.push({x:cx,z:cz,hw:w/2,hd:d/2,door:door||null});}
+/* Gitter-Index (16 m Zellen): inSolid lief linear ueber ALLE Kollider und wird pro
+   Bewegungsschritt jedes Bewohners/Autos gerufen. Mit den Landschafts-Hindernissen
+   waeren das hunderte Tests pro Frame — so sind es nur die aus einer Zelle. */
+var SOLID_CELL=16,SOLID_GRID={};
+function solidKey(x,z){return Math.floor(x/SOLID_CELL)+"_"+Math.floor(z/SOLID_CELL);}
+function addSolid(cx,cz,w,d,door){
+  var s={x:cx,z:cz,hw:w/2,hd:d/2,door:door||null};WORLD_SOLIDS.push(s);
+  var gx0=Math.floor((cx-s.hw)/SOLID_CELL),gx1=Math.floor((cx+s.hw)/SOLID_CELL);
+  var gz0=Math.floor((cz-s.hd)/SOLID_CELL),gz1=Math.floor((cz+s.hd)/SOLID_CELL);
+  for(var gx=gx0;gx<=gx1;gx++)for(var gz=gz0;gz<=gz1;gz++){
+    var k=gx+"_"+gz;(SOLID_GRID[k]||(SOLID_GRID[k]=[])).push(s);}
+  return s;}
 function inSolid(x,z){
-  for(var i=0;i<WORLD_SOLIDS.length;i++){var s=WORLD_SOLIDS[i];
+  var bucket=SOLID_GRID[solidKey(x,z)];if(!bucket)return false;
+  for(var i=0;i<bucket.length;i++){var s=bucket[i];
     var dx=x-s.x,dz=z-s.z;
     if(dx<-s.hw||dx>s.hw||dz<-s.hd||dz>s.hd)continue;
     var inner=0.55;
@@ -503,6 +515,10 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     var st=new THREE.Mesh(new THREE.CylinderGeometry(0.18,0.28,1.8,7),new THREE.MeshStandardMaterial({color:0x6a4a30,roughness:0.9}));st.position.y=0.9;b.add(st);
     for(var c=0;c<3;c++){var kr=new THREE.Mesh(new THREE.SphereGeometry(1.1-c*0.22,9,7),new THREE.MeshStandardMaterial({color:c%2?0x3a7a3a:0x4a8a44,roughness:0.85,envMapIntensity:0.2}));kr.position.set((c-1)*0.4,2.1+c*0.6,(c%2-0.5)*0.35);kr.castShadow=true;b.add(kr);}
     b.scale.setScalar(k||1);b.rotation.y=Math.random()*6.283;b.position.set(x,0,z);scene.add(b);}
+  /* ⚠️ Baeume/Felsen/Heuballen bewusst NICHT solide. moveSim() prueft nur achsenweise und
+     bleibt an einem Hindernis einfach stehen — es weicht nicht aus. ~290 zusaetzliche kleine
+     Kollider im Umland waeren lauter Stolperfallen fuer die wandernden Bewohner.
+     Erst mit echtem Ausweichen in moveSim() darf das wieder rein. */
   /* 🌳 Freiflaechen-Test — eine Quelle fuer ALLE Streu-Objekte (User: „umgebung ist alles leer") */
   function freiPlatz(x,z,pad){
     pad=pad||0;
