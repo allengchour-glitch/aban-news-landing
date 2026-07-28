@@ -77,7 +77,7 @@
   // Code würfeln, sondern scheitern -> MP.quick wechselt dann auf Beitreten.
   function peerEngine(S, gameId, isHost, noRegen) {
     if (!window.Peer) { S._setStatus("closed"); S._rej(new Error("PeerJS nicht geladen (js/vendor/peerjs.min.js)")); return; }
-    var peer = null, main = null, fast = null, ever = false, byUs = false, tmo = null, tries = 0, retried = false;
+    var peer = null, main = null, fast = null, ever = false, byUs = false, dying = false /* absichtliches Zerstoeren — unterdrueckt den Reconnect-Handler */, tmo = null, tries = 0, retried = false;
     var lastRecv = 0, wd = null, reconns = 0, MAX_RECONN = 5;
     // Watchdog: DataChannel-close wird bei hartem Abbruch (Tab zu, Netz weg) oft
     // erst nach langem ICE-Timeout gemeldet → Stille >6s bei laufendem Traffic
@@ -94,7 +94,7 @@
       if (byUs) return;
       clearTimeout(tmo);
       S._setStatus("closed");
-      try { if (peer) peer.destroy(); } catch (e) {}
+      try { if (peer) { dying = true; peer.destroy(); try { peer.socket && peer.socket.close(); } catch (e2) {} } } catch (e) {}
       S._rej(new Error(msg));
     }
     /* A2 (Rest-Audit): endgültiges Aufgeben MUSS den Peer zerstören — sonst hält ein
@@ -103,7 +103,7 @@
       clearTimeout(tmo); clearTimeout(rt);
       if (wd) { clearInterval(wd); wd = null; }
       S._setStatus("closed");
-      try { if (peer) peer.destroy(); } catch (e) {}
+      try { if (peer) { dying = true; peer.destroy(); try { peer.socket && peer.socket.close(); } catch (e2) {} } } catch (e) {}
     }
     function recv(d) { lastRecv = Date.now(); S._emit(d); }
     function wireFast(c) { c.on("data", function (d) { if (c !== fast) return; recv(d); }); } /* A1: Zombie-Kanal füttert lastRecv nicht */
@@ -156,6 +156,7 @@
       }
     }
     function boot() {
+      dying = false;   /* neuer Peer darf wieder reconnecten */
       peer = new window.Peer(isHost ? pid(gameId, S.code) : undefined, mpPeerCfg());
       S._peer = peer;
       clearTimeout(tmo);
@@ -163,7 +164,7 @@
         if (S.status === "connected") return;
         /* 🔁 1× automatisch auf den anderen Broker wechseln — Host/Gast können auf
            verschiedenen Vermittlungs-Servern sitzen (aban_broker ist pro Gerät!) */
-        if (!retried) { retried = true; mpNextBroker(); try { if (peer) peer.destroy(); } catch (e) {} boot(); return; }
+        if (!retried) { retried = true; mpNextBroker(); try { if (peer) { dying = true; peer.destroy(); try { peer.socket && peer.socket.close(); } catch (e2) {} } } catch (e) {} boot(); return; }
         fail(isHost ? "Vermittlungs-Server nicht erreichbar — Internet prüfen."
                     : "Raum " + S.code + " antwortet nicht — Code prüfen, dann nochmal.");
       }, JOIN_TIMEOUT);
@@ -181,8 +182,17 @@
         if (main) { try { conn.close(); } catch (e) {} return; } // Raum voll (1v1) — auch PENDING zählt als belegt (close/error geben den Slot frei)
         main = conn; wireMain(conn);
       });
-      (function (pInst) { /* 🩹 Schwarm-P1: an Instanz binden — nach Broker-Retry darf der ALTE Peer nicht reconnecten (Zombie besetzt sonst die Raum-ID) */
-        pInst.on("disconnected", function () { if (!byUs && pInst === peer) { try { pInst.reconnect(); } catch (e) {} } });
+      (function (pInst) {
+        /* 🩹 Schwarm-P0: peer.destroy() ruft intern zuerst disconnect() — und zwar SYNCHRON,
+           waehrend destroyed noch false ist. Dieser Handler hat daraufhin reconnect() gerufen
+           und den gerade zerstoerten Peer mit derselben Raum-ID neu beim Broker registriert.
+           Ergebnis: ein Zombie, der die Raum-ID dauerhaft besetzt und auf nichts mehr antwortet
+           — der Schnell-Koop des Spiels war danach fuer alle tot. byUs half nicht, weil es beim
+           Broker-Retry und beim Aufgeben false ist. Darum ein eigenes Sterbe-Flag. */
+        pInst.on("disconnected", function () {
+          if (byUs || dying || pInst !== peer) return;
+          try { pInst.reconnect(); } catch (e) {}
+        });
       })(peer);
       peer.on("error", function (err) {
         if (byUs) return; /* 🩹 Schwarm-P2: nach close() darf kein Retry mehr booten (Zombie-Peer) */
@@ -190,24 +200,24 @@
         var t = err && err.type;
         if (isHost && t === "unavailable-id") {
           if (noRegen) { fail("Public-Raum bereits belegt"); return; } // Quick-Match: auf Beitreten wechseln
-          if (tries < 3) { tries++; try { peer.destroy(); } catch (e) {} S.code = makeCode(); boot(); return; } // Code-Kollision → neuer Code
+          if (tries < 3) { tries++; try { dying = true; peer.destroy(); try { peer.socket && peer.socket.close(); } catch (e2) {} } catch (e) {} S.code = makeCode(); boot(); return; } // Code-Kollision → neuer Code
           fail("Raum-Code-Kollision — bitte nochmal versuchen."); return; /* 🩹 Schwarm-P3: nie still hängen bleiben */
         }
         if (t === "peer-unavailable") {
           if (ever) return; /* 🩹 Schwarm-P2: mitten im Spiel übernimmt lost() den Reconnect — Boot-Retry würde den Broker-Index kippen */
           /* 🔁 Raum evtl. auf dem ANDEREN Broker → dort automatisch weitersuchen statt aufgeben */
-          if (!retried) { retried = true; mpNextBroker(); clearTimeout(tmo); try { peer.destroy(); } catch (e) {} boot(); return; }
+          if (!retried) { retried = true; mpNextBroker(); clearTimeout(tmo); try { dying = true; peer.destroy(); try { peer.socket && peer.socket.close(); } catch (e2) {} } catch (e) {} boot(); return; }
           fail("Raum " + S.code + " nicht gefunden — Code prüfen!");
         }
         else if (!ever && (t === "network" || t === "server-error" || t === "socket-error" || t === "socket-closed")) {
-          if (!retried) { retried = true; clearTimeout(tmo); try { peer.destroy(); } catch (e) {} boot(); return; } /* mpNextBroker lief schon oben */
+          if (!retried) { retried = true; clearTimeout(tmo); try { dying = true; peer.destroy(); try { peer.socket && peer.socket.close(); } catch (e2) {} } catch (e) {} boot(); return; } /* mpNextBroker lief schon oben */
           fail("Kein Kontakt zum Vermittlungs-Server — Internet prüfen.");
         }
       });
     }
     S.send = function (o) { try { if (main && main.open) main.send(o); } catch (e) {} };
     S.sendFast = function (o) { try { if (fast && fast.open) fast.send(o); else if (main && main.open) main.send(o); } catch (e) {} };
-    S.close = function () { byUs = true; clearTimeout(tmo); if (wd) clearInterval(wd); S._setStatus("closed"); try { if (peer) peer.destroy(); } catch (e) {} };
+    S.close = function () { byUs = true; clearTimeout(tmo); if (wd) clearInterval(wd); S._setStatus("closed"); try { if (peer) { dying = true; peer.destroy(); try { peer.socket && peer.socket.close(); } catch (e2) {} } } catch (e) {} };
     boot();
   }
 
