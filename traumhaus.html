@@ -584,11 +584,11 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       if(bx<-150&&Math.abs(bz)<170)continue;      // Westen ist offenes Meer
       var geo=new THREE.ConeGeometry(rad,hoch,6+(i%3),1);
       var berg=new THREE.Mesh(geo,i%2?felsM:felsM2);
-      berg.position.set(bx,hoch/2-6,bz);berg.rotation.y=(i*0.7)%6.283;
+      berg.position.set(bx,hoch/2-6,bz);berg.rotation.y=(i*0.7)%6.283;berg.userData.gelaende=1;
       berg.receiveShadow=true;scene.add(berg);
       if(hoch>62){                         // Schneekappe nur auf den hohen
         var kap=new THREE.Mesh(new THREE.ConeGeometry(rad*0.34,hoch*0.3,6+(i%3),1),schneeM);
-        kap.position.set(bx,hoch-6-hoch*0.15,bz);kap.rotation.y=berg.rotation.y;scene.add(kap);}}
+        kap.position.set(bx,hoch-6-hoch*0.15,bz);kap.rotation.y=berg.rotation.y;kap.userData.gelaende=1;scene.add(kap);}}
     /* Vorgelagerte Huegel als Uebergang von der Ebene ins Gebirge */
     var vhM=new THREE.MeshStandardMaterial({color:0x8faa72,roughness:1,flatShading:true,envMapIntensity:0.16});
     for(var v=0;v<26;v++){
@@ -597,7 +597,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       var vx=Math.cos(av)*rv,vz=Math.sin(av)*rv;
       if(vx<-120&&Math.abs(vz)<170)continue;      // nicht ins Meer
       var vh=new THREE.Mesh(new THREE.SphereGeometry(vr,10,6,0,6.283,0,Math.PI/2),vhM);
-      vh.position.set(vx,-4-((v*3)%5),vz);
+      vh.userData.gelaende=1;vh.position.set(vx,-4-((v*3)%5),vz);
       vh.scale.y=0.3+((v%3)*0.07);vh.receiveShadow=true;scene.add(vh);}
   })();
   // Sanfte Huegelkette am Rand (grosse flache Halbkugeln)
@@ -614,7 +614,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     if((Math.abs(hz0+100)<6+hR||Math.abs(hz0-118)<6+hR)&&Math.abs(hx0)<120+hR)continue; // Ring (z)
     if(hz0>88&&hz0<118&&Math.abs(hx0)<80)continue; // neues Suedviertel (Bahnhof/Schule/Feuerwache)
     var hue=new THREE.Mesh(new THREE.SphereGeometry(hR,14,8,0,6.283,0,Math.PI/2),hMat);
-    hue.position.set(hx0,-3-((h*3)%4),hz0);
+    hue.userData.gelaende=1;hue.position.set(hx0,-3-((h*3)%4),hz0);
     hue.scale.y=0.32+((h%3)*0.06);hue.receiveShadow=true;scene.add(hue);}
   /* Blumenfelder — Definition hier, gestreut wird unten mit allen anderen Objekten ueber
      freiPlatz(). Frueher pruefte diese Schleife NUR das Baugrundstueck: die Blumen landeten
@@ -1053,7 +1053,7 @@ var strMatH=stdMat(0x4a4a53,0.92),strMatV=stdMat(0x4a4a53,0.92);
        sichtbar im Berg, statt in der Luft abzureissen. */
     var felsM=new THREE.MeshStandardMaterial({color:0x7d7468,roughness:1,flatShading:true,envMapIntensity:0.2});
     var hue=new THREE.Mesh(new THREE.SphereGeometry(11,12,8,0,6.283,0,Math.PI/2),felsM);
-    hue.position.set(BX0-14,-2,-30);hue.scale.set(1.25,1.15,1.35);hue.receiveShadow=true;scene.add(hue);
+    hue.userData.gelaende=1;hue.position.set(BX0-14,-2,-30);hue.scale.set(1.25,1.15,1.35);hue.receiveShadow=true;scene.add(hue);
     var pM=betMat(0x9a948a,0.9);
     var por=new THREE.Group();
     var wand=new THREE.Mesh(new THREE.BoxGeometry(1.6,7,11),pM);wand.position.set(0,3.5,0);por.add(wand);
@@ -2440,7 +2440,7 @@ setTimeout(function baueGebaeude(){
   function viertel(cfg){
     var VX=cfg.x,VZ=cfg.z,VW=cfg.w,VD=cfg.d,laengs=cfg.achse==="x";
     if(!viertelFrei(VX,VZ,VW,VD)){console.warn("Viertel "+cfg.name+" hat keinen Platz");return null;}
-    var g={name:cfg.name,x:VX,z:VZ,w:VW,d:VD};VIERTEL.push(g);
+    var g={name:cfg.name,x:VX,z:VZ,w:VW,d:VD,bauten:[],laengs:laengs};VIERTEL.push(g);
     /* 1) Grundflaeche */
     var bodenM=cfg.boden==="platz"?betMat(0xc6c0b2,0.93)
               :cfg.boden==="kies"?betMat(0x9c9384,0.98)
@@ -2487,7 +2487,11 @@ setTimeout(function baueGebaeude(){
       else{bz=VZ-laenge/2+pos;bx=VX+seite*setback;}
       /* Schauseite (Tuer) zeigt in three.js nach -z -> zur Strasse drehen */
       var rot=laengs?(seite>0?Math.PI:0):(seite>0?-Math.PI/2:Math.PI/2);
-      bau(b.file,b.h,bx,0,bz,rot,false,null,true);
+      /* 🐛 Die im cfg angegebenen Masse sind Schaetzwerte — die geladenen Modelle sind oft
+         breiter. Der Generator merkt sich darum jedes Gebaeude und rueckt sie nach dem
+         Laden anhand der ECHTEN Bounding-Box auseinander (siehe entzerren()). */
+      bau(b.file,b.h,bx,0,bz,rot,false,function(w9){
+        g.bauten.push({w:w9,soll:{x:bx,z:bz}});},true);
       var tuer=null;
       if(b.tuer!==false){
         tuer=laengs?{a:"z",at:bz-seite*(bd/2+0.5),c:bx,w:3.2}
@@ -2625,6 +2629,39 @@ setTimeout(function baueGebaeude(){
       window._coaster={kurve:kurve,zug:zugG,t:0,v:0,CX:CX,CZ:CZ,faehrt:false,mit:false};
       addSolid(CX,CZ-22,13,6,{a:"z",at:CZ-19.2,c:CX,w:6});   /* Station solide, Zugang offen */
     })();
+    /* 🔧 Nach dem Laden aller Modelle: echte Masse messen und die Reihen entzerren.
+       Damit gibt es auch dann keine Ueberschneidung, wenn ein Modell groesser ausfaellt
+       als im cfg angenommen — das gilt genauso fuer jeden neuen STL-Schwung. */
+    setTimeout(function entzerren(){
+      var LUECKE=6;
+      VIERTEL.forEach(function(v){
+        if(!v.bauten||!v.bauten.length)return;
+        var achse=v.laengs?"x":"z",quer=v.laengs?"z":"x";
+        [-1,1].forEach(function(seite){
+          var reihe=v.bauten.filter(function(b){
+            var q=b.w.position[quer]-v[quer==="x"?"x":"z"];
+            return seite>0?q>0:q<=0;});
+          reihe.sort(function(a,b){return a.w.position[achse]-b.w.position[achse];});
+          var kante=null;
+          reihe.forEach(function(b){
+            var bb=new THREE.Box3().setFromObject(b.w);
+            var min=bb.min[achse],max=bb.max[achse],breite=max-min;
+            if(kante!==null&&min<kante+LUECKE){
+              var schub=(kante+LUECKE)-min;
+              b.w.position[achse]+=schub;
+              max+=schub;}
+            kante=max;});
+          /* Quer zur Strasse: breite Modelle ragen sonst ueber die Fahrbahn in die
+             gegenueberliegende Reihe. Jede Zeile wird so weit nach aussen geschoben,
+             dass ihre Innenkante den Strassenkorridor freilaesst. */
+          var mitte=v[quer==="x"?"x":"z"],innen=8.5,noetig=0;
+          reihe.forEach(function(b){
+            var bb=new THREE.Box3().setFromObject(b.w);
+            var ik=seite>0?bb.min[quer]-mitte:mitte-bb.max[quer];
+            if(ik<innen)noetig=Math.max(noetig,innen-ik);});
+          if(noetig>0)reihe.forEach(function(b){b.w.position[quer]+=seite*noetig;});});});
+      window._entzerrt=1;
+    },14000);
   },260);
   /* Die alte Stadt-Scheune ist raus: eine Scheune zwischen Ringstrasse und Hochhaeusern
      ergibt kein stimmiges Bild. Der Hof steht jetzt draussen auf dem Feld. */
