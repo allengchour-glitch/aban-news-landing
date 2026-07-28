@@ -640,3 +640,20 @@ Alle via Plumbing-Commit (Fremd-traumhaus-Dateien blockieren normale Branch-Ops)
 - **Nachthimmel** (`nightSky`: Points-Sternenfeld + Mond+Halo, `fog:false`): folgt Spieler als Skybox, Dämmerungs-Fade in `updDayNight` (f>0.85). Math.random-Positionen = kosmetisch. PR #1937.
 - **⚠️ LEHRE (updSun-Regression, PR #1929→#1936):** `updDayNight` bewegt die Sonne SCHON entlang des Tag/Nacht-Bogens UND folgt dem Spieler (`sun.target.position.copy(player.position)`). Ein separates `updSun()` überschrieb das → Sonnenstand fror ein. **Nie die Sonnen-Position doppelt ansteuern** — nur den Frustum tunen; `updDayNight` besitzt Position+Target.
 - **WICHTIG geprüft:** `rnd()` (seeded mulberry32) ist im Wildnis-Runtime NICHT im Lockstep — `rollRarity`/`spawnMonster`/`burst` nutzen es alle live. Coop teilt NUR den Start-SEED (identische Weltgen), Gameplay ist positions-sync/host-lite. → Cosmetics dürfen `rnd()` nutzen; kein Zwang zu `Math.random` im Kampf-VFX (anders als Lebenspfad-Regel).
+
+## 🏡 Traumhaus — Baugrundstück vs. Weltgebäude (2026-07-28)
+**Regel: NIE ein Weltgebäude ins Baufeld setzen.** Das Grundstück ist `x ±GW*CS/2`, `z ±GH*CS/2`
+(aktuell ±72 / ±46) und ist die einzige Fläche, auf der der Spieler bauen darf.
+- **Gefunden:** Markthalle/Laden/Stadthaus/Werkstatt standen bei x −44..−70 / z 6..51 **mitten im
+  Baufeld** und frassen ~1/5 der Baufläche (User: „map ist noch zu klein"). → ganze Altstadt ins
+  Südviertel (z 74..108) verlegt: Kollider, `bau()`-Meshes, Innenlichter, Interaktions-Zonen,
+  Pflaster-Platz, Laternen/Bänke, `WORLD_POIS` — alles zusammen, sonst zeigt die Karte Geister.
+- **Das Grundstück kann NICHT wachsen:** `RX=GW*CS/2+6` und die Nord/Süd-Strasse bei `±(GH*CS/2+12)`
+  boxen es ein (1 m bzw. 7 m Luft). Mehr Baufläche gibt es nur, indem man Weltgebäude herausholt.
+- **Auto-Kollider-Falle:** `haus()/block()/turm()` registrieren seit 2026-07-27 automatisch eine
+  geschlossene Box. **`villa()` darf das NICHT** — die 4 Villen sind begehbar und haben eigene
+  Kollider MIT Türöffnung; die Auto-Box hat sie zugesperrt (Duplikat + kein Durchgang).
+- **Audit-Rezept** (`/tmp/thaudit.js`-Muster): Debug-Kopie mit `window.__dbg=()=>({solids:WORLD_SOLIDS,…})`,
+  über `python3 -m http.server` laden (file:// findet three.js nicht!), Solo starten, dann prüfen:
+  Kollider × Strassenbänder, Kollider × Kollider, Kollider × Grundstück. Ziel = 0 / 0 / 0
+  (Ausnahme: Kathedrale + angebauter Glockenturm überlappen absichtlich).
