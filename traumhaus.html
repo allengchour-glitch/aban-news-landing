@@ -3917,7 +3917,19 @@ function updCrime(dt){
     var w9=document.getElementById("werkBtn"); /* Werkstatt (-6,88): umlackieren gegen Fahndung */
     if(w9)w9.style.display=(an&&fahren&&Math.abs(p9.x+6)<6.8&&Math.abs(p9.z-88)<5.8)?"block":"none";
     var m9=document.getElementById("markthalleBtn"); /* Markthalle (-26,95): Ernte zu Marktpreisen */
-    if(m9)m9.style.display=(an&&!fahren&&Math.abs(p9.x+26)<7.9&&Math.abs(p9.z-95)<11.9&&(stats.ernten||0)>0)?"block":"none";
+    var inMarkt=an&&!fahren&&Math.abs(p9.x+26)<7.9&&Math.abs(p9.z-95)<11.9;
+    if(m9)m9.style.display=(inMarkt&&(stats.ernten||0)>0)?"block":"none";
+    /* 💡 Die Bedingungen der drei Innenraum-Aktionen sind von aussen nicht zu erraten.
+       Wer am richtigen Ort steht, aber die Voraussetzung nicht erfuellt, bekommt einmalig
+       gesagt, was ihm fehlt — sonst wirkt das Gebaeude einfach kaputt. */
+    function _tipp(schluessel,txt){
+      if(window["_tipp_"+schluessel])return;
+      window["_tipp_"+schluessel]=true;hint(txt);}
+    if(inMarkt&&!(stats.ernten||0))_tipp("markt","🥕 Erst im Garten ernten — dann kauft die Markthalle dir die Ware ab.");
+    var inWerk=an&&Math.abs(p9.x+6)<6.8&&Math.abs(p9.z-88)<5.8;
+    if(inWerk&&!fahren)_tipp("werk","🔧 Die Werkstatt lackiert nur Autos — komm mit dem Wagen vorbei.");
+    var inKirche=an&&!fahren&&Math.abs(p9.x+58)<13&&Math.abs(p9.z+78)<7;
+    if(inKirche&&!verlobt)_tipp("kirche","💒 Erst verloben — dann traut euch die Kathedrale.");
     var k9=document.getElementById("kircheBtn"); /* Kathedrale (-58,-62): kirchlich heiraten */
     if(k9)k9.style.display=(an&&!fahren&&Math.abs(p9.x+58)<13&&Math.abs(p9.z+78)<7&&verlobt&&!verheiratet&&(!MPs||mpHost))?"block":"none";})();
   if(!crime.on)return;
