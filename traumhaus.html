@@ -416,12 +416,14 @@ function inSolid(x,z){
    Fahrbahn- oder Gehwegband liegt, und rutscht auf die naechste freie Seite. Wirkt damit
    auch fuer alles, was spaeter dazukommt. Schienen-Zubehoer meldet sich per ohneSchutz ab. */
 function wegVonStrasse(x,z){
-  var SZr=GH*CS/2+12,M=7.4,RM=6.8,i,c;
+  /* Abstaende ab Strassenmitte: halbe Fahrbahn + Gehweg + Reserve fuer die halbe
+     Objekttiefe (die Funktion kennt die Groesse nicht, darum grosszuegig). */
+  var SZr=GH*CS/2+12,M=13.5,MQ=10.5,RM=9.5,i,c;
   function raus(v,mitte,m){return v>=mitte?mitte+m:mitte-m;}
   for(i=0;i<2;i++){c=i?-SZr:SZr;                       // Hauptstrassen (waagrecht)
     if(Math.abs(x)<RL/2+6&&Math.abs(z-c)<M)z=raus(z,c,M);}
   for(i=0;i<2;i++){c=i?-RX:RX;                          // Querstrassen + Zubringer (senkrecht)
-    if(Math.abs(z)<124&&Math.abs(x-c)<M)x=raus(x,c,M);}
+    if(Math.abs(z)<124&&Math.abs(x-c)<MQ)x=raus(x,c,MQ);}
   for(i=0;i<2;i++){c=i?-112:112;                        // Ringstrasse (senkrecht)
     if(z>-104&&z<122&&Math.abs(x-c)<RM)x=raus(x,c,RM);}
   for(i=0;i<2;i++){c=i?118:-100;                        // Ringstrasse (waagrecht)
@@ -958,7 +960,10 @@ var strMatH=stdMat(0x4a4a53,0.92),strMatV=stdMat(0x4a4a53,0.92);
   zug.position.set(BX0-10,BY+0.28,-30);scene.add(zug);
   window._seeZug={g:zug,x:BX0-10,dir:-1,min:BX1+10,max:BX0-6,speed:9}; /* 🩹 _zug war schon vergeben (alter Stadt-Zug {mesh,pos}) → Kollision crashte den Loop */
 })();
-var strasse=new THREE.Mesh(new THREE.PlaneGeometry(RL,10),strMatH);
+/* 🛣️ Hauptstrassen 10 -> 16 m: die Querstrassen koennen nicht breiter werden (bei x=±78
+   liegt 6 m daneben schon die Grundstuecksgrenze bei 72), aber Nord- und Suedstrasse haben
+   Luft. Die gewonnenen 3 m je Seite tragen jetzt Parkstreifen und Bushaltebucht. */
+var strasse=new THREE.Mesh(new THREE.PlaneGeometry(RL,16),strMatH);
 strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.receiveShadow=true;scene.add(strasse);
 function _dashFrei(x){return Math.abs(Math.abs(x)-RX)>9.2;} // nicht in Kreuzung/Zebra (Zebras bei RX±6.2)
 var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_dashFrei(_dx))continue;
@@ -981,7 +986,7 @@ var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_d
     t.position.set(x,h/2,z);t.receiveShadow=true;scene.add(t);}
   var RB=RX+5,LR=RL/2-RB; // Querstrassen-Kante + Randstueck-Laenge (keine Ueberschneidung mit Fahrbahnen)
   [SZ9+12,-(SZ9+12)].forEach(function(zc){ // Nord+Sued: innen + aussen, an den Querstrassen ausgespart
-    [zc>0?zc-6.1:zc+6.1,zc>0?zc+6.1:zc-6.1].forEach(function(z9){
+    [zc>0?zc-9.1:zc+9.1,zc>0?zc+9.1:zc-9.1].forEach(function(z9){
       tr(2*(RX-5),2.2,0,z9,0.06);       // Mittelteil zwischen den Querstrassen
       tr(LR,2.2,-(RB+LR/2),z9,0.06);    // West-Rand
       tr(LR,2.2,(RB+LR/2),z9,0.06);});});// Ost-Rand
@@ -1004,6 +1009,34 @@ var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_d
   [RX,-RX].forEach(function(xc){
     [xc-5.05,xc+5.05].forEach(function(xb){bord(0.26,2*SZ9+14,xb,0);});
     [xc-7.55,xc+7.55].forEach(function(xe){erd(0.7,2*SZ9+14,xe,0);});});
+  /* 🅿️ Parkstreifen entlang beider Hauptstrassen + Bushaltebucht (User: „genuegend
+     Parkplaetze, dass Auto und Bushaltestelle parkieren koennen"). Liegen auf den 3 m,
+     die die Verbreiterung je Seite gebracht hat — der Fahrstreifen bleibt frei. */
+  (function parkstreifen(){
+    var SZp=GH*CS/2+12;
+    var mM=new THREE.MeshStandardMaterial({color:0xd8d8cc,roughness:0.8});mM.envMapIntensity=0.12;
+    (window._markMats=window._markMats||[]).push(mM);
+    [SZp,-SZp].forEach(function(zc){
+      [zc>0?zc-6.4:zc+6.4,zc>0?zc+6.4:zc-6.4].forEach(function(zs,seite){
+        /* Buchten-Belag etwas heller als die Fahrbahn, damit man sie erkennt */
+        /* Nur Markierung, KEIN eigener Belag: ein andersfarbiges Rechteck sah aus wie eine
+           Textur, die ueber die Strasse gelegt wurde (User). Parkstreifen sind in echt auch
+           nur aufgemalt. */
+        [[-58,26],[-18,26],[22,26],[62,26]].forEach(function(seg){
+          var laengs=new THREE.Mesh(new THREE.PlaneGeometry(seg[1],0.18),mM);
+          laengs.rotation.x=-Math.PI/2;laengs.position.set(seg[0],0.004,zs+(zs>0?-2.3:2.3));scene.add(laengs);
+          for(var b=0;b<=Math.round(seg[1]/5.2);b++){                    // Stellplatz-Striche
+            var st=new THREE.Mesh(new THREE.PlaneGeometry(0.18,4.4),mM);
+            st.rotation.x=-Math.PI/2;st.position.set(seg[0]-seg[1]/2+b*5.2,0.004,zs);scene.add(st);}});});});
+    /* Bushaltebucht an der Suedstrasse: Fahrbahn-Ausbuchtung + Wartehaeuschen-Plattform */
+    var bx=30,bz=SZp-6.4;
+    var kante=new THREE.Mesh(new THREE.BoxGeometry(22,0.16,1.6),betMat(0xd0cdc4,0.9));
+    kante.position.set(bx,0.08,bz+3.1);kante.receiveShadow=true;scene.add(kante);   // erhoehte Bordkante
+    var bs=new THREE.Mesh(new THREE.PlaneGeometry(0.2,4.8),mM);
+    bs.rotation.x=-Math.PI/2;bs.position.set(bx-11,0.004,bz);scene.add(bs);
+    var bs2=new THREE.Mesh(new THREE.PlaneGeometry(0.2,4.8),mM);
+    bs2.rotation.x=-Math.PI/2;bs2.position.set(bx+11,0.004,bz);scene.add(bs2);
+  })();
   /* 🚶 Gehwege an Ringstrasse + Zubringern (User: „dort fehlt trottoir"). Bisher hatten nur
      die inneren Haupt- und Querstrassen Trottoirs, der ganze aeussere Ring lag nackt im Gras.
      Ring: z=±? bei -100/118, x=±112, Breite 9 -> Kante ±4.5, Gehweg-Mitte ±5.6.
@@ -1134,7 +1167,7 @@ var dorfFenster=[];
   // Nordstrasse + zwei Querstrassen (Block-Layout)
   function strasseMesh(w,h,x,z){var st=new THREE.Mesh(new THREE.PlaneGeometry(w,h),w>h?strMatH:strMatV);
     st.rotation.x=-Math.PI/2;st.position.set(x,-0.003,z);st.receiveShadow=true;scene.add(st);return st;}
-  strasseMesh(RL,10,0,-SZ-12);
+  strasseMesh(RL,16,0,-SZ-12);
   strasseMesh(10,2*SZ+46,-RX,0);strasseMesh(10,2*SZ+46,RX,0); // laenger: aeussere Zebras+Haltelinien liegen auf Asphalt
   // ---- Aeussere Ringstrasse: bindet Downtown (N), Bahnhof (S), Villen (O/W) an ----
   (function ring(){
@@ -1382,7 +1415,7 @@ var dorfFenster=[];
      dazwischen liegt jetzt der Hinterhof-Weg (User: „hinten auch mehr abstand ... und gehweg"). */
   block(-30,-SZ-47,0,3,10,7,0xcfc4b0);block(-14,-SZ-48,0,4,9,7,0xb8c0c8);
   block(4,-SZ-47,0,3,11,7,0xd8cabc);block(22,-SZ-48,0,4,8,7,0xc4b8a8);
-  block(-92,-72,Math.PI/2,3,12,7,0xccc2b4);block(92,90,-Math.PI/2,4,10,7,0xbec6cc); // hinter die Querstrassen (±78); z verschoben, steckte in den Reihenhaeusern
+  block(-92,-82,Math.PI/2,3,12,7,0xccc2b4);block(92,90,-Math.PI/2,4,10,7,0xbec6cc); // hinter die Querstrassen (±78); z verschoben, steckte in den Reihenhaeusern
   block(-60,SZ+42,Math.PI/2,3,9,7,0xd0c8ba);block(60,SZ+44,-Math.PI/2,3,9,7,0xc8bcae);
   // Kirche mit Turm + Spitze
   (function(){var g=new THREE.Group();
@@ -1498,7 +1531,7 @@ var dorfFenster=[];
   [[-64,-116,18,8,0x9aa8bc],[-50,-108,13,7,0x88a0b8],[-38,-120,21,9,0xa0b0c0],[-26,-107,11,6,0x94a4b8],
    [-14,-118,16,8,0x9caabe],[-2,-106,9,6,0x8ea6ba],[10,-119,19,8,0x98a6ba],[22,-108,12,7,0x8ea2b4],
    [34,-117,15,7,0xa2aebe],[46,-107,10,6,0x92a4b6],[58,-115,17,8,0x9caebe],[64,-100,12,7,0x8ca0b2],
-   [-65,-98,14,7,0x96a6b8],[94,-128,20,9,0xa4b0c0]].forEach(function(t){turm(t[0],t[1],t[2],t[3],t[4]);});
+   [-65,-98,14,7,0x96a6b8],[62,-134,20,9,0xa4b0c0]].forEach(function(t){turm(t[0],t[1],t[2],t[3],t[4]);});
   [[-98,44,14,8,0xa0b0c0],[100,76,11,7,0x94a4b8]].forEach(function(t){turm(t[0],t[1],t[2],t[3],t[4]);});
   // (Neon-Schilder haengen jetzt direkt in den Laden-Gruppen)
   // ---- Villen-Viertel: grosse Parzellen mit richtigen Haeusern an den Querstrassen ----
@@ -2192,7 +2225,9 @@ setTimeout(function baueGebaeude(){
     var w=new THREE.Group();w.add(root);w.position.set(x,y,z);w.rotation.y=rotY;scene.add(w);
     if(!window._gebaeude)window._gebaeude=[];window._gebaeude.push(w);if(cb)cb(w,root);},undefined,function(){});}
   bau("bd_barn.glb",7,-96,0,-40,Math.PI/2,false);        // Scheune (Bauernhof West, hinter der neuen Querstrasse)
-  bau("bd_market.glb",6,26,0,70.5,Math.PI,false,function(w9,root9){ // Stray-Face ("Geister-Dreieck") ausblenden
+  /* 📏 Hoehe 6 -> 4.5 und von z=70.5 auf 80: der Bau war groesser als alles ringsum und
+     seine Markise stand auf dem Trottoir (User-Screenshot). */
+  bau("bd_market.glb",4.5,26,0,80,Math.PI,false,function(w9,root9){ // Stray-Face ("Geister-Dreieck") ausblenden
     root9.traverse(function(n9){if(!n9.isMesh||!n9.geometry)return;
       n9.geometry.computeBoundingBox();var bb9=n9.geometry.boundingBox,sz9=new THREE.Vector3();bb9.getSize(sz9);
       var duenn=Math.min(sz9.x,sz9.y,sz9.z)<0.012,gross=Math.max(sz9.x,sz9.y,sz9.z)>0.55;
@@ -2277,7 +2312,7 @@ setTimeout(function baueGebaeude(){
     addSolid(0,102,26,11,{a:"z",at:96.5,c:0,w:6.0});         /* Bahnhof: Empfangsseite zur Stadt */
     addSolid(-56,100,22,14,{a:"z",at:93,c:-56,w:4.0});       /* Schule */
     addSolid(56,100,18,12,{a:"z",at:94,c:56,w:5.0});         /* Feuerwache: Tore vorn */
-    addSolid(96,-110,16.2,11.2,null);                        /* Parkhaus (offen, aber solide Huelle) */
+    addSolid(96,-118,16.2,11.2,null);                        /* Parkhaus (offen, aber solide Huelle) */
     addSolid(97,-84,20.4,12.4,{a:"z",at:-90.2,c:97,w:5.0});  /* Lagerhalle: Rolltor (7m nach Osten, stand in der Ost-Querstrasse) */
     addSolid(-90,-112,8.2,8.2,null);                         /* Downtown-Turm */
     /* 💡 Innenraum-Licht für die begehbaren Gebaeude — nachts warm erleuchtet (Fade wie Strassenlampen) */
@@ -2341,7 +2376,7 @@ setTimeout(function baueGebaeude(){
     /* ── th7: Downtown-Plus (modularer Turm, Parkhaus, Lagerhalle, Fahrzeuge, Denkmal) ── */
     for(var _tw=0;_tw<4;_tw++)bau("th7_hochhaus_modul.glb",6.0,-90,_tw*6,-112,0,false);
     bau("th7_hochhaus_dach.glb",3.6,-90,24,-112,0,false);
-    bau("th7_parkhaus.glb",9.8,96,0,-110,0,false);
+    bau("th7_parkhaus.glb",9.8,96,0,-118,0,false);
     bau("th7_lagerhalle.glb",9.0,97,0,-84,0,false);
     bau("th7_taxi.glb",1.7,6,0,94,Math.PI/2,false);
     bau("th7_lieferwagen.glb",2.5,12,0,55,Math.PI/2,false);
