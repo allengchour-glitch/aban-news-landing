@@ -311,20 +311,8 @@ if(THREE.RGBELoader&&renderer.capabilities.isWebGL2){try{new THREE.RGBELoader().
 },undefined,function(){});}catch(e){}}
 var hemi=new THREE.HemisphereLight(0xdfeeff,0x6a8a58,0.42);scene.add(hemi);
 // Warme Strassenlaternen-Lichtpools — nur nachts an (Intensitaet im Tag/Nacht-Loop gesetzt)
-var nachtLampen=[];(function(){
-  var RXl=RX+2,SZl=GH*CS/2+12; // an Quer-/Hauptstrassen (skaliert mit der Map)
-  var pts=[[-40,SZl],[0,SZl],[40,SZl],[-40,-SZl],[40,-SZl],[RXl,-20],[RXl,20],[-RXl,0],[68,87],[-4,70],[0,-40],[-104,-30]]; /* Park-Platz + Brücken-Zufahrt */ // + Marktplatz, Ladenzeile, Brunnen-Park
-  pts.forEach(function(p){var L=new THREE.PointLight(0xffb257,0,30,2);L.position.set(p[0],5.4,p[1]);L.intensity=0;scene.add(L);nachtLampen.push(L);
-    /* 🏛️ Kandelaber (User: „Strassenlampe grösser, Strasse besser beleuchten") — sichtbarer Doppelarm-Mast am Lichtpunkt */
-    var kg=new THREE.Group();
-    var fu=new THREE.Mesh(new THREE.CylinderGeometry(0.22,0.3,0.5,8),new THREE.MeshStandardMaterial({color:0x2c343c,roughness:0.6}));fu.position.y=0.25;kg.add(fu);
-    var ma=new THREE.Mesh(new THREE.CylinderGeometry(0.09,0.13,5.0,8),new THREE.MeshStandardMaterial({color:0x2c343c,roughness:0.55}));ma.position.y=2.75;kg.add(ma);
-    var qa=new THREE.Mesh(new THREE.BoxGeometry(2.6,0.09,0.09),new THREE.MeshStandardMaterial({color:0x2c343c,roughness:0.55}));qa.position.y=5.15;kg.add(qa);
-    L._heads=[];[-1.15,1.15].forEach(function(ax){var ko=new THREE.Mesh(new THREE.SphereGeometry(0.2,10,8),
-      new THREE.MeshStandardMaterial({color:0xffe9c0,emissive:0xffc870,emissiveIntensity:0,roughness:0.3}));
-      ko.position.set(ax,5.35,0);kg.add(ko);L._heads.push(ko.material);});
-    kg.position.set(p[0],0,p[1]);kg.rotation.y=(Math.abs(p[0])>Math.abs(p[1]))?Math.PI/2:0;scene.add(kg);});
-})();
+var nachtLampen=[];   /* Die Laternen werden weiter unten gebaut — sie brauchen GW/RX/wegVonStrasse */
+
 var sun=new THREE.DirectionalLight(0xfff0d0,1.12);sun.position.set(26,38,18);scene.add(sun);
 sun.castShadow=true;sun.shadow.mapSize.set(IS_TOUCH?1024:2048,IS_TOUCH?1024:2048);sun.shadow.bias=-0.0006;
 sun.shadow.camera.near=5;sun.shadow.camera.far=320;
@@ -429,6 +417,64 @@ function wegVonStrasse(x,z){
   for(i=0;i<2;i++){c=i?118:-100;                        // Ringstrasse (waagrecht)
     if(Math.abs(x)<118&&Math.abs(z-c)<RM)z=raus(z,c,RM);}
   return [x,z];}
+(function(){
+  /* 💡 Vorher standen 12 Laternen im ganzen Ort — und ihre Positionen waren sogar NaN, weil
+     der Block VOR GW/RX lief. Nachts sah man darum praktisch nichts (User).
+     Jetzt eine durchgehende Kette alle 26 m entlang aller Hauptachsen. Wichtig: 67 echte
+     PointLights waeren auf dem Handy nicht tragbar (jedes Licht kostet Shader-Arbeit in jedem
+     Material). Darum bekommt JEDE Laterne Mast, leuchtende Koepfe und einen additiven
+     Lichtkegel am Boden — echte PointLights gibt es nur 8, die als Pool immer den naechsten
+     Laternen um die Kamera folgen. */
+  var RXl=RX+11,SZl=GH*CS/2+12,SZo=SZl+11;
+  var pts=[];
+  for(var x=-96;x<=96;x+=26){pts.push([x,SZo],[x,-SZo]);}          // Nord-/Suedstrasse, beidseitig
+  for(var z=-84;z<=84;z+=26){pts.push([RXl,z],[-RXl,z]);}          // Querstrassen
+  for(var xr=-104;xr<=104;xr+=34){pts.push([xr,-93],[xr,125]);}    // Ringstrasse Nord/Sued
+  for(var zr=-80;zr<=100;zr+=34){pts.push([119,zr],[-119,zr]);}    // Ringstrasse West/Ost
+  pts.push([68,87],[-4,78],[-33,86],[30,104],[0,146],[-24,74]);    // Plaetze, Parkplatz, Seepark
+  var mMat=new THREE.MeshStandardMaterial({color:0x2c343c,roughness:0.55});
+  var fuG=new THREE.CylinderGeometry(0.26,0.36,0.6,8),
+      maG=new THREE.CylinderGeometry(0.11,0.16,6.2,8),
+      qaG=new THREE.BoxGeometry(3.2,0.11,0.11),
+      koG=new THREE.SphereGeometry(0.26,10,8),
+      poolG=new THREE.CircleGeometry(10,20);
+  var kopfMat=new THREE.MeshStandardMaterial({color:0xffe9c0,emissive:0xffc870,emissiveIntensity:0,roughness:0.3});
+  window._lampKopf=kopfMat;
+  window._lampGlows=window._lampGlows||[];
+  window._lampPos=[];
+  pts.forEach(function(p){
+    var q=wegVonStrasse(p[0],p[1]);                                 // nie in der Fahrbahn
+    var px=q[0],pz=q[1];
+    window._lampPos.push([px,pz]);
+    var kg=new THREE.Group();
+    var fu=new THREE.Mesh(fuG,mMat);fu.position.y=0.3;kg.add(fu);
+    var ma=new THREE.Mesh(maG,mMat);ma.position.y=3.4;kg.add(ma);
+    var qa=new THREE.Mesh(qaG,mMat);qa.position.y=6.4;kg.add(qa);
+    [-1.45,1.45].forEach(function(ax){
+      var ko=new THREE.Mesh(koG,kopfMat);ko.position.set(ax,6.55,0);kg.add(ko);});
+    var pm=new THREE.MeshBasicMaterial({color:0xffd18c,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false});
+    var pool=new THREE.Mesh(poolG,pm);pool.rotation.x=-Math.PI/2;pool.position.set(px,0.03,pz);scene.add(pool);
+    window._lampGlows.push(pm);
+    kg.position.set(px,0,pz);kg.rotation.y=(Math.abs(px)>Math.abs(pz))?Math.PI/2:0;scene.add(kg);});
+  /* Der Pool aus 8 echten Lichtern */
+  window._lampPool=[];
+  for(var i=0;i<8;i++){var L=new THREE.PointLight(0xffc074,0,54,2);L.position.set(0,6.6,0);scene.add(L);window._lampPool.push(L);}
+  window._lampPoolT=0;
+})();
+/* Die 8 Pool-Lichter den naechstgelegenen Laternen zuordnen (4x/s reicht, es ruckelt nichts). */
+function updLampPool(dt){
+  if(!window._lampPool||!window._lampPos)return;
+  window._lampPoolT-=dt;if(window._lampPoolT>0)return;window._lampPoolT=0.25;
+  var an=window._dorfNacht?1:0;
+  if(!an){for(var z=0;z<window._lampPool.length;z++)window._lampPool[z].intensity=0;return;}
+  var cx=camTx,cz=camTz,P=window._lampPos,best=[];
+  for(var i=0;i<P.length;i++){var d=(P[i][0]-cx)*(P[i][0]-cx)+(P[i][1]-cz)*(P[i][1]-cz);
+    if(best.length<8){best.push([d,i]);best.sort(function(a,b){return a[0]-b[0];});}
+    else if(d<best[7][0]){best[7]=[d,i];best.sort(function(a,b){return a[0]-b[0];});}}
+  for(var k=0;k<window._lampPool.length;k++){
+    var L=window._lampPool[k];
+    if(k<best.length){var p2=P[best[k][1]];L.position.set(p2[0],6.6,p2[1]);L.intensity=3.4;}
+    else L.intensity=0;}}
 function addSolidRot(x,z,w,d,rotY,door){
   var q=Math.abs(((rotY||0)%Math.PI)-Math.PI/2)<0.4;
   addSolid(x,z,q?d:w,q?w:d,door||null);}
@@ -774,7 +820,19 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
           var r=new THREE.Mesh(new THREE.CylinderGeometry(0.33,0.33,0.22,10),stdMat(0x22252a,0.5));
           r.rotation.z=Math.PI/2;r.position.set(w[0],0.33,w[1]);g.add(r);});
         g.position.set(ax,0,az);g.rotation.y=(Math.random()-0.5)*0.08;scene.add(g);}
-      addSolid(PX,PZ,PW+1,PD+1,{a:"z",at:PZ-PD/2-0.5,c:PX,w:PW});  /* offene Zufahrt an der Nordseite */
+      /* Struktur wie beim Rest der Stadt: Bordkante ringsum, Gruenstreifen zwischen den
+       Reihen, Zufahrt im Norden offen (User: „parkplaetze schoener gestalten, Struktur und
+       Textur wie alles andere"). */
+    var kM=betMat(0xd0cdc4,0.9);
+    [[0,-PD/2-0.4,PW+1.6,0.8],[0,PD/2+0.4,PW+1.6,0.8],[-PW/2-0.4,0,0.8,PD+1.6],[PW/2+0.4,0,0.8,PD+1.6]]
+      .forEach(function(k,i){
+        if(i===0)return;                                   /* Nordseite bleibt Zufahrt */
+        var kb=new THREE.Mesh(new THREE.BoxGeometry(k[2],0.18,k[3]),kM);
+        kb.position.set(PX+k[0],0.09,PZ+k[1]);kb.receiveShadow=true;scene.add(kb);});
+    var gruen=new THREE.Mesh(new THREE.PlaneGeometry(PW-4,1.8),new THREE.MeshStandardMaterial({color:0x5f9a52,roughness:0.95}));
+    gruen.rotation.x=-Math.PI/2;gruen.position.set(PX,0.006,PZ);gruen.receiveShadow=true;scene.add(gruen);
+    for(var tb=0;tb<3;tb++)baum2(PX-8+tb*8,PZ,0.62);        /* Baumreihe im Mittelstreifen */
+    addSolid(PX,PZ,PW+1,PD+1,{a:"z",at:PZ-PD/2-0.5,c:PX,w:PW});  /* offene Zufahrt an der Nordseite */
     })();
     /* 📱 Auf dem Handy zwei Drittel der Streu-Objekte — die Landschaft bleibt voll,
        aber es sind hunderte Draw-Calls weniger. */
@@ -1316,7 +1374,41 @@ var dorfFenster=[];
   if(!_texBlatt)_texBlatt=_strukTex("blatt");
   var heckM=new THREE.MeshStandardMaterial({color:0x4a7a42,roughness:0.95,map:_texBlatt}),wegM=betMat(0xcfc8b8,0.9),
       blumG=new THREE.SphereGeometry(0.1,6,5),BLF=[0xffd94a,0xff7ab0,0xffffff,0xff5a4a];
+  /* 🪵 Holzzaun / 🧱 Steinmauer ums Grundstueck + Gartentor (User: „diverse holzaeune bei
+     einfamilienhaus, kleine garten, diverse steinmauer"). Abwechselnd, damit die Zeile nicht
+     uniform wirkt; das Tor sitzt immer am Gartenweg. */
+  var _zaunLatteG=new THREE.BoxGeometry(0.09,0.95,0.09),
+      _zaunRiegelG=new THREE.BoxGeometry(6.4,0.09,0.07),
+      _zaunM=new THREE.MeshStandardMaterial({color:0xd8c9a8,roughness:0.9}),
+      _mauerM=betMat(0xb4ada0,0.95),
+      _torM=new THREE.MeshStandardMaterial({color:0xc0a878,roughness:0.85});
+  function einfriedung(hx,hz,dir,art){
+    var g=new THREE.Group();
+    function seite(len,ax,az,rot,mitTor){
+      if(art==="mauer"){
+        var m=new THREE.Mesh(new THREE.BoxGeometry(len,0.62,0.34),_mauerM);
+        m.position.set(ax,0.31,az);m.rotation.y=rot;m.castShadow=true;m.receiveShadow=true;g.add(m);
+        var kr=new THREE.Mesh(new THREE.BoxGeometry(len,0.1,0.46),betMat(0xc8c2b6,0.9));
+        kr.position.set(ax,0.66,az);kr.rotation.y=rot;g.add(kr);return;}
+      var n=Math.floor(len/0.42);
+      for(var i=0;i<=n;i++){
+        var off=-len/2+i*(len/n);
+        if(mitTor&&Math.abs(off)<1.5)continue;                    // Luecke fuers Tor
+        var la=new THREE.Mesh(_zaunLatteG,_zaunM);
+        la.position.set(ax+Math.cos(rot)*off,0.5,az-Math.sin(rot)*off);
+        la.rotation.y=rot;la.castShadow=true;g.add(la);}
+      [0.28,0.74].forEach(function(h){
+        var ri=new THREE.Mesh(_zaunRiegelG,_zaunM);
+        ri.scale.x=len/6.4;ri.position.set(ax,h,az);ri.rotation.y=rot;g.add(ri);});}
+    seite(7.6,0,dir*4.9,0,true);                                   // Strassenseite mit Tor
+    seite(7.0,-3.8,dir*1.4,Math.PI/2,false);                       // links
+    seite(7.0,3.8,dir*1.4,Math.PI/2,false);                        // rechts
+    if(art!=="mauer"){                                             // kleines Gartentor
+      var tor=new THREE.Mesh(new THREE.BoxGeometry(2.6,0.85,0.08),_torM);
+      tor.position.set(0,0.48,dir*4.9);tor.rotation.y=0.5*dir;g.add(tor);}
+    g.position.set(hx,0,hz);scene.add(g);}
   function vorgarten(hx,hz,dir){ // dir=+1: Strasse liegt Richtung +z
+    einfriedung(hx,hz,dir,(Math.abs(hx|0)%3===0)?"mauer":"zaun");
     var weg9=new THREE.Mesh(new THREE.PlaneGeometry(1.1,2.0),wegM);
     weg9.rotation.x=-Math.PI/2;weg9.position.set(hx,0.012,hz+dir*4.2);weg9.receiveShadow=true;scene.add(weg9);
     [-2.7,2.7].forEach(function(off){
@@ -5015,14 +5107,16 @@ function loop(now){
     // Tag/Nacht
     var hh=uhrzeit/60,dayA=Math.max(0,Math.sin((hh-5.75)/14*Math.PI)); // Sonne 5:45-19:45 — Abend hat echtes Restlicht
     var wDim=wetter==="sonne"?1:0.62;
-    sun.intensity=(0.09+dayA*0.80)*wDim;hemi.intensity=0.22+dayA*0.30;
-    hemi.groundColor.setRGB(0.16+dayA*0.25,0.28+dayA*0.26,0.20+dayA*0.14); // nachts blau-grau statt oliv
+    /* 🌙 Nachts war die Stadt praktisch schwarz (User: „man sieht nichts"). Mondlicht,
+       Grundhelligkeit und Belichtung bekommen einen deutlich hoeheren Nacht-Sockel. */
+    sun.intensity=(0.20+dayA*0.72)*wDim;hemi.intensity=0.48+dayA*0.22;
+    hemi.groundColor.setRGB(0.24+dayA*0.17,0.34+dayA*0.20,0.30+dayA*0.04); // nachts blau-grau statt oliv
     var warm=Math.max(0,1-dayA*1.8); // 1 bei Daemmerung/Nacht, 0 bei hohem Sonnenstand
     sun.color.setHex(0xfff0d0);if(warm>0)sun.color.lerp(new THREE.Color(0xff8a3a),warm*0.8);
     if(window.sterne)sterne.material.opacity=Math.max(0,0.9-dayA*3);
     sun.position.set(Math.cos((hh-5.75)/14*Math.PI)*34,4+dayA*36,18); // tiefer bei Daemmerung -> lange Schatten
-    renderer.toneMappingExposure=(0.34+dayA*0.52)*wDim; // Nacht dunkel, aber man sieht noch was
-    if(scene.environmentIntensity!==undefined)scene.environmentIntensity=0.10+dayA*0.90;
+    renderer.toneMappingExposure=(0.62+dayA*0.36)*wDim; // 0.34 war zu dunkel zum Spielen
+    if(scene.environmentIntensity!==undefined)scene.environmentIntensity=0.26+dayA*0.74;
     var skyC=new THREE.Color(0x9fd0ea).lerp(new THREE.Color(0x141c30),1-Math.min(1,dayA*1.4));
     if(dayA>0.02&&dayA<0.55)skyC.lerp(new THREE.Color(0xff9a52).setHex(0xff9a52),(0.55-dayA)/0.55*0.5); // Abend-/Morgenrot
     scene.background.copy(skyC);scene.fog.color.copy(skyC);
@@ -5031,15 +5125,16 @@ function loop(now){
     if(window._dorfNacht!==nacht9){window._dorfNacht=nacht9;
       dorfFenster.forEach(function(fm){fm.emissiveIntensity=nacht9?2.2:0;if(nacht9&&fm.emissive)fm.emissive.setHex(0xffcf80);if(fm.transparent&&fm.opacity<=0.5)fm.opacity=nacht9?0.5:0;});
       nachtLampen.forEach(function(L){L._ti=nacht9?(L._max?L._max*7:9):(L._max?L._max*1.6:0);}); /* 💡 Innenlichter brennen auch tagsueber schwach (Raeume ohne Fenster) */ /* 💡 Ziel — weiches Faden im Frame-Loop (schwacher Rand via decay 2 bleibt physisch) */
+      if(window._lampKopf)window._lampKopf.emissiveIntensity=nacht9?2.6:0;
       if(window._flMat)window._flMat.opacity=nacht9?0.15:1; // Wiesenblumen nachts fast unsichtbar
-      (window._lampGlows||[]).forEach(function(gm){gm.opacity=nacht9?0.34:0;}); // Laternen-Lichtpools
+      (window._lampGlows||[]).forEach(function(gm){gm.opacity=nacht9?0.5:0;}); // Laternen-Lichtpools
       (window._markMats||[]).forEach(function(mm){mm.color.setHex(nacht9?0x8f949b:0xcfcfc6);}); // Markierungen dimmen mit (aber lesbar)
     }
     if(camAT!==null){camA+=(camAT-camA)*Math.min(1,dt*6);
       if(Math.abs(camAT-camA)<0.002){camA=camAT;camAT=null;}updCam();}
     if(Math.abs(camRT-camR)>0.02){camR+=(camRT-camR)*Math.min(1,dt*8);
       if(Math.abs(camRT-camR)<=0.02)camR=camRT;updCam();}
-    updFollow(dt);updMinimap(dt);
+    updFollow(dt);updMinimap(dt);updLampPool(dt);
     sims.forEach(function(s,si){updSim(s,si,dt,now);});
     for(var ki=0;ki<kinder.length;ki++)updKind(kinder[ki],dt,now);
     updHund(dt,now);
