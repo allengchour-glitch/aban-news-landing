@@ -490,17 +490,22 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     var hue=new THREE.Mesh(new THREE.SphereGeometry(hR,14,8,0,6.283,0,Math.PI/2),hMat);
     hue.position.set(hx0,-3-((h*3)%4),hz0);
     hue.scale.y=0.32+((h%3)*0.06);hue.receiveShadow=true;scene.add(hue);}
-  // Blumenfelder (Cluster kleiner farbiger Punkte) auf der fernen Wiese
+  /* Blumenfelder — Definition hier, gestreut wird unten mit allen anderen Objekten ueber
+     freiPlatz(). Frueher pruefte diese Schleife NUR das Baugrundstueck: die Blumen landeten
+     mitten auf der Fahrbahn (User-Screenshot „ueberschneidung ... strasse"). */
   var BF=[0xff6b8a,0xffd93d,0xa66bff,0xff9f43,0xffffff];
-  for(var bf=0;bf<150;bf++){
-    var ba=Math.random()*6.283,br=(GW*CS/2+8)+Math.random()*55;
-    var cx0=Math.cos(ba)*br,cz0=Math.sin(ba)*br;
-    if(Math.abs(cx0)<GW*CS/2+4&&Math.abs(cz0)<GH*CS/2+4)continue; // nicht im Baubereich
-    var farbe=BF[(Math.random()*BF.length)|0];
-    var grp=new THREE.Group();
-    for(var b2=0;b2<6;b2++){var st=new THREE.Mesh(new THREE.CylinderGeometry(0.03,0.03,0.4,4),new THREE.MeshStandardMaterial({color:0x3a8a3a,roughness:0.9}));st.position.set((Math.random()-0.5)*1.4,0.2,(Math.random()-0.5)*1.4);grp.add(st);
-      var bl=new THREE.Mesh(new THREE.SphereGeometry(0.12,6,5),new THREE.MeshStandardMaterial({color:farbe,roughness:0.7,emissive:farbe,emissiveIntensity:0.12}));bl.position.set(st.position.x,0.42,st.position.z);grp.add(bl);}
-    grp.position.set(cx0,0,cz0);scene.add(grp);}
+  var _halmBG=new THREE.CylinderGeometry(0.03,0.03,0.4,4),
+      _halmBM=new THREE.MeshStandardMaterial({color:0x3a8a3a,roughness:0.9}),
+      _bluetG=new THREE.SphereGeometry(0.12,6,5),
+      _bluetM=BF.map(function(f){return new THREE.MeshStandardMaterial({color:f,roughness:0.7,emissive:f,emissiveIntensity:0.12});});
+  function blumenfeld(x,z){
+    var mi=(Math.random()*BF.length)|0,grp=new THREE.Group();
+    for(var b2=0;b2<6;b2++){
+      var st=new THREE.Mesh(_halmBG,_halmBM);
+      st.position.set((Math.random()-0.5)*1.4,0.2,(Math.random()-0.5)*1.4);grp.add(st);
+      var bl=new THREE.Mesh(_bluetG,_bluetM[mi]);
+      bl.position.set(st.position.x,0.42,st.position.z);grp.add(bl);}
+    grp.position.set(x,0,z);scene.add(grp);}
   // ---- Schönes animiertes Wasser: See mit Wellen ----
   window._wasser=[];
   function wasserMat(){return new THREE.MeshStandardMaterial({color:0x1f6bb0,roughness:0.06,metalness:0.45,transparent:true,opacity:0.92,envMapIntensity:0.9});}
@@ -577,7 +582,10 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     if(Math.abs(x)<GW*CS/2+4+pad&&Math.abs(z)<GH*CS/2+6+pad)return false;      // Baugrundstueck
     if(Math.hypot(x,z-146)<24+pad)return false;                                // Seepark + Promenade
     if(Math.abs(Math.abs(z)-(GH*CS/2+12))<8+pad&&Math.abs(x)<RL/2+4)return false;  // Haupt-/Querstrassen
-    if(Math.abs(Math.abs(x)-RX)<8+pad&&Math.abs(z)<78)return false;
+    /* Querstrassen inkl. Zubringer bis zum Ring: die alte Grenze |z|<78 endete am
+       Strassenende, die Zubringer (z bis ±120) waren ungeschuetzt — dort standen dann
+       Blumen und Schilf auf dem Asphalt (User-Screenshot). */
+    if(Math.abs(Math.abs(x)-RX)<8+pad&&Math.abs(z)<122)return false;
     if(Math.abs(Math.abs(x)-112)<8+pad&&z>-108&&z<126)return false;             // Ringstrasse
     if((Math.abs(z+100)<8+pad||Math.abs(z-118)<8+pad)&&Math.abs(x)<120)return false;
     if(z>88&&z<118&&Math.abs(x)<80)return false;                               // Bahnhofsviertel
@@ -713,11 +721,12 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       addSolid(PX,PZ,PW+1,PD+1,{a:"z",at:PZ-PD/2-0.5,c:PX,w:PW});  /* offene Zufahrt an der Nordseite */
     })();
     streu(130,GW*CS/2+8,GW*CS/2+120,function(x,z){baum2(x,z,0.7+Math.random()*1.1);},1);
+    streu(150,GW*CS/2+8,GW*CS/2+70,blumenfeld,0);
     streu(95,GW*CS/2+6,GW*CS/2+130,busch,0);
     streu(45,GW*CS/2+10,GW*CS/2+135,findling,0);
     streu(24,GW*CS/2+14,GW*CS/2+120,heuballen,1);
-    for(var sc9=0;sc9<26;sc9++){var sa9=sc9/26*6.283,sr9=22+Math.random()*6;
-      var sx9=-90+Math.cos(sa9)*sr9,sz9=80+Math.sin(sa9)*sr9;
+    for(var sc9=0;sc9<26;sc9++){var sa9=sc9/26*6.283,sr9=19+Math.random()*4;
+      var sx9=0+Math.cos(sa9)*sr9,sz9=146+Math.sin(sa9)*sr9;   /* mit dem See mitgezogen */
       if(freiPlatz(sx9,sz9,0))schilf(sx9,sz9);}
   }
   if(document.readyState==="complete")setTimeout(_streuStart,60);
@@ -2288,6 +2297,49 @@ setTimeout(function baueGebaeude(){
   bau("th4_bruecke.glb",1.1,-3,0,135.5,Math.PI/2,false);
   bau("th4_schwan.glb",0.75,-5,-0.02,140,0.6,false);
   bau("th4_sonnenschirm.glb",2.4,13,0,135,0.4,false);bau("th4_sonnenschirm.glb",2.4,94,0,-13,1.2,false);
+  /* ─────────── 🎡 MEHR DETAILS aus der Modell-Bibliothek (User: „umgebung wie echt,
+     mehr details und stl"). Von 681 Modellen lagen ~600 ungenutzt herum. Positionen per
+     Freiflaechen-Solver gegen Strassen, Grundstueck, Fluss, Seepark und alle Kollider. ── */
+  // Spielplatz + Park-Ausstattung im grossen Park
+  bau("th16_spielturm.glb",4.2,88,0,72,5.9,false);
+  bau("th16_schaukel.glb",2.6,66,0,84,4.0,false);
+  bau("th16_wippe.glb",1.0,46,0,72,5.1,false);
+  bau("th16_sandkasten.glb",0.5,56,0,84,2.3,false);
+  bau("th16_karussell_klein.glb",2.2,88,0,80,5.6,false);
+  bau("th16_blumenbeet.glb",0.6,96,0,68,0.2,false);
+  // Seepark: Pavillon, Beete, Grillplatz, Birken, Spielecke
+  bau("th16_pavillon.glb",4.0,8,0,174,2.6,false);
+  bau("th16_blumenbeet.glb",0.6,-26,0,164,0.6,false);
+  bau("th16_blumenbeet.glb",0.6,22,0,132,0.4,false);
+  bau("th16_grillplatz.glb",1.1,28,0,172,0.8,false);
+  bau("th16_baum_birke.glb",6.5,-26,0,176,3.9,false);
+  bau("th16_baum_birke.glb",6.0,32,0,156,5.9,false);
+  bau("th16_sandkasten.glb",0.5,26,0,142,0.3,false);
+  bau("th16_schaukel.glb",2.6,-22,0,128,0.3,false);
+  // Bauernhof-Umfeld: Silo, Traktor, Anhaenger, Wassertank, Heuballen
+  bau("th18_silo.glb",8.0,-98,0,-20,1.2,false);addSolid(-98,-20,4.4,4.4,null);        /* 🧱 Silo solide */
+  bau("th18_wassertank.glb",3.0,-102,0,-32,3.6,false);addSolid(-102,-32,3.0,3.0,null); /* 🧱 Wassertank solide */
+  bau("th18_traktor.glb",2.8,-90,0,-34,1.9,false);
+  bau("th18_anhaenger.glb",1.8,-98,0,-26,4.2,false);
+  bau("th18_heuballen.glb",1.5,-100,0,-70,1.8,false);
+  bau("th18_heuballen.glb",1.5,-100,0,-42,3.4,false);
+  /* Stadt-Moeblierung an den vier Hauptkreuzungen (±RX, ±(SZ+12)) — Ampeln standen
+     bisher nur als prozedurale Behelfe da, Litfasssaeulen fehlten ganz. */
+  (function kreuzungen(){
+    var SZk=GH*CS/2+12;
+    [[RX,SZk],[RX,-SZk],[-RX,SZk],[-RX,-SZk]].forEach(function(K,i){
+      var sx=K[0]>0?-1:1,sz=K[1]>0?-1:1;
+      bau("th6_ampel.glb",3.4,K[0]+sx*6.4,0,K[1]+sz*6.4,i*1.57,false);
+      if(i%2===0)bau("th6_litfasssaeule.glb",3.0,K[0]-sx*6.4,0,K[1]+sz*6.4,0,false);});
+  })();
+  /* 🚂 Bahnuebergang: die Gleise bei z=112 kreuzten die Zubringer bei x=±78 ohne alles —
+     jetzt Signalmasten beidseits, dazu Oberleitung und eine Tramhaltestelle am Bahnhof. */
+  [78,-78].forEach(function(gx){
+    bau("th17_signal.glb",3.2,gx-6.5,0,108.5,0,false);
+    bau("th17_signal.glb",3.2,gx+6.5,0,115.5,Math.PI,false);});
+  for(var om=0;om<7;om++)bau("th17_oberleitungsmast.glb",7.5,-108+om*36,0,115.5,0,false);
+  bau("th17_tramhaltestelle.glb",3.0,-20,0,108,Math.PI,false);
+
 },0);
 function updTiere(dt,now){var M9=window._muehle;if(M9)M9.rotation.z+=dt*1.1;
   var T=window._tiere;if(!T)return;
