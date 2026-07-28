@@ -369,7 +369,7 @@ var TEXLOADER=new THREE.TextureLoader();
 /* 🧱 WELT-KOLLISION (frueh deklariert, damit alle Bau-Funktionen registrieren koennen) */
 /* 🗺️ Orte der Welt — gemeinsame Quelle fuer Radar + grosse Karte (User: „map ist noch zu klein") */
 var WORLD_POIS=[
-  [-58,-78,"⛪","Kathedrale"],[-92,-52,"🌬️","Windmühle"],[-84,-40,"🚜","Bauernhof"],
+  [-58,-78,"⛪","Kathedrale"],[-136,-196,"🌬️","Windmühle"],[-40,-196,"🚜","Bauernhof"],
   [-26,95,"🥕","Markthalle"],[-24,74,"🛒","Laden"],[-6,88,"🔧","Werkstatt"],[-46,80,"🏠","Stadthaus"],
   [-33,86,"🏛️","Altstadt"],[68,68,"🌳","Grosser Park"],[84,-26,"⛲","Brunnen-Park"],
   [84,0,"🛝","Spielplatz"],[0,102,"🚉","Bahnhof"],[26,67,"🏪","Marktplatz"],
@@ -2463,6 +2463,33 @@ setTimeout(function baueGebaeude(){
               {file:"th13_freefall_turm.glb",h:24,w:10,d:10,tuer:false},
               {file:"th13_festzelt.glb",h:9,w:20,d:16},
               {file:"th13_imbissbude.glb",h:3.6,w:6,d:5}]});
+    /* 🚜 BAUERNHOF-VIERTEL weit draussen auf dem Feld (User: „bauernhaeuser farm staelle
+       windmuehle weit weg aufs feld wie farm etc., wie in richtiger landschaft"). Der Hof
+       stand bisher zwischen Ringstrasse und Hochhaeusern — das passt nicht zusammen. */
+    viertel({name:"Bauernhof",x:-40,z:-196,w:170,d:90,achse:"x",boden:"kies",
+      anschluss:[-40,-100],abstand:16,luecke:20,rand:20,
+      bauten:[{file:"th18_scheune.glb",h:10,w:20,d:14},
+              {file:"th18_stall.glb",h:5.5,w:16,d:11},
+              {file:"th18_silo.glb",h:12,w:6,d:6,tuer:false},
+              {file:"th18_gewaechshaus.glb",h:4.2,w:14,d:9},
+              {file:"th18_windrad.glb",h:22,w:6,d:6,tuer:false},
+              {file:"th18_wassertank.glb",h:4,w:4,d:4,tuer:false}]});
+    /* Felder + Zaun + Geraete rund um den Hof */
+    (function felder(){
+      var FX=-40,FZ=-196;
+      [[-64,-34],[-30,-34],[6,-34],[42,-34],[-64,32],[-30,32],[6,32],[42,32]].forEach(function(f,i){
+        var ackerM=new THREE.MeshStandardMaterial({color:i%2?0x8a6b46:0x7d6140,roughness:1,envMapIntensity:0.12});
+        var a=new THREE.Mesh(new THREE.PlaneGeometry(30,26),ackerM);
+        a.rotation.x=-Math.PI/2;a.position.set(FX+f[0],-0.008,FZ+f[1]);a.receiveShadow=true;scene.add(a);
+        for(var r=0;r<9;r++){                       // Saatreihen
+          var rm=new THREE.Mesh(new THREE.BoxGeometry(28,0.12,0.5),
+            new THREE.MeshStandardMaterial({color:i%2?0x6f8a44:0x5e7c3c,roughness:0.95}));
+          rm.position.set(FX+f[0],0.06,FZ+f[1]-11+r*2.8);scene.add(rm);}});
+      bau("th18_traktor.glb",3.0,FX-8,0,FZ-46,0.6,false,null,true);
+      bau("th18_anhaenger.glb",2.0,FX+2,0,FZ-46,0.6,false,null,true);
+      bau("th18_heuballen.glb",1.6,FX+20,0,FZ-44,1.2,false,null,true);
+      bau("th18_heuballen.glb",1.6,FX+25,0,FZ-45,2.4,false,null,true);
+    })();
     /* 🎢 ACHTERBAHN neben dem Freizeitpark — fahrbar, mit Ego-Perspektive.
        Geschlossener Catmull-Rom-Rundkurs, Schienen als Tubes, Stuetzen bis zum Boden,
        Zug aus 4 Wagen. Einsteigen an der Station; die Kamera haengt sich an den Wagen. */
@@ -2517,7 +2544,8 @@ setTimeout(function baueGebaeude(){
       addSolid(CX,CZ-22,13,6,{a:"z",at:CZ-19.2,c:CX,w:6});   /* Station solide, Zugang offen */
     })();
   },260);
-  bau("bd_barn.glb",7,-96,0,-40,Math.PI/2,false);        // Scheune (Bauernhof West, hinter der neuen Querstrasse)
+  /* Die alte Stadt-Scheune ist raus: eine Scheune zwischen Ringstrasse und Hochhaeusern
+     ergibt kein stimmiges Bild. Der Hof steht jetzt draussen auf dem Feld. */
   /* 📏 Hoehe 6 -> 4.5 und von z=70.5 auf 80: der Bau war groesser als alles ringsum und
      seine Markise stand auf dem Trottoir (User-Screenshot). */
   bau("bd_market.glb",4.5,26,0,80,Math.PI,false,function(w9,root9){ // Stray-Face ("Geister-Dreieck") ausblenden
@@ -2529,9 +2557,13 @@ setTimeout(function baueGebaeude(){
   bau("bd_inn.glb",8.5,-28,0,68,Math.PI,false);           // Wirtshaus (Suedzeile)
   bau("bd_house_a.glb",5.5,68,0,-67,0,false);             // Nordzeile Ost-Ende (neben der Stadtzeile)
   bau("bd_house_b.glb",5.5,-72,0,-67,0,false);            // Nordzeile West-Ende (neben der Stadtzeile)
-  bau("bd_windmill_tower.glb",12,-96,0,-52,Math.PI/2,false,function(tw){ /* 🌬️ User: "weit weg von Strasse" → Bauernhof-Ecke */
-    bau("bd_windmill_blades.glb",11.5,-94.2,9.6,-52,Math.PI/2,true,function(w2,root2){
-      window._muehle=root2;});});
+  /* 🌬️ Die Muehle stand zwischen Ringstrasse und Hochhaeusern — sie gehoert aufs Feld
+     (User: „windmuehle weit weg aufs feld, wie in richtiger landschaft"). Jetzt am
+     Rand des Bauernhof-Viertels, mit Blick ueber die Aecker. */
+  bau("bd_windmill_tower.glb",12,-136,0,-196,Math.PI/2,false,function(tw){
+    bau("bd_windmill_blades.glb",11.5,-134.2,9.6,-196,Math.PI/2,true,function(w2,root2){
+      window._muehle=root2;});},true);
+  addSolid(-136,-196,7,7,null);   /* 🧱 Muehlenturm solide */
   // ---- 16 selbstgebaute Blender-Props (th3_*, vom Agenten-Schwarm prozedural erstellt) ----
   // Spielplatz neben dem Brunnen-Park (Osten)
   bau("th3_rutsche.glb",2.6,92,0,-4,Math.PI/2,false);
@@ -2750,12 +2782,7 @@ setTimeout(function baueGebaeude(){
   bau("th16_sandkasten.glb",0.5,26,0,142,0.3,false);
   bau("th16_schaukel.glb",2.6,-22,0,128,0.3,false);
   // Bauernhof-Umfeld: Silo, Traktor, Anhaenger, Wassertank, Heuballen
-  bau("th18_silo.glb",8.0,-98,0,-20,1.2,false);addSolid(-98,-20,4.4,4.4,null);        /* 🧱 Silo solide */
-  bau("th18_wassertank.glb",3.0,-102,0,-32,3.6,false);addSolid(-102,-32,3.0,3.0,null); /* 🧱 Wassertank solide */
-  bau("th18_traktor.glb",2.8,-90,0,-34,1.9,false);
-  bau("th18_anhaenger.glb",1.8,-98,0,-26,4.2,false);
-  bau("th18_heuballen.glb",1.5,-100,0,-70,1.8,false);
-  bau("th18_heuballen.glb",1.5,-100,0,-42,3.4,false);
+  /* Die Hof-Ausstattung ist ins Bauernhof-Viertel auf dem Feld umgezogen (siehe viertel()). */
   /* Stadt-Moeblierung an den vier Hauptkreuzungen (±RX, ±(SZ+12)) — Ampeln standen
      bisher nur als prozedurale Behelfe da, Litfasssaeulen fehlten ganz. */
   (function kreuzungen(){
@@ -4057,7 +4084,7 @@ document.getElementById("exitCar").onclick=aussteigen;
 document.getElementById("nitroBtn").onclick=function(){if(fahren){nitro=1.6;beep(180,.3,"sawtooth",.05);var b=this;b.style.transform="scale(1.2)";setTimeout(function(){b.style.transform="";},200);}};
 // ---- Blitz-Lieferung: 60s-Fahrjob (Beifahrer = +50% Team-Bonus) ----
 var liefer=null;
-var LIEFERZIELE=[["Markt",26,67],["Seepark",10,139],["Spielplatz",84,0],["Bauernhof",-84,-40],["Windmühle",-92,-52],["Brunnen-Park",84,-26]];
+var LIEFERZIELE=[["Markt",26,67],["Seepark",10,139],["Spielplatz",84,0],["Bauernhof",-40,-196],["Windmühle",-136,-196],["Brunnen-Park",84,-26],["Sportpark",0,216],["Freizeitpark",-190,158],["Gewerbe Ost",172,0]];
 document.getElementById("lieferBtn").onclick=function(){
   if(!fahren||liefer)return;
   var kand=LIEFERZIELE.slice().sort(function(){return 0.5-Math.random();})[0];
