@@ -348,8 +348,8 @@ var TEXLOADER=new THREE.TextureLoader();
 /* 🗺️ Orte der Welt — gemeinsame Quelle fuer Radar + grosse Karte (User: „map ist noch zu klein") */
 var WORLD_POIS=[
   [-58,-78,"⛪","Kathedrale"],[-92,-52,"🌬️","Windmühle"],[-84,-40,"🚜","Bauernhof"],
-  [-62,30,"🥕","Feld"],[-44,30,"🛒","Markthalle"],[-62,45,"🔧","Werkstatt"],[-44,12,"🏠","Laden"],
-  [-53,27,"🏛️","Altstadt"],[68,68,"🌳","Grosser Park"],[84,-26,"⛲","Brunnen-Park"],
+  [-26,95,"🥕","Markthalle"],[-24,74,"🛒","Laden"],[-6,88,"🔧","Werkstatt"],[-46,80,"🏠","Stadthaus"],
+  [-33,86,"🏛️","Altstadt"],[68,68,"🌳","Grosser Park"],[84,-26,"⛲","Brunnen-Park"],
   [84,0,"🛝","Spielplatz"],[0,102,"🚉","Bahnhof"],[26,67,"🏪","Marktplatz"],
   [96,-33,"🏰","Villen Ost"],[-96,18,"🏰","Villen West"],[-80,73,"⛵","See-Steg"],[-232,0,"🌊","Meer"]];
 var WORLD_SOLIDS=[];
@@ -1029,7 +1029,7 @@ var dorfFenster=[];
   // Wohnbloecke hinter der Nordstrasse (2. Reihe) + Osten/Westen
   block(-30,-SZ-32,0,3,10,7,0xcfc4b0);block(-14,-SZ-33,0,4,9,7,0xb8c0c8);
   block(4,-SZ-32,0,3,11,7,0xd8cabc);block(22,-SZ-33,0,4,8,7,0xc4b8a8);
-  block(-92,-18,Math.PI/2,3,12,7,0xccc2b4);block(92,18,-Math.PI/2,4,10,7,0xbec6cc); // hinter die neuen Querstrassen (±78)
+  block(-92,-72,Math.PI/2,3,12,7,0xccc2b4);block(92,90,-Math.PI/2,4,10,7,0xbec6cc); // hinter die Querstrassen (±78); z verschoben, steckte in den Reihenhaeusern
   block(-60,SZ+26,Math.PI/2,3,9,7,0xd0c8ba);block(60,SZ+28,-Math.PI/2,3,9,7,0xc8bcae);
   // Kirche mit Turm + Spitze
   (function(){var g=new THREE.Group();
@@ -1062,7 +1062,7 @@ var dorfFenster=[];
     spitze.position.set(0,10.7,6.5);spitze.rotation.y=Math.PI/4;spitze.castShadow=true;g.add(spitze);
     var zb=new THREE.Mesh(new THREE.BoxGeometry(1.2,1.2,0.08),new THREE.MeshStandardMaterial({color:0xf4ecd8,emissive:0xffe8a8,emissiveIntensity:0,roughness:0.4}));
     zb.position.set(0,7.6,7.82);g.add(zb);dorfFenster.push(zb.material);
-    g.position.set(RX,0,-SZ-33);g.rotation.y=Math.PI;scene.add(g);})();
+    g.position.set(RX-14,0,-SZ-33);g.rotation.y=Math.PI;scene.add(g);})(); /* 🛣️ stand bei RX mitten in der Ost-Querstrasse */
   // Laeden-Zeile mit bunten Markisen (Suedstrasse, gegenueber vom Haus)
   [[-8,0xe8443a,"🍞",0xff5a7a],[-1,0x3a7ae8,"💉",0x3ad0ff],[6,0x3aa04a,"🍎",0x6aff8a]].forEach(function(sh,i){
     var g=new THREE.Group();
@@ -1144,9 +1144,9 @@ var dorfFenster=[];
   // Downtown-Cluster jenseits des Flusses: dichte Skyline statt verstreuter Einzeltuerme
   [[-64,-116,18,8,0x9aa8bc],[-50,-108,13,7,0x88a0b8],[-38,-120,21,9,0xa0b0c0],[-26,-107,11,6,0x94a4b8],
    [-14,-118,16,8,0x9caabe],[-2,-106,9,6,0x8ea6ba],[10,-119,19,8,0x98a6ba],[22,-108,12,7,0x8ea2b4],
-   [34,-117,15,7,0xa2aebe],[46,-107,10,6,0x92a4b6],[58,-115,17,8,0x9caebe],[70,-106,12,7,0x8ca0b2],
-   [-76,-108,14,7,0x96a6b8],[82,-116,20,9,0xa4b0c0]].forEach(function(t){turm(t[0],t[1],t[2],t[3],t[4]);});
-  [[-108,44,14,8,0xa0b0c0],[100,66,11,7,0x94a4b8]].forEach(function(t){turm(t[0],t[1],t[2],t[3],t[4]);});
+   [34,-117,15,7,0xa2aebe],[46,-107,10,6,0x92a4b6],[58,-115,17,8,0x9caebe],[64,-100,12,7,0x8ca0b2],
+   [-65,-98,14,7,0x96a6b8],[94,-128,20,9,0xa4b0c0]].forEach(function(t){turm(t[0],t[1],t[2],t[3],t[4]);});
+  [[-98,44,14,8,0xa0b0c0],[100,76,11,7,0x94a4b8]].forEach(function(t){turm(t[0],t[1],t[2],t[3],t[4]);});
   // (Neon-Schilder haengen jetzt direkt in den Laden-Gruppen)
   // ---- Villen-Viertel: grosse Parzellen mit richtigen Haeusern an den Querstrassen ----
   (function villenViertel(){
@@ -1198,7 +1198,9 @@ var dorfFenster=[];
       var bst=new THREE.Mesh(new THREE.CylinderGeometry(0.16,0.22,1.6,7),stdMat(0x6a4a30,0.9));bst.position.set(-6.2,0.8,-3.6);g.add(bst);
       [0,1,2].forEach(function(k){var kr=new THREE.Mesh(new THREE.SphereGeometry(1.0-k*0.2,9,7),stdMat(k%2?0x3a7a3a:0x4a8a44,0.85));
         kr.position.set(-6.2+(k-1)*0.35,2.0+k*0.55,-3.6);kr.castShadow=true;g.add(kr);});
-      g.position.set(x,0,z);g.rotation.y=rotY;scene.add(g);addSolidRot(x,z,8.6,7,rotY,null);} /* 🧱 Villa solide */
+      g.position.set(x,0,z);g.rotation.y=rotY;scene.add(g);}
+    /* 🧱 KEIN Auto-Kollider: die 4 Villen sind begehbar und bekommen unten
+       eigene Kollider MIT Tueroeffnung — eine geschlossene Box wuerde sie zusperren. */
     villa(96,-22,-Math.PI/2,0x8a5a48);villa(96,-44,-Math.PI/2,0x5a6a78); // Ost-Parzellen
     villa(-96,8,Math.PI/2,0x6a7a58);villa(-96,28,Math.PI/2,0x8a5a48);   // West-Parzellen
   })();
@@ -1879,29 +1881,34 @@ setTimeout(function baueGebaeude(){
     bau("th6_fichte.glb",5.5,46,0,90,0,false);bau("th6_fichte.glb",5.5,90,0,84,1,false);
     bau("th6_billboard.glb",6.0,0,0,-84,Math.PI,false);
     /* ── th8: BEGEHBARE Gebäude (Altstadt-Band West; Tür = -z → rot dreht sie zur Strasse) ── */
+    /* 🏘️ ALTSTADT — 2026-07-28 komplett vom BAUGRUNDSTUECK heruntergeholt.
+       Markthalle/Laden/Stadthaus/Werkstatt standen bei x -44..-70 / z 6..51 MITTEN im
+       Baufeld (Grundstueck = x ±72, z ±46) und frassen rund ein Fuenftel der Bauflaeche
+       (User: „map ist noch zu klein"). Neuer Platz: Suedviertel hinter der Sued-Querstrasse,
+       Positionen per Freiflaechen-Solver gegen Strassen + alle 68 Kollider geprueft. */
     (function altstadtPlatz(){ /* 🧱 Gepflasterter Platz + Gassen — die Gebaeude standen auf blanker Wiese */
       var pfM=betMat(0xc4bcae,0.92);
-      if(typeof ladeTex==="function")ladeTex("textures/th5/kopfstein.png",14,20,function(t){pfM.map=t;pfM.color.setHex(0xffffff);pfM.needsUpdate=true;});
-      var pf=new THREE.Mesh(new THREE.PlaneGeometry(34,44),pfM);
-      pf.rotation.x=-Math.PI/2;pf.position.set(-53,-0.012,27); /* 🛣️ 52/31 ragte in die Sued-Querstrasse */pf.receiveShadow=true;scene.add(pf);
-      /* Verbindungsweg zur Nordstrasse (z=-58) */
-      var wg=new THREE.Mesh(new THREE.PlaneGeometry(6,52),pfM.clone());
-      wg.rotation.x=-Math.PI/2;wg.position.set(-53,-0.011,-21);wg.receiveShadow=true;scene.add(wg);
+      if(typeof ladeTex==="function")ladeTex("textures/th5/kopfstein.png",16,14,function(t){pfM.map=t;pfM.color.setHex(0xffffff);pfM.needsUpdate=true;});
+      var pf=new THREE.Mesh(new THREE.PlaneGeometry(40,36),pfM);
+      pf.rotation.x=-Math.PI/2;pf.position.set(-33,-0.012,86);pf.receiveShadow=true;scene.add(pf);
+      /* Verbindungsweg zur Sued-Querstrasse (Band 53..63) */
+      var wg=new THREE.Mesh(new THREE.PlaneGeometry(6,9),pfM.clone());
+      wg.rotation.x=-Math.PI/2;wg.position.set(-33,-0.011,65.5);wg.receiveShadow=true;scene.add(wg);
       /* Baeume + Baenke saeumen den Platz */
-      [[-38,18],[-38,44],[-68,18],[-68,44]].forEach(function(P8,i8){
+      [[-16,70],[-16,102],[-50,70],[-50,102]].forEach(function(P8,i8){
         bau("th5_baum_ahorn.glb",4.4,P8[0],0,P8[1],i8*0.9,false);});
-      bau("th5_parkbank.glb",0.9,-53,0,18,0,false);bau("th5_parkbank.glb",0.9,-53,0,40,Math.PI,false);
-      bau("th5_laterne_altstadt.glb",4.5,-40,0,27,0,false);bau("th5_laterne_altstadt.glb",4.5,-66,0,27,0,false);
-      bau("th6_papierkorb.glb",0.9,-49,0,20,0,false);
+      bau("th5_parkbank.glb",0.9,-33,0,72,0,false);bau("th5_parkbank.glb",0.9,-33,0,100,Math.PI,false);
+      bau("th5_laterne_altstadt.glb",4.5,-16,0,86,0,false);bau("th5_laterne_altstadt.glb",4.5,-50,0,86,0,false);
+      bau("th6_papierkorb.glb",0.9,-29,0,74,0,false);
     })();
     /* 🧱 Kollider zu den begehbaren Gebaeuden (Masse aus models/TH5-ASSETS.md; rot=PI/2 dreht B/T) */
-    addSolid(-62,30,17,25,{a:"x",at:-70.5,c:30,w:4.5});     /* Markthalle: Tor an der -x-Seite */
-    addSolid(-44,12,12.8,10.8,{a:"z",at:17.4,c:-44,w:3.0}); /* Stadthaus: Tuer +z (rot=PI) */
-    addSolid(-44,30,8.6,9.6,{a:"x",at:-39.7,c:30,w:3.0});   /* Laden: Tuer +x (rot=-PI/2) */
-    addSolid(-62,45,14.8,12.8,{a:"z",at:51.4,c:-62,w:4.5}); /* Werkstatt: Tor +z (rot=PI) */
+    addSolid(-26,95,17,25,{a:"x",at:-34.5,c:95,w:4.5});     /* Markthalle: Tor an der -x-Seite */
+    addSolid(-46,80,12.8,10.8,{a:"z",at:85.4,c:-46,w:3.0}); /* Stadthaus: Tuer +z (rot=PI) */
+    addSolid(-24,74,8.6,9.6,{a:"x",at:-19.7,c:74,w:3.0});   /* Laden: Tuer +x (rot=-PI/2) */
+    addSolid(-6,88,14.8,12.8,{a:"z",at:94.4,c:-6,w:4.5});   /* Werkstatt: Tor +z (rot=PI) */
     addSolid(-58,-78,27,15,{a:"x",at:-71.5,c:-78,w:4.0});   /* Kathedrale: Portal -x (rot=PI/2) */
     /* 🧱 Runde 2: restliche feste Gebaeude solide machen (User "polish alles") */
-    addSolid(78,-79,7.4,11.4,{a:"z",at:-73.3,c:78,w:2.2});   /* Dorf-Kirche (RX,-SZ-33), Tuer Sued */
+    addSolid(64,-79,7.4,11.4,{a:"z",at:-73.3,c:64,w:2.2});   /* Dorf-Kirche (RX-14,-SZ-33), Tuer Sued */
     [[-8,0],[-1,0],[6,0]].forEach(function(_s){addSolid(_s[0],70.5,6.8,5.4,{a:"z",at:67.8,c:_s[0]+2.35,w:2.0});}); /* Ladenzeile (SZ+24.5): Eingang rechts vorn */
     [[96,-22],[96,-44]].forEach(function(v){addSolid(v[0],v[1],6.8,8.4,{a:"x",at:v[0]-3.4,c:v[1],w:2.4});});  /* Ost-Villen: Tuer nach Westen (zur Strasse) */
     [[-96,8],[-96,28]].forEach(function(v){addSolid(v[0],v[1],6.8,8.4,{a:"x",at:v[0]+3.4,c:v[1],w:2.4});});   /* West-Villen: Tuer nach Osten */
@@ -1909,17 +1916,17 @@ setTimeout(function baueGebaeude(){
     addSolid(-56,100,22,14,{a:"z",at:93,c:-56,w:4.0});       /* Schule */
     addSolid(56,100,18,12,{a:"z",at:94,c:56,w:5.0});         /* Feuerwache: Tore vorn */
     addSolid(96,-110,16.2,11.2,null);                        /* Parkhaus (offen, aber solide Huelle) */
-    addSolid(90,-84,20.4,12.4,{a:"z",at:-90.2,c:90,w:5.0});  /* Lagerhalle: Rolltor */
+    addSolid(97,-84,20.4,12.4,{a:"z",at:-90.2,c:97,w:5.0});  /* Lagerhalle: Rolltor (7m nach Osten, stand in der Ost-Querstrasse) */
     addSolid(-90,-112,8.2,8.2,null);                         /* Downtown-Turm */
     /* 💡 Innenraum-Licht für die begehbaren Gebaeude — nachts warm erleuchtet (Fade wie Strassenlampen) */
-    [[-62,30,4.5,0xffe0b0,1.1],[-44,12,3.4,0xffd9a0,0.9],[-44,30,2.6,0xfff0c8,0.9],
-     [-62,45,3.2,0xd8f0ff,0.8],[-58,-78,7.0,0xffd08a,1.2]].forEach(function(L9){
+    [[-26,95,4.5,0xffe0b0,1.1],[-46,80,3.4,0xffd9a0,0.9],[-24,74,2.6,0xfff0c8,0.9],
+     [-6,88,3.2,0xd8f0ff,0.8],[-58,-78,7.0,0xffd08a,1.2]].forEach(function(L9){
       var _il=new THREE.PointLight(L9[3],0,16,2);_il.position.set(L9[0],L9[2],L9[1]);scene.add(_il);
       _il._ti=0;_il._max=L9[4];nachtLampen.push(_il);});
-    bau("th8_markthalle_offen.glb",11,-62,0,30,Math.PI/2,false);
-    bau("th8_stadthaus_offen.glb",9.2,-44,0,12,Math.PI,false);
-    bau("th8_laden_offen.glb",3.9,-44,0,30,-Math.PI/2,false);
-    bau("th8_werkstatt_offen.glb",5.3,-62,0,45,Math.PI,false); /* 🛣️ war 50 → ragte in die Sued-Querstrasse (53..63) */
+    bau("th8_markthalle_offen.glb",11,-26,0,95,Math.PI/2,false);
+    bau("th8_stadthaus_offen.glb",9.2,-46,0,80,Math.PI,false);
+    bau("th8_laden_offen.glb",3.9,-24,0,74,-Math.PI/2,false);
+    bau("th8_werkstatt_offen.glb",5.3,-6,0,88,Math.PI,false);
     bau("th8_kirche_offen.glb",21,-58,0,-78,Math.PI/2,false); /* 🛣️ war bei z=-62 → stand 8m IN der Nordstrasse (Band -63..-53) */
     (function glockenturm(){ /* ⛪ Die Kathedrale sah von aussen wie ein schmuckloser Klotz aus — Turm gibt ihr die Silhouette */
       var g=new THREE.Group(),tm=betMat(0xe4ddcc,0.9),dm=stdMat(0x5a6470,0.65);
@@ -1973,7 +1980,7 @@ setTimeout(function baueGebaeude(){
     for(var _tw=0;_tw<4;_tw++)bau("th7_hochhaus_modul.glb",6.0,-90,_tw*6,-112,0,false);
     bau("th7_hochhaus_dach.glb",3.6,-90,24,-112,0,false);
     bau("th7_parkhaus.glb",9.8,96,0,-110,0,false);
-    bau("th7_lagerhalle.glb",9.0,90,0,-84,0,false);
+    bau("th7_lagerhalle.glb",9.0,97,0,-84,0,false);
     bau("th7_taxi.glb",1.7,6,0,94,Math.PI/2,false);
     bau("th7_lieferwagen.glb",2.5,12,0,55,Math.PI/2,false);
     bau("th7_lkw.glb",3.7,90,0,-74,0,false);
@@ -1989,9 +1996,9 @@ setTimeout(function baueGebaeude(){
     bau("th6_fichte.glb",5.5,-70,0,60,0.5,false);bau("th6_fichte.glb",5.2,-60,0,66,1.4,false);
     bau("th5_poller.glb",1.05,0,0,90,0,false);                     /* Bahnhofsvorplatz */
     bau("th6_billboard.glb",6.0,46,0,-84,Math.PI,false);
-    bau("th7_lieferwagen.glb",2.5,-50,0,44,0,false);               /* Werkstatt-Kunde */
+    bau("th7_lieferwagen.glb",2.5,4,0,80,0,false);                 /* Werkstatt-Kunde (mit der Werkstatt umgezogen) */
     bau("th6_papierkorb.glb",0.9,2,0,90,0,false);
-    bau("th5_laterne_altstadt.glb",4.5,-44,0,22,0,false);bau("th5_laterne_altstadt.glb",4.5,-58,0,40,0,false); /* Altstadt-Gasse */
+    bau("th5_laterne_altstadt.glb",4.5,-33,0,70,0,false);bau("th5_laterne_altstadt.glb",4.5,-33,0,102,0,false); /* Altstadt-Gasse */
   })(); /* 📏 2.6→1.7: Stand war doppelt so gross wie die Person (User-Screenshot) */ // auf dem Platz, mit Theke fuer die Verkaeufer
   bau("th3_brezelstand.glb",1.55,54,0,86,Math.PI,false); // weg vom Haus bei x=20 (Markise clippte ins Dach)
   // Strassen-Deko
@@ -3142,11 +3149,11 @@ function updCrime(dt){
   (function(){ /* 🛒🔧🥕 Innenraum-Interaktionen der begehbaren Gebaeude */
     var p9=spielerPos(),an=running&&!buildMode;
     var b9=document.getElementById("shopBtn");
-    if(b9)b9.style.display=(an&&Math.abs(p9.x+44)<3.8&&Math.abs(p9.z-30)<4.3)?"block":"none";
-    var w9=document.getElementById("werkBtn"); /* Werkstatt (-62,50): umlackieren gegen Fahndung */
-    if(w9)w9.style.display=(an&&fahren&&Math.abs(p9.x+62)<6.8&&Math.abs(p9.z-45)<5.8)?"block":"none";
-    var m9=document.getElementById("markthalleBtn"); /* Markthalle (-62,30): Ernte zu Marktpreisen */
-    if(m9)m9.style.display=(an&&!fahren&&Math.abs(p9.x+62)<7.9&&Math.abs(p9.z-30)<11.9&&(stats.ernten||0)>0)?"block":"none";
+    if(b9)b9.style.display=(an&&Math.abs(p9.x+24)<3.8&&Math.abs(p9.z-74)<4.3)?"block":"none";
+    var w9=document.getElementById("werkBtn"); /* Werkstatt (-6,88): umlackieren gegen Fahndung */
+    if(w9)w9.style.display=(an&&fahren&&Math.abs(p9.x+6)<6.8&&Math.abs(p9.z-88)<5.8)?"block":"none";
+    var m9=document.getElementById("markthalleBtn"); /* Markthalle (-26,95): Ernte zu Marktpreisen */
+    if(m9)m9.style.display=(an&&!fahren&&Math.abs(p9.x+26)<7.9&&Math.abs(p9.z-95)<11.9&&(stats.ernten||0)>0)?"block":"none";
     var k9=document.getElementById("kircheBtn"); /* Kathedrale (-58,-62): kirchlich heiraten */
     if(k9)k9.style.display=(an&&!fahren&&Math.abs(p9.x+58)<13&&Math.abs(p9.z+78)<7&&verlobt&&!verheiratet&&(!MPs||mpHost))?"block":"none";})();
   if(!crime.on)return;
@@ -3902,10 +3909,11 @@ function drawBigMap(){
     c.fillRect(p1[0],p1[1],Math.max(2,s.hw*2*sc),Math.max(2,s.hd*2*sc));}
   // Orte
   c.textAlign="center";c.textBaseline="middle";
-  for(var k=0;k<WORLD_POIS.length;k++){var P=WORLD_POIS[k],sp=S(P[0],P[1]);
+  /* Beschriftung abwechselnd ueber/unter dem Symbol — im Suedviertel stehen die Orte dicht */
+  for(var k=0;k<WORLD_POIS.length;k++){var P=WORLD_POIS[k],sp=S(P[0],P[1]),ly=(k%2)?-24:16;
     c.font="25px system-ui";c.fillText(P[2],sp[0],sp[1]-6);
     c.font="900 15px system-ui";c.lineWidth=4;c.strokeStyle="rgba(0,0,0,.6)";c.fillStyle="#fff";
-    c.strokeText(P[3],sp[0],sp[1]+15);c.fillText(P[3],sp[0],sp[1]+15);c.fillStyle="rgba(70,58,50,.8)";}
+    c.strokeText(P[3],sp[0],sp[1]+ly);c.fillText(P[3],sp[0],sp[1]+ly);c.fillStyle="rgba(70,58,50,.8)";}
   // Spieler
   var me=sims[meinSi()];
   if(me){var mp=(fahren&&driveCar)?S(driveCar.mesh.position.x,driveCar.mesh.position.z):S(me.x,me.z);
