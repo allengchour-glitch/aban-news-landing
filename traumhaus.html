@@ -294,7 +294,10 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 var THREE=window.THREE,W=innerWidth,H=innerHeight;
 var IS_TOUCH=navigator.maxTouchPoints>0;
 var renderer=new THREE.WebGLRenderer({antialias:true});
-renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(W,H);
+/* 📱 Handy: Pixelratio auf 1.5 deckeln. Auf einem 3x-Display rendert die Szene sonst
+   9x so viele Pixel wie noetig — die teuerste Einzelbremse auf dem Telefon. */
+var _mobil=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)||Math.min(screen.width,screen.height)<820;
+renderer.setPixelRatio(Math.min(devicePixelRatio,_mobil?1.5:2));renderer.setSize(W,H);
 renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
 renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=0.78;
 renderer.outputEncoding=THREE.sRGBEncoding;
@@ -408,6 +411,22 @@ function inSolid(x,z){
     return true;}
   return false;}
 /* Rotationssicher: bei rotY≈±90° Breite/Tiefe tauschen */
+/* 🛣️ STRASSEN-SCHUTZ (User-Screenshot: Baeume und Baenke standen mitten auf der Fahrbahn).
+   Statt ~96 Einzelkoordinaten nachzupflegen prueft jede Platzierung selbst, ob sie in einem
+   Fahrbahn- oder Gehwegband liegt, und rutscht auf die naechste freie Seite. Wirkt damit
+   auch fuer alles, was spaeter dazukommt. Schienen-Zubehoer meldet sich per ohneSchutz ab. */
+function wegVonStrasse(x,z){
+  var SZr=GH*CS/2+12,M=7.4,RM=6.8,i,c;
+  function raus(v,mitte,m){return v>=mitte?mitte+m:mitte-m;}
+  for(i=0;i<2;i++){c=i?-SZr:SZr;                       // Hauptstrassen (waagrecht)
+    if(Math.abs(x)<RL/2+6&&Math.abs(z-c)<M)z=raus(z,c,M);}
+  for(i=0;i<2;i++){c=i?-RX:RX;                          // Querstrassen + Zubringer (senkrecht)
+    if(Math.abs(z)<124&&Math.abs(x-c)<M)x=raus(x,c,M);}
+  for(i=0;i<2;i++){c=i?-112:112;                        // Ringstrasse (senkrecht)
+    if(z>-104&&z<122&&Math.abs(x-c)<RM)x=raus(x,c,RM);}
+  for(i=0;i<2;i++){c=i?118:-100;                        // Ringstrasse (waagrecht)
+    if(Math.abs(x)<118&&Math.abs(z-c)<RM)z=raus(z,c,RM);}
+  return [x,z];}
 function addSolidRot(x,z,w,d,rotY,door){
   var q=Math.abs(((rotY||0)%Math.PI)-Math.PI/2)<0.4;
   addSolid(x,z,q?d:w,q?w:d,door||null);}
@@ -472,15 +491,49 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
 // ---- Open-World-Landschaft rundherum ----
 (function landschaft(){
   // Ferne Grasebene (Horizont) unter allem
-  var fernTex=grasTex.clone();fernTex.needsUpdate=true;fernTex.repeat.set(52,52);
-  var fern=new THREE.Mesh(new THREE.PlaneGeometry(600,600),new THREE.MeshStandardMaterial({map:fernTex,color:0xa8c88a,roughness:1,envMapIntensity:0.18}));
+  var fernTex=grasTex.clone();fernTex.needsUpdate=true;fernTex.repeat.set(80,80);
+  var fern=new THREE.Mesh(new THREE.PlaneGeometry(900,900),new THREE.MeshStandardMaterial({map:fernTex,color:0xa8c88a,roughness:1,envMapIntensity:0.18}));
   fern.rotation.x=-Math.PI/2;fern.position.y=-0.08;fern.receiveShadow=true;scene.add(fern);
+  /* ⛰️ BERGKETTE — User: „erstelle sonst bergen fuer noch groessere map".
+     Weit draussen (r 210..290), damit zwischen Ringstrasse und Gebirge Platz fuer neue
+     Viertel bleibt. Fels-Kegel mit Schneekappe, drei Staffeln fuer Tiefe. */
+  (function berge(){
+    var felsM=new THREE.MeshStandardMaterial({color:0x7d7468,roughness:1,flatShading:true,envMapIntensity:0.2});
+    var felsM2=new THREE.MeshStandardMaterial({color:0x6a6358,roughness:1,flatShading:true,envMapIntensity:0.2});
+    var schneeM=new THREE.MeshStandardMaterial({color:0xf2f5f8,roughness:0.85,flatShading:true,envMapIntensity:0.3});
+    var N=34;
+    for(var i=0;i<N;i++){
+      var a=i/N*6.283+((i*13)%7)*0.02;
+      var r=212+((i*47)%78);
+      var hoch=42+((i*29)%56);            // 42..97
+      var rad=hoch*(0.62+((i%4)*0.07));
+      var bx=Math.cos(a)*r,bz=Math.sin(a)*r;
+      if(bx<-150&&Math.abs(bz)<170)continue;      // Westen ist offenes Meer
+      var geo=new THREE.ConeGeometry(rad,hoch,6+(i%3),1);
+      var berg=new THREE.Mesh(geo,i%2?felsM:felsM2);
+      berg.position.set(bx,hoch/2-6,bz);berg.rotation.y=(i*0.7)%6.283;
+      berg.receiveShadow=true;scene.add(berg);
+      if(hoch>62){                         // Schneekappe nur auf den hohen
+        var kap=new THREE.Mesh(new THREE.ConeGeometry(rad*0.34,hoch*0.3,6+(i%3),1),schneeM);
+        kap.position.set(bx,hoch-6-hoch*0.15,bz);kap.rotation.y=berg.rotation.y;scene.add(kap);}}
+    /* Vorgelagerte Huegel als Uebergang von der Ebene ins Gebirge */
+    var vhM=new THREE.MeshStandardMaterial({color:0x8faa72,roughness:1,flatShading:true,envMapIntensity:0.16});
+    for(var v=0;v<26;v++){
+      var av=v/26*6.283+0.11,rv=170+((v*31)%36);
+      var vr=18+((v*11)%16);
+      var vx=Math.cos(av)*rv,vz=Math.sin(av)*rv;
+      if(vx<-120&&Math.abs(vz)<170)continue;      // nicht ins Meer
+      var vh=new THREE.Mesh(new THREE.SphereGeometry(vr,10,6,0,6.283,0,Math.PI/2),vhM);
+      vh.position.set(vx,-4-((v*3)%5),vz);
+      vh.scale.y=0.3+((v%3)*0.07);vh.receiveShadow=true;scene.add(vh);}
+  })();
   // Sanfte Huegelkette am Rand (grosse flache Halbkugeln)
   var hTex=grasTex.clone();hTex.needsUpdate=true;hTex.repeat.set(6,4);
   var hMat=new THREE.MeshStandardMaterial({map:hTex,color:0x9aba7c,roughness:1,envMapIntensity:0.16});
   for(var h=0;h<14;h++){var a=h/14*6.283,r=95+((h*37)%40);
     var hx0=Math.cos(a)*r,hz0=Math.sin(a)*r;
-    if(Math.hypot(hx0-(-90),hz0-80)<42)continue; // nicht in den See ragen
+    if(hx0<-112)continue;                        // nicht ins Meer
+    if(Math.hypot(hx0,hz0-146)<40)continue;      // nicht in den Seepark
     var hR=14+((h*7)%12);
     if(Math.abs(hx0)<RL/2+2+hR&&Math.abs(Math.abs(hz0)-(GH*CS/2+12))<5+hR)continue; // nicht auf Hauptstrassen
     if(Math.abs(Math.abs(hx0)-RX)<5+hR&&Math.abs(hz0)<78+hR)continue; // nicht auf Querstrassen
@@ -490,17 +543,22 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     var hue=new THREE.Mesh(new THREE.SphereGeometry(hR,14,8,0,6.283,0,Math.PI/2),hMat);
     hue.position.set(hx0,-3-((h*3)%4),hz0);
     hue.scale.y=0.32+((h%3)*0.06);hue.receiveShadow=true;scene.add(hue);}
-  // Blumenfelder (Cluster kleiner farbiger Punkte) auf der fernen Wiese
+  /* Blumenfelder — Definition hier, gestreut wird unten mit allen anderen Objekten ueber
+     freiPlatz(). Frueher pruefte diese Schleife NUR das Baugrundstueck: die Blumen landeten
+     mitten auf der Fahrbahn (User-Screenshot „ueberschneidung ... strasse"). */
   var BF=[0xff6b8a,0xffd93d,0xa66bff,0xff9f43,0xffffff];
-  for(var bf=0;bf<150;bf++){
-    var ba=Math.random()*6.283,br=(GW*CS/2+8)+Math.random()*55;
-    var cx0=Math.cos(ba)*br,cz0=Math.sin(ba)*br;
-    if(Math.abs(cx0)<GW*CS/2+4&&Math.abs(cz0)<GH*CS/2+4)continue; // nicht im Baubereich
-    var farbe=BF[(Math.random()*BF.length)|0];
-    var grp=new THREE.Group();
-    for(var b2=0;b2<6;b2++){var st=new THREE.Mesh(new THREE.CylinderGeometry(0.03,0.03,0.4,4),new THREE.MeshStandardMaterial({color:0x3a8a3a,roughness:0.9}));st.position.set((Math.random()-0.5)*1.4,0.2,(Math.random()-0.5)*1.4);grp.add(st);
-      var bl=new THREE.Mesh(new THREE.SphereGeometry(0.12,6,5),new THREE.MeshStandardMaterial({color:farbe,roughness:0.7,emissive:farbe,emissiveIntensity:0.12}));bl.position.set(st.position.x,0.42,st.position.z);grp.add(bl);}
-    grp.position.set(cx0,0,cz0);scene.add(grp);}
+  var _halmBG=new THREE.CylinderGeometry(0.03,0.03,0.4,4),
+      _halmBM=new THREE.MeshStandardMaterial({color:0x3a8a3a,roughness:0.9}),
+      _bluetG=new THREE.SphereGeometry(0.12,6,5),
+      _bluetM=BF.map(function(f){return new THREE.MeshStandardMaterial({color:f,roughness:0.7,emissive:f,emissiveIntensity:0.12});});
+  function blumenfeld(x,z){
+    var mi=(Math.random()*BF.length)|0,grp=new THREE.Group();
+    for(var b2=0;b2<6;b2++){
+      var st=new THREE.Mesh(_halmBG,_halmBM);
+      st.position.set((Math.random()-0.5)*1.4,0.2,(Math.random()-0.5)*1.4);grp.add(st);
+      var bl=new THREE.Mesh(_bluetG,_bluetM[mi]);
+      bl.position.set(st.position.x,0.42,st.position.z);grp.add(bl);}
+    grp.position.set(x,0,z);scene.add(grp);}
   // ---- Schönes animiertes Wasser: See mit Wellen ----
   window._wasser=[];
   function wasserMat(){return new THREE.MeshStandardMaterial({color:0x1f6bb0,roughness:0.06,metalness:0.45,transparent:true,opacity:0.92,envMapIntensity:0.9});}
@@ -562,7 +620,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       _heuM=new THREE.MeshStandardMaterial({color:0xd8c274,roughness:0.98,envMapIntensity:0.15}),
       _halmG=new THREE.CylinderGeometry(0.03,0.05,1,4),
       _halmM=new THREE.MeshStandardMaterial({color:0x8aa04a,roughness:0.95});
-  function baum2(x,z,k){var b=new THREE.Group();
+  function baum2(x,z,k){var _q=wegVonStrasse(x,z);x=_q[0];z=_q[1];var b=new THREE.Group();
     var st=new THREE.Mesh(_stammG,_stammM);st.position.y=0.9;b.add(st);
     for(var c=0;c<3;c++){var kr=new THREE.Mesh(_kronG[c],_kronM[c%2]);
       kr.position.set((c-1)*0.4,2.1+c*0.6,(c%2-0.5)*0.35);kr.castShadow=true;b.add(kr);}
@@ -574,15 +632,19 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
   /* 🌳 Freiflaechen-Test — eine Quelle fuer ALLE Streu-Objekte (User: „umgebung ist alles leer") */
   function freiPlatz(x,z,pad){
     pad=pad||0;
+    if(x<-116)return false;                                                    // Meer + Strand (Baeume standen im Wasser)
     if(Math.abs(x)<GW*CS/2+4+pad&&Math.abs(z)<GH*CS/2+6+pad)return false;      // Baugrundstueck
     if(Math.hypot(x,z-146)<24+pad)return false;                                // Seepark + Promenade
     if(Math.abs(Math.abs(z)-(GH*CS/2+12))<8+pad&&Math.abs(x)<RL/2+4)return false;  // Haupt-/Querstrassen
-    if(Math.abs(Math.abs(x)-RX)<8+pad&&Math.abs(z)<78)return false;
+    /* Querstrassen inkl. Zubringer bis zum Ring: die alte Grenze |z|<78 endete am
+       Strassenende, die Zubringer (z bis ±120) waren ungeschuetzt — dort standen dann
+       Blumen und Schilf auf dem Asphalt (User-Screenshot). */
+    if(Math.abs(Math.abs(x)-RX)<8+pad&&Math.abs(z)<122)return false;
     if(Math.abs(Math.abs(x)-112)<8+pad&&z>-108&&z<126)return false;             // Ringstrasse
     if((Math.abs(z+100)<8+pad||Math.abs(z-118)<8+pad)&&Math.abs(x)<120)return false;
     if(z>88&&z<118&&Math.abs(x)<80)return false;                               // Bahnhofsviertel
     if(z>62&&z<110&&x>-58&&x<8)return false;                                   // Altstadt-Suedviertel
-    if(Math.abs(z+91)<10&&x>-122&&x<82)return false;                           // Fluss im Norden
+    if(Math.abs(z+90.5)<10&&x>-122&&x<82)return false;                         // Fluss im Norden
     for(var q=0;q<WORLD_SOLIDS.length;q++){var sq=WORLD_SOLIDS[q];
       if(Math.abs(x-sq.x)<sq.hw+2.5+pad&&Math.abs(z-sq.z)<sq.hd+2.5+pad)return false;}
     return true;}
@@ -670,10 +732,10 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     })();
     (function ufer(){ /* weicher Rand statt harter Wasserkante */
       var uM=new THREE.MeshStandardMaterial({color:0x6f7a4e,roughness:1,envMapIntensity:0.18});
-      [-96.4,-85.6].forEach(function(uz){
+      [-94.6,-86.4].forEach(function(uz){
         var u=new THREE.Mesh(new THREE.PlaneGeometry(200,3.4),uM);
         u.rotation.x=-Math.PI/2;u.position.set(-20,-0.014,uz);u.receiveShadow=true;scene.add(u);});
-      for(var i=0;i<22;i++){var ux=-118+Math.random()*196,uz2=(Math.random()<0.5?-96.2:-85.8)+(Math.random()-0.5)*1.6;
+      for(var i=0;i<22;i++){var ux=-118+Math.random()*196,uz2=(Math.random()<0.5?-94.4:-86.6)+(Math.random()-0.5)*1.4;
         var k=0.3+Math.random()*0.5;
         var st=new THREE.Mesh(new THREE.DodecahedronGeometry(k,0),new THREE.MeshStandardMaterial({color:i%2?0x6a6558:0x565043,roughness:1}));
         st.position.set(ux,k*0.4,uz2);st.rotation.set(Math.random()*3,Math.random()*6,Math.random()*3);st.castShadow=true;scene.add(st);}
@@ -712,12 +774,17 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
         g.position.set(ax,0,az);g.rotation.y=(Math.random()-0.5)*0.08;scene.add(g);}
       addSolid(PX,PZ,PW+1,PD+1,{a:"z",at:PZ-PD/2-0.5,c:PX,w:PW});  /* offene Zufahrt an der Nordseite */
     })();
-    streu(130,GW*CS/2+8,GW*CS/2+120,function(x,z){baum2(x,z,0.7+Math.random()*1.1);},1);
-    streu(95,GW*CS/2+6,GW*CS/2+130,busch,0);
-    streu(45,GW*CS/2+10,GW*CS/2+135,findling,0);
-    streu(24,GW*CS/2+14,GW*CS/2+120,heuballen,1);
-    for(var sc9=0;sc9<26;sc9++){var sa9=sc9/26*6.283,sr9=22+Math.random()*6;
-      var sx9=-90+Math.cos(sa9)*sr9,sz9=80+Math.sin(sa9)*sr9;
+    /* 📱 Auf dem Handy zwei Drittel der Streu-Objekte — die Landschaft bleibt voll,
+       aber es sind hunderte Draw-Calls weniger. */
+    var _sf=(typeof _mobil!=="undefined"&&_mobil)?0.62:1;
+    function _n(v){return Math.round(v*_sf);}
+    streu(_n(130),GW*CS/2+8,GW*CS/2+120,function(x,z){baum2(x,z,0.7+Math.random()*1.1);},1);
+    streu(_n(150),GW*CS/2+8,GW*CS/2+70,blumenfeld,0);
+    streu(_n(95),GW*CS/2+6,GW*CS/2+130,busch,0);
+    streu(_n(45),GW*CS/2+10,GW*CS/2+135,findling,0);
+    streu(_n(24),GW*CS/2+14,GW*CS/2+120,heuballen,1);
+    for(var sc9=0;sc9<26;sc9++){var sa9=sc9/26*6.283,sr9=19+Math.random()*4;
+      var sx9=0+Math.cos(sa9)*sr9,sz9=146+Math.sin(sa9)*sr9;   /* mit dem See mitgezogen */
       if(freiPlatz(sx9,sz9,0))schilf(sx9,sz9);}
   }
   if(document.readyState==="complete")setTimeout(_streuStart,60);
@@ -726,7 +793,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
   /* 🛣️ Der Fluss lag bei z=-96 (Band -104..-88) und ueberdeckte damit die komplette
      Nord-Ringstrasse (Band -104.5..-95.5) — man fuhr durchs Wasser. Jetzt in den freien
      Korridor zwischen Ring und Kathedralenviertel, und nicht mehr bis zur Lagerhalle im Osten. */
-  machWasser(200,8,-20,-91,32);
+  machWasser(200,7,-20,-90.5,32);
   // ---- Brücke über den Fluss ----
   (function bruecke(){var g=new THREE.Group();
     var deck=new THREE.Mesh(new THREE.BoxGeometry(9,0.6,14),stdMat(0x8a7358,0.8));deck.position.y=2.4;deck.castShadow=true;g.add(deck);
@@ -734,7 +801,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       for(var pz=-6;pz<=6;pz+=3){var pf=new THREE.Mesh(new THREE.CylinderGeometry(0.16,0.2,2.6,7),stdMat(0x6a5236,0.8));pf.position.set(sx,1.1,pz);g.add(pf);}});
     [[-5.5],[5.5]].forEach(function(bp){[-3.5,3.5].forEach(function(sx){var bo=new THREE.Mesh(new THREE.CylinderGeometry(0.4,0.5,2.6,8),stdMat(0x8a8a88,0.8));bo.position.set(sx,1.2,bp[0]);g.add(bo);});});
     var bogen=new THREE.Mesh(new THREE.TorusGeometry(4.5,0.5,8,16,Math.PI),stdMat(0x9a9a98,0.8));bogen.position.set(0,0.2,0);bogen.rotation.y=Math.PI/2;g.add(bogen);
-    g.position.set(0,0,-91);scene.add(g);})();
+    g.position.set(0,0,-90.5);scene.add(g);})();
   // ---- Gleis am Stadtrand (Süden) ----
   (function gleis(){var g=new THREE.Group();
     for(var s3=-120;s3<120;s3+=2.2){var schw=new THREE.Mesh(new THREE.BoxGeometry(3.4,0.16,0.6),stdMat(0x5a4230,0.85));schw.position.set(s3,0.08,0);g.add(schw);}
@@ -851,8 +918,30 @@ var strMatH=stdMat(0x4a4a53,0.92),strMatV=stdMat(0x4a4a53,0.92);
     p.position.set(px,(BY-1.2)/2,-30);p.castShadow=true;scene.add(p);
     var bo=new THREE.Mesh(new THREE.BoxGeometry(2.6,0.5,4.2),betMat(0x8a857c,0.9));bo.position.set(px,BY-0.4,-30);scene.add(bo);}
   /* Rampe zur Küste */
-  var ramp=new THREE.Mesh(new THREE.BoxGeometry(18,0.5,3.6),betMat(0x9a948a,0.85));
-  ramp.position.set(BX0+8,BY/2,-30);ramp.rotation.z=Math.atan2(BY,18);scene.add(ramp);
+  /* Die abfallende Rampe endete frueher in der Luft — die Strecke bleibt jetzt auf
+     Deckhoehe und verschwindet im Tunnelportal (siehe unten). */
+  /* 🚇 Die Bruecke endete bisher an der Kueste im Nichts (User: „eisenbahn hoert einfach auf").
+     Jetzt laeuft das Gleis ueber einen Damm in ein Tunnelportal im Huegel — die Strecke hat
+     damit ein sichtbares Ziel, statt in der Luft abzubrechen. */
+  (function tunnel(){
+    /* Zwischen Strand (bis x=-121) und Ringstrasse (ab x=-116.5) liegt kaum Land — ein Damm
+       an Land wuerde sofort die Ringstrasse und den Bauernhof ueberdecken. Das Portal sitzt
+       deshalb in einer Felsinsel IM Wasser, kurz vor dem Brueckenkopf: die Strecke verschwindet
+       sichtbar im Berg, statt in der Luft abzureissen. */
+    var felsM=new THREE.MeshStandardMaterial({color:0x7d7468,roughness:1,flatShading:true,envMapIntensity:0.2});
+    var hue=new THREE.Mesh(new THREE.SphereGeometry(11,12,8,0,6.283,0,Math.PI/2),felsM);
+    hue.position.set(BX0-14,-2,-30);hue.scale.set(1.25,1.15,1.35);hue.receiveShadow=true;scene.add(hue);
+    var pM=betMat(0x9a948a,0.9);
+    var por=new THREE.Group();
+    var wand=new THREE.Mesh(new THREE.BoxGeometry(1.6,7,11),pM);wand.position.set(0,3.5,0);por.add(wand);
+    var loch=new THREE.Mesh(new THREE.BoxGeometry(2.2,4.2,4.4),new THREE.MeshBasicMaterial({color:0x14161a}));
+    loch.position.set(0.3,2.3,0);por.add(loch);
+    var bog=new THREE.Mesh(new THREE.TorusGeometry(2.2,0.35,8,14,Math.PI),pM);
+    bog.position.set(-0.85,4.4,0);bog.rotation.y=Math.PI/2;por.add(bog);
+    por.position.set(BX0-25,BY-3.2,-30);  /* Westflanke des Felsens: von dort kommt die Bruecke */por.traverse(function(n){if(n.isMesh)n.castShadow=true;});scene.add(por);
+    /* Ein eigenes Gleisstueck braucht es nicht — die Brueckenschienen laufen ohnehin
+       bis unter den Felsen und enden im Portal. */
+  })();
   /* 🚂 Zug: Lok + 3 Wagen, pendelt über die Brücke */
   var zug=new THREE.Group();
   function wagen(c,ln){var w=new THREE.Group();
@@ -941,15 +1030,15 @@ var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_d
       p.receiveShadow=true;scene.add(p);}}
   // Alle 4 Arme jeder Kreuzung, nah an der Ecke (echtes Stadtbild)
   [[RX,SZ9+12],[RX,-(SZ9+12)],[-RX,SZ9+12],[-RX,-(SZ9+12)]].forEach(function(K){
-    zebra(K[0]-7.1,K[1],true);zebra(K[0]+7.1,K[1],true);
-    zebra(K[0],K[1]-7.0,false);zebra(K[0],K[1]+7.0,false);}); // etwas Luft zur Ecke, deckt weiter die Lauflinien
+    zebra(K[0]-16,K[1],true);zebra(K[0]+16,K[1],true);
+    zebra(K[0],K[1]-16,false);zebra(K[0],K[1]+16,false);}); // 7 -> 16: die vier Uebergaenge trafen sich fast in der Kreuzungsmitte
   // Haltelinien vor den Ampeln (je Fahrspur, hinter dem Zebra)
   function halte(x,z,quer){var hl=new THREE.Mesh(new THREE.PlaneGeometry(quer?0.5:4.6,quer?4.6:0.5),zMat);
     hl.rotation.x=-Math.PI/2;hl.position.set(x,0.009,z);scene.add(hl);}
   [[RX,SZ9+12],[RX,-(SZ9+12)],[-RX,SZ9+12],[-RX,-(SZ9+12)]].forEach(function(K){
     var so=K[1]>0?2.5:-2.5;
-    halte(K[0]-10.5,K[1]+so,true);halte(K[0]+10.5,K[1]-so,true); // mit Luecke hinter dem Zebra
-    halte(K[0]-2.5,K[1]-10.4,false);halte(K[0]+2.5,K[1]+10.4,false);}); // beide Quer-Anfahrten
+    halte(K[0]-19.5,K[1]+so,true);halte(K[0]+19.5,K[1]-so,true); // mit Luecke hinter dem Zebra
+    halte(K[0]-2.5,K[1]-19.5,false);halte(K[0]+2.5,K[1]+19.5,false);}); // beide Quer-Anfahrten
 })();
 if(THREE.GLTFLoader){["lp_tree.glb"].forEach(function(){
   new THREE.GLTFLoader().load("/models/lp_tree.glb",function(g){
@@ -1082,6 +1171,7 @@ var dorfFenster=[];
   var WANDF=[0xf2e4c8,0xe8d0b0,0xd8e0e8,0xf0d8d8,0xe0e8d0,0xf4ead4,0xd8c8e0,0xe8e2d0];
   var DACHF=[0x8a4a3a,0x5a5a64,0x7a5a40,0x4a5a6a,0x9a5a4a,0x6a6a58];
   function haus(x,z,rotY,seed){
+    var _q=wegVonStrasse(x,z);x=_q[0];z=_q[1];
     var g=new THREE.Group();
     var w=4+(seed%3),d=3.6+((seed*7)%2),h=2.3+((seed*3)%2)*0.5;
     var wandC=WANDF[seed%WANDF.length],dachC=DACHF[seed%DACHF.length];
@@ -1177,12 +1267,16 @@ var dorfFenster=[];
     }
     g.position.set(xs,0,z);g.rotation.y=rotY;scene.add(g);}
   // Nord- und Suedfront schliessen (die Streusiedlungs-Luecken)
-  stadtzeile(-64,-SZ-23.5,3,0);stadtzeile(42,-SZ-23.5,3,0);
-  stadtzeile(-52,SZ+23.5,3,Math.PI); // Sued-Ost bleibt frei: dort ist der Marktplatz
+  /* 📏 23.5 -> 31: die Zeilen standen fast auf dem Trottoir (User-Screenshot).
+     Jetzt ~7 m Vorgarten-Streifen zwischen Gehwegkante und Bauflucht. */
+  stadtzeile(-64,-SZ-31,3,0);stadtzeile(42,-SZ-31,3,0);
+  stadtzeile(-52,SZ+31,3,Math.PI); // Sued-Ost bleibt frei: dort ist der Marktplatz
   // Haeuserzeilen: hinter Nord-/Suedstrasse + entlang der Querstrassen
   var seed=1;
-  [-38,-26,-14,-2,10,22,34].forEach(function(hx){haus(hx+((seed*3)%3),-SZ-23.5,0,seed++);});
-  [-38,14,20].forEach(function(hx){haus(hx,SZ+23.5,Math.PI,seed++);}); // -20/34 raus: Wirtshaus + Marktplatz brauchen den Platz
+  [-38,-26,-14,-2,10,22,34].forEach(function(hx){haus(hx+((seed*3)%3),-SZ-31,0,seed++);});
+  [64].forEach(function(hx){haus(hx,SZ+31,Math.PI,seed++);}); /* Die Suedseite ist inzwischen
+     Stadtzentrum (Altstadt, Ladenzeile, Rathaus, Marktplatz, Park) — dort ist nur noch ein
+     Bauplatz frei. Wohnen findet im Norden statt, das gibt beiden Seiten Luft. */ // -20/34 raus: Wirtshaus + Marktplatz brauchen den Platz
   [-42,-24,2,20,44].forEach(function(hz){haus(-(RX+11),hz,Math.PI/2,seed++);});
   [-44,-26,4,22,40].forEach(function(hz){haus(RX+11,hz,-Math.PI/2,seed++);}); // zwischen den Hauptstrassen: nichts ragt in Fahrbahn/Gehweg
   // Vorgaerten: Plattenweg zur Tuer + Hecken + Blumen (Haeuser wirkten wegelos im Gras)
@@ -1200,10 +1294,23 @@ var dorfFenster=[];
       bl.position.set(hx+(b9-1)*1.5,0.18,hz+dir*3.6);scene.add(bl);
       var st9=new THREE.Mesh(new THREE.CylinderGeometry(0.02,0.03,0.22,4),heckM);
       st9.position.set(bl.position.x,0.09,bl.position.z);scene.add(st9);}}
-  [-38,-26,-14,-2,10,22,34].forEach(function(hx){vorgarten(hx,-SZ-23.5,1);});  // Nordreihe -> Strasse im Sueden(+z)
-  [-38,-20,20,34].forEach(function(hx){vorgarten(hx,SZ+23.5,-1);});           // Suedreihe -> Strasse im Norden(-z)
+  [-38,-26,-14,-2,10,22,34].forEach(function(hx){vorgarten(hx,-SZ-31,1);});    // Nordreihe -> Strasse im Sueden(+z)
+  [64].forEach(function(hx){vorgarten(hx,SZ+31,-1);});             // Suedreihe -> Strasse im Norden(-z)
+  /* 🚶 Hinterhof-Gehweg zwischen Haeuserzeile (±(SZ+31)) und 2. Reihe (±(SZ+47)):
+     der Streifen dazwischen war blanke Wiese (User: „hinten auch ... gehweg?"). */
+  (function hinterweg(){
+    var wM=stdMat(0xd0cdc4,0.9);
+    if(typeof ladeTex==="function")ladeTex("textures/th5/kopfstein.png",30,1,function(t){wM.map=t;wM.color.setHex(0xffffff);wM.needsUpdate=true;});
+    [-(SZ+39),SZ+39].forEach(function(wz){
+      var w=new THREE.Mesh(new THREE.PlaneGeometry(96,2.4),wM);
+      w.rotation.x=-Math.PI/2;w.position.set(-4,0.006,wz);w.receiveShadow=true;scene.add(w);});
+    /* Quer-Verbindungen zur Hauptstrasse, damit der Weg nicht ins Leere laeuft */
+    [-46,-4,38].forEach(function(wx){[-1,1].forEach(function(sg){
+      var q=new THREE.Mesh(new THREE.PlaneGeometry(2.4,16),wM.clone());
+      q.rotation.x=-Math.PI/2;q.position.set(wx,0.006,sg*(SZ+31));q.receiveShadow=true;scene.add(q);});});
+  })();
   // Baeume + Hecken + Laternen
-  function baum(x,z,k){var b=new THREE.Group();
+  function baum(x,z,k){var _q=wegVonStrasse(x,z);x=_q[0];z=_q[1];var b=new THREE.Group();
     var st4=new THREE.Mesh(new THREE.CylinderGeometry(0.14,0.2,1.4,7),stdMat(0x6a4a30,0.8));st4.position.y=0.7;b.add(st4);
     for(var c4=0;c4<3;c4++){var kr=new THREE.Mesh(new THREE.SphereGeometry(0.85-c4*0.16,9,7),stdMat(c4%2?0x3a7a3a:0x4a8a44,0.7));
       kr.position.set((c4-1)*0.35,1.7+c4*0.5,(c4%2-0.5)*0.3);kr.castShadow=true;b.add(kr);}
@@ -1232,6 +1339,7 @@ var dorfFenster=[];
       _balkM=new THREE.MeshStandardMaterial({color:0xcfe4ee,transparent:true,opacity:0.45,roughness:0.2}),
       _rahmM=stdMat(0x5a544c,0.7),_plattM=betMat(0xb8b2a6,0.8);
   function block(x,z,rotY,etagen,w,d,farbe){
+    var _q=wegVonStrasse(x,z);x=_q[0];z=_q[1];
     var g=new THREE.Group();
     var h=etagen*1.9+0.4;
     var blkM=stdMat(farbe,0.88);blkM.map=putzTex(w/2.6,h/2.6);(window._wandMats=window._wandMats||[]).push(blkM);
@@ -1270,10 +1378,12 @@ var dorfFenster=[];
         var b2=new THREE.Mesh(_balkSG,_balkM);b2.position.set(fx9+0.68,1.0+e9*1.9,d/2+0.42);g.add(b2);}}
     g.position.set(x,0,z);g.rotation.y=rotY;scene.add(g);addSolidRot(x,z,w+0.4,d+0.4,rotY,null);} /* 🧱 Wohnblock solide */
   // Wohnbloecke hinter der Nordstrasse (2. Reihe) + Osten/Westen
-  block(-30,-SZ-32,0,3,10,7,0xcfc4b0);block(-14,-SZ-33,0,4,9,7,0xb8c0c8);
-  block(4,-SZ-32,0,3,11,7,0xd8cabc);block(22,-SZ-33,0,4,8,7,0xc4b8a8);
+  /* 📏 2. Reihe von -SZ-32/33 auf -SZ-47/48: die Haeuserzeile ist nach hinten gerueckt,
+     dazwischen liegt jetzt der Hinterhof-Weg (User: „hinten auch mehr abstand ... und gehweg"). */
+  block(-30,-SZ-47,0,3,10,7,0xcfc4b0);block(-14,-SZ-48,0,4,9,7,0xb8c0c8);
+  block(4,-SZ-47,0,3,11,7,0xd8cabc);block(22,-SZ-48,0,4,8,7,0xc4b8a8);
   block(-92,-72,Math.PI/2,3,12,7,0xccc2b4);block(92,90,-Math.PI/2,4,10,7,0xbec6cc); // hinter die Querstrassen (±78); z verschoben, steckte in den Reihenhaeusern
-  block(-60,SZ+26,Math.PI/2,3,9,7,0xd0c8ba);block(60,SZ+28,-Math.PI/2,3,9,7,0xc8bcae);
+  block(-60,SZ+42,Math.PI/2,3,9,7,0xd0c8ba);block(60,SZ+44,-Math.PI/2,3,9,7,0xc8bcae);
   // Kirche mit Turm + Spitze
   (function(){var g=new THREE.Group();
     var kirchM=stdMat(0xe8e2d4,0.85);
@@ -1350,7 +1460,7 @@ var dorfFenster=[];
     tonne.position.set(2.2+((i%2)*0.4),0.48,-3.1);tonne.castShadow=true;g.add(tonne);
     if(i%2===0){var ki9=new THREE.Mesh(new THREE.BoxGeometry(0.6,0.5,0.6),stdMat(0x9a7a4a,0.85));
       ki9.position.set(-2.2,0.25,-3.05);ki9.rotation.y=0.4+i;ki9.castShadow=true;g.add(ki9);}
-    g.position.set(sh[0],0,SZ+24.5);g.rotation.y=Math.PI;scene.add(g);}); // weiter zurueck: Front nicht mehr aufs Trottoir
+    g.position.set(sh[0],0,SZ+32);g.rotation.y=Math.PI;scene.add(g);}); // 24.5 -> 32: Front stand quasi auf dem Trottoir
   // ---- Skyline: Wolkenkratzer mit Glasfassade (weit draußen) ----
   // Fassaden-Kachel (1 Etage, 3 Fenster) als Textur: Tag = dunkles Glas in warmgrauer Wand,
   // Nacht = warme Fenster via separater Emissive-Map (nur einmal erzeugen, alle Tuerme teilen sie)
@@ -1367,7 +1477,7 @@ var dorfFenster=[];
       return new THREE.CanvasTexture(cv);}
     _twTex=mk("#2c3a46","#b8b4ac",true);_twEmi=mk("#ffffff","#000000",false);
     [_twTex,_twEmi].forEach(function(t){t.wrapS=t.wrapT=THREE.RepeatWrapping;});}
-  function turm(x,z,etagen,w,farbe){
+  function turm(x,z,etagen,w,farbe){var _q=wegVonStrasse(x,z);x=_q[0];z=_q[1];
     _turmTexes();
     var g=new THREE.Group();var h=etagen*2.0+1;
     var tex=_twTex.clone(),emi=_twEmi.clone();tex.needsUpdate=emi.needsUpdate=true;
@@ -1397,7 +1507,7 @@ var dorfFenster=[];
     var zaunM=betMat(0xe8e4da,0.8),einfM=betMat(0xb6b2a8,0.9);
     if(!_texBlatt)_texBlatt=_strukTex("blatt");
     var heckM=new THREE.MeshStandardMaterial({color:0x4a7a42,roughness:0.95,map:_texBlatt});
-    function villa(x,z,rotY,dachC){
+    function villa(x,z,rotY,dachC){var _q=wegVonStrasse(x,z);x=_q[0];z=_q[1];
       var g=new THREE.Group();
       // Haus: 2 Etagen + Walmdach
       var korp=new THREE.Mesh(new THREE.BoxGeometry(8,5.2,6.4),vilM);
@@ -1690,7 +1800,9 @@ var dorfFenster=[];
           new THREE.MeshStandardMaterial({color:0x203038,emissive:0x4affc0,emissiveIntensity:0.5,roughness:0.2}));
         di.position.set(zp[0],1.2,zp[1]+0.58);g.add(di);
         var sc=new THREE.Mesh(new THREE.BoxGeometry(0.12,0.5,0.12),stdMat(0x2a2a30,0.5));sc.position.set(zp[0]+0.42,1.05,zp[1]);g.add(sc);});
-      g.position.set(92,0,-62);scene.add(g);
+      g.position.set(92,0,-74);scene.add(g);   /* 🛣️ war z=-62: der 16x12-Vorplatz ragte 7 m in die
+         Hauptstrasse (Band -63..-53), das Vordach stand ueber der Fahrbahn (User-Screenshot). */
+      addSolid(92,-74,7,5,{a:"z",at:-71.4,c:88,w:3.0});   /* 🧱 Kiosk der Tankstelle solide */
     })();
     // ---- BAUSTELLE mit Kran (die Stadt waechst) ----
     (function baustelle(){
@@ -2069,7 +2181,9 @@ setTimeout(function baueTiere(){
 // ---- Echte Gebaeude (Kenney/CC0 bd_*.glb aus der Repo-Bibliothek) ----
 setTimeout(function baueGebaeude(){
   if(!GL)return;
-  function bau(file,zielH,x,y,z,rotY,center,cb){GL.load("/models/"+file,function(g){var root=g.scene;
+  function bau(file,zielH,x,y,z,rotY,center,cb,ohneSchutz){
+    if(!ohneSchutz){var _q=wegVonStrasse(x,z);x=_q[0];z=_q[1];}
+    GL.load("/models/"+file,function(g){var root=g.scene;
     var bb=new THREE.Box3().setFromObject(root),sz=new THREE.Vector3();bb.getSize(sz);
     root.scale.setScalar(zielH/(sz.y||1));
     var b2=new THREE.Box3().setFromObject(root);
@@ -2098,7 +2212,7 @@ setTimeout(function baueGebaeude(){
   bau("th3_wippe.glb",1.25,91,0,2,Math.PI/2,false);
   bau("th3_karussell.glb",1.3,100,0,5,0,false);
   // Markt-Platz (Suedzeile)
-  bau("th3_marktstand.glb",1.7,62,0,86,Math.PI,false);bau("th3_marktstand.glb",1.7,74,0,86,Math.PI,false); /* 🌳 Markt in den PARK verlegt */
+  bau("th3_marktstand.glb",1.35,62,0,86,Math.PI,false);bau("th3_marktstand.glb",1.35,74,0,86,Math.PI,false); /* 🌳 Markt in den PARK verlegt */
   (function riesenPark(){ /* 🌳 W2a: grosser Park rund um den Markt-Platz */
     var pb=new THREE.Mesh(new THREE.PlaneGeometry(36,18),betMat(0xcfc8b8,0.9));
     pb.rotation.x=-Math.PI/2;pb.position.set(68,-0.008,87);pb.receiveShadow=true;scene.add(pb);
@@ -2121,7 +2235,7 @@ setTimeout(function baueGebaeude(){
     bau("th5_ortsschild.glb",2.4,64,0,58,Math.PI,false);
     bau("th5_telefonzelle.glb",2.7,73,0,57,Math.PI,false);
     bau("th5_poller.glb",1.05,68,0,56,0,false);
-    bau("th5_marktstand.glb",1.9,48,0,86,-Math.PI/2,false);
+    bau("th5_marktstand.glb",1.5,48,0,86,-Math.PI/2,false);
     /* ── th6: Stadt-Kleinzeug ── */
     bau("th6_papierkorb.glb",0.9,58,0,80,0,false);bau("th6_papierkorb.glb",0.9,78,0,88,0,false);
     bau("th6_blumenkuebel.glb",0.7,60,0,79,0,false);bau("th6_blumenkuebel.glb",0.7,76,0,79,0,false);
@@ -2157,7 +2271,7 @@ setTimeout(function baueGebaeude(){
     addSolid(-58,-78,27,15,{a:"x",at:-71.5,c:-78,w:4.0});   /* Kathedrale: Portal -x (rot=PI/2) */
     /* 🧱 Runde 2: restliche feste Gebaeude solide machen (User "polish alles") */
     addSolid(64,-79,7.4,11.4,{a:"z",at:-73.3,c:64,w:2.2});   /* Dorf-Kirche (RX-14,-SZ-33), Tuer Sued */
-    [[-8,0],[-1,0],[6,0]].forEach(function(_s){addSolid(_s[0],70.5,6.8,5.4,{a:"z",at:67.8,c:_s[0]+2.35,w:2.0});}); /* Ladenzeile (SZ+24.5): Eingang rechts vorn */
+    [[-8,0],[-1,0],[6,0]].forEach(function(_s){addSolid(_s[0],78,6.8,5.4,{a:"z",at:75.3,c:_s[0]+2.35,w:2.0});}); /* Ladenzeile (SZ+32): Eingang rechts vorn */
     [[96,-22],[96,-44]].forEach(function(v){addSolid(v[0],v[1],6.8,8.4,{a:"x",at:v[0]-3.4,c:v[1],w:2.4});});  /* Ost-Villen: Tuer nach Westen (zur Strasse) */
     [[-96,8],[-96,28]].forEach(function(v){addSolid(v[0],v[1],6.8,8.4,{a:"x",at:v[0]+3.4,c:v[1],w:2.4});});   /* West-Villen: Tuer nach Osten */
     addSolid(0,102,26,11,{a:"z",at:96.5,c:0,w:6.0});         /* Bahnhof: Empfangsseite zur Stadt */
@@ -2288,6 +2402,51 @@ setTimeout(function baueGebaeude(){
   bau("th4_bruecke.glb",1.1,-3,0,135.5,Math.PI/2,false);
   bau("th4_schwan.glb",0.75,-5,-0.02,140,0.6,false);
   bau("th4_sonnenschirm.glb",2.4,13,0,135,0.4,false);bau("th4_sonnenschirm.glb",2.4,94,0,-13,1.2,false);
+  /* ─────────── 🎡 MEHR DETAILS aus der Modell-Bibliothek (User: „umgebung wie echt,
+     mehr details und stl"). Von 681 Modellen lagen ~600 ungenutzt herum. Positionen per
+     Freiflaechen-Solver gegen Strassen, Grundstueck, Fluss, Seepark und alle Kollider. ── */
+  // Spielplatz + Park-Ausstattung im grossen Park
+  bau("th16_spielturm.glb",4.2,88,0,72,5.9,false);
+  bau("th16_schaukel.glb",2.6,66,0,84,4.0,false);
+  bau("th16_wippe.glb",1.0,46,0,72,5.1,false);
+  bau("th16_sandkasten.glb",0.5,56,0,84,2.3,false);
+  bau("th16_karussell_klein.glb",2.2,88,0,80,5.6,false);
+  bau("th16_blumenbeet.glb",0.6,96,0,68,0.2,false);
+  // Seepark: Pavillon, Beete, Grillplatz, Birken, Spielecke
+  bau("th16_pavillon.glb",4.0,8,0,174,2.6,false);
+  bau("th16_blumenbeet.glb",0.6,-26,0,164,0.6,false);
+  bau("th16_blumenbeet.glb",0.6,22,0,132,0.4,false);
+  bau("th16_grillplatz.glb",1.1,28,0,172,0.8,false);
+  bau("th16_baum_birke.glb",6.5,-26,0,176,3.9,false);
+  bau("th16_baum_birke.glb",6.0,32,0,156,5.9,false);
+  bau("th16_sandkasten.glb",0.5,26,0,142,0.3,false);
+  bau("th16_schaukel.glb",2.6,-22,0,128,0.3,false);
+  // Bauernhof-Umfeld: Silo, Traktor, Anhaenger, Wassertank, Heuballen
+  bau("th18_silo.glb",8.0,-98,0,-20,1.2,false);addSolid(-98,-20,4.4,4.4,null);        /* 🧱 Silo solide */
+  bau("th18_wassertank.glb",3.0,-102,0,-32,3.6,false);addSolid(-102,-32,3.0,3.0,null); /* 🧱 Wassertank solide */
+  bau("th18_traktor.glb",2.8,-90,0,-34,1.9,false);
+  bau("th18_anhaenger.glb",1.8,-98,0,-26,4.2,false);
+  bau("th18_heuballen.glb",1.5,-100,0,-70,1.8,false);
+  bau("th18_heuballen.glb",1.5,-100,0,-42,3.4,false);
+  /* Stadt-Moeblierung an den vier Hauptkreuzungen (±RX, ±(SZ+12)) — Ampeln standen
+     bisher nur als prozedurale Behelfe da, Litfasssaeulen fehlten ganz. */
+  (function kreuzungen(){
+    var SZk=GH*CS/2+12;
+    [[RX,SZk],[RX,-SZk],[-RX,SZk],[-RX,-SZk]].forEach(function(K,i){
+      var sx=K[0]>0?-1:1,sz=K[1]>0?-1:1;
+      bau("th6_ampel.glb",3.4,K[0]+sx*6.4,0,K[1]+sz*6.4,i*1.57,false);
+      if(i%2===0)bau("th6_litfasssaeule.glb",3.0,K[0]-sx*6.4,0,K[1]+sz*6.4,0,false);});
+  })();
+  /* 🚂 Bahnuebergang: die Gleise bei z=112 kreuzten die Zubringer bei x=±78 ohne alles —
+     jetzt Signalmasten beidseits, dazu Oberleitung und eine Tramhaltestelle am Bahnhof. */
+  [78,-78].forEach(function(gx){
+    bau("th17_signal.glb",3.2,gx-6.5,0,108.5,0,false,null,true);
+    bau("th17_signal.glb",3.2,gx+6.5,0,107.5,Math.PI,false,null,true);});
+  /* Gleis z=112, Ringstrasse z=118 (Band 113.5..122.5) — Masten auf die Suedseite,
+     sonst stehen sie in der Fahrbahn. */
+  for(var om=0;om<7;om++)bau("th17_oberleitungsmast.glb",7.5,-108+om*36,0,108.5,0,false,null,true);
+  bau("th17_tramhaltestelle.glb",3.0,-20,0,108,Math.PI,false,null,true);
+
 },0);
 function updTiere(dt,now){var M9=window._muehle;if(M9)M9.rotation.z+=dt*1.1;
   var T=window._tiere;if(!T)return;
