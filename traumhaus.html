@@ -2031,12 +2031,22 @@ function mkLicht(kind){if(!_lichtTexW){_lichtTexW=_glowTex("#fff6d0","rgba(255,2
   var sc=kind==="r"?0.75:1.0;sp.scale.set(sc,sc,1);scene.add(sp);return sp;}
 setTimeout(function baueVerkehr(){
   var SZ=GH*CS/2;
+  /* 🚗 Mehr Verkehr (User): Die Hauptstrassen sind jetzt 16 m breit und tragen je Richtung
+     zwei Spuren; dazu faehrt Verkehr auf der Ringstrasse. Vorher 6 Routen, jetzt 14.
+     Spurlagen: Mitte 58, Fahrbahn ±8, Parkstreifen ab ±6.4 -> Spuren bei ±2 und ±5. */
   var ROUTEN=[
-    {axis:"x",z:SZ+14.5,dir:1,speed:5},{axis:"x",z:SZ+9.5,dir:-1,speed:4.5},
-    {axis:"x",z:-SZ-14.5,dir:1,speed:5.5},{axis:"x",z:-SZ-9.5,dir:-1,speed:4.8},
-    {axis:"z",x:-(RX+2.5),dir:1,speed:4.5},{axis:"z",x:RX+2.5,dir:-1,speed:5}];
+    {axis:"x",z:SZ+14,dir:1,speed:5.2},{axis:"x",z:SZ+17,dir:1,speed:6.4},
+    {axis:"x",z:SZ+10,dir:-1,speed:4.6},{axis:"x",z:SZ+7,dir:-1,speed:5.8},
+    {axis:"x",z:-SZ-14,dir:1,speed:5.5},{axis:"x",z:-SZ-17,dir:1,speed:6.6},
+    {axis:"x",z:-SZ-10,dir:-1,speed:4.8},{axis:"x",z:-SZ-7,dir:-1,speed:6.0},
+    {axis:"z",x:-(RX+2.5),dir:1,speed:4.5},{axis:"z",x:-(RX-2.5),dir:-1,speed:5.1},
+    {axis:"z",x:RX+2.5,dir:-1,speed:5},{axis:"z",x:RX-2.5,dir:1,speed:4.4},
+    {axis:"z",x:-109.5,dir:1,speed:7.0},{axis:"z",x:114.5,dir:-1,speed:7.2}];
   var TINT=[0xffffff,0xd84a3a,0x3a6ad8,0x4aa05a,0xe8c43a,0x8a5ac8];
-  var _IDS=[];for(var _q=0;_q<22;_q++)_IDS.push("auto_kombi");
+    /* 📱 Jedes Auto ist ein GLB-Klon mit ~8k Dreiecken — 34 Stueck sind ~270k. Auf dem Handy
+     darum 20 statt 34; die Strassen wirken trotzdem belebt. */
+  var _AN=(typeof _mobil!=="undefined"&&_mobil)?20:34;
+  var _IDS=[];for(var _q=0;_q<_AN;_q++)_IDS.push("auto_kombi");
   /* ⚡ Der Verkehr zog frueher alle drei Auto-Modelle (~7 MB) in den kritischen Ladepfad —
      zusammen mit den Bewohner-Modellen die groessten Dateien der Seite. Jetzt nur noch der
      Kombi (1,9 MB); die 6 Farbtoene sorgen weiter fuer Abwechslung, Van und Flitzer bleiben
@@ -2050,7 +2060,7 @@ setTimeout(function baueVerkehr(){
       m.scale.setScalar(3.9/(Math.max(sz.x,sz.z)||1));
       var b2=new THREE.Box3().setFromObject(m);
       var r=ROUTEN[i%ROUTEN.length];
-      var _pr=Math.floor(i/ROUTEN.length),_np=Math.ceil(22/ROUTEN.length);
+      var _pr=Math.floor(i/ROUTEN.length),_np=Math.ceil(_AN/ROUTEN.length);
       var rec={mesh:m,route:r,pos:-150+((_pr+0.5)/_np)*300+((i*37)%17)-8,homeY:-b2.min.y+0.01,speed:r.speed*(0.82+((i*13)%9)*0.045)};
       rec.kopf=[mkLicht("w"),mkLicht("w")];rec.heck=[mkLicht("r"),mkLicht("r")];
       scene.add(m);verkehr.push(rec);});});
@@ -2177,12 +2187,18 @@ function updVerkehr(dt){
     v.pos+=v.route.dir*(v.speed||v.route.speed)*dt;
     var lim=(v.route.axis==="x"?GW*CS/2:GH*CS/2)+80; // weit außerhalb der Sicht (im Dunst) umkehren
     if(v.pos>lim)v.pos=-lim;if(v.pos<-lim)v.pos=lim;
-    // an roter/gelber Ampel vor der Kreuzung halten (Haltelinie beim Überfahren clampen)
-    if(ampRed(v.route.axis)){ // Haltelinien vor JEDER Kreuzung der Fahrtrichtung
-      var ctrs=v.route.axis==="x"?[RX,-RX]:[GH*CS/2+12,-(GH*CS/2+12)],off=v.route.axis==="x"?7:7.5;
+    /* 🚦 Verkehrsregeln: an Rot/Gelb vor der Haltelinie stehen bleiben UND Abstand zum
+       Vordermann halten. Vorher wurde die Position hart auf die Haltelinie geklemmt —
+       Autos sprangen dadurch und fuhren ineinander. */
+    if(ampRed(v.route.axis)){
+      var ctrs=v.route.axis==="x"?[RX,-RX]:[GH*CS/2+12,-(GH*CS/2+12)],off=v.route.axis==="x"?9.5:11;
       for(var ci=0;ci<2;ci++){var sl=ctrs[ci]-v.route.dir*off;
         if(v.route.dir>0){if(_pv<=sl&&v.pos>sl)v.pos=sl;}
         else{if(_pv>=sl&&v.pos<sl)v.pos=sl;}}}
+    for(var vi=0;vi<verkehr.length;vi++){        // Sicherheitsabstand auf derselben Spur
+      var o=verkehr[vi];if(o===v||o===driveCar||o.route!==v.route)continue;
+      var gap=(o.pos-v.pos)*v.route.dir;
+      if(gap>0&&gap<7.5){v.pos=o.pos-v.route.dir*7.5;break;}}
     var px,pz,fx=0,fz=0;
     // Modell-Vorderachse ist +x -> Rotation entsprechend (vorher 90° verdreht = seitwaerts)
     if(v.route.axis==="x"){px=v.pos;pz=v.route.z;fx=v.route.dir;v.mesh.position.set(px,v.homeY,pz);v.mesh.rotation.y=v.route.dir>0?0:Math.PI;}
