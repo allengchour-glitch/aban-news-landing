@@ -40,7 +40,9 @@ canvas{display:block}
 .needs .nrow{display:flex;align-items:center;gap:5px}
 .needs .nbar{flex:1;height:7px;border-radius:4px;background:#e8e0d0;overflow:hidden}
 .needs .nbar i{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,#8fd8a0,#5ab86a)}
-@media (orientation:landscape) and (max-height:480px){
+/* 📱 War auf max-height:480px begrenzt — moderne Handys sind quer hoeher (der Bauen-Knopf
+   lag deshalb weiter unter dem Radar). 620px deckt alle gaengigen Geraete ab. */
+@media (orientation:landscape) and (max-height:620px){
   #joy{bottom:calc(12px + env(safe-area-inset-bottom)) !important;left:calc(12px + env(safe-area-inset-left)) !important}
   /* Linke Spalte quer: Geld, Pokal(64), Radar(120..238), Bauen, Joystick(unten).
      Zwischen Radar-Unterkante und Joystick-Oberkante bleiben nur ~50 px — Bauen sitzt
@@ -439,12 +441,21 @@ function wegVonStrasse(x,z){
   for(var xr=-104;xr<=104;xr+=34){pts.push([xr,-93],[xr,125]);}    // Ringstrasse Nord/Sued
   for(var zr=-80;zr<=100;zr+=34){pts.push([119,zr],[-119,zr]);}    // Ringstrasse West/Ost
   pts.push([68,87],[-4,78],[-33,86],[30,104],[0,146],[-24,74]);    // Plaetze, Parkplatz, Seepark
+  var _lampPoolTexC=null;
+  function _lampPoolTex(){
+    if(_lampPoolTexC)return _lampPoolTexC;
+    var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");
+    var g=c.createRadialGradient(32,32,1,32,32,31);
+    g.addColorStop(0,"rgba(255,255,255,1)");g.addColorStop(0.5,"rgba(255,255,255,0.35)");
+    g.addColorStop(1,"rgba(255,255,255,0)");
+    c.fillStyle=g;c.fillRect(0,0,64,64);
+    _lampPoolTexC=new THREE.CanvasTexture(cv);return _lampPoolTexC;}
   var mMat=new THREE.MeshStandardMaterial({color:0x2c343c,roughness:0.55});
   var fuG=new THREE.CylinderGeometry(0.26,0.36,0.6,8),
       maG=new THREE.CylinderGeometry(0.11,0.16,6.2,8),
       qaG=new THREE.BoxGeometry(3.2,0.11,0.11),
       koG=new THREE.SphereGeometry(0.26,10,8),
-      poolG=new THREE.CircleGeometry(10,20);
+      poolG=new THREE.CircleGeometry(5.5,16);
   var kopfMat=new THREE.MeshStandardMaterial({color:0xffe9c0,emissive:0xffc870,emissiveIntensity:0,roughness:0.3});
   window._lampKopf=kopfMat;
   window._lampGlows=window._lampGlows||[];
@@ -459,9 +470,16 @@ function wegVonStrasse(x,z){
     var qa=new THREE.Mesh(qaG,mMat);qa.position.y=6.4;kg.add(qa);
     [-1.45,1.45].forEach(function(ax){
       var ko=new THREE.Mesh(koG,kopfMat);ko.position.set(ax,6.55,0);kg.add(ko);});
-    var pm=new THREE.MeshBasicMaterial({color:0xffd18c,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false});
-    var pool=new THREE.Mesh(poolG,pm);pool.rotation.x=-Math.PI/2;pool.position.set(px,0.03,pz);scene.add(pool);
-    window._lampGlows.push(pm);
+    /* 🐛 User: die Lichtkegel legten sich als helle Scheiben ueber Haeuser und Baeume.
+       Ursache: 10 m Radius, additiv, ohne weichen Rand — dazu 62 transparente Flaechen,
+       die sich auf dem Handy gegenseitig ueberzeichnen (teuerste Fuellrate im Spiel).
+       Jetzt 5.5 m mit weichem Verlauf, halb so kraeftig — und auf dem Handy ganz aus,
+       dort tragen die 8 echten Lichter die Beleuchtung. */
+    if(!(typeof _mobil!=="undefined"&&_mobil)){
+      var pm=new THREE.MeshBasicMaterial({color:0xffd18c,transparent:true,opacity:0,
+        blending:THREE.AdditiveBlending,depthWrite:false,map:_lampPoolTex()});
+      var pool=new THREE.Mesh(poolG,pm);pool.rotation.x=-Math.PI/2;pool.position.set(px,0.03,pz);scene.add(pool);
+      window._lampGlows.push(pm);}
     kg.position.set(px,0,pz);kg.rotation.y=(Math.abs(px)>Math.abs(pz))?Math.PI/2:0;scene.add(kg);});
   /* Der Pool aus 8 echten Lichtern */
   window._lampPool=[];
@@ -876,7 +894,20 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     (sims||[]).forEach(function(s2){if(s2&&s2.mesh)s2.mesh._bewegt=true;});
     (polizei||[]).forEach(function(p2){if(p2.mesh)p2.mesh._bewegt=true;});
     if(window._muehle){var m9=window._muehle;while(m9&&m9.parent!==scene)m9=m9.parent;if(m9)m9._bewegt=true;}}
-  function _spaetEinfrieren(){_bewegtMarkieren();_einfrieren();}
+  /* 📱 Auf dem Handy werfen die hunderten Streu-Objekte (Baeume, Buesche, Felsen, Zaeune)
+     keine Schatten mehr. Jeder Schattenwerfer wird ein zweites Mal in die Shadow-Map
+     gerendert — bei ~2000 Objekten ist das nach der Fuellrate die zweitgroesste Bremse.
+     Haeuser und Figuren behalten ihre Schatten, die Szene bleibt plastisch. */
+  function _schattenSparen(){
+    if(!(typeof _mobil!=="undefined"&&_mobil))return;
+    var aus=0;
+    scene.children.forEach(function(o){
+      if(o._bewegt)return;
+      var bb=new THREE.Box3().setFromObject(o),sz=new THREE.Vector3();bb.getSize(sz);
+      if(Math.max(sz.x,sz.z)>7||sz.y>7)return;          // grosse Bauten behalten Schatten
+      o.traverse(function(n){if(n.isMesh&&n.castShadow){n.castShadow=false;aus++;}});});
+    window._schattenAus=aus;}
+  function _spaetEinfrieren(){_bewegtMarkieren();_schattenSparen();_einfrieren();}
   if(document.readyState==="complete")setTimeout(_spaetEinfrieren,9000);
   else window.addEventListener("load",function(){setTimeout(_spaetEinfrieren,9000);});
   if(document.readyState==="complete")setTimeout(_streuStart,60);
@@ -5557,7 +5588,7 @@ function loop(now){
       nachtLampen.forEach(function(L){L._ti=nacht9?(L._max?L._max*7:9):(L._max?L._max*1.6:0);}); /* 💡 Innenlichter brennen auch tagsueber schwach (Raeume ohne Fenster) */ /* 💡 Ziel — weiches Faden im Frame-Loop (schwacher Rand via decay 2 bleibt physisch) */
       if(window._lampKopf)window._lampKopf.emissiveIntensity=nacht9?2.6:0;
       if(window._flMat)window._flMat.opacity=nacht9?0.15:1; // Wiesenblumen nachts fast unsichtbar
-      (window._lampGlows||[]).forEach(function(gm){gm.opacity=nacht9?0.5:0;}); // Laternen-Lichtpools
+      (window._lampGlows||[]).forEach(function(gm){gm.opacity=nacht9?0.26:0;}); // Laternen-Lichtpools
       (window._markMats||[]).forEach(function(mm){mm.color.setHex(nacht9?0x8f949b:0xcfcfc6);}); // Markierungen dimmen mit (aber lesbar)
     }
     if(camAT!==null){camA+=(camAT-camA)*Math.min(1,dt*6);
