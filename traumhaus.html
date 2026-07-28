@@ -372,7 +372,8 @@ var WORLD_POIS=[
   [-26,95,"🥕","Markthalle"],[-24,74,"🛒","Laden"],[-6,88,"🔧","Werkstatt"],[-46,80,"🏠","Stadthaus"],
   [-33,86,"🏛️","Altstadt"],[68,68,"🌳","Grosser Park"],[84,-26,"⛲","Brunnen-Park"],
   [84,0,"🛝","Spielplatz"],[0,102,"🚉","Bahnhof"],[26,67,"🏪","Marktplatz"],
-  [96,-33,"🏰","Villen Ost"],[-96,18,"🏰","Villen West"],[10,139,"⛵","Seepark"],[-232,0,"🌊","Meer"]];
+  [96,-33,"🏰","Villen Ost"],[-96,18,"🏰","Villen West"],[10,139,"⛵","Seepark"],[-232,0,"🌊","Meer"],
+  [172,0,"🏢","Gewerbe Ost"],[0,216,"🏟️","Sportpark"],[-190,158,"🎡","Freizeitpark"]];
 var WORLD_SOLIDS=[];
 /* Gitter-Index (16 m Zellen): inSolid lief linear ueber ALLE Kollider und wird pro
    Bewegungsschritt jedes Bewohners/Autos gerufen. Mit den Landschafts-Hindernissen
@@ -673,6 +674,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     for(var c=0;c<3;c++){var kr=new THREE.Mesh(_kronG[c],_kronM[c%2]);
       kr.position.set((c-1)*0.4,2.1+c*0.6,(c%2-0.5)*0.35);kr.castShadow=true;b.add(kr);}
     b.scale.setScalar(k||1);b.rotation.y=Math.random()*6.283;b.position.set(x,0,z);scene.add(b);}
+  window._baum2=baum2;   /* der Quartier-Generator liegt in einem anderen Scope */
   /* ⚠️ Baeume/Felsen/Heuballen bewusst NICHT solide. moveSim() prueft nur achsenweise und
      bleibt an einem Hindernis einfach stehen — es weicht nicht aus. ~290 zusaetzliche kleine
      Kollider im Umland waeren lauter Stolperfallen fuer die wandernden Bewohner.
@@ -2332,6 +2334,135 @@ setTimeout(function baueGebaeude(){
     root.traverse(function(n){if(n.isMesh){n.castShadow=true;n.receiveShadow=true;if(n.material)n.material.envMapIntensity=0.3;}});
     var w=new THREE.Group();w.add(root);w.position.set(x,y,z);w.rotation.y=rotY;scene.add(w);
     if(!window._gebaeude)window._gebaeude=[];window._gebaeude.push(w);if(cb)cb(w,root);},undefined,function(){});}
+
+  /* ═══════════════ 🏗️ QUARTIER-GENERATOR ═══════════════════════════════════════════
+     Innerhalb der Ringstrasse ist kein Platz mehr — der Freiflaechen-Solver findet dort
+     fuer ein 20x14-Gebaeude keinen einzigen Standort. Neue Viertel entstehen deshalb
+     ausserhalb des Rings, und zwar als Ganzes statt Gebaeude fuer Gebaeude:
+
+       viertel({...}) legt an: Grundflaeche mit Belag -> Zufahrtsstrasse mit Trottoir
+       beidseits -> Bebauung in zwei Reihen laengs der Strasse mit garantiertem
+       Mindestabstand zur Fahrbahn UND zum Nachbarn -> Laternen, Baeume, Baenke ->
+       Kollider je Gebaeude.
+
+     Damit kann jeder neue STL-Schwung sauber platziert werden, ohne dass wieder etwas
+     auf der Fahrbahn oder in einem anderen Haus landet. */
+  var VIERTEL=[];
+  function viertelFrei(x,z,w,d){                        // gegen bereits gesetzte Viertel + Welt
+    for(var i=0;i<VIERTEL.length;i++){var v=VIERTEL[i];
+      if(Math.abs(x-v.x)<(w+v.w)/2+8&&Math.abs(z-v.z)<(d+v.d)/2+8)return false;}
+    for(var q=0;q<WORLD_SOLIDS.length;q++){var s2=WORLD_SOLIDS[q];
+      if(Math.abs(x-s2.x)<w/2+s2.hw+6&&Math.abs(z-s2.z)<d/2+s2.hd+6)return false;}
+    return true;}
+  function viertel(cfg){
+    var VX=cfg.x,VZ=cfg.z,VW=cfg.w,VD=cfg.d,laengs=cfg.achse==="x";
+    if(!viertelFrei(VX,VZ,VW,VD)){console.warn("Viertel "+cfg.name+" hat keinen Platz");return null;}
+    var g={name:cfg.name,x:VX,z:VZ,w:VW,d:VD};VIERTEL.push(g);
+    /* 1) Grundflaeche */
+    var bodenM=cfg.boden==="platz"?betMat(0xc6c0b2,0.93)
+              :cfg.boden==="kies"?betMat(0x9c9384,0.98)
+              :new THREE.MeshStandardMaterial({color:0x6ea055,roughness:0.95,envMapIntensity:0.18});
+    var pl=new THREE.Mesh(new THREE.PlaneGeometry(VW,VD),bodenM);
+    pl.rotation.x=-Math.PI/2;pl.position.set(VX,-0.012,VZ);pl.receiveShadow=true;scene.add(pl);
+    /* 2) Erschliessungsstrasse laengs durch das Viertel, mit Trottoir beidseits */
+    var SW=9,TW=2.2,TO=SW/2+TW/2+0.2;                    // Fahrbahn 9 m, Gehweg 2.2 m
+    var laenge=laengs?VW:VD;
+    var str=new THREE.Mesh(new THREE.PlaneGeometry(laengs?laenge:SW,laengs?SW:laenge),
+                           laengs?strMatH.clone():strMatV.clone());
+    str.rotation.x=-Math.PI/2;str.position.set(VX,-0.003,VZ);str.receiveShadow=true;scene.add(str);
+    var twM=stdMat(0xd0cdc4,0.9);
+    [-TO,TO].forEach(function(o){
+      var t=new THREE.Mesh(new THREE.BoxGeometry(laengs?laenge:TW,0.06,laengs?TW:laenge),twM);
+      t.position.set(VX+(laengs?0:o),0.03,VZ+(laengs?o:0));t.receiveShadow=true;scene.add(t);});
+    /* Mittelstreifen */
+    var mM=new THREE.MeshStandardMaterial({color:0xd8d8cc,roughness:0.8});mM.envMapIntensity=0.12;
+    (window._markMats=window._markMats||[]).push(mM);
+    for(var m=0;m<Math.floor(laenge/9);m++){
+      var mo=-laenge/2+5+m*9;
+      var st=new THREE.Mesh(new THREE.PlaneGeometry(laengs?3:0.28,laengs?0.28:3),mM);
+      st.rotation.x=-Math.PI/2;st.position.set(VX+(laengs?mo:0),0.005,VZ+(laengs?0:mo));scene.add(st);}
+    /* 3) Anbindung an die Ringstrasse */
+    if(cfg.anschluss){
+      var a=cfg.anschluss,dx=VX-a[0],dz=VZ-a[1];
+      var zu=new THREE.Mesh(new THREE.PlaneGeometry(Math.abs(dx)||SW,Math.abs(dz)||SW),
+                            Math.abs(dx)>Math.abs(dz)?strMatH.clone():strMatV.clone());
+      zu.rotation.x=-Math.PI/2;zu.position.set((VX+a[0])/2,-0.004,(VZ+a[1])/2);
+      zu.receiveShadow=true;scene.add(zu);}
+    /* 4) Bebauung: zwei Reihen laengs der Strasse. Je Seite ein eigener Laufcursor —
+       damit stimmt der Abstand zum Nachbarn auch bei unterschiedlich breiten Gebaeuden. */
+    var setback=TO+(cfg.abstand===undefined?10:cfg.abstand);
+    var cur={"-1":(cfg.rand||14),"1":(cfg.rand||14)};
+    (cfg.bauten||[]).forEach(function(b,i){
+      var seite=(i%2)?1:-1,k=String(seite);
+      var bw=b.w||10,bd=b.d||8;
+      var vor=laengs?bw:bd;                              // Ausdehnung entlang der Strasse
+      var pos=cur[k]+vor/2;
+      cur[k]+=vor+(cfg.luecke===undefined?14:cfg.luecke);
+      if(pos+vor/2>laenge-(cfg.rand||14)){console.warn("Viertel "+cfg.name+": "+b.file+" passt nicht mehr");return;}
+      var bx,bz;
+      if(laengs){bx=VX-laenge/2+pos;bz=VZ+seite*setback;}
+      else{bz=VZ-laenge/2+pos;bx=VX+seite*setback;}
+      /* Schauseite (Tuer) zeigt in three.js nach -z -> zur Strasse drehen */
+      var rot=laengs?(seite>0?Math.PI:0):(seite>0?-Math.PI/2:Math.PI/2);
+      bau(b.file,b.h,bx,0,bz,rot,false,null,true);
+      var tuer=null;
+      if(b.tuer!==false){
+        tuer=laengs?{a:"z",at:bz-seite*(bd/2+0.5),c:bx,w:3.2}
+                   :{a:"x",at:bx-seite*(bw/2+0.5),c:bz,w:3.2};}
+      addSolid(bx,bz,bw+1,bd+1,tuer);
+      /* Zugangsweg von der Gehwegkante zum Eingang */
+      var wl=setback-TO;
+      var weg=new THREE.Mesh(new THREE.PlaneGeometry(laengs?2.2:wl,laengs?wl:2.2),betMat(0xcfc8b8,0.92));
+      weg.rotation.x=-Math.PI/2;
+      weg.position.set(laengs?bx:VX+seite*(TO+wl/2),0.004,laengs?VZ+seite*(TO+wl/2):bz);
+      weg.receiveShadow=true;scene.add(weg);});
+    /* 5) Moeblierung: Laternen entlang der Strasse, Baeume am Rand, Baenke */
+    var nL=Math.max(2,Math.floor(laenge/24));
+    for(var l=0;l<=nL;l++){
+      var lo=-laenge/2+l*(laenge/nL);
+      [-TO-1.6,TO+1.6].forEach(function(o2){
+        var lx=VX+(laengs?lo:o2),lz=VZ+(laengs?o2:lo);
+        if(window._lampPos)window._lampPos.push([lx,lz]);
+        var kg=new THREE.Group();
+        var ma=new THREE.Mesh(new THREE.CylinderGeometry(0.1,0.15,5.6,7),stdMat(0x2c343c,0.55));ma.position.y=2.8;kg.add(ma);
+        var ko=new THREE.Mesh(new THREE.SphereGeometry(0.24,9,7),window._lampKopf||stdMat(0xffe9c0,0.3));
+        ko.position.y=5.7;kg.add(ko);
+        kg.position.set(lx,0,lz);scene.add(kg);});}
+    for(var t2=0;t2<Math.floor(laenge/12);t2++){
+      var to=-laenge/2+8+t2*12;
+      [-VW/2+4,VW/2-4].forEach(function(o3){
+        var tx=laengs?VX+to:VX+o3,tz=laengs?VZ+o3:VZ+to;
+        if(laengs){tx=VX+to;tz=VZ+o3;}else{tx=VX+o3;tz=VZ+to;}
+        if(window._baum2)window._baum2(tx,tz,0.8+((t2*3)%3)*0.14);});}
+    return g;}
+  /* ═══ Neue Viertel ausserhalb der Ringstrasse (der Generator setzt Strasse, Trottoir,
+     Belag, Bebauung mit Mindestabstand, Laternen, Baeume und Kollider selbst) ═══ */
+  setTimeout(function(){
+    viertel({name:"Gewerbe Ost",x:172,z:0,w:96,d:150,achse:"z",boden:"platz",
+      anschluss:[112,0],abstand:13,luecke:16,rand:16,
+      bauten:[{file:"th20_parkgarage.glb",h:11,w:20,d:15},
+              {file:"th22_garage.glb",h:3.4,w:7,d:6},
+              {file:"th23_bank.glb",h:9,w:16,d:12},
+              {file:"th23_post.glb",h:8,w:15,d:11},
+              {file:"th23_apotheke.glb",h:7,w:12,d:10},
+              {file:"th23_polizeiwache.glb",h:8.5,w:16,d:12}]});
+    viertel({name:"Sportpark Sued",x:0,z:216,w:180,d:84,achse:"x",boden:"rasen",
+      anschluss:[0,146],abstand:15,luecke:18,rand:18,
+      bauten:[{file:"th19_schwimmbad.glb",h:9,w:22,d:16},
+              {file:"th19_tennishalle.glb",h:10,w:22,d:16},
+              {file:"th19_fitnessstudio.glb",h:8,w:18,d:14},
+              {file:"th19_eishalle.glb",h:11,w:24,d:17},
+              {file:"th16_basketballplatz.glb",h:3.4,w:16,d:12,tuer:false},
+              {file:"th19_kletterhalle.glb",h:13,w:20,d:16}]});
+    viertel({name:"Freizeitpark",x:-190,z:158,w:170,d:92,achse:"x",boden:"kies",
+      anschluss:[-112,118],abstand:16,luecke:20,rand:20,
+      bauten:[{file:"th13_riesenrad.glb",h:26,w:22,d:16,tuer:false},
+              {file:"th13_karussell.glb",h:7,w:12,d:12,tuer:false},
+              {file:"th13_autoscooter.glb",h:6,w:18,d:14,tuer:false},
+              {file:"th13_freefall_turm.glb",h:24,w:10,d:10,tuer:false},
+              {file:"th13_festzelt.glb",h:9,w:20,d:16},
+              {file:"th13_imbissbude.glb",h:3.6,w:6,d:5}]});
+  },260);
   bau("bd_barn.glb",7,-96,0,-40,Math.PI/2,false);        // Scheune (Bauernhof West, hinter der neuen Querstrasse)
   /* 📏 Hoehe 6 -> 4.5 und von z=70.5 auf 80: der Bau war groesser als alles ringsum und
      seine Markise stand auf dem Trottoir (User-Screenshot). */
@@ -4432,7 +4563,7 @@ function updMinimap(dt){
 function drawBigMap(){
   var cv=document.getElementById("bigmap");if(!cv)return;
   var c=cv.getContext("2d"),W=cv.width,H=cv.height;
-  var X0=-256,X1=140,Z0=-118,Z1=120;
+  var X0=-300,X1=250,Z0=-210,Z1=280;   /* die neuen Viertel liegen weit ausserhalb des Rings */
   var sc=Math.min(W/(X1-X0),H/(Z1-Z0)),ox=(W-(X1-X0)*sc)/2,oy=(H-(Z1-Z0)*sc)/2;
   function S(wx,wz){return [ox+(wx-X0)*sc,oy+(wz-Z0)*sc];}
   c.fillStyle="#3f6238";c.fillRect(0,0,W,H);
