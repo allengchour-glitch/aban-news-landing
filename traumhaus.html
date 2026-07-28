@@ -306,7 +306,11 @@ var renderer=new THREE.WebGLRenderer({antialias:true});
    9x so viele Pixel wie noetig — die teuerste Einzelbremse auf dem Telefon. */
 var _mobil=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)||Math.min(screen.width,screen.height)<820;
 renderer.setPixelRatio(Math.min(devicePixelRatio,_mobil?1.5:2));renderer.setSize(W,H);
-renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+/* 📱 PCFSoftShadowMap ist der teuerste Schattenfilter (mehrere Texture-Lookups pro Pixel).
+   Auf dem Handy reicht der einfache PCF-Filter — sichtbar kaum ein Unterschied, spuerbar
+   guenstiger. */
+renderer.shadowMap.enabled=true;
+renderer.shadowMap.type=(typeof _mobil!=="undefined"&&_mobil)?THREE.PCFShadowMap:THREE.PCFSoftShadowMap;
 renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=0.78;
 renderer.outputEncoding=THREE.sRGBEncoding;
 document.getElementById("wrap").appendChild(renderer.domElement);
@@ -324,7 +328,12 @@ var nachtLampen=[];   /* Die Laternen werden weiter unten gebaut — sie brauche
 var sun=new THREE.DirectionalLight(0xfff0d0,1.12);sun.position.set(26,38,18);scene.add(sun);
 sun.castShadow=true;sun.shadow.mapSize.set(IS_TOUCH?1024:2048,IS_TOUCH?1024:2048);sun.shadow.bias=-0.0006;
 sun.shadow.camera.near=5;sun.shadow.camera.far=320;
-sun.shadow.camera.left=-115;sun.shadow.camera.right=115;sun.shadow.camera.top=115;sun.shadow.camera.bottom=-115;
+/* 📱 Das Schatten-Frustum deckte 230x230 m ab. Bei 1024er Map sind das 4.5 Texel pro Meter —
+   viel Flaeche, wenig Schaerfe, und alles darin muss jeden Frame neu gezeichnet werden.
+   Auf dem Handy 120x120 m um die Kamera: schaerfere Schatten UND weniger Arbeit. */
+(function(){var _sr=(typeof _mobil!=="undefined"&&_mobil)?60:115;
+  sun.shadow.camera.left=-_sr;sun.shadow.camera.right=_sr;sun.shadow.camera.top=_sr;sun.shadow.camera.bottom=-_sr;
+  sun.shadow.camera.far=(typeof _mobil!=="undefined"&&_mobil)?180:320;})();
 function stdMat(c,rough){var m=new THREE.MeshStandardMaterial({color:c,roughness:rough!==undefined?rough:0.8});m.envMapIntensity=0.35;return m;}
 // Prozedurale Struktur-Texturen gegen flache Einfarb-Flaechen
 function _strukTex(kind){var cv=document.createElement("canvas");cv.width=cv.height=128;var c=cv.getContext("2d");
@@ -903,11 +912,31 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     var aus=0;
     scene.children.forEach(function(o){
       if(o._bewegt)return;
-      var bb=new THREE.Box3().setFromObject(o),sz=new THREE.Vector3();bb.getSize(sz);
-      if(Math.max(sz.x,sz.z)>7||sz.y>7)return;          // grosse Bauten behalten Schatten
-      o.traverse(function(n){if(n.isMesh&&n.castShadow){n.castShadow=false;aus++;}});});
+      /* Nicht ganze Gruppen ausnehmen, sondern JEDES Mesh einzeln bewerten: ein Haus
+         besteht aus Dutzenden kleiner Teile (Fensterrahmen, Gesimse, Dachaufbauten), die
+         alle in die Shadow-Map gerendert wurden. Nur Massen ueber 2.5 m werfen noch. */
+      o.traverse(function(n){
+        if(!n.isMesh||!n.castShadow)return;
+        var nb=new THREE.Box3().setFromObject(n),ns=new THREE.Vector3();nb.getSize(ns);
+        if(ns.y>=2.5&&Math.max(ns.x,ns.z)>=1.2)return;
+        n.castShadow=false;aus++;});});
     window._schattenAus=aus;}
-  function _spaetEinfrieren(){_bewegtMarkieren();_schattenSparen();_einfrieren();}
+  /* 📱 Transparente Flaechen sind auf Handy-GPUs die teuerste Fuellrate: sie koennen nicht
+     per Tiefentest verworfen werden und ueberzeichnen sich gegenseitig. Alles, was ohnehin
+     fast undurchsichtig ist (Fensterglas, Balkonbruestungen), wird opak geschaltet. */
+  function _opakSchalten(){
+    if(!(typeof _mobil!=="undefined"&&_mobil))return;
+    var n=0,gesehen=[];
+    scene.traverse(function(o){
+      if(!o.isMesh||!o.material)return;
+      var ms=Array.isArray(o.material)?o.material:[o.material];
+      ms.forEach(function(m){
+        if(!m.transparent||gesehen.indexOf(m)>=0)return;
+        gesehen.push(m);
+        if(m.blending&&m.blending!==THREE.NormalBlending)return;   // additive Effekte behalten
+        if(m.opacity>=0.82){m.transparent=false;m.opacity=1;m.needsUpdate=true;n++;}});});
+    window._opakGemacht=n;}
+  function _spaetEinfrieren(){_bewegtMarkieren();_schattenSparen();_opakSchalten();_einfrieren();}
   if(document.readyState==="complete")setTimeout(_spaetEinfrieren,9000);
   else window.addEventListener("load",function(){setTimeout(_spaetEinfrieren,9000);});
   if(document.readyState==="complete")setTimeout(_streuStart,60);
