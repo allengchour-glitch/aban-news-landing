@@ -338,6 +338,24 @@ function cx(gx){return (gx-GW/2+0.5)*CS;}
 function cz(gy){return (gy-GH/2+0.5)*CS;}
 // Rasen mit Textur
 var TEXLOADER=new THREE.TextureLoader();
+/* 🧱 WELT-KOLLISION (frueh deklariert, damit alle Bau-Funktionen registrieren koennen) */
+var WORLD_SOLIDS=[];
+function addSolid(cx,cz,w,d,door){WORLD_SOLIDS.push({x:cx,z:cz,hw:w/2,hd:d/2,door:door||null});}
+function inSolid(x,z){
+  for(var i=0;i<WORLD_SOLIDS.length;i++){var s=WORLD_SOLIDS[i];
+    var dx=x-s.x,dz=z-s.z;
+    if(dx<-s.hw||dx>s.hw||dz<-s.hd||dz>s.hd)continue;
+    var inner=0.55;
+    if(dx>-s.hw+inner&&dx<s.hw-inner&&dz>-s.hd+inner&&dz<s.hd-inner)continue;
+    if(s.door){var d9=s.door;
+      if(d9.a==="z"&&Math.abs(dz-(d9.at-s.z))<inner+0.15&&Math.abs(dx-(d9.c-s.x))<d9.w/2)continue;
+      if(d9.a==="x"&&Math.abs(dx-(d9.at-s.x))<inner+0.15&&Math.abs(dz-(d9.c-s.z))<d9.w/2)continue;}
+    return true;}
+  return false;}
+/* Rotationssicher: bei rotY≈±90° Breite/Tiefe tauschen */
+function addSolidRot(x,z,w,d,rotY,door){
+  var q=Math.abs(((rotY||0)%Math.PI)-Math.PI/2)<0.4;
+  addSolid(x,z,q?d:w,q?w:d,door||null);}
 function ladeTex(url,rx,ry,cb){TEXLOADER.load(url,function(t){
   t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(rx,ry);
   if(THREE.sRGBEncoding!==undefined)t.encoding=THREE.sRGBEncoding;
@@ -840,7 +858,7 @@ var dorfFenster=[];
       fe.position.set(-w/2+1+fx*1.5,1.35,d/2+0.04);g.add(fe);dorfFenster.push(fe.material);}
     var kamin=new THREE.Mesh(new THREE.BoxGeometry(0.45,1.1,0.45),stdMat(0x8a7a6a,0.8));
     kamin.position.set(-w/2+0.9,h+0.9,-d/4);kamin.castShadow=true;g.add(kamin);
-    g.position.set(x,0,z);g.rotation.y=rotY;scene.add(g);
+    g.position.set(x,0,z);g.rotation.y=rotY;scene.add(g);addSolidRot(x,z,w+0.5,d+0.5,rotY,null); /* 🧱 Dorfhaus solide */
     (window._immo=window._immo||[]).push({x:x,z:z,grp:g,preis:1800+(seed%5)*600,h:h});}
   // ---- Geschlossene Stadtzeile: Reihenhaeuser mit gemeinsamer Bauflucht (Stadt statt Streusiedlung)
   function stadtzeile(xs,z,n,rotY){
@@ -994,7 +1012,7 @@ var dorfFenster=[];
         var bw=new THREE.Mesh(_balkWG,_balkM);bw.position.set(fx9,1.0+e9*1.9,d/2+0.80);g.add(bw);
         var b1=new THREE.Mesh(_balkSG,_balkM);b1.position.set(fx9-0.68,1.0+e9*1.9,d/2+0.42);g.add(b1);
         var b2=new THREE.Mesh(_balkSG,_balkM);b2.position.set(fx9+0.68,1.0+e9*1.9,d/2+0.42);g.add(b2);}}
-    g.position.set(x,0,z);g.rotation.y=rotY;scene.add(g);}
+    g.position.set(x,0,z);g.rotation.y=rotY;scene.add(g);addSolidRot(x,z,w+0.4,d+0.4,rotY,null);} /* 🧱 Wohnblock solide */
   // Wohnbloecke hinter der Nordstrasse (2. Reihe) + Osten/Westen
   block(-30,-SZ-32,0,3,10,7,0xcfc4b0);block(-14,-SZ-33,0,4,9,7,0xb8c0c8);
   block(4,-SZ-32,0,3,11,7,0xd8cabc);block(22,-SZ-33,0,4,8,7,0xc4b8a8);
@@ -1109,7 +1127,7 @@ var dorfFenster=[];
     var aufb=new THREE.Mesh(new THREE.BoxGeometry(w*0.42,1.4,w*0.36),stdMat(0x5a5a64,0.6));aufb.position.set(-w*0.18,h+1.2,w*0.14);aufb.castShadow=true;g.add(aufb);
     var klima=new THREE.Mesh(new THREE.BoxGeometry(w*0.24,0.7,w*0.24),stdMat(0x8a8a92,0.5));klima.position.set(w*0.22,h+0.85,-w*0.18);g.add(klima);
     var ant=new THREE.Mesh(new THREE.CylinderGeometry(0.05,0.07,2.6,5),stdMat(0x3a3a42,0.4));ant.position.set(w*0.1,h+1.8,w*0.1);g.add(ant);
-    g.position.set(x,0,z);scene.add(g);}
+    g.position.set(x,0,z);scene.add(g);addSolid(x,z,w+0.4,w+0.4,null);} /* 🧱 Hochhaus solide */
   // Downtown-Cluster jenseits des Flusses: dichte Skyline statt verstreuter Einzeltuerme
   [[-64,-116,18,8,0x9aa8bc],[-50,-108,13,7,0x88a0b8],[-38,-120,21,9,0xa0b0c0],[-26,-107,11,6,0x94a4b8],
    [-14,-118,16,8,0x9caabe],[-2,-106,9,6,0x8ea6ba],[10,-119,19,8,0x98a6ba],[22,-108,12,7,0x8ea2b4],
@@ -1167,7 +1185,7 @@ var dorfFenster=[];
       var bst=new THREE.Mesh(new THREE.CylinderGeometry(0.16,0.22,1.6,7),stdMat(0x6a4a30,0.9));bst.position.set(-6.2,0.8,-3.6);g.add(bst);
       [0,1,2].forEach(function(k){var kr=new THREE.Mesh(new THREE.SphereGeometry(1.0-k*0.2,9,7),stdMat(k%2?0x3a7a3a:0x4a8a44,0.85));
         kr.position.set(-6.2+(k-1)*0.35,2.0+k*0.55,-3.6);kr.castShadow=true;g.add(kr);});
-      g.position.set(x,0,z);g.rotation.y=rotY;scene.add(g);}
+      g.position.set(x,0,z);g.rotation.y=rotY;scene.add(g);addSolidRot(x,z,8.6,7,rotY,null);} /* 🧱 Villa solide */
     villa(96,-22,-Math.PI/2,0x8a5a48);villa(96,-44,-Math.PI/2,0x5a6a78); // Ost-Parzellen
     villa(-96,8,Math.PI/2,0x6a7a58);villa(-96,28,Math.PI/2,0x8a5a48);   // West-Parzellen
   })();
@@ -1851,23 +1869,23 @@ setTimeout(function baueGebaeude(){
     (function altstadtPlatz(){ /* 🧱 Gepflasterter Platz + Gassen — die Gebaeude standen auf blanker Wiese */
       var pfM=betMat(0xc4bcae,0.92);
       if(typeof ladeTex==="function")ladeTex("textures/th5/kopfstein.png",14,20,function(t){pfM.map=t;pfM.color.setHex(0xffffff);pfM.needsUpdate=true;});
-      var pf=new THREE.Mesh(new THREE.PlaneGeometry(34,52),pfM);
-      pf.rotation.x=-Math.PI/2;pf.position.set(-53,-0.012,31);pf.receiveShadow=true;scene.add(pf);
+      var pf=new THREE.Mesh(new THREE.PlaneGeometry(34,44),pfM);
+      pf.rotation.x=-Math.PI/2;pf.position.set(-53,-0.012,27); /* 🛣️ 52/31 ragte in die Sued-Querstrasse */pf.receiveShadow=true;scene.add(pf);
       /* Verbindungsweg zur Nordstrasse (z=-58) */
       var wg=new THREE.Mesh(new THREE.PlaneGeometry(6,52),pfM.clone());
       wg.rotation.x=-Math.PI/2;wg.position.set(-53,-0.011,-21);wg.receiveShadow=true;scene.add(wg);
       /* Baeume + Baenke saeumen den Platz */
       [[-38,18],[-38,44],[-68,18],[-68,44]].forEach(function(P8,i8){
         bau("th5_baum_ahorn.glb",4.4,P8[0],0,P8[1],i8*0.9,false);});
-      bau("th5_parkbank.glb",0.9,-53,0,20,0,false);bau("th5_parkbank.glb",0.9,-53,0,42,Math.PI,false);
-      bau("th5_laterne_altstadt.glb",4.5,-40,0,31,0,false);bau("th5_laterne_altstadt.glb",4.5,-66,0,31,0,false);
+      bau("th5_parkbank.glb",0.9,-53,0,18,0,false);bau("th5_parkbank.glb",0.9,-53,0,40,Math.PI,false);
+      bau("th5_laterne_altstadt.glb",4.5,-40,0,27,0,false);bau("th5_laterne_altstadt.glb",4.5,-66,0,27,0,false);
       bau("th6_papierkorb.glb",0.9,-49,0,20,0,false);
     })();
     /* 🧱 Kollider zu den begehbaren Gebaeuden (Masse aus models/TH5-ASSETS.md; rot=PI/2 dreht B/T) */
     addSolid(-62,30,17,25,{a:"x",at:-70.5,c:30,w:4.5});     /* Markthalle: Tor an der -x-Seite */
     addSolid(-44,12,12.8,10.8,{a:"z",at:17.4,c:-44,w:3.0}); /* Stadthaus: Tuer +z (rot=PI) */
     addSolid(-44,30,8.6,9.6,{a:"x",at:-39.7,c:30,w:3.0});   /* Laden: Tuer +x (rot=-PI/2) */
-    addSolid(-62,50,14.8,12.8,{a:"z",at:56.4,c:-62,w:4.5}); /* Werkstatt: Tor +z (rot=PI) */
+    addSolid(-62,45,14.8,12.8,{a:"z",at:51.4,c:-62,w:4.5}); /* Werkstatt: Tor +z (rot=PI) */
     addSolid(-58,-78,27,15,{a:"x",at:-71.5,c:-78,w:4.0});   /* Kathedrale: Portal -x (rot=PI/2) */
     /* 🧱 Runde 2: restliche feste Gebaeude solide machen (User "polish alles") */
     addSolid(78,-79,7.4,11.4,{a:"z",at:-73.3,c:78,w:2.2});   /* Dorf-Kirche (RX,-SZ-33), Tuer Sued */
@@ -1882,13 +1900,13 @@ setTimeout(function baueGebaeude(){
     addSolid(-90,-112,8.2,8.2,null);                         /* Downtown-Turm */
     /* 💡 Innenraum-Licht für die begehbaren Gebaeude — nachts warm erleuchtet (Fade wie Strassenlampen) */
     [[-62,30,4.5,0xffe0b0,1.1],[-44,12,3.4,0xffd9a0,0.9],[-44,30,2.6,0xfff0c8,0.9],
-     [-62,50,3.2,0xd8f0ff,0.8],[-58,-78,7.0,0xffd08a,1.2]].forEach(function(L9){
+     [-62,45,3.2,0xd8f0ff,0.8],[-58,-78,7.0,0xffd08a,1.2]].forEach(function(L9){
       var _il=new THREE.PointLight(L9[3],0,16,2);_il.position.set(L9[0],L9[2],L9[1]);scene.add(_il);
       _il._ti=0;_il._max=L9[4];nachtLampen.push(_il);});
     bau("th8_markthalle_offen.glb",11,-62,0,30,Math.PI/2,false);
     bau("th8_stadthaus_offen.glb",9.2,-44,0,12,Math.PI,false);
     bau("th8_laden_offen.glb",3.9,-44,0,30,-Math.PI/2,false);
-    bau("th8_werkstatt_offen.glb",5.3,-62,0,50,Math.PI,false);
+    bau("th8_werkstatt_offen.glb",5.3,-62,0,45,Math.PI,false); /* 🛣️ war 50 → ragte in die Sued-Querstrasse (53..63) */
     bau("th8_kirche_offen.glb",21,-58,0,-78,Math.PI/2,false); /* 🛣️ war bei z=-62 → stand 8m IN der Nordstrasse (Band -63..-53) */
     (function glockenturm(){ /* ⛪ Die Kathedrale sah von aussen wie ein schmuckloser Klotz aus — Turm gibt ihr die Silhouette */
       var g=new THREE.Group(),tm=betMat(0xe4ddcc,0.9),dm=stdMat(0x5a6470,0.65);
@@ -1903,8 +1921,8 @@ setTimeout(function baueGebaeude(){
         sf.position.set(o[0],21,o[1]);g.add(sf);});
       var zb=new THREE.Mesh(new THREE.CircleGeometry(1.5,20),new THREE.MeshStandardMaterial({color:0xf4ecd8,emissive:0xffe8a8,emissiveIntensity:0,roughness:0.4}));
       zb.position.set(0,15.5,2.63);g.add(zb);dorfFenster.push(zb.material);
-      g.position.set(-70.5,0,-84);scene.add(g);
-      addSolid(-70.5,-84,5.2,5.2,null);
+      g.position.set(-68.5,0,-84);scene.add(g);
+      addSolid(-68.5,-84,5.2,5.2,null); /* 🛣️ war -70.5 → ragte in die West-Laengsstrasse (-83..-73) */
     })();
     (function kircheDetails(){ /* ⛪ User: "mehr details katedrahle" */
       var stM=betMat(0xd8d0be,0.88),goM=stdMat(0xc8a84a,0.35);
@@ -3113,7 +3131,7 @@ function updCrime(dt){
     var b9=document.getElementById("shopBtn");
     if(b9)b9.style.display=(an&&Math.abs(p9.x+44)<3.8&&Math.abs(p9.z-30)<4.3)?"block":"none";
     var w9=document.getElementById("werkBtn"); /* Werkstatt (-62,50): umlackieren gegen Fahndung */
-    if(w9)w9.style.display=(an&&fahren&&Math.abs(p9.x+62)<6.8&&Math.abs(p9.z-50)<5.8)?"block":"none";
+    if(w9)w9.style.display=(an&&fahren&&Math.abs(p9.x+62)<6.8&&Math.abs(p9.z-45)<5.8)?"block":"none";
     var m9=document.getElementById("markthalleBtn"); /* Markthalle (-62,30): Ernte zu Marktpreisen */
     if(m9)m9.style.display=(an&&!fahren&&Math.abs(p9.x+62)<7.9&&Math.abs(p9.z-30)<11.9&&(stats.ernten||0)>0)?"block":"none";
     var k9=document.getElementById("kircheBtn"); /* Kathedrale (-58,-62): kirchlich heiraten */
@@ -3768,20 +3786,6 @@ function steerVec(si){
 /* 🧱 WELT-KOLLISION (User: "wände sollten nicht durchlaufen können"): Rechteck-Ringe pro Gebaeude.
    Aussenwand blockiert, aber die Tueroeffnung (door: Achse+Mitte+Breite) laesst durch → begehbar bleibt begehbar.
    Reine Datenliste, keine Physik-Engine: guenstig auf dem Handy. */
-var WORLD_SOLIDS=[];
-function addSolid(cx,cz,w,d,door){WORLD_SOLIDS.push({x:cx,z:cz,hw:w/2,hd:d/2,door:door||null});}
-function inSolid(x,z){
-  for(var i=0;i<WORLD_SOLIDS.length;i++){var s=WORLD_SOLIDS[i];
-    var dx=x-s.x,dz=z-s.z;
-    if(dx<-s.hw||dx>s.hw||dz<-s.hd||dz>s.hd)continue;      /* ausserhalb */
-    var inner=0.55;                                          /* Wandstaerke */
-    if(dx>-s.hw+inner&&dx<s.hw-inner&&dz>-s.hd+inner&&dz<s.hd-inner)continue; /* im Innenraum: frei */
-    if(s.door){                                              /* Tueroeffnung frei lassen */
-      var d9=s.door;
-      if(d9.a==="z"&&Math.abs(dz-(d9.at-s.z))<inner+0.15&&Math.abs(dx-(d9.c-s.x))<d9.w/2)continue;
-      if(d9.a==="x"&&Math.abs(dx-(d9.at-s.x))<inner+0.15&&Math.abs(dz-(d9.c-s.z))<d9.w/2)continue;}
-    return true;}
-  return false;}
 function steerMove(s9,sv,dt,sprint){
   var lx=-Math.sin(camA),lz=-Math.cos(camA),rx=-lz,rz=lx;
   var mx=(-sv.z)*lx+sv.x*rx,mz=(-sv.z)*lz+sv.x*rz;
