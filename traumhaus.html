@@ -377,12 +377,15 @@ function ladeTex(url,rx,ry,cb){TEXLOADER.load(url,function(t){
 var grasTex=(function(){var cv=document.createElement("canvas");cv.width=cv.height=256;var c=cv.getContext("2d");
   c.fillStyle="#5a9c44";c.fillRect(0,0,256,256);
   // weiche große Tonflächen gegen den flachen Look
+  /* Nur noch ein Hauch Ton-Variation IN der Kachel — grosse Blobs im 256er-Tile ergaben
+     ein sichtbares Wiederhol-Raster, sobald die Kamera weiter draussen steht. Die grossflaechige
+     Variation kommt aus dem nicht-kachelnden Overlay unten. */
   for(var b=0;b<26;b++){var g=c.createRadialGradient(Math.random()*256,Math.random()*256,2,Math.random()*256,Math.random()*256,40+Math.random()*50);
-    g.addColorStop(0,"rgba("+(60+Math.random()*40|0)+","+(120+Math.random()*50|0)+","+(40+Math.random()*30|0)+",0.35)");g.addColorStop(1,"rgba(0,0,0,0)");
+    g.addColorStop(0,"rgba("+(60+Math.random()*40|0)+","+(120+Math.random()*50|0)+","+(40+Math.random()*30|0)+",0.05)");g.addColorStop(1,"rgba(0,0,0,0)");
     c.fillStyle=g;c.fillRect(0,0,256,256);}
   for(var i=0;i<3400;i++){var dk=Math.random()<0.4;c.fillStyle="rgba("+((dk?42:78)+Math.random()*55|0)+","+((dk?96:142)+Math.random()*55|0)+","+((dk?36:52)+Math.random()*36|0)+",0.55)";
     c.fillRect(Math.random()*256,Math.random()*256,2,3);}
-  var t=new THREE.CanvasTexture(cv);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(14,11);
+  var t=new THREE.CanvasTexture(cv);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(20,15);
   try{t.anisotropy=renderer.capabilities.getMaxAnisotropy();}catch(e){}return t;})();
 var rasen=new THREE.Mesh(new THREE.PlaneGeometry(GW*CS+60,GH*CS+60),new THREE.MeshStandardMaterial({map:grasTex,roughness:0.95,envMapIntensity:0.22}));
 rasen.rotation.x=-Math.PI/2;rasen.position.y=-0.02;rasen.receiveShadow=true;scene.add(rasen);
@@ -401,7 +404,7 @@ rasen.rotation.x=-Math.PI/2;rasen.position.y=-0.02;rasen.receiveShadow=true;scen
   function overlay(w,h,y,tex){var m=new THREE.Mesh(new THREE.PlaneGeometry(w,h),
     new THREE.MeshStandardMaterial({map:tex,transparent:true,roughness:1,depthWrite:false}));
     m.rotation.x=-Math.PI/2;m.position.y=y;scene.add(m);return m;}
-  overlay(GW*CS+60,GH*CS+60,-0.015,blotchTex(26,0.16)); // nahe Wiese
+  overlay(GW*CS+60,GH*CS+60,-0.015,blotchTex(46,0.3)); // nahe Wiese — traegt jetzt die grossflaechige Variation
   overlay(600,600,-0.06,blotchTex(40,0.2));             // Fern-Ebene
 })();
 // Kaminrauch aus mehreren Häusern (leichte aufsteigende Partikel)
@@ -447,7 +450,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     hue.scale.y=0.32+((h%3)*0.06);hue.receiveShadow=true;scene.add(hue);}
   // Blumenfelder (Cluster kleiner farbiger Punkte) auf der fernen Wiese
   var BF=[0xff6b8a,0xffd93d,0xa66bff,0xff9f43,0xffffff];
-  for(var bf=0;bf<70;bf++){
+  for(var bf=0;bf<150;bf++){
     var ba=Math.random()*6.283,br=(GW*CS/2+8)+Math.random()*55;
     var cx0=Math.cos(ba)*br,cz0=Math.sin(ba)*br;
     if(Math.abs(cx0)<GW*CS/2+4&&Math.abs(cz0)<GH*CS/2+4)continue; // nicht im Baubereich
@@ -500,16 +503,54 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     var st=new THREE.Mesh(new THREE.CylinderGeometry(0.18,0.28,1.8,7),new THREE.MeshStandardMaterial({color:0x6a4a30,roughness:0.9}));st.position.y=0.9;b.add(st);
     for(var c=0;c<3;c++){var kr=new THREE.Mesh(new THREE.SphereGeometry(1.1-c*0.22,9,7),new THREE.MeshStandardMaterial({color:c%2?0x3a7a3a:0x4a8a44,roughness:0.85,envMapIntensity:0.2}));kr.position.set((c-1)*0.4,2.1+c*0.6,(c%2-0.5)*0.35);kr.castShadow=true;b.add(kr);}
     b.scale.setScalar(k||1);b.rotation.y=Math.random()*6.283;b.position.set(x,0,z);scene.add(b);}
-  for(var t2=0;t2<70;t2++){var ta=Math.random()*6.283,tr=(GW*CS/2+8)+Math.random()*90;
-    var tx=Math.cos(ta)*tr+(Math.random()-0.5)*20,tz=Math.sin(ta)*tr+(Math.random()-0.5)*20; // Jitter gegen Reihen-Wirkung
-    if(Math.abs(tx)<GW*CS/2+4&&Math.abs(tz)<GH*CS/2+6)continue;
-    if(Math.hypot(tx+90,tz-80)<19)continue; // nicht in den See
-    if(Math.abs(Math.abs(tz)-(GH*CS/2+12))<8&&Math.abs(tx)<RL/2+4)continue; // nicht auf/an Hauptstrassen
-    if(Math.abs(Math.abs(tx)-RX)<8&&Math.abs(tz)<78)continue; // nicht auf/an Querstrassen
-    if(Math.abs(Math.abs(tx)-112)<8&&tz>-108&&tz<126)continue; // Ringstrasse
-    if((Math.abs(tz+100)<8||Math.abs(tz-118)<8)&&Math.abs(tx)<120)continue;
-    if(tz>88&&tz<118&&Math.abs(tx)<80)continue; // Suedviertel
-    baum2(tx,tz,0.7+Math.random()*1.0);}
+  /* 🌳 Freiflaechen-Test — eine Quelle fuer ALLE Streu-Objekte (User: „umgebung ist alles leer") */
+  function freiPlatz(x,z,pad){
+    pad=pad||0;
+    if(Math.abs(x)<GW*CS/2+4+pad&&Math.abs(z)<GH*CS/2+6+pad)return false;      // Baugrundstueck
+    if(Math.hypot(x+90,z-80)<19+pad)return false;                              // See
+    if(Math.abs(Math.abs(z)-(GH*CS/2+12))<8+pad&&Math.abs(x)<RL/2+4)return false;  // Haupt-/Querstrassen
+    if(Math.abs(Math.abs(x)-RX)<8+pad&&Math.abs(z)<78)return false;
+    if(Math.abs(Math.abs(x)-112)<8+pad&&z>-108&&z<126)return false;             // Ringstrasse
+    if((Math.abs(z+100)<8+pad||Math.abs(z-118)<8+pad)&&Math.abs(x)<120)return false;
+    if(z>88&&z<118&&Math.abs(x)<80)return false;                               // Bahnhofsviertel
+    if(z>62&&z<110&&x>-58&&x<8)return false;                                   // Altstadt-Suedviertel
+    if(Math.abs(z+96)<14&&Math.abs(x)<122)return false;                        // Fluss im Norden
+    for(var q=0;q<WORLD_SOLIDS.length;q++){var sq=WORLD_SOLIDS[q];
+      if(Math.abs(x-sq.x)<sq.hw+2.5+pad&&Math.abs(z-sq.z)<sq.hd+2.5+pad)return false;}
+    return true;}
+  function streu(n,radMin,radMax,fn,pad){
+    for(var i9=0,tries=0;i9<n&&tries<n*14;tries++){
+      var a9=Math.random()*6.283,r9=radMin+Math.random()*(radMax-radMin);
+      var px=Math.cos(a9)*r9+(Math.random()-0.5)*22,pz=Math.sin(a9)*r9+(Math.random()-0.5)*22;
+      if(!freiPlatz(px,pz,pad))continue;
+      fn(px,pz);i9++;}}
+  /* Busch-Gruppen + Findlinge + Schilfinseln: fuellen die kahle Wiese zwischen den Vierteln */
+  function busch(x,z){var g=new THREE.Group(),n=2+((Math.random()*3)|0);
+    for(var i=0;i<n;i++){var k=0.7+Math.random()*0.7;
+      var m=new THREE.Mesh(new THREE.SphereGeometry(k,8,6),new THREE.MeshStandardMaterial({color:i%2?0x4a8a48:0x3f7a40,roughness:0.92,envMapIntensity:0.18}));
+      m.position.set((Math.random()-0.5)*2.2,k*0.72,(Math.random()-0.5)*2.2);m.scale.y=0.82;m.castShadow=true;g.add(m);}
+    g.position.set(x,0,z);scene.add(g);}
+  function findling(x,z){var k=0.6+Math.random()*1.5;
+    var m=new THREE.Mesh(new THREE.DodecahedronGeometry(k,0),new THREE.MeshStandardMaterial({color:Math.random()<0.5?0x726c60:0x5e584c,roughness:1,envMapIntensity:0.22}));
+    m.position.set(x,k*0.45,z);m.rotation.set(Math.random()*3,Math.random()*6,Math.random()*3);m.scale.y=0.7;m.castShadow=true;m.receiveShadow=true;scene.add(m);}
+  function schilf(x,z){var g=new THREE.Group();
+    for(var i=0;i<9;i++){var h=1.1+Math.random()*0.9;
+      var m=new THREE.Mesh(new THREE.CylinderGeometry(0.03,0.05,h,4),new THREE.MeshStandardMaterial({color:0x8aa04a,roughness:0.95}));
+      m.position.set((Math.random()-0.5)*1.6,h/2,(Math.random()-0.5)*1.6);m.rotation.z=(Math.random()-0.5)*0.25;g.add(m);}
+    g.position.set(x,0,z);scene.add(g);}
+  function heuballen(x,z){var m=new THREE.Mesh(new THREE.CylinderGeometry(1.05,1.05,1.5,12),new THREE.MeshStandardMaterial({color:0xd8c274,roughness:0.98,envMapIntensity:0.15}));
+    m.rotation.z=Math.PI/2;m.position.set(x,1.05,z);m.rotation.y=Math.random()*3;m.castShadow=true;scene.add(m);}
+  /* ⏱️ Erst streuen, wenn die Stadt steht — sonst ist WORLD_SOLIDS noch leer
+     und die Baeume landen dort, wo spaeter Haeuser gebaut werden. */
+  setTimeout(function(){
+    streu(190,GW*CS/2+8,GW*CS/2+120,function(x,z){baum2(x,z,0.7+Math.random()*1.1);},1);
+    streu(150,GW*CS/2+6,GW*CS/2+130,busch,0);
+    streu(70,GW*CS/2+10,GW*CS/2+135,findling,0);
+    streu(34,GW*CS/2+14,GW*CS/2+120,heuballen,1);
+    for(var sc9=0;sc9<26;sc9++){var sa9=sc9/26*6.283,sr9=22+Math.random()*6;
+      var sx9=-90+Math.cos(sa9)*sr9,sz9=80+Math.sin(sa9)*sr9;
+      if(freiPlatz(sx9,sz9,0))schilf(sx9,sz9);}
+  },0);
   // ---- Breiter Fluss quer durch die Landschaft (Norden) ----
   machWasser(240,16,0,-96,32); // weiter noerdlich — Bloecke/Kirche standen im Fluss
   // ---- Brücke über den Fluss ----
@@ -1888,12 +1929,12 @@ setTimeout(function baueGebaeude(){
        Positionen per Freiflaechen-Solver gegen Strassen + alle 68 Kollider geprueft. */
     (function altstadtPlatz(){ /* 🧱 Gepflasterter Platz + Gassen — die Gebaeude standen auf blanker Wiese */
       var pfM=betMat(0xc4bcae,0.92);
-      if(typeof ladeTex==="function")ladeTex("textures/th5/kopfstein.png",16,14,function(t){pfM.map=t;pfM.color.setHex(0xffffff);pfM.needsUpdate=true;});
-      var pf=new THREE.Mesh(new THREE.PlaneGeometry(40,36),pfM);
-      pf.rotation.x=-Math.PI/2;pf.position.set(-33,-0.012,86);pf.receiveShadow=true;scene.add(pf);
+      if(typeof ladeTex==="function")ladeTex("textures/th5/kopfstein.png",23,17,function(t){pfM.map=t;pfM.color.setHex(0xffffff);pfM.needsUpdate=true;});
+      var pf=new THREE.Mesh(new THREE.PlaneGeometry(58,42),pfM); /* deckt Laden+Werkstatt mit ab, die sonst auf blanker Wiese standen */
+      pf.rotation.x=-Math.PI/2;pf.position.set(-26,-0.012,86);pf.receiveShadow=true;scene.add(pf);
       /* Verbindungsweg zur Sued-Querstrasse (Band 53..63) */
-      var wg=new THREE.Mesh(new THREE.PlaneGeometry(6,9),pfM.clone());
-      wg.rotation.x=-Math.PI/2;wg.position.set(-33,-0.011,65.5);wg.receiveShadow=true;scene.add(wg);
+      var wg=new THREE.Mesh(new THREE.PlaneGeometry(6,6),pfM.clone());
+      wg.rotation.x=-Math.PI/2;wg.position.set(-26,-0.011,63.5);wg.receiveShadow=true;scene.add(wg);
       /* Baeume + Baenke saeumen den Platz */
       [[-16,70],[-16,102],[-50,70],[-50,102]].forEach(function(P8,i8){
         bau("th5_baum_ahorn.glb",4.4,P8[0],0,P8[1],i8*0.9,false);});
@@ -3215,7 +3256,7 @@ function einsteigen(rec,geklaut){
   fahren=true;driveCar=a;driveGeklaut=!!geklaut;
   if(a.state!==undefined)a.state="fahren";
   sims[0].mesh.visible=false;followSim=null;
-  carRot=a.mesh.rotation.y;camR=Math.max(camR,16);camRT=camR;
+  carRot=a.mesh.rotation.y;camR=Math.max(camR,26);camRT=camR;
   document.getElementById("exitCar").style.display="block";
   document.getElementById("nitroBtn").style.display="block";
   if(!MPs||mpHost)document.getElementById("lieferBtn").style.display="block";
@@ -3742,7 +3783,7 @@ function updSim(s,si,dt,now){
 }
 
 // ===================== Kamera (Orbit) =====================
-var camA=0.8,camB=0.72,camR=22,camRT=22,camTx=0,camTz=0,followSim=null;var camAT=null; // camRT = Ziel-Zoom (weiches Easing)
+var camA=0.8,camB=0.78,camR=44,camRT=44,camTx=0,camTz=0,followSim=null;var camAT=null; // camRT = Ziel-Zoom (weiches Easing)
 var egoMode=false; /* 👁️ User: „Egoperspektive … man kann immer wechseln wie GTA" */
 function updCam(){
   if(egoMode&&!buildMode){
@@ -3763,7 +3804,7 @@ function egoToggle(){
   egoMode=!egoMode;
   var _me=sims[meinSi()]||sims[0];
   if(egoMode){if(!followSim&&_me)followSim=_me;hint("👁️ Ego-Modus — nochmal tippen für Übersicht");}
-  else{if(_me&&_me.mesh)_me.mesh.visible=true;if(followSim&&followSim.mesh)followSim.mesh.visible=true;camB=0.72;camRT=Math.max(camRT,13);hint("🎥 Übersicht");}
+  else{if(_me&&_me.mesh)_me.mesh.visible=true;if(followSim&&followSim.mesh)followSim.mesh.visible=true;camB=0.72;camRT=Math.max(camRT,26);hint("🎥 Übersicht");}
   updCam();}
 updCam();
 // ---- Direkte Steuerung: Joystick + WASD ----
@@ -4040,7 +4081,7 @@ function tapAt(px,py){
     if(c0){for(var si=0;si<sims.length;si++){var s2=sims[si];
       if(Math.hypot(s2.x-c0.pt.x,s2.z-c0.pt.z)<1.6){
         if(followSim===s2){followSim=null;hint("Kamera frei");}
-        else{followSim=s2;camR=Math.min(camR,11);camRT=camR;hint("🎥 Kamera folgt "+s2.name+" — nochmal tippen zum Lösen");}
+        else{followSim=s2;camR=Math.min(camR,22);camRT=camR;hint("🎥 Kamera folgt "+s2.name+" — nochmal tippen zum Lösen");}
         return;}}}
     return;}
   var c=pickCell(px,py);if(!c||!inLot(c.gx,c.gy))return;
