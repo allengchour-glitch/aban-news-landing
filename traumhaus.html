@@ -327,7 +327,14 @@ var nachtLampen=[];   /* Die Laternen werden weiter unten gebaut — sie brauche
 
 var sun=new THREE.DirectionalLight(0xfff0d0,1.12);sun.position.set(26,38,18);scene.add(sun);
 scene.add(sun.target);   /* das Ziel muss in der Szene haengen, sonst wandert die Schatten-Box nicht mit */
-sun.castShadow=true;sun.shadow.mapSize.set(IS_TOUCH?1024:2048,IS_TOUCH?1024:2048);sun.shadow.bias=-0.0006;
+sun.castShadow=true;sun.shadow.mapSize.set(IS_TOUCH?1024:2048,IS_TOUCH?1024:2048);
+/* 🐛 Schwarze Flecken mit ausgefransten Raendern = Schatten-Akne: grosse flache Flaechen
+   (Rasen, Fahrbahn) beschatten sich selbst, weil ihre Tiefe in der Schattenkarte minimal
+   von der echten abweicht. Ein negativer bias allein reicht dagegen nicht — normalBias
+   verschiebt die Abtastung entlang der Flaechennormale und ist genau dafuer da.
+   Seit die Schattenbox kleiner ist, faellt der Effekt staerker auf. */
+sun.shadow.bias=-0.00015;
+sun.shadow.normalBias=0.8;
 sun.shadow.camera.near=5;sun.shadow.camera.far=320;
 /* 📱 Das Schatten-Frustum deckte 230x230 m ab. Bei 1024er Map sind das 4.5 Texel pro Meter —
    viel Flaeche, wenig Schaerfe, und alles darin muss jeden Frame neu gezeichnet werden.
