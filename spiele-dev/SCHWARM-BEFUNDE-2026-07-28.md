@@ -1076,3 +1076,43 @@ BAUSTEIN 3 — Scanner st
 2. Codes durchprobieren skaliert nicht. 24^4 = 331.776 moegliche Codes — durchsuchen unmoeglich. Jeder Probe-Versuch kostet 1–3 s und eine Broker-Verbindung; realistisch sind 4–6 Slots. Mehr Slots = laengerer Scan + Rate-Limit-Risiko beim Gratis-Broker.
 
 3. PeerJS hat zwar `peer.listAllPeers()` in der API, aber die oeffentliche Cloud (0.peerjs.com) hat Discovery deaktiviert — der Aufruf liefert dort keine brauchbare Liste. Beim Ersatz-Broker peerjs.92k.de ist es nicht garantiert und kann jederzeit abgeschaltet werden. Deshalb wird bewusst NICHT darauf gebaut. Wer es trotzdem testen will:
+
+---
+
+## Selbstprüfung — was nach jeder Änderung gemessen wird
+
+Die Prüfung wird als Hook in eine Debug-Kopie injiziert (`_th_dbg.html`), im Browser
+über einen lokalen HTTP-Server geladen (`file://` findet three.js nicht) und liest
+den laufenden Spielzustand aus. Kein Screenshot nötig.
+
+| Messwert | Sollwert |
+|---|---|
+| `kolliderAufStrasse` | 0 |
+| `kolliderAufGrundstueck` | 0 |
+| `gebaeudeUeberlappungen` | 1 (Kathedrale + angebauter Glockenturm) |
+| `laternenAufStrasse` / `laternenNaN` | 0 / 0 |
+| `ueberschneidungen` (echte 3D-Körper) | derzeit 273 — Ziel 0 |
+| `uiUeberlappungen` | leer |
+| `drawCalls` / `dreiecke` / `lichter` | ~275 / ~16k / 16 |
+| **`sun.target` folgt der Kamera** | **ja — sonst schwarze Flächen** |
+| JS-Fehler | 0 |
+
+### Warum der Schatten-Check dazugehört
+
+Die Schatten-Box hängt am Ziel des Richtungslichts. Steht das Ziel fest im Weltursprung,
+während die Box klein ist, wird alles ausserhalb **komplett schwarz** gerendert
+(PR #2122). Das fällt in keiner Performance-Messung auf, nur im Bild — deshalb wird
+seither nach jeder Änderung an Licht oder Schatten geprüft, dass `sun.target.position`
+der Kamera folgt und `sun.target.parent === scene` ist.
+
+### Fallen, die mich Zeit gekostet haben
+
+- **Nur Kollider zu prüfen reicht nicht.** Bäume, Laternen, Bänke und alle `bau()`-Modelle
+  haben keinen Kollider und tauchten in keiner Prüfung auf — genau die sah der User.
+  Deshalb vergleicht `__UEBER` die Bounding-Box **jedes** Objekts.
+- **Gelände ausnehmen.** Dass eine Bergkette ineinandergreift, ist gewollt; ohne
+  `userData.gelaende` meldet die Prüfung 119 Fehlalarme.
+- **Media-Queries auf echten Geräten prüfen.** Eine Regel mit `max-height:480px` greift
+  auf modernen Handys quer **nie** — im Test bei 412 px sah alles korrekt aus.
+- **`bau()` skaliert nach Höhe.** Ein breites, flaches Modell wird dadurch riesig; die
+  Masse im Quartier-Generator sind nur Schätzwerte, deshalb misst er nach dem Laden nach.
