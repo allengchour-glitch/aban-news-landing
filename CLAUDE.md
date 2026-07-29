@@ -13,6 +13,12 @@ nach 19k Importen erschöpft → 0 neu. **Fix: Basis-Tiefe hoch** (15+ROUND*3 st
 tief (Seite ~18) greift. ⚠️ **Zweite tote Spur: `countryCode=DE/CZ/PL/…` (EU-Lager-Filter) gibt CJ-weit `total 0`**
 — CJs product/list-Warehouse-Filter liefert für EU nur noch 0, nur CN/US haben Bestand. WAREHOUSE-Env darum leer
 lassen (CN-Fracht 3–6 CHF ist ok). /tmp-Runner-Scripts überleben keinen Wipe → Fix bei Neuaufsetzen mit einbauen.
+**⚠️ Dritte Falle: 30-Min-Strafschlaf (2026-07-29).** Runner deuten JEDEN `RC≠0` als „Punkte weg? Pause 30min" —
+aber der echte Grund ist meist **Gleichzeitigkeit beim Restart** (alle 5 Runner treffen Shopify-OAuth `shTok()` +
+CJ-`getAccessToken` (1×/300s-Limit!) zugleich → transiente Drossel → `exit 1`). Ein einzelner cj_category_fill-Lauf
+mit frischem Token exit IMMER 0 (verifiziert: legt Produkt an). Fix: (1) Strafschlaf `sleep 1800`→`120` (Punkte sind
+reichlich, langer Schlaf war für echten Punktemangel, der hier nie eintritt — der crasht nicht, gibt nur total 0);
+(2) Runner **gestaffelt** starten (3s Abstand), nie alle gleichzeitig. Beides bei Neuaufsetzen der /tmp-Scripts einbauen.
 
 Dieses Repo ist `aban-news-landing`, enthält aber mehrere Projekte. Das aktive, autonome
 Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
