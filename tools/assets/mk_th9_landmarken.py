@@ -109,6 +109,12 @@ def runden(width=0.02, segments=2, winkel=42):
         if o.type != 'MESH': continue
         nur(o)
         bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+        # Teile mit "nb" sind schon rund (Torus-Reifen) oder winzig — ein Bevel
+        # kostet dort ~200 Dreiecke und bringt nichts.
+        if o.get("nb"):
+            try: bpy.ops.object.shade_auto_smooth(angle=math.radians(38))
+            except Exception: pass
+            continue
         m = o.modifiers.new("Bevel", 'BEVEL')
         d_min = max(1e-4, min(o.dimensions))
         m.width = min(width, 0.28 * d_min)
@@ -129,6 +135,157 @@ def export(name, bevel=0.02, seg=2, drehen=True):
     try: bpy.ops.wm.stl_export(filepath=p2)
     except Exception: bpy.ops.export_mesh.stl(filepath=p2)
     print("  ->", name, os.path.getsize(p1), "B")
+
+# ---------------------------------------------------------- RUNDE KAROSSERIEN
+# Eine Kette einzelner Quader liest sich als TREPPE — an Fahrzeugen faellt das am
+# staerksten auf (dieselbe Lehre wie bei den Schiffsruempfen, `hull()` in
+# mk_th15_hafen.py). `karosse()` loftet deshalb EIN Mesh aus verrundeten
+# Rechteck-Querschnitten; alle Masse duerfen Zahl ODER Funktion von y sein, damit
+# Front, Dach und Taille flie3end ineinander uebergehen.
+def _f(v):
+    return v if callable(v) else (lambda _y, _v=v: _v)
+
+def rprofil(hb_u, hb_o, z0, z1, r_u, r_o, n=3):
+    """EIN Querschnitt in der x-z-Ebene: unten 2*hb_u breit, oben 2*hb_o, z0..z1
+    hoch, alle vier Ecken verrundet. Punktzahl ist immer 4*(n+1) — nur mit
+    konstanter Punktzahl lassen sich beliebige Profile zu einem Mesh loften."""
+    h = max(1e-3, z1 - z0)
+    ru = max(0.0, min(r_u, hb_u*0.92, h*0.46))
+    ro = max(0.0, min(r_o, hb_o*0.92, h*0.46))
+    p = []
+    for (cx, cz, rr, a0) in ((hb_u - ru, z0 + ru, ru, -math.pi/2),
+                             (hb_o - ro, z1 - ro, ro, 0.0),
+                             (-hb_o + ro, z1 - ro, ro, math.pi/2),
+                             (-hb_u + ru, z0 + ru, ru, math.pi)):
+        for k in range(n + 1):
+            a = a0 + k*(math.pi/2)/n
+            p.append((cx + math.cos(a)*rr, cz + math.sin(a)*rr))
+    return p
+
+def karosse(ys, hb, z0, z1, m, r_u=0.16, r_o=0.28, n=3, hb_o=None,
+            kappen=(True, True), name="Karosserie"):
+    """Karosserie/Aufbau als EIN geloftetes Mesh ueber die Stationen `ys`."""
+    fhb = _f(hb); fho = _f(hb if hb_o is None else hb_o)
+    fz0, fz1, fru, fro = _f(z0), _f(z1), _f(r_u), _f(r_o)
+    verts, faces = [], []
+    for y in ys:
+        for (x, z) in rprofil(max(0.02, fhb(y)), max(0.02, fho(y)),
+                              fz0(y), fz1(y), fru(y), fro(y), n):
+            verts.append((x, y, z))
+    P = 4*(n + 1)
+    for i in range(len(ys) - 1):
+        a, b = i*P, (i + 1)*P
+        for k in range(P):
+            k2 = (k + 1) % P
+            faces.append((a + k, a + k2, b + k2, b + k))
+    if kappen[0]: faces.append(tuple(range(P - 1, -1, -1)))                 # Heck (-y)
+    if kappen[1]: faces.append(tuple(range((len(ys) - 1)*P, len(ys)*P)))    # Front (+y)
+    me = bpy.data.meshes.new(name); me.from_pydata(verts, [], faces); me.update()
+    o = bpy.data.objects.new(name, me); bpy.context.collection.objects.link(o)
+    if m: me.materials.append(m)
+    bpy.context.view_layer.objects.active = o
+    bm = bmesh.new(); bm.from_mesh(me)
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
+    bm.to_mesh(me); bm.free(); me.update()
+    return o
+
+def prisma_x(pts_yz, breite, m=None, x=0.0, name="Prisma"):
+    """Gewoelbtes Bauteil (Loeffel, Schaufel, Kotfluegel): ein Polygonzug in der
+    y-z-Ebene wird in x extrudiert. Drei gestufte Bodenbleche sind keine Schaufel —
+    mit dem Profil bekommt sie eine echte Rundung."""
+    t = breite/2.0
+    n = len(pts_yz)
+    v = [(x - t, p[0], p[1]) for p in pts_yz] + [(x + t, p[0], p[1]) for p in pts_yz]
+    f = [tuple(range(n)), tuple(range(2*n - 1, n - 1, -1))]
+    for i in range(n):
+        j = (i + 1) % n
+        f.append((i, n + i, n + j, j))
+    me = bpy.data.meshes.new(name); me.from_pydata(v, [], f); me.update()
+    o = bpy.data.objects.new(name, me); bpy.context.collection.objects.link(o)
+    if m: me.materials.append(m)
+    bpy.context.view_layer.objects.active = o
+    bm = bmesh.new(); bm.from_mesh(me)
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
+    bm.to_mesh(me); bm.free(); me.update()
+    return o
+
+def flach(o):
+    """Bauteil vom globalen Bevel ausnehmen. Ein Torus-Reifen ist schon rund, und
+    jedes gebevelte 5-cm-Kaestchen kostet ~200 Dreiecke."""
+    if o is not None: o["nb"] = 1
+    return o
+
+def weich(o, w=0.055, seg=4, winkel=54):
+    """DEUTLICH staerkerer Bevel fuer alles, was die Silhouette bestimmt
+    (Stossstange, Dachkante, Kotfluegel, Leuchten)."""
+    if o is None: return o
+    md = o.modifiers.new("Weich", 'BEVEL')
+    md.width = w; md.segments = seg; md.use_clamp_overlap = True
+    md.limit_method = 'ANGLE'; md.angle_limit = math.radians(winkel)
+    return o
+
+def torus_x(x, y, z, R, r, m=None, mj=20, mn=8):
+    """Ring mit Achse in x — Reifenprofil, Nabenring."""
+    bpy.ops.mesh.primitive_torus_add(location=(x, y, z), rotation=(0, math.pi/2, 0),
+                                     major_radius=R, minor_radius=r,
+                                     major_segments=mj, minor_segments=mn)
+    o = bpy.context.active_object
+    if m: o.data.materials.append(m)
+    return o
+
+def radlauf(x, y, z, R, dicke, breite, m, n=9, spanne=None):
+    """Radlauf als HALBER Bogen aus tangential gedrehten Kaestchen. Ein voller Torus
+    taucht unter z = 0 — die Unterkante muss exakt 0,00 bleiben."""
+    sp = spanne if spanne else math.pi
+    ch = 2*R*math.sin(sp/(2*n))*1.15
+    for i in range(n):
+        a = math.pi/2 - sp/2 + sp*(i + 0.5)/n
+        o = box(x, y + math.cos(a)*R, z + math.sin(a)*R, breite, ch, dicke, m)
+        o.rotation_euler[0] = a - math.pi/2
+        flach(o)
+
+def rad_voll(x, y, z, r, breite, m_reif, m_felge, seg=24, speichen=5, sx=0,
+             stollen=0, m_stoll=None):
+    """Rad mit RUNDEM Reifenprofil (Torus statt Klotz-Zylinder), Felgenschuessel,
+    Speichenloechern und Nabe. `seg` MUSS gerade sein: bei ungerader Zahl steht
+    unten eine Ecke statt einer Kante und das Rad schwebt (teuer gelernt an th17).
+    `sx` = -1/+1 bringt die Felgendetails nur auf die sichtbare Aussenseite."""
+    if seg % 2: seg += 1
+    rm = min(breite*0.5, r*0.34)
+    rf = max(0.04, r - 2*rm)
+    flach(torus_x(x, y, z, r - rm, rm, m_reif, seg, 8))                 # Lauf + Flanken
+    flach(zyl(x, y, z, r - rm + 0.004, breite*0.55, m_reif, seg, rot=(0, math.pi/2, 0)))
+    flach(zyl(x, y, z, rf*1.02, breite*0.80, m_felge, seg, rot=(0, math.pi/2, 0)))
+    for s in ((sx,) if sx else (-1, 1)):
+        xf = x + s*breite*0.44
+        flach(zyl(xf, y, z, rf*0.99, breite*0.06, m_felge, seg, rot=(0, math.pi/2, 0)))
+        for i in range(speichen):
+            a = i/max(1, speichen)*math.tau + 0.35
+            flach(zyl(xf + s*0.012, y + math.cos(a)*rf*0.56, z + math.sin(a)*rf*0.56,
+                      rf*0.27, breite*0.05, m_reif, 10, rot=(0, math.pi/2, 0)))
+        flach(zyl(xf + s*0.024, y, z, rf*0.32, breite*0.08, m_felge, 12,
+                  rot=(0, math.pi/2, 0)))
+    for i in range(stollen):                                            # Stollenprofil
+        a = i/stollen*math.tau
+        o = box(x, y + math.cos(a)*(r - rm*0.5), z + math.sin(a)*(r - rm*0.5),
+                breite*0.94, r*0.19, rm*0.80, m_stoll or m_reif)
+        o.rotation_euler[0] = a - math.pi/2
+        flach(o)
+
+def scheibe(p0, p1, breite, m, dicke=0.05, aus=0.035):
+    """Schraege Scheibe zwischen zwei Punkten (Windschutz-, Heckscheibe), um `aus`
+    nach AUSSEN versetzt — im Blech steckend waere sie unsichtbar (Fallstrick 3).
+    Rotation um x: lokale z-Achse auf die Sehne, also atan2(-vy, vz)."""
+    ax, ay, az = p0; bx, by, bz = p1
+    vy, vz = by - ay, bz - az
+    L = math.hypot(vy, vz)
+    if L < 1e-5: return None
+    ny, nz = -vz/L, vy/L
+    if ny < 0: ny, nz = -ny, -nz
+    o = box((ax + bx)/2, (ay + by)/2 + ny*aus, (az + bz)/2 + nz*aus,
+            breite, dicke, L, m)
+    o.rotation_euler[0] = math.atan2(-vy, vz)
+    return o
 
 def fensterraster(cx, cy, b, t, z0, etagen, eh, m_glas, m_band, seiten=4):
     """Umlaufende Fensterbaender. Glas liegt knapp VOR der Wandflaeche (sonst steckt es
@@ -406,60 +563,164 @@ def burg():
 
 # ============================================================ 8) Bus
 def stadtbus():
+    """Niederflur-Stadtbus. 2026-07-29 von der Quaderkette auf EINE geloftete
+    Karosserie umgestellt: gewoelbte Bug- und Heckkappe, verrundete Dachkante,
+    Radlaeufe, Raeder mit Torus-Profil. Front auf +y, deshalb drehen=False."""
     neu()
-    GELB = mat("BusGelb", (0.92,0.72,0.16), 0.5)
-    G    = mat("Scheibe", (0.20,0.30,0.40), 0.12, 0.3)
-    R    = mat("Reifen", (0.10,0.10,0.12), 0.85)
-    FEL  = mat("Felge", (0.66,0.68,0.70), 0.35, 0.7)
-    DKL  = mat("Dunkel", (0.16,0.18,0.22), 0.5)
-    box(0,0,1.75, 2.55,11.0,2.30, GELB)
-    box(0,0,2.98, 2.42,10.6,0.30, GELB)
-    box(0,-5.53,2.05, 2.20,0.14,1.20, G)                     # Frontscheibe
-    box(0, 5.53,2.05, 2.20,0.14,1.10, G)                     # Heckscheibe
-    for sy in (-3.6,-1.2, 1.2, 3.6):
-        for sx in (-1.24, 1.24):
-            box(sx, sy, 2.15, 0.12, 1.9, 1.05, G)            # Seitenscheiben
-    box(1.24,-2.6, 1.57, 0.12, 1.2, 1.94, DKL)               # Tueren (buendig, schweben nicht)
-    box(1.24, 2.2, 1.57, 0.12, 1.2, 1.94, DKL)
-    box(0,0,0.62, 2.60,11.1,0.5, DKL)
-    for sy in (-3.9, 3.4):
-        for sx in (-1.20, 1.20):
-            rad(sx, sy, 0.52, 0.52, 0.32, R, 16)
-            rad(sx*1.03, sy, 0.52, 0.26, 0.34, FEL, 12)
-    box(0,-5.53,2.68, 1.6,0.12,0.34,
-        mat("Anzeige",(0.95,0.85,0.30),0.3,0.0,(0.95,0.85,0.30),1.2))
-    export("th9_stadtbus", 0.016, 2)
+    GELB = mat("BusGelb",   (0.93,0.73,0.16), 0.45)
+    GEL2 = mat("Gelb tief", (0.76,0.58,0.11), 0.5)
+    G    = mat("Scheibe",   (0.19,0.28,0.37), 0.10, 0.3)
+    R    = mat("Reifen",    (0.09,0.09,0.10), 0.9)
+    FEL  = mat("Felge",     (0.68,0.70,0.72), 0.32, 0.55)
+    DKL  = mat("Dunkel",    (0.15,0.16,0.19), 0.55)
+    GRAU = mat("Schuerze",  (0.34,0.35,0.38), 0.7)
+    LIC  = mat("Scheinwerfer", (1.00,0.96,0.84), 0.2)
+    ROT  = mat("Rueckleuchte", (0.80,0.14,0.11), 0.32)
+    ZIEL = mat("Zielanzeige", (0.95,0.85,0.30), 0.3, 0.0, (0.95,0.85,0.30), 1.4)
+    Z0, ZD = 0.32, 2.96
+    def zd(y):
+        a = abs(y)
+        if a <= 4.75: return ZD
+        return ZD - 0.15*((a - 4.75)/0.85)**2
+    def bb(y):
+        w = 1.28
+        if y >  4.45: w -= 0.13*((y - 4.45)/1.15)**2
+        if y < -4.55: w -= 0.11*((-4.55 - y)/1.05)**2
+        return w
+    def ro(y):
+        a = abs(y)
+        if a <= 4.40: return 0.32
+        return 0.32 + 0.34*((a - 4.40)/1.20)**2
+    ys = [-5.60,-5.42,-5.15,-4.75,-4.10,-3.00,-1.60,0.0,1.60,3.00,4.10,4.75,5.15,5.42,5.58]
+    weich(karosse(ys, bb, Z0, zd, GELB, 0.30, ro, 3,
+                  hb_o=lambda y: bb(y) - 0.05), 0.07, 4)
+    # --- Front: senkrechte Bugkappe mit grosser Scheibe (Niederflurbus-Optik)
+    weich(box(0, 5.61, 2.28, 2.16, 0.08, 1.20, G), 0.06, 4)          # Frontscheibe
+    weich(box(0, 5.60, 2.92, 1.70, 0.10, 0.26, ZIEL), 0.05, 3)       # Zielanzeige
+    weich(box(0, 5.60, 0.86, 2.24, 0.14, 0.44, GRAU), 0.07, 4)       # Stossfaenger
+    for s in (-1, 1):
+        weich(box(s*0.78, 5.62, 1.32, 0.44, 0.09, 0.22, LIC), 0.05, 3)
+        flach(box(s*0.62, 5.66, 0.78, 0.26, 0.05, 0.10, DKL))
+        weich(box(s*1.36, 4.90, 2.46, 0.14, 0.09, 0.52, DKL), 0.05, 3)   # Spiegel
+        flach(box(s*1.28, 4.92, 2.32, 0.14, 0.05, 0.05, DKL))
+    flach(box(0, 5.64, 1.62, 1.40, 0.06, 0.18, GEL2))                # Zierband
+    # --- Heck
+    weich(box(0, -5.63, 2.28, 2.00, 0.08, 0.98, G), 0.06, 4)         # Heckscheibe
+    weich(box(0, -5.62, 0.84, 2.20, 0.14, 0.42, GRAU), 0.07, 4)
+    for s in (-1, 1):
+        weich(box(s*0.84, -5.64, 1.38, 0.30, 0.08, 0.56, ROT), 0.05, 3)
+    for i in range(7):
+        flach(box(0, -5.60, 1.72 + i*0.09, 1.30, 0.05, 0.05, DKL))   # Motorgitter
+    # --- Seitenfenster (Band) und Tueren auf +x (three.js +x = rechte Seite)
+    for i, (yc, ln) in enumerate(((3.55, 1.30), (1.55, 1.55), (-0.55, 1.55),
+                                  (-2.55, 1.55), (-4.35, 1.35))):
+        for s in (-1, 1):
+            box(s*1.27, yc, 2.34, 0.07, ln, 0.86, G)
+    for s in (-1, 1):
+        flach(box(s*1.28, 0.0, 1.72, 0.05, 10.4, 0.10, GEL2))        # Zierlinie
+        flach(box(s*1.28, 0.0, 0.62, 0.05, 10.2, 0.44, GRAU))        # Schuerze
+    for yd in (4.45, -1.60):                                          # 2 Doppeltueren
+        box(1.29, yd, 1.62, 0.08, 1.24, 2.10, DKL)
+        box(1.31, yd, 2.20, 0.06, 1.12, 0.82, G)
+        flach(box(1.33, yd, 1.62, 0.04, 0.05, 2.06, GEL2))
+    # --- Raeder mit Radlauf
+    for sy in (3.75, -3.45):
+        for s in (-1, 1):
+            rad_voll(s*1.14, sy, 0.50, 0.50, 0.30, R, FEL, 24, 6, s)
+            radlauf(s*1.19, sy, 0.50, 0.68, 0.08, 0.16, GELB, 9)
+    # --- Dach
+    weich(box(0, 1.20, 3.06, 1.60, 2.10, 0.22, GEL2), 0.08, 4)       # Klimaaufbau
+    for i in range(3):
+        flach(box(0, -2.20 - i*1.10, 3.00, 1.10, 0.72, 0.07, GEL2))  # Dachluken
+    export("th9_stadtbus", 0.026, 3, drehen=False)
 
 # ============================================================ 9) Feuerwehrauto
 def feuerwehr():
+    """Loeschfahrzeug mit gelofteter Kabine und gelofteten Aufbau: gewoelbte Front,
+    schraege A-Saeule, verrundete Dachkanten, Rolladenfaecher, Leiter, Blaulicht.
+    Front auf +y, deshalb drehen=False."""
     neu()
-    ROT  = mat("FwRot", (0.72,0.10,0.09), 0.45)
-    G    = mat("Scheibe", (0.20,0.30,0.40), 0.12, 0.3)
-    R    = mat("Reifen", (0.10,0.10,0.12), 0.85)
-    FEL  = mat("Felge", (0.66,0.68,0.70), 0.35, 0.7)
-    CHR  = mat("Chrom", (0.72,0.74,0.78), 0.3, 0.8)
+    ROT  = mat("FwRot",   (0.74,0.11,0.09), 0.42)
+    ROT2 = mat("Rot tief",(0.55,0.08,0.07), 0.5)
+    G    = mat("Scheibe", (0.19,0.28,0.37), 0.10, 0.3)
+    R    = mat("Reifen",  (0.09,0.09,0.10), 0.9)
+    FEL  = mat("Felge",   (0.68,0.70,0.72), 0.32, 0.55)
+    CHR  = mat("Riffelblech", (0.70,0.72,0.75), 0.35, 0.55)
+    ALU  = mat("Rolladen",(0.78,0.79,0.80), 0.45, 0.4)
+    DKL  = mat("Rahmen",  (0.16,0.16,0.18), 0.6)
+    LIC  = mat("Scheinwerfer", (1.00,0.96,0.84), 0.2)
     BLAU = mat("Blaulicht", (0.20,0.36,0.92), 0.2, 0.0, (0.20,0.36,0.92), 2.6)
-    box(0,-2.4,1.60, 2.45,2.60,1.90, ROT)                    # Kabine
-    box(0,-3.64,1.90, 2.10,0.16,0.95, G)                     # Frontscheibe
-    for sx in (-1.20, 1.20):                                 # Tuerfenster
-        box(sx, -2.9, 1.95, 0.12, 1.1, 0.75, G)
-    box(0, 1.5,1.55, 2.50,5.60,1.80, ROT)                    # Aufbau
-    box(0, 1.5,2.55, 2.60,5.70,0.28, ROT)
-    for sy in (-0.2, 1.4, 3.0):                              # Geraetefaecher
-        for sx in (-1.23, 1.23):
-            box(sx, sy, 1.35, 0.10, 1.3, 1.1, CHR)
-    box(0, 1.55, 2.78, 0.9, 5.4, 0.10, CHR)                  # Leiterbett
-    for sx in (-0.35, 0.35):                                 # Leiter: 2 Holme
-        zyl(sx, 1.55, 2.95, 0.09, 5.4, CHR, 10, rot=(math.pi/2,0,0))
-    for k in range(7):                                       # Leiter: Sprossen
-        zyl(0, -0.85+k*0.80, 2.95, 0.05, 0.72, CHR, 8, rot=(0,math.pi/2,0))
-    box(0,-2.4,2.66, 1.5,0.5,0.24, BLAU)                     # Blaulichtbalken
-    box(0, 0.30,0.55, 2.45,8.00,0.44, mat("Rahmen",(0.20,0.20,0.22),0.6))
-    for sy in (-2.9, 1.2, 2.9):
-        for sx in (-1.18, 1.18):
-            rad(sx, sy, 0.50, 0.50, 0.30, R, 16)
-            rad(sx*1.03, sy, 0.50, 0.25, 0.32, FEL, 12)
-    export("th9_feuerwehr", 0.016, 2)
+    ORA  = mat("Warnleuchte", (1.0,0.55,0.10), 0.25, 0.0, (1.0,0.52,0.10), 2.0)
+    # --- Mannschaftskabine: Front faellt ueber die Scheibe in den Kuehlergrill
+    def zk(y):
+        if y <= 3.10: return 2.98
+        return 2.98 - 0.98*min(1.0, (y - 3.10)/0.86)**1.6
+    def bk(y):
+        w = 1.24
+        if y > 3.30: w -= 0.14*((y - 3.30)/0.66)**2
+        return w
+    def rk(y):
+        if y <= 3.10: return 0.26
+        return 0.26 + 0.30*min(1.0, (y - 3.10)/0.86)**2
+    yk = [1.05,1.45,2.05,2.65,3.10,3.32,3.52,3.70,3.85,3.94]
+    weich(karosse(yk, bk, 0.88, zk, ROT, 0.20, rk, 3), 0.06, 4)
+    scheibe((0.0, 3.16, 2.94), (0.0, 3.66, 2.36), 2.02, G, 0.06, 0.05)
+    for s in (-1, 1):
+        box(s*1.21, 2.30, 2.40, 0.07, 1.30, 0.72, G)                 # Tuerfenster
+        flach(box(s*1.23, 1.62, 1.90, 0.04, 0.05, 1.86, ROT2))       # Tuerfugen
+        flach(box(s*1.23, 3.02, 1.90, 0.04, 0.05, 1.86, ROT2))
+        flach(box(s*1.22, 1.94, 1.98, 0.06, 0.18, 0.05, CHR))        # Griff
+        weich(box(s*1.34, 3.20, 2.52, 0.13, 0.09, 0.44, DKL), 0.05, 3)   # Spiegel
+        flach(box(s*1.26, 3.22, 2.40, 0.14, 0.05, 0.05, DKL))
+    # --- Aufbau
+    def ra(y):
+        if y >= -3.70: return 0.22
+        return 0.22 + 0.26*((-3.70 - y)/0.55)**2
+    ya = [-4.22,-4.05,-3.70,-3.00,-2.00,-1.00,0.00,0.70,1.10,1.28]
+    weich(karosse(ya, 1.26, 0.80, 2.84, ROT, 0.14, ra, 3), 0.06, 4)
+    for s in (-1, 1):                                                # 3 Rolladenfaecher
+        for yc in (-3.15, -1.55, 0.05):
+            box(s*1.28, yc, 1.66, 0.05, 1.34, 1.44, ALU)
+            for k in range(9):
+                flach(box(s*1.30, yc, 1.06 + k*0.15, 0.03, 1.30, 0.06, CHR))
+            flach(box(s*1.31, yc, 2.42, 0.04, 1.38, 0.09, ROT2))
+        flach(box(s*1.27, -1.55, 0.62, 0.06, 5.20, 0.30, ROT2))      # Schweller
+        flach(box(s*1.28, -1.55, 2.72, 0.05, 5.30, 0.10, CHR))       # Dachkante
+    weich(box(0, -1.50, 2.90, 2.30, 5.30, 0.10, CHR), 0.05, 3)       # Dachpodest
+    for i in range(11):
+        flach(box(0, -3.90 + i*0.50, 2.96, 2.16, 0.24, 0.05, ALU))   # Riffelblech
+    # --- Leiter auf dem Dach
+    for s in (-1, 1):
+        zyl(s*0.38, -1.30, 3.10, 0.075, 5.00, CHR, 12, rot=(math.pi/2, 0, 0))
+        flach(zyl(s*0.38, 1.22, 3.10, 0.09, 0.10, DKL, 12, rot=(math.pi/2, 0, 0)))
+    for k in range(9):
+        flach(zyl(0, -3.60 + k*0.58, 3.10, 0.042, 0.70, CHR, 8, rot=(0, math.pi/2, 0)))
+    for s in (-1, 1):                                                # Leiterauflagen
+        flach(box(s*0.52, -3.55, 2.99, 0.10, 0.16, 0.18, DKL))
+        flach(box(s*0.52, 1.10, 2.99, 0.10, 0.16, 0.18, DKL))
+    # --- Front
+    weich(box(0, 3.98, 1.24, 2.10, 0.20, 0.42, DKL), 0.08, 4)        # Stossfaenger
+    weich(box(0, 3.96, 1.78, 1.30, 0.10, 0.24, DKL), 0.05, 3)        # Kuehlergrill
+    for i in range(3):
+        flach(box(0, 4.00, 1.72 + i*0.10, 1.20, 0.04, 0.05, CHR))
+    for s in (-1, 1):
+        weich(box(s*0.74, 3.96, 1.76, 0.36, 0.09, 0.20, LIC), 0.05, 3)
+        weich(box(s*0.86, 3.98, 1.30, 0.26, 0.07, 0.14, ORA), 0.04, 3)
+        flach(zyl(s*1.02, 3.86, 1.20, 0.07, 0.16, DKL, 10, rot=(math.pi/2, 0, 0)))
+    weich(box(0, 2.90, 3.10, 1.62, 0.34, 0.16, BLAU), 0.06, 4)       # Blaulichtbalken
+    flach(box(0, 2.90, 2.98, 1.70, 0.38, 0.08, DKL))
+    # --- Heck
+    weich(box(0, -4.28, 1.20, 2.16, 0.18, 0.40, DKL), 0.07, 4)
+    for s in (-1, 1):
+        weich(box(s*0.84, -4.26, 1.80, 0.26, 0.08, 0.52, ORA), 0.05, 3)
+    flach(box(0, -4.26, 2.40, 1.60, 0.06, 0.28, CHR))
+    # --- Rahmen und Raeder
+    box(0, 0.10, 0.56, 2.06, 7.90, 0.30, DKL)
+    for sy in (2.80, -1.75, -3.05):
+        for s in (-1, 1):
+            rad_voll(s*1.12, sy, 0.50, 0.50, 0.30, R, FEL, 24, 6, s)
+            radlauf(s*1.17, sy, 0.50, 0.68, 0.08, 0.16, ROT, 9)
+    export("th9_feuerwehr", 0.024, 3, drehen=False)
 
 # ============================================================ 10) Wasserturm
 def wasserturm():

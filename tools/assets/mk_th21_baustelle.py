@@ -202,6 +202,12 @@ def runden(width=0.02, segments=2, winkel=42):
         if o.type != 'MESH': continue
         nur(o)
         bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+        # Teile mit "nb" sind schon rund (Torus-Reifen) oder winzig — ein Bevel
+        # kostet dort ~200 Dreiecke und bringt nichts.
+        if o.get("nb"):
+            try: bpy.ops.object.shade_auto_smooth(angle=math.radians(38))
+            except Exception: pass
+            continue
         m = o.modifiers.new("Bevel", 'BEVEL')
         d_min = max(1e-4, min(o.dimensions))
         m.width = min(width, 0.28 * d_min)
@@ -221,6 +227,157 @@ def export(name, bevel=0.02, seg=2):
     try: bpy.ops.wm.stl_export(filepath=p2)
     except Exception: bpy.ops.export_mesh.stl(filepath=p2)
     print("  ->", name, os.path.getsize(p1), "B")
+
+# ---------------------------------------------------------- RUNDE KAROSSERIEN
+# Eine Kette einzelner Quader liest sich als TREPPE — an Fahrzeugen faellt das am
+# staerksten auf (dieselbe Lehre wie bei den Schiffsruempfen, `hull()` in
+# mk_th15_hafen.py). `karosse()` loftet deshalb EIN Mesh aus verrundeten
+# Rechteck-Querschnitten; alle Masse duerfen Zahl ODER Funktion von y sein, damit
+# Front, Dach und Taille flie3end ineinander uebergehen.
+def _f(v):
+    return v if callable(v) else (lambda _y, _v=v: _v)
+
+def rprofil(hb_u, hb_o, z0, z1, r_u, r_o, n=3):
+    """EIN Querschnitt in der x-z-Ebene: unten 2*hb_u breit, oben 2*hb_o, z0..z1
+    hoch, alle vier Ecken verrundet. Punktzahl ist immer 4*(n+1) — nur mit
+    konstanter Punktzahl lassen sich beliebige Profile zu einem Mesh loften."""
+    h = max(1e-3, z1 - z0)
+    ru = max(0.0, min(r_u, hb_u*0.92, h*0.46))
+    ro = max(0.0, min(r_o, hb_o*0.92, h*0.46))
+    p = []
+    for (cx, cz, rr, a0) in ((hb_u - ru, z0 + ru, ru, -math.pi/2),
+                             (hb_o - ro, z1 - ro, ro, 0.0),
+                             (-hb_o + ro, z1 - ro, ro, math.pi/2),
+                             (-hb_u + ru, z0 + ru, ru, math.pi)):
+        for k in range(n + 1):
+            a = a0 + k*(math.pi/2)/n
+            p.append((cx + math.cos(a)*rr, cz + math.sin(a)*rr))
+    return p
+
+def karosse(ys, hb, z0, z1, m, r_u=0.16, r_o=0.28, n=3, hb_o=None,
+            kappen=(True, True), name="Karosserie"):
+    """Karosserie/Aufbau als EIN geloftetes Mesh ueber die Stationen `ys`."""
+    fhb = _f(hb); fho = _f(hb if hb_o is None else hb_o)
+    fz0, fz1, fru, fro = _f(z0), _f(z1), _f(r_u), _f(r_o)
+    verts, faces = [], []
+    for y in ys:
+        for (x, z) in rprofil(max(0.02, fhb(y)), max(0.02, fho(y)),
+                              fz0(y), fz1(y), fru(y), fro(y), n):
+            verts.append((x, y, z))
+    P = 4*(n + 1)
+    for i in range(len(ys) - 1):
+        a, b = i*P, (i + 1)*P
+        for k in range(P):
+            k2 = (k + 1) % P
+            faces.append((a + k, a + k2, b + k2, b + k))
+    if kappen[0]: faces.append(tuple(range(P - 1, -1, -1)))                 # Heck (-y)
+    if kappen[1]: faces.append(tuple(range((len(ys) - 1)*P, len(ys)*P)))    # Front (+y)
+    me = bpy.data.meshes.new(name); me.from_pydata(verts, [], faces); me.update()
+    o = bpy.data.objects.new(name, me); bpy.context.collection.objects.link(o)
+    if m: me.materials.append(m)
+    bpy.context.view_layer.objects.active = o
+    bm = bmesh.new(); bm.from_mesh(me)
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
+    bm.to_mesh(me); bm.free(); me.update()
+    return o
+
+def prisma_x(pts_yz, breite, m=None, x=0.0, name="Prisma"):
+    """Gewoelbtes Bauteil (Loeffel, Schaufel, Kotfluegel): ein Polygonzug in der
+    y-z-Ebene wird in x extrudiert. Drei gestufte Bodenbleche sind keine Schaufel —
+    mit dem Profil bekommt sie eine echte Rundung."""
+    t = breite/2.0
+    n = len(pts_yz)
+    v = [(x - t, p[0], p[1]) for p in pts_yz] + [(x + t, p[0], p[1]) for p in pts_yz]
+    f = [tuple(range(n)), tuple(range(2*n - 1, n - 1, -1))]
+    for i in range(n):
+        j = (i + 1) % n
+        f.append((i, n + i, n + j, j))
+    me = bpy.data.meshes.new(name); me.from_pydata(v, [], f); me.update()
+    o = bpy.data.objects.new(name, me); bpy.context.collection.objects.link(o)
+    if m: me.materials.append(m)
+    bpy.context.view_layer.objects.active = o
+    bm = bmesh.new(); bm.from_mesh(me)
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
+    bm.to_mesh(me); bm.free(); me.update()
+    return o
+
+def flach(o):
+    """Bauteil vom globalen Bevel ausnehmen. Ein Torus-Reifen ist schon rund, und
+    jedes gebevelte 5-cm-Kaestchen kostet ~200 Dreiecke."""
+    if o is not None: o["nb"] = 1
+    return o
+
+def weich(o, w=0.055, seg=4, winkel=54):
+    """DEUTLICH staerkerer Bevel fuer alles, was die Silhouette bestimmt
+    (Stossstange, Dachkante, Kotfluegel, Leuchten)."""
+    if o is None: return o
+    md = o.modifiers.new("Weich", 'BEVEL')
+    md.width = w; md.segments = seg; md.use_clamp_overlap = True
+    md.limit_method = 'ANGLE'; md.angle_limit = math.radians(winkel)
+    return o
+
+def torus_x(x, y, z, R, r, m=None, mj=20, mn=8):
+    """Ring mit Achse in x — Reifenprofil, Nabenring."""
+    bpy.ops.mesh.primitive_torus_add(location=(x, y, z), rotation=(0, math.pi/2, 0),
+                                     major_radius=R, minor_radius=r,
+                                     major_segments=mj, minor_segments=mn)
+    o = bpy.context.active_object
+    if m: o.data.materials.append(m)
+    return o
+
+def radlauf(x, y, z, R, dicke, breite, m, n=9, spanne=None):
+    """Radlauf als HALBER Bogen aus tangential gedrehten Kaestchen. Ein voller Torus
+    taucht unter z = 0 — die Unterkante muss exakt 0,00 bleiben."""
+    sp = spanne if spanne else math.pi
+    ch = 2*R*math.sin(sp/(2*n))*1.15
+    for i in range(n):
+        a = math.pi/2 - sp/2 + sp*(i + 0.5)/n
+        o = box(x, y + math.cos(a)*R, z + math.sin(a)*R, breite, ch, dicke, m)
+        o.rotation_euler[0] = a - math.pi/2
+        flach(o)
+
+def rad_voll(x, y, z, r, breite, m_reif, m_felge, seg=24, speichen=5, sx=0,
+             stollen=0, m_stoll=None):
+    """Rad mit RUNDEM Reifenprofil (Torus statt Klotz-Zylinder), Felgenschuessel,
+    Speichenloechern und Nabe. `seg` MUSS gerade sein: bei ungerader Zahl steht
+    unten eine Ecke statt einer Kante und das Rad schwebt (teuer gelernt an th17).
+    `sx` = -1/+1 bringt die Felgendetails nur auf die sichtbare Aussenseite."""
+    if seg % 2: seg += 1
+    rm = min(breite*0.5, r*0.34)
+    rf = max(0.04, r - 2*rm)
+    flach(torus_x(x, y, z, r - rm, rm, m_reif, seg, 8))                 # Lauf + Flanken
+    flach(zyl(x, y, z, r - rm + 0.004, breite*0.55, m_reif, seg, rot=(0, math.pi/2, 0)))
+    flach(zyl(x, y, z, rf*1.02, breite*0.80, m_felge, seg, rot=(0, math.pi/2, 0)))
+    for s in ((sx,) if sx else (-1, 1)):
+        xf = x + s*breite*0.44
+        flach(zyl(xf, y, z, rf*0.99, breite*0.06, m_felge, seg, rot=(0, math.pi/2, 0)))
+        for i in range(speichen):
+            a = i/max(1, speichen)*math.tau + 0.35
+            flach(zyl(xf + s*0.012, y + math.cos(a)*rf*0.56, z + math.sin(a)*rf*0.56,
+                      rf*0.27, breite*0.05, m_reif, 10, rot=(0, math.pi/2, 0)))
+        flach(zyl(xf + s*0.024, y, z, rf*0.32, breite*0.08, m_felge, 12,
+                  rot=(0, math.pi/2, 0)))
+    for i in range(stollen):                                            # Stollenprofil
+        a = i/stollen*math.tau
+        o = box(x, y + math.cos(a)*(r - rm*0.5), z + math.sin(a)*(r - rm*0.5),
+                breite*0.94, r*0.19, rm*0.80, m_stoll or m_reif)
+        o.rotation_euler[0] = a - math.pi/2
+        flach(o)
+
+def scheibe(p0, p1, breite, m, dicke=0.05, aus=0.035):
+    """Schraege Scheibe zwischen zwei Punkten (Windschutz-, Heckscheibe), um `aus`
+    nach AUSSEN versetzt — im Blech steckend waere sie unsichtbar (Fallstrick 3).
+    Rotation um x: lokale z-Achse auf die Sehne, also atan2(-vy, vz)."""
+    ax, ay, az = p0; bx, by, bz = p1
+    vy, vz = by - ay, bz - az
+    L = math.hypot(vy, vz)
+    if L < 1e-5: return None
+    ny, nz = -vz/L, vy/L
+    if ny < 0: ny, nz = -ny, -nz
+    o = box((ax + bx)/2, (ay + by)/2 + ny*aus, (az + bz)/2 + nz*aus,
+            breite, dicke, L, m)
+    o.rotation_euler[0] = math.atan2(-vy, vz)
+    return o
 
 # ---------------------------------------------------------------- Bau-Helfer
 def gelaender(a0, a1, fest, z, m, hoehe=1.05, achse='x', d=0.07):

@@ -685,9 +685,13 @@ Gesamthöhe rechnet, damit Kind und Erwachsener dieselben Proportionen haben.
 > lassen an Kapseln und Ellipsoiden die Facetten stehen — genau der Klotz-Eindruck, der
 > hier vermieden werden soll. `glatt()` setzt 62°.
 
-**Offen an dieser Charge:** der Rumpf liest sich noch als Platte statt als Brustkorb, und
-die Haarkalotte hat am Scheitel eine sichtbare Schnittkante. Beides braucht einen zweiten
-Durchgang.
+> ⚠️ **Getrennte Ellipsoide uebereinander ergeben einen geriffelten Michelin-Rumpf.**
+> Erst ein durchgehendes, durch die Querschnitte geloftetes Mesh liest sich als Koerper —
+> dieselbe Lehre wie bei Schiffsruempfen und Fahrzeugkarosserien. Dafuer gibt es hier
+> `loft(schnitte, ...)`.
+
+**Offen an dieser Charge:** die Haarkalotte hat am Scheitel noch eine sichtbare
+Schnittkante, und die Figuren stehen in einer starren Ruhepose ohne Rig.
 
 ---
 

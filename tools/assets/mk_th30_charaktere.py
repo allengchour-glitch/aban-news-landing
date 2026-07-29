@@ -247,6 +247,38 @@ def kapsel(x0, y0, z0, x1, y1, z1, r, m=None, seg=22, r2=None):
         glatt(k)
     return glatt(o)
 
+def loft(schnitte, m=None, seg=24, deckel=True):
+    """Loftet EIN geschlossenes Mesh durch eine Folge von Querschnitten.
+    schnitte: Liste aus (z, halbbreite_x, halbtiefe_y, versatz_y).
+    Getrennte Ellipsoide uebereinander ergeben einen geriffelten Michelin-Rumpf —
+    erst ein durchgehendes Mesh liest sich als Koerper. Gleiche Technik wie
+    `hull()` fuer Schiffsruempfe und `karosse()` fuer Fahrzeuge."""
+    verts, faces = [], []
+    for (z, hb, ht, oy) in schnitte:
+        for k in range(seg):
+            a = k/seg*math.tau
+            verts.append((math.cos(a)*hb, oy + math.sin(a)*ht, z))
+    n = len(schnitte)
+    for i in range(n - 1):
+        for k in range(seg):
+            k2 = (k + 1) % seg
+            faces.append((i*seg + k, i*seg + k2, (i+1)*seg + k2, (i+1)*seg + k))
+    if deckel:
+        verts.append((0, schnitte[0][3], schnitte[0][0]))
+        u = len(verts) - 1
+        for k in range(seg):
+            faces.append((u, (k + 1) % seg, k))
+        verts.append((0, schnitte[-1][3], schnitte[-1][0]))
+        o_ = len(verts) - 1
+        b0 = (n - 1)*seg
+        for k in range(seg):
+            faces.append((o_, b0 + k, b0 + (k + 1) % seg))
+    me = bpy.data.meshes.new("Loft"); me.from_pydata(verts, [], faces); me.update()
+    o = bpy.data.objects.new("Loft", me); bpy.context.collection.objects.link(o)
+    if m: o.data.materials.append(m)
+    bpy.context.view_layer.objects.active = o
+    return glatt(o)
+
 def figur(hoehe, HAUT, HAAR, OBEN, UNTEN, SCHUH, AKZ, weiblich=False, kind=False,
           helm=None, weste=None):
     """Eine Figur in leichter A-Pose, komplett aus Kapseln und Ellipsoiden.
@@ -265,13 +297,21 @@ def figur(hoehe, HAUT, HAAR, OBEN, UNTEN, SCHUH, AKZ, weiblich=False, kind=False
     r_arm    = H*0.031 if not kind else H*0.036
     r_bein   = H*0.045 if not kind else H*0.050
 
-    # --- Rumpf: Brustkorb und Becken als Ellipsoide, dazwischen die Taille
-    ellipsoid(0, 0, H*0.735, schult_b*0.86, H*0.062, H*0.100, OBEN, 30)   # schmaler,
-    #  der breite flache Ballen las sich als Platte statt als Brustkorb
-    ellipsoid(0, 0, hueft_z + H*0.030, hueft_b*1.02, H*0.052, H*0.070, UNTEN, 30)
-    kapsel(0, 0, hueft_z + H*0.050, 0, 0, H*0.700, H*0.062 if weiblich else H*0.068,
-           OBEN, 26, H*0.070)
-    ellipsoid(0, 0, schult_z, schult_b*1.02, H*0.052, H*0.040, OBEN, 30)
+    # --- Rumpf als EIN geloftetes Mesh durch die Querschnitte
+    bt = H*0.072 if not weiblich else H*0.068
+    sb = schult_b*0.80 if not weiblich else schult_b*0.78
+    loft([(hueft_z - H*0.030, hueft_b*0.92, H*0.048, 0.0),
+          (hueft_z + H*0.020, hueft_b*1.00, H*0.052, 0.0),
+          (H*0.585, sb*0.86, bt*0.86, 0.0),
+          (H*0.635, sb*0.84, bt*0.84, 0.0),      # Taille
+          (H*0.690, sb*0.94, bt*0.96, 0.0),
+          (H*0.740, sb*1.00, bt*1.00, 0.0),      # Brust
+          (H*0.790, sb*0.98, bt*0.92, 0.0),
+          (schult_z, sb*0.90, bt*0.82, 0.0)], OBEN, 26)
+    loft([(hueft_z - H*0.075, hueft_b*0.80, H*0.042, 0.0),
+          (hueft_z - H*0.020, hueft_b*0.98, H*0.050, 0.0),
+          (hueft_z + H*0.028, hueft_b*0.94, H*0.048, 0.0)], UNTEN, 26)
+    ellipsoid(0, 0, schult_z, schult_b*1.00, H*0.050, H*0.038, OBEN, 30)
     # --- Hals und Kopf
     kapsel(0, 0, hals_z - H*0.030, 0, 0, hals_z + H*0.020, H*0.026, HAUT, 20)
     ellipsoid(0, 0, hals_z + kopf_r*0.92, kopf_r*0.86, kopf_r*0.92, kopf_r, HAUT, 32)
@@ -295,13 +335,15 @@ def figur(hoehe, HAUT, HAAR, OBEN, UNTEN, SCHUH, AKZ, weiblich=False, kind=False
                   kopf_r*0.17, kopf_r*0.07, kopf_r*0.05, HAAR, 14)
     # --- Arme in leichter A-Pose
     for sx in (-1, 1):
-        sxb = sx*schult_b*0.94
-        ellipsoid(sxb, 0, schult_z, H*0.036, H*0.036, H*0.034, OBEN, 24)   # Schulter
-        kapsel(sxb, 0, schult_z - H*0.012,
-               sx*(schult_b + H*0.030), 0, ell_z, r_arm, OBEN, 22, r_arm*0.90)
-        kapsel(sx*(schult_b + H*0.030), 0, ell_z,
-               sx*(schult_b + H*0.058), 0, hand_z, r_arm*0.88, HAUT, 22, r_arm*0.78)
-        ellipsoid(sx*(schult_b + H*0.062), 0, hand_z - H*0.022,
+        # Schulter an die Loft-Flanke ruecken (sb = schult_b*0.80). Weiter aussen
+        # steht sie als Fluegel neben dem Rumpf statt ihn fortzusetzen.
+        sxb = sx*sb*0.92
+        ellipsoid(sxb, 0, schult_z - H*0.006, H*0.042, bt*0.86, H*0.038, OBEN, 26)
+        kapsel(sxb, 0, schult_z - H*0.014,
+               sx*(sb + H*0.044), 0, ell_z, r_arm, OBEN, 22, r_arm*0.90)
+        kapsel(sx*(sb + H*0.044), 0, ell_z,
+               sx*(sb + H*0.070), 0, hand_z, r_arm*0.88, HAUT, 22, r_arm*0.78)
+        ellipsoid(sx*(sb + H*0.074), 0, hand_z - H*0.022,
                   H*0.026, H*0.017, H*0.032, HAUT, 20)                     # Hand
     # --- Beine
     for sx in (-1, 1):
