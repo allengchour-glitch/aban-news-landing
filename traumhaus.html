@@ -5559,7 +5559,12 @@ document.getElementById("hostBtn").onclick=function(){
   document.getElementById("mpCodeShow").textContent=MPs.code;
   MPs.onMessage(onNetMsg);
   MPs.onStatus(function(st){
-    document.getElementById("mpStatus").textContent={waiting:"Warte auf Mitspieler …",connected:"Verbunden! Spiel startet …",lost:"Verbindung verloren — versuche Reconnect …",closed:"Verbindung beendet"}[st]||st;
+    /* 🔎 „suche" hiess bisher nur „suche" — bei drei Vermittlungs-Servern wartet man
+       sonst bis zu 27 s vor einer schwarzen Wand. Jetzt steht dran, welcher gerade
+       probiert wird. */
+    var txt={waiting:"Warte auf Mitspieler …",connected:"Verbunden! Spiel startet …",lost:"Verbindung verloren — versuche Reconnect …",closed:"Verbindung beendet"}[st];
+    if(st==="suche")txt="Suche Vermittlungs-Server "+(MPs._serverNr||1)+"/"+(MPs._serverAnzahl||1)+" …";
+    document.getElementById("mpStatus").textContent=txt||st;
     if(st==="waiting"){document.getElementById("mpCodeShow").textContent=MPs.code;window._roomCode=MPs.code;} /* 🩹 Schwarm-P3: Code kann nach ID-Kollision neu gewürfelt sein */
     if(st==="connected"&&!running)startGame();
     document.getElementById("mpBackBtn").style.display=(st==="closed")?"inline-block":"none";

@@ -22,7 +22,13 @@
 //   s.close()        — sauberes Cleanup
 (function () {
   /* 🌐 Broker-Ersatz: PeerJS-Cloud zeitweise down -> nach Server-Fehler naechsten Broker merken */
-  var MP_BROKERS = [null, { host: "peerjs.92k.de", port: 443, secure: true }];
+  /* Mehrere Vermittlungs-Server: faellt einer aus, wird der naechste probiert.
+     null = PeerJS-Cloud (Standard). Reihenfolge = Versuchsreihenfolge. */
+  var MP_BROKERS = [
+    null,
+    { host: "peerjs.92k.de", port: 443, secure: true },
+    { host: "0.peerjs.com", port: 443, secure: true, path: "/" }
+  ];
   /* 🌐 ICE: STUN fuers Standard-NAT + oeffentlicher Gratis-TURN-Relay, damit die
      Verbindung auch hinter striktem/symmetrischem NAT (Mobilfunk/CGNAT) haelt.
      Ohne TURN scheitert Online-Koop auf vielen Handys komplett. */
@@ -43,7 +49,9 @@
 
   "use strict";
   var ALPHA = "ABCDEFGHJKLMNPQRSTUVWXYZ"; // A–Z ohne I/O (Verwechslungsgefahr)
-  var JOIN_TIMEOUT = 15000;
+  /* 15 s pro Server x 3 Server = 45 s stilles Warten. 9 s reichen: wer erreichbar ist,
+     antwortet in unter 3 s. */
+  var JOIN_TIMEOUT = 9000;
 
   function makeCode() {
     var s = "";
@@ -77,7 +85,7 @@
   // Code würfeln, sondern scheitern -> MP.quick wechselt dann auf Beitreten.
   function peerEngine(S, gameId, isHost, noRegen) {
     if (!window.Peer) { S._setStatus("closed"); S._rej(new Error("PeerJS nicht geladen (js/vendor/peerjs.min.js)")); return; }
-    var peer = null, main = null, fast = null, ever = false, byUs = false, dying = false /* absichtliches Zerstoeren — unterdrueckt den Reconnect-Handler */, tmo = null, tries = 0, retried = false;
+    var peer = null, main = null, fast = null, ever = false, byUs = false, dying = false /* absichtliches Zerstoeren — unterdrueckt den Reconnect-Handler */, tmo = null, tries = 0, retried = false, brokerVersuche = 0;
     var lastRecv = 0, wd = null, reconns = 0, MAX_RECONN = 5;
     // Watchdog: DataChannel-close wird bei hartem Abbruch (Tab zu, Netz weg) oft
     // erst nach langem ICE-Timeout gemeldet → Stille >6s bei laufendem Traffic
@@ -164,8 +172,15 @@
         if (S.status === "connected") return;
         /* 🔁 1× automatisch auf den anderen Broker wechseln — Host/Gast können auf
            verschiedenen Vermittlungs-Servern sitzen (aban_broker ist pro Gerät!) */
-        if (!retried) { retried = true; mpNextBroker(); try { if (peer) { dying = true; peer.destroy(); try { peer.socket && peer.socket.close(); } catch (e2) {} } } catch (e) {} boot(); return; }
-        fail(isHost ? "Vermittlungs-Server nicht erreichbar — Internet prüfen."
+        /* 🔁 ALLE Vermittlungs-Server durchprobieren, nicht nur einen. Vorher gab es genau
+           einen Wechsel — war auch der zweite Server nicht erreichbar, war Schluss, obwohl
+           weitere in der Liste stehen. */
+        if (brokerVersuche < MP_BROKERS.length - 1) {
+          brokerVersuche++; retried = true; mpNextBroker();
+          try { if (peer) { dying = true; peer.destroy(); try { peer.socket && peer.socket.close(); } catch (e2) {} } } catch (e) {}
+          S._serverNr = brokerVersuche + 1; S._serverAnzahl = MP_BROKERS.length;
+          S._setStatus("suche"); boot(); return; }
+        fail(isHost ? "Kein Vermittlungs-Server erreichbar (" + MP_BROKERS.length + " versucht) — Internet oder Firewall prüfen."
                     : "Raum " + S.code + " antwortet nicht — Code prüfen, dann nochmal.");
       }, JOIN_TIMEOUT);
       peer.on("open", function () {
