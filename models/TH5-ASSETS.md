@@ -695,6 +695,57 @@ Schnittkante, und die Figuren stehen in einer starren Ruhepose ohne Rig.
 
 ---
 
+## 1y. Charge 30 — WAFFEN-PROPS (`models/th31_*.glb`)
+
+Spiel-Requisiten im Action-Adventure-Stil, stilisiert und gerundet. Alle Handwaffen
+liegen mit Klinge/Spitze auf **+y**, der Griff bei −y, Griffunterkante auf z = 0 —
+so laesst sich das Modell direkt an eine Hand haengen.
+
+| Datei | Maße (B×T×H) | Griffpunkt |
+|---|---|---|
+| `th31_schwert_ritter.glb` | 0,25 × 1,06 × 0,09 | (0, −0,125, 0,048) |
+| `th31_schwert_kurz.glb` | 0,20 × 0,70 × 0,09 | (0, −0,10, 0,047) |
+| `th31_axt_kampf.glb` | 0,33 × 0,86 × 0,07 | (0, −0,235, 0,038) |
+| `th31_streitkolben.glb` | 0,15 × 0,62 × 0,15 | (0, −0,16, 0,074) |
+| `th31_speer.glb` | 0,06 × 2,20 × 0,06 | (0, −0,17, 0,029) |
+| `th31_bogen.glb` | 0,20 × 1,73 × 0,08 | (0,15, 0, 0,04) |
+| `th31_koecher.glb` | 0,40 × 0,93 × 0,18 | (0,30, 0, 0,089) |
+| `th31_armbrust.glb` | 0,66 × 0,93 × 0,17 | (0, −0,15, 0,077) |
+| `th31_schild_rund.glb` | 0,75 × 0,20 × 0,75 | (0, −0,05, 0,375) |
+| `th31_schild_wappen.glb` | 0,55 × 0,18 × 0,76 | (0, −0,06, 0,558) |
+| `th31_zauberstab.glb` | 0,07 × 0,43 × 0,06 | (0, −0,13, 0,033) |
+| `th31_magierstab.glb` | 0,22 × 1,87 × 0,21 | (0, −0,33, 0,098) |
+| `th31_blaster.glb` | 0,08 × 0,46 × 0,24 | (0, −0,06, 0,081) |
+| `th31_energieschwert.glb` | 0,07 × 1,11 × 0,07 | (0, −0,14, 0,035) |
+
+Generator: `tools/assets/mk_th31_waffen.py`
+
+**Bewusste Grenze:** Fantasy, historisch und Sci-Fi — keine masshaltigen oder
+mechanisch korrekten Feuerwaffenteile, keine realen Modellbezeichnungen. Das Repo
+exportiert jedes Modell auch als druckfertiges STL; stilisierte Props sind davon
+unproblematisch, nachgebaute Waffenteile waeren es nicht.
+
+---
+
+## 1z. Rundungs-Durchgang an den Fahrzeugen
+
+Fuenf Fahrzeuge waren Quaderketten und wurden auf geloftete Karosserien umgebaut:
+`th7_lieferwagen`, `th7_lkw`, `th7_taxi`, `th9_stadtbus`, `th9_feuerwehr`.
+**Bitte die alten GLB ersetzen.** Ausrichtung und Modulmasse sind unveraendert.
+
+Dafuer gibt es in `mk_th9_landmarken.py` jetzt `karosse()` und `rprofil()`: `rprofil()`
+liefert EINEN verrundeten Rechteck-Querschnitt mit fester Punktzahl, `karosse()` loftet
+daraus ein Mesh — alle Masse duerfen Zahl **oder** Funktion von y sein, damit Front, Dach
+und Taille flie&szlig;end ineinander uebergehen.
+
+> ⚠️ **Nur mit konstanter Punktzahl je Querschnitt laesst sich loften.** Deshalb gibt
+> `rprofil()` immer 4·(n+1) Punkte zurueck, auch wenn ein Radius null ist.
+
+Noch **nicht** umgebaut: `th18_traktor`, `th18_anhaenger`, `th21_bagger`,
+`th21_radlader`, `th21_betonmischer`.
+
+---
+
 ## 2. Texturen (`textures/th5/*.png`)
 
 512×512, **nahtlos kachelbar** (Wrap-Arithmetik, verifiziert per 2×2-Kachel-Kontaktbogen).
@@ -821,6 +872,7 @@ python3 tools/assets/mk_th29_winter.py    # Winter/Weihnachtsmarkt -> models/th2
 python3 tools/assets/mk_th25_flughafen.py # Flughafen -> models/th25_*.glb
 python3 tools/assets/mk_th26_berge.py     # Bergwelt -> models/th26_*.glb
 python3 tools/assets/mk_th30_charaktere.py  # Charaktere -> models/th30_*.glb
+python3 tools/assets/mk_th31_waffen.py    # Waffen-Props -> models/th31_*.glb
 python3 tools/assets/mk_th28_texturen.py  # Stadtdetails -> textures/th28/*.png
 ```
 
