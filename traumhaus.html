@@ -3574,7 +3574,16 @@ document.getElementById("edSell").onclick=function(){
   if(removeFurnAt(gx,gy)){netSend({t:"del",x:gx,y:gy});hint("💰 Verkauft (50% zurück)");}};
 document.getElementById("edX").onclick=editHide;
 function snapshot(){return {gw:GW,gh:GH,floors:floors,walls:Object.keys(walls).reduce(function(a,k){a[k]=walls[k].co?{t:walls[k].type,c:walls[k].co}:walls[k].type;return a;},{}),
-  furn:furn.map(function(f){return {id:f.id,x:f.gx,y:f.gy,r:f.rot,fid:f.fid,lv:f.lv||1,w:f.wachs||0};}),au:window.autoRec?{id:window.autoRec.id,x:window.autoRec.gx,y:window.autoRec.gy}:null,hu:haustier?{x:haustier.gx||10,y:haustier.gy||10}:null,qb:questBusy,we:wetter,tq:teamIdx,tb:teamBase,tbg:teamBasis,im:immo,geld:geld,tag:tag,uhr:uhrzeit,rom:romantik,li:liebe,ve:verlobt,he:verheiratet,sk:skills,st:stats,ac:achDone,qi:questIdx,ki:kinder.map(function(k){return {n:k.name,a:k.alter,b:k.baby};})};}
+  furn:furn.map(function(f){return {id:f.id,x:f.gx,y:f.gy,r:f.rot,fid:f.fid,lv:f.lv||1,w:f.wachs||0};}),au:window.autoRec?{id:window.autoRec.id,x:window.autoRec.gx,y:window.autoRec.gy}:null,hu:haustier?{x:haustier.gx||10,y:haustier.gy||10}:null,qb:questBusy,we:wetter,tq:teamIdx,tb:teamBase,tbg:teamBasis,im:immo,geld:geld,tag:tag,uhr:uhrzeit,rom:romantik,li:liebe,ve:verlobt,he:verheiratet,sk:skills,st:stats,ac:achDone,qi:questIdx,ki:kinder.map(function(k){return {n:k.name,a:k.alter,b:k.baby};}),
+  /* 🐛 Schwarm-Befunde: Diese Werte lagen nur in Laufzeit-Variablen und fehlten im
+     Spielstand. Folgen: der Fortschritt der Endlos-Auftraege fiel bei jedem Neuladen
+     auf 0 zurueck (die Basislinie wurde neu am aktuellen Stand verankert, das Ziel lief
+     also davon), und alle Tageslimits — Coups, Strassenmusik, Angel-Sperre — waren nach
+     einem Neuladen wieder frei. */
+  pqb:(window._pq&&window._pq.basis)||null,
+  cpT:window._coupTag,cpH:window._coupHeute,
+  bkT:window._buskTag,bkH:window._buskHeute,
+  anC:window._angelCd};}
 function loadSnapshot(sn){
   var mx9=Math.round((GW-(sn.gw||18))/2),my9=Math.round((GH-(sn.gh||14))/2); // alte Saves mittig einpassen
   (sn.furn||[]).forEach(function(f9){var m9=/^f(\d+)/.exec(f9.fid||"");if(m9)fidC=Math.max(fidC,+m9[1]+1);}); // fid-Zaehler fortsetzen
@@ -3602,6 +3611,12 @@ function loadSnapshot(sn){
   setTimeout(function(){immo.forEach(function(i){var hs=window._immo&&window._immo[i];if(hs&&!hs.flagge)immoFlagge(hs);});},400);
   if(sn.geld!==undefined){geld=sn.geld;geldLast=geld;}if(sn.tag)tag=sn.tag;if(sn.uhr!==undefined)uhrzeit=sn.uhr;
   if(sn.rom!==undefined)romantik=sn.rom;if(sn.li!==undefined)liebe=sn.li;verlobt=!!sn.ve;verheiratet=!!sn.he;if(sn.sk)skills=sn.sk;if(sn.st)stats=sn.st;if(sn.ac)achDone=sn.ac;if(sn.qi!==undefined)questIdx=sn.qi;
+  /* Basislinie und Tageslimits zurueckholen, sonst faengt der Endlos-Auftrag von vorne an
+     und alle Limits sind wieder frei (Schwarm-Befunde). */
+  if(sn.pqb){window._pqBasis={idx:sn.qi,b:sn.pqb};window._pq=null;}
+  if(sn.cpT!==undefined)window._coupTag=sn.cpT;if(sn.cpH!==undefined)window._coupHeute=sn.cpH;
+  if(sn.bkT!==undefined)window._buskTag=sn.bkT;if(sn.bkH!==undefined)window._buskHeute=sn.bkH;
+  if(sn.anC!==undefined)window._angelCd=sn.anC;
   kinder.slice().forEach(function(k){scene.remove(k.mesh);});kinder=[];
   (sn.ki||[]).forEach(function(kd){var nk=spawnKind(kd.b);if(nk){nk.name=kd.n;nk.alter=kd.a;}});
   updHUD();}
@@ -4488,9 +4503,14 @@ var PQ_TPL=[
 function ensurePQ(){
   if(window._pq&&window._pq.idx===questIdx)return;
   var n=questIdx-QUESTS.length;
-  var b={fische:stats.fische||0,furn:furn.length,grow:stats.growSold||0,stunts:stats.stunts||0,liefer:stats.lieferungen||0};
+  /* 🐛 Die Basislinie wurde bei JEDEM Aufruf am aktuellen Stand neu verankert — also auch
+     nach jedem Neuladen. Wer 4 von 5 Fischen hatte, stand danach wieder bei 0 und brauchte
+     erneut 5. Sie wird jetzt einmal je Auftrag gebildet und im Spielstand mitgefuehrt. */
+  var b=(window._pqBasis&&window._pqBasis.idx===questIdx)?window._pqBasis.b
+       :{fische:stats.fische||0,furn:furn.length,grow:stats.growSold||0,stunts:stats.stunts||0,liefer:stats.lieferungen||0};
+  window._pqBasis={idx:questIdx,b:b};
   var tpl=PQ_TPL[((n%PQ_TPL.length)+PQ_TPL.length)%PQ_TPL.length](n,b);
-  window._pq={idx:questIdx,e:tpl.e,tx:tpl.tx,rw:tpl.rw,ok:tpl.ok};
+  window._pq={idx:questIdx,e:tpl.e,tx:tpl.tx,rw:tpl.rw,ok:tpl.ok,basis:b};
 }
 function questTxt(){
   if(questIdx<QUESTS.length)return QUESTS[questIdx][1]+" "+QUESTS[questIdx][2]+" → "+QUESTS[questIdx][3]+" $";
