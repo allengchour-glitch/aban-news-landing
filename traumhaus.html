@@ -326,12 +326,13 @@ var hemi=new THREE.HemisphereLight(0xdfeeff,0x6a8a58,0.42);scene.add(hemi);
 var nachtLampen=[];   /* Die Laternen werden weiter unten gebaut — sie brauchen GW/RX/wegVonStrasse */
 
 var sun=new THREE.DirectionalLight(0xfff0d0,1.12);sun.position.set(26,38,18);scene.add(sun);
+scene.add(sun.target);   /* das Ziel muss in der Szene haengen, sonst wandert die Schatten-Box nicht mit */
 sun.castShadow=true;sun.shadow.mapSize.set(IS_TOUCH?1024:2048,IS_TOUCH?1024:2048);sun.shadow.bias=-0.0006;
 sun.shadow.camera.near=5;sun.shadow.camera.far=320;
 /* 📱 Das Schatten-Frustum deckte 230x230 m ab. Bei 1024er Map sind das 4.5 Texel pro Meter —
    viel Flaeche, wenig Schaerfe, und alles darin muss jeden Frame neu gezeichnet werden.
    Auf dem Handy 120x120 m um die Kamera: schaerfere Schatten UND weniger Arbeit. */
-(function(){var _sr=(typeof _mobil!=="undefined"&&_mobil)?60:115;
+(function(){var _sr=(typeof _mobil!=="undefined"&&_mobil)?85:115;
   sun.shadow.camera.left=-_sr;sun.shadow.camera.right=_sr;sun.shadow.camera.top=_sr;sun.shadow.camera.bottom=-_sr;
   sun.shadow.camera.far=(typeof _mobil!=="undefined"&&_mobil)?180:320;})();
 function stdMat(c,rough){var m=new THREE.MeshStandardMaterial({color:c,roughness:rough!==undefined?rough:0.8});m.envMapIntensity=0.35;return m;}
@@ -5641,7 +5642,13 @@ function loop(now){
     var warm=Math.max(0,1-dayA*1.8); // 1 bei Daemmerung/Nacht, 0 bei hohem Sonnenstand
     sun.color.setHex(0xfff0d0);if(warm>0)sun.color.lerp(new THREE.Color(0xff8a3a),warm*0.8);
     if(window.sterne)sterne.material.opacity=Math.max(0,0.9-dayA*3);
-    sun.position.set(Math.cos((hh-5.75)/14*Math.PI)*34,4+dayA*36,18); // tiefer bei Daemmerung -> lange Schatten
+    /* 🐛 Die Schatten-Box haengt am Licht-Ziel. Das stand fest im Weltursprung, waehrend ich
+       die Box auf dem Handy auf ±60 m verkleinert habe — sobald der Spieler weiter weg war,
+       lag alles ausserhalb der Box und wurde komplett schwarz (User-Screenshot).
+       Licht UND Ziel wandern jetzt mit der Kamera mit, die Box ist immer um den Spieler. */
+    sun.target.position.set(camTx,0,camTz);
+    sun.target.updateMatrixWorld();
+    sun.position.set(camTx+Math.cos((hh-5.75)/14*Math.PI)*34,4+dayA*36,camTz+18); // tiefer bei Daemmerung -> lange Schatten
     renderer.toneMappingExposure=(0.62+dayA*0.36)*wDim; // 0.34 war zu dunkel zum Spielen
     if(scene.environmentIntensity!==undefined)scene.environmentIntensity=0.26+dayA*0.74;
     var skyC=new THREE.Color(0x9fd0ea).lerp(new THREE.Color(0x141c30),1-Math.min(1,dayA*1.4));
