@@ -3,6 +3,17 @@
 > 🔗 **ZUERST `SHARED-MEMORY.md` (Repo-Root) lesen** — mehrere Sessions arbeiten parallel auf diesem
 > Repo + Shop; dort steht, wer was „besitzt" + der Live-Stand. CJ-Import/Katalog/Social = NUR diese Session.
 
+## ⚠️ CJ-Grind-Plateau-Falle (teuer gelernt 2026-07-29)
+Wenn der CJ-Ledger flach steht, ist es MEIST **keine** Token-/Punkte-Panne — Token prüfen zeigt oft `code:200`,
+Punkte reichlich. Diagnose-Reihenfolge: (1) `product/list?categoryId=…` liefert `data.total` >0 (Katalog da);
+(2) im Runner-Log ist „Rings: total 0" der **eigene Import-Zähler** (Zeile 285 cj_category_fill.mjs), NICHT die
+API-total → es wurden 0 NEUE gefunden, alle schon im Ledger. **Ursache: DEPTH-Reset.** Runner rampen
+`DEPTH=15+ROUND*3`, aber jeder Keepalive-Neustart (bei totem Prozess) setzt ROUND=1 → flache Top-Seiten sind
+nach 19k Importen erschöpft → 0 neu. **Fix: Basis-Tiefe hoch** (15+ROUND*3 statt 5+ROUND*2), damit Runde 1 schon
+tief (Seite ~18) greift. ⚠️ **Zweite tote Spur: `countryCode=DE/CZ/PL/…` (EU-Lager-Filter) gibt CJ-weit `total 0`**
+— CJs product/list-Warehouse-Filter liefert für EU nur noch 0, nur CN/US haben Bestand. WAREHOUSE-Env darum leer
+lassen (CN-Fracht 3–6 CHF ist ok). /tmp-Runner-Scripts überleben keinen Wipe → Fix bei Neuaufsetzen mit einbauen.
+
 Dieses Repo ist `aban-news-landing`, enthält aber mehrere Projekte. Das aktive, autonome
 Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
 
