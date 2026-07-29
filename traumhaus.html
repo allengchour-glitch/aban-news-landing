@@ -5561,6 +5561,16 @@ function startGame(){
     if(_ic){_ic.style.display="flex";document.getElementById("introOk").onclick=function(){_ic.style.display="none";try{localStorage.setItem("th_intro_seen","1");}catch(e){}};}}}catch(e){}
   hint("🔨 Bauen antippen — dann Boden legen, Wände ziehen, Möbel stellen!");}
 document.getElementById("soloBtn").onclick=function(){
+  /* 🐛 Schwarm-Befund: Wer erst "Raum erstellen"/"Beitreten" tippt und dann doch auf
+     "Solo bauen" geht, liess die Koop-Sitzung offen. MPs blieb gesetzt, saveGame()
+     schrieb den kompletten Solo-Fortschritt in den Koop-Slot "th_save_coop" — der
+     eigene Spielstand wurde nie mehr aktualisiert und war beim naechsten Start alt.
+     Zusaetzlich hielt der offene Peer die Raum-ID belegt. */
+  if(typeof MPs!=="undefined"&&MPs){
+    try{MPs.close();}catch(e){}
+    MPs=null;mpHost=false;
+    var _nb=document.getElementById("netBadge");if(_nb)_nb.style.display="none";
+    var _lb=document.getElementById("mpLobby");if(_lb)_lb.style.display="none";}
   try{var sv=localStorage.getItem(SAVE);
     if(sv){try{localStorage.setItem(SAVE+"_bak",sv);}catch(_){} /* 🩹 Schwarm-P1: rollendes Backup — kaputter Save wurde sonst still vom 6s-Autosave überschrieben */
       try{loadSnapshot(JSON.parse(sv));}catch(e2){alert("⚠️ Spielstand beschädigt — starte frisch. Backup liegt unter th_save1_bak.");}}}catch(e){}
