@@ -4797,6 +4797,31 @@ function coasterBtnUpd(){
   var p=spielerPos();
   var nah=Math.abs(p.x-C.CX)<9&&Math.abs(p.z-(C.CZ-22))<8;
   b.style.display=(nah&&!C.mit)?"block":"none";}
+/* 📐 Der Bauen-Knopf lag wiederholt unter dem Radar. Feste CSS-Regeln mit max-height haben
+   das nicht geloest: sie greifen je nach Geraet gar nicht, und im Test bei anderer Fenster-
+   groesse sieht alles korrekt aus. Deshalb wird die linke Spalte jetzt GEMESSEN statt
+   geraten — der Knopf setzt sich unter das Radar und ueber den Joystick, und weicht nach
+   rechts aus, wenn dazwischen kein Platz ist. */
+function layoutLinkeSpalte(){
+  var mb=document.getElementById("modeBtn"),mm=document.getElementById("minimap"),jo=document.getElementById("joy");
+  if(!mb||mb.classList.contains("building"))return;
+  if(getComputedStyle(mb).display==="none")return;
+  var H=innerHeight,mr=(mm&&getComputedStyle(mm).display!=="none")?mm.getBoundingClientRect():null;
+  var jr=(jo&&getComputedStyle(jo).display!=="none")?jo.getBoundingClientRect():null;
+  var oben=mr?mr.bottom+10:120;                 // unter dem Radar
+  var unten=jr?jr.top-10:H-20;                  // ueber dem Joystick
+  var hoehe=mb.offsetHeight||44;
+  /* Die CSS-Regel setzt bottom mit !important — inline muss deshalb ebenfalls
+     mit Prioritaet gesetzt werden, sonst gewinnt weiter das Stylesheet. */
+  function setz(k,v){mb.style.setProperty(k,v,"important");}
+  setz("bottom","auto");
+  if(unten-oben>=hoehe){                        // passt dazwischen
+    setz("left","12px");setz("top",Math.round(oben)+"px");}
+  else{                                         // kein Platz: neben das Radar
+    setz("left",Math.round((mr?mr.right:130)+10)+"px");
+    setz("top",Math.round(mr?mr.top+6:130)+"px");}}
+addEventListener("resize",function(){setTimeout(layoutLinkeSpalte,60);});
+addEventListener("orientationchange",function(){setTimeout(layoutLinkeSpalte,260);});
 function egoToggle(){
   egoMode=!egoMode;
   var _me=sims[meinSi()]||sims[0];
@@ -5677,6 +5702,7 @@ function loop(now){
     updHearts(dt);updWetter(dt);updVerkehr(dt);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);updVerstecken(dt);updFest(dt,now);updImmo(dt);
     document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("minimap").style.display=(running&&!buildMode)?"block":"none";
+    layoutLinkeSpalte();
     /* 🗺️ Einmal-Tipp: sonst findet niemand die grosse Karte hinter dem Radar */
     if(running&&!buildMode&&!window._mapTip){window._mapTip=true;
       try{if(!localStorage.getItem("th_maptip")){localStorage.setItem("th_maptip","1");
