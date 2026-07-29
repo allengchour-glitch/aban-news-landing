@@ -663,6 +663,34 @@ Neuer Helfer: `kipp_lift(sx, sy, sz, rx, ry, rz)` — halbe Höhe eines gekippte
 
 ---
 
+## 1x. Charge 28 — CHARAKTERE (`models/th30_*.glb`)
+
+Runde, organische Figuren. **Keine Quaderketten** — alles aus Kapseln und Ellipsoiden,
+glatt schattiert. Blickrichtung wie bei allen Assets: Gesicht auf Blender +y = three.js −z.
+
+| Datei | Maße (B×T×H) | Dreiecke |
+|---|---|---|
+| `th30_mensch_mann.glb` | 0,71 × 0,28 × **1,79** | 21 912 |
+| `th30_mensch_frau.glb` | 0,63 × 0,27 × **1,69** | 22 640 |
+| `th30_kind.glb` | 0,49 × 0,20 × **1,23** | 21 912 |
+| `th30_arbeiter.glb` | 0,71 × 0,30 × **1,82** | 24 216 | Helm und Warnweste |
+| `th30_hund.glb` | 0,32 × 1,17 × 0,72 | 15 668 |
+
+Generator: `tools/assets/mk_th30_charaktere.py`
+Neue Helfer: `kapsel()` (Zylinder plus zwei Halbkugeln zwischen zwei Punkten — für
+Gliedmassen), `ellipsoid()`, `glatt()`, und `figur()`, das alle Masse als Anteil der
+Gesamthöhe rechnet, damit Kind und Erwachsener dieselben Proportionen haben.
+
+> ⚠️ **Organische Teile brauchen einen grösseren Smooth-Winkel.** Die 38° aus `runden()`
+> lassen an Kapseln und Ellipsoiden die Facetten stehen — genau der Klotz-Eindruck, der
+> hier vermieden werden soll. `glatt()` setzt 62°.
+
+**Offen an dieser Charge:** der Rumpf liest sich noch als Platte statt als Brustkorb, und
+die Haarkalotte hat am Scheitel eine sichtbare Schnittkante. Beides braucht einen zweiten
+Durchgang.
+
+---
+
 ## 2. Texturen (`textures/th5/*.png`)
 
 512×512, **nahtlos kachelbar** (Wrap-Arithmetik, verifiziert per 2×2-Kachel-Kontaktbogen).
@@ -788,6 +816,7 @@ python3 tools/assets/mk_th22_wohnen.py    # Wohnbauten -> models/th22_*.glb
 python3 tools/assets/mk_th29_winter.py    # Winter/Weihnachtsmarkt -> models/th29_*.glb
 python3 tools/assets/mk_th25_flughafen.py # Flughafen -> models/th25_*.glb
 python3 tools/assets/mk_th26_berge.py     # Bergwelt -> models/th26_*.glb
+python3 tools/assets/mk_th30_charaktere.py  # Charaktere -> models/th30_*.glb
 python3 tools/assets/mk_th28_texturen.py  # Stadtdetails -> textures/th28/*.png
 ```
 
