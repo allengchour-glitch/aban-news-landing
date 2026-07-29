@@ -1116,3 +1116,29 @@ der Kamera folgt und `sun.target.parent === scene` ist.
   auf modernen Handys quer **nie** — im Test bei 412 px sah alles korrekt aus.
 - **`bau()` skaliert nach Höhe.** Ein breites, flaches Modell wird dadurch riesig; die
   Masse im Quartier-Generator sind nur Schätzwerte, deshalb misst er nach dem Laden nach.
+
+---
+
+## Dienste-Status (geprüft 2026-07-29)
+
+Live getestet, **keine Schlüssel hier ablegen — das Repo ist öffentlich.**
+Sie gehören in die GitHub-Repository-Secrets bzw. in die Umgebung.
+
+| Dienst | Status | Wofür |
+|---|---|---|
+| **HeyGen** | ✅ 200 | Avatar-Videos, TTS-Stimmen — **funktioniert wieder**, war zwischenzeitlich tot |
+| **Groq** | ✅ 200 | gratis Text (Captions, Beschreibungen), `llama-3.3-70b-versatile` |
+| **Gemini** | ✅ 200 | Vision-QA, Text |
+| **Meshy** | ✅ 200 | 3D-Modelle aus Text/Bild — direkt für neue Spiel-Assets |
+| **FAL** | ✅ 200 | Bilder (SDXL) |
+| **Pollinations** | ✅ | Bilder, ohne Schlüssel, durch den Proxy erreichbar |
+| **ElevenLabs** | ❌ 401 | Schlüssel ungültig — für Ton derzeit nicht nutzbar |
+
+### Ton für die Spiele
+
+ElevenLabs fällt aus. Möglichkeiten ohne neuen Dienst:
+- **HeyGen-Stimmen** (`/v2/voices`) für gesprochene Ansagen
+- **Web Audio im Spiel** — der vorhandene `beep()`-Generator kann zu einer kleinen
+  Effekt-Bibliothek ausgebaut werden (Schritte, Türen, Kasse, Motor), kostet nichts
+  und lädt nichts nach
+- Fertige Musik liegt in `automation/music/`
