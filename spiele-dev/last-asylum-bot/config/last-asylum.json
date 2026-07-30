@@ -4101,6 +4101,144 @@
       "at_start": true
     },
     {
+      "name": "monster-jagen",
+      "every": 2700,
+      "priority": 92,
+      "_zweck": "Weltkarte -> Lupe -> Reiter 'Ressourcen-Monster' -> Suchen -> Angreifen, bis die Ausdauer aufgebraucht ist. Ist keine mehr da, findet der Bot den Angriffs-Knopf nicht mehr oder das Spiel meldet es per Dialog - beides beendet den Durchgang folgenlos. Nachgefuellt wird NIE, siehe _ausdauer. Braucht sammeln/reiter_monster.png und sammeln/angreifen.png.",
+      "do": [
+        {
+          "log": "Monster jagen, solange Ausdauer da ist"
+        },
+        {
+          "tap_first": {
+            "of": [
+              {
+                "template": "nav/welt.png",
+                "threshold": 0.86,
+                "region": [
+                  0.7,
+                  0.85,
+                  1.0,
+                  1.0
+                ]
+              },
+              {
+                "template": "nav/gebiet.png",
+                "threshold": 0.86,
+                "region": [
+                  0.7,
+                  0.85,
+                  1.0,
+                  1.0
+                ]
+              }
+            ],
+            "after": [
+              3.0,
+              4.5
+            ]
+          }
+        },
+        {
+          "repeat": {
+            "times": 6,
+            "do": [
+              {
+                "tap_template": {
+                  "template": "nav/lupe.png",
+                  "optional": true,
+                  "region": [
+                    0.3,
+                    0.7,
+                    0.8,
+                    1.0
+                  ],
+                  "after": [
+                    1.5,
+                    2.5
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "sammeln/reiter_monster.png",
+                  "optional": true,
+                  "threshold": 0.86,
+                  "after": [
+                    1.2,
+                    2.0
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "sammeln/suchen.png",
+                  "optional": true,
+                  "threshold": 0.86,
+                  "after": [
+                    3.0,
+                    4.5
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "sammeln/angreifen.png",
+                  "optional": true,
+                  "threshold": 0.86,
+                  "after": [
+                    2.0,
+                    3.0
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "kampf/kampf.png",
+                  "optional": true,
+                  "threshold": 0.86,
+                  "after": [
+                    3.0,
+                    4.5
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "ui/btn_alles_abholen.png",
+                  "optional": true,
+                  "threshold": 0.86,
+                  "after": [
+                    1.2,
+                    2.0
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "ui/popup_close.png",
+                  "optional": true,
+                  "threshold": 0.84
+                }
+              },
+              {
+                "sleep": [
+                  1.2,
+                  2.0
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "sleep": [
+            1.0,
+            1.5
+          ]
+        }
+      ]
+    },
+    {
       "name": "zurueck-in-die-basis",
       "every": 1800,
       "priority": 50,
@@ -4269,5 +4407,6 @@
   "_zurueck": "Zurueck geht in diesem Spiel ueber den Pfeil oben links, nicht ueber die Android-Taste - die wechselt teils die ganze Ansicht oder minimiert die App. Ueberall, wo der Bot zurueck will, prueft er zuerst auf ui/back_arrow.png und nimmt nur ersatzweise KEYCODE_BACK.",
   "_selbstlernen": "Der Bot entdeckt Sammel-Objekte selbst: die Aufgabe 'objekte-lernen' macht zwei Aufnahmen im Abstand weniger Sekunden. Alles, was sich dazwischen aendert und rundlich in Knopfgroesse ist, ist einsammelbar (Ertrags-Blasen tauchen auf und verschwinden, der Rest des Bildes steht still). Die Ausschnitte landen in templates/gelernt/blasen/ und werden von der Regel 'gelernte-objekte-einsammeln' per Muster sofort mitbenutzt - ohne Konfigurationsaenderung. So kommen auch Blasen-Sorten dazu, die nie jemand von Hand geschnitten hat.",
   "_routine": "TAGESROUTINE: Die Takte sind so gewaehlt, dass die Aufgaben zusammen deutlich unter der verfuegbaren Zeit bleiben. Sonst stauen sie sich und die reaktiven Regeln - Belohnungen, Ertrags-Blasen, Dialoge - kommen kaum noch dran. Faustregel beim Aendern: die Summe aus Laufzeit mal Haeufigkeit sollte rund die Haelfte des Tages nicht ueberschreiten.",
-  "_selbstoptimierung": "Der Bot wertet alle zwoelf Stunden seine eigenen Protokolle aus und zieht die Takte nach: Aufgaben, die wiederholt leer laufen, werden seltener aufgerufen, sehr ergiebige oefter. Aenderungen sind auf Faktor zwei je Durchgang begrenzt und bleiben zwischen 5 Minuten und 24 Stunden. Die neuen Takte schreibt er in diese Datei zurueck."
+  "_selbstoptimierung": "Der Bot wertet alle zwoelf Stunden seine eigenen Protokolle aus und zieht die Takte nach: Aufgaben, die wiederholt leer laufen, werden seltener aufgerufen, sehr ergiebige oefter. Aenderungen sind auf Faktor zwei je Durchgang begrenzt und bleiben zwischen 5 Minuten und 24 Stunden. Die neuen Takte schreibt er in diese Datei zurueck.",
+  "_ausdauer": "AUSDAUER-REGEL (User): Monster jagen, bis die Ausdauer alle ist - aber die Ausdauer-Fläschchen NICHT verbrauchen, die werden fuer den Krieg gebraucht. Der Bot fuellt Ausdauer nie nach: er tippt weder das Plus neben der Ausdauer-Anzeige noch ein Fläschchen in der Tasche an. Geht die Ausdauer aus, oeffnet das Spiel einen Nachfuell-Dialog - den schliessen die Dialog-Regeln (Prioritaet 199/200), bevor die generische Gruen-Knopf-Regel (145) ihn bestaetigen koennte. Wichtig fuer dich: schneide NIE ein Template von einem 'Benutzen' oder 'Bestaetigen' aus einem Ausdauer-Dialog."
 }

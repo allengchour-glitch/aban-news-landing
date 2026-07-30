@@ -182,6 +182,7 @@ Diese Vorlagen fehlen noch; die zugehörigen Schritte ruhen still, bis sie da si
 | ★★★ | `ui/btn_alles_abholen.png` | der orange `Alles abholen` im Beute-Fenster — räumt eine ganze Kiste auf einmal ab |
 | ★★☆ | `tasche/truhe.png` | die Kiste im Reiter `Spezial` der Tasche |
 | ★★★ | `kaserne/gebaeude.png`, `kaserne/stufe_t8.png`, `kaserne/btn_ausbilden.png`, `ui/btn_max.png` | Kaserne → Ausbilden → **T8** wählen → Menge auf Maximum. Achtung: der Bot kann Ziffern nicht lesen — schneide wirklich die T8-Kachel, sonst trainiert er irgendeine Stufe |
+| ★★☆ | `sammeln/reiter_monster.png`, `sammeln/angreifen.png` | Weltkarte → Lupe → Reiter `Ressourcen-Monster` und der Angriffs-Knopf |
 | ★★☆ | `chat/teilen_marker.png`, `sammeln/ausgraben.png` | geteilte Schatz-Koordinaten im Allianz-Chat: die `Teilen`-Zeile mit der grünen Ortsmarke, und der Ausgraben-Knopf auf der Karte |
 | ★★☆ | `allianz/forschung.png`, `allianz/spenden_ressourcen.png` | Allianz → Allianz-Forschung → Technologie: der **blaue** Spenden-Knopf (aktiv, nicht ausgegraut) |
 | ★☆☆ | `nav/wachturm.png`, `nav/zuflucht.png` | Einstiege, die der Bot noch nicht selbst findet |
@@ -388,6 +389,12 @@ bleiben.
   dorthin wird verworfen und protokolliert — egal von welcher Regel er kommt.
 * Deine eine Aufgabe dabei: **schneide nie ein Template von einem Knopf mit Preisschild**
   (CHF/EUR/USD). Dann kann auch nichts schiefgehen.
+* **Ausdauer-Fläschchen bleiben liegen.** Der Bot jagt Monster, bis die Ausdauer alle ist,
+  füllt sie aber nie nach — weder über das Plus neben der Anzeige noch über ein Fläschchen aus
+  der Tasche. Geht sie aus, öffnet das Spiel einen Nachfüll-Dialog; den **schliessen** die
+  Dialog-Regeln (Priorität 199/200), bevor die generische Grün-Knopf-Regel (145) ihn bestätigen
+  könnte. Ein Test hält diese Reihenfolge fest. Schneide entsprechend **nie** ein Template von
+  einem `Benutzen` oder `Bestätigen` aus einem Ausdauer-Dialog.
 * **Diamanten: der Bot kann Preise nicht lesen.** Für die Bildsuche sieht `2 Spenden` genauso
   aus wie `50 Spenden` oder `500 Spenden` — nur die Ziffern unterscheiden sich, und die sind
   bewusst nicht Teil der Vorlagen. Eine Obergrenze „bis 50 Diamanten pro Klick" liesse sich

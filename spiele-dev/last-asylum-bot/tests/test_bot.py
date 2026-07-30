@@ -510,6 +510,20 @@ class TestEngine(unittest.TestCase):
         self.assertEqual(dev.keys, ["NEIN"])
 
 
+class TestAusdauerSicherung(unittest.TestCase):
+    """Ein Nachfüll-Dialog muss geschlossen, nicht bestätigt werden."""
+
+    def test_dialog_schliessen_schlaegt_generischen_gruenknopf(self):
+        cfg = Config.load(os.path.join(ROOT, "config", "last-asylum.json"))
+        nach_prio = {r.name: r.priority for r in cfg.rules}
+        for schliesser in ("dialog-schliessen", "dialog-schliessen-hell"):
+            self.assertGreater(
+                nach_prio[schliesser], nach_prio["gruener-knopf-generisch"],
+                f"{schliesser} muss vor dem generischen Grün-Knopf greifen, sonst "
+                "bestätigt der Bot Nachfüll-Dialoge",
+            )
+
+
 class TestSelbstOptimierung(unittest.TestCase):
     """Der Bot zieht seine Takte aus den eigenen Protokollen nach."""
 
