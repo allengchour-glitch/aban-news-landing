@@ -23,6 +23,7 @@ Diese Templates sind aus echten Screenshots geschnitten und **funktionieren sofo
 | Belohnungen | grüner + oranger `Abholen`-Knopf | tippt ihn — **immer**, überall, mit Vorrang vor allem anderen |
 | Dialoge | blaues ✖, weisses ✖ | schliesst sie, damit nichts blockiert |
 | Erträge | die weissen Blasen über Farmen, Sägewerken, Kräuterhütten | sammelt sie reihum ein |
+| Rundgang | — | schwenkt die Kamera über die ganze Basis und erntet nach jedem Schwenk ab |
 | Bauen | den Bau-Vorschlag des Spiels, `Upgrade`-Knopf, `Upgrade`-Bestätigung | wertet auf, ohne Diamanten zu verbrennen |
 | Truppe 1 | `Upgrade`-Reiter und `Verbessern` im Ausrüstungs-Dialog | zieht die Ausrüstung hoch, mehrfach pro Durchgang |
 | Allianz | gelber Hilfe-Knopf, Allianz-Menü, Chat-Reiter | gibt Hilfe, holt Truhen, schreibt Admin-Nachrichten |

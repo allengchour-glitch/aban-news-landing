@@ -1875,6 +1875,978 @@
       ]
     },
     {
+      "name": "basis-rundgang",
+      "every": 900,
+      "at_start": true,
+      "priority": 118,
+      "_zweck": "Der Bot sieht immer nur den aktuellen Bildschirmausschnitt. Dieser Rundgang schwenkt die Kamera ueber die ganze Basis und erntet nach jedem Schwenk die Ertrags-Blasen ab, die dabei sichtbar werden. Ohne das bleiben Gebaeude am Rand ewig unangetastet.",
+      "do": [
+        {
+          "log": "Rundgang durch die Basis - Kamera schwenken und alles abernten"
+        },
+        {
+          "tap_first": {
+            "of": [
+              {
+                "template": "nav/startseite.png",
+                "threshold": 0.86,
+                "region": [
+                  0.7,
+                  0.85,
+                  1.0,
+                  1.0
+                ]
+              },
+              {
+                "template": "nav/burg.png",
+                "threshold": 0.86,
+                "region": [
+                  0.0,
+                  0.4,
+                  0.35,
+                  0.85
+                ]
+              }
+            ],
+            "after": [
+              2.5,
+              3.5
+            ]
+          }
+        },
+        {
+          "log": "Rundgang: Ausgangslage"
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "swipe": [
+            0.2,
+            0.45,
+            0.8,
+            0.45,
+            500
+          ]
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        },
+        {
+          "log": "Rundgang: nach links"
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "swipe": [
+            0.2,
+            0.45,
+            0.8,
+            0.45,
+            500
+          ]
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        },
+        {
+          "log": "Rundgang: weiter nach links"
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "swipe": [
+            0.8,
+            0.45,
+            0.2,
+            0.45,
+            500
+          ]
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        },
+        {
+          "log": "Rundgang: nach rechts"
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "swipe": [
+            0.8,
+            0.45,
+            0.2,
+            0.45,
+            500
+          ]
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        },
+        {
+          "log": "Rundgang: weiter nach rechts"
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "swipe": [
+            0.5,
+            0.3,
+            0.5,
+            0.65,
+            500
+          ]
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        },
+        {
+          "log": "Rundgang: nach oben"
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "swipe": [
+            0.5,
+            0.65,
+            0.5,
+            0.3,
+            500
+          ]
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        },
+        {
+          "log": "Rundgang: nach unten"
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.4,
+            0.7
+          ]
+        }
+      ]
+    },
+    {
       "name": "zuflucht",
       "every": 900,
       "at_start": true,
