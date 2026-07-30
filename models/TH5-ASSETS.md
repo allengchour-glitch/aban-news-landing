@@ -130,6 +130,12 @@ Alle Innenräume per Render aus **Augenhöhe (1,7 m) vor der Tür** verifiziert.
 
 Generator: `tools/assets/mk_th8_begehbar.py`
 
+> 🔧 **Die Markthalle wurde am 28.07. überarbeitet** — bitte das alte GLB ersetzen.
+> Ihr Tonnendach war ein **voller Zylinder**: die untere Hälfte füllte die Halle, von
+> der Tür aus sah man nur eine graue Wand (Unterkante lag bei −1,90). Jetzt halbiert
+> `tonne()` das Gewölbe wirklich, der Radius sitzt exakt auf der Wandflucht (T/2), und
+> die Innenstützen stehen auf den Pfeiler- statt den Torachsen.
+
 ### Einbau — Eingang zur Straße drehen
 ```js
 // Tür zeigt ohne Rotation nach -z (Norden). Eingang nach Süden:
@@ -587,6 +593,164 @@ und `dachrand()`.
 
 ---
 
+## 1u. Charge 24 — WINTER UND WEIHNACHTSMARKT (`models/th29_*.glb`)
+
+| Datei | Maße (B×T×H) | Hinweis |
+|---|---|---|
+| `th29_weihnachtsbude.glb` | 6,00 × 5,40 × 4,18 | Giebeldach mit Schneeauflage, Theke mit Waren, Regal, Tannengrün, Lichterkette |
+| `th29_christbaum.glb` | 5,25 × 5,38 × 10,30 | Kreuzfuss, Kugeln, Lichter, Schneeauflage, Goldspitze |
+| `th29_eisbahn_freiluft.glb` | 42,4 × 24,9 × 5,72 | Eisfläche mit Bande, 8 Lichtermasten mit Girlanden, Verleihhütte, Bänke |
+| `th29_schneemaenner.glb` | 7,29 × 2,17 × 3,43 | 3 Grössen, Zylinderhut, Schal, Möhrennase, Aststarme |
+| `th29_rodelhang.glb` | 19,5 × 20,0 × 5,44 | **x += 12,00**, Piste zwischen Schneewällen, Strohballen, Streckenfahnen |
+| `th29_skiliftmast.glb` | 3,80 × 1,80 × 9,32 | Rollenbatterie, Seil, 2 Schleppbügel, Steigleiter |
+
+Generator: `tools/assets/mk_th29_winter.py`
+Neue Helfer: `tanne()` (gestapelte Kegel, optional mit Kugeln und Lichtern),
+`lichterkette()` (Segmente per `atan2` ausgerichtet — eine Reihe ungedrehter Boxen
+liest sich als Treppe).
+
+> ⚠️ **Ein um 90° gekippter Kegel legt seinen RADIUS auf die z-Achse** und taucht damit
+> um r unter den Boden (beim Rodelhang gemessene −0,69). Für einen langen Wall lieber
+> Quader plus aufgesetzten Halbzylinder, dessen untere Hälfte im Quader verschwindet.
+
+---
+
+## 1v. Charge 25 — FLUGHAFEN (`models/th25_*.glb`)
+
+| Datei | Maße (B×T×H) | Hinweis |
+|---|---|---|
+| `th25_terminal.glb` | 53,2 × 35,4 × 15,6 | **begehbar**, Check-in-Reihe, Anzeigetafeln, Sitzreihen, Galerie mit Treppe |
+| `th25_tower.glb` | 11,7 × 11,7 × 34,3 | Schaft, auskragende Kanzel mit geneigten Scheiben, Umlaufgalerie |
+| `th25_flugzeug.glb` | 34,8 × 38,6 × 11,8 | Rumpf geloftet, gepfeilte Tragflächen, 2 Triebwerke, Fahrwerk am Boden |
+| `th25_hangar.glb` | 45,2 × 33,4 × 16,9 | **begehbar**, riesiges Tor, Tonnendach, Werkstattzeile, Deckenkran |
+| `th25_fluggastbruecke.glb` | 5,8 × 21,4 × 7,4 | Stützen, Faltenbalg, Rotunde |
+| `th25_landebahn_modul.glb` | **30,0** × 30,0 × 0,68 | **x += 30,00**, Mittellinie und Randbefeuerung laufen durch |
+| `th25_radarturm.glb` | 9,3 × 5,2 × 19,1 | Drehradar auf Gittermast |
+| `th25_gepaeckwagen.glb` | 2,1 × 11,0 × 3,0 | Schlepper mit 2 Anhängern und Koffern |
+| `th25_tankwagen.glb` | 3,3 × 10,1 × 4,2 | Tank, Schlauchtrommel, Kabine |
+
+Generator: `tools/assets/mk_th25_flughafen.py`
+
+## 1w. Charge 26 — BERGWELT (`models/th26_*.glb`)
+
+Ein eigenes Biom für die Openworld.
+
+| Datei | Maße (B×T×H) | Hinweis |
+|---|---|---|
+| `th26_felswand_modul.glb` | **12,00** × 4,21 × **16,00** | **x += 12,00**, Bänder und Vorsprünge laufen durch |
+| `th26_felsformation.glb` | 18,2 × 15,0 × 14,6 | verschachtelte Blöcke mit Verwitterungskanten |
+| `th26_wasserfall.glb` | 27,2 × 24,0 × 14,0 | Felsschlucht mit Sturzbahn, Gischtring, Becken, Geröll |
+| `th26_hoehleneingang.glb` | 23,5 × 25,7 × 11,7 | **begehbar**, Tropfsteine, dunkler Gang |
+| `th26_berghuette.glb` | 16,6 × 16,6 × 6,0 | **begehbar**, Stube mit Ofen, Tisch, Bänken, Holzstapel |
+| `th26_seilbahn_station.glb` | 20,6 × 33,3 × 11,5 | **begehbar**, Umlenkscheibe, Perron, Antriebsraum |
+| `th26_seilbahn_gondel.glb` | 2,5 × 3,6 × 5,2 | 6 Personen, Aufhängung, Laufwerk |
+| `th26_seilbahn_stuetze.glb` | 9,0 × 9,2 × 15,9 | Rollenbatterie, Leiter |
+| `th26_haengebruecke.glb` | 8,2 × 29,9 × 5,2 | Tragseile, Holzbohlen, Seitennetze |
+| `th26_gipfelkreuz.glb` | 9,0 × 8,0 × 9,1 | Steinsockel, Gipfelbuch-Kasten |
+| `th26_bergsee.glb` | 30,5 × 26,2 × 7,1 | Uferfelsen, Schilf, Bootssteg |
+
+Generator: `tools/assets/mk_th26_berge.py`
+Neuer Helfer: `kipp_lift(sx, sy, sz, rx, ry, rz)` — halbe Höhe eines gekippten Quaders
+über die Rotationsmatrix, also genau der Betrag zum Anheben.
+
+> ⚠️ **Nur `rx` gegenzurechnen reicht bei gekippten Quadern nicht.** Eine zusätzliche
+> y-Kippung senkt die Ecke um `sx·|sin ry|` weiter ab. `kipp_lift()` nimmt die dritte
+> Zeile der Rotationsmatrix und ist damit für jede Achsenkombination exakt.
+
+> ⚠️ **Ein Felskessel aus freistehenden gekippten Blöcken liest sich als umfallende
+> Platten.** Erst eine durchlaufende Wand mit einer Kerbe dazwischen ergibt eine
+> Schlucht. Starke Kippungen machen es schlimmer, nicht besser.
+
+---
+
+## 1x. Charge 28 — CHARAKTERE (`models/th30_*.glb`)
+
+Runde, organische Figuren. **Keine Quaderketten** — alles aus Kapseln und Ellipsoiden,
+glatt schattiert. Blickrichtung wie bei allen Assets: Gesicht auf Blender +y = three.js −z.
+
+| Datei | Maße (B×T×H) | Dreiecke |
+|---|---|---|
+| `th30_mensch_mann.glb` | 0,71 × 0,28 × **1,79** | 21 912 |
+| `th30_mensch_frau.glb` | 0,63 × 0,27 × **1,69** | 22 640 |
+| `th30_kind.glb` | 0,49 × 0,20 × **1,23** | 21 912 |
+| `th30_arbeiter.glb` | 0,71 × 0,30 × **1,82** | 24 216 | Helm und Warnweste |
+| `th30_hund.glb` | 0,32 × 1,17 × 0,72 | 15 668 |
+
+Generator: `tools/assets/mk_th30_charaktere.py`
+Neue Helfer: `kapsel()` (Zylinder plus zwei Halbkugeln zwischen zwei Punkten — für
+Gliedmassen), `ellipsoid()`, `glatt()`, und `figur()`, das alle Masse als Anteil der
+Gesamthöhe rechnet, damit Kind und Erwachsener dieselben Proportionen haben.
+
+> ⚠️ **Organische Teile brauchen einen grösseren Smooth-Winkel.** Die 38° aus `runden()`
+> lassen an Kapseln und Ellipsoiden die Facetten stehen — genau der Klotz-Eindruck, der
+> hier vermieden werden soll. `glatt()` setzt 62°.
+
+> ⚠️ **Getrennte Ellipsoide uebereinander ergeben einen geriffelten Michelin-Rumpf.**
+> Erst ein durchgehendes, durch die Querschnitte geloftetes Mesh liest sich als Koerper —
+> dieselbe Lehre wie bei Schiffsruempfen und Fahrzeugkarosserien. Dafuer gibt es hier
+> `loft(schnitte, ...)`.
+
+**Offen an dieser Charge:** die Haarkalotte hat am Scheitel noch eine sichtbare
+Schnittkante, und die Figuren stehen in einer starren Ruhepose ohne Rig.
+
+---
+
+## 1y. Charge 30 — WAFFEN-PROPS (`models/th31_*.glb`)
+
+Spiel-Requisiten im Action-Adventure-Stil, stilisiert und gerundet. Alle Handwaffen
+liegen mit Klinge/Spitze auf **+y**, der Griff bei −y, Griffunterkante auf z = 0 —
+so laesst sich das Modell direkt an eine Hand haengen.
+
+| Datei | Maße (B×T×H) | Griffpunkt |
+|---|---|---|
+| `th31_schwert_ritter.glb` | 0,25 × 1,06 × 0,09 | (0, −0,125, 0,048) |
+| `th31_schwert_kurz.glb` | 0,20 × 0,70 × 0,09 | (0, −0,10, 0,047) |
+| `th31_axt_kampf.glb` | 0,33 × 0,86 × 0,07 | (0, −0,235, 0,038) |
+| `th31_streitkolben.glb` | 0,15 × 0,62 × 0,15 | (0, −0,16, 0,074) |
+| `th31_speer.glb` | 0,06 × 2,20 × 0,06 | (0, −0,17, 0,029) |
+| `th31_bogen.glb` | 0,20 × 1,73 × 0,08 | (0,15, 0, 0,04) |
+| `th31_koecher.glb` | 0,40 × 0,93 × 0,18 | (0,30, 0, 0,089) |
+| `th31_armbrust.glb` | 0,66 × 0,93 × 0,17 | (0, −0,15, 0,077) |
+| `th31_schild_rund.glb` | 0,75 × 0,20 × 0,75 | (0, −0,05, 0,375) |
+| `th31_schild_wappen.glb` | 0,55 × 0,18 × 0,76 | (0, −0,06, 0,558) |
+| `th31_zauberstab.glb` | 0,07 × 0,43 × 0,06 | (0, −0,13, 0,033) |
+| `th31_magierstab.glb` | 0,22 × 1,87 × 0,21 | (0, −0,33, 0,098) |
+| `th31_blaster.glb` | 0,08 × 0,46 × 0,24 | (0, −0,06, 0,081) |
+| `th31_energieschwert.glb` | 0,07 × 1,11 × 0,07 | (0, −0,14, 0,035) |
+
+Generator: `tools/assets/mk_th31_waffen.py`
+
+**Bewusste Grenze:** Fantasy, historisch und Sci-Fi — keine masshaltigen oder
+mechanisch korrekten Feuerwaffenteile, keine realen Modellbezeichnungen. Das Repo
+exportiert jedes Modell auch als druckfertiges STL; stilisierte Props sind davon
+unproblematisch, nachgebaute Waffenteile waeren es nicht.
+
+---
+
+## 1z. Rundungs-Durchgang an den Fahrzeugen
+
+Fuenf Fahrzeuge waren Quaderketten und wurden auf geloftete Karosserien umgebaut:
+`th7_lieferwagen`, `th7_lkw`, `th7_taxi`, `th9_stadtbus`, `th9_feuerwehr`.
+**Bitte die alten GLB ersetzen.** Ausrichtung und Modulmasse sind unveraendert.
+
+Dafuer gibt es in `mk_th9_landmarken.py` jetzt `karosse()` und `rprofil()`: `rprofil()`
+liefert EINEN verrundeten Rechteck-Querschnitt mit fester Punktzahl, `karosse()` loftet
+daraus ein Mesh — alle Masse duerfen Zahl **oder** Funktion von y sein, damit Front, Dach
+und Taille flie&szlig;end ineinander uebergehen.
+
+> ⚠️ **Nur mit konstanter Punktzahl je Querschnitt laesst sich loften.** Deshalb gibt
+> `rprofil()` immer 4·(n+1) Punkte zurueck, auch wenn ein Radius null ist.
+
+`th18_traktor` und `th18_anhaenger` sind ebenfalls umgebaut: gewoelbte Motorhaube,
+Kabine mit geneigten Scheiben, Kotfluegel und Stollenreifen mit Felgen.
+
+Beim Bagger sind Motorhaube und Kabine geloftet, beim Radlader die Motorhaube.
+
+Noch **eckig**: die Kabine und die Schaufel des Radladers, der Baggerloeffel, sowie das
+Fahrerhaus und der Rahmen des `th21_betonmischer` (die Mischtrommel selbst ist rund).
+
+---
+
 ## 2. Texturen (`textures/th5/*.png`)
 
 512×512, **nahtlos kachelbar** (Wrap-Arithmetik, verifiziert per 2×2-Kachel-Kontaktbogen).
@@ -658,7 +822,25 @@ Generator: `tools/assets/mk_th9_texturen.py`
 
 Generator: `tools/assets/mk_th12_texturen.py`
 
+### Charge 5 — Stadtdetails (`textures/th28/*.png`)
+
+| Datei | Wofür | `repeat` pro 20 m |
+|---|---|---|
+| `gehwegplatten.png` | Gehwege, Vorplätze | 10 |
+| `fahrbahnmarkierung.png` | Fahrbahnen mit Mittellinie | 4 längs |
+| `graffitiwand.png` | Unterführungen, Hinterhöfe, Bahnmauern | 4 |
+| `rauputz.png` | Wohnhausfassaden | 6 |
+| `rostblech.png` | Container, Schuppen, Baustelle | 6 |
+| `dachpfannen.png` | Sattel- und Walmdächer | 8 |
+| `badfliesen.png` | Bäder, Schwimmbad, Umkleiden | 20 |
+| `auslegware.png` | Büros, Praxen, Hotelflure | 12 |
+| `kopfstein_nass.png` | Altstadtgassen bei Regen | 8 |
+| `gitterrost.png` | Stege, Roste, Industrieböden | 12 |
+
+Generator: `tools/assets/mk_th28_texturen.py`
+
 ---
+
 
 
 ## 3. Nachschub produzieren
@@ -691,6 +873,12 @@ python3 tools/assets/mk_th24_zoo.py       # Zoo und Tierpark -> models/th24_*.gl
 python3 tools/assets/mk_th23_oeffentlich.py # Publikumsbauten -> models/th23_*.glb
 python3 tools/assets/mk_th21_baustelle.py # Baustelle -> models/th21_*.glb
 python3 tools/assets/mk_th22_wohnen.py    # Wohnbauten -> models/th22_*.glb
+python3 tools/assets/mk_th29_winter.py    # Winter/Weihnachtsmarkt -> models/th29_*.glb
+python3 tools/assets/mk_th25_flughafen.py # Flughafen -> models/th25_*.glb
+python3 tools/assets/mk_th26_berge.py     # Bergwelt -> models/th26_*.glb
+python3 tools/assets/mk_th30_charaktere.py  # Charaktere -> models/th30_*.glb
+python3 tools/assets/mk_th31_waffen.py    # Waffen-Props -> models/th31_*.glb
+python3 tools/assets/mk_th28_texturen.py  # Stadtdetails -> textures/th28/*.png
 ```
 
 Beide brauchen nur **bpy 5.x + numpy** (im Container vorhanden, kein Blender-Binary nötig,
