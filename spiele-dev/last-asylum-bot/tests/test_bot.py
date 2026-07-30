@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+import json
 import random
 import sys
 import time
@@ -507,6 +508,73 @@ class TestEngine(unittest.TestCase):
         )
         eng.step()
         self.assertEqual(dev.keys, ["NEIN"])
+
+
+class TestSelbstOptimierung(unittest.TestCase):
+    """Der Bot zieht seine Takte aus den eigenen Protokollen nach."""
+
+    def bau_umgebung(self, tipps_je_lauf, takt=1800):
+        import tempfile
+
+        ordner = tempfile.mkdtemp()
+        os.makedirs(os.path.join(ordner, "logs"))
+        with open(os.path.join(ordner, "logs", "l.jsonl"), "w", encoding="utf-8") as fh:
+            for n in tipps_je_lauf:
+                fh.write('{"ev":"aufgabe","aufgabe":"probe","tipps":%d}\n' % n)
+        konf = os.path.join(ordner, "conf.json")
+        with open(konf, "w", encoding="utf-8") as fh:
+            json.dump({"tasks": [{"name": "probe", "every": takt,
+                                  "do": [{"key": "X"}]}]}, fh)
+        cfg = Config.load(konf)
+        dev = FakeDevice([noise(60, 80, 90)], loop=True)
+        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=1)
+        return ordner, konf, cfg, eng
+
+    def optimiere(self, eng, ordner):
+        eng.run_actions([{"optimiere_takte": {
+            "logs": os.path.join(ordner, "logs", "*.jsonl"), "min_laeufe": 3}}])
+
+    def test_leerlaufende_aufgabe_wird_seltener(self):
+        import shutil
+
+        ordner, konf, cfg, eng = self.bau_umgebung([0, 0, 0, 0, 0])
+        try:
+            self.optimiere(eng, ordner)
+            self.assertEqual(cfg.tasks[0].every, 3600)
+            with open(konf, encoding="utf-8") as fh:  # auch in der Datei
+                self.assertEqual(json.load(fh)["tasks"][0]["every"], 3600)
+        finally:
+            shutil.rmtree(ordner, ignore_errors=True)
+
+    def test_ergiebige_aufgabe_wird_oefter(self):
+        import shutil
+
+        ordner, konf, cfg, eng = self.bau_umgebung([12, 15, 10, 14])
+        try:
+            self.optimiere(eng, ordner)
+            self.assertEqual(cfg.tasks[0].every, 900)
+        finally:
+            shutil.rmtree(ordner, ignore_errors=True)
+
+    def test_normale_aufgabe_bleibt_unangetastet(self):
+        import shutil
+
+        ordner, konf, cfg, eng = self.bau_umgebung([2, 3, 1, 2])
+        try:
+            self.optimiere(eng, ordner)
+            self.assertEqual(cfg.tasks[0].every, 1800)
+        finally:
+            shutil.rmtree(ordner, ignore_errors=True)
+
+    def test_grenzen_werden_eingehalten(self):
+        import shutil
+
+        ordner, konf, cfg, eng = self.bau_umgebung([0, 0, 0, 0], takt=80000)
+        try:
+            self.optimiere(eng, ordner)
+            self.assertLessEqual(cfg.tasks[0].every, 86400)
+        finally:
+            shutil.rmtree(ordner, ignore_errors=True)
 
 
 class TestZustandUeberNeustart(unittest.TestCase):

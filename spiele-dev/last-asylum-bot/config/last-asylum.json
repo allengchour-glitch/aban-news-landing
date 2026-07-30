@@ -4221,6 +4221,25 @@
           ]
         }
       ]
+    },
+    {
+      "name": "selbst-optimieren",
+      "every": 43200,
+      "priority": 30,
+      "_zweck": "Eigene Protokolle auswerten und die Takte anpassen - siehe _selbstoptimierung.",
+      "do": [
+        {
+          "log": "Eigene Protokolle auswerten und Takte nachziehen"
+        },
+        {
+          "optimiere_takte": {
+            "logs": "logs/*.jsonl",
+            "min_laeufe": 5,
+            "min_takt": 300,
+            "max_takt": 86400
+          }
+        }
+      ]
     }
   ],
   "_diamanten": "DIAMANTEN-REGEL (User 2026-07-31): 'bis 50 pro Klick' ist erlaubt. ABER der Bot kann Zahlen auf Knoepfen NICHT lesen - fuer ihn sieht '2 Spenden' aus wie '50 Spenden' oder '500 Spenden'. Deshalb tippt er von sich aus nur Knoepfe an, die REINE RESSOURCEN kosten (blauer Spenden-Knopf, Kraeuter). Der Diamanten-Knopf steht als eigene Aufgabe bereit, ist aber AUS - wer ihn einschaltet, akzeptiert, dass die Kosten mit jeder Spende steigen und der Bot das nicht bemerkt. Ebenso bleibt 'Sofort' beim Gebaeude-Upgrade (vierstellig) unangetastet. Echtgeld ist ohnehin komplett tabu, siehe tabu_regionen.",
@@ -4249,5 +4268,6 @@
   ],
   "_zurueck": "Zurueck geht in diesem Spiel ueber den Pfeil oben links, nicht ueber die Android-Taste - die wechselt teils die ganze Ansicht oder minimiert die App. Ueberall, wo der Bot zurueck will, prueft er zuerst auf ui/back_arrow.png und nimmt nur ersatzweise KEYCODE_BACK.",
   "_selbstlernen": "Der Bot entdeckt Sammel-Objekte selbst: die Aufgabe 'objekte-lernen' macht zwei Aufnahmen im Abstand weniger Sekunden. Alles, was sich dazwischen aendert und rundlich in Knopfgroesse ist, ist einsammelbar (Ertrags-Blasen tauchen auf und verschwinden, der Rest des Bildes steht still). Die Ausschnitte landen in templates/gelernt/blasen/ und werden von der Regel 'gelernte-objekte-einsammeln' per Muster sofort mitbenutzt - ohne Konfigurationsaenderung. So kommen auch Blasen-Sorten dazu, die nie jemand von Hand geschnitten hat.",
-  "_routine": "TAGESROUTINE: Die Takte sind so gewaehlt, dass die Aufgaben zusammen deutlich unter der verfuegbaren Zeit bleiben. Sonst stauen sie sich und die reaktiven Regeln - Belohnungen, Ertrags-Blasen, Dialoge - kommen kaum noch dran. Faustregel beim Aendern: die Summe aus Laufzeit mal Haeufigkeit sollte rund die Haelfte des Tages nicht ueberschreiten."
+  "_routine": "TAGESROUTINE: Die Takte sind so gewaehlt, dass die Aufgaben zusammen deutlich unter der verfuegbaren Zeit bleiben. Sonst stauen sie sich und die reaktiven Regeln - Belohnungen, Ertrags-Blasen, Dialoge - kommen kaum noch dran. Faustregel beim Aendern: die Summe aus Laufzeit mal Haeufigkeit sollte rund die Haelfte des Tages nicht ueberschreiten.",
+  "_selbstoptimierung": "Der Bot wertet alle zwoelf Stunden seine eigenen Protokolle aus und zieht die Takte nach: Aufgaben, die wiederholt leer laufen, werden seltener aufgerufen, sehr ergiebige oefter. Aenderungen sind auf Faktor zwei je Durchgang begrenzt und bleiben zwischen 5 Minuten und 24 Stunden. Die neuen Takte schreibt er in diese Datei zurueck."
 }

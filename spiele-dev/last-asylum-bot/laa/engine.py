@@ -328,6 +328,8 @@ class Engine:
         elif key == "screenshot":
             path = self.save_shot(str(value) if value else "shot")
             self.log.info("Screenshot gespeichert", datei=path)
+        elif key == "optimiere_takte":
+            self._optimiere_takte(value if isinstance(value, dict) else {})
         elif key == "lerne_objekte":
             self._lerne_objekte(value if isinstance(value, dict) else {})
         elif key == "wenn":
@@ -387,6 +389,89 @@ class Engine:
         self._tap_abs(cx, cy, spec.get("template", ""))
         if "after" in spec:
             self._do_sleep(spec["after"])
+
+    def _optimiere_takte(self, spec: Dict[str, Any]) -> None:
+        """Eigene Protokolle auswerten und die Takte selbst nachziehen.
+
+        Jeder Aufgaben-Lauf notiert, wie viele Tipps er ausgeloest hat. Wer
+        wiederholt leer laeuft, wird seltener aufgerufen; wer viel bewirkt,
+        oefter. Aenderungen sind auf Faktor zwei je Durchgang begrenzt und
+        bleiben in festen Grenzen - so kann sich nichts aufschaukeln.
+        """
+        import glob as _glob
+
+        muster = spec.get("logs", os.path.join("logs", "*.jsonl"))
+        min_laeufe = int(spec.get("min_laeufe", 5))
+        unten = float(spec.get("min_takt", 300))
+        oben = float(spec.get("max_takt", 86400))
+
+        werte: Dict[str, List[int]] = {}
+        for pfad in sorted(_glob.glob(muster)):
+            try:
+                with open(pfad, "r", encoding="utf-8") as fh:
+                    for zeile in fh:
+                        try:
+                            d = json.loads(zeile)
+                        except ValueError:
+                            continue
+                        if d.get("ev") == "aufgabe":
+                            werte.setdefault(d["aufgabe"], []).append(int(d.get("tipps", 0)))
+            except OSError:
+                continue
+
+        if not werte:
+            self.log.debug("Noch keine Aufgaben-Daten zum Auswerten")
+            return
+
+        aenderungen = {}
+        for task in self.cfg.tasks:
+            reihe = werte.get(task.name)
+            if not task.enabled or not reihe or len(reihe) < min_laeufe:
+                continue
+            schnitt = sum(reihe) / len(reihe)
+            alt = task.every
+            if schnitt == 0:
+                neu = min(oben, alt * 2)
+            elif schnitt < 0.5:
+                neu = min(oben, alt * 1.5)
+            elif schnitt > 8:
+                neu = max(unten, alt / 2)
+            else:
+                continue
+            if abs(neu - alt) < max(60, alt * 0.1):
+                continue
+            task.every = neu
+            aenderungen[task.name] = (alt, neu, schnitt, len(reihe))
+
+        if not aenderungen:
+            self.log.info("Takte passen - nichts zu aendern")
+            return
+
+        for name, (alt, neu, schnitt, n) in aenderungen.items():
+            richtung = "seltener" if neu > alt else "oefter"
+            self.log.info(
+                f"Takt angepasst: {name} {richtung}",
+                von=f"{int(alt / 60)}min", auf=f"{int(neu / 60)}min",
+                tipps_schnitt=round(schnitt, 1), laeufe=n,
+            )
+        self.bump("takt-angepasst")
+        self._takte_sichern(aenderungen)
+
+    def _takte_sichern(self, aenderungen: Dict[str, Any]) -> None:
+        """Neue Takte in die Konfigurationsdatei zurueckschreiben."""
+        if self.cfg.path == "<inline>":
+            return
+        try:
+            with open(self.cfg.path, "r", encoding="utf-8") as fh:
+                roh = json.load(fh)
+            for eintrag in roh.get("tasks", []):
+                if eintrag["name"] in aenderungen:
+                    eintrag["every"] = aenderungen[eintrag["name"]][1]
+            with open(self.cfg.path, "w", encoding="utf-8") as fh:
+                json.dump(roh, fh, ensure_ascii=False, indent=2)
+            self.log.info("Konfiguration aktualisiert", datei=self.cfg.path)
+        except Exception as exc:  # pragma: no cover - Dateisystem
+            self.log.warn(f"Takte nicht gespeichert: {exc}")
 
     def _lerne_objekte(self, spec: Dict[str, Any]) -> None:
         """Neue Sammel-Objekte selbst entdecken – über das, was sich bewegt.
