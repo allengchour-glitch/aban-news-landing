@@ -744,7 +744,10 @@ und Taille flie&szlig;end ineinander uebergehen.
 `th18_traktor` und `th18_anhaenger` sind ebenfalls umgebaut: gewoelbte Motorhaube,
 Kabine mit geneigten Scheiben, Kotfluegel und Stollenreifen mit Felgen.
 
-Noch **nicht** umgebaut: `th21_bagger`, `th21_radlader`, `th21_betonmischer`.
+Beim Bagger sind Motorhaube und Kabine geloftet, beim Radlader die Motorhaube.
+
+Noch **eckig**: die Kabine und die Schaufel des Radladers, der Baggerloeffel, sowie das
+Fahrerhaus und der Rahmen des `th21_betonmischer` (die Mischtrommel selbst ist rund).
 
 ---
 

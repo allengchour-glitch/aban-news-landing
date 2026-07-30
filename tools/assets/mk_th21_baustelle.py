@@ -784,16 +784,29 @@ def bagger():
     ZO = 1.27
     box(0, -0.25, ZO + 0.13, 2.60, 4.10, 0.26, GEL2)              # Drehbuehne
     box(0, -2.42, ZO + 0.62, 2.66, 0.72, 1.24, DKL)               # Kontergewicht
-    box(0, -1.45, ZO + 0.78, 2.40, 2.10, 1.30, GELB)              # Motorhaube
-    box(0, -1.45, ZO + 1.46, 2.20, 1.90, 0.10, GEL2)
+    def _tb(y, mitte=-1.45, flanke=0.72):
+        return max(0.0, abs(y - mitte) - flanke)
+    karosse([-2.52, -2.30, -1.90, -1.45, -1.00, -0.62, -0.40],
+            lambda y: 1.20 - 0.20*_tb(y)**1.3,
+            ZO + 0.13,
+            lambda y: ZO + 1.51 - 0.13*_tb(y)**1.5,
+            GELB, r_u=0.12, r_o=0.34, n=3,
+            hb_o=lambda y: 1.04 - 0.20*_tb(y)**1.3, name="Motorhaube")
     for i in range(6):
         box(1.22, -1.45, ZO + 0.50 + i*0.16, 0.06, 1.60, 0.08, SCHW)
     box(0, -0.30, ZO + 0.70, 2.30, 0.30, 1.10, GEL2)
     zyl(-0.72, -2.10, ZO + 1.85, 0.08, 0.90, SCHW, 10)            # Auspuff
     zyl(-0.72, -2.10, ZO + 2.34, 0.10, 0.12, STAH, 10)
     KX, KY = -0.80, 0.72                                          # Kabine
-    box(KX, KY, ZO + 1.10, 1.20, 1.90, 1.94, GELB)
-    box(KX, KY, ZO + 2.13, 1.30, 2.00, 0.12, GEL2)
+    def _tk(y, mitte=KY, flanke=0.62):
+        return max(0.0, abs(y - mitte) - flanke)
+    karosse([KY-0.96, KY-0.78, KY-0.30, KY+0.30, KY+0.78, KY+0.96],
+            lambda y: 0.60 - 0.13*_tk(y)**1.3,
+            ZO + 0.13,
+            lambda y: ZO + 2.10 - 0.12*_tk(y)**1.5,
+            GELB, r_u=0.10, r_o=0.30, n=3,
+            hb_o=lambda y: 0.52 - 0.13*_tk(y)**1.3, name="Kabine")
+    box(KX, KY, ZO + 2.16, 1.30, 2.00, 0.10, GEL2)
     box(KX, KY + 0.96, ZO + 1.14, 1.00, 0.07, 1.62, GLAS)
     box(KX - 0.62, KY, ZO + 1.14, 0.07, 1.62, 1.50, GLAS)
     box(KX + 0.62, KY - 0.30, ZO + 1.20, 0.07, 1.00, 1.40, GLAS)
@@ -861,8 +874,16 @@ def radlader():
                         RR + math.sin(i/12*TAU)*(RR - 0.05), BR, 0.19, 0.10, REIF)
                 o.rotation_euler[0] = i/12*TAU - math.pi/2
     box(0, -1.45, 0.78, 1.70, 2.90, 0.42, DKL)                    # Hinterwagen
-    box(0, -2.05, 1.42, 2.06, 1.90, 0.90, GELB)
-    box(0, -2.05, 1.90, 1.86, 1.70, 0.12, GEL2)
+    # Motorhaube als EIN geloftetes Mesh statt zweier Quader — die Silhouette ist
+    # das, woran man einen Klotz erkennt.
+    def _t(y, mitte=-2.05, flanke=0.62):
+        return max(0.0, abs(y - mitte) - flanke)
+    karosse([-3.02, -2.82, -2.50, -2.05, -1.60, -1.28, -1.10],
+            lambda y: 1.03 - 0.16*_t(y)**1.3,
+            0.97,
+            lambda y: 1.87 - 0.10*_t(y)**1.5,
+            GELB, r_u=0.12, r_o=0.30, n=3,
+            hb_o=lambda y: 0.90 - 0.16*_t(y)**1.3, name="Haube")
     box(0, -2.98, 1.38, 2.10, 0.34, 0.94, GEL2)
     box(0, -3.14, 0.86, 2.16, 0.24, 0.50, DKL)                    # Kontergewicht
     for i in range(6):
