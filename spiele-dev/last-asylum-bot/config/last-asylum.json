@@ -949,7 +949,7 @@
   "tasks": [
     {
       "name": "tagesziele",
-      "every": 2700,
+      "every": 7200,
       "at_start": true,
       "priority": 130,
       "do": [
@@ -1067,7 +1067,7 @@
     },
     {
       "name": "truhen-oeffnen",
-      "every": 2700,
+      "every": 5400,
       "at_start": true,
       "priority": 108,
       "_zweck": "Tasche -> Spezial: Truhen und Beutekisten oeffnen. Der orange 'Alles abholen' im Beute-Fenster raeumt gleich alles ab. Braucht tasche/truhe.png (die Kiste im Spezial-Reiter) und ui/btn_alles_abholen.png.",
@@ -1200,7 +1200,7 @@
     },
     {
       "name": "allianz-geschenke",
-      "every": 1800,
+      "every": 3600,
       "at_start": true,
       "priority": 120,
       "do": [
@@ -1338,7 +1338,7 @@
     },
     {
       "name": "allianz-technologie-spenden",
-      "every": 10800,
+      "every": 14400,
       "at_start": true,
       "priority": 105,
       "_zweck": "Allianz -> Allianz-Forschung -> empfohlene Technologie -> mit RESSOURCEN spenden (blauer Knopf, kostet nur Kraeuter). Ist der blaue Knopf ausgegraut, weil Limit oder Vorrat erschoepft ist, trifft die Vorlage ihn nicht mehr - genau so soll es sein. Braucht allianz/forschung.png und allianz/spenden_ressourcen.png (den AKTIVEN blauen Knopf schneiden, nicht den grauen).",
@@ -1753,7 +1753,7 @@
     },
     {
       "name": "bauen-und-aufwerten",
-      "every": 600,
+      "every": 1200,
       "at_start": true,
       "priority": 150,
       "_zweck": "Folgt dem Bau-Vorschlag des Spiels unten links (Schriftrolle) und bestaetigt das Upgrade. Der orange 'Sofort'-Knopf (kostet Diamanten) wird bewusst NICHT angetippt.",
@@ -1849,7 +1849,7 @@
     },
     {
       "name": "forschung",
-      "every": 1800,
+      "every": 3600,
       "at_start": true,
       "priority": 145,
       "_zweck": "Forschung nie stillstehen lassen. Braucht hud/forschung_frei.png (der Kolben links, z.B. 2/2) und ui/btn_forschen.png.",
@@ -1969,7 +1969,7 @@
     },
     {
       "name": "truppe-1-aufwerten",
-      "every": 1800,
+      "every": 3600,
       "at_start": true,
       "priority": 140,
       "_zweck": "Hauptziel Kampfkraft: im Helden-Menue die Ausruestung von Team 1 hochziehen. Der orange 'Verbessern'-Knopf wird mehrfach gedrueckt - solange Kristalle und Kraeuter reichen, steigt das Level. Fehlt held/team1.png noch, arbeitet der Bot auf dem Helden, der gerade offen ist.",
@@ -2107,7 +2107,7 @@
     },
     {
       "name": "beschleunigen",
-      "every": 5400,
+      "every": 10800,
       "priority": 80,
       "_zweck": "Beschleuniger aus der Tasche auf laufende Bauten werfen. Braucht schutz/reiter_beschleunigung.png und ui/btn_benutzen.png. Diamanten-Kaeufe im Spiel sind erlaubt, Echtgeld nicht (siehe tabu_regionen).",
       "do": [
@@ -2211,7 +2211,7 @@
     },
     {
       "name": "basis-rundgang",
-      "every": 900,
+      "every": 3600,
       "at_start": true,
       "priority": 118,
       "_zweck": "Der Bot sieht immer nur den aktuellen Bildschirmausschnitt. Der Rundgang schiebt die Stadtansicht - gedrueckt halten und ziehen, ein kurzer Wisch bewegt die Kamera nicht - und erntet nach jedem Schritt die sichtbar gewordenen Ertrags-Blasen ab.",
@@ -3183,7 +3183,7 @@
     },
     {
       "name": "objekte-lernen",
-      "every": 1800,
+      "every": 7200,
       "at_start": true,
       "priority": 95,
       "_zweck": "Zwei Aufnahmen vergleichen und neue Sammel-Objekte daraus lernen. Laeuft in der Basis-Ansicht, wo staendig Ertrags-Blasen auftauchen.",
@@ -3234,7 +3234,7 @@
     },
     {
       "name": "zuflucht",
-      "every": 900,
+      "every": 1800,
       "at_start": true,
       "priority": 125,
       "_zweck": "In die Zuflucht wechseln und alles einsammeln (Kraeuter, Geschenke, Offline-Einnahmen). Die Regeln oben erledigen das Einsammeln, sobald der Bildschirm sichtbar ist. Fuer den Wechsel braucht es nav/zuflucht.png (der Umschalter am linken Bildrand).",
@@ -3337,7 +3337,7 @@
     },
     {
       "name": "events",
-      "every": 3600,
+      "every": 7200,
       "at_start": true,
       "priority": 115,
       "do": [
@@ -3498,7 +3498,7 @@
     },
     {
       "name": "allianz-chat",
-      "every": 14400,
+      "every": 21600,
       "priority": 70,
       "do": [
         {
@@ -3617,7 +3617,7 @@
     },
     {
       "name": "chat-schatz-holen",
-      "every": 3600,
+      "every": 7200,
       "priority": 85,
       "_zweck": "Im Allianz-Chat teilen Mitglieder Schatz-Koordinaten als anklickbaren Link ('Teilen' mit Ortsmarke, darunter X/Y in Blau). Ein Tipp darauf springt direkt zur Stelle, dort laesst sich der Schatz ausgraben. Braucht chat/teilen_marker.png (die 'Teilen'-Zeile mit der gruenen Ortsmarke) und sammeln/ausgraben.png (den Knopf auf der Karte). Bis die beiden da sind, tut die Aufgabe nichts.",
       "do": [
@@ -3744,7 +3744,7 @@
     },
     {
       "name": "soldaten-ausbilden",
-      "every": 2400,
+      "every": 3600,
       "at_start": true,
       "priority": 112,
       "_zweck": "Kaserne offen halten: hoechste verfuegbare Truppenstufe (T8) auswaehlen, Menge auf Maximum, ausbilden. Braucht kaserne/gebaeude.png (die Kaserne in der Basis), kaserne/stufe_t8.png (das T8-Symbol in der Stufenauswahl), ui/btn_max.png und kaserne/btn_ausbilden.png. Wichtig: schneide fuer stufe_t8 wirklich die T8-Kachel - der Bot kann Ziffern nicht lesen und wuerde sonst irgendeine Stufe trainieren.",
@@ -3864,7 +3864,7 @@
     },
     {
       "name": "heilen",
-      "every": 1800,
+      "every": 3600,
       "priority": 100,
       "do": [
         {
@@ -3969,7 +3969,7 @@
     },
     {
       "name": "sammeln",
-      "every": 600,
+      "every": 1800,
       "priority": 90,
       "do": [
         {
@@ -4102,7 +4102,7 @@
     },
     {
       "name": "zurueck-in-die-basis",
-      "every": 900,
+      "every": 1800,
       "priority": 50,
       "do": [
         {
@@ -4149,7 +4149,7 @@
     },
     {
       "name": "nachrichten",
-      "every": 7200,
+      "every": 14400,
       "priority": 60,
       "do": [
         {
@@ -4248,5 +4248,6 @@
     ]
   ],
   "_zurueck": "Zurueck geht in diesem Spiel ueber den Pfeil oben links, nicht ueber die Android-Taste - die wechselt teils die ganze Ansicht oder minimiert die App. Ueberall, wo der Bot zurueck will, prueft er zuerst auf ui/back_arrow.png und nimmt nur ersatzweise KEYCODE_BACK.",
-  "_selbstlernen": "Der Bot entdeckt Sammel-Objekte selbst: die Aufgabe 'objekte-lernen' macht zwei Aufnahmen im Abstand weniger Sekunden. Alles, was sich dazwischen aendert und rundlich in Knopfgroesse ist, ist einsammelbar (Ertrags-Blasen tauchen auf und verschwinden, der Rest des Bildes steht still). Die Ausschnitte landen in templates/gelernt/blasen/ und werden von der Regel 'gelernte-objekte-einsammeln' per Muster sofort mitbenutzt - ohne Konfigurationsaenderung. So kommen auch Blasen-Sorten dazu, die nie jemand von Hand geschnitten hat."
+  "_selbstlernen": "Der Bot entdeckt Sammel-Objekte selbst: die Aufgabe 'objekte-lernen' macht zwei Aufnahmen im Abstand weniger Sekunden. Alles, was sich dazwischen aendert und rundlich in Knopfgroesse ist, ist einsammelbar (Ertrags-Blasen tauchen auf und verschwinden, der Rest des Bildes steht still). Die Ausschnitte landen in templates/gelernt/blasen/ und werden von der Regel 'gelernte-objekte-einsammeln' per Muster sofort mitbenutzt - ohne Konfigurationsaenderung. So kommen auch Blasen-Sorten dazu, die nie jemand von Hand geschnitten hat.",
+  "_routine": "TAGESROUTINE: Die Takte sind so gewaehlt, dass die Aufgaben zusammen deutlich unter der verfuegbaren Zeit bleiben. Sonst stauen sie sich und die reaktiven Regeln - Belohnungen, Ertrags-Blasen, Dialoge - kommen kaum noch dran. Faustregel beim Aendern: die Summe aus Laufzeit mal Haeufigkeit sollte rund die Haelfte des Tages nicht ueberschreiten."
 }

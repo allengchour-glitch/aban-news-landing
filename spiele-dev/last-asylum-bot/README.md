@@ -355,7 +355,34 @@ von anderen Servern herüberkommen.
 
 ---
 
-## 5. Geld: was erlaubt ist und was nicht
+## 5. Die Tagesroutine
+
+Im Spiel gibt es immer etwas zu tun — die Kunst ist, es *nicht* zu überbuchen. Die Takte sind so
+gewählt, dass alle Aufgaben zusammen rund ein Viertel des Tages brauchen. Der Rest gehört den
+reaktiven Regeln: Belohnungen, Ertrags-Blasen, Dialoge, Allianz-Hilfe. Stünde der Zeitplan zu
+dicht, würden sich die Aufgaben stauen und genau diese Regeln kämen kaum noch dran.
+
+| Takt | Aufgabe | Warum dieser Rhythmus |
+|---|---|---|
+| 20 min | Bauen und Aufwerten | Bauschlitze werden nicht schneller frei |
+| 30 min | Sammeln (4 Trupps) | Trupps sind 30–60 Minuten unterwegs |
+| 30 min | Zuflucht abernten, Rückkehr in die Basis | Kräuter wachsen laufend nach |
+| 60 min | Allianz-Geschenke, Forschung, Truppe 1, Heilen, Ausbilden, Basis-Rundgang | Stundentakt reicht, nichts läuft schneller voll |
+| 90 min | Kisten öffnen | |
+| 2 h | Tagesziele, Events, Chat-Schätze, Objekte lernen | |
+| 3 h | Beschleuniger einsetzen | |
+| 4 h | Allianz-Technologie spenden, Nachrichten | Spenden-Limit ist ohnehin täglich |
+| 6 h | Admin-Nachricht im Allianz-Chat | mehr wäre Spam |
+
+Macht **339 Minuten am Tag — 24 %**. Vorher waren es rechnerisch über 100 %, was schlicht nicht
+funktioniert hätte.
+
+**Faustregel beim Ändern:** Laufzeit × Häufigkeit aufsummieren und unter der Hälfte des Tages
+bleiben.
+
+---
+
+## 6. Geld: was erlaubt ist und was nicht
 
 * **Spiel-Währung ist frei.** Diamanten, Ressourcen und Beschleuniger darf der Bot
   ausgeben — das passiert in normalen Spieldialogen.
@@ -381,7 +408,7 @@ Ein Test hält das dauerhaft fest: `test_tabu_zone_blockiert_kauf_tipp`.
 
 ---
 
-## 6. Chat (Allianz-Admin)
+## 7. Chat (Allianz-Admin)
 
 ```json
 { "type_text": { "pool": "allianz_admin" } }
@@ -402,7 +429,7 @@ bei dir nur Anhänge öffnet statt zu senden, schneide den echten Sende-Knopf ne
 
 ---
 
-## 7. Mehrere Accounts / mehrere Geräte
+## 8. Mehrere Accounts / mehrere Geräte
 
 Der Bot ist pro Lauf an genau ein Gerät gebunden. Für mehrere Accounts startest du mehrere
 Emulator-Instanzen und pro Instanz einen Bot:
@@ -420,7 +447,7 @@ ein Restrisiko bleibt deine Entscheidung.
 
 ---
 
-## 8. Konfiguration in Kurzform
+## 9. Konfiguration in Kurzform
 
 Eine Konfiguration hat **Regeln** (reagieren auf das, was gerade zu sehen ist) und
 **Aufgaben** (laufen nach Zeitplan).
@@ -474,7 +501,7 @@ Eine Konfiguration hat **Regeln** (reagieren auf das, was gerade zu sehen ist) u
 
 ---
 
-## 9. Ohne Handy testen
+## 10. Ohne Handy testen
 
 ```bash
 # Spielzeug-Beispiel erzeugen und durchlaufen lassen
@@ -493,7 +520,7 @@ lass den Bot darüberlaufen und schau, welche Regel greift.
 
 ---
 
-## 10. Wenn etwas klemmt
+## 11. Wenn etwas klemmt
 
 | Symptom | Ursache / Lösung |
 |---|---|
@@ -510,7 +537,7 @@ die nächsten Templates.
 
 ---
 
-## 11. Aufbau
+## 12. Aufbau
 
 ```
 bot.py                 Kommandozeile (devices, package, capture, crop, check, find, run, replay)
