@@ -2298,6 +2298,7 @@ setTimeout(function baueVerkehr(){
     wag.position.set(-w*6.6,0,0);zugG.add(wag);}
   zugG.position.set(-120,0.01,112);zugG.rotation.y=0;scene.add(zugG);
   window._zug={mesh:zugG,pos:-120,speed:14};
+  baueSchranken();
   // ---- Helikopter kreist am Himmel ----
   var heliG=new THREE.Group();
   var hbody=new THREE.Mesh(new THREE.BoxGeometry(3.4,1.6,1.6),stdMat(0x2a3a5a,0.5));hbody.position.y=0;heliG.add(hbody);
@@ -2335,7 +2336,55 @@ function updWasser(dt,now){if((++_wasserFrame&1))return; // jeden 2. Frame reich
       pa[i+2]=b[i+2]+(Math.sin(now*0.002+b[i]*0.3)*0.09+Math.cos(now*0.0015+b[i+1]*0.3)*0.07)*damp;}
     w.geo.attributes.position.needsUpdate=true;});}
 function updZug(dt){var z=window._zug;if(!z)return;
-  z.pos+=z.speed*dt;if(z.pos>140)z.pos=-140;z.mesh.position.x=z.pos;}
+  z.pos+=z.speed*dt;if(z.pos>140)z.pos=-140;z.mesh.position.x=z.pos;
+  updSchranken(dt,z.pos);}
+/* 🚂 BAHNUEBERGANG (User: „bahnuebergang bariere animationen wenn zug kommt").
+   Die Gleise bei z=112 kreuzen die beiden Zubringer bei x=±78. Naehert sich der Zug,
+   senken sich die Schranken, die Warnlichter blinken, und der Verkehr auf der Querstrasse
+   haelt vor dem Uebergang. Ist er durch, gehen sie wieder hoch. */
+function baueSchranken(){
+  var G=[];
+  [78,-78].forEach(function(gx){
+    [-1,1].forEach(function(seite){
+      var g=new THREE.Group();
+      var sock=new THREE.Mesh(new THREE.BoxGeometry(0.9,0.7,0.9),betMat(0xb8b2a6,0.9));
+      sock.position.y=0.35;sock.castShadow=true;g.add(sock);
+      var mast=new THREE.Mesh(new THREE.CylinderGeometry(0.11,0.13,2.4,8),stdMat(0x3a4048,0.5));
+      mast.position.y=1.5;g.add(mast);
+      /* Warnlichter */
+      var lampen=[];
+      [-0.45,0.45].forEach(function(ox){
+        var lm=new THREE.Mesh(new THREE.SphereGeometry(0.16,10,8),
+          new THREE.MeshStandardMaterial({color:0x6a1a1a,emissive:0xff2a1a,emissiveIntensity:0,roughness:0.3}));
+        lm.position.set(ox,2.5,0);g.add(lm);lampen.push(lm.material);});
+      /* Schrankenbaum: Drehachse am Mast, rot-weiss gestreift */
+      var arm=new THREE.Group();
+      for(var b2=0;b2<7;b2++){
+        var seg=new THREE.Mesh(new THREE.BoxGeometry(1.2,0.16,0.16),
+          stdMat(b2%2?0xf2f2f2:0xd8322a,0.6));
+        seg.position.x=0.6+b2*1.2;seg.castShadow=true;arm.add(seg);}
+      var gew=new THREE.Mesh(new THREE.BoxGeometry(0.5,0.5,0.5),stdMat(0x3a4048,0.5));
+      gew.position.x=-0.6;arm.add(gew);
+      arm.position.set(0,2.0,0);arm.rotation.z=-Math.PI/2;   /* Start: offen (senkrecht) */
+      g.add(arm);
+      g.position.set(gx+seite*6.5,0,112+seite*3.2);
+      g.rotation.y=seite>0?Math.PI:0;
+      scene.add(g);
+      G.push({arm:arm,lampen:lampen,gx:gx});});});
+  window._schranken=G;window._schrankenZu=false;}
+function updSchranken(dt,zugX){
+  var S=window._schranken;if(!S||!S.length)return;
+  var zu=false;
+  for(var i=0;i<S.length;i++){if(Math.abs(zugX-S[i].gx)<34){zu=true;break;}}
+  window._schrankenZu=zu;
+  window._blink=(window._blink||0)+dt;
+  var an=zu&&(Math.floor(window._blink*3)%2===0);
+  S.forEach(function(sc){
+    var ziel=zu?0:-Math.PI/2;                       /* 0 = waagrecht (geschlossen) */
+    sc.arm.rotation.z+=(ziel-sc.arm.rotation.z)*Math.min(1,dt*2.2);
+    sc.lampen.forEach(function(m,k){
+      m.emissiveIntensity=(zu&&(Math.floor(window._blink*3+k)%2===0))?2.4:0;
+      m.color.setHex(m.emissiveIntensity>0?0xff5a3a:0x6a1a1a);});});}
 function updHeli(dt,now){var h=window._heli;if(!h)return;
   h.ang+=dt*0.25;var r=55;
   h.mesh.position.set(Math.cos(h.ang)*r,32,Math.sin(h.ang)*r);
@@ -2357,6 +2406,11 @@ function updVerkehr(dt){
       for(var ci=0;ci<2;ci++){var sl=ctrs[ci]-v.route.dir*off;
         if(v.route.dir>0){if(_pv<=sl&&v.pos>sl)v.pos=sl;}
         else{if(_pv>=sl&&v.pos<sl)v.pos=sl;}}}
+    if(window._schrankenZu&&v.route.axis==="z"&&Math.abs(Math.abs(v.route.x)-RX)<3){
+      /* Geschlossene Schranke: vor dem Uebergang bei z=112 anhalten */
+      var hl=v.route.dir>0?104:120;
+      if(v.route.dir>0){if(_pv<=hl&&v.pos>hl)v.pos=hl;}
+      else{if(_pv>=hl&&v.pos<hl)v.pos=hl;}}
     for(var vi=0;vi<verkehr.length;vi++){        // Sicherheitsabstand auf derselben Spur
       var o=verkehr[vi];if(o===v||o===driveCar||o.route!==v.route)continue;
       var gap=(o.pos-v.pos)*v.route.dir;
