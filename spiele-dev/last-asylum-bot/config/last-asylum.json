@@ -952,6 +952,7 @@
       "every": 7200,
       "at_start": true,
       "priority": 130,
+      "_zweck": "Tagesziel-Kalender oeffnen und alle Belohnungen abholen, einmal oben und nach einem Wisch nochmal weiter unten in der Liste.",
       "do": [
         {
           "log": "Tagesziele: alle Belohnungen abholen"
@@ -1203,6 +1204,7 @@
       "every": 3600,
       "at_start": true,
       "priority": 120,
+      "_zweck": "Allianz-Menue: Hilfe geben, Truhen und Geschenke abholen. Hilfe kostet nichts und beschleunigt alle in der Allianz.",
       "do": [
         {
           "log": "Allianz: Hilfe geben, Truhen und Geschenke abholen"
@@ -3340,6 +3342,7 @@
       "every": 7200,
       "at_start": true,
       "priority": 115,
+      "_zweck": "Die beiden Event-Symbole am rechten Bildrand oeffnen und abholen, was abholbar ist. Fuer die taeglich wechselnden Reiter gibt es zusaetzlich die Regel 'vorfall-durchklappern'.",
       "do": [
         {
           "log": "Events durchgehen und alle Belohnungen holen"
@@ -4242,6 +4245,7 @@
       "name": "zurueck-in-die-basis",
       "every": 1800,
       "priority": 50,
+      "_zweck": "Aufraeum-Aufgabe: zurueck in die Basis, falls der Bot in einer anderen Ansicht haengengeblieben ist. Nimmt 'Startseite', 'Gebiet' oder die Burg - je nachdem, was sichtbar ist.",
       "do": [
         {
           "tap_first": {
@@ -4289,6 +4293,7 @@
       "name": "nachrichten",
       "every": 14400,
       "priority": 60,
+      "_zweck": "Nachrichten-Postfach oeffnen, damit rote Punkte verschwinden und Anhaenge abgeholt werden.",
       "do": [
         {
           "log": "Nachrichten oeffnen (rote Punkte abbauen)"

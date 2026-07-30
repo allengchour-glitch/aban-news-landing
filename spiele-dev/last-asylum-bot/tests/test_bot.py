@@ -510,6 +510,22 @@ class TestEngine(unittest.TestCase):
         self.assertEqual(dev.keys, ["NEIN"])
 
 
+class TestKonfigurationGepflegt(unittest.TestCase):
+    """Kleine Hygiene-Prüfungen, damit die Konfiguration lesbar bleibt."""
+
+    def lade(self):
+        return json.load(open(os.path.join(ROOT, "config", "last-asylum.json"), encoding="utf-8"))
+
+    def test_jede_aufgabe_erklaert_sich(self):
+        ohne = [t["name"] for t in self.lade()["tasks"] if not t.get("_zweck")]
+        self.assertEqual(ohne, [], "Aufgaben ohne _zweck")
+
+    def test_regel_prioritaeten_sind_eindeutig(self):
+        prios = [r.get("priority", 50) for r in self.lade()["rules"]]
+        doppelt = {p for p in prios if prios.count(p) > 1}
+        self.assertEqual(doppelt, set(), "doppelte Prioritäten machen die Reihenfolge zufällig")
+
+
 class TestAusdauerSicherung(unittest.TestCase):
     """Ein Nachfüll-Dialog muss geschlossen, nicht bestätigt werden."""
 
