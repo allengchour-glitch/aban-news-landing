@@ -942,6 +942,13 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
         if(!m.transparent||gesehen.indexOf(m)>=0)return;
         gesehen.push(m);
         if(m.blending&&m.blending!==THREE.NormalBlending)return;   // additive Effekte behalten
+        /* 🐛 HIER war der Fehler: Materialien mit Textur koennen ihre Durchsichtigkeit im
+           ALPHA-KANAL der Textur tragen, nicht in .opacity. Die Boden-Overlays (blotchTex)
+           haben opacity 1 und eine RGBA-Canvas-Textur — transparent=false liess ihre
+           durchsichtigen Bereiche schwarz werden. Das waren die rechteckigen schwarzen
+           Flecken auf den Rasenflaechen mit den ausgefransten Raendern.
+           Nur noch Materialien OHNE Textur werden opak geschaltet. */
+        if(m.map||m.alphaMap)return;
         if(m.opacity>=0.82){m.transparent=false;m.opacity=1;m.needsUpdate=true;n++;}});});
     window._opakGemacht=n;}
   function _spaetEinfrieren(){_bewegtMarkieren();_schattenSparen();_opakSchalten();_einfrieren();}
