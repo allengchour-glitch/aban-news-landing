@@ -161,13 +161,23 @@ class AdbDevice(Device):
         self.shell(f"am force-stop {package}")
 
     def current_package(self) -> str:
-        try:
-            out = self.shell("dumpsys window | grep -E 'mCurrentFocus|mFocusedApp'")
-        except DeviceError:
-            return ""
-        for token in out.replace("/", " ").split():
-            if "." in token and not token.startswith("("):
-                return token.strip("{}")
+        """Paket der App im Vordergrund. Filtert selbst statt per `grep` –
+        nicht jede Android-Variante (z. B. in Emulatoren) bringt eines mit."""
+        for befehl in ("dumpsys window", "dumpsys activity activities"):
+            try:
+                out = self.shell(befehl)
+            except DeviceError:
+                continue
+            for zeile in out.splitlines():
+                if not any(
+                    marke in zeile
+                    for marke in ("mCurrentFocus", "mFocusedApp", "mResumedActivity",
+                                  "topResumedActivity")
+                ):
+                    continue
+                for token in zeile.replace("/", " ").split():
+                    if "." in token and not token.startswith("(") and "=" not in token:
+                        return token.strip("{}")
         return ""
 
 

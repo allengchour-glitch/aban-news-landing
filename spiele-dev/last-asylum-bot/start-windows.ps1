@@ -7,6 +7,7 @@
 #   .\start-windows.ps1 -Scharf              -> tippt wirklich, 60 Minuten
 #   .\start-windows.ps1 -Scharf -Minuten 180 -> 3 Stunden
 #   .\start-windows.ps1 -NurPruefen          -> nur Konfiguration prüfen, kein Gerät nötig
+#   .\start-windows.ps1 -Serial emulator-5554 -> ein bestimmtes Gerät erzwingen
 #
 # Emulator statt Handy (BlueStacks, LDPlayer, MEmu, Nox) wird automatisch gesucht.
 # Bei BlueStacks vorher einmal: Einstellungen -> Erweitert -> "Android Debug Bridge (ADB)" an.
@@ -15,7 +16,8 @@ param(
     [switch]$Scharf,
     [switch]$NurPruefen,
     [int]$Minuten = 0,
-    [string]$Adb = ""
+    [string]$Adb = "",
+    [string]$Serial = ""
 )
 
 $ErrorActionPreference = "Stop"
@@ -137,7 +139,27 @@ if ($LASTEXITCODE -ne 0) {
     }
 }
 
-$paket = & $python bot.py --adb "$Adb" package 2>$null
+# BlueStacks meldet sich oft doppelt (emulator-5554 UND 127.0.0.1:5555) - dann
+# verweigert adb jeden Befehl ohne -s. Also genau ein Geraet festlegen.
+if (-not $Serial) {
+    $liste = @()
+    foreach ($zeile in (& $Adb devices)) {
+        if ($zeile -match '^(\S+)\s+device$') { $liste += $matches[1] }
+    }
+    if ($liste.Count -gt 1) {
+        # Der native Emulator-Eintrag ist stabiler als die TCP-Verbindung.
+        $bevorzugt = $liste | Where-Object { $_ -like "emulator-*" } | Select-Object -First 1
+        if (-not $bevorzugt) { $bevorzugt = $liste[0] }
+        $Serial = $bevorzugt
+        Warnung "$($liste.Count) Geraete gemeldet ($($liste -join ', ')) - nehme $Serial"
+    } elseif ($liste.Count -eq 1) {
+        $Serial = $liste[0]
+    }
+}
+$geraet = @()
+if ($Serial) { $geraet = @("-s", $Serial); Gut "Geraet: $Serial" }
+
+$paket = & $python bot.py --adb "$Adb" @geraet package 2>$null
 if ($paket) { Gut "App im Vordergrund: $paket" }
 if ($paket -and $paket -notmatch "com.phs.global") {
     Warnung "Das Spiel scheint nicht offen zu sein - oeffne Last Asylum, bevor es losgeht."
@@ -152,12 +174,12 @@ if ($Scharf) {
     if ($Minuten -le 0) { $Minuten = 60 }
     Schritt "Bot laeuft SCHARF fuer $Minuten Minuten"
     Write-Host "  Anhalten: Strg+C, oder in diesem Ordner eine Datei namens STOP anlegen." -ForegroundColor Yellow
-    & $python bot.py --adb "$Adb" run --minutes $Minuten --jsonl $protokoll
+    & $python bot.py --adb "$Adb" @geraet run --minutes $Minuten --jsonl $protokoll
 } else {
     if ($Minuten -le 0) { $Minuten = 5 }
     Schritt "TROCKENLAUF fuer $Minuten Minuten - es wird nichts angetippt"
     Write-Host "  Sieht das Protokoll sinnvoll aus, dann:  .\start-windows.ps1 -Scharf" -ForegroundColor Yellow
-    & $python bot.py --adb "$Adb" run --dry-run --minutes $Minuten --log-level debug --jsonl $protokoll
+    & $python bot.py --adb "$Adb" @geraet run --dry-run --minutes $Minuten --log-level debug --jsonl $protokoll
 }
 
 Schritt "Fertig"

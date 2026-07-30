@@ -128,7 +128,8 @@ def cmd_package(args) -> int:
     dev = make_device(args)
     pkg = dev.current_package()
     if not pkg:
-        print("Konnte den Vordergrund-Prozess nicht lesen. Spiel offen? `adb devices` prüfen.")
+        print("Konnte den Vordergrund-Prozess nicht lesen. Spiel offen? `adb devices` prüfen.",
+              file=sys.stderr)
         return 1
     print(pkg)
     return 0
