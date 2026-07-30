@@ -71,9 +71,13 @@ Sieht das Protokoll gut aus:
 powershell -ExecutionPolicy Bypass -File .\autostart-einrichten.ps1 -Jetzt
 ```
 
-Legt eine Windows-Aufgabe an, die den Bot **drei Minuten nach jeder Anmeldung** startet — ohne
-Zeitlimit und mit automatischem Neustart nach einem Absturz (bis zu fünfmal, alle zehn Minuten).
-`-Jetzt` startet ihn zusätzlich sofort.
+Legt eine Startdatei im **Autostart-Ordner** an — dafür braucht es *keine* Administratorrechte.
+Der Bot läuft danach ab jeder Anmeldung (drei Minuten Verzögerung, damit BlueStacks zuerst
+hochkommt), ohne Zeitlimit, und beginnt nach einem Absturz nach einer Minute von vorn.
+`-Jetzt` startet ihn zusätzlich sofort in einem eigenen Fenster.
+
+Wer lieber die Windows-Aufgabenplanung nutzt: `-Aufgabenplanung` — das verlangt allerdings eine
+PowerShell „Als Administrator ausführen", sonst kommt *Zugriff verweigert*.
 
 | | |
 |---|---|
