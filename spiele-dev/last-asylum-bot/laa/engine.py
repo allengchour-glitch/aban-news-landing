@@ -49,6 +49,7 @@ class Engine:
         self._rule_done = set()
         self._task_due: Dict[str, float] = {}
         self._last_text: Dict[str, str] = {}
+        self._gemeldet_fehlend = set()
         self._last_frame: Optional[Image] = None
         self._last_change = clock()
         self._scale: Optional[float] = None
@@ -131,7 +132,9 @@ class Engine:
             screen = self.capture()
         tpl = self.cfg.template(spec["template"], optional=bool(spec.get("optional")))
         if tpl is None:  # noch nicht geschnitten – Schritt überspringen
-            self.log.debug("Template fehlt noch (optional)", template=spec["template"])
+            if spec["template"] not in self._gemeldet_fehlend:
+                self._gemeldet_fehlend.add(spec["template"])
+                self.log.debug("Template fehlt noch (optional)", template=spec["template"])
             return None
         schwelle = float(spec.get("threshold", self.cfg.default_threshold))
         bester = matcher.best_score(

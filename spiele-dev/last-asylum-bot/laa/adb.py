@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import base64
+import os
 import random
 import shutil
 import struct
@@ -62,11 +63,13 @@ class AdbDevice(Device):
         self.timeout = timeout
         self.input_method = input_method
         self._size: Optional[Tuple[int, int]] = None
-        if shutil.which(adb) is None:
+        gefunden = shutil.which(adb) or _adb_suchen(adb)
+        if gefunden is None:
             raise DeviceError(
                 f"'{adb}' nicht gefunden. Android-Platform-Tools installieren "
                 "und im PATH haben (oder --adb /pfad/zu/adb angeben)."
             )
+        self.adb = gefunden
 
     # ------------------------------------------------------------------ intern
     def _args(self, *rest: str) -> List[str]:
@@ -250,6 +253,35 @@ def decode_screencap(raw: bytes) -> Image:
             f"Header={body}). Ggf. 'adb exec-out screencap -p' nutzen."
         )
     return Image.from_rgba_raw(width, height, raw[body:])
+
+
+def _adb_suchen(name: str) -> Optional[str]:
+    """Uebliche Ablageorte absuchen, wenn adb nicht im PATH steht.
+
+    Auf Windows landen die Platform-Tools meist in C:\platform-tools oder im
+    Android-SDK - ohne das hier scheitert jeder direkte Aufruf von bot.py,
+    obwohl adb laengst installiert ist.
+    """
+    if os.path.sep in name or name.lower().endswith(".exe"):
+        return name if os.path.exists(name) else None
+    kandidaten = []
+    for basis in (
+        os.environ.get("ANDROID_SDK_ROOT"),
+        os.environ.get("ANDROID_HOME"),
+        os.environ.get("LOCALAPPDATA", "") and os.path.join(os.environ["LOCALAPPDATA"], "Android", "Sdk"),
+        os.environ.get("USERPROFILE"),
+        "C:\\",
+        os.path.expanduser("~"),
+    ):
+        if basis:
+            kandidaten.append(os.path.join(basis, "platform-tools"))
+    kandidaten += ["/usr/lib/android-sdk/platform-tools", "/opt/platform-tools"]
+    for ordner in kandidaten:
+        for datei in ("adb.exe", "adb"):
+            pfad = os.path.join(ordner, datei)
+            if os.path.exists(pfad):
+                return pfad
+    return None
 
 
 _UMLAUTE = {

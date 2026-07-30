@@ -262,8 +262,8 @@ def cmd_run(args) -> int:
         time.sleep(args.start_wait)
 
     max_seconds = args.minutes * 60 if args.minutes else None
-    stats = engine.run(max_seconds=max_seconds, max_steps=args.steps)
-    logger.info("Bilanz: " + engine.summary(), **{k: v for k, v in stats.items()})
+    engine.run(max_seconds=max_seconds, max_steps=args.steps)
+    logger.info("Bilanz: " + engine.summary())
     logger.close()
     return 0
 
