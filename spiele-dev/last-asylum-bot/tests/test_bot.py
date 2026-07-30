@@ -509,6 +509,36 @@ class TestEngine(unittest.TestCase):
         self.assertEqual(dev.keys, ["NEIN"])
 
 
+class TestZurueckPfeil(unittest.TestCase):
+    """Zurück läuft über den Pfeil oben links; die Android-Taste ist nur Ersatz."""
+
+    def test_keine_blinde_zurueck_taste_in_der_konfiguration(self):
+        import json as _json
+
+        roh = _json.load(open(os.path.join(ROOT, "config", "last-asylum.json"), encoding="utf-8"))
+        blind = []
+
+        def pruefe(schritte, wo, im_sonst=False):
+            for s in schritte:
+                if not isinstance(s, dict):
+                    continue
+                if s.get("key") == "KEYCODE_BACK" and not im_sonst:
+                    blind.append(wo)
+                if "repeat" in s:
+                    pruefe(s["repeat"].get("do", []), wo)
+                if "wenn" in s:
+                    pruefe(s["wenn"].get("dann", []), wo)
+                    # Der sonst-Zweig DARF die Taste nutzen – dort ist kein Pfeil da.
+                    pruefe(s["wenn"].get("sonst", []), wo, im_sonst=True)
+
+        for gruppe in ("rules", "tasks"):
+            for eintrag in roh.get(gruppe, []):
+                pruefe(eintrag["do"], f"{gruppe}:{eintrag['name']}")
+        pruefe(roh.get("on_stuck", []), "on_stuck")
+        pruefe(roh.get("on_unknown", []), "on_unknown")
+        self.assertEqual(blind, [], "blinde Zurück-Taste statt Pfeil-Prüfung")
+
+
 class TestFarbknopf(unittest.TestCase):
     """Knöpfe über Farbe finden, ohne Template — für wechselnde Beschriftungen."""
 

@@ -206,6 +206,20 @@ und Grösse in der rechten Knopfspalte, tippt den Knopf **darunter** an (`"offse
 `tap_match`) und lässt die Abhol-Regeln aufräumen. Der Einkaufswagen oben rechts hat auch einen
 roten Punkt — der liegt in der Tabu-Zone und wird geblockt.
 
+### Zurück geht über den Pfeil, nicht über die Taste
+
+In diesem Spiel führt der Pfeil oben links zuverlässig eine Ebene zurück. Die Android-Zurück-Taste
+macht je nach Bildschirm etwas anderes — Ansicht wechseln, App minimieren. Überall, wo der Bot
+zurück will, prüft er deshalb erst auf `ui/back_arrow.png` und nimmt die Taste nur ersatzweise:
+
+```json
+{ "wenn": { "match": { "template": "ui/back_arrow.png", "region": [0.0, 0.0, 0.30, 0.15] },
+            "dann":  [ { "tap_match": {} } ],
+            "sonst": [ { "key": "KEYCODE_BACK" } ] } }
+```
+
+Ein Test hält fest, dass in der Konfiguration keine blinde Zurück-Taste mehr steht.
+
 ### Menüs schliessen, ohne die Ansicht zu verlassen
 
 Tippt man ein Gebäude an, erscheint sein Knopf-Menü (`Details`, `Upgrade`, …). Das schliesst

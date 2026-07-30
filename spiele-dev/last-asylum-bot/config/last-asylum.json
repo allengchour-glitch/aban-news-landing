@@ -50,7 +50,28 @@
       "screenshot": "haenger"
     },
     {
-      "key": "KEYCODE_BACK"
+      "wenn": {
+        "match": {
+          "template": "ui/back_arrow.png",
+          "threshold": 0.85,
+          "region": [
+            0.0,
+            0.0,
+            0.3,
+            0.15
+          ]
+        },
+        "dann": [
+          {
+            "tap_match": {}
+          }
+        ],
+        "sonst": [
+          {
+            "key": "KEYCODE_BACK"
+          }
+        ]
+      }
     },
     {
       "sleep": [
@@ -683,7 +704,28 @@
           }
         },
         {
-          "key": "KEYCODE_BACK"
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "key": "KEYCODE_BACK"
+              }
+            ]
+          }
         },
         {
           "sleep": [
@@ -792,7 +834,28 @@
           ]
         },
         {
-          "key": "KEYCODE_BACK"
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "key": "KEYCODE_BACK"
+              }
+            ]
+          }
         },
         {
           "sleep": [
@@ -930,7 +993,28 @@
           "sleep": 1.0
         },
         {
-          "key": "KEYCODE_BACK"
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "key": "KEYCODE_BACK"
+              }
+            ]
+          }
         },
         {
           "sleep": [
@@ -1042,7 +1126,28 @@
           }
         },
         {
-          "key": "KEYCODE_BACK"
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "key": "KEYCODE_BACK"
+              }
+            ]
+          }
         },
         {
           "sleep": [
@@ -1159,7 +1264,28 @@
           }
         },
         {
-          "key": "KEYCODE_BACK"
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "key": "KEYCODE_BACK"
+              }
+            ]
+          }
         },
         {
           "sleep": [
@@ -1261,7 +1387,28 @@
           ]
         },
         {
-          "key": "KEYCODE_BACK"
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "key": "KEYCODE_BACK"
+              }
+            ]
+          }
         },
         {
           "sleep": [
@@ -1270,7 +1417,28 @@
           ]
         },
         {
-          "key": "KEYCODE_BACK"
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "key": "KEYCODE_BACK"
+              }
+            ]
+          }
         },
         {
           "sleep": [
@@ -1359,7 +1527,28 @@
           ]
         },
         {
-          "key": "KEYCODE_BACK"
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "key": "KEYCODE_BACK"
+              }
+            ]
+          }
         },
         {
           "sleep": [
@@ -1368,7 +1557,28 @@
           ]
         },
         {
-          "key": "KEYCODE_BACK"
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "key": "KEYCODE_BACK"
+              }
+            ]
+          }
         },
         {
           "sleep": [
@@ -1460,7 +1670,28 @@
                 }
               },
               {
-                "key": "KEYCODE_BACK"
+                "wenn": {
+                  "match": {
+                    "template": "ui/back_arrow.png",
+                    "threshold": 0.85,
+                    "region": [
+                      0.0,
+                      0.0,
+                      0.3,
+                      0.15
+                    ]
+                  },
+                  "dann": [
+                    {
+                      "tap_match": {}
+                    }
+                  ],
+                  "sonst": [
+                    {
+                      "key": "KEYCODE_BACK"
+                    }
+                  ]
+                }
               },
               {
                 "sleep": [
@@ -1664,7 +1895,28 @@
           ]
         },
         {
-          "key": "KEYCODE_BACK"
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "key": "KEYCODE_BACK"
+              }
+            ]
+          }
         },
         {
           "sleep": [
@@ -1781,7 +2033,28 @@
           ]
         },
         {
-          "key": "KEYCODE_BACK"
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "key": "KEYCODE_BACK"
+              }
+            ]
+          }
         },
         {
           "sleep": [
@@ -1864,7 +2137,28 @@
           }
         },
         {
-          "key": "KEYCODE_BACK"
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "key": "KEYCODE_BACK"
+              }
+            ]
+          }
         },
         {
           "sleep": [
@@ -3004,7 +3298,28 @@
           }
         },
         {
-          "key": "KEYCODE_BACK"
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "key": "KEYCODE_BACK"
+              }
+            ]
+          }
         },
         {
           "sleep": [
@@ -3058,7 +3373,28 @@
           }
         },
         {
-          "key": "KEYCODE_BACK"
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "key": "KEYCODE_BACK"
+              }
+            ]
+          }
         },
         {
           "sleep": [
@@ -3155,7 +3491,28 @@
           }
         },
         {
-          "key": "KEYCODE_BACK"
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "key": "KEYCODE_BACK"
+              }
+            ]
+          }
         },
         {
           "sleep": [
@@ -3208,7 +3565,28 @@
           "sleep": 1.2
         },
         {
-          "key": "KEYCODE_BACK"
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "key": "KEYCODE_BACK"
+              }
+            ]
+          }
         },
         {
           "sleep": 1.2
@@ -3439,7 +3817,28 @@
           }
         },
         {
-          "key": "KEYCODE_BACK"
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "key": "KEYCODE_BACK"
+              }
+            ]
+          }
         },
         {
           "sleep": [
@@ -3473,5 +3872,6 @@
       0.75,
       0.2
     ]
-  ]
+  ],
+  "_zurueck": "Zurueck geht in diesem Spiel ueber den Pfeil oben links, nicht ueber die Android-Taste - die wechselt teils die ganze Ansicht oder minimiert die App. Ueberall, wo der Bot zurueck will, prueft er zuerst auf ui/back_arrow.png und nimmt nur ersatzweise KEYCODE_BACK."
 }
