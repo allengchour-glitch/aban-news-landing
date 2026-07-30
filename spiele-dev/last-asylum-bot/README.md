@@ -54,7 +54,8 @@ powershell -ExecutionPolicy Bypass -File .\start-windows.ps1
 ```
 
 Das Skript sucht Python, installiert `numpy`, prüft die Konfiguration, findet `adb.exe`
-(PATH, `C:\platform-tools`, Android-SDK), prüft das Gerät und startet einen **Trockenlauf**.
+(PATH, `C:\platform-tools`, Android-SDK) — **und lädt es bei Google herunter, wenn es fehlt** —,
+verbindet Handy oder Emulator und startet einen **Trockenlauf**.
 Sieht das Protokoll gut aus:
 
 ```powershell

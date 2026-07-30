@@ -71,10 +71,25 @@ if (-not $Adb) {
     }
 }
 if (-not $Adb) {
-    Fehler "adb.exe nicht gefunden."
-    Write-Host "     1. Platform-Tools laden: https://developer.android.com/tools/releases/platform-tools"
-    Write-Host "     2. ZIP nach C:\platform-tools entpacken"
-    Write-Host "     3. Dieses Skript erneut starten (oder -Adb C:\pfad\adb.exe angeben)"
+    Warnung "adb.exe nicht gefunden - lade die Android-Platform-Tools von Google ..."
+    $zip = Join-Path $env:TEMP "platform-tools.zip"
+    try {
+        $alt = $ProgressPreference; $ProgressPreference = "SilentlyContinue"
+        Invoke-WebRequest -Uri "https://dl.google.com/android/repository/platform-tools-latest-windows.zip" `
+                          -OutFile $zip -UseBasicParsing
+        $ProgressPreference = $alt
+        Expand-Archive -Path $zip -DestinationPath "C:\" -Force
+        Remove-Item $zip -ErrorAction SilentlyContinue
+        if (Test-Path "C:\platform-tools\adb.exe") { $Adb = "C:\platform-tools\adb.exe"; Gut "installiert nach C:\platform-tools" }
+    } catch {
+        Fehler "Download fehlgeschlagen: $($_.Exception.Message)"
+    }
+}
+if (-not $Adb) {
+    Fehler "adb.exe fehlt weiterhin."
+    Write-Host "     1. Platform-Tools von Hand laden: https://developer.android.com/tools/releases/platform-tools"
+    Write-Host "     2. ZIP nach C:\platform-tools entpacken (adb.exe muss direkt darin liegen)"
+    Write-Host "     3. Skript erneut starten - oder Pfad mitgeben: .\start-windows.ps1 -Adb C:\pfad\adb.exe"
     exit 1
 }
 Gut "adb: $Adb"
