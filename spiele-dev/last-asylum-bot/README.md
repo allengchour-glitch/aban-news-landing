@@ -44,6 +44,51 @@ Ausschnitte fehlen; bis dahin überspringt der Bot die betroffenen Schritte stil
 
 ## 2. Einrichten
 
+### Windows: ein Befehl
+
+```powershell
+git clone --branch claude/last-asylum-android-bot-mi4cvn --single-branch `
+  https://github.com/allengchour-glitch/aban-news-landing.git
+cd aban-news-landing\spiele-dev\last-asylum-bot
+powershell -ExecutionPolicy Bypass -File .\start-windows.ps1
+```
+
+Das Skript sucht Python, installiert `numpy`, prüft die Konfiguration, findet `adb.exe`
+(PATH, `C:\platform-tools`, Android-SDK), prüft das Gerät und startet einen **Trockenlauf**.
+Sieht das Protokoll gut aus:
+
+```powershell
+.\start-windows.ps1 -Scharf              # 60 Minuten, tippt wirklich
+.\start-windows.ps1 -Scharf -Minuten 180 # 3 Stunden
+.\start-windows.ps1 -NurPruefen          # nur Konfiguration, kein Handy nötig
+```
+
+### BlueStacks statt Handy
+
+Geht genauso — und ist bequemer, weil der PC durchlaufen kann, ohne dass dein Handy blockiert ist.
+
+1. In BlueStacks: **Einstellungen → Erweitert → „Android Debug Bridge (ADB)"** einschalten,
+   danach BlueStacks einmal neu starten.
+2. **Einstellungen → Anzeige → Hochformat** und als eigene Auflösung **1080 × 2316** setzen.
+
+   Das ist wichtig: die Templates stammen aus einem 1440 × 3088-Screenshot. 1080 × 2316 ist
+   exakt dasselbe Seitenverhältnis, nur kleiner — dann stimmen alle Bild-Vorlagen (die skaliert
+   der Bot über `base_width` selbst) **und** alle Regionsangaben. Nimmst du stattdessen
+   1080 × 1920, ist das Bild breiter im Verhältnis, das Spiel legt die Oberfläche anders aus,
+   und Regionen wie „unten rechts" treffen nicht mehr sauber.
+3. Last Asylum in BlueStacks öffnen und `start-windows.ps1` starten — das Skript verbindet sich
+   selbst (es liest den ADB-Port aus `bluestacks.conf` und probiert die üblichen Ports von
+   LDPlayer, MEmu und Nox gleich mit).
+
+Von Hand geht es auch:
+
+```powershell
+C:\platform-tools\adb.exe connect 127.0.0.1:5555   # Port steht in den BlueStacks-Einstellungen
+python bot.py devices
+```
+
+### Von Hand (alle Systeme)
+
 1. **Android-Platform-Tools** installieren (`adb` muss im PATH sein) —
    [developer.android.com/tools/releases/platform-tools](https://developer.android.com/tools/releases/platform-tools)
 2. Am Handy: *Entwickleroptionen* → **USB-Debugging** an. Per Kabel anstecken und die
