@@ -1009,6 +1009,215 @@
       ]
     },
     {
+      "name": "allianz-technologie-spenden",
+      "every": 10800,
+      "at_start": true,
+      "priority": 105,
+      "_zweck": "Allianz -> Allianz-Forschung -> empfohlene Technologie -> mit RESSOURCEN spenden (blauer Knopf, kostet nur Kraeuter). Ist der blaue Knopf ausgegraut, weil Limit oder Vorrat erschoepft ist, trifft die Vorlage ihn nicht mehr - genau so soll es sein. Braucht allianz/forschung.png und allianz/spenden_ressourcen.png (den AKTIVEN blauen Knopf schneiden, nicht den grauen).",
+      "do": [
+        {
+          "log": "Allianz-Technologie: mit Ressourcen spenden"
+        },
+        {
+          "tap_template": {
+            "template": "nav/allianz.png",
+            "region": [
+              0.7,
+              0.6,
+              1.0,
+              1.0
+            ],
+            "after": [
+              2.0,
+              3.0
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "allianz/forschung.png",
+            "optional": true,
+            "after": [
+              2.0,
+              3.0
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "allianz/tech_empfehlung.png",
+            "optional": true,
+            "after": [
+              1.5,
+              2.5
+            ]
+          }
+        },
+        {
+          "repeat": {
+            "times": 15,
+            "do": [
+              {
+                "tap_template": {
+                  "template": "allianz/spenden_ressourcen.png",
+                  "optional": true,
+                  "threshold": 0.88
+                }
+              },
+              {
+                "sleep": [
+                  0.7,
+                  1.2
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "ui/popup_close.png",
+            "optional": true,
+            "threshold": 0.84
+          }
+        },
+        {
+          "sleep": [
+            0.8,
+            1.2
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "ui/close_x_hell.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "sleep": [
+            0.8,
+            1.2
+          ]
+        },
+        {
+          "key": "KEYCODE_BACK"
+        },
+        {
+          "sleep": [
+            1.0,
+            1.5
+          ]
+        },
+        {
+          "key": "KEYCODE_BACK"
+        },
+        {
+          "sleep": [
+            1.0,
+            1.5
+          ]
+        }
+      ]
+    },
+    {
+      "name": "allianz-spenden-diamanten",
+      "every": 21600,
+      "enabled": false,
+      "priority": 104,
+      "_zweck": "AUS. Spendet mit dem orangen Diamanten-Knopf. Der Preis steigt mit jeder Spende (beobachtet: 2 -> 50 -> mehr) und der Bot kann die Zahl nicht lesen. Wer das einschaltet, gibt die Kostenkontrolle ab. Vorher allianz/spenden_diamant.png schneiden.",
+      "do": [
+        {
+          "log": "Allianz-Technologie: mit Diamanten spenden (Kosten werden nicht geprueft)"
+        },
+        {
+          "tap_template": {
+            "template": "nav/allianz.png",
+            "region": [
+              0.7,
+              0.6,
+              1.0,
+              1.0
+            ],
+            "after": [
+              2.0,
+              3.0
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "allianz/forschung.png",
+            "optional": true,
+            "after": [
+              2.0,
+              3.0
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "allianz/tech_empfehlung.png",
+            "optional": true,
+            "after": [
+              1.5,
+              2.5
+            ]
+          }
+        },
+        {
+          "repeat": {
+            "times": 5,
+            "do": [
+              {
+                "tap_template": {
+                  "template": "allianz/spenden_diamant.png",
+                  "optional": true,
+                  "threshold": 0.88
+                }
+              },
+              {
+                "sleep": [
+                  0.8,
+                  1.3
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "ui/popup_close.png",
+            "optional": true,
+            "threshold": 0.84
+          }
+        },
+        {
+          "sleep": [
+            0.8,
+            1.2
+          ]
+        },
+        {
+          "key": "KEYCODE_BACK"
+        },
+        {
+          "sleep": [
+            1.0,
+            1.5
+          ]
+        },
+        {
+          "key": "KEYCODE_BACK"
+        },
+        {
+          "sleep": [
+            1.0,
+            1.5
+          ]
+        }
+      ]
+    },
+    {
       "name": "schild-pruefen",
       "every": 3600,
       "at_start": true,
@@ -2075,5 +2284,6 @@
         }
       ]
     }
-  ]
+  ],
+  "_diamanten": "DIAMANTEN-REGEL (User 2026-07-31): 'bis 50 pro Klick' ist erlaubt. ABER der Bot kann Zahlen auf Knoepfen NICHT lesen - fuer ihn sieht '2 Spenden' aus wie '50 Spenden' oder '500 Spenden'. Deshalb tippt er von sich aus nur Knoepfe an, die REINE RESSOURCEN kosten (blauer Spenden-Knopf, Kraeuter). Der Diamanten-Knopf steht als eigene Aufgabe bereit, ist aber AUS - wer ihn einschaltet, akzeptiert, dass die Kosten mit jeder Spende steigen und der Bot das nicht bemerkt. Ebenso bleibt 'Sofort' beim Gebaeude-Upgrade (vierstellig) unangetastet. Echtgeld ist ohnehin komplett tabu, siehe tabu_regionen."
 }

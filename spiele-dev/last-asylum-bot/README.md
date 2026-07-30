@@ -155,6 +155,7 @@ Diese Vorlagen fehlen noch; die zugehörigen Schritte ruhen still, bis sie da si
 | ★★★ | `hud/schild_aktiv.png` | Schild-Symbol im HUD, **während ein Schutzschild läuft** — erst danach darf die Schild-Aufgabe an (siehe unten) |
 | ★★☆ | `ui/btn_bestaetigen.png`, `ui/btn_benutzen.png` | Bestätigungs-Dialoge („Benutzen" beim Beschleuniger, „Bestätigen" beim Upgrade) |
 | ★★☆ | `held/team1.png` | Helden-Menü, Auswahl von Team 1 |
+| ★★☆ | `allianz/forschung.png`, `allianz/spenden_ressourcen.png`, `allianz/spenden_diamant.png` | Allianz → Allianz-Forschung → Technologie: die beiden Spenden-Knöpfe unten |
 | ★☆☆ | `nav/wachturm.png`, `nav/zuflucht.png` | Einstiege, die der Bot noch nicht selbst findet |
 | ★☆☆ | `forschung/empfehlung.png`, `ui/btn_forschen.png` | Forschungszentrum |
 | ★☆☆ | `ui/ad_close.png`, `ui/reconnect.png`, `hud/bau_fertig.png` | Werbe-✖, Verbindungsabbruch, fertige Produktion |
@@ -246,6 +247,14 @@ von anderen Servern herüberkommen.
   dorthin wird verworfen und protokolliert — egal von welcher Regel er kommt.
 * Deine eine Aufgabe dabei: **schneide nie ein Template von einem Knopf mit Preisschild**
   (CHF/EUR/USD). Dann kann auch nichts schiefgehen.
+* **Diamanten: der Bot kann Preise nicht lesen.** Für die Bildsuche sieht `2 Spenden` genauso
+  aus wie `50 Spenden` oder `500 Spenden` — nur die Ziffern unterscheiden sich, und die sind
+  bewusst nicht Teil der Vorlagen. Eine Obergrenze „bis 50 Diamanten pro Klick" liesse sich
+  also nicht einhalten. Deshalb tippt der Bot **von sich aus nur Knöpfe an, die reine
+  Ressourcen kosten** (blaue Spende, Kräuter). Die Diamanten-Spende liegt als eigene Aufgabe
+  `allianz-spenden-diamanten` bereit und steht auf `"enabled": false`. Wer sie einschaltet,
+  gibt die Kostenkontrolle ab — die Allianz-Spende beginnt bei 2 💎 und steigt mit jeder
+  Spende. `Sofort` beim Gebäude-Upgrade (vierstellig) bleibt in jedem Fall unangetastet.
 * Angebote tauchen auch ausserhalb der Tabu-Zone auf (z. B. „Toller Wert" mit CHF 17.50 auf
   halber Höhe). Die greifen trotzdem nicht: der einzige Erkenner ohne Vorlage sucht **grüne**
   Knöpfe, Preis-Knöpfe sind orange — und jede andere Berührung setzt ein Template voraus,
