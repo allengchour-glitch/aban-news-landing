@@ -3743,8 +3743,128 @@
       ]
     },
     {
+      "name": "soldaten-ausbilden",
+      "every": 2400,
+      "at_start": true,
+      "priority": 112,
+      "_zweck": "Kaserne offen halten: hoechste verfuegbare Truppenstufe (T8) auswaehlen, Menge auf Maximum, ausbilden. Braucht kaserne/gebaeude.png (die Kaserne in der Basis), kaserne/stufe_t8.png (das T8-Symbol in der Stufenauswahl), ui/btn_max.png und kaserne/btn_ausbilden.png. Wichtig: schneide fuer stufe_t8 wirklich die T8-Kachel - der Bot kann Ziffern nicht lesen und wuerde sonst irgendeine Stufe trainieren.",
+      "do": [
+        {
+          "log": "Soldaten ausbilden (hoechste Stufe)"
+        },
+        {
+          "tap_template": {
+            "template": "kaserne/gebaeude.png",
+            "optional": true,
+            "threshold": 0.87,
+            "after": [
+              2.0,
+              3.0
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "kaserne/ausbilden_menue.png",
+            "optional": true,
+            "after": [
+              1.5,
+              2.5
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "kaserne/stufe_t8.png",
+            "optional": true,
+            "threshold": 0.88,
+            "after": [
+              1.2,
+              2.0
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "ui/btn_max.png",
+            "optional": true,
+            "after": [
+              1.0,
+              1.6
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "kaserne/btn_ausbilden.png",
+            "optional": true,
+            "after": [
+              1.5,
+              2.5
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "ui/btn_bestaetigen.png",
+            "optional": true,
+            "after": [
+              1.2,
+              2.0
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "ui/popup_close.png",
+            "optional": true,
+            "threshold": 0.84
+          }
+        },
+        {
+          "sleep": [
+            1.0,
+            1.5
+          ]
+        },
+        {
+          "log": "Gebaeude-Menue durch Tippen daneben schliessen"
+        },
+        {
+          "tap": [
+            [
+              0.35,
+              0.16
+            ],
+            [
+              0.12,
+              0.7
+            ],
+            [
+              0.86,
+              0.44
+            ],
+            [
+              0.2,
+              0.3
+            ],
+            [
+              0.75,
+              0.2
+            ]
+          ]
+        },
+        {
+          "sleep": [
+            1.0,
+            1.5
+          ]
+        }
+      ]
+    },
+    {
       "name": "heilen",
-      "every": 2700,
+      "every": 1800,
       "priority": 100,
       "do": [
         {
@@ -3754,6 +3874,7 @@
           "tap_template": {
             "template": "nav/heilen.png",
             "optional": true,
+            "threshold": 0.86,
             "region": [
               0.0,
               0.55,
@@ -3767,10 +3888,36 @@
           }
         },
         {
-          "tap_template": {
-            "template": "ui/btn_heilen.png",
-            "optional": true,
-            "after": 2.0
+          "repeat": {
+            "times": 3,
+            "do": [
+              {
+                "tap_template": {
+                  "template": "ui/btn_heilen.png",
+                  "optional": true,
+                  "after": [
+                    1.5,
+                    2.5
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "ui/btn_bestaetigen.png",
+                  "optional": true,
+                  "after": [
+                    1.2,
+                    2.0
+                  ]
+                }
+              },
+              {
+                "sleep": [
+                  0.8,
+                  1.3
+                ]
+              }
+            ]
           }
         },
         {
@@ -3781,7 +3928,10 @@
           }
         },
         {
-          "sleep": 1.2
+          "sleep": [
+            1.0,
+            1.5
+          ]
         },
         {
           "wenn": {
@@ -3808,9 +3958,14 @@
           }
         },
         {
-          "sleep": 1.2
+          "sleep": [
+            1.0,
+            1.5
+          ]
         }
-      ]
+      ],
+      "at_start": true,
+      "_zweck": "Verwundete Truppen kosten Kampfkraft, solange sie im Lazarett liegen. Der Bot oeffnet das Lazarett und heilt alles, was geht. Braucht ui/btn_heilen.png; der Knopf ist gruen, deshalb greift notfalls auch die generische Gruen-Regel."
     },
     {
       "name": "sammeln",
