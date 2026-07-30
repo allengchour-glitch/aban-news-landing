@@ -1753,10 +1753,10 @@
     },
     {
       "name": "bauen-und-aufwerten",
-      "every": 1200,
+      "every": 14400,
       "at_start": true,
       "priority": 150,
-      "_zweck": "Folgt dem Bau-Vorschlag des Spiels unten links (Schriftrolle) und bestaetigt das Upgrade. Der orange 'Sofort'-Knopf (kostet Diamanten) wird bewusst NICHT angetippt.",
+      "_zweck": "Folgt dem Bau-Vorschlag des Spiels unten links. Bei hohem Gebiet-Level laufen Bauten tagelang - haeufiger als alle vier Stunden nachzusehen bringt nichts. Der orange 'Sofort'-Knopf (Diamanten) wird bewusst nicht angetippt.",
       "do": [
         {
           "log": "Bau-Vorschlag des Spiels umsetzen"
@@ -2107,9 +2107,9 @@
     },
     {
       "name": "beschleunigen",
-      "every": 10800,
+      "every": 28800,
       "priority": 80,
-      "_zweck": "Beschleuniger aus der Tasche auf laufende Bauten werfen. Braucht schutz/reiter_beschleunigung.png und ui/btn_benutzen.png. Diamanten-Kaeufe im Spiel sind erlaubt, Echtgeld nicht (siehe tabu_regionen).",
+      "_zweck": "Beschleuniger sind knapp und lohnen nur bei langen Bauten. Alle acht Stunden reicht; wer sie gar nicht automatisch verbrauchen will, setzt hier 'enabled': false.",
       "do": [
         {
           "log": "Beschleuniger einsetzen"
@@ -2211,7 +2211,7 @@
     },
     {
       "name": "basis-rundgang",
-      "every": 3600,
+      "every": 2700,
       "at_start": true,
       "priority": 118,
       "_zweck": "Der Bot sieht immer nur den aktuellen Bildschirmausschnitt. Der Rundgang schiebt die Stadtansicht - gedrueckt halten und ziehen, ein kurzer Wisch bewegt die Kamera nicht - und erntet nach jedem Schritt die sichtbar gewordenen Ertrags-Blasen ab.",
@@ -3969,7 +3969,7 @@
     },
     {
       "name": "sammeln",
-      "every": 1800,
+      "every": 900,
       "priority": 90,
       "do": [
         {
@@ -4097,7 +4097,7 @@
           }
         }
       ],
-      "_zweck": "Truppen sollen nie stillstehen: pro Durchgang wird der komplette Sammel-Ablauf viermal gefahren - einmal je Marsch-Platz. Ist kein Platz mehr frei, findet der Bot die Knoepfe nicht und der Versuch verpufft folgenlos.",
+      "_zweck": "Wichtigste Dauerquelle: alle 15 Minuten nachsehen, ob ein Marsch-Platz frei geworden ist, und bis zu vier Trupps losschicken. Ist kein Platz frei, findet der Bot die Knoepfe nicht und der Versuch verpufft folgenlos.",
       "at_start": true
     },
     {

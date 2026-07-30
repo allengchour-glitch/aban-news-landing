@@ -243,7 +243,7 @@ def cmd_lernen(args) -> int:
         print("Keine Protokolle gefunden. Erst einen Lauf mit --jsonl machen.", file=sys.stderr)
         return 1
 
-    treffer, daneben = {}, {}
+    treffer, daneben, aufgaben = {}, {}, {}
     zeilen = 0
     for pfad in dateien:
         with open(pfad, "r", encoding="utf-8") as fh:
@@ -252,14 +252,17 @@ def cmd_lernen(args) -> int:
                     d = _json.loads(zeile)
                 except ValueError:
                     continue
+                if d.get("ev") == "aufgabe":
+                    aufgaben.setdefault(d["aufgabe"], []).append(int(d.get("tipps", 0)))
+                    continue
                 if d.get("ev") != "vergleich":
                     continue
                 zeilen += 1
                 topf = treffer if d.get("treffer") else daneben
                 topf.setdefault(d["template"], []).append(float(d["score"]))
 
-    if not zeilen:
-        print("Keine Vergleichs-Daten gefunden. Lauf den Bot mit --jsonl logs/lauf.jsonl.",
+    if not zeilen and not aufgaben:
+        print("Keine Auswertungs-Daten gefunden. Lauf den Bot mit --jsonl logs/lauf.jsonl.",
               file=sys.stderr)
         return 1
 
@@ -282,6 +285,21 @@ def cmd_lernen(args) -> int:
             neu = "unklar"
         print(f"{name:38} {len(ja):>8} {('%.3f' % ja_min) if ja_min is not None else '   -':>7} "
               f"{('%.3f' % nein_max) if nein_max is not None else '     -':>18} {str(neu):>10}")
+
+    if aufgaben:
+        print(f"\n{'Aufgabe':30} {'Läufe':>6} {'Tipps':>7} {'Ø':>6}   Hinweis")
+        for name in sorted(aufgaben):
+            werte = aufgaben[name]
+            schnitt = sum(werte) / len(werte)
+            if schnitt == 0 and len(werte) >= 3:
+                hinweis = "läuft immer leer → Takt erhöhen oder Vorlage fehlt"
+            elif schnitt < 0.5 and len(werte) >= 5:
+                hinweis = "selten etwas zu tun → Takt erhöhen"
+            elif schnitt > 8:
+                hinweis = "sehr ergiebig → Takt verkürzen lohnt sich"
+            else:
+                hinweis = ""
+            print(f"{name:30} {len(werte):>6} {sum(werte):>7} {schnitt:>6.1f}   {hinweis}")
 
     if not args.anwenden:
         print("\n→ Mit --anwenden werden die Vorschläge in die Konfiguration geschrieben.")

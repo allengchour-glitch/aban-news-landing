@@ -635,7 +635,14 @@ class Engine:
             self._zustand_sichern()
             self.log.info(f"▶ Aufgabe: {task.name}")
             self.bump(f"task:{task.name}")
+            vorher = self.stats.get("taps", 0)
             self.run_actions(task.do, f"Aufgabe '{task.name}'")
+            # Wie viel hat die Aufgabe bewirkt? Daraus laesst sich der Takt
+            # spaeter datengestuetzt nachziehen statt zu raten.
+            self.log.datenpunkt(
+                ev="aufgabe", aufgabe=task.name,
+                tipps=self.stats.get("taps", 0) - vorher,
+            )
             return True
 
         if self._try_rules(screen):

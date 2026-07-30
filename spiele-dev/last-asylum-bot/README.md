@@ -364,18 +364,15 @@ dicht, würden sich die Aufgaben stauen und genau diese Regeln kämen kaum noch 
 
 | Takt | Aufgabe | Warum dieser Rhythmus |
 |---|---|---|
-| 20 min | Bauen und Aufwerten | Bauschlitze werden nicht schneller frei |
-| 30 min | Sammeln (4 Trupps) | Trupps sind 30–60 Minuten unterwegs |
+| 15 min | Sammeln (4 Trupps) | wichtigste Dauerquelle — sobald ein Marsch-Platz frei wird, soll er wieder besetzt sein |
 | 30 min | Zuflucht abernten, Rückkehr in die Basis | Kräuter wachsen laufend nach |
-| 60 min | Allianz-Geschenke, Forschung, Truppe 1, Heilen, Ausbilden, Basis-Rundgang | Stundentakt reicht, nichts läuft schneller voll |
+| 45 min | Basis-Rundgang | Kamera über die ganze Basis, Ertrags-Blasen abräumen |
+| 60 min | Allianz-Geschenke, Forschung, Truppe 1, Heilen, Soldaten ausbilden | nichts läuft schneller voll |
 | 90 min | Kisten öffnen | |
 | 2 h | Tagesziele, Events, Chat-Schätze, Objekte lernen | |
-| 3 h | Beschleuniger einsetzen | |
-| 4 h | Allianz-Technologie spenden, Nachrichten | Spenden-Limit ist ohnehin täglich |
+| 4 h | **Bauen und Aufwerten**, Allianz-Spende, Nachrichten | bei hohem Gebiet-Level laufen Bauten *tagelang* — öfter nachsehen bringt nichts |
 | 6 h | Admin-Nachricht im Allianz-Chat | mehr wäre Spam |
-
-Macht **339 Minuten am Tag — 24 %**. Vorher waren es rechnerisch über 100 %, was schlicht nicht
-funktioniert hätte.
+| 8 h | Beschleuniger einsetzen | Beschleuniger sind knapp; wer sie gar nicht automatisch verbrauchen will, setzt `"enabled": false` |
 
 **Faustregel beim Ändern:** Laufzeit × Häufigkeit aufsummieren und unter der Hälfte des Tages
 bleiben.
