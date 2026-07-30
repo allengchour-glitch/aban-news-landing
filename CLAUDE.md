@@ -19,6 +19,12 @@ CJ-`getAccessToken` (1×/300s-Limit!) zugleich → transiente Drossel → `exit 
 mit frischem Token exit IMMER 0 (verifiziert: legt Produkt an). Fix: (1) Strafschlaf `sleep 1800`→`120` (Punkte sind
 reichlich, langer Schlaf war für echten Punktemangel, der hier nie eintritt — der crasht nicht, gibt nur total 0);
 (2) Runner **gestaffelt** starten (3s Abstand), nie alle gleichzeitig. Beides bei Neuaufsetzen der /tmp-Scripts einbauen.
+**⚠️ Vierte Falle: ROUND-Reset frisst den Tiefen-Ramp (2026-07-29).** Turn-Reaping killt die Runner ~jede Runde →
+Neustart setzt `ROUND=0` → Tiefe fällt auf Minimum → Runde-1-Kategorien (Schmuck/Uhren/Makeup) sind erschöpft →
+`FERTIG: 0`. Fix: ROUND **persistent** machen — `ROUND=$(cat /tmp/<runner>_round||echo 0)` + nach jedem `ROUND+1`
+`echo $ROUND > /tmp/<runner>_round` (wrap bei >25 auf 1 für Neu-Sweep frischer Katalog-Ware). So wächst die Paginierungs-
+Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten neu zu scannen. /tmp-Persist-Dateien
+`/tmp/cj_*_round` überleben keinen Wipe → bei Neuaufsetzen mit 6 seeden (Tiefe ~33).
 
 Dieses Repo ist `aban-news-landing`, enthält aber mehrere Projekte. Das aktive, autonome
 Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
