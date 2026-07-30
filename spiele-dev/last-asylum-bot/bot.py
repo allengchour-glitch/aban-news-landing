@@ -328,6 +328,14 @@ def cmd_run(args) -> int:
         stop_file=args.stop_file,
         seed=args.seed,
     )
+    # Jeder Lauf legt ein Bild in voller Aufloesung ab - damit liegt immer eine
+    # frische Vorlage zum Nachschneiden bereit, ohne extra Befehl.
+    try:
+        pfad = engine.save_shot("start", engine.capture())
+        logger.info("Startbild abgelegt", datei=pfad)
+    except Exception as exc:  # pragma: no cover - haengt am Geraet
+        logger.warn(f"Startbild nicht moeglich: {exc}")
+
     if args.start_app and cfg.package:
         dev.start_app(cfg.package, cfg.activity)
         logger.info("App gestartet, warte auf Ladebildschirm", paket=cfg.package)

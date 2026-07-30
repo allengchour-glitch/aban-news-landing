@@ -214,6 +214,11 @@ ganze Ansicht. Der Bot macht das genauso; der Punkt dafür steht als `leerer_pun
 Konfiguration (Standard `[0.35, 0.16]`, also links oben im Gelände). Liegt dort bei dir ein
 Gebäude, verschieb ihn.
 
+### Jeder Lauf legt ein Bild ab
+
+Beim Start schreibt der Bot `shots/<zeit>-start.png` in voller Auflösung. Daraus lassen sich
+jederzeit neue Vorlagen schneiden — man muss nicht daran denken, vorher `capture` aufzurufen.
+
 ### Vorlagen selbst finden lassen
 
 Knöpfe muss man nicht mehr von Hand ausmessen. `entdecke` sucht sie an ihrer Farbe und legt
