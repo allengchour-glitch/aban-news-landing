@@ -838,8 +838,10 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
           var px=achse==="x"?v:fixed,pz=achse==="x"?fixed:v;
           if(!freiPlatz(px,pz,0))continue;
           baum2(px,pz,0.85+((Math.abs(v)|0)%3)*0.12);}}
-      [-(SZa+12+8.6),SZa+12+8.6].forEach(function(zf){reihe(zf,"x",-RL/2+14,RL/2-14,13);});
-      [-(RX+8.6),RX+8.6].forEach(function(xf){reihe(xf,"z",-(SZa+34),SZa+34,13);});
+      /* 🐛 8.6 vom Strassenmittel liegt MITTEN AUF DEM TROTTOIR (Fahrbahn bis 8, Gehweg bis 10.2).
+         Die Allee stand also auf dem Gehweg. Jetzt 13 — dahinter, auf dem Gruenstreifen. */
+      [-(SZa+12+13),SZa+12+13].forEach(function(zf){reihe(zf,"x",-RL/2+14,RL/2-14,13);});
+      [-(RX+10),RX+10].forEach(function(xf){reihe(xf,"z",-(SZa+34),SZa+34,13);});   // Querstrasse: Fahrbahn 5, Gehweg 7.4
     })();
     (function parkplatz(){ /* Asphaltflaeche mit Markierung + abgestellte Autos */
       var PX=30,PZ=104,PW=26,PD=18;  /* Bahnhofs-Parkplatz — per Freiflaechen-Solver gesetzt */
