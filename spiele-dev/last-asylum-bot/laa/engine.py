@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import os
 import random
 import time
@@ -101,6 +102,8 @@ class Engine:
         sleep=time.sleep,
         clock=time.monotonic,
         seed: Optional[int] = None,
+        state_file: Optional[str] = None,
+        now=time.time,
     ):
         self.cfg = config
         self.dev = device
@@ -126,10 +129,55 @@ class Engine:
         self._last_change = clock()
         self._scale: Optional[float] = None
 
-        now = clock()
+        # Standardmaessig aus: Tests und Replays sollen sich nichts merken.
+        # Der Dauerbetrieb setzt die Datei ueber bot.py.
+        self.state_file = state_file
+        self._now = now
+        self._letzter_lauf: Dict[str, float] = self._zustand_laden()
+
+        jetzt_m = clock()
+        jetzt_w = now()
         for task in self.cfg.tasks:
-            if task.enabled:
-                self._task_due[task.name] = now if task.at_start else now + task.every
+            if not task.enabled:
+                continue
+            frueher = self._letzter_lauf.get(task.name)
+            if frueher is None:
+                # Noch nie gelaufen: Sofortstart nur, wenn so gewuenscht.
+                self._task_due[task.name] = jetzt_m if task.at_start else jetzt_m + task.every
+            else:
+                # Nach einem Neustart dort weitermachen, wo der Zeitplan stand -
+                # sonst wuerde nach jedem Absturz alles erneut abgearbeitet.
+                rest = max(0.0, (frueher + task.every) - jetzt_w)
+                self._task_due[task.name] = jetzt_m + rest
+                if rest > 0:
+                    self.log.debug(
+                        "Aufgabe wartet noch", aufgabe=task.name, sekunden=int(rest)
+                    )
+
+    # ------------------------------------------------------------------ Zustand
+    def _zustand_laden(self) -> Dict[str, float]:
+        """Wann lief welche Aufgabe zuletzt? Ueberlebt Neustarts."""
+        if not self.state_file or not os.path.exists(self.state_file):
+            return {}
+        try:
+            with open(self.state_file, "r", encoding="utf-8") as fh:
+                daten = json.load(fh)
+            return {k: float(v) for k, v in daten.get("aufgaben", {}).items()}
+        except Exception as exc:
+            self.log.warn(f"Zustand nicht lesbar, starte frisch: {exc}")
+            return {}
+
+    def _zustand_sichern(self) -> None:
+        if not self.state_file:
+            return
+        try:
+            ordner = os.path.dirname(os.path.abspath(self.state_file))
+            if ordner:
+                os.makedirs(ordner, exist_ok=True)
+            with open(self.state_file, "w", encoding="utf-8") as fh:
+                json.dump({"aufgaben": self._letzter_lauf}, fh, indent=2)
+        except Exception as exc:  # pragma: no cover - Dateisystem
+            self.log.warn(f"Zustand nicht schreibbar: {exc}")
 
     # --------------------------------------------------------------- Hilfsmittel
     def bump(self, key: str) -> None:
@@ -583,6 +631,8 @@ class Engine:
         task = self._due_task()
         if task is not None:
             self._task_due[task.name] = self._clock() + task.every
+            self._letzter_lauf[task.name] = self._now()
+            self._zustand_sichern()
             self.log.info(f"▶ Aufgabe: {task.name}")
             self.bump(f"task:{task.name}")
             self.run_actions(task.do, f"Aufgabe '{task.name}'")

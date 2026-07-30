@@ -509,6 +509,50 @@ class TestEngine(unittest.TestCase):
         self.assertEqual(dev.keys, ["NEIN"])
 
 
+class TestZustandUeberNeustart(unittest.TestCase):
+    """Nach einem Neustart darf nicht alles erneut abgearbeitet werden."""
+
+    def lauf(self, ordner, uhr, tick):
+        cfg = Config.from_dict(
+            {"tasks": [{"name": "spenden", "every": 3600, "at_start": True,
+                        "do": [{"key": "SPENDE"}]}]}
+        )
+        dev = FakeDevice([noise(60, 80, 80)], loop=True)
+        eng = Engine(
+            cfg, dev, logger=quiet(), sleep=lambda s: None, seed=1,
+            clock=tick, now=uhr, state_file=os.path.join(ordner, "zustand.json"),
+        )
+        eng.step()
+        return dev
+
+    def test_zweiter_start_wiederholt_die_aufgabe_nicht(self):
+        import shutil
+        import tempfile
+
+        ordner = tempfile.mkdtemp()
+        try:
+            zeit = {"w": 1_000_000.0, "m": 0.0}
+            uhr = lambda: zeit["w"]
+            tick = lambda: zeit["m"]
+
+            erster = self.lauf(ordner, uhr, tick)
+            self.assertEqual(erster.keys, ["SPENDE"], "erster Start soll laufen")
+
+            # Absturz und Neustart zwei Minuten spaeter – viel zu frueh.
+            zeit["w"] += 120
+            zeit["m"] += 120
+            zweiter = self.lauf(ordner, uhr, tick)
+            self.assertEqual(zweiter.keys, [], "nach Neustart zu frueh wiederholt")
+
+            # Nach Ablauf des Intervalls dagegen schon.
+            zeit["w"] += 3600
+            zeit["m"] += 3600
+            dritter = self.lauf(ordner, uhr, tick)
+            self.assertEqual(dritter.keys, ["SPENDE"])
+        finally:
+            shutil.rmtree(ordner, ignore_errors=True)
+
+
 class TestSelbstLernen(unittest.TestCase):
     """Der Bot entdeckt neue Sammel-Objekte über das, was sich zwischen zwei Bildern ändert."""
 

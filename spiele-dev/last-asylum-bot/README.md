@@ -252,6 +252,15 @@ ganze Ansicht. Der Bot macht das genauso; der Punkt dafür steht als `leerer_pun
 Konfiguration (Standard `[0.35, 0.16]`, also links oben im Gelände). Liegt dort bei dir ein
 Gebäude, verschieb ihn.
 
+### Neustarts wiederholen nicht alles
+
+Dreizehn Aufgaben sind auf Sofortstart gestellt. Ohne Gedächtnis würde nach jedem Absturz erneut
+gespendet, aufgewertet und marschiert — die Neustart-Schleife des Autostarts macht das zum
+Dauerzustand. Deshalb merkt sich der Bot in `zustand.json`, wann welche Aufgabe zuletzt lief, und
+nimmt den Zeitplan nach einem Neustart dort wieder auf. Ein Test hält das fest.
+
+Die Datei liegt neben `bot.py`; löscht man sie, fängt der Zeitplan von vorn an.
+
 ### Der Bot lernt neue Sammel-Objekte selbst
 
 Das Spiel bekommt laufend neue Gebäude und damit neue Ertrags-Blasen — für jede von Hand eine

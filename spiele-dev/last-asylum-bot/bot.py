@@ -339,6 +339,7 @@ def cmd_run(args) -> int:
         shots_dir=args.shots,
         stop_file=args.stop_file,
         seed=args.seed,
+        state_file=args.state_file,
     )
     # Jeder Lauf legt ein Bild in voller Aufloesung ab - damit liegt immer eine
     # frische Vorlage zum Nachschneiden bereit, ohne extra Befehl.
@@ -434,6 +435,8 @@ def build_parser() -> argparse.ArgumentParser:
     c.add_argument("--shots", default="shots", help="Ordner für Screenshots")
     c.add_argument("--jsonl", help="Ereignis-Log als JSONL")
     c.add_argument("--stop-file", default="STOP", help="Datei, deren Existenz den Bot beendet")
+    c.add_argument("--state-file", default="zustand.json", dest="state_file",
+                   help="merkt sich, wann welche Aufgabe zuletzt lief (überlebt Neustarts)")
     c.add_argument("--log-level", default="info", choices=["debug", "info", "warn", "error"])
     c.add_argument("--seed", type=int, help="Zufalls-Startwert (reproduzierbare Läufe)")
     c.add_argument("--force", action="store_true", help="trotz Konfigurations-Warnungen starten")
