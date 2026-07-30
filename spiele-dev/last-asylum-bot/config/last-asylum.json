@@ -74,6 +74,30 @@
       ]
     },
     {
+      "name": "allianz-hilfe-geben",
+      "priority": 175,
+      "cooldown": 45,
+      "_zweck": "Der gelbe Hand-Knopf neben 'Allianz' erscheint, wenn jemand Hilfe braucht. Kostet nichts, beschleunigt alle in der Allianz.",
+      "match": { "template": "allianz/hilfe.png", "threshold": 0.86, "region": [0.6, 0.6, 1.0, 0.95] },
+      "do": [
+        { "log": "Allianz-Hilfe geben" },
+        { "tap_match": {} },
+        { "sleep": [0.8, 1.4] }
+      ]
+    },
+    {
+      "name": "zuflucht-angriff",
+      "priority": 165,
+      "cooldown": 120,
+      "_zweck": "Der rote Totenkopf-Zaehler in der Zuflucht (Angriffs-/Schwarm-Ereignis) wird geoeffnet, damit die Belohnungs-Regeln greifen.",
+      "match": { "template": "zuflucht/angriff.png", "threshold": 0.86, "region": [0.6, 0.4, 1.0, 0.8] },
+      "do": [
+        { "log": "Angriffs-Ereignis in der Zuflucht" },
+        { "tap_match": {} },
+        { "sleep": [1.5, 2.5] }
+      ]
+    },
+    {
       "name": "zuflucht-geschenk",
       "priority": 160,
       "cooldown": 3.0,
@@ -347,6 +371,7 @@
       "do": [
         { "log": "Zuflucht besuchen und abernten" },
         { "tap_first": { "of": ["nav/zuflucht.png"], "fallback": [0.02, 0.35], "after": [3.0, 4.5] } },
+        { "tap_template": { "template": "zuflucht/angriff.png", "optional": true, "threshold": 0.86, "region": [0.6, 0.4, 1.0, 0.8], "after": [1.5, 2.5] } },
         { "repeat": { "times": 6, "do": [
           { "tap_template": { "template": "zuflucht/kraut.png", "optional": true, "threshold": 0.85 } },
           { "sleep": [0.6, 1.0] },
@@ -434,7 +459,10 @@
       "every": 900,
       "priority": 50,
       "do": [
-        { "tap_template": { "template": "nav/burg.png", "optional": true, "region": [0.0, 0.4, 0.35, 0.85], "after": [2.5, 3.5] } }
+        { "tap_first": { "of": [
+            { "template": "nav/startseite.png", "threshold": 0.86, "region": [0.7, 0.85, 1.0, 1.0] },
+            { "template": "nav/burg.png", "threshold": 0.86, "region": [0.0, 0.4, 0.35, 0.85] }
+          ], "after": [2.5, 3.5] } }
       ]
     },
     {
