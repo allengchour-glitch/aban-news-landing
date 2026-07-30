@@ -2952,8 +2952,36 @@ setTimeout(function baueGebaeude(){
     (function kircheDetails(){ /* ⛪ User: "mehr details katedrahle" */
       var stM=betMat(0xd8d0be,0.88),goM=stdMat(0xc8a84a,0.35);
       /* Vorplatz + Freitreppe vor dem Portal (-x-Seite) */
-      var vp=new THREE.Mesh(new THREE.PlaneGeometry(16,26),betMat(0xcfc7b6,0.9));
-      vp.rotation.x=-Math.PI/2;vp.position.set(-81,-0.01,-78);vp.receiveShadow=true;scene.add(vp);
+      /* 🏛️ User: „ringsherum frei und mit details wie echte sachen, fenster und vorplatz".
+         Der Vorplatz war 16x26 und endete direkt an der Fassade. Jetzt ein richtiger
+         Kirchplatz, der das ganze Gebaeude umfasst — so steht sie frei statt im Gras. */
+      var vp=new THREE.Mesh(new THREE.PlaneGeometry(34,46),betMat(0xcfc7b6,0.9));
+      vp.rotation.x=-Math.PI/2;vp.position.set(-72,-0.011,-78);vp.receiveShadow=true;scene.add(vp);
+      /* Pflaster-Ring in anderem Ton als Fassung des Platzes */
+      var ring=new THREE.Mesh(new THREE.PlaneGeometry(42,54),betMat(0xbdb5a4,0.93));
+      ring.rotation.x=-Math.PI/2;ring.position.set(-72,-0.0125,-78);ring.receiveShadow=true;scene.add(ring);
+      /* Hohe Spitzbogenfenster an beiden Laengsseiten — die Wand war fensterlos */
+      (function fenster(){
+        var rahmM=stdMat(0x8a8274,0.7);
+        var glasM=new THREE.MeshStandardMaterial({color:0x6a8fb8,emissive:0x2a4a7a,
+          emissiveIntensity:0.25,roughness:0.2,metalness:0.1});
+        [-70.4,-45.6].forEach(function(zw,si){          /* Nord- und Suedwand der Kathedrale */
+          for(var i=0;i<5;i++){
+            var fx=-68+i*5.2;
+            var g=new THREE.Group();
+            var gl=new THREE.Mesh(new THREE.BoxGeometry(1.5,5.2,0.12),glasM);
+            gl.position.y=5.6;g.add(gl);
+            var sp=new THREE.Mesh(new THREE.CylinderGeometry(0.01,0.85,1.5,3,1),glasM);
+            sp.position.y=8.9;sp.rotation.y=Math.PI/2;sp.scale.z=0.14;g.add(sp);
+            [-0.9,0.9].forEach(function(ox){             /* Rahmen seitlich */
+              var r=new THREE.Mesh(new THREE.BoxGeometry(0.28,7.4,0.3),rahmM);
+              r.position.set(ox,6.2,0);g.add(r);});
+            var sims=new THREE.Mesh(new THREE.BoxGeometry(2.4,0.22,0.4),rahmM);
+            sims.position.y=2.7;g.add(sims);
+            g.position.set(fx,0,zw);
+            g.traverse(function(n){if(n.isMesh)n.castShadow=true;});
+            scene.add(g);}});
+      })();
       for(var st=0;st<3;st++){var s9=new THREE.Mesh(new THREE.BoxGeometry(1.0,0.22,9),stM);
         s9.position.set(-72.4-st*1.0,0.11+st*0.22,-78);s9.receiveShadow=true;scene.add(s9);}
       /* Strebepfeiler an beiden Laengsseiten */
