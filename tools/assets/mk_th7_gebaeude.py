@@ -37,6 +37,24 @@ def kegel(x, y, z, r1, r2, h, m=None, seg=12, rot=(0,0,0)):
     if m: o.data.materials.append(m)
     return o
 
+def tonne(cx, cy, z, r, laenge, m, seg=24, flach=1.0):
+    """HALBES Tonnengewoelbe: Zylinder mit Achse in x, untere Haelfte weggeschnitten,
+    Basis exakt bei z. Ein VOLLER Zylinder fuellt die Halle von innen und taucht unter
+    den Boden (bei der Lagerhalle gemessene -0,30) — derselbe Fehler steckte in der
+    th8-Markthalle."""
+    o = zyl(cx, cy, z, r, laenge, m, seg, rot=(0, math.pi/2, 0))
+    o.scale[2] = flach
+    bpy.context.view_layer.objects.active = o
+    for s_ in bpy.context.scene.objects: s_.select_set(False)
+    o.select_set(True)
+    bpy.ops.object.transform_apply(location=False, rotation=True, scale=True)
+    bm = bmesh.new(); bm.from_mesh(o.data)
+    bmesh.ops.bisect_plane(bm, geom=bm.verts[:] + bm.edges[:] + bm.faces[:],
+                           plane_co=(0, 0, 0), plane_no=(0, 0, 1), clear_inner=True)
+    bmesh.ops.holes_fill(bm, edges=bm.edges[:])
+    bm.to_mesh(o.data); bm.free(); o.data.update()
+    return o
+
 def runden(width=0.016, segments=3, winkel=42):
     for o in list(bpy.context.scene.objects):
         if o.type != 'MESH': continue
@@ -324,9 +342,11 @@ def lagerhalle():
     box(0,0,3.20, 20.0,12.0,5.40, wand)
     for i in range(9):                                  # Wellblech-Rippen
         box(-9.0+i*2.25, 0, 3.2, 0.14, 12.1, 5.3, dach)
-    bpy.ops.mesh.primitive_cylinder_add(radius=6.3, depth=20.2, location=(0,0,5.9),
-                                        vertices=18, rotation=(0, math.pi/2, 0))
-    d = bpy.context.active_object; d.scale = (1,0.42,1); d.data.materials.append(dach)
+    # Gewoelbe auf die Mauerkrone (5.90), Radius auf die halbe Hallentiefe (6.0),
+    # damit es genau auf den Laengswaenden aufsetzt.
+    tonne(0, 0, 5.90, 6.0, 20.2, dach, 22, 0.46)
+    for i in range(9):                                  # Binder als Halbbogen
+        tonne(-9.0 + i*2.25, 0, 5.90, 6.12, 0.16, dach, 22, 0.46)
     for tx in (-5.5, 5.5):                              # 2 Rolltore
         box(tx, 6.05, 2.10, 4.4,0.14,4.2, tor)
         for r in range(5):
