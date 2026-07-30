@@ -181,6 +181,7 @@ Diese Vorlagen fehlen noch; die zugehörigen Schritte ruhen still, bis sie da si
 | ★★☆ | `held/team1.png` | Helden-Menü, Auswahl von Team 1 |
 | ★★★ | `ui/btn_alles_abholen.png` | der orange `Alles abholen` im Beute-Fenster — räumt eine ganze Kiste auf einmal ab |
 | ★★☆ | `tasche/truhe.png` | die Kiste im Reiter `Spezial` der Tasche |
+| ★★☆ | `chat/teilen_marker.png`, `sammeln/ausgraben.png` | geteilte Schatz-Koordinaten im Allianz-Chat: die `Teilen`-Zeile mit der grünen Ortsmarke, und der Ausgraben-Knopf auf der Karte |
 | ★★☆ | `allianz/forschung.png`, `allianz/spenden_ressourcen.png` | Allianz → Allianz-Forschung → Technologie: der **blaue** Spenden-Knopf (aktiv, nicht ausgegraut) |
 | ★☆☆ | `nav/wachturm.png`, `nav/zuflucht.png` | Einstiege, die der Bot noch nicht selbst findet |
 | ★☆☆ | `forschung/empfehlung.png`, `ui/btn_forschen.png` | Forschungszentrum |

@@ -3616,6 +3616,133 @@
       "_zweck": "Schreibt eine Admin-Nachricht in den Allianz-Chat. Pruefe beim ersten Lauf, ob der blaue Plus-Knopf wirklich sendet - falls er nur Anhaenge oeffnet, schneide den echten Sende-Knopf neu nach chat/senden.png."
     },
     {
+      "name": "chat-schatz-holen",
+      "every": 3600,
+      "priority": 85,
+      "_zweck": "Im Allianz-Chat teilen Mitglieder Schatz-Koordinaten als anklickbaren Link ('Teilen' mit Ortsmarke, darunter X/Y in Blau). Ein Tipp darauf springt direkt zur Stelle, dort laesst sich der Schatz ausgraben. Braucht chat/teilen_marker.png (die 'Teilen'-Zeile mit der gruenen Ortsmarke) und sammeln/ausgraben.png (den Knopf auf der Karte). Bis die beiden da sind, tut die Aufgabe nichts.",
+      "do": [
+        {
+          "log": "Allianz-Chat nach geteilten Schaetzen absuchen"
+        },
+        {
+          "tap_first": {
+            "of": [
+              "chat/oeffnen.png",
+              "nav/chat.png"
+            ],
+            "fallback": [
+              0.5,
+              0.963
+            ],
+            "after": [
+              2.5,
+              3.5
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "chat/reiter_allianz.png",
+            "optional": true,
+            "threshold": 0.86,
+            "region": [
+              0.2,
+              0.05,
+              0.75,
+              0.2
+            ],
+            "after": [
+              1.5,
+              2.5
+            ]
+          }
+        },
+        {
+          "repeat": {
+            "times": 3,
+            "do": [
+              {
+                "tap_template": {
+                  "template": "chat/teilen_marker.png",
+                  "optional": true,
+                  "threshold": 0.87,
+                  "after": [
+                    3.0,
+                    4.5
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "sammeln/ausgraben.png",
+                  "optional": true,
+                  "threshold": 0.86,
+                  "after": [
+                    2.0,
+                    3.0
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "sammeln/versammlung_einleiten.png",
+                  "optional": true,
+                  "threshold": 0.86,
+                  "after": [
+                    2.5,
+                    3.5
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "ui/popup_close.png",
+                  "optional": true,
+                  "threshold": 0.84
+                }
+              },
+              {
+                "sleep": [
+                  1.0,
+                  1.6
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              }
+            ],
+            "sonst": [
+              {
+                "key": "KEYCODE_BACK"
+              }
+            ]
+          }
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        }
+      ]
+    },
+    {
       "name": "heilen",
       "every": 2700,
       "priority": 100,
