@@ -1518,8 +1518,21 @@ var dorfFenster=[];
     g.position.set(hx,0,hz);scene.add(g);}
   function vorgarten(hx,hz,dir){ // dir=+1: Strasse liegt Richtung +z
     einfriedung(hx,hz,dir,(Math.abs(hx|0)%3===0)?"mauer":"zaun");
-    var weg9=new THREE.Mesh(new THREE.PlaneGeometry(1.1,2.0),wegM);
-    weg9.rotation.x=-Math.PI/2;weg9.position.set(hx,0.012,hz+dir*4.2);weg9.receiveShadow=true;scene.add(weg9);
+    /* 🚶 User: „haeuser sollten strassenanbindung haben". Der Gartenweg war 2 m lang und
+       endete im Rasen — seit die Zeile auf SZ+31 zurueckgerueckt ist, liegen zwischen
+       Hausfront und Gehwegkante rund 6 m nichts. Der Weg reicht jetzt bis zum Trottoir. */
+    var _gk=(GH*CS/2+12)+10.2;                 // Aussenkante des Gehwegs
+    var _von=Math.abs(hz)-4.2,_bis=_gk;        // von der Hausfront bis zur Gehwegkante
+    var _len=Math.max(2.0,Math.abs(_von-_bis)+1.2);
+    var weg9=new THREE.Mesh(new THREE.PlaneGeometry(1.3,_len),wegM);
+    weg9.rotation.x=-Math.PI/2;
+    weg9.position.set(hx,0.012,(hz>0?1:-1)*((_von+_bis)/2));
+    weg9.receiveShadow=true;scene.add(weg9);
+    /* Briefkasten an der Gehwegkante — macht den Zugang als solchen lesbar */
+    var _bk=new THREE.Mesh(new THREE.BoxGeometry(0.34,0.42,0.24),stdMat(0x4a5a6a,0.6));
+    _bk.position.set(hx+1.1,1.0,(hz>0?1:-1)*(_bis-0.8));_bk.castShadow=true;scene.add(_bk);
+    var _bp=new THREE.Mesh(new THREE.CylinderGeometry(0.05,0.06,1.0,6),stdMat(0x3a4450,0.6));
+    _bp.position.set(hx+1.1,0.5,(hz>0?1:-1)*(_bis-0.8));scene.add(_bp);
     [-2.7,2.7].forEach(function(off){
       var he=new THREE.Mesh(new THREE.BoxGeometry(3.2,0.5,0.45),heckM);
       he.position.set(hx+off,0.25,hz+dir*4.7);he.castShadow=true;scene.add(he);});
