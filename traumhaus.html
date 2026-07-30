@@ -2516,11 +2516,32 @@ setTimeout(function baueGebaeude(){
       st.rotation.x=-Math.PI/2;st.position.set(VX+(laengs?mo:0),0.005,VZ+(laengs?0:mo));scene.add(st);}
     /* 3) Anbindung an die Ringstrasse */
     if(cfg.anschluss){
-      var a=cfg.anschluss,dx=VX-a[0],dz=VZ-a[1];
-      var zu=new THREE.Mesh(new THREE.PlaneGeometry(Math.abs(dx)||SW,Math.abs(dz)||SW),
-                            Math.abs(dx)>Math.abs(dz)?strMatH.clone():strMatV.clone());
-      zu.rotation.x=-Math.PI/2;zu.position.set((VX+a[0])/2,-0.004,(VZ+a[1])/2);
-      zu.receiveShadow=true;scene.add(zu);}
+      /* 🐛 Vorher wurde EINE Flaeche |dx| x |dz| gezeichnet. Bei geraden Anschluessen sah das
+         wie eine Strasse aus, bei schraegen (Freizeitpark: 78 x 40) entstand eine riesige
+         Asphaltplatte quer durch die Landschaft. Jetzt ein echter L-Weg aus zwei Abschnitten,
+         beide mit Trottoir und Mittelstreifen — befahrbar wie die uebrigen Strassen. */
+      (function anbindung(){
+        var a=cfg.anschluss,ax=a[0],az=a[1];
+        function segment(x1,z1,x2,z2){
+          var waag=Math.abs(x2-x1)>Math.abs(z2-z1);
+          var len=Math.max(SW,waag?Math.abs(x2-x1):Math.abs(z2-z1));
+          var mx=(x1+x2)/2,mz=(z1+z2)/2;
+          var st=new THREE.Mesh(new THREE.PlaneGeometry(waag?len:SW,waag?SW:len),
+                                waag?strMatH.clone():strMatV.clone());
+          st.rotation.x=-Math.PI/2;st.position.set(mx,-0.004,mz);st.receiveShadow=true;scene.add(st);
+          [-TO,TO].forEach(function(o){                       // Trottoir beidseits
+            var t=new THREE.Mesh(new THREE.BoxGeometry(waag?len:TW,0.06,waag?TW:len),twM);
+            t.position.set(mx+(waag?0:o),0.03,mz+(waag?o:0));t.receiveShadow=true;scene.add(t);});
+          for(var m2=0;m2<Math.floor(len/9);m2++){            // Mittelstreifen
+            var off=-len/2+5+m2*9;
+            var str=new THREE.Mesh(new THREE.PlaneGeometry(waag?3:0.28,waag?0.28:3),mM);
+            str.rotation.x=-Math.PI/2;
+            str.position.set(mx+(waag?off:0),0.005,mz+(waag?0:off));scene.add(str);}}
+        /* Erst in einer Achse, dann in der anderen — Knick auf Hoehe des Viertels */
+        if(Math.abs(VX-ax)>2&&Math.abs(VZ-az)>2){
+          segment(ax,az,VX,az);segment(VX,az,VX,VZ);}
+        else segment(ax,az,VX,VZ);
+      })();}
     /* 4) Bebauung: zwei Reihen laengs der Strasse. Je Seite ein eigener Laufcursor —
        damit stimmt der Abstand zum Nachbarn auch bei unterschiedlich breiten Gebaeuden. */
     var setback=TO+(cfg.abstand===undefined?10:cfg.abstand);
