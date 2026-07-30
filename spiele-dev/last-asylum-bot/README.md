@@ -20,16 +20,19 @@ Diese Templates sind aus echten Screenshots geschnitten und **funktionieren sofo
 
 | Bereich | Erkennt | Tut |
 |---|---|---|
-| Belohnungen | grüner `Abholen`-Knopf, oranger `Abholen`-Knopf | tippt ihn — **immer**, überall, mit Vorrang vor allem anderen |
+| Belohnungen | grüner + oranger `Abholen`-Knopf | tippt ihn — **immer**, überall, mit Vorrang vor allem anderen |
 | Dialoge | blaues ✖, weisses ✖ | schliesst sie, damit nichts blockiert |
-| Zuflucht | Kräuter-Knöpfe, Geschenk-Blasen, grünes Geschenk, Offline-Einnahmen | erntet alles ab |
-| Navigation | Burg, Welt, Held, Allianz, Nachricht, Tasche, Tagesziele, Heilen, Lupe | wechselt zwischen den Bildschirmen |
+| Erträge | die weissen Blasen über Farmen, Sägewerken, Kräuterhütten | sammelt sie reihum ein |
+| Bauen | den Bau-Vorschlag des Spiels, `Upgrade`-Knopf, `Upgrade`-Bestätigung | wertet auf, ohne Diamanten zu verbrennen |
+| Truppe 1 | `Upgrade`-Reiter und `Verbessern` im Ausrüstungs-Dialog | zieht die Ausrüstung hoch, mehrfach pro Durchgang |
+| Allianz | gelber Hilfe-Knopf, Allianz-Menü, Chat-Reiter | gibt Hilfe, holt Truhen, schreibt Admin-Nachrichten |
+| Zuflucht | Kräuter, Geschenk-Blasen, Offline-Einnahmen, Angriffs-Zähler | erntet alles ab |
+| Navigation | Burg, Welt, Startseite, Held, Allianz, Nachricht, Tasche, Tagesziele, Heilen, Lupe | wechselt zwischen den Bildschirmen |
 | Events | „Wertvolles Event", „Spezielles Event" | öffnet sie und holt die Belohnungen |
 
-Die restlichen Abläufe (Schild setzen, Gebäude aufwerten, Forschung, Truppe 1 leveln,
-Sammeln, Chat) sind **fertig verdrahtet**, brauchen aber je 2–4 weitere Template-Ausschnitte.
-`python3 bot.py check` listet genau auf, welche fehlen. Bis dahin überspringt der Bot
-diese Schritte still — er läuft trotzdem.
+Noch offen sind Schild-Setzen, Forschung und der Sammel-Ablauf auf der Weltkarte — verdrahtet
+sind sie, es fehlen nur die Bild-Ausschnitte. `python3 bot.py check` listet auf, welche.
+Bis dahin überspringt der Bot diese Schritte still und läuft trotzdem.
 
 ---
 
@@ -86,21 +89,30 @@ python3 bot.py find templates/ui/btn_abholen.png --image shots/menue.png --thres
 * Templates aus einem **1440 px breiten** Screenshot passen auch auf andere Auflösungen —
   `base_width` in der Konfiguration sorgt für die Umrechnung.
 
-### Die offene Liste (nach Nutzen sortiert)
+### Die offene Liste
+
+Diese Vorlagen fehlen noch; die zugehörigen Schritte ruhen still, bis sie da sind:
 
 | Priorität | Template | Wo abschneiden |
 |---|---|---|
-| ★★★ | `hud/schild_aktiv.png` | Schild-Symbol im HUD, wenn ein Schutzschild läuft |
-| ★★★ | `schutz/schild_setzen.png`, `schutz/schild_bestaetigen.png` | Tasche → Spezial → Schutzschild |
-| ★★★ | `hud/bauschlitz_frei.png` | der Hammer links (z. B. `3/3`), wenn ein Schlitz frei ist |
-| ★★★ | `ui/btn_aufwerten.png`, `ui/btn_bestaetigen.png` | Gebäude-Dialog |
-| ★★☆ | `hud/forschung_frei.png`, `ui/btn_forschen.png`, `forschung/empfehlung.png` | Forschungszentrum |
-| ★★☆ | `held/team1.png`, `held/aufwerten.png`, `held/ausruesten.png` | Held → Team 1 |
-| ★★☆ | `allianz/hilfe.png`, `allianz/geschenke.png` | Allianz-Menü |
-| ★★☆ | `sammeln/*.png` | Weltkarte → Lupe → Ressource → Suchen → Sammeln → Marschieren |
-| ★☆☆ | `chat/oeffnen.png`, `chat/eingabefeld.png`, `chat/senden.png` | Allianz-Chat |
-| ★☆☆ | `nav/zuflucht.png` | Umschalter am linken Bildrand zur Zuflucht |
-| ★☆☆ | `ui/ad_close.png`, `ui/reconnect.png` | Werbe-✖ und Verbindungsabbruch-Dialog |
+| ★★★ | `hud/schild_aktiv.png` | Schild-Symbol im HUD, **während ein Schutzschild läuft** — erst danach darf die Schild-Aufgabe an (siehe unten) |
+| ★★☆ | `held/team1.png` | Helden-Menü, Auswahl von Team 1 |
+| ★★☆ | `ui/btn_bestaetigen.png`, `ui/btn_benutzen.png` | Bestätigungs-Dialoge |
+| ★★☆ | `sammeln/ressource.png`, `sammeln/suchen.png`, `sammeln/sammeln.png`, `sammeln/marschieren.png` | Weltkarte → Lupe → Sammel-Ablauf |
+| ★☆☆ | `forschung/empfehlung.png`, `ui/btn_forschen.png` | Forschungszentrum |
+| ★☆☆ | `nav/zuflucht.png` | Umschalter am linken Bildrand zur Zuflucht (sonst wird blind auf die Stelle getippt) |
+| ★☆☆ | `ui/ad_close.png`, `ui/reconnect.png`, `hud/bau_fertig.png` | Werbe-✖, Verbindungsabbruch, fertige Produktion |
+| ★☆☆ | `ui/btn_heilen.png`, `allianz/geschenke.png` | Lazarett und Allianz-Geschenkliste |
+
+### ⚠ Die Schild-Aufgabe ist absichtlich AUS
+
+`schild-pruefen` steht auf `"enabled": false`. Grund: ohne `hud/schild_aktiv.png` kann der Bot
+nicht sehen, ob schon ein Schild läuft — er würde bei jedem Durchlauf ein neues verbrauchen und
+deinen Vorrat (3× 8 h, 2× 12 h) in einem Nachmittag verheizen. Sobald das Symbol geschnitten ist,
+in `config/last-asylum.json` auf `true` stellen.
+
+Aus demselben Grund tippt der Bot beim Gebäude-Upgrade **nie** auf den orangen `Sofort`-Knopf
+(kostet Diamanten pro Bau), sondern nur auf das grüne `Upgrade` mit Zeit.
 
 ---
 
@@ -132,8 +144,10 @@ wiederholt nie zweimal denselben hintereinander.
 **ADBKeyboard**, aktiviert sie als Tastatur und setzt in der Konfiguration
 `"input_method": "adbkeyboard"`.
 
-Die Chat-Aufgabe läuft alle 4 Stunden und bleibt still, solange die drei
-`chat/*`-Templates fehlen — so verschickt sie nichts, bevor du sie eingerichtet hast.
+Die Chat-Aufgabe läuft alle 4 Stunden: Chat öffnen → Reiter `Allianz` → Eingabefeld → tippen →
+senden. **Prüfe den ersten Lauf**: gesendet wird über den blauen `+`-Knopf rechts unten. Falls der
+bei dir nur Anhänge öffnet statt zu senden, schneide den echten Sende-Knopf neu nach
+`templates/chat/senden.png` — der Rest bleibt gleich.
 
 ---
 
