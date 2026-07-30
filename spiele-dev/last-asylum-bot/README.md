@@ -29,7 +29,7 @@ Diese Templates sind aus echten Screenshots geschnitten und **funktionieren sofo
 | Zuflucht | Kräuter, Geschenk-Blasen, Offline-Einnahmen, Angriffs-Zähler | erntet alles ab |
 | Navigation | Burg, Welt, Startseite, Held, Allianz, Nachricht, Tasche, Tagesziele, Heilen, Lupe | wechselt zwischen den Bildschirmen |
 | Events | „Wertvolles Event", „Spezielles Event" | öffnet sie und holt die Belohnungen |
-| Sammeln | Lupe, Reiter `Sammeln`, Bauernhof, `Suchen`, `Versammeln` | schickt Sammel-Trupps los |
+| Sammeln | Lupe, Reiter `Sammeln`, Bauernhof, `Suchen`, `Versammeln` | schickt alle 10 Minuten bis zu vier Trupps los — je einen pro Marsch-Platz |
 | Expedition | `Herausforderung`, `Kampf`, `Zurück` im Wachturm | spielt den Expeditionskampf allein durch |
 | Taverne | `Rekrutieren` im Gebäude-Menü | nimmt den Gratis-Zug mit |
 
@@ -155,7 +155,9 @@ Diese Vorlagen fehlen noch; die zugehörigen Schritte ruhen still, bis sie da si
 | ★★★ | `hud/schild_aktiv.png` | Schild-Symbol im HUD, **während ein Schutzschild läuft** — erst danach darf die Schild-Aufgabe an (siehe unten) |
 | ★★☆ | `ui/btn_bestaetigen.png`, `ui/btn_benutzen.png` | Bestätigungs-Dialoge („Benutzen" beim Beschleuniger, „Bestätigen" beim Upgrade) |
 | ★★☆ | `held/team1.png` | Helden-Menü, Auswahl von Team 1 |
-| ★★☆ | `allianz/forschung.png`, `allianz/spenden_ressourcen.png`, `allianz/spenden_diamant.png` | Allianz → Allianz-Forschung → Technologie: die beiden Spenden-Knöpfe unten |
+| ★★★ | `ui/btn_alles_abholen.png` | der orange `Alles abholen` im Beute-Fenster — räumt eine ganze Kiste auf einmal ab |
+| ★★☆ | `tasche/truhe.png` | die Kiste im Reiter `Spezial` der Tasche |
+| ★★☆ | `allianz/forschung.png`, `allianz/spenden_ressourcen.png` | Allianz → Allianz-Forschung → Technologie: der **blaue** Spenden-Knopf (aktiv, nicht ausgegraut) |
 | ★☆☆ | `nav/wachturm.png`, `nav/zuflucht.png` | Einstiege, die der Bot noch nicht selbst findet |
 | ★☆☆ | `forschung/empfehlung.png`, `ui/btn_forschen.png` | Forschungszentrum |
 | ★☆☆ | `ui/ad_close.png`, `ui/reconnect.png`, `hud/bau_fertig.png` | Werbe-✖, Verbindungsabbruch, fertige Produktion |

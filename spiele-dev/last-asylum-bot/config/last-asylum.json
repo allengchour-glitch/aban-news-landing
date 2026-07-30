@@ -76,6 +76,49 @@
   ],
   "rules": [
     {
+      "name": "alles-abholen",
+      "priority": 216,
+      "cooldown": 1.0,
+      "_zweck": "Der orange 'Alles abholen' im Beute-Fenster raeumt eine ganze Kiste auf einmal ab - deshalb noch vor dem einzelnen Abholen-Knopf.",
+      "match": {
+        "template": "ui/btn_alles_abholen.png",
+        "threshold": 0.86,
+        "optional": true
+      },
+      "do": [
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            0.8,
+            1.4
+          ]
+        }
+      ]
+    },
+    {
+      "name": "offline-einnahmen-abholen",
+      "priority": 215,
+      "cooldown": 1.0,
+      "_zweck": "Der orange 'Abholen'-Knopf beim Offline-Einnahmen-Dialog (Zuflucht).",
+      "match": {
+        "template": "ui/btn_abholen_orange.png",
+        "threshold": 0.85
+      },
+      "do": [
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            0.8,
+            1.4
+          ]
+        }
+      ]
+    },
+    {
       "name": "belohnung-abholen",
       "priority": 210,
       "cooldown": 0.5,
@@ -96,13 +139,18 @@
       ]
     },
     {
-      "name": "offline-einnahmen-abholen",
-      "priority": 215,
-      "cooldown": 1.0,
-      "_zweck": "Der orange 'Abholen'-Knopf beim Offline-Einnahmen-Dialog (Zuflucht).",
+      "name": "dialog-schliessen",
+      "priority": 200,
+      "cooldown": 1.5,
       "match": {
-        "template": "ui/btn_abholen_orange.png",
-        "threshold": 0.85
+        "template": "ui/popup_close.png",
+        "threshold": 0.86,
+        "region": [
+          0.45,
+          0.05,
+          1.0,
+          0.75
+        ]
       },
       "do": [
         {
@@ -139,6 +187,74 @@
           "sleep": [
             0.8,
             1.4
+          ]
+        }
+      ]
+    },
+    {
+      "name": "werbung-schliessen",
+      "priority": 195,
+      "cooldown": 2.0,
+      "match": {
+        "template": "ui/ad_close.png",
+        "threshold": 0.82,
+        "region": [
+          0.6,
+          0.0,
+          1.0,
+          0.25
+        ],
+        "optional": true
+      },
+      "do": [
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            1.2,
+            2.0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "verbindung-verloren",
+      "priority": 190,
+      "cooldown": 60,
+      "match": {
+        "template": "ui/reconnect.png",
+        "threshold": 0.85,
+        "optional": true
+      },
+      "do": [
+        {
+          "log": "Verbindungsabbruch erkannt - App neu starten"
+        },
+        {
+          "restart_app": [
+            25,
+            40
+          ]
+        }
+      ]
+    },
+    {
+      "name": "belohnung-bestaetigen",
+      "priority": 180,
+      "cooldown": 1.0,
+      "match": {
+        "template": "ui/btn_bestaetigen.png",
+        "optional": true
+      },
+      "do": [
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            0.8,
+            1.3
           ]
         }
       ]
@@ -233,59 +349,30 @@
       ]
     },
     {
-      "name": "zuflucht-kraeuter",
-      "priority": 130,
-      "cooldown": 4.0,
-      "_zweck": "Die gruenen Kraeuter-Knoepfe an den Tresen abernten (mehrere hintereinander).",
+      "name": "gruener-knopf-generisch",
+      "priority": 145,
+      "cooldown": 10.0,
+      "_zweck": "Findet gruene Knoepfe ueber Farbe und Form statt ueber ein Template - faengt 'Abholen', 'Upgrade', 'Los', 'Bestaetigen' und alles andere Gruene ab, auch wenn die Beschriftung wechselt. Greift erst, wenn keine genauere Regel gepasst hat.",
       "match": {
-        "template": "zuflucht/kraut.png",
-        "threshold": 0.85
-      },
-      "do": [
-        {
-          "tap_match": {}
-        },
-        {
-          "sleep": [
-            0.5,
-            0.9
-          ]
-        },
-        {
-          "repeat": {
-            "times": 3,
-            "do": [
-              {
-                "tap_template": {
-                  "template": "zuflucht/kraut.png",
-                  "optional": true,
-                  "threshold": 0.85
-                }
-              },
-              {
-                "sleep": [
-                  0.5,
-                  0.9
-                ]
-              }
-            ]
-          }
+        "farbknopf": {
+          "rgb": [
+            120,
+            181,
+            54
+          ],
+          "tolerance": 38,
+          "min_w": 0.15,
+          "max_w": 0.75,
+          "min_h": 0.02,
+          "max_h": 0.06,
+          "region": [
+            0.0,
+            0.25,
+            1.0,
+            0.98
+          ],
+          "min_fuellung": 0.55
         }
-      ]
-    },
-    {
-      "name": "dialog-schliessen",
-      "priority": 200,
-      "cooldown": 1.5,
-      "match": {
-        "template": "ui/popup_close.png",
-        "threshold": 0.86,
-        "region": [
-          0.45,
-          0.05,
-          1.0,
-          0.75
-        ]
       },
       "do": [
         {
@@ -295,133 +382,6 @@
           "sleep": [
             0.8,
             1.4
-          ]
-        }
-      ]
-    },
-    {
-      "name": "werbung-schliessen",
-      "priority": 195,
-      "cooldown": 2.0,
-      "match": {
-        "template": "ui/ad_close.png",
-        "threshold": 0.82,
-        "region": [
-          0.6,
-          0.0,
-          1.0,
-          0.25
-        ],
-        "optional": true
-      },
-      "do": [
-        {
-          "tap_match": {}
-        },
-        {
-          "sleep": [
-            1.2,
-            2.0
-          ]
-        }
-      ]
-    },
-    {
-      "name": "verbindung-verloren",
-      "priority": 190,
-      "cooldown": 60,
-      "match": {
-        "template": "ui/reconnect.png",
-        "threshold": 0.85,
-        "optional": true
-      },
-      "do": [
-        {
-          "log": "Verbindungsabbruch erkannt - App neu starten"
-        },
-        {
-          "restart_app": [
-            25,
-            40
-          ]
-        }
-      ]
-    },
-    {
-      "name": "belohnung-bestaetigen",
-      "priority": 180,
-      "cooldown": 1.0,
-      "match": {
-        "template": "ui/btn_bestaetigen.png",
-        "optional": true
-      },
-      "do": [
-        {
-          "tap_match": {}
-        },
-        {
-          "sleep": [
-            0.8,
-            1.3
-          ]
-        }
-      ]
-    },
-    {
-      "name": "gebaeude-fertig-antippen",
-      "priority": 120,
-      "cooldown": 30,
-      "match": {
-        "template": "hud/bau_fertig.png",
-        "optional": true
-      },
-      "do": [
-        {
-          "tap_match": {}
-        },
-        {
-          "sleep": [
-            1.0,
-            1.6
-          ]
-        }
-      ]
-    },
-    {
-      "name": "zurueck-zur-basis",
-      "priority": 20,
-      "cooldown": 25,
-      "match": {
-        "all": [
-          {
-            "template": "ui/back_arrow.png",
-            "threshold": 0.85,
-            "region": [
-              0.0,
-              0.0,
-              0.3,
-              0.15
-            ]
-          },
-          {
-            "not": {
-              "template": "ui/btn_abholen.png",
-              "threshold": 0.85
-            }
-          }
-        ]
-      },
-      "do": [
-        {
-          "log": "Untermenue offen und nichts mehr abzuholen - zurueck"
-        },
-        {
-          "tap_match": {}
-        },
-        {
-          "sleep": [
-            1.0,
-            1.8
           ]
         }
       ]
@@ -506,30 +466,13 @@
       ]
     },
     {
-      "name": "gruener-knopf-generisch",
-      "priority": 145,
-      "cooldown": 10.0,
-      "_zweck": "Findet gruene Knoepfe ueber Farbe und Form statt ueber ein Template - faengt 'Abholen', 'Upgrade', 'Los', 'Bestaetigen' und alles andere Gruene ab, auch wenn die Beschriftung wechselt. Greift erst, wenn keine genauere Regel gepasst hat.",
+      "name": "zuflucht-kraeuter",
+      "priority": 130,
+      "cooldown": 4.0,
+      "_zweck": "Die gruenen Kraeuter-Knoepfe an den Tresen abernten (mehrere hintereinander).",
       "match": {
-        "farbknopf": {
-          "rgb": [
-            120,
-            181,
-            54
-          ],
-          "tolerance": 38,
-          "min_w": 0.15,
-          "max_w": 0.75,
-          "min_h": 0.02,
-          "max_h": 0.06,
-          "region": [
-            0.0,
-            0.25,
-            1.0,
-            0.98
-          ],
-          "min_fuellung": 0.55
-        }
+        "template": "zuflucht/kraut.png",
+        "threshold": 0.85
       },
       "do": [
         {
@@ -537,108 +480,39 @@
         },
         {
           "sleep": [
-            0.8,
-            1.4
-          ]
-        }
-      ]
-    },
-    {
-      "name": "roter-punkt-pruefen",
-      "priority": 40,
-      "cooldown": 180.0,
-      "_zweck": "Rote Punkte sind fast immer Belohnungen. Der Bot sucht sie ueber Farbe und Groesse in der rechten Knopfspalte und tippt den Knopf darunter an - danach raeumen die Abhol-Regeln auf. Der Einkaufswagen oben rechts traegt auch einen roten Punkt, liegt aber in der Tabu-Zone und wird geblockt.",
-      "match": {
-        "farbknopf": {
-          "rgb": [
-            228,
-            58,
-            52
-          ],
-          "tolerance": 45,
-          "min_w": 24,
-          "max_w": 70,
-          "min_h": 24,
-          "max_h": 70,
-          "min_fuellung": 0.6,
-          "region": [
-            0.62,
-            0.55,
-            1.0,
-            0.95
-          ]
-        }
-      },
-      "do": [
-        {
-          "log": "Roter Punkt entdeckt - nachsehen"
-        },
-        {
-          "tap_match": {
-            "offset": [
-              -0.031,
-              0.018
-            ]
-          }
-        },
-        {
-          "sleep": [
-            2.0,
-            3.0
+            0.5,
+            0.9
           ]
         },
         {
           "repeat": {
-            "times": 6,
+            "times": 3,
             "do": [
               {
                 "tap_template": {
-                  "template": "ui/btn_abholen.png",
+                  "template": "zuflucht/kraut.png",
                   "optional": true,
                   "threshold": 0.85
                 }
               },
               {
                 "sleep": [
-                  0.6,
-                  1.0
+                  0.5,
+                  0.9
                 ]
               }
             ]
           }
-        },
-        {
-          "tap_template": {
-            "template": "ui/popup_close.png",
-            "optional": true,
-            "threshold": 0.84
-          }
-        },
-        {
-          "sleep": [
-            0.8,
-            1.2
-          ]
-        },
-        {
-          "key": "KEYCODE_BACK"
-        },
-        {
-          "sleep": [
-            1.0,
-            1.5
-          ]
         }
       ]
     },
     {
-      "name": "taverne-gratis-rekrutieren",
-      "priority": 70,
-      "cooldown": 600.0,
-      "_zweck": "Steht das Taverne-Menue offen, wird 'Rekrutieren' angetippt. Der gratis Zug alle paar Stunden nimmt der gruene-Knopf-Regel danach von selbst mit. Der orange '10x'-Knopf bleibt unangetastet.",
+      "name": "gebaeude-fertig-antippen",
+      "priority": 120,
+      "cooldown": 30,
       "match": {
-        "template": "taverne/rekrutieren.png",
-        "threshold": 0.86
+        "template": "hud/bau_fertig.png",
+        "optional": true
       },
       "do": [
         {
@@ -646,8 +520,8 @@
         },
         {
           "sleep": [
-            2.0,
-            3.0
+            1.0,
+            1.6
           ]
         }
       ]
@@ -791,6 +665,154 @@
           ]
         }
       ]
+    },
+    {
+      "name": "taverne-gratis-rekrutieren",
+      "priority": 70,
+      "cooldown": 600.0,
+      "_zweck": "Steht das Taverne-Menue offen, wird 'Rekrutieren' angetippt. Der gratis Zug alle paar Stunden nimmt der gruene-Knopf-Regel danach von selbst mit. Der orange '10x'-Knopf bleibt unangetastet.",
+      "match": {
+        "template": "taverne/rekrutieren.png",
+        "threshold": 0.86
+      },
+      "do": [
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            2.0,
+            3.0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "roter-punkt-pruefen",
+      "priority": 40,
+      "cooldown": 180.0,
+      "_zweck": "Rote Punkte sind fast immer Belohnungen. Der Bot sucht sie ueber Farbe und Groesse in der rechten Knopfspalte und tippt den Knopf darunter an - danach raeumen die Abhol-Regeln auf. Der Einkaufswagen oben rechts traegt auch einen roten Punkt, liegt aber in der Tabu-Zone und wird geblockt.",
+      "match": {
+        "farbknopf": {
+          "rgb": [
+            228,
+            58,
+            52
+          ],
+          "tolerance": 45,
+          "min_w": 24,
+          "max_w": 70,
+          "min_h": 24,
+          "max_h": 70,
+          "min_fuellung": 0.6,
+          "region": [
+            0.62,
+            0.55,
+            1.0,
+            0.95
+          ]
+        }
+      },
+      "do": [
+        {
+          "log": "Roter Punkt entdeckt - nachsehen"
+        },
+        {
+          "tap_match": {
+            "offset": [
+              -0.031,
+              0.018
+            ]
+          }
+        },
+        {
+          "sleep": [
+            2.0,
+            3.0
+          ]
+        },
+        {
+          "repeat": {
+            "times": 6,
+            "do": [
+              {
+                "tap_template": {
+                  "template": "ui/btn_abholen.png",
+                  "optional": true,
+                  "threshold": 0.85
+                }
+              },
+              {
+                "sleep": [
+                  0.6,
+                  1.0
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "ui/popup_close.png",
+            "optional": true,
+            "threshold": 0.84
+          }
+        },
+        {
+          "sleep": [
+            0.8,
+            1.2
+          ]
+        },
+        {
+          "key": "KEYCODE_BACK"
+        },
+        {
+          "sleep": [
+            1.0,
+            1.5
+          ]
+        }
+      ]
+    },
+    {
+      "name": "zurueck-zur-basis",
+      "priority": 20,
+      "cooldown": 25,
+      "match": {
+        "all": [
+          {
+            "template": "ui/back_arrow.png",
+            "threshold": 0.85,
+            "region": [
+              0.0,
+              0.0,
+              0.3,
+              0.15
+            ]
+          },
+          {
+            "not": {
+              "template": "ui/btn_abholen.png",
+              "threshold": 0.85
+            }
+          }
+        ]
+      },
+      "do": [
+        {
+          "log": "Untermenue offen und nichts mehr abzuholen - zurueck"
+        },
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            1.0,
+            1.8
+          ]
+        }
+      ]
     }
   ],
   "tasks": [
@@ -879,6 +901,118 @@
         },
         {
           "sleep": 1.0
+        },
+        {
+          "key": "KEYCODE_BACK"
+        },
+        {
+          "sleep": [
+            1.0,
+            1.5
+          ]
+        }
+      ]
+    },
+    {
+      "name": "truhen-oeffnen",
+      "every": 2700,
+      "at_start": true,
+      "priority": 108,
+      "_zweck": "Tasche -> Spezial: Truhen und Beutekisten oeffnen. Der orange 'Alles abholen' im Beute-Fenster raeumt gleich alles ab. Braucht tasche/truhe.png (die Kiste im Spezial-Reiter) und ui/btn_alles_abholen.png.",
+      "do": [
+        {
+          "log": "Kisten oeffnen"
+        },
+        {
+          "tap_template": {
+            "template": "nav/tasche.png",
+            "region": [
+              0.7,
+              0.6,
+              1.0,
+              1.0
+            ],
+            "after": [
+              2.0,
+              3.0
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "schutz/reiter_spezial.png",
+            "optional": true,
+            "threshold": 0.86,
+            "after": [
+              1.5,
+              2.5
+            ]
+          }
+        },
+        {
+          "repeat": {
+            "times": 6,
+            "do": [
+              {
+                "tap_template": {
+                  "template": "tasche/truhe.png",
+                  "optional": true,
+                  "threshold": 0.87,
+                  "after": [
+                    1.2,
+                    2.0
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "ui/btn_benutzen.png",
+                  "optional": true,
+                  "after": [
+                    1.2,
+                    2.0
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "ui/btn_alles_abholen.png",
+                  "optional": true,
+                  "threshold": 0.86,
+                  "after": [
+                    1.2,
+                    2.0
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "ui/btn_abholen.png",
+                  "optional": true,
+                  "threshold": 0.85
+                }
+              },
+              {
+                "sleep": [
+                  0.8,
+                  1.3
+                ]
+              },
+              {
+                "tap_template": {
+                  "template": "ui/popup_close.png",
+                  "optional": true,
+                  "threshold": 0.84
+                }
+              },
+              {
+                "sleep": [
+                  0.8,
+                  1.3
+                ]
+              }
+            ]
+          }
         },
         {
           "key": "KEYCODE_BACK"
@@ -2060,11 +2194,11 @@
     },
     {
       "name": "sammeln",
-      "every": 1200,
+      "every": 600,
       "priority": 90,
       "do": [
         {
-          "log": "Sammel-Trupp losschicken"
+          "log": "Sammel-Truppen losschicken (alle freien Maersche)"
         },
         {
           "tap_first": {
@@ -2097,91 +2231,99 @@
           }
         },
         {
-          "tap_template": {
-            "template": "nav/lupe.png",
-            "optional": true,
-            "region": [
-              0.3,
-              0.7,
-              0.8,
-              1.0
-            ],
-            "after": [
-              1.5,
-              2.5
+          "repeat": {
+            "times": 4,
+            "do": [
+              {
+                "tap_template": {
+                  "template": "nav/lupe.png",
+                  "optional": true,
+                  "region": [
+                    0.3,
+                    0.7,
+                    0.8,
+                    1.0
+                  ],
+                  "after": [
+                    1.5,
+                    2.5
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "sammeln/reiter_sammeln.png",
+                  "optional": true,
+                  "threshold": 0.86,
+                  "after": [
+                    1.2,
+                    2.0
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "sammeln/bauernhof.png",
+                  "optional": true,
+                  "threshold": 0.86,
+                  "after": [
+                    1.2,
+                    2.0
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "sammeln/suchen.png",
+                  "optional": true,
+                  "threshold": 0.86,
+                  "after": [
+                    3.0,
+                    4.5
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "sammeln/versammeln.png",
+                  "optional": true,
+                  "threshold": 0.86,
+                  "after": [
+                    2.0,
+                    3.0
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "sammeln/versammlung_einleiten.png",
+                  "optional": true,
+                  "threshold": 0.86,
+                  "after": [
+                    2.5,
+                    3.5
+                  ]
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "ui/popup_close.png",
+                  "optional": true,
+                  "threshold": 0.84
+                }
+              },
+              {
+                "sleep": [
+                  1.0,
+                  1.6
+                ]
+              }
             ]
           }
-        },
-        {
-          "tap_template": {
-            "template": "sammeln/reiter_sammeln.png",
-            "optional": true,
-            "threshold": 0.86,
-            "after": [
-              1.2,
-              2.0
-            ]
-          }
-        },
-        {
-          "tap_template": {
-            "template": "sammeln/bauernhof.png",
-            "optional": true,
-            "threshold": 0.86,
-            "after": [
-              1.2,
-              2.0
-            ]
-          }
-        },
-        {
-          "tap_template": {
-            "template": "sammeln/suchen.png",
-            "optional": true,
-            "threshold": 0.86,
-            "after": [
-              3.0,
-              4.5
-            ]
-          }
-        },
-        {
-          "tap_template": {
-            "template": "sammeln/versammeln.png",
-            "optional": true,
-            "threshold": 0.86,
-            "after": [
-              2.0,
-              3.0
-            ]
-          }
-        },
-        {
-          "tap_template": {
-            "template": "sammeln/versammlung_einleiten.png",
-            "optional": true,
-            "threshold": 0.86,
-            "after": [
-              2.0,
-              3.0
-            ]
-          }
-        },
-        {
-          "tap_template": {
-            "template": "ui/popup_close.png",
-            "optional": true,
-            "threshold": 0.84
-          }
-        },
-        {
-          "sleep": [
-            1.2,
-            1.8
-          ]
         }
       ],
-      "_zweck": "Weltkarte -> Lupe -> Reiter 'Sammeln' -> Bauernhof/Kraeutergarten -> 'Suchen' -> auf dem Fundort 'Versammeln'. Die Truppe marschiert danach von selbst."
+      "_zweck": "Truppen sollen nie stillstehen: pro Durchgang wird der komplette Sammel-Ablauf viermal gefahren - einmal je Marsch-Platz. Ist kein Platz mehr frei, findet der Bot die Knoepfe nicht und der Versuch verpufft folgenlos.",
+      "at_start": true
     },
     {
       "name": "zurueck-in-die-basis",
