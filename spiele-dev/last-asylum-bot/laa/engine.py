@@ -14,6 +14,78 @@ from .image import Image
 from .log import Logger
 
 
+def _veraenderte_bereiche(a: Image, b: Image, min_kante: int, max_kante: int):
+    """Rechtecke, die sich zwischen zwei Aufnahmen geaendert haben.
+
+    Arbeitet auf einem groben Raster – es geht um Objekte in Knopfgroesse,
+    nicht um einzelne Pixel.
+    """
+    if a.width != b.width or a.height != b.height:
+        return []
+    raster = 16
+    ga, gb = a.to_gray(), b.to_gray()
+    spalten = a.width // raster
+    zeilen = a.height // raster
+    if spalten < 3 or zeilen < 3:
+        return []
+
+    anders = [[False] * spalten for _ in range(zeilen)]
+    for zy in range(zeilen):
+        for zx in range(spalten):
+            px = zx * raster + raster // 2
+            py = zy * raster + raster // 2
+            summe = 0
+            for dy in (-4, 0, 4):
+                for dx in (-4, 0, 4):
+                    i = (py + dy) * a.width + (px + dx)
+                    summe += abs(ga.data[i] - gb.data[i])
+            anders[zy][zx] = summe > 200
+
+    besucht = [[False] * spalten for _ in range(zeilen)]
+    kisten = []
+    for zy in range(zeilen):
+        for zx in range(spalten):
+            if not anders[zy][zx] or besucht[zy][zx]:
+                continue
+            stapel = [(zy, zx)]
+            besucht[zy][zx] = True
+            felder = []
+            while stapel:
+                cy, cx = stapel.pop()
+                felder.append((cy, cx))
+                for ny, nx in ((cy - 1, cx), (cy + 1, cx), (cy, cx - 1), (cy, cx + 1)):
+                    if 0 <= ny < zeilen and 0 <= nx < spalten and anders[ny][nx] and not besucht[ny][nx]:
+                        besucht[ny][nx] = True
+                        stapel.append((ny, nx))
+            ys = [f[0] for f in felder]
+            xs = [f[1] for f in felder]
+            x0, x1 = min(xs) * raster, (max(xs) + 1) * raster
+            y0, y1 = min(ys) * raster, (max(ys) + 1) * raster
+            breite, hoehe = x1 - x0, y1 - y0
+            if not (min_kante <= breite <= max_kante and min_kante <= hoehe <= max_kante):
+                continue
+            if not (0.6 <= breite / float(hoehe) <= 1.7):  # Blasen sind rundlich
+                continue
+            kisten.append((x0, y0, x1, y1))
+    return kisten
+
+
+def _schon_bekannt(ausschnitt: Image, ordner: str) -> bool:
+    """Doppelte Vorlagen vermeiden."""
+    for datei in os.listdir(ordner):
+        if not datei.endswith(".png"):
+            continue
+        try:
+            alt = Image.load(os.path.join(ordner, datei))
+        except Exception:
+            continue
+        if abs(alt.width - ausschnitt.width) > 12 or abs(alt.height - ausschnitt.height) > 12:
+            continue
+        if matcher.find(alt, ausschnitt, threshold=0.9) or matcher.find(ausschnitt, alt, threshold=0.9):
+            return True
+    return False
+
+
 class StopRun(Exception):
     """Wird von der Aktion `stop` geworfen."""
 
@@ -130,6 +202,14 @@ class Engine:
         screen = screen or self.screen
         if screen is None:
             screen = self.capture()
+        if "*" in spec["template"]:  # Muster: bester Treffer aus allen Dateien
+            bester = None
+            for name in self.cfg.template_gruppe(spec["template"]):
+                einzeln = dict(spec, template=name)
+                hit = self.find(einzeln, screen)
+                if hit and (bester is None or hit.score > bester.score):
+                    bester = hit
+            return bester
         tpl = self.cfg.template(spec["template"], optional=bool(spec.get("optional")))
         if tpl is None:  # noch nicht geschnitten – Schritt überspringen
             if spec["template"] not in self._gemeldet_fehlend:
@@ -200,6 +280,8 @@ class Engine:
         elif key == "screenshot":
             path = self.save_shot(str(value) if value else "shot")
             self.log.info("Screenshot gespeichert", datei=path)
+        elif key == "lerne_objekte":
+            self._lerne_objekte(value if isinstance(value, dict) else {})
         elif key == "wenn":
             self._wenn(value, where)
         elif key == "repeat":
@@ -257,6 +339,49 @@ class Engine:
         self._tap_abs(cx, cy, spec.get("template", ""))
         if "after" in spec:
             self._do_sleep(spec["after"])
+
+    def _lerne_objekte(self, spec: Dict[str, Any]) -> None:
+        """Neue Sammel-Objekte selbst entdecken – über das, was sich bewegt.
+
+        Ertrags-Blasen tauchen auf und verschwinden wieder; der übrige Bildschirm
+        steht still. Zwei Aufnahmen im Abstand von ein paar Sekunden zeigen also
+        genau dort Unterschiede, wo etwas Einsammelbares ist. Die Ausschnitte
+        landen als Vorlagen im Ordner und werden von der passenden Regel per
+        Muster sofort mitbenutzt.
+        """
+        ordner = spec.get("ordner", "gelernt/blasen")
+        min_kante = int(spec.get("min_kante", 60))
+        max_kante = int(spec.get("max_kante", 220))
+        grenze = int(spec.get("max_dateien", 24))
+        pause = float(spec.get("pause", 4.0))
+
+        vorher = self.capture()
+        self._sleep(pause)
+        nachher = self.capture()
+        kisten = _veraenderte_bereiche(vorher, nachher, min_kante, max_kante)
+        if not kisten:
+            self.log.debug("Nichts Neues entdeckt")
+            return
+
+        ziel = os.path.join(self.cfg.root, self.cfg.templates_dir, *ordner.split("/"))
+        os.makedirs(ziel, exist_ok=True)
+        vorhanden = sorted(f for f in os.listdir(ziel) if f.endswith(".png"))
+        neu = 0
+        for x0, y0, x1, y1 in kisten:
+            if len(vorhanden) + neu >= grenze:
+                break
+            ausschnitt = vorher.crop(x0, y0, x1 - x0, y1 - y0)
+            if _schon_bekannt(ausschnitt, ziel):
+                continue
+            name = f"{len(vorhanden) + neu:02d}.png"
+            ausschnitt.save(os.path.join(ziel, name))
+            neu += 1
+            self.log.info(
+                "Neues Objekt gelernt", datei=f"{ordner}/{name}",
+                groesse=f"{x1 - x0}x{y1 - y0}", bei=(x0, y0),
+            )
+        if neu:
+            self.bump("gelernt")
 
     def _wenn(self, spec: Dict[str, Any], where: str) -> None:
         """Verzweigung mitten in einer Aufgabe – daraus wird echte Entscheidung."""

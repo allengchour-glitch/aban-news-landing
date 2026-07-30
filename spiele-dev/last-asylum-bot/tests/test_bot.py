@@ -509,6 +509,80 @@ class TestEngine(unittest.TestCase):
         self.assertEqual(dev.keys, ["NEIN"])
 
 
+class TestSelbstLernen(unittest.TestCase):
+    """Der Bot entdeckt neue Sammel-Objekte über das, was sich zwischen zwei Bildern ändert."""
+
+    def szene(self, mit_blase: bool) -> Image:
+        img = Image.new(400, 600, (40, 60, 40))
+        for y in range(0, 600, 40):  # ruhiger Hintergrund mit Struktur
+            for x in range(0, 400, 40):
+                if (x // 40 + y // 40) % 2:
+                    for j in range(40):
+                        for i in range(40):
+                            p = ((y + j) * 400 + (x + i)) * 3
+                            img.data[p : p + 3] = bytes((60, 80, 60))
+        if mit_blase:
+            for j in range(80):
+                for i in range(80):
+                    px, py = 150 + i, 200 + j
+                    p = (py * 400 + px) * 3
+                    img.data[p : p + 3] = bytes((235, 240, 245))
+        img._gray = None
+        return img
+
+    def test_neue_blase_wird_gelernt_und_danach_gefunden(self):
+        import shutil
+        import tempfile
+
+        ordner = tempfile.mkdtemp()
+        try:
+            os.makedirs(os.path.join(ordner, "templates"), exist_ok=True)
+            with open(os.path.join(ordner, "conf.json"), "w", encoding="utf-8") as fh:
+                fh.write("{}")
+            cfg = Config.load(os.path.join(ordner, "conf.json"))
+            dev = FakeDevice([self.szene(True), self.szene(False)], hold=False)
+            eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=1)
+            eng.run_actions([{"lerne_objekte": {"ordner": "gelernt/blasen",
+                                                "min_kante": 40, "max_kante": 200,
+                                                "pause": 0}}])
+            ziel = os.path.join(ordner, "templates", "gelernt", "blasen")
+            gelernt = sorted(os.listdir(ziel))
+            self.assertTrue(gelernt, "nichts gelernt")
+
+            # Und die gelernte Vorlage findet die Blase danach wirklich.
+            tpl = Image.load(os.path.join(ziel, gelernt[0]))
+            self.assertIsNotNone(matcher.find(self.szene(True), tpl, threshold=0.9))
+        finally:
+            shutil.rmtree(ordner, ignore_errors=True)
+
+    def test_muster_findet_alle_gelernten_vorlagen(self):
+        import shutil
+        import tempfile
+
+        ordner = tempfile.mkdtemp()
+        try:
+            ziel = os.path.join(ordner, "templates", "gelernt", "blasen")
+            os.makedirs(ziel)
+            marke = noise(30, 30, 70)
+            marke.save(os.path.join(ziel, "00.png"))
+            noise(30, 30, 71).save(os.path.join(ziel, "01.png"))
+            with open(os.path.join(ordner, "conf.json"), "w", encoding="utf-8") as fh:
+                fh.write('{"base_width": 200}')  # sonst skaliert der Motor die Vorlagen weg
+            cfg = Config.load(os.path.join(ordner, "conf.json"))
+            self.assertEqual(len(cfg.template_gruppe("gelernt/blasen/*.png")), 2)
+
+            screen = noise(200, 200, 72)
+            paste(screen, marke, 80, 90)
+            dev = FakeDevice([screen], loop=True)
+            eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=1)
+            eng.capture()
+            hit = eng.find({"template": "gelernt/blasen/*.png", "threshold": 0.9})
+            self.assertIsNotNone(hit)
+            self.assertEqual((hit.x, hit.y), (80, 90))
+        finally:
+            shutil.rmtree(ordner, ignore_errors=True)
+
+
 class TestZurueckPfeil(unittest.TestCase):
     """Zurück läuft über den Pfeil oben links; die Android-Taste ist nur Ersatz."""
 

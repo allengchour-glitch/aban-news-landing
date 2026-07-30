@@ -228,6 +228,29 @@ ganze Ansicht. Der Bot macht das genauso; der Punkt dafür steht als `leerer_pun
 Konfiguration (Standard `[0.35, 0.16]`, also links oben im Gelände). Liegt dort bei dir ein
 Gebäude, verschieb ihn.
 
+### Der Bot lernt neue Sammel-Objekte selbst
+
+Das Spiel bekommt laufend neue Gebäude und damit neue Ertrags-Blasen — für jede von Hand eine
+Vorlage zu schneiden wäre eine Tretmühle. Deshalb lernt der Bot sie selbst:
+
+Die Aufgabe `objekte-lernen` macht **zwei Aufnahmen im Abstand von fünf Sekunden**. Alles, was
+sich dazwischen ändert und rundlich in Knopfgrösse ist, ist einsammelbar — Ertrags-Blasen tauchen
+auf und verschwinden, der Rest des Bildes steht still. Diese Ausschnitte landen in
+`templates/gelernt/blasen/`.
+
+Die Regel `gelernte-objekte-einsammeln` greift sie über ein **Muster** ab:
+
+```json
+{ "match": { "template": "gelernt/blasen/*.png", "threshold": 0.90 } }
+```
+
+Ein Muster löst der Bot zur Laufzeit auf. Was immer im Ordner liegt, wird sofort mitbenutzt —
+ohne dass jemand die Konfiguration anfasst. So kommen auch Blasen-Sorten dazu, die nie jemand
+gesehen hat. Doppelte werden erkannt und nicht abgelegt, der Ordner ist auf 24 Vorlagen begrenzt.
+
+Zwei Tests halten das fest: eine künstlich auftauchende Blase wird gelernt, und die gelernte
+Vorlage findet sie danach wirklich.
+
 ### Jeder Lauf legt ein Bild ab
 
 Beim Start schreibt der Bot `shots/<zeit>-start.png` in voller Auflösung. Daraus lassen sich
@@ -388,6 +411,7 @@ Eine Konfiguration hat **Regeln** (reagieren auf das, was gerade zu sehen ist) u
 | Form | Bedeutung |
 |---|---|
 | `{"template": "x.png", "threshold": 0.88, "region": [l,t,r,b], "optional": true}` | Bild suchen. `region` in 0…1 relativ. `optional` = fehlt die Datei, gilt es als „nicht gefunden" statt als Fehler |
+| `{"template": "gelernt/blasen/*.png"}` | **Muster** — alle passenden Dateien werden probiert, der beste Treffer gewinnt. Neue Dateien wirken sofort. |
 | `{"pixel": [0.5,0.5], "rgb": [0,200,0], "tolerance": 20}` | einzelnen Bildpunkt auf Farbe prüfen |
 | `{"farbknopf": {...}}` | Knopf an Farbe und Grösse finden, ohne Template (siehe Abschnitt 4) |
 | `{"any": [...]}`, `{"all": [...]}`, `{"not": {...}}` | verknüpfen |
@@ -409,6 +433,7 @@ Eine Konfiguration hat **Regeln** (reagieren auf das, was gerade zu sehen ist) u
 | `{"wenn": {"match": {...}, "dann": [...], "sonst": [...]}}` | **Verzweigung** — damit entscheidet der Bot selbst |
 | `{"repeat": {"times": 5, "do": [...]}}` | wiederholen |
 | `{"type_text": {"pool": "name"}}` | Text tippen |
+| `{"lerne_objekte": {"ordner": "gelernt/blasen"}}` | zwei Aufnahmen vergleichen und neue Sammel-Objekte daraus lernen |
 | `{"restart_app": 30}`, `{"start_app": true}`, `{"stop_app": true}` | App steuern |
 | `{"screenshot": "name"}`, `{"log": "text"}`, `{"stop": true}` | Hilfsmittel |
 | `{"run_task": "name"}` | andere Aufgabe ausführen |

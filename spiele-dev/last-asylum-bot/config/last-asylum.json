@@ -514,6 +514,47 @@
       ]
     },
     {
+      "name": "gelernte-objekte-einsammeln",
+      "priority": 139,
+      "cooldown": 6.0,
+      "_zweck": "Sammelt alles ein, was der Bot sich selbst beigebracht hat.",
+      "match": {
+        "template": "gelernt/blasen/*.png",
+        "threshold": 0.9
+      },
+      "do": [
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            0.5,
+            0.9
+          ]
+        },
+        {
+          "repeat": {
+            "times": 4,
+            "do": [
+              {
+                "tap_template": {
+                  "template": "gelernt/blasen/*.png",
+                  "optional": true,
+                  "threshold": 0.9
+                }
+              },
+              {
+                "sleep": [
+                  0.5,
+                  0.9
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
       "name": "zuflucht-kraeuter",
       "priority": 130,
       "cooldown": 4.0,
@@ -3141,6 +3182,57 @@
       ]
     },
     {
+      "name": "objekte-lernen",
+      "every": 1800,
+      "at_start": true,
+      "priority": 95,
+      "_zweck": "Zwei Aufnahmen vergleichen und neue Sammel-Objekte daraus lernen. Laeuft in der Basis-Ansicht, wo staendig Ertrags-Blasen auftauchen.",
+      "do": [
+        {
+          "log": "Nach neuen Sammel-Objekten schauen"
+        },
+        {
+          "tap_first": {
+            "of": [
+              {
+                "template": "nav/startseite.png",
+                "threshold": 0.86,
+                "region": [
+                  0.7,
+                  0.85,
+                  1.0,
+                  1.0
+                ]
+              },
+              {
+                "template": "nav/burg.png",
+                "threshold": 0.86,
+                "region": [
+                  0.0,
+                  0.4,
+                  0.35,
+                  0.85
+                ]
+              }
+            ],
+            "after": [
+              2.5,
+              3.5
+            ]
+          }
+        },
+        {
+          "lerne_objekte": {
+            "ordner": "gelernt/blasen",
+            "min_kante": 60,
+            "max_kante": 220,
+            "max_dateien": 24,
+            "pause": 5.0
+          }
+        }
+      ]
+    },
+    {
       "name": "zuflucht",
       "every": 900,
       "at_start": true,
@@ -3873,5 +3965,6 @@
       0.2
     ]
   ],
-  "_zurueck": "Zurueck geht in diesem Spiel ueber den Pfeil oben links, nicht ueber die Android-Taste - die wechselt teils die ganze Ansicht oder minimiert die App. Ueberall, wo der Bot zurueck will, prueft er zuerst auf ui/back_arrow.png und nimmt nur ersatzweise KEYCODE_BACK."
+  "_zurueck": "Zurueck geht in diesem Spiel ueber den Pfeil oben links, nicht ueber die Android-Taste - die wechselt teils die ganze Ansicht oder minimiert die App. Ueberall, wo der Bot zurueck will, prueft er zuerst auf ui/back_arrow.png und nimmt nur ersatzweise KEYCODE_BACK.",
+  "_selbstlernen": "Der Bot entdeckt Sammel-Objekte selbst: die Aufgabe 'objekte-lernen' macht zwei Aufnahmen im Abstand weniger Sekunden. Alles, was sich dazwischen aendert und rundlich in Knopfgroesse ist, ist einsammelbar (Ertrags-Blasen tauchen auf und verschwinden, der Rest des Bildes steht still). Die Ausschnitte landen in templates/gelernt/blasen/ und werden von der Regel 'gelernte-objekte-einsammeln' per Muster sofort mitbenutzt - ohne Konfigurationsaenderung. So kommen auch Blasen-Sorten dazu, die nie jemand von Hand geschnitten hat."
 }

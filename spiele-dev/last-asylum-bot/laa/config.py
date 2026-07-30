@@ -142,6 +142,18 @@ class Config:
             return name
         return os.path.join(self.root, self.templates_dir, name)
 
+    def template_gruppe(self, muster: str) -> List[str]:
+        """Alle Dateien zu einem Muster wie 'gelernt/blasen/*.png'.
+
+        Damit nimmt der Bot selbst gelernte Vorlagen sofort in Betrieb, ohne
+        dass jemand die Konfiguration anfassen muss.
+        """
+        import glob as _glob
+
+        treffer = sorted(_glob.glob(self.template_path(muster)))
+        wurzel = os.path.join(self.root, self.templates_dir) + os.sep
+        return [t[len(wurzel):].replace(os.sep, "/") for t in treffer if t.startswith(wurzel)]
+
     def template(self, name: str, optional: bool = False) -> Optional[Image]:
         """Template laden. `optional=True` → None statt Fehler, wenn die Datei fehlt."""
         if name not in self._templates:
@@ -171,6 +183,7 @@ class Config:
             "tap_match", "tap_template", "tap", "tap_first", "swipe", "drag", "key", "sleep",
             "wait_template", "start_app", "stop_app", "restart_app", "log",
             "screenshot", "repeat", "stop", "back", "run_task", "type_text", "wenn",
+            "lerne_objekte",
         }
         task_names = {t.name for t in self.tasks}
 
@@ -242,6 +255,8 @@ class Config:
         name = spec.get("template") if isinstance(spec, dict) else spec
         if not name:
             problems.append(f"{where}: 'template' fehlt")
+            return
+        if "*" in name:  # Muster – die Dateien entstehen erst zur Laufzeit
             return
         if os.path.exists(self.template_path(name)):
             return
