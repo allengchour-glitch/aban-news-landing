@@ -68,18 +68,23 @@ Sieht das Protokoll gut aus:
 
 Geht genauso — und ist bequemer, weil der PC durchlaufen kann, ohne dass dein Handy blockiert ist.
 
-1. In BlueStacks: **Einstellungen → Erweitert → „Android Debug Bridge (ADB)"** einschalten,
-   danach BlueStacks einmal neu starten.
-2. **Einstellungen → Anzeige → Hochformat** und als eigene Auflösung **1080 × 2316** setzen.
+1. **Einstellungen → Erweitert → „Android Debug Bridge (ADB)"** einschalten.
+2. **Einstellungen → Display → Bildschirmauflösung** von `Querformat` auf **`Hochformat`**
+   umstellen und **1440 × 2560** wählen. Pixeldichte auf **240 DPI** lassen.
+3. **Änderungen speichern** und BlueStacks **neu starten** — beides greift erst danach.
+4. Last Asylum öffnen, dann `start-windows.ps1` starten. Das Skript verbindet sich selbst
+   (liest den ADB-Port aus `bluestacks.conf`, probiert die üblichen Ports von LDPlayer, MEmu
+   und Nox mit und wählt ein Gerät aus, falls sich BlueStacks doppelt meldet).
 
-   Das ist wichtig: die Templates stammen aus einem 1440 × 3088-Screenshot. 1080 × 2316 ist
-   exakt dasselbe Seitenverhältnis, nur kleiner — dann stimmen alle Bild-Vorlagen (die skaliert
-   der Bot über `base_width` selbst) **und** alle Regionsangaben. Nimmst du stattdessen
-   1080 × 1920, ist das Bild breiter im Verhältnis, das Spiel legt die Oberfläche anders aus,
-   und Regionen wie „unten rechts" treffen nicht mehr sauber.
-3. Last Asylum in BlueStacks öffnen und `start-windows.ps1` starten — das Skript verbindet sich
-   selbst (es liest den ADB-Port aus `bluestacks.conf` und probiert die üblichen Ports von
-   LDPlayer, MEmu und Nox gleich mit).
+**Warum ausgerechnet 1440 × 2560?** Weil die Breite exakt der `base_width` der Templates
+entspricht — die Bild-Vorlagen müssen dann gar nicht skaliert werden, das ist der genaueste
+Fall. Beim Start meldet der Bot nichts über Skalierung; steht dort „Templates werden skaliert",
+passt die Breite nicht.
+
+Das Seitenverhältnis ist mit 16:9 flacher als das Handy (1440 × 3088). Die Bild-Vorlagen stört
+das nicht, sie werden an ihrem Aussehen erkannt, nicht an der Position. Nur die Regionsangaben
+(„unten rechts", „obere Leiste") sind etwas grosszügiger nötig — die vorhandenen sind es.
+1080 × 1920 geht auch, dann skaliert der Bot auf 0,75.
 
 Von Hand geht es auch:
 
