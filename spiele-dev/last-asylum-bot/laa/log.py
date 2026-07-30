@@ -55,6 +55,14 @@ class Logger:
     def error(self, msg: str, **f: Any) -> None:
         self._emit("error", msg, **f)
 
+    def datenpunkt(self, **fields: Any) -> None:
+        """Nur ins JSONL schreiben, nichts auf die Konsole – fuers Lernen."""
+        if not self._fh:
+            return
+        record = {"ts": time.time()}
+        record.update(fields)
+        self._fh.write(json.dumps(record, ensure_ascii=False) + "\n")
+
     def close(self) -> None:
         if self._fh:
             self._fh.close()

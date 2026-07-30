@@ -116,7 +116,62 @@ Aus demselben Grund tippt der Bot beim Gebäude-Upgrade **nie** auf den orangen 
 
 ---
 
-## 4. Geld: was erlaubt ist und was nicht
+## 4. Selber lernen — wenn nicht immer alles gleich aussieht
+
+Feste Bild-Vorlagen sind schnell und genau, aber spröde: eine neue Event-Grafik, eine andere
+Beschriftung, und der Treffer bleibt aus. Deshalb kann der Bot drei Dinge, die ohne exaktes
+Vorbild auskommen.
+
+### Knöpfe an der Farbe erkennen
+
+```json
+{ "farbknopf": { "rgb": [120, 181, 54], "tolerance": 38,
+                 "min_w": 0.15, "max_w": 0.75, "min_h": 0.02, "max_h": 0.06,
+                 "region": [0.0, 0.25, 1.0, 0.98], "min_fuellung": 0.55 } }
+```
+
+Sucht zusammenhängende Farbflächen in Knopf-Grösse — egal was draufsteht. Damit greift **eine**
+Regel für `Abholen`, `Upgrade`, `Los`, `Bestätigen`, `Suchen`. Getestet an echten Bildschirmen:
+grüner Abholen-Knopf, grünes Upgrade, blaues Suchen und oranges Abholen werden alle gefunden,
+Karten- und Basis-Ansichten liefern trotz grüner Wiese nichts.
+
+Die weisse Schrift mitten im Knopf zerlegt die Fläche in Streifen — deshalb verbindet der
+Erkenner Zeilen-Läufe über Überlappung statt über eine reine Zeilen-Projektion. Sonst zerfällt
+jeder beschriftete Knopf in zwei Hälften, und zwei Knöpfe nebeneinander verschmelzen zu einem.
+
+### Rote Punkte abklappern
+
+Rote Punkte sind fast immer Belohnungen. Die Regel `roter-punkt-pruefen` sucht sie über Farbe
+und Grösse in der rechten Knopfspalte, tippt den Knopf **darunter** an (`"offset"` beim
+`tap_match`) und lässt die Abhol-Regeln aufräumen. Der Einkaufswagen oben rechts hat auch einen
+roten Punkt — der liegt in der Tabu-Zone und wird geblockt.
+
+### Schwellen aus echten Läufen nachjustieren
+
+Jeder Bildvergleich landet mit seinem Score im Protokoll. Danach:
+
+```bash
+python3 bot.py run --minutes 60 --jsonl logs/lauf.jsonl
+python3 bot.py lernen logs/*.jsonl              # nur anzeigen
+python3 bot.py lernen logs/*.jsonl --anwenden   # in die Konfiguration schreiben
+```
+
+Die Auswertung zeigt pro Template, wie tief ein echter Treffer schon war und wie hoch der beste
+Fehlschlag — und legt die Schwelle in die Lücke dazwischen. Bleibt eine Überlappung, steht
+`unklar` da: dann ist das Template zu unspezifisch und sollte neu geschnitten werden.
+
+### Aufgaben nur zu bestimmten Zeiten
+
+```json
+{ "name": "schild-pruefen", "wochentage": [4, 5, 6], "stunden": [[18, 23]] }
+```
+
+`wochentage` zählt ab Montag = 0. Gedacht für Schilde am Wochenende, wenn bei Events Spieler
+von anderen Servern herüberkommen.
+
+---
+
+## 5. Geld: was erlaubt ist und was nicht
 
 * **Spiel-Währung ist frei.** Diamanten, Ressourcen und Beschleuniger darf der Bot
   ausgeben — das passiert in normalen Spieldialogen.
@@ -130,7 +185,7 @@ Ein Test hält das dauerhaft fest: `test_tabu_zone_blockiert_kauf_tipp`.
 
 ---
 
-## 5. Chat (Allianz-Admin)
+## 6. Chat (Allianz-Admin)
 
 ```json
 { "type_text": { "pool": "allianz_admin" } }
@@ -151,7 +206,7 @@ bei dir nur Anhänge öffnet statt zu senden, schneide den echten Sende-Knopf ne
 
 ---
 
-## 6. Mehrere Accounts / mehrere Geräte
+## 7. Mehrere Accounts / mehrere Geräte
 
 Der Bot ist pro Lauf an genau ein Gerät gebunden. Für mehrere Accounts startest du mehrere
 Emulator-Instanzen und pro Instanz einen Bot:
@@ -169,7 +224,7 @@ ein Restrisiko bleibt deine Entscheidung.
 
 ---
 
-## 7. Konfiguration in Kurzform
+## 8. Konfiguration in Kurzform
 
 Eine Konfiguration hat **Regeln** (reagieren auf das, was gerade zu sehen ist) und
 **Aufgaben** (laufen nach Zeitplan).
@@ -195,6 +250,7 @@ Eine Konfiguration hat **Regeln** (reagieren auf das, was gerade zu sehen ist) u
 |---|---|
 | `{"template": "x.png", "threshold": 0.88, "region": [l,t,r,b], "optional": true}` | Bild suchen. `region` in 0…1 relativ. `optional` = fehlt die Datei, gilt es als „nicht gefunden" statt als Fehler |
 | `{"pixel": [0.5,0.5], "rgb": [0,200,0], "tolerance": 20}` | einzelnen Bildpunkt auf Farbe prüfen |
+| `{"farbknopf": {...}}` | Knopf an Farbe und Grösse finden, ohne Template (siehe Abschnitt 4) |
 | `{"any": [...]}`, `{"all": [...]}`, `{"not": {...}}` | verknüpfen |
 | `{"always": true}` | trifft immer |
 
@@ -202,7 +258,7 @@ Eine Konfiguration hat **Regeln** (reagieren auf das, was gerade zu sehen ist) u
 
 | Aktion | Wirkung |
 |---|---|
-| `{"tap_match": {}}` | tippt den Treffer der Bedingung an (mit Zufallsstreuung) |
+| `{"tap_match": {"offset": [dx, dy]}}` | tippt den Treffer an (mit Zufallsstreuung); `offset` verschiebt das Ziel, z. B. vom roten Punkt auf den Knopf darunter |
 | `{"tap_template": {"template": "x.png", "optional": true, "after": 2}}` | sucht neu und tippt; `after` = Pause danach |
 | `{"tap_first": {"of": ["a.png","b.png"], "fallback": [0.5,0.9]}}` | erstes gefundenes antippen, sonst den Ersatzpunkt |
 | `{"tap": [0.5, 0.9]}` / `{"swipe": [x1,y1,x2,y2,ms]}` | Punkt bzw. Wisch (relativ oder in Pixeln) |
@@ -218,7 +274,7 @@ Eine Konfiguration hat **Regeln** (reagieren auf das, was gerade zu sehen ist) u
 
 ---
 
-## 8. Ohne Handy testen
+## 9. Ohne Handy testen
 
 ```bash
 # Spielzeug-Beispiel erzeugen und durchlaufen lassen
@@ -237,7 +293,7 @@ lass den Bot darüberlaufen und schau, welche Regel greift.
 
 ---
 
-## 9. Wenn etwas klemmt
+## 10. Wenn etwas klemmt
 
 | Symptom | Ursache / Lösung |
 |---|---|
@@ -254,7 +310,7 @@ die nächsten Templates.
 
 ---
 
-## 10. Aufbau
+## 11. Aufbau
 
 ```
 bot.py                 Kommandozeile (devices, package, capture, crop, check, find, run, replay)
@@ -266,5 +322,5 @@ laa/engine.py          die Schleife: sehen → entscheiden → tippen
 laa/log.py             Konsole + JSONL
 config/last-asylum.json  die echte Konfiguration
 templates/             die Bild-Vorlagen
-tests/test_bot.py      42 Tests, laufen ohne Handy
+tests/test_bot.py      52 Tests, laufen ohne Handy
 ```

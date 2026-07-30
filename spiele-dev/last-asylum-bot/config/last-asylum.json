@@ -11,15 +11,15 @@
   "stuck_seconds": 300,
   "templates_dir": "../templates",
   "input_method": "input",
-  "_geld": "ECHTGELD IST TABU, SPIEL-WAEHRUNG IST ERLAUBT. Der Bot darf Diamanten, Ressourcen und Beschleunigungen ausgeben – das passiert in normalen Spiel-Dialogen und ist nicht gesperrt. Gesperrt sind nur die Bereiche, ueber die man echtes Geld ausgibt (Einkaufswagen und Diamanten-Aufladung oben rechts). Regel fuer dich: schneide NIE ein Template von einem Knopf, auf dem ein Preis in CHF/EUR/USD steht.",
+  "_geld": "ECHTGELD IST TABU, SPIEL-WAEHRUNG IST ERLAUBT. Diamanten, Ressourcen und Beschleuniger darf der Bot ausgeben. Gesperrt ist die rechte obere Ecke bis 14.5 % Bildhoehe - dort sitzen Einkaufswagen, Diamanten-Aufladung UND das 'Tagesangebot' mit CHF-Preis (z. B. in der Taverne). Regel fuer dich: schneide NIE ein Template von einem Knopf mit Preisschild.",
   "tabu_regionen": [
     {
-      "name": "Echtgeld-Shop und Diamanten-Aufladung oben rechts",
+      "name": "Echtgeld-Shop, Diamanten-Aufladung und Tagesangebot oben rechts",
       "box": [
         0.58,
         0.0,
         1.0,
-        0.095
+        0.145
       ]
     },
     {
@@ -504,6 +504,153 @@
           }
         }
       ]
+    },
+    {
+      "name": "gruener-knopf-generisch",
+      "priority": 145,
+      "cooldown": 10.0,
+      "_zweck": "Findet gruene Knoepfe ueber Farbe und Form statt ueber ein Template - faengt 'Abholen', 'Upgrade', 'Los', 'Bestaetigen' und alles andere Gruene ab, auch wenn die Beschriftung wechselt. Greift erst, wenn keine genauere Regel gepasst hat.",
+      "match": {
+        "farbknopf": {
+          "rgb": [
+            120,
+            181,
+            54
+          ],
+          "tolerance": 38,
+          "min_w": 0.15,
+          "max_w": 0.75,
+          "min_h": 0.02,
+          "max_h": 0.06,
+          "region": [
+            0.0,
+            0.25,
+            1.0,
+            0.98
+          ],
+          "min_fuellung": 0.55
+        }
+      },
+      "do": [
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            0.8,
+            1.4
+          ]
+        }
+      ]
+    },
+    {
+      "name": "roter-punkt-pruefen",
+      "priority": 40,
+      "cooldown": 180.0,
+      "_zweck": "Rote Punkte sind fast immer Belohnungen. Der Bot sucht sie ueber Farbe und Groesse in der rechten Knopfspalte und tippt den Knopf darunter an - danach raeumen die Abhol-Regeln auf. Der Einkaufswagen oben rechts traegt auch einen roten Punkt, liegt aber in der Tabu-Zone und wird geblockt.",
+      "match": {
+        "farbknopf": {
+          "rgb": [
+            228,
+            58,
+            52
+          ],
+          "tolerance": 45,
+          "min_w": 24,
+          "max_w": 70,
+          "min_h": 24,
+          "max_h": 70,
+          "min_fuellung": 0.6,
+          "region": [
+            0.62,
+            0.55,
+            1.0,
+            0.95
+          ]
+        }
+      },
+      "do": [
+        {
+          "log": "Roter Punkt entdeckt - nachsehen"
+        },
+        {
+          "tap_match": {
+            "offset": [
+              -0.031,
+              0.018
+            ]
+          }
+        },
+        {
+          "sleep": [
+            2.0,
+            3.0
+          ]
+        },
+        {
+          "repeat": {
+            "times": 6,
+            "do": [
+              {
+                "tap_template": {
+                  "template": "ui/btn_abholen.png",
+                  "optional": true,
+                  "threshold": 0.85
+                }
+              },
+              {
+                "sleep": [
+                  0.6,
+                  1.0
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "ui/popup_close.png",
+            "optional": true,
+            "threshold": 0.84
+          }
+        },
+        {
+          "sleep": [
+            0.8,
+            1.2
+          ]
+        },
+        {
+          "key": "KEYCODE_BACK"
+        },
+        {
+          "sleep": [
+            1.0,
+            1.5
+          ]
+        }
+      ]
+    },
+    {
+      "name": "taverne-gratis-rekrutieren",
+      "priority": 70,
+      "cooldown": 600.0,
+      "_zweck": "Steht das Taverne-Menue offen, wird 'Rekrutieren' angetippt. Der gratis Zug alle paar Stunden nimmt der gruene-Knopf-Regel danach von selbst mit. Der orange '10x'-Knopf bleibt unangetastet.",
+      "match": {
+        "template": "taverne/rekrutieren.png",
+        "threshold": 0.86
+      },
+      "do": [
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            2.0,
+            3.0
+          ]
+        }
+      ]
     }
   ],
   "tasks": [
@@ -723,10 +870,10 @@
     },
     {
       "name": "schild-pruefen",
-      "every": 21600,
+      "every": 3600,
       "at_start": true,
       "priority": 200,
-      "_zweck": "AUS, bis templates/hud/schild_aktiv.png existiert. Ohne dieses Bild kann der Bot nicht erkennen, ob schon ein Schild laeuft - er wuerde bei jedem Durchlauf ein neues verbrauchen. Sobald das Symbol geschnitten ist: enabled auf true setzen.",
+      "_zweck": "Schilde braucht es vor allem am Wochenende, wenn bei Events Spieler von anderen Servern kommen - deshalb Freitag bis Sonntag. Weg: Zuflucht-Gebaeude antippen -> 'Schild'. STEHT AUF AUS, bis templates/hud/schild_aktiv.png existiert: ohne dieses Bild sieht der Bot nicht, ob schon ein Schild laeuft, und wuerde den Vorrat verbrauchen. Danach enabled=true.",
       "do": [
         {
           "wenn": {
@@ -745,23 +892,20 @@
                 "log": "Kein Schild aktiv - Schutzschild setzen"
               },
               {
-                "tap_template": {
-                  "template": "nav/tasche.png",
-                  "region": [
-                    0.7,
-                    0.6,
-                    1.0,
-                    1.0
-                  ],
-                  "after": [
-                    2.0,
-                    3.0
-                  ]
-                }
+                "tap": [
+                  0.5,
+                  0.45
+                ]
+              },
+              {
+                "sleep": [
+                  1.5,
+                  2.5
+                ]
               },
               {
                 "tap_template": {
-                  "template": "schutz/reiter_spezial.png",
+                  "template": "schutz/schild_knopf.png",
                   "optional": true,
                   "threshold": 0.86,
                   "after": [
@@ -818,7 +962,12 @@
           }
         }
       ],
-      "enabled": false
+      "enabled": false,
+      "wochentage": [
+        4,
+        5,
+        6
+      ]
     },
     {
       "name": "bauen-und-aufwerten",
@@ -1548,13 +1697,28 @@
           "log": "Sammel-Trupp losschicken"
         },
         {
-          "tap_template": {
-            "template": "nav/welt.png",
-            "region": [
-              0.7,
-              0.85,
-              1.0,
-              1.0
+          "tap_first": {
+            "of": [
+              {
+                "template": "nav/welt.png",
+                "threshold": 0.86,
+                "region": [
+                  0.7,
+                  0.85,
+                  1.0,
+                  1.0
+                ]
+              },
+              {
+                "template": "nav/gebiet.png",
+                "threshold": 0.86,
+                "region": [
+                  0.7,
+                  0.85,
+                  1.0,
+                  1.0
+                ]
+              }
             ],
             "after": [
               3.0,
@@ -1568,7 +1732,7 @@
             "optional": true,
             "region": [
               0.3,
-              0.75,
+              0.7,
               0.8,
               1.0
             ],
@@ -1580,15 +1744,31 @@
         },
         {
           "tap_template": {
-            "template": "sammeln/ressource.png",
+            "template": "sammeln/reiter_sammeln.png",
             "optional": true,
-            "after": 2.0
+            "threshold": 0.86,
+            "after": [
+              1.2,
+              2.0
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "sammeln/bauernhof.png",
+            "optional": true,
+            "threshold": 0.86,
+            "after": [
+              1.2,
+              2.0
+            ]
           }
         },
         {
           "tap_template": {
             "template": "sammeln/suchen.png",
             "optional": true,
+            "threshold": 0.86,
             "after": [
               3.0,
               4.5
@@ -1597,16 +1777,24 @@
         },
         {
           "tap_template": {
-            "template": "sammeln/sammeln.png",
+            "template": "sammeln/versammeln.png",
             "optional": true,
-            "after": 2.0
+            "threshold": 0.86,
+            "after": [
+              2.0,
+              3.0
+            ]
           }
         },
         {
           "tap_template": {
-            "template": "sammeln/marschieren.png",
+            "template": "sammeln/versammlung_einleiten.png",
             "optional": true,
-            "after": 2.5
+            "threshold": 0.86,
+            "after": [
+              2.0,
+              3.0
+            ]
           }
         },
         {
@@ -1617,9 +1805,13 @@
           }
         },
         {
-          "sleep": 1.5
+          "sleep": [
+            1.2,
+            1.8
+          ]
         }
-      ]
+      ],
+      "_zweck": "Weltkarte -> Lupe -> Reiter 'Sammeln' -> Bauernhof/Kraeutergarten -> 'Suchen' -> auf dem Fundort 'Versammeln'. Die Truppe marschiert danach von selbst."
     },
     {
       "name": "zurueck-in-die-basis",
@@ -1631,6 +1823,16 @@
             "of": [
               {
                 "template": "nav/startseite.png",
+                "threshold": 0.86,
+                "region": [
+                  0.7,
+                  0.85,
+                  1.0,
+                  1.0
+                ]
+              },
+              {
+                "template": "nav/gebiet.png",
                 "threshold": 0.86,
                 "region": [
                   0.7,

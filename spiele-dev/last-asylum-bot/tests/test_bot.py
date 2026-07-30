@@ -5,6 +5,7 @@ from __future__ import annotations
 import os
 import random
 import sys
+import time
 import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -467,6 +468,119 @@ class TestEngine(unittest.TestCase):
         )
         eng.step()
         self.assertEqual(dev.keys, ["NEIN"])
+
+
+class TestFarbknopf(unittest.TestCase):
+    """Knöpfe über Farbe finden, ohne Template — für wechselnde Beschriftungen."""
+
+    def bild_mit_knopf(self, farbe=(120, 181, 54)):
+        # Ruhiger Hintergrund: in Rauschen liegen zufaellig einzelne Pixel in der
+        # Farbtoleranz und verschieben den Rahmen um ein Pixel.
+        img = Image.new(400, 800, (30, 30, 40))
+        # Knopf: farbige Fläche mit einem hellen "Schrift"-Streifen in der Mitte
+        for y in range(300, 360):
+            for x in range(100, 300):
+                i = (y * img.width + x) * 3
+                if 320 <= y <= 340 and 150 <= x <= 250:
+                    img.data[i:i + 3] = bytes((250, 250, 250))
+                else:
+                    img.data[i:i + 3] = bytes(farbe)
+        img._gray = None
+        return img
+
+    def test_findet_knopf_trotz_schrift(self):
+        hits = matcher.find_color_button(
+            self.bild_mit_knopf(), [120, 181, 54], tolerance=30,
+            min_w=0.2, max_w=0.9, min_h=0.05, max_h=0.12, min_fuellung=0.5)
+        self.assertTrue(hits)
+        self.assertEqual((hits[0].x, hits[0].y), (100, 300))
+        self.assertEqual((hits[0].w, hits[0].h), (200, 60))
+
+    def test_falsche_farbe_kein_treffer(self):
+        self.assertEqual(
+            matcher.find_color_button(self.bild_mit_knopf(), [200, 40, 40], tolerance=30,
+                                      min_w=0.2, max_w=0.9, min_h=0.05, max_h=0.12), [])
+
+    def test_zu_klein_wird_verworfen(self):
+        self.assertEqual(
+            matcher.find_color_button(self.bild_mit_knopf(), [120, 181, 54], tolerance=30,
+                                      min_w=0.8, max_w=0.99, min_h=0.05, max_h=0.12), [])
+
+    def test_zwei_knoepfe_auf_gleicher_hoehe_bleiben_getrennt(self):
+        img = self.bild_mit_knopf()
+        for y in range(300, 360):
+            for x in range(320, 390):
+                i = (y * img.width + x) * 3
+                img.data[i:i + 3] = bytes((120, 181, 54))
+        img._gray = None
+        hits = matcher.find_color_button(img, [120, 181, 54], tolerance=30, min_w=0.1,
+                                         max_w=0.9, min_h=0.05, max_h=0.12, min_fuellung=0.5,
+                                         limit=5)
+        self.assertEqual(len(hits), 2)
+        self.assertEqual(sorted(h.x for h in hits), [100, 320])
+
+    def test_regel_mit_farbknopf_tippt(self):
+        cfg = Config.from_dict({
+            "base_width": 400,
+            "rules": [{"name": "gruen", "match": {"farbknopf": {
+                "rgb": [120, 181, 54], "tolerance": 30, "min_w": 0.2, "max_w": 0.9,
+                "min_h": 0.05, "max_h": 0.12, "min_fuellung": 0.5}},
+                "do": [{"tap_match": {}}]}]})
+        dev = FakeDevice([self.bild_mit_knopf()], loop=True)
+        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=3)
+        eng.step()
+        self.assertEqual(len(dev.taps), 1)
+        x, y = dev.taps[0]
+        self.assertLess(abs(x - 200), 45)
+        self.assertLess(abs(y - 330), 20)
+
+
+    def test_offset_zielt_neben_den_treffer(self):
+        cfg = Config.from_dict({
+            "base_width": 400,
+            "rules": [{"name": "gruen", "match": {"farbknopf": {
+                "rgb": [120, 181, 54], "tolerance": 30, "min_w": 0.2, "max_w": 0.9,
+                "min_h": 0.05, "max_h": 0.12, "min_fuellung": 0.5}},
+                "do": [{"tap_match": {"jitter": False, "offset": [-0.05, 0.05]}}]}]})
+        dev = FakeDevice([self.bild_mit_knopf()], loop=True)
+        Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=3).step()
+        self.assertEqual(dev.taps, [(200 - 20, 330 + 40)])
+
+
+class TestZeitfenster(unittest.TestCase):
+    """Aufgaben, die nur an bestimmten Tagen/Stunden laufen (z. B. Wochenend-Schilde)."""
+
+    def bau(self, **felder):
+        raw = {"tasks": [dict({"name": "w", "every": 999, "at_start": True,
+                               "do": [{"key": "JA"}]}, **felder)]}
+        cfg = Config.from_dict(raw)
+        dev = FakeDevice([noise(60, 80, 61)], loop=True)
+        return cfg, dev, Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=2)
+
+    def test_ohne_fenster_laeuft_immer(self):
+        cfg, dev, eng = self.bau()
+        eng.step()
+        self.assertEqual(dev.keys, ["JA"])
+
+    def test_falscher_wochentag_blockiert(self):
+        heute = time.localtime().tm_wday
+        cfg, dev, eng = self.bau(wochentage=[(heute + 2) % 7])
+        eng.step()
+        self.assertEqual(dev.keys, [])
+
+    def test_richtiger_wochentag_laeuft(self):
+        cfg, dev, eng = self.bau(wochentage=[time.localtime().tm_wday])
+        eng.step()
+        self.assertEqual(dev.keys, ["JA"])
+
+    def test_stundenfenster(self):
+        stunde = time.localtime().tm_hour
+        cfg, dev, eng = self.bau(stunden=[[stunde, stunde]])
+        eng.step()
+        self.assertEqual(dev.keys, ["JA"])
+        cfg2, dev2, eng2 = self.bau(stunden=[[(stunde + 3) % 24, (stunde + 4) % 24]])
+        eng2.step()
+        self.assertEqual(dev2.keys, [])
 
 
 class TestEchtesSpielMaterial(unittest.TestCase):

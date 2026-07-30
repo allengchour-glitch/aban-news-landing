@@ -9,6 +9,7 @@ Befehle:
   find        Template im aktuellen Bildschirm suchen (Feintuning der Schwelle)
   run         Bot laufen lassen
   replay      Bot gegen einen Ordner mit Screenshots testen (kein Gerät nötig)
+  lernen      aus den Protokollen echter Läufe bessere Schwellen ableiten
 
 Beispiel:
   python3 bot.py capture -o shots/start.png
@@ -153,6 +154,85 @@ def cmd_find(args) -> int:
     return 0
 
 
+def cmd_lernen(args) -> int:
+    """Aus den JSONL-Protokollen echter Läufe bessere Schwellen ableiten."""
+    import json as _json
+
+    treffer, daneben = {}, {}
+    zeilen = 0
+    for pfad in args.jsonl:
+        with open(pfad, "r", encoding="utf-8") as fh:
+            for zeile in fh:
+                try:
+                    d = _json.loads(zeile)
+                except ValueError:
+                    continue
+                if d.get("ev") != "vergleich":
+                    continue
+                zeilen += 1
+                topf = treffer if d.get("treffer") else daneben
+                topf.setdefault(d["template"], []).append(float(d["score"]))
+
+    if not zeilen:
+        print("Keine Vergleichs-Daten gefunden. Lauf den Bot mit --jsonl logs/lauf.jsonl.",
+              file=sys.stderr)
+        return 1
+
+    print(f"{zeilen} Vergleiche aus {len(args.jsonl)} Datei(en)\n")
+    print(f"{'Template':38} {'Treffer':>8} {'min':>7} {'bester Fehlschlag':>18} {'Vorschlag':>10}")
+    vorschlaege = {}
+    for name in sorted(set(treffer) | set(daneben)):
+        ja, nein = sorted(treffer.get(name, [])), sorted(daneben.get(name, []))
+        ja_min = ja[0] if ja else None
+        nein_max = nein[-1] if nein else None
+        neu = ""
+        if ja_min is not None and nein_max is not None and nein_max < ja_min - 0.02:
+            # Genau in die Lücke legen – mit etwas Abstand nach unten.
+            neu = round(max(0.5, (ja_min + nein_max) / 2), 3)
+            vorschlaege[name] = neu
+        elif ja_min is not None and nein_max is None:
+            neu = round(max(0.5, ja_min - 0.03), 3)
+            vorschlaege[name] = neu
+        elif ja_min is not None and nein_max is not None:
+            neu = "unklar"
+        print(f"{name:38} {len(ja):>8} {('%.3f' % ja_min) if ja_min is not None else '   -':>7} "
+              f"{('%.3f' % nein_max) if nein_max is not None else '     -':>18} {str(neu):>10}")
+
+    if not args.anwenden:
+        print("\n→ Mit --anwenden werden die Vorschläge in die Konfiguration geschrieben.")
+        return 0
+
+    with open(args.config, "r", encoding="utf-8") as fh:
+        roh = _json.load(fh)
+    geaendert = _schwellen_setzen(roh, vorschlaege)
+    if geaendert:
+        with open(args.config, "w", encoding="utf-8") as fh:
+            _json.dump(roh, fh, ensure_ascii=False, indent=2)
+        print(f"\n{geaendert} Schwelle(n) in {args.config} angepasst.")
+    else:
+        print("\nNichts anzupassen.")
+    return 0
+
+
+def _schwellen_setzen(knoten, vorschlaege, zaehler=None) -> int:
+    """Rekursiv jede Stelle mit 'template' auf die gelernte Schwelle setzen."""
+    if zaehler is None:
+        zaehler = [0]
+    if isinstance(knoten, dict):
+        name = knoten.get("template")
+        if isinstance(name, str) and name in vorschlaege:
+            neu = vorschlaege[name]
+            if knoten.get("threshold") != neu:
+                knoten["threshold"] = neu
+                zaehler[0] += 1
+        for wert in knoten.values():
+            _schwellen_setzen(wert, vorschlaege, zaehler)
+    elif isinstance(knoten, list):
+        for wert in knoten:
+            _schwellen_setzen(wert, vorschlaege, zaehler)
+    return zaehler[0]
+
+
 def cmd_run(args) -> int:
     cfg = load_config(args)
     logger = Logger(level=args.log_level, jsonl_path=args.jsonl)
@@ -265,6 +345,12 @@ def build_parser() -> argparse.ArgumentParser:
     c.add_argument("--seed", type=int, help="Zufalls-Startwert (reproduzierbare Läufe)")
     c.add_argument("--force", action="store_true", help="trotz Konfigurations-Warnungen starten")
     c.set_defaults(func=cmd_run)
+
+    c = sub.add_parser("lernen", help="Schwellen aus echten Läufen nachjustieren")
+    c.add_argument("jsonl", nargs="+", help="JSONL-Protokolle aus `run --jsonl`")
+    c.add_argument("--config", default=DEFAULT_CONFIG)
+    c.add_argument("--anwenden", action="store_true", help="Vorschläge in die Konfiguration schreiben")
+    c.set_defaults(func=cmd_lernen)
 
     c = sub.add_parser("replay", help="gegen gespeicherte Screenshots testen")
     c.add_argument("folder", help="Ordner mit PNG-Screenshots")

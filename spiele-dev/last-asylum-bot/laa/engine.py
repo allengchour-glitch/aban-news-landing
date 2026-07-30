@@ -94,6 +94,24 @@ class Engine:
             return all(self.evaluate(c, screen) for c in cond["all"])
         if "not" in cond:
             return not self.evaluate(cond["not"], screen)
+        if "farbknopf" in cond:
+            spec = cond["farbknopf"]
+            treffer = matcher.find_color_button(
+                screen,
+                spec.get("rgb", (120, 181, 54)),
+                tolerance=int(spec.get("tolerance", 38)),
+                min_w=float(spec.get("min_w", 0.12)),
+                max_w=float(spec.get("max_w", 0.8)),
+                min_h=float(spec.get("min_h", 0.015)),
+                max_h=float(spec.get("max_h", 0.06)),
+                region=spec.get("region"),
+                min_fuellung=float(spec.get("min_fuellung", 0.55)),
+                limit=1,
+            )
+            if treffer:
+                self.last_match = treffer[0]
+                return True
+            return False
         if "pixel" in cond:
             x, y = cond["pixel"]
             return matcher.pixel_matches(
@@ -115,13 +133,21 @@ class Engine:
         if tpl is None:  # noch nicht geschnitten – Schritt überspringen
             self.log.debug("Template fehlt noch (optional)", template=spec["template"])
             return None
-        return matcher.find(
+        schwelle = float(spec.get("threshold", self.cfg.default_threshold))
+        bester = matcher.best_score(
             screen,
             tpl,
-            threshold=float(spec.get("threshold", self.cfg.default_threshold)),
             region=spec.get("region"),
             scale=self._scale if self._scale is not None else 1.0,
         )
+        wert = bester.score if bester else -1.0
+        getroffen = bester is not None and wert >= schwelle
+        # Jeder Vergleich wird protokolliert – daraus lernt `bot.py lernen`.
+        self.log.datenpunkt(
+            ev="vergleich", template=spec["template"],
+            score=round(wert, 4), schwelle=schwelle, treffer=getroffen,
+        )
+        return bester if getroffen else None
 
     # ----------------------------------------------------------------- Aktionen
     def run_actions(self, actions: Sequence[Any], where: str = "") -> None:
@@ -200,6 +226,13 @@ class Engine:
         cx, cy = m.center
         if spec.get("jitter", True):
             cx, cy = human_point(cx, cy, m.w, m.h)
+        if spec.get("offset"):
+            # z. B. vom roten Punkt auf den Knopf darunter zielen
+            dx, dy = spec["offset"]
+            screen = self.screen
+            if screen is not None:
+                cx += int(round(dx * screen.width)) if abs(dx) <= 1 else int(dx)
+                cy += int(round(dy * screen.height)) if abs(dy) <= 1 else int(dy)
         self._tap_abs(cx, cy, f"Treffer {m.score:.2f}")
 
     def _tap_template(self, spec: Dict[str, Any]) -> None:
@@ -350,7 +383,10 @@ class Engine:
         due = [
             t
             for t in self.cfg.tasks
-            if t.enabled and t.name in self._task_due and self._task_due[t.name] <= now
+            if t.enabled
+            and t.name in self._task_due
+            and self._task_due[t.name] <= now
+            and self._im_zeitfenster(t)
         ]
         if not due:
             return None
@@ -378,6 +414,18 @@ class Engine:
             self.run_actions(rule.do, f"Regel '{rule.name}'")
             return True
         return False
+
+    def _im_zeitfenster(self, task: Task) -> bool:
+        """Wochentage/Stunden pruefen – z. B. Schilde nur am Wochenende."""
+        if not task.wochentage and not task.stunden:
+            return True
+        jetzt = time.localtime()
+        if task.wochentage and jetzt.tm_wday not in task.wochentage:
+            return False
+        if task.stunden:
+            if not any(a <= jetzt.tm_hour <= b for a, b in task.stunden):
+                return False
+        return True
 
     def step(self) -> bool:
         """Ein Durchlauf. Gibt False zurück, wenn der Bot stoppen soll."""

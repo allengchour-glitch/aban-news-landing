@@ -352,3 +352,152 @@ def pixel_matches(screen: Image, x: int, y: int, rgb: Sequence[int], tolerance: 
     if isinstance(got, int):
         got = (got, got, got)
     return all(abs(a - b) <= tolerance for a, b in zip(got, rgb))
+
+
+# --------------------------------------------------- Knopf-Suche ueber Farbe
+def find_color_button(
+    screen: Image,
+    rgb: Sequence[int],
+    tolerance: int = 45,
+    min_w: float = 0.12,
+    max_w: float = 0.8,
+    min_h: float = 0.015,
+    max_h: float = 0.06,
+    region: Optional[Sequence[float]] = None,
+    min_fuellung: float = 0.6,
+    limit: int = 4,
+) -> List[Match]:
+    """Findet farbige Knopf-Flaechen, ohne ein Template zu kennen.
+
+    Gedacht fuer Knoepfe, deren Beschriftung wechselt ("Abholen", "Sammeln",
+    "Bestaetigen" sind alle derselbe gruene Knopf). Sucht waagrechte Baender
+    passender Farbe und darin zusammenhaengende Spalten – Knoepfe sind
+    achsenparallele Rechtecke, dafuer reicht das und es ist schnell.
+    """
+    l, t, r, b = resolve_region(region, screen.width, screen.height)
+    w_min = int(min_w * screen.width) if min_w <= 1 else int(min_w)
+    w_max = int(max_w * screen.width) if max_w <= 1 else int(max_w)
+    h_min = int(min_h * screen.height) if min_h <= 1 else int(min_h)
+    h_max = int(max_h * screen.height) if max_h <= 1 else int(max_h)
+    if w_min < 4 or h_min < 3:
+        return []
+
+    maske = _farb_maske(screen, rgb, tolerance, (l, t, r, b))
+    if maske is None:
+        return []
+    zeilen, breite = maske
+    treffer: List[Match] = []
+    for x0, y0, x1, y1, gefuellt in _flaechen(zeilen, breite, max(4, int(w_min * 0.05))):
+        bw, bh = x1 - x0, y1 - y0
+        if not (w_min <= bw <= w_max and h_min <= bh <= h_max):
+            continue
+        fuellung = gefuellt / float(bw * bh)
+        if fuellung < min_fuellung:
+            continue
+        treffer.append(Match(fuellung, l + x0, t + y0, bw, bh))
+    treffer.sort(key=lambda m: (-m.score, -m.w * m.h))
+    return treffer[:limit]
+
+
+def _flaechen(zeilen, breite: int, min_lauf: int):
+    """Zusammenhaengende Farbflaechen ueber Lauflaengen-Verbund.
+
+    Pro Zeile die waagrechten Laeufe bestimmen und Laeufe benachbarter Zeilen
+    verbinden, wenn sie sich in x ueberlappen. Damit bleiben zwei Knoepfe auf
+    gleicher Hoehe getrennt – eine reine Zeilen-Projektion verklebt sie.
+
+    `min_lauf` muss klein bleiben: durch die Knopfmitte laeuft weisse Schrift,
+    dort zerfaellt die Zeile in kurze Stuecke. Filtert man die weg, reisst der
+    Knopf in zwei Haelften.
+    """
+    eltern: List[int] = []
+
+    def wurzel(i: int) -> int:
+        while eltern[i] != i:
+            eltern[i] = eltern[eltern[i]]
+            i = eltern[i]
+        return i
+
+    def verbinde(a: int, b: int) -> None:
+        ra, rb = wurzel(a), wurzel(b)
+        if ra != rb:
+            eltern[rb] = ra
+
+    laeufe: List[Tuple[int, int, int, int]] = []  # (x0, x1, y, id)
+    vorige: List[int] = []
+    for y, reihe in enumerate(zeilen):
+        aktuelle: List[int] = []
+        x = 0
+        while x < breite:
+            if not reihe[x]:
+                x += 1
+                continue
+            x0 = x
+            while x < breite and reihe[x]:
+                x += 1
+            if x - x0 < min_lauf:
+                continue
+            idx = len(laeufe)
+            laeufe.append((x0, x, y, idx))
+            eltern.append(idx)
+            for j in vorige:
+                if laeufe[j][0] < x and x0 < laeufe[j][1]:
+                    verbinde(j, idx)
+            aktuelle.append(idx)
+        vorige = aktuelle
+
+    kisten = {}
+    for x0, x1, y, idx in laeufe:
+        w = wurzel(idx)
+        k = kisten.get(w)
+        if k is None:
+            kisten[w] = [x0, y, x1, y + 1, x1 - x0]
+        else:
+            k[0] = min(k[0], x0)
+            k[1] = min(k[1], y)
+            k[2] = max(k[2], x1)
+            k[3] = max(k[3], y + 1)
+            k[4] += x1 - x0
+    for k in kisten.values():
+        yield (k[0], k[1], k[2], k[3], k[4])
+
+
+def _farb_maske(screen: Image, rgb, tolerance: int, box):
+    l, t, r, b = box
+    if r - l < 4 or b - t < 4:
+        return None
+    aus = screen.crop(l, t, r - l, b - t)
+    if aus.mode != "RGB":
+        return None
+    breite, hoehe = aus.width, aus.height
+    if HAVE_NUMPY:
+        a = _np.frombuffer(bytes(aus.data), dtype=_np.uint8).reshape(hoehe, breite, 3).astype(_np.int16)
+        ziel = _np.array(rgb[:3], dtype=_np.int16)
+        m = (_np.abs(a - ziel).max(axis=2) <= tolerance).astype(_np.uint8)
+        return [row.tolist() for row in m], breite
+    data = aus.data
+    zeilen = []
+    for y in range(hoehe):
+        base = y * breite * 3
+        reihe = [0] * breite
+        for x in range(breite):
+            p = base + x * 3
+            if (
+                abs(data[p] - rgb[0]) <= tolerance
+                and abs(data[p + 1] - rgb[1]) <= tolerance
+                and abs(data[p + 2] - rgb[2]) <= tolerance
+            ):
+                reihe[x] = 1
+        zeilen.append(reihe)
+    return zeilen, breite
+
+
+def best_score(
+    screen: Image,
+    template: Image,
+    region: Optional[Sequence[float]] = None,
+    scale: float = 1.0,
+) -> Optional[Match]:
+    """Bester Treffer ohne Schwelle – Grundlage fuers Lernen."""
+    hits = find_all(screen, template, threshold=-1.0, region=region, scale=scale, limit=1)
+    return hits[0] if hits else None

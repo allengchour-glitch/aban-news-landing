@@ -33,6 +33,8 @@ class Task:
     at_start: bool = False
     priority: int = 100
     enabled: bool = True
+    wochentage: Optional[List[int]] = None   # 0 = Montag … 6 = Sonntag
+    stunden: Optional[List[List[int]]] = None  # [[18, 23]] = 18:00 bis 23:59
 
 
 @dataclass
@@ -124,6 +126,8 @@ class Config:
                     at_start=bool(item.get("at_start", False)),
                     priority=int(item.get("priority", 100)),
                     enabled=bool(item.get("enabled", True)),
+                    wochentage=list(item["wochentage"]) if item.get("wochentage") else None,
+                    stunden=[list(f) for f in item["stunden"]] if item.get("stunden") else None,
                 )
             )
         return cfg
@@ -219,8 +223,11 @@ class Config:
             elif "pixel" in cond:
                 if "rgb" not in cond:
                     problems.append(f"{where}: 'pixel' braucht 'rgb'")
+            elif "farbknopf" in cond:
+                if not isinstance(cond["farbknopf"], dict):
+                    problems.append(f"{where}: 'farbknopf' braucht ein Objekt mit 'rgb'")
             elif "always" not in cond:
-                problems.append(f"{where}: Bedingung ohne template/pixel/always")
+                problems.append(f"{where}: Bedingung ohne template/pixel/farbknopf/always")
 
         for rule in self.rules:
             check_match(f"Regel '{rule.name}'", rule.match)
