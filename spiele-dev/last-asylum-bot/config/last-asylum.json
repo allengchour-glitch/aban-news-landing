@@ -75,8 +75,26 @@
     },
     {
       "tap": [
-        0.35,
-        0.16
+        [
+          0.35,
+          0.16
+        ],
+        [
+          0.12,
+          0.7
+        ],
+        [
+          0.86,
+          0.44
+        ],
+        [
+          0.2,
+          0.3
+        ],
+        [
+          0.75,
+          0.2
+        ]
       ]
     },
     {
@@ -1527,8 +1545,26 @@
         },
         {
           "tap": [
-            0.35,
-            0.16
+            [
+              0.35,
+              0.16
+            ],
+            [
+              0.12,
+              0.7
+            ],
+            [
+              0.86,
+              0.44
+            ],
+            [
+              0.2,
+              0.3
+            ],
+            [
+              0.75,
+              0.2
+            ]
           ]
         },
         {
@@ -2443,9 +2479,27 @@
     }
   ],
   "_diamanten": "DIAMANTEN-REGEL (User 2026-07-31): 'bis 50 pro Klick' ist erlaubt. ABER der Bot kann Zahlen auf Knoepfen NICHT lesen - fuer ihn sieht '2 Spenden' aus wie '50 Spenden' oder '500 Spenden'. Deshalb tippt er von sich aus nur Knoepfe an, die REINE RESSOURCEN kosten (blauer Spenden-Knopf, Kraeuter). Der Diamanten-Knopf steht als eigene Aufgabe bereit, ist aber AUS - wer ihn einschaltet, akzeptiert, dass die Kosten mit jeder Spende steigen und der Bot das nicht bemerkt. Ebenso bleibt 'Sofort' beim Gebaeude-Upgrade (vierstellig) unangetastet. Echtgeld ist ohnehin komplett tabu, siehe tabu_regionen.",
-  "_leerer_punkt": "Tippt man NEBEN ein Gebaeude, verschwindet dessen Knopf-Menue (Details/Upgrade/...). Das ist der saubere Weg, ein offenes Gebaeude-Menue zu schliessen - die Zurueck-Taste wechselt stattdessen die Ansicht. Der Punkt unten liegt links oben im Gelaende, unter der Ressourcenleiste. Passt er bei dir nicht, hier verschieben.",
-  "leerer_punkt": [
-    0.35,
-    0.16
+  "_leerer_punkt": "Tippt man NEBEN ein Gebaeude, verschwindet dessen Knopf-Menue (Details/Upgrade/...). Das ist der saubere Weg - die Zurueck-Taste wechselt stattdessen die ganze Ansicht. Weil je nach Kamera-Stand an jeder festen Stelle ein Gebaeude liegen kann, stehen hier mehrere Punkte; der Bot waehlt zufaellig einen. Trifft er doch ein Gebaeude, geht beim naechsten Versuch ein anderer Punkt.",
+  "leere_punkte": [
+    [
+      0.35,
+      0.16
+    ],
+    [
+      0.12,
+      0.7
+    ],
+    [
+      0.86,
+      0.44
+    ],
+    [
+      0.2,
+      0.3
+    ],
+    [
+      0.75,
+      0.2
+    ]
   ]
 }

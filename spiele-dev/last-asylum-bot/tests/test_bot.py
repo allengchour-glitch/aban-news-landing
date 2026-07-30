@@ -340,6 +340,27 @@ class TestEngine(unittest.TestCase):
         self.assertEqual(len(dev.taps), 1)
         self.assertLess(abs(dev.taps[0][1] - 360), 20)
 
+    def test_tap_waehlt_aus_mehreren_punkten(self):
+        screen = noise(200, 400, 49)
+        cfg, dev, eng = self.bau(
+            {
+                "rules": [
+                    {
+                        "name": "r",
+                        "match": {"always": True},
+                        "do": [{"tap": [[0.2, 0.2], [0.8, 0.8]]}],
+                    }
+                ]
+            },
+            [screen],
+        )
+        for _ in range(8):
+            eng.step()
+        # Beide Punkte müssen vorkommen, sonst wird nicht wirklich gestreut.
+        oben = [t for t in dev.taps if t[1] < 200]
+        unten = [t for t in dev.taps if t[1] >= 200]
+        self.assertTrue(oben and unten, dev.taps)
+
     def test_not_bedingung(self):
         screen = noise(120, 200, 41)
         cfg, dev, eng = self.bau(

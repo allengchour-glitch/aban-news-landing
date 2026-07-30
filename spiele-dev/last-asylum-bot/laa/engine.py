@@ -312,6 +312,10 @@ class Engine:
 
     def _tap_point(self, value: Any) -> None:
         screen = self.screen or self.capture()
+        # Liste von Punkten? Einen zufaellig nehmen - so trifft man auch dann
+        # freies Gelaende, wenn an einer Stelle gerade ein Gebaeude steht.
+        if value and isinstance(value[0], (list, tuple)):
+            value = self.rng.choice(list(value))
         x, y = value[0], value[1]
         px = int(round(x * screen.width)) if abs(x) <= 1.0 else int(x)
         py = int(round(y * screen.height)) if abs(y) <= 1.0 else int(y)
