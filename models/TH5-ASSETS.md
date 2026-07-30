@@ -690,8 +690,13 @@ Gesamthöhe rechnet, damit Kind und Erwachsener dieselben Proportionen haben.
 > dieselbe Lehre wie bei Schiffsruempfen und Fahrzeugkarosserien. Dafuer gibt es hier
 > `loft(schnitte, ...)`.
 
-**Offen an dieser Charge:** die Haarkalotte hat am Scheitel noch eine sichtbare
-Schnittkante, und die Figuren stehen in einer starren Ruhepose ohne Rig.
+> ⚠️ **Ein Ellipsoid ueber dem Kopf durchdringt die Schaedelkugel** und hinterlaesst
+> quer ueber dem Scheitel eine harte Kante. `kappe()` schneidet die Haare stattdessen
+> auf Haaransatzhoehe ab und schliesst das Loch — der Rand liegt dann dort, wo er
+> hingehoert.
+
+**Offen an dieser Charge:** die Schulterpartie hat im Frontblick noch eine kantige
+Silhouette, und die Figuren stehen in einer starren Ruhepose ohne Rig.
 
 ---
 
