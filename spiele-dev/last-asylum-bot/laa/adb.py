@@ -90,7 +90,12 @@ class AdbDevice(Device):
     # ---------------------------------------------------------------- Aufnahme
     def screencap(self) -> Image:
         raw = self._run("exec-out", "screencap", binary=True)
-        return decode_screencap(raw)
+        try:
+            return decode_screencap(raw)
+        except DeviceError:
+            # Manche Windows-/ROM-Kombinationen liefern das Rohformat verstuemmelt.
+            # PNG ist langsamer, aber unempfindlich gegen Zeilenende-Umwandlung.
+            return decode_screencap(self._run("exec-out", "screencap", "-p", binary=True))
 
     def size(self) -> Tuple[int, int]:
         if self._size is None:
