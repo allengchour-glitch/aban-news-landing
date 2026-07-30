@@ -71,7 +71,16 @@
       }
     },
     {
-      "sleep": 1.5
+      "sleep": 1.0
+    },
+    {
+      "tap": [
+        0.35,
+        0.16
+      ]
+    },
+    {
+      "sleep": 1.2
     }
   ],
   "rules": [
@@ -1514,7 +1523,13 @@
           ]
         },
         {
-          "key": "KEYCODE_BACK"
+          "log": "Gebaeude-Menue durch Tippen daneben schliessen"
+        },
+        {
+          "tap": [
+            0.35,
+            0.16
+          ]
         },
         {
           "sleep": [
@@ -2427,5 +2442,10 @@
       ]
     }
   ],
-  "_diamanten": "DIAMANTEN-REGEL (User 2026-07-31): 'bis 50 pro Klick' ist erlaubt. ABER der Bot kann Zahlen auf Knoepfen NICHT lesen - fuer ihn sieht '2 Spenden' aus wie '50 Spenden' oder '500 Spenden'. Deshalb tippt er von sich aus nur Knoepfe an, die REINE RESSOURCEN kosten (blauer Spenden-Knopf, Kraeuter). Der Diamanten-Knopf steht als eigene Aufgabe bereit, ist aber AUS - wer ihn einschaltet, akzeptiert, dass die Kosten mit jeder Spende steigen und der Bot das nicht bemerkt. Ebenso bleibt 'Sofort' beim Gebaeude-Upgrade (vierstellig) unangetastet. Echtgeld ist ohnehin komplett tabu, siehe tabu_regionen."
+  "_diamanten": "DIAMANTEN-REGEL (User 2026-07-31): 'bis 50 pro Klick' ist erlaubt. ABER der Bot kann Zahlen auf Knoepfen NICHT lesen - fuer ihn sieht '2 Spenden' aus wie '50 Spenden' oder '500 Spenden'. Deshalb tippt er von sich aus nur Knoepfe an, die REINE RESSOURCEN kosten (blauer Spenden-Knopf, Kraeuter). Der Diamanten-Knopf steht als eigene Aufgabe bereit, ist aber AUS - wer ihn einschaltet, akzeptiert, dass die Kosten mit jeder Spende steigen und der Bot das nicht bemerkt. Ebenso bleibt 'Sofort' beim Gebaeude-Upgrade (vierstellig) unangetastet. Echtgeld ist ohnehin komplett tabu, siehe tabu_regionen.",
+  "_leerer_punkt": "Tippt man NEBEN ein Gebaeude, verschwindet dessen Knopf-Menue (Details/Upgrade/...). Das ist der saubere Weg, ein offenes Gebaeude-Menue zu schliessen - die Zurueck-Taste wechselt stattdessen die Ansicht. Der Punkt unten liegt links oben im Gelaende, unter der Ressourcenleiste. Passt er bei dir nicht, hier verschieben.",
+  "leerer_punkt": [
+    0.35,
+    0.16
+  ]
 }

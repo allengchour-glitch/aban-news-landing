@@ -205,6 +205,14 @@ und Grösse in der rechten Knopfspalte, tippt den Knopf **darunter** an (`"offse
 `tap_match`) und lässt die Abhol-Regeln aufräumen. Der Einkaufswagen oben rechts hat auch einen
 roten Punkt — der liegt in der Tabu-Zone und wird geblockt.
 
+### Menüs schliessen, ohne die Ansicht zu verlassen
+
+Tippt man ein Gebäude an, erscheint sein Knopf-Menü (`Details`, `Upgrade`, …). Das schliesst
+man wieder, indem man **neben** das Gebäude tippt — die Zurück-Taste wechselt stattdessen die
+ganze Ansicht. Der Bot macht das genauso; der Punkt dafür steht als `leerer_punkt` in der
+Konfiguration (Standard `[0.35, 0.16]`, also links oben im Gelände). Liegt dort bei dir ein
+Gebäude, verschieb ihn.
+
 ### Vorlagen selbst finden lassen
 
 Knöpfe muss man nicht mehr von Hand ausmessen. `entdecke` sucht sie an ihrer Farbe und legt
