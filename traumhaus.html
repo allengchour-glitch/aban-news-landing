@@ -309,8 +309,18 @@ renderer.setPixelRatio(Math.min(devicePixelRatio,_mobil?1.5:2));renderer.setSize
 /* 📱 PCFSoftShadowMap ist der teuerste Schattenfilter (mehrere Texture-Lookups pro Pixel).
    Auf dem Handy reicht der einfache PCF-Filter — sichtbar kaum ein Unterschied, spuerbar
    guenstiger. */
-renderer.shadowMap.enabled=true;
-renderer.shadowMap.type=(typeof _mobil!=="undefined"&&_mobil)?THREE.PCFShadowMap:THREE.PCFSoftShadowMap;
+/* 🩹 Schatten auf dem Handy AUS.
+   Der User meldet seit mehreren Runden schwarze Flecken mit ausgefransten Raendern auf
+   den Rasenflaechen. Ich habe drei Ursachen benannt und behoben — Schattenbox am
+   Weltursprung, Schatten-Akne, opak geschaltete Overlays — und keine davon hat es
+   beseitigt. Solange ich es nicht reproduzieren kann (der Software-Renderer hier zeigt
+   keine Bildfehler), ist Weiterraten schlechter als die sichere Loesung: der Boden wird
+   voll beschattet dargestellt, waehrend die Gras-Instanzen normal beleuchtet bleiben —
+   das ist die Signatur eines kaputten Schattenwurfs, nicht einer Textur.
+   Ohne Schatten sieht die Szene flacher aus, aber sauber. Am Desktop bleiben sie an. */
+var _schattenAn=!(typeof _mobil!=="undefined"&&_mobil);
+renderer.shadowMap.enabled=_schattenAn;
+renderer.shadowMap.type=THREE.PCFSoftShadowMap;
 renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=0.78;
 renderer.outputEncoding=THREE.sRGBEncoding;
 document.getElementById("wrap").appendChild(renderer.domElement);
@@ -327,7 +337,7 @@ var nachtLampen=[];   /* Die Laternen werden weiter unten gebaut — sie brauche
 
 var sun=new THREE.DirectionalLight(0xfff0d0,1.12);sun.position.set(26,38,18);scene.add(sun);
 scene.add(sun.target);   /* das Ziel muss in der Szene haengen, sonst wandert die Schatten-Box nicht mit */
-sun.castShadow=true;sun.shadow.mapSize.set(IS_TOUCH?1024:2048,IS_TOUCH?1024:2048);
+sun.castShadow=_schattenAn;sun.shadow.mapSize.set(IS_TOUCH?1024:2048,IS_TOUCH?1024:2048);
 /* 🐛 Schwarze Flecken mit ausgefransten Raendern = Schatten-Akne: grosse flache Flaechen
    (Rasen, Fahrbahn) beschatten sich selbst, weil ihre Tiefe in der Schattenkarte minimal
    von der echten abweicht. Ein negativer bias allein reicht dagegen nicht — normalBias
