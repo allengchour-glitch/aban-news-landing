@@ -9,6 +9,7 @@ Befehle:
   find        Template im aktuellen Bildschirm suchen (Feintuning der Schwelle)
   run         Bot laufen lassen
   replay      Bot gegen einen Ordner mit Screenshots testen (kein Gerät nötig)
+  entdecke    Knöpfe im Bild automatisch finden und als Vorlage übernehmen
   lernen      aus den Protokollen echter Läufe bessere Schwellen ableiten
 
 Beispiel:
@@ -152,6 +153,77 @@ def cmd_find(args) -> int:
     for h in hits:
         print(f"score={h.score:.3f} bei x={h.x} y={h.y} ({h.w}x{h.h}) → Mitte {h.center}")
     print(f"({dt:.2f}s, numpy={matcher.HAVE_NUMPY})")
+    return 0
+
+
+# Farbfamilien, in denen dieses Spiel seine Knöpfe malt.
+ENTDECK_FARBEN = [
+    ("gruen", (120, 181, 54), 40),
+    ("orange", (237, 183, 59), 45),
+    ("blau", (79, 153, 226), 45),
+    ("rot", (228, 58, 52), 45),
+]
+
+
+def cmd_entdecke(args) -> int:
+    """Knopf-Kandidaten im aktuellen Bildschirm finden und nummeriert ablegen.
+
+    Damit brauchst du keine Koordinaten mehr abzulesen: einmal `entdecke`,
+    dann im Übersichtsbild die Nummer suchen und mit `--nimm` übernehmen.
+    """
+    ordner = os.path.join(HERE, "templates", "entdeckt")
+    if args.nimm is not None:
+        quelle = os.path.join(ordner, f"{args.nimm:02d}.png")
+        if not os.path.exists(quelle):
+            print(f"Kandidat {args.nimm} gibt es nicht ({quelle}).", file=sys.stderr)
+            return 1
+        if not args.als:
+            print("--nimm braucht --als, z. B. --als hud/bubble_metall", file=sys.stderr)
+            return 2
+        ziel = os.path.join(HERE, "templates", args.als.replace("/", os.sep) + ".png")
+        os.makedirs(os.path.dirname(ziel), exist_ok=True)
+        Image.load(quelle).save(ziel)
+        print(f"Kandidat {args.nimm} → templates/{args.als}.png")
+        return 0
+
+    screen = Image.load(args.image) if args.image else make_device(args).screencap()
+    os.makedirs(ordner, exist_ok=True)
+    for alt in glob.glob(os.path.join(ordner, "*.png")):
+        os.remove(alt)
+
+    kandidaten = []
+    for name, rgb, tol in ENTDECK_FARBEN:
+        treffer = matcher.find_color_button(
+            screen, rgb, tolerance=tol,
+            min_w=args.min_breite, max_w=args.max_breite,
+            min_h=args.min_hoehe, max_h=args.max_hoehe,
+            min_fuellung=0.5, limit=12,
+        )
+        for m in treffer:
+            if any(abs(m.x - k[1].x) < 20 and abs(m.y - k[1].y) < 20 for k in kandidaten):
+                continue
+            kandidaten.append((name, m))
+    kandidaten.sort(key=lambda k: (k[1].y, k[1].x))
+
+    if not kandidaten:
+        print("Keine Knopf-Kandidaten gefunden. Grenzen lockern, z. B. --min-breite 60")
+        return 1
+
+    uebersicht = Image(screen.width, screen.height, screen.mode, bytearray(screen.data))
+    print(f"{len(kandidaten)} Kandidaten:\n")
+    for i, (farbe, m) in enumerate(kandidaten, 1):
+        rand = max(4, min(m.w, m.h) // 12)
+        cut = screen.crop(m.x - rand, m.y - rand, m.w + 2 * rand, m.h + 2 * rand)
+        cut.save(os.path.join(ordner, f"{i:02d}.png"))
+        uebersicht.draw_box(m.x - rand, m.y - rand, m.x + m.w + rand, m.y + m.h + rand)
+        print(f"  {i:2d}  {farbe:6}  {m.w:4d}x{m.h:<4d} bei ({m.x},{m.y})  Mitte {m.center}")
+
+    ziel = args.output or os.path.join("shots", "entdeckt.png")
+    os.makedirs(os.path.dirname(os.path.abspath(ziel)) or ".", exist_ok=True)
+    uebersicht.save(ziel)
+    print(f"\nÜbersicht mit Rahmen: {ziel}")
+    print(f"Einzelbilder: templates/entdeckt/01.png …")
+    print("Übernehmen mit:  python bot.py entdecke --nimm 3 --als hud/bubble_metall")
     return 0
 
 
@@ -346,6 +418,17 @@ def build_parser() -> argparse.ArgumentParser:
     c.add_argument("--seed", type=int, help="Zufalls-Startwert (reproduzierbare Läufe)")
     c.add_argument("--force", action="store_true", help="trotz Konfigurations-Warnungen starten")
     c.set_defaults(func=cmd_run)
+
+    c = sub.add_parser("entdecke", help="Knopf-Kandidaten finden und als Vorlage übernehmen")
+    c.add_argument("--image", help="Screenshot-Datei statt Live-Gerät")
+    c.add_argument("-o", "--output", help="Übersichtsbild (Standard: shots/entdeckt.png)")
+    c.add_argument("--nimm", type=int, help="Nummer eines Kandidaten übernehmen")
+    c.add_argument("--als", help="Zielname, z. B. hud/bubble_metall")
+    c.add_argument("--min-breite", type=float, default=70, dest="min_breite")
+    c.add_argument("--max-breite", type=float, default=700, dest="max_breite")
+    c.add_argument("--min-hoehe", type=float, default=50, dest="min_hoehe")
+    c.add_argument("--max-hoehe", type=float, default=220, dest="max_hoehe")
+    c.set_defaults(func=cmd_entdecke)
 
     c = sub.add_parser("lernen", help="Schwellen aus echten Läufen nachjustieren")
     c.add_argument("jsonl", nargs="+", help="JSONL-Protokolle aus `run --jsonl`")

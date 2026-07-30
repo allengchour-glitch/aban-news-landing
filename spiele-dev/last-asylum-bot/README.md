@@ -205,6 +205,36 @@ und Grösse in der rechten Knopfspalte, tippt den Knopf **darunter** an (`"offse
 `tap_match`) und lässt die Abhol-Regeln aufräumen. Der Einkaufswagen oben rechts hat auch einen
 roten Punkt — der liegt in der Tabu-Zone und wird geblockt.
 
+### Vorlagen selbst finden lassen
+
+Knöpfe muss man nicht mehr von Hand ausmessen. `entdecke` sucht sie an ihrer Farbe und legt
+jeden Fund nummeriert ab:
+
+```bash
+python3 bot.py entdecke                      # sucht im aktuellen Bildschirm
+python3 bot.py entdecke --image shots/x.png  # oder in einer Datei
+```
+
+Ausgabe:
+
+```
+6 Kandidaten:
+   1  orange     84x114  bei (528,501)   Mitte (570, 558)
+   ...
+   6  gruen     288x93   bei (1065,1353) Mitte (1209, 1399)
+
+Übersicht mit Rahmen: shots/entdeckt.png
+```
+
+In `shots/entdeckt.png` sind alle Funde eingerahmt, die Einzelbilder liegen unter
+`templates/entdeckt/01.png …`. Passt einer, wird er mit einem Befehl zur echten Vorlage:
+
+```bash
+python3 bot.py entdecke --nimm 6 --als ui/btn_alles_abholen
+```
+
+Findet er zu wenig, die Grenzen lockern: `--min-breite 60 --min-hoehe 40`.
+
 ### Schwellen aus echten Läufen nachjustieren
 
 Jeder Bildvergleich landet mit seinem Score im Protokoll. Danach:

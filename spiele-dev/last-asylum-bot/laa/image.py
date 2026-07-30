@@ -198,6 +198,23 @@ class Image:
                 punkt(x, y, color)
         return out
 
+    def draw_box(self, x0: int, y0: int, x1: int, y1: int, color=(255, 0, 0), dick: int = 4) -> None:
+        """Rahmen einzeichnen – markiert gefundene Kandidaten im Uebersichtsbild."""
+        px = 3 if self.mode == "RGB" else 1
+        farbe = bytes(color[:px])
+        for d in range(dick):
+            for x in range(max(0, x0), min(self.width, x1)):
+                for y in (y0 + d, y1 - 1 - d):
+                    if 0 <= y < self.height:
+                        i = (y * self.width + x) * px
+                        self.data[i : i + px] = farbe
+            for y in range(max(0, y0), min(self.height, y1)):
+                for x in (x0 + d, x1 - 1 - d):
+                    if 0 <= x < self.width:
+                        i = (y * self.width + x) * px
+                        self.data[i : i + px] = farbe
+        self._gray = None
+
     def diff_ratio(self, other: "Image", samples: int = 2000) -> float:
         """Grober Unterschied 0..1 – für Stuck-Erkennung (Bild bewegt sich nicht mehr)."""
         if other.width != self.width or other.height != self.height:
