@@ -726,6 +726,71 @@
           ]
         }
       ]
+    },
+    {
+      "name": "vorfall-durchklappern",
+      "priority": 75,
+      "cooldown": 900.0,
+      "_zweck": "Der Vorfall-Bildschirm hat jeden Tag andere Reiter (Ueberlebenskampf, Kaesefalle, Untoten-Belagerung, Weitere Events ...). Statt fuer jedes Event ein Template zu pflegen, erkennt der Bot nur die Ueberschrift 'Vorfall', wischt die Reiterleiste durch und holt ueberall ab, was abholbar ist. Der graue Abholen-Knopf (noch nicht verdient) wird dabei nicht getroffen - gemessen liegt er unter 0,60.",
+      "match": {
+        "template": "events/vorfall_titel.png",
+        "threshold": 0.9,
+        "region": [
+          0.0,
+          0.0,
+          0.5,
+          0.12
+        ]
+      },
+      "do": [
+        {
+          "log": "Vorfall offen - alle Reiter durchgehen"
+        },
+        {
+          "repeat": {
+            "times": 6,
+            "do": [
+              {
+                "tap_template": {
+                  "template": "ui/btn_abholen.png",
+                  "optional": true,
+                  "threshold": 0.85
+                }
+              },
+              {
+                "sleep": [
+                  0.6,
+                  1.0
+                ]
+              },
+              {
+                "swipe": [
+                  0.85,
+                  0.135,
+                  0.25,
+                  0.135,
+                  400
+                ]
+              },
+              {
+                "sleep": [
+                  1.5,
+                  2.2
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "key": "KEYCODE_BACK"
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        }
+      ]
     }
   ],
   "tasks": [

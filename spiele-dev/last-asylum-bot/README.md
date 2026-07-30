@@ -165,6 +165,16 @@ Die Auswertung zeigt pro Template, wie tief ein echter Treffer schon war und wie
 Fehlschlag — und legt die Schwelle in die Lücke dazwischen. Bleibt eine Überlappung, steht
 `unklar` da: dann ist das Template zu unspezifisch und sollte neu geschnitten werden.
 
+### Täglich wechselnde Events
+
+Der `Vorfall`-Bildschirm hat jeden Tag andere Reiter — Überlebenskampf, Käsefalle,
+Untoten-Belagerung, „Weitere Events". Für jedes ein Template zu pflegen wäre eine Tretmühle.
+Stattdessen erkennt der Bot nur die **Überschrift `Vorfall`** (sitzt in allen Ansichten mit
+1.00, sonst nirgends), wischt die Reiterleiste durch und holt überall ab, was abholbar ist.
+
+Der graue `Abholen` (noch nicht verdient) sieht dem grünen zum Verwechseln ähnlich — gemessen
+liegt er bei unter 0.60 gegen die grüne Vorlage, wird also nicht angetippt.
+
 ### Aufgaben nur zu bestimmten Zeiten
 
 ```json
@@ -185,6 +195,10 @@ von anderen Servern herüberkommen.
   dorthin wird verworfen und protokolliert — egal von welcher Regel er kommt.
 * Deine eine Aufgabe dabei: **schneide nie ein Template von einem Knopf mit Preisschild**
   (CHF/EUR/USD). Dann kann auch nichts schiefgehen.
+* Angebote tauchen auch ausserhalb der Tabu-Zone auf (z. B. „Toller Wert" mit CHF 17.50 auf
+  halber Höhe). Die greifen trotzdem nicht: der einzige Erkenner ohne Vorlage sucht **grüne**
+  Knöpfe, Preis-Knöpfe sind orange — und jede andere Berührung setzt ein Template voraus,
+  das du selbst geschnitten hast.
 
 Ein Test hält das dauerhaft fest: `test_tabu_zone_blockiert_kauf_tipp`.
 
