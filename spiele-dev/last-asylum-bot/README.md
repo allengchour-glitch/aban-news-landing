@@ -254,6 +254,16 @@ ganze Ansicht. Der Bot macht das genauso; der Punkt dafür steht als `leerer_pun
 Konfiguration (Standard `[0.35, 0.16]`, also links oben im Gelände). Liegt dort bei dir ein
 Gebäude, verschieb ihn.
 
+### Wirkungslose Tipps werden übersprungen
+
+Beim Prüflauf über echte Spielbildschirme fielen **77 Tipps in 16 Bildern** auf — 63 davon auf
+immer dieselben drei Stellen. Der Rundgang tippt eine Blase mehrfach an; im echten Spiel
+verschwindet sie nach dem ersten Mal, aber wenn ein Tipp nicht wirkt, hämmert er ins Leere.
+
+Der Bot merkt sich deshalb die letzte Tipp-Stelle samt Bildschirm. Will er dieselbe Stelle noch
+einmal antippen und hat sich seither **nichts** geändert, überspringt er sie. Wiederholtes
+Abholen an gleicher Position bleibt erlaubt — dort ändert sich ja jedes Mal etwas.
+
 ### Neustarts wiederholen nicht alles
 
 Dreizehn Aufgaben sind auf Sofortstart gestellt. Ohne Gedächtnis würde nach jedem Absturz erneut

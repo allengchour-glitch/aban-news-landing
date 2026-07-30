@@ -510,6 +510,38 @@ class TestEngine(unittest.TestCase):
         self.assertEqual(dev.keys, ["NEIN"])
 
 
+class TestWirkungsloseTipps(unittest.TestCase):
+    """Zweimal dieselbe Stelle antippen, ohne dass sich etwas ändert, ist sinnlos."""
+
+    def test_gleicher_tipp_auf_unveraendertem_bild_wird_uebersprungen(self):
+        screen = noise(200, 400, 95)
+        cfg = Config.from_dict(
+            {"base_width": 200,
+             "rules": [{"name": "r", "match": {"always": True},
+                        "do": [{"tap": [0.5, 0.5]}]}]}
+        )
+        dev = FakeDevice([screen], loop=True)  # Bild bleibt gleich
+        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=4)
+        for _ in range(6):
+            eng.step()
+        self.assertEqual(len(dev.taps), 1, f"nur der erste Tipp zählt, war {dev.taps}")
+        self.assertGreaterEqual(eng.stats.get("wirkungslos", 0), 1)
+
+    def test_bei_veraendertem_bild_wird_weiter_getippt(self):
+        cfg = Config.from_dict(
+            {"base_width": 200,
+             "rules": [{"name": "r", "match": {"always": True},
+                        "do": [{"tap": [0.5, 0.5]}]}]}
+        )
+        # Zwei deutlich verschiedene Bilder im Wechsel – wie beim Abholen,
+        # wo nach jedem Tipp der nächste Eintrag nachrückt.
+        dev = FakeDevice([noise(200, 400, 96), noise(200, 400, 97)], loop=True)
+        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=4)
+        for _ in range(4):
+            eng.step()
+        self.assertEqual(len(dev.taps), 4)
+
+
 class TestKonfigurationGepflegt(unittest.TestCase):
     """Kleine Hygiene-Prüfungen, damit die Konfiguration lesbar bleibt."""
 

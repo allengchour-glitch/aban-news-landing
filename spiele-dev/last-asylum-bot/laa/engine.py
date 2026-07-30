@@ -125,6 +125,7 @@ class Engine:
         self._task_due: Dict[str, float] = {}
         self._last_text: Dict[str, str] = {}
         self._gemeldet_fehlend = set()
+        self._letzter_tipp = None
         self._last_frame: Optional[Image] = None
         self._last_change = clock()
         self._scale: Optional[float] = None
@@ -587,6 +588,10 @@ class Engine:
         if screen is not None:
             x = max(0, min(x, screen.width - 1))
             y = max(0, min(y, screen.height - 1))
+            if self._wirkungslos(x, y, screen):
+                self.log.debug("Gleicher Tipp ohne Wirkung - uebersprungen", x=x, y=y)
+                self.bump("wirkungslos")
+                return
             verbot = self._tabu_treffer(x, y, screen)
             if verbot is not None:
                 self.log.warn(
@@ -596,8 +601,25 @@ class Engine:
                 self.bump("tabu-blockiert")
                 return
         self.dev.tap(x, y)
+        self._letzter_tipp = (x, y, screen)
         self.bump("taps")
         self.log.debug("Tipp", x=x, y=y, grund=why)
+
+    def _wirkungslos(self, x: int, y: int, screen: Optional[Image]) -> bool:
+        """Wurde genau hier schon getippt, ohne dass sich etwas geruehrt hat?
+
+        Eine eingesammelte Blase verschwindet, ein gedrueckter Knopf veraendert
+        den Bildschirm. Bleibt beides aus, war der Tipp wirkungslos - dann noch
+        zwanzigmal auf dieselbe Stelle zu haemmern bringt nichts und sieht
+        ausserdem nach Maschine aus. Wiederholtes Abholen an gleicher Stelle
+        bleibt erlaubt, weil sich dort jedes Mal etwas aendert.
+        """
+        if screen is None or self._letzter_tipp is None:
+            return False
+        lx, ly, altes_bild = self._letzter_tipp
+        if abs(lx - x) > 25 or abs(ly - y) > 25:
+            return False
+        return screen.diff_ratio(altes_bild) < 0.01
 
     def _tabu_treffer(self, x: int, y: int, screen: Image):
         """Liegt der Punkt in einer gesperrten Zone (Shop, Diamanten, Angebote)?"""
