@@ -6,6 +6,7 @@
 # Ohne Parameter läuft ein Trockenlauf (5 Minuten, es wird NICHTS angetippt).
 #   .\start-windows.ps1 -Scharf              -> tippt wirklich, 60 Minuten
 #   .\start-windows.ps1 -Scharf -Minuten 180 -> 3 Stunden
+#   .\start-windows.ps1 -Scharf -Dauerlauf    -> ohne Zeitlimit (fuer den Autostart)
 #   .\start-windows.ps1 -NurPruefen          -> nur Konfiguration prüfen, kein Gerät nötig
 #   .\start-windows.ps1 -Serial emulator-5554 -> ein bestimmtes Gerät erzwingen
 #
@@ -15,6 +16,7 @@
 param(
     [switch]$Scharf,
     [switch]$NurPruefen,
+    [switch]$Dauerlauf,
     [int]$Minuten = 0,
     [string]$Adb = "",
     [string]$Serial = ""
@@ -170,7 +172,11 @@ if (-not (Test-Path "logs")) { New-Item -ItemType Directory -Path "logs" | Out-N
 $stempel = Get-Date -Format "yyyyMMdd-HHmmss"
 $protokoll = "logs\lauf-$stempel.jsonl"
 
-if ($Scharf) {
+if ($Scharf -and $Dauerlauf) {
+    Schritt "Bot laeuft SCHARF ohne Zeitlimit"
+    Write-Host "  Anhalten: Strg+C, oder in diesem Ordner eine Datei namens STOP anlegen." -ForegroundColor Yellow
+    & $python bot.py --adb "$Adb" @geraet run --jsonl $protokoll
+} elseif ($Scharf) {
     if ($Minuten -le 0) { $Minuten = 60 }
     Schritt "Bot laeuft SCHARF fuer $Minuten Minuten"
     Write-Host "  Anhalten: Strg+C, oder in diesem Ordner eine Datei namens STOP anlegen." -ForegroundColor Yellow

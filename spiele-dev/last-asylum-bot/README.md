@@ -65,6 +65,25 @@ Sieht das Protokoll gut aus:
 .\start-windows.ps1 -NurPruefen          # nur Konfiguration, kein Handy nötig
 ```
 
+### Einmal einrichten, danach nie wieder tippen
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\autostart-einrichten.ps1 -Jetzt
+```
+
+Legt eine Windows-Aufgabe an, die den Bot **drei Minuten nach jeder Anmeldung** startet — ohne
+Zeitlimit und mit automatischem Neustart nach einem Absturz (bis zu fünfmal, alle zehn Minuten).
+`-Jetzt` startet ihn zusätzlich sofort.
+
+| | |
+|---|---|
+| Anhalten | `New-Item STOP` im Bot-Ordner — er beendet sich beim nächsten Durchlauf |
+| Weiterlaufen | Datei `STOP` wieder löschen |
+| Ganz entfernen | `.\autostart-einrichten.ps1 -Entfernen` |
+
+BlueStacks muss laufen und Last Asylum offen sein; deshalb die drei Minuten Verzögerung nach der
+Anmeldung. Trägt BlueStacks sich selbst in den Autostart ein, passt das zusammen.
+
 ### BlueStacks statt Handy
 
 Geht genauso — und ist bequemer, weil der PC durchlaufen kann, ohne dass dein Handy blockiert ist.
