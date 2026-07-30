@@ -25,6 +25,7 @@ Neustart setzt `ROUND=0` → Tiefe fällt auf Minimum → Runde-1-Kategorien (Sc
 `echo $ROUND > /tmp/<runner>_round` (wrap bei >25 auf 1 für Neu-Sweep frischer Katalog-Ware). So wächst die Paginierungs-
 Tiefe über Neustarts hinweg weiter statt jedes Mal die erschöpften Top-Seiten neu zu scannen. /tmp-Persist-Dateien
 `/tmp/cj_*_round` überleben keinen Wipe → bei Neuaufsetzen mit 6 seeden (Tiefe ~33).
+**⚠️ Fünfte Falle: unerschöpfte Gruppen fehlten in der Rotation (2026-07-30).** Die Runner-`for G in …`-Listen deckten nur ~18 der 27 GROUPS ab — `cjelektronik gaming cjauto nagel musik cj3d cjspielelektronik cjschuhedamen cjschuheherren` waren in KEINEM Runner → während Schmuck/Damen/Uhren erschöpft flach standen, lag frische Ware brach. Fix: diese 9 Gruppen jeder Runner-Rotation voranstellen (Ledger dedupt Overlap). Bei /tmp-Neuaufsetzen mit einbauen.
 
 Dieses Repo ist `aban-news-landing`, enthält aber mehrere Projekte. Das aktive, autonome
 Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
