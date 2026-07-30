@@ -549,7 +549,11 @@ var grasTex=(function(){var cv=document.createElement("canvas");cv.width=cv.heig
   var t=new THREE.CanvasTexture(cv);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(20,15);
   try{t.anisotropy=renderer.capabilities.getMaxAnisotropy();}catch(e){}return t;})();
 var rasen=new THREE.Mesh(new THREE.PlaneGeometry(GW*CS+60,GH*CS+60),new THREE.MeshStandardMaterial({map:grasTex,roughness:0.95,envMapIntensity:0.22}));
-rasen.rotation.x=-Math.PI/2;rasen.position.y=-0.02;rasen.receiveShadow=true;scene.add(rasen);
+/* 📐 Klare Hoehen-Staffelung, damit sich keine zwei Flaechen um dieselbe Tiefe streiten
+   (das war das Flimmern): Fernebene -0.08, Fern-Overlay -0.06, Rasen -0.05,
+   Nah-Overlay -0.035, Wasser -0.022, Plaetze/Viertel -0.012, Strassen -0.003,
+   Markierungen +0.005. Mindestabstand ueberall >= 0.01. */
+rasen.rotation.x=-Math.PI/2;rasen.position.y=-0.05;rasen.receiveShadow=true;scene.add(rasen);
 // Boden-Variation: EINE große nicht-kachelnde Overlay-Textur bricht das Kachelmuster
 // (weiche rgba-Blotches im Canvas vorgeblendet, gleiche Beleuchtung wie der Rasen darunter)
 (function bodenVariation(){
@@ -565,7 +569,7 @@ rasen.rotation.x=-Math.PI/2;rasen.position.y=-0.02;rasen.receiveShadow=true;scen
   function overlay(w,h,y,tex){var m=new THREE.Mesh(new THREE.PlaneGeometry(w,h),
     new THREE.MeshStandardMaterial({map:tex,transparent:true,roughness:1,depthWrite:false}));
     m.rotation.x=-Math.PI/2;m.position.y=y;scene.add(m);return m;}
-  overlay(GW*CS+60,GH*CS+60,-0.015,blotchTex(46,0.3)); // nahe Wiese — traegt jetzt die grossflaechige Variation
+  overlay(GW*CS+60,GH*CS+60,-0.035,blotchTex(46,0.3)); // nahe Wiese — traegt jetzt die grossflaechige Variation
   overlay(600,600,-0.06,blotchTex(40,0.2));             // Fern-Ebene
 })();
 // Kaminrauch aus mehreren Häusern (leichte aufsteigende Partikel)
@@ -664,7 +668,11 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
   function wasserMat(){return new THREE.MeshStandardMaterial({color:0x1f6bb0,roughness:0.06,metalness:0.45,transparent:true,opacity:0.92,envMapIntensity:0.9});}
   function machWasser(w,d,x,z,seg){
     var g=new THREE.PlaneGeometry(w,d,seg||16,seg||16);
-    var m=new THREE.Mesh(g,wasserMat());m.rotation.x=-Math.PI/2;m.position.set(x,-0.02,z);scene.add(m);
+    /* 🐛 Wasser lag auf y=-0.02 — EXAKT auf der Hoehe des Rasens. Zwei Flaechen auf
+       derselben Tiefe streiten sich um die Sichtbarkeit: je nach Kamerawinkel gewinnt mal
+       die eine, mal die andere. Das war das blaue Flimmern (User). Jetzt klar darueber,
+       aber unter den Strassen (-0.003). */
+    var m=new THREE.Mesh(g,wasserMat());m.rotation.x=-Math.PI/2;m.position.set(x,-0.022,z);scene.add(m);
     window._wasser.push({mesh:m,geo:g,base:g.attributes.position.array.slice()});return m;}
   // See (animiert) — ORGANISCHE Uferlinie statt Rechteck-Kante
   function seeR(a){return 13+Math.sin(a*3)*1.8+Math.cos(a*5+1.3)*1.2+Math.sin(a*2+0.7)*0.9;}
@@ -1222,9 +1230,9 @@ var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_d
   (function ringTrottoirs(){
     var RGZ_N=-100,RGZ_S=118,RGX=112;
     [[RGZ_N,-105.6],[RGZ_N,-94.4],[RGZ_S,112.4],[RGZ_S,123.6]].forEach(function(P){
-      tr(2*RGX-8,2.0,0,P[1],0.05);});                    // Ring Nord/Sued, an den Ecken ausgespart
+      tr(2*RGX-8,2.0,0,P[1],0.052);});                   // Ring Nord/Sued — 0.002 hoeher: an den Ecken lagen zwei Gehwege exakt aufeinander
     [[-RGX,-117.6],[-RGX,-106.4],[RGX,106.4],[RGX,117.6]].forEach(function(P){
-      tr(2.0,RGZ_S-RGZ_N-8,P[1],(RGZ_N+RGZ_S)/2,0.05);});// Ring West/Ost
+      tr(2.0,RGZ_S-RGZ_N-8,P[1],(RGZ_N+RGZ_S)/2,0.054);});// Ring West/Ost
     [RX,-RX].forEach(function(xc){                        // Zubringer nach Norden und Sueden
       [xc-5.6,xc+5.6].forEach(function(xe){
         tr(2.0,Math.abs(RGZ_N+SZ9+23)-6,xe,(RGZ_N-(SZ9+23))/2,0.05);
@@ -1343,8 +1351,14 @@ var dorfFenster=[];
 (function baueDorf(){
   var SZ=GH*CS/2; // 14
   // Nordstrasse + zwei Querstrassen (Block-Layout)
+  /* 🐛 Alle Fahrbahnen lagen auf exakt -0.003. An jeder Kreuzung und jedem Zubringer
+     ueberlappen zwei Flaechen auf derselben Tiefe und streiten sich um die Sichtbarkeit —
+     das war das Flimmern auf Strasse und Trottoir. Jede Fahrbahn bekommt jetzt ihre eigene
+     Hoehe, gestaffelt um 0.4 mm; sichtbar ist das nicht, der Streit hoert damit auf. */
+  var _strLage=0;
   function strasseMesh(w,h,x,z){var st=new THREE.Mesh(new THREE.PlaneGeometry(w,h),w>h?strMatH:strMatV);
-    st.rotation.x=-Math.PI/2;st.position.set(x,-0.003,z);st.receiveShadow=true;scene.add(st);return st;}
+    st.rotation.x=-Math.PI/2;st.position.set(x,-0.003-(_strLage++)*0.0004,z);
+    st.receiveShadow=true;scene.add(st);return st;}
   strasseMesh(RL,16,0,-SZ-12);
   strasseMesh(10,2*SZ+46,-RX,0);strasseMesh(10,2*SZ+46,RX,0); // laenger: aeussere Zebras+Haltelinien liegen auf Asphalt
   // ---- Aeussere Ringstrasse: bindet Downtown (N), Bahnhof (S), Villen (O/W) an ----
