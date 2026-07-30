@@ -20,7 +20,6 @@ STL     = "/home/user/aban-news-landing/models/stl"
 TOLERANZ_UNTEN = 0.005      # 5 mm — darunter ist es Rundungsrauschen aus dem Export
 TOLERANZ_OBEN  = 0.012      # daruber schwebt es sichtbar
 
-# Bewusste Ausnahmen: diese Teile haengen und haben deshalb keine Unterkante auf 0.
 # Bewusste Ausnahmen: diese Teile haengen an Wand oder Decke und haben deshalb
 # keine Unterkante auf 0. Ohne die Liste meldet die Pruefung sie als Fehler.
 HAENGEND = {
