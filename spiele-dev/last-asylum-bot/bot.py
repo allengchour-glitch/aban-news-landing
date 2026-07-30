@@ -231,9 +231,21 @@ def cmd_lernen(args) -> int:
     """Aus den JSONL-Protokollen echter Läufe bessere Schwellen ableiten."""
     import json as _json
 
+    # PowerShell loest Platzhalter nicht auf - anders als eine Unix-Shell reicht es
+    # 'logs\lauf-*.jsonl' woertlich durch. Also hier selbst aufloesen.
+    dateien = []
+    for muster in args.jsonl:
+        treffer_muster = sorted(glob.glob(muster)) if any(c in muster for c in "*?[") else [muster]
+        if not treffer_muster:
+            print(f"Keine Datei passt auf {muster}", file=sys.stderr)
+        dateien.extend(treffer_muster)
+    if not dateien:
+        print("Keine Protokolle gefunden. Erst einen Lauf mit --jsonl machen.", file=sys.stderr)
+        return 1
+
     treffer, daneben = {}, {}
     zeilen = 0
-    for pfad in args.jsonl:
+    for pfad in dateien:
         with open(pfad, "r", encoding="utf-8") as fh:
             for zeile in fh:
                 try:
@@ -251,7 +263,7 @@ def cmd_lernen(args) -> int:
               file=sys.stderr)
         return 1
 
-    print(f"{zeilen} Vergleiche aus {len(args.jsonl)} Datei(en)\n")
+    print(f"{zeilen} Vergleiche aus {len(dateien)} Datei(en)\n")
     print(f"{'Template':38} {'Treffer':>8} {'min':>7} {'bester Fehlschlag':>18} {'Vorschlag':>10}")
     vorschlaege = {}
     for name in sorted(set(treffer) | set(daneben)):

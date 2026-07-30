@@ -726,6 +726,34 @@ class TestZeitfenster(unittest.TestCase):
         self.assertEqual(dev2.keys, [])
 
 
+class TestLernenPlatzhalter(unittest.TestCase):
+    """PowerShell löst `*` nicht auf – das muss der Befehl selbst tun."""
+
+    def test_muster_wird_selbst_aufgeloest(self):
+        import io
+        import shutil
+        import tempfile
+        from contextlib import redirect_stdout
+
+        import bot as cli
+
+        ordner = tempfile.mkdtemp()
+        try:
+            with open(os.path.join(ordner, "lauf-1.jsonl"), "w", encoding="utf-8") as fh:
+                fh.write('{"ev":"vergleich","template":"a.png","score":0.93,'
+                         '"schwelle":0.88,"treffer":true}\n')
+            args = cli.build_parser().parse_args(
+                ["lernen", os.path.join(ordner, "lauf-*.jsonl")]
+            )
+            puffer = io.StringIO()
+            with redirect_stdout(puffer):
+                code = args.func(args)
+            self.assertEqual(code, 0)
+            self.assertIn("a.png", puffer.getvalue())
+        finally:
+            shutil.rmtree(ordner, ignore_errors=True)
+
+
 class TestEchtesSpielMaterial(unittest.TestCase):
     """Die aus echten Screenshots geschnittenen Templates gegeneinander prüfen."""
 
