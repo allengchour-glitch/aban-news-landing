@@ -651,6 +651,81 @@
           ]
         }
       ]
+    },
+    {
+      "name": "kampf-herausforderung",
+      "priority": 86,
+      "cooldown": 8.0,
+      "_zweck": "Wachturm/Expeditionskampf: startet die naechste Herausforderung. Zusammen mit den beiden Regeln darunter spielt der Bot den Expeditions-Kampf von selbst durch.",
+      "match": {
+        "template": "kampf/herausforderung.png",
+        "threshold": 0.86,
+        "region": [
+          0.0,
+          0.85,
+          1.0,
+          1.0
+        ]
+      },
+      "do": [
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            2.0,
+            3.0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "kampf-starten",
+      "priority": 85,
+      "cooldown": 8.0,
+      "_zweck": "Aufstellung steht - Kampf starten.",
+      "match": {
+        "template": "kampf/kampf.png",
+        "threshold": 0.86,
+        "region": [
+          0.0,
+          0.85,
+          1.0,
+          1.0
+        ]
+      },
+      "do": [
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            6.0,
+            9.0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "kampf-ergebnis-schliessen",
+      "priority": 84,
+      "cooldown": 5.0,
+      "_zweck": "Sieg oder Niederlage wegklicken; die Belohnungs-Regeln haben vorher schon zugeschlagen.",
+      "match": {
+        "template": "kampf/zurueck.png",
+        "threshold": 0.86
+      },
+      "do": [
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            1.5,
+            2.5
+          ]
+        }
+      ]
     }
   ],
   "tasks": [
@@ -1065,6 +1140,27 @@
             "after": [
               2.5,
               3.5
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "forschung/beschleunigung.png",
+            "optional": true,
+            "threshold": 0.86,
+            "after": [
+              1.5,
+              2.5
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "ui/btn_benutzen.png",
+            "optional": true,
+            "after": [
+              1.2,
+              2.0
             ]
           }
         },

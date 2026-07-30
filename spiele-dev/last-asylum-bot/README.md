@@ -29,10 +29,16 @@ Diese Templates sind aus echten Screenshots geschnitten und **funktionieren sofo
 | Zuflucht | Kräuter, Geschenk-Blasen, Offline-Einnahmen, Angriffs-Zähler | erntet alles ab |
 | Navigation | Burg, Welt, Startseite, Held, Allianz, Nachricht, Tasche, Tagesziele, Heilen, Lupe | wechselt zwischen den Bildschirmen |
 | Events | „Wertvolles Event", „Spezielles Event" | öffnet sie und holt die Belohnungen |
+| Sammeln | Lupe, Reiter `Sammeln`, Bauernhof, `Suchen`, `Versammeln` | schickt Sammel-Trupps los |
+| Expedition | `Herausforderung`, `Kampf`, `Zurück` im Wachturm | spielt den Expeditionskampf allein durch |
+| Taverne | `Rekrutieren` im Gebäude-Menü | nimmt den Gratis-Zug mit |
 
-Noch offen sind Schild-Setzen, Forschung und der Sammel-Ablauf auf der Weltkarte — verdrahtet
-sind sie, es fehlen nur die Bild-Ausschnitte. `python3 bot.py check` listet auf, welche.
-Bis dahin überspringt der Bot diese Schritte still und läuft trotzdem.
+Dazu kommen drei Erkenner, die **ohne** exakte Vorlage arbeiten (Abschnitt 4): grüne Knöpfe an
+der Farbe, rote Punkte als Belohnungs-Hinweis, und Schwellen, die er aus echten Läufen selbst
+nachjustiert.
+
+Offen ist im Wesentlichen noch das Schild-Setzen. `python3 bot.py check` listet auf, welche
+Ausschnitte fehlen; bis dahin überspringt der Bot die betroffenen Schritte still.
 
 ---
 
@@ -96,11 +102,10 @@ Diese Vorlagen fehlen noch; die zugehörigen Schritte ruhen still, bis sie da si
 | Priorität | Template | Wo abschneiden |
 |---|---|---|
 | ★★★ | `hud/schild_aktiv.png` | Schild-Symbol im HUD, **während ein Schutzschild läuft** — erst danach darf die Schild-Aufgabe an (siehe unten) |
+| ★★☆ | `ui/btn_bestaetigen.png`, `ui/btn_benutzen.png` | Bestätigungs-Dialoge („Benutzen" beim Beschleuniger, „Bestätigen" beim Upgrade) |
 | ★★☆ | `held/team1.png` | Helden-Menü, Auswahl von Team 1 |
-| ★★☆ | `ui/btn_bestaetigen.png`, `ui/btn_benutzen.png` | Bestätigungs-Dialoge |
-| ★★☆ | `sammeln/ressource.png`, `sammeln/suchen.png`, `sammeln/sammeln.png`, `sammeln/marschieren.png` | Weltkarte → Lupe → Sammel-Ablauf |
+| ★☆☆ | `nav/wachturm.png`, `nav/zuflucht.png` | Einstiege, die der Bot noch nicht selbst findet |
 | ★☆☆ | `forschung/empfehlung.png`, `ui/btn_forschen.png` | Forschungszentrum |
-| ★☆☆ | `nav/zuflucht.png` | Umschalter am linken Bildrand zur Zuflucht (sonst wird blind auf die Stelle getippt) |
 | ★☆☆ | `ui/ad_close.png`, `ui/reconnect.png`, `hud/bau_fertig.png` | Werbe-✖, Verbindungsabbruch, fertige Produktion |
 | ★☆☆ | `ui/btn_heilen.png`, `allianz/geschenke.png` | Lazarett und Allianz-Geschenkliste |
 
