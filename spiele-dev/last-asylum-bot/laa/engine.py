@@ -177,6 +177,8 @@ class Engine:
             self._type_text(value)
         elif key == "swipe":
             self._swipe(value)
+        elif key == "drag":
+            self._swipe(value, ziehen=True)
         elif key in ("key", "back"):
             code = "KEYCODE_BACK" if key == "back" else str(value)
             self.dev.key(code)
@@ -347,7 +349,7 @@ class Engine:
                 return self.cfg.tabu_namen[i] if i < len(self.cfg.tabu_namen) else str(zone)
         return None
 
-    def _swipe(self, value: Sequence[float]) -> None:
+    def _swipe(self, value: Sequence[float], ziehen: bool = False) -> None:
         screen = self.screen or self.capture()
 
         def px(v, size):
@@ -357,10 +359,15 @@ class Engine:
         y1 = px(value[1], screen.height)
         x2 = px(value[2], screen.width)
         y2 = px(value[3], screen.height)
-        ms = int(value[4]) if len(value) > 4 else 320
-        self.dev.swipe(x1, y1, x2, y2, ms)
-        self.bump("swipes")
-        self.log.debug("Wisch", von=(x1, y1), nach=(x2, y2))
+        ms = int(value[4]) if len(value) > 4 else (1200 if ziehen else 320)
+        if ziehen:
+            self.dev.drag(x1, y1, x2, y2, ms)
+            self.bump("drags")
+            self.log.debug("Ziehen", von=(x1, y1), nach=(x2, y2), ms=ms)
+        else:
+            self.dev.swipe(x1, y1, x2, y2, ms)
+            self.bump("swipes")
+            self.log.debug("Wisch", von=(x1, y1), nach=(x2, y2))
 
     def _wait_template(self, spec: Dict[str, Any]) -> None:
         timeout = float(spec.get("timeout", 15))

@@ -168,7 +168,7 @@ class Config:
         problems: List[str] = []
         self.offene_templates = []
         known_actions = {
-            "tap_match", "tap_template", "tap", "tap_first", "swipe", "key", "sleep",
+            "tap_match", "tap_template", "tap", "tap_first", "swipe", "drag", "key", "sleep",
             "wait_template", "start_app", "stop_app", "restart_app", "log",
             "screenshot", "repeat", "stop", "back", "run_task", "type_text", "wenn",
         }

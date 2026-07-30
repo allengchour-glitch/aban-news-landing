@@ -361,6 +361,24 @@ class TestEngine(unittest.TestCase):
         unten = [t for t in dev.taps if t[1] >= 200]
         self.assertTrue(oben and unten, dev.taps)
 
+    def test_drag_zieht_lang_statt_zu_wischen(self):
+        screen = noise(200, 400, 50)
+        cfg, dev, eng = self.bau(
+            {
+                "rules": [
+                    {"name": "r", "match": {"always": True},
+                     "do": [{"drag": [0.2, 0.5, 0.8, 0.5]}]}
+                ]
+            },
+            [screen],
+        )
+        eng.step()
+        self.assertEqual(dev.swipes, [])
+        self.assertEqual(len(dev.drags), 1)
+        # Ohne ausdrückliche Dauer wird lange gezogen – ein kurzer Wisch
+        # bewegt die Stadtansicht nicht.
+        self.assertGreaterEqual(dev.drags[0][4], 1000)
+
     def test_not_bedingung(self):
         screen = noise(120, 200, 41)
         cfg, dev, eng = self.bau(

@@ -1879,7 +1879,7 @@
       "every": 900,
       "at_start": true,
       "priority": 118,
-      "_zweck": "Der Bot sieht immer nur den aktuellen Bildschirmausschnitt. Dieser Rundgang schwenkt die Kamera ueber die ganze Basis und erntet nach jedem Schwenk die Ertrags-Blasen ab, die dabei sichtbar werden. Ohne das bleiben Gebaeude am Rand ewig unangetastet.",
+      "_zweck": "Der Bot sieht immer nur den aktuellen Bildschirmausschnitt. Der Rundgang schiebt die Stadtansicht - gedrueckt halten und ziehen, ein kurzer Wisch bewegt die Kamera nicht - und erntet nach jedem Schritt die sichtbar gewordenen Ertrags-Blasen ab.",
       "do": [
         {
           "log": "Rundgang durch die Basis - Kamera schwenken und alles abernten"
@@ -2035,12 +2035,12 @@
           ]
         },
         {
-          "swipe": [
+          "drag": [
             0.2,
             0.45,
             0.8,
             0.45,
-            500
+            1300
           ]
         },
         {
@@ -2170,12 +2170,12 @@
           ]
         },
         {
-          "swipe": [
+          "drag": [
             0.2,
             0.45,
             0.8,
             0.45,
-            500
+            1300
           ]
         },
         {
@@ -2305,12 +2305,12 @@
           ]
         },
         {
-          "swipe": [
+          "drag": [
             0.8,
             0.45,
             0.2,
             0.45,
-            500
+            1300
           ]
         },
         {
@@ -2440,12 +2440,12 @@
           ]
         },
         {
-          "swipe": [
+          "drag": [
             0.8,
             0.45,
             0.2,
             0.45,
-            500
+            1300
           ]
         },
         {
@@ -2575,12 +2575,12 @@
           ]
         },
         {
-          "swipe": [
+          "drag": [
             0.5,
             0.3,
             0.5,
             0.65,
-            500
+            1300
           ]
         },
         {
@@ -2710,12 +2710,12 @@
           ]
         },
         {
-          "swipe": [
+          "drag": [
             0.5,
             0.65,
             0.5,
             0.3,
-            500
+            1300
           ]
         },
         {

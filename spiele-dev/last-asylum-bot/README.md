@@ -381,7 +381,9 @@ Eine Konfiguration hat **Regeln** (reagieren auf das, was gerade zu sehen ist) u
 | `{"tap_match": {"offset": [dx, dy]}}` | tippt den Treffer an (mit Zufallsstreuung); `offset` verschiebt das Ziel, z. B. vom roten Punkt auf den Knopf darunter |
 | `{"tap_template": {"template": "x.png", "optional": true, "after": 2}}` | sucht neu und tippt; `after` = Pause danach |
 | `{"tap_first": {"of": ["a.png","b.png"], "fallback": [0.5,0.9]}}` | erstes gefundenes antippen, sonst den Ersatzpunkt |
-| `{"tap": [0.5, 0.9]}` / `{"swipe": [x1,y1,x2,y2,ms]}` | Punkt bzw. Wisch (relativ oder in Pixeln) |
+| `{"tap": [0.5, 0.9]}` | Punkt antippen; eine **Liste** von Punkten → einer davon wird zufällig gewählt |
+| `{"swipe": [x1,y1,x2,y2,ms]}` | schneller Wisch — für Listen, die scrollen sollen |
+| `{"drag": [x1,y1,x2,y2,ms]}` | gedrückt halten und ziehen (Standard 1200 ms) — **so** verschiebt man die Stadtansicht; ein kurzer Wisch bewegt sie nicht |
 | `{"key": "KEYCODE_BACK"}`, `{"back": true}` | Taste |
 | `{"sleep": 1.5}` oder `{"sleep": [1,2]}` | Pause (Bereich = zufällig) |
 | `{"wait_template": {"template": "x.png", "timeout": 60, "tap": true}}` | warten bis etwas erscheint |

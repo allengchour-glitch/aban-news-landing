@@ -38,6 +38,9 @@ class Device:
     def type_text(self, text: str) -> None:  # pragma: no cover - Interface
         raise NotImplementedError
 
+    def drag(self, x1: int, y1: int, x2: int, y2: int, ms: int = 1200) -> None:  # pragma: no cover
+        raise NotImplementedError
+
     def start_app(self, package: str, activity: Optional[str] = None) -> None:  # pragma: no cover
         raise NotImplementedError
 
@@ -130,6 +133,17 @@ class AdbDevice(Device):
             return
         self.shell(f"input keyevent {keycode}")
 
+    def drag(self, x1: int, y1: int, x2: int, y2: int, ms: int = 1200) -> None:
+        """Gedrueckt halten und schieben – so verschiebt man die Stadtansicht.
+
+        Ein kurzer Wisch wird als Schleuder-Geste gewertet und bewegt die Kamera
+        gar nicht oder unkontrolliert. Erst eine lange Zieh-Dauer wirkt wie ein
+        Finger, der aufliegt und schiebt.
+        """
+        if self.dry_run:
+            return
+        self.shell(f"input swipe {int(x1)} {int(y1)} {int(x2)} {int(y2)} {max(600, int(ms))}")
+
     def type_text(self, text: str) -> None:
         """Text ins fokussierte Eingabefeld tippen.
 
@@ -198,6 +212,7 @@ class FakeDevice(Device):
         self.index = 0
         self.taps: List[Tuple[int, int]] = []
         self.swipes: List[Tuple[int, int, int, int, int]] = []
+        self.drags: List[Tuple[int, int, int, int, int]] = []
         self.keys: List[str] = []
         self.texts: List[str] = []
         self.dry_run = True
@@ -219,6 +234,9 @@ class FakeDevice(Device):
 
     def swipe(self, x1: int, y1: int, x2: int, y2: int, ms: int = 300) -> None:
         self.swipes.append((int(x1), int(y1), int(x2), int(y2), int(ms)))
+
+    def drag(self, x1: int, y1: int, x2: int, y2: int, ms: int = 1200) -> None:
+        self.drags.append((int(x1), int(y1), int(x2), int(y2), int(ms)))
 
     def key(self, keycode: str) -> None:
         self.keys.append(keycode)
