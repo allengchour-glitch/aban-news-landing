@@ -109,6 +109,62 @@ def fensterreihe(g_breite, g_tiefe, zbase, anzahl, rahm, glas, hoehe=1.5):
         box(px, g_tiefe/2+0.02, zbase, g_breite/anzahl*0.62, 0.06, hoehe, rahm)
         box(px, g_tiefe/2+0.05, zbase, g_breite/anzahl*0.50, 0.05, hoehe*0.82, glas)
 
+# ------------------------------------------------------------- FASSADEN-RELIEF
+# Die erste Fassung dieser Module war ein glatter Quader mit aufgemaltem
+# Fensterband. Die Helfer hier geben echtes Vor- und Rueckspringen — OHNE das
+# Modulraster zu sprengen. Grundregel dabei:
+#   * Jedes rasterbestimmende Teil ist ein QUADER. Der Mittelpunkt seiner
+#     Flaeche bleibt auch nach dem Bevel exakt auf Mass; eine Pyramidenspitze
+#     oder eine Zylinderkante schrumpft dagegen (das alte Satteldach aus
+#     `kegel(vertices=4)` war deshalb 12.97 statt 6.00 m breit).
+#   * Tiefenstaffelung immer: Wandflaeche -> Feld -> Pfeiler -> Gesims/Bank.
+#     Das Glas liegt knapp VOR der Wandflaeche (sonst unsichtbar), aber
+#     deutlich HINTER Pfeiler und Gesims — daraus entsteht die Fensternische.
+
+def fbox(t, u, v, z, bu, bv, bz, m=None):
+    """Quader auf einer der vier Fassaden eines quadratischen Baukoerpers.
+    t=0 -> +y, t=1 -> +x, t=2 -> -y, t=3 -> -x. `u` laeuft laengs der Fassade,
+    `v` ist der Abstand von der Gebaeudemitte nach aussen."""
+    if t == 0: return box( u,  v, z, bu, bv, bz, m)
+    if t == 1: return box( v, -u, z, bv, bu, bz, m)
+    if t == 2: return box(-u, -v, z, bu, bv, bz, m)
+    return         box(-v,  u, z, bv, bu, bz, m)
+
+def randring(cx, cy, B, T, z, breite, dicke, m):
+    """Attika / Dachrand / Bruestung als RING. Eine Vollplatte deckt die dunkle
+    Dachhaut zu und macht jedes Flachdach zu einem weissen Klotz."""
+    for sy in (-1, 1): box(cx, cy + sy*(T/2 - breite/2), z, B, breite, dicke, m)
+    for sx in (-1, 1): box(cx + sx*(B/2 - breite/2), cy, z, breite, T - 2*breite, dicke, m)
+
+def halbzyl(o):
+    """Untere Haelfte wegschneiden — ein voller Zylinder ist kein Tonnendach
+    (seine Unterhaelfte steckt im Bau und taucht unter z = 0)."""
+    bpy.context.view_layer.objects.active = o
+    for s_ in bpy.context.scene.objects: s_.select_set(False)
+    o.select_set(True)
+    bpy.ops.object.transform_apply(location=False, rotation=True, scale=True)
+    bm = bmesh.new(); bm.from_mesh(o.data)
+    bmesh.ops.bisect_plane(bm, geom=bm.verts[:] + bm.edges[:] + bm.faces[:],
+                           plane_co=(0, 0, 0), plane_no=(0, 0, 1), clear_inner=True)
+    bmesh.ops.holes_fill(bm, edges=bm.edges[:])
+    bm.to_mesh(o.data); bm.free(); o.data.update()
+    return o
+
+def laibung(t, u, v0, z, b, h, tief, m_rahm, m_glas, m_sims=None, vsp=1, hsp=1):
+    """EIN Fenster mit echter Laibung. `v0` ist die Wandflaeche, `tief` der
+    Vorsprung des umlaufenden Rahmens. Tiefenfolge: Glas v0+0.02, Sprossen
+    v0+0.06, Laibung/Sturz v0+tief, Fensterbank v0+tief+0.10."""
+    fbox(t, u, v0 + 0.045, z, b, 0.05, h, m_glas)                      # Glas, knapp davor
+    for i in range(vsp):
+        flach(fbox(t, u - b/2 + b*(i+1)/(vsp+1), v0 + 0.085, z, 0.07, 0.05, h, m_rahm))
+    for i in range(hsp):
+        flach(fbox(t, u, v0 + 0.085, z - h/2 + h*(i+1)/(hsp+1), b, 0.05, 0.07, m_rahm))
+    for s in (-1, 1):                                                  # Laibungswangen
+        fbox(t, u + s*(b/2 + 0.08), v0 + tief/2, z, 0.16, tief, h + 0.32, m_rahm)
+    fbox(t, u, v0 + tief/2, z + h/2 + 0.08, b + 0.32, tief, 0.16, m_rahm)      # Sturz
+    ts = tief + 0.10
+    fbox(t, u, v0 + ts/2, z - h/2 - 0.09, b + 0.44, ts, 0.18, m_sims or m_rahm)  # Bank
+
 # ---------------------------------------------------------- RUNDE KAROSSERIEN
 # Eine Kette einzelner Quader liest sich als TREPPE — an Fahrzeugen faellt das am
 # staerksten auf (dieselbe Lehre wie bei den Schiffsruempfen, `hull()` in

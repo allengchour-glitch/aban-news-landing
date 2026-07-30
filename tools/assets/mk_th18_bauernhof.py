@@ -263,6 +263,121 @@ def scheibe(p0, p1, breite, m, dicke=0.05, aus=0.035):
     o.rotation_euler[0] = math.atan2(-vy, vz)
     return o
 
+# ------------------------------------------------ RUNDE FAHRZEUGTEILE (2026-07-30)
+# Traktor und Anhaenger waren reine Quaderketten. Alles hier Ergaenzte dient nur
+# dem einen Zweck: KEINE Treppenstufen mehr in der Silhouette.
+def _arc(cy, cz, r, a0, a1, k, erste=True):
+    """Kreisbogen als Punktliste in der y-z-Ebene. `erste=False` laesst den ersten
+    Punkt weg — beim Aneinanderhaengen zweier Boegen entstuenden sonst doppelte
+    Punkte und daraus entartete Flaechen."""
+    out = []
+    for i in range(k + 1):
+        if i == 0 and not erste: continue
+        a = a0 + (a1 - a0)*i/k
+        out.append((cy + math.cos(a)*r, cz + math.sin(a)*r))
+    return out
+
+def bogenprofil(cy, cz, r_a, r_i, a0, a1, k=10):
+    """Geschlossener Bogenstreifen (Kotfluegel) als Polygonzug fuer `prisma_x`."""
+    return _arc(cy, cz, r_a, a0, a1, k) + _arc(cy, cz, r_i, a1, a0, k)
+
+def bogenrohr(x, cy, cz, R, r, a0, a1, m, n=6, seg=10):
+    """Rohrbogen (Auspuffkruemmer) in der y-z-Ebene: n kurze Zylinder tangential auf
+    den Bogen gesetzt. Ein einzelner Zylinder kann nicht um die Ecke; zwei stumpf
+    gestossene Rohre ergeben einen Knick, keinen Kruemmer.
+    rot[0] = a legt die lokale z-Achse auf die Tangente (-sin a, cos a)."""
+    for i in range(n):
+        a = a0 + (a1 - a0)*(i + 0.5)/n
+        L = 2*R*math.tan(abs(a1 - a0)/(2*n))*1.30
+        o = zyl(x, cy + math.cos(a)*R, cz + math.sin(a)*R, r, L, m, seg)
+        o.rotation_euler[0] = a
+        flach(o)
+
+def rundstab_yz(y1, z1, y2, z2, x, r, m, seg=10):
+    """Runder Holm in der y-z-Ebene (Kabinensaeule, Handlauf, Dachholm)."""
+    L = math.hypot(y2 - y1, z2 - z1)
+    o = zyl(x, (y1 + y2)/2, (z1 + z2)/2, r, L, m, seg)
+    o.rotation_euler[0] = math.atan2(y1 - y2, z2 - z1)
+    return flach(o)
+
+def wanne(ys, hb, t, z0, z1, r, m, k=3, name="Wanne"):
+    """OFFENE Ladewanne als EIN geloftetes Mesh: U-Querschnitt mit verrundeten
+    Bodenkanten und gewalzter (halbrunder) Bordkante. Vier aneinandergestellte
+    Platten lesen sich als Kistenbausatz — eine Kippbruecke ist EIN Blech.
+    Punktzahl je Station konstant 4*k+6, sonst laesst sich nicht loften."""
+    fhb, fz0, fz1, fr = _f(hb), _f(z0), _f(z1), _f(r)
+    verts, faces = [], []
+    P = 4*k + 6
+    for y in ys:
+        HB, Z0, Z1, R = fhb(y), fz0(y), fz1(y), fr(y)
+        hbi, zi, zt = HB - t, Z0 + t, Z1 - t/2
+        p  = [(hbi, zi), (-hbi, zi)]                                    # innerer Boden
+        p += _arc(-(HB - t/2), zt, t/2, 0.0, math.pi, k)                # linke Bordrolle
+        p += [(-HB, Z0 + R)]
+        p += _arc(-(HB - R), Z0 + R, R, math.pi, 1.5*math.pi, k, False) # Bodenkante links
+        p += [(HB - R, Z0)]
+        p += _arc(HB - R, Z0 + R, R, -0.5*math.pi, 0.0, k, False)       # Bodenkante rechts
+        p += [(HB, zt)]
+        p += _arc(HB - t/2, zt, t/2, 0.0, math.pi, k, False)            # rechte Bordrolle
+        if len(p) != P: raise ValueError("Wannenprofil %d != %d" % (len(p), P))
+        for (px, pz) in p: verts.append((px, y, pz))
+    for i in range(len(ys) - 1):
+        a, b = i*P, (i + 1)*P
+        for j in range(P):
+            j2 = (j + 1) % P
+            faces.append((a + j, a + j2, b + j2, b + j))
+    faces.append(tuple(range(P - 1, -1, -1)))
+    faces.append(tuple(range((len(ys) - 1)*P, len(ys)*P)))
+    me = bpy.data.meshes.new(name); me.from_pydata(verts, [], faces); me.update()
+    o = bpy.data.objects.new(name, me); bpy.context.collection.objects.link(o)
+    if m: me.materials.append(m)
+    bpy.context.view_layer.objects.active = o
+    bm = bmesh.new(); bm.from_mesh(me)
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
+    bm.to_mesh(me); bm.free(); me.update()
+    return o
+
+def ackerrad(x, y, z, r, breite, m_reif, m_felge, m_nabe, seg=24, stollen=13, sx=0,
+             loch=6):
+    """Ackerschlepper-Rad: Torus-Karkasse (kein Klotz-Zylinder), Scheibenfelge mit
+    Loechern und V-Stollen. Der AUSSENradius der Stollen ist exakt `r`, die Achse
+    liegt auf z = r -> Unterkante genau 0,00.
+    `seg` MUSS gerade sein, sonst steht unten eine Ecke und das Rad schwebt.
+    Auf dem Bogen ist der Stollen eine SEHNE: seine Ecke laege weiter aussen als r,
+    deshalb die Korrektur `korr` (dieselbe Falle wie bei der Raupenkette)."""
+    if seg % 2: seg += 1
+    hh = r*0.14                                            # Stollenhoehe
+    rk = r - hh                                            # Karkasse aussen
+    rm = min(breite*0.44, rk*0.34)
+    rf = max(0.05, rk - 2*rm)                              # Felgenschuessel
+    flach(torus_x(x, y, z, rk - rm, rm, m_reif, seg, 10))
+    flach(zyl(x, y, z, rk - rm + 0.004, breite*0.56, m_reif, seg, rot=(0, math.pi/2, 0)))
+    flach(zyl(x, y, z, rf*1.02, breite*0.78, m_felge, seg, rot=(0, math.pi/2, 0)))
+    for s in ((sx,) if sx else (-1, 1)):
+        xf = x + s*breite*0.41
+        flach(zyl(xf, y, z, rf*0.99, breite*0.06, m_felge, seg, rot=(0, math.pi/2, 0)))
+        for i in range(loch):
+            a = i/loch*math.tau + 0.30
+            flach(zyl(xf + s*0.012, y + math.cos(a)*rf*0.58, z + math.sin(a)*rf*0.58,
+                      rf*0.21, breite*0.06, m_nabe, 8, rot=(0, math.pi/2, 0)))
+        flach(zyl(xf + s*0.024, y, z, rf*0.34, breite*0.10, m_nabe, 12,
+                  rot=(0, math.pi/2, 0)))
+        for i in range(6):                                 # Radbolzen
+            a = i/6*math.tau
+            flach(zyl(xf + s*0.034, y + math.cos(a)*rf*0.20, z + math.sin(a)*rf*0.20,
+                      rf*0.055, breite*0.06, m_nabe, 6, rot=(0, math.pi/2, 0)))
+    bl = r*0.19                                            # Stollenlaenge in Umfangsrichtung
+    korr = math.hypot(r, bl/2) - r
+    for i in range(stollen):
+        a = i/stollen*math.tau
+        for s2 in (-1, 1):
+            aa = a + s2*0.16
+            rr = r - hh/2 - korr
+            o = box(x + s2*breite*0.235, y + math.cos(aa)*rr, z + math.sin(aa)*rr,
+                    breite*0.45, bl, hh, m_reif)
+            o.rotation_euler[0] = aa - math.pi/2
+            flach(o)
+
 # ---------------------------------------------------------------- Boden
 FB = 0.30   # Fussboden-Oberkante — Aussensockel UND Innenboden enden hier.
 
@@ -716,148 +831,214 @@ def gewaechshaus():
 
 # ================================================================ 5) Traktor
 def traktor():
-    """Traktor: grosse Hinterraeder mit Stollen, Kabine, Auspuff. Front auf +y."""
+    """Traktor. 2026-07-30 von der Quaderkette auf runde Formen umgestellt:
+    gewoelbte Motorhaube und gerundetes Kabinendach als je EIN geloftetes Blech
+    (`karosse`), schraege Front- und Heckscheibe, Kotfluegel als Bogenprofil ueber
+    den grossen Hinterraedern, Auspuff mit echtem Kruemmer, Reifen mit V-Stollen
+    und 24 Segmenten. Front auf +y (= three.js -z)."""
     neu()
     GRUE = mat("Traktorlack", (0.11,0.40,0.15), 0.42)
-    GRUE2= mat("Lack dunkel", (0.08,0.30,0.12), 0.45)
+    GRUE2= mat("Lack dunkel", (0.07,0.28,0.11), 0.46)
     GELB = mat("Felge", (0.90,0.74,0.14), 0.48)
     REIF = mat("Reifen", (0.10,0.10,0.11), 0.88)
     STAHL= mat("Stahl", (0.55,0.57,0.60), 0.40, 0.5)
-    DKL  = mat("Kunststoff", (0.16,0.16,0.17), 0.72)
-    GLAS = mat("Kabinenglas", (0.52,0.68,0.76), 0.14)
-    SITZ = mat("Sitz", (0.20,0.19,0.20), 0.85)
-    LICHT= mat("Scheinwerfer", (1.0,0.94,0.74), 0.25, 0.0, (1.0,0.92,0.68), 2.2)
-    ROT  = mat("Rueckleuchte", (0.86,0.14,0.12), 0.3, 0.0, (0.90,0.12,0.10), 1.8)
-    # --- Raeder (Achse in x!). Die Stollen bilden den AEUSSEREN Radius: Karkasse
-    # 0.88, Stollen bis 0.90 = Achshoehe -> Unterkante exakt 0.00. Umgekehrt
-    # (Stollen ueber der Achshoehe) haengt das Rad unter dem Boden.
+    DKL  = mat("Kunststoff", (0.15,0.15,0.16), 0.72)
+    GLAS = mat("Kabinenglas", (0.40,0.56,0.66), 0.12, 0.20)
+    SITZ = mat("Sitz", (0.19,0.18,0.19), 0.85)
+    LICHT= mat("Scheinwerfer", (1.0,0.94,0.74), 0.25, 0.0, (1.0,0.92,0.68), 2.0)
+    ROT  = mat("Rueckleuchte", (0.86,0.14,0.12), 0.30, 0.0, (0.90,0.12,0.10), 1.7)
+    RH, BH = 0.92, 0.62                                   # Hinterrad
+    RV, BV = 0.54, 0.40                                   # Vorderrad
+    YH, YV, XH, XV = -1.10, 1.62, 0.86, 0.80
     for s in (-1, 1):
-        rad(s*0.90, -1.05, 0.90, 0.88, 0.62, REIF, 20)            # hinten
-        rad(s*0.90, -1.05, 0.90, 0.44, 0.66, GELB, 16)
-        zyl(s*0.90, -1.05, 0.90, 0.16, 0.72, STAHL, 12, rot=(0, math.pi/2, 0))
-        for i in range(14):                                       # Stollenprofil
-            a = i/14*math.tau
-            o = box(s*0.90, -1.05 + math.cos(a)*0.845, 0.90 + math.sin(a)*0.845,
-                    0.64, 0.22, 0.11, REIF)
-            o.rotation_euler[0] = a - math.pi/2
-        rad(s*0.80, 1.62, 0.52, 0.50, 0.36, REIF, 18)             # vorn
-        rad(s*0.80, 1.62, 0.52, 0.26, 0.40, GELB, 14)
-        for i in range(10):
-            a = i/10*math.tau
-            o = box(s*0.80, 1.62 + math.cos(a)*0.475, 0.52 + math.sin(a)*0.475,
-                    0.38, 0.16, 0.09, REIF)
-            o.rotation_euler[0] = a - math.pi/2
-    # --- Rahmen, Motorhaube
-    box(0, 0.30, 0.98, 0.86, 3.30, 0.46, GRUE2)                   # Rahmen
-    box(0, 1.62, 0.64, 1.74, 0.24, 0.22, STAHL)                   # Vorderachse
-    zyl(0, 1.62, 0.80, 0.13, 0.34, STAHL, 12)                     # Achsschwinge
-    box(0, 2.26, 1.02, 0.90, 0.34, 0.32, DKL)                     # Frontgewichte
-    box(0, 1.55, 1.46, 1.02, 1.90, 0.72, GRUE)                    # Motorhaube
-    box(0, 1.55, 1.83, 1.02, 1.74, 0.10, GRUE2)                   # Haubendeckel, buendig
-    box(0, 2.47, 1.42, 0.94, 0.10, 0.64, DKL)                     # Kuehlergrill
+        ackerrad(s*XH, YH, RH, RH, BH, REIF, GELB, STAHL, 24, 13, s)
+        ackerrad(s*XV, YV, RV, RV, BV, REIF, GELB, STAHL, 24, 10, s)
+    # --- Rahmen, Vorderachse, Frontgewichte
+    box(0, 0.40, 1.00, 0.84, 3.34, 0.44, GRUE2)
+    box(0, YV, 0.68, 1.74, 0.26, 0.22, STAHL)                     # Achskoerper
+    flach(zyl(0, YV, 0.86, 0.14, 0.34, STAHL, 12))                # Pendelbock
+    for s in (-1, 1):
+        flach(zyl(s*0.74, YV, 0.68, 0.11, 0.30, STAHL, 10, rot=(0, math.pi/2, 0)))
+    weich(box(0, 2.36, 1.02, 0.98, 0.34, 0.36, DKL), 0.05, 3)     # Gewichtstraeger
+    for i in range(6):
+        flach(box(-0.40 + i*0.16, 2.38, 1.02, 0.12, 0.38, 0.32, GRUE2))
+    # --- Motorhaube: EIN geloftetes Blech, vorn gewoelbt abfallend
+    def zh(y):
+        z = 2.06 - 0.50*min(1.0, max(0.0, y - 1.10)/1.50)**1.6
+        if y > 2.30: z -= 0.20*((y - 2.30)/0.34)**2
+        return z
+    def bh(y):
+        w = 0.58 - 0.13*min(1.0, max(0.0, y - 1.00)/1.60)**2
+        if y > 2.30: w -= 0.16*((y - 2.30)/0.34)**2
+        return w
+    yh = [0.22, 0.58, 0.95, 1.18, 1.45, 1.72, 1.98, 2.20, 2.40, 2.54, 2.64]
+    weich(karosse(yh, bh, 1.14, zh, GRUE, 0.14, 0.30, 3,
+                  hb_o=lambda y: bh(y) - 0.15), 0.05, 4)
+    for s in (-1, 1):                                             # Haubenluefter
+        for i in range(5):
+            yv2 = 1.15 + i*0.26
+            flach(box(s*(bh(yv2) + 0.01), yv2, 1.60, 0.04, 0.19, 0.30, GRUE2))
+    flach(box(0, 1.35, 2.08, 0.72, 1.70, 0.05, GRUE2))            # Haubendeckel-Fuge
+    # --- Front: Kuehlermaske, Grill, Scheinwerfer
+    weich(box(0, 2.50, 1.02, 0.86, 0.16, 0.46, DKL), 0.05, 3)     # Kuehlergrill
     for i in range(5):
-        box(0, 2.52, 1.18 + i*0.13, 0.86, 0.05, 0.06, STAHL)
+        flach(box(0, 2.58, 0.86 + i*0.11, 0.78, 0.05, 0.055, STAHL))
+    weich(box(0, 2.62, 1.34, 0.44, 0.10, 0.20, DKL), 0.04, 3)     # Emblemfeld
     for s in (-1, 1):
-        box(s*0.36, 2.51, 1.66, 0.24, 0.09, 0.19, LICHT)          # Scheinwerfer
-        box(s*0.46, 1.55, 1.20, 0.14, 1.70, 0.30, GRUE2)          # Seitenblech
-    # --- Kotfluegel ueber den Hinterraedern
+        weich(box(s*0.28, 2.60, 1.34, 0.20, 0.10, 0.16, LICHT), 0.04, 3)
+        weich(box(s*0.30, 2.54, 1.00, 0.16, 0.09, 0.12, LICHT), 0.03, 3)
+    # --- Kotfluegel ueber den Hinterraedern (Bogenprofil, kein halber Zylinder)
+    kf = bogenprofil(YH, RH, 1.10, 0.99, -0.32, math.pi + 0.24, 11)
     for s in (-1, 1):
-        tonne(s*0.95, -1.05, 0.94, 1.04, 0.72, GRUE, 18)
-        box(s*0.95, -2.05, 1.02, 0.76, 0.14, 0.24, GRUE2)
-    # --- Kabine
-    box(0, -0.90, 1.62, 1.38, 2.20, 0.14, GRUE2)                  # Kabinenboden
-    for sx in (-0.60, 0.60):
-        for sy in (-1.88, 0.06):
-            box(sx, sy, 2.32, 0.10, 0.10, 1.28, GRUE2)            # Saeulen
-    box(0, -0.90, 3.02, 1.56, 2.34, 0.14, GRUE)                   # Dach
-    box(0, -0.90, 3.13, 1.30, 2.00, 0.09, GRUE2)
-    box(0,  0.10, 2.36, 1.22, 0.06, 1.24, GLAS)                   # Frontscheibe
-    box(0, -1.90, 2.36, 1.22, 0.06, 1.24, GLAS)                   # Heckscheibe
-    for sx in (-0.62, 0.62):
-        box(sx, -0.90, 2.36, 0.06, 1.86, 1.18, GLAS)
-    box(0, -1.20, 1.94, 0.56, 0.54, 0.18, SITZ)                   # Sitz
-    box(0, -1.46, 2.32, 0.56, 0.14, 0.62, SITZ)
-    box(0, -0.42, 2.02, 0.09, 0.09, 0.62, DKL)                    # Lenksaeule
-    o = zyl(0, -0.34, 2.36, 0.21, 0.05, DKL, 16); o.rotation_euler[0] = math.radians(66)
-    box(0, -0.85, 3.20, 0.34, 0.30, 0.12, LICHT)                  # Arbeitsscheinwerfer
-    for s in (-1, 1):                                             # Trittstufen
-        for k in range(2):
-            box(s*0.74, -0.35 - k*0.02, 1.02 + k*0.34, 0.34, 0.30, 0.06, STAHL)
-        box(s*0.72, -0.55, 1.35, 0.06, 0.06, 0.66, STAHL)
-    # --- Auspuff
-    zyl(0.52, 2.08, 2.16, 0.075, 1.55, DKL, 12)
-    zyl(0.52, 2.08, 2.96, 0.095, 0.14, STAHL, 12)
-    kegel(0.52, 2.08, 3.08, 0.10, 0.05, 0.12, DKL, 10)
-    # --- Heck: Hydraulik und Kupplung
+        weich(prisma_x(kf, 0.82, GRUE, s*XH, "Kotfluegel"), 0.03, 3)
+        flach(box(s*XH, YH - 1.02, RH + 0.20, 0.84, 0.10, 0.30, GRUE2))   # Schmutzfaenger
+        flach(box(s*(XH + 0.42), YH, RH + 0.94, 0.06, 1.90, 0.10, GRUE2)) # Kante
+    # --- Kabine: geneigte Rundsaeulen + geloftetes Dach
+    ZK = 1.72                                                     # Kabinenboden OK
+    box(0, -0.92, ZK - 0.07, 1.44, 2.36, 0.14, GRUE2)
     for s in (-1, 1):
-        strebe_yz(-1.95, 1.10, -2.55, 0.62, s*0.48, 0.14, 0.14, STAHL)
-        box(s*0.48, -2.58, 0.58, 0.20, 0.18, 0.22, STAHL)
-        box(s*0.72, -1.62, 1.32, 0.12, 0.34, 0.34, ROT)
-    box(0, -2.42, 0.86, 0.44, 0.44, 0.24, STAHL)
-    zyl(0, -2.62, 0.86, 0.09, 0.28, STAHL, 12, rot=(math.pi/2, 0, 0))
-    box(0, -2.20, 1.30, 1.10, 0.30, 0.18, GRUE2)
+        rundstab_yz(0.36, ZK, 0.02, 3.00, s*0.60, 0.055, GRUE2, 10)       # A-Saeule
+        rundstab_yz(-2.16, ZK, -1.94, 3.00, s*0.64, 0.055, GRUE2, 10)     # C-Saeule
+        rundstab_yz(0.08, 2.99, -1.98, 3.01, s*0.66, 0.045, GRUE2, 8)     # Dachholm
+        rundstab_yz(0.30, ZK + 0.02, -2.10, ZK + 0.02, s*0.66, 0.045, GRUE2, 8)
+    def zd(y):
+        a = abs(y + 0.92)
+        return 3.26 - 0.07*max(0.0, (a - 0.80)/0.60)**2
+    def bd(y):
+        a = abs(y + 0.92)
+        return 0.84 - 0.12*max(0.0, (a - 0.85)/0.55)**2
+    yd = [-2.36,-2.22,-1.98,-1.45,-0.92,-0.40,0.08,0.32,0.46]
+    weich(karosse(yd, bd, 2.96, zd, GRUE, 0.10, 0.22, 3,
+                  hb_o=lambda y: bd(y) - 0.11), 0.05, 4)
+    scheibe((0, 0.38, 1.86), (0, 0.04, 2.96), 1.14, GLAS, 0.05, 0.05)     # Frontscheibe
+    scheibe((0, -2.18, 1.90), (0, -1.96, 2.96), 1.14, GLAS, 0.05, -0.05)  # Heckscheibe
+    for s in (-1, 1):
+        box(s*0.645, -0.28, 2.42, 0.05, 1.06, 1.00, GLAS)         # Tuerfenster
+        box(s*0.665, -1.48, 2.42, 0.05, 1.06, 0.98, GLAS)         # Seitenfenster hinten
+        flach(box(s*0.68, -0.86, 2.42, 0.04, 0.06, 1.02, GRUE2))  # Fensterteiler
+        flach(box(s*0.70, -0.30, 2.02, 0.05, 0.20, 0.05, STAHL))  # Tuergriff
+        weich(box(s*0.86, 0.30, 2.72, 0.11, 0.09, 0.40, DKL), 0.04, 3)    # Spiegel
+        flach(box(s*0.74, 0.30, 2.60, 0.28, 0.05, 0.05, DKL))
+        weich(box(s*0.34, 0.42, 3.16, 0.24, 0.16, 0.13, LICHT), 0.04, 3)  # Arbeitslicht
+        weich(box(s*0.34, -2.28, 3.16, 0.24, 0.16, 0.13, LICHT), 0.04, 3)
+    box(0, -1.24, 2.06, 0.58, 0.56, 0.20, SITZ)                   # Sitz
+    box(0, -1.52, 2.46, 0.58, 0.16, 0.62, SITZ)
+    flach(box(0, -0.44, 2.14, 0.09, 0.09, 0.66, DKL))             # Lenksaeule
+    o = zyl(0, -0.36, 2.50, 0.21, 0.05, DKL, 16); o.rotation_euler[0] = math.radians(66)
+    flach(o)
+    for s in (-1, 1):                                             # Trittstufen mit Wange
+        flach(box(s*0.80, -0.30, 1.28, 0.05, 0.46, 1.00, STAHL))
+        for k in range(3):
+            flach(box(s*0.86, -0.30 - k*0.03, 0.86 + k*0.33, 0.32, 0.34, 0.05, STAHL))
+        rundstab_yz(0.02, 1.32, -0.10, 2.42, s*0.76, 0.035, STAHL, 8)
+    # --- Auspuff mit Kruemmer (waagerecht aus dem Motor, dann hoch)
+    XA = 0.66
+    flach(zyl(XA, 1.44, 1.44, 0.075, 0.92, DKL, 12, rot=(math.pi/2, 0, 0)))
+    bogenrohr(XA, 1.90, 1.74, 0.30, 0.075, -math.pi/2, 0.0, DKL, 6, 10)
+    flach(zyl(XA, 2.20, 2.44, 0.075, 1.42, DKL, 12))
+    flach(zyl(XA, 2.20, 3.16, 0.095, 0.13, STAHL, 12))
+    flach(kegel(XA, 2.20, 3.27, 0.10, 0.045, 0.14, DKL, 10))
+    flach(box(XA - 0.09, 2.06, 1.90, 0.14, 0.05, 0.34, GRUE2))    # Halteschelle
+    # --- Heck: Dreipunkt, Zapfwelle, Kupplung, Leuchten
+    for s in (-1, 1):
+        strebe_yz(-1.92, 1.16, -2.62, 0.62, s*0.50, 0.15, 0.16, STAHL)    # Unterlenker
+        flach(box(s*0.50, -2.66, 0.60, 0.20, 0.22, 0.24, STAHL))
+        strebe_yz(-1.88, 1.68, -2.30, 1.34, s*0.24, 0.10, 0.10, STAHL)    # Hubstreben
+        weich(box(s*0.72, -2.38, 1.46, 0.22, 0.10, 0.30, ROT), 0.04, 3)
+        flach(box(s*0.44, -2.30, 1.72, 0.30, 0.10, 0.16, GELB))           # Warnschild
+    weich(box(0, -1.90, 1.78, 1.30, 0.34, 0.24, GRUE2), 0.05, 3)  # Hubwerksgehaeuse
+    strebe_yz(-1.94, 1.72, -2.42, 1.32, 0.0, 0.11, 0.11, STAHL)   # Oberlenker
+    weich(box(0, -2.40, 0.94, 0.48, 0.46, 0.26, STAHL), 0.05, 3)  # Kupplungsmaul
+    flach(zyl(0, -2.62, 0.94, 0.09, 0.30, STAHL, 12, rot=(math.pi/2, 0, 0)))
+    flach(zyl(0, -2.38, 0.68, 0.09, 0.34, STAHL, 12, rot=(math.pi/2, 0, 0)))  # Zapfwelle
+    for i in range(6):
+        a = i/6*math.tau
+        flach(box(math.cos(a)*0.10, -2.50, 0.68 + math.sin(a)*0.10, 0.035, 0.14, 0.035,
+                  STAHL))
     export("th18_traktor", 0.014, 2)
 
 # ================================================================ 6) Anhaenger
 def anhaenger():
-    """Kipp-Anhaenger mit Bordwaenden, Tandemachse und Deichsel. Deichsel auf +y."""
+    """Kipp-Anhaenger. 2026-07-30 von der Plattenkiste umgestellt: die Bruecke ist
+    EIN geloftetes Blech mit gewalzten Bordkanten (`wanne`), der Rahmen ein echtes
+    I-Profil, der Kotfluegel ein durchgehendes Tandem-Bogenprofil, die Deichsel ein
+    A-Rahmen mit geschmiedeter Zugoese. Deichsel (Front) auf +y."""
     neu()
-    GRUE = mat("Anhaengerlack", (0.12,0.38,0.15), 0.45)
-    GRUE2= mat("Lack dunkel", (0.08,0.28,0.11), 0.48)
-    STAHL= mat("Stahlrahmen", (0.42,0.44,0.47), 0.45, 0.5)
+    GRUE  = mat("Anhaengerlack", (0.12,0.38,0.15), 0.45)
+    GRUE2 = mat("Lack dunkel", (0.08,0.28,0.11), 0.48)
+    STAHL = mat("Stahlrahmen", (0.42,0.44,0.47), 0.45, 0.5)
     STAHL2= mat("Blank", (0.60,0.62,0.65), 0.32, 0.55)
-    REIF = mat("Reifen", (0.10,0.10,0.11), 0.88)
-    GELB = mat("Felge", (0.88,0.72,0.14), 0.50)
-    DIEL = mat("Ladeboden", (0.46,0.32,0.18), 0.82)
-    ROT  = mat("Rueckleuchte", (0.86,0.14,0.12), 0.3, 0.0, (0.90,0.12,0.10), 1.7)
-    WARN = mat("Warntafel", (0.90,0.76,0.16), 0.55)
-    for s in (-1, 1):                                             # Tandemachse
-        for sy in (-0.55, -1.78):
-            rad(s*1.02, sy, 0.52, 0.50, 0.34, REIF, 18)           # Stollen = Aussenradius
-            rad(s*1.02, sy, 0.52, 0.25, 0.38, GELB, 14)
-            for i in range(10):
-                a = i/10*math.tau
-                o = box(s*1.02, sy + math.cos(a)*0.475, 0.52 + math.sin(a)*0.475,
-                        0.36, 0.16, 0.09, REIF)
-                o.rotation_euler[0] = a - math.pi/2
-        box(s*1.02, -1.16, 1.14, 0.46, 2.30, 0.12, STAHL)         # Kotfluegel
-        box(s*1.02, -0.02, 1.02, 0.16, 0.30, 0.28, STAHL)
-        box(s*1.02, -2.32, 1.02, 0.16, 0.30, 0.28, STAHL)
-    box(0, -1.16, 0.62, 1.90, 0.22, 0.20, STAHL)                  # Achsbruecken
-    box(0, -0.55, 0.66, 2.16, 0.16, 0.16, STAHL)
-    box(0, -1.78, 0.66, 2.16, 0.16, 0.16, STAHL)
-    box(0, -0.40, 0.90, 1.80, 4.60, 0.22, STAHL)                  # Hauptrahmen
+    REIF  = mat("Reifen", (0.10,0.10,0.11), 0.88)
+    GELB  = mat("Felge", (0.88,0.72,0.14), 0.50)
+    DIEL  = mat("Ladeboden", (0.46,0.32,0.18), 0.82)
+    ROT   = mat("Rueckleuchte", (0.86,0.14,0.12), 0.30, 0.0, (0.90,0.12,0.10), 1.7)
+    WARN  = mat("Warntafel", (0.90,0.76,0.16), 0.55)
+    RW, BW, XW = 0.56, 0.36, 1.04
+    YW = (-0.58, -1.82)                                   # Tandemachse
+    ZR = 1.30                                             # Rahmenoberkante
     for s in (-1, 1):
-        box(s*0.95, -0.40, 0.92, 0.14, 4.60, 0.26, STAHL)
-    box(0, -0.40, 1.08, 2.30, 4.42, 0.11, DIEL)                   # Ladeboden (Oberkante 1.14)
-    for i in range(9):
-        box(0, -2.40 + i*0.50, 1.15, 2.24, 0.06, 0.03, GRUE2)     # Dielenfugen
-    # --- Bordwaende, Oberkante 2.09
+        for y in YW:
+            ackerrad(s*XW, y, RW, RW, BW, REIF, GELB, STAHL2, 24, 11, s)
+    # --- Rahmen als echtes I-Profil (Ober-, Untergurt, Steg)
     for s in (-1, 1):
-        box(s*1.15, -0.40, 1.62, 0.09, 4.42, 0.95, GRUE)
-        box(s*1.19, -0.40, 2.04, 0.13, 4.50, 0.10, GRUE2)
+        x = s*0.90
+        flach(box(x, -0.40, ZR - 0.03, 0.26, 4.92, 0.06, STAHL))
+        flach(box(x, -0.40, ZR - 0.18, 0.10, 4.92, 0.26, STAHL))
+        flach(box(x, -0.40, ZR - 0.33, 0.26, 4.92, 0.06, STAHL))
+    for y in (-2.66, -2.10, -1.20, -0.02, 0.86, 1.72, 2.00):
+        flach(box(0, y, ZR - 0.18, 1.86, 0.16, 0.22, STAHL))  # Quertraeger
+    for y in YW:                                              # Achsen und Federn
+        box(0, y, 0.62, 2.14, 0.20, 0.18, STAHL)
+        for s in (-1, 1):
+            flach(box(s*0.72, y, 0.80, 0.16, 1.00, 0.07, STAHL2))
+            flach(box(s*0.72, y, 0.90, 0.14, 0.72, 0.07, STAHL2))
+            flach(box(s*0.72, y, 1.06, 0.14, 0.16, 0.28, STAHL))
+    # --- Tandem-Kotfluegel: EIN Bogenprofil ueber beide Raeder
+    RA, RI = 0.66, 0.57
+    kf  = _arc(YW[0], RW, RA, -0.26, math.pi/2, 9)
+    kf += _arc(YW[1], RW, RA, math.pi/2, math.pi + 0.22, 9, False)
+    kf += _arc(YW[1], RW, RI, math.pi + 0.22, math.pi/2, 9)
+    kf += _arc(YW[0], RW, RI, math.pi/2, -0.26, 9, False)
+    for s in (-1, 1):
+        weich(prisma_x(kf, 0.50, STAHL, s*(XW + 0.02), "Kotfluegel"), 0.03, 3)
+        flach(box(s*(XW + 0.02), YW[0] + 0.70, RW + 0.24, 0.52, 0.06, 0.34, STAHL))
+        flach(box(s*(XW + 0.02), YW[1] - 0.74, RW + 0.20, 0.52, 0.06, 0.30, STAHL))
+    # --- Kippbruecke: EIN geloftetes Blech mit gewalzter Bordkante
+    yw = [-2.72, -2.40, -1.90, -1.20, -0.40, 0.40, 1.10, 1.62, 1.92]
+    wanne(yw, 1.16, 0.10, ZR + 0.02, 2.40, 0.17, GRUE, 3)
+    for i in range(11):                                       # Ladeboden-Dielen
+        flach(box(0, -2.52 + i*0.44, ZR + 0.13, 2.06, 0.40, 0.05, DIEL))
+    for s in (-1, 1):                                         # Bordwand-Rungen
         for k in range(6):
-            box(s*1.20, -2.20 + k*0.72, 1.62, 0.07, 0.12, 0.92, GRUE2)
-    box(0,  1.76, 1.62, 2.30, 0.09, 0.95, GRUE)                   # Stirnwand
-    box(0,  1.80, 2.04, 2.38, 0.14, 0.10, GRUE2)
-    box(0,  1.82, 2.32, 2.20, 0.08, 0.46, WARN)                   # Warntafel vorn
-    box(0, -2.56, 1.62, 2.30, 0.09, 0.95, GRUE)                   # Heckklappe
-    box(0, -2.60, 2.04, 2.38, 0.14, 0.10, GRUE2)
+            flach(box(s*1.18, -2.28 + k*0.78, 1.86, 0.06, 0.13, 0.94, GRUE2))
+        flach(box(s*1.19, -0.40, 1.52, 0.05, 4.60, 0.12, GRUE2))     # Sicke
+    weich(box(0, 1.98, 1.90, 2.34, 0.11, 1.04, GRUE), 0.05, 4)       # Stirnwand
+    weich(box(0, 2.02, 2.40, 2.40, 0.16, 0.11, GRUE2), 0.04, 3)
+    weich(box(0, 2.04, 2.72, 2.10, 0.09, 0.50, WARN), 0.04, 3)       # Warntafel vorn
+    weich(box(0, -2.78, 1.90, 2.34, 0.11, 1.04, GRUE), 0.05, 4)      # Heckklappe
+    weich(box(0, -2.82, 2.40, 2.40, 0.16, 0.11, GRUE2), 0.04, 3)
     for s in (-1, 1):
-        zyl(s*1.02, -2.60, 1.20, 0.07, 0.16, STAHL2, 10, rot=(math.pi/2, 0, 0))
-        box(s*0.86, -2.62, 1.36, 0.30, 0.10, 0.22, ROT)           # Rueckleuchten
-        box(s*0.62, -2.64, 1.82, 0.34, 0.06, 0.34, WARN)
-    # --- Deichsel
+        flach(zyl(s*1.04, -2.82, 1.48, 0.07, 0.16, STAHL2, 10, rot=(math.pi/2, 0, 0)))
+        weich(box(s*0.86, -2.86, 1.16, 0.30, 0.10, 0.24, ROT), 0.04, 3)
+        flach(box(s*0.62, -2.88, 1.62, 0.34, 0.06, 0.34, WARN))
+        flach(box(s*1.20, -2.80, 1.90, 0.05, 0.12, 0.98, GRUE2))
+    # --- Deichsel: A-Rahmen, Zugrohr, geschmiedete Oese
     for s in (-1, 1):
-        strebe_xy(s*0.62, 1.86, 0.0, 3.32, 0.90, 0.16, 0.20, STAHL)
-    box(0, 3.30, 0.90, 0.26, 0.70, 0.22, STAHL)
-    ring(0, 3.62, 0.90, 0.13, 0.045, STAHL2, 14, 6, rot=(math.pi/2, 0, 0))   # Zugoese
-    box(0, 2.90, 0.62, 0.16, 0.16, 0.34, STAHL)                   # Stuetzfuss
-    zyl(0, 2.90, 0.22, 0.07, 0.44, STAHL2, 10)
-    zyl(0, 2.90, 0.03, 0.20, 0.06, STAHL, 12)
-    # --- Kippzylinder unter der Ladeflaeche
-    strebe_yz(1.30, 0.74, 0.30, 1.04, 0.0, 0.16, 0.16, STAHL2)
-    strebe_yz(0.34, 1.02, -0.20, 1.06, 0.0, 0.12, 0.12, STAHL)
+        weich(strebe_xy(s*0.86, 2.02, s*0.16, 3.20, ZR - 0.24, 0.17, 0.24, STAHL), 0.04, 3)
+        flach(box(s*0.52, 2.44, ZR - 0.05, 0.60, 0.66, 0.05, STAHL))     # Knotenblech
+    weich(box(0, 3.30, ZR - 0.24, 0.30, 0.62, 0.24, STAHL), 0.05, 4)
+    flach(zyl(0, 3.60, ZR - 0.24, 0.09, 0.30, STAHL2, 12, rot=(math.pi/2, 0, 0)))
+    ring(0, 3.78, ZR - 0.24, 0.13, 0.048, STAHL2, 16, 8, rot=(math.pi/2, 0, 0))
+    flach(zyl(0, 3.20, ZR - 0.02, 0.05, 0.44, STAHL2, 8, rot=(0, math.pi/2, 0)))
+    # --- Stuetzfuss (Kurbelstuetze), Unterkante exakt 0
+    flach(box(0.36, 2.72, ZR - 0.42, 0.15, 0.15, 0.62, STAHL))
+    flach(zyl(0.36, 2.72, 0.34, 0.06, 0.68, STAHL2, 10))
+    flach(zyl(0.36, 2.72, 0.03, 0.20, 0.06, STAHL, 14))
+    flach(zyl(0.52, 2.72, ZR - 0.14, 0.045, 0.30, STAHL2, 8, rot=(0, math.pi/2, 0)))
+    flach(box(0.66, 2.72, ZR - 0.14, 0.05, 0.05, 0.18, STAHL2))
+    # --- Kippzylinder unter der Bruecke
+    strebe_yz(1.32, 0.86, 0.34, 1.14, 0.0, 0.17, 0.17, STAHL2)
+    strebe_yz(0.42, 1.10, -0.24, 1.20, 0.0, 0.13, 0.13, STAHL)
     export("th18_anhaenger", 0.014, 2)
 
 # ================================================================ 7) Heuballen

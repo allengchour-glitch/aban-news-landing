@@ -741,8 +741,10 @@ und Taille flie&szlig;end ineinander uebergehen.
 > ⚠️ **Nur mit konstanter Punktzahl je Querschnitt laesst sich loften.** Deshalb gibt
 > `rprofil()` immer 4·(n+1) Punkte zurueck, auch wenn ein Radius null ist.
 
-Noch **nicht** umgebaut: `th18_traktor`, `th18_anhaenger`, `th21_bagger`,
-`th21_radlader`, `th21_betonmischer`.
+`th18_traktor` und `th18_anhaenger` sind ebenfalls umgebaut: gewoelbte Motorhaube,
+Kabine mit geneigten Scheiben, Kotfluegel und Stollenreifen mit Felgen.
+
+Noch **nicht** umgebaut: `th21_bagger`, `th21_radlader`, `th21_betonmischer`.
 
 ---
 
