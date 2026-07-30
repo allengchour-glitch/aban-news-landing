@@ -1,0 +1,456 @@
+{
+  "_hinweis": "Last Asylum: Plague (com.phs.global), deutsche UI, 1440 px breit. Die Templates in templates/nav und templates/ui sind aus echten Screenshots geschnitten und laufen sofort. Alles mit 'optional: true' überspringt der Bot, bis du den Ausschnitt selbst anlegst – `python3 bot.py check` listet auf, was noch fehlt.",
+
+  "package": "com.phs.global",
+  "activity": null,
+  "base_width": 1440,
+  "default_threshold": 0.88,
+  "loop_delay": [1.2, 2.4],
+  "stuck_seconds": 300,
+  "templates_dir": "../templates",
+  "input_method": "input",
+
+  "_geld": "ECHTGELD IST TABU, SPIEL-WAEHRUNG IST ERLAUBT. Der Bot darf Diamanten, Ressourcen und Beschleunigungen ausgeben – das passiert in normalen Spiel-Dialogen und ist nicht gesperrt. Gesperrt sind nur die Bereiche, ueber die man echtes Geld ausgibt (Einkaufswagen und Diamanten-Aufladung oben rechts). Regel fuer dich: schneide NIE ein Template von einem Knopf, auf dem ein Preis in CHF/EUR/USD steht.",
+  "tabu_regionen": [
+    { "name": "Echtgeld-Shop und Diamanten-Aufladung oben rechts", "box": [0.58, 0.0, 1.0, 0.095] },
+    { "name": "Angebots-Banner oben links", "box": [0.0, 0.0, 0.12, 0.05] }
+  ],
+
+  "texte": {
+    "allianz_admin": [
+      "Guten Morgen Leute! Denkt an die Tagesziele und Allianz-Geschenke.",
+      "Erinnerung: Hilfe geben kostet nichts und beschleunigt alle Bauten.",
+      "Allianz-Truhen sind offen - holt eure Belohnungen ab!",
+      "Wer Ressourcen braucht, meldet sich. Wir helfen uns gegenseitig.",
+      "Denkt an die Forschung - lasst sie nie stillstehen.",
+      "Sammelt fleissig, damit wir das naechste Geschenk-Level knacken."
+    ]
+  },
+
+  "on_stuck": [
+    { "log": "Bild bewegt sich nicht mehr - Zurueck-Taste versuchen" },
+    { "screenshot": "haenger" },
+    { "key": "KEYCODE_BACK" },
+    { "sleep": [2, 3] }
+  ],
+
+  "on_unknown": [
+    { "screenshot": "unbekannt" },
+    { "tap_template": { "template": "ui/popup_close.png", "optional": true, "threshold": 0.84 } },
+    { "sleep": 1.5 }
+  ],
+
+  "rules": [
+    {
+      "name": "belohnung-abholen",
+      "priority": 210,
+      "cooldown": 0.5,
+      "match": { "template": "ui/btn_abholen.png", "threshold": 0.85 },
+      "do": [
+        { "tap_match": {} },
+        { "sleep": [0.6, 1.1] }
+      ]
+    },
+    {
+      "name": "offline-einnahmen-abholen",
+      "priority": 215,
+      "cooldown": 1.0,
+      "_zweck": "Der orange 'Abholen'-Knopf beim Offline-Einnahmen-Dialog (Zuflucht).",
+      "match": { "template": "ui/btn_abholen_orange.png", "threshold": 0.85 },
+      "do": [
+        { "tap_match": {} },
+        { "sleep": [0.8, 1.4] }
+      ]
+    },
+    {
+      "name": "dialog-schliessen-hell",
+      "priority": 199,
+      "cooldown": 1.5,
+      "_zweck": "Weisses X auf dunklem Grund (Vollbild-Dialoge wie Offline-Einnahmen).",
+      "match": { "template": "ui/close_x_hell.png", "threshold": 0.86, "region": [0.45, 0.05, 1.0, 0.75] },
+      "do": [
+        { "tap_match": {} },
+        { "sleep": [0.8, 1.4] }
+      ]
+    },
+    {
+      "name": "zuflucht-geschenk",
+      "priority": 160,
+      "cooldown": 3.0,
+      "_zweck": "Geschenk-Blasen und das gruene Geschenk-Symbol in der Zuflucht einsammeln.",
+      "match": {
+        "any": [
+          { "template": "zuflucht/geschenk_blase.png", "threshold": 0.84 },
+          { "template": "zuflucht/geschenk_gruen.png", "threshold": 0.86 }
+        ]
+      },
+      "do": [
+        { "tap_match": {} },
+        { "sleep": [0.8, 1.4] }
+      ]
+    },
+    {
+      "name": "zuflucht-kraeuter",
+      "priority": 130,
+      "cooldown": 4.0,
+      "_zweck": "Die gruenen Kraeuter-Knoepfe an den Tresen abernten (mehrere hintereinander).",
+      "match": { "template": "zuflucht/kraut.png", "threshold": 0.85 },
+      "do": [
+        { "tap_match": {} },
+        { "sleep": [0.5, 0.9] },
+        { "repeat": { "times": 3, "do": [
+          { "tap_template": { "template": "zuflucht/kraut.png", "optional": true, "threshold": 0.85 } },
+          { "sleep": [0.5, 0.9] }
+        ] } }
+      ]
+    },
+    {
+      "name": "dialog-schliessen",
+      "priority": 200,
+      "cooldown": 1.5,
+      "match": { "template": "ui/popup_close.png", "threshold": 0.86, "region": [0.45, 0.05, 1.0, 0.75] },
+      "do": [
+        { "tap_match": {} },
+        { "sleep": [0.8, 1.4] }
+      ]
+    },
+    {
+      "name": "werbung-schliessen",
+      "priority": 195,
+      "cooldown": 2.0,
+      "match": { "template": "ui/ad_close.png", "threshold": 0.82, "region": [0.6, 0.0, 1.0, 0.25], "optional": true },
+      "do": [
+        { "tap_match": {} },
+        { "sleep": [1.2, 2.0] }
+      ]
+    },
+    {
+      "name": "verbindung-verloren",
+      "priority": 190,
+      "cooldown": 60,
+      "match": { "template": "ui/reconnect.png", "threshold": 0.85, "optional": true },
+      "do": [
+        { "log": "Verbindungsabbruch erkannt - App neu starten" },
+        { "restart_app": [25, 40] }
+      ]
+    },
+    {
+      "name": "belohnung-bestaetigen",
+      "priority": 180,
+      "cooldown": 1.0,
+      "match": { "template": "ui/btn_bestaetigen.png", "optional": true },
+      "do": [
+        { "tap_match": {} },
+        { "sleep": [0.8, 1.3] }
+      ]
+    },
+    {
+      "name": "gebaeude-fertig-antippen",
+      "priority": 120,
+      "cooldown": 30,
+      "match": { "template": "hud/bau_fertig.png", "optional": true },
+      "do": [
+        { "tap_match": {} },
+        { "sleep": [1.0, 1.6] }
+      ]
+    },
+    {
+      "name": "zurueck-zur-basis",
+      "priority": 20,
+      "cooldown": 25,
+      "match": {
+        "all": [
+          { "template": "ui/back_arrow.png", "threshold": 0.85, "region": [0.0, 0.0, 0.3, 0.15] },
+          { "not": { "template": "ui/btn_abholen.png", "threshold": 0.85 } }
+        ]
+      },
+      "do": [
+        { "log": "Untermenue offen und nichts mehr abzuholen - zurueck" },
+        { "tap_match": {} },
+        { "sleep": [1.0, 1.8] }
+      ]
+    }
+  ],
+
+  "tasks": [
+    {
+      "name": "tagesziele",
+      "every": 2700,
+      "at_start": true,
+      "priority": 130,
+      "do": [
+        { "log": "Tagesziele: alle Belohnungen abholen" },
+        { "tap_template": { "template": "nav/tagesziele.png", "region": [0.0, 0.55, 0.5, 1.0], "after": [2.0, 3.0] } },
+        { "repeat": { "times": 10, "do": [
+          { "tap_template": { "template": "ui/btn_abholen.png", "optional": true, "threshold": 0.85 } },
+          { "sleep": [0.6, 1.1] }
+        ] } },
+        { "swipe": [0.5, 0.75, 0.5, 0.45, 400] },
+        { "sleep": 1.2 },
+        { "repeat": { "times": 6, "do": [
+          { "tap_template": { "template": "ui/btn_abholen.png", "optional": true, "threshold": 0.85 } },
+          { "sleep": [0.6, 1.1] }
+        ] } },
+        { "tap_template": { "template": "ui/popup_close.png", "optional": true, "threshold": 0.84 } },
+        { "sleep": 1.0 },
+        { "key": "KEYCODE_BACK" },
+        { "sleep": [1.0, 1.5] }
+      ]
+    },
+    {
+      "name": "allianz-geschenke",
+      "every": 1800,
+      "at_start": true,
+      "priority": 120,
+      "do": [
+        { "log": "Allianz: Hilfe geben, Truhen und Geschenke abholen" },
+        { "tap_template": { "template": "nav/allianz.png", "region": [0.7, 0.6, 1.0, 1.0], "after": [2.0, 3.0] } },
+        { "tap_template": { "template": "allianz/hilfe.png", "optional": true, "after": 1.5 } },
+        { "tap_template": { "template": "allianz/geschenke.png", "optional": true, "after": [2.0, 3.0] } },
+        { "repeat": { "times": 12, "do": [
+          { "tap_template": { "template": "ui/btn_abholen.png", "optional": true, "threshold": 0.85 } },
+          { "sleep": [0.6, 1.0] }
+        ] } },
+        { "swipe": [0.5, 0.8, 0.5, 0.4, 420] },
+        { "sleep": 1.2 },
+        { "repeat": { "times": 8, "do": [
+          { "tap_template": { "template": "ui/btn_abholen.png", "optional": true, "threshold": 0.85 } },
+          { "sleep": [0.6, 1.0] }
+        ] } },
+        { "tap_template": { "template": "ui/back_arrow.png", "optional": true, "region": [0.0, 0.0, 0.3, 0.15], "after": 1.5 } },
+        { "key": "KEYCODE_BACK" },
+        { "sleep": [1.0, 1.5] }
+      ]
+    },
+    {
+      "name": "schild-pruefen",
+      "every": 1800,
+      "at_start": true,
+      "priority": 200,
+      "_zweck": "Wichtigste Verteidigung: laeuft kein Schild, wird eines gesetzt. Braucht hud/schild_aktiv.png (Schild-Symbol im HUD) und schutz/schild_setzen.png + schutz/schild_bestaetigen.png aus dem Gegenstands-Menue.",
+      "do": [
+        { "wenn": {
+          "match": { "template": "hud/schild_aktiv.png", "threshold": 0.85, "optional": true },
+          "dann": [ { "log": "Schild laeuft - alles gut" } ],
+          "sonst": [
+            { "log": "KEIN Schild aktiv - Schutzschild setzen" },
+            { "tap_template": { "template": "nav/tasche.png", "region": [0.7, 0.6, 1.0, 1.0], "after": [2.0, 3.0] } },
+            { "tap_template": { "template": "schutz/reiter_spezial.png", "optional": true, "after": 1.5 } },
+            { "tap_template": { "template": "schutz/schild_setzen.png", "optional": true, "after": 1.5 } },
+            { "tap_template": { "template": "schutz/schild_bestaetigen.png", "optional": true, "after": 2.0 } },
+            { "tap_template": { "template": "ui/popup_close.png", "optional": true, "threshold": 0.84 } },
+            { "key": "KEYCODE_BACK" },
+            { "sleep": [1.2, 1.8] }
+          ]
+        } }
+      ]
+    },
+    {
+      "name": "bauen-und-aufwerten",
+      "every": 900,
+      "at_start": true,
+      "priority": 150,
+      "_zweck": "Bauschlitze nie leer lassen. Braucht hud/bauschlitz_frei.png (der Hammer links, z.B. 3/3), ui/btn_aufwerten.png und ui/btn_bestaetigen.png.",
+      "do": [
+        { "wenn": {
+          "match": { "template": "hud/bauschlitz_frei.png", "threshold": 0.85, "optional": true },
+          "dann": [
+            { "log": "Bauschlitz frei - Gebaeude aufwerten" },
+            { "tap_match": {} },
+            { "sleep": [2.0, 3.0] },
+            { "tap_template": { "template": "ui/btn_aufwerten.png", "optional": true, "after": [1.5, 2.5] } },
+            { "tap_template": { "template": "ui/btn_bestaetigen.png", "optional": true, "after": [1.5, 2.5] } },
+            { "tap_template": { "template": "ui/popup_close.png", "optional": true, "threshold": 0.84 } },
+            { "key": "KEYCODE_BACK" },
+            { "sleep": [1.2, 1.8] }
+          ],
+          "sonst": [ { "log": "Alle Bauschlitze belegt" } ]
+        } }
+      ]
+    },
+    {
+      "name": "forschung",
+      "every": 1800,
+      "at_start": true,
+      "priority": 145,
+      "_zweck": "Forschung nie stillstehen lassen. Braucht hud/forschung_frei.png (der Kolben links, z.B. 2/2) und ui/btn_forschen.png.",
+      "do": [
+        { "wenn": {
+          "match": { "template": "hud/forschung_frei.png", "threshold": 0.85, "optional": true },
+          "dann": [
+            { "log": "Forschungsplatz frei - naechste Technologie starten" },
+            { "tap_match": {} },
+            { "sleep": [2.0, 3.0] },
+            { "tap_template": { "template": "forschung/empfehlung.png", "optional": true, "after": [1.5, 2.5] } },
+            { "tap_template": { "template": "ui/btn_forschen.png", "optional": true, "after": [1.5, 2.5] } },
+            { "tap_template": { "template": "ui/btn_bestaetigen.png", "optional": true, "after": 2.0 } },
+            { "tap_template": { "template": "ui/popup_close.png", "optional": true, "threshold": 0.84 } },
+            { "key": "KEYCODE_BACK" },
+            { "sleep": [1.2, 1.8] }
+          ],
+          "sonst": [ { "log": "Forschung laeuft bereits" } ]
+        } }
+      ]
+    },
+    {
+      "name": "truppe-1-aufwerten",
+      "every": 2400,
+      "at_start": true,
+      "priority": 140,
+      "_zweck": "Hauptziel Kampfkraft: Helden von Team 1 leveln und ausruesten. Braucht held/team1.png, held/aufwerten.png, held/ausruesten.png, ui/btn_bestaetigen.png. Der Bot tippt 'Aufwerten' mehrfach - solange Material da ist, steigt das Level.",
+      "do": [
+        { "log": "Truppe 1: Kampfkraft steigern" },
+        { "tap_template": { "template": "nav/held.png", "region": [0.0, 0.85, 0.35, 1.0], "after": [2.5, 3.5] } },
+        { "tap_template": { "template": "held/team1.png", "optional": true, "after": [1.5, 2.5] } },
+        { "repeat": { "times": 6, "do": [
+          { "tap_template": { "template": "held/aufwerten.png", "optional": true } },
+          { "sleep": [0.8, 1.3] },
+          { "tap_template": { "template": "ui/btn_bestaetigen.png", "optional": true } },
+          { "sleep": [0.7, 1.1] }
+        ] } },
+        { "tap_template": { "template": "held/ausruesten.png", "optional": true, "after": [1.5, 2.5] } },
+        { "repeat": { "times": 4, "do": [
+          { "tap_template": { "template": "ui/btn_bestaetigen.png", "optional": true } },
+          { "sleep": [0.7, 1.1] }
+        ] } },
+        { "tap_template": { "template": "ui/popup_close.png", "optional": true, "threshold": 0.84 } },
+        { "key": "KEYCODE_BACK" },
+        { "sleep": [1.2, 1.8] }
+      ]
+    },
+    {
+      "name": "beschleunigen",
+      "every": 5400,
+      "priority": 80,
+      "_zweck": "Beschleuniger aus der Tasche auf laufende Bauten werfen. Braucht schutz/reiter_beschleunigung.png und ui/btn_benutzen.png. Diamanten-Kaeufe im Spiel sind erlaubt, Echtgeld nicht (siehe tabu_regionen).",
+      "do": [
+        { "log": "Beschleuniger einsetzen" },
+        { "tap_template": { "template": "nav/tasche.png", "region": [0.7, 0.6, 1.0, 1.0], "after": [2.0, 3.0] } },
+        { "tap_template": { "template": "schutz/reiter_beschleunigung.png", "optional": true, "after": [1.5, 2.5] } },
+        { "repeat": { "times": 3, "do": [
+          { "tap_template": { "template": "ui/btn_benutzen.png", "optional": true } },
+          { "sleep": [0.8, 1.3] },
+          { "tap_template": { "template": "ui/btn_bestaetigen.png", "optional": true } },
+          { "sleep": [0.8, 1.3] }
+        ] } },
+        { "tap_template": { "template": "ui/popup_close.png", "optional": true, "threshold": 0.84 } },
+        { "key": "KEYCODE_BACK" },
+        { "sleep": [1.2, 1.8] }
+      ]
+    },
+    {
+      "name": "zuflucht",
+      "every": 900,
+      "at_start": true,
+      "priority": 125,
+      "_zweck": "In die Zuflucht wechseln und alles einsammeln (Kraeuter, Geschenke, Offline-Einnahmen). Die Regeln oben erledigen das Einsammeln, sobald der Bildschirm sichtbar ist. Fuer den Wechsel braucht es nav/zuflucht.png (der Umschalter am linken Bildrand).",
+      "do": [
+        { "log": "Zuflucht besuchen und abernten" },
+        { "tap_first": { "of": ["nav/zuflucht.png"], "fallback": [0.02, 0.35], "after": [3.0, 4.5] } },
+        { "repeat": { "times": 6, "do": [
+          { "tap_template": { "template": "zuflucht/kraut.png", "optional": true, "threshold": 0.85 } },
+          { "sleep": [0.6, 1.0] },
+          { "tap_template": { "template": "zuflucht/geschenk_blase.png", "optional": true, "threshold": 0.84 } },
+          { "sleep": [0.6, 1.0] }
+        ] } },
+        { "tap_template": { "template": "ui/btn_abholen_orange.png", "optional": true, "threshold": 0.85 } },
+        { "sleep": [1.0, 1.5] },
+        { "tap_template": { "template": "ui/close_x_hell.png", "optional": true, "threshold": 0.86 } },
+        { "sleep": [1.0, 1.5] }
+      ]
+    },
+    {
+      "name": "events",
+      "every": 3600,
+      "at_start": true,
+      "priority": 115,
+      "do": [
+        { "log": "Events durchgehen und alle Belohnungen holen" },
+        { "tap_template": { "template": "events/wertvolles_event.png", "optional": true, "threshold": 0.84, "region": [0.55, 0.05, 1.0, 0.45], "after": [2.5, 3.5] } },
+        { "repeat": { "times": 8, "do": [
+          { "tap_template": { "template": "ui/btn_abholen.png", "optional": true, "threshold": 0.85 } },
+          { "sleep": [0.6, 1.1] }
+        ] } },
+        { "tap_template": { "template": "ui/popup_close.png", "optional": true, "threshold": 0.84, "after": 1.2 } },
+        { "key": "KEYCODE_BACK" },
+        { "sleep": [1.2, 1.8] },
+        { "tap_template": { "template": "events/spezielles_event.png", "optional": true, "threshold": 0.84, "region": [0.55, 0.05, 1.0, 0.45], "after": [2.5, 3.5] } },
+        { "repeat": { "times": 8, "do": [
+          { "tap_template": { "template": "ui/btn_abholen.png", "optional": true, "threshold": 0.85 } },
+          { "sleep": [0.6, 1.1] }
+        ] } },
+        { "tap_template": { "template": "ui/popup_close.png", "optional": true, "threshold": 0.84, "after": 1.2 } },
+        { "key": "KEYCODE_BACK" },
+        { "sleep": [1.2, 1.8] }
+      ]
+    },
+    {
+      "name": "allianz-chat",
+      "every": 14400,
+      "priority": 70,
+      "do": [
+        { "log": "Allianz-Chat: Admin-Nachricht senden" },
+        { "tap_first": { "of": ["chat/oeffnen.png", "nav/chat.png"], "fallback": [0.5, 0.963], "after": [2.0, 3.0] } },
+        { "tap_template": { "template": "chat/eingabefeld.png", "optional": true, "after": [1.2, 2.0] } },
+        { "type_text": { "pool": "allianz_admin" } },
+        { "sleep": [0.8, 1.4] },
+        { "tap_template": { "template": "chat/senden.png", "optional": true, "after": [1.2, 2.0] } },
+        { "key": "KEYCODE_BACK" },
+        { "sleep": [1.2, 2.0] }
+      ]
+    },
+    {
+      "name": "heilen",
+      "every": 2700,
+      "priority": 100,
+      "do": [
+        { "log": "Truppen heilen" },
+        { "tap_template": { "template": "nav/heilen.png", "optional": true, "region": [0.0, 0.55, 0.6, 1.0], "after": [2.0, 3.0] } },
+        { "tap_template": { "template": "ui/btn_heilen.png", "optional": true, "after": 2.0 } },
+        { "tap_template": { "template": "ui/popup_close.png", "optional": true, "threshold": 0.84 } },
+        { "sleep": 1.2 },
+        { "key": "KEYCODE_BACK" },
+        { "sleep": 1.2 }
+      ]
+    },
+    {
+      "name": "sammeln",
+      "every": 1200,
+      "priority": 90,
+      "do": [
+        { "log": "Sammel-Trupp losschicken" },
+        { "tap_template": { "template": "nav/welt.png", "region": [0.7, 0.85, 1.0, 1.0], "after": [3.0, 4.5] } },
+        { "tap_template": { "template": "nav/lupe.png", "optional": true, "region": [0.3, 0.75, 0.8, 1.0], "after": [1.5, 2.5] } },
+        { "tap_template": { "template": "sammeln/ressource.png", "optional": true, "after": 2.0 } },
+        { "tap_template": { "template": "sammeln/suchen.png", "optional": true, "after": [3.0, 4.5] } },
+        { "tap_template": { "template": "sammeln/sammeln.png", "optional": true, "after": 2.0 } },
+        { "tap_template": { "template": "sammeln/marschieren.png", "optional": true, "after": 2.5 } },
+        { "tap_template": { "template": "ui/popup_close.png", "optional": true, "threshold": 0.84 } },
+        { "sleep": 1.5 }
+      ]
+    },
+    {
+      "name": "zurueck-in-die-basis",
+      "every": 900,
+      "priority": 50,
+      "do": [
+        { "tap_template": { "template": "nav/burg.png", "optional": true, "region": [0.0, 0.4, 0.35, 0.85], "after": [2.5, 3.5] } }
+      ]
+    },
+    {
+      "name": "nachrichten",
+      "every": 7200,
+      "priority": 60,
+      "do": [
+        { "log": "Nachrichten oeffnen (rote Punkte abbauen)" },
+        { "tap_template": { "template": "nav/nachricht.png", "region": [0.7, 0.6, 1.0, 1.0], "after": [2.0, 3.0] } },
+        { "repeat": { "times": 4, "do": [
+          { "tap_template": { "template": "ui/btn_abholen.png", "optional": true, "threshold": 0.85 } },
+          { "sleep": [0.6, 1.0] }
+        ] } },
+        { "key": "KEYCODE_BACK" },
+        { "sleep": [1.0, 1.5] }
+      ]
+    }
+  ]
+}

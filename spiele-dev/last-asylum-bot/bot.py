@@ -1,0 +1,292 @@
+#!/usr/bin/env python3
+"""Last-Asylum-Bot – Kommandozeile.
+
+Befehle:
+  devices     angeschlossene Geräte auflisten
+  capture     Screenshot vom Gerät holen (Grundlage für Templates)
+  crop        Ausschnitt aus einem Screenshot als Template speichern
+  check       Konfiguration + Templates prüfen (ohne Gerät)
+  find        Template im aktuellen Bildschirm suchen (Feintuning der Schwelle)
+  run         Bot laufen lassen
+  replay      Bot gegen einen Ordner mit Screenshots testen (kein Gerät nötig)
+
+Beispiel:
+  python3 bot.py capture -o shots/start.png
+  python3 bot.py crop shots/start.png --box 820,60,980,150 -o templates/ui/close_x.png
+  python3 bot.py run --config config/last-asylum.json --minutes 30
+"""
+
+from __future__ import annotations
+
+import argparse
+import glob
+import os
+import sys
+import time
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+from laa import matcher  # noqa: E402
+from laa.adb import AdbDevice, DeviceError, FakeDevice, list_devices  # noqa: E402
+from laa.config import Config, ConfigError  # noqa: E402
+from laa.engine import Engine  # noqa: E402
+from laa.image import Image  # noqa: E402
+from laa.log import Logger  # noqa: E402
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+DEFAULT_CONFIG = os.path.join(HERE, "config", "last-asylum.json")
+
+
+def make_device(args, dry_run: bool = False) -> AdbDevice:
+    return AdbDevice(serial=args.serial, adb=args.adb, dry_run=dry_run)
+
+
+def load_config(args) -> Config:
+    cfg = Config.load(args.config)
+    problems = cfg.validate()
+    if problems:
+        print("⚠ Konfiguration hat Probleme:", file=sys.stderr)
+        for p in problems:
+            print(f"  – {p}", file=sys.stderr)
+        if not getattr(args, "force", False):
+            raise SystemExit(2)
+    return cfg
+
+
+# --------------------------------------------------------------------- Befehle
+def cmd_devices(args) -> int:
+    serials = list_devices(args.adb)
+    if not serials:
+        print("Kein Gerät gefunden. Prüfen: USB-Debugging an, `adb devices`, ggf. `adb connect IP:5555`.")
+        return 1
+    for s in serials:
+        print(s)
+    return 0
+
+
+def cmd_capture(args) -> int:
+    dev = make_device(args)
+    img = dev.screencap()
+    out = args.output or os.path.join("shots", f"{time.strftime('%Y%m%d-%H%M%S')}.png")
+    os.makedirs(os.path.dirname(os.path.abspath(out)) or ".", exist_ok=True)
+    if args.scale and args.scale != 1.0:
+        img = img.box_scale(int(img.width * args.scale), int(img.height * args.scale))
+    if args.raster:
+        img = img.draw_grid(args.raster)
+        print(f"Raster: duenne Linie alle {args.raster} px, kraeftige alle {args.raster * 5} px")
+    img.save(out)
+    print(f"{out} ({img.width}x{img.height})")
+    return 0
+
+
+def cmd_crop(args) -> int:
+    img = Image.load(args.source)
+    box = [float(v) for v in args.box.split(",")]
+    if len(box) != 4:
+        print("--box braucht 4 Werte: l,t,r,b (Pixel oder 0..1 relativ)", file=sys.stderr)
+        return 2
+    l, t, r, b = matcher.resolve_region(box, img.width, img.height)
+    cut = img.crop(l, t, r - l, b - t)
+    os.makedirs(os.path.dirname(os.path.abspath(args.output)) or ".", exist_ok=True)
+    cut.save(args.output)
+    print(f"{args.output} ({cut.width}x{cut.height}) aus {args.source} [{l},{t},{r},{b}]")
+    return 0
+
+
+def cmd_check(args) -> int:
+    try:
+        cfg = Config.load(args.config)
+    except (ConfigError, OSError) as exc:
+        print(f"✗ {exc}", file=sys.stderr)
+        return 2
+    problems = cfg.validate()
+    print(f"Konfiguration: {cfg.path}")
+    print(f"  Paket        : {cfg.package or '(nicht gesetzt)'}")
+    print(f"  Regeln       : {len(cfg.rules)}")
+    print(f"  Aufgaben     : {len(cfg.tasks)}")
+    print(f"  Templates    : {os.path.join(cfg.root, cfg.templates_dir)}")
+    print(f"  numpy        : {'ja (schnell)' if matcher.HAVE_NUMPY else 'nein (langsam, `pip install numpy`)'}")
+    if cfg.offene_templates:
+        print(f"\n○ {len(cfg.offene_templates)} optionale Templates fehlen noch "
+              "(die Schritte werden übersprungen, bis du sie schneidest):")
+        for name in cfg.offene_templates:
+            print(f"  – templates/{name}")
+        print("  → python3 bot.py capture -o shots/x.png && python3 bot.py crop shots/x.png "
+              "--box l,t,r,b -o templates/<name>.png")
+    if problems:
+        print(f"\n✗ {len(problems)} Problem(e):")
+        for p in problems:
+            print(f"  – {p}")
+        return 1
+    print("\n✓ Konfiguration lauffähig")
+    return 0
+
+
+def cmd_package(args) -> int:
+    """Paketname der App, die gerade im Vordergrund ist."""
+    dev = make_device(args)
+    pkg = dev.current_package()
+    if not pkg:
+        print("Konnte den Vordergrund-Prozess nicht lesen. Spiel offen? `adb devices` prüfen.")
+        return 1
+    print(pkg)
+    return 0
+
+
+def cmd_find(args) -> int:
+    if args.image:
+        screen = Image.load(args.image)
+    else:
+        screen = make_device(args).screencap()
+    tpl = Image.load(args.template)
+    scale = args.scale if args.scale else 1.0
+    region = [float(v) for v in args.region.split(",")] if args.region else None
+    t0 = time.time()
+    hits = matcher.find_all(screen, tpl, threshold=args.threshold, region=region, scale=scale, limit=args.limit)
+    dt = time.time() - t0
+    if not hits:
+        print(f"kein Treffer ≥ {args.threshold} ({dt:.2f}s, numpy={matcher.HAVE_NUMPY})")
+        return 1
+    for h in hits:
+        print(f"score={h.score:.3f} bei x={h.x} y={h.y} ({h.w}x{h.h}) → Mitte {h.center}")
+    print(f"({dt:.2f}s, numpy={matcher.HAVE_NUMPY})")
+    return 0
+
+
+def cmd_run(args) -> int:
+    cfg = load_config(args)
+    logger = Logger(level=args.log_level, jsonl_path=args.jsonl)
+    try:
+        dev = make_device(args, dry_run=args.dry_run)
+        dev.input_method = cfg.input_method
+    except DeviceError as exc:
+        print(f"✗ {exc}", file=sys.stderr)
+        return 2
+    if args.dry_run:
+        logger.warn("TROCKENLAUF – es wird nichts angetippt")
+    if not matcher.HAVE_NUMPY:
+        logger.warn("numpy fehlt – Bildsuche ist deutlich langsamer (`pip install numpy`)")
+
+    engine = Engine(
+        cfg,
+        dev,
+        logger=logger,
+        shots_dir=args.shots,
+        stop_file=args.stop_file,
+        seed=args.seed,
+    )
+    if args.start_app and cfg.package:
+        dev.start_app(cfg.package, cfg.activity)
+        logger.info("App gestartet, warte auf Ladebildschirm", paket=cfg.package)
+        time.sleep(args.start_wait)
+
+    max_seconds = args.minutes * 60 if args.minutes else None
+    stats = engine.run(max_seconds=max_seconds, max_steps=args.steps)
+    logger.info("Bilanz: " + engine.summary(), **{k: v for k, v in stats.items()})
+    logger.close()
+    return 0
+
+
+def cmd_replay(args) -> int:
+    cfg = load_config(args)
+    files = sorted(glob.glob(os.path.join(args.folder, "*.png")))
+    if not files:
+        print(f"Keine PNG-Dateien in {args.folder}", file=sys.stderr)
+        return 2
+    frames = [Image.load(f) for f in files]
+    dev = FakeDevice(frames, hold=True)
+    logger = Logger(level=args.log_level)
+    engine = Engine(cfg, dev, logger=logger, shots_dir=args.shots, sleep=lambda s: None, seed=1)
+    logger.info(f"Replay über {len(frames)} Bilder aus {args.folder}")
+    for i, name in enumerate(files):
+        dev.index = i  # ein Bild = ein Schritt (der Bildschirm steht still)
+        logger.info(f"— Bild {i + 1}/{len(files)}: {os.path.basename(name)}")
+        engine.step()
+    print()
+    print("Bilanz:", engine.summary())
+    print(f"Tipps: {dev.taps}")
+    if dev.swipes:
+        print(f"Wische: {dev.swipes}")
+    return 0
+
+
+# ------------------------------------------------------------------------ CLI
+def build_parser() -> argparse.ArgumentParser:
+    p = argparse.ArgumentParser(
+        prog="bot.py",
+        description="Bildschirm-Bot für das Android-Spiel Last Asylum (ADB-gesteuert)",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=__doc__,
+    )
+    p.add_argument("--adb", default=os.environ.get("ADB", "adb"), help="Pfad zur adb-Binärdatei")
+    p.add_argument("-s", "--serial", default=os.environ.get("ANDROID_SERIAL"), help="Geräte-Seriennummer")
+    sub = p.add_subparsers(dest="command", required=True)
+
+    sub.add_parser("devices", help="angeschlossene Geräte auflisten").set_defaults(func=cmd_devices)
+    sub.add_parser("package", help="Paketnamen der App im Vordergrund zeigen").set_defaults(func=cmd_package)
+
+    c = sub.add_parser("capture", help="Screenshot holen")
+    c.add_argument("-o", "--output", help="Zieldatei (Standard: shots/<zeit>.png)")
+    c.add_argument("--scale", type=float, default=1.0, help="Screenshot verkleinern, z. B. 0.5")
+    c.add_argument("--raster", type=int, nargs="?", const=100, default=0,
+                   help="Koordinaten-Raster einzeichnen (Standard alle 100 px) – zum Ausmessen")
+    c.set_defaults(func=cmd_capture)
+
+    c = sub.add_parser("crop", help="Template aus einem Screenshot schneiden")
+    c.add_argument("source", help="Screenshot-Datei")
+    c.add_argument("--box", required=True, help="l,t,r,b in Pixeln oder relativ (0..1)")
+    c.add_argument("-o", "--output", required=True, help="Ziel-Template (PNG)")
+    c.set_defaults(func=cmd_crop)
+
+    c = sub.add_parser("check", help="Konfiguration prüfen")
+    c.add_argument("--config", default=DEFAULT_CONFIG)
+    c.set_defaults(func=cmd_check)
+
+    c = sub.add_parser("find", help="Template suchen (Schwellenwert einstellen)")
+    c.add_argument("template")
+    c.add_argument("--image", help="Screenshot-Datei statt Live-Gerät")
+    c.add_argument("--threshold", type=float, default=0.8)
+    c.add_argument("--region", help="l,t,r,b (relativ oder Pixel)")
+    c.add_argument("--scale", type=float, default=1.0)
+    c.add_argument("--limit", type=int, default=3)
+    c.set_defaults(func=cmd_find)
+
+    c = sub.add_parser("run", help="Bot starten")
+    c.add_argument("--config", default=DEFAULT_CONFIG)
+    c.add_argument("--minutes", type=float, default=0, help="Laufzeit-Limit (0 = ohne Limit)")
+    c.add_argument("--steps", type=int, help="Höchstzahl an Schleifen-Durchläufen")
+    c.add_argument("--dry-run", action="store_true", help="nichts antippen, nur erkennen")
+    c.add_argument("--start-app", action="store_true", help="App zu Beginn starten")
+    c.add_argument("--start-wait", type=float, default=25, help="Wartezeit nach App-Start (s)")
+    c.add_argument("--shots", default="shots", help="Ordner für Screenshots")
+    c.add_argument("--jsonl", help="Ereignis-Log als JSONL")
+    c.add_argument("--stop-file", default="STOP", help="Datei, deren Existenz den Bot beendet")
+    c.add_argument("--log-level", default="info", choices=["debug", "info", "warn", "error"])
+    c.add_argument("--seed", type=int, help="Zufalls-Startwert (reproduzierbare Läufe)")
+    c.add_argument("--force", action="store_true", help="trotz Konfigurations-Warnungen starten")
+    c.set_defaults(func=cmd_run)
+
+    c = sub.add_parser("replay", help="gegen gespeicherte Screenshots testen")
+    c.add_argument("folder", help="Ordner mit PNG-Screenshots")
+    c.add_argument("--config", default=DEFAULT_CONFIG)
+    c.add_argument("--shots", default="shots")
+    c.add_argument("--log-level", default="info", choices=["debug", "info", "warn", "error"])
+    c.add_argument("--force", action="store_true")
+    c.set_defaults(func=cmd_replay)
+    return p
+
+
+def main(argv=None) -> int:
+    args = build_parser().parse_args(argv)
+    try:
+        return args.func(args)
+    except (ConfigError, DeviceError) as exc:
+        print(f"✗ {exc}", file=sys.stderr)
+        return 2
+    except FileNotFoundError as exc:
+        print(f"✗ Datei nicht gefunden: {exc}", file=sys.stderr)
+        return 2
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
