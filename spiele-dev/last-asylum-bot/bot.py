@@ -253,8 +253,22 @@ def cmd_entdecke(args) -> int:
         os.makedirs(ordner_blasen, exist_ok=True)
         vorhanden = len([f for f in os.listdir(ordner_blasen) if f.endswith(".png")])
         genommen = 0
+        verworfen = []
         for farbe, m in kandidaten:
             if farbe != "blase":
+                continue
+            # Ertrags-Blasen sind rund und schweben ueber den Gebaeuden. Die
+            # Randleisten (Allianz/Nachricht/Tasche rechts, Symbolspalte links)
+            # haben denselben hellen Rahmen und wuerden sonst mit uebernommen.
+            seiten = m.w / float(m.h)
+            rx = m.center[0] / float(screen.width)
+            # Grosszuegig: der Ring wird je nach Untergrund unten angeschnitten,
+            # dadurch messen Blasen oft breiter als hoch.
+            if not (0.55 <= seiten <= 1.8):
+                verworfen.append((m, f"nicht rund ({m.w}x{m.h})"))
+                continue
+            if not (0.13 < rx < 0.85):
+                verworfen.append((m, f"am Bildrand (x={rx:.2f})"))
                 continue
             rand = max(4, min(m.w, m.h) // 12)
             cut = screen.crop(m.x - rand, m.y - rand, m.w + 2 * rand, m.h + 2 * rand)
@@ -264,8 +278,11 @@ def cmd_entdecke(args) -> int:
             print(f"\n{genommen} Ertrags-Blase(n) übernommen → templates/gelernt/blasen/")
             print("Die Sammel-Regel benutzt sie ab sofort, ohne Neustart.")
         else:
-            print("\nKeine Ertrags-Blasen gefunden. Steht die Basis-Ansicht offen und "
+            print("\nKeine Ertrags-Blasen übernommen. Steht die Basis-Ansicht offen und "
                   "sind Blasen sichtbar?")
+        for m, grund in verworfen:
+            print(f"  übersprungen: {m.w}x{m.h} bei {_lage(m, screen.width, screen.height)}"
+                  f" – {grund}")
         return 0
 
     ziel = args.output or os.path.join("shots", "entdeckt.png")
