@@ -170,6 +170,9 @@ ENTDECK_FARBEN = [
     ("hellblau", (150, 190, 225), 40),
     ("rot", (228, 58, 52), 45),
     ("weiss", (238, 240, 244), 26),
+    # Der Rand der Ertrags-Blasen ist hellgrau-blau, nicht weiss - ohne diese
+    # Familie werden Weizen, Holz, Kraut und Tickets schlicht uebersehen.
+    ("blase", (195, 200, 207), 30),
 ]
 
 
