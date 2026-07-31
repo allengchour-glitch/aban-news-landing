@@ -49,7 +49,10 @@ class Config:
     festgefahren_schritte: int = 15  # so viele Schritte gleiche Ansicht = Ausweg suchen
     regel_wirkungslos_grenze: int = 3   # so oft darf eine Regel folgenlos greifen
     regel_wirkungslos_pause: float = 300.0
-    regel_hoechstens_je_fenster: int = 8   # so oft darf eine Regel im Fenster greifen
+    # Fuenf Treffer je Fenster reichen fuer jede sinnvolle Regel. Bei acht kam
+    # 'blauer-knopf-generisch' am 31.07. auf 26 Treffer in zwanzig Minuten,
+    # ohne dass die Bremse je ausloeste - sechs bis sieben je Fenster.
+    regel_hoechstens_je_fenster: int = 5   # so oft darf eine Regel im Fenster greifen
     regel_fenster: float = 300.0
     regel_vorrang: int = 190  # ab dieser Priorität schlägt eine Regel jede fällige Aufgabe
     on_stuck: List[Any] = field(default_factory=list)
@@ -94,7 +97,7 @@ class Config:
         cfg.festgefahren_schritte = int(raw.get("festgefahren_schritte", 15))
         cfg.regel_wirkungslos_grenze = int(raw.get("regel_wirkungslos_grenze", 3))
         cfg.regel_wirkungslos_pause = float(raw.get("regel_wirkungslos_pause", 300))
-        cfg.regel_hoechstens_je_fenster = int(raw.get("regel_hoechstens_je_fenster", 8))
+        cfg.regel_hoechstens_je_fenster = int(raw.get("regel_hoechstens_je_fenster", 5))
         cfg.regel_fenster = float(raw.get("regel_fenster", 300))
         cfg.regel_vorrang = int(raw.get("regel_vorrang", 190))
         cfg.on_stuck = raw.get("on_stuck", [])
@@ -108,7 +111,7 @@ class Config:
         cfg.kritische_templates = list(raw.get("kritische_templates", []))
         cfg.erkunden = bool(raw.get("erkunden", True))
         cfg.erkunden_hoechstens = int(raw.get("erkunden_hoechstens", 6))
-        cfg.texte ={k: list(v) for k, v in raw.get("texte", {}).items()}
+        cfg.texte = {k: list(v) for k, v in raw.get("texte", {}).items()}
         for zone in raw.get("tabu_regionen", []):
             if isinstance(zone, dict):
                 cfg.tabu_regionen.append(list(zone["box"]))
