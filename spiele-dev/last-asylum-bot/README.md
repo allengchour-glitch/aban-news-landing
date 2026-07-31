@@ -314,13 +314,16 @@ python3 bot.py entdecke --image shots/x.png  # oder in einer Datei
 Ausgabe:
 
 ```
-6 Kandidaten:
-   1  orange     84x114  bei (528,501)   Mitte (570, 558)
-   ...
-   6  gruen     288x93   bei (1065,1353) Mitte (1209, 1399)
+Bildschirm 1440x2560 – 8 Kandidaten:
 
-Übersicht mit Rahmen: shots/entdeckt.png
+  Nr  Farbe         Groesse  Lage
+   1  rot          57x56     oben rechts (x=0.80 y=0.05)
+   4  weiss        98x57     untere Mitte links (x=0.07 y=0.61)
+   8  orange      122x127    unten links (x=0.09 y=0.93)
 ```
+
+Die Lage-Angabe ist wichtig: damit lässt sich ein Fund **allein aus der Textausgabe** zuordnen,
+ohne das Bild anzusehen. Praktisch, wenn Screenshots nur verkleinert weitergegeben werden können.
 
 In `shots/entdeckt.png` sind alle Funde eingerahmt, die Einzelbilder liegen unter
 `templates/entdeckt/01.png …`. Passt einer, wird er mit einem Befehl zur echten Vorlage:

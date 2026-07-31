@@ -167,8 +167,21 @@ ENTDECK_FARBEN = [
     ("gruen", (120, 181, 54), 40),
     ("orange", (237, 183, 59), 45),
     ("blau", (79, 153, 226), 45),
+    ("hellblau", (150, 190, 225), 40),
     ("rot", (228, 58, 52), 45),
+    ("weiss", (238, 240, 244), 26),
 ]
+
+
+def _lage(m, breite: int, hoehe: int) -> str:
+    """Grobe Ortsangabe – damit sich aus der reinen Textausgabe erkennen lässt,
+    welcher Knopf gemeint ist, ohne das Bild sehen zu müssen."""
+    cx, cy = m.center
+    rx, ry = cx / breite, cy / hoehe
+    waag = "links" if rx < 0.34 else ("mitte" if rx < 0.67 else "rechts")
+    senk = "oben" if ry < 0.25 else ("obere Mitte" if ry < 0.5 else
+                                     ("untere Mitte" if ry < 0.78 else "unten"))
+    return f"{senk} {waag} (x={rx:.2f} y={ry:.2f})"
 
 
 def cmd_entdecke(args) -> int:
@@ -216,13 +229,15 @@ def cmd_entdecke(args) -> int:
         return 1
 
     uebersicht = Image(screen.width, screen.height, screen.mode, bytearray(screen.data))
-    print(f"{len(kandidaten)} Kandidaten:\n")
+    print(f"Bildschirm {screen.width}x{screen.height} – {len(kandidaten)} Kandidaten:\n")
+    print(f"  {'Nr':>2}  {'Farbe':9} {'Groesse':>11}  Lage")
     for i, (farbe, m) in enumerate(kandidaten, 1):
         rand = max(4, min(m.w, m.h) // 12)
         cut = screen.crop(m.x - rand, m.y - rand, m.w + 2 * rand, m.h + 2 * rand)
         cut.save(os.path.join(ordner, f"{i:02d}.png"))
         uebersicht.draw_box(m.x - rand, m.y - rand, m.x + m.w + rand, m.y + m.h + rand)
-        print(f"  {i:2d}  {farbe:6}  {m.w:4d}x{m.h:<4d} bei ({m.x},{m.y})  Mitte {m.center}")
+        print(f"  {i:2d}  {farbe:9} {m.w:5d}x{m.h:<5d}  "
+              f"{_lage(m, screen.width, screen.height)}")
 
     ziel = args.output or os.path.join("shots", "entdeckt.png")
     os.makedirs(os.path.dirname(os.path.abspath(ziel)) or ".", exist_ok=True)
@@ -471,10 +486,10 @@ def build_parser() -> argparse.ArgumentParser:
     c.add_argument("-o", "--output", help="Übersichtsbild (Standard: shots/entdeckt.png)")
     c.add_argument("--nimm", type=int, help="Nummer eines Kandidaten übernehmen")
     c.add_argument("--als", help="Zielname, z. B. hud/bubble_metall")
-    c.add_argument("--min-breite", type=float, default=70, dest="min_breite")
+    c.add_argument("--min-breite", type=float, default=55, dest="min_breite")
     c.add_argument("--max-breite", type=float, default=700, dest="max_breite")
-    c.add_argument("--min-hoehe", type=float, default=50, dest="min_hoehe")
-    c.add_argument("--max-hoehe", type=float, default=220, dest="max_hoehe")
+    c.add_argument("--min-hoehe", type=float, default=40, dest="min_hoehe")
+    c.add_argument("--max-hoehe", type=float, default=240, dest="max_hoehe")
     c.set_defaults(func=cmd_entdecke)
 
     c = sub.add_parser("lernen", help="Schwellen aus echten Läufen nachjustieren")
