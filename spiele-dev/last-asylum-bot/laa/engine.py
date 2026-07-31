@@ -127,6 +127,10 @@ class Engine:
         self._finger_jetzt: Optional[bytes] = None
         self._regel_finger: Dict[str, tuple] = {}
         self._regel_pause: Dict[str, float] = {}
+        self._offene_pruefung: Optional[tuple] = None
+        self._folgenlos: Dict[str, int] = {}   # Vorlage -> Tipps ohne jede Wirkung
+        self._verworfen: set = set()           # aussortiert - nicht mehr suchen
+        self._wirksam: Dict[str, int] = {}     # Vorlage -> Tipps, nach denen sich etwas tat
 
         self._rule_last: Dict[str, float] = {}
         self._rule_done = set()
@@ -207,6 +211,15 @@ class Engine:
             )
         elif not self.screen.ist_einfarbig():
             self._schwarz_gemeldet = False
+        if self._offene_pruefung is not None:
+            name, vorher = self._offene_pruefung
+            self._offene_pruefung = None
+            if self._ansicht_finger(self.screen) == vorher:
+                self._folgenlos[name] = self._folgenlos.get(name, 0) + 1
+                self._pruefe_verdacht(name)
+            else:
+                self._wirksam[name] = self._wirksam.get(name, 0) + 1
+                self._folgenlos[name] = 0
         if self._scale is None:
             self._scale = self.cfg.scale_for(self.screen.width)
             if abs(self._scale - 1.0) > 0.01:
@@ -216,6 +229,37 @@ class Engine:
                     bildbreite=self.screen.width,
                 )
         return self.screen
+
+    VERDACHT_AB = 5  # so viele folgenlose Tipps, dann stimmt die Vorlage nicht
+
+    def _pruefe_verdacht(self, name: str) -> None:
+        """Eine Vorlage, die nie etwas ausloest, zeigt auf das falsche Ding.
+
+        Selbst gelernte wandern dann nach 'gelernt/verworfen'. Von Hand
+        geschnittene bleiben liegen - die darf der Bot nicht einfach
+        wegraeumen -, werden aber im Selbstbericht benannt.
+        """
+        if self._folgenlos.get(name, 0) < self.VERDACHT_AB or self._wirksam.get(name):
+            return
+        self._folgenlos[name] = 0
+        if not name.startswith("gelernt/"):
+            self.bump("vorlage-verdaechtig")
+            self.log.warn(
+                f"Vorlage trifft, bewirkt aber nie etwas: {name}",
+                hinweis="zeigt vermutlich auf das falsche Bild - neu schneiden",
+            )
+            return
+        ziel = os.path.join(self.cfg.root, self.cfg.templates_dir, "gelernt", "verworfen")
+        try:
+            os.makedirs(ziel, exist_ok=True)
+            quelle = self.cfg.template_path(name)
+            os.replace(quelle, os.path.join(ziel, os.path.basename(quelle)))
+            self.cfg._templates.pop(name, None)
+            self._verworfen.add(name)
+            self.bump("gelerntes-verworfen")
+            self.log.warn(f"Selbst gelernte Vorlage bewirkt nichts - aussortiert: {name}")
+        except OSError as exc:  # pragma: no cover - Dateisystem
+            self.log.warn(f"Vorlage nicht verschiebbar: {exc}")
 
     def save_shot(self, name: str, image: Optional[Image] = None) -> str:
         img = image or self.screen
@@ -280,13 +324,17 @@ class Engine:
                 if hit and (bester is None or hit.score > bester.score):
                     bester = hit
             return bester
-        tpl = self.cfg.template(spec["template"], optional=bool(spec.get("optional")))
-        if tpl is None:  # noch nicht geschnitten – Schritt überspringen
-            if spec["template"] not in self._gemeldet_fehlend:
-                self._gemeldet_fehlend.add(spec["template"])
-                self.log.debug("Template fehlt noch (optional)", template=spec["template"])
-            return None
         name = spec["template"]
+        if name in self._verworfen:
+            # Aussortiert - und die Datei liegt nicht mehr da. Ohne diesen
+            # Riegel bricht die naechste Suche mit "Template fehlt" ab.
+            return None
+        tpl = self.cfg.template(name, optional=bool(spec.get("optional")))
+        if tpl is None:  # noch nicht geschnitten – Schritt überspringen
+            if name not in self._gemeldet_fehlend:
+                self._gemeldet_fehlend.add(name)
+                self.log.debug("Template fehlt noch (optional)", template=name)
+            return None
         schwelle = float(spec.get("threshold", self.cfg.default_threshold))
         eigen = float(self.cfg.template_skalen.get(name, 1.0))
         bester = matcher.best_score(
@@ -667,6 +715,14 @@ class Engine:
                 continue
             self.log.info(f"   fehlt: {name}", blockiert=", ".join(sorted(wo)))
         self.log.info("   Schneiden mit: python bot.py entdecke (Bildschirm vorher hinstellen)")
+        verdacht = sorted(
+            ((n, c) for n, c in self._folgenlos.items()
+             if c >= 2 and not self._wirksam.get(n)),
+            key=lambda kv: -kv[1],
+        )
+        for name, wie_oft in verdacht[:4]:
+            self.log.info(f"   verdaechtig: {name} trifft, bewirkt aber nichts",
+                          folgenlose_tipps=wie_oft)
         gelernt = len(self.cfg.template_gruppe("gelernt/blasen/*.png"))
         verworfen = len(self.cfg.template_gruppe("gelernt/verworfen/*.png"))
         self.log.info(
@@ -921,6 +977,12 @@ class Engine:
             if self._wirkungslos(x, y, screen):
                 self.log.debug("Gleicher Tipp ohne Wirkung - uebersprungen", x=x, y=y)
                 self.bump("wirkungslos")
+                # Uebersprungen heisst: derselbe Tipp hat schon einmal nichts
+                # bewirkt. Das zaehlt genauso gegen die Vorlage wie ein Tipp,
+                # nach dem sich das Bild nicht ruehrt.
+                if "/" in str(why) and str(why).endswith(".png"):
+                    self._folgenlos[str(why)] = self._folgenlos.get(str(why), 0) + 1
+                    self._pruefe_verdacht(str(why))
                 return
             verbot = self._tabu_treffer(x, y, screen)
             if verbot is not None:
@@ -931,6 +993,11 @@ class Engine:
                 self.bump("tabu-blockiert")
                 return
         self.dev.tap(x, y)
+        if screen is not None and "/" in str(why) and str(why).endswith(".png"):
+            # Beim naechsten Bild nachsehen, ob dieser Tipp etwas bewirkt hat.
+            # Eine Vorlage, die zwar trifft aber nie etwas ausloest, zeigt auf
+            # das falsche Ding - das faellt sonst niemandem auf.
+            self._offene_pruefung = (str(why), self._ansicht_finger(screen))
         if screen is not None:
             self._tipp_verlauf.append((x, y, self._umgebung(screen, x, y)))
             del self._tipp_verlauf[:-12]  # nur die letzten paar merken
@@ -1187,6 +1254,7 @@ class Engine:
                 quelle = self.cfg.template_path(name)
                 os.replace(quelle, os.path.join(ziel, os.path.basename(quelle)))
                 self.cfg._templates.pop(name, None)
+                self._verworfen.add(name)
                 self.bump("gelerntes-verworfen")
                 self.log.warn(
                     f"Selbst gelernte Vorlage taugt nicht - aussortiert: {name}",

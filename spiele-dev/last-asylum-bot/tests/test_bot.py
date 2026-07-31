@@ -1352,6 +1352,84 @@ class TestSelbstbericht(unittest.TestCase):
         self.assertTrue(any("keine Vorlage fehlt" in z for z in zeilen))
 
 
+class TestVorlageOhneWirkung(unittest.TestCase):
+    """Eine Vorlage, die trifft aber nie etwas auslöst, zeigt aufs Falsche.
+
+    Genau das ist passiert, als `entdecke --blasen` die rechte Knopfspalte
+    als Ertrags-Blasen übernahm: Treffer mit 1.00, aber nichts passierte.
+    """
+
+    def bau(self, ordner_name, wechselndes_bild):
+        import tempfile
+        ordner = tempfile.mkdtemp()
+        tdir = os.path.join(ordner, "templates", ordner_name)
+        os.makedirs(tdir)
+        marke = noise(40, 40, 95)
+        marke.save(os.path.join(tdir, "ding.png"))
+        bilder = []
+        for i in range(40):
+            b = noise(600, 900, 96 if not wechselndes_bild else 200 + i)
+            paste(b, marke, 200, 300)
+            if wechselndes_bild:
+                paste(b, Image.new(150, 150, (250, 250, 250)), 20 + (i % 8) * 40, 600)
+            bilder.append(b)
+        with open(os.path.join(ordner, "conf.json"), "w", encoding="utf-8") as fh:
+            json.dump({"base_width": 600}, fh)
+        cfg = Config.load(os.path.join(ordner, "conf.json"))
+        eng = Engine(cfg, FakeDevice(bilder, loop=True), logger=quiet(),
+                     sleep=lambda s: None, seed=4)
+        return ordner, cfg, eng
+
+    def test_gelernte_vorlage_wird_aussortiert(self):
+        import shutil
+        ordner, cfg, eng = self.bau("gelernt", wechselndes_bild=False)
+        try:
+            spec = {"template": "gelernt/ding.png", "threshold": 0.9}
+            for _ in range(Engine.VERDACHT_AB + 2):
+                eng.capture()
+                eng.run_actions([{"tap_template": dict(spec)}])
+            eng.capture()
+            self.assertEqual(eng.stats.get("gelerntes-verworfen", 0), 1)
+            self.assertFalse(os.path.exists(
+                os.path.join(ordner, "templates", "gelernt", "ding.png")))
+            self.assertTrue(os.path.exists(os.path.join(
+                ordner, "templates", "gelernt", "verworfen", "ding.png")),
+                "die Vorlage muss aufgehoben, nicht geloescht werden")
+        finally:
+            shutil.rmtree(ordner, ignore_errors=True)
+
+    def test_von_hand_geschnittene_wird_nur_gemeldet(self):
+        import shutil
+        ordner, cfg, eng = self.bau("nav", wechselndes_bild=False)
+        try:
+            spec = {"template": "nav/ding.png", "threshold": 0.9}
+            for _ in range(Engine.VERDACHT_AB + 2):
+                eng.capture()
+                eng.run_actions([{"tap_template": dict(spec)}])
+            eng.capture()
+            self.assertEqual(eng.stats.get("vorlage-verdaechtig", 0), 1)
+            self.assertTrue(os.path.exists(
+                os.path.join(ordner, "templates", "nav", "ding.png")),
+                "von Hand geschnittene Vorlagen darf der Bot nicht wegraeumen")
+        finally:
+            shutil.rmtree(ordner, ignore_errors=True)
+
+    def test_wirksame_vorlage_bleibt_unbehelligt(self):
+        import shutil
+        ordner, cfg, eng = self.bau("gelernt", wechselndes_bild=True)
+        try:
+            spec = {"template": "gelernt/ding.png", "threshold": 0.9}
+            for _ in range(Engine.VERDACHT_AB + 4):
+                eng.capture()
+                eng.run_actions([{"tap_template": dict(spec)}])
+            eng.capture()
+            self.assertEqual(eng.stats.get("gelerntes-verworfen", 0), 0)
+            self.assertTrue(os.path.exists(
+                os.path.join(ordner, "templates", "gelernt", "ding.png")))
+        finally:
+            shutil.rmtree(ordner, ignore_errors=True)
+
+
 class TestZurueckPfeil(unittest.TestCase):
     """Die Android-Zurück-Taste ist in diesem Spiel gefährlich.
 
