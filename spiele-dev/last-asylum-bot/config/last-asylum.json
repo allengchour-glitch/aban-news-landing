@@ -14,12 +14,12 @@
   "_geld": "ECHTGELD IST TABU, SPIEL-WAEHRUNG IST ERLAUBT. Gesperrt ist die rechte obere Ecke bis 14,5 % Bildhoehe - dort sitzen Einkaufswagen, Diamanten-Aufladung und das 'Tagesangebot' mit CHF-Preis. LINKS OBEN DARF NICHT GESPERRT WERDEN: dort liegt der Zurueck-Pfeil. Eine frueher auf Verdacht angelegte Zone dort hat im Betrieb genau den blockiert - in keinem Screenshot gab es links oben je ein Kauf-Angebot. Regel fuer dich: schneide nie ein Template von einem Knopf mit Preisschild. Zur Farbe der Kaufknoepfe siehe _farben - kurz: Gold wird nie blind angetippt, weil dieselbe Farbe fuer harmlose und fuer kostende Knoepfe benutzt wird.",
   "tabu_regionen": [
     {
-      "name": "Echtgeld-Shop, Diamanten-Aufladung und Tagesangebot oben rechts",
+      "name": "Echtgeld-Shop und Diamanten-Aufladung oben rechts",
       "box": [
-        0.58,
+        0.62,
         0.0,
         1.0,
-        0.145
+        0.075
       ]
     }
   ],
@@ -5116,7 +5116,7 @@
       "every": 3600,
       "at_start": true,
       "priority": 112,
-      "_zweck": "Kaserne offen halten: hoechste verfuegbare Truppenstufe (T8) auswaehlen, Menge auf Maximum, ausbilden. Braucht kaserne/gebaeude.png (die Kaserne in der Basis), kaserne/stufe_t8.png (das T8-Symbol in der Stufenauswahl), ui/btn_max.png und kaserne/btn_ausbilden.png. Wichtig: schneide fuer stufe_t8 wirklich die T8-Kachel - der Bot kann Ziffern nicht lesen und wuerde sonst irgendeine Stufe trainieren.",
+      "_zweck": "Soldaten der hoechsten freigeschalteten Stufe ausbilden. Stand 31.07.: S8 ist noch mit einem Schloss versehen, hoechste freie Stufe ist S7 - der Wunsch 'nur T8' geht also erst, wenn das Schloss faellt. Im Trainingsplatz gibt es zwei Knoepfe: das BLAUE 'Trainieren' startet die normale Ausbildung, das ORANGE 'Jetzt trainieren' kuerzt sie ab und kostet dafuer. Genommen wird das blaue - siehe _farben.",
       "do": [
         {
           "log": "Soldaten ausbilden (hoechste Stufe)"
@@ -6979,5 +6979,7 @@
   "_farben": "FARBEN DER KNOEPFE, am 31.07. an echten Dialogen geprueft - die einfache Regel 'Gold = Geld' stimmt so NICHT: GOLD/ORANGE ist die Farbe der Haupthandlung, und die kann harmlos sein ('Zerlegen' in der Ausruestungswerkstatt) oder etwas kosten ('Falkenturm-Ergaenzung CHF 4.40', '50 Spenden' mit Diamant, 'Bestaetigen' bei '2 Diamanten ausgeben'). Am Bild allein ist das nicht zu unterscheiden - deshalb wird Gold NIE blind angetippt, weder beim Erkunden noch von einer allgemeinen Regel. Gold nur ueber eine benannte Vorlage, wo klar ist, was der Knopf tut. BLAU ist entweder eine Handlung ('Los', 'Versammeln') oder 'Abbrechen'. Beides ist ungefaehrlich: schlimmstenfalls bricht der Bot etwas ab. Darum darf Blau allgemein getippt werden. GRUEN ist Abholen/Bestaetigen ohne Kosten. GRAU ist die guenstige Alternative - bei der Allianz-Technologie steht neben dem goldenen '50 Spenden' (Diamanten) ein graues '200 Spenden' (Ressourcen); gespendet wird immer das graue. ROT ist Abbrechen/Schliessen.",
   "_vorlagen_herkunft": "Die Vorlagen sind auf Basisbreite 1080 abgelegt und werden zur Laufzeit hochskaliert. Aus einem Handy-Screenshot (1440x3088) schneidet man also den Ausschnitt und verkleinert ihn auf 75 Prozent. Weil das Spiel seine Oberflaeche an der BILDHOEHE bemisst, passt eine so geschnittene Vorlage im flacheren Emulator-Fenster (1440x2560) noch nicht: dort ist alles um 2560/3088 = 0.83 kleiner. Diesen Unterschied misst der Bot selbst aus - global ueber die Aufgabe 'kalibrieren', einzeln nach drei Fehlgriffen. Von Hand nachrechnen muss man da nichts.",
   "_ziel": "So soll die Stadt aussehen (Bild des Benutzers vom 31.07.): keine Ertrags-Blasen ueber den Gebaeuden und kein roter Punkt an den Symbolen. Daran misst sich, ob der Bot seine Runde wirklich zu Ende gebracht hat - nicht daran, wie viele Tipps er gemacht hat.",
-  "_gelerntes": "Was der Bot selbst misst - Groessen, Takte, Auswege - schreibt er NICHT in diese Datei, sondern in gelernt.json neben zustand.json. Grund: diese Datei liegt unter Git. Eine geaenderte Datei laesst 'git pull --ff-only' scheitern, und dann bekommt der Bot nie wieder eine neue Fassung - still, bis es jemand bemerkt. Beim Start legt er gelernt.json ueber die Werte von hier. Steckt der Ordner doch einmal fest, hilft: git checkout -- config/ && git pull"
+  "_gelerntes": "Was der Bot selbst misst - Groessen, Takte, Auswege - schreibt er NICHT in diese Datei, sondern in gelernt.json neben zustand.json. Grund: diese Datei liegt unter Git. Eine geaenderte Datei laesst 'git pull --ff-only' scheitern, und dann bekommt der Bot nie wieder eine neue Fassung - still, bis es jemand bemerkt. Beim Start legt er gelernt.json ueber die Werte von hier. Steckt der Ordner doch einmal fest, hilft: git checkout -- config/ && git pull",
+  "_tabu": "Die Zone deckt nur den Einkaufswagen und die Diamanten-Anzeige ganz oben rechts ab. Sie reichte bis 0.145 hinunter und hat damit das Schliesskreuz der Dialoge mit verdeckt - das sitzt bei y 0.10 bis 0.11. Im Lauf vom 31.07. war das Ergebnis: 'Tipp in Tabu-Zone blockiert ... grund=ui/popup_close.png', danach 'Regel dialog-schliessen bewirkt nichts - stillgelegt'. Der Bot kam aus keinem Dialog mehr heraus. Eine Tabu-Zone muss so eng wie moeglich sein: was sie zu viel abdeckt, faellt nicht als Fehler auf, sondern als lahmgelegte Regel.",
+  "_soldaten": "T8 (S8) ist noch gesperrt; hoechste freie Stufe ist S7. Sobald S8 offen ist, reicht es, die Vorlage kaserne/stufe_t8.png zu schneiden - die Aufgabe waehlt dann von selbst die hoechste Stufe. Der orange Knopf 'Jetzt trainieren' kuerzt gegen Bezahlung ab und wird nicht benutzt."
 }

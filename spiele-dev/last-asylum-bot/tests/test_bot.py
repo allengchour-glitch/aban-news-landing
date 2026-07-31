@@ -625,6 +625,44 @@ class TestTabuZonenTreffenNichtDieBedienung(unittest.TestCase):
             )
 
 
+class TestTabuZoneVerdecktKeineBedienung(unittest.TestCase):
+    """Eine Tabu-Zone darf nur den Shop treffen, sonst nichts.
+
+    Am 31.07. reichte sie bis y=0.145 hinunter und verdeckte damit das
+    Schliesskreuz der Dialoge bei y≈0.105. Im Protokoll stand dann
+    »Tipp in Tabu-Zone blockiert … grund=ui/popup_close.png«, kurz darauf
+    »Regel dialog-schliessen bewirkt nichts – stillgelegt«: der Bot kam aus
+    keinem Dialog mehr heraus.
+    """
+
+    def bedienpunkte(self):
+        return {
+            "Schliesskreuz der Dialoge": (0.905, 0.105),
+            "Schliesskreuz weiter unten": (0.90, 0.13),
+            "Zurueck-Pfeil oben links": (0.08, 0.04),
+            "Reiter oben rechts": (0.80, 0.09),
+        }
+
+    def test_kein_bedienpunkt_liegt_in_einer_tabu_zone(self):
+        cfg = Config.load(os.path.join(ROOT, "config", "last-asylum.json"))
+        for was, (x, y) in self.bedienpunkte().items():
+            for name, (l, t, r, b) in zip(cfg.tabu_namen, cfg.tabu_regionen):
+                self.assertFalse(
+                    l <= x <= r and t <= y <= b,
+                    f"Zone '{name}' verdeckt {was} bei x={x} y={y} - "
+                    "der Bot kaeme aus Dialogen nicht mehr heraus",
+                )
+
+    def test_der_shop_bleibt_gesperrt(self):
+        """Der Einkaufswagen ganz oben rechts muss weiter tabu sein."""
+        cfg = Config.load(os.path.join(ROOT, "config", "last-asylum.json"))
+        for x, y in ((0.88, 0.02), (0.95, 0.03)):
+            self.assertTrue(
+                any(l <= x <= r and t <= y <= b for l, t, r, b in cfg.tabu_regionen),
+                f"Echtgeld-Shop bei x={x} y={y} muss gesperrt bleiben",
+            )
+
+
 class TestAusdauerSicherung(unittest.TestCase):
     """Ein Nachfüll-Dialog muss geschlossen, nicht bestätigt werden."""
 

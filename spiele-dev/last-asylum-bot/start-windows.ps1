@@ -201,16 +201,21 @@ $protokoll = "logs\lauf-$stempel.jsonl"
 # Ein schlafender PC tippt nichts an. Solange dieses Fenster offen ist, bleibt
 # der Rechner wach - Bildschirm darf dunkel werden, das stoert nicht.
 if ($Scharf -and $Dauerlauf) {
-    try {
-        Add-Type -Name Schlaf -Namespace Win32 -MemberDefinition @"
+    # Die Signatur muss in einer eigenen Variablen stehen: nach dem
+    # Here-String-Ende "@ darf auf derselben Zeile nichts mehr folgen.
+    $signatur = @'
 [DllImport("kernel32.dll", SetLastError = true)]
 public static extern uint SetThreadExecutionState(uint esFlags);
-"@ -ErrorAction Stop
+'@
+    try {
+        if (-not ("Win32.Schlaf" -as [type])) {
+            Add-Type -Name Schlaf -Namespace Win32 -MemberDefinition $signatur | Out-Null
+        }
         # ES_CONTINUOUS | ES_SYSTEM_REQUIRED
         [void][Win32.Schlaf]::SetThreadExecutionState(0x80000000 -bor 0x00000001)
         Gut "Ruhezustand ausgesetzt, solange der Bot laeuft."
     } catch {
-        Warnung "Ruhezustand liess sich nicht aussetzen - der PC koennte einschlafen."
+        Warnung "Ruhezustand liess sich nicht aussetzen: $($_.Exception.Message)"
     }
 }
 
