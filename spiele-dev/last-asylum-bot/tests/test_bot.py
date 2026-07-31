@@ -1273,6 +1273,36 @@ class TestErsatzPunkt(unittest.TestCase):
         )
 
 
+class TestGeraeteWahl(unittest.TestCase):
+    """Bei zwei gemeldeten Geräten muss der Bot selbst eines nehmen.
+
+    Sonst bricht jeder direkte Aufruf mit »more than one device/emulator«
+    ab - genau das ist beim Aufruf von `bot.py entdecke` passiert.
+    """
+
+    def test_port_hat_vorrang_vor_emulator(self):
+        from laa import adb as _adb
+
+        alt = _adb.list_devices
+        try:
+            _adb.list_devices = lambda a="adb": ["emulator-5554", "127.0.0.1:5555"]
+            self.assertEqual(_adb.waehle_geraet(), "127.0.0.1:5555")
+        finally:
+            _adb.list_devices = alt
+
+    def test_einzelnes_geraet_wird_genommen(self):
+        from laa import adb as _adb
+
+        alt = _adb.list_devices
+        try:
+            _adb.list_devices = lambda a="adb": ["emulator-5554"]
+            self.assertEqual(_adb.waehle_geraet(), "emulator-5554")
+            _adb.list_devices = lambda a="adb": []
+            self.assertIsNone(_adb.waehle_geraet())
+        finally:
+            _adb.list_devices = alt
+
+
 class TestZurueckPfeil(unittest.TestCase):
     """Die Android-Zurück-Taste ist in diesem Spiel gefährlich.
 

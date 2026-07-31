@@ -5,6 +5,7 @@ from __future__ import annotations
 import base64
 import os
 import random
+import re
 import shutil
 import struct
 import subprocess
@@ -73,6 +74,8 @@ class AdbDevice(Device):
                 "und im PATH haben (oder --adb /pfad/zu/adb angeben)."
             )
         self.adb = gefunden
+        if not self.serial:
+            self.serial = waehle_geraet(self.adb)
 
     # ------------------------------------------------------------------ intern
     def _args(self, *rest: str) -> List[str]:
@@ -367,6 +370,23 @@ def list_devices(adb: str = "adb") -> List[str]:
         if len(parts) >= 2 and parts[1] == "device":
             serials.append(parts[0])
     return serials
+
+
+def waehle_geraet(adb: str = "adb") -> Optional[str]:
+    """Genau ein Geraet festlegen, wenn mehrere gemeldet sind.
+
+    BlueStacks meldet sich doppelt (emulator-5554 und 127.0.0.1:5555). Ohne
+    -s verweigert adb dann jeden Befehl mit 'more than one device/emulator'.
+    Vorrang hat die Port-Verbindung: die laesst sich mit `adb connect`
+    jederzeit neu aufbauen, der Emulator-Eintrag nicht.
+    """
+    geraete = list_devices(adb)
+    if len(geraete) < 2:
+        return geraete[0] if geraete else None
+    for serial in geraete:
+        if re.match(r"^\d+\.\d+\.\d+\.\d+:\d+$", serial):
+            return serial
+    return geraete[0]
 
 
 def human_point(x: int, y: int, w: int, h: int, jitter: float = 0.18) -> Tuple[int, int]:
