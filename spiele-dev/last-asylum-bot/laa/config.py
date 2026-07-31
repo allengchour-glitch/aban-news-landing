@@ -52,6 +52,7 @@ class Config:
     templates_dir: str = "templates"
     input_method: str = "input"
     ui_skala: float = 1.0  # zusaetzlicher Faktor, vom Bot selbst kalibriert
+    template_skalen: Dict[str, float] = field(default_factory=dict)
     texte: Dict[str, List[str]] = field(default_factory=dict)
     tabu_regionen: List[List[float]] = field(default_factory=list)
     tabu_namen: List[str] = field(default_factory=list)
@@ -88,7 +89,10 @@ class Config:
         cfg.templates_dir = raw.get("templates_dir", "templates")
         cfg.input_method = raw.get("input_method", "input")
         cfg.ui_skala = float(raw.get("ui_skala", 1.0))
-        cfg.texte = {k: list(v) for k, v in raw.get("texte", {}).items()}
+        cfg.template_skalen = {
+            str(k): float(v) for k, v in raw.get("template_skalen", {}).items()
+        }
+        cfg.texte ={k: list(v) for k, v in raw.get("texte", {}).items()}
         for zone in raw.get("tabu_regionen", []):
             if isinstance(zone, dict):
                 cfg.tabu_regionen.append(list(zone["box"]))
@@ -180,6 +184,17 @@ class Config:
         """
         breite = screen_width / float(self.base_width) if self.base_width else 1.0
         return breite * self.ui_skala
+
+    def scale_for_template(self, name: str, screen_width: int) -> float:
+        """Faktor fuer eine einzelne Vorlage.
+
+        Die Vorlagen stammen aus verschiedenen Quellen: manche wurden am
+        grossen Handy geschnitten, andere spaeter am Emulator neu aufgenommen.
+        Ein einziger Faktor fuer alle passt dann nie zu beiden. Darum darf sich
+        jede Vorlage einen eigenen Nachschlag merken (1.0 = nichts extra), den
+        der Bot beim Danebengreifen selbst ermittelt.
+        """
+        return self.scale_for(screen_width) * float(self.template_skalen.get(name, 1.0))
 
     # ------------------------------------------------------------------ Prüfen
     def validate(self) -> List[str]:

@@ -683,6 +683,94 @@ class TestKalibrierung(unittest.TestCase):
             shutil.rmtree(ordner, ignore_errors=True)
 
 
+class TestVorlagenGroesse(unittest.TestCase):
+    """Jede Vorlage darf sich eine eigene Größe merken.
+
+    Die Vorlagen stammen aus verschiedenen Aufnahmen - eine einzige Zahl für
+    alle passt dann nie zu allen. Wer wiederholt knapp danebenliegt, wird
+    einzeln nachgemessen.
+    """
+
+    def bau(self, faktor):
+        import shutil
+        import tempfile
+
+        ordner = tempfile.mkdtemp()
+        tdir = os.path.join(ordner, "templates", "ui")
+        os.makedirs(tdir)
+        marke = noise(80, 80, 77)
+        marke.save(os.path.join(tdir, "knopf.png"))
+        screen = noise(600, 900, 78)
+        paste(screen, marke.box_scale(int(80 * faktor), int(80 * faktor)), 220, 400)
+        with open(os.path.join(ordner, "conf.json"), "w", encoding="utf-8") as fh:
+            json.dump({"base_width": 600}, fh)
+        cfg = Config.load(os.path.join(ordner, "conf.json"))
+        eng = Engine(cfg, FakeDevice([screen], loop=True), logger=quiet(),
+                     sleep=lambda s: None, seed=1)
+        eng.capture()
+        return ordner, cfg, eng, shutil
+
+    def test_misst_eine_einzelne_vorlage_nach(self):
+        ordner, cfg, eng, shutil = self.bau(0.7)
+        try:
+            spec = {"template": "ui/knopf.png", "threshold": 0.85}
+            for _ in range(Engine.FEHLGRIFFE_BIS_NACHMESSEN - 1):
+                self.assertIsNone(eng.find(spec))
+            treffer = eng.find(spec)  # jetzt wird nachgemessen - und getroffen
+            self.assertIsNotNone(treffer, "nach dem Nachmessen muss die Vorlage sitzen")
+            self.assertAlmostEqual(cfg.template_skalen["ui/knopf.png"], 0.7, delta=0.09)
+            with open(os.path.join(ordner, "conf.json"), encoding="utf-8") as fh:
+                gespeichert = json.load(fh)["template_skalen"]["ui/knopf.png"]
+            self.assertAlmostEqual(gespeichert, 0.7, delta=0.09)
+        finally:
+            shutil.rmtree(ordner, ignore_errors=True)
+
+    def test_passende_vorlage_wird_nicht_angefasst(self):
+        ordner, cfg, eng, shutil = self.bau(1.0)
+        try:
+            spec = {"template": "ui/knopf.png", "threshold": 0.85}
+            for _ in range(4):
+                self.assertIsNotNone(eng.find(spec))
+            self.assertEqual(cfg.template_skalen, {})
+        finally:
+            shutil.rmtree(ordner, ignore_errors=True)
+
+    def test_ausreisser_bei_der_kalibrierung_bekommt_eigenen_faktor(self):
+        """Eine frisch geschnittene Vorlage neben lauter alten."""
+        import shutil
+        import tempfile
+
+        ordner = tempfile.mkdtemp()
+        try:
+            tdir = os.path.join(ordner, "templates", "ui")
+            os.makedirs(tdir)
+            screen = noise(600, 900, 91)
+            namen = []
+            for i in range(3):  # drei alte Vorlagen: im Bild um 0.7 kleiner
+                m = noise(80, 80, 100 + i)
+                m.save(os.path.join(tdir, f"alt{i}.png"))
+                paste(screen, m.box_scale(56, 56), 60 + i * 120, 200)
+                namen.append(f"ui/alt{i}.png")
+            neu = noise(56, 56, 200)  # frisch geschnitten: passt schon
+            neu.save(os.path.join(tdir, "neu.png"))
+            paste(screen, neu, 60, 600)
+            namen.append("ui/neu.png")
+            with open(os.path.join(ordner, "conf.json"), "w", encoding="utf-8") as fh:
+                json.dump({"base_width": 600}, fh)
+            cfg = Config.load(os.path.join(ordner, "conf.json"))
+            eng = Engine(cfg, FakeDevice([screen], loop=True), logger=quiet(),
+                         sleep=lambda s: None, seed=1)
+            eng.run_actions([{"kalibriere": {"templates": namen, "mindest_score": 0.8}}])
+            self.assertAlmostEqual(cfg.ui_skala, 0.7, delta=0.06)
+            eigen = cfg.template_skalen.get("ui/neu.png")
+            self.assertIsNotNone(eigen, "die neue Vorlage braucht einen eigenen Faktor")
+            self.assertAlmostEqual(cfg.ui_skala * eigen, 1.0, delta=0.1)
+            for n in namen[:3]:
+                self.assertNotIn(n, cfg.template_skalen)
+        finally:
+            shutil.rmtree(ordner, ignore_errors=True)
+
+
 class TestSelbstOptimierung(unittest.TestCase):
     """Der Bot zieht seine Takte aus den eigenen Protokollen nach."""
 

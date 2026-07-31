@@ -130,6 +130,8 @@ class Engine:
         self._last_frame: Optional[Image] = None
         self._last_change = clock()
         self._scale: Optional[float] = None
+        self._knapp: Dict[str, int] = {}          # Vorlage -> Fehlgriffe am Stueck
+        self._nachjustiert: Dict[str, int] = {}   # Vorlage -> wie oft schon vermessen
 
         # Standardmaessig aus: Tests und Replays sollen sich nichts merken.
         # Der Dauerbetrieb setzt die Datei ueber bot.py.
@@ -276,21 +278,36 @@ class Engine:
                 self._gemeldet_fehlend.add(spec["template"])
                 self.log.debug("Template fehlt noch (optional)", template=spec["template"])
             return None
+        name = spec["template"]
         schwelle = float(spec.get("threshold", self.cfg.default_threshold))
+        eigen = float(self.cfg.template_skalen.get(name, 1.0))
         bester = matcher.best_score(
             screen,
             tpl,
             region=spec.get("region"),
-            scale=self._scale if self._scale is not None else 1.0,
+            scale=(self._scale if self._scale is not None else 1.0) * eigen,
         )
         wert = bester.score if bester else -1.0
         getroffen = bester is not None and wert >= schwelle
         # Jeder Vergleich wird protokolliert – daraus lernt `bot.py lernen`.
         self.log.datenpunkt(
-            ev="vergleich", template=spec["template"],
+            ev="vergleich", template=name,
             score=round(wert, 4), schwelle=schwelle, treffer=getroffen,
         )
-        return bester if getroffen else None
+        if getroffen:
+            self._knapp.pop(name, None)
+            return bester
+        # Wer nie trifft, hat meist die falsche Groesse - nicht die falsche
+        # Stelle. Nach ein paar Fehlgriffen misst der Bot diese eine Vorlage
+        # selbst nach, statt sie dauerhaft zu verfehlen.
+        self._knapp[name] = self._knapp.get(name, 0) + 1
+        if self._knapp[name] >= self.FEHLGRIFFE_BIS_NACHMESSEN:
+            self._knapp[name] = 0
+            if self._nachjustiert.get(name, 0) < self.MAX_NACHMESSEN:
+                self._nachjustiert[name] = self._nachjustiert.get(name, 0) + 1
+                if self._nachjustieren(name, tpl, screen, schwelle, wert):
+                    return self.find(spec, screen)
+        return None
 
     # ----------------------------------------------------------------- Aktionen
     def run_actions(self, actions: Sequence[Any], where: str = "") -> None:
@@ -448,6 +465,23 @@ class Engine:
         for name, f, score in gefunden:
             self.log.debug("Kalibrierung", template=name, faktor=f, score=round(score, 3))
 
+        # Vorlagen, die deutlich aus der Reihe tanzen, stammen aus einer anderen
+        # Aufnahme-Groesse. Statt sie den Median verfaelschen zu lassen, bekommt
+        # jede von ihnen ihren eigenen Nachschlag.
+        ausreisser = {}
+        for name, f, _ in gefunden:
+            if median and abs(f - median) / median > 0.08:
+                ausreisser[name] = round(f / median, 3)
+        if ausreisser:
+            self.cfg.template_skalen.update(ausreisser)
+            self.log.info(
+                "Vorlagen mit eigener Groesse gemerkt",
+                vorlagen=", ".join(f"{n}={v}" for n, v in sorted(ausreisser.items())),
+            )
+            self._config_patch(
+                lambda roh: roh.setdefault("template_skalen", {}).update(ausreisser)
+            )
+
         if abs(median - self.cfg.ui_skala) < 0.03:
             self.log.info(f"Kalibrierung bestaetigt: Faktor {median:.2f}",
                           belege=len(gefunden))
@@ -462,17 +496,58 @@ class Engine:
         self.bump("kalibriert")
         self._skala_sichern(median)
 
-    def _skala_sichern(self, wert: float) -> None:
+    FEIN_SCHRITTE = [0.55, 0.62, 0.70, 0.78, 0.86, 0.94, 1.00, 1.08, 1.18, 1.30, 1.45, 1.60]
+    FEHLGRIFFE_BIS_NACHMESSEN = 6
+    MAX_NACHMESSEN = 3  # danach ist die Vorlage schlicht nicht im Bild
+
+    def _nachjustieren(
+        self, name: str, tpl: Image, screen: Image, schwelle: float, bisher: float
+    ) -> bool:
+        """Eine einzelne Vorlage in verschiedenen Groessen probieren.
+
+        Greift, wenn eine Vorlage mehrfach nicht gefunden wurde. Passt eine
+        andere Groesse deutlich besser, merkt sich der Bot diesen Nachschlag
+        nur fuer diese Vorlage - alle anderen bleiben unberuehrt.
+        """
+        basis = self._scale if self._scale is not None else 1.0
+        bester, bester_faktor = bisher, None
+        for f in self.FEIN_SCHRITTE:
+            hit = matcher.best_score(screen, tpl, scale=basis * f)
+            if hit and hit.score > bester + 0.02:
+                bester, bester_faktor = hit.score, f
+        if bester_faktor is None or bester < schwelle:
+            self.log.debug(
+                "Nachmessen brachte nichts", template=name,
+                bester=round(bester, 3), schwelle=schwelle,
+            )
+            return False
+        self.cfg.template_skalen[name] = bester_faktor
+        self._knapp.pop(name, None)
+        self.log.info(
+            f"Vorlage neu vermessen: {name} passt bei Faktor {bester_faktor:.2f}",
+            vorher=round(bisher, 3), nachher=round(bester, 3),
+        )
+        self.bump("vorlage-nachgemessen")
+        self._config_patch(lambda roh: roh.setdefault("template_skalen", {}).update(
+            {name: round(bester_faktor, 3)}
+        ))
+        return True
+
+    def _config_patch(self, aendern) -> None:
+        """Die Konfigurationsdatei anfassen, ohne den Rest zu verlieren."""
         if self.cfg.path == "<inline>":
             return
         try:
             with open(self.cfg.path, "r", encoding="utf-8") as fh:
                 roh = json.load(fh)
-            roh["ui_skala"] = round(wert, 3)
+            aendern(roh)
             with open(self.cfg.path, "w", encoding="utf-8") as fh:
                 json.dump(roh, fh, ensure_ascii=False, indent=2)
         except Exception as exc:  # pragma: no cover - Dateisystem
-            self.log.warn(f"Faktor nicht gespeichert: {exc}")
+            self.log.warn(f"Konfiguration nicht gespeichert: {exc}")
+
+    def _skala_sichern(self, wert: float) -> None:
+        self._config_patch(lambda roh: roh.__setitem__("ui_skala", round(wert, 3)))
 
     def _optimiere_takte(self, spec: Dict[str, Any]) -> None:
         """Eigene Protokolle auswerten und die Takte selbst nachziehen.
@@ -543,19 +618,13 @@ class Engine:
 
     def _takte_sichern(self, aenderungen: Dict[str, Any]) -> None:
         """Neue Takte in die Konfigurationsdatei zurueckschreiben."""
-        if self.cfg.path == "<inline>":
-            return
-        try:
-            with open(self.cfg.path, "r", encoding="utf-8") as fh:
-                roh = json.load(fh)
+
+        def anwenden(roh):
             for eintrag in roh.get("tasks", []):
                 if eintrag["name"] in aenderungen:
                     eintrag["every"] = aenderungen[eintrag["name"]][1]
-            with open(self.cfg.path, "w", encoding="utf-8") as fh:
-                json.dump(roh, fh, ensure_ascii=False, indent=2)
-            self.log.info("Konfiguration aktualisiert", datei=self.cfg.path)
-        except Exception as exc:  # pragma: no cover - Dateisystem
-            self.log.warn(f"Takte nicht gespeichert: {exc}")
+
+        self._config_patch(anwenden)
 
     def _lerne_objekte(self, spec: Dict[str, Any]) -> None:
         """Neue Sammel-Objekte selbst entdecken – über das, was sich bewegt.
@@ -890,6 +959,13 @@ class Engine:
     def run(self, max_seconds: Optional[float] = None, max_steps: Optional[int] = None) -> Dict[str, int]:
         start = self._clock()
         low, high = self.cfg.loop_delay
+        if self.cfg.template_skalen:
+            self.log.info(
+                "Selbst vermessene Vorlagen",
+                vorlagen=", ".join(
+                    f"{n}={v:g}" for n, v in sorted(self.cfg.template_skalen.items())
+                ),
+            )
         try:
             while True:
                 if max_steps is not None and self.steps >= max_steps:
