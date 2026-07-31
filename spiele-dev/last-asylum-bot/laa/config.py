@@ -56,6 +56,7 @@ class Config:
     input_method: str = "input"
     ui_skala: float = 1.0  # zusaetzlicher Faktor, vom Bot selbst kalibriert
     template_skalen: Dict[str, float] = field(default_factory=dict)
+    kritische_templates: List[str] = field(default_factory=list)
     texte: Dict[str, List[str]] = field(default_factory=dict)
     tabu_regionen: List[List[float]] = field(default_factory=list)
     tabu_namen: List[str] = field(default_factory=list)
@@ -98,6 +99,7 @@ class Config:
         cfg.template_skalen = {
             str(k): float(v) for k, v in raw.get("template_skalen", {}).items()
         }
+        cfg.kritische_templates = list(raw.get("kritische_templates", []))
         cfg.texte ={k: list(v) for k, v in raw.get("texte", {}).items()}
         for zone in raw.get("tabu_regionen", []):
             if isinstance(zone, dict):

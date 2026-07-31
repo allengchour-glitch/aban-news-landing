@@ -711,15 +711,24 @@ class Engine:
         for task in self.cfg.tasks:
             suche(task.do, f"Aufgabe {task.name}")
 
-        rang = sorted(betroffen.items(), key=lambda kv: (-len(kv[1]), kv[0]))
+        # Erst das, ohne das der Bot Schaden nicht abwenden kann - danach das,
+        # woran die meisten Aufgaben haengen.
+        kritisch = list(self.cfg.kritische_templates)
+        rang = sorted(
+            betroffen.items(),
+            key=lambda kv: (kritisch.index(kv[0]) if kv[0] in kritisch else len(kritisch),
+                            -len(kv[1]), kv[0]),
+        )
         wieviele = int(spec.get("hoechstens", 6))
         self.log.info(
             f"Selbstbericht: {len(offen)} Vorlagen fehlen - die wichtigsten zuerst"
         )
         for name, wo in rang[:wieviele]:
-            if not wo:
+            if not wo and name not in kritisch:
                 continue
-            self.log.info(f"   fehlt: {name}", blockiert=", ".join(sorted(wo)))
+            marke = "WICHTIG " if name in kritisch else ""
+            self.log.info(f"   {marke}fehlt: {name}",
+                          blockiert=", ".join(sorted(wo)) or "Schutzschild")
         self.log.info("   Schneiden mit: python bot.py entdecke (Bildschirm vorher hinstellen)")
         verdacht = sorted(
             ((n, c) for n, c in self._folgenlos.items()

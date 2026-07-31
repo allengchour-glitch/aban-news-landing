@@ -2504,10 +2504,10 @@
     },
     {
       "name": "schild-pruefen",
-      "every": 3600,
+      "every": 1800,
       "at_start": true,
       "priority": 200,
-      "_zweck": "Schilde braucht es vor allem am Wochenende, wenn bei Events Spieler von anderen Servern kommen - deshalb Freitag bis Sonntag. Weg: Zuflucht-Gebaeude antippen -> 'Schild'. STEHT AUF AUS, bis templates/hud/schild_aktiv.png existiert: ohne dieses Bild sieht der Bot nicht, ob schon ein Schild laeuft, und wuerde den Vorrat verbrauchen. Danach enabled=true.",
+      "_zweck": "Schild setzen, damit die Stadt nicht gepluendert wird. Lief bisher nur Freitag bis Sonntag - am 31.07. gingen zwei Staedte verloren, also jeden Tag und alle 30 Minuten. STEHT WEITER AUF AUS, bis templates/hud/schild_aktiv.png existiert: ohne dieses Bild sieht der Bot nicht, ob schon ein Schild laeuft, und wuerde den Vorrat verbrauchen. Das ist jetzt die wichtigste fehlende Vorlage ueberhaupt.",
       "do": [
         {
           "wenn": {
@@ -2686,12 +2686,7 @@
           }
         }
       ],
-      "enabled": false,
-      "wochentage": [
-        4,
-        5,
-        6
-      ]
+      "enabled": false
     },
     {
       "name": "bauen-und-aufwerten",
@@ -6158,5 +6153,13 @@
   "regel_wirkungslos_grenze": 3,
   "_keine_zurueck_taste": "Die Zurueck-Taste des Systems darf NIE blind gedrueckt werden: in der Stadtansicht oeffnet sie 'Spiel beenden?' - ein Tipp daneben und das Spiel ist zu. Am 31.07. ist genau das passiert. Stattdessen der Zurueck-Pfeil im Spiel, sonst die Startseite, sonst ein Tipp auf freie Flaeche.",
   "_regel_wirkungslos": "Greift eine Regel dreimal hintereinander, ohne dass sich die Ansicht aendert, legt der Bot sie fuer eine Weile still. Am 31.07. griff 'dialog-schliessen' auf 'Taegliche Aufgaben' elfmal mit Score 1.00 und bewirkte nichts - die Vorlage passte auf etwas, das kein Schliesskreuz war.",
-  "_pluendern": "Kisten und Wagen werden NUR auf fremden Servern gepluendert - auf dem eigenen Server macht man sich damit Feinde in der eigenen Allianz. Der Bot kann am Bild allein nicht sicher erkennen, auf welchem Server er gerade unterwegs ist. Darum ist die Aufgabe 'pluendern-fremdserver' AUS und an das Wochenend-Event gebunden, zu dem die fremden Spieler kommen. Sie erst einschalten, wenn die Vorlagen kampf/kiste_fremd und kampf/wagen_fremd geschnitten sind und der Server-Wechsel wirklich stattgefunden hat."
+  "_pluendern": "Kisten und Wagen werden NUR auf fremden Servern gepluendert - auf dem eigenen Server macht man sich damit Feinde in der eigenen Allianz. Der Bot kann am Bild allein nicht sicher erkennen, auf welchem Server er gerade unterwegs ist. Darum ist die Aufgabe 'pluendern-fremdserver' AUS und an das Wochenend-Event gebunden, zu dem die fremden Spieler kommen. Sie erst einschalten, wenn die Vorlagen kampf/kiste_fremd und kampf/wagen_fremd geschnitten sind und der Server-Wechsel wirklich stattgefunden hat.",
+  "kritische_templates": [
+    "hud/schild_aktiv.png",
+    "schutz/schild_knopf.png",
+    "schutz/schild_8h.png",
+    "ui/btn_benutzen.png",
+    "ui/btn_bestaetigen.png"
+  ],
+  "_kritische_templates": "Diese Vorlagen nennt der Selbstbericht zuerst, egal an wie vielen Aufgaben sie sonst haengen. Es sind die, ohne die der Bot Schaden nicht abwenden kann - der Schutzschild. Nach dem Verlust von zwei Staedten am 31.07. steht er vor allem anderen."
 }
