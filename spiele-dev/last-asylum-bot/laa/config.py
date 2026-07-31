@@ -47,6 +47,8 @@ class Config:
     loop_delay: List[float] = field(default_factory=lambda: [1.0, 2.0])
     stuck_seconds: float = 240.0
     festgefahren_schritte: int = 15  # so viele Schritte gleiche Ansicht = Ausweg suchen
+    regel_wirkungslos_grenze: int = 3   # so oft darf eine Regel folgenlos greifen
+    regel_wirkungslos_pause: float = 300.0
     regel_vorrang: int = 190  # ab dieser Priorität schlägt eine Regel jede fällige Aufgabe
     on_stuck: List[Any] = field(default_factory=list)
     on_unknown: List[Any] = field(default_factory=list)
@@ -85,6 +87,8 @@ class Config:
         cfg.loop_delay = [float(delay[0]), float(delay[-1])]
         cfg.stuck_seconds = float(raw.get("stuck_seconds", 240))
         cfg.festgefahren_schritte = int(raw.get("festgefahren_schritte", 15))
+        cfg.regel_wirkungslos_grenze = int(raw.get("regel_wirkungslos_grenze", 3))
+        cfg.regel_wirkungslos_pause = float(raw.get("regel_wirkungslos_pause", 300))
         cfg.regel_vorrang = int(raw.get("regel_vorrang", 190))
         cfg.on_stuck = raw.get("on_stuck", [])
         cfg.on_unknown = raw.get("on_unknown", [])
@@ -205,7 +209,7 @@ class Config:
         problems: List[str] = []
         self.offene_templates = []
         known_actions = {
-            "tap_match", "tap_template", "tap", "tap_first", "swipe", "drag", "key", "sleep",
+            "tap_match", "tap_template", "tap", "tap_first", "tap_alle", "swipe", "drag", "key", "sleep",
             "wait_template", "start_app", "stop_app", "restart_app", "log",
             "screenshot", "repeat", "stop", "back", "run_task", "type_text", "wenn",
             "lerne_objekte", "optimiere_takte", "kalibriere",
@@ -232,7 +236,7 @@ class Config:
                     check_actions(f"{where}>wenn>sonst", value.get("sonst", []))
                 elif key == "run_task" and value not in task_names:
                     problems.append(f"{where}: run_task '{value}' gibt es nicht")
-                elif key in ("tap_template", "wait_template"):
+                elif key in ("tap_template", "wait_template", "tap_alle"):
                     self._check_template(f"{where}>{key}", value, problems)
                 elif key == "tap_first":
                     for cand in value.get("of", []):

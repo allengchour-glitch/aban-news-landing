@@ -59,7 +59,38 @@
         ],
         "sonst": [
           {
-            "key": "KEYCODE_BACK"
+            "tap_first": {
+              "of": [
+                {
+                  "template": "nav/startseite.png",
+                  "threshold": 0.86,
+                  "region": [
+                    0.7,
+                    0.85,
+                    1.0,
+                    1.0
+                  ]
+                },
+                {
+                  "template": "nav/burg.png",
+                  "threshold": 0.86,
+                  "region": [
+                    0.0,
+                    0.4,
+                    0.35,
+                    0.85
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "tap": [
+              [
+                0.5,
+                0.5
+              ]
+            ]
           }
         ]
       }
@@ -114,7 +145,38 @@
         ],
         "sonst": [
           {
-            "key": "KEYCODE_BACK"
+            "tap_first": {
+              "of": [
+                {
+                  "template": "nav/startseite.png",
+                  "threshold": 0.86,
+                  "region": [
+                    0.7,
+                    0.85,
+                    1.0,
+                    1.0
+                  ]
+                },
+                {
+                  "template": "nav/burg.png",
+                  "threshold": 0.86,
+                  "region": [
+                    0.0,
+                    0.4,
+                    0.35,
+                    0.85
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "tap": [
+              [
+                0.5,
+                0.5
+              ]
+            ]
           }
         ]
       }
@@ -466,7 +528,7 @@
       "name": "ressourcen-einsammeln",
       "priority": 140,
       "cooldown": 6.0,
-      "_zweck": "Die weissen Ertrags-Blasen ueber Farmen, Saegewerken und Kraeuterhuetten. Templates zeigen nur das Symbol, nicht die wechselnde Zahl.",
+      "_zweck": "Alle sichtbaren Ertrags-Blasen abraeumen, nicht nur eine - auf einem Bildschirm liegen meist mehrere.",
       "match": {
         "any": [
           {
@@ -485,59 +547,38 @@
       },
       "do": [
         {
-          "tap_match": {}
+          "tap_alle": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
+            "optional": true,
+            "threshold": 0.9
+          }
         },
         {
           "sleep": [
-            0.4,
-            0.8
+            0.5,
+            0.9
           ]
-        },
-        {
-          "repeat": {
-            "times": 5,
-            "do": [
-              {
-                "tap_template": {
-                  "template": "hud/bubble_weizen.png",
-                  "optional": true,
-                  "threshold": 0.86
-                }
-              },
-              {
-                "sleep": [
-                  0.4,
-                  0.8
-                ]
-              },
-              {
-                "tap_template": {
-                  "template": "hud/bubble_holz.png",
-                  "optional": true,
-                  "threshold": 0.86
-                }
-              },
-              {
-                "sleep": [
-                  0.4,
-                  0.8
-                ]
-              },
-              {
-                "tap_template": {
-                  "template": "hud/bubble_kraut.png",
-                  "optional": true,
-                  "threshold": 0.86
-                }
-              },
-              {
-                "sleep": [
-                  0.4,
-                  0.8
-                ]
-              }
-            ]
-          }
         }
       ]
     },
@@ -545,40 +586,45 @@
       "name": "gelernte-objekte-einsammeln",
       "priority": 139,
       "cooldown": 6.0,
-      "_zweck": "Sammelt alles ein, was der Bot sich selbst beigebracht hat.",
+      "_zweck": "Alle sichtbaren Ertrags-Blasen abraeumen, nicht nur eine - auf einem Bildschirm liegen meist mehrere.",
       "match": {
         "template": "gelernt/blasen/*.png",
         "threshold": 0.9
       },
       "do": [
         {
-          "tap_match": {}
+          "tap_alle": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
+            "optional": true,
+            "threshold": 0.9
+          }
         },
         {
           "sleep": [
             0.5,
             0.9
           ]
-        },
-        {
-          "repeat": {
-            "times": 4,
-            "do": [
-              {
-                "tap_template": {
-                  "template": "gelernt/blasen/*.png",
-                  "optional": true,
-                  "threshold": 0.9
-                }
-              },
-              {
-                "sleep": [
-                  0.5,
-                  0.9
-                ]
-              }
-            ]
-          }
         }
       ]
     },
@@ -791,7 +837,38 @@
             ],
             "sonst": [
               {
-                "key": "KEYCODE_BACK"
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.5,
+                    0.5
+                  ]
+                ]
               }
             ]
           }
@@ -827,9 +904,9 @@
     },
     {
       "name": "roter-punkt-pruefen",
-      "priority": 40,
-      "cooldown": 180.0,
-      "_zweck": "Rote Punkte sind fast immer Belohnungen. Der Bot sucht sie ueber Farbe und Groesse in der rechten Knopfspalte und tippt den Knopf darunter an - danach raeumen die Abhol-Regeln auf. Der Einkaufswagen oben rechts traegt auch einen roten Punkt, liegt aber in der Tabu-Zone und wird geblockt.",
+      "priority": 128,
+      "cooldown": 8,
+      "_zweck": "Rote Punkte markieren offene Sachen - dort ist fast immer noch etwas zu holen. Werden angetippt, bis keiner mehr da ist.",
       "match": {
         "farbknopf": {
           "rgb": [
@@ -838,14 +915,14 @@
             52
           ],
           "tolerance": 45,
-          "min_w": 24,
-          "max_w": 70,
-          "min_h": 24,
-          "max_h": 70,
+          "min_w": 14,
+          "max_w": 60,
+          "min_h": 14,
+          "max_h": 60,
           "min_fuellung": 0.6,
           "region": [
-            0.62,
-            0.55,
+            0.0,
+            0.05,
             1.0,
             0.95
           ]
@@ -921,7 +998,38 @@
             ],
             "sonst": [
               {
-                "key": "KEYCODE_BACK"
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.5,
+                    0.5
+                  ]
+                ]
               }
             ]
           }
@@ -1102,7 +1210,38 @@
             ],
             "sonst": [
               {
-                "key": "KEYCODE_BACK"
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.5,
+                    0.5
+                  ]
+                ]
               }
             ]
           }
@@ -1236,7 +1375,38 @@
             ],
             "sonst": [
               {
-                "key": "KEYCODE_BACK"
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.5,
+                    0.5
+                  ]
+                ]
               }
             ]
           }
@@ -1376,7 +1546,38 @@
             ],
             "sonst": [
               {
-                "key": "KEYCODE_BACK"
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.5,
+                    0.5
+                  ]
+                ]
               }
             ]
           }
@@ -1500,7 +1701,38 @@
             ],
             "sonst": [
               {
-                "key": "KEYCODE_BACK"
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.5,
+                    0.5
+                  ]
+                ]
               }
             ]
           }
@@ -1530,7 +1762,38 @@
             ],
             "sonst": [
               {
-                "key": "KEYCODE_BACK"
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.5,
+                    0.5
+                  ]
+                ]
               }
             ]
           }
@@ -1641,7 +1904,38 @@
             ],
             "sonst": [
               {
-                "key": "KEYCODE_BACK"
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.5,
+                    0.5
+                  ]
+                ]
               }
             ]
           }
@@ -1671,7 +1965,38 @@
             ],
             "sonst": [
               {
-                "key": "KEYCODE_BACK"
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.5,
+                    0.5
+                  ]
+                ]
               }
             ]
           }
@@ -1784,7 +2109,38 @@
                   ],
                   "sonst": [
                     {
-                      "key": "KEYCODE_BACK"
+                      "tap_first": {
+                        "of": [
+                          {
+                            "template": "nav/startseite.png",
+                            "threshold": 0.86,
+                            "region": [
+                              0.7,
+                              0.85,
+                              1.0,
+                              1.0
+                            ]
+                          },
+                          {
+                            "template": "nav/burg.png",
+                            "threshold": 0.86,
+                            "region": [
+                              0.0,
+                              0.4,
+                              0.35,
+                              0.85
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "tap": [
+                        [
+                          0.5,
+                          0.5
+                        ]
+                      ]
                     }
                   ]
                 }
@@ -2010,7 +2366,38 @@
             ],
             "sonst": [
               {
-                "key": "KEYCODE_BACK"
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.5,
+                    0.5
+                  ]
+                ]
               }
             ]
           }
@@ -2149,7 +2536,38 @@
             ],
             "sonst": [
               {
-                "key": "KEYCODE_BACK"
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.5,
+                    0.5
+                  ]
+                ]
               }
             ]
           }
@@ -2254,7 +2672,38 @@
             ],
             "sonst": [
               {
-                "key": "KEYCODE_BACK"
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.5,
+                    0.5
+                  ]
+                ]
               }
             ]
           }
@@ -2311,121 +2760,32 @@
           "log": "Rundgang: Ausgangslage"
         },
         {
-          "tap_template": {
+          "tap_alle": {
             "template": "hud/bubble_weizen.png",
             "optional": true,
             "threshold": 0.86
           }
         },
         {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
+          "tap_alle": {
             "template": "hud/bubble_holz.png",
             "optional": true,
             "threshold": 0.86
           }
         },
         {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
+          "tap_alle": {
             "template": "hud/bubble_kraut.png",
             "optional": true,
             "threshold": 0.86
           }
         },
         {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_weizen.png",
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
             "optional": true,
-            "threshold": 0.86
+            "threshold": 0.9
           }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_holz.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_kraut.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_weizen.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_holz.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_kraut.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
         },
         {
           "drag": [
@@ -2446,121 +2806,32 @@
           "log": "Rundgang: nach links"
         },
         {
-          "tap_template": {
+          "tap_alle": {
             "template": "hud/bubble_weizen.png",
             "optional": true,
             "threshold": 0.86
           }
         },
         {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
+          "tap_alle": {
             "template": "hud/bubble_holz.png",
             "optional": true,
             "threshold": 0.86
           }
         },
         {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
+          "tap_alle": {
             "template": "hud/bubble_kraut.png",
             "optional": true,
             "threshold": 0.86
           }
         },
         {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_weizen.png",
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
             "optional": true,
-            "threshold": 0.86
+            "threshold": 0.9
           }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_holz.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_kraut.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_weizen.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_holz.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_kraut.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
         },
         {
           "drag": [
@@ -2581,121 +2852,32 @@
           "log": "Rundgang: weiter nach links"
         },
         {
-          "tap_template": {
+          "tap_alle": {
             "template": "hud/bubble_weizen.png",
             "optional": true,
             "threshold": 0.86
           }
         },
         {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
+          "tap_alle": {
             "template": "hud/bubble_holz.png",
             "optional": true,
             "threshold": 0.86
           }
         },
         {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
+          "tap_alle": {
             "template": "hud/bubble_kraut.png",
             "optional": true,
             "threshold": 0.86
           }
         },
         {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_weizen.png",
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
             "optional": true,
-            "threshold": 0.86
+            "threshold": 0.9
           }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_holz.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_kraut.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_weizen.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_holz.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_kraut.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
         },
         {
           "drag": [
@@ -2716,121 +2898,32 @@
           "log": "Rundgang: nach rechts"
         },
         {
-          "tap_template": {
+          "tap_alle": {
             "template": "hud/bubble_weizen.png",
             "optional": true,
             "threshold": 0.86
           }
         },
         {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
+          "tap_alle": {
             "template": "hud/bubble_holz.png",
             "optional": true,
             "threshold": 0.86
           }
         },
         {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
+          "tap_alle": {
             "template": "hud/bubble_kraut.png",
             "optional": true,
             "threshold": 0.86
           }
         },
         {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_weizen.png",
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
             "optional": true,
-            "threshold": 0.86
+            "threshold": 0.9
           }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_holz.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_kraut.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_weizen.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_holz.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_kraut.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
         },
         {
           "drag": [
@@ -2851,121 +2944,32 @@
           "log": "Rundgang: weiter nach rechts"
         },
         {
-          "tap_template": {
+          "tap_alle": {
             "template": "hud/bubble_weizen.png",
             "optional": true,
             "threshold": 0.86
           }
         },
         {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
+          "tap_alle": {
             "template": "hud/bubble_holz.png",
             "optional": true,
             "threshold": 0.86
           }
         },
         {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
+          "tap_alle": {
             "template": "hud/bubble_kraut.png",
             "optional": true,
             "threshold": 0.86
           }
         },
         {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_weizen.png",
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
             "optional": true,
-            "threshold": 0.86
+            "threshold": 0.9
           }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_holz.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_kraut.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_weizen.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_holz.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_kraut.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
         },
         {
           "drag": [
@@ -2986,121 +2990,32 @@
           "log": "Rundgang: nach oben"
         },
         {
-          "tap_template": {
+          "tap_alle": {
             "template": "hud/bubble_weizen.png",
             "optional": true,
             "threshold": 0.86
           }
         },
         {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
+          "tap_alle": {
             "template": "hud/bubble_holz.png",
             "optional": true,
             "threshold": 0.86
           }
         },
         {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
+          "tap_alle": {
             "template": "hud/bubble_kraut.png",
             "optional": true,
             "threshold": 0.86
           }
         },
         {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_weizen.png",
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
             "optional": true,
-            "threshold": 0.86
+            "threshold": 0.9
           }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_holz.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_kraut.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_weizen.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_holz.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_kraut.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
         },
         {
           "drag": [
@@ -3121,127 +3036,38 @@
           "log": "Rundgang: nach unten"
         },
         {
-          "tap_template": {
+          "tap_alle": {
             "template": "hud/bubble_weizen.png",
             "optional": true,
             "threshold": 0.86
           }
         },
         {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
+          "tap_alle": {
             "template": "hud/bubble_holz.png",
             "optional": true,
             "threshold": 0.86
           }
         },
         {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
+          "tap_alle": {
             "template": "hud/bubble_kraut.png",
             "optional": true,
             "threshold": 0.86
           }
         },
         {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_weizen.png",
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
             "optional": true,
-            "threshold": 0.86
+            "threshold": 0.9
           }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_holz.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_kraut.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_weizen.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_holz.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
-        },
-        {
-          "tap_template": {
-            "template": "hud/bubble_kraut.png",
-            "optional": true,
-            "threshold": 0.86
-          }
-        },
-        {
-          "sleep": [
-            0.4,
-            0.7
-          ]
         }
       ]
     },
     {
       "name": "objekte-lernen",
-      "every": 7200,
+      "every": 600,
       "at_start": true,
       "priority": 95,
       "_zweck": "Zwei Aufnahmen vergleichen und neue Sammel-Objekte daraus lernen. Laeuft in der Basis-Ansicht, wo staendig Ertrags-Blasen auftauchen.",
@@ -3467,7 +3293,38 @@
             ],
             "sonst": [
               {
-                "key": "KEYCODE_BACK"
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.5,
+                    0.5
+                  ]
+                ]
               }
             ]
           }
@@ -3542,7 +3399,38 @@
             ],
             "sonst": [
               {
-                "key": "KEYCODE_BACK"
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.5,
+                    0.5
+                  ]
+                ]
               }
             ]
           }
@@ -3660,7 +3548,38 @@
             ],
             "sonst": [
               {
-                "key": "KEYCODE_BACK"
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.5,
+                    0.5
+                  ]
+                ]
               }
             ]
           }
@@ -3788,7 +3707,38 @@
             ],
             "sonst": [
               {
-                "key": "KEYCODE_BACK"
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.5,
+                    0.5
+                  ]
+                ]
               }
             ]
           }
@@ -4011,7 +3961,38 @@
             ],
             "sonst": [
               {
-                "key": "KEYCODE_BACK"
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.5,
+                    0.5
+                  ]
+                ]
               }
             ]
           }
@@ -4409,7 +4390,38 @@
             ],
             "sonst": [
               {
-                "key": "KEYCODE_BACK"
+                "tap_first": {
+                  "of": [
+                    {
+                      "template": "nav/startseite.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.7,
+                        0.85,
+                        1.0,
+                        1.0
+                      ]
+                    },
+                    {
+                      "template": "nav/burg.png",
+                      "threshold": 0.86,
+                      "region": [
+                        0.0,
+                        0.4,
+                        0.35,
+                        0.85
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "tap": [
+                  [
+                    0.5,
+                    0.5
+                  ]
+                ]
               }
             ]
           }
@@ -4434,7 +4446,7 @@
         {
           "optimiere_takte": {
             "logs": "logs/*.jsonl",
-            "min_laeufe": 5,
+            "min_laeufe": 3,
             "min_takt": 300,
             "max_takt": 86400
           }
@@ -4476,5 +4488,8 @@
   "festgefahren_schritte": 15,
   "_festgefahren": "Sieht der Bot fuenfzehn Schritte lang dieselbe Ansicht, sucht er einen Ausweg (on_unknown) - unabhaengig davon, ob gerade eine Regel greift. Noetig, weil sonst genau das passiert, was im Lauf vom 31.07. zu sehen war: auf 'Taegliche Aufgaben' greift dauernd eine Regel, setzt die Zaehler zurueck und tippt doch nichts Wirksames. Die Ansicht wird dafuer stark verkleinert verglichen, damit tickende Uhren und wackelnde Banner nicht als Bewegung zaehlen. 0 schaltet die Pruefung ab.",
   "_vorlagen_groesse": "Zusaetzlich zu _ui_skala darf sich jede Vorlage einen eigenen Nachschlag merken (Feld 'template_skalen', 1.0 = nichts extra). Noetig, weil die Vorlagen aus verschiedenen Aufnahmen stammen: manche wurden am grossen Handy geschnitten, spaeter aufgenommene passen schon. Findet der Bot eine Vorlage sechsmal hintereinander nicht, probiert er sie einmal in allen Groessen durch; passt eine deutlich besser, traegt er den Faktor hier ein - nur fuer diese eine Vorlage. Hoechstens dreimal je Vorlage, danach ist sie schlicht nicht im Bild.",
-  "_ui_skala": "Zusaetzlicher Groessen-Faktor fuer alle Vorlagen. Das Spiel bemisst seine Oberflaeche an der Bildhoehe, nicht an der Breite - in einem flacheren Fenster ist bei gleicher Breite alles kleiner, und die Vorlagen treffen nur noch mit 0,3 bis 0,65. Die Aufgabe 'kalibrieren' probiert bekannte Vorlagen in verschiedenen Groessen durch und traegt den passenden Faktor hier ein. Von Hand aendern muss man das nicht."
+  "_ui_skala": "Zusaetzlicher Groessen-Faktor fuer alle Vorlagen. Das Spiel bemisst seine Oberflaeche an der Bildhoehe, nicht an der Breite - in einem flacheren Fenster ist bei gleicher Breite alles kleiner, und die Vorlagen treffen nur noch mit 0,3 bis 0,65. Die Aufgabe 'kalibrieren' probiert bekannte Vorlagen in verschiedenen Groessen durch und traegt den passenden Faktor hier ein. Von Hand aendern muss man das nicht.",
+  "regel_wirkungslos_grenze": 3,
+  "_keine_zurueck_taste": "Die Zurueck-Taste des Systems darf NIE blind gedrueckt werden: in der Stadtansicht oeffnet sie 'Spiel beenden?' - ein Tipp daneben und das Spiel ist zu. Am 31.07. ist genau das passiert. Stattdessen der Zurueck-Pfeil im Spiel, sonst die Startseite, sonst ein Tipp auf freie Flaeche.",
+  "_regel_wirkungslos": "Greift eine Regel dreimal hintereinander, ohne dass sich die Ansicht aendert, legt der Bot sie fuer eine Weile still. Am 31.07. griff 'dialog-schliessen' auf 'Taegliche Aufgaben' elfmal mit Score 1.00 und bewirkte nichts - die Vorlage passte auf etwas, das kein Schliesskreuz war."
 }

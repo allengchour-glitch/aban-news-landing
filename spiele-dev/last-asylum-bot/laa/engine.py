@@ -121,6 +121,9 @@ class Engine:
         self.unknown_streak = 0
         self.gleiche_ansicht = 0
         self._ansicht_letzte: Optional[bytes] = None
+        self._finger_jetzt: Optional[bytes] = None
+        self._regel_finger: Dict[str, tuple] = {}
+        self._regel_pause: Dict[str, float] = {}
 
         self._rule_last: Dict[str, float] = {}
         self._rule_done = set()
@@ -330,6 +333,8 @@ class Engine:
             self._tap_template(value if isinstance(value, dict) else {"template": value})
         elif key == "tap":
             self._tap_point(value)
+        elif key == "tap_alle":
+            self._tap_alle(value if isinstance(value, dict) else {"template": value})
         elif key == "tap_first":
             self._tap_first(value)
         elif key == "type_text":
@@ -423,6 +428,55 @@ class Engine:
         if "after" in spec:
             self._do_sleep(spec["after"])
 
+    def _tap_alle(self, spec: Dict[str, Any]) -> None:
+        """Jeden Treffer antippen, nicht nur den besten.
+
+        Auf einem Bildschirm liegen meist mehrere Ertrags-Blasen gleichzeitig.
+        `tap_template` nimmt davon nur eine - der Rest bleibt liegen, bis die
+        Regel das naechste Mal greift. Hier wird alles abgeraeumt, was da ist,
+        und danach noch einmal nachgesehen: durch das Einsammeln rutscht die
+        Ansicht manchmal nach, und dann liegt schon die naechste Blase da.
+        """
+        runden = int(spec.get("runden", 2))
+        grenze = int(spec.get("hoechstens", 12))
+        pause = spec.get("zwischen", [0.35, 0.6])
+        muster = spec["template"]
+        getippt = 0
+        for runde in range(runden):
+            screen = self.capture()
+            treffer = []
+            namen = self.cfg.template_gruppe(muster) if "*" in muster else [muster]
+            for name in namen:
+                tpl = self.cfg.template(name, optional=True)
+                if tpl is None:
+                    continue
+                treffer.extend(matcher.find_all(
+                    screen, tpl,
+                    threshold=float(spec.get("threshold", self.cfg.default_threshold)),
+                    region=spec.get("region"),
+                    scale=self.cfg.scale_for_template(name, screen.width),
+                    limit=grenze,
+                ))
+            if not treffer:
+                if runde == 0 and not spec.get("optional", True):
+                    self.log.warn("tap_alle: nichts gefunden", template=muster)
+                break
+            # Von oben nach unten abraeumen - so verdeckt nichts das Naechste.
+            treffer.sort(key=lambda h: (h.y, h.x))
+            gesetzt: List[tuple] = []
+            for hit in treffer[:grenze]:
+                cx, cy = hit.center
+                # Zwei Vorlagen finden oft dieselbe Blase; doppelt tippen bringt nichts.
+                if any(abs(cx - px) < hit.w and abs(cy - py) < hit.h for px, py in gesetzt):
+                    continue
+                gesetzt.append((cx, cy))
+                jx, jy = human_point(cx, cy, hit.w, hit.h)
+                self._tap_abs(jx, jy, muster)
+                getippt += 1
+                self._do_sleep(pause)
+        if getippt:
+            self.log.info(f"Eingesammelt: {getippt} Stueck", vorlage=muster)
+
     def _kalibriere(self, spec: Dict[str, Any]) -> None:
         """Den Groessen-Faktor der Oberflaeche selbst bestimmen.
 
@@ -508,7 +562,7 @@ class Engine:
         self._skala_sichern(median)
 
     FEIN_SCHRITTE = [0.55, 0.62, 0.70, 0.78, 0.86, 0.94, 1.00, 1.08, 1.18, 1.30, 1.45, 1.60]
-    FEHLGRIFFE_BIS_NACHMESSEN = 6
+    FEHLGRIFFE_BIS_NACHMESSEN = 3
     MAX_NACHMESSEN = 3  # danach ist die Vorlage schlicht nicht im Bild
 
     def _nachjustieren(
@@ -892,6 +946,8 @@ class Engine:
                 continue
             if not self.evaluate(rule.match, screen):
                 continue
+            if self._regel_ohne_wirkung(rule):
+                continue
             self._rule_last[rule.name] = self._clock()
             if rule.once:
                 self._rule_done.add(rule.name)
@@ -962,6 +1018,76 @@ class Engine:
             self.run_actions(self.cfg.on_unknown, "on_unknown")
         return True
 
+    def _regel_ohne_wirkung(self, rule) -> bool:
+        """Greift eine Regel wieder und wieder, ohne dass sich etwas tut?
+
+        Am 31.07. griff 'dialog-schliessen' auf 'Taegliche Aufgaben' elfmal
+        mit Score 1.00 - die Vorlage passte auf etwas, das kein Schliesskreuz
+        war. Solche Regeln werden fuer eine Weile stillgelegt, damit der Bot
+        weiterkommt, statt auf derselben Stelle zu treten.
+        """
+        if self._clock() < self._regel_pause.get(rule.name, -1e9):
+            return True
+        grenze = int(getattr(self.cfg, "regel_wirkungslos_grenze", 0) or 0)
+        if grenze <= 0 or self._finger_jetzt is None:
+            return False
+        vorher, zaehler = self._regel_finger.get(rule.name, (None, 0))
+        if vorher != self._finger_jetzt:
+            self._regel_finger[rule.name] = (self._finger_jetzt, 1)
+            return False
+        zaehler += 1
+        self._regel_finger[rule.name] = (self._finger_jetzt, zaehler)
+        if zaehler <= grenze:
+            return False
+        pause = float(getattr(self.cfg, "regel_wirkungslos_pause", 300.0))
+        self._regel_pause[rule.name] = self._clock() + pause
+        self._regel_finger.pop(rule.name, None)
+        self.bump("regel-stillgelegt")
+        self.log.warn(
+            f"Regel '{rule.name}' bewirkt nichts - fuer eine Weile stillgelegt",
+            versuche=zaehler, pause_sekunden=int(pause),
+        )
+        self._gelerntes_verwerfen(rule)
+        return True
+
+    def _gelerntes_verwerfen(self, rule) -> None:
+        """Selbst gelernte Vorlagen aussortieren, die nur stoeren.
+
+        Der Bot lernt Sammel-Objekte aus dem, was sich bewegt. Manchmal ist
+        das kein Ertrag, sondern eine Laufschrift oder ein Werbebanner - dann
+        greift die Regel dauernd und bewirkt nichts. Was hier auffaellt,
+        wandert nach 'gelernt/verworfen' und wird nicht mehr benutzt.
+        """
+        muster = rule.match.get("template") if isinstance(rule.match, dict) else None
+        if not muster or "gelernt/" not in str(muster) or "*" not in str(muster):
+            return
+        screen = self.screen
+        if screen is None:
+            return
+        ziel = os.path.join(self.cfg.root, self.cfg.templates_dir, "gelernt", "verworfen")
+        schwelle = float(rule.match.get("threshold", self.cfg.default_threshold))
+        for name in self.cfg.template_gruppe(muster):
+            tpl = self.cfg.template(name, optional=True)
+            if tpl is None:
+                continue
+            hit = matcher.best_score(
+                screen, tpl, scale=self.cfg.scale_for_template(name, screen.width)
+            )
+            if not hit or hit.score < schwelle:
+                continue
+            try:
+                os.makedirs(ziel, exist_ok=True)
+                quelle = self.cfg.template_path(name)
+                os.replace(quelle, os.path.join(ziel, os.path.basename(quelle)))
+                self.cfg._templates.pop(name, None)
+                self.bump("gelerntes-verworfen")
+                self.log.warn(
+                    f"Selbst gelernte Vorlage taugt nicht - aussortiert: {name}",
+                    score=round(hit.score, 2),
+                )
+            except OSError as exc:  # pragma: no cover - Dateisystem
+                self.log.warn(f"Vorlage nicht verschiebbar: {exc}")
+
     @staticmethod
     def _ansicht_finger(screen: Image) -> bytes:
         """Grobe Kennung der Ansicht - unempfindlich gegen Zappeleien.
@@ -982,10 +1108,11 @@ class Engine:
         'unbekannter Bildschirm' zurueck und tippt doch nichts Wirksames.
         Diese Pruefung laeuft vor allen Regeln und sieht nur auf das Bild.
         """
+        finger = self._ansicht_finger(screen)
+        self._finger_jetzt = finger
         grenze = int(getattr(self.cfg, "festgefahren_schritte", 0) or 0)
         if grenze <= 0:
             return False
-        finger = self._ansicht_finger(screen)
         if finger != self._ansicht_letzte:
             self._ansicht_letzte = finger
             self.gleiche_ansicht = 0

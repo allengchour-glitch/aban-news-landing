@@ -1042,34 +1042,155 @@ class TestSelbstLernen(unittest.TestCase):
             shutil.rmtree(ordner, ignore_errors=True)
 
 
-class TestZurueckPfeil(unittest.TestCase):
-    """Zurück läuft über den Pfeil oben links; die Android-Taste ist nur Ersatz."""
+class TestAllesEinsammeln(unittest.TestCase):
+    """Auf einem Bildschirm liegen mehrere Blasen - alle müssen weg."""
 
-    def test_keine_blinde_zurueck_taste_in_der_konfiguration(self):
+    def test_tippt_jede_blase_einmal(self):
+        import shutil, tempfile
+        ordner = tempfile.mkdtemp()
+        try:
+            tdir = os.path.join(ordner, "templates", "hud")
+            os.makedirs(tdir)
+            blase = noise(40, 40, 60)
+            blase.save(os.path.join(tdir, "blase.png"))
+            screen = noise(600, 900, 61)
+            stellen = [(80, 120), (300, 200), (450, 640)]
+            for x, y in stellen:
+                paste(screen, blase, x, y)
+            with open(os.path.join(ordner, "conf.json"), "w", encoding="utf-8") as fh:
+                json.dump({"base_width": 600}, fh)
+            cfg = Config.load(os.path.join(ordner, "conf.json"))
+            dev = FakeDevice([screen], loop=True)
+            eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=2)
+            eng.run_actions([{"tap_alle": {"template": "hud/blase.png",
+                                           "threshold": 0.9, "runden": 1}}])
+            self.assertEqual(len(dev.taps), 3, f"drei Blasen, aber {len(dev.taps)} Tipps")
+            for x, y in stellen:
+                self.assertTrue(
+                    any(abs(tx - (x + 20)) < 25 and abs(ty - (y + 20)) < 25
+                        for tx, ty in dev.taps),
+                    f"Blase bei {x},{y} wurde nicht angetippt",
+                )
+        finally:
+            shutil.rmtree(ordner, ignore_errors=True)
+
+    def test_ohne_blase_kein_tipp(self):
+        import shutil, tempfile
+        ordner = tempfile.mkdtemp()
+        try:
+            tdir = os.path.join(ordner, "templates", "hud")
+            os.makedirs(tdir)
+            noise(40, 40, 62).save(os.path.join(tdir, "blase.png"))
+            with open(os.path.join(ordner, "conf.json"), "w", encoding="utf-8") as fh:
+                json.dump({"base_width": 600}, fh)
+            cfg = Config.load(os.path.join(ordner, "conf.json"))
+            dev = FakeDevice([noise(600, 900, 63)], loop=True)
+            eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=2)
+            eng.run_actions([{"tap_alle": {"template": "hud/blase.png", "threshold": 0.9}}])
+            self.assertEqual(dev.taps, [])
+        finally:
+            shutil.rmtree(ordner, ignore_errors=True)
+
+
+class TestZurueckPfeil(unittest.TestCase):
+    """Die Android-Zurück-Taste ist in diesem Spiel gefährlich.
+
+    In der Stadtansicht öffnet sie »Spiel beenden?« mit »Abbrechen« und
+    »Bestätigen« nebeneinander. Am 31.07. hat der Bot sie über den
+    sonst-Zweig von on_unknown gedrückt und stand vor genau diesem Dialog -
+    ein Fehlgriff daneben, und das Spiel wäre zu gewesen. Sie darf deshalb
+    nirgends vorkommen, auch nicht als Ersatzweg.
+    """
+
+    def test_keine_zurueck_taste_in_der_konfiguration(self):
         import json as _json
 
-        roh = _json.load(open(os.path.join(ROOT, "config", "last-asylum.json"), encoding="utf-8"))
-        blind = []
+        with open(os.path.join(ROOT, "config", "last-asylum.json"), encoding="utf-8") as fh:
+            roh = _json.load(fh)
+        gefunden = []
 
-        def pruefe(schritte, wo, im_sonst=False):
-            for s in schritte:
-                if not isinstance(s, dict):
-                    continue
-                if s.get("key") == "KEYCODE_BACK" and not im_sonst:
-                    blind.append(wo)
-                if "repeat" in s:
-                    pruefe(s["repeat"].get("do", []), wo)
-                if "wenn" in s:
-                    pruefe(s["wenn"].get("dann", []), wo)
-                    # Der sonst-Zweig DARF die Taste nutzen – dort ist kein Pfeil da.
-                    pruefe(s["wenn"].get("sonst", []), wo, im_sonst=True)
+        def pruefe(knoten, wo):
+            if isinstance(knoten, dict):
+                if knoten.get("key") == "KEYCODE_BACK":
+                    gefunden.append(wo)
+                for k, v in knoten.items():
+                    pruefe(v, f"{wo}>{k}")
+            elif isinstance(knoten, list):
+                for i, v in enumerate(knoten):
+                    pruefe(v, wo)
 
-        for gruppe in ("rules", "tasks"):
-            for eintrag in roh.get(gruppe, []):
-                pruefe(eintrag["do"], f"{gruppe}:{eintrag['name']}")
-        pruefe(roh.get("on_stuck", []), "on_stuck")
-        pruefe(roh.get("on_unknown", []), "on_unknown")
-        self.assertEqual(blind, [], "blinde Zurück-Taste statt Pfeil-Prüfung")
+        for gruppe in ("rules", "tasks", "on_unknown", "on_stuck"):
+            pruefe(roh.get(gruppe, []), gruppe)
+        self.assertEqual(
+            gefunden, [],
+            "KEYCODE_BACK oeffnet 'Spiel beenden?' - hier gefunden: " + ", ".join(gefunden),
+        )
+
+
+class TestRegelOhneWirkung(unittest.TestCase):
+    """Eine Regel, die folgenlos greift, muss stillgelegt werden.
+
+    Am 31.07. griff »dialog-schliessen« auf »Tägliche Aufgaben« elfmal
+    hintereinander mit Score 1.00 und bewirkte nichts.
+    """
+
+    def test_folgenlose_regel_wird_stillgelegt(self):
+        tpl = noise(20, 20, 40)
+        screen = noise(300, 500, 41)
+        paste(screen, tpl, 100, 200)
+        os.makedirs(os.path.join(HERE, "_tmp_tpl"), exist_ok=True)
+        pfad = os.path.join(HERE, "_tmp_tpl", "marke.png")
+        tpl.save(pfad)
+        try:
+            cfg = Config.from_dict({
+                "base_width": 300,
+                "festgefahren_schritte": 0,
+                "regel_wirkungslos_grenze": 3,
+                "rules": [{"name": "greift-immer",
+                           "match": {"template": pfad, "threshold": 0.9},
+                           "do": [{"tap_match": {}}]}],
+            })
+            eng = Engine(cfg, FakeDevice([screen], loop=True), logger=quiet(),
+                         sleep=lambda s: None, seed=3)
+            for _ in range(10):
+                eng.step()
+            self.assertEqual(eng.stats.get("regel-stillgelegt", 0), 1)
+            self.assertLessEqual(
+                eng.stats.get("rule:greift-immer", 0), 4,
+                "nach der Stilllegung darf die Regel nicht weiter greifen",
+            )
+        finally:
+            import shutil
+            shutil.rmtree(os.path.join(HERE, "_tmp_tpl"), ignore_errors=True)
+
+    def test_wirksame_regel_bleibt_aktiv(self):
+        tpl = noise(20, 20, 42)
+        bilder = []
+        for i in range(10):
+            b = noise(300, 500, 50 + i)
+            paste(b, tpl, 100, 200)
+            paste(b, Image.new(120, 120, (255, 255, 255)), 10 + i * 15, 300)
+            bilder.append(b)
+        os.makedirs(os.path.join(HERE, "_tmp_tpl2"), exist_ok=True)
+        pfad = os.path.join(HERE, "_tmp_tpl2", "marke.png")
+        tpl.save(pfad)
+        try:
+            cfg = Config.from_dict({
+                "base_width": 300,
+                "festgefahren_schritte": 0,
+                "regel_wirkungslos_grenze": 3,
+                "rules": [{"name": "greift-immer",
+                           "match": {"template": pfad, "threshold": 0.9},
+                           "do": [{"tap_match": {}}]}],
+            })
+            eng = Engine(cfg, FakeDevice(bilder, loop=True), logger=quiet(),
+                         sleep=lambda s: None, seed=3)
+            for _ in range(10):
+                eng.step()
+            self.assertEqual(eng.stats.get("regel-stillgelegt", 0), 0)
+        finally:
+            import shutil
+            shutil.rmtree(os.path.join(HERE, "_tmp_tpl2"), ignore_errors=True)
 
 
 class TestFarbknopf(unittest.TestCase):
