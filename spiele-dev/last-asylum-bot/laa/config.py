@@ -46,6 +46,7 @@ class Config:
     default_threshold: float = 0.85
     loop_delay: List[float] = field(default_factory=lambda: [1.0, 2.0])
     stuck_seconds: float = 240.0
+    festgefahren_schritte: int = 15  # so viele Schritte gleiche Ansicht = Ausweg suchen
     regel_vorrang: int = 190  # ab dieser Priorität schlägt eine Regel jede fällige Aufgabe
     on_stuck: List[Any] = field(default_factory=list)
     on_unknown: List[Any] = field(default_factory=list)
@@ -83,6 +84,7 @@ class Config:
             delay = [float(delay), float(delay)]
         cfg.loop_delay = [float(delay[0]), float(delay[-1])]
         cfg.stuck_seconds = float(raw.get("stuck_seconds", 240))
+        cfg.festgefahren_schritte = int(raw.get("festgefahren_schritte", 15))
         cfg.regel_vorrang = int(raw.get("regel_vorrang", 190))
         cfg.on_stuck = raw.get("on_stuck", [])
         cfg.on_unknown = raw.get("on_unknown", [])

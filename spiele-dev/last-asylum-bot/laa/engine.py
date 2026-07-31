@@ -119,6 +119,8 @@ class Engine:
         self.stats: Dict[str, int] = {}
         self.steps = 0
         self.unknown_streak = 0
+        self.gleiche_ansicht = 0
+        self._ansicht_letzte: Optional[bytes] = None
 
         self._rule_last: Dict[str, float] = {}
         self._rule_done = set()
@@ -457,8 +459,17 @@ class Engine:
             if bester >= mindest and bester_faktor:
                 gefunden.append((name, bester_faktor, bester))
 
-        if not gefunden:
-            self.log.info("Kalibrierung: nichts Passendes im Bild - spaeter erneut")
+        # Ein einziger Beleg ist keine Messung. Auf einem Vollbild wie
+        # 'Taegliche Aufgaben' ist von den Navigations-Vorlagen ohnehin keine
+        # zu sehen - dann lieber gleich noch einmal versuchen als sechs
+        # Stunden lang mit einem Zufallswert weiterarbeiten.
+        mindest_belege = int(spec.get("min_belege", 3))
+        if len(gefunden) < mindest_belege:
+            self.log.info(
+                "Kalibrierung: zu wenig Belege im Bild - spaeter erneut",
+                belege=len(gefunden), noetig=mindest_belege,
+            )
+            self._bald_erneut(spec)
             return
         faktoren = sorted(f for _, f, _ in gefunden)
         median = faktoren[len(faktoren) // 2]
@@ -545,6 +556,12 @@ class Engine:
                 json.dump(roh, fh, ensure_ascii=False, indent=2)
         except Exception as exc:  # pragma: no cover - Dateisystem
             self.log.warn(f"Konfiguration nicht gespeichert: {exc}")
+
+    def _bald_erneut(self, spec: Dict[str, Any]) -> None:
+        """Die laufende Aufgabe frueher wieder faellig machen."""
+        name = spec.get("aufgabe", "kalibrieren")
+        if name in self._task_due:
+            self._task_due[name] = self._clock() + float(spec.get("erneut_in", 600))
 
     def _skala_sichern(self, wert: float) -> None:
         self._config_patch(lambda roh: roh.__setitem__("ui_skala", round(wert, 3)))
@@ -907,6 +924,8 @@ class Engine:
         self.steps += 1
         screen = self.capture()
         self._track_change(screen)
+        if self._festgefahren(screen):
+            return True
 
         # Dringende Regeln (Belohnung sichtbar, Dialog im Weg) schlagen jede Aufgabe.
         if self._try_rules(screen, min_priority=self.cfg.regel_vorrang):
@@ -935,9 +954,54 @@ class Engine:
         self.unknown_streak += 1
         self.bump("unbekannt")
         self.log.debug("Kein Treffer", serie=self.unknown_streak)
-        if self.cfg.on_unknown and self.unknown_streak in (5, 15, 45):
+        # Alle zehn Schritte erneut, nicht nur drei Mal: eine feste Liste
+        # (5, 15, 45) hiess, dass der Bot ab dem 46. Fehlgriff nie wieder
+        # einen Ausweg versucht haette.
+        if self.cfg.on_unknown and self.unknown_streak >= 5 and self.unknown_streak % 10 == 5:
             self.log.warn("Unbekannter Bildschirm – on_unknown läuft", serie=self.unknown_streak)
             self.run_actions(self.cfg.on_unknown, "on_unknown")
+        return True
+
+    @staticmethod
+    def _ansicht_finger(screen: Image) -> bytes:
+        """Grobe Kennung der Ansicht - unempfindlich gegen Zappeleien.
+
+        `_track_change` schaut auf das ganze Bild und meldet darum nie einen
+        Haenger: die Serverzeit tickt, Banner wackeln, irgendwas bewegt sich
+        immer. Stark verkleinert und grob gerastert bleibt davon nichts uebrig
+        - ein wirklich anderer Bildschirm faellt trotzdem sofort auf.
+        """
+        klein = screen.to_gray().box_scale(16, 28)
+        return bytes(b // 24 for b in klein.data)
+
+    def _festgefahren(self, screen: Image) -> bool:
+        """Seit zu vielen Schritten dieselbe Ansicht? Dann hier raus.
+
+        Ohne das bleibt der Bot an einem Vollbild wie 'Taegliche Aufgaben'
+        haengen: eine Regel greift dort immer wieder, setzt die Zaehler fuer
+        'unbekannter Bildschirm' zurueck und tippt doch nichts Wirksames.
+        Diese Pruefung laeuft vor allen Regeln und sieht nur auf das Bild.
+        """
+        grenze = int(getattr(self.cfg, "festgefahren_schritte", 0) or 0)
+        if grenze <= 0:
+            return False
+        finger = self._ansicht_finger(screen)
+        if finger != self._ansicht_letzte:
+            self._ansicht_letzte = finger
+            self.gleiche_ansicht = 0
+            return False
+        self.gleiche_ansicht += 1
+        if self.gleiche_ansicht < grenze:
+            return False
+        self.gleiche_ansicht = 0
+        self.bump("festgefahren")
+        self.log.warn(
+            "Seit vielen Schritten dieselbe Ansicht - Ausweg suchen",
+            schritte=grenze,
+        )
+        self.save_shot("festgefahren", screen)
+        if self.cfg.on_unknown:
+            self.run_actions(self.cfg.on_unknown, "festgefahren")
         return True
 
     def _track_change(self, screen: Image) -> None:

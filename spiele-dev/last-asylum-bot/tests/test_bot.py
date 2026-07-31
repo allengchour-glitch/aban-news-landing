@@ -666,7 +666,7 @@ class TestKalibrierung(unittest.TestCase):
         ordner, cfg, eng, shutil = self.bau(0.7)
         try:
             eng.run_actions([{"kalibriere": {"templates": ["ui/back_arrow.png"],
-                                             "mindest_score": 0.8}}])
+                                             "mindest_score": 0.8, "min_belege": 1}}])
             self.assertAlmostEqual(cfg.ui_skala, 0.7, delta=0.06)
             with open(os.path.join(ordner, "conf.json"), encoding="utf-8") as fh:
                 self.assertAlmostEqual(json.load(fh)["ui_skala"], 0.7, delta=0.06)
@@ -677,10 +677,96 @@ class TestKalibrierung(unittest.TestCase):
         ordner, cfg, eng, shutil = self.bau(1.0)
         try:
             eng.run_actions([{"kalibriere": {"templates": ["ui/back_arrow.png"],
-                                             "mindest_score": 0.8}}])
+                                             "mindest_score": 0.8, "min_belege": 1}}])
             self.assertAlmostEqual(cfg.ui_skala, 1.0, delta=0.06)
         finally:
             shutil.rmtree(ordner, ignore_errors=True)
+
+
+class TestFestgefahren(unittest.TestCase):
+    """Wer zu lange dieselbe Ansicht sieht, muss einen Ausweg versuchen.
+
+    Der Fall aus dem echten Lauf: der Bot stand auf 'Tägliche Aufgaben'. Eine
+    Regel griff dort immer wieder, setzte die Zähler für 'unbekannter
+    Bildschirm' zurück und tippte doch nichts Wirksames.
+    """
+
+    def bau(self, roh):
+        cfg = Config.from_dict(roh)
+        screen = noise(400, 700, 5)
+        dev = FakeDevice([screen], loop=True)
+        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=1)
+        return cfg, dev, eng
+
+    def test_dauernd_gleiche_ansicht_loest_ausweg_aus(self):
+        roh = {
+            "base_width": 400,
+            "festgefahren_schritte": 4,
+            "on_unknown": [{"key": "KEYCODE_BACK"}],
+            # Diese Regel greift auf jedem Bild und bewirkt nichts - genau die
+            # Falle, die den Bot im echten Lauf festgehalten hat.
+            "rules": [{"name": "immer", "match": {"always": True},
+                       "do": [{"log": "nichts"}]}],
+        }
+        cfg, dev, eng = self.bau(roh)
+        for _ in range(12):
+            eng.step()
+        self.assertGreaterEqual(
+            eng.stats.get("festgefahren", 0), 2,
+            "der Bot muss den Stillstand bemerken, obwohl staendig eine Regel greift",
+        )
+        self.assertIn("KEYCODE_BACK", dev.keys, "es muss ein Ausweg versucht worden sein")
+
+    def test_wechselnde_ansicht_bleibt_unbehelligt(self):
+        roh = {
+            "base_width": 400,
+            "festgefahren_schritte": 4,
+            "on_unknown": [{"key": "KEYCODE_BACK"}],
+            "rules": [{"name": "immer", "match": {"always": True},
+                       "do": [{"log": "nichts"}]}],
+        }
+        cfg = Config.from_dict(roh)
+        bilder = []
+        for i in range(12):
+            bild = noise(400, 700, 20 + i)
+            paste(bild, Image.new(160, 160, (250, 250, 250)), 20 + i * 18, 40 + i * 40)
+            bilder.append(bild)
+        eng = Engine(cfg, FakeDevice(bilder, loop=True), logger=quiet(),
+                     sleep=lambda s: None, seed=1)
+        for _ in range(12):
+            eng.step()
+        self.assertEqual(eng.stats.get("festgefahren", 0), 0)
+
+    def test_abschaltbar(self):
+        cfg, dev, eng = self.bau({"base_width": 400, "festgefahren_schritte": 0,
+                                  "on_unknown": [{"key": "KEYCODE_BACK"}]})
+        for _ in range(12):
+            eng.step()
+        self.assertEqual(eng.stats.get("festgefahren", 0), 0)
+
+
+class TestUnbekanntBleibtWachsam(unittest.TestCase):
+    """on_unknown darf nicht nach drei Versuchen für immer verstummen."""
+
+    def test_ausweg_wird_auch_spaet_noch_versucht(self):
+        cfg = Config.from_dict({
+            "base_width": 400,
+            "festgefahren_schritte": 0,   # hier nur die Serie prüfen
+            "on_unknown": [{"key": "KEYCODE_BACK"}],
+        })
+        eng = Engine(cfg, FakeDevice([noise(400, 700, 9)], loop=True),
+                     logger=quiet(), sleep=lambda s: None, seed=1)
+        ausloeser = []
+        for i in range(1, 81):
+            vorher = len(eng.dev.keys)
+            eng.step()
+            if len(eng.dev.keys) > vorher:
+                ausloeser.append(i)
+        self.assertIn(5, ausloeser)
+        self.assertGreater(
+            max(ausloeser), 45,
+            "auch nach dem 45. Fehlgriff muss der Bot weiter einen Ausweg suchen",
+        )
 
 
 class TestVorlagenGroesse(unittest.TestCase):
