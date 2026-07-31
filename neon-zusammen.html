@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="aban-nav" content="off">
 <title>🤝 Tempel der Zwei — Koop-Rätsel wie It Takes Two | aban news</title>
-<meta name="description" content="Ember 🔥 & Aqua 💧: Rätsel, die nur ZU ZWEIT lösbar sind — Druckplatten, Ranken verbrennen, Pflanzen giessen, Gleichklang-Schalter. Online-Koop oder solo mit Charakterwechsel.">
+<meta name="description" content="Ember 🔥 & Aqua 💧: Rätsel, die nur ZU ZWEIT lösbar sind — Druckplatten, Ranken verbrennen, Pflanzen giessen, Gleichklang-Schalter und das Auge des Wächters: einer lenkt den Blickstrahl ab, der andere rennt. Online-Koop oder solo mit Charakterwechsel.">
 <script>/* Fusion: Direktbesuch -> Wildnis-Welt; als Station (iframe/?station=1) laeuft das Spiel normal */
 if(window.parent===window&&!/[?&]station=1/.test(location.search)&&!/[?&]raum=/.test(location.search)){location.replace("/neon-wildnis.html?von="+location.pathname.replace(/\W/g,""));}</script>
 <style>
@@ -63,8 +63,8 @@ if(window.parent===window&&!/[?&]station=1/.test(location.search)&&!/[?&]raum=/.
 </div>
 <div id="ov">
   <h1>🤝 TEMPEL DER ZWEI</h1>
-  <p><b>🔥 Ember</b> &amp; <b>💧 Aqua</b> — kein Rätsel hier ist allein lösbar. Ember <b>verbrennt Ranken</b>, Aqua <b>lässt Pflanzen wachsen</b>. Steht zusammen auf Platten, zieht Hebel im <b>Gleichklang</b> — wie in It Takes Two!</p>
-  <div class="chips"><span class="chip">⚖️ Druckplatten zu zweit</span><span class="chip">🔥 Ranken verbrennen</span><span class="chip">💧 Pflanzen giessen</span><span class="chip">⚡ Gleichklang-Schalter</span></div>
+  <p><b>🔥 Ember</b> &amp; <b>💧 Aqua</b> — kein Rätsel hier ist allein lösbar. Ember <b>verbrennt Ranken</b>, Aqua <b>lässt Pflanzen wachsen</b>. Steht zusammen auf Platten, zieht Hebel im <b>Gleichklang</b> — wie in It Takes Two! Zum Schluss erwacht das <b>👁️ Auge des Wächters</b>: einer lockt den Blickstrahl auf die Schattenplatte, der andere rennt zum Altar. <b>Dann tauschen.</b></p>
+  <div class="chips"><span class="chip">⚖️ Druckplatten zu zweit</span><span class="chip">🔥 Ranken verbrennen</span><span class="chip">💧 Pflanzen giessen</span><span class="chip">⚡ Gleichklang-Schalter</span><span class="chip">👁️ Wächter ablenken</span></div>
   <button class="big" id="startBtn">🧍 Solo spielen (🔁 Wechsel) ▶</button>
   <button class="big" id="coopBtn" style="background:linear-gradient(92deg,#ffb066,#7de3ff)">⚡ Online zu zweit — 1 Tipp</button>
   <details style="margin:6px auto;max-width:340px;text-align:center;color:#bfe9ff;font-size:.9rem"><summary style="cursor:pointer;opacity:.85">oder gezielt mit einem Freund ▾</summary>
@@ -104,17 +104,17 @@ scene.add(new THREE.HemisphereLight(0x6a9e8a,0x101a14,0.55));
 scene.add(new THREE.AmbientLight(0x2a4436,0.4));
 function M(c,e,i){return new THREE.MeshLambertMaterial({color:c,emissive:e||0x000000,emissiveIntensity:i||0});}
 
-/* ---------- Tempel-Layout: 3 Räume hintereinander (z: 0 → -66) ---------- */
+/* ---------- Tempel-Layout: 4 Räume hintereinander (z: 0 → -96) ---------- */
 /* 🪨 Echte Stein-/Kopfstein-Texturen (CC0, /textures) statt flacher Farben — Farben ~1.8x heller (Lambert map*color) */
 var _tl=new THREE.TextureLoader();
 function gtex(u,rx,ry){var t=_tl.load(u);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(rx||1,ry||rx||1);return t;}
 function MT(c,tex,e,i){var m=new THREE.MeshLambertMaterial({color:c,emissive:e||0x000000,emissiveIntensity:i||0});m.map=tex;return m;}
-var walls=[],FLOOR=MT(0x53685a,gtex("/textures/tex_cobble.png",5,16)),WALL=MT(0x5a6157,gtex("/textures/tex_stone.png",6,1.4)),GOLD=M(0x8a7040,0x4a3410,0.3);
-var WALL_LONG=MT(0x5a6157,gtex("/textures/tex_stone.png",20,1.4)); /* #8: 72 Einheiten lange Seitenwände brauchen 20er-Repeat — vorher Schmier-Gradient statt Mauerwerk */
+var walls=[],FLOOR=MT(0x53685a,gtex("/textures/tex_cobble.png",5,23)),WALL=MT(0x5a6157,gtex("/textures/tex_stone.png",6,1.4)),GOLD=M(0x8a7040,0x4a3410,0.3);
+var WALL_LONG=MT(0x5a6157,gtex("/textures/tex_stone.png",28,1.4)); /* #8: lange Seitenwaende brauchen grossen Repeat — sonst Schmier-Gradient statt Mauerwerk. 28 = 102 Einheiten (Raum 4 angebaut) */
 function box(x,y,z,w,h,d,mat,solid){var m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat||WALL);
   m.position.set(x,y,z);scene.add(m);if(solid)walls.push({x:x,z:z,w:w/2,d:d/2,m:m});return m;}
-box(0,-0.3,-30,20,0.6,72,FLOOR);                       /* Boden */
-box(-10.4,1.5,-30,0.8,3,72,WALL_LONG,true);box(10.4,1.5,-30,0.8,3,72,WALL_LONG,true); /* Seitenwände (#8: langer Repeat) */
+box(0,-0.3,-45,20,0.6,102,FLOOR);                      /* Boden (z: +6 … -96) */
+box(-10.4,1.5,-45,0.8,3,102,WALL_LONG,true);box(10.4,1.5,-45,0.8,3,102,WALL_LONG,true); /* Seitenwaende (#8: langer Repeat) */
 box(0,1.5,6.4,21,3,0.8,WALL,true);                     /* Rückwand */
 /* Fackel-Deko */
 var torches=[];
@@ -127,14 +127,16 @@ function torch(x,z,col){col=col||0xffa040;var g=new THREE.Group(); /* #9: Raum-F
 torch(-9,-4,0xffa040);torch(9,-4,0xffa040);
 torch(-9,-26,0xff6a28);torch(9,-26,0x38c8ff);
 torch(-9,-48,0xc9a0ff);torch(9,-48,0xc9a0ff);
+torch(-9,-70,0xffc040);torch(9,-70,0xffc040);torch(-9,-86,0xffc040);torch(9,-86,0xffc040); /* Raum 4: Waechter-Gold */
 /* #9: Schwellen-Streifen vor jedem Tor (Farb-Vorschau des nächsten Raums) */
 box(0,0.02,-14.9,19,0.05,0.5,M(0xff6a28,0xff6a28,0.7));
 box(-4.75,0.02,-38.9,9.5,0.05,0.5,M(0xff6a28,0xff6a28,0.7));box(4.75,0.02,-38.9,9.5,0.05,0.5,M(0x38c8ff,0x38c8ff,0.7));
 box(0,0.02,-60.9,19,0.05,0.5,M(0xc9a0ff,0xc9a0ff,0.7));
+box(0,0.02,-84.9,19,0.05,0.5,M(0xffc040,0xffc040,0.7));
 
 /* Tore (sinken bei Lösung) */
 function gate(z){var g=box(0,1.4,z,19,2.8,1.0,GOLD,true);g.userData.open=false;g.userData.z0=1.4;return g;}
-var gate1=gate(-16),gate2=gate(-40),gate3=gate(-62),gates=[gate1,gate2,gate3];
+var gate1=gate(-16),gate2=gate(-40),gate3=gate(-62),gate4=gate(-86),gates=[gate1,gate2,gate3,gate4];
 
 /* Raum 1: zwei Druckplatten (beide gleichzeitig!) */
 function plate(x,z,col){var p=box(x,0.06,z,2.4,0.12,2.4,M(col,col,0.25));p.userData.on=false;return p;}
@@ -153,10 +155,60 @@ var syncB=box(6,0.9,-52,1.4,1.8,1.4,M(0x50b8ff,0x104a7a,0.5));syncB.userData.t=0
 (function(o,col){var r=new THREE.Mesh(new THREE.RingGeometry(0.9,1.1,24),new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:0,side:THREE.DoubleSide}));r.rotation.x=-Math.PI/2;r.position.y=-0.85;o.add(r);o.userData.ring=r;})(syncA,0xff8a50);
 (function(o,col){var r=new THREE.Mesh(new THREE.RingGeometry(0.9,1.1,24),new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:0,side:THREE.DoubleSide}));r.rotation.x=-Math.PI/2;r.position.y=-0.85;o.add(r);o.userData.ring=r;})(syncB,0x50b8ff); /* ⚡ schrumpfender Gleichklang-Marker */
 /* Ziel-Podest */
-box(0,0.15,-66,6,0.3,4,M(0xffd166,0x8a6a20,0.4));
+box(0,0.15,-94,6,0.3,4,M(0xffd166,0x8a6a20,0.4));
+
+/* ---------- Raum 4 - Das Auge des Waechters ----------
+   Die Mission, die man NUR zu zweit schafft: ein Steinwaechter streicht mit
+   seinem Blickstrahl durch die Halle. Wer getroffen wird, fliegt an den
+   Raumanfang zurueck (kein Tod - Runbook: Parcours-Fehler nie doppelt bestrafen).
+   Auf den beiden Schattenplatten kann sich EINER opfern: der Waechter dreht sich
+   zu ihm, der Strahl wird kalt - und der andere hat freie Bahn zu seinem Altar.
+   Danach tauschen. Feuer- und Wasseraltar zusammen oeffnen das Herz. */
+var GX=0,GZ=-76,eyeA=0,_r4t=0;
+var guard=new THREE.Group();guard.position.set(GX,0,GZ);scene.add(guard);
+(function(){
+  var base=new THREE.Mesh(new THREE.CylinderGeometry(1.7,2.1,0.6,8),M(0x4a5250));base.position.y=0.30;guard.add(base);
+  var pil=new THREE.Mesh(new THREE.CylinderGeometry(0.92,0.98,3.2,8),M(0x6a6a60));pil.position.y=2.2;guard.add(pil);
+  for(var k=0;k<3;k++){var r=new THREE.Mesh(new THREE.TorusGeometry(1.02,0.10,6,14),M(0x8a7040,0x4a3410,0.4));
+    r.rotation.x=Math.PI/2;r.position.y=1.1+k*0.95;guard.add(r);}   /* gleiche Radien: Saeule, kein Tannenbaum */
+  var hd=new THREE.Mesh(new THREE.CylinderGeometry(1.25,1.05,1.15,8),M(0x7a7a6e,0x2a2a1e,0.2));hd.position.y=4.35;guard.add(hd);
+  var kr=new THREE.Mesh(new THREE.TorusGeometry(1.18,0.12,6,16),M(0x8a7040,0x4a3410,0.5));kr.rotation.x=Math.PI/2;kr.position.y=4.92;guard.add(kr);
+  walls.push({x:GX,z:GZ,w:1.1,d:1.1,m:pil});   /* Waechter ist solide - man laeuft nicht durch ihn hindurch */
+})();
+var pivot=new THREE.Group();pivot.position.y=4.35;guard.add(pivot);
+/* Auge sitzt IM Pivot -> es schaut immer den Strahl entlang */
+var eye=new THREE.Mesh(new THREE.SphereGeometry(0.46,16,12),M(0xffe0a0,0xff8a30,1.0));eye.position.set(0,0,0.86);pivot.add(eye);
+var lid=new THREE.Mesh(new THREE.TorusGeometry(0.52,0.11,6,16),M(0x5a5a50,0x1a1a12,0.2));lid.position.set(0,0,0.86);pivot.add(lid);
+var beam=new THREE.Mesh(new THREE.BoxGeometry(0.5,0.5,14),
+  new THREE.MeshBasicMaterial({color:0xff4a20,transparent:true,opacity:0.50,blending:THREE.AdditiveBlending,depthWrite:false}));
+beam.position.z=7.2;beam.visible=false;pivot.add(beam);   /* Strahl erwacht erst mit Tor 3 */
+/* Boden-Spur des Strahls: im flachen Blickwinkel sieht man sonst nicht, WO er steht */
+var beamFloor=new THREE.Mesh(new THREE.PlaneGeometry(1.5,14),
+  new THREE.MeshBasicMaterial({color:0xff4a20,transparent:true,opacity:0.46,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide}));
+beamFloor.rotation.x=-Math.PI/2;beamFloor.position.set(0,-3.82,7.2);beamFloor.visible=false;pivot.add(beamFloor);
+
+function splate(x,z){var p=box(x,0.06,z,2.8,0.12,2.8,M(0x9a6ae0,0x5a2ea0,0.35));
+  var r=new THREE.Mesh(new THREE.RingGeometry(1.5,1.72,24),new THREE.MeshBasicMaterial({color:0xc9a0ff,transparent:true,opacity:0.35,side:THREE.DoubleSide}));
+  r.rotation.x=-Math.PI/2;r.position.set(x,0.14,z);scene.add(r);p.userData.ring=r;return p;}
+var shadA=splate(-7.6,-68.5),shadB=splate(7.6,-68.5),shadC=splate(0,-80.5);
+var shads=[shadA,shadB,shadC];
+
+var altF=box(-7,0.85,-82,1.8,1.7,1.7,M(0x7a4a30,0x2a1000,0.3));altF.userData.lit=false;
+box(-7,1.78,-82,2.2,0.22,2.2,M(0x8a5a3c,0x2a1000,0.3));
+(function(){var b=new THREE.Mesh(new THREE.CylinderGeometry(0.72,0.5,0.5,12),M(0x5a3a24,0x1a0800,0.3));b.position.set(-7,2.1,-82);scene.add(b);})();
+var altFlame=new THREE.Mesh(new THREE.ConeGeometry(0.52,1.3,8),M(0xff9a40,0xff6a20,1.0));
+altFlame.position.set(-7,2.75,-82);altFlame.visible=false;scene.add(altFlame);
+var altW=box(7,0.85,-82,1.8,1.7,1.7,M(0x2a5a7a,0x0a2a4a,0.3));altW.userData.lit=false;
+box(7,1.78,-82,2.2,0.22,2.2,M(0x3a6a8a,0x0a2a4a,0.3));
+(function(){var b=new THREE.Mesh(new THREE.CylinderGeometry(0.80,0.58,0.5,12),M(0x1e4a68,0x08202e,0.3));b.position.set(7,2.1,-82);scene.add(b);})();
+var altWater=new THREE.Mesh(new THREE.CylinderGeometry(0.74,0.74,0.24,16),M(0x50c8ff,0x2090e0,0.9));
+altWater.position.set(7,2.28,-82);altWater.visible=false;scene.add(altWater);
+/* Herz des Tempels auf dem Zielpodest - leuchtet erst, wenn beide Altaere brennen */
+var herz=new THREE.Mesh(new THREE.OctahedronGeometry(0.85,0),M(0x7dffc8,0x1a6a4a,0.3));
+herz.position.set(0,1.7,-94);scene.add(herz);
 var gems=[];function gem(x,z){var m=new THREE.Mesh(new THREE.OctahedronGeometry(0.3,0),M(0x7dffc8,0x30c890,0.9));
   m.position.set(x,1.0,z);scene.add(m);gems.push({m:m,x:x,z:z,got:false,ph:Math.random()*6});}
-gem(-8,-6);gem(8,-14);gem(0,-22);gem(-8,-36);gem(8,-46);gem(0,-58);
+gem(-8,-6);gem(8,-14);gem(0,-22);gem(-8,-36);gem(8,-46);gem(0,-58);gem(0,-72); /* #7 liegt mitten im Blickstrahl */
 
 /* ---------- Die zwei Figuren ---------- */
 var _charMix=[]; /* Animations-Mixer der beiden Anime-Figuren */
@@ -193,12 +245,12 @@ function mkChar(main,accent,glb,isFire){var g=new THREE.Group();
   },undefined,function(){}); /* Fehler -> Platzhalter bleibt sichtbar */
   return g;}
 var chars=[
-  {g:mkChar(0xff7a40,0xff5020,"anime_warrior.glb",true),x:-2,z:2,name:"🔥 Ember",id:"ember"},
-  {g:mkChar(0x40a8ff,0x30e0ff,"anime_mage.glb",false),x:2,z:2,name:"💧 Aqua",id:"aqua"}
+  {g:mkChar(0xff7a40,0xff5020,"anime_warrior.glb",true),x:-2,z:2,name:"🔥 Ember",id:"ember",hitCd:0},
+  {g:mkChar(0x40a8ff,0x30e0ff,"anime_mage.glb",false),x:2,z:2,name:"💧 Aqua",id:"aqua",hitCd:0}
 ];
 var active=0,gemN=0,room=1,running=false,won=false,t0=0,taughtHalf=false,stuck1=0;
 var lookFx=0,lookFz=2; /* #16 geglätteter Kamera-Blickpunkt (Start = Figuren-Mitte) */
-var _pOnA=false,_pOnB=false; /* #29 Platten-Flankenerkennung */
+var _pOnA=false,_pOnB=false,_blWas=false; /* #29 Platten-Flankenerkennung · _blWas = Waechter war im letzten Frame geblendet */
 var shake=0; /* #54 Kamera-Punch */
 var celebrate=0,_cbSpk=0; /* #15 Sieg-Feier */
 var _pv=(window.THREE&&THREE.Vector3)?new THREE.Vector3():null; /* #48 Partner-Pfeil-Projektion (hoisted) */
@@ -246,8 +298,8 @@ function announce(t,c){var a=document.getElementById("announce");a.textContent=t
 function hint(t,ms){var h=document.getElementById("hint");h.textContent=t;h.style.opacity=1;clearTimeout(h._t);h._t=setTimeout(function(){h.style.opacity=0;},ms||3200);}
 function pulseHud(){var g=document.getElementById("gems");g.classList.remove("pulse");void g.offsetWidth;g.classList.add("pulse");} /* #52 HUD-Counter-Puls */
 function updHud(){document.getElementById("gems").textContent="💎 "+gemN;
-  var names=["🤝 Raum 1 · Die zwei Platten","🔥💧 Raum 2 · Feuer & Wasser","⚡ Raum 3 · Der Gleichklang","🏆 Geschafft!"];
-  document.getElementById("roomTag").textContent=names[Math.min(3,room-1)];
+  var names=["🤝 Raum 1 · Die zwei Platten","🔥💧 Raum 2 · Feuer & Wasser","⚡ Raum 3 · Der Gleichklang","👁️ Raum 4 · Das Auge des Wächters","🏆 Geschafft!"];
+  document.getElementById("roomTag").textContent=names[Math.min(4,room-1)];
   document.getElementById("coopTag").textContent=NETON?("🌐 Du bist "+chars[mySlot].name):(running&&!won?("🎮 "+chars[active].name+" aktiv · 🔁 wechseln"):"🧍 Solo: 🔁 wechselt die Figur");} /* P3: Aktiv-Figur bleibt sichtbar (updHud überschrieb den #17-Text bei jedem Pickup) */
 
 /* ---------- Eingabe ---------- */
@@ -280,6 +332,8 @@ function applyById(id){ /* wendet GENAU einen Effekt an (idempotent) — Empfän
   else if(id==="plant"){if(!plant.userData.grown){plant.userData.grown=true;plant.userData.tw=0.001;lever2.visible=true;announce("💧 Aqua lässt die Pflanze wachsen!","#60c8ff");sfx(520,0.25,"sine",0.06,780);noiseSfx("water");spark(plant.position.x,1.2,plant.position.z,0x50c8ff,18);}} /* #53 Wachstum wird getweent */
   else if(id==="lever"){if(!lever.userData.pulled){lever.userData.pulled=true;lever.rotation.x=0.7;announce("⚙️ Hebel 1 gezogen!","#ffd166");sfx(300,0.15,"square",0.06,180);}}
   else if(id==="lever2"){if(!lever2.userData.pulled){lever2.userData.pulled=true;lever2.visible=true;lever2.rotation.x=0.7;announce("⚙️ Hebel 2 gezogen!","#ffd166");sfx(340,0.15,"square",0.06,200);}}
+  else if(id==="altarF"){if(!altF.userData.lit){altF.userData.lit=true;altFlame.visible=true;altFlame.userData.tw=0.001;announce("🔥 Der Feueraltar brennt!","#ff9a60");sfx(200,0.35,"sawtooth",0.07,90);noiseSfx("fire");shake=0.3;spark(-7,2.75,-82,0xff7a30,20);}}
+  else if(id==="altarW"){if(!altW.userData.lit){altW.userData.lit=true;altWater.visible=true;altWater.userData.tw=0.001;announce("💧 Der Wasseraltar füllt sich!","#60c8ff");sfx(560,0.3,"sine",0.06,820);noiseSfx("water");spark(7,2.4,-82,0x50c8ff,20);}}
   else if(id==="syncA"){syncA.userData.t=1.2;syncA.material.emissiveIntensity=1;sfx(440,0.12,"triangle",0.06);}
   else if(id==="syncB"){syncB.userData.t=1.2;syncB.material.emissiveIntensity=1;sfx(520,0.12,"triangle",0.06);}}
 function applyAct(c){ /* lokaler Pfad: prüft near() und liefert die id des ausgeführten Effekts (oder null) */
@@ -287,6 +341,8 @@ function applyAct(c){ /* lokaler Pfad: prüft near() und liefert die id des ausg
   if(c.id==="aqua"&&!plant.userData.grown&&near(c,plantPot,2.4)){applyById("plant");return "plant";}
   if(!lever.userData.pulled&&near(c,lever,2.2)&&!vines.userData.alive){applyById("lever");return "lever";}
   if(!lever2.userData.pulled&&lever2.visible&&near(c,lever2,2.4)&&plant.userData.grown){applyById("lever2");return "lever2";}
+  if(c.id==="ember"&&!altF.userData.lit&&near(c,altF,2.5)){applyById("altarF");return "altarF";}
+  if(c.id==="aqua"&&!altW.userData.lit&&near(c,altW,2.5)){applyById("altarW");return "altarW";}
   if(near(c,syncA,2.0)){applyById("syncA");return "syncA";}
   if(near(c,syncB,2.0)){applyById("syncB");return "syncB";}
   return null;}
@@ -295,6 +351,8 @@ function whyNot(c){ /* #36 Kontext-Hinweis statt stummem Buzz, wenn nichts passi
   if(!plant.userData.grown&&near(c,plantPot,2.4))return c.id==="aqua"?null:"💧 Nur Aqua kann die Pflanze wachsen lassen — wechsle zu Aqua!";
   if(!lever.userData.pulled&&near(c,lever,2.6)&&vines.userData.alive)return "🌿 Erst die Ranken verbrennen, dann den Hebel ziehen.";
   if(lever2.visible&&!lever2.userData.pulled&&near(c,lever2,2.6)&&!plant.userData.grown)return "🌱 Erst die Pflanze wachsen lassen, dann diesen Hebel.";
+  if(!altF.userData.lit&&near(c,altF,2.8))return c.id==="ember"?null:"🔥 Nur Ember entzündet den Feueraltar — wechsle zu Ember!";
+  if(!altW.userData.lit&&near(c,altW,2.8))return c.id==="aqua"?null:"💧 Nur Aqua füllt den Wasseraltar — wechsle zu Aqua!";
   return null;}
 function doAct(fromNet,slot,what){
   if(fromNet&&what){applyById(what);return;} /* Partner-Aktion: identisches Ergebnis anwenden (Koop-Determinismus) */
@@ -389,7 +447,7 @@ document.getElementById("cancelCoop").onclick=function(){ /* #14 Suche abbrechen
 
 /* ---------- Spiel-Logik ---------- */
 function blocked(x,z){for(var i=0;i<walls.length;i++){var w=walls[i];if(Math.abs(x-w.x)<w.w+0.42&&Math.abs(z-w.z)<w.d+0.42)return true;}
-  return x<-9.6||x>9.6||z>5.8||z<-67;}
+  return x<-9.6||x>9.6||z>5.8||z<-95;}
 function tryMove(c,nx,nz){ /* achsengetrennt: an Wänden entlanggleiten statt kleben */
   if(!blocked(nx,c.z))c.x=nx;
   if(!blocked(c.x,nz))c.z=nz;}
@@ -397,9 +455,10 @@ function openGate(g,msg,fromNet){if(g.userData.open)return;g.userData.open=true;
   announce(msg||"🚪 Das Tor öffnet sich!","#7dffc8");sfx(140,0.5,"sawtooth",0.07,60);fanfare();shake=0.5; /* #54 */
   var wi=walls.findIndex(function(w){return w.m===g;});if(wi>=0)walls.splice(wi,1);
   if(!fromNet&&NETON&&net)try{net.send({t:"gate",i:gates.indexOf(g)});}catch(e){}} /* Tor auf BEIDEN Geräten öffnen */
-function winGame(fromNet){if(won)return;won=true;room=4;celebrate=0.001;updHud();stopAmbient();var _pa=document.getElementById("pArrow");if(_pa)_pa.style.display="none";
+function winGame(fromNet){if(won)return;won=true;room=5;celebrate=0.001;updHud();stopAmbient();var _pa=document.getElementById("pArrow");if(_pa)_pa.style.display="none";
   var secs=Math.round((performance.now()-t0)/1000);
-  var score=40+gemN*10+Math.max(0,70-secs); /* #61 Kristalle (max 60) ~gleich gewichtet wie Tempo (max 70) */
+  var score=40+gemN*10+Math.max(0,95-secs); /* #61 Kristalle (max 70) ~gleich gewichtet wie Tempo.
+     Zeitbudget von 70 auf 95 s erhoeht, als Raum 4 dazukam — sonst waeren alte Bestwerte unschlagbar. */
   var best=0;try{best=parseInt(localStorage.getItem("tempel2_best")||"0",10)||0;}catch(e){} /* #58 */
   var isRecord=score>best;if(isRecord){try{localStorage.setItem("tempel2_best",""+score);}catch(e){}}
   announce("🏆 GEMEINSAM GESCHAFFT!","#ffd166");
@@ -408,7 +467,7 @@ function winGame(fromNet){if(won)return;won=true;room=4;celebrate=0.001;updHud()
   if(STATION)stationPost({t:"stationDone",score:score});
   setTimeout(function(){var ov=document.getElementById("ov");ov.style.display="flex";
     ov.querySelector("h1").textContent="🏆 TEMPEL GEMEISTERT!";
-    ov.querySelector("p").innerHTML="💎 "+gemN+"/6 Kristalle · ⏱️ "+secs+"s · <b>Score "+score+"</b>"+(isRecord?'<br><span style="color:#ffd166">🥇 Neuer Rekord!</span>':(best?'<br><span style="color:#8adfc0">Bestwert: '+best+'</span>':''));
+    ov.querySelector("p").innerHTML="💎 "+gemN+"/7 Kristalle · ⏱️ "+secs+"s · <b>Score "+score+"</b>"+(isRecord?'<br><span style="color:#ffd166">🥇 Neuer Rekord!</span>':(best?'<br><span style="color:#8adfc0">Bestwert: '+best+'</span>':''));
     var cb=document.getElementById("coopBtn");if(cb)cb.style.display="none";
     var sb2=document.getElementById("startBtn");sb2.textContent=STATION?"← Zurück zur Wildnis":"Nochmal ▶";
     sb2.onclick=function(){if(STATION)stationPost("mini-back");else location.reload();};},2200);}
@@ -483,11 +542,59 @@ function frame(now){_rafId=requestAnimationFrame(frame);
     if(syncA.userData.t>0){syncA.userData.t-=dt;var sa=Math.max(0,syncA.userData.t/1.2);syncA.material.emissiveIntensity=0.5+sa;syncA.userData.ring.material.opacity=sa>0?0.8:0;syncA.userData.ring.scale.setScalar(sa||0.001);if(syncA.userData.t<=0){syncA.material.emissiveIntensity=0.5;if(!gate3.userData.open)sfx(300,0.25,"sawtooth",0.03,90);}}
     if(syncB.userData.t>0){syncB.userData.t-=dt;var sb=Math.max(0,syncB.userData.t/1.2);syncB.material.emissiveIntensity=0.5+sb;syncB.userData.ring.material.opacity=sb>0?0.8:0;syncB.userData.ring.scale.setScalar(sb||0.001);if(syncB.userData.t<=0){syncB.material.emissiveIntensity=0.5;if(!gate3.userData.open)sfx(300,0.25,"sawtooth",0.03,90);}}
     if(((syncA.userData.t>0)!==(syncB.userData.t>0))&&!gate3.userData.open&&!won){var _pr=performance.now();if(_pr-(window._syncPromptT||0)>1500){window._syncPromptT=_pr;hint(NETON?"⚡ JETZT — der andere auf den zweiten Schalter!":"⚡ Schnell die andere Figur (🔁) auf den zweiten Schalter!",1400);}}
-    if(syncA.userData.t>0&&syncB.userData.t>0&&!gate3.userData.open){openGate(gate3,"⚡ GLEICHKLANG! Das letzte Tor fällt!");}
+    if(syncA.userData.t>0&&syncB.userData.t>0&&!gate3.userData.open){openGate(gate3,"⚡ GLEICHKLANG! Tor 3 fällt!");room=4;updHud();
+      hint(NETON?"👁️ Der Wächter erwacht! Einer auf die Schattenplatte — der andere rennt vorbei. Dahinter liegt die dritte Platte: dann tauschen!":"👁️ Wächter! Eine Figur auf die Schattenplatte, 🔁, mit der anderen vorbeirennen — hinter dem Wächter liegt die dritte Platte zum Tauschen.",6000);}
+    /* ---------- Raum 4: Das Auge des Waechters ---------- */
+    for(var _hc=0;_hc<2;_hc++){if(chars[_hc].hitCd>0)chars[_hc].hitCd-=dt;}   /* Cooldown IMMER abbauen, auch waehrend geblendet */
+    if(gate3.userData.open&&!won){
+      _r4t+=dt;
+      /* Wer steht auf einer Schattenplatte? Der Waechter dreht sich zu ihm und wird kalt. */
+      var bl=null;
+      for(var _sp=0;_sp<2&&!bl;_sp++){var _sc=chars[_sp];
+        for(var _sq=0;_sq<shads.length;_sq++)if(near(_sc,shads[_sq],1.7)){bl=shads[_sq];break;}}
+      for(var _sr=0;_sr<shads.length;_sr++){var _s2=shads[_sr];
+        _s2.material.emissiveIntensity=(bl===_s2)?1.0:0.35;
+        _s2.userData.ring.material.opacity=(bl===_s2)?0.9:0.3;}
+      /* Blickrichtung: geblendet -> auf die Platte gerichtet, sonst gleichmaessiger Suchschwenk */
+      var tgt=bl?Math.atan2(bl.position.x-GX,bl.position.z-GZ):Math.sin(_r4t*0.80)*1.16;
+      var dA=tgt-eyeA;while(dA>Math.PI)dA-=2*Math.PI;while(dA<-Math.PI)dA+=2*Math.PI;
+      eyeA+=dA*Math.min(1,dt*(bl?5.0:9.0));
+      pivot.rotation.y=eyeA;beam.visible=true;beamFloor.visible=true;
+      var _bc=bl?0x60a0ff:0xff4a20;
+      beam.material.color.setHex(_bc);beamFloor.material.color.setHex(_bc);
+      beam.material.opacity=bl?0.14:(0.46+Math.sin(t*7)*0.08);
+      beamFloor.material.opacity=bl?0.12:(0.42+Math.sin(t*7)*0.07);
+      eye.material.emissive.setHex(bl?0x2a60c0:0xff8a30);
+      eye.material.color.setHex(bl?0x9ac0ff:0xffe0a0);
+      if(bl&&!_blWas){sfx(240,0.3,"sine",0.05,140);hint("😵 Der Wächter ist abgelenkt — JETZT laufen!",2000);}
+      _blWas=!!bl;
+      /* Treffer: nur die EIGENE Figur pruefen (im Koop rechnet jeder Client seine selbst,
+         sonst ueberschreibt die naechste pos-Nachricht den Rueckwurf sofort wieder). */
+      if(!bl){
+        var _list=NETON?[chars[mySlot]]:[chars[0],chars[1]];
+        for(var _hi=0;_hi<_list.length;_hi++){var _h=_list[_hi];
+          if(_h.hitCd>0)continue;
+          if(_h.z>-70.0||_h.z<-88.0)continue;             /* Eingang + Schattenplatten sind sicher */
+          var _dx=_h.x-GX,_dz=_h.z-GZ,_dl=Math.hypot(_dx,_dz);
+          if(_dl<1.7||_dl>13.5)continue;                  /* im Sockel-Schatten und weit draussen ist man sicher */
+          var _da=Math.atan2(_dx,_dz)-eyeA;while(_da>Math.PI)_da-=2*Math.PI;while(_da<-Math.PI)_da+=2*Math.PI;
+          if(Math.abs(Math.sin(_da))*_dl<0.85){           /* Abstand zur Strahlachse, nicht Winkel — sonst trifft er fern kilometerbreit */
+            _h.hitCd=1.5;_h.x=(_h===chars[0])?-3.2:3.2;_h.z=-66.2;
+            if(NETON&&net&&_h===chars[mySlot])try{net.sendFast({t:"pos",x:+_h.x.toFixed(2),z:+_h.z.toFixed(2)});}catch(e){}
+            shake=0.55;sfx(120,0.42,"sawtooth",0.07,50);spark(_h.x,1.3,_h.z,0xff5a30,16);
+            hint("👁️ Erwischt! Einer muss auf eine Schattenplatte — dann schaut der Wächter weg.",3400);}}
+      }
+      if(altF.userData.lit&&altW.userData.lit&&!gate4.userData.open)
+        openGate(gate4,"🔥💧 Beide Altäre lodern — das Herz des Tempels öffnet sich!");
+    }
+    if(altFlame.visible){altFlame.scale.set(1+Math.sin(t*11)*0.14,1+Math.sin(t*9)*0.2,1+Math.cos(t*11)*0.14);altFlame.rotation.y+=dt*2.6;}
+    if(altWater.visible)altWater.position.y=2.28+Math.sin(t*2.2)*0.05;
+    if(gate4.userData.open){herz.rotation.y+=dt*1.6;herz.position.y=1.7+Math.sin(t*2)*0.14;
+      herz.material.emissiveIntensity=0.6+Math.sin(t*4)*0.3;}
     /* Tore absenken (#55 Index-Loop) */
     for(var _gt=0;_gt<gates.length;_gt++){var _g=gates[_gt];if(_g.userData.open&&_g.position.y>-1.6)_g.position.y-=dt*2.2;}
     /* Sieg: beide auf dem Podest */
-    if(gate3.userData.open&&chars[0].z<-63.5&&chars[1].z<-63.5)winGame(false);
+    if(gate4.userData.open&&chars[0].z<-91.5&&chars[1].z<-91.5)winGame(false);
     /* Kamera folgt Mittelpunkt · #39 zoomt bei getrennten Figuren aus, damit beide im Bild bleiben */
     var mid=(chars[0].x+chars[1].x)/2,midz=(chars[0].z+chars[1].z)/2;
     var spread=Math.hypot(chars[0].x-chars[1].x,chars[0].z-chars[1].z);
@@ -519,7 +626,11 @@ function frame(now){_rafId=requestAnimationFrame(frame);
 _rafId=requestAnimationFrame(frame);
 addEventListener("pagehide",function(){try{cancelAnimationFrame(_rafId);}catch(e){}try{stopAmbient();}catch(e){}try{if(net)net.close();}catch(e){}try{if(AC&&AC.close)AC.close();}catch(e){}try{renderer.dispose();}catch(e){}}); /* sauberes Teardown */
 updHud();
-window.__zs={state:function(){return {room:room,gems:gemN,won:won,a:{x:chars[0].x,z:chars[0].z},b:{x:chars[1].x,z:chars[1].z}};},
+window.__zs={state:function(){return {room:room,gems:gemN,won:won,eye:+eyeA.toFixed(2),blind:_blWas,
+    altF:altF.userData.lit,altW:altW.userData.lit,g4:gate4.userData.open,
+    a:{x:chars[0].x,z:chars[0].z},b:{x:chars[1].x,z:chars[1].z}};},
+  r4:function(){gates.slice(0,3).forEach(function(g){openGate(g,null,true);});room=4;updHud();
+    chars[0].x=-3;chars[0].z=-66;chars[1].x=3;chars[1].z=-66;},   /* Testsprung in Raum 4 */
   tp:function(slot,x,z){chars[slot].x=x;chars[slot].z=z;},act:function(slot){doAct(true,slot);},swap:doSwap};
 })();
 </script>
