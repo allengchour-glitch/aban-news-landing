@@ -81,6 +81,28 @@
                     0.85
                   ]
                 }
+              ],
+              "fallback": [
+                [
+                  0.5,
+                  0.95
+                ],
+                [
+                  0.22,
+                  0.93
+                ],
+                [
+                  0.35,
+                  0.16
+                ],
+                [
+                  0.12,
+                  0.7
+                ],
+                [
+                  0.86,
+                  0.44
+                ]
               ]
             }
           },
@@ -183,6 +205,28 @@
                     0.85
                   ]
                 }
+              ],
+              "fallback": [
+                [
+                  0.5,
+                  0.95
+                ],
+                [
+                  0.22,
+                  0.93
+                ],
+                [
+                  0.35,
+                  0.16
+                ],
+                [
+                  0.12,
+                  0.7
+                ],
+                [
+                  0.86,
+                  0.44
+                ]
               ]
             }
           },
@@ -218,6 +262,18 @@
     },
     {
       "tap": [
+        [
+          0.5,
+          0.95
+        ],
+        [
+          0.22,
+          0.93
+        ],
+        [
+          0.78,
+          0.93
+        ],
         [
           0.35,
           0.16
@@ -954,6 +1010,28 @@
                         0.85
                       ]
                     }
+                  ],
+                  "fallback": [
+                    [
+                      0.5,
+                      0.95
+                    ],
+                    [
+                      0.22,
+                      0.93
+                    ],
+                    [
+                      0.35,
+                      0.16
+                    ],
+                    [
+                      0.12,
+                      0.7
+                    ],
+                    [
+                      0.86,
+                      0.44
+                    ]
                   ]
                 }
               },
@@ -1131,6 +1209,28 @@
                         0.85
                       ]
                     }
+                  ],
+                  "fallback": [
+                    [
+                      0.5,
+                      0.95
+                    ],
+                    [
+                      0.22,
+                      0.93
+                    ],
+                    [
+                      0.35,
+                      0.16
+                    ],
+                    [
+                      0.12,
+                      0.7
+                    ],
+                    [
+                      0.86,
+                      0.44
+                    ]
                   ]
                 }
               },
@@ -1359,6 +1459,28 @@
                         0.85
                       ]
                     }
+                  ],
+                  "fallback": [
+                    [
+                      0.5,
+                      0.95
+                    ],
+                    [
+                      0.22,
+                      0.93
+                    ],
+                    [
+                      0.35,
+                      0.16
+                    ],
+                    [
+                      0.12,
+                      0.7
+                    ],
+                    [
+                      0.86,
+                      0.44
+                    ]
                   ]
                 }
               },
@@ -1540,6 +1662,28 @@
                         0.85
                       ]
                     }
+                  ],
+                  "fallback": [
+                    [
+                      0.5,
+                      0.95
+                    ],
+                    [
+                      0.22,
+                      0.93
+                    ],
+                    [
+                      0.35,
+                      0.16
+                    ],
+                    [
+                      0.12,
+                      0.7
+                    ],
+                    [
+                      0.86,
+                      0.44
+                    ]
                   ]
                 }
               },
@@ -1727,6 +1871,28 @@
                         0.85
                       ]
                     }
+                  ],
+                  "fallback": [
+                    [
+                      0.5,
+                      0.95
+                    ],
+                    [
+                      0.22,
+                      0.93
+                    ],
+                    [
+                      0.35,
+                      0.16
+                    ],
+                    [
+                      0.12,
+                      0.7
+                    ],
+                    [
+                      0.86,
+                      0.44
+                    ]
                   ]
                 }
               },
@@ -1898,6 +2064,28 @@
                         0.85
                       ]
                     }
+                  ],
+                  "fallback": [
+                    [
+                      0.5,
+                      0.95
+                    ],
+                    [
+                      0.22,
+                      0.93
+                    ],
+                    [
+                      0.35,
+                      0.16
+                    ],
+                    [
+                      0.12,
+                      0.7
+                    ],
+                    [
+                      0.86,
+                      0.44
+                    ]
                   ]
                 }
               },
@@ -1975,6 +2163,28 @@
                         0.85
                       ]
                     }
+                  ],
+                  "fallback": [
+                    [
+                      0.5,
+                      0.95
+                    ],
+                    [
+                      0.22,
+                      0.93
+                    ],
+                    [
+                      0.35,
+                      0.16
+                    ],
+                    [
+                      0.12,
+                      0.7
+                    ],
+                    [
+                      0.86,
+                      0.44
+                    ]
                   ]
                 }
               },
@@ -2133,6 +2343,28 @@
                         0.85
                       ]
                     }
+                  ],
+                  "fallback": [
+                    [
+                      0.5,
+                      0.95
+                    ],
+                    [
+                      0.22,
+                      0.93
+                    ],
+                    [
+                      0.35,
+                      0.16
+                    ],
+                    [
+                      0.12,
+                      0.7
+                    ],
+                    [
+                      0.86,
+                      0.44
+                    ]
                   ]
                 }
               },
@@ -2210,6 +2442,28 @@
                         0.85
                       ]
                     }
+                  ],
+                  "fallback": [
+                    [
+                      0.5,
+                      0.95
+                    ],
+                    [
+                      0.22,
+                      0.93
+                    ],
+                    [
+                      0.35,
+                      0.16
+                    ],
+                    [
+                      0.12,
+                      0.7
+                    ],
+                    [
+                      0.86,
+                      0.44
+                    ]
                   ]
                 }
               },
@@ -2370,6 +2624,28 @@
                               0.85
                             ]
                           }
+                        ],
+                        "fallback": [
+                          [
+                            0.5,
+                            0.95
+                          ],
+                          [
+                            0.22,
+                            0.93
+                          ],
+                          [
+                            0.35,
+                            0.16
+                          ],
+                          [
+                            0.12,
+                            0.7
+                          ],
+                          [
+                            0.86,
+                            0.44
+                          ]
                         ]
                       }
                     },
@@ -2643,6 +2919,28 @@
                         0.85
                       ]
                     }
+                  ],
+                  "fallback": [
+                    [
+                      0.5,
+                      0.95
+                    ],
+                    [
+                      0.22,
+                      0.93
+                    ],
+                    [
+                      0.35,
+                      0.16
+                    ],
+                    [
+                      0.12,
+                      0.7
+                    ],
+                    [
+                      0.86,
+                      0.44
+                    ]
                   ]
                 }
               },
@@ -2829,6 +3127,28 @@
                         0.85
                       ]
                     }
+                  ],
+                  "fallback": [
+                    [
+                      0.5,
+                      0.95
+                    ],
+                    [
+                      0.22,
+                      0.93
+                    ],
+                    [
+                      0.35,
+                      0.16
+                    ],
+                    [
+                      0.12,
+                      0.7
+                    ],
+                    [
+                      0.86,
+                      0.44
+                    ]
                   ]
                 }
               },
@@ -2981,6 +3301,28 @@
                         0.85
                       ]
                     }
+                  ],
+                  "fallback": [
+                    [
+                      0.5,
+                      0.95
+                    ],
+                    [
+                      0.22,
+                      0.93
+                    ],
+                    [
+                      0.35,
+                      0.16
+                    ],
+                    [
+                      0.12,
+                      0.7
+                    ],
+                    [
+                      0.86,
+                      0.44
+                    ]
                   ]
                 }
               },
@@ -3021,7 +3363,7 @@
     },
     {
       "name": "basis-rundgang",
-      "every": 2700,
+      "every": 1800,
       "at_start": true,
       "priority": 118,
       "_zweck": "Der Bot sieht immer nur den aktuellen Bildschirmausschnitt. Der Rundgang schiebt die Stadtansicht - gedrueckt halten und ziehen, ein kurzer Wisch bewegt die Kamera nicht - und erntet nach jedem Schritt die sichtbar gewordenen Ertrags-Blasen ab.",
@@ -3056,6 +3398,28 @@
             "after": [
               2.5,
               3.5
+            ],
+            "fallback": [
+              [
+                0.5,
+                0.95
+              ],
+              [
+                0.22,
+                0.93
+              ],
+              [
+                0.35,
+                0.16
+              ],
+              [
+                0.12,
+                0.7
+              ],
+              [
+                0.86,
+                0.44
+              ]
             ]
           }
         },
@@ -3184,6 +3548,52 @@
         },
         {
           "drag": [
+            0.25,
+            0.3,
+            0.75,
+            0.6,
+            1300
+          ]
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        },
+        {
+          "log": "Rundgang: nach links oben"
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
+            "optional": true,
+            "threshold": 0.9
+          }
+        },
+        {
+          "drag": [
             0.8,
             0.45,
             0.2,
@@ -3245,6 +3655,52 @@
         },
         {
           "log": "Rundgang: weiter nach rechts"
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
+            "optional": true,
+            "threshold": 0.9
+          }
+        },
+        {
+          "drag": [
+            0.75,
+            0.6,
+            0.25,
+            0.3,
+            1300
+          ]
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        },
+        {
+          "log": "Rundgang: nach rechts unten"
         },
         {
           "tap_alle": {
@@ -3405,6 +3861,28 @@
             "after": [
               2.5,
               3.5
+            ],
+            "fallback": [
+              [
+                0.5,
+                0.95
+              ],
+              [
+                0.22,
+                0.93
+              ],
+              [
+                0.35,
+                0.16
+              ],
+              [
+                0.12,
+                0.7
+              ],
+              [
+                0.86,
+                0.44
+              ]
             ]
           }
         },
@@ -3641,6 +4119,28 @@
                         0.85
                       ]
                     }
+                  ],
+                  "fallback": [
+                    [
+                      0.5,
+                      0.95
+                    ],
+                    [
+                      0.22,
+                      0.93
+                    ],
+                    [
+                      0.35,
+                      0.16
+                    ],
+                    [
+                      0.12,
+                      0.7
+                    ],
+                    [
+                      0.86,
+                      0.44
+                    ]
                   ]
                 }
               },
@@ -3763,6 +4263,28 @@
                         0.85
                       ]
                     }
+                  ],
+                  "fallback": [
+                    [
+                      0.5,
+                      0.95
+                    ],
+                    [
+                      0.22,
+                      0.93
+                    ],
+                    [
+                      0.35,
+                      0.16
+                    ],
+                    [
+                      0.12,
+                      0.7
+                    ],
+                    [
+                      0.86,
+                      0.44
+                    ]
                   ]
                 }
               },
@@ -3928,6 +4450,28 @@
                         0.85
                       ]
                     }
+                  ],
+                  "fallback": [
+                    [
+                      0.5,
+                      0.95
+                    ],
+                    [
+                      0.22,
+                      0.93
+                    ],
+                    [
+                      0.35,
+                      0.16
+                    ],
+                    [
+                      0.12,
+                      0.7
+                    ],
+                    [
+                      0.86,
+                      0.44
+                    ]
                   ]
                 }
               },
@@ -4103,6 +4647,28 @@
                         0.85
                       ]
                     }
+                  ],
+                  "fallback": [
+                    [
+                      0.5,
+                      0.95
+                    ],
+                    [
+                      0.22,
+                      0.93
+                    ],
+                    [
+                      0.35,
+                      0.16
+                    ],
+                    [
+                      0.12,
+                      0.7
+                    ],
+                    [
+                      0.86,
+                      0.44
+                    ]
                   ]
                 }
               },
@@ -4373,6 +4939,28 @@
                         0.85
                       ]
                     }
+                  ],
+                  "fallback": [
+                    [
+                      0.5,
+                      0.95
+                    ],
+                    [
+                      0.22,
+                      0.93
+                    ],
+                    [
+                      0.35,
+                      0.16
+                    ],
+                    [
+                      0.12,
+                      0.7
+                    ],
+                    [
+                      0.86,
+                      0.44
+                    ]
                   ]
                 }
               },
@@ -4448,6 +5036,28 @@
             "after": [
               3.0,
               4.5
+            ],
+            "fallback": [
+              [
+                0.5,
+                0.95
+              ],
+              [
+                0.22,
+                0.93
+              ],
+              [
+                0.35,
+                0.16
+              ],
+              [
+                0.12,
+                0.7
+              ],
+              [
+                0.86,
+                0.44
+              ]
             ]
           }
         },
@@ -4582,6 +5192,28 @@
             "after": [
               3.0,
               4.5
+            ],
+            "fallback": [
+              [
+                0.5,
+                0.95
+              ],
+              [
+                0.22,
+                0.93
+              ],
+              [
+                0.35,
+                0.16
+              ],
+              [
+                0.12,
+                0.7
+              ],
+              [
+                0.86,
+                0.44
+              ]
             ]
           }
         },
@@ -4727,6 +5359,28 @@
             "after": [
               2.5,
               3.5
+            ],
+            "fallback": [
+              [
+                0.5,
+                0.95
+              ],
+              [
+                0.22,
+                0.93
+              ],
+              [
+                0.35,
+                0.16
+              ],
+              [
+                0.12,
+                0.7
+              ],
+              [
+                0.86,
+                0.44
+              ]
             ]
           }
         }
@@ -4818,6 +5472,28 @@
                         0.85
                       ]
                     }
+                  ],
+                  "fallback": [
+                    [
+                      0.5,
+                      0.95
+                    ],
+                    [
+                      0.22,
+                      0.93
+                    ],
+                    [
+                      0.35,
+                      0.16
+                    ],
+                    [
+                      0.12,
+                      0.7
+                    ],
+                    [
+                      0.86,
+                      0.44
+                    ]
                   ]
                 }
               },
@@ -4889,10 +5565,549 @@
           "selbst_aktualisieren": {}
         }
       ]
+    },
+    {
+      "name": "umgebung-abfahren",
+      "every": 3600,
+      "priority": 112,
+      "_zweck": "Auch ausserhalb der Mauern liegt etwas: Kisten, Wagen, freie Felder. Der Bot wechselt in die Weltansicht, faehrt sie in acht Richtungen ab und raeumt ab, was er unterwegs erkennt. Danach zurueck in die Stadt.",
+      "do": [
+        {
+          "log": "Umgebung abfahren - Weltansicht"
+        },
+        {
+          "tap_first": {
+            "of": [
+              {
+                "template": "nav/welt.png",
+                "threshold": 0.86,
+                "region": [
+                  0.7,
+                  0.85,
+                  1.0,
+                  1.0
+                ]
+              },
+              {
+                "template": "nav/gebiet.png",
+                "threshold": 0.86
+              }
+            ],
+            "after": [
+              2.5,
+              3.5
+            ],
+            "fallback": [
+              [
+                0.5,
+                0.95
+              ],
+              [
+                0.22,
+                0.93
+              ],
+              [
+                0.35,
+                0.16
+              ],
+              [
+                0.12,
+                0.7
+              ],
+              [
+                0.86,
+                0.44
+              ]
+            ]
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
+            "optional": true,
+            "threshold": 0.9
+          }
+        },
+        {
+          "drag": [
+            0.2,
+            0.45,
+            0.8,
+            0.45,
+            1300
+          ]
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        },
+        {
+          "log": "Umgebung: nach links"
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
+            "optional": true,
+            "threshold": 0.9
+          }
+        },
+        {
+          "drag": [
+            0.2,
+            0.45,
+            0.8,
+            0.45,
+            1300
+          ]
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        },
+        {
+          "log": "Umgebung: weiter nach links"
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
+            "optional": true,
+            "threshold": 0.9
+          }
+        },
+        {
+          "drag": [
+            0.25,
+            0.3,
+            0.75,
+            0.6,
+            1300
+          ]
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        },
+        {
+          "log": "Umgebung: nach links oben"
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
+            "optional": true,
+            "threshold": 0.9
+          }
+        },
+        {
+          "drag": [
+            0.8,
+            0.45,
+            0.2,
+            0.45,
+            1300
+          ]
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        },
+        {
+          "log": "Umgebung: nach rechts"
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
+            "optional": true,
+            "threshold": 0.9
+          }
+        },
+        {
+          "drag": [
+            0.8,
+            0.45,
+            0.2,
+            0.45,
+            1300
+          ]
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        },
+        {
+          "log": "Umgebung: weiter nach rechts"
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
+            "optional": true,
+            "threshold": 0.9
+          }
+        },
+        {
+          "drag": [
+            0.75,
+            0.6,
+            0.25,
+            0.3,
+            1300
+          ]
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        },
+        {
+          "log": "Umgebung: nach rechts unten"
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
+            "optional": true,
+            "threshold": 0.9
+          }
+        },
+        {
+          "drag": [
+            0.5,
+            0.3,
+            0.5,
+            0.65,
+            1300
+          ]
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        },
+        {
+          "log": "Umgebung: nach oben"
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
+            "optional": true,
+            "threshold": 0.9
+          }
+        },
+        {
+          "drag": [
+            0.5,
+            0.65,
+            0.5,
+            0.3,
+            1300
+          ]
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
+          ]
+        },
+        {
+          "log": "Umgebung: nach unten"
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_weizen.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_holz.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "hud/bubble_kraut.png",
+            "optional": true,
+            "threshold": 0.86
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "gelernt/blasen/*.png",
+            "optional": true,
+            "threshold": 0.9
+          }
+        },
+        {
+          "log": "Zurueck in die Stadt"
+        },
+        {
+          "tap_first": {
+            "of": [
+              {
+                "template": "nav/startseite.png",
+                "threshold": 0.86,
+                "region": [
+                  0.7,
+                  0.85,
+                  1.0,
+                  1.0
+                ]
+              },
+              {
+                "template": "nav/burg.png",
+                "threshold": 0.86,
+                "region": [
+                  0.0,
+                  0.4,
+                  0.35,
+                  0.85
+                ]
+              }
+            ],
+            "after": [
+              2.0,
+              3.0
+            ],
+            "fallback": [
+              [
+                0.5,
+                0.95
+              ],
+              [
+                0.22,
+                0.93
+              ],
+              [
+                0.35,
+                0.16
+              ],
+              [
+                0.12,
+                0.7
+              ],
+              [
+                0.86,
+                0.44
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "pluendern-fremdserver",
+      "every": 1800,
+      "priority": 108,
+      "enabled": false,
+      "wochentage": [
+        4,
+        5,
+        6
+      ],
+      "_zweck": "Kisten und Wagen auf FREMDEN Servern pluendern - siehe _pluendern. Auf dem eigenen Server bewusst nicht. Bleibt aus, bis die Vorlagen da sind und der Server-Wechsel bestaetigt ist.",
+      "do": [
+        {
+          "log": "Pluendern auf fremdem Server - nur Kisten und Wagen"
+        },
+        {
+          "tap_alle": {
+            "template": "kampf/kiste_fremd.png",
+            "optional": true,
+            "threshold": 0.88
+          }
+        },
+        {
+          "tap_alle": {
+            "template": "kampf/wagen_fremd.png",
+            "optional": true,
+            "threshold": 0.88
+          }
+        }
+      ]
     }
   ],
   "_diamanten": "DIAMANTEN-REGEL (User 2026-07-31): 'bis 50 pro Klick' ist erlaubt. ABER der Bot kann Zahlen auf Knoepfen NICHT lesen - fuer ihn sieht '2 Spenden' aus wie '50 Spenden' oder '500 Spenden'. Deshalb tippt er von sich aus nur Knoepfe an, die REINE RESSOURCEN kosten (blauer Spenden-Knopf, Kraeuter). Der Diamanten-Knopf steht als eigene Aufgabe bereit, ist aber AUS - wer ihn einschaltet, akzeptiert, dass die Kosten mit jeder Spende steigen und der Bot das nicht bemerkt. Ebenso bleibt 'Sofort' beim Gebaeude-Upgrade (vierstellig) unangetastet. Echtgeld ist ohnehin komplett tabu, siehe tabu_regionen.",
-  "_leerer_punkt": "Tippt man NEBEN ein Gebaeude, verschwindet dessen Knopf-Menue (Details/Upgrade/...). Das ist der saubere Weg - die Zurueck-Taste wechselt stattdessen die ganze Ansicht. Weil je nach Kamera-Stand an jeder festen Stelle ein Gebaeude liegen kann, stehen hier mehrere Punkte; der Bot waehlt zufaellig einen. Trifft er doch ein Gebaeude, geht beim naechsten Versuch ein anderer Punkt. Das Spiel sagt es selbst: 'Tippe auf leeren Bereich zum Schliessen'. Die Bildmitte taugt dafuer nicht - dort steht meist ein Gebaeude.",
+  "_leerer_punkt": "Tippt man NEBEN ein Gebaeude, verschwindet dessen Knopf-Menue (Details/Upgrade/...). Das ist der saubere Weg - die Zurueck-Taste wechselt stattdessen die ganze Ansicht. Weil je nach Kamera-Stand an jeder festen Stelle ein Gebaeude liegen kann, stehen hier mehrere Punkte; der Bot waehlt zufaellig einen. Trifft er doch ein Gebaeude, geht beim naechsten Versuch ein anderer Punkt. Das Spiel sagt es selbst: 'Tippe auf leeren Bereich zum Schliessen'. Die Bildmitte taugt dafuer nicht - dort steht meist ein Gebaeude. Bei Vollbild-Popups (Event, Tagesquests) liegt die freie Flaeche UNTEN, direkt beim Hinweis des Spiels - dort steht dann keine Navigationsleiste im Weg. Diese Punkte stehen deshalb nur im Ausweg, nicht in der Liste zum Schliessen von Gebaeude-Menues.",
   "leere_punkte": [
     [
       0.35,
@@ -4928,5 +6143,6 @@
   "_ui_skala": "Zusaetzlicher Groessen-Faktor fuer alle Vorlagen. Das Spiel bemisst seine Oberflaeche an der Bildhoehe, nicht an der Breite - in einem flacheren Fenster ist bei gleicher Breite alles kleiner, und die Vorlagen treffen nur noch mit 0,3 bis 0,65. Die Aufgabe 'kalibrieren' probiert bekannte Vorlagen in verschiedenen Groessen durch und traegt den passenden Faktor hier ein. Von Hand aendern muss man das nicht.",
   "regel_wirkungslos_grenze": 3,
   "_keine_zurueck_taste": "Die Zurueck-Taste des Systems darf NIE blind gedrueckt werden: in der Stadtansicht oeffnet sie 'Spiel beenden?' - ein Tipp daneben und das Spiel ist zu. Am 31.07. ist genau das passiert. Stattdessen der Zurueck-Pfeil im Spiel, sonst die Startseite, sonst ein Tipp auf freie Flaeche.",
-  "_regel_wirkungslos": "Greift eine Regel dreimal hintereinander, ohne dass sich die Ansicht aendert, legt der Bot sie fuer eine Weile still. Am 31.07. griff 'dialog-schliessen' auf 'Taegliche Aufgaben' elfmal mit Score 1.00 und bewirkte nichts - die Vorlage passte auf etwas, das kein Schliesskreuz war."
+  "_regel_wirkungslos": "Greift eine Regel dreimal hintereinander, ohne dass sich die Ansicht aendert, legt der Bot sie fuer eine Weile still. Am 31.07. griff 'dialog-schliessen' auf 'Taegliche Aufgaben' elfmal mit Score 1.00 und bewirkte nichts - die Vorlage passte auf etwas, das kein Schliesskreuz war.",
+  "_pluendern": "Kisten und Wagen werden NUR auf fremden Servern gepluendert - auf dem eigenen Server macht man sich damit Feinde in der eigenen Allianz. Der Bot kann am Bild allein nicht sicher erkennen, auf welchem Server er gerade unterwegs ist. Darum ist die Aufgabe 'pluendern-fremdserver' AUS und an das Wochenend-Event gebunden, zu dem die fremden Spieler kommen. Sie erst einschalten, wenn die Vorlagen kampf/kiste_fremd und kampf/wagen_fremd geschnitten sind und der Server-Wechsel wirklich stattgefunden hat."
 }

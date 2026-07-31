@@ -1198,6 +1198,81 @@ class TestLernFilter(unittest.TestCase):
         self.assertTrue(_veraenderte_bereiche(a, b, 60, 220))
 
 
+class TestNachmessenVerbrauch(unittest.TestCase):
+    """Fehlversuche auf dem falschen Bildschirm dürfen nicht zählen.
+
+    Der Bot misst eine Vorlage höchstens dreimal nach. Diese Versuche
+    dürfen nicht verbraucht sein, bevor er überhaupt einmal auf dem
+    Bildschirm war, auf dem die Vorlage vorkommt.
+    """
+
+    def test_vorlage_nicht_im_bild_verbraucht_keinen_versuch(self):
+        import shutil, tempfile
+        ordner = tempfile.mkdtemp()
+        try:
+            tdir = os.path.join(ordner, "templates", "nav")
+            os.makedirs(tdir)
+            marke = noise(60, 60, 80)
+            marke.save(os.path.join(tdir, "welt.png"))
+            leer = noise(500, 800, 81)          # Vorlage kommt nicht vor
+            with open(os.path.join(ordner, "conf.json"), "w", encoding="utf-8") as fh:
+                json.dump({"base_width": 500}, fh)
+            cfg = Config.load(os.path.join(ordner, "conf.json"))
+            eng = Engine(cfg, FakeDevice([leer], loop=True), logger=quiet(),
+                         sleep=lambda s: None, seed=1)
+            eng.capture()
+            spec = {"template": "nav/welt.png", "threshold": 0.85, "optional": True}
+            for _ in range(4 * Engine.FEHLGRIFFE_BIS_NACHMESSEN):
+                eng.find(spec)
+            self.assertLessEqual(
+                eng._nachjustiert.get("nav/welt.png", 0), 1,
+                "auf dem falschen Bildschirm duerfen die Versuche nicht aufgebraucht werden",
+            )
+
+            # Jetzt taucht sie auf - verkleinert. Das muss noch gefunden werden.
+            treffer = noise(500, 800, 82)
+            paste(treffer, marke.box_scale(42, 42), 150, 300)
+            eng.dev.frames = [treffer]
+            eng.capture()
+            gefunden = None
+            for _ in range(2 * Engine.FEHLGRIFFE_BIS_NACHMESSEN):
+                gefunden = eng.find(spec)
+                if gefunden:
+                    break
+            self.assertIsNotNone(gefunden, "die verkleinerte Vorlage muss noch vermessen werden")
+        finally:
+            shutil.rmtree(ordner, ignore_errors=True)
+
+
+class TestErsatzPunkt(unittest.TestCase):
+    """Jedes tap_first braucht einen Ausweg."""
+
+    def test_alle_tap_first_haben_einen_ersatz_punkt(self):
+        import json as _json
+
+        with open(os.path.join(ROOT, "config", "last-asylum.json"), encoding="utf-8") as fh:
+            roh = _json.load(fh)
+        ohne = []
+
+        def pruefe(knoten, wo):
+            if isinstance(knoten, dict):
+                if "tap_first" in knoten and not knoten["tap_first"].get("fallback"):
+                    ohne.append(wo)
+                for k, v in knoten.items():
+                    pruefe(v, f"{wo}>{k}")
+            elif isinstance(knoten, list):
+                for v in knoten:
+                    pruefe(v, wo)
+
+        for gruppe in ("rules", "tasks", "on_unknown", "on_stuck"):
+            pruefe(roh.get(gruppe, []), gruppe)
+        self.assertEqual(
+            ohne, [],
+            "ohne Ersatz-Punkt bleibt der Bot stehen, wenn keine Vorlage passt: "
+            + ", ".join(ohne),
+        )
+
+
 class TestZurueckPfeil(unittest.TestCase):
     """Die Android-Zurück-Taste ist in diesem Spiel gefährlich.
 

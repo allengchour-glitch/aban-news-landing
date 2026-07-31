@@ -569,6 +569,7 @@ class Engine:
     FEIN_SCHRITTE = [0.55, 0.62, 0.70, 0.78, 0.86, 0.94, 1.00, 1.08, 1.18, 1.30, 1.45, 1.60]
     FEHLGRIFFE_BIS_NACHMESSEN = 3
     MAX_NACHMESSEN = 3  # danach ist die Vorlage schlicht nicht im Bild
+    NUR_GROESSE_AB = 0.5  # darunter fehlt die Vorlage, statt nur falsch gross zu sein
 
     def _nachjustieren(
         self, name: str, tpl: Image, screen: Image, schwelle: float, bisher: float
@@ -586,6 +587,12 @@ class Engine:
             if hit and hit.score > bester + 0.02:
                 bester, bester_faktor = hit.score, f
         if bester_faktor is None or bester < schwelle:
+            # Sehr niedrige Werte heissen: die Vorlage ist gar nicht im Bild.
+            # Das ist kein Groessen-Problem und darf keinen der drei Versuche
+            # verbrauchen - sonst sind sie aufgebraucht, bevor der Bot ueberhaupt
+            # einmal auf dem passenden Bildschirm war.
+            if bester < float(self.NUR_GROESSE_AB):
+                self._nachjustiert[name] = max(0, self._nachjustiert.get(name, 1) - 1)
             self.log.debug(
                 "Nachmessen brachte nichts", template=name,
                 bester=round(bester, 3), schwelle=schwelle,
