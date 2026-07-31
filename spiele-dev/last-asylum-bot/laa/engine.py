@@ -127,6 +127,7 @@ class Engine:
         self._finger_jetzt: Optional[bytes] = None
         self._regel_finger: Dict[str, tuple] = {}
         self._regel_pause: Dict[str, float] = {}
+        self._regel_zeiten: Dict[str, list] = {}
         self._offene_pruefung: Optional[tuple] = None
         self._folgenlos: Dict[str, int] = {}   # Vorlage -> Tipps ohne jede Wirkung
         self._verworfen: set = set()           # aussortiert - nicht mehr suchen
@@ -1466,6 +1467,8 @@ class Engine:
         """
         if self._clock() < self._regel_pause.get(rule.name, -1e9):
             return True
+        if self._regel_ausser_rand(rule):
+            return True
         grenze = int(getattr(self.cfg, "regel_wirkungslos_grenze", 0) or 0)
         if grenze <= 0 or self._finger_jetzt is None:
             return False
@@ -1526,6 +1529,35 @@ class Engine:
                 )
             except OSError as exc:  # pragma: no cover - Dateisystem
                 self.log.warn(f"Vorlage nicht verschiebbar: {exc}")
+
+    def _regel_ausser_rand(self, rule) -> bool:
+        """Eine Regel, die staendig greift, kommt offensichtlich nicht weiter.
+
+        Die Pruefung auf gleiche Ansicht reicht dafuer nicht: schaukeln sich
+        zwei Bildschirme gegenseitig auf, sieht jeder Durchgang anders aus und
+        trotzdem passiert nichts. Am 31.07. griff 'blauer-knopf-generisch' so
+        sechzehnmal in drei Minuten. Wer im Zeitfenster zu oft dran war, macht
+        Pause - unabhaengig davon, was das Bild sagt.
+        """
+        grenze = int(getattr(self.cfg, "regel_hoechstens_je_fenster", 0) or 0)
+        if grenze <= 0:
+            return False
+        fenster = float(getattr(self.cfg, "regel_fenster", 300.0))
+        jetzt = self._clock()
+        zeiten = [t for t in self._regel_zeiten.get(rule.name, []) if jetzt - t < fenster]
+        if len(zeiten) < grenze:
+            zeiten.append(jetzt)
+            self._regel_zeiten[rule.name] = zeiten
+            return False
+        self._regel_zeiten[rule.name] = []
+        pause = float(getattr(self.cfg, "regel_wirkungslos_pause", 300.0))
+        self._regel_pause[rule.name] = jetzt + pause
+        self.bump("regel-gebremst")
+        self.log.warn(
+            f"Regel '{rule.name}' laeuft im Kreis - Pause",
+            treffer=len(zeiten), in_sekunden=int(fenster), pause_sekunden=int(pause),
+        )
+        return True
 
     @staticmethod
     def _ansicht_finger(screen: Image) -> bytes:

@@ -1886,6 +1886,51 @@ class TestUpdateHinweis(unittest.TestCase):
                             f"'{name}' darf den Update-Hinweis nicht ueberholen")
 
 
+class TestRegelImKreis(unittest.TestCase):
+    """Eine Regel, die dauernd greift, wird gebremst - auch ohne Stillstand.
+
+    Am 31.07. griff »blauer-knopf-generisch« sechzehnmal in drei Minuten.
+    Die Prüfung auf gleiche Ansicht sah das nicht: zwei Bildschirme
+    schaukelten sich auf, jeder Durchgang sah anders aus - und trotzdem kam
+    der Bot nicht weiter.
+    """
+
+    def bau(self, grenze=4):
+        bilder = []
+        for i in range(30):
+            b = noise(400, 700, 300 + i)
+            paste(b, Image.new(200, 200, (250, 250, 250)), 20 + (i % 5) * 30, 300)
+            bilder.append(b)
+        cfg = Config.from_dict({
+            "base_width": 400,
+            "festgefahren_schritte": 0,
+            "regel_hoechstens_je_fenster": grenze,
+            "regel_fenster": 300,
+            "rules": [{"name": "immer", "match": {"always": True},
+                       "do": [{"log": "x"}]}],
+        })
+        eng = Engine(cfg, FakeDevice(bilder, loop=True), logger=quiet(),
+                     sleep=lambda s: None, seed=2)
+        return eng
+
+    def test_wird_nach_der_grenze_gebremst(self):
+        eng = self.bau(grenze=4)
+        for _ in range(12):
+            eng.step()
+        self.assertEqual(eng.stats.get("regel-gebremst", 0), 1)
+        self.assertEqual(
+            eng.stats.get("rule:immer", 0), 4,
+            "nach der Grenze darf die Regel nicht weiter greifen",
+        )
+
+    def test_abschaltbar(self):
+        eng = self.bau(grenze=0)
+        for _ in range(12):
+            eng.step()
+        self.assertEqual(eng.stats.get("regel-gebremst", 0), 0)
+        self.assertEqual(eng.stats.get("rule:immer", 0), 12)
+
+
 class TestZurueckPfeil(unittest.TestCase):
     """Die Android-Zurück-Taste ist in diesem Spiel gefährlich.
 
