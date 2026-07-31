@@ -1206,8 +1206,8 @@
     {
       "name": "roter-punkt-pruefen",
       "priority": 128,
-      "cooldown": 8,
-      "_zweck": "Rote Punkte markieren offene Sachen - dort ist fast immer noch etwas zu holen. Werden angetippt, bis keiner mehr da ist.",
+      "cooldown": 5,
+      "_zweck": "Rote Punkte markieren offene Sachen - dort ist fast immer noch etwas zu holen. Es wird einer pro Durchgang angetippt; die Regeln fuer gruene und blaue Knoepfe holen ab, was danach erscheint, und 'zurueck-zur-basis' bringt den Bot wieder heraus. So arbeitet er sie einen nach dem anderen ab, bis keiner mehr da ist. Der Streifen ganz unten bleibt ausgenommen: dort liegt das Angebots-Banner mit dem Preis.",
       "match": {
         "farbknopf": {
           "rgb": [
@@ -1223,9 +1223,9 @@
           "min_fuellung": 0.6,
           "region": [
             0.0,
-            0.05,
+            0.06,
             1.0,
-            0.95
+            0.88
           ]
         }
       },
@@ -6900,5 +6900,6 @@
   ],
   "_kritische_templates": "Diese Vorlagen nennt der Selbstbericht zuerst, egal an wie vielen Aufgaben sie sonst haengen. Es sind die, ohne die der Bot Schaden nicht abwenden kann - der Schutzschild. Nach dem Verlust von zwei Staedten am 31.07. steht er vor allem anderen.",
   "_farben": "FARBEN DER KNOEPFE, am 31.07. an echten Dialogen geprueft - die einfache Regel 'Gold = Geld' stimmt so NICHT: GOLD/ORANGE ist die Farbe der Haupthandlung, und die kann harmlos sein ('Zerlegen' in der Ausruestungswerkstatt) oder etwas kosten ('Falkenturm-Ergaenzung CHF 4.40', '50 Spenden' mit Diamant, 'Bestaetigen' bei '2 Diamanten ausgeben'). Am Bild allein ist das nicht zu unterscheiden - deshalb wird Gold NIE blind angetippt, weder beim Erkunden noch von einer allgemeinen Regel. Gold nur ueber eine benannte Vorlage, wo klar ist, was der Knopf tut. BLAU ist entweder eine Handlung ('Los', 'Versammeln') oder 'Abbrechen'. Beides ist ungefaehrlich: schlimmstenfalls bricht der Bot etwas ab. Darum darf Blau allgemein getippt werden. GRUEN ist Abholen/Bestaetigen ohne Kosten. GRAU ist die guenstige Alternative - bei der Allianz-Technologie steht neben dem goldenen '50 Spenden' (Diamanten) ein graues '200 Spenden' (Ressourcen); gespendet wird immer das graue. ROT ist Abbrechen/Schliessen.",
-  "_vorlagen_herkunft": "Die Vorlagen sind auf Basisbreite 1080 abgelegt und werden zur Laufzeit hochskaliert. Aus einem Handy-Screenshot (1440x3088) schneidet man also den Ausschnitt und verkleinert ihn auf 75 Prozent. Weil das Spiel seine Oberflaeche an der BILDHOEHE bemisst, passt eine so geschnittene Vorlage im flacheren Emulator-Fenster (1440x2560) noch nicht: dort ist alles um 2560/3088 = 0.83 kleiner. Diesen Unterschied misst der Bot selbst aus - global ueber die Aufgabe 'kalibrieren', einzeln nach drei Fehlgriffen. Von Hand nachrechnen muss man da nichts."
+  "_vorlagen_herkunft": "Die Vorlagen sind auf Basisbreite 1080 abgelegt und werden zur Laufzeit hochskaliert. Aus einem Handy-Screenshot (1440x3088) schneidet man also den Ausschnitt und verkleinert ihn auf 75 Prozent. Weil das Spiel seine Oberflaeche an der BILDHOEHE bemisst, passt eine so geschnittene Vorlage im flacheren Emulator-Fenster (1440x2560) noch nicht: dort ist alles um 2560/3088 = 0.83 kleiner. Diesen Unterschied misst der Bot selbst aus - global ueber die Aufgabe 'kalibrieren', einzeln nach drei Fehlgriffen. Von Hand nachrechnen muss man da nichts.",
+  "_ziel": "So soll die Stadt aussehen (Bild des Benutzers vom 31.07.): keine Ertrags-Blasen ueber den Gebaeuden und kein roter Punkt an den Symbolen. Daran misst sich, ob der Bot seine Runde wirklich zu Ende gebracht hat - nicht daran, wie viele Tipps er gemacht hat."
 }
