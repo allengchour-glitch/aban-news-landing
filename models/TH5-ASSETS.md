@@ -84,7 +84,7 @@ gestapelt/aneinandergereiht entstehen fugenlose Türme und Zeilen.
 |---|---|---|---|
 | `th7_hochhaus_modul.glb` | Turm-Segment, Fensterbänder + Gesimse | 8,2 × 8,2 × **6,0** | **stapeln: y += 6** |
 | `th7_hochhaus_dach.glb` | Turmabschluss: Attika, Technik, Antenne | 8,3 × 8,3 × 3,6 | oben aufsetzen |
-| `th7_reihenhaus_modul.glb` | Stadthaus mit Satteldach + Haustür | **6,0** × 7,5 × 8,2 | **reihen: x += 6** |
+| `th7_reihenhaus_modul.glb` | Stadthaus mit Satteldach + Haustür | **6,000** × 8,0 × 8,45 | **reihen: x += 6** |
 | `th7_parkhaus.glb` | 3 offene Decks, Stützen, Rampe | 16,2 × 11,2 × 9,8 | frei |
 | `th7_lagerhalle.glb` | Tonnendach, 2 Rolltore, Laderampe | 20,4 × 12,4 × 9,0 | frei |
 | `th7_bruecke_modul.glb` | Straßenbrücke mit Brüstung + Pfeilern | **14,0** × 9,0 × 5,1 | **reihen: x += 14** |
@@ -93,6 +93,13 @@ gestapelt/aneinandergereiht entstehen fugenlose Türme und Zeilen.
 | `th7_taxi.glb` | Taxi mit Dachschild | 1,9 × 4,3 × 1,7 | Front auf −z |
 
 | `th7_denkmal.glb` | Denkmal auf Stufensockel | 3,0 × 3,0 × 5,3 | Platzmitte |
+
+> 🔧 **Hochhaus- und Reihenhaus-Modul wurden korrigiert** — bitte die alten GLB ersetzen.
+> Beide Rastermasse waren kaputt: der Turm-Abschluss ragte 4 cm ueber die Stapelkante
+> (6,04 statt 6,000), und das „Satteldach" der Zeile war ein `kegel(vertices=4)` — eine
+> Pyramide, deren Ecken 13,0 m auseinander standen statt 6,0. Dafuer gibt es jetzt
+> `satteldach_x()`, ein echtes Prisma mit First in x. Im 3-Modul-Test bilden die
+> Zeilenhaeuser eine durchgehende Reihe mit durchlaufendem First.
 
 > 🔧 **Die drei Fahrzeuge wurden am 27.07. neu erzeugt** — bitte die alten GLBs ersetzen.
 > Zwei Fehler waren drin: (a) die Räder standen **quer** (Zylinderachse lag auf der

@@ -41,13 +41,21 @@ def tonne(cx, cy, z, r, laenge, m, seg=24, flach=1.0):
     """HALBES Tonnengewoelbe: Zylinder mit Achse in x, untere Haelfte weggeschnitten,
     Basis exakt bei z. Ein VOLLER Zylinder fuellt die Halle von innen und taucht unter
     den Boden (bei der Lagerhalle gemessene -0,30) — derselbe Fehler steckte in der
-    th8-Markthalle."""
+    th8-Markthalle.
+
+    `flach` druckt das Gewoelbe in der HOEHE zusammen. Das muss NACH dem Anwenden
+    der Rotation passieren: `o.scale[2]` vor `transform_apply(rotation=True)` wirkt
+    im Objektraum und damit auf die (bereits nach x gedrehte) Zylinderachse — die
+    Halle bekam so ein volles Halbrund von 6 m Stich und ein um den Faktor
+    gestauchtes, viel zu kurzes Dach (gemessen 11,96 statt 9,00 m Gesamthoehe)."""
     o = zyl(cx, cy, z, r, laenge, m, seg, rot=(0, math.pi/2, 0))
-    o.scale[2] = flach
     bpy.context.view_layer.objects.active = o
     for s_ in bpy.context.scene.objects: s_.select_set(False)
     o.select_set(True)
     bpy.ops.object.transform_apply(location=False, rotation=True, scale=True)
+    if abs(flach - 1.0) > 1e-6:                 # jetzt ist lokal z = Welt z
+        o.scale[2] = flach
+        bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
     bm = bmesh.new(); bm.from_mesh(o.data)
     bmesh.ops.bisect_plane(bm, geom=bm.verts[:] + bm.edges[:] + bm.faces[:],
                            plane_co=(0, 0, 0), plane_no=(0, 0, 1), clear_inner=True)
@@ -101,6 +109,21 @@ def export(name, bevel=0.016, seg=3, drehen=False):
     try: bpy.ops.wm.stl_export(filepath=p2)
     except Exception: bpy.ops.export_mesh.stl(filepath=p2)
     print("  ->", name, os.path.getsize(p1), "B")
+
+def satteldach_x(cx, cy, z0, breite, tiefe, hoehe, m=None, name="Satteldach"):
+    """Satteldach mit First in X als echtes Prisma. `kegel(vertices=4)` taugt dafuer
+    NICHT: das ergibt eine Pyramide, deren Ecken auf den Achsen liegen — beim
+    Reihenhaus stand das Dach dadurch 13,0 m breit statt 6,0 und hat das Modulraster
+    gesprengt."""
+    b, t, h = breite/2.0, tiefe/2.0, hoehe
+    v = [(-b,-t,0), (b,-t,0), (b,t,0), (-b,t,0), (-b,0,h), (b,0,h)]
+    f = [(0,3,2,1), (0,1,5,4), (3,4,5,2), (0,4,3), (1,2,5)]
+    me = bpy.data.meshes.new(name); me.from_pydata(v, [], f); me.update()
+    o = bpy.data.objects.new(name, me); bpy.context.collection.objects.link(o)
+    o.location = (cx, cy, z0)
+    if m: me.materials.append(m)
+    bpy.context.view_layer.objects.active = o
+    return o
 
 def fensterreihe(g_breite, g_tiefe, zbase, anzahl, rahm, glas, hoehe=1.5):
     """Fensterreihe auf der +z-Front, gleichmaessig verteilt."""
@@ -329,8 +352,8 @@ def hochhaus_modul():
             a = s*math.pi/2
             bx, by = math.sin(a)*4.03, math.cos(a)*4.03
             o = box(bx, by, 1.6+e*2.9, 7.2 if s%2==0 else 0.06, 0.06 if s%2==0 else 7.2, 1.3, glas)
-        box(0,0,3.05+e*2.9, 8.12,8.12,0.14, band)       # umlaufendes Gesims
-    box(0,0,5.95, 8.2,8.2,0.18, band)                   # Abschluss (Stapelkante)
+        box(0,0,min(3.05+e*2.9, 5.93), 8.12,8.12,0.14, band)   # Gesims, oberes
+    box(0,0,5.91, 8.2,8.2,0.18, band)                   # Abschluss endet exakt auf 6,00
     export("th7_hochhaus_modul", 0.020, 3)
 
 def hochhaus_dach():
@@ -357,10 +380,11 @@ def reihenhaus_modul():
     glas = mat("Glas", (0.62,0.76,0.84), 0.2)
     rahm = mat("Rahmen", (0.35,0.33,0.30), 0.7)
     tuer = mat("Tuer", (0.32,0.22,0.14), 0.6)
-    box(0,0,0.22, 6.1,7.3,0.44, mat("Sockel",(0.68,0.66,0.62),0.9))
+    box(0,0,0.22, 6.00,7.3,0.44, mat("Sockel",(0.68,0.66,0.62),0.9))   # buendig
     box(0,0,3.30, 6.0,7.2,6.20, wand)
-    box(0,0,6.55, 6.25,7.45,0.30, dach)                 # Traufgesims
-    kegel(0,0,7.35, 4.6,0.0, 1.6, dach, 4, rot=(0,0,math.pi/4))   # Satteldach
+    box(0,0,6.55, 6.00,7.45,0.30, dach)                 # Traufgesims, buendig:
+    #  ein Ueberstand laesst benachbarte Module ineinanderragen
+    satteldach_x(0, 0, 6.70, 6.00, 7.45, 1.75, dach)    # First in x -> Zeile schliesst
     fensterreihe(6.0, 7.2, 4.9, 2, rahm, glas, 1.35)    # OG
     box(-1.5, 3.63, 1.75, 1.9,0.06,1.5, rahm)           # EG Fenster
     box(-1.5, 3.66, 1.75, 1.6,0.05,1.25, glas)
