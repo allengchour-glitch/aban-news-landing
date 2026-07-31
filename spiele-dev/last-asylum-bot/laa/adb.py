@@ -305,7 +305,7 @@ def decode_screencap(raw: bytes) -> Image:
 
 
 def _adb_suchen(name: str) -> Optional[str]:
-    """Uebliche Ablageorte absuchen, wenn adb nicht im PATH steht.
+    r"""Uebliche Ablageorte absuchen, wenn adb nicht im PATH steht.
 
     Auf Windows landen die Platform-Tools meist in C:\platform-tools oder im
     Android-SDK - ohne das hier scheitert jeder direkte Aufruf von bot.py,
