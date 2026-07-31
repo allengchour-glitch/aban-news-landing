@@ -517,23 +517,31 @@ def kette(cx, cy, r, L, breite, m_kette, m_rad, n_pad=26, seg=24, ph=0.11):
             o.rotation_euler[0] = ang
 
 def loeffel(cx, cy, cz, breite, m, m_zahn, tiefe=0.88, hoehe=1.16, zaehne=5, sy=1):
-    """Tiefloeffel: Rueckwand bei cy, gewoelbter Boden, zwei Wangen, Zaehne.
+    """Tiefloeffel als EIN gewoelbtes Schalenprofil (siehe `prisma_x`): Rueckwand,
+    Rundung, Bodenblech und Schneide sind ein durchgehender Polygonzug, innen wie
+    aussen. Die alte Fassung stapelte drei gestufte Bodenkaesten — das las sich als
+    Treppe, nicht als Schaufel.
     sy=+1 -> Zaehne auf +y, sy=-1 -> eingerollt zur Maschine hin (Parkstellung).
     Gespiegelt wird ueber das VORZEICHEN der Offsets, nie ueber rotation_euler[2].
     cz = Unterkante der Schneide."""
-    box(cx, cy, cz + hoehe/2 + 0.10, breite, 0.10, hoehe, m)                 # Rueckwand
-    for k in range(3):
-        t = k/2.0
-        box(cx, cy + sy*(0.10 + tiefe*(k + 0.5)/3), cz + 0.06 + (1-t)*0.22,
-            breite, tiefe/3*1.06, 0.10, m)                                   # Boden
-    for s in (-1, 1):
-        box(cx + s*(breite/2 - 0.03), cy + sy*(0.10 + tiefe/2), cz + hoehe*0.42,
-            0.06, tiefe + 0.10, hoehe*0.84, m)                               # Wangen
-    box(cx, cy + sy*(0.10 + tiefe), cz + 0.10, breite, 0.14, 0.16, m)        # Schneide
+    # Normiertes Profil (y bis 0.94, z bis 1.26) — aussen vorwaerts, innen zurueck.
+    aussen = [(0.00, 1.26), (-0.04, 0.90), (-0.02, 0.54), (0.06, 0.28),
+              (0.20, 0.09), (0.42, 0.01), (0.68, 0.00), (0.94, 0.06)]
+    innen  = [(0.90, 0.20), (0.64, 0.14), (0.42, 0.16), (0.24, 0.26),
+              (0.14, 0.45), (0.11, 0.74), (0.10, 1.26)]
+    ky, kz = (tiefe + 0.16)/0.94, (hoehe + 0.10)/1.26
+    prof = [(cy + sy*ky*u, cz + kz*v) for u, v in aussen + innen]
+    prisma_x(prof, breite, m, cx, "Loeffelschale")
+    for s in (-1, 1):                        # Wange: DASSELBE Profil, nur schmal und
+        prisma_x(prof, 0.05, m, cx + s*(breite/2 + 0.02), "Wange")   # aussen davor —
+    yv, zv = cy + sy*ky*0.93, cz + kz*0.12   # ein Kasten stand quer zur Woelbung
+    box(cx, yv, zv, breite, 0.13, 0.17, m)   # Schneide an der Profil-Vorderkante
     for i in range(zaehne):
         px = cx - breite*0.38 + breite*0.76*i/(zaehne - 1)
-        kegel(px, cy + sy*(0.10 + tiefe + 0.16), cz + 0.10, 0.07, 0.02, 0.26, m_zahn, 8,
+        kegel(px, yv + sy*0.18, zv, 0.07, 0.02, 0.26, m_zahn, 8,
               rot=(-sy*math.pi/2, 0, 0))    # -pi/2 legt die Spitze auf +y
+    for s in (-1, 1):                        # Anlenkoehren auf dem Ruecken
+        box(cx + s*0.16, cy + sy*ky*0.06, cz + kz*1.10, 0.07, 0.22, 0.30, m)
 
 def gitterstoss(z0, z1, hb, d, m, diag=0.09, dr=1):
     """Ein Turmschuss: 4 Eckstiele, Horizontalriegel oben, je Seite eine Diagonale."""

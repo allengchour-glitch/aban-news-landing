@@ -762,7 +762,10 @@ Kabine und Schaufel des Radladers sowie das Fahrerhaus des Betonmischers sind eb
 umgebaut: die Schaufel ist ein mit `prisma_x()` extrudiertes Profil mit durchgezogenem
 Boden und Zaehnen, die Kabinendaecher sind geloftet.
 
-Noch eckig: der Baggerloeffel.
+Auch der Baggerloeffel ist jetzt ein `prisma_x()`-Profil: Rueckwand, Woelbung, Bodenblech
+und Schneide bilden EINEN Polygonzug (aussen hin, innen zurueck), die Wangen sind dasselbe
+Profil schmal extrudiert und aussen davorgesetzt. Ein Kasten als Wange stand quer zur
+Woelbung und sah aus wie eine Scheuklappe.
 
 ---
 
