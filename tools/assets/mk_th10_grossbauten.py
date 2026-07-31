@@ -206,6 +206,52 @@ def treppe(cx, y0, z0, breite, hoehe_ges, m, m_gel=None, steig=0.17, auftritt=0.
     return n, y0 + richtung*n*auftritt, n*auftritt
 
 # ================================================================ 1) Bahnhof
+def bandring(B, T, d, z, ueber, hoehe, m):
+    """Umlaufendes Band aus VIER Quadern (Sockel, Gesims, Attika). Ein Vollquader
+    waere einfacher, mauert bei diesen BEGEHBAREN Bauten aber die Decke von innen zu."""
+    ax, ay = B/2 + d/2 + ueber/2, T/2 + d/2 + ueber/2
+    for sy in (-1, 1): box(0, sy*ay, z, B + d + 2*ueber, ueber, hoehe, m)
+    for sx in (-1, 1): box(sx*ax, 0, z, ueber, T + d, hoehe, m)
+
+def aussenrelief(B, T, H, d, m_sockel, m_gesims, dach_ok=None, ecke=1.20, tief=0.24):
+    """Sockelband, Ecklisenen, zweistufiges Kranzgesims und (mit `dach_ok`) eine
+    Attika. Ohne das sind Bibliothek, Kino, Schule, Restaurant und Einkaufszentrum
+    glatte Schachteln mit einem Fensterstreifen.
+    Bewusst NUR Ecken und umlaufende Baender — die Fensterachsen bleiben frei,
+    damit nichts mit `fensterband()` kollidiert."""
+    ax, ay = B/2 + d/2, T/2 + d/2
+    for sx in (-1, 1):
+        for sy in (-1, 1):
+            box(sx*(ax + tief/2 - ecke/2), sy*(ay + tief/2 - ecke/2), H/2,
+                ecke + tief, ecke + tief, H, m_gesims)
+    bandring(B, T, d, 0.66, 0.22, 1.32, m_sockel)
+    bandring(B, T, d, H - 0.50, 0.20, 0.32, m_gesims)
+    bandring(B, T, d, H - 0.15, 0.38, 0.30, m_gesims)
+    if dach_ok is not None:
+        bandring(B, T, d, dach_ok + 0.40, 0.46, 0.80, m_gesims)
+        bandring(B, T, d, dach_ok + 0.86, 0.60, 0.14, m_sockel)
+
+def dachtechnik(B, T, dach_ok, m_geraet, m_dunkel, m_glas, seite=1):
+    """Aufzugsueberfahrt, Lueftungsgeraete, Oberlichter und Rohre auf dem Flachdach.
+    Ohne das ist das Dach eine leere weisse Platte — und genau die sieht man in der
+    Schraegsicht des Spiels als Erstes. `seite` legt fest, an welcher Laengsseite
+    der Aufbau steht, damit er nicht ueber der Eingangsachse landet."""
+    # Alles laeuft am RAND entlang: Bibliothek und Einkaufszentrum haben ein
+    # Atrium-Loch in der Dachplatte, mittig gesetzte Aufbauten schwebten darueber.
+    z = dach_ok
+    box(-B*0.34, seite*T*0.32, z + 1.05, B*0.18, T*0.20, 2.10, m_geraet)   # Ueberfahrt
+    box(-B*0.34, seite*T*0.32, z + 2.18, B*0.20, T*0.23, 0.16, m_dunkel)
+    for i in range(3):                                   # Lueftungsgeraete
+        px = -B*0.10 + i*B*0.17
+        box(px, -seite*T*0.34, z + 0.42, B*0.09, T*0.13, 0.84, m_geraet)
+        zyl(px, -seite*T*0.34, z + 0.94, B*0.035, 0.22, m_dunkel, 14)
+        box(px, -seite*T*0.34, z + 0.06, B*0.11, T*0.15, 0.12, m_dunkel)   # Schwelle
+    for px, py in ((B*0.28, seite*T*0.31), (-B*0.06, -seite*T*0.34)):      # Oberlichter
+        box(px, py, z + 0.10, B*0.14, T*0.20, 0.20, m_dunkel)
+        box(px, py, z + 0.28, B*0.12, T*0.18, 0.20, m_glas)
+    zyl(B*0.40, -seite*T*0.30, z + 0.70, 0.10, 1.40, m_dunkel, 10)         # Entlueftung
+    zyl(B*0.40, -seite*T*0.30, z + 1.44, 0.17, 0.14, m_dunkel, 10)
+
 def bahnhof():
     """Bahnhofshalle: 3 Portale, Glas-Tonnendach, Bahnsteig, Uhr, Anzeigetafel."""
     neu()
@@ -300,6 +346,8 @@ def einkaufszentrum():
             box(-12.0 + i*8.0, -8.0 + k*8.0, WH - 0.10, 2.6, 0.5, 0.14, LED)
     zyl(0, 0, FB + 0.28, 1.8, 0.56, mat("Brunnen",(0.62,0.66,0.70),0.5), 24)
     zyl(0, 0, FB + 0.52, 1.65, 0.08, mat("Wasser",(0.30,0.58,0.72),0.15,0.2), 24)
+    aussenrelief(B, T, WH, d, SOK, W, WH + 0.40)   # Sockel, Ecklisenen, Gesims, Attika
+    dachtechnik(B, T, WH + 0.40, SOK, DEC, GLAS)   # Dachaufbauten
     export("th10_einkaufszentrum", 0.022, 2)
 
 # ================================================================ 3) Schule
@@ -354,6 +402,8 @@ def schule():
                             box(px+lx, py+0.70+ly, FB+0.20, 0.05, 0.05, 0.39, RAHM)
     for i in range(10):                                           # Garderobe im Flur
         box(-13.5 + i*3.0, 3.15, FB + 1.55, 2.2, 0.14, 0.30, HOLZ)
+    aussenrelief(B, T, H, d, SOK, W, H + 0.50)   # Sockel, Ecklisenen, Gesims, Attika
+    dachtechnik(B, T, H + 0.50, SOK, DACH, GLAS)   # Dachaufbauten
     export("th10_schule", 0.020, 2)
 
 # ================================================================ 4) Bibliothek
@@ -417,6 +467,8 @@ def bibliothek():
                 box(px, sy, OG + 0.42 + k*0.54, 1.3, 0.8, 0.30, BUCH2 if k % 2 == 0 else BUCH)
     box(-8.0, T/2 - 3.0, FB + 0.55, 5.0, 1.4, 1.10, HOLZ)         # Ausleihtheke, aus der
     box(-8.0, T/2 - 3.0, FB + 1.16, 5.4, 1.7, 0.12, GAL)          # Tuerachse geschoben
+    aussenrelief(B, T, WH, d, SOK, W, WH + 0.50)   # Sockel, Ecklisenen, Gesims, Attika
+    dachtechnik(B, T, WH + 0.50, SOK, DEC, GLAS)   # Dachaufbauten
     export("th10_bibliothek", 0.020, 2)
 
 # ================================================================ 5) Sporthalle
@@ -556,6 +608,8 @@ def kino():
     for sx in (-13.0, 13.0):
         for k in range(4):
             box(sx, 1.0 - k*3.0, FB + 3.60, 0.20, 0.9, 0.30, NEON)
+    aussenrelief(B, T, H, d, SOK, AUS, H + 0.60)   # Sockel, Ecklisenen, Gesims, Attika
+    dachtechnik(B, T, H + 0.60, SOK, W, GLAS)   # Dachaufbauten
     export("th10_kino", 0.020, 2)
 
 # ================================================================ 8) Restaurant
@@ -610,6 +664,7 @@ def restaurant():
                 box(sx2 + math.cos(a)*0.22, py, FB + 0.75, 0.10, 0.50, 0.58, HOLZ)
             zyl(px, py, (FB + 2.29 + H)/2, 0.05, H - FB - 2.29, RAHM, 8)   # Pendel bis Decke
             kegel(px, py, FB + 2.12, 0.42, 0.16, 0.34, LAMP, 14)
+    aussenrelief(B, T, H, d, SOK, DACH, H + 0.44)   # Sockel, Ecklisenen, Gesims, Attika
     export("th10_restaurant", 0.020, 2)
 
 if __name__ == "__main__":

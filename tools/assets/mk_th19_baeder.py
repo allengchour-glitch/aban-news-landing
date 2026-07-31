@@ -246,6 +246,52 @@ def bruestung(cx, cy, lb, lt, z, m, hoehe=1.05):
     gelaender(cy-lt/2, cy+lt/2, cx-lb/2, z, m, hoehe, 'y')
     gelaender(cy-lt/2, cy+lt/2, cx+lb/2, z, m, hoehe, 'y')
 
+def bandring(B, T, d, z, ueber, hoehe, m):
+    """Umlaufendes Band aus VIER Quadern (Sockel, Gesims, Attika). Ein Vollquader
+    waere einfacher, mauert bei diesen BEGEHBAREN Hallen aber die Decke von innen zu."""
+    ax, ay = B/2 + d/2 + ueber/2, T/2 + d/2 + ueber/2
+    for sy in (-1, 1): box(0, sy*ay, z, B + d + 2*ueber, ueber, hoehe, m)
+    for sx in (-1, 1): box(sx*ax, 0, z, ueber, T + d, hoehe, m)
+
+def aussenrelief(B, T, H, d, m_sockel, m_gesims, dach_ok=None, ecke=1.20, tief=0.24):
+    """Sockelband, Ecklisenen und Kranzgesims um eine rechteckige Halle; mit
+    `dach_ok` zusaetzlich eine Attika auf der Dachplatte. Ohne das sind die
+    Hallen glatte Schachteln mit einem Fensterstreifen.
+    Bewusst NUR Ecken und umlaufende Baender — die Fensterachsen bleiben frei,
+    damit nichts mit `fensterband()` kollidiert."""
+    ax, ay = B/2 + d/2, T/2 + d/2
+    for sx in (-1, 1):
+        for sy in (-1, 1):
+            box(sx*(ax + tief/2 - ecke/2), sy*(ay + tief/2 - ecke/2), H/2,
+                ecke + tief, ecke + tief, H, m_gesims)
+    bandring(B, T, d, 0.66, 0.22, 1.32, m_sockel)
+    bandring(B, T, d, H - 0.50, 0.20, 0.32, m_gesims)
+    bandring(B, T, d, H - 0.15, 0.38, 0.30, m_gesims)
+    if dach_ok is not None:
+        bandring(B, T, d, dach_ok + 0.40, 0.46, 0.80, m_gesims)
+        bandring(B, T, d, dach_ok + 0.86, 0.60, 0.14, m_sockel)
+
+def dachtechnik(B, T, dach_ok, m_geraet, m_dunkel, m_glas, seite=1):
+    """Aufzugsueberfahrt, Lueftungsgeraete, Oberlichter und Rohre auf dem Flachdach.
+    Ohne das ist das Dach eine leere weisse Platte — und genau die sieht man in der
+    Schraegsicht des Spiels als Erstes. `seite` legt fest, an welcher Laengsseite
+    der Aufbau steht, damit er nicht ueber der Eingangsachse landet."""
+    # Alles laeuft am RAND entlang: Bibliothek und Einkaufszentrum haben ein
+    # Atrium-Loch in der Dachplatte, mittig gesetzte Aufbauten schwebten darueber.
+    z = dach_ok
+    box(-B*0.34, seite*T*0.32, z + 1.05, B*0.18, T*0.20, 2.10, m_geraet)   # Ueberfahrt
+    box(-B*0.34, seite*T*0.32, z + 2.18, B*0.20, T*0.23, 0.16, m_dunkel)
+    for i in range(3):                                   # Lueftungsgeraete
+        px = -B*0.10 + i*B*0.17
+        box(px, -seite*T*0.34, z + 0.42, B*0.09, T*0.13, 0.84, m_geraet)
+        zyl(px, -seite*T*0.34, z + 0.94, B*0.035, 0.22, m_dunkel, 14)
+        box(px, -seite*T*0.34, z + 0.06, B*0.11, T*0.15, 0.12, m_dunkel)   # Schwelle
+    for px, py in ((B*0.28, seite*T*0.31), (-B*0.06, -seite*T*0.34)):      # Oberlichter
+        box(px, py, z + 0.10, B*0.14, T*0.20, 0.20, m_dunkel)
+        box(px, py, z + 0.28, B*0.12, T*0.18, 0.20, m_glas)
+    zyl(B*0.40, -seite*T*0.30, z + 0.70, 0.10, 1.40, m_dunkel, 10)         # Entlueftung
+    zyl(B*0.40, -seite*T*0.30, z + 1.44, 0.17, 0.14, m_dunkel, 10)
+
 def treppe(cx, y0, z0, breite, hoehe_ges, m, m_gel=None, steig=0.17, auftritt=0.28,
            richtung=-1):
     """Treppenlauf mit begehbarer Steigung (~0.17 m) und mitlaufendem Gelaender.
@@ -493,6 +539,7 @@ def schwimmbad():
         box(sx, 0, H/2, d, T, H, W)
         fensterband(sx, 0, T - 5.0, d, F + 5.4, 2.4, AUS, GLAS, 5, 'y')
     fensterband(0, T/2, B - 8.0, d, F + 5.4, 2.4, AUS, GLAS, 7, 'x')
+    aussenrelief(B, T, H, d, SOK, AUS, None)   # Sockel, Ecklisenen, Gesims
     # Traufband als RING — ein volles Deckenbrett wuerde das Gewoelbe von innen zumauern
     platte_mit_loch(0, 0, H + 0.16, B + 0.9, T + 0.9, 0.32, B - 1.0, T - 1.0, AUS)
     dach = tonne(0, 0, H + 0.32, T/2, B + 1.2, DACH, 30, fuellen=False)
@@ -547,6 +594,7 @@ def fitnessstudio():
     wand_mit_oeffnungen(0, T/2, B, d, H, AUS, 2, 3.2, 3.6)
     box(0, -T/2, H/2, B, d, H, W)
     for sx in (-B/2, B/2): box(sx, 0, H/2, d, T, H, W)
+    aussenrelief(B, T, H, d, SOK, AUS, H + 0.44)   # Sockel, Ecklisenen, Gesims
     box(0, 0, H + 0.22, B + 1.1, T + 1.1, 0.44, AUS)
     fensterband(0, T/2, B - 6.0, d, FB + 4.15, 1.0, AUS, GLAS, 8, 'x')
     fensterband(B/2, 0, T - 5.0, d, FB + 2.60, 1.9, AUS, GLAS, 5, 'y')
@@ -654,6 +702,7 @@ def fitnessstudio():
     # Beleuchtung
     for i in range(5):
         box(-11.0 + i*5.5, 0, H - 0.22, 0.34, T - 4.0, 0.14, NEON)
+    dachtechnik(B, T, H + 0.44, SOK, STAH, GLAS)   # Dachaufbauten
     export("th19_fitnessstudio", 0.018, 2)
 
 
@@ -744,6 +793,7 @@ def eishalle():
     wand_mit_oeffnungen(0, T/2, B, d, H, AUS, 3, 3.6, 4.0)
     box(0, -T/2, H/2, B, d, H, W)
     for sx in (-B/2, B/2): box(sx, 0, H/2, d, T, H, W)
+    aussenrelief(B, T, H, d, SOK, AUS, H + 0.60)   # Sockel, Ecklisenen, Gesims
     box(0, 0, H + 0.30, B + 1.4, T + 1.4, 0.60, AUS)
     for i in range(8):                                              # Dachbinder
         box(0, -12.0 + i*3.5, H - 0.40, B - 1.0, 0.26, 0.70, STAH)
@@ -754,6 +804,7 @@ def eishalle():
     box(0, T/2 + 1.9, FB + 4.20, B - 14.0, 3.8, 0.40, AUS)
     for sx in (-13.0, 13.0):
         zyl(sx, T/2 + 3.1, (FB + 4.00)/2, 0.24, 4.00 - FB, STAH, 12)
+    dachtechnik(B, T, H + 0.60, SOK, STAH, PLEX)   # Dachaufbauten
     export("th19_eishalle", 0.020, 2)
 
 
@@ -891,6 +942,7 @@ def kletterhalle():
     wand_mit_oeffnungen(0, T/2, B, d, H, AUS, 2, 3.2, 3.6)
     box(0, -T/2, H/2, B, d, H, W)
     for sx in (-B/2, B/2): box(sx, 0, H/2, d, T, H, W)
+    aussenrelief(B, T, H, d, SOK, AUS, H + 0.52)   # Sockel, Ecklisenen, Gesims
     box(0, 0, H + 0.26, B + 1.2, T + 1.2, 0.52, AUS)
     fensterband(0, T/2, B - 5.0, d, FB + 6.60, 4.4, AUS, GLAS, 6, 'x')
     fensterband(B/2, 0, T - 6.0, d, FB + 9.20, 2.4, AUS, GLAS, 4, 'y')
@@ -903,6 +955,7 @@ def kletterhalle():
         box(-9.0 + i*6.0, 0, H - 0.24, 0.44, T - 4.0, 0.16, NEON)
     for i in range(3):
         box(-6.0 + i*6.0, -2.0, H - 0.10, 2.4, 9.0, 0.22, GLAS)     # Oberlichter
+    dachtechnik(B, T, H + 0.52, SOK, STAH, GLAS)   # Dachaufbauten
     export("th19_kletterhalle", 0.018, 2)
 
 
@@ -996,6 +1049,7 @@ def tennishalle():
     wand_mit_oeffnungen(0, T/2, B, d, H, AUS, 3, 3.4, 3.8)
     box(0, -T/2, H/2, B, d, H, W)
     for sx in (-B/2, B/2): box(sx, 0, H/2, d, T, H, W)
+    aussenrelief(B, T, H, d, SOK, AUS, None)   # Sockel, Ecklisenen, Gesims
     fensterband(0, T/2, B - 8.0, d, FB + 6.20, 2.0, AUS, GLAS, 7, 'x')
     for sx in (-B/2, B/2):
         fensterband(sx, 0, T - 6.0, d, FB + 6.20, 2.0, AUS, GLAS, 5, 'y')
@@ -1103,6 +1157,7 @@ def reithalle():
     wand_mit_tuer(0, T/2, B, d, H, AUS, 5.4, 4.8, 'x')
     box(0, -T/2, H/2, B, d, H, W)
     for sx in (-B/2, B/2): box(sx, 0, H/2, d, T, H, W)
+    aussenrelief(B, T, H, d, SOK, AUS, None)   # Sockel, Ecklisenen, Gesims
     fensterband(0, T/2, B - 14.0, d, FB + 5.10, 1.0, AUS, GLAS, 6, 'x')
     for sx in (-B/2, B/2):
         fensterband(sx, 0, T - 4.0, d, FB + 4.60, 1.5, AUS, GLAS, 6, 'y')

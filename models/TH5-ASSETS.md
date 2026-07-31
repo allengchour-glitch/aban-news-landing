@@ -228,6 +228,17 @@ und mit echtem Innenleben — Treppen, Galerien, Möblierung.
 
 Generator: `tools/assets/mk_th10_grossbauten.py`
 
+> 🔧 **Aussenrelief (31.07.) — bitte die GLB/STL dieser Charge ersetzen.** Die Bauten waren
+> von aussen glatte Quader mit Fensterstreifen und einer leeren weissen Dachplatte; im
+> Kontaktbogen sahen mehrere davon identisch aus. Neu in allen drei Generatoren:
+> `bandring()` (umlaufendes Band aus VIER Quadern — ein Vollquader mauert die Decke der
+> begehbaren Bauten von innen zu), `aussenrelief()` (Sockelband, Ecklisenen, zweistufiges
+> Kranzgesims, optional Attika) und `dachtechnik()` (Aufzugsueberfahrt, Lueftungsgeraete,
+> Oberlichter, Fallrohr). **Alle Dachaufbauten laufen am Rand entlang** — Bibliothek und
+> Einkaufszentrum haben ein Atrium-Loch in der Dachplatte, mittig gesetzte Aufbauten
+> schwebten darueber. Relief fasst bewusst nur Ecken und umlaufende Baender an, damit es
+> nicht mit den `fensterband()`-Achsen kollidiert. Innenleben unveraendert, zmin 0,00.
+
 ### Neue Helfer
 - `boden(B, T, m_sockel, m_boden)` — Sockel + Innenboden bündig auf `FB`, keine Schwelle.
 - `wand_mit_oeffnungen(...)` + `oeffnungs_achsen(laenge, n, off_b)` — die zweite Funktion
@@ -489,6 +500,17 @@ mitgerendert.
 | `th19_fitnessstudio.glb` | 32,5 × 24,9 × 5,4 | Laufbänder, Bänke, Hantelablagen, Seilzug, Spiegelwand, Empfang |
 
 Generator: `tools/assets/mk_th19_baeder.py`
+
+> 🔧 **Aussenrelief (31.07.) — bitte die GLB/STL dieser Charge ersetzen.** Die Bauten waren
+> von aussen glatte Quader mit Fensterstreifen und einer leeren weissen Dachplatte; im
+> Kontaktbogen sahen mehrere davon identisch aus. Neu in allen drei Generatoren:
+> `bandring()` (umlaufendes Band aus VIER Quadern — ein Vollquader mauert die Decke der
+> begehbaren Bauten von innen zu), `aussenrelief()` (Sockelband, Ecklisenen, zweistufiges
+> Kranzgesims, optional Attika) und `dachtechnik()` (Aufzugsueberfahrt, Lueftungsgeraete,
+> Oberlichter, Fallrohr). **Alle Dachaufbauten laufen am Rand entlang** — Bibliothek und
+> Einkaufszentrum haben ein Atrium-Loch in der Dachplatte, mittig gesetzte Aufbauten
+> schwebten darueber. Relief fasst bewusst nur Ecken und umlaufende Baender an, damit es
+> nicht mit den `fensterband()`-Achsen kollidiert. Innenleben unveraendert, zmin 0,00.
 `platte_mit_loch()` wurde um einen Loch-Versatz erweitert, `tonne(..., fuellen=False)`
 liefert ein offenes Gewölbe mit halbrunden Stirndeckeln.
 
@@ -538,6 +560,17 @@ Alle sechs begehbar, Masse zur 1,8-m-Figur geprüft (Theken 1,10, Sitze 0,45, Ti
 | `th23_apotheke.glb` | 18,0 × 15,5 × 4,8 | Sichttresen als echte Vitrine, Schubladenwand, Kordel, Leuchtkreuz |
 
 Generator: `tools/assets/mk_th23_oeffentlich.py`
+
+> 🔧 **Aussenrelief (31.07.) — bitte die GLB/STL dieser Charge ersetzen.** Die Bauten waren
+> von aussen glatte Quader mit Fensterstreifen und einer leeren weissen Dachplatte; im
+> Kontaktbogen sahen mehrere davon identisch aus. Neu in allen drei Generatoren:
+> `bandring()` (umlaufendes Band aus VIER Quadern — ein Vollquader mauert die Decke der
+> begehbaren Bauten von innen zu), `aussenrelief()` (Sockelband, Ecklisenen, zweistufiges
+> Kranzgesims, optional Attika) und `dachtechnik()` (Aufzugsueberfahrt, Lueftungsgeraete,
+> Oberlichter, Fallrohr). **Alle Dachaufbauten laufen am Rand entlang** — Bibliothek und
+> Einkaufszentrum haben ein Atrium-Loch in der Dachplatte, mittig gesetzte Aufbauten
+> schwebten darueber. Relief fasst bewusst nur Ecken und umlaufende Baender an, damit es
+> nicht mit den `fensterband()`-Achsen kollidiert. Innenleben unveraendert, zmin 0,00.
 
 > ⚠️ **Der Glas-Fallstrick gilt auch für Möbel.** Beim Apotheken-Sichttresen sass die
 > Scheibe 3 cm hinter der Tresenfront und die Auslage steckte im massiven Korpus — von
