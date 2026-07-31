@@ -126,10 +126,33 @@ function Verbinde-Emulator($adbPfad) {
     return $false
 }
 
+# Der Bot soll durchlaufen. Ist BlueStacks gar nicht gestartet, hilft kein
+# Verbinden - dann wird es selbst hochgefahren und einmal abgewartet.
+function Starte-BlueStacks {
+    if (Get-Process -Name "HD-Player" -ErrorAction SilentlyContinue) { return $false }
+    foreach ($pfad in @(
+        "$env:ProgramFiles\BlueStacks_nxt\HD-Player.exe",
+        "${env:ProgramFiles(x86)}\BlueStacks_nxt\HD-Player.exe",
+        "$env:ProgramFiles\BlueStacks\HD-Player.exe")) {
+        if (Test-Path $pfad) {
+            Warnung "BlueStacks laeuft nicht - wird gestartet ..."
+            Start-Process -FilePath $pfad
+            for ($i = 0; $i -lt 24; $i++) {
+                Start-Sleep -Seconds 5
+                if (Verbinde-Emulator $Adb) { return $true }
+            }
+            Warnung "BlueStacks gestartet, meldet sich aber noch nicht."
+            return $true
+        }
+    }
+    return $false
+}
+
 & $python bot.py --adb "$Adb" devices
 if ($LASTEXITCODE -ne 0) {
     Warnung "Kein Geraet gefunden - suche nach einem Emulator ..."
     $null = Verbinde-Emulator $Adb
+    if ($LASTEXITCODE -ne 0) { $null = Starte-BlueStacks }
     & $python bot.py --adb "$Adb" devices
     if ($LASTEXITCODE -ne 0) {
         Fehler "Weder Handy noch Emulator erreichbar."
@@ -174,6 +197,22 @@ if ($paket -and $paket -notmatch "com.phs.global") {
 if (-not (Test-Path "logs")) { New-Item -ItemType Directory -Path "logs" | Out-Null }
 $stempel = Get-Date -Format "yyyyMMdd-HHmmss"
 $protokoll = "logs\lauf-$stempel.jsonl"
+
+# Ein schlafender PC tippt nichts an. Solange dieses Fenster offen ist, bleibt
+# der Rechner wach - Bildschirm darf dunkel werden, das stoert nicht.
+if ($Scharf -and $Dauerlauf) {
+    try {
+        Add-Type -Name Schlaf -Namespace Win32 -MemberDefinition @"
+[DllImport("kernel32.dll", SetLastError = true)]
+public static extern uint SetThreadExecutionState(uint esFlags);
+"@ -ErrorAction Stop
+        # ES_CONTINUOUS | ES_SYSTEM_REQUIRED
+        [void][Win32.Schlaf]::SetThreadExecutionState(0x80000000 -bor 0x00000001)
+        Gut "Ruhezustand ausgesetzt, solange der Bot laeuft."
+    } catch {
+        Warnung "Ruhezustand liess sich nicht aussetzen - der PC koennte einschlafen."
+    }
+}
 
 if ($Scharf -and $Dauerlauf) {
     Schritt "Bot laeuft SCHARF ohne Zeitlimit"

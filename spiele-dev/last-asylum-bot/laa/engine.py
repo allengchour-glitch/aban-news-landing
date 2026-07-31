@@ -311,6 +311,19 @@ class Engine:
                 self.last_match = treffer[0]
                 return True
             return False
+        if "app_im_vordergrund" in cond:
+            # Laeuft das Spiel ueberhaupt noch? Ohne diese Pruefung tippt der
+            # Bot stundenlang auf einen Startbildschirm des Emulators.
+            erwartet = bool(cond["app_im_vordergrund"])
+            try:
+                vorn = self.dev.current_package()
+            except Exception as exc:
+                self.log.debug(f"Vordergrund-App nicht abfragbar: {exc}")
+                return erwartet  # im Zweifel nichts anfassen
+            passt = bool(self.cfg.package) and self.cfg.package in vorn
+            if not passt:
+                self.log.debug("Andere App im Vordergrund", app=vorn.strip()[:60])
+            return passt if erwartet else not passt
         if "pixel" in cond:
             x, y = cond["pixel"]
             return matcher.pixel_matches(
@@ -1264,8 +1277,11 @@ class Engine:
         self.log.debug("Kein Schritt hat gewirkt", bildschirm=schluessel[:8])
         self._erkunden(schluessel, vorher)
 
-    # Farben der Aktions-Knoepfe. Gold/Orange fehlt mit Absicht: das ist im
-    # Spiel die Farbe fuer Kaeufe und fuer 'Bestaetigen' bei 'Spiel beenden?'.
+    # Farben der Aktions-Knoepfe. Gold/Orange fehlt mit Absicht - nicht weil
+    # Gold immer Geld bedeutet, sondern weil es die Farbe der Haupthandlung
+    # ist und die harmlos ('Zerlegen') oder teuer sein kann ('CHF 4.40',
+    # '50 Spenden' mit Diamant). Am Bild ist das nicht zu unterscheiden.
+    # Blau ist entweder eine Handlung oder 'Abbrechen' - beides ungefaehrlich.
     ERKUNDUNGS_FARBEN = [(120, 181, 54), (58, 142, 230)]
     # Oben liegt das Angebots-Banner, ganz unten die Navigationsleiste.
     ERKUNDUNGS_ZONE = [0.05, 0.18, 0.95, 0.88]

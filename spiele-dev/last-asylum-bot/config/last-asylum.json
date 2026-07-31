@@ -11,7 +11,7 @@
   "stuck_seconds": 300,
   "templates_dir": "../templates",
   "input_method": "input",
-  "_geld": "ECHTGELD IST TABU, SPIEL-WAEHRUNG IST ERLAUBT. Gesperrt ist die rechte obere Ecke bis 14,5 % Bildhoehe - dort sitzen Einkaufswagen, Diamanten-Aufladung und das 'Tagesangebot' mit CHF-Preis. LINKS OBEN DARF NICHT GESPERRT WERDEN: dort liegt der Zurueck-Pfeil. Eine frueher auf Verdacht angelegte Zone dort hat im Betrieb genau den blockiert - in keinem Screenshot gab es links oben je ein Kauf-Angebot. Regel fuer dich: schneide nie ein Template von einem Knopf mit Preisschild. FARB-REGEL, am 31.07. an einem echten Angebot bestaetigt ('Falkenturm-Ergaenzung CHF 4.40'): Kaufknoepfe im Spiel sind GOLD/ORANGE. Gruen und Blau sind Handlungen. Darum fasst die Erkundung nur gruene und blaue Knoepfe an und laesst Gold grundsaetzlich in Ruhe.",
+  "_geld": "ECHTGELD IST TABU, SPIEL-WAEHRUNG IST ERLAUBT. Gesperrt ist die rechte obere Ecke bis 14,5 % Bildhoehe - dort sitzen Einkaufswagen, Diamanten-Aufladung und das 'Tagesangebot' mit CHF-Preis. LINKS OBEN DARF NICHT GESPERRT WERDEN: dort liegt der Zurueck-Pfeil. Eine frueher auf Verdacht angelegte Zone dort hat im Betrieb genau den blockiert - in keinem Screenshot gab es links oben je ein Kauf-Angebot. Regel fuer dich: schneide nie ein Template von einem Knopf mit Preisschild. Zur Farbe der Kaufknoepfe siehe _farben - kurz: Gold wird nie blind angetippt, weil dieselbe Farbe fuer harmlose und fuer kostende Knoepfe benutzt wird.",
   "tabu_regionen": [
     {
       "name": "Echtgeld-Shop, Diamanten-Aufladung und Tagesangebot oben rechts",
@@ -679,7 +679,7 @@
       "name": "blauer-knopf-generisch",
       "priority": 144,
       "cooldown": 6,
-      "_zweck": "Blau ist im Spiel die Farbe fuer 'Los', 'Versammeln', 'Benutzen' - also fuer Handlungen, nicht fuer Kaeufe. Gekauft wird ueber goldene Knoepfe (siehe _geld). Damit kommt der Bot aus Event-Popups wie 'Dreieckige Arena' oder 'Koenigsstadtkampf' heraus, ohne dass es dafuer je eine Vorlage braucht. Der untere Rand ist ausgenommen: dort liegt das Angebots-Banner.",
+      "_zweck": "Blau ist im Spiel entweder eine Handlung ('Los' bei Arena und Koenigsstadtkampf, 'Versammeln' beim Monster) oder 'Abbrechen'. Beides ist ungefaehrlich - schlimmstenfalls bricht der Bot etwas ab. Damit kommt er aus Event-Popups heraus, ohne dass es dafuer je eine Vorlage braucht. Der untere Rand ist ausgenommen: dort liegt das Angebots-Banner.",
       "match": {
         "farbknopf": {
           "rgb": [
@@ -6154,6 +6154,37 @@
           }
         }
       ]
+    },
+    {
+      "name": "spiel-im-vordergrund",
+      "every": 300,
+      "at_start": true,
+      "priority": 205,
+      "_zweck": "Der Bot soll durchlaufen. Steht das Spiel nicht mehr im Vordergrund - abgestuerzt, vom Emulator beendet, ein anderes Fenster davor -, tippt er ins Leere, ohne dass es jemandem auffaellt. Alle fuenf Minuten nachsehen und noetigenfalls neu starten.",
+      "do": [
+        {
+          "wenn": {
+            "match": {
+              "app_im_vordergrund": true
+            },
+            "dann": [],
+            "sonst": [
+              {
+                "log": "Spiel ist nicht im Vordergrund - wird gestartet"
+              },
+              {
+                "start_app": true
+              },
+              {
+                "sleep": [
+                  8.0,
+                  12.0
+                ]
+              }
+            ]
+          }
+        }
+      ]
     }
   ],
   "_diamanten": "DIAMANTEN-REGEL (User 2026-07-31): 'bis 50 pro Klick' ist erlaubt. ABER der Bot kann Zahlen auf Knoepfen NICHT lesen - fuer ihn sieht '2 Spenden' aus wie '50 Spenden' oder '500 Spenden'. Deshalb tippt er von sich aus nur Knoepfe an, die REINE RESSOURCEN kosten (blauer Spenden-Knopf, Kraeuter). Der Diamanten-Knopf steht als eigene Aufgabe bereit, ist aber AUS - wer ihn einschaltet, akzeptiert, dass die Kosten mit jeder Spende steigen und der Bot das nicht bemerkt. Ebenso bleibt 'Sofort' beim Gebaeude-Upgrade (vierstellig) unangetastet. Echtgeld ist ohnehin komplett tabu, siehe tabu_regionen.",
@@ -6202,5 +6233,6 @@
     "ui/btn_benutzen.png",
     "ui/btn_bestaetigen.png"
   ],
-  "_kritische_templates": "Diese Vorlagen nennt der Selbstbericht zuerst, egal an wie vielen Aufgaben sie sonst haengen. Es sind die, ohne die der Bot Schaden nicht abwenden kann - der Schutzschild. Nach dem Verlust von zwei Staedten am 31.07. steht er vor allem anderen."
+  "_kritische_templates": "Diese Vorlagen nennt der Selbstbericht zuerst, egal an wie vielen Aufgaben sie sonst haengen. Es sind die, ohne die der Bot Schaden nicht abwenden kann - der Schutzschild. Nach dem Verlust von zwei Staedten am 31.07. steht er vor allem anderen.",
+  "_farben": "FARBEN DER KNOEPFE, am 31.07. an echten Dialogen geprueft - die einfache Regel 'Gold = Geld' stimmt so NICHT: GOLD/ORANGE ist die Farbe der Haupthandlung, und die kann harmlos sein ('Zerlegen' in der Ausruestungswerkstatt) oder etwas kosten ('Falkenturm-Ergaenzung CHF 4.40', '50 Spenden' mit Diamant, 'Bestaetigen' bei '2 Diamanten ausgeben'). Am Bild allein ist das nicht zu unterscheiden - deshalb wird Gold NIE blind angetippt, weder beim Erkunden noch von einer allgemeinen Regel. Gold nur ueber eine benannte Vorlage, wo klar ist, was der Knopf tut. BLAU ist entweder eine Handlung ('Los', 'Versammeln') oder 'Abbrechen'. Beides ist ungefaehrlich: schlimmstenfalls bricht der Bot etwas ab. Darum darf Blau allgemein getippt werden. GRUEN ist Abholen/Bestaetigen ohne Kosten. GRAU ist die guenstige Alternative - bei der Allianz-Technologie steht neben dem goldenen '50 Spenden' (Diamanten) ein graues '200 Spenden' (Ressourcen); gespendet wird immer das graue. ROT ist Abbrechen/Schliessen."
 }

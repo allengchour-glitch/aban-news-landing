@@ -1642,7 +1642,12 @@ class TestErkundung(unittest.TestCase):
             shutil.rmtree(ordner, ignore_errors=True)
 
     def test_goldener_knopf_wird_nie_angefasst(self):
-        """Gold ist im Spiel Kauf und »Bestätigen« bei »Spiel beenden?«."""
+        """Gold ist die Haupthandlung - mal harmlos, mal teuer.
+
+        »Zerlegen« ist gold und kostet nichts, »CHF 4.40« und »50 Spenden«
+        (Diamanten) sind es auch. Am Bild ist das nicht zu unterscheiden,
+        also wird Gold nie blind angetippt.
+        """
         import shutil, tempfile
         ordner = tempfile.mkdtemp()
         try:
@@ -1676,6 +1681,65 @@ class TestErkundung(unittest.TestCase):
             self.assertEqual(eng.stats.get("erkundet", 0), 0)
         finally:
             shutil.rmtree(ordner, ignore_errors=True)
+
+
+class TestSpielImVordergrund(unittest.TestCase):
+    """Steht das Spiel nicht mehr vorn, tippt der Bot ins Leere."""
+
+    def bau(self, paket):
+        class Gerät(FakeDevice):
+            gestartet = 0
+
+            def current_package(self_inner):
+                return paket
+
+            def start_app(self_inner, package, activity=None):
+                Gerät.gestartet += 1
+
+        Gerät.gestartet = 0
+        cfg = Config.from_dict({
+            "package": "com.phs.global", "base_width": 400,
+            "tasks": [{"name": "wache", "do": [
+                {"wenn": {"match": {"app_im_vordergrund": True},
+                          "dann": [],
+                          "sonst": [{"start_app": True}]}}]}],
+        })
+        self.assertEqual(cfg.validate(), [])
+        eng = Engine(cfg, Gerät([noise(400, 700, 130)], loop=True), logger=quiet(),
+                     sleep=lambda s: None, seed=1)
+        return Gerät, eng
+
+    def test_fremde_app_wird_ersetzt(self):
+        Gerät, eng = self.bau("com.android.launcher")
+        eng.run_actions(eng.cfg.tasks[0].do)
+        self.assertEqual(Gerät.gestartet, 1)
+
+    def test_spiel_vorn_bleibt_unangetastet(self):
+        Gerät, eng = self.bau("com.phs.global/.MainActivity")
+        eng.run_actions(eng.cfg.tasks[0].do)
+        self.assertEqual(Gerät.gestartet, 0)
+
+    def test_bei_fehler_wird_nichts_neu_gestartet(self):
+        """Lieber nichts tun als das laufende Spiel abschiessen."""
+        class Kaputt(FakeDevice):
+            gestartet = 0
+
+            def current_package(self_inner):
+                raise RuntimeError("adb weg")
+
+            def start_app(self_inner, package, activity=None):
+                Kaputt.gestartet += 1
+
+        cfg = Config.from_dict({
+            "package": "com.phs.global", "base_width": 400,
+            "tasks": [{"name": "wache", "do": [
+                {"wenn": {"match": {"app_im_vordergrund": True},
+                          "dann": [], "sonst": [{"start_app": True}]}}]}],
+        })
+        eng = Engine(cfg, Kaputt([noise(400, 700, 131)], loop=True), logger=quiet(),
+                     sleep=lambda s: None, seed=1)
+        eng.run_actions(cfg.tasks[0].do)
+        self.assertEqual(Kaputt.gestartet, 0)
 
 
 class TestZurueckPfeil(unittest.TestCase):

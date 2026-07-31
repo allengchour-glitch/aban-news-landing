@@ -274,8 +274,10 @@ class Config:
             elif "farbknopf" in cond:
                 if not isinstance(cond["farbknopf"], dict):
                     problems.append(f"{where}: 'farbknopf' braucht ein Objekt mit 'rgb'")
+            elif "app_im_vordergrund" in cond:
+                pass
             elif "always" not in cond:
-                problems.append(f"{where}: Bedingung ohne template/pixel/farbknopf/always")
+                problems.append(f"{where}: Bedingung ohne template/pixel/farbknopf/app_im_vordergrund/always")
 
         for rule in self.rules:
             check_match(f"Regel '{rule.name}'", rule.match)
