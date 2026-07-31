@@ -384,6 +384,8 @@ class Engine:
             if task is None:
                 raise ConfigError(f"{where}: Aufgabe '{value}' gibt es nicht")
             self.run_actions(task.do, f"Aufgabe '{task.name}'")
+        elif key == "selbstbericht":
+            self._selbstbericht(value if isinstance(value, dict) else {})
         elif key == "selbst_aktualisieren":
             self._selbst_aktualisieren(value if isinstance(value, dict) else {})
         elif key == "stop":
@@ -622,6 +624,55 @@ class Engine:
                 json.dump(roh, fh, ensure_ascii=False, indent=2)
         except Exception as exc:  # pragma: no cover - Dateisystem
             self.log.warn(f"Konfiguration nicht gespeichert: {exc}")
+
+    def _selbstbericht(self, spec: Dict[str, Any]) -> None:
+        """Sagen, was gerade fehlt - und was es kostet.
+
+        Der Bot kann viele Vorlagen nicht selbst schneiden. Statt still
+        daneben zu greifen, zaehlt er, welche fehlende Vorlage wie viele
+        Aufgaben blockiert, und nennt die teuersten zuerst. Dann weiss man
+        genau, welcher Ausschnitt am meisten bringt.
+        """
+        offen = list(self.cfg.offene_templates)
+        if not offen:
+            self.log.info("Selbstbericht: keine Vorlage fehlt")
+            return
+
+        betroffen: Dict[str, set] = {n: set() for n in offen}
+
+        def suche(knoten, wo):
+            if isinstance(knoten, dict):
+                name = knoten.get("template")
+                if isinstance(name, str) and name in betroffen:
+                    betroffen[name].add(wo)
+                for v in knoten.values():
+                    suche(v, wo)
+            elif isinstance(knoten, list):
+                for v in knoten:
+                    suche(v, wo)
+
+        for regel in self.cfg.rules:
+            suche(regel.match, f"Regel {regel.name}")
+            suche(regel.do, f"Regel {regel.name}")
+        for task in self.cfg.tasks:
+            suche(task.do, f"Aufgabe {task.name}")
+
+        rang = sorted(betroffen.items(), key=lambda kv: (-len(kv[1]), kv[0]))
+        wieviele = int(spec.get("hoechstens", 6))
+        self.log.info(
+            f"Selbstbericht: {len(offen)} Vorlagen fehlen - die wichtigsten zuerst"
+        )
+        for name, wo in rang[:wieviele]:
+            if not wo:
+                continue
+            self.log.info(f"   fehlt: {name}", blockiert=", ".join(sorted(wo)))
+        self.log.info("   Schneiden mit: python bot.py entdecke (Bildschirm vorher hinstellen)")
+        gelernt = len(self.cfg.template_gruppe("gelernt/blasen/*.png"))
+        verworfen = len(self.cfg.template_gruppe("gelernt/verworfen/*.png"))
+        self.log.info(
+            "   Selbst gelernt", brauchbar=gelernt, aussortiert=verworfen,
+            eigene_groessen=len(self.cfg.template_skalen),
+        )
 
     def _selbst_aktualisieren(self, spec: Dict[str, Any]) -> None:
         """Neue Fassung holen und sich dafuer selbst beenden.

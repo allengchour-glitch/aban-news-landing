@@ -212,7 +212,7 @@ class Config:
             "tap_match", "tap_template", "tap", "tap_first", "tap_alle", "swipe", "drag", "key", "sleep",
             "wait_template", "start_app", "stop_app", "restart_app", "log",
             "screenshot", "repeat", "stop", "back", "run_task", "type_text", "wenn",
-            "lerne_objekte", "optimiere_takte", "kalibriere", "selbst_aktualisieren",
+            "lerne_objekte", "optimiere_takte", "kalibriere", "selbst_aktualisieren", "selbstbericht",
         }
         task_names = {t.name for t in self.tasks}
 

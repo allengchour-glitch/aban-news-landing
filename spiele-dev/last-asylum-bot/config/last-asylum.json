@@ -6104,6 +6104,20 @@
           }
         }
       ]
+    },
+    {
+      "name": "selbstbericht",
+      "every": 21600,
+      "at_start": true,
+      "priority": 96,
+      "_zweck": "Nennt die fehlenden Vorlagen in der Reihenfolge, in der sie am meisten blockieren - samt der Aufgaben, die daran haengen. So sieht man im laufenden Fenster, welcher Ausschnitt am meisten bringt.",
+      "do": [
+        {
+          "selbstbericht": {
+            "hoechstens": 6
+          }
+        }
+      ]
     }
   ],
   "_diamanten": "DIAMANTEN-REGEL (User 2026-07-31): 'bis 50 pro Klick' ist erlaubt. ABER der Bot kann Zahlen auf Knoepfen NICHT lesen - fuer ihn sieht '2 Spenden' aus wie '50 Spenden' oder '500 Spenden'. Deshalb tippt er von sich aus nur Knoepfe an, die REINE RESSOURCEN kosten (blauer Spenden-Knopf, Kraeuter). Der Diamanten-Knopf steht als eigene Aufgabe bereit, ist aber AUS - wer ihn einschaltet, akzeptiert, dass die Kosten mit jeder Spende steigen und der Bot das nicht bemerkt. Ebenso bleibt 'Sofort' beim Gebaeude-Upgrade (vierstellig) unangetastet. Echtgeld ist ohnehin komplett tabu, siehe tabu_regionen.",

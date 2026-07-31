@@ -1303,6 +1303,55 @@ class TestGeraeteWahl(unittest.TestCase):
             _adb.list_devices = alt
 
 
+class TestSelbstbericht(unittest.TestCase):
+    """Der Bot sagt selbst, welche fehlende Vorlage am meisten kostet."""
+
+    def test_nennt_die_teuerste_vorlage_zuerst(self):
+        zeilen = []
+
+        class Mit(Logger):
+            def info(self, msg, **f):
+                zeilen.append((msg, f))
+
+        cfg = Config.from_dict({
+            "rules": [{"name": "r1",
+                       "match": {"template": "fehlt_a.png", "optional": True},
+                       "do": [{"sleep": 1}]}],
+            "tasks": [
+                {"name": "t1", "do": [{"tap_template": {"template": "fehlt_a.png",
+                                                        "optional": True}}]},
+                {"name": "t2", "do": [{"tap_template": {"template": "fehlt_a.png",
+                                                        "optional": True}}]},
+                {"name": "t3", "do": [{"tap_template": {"template": "fehlt_b.png",
+                                                        "optional": True}}]},
+            ],
+        })
+        self.assertEqual(cfg.validate(), [])
+        eng = Engine(cfg, FakeDevice([noise(200, 300, 90)], loop=True),
+                     logger=Mit(level="info", color=False), sleep=lambda s: None)
+        eng.run_actions([{"selbstbericht": {}}])
+        genannt = [f["blockiert"] for m, f in zeilen if "fehlt:" in m]
+        self.assertTrue(genannt, "es muss eine fehlende Vorlage genannt werden")
+        erste = [m for m, f in zeilen if "fehlt:" in m][0]
+        self.assertIn("fehlt_a.png", erste,
+                      "die Vorlage mit den meisten Abhaengigkeiten gehoert nach oben")
+        self.assertIn("Aufgabe t1", genannt[0])
+
+    def test_ohne_luecken_kein_larm(self):
+        zeilen = []
+
+        class Mit(Logger):
+            def info(self, msg, **f):
+                zeilen.append(msg)
+
+        cfg = Config.from_dict({"tasks": [{"name": "t", "do": [{"sleep": 1}]}]})
+        cfg.validate()
+        eng = Engine(cfg, FakeDevice([noise(200, 300, 91)], loop=True),
+                     logger=Mit(level="info", color=False), sleep=lambda s: None)
+        eng.run_actions([{"selbstbericht": {}}])
+        self.assertTrue(any("keine Vorlage fehlt" in z for z in zeilen))
+
+
 class TestZurueckPfeil(unittest.TestCase):
     """Die Android-Zurück-Taste ist in diesem Spiel gefährlich.
 
