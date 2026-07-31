@@ -365,6 +365,94 @@
       ]
     },
     {
+      "name": "spiel-update-bestaetigen",
+      "priority": 255,
+      "cooldown": 20,
+      "_zweck": "'Neue Version verfuegbar. Tippe auf Bestaetigen, um zu aktualisieren.' Bis das bestaetigt ist, geht im Spiel gar nichts mehr - der Bot stuende bis zum naechsten Neustart davor. Dieser eine goldene Knopf muss also angetippt werden, obwohl Gold sonst tabu ist (siehe _farben). Sicher wird das durch die Bedingung DANEBEN: ein Kauf-Dialog hat immer einen zweiten Knopf - blau 'Abbrechen' oder rot - auf derselben Hoehe. Steht der goldene Knopf allein in der Bildmitte, ist es ein Hinweis, kein Kauf. Angebote mit Preis liegen ausserdem ganz oben oder ganz unten, nicht in der Mitte.",
+      "match": {
+        "all": [
+          {
+            "farbknopf": {
+              "rgb": [
+                237,
+                170,
+                55
+              ],
+              "tolerance": 40,
+              "min_w": 0.14,
+              "max_w": 0.5,
+              "min_h": 0.02,
+              "max_h": 0.06,
+              "region": [
+                0.2,
+                0.4,
+                0.8,
+                0.68
+              ]
+            }
+          },
+          {
+            "not": {
+              "farbknopf": {
+                "rgb": [
+                  58,
+                  142,
+                  230
+                ],
+                "tolerance": 40,
+                "min_w": 0.12,
+                "max_w": 0.5,
+                "min_h": 0.02,
+                "max_h": 0.06,
+                "region": [
+                  0.0,
+                  0.4,
+                  1.0,
+                  0.68
+                ]
+              }
+            }
+          },
+          {
+            "not": {
+              "farbknopf": {
+                "rgb": [
+                  228,
+                  58,
+                  52
+                ],
+                "tolerance": 45,
+                "min_w": 0.12,
+                "max_w": 0.5,
+                "min_h": 0.02,
+                "max_h": 0.06,
+                "region": [
+                  0.0,
+                  0.4,
+                  1.0,
+                  0.68
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "do": [
+        {
+          "log": "Hinweis mit einzelnem Bestaetigen-Knopf - annehmen"
+        },
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            2.5,
+            4.0
+          ]
+        }
+      ]
+    },
+    {
       "name": "alles-abholen",
       "priority": 216,
       "cooldown": 1.0,
@@ -678,8 +766,8 @@
     {
       "name": "blauer-knopf-generisch",
       "priority": 144,
-      "cooldown": 6,
-      "_zweck": "Blau ist im Spiel entweder eine Handlung ('Los' bei Arena und Koenigsstadtkampf, 'Versammeln' beim Monster) oder 'Abbrechen'. Beides ist ungefaehrlich - schlimmstenfalls bricht der Bot etwas ab. Damit kommt er aus Event-Popups heraus, ohne dass es dafuer je eine Vorlage braucht. Der untere Rand ist ausgenommen: dort liegt das Angebots-Banner.",
+      "cooldown": 25,
+      "_zweck": "Blau ist im Spiel entweder eine Handlung ('Los' bei Arena und Koenigsstadtkampf, 'Versammeln' beim Monster) oder 'Abbrechen'. Beides ist ungefaehrlich - schlimmstenfalls bricht der Bot etwas ab. Damit kommt er aus Event-Popups heraus, ohne dass es dafuer je eine Vorlage braucht. Der untere Rand ist ausgenommen: dort liegt das Angebots-Banner. Am 31.07. griff die Regel sechzehnmal hintereinander mit einem Fuellgrad von nur 0.59 - das war kein Knopf, sondern eine blaeuliche Flaeche. Ein echter Knopf ist fast vollstaendig ausgefuellt, deshalb jetzt 0.78 und mindestens 18 Prozent Bildbreite.",
       "match": {
         "farbknopf": {
           "rgb": [
@@ -688,7 +776,7 @@
             230
           ],
           "tolerance": 40,
-          "min_w": 0.15,
+          "min_w": 0.18,
           "max_w": 0.75,
           "min_h": 0.02,
           "max_h": 0.07,
@@ -698,7 +786,7 @@
             1.0,
             0.88
           ],
-          "min_fuellung": 0.55
+          "min_fuellung": 0.78
         }
       },
       "do": [
@@ -793,9 +881,9 @@
           "max_h": 0.05,
           "min_fuellung": 0.45,
           "region": [
-            0.13,
+            0.11,
             0.1,
-            0.85,
+            0.89,
             0.88
           ]
         }
@@ -826,8 +914,8 @@
               0.88
             ],
             "nur_x": [
-              0.13,
-              0.85
+              0.11,
+              0.89
             ],
             "runden": 2,
             "hoechstens": 14,
@@ -1206,8 +1294,8 @@
     {
       "name": "roter-punkt-pruefen",
       "priority": 128,
-      "cooldown": 5,
-      "_zweck": "Rote Punkte markieren offene Sachen - dort ist fast immer noch etwas zu holen. Es wird einer pro Durchgang angetippt; die Regeln fuer gruene und blaue Knoepfe holen ab, was danach erscheint, und 'zurueck-zur-basis' bringt den Bot wieder heraus. So arbeitet er sie einen nach dem anderen ab, bis keiner mehr da ist. Der Streifen ganz unten bleibt ausgenommen: dort liegt das Angebots-Banner mit dem Preis.",
+      "cooldown": 12,
+      "_zweck": "Rote Punkte markieren offene Sachen - dort ist fast immer noch etwas zu holen. Es wird einer pro Durchgang angetippt; die Regeln fuer gruene und blaue Knoepfe holen ab, was danach erscheint, und 'zurueck-zur-basis' bringt den Bot wieder heraus. So arbeitet er sie einen nach dem anderen ab, bis keiner mehr da ist. Der Streifen ganz unten bleibt ausgenommen: dort liegt das Angebots-Banner mit dem Preis. Fuellgrad von 0.6 auf 0.75: bei 0.82 lief die Regel zehnmal in Folge auf dieselbe Stelle, ohne dass sich etwas tat.",
       "match": {
         "farbknopf": {
           "rgb": [
@@ -1220,7 +1308,7 @@
           "max_w": 60,
           "min_h": 14,
           "max_h": 60,
-          "min_fuellung": 0.6,
+          "min_fuellung": 0.75,
           "region": [
             0.0,
             0.06,
@@ -3583,8 +3671,8 @@
               0.88
             ],
             "nur_x": [
-              0.13,
-              0.85
+              0.11,
+              0.89
             ],
             "runden": 2,
             "hoechstens": 14,
@@ -3662,8 +3750,8 @@
               0.88
             ],
             "nur_x": [
-              0.13,
-              0.85
+              0.11,
+              0.89
             ],
             "runden": 2,
             "hoechstens": 14,
@@ -3741,8 +3829,8 @@
               0.88
             ],
             "nur_x": [
-              0.13,
-              0.85
+              0.11,
+              0.89
             ],
             "runden": 2,
             "hoechstens": 14,
@@ -3820,8 +3908,8 @@
               0.88
             ],
             "nur_x": [
-              0.13,
-              0.85
+              0.11,
+              0.89
             ],
             "runden": 2,
             "hoechstens": 14,
@@ -3899,8 +3987,8 @@
               0.88
             ],
             "nur_x": [
-              0.13,
-              0.85
+              0.11,
+              0.89
             ],
             "runden": 2,
             "hoechstens": 14,
@@ -3978,8 +4066,8 @@
               0.88
             ],
             "nur_x": [
-              0.13,
-              0.85
+              0.11,
+              0.89
             ],
             "runden": 2,
             "hoechstens": 14,
@@ -4057,8 +4145,8 @@
               0.88
             ],
             "nur_x": [
-              0.13,
-              0.85
+              0.11,
+              0.89
             ],
             "runden": 2,
             "hoechstens": 14,
@@ -4136,8 +4224,8 @@
               0.88
             ],
             "nur_x": [
-              0.13,
-              0.85
+              0.11,
+              0.89
             ],
             "runden": 2,
             "hoechstens": 14,
@@ -4215,8 +4303,8 @@
               0.88
             ],
             "nur_x": [
-              0.13,
-              0.85
+              0.11,
+              0.89
             ],
             "runden": 2,
             "hoechstens": 14,
@@ -6075,8 +6163,8 @@
               0.88
             ],
             "nur_x": [
-              0.13,
-              0.85
+              0.11,
+              0.89
             ],
             "runden": 2,
             "hoechstens": 14,
@@ -6154,8 +6242,8 @@
               0.88
             ],
             "nur_x": [
-              0.13,
-              0.85
+              0.11,
+              0.89
             ],
             "runden": 2,
             "hoechstens": 14,
@@ -6233,8 +6321,8 @@
               0.88
             ],
             "nur_x": [
-              0.13,
-              0.85
+              0.11,
+              0.89
             ],
             "runden": 2,
             "hoechstens": 14,
@@ -6312,8 +6400,8 @@
               0.88
             ],
             "nur_x": [
-              0.13,
-              0.85
+              0.11,
+              0.89
             ],
             "runden": 2,
             "hoechstens": 14,
@@ -6391,8 +6479,8 @@
               0.88
             ],
             "nur_x": [
-              0.13,
-              0.85
+              0.11,
+              0.89
             ],
             "runden": 2,
             "hoechstens": 14,
@@ -6470,8 +6558,8 @@
               0.88
             ],
             "nur_x": [
-              0.13,
-              0.85
+              0.11,
+              0.89
             ],
             "runden": 2,
             "hoechstens": 14,
@@ -6549,8 +6637,8 @@
               0.88
             ],
             "nur_x": [
-              0.13,
-              0.85
+              0.11,
+              0.89
             ],
             "runden": 2,
             "hoechstens": 14,
@@ -6628,8 +6716,8 @@
               0.88
             ],
             "nur_x": [
-              0.13,
-              0.85
+              0.11,
+              0.89
             ],
             "runden": 2,
             "hoechstens": 14,
@@ -6707,8 +6795,8 @@
               0.88
             ],
             "nur_x": [
-              0.13,
-              0.85
+              0.11,
+              0.89
             ],
             "runden": 2,
             "hoechstens": 14,
@@ -6981,5 +7069,6 @@
   "_ziel": "So soll die Stadt aussehen (Bild des Benutzers vom 31.07.): keine Ertrags-Blasen ueber den Gebaeuden und kein roter Punkt an den Symbolen. Daran misst sich, ob der Bot seine Runde wirklich zu Ende gebracht hat - nicht daran, wie viele Tipps er gemacht hat.",
   "_gelerntes": "Was der Bot selbst misst - Groessen, Takte, Auswege - schreibt er NICHT in diese Datei, sondern in gelernt.json neben zustand.json. Grund: diese Datei liegt unter Git. Eine geaenderte Datei laesst 'git pull --ff-only' scheitern, und dann bekommt der Bot nie wieder eine neue Fassung - still, bis es jemand bemerkt. Beim Start legt er gelernt.json ueber die Werte von hier. Steckt der Ordner doch einmal fest, hilft: git checkout -- config/ && git pull",
   "_tabu": "Die Zone deckt nur den Einkaufswagen und die Diamanten-Anzeige ganz oben rechts ab. Sie reichte bis 0.145 hinunter und hat damit das Schliesskreuz der Dialoge mit verdeckt - das sitzt bei y 0.10 bis 0.11. Im Lauf vom 31.07. war das Ergebnis: 'Tipp in Tabu-Zone blockiert ... grund=ui/popup_close.png', danach 'Regel dialog-schliessen bewirkt nichts - stillgelegt'. Der Bot kam aus keinem Dialog mehr heraus. Eine Tabu-Zone muss so eng wie moeglich sein: was sie zu viel abdeckt, faellt nicht als Fehler auf, sondern als lahmgelegte Regel.",
-  "_soldaten": "T8 (S8) ist noch gesperrt; hoechste freie Stufe ist S7. Sobald S8 offen ist, reicht es, die Vorlage kaserne/stufe_t8.png zu schneiden - die Aufgabe waehlt dann von selbst die hoechste Stufe. Der orange Knopf 'Jetzt trainieren' kuerzt gegen Bezahlung ab und wird nicht benutzt."
+  "_soldaten": "T8 (S8) ist noch gesperrt; hoechste freie Stufe ist S7. Sobald S8 offen ist, reicht es, die Vorlage kaserne/stufe_t8.png zu schneiden - die Aufgabe waehlt dann von selbst die hoechste Stufe. Der orange Knopf 'Jetzt trainieren' kuerzt gegen Bezahlung ab und wird nicht benutzt.",
+  "_blasen": "Ertrags-Blasen liegen AUF der Karte und wandern mit, sobald die Kamera schwenkt - die Bedienung am Rand bleibt stehen. Daran unterscheidet man beides. Gesammelt wird nur zwischen x=0.11 und x=0.89: links liegt die Symbolspalte (x um 0.07), rechts Allianz, Nachricht und Tasche (x um 0.92), und die haben denselben hellen Ring wie eine Blase. Verloren geht dadurch nichts - der Rundgang schwenkt in acht Richtungen, also kommt jede Blase irgendwann in den Bereich."
 }

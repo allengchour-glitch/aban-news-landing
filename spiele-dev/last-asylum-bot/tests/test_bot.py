@@ -1835,6 +1835,57 @@ class TestBlasenOhneVorlage(unittest.TestCase):
         self.assertEqual(dev.taps, [])
 
 
+class TestUpdateHinweis(unittest.TestCase):
+    """Ein einzelner goldener Knopf ist ein Hinweis, zwei Knöpfe sind ein Kauf.
+
+    »Neue Version verfügbar« blockiert das ganze Spiel, bis man bestätigt -
+    also muss dieser goldene Knopf getippt werden, obwohl Gold sonst tabu
+    ist. Sicher wird das dadurch, dass ein Kauf-Dialog immer einen zweiten
+    Knopf daneben hat (blau »Abbrechen« oder rot).
+    """
+
+    GOLD = (237, 170, 55)
+    BLAU = (58, 142, 230)
+
+    def bau(self, knoepfe):
+        screen = Image.new(600, 1000, (210, 216, 224))
+        for rgb, x in knoepfe:
+            paste(screen, Image.new(140, 34, rgb), x, 520)
+        cfg = Config.load(os.path.join(ROOT, "config", "last-asylum.json"))
+        dev = FakeDevice([screen], loop=True)
+        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=5)
+        regel = next(r for r in cfg.rules if r.name == "spiel-update-bestaetigen")
+        return eng, screen, regel
+
+    def test_einzelner_goldener_knopf_wird_bestaetigt(self):
+        eng, screen, regel = self.bau([(self.GOLD, 230)])
+        self.assertTrue(eng.evaluate(regel.match, screen))
+
+    def test_gold_neben_blau_wird_nicht_angefasst(self):
+        """Der Diamanten-Dialog: »Abbrechen« blau, »Bestätigen« gold."""
+        eng, screen, regel = self.bau([(self.BLAU, 90), (self.GOLD, 330)])
+        self.assertFalse(
+            eng.evaluate(regel.match, screen),
+            "mit einem zweiten Knopf daneben ist es ein Kauf - Finger weg",
+        )
+
+    def test_ohne_goldenen_knopf_passiert_nichts(self):
+        eng, screen, regel = self.bau([(self.BLAU, 230)])
+        self.assertFalse(eng.evaluate(regel.match, screen))
+
+    def test_regel_greift_vor_allem_ausser_der_notbremse(self):
+        cfg = Config.load(os.path.join(ROOT, "config", "last-asylum.json"))
+        nach_prio = {r.name: r.priority for r in cfg.rules}
+        self.assertGreater(nach_prio["spiel-beenden-abbrechen"],
+                           nach_prio["spiel-update-bestaetigen"],
+                           "»Spiel beenden?« abzubrechen bleibt wichtiger")
+        for name, prio in nach_prio.items():
+            if name in ("spiel-beenden-abbrechen", "spiel-update-bestaetigen"):
+                continue
+            self.assertLess(prio, nach_prio["spiel-update-bestaetigen"],
+                            f"'{name}' darf den Update-Hinweis nicht ueberholen")
+
+
 class TestZurueckPfeil(unittest.TestCase):
     """Die Android-Zurück-Taste ist in diesem Spiel gefährlich.
 
