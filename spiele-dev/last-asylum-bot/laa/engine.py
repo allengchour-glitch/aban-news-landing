@@ -15,7 +15,8 @@ from .image import Image
 from .log import Logger
 
 
-def _veraenderte_bereiche(a: Image, b: Image, min_kante: int, max_kante: int):
+def _veraenderte_bereiche(a: Image, b: Image, min_kante: int, max_kante: int,
+                         seiten=(0.75, 1.35)):
     """Rechtecke, die sich zwischen zwei Aufnahmen geaendert haben.
 
     Arbeitet auf einem groben Raster – es geht um Objekte in Knopfgroesse,
@@ -65,7 +66,9 @@ def _veraenderte_bereiche(a: Image, b: Image, min_kante: int, max_kante: int):
             breite, hoehe = x1 - x0, y1 - y0
             if not (min_kante <= breite <= max_kante and min_kante <= hoehe <= max_kante):
                 continue
-            if not (0.6 <= breite / float(hoehe) <= 1.7):  # Blasen sind rundlich
+            if not (seiten[0] <= breite / float(hoehe) <= seiten[1]):
+                # Ertrags-Blasen sind rund. Ohne diese Schranke lernt der Bot
+                # Laufschriften mit: am 31.07. eine 96x144 grosse Chatzeile.
                 continue
             kisten.append((x0, y0, x1, y1))
     return kisten
@@ -750,11 +753,18 @@ class Engine:
         max_kante = int(spec.get("max_kante", 220))
         grenze = int(spec.get("max_dateien", 24))
         pause = float(spec.get("pause", 4.0))
+        seiten = tuple(spec.get("seitenverhaeltnis", (0.75, 1.35)))
 
         vorher = self.capture()
+        # Nur dort lernen, wo es Ertrag gibt. In Menues und Chatfenstern bewegt
+        # sich auch etwas - das ist aber nichts zum Einsammeln.
+        wo = spec.get("nur_wenn")
+        if wo and not self.evaluate(wo, vorher):
+            self.log.debug("Nicht die richtige Ansicht zum Lernen")
+            return
         self._sleep(pause)
         nachher = self.capture()
-        kisten = _veraenderte_bereiche(vorher, nachher, min_kante, max_kante)
+        kisten = _veraenderte_bereiche(vorher, nachher, min_kante, max_kante, seiten)
         if not kisten:
             self.log.debug("Nichts Neues entdeckt")
             return

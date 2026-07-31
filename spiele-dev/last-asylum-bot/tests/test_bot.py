@@ -1092,6 +1092,112 @@ class TestAllesEinsammeln(unittest.TestCase):
             shutil.rmtree(ordner, ignore_errors=True)
 
 
+class TestSelbstAktualisieren(unittest.TestCase):
+    """Der Bot holt neue Fassungen selbst und startet dafür neu."""
+
+    def bau(self):
+        import shutil, subprocess, tempfile
+        fern = tempfile.mkdtemp()
+        subprocess.run(["git", "init", "--bare", "-q", fern], check=True)
+        arbeit = tempfile.mkdtemp()
+        subprocess.run(["git", "clone", "-q", fern, arbeit], check=True)
+        for name, wert in (("user.email", "a@b.c"), ("user.name", "Test")):
+            subprocess.run(["git", "-C", arbeit, "config", name, wert], check=True)
+        with open(os.path.join(arbeit, "conf.json"), "w", encoding="utf-8") as fh:
+            json.dump({"base_width": 400}, fh)
+        subprocess.run(["git", "-C", arbeit, "add", "-A"], check=True)
+        subprocess.run(["git", "-C", arbeit, "commit", "-qm", "erst"], check=True)
+        subprocess.run(["git", "-C", arbeit, "push", "-q", "origin", "HEAD"], check=True)
+        return fern, arbeit, shutil, subprocess
+
+    def motor(self, arbeit):
+        cfg = Config.load(os.path.join(arbeit, "conf.json"))
+        return Engine(cfg, FakeDevice([noise(400, 700, 70)], loop=True),
+                      logger=quiet(), sleep=lambda s: None, seed=1)
+
+    def test_ohne_neuen_stand_laeuft_er_weiter(self):
+        fern, arbeit, shutil, _ = self.bau()
+        try:
+            eng = self.motor(arbeit)
+            eng.run_actions([{"selbst_aktualisieren": {}}])  # darf nicht werfen
+            self.assertEqual(eng.stats.get("selbst-aktualisiert", 0), 0)
+        finally:
+            shutil.rmtree(fern, ignore_errors=True)
+            shutil.rmtree(arbeit, ignore_errors=True)
+
+    def test_neuer_stand_beendet_den_lauf(self):
+        import tempfile
+        fern, arbeit, shutil, subprocess = self.bau()
+        zweit = tempfile.mkdtemp()
+        try:
+            # Jemand anders schiebt einen Commit nach.
+            subprocess.run(["git", "clone", "-q", fern, zweit], check=True)
+            for name, wert in (("user.email", "a@b.c"), ("user.name", "Test")):
+                subprocess.run(["git", "-C", zweit, "config", name, wert], check=True)
+            with open(os.path.join(zweit, "neu.txt"), "w", encoding="utf-8") as fh:
+                fh.write("x")
+            subprocess.run(["git", "-C", zweit, "add", "-A"], check=True)
+            subprocess.run(["git", "-C", zweit, "commit", "-qm", "zweit"], check=True)
+            subprocess.run(["git", "-C", zweit, "push", "-q", "origin", "HEAD"], check=True)
+
+            eng = self.motor(arbeit)
+            with self.assertRaises(StopRun):
+                eng.run_actions([{"selbst_aktualisieren": {}}])
+            self.assertEqual(eng.stats.get("selbst-aktualisiert", 0), 1)
+            self.assertTrue(os.path.exists(os.path.join(arbeit, "neu.txt")),
+                            "die neue Fassung muss auch wirklich angekommen sein")
+        finally:
+            for o in (fern, arbeit, zweit):
+                shutil.rmtree(o, ignore_errors=True)
+
+    def test_ohne_git_passiert_nichts(self):
+        import shutil, tempfile
+        ordner = tempfile.mkdtemp()
+        try:
+            with open(os.path.join(ordner, "conf.json"), "w", encoding="utf-8") as fh:
+                json.dump({"base_width": 400}, fh)
+            eng = self.motor(ordner)
+            eng.run_actions([{"selbst_aktualisieren": {}}])
+        finally:
+            shutil.rmtree(ordner, ignore_errors=True)
+
+
+class TestSpielBeendenNotbremse(unittest.TestCase):
+    """»Spiel beenden?« darf nie bestätigt werden."""
+
+    def test_regel_steht_ganz_oben_und_tippt_abbrechen(self):
+        cfg = Config.load(os.path.join(ROOT, "config", "last-asylum.json"))
+        regel = next(r for r in cfg.rules if r.name == "spiel-beenden-abbrechen")
+        self.assertEqual(cfg.rules[0].name, regel.name,
+                         "die Notbremse muss vor allen anderen Regeln greifen")
+        # Die zuletzt geprüfte Bedingung bestimmt, wohin getippt wird -
+        # das muss der blaue Abbrechen-Knopf sein, nicht der orange.
+        letzte = regel.match["all"][-1]["farbknopf"]
+        r, g, b = letzte["rgb"]
+        self.assertGreater(b, r, "zuletzt muss der blaue Knopf geprüft werden")
+        self.assertEqual(regel.do[-2], {"tap_match": {}})
+
+
+class TestLernFilter(unittest.TestCase):
+    """Laufschriften sind keine Ertrags-Blasen."""
+
+    def test_langgezogenes_wird_nicht_gelernt(self):
+        from laa.engine import _veraenderte_bereiche
+
+        a = Image.new(400, 400, (20, 20, 20))
+        b = Image.new(400, 400, (20, 20, 20))
+        paste(b, Image.new(96, 144, (240, 240, 240)), 100, 100)   # wie die Chatzeile
+        self.assertEqual(_veraenderte_bereiche(a, b, 60, 220), [])
+
+    def test_rundes_wird_gelernt(self):
+        from laa.engine import _veraenderte_bereiche
+
+        a = Image.new(400, 400, (20, 20, 20))
+        b = Image.new(400, 400, (20, 20, 20))
+        paste(b, Image.new(96, 96, (240, 240, 240)), 100, 100)
+        self.assertTrue(_veraenderte_bereiche(a, b, 60, 220))
+
+
 class TestZurueckPfeil(unittest.TestCase):
     """Die Android-Zurück-Taste ist in diesem Spiel gefährlich.
 
