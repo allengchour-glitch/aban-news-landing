@@ -82,11 +82,11 @@ gestapelt/aneinandergereiht entstehen fugenlose Türme und Zeilen.
 
 | Datei | Was | Maße (B×T×H) | Modul-Raster |
 |---|---|---|---|
-| `th7_hochhaus_modul.glb` | Turm-Segment, Fensterbänder + Gesimse | 8,2 × 8,2 × **6,0** | **stapeln: y += 6** |
-| `th7_hochhaus_dach.glb` | Turmabschluss: Attika, Technik, Antenne | 8,3 × 8,3 × 3,6 | oben aufsetzen |
-| `th7_reihenhaus_modul.glb` | Stadthaus mit Satteldach + Haustür | **6,000** × 8,0 × 8,45 | **reihen: x += 6** |
-| `th7_parkhaus.glb` | 3 offene Decks, Stützen, Rampe | 16,2 × 11,2 × 9,8 | frei |
-| `th7_lagerhalle.glb` | Tonnendach, 2 Rolltore, Laderampe | 20,4 × 12,4 × 9,0 | frei |
+| `th7_hochhaus_modul.glb` | Turm-Segment: Eck- und Mittelpfeiler, 24 Fenster mit Laibung | **8,200** × 8,200 × **6,000** | **stapeln: y += 6** |
+| `th7_hochhaus_dach.glb` | Turmabschluss: Attika-Ring, Treppenhaus, Technik, Antenne | 8,3 × 8,3 × 3,55 | oben aufsetzen |
+| `th7_reihenhaus_modul.glb` | Stadthaus: Laibungen, Fensterläden, Vordach, Kamin | **6,000** × 8,3 × 9,5 | **reihen: x += 6** |
+| `th7_parkhaus.glb` | 3 offene Decks, Geländer, Treppenkern, schräge Rampe | 22,1 × 11,5 × 10,8 | frei |
+| `th7_lagerhalle.glb` | Tonnendach, Rolltore, Oberlichtband, Rinne | 20,5 × 14,9 × 8,7 | frei |
 | `th7_bruecke_modul.glb` | Straßenbrücke mit Brüstung + Pfeilern | **14,0** × 9,0 × 5,1 | **reihen: x += 14** |
 | `th7_lieferwagen.glb` | Transporter (parkend) | 2,3 × 4,8 × 2,5 | Front auf −z |
 | `th7_lkw.glb` | Sattelzug (parkend) | 2,5 × 10,5 × 3,7 | Front auf −z |
@@ -100,6 +100,14 @@ gestapelt/aneinandergereiht entstehen fugenlose Türme und Zeilen.
 > Pyramide, deren Ecken 13,0 m auseinander standen statt 6,0. Dafuer gibt es jetzt
 > `satteldach_x()`, ein echtes Prisma mit First in x. Im 3-Modul-Test bilden die
 > Zeilenhaeuser eine durchgehende Reihe mit durchlaufendem First.
+
+> 🔧 **Fassaden-Relief (31.07.)** — die fünf Bauten oben sind neu erzeugt, bitte die alten
+> GLB ersetzen. Vorher waren es glatte Quader mit aufgemaltem Fensterband; gestapelt gab
+> das eine 30 m hohe leere Wand. Jetzt tragen sie Pfeiler, Gesimse und Fenster mit echter
+> Laibung (Helfer `fbox`/`laibung`/`randring` im Generator). **Die Rastermasse sind
+> unveraendert und nachgemessen: Turm exakt 8,200 × 8,200 × 6,000, Zeile exakt 6,000 in x.**
+> Regel dabei: kein Bauteil darf ueber die Aussenflucht hinaus — beim Reihenhaus heisst
+> das, Relief gibt es **nur in y**, die Giebelseite bleibt als Brandwand glatt.
 
 > 🔧 **Die drei Fahrzeuge wurden am 27.07. neu erzeugt** — bitte die alten GLBs ersetzen.
 > Zwei Fehler waren drin: (a) die Räder standen **quer** (Zylinderachse lag auf der
