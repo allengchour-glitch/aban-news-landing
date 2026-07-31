@@ -9,7 +9,7 @@ Konventionen wie th5-th29:
   * Jede Oeffnung >= 3.0 m licht, Innenhoehe >= 4.0 m, ueberall ein Boden.
   * Aussensockel und Innenboden enden BEIDE auf `FB` -> keine Schwelle in der Tuer.
 """
-import bpy, bmesh, os, math
+import bpy, bmesh, bmesh, os, math
 
 OUT_GLB = "/home/user/aban-news-landing/models"
 OUT_STL = "/home/user/aban-news-landing/models/stl"
@@ -219,6 +219,22 @@ def glatt(o, winkel=62):
         except Exception: pass
     return o
 
+def kappe(x, y, z, rx, ry, rz, schnitt, m=None, seg=30):
+    """Haarkalotte als SCHALE: Ellipsoid, an der Hoehe `schnitt` abgeschnitten und
+    das Loch geschlossen. Ein einfaches Ellipsoid ueber dem Kopf durchdringt die
+    Schaedelkugel und hinterlaesst quer ueber dem Scheitel eine harte Kante — die
+    Schale hat stattdessen einen sauberen Rand auf Haaransatzhoehe."""
+    o = ellipsoid(x, y, z, rx, ry, rz, m, seg)
+    nur(o)
+    bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+    bm = bmesh.new(); bm.from_mesh(o.data)
+    bmesh.ops.bisect_plane(bm, geom=bm.verts[:] + bm.edges[:] + bm.faces[:],
+                           plane_co=(0, 0, schnitt - z), plane_no=(0, 0, 1),
+                           clear_inner=True)
+    bmesh.ops.holes_fill(bm, edges=bm.edges[:])
+    bm.to_mesh(o.data); bm.free(); o.data.update()
+    return glatt(o)
+
 def ellipsoid(x, y, z, rx, ry, rz, m=None, seg=28):
     bpy.ops.mesh.primitive_uv_sphere_add(radius=1.0, location=(x, y, z),
                                          segments=seg, ring_count=max(10, seg//2))
@@ -323,8 +339,15 @@ def figur(hoehe, HAUT, HAAR, OBEN, UNTEN, SCHUH, AKZ, weiblich=False, kind=False
                   kopf_r*0.15, kopf_r*0.19, HAUT, 16)
     # Haare: flache Kalotte, hoeher angesetzt. Vorher war der Ballen fast so gross wie
     # der Kopf und sass so tief, dass er Stirn und halbes Gesicht verschluckt hat.
-    ellipsoid(0, -kopf_r*0.12, hals_z + kopf_r*1.24, kopf_r*0.92, kopf_r*0.94,
-              kopf_r*0.62, HAAR, 32)
+    # Kalotte als Schale, die dem Schaedel folgt: gleiche Form wie der Kopf, nur 6 %
+    # groesser, und auf Haaransatzhoehe abgeschnitten.
+    kappe(0, -kopf_r*0.04, hals_z + kopf_r*0.92,
+          kopf_r*0.92, kopf_r*0.98, kopf_r*1.06,
+          hals_z + kopf_r*1.16, HAAR, 30)
+    for k in range(5):                                       # Ponyfransen ueber der Braue
+        ellipsoid(-kopf_r*0.54 + k*kopf_r*0.27, kopf_r*0.62,
+                  hals_z + kopf_r*1.44 - abs(k - 2)*kopf_r*0.04,
+                  kopf_r*0.16, kopf_r*0.17, kopf_r*0.24, HAAR, 16)
     if weiblich:                                            # Langhaar NUR hinten
         ellipsoid(0, -kopf_r*0.62, hals_z + kopf_r*0.46, kopf_r*0.78, kopf_r*0.46,
                   kopf_r*1.00, HAAR, 28)

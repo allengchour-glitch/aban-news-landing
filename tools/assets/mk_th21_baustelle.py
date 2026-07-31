@@ -517,23 +517,31 @@ def kette(cx, cy, r, L, breite, m_kette, m_rad, n_pad=26, seg=24, ph=0.11):
             o.rotation_euler[0] = ang
 
 def loeffel(cx, cy, cz, breite, m, m_zahn, tiefe=0.88, hoehe=1.16, zaehne=5, sy=1):
-    """Tiefloeffel: Rueckwand bei cy, gewoelbter Boden, zwei Wangen, Zaehne.
+    """Tiefloeffel als EIN gewoelbtes Schalenprofil (siehe `prisma_x`): Rueckwand,
+    Rundung, Bodenblech und Schneide sind ein durchgehender Polygonzug, innen wie
+    aussen. Die alte Fassung stapelte drei gestufte Bodenkaesten — das las sich als
+    Treppe, nicht als Schaufel.
     sy=+1 -> Zaehne auf +y, sy=-1 -> eingerollt zur Maschine hin (Parkstellung).
     Gespiegelt wird ueber das VORZEICHEN der Offsets, nie ueber rotation_euler[2].
     cz = Unterkante der Schneide."""
-    box(cx, cy, cz + hoehe/2 + 0.10, breite, 0.10, hoehe, m)                 # Rueckwand
-    for k in range(3):
-        t = k/2.0
-        box(cx, cy + sy*(0.10 + tiefe*(k + 0.5)/3), cz + 0.06 + (1-t)*0.22,
-            breite, tiefe/3*1.06, 0.10, m)                                   # Boden
-    for s in (-1, 1):
-        box(cx + s*(breite/2 - 0.03), cy + sy*(0.10 + tiefe/2), cz + hoehe*0.42,
-            0.06, tiefe + 0.10, hoehe*0.84, m)                               # Wangen
-    box(cx, cy + sy*(0.10 + tiefe), cz + 0.10, breite, 0.14, 0.16, m)        # Schneide
+    # Normiertes Profil (y bis 0.94, z bis 1.26) — aussen vorwaerts, innen zurueck.
+    aussen = [(0.00, 1.26), (-0.04, 0.90), (-0.02, 0.54), (0.06, 0.28),
+              (0.20, 0.09), (0.42, 0.01), (0.68, 0.00), (0.94, 0.06)]
+    innen  = [(0.90, 0.20), (0.64, 0.14), (0.42, 0.16), (0.24, 0.26),
+              (0.14, 0.45), (0.11, 0.74), (0.10, 1.26)]
+    ky, kz = (tiefe + 0.16)/0.94, (hoehe + 0.10)/1.26
+    prof = [(cy + sy*ky*u, cz + kz*v) for u, v in aussen + innen]
+    prisma_x(prof, breite, m, cx, "Loeffelschale")
+    for s in (-1, 1):                        # Wange: DASSELBE Profil, nur schmal und
+        prisma_x(prof, 0.05, m, cx + s*(breite/2 + 0.02), "Wange")   # aussen davor —
+    yv, zv = cy + sy*ky*0.93, cz + kz*0.12   # ein Kasten stand quer zur Woelbung
+    box(cx, yv, zv, breite, 0.13, 0.17, m)   # Schneide an der Profil-Vorderkante
     for i in range(zaehne):
         px = cx - breite*0.38 + breite*0.76*i/(zaehne - 1)
-        kegel(px, cy + sy*(0.10 + tiefe + 0.16), cz + 0.10, 0.07, 0.02, 0.26, m_zahn, 8,
+        kegel(px, yv + sy*0.18, zv, 0.07, 0.02, 0.26, m_zahn, 8,
               rot=(-sy*math.pi/2, 0, 0))    # -pi/2 legt die Spitze auf +y
+    for s in (-1, 1):                        # Anlenkoehren auf dem Ruecken
+        box(cx + s*0.16, cy + sy*ky*0.06, cz + kz*1.10, 0.07, 0.22, 0.30, m)
 
 def gitterstoss(z0, z1, hb, d, m, diag=0.09, dr=1):
     """Ein Turmschuss: 4 Eckstiele, Horizontalriegel oben, je Seite eine Diagonale."""
@@ -898,8 +906,15 @@ def radlader():
     for sx in (-0.78, 0.78):
         for sy in (-1.38, 0.14):
             box(sx, sy, 1.95, 0.10, 0.10, 1.48, GEL2)
-    box(0, -0.62, 2.76, 1.90, 1.86, 0.14, GELB)
-    box(0, -0.62, 2.86, 1.60, 1.60, 0.08, GEL2)
+    # Kabinendach geloftet: der flache Deckel war das, was die Zelle als Kiste zeigte
+    def _tc(y, mitte=-0.62, flanke=0.62):
+        return max(0.0, abs(y - mitte) - flanke)
+    karosse([-1.55, -1.34, -0.90, -0.62, -0.34, 0.10, 0.31],
+            lambda y: 0.95 - 0.22*_tc(y)**1.25,
+            2.62,
+            lambda y: 2.92 - 0.14*_tc(y)**1.4,
+            GELB, r_u=0.10, r_o=0.26, n=3,
+            hb_o=lambda y: 0.80 - 0.22*_tc(y)**1.25, name="Kabinendach")
     box(0, 0.18, 1.98, 1.56, 0.07, 1.42, GLAS)
     box(0, -1.42, 1.98, 1.56, 0.07, 1.42, GLAS)
     for sx in (-0.82, 0.82):
@@ -939,21 +954,17 @@ def radlader():
     mid = tuple(a[i] + (b[i]-a[i])*0.58 for i in range(3))
     stab(a, mid, 0.11, STAH, 12); stab(mid, b, 0.07, CHR, 10)
     strebe((0, 2.06, 1.50), (0, 2.60, 1.34), 0.14, STAH)
-    # --- Schaufel: Rueckwand ZUR MASCHINE, Boden und Schneide nach vorn (+y).
-    # Erste Fassung war seitenverkehrt — von vorn sah man eine geschlossene Platte
-    # wie bei einem Planierschild statt der offenen Schaufel.
-    SB, SY = 2.62, 2.66
-    box(0, SY, 0.74, SB, 0.12, 1.28, GEL2)                        # Rueckwand
-    for k in range(3):
-        box(0, SY + 0.20 + k*0.26, 0.18 - k*0.04, SB, 0.30, 0.12, GEL2)   # Boden
-    for s in (-1, 1):
-        box(s*(SB/2 - 0.04), SY + 0.44, 0.72, 0.08, 0.92, 1.20, GEL2)     # Wangen
-    box(0, SY + 0.86, 0.09, SB, 0.22, 0.10, STAH)                 # Schneide
-    for i in range(7):
-        box(-SB/2 + 0.28 + i*0.34, SY + 0.99, 0.09, 0.20, 0.22, 0.09, CHR)
-    box(0, SY - 0.02, 1.36, SB*0.96, 0.16, 0.14, GEL2)            # Oberkante
-    for s in (-1, 1):
-        strebe((s*0.62, 2.52, 0.92), (s*0.62, SY + 0.02, 0.90), 0.14, GEL2)
+    # --- Schaufel als extrudiertes Profil statt gestufter Bleche: Rueckwand zur
+    # Maschine (-y), Boden nach vorn (+y) durchgezogen, Schneide vorn unten.
+    SY, SZ = 3.62, 0.30
+    prof = [(-0.10, 1.62), (-0.10, 0.10), (0.24, 0.02), (0.86, 0.00),
+            (1.44, 0.10), (1.52, 0.26), (1.10, 0.30), (0.52, 0.36),
+            (0.16, 0.62), (0.10, 1.30), (0.16, 1.66)]
+    o = prisma_x([(SY + p[0], SZ + p[1]) for p in prof], 2.36, GELB, 0.0, "Schaufel")
+    for sx in (-1.10, 1.10):                                      # Seitenwangen
+        box(sx, SY + 0.62, SZ + 0.82, 0.10, 1.66, 1.62, GEL2)
+    for k in range(6):                                            # Zaehne an der Schneide
+        box(-0.98 + k*0.39, SY + 1.56, SZ + 0.22, 0.24, 0.34, 0.12, STAH)
     export("th21_radlader", 0.014, 2)
 
 # ================================================================ 6) Betonmischer
@@ -990,8 +1001,15 @@ def betonmischer():
     for i in range(7):
         box(0, -3.60 + i*1.20, 0.98, 0.90, 0.14, 0.26, RAHM)
     box(0, 3.90, 0.86, 2.30, 0.30, 0.26, RAHM)
-    box(0, 2.95, 2.00, 2.42, 1.94, 1.94, ROT)                     # Fahrerhaus
-    box(0, 2.95, 3.02, 2.48, 1.98, 0.14, ROT2)
+    def _tm(y, mitte=2.95, flanke=0.72):
+        return max(0.0, abs(y - mitte) - flanke)
+    karosse([1.98, 2.20, 2.60, 2.95, 3.30, 3.70, 3.92],
+            lambda y: 1.21 - 0.20*_tm(y)**1.3,
+            1.03,
+            lambda y: 3.09 - 0.16*_tm(y)**1.45,
+            ROT, r_u=0.14, r_o=0.34, n=3,
+            hb_o=lambda y: 1.06 - 0.20*_tm(y)**1.3, name="Fahrerhaus")
+    box(0, 2.95, 3.06, 2.30, 1.86, 0.10, ROT2)
     box(0, 3.90, 2.28, 2.06, 0.09, 1.06, GLAS)
     for sx in (-1.19, 1.19):
         box(sx, 2.86, 2.24, 0.09, 1.30, 0.96, GLAS)

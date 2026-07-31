@@ -82,17 +82,32 @@ gestapelt/aneinandergereiht entstehen fugenlose Türme und Zeilen.
 
 | Datei | Was | Maße (B×T×H) | Modul-Raster |
 |---|---|---|---|
-| `th7_hochhaus_modul.glb` | Turm-Segment, Fensterbänder + Gesimse | 8,2 × 8,2 × **6,0** | **stapeln: y += 6** |
-| `th7_hochhaus_dach.glb` | Turmabschluss: Attika, Technik, Antenne | 8,3 × 8,3 × 3,6 | oben aufsetzen |
-| `th7_reihenhaus_modul.glb` | Stadthaus mit Satteldach + Haustür | **6,0** × 7,5 × 8,2 | **reihen: x += 6** |
-| `th7_parkhaus.glb` | 3 offene Decks, Stützen, Rampe | 16,2 × 11,2 × 9,8 | frei |
-| `th7_lagerhalle.glb` | Tonnendach, 2 Rolltore, Laderampe | 20,4 × 12,4 × 9,0 | frei |
+| `th7_hochhaus_modul.glb` | Turm-Segment: Eck- und Mittelpfeiler, 24 Fenster mit Laibung | **8,200** × 8,200 × **6,000** | **stapeln: y += 6** |
+| `th7_hochhaus_dach.glb` | Turmabschluss: Attika-Ring, Treppenhaus, Technik, Antenne | 8,3 × 8,3 × 3,55 | oben aufsetzen |
+| `th7_reihenhaus_modul.glb` | Stadthaus: Laibungen, Fensterläden, Vordach, Kamin | **6,000** × 8,3 × 9,5 | **reihen: x += 6** |
+| `th7_parkhaus.glb` | 3 offene Decks, Geländer, Treppenkern, schräge Rampe | 22,1 × 11,5 × 10,8 | frei |
+| `th7_lagerhalle.glb` | Tonnendach, Rolltore, Oberlichtband, Rinne | 20,5 × 14,9 × 8,7 | frei |
 | `th7_bruecke_modul.glb` | Straßenbrücke mit Brüstung + Pfeilern | **14,0** × 9,0 × 5,1 | **reihen: x += 14** |
 | `th7_lieferwagen.glb` | Transporter (parkend) | 2,3 × 4,8 × 2,5 | Front auf −z |
 | `th7_lkw.glb` | Sattelzug (parkend) | 2,5 × 10,5 × 3,7 | Front auf −z |
 | `th7_taxi.glb` | Taxi mit Dachschild | 1,9 × 4,3 × 1,7 | Front auf −z |
 
 | `th7_denkmal.glb` | Denkmal auf Stufensockel | 3,0 × 3,0 × 5,3 | Platzmitte |
+
+> 🔧 **Hochhaus- und Reihenhaus-Modul wurden korrigiert** — bitte die alten GLB ersetzen.
+> Beide Rastermasse waren kaputt: der Turm-Abschluss ragte 4 cm ueber die Stapelkante
+> (6,04 statt 6,000), und das „Satteldach" der Zeile war ein `kegel(vertices=4)` — eine
+> Pyramide, deren Ecken 13,0 m auseinander standen statt 6,0. Dafuer gibt es jetzt
+> `satteldach_x()`, ein echtes Prisma mit First in x. Im 3-Modul-Test bilden die
+> Zeilenhaeuser eine durchgehende Reihe mit durchlaufendem First.
+
+> 🔧 **Fassaden-Relief (31.07.)** — die fünf Bauten oben sind neu erzeugt, bitte die alten
+> GLB ersetzen. Vorher waren es glatte Quader mit aufgemaltem Fensterband; gestapelt gab
+> das eine 30 m hohe leere Wand. Jetzt tragen sie Pfeiler, Gesimse und Fenster mit echter
+> Laibung (Helfer `fbox`/`laibung`/`randring` im Generator). **Die Rastermasse sind
+> unveraendert und nachgemessen: Turm exakt 8,200 × 8,200 × 6,000, Zeile exakt 6,000 in x.**
+> Regel dabei: kein Bauteil darf ueber die Aussenflucht hinaus — beim Reihenhaus heisst
+> das, Relief gibt es **nur in y**, die Giebelseite bleibt als Brandwand glatt.
 
 > 🔧 **Die drei Fahrzeuge wurden am 27.07. neu erzeugt** — bitte die alten GLBs ersetzen.
 > Zwei Fehler waren drin: (a) die Räder standen **quer** (Zylinderachse lag auf der
@@ -212,6 +227,17 @@ und mit echtem Innenleben — Treppen, Galerien, Möblierung.
 | `th10_restaurant.glb` | Gastraum + Terrasse | 24,0 × 21,3 × 4,8 | 6 Tische, Tresen mit Barhockern, offene Küche mit Abzug, Pendelleuchten |
 
 Generator: `tools/assets/mk_th10_grossbauten.py`
+
+> 🔧 **Aussenrelief (31.07.) — bitte die GLB/STL dieser Charge ersetzen.** Die Bauten waren
+> von aussen glatte Quader mit Fensterstreifen und einer leeren weissen Dachplatte; im
+> Kontaktbogen sahen mehrere davon identisch aus. Neu in allen drei Generatoren:
+> `bandring()` (umlaufendes Band aus VIER Quadern — ein Vollquader mauert die Decke der
+> begehbaren Bauten von innen zu), `aussenrelief()` (Sockelband, Ecklisenen, zweistufiges
+> Kranzgesims, optional Attika) und `dachtechnik()` (Aufzugsueberfahrt, Lueftungsgeraete,
+> Oberlichter, Fallrohr). **Alle Dachaufbauten laufen am Rand entlang** — Bibliothek und
+> Einkaufszentrum haben ein Atrium-Loch in der Dachplatte, mittig gesetzte Aufbauten
+> schwebten darueber. Relief fasst bewusst nur Ecken und umlaufende Baender an, damit es
+> nicht mit den `fensterband()`-Achsen kollidiert. Innenleben unveraendert, zmin 0,00.
 
 ### Neue Helfer
 - `boden(B, T, m_sockel, m_boden)` — Sockel + Innenboden bündig auf `FB`, keine Schwelle.
@@ -474,6 +500,17 @@ mitgerendert.
 | `th19_fitnessstudio.glb` | 32,5 × 24,9 × 5,4 | Laufbänder, Bänke, Hantelablagen, Seilzug, Spiegelwand, Empfang |
 
 Generator: `tools/assets/mk_th19_baeder.py`
+
+> 🔧 **Aussenrelief (31.07.) — bitte die GLB/STL dieser Charge ersetzen.** Die Bauten waren
+> von aussen glatte Quader mit Fensterstreifen und einer leeren weissen Dachplatte; im
+> Kontaktbogen sahen mehrere davon identisch aus. Neu in allen drei Generatoren:
+> `bandring()` (umlaufendes Band aus VIER Quadern — ein Vollquader mauert die Decke der
+> begehbaren Bauten von innen zu), `aussenrelief()` (Sockelband, Ecklisenen, zweistufiges
+> Kranzgesims, optional Attika) und `dachtechnik()` (Aufzugsueberfahrt, Lueftungsgeraete,
+> Oberlichter, Fallrohr). **Alle Dachaufbauten laufen am Rand entlang** — Bibliothek und
+> Einkaufszentrum haben ein Atrium-Loch in der Dachplatte, mittig gesetzte Aufbauten
+> schwebten darueber. Relief fasst bewusst nur Ecken und umlaufende Baender an, damit es
+> nicht mit den `fensterband()`-Achsen kollidiert. Innenleben unveraendert, zmin 0,00.
 `platte_mit_loch()` wurde um einen Loch-Versatz erweitert, `tonne(..., fuellen=False)`
 liefert ein offenes Gewölbe mit halbrunden Stirndeckeln.
 
@@ -523,6 +560,17 @@ Alle sechs begehbar, Masse zur 1,8-m-Figur geprüft (Theken 1,10, Sitze 0,45, Ti
 | `th23_apotheke.glb` | 18,0 × 15,5 × 4,8 | Sichttresen als echte Vitrine, Schubladenwand, Kordel, Leuchtkreuz |
 
 Generator: `tools/assets/mk_th23_oeffentlich.py`
+
+> 🔧 **Aussenrelief (31.07.) — bitte die GLB/STL dieser Charge ersetzen.** Die Bauten waren
+> von aussen glatte Quader mit Fensterstreifen und einer leeren weissen Dachplatte; im
+> Kontaktbogen sahen mehrere davon identisch aus. Neu in allen drei Generatoren:
+> `bandring()` (umlaufendes Band aus VIER Quadern — ein Vollquader mauert die Decke der
+> begehbaren Bauten von innen zu), `aussenrelief()` (Sockelband, Ecklisenen, zweistufiges
+> Kranzgesims, optional Attika) und `dachtechnik()` (Aufzugsueberfahrt, Lueftungsgeraete,
+> Oberlichter, Fallrohr). **Alle Dachaufbauten laufen am Rand entlang** — Bibliothek und
+> Einkaufszentrum haben ein Atrium-Loch in der Dachplatte, mittig gesetzte Aufbauten
+> schwebten darueber. Relief fasst bewusst nur Ecken und umlaufende Baender an, damit es
+> nicht mit den `fensterband()`-Achsen kollidiert. Innenleben unveraendert, zmin 0,00.
 
 > ⚠️ **Der Glas-Fallstrick gilt auch für Möbel.** Beim Apotheken-Sichttresen sass die
 > Scheibe 3 cm hinter der Tresenfront und die Auslage steckte im massiven Korpus — von
@@ -690,8 +738,13 @@ Gesamthöhe rechnet, damit Kind und Erwachsener dieselben Proportionen haben.
 > dieselbe Lehre wie bei Schiffsruempfen und Fahrzeugkarosserien. Dafuer gibt es hier
 > `loft(schnitte, ...)`.
 
-**Offen an dieser Charge:** die Haarkalotte hat am Scheitel noch eine sichtbare
-Schnittkante, und die Figuren stehen in einer starren Ruhepose ohne Rig.
+> ⚠️ **Ein Ellipsoid ueber dem Kopf durchdringt die Schaedelkugel** und hinterlaesst
+> quer ueber dem Scheitel eine harte Kante. `kappe()` schneidet die Haare stattdessen
+> auf Haaransatzhoehe ab und schliesst das Loch — der Rand liegt dann dort, wo er
+> hingehoert.
+
+**Offen an dieser Charge:** die Schulterpartie hat im Frontblick noch eine kantige
+Silhouette, und die Figuren stehen in einer starren Ruhepose ohne Rig.
 
 ---
 
@@ -746,8 +799,14 @@ Kabine mit geneigten Scheiben, Kotfluegel und Stollenreifen mit Felgen.
 
 Beim Bagger sind Motorhaube und Kabine geloftet, beim Radlader die Motorhaube.
 
-Noch **eckig**: die Kabine und die Schaufel des Radladers, der Baggerloeffel, sowie das
-Fahrerhaus und der Rahmen des `th21_betonmischer` (die Mischtrommel selbst ist rund).
+Kabine und Schaufel des Radladers sowie das Fahrerhaus des Betonmischers sind ebenfalls
+umgebaut: die Schaufel ist ein mit `prisma_x()` extrudiertes Profil mit durchgezogenem
+Boden und Zaehnen, die Kabinendaecher sind geloftet.
+
+Auch der Baggerloeffel ist jetzt ein `prisma_x()`-Profil: Rueckwand, Woelbung, Bodenblech
+und Schneide bilden EINEN Polygonzug (aussen hin, innen zurueck), die Wangen sind dasselbe
+Profil schmal extrudiert und aussen davorgesetzt. Ein Kasten als Wange stand quer zur
+Woelbung und sah aus wie eine Scheuklappe.
 
 ---
 

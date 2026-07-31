@@ -177,6 +177,59 @@ def fensterband(cx, cy, laenge, dicke, zmit, hoehe, m_rahm, m_glas, n=3, achse='
             box(cx, cy + t*laenge, zmit, dicke*1.2, laenge/n*0.62, hoehe, m_rahm)
             box(cx, cy + t*laenge, zmit, dicke*1.4, laenge/n*0.50, hoehe*0.80, m_glas)
 
+def bandring(B, T, d, z, ueber, hoehe, m):
+    """Umlaufendes Band aus VIER Quadern (Sockel, Gesims, Attika). Ein Vollquader
+    waere einfacher, deckt bei diesen BEGEHBAREN Bauten aber die Deckenuntersicht
+    zu — innen stuende man dann unter einer geschlossenen Platte."""
+    ax, ay = B/2 + d/2 + ueber/2, T/2 + d/2 + ueber/2
+    for sy in (-1, 1): box(0, sy*ay, z, B + d + 2*ueber, ueber, hoehe, m)
+    for sx in (-1, 1): box(sx*ax, 0, z, ueber, T + d, hoehe, m)
+
+def aussenrelief(B, T, H, d, m_sockel, m_gesims, dach_ok=None, ecke=1.10, tief=0.22):
+    """Sockelband, Ecklisenen und zweistufiges Kranzgesims um einen rechteckigen
+    Baukoerper. Ohne das sind die sechs Aemter sechs weisse Schuhschachteln mit
+    Farbstreifen — genau der Eindruck, den auch die th7-Module hatten.
+    Bewusst NUR Ecken und umlaufende Baender: die Fensterachsen bleiben frei,
+    damit nichts mit `fensterband()` kollidiert."""
+    ax, ay = B/2 + d/2, T/2 + d/2
+    for sx in (-1, 1):
+        for sy in (-1, 1):
+            box(sx*(ax + tief/2 - ecke/2), sy*(ay + tief/2 - ecke/2), H/2,
+                ecke + tief, ecke + tief, H, m_gesims)
+    bandring(B, T, d, 0.62, 0.20, 1.24, m_sockel)      # Sockel
+    bandring(B, T, d, H - 0.46, 0.18, 0.30, m_gesims)  # Gurtgesims
+    bandring(B, T, d, H - 0.13, 0.36, 0.28, m_gesims)  # Kranzgesims, weiter vor
+    if dach_ok is not None:                            # Attika ueber der Dachplatte
+        bandring(B, T, d, dach_ok + 0.36, 0.44, 0.72, m_gesims)
+        bandring(B, T, d, dach_ok + 0.78, 0.58, 0.14, m_sockel)
+
+def dachtechnik(B, T, dach_ok, m_geraet, m_dunkel, m_glas, seite=1):
+    """Aufzugsueberfahrt, Lueftungsgeraete, Oberlichter und Rohre auf dem Flachdach.
+    Ohne das ist das Dach eine leere weisse Platte — und genau die sieht man in der
+    Schraegsicht des Spiels als Erstes. `seite` legt fest, an welcher Laengsseite
+    der Aufbau steht, damit er nicht ueber der Eingangsachse landet."""
+    # Alles laeuft am RAND entlang: Bibliothek und Einkaufszentrum haben ein
+    # Atrium-Loch in der Dachplatte, mittig gesetzte Aufbauten schwebten darueber.
+    z = dach_ok
+    box(-B*0.34, seite*T*0.32, z + 1.05, B*0.18, T*0.20, 2.10, m_geraet)   # Ueberfahrt
+    box(-B*0.34, seite*T*0.32, z + 2.18, B*0.20, T*0.23, 0.16, m_dunkel)
+    for i in range(3):                                   # Lueftungsgeraete
+        px = -B*0.10 + i*B*0.17
+        box(px, -seite*T*0.34, z + 0.42, B*0.09, T*0.13, 0.84, m_geraet)
+        zyl(px, -seite*T*0.34, z + 0.94, B*0.035, 0.22, m_dunkel, 14)
+        box(px, -seite*T*0.34, z + 0.06, B*0.11, T*0.15, 0.12, m_dunkel)   # Schwelle
+    for px, py in ((B*0.28, seite*T*0.31), (-B*0.06, -seite*T*0.34)):      # Oberlichter
+        box(px, py, z + 0.10, B*0.14, T*0.20, 0.20, m_dunkel)
+        box(px, py, z + 0.28, B*0.12, T*0.18, 0.20, m_glas)
+    zyl(B*0.40, -seite*T*0.30, z + 0.70, 0.10, 1.40, m_dunkel, 10)         # Entlueftung
+    zyl(B*0.40, -seite*T*0.30, z + 1.44, 0.17, 0.14, m_dunkel, 10)
+
+def portalrahmen(cy, breite, hoehe, m, tief=0.36, s=1):
+    """Gewaende + Sturz um einen Eingang auf der Schauseite (+y bei s=1)."""
+    for sx in (-1, 1):
+        box(sx*(breite/2 + 0.34), cy + s*tief/2, hoehe/2, 0.68, tief, hoehe, m)
+    box(0, cy + s*tief/2, hoehe + 0.24, breite + 1.36, tief, 0.48, m)
+
 def giebel(cx, cy, z, breite, hoehe, dicke, m, achse='y'):
     """Dreieckiges Giebelprisma. achse='x': Dreieck spannt in x auf, Dicke in y."""
     h2 = dicke/2.0
@@ -466,6 +519,7 @@ def post():
     box(0, -T/2, H/2, B, d, H, AUS2)                      # Aussenhaut ringsum in einem Ton
     for sx in (-B/2, B/2): box(sx, 0, H/2, d, T, H, AUS2)
     box(0, 0, H + 0.22, B + 1.1, T + 1.1, 0.44, AUS)      # Decke buendig auf der Krone
+    aussenrelief(B, T, H, d, SOK, AUS, H + 0.44)   # Sockel, Lisenen, Gesims, Attika
     box(0, 0, H - 0.06, B - 0.9, T - 0.9, 0.12, W)        # helle Deckenuntersicht innen
 
     # Fenster: nur in den Wandpfeilern, NICHT ueber den Portalen (Vordach!)
@@ -535,6 +589,7 @@ def post():
         pflanze(px, py, FB, HOLZ, GRUE, 1.5)
 
     deckenlicht(B, T, H - 0.24, LED, 4, 'x', T - 4.0)
+    dachtechnik(B, T, H + 0.44, SOK, STAH, GLAS)   # Dachaufbauten
     export("th23_post", 0.018, 2)
 
 
@@ -570,6 +625,7 @@ def bank():
     box(0, -T/2, H/2, B, d, H, AUS)                         # Aussenhaut ringsum gleich
     for sx in (-B/2, B/2): box(sx, 0, H/2, d, T, H, AUS)
     box(0, 0, H + 0.25, B + 1.2, T + 1.2, 0.50, AUS)        # Decke buendig
+    aussenrelief(B, T, H, d, SOK, AUS, H + 0.50)   # Sockel, Lisenen, Gesims, Attika
     box(0, -T/2 - 0.15, FB + 0.45, B + 0.30, 0.30, 0.90, SOK)   # Sockelband, Tuer bleibt frei
     for sx in (-B/2 - 0.15, B/2 + 0.15):
         box(sx, 0, FB + 0.45, 0.30, T, 0.90, SOK)
@@ -661,6 +717,7 @@ def bank():
         for j in range(3):
             box(-10.5 + i*7.0, -6.0 + j*6.0, H - 0.12, 6.0, 5.0, 0.16, W)
     deckenlicht(B, T, H - 0.30, LED, 5, 'x', T - 5.0)
+    dachtechnik(B, T, H + 0.50, SOK, STAH, GLAS)   # Dachaufbauten
     export("th23_bank", 0.018, 2)
 
 
@@ -699,6 +756,7 @@ def polizeiwache():
     box(0, -T/2, H/2, B, d, H, AUS)
     for sx in (-B/2, B/2): box(sx, 0, H/2, d, T, H, AUS)
     box(0, 0, H + 0.22, B + 1.1, T + 1.1, 0.44, AUS)        # Decke buendig
+    aussenrelief(B, T, H, d, SOK, AUS, H + 0.44)   # Sockel, Lisenen, Gesims, Attika
 
     for sx in (-8.0, 8.0):                                   # Fenster neben der Tuer
         fensterband(sx, T/2, 8.0, d, FB + 2.3, 1.7, AUS, GLAS, 3, 'x')
@@ -777,6 +835,7 @@ def polizeiwache():
         pflanze(px, py, FB, HOLZ, GRUE, 1.5)
 
     deckenlicht(B, T, H - 0.24, LED, 4, 'x', T - 4.0)
+    dachtechnik(B, T, H + 0.44, SOK, STAH, GLAS)   # Dachaufbauten
     export("th23_polizeiwache", 0.018, 2)
 
 
@@ -815,6 +874,7 @@ def gericht():
     box(0, -T/2, H/2, B, d, H, AUS)
     for sx in (-B/2, B/2): box(sx, 0, H/2, d, T, H, AUS)
     box(0, 0, H + 0.30, B + 1.6, T + 1.6, 0.60, AUS)     # Decke buendig auf der Krone
+    aussenrelief(B, T, H, d, SOK, AUS, H + 0.60)   # Sockel, Lisenen, Gesims, Attika
 
     # Hohe Fenster ueber dem Sockelpaneel (Paneel endet bei 3.70)
     for sx in (-B/2, B/2):
@@ -907,6 +967,7 @@ def gericht():
         zyl(cx, cy, H - 0.90, 0.07, 1.60, GOLD, 8)
         zyl(cx, cy, H - 1.78, 1.30, 0.16, GOLD, 24)
         zyl(cx, cy, H - 1.92, 1.10, 0.14, LED, 24)
+    dachtechnik(B, T, H + 0.60, SOK, STAH, GLAS)   # Dachaufbauten
     export("th23_gericht", 0.020, 2)
 
 
@@ -943,6 +1004,7 @@ def arztpraxis():
     box(0, -T/2, H/2, B, d, H, AUS)
     for sx in (-B/2, B/2): box(sx, 0, H/2, d, T, H, AUS)
     box(0, 0, H + 0.20, B + 1.0, T + 1.0, 0.40, AUS)          # Decke buendig
+    aussenrelief(B, T, H, d, SOK, AUS, H + 0.40)   # Sockel, Lisenen, Gesims, Attika
 
     for sx in (-7.0, 7.0):
         fensterband(sx, T/2, 7.0, d, FB + 2.20, 1.70, AUS, GLAS, 3, 'x')
@@ -1027,6 +1089,7 @@ def arztpraxis():
     deckenlicht(B, T, H - 0.20, LED, 3, 'x', 6.0)
     for i in range(3):
         box(-7.0 + i*7.0, 0.40, H - 0.36, 5.6, 0.30, 0.12, LED)      # Flurlicht
+    dachtechnik(B, T, H + 0.40, SOK, STAH, GLAS)   # Dachaufbauten
     export("th23_arztpraxis", 0.016, 2)
 
 
@@ -1064,6 +1127,7 @@ def apotheke():
     box(0, -T/2, H/2, B, d, H, AUS)
     for sx in (-B/2, B/2): box(sx, 0, H/2, d, T, H, AUS)
     box(0, 0, H + 0.20, B + 1.0, T + 1.0, 0.40, AUS)          # Decke buendig
+    aussenrelief(B, T, H, d, SOK, AUS, H + 0.40)   # Sockel, Lisenen, Gesims, Attika
 
     for sx in (-5.2, 5.2):                                     # Schaufenster
         fensterband(sx, T/2, 5.2, d, FB + 1.90, 2.20, AUS, GLAS, 2, 'x')
@@ -1129,6 +1193,7 @@ def apotheke():
     pflanze(6.90, 4.60, FB, HOLZ, BLAT, 1.4)
 
     deckenlicht(B, T, H - 0.20, LED, 3, 'x', T - 3.0)
+    dachtechnik(B, T, H + 0.40, SOK, STAH, GLAS)   # Dachaufbauten
     export("th23_apotheke", 0.016, 2)
 
 

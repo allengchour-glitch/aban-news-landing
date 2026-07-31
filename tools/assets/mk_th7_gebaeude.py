@@ -41,13 +41,21 @@ def tonne(cx, cy, z, r, laenge, m, seg=24, flach=1.0):
     """HALBES Tonnengewoelbe: Zylinder mit Achse in x, untere Haelfte weggeschnitten,
     Basis exakt bei z. Ein VOLLER Zylinder fuellt die Halle von innen und taucht unter
     den Boden (bei der Lagerhalle gemessene -0,30) — derselbe Fehler steckte in der
-    th8-Markthalle."""
+    th8-Markthalle.
+
+    `flach` druckt das Gewoelbe in der HOEHE zusammen. Das muss NACH dem Anwenden
+    der Rotation passieren: `o.scale[2]` vor `transform_apply(rotation=True)` wirkt
+    im Objektraum und damit auf die (bereits nach x gedrehte) Zylinderachse — die
+    Halle bekam so ein volles Halbrund von 6 m Stich und ein um den Faktor
+    gestauchtes, viel zu kurzes Dach (gemessen 11,96 statt 9,00 m Gesamthoehe)."""
     o = zyl(cx, cy, z, r, laenge, m, seg, rot=(0, math.pi/2, 0))
-    o.scale[2] = flach
     bpy.context.view_layer.objects.active = o
     for s_ in bpy.context.scene.objects: s_.select_set(False)
     o.select_set(True)
     bpy.ops.object.transform_apply(location=False, rotation=True, scale=True)
+    if abs(flach - 1.0) > 1e-6:                 # jetzt ist lokal z = Welt z
+        o.scale[2] = flach
+        bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
     bm = bmesh.new(); bm.from_mesh(o.data)
     bmesh.ops.bisect_plane(bm, geom=bm.verts[:] + bm.edges[:] + bm.faces[:],
                            plane_co=(0, 0, 0), plane_no=(0, 0, 1), clear_inner=True)
@@ -101,6 +109,21 @@ def export(name, bevel=0.016, seg=3, drehen=False):
     try: bpy.ops.wm.stl_export(filepath=p2)
     except Exception: bpy.ops.export_mesh.stl(filepath=p2)
     print("  ->", name, os.path.getsize(p1), "B")
+
+def satteldach_x(cx, cy, z0, breite, tiefe, hoehe, m=None, name="Satteldach"):
+    """Satteldach mit First in X als echtes Prisma. `kegel(vertices=4)` taugt dafuer
+    NICHT: das ergibt eine Pyramide, deren Ecken auf den Achsen liegen — beim
+    Reihenhaus stand das Dach dadurch 13,0 m breit statt 6,0 und hat das Modulraster
+    gesprengt."""
+    b, t, h = breite/2.0, tiefe/2.0, hoehe
+    v = [(-b,-t,0), (b,-t,0), (b,t,0), (-b,t,0), (-b,0,h), (b,0,h)]
+    f = [(0,3,2,1), (0,1,5,4), (3,4,5,2), (0,4,3), (1,2,5)]
+    me = bpy.data.meshes.new(name); me.from_pydata(v, [], f); me.update()
+    o = bpy.data.objects.new(name, me); bpy.context.collection.objects.link(o)
+    o.location = (cx, cy, z0)
+    if m: me.materials.append(m)
+    bpy.context.view_layer.objects.active = o
+    return o
 
 def fensterreihe(g_breite, g_tiefe, zbase, anzahl, rahm, glas, hoehe=1.5):
     """Fensterreihe auf der +z-Front, gleichmaessig verteilt."""
@@ -318,19 +341,34 @@ def scheibe(p0, p1, breite, m, dicke=0.05, aus=0.035):
 
 # ============================================================ MODULARE GEBAEUDE
 def hochhaus_modul():
-    """Stapelbar: exakt 6 m hoch, Grundriss 8x8 -> mehrere uebereinander = Turm."""
+    """Stapelbar: exakt 6 m hoch, Grundriss 8x8 -> mehrere uebereinander = Turm.
+
+    Frueher ein glatter Quader mit aufgemaltem Fensterband — im Turm gestapelt gab
+    das eine 30 m hohe glatte Wand. Jetzt traegt die Fassade Eckpfeiler, Mittel-
+    pfeiler und je Feld ein Fenster mit echter Laibung. Das Modulmass haengt an
+    genau zwei Zahlen: KERN (Wandflaeche) und AUSSEN (Pfeiler-/Gesimsflucht).
+    Kein Bauteil darf ueber AUSSEN hinaus, sonst passen gestapelte Module nicht
+    mehr buendig aufeinander."""
     neu()
+    KERN, AUSSEN, H = 7.72, 4.10, 6.00        # 2*AUSSEN = 8.20 = Modulbreite
+    v0 = KERN/2                                # Wandflaeche
     wand = mat("TurmWand", (0.72,0.74,0.77), 0.6)
     glas = mat("TurmGlas", (0.26,0.42,0.52), 0.15, 0.2)
     band = mat("Band", (0.55,0.57,0.60), 0.5)
-    box(0,0,3.0, 8.0,8.0,6.0, wand)
-    for e in range(2):                                  # 2 Fensterbaender je Modul
-        for s in range(4):                              # alle 4 Seiten
-            a = s*math.pi/2
-            bx, by = math.sin(a)*4.03, math.cos(a)*4.03
-            o = box(bx, by, 1.6+e*2.9, 7.2 if s%2==0 else 0.06, 0.06 if s%2==0 else 7.2, 1.3, glas)
-        box(0,0,3.05+e*2.9, 8.12,8.12,0.14, band)       # umlaufendes Gesims
-    box(0,0,5.95, 8.2,8.2,0.18, band)                   # Abschluss (Stapelkante)
+    rahm = mat("TurmRahmen", (0.63,0.64,0.66), 0.55)
+    box(0, 0, H/2, KERN, KERN, H, wand)
+    for sx in (-1, 1):                         # Eckpfeiler, durchlaufend
+        for sy in (-1, 1):
+            box(sx*(AUSSEN-0.39), sy*(AUSSEN-0.39), H/2, 0.78, 0.78, H, band)
+    for t in range(4):
+        for su in (-1, 1):                     # Mittelpfeiler, teilt in 3 Felder
+            fbox(t, su*1.24, (v0 + AUSSEN)/2, H/2, 0.30, AUSSEN - v0, H, band)
+        for e in range(2):                     # 2 Geschosse je Modul
+            for u in (-2.47, 0.0, 2.47):
+                laibung(t, u, v0, 1.65 + e*3.0, 1.55, 1.50, 0.14, rahm, glas, band)
+    box(0, 0, 2.98, 8.06, 8.06, 0.16, band)    # Geschossgesims
+    box(0, 0, 0.15, 8.14, 8.14, 0.30, band)    # Sockelband
+    box(0, 0, H - 0.10, 2*AUSSEN, 2*AUSSEN, 0.20, band)   # Abschluss endet auf 6,00
     export("th7_hochhaus_modul", 0.020, 3)
 
 def hochhaus_dach():
@@ -339,13 +377,36 @@ def hochhaus_dach():
     band = mat("Band", (0.55,0.57,0.60), 0.5)
     tech = mat("Technik", (0.44,0.46,0.48), 0.6)
     dkl = mat("Dunkel", (0.22,0.23,0.26), 0.5)
-    box(0,0,0.30, 8.3,8.3,0.60, band)                   # Attika
-    box(0,0,0.10, 7.9,7.9,0.20, dkl)                    # Dachflaeche
-    box(-1.8,1.2,1.10, 2.6,2.2,1.40, tech)              # Aufbau
-    box(2.0,-1.4,0.85, 1.5,1.5,0.90, tech)              # Klimageraet
-    for sx,sy in ((2.0,-1.4),):
-        zyl(sx,sy,1.45, 0.55, 0.30, dkl, 12)
+    # Attika als RING statt Vollplatte: sonst deckt sie die Dachflaeche zu und der
+    # Turmabschluss ist wieder nur ein Klotz.
+    randring(0, 0, 8.30, 8.30, 0.44, 0.34, 0.88, band)
+    randring(0, 0, 8.30, 8.30, 0.94, 0.42, 0.14, band)  # Abdeckplatte auf der Attika
+    for sx in (-1, 1):                                  # Eckpfeiler des Moduls fortsetzen
+        for sy in (-1, 1):
+            box(sx*3.71, sy*3.71, 0.58, 0.78, 0.78, 1.16, band)
+    box(0,0,0.09, 8.0,8.0,0.18, dkl)                    # Dachflaeche
+    for i in range(7):                                  # Kiesrand-/Bahnenteilung
+        box(0, -3.4+i*1.13, 0.20, 7.7, 0.09, 0.05, band)
+    box(-1.8,1.2,1.26, 2.6,2.2,1.90, tech)              # Treppenhausaufbau
+    box(-1.8,1.2,2.28, 2.9,2.5,0.16, band)
+    box(-1.8,2.34,0.94, 1.10,0.14,1.30, dkl)            # Dachausstieg
+    box(2.0,-1.4,0.79, 1.5,1.5,1.10, tech)              # Lueftungsgeraet
+    zyl(2.0,-1.4,1.49, 0.55, 0.32, dkl, 16)
+    for s in (-1, 1):
+        zyl(2.0 + s*0.42, -1.4, 1.74, 0.30, 0.22, band, 12)
+    for sy in (-1, 1):                                  # Kuehler auf Schwellen
+        box(2.6, sy*2.9, 0.52, 1.9, 1.0, 0.68, tech)
+        for s in (-1, 1):
+            box(2.6 + s*0.7, sy*2.9, 0.24, 0.24, 1.1, 0.12, dkl)
+    zyl(-3.0,-2.6, 0.62, 0.62, 0.90, tech, 14)          # Wassertank
+    zyl(-3.0,-2.6, 1.14, 0.66, 0.14, band, 14)
+    zyl(-2.0, -3.0, 0.42, 0.09, 0.84, band, 10)         # Schuesselmast
+    # Der Kippwinkel zieht die Schuesselkante weit nach unten: bei r=0.72 und
+    # 112 Grad braucht die Mitte >= 0.74 m, sonst steht das Modell unter z = 0.
+    kegel(-2.0, -3.0, 0.86, 0.72, 0.06, 0.36, dkl, 14, rot=(math.pi*0.62, 0, 0))
     zyl(2.6,2.4,1.9, 0.06, 3.0, dkl, 8)                 # Antenne
+    for k in range(3):
+        zyl(2.6, 2.4, 1.30 + k*0.95, 0.17, 0.05, dkl, 8)
     zyl(2.6,2.4,3.5, 0.16, 0.10, dkl, 8)
     export("th7_hochhaus_dach", 0.018, 3)
 
@@ -357,15 +418,36 @@ def reihenhaus_modul():
     glas = mat("Glas", (0.62,0.76,0.84), 0.2)
     rahm = mat("Rahmen", (0.35,0.33,0.30), 0.7)
     tuer = mat("Tuer", (0.32,0.22,0.14), 0.6)
-    box(0,0,0.22, 6.1,7.3,0.44, mat("Sockel",(0.68,0.66,0.62),0.9))
+    sock = mat("Sockel", (0.68,0.66,0.62), 0.9)
+    laden = mat("Laden", (0.34,0.42,0.36), 0.75)
+    # In x bleibt das Modul strikt auf 6,00 — jeder Vorsprung dort laesst die
+    # Nachbarhaeuser der Zeile ineinanderragen. Relief gibt es deshalb NUR in y.
+    V = 3.60                                            # Wandflaeche vorn/hinten
+    box(0,0,0.22, 6.00,7.5,0.44, sock)
     box(0,0,3.30, 6.0,7.2,6.20, wand)
-    box(0,0,6.55, 6.25,7.45,0.30, dach)                 # Traufgesims
-    kegel(0,0,7.35, 4.6,0.0, 1.6, dach, 4, rot=(0,0,math.pi/4))   # Satteldach
-    fensterreihe(6.0, 7.2, 4.9, 2, rahm, glas, 1.35)    # OG
-    box(-1.5, 3.63, 1.75, 1.9,0.06,1.5, rahm)           # EG Fenster
-    box(-1.5, 3.66, 1.75, 1.6,0.05,1.25, glas)
-    box(1.7, 3.66, 1.20, 1.1,0.10,2.35, tuer)           # Haustuer
-    box(1.7, 3.95, 2.55, 1.6,0.70,0.12, dach)           # Vordach
+    for sy in (-1, 1):                                  # Traufgesims mit Ueberstand
+        box(0, sy*3.74, 6.52, 6.00, 0.52, 0.26, dach)
+    satteldach_x(0, 0, 6.65, 6.00, 8.00, 1.80, dach)    # First in x -> Zeile schliesst
+    for u in (-1.5, 1.5):                               # OG vorn, mit Laibung
+        laibung(0, u, V, 4.85, 1.40, 1.35, 0.13, rahm, glas, sock)
+        for s in (-1, 1):                               # Fensterlaeden
+            box(u + s*1.06, V + 0.14, 4.85, 0.42, 0.07, 1.35, laden)
+    laibung(0, -1.5, V, 1.80, 1.55, 1.45, 0.13, rahm, glas, sock)   # EG vorn
+    for s in (-1, 1):
+        box(-1.5 + s*1.16, V + 0.14, 1.80, 0.44, 0.07, 1.45, laden)
+    box(1.7, V + 0.06, 1.22, 1.10, 0.12, 2.30, tuer)    # Haustuer in der Nische
+    for s in (-1, 1):                                   # Tuergewaende
+        box(1.7 + s*0.70, V + 0.10, 1.30, 0.30, 0.20, 2.60, sock)
+    box(1.7, V + 0.10, 2.68, 1.70, 0.20, 0.22, sock)    # Tuersturz
+    box(1.7, V + 0.34, 2.92, 1.90, 0.78, 0.14, dach)    # Vordach
+    for s in (-1, 1):                                   # Konsolen unterm Vordach
+        box(1.7 + s*0.72, V + 0.32, 2.76, 0.12, 0.62, 0.18, dach)
+    zyl(2.72, V + 0.14, 3.20, 0.09, 6.40, sock, 10)     # Regenfallrohr
+    for u in (-1.4, 1.4):                               # Rueckfassade nicht blank
+        laibung(2, u, V, 4.85, 1.25, 1.20, 0.11, rahm, glas, sock)
+        laibung(2, u, V, 1.85, 1.25, 1.20, 0.11, rahm, glas, sock)
+    box(1.9, -1.9, 8.30, 0.70, 0.70, 2.20, sock)        # Kamin
+    box(1.9, -1.9, 9.46, 0.86, 0.86, 0.14, dach)
     export("th7_reihenhaus_modul", 0.016, 3)
 
 def parkhaus():
@@ -373,19 +455,43 @@ def parkhaus():
     neu()
     bet = mat("Beton", (0.70,0.69,0.66), 0.9)
     dkl = mat("Fuge", (0.42,0.42,0.40), 0.8)
+    gel = mat("PGelaender", (0.46,0.49,0.52), 0.5, 0.4)
+    sig = mat("PSchild", (0.16,0.34,0.60), 0.5)
+    kern = mat("Treppenkern", (0.62,0.61,0.58), 0.9)
     for e in range(3):
         box(0,0,0.35+e*3.0, 16.0,11.0,0.42, bet)        # Decken
-        box(0,-5.35,1.05+e*3.0, 16.0,0.30,0.85, bet)    # Bruestung vorn
-        box(0, 5.35,1.05+e*3.0, 16.0,0.30,0.85, bet)
-        box(-7.9,0,1.05+e*3.0, 0.30,11.0,0.85, bet)
-        box( 7.9,0,1.05+e*3.0, 0.30,11.0,0.85, bet)
-    for sx in (-6.5,-2.2,2.2,6.5):                      # Stuetzen
+        # Bruestung: geschlossenes Betonband UNTEN, darueber ein Gitter aus Pfosten
+        # und zwei Riegeln. Ein durchgehender Klotz machte jede Ebene zur Mauer.
+        for sy in (-1, 1):
+            box(0, sy*5.35, 0.86+e*3.0, 16.0, 0.34, 0.62, bet)
+            box(0, sy*5.35, 1.66+e*3.0, 16.2, 0.16, 0.14, gel)
+            box(0, sy*5.35, 1.98+e*3.0, 16.2, 0.16, 0.14, gel)
+            for i in range(11):
+                box(-7.5+i*1.5, sy*5.35, 1.62+e*3.0, 0.10, 0.20, 1.00, gel)
+        for sx in (-1, 1):
+            box(sx*7.9, 0, 0.86+e*3.0, 0.34, 11.0, 0.62, bet)
+            box(sx*7.9, 0, 1.82+e*3.0, 0.16, 11.2, 0.14, gel)
+            for i in range(8):
+                box(sx*7.9, -4.9+i*1.4, 1.62+e*3.0, 0.20, 0.10, 1.00, gel)
+    for sx in (-6.5,-2.2,2.2,6.5):                      # Stuetzen mit Kopfverbreiterung
         for sy in (-4.0,0,4.0):
             box(sx,sy,4.6, 0.55,0.55,9.2, bet)
-    box(9.4,0,3.4, 3.2,9.0,0.38, bet)                   # Rampe (schraeg angedeutet)
-    box(9.4,-4.6,4.3, 3.4,0.28,0.8, dkl)
-    box(9.4, 4.6,4.3, 3.4,0.28,0.8, dkl)
+            for e in range(3):
+                box(sx, sy, 3.02+e*3.0, 0.86, 0.86, 0.30, bet)
+    # Rampe wirklich SCHRAEG: die alte waagrechte Platte schwebte neben dem Haus.
+    ang = math.atan2(2.90, 9.20)
+    for a in ((10.00, 0, 1.98, 3.20, 9.6, 0.38, bet),
+              (8.44, 0, 2.34, 0.22, 9.6, 0.72, dkl),
+              (11.56, 0, 2.34, 0.22, 9.6, 0.72, dkl)):
+        box(*a).rotation_euler[0] = ang
+    box(-8.9, 3.4, 5.20, 2.6, 3.4, 10.40, kern)         # Treppen-/Aufzugskern
+    box(-8.9, 3.4, 10.62, 3.0, 3.8, 0.44, dkl)
+    for k in range(6):                                  # Lichtschlitze im Kern
+        box(-10.24, 3.4, 1.40+k*1.55, 0.14, 2.20, 0.55, dkl)
+    box(-8.9, 1.62, 1.20, 1.30, 0.20, 2.40, dkl)        # Zugang
     box(0,0,9.62, 16.2,11.2,0.24, dkl)                  # Dachkante
+    box(3.4, 5.62, 8.10, 5.4, 0.10, 1.70, dkl)          # Beschilderung, Schauseite:
+    box(3.4, 5.76, 8.10, 5.2, 0.22, 1.50, sig)          # Rahmen HINTER das Schild
     export("th7_parkhaus", 0.020, 3)
 
 def lagerhalle():
@@ -394,6 +500,7 @@ def lagerhalle():
     wand = mat("HalleWand", (0.62,0.65,0.68), 0.75, 0.15)
     dach = mat("HalleDach", (0.45,0.48,0.52), 0.6, 0.25)
     tor = mat("Tor", (0.30,0.36,0.42), 0.6)
+    tglas = mat("HalleGlas", (0.58,0.72,0.78), 0.2, 0.1)
     box(0,0,0.25, 20.4,12.4,0.50, mat("Sockel",(0.55,0.55,0.53),0.9))
     box(0,0,3.20, 20.0,12.0,5.40, wand)
     for i in range(9):                                  # Wellblech-Rippen
@@ -403,11 +510,36 @@ def lagerhalle():
     tonne(0, 0, 5.90, 6.0, 20.2, dach, 22, 0.46)
     for i in range(9):                                  # Binder als Halbbogen
         tonne(-9.0 + i*2.25, 0, 5.90, 6.12, 0.16, dach, 22, 0.46)
-    for tx in (-5.5, 5.5):                              # 2 Rolltore
+    for tx in (-5.5, 5.5):                              # 2 Rolltore in der Nische
         box(tx, 6.05, 2.10, 4.4,0.14,4.2, tor)
         for r in range(5):
             box(tx, 6.13, 0.5+r*0.85, 4.4,0.05,0.08, wand)
+        for s in (-1, 1):                               # Torgewaende + Sturz
+            box(tx + s*2.42, 6.16, 2.31, 0.28, 0.36, 4.62, dach)
+        box(tx, 6.16, 4.44, 5.40, 0.36, 0.28, dach)
     box(0,7.4,0.30, 20.0,2.4,0.60, mat("Rampe",(0.58,0.57,0.54),0.9))
+    # Oberlichtband unter der Traufe: eine 20-m-Wand ohne Fenster liest sich als
+    # Container. Das Band liegt knapp VOR der Wandflaeche, sonst ist es unsichtbar.
+    for sy in (-1, 1):
+        for i in range(6):
+            bx = -8.4 + i*3.36
+            box(bx, sy*6.04, 5.10, 2.30, 0.10, 0.95, tglas)
+            for s in (-1, 1):
+                box(bx + s*1.24, sy*6.10, 5.10, 0.18, 0.22, 1.15, dach)
+            box(bx, sy*6.10, 5.72, 2.72, 0.22, 0.16, dach)
+    for sx in (-1, 1):                                  # Giebelseiten: Tuer + Fenster
+        box(sx*10.06, -3.4, 1.25, 0.14, 1.10, 2.50, tor)
+        for s in (-1, 1):
+            box(sx*10.12, -3.4 + s*0.68, 1.34, 0.26, 0.26, 2.68, dach)
+        box(sx*10.12, -3.4, 2.62, 0.26, 1.70, 0.24, dach)
+        for k in range(2):
+            box(sx*10.04, 2.2 + k*2.6, 4.30, 0.10, 1.90, 1.10, tglas)
+    for sy in (-1, 1):                                  # Dachrinne auf der Traufe
+        zyl(0, sy*6.16, 5.88, 0.17, 20.2, dach, 12, rot=(0, math.pi/2, 0))
+    for sx in (-1, 1):
+        for sy in (-1, 1):                              # Fallrohre an den Ecken
+            zyl(sx*9.86, sy*6.16, 2.95, 0.11, 5.90, dach, 10)
+    box(0, 0, 8.56, 14.0, 1.30, 0.24, tglas)            # Firstoberlicht (First 8.66)
     export("th7_lagerhalle", 0.020, 3)
 
 def bruecke_modul():
