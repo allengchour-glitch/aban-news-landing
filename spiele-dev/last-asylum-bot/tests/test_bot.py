@@ -1430,6 +1430,84 @@ class TestVorlageOhneWirkung(unittest.TestCase):
             shutil.rmtree(ordner, ignore_errors=True)
 
 
+class TestGelernteAuswege(unittest.TestCase):
+    """Der Bot merkt sich, wie er von einem Bildschirm wegkommt."""
+
+    def bau(self, ordner, wirksamer_schritt):
+        """on_unknown mit drei Schritten - nur einer ändert das Bild."""
+        fest = noise(400, 700, 120)
+        # Stark verkleinert sieht Rauschen ueberall gleich aus - der zweite
+        # Bildschirm braucht eine Flaeche, die auch grob noch auffaellt.
+        anders = noise(400, 700, 121)
+        paste(anders, Image.new(300, 400, (252, 252, 252)), 50, 150)
+
+        class Gerät(FakeDevice):
+            def __init__(self):
+                super().__init__([fest], loop=True)
+                self.geloest = False
+
+            def screencap(self):
+                return anders if self.geloest else fest
+
+            def key(self, code):
+                super().key(code)
+                if code == wirksamer_schritt:
+                    self.geloest = True
+
+        cfg = Config.from_dict({
+            "base_width": 400,
+            "festgefahren_schritte": 0,
+            "on_unknown": [{"key": "TASTE_A"}, {"key": "TASTE_B"}, {"key": "TASTE_C"}],
+        }, path=os.path.join(ordner, "conf.json"))
+        dev = Gerät()
+        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=1,
+                     state_file=os.path.join(ordner, "zustand.json"))
+        return dev, eng
+
+    def test_merkt_sich_den_schritt_der_wirkt(self):
+        import shutil, tempfile
+        ordner = tempfile.mkdtemp()
+        try:
+            dev, eng = self.bau(ordner, "TASTE_C")
+            eng.capture()
+            eng._festgefahren(eng.screen)
+            eng._ausweg_suchen("test")
+            self.assertEqual(dev.keys, ["TASTE_A", "TASTE_B", "TASTE_C"],
+                             "erst der Reihe nach durchprobieren")
+            self.assertEqual(eng.stats.get("ausweg-gelernt", 0), 1)
+            with open(os.path.join(ordner, "auswege.json"), encoding="utf-8") as fh:
+                self.assertEqual(list(json.load(fh).values()), [2])
+        finally:
+            shutil.rmtree(ordner, ignore_errors=True)
+
+    def test_beim_naechsten_mal_gleich_der_richtige(self):
+        import shutil, tempfile
+        ordner = tempfile.mkdtemp()
+        try:
+            dev, eng = self.bau(ordner, "TASTE_C")
+            eng.capture(); eng._festgefahren(eng.screen); eng._ausweg_suchen("test")
+
+            # Neuer Lauf, derselbe Bildschirm: die Erinnerung überlebt.
+            dev2, eng2 = self.bau(ordner, "TASTE_C")
+            self.assertTrue(eng2._auswege, "die gelernten Auswege muessen geladen werden")
+            eng2.capture(); eng2._festgefahren(eng2.screen); eng2._ausweg_suchen("test")
+            self.assertEqual(dev2.keys, ["TASTE_C"],
+                             "der bewaehrte Schritt gehoert nach vorn - ohne Umweg")
+        finally:
+            shutil.rmtree(ordner, ignore_errors=True)
+
+    def test_ohne_wirkung_wird_nichts_gemerkt(self):
+        import shutil, tempfile
+        ordner = tempfile.mkdtemp()
+        try:
+            dev, eng = self.bau(ordner, "GIBTS_NICHT")
+            eng.capture(); eng._festgefahren(eng.screen); eng._ausweg_suchen("test")
+            self.assertEqual(eng.stats.get("ausweg-gelernt", 0), 0)
+            self.assertEqual(eng._auswege, {})
+        finally:
+            shutil.rmtree(ordner, ignore_errors=True)
+
+
 class TestZurueckPfeil(unittest.TestCase):
     """Die Android-Zurück-Taste ist in diesem Spiel gefährlich.
 

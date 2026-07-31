@@ -130,6 +130,11 @@ class Engine:
         self._offene_pruefung: Optional[tuple] = None
         self._folgenlos: Dict[str, int] = {}   # Vorlage -> Tipps ohne jede Wirkung
         self._verworfen: set = set()           # aussortiert - nicht mehr suchen
+        self._auswege_datei = (
+            os.path.join(os.path.dirname(os.path.abspath(state_file)), "auswege.json")
+            if state_file else None
+        )
+        self._auswege: Dict[str, int] = {}
         self._wirksam: Dict[str, int] = {}     # Vorlage -> Tipps, nach denen sich etwas tat
 
         self._rule_last: Dict[str, float] = {}
@@ -150,6 +155,7 @@ class Engine:
         self.state_file = state_file
         self._now = now
         self._letzter_lauf: Dict[str, float] = self._zustand_laden()
+        self._auswege = self._auswege_laden()
 
         jetzt_m = clock()
         jetzt_w = now()
@@ -723,6 +729,8 @@ class Engine:
         for name, wie_oft in verdacht[:4]:
             self.log.info(f"   verdaechtig: {name} trifft, bewirkt aber nichts",
                           folgenlose_tipps=wie_oft)
+        if self._auswege:
+            self.log.info("   Gelernte Auswege", bildschirme=len(self._auswege))
         gelernt = len(self.cfg.template_gruppe("gelernt/blasen/*.png"))
         verworfen = len(self.cfg.template_gruppe("gelernt/verworfen/*.png"))
         self.log.info(
@@ -1189,8 +1197,75 @@ class Engine:
         # einen Ausweg versucht haette.
         if self.cfg.on_unknown and self.unknown_streak >= 5 and self.unknown_streak % 10 == 5:
             self.log.warn("Unbekannter Bildschirm – on_unknown läuft", serie=self.unknown_streak)
-            self.run_actions(self.cfg.on_unknown, "on_unknown")
+            self._ausweg_suchen("on_unknown")
         return True
+
+    def _ausweg_suchen(self, woher: str) -> None:
+        """Den Ausweg von diesem Bildschirm suchen - und ihn sich merken.
+
+        Bisher lief bei jedem Haenger dieselbe Kette von vorn ab: erst das
+        Schliesskreuz, dann der Zurueck-Pfeil, dann die freie Flaeche. Auf
+        einem Bildschirm, den der Bot schon dutzendmal gesehen hat, ist das
+        verschwendete Zeit. Er probiert die Schritte darum einzeln durch,
+        merkt sich, welcher gewirkt hat, und faengt beim naechsten Mal damit
+        an. Was noch nie gewirkt hat, wird nicht wiederholt.
+        """
+        schluessel = self._ansicht_schluessel()
+        if schluessel is None:
+            self.run_actions(self.cfg.on_unknown, woher)
+            return
+        schritte = list(self.cfg.on_unknown)
+        gemerkt = self._auswege.get(schluessel)
+        reihenfolge = list(range(len(schritte)))
+        if isinstance(gemerkt, int) and 0 <= gemerkt < len(schritte):
+            reihenfolge.remove(gemerkt)
+            reihenfolge.insert(0, gemerkt)
+            self.log.debug("Bekannter Bildschirm - bewaehrter Ausweg zuerst",
+                           schritt=gemerkt + 1)
+        vorher = self._finger_jetzt
+        for nr in reihenfolge:
+            self.run_actions([schritte[nr]], woher)
+            self._do_sleep([0.8, 1.2])
+            jetzt = self._ansicht_finger(self.capture())
+            if jetzt == vorher:
+                continue
+            if self._auswege.get(schluessel) != nr:
+                self._auswege[schluessel] = nr
+                self._auswege_sichern()
+                self.bump("ausweg-gelernt")
+                self.log.info(
+                    f"Ausweg gelernt: Schritt {nr + 1} von {len(schritte)} bringt hier weiter",
+                    bildschirme=len(self._auswege),
+                )
+            return
+        self.log.debug("Kein Schritt hat gewirkt", bildschirm=schluessel[:8])
+
+    def _ansicht_schluessel(self) -> Optional[str]:
+        if self._finger_jetzt is None:
+            return None
+        return self._finger_jetzt.hex()
+
+    def _auswege_laden(self) -> Dict[str, int]:
+        if not self._auswege_datei or not os.path.exists(self._auswege_datei):
+            return {}
+        try:
+            with open(self._auswege_datei, "r", encoding="utf-8") as fh:
+                return {str(k): int(v) for k, v in json.load(fh).items()}
+        except Exception as exc:
+            self.log.warn(f"Gelernte Auswege nicht lesbar: {exc}")
+            return {}
+
+    def _auswege_sichern(self) -> None:
+        if not self._auswege_datei:
+            return
+        try:
+            ordner = os.path.dirname(os.path.abspath(self._auswege_datei))
+            if ordner:
+                os.makedirs(ordner, exist_ok=True)
+            with open(self._auswege_datei, "w", encoding="utf-8") as fh:
+                json.dump(self._auswege, fh, indent=2)
+        except OSError as exc:  # pragma: no cover - Dateisystem
+            self.log.warn(f"Gelernte Auswege nicht schreibbar: {exc}")
 
     def _regel_ohne_wirkung(self, rule) -> bool:
         """Greift eine Regel wieder und wieder, ohne dass sich etwas tut?
@@ -1303,7 +1378,7 @@ class Engine:
         )
         self.save_shot("festgefahren", screen)
         if self.cfg.on_unknown:
-            self.run_actions(self.cfg.on_unknown, "festgefahren")
+            self._ausweg_suchen("festgefahren")
         return True
 
     def _track_change(self, screen: Image) -> None:
