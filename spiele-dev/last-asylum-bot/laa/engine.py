@@ -140,6 +140,10 @@ class Engine:
             if state_file else None
         )
         self._erkundet: Dict[str, list] = {}
+        self._gelernt_datei = (
+            os.path.join(os.path.dirname(os.path.abspath(state_file)), "gelernt.json")
+            if state_file else None
+        )
         self._wirksam: Dict[str, int] = {}     # Vorlage -> Tipps, nach denen sich etwas tat
 
         self._rule_last: Dict[str, float] = {}
@@ -162,6 +166,7 @@ class Engine:
         self._letzter_lauf: Dict[str, float] = self._zustand_laden()
         self._auswege = self._auswege_laden()
         self._erkundet = self._erkundung_laden()
+        self._gelerntes_anwenden()
 
         jetzt_m = clock()
         jetzt_w = now()
@@ -706,17 +711,53 @@ class Engine:
         return True
 
     def _config_patch(self, aendern) -> None:
-        """Die Konfigurationsdatei anfassen, ohne den Rest zu verlieren."""
-        if self.cfg.path == "<inline>":
+        """Gelerntes sichern - NEBEN der Konfiguration, nicht darin.
+
+        Die Konfiguration liegt unter Git. Schriebe der Bot seine gemessenen
+        Groessen und Takte dort hinein, wuerde sein eigenes `git pull` beim
+        naechsten Mal mit 'local changes would be overwritten' abbrechen - und
+        er bekaeme nie wieder eine neue Fassung. Darum eine eigene Datei, die
+        beim Start ueber die Konfiguration gelegt wird.
+        """
+        if not self._gelernt_datei:
             return
         try:
-            with open(self.cfg.path, "r", encoding="utf-8") as fh:
-                roh = json.load(fh)
+            roh = {}
+            if os.path.exists(self._gelernt_datei):
+                with open(self._gelernt_datei, "r", encoding="utf-8") as fh:
+                    roh = json.load(fh)
             aendern(roh)
-            with open(self.cfg.path, "w", encoding="utf-8") as fh:
+            ordner = os.path.dirname(os.path.abspath(self._gelernt_datei))
+            if ordner:
+                os.makedirs(ordner, exist_ok=True)
+            with open(self._gelernt_datei, "w", encoding="utf-8") as fh:
                 json.dump(roh, fh, ensure_ascii=False, indent=2)
         except Exception as exc:  # pragma: no cover - Dateisystem
-            self.log.warn(f"Konfiguration nicht gespeichert: {exc}")
+            self.log.warn(f"Gelerntes nicht gespeichert: {exc}")
+
+    def _gelerntes_anwenden(self) -> None:
+        """Beim Start das Gelernte ueber die Konfiguration legen."""
+        if not self._gelernt_datei or not os.path.exists(self._gelernt_datei):
+            return
+        try:
+            with open(self._gelernt_datei, "r", encoding="utf-8") as fh:
+                roh = json.load(fh)
+        except Exception as exc:
+            self.log.warn(f"Gelerntes nicht lesbar: {exc}")
+            return
+        if "ui_skala" in roh:
+            self.cfg.ui_skala = float(roh["ui_skala"])
+        for name, wert in (roh.get("template_skalen") or {}).items():
+            self.cfg.template_skalen[str(name)] = float(wert)
+        takte = {t["name"]: t["every"] for t in roh.get("tasks", []) if "every" in t}
+        for task in self.cfg.tasks:
+            if task.name in takte:
+                task.every = float(takte[task.name])
+        if roh:
+            self.log.info(
+                "Gelerntes uebernommen", datei=os.path.basename(self._gelernt_datei),
+                groessen=len(roh.get("template_skalen") or {}), takte=len(takte),
+            )
 
     def _selbstbericht(self, spec: Dict[str, Any]) -> None:
         """Sagen, was gerade fehlt - und was es kostet.
@@ -811,8 +852,18 @@ class Engine:
             self.log.warn(f"Selbst-Update nicht moeglich: {exc}")
             return
         if hole.returncode != 0:
-            self.log.debug("git pull ging nicht durch",
-                           grund=hole.stderr.decode("utf-8", "replace").strip()[:200])
+            grund = hole.stderr.decode("utf-8", "replace").strip()
+            if "would be overwritten" in grund or "local changes" in grund:
+                # Genau die Falle, wegen der Gelerntes jetzt daneben liegt:
+                # eine von Hand oder frueher vom Bot geaenderte Datei blockiert
+                # jede neue Fassung - still, bis es jemand bemerkt.
+                self.log.warn(
+                    "Neue Fassung blockiert: geaenderte Dateien im Ordner",
+                    hilfe="git checkout -- config/ && git pull",
+                    grund=grund.splitlines()[0][:160] if grund else "",
+                )
+            else:
+                self.log.debug("git pull ging nicht durch", grund=grund[:200])
             return
         alt = vorher.stdout.decode().strip()
         neu = nachher.stdout.decode().strip()
@@ -903,9 +954,14 @@ class Engine:
         """Neue Takte in die Konfigurationsdatei zurueckschreiben."""
 
         def anwenden(roh):
-            for eintrag in roh.get("tasks", []):
-                if eintrag["name"] in aenderungen:
-                    eintrag["every"] = aenderungen[eintrag["name"]][1]
+            liste = roh.setdefault("tasks", [])
+            for name, (_alt, neu, _s, _n) in aenderungen.items():
+                for eintrag in liste:
+                    if eintrag.get("name") == name:
+                        eintrag["every"] = neu
+                        break
+                else:
+                    liste.append({"name": name, "every": neu})
 
         self._config_patch(anwenden)
 

@@ -659,7 +659,8 @@ class TestKalibrierung(unittest.TestCase):
             json.dump({"base_width": 600, "ui_skala": 1.0}, fh)
         cfg = Config.load(os.path.join(ordner, "conf.json"))
         dev = FakeDevice([screen], loop=True)
-        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=1)
+        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=1,
+                     state_file=os.path.join(ordner, "zustand.json"))
         return ordner, cfg, eng, shutil
 
     def test_findet_den_verkleinerungsfaktor(self):
@@ -668,7 +669,12 @@ class TestKalibrierung(unittest.TestCase):
             eng.run_actions([{"kalibriere": {"templates": ["ui/back_arrow.png"],
                                              "mindest_score": 0.8, "min_belege": 1}}])
             self.assertAlmostEqual(cfg.ui_skala, 0.7, delta=0.06)
+            # Gelerntes gehoert NEBEN die Konfiguration: die liegt unter Git,
+            # und ein veraendertes conf.json blockiert das eigene git pull.
             with open(os.path.join(ordner, "conf.json"), encoding="utf-8") as fh:
+                self.assertEqual(json.load(fh)["ui_skala"], 1.0,
+                                 "die Konfiguration selbst bleibt unveraendert")
+            with open(os.path.join(ordner, "gelernt.json"), encoding="utf-8") as fh:
                 self.assertAlmostEqual(json.load(fh)["ui_skala"], 0.7, delta=0.06)
         finally:
             shutil.rmtree(ordner, ignore_errors=True)
@@ -792,7 +798,8 @@ class TestVorlagenGroesse(unittest.TestCase):
             json.dump({"base_width": 600}, fh)
         cfg = Config.load(os.path.join(ordner, "conf.json"))
         eng = Engine(cfg, FakeDevice([screen], loop=True), logger=quiet(),
-                     sleep=lambda s: None, seed=1)
+                     sleep=lambda s: None, seed=1,
+                     state_file=os.path.join(ordner, "zustand.json"))
         eng.capture()
         return ordner, cfg, eng, shutil
 
@@ -805,7 +812,7 @@ class TestVorlagenGroesse(unittest.TestCase):
             treffer = eng.find(spec)  # jetzt wird nachgemessen - und getroffen
             self.assertIsNotNone(treffer, "nach dem Nachmessen muss die Vorlage sitzen")
             self.assertAlmostEqual(cfg.template_skalen["ui/knopf.png"], 0.7, delta=0.09)
-            with open(os.path.join(ordner, "conf.json"), encoding="utf-8") as fh:
+            with open(os.path.join(ordner, "gelernt.json"), encoding="utf-8") as fh:
                 gespeichert = json.load(fh)["template_skalen"]["ui/knopf.png"]
             self.assertAlmostEqual(gespeichert, 0.7, delta=0.09)
         finally:
@@ -874,7 +881,8 @@ class TestSelbstOptimierung(unittest.TestCase):
                                   "do": [{"key": "X"}]}]}, fh)
         cfg = Config.load(konf)
         dev = FakeDevice([noise(60, 80, 90)], loop=True)
-        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=1)
+        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=1,
+                     state_file=os.path.join(ordner, "zustand.json"))
         return ordner, konf, cfg, eng
 
     def optimiere(self, eng, ordner):
@@ -888,7 +896,11 @@ class TestSelbstOptimierung(unittest.TestCase):
         try:
             self.optimiere(eng, ordner)
             self.assertEqual(cfg.tasks[0].every, 3600)
-            with open(konf, encoding="utf-8") as fh:  # auch in der Datei
+            # Der neue Takt landet neben der Konfiguration, nicht darin -
+            # sonst blockiert die geaenderte Datei das eigene git pull.
+            with open(konf, encoding="utf-8") as fh:
+                self.assertEqual(json.load(fh)["tasks"][0]["every"], 1800)
+            with open(os.path.join(ordner, "gelernt.json"), encoding="utf-8") as fh:
                 self.assertEqual(json.load(fh)["tasks"][0]["every"], 3600)
         finally:
             shutil.rmtree(ordner, ignore_errors=True)
