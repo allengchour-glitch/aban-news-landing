@@ -7015,6 +7015,127 @@
           }
         }
       ]
+    },
+    {
+      "name": "versammlung-beitreten",
+      "every": 300,
+      "priority": 150,
+      "enabled": false,
+      "_zweck": "Ruft jemand aus der Allianz eine Versammlung aus, moeglichst mitmachen: das ist die ergiebigste Art zu kaempfen und kostet nur Ausdauer. Weg: Allianz -> Versammlungs-liste -> offene Versammlung -> blauer 'Beitreten' -> bestaetigen -> zurueck. STEHT AUF AUS, und zwar nicht wegen der Vorlagen: der Bot kann die Stufe des Ziels und die empfohlene Macht nicht lesen (siehe _zahlen_lesen). Ohne das traete er auch Versammlungen bei, die zu stark sind - dabei gehen die Truppen verloren, und das kostet mehr als der Ertrag bringt. Erst einschalten, wenn das Zahlenlesen steht.",
+      "do": [
+        {
+          "log": "Offene Versammlungen der Allianz pruefen"
+        },
+        {
+          "tap_first": {
+            "of": [
+              {
+                "template": "nav/allianz.png",
+                "threshold": 0.86,
+                "region": [
+                  0.6,
+                  0.6,
+                  1.0,
+                  0.95
+                ]
+              }
+            ],
+            "fallback": [
+              [
+                0.94,
+                0.79
+              ]
+            ],
+            "after": [
+              2.0,
+              3.0
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "allianz/versammlung_liste.png",
+            "optional": true,
+            "threshold": 0.86,
+            "after": [
+              1.5,
+              2.5
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "allianz/versammlung_offen.png",
+            "optional": true,
+            "threshold": 0.86,
+            "after": [
+              1.5,
+              2.5
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "allianz/beitreten.png",
+            "optional": true,
+            "threshold": 0.86,
+            "after": [
+              1.5,
+              2.5
+            ]
+          }
+        },
+        {
+          "tap_template": {
+            "template": "ui/btn_bestaetigen.png",
+            "optional": true,
+            "after": [
+              2.0,
+              3.0
+            ]
+          }
+        },
+        {
+          "tap_first": {
+            "of": [
+              {
+                "template": "nav/startseite.png",
+                "threshold": 0.86,
+                "region": [
+                  0.7,
+                  0.85,
+                  1.0,
+                  1.0
+                ]
+              },
+              {
+                "template": "nav/burg.png",
+                "threshold": 0.86,
+                "region": [
+                  0.0,
+                  0.4,
+                  0.35,
+                  0.85
+                ]
+              }
+            ],
+            "fallback": [
+              [
+                0.5,
+                0.95
+              ],
+              [
+                0.22,
+                0.93
+              ],
+              [
+                0.35,
+                0.16
+              ]
+            ]
+          }
+        }
+      ]
     }
   ],
   "_diamanten": "DIAMANTEN-REGEL (User 2026-07-31): 'bis 50 pro Klick' ist erlaubt. ABER der Bot kann Zahlen auf Knoepfen NICHT lesen - fuer ihn sieht '2 Spenden' aus wie '50 Spenden' oder '500 Spenden'. Deshalb tippt er von sich aus nur Knoepfe an, die REINE RESSOURCEN kosten (blauer Spenden-Knopf, Kraeuter). Der Diamanten-Knopf steht als eigene Aufgabe bereit, ist aber AUS - wer ihn einschaltet, akzeptiert, dass die Kosten mit jeder Spende steigen und der Bot das nicht bemerkt. Ebenso bleibt 'Sofort' beim Gebaeude-Upgrade (vierstellig) unangetastet. Echtgeld ist ohnehin komplett tabu, siehe tabu_regionen.",
@@ -7070,5 +7191,6 @@
   "_gelerntes": "Was der Bot selbst misst - Groessen, Takte, Auswege - schreibt er NICHT in diese Datei, sondern in gelernt.json neben zustand.json. Grund: diese Datei liegt unter Git. Eine geaenderte Datei laesst 'git pull --ff-only' scheitern, und dann bekommt der Bot nie wieder eine neue Fassung - still, bis es jemand bemerkt. Beim Start legt er gelernt.json ueber die Werte von hier. Steckt der Ordner doch einmal fest, hilft: git checkout -- config/ && git pull",
   "_tabu": "Die Zone deckt nur den Einkaufswagen und die Diamanten-Anzeige ganz oben rechts ab. Sie reichte bis 0.145 hinunter und hat damit das Schliesskreuz der Dialoge mit verdeckt - das sitzt bei y 0.10 bis 0.11. Im Lauf vom 31.07. war das Ergebnis: 'Tipp in Tabu-Zone blockiert ... grund=ui/popup_close.png', danach 'Regel dialog-schliessen bewirkt nichts - stillgelegt'. Der Bot kam aus keinem Dialog mehr heraus. Eine Tabu-Zone muss so eng wie moeglich sein: was sie zu viel abdeckt, faellt nicht als Fehler auf, sondern als lahmgelegte Regel.",
   "_soldaten": "T8 (S8) ist noch gesperrt; hoechste freie Stufe ist S7. Sobald S8 offen ist, reicht es, die Vorlage kaserne/stufe_t8.png zu schneiden - die Aufgabe waehlt dann von selbst die hoechste Stufe. Der orange Knopf 'Jetzt trainieren' kuerzt gegen Bezahlung ab und wird nicht benutzt.",
-  "_blasen": "Ertrags-Blasen liegen AUF der Karte und wandern mit, sobald die Kamera schwenkt - die Bedienung am Rand bleibt stehen. Daran unterscheidet man beides. Gesammelt wird nur zwischen x=0.11 und x=0.89: links liegt die Symbolspalte (x um 0.07), rechts Allianz, Nachricht und Tasche (x um 0.92), und die haben denselben hellen Ring wie eine Blase. Verloren geht dadurch nichts - der Rundgang schwenkt in acht Richtungen, also kommt jede Blase irgendwann in den Bereich."
+  "_blasen": "Ertrags-Blasen liegen AUF der Karte und wandern mit, sobald die Kamera schwenkt - die Bedienung am Rand bleibt stehen. Daran unterscheidet man beides. Gesammelt wird nur zwischen x=0.11 und x=0.89: links liegt die Symbolspalte (x um 0.07), rechts Allianz, Nachricht und Tasche (x um 0.92), und die haben denselben hellen Ring wie eine Blase. Verloren geht dadurch nichts - der Rundgang schwenkt in acht Richtungen, also kommt jede Blase irgendwann in den Bereich.",
+  "_zahlen_lesen": "Der Bot kann keine Zahlen lesen. Fuer 'nur beitreten, wenn Stufe und Macht nicht zu hoch sind' braucht es aber genau das: im Versammlungs-Fenster stehen 'Lv120' und 'Empf. Macht: 6,783,000'. Machbar waere es - das Spiel benutzt eine feste Schrift, also liessen sich die zehn Ziffern einmal als Vorlagen schneiden und mit dem vorhandenen Vergleicher aneinandergereiht lesen. Dafuer braucht es einen Screenshot in voller Aufloesung (1440 breit), auf dem die Ziffern gross und klar stehen. Damit liesse sich zugleich die Ausdauer-Reserve umsetzen (Falkenturm nur oberhalb einer Schwelle) und die eigene Macht gegen die empfohlene halten."
 }
