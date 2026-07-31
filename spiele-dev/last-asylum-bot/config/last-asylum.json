@@ -6850,6 +6850,83 @@
           }
         }
       ]
+    },
+    {
+      "name": "falkenturm-quests",
+      "every": 21600,
+      "priority": 106,
+      "enabled": false,
+      "_zweck": "Falkenturm: 'Schnelle Ausfuehrung' erledigt mehrere Quests auf einmal. Kostet AUSDAUER (40 fuer 4 Quests, 50 fuer 5) - dieselbe Ausdauer, die auch fuers Sammeln und fuer Monster gebraucht wird. Steht darum auf AUS, bis geklaert ist, was Vorrang hat, und bis die Vorlagen da sind. Der Knopf ist GOLD, wird also nicht blind angetippt: gold ist im Spiel die Haupthandlung, mal harmlos, mal teuer (siehe _farben). Ablauf aus dem Video vom 31.07.: Falkenturm oeffnen -> 'Schnelle Ausfuehrung' -> Belohnungsbanner 'Erhalten' -> 'Tippen zum Fortfahren' -> zurueck.",
+      "do": [
+        {
+          "log": "Falkenturm: Quests in einem Rutsch erledigen"
+        },
+        {
+          "tap_template": {
+            "template": "falkenturm/schnelle_ausfuehrung.png",
+            "optional": true,
+            "threshold": 0.86,
+            "after": [
+              2.5,
+              3.5
+            ]
+          }
+        },
+        {
+          "tap": [
+            [
+              0.5,
+              0.55
+            ]
+          ]
+        },
+        {
+          "sleep": [
+            1.5,
+            2.5
+          ]
+        },
+        {
+          "tap_first": {
+            "of": [
+              {
+                "template": "nav/startseite.png",
+                "threshold": 0.86,
+                "region": [
+                  0.7,
+                  0.85,
+                  1.0,
+                  1.0
+                ]
+              },
+              {
+                "template": "nav/burg.png",
+                "threshold": 0.86,
+                "region": [
+                  0.0,
+                  0.4,
+                  0.35,
+                  0.85
+                ]
+              }
+            ],
+            "fallback": [
+              [
+                0.5,
+                0.95
+              ],
+              [
+                0.22,
+                0.93
+              ],
+              [
+                0.35,
+                0.16
+              ]
+            ]
+          }
+        }
+      ]
     }
   ],
   "_diamanten": "DIAMANTEN-REGEL (User 2026-07-31): 'bis 50 pro Klick' ist erlaubt. ABER der Bot kann Zahlen auf Knoepfen NICHT lesen - fuer ihn sieht '2 Spenden' aus wie '50 Spenden' oder '500 Spenden'. Deshalb tippt er von sich aus nur Knoepfe an, die REINE RESSOURCEN kosten (blauer Spenden-Knopf, Kraeuter). Der Diamanten-Knopf steht als eigene Aufgabe bereit, ist aber AUS - wer ihn einschaltet, akzeptiert, dass die Kosten mit jeder Spende steigen und der Bot das nicht bemerkt. Ebenso bleibt 'Sofort' beim Gebaeude-Upgrade (vierstellig) unangetastet. Echtgeld ist ohnehin komplett tabu, siehe tabu_regionen.",
@@ -6880,7 +6957,7 @@
   "_selbstlernen": "Der Bot entdeckt Sammel-Objekte selbst: die Aufgabe 'objekte-lernen' macht zwei Aufnahmen im Abstand weniger Sekunden. Alles, was sich dazwischen aendert und rundlich in Knopfgroesse ist, ist einsammelbar (Ertrags-Blasen tauchen auf und verschwinden, der Rest des Bildes steht still). Die Ausschnitte landen in templates/gelernt/blasen/ und werden von der Regel 'gelernte-objekte-einsammeln' per Muster sofort mitbenutzt - ohne Konfigurationsaenderung. So kommen auch Blasen-Sorten dazu, die nie jemand von Hand geschnitten hat.",
   "_routine": "TAGESROUTINE: Die Takte sind so gewaehlt, dass die Aufgaben zusammen deutlich unter der verfuegbaren Zeit bleiben. Sonst stauen sie sich und die reaktiven Regeln - Belohnungen, Ertrags-Blasen, Dialoge - kommen kaum noch dran. Faustregel beim Aendern: die Summe aus Laufzeit mal Haeufigkeit sollte rund die Haelfte des Tages nicht ueberschreiten.",
   "_selbstoptimierung": "Der Bot wertet alle zwoelf Stunden seine eigenen Protokolle aus und zieht die Takte nach: Aufgaben, die wiederholt leer laufen, werden seltener aufgerufen, sehr ergiebige oefter. Aenderungen sind auf Faktor zwei je Durchgang begrenzt und bleiben zwischen 5 Minuten und 24 Stunden. Die neuen Takte schreibt er in diese Datei zurueck.",
-  "_ausdauer": "AUSDAUER-REGEL (User): Monster jagen, bis die Ausdauer alle ist - aber die Ausdauer-Fläschchen NICHT verbrauchen, die werden fuer den Krieg gebraucht. Der Bot fuellt Ausdauer nie nach: er tippt weder das Plus neben der Ausdauer-Anzeige noch ein Fläschchen in der Tasche an. Geht die Ausdauer aus, oeffnet das Spiel einen Nachfuell-Dialog - den schliessen die Dialog-Regeln (Prioritaet 199/200), bevor die generische Gruen-Knopf-Regel (145) ihn bestaetigen koennte. Wichtig fuer dich: schneide NIE ein Template von einem 'Benutzen' oder 'Bestaetigen' aus einem Ausdauer-Dialog.",
+  "_ausdauer": "AUSDAUER-REGEL (User): Monster jagen, bis die Ausdauer alle ist - aber die Ausdauer-Fläschchen NICHT verbrauchen, die werden fuer den Krieg gebraucht. Der Bot fuellt Ausdauer nie nach: er tippt weder das Plus neben der Ausdauer-Anzeige noch ein Fläschchen in der Tasche an. Geht die Ausdauer aus, oeffnet das Spiel einen Nachfuell-Dialog - den schliessen die Dialog-Regeln (Prioritaet 199/200), bevor die generische Gruen-Knopf-Regel (145) ihn bestaetigen koennte. Wichtig fuer dich: schneide NIE ein Template von einem 'Benutzen' oder 'Bestaetigen' aus einem Ausdauer-Dialog. Der Falkenturm zieht aus demselben Topf: 'Schnelle Ausfuehrung' kostet 40 bis 50 Ausdauer auf einmal. Die Aufgabe 'falkenturm-quests' steht deshalb auf AUS - sonst waere die Ausdauer weg, bevor der Bot ueberhaupt zum Sammeln oder zu den Monstern kommt.",
   "_on_unknown": "Fluchtweg aus unbekannten Bildschirmen, in dieser Reihenfolge: Dialog schliessen (beide X-Varianten), dann zurueck ueber den Pfeil oben links, ersatzweise die Android-Taste, zuletzt ein Tipp ins freie Gelaende. Ohne die Zurueck-Stufe blieb der Bot in Untermenues haengen, sobald dort keine Vorlage passte.",
   "ui_skala": 1.0,
   "festgefahren_schritte": 15,
