@@ -4452,6 +4452,21 @@
           }
         }
       ]
+    },
+    {
+      "name": "selbst-aktualisieren",
+      "every": 1800,
+      "at_start": false,
+      "priority": 100,
+      "_zweck": "Neue Fassung des Bots holen. Kam Code an, beendet sich der Bot - die Start-Schleife bringt ihn eine Minute spaeter mit der neuen Fassung zurueck. So braucht keine Verbesserung einen Handgriff am PC.",
+      "do": [
+        {
+          "log": "Nach einer neuen Fassung schauen"
+        },
+        {
+          "selbst_aktualisieren": {}
+        }
+      ]
     }
   ],
   "_diamanten": "DIAMANTEN-REGEL (User 2026-07-31): 'bis 50 pro Klick' ist erlaubt. ABER der Bot kann Zahlen auf Knoepfen NICHT lesen - fuer ihn sieht '2 Spenden' aus wie '50 Spenden' oder '500 Spenden'. Deshalb tippt er von sich aus nur Knoepfe an, die REINE RESSOURCEN kosten (blauer Spenden-Knopf, Kraeuter). Der Diamanten-Knopf steht als eigene Aufgabe bereit, ist aber AUS - wer ihn einschaltet, akzeptiert, dass die Kosten mit jeder Spende steigen und der Bot das nicht bemerkt. Ebenso bleibt 'Sofort' beim Gebaeude-Upgrade (vierstellig) unangetastet. Echtgeld ist ohnehin komplett tabu, siehe tabu_regionen.",

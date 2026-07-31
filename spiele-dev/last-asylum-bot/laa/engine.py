@@ -381,6 +381,8 @@ class Engine:
             if task is None:
                 raise ConfigError(f"{where}: Aufgabe '{value}' gibt es nicht")
             self.run_actions(task.do, f"Aufgabe '{task.name}'")
+        elif key == "selbst_aktualisieren":
+            self._selbst_aktualisieren(value if isinstance(value, dict) else {})
         elif key == "stop":
             raise StopRun(str(value) if value not in (True, None) else "Aktion 'stop'")
         else:
@@ -610,6 +612,43 @@ class Engine:
                 json.dump(roh, fh, ensure_ascii=False, indent=2)
         except Exception as exc:  # pragma: no cover - Dateisystem
             self.log.warn(f"Konfiguration nicht gespeichert: {exc}")
+
+    def _selbst_aktualisieren(self, spec: Dict[str, Any]) -> None:
+        """Neue Fassung holen und sich dafuer selbst beenden.
+
+        Der Bot laeuft in einer Schleife, die ihn nach dem Ende neu startet.
+        Kam per `git pull` neuer Code an, muss er also nur aussteigen - beim
+        naechsten Start laeuft die neue Fassung. Ohne das braeuchte jede
+        Verbesserung einen Handgriff am PC.
+        """
+        import subprocess
+
+        wurzel = spec.get("verzeichnis") or self.cfg.root
+        try:
+            vorher = subprocess.run(["git", "-C", wurzel, "rev-parse", "HEAD"],
+                                    capture_output=True, timeout=60)
+            if vorher.returncode != 0:
+                self.log.debug("Kein Git-Verzeichnis - kein Selbst-Update")
+                return
+            hole = subprocess.run(["git", "-C", wurzel, "pull", "--ff-only"],
+                                  capture_output=True, timeout=180)
+            nachher = subprocess.run(["git", "-C", wurzel, "rev-parse", "HEAD"],
+                                     capture_output=True, timeout=60)
+        except Exception as exc:  # pragma: no cover - Netz/Umgebung
+            self.log.warn(f"Selbst-Update nicht moeglich: {exc}")
+            return
+        if hole.returncode != 0:
+            self.log.debug("git pull ging nicht durch",
+                           grund=hole.stderr.decode("utf-8", "replace").strip()[:200])
+            return
+        alt = vorher.stdout.decode().strip()
+        neu = nachher.stdout.decode().strip()
+        if alt == neu:
+            self.log.debug("Schon auf dem neuesten Stand")
+            return
+        self.bump("selbst-aktualisiert")
+        self.log.info(f"Neue Fassung geholt ({alt[:7]} -> {neu[:7]}) - Neustart")
+        raise StopRun("neue Fassung geholt")
 
     def _bald_erneut(self, spec: Dict[str, Any]) -> None:
         """Die laufende Aufgabe frueher wieder faellig machen."""
