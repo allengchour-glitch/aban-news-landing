@@ -698,6 +698,31 @@ Ein eigenes Biom für die Openworld.
 | `th26_bergsee.glb` | 30,5 × 26,2 × 7,1 | Uferfelsen, Schilf, Bootssteg |
 
 Generator: `tools/assets/mk_th26_berge.py`
+
+> 🔧 **Entkantung der Bergwelt (31.07.) — bitte die GLB/STL dieser Charge ersetzen.**
+> Die Felsen waren achsparallele Quader (`kipp_box`) und Kegelstümpfe. Eine Kippung
+> ändert daran nichts: die Silhouette bleibt eine Kiste, im Rudel sahen die Brocken
+> aus wie ein Feld kleiner Zelte. Neu ist **`felskoerper()`** — eine Icosphäre, deren
+> Punkte radial verrauscht werden, danach **exakt auf (sx, sy, sz) normiert**. Die
+> Normierung ist der Kern: nur so bleibt ein Rastermaß erhalten und der tiefste Punkt
+> liegt garantiert auf `z0`, ganz ohne `kipp_lift`-Rechnerei. Die Kippung wird in die
+> **Punkte** gerechnet, nicht auf das Objekt gelegt — sonst wäre die Bounding-Box wieder
+> unbestimmt. `seed` macht jede Form reproduzierbar, sonst wird jeder Lauf ein anderes
+> Modell und die Diffs unlesbar.
+>
+> Fallen dabei:
+> * **`runden()` darf Felskörper nicht anfassen.** Bevel + Auto-Smooth machen aus dem
+>   facettierten Fels einen Kartoffel-Blob — die Facetten *sind* der Fels. Sie tragen
+>   deshalb `nb` und werden nur flach schattiert.
+> * **Blenders `subdivisions` zählt Stufen, nicht Flächen:** 1 → 20 Dreiecke, 2 → 80,
+>   3 → 320. Mit „2" waren die Hauptblöcke rohe Achtzigflächner.
+> * **Aufgesetzte Bänder und Kappen müssen mitschrumpfen.** Sie saßen auf der alten
+>   Bounding-Box-Kante; an der schmaleren Flanke eines Felskörpers standen sie frei in
+>   der Luft wie Regalbretter bzw. als Teller auf dem Gipfel.
+> * Die drei Kluft-Quader sind ersatzlos weg — an einer unregelmäßigen Flanke standen
+>   sie als Stangen **vor** dem Fels statt als Spalte darin.
+> * `fels()` behält seine Signatur, damit Geröll, Bergsee, Gipfelkreuz, Wasserfall und
+>   Höhle automatisch mitprofitieren. `seg` wird nur noch geschluckt.
 Neuer Helfer: `kipp_lift(sx, sy, sz, rx, ry, rz)` — halbe Höhe eines gekippten Quaders
 über die Rotationsmatrix, also genau der Betrag zum Anheben.
 
