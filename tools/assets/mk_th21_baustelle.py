@@ -301,38 +301,6 @@ def prisma_x(pts_yz, breite, m=None, x=0.0, name="Prisma"):
     bm.to_mesh(me); bm.free(); me.update()
     return o
 
-def _ell(y, mitte, flanke, halb, rest=0.72):
-    """Elliptischer Auslauf fuer `karosse`: 1.0 bis `flanke`, dann weich auf `rest`
-    bei `halb`. Eine Karosse ohne Auslauf endet in einer FLACHEN Kappe — genau die
-    liest sich wieder als Quader. Rueckgabe ist ein Faktor, kein Mass."""
-    d = abs(y - mitte)
-    if d <= flanke or halb <= flanke + 1e-6: return 1.0
-    e = min(1.0, (d - flanke) / (halb - flanke))
-    return rest + (1.0 - rest)*math.sqrt(max(0.0, 1.0 - e*e))
-
-def kuebel_profil(y_r, z_o, z_k, y_s, z_s, dicke=0.10, n=9, lippe=0.10):
-    """Profil einer Schaufel / eines Loeffels in der y-z-Ebene (fuer `prisma_x`):
-    senkrechte Rueckwand bei y_r von z_o bis z_k, dann VIERTELELLIPSE nach vorn-unten
-    zur Schneide (y_s, z_s), Lippe, und die ganze Kontur um `dicke` nach aussen
-    versetzt. Drei gestufte Bodenbleche sind keine Schaufel.
-    Liefert (schale, wange): `schale` = das gewoelbte Blech als C-Profil,
-    `wange` = die gefuellte Seitenansicht, damit der Kuebel an den Flanken ZU ist.
-    ACHTUNG: die Aussenkontur liegt am Schneidbereich um `dicke` TIEFER — z_s muss
-    also mindestens `dicke` ueber der gewuenschten Unterkante liegen."""
-    a, b = y_s - y_r, z_k - z_s
-    innen = [(y_r, z_o)]
-    for i in range(n + 1):
-        t = i/n*math.pi/2
-        innen.append((y_r + a*(1 - math.cos(t)), z_k - b*math.sin(t)))
-    innen.append((y_s + lippe, z_s))
-    aussen = []
-    for i, p in enumerate(innen):
-        q0 = innen[max(0, i - 1)]; q1 = innen[min(len(innen) - 1, i + 1)]
-        ty, tz = q1[0] - q0[0], q1[1] - q0[1]
-        L = math.hypot(ty, tz) or 1.0
-        aussen.append((p[0] + tz/L*dicke, p[1] - ty/L*dicke))   # Normale nach aussen
-    return innen + aussen[::-1], [innen[0], innen[-1]] + aussen[::-1]
-
 def flach(o):
     """Bauteil vom globalen Bevel ausnehmen. Ein Torus-Reifen ist schon rund, und
     jedes gebevelte 5-cm-Kaestchen kostet ~200 Dreiecke."""
@@ -549,23 +517,22 @@ def kette(cx, cy, r, L, breite, m_kette, m_rad, n_pad=26, seg=24, ph=0.11):
             o.rotation_euler[0] = ang
 
 def loeffel(cx, cy, cz, breite, m, m_zahn, tiefe=0.88, hoehe=1.16, zaehne=5, sy=1):
-    """Tiefloeffel als EIN gewoelbtes Blech (`kuebel_profil` + `prisma_x`) mit zwei
-    geschlossenen Wangen. Vorher waren es drei gestufte Bodenplatten — das las sich
-    als Kiste, nicht als Loeffel.
+    """Tiefloeffel: Rueckwand bei cy, gewoelbter Boden, zwei Wangen, Zaehne.
     sy=+1 -> Zaehne auf +y, sy=-1 -> eingerollt zur Maschine hin (Parkstellung).
     Gespiegelt wird ueber das VORZEICHEN der Offsets, nie ueber rotation_euler[2].
     cz = Unterkante der Schneide."""
-    DK = 0.10
-    schale, wange = kuebel_profil(0.0, cz + hoehe + 0.10, cz + 0.48,
-                                  tiefe + 0.14, cz + DK + 0.02, DK, 9, 0.10)
-    W = lambda pts: [(cy + sy*p[0], p[1]) for p in pts]
-    prisma_x(W(schale), breite - 0.11, m, cx, "Loeffelblech")
+    box(cx, cy, cz + hoehe/2 + 0.10, breite, 0.10, hoehe, m)                 # Rueckwand
+    for k in range(3):
+        t = k/2.0
+        box(cx, cy + sy*(0.10 + tiefe*(k + 0.5)/3), cz + 0.06 + (1-t)*0.22,
+            breite, tiefe/3*1.06, 0.10, m)                                   # Boden
     for s in (-1, 1):
-        prisma_x(W(wange), 0.08, m, cx + s*(breite/2 - 0.025), "Loeffelwange")
-    yl = tiefe + 0.24                                    # Vorderkante der Lippe
+        box(cx + s*(breite/2 - 0.03), cy + sy*(0.10 + tiefe/2), cz + hoehe*0.42,
+            0.06, tiefe + 0.10, hoehe*0.84, m)                               # Wangen
+    box(cx, cy + sy*(0.10 + tiefe), cz + 0.10, breite, 0.14, 0.16, m)        # Schneide
     for i in range(zaehne):
         px = cx - breite*0.38 + breite*0.76*i/(zaehne - 1)
-        kegel(px, cy + sy*(yl + 0.11), cz + DK + 0.02, 0.072, 0.018, 0.28, m_zahn, 8,
+        kegel(px, cy + sy*(0.10 + tiefe + 0.16), cz + 0.10, 0.07, 0.02, 0.26, m_zahn, 8,
               rot=(-sy*math.pi/2, 0, 0))    # -pi/2 legt die Spitze auf +y
 
 def gitterstoss(z0, z1, hb, d, m, diag=0.09, dr=1):
@@ -925,32 +892,32 @@ def radlader():
     zyl(0.70, -1.20, 2.58, 0.095, 0.12, STAH, 10)
     for sx in (-1, 1):
         for sy in (-1.42, 1.42):                                  # Kotfluegel
-            weich(box(sx*GX, sy, 1.32, BR + 0.20, 1.70, 0.10, GEL2), 0.045, 3)
-            weich(box(sx*(GX + BR/2 + 0.08), sy, 1.18, 0.06, 1.70, 0.30, GEL2), 0.03, 3)
-    # --- Kabine als EIN geloftetes ROPS-Gehaeuse. Vorher: Bodenplatte, vier
-    # Eckpfosten, zwei Deckplatten und vier Glasscheiben — das las sich als Glaskiste
-    # mit Deckel. Jetzt runde Dachkante, verjuengte Front und verjuengtes Heck.
-    box(0, -0.62, 1.10, 1.72, 1.66, 0.22, DKL)                    # Kabinenboden
-    KY, KH = -0.64, 0.90
-    fk = lambda y: _ell(y, KY, 0.58, KH, 0.78)
-    karosse([KY + t for t in (-0.90, -0.86, -0.78, -0.62, -0.22,
-                              0.22, 0.58, 0.74, 0.84, 0.90)],
-            lambda y: 0.86*fk(y), 1.21,
-            lambda y: 2.82 - 0.62*(1.0 - fk(y)),
-            GELB, r_u=0.16, r_o=0.36, n=3,
-            hb_o=lambda y: 0.78*fk(y), name="Kabine")
-    box(0, KY + 0.92, 2.06, 1.16, 0.08, 1.02, GLAS)               # Windschutzscheibe
-    box(0, KY - 0.92, 2.06, 1.16, 0.08, 1.02, GLAS)               # Heckscheibe
-    for sx in (-0.86, 0.86):
-        box(sx, KY + 0.02, 2.06, 0.08, 1.28, 1.00, GLAS)          # Seitenscheiben
+            box(sx*GX, sy, 1.32, BR + 0.20, 1.70, 0.10, GEL2)
+            box(sx*(GX + BR/2 + 0.08), sy, 1.18, 0.06, 1.70, 0.30, GEL2)
+    box(0, -0.62, 1.10, 1.72, 1.66, 0.22, DKL)                    # Kabine
+    for sx in (-0.78, 0.78):
+        for sy in (-1.38, 0.14):
+            box(sx, sy, 1.95, 0.10, 0.10, 1.48, GEL2)
+    # Kabinendach geloftet: der flache Deckel war das, was die Zelle als Kiste zeigte
+    def _tc(y, mitte=-0.62, flanke=0.62):
+        return max(0.0, abs(y - mitte) - flanke)
+    karosse([-1.55, -1.34, -0.90, -0.62, -0.34, 0.10, 0.31],
+            lambda y: 0.95 - 0.22*_tc(y)**1.25,
+            2.62,
+            lambda y: 2.92 - 0.14*_tc(y)**1.4,
+            GELB, r_u=0.10, r_o=0.26, n=3,
+            hb_o=lambda y: 0.80 - 0.22*_tc(y)**1.25, name="Kabinendach")
+    box(0, 0.18, 1.98, 1.56, 0.07, 1.42, GLAS)
+    box(0, -1.42, 1.98, 1.56, 0.07, 1.42, GLAS)
+    for sx in (-0.82, 0.82):
+        box(sx, -0.62, 1.98, 0.07, 1.50, 1.36, GLAS)
     box(0, -0.90, 1.45, 0.58, 0.56, 0.28, SCHW)                   # Sitz
     box(0, -1.16, 1.80, 0.58, 0.14, 0.52, SCHW)
     box(0, -0.28, 1.52, 0.09, 0.09, 0.56, SCHW)
     o = zyl(0, -0.20, 1.84, 0.20, 0.05, SCHW, 14); o.rotation_euler[0] = math.radians(64)
-    zyl(0.58, KY, 2.86, 0.10, 0.16, ROT, 12)                      # Rundumleuchte
-    zyl(0.58, KY, 2.79, 0.11, 0.06, SCHW, 12)
-    for sx in (-0.46, 0.46):
-        weich(box(sx, KY + 0.74, 2.74, 0.24, 0.16, 0.13, LICHT), 0.035, 3)
+    box(0.62, -0.62, 2.90, 0.24, 0.28, 0.14, ROT)
+    for sx in (-0.66, 0.66):
+        box(sx, -0.60, 2.84, 0.24, 0.10, 0.14, LICHT)
     for sx in (-1, 1):                                            # Aufstieg
         # Die Stufen brauchen eine Wange bis zum Rahmen — frei stehend sahen sie
         # aus wie drei in der Luft schwebende Bleche.
@@ -979,22 +946,17 @@ def radlader():
     mid = tuple(a[i] + (b[i]-a[i])*0.58 for i in range(3))
     stab(a, mid, 0.11, STAH, 12); stab(mid, b, 0.07, CHR, 10)
     strebe((0, 2.06, 1.50), (0, 2.60, 1.34), 0.14, STAH)
-    # --- Schaufel als GEWOELBTES Blech (kuebel_profil + prisma_x): Rueckwand ZUR
-    # MASCHINE, Viertelellipse nach vorn-unten zur Schneide, geschlossene Wangen.
-    # Vorher drei gestufte Bodenbleche + Kastenwangen — eine Treppe, keine Schaufel.
-    # Die Front bleibt auf +y; seitenverkehrt saehe man ein Planierschild.
-    SB, SY, SD = 2.62, 2.58, 0.11
-    schale, wange = kuebel_profil(SY, 1.44, 0.70, SY + 0.92, SD + 0.02, SD, 10, 0.10)
-    prisma_x(schale, SB - 0.12, GEL2, 0.0, "Schaufelblech")
-    for s in (-1, 1):
-        prisma_x(wange, 0.09, GEL2, s*(SB/2 - 0.03), "Schaufelwange")
-    weich(box(0, SY - 0.06, 1.38, SB*0.94, 0.16, 0.14, GEL2), 0.05, 3)     # Oberkante
-    YL = SY + 1.02                                                # Vorderkante Lippe
-    for i in range(7):                                            # Zaehne
-        kegel(-SB/2 + 0.29 + i*0.34, YL + 0.12, SD + 0.02, 0.075, 0.02, 0.28, CHR, 8,
-              rot=(-math.pi/2, 0, 0))
-    for s in (-1, 1):
-        strebe((s*0.62, 2.52, 0.92), (s*0.62, SY + 0.02, 0.90), 0.14, GEL2)
+    # --- Schaufel als extrudiertes Profil statt gestufter Bleche: Rueckwand zur
+    # Maschine (-y), Boden nach vorn (+y) durchgezogen, Schneide vorn unten.
+    SY, SZ = 3.62, 0.30
+    prof = [(-0.10, 1.62), (-0.10, 0.10), (0.24, 0.02), (0.86, 0.00),
+            (1.44, 0.10), (1.52, 0.26), (1.10, 0.30), (0.52, 0.36),
+            (0.16, 0.62), (0.10, 1.30), (0.16, 1.66)]
+    o = prisma_x([(SY + p[0], SZ + p[1]) for p in prof], 2.36, GELB, 0.0, "Schaufel")
+    for sx in (-1.10, 1.10):                                      # Seitenwangen
+        box(sx, SY + 0.62, SZ + 0.82, 0.10, 1.66, 1.62, GEL2)
+    for k in range(6):                                            # Zaehne an der Schneide
+        box(-0.98 + k*0.39, SY + 1.56, SZ + 0.22, 0.24, 0.34, 0.12, STAH)
     export("th21_radlader", 0.014, 2)
 
 # ================================================================ 6) Betonmischer
@@ -1026,55 +988,36 @@ def betonmischer():
     box(0, 3.05, 0.52, 2.10, 0.22, 0.20, RAHM)
     for sy in (-1.85, -3.25):
         box(0, sy, 0.52, 2.10, 0.26, 0.26, RAHM)
-    # --- Leiterrahmen: gewalzte Laengstraeger als geloftete Profile statt zweier
-    # 8-m-Quader. `karosse` baut um x = 0 — der Traeger wird danach versetzt.
-    fr = lambda y: _ell(y, -0.30, 3.40, 4.05, 0.50)
-    for sx in (-1, 1):
-        o = karosse([-4.35, -4.28, -4.12, -3.85, -0.30, 3.25, 3.52, 3.68, 3.75],
-                    lambda y: 0.085*fr(y), lambda y: 1.15 - 0.34*fr(y), 1.15,
-                    RAHM, r_u=0.075, r_o=0.075, n=3, name="Laengstraeger")
-        o.location.x = sx*0.42
+    for sx in (-1, 1):                                            # Leiterrahmen
+        box(sx*0.42, -0.30, 0.98, 0.16, 8.10, 0.34, RAHM)
     for i in range(7):
-        weich(box(0, -3.60 + i*1.20, 0.98, 0.90, 0.14, 0.26, RAHM), 0.05, 3)
-    weich(box(0, 3.90, 0.86, 2.30, 0.30, 0.26, RAHM), 0.09, 4)    # Stossfaenger
-    # --- Fahrerhaus als EIN geloftetes Mesh: runde Dachkante, verjuengte Front und
-    # Rueckwand. Vorher ein 2.42-m-Quader mit Deckplatte — der klassische Klotz.
-    CY, CH = 2.96, 0.99
-    fc = lambda y: _ell(y, CY, 0.64, CH, 0.83)
-    karosse([1.97, 2.03, 2.14, 2.36, 2.66, 2.96, 3.30, 3.60, 3.78, 3.88, 3.93, 3.95],
-            lambda y: 1.22*fc(y), 1.02,
-            lambda y: 3.02 - 1.30*(1.0 - fc(y)),
-            ROT, r_u=0.24, r_o=0.38, n=3,
-            hb_o=lambda y: 1.13*fc(y), name="Fahrerhaus")
-    box(0, 3.97, 2.30, 1.74, 0.09, 0.92, GLAS)                    # Windschutzscheibe
-    # sx ist hier +-1 — im Vorgaenger stand in dieser Schleife der Absolutwert 1.19
-    # und jeder Offset war ein Vielfaches davon; ein Spiegel landete so 40 cm zu weit
-    # aussen und machte das Fahrzeug breiter.
-    for sx in (-1, 1):
-        box(sx*1.22, 2.92, 2.28, 0.09, 1.14, 0.92, GLAS)          # Seitenscheiben
-        box(sx*1.28, 3.60, 2.62, 0.20, 0.12, 0.10, SCHW)          # Spiegelarm
-        weich(box(sx*1.38, 3.60, 2.58, 0.13, 0.24, 0.46, SCHW), 0.045, 3)
-        weich(box(sx*0.78, 3.98, 1.46, 0.38, 0.10, 0.24, LICHT), 0.045, 3)
-        weich(box(sx*1.06, 3.02, 1.06, 0.34, 0.34, 0.06, STAH), 0.02, 2)
-        weich(box(sx*1.06, 3.02, 0.70, 0.34, 0.34, 0.06, STAH), 0.02, 2)
-    weich(box(0, 3.96, 1.86, 1.84, 0.10, 0.56, ROT2), 0.06, 3)    # Frontblende
+        box(0, -3.60 + i*1.20, 0.98, 0.90, 0.14, 0.26, RAHM)
+    box(0, 3.90, 0.86, 2.30, 0.30, 0.26, RAHM)
+    def _tm(y, mitte=2.95, flanke=0.72):
+        return max(0.0, abs(y - mitte) - flanke)
+    karosse([1.98, 2.20, 2.60, 2.95, 3.30, 3.70, 3.92],
+            lambda y: 1.21 - 0.20*_tm(y)**1.3,
+            1.03,
+            lambda y: 3.09 - 0.16*_tm(y)**1.45,
+            ROT, r_u=0.14, r_o=0.34, n=3,
+            hb_o=lambda y: 1.06 - 0.20*_tm(y)**1.3, name="Fahrerhaus")
+    box(0, 2.95, 3.06, 2.30, 1.86, 0.10, ROT2)
+    box(0, 3.90, 2.28, 2.06, 0.09, 1.06, GLAS)
+    for sx in (-1.19, 1.19):
+        box(sx, 2.86, 2.24, 0.09, 1.30, 0.96, GLAS)
+        box(sx*1.04, 3.62, 2.62, 0.10, 0.34, 0.44, SCHW)
+        box(sx*1.20, 3.62, 2.62, 0.24, 0.10, 0.40, SCHW)
+        box(sx*0.82, 3.96, 1.44, 0.40, 0.10, 0.24, LICHT)
+        box(sx*0.62, 3.02, 1.02, 0.34, 0.30, 0.06, STAH)
+        box(sx*0.62, 3.02, 1.38, 0.34, 0.30, 0.06, STAH)
+    box(0, 3.94, 1.90, 2.30, 0.10, 0.60, ROT2)
     for i in range(4):
-        box(0, 4.00, 1.70 + i*0.13, 1.56, 0.05, 0.06, SCHW)
-    weich(box(0, CY, 3.06, 0.96, 0.32, 0.12, ORA), 0.045, 3)      # Warnbalken
-    weich(box(0, 1.99, 1.62, 2.00, 0.12, 1.06, ROT2), 0.06, 3)    # Rueckwand
-    # --- Hilfsrahmen und Lagerboecke geloftet (verjuengt statt Quaderstapel)
-    fh = lambda y: _ell(y, -0.60, 2.40, 2.70, 0.70)
-    karosse([-3.30, -3.22, -3.06, -2.80, -0.60, 1.60, 1.86, 2.02, 2.10],
-            lambda y: 0.95*fh(y), 1.09, lambda y: 1.35 - 0.10*(1.0 - fh(y))/0.30,
-            RAHM, r_u=0.09, r_o=0.09, n=3, name="Hilfsrahmen")
-    fl = lambda y: _ell(y, 1.62, 0.20, 0.32, 0.72)
-    karosse([1.30, 1.35, 1.44, 1.62, 1.80, 1.89, 1.94],
-            lambda y: 0.80*fl(y), 1.31, 2.41, RAHM, r_u=0.12, r_o=0.24, n=3,
-            hb_o=lambda y: 0.44*fl(y), name="Lagerbock vorn")
-    fl2 = lambda y: _ell(y, -3.30, 0.24, 0.35, 0.76)
-    karosse([-3.65, -3.60, -3.50, -3.30, -3.10, -3.00, -2.95],
-            lambda y: 0.85*fl2(y), 1.32, 1.92, RAHM, r_u=0.12, r_o=0.22, n=3,
-            hb_o=lambda y: 0.60*fl2(y), name="Lagerbock hinten")
+        box(0, 4.00, 1.72 + i*0.14, 1.90, 0.05, 0.06, SCHW)
+    box(0, 2.95, 3.14, 1.00, 0.34, 0.12, ORA)
+    box(0, 2.02, 1.62, 2.30, 0.12, 1.10, ROT2)
+    box(0, -0.60, 1.22, 1.90, 5.40, 0.26, RAHM)                   # Hilfsrahmen
+    box(0, 1.62, 1.86, 1.60, 0.60, 1.10, RAHM)                    # Lagerboecke
+    box(0, -3.30, 1.62, 1.70, 0.70, 0.60, RAHM)
     # --- Trommel, Achse um 15 Grad geneigt (vorn tief, hinten hoch)
     RD = 1.18
     a = math.radians(15)
@@ -1097,8 +1040,8 @@ def betonmischer():
     konus((HT[0], HT[1] + 0.12, HT[2] + 0.82), (HT[0], HT[1] + 0.04, HT[2] + 0.12),
           0.60, 0.32, GRAU, 16)
     box(0, HT[1] + 0.12, HT[2] + 0.96, 1.26, 1.06, 0.12, GRAU)
-    weich(box(0, -3.95, 1.30, 2.10, 0.24, 1.40, RAHM), 0.07, 3)   # Heckrahmen
-    weich(box(0, -4.06, 0.62, 2.20, 0.20, 0.36, RAHM), 0.07, 3)
+    box(0, -3.95, 1.30, 2.10, 0.24, 1.40, RAHM)                   # Heckrahmen
+    box(0, -4.06, 0.62, 2.20, 0.20, 0.36, RAHM)
     for sx in (-0.80, 0.80):
         box(sx, -4.12, 1.10, 0.34, 0.12, 0.24, ORA)
     ZR0, ZR1 = (0, -4.06, 2.28), (0, -5.30, 1.34)                 # Rutsche
@@ -1118,9 +1061,9 @@ def betonmischer():
     zyl(-1.06, 0.90, 1.62, 0.10, 1.30, STAH, 10, rot=(0, math.pi/2, 0))
     for sx in (-1, 1):
         for sy in (-1.85, -3.25):
-            weich(box(sx*1.16, sy, 1.32, 0.62, 0.90, 0.10, RAHM), 0.045, 3)
-        weich(box(sx*1.16, 3.05, 1.34, 0.56, 1.30, 0.10, ROT2), 0.045, 3)
-    weich(box(-1.20, -0.50, 1.30, 0.20, 1.20, 0.50, STAH), 0.05, 3)   # Werkzeugkasten
+            box(sx*1.16, sy, 1.32, 0.62, 0.90, 0.10, RAHM)
+        box(sx*1.16, 3.05, 1.34, 0.56, 1.30, 0.10, ROT2)
+    box(-1.20, -0.50, 1.30, 0.20, 1.20, 0.50, STAH)               # Werkzeugkasten
     export("th21_betonmischer", 0.014, 2)
 
 # ================================================================ 7) Baucontainer

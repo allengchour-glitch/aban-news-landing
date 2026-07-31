@@ -758,8 +758,11 @@ Kabine mit geneigten Scheiben, Kotfluegel und Stollenreifen mit Felgen.
 
 Beim Bagger sind Motorhaube und Kabine geloftet, beim Radlader die Motorhaube.
 
-Noch **eckig**: die Kabine und die Schaufel des Radladers, der Baggerloeffel, sowie das
-Fahrerhaus und der Rahmen des `th21_betonmischer` (die Mischtrommel selbst ist rund).
+Kabine und Schaufel des Radladers sowie das Fahrerhaus des Betonmischers sind ebenfalls
+umgebaut: die Schaufel ist ein mit `prisma_x()` extrudiertes Profil mit durchgezogenem
+Boden und Zaehnen, die Kabinendaecher sind geloftet.
+
+Noch eckig: der Baggerloeffel.
 
 ---
 
