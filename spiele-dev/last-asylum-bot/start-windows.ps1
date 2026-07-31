@@ -149,11 +149,14 @@ if (-not $Serial) {
         if ($zeile -match '^(\S+)\s+device$') { $liste += $matches[1] }
     }
     if ($liste.Count -gt 1) {
-        # Der native Emulator-Eintrag ist stabiler als die TCP-Verbindung.
-        $bevorzugt = $liste | Where-Object { $_ -like "emulator-*" } | Select-Object -First 1
+        # Ueber den Port steuern: 127.0.0.1:5555 laesst sich mit `adb connect`
+        # jederzeit neu aufbauen, wenn die Verbindung abreisst. Der Eintrag
+        # emulator-5554 verschwindet dagegen mit dem BlueStacks-Fenster und
+        # kommt nur durch einen Neustart des ADB-Servers zurueck.
+        $bevorzugt = $liste | Where-Object { $_ -match '^\d+\.\d+\.\d+\.\d+:\d+$' } | Select-Object -First 1
         if (-not $bevorzugt) { $bevorzugt = $liste[0] }
         $Serial = $bevorzugt
-        Warnung "$($liste.Count) Geraete gemeldet ($($liste -join ', ')) - nehme $Serial"
+        Warnung "$($liste.Count) Geraete gemeldet ($($liste -join ', ')) - steuere ueber $Serial"
     } elseif ($liste.Count -eq 1) {
         $Serial = $liste[0]
     }

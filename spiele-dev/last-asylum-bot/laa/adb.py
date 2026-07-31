@@ -87,8 +87,36 @@ class AdbDevice(Device):
         )
         if proc.returncode != 0:
             err = proc.stderr.decode("utf-8", "replace").strip()
-            raise DeviceError(f"adb {' '.join(args)} fehlgeschlagen: {err}")
+            if self._neu_verbinden(err):
+                proc = subprocess.run(
+                    self._args(*args), capture_output=True, timeout=self.timeout
+                )
+                err = proc.stderr.decode("utf-8", "replace").strip()
+            if proc.returncode != 0:
+                raise DeviceError(f"adb {' '.join(args)} fehlgeschlagen: {err}")
         return proc.stdout if binary else proc.stdout.decode("utf-8", "replace")
+
+    def _neu_verbinden(self, fehler: str) -> bool:
+        """Bei einer Port-Verbindung einmal `adb connect` nachschieben.
+
+        Ueber den Port gesteuert (127.0.0.1:5555) reisst die Verbindung ab,
+        sobald BlueStacks kurz haengt oder neu startet. Ein `adb connect`
+        stellt sie wieder her - ohne das wuerde der Bot bis zum naechsten
+        Neustart ins Leere laufen.
+        """
+        if not self.serial or ":" not in self.serial:
+            return False
+        if not any(w in fehler.lower() for w in
+                   ("offline", "not found", "no devices", "closed", "connection reset")):
+            return False
+        try:
+            antwort = subprocess.run(
+                [self.adb, "connect", self.serial],
+                capture_output=True, timeout=self.timeout,
+            ).stdout.decode("utf-8", "replace")
+        except Exception:
+            return False
+        return "connected to" in antwort
 
     def shell(self, cmd: str) -> str:
         return self._run("shell", cmd)
