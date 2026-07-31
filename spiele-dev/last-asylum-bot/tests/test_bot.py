@@ -1508,6 +1508,176 @@ class TestGelernteAuswege(unittest.TestCase):
             shutil.rmtree(ordner, ignore_errors=True)
 
 
+class TestErkundung(unittest.TestCase):
+    """Steckt der Bot fest, probiert er selbst einen Knopf - mit Leitplanken."""
+
+    def bau(self, ordner, knopf_rgb, wirkt=True, extra=None):
+        fest = noise(400, 700, 130)
+        paste(fest, Image.new(120, 26, knopf_rgb), 140, 350)   # ein Knopf
+        if extra:
+            paste(fest, Image.new(120, 26, extra), 140, 250)
+        anders = noise(400, 700, 131)
+        paste(anders, Image.new(300, 400, (252, 252, 252)), 50, 150)
+
+        class Gerät(FakeDevice):
+            def __init__(self):
+                super().__init__([fest], loop=True)
+                self.geloest = False
+
+            def screencap(self):
+                return anders if self.geloest else fest
+
+            def tap(self, x, y):
+                super().tap(x, y)
+                if wirkt and 300 < y < 400:
+                    self.geloest = True
+
+        cfg = Config.from_dict({
+            "base_width": 400, "festgefahren_schritte": 0,
+            "on_unknown": [{"key": "TASTE_A"}],
+        }, path=os.path.join(ordner, "conf.json"))
+        dev = Gerät()
+        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=1,
+                     state_file=os.path.join(ordner, "zustand.json"))
+        return dev, eng
+
+    def lauf(self, eng):
+        eng.capture()
+        eng._festgefahren(eng.screen)
+        eng._ausweg_suchen("test")
+
+    def test_gruener_knopf_wird_probiert_und_gemerkt(self):
+        import shutil, tempfile
+        ordner = tempfile.mkdtemp()
+        try:
+            dev, eng = self.bau(ordner, (120, 181, 54))
+            self.lauf(eng)
+            self.assertEqual(eng.stats.get("erkundet", 0), 1)
+            self.assertEqual(eng.stats.get("ausweg-gelernt", 0), 1)
+            with open(os.path.join(ordner, "auswege.json"), encoding="utf-8") as fh:
+                self.assertIn("tap", list(json.load(fh).values())[0])
+        finally:
+            shutil.rmtree(ordner, ignore_errors=True)
+
+    def test_goldener_knopf_wird_nie_angeruehrt(self):
+        """Gold ist im Spiel die Farbe fuer Kaeufe und fuer 'Spiel beenden?'."""
+        import shutil, tempfile
+        ordner = tempfile.mkdtemp()
+        try:
+            dev, eng = self.bau(ordner, (247, 168, 52))
+            self.lauf(eng)
+            self.assertEqual(eng.stats.get("erkundet", 0), 0,
+                             "goldene Knoepfe duerfen nicht ausprobiert werden")
+        finally:
+            shutil.rmtree(ordner, ignore_errors=True)
+
+    def test_erfolgloser_knopf_wird_nicht_wiederholt(self):
+        import shutil, tempfile
+        ordner = tempfile.mkdtemp()
+        try:
+            dev, eng = self.bau(ordner, (120, 181, 54), wirkt=False)
+            for _ in range(4):
+                self.lauf(eng)
+            self.assertEqual(eng.stats.get("erkundet", 0), 1,
+                             "derselbe Knopf darf nur einmal probiert werden")
+            self.assertEqual(eng.stats.get("ausweg-gelernt", 0), 0)
+        finally:
+            shutil.rmtree(ordner, ignore_errors=True)
+
+    def test_abschaltbar(self):
+        import shutil, tempfile
+        ordner = tempfile.mkdtemp()
+        try:
+            dev, eng = self.bau(ordner, (120, 181, 54))
+            eng.cfg.erkunden = False
+            self.lauf(eng)
+            self.assertEqual(eng.stats.get("erkundet", 0), 0)
+        finally:
+            shutil.rmtree(ordner, ignore_errors=True)
+
+
+class TestErkundung(unittest.TestCase):
+    """Steckt der Bot fest, probiert er selbst einen Knopf - mit Leitplanken."""
+
+    def bau(self, ordner, knopf_rgb, loesend=True):
+        fest = Image.new(400, 700, (30, 30, 30))
+        # Ein Knopf in der erlaubten Zone.
+        paste(fest, Image.new(120, 22, knopf_rgb), 140, 350)
+        anders = Image.new(400, 700, (30, 30, 30))
+        paste(anders, Image.new(300, 400, (250, 250, 250)), 50, 150)
+
+        class Gerät(FakeDevice):
+            def __init__(self):
+                super().__init__([fest], loop=True)
+                self.geloest = False
+
+            def screencap(self):
+                return anders if self.geloest else fest
+
+            def tap(self, x, y):
+                super().tap(x, y)
+                if loesend and 340 < y < 385:
+                    self.geloest = True
+
+        cfg = Config.from_dict({
+            "base_width": 400, "festgefahren_schritte": 0,
+            "on_unknown": [{"key": "TASTE_A"}],
+        }, path=os.path.join(ordner, "conf.json"))
+        dev = Gerät()
+        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=1,
+                     state_file=os.path.join(ordner, "zustand.json"))
+        return dev, eng
+
+    def test_gruener_knopf_wird_probiert_und_gemerkt(self):
+        import shutil, tempfile
+        ordner = tempfile.mkdtemp()
+        try:
+            dev, eng = self.bau(ordner, (120, 181, 54))
+            eng.capture(); eng._festgefahren(eng.screen); eng._ausweg_suchen("test")
+            self.assertEqual(eng.stats.get("erkundet", 0), 1)
+            self.assertEqual(eng.stats.get("ausweg-gelernt", 0), 1)
+            with open(os.path.join(ordner, "auswege.json"), encoding="utf-8") as fh:
+                self.assertIn("tap", list(json.load(fh).values())[0])
+        finally:
+            shutil.rmtree(ordner, ignore_errors=True)
+
+    def test_goldener_knopf_wird_nie_angefasst(self):
+        """Gold ist im Spiel Kauf und »Bestätigen« bei »Spiel beenden?«."""
+        import shutil, tempfile
+        ordner = tempfile.mkdtemp()
+        try:
+            dev, eng = self.bau(ordner, (247, 168, 52))
+            eng.capture(); eng._festgefahren(eng.screen); eng._ausweg_suchen("test")
+            self.assertEqual(eng.stats.get("erkundet", 0), 0)
+            self.assertEqual(dev.taps, [], "auf einen goldenen Knopf darf nie getippt werden")
+        finally:
+            shutil.rmtree(ordner, ignore_errors=True)
+
+    def test_erfolgloser_knopf_wird_nicht_wiederholt(self):
+        import shutil, tempfile
+        ordner = tempfile.mkdtemp()
+        try:
+            dev, eng = self.bau(ordner, (120, 181, 54), loesend=False)
+            for _ in range(3):
+                eng.capture(); eng._festgefahren(eng.screen); eng._ausweg_suchen("test")
+            self.assertEqual(eng.stats.get("erkundet", 0), 1,
+                             "was einmal nichts brachte, wird nicht wiederholt")
+            self.assertEqual(eng.stats.get("ausweg-gelernt", 0), 0)
+        finally:
+            shutil.rmtree(ordner, ignore_errors=True)
+
+    def test_abschaltbar(self):
+        import shutil, tempfile
+        ordner = tempfile.mkdtemp()
+        try:
+            dev, eng = self.bau(ordner, (120, 181, 54))
+            eng.cfg.erkunden = False
+            eng.capture(); eng._festgefahren(eng.screen); eng._ausweg_suchen("test")
+            self.assertEqual(eng.stats.get("erkundet", 0), 0)
+        finally:
+            shutil.rmtree(ordner, ignore_errors=True)
+
+
 class TestZurueckPfeil(unittest.TestCase):
     """Die Android-Zurück-Taste ist in diesem Spiel gefährlich.
 

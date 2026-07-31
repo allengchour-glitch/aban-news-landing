@@ -134,7 +134,12 @@ class Engine:
             os.path.join(os.path.dirname(os.path.abspath(state_file)), "auswege.json")
             if state_file else None
         )
-        self._auswege: Dict[str, int] = {}
+        self._auswege: Dict[str, Any] = {}
+        self._erkundung_datei = (
+            os.path.join(os.path.dirname(os.path.abspath(state_file)), "erkundung.json")
+            if state_file else None
+        )
+        self._erkundet: Dict[str, list] = {}
         self._wirksam: Dict[str, int] = {}     # Vorlage -> Tipps, nach denen sich etwas tat
 
         self._rule_last: Dict[str, float] = {}
@@ -156,6 +161,7 @@ class Engine:
         self._now = now
         self._letzter_lauf: Dict[str, float] = self._zustand_laden()
         self._auswege = self._auswege_laden()
+        self._erkundet = self._erkundung_laden()
 
         jetzt_m = clock()
         jetzt_w = now()
@@ -1225,6 +1231,14 @@ class Engine:
             return
         schritte = list(self.cfg.on_unknown)
         gemerkt = self._auswege.get(schluessel)
+        if isinstance(gemerkt, dict) and "tap" in gemerkt:
+            # Auf diesem Bildschirm hat der Bot den Knopf selbst gefunden.
+            xr, yr = gemerkt["tap"]
+            self.log.debug("Bekannter Bildschirm - selbst gefundener Knopf", bei=f"{xr}/{yr}")
+            self._tap_point([[xr, yr]])
+            self._do_sleep([0.8, 1.2])
+            if self._ansicht_finger(self.capture()) != self._finger_jetzt:
+                return
         reihenfolge = list(range(len(schritte)))
         if isinstance(gemerkt, int) and 0 <= gemerkt < len(schritte):
             reihenfolge.remove(gemerkt)
@@ -1248,18 +1262,92 @@ class Engine:
                 )
             return
         self.log.debug("Kein Schritt hat gewirkt", bildschirm=schluessel[:8])
+        self._erkunden(schluessel, vorher)
+
+    # Farben der Aktions-Knoepfe. Gold/Orange fehlt mit Absicht: das ist im
+    # Spiel die Farbe fuer Kaeufe und fuer 'Bestaetigen' bei 'Spiel beenden?'.
+    ERKUNDUNGS_FARBEN = [(120, 181, 54), (58, 142, 230)]
+    # Oben liegt das Angebots-Banner, ganz unten die Navigationsleiste.
+    ERKUNDUNGS_ZONE = [0.05, 0.18, 0.95, 0.88]
+
+    def _erkunden(self, schluessel: str, vorher) -> None:
+        """Letzte Stufe: einen Knopf ausprobieren, den es noch nicht kennt.
+
+        Greift nur, wenn der Bot auf diesem Bildschirm ohnehin feststeckt und
+        keiner der vorgesehenen Auswege gewirkt hat - die Alternative waere,
+        gar nichts zu tun. Probiert werden nur gruene und blaue Knoepfe;
+        Gold ist im Spiel die Farbe fuer Kaeufe und fuer 'Bestaetigen' bei
+        'Spiel beenden?'. Was einmal nichts gebracht hat, wird auf diesem
+        Bildschirm nie wieder angetippt.
+        """
+        if not self.cfg.erkunden or self.screen is None:
+            return
+        schon = self._erkundet.setdefault(schluessel, [])
+        if len(schon) >= int(self.cfg.erkunden_hoechstens):
+            return
+        for rgb in self.ERKUNDUNGS_FARBEN:
+            for treffer in matcher.find_color_button(
+                self.screen, rgb, tolerance=40, min_w=0.12, max_w=0.7,
+                min_h=0.015, max_h=0.07, region=self.ERKUNDUNGS_ZONE, limit=6,
+            ):
+                cx, cy = treffer.center
+                xr = round(cx / self.screen.width, 3)
+                yr = round(cy / self.screen.height, 3)
+                if any(abs(xr - a) < 0.04 and abs(yr - b) < 0.03 for a, b in schon):
+                    continue
+                if self._tabu_treffer(cx, cy, self.screen) is not None:
+                    continue
+                schon.append([xr, yr])
+                self._erkundung_sichern()
+                self.bump("erkundet")
+                self.log.info(
+                    "Nichts half - unbekannten Knopf ausprobieren",
+                    bei=f"{xr:.2f}/{yr:.2f}", schon_probiert=len(schon),
+                )
+                self._tap_abs(cx, cy, "erkundung")
+                self._do_sleep([1.0, 1.5])
+                if self._ansicht_finger(self.capture()) != vorher:
+                    self._auswege[schluessel] = {"tap": [xr, yr]}
+                    self._auswege_sichern()
+                    self.bump("ausweg-gelernt")
+                    self.log.info(
+                        "Ausweg selbst gefunden - Knopf gemerkt",
+                        bei=f"{xr:.2f}/{yr:.2f}", bildschirme=len(self._auswege),
+                    )
+                return
+
+    def _erkundung_sichern(self) -> None:
+        if not self._erkundung_datei:
+            return
+        try:
+            ordner = os.path.dirname(os.path.abspath(self._erkundung_datei))
+            if ordner:
+                os.makedirs(ordner, exist_ok=True)
+            with open(self._erkundung_datei, "w", encoding="utf-8") as fh:
+                json.dump(self._erkundet, fh, indent=2)
+        except OSError as exc:  # pragma: no cover - Dateisystem
+            self.log.warn(f"Erkundung nicht schreibbar: {exc}")
+
+    def _erkundung_laden(self) -> Dict[str, list]:
+        if not self._erkundung_datei or not os.path.exists(self._erkundung_datei):
+            return {}
+        try:
+            with open(self._erkundung_datei, "r", encoding="utf-8") as fh:
+                return {str(k): list(v) for k, v in json.load(fh).items()}
+        except Exception:
+            return {}
 
     def _ansicht_schluessel(self) -> Optional[str]:
         if self._finger_jetzt is None:
             return None
         return self._finger_jetzt.hex()
 
-    def _auswege_laden(self) -> Dict[str, int]:
+    def _auswege_laden(self) -> Dict[str, Any]:
         if not self._auswege_datei or not os.path.exists(self._auswege_datei):
             return {}
         try:
             with open(self._auswege_datei, "r", encoding="utf-8") as fh:
-                return {str(k): int(v) for k, v in json.load(fh).items()}
+                return {str(k): v for k, v in json.load(fh).items()}
         except Exception as exc:
             self.log.warn(f"Gelernte Auswege nicht lesbar: {exc}")
             return {}

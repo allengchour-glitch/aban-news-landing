@@ -57,6 +57,8 @@ class Config:
     ui_skala: float = 1.0  # zusaetzlicher Faktor, vom Bot selbst kalibriert
     template_skalen: Dict[str, float] = field(default_factory=dict)
     kritische_templates: List[str] = field(default_factory=list)
+    erkunden: bool = True          # feststeckend selbst einen Knopf probieren
+    erkunden_hoechstens: int = 6   # so viele Versuche je Bildschirm
     texte: Dict[str, List[str]] = field(default_factory=dict)
     tabu_regionen: List[List[float]] = field(default_factory=list)
     tabu_namen: List[str] = field(default_factory=list)
@@ -100,6 +102,8 @@ class Config:
             str(k): float(v) for k, v in raw.get("template_skalen", {}).items()
         }
         cfg.kritische_templates = list(raw.get("kritische_templates", []))
+        cfg.erkunden = bool(raw.get("erkunden", True))
+        cfg.erkunden_hoechstens = int(raw.get("erkunden_hoechstens", 6))
         cfg.texte ={k: list(v) for k, v in raw.get("texte", {}).items()}
         for zone in raw.get("tabu_regionen", []):
             if isinstance(zone, dict):

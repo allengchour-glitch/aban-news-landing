@@ -11,7 +11,7 @@
   "stuck_seconds": 300,
   "templates_dir": "../templates",
   "input_method": "input",
-  "_geld": "ECHTGELD IST TABU, SPIEL-WAEHRUNG IST ERLAUBT. Gesperrt ist die rechte obere Ecke bis 14,5 % Bildhoehe - dort sitzen Einkaufswagen, Diamanten-Aufladung und das 'Tagesangebot' mit CHF-Preis. LINKS OBEN DARF NICHT GESPERRT WERDEN: dort liegt der Zurueck-Pfeil. Eine frueher auf Verdacht angelegte Zone dort hat im Betrieb genau den blockiert - in keinem Screenshot gab es links oben je ein Kauf-Angebot. Regel fuer dich: schneide nie ein Template von einem Knopf mit Preisschild.",
+  "_geld": "ECHTGELD IST TABU, SPIEL-WAEHRUNG IST ERLAUBT. Gesperrt ist die rechte obere Ecke bis 14,5 % Bildhoehe - dort sitzen Einkaufswagen, Diamanten-Aufladung und das 'Tagesangebot' mit CHF-Preis. LINKS OBEN DARF NICHT GESPERRT WERDEN: dort liegt der Zurueck-Pfeil. Eine frueher auf Verdacht angelegte Zone dort hat im Betrieb genau den blockiert - in keinem Screenshot gab es links oben je ein Kauf-Angebot. Regel fuer dich: schneide nie ein Template von einem Knopf mit Preisschild. FARB-REGEL, am 31.07. an einem echten Angebot bestaetigt ('Falkenturm-Ergaenzung CHF 4.40'): Kaufknoepfe im Spiel sind GOLD/ORANGE. Gruen und Blau sind Handlungen. Darum fasst die Erkundung nur gruene und blaue Knoepfe an und laesst Gold grundsaetzlich in Ruhe.",
   "tabu_regionen": [
     {
       "name": "Echtgeld-Shop, Diamanten-Aufladung und Tagesangebot oben rechts",
@@ -671,6 +671,47 @@
           "sleep": [
             0.8,
             1.4
+          ]
+        }
+      ]
+    },
+    {
+      "name": "blauer-knopf-generisch",
+      "priority": 144,
+      "cooldown": 6,
+      "_zweck": "Blau ist im Spiel die Farbe fuer 'Los', 'Versammeln', 'Benutzen' - also fuer Handlungen, nicht fuer Kaeufe. Gekauft wird ueber goldene Knoepfe (siehe _geld). Damit kommt der Bot aus Event-Popups wie 'Dreieckige Arena' oder 'Koenigsstadtkampf' heraus, ohne dass es dafuer je eine Vorlage braucht. Der untere Rand ist ausgenommen: dort liegt das Angebots-Banner.",
+      "match": {
+        "farbknopf": {
+          "rgb": [
+            58,
+            142,
+            230
+          ],
+          "tolerance": 40,
+          "min_w": 0.15,
+          "max_w": 0.75,
+          "min_h": 0.02,
+          "max_h": 0.07,
+          "region": [
+            0.0,
+            0.25,
+            1.0,
+            0.88
+          ],
+          "min_fuellung": 0.55
+        }
+      },
+      "do": [
+        {
+          "log": "Blauer Knopf (Los/Versammeln) - antippen"
+        },
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            1.2,
+            1.8
           ]
         }
       ]
