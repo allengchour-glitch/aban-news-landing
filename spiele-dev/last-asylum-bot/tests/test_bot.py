@@ -586,6 +586,29 @@ class TestKonfigurationGepflegt(unittest.TestCase):
         self.assertEqual(doppelt, set(), "doppelte Prioritäten machen die Reihenfolge zufällig")
 
 
+class TestLeererBildschirm(unittest.TestCase):
+    """Ein schwarzes Bild vom Emulator muss auffallen, nicht still bleiben."""
+
+    def test_einfarbiges_bild_wird_erkannt(self):
+        self.assertTrue(Image.new(200, 300, (0, 0, 0)).ist_einfarbig())
+        self.assertTrue(Image.new(200, 300, (17, 17, 17)).ist_einfarbig())
+
+    def test_echtes_bild_gilt_nicht_als_leer(self):
+        self.assertFalse(noise(200, 300, 120).ist_einfarbig())
+
+    def test_motor_meldet_es_als_fehler(self):
+        import io
+
+        puffer = io.StringIO()
+        cfg = Config.from_dict({"rules": [{"name": "r", "match": {"always": True},
+                                           "do": [{"sleep": 0}]}]})
+        dev = FakeDevice([Image.new(200, 300, (0, 0, 0))], loop=True)
+        eng = Engine(cfg, dev, logger=Logger(level="error", color=False, stream=puffer),
+                     sleep=lambda s: None, seed=1)
+        eng.step()
+        self.assertIn("LEER", puffer.getvalue())
+
+
 class TestTabuZonenTreffenNichtDieBedienung(unittest.TestCase):
     """Sperrzonen dürfen keine Bedienelemente verdecken."""
 

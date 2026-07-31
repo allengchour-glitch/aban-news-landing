@@ -215,6 +215,21 @@ class Image:
                         self.data[i : i + px] = farbe
         self._gray = None
 
+    def ist_einfarbig(self, schwelle: int = 8, samples: int = 400) -> bool:
+        """Ist das Bild praktisch leer (z. B. komplett schwarz)?
+
+        Emulatoren mit GPU-Rendering liefern bei `adb screencap` mitunter ein
+        schwarzes Bild. Ohne diese Pruefung sucht der Bot stundenlang in einer
+        leeren Flaeche und meldet nur 'nicht gefunden'.
+        """
+        grau = self.to_gray().data
+        n = len(grau)
+        if n == 0:
+            return True
+        schritt = max(1, n // samples)
+        werte = grau[::schritt]
+        return (max(werte) - min(werte)) < schwelle
+
     def diff_ratio(self, other: "Image", samples: int = 2000) -> float:
         """Grober Unterschied 0..1 – für Stuck-Erkennung (Bild bewegt sich nicht mehr)."""
         if other.width != self.width or other.height != self.height:

@@ -78,6 +78,12 @@ def cmd_capture(args) -> int:
         print(f"Raster: duenne Linie alle {args.raster} px, kraeftige alle {args.raster * 5} px")
     img.save(out)
     print(f"{out} ({img.width}x{img.height})")
+    if img.ist_einfarbig():
+        print("\n⚠ Das Bild ist LEER (einfarbig) - der Bot koennte so nichts erkennen.")
+        print("  Emulatoren mit GPU-Rendering liefern bei screencap oft ein schwarzes Bild.")
+        print("  BlueStacks: Einstellungen -> Grafik -> Renderer wechseln (DirectX <-> OpenGL),")
+        print("  'Erweiterter Grafikmodus' aus, danach BlueStacks neu starten.")
+        return 1
     return 0
 
 

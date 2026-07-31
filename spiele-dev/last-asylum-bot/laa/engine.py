@@ -126,6 +126,7 @@ class Engine:
         self._last_text: Dict[str, str] = {}
         self._gemeldet_fehlend = set()
         self._tipp_verlauf: List[tuple] = []
+        self._schwarz_gemeldet = False
         self._last_frame: Optional[Image] = None
         self._last_change = clock()
         self._scale: Optional[float] = None
@@ -186,6 +187,16 @@ class Engine:
 
     def capture(self) -> Image:
         self.screen = self.dev.screencap()
+        if self.screen.ist_einfarbig() and not self._schwarz_gemeldet:
+            self._schwarz_gemeldet = True
+            self.log.error(
+                "Der Bildschirm kommt LEER an - der Bot sieht nichts. "
+                "Bei BlueStacks: Einstellungen -> Grafik -> Renderer auf DirectX bzw. OpenGL "
+                "umstellen und 'Erweiterter Grafikmodus' ausschalten, dann neu starten. "
+                "Pruefen mit: bot.py capture -o shots\\test.png"
+            )
+        elif not self.screen.ist_einfarbig():
+            self._schwarz_gemeldet = False
         if self._scale is None:
             self._scale = self.cfg.scale_for(self.screen.width)
             if abs(self._scale - 1.0) > 0.01:
