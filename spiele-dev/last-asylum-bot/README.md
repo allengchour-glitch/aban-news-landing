@@ -14,6 +14,26 @@ python3 bot.py check     # prüft Konfiguration + Templates, braucht kein Handy
 
 ---
 
+## 0. Claude einen Bildschirm zeigen
+
+Claude läuft in der Cloud und kommt an diesen PC nicht heran. Statt von Hand
+einen Screenshot zu schicken — der unterwegs meist auf ~500 px verkleinert wird
+und dann zum Schneiden von Vorlagen unbrauchbar ist — nimmt der Bot ihn selbst
+auf und schiebt ihn über das Repository:
+
+```bash
+python bot.py teilen --als versammlung
+```
+
+Das Bild landet in **voller Auflösung** unter `austausch/` und wird gepusht.
+Danach genügt ein „Bild ist da" — Claude liest es aus dem Repository und kann
+Knöpfe daraus schneiden. Es werden nur die letzten vier Bilder behalten, damit
+das Repository nicht zuläuft.
+
+Vorher im Spiel den Bildschirm hinstellen, um den es geht.
+
+---
+
 ## 1. Was der Bot heute schon kann
 
 Diese Templates sind aus echten Screenshots geschnitten und **funktionieren sofort**:

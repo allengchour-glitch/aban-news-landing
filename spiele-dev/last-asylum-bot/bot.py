@@ -187,6 +187,51 @@ def _lage(m, breite: int, hoehe: int) -> str:
     return f"{senk} {waag} (x={rx:.2f} y={ry:.2f})"
 
 
+def cmd_teilen(args) -> int:
+    """Bildschirm aufnehmen und ins Git schieben - damit Claude ihn sehen kann.
+
+    Claude laeuft in der Cloud und kommt an diesen PC nicht heran. Screenshots
+    von Hand zu schicken funktioniert, kostet aber jedes Mal Aufwand und
+    landet oft verkleinert an. Der Bot kann das Bild dagegen in voller
+    Aufloesung aufnehmen und ueber das Repository weiterreichen.
+    """
+    import subprocess
+
+    ordner = os.path.join(HERE, "austausch")
+    os.makedirs(ordner, exist_ok=True)
+
+    # Alte Bilder wegraeumen - das Repository soll nicht zulaufen.
+    alte = sorted(glob.glob(os.path.join(ordner, "*.png")))
+    for pfad in alte[:-max(0, args.behalten - 1)] if args.behalten else alte:
+        os.remove(pfad)
+
+    img = Image.load(args.image) if args.image else make_device(args).screencap()
+    if img.ist_einfarbig():
+        print("Das Bild ist leer - so ist nichts zu sehen. Siehe Hinweis bei 'capture'.",
+              file=sys.stderr)
+        return 1
+    marke = args.als or time.strftime("%Y%m%d-%H%M%S")
+    safe = "".join(c if c.isalnum() or c in "-_" else "_" for c in marke)
+    ziel = os.path.join(ordner, f"{safe}.png")
+    img.save(ziel)
+    print(f"{ziel} ({img.width}x{img.height})")
+
+    def git(*rest):
+        return subprocess.run(["git", "-C", HERE, *rest], capture_output=True, timeout=180)
+
+    git("add", "--", ordner)
+    ergebnis = git("commit", "-m", f"Bildschirm zum Anschauen: {safe}")
+    if ergebnis.returncode != 0 and b"nothing to commit" not in ergebnis.stdout:
+        print(ergebnis.stdout.decode("utf-8", "replace")[:300], file=sys.stderr)
+    schub = git("push")
+    if schub.returncode != 0:
+        print("Hochladen fehlgeschlagen:",
+              schub.stderr.decode("utf-8", "replace").strip()[:300], file=sys.stderr)
+        return 1
+    print("Hochgeladen. Claude kann das Bild jetzt sehen.")
+    return 0
+
+
 def cmd_entdecke(args) -> int:
     """Knopf-Kandidaten im aktuellen Bildschirm finden und nummeriert ablegen.
 
@@ -483,6 +528,13 @@ def build_parser() -> argparse.ArgumentParser:
 
     sub.add_parser("devices", help="angeschlossene Geräte auflisten").set_defaults(func=cmd_devices)
     sub.add_parser("package", help="Paketnamen der App im Vordergrund zeigen").set_defaults(func=cmd_package)
+
+    c = sub.add_parser("teilen", help="Bildschirm aufnehmen und Claude zeigen")
+    c.add_argument("--als", help="Name statt Zeitstempel, z. B. versammlung")
+    c.add_argument("--image", help="statt vom Geraet: aus dieser Datei")
+    c.add_argument("--behalten", type=int, default=4,
+                   help="so viele Bilder im Ordner behalten (Standard 4)")
+    c.set_defaults(func=cmd_teilen)
 
     c = sub.add_parser("capture", help="Screenshot holen")
     c.add_argument("-o", "--output", help="Zieldatei (Standard: shots/<zeit>.png)")
