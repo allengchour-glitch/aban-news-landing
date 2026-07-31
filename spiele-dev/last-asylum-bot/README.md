@@ -334,6 +334,20 @@ python3 bot.py entdecke --nimm 6 --als ui/btn_alles_abholen
 
 Findet er zu wenig, die Grenzen lockern: `--min-breite 60 --min-hoehe 40`.
 
+**Ertrags-Blasen gehen ohne Zuordnen:**
+
+```bash
+python3 bot.py entdecke --blasen
+```
+
+Das übernimmt alle gefundenen Blasen auf einmal nach `templates/gelernt/blasen/` — genau dorthin,
+wo die Sammel-Regel per Muster ohnehin nachschaut. Keine Nummern, kein Zuordnen, kein Neustart.
+
+**Warum das nötig ist:** das Spiel skaliert seine Oberfläche nach der Bildschirm*höhe*. Vorlagen
+aus einem 1440 × 3088-Screenshot sind in einem 1440 × 2560-Fenster zu gross und treffen dann mit
+0,3 bis 0,65 statt über 0,9. Solche Werte im Protokoll heissen immer: richtiges Motiv, falsche
+Grösse — dann neu schneiden.
+
 ### Schwellen aus echten Läufen nachjustieren
 
 Jeder Bildvergleich landet mit seinem Score im Protokoll. Danach:

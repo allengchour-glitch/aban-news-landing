@@ -209,6 +209,10 @@ def cmd_entdecke(args) -> int:
         return 0
 
     screen = Image.load(args.image) if args.image else make_device(args).screencap()
+    if screen.ist_einfarbig():
+        print("Das Bild ist leer - so ist nichts zu finden. Siehe Hinweis bei 'capture'.",
+              file=sys.stderr)
+        return 1
     os.makedirs(ordner, exist_ok=True)
     for alt in glob.glob(os.path.join(ordner, "*.png")):
         os.remove(alt)
@@ -241,6 +245,28 @@ def cmd_entdecke(args) -> int:
         uebersicht.draw_box(m.x - rand, m.y - rand, m.x + m.w + rand, m.y + m.h + rand)
         print(f"  {i:2d}  {farbe:9} {m.w:5d}x{m.h:<5d}  "
               f"{_lage(m, screen.width, screen.height)}")
+
+    if args.blasen:
+        # Alle Ertrags-Blasen auf einmal uebernehmen: sie landen im Lern-Ordner,
+        # den die Sammel-Regel ohnehin per Muster ausliest. Kein Zuordnen noetig.
+        ordner_blasen = os.path.join(HERE, "templates", "gelernt", "blasen")
+        os.makedirs(ordner_blasen, exist_ok=True)
+        vorhanden = len([f for f in os.listdir(ordner_blasen) if f.endswith(".png")])
+        genommen = 0
+        for farbe, m in kandidaten:
+            if farbe != "blase":
+                continue
+            rand = max(4, min(m.w, m.h) // 12)
+            cut = screen.crop(m.x - rand, m.y - rand, m.w + 2 * rand, m.h + 2 * rand)
+            cut.save(os.path.join(ordner_blasen, f"{vorhanden + genommen:02d}.png"))
+            genommen += 1
+        if genommen:
+            print(f"\n{genommen} Ertrags-Blase(n) übernommen → templates/gelernt/blasen/")
+            print("Die Sammel-Regel benutzt sie ab sofort, ohne Neustart.")
+        else:
+            print("\nKeine Ertrags-Blasen gefunden. Steht die Basis-Ansicht offen und "
+                  "sind Blasen sichtbar?")
+        return 0
 
     ziel = args.output or os.path.join("shots", "entdeckt.png")
     os.makedirs(os.path.dirname(os.path.abspath(ziel)) or ".", exist_ok=True)
@@ -488,6 +514,8 @@ def build_parser() -> argparse.ArgumentParser:
     c.add_argument("--image", help="Screenshot-Datei statt Live-Gerät")
     c.add_argument("-o", "--output", help="Übersichtsbild (Standard: shots/entdeckt.png)")
     c.add_argument("--nimm", type=int, help="Nummer eines Kandidaten übernehmen")
+    c.add_argument("--blasen", action="store_true",
+                   help="alle gefundenen Ertrags-Blasen auf einmal übernehmen (ohne Nummern)")
     c.add_argument("--als", help="Zielname, z. B. hud/bubble_metall")
     c.add_argument("--min-breite", type=float, default=55, dest="min_breite")
     c.add_argument("--max-breite", type=float, default=700, dest="max_breite")
