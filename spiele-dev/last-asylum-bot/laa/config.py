@@ -51,6 +51,7 @@ class Config:
     on_unknown: List[Any] = field(default_factory=list)
     templates_dir: str = "templates"
     input_method: str = "input"
+    ui_skala: float = 1.0  # zusaetzlicher Faktor, vom Bot selbst kalibriert
     texte: Dict[str, List[str]] = field(default_factory=dict)
     tabu_regionen: List[List[float]] = field(default_factory=list)
     tabu_namen: List[str] = field(default_factory=list)
@@ -86,6 +87,7 @@ class Config:
         cfg.on_unknown = raw.get("on_unknown", [])
         cfg.templates_dir = raw.get("templates_dir", "templates")
         cfg.input_method = raw.get("input_method", "input")
+        cfg.ui_skala = float(raw.get("ui_skala", 1.0))
         cfg.texte = {k: list(v) for k, v in raw.get("texte", {}).items()}
         for zone in raw.get("tabu_regionen", []):
             if isinstance(zone, dict):
@@ -169,9 +171,15 @@ class Config:
         return self._templates[name]
 
     def scale_for(self, screen_width: int) -> float:
-        if not self.base_width:
-            return 1.0
-        return screen_width / float(self.base_width)
+        """Faktor, mit dem Vorlagen skaliert werden.
+
+        Die Breite allein reicht nicht: dieses Spiel bemisst seine Oberflaeche
+        an der Bildhoehe. In einem flacheren Fenster ist bei gleicher Breite
+        alles kleiner. `ui_skala` faengt das ab und wird vom Bot selbst
+        kalibriert (siehe Aktion 'kalibriere').
+        """
+        breite = screen_width / float(self.base_width) if self.base_width else 1.0
+        return breite * self.ui_skala
 
     # ------------------------------------------------------------------ Prüfen
     def validate(self) -> List[str]:
@@ -183,7 +191,7 @@ class Config:
             "tap_match", "tap_template", "tap", "tap_first", "swipe", "drag", "key", "sleep",
             "wait_template", "start_app", "stop_app", "restart_app", "log",
             "screenshot", "repeat", "stop", "back", "run_task", "type_text", "wenn",
-            "lerne_objekte", "optimiere_takte",
+            "lerne_objekte", "optimiere_takte", "kalibriere",
         }
         task_names = {t.name for t in self.tasks}
 

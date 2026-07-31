@@ -273,6 +273,26 @@ nimmt den Zeitplan nach einem Neustart dort wieder auf. Ein Test hält das fest.
 
 Die Datei liegt neben `bot.py`; löscht man sie, fängt der Zeitplan von vorn an.
 
+### Der Bot misst die Grösse der Oberfläche selbst
+
+Das Spiel bemisst seine Oberfläche an der Bildschirm**höhe**, nicht an der Breite. In einem
+flacheren Fenster ist bei gleicher Breite alles kleiner — Vorlagen aus einem 1440 × 3088-Bild
+treffen in einem 1440 × 2560-Fenster dann nur noch mit 0,3 bis 0,65 statt über 0,9.
+
+Statt jede Vorlage neu zu schneiden, probiert der Bot beim Start ein paar bekannte Vorlagen in
+zwölf Grössen zwischen 0,50 und 1,10 durch und nimmt den Faktor, der am besten trifft — als
+Median über mehrere Vorlagen, damit ein Ausreisser nichts verdirbt:
+
+```
+Groessen-Faktor der Oberflaeche neu bestimmt: 1.00 -> 0.65  belege=5
+```
+
+Der Faktor landet als `ui_skala` in der Konfiguration und gilt ab da für **alle** Vorlagen.
+Danach wird alle sechs Stunden nachgeprüft; bestätigt er sich, passiert nichts.
+
+**Faustregel fürs Protokoll:** Scores um 0,3–0,65 heissen „richtiges Motiv, falsche Grösse" —
+dann ist die Kalibrierung dran. Unter 0,3 heisst „falsches Motiv".
+
 ### Der Bot lernt neue Sammel-Objekte selbst
 
 Das Spiel bekommt laufend neue Gebäude und damit neue Ertrags-Blasen — für jede von Hand eine

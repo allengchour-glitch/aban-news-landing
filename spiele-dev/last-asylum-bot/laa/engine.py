@@ -340,6 +340,8 @@ class Engine:
         elif key == "screenshot":
             path = self.save_shot(str(value) if value else "shot")
             self.log.info("Screenshot gespeichert", datei=path)
+        elif key == "kalibriere":
+            self._kalibriere(value if isinstance(value, dict) else {})
         elif key == "optimiere_takte":
             self._optimiere_takte(value if isinstance(value, dict) else {})
         elif key == "lerne_objekte":
@@ -401,6 +403,76 @@ class Engine:
         self._tap_abs(cx, cy, spec.get("template", ""))
         if "after" in spec:
             self._do_sleep(spec["after"])
+
+    def _kalibriere(self, spec: Dict[str, Any]) -> None:
+        """Den Groessen-Faktor der Oberflaeche selbst bestimmen.
+
+        Das Spiel bemisst seine Oberflaeche an der Bildhoehe, nicht an der
+        Breite. In einem flacheren Fenster sind alle Knoepfe kleiner, und samt-
+        liche Vorlagen treffen dann nur noch mit 0,3 bis 0,65 statt ueber 0,9.
+        Statt jede einzeln neu zu schneiden, wird hier eine Vorlage bei
+        verschiedenen Groessen probiert - der Faktor, der am besten trifft,
+        gilt danach fuer alle.
+        """
+        namen = spec.get("templates") or [
+            "ui/back_arrow.png", "ui/popup_close.png", "nav/allianz.png",
+            "nav/tasche.png", "nav/welt.png", "nav/held.png", "nav/burg.png",
+        ]
+        schritte = spec.get("faktoren") or [
+            0.50, 0.55, 0.60, 0.65, 0.70, 0.75, 0.80, 0.85, 0.90, 0.95, 1.00, 1.10
+        ]
+        mindest = float(spec.get("mindest_score", 0.86))
+        screen = self.capture()
+        if screen.ist_einfarbig():
+            return
+
+        basis = screen.width / float(self.cfg.base_width) if self.cfg.base_width else 1.0
+        gefunden = []
+        for name in namen:
+            tpl = self.cfg.template(name, optional=True)
+            if tpl is None:
+                continue
+            bester, bester_faktor = 0.0, None
+            for f in schritte:
+                hit = matcher.best_score(screen, tpl, scale=basis * f)
+                if hit and hit.score > bester:
+                    bester, bester_faktor = hit.score, f
+            if bester >= mindest and bester_faktor:
+                gefunden.append((name, bester_faktor, bester))
+
+        if not gefunden:
+            self.log.info("Kalibrierung: nichts Passendes im Bild - spaeter erneut")
+            return
+        faktoren = sorted(f for _, f, _ in gefunden)
+        median = faktoren[len(faktoren) // 2]
+        for name, f, score in gefunden:
+            self.log.debug("Kalibrierung", template=name, faktor=f, score=round(score, 3))
+
+        if abs(median - self.cfg.ui_skala) < 0.03:
+            self.log.info(f"Kalibrierung bestaetigt: Faktor {median:.2f}",
+                          belege=len(gefunden))
+            return
+        alt = self.cfg.ui_skala
+        self.cfg.ui_skala = median
+        self._scale = None  # beim naechsten Bild neu bestimmen
+        self.log.info(
+            f"Groessen-Faktor der Oberflaeche neu bestimmt: {alt:.2f} -> {median:.2f}",
+            belege=len(gefunden), templates=", ".join(n for n, _, _ in gefunden),
+        )
+        self.bump("kalibriert")
+        self._skala_sichern(median)
+
+    def _skala_sichern(self, wert: float) -> None:
+        if self.cfg.path == "<inline>":
+            return
+        try:
+            with open(self.cfg.path, "r", encoding="utf-8") as fh:
+                roh = json.load(fh)
+            roh["ui_skala"] = round(wert, 3)
+            with open(self.cfg.path, "w", encoding="utf-8") as fh:
+                json.dump(roh, fh, ensure_ascii=False, indent=2)
+        except Exception as exc:  # pragma: no cover - Dateisystem
+            self.log.warn(f"Faktor nicht gespeichert: {exc}")
 
     def _optimiere_takte(self, spec: Dict[str, Any]) -> None:
         """Eigene Protokolle auswerten und die Takte selbst nachziehen.

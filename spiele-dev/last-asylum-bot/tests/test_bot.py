@@ -639,6 +639,50 @@ class TestAusdauerSicherung(unittest.TestCase):
             )
 
 
+class TestKalibrierung(unittest.TestCase):
+    """Der Bot bestimmt den Größen-Faktor der Oberfläche selbst."""
+
+    def bau(self, faktor):
+        """Bildschirm, auf dem die Vorlage um `faktor` verkleinert vorkommt."""
+        import shutil
+        import tempfile
+
+        ordner = tempfile.mkdtemp()
+        tdir = os.path.join(ordner, "templates", "ui")
+        os.makedirs(tdir)
+        marke = noise(80, 80, 130)
+        marke.save(os.path.join(tdir, "back_arrow.png"))
+        klein = marke.box_scale(int(80 * faktor), int(80 * faktor))
+        screen = noise(600, 900, 131)
+        paste(screen, klein, 200, 300)
+        with open(os.path.join(ordner, "conf.json"), "w", encoding="utf-8") as fh:
+            json.dump({"base_width": 600, "ui_skala": 1.0}, fh)
+        cfg = Config.load(os.path.join(ordner, "conf.json"))
+        dev = FakeDevice([screen], loop=True)
+        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=1)
+        return ordner, cfg, eng, shutil
+
+    def test_findet_den_verkleinerungsfaktor(self):
+        ordner, cfg, eng, shutil = self.bau(0.7)
+        try:
+            eng.run_actions([{"kalibriere": {"templates": ["ui/back_arrow.png"],
+                                             "mindest_score": 0.8}}])
+            self.assertAlmostEqual(cfg.ui_skala, 0.7, delta=0.06)
+            with open(os.path.join(ordner, "conf.json"), encoding="utf-8") as fh:
+                self.assertAlmostEqual(json.load(fh)["ui_skala"], 0.7, delta=0.06)
+        finally:
+            shutil.rmtree(ordner, ignore_errors=True)
+
+    def test_unveraenderte_groesse_bleibt_bei_eins(self):
+        ordner, cfg, eng, shutil = self.bau(1.0)
+        try:
+            eng.run_actions([{"kalibriere": {"templates": ["ui/back_arrow.png"],
+                                             "mindest_score": 0.8}}])
+            self.assertAlmostEqual(cfg.ui_skala, 1.0, delta=0.06)
+        finally:
+            shutil.rmtree(ordner, ignore_errors=True)
+
+
 class TestSelbstOptimierung(unittest.TestCase):
     """Der Bot zieht seine Takte aus den eigenen Protokollen nach."""
 
