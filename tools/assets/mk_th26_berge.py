@@ -103,6 +103,12 @@ def runden(width=0.02, segments=2, winkel=42):
         nur(o)
         # NIE nur rotation=True anwenden — mit nicht-uniformer Skalierung schert das die Box.
         bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+        if o.get("nb"):
+            # Felskoerper: KEIN Bevel, KEIN Auto-Smooth. Weichgezeichnet wird aus dem
+            # facettierten Fels ein Kartoffel-Blob; die Facetten SIND der Fels.
+            try: bpy.ops.object.shade_flat()
+            except Exception: pass
+            continue
         m = o.modifiers.new("Bevel", 'BEVEL')
         d_min = max(1e-4, min(o.dimensions))
         m.width = min(width, 0.28 * d_min)
@@ -312,14 +318,53 @@ def kipp_lift(sx, sy, sz, rx, ry, rz):
     return 0.5*(abs(R[2][0])*sx + abs(R[2][1])*sy + abs(R[2][2])*sz)
 
 def fels(cx, cy, cz, r, m, seg=8, hoehe=1.0, rx=0.10, ry=-0.08):
-    """Felsblock: Kegelstumpf mit wenigen Segmenten, leicht gekippt. Die Kippung
-    senkt eine Seite ab; die Hebung wird herausgerechnet (Zoo-Charge: -0,08 gemessen).
-    Konservativ ueber den umschliessenden Zylinder gerechnet."""
-    h = r*hoehe
-    lift = 0.5*abs(math.cos(rx)*math.cos(ry))*h + r*math.hypot(math.sin(ry), math.cos(ry)*math.sin(rx))
-    o = kegel(cx, cy, cz + lift, r, r*0.55, h, m, seg)
-    o.rotation_euler[0] = rx
-    o.rotation_euler[1] = ry
+    """Einzelner Felsbrocken. War ein gekippter KEGELSTUMPF — im Rudel sah das aus wie
+    ein Feld kleiner Zelte. Jetzt ein `felskoerper`; die Signatur bleibt, damit alle
+    Aufrufer (geroell, Bergsee, Gipfelkreuz, Wasserfall, Hoehle) mitprofitieren.
+    `seg` wird nicht mehr gebraucht und nur noch geschluckt.
+    Der Seed haengt an der Position -> gleiche Stelle, gleiche Form, reproduzierbare Diffs."""
+    sd = int(abs(cx*7307 + cy*1373 + cz*311 + r*9721)) % 99991
+    return felskoerper(cx, cy, cz, 2.0*r, 1.84*r, max(0.25, r*hoehe*1.15), m,
+                       sd, 0.30, 2, (rx, ry, (sd % 628)/100.0), True, "Brocken")
+
+def felskoerper(cx, cy, z0, sx, sy, sz, m, seed=0, rau=0.30, unterteil=2,
+                kipp=(0.0, 0.0, 0.0), flachboden=True, name="Felskoerper"):
+    """Unregelmaessiger Felskoerper — der Ersatz fuer `kipp_box` ueberall dort, wo
+    ein FELS gemeint ist. Achsparallele Quader lesen sich als Minecraft-Bloecke,
+    daran aendert auch eine Kippung nichts: die Silhouette bleibt eine Kiste.
+
+    Aufbau: Icosphaere, deren Punkte radial verrauscht werden. Die Kippung wird in
+    die PUNKTE gerechnet, nicht auf das Objekt gelegt — danach wird das Mesh exakt
+    auf (sx, sy, sz) normiert. Nur so bleibt die Bounding-Box auf Mass (Rastermodule!)
+    und der tiefste Punkt liegt garantiert genau auf z0, ohne `kipp_lift`-Rechnerei.
+
+    `seed` macht die Form reproduzierbar — sonst sieht jeder Lauf anders aus und
+    Diffs werden unlesbar."""
+    bm = bmesh.new()
+    bmesh.ops.create_icosphere(bm, subdivisions=unterteil, radius=1.0)
+    rnd = random.Random(seed)
+    R = mathutils.Euler(kipp, 'XYZ').to_matrix()
+    for v in bm.verts:
+        v.co *= (1.0 + rnd.uniform(-rau, rau))
+        if flachboden and v.co.z < -0.55:      # Standflaeche: ein Fels liegt auf, er schwebt nicht
+            v.co.z = -0.55 - (v.co.z + 0.55)*0.25
+        v.co = R @ v.co
+    me = bpy.data.meshes.new(name)
+    bm.to_mesh(me); bm.free()
+    o = bpy.data.objects.new(name, me); bpy.context.collection.objects.link(o)
+    if m: me.materials.append(m)
+    # exakt auf Zielmass normieren
+    xs = [v.co.x for v in me.vertices]; ys = [v.co.y for v in me.vertices]; zs = [v.co.z for v in me.vertices]
+    mnx, mxx, mny, mxy, mnz, mxz = min(xs), max(xs), min(ys), max(ys), min(zs), max(zs)
+    fx = sx/max(1e-6, mxx-mnx); fy = sy/max(1e-6, mxy-mny); fz = sz/max(1e-6, mxz-mnz)
+    for v in me.vertices:
+        v.co.x = (v.co.x - (mnx+mxx)/2)*fx
+        v.co.y = (v.co.y - (mny+mxy)/2)*fy
+        v.co.z = (v.co.z - mnz)*fz
+    me.update()
+    o.location = (cx, cy, z0)
+    o["nb"] = 1
+    bpy.context.view_layer.objects.active = o
     return o
 
 def geroell(cx, cy, z0, B, T, n, m1, m2, rmin=0.25, rmax=0.75):
@@ -361,49 +406,51 @@ def felsformation():
     F1  = mat("Fels", (0.44,0.43,0.40), 0.93)
     F2  = mat("FelsDunkel", (0.33,0.32,0.30), 0.94)
     F3  = mat("FelsHell", (0.56,0.54,0.49), 0.90)
-    F4  = mat("Verwitterung", (0.48,0.42,0.34), 0.95)
+    F4  = mat("Verwitterung", (0.40,0.38,0.33), 0.95)   # war braun wie Holz
     ERD = mat("Bergerde", (0.24,0.19,0.13), 0.96)      # dunkel angesetzt: rendert heller
     MOO = mat("Moos", (0.19,0.33,0.15), 0.95)
     SCH = mat("Firn", (0.88,0.90,0.93), 0.55)
     # --- Gelaendesockel
     box(0, 0, 0.30, 18.0, 15.0, 0.60, ERD)
     box(0, 0, 0.62, 13.0, 10.5, 0.10, F4)
-    # --- Hauptbloecke, ineinander verschachtelt (Ueberlappung ist gewollt)
-    kipp_box(-3.4,  1.2, 0.0,  6.6, 5.6, 12.2, F1, (0.055, -0.045,  0.34))
-    kipp_box( 2.6, -1.0, 0.0,  5.6, 5.0, 13.6, F2, (-0.045, 0.050, -0.62))
-    kipp_box( 0.2,  2.6, 0.0,  5.0, 4.4,  8.6, F3, (0.070, 0.035,  1.05))
-    kipp_box(-5.4, -2.4, 0.0,  4.6, 4.2,  7.4, F2, (-0.060, -0.055, -0.30))
-    kipp_box( 5.6,  2.2, 0.0,  4.2, 4.0,  6.2, F1, (0.050, 0.060,  0.75))
-    kipp_box(-0.6, -3.6, 0.0,  5.4, 3.6,  5.0, F3, (0.080, -0.030,  0.15))
-    kipp_box( 4.4, -3.4, 0.0,  3.6, 3.2,  3.8, F2, (-0.070, 0.040, -0.85))
-    kipp_box(-6.6,  2.6, 0.0,  3.4, 3.0,  4.4, F1, (0.060, -0.070,  0.45))
+    # --- Hauptbloecke als FELSKOERPER, ineinander verschachtelt (Ueberlappung gewollt).
+    #     Vorher waren das gekippte Quader — aus jedem Winkel eine Kiste.
+    felskoerper(-3.4,  1.2, 0.0,  6.6, 5.6, 12.2, F1, 11, 0.30, 3, (0.055, -0.045,  0.34))
+    felskoerper( 2.6, -1.0, 0.0,  5.6, 5.0, 13.6, F2, 12, 0.32, 3, (-0.045, 0.050, -0.62))
+    felskoerper( 0.2,  2.6, 0.0,  5.0, 4.4,  8.6, F3, 13, 0.28, 3, (0.070, 0.035,  1.05))
+    felskoerper(-5.4, -2.4, 0.0,  4.6, 4.2,  7.4, F2, 14, 0.31, 3, (-0.060, -0.055, -0.30))
+    felskoerper( 5.6,  2.2, 0.0,  4.2, 4.0,  6.2, F1, 15, 0.29, 3, (0.050, 0.060,  0.75))
+    felskoerper(-0.6, -3.6, 0.0,  5.4, 3.6,  5.0, F3, 16, 0.33, 3, (0.080, -0.030,  0.15))
+    felskoerper( 4.4, -3.4, 0.0,  3.6, 3.2,  3.8, F2, 17, 0.30, 3, (-0.070, 0.040, -0.85))
+    felskoerper(-6.6,  2.6, 0.0,  3.4, 3.0,  4.4, F1, 18, 0.32, 3, (0.060, -0.070,  0.45))
     # --- Aufgesetzte Kappen (die Bloecke laufen oben nicht flach aus)
-    kipp_box( 2.9, -0.6, 12.4, 3.4, 3.0, 1.6, F3, (0.10, -0.09, -0.62))
-    kipp_box(-3.2,  1.4, 11.0, 3.8, 3.2, 1.5, F1, (-0.09, 0.11, 0.34))
-    box(2.9, -0.6, 14.02, 2.6, 2.3, 0.22, SCH)        # Firnhaeubchen
-    # --- Verwitterungskanten: vorspringende Simse in mehreren Hoehen
-    for (px, py, pz, lx, ly, dz, rot) in (
-            (-3.4,  3.7,  3.0, 6.4, 1.5, 0.42, ( 0.09, -0.04,  0.34)),
-            (-3.4,  3.6,  6.6, 5.6, 1.3, 0.36, (-0.07, -0.05,  0.34)),
-            (-3.4,  3.5,  9.4, 4.6, 1.1, 0.30, ( 0.06, -0.03,  0.34)),
-            ( 2.6,  1.4,  4.4, 5.4, 1.4, 0.40, (-0.08,  0.05, -0.62)),
-            ( 2.6,  1.3,  8.2, 4.6, 1.2, 0.34, ( 0.07,  0.04, -0.62)),
-            ( 2.6,  1.2, 11.2, 3.6, 1.0, 0.28, (-0.06,  0.05, -0.62)),
-            (-5.6, -0.4,  2.4, 4.4, 1.3, 0.36, ( 0.08, -0.06, -0.30)),
-            (-5.6, -0.5,  5.2, 3.4, 1.1, 0.30, (-0.06, -0.05, -0.30)),
-            ( 5.7,  4.2,  2.6, 4.0, 1.2, 0.34, ( 0.07,  0.06,  0.75)),
-            ( 0.2,  4.6,  4.6, 4.6, 1.2, 0.34, ( 0.09,  0.03,  1.05)),
-            (-0.6, -5.2,  2.2, 5.0, 1.3, 0.36, ( 0.08, -0.03,  0.15))):
-        verwitterung(px, py, pz, lx, ly, dz, F4, rot)
-    # --- Kluefte: schmale dunkle Spalten in den Flanken
-    for (px, py, pz, hz, rot) in ((-1.4, 3.9, 1.0, 8.4, (0, 0.05, 0.34)),
-                                  ( 4.6, 1.5, 1.0, 9.6, (0, -0.04, -0.62)),
-                                  (-6.4, -0.2, 0.8, 5.4, (0, 0.06, -0.30))):
-        kipp_box(px, py, pz, 0.34, 0.9, hz, F2, rot)
+    felskoerper( 2.9, -0.6, 11.9, 2.4, 2.1, 2.1, F3, 19, 0.26, 2, (0.10, -0.09, -0.62), False)
+    felskoerper(-3.2,  1.4, 10.5, 2.6, 2.2, 2.0, F1, 20, 0.26, 2, (-0.09, 0.11, 0.34), False)
+    felskoerper(2.9, -0.6, 13.30, 2.0, 1.8, 0.55, SCH, 21, 0.14, 2, (0.10, -0.09, -0.62), False, "Firn")
+    # --- Verwitterungsbaender: flache Felskoerper, die AUS der Flanke wachsen.
+    #     Die alten Quader sassen auf der Bounding-Box-Kante — an der schmaleren
+    #     Flanke des Felskoerpers standen sie frei in der Luft wie Regalbretter.
+    #     Deshalb sitzt ihre Mitte jetzt dicht an der Blockmitte, nicht am Rand.
+    #     Die drei Kluft-Quader sind ersatzlos weg: an einer unregelmaessigen Flanke
+    #     standen sie als Stangen VOR dem Fels statt als Spalte darin.
+    for (px, py, pz, lx, ly, dz, sd, kip) in (
+            (-3.4,  2.2,  3.0, 5.2, 2.5, 0.55, 31, ( 0.09, -0.04,  0.34)),
+            (-3.4,  2.1,  6.6, 3.9, 2.0, 0.46, 32, (-0.07, -0.05,  0.34)),
+            (-3.4,  2.0,  9.4, 2.6, 1.5, 0.38, 33, ( 0.06, -0.03,  0.34)),
+            ( 2.6, -0.1,  4.4, 4.4, 2.3, 0.52, 34, (-0.08,  0.05, -0.62)),
+            ( 2.6, -0.2,  8.2, 3.3, 1.8, 0.44, 35, ( 0.07,  0.04, -0.62)),
+            ( 2.6, -0.3, 11.2, 2.2, 1.4, 0.34, 36, (-0.06,  0.05, -0.62)),
+            (-5.4, -1.7,  2.4, 3.8, 2.2, 0.48, 37, ( 0.08, -0.06, -0.30)),
+            (-5.4, -1.8,  5.2, 2.9, 1.9, 0.40, 38, (-0.06, -0.05, -0.30)),
+            ( 5.6,  2.9,  2.6, 3.4, 2.0, 0.44, 39, ( 0.07,  0.06,  0.75)),
+            ( 0.2,  3.4,  4.6, 4.0, 2.0, 0.44, 40, ( 0.09,  0.03,  1.05)),
+            (-0.6, -4.2,  2.2, 4.4, 2.1, 0.46, 41, ( 0.08, -0.03,  0.15))):
+        felskoerper(px, py, pz, lx, ly, dz, F4, sd, 0.16, 2, kip, False, "Band")
     # --- Bewuchs und Geroell
-    for (px, py, pz, r) in ((-3.4, 4.2, 3.30, 1.5), (2.6, 1.9, 4.68, 1.4),
-                            (-5.6, 0.1, 2.68, 1.2), (0.2, 5.1, 4.90, 1.3)):
-        kugel(px, py, pz, r*0.45, MOO, 10)
+    for (px, py, pz, r, sd) in ((-3.4, 3.0, 3.42, 1.5, 51), (2.6, 0.6, 4.80, 1.4, 52),
+                                (-5.4, -0.9, 2.80, 1.2, 53), (0.2, 4.0, 5.02, 1.3, 54)):
+        felskoerper(px, py, pz, r*1.7, r*1.3, r*0.36, MOO, sd, 0.22, 1,
+                    (0.0, 0.0, sd/10.0), False, "Moospolster")   # Kugeln lasen sich als Murmeln
     geroell(0, 0, 0.62, 16.0, 13.0, 26, F1, F3, 0.28, 0.85)
     for (px, py, r, h) in ((-7.6, -4.6, 1.5, 1.3), (7.4, -4.4, 1.3, 1.1),
                            (7.8,  4.8, 1.2, 1.2), (-8.0, 5.0, 1.1, 1.0)):
@@ -459,10 +506,15 @@ def felswand_modul():
             ( 1.30, 0.95, 10.60, 1.90, 0.90, 1.70, (-0.07,  0.04, -0.28), F3),
             (-1.90, 1.20, 13.05, 2.10, 1.00, 1.60, ( 0.09, -0.05,  0.24), F1),
             ( 4.00, 1.15, 13.00, 1.80, 0.90, 1.40, (-0.08,  0.05, -0.18), F2)):
-        kipp_box(px, py, pz, sx, sy, sz, m, rot)
+        # `felskoerper` bleibt garantiert in seiner Bounding-Box -> |x| <= 5,35 haelt,
+        # das Modulraster (12,000 x 16,000) bleibt unangetastet.
+        felskoerper(px, py, pz - sz/2, sx, sy, sz, m,
+                    int(abs(px*911 + pz*137)) % 9973, 0.26, 2, rot, False)
     # --- Moospolster und Firn (alles innerhalb des Rasters)
-    for (px, pz) in ((-4.6, 3.75), (2.1, 6.05), (-0.9, 8.75), (4.3, 10.75), (-3.1, 13.35)):
-        kugel(px, 1.35, pz, 0.42, MOO, 10)
+    for i, (px, pz) in enumerate(((-4.6, 3.75), (2.1, 6.05), (-0.9, 8.75),
+                                  (4.3, 10.75), (-3.1, 13.35))):
+        felskoerper(px, 1.35, pz, 1.25, 0.7, 0.28, MOO, 120+i, 0.22, 2,
+                    (0,0,i*1.1), False, "Moospolster")
     box(0, 0.10, 15.92, BR, 2.55, 0.16, SCH)         # Firndecke, Oberkante exakt 16,00
     export("th26_felswand_modul", 0.024, 2)
 
@@ -491,15 +543,15 @@ def wasserfall():
     # Quader lesen sich als umfallende Platten, nie als Felskessel. Die Wand laeuft
     # durch, die Kerbe entsteht durch die Luecke zwischen linkem und rechtem Massiv.
     for sgn in (-1, 1):
-        box(sgn*8.6, -6.2, 6.6, 10.0, 5.6, 13.2, F1)          # Hauptmassiv
-        box(sgn*7.0, -3.0, 4.6, 5.2, 4.0,  9.2, F2)           # vorspringender Pfeiler
-        box(sgn*10.4, -1.4, 3.2, 4.4, 5.0,  6.4, F3)          # Vorbau zum Ufer
+        felskoerper(sgn*8.6, -6.2, 0.0, 10.0, 5.6, 13.2, F1, 101+sgn, 0.20, 3)   # Hauptmassiv
+        felskoerper(sgn*7.0, -3.0, 0.0,  5.2, 4.0,  9.2, F2, 103+sgn, 0.24, 3)   # Pfeiler
+        felskoerper(sgn*10.4, -1.4, 0.0, 4.4, 5.0,  6.4, F3, 105+sgn, 0.26, 2)   # Vorbau
         for k in range(4):                                    # gestufte Absaetze
             o = box(sgn*(4.4 + k*0.55), -5.0 + k*0.35, 2.0 + k*2.7,
                     2.6 - k*0.35, 3.2, 1.10, F3 if k % 2 else F2)
             o.rotation_euler = (0.09, -sgn*0.07, sgn*0.13)
-    box(0, -8.6, 7.0, 9.4, 2.6, 14.0, F2)                     # Rueckwand der Schlucht
-    box(0, -7.6, 11.6, 8.0, 1.6,  4.8, F1)                    # Ueberhang ueber der Lippe
+    felskoerper(0, -8.6, 0.0, 9.4, 2.6, 14.0, F2, 107, 0.16, 3)   # Rueckwand der Schlucht
+    felskoerper(0, -7.6, 9.2, 8.0, 1.6, 4.8, F1, 108, 0.18, 2, (0,0,0), False)  # Ueberhang
     for k in range(5):                          # Gesimse / Baender in der Wand
         o = box(-0.4 + (k % 2)*0.8, -6.9, 2.4 + k*1.9, 11.0 - k*0.9, 1.5, 0.55, F3)
         o.rotation_euler[0] = 0.10 + (k % 2)*0.06
@@ -570,15 +622,17 @@ def hoehleneingang():
     B, T = 18.0, 20.0
     OEB, OEH = 6.0, 6.6                       # lichte Portalbreite / -hoehe
     boden(B, T, SOK, BOD, 4.0)
-    # --- Massiv: zwei Flanken + Sturz
-    kipp_box(-7.2, -1.0, 0.0, 7.8, 17.0, 11.4, F1, (0.0,  0.045,  0.05))
-    kipp_box( 7.2, -1.0, 0.0, 7.8, 17.0, 10.6, F2, (0.0, -0.050, -0.04))
-    box(0, -1.0, 8.80, 7.2, 17.0, 4.40, F1)                   # Sturz ueber dem Gang
-    box(0,  7.6, 8.90, 8.6,  2.4, 4.20, F3)                   # Portalstirn
+    # --- Massiv: zwei Flanken + Sturz. Vorher Quader — von aussen ein grauer Wuerfel
+    #     mit einem Loch. Der Felskoerper bleibt garantiert in seiner Bounding-Box,
+    #     der Gang (|x| < 3,0) kann also nicht zuwachsen.
+    felskoerper(-7.2, -1.0, 0.0, 7.8, 17.0, 11.4, F1, 61, 0.22, 3, (0.0,  0.045,  0.05))
+    felskoerper( 7.2, -1.0, 0.0, 7.8, 17.0, 10.6, F2, 62, 0.22, 3, (0.0, -0.050, -0.04))
+    felskoerper(0, -1.0, 6.60, 7.2, 17.0, 4.40, F1, 63, 0.16, 3, (0,0,0), False)  # Sturz 6,6-11,0
+    felskoerper(0,  7.6, 6.80, 8.6,  2.4, 4.20, F3, 64, 0.20, 2, (0,0,0), False)  # Stirn 6,8-11,0
     for s in (-1, 1):                                          # angeschraegte Portalecken
-        kipp_box(s*3.9, 7.4, 4.2, 2.6, 2.6, 3.0, F3, (0.0, -s*0.28, 0.0))
-    kipp_box(-2.4, 8.2, 8.0, 3.4, 2.2, 2.6, F1, ( 0.10, -0.08,  0.22))
-    kipp_box( 2.8, 8.4, 8.4, 3.0, 2.0, 2.4, F2, (-0.09,  0.07, -0.26))
+        felskoerper(s*3.9, 7.4, 4.2, 2.6, 2.6, 3.0, F3, 65+s, 0.24, 2, (0.0, -s*0.28, 0.0), False)
+    felskoerper(-2.4, 8.2, 8.0, 3.4, 2.2, 2.6, F1, 67, 0.26, 2, ( 0.10, -0.08,  0.22), False)
+    felskoerper( 2.8, 8.4, 8.4, 3.0, 2.0, 2.4, F2, 68, 0.26, 2, (-0.09,  0.07, -0.26), False)
     # --- Ganginnenwaende (Fels bis an den Sturz)
     for s in (-1, 1):
         box(s*4.6, -1.0, (FB + 6.6)/2 + 0.0, 3.2, 17.0, 6.6 - FB + 0.6, F2)
@@ -589,7 +643,8 @@ def hoehleneingang():
         py = 6.4 - i*2.4
         box(0, py, 6.90 - (0.10 if i % 2 else 0.0), 6.2, 1.9, 0.70, DKL)
         for s in (-1, 1):
-            kipp_box(s*2.5, py, 4.6, 1.4, 1.7, 2.0, DKL, (0.0, -s*0.16, 0.0))
+            felskoerper(s*2.5, py, 4.6, 1.4, 1.7, 2.0, DKL, 70 + i*2 + (s > 0), 0.26, 2,
+                        (0.0, -s*0.16, 0.0), False)   # Gewoelberippen, nicht Kisten
     # --- Tropfsteine von der Decke (Kegel: r1 unten spitz, r2 oben breit)
     for i in range(18):
         px = RND.uniform(-2.5, 2.5); py = RND.uniform(-7.4, 6.6)
@@ -619,8 +674,9 @@ def hoehleneingang():
         box(s*1.60, -0.6, FB + 0.10, 0.12, 15.0, 0.20, HOL)
     # --- Aussen: Geroell, Moos, Wegweiser
     geroell(0, 10.4, FB, 16.0, 6.0, 20, F1, F3, 0.24, 0.70)
-    for (px, py, pz) in ((-4.4, 8.6, 6.1), (4.6, 8.8, 5.9), (-6.8, 9.4, 2.2), (6.6, 9.2, 2.0)):
-        kugel(px, py, pz, 0.55, MOO, 10)
+    for i, (px, py, pz) in enumerate(((-4.4, 8.6, 6.1), (4.6, 8.8, 5.9),
+                                      (-6.8, 9.4, 2.2), (6.6, 9.2, 2.0))):
+        felskoerper(px, py, pz, 1.5, 1.2, 0.34, MOO, 90+i, 0.22, 2, (0,0,i*1.3), False, "Moospolster")
     box(-6.0, 9.6, FB + 1.05, 0.16, 0.16, 2.10, HOL)
     box(-6.0, 9.52, FB + 1.85, 1.50, 0.10, 0.55, F3)
     for (px, py, r) in ((-8.6, 9.8, 1.3), (8.4, 9.6, 1.2), (-9.4, 5.4, 1.1), (9.2, 5.2, 1.0)):
@@ -1110,16 +1166,16 @@ def gipfelkreuz():
     SCH = mat("Firn", (0.88,0.90,0.93), 0.55)
     # --- Gipfelkuppe
     box(0, 0, 0.18, 9.0, 8.0, 0.36, ERD)
-    kipp_box(0, 0, 0.30, 6.20, 5.40, 1.05, FEL, (0.04, -0.03, 0.12))
-    kipp_box(-0.4, 0.3, 1.20, 4.60, 4.00, 0.90, FEL3, (-0.05, 0.04, -0.35))
-    kipp_box(0.3, -0.2, 1.95, 3.20, 2.90, 0.85, FEL2, (0.05, 0.03, 0.55))
+    felskoerper(0, 0, 0.30, 6.20, 5.40, 1.35, FEL, 141, 0.26, 3, (0.04, -0.03, 0.12))
+    felskoerper(-0.4, 0.3, 1.20, 4.60, 4.00, 1.15, FEL3, 142, 0.28, 3, (-0.05, 0.04, -0.35), False)
+    felskoerper(0.3, -0.2, 1.95, 3.20, 2.90, 1.05, FEL2, 143, 0.26, 2, (0.05, 0.03, 0.55), False)
     for (px, py, r, h) in ((-2.9, 1.6, 1.05, 1.0), (2.8, -1.7, 0.95, 1.1),
                            (-2.4, -2.2, 0.85, 0.9), (2.5, 2.3, 0.90, 1.0),
                            (-3.6, -0.4, 0.75, 0.8), (3.5, 0.6, 0.80, 0.9)):
         fels(px, py, 0.34, r, FEL if r > 0.9 else FEL3, 8, h,
              RND.uniform(-0.14, 0.14), RND.uniform(-0.14, 0.14))
     geroell(0, 0, 0.34, 8.0, 7.0, 18, FEL, FEL3, 0.20, 0.55)
-    box(0.1, -0.1, 2.72, 2.20, 2.00, 0.14, SCH)
+    felskoerper(0.1, -0.1, 2.72, 2.20, 2.00, 0.26, SCH, 144, 0.16, 2, (0,0,0.4), False, "Firn")
     # --- Kreuz: Stamm 1,90 .. 9,10 , Querbalken bei 7,10
     box(0, 0, 5.50, 0.36, 0.32, 7.20, HOL)
     box(0, 0, 2.10, 0.62, 0.58, 0.60, MET)                    # Fussschuh im Fels
@@ -1194,9 +1250,11 @@ def bergsee():
             (-13.0, -6.8, 3.4, 3.0, 2.4, ( 0.06,  0.05,  0.9)),
             ( 11.6,  9.0, 3.0, 2.6, 2.0, (-0.07, -0.05, -0.3)),
             (  1.6, -11.4, 3.8, 2.8, 2.6, ( 0.05, -0.06,  0.2))):
-        kipp_box(px, py, 0.44, sx, sy, sz, FEL, rot)
-    for (px, py, pz) in ((-11.6, 8.0, 3.4), (12.0, -7.2, 3.0), (1.4, -11.0, 2.6)):
-        kugel(px, py, pz, 0.55, MOO, 10)
+        felskoerper(px, py, 0.44, sx, sy, sz, FEL,
+                    int(abs(px*733 + py*197)) % 9967, 0.28, 3, rot)
+    for i, (px, py, pz) in enumerate(((-11.6, 8.0, 3.4), (12.0, -7.2, 3.0), (1.4, -11.0, 2.6))):
+        felskoerper(px, py, pz, 1.6, 1.2, 0.34, MOO, 130+i, 0.22, 2,
+                    (0,0,i*1.4), False, "Moospolster")
     geroell(0, 0, 0.52, B - 3.0, T - 3.0, 22, FEL, FEL3, 0.20, 0.52)
     # --- Schilf im Flachwasser (Nordufer und Ostbucht)
     for (px, py, r, n) in ((-7.0, -6.2, 2.0, 26), (-3.4, -6.6, 1.6, 20),
