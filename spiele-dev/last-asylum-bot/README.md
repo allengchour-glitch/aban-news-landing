@@ -394,9 +394,13 @@ bleiben.
 
 * **Spiel-Währung ist frei.** Diamanten, Ressourcen und Beschleuniger darf der Bot
   ausgeben — das passiert in normalen Spieldialogen.
-* **Echtes Geld ist gesperrt.** In `tabu_regionen` stehen Bildschirm-Bereiche, in die der
-  Bot **niemals** tippt (Einkaufswagen und Diamanten-Aufladung oben rechts). Jeder Tipp
-  dorthin wird verworfen und protokolliert — egal von welcher Regel er kommt.
+* **Echtes Geld ist gesperrt.** In `tabu_regionen` steht der Bereich, in den der Bot **niemals**
+  tippt: die rechte obere Ecke bis 14,5 % Bildhöhe — Einkaufswagen, Diamanten-Aufladung und das
+  `Tagesangebot` mit CHF-Preis. Jeder Tipp dorthin wird verworfen und protokolliert, egal von
+  welcher Regel er kommt.
+* **Links oben darf nie gesperrt werden.** Dort sitzt der Zurück-Pfeil. Eine früher auf Verdacht
+  angelegte Zone hat im Betrieb genau den blockiert — der Bot kam nicht mehr zurück. Ein Test
+  prüft jetzt, dass keine Sperrzone in den Bereich `[0, 0, 0.30, 0.15]` ragt.
 * Deine eine Aufgabe dabei: **schneide nie ein Template von einem Knopf mit Preisschild**
   (CHF/EUR/USD). Dann kann auch nichts schiefgehen.
 * **Ausdauer-Fläschchen bleiben liegen.** Der Bot jagt Monster, bis die Ausdauer alle ist,

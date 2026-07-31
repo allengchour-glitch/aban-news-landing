@@ -11,7 +11,7 @@
   "stuck_seconds": 300,
   "templates_dir": "../templates",
   "input_method": "input",
-  "_geld": "ECHTGELD IST TABU, SPIEL-WAEHRUNG IST ERLAUBT. Diamanten, Ressourcen und Beschleuniger darf der Bot ausgeben. Gesperrt ist die rechte obere Ecke bis 14.5 % Bildhoehe - dort sitzen Einkaufswagen, Diamanten-Aufladung UND das 'Tagesangebot' mit CHF-Preis (z. B. in der Taverne). Regel fuer dich: schneide NIE ein Template von einem Knopf mit Preisschild.",
+  "_geld": "ECHTGELD IST TABU, SPIEL-WAEHRUNG IST ERLAUBT. Gesperrt ist die rechte obere Ecke bis 14,5 % Bildhoehe - dort sitzen Einkaufswagen, Diamanten-Aufladung und das 'Tagesangebot' mit CHF-Preis. LINKS OBEN DARF NICHT GESPERRT WERDEN: dort liegt der Zurueck-Pfeil. Eine frueher auf Verdacht angelegte Zone dort hat im Betrieb genau den blockiert - in keinem Screenshot gab es links oben je ein Kauf-Angebot. Regel fuer dich: schneide nie ein Template von einem Knopf mit Preisschild.",
   "tabu_regionen": [
     {
       "name": "Echtgeld-Shop, Diamanten-Aufladung und Tagesangebot oben rechts",
@@ -20,15 +20,6 @@
         0.0,
         1.0,
         0.145
-      ]
-    },
-    {
-      "name": "Angebots-Banner oben links",
-      "box": [
-        0.0,
-        0.0,
-        0.12,
-        0.05
       ]
     }
   ],

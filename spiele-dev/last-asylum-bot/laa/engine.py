@@ -125,7 +125,7 @@ class Engine:
         self._task_due: Dict[str, float] = {}
         self._last_text: Dict[str, str] = {}
         self._gemeldet_fehlend = set()
-        self._letzter_tipp = None
+        self._tipp_verlauf: List[tuple] = []
         self._last_frame: Optional[Image] = None
         self._last_change = clock()
         self._scale: Optional[float] = None
@@ -601,7 +601,9 @@ class Engine:
                 self.bump("tabu-blockiert")
                 return
         self.dev.tap(x, y)
-        self._letzter_tipp = (x, y, screen)
+        if screen is not None:
+            self._tipp_verlauf.append((x, y, self._umgebung(screen, x, y)))
+            del self._tipp_verlauf[:-12]  # nur die letzten paar merken
         self.bump("taps")
         self.log.debug("Tipp", x=x, y=y, grund=why)
 
@@ -613,13 +615,36 @@ class Engine:
         zwanzigmal auf dieselbe Stelle zu haemmern bringt nichts und sieht
         ausserdem nach Maschine aus. Wiederholtes Abholen an gleicher Stelle
         bleibt erlaubt, weil sich dort jedes Mal etwas aendert.
+
+        Es werden die letzten zwoelf Stellen geprueft, nicht nur die vorige:
+        Aufgaben tippen reihum mehrere Ziele an, da ist der unmittelbar
+        vorherige Tipp nie derselbe Punkt.
         """
-        if screen is None or self._letzter_tipp is None:
+        if screen is None or not self._tipp_verlauf:
             return False
-        lx, ly, altes_bild = self._letzter_tipp
-        if abs(lx - x) > 25 or abs(ly - y) > 25:
-            return False
-        return screen.diff_ratio(altes_bild) < 0.01
+        # Nur den juengsten Tipp an dieser Stelle vergleichen: kehrt der
+        # Bildschirm spaeter in einen frueheren Zustand zurueck - etwa weil nach
+        # dem Abholen die naechste, gleich aussehende Zeile nachrueckt -, soll
+        # wieder getippt werden duerfen.
+        for lx, ly, alt in reversed(self._tipp_verlauf):
+            if abs(lx - x) > 25 or abs(ly - y) > 25:
+                continue
+            jetzt = self._umgebung(screen, lx, ly)
+            unterschiede = sum(1 for a, b in zip(alt, jetzt) if abs(a - b) > 12)
+            return unterschiede <= 2  # an dieser Stelle hat sich nichts getan
+        return False
+
+    @staticmethod
+    def _umgebung(screen: Image, x: int, y: int) -> bytes:
+        """Fingerabdruck nur der Umgebung des Tipps.
+
+        Ein Fingerabdruck des ganzen Bildschirms wuerde eine einzelne
+        verschwundene Blase kaum bemerken - sie ist ein Promille der Flaeche.
+        Direkt um die Tipp-Stelle herum ist die Aenderung dagegen deutlich.
+        """
+        kante = max(48, screen.width // 12)
+        ausschnitt = screen.crop(x - kante // 2, y - kante // 2, kante, kante)
+        return bytes(ausschnitt.to_gray().box_scale(8, 8).data)
 
     def _tabu_treffer(self, x: int, y: int, screen: Image):
         """Liegt der Punkt in einer gesperrten Zone (Shop, Diamanten, Angebote)?"""

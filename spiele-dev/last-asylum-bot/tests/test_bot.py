@@ -514,7 +514,7 @@ class TestWirkungsloseTipps(unittest.TestCase):
     """Zweimal dieselbe Stelle antippen, ohne dass sich etwas ändert, ist sinnlos."""
 
     def test_gleicher_tipp_auf_unveraendertem_bild_wird_uebersprungen(self):
-        screen = noise(200, 400, 95)
+        screen = Image.new(200, 400, (30, 30, 40))
         cfg = Config.from_dict(
             {"base_width": 200,
              "rules": [{"name": "r", "match": {"always": True},
@@ -527,19 +527,47 @@ class TestWirkungsloseTipps(unittest.TestCase):
         self.assertEqual(len(dev.taps), 1, f"nur der erste Tipp zählt, war {dev.taps}")
         self.assertGreaterEqual(eng.stats.get("wirkungslos", 0), 1)
 
+    def flaeche(self, hell: bool) -> Image:
+        """Bild mit einem klaren Fleck an der Tipp-Stelle – wie eine Blase,
+        die verschwindet. Rauschen taugt nicht: es mittelt sich beim
+        Verkleinern zu Grau und sähe überall gleich aus."""
+        img = Image.new(200, 400, (30, 30, 40))
+        if hell:
+            for j in range(60):
+                for i in range(60):
+                    p = ((170 + j) * 200 + (70 + i)) * 3
+                    img.data[p : p + 3] = bytes((240, 240, 240))
+        img._gray = None
+        return img
+
     def test_bei_veraendertem_bild_wird_weiter_getippt(self):
         cfg = Config.from_dict(
             {"base_width": 200,
              "rules": [{"name": "r", "match": {"always": True},
                         "do": [{"tap": [0.5, 0.5]}]}]}
         )
-        # Zwei deutlich verschiedene Bilder im Wechsel – wie beim Abholen,
-        # wo nach jedem Tipp der nächste Eintrag nachrückt.
-        dev = FakeDevice([noise(200, 400, 96), noise(200, 400, 97)], loop=True)
+        # Fleck erscheint und verschwindet – wie beim Abholen, wo nach jedem
+        # Tipp der nächste Eintrag nachrückt.
+        dev = FakeDevice([self.flaeche(True), self.flaeche(False)], loop=True)
         eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=4)
         for _ in range(4):
             eng.step()
         self.assertEqual(len(dev.taps), 4)
+
+
+    def test_auch_bei_abwechselnden_zielen(self):
+        """Drei Ziele reihum – der vorherige Tipp ist nie derselbe Punkt."""
+        screen = Image.new(300, 600, (30, 30, 40))
+        cfg = Config.from_dict(
+            {"base_width": 300,
+             "rules": [{"name": "r", "match": {"always": True},
+                        "do": [{"tap": [0.2, 0.2]}, {"tap": [0.5, 0.5]}, {"tap": [0.8, 0.8]}]}]}
+        )
+        dev = FakeDevice([screen], loop=True)
+        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=5)
+        for _ in range(5):
+            eng.step()
+        self.assertEqual(len(dev.taps), 3, f"jede Stelle nur einmal, war {dev.taps}")
 
 
 class TestKonfigurationGepflegt(unittest.TestCase):
@@ -556,6 +584,22 @@ class TestKonfigurationGepflegt(unittest.TestCase):
         prios = [r.get("priority", 50) for r in self.lade()["rules"]]
         doppelt = {p for p in prios if prios.count(p) > 1}
         self.assertEqual(doppelt, set(), "doppelte Prioritäten machen die Reihenfolge zufällig")
+
+
+class TestTabuZonenTreffenNichtDieBedienung(unittest.TestCase):
+    """Sperrzonen dürfen keine Bedienelemente verdecken."""
+
+    def test_zurueck_pfeil_liegt_in_keiner_tabu_zone(self):
+        cfg = Config.load(os.path.join(ROOT, "config", "last-asylum.json"))
+        # Der Zurück-Pfeil sitzt oben links; die Regeln suchen ihn in
+        # [0, 0, 0.30, 0.15]. Genau dort darf nichts gesperrt sein.
+        for zone, name in zip(cfg.tabu_regionen, cfg.tabu_namen):
+            l, t, r, b = zone
+            ueberlappt = l < 0.30 and t < 0.15 and r > 0.0 and b > 0.0
+            self.assertFalse(
+                ueberlappt,
+                f"Zone '{name}' {zone} verdeckt den Zurück-Pfeil - der Bot käme nicht mehr zurück",
+            )
 
 
 class TestAusdauerSicherung(unittest.TestCase):
