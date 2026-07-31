@@ -520,12 +520,29 @@ class Engine:
         runden = int(spec.get("runden", 2))
         grenze = int(spec.get("hoechstens", 12))
         pause = spec.get("zwischen", [0.35, 0.6])
-        muster = spec["template"]
+        farbe = spec.get("farbknopf")
+        muster = spec.get("template") or f"farbe {farbe.get('rgb') if farbe else '?'}"
+        # Der Rand gehoert der festen Bedienung: rechts Allianz/Nachricht/
+        # Tasche, links die Symbolspalte. Was dort liegt, ist kein Ertrag.
+        rand_links, rand_rechts = spec.get("nur_x", [0.0, 1.0])
         getippt = 0
         for runde in range(runden):
             screen = self.capture()
             treffer = []
-            namen = self.cfg.template_gruppe(muster) if "*" in muster else [muster]
+            if farbe is not None:
+                treffer.extend(matcher.find_color_button(
+                    screen, farbe.get("rgb", (195, 200, 207)),
+                    tolerance=int(farbe.get("tolerance", 30)),
+                    min_w=float(farbe.get("min_w", 0.03)),
+                    max_w=float(farbe.get("max_w", 0.12)),
+                    min_h=float(farbe.get("min_h", 0.012)),
+                    max_h=float(farbe.get("max_h", 0.05)),
+                    region=spec.get("region"),
+                    min_fuellung=float(farbe.get("min_fuellung", 0.45)),
+                    limit=grenze,
+                ))
+            namen = ([] if farbe is not None else
+                     (self.cfg.template_gruppe(muster) if "*" in muster else [muster]))
             for name in namen:
                 tpl = self.cfg.template(name, optional=True)
                 if tpl is None:
@@ -546,6 +563,9 @@ class Engine:
             gesetzt: List[tuple] = []
             for hit in treffer[:grenze]:
                 cx, cy = hit.center
+                rx = cx / float(screen.width)
+                if not (rand_links <= rx <= rand_rechts):
+                    continue
                 # Zwei Vorlagen finden oft dieselbe Blase; doppelt tippen bringt nichts.
                 if any(abs(cx - px) < hit.w and abs(cy - py) < hit.h for px, py in gesetzt):
                     continue

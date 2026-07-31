@@ -1742,6 +1742,49 @@ class TestSpielImVordergrund(unittest.TestCase):
         self.assertEqual(Kaputt.gestartet, 0)
 
 
+class TestBlasenOhneVorlage(unittest.TestCase):
+    """Ertrags-Blasen an der Form einsammeln, ohne Vorlage.
+
+    Die Vorlagen stammen aus einer anderen Auflösung und treffen oft nicht.
+    Der helle Ring der Blasen ist dagegen immer derselbe.
+    """
+
+    def bau(self, stellen, rand_stellen=()):
+        screen = Image.new(600, 1000, (60, 90, 40))
+        for x, y in list(stellen) + list(rand_stellen):
+            paste(screen, Image.new(50, 30, (196, 201, 208)), x, y)
+        cfg = Config.from_dict({"base_width": 600})
+        dev = FakeDevice([screen], loop=True)
+        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=6)
+        return dev, eng
+
+    def spec(self):
+        return {"tap_alle": {
+            "farbknopf": {"rgb": [195, 200, 207], "tolerance": 30,
+                          "min_w": 0.03, "max_w": 0.12,
+                          "min_h": 0.012, "max_h": 0.05, "min_fuellung": 0.45},
+            "region": [0.0, 0.10, 1.0, 0.88], "nur_x": [0.13, 0.85], "runden": 1}}
+
+    def test_alle_blasen_werden_getippt(self):
+        stellen = [(150, 200), (300, 400), (250, 700)]
+        dev, eng = self.bau(stellen)
+        eng.run_actions([self.spec()])
+        self.assertEqual(len(dev.taps), 3, f"drei Blasen, {len(dev.taps)} Tipps")
+
+    def test_rand_bleibt_unangetastet(self):
+        """Rechts liegen Allianz/Nachricht/Tasche - gleicher Ring, kein Ertrag."""
+        dev, eng = self.bau([(300, 400)], rand_stellen=[(545, 500), (10, 600)])
+        eng.run_actions([self.spec()])
+        self.assertEqual(len(dev.taps), 1, "nur die Blase in der Mitte zaehlt")
+        x, _ = dev.taps[0]
+        self.assertTrue(0.13 * 600 <= x <= 0.85 * 600)
+
+    def test_ohne_blasen_kein_tipp(self):
+        dev, eng = self.bau([])
+        eng.run_actions([self.spec()])
+        self.assertEqual(dev.taps, [])
+
+
 class TestZurueckPfeil(unittest.TestCase):
     """Die Android-Zurück-Taste ist in diesem Spiel gefährlich.
 

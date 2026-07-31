@@ -775,6 +775,77 @@
       ]
     },
     {
+      "name": "blasen-einsammeln-ohne-vorlage",
+      "priority": 142,
+      "cooldown": 5,
+      "_zweck": "Ertrags-Blasen an ihrem hellgrauen Ring erkennen statt an einer Vorlage. Damit sammelt der Bot in jeder Ansicht alles ein, was da ist - auch Sorten, die nie jemand geschnitten hat, und ohne dass die Groesse stimmen muss. Der linke und rechte Rand bleiben aus: dort liegt die feste Bedienung (Allianz, Nachricht, Tasche rechts, Symbolspalte links), die denselben hellen Ring hat.",
+      "match": {
+        "farbknopf": {
+          "rgb": [
+            195,
+            200,
+            207
+          ],
+          "tolerance": 30,
+          "min_w": 0.03,
+          "max_w": 0.12,
+          "min_h": 0.012,
+          "max_h": 0.05,
+          "min_fuellung": 0.45,
+          "region": [
+            0.13,
+            0.1,
+            0.85,
+            0.88
+          ]
+        }
+      },
+      "do": [
+        {
+          "log": "Ertrags-Blasen eingesammelt (ueber die Form, ohne Vorlage)"
+        },
+        {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.45
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.13,
+              0.85
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
+          }
+        },
+        {
+          "sleep": [
+            0.5,
+            0.9
+          ]
+        }
+      ]
+    },
+    {
       "name": "gelernte-objekte-einsammeln",
       "priority": 139,
       "cooldown": 6.0,
@@ -3491,6 +3562,39 @@
           }
         },
         {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.45
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.13,
+              0.85
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
+          }
+        },
+        {
           "drag": [
             0.2,
             0.45,
@@ -3534,6 +3638,39 @@
             "template": "gelernt/blasen/*.png",
             "optional": true,
             "threshold": 0.9
+          }
+        },
+        {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.45
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.13,
+              0.85
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
           }
         },
         {
@@ -3583,6 +3720,39 @@
           }
         },
         {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.45
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.13,
+              0.85
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
+          }
+        },
+        {
           "drag": [
             0.25,
             0.3,
@@ -3626,6 +3796,39 @@
             "template": "gelernt/blasen/*.png",
             "optional": true,
             "threshold": 0.9
+          }
+        },
+        {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.45
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.13,
+              0.85
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
           }
         },
         {
@@ -3675,6 +3878,39 @@
           }
         },
         {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.45
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.13,
+              0.85
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
+          }
+        },
+        {
           "drag": [
             0.8,
             0.45,
@@ -3718,6 +3954,39 @@
             "template": "gelernt/blasen/*.png",
             "optional": true,
             "threshold": 0.9
+          }
+        },
+        {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.45
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.13,
+              0.85
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
           }
         },
         {
@@ -3767,6 +4036,39 @@
           }
         },
         {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.45
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.13,
+              0.85
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
+          }
+        },
+        {
           "drag": [
             0.5,
             0.3,
@@ -3813,6 +4115,39 @@
           }
         },
         {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.45
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.13,
+              0.85
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
+          }
+        },
+        {
           "drag": [
             0.5,
             0.65,
@@ -3856,6 +4191,39 @@
             "template": "gelernt/blasen/*.png",
             "optional": true,
             "threshold": 0.9
+          }
+        },
+        {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.45
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.13,
+              0.85
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
           }
         }
       ]
@@ -5686,6 +6054,39 @@
           }
         },
         {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.45
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.13,
+              0.85
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
+          }
+        },
+        {
           "drag": [
             0.2,
             0.45,
@@ -5729,6 +6130,39 @@
             "template": "gelernt/blasen/*.png",
             "optional": true,
             "threshold": 0.9
+          }
+        },
+        {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.45
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.13,
+              0.85
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
           }
         },
         {
@@ -5778,6 +6212,39 @@
           }
         },
         {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.45
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.13,
+              0.85
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
+          }
+        },
+        {
           "drag": [
             0.25,
             0.3,
@@ -5821,6 +6288,39 @@
             "template": "gelernt/blasen/*.png",
             "optional": true,
             "threshold": 0.9
+          }
+        },
+        {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.45
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.13,
+              0.85
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
           }
         },
         {
@@ -5870,6 +6370,39 @@
           }
         },
         {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.45
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.13,
+              0.85
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
+          }
+        },
+        {
           "drag": [
             0.8,
             0.45,
@@ -5913,6 +6446,39 @@
             "template": "gelernt/blasen/*.png",
             "optional": true,
             "threshold": 0.9
+          }
+        },
+        {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.45
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.13,
+              0.85
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
           }
         },
         {
@@ -5962,6 +6528,39 @@
           }
         },
         {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.45
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.13,
+              0.85
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
+          }
+        },
+        {
           "drag": [
             0.5,
             0.3,
@@ -6008,6 +6607,39 @@
           }
         },
         {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.45
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.13,
+              0.85
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
+          }
+        },
+        {
           "drag": [
             0.5,
             0.65,
@@ -6051,6 +6683,39 @@
             "template": "gelernt/blasen/*.png",
             "optional": true,
             "threshold": 0.9
+          }
+        },
+        {
+          "tap_alle": {
+            "farbknopf": {
+              "rgb": [
+                195,
+                200,
+                207
+              ],
+              "tolerance": 30,
+              "min_w": 0.03,
+              "max_w": 0.12,
+              "min_h": 0.012,
+              "max_h": 0.05,
+              "min_fuellung": 0.45
+            },
+            "region": [
+              0.0,
+              0.1,
+              1.0,
+              0.88
+            ],
+            "nur_x": [
+              0.13,
+              0.85
+            ],
+            "runden": 2,
+            "hoechstens": 14,
+            "zwischen": [
+              0.3,
+              0.5
+            ]
           }
         },
         {

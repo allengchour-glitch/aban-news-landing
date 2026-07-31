@@ -242,7 +242,12 @@ class Config:
                     check_actions(f"{where}>wenn>sonst", value.get("sonst", []))
                 elif key == "run_task" and value not in task_names:
                     problems.append(f"{where}: run_task '{value}' gibt es nicht")
-                elif key in ("tap_template", "wait_template", "tap_alle"):
+                elif key == "tap_alle":
+                    if isinstance(value, dict) and "farbknopf" in value:
+                        pass  # Farbsuche braucht keine Vorlage
+                    else:
+                        self._check_template(f"{where}>tap_alle", value, problems)
+                elif key in ("tap_template", "wait_template"):
                     self._check_template(f"{where}>{key}", value, problems)
                 elif key == "tap_first":
                     for cand in value.get("of", []):
