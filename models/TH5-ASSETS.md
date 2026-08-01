@@ -757,6 +757,49 @@ Die Texturen sind **im GLB eingebettet** (`mat_bild()`), das Spiel braucht keine
 >   gekachelt wird über echte UVs (`uv_kacheln()` skaliert sie mit den Objektmaßen).
 
 ---
+
+## 🎡 Freizeitpark-Quartier in `traumhaus.html` — fertiger Einbau
+
+**Das Quartier gibt es schon** (`viertel({name:"Freizeitpark", x:-190, z:158, w:170, d:92 …})`,
+6 th13-Bauten) und daneben eine bereits in Ego-Perspektive fahrbare Achterbahn bei z = 234.
+Es fehlen nur die neuen **th32**-Fahrgeschäfte — und die stünden dort **still**, weil der
+Bau-Helfer `bau()` die glTF-Animationen verwirft. Zwei kleine Änderungen, beide unten:
+
+**1) Die drei animierten Fahrgeschäfte in die `bauten:`-Liste des Freizeitparks:**
+```js
+{file:"th32_kettenkarussell.glb", h:15,  w:19, d:19, tuer:false},
+{file:"th32_teetassen.glb",       h:8.6, w:17, d:17, tuer:false},
+{file:"th32_piratenschiff.glb",   h:13,  w:20, d:13, tuer:false},
+{file:"th32_parkeingang.glb",     h:14,  w:28, d:10, tuer:false},
+```
+
+**2) Damit sie sich auch drehen — in `bau()` (bei `GL.load`) den Mixer anlegen und in der
+Hauptschleife takten.** Ohne das lädt das Modell zwar, bleibt aber stehen:
+```js
+// in bau(), direkt nach  var root=g.scene;
+if(g.animations&&g.animations.length){
+  var mx=new THREE.AnimationMixer(root);
+  g.animations.forEach(function(a){mx.clipAction(a).play();});
+  (window._glbMixer||(window._glbMixer=[])).push(mx);
+}
+// in der Hauptschleife, neben den Bewohner-Mixern:
+if(window._glbMixer)for(var i=0;i<window._glbMixer.length;i++)window._glbMixer[i].update(dt);
+```
+
+### Quartier oder Portal? — **beides, aber getrennt**
+Das *Quartier* ist der **Ort** (Kulisse, Landmarke, Lieferziel — steht schon in `LIEFERZIELE`).
+Das *Koop-Spiel* `neon-park.html` gehört **hinter ein Portal**, nicht in die Datei hinein:
+
+* **Andere Netz-Session.** traumhaus nutzt `MP.host("traumhaus")`, der Park `MP.host("park")`.
+  Eine gemeinsame Sitzung hiesse, die komplette Park-Logik in traumhaus' Netzcode umzubauen.
+* **Andere Steuerung.** Orbit-Bau-Kamera gegen Ego-Perspektive mit Pointer-Lock.
+* **Grösse.** `traumhaus.html` hat bereits ~5900 Zeilen; ein zweites Spiel darin ist eine
+  Wartungsfalle.
+* **Der Park spricht das Stations-Protokoll schon** (`?station=1`, `stationPost("mini-back")`,
+  `{t:"stationDone",score}`) — genau dafür gebaut. Ein Portal ist damit ein Schild plus
+  Näherungs-Trigger, kein Umbau.
+
+---
 ## 1w. Charge 26 — BERGWELT (`models/th26_*.glb`)
 
 Ein eigenes Biom für die Openworld.
