@@ -2999,6 +2999,73 @@ setTimeout(function baueGebaeude(){
       g.position.set(-68.5,0,-84);scene.add(g);
       addSolid(-68.5,-84,5.2,5.2,null); /* 🛣️ war -70.5 → ragte in die West-Laengsstrasse (-83..-73) */
     })();
+    /* ⛪ KIRCHHOF: Friedhof suedlich der Kathedrale, Zaun um das ganze Geviert.
+       Das Geviert liegt bewusst bei x = -73 … -45: die West-Laengsstrasse belegt
+       x = -83 … -73, ein Zaun weiter westlich stuende auf der Fahrbahn.
+       Der Zaun besteht aus `th33_parkzaun_modul` (Raster 4,00 m, Pfosten am linken
+       Modulende — genau dafuer gebaut). Zwei Module bleiben weg: Haupttor im Norden
+       zum Kirchplatz, Nebentor im Westen. */
+    (function kirchhof(){
+      /* Geviert nach einer Vermessung der Umgebung: suedlich der Kathedrale steht
+         bei (-65,-91) ein 29 m hoher Turm, weiter sued-westlich weitere Hochhaeuser
+         ((-64,-116) h=37, (-50,-110) h=27). Der erste Entwurf legte den Friedhof
+         genau ueber diesen Turm. Er sitzt jetzt in der gemessenen Luecke
+         x = -58 … -44, z = -98 … -88; der Zaun endet im Sueden bei z = -100. */
+      var W=-73,O=-45,N=-68,S=-100;
+      function zaunReihe(x0,z0,n,achse,luecke){
+        for(var i=0;i<n;i++){
+          if(luecke&&luecke.indexOf(i)>=0)continue;
+          if(achse==="x")bau("th33_parkzaun_modul",1.8,x0+2+i*4,0,z0,0,false,null,true);
+          else            bau("th33_parkzaun_modul",1.8,x0,0,z0+2+i*4,Math.PI/2,false,null,true);
+        }
+      }
+      zaunReihe(W,N,7,"x",[3]);        /* Nordseite, Haupttor in der Mitte */
+      zaunReihe(W,S,7,"x",null);       /* Suedseite */
+      zaunReihe(W,S,8,"z",[5]);        /* Westseite, Nebentor */
+      zaunReihe(O,S,8,"z",null);       /* Ostseite */
+      /* Torpfeiler am Haupttor */
+      [-61.5,-56.5].forEach(function(px){
+        var pf=new THREE.Mesh(new THREE.BoxGeometry(1.0,3.2,1.0),betMat(0xcfc7b6,0.9));
+        pf.position.set(px,1.6,N);pf.castShadow=true;scene.add(pf);
+        var kn=new THREE.Mesh(new THREE.ConeGeometry(0.62,1.0,6),stdMat(0xc8a84a,0.35));
+        kn.position.set(px,3.7,N);scene.add(kn);});
+
+      /* Rasenflaeche des Friedhofs — auf dem Pflaster liegt sonst ein Steinfriedhof */
+      var FX=-51,FZ=-93;                 /* Mitte der gemessenen Luecke */
+      var rasen=new THREE.Mesh(new THREE.PlaneGeometry(14,10),
+        new THREE.MeshStandardMaterial({color:0x5f8a4a,roughness:1}));
+      rasen.rotation.x=-Math.PI/2;rasen.position.set(FX,0.004,FZ);
+      rasen.receiveShadow=true;scene.add(rasen);
+      /* Kiesweg in der Mittelachse */
+      var weg=new THREE.Mesh(new THREE.PlaneGeometry(1.8,10),betMat(0xc4bda8,0.95));
+      weg.rotation.x=-Math.PI/2;weg.position.set(FX,0.008,FZ);weg.receiveShadow=true;scene.add(weg);
+
+      /* Graeber in Reihen, leicht versetzt — ein exaktes Gitter sieht aus wie ein Parkplatz */
+      var GR=["gy_gravestone_round.glb","gy_gravestone_cross.glb","gy_gravestone_broken.glb"];
+      var r9=0;
+      function rnd(){r9=(r9*1103515245+12345)&0x7fffffff;return r9/0x7fffffff;}
+      for(var reihe=0;reihe<3;reihe++){
+        for(var k=0;k<4;k++){
+          var seite=k<2?-1:1;
+          var gx=FX+seite*(1.9+(k%2)*2.6)+(rnd()-0.5)*0.5;
+          var gz=FZ-3.2+reihe*3.0+(rnd()-0.5)*0.5;
+          bau(GR[(reihe+k)%3],1.1,gx,0,gz,(rnd()-0.5)*0.5,false,null,true);
+        }
+      }
+      bau("gy_crypt.glb",3.0,FX-5.4,0,FZ+2.6,Math.PI/2,false,null,true);
+      bau("gy_obelisk.glb",4.0,FX+5.6,0,FZ+2.4,0,false,null,true);
+      bau("gy_cross.glb",3.4,FX,0,FZ-4.4,0,false,null,true);
+      [[FX-6.2,FZ-4.6],[FX+6.2,FZ-4.6]].forEach(function(t){
+        bau("gy_dead_tree.glb",5.0,t[0],0,t[1],rnd()*3,false,null,true);});
+      [[FX-3.4,FZ+4.2],[FX+3.4,FZ+4.2]].forEach(function(l){
+        bau("gy_lantern.glb",2.4,l[0],0,l[1],0,false,null,true);});
+      /* Hecke als Fassung zum Kirchplatz hin */
+      for(var h9=0;h9<4;h9++)
+        bau("th6_hecke_modul.glb",1.0,FX-6+h9*4,0,FZ+5.6,0,false,null,true);
+      /* Baenke am Kiesweg */
+      [[FX-2.6,FZ+1.2,Math.PI/2],[FX+2.6,FZ+1.2,-Math.PI/2]].forEach(function(b){
+        bau("th5_parkbank.glb",0.9,b[0],0,b[1],b[2],false,null,true);});
+    })();
     (function kircheDetails(){ /* ⛪ User: "mehr details katedrahle" */
       var stM=betMat(0xd8d0be,0.88),goM=stdMat(0xc8a84a,0.35);
       /* Vorplatz + Freitreppe vor dem Portal (-x-Seite) */
