@@ -1191,9 +1191,27 @@ var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_d
       tr(2*(RX-5),2.2,0,z9,0.06);       // Mittelteil zwischen den Querstrassen
       tr(LR,2.2,-(RB+LR/2),z9,0.06);    // West-Rand
       tr(LR,2.2,(RB+LR/2),z9,0.06);});});// Ost-Rand
-  [RX,-RX].forEach(function(xc){ // Querstrassen: nur zwischen den Hauptstrassen (endet an deren Kante)
-    tr(2.2,2*SZ9+14,xc-6.1,0,0.05);
-    tr(2.2,2*SZ9+14,xc+6.1,0,0.05);});
+  [RX,-RX].forEach(function(xc){ // Querstrassen: enden EXAKT an der Fahrbahnkante der
+    // Hauptstrasse. Vorher 2*SZ9+14 = 106 -> Ende bei +-53, die Hauptstrasse (16 breit,
+    // Mitte z=+-58) beginnt aber schon bei 50: der Gehweg ragte 3 m in die Kreuzung.
+    tr(2.2,2*(SZ9+12)-16,xc-6.1,0,0.05);
+    tr(2.2,2*(SZ9+12)-16,xc+6.1,0,0.05);});
+  /* 🛣️ Kreuzungsflaechen: eine eigene Platte knapp UEBER den beiden Fahrbahnen deckt
+     die Naht ab (zwei gleich hohe Ebenen flimmern gegeneinander), und Haltelinien
+     geben der leeren Flaeche eine Ordnung. */
+  (function kreuzungen(){
+    var kMat=stdMat(0x3f3f47,0.94);
+    var wMat=stdMat(0xd8d8cc,0.75);wMat.envMapIntensity=0.12;
+    [RX,-RX].forEach(function(xc){ [SZ9+12,-(SZ9+12)].forEach(function(zc){
+      var k=new THREE.Mesh(new THREE.PlaneGeometry(10,16),kMat);
+      k.rotation.x=-Math.PI/2;k.position.set(xc,0.002,zc);k.receiveShadow=true;scene.add(k);
+      /* Haltelinien: quer zur jeweiligen Zufahrt, knapp vor der Kreuzung */
+      [[xc-5.6,zc,0.3,7.2],[xc+5.6,zc,0.3,7.2],      /* Ost/West-Zufahrt (Hauptstrasse) */
+       [xc,zc-8.6,7.2,0.3],[xc,zc+8.6,7.2,0.3]].forEach(function(h){
+        var l=new THREE.Mesh(new THREE.PlaneGeometry(h[2],h[3]),wMat);
+        l.rotation.x=-Math.PI/2;l.position.set(h[0],0.008,h[1]);scene.add(l);});
+    });});
+  })();
   // Bordsteine an den Fahrbahnkanten + weicher Erdstreifen zwischen Gehweg und Rasen
   var bordM=betMat(0xbfbcb2,0.85);
   if(!_texErde)_texErde=_strukTex("erde");
