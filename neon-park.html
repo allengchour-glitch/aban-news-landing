@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="aban-nav" content="off">
+<title>🎢 Neon-Park — Freizeitpark-Koop aus der Ego-Perspektive | aban news</title>
+<meta name="description" content="Lauft zu zweit durch euren eigenen Freizeitpark: Kettenflieger, Teetassen, Piratenschiff und Achterbahn laufen nur, wenn BEIDE gleichzeitig am Bedienpult stehen. Online-Koop, erste Person, Handy und Desktop.">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{width:100%;height:100%;overflow:hidden;overscroll-behavior:none;background:#0d1524;
+    font-family:system-ui,-apple-system,sans-serif;color:#eaf2ff;user-select:none;-webkit-user-select:none;touch-action:none}
+  canvas{display:block;touch-action:none}
+  #hud{position:fixed;inset:0;pointer-events:none;z-index:5}
+  #top{position:absolute;top:calc(8px + env(safe-area-inset-top));left:12px;display:flex;gap:8px;font-weight:900;font-size:.86rem}
+  .pill{background:rgba(12,22,38,.78);border:1px solid rgba(120,200,255,.35);border-radius:12px;padding:3px 10px;color:#bfe6ff}
+  #rides{position:absolute;top:calc(8px + env(safe-area-inset-top));right:12px;display:flex;flex-direction:column;gap:5px;align-items:flex-end}
+  .ride{background:rgba(12,22,38,.72);border:1px solid rgba(120,200,255,.25);border-radius:10px;padding:2px 9px;font-size:.76rem;font-weight:800;color:#9fc4e0}
+  .ride.on{border-color:rgba(120,255,190,.7);color:#8dffc8;background:rgba(14,42,32,.8)}
+  #tag{position:absolute;top:calc(8px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);
+    background:rgba(12,22,38,.78);border:1px solid rgba(255,200,110,.4);border-radius:12px;padding:3px 12px;
+    font-weight:900;font-size:.8rem;color:#ffd98a;white-space:nowrap;max-width:64vw;overflow:hidden;text-overflow:ellipsis}
+  #ann{position:absolute;top:24%;left:0;right:0;text-align:center;font-weight:900;font-size:1.5rem;color:#ffd166;
+    text-shadow:0 2px 0 #000,0 4px 16px rgba(0,0,0,.7);opacity:0;transition:opacity .35s;padding:0 14px}
+  #hint{position:absolute;bottom:calc(160px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);
+    background:rgba(12,22,38,.85);border-radius:12px;padding:6px 14px;font-weight:800;font-size:.84rem;color:#cfe8ff;
+    opacity:0;transition:opacity .25s;max-width:92vw;text-align:center}
+  #cross{position:absolute;left:50%;top:50%;width:16px;height:16px;margin:-8px 0 0 -8px;opacity:.75}
+  #cross:before,#cross:after{content:"";position:absolute;background:#dff0ff;box-shadow:0 0 4px #000}
+  #cross:before{left:7px;top:0;width:2px;height:16px}
+  #cross:after{top:7px;left:0;height:2px;width:16px}
+  #bar{position:absolute;left:50%;bottom:calc(120px + env(safe-area-inset-bottom));transform:translateX(-50%);
+    width:180px;height:9px;border-radius:6px;background:rgba(0,0,0,.5);border:1px solid rgba(140,220,255,.4);display:none}
+  #bar i{display:block;height:100%;width:0;border-radius:6px;background:linear-gradient(90deg,#7dffc8,#7de3ff)}
+  .btn{position:absolute;pointer-events:auto;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-size:1.4rem;font-weight:900;border:3px solid;background:rgba(12,24,40,.6);backdrop-filter:blur(3px);cursor:pointer}
+  .btn:active,.btn.pressed{transform:scale(.9);filter:brightness(1.4)}
+  #bAct{right:calc(22px + env(safe-area-inset-right));bottom:calc(38px + env(safe-area-inset-bottom));width:78px;height:78px;border-color:#ffce8a;color:#fff}
+  #bPing{right:calc(112px + env(safe-area-inset-right));bottom:calc(116px + env(safe-area-inset-bottom));width:60px;height:60px;border-color:#7dffc8;color:#d6fff0;font-size:1.2rem;display:none}
+  #stick{position:absolute;left:calc(20px + env(safe-area-inset-left));bottom:calc(32px + env(safe-area-inset-bottom));
+    width:118px;height:118px;border-radius:50%;border:2px solid rgba(140,220,255,.3);background:rgba(14,28,46,.35);pointer-events:auto;touch-action:none}
+  #knob{position:absolute;left:50%;top:50%;width:50px;height:50px;border-radius:50%;background:rgba(150,220,255,.45);transform:translate(-50%,-50%)}
+  #ov{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;background:radial-gradient(ellipse at 50% 28%,#1b3350 0%,#0d1524 72%);padding:18px;overflow:auto}
+  #ov h1{font-size:clamp(1.7rem,6vw,2.7rem);color:#7de3ff;text-shadow:0 0 24px rgba(125,227,255,.5);letter-spacing:.04em}
+  #ov p{color:#a8c8e0;max-width:480px;margin:10px 0;line-height:1.5;font-size:.93rem}
+  #ov .big{border:0;cursor:pointer;font-weight:900;font-size:1.03rem;padding:13px 30px;border-radius:40px;color:#0a1c2a;
+    background:linear-gradient(92deg,#7de3ff,#7dffc8);box-shadow:0 10px 34px rgba(125,227,255,.32);pointer-events:auto;margin:4px}
+  #ov .ghost{border:2px solid #2a5a7a;background:rgba(14,28,46,.6);color:#8ad0ff;font-weight:800;padding:10px 22px;border-radius:40px;cursor:pointer;margin:4px}
+  #ov .chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:8px 0 12px}
+  #ov .chip{background:rgba(255,255,255,.06);border:1px solid rgba(125,227,255,.28);border-radius:12px;padding:5px 12px;font-size:.75rem;font-weight:700;color:#bfe0ee}
+  #st{font-size:.85rem;font-weight:800;color:#8ad0ff;min-height:1.2em;margin-top:6px}
+  #sBack{position:fixed;top:calc(8px + env(safe-area-inset-top));right:12px;z-index:31;border:1px solid rgba(125,227,255,.45);
+    background:rgba(16,24,48,.85);color:#9fdcff;border-radius:12px;padding:7px 13px;font-weight:800;cursor:pointer;display:none}
+  #lade{position:fixed;inset:0;z-index:30;display:flex;align-items:center;justify-content:center;background:#0d1524;color:#7de3ff;font-weight:900}
+</style>
+</head>
+<body>
+<button id="sBack">← Wildnis</button>
+<div id="lade">Park wird aufgebaut… <span id="ladeN">0</span>%</div>
+<div id="hud">
+  <div id="top"><span class="pill" id="pTick">🎟️ 0</span><span class="pill" id="pClock">⏱️ 0s</span></div>
+  <div id="tag">🎢 Neon-Park</div>
+  <div id="rides"></div>
+  <div id="ann"></div><div id="hint"></div>
+  <div id="cross"></div>
+  <div id="bar"><i></i></div>
+  <div class="btn" id="bAct">✋</div>
+  <div class="btn" id="bPing">📣</div>
+  <div id="stick"><div id="knob"></div></div>
+</div>
+<div id="ov">
+  <h1>🎢 NEON-PARK</h1>
+  <p>Euer Freizeitpark steht — aber <b>nichts läuft</b>. Jedes Fahrgeschäft hat <b>zwei Bedienpulte</b>.
+     Nur wenn <b>beide gleichzeitig</b> darauf stehen, startet es. Erste Person, echtes Online-Koop.</p>
+  <div class="chips"><span class="chip">🎠 Kettenflieger</span><span class="chip">☕ Teetassen</span>
+    <span class="chip">🏴‍☠️ Piratenschiff</span><span class="chip">🎢 Achterbahn zum Mitfahren</span></div>
+  <button class="big" id="bCoop" style="background:linear-gradient(92deg,#ffb066,#7de3ff)">⚡ Online zu zweit — 1 Tipp</button>
+  <button class="big" id="bSolo">🧍 Allein erkunden ▶</button>
+  <details style="margin:6px auto;max-width:340px;color:#bfe9ff;font-size:.9rem">
+    <summary style="cursor:pointer;opacity:.85">oder gezielt mit einem Freund ▾</summary>
+    <div style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:8px">
+      <button class="ghost" id="bHost" style="margin:0">🏠 Raum erstellen</button>
+      <input id="iCode" maxlength="4" placeholder="CODE" autocomplete="off"
+        style="width:80px;text-align:center;text-transform:uppercase;letter-spacing:3px;font-weight:800;border-radius:8px;border:1px solid #4a6a8a;background:rgba(255,255,255,.9);color:#123;padding:6px">
+      <button class="ghost" id="bJoin" style="margin:0">🚪 Beitreten</button>
+    </div></details>
+  <div id="st"></div>
+  <button class="ghost" id="bCancel" style="display:none">✖ Suche abbrechen · allein starten</button>
+</div>
+<script src="/js/vendor/three.min.js"></script>
+<script src="/js/vendor/GLTFLoader.js"></script>
+<script src="/js/vendor/peerjs.min.js"></script>
+<script src="/js/mp.js"></script>
+<script>
+(function(){
+"use strict";
+/* Als Station im Wildnis-Hub eingebettet? Dann Rueckweg + Punktemeldung.
+   Direktaufruf bleibt ausdruecklich erlaubt — das Spiel soll auch allein spielbar sein. */
+var STATION=window.parent!==window&&/[?&]station=1/.test(location.search);
+function stationPost(m){try{window.parent.postMessage(typeof m==="string"?m:JSON.stringify(m),"*");}catch(e){}}
+if(STATION){var _sb=document.getElementById("sBack");_sb.style.display="block";
+  _sb.onclick=function(){stationPost("mini-back");};}
+var W=innerWidth,H=innerHeight;
+var scene=new THREE.Scene();
+scene.background=new THREE.Color(0x8fc4e8);
+scene.fog=new THREE.Fog(0x8fc4e8,70,190);
+var camera=new THREE.PerspectiveCamera(72,W/H,0.08,400);
+var renderer=new THREE.WebGLRenderer({antialias:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,1.6));
+renderer.setSize(W,H);renderer.outputEncoding=THREE.sRGBEncoding;
+document.body.appendChild(renderer.domElement);
+addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);});
+
+scene.add(new THREE.HemisphereLight(0xdff0ff,0x5a6a52,0.95));
+var sun=new THREE.DirectionalLight(0xfff2dd,0.95);sun.position.set(40,70,-30);scene.add(sun);
+
+/* ---------- Boden + Wege ---------- */
+var tl=new THREE.TextureLoader();
+function tex(u,r){var t=tl.load(u);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(r,r);return t;}
+var gras=new THREE.Mesh(new THREE.PlaneGeometry(300,300),
+  new THREE.MeshLambertMaterial({map:tex("/textures/tex_grass.png",60)}));
+gras.rotation.x=-Math.PI/2;scene.add(gras);
+var wegMat=new THREE.MeshLambertMaterial({map:tex("/textures/th32/parkpflaster.png",1)});
+function weg(x,z,b,t,rot){var m=new THREE.Mesh(new THREE.PlaneGeometry(b,t),wegMat.clone());
+  m.material.map=tex("/textures/th32/parkpflaster.png",1);
+  m.material.map.repeat.set(b/2.6,t/2.6);
+  m.rotation.x=-Math.PI/2;m.rotation.z=rot||0;m.position.set(x,0.02,z);scene.add(m);return m;}
+weg(0,26,10,40);weg(0,0,64,10);weg(-26,-16,10,44);weg(26,-16,10,44);weg(0,-40,64,10);
+
+/* ---------- Modell-Laden ---------- */
+var LOADER=new THREE.GLTFLoader(),offen=0,fertig=0,mixer=[];
+function laden(datei,x,z,drehung,cb){
+  offen++;
+  LOADER.load("/models/"+datei+".glb",function(g){
+    var o=g.scene;o.position.set(x,0,z);o.rotation.y=drehung||0;
+    o.traverse(function(n){if(n.isMesh){n.frustumCulled=true;}});
+    scene.add(o);
+    var mx=null;
+    if(g.animations&&g.animations.length){
+      mx=new THREE.AnimationMixer(o);
+      g.animations.forEach(function(a){var ac=mx.clipAction(a);ac.play();ac.paused=true;});
+      mixer.push(mx);
+    }
+    fertig++;fortschritt();if(cb)cb(o,mx);
+  },undefined,function(){fertig++;fortschritt();if(cb)cb(null,null);});
+}
+function fortschritt(){
+  var p=offen?Math.round(fertig/offen*100):100;
+  var el=document.getElementById("ladeN");if(el)el.textContent=p;
+  if(fertig>=offen&&offen>0)setTimeout(function(){var l=document.getElementById("lade");if(l)l.style.display="none";},250);
+}
+
+/* ---------- Fahrgeschaefte ----------
+   Jedes hat ZWEI Bedienpulte. Die Pulte sind Zustands-Felder, keine Ereignisse:
+   beide Clients rechnen aus den (ohnehin synchronisierten) Positionen dasselbe
+   Ergebnis aus. Das ist derselbe Ansatz wie bei den Druckplatten im Tempel und
+   braucht keine einzige Extra-Nachricht. */
+var RIDES=[
+ {id:"kette", name:"🎠 Kettenflieger", datei:"th32_kettenkarussell", x:-30, z:-14, rot:0,
+  pult:[[-30,-2.4],[-30,-25.6]], r:9.6, tempo:1.0},
+ {id:"tasse", name:"☕ Teetassen",      datei:"th32_teetassen",       x:30,  z:-14, rot:0,
+  pult:[[30,-4.6],[30,-23.4]], r:9.0, tempo:1.0},
+ {id:"schiff",name:"🏴‍☠️ Piratenschiff", datei:"th32_piratenschiff",   x:0,   z:-44, rot:0,
+  pult:[[-9.5,-44],[9.5,-44]], r:8.0, tempo:1.0},
+ {id:"bahn",  name:"🎢 Achterbahn",     datei:null,                    x:0,   z:44,  rot:0,
+  pult:[[-6.6,50.5],[6.6,50.5]], r:0, tempo:1.0}
+];
+var ridesEl=document.getElementById("rides");
+RIDES.forEach(function(r){
+  r.an=false;r.halten=0;
+  r.el=document.createElement("div");r.el.className="ride";r.el.textContent="○ "+r.name;
+  ridesEl.appendChild(r.el);
+});
+
+/* Bedienpult: Platte + Saeule + Lampe */
+var PULTE=[];
+function pult(x,z,ride){
+  var g=new THREE.Group();g.position.set(x,0,z);
+  var pl=new THREE.Mesh(new THREE.CylinderGeometry(1.25,1.35,0.14,20),
+    new THREE.MeshLambertMaterial({color:0x2a4a68,emissive:0x0d2438,emissiveIntensity:0.6}));
+  pl.position.y=0.07;g.add(pl);
+  var ri=new THREE.Mesh(new THREE.RingGeometry(1.28,1.5,24),
+    new THREE.MeshBasicMaterial({color:0xffc85a,transparent:true,opacity:0.55,side:THREE.DoubleSide}));
+  ri.rotation.x=-Math.PI/2;ri.position.y=0.16;g.add(ri);
+  var sa=new THREE.Mesh(new THREE.BoxGeometry(0.5,1.0,0.36),new THREE.MeshLambertMaterial({color:0x38506a}));
+  sa.position.set(0,0.62,-0.9);g.add(sa);
+  var la=new THREE.Mesh(new THREE.SphereGeometry(0.15,10,8),
+    new THREE.MeshBasicMaterial({color:0xff5a4a}));
+  la.position.set(0,1.2,-0.9);g.add(la);
+  scene.add(g);
+  var p={g:g,x:x,z:z,ring:ri,lampe:la,ride:ride,belegt:false};PULTE.push(p);return p;
+}
+RIDES.forEach(function(r){r.pulte=r.pult.map(function(p){return pult(p[0],p[1],r);});});
+
+/* ---------- Park bestuecken ---------- */
+laden("th32_parkeingang",0,62,Math.PI);
+laden("th32_kettenkarussell",-30,-14,0,function(o,mx){RIDES[0].obj=o;RIDES[0].mx=mx;});
+laden("th32_teetassen",30,-14,0,function(o,mx){RIDES[1].obj=o;RIDES[1].mx=mx;});
+laden("th32_piratenschiff",0,-44,0,function(o,mx){RIDES[2].obj=o;RIDES[2].mx=mx;});
+laden("th13_riesenrad",-34,26,Math.PI/2);
+laden("th13_festzelt",34,26,0);
+laden("th13_imbissbude",-12,14,0);
+laden("th13_losbude",12,14,0);
+laden("th13_zuckerwatte_stand",-12,-2,0);
+laden("th13_lichterbogen",0,52,0);
+laden("th5_parkbank",-7,20,0);laden("th5_parkbank",7,20,Math.PI);
+laden("th6_papierkorb",-9,20,0);laden("th6_papierkorb",9,20,0);
+laden("th5_laterne_altstadt",-14,32,0);laden("th5_laterne_altstadt",14,32,0);
+laden("th4_tanne",-44,10,0);laden("th4_tanne",44,10,0);
+laden("th4_tanne",-44,-34,0);laden("th4_tanne",44,-34,0);
+
+/* ---------- Achterbahn: Strecke + Zug ----------
+   Die Strecke ist eine analytische Ovalbahn; die GLB-Kacheln werden nur
+   DARAUF gesetzt. Andersherum (Kacheln legen, Pfad daraus ableiten) haengt die
+   ganze Fahrt an den Rundungsfehlern der Platzierung. */
+var BAHN={cx:0,cz:44,A:16,B:11,ZS:6.60};
+function bahnPunkt(t){                        /* t in [0,1) -> Punkt auf dem Oval */
+  var a=t*Math.PI*2;
+  return new THREE.Vector3(BAHN.cx+Math.cos(a)*BAHN.A,
+                           BAHN.ZS+Math.sin(a*2)*0.9,     /* sanfte Wellen */
+                           BAHN.cz+Math.sin(a)*BAHN.B);
+}
+(function bauBahn(){
+  var N=132,mS=new THREE.MeshLambertMaterial({color:0xf0d020}),
+      mR=new THREE.MeshLambertMaterial({color:0xdd2a26}),
+      mT=new THREE.MeshLambertMaterial({color:0x2f6fc8});
+  var vor=bahnPunkt(0);
+  for(var i=1;i<=N;i++){
+    var p=bahnPunkt(i/N),mid=vor.clone().lerp(p,0.5),d=p.clone().sub(vor),L=d.length();
+    var n=new THREE.Vector3(-d.z,0,d.x).normalize();
+    for(var s=-1;s<=1;s+=2){
+      var m=new THREE.Mesh(new THREE.BoxGeometry(L*1.06,0.15,0.15),mS);
+      m.position.copy(mid).addScaledVector(n,s*0.62);
+      m.lookAt(m.position.clone().add(d));m.rotateY(Math.PI/2);scene.add(m);
+    }
+    var r=new THREE.Mesh(new THREE.BoxGeometry(L*1.06,0.2,0.2),mS);
+    r.position.copy(mid).setY(mid.y-0.28);r.lookAt(r.position.clone().add(d));r.rotateY(Math.PI/2);scene.add(r);
+    if(i%3===0){var sw=new THREE.Mesh(new THREE.BoxGeometry(L*1.2,0.1,1.6),mR);
+      sw.position.copy(mid).setY(mid.y-0.14);sw.lookAt(sw.position.clone().add(d));sw.rotateY(Math.PI/2);scene.add(sw);}
+    if(i%11===0){                                        /* Stuetze */
+      var h=mid.y-0.5;
+      var st=new THREE.Mesh(new THREE.BoxGeometry(0.34,h,0.34),mT);
+      st.position.set(mid.x,h/2,mid.z);scene.add(st);
+      var fu=new THREE.Mesh(new THREE.BoxGeometry(1.6,0.2,1.6),new THREE.MeshLambertMaterial({color:0x6a6a70}));
+      fu.position.set(mid.x,0.1,mid.z);scene.add(fu);
+    }
+    vor=p;
+  }
+})();
+laden("th32_achterbahn_station",0,55,0);
+/* Zug: drei Wagen, laeuft auf dem analytischen Pfad */
+var ZUG=new THREE.Group(),ZUGT=0,ZUGAN=false,MITFAHRT=0;
+(function(){
+  for(var i=0;i<3;i++){
+    var w=new THREE.Group();
+    var k=new THREE.Mesh(new THREE.BoxGeometry(1.5,0.8,2.3),
+      new THREE.MeshLambertMaterial({color:i===0?0xff5a3c:0xffb020}));
+    k.position.y=0.55;w.add(k);
+    var n=new THREE.Mesh(new THREE.BoxGeometry(1.3,0.5,0.6),
+      new THREE.MeshLambertMaterial({color:0x2a3a4a}));
+    n.position.set(0,0.9,-0.5);w.add(n);
+    if(i===0){var f=new THREE.Mesh(new THREE.ConeGeometry(0.6,0.9,8),
+      new THREE.MeshLambertMaterial({color:0xff5a3c}));
+      f.rotation.x=-Math.PI/2;f.position.set(0,0.6,-1.5);w.add(f);}
+    w.userData.off=i*0.021;ZUG.add(w);
+  }
+  scene.add(ZUG);
+})();
+function setzeZug(){
+  ZUG.children.forEach(function(w){
+    var t=(ZUGT-w.userData.off+1)%1,p=bahnPunkt(t),q=bahnPunkt((t+0.004)%1);
+    w.position.copy(p);w.lookAt(q);
+  });
+}
+setzeZug();
+
+/* ---------- Spieler ---------- */
+var AUG=1.66;
+var ich={x:0,z:50,yaw:0,pitch:0};     /* yaw 0 = Blick nach -z, in den Park hinein */
+var partner={x:0,z:50,yaw:0,da:false};
+var pFig=new THREE.Group();
+(function(){
+  var koerper=new THREE.Mesh(new THREE.CylinderGeometry(0.3,0.36,1.1,12),
+    new THREE.MeshLambertMaterial({color:0x40b0ff,emissive:0x104060,emissiveIntensity:0.5}));
+  koerper.position.y=0.72;pFig.add(koerper);
+  var kopf=new THREE.Mesh(new THREE.SphereGeometry(0.26,14,10),
+    new THREE.MeshLambertMaterial({color:0xffe0c0}));
+  kopf.position.y=1.5;pFig.add(kopf);
+  var ring=new THREE.Mesh(new THREE.RingGeometry(0.5,0.62,20),
+    new THREE.MeshBasicMaterial({color:0x7dffc8,transparent:true,opacity:0.8,side:THREE.DoubleSide}));
+  ring.rotation.x=-Math.PI/2;ring.position.y=0.06;pFig.add(ring);
+  pFig.visible=false;scene.add(pFig);
+})();
+
+/* Hindernisse: Kreise, in die man nicht hineinlaufen kann */
+var BLOCK=[{x:-30,z:-14,r:8.4},{x:30,z:-14,r:7.8},{x:0,z:-44,r:6.2},
+           {x:-34,z:26,r:9.0},{x:34,z:26,r:8.0},{x:0,z:62,r:5.0}];
+function frei(x,z){
+  if(Math.abs(x)>70||Math.abs(z)>70)return false;
+  for(var i=0;i<BLOCK.length;i++){
+    var b=BLOCK[i];if((x-b.x)*(x-b.x)+(z-b.z)*(z-b.z)<b.r*b.r)return false;}
+  return true;
+}
+
+/* ---------- Eingabe ---------- */
+var keys={},mx=0,mz=0,lookDX=0,lookDY=0,laeuft=false,gewonnen=false,t0=0,tickets=0;
+addEventListener("keydown",function(e){keys[e.key.toLowerCase()]=1;
+  if(e.key===" "){e.preventDefault();}
+});
+addEventListener("keyup",function(e){keys[e.key.toLowerCase()]=0;});
+renderer.domElement.addEventListener("click",function(){
+  if(laeuft&&renderer.domElement.requestPointerLock)renderer.domElement.requestPointerLock();
+});
+addEventListener("mousemove",function(e){
+  if(document.pointerLockElement===renderer.domElement){
+    ich.yaw-=e.movementX*0.0022;ich.pitch-=e.movementY*0.0020;
+    ich.pitch=Math.max(-1.2,Math.min(1.2,ich.pitch));
+  }
+});
+/* Handy: linke Haelfte = Gehen, rechte Haelfte = Umsehen */
+(function(){
+  var st=document.getElementById("stick"),kn=document.getElementById("knob"),id=null,cx=0,cy=0;
+  var lid=null,lx=0,ly=0;
+  addEventListener("touchstart",function(e){
+    for(var i=0;i<e.changedTouches.length;i++){var t=e.changedTouches[i];
+      if(t.target&&t.target.closest&&t.target.closest(".btn,#ov,#sBack"))continue;
+      if(t.clientX<innerWidth*0.5&&id===null){
+        id=t.identifier;cx=t.clientX;cy=t.clientY;
+        st.style.left=(cx-59)+"px";st.style.top=(cy-59)+"px";st.style.bottom="auto";
+      }else if(lid===null){lid=t.identifier;lx=t.clientX;ly=t.clientY;}
+    }
+  },{passive:false});
+  addEventListener("touchmove",function(e){
+    for(var i=0;i<e.changedTouches.length;i++){var t=e.changedTouches[i];
+      if(t.identifier===id){
+        var dx=t.clientX-cx,dy=t.clientY-cy,l=Math.hypot(dx,dy),m=Math.min(l,44);
+        if(l>4){mx=dx/l*(m/44);mz=dy/l*(m/44);}else{mx=0;mz=0;}
+        kn.style.transform="translate(calc(-50% + "+(mx*32)+"px),calc(-50% + "+(mz*32)+"px))";
+        e.preventDefault();
+      }else if(t.identifier===lid){
+        ich.yaw-=(t.clientX-lx)*0.0055;ich.pitch-=(t.clientY-ly)*0.0045;
+        ich.pitch=Math.max(-1.2,Math.min(1.2,ich.pitch));
+        lx=t.clientX;ly=t.clientY;e.preventDefault();
+      }
+    }
+  },{passive:false});
+  function ende(e){for(var i=0;i<e.changedTouches.length;i++){
+    if(e.changedTouches[i].identifier===id){id=null;mx=0;mz=0;
+      st.style.left="";st.style.top="";st.style.bottom="";kn.style.transform="translate(-50%,-50%)";}
+    if(e.changedTouches[i].identifier===lid)lid=null;}}
+  addEventListener("touchend",ende);addEventListener("touchcancel",ende);
+})();
+
+/* ---------- HUD ---------- */
+var annT=0;
+function ann(t,c){var a=document.getElementById("ann");a.textContent=t;a.style.color=c||"#ffd166";a.style.opacity=1;annT=2.8;}
+function hint(t,ms){var h=document.getElementById("hint");h.textContent=t;h.style.opacity=1;
+  clearTimeout(h._t);h._t=setTimeout(function(){h.style.opacity=0;},ms||3200);}
+function hud(){
+  document.getElementById("pTick").textContent="🎟️ "+tickets;
+  RIDES.forEach(function(r){r.el.className="ride"+(r.an?" on":"");
+    r.el.textContent=(r.an?"● ":"○ ")+r.name;});
+}
+
+/* ---------- Netz ---------- */
+var NET=null,ONLINE=false,slot=0,warte=false,abgebrochen=false,jeVerbunden=false;
+function netzStatus(t){document.getElementById("st").textContent=t;}
+function verdrahte(){
+  NET.onStatus(function(s){
+    if(abgebrochen)return;
+    if(s==="connected"){
+      ONLINE=true;warte=false;jeVerbunden=true;slot=(NET.role==="host")?0:1;
+      document.getElementById("bCancel").style.display="none";netzStatus("");
+      document.getElementById("bPing").style.display="flex";
+      pFig.visible=true;
+      if(!laeuft)start();
+      ann("🌐 Verbunden — ihr seid zu zweit!","#7dffc8");
+      hint("Stellt euch BEIDE auf die zwei Pulte eines Fahrgeschäfts.",5000);
+    } else if(s==="waiting"){
+      if(!(NET&&NET.role==="host"&&NET.code))netzStatus("⏳ Warte auf Mitspieler …");
+    } else if(s==="lost"){hint("📡 Verbindung wackelt …",2400);}
+    else if(s==="closed"){
+      ONLINE=false;warte=false;pFig.visible=false;partner.da=false;
+      document.getElementById("bPing").style.display="none";
+      document.getElementById("bCancel").style.display="none";
+      if(!jeVerbunden)netzStatus("Kein Mitspieler gefunden — starte allein oder versuch es nochmal.");
+      else hint("❌ Partner getrennt — du kannst allein weitermachen (Pult 4 s halten).",4200);
+    }
+  });
+  NET.onMessage(function(d){
+    if(!d||!d.t)return;
+    if(d.t==="pos"){partner.x=d.x;partner.z=d.z;partner.yaw=d.y;partner.da=true;}
+    else if(d.t==="ride")starteRide(d.i,true);
+    else if(d.t==="tick"&&TICKETS[d.i]&&!TICKETS[d.i].weg)nimmTicket(d.i,true);
+    else if(d.t==="ping"){hint("📣 Dein Partner ruft dich!",2000);}
+    else if(d.t==="win"&&!gewonnen)sieg(true);
+  });
+}
+function vor(){
+  if(!window.MP){netzStatus("Koop-Lib fehlt");return false;}
+  if(warte||ONLINE)return false;
+  warte=true;abgebrochen=false;
+  document.getElementById("bSolo").style.display="none";
+  document.getElementById("bCancel").style.display="inline-block";
+  return true;
+}
+document.getElementById("bCoop").onclick=function(){
+  if(!vor())return;netzStatus("⚡ Suche Mitspieler …");
+  try{NET=MP.quick("park");}catch(e){netzStatus("Fehler: "+e.message);warte=false;return;}
+  verdrahte();
+};
+document.getElementById("bHost").onclick=function(){
+  if(!vor())return;
+  try{NET=MP.host("park");}catch(e){netzStatus("Fehler: "+e.message);warte=false;return;}
+  verdrahte();
+  var link=location.origin+location.pathname+"?raum="+(NET.code||"");
+  try{if(navigator.clipboard&&NET.code)navigator.clipboard.writeText(link);}catch(e){}
+  netzStatus("🏠 Raum-Code: "+(NET.code||"")+" — Link kopiert 📋");
+};
+document.getElementById("bJoin").onclick=function(){
+  var c=(document.getElementById("iCode").value||"").toUpperCase().replace(/[^A-Z]/g,"");
+  if(c.length<4){netzStatus("Bitte 4 Buchstaben eingeben.");return;}
+  if(!vor())return;netzStatus("🚪 Trete Raum "+c+" bei …");
+  try{NET=MP.join("park",c);}catch(e){netzStatus("Fehler: "+e.message);warte=false;return;}
+  verdrahte();
+};
+document.getElementById("bCancel").onclick=function(){
+  abgebrochen=true;warte=false;try{if(NET)NET.close();}catch(e){}NET=null;
+  this.style.display="none";document.getElementById("bSolo").style.display="inline-block";netzStatus("");
+};
+document.getElementById("bPing").onclick=function(){
+  if(ONLINE&&NET)try{NET.send({t:"ping"});}catch(e){}
+  hint("📣 Ping gesendet",1200);
+};
+(function(){var m=location.search.match(/[?&]raum=([A-Za-z]{4})/);
+  if(m)setTimeout(function(){document.getElementById("iCode").value=m[1];document.getElementById("bJoin").click();},500);})();
+
+/* ---------- Tickets ---------- */
+var TICKETS=[],tGeo=new THREE.OctahedronGeometry(0.34,0);
+[[-18,8],[18,8],[-24,-30],[24,-30],[0,-24],[-40,0],[40,0],[0,30],[-8,44],[8,44]]
+.forEach(function(p,i){
+  var m=new THREE.Mesh(tGeo,new THREE.MeshLambertMaterial({color:0xffd166,emissive:0x8a6a10,emissiveIntensity:0.9}));
+  m.position.set(p[0],1.1,p[1]);scene.add(m);
+  TICKETS.push({m:m,x:p[0],z:p[1],weg:false,ph:i*0.7});
+});
+function nimmTicket(i,vomNetz){
+  var t=TICKETS[i];if(!t||t.weg)return;
+  t.weg=true;t.m.visible=false;tickets++;hud();
+  if(!vomNetz&&ONLINE&&NET)try{NET.send({t:"tick",i:i});}catch(e){}
+}
+
+/* ---------- Fahrgeschaefte starten ---------- */
+function starteRide(i,vomNetz){
+  var r=RIDES[i];if(!r||r.an)return;
+  r.an=true;hud();
+  if(r.mx)r.mx._actions.forEach(function(a){a.paused=false;});
+  r.pulte.forEach(function(p){p.lampe.material.color.setHex(0x4affa0);
+    p.ring.material.color.setHex(0x7dffc8);});
+  ann(r.name+" läuft!","#7dffc8");
+  if(r.id==="bahn"){ZUGAN=true;}
+  if(!vomNetz&&ONLINE&&NET)try{NET.send({t:"ride",i:i});}catch(e){}
+  if(RIDES.every(function(x){return x.an;}))setTimeout(function(){sieg(false);},900);
+}
+function sieg(vomNetz){
+  if(gewonnen)return;gewonnen=true;
+  var s=Math.round((performance.now()-t0)/1000);
+  var punkte=60+tickets*8+Math.max(0,180-s);
+  ann("🎉 DER PARK IST ERÖFFNET!","#ffd166");
+  if(!vomNetz&&ONLINE&&NET)try{NET.send({t:"win"});}catch(e){}
+  if(STATION)stationPost({t:"stationDone",score:punkte});
+  setTimeout(function(){
+    var ov=document.getElementById("ov");ov.style.display="flex";
+    ov.querySelector("h1").textContent="🎉 PARK ERÖFFNET!";
+    ov.querySelector("p").innerHTML="🎟️ "+tickets+"/10 Tickets · ⏱️ "+s+" s · <b>Punkte "+punkte+"</b>";
+    document.getElementById("bCoop").style.display="none";
+    var b=document.getElementById("bSolo");b.style.display="inline-block";
+    b.textContent=STATION?"← Zurück zur Wildnis":"Nochmal ▶";
+    b.onclick=function(){if(STATION)stationPost("mini-back");else location.reload();};
+  },2400);
+}
+
+/* ---------- Start ---------- */
+function start(){
+  document.getElementById("ov").style.display="none";
+  laeuft=true;t0=performance.now();hud();
+  hint(ONLINE?"Beide auf die zwei Pulte eines Fahrgeschäfts — dann läuft es."
+             :"Allein: auf ein Pult stellen und 4 s warten. Zu zweit geht es sofort.",5200);
+}
+document.getElementById("bSolo").onclick=function(){
+  if(warte){hint("⏳ Koop-Suche läuft …");return;}
+  start();
+};
+
+/* ---------- Schleife ---------- */
+var letzte=performance.now(),sendT=0;
+function frame(now){
+  requestAnimationFrame(frame);
+  var dt=Math.min(0.05,(now-letzte)/1000)||0.016;letzte=now;var t=now*0.001;
+  for(var i=0;i<mixer.length;i++)mixer[i].update(dt);
+
+  if(laeuft&&!gewonnen&&MITFAHRT<=0){
+    var vx=0,vz=0;
+    if(keys.w||keys.arrowup)vz-=1;if(keys.s||keys.arrowdown)vz+=1;
+    if(keys.a||keys.arrowleft)vx-=1;if(keys.d||keys.arrowright)vx+=1;
+    vx+=mx;vz+=mz;
+    var l=Math.hypot(vx,vz);if(l>1){vx/=l;vz/=l;}
+    if(!frei(ich.x,ich.z)){                 /* Notausstieg statt Festsitzen */
+      for(var bi=0;bi<BLOCK.length;bi++){var bb=BLOCK[bi];
+        var dx=ich.x-bb.x,dz=ich.z-bb.z,dl=Math.hypot(dx,dz);
+        if(dl<bb.r){var f=(bb.r+0.3)/Math.max(0.001,dl);ich.x=bb.x+dx*f;ich.z=bb.z+dz*f;}}
+    }
+    if(l>0.03){
+      var sp=(keys.shift?8.4:5.2)*dt;
+      var sin=Math.sin(ich.yaw),cos=Math.cos(ich.yaw);
+      var nx=ich.x+(vx*cos-vz*sin)*sp, nz=ich.z+(vx*sin+vz*cos)*sp;
+      if(frei(nx,ich.z))ich.x=nx;
+      if(frei(ich.x,nz))ich.z=nz;
+    }
+  }
+
+  /* Pulte auswerten — reiner Zustand, kein Ereignis */
+  if(laeuft&&!gewonnen){
+    RIDES.forEach(function(r,ri){
+      if(r.an)return;
+      var a=false,b=false;
+      function nah(p,x,z){return (x-p.x)*(x-p.x)+(z-p.z)*(z-p.z)<2.2*2.2;}
+      if(nah(r.pulte[0],ich.x,ich.z))a=true;
+      if(nah(r.pulte[1],ich.x,ich.z))b=true;
+      if(ONLINE&&partner.da){
+        if(nah(r.pulte[0],partner.x,partner.z))a=true;
+        if(nah(r.pulte[1],partner.x,partner.z))b=true;
+      }
+      r.pulte[0].ring.material.opacity=a?0.95:0.5;
+      r.pulte[1].ring.material.opacity=b?0.95:0.5;
+      if(a&&b){starteRide(ri,false);r.halten=0;return;}
+      if(!ONLINE&&(a||b)){                 /* Solo: halten statt gleichzeitig */
+        r.halten+=dt;
+        var bar=document.getElementById("bar");
+        bar.style.display="block";bar.firstElementChild.style.width=Math.min(100,r.halten/4*100)+"%";
+        if(r.halten>=4){starteRide(ri,false);bar.style.display="none";}
+      } else if(r.halten>0){r.halten=0;document.getElementById("bar").style.display="none";}
+    });
+  }
+
+  /* Tickets */
+  for(var k=0;k<TICKETS.length;k++){
+    var ti=TICKETS[k];if(ti.weg)continue;
+    ti.m.rotation.y+=dt*2.2;ti.m.position.y=1.1+Math.sin(t*2.2+ti.ph)*0.14;
+    if(laeuft&&(ich.x-ti.x)*(ich.x-ti.x)+(ich.z-ti.z)*(ich.z-ti.z)<1.3*1.3)nimmTicket(k,false);
+  }
+
+  /* Zug */
+  if(ZUGAN){
+    ZUGT=(ZUGT+dt*0.055)%1;setzeZug();
+    if(MITFAHRT>0){
+      MITFAHRT-=dt;
+      var p=bahnPunkt(ZUGT),q=bahnPunkt((ZUGT+0.006)%1);
+      camera.position.set(p.x,p.y+1.15,p.z);
+      camera.lookAt(q.x,q.y+1.0,q.z);
+      if(MITFAHRT<=0){hint("🎢 Fahrt vorbei!",2200);ich.x=0;ich.z=50;}
+    }
+  }
+  /* Einsteigen: auf dem Bahnsteig, wenn der Zug vorbeikommt */
+  if(ZUGAN&&MITFAHRT<=0&&laeuft&&!gewonnen){
+    var zp=ZUG.children[0].position;
+    if(Math.abs(ich.x-zp.x)<3.2&&Math.abs(ich.z-zp.z)<3.2&&ich.z>40){
+      MITFAHRT=1/0.055*0.98;ann("🎢 Einsteigen — festhalten!","#ffd166");
+    }
+  }
+
+  /* Kamera / Partner */
+  if(MITFAHRT<=0){
+    camera.position.set(ich.x,AUG,ich.z);
+    camera.rotation.set(0,0,0);
+    camera.rotateY(ich.yaw);camera.rotateX(ich.pitch);
+  }
+  if(ONLINE&&partner.da){pFig.visible=true;pFig.position.set(partner.x,0,partner.z);pFig.rotation.y=partner.yaw;}
+  if(ONLINE){sendT-=dt;if(sendT<=0){sendT=0.07;
+    if(NET)try{NET.sendFast({t:"pos",x:+ich.x.toFixed(2),z:+ich.z.toFixed(2),y:+ich.yaw.toFixed(2)});}catch(e){}}}
+
+  if(laeuft&&!gewonnen)document.getElementById("pClock").textContent="⏱️ "+(((now-t0)/1000)|0)+"s";
+  if(annT>0){annT-=dt;if(annT<=0)document.getElementById("ann").style.opacity=0;}
+  renderer.render(scene,camera);
+}
+requestAnimationFrame(frame);
+hud();
+
+/* Debug-Haken fuer die automatisierte Abnahme */
+window.__np={
+  state:function(){return {laeuft:laeuft,gewonnen:gewonnen,tickets:tickets,
+    ich:{x:+ich.x.toFixed(2),z:+ich.z.toFixed(2)},online:ONLINE,
+    rides:RIDES.map(function(r){return r.id+":"+(r.an?1:0);}),
+    zug:ZUGAN,mitfahrt:+MITFAHRT.toFixed(1)};},
+  tp:function(x,z){ich.x=x;ich.z=z;},
+  tpPartner:function(x,z){partner.x=x;partner.z=z;partner.da=true;ONLINE=true;},
+  start:start
+};
+})();
+</script>
+</body>
+</html>
