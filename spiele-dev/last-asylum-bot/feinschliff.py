@@ -2,20 +2,26 @@
 """Fällige Feinkorrekturen an der Konfiguration - geprüft und committet.
 
 Warum es dieses Werkzeug gibt: `config/last-asylum.json` ist rund 180 KB
-gross. Claude kann sie über die GitHub-Schnittstelle nicht sicher ersetzen -
-ein Übertragungsfehler dort legt den ganzen Bot lahm. Von Hand ändern geht
-zwar, blockiert aber den nächsten `git pull` des Bots ("local changes would
-be overwritten"), und dann bekommt er nie wieder eine neue Fassung.
+gross. Über eine Schnittstelle lässt sich so eine Datei nur vollständig
+ersetzen - und ein Übertragungsfehler dabei legt den ganzen Bot lahm. Von
+Hand ändern geht zwar, blockiert aber den nächsten `git pull` des Bots
+("local changes would be overwritten"), und dann bekommt er nie wieder eine
+neue Fassung.
 
-Dieses Skript ändert nur einzelne Zahlen, prüft die Konfiguration danach und
-schiebt sie ins Repository. Damit bleibt alles in einer Linie.
+Dieses Skript ändert einzelne Werte, prüft die Konfiguration danach wie
+`bot.py check` und schiebt sie ins Repository. Damit bleibt alles in einer
+Linie, egal wer die Änderung angestossen hat.
 
     python feinschliff.py            # zeigt, was sich ändern würde
     python feinschliff.py --anwenden # ändert, prüft und committet
 
 Jede Korrektur greift nur, wenn der aktuelle Wert der erwartete ist. Wurde
-schon geändert, wird sie übersprungen - das Skript lässt sich also gefahrlos
-mehrfach ausführen.
+schon geändert, wird sie übersprungen - das Skript lässt sich gefahrlos
+mehrfach ausführen, und erledigte Einträge dürfen stehenbleiben.
+
+Neue Korrektur eintragen: einen Eintrag an KORREKTUREN anhängen. Die
+Bausteine darunter decken ab, was bisher gebraucht wurde - Werte in Regeln
+und Aufgaben setzen, Aufgaben ein- und ausschalten.
 """
 
 from __future__ import annotations
@@ -32,36 +38,68 @@ sys.path.insert(0, HIER)
 KONFIG = os.path.join(HIER, "config", "last-asylum.json")
 
 
-def regel(daten: dict, name: str) -> dict:
-    for r in daten.get("rules", []):
-        if r.get("name") == name:
-            return r
-    raise SystemExit(f"Regel '{name}' steht nicht in der Konfiguration.")
+# ------------------------------------------------------------------ Bausteine
+def _finde(daten: dict, gruppe: str, name: str) -> dict:
+    for eintrag in daten.get(gruppe, []):
+        if eintrag.get("name") == name:
+            return eintrag
+    raise SystemExit(f"'{name}' steht nicht unter {gruppe} in der Konfiguration.")
 
 
-def farbwert_setzen(daten, regelname, feld, alt, neu):
-    """Einen Wert im farbknopf einer Regel setzen - nur wenn er noch `alt` ist."""
-    fk = regel(daten, regelname)["match"]["farbknopf"]
-    jetzt = fk.get(feld)
-    if jetzt == neu:
-        return None, f"{regelname}.{feld} steht schon auf {neu}"
-    if jetzt != alt:
-        return None, (f"{regelname}.{feld} ist {jetzt}, erwartet war {alt} - "
-                      "nicht angefasst")
-    fk[feld] = neu
-    return f"{regelname}.{feld}: {alt} -> {neu}", None
+def _tiefe(wurzel: dict, pfad: str):
+    """Zum vorletzten Glied laufen; gibt (Behälter, letzter Schlüssel) zurück."""
+    teile = pfad.split(".")
+    stelle = wurzel
+    for glied in teile[:-1]:
+        if glied not in stelle:
+            raise SystemExit(f"Pfad '{pfad}' fehlt bei '{glied}'.")
+        stelle = stelle[glied]
+    return stelle, teile[-1]
 
 
-# Jede Korrektur: (Kurzname, Begruendung, Funktion)
+def setze(gruppe: str, name: str, pfad: str, alt, neu):
+    """Wert in einer Regel oder Aufgabe setzen - nur wenn er noch `alt` ist.
+
+    `pfad` ist mit Punkten geschrieben, z. B. "match.farbknopf.min_fuellung".
+    Der Zugriff läuft immer über den Namen, damit gleichnamige Felder anderer
+    Regeln unberührt bleiben - `max_h` etwa kommt an vier Stellen vor.
+    """
+    def wirkung(daten):
+        behaelter, schluessel = _tiefe(_finde(daten, gruppe, name), pfad)
+        jetzt = behaelter.get(schluessel)
+        if jetzt == neu:
+            return None, f"{name}.{pfad} steht schon auf {neu}"
+        if jetzt != alt:
+            return None, f"{name}.{pfad} ist {jetzt}, erwartet war {alt} - nicht angefasst"
+        behaelter[schluessel] = neu
+        return f"{name}.{pfad}: {alt} -> {neu}", None
+    return wirkung
+
+
+def schalte(name: str, an: bool):
+    """Eine Aufgabe ein- oder ausschalten."""
+    def wirkung(daten):
+        aufgabe = _finde(daten, "tasks", name)
+        jetzt = aufgabe.get("enabled", True)
+        if jetzt == an:
+            return None, f"Aufgabe {name} ist schon {'an' if an else 'aus'}"
+        aufgabe["enabled"] = an
+        return f"Aufgabe {name}: {'aus -> an' if an else 'an -> aus'}", None
+    return wirkung
+
+
+# ----------------------------------------------------------------- Korrekturen
+# (Kurzname, Begruendung, Wirkung)
 KORREKTUREN = [
     (
         "rote-abzeichen",
-        "Ein Kreis fuellt sein Rechteck nur zu 78 Prozent, und eine weisse Zahl "
-        "darin nimmt weitere 10 bis 20 weg. Mit 0.75 fielen ausgerechnet die "
-        "Abzeichen MIT Zahl durch - und die sagen ja, wie viel dort wartet. "
-        "Gegen Endlosschleifen hilft seit 6dad0a7 die Schleifen-Bremse, dafuer "
-        "muss der Fuellgrad nicht mehr herhalten.",
-        lambda d: farbwert_setzen(d, "roter-punkt-pruefen", "min_fuellung", 0.75, 0.62),
+        "Ein Kreis fuellt sein umschliessendes Rechteck nur zu 78 Prozent, und "
+        "eine weisse Zahl darin nimmt weitere 10 bis 20 weg. Mit 0.75 fielen "
+        "ausgerechnet die Abzeichen MIT Zahl durch - und die sagen ja, wie viel "
+        "dort wartet. Gegen Endlosschleifen hilft seit 6dad0a7 die "
+        "Schleifen-Bremse, dafuer muss der Fuellgrad nicht mehr herhalten.",
+        setze("rules", "roter-punkt-pruefen",
+              "match.farbknopf.min_fuellung", 0.75, 0.62),
     ),
     (
         "sammelknoepfe",
@@ -69,13 +107,13 @@ KORREKTUREN = [
         "Allianz-Hilfe messen beide 6,7 Prozent der Bildhoehe, die kleinen "
         "'Abholen' daneben nur 3,9. Mit max_h 0.06 fielen genau die beiden "
         "durch, die eine ganze Liste auf einmal erledigen.",
-        lambda d: farbwert_setzen(d, "gruener-knopf-generisch", "max_h", 0.06, 0.08),
+        setze("rules", "gruener-knopf-generisch", "match.farbknopf.max_h", 0.06, 0.08),
     ),
 ]
 
 
+# ---------------------------------------------------------------------- Ablauf
 def pruefen() -> bool:
-    """Konfiguration einlesen und validieren - wie `bot.py check`."""
     from laa.config import Config, ConfigError
 
     try:
@@ -83,6 +121,9 @@ def pruefen() -> bool:
         probleme = cfg.validate()
     except ConfigError as exc:
         print(f"  Konfiguration kaputt: {exc}", file=sys.stderr)
+        return False
+    except json.JSONDecodeError as exc:
+        print(f"  JSON kaputt: {exc}", file=sys.stderr)
         return False
     if probleme:
         for p in probleme:
@@ -97,8 +138,7 @@ def hochladen(zusammenfassung: str) -> bool:
         return subprocess.run(["git", "-C", HIER, *rest], capture_output=True, timeout=180)
 
     git("add", "--", KONFIG)
-    botschaft = "Feinkorrekturen an der Konfiguration\n\n" + zusammenfassung
-    ergebnis = git("commit", "-m", botschaft)
+    ergebnis = git("commit", "-m", "Feinkorrekturen an der Konfiguration\n\n" + zusammenfassung)
     if ergebnis.returncode != 0 and b"nothing to commit" not in ergebnis.stdout:
         print(ergebnis.stdout.decode("utf-8", "replace")[:400], file=sys.stderr)
         return False
@@ -106,7 +146,7 @@ def hochladen(zusammenfassung: str) -> bool:
     if schub.returncode != 0:
         print("Hochladen fehlgeschlagen:",
               schub.stderr.decode("utf-8", "replace").strip()[:300], file=sys.stderr)
-        print("Die Aenderung liegt lokal vor. Wichtig: sie blockiert den naechsten",
+        print("Die Aenderung liegt lokal vor - und blockiert den naechsten",
               file=sys.stderr)
         print("git pull des Bots, bis sie gepusht ist.", file=sys.stderr)
         return False
@@ -123,14 +163,13 @@ def main() -> int:
     with open(KONFIG, "r", encoding="utf-8") as fh:
         daten = json.load(fh)
 
-    getan, offen = [], []
+    getan = []
     for name, grund, wirkung in KORREKTUREN:
         geaendert, hinweis = wirkung(daten)
         if geaendert:
-            getan.append((name, geaendert, grund))
+            getan.append((geaendert, grund))
             print(f"  aendert: {geaendert}")
         else:
-            offen.append((name, hinweis))
             print(f"  laesst:  {hinweis}")
 
     if not getan:
@@ -150,8 +189,7 @@ def main() -> int:
         print("    git checkout -- config/last-asylum.json", file=sys.stderr)
         return 1
 
-    zusammenfassung = "\n\n".join(f"{g}\n{grund}" for _n, g, grund in getan)
-    if hochladen(zusammenfassung):
+    if hochladen("\n\n".join(f"{g}\n{grund}" for g, grund in getan)):
         print("\nHochgeladen. Der Bot holt es sich beim naechsten Durchgang selbst.")
         return 0
     return 1
