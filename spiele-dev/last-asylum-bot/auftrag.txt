@@ -1,0 +1,7 @@
+# Auftrag fuer den naechsten Start des Bots.
+# Wird vom Startskript abgearbeitet und danach zu auftrag-erledigt.txt.
+#
+# WICHTIG: vorher im Spiel einen Schild setzen, damit die Schutzkuppel
+# ueber der Stadt zu sehen ist. Genau die soll aufs Bild.
+
+teilen schild
