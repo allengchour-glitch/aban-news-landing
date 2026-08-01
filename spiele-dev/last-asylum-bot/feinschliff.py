@@ -109,6 +109,20 @@ KORREKTUREN = [
         "durch, die eine ganze Liste auf einmal erledigen.",
         setze("rules", "gruener-knopf-generisch", "match.farbknopf.max_h", 0.06, 0.08),
     ),
+    (
+        "blasen-fehltreffer",
+        "Im Lauf vom 01.08. griff blasen-einsammeln-ohne-vorlage im "
+        "Minutentakt, immer mit 0.60, und meldete jedes Mal 'Eingesammelt: 6 "
+        "Stueck' - sechs Stellen, die nach dem Antippen nicht verschwinden. Das "
+        "ist feste Bedienung mit demselben hellen Ring, nicht Ertrag. Eine "
+        "Blase ist ein ausgefuellter Kreis und kommt auf rund 0.78; die "
+        "Fehltreffer lagen samt und sonders bei 0.59 bis 0.60. Mit 0.66 fallen "
+        "sie heraus. Der Weg ueber die Vorlagen faengt das ohnehin ab - "
+        "hud/bubble_holz hat sich im selben Lauf selbst vermessen (0.618 -> "
+        "0.87) und sammelt seitdem sauber.",
+        setze("rules", "blasen-einsammeln-ohne-vorlage",
+              "match.farbknopf.min_fuellung", 0.45, 0.66),
+    ),
 ]
 
 
