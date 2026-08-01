@@ -1200,7 +1200,13 @@ var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_d
      die Naht ab (zwei gleich hohe Ebenen flimmern gegeneinander), und Haltelinien
      geben der leeren Flaeche eine Ordnung. */
   (function kreuzungen(){
-    var kMat=stdMat(0x3f3f47,0.94);
+    /* Die Platte muss die Fahrbahn-TEXTUR tragen, sonst liegt ein glatter, hellerer
+       Fleck mitten auf der Kreuzung — eine reine Farbflaeche wirkt neben der
+       texturierten Strasse immer heller. Die Textur wird geklont, damit sie eine
+       eigene Wiederholung bekommen kann. */
+    var kMat=stdMat(0x4a4a53,0.92,true);
+    if(strMatH&&strMatH.map){var kt=strMatH.map.clone();kt.needsUpdate=true;
+      kt.wrapS=kt.wrapT=THREE.RepeatWrapping;kt.repeat.set(1.7,2.7);kMat.map=kt;}
     var wMat=stdMat(0xd8d8cc,0.75);wMat.envMapIntensity=0.12;
     [RX,-RX].forEach(function(xc){ [SZ9+12,-(SZ9+12)].forEach(function(zc){
       var k=new THREE.Mesh(new THREE.PlaneGeometry(10,16),kMat);
