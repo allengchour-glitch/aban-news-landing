@@ -193,6 +193,55 @@ if ($paket -and $paket -notmatch "com.phs.global") {
     Warnung "Das Spiel scheint nicht offen zu sein - oeffne Last Asylum, bevor es losgeht."
 }
 
+# ------------------------------------------------------------------- Auftraege
+# Eine Live-Verbindung von Claude zu diesem PC gibt es nicht. Der Bot zieht aber
+# ohnehin alle dreissig Minuten `git pull` und startet bei neuem Stand neu -
+# liegt dann eine auftrag.txt hier, wird sie vorher abgearbeitet. So kommt eine
+# Anweisung aus dem Repository hier an, ohne dass jemand etwas abtippen muss.
+#
+# BEWUSST ENG: eine Datei aus einem Repository darf keine beliebigen Befehle
+# ausloesen. Erlaubt sind genau vier Woerter, sonst nichts.
+$auftrag = Join-Path $PSScriptRoot "auftrag.txt"
+if (Test-Path $auftrag) {
+    Schritt "Auftrag gefunden"
+    $erledigt = @()
+    foreach ($zeile in (Get-Content $auftrag)) {
+        $z = $zeile.Trim()
+        if (-not $z -or $z.StartsWith("#")) { continue }
+        if ($z -match '^teilen\s+([A-Za-z0-9_-]{1,32})$') {
+            $name = $matches[1]
+            Gut "teilen --als $name"
+            & $python bot.py --adb "$Adb" @geraet teilen --als $name
+            & $python kacheln.py
+            $erledigt += "teilen $name"
+        } elseif ($z -eq "kacheln") {
+            Gut "kacheln"
+            & $python kacheln.py
+            $erledigt += "kacheln"
+        } elseif ($z -eq "feinschliff") {
+            Gut "feinschliff --anwenden"
+            & $python feinschliff.py --anwenden
+            $erledigt += "feinschliff"
+        } elseif ($z -eq "entdecke") {
+            Gut "entdecke"
+            & $python bot.py --adb "$Adb" @geraet entdecke
+            $erledigt += "entdecke"
+        } else {
+            Warnung "Unbekannte Zeile uebergangen: $z"
+        }
+    }
+    # Umbenennen und hochladen: so laeuft nichts doppelt, und im Repository
+    # steht, was tatsaechlich passiert ist.
+    $fertig = Join-Path $PSScriptRoot "auftrag-erledigt.txt"
+    $kopf = "# erledigt am " + (Get-Date -Format "yyyy-MM-dd HH:mm")
+    Set-Content -Path $fertig -Value (@($kopf) + $erledigt) -Encoding UTF8
+    Remove-Item $auftrag -Force
+    & git -C $PSScriptRoot add -- auftrag.txt auftrag-erledigt.txt austausch 2>$null
+    & git -C $PSScriptRoot commit -m "Auftrag erledigt: $($erledigt -join ', ')" 2>$null | Out-Null
+    & git -C $PSScriptRoot push 2>$null | Out-Null
+    Gut "$($erledigt.Count) Auftrag/Auftraege erledigt und hochgeladen."
+}
+
 # ------------------------------------------------------------------- Bot starten
 if (-not (Test-Path "logs")) { New-Item -ItemType Directory -Path "logs" | Out-Null }
 $stempel = Get-Date -Format "yyyyMMdd-HHmmss"
