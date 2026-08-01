@@ -37,6 +37,22 @@ def paste(dst: Image, src: Image, x: int, y: int) -> None:
     dst._gray = None
 
 
+def motor(bildpfad, cfg=None):
+    """Engine mit der echten Konfiguration - so sieht der Bot es wirklich.
+
+    Wichtig gegenueber matcher.find: die Engine bringt base_width, ui_skala und
+    die selbst gemessenen Vorlagen-Groessen mit. Wer daran vorbei misst, prueft
+    seine eigene Vermutung.
+    """
+    from laa.adb import FakeDevice as _FD
+    if cfg is None:
+        cfg = Config.load(os.path.join(ROOT, "config", "last-asylum.json"))
+    eng = Engine(cfg, _FD([Image.new(10, 10)], loop=True), logger=quiet(),
+                 sleep=lambda s: None, seed=1)
+    eng.screen = Image.load(bildpfad)
+    return eng
+
+
 def quiet() -> Logger:
     return Logger(level="error", color=False)
 
@@ -2275,13 +2291,24 @@ class TestEchterBestaetigenDialog(unittest.TestCase):
                              "auf diesem Hinweis-Dialog steht kein zweiter Knopf")
 
     def test_vorlage_bestaetigen_passt_auf_den_knopf(self):
+        """Ueber die Engine pruefen, nicht ueber den Matcher direkt.
+
+        Die erste Fassung dieses Tests rief matcher.find mit scale=4/3 auf -
+        dem Faktor, den ich fuer richtig hielt. Er bestand, und die Vorlage
+        traf im echten Bot trotzdem nie: base_width steht auf 1440, die Engine
+        rechnet also gar nicht um. Ein Test, der die eigene Annahme einsetzt
+        statt die des Programms, bestaetigt nur sich selbst.
+        """
         pfad = os.path.join(ROOT, "templates", "ui", "btn_bestaetigen.png")
         if not os.path.exists(pfad):
             self.skipTest("Vorlage fehlt")
-        vorlage = Image.load(pfad)
-        # Bildschirm 1440 breit, Vorlagen auf Basisbreite 1080 -> Faktor 4/3.
-        treffer = matcher.find(self.screen, vorlage, threshold=0.8, scale=4 / 3)
-        self.assertTrue(treffer, "die Vorlage muss den Knopf im echten Bild finden")
+        eng = motor(self.BILD)
+        regel = self.regel("belohnung-bestaetigen")
+        treffer = eng.find(regel["match"])
+        self.assertIsNotNone(treffer, "die Vorlage muss den Knopf im echten Bild finden")
+        cx, cy = treffer.center
+        self.assertTrue(437 <= cx <= 996 and 1250 <= cy <= 1423,
+                        f"Tippziel {cx},{cy} liegt neben dem Knopf")
 
 
 
@@ -2476,16 +2503,43 @@ class TestLadebildschirm(unittest.TestCase):
             self.assertIn(next(iter(schritt)), erlaubt,
                           "auf dem Ladebildschirm darf nichts angetippt werden")
 
+
+    def test_durchlauf_auf_dem_startbildschirm_tippt_nichts(self):
+        """Der Test, der den Fehler gefunden haette.
+
+        Die Vorlagen-Tests prueften nur, ob eine Vorlage passt. Ob die Regel im
+        echten Durchlauf ueberhaupt drankommt, prueft erst dieser hier: vorher
+        arbeitete der Bot auf dem Ladebildschirm Aufgaben ab und tippte in der
+        Stadt herum, die es gar nicht gab.
+        """
+        bild = os.path.join(ROOT, "austausch", "ladebildschirm.png")
+        if not os.path.exists(bild):
+            self.skipTest("ladebildschirm.png liegt nicht vor")
+        cfg = Config.load(os.path.join(ROOT, "config", "last-asylum.json"))
+        dev = FakeDevice([Image.load(bild)], loop=True)
+        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=1)
+        for _ in range(4):
+            eng.step()
+        self.assertEqual(dev.taps, [], f"auf dem Ladebildschirm wurde getippt: {dev.taps}")
+        self.assertEqual(dev.swipes, [], "und gewischt werden darf auch nicht")
+        self.assertGreater(eng.stats.get("rule:ladebildschirm-abwarten", 0), 0,
+                           "die Warte-Regel muss ueberhaupt drankommen")
+
     def test_vorlage_trifft_das_echte_bild_und_sonst_nichts(self):
+        """Auch hier ueber die Engine - sie bringt ihre eigene Skalierung mit."""
         bild = os.path.join(ROOT, "austausch", "ladebildschirm.png")
         anderes = os.path.join(ROOT, "austausch", "schild.png")
         pfad = os.path.join(ROOT, "templates", "ui", "ladebildschirm.png")
         for p in (bild, anderes, pfad):
             if not os.path.exists(p):
                 self.skipTest(f"{os.path.basename(p)} liegt nicht vor")
-        tpl = Image.load(pfad)
-        self.assertIsNotNone(matcher.find(Image.load(bild), tpl, threshold=0.8, scale=4 / 3))
-        self.assertIsNone(matcher.find(Image.load(anderes), tpl, threshold=0.8, scale=4 / 3),
+        cfg = Config.load(os.path.join(ROOT, "config", "last-asylum.json"))
+        regel = next(r for r in cfg.rules if r.name == "ladebildschirm-abwarten")
+        eng = motor(bild, cfg)
+        self.assertIsNotNone(eng.find(regel.match),
+                             "auf dem Startbildschirm muss die Vorlage greifen")
+        eng.screen = Image.load(anderes)
+        self.assertIsNone(eng.find(regel.match),
                           "die Vorlage darf nicht auf einem anderen Bildschirm anschlagen")
 
 
