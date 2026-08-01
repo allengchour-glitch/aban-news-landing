@@ -1,4 +1,0 @@
-# Auftrag fuer den naechsten Start des Bots.
-# Wird vom Startskript abgearbeitet und danach zu auftrag-erledigt.txt.
-
-feinschliff
