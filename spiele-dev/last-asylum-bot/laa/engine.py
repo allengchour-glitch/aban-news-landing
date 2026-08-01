@@ -128,6 +128,7 @@ class Engine:
         self._regel_finger: Dict[str, tuple] = {}
         self._regel_pause: Dict[str, float] = {}
         self._regel_zeiten: Dict[str, list] = {}
+        self._geduld: Dict[str, tuple] = {}   # Regel -> (seit, zuletzt)
         self._offene_pruefung: Optional[tuple] = None
         self._folgenlos: Dict[str, int] = {}   # Vorlage -> Tipps ohne jede Wirkung
         self._verworfen: set = set()           # aussortiert - nicht mehr suchen
@@ -1349,6 +1350,11 @@ class Engine:
             self.bump(f"rule:{rule.name}")
             score = f" ({self.last_match.score:.2f})" if self.last_match else ""
             self.log.info(f"✓ {rule.name}{score}")
+            if self._noch_geduldig(rule):
+                # Sonst zaehlt die Festgefahren-Pruefung den Ladebildschirm hoch
+                # und schickt den Bot nach fuenfzehn Schritten auf Ausweg-Suche
+                # - mitten in einen Vorgang, der von allein fertig wird.
+                self.gleiche_ansicht = 0
             self.run_actions(rule.do, f"Regel '{rule.name}'")
             return True
         return False
@@ -1574,6 +1580,12 @@ class Engine:
         """
         if self._clock() < self._regel_pause.get(rule.name, -1e9):
             return True
+        if self._noch_geduldig(rule):
+            # Eine wartende Regel bewirkt per Definition nichts am Bild. Beide
+            # Bremsen wuerden sie darum stilllegen - und der Bot faenge an, auf
+            # einem Ladebildschirm herumzutippen, statt ihn zu Ende laden zu
+            # lassen. Genau davor schuetzt dieses Feld.
+            return False
         if self._regel_ausser_rand(rule):
             return True
         grenze = int(getattr(self.cfg, "regel_wirkungslos_grenze", 0) or 0)
@@ -1636,6 +1648,36 @@ class Engine:
                 )
             except OSError as exc:  # pragma: no cover - Dateisystem
                 self.log.warn(f"Vorlage nicht verschiebbar: {exc}")
+
+    NEUE_EPISODE = 60.0   # so lange Pause, und das Warten faengt von vorn an
+
+    def _noch_geduldig(self, rule) -> bool:
+        """Darf diese Regel gerade beliebig oft greifen, ohne zu wirken?
+
+        'geduldig: true' heisst unbegrenzt, eine Zahl heisst so viele Sekunden.
+        Die Grenze ist wichtig: ein Ladebildschirm, der laedt, wird von allein
+        fertig - einer, der haengt, nicht. Ohne Grenze wartet der Bot vor einem
+        eingefrorenen Balken bis in alle Ewigkeit.
+        """
+        wert = getattr(rule, "geduldig", False)
+        if wert is False or wert is None:
+            return False
+        jetzt = self._clock()
+        seit, zuletzt = self._geduld.get(rule.name, (jetzt, jetzt))
+        if jetzt - zuletzt > self.NEUE_EPISODE:
+            seit = jetzt          # war lange nicht dran: neuer Vorgang
+        self._geduld[rule.name] = (seit, jetzt)
+        if wert is True:
+            return True
+        grenze = float(wert)
+        if grenze <= 0 or jetzt - seit < grenze:
+            return True
+        self.bump("geduld-am-ende")
+        self.log.warn(
+            f"Regel '{rule.name}' wartet zu lange - ab jetzt als haengend behandeln",
+            sekunden=int(jetzt - seit),
+        )
+        return False
 
     def _regel_ausser_rand(self, rule) -> bool:
         """Eine Regel, die staendig greift, kommt offensichtlich nicht weiter.

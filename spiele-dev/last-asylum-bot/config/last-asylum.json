@@ -302,6 +302,35 @@
   ],
   "rules": [
     {
+      "name": "ladebildschirm-abwarten",
+      "priority": 245,
+      "cooldown": 0,
+      "geduldig": 900,
+      "_zweck": "Der Startbildschirm mit dem LAST-ASYLUM-Logo. Hier gibt es nichts zu tippen - das Spiel laedt. Ohne diese Regel ist der Bildschirm fuer den Bot unbekannt: er sucht Knoepfe, tippt daneben und lernt aus dem Unsinn auch noch dazu. 'geduldig' nimmt ihn aus beiden Schleifen-Bremsen und aus der Festgefahren-Pruefung, aber nur 15 Minuten lang. Ein Ladebildschirm, der laedt, ist bis dahin fertig; einer, der haengt, wird danach wie jeder andere Haenger behandelt - Ausweg suchen, notfalls App neu starten.",
+      "match": {
+        "template": "ui/ladebildschirm.png",
+        "threshold": 0.8,
+        "region": [
+          0.0,
+          0.0,
+          1.0,
+          0.4
+        ],
+        "optional": true
+      },
+      "do": [
+        {
+          "log": "Ladebildschirm - abwarten, nicht tippen"
+        },
+        {
+          "sleep": [
+            6.0,
+            11.0
+          ]
+        }
+      ]
+    },
+    {
       "name": "spiel-beenden-abbrechen",
       "priority": 260,
       "_zweck": "Notbremse: 'Spiel beenden?' zeigt Abbrechen (blau) und Bestaetigen (orange) nebeneinander. Ein Fehlgriff auf Bestaetigen beendet das Spiel. Erkennt der Bot beide Knoepfe in der Bildmitte, tippt er den blauen.",

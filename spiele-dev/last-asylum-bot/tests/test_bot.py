@@ -2380,5 +2380,115 @@ class TestLebenszeichen(unittest.TestCase):
 
 
 
+class TestGeduld(unittest.TestCase):
+    """Warten muss erlaubt sein - aber nicht endlos.
+
+    Ein Ladebildschirm sieht minutenlang gleich aus. Die Bremsen gegen
+    Endlos-Schleifen wuerden genau die Regel stilllegen, die ihn erkennt, und
+    der Bot faenge an, darauf herumzutippen. Umgekehrt darf er vor einem
+    eingefrorenen Ladebalken nicht bis in alle Ewigkeit warten.
+    """
+
+    def bau(self, geduldig, uhr):
+        tpl = noise(20, 20, 77)
+        screen = noise(200, 300, 78)
+        paste(screen, tpl, 40, 50)
+        tpl.save(os.path.join(self.ordner, "warten.png"))
+        cfg = Config.from_dict({
+            "package": "x",
+            "templates_dir": ".",
+            "regel_wirkungslos_grenze": 2,
+            "regel_hoechstens_je_fenster": 3,
+            "rules": [{"name": "warten", "geduldig": geduldig,
+                       "match": {"template": "warten.png", "threshold": 0.8},
+                       "do": [{"sleep": 0}]}],
+        }, path=os.path.join(self.ordner, "cfg.json"))
+        dev = FakeDevice([screen], loop=True)
+        return Engine(cfg, dev, logger=quiet(), sleep=lambda s: None,
+                      seed=3, clock=uhr)
+
+    def setUp(self):
+        import tempfile
+        self._tmp = tempfile.TemporaryDirectory()
+        self.ordner = self._tmp.name
+
+    def tearDown(self):
+        self._tmp.cleanup()
+
+    def test_ohne_geduld_wird_die_regel_gebremst(self):
+        jetzt = [1000.0]
+        eng = self.bau(False, lambda: jetzt[0])
+        for _ in range(12):
+            eng.step()
+            jetzt[0] += 1
+        self.assertTrue(eng.stats.get("regel-gebremst", 0)
+                        or eng.stats.get("regel-stillgelegt", 0),
+                        "eine normale Dauer-Regel muss gebremst werden")
+
+    def test_geduldige_regel_darf_lange_warten(self):
+        jetzt = [1000.0]
+        eng = self.bau(True, lambda: jetzt[0])
+        for _ in range(40):
+            eng.step()
+            jetzt[0] += 1
+        self.assertEqual(eng.stats.get("regel-gebremst", 0), 0)
+        self.assertEqual(eng.stats.get("regel-stillgelegt", 0), 0)
+        self.assertEqual(eng.gleiche_ansicht, 0,
+                         "die Festgefahren-Pruefung darf nicht hochzaehlen")
+
+    def test_geduld_mit_grenze_laeuft_ab(self):
+        jetzt = [1000.0]
+        eng = self.bau(120, lambda: jetzt[0])
+        for _ in range(6):          # innerhalb der Grenze: unangetastet
+            eng.step()
+            jetzt[0] += 10
+        self.assertEqual(eng.stats.get("geduld-am-ende", 0), 0)
+        for _ in range(12):         # ueber 120 Sekunden hinaus
+            eng.step()
+            jetzt[0] += 10
+        self.assertGreater(eng.stats.get("geduld-am-ende", 0), 0,
+                           "nach der Grenze muss der Bildschirm als haengend gelten")
+
+    def test_lange_pause_startet_die_geduld_neu(self):
+        """Zwei getrennte Ladevorgaenge duerfen nicht zusammengezaehlt werden."""
+        jetzt = [1000.0]
+        eng = self.bau(120, lambda: jetzt[0])
+        for _ in range(6):
+            eng.step()
+            jetzt[0] += 10
+        jetzt[0] += 600            # lange nichts - neuer Vorgang
+        for _ in range(6):
+            eng.step()
+            jetzt[0] += 10
+        self.assertEqual(eng.stats.get("geduld-am-ende", 0), 0)
+
+
+class TestLadebildschirm(unittest.TestCase):
+    """Der Startbildschirm ist kein unbekannter Bildschirm, sondern Warten."""
+
+    def test_regel_ist_geduldig_und_tippt_nicht(self):
+        cfg = json.load(open(os.path.join(ROOT, "config", "last-asylum.json"),
+                             encoding="utf-8"))
+        regel = next(r for r in cfg["rules"] if r["name"] == "ladebildschirm-abwarten")
+        self.assertTrue(regel.get("geduldig"))
+        erlaubt = {"log", "sleep"}
+        for schritt in regel["do"]:
+            self.assertIn(next(iter(schritt)), erlaubt,
+                          "auf dem Ladebildschirm darf nichts angetippt werden")
+
+    def test_vorlage_trifft_das_echte_bild_und_sonst_nichts(self):
+        bild = os.path.join(ROOT, "austausch", "ladebildschirm.png")
+        anderes = os.path.join(ROOT, "austausch", "schild.png")
+        pfad = os.path.join(ROOT, "templates", "ui", "ladebildschirm.png")
+        for p in (bild, anderes, pfad):
+            if not os.path.exists(p):
+                self.skipTest(f"{os.path.basename(p)} liegt nicht vor")
+        tpl = Image.load(pfad)
+        self.assertIsNotNone(matcher.find(Image.load(bild), tpl, threshold=0.8, scale=4 / 3))
+        self.assertIsNone(matcher.find(Image.load(anderes), tpl, threshold=0.8, scale=4 / 3),
+                          "die Vorlage darf nicht auf einem anderen Bildschirm anschlagen")
+
+
+
 if __name__ == "__main__":
     unittest.main()

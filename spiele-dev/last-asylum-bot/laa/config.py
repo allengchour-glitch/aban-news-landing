@@ -23,6 +23,16 @@ class Rule:
     cooldown: float = 0.0
     once: bool = False
     enabled: bool = True
+    # Regeln, die absichtlich immer wieder dasselbe tun: warten. Die Bremsen
+    # gegen Endlos-Schleifen wuerden genau die stilllegen - ein Ladebildschirm
+    # sieht nun einmal minutenlang gleich aus, und das ist kein Fehler.
+    #   false  - normale Regel
+    #   true   - unbegrenzt geduldig
+    #   <Zahl> - so viele Sekunden geduldig, danach gilt der Bildschirm als
+    #            haengend und die ueblichen Auswege greifen wieder. Ohne diese
+    #            Grenze wuerde der Bot vor einem eingefrorenen Ladebalken bis
+    #            in alle Ewigkeit warten.
+    geduldig: Any = False
 
 
 @dataclass
@@ -135,6 +145,7 @@ class Config:
                     cooldown=float(item.get("cooldown", 0.0)),
                     once=bool(item.get("once", False)),
                     enabled=bool(item.get("enabled", True)),
+                    geduldig=item.get("geduldig", False),
                 )
             )
         cfg.rules.sort(key=lambda r: -r.priority)

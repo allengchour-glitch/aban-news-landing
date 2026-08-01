@@ -11,7 +11,7 @@ hundert Kilobyte und ist damit lesbar. Meist braucht es ohnehin nur die
 eine, in der der gesuchte Knopf steht.
 
     python kacheln.py                          # neuestes Bild aus austausch/
-    python kacheln.py austausch/versammlung.png
+    python kacheln.py austausch/ladebildschirm.png
     python kacheln.py --spalten 4 --zeilen 6   # feiner rastern
 
 Die Kacheln heissen z<Zeile>s<Spalte>.png, oben links ist z1s1. Zusaetzlich
