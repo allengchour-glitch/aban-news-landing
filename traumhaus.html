@@ -305,7 +305,7 @@ var renderer=new THREE.WebGLRenderer({antialias:true});
 /* 📱 Handy: Pixelratio auf 1.5 deckeln. Auf einem 3x-Display rendert die Szene sonst
    9x so viele Pixel wie noetig — die teuerste Einzelbremse auf dem Telefon. */
 var _mobil=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)||Math.min(screen.width,screen.height)<820;
-renderer.setPixelRatio(Math.min(devicePixelRatio,_mobil?1.5:2));renderer.setSize(W,H);
+renderer.setPixelRatio(Math.min(devicePixelRatio,_mobil?1.35:1.6));  /* 2.0 kostet 56% mehr Pixel als 1.6 und bringt kaum sichtbar mehr */renderer.setSize(W,H);
 /* 📱 PCFSoftShadowMap ist der teuerste Schattenfilter (mehrere Texture-Lookups pro Pixel).
    Auf dem Handy reicht der einfache PCF-Filter — sichtbar kaum ein Unterschied, spuerbar
    guenstiger. */
@@ -352,7 +352,22 @@ sun.shadow.camera.near=5;sun.shadow.camera.far=320;
 (function(){var _sr=(typeof _mobil!=="undefined"&&_mobil)?85:115;
   sun.shadow.camera.left=-_sr;sun.shadow.camera.right=_sr;sun.shadow.camera.top=_sr;sun.shadow.camera.bottom=-_sr;
   sun.shadow.camera.far=(typeof _mobil!=="undefined"&&_mobil)?180:320;})();
-function stdMat(c,rough){var m=new THREE.MeshStandardMaterial({color:c,roughness:rough!==undefined?rough:0.8});m.envMapIntensity=0.35;return m;}
+/* 🚀 Material-Cache. Gemessen waren 4071 Materialien fuer eine Handvoll echter
+   Erscheinungsbilder — jedes prozedurale Haus legte seine eigenen an. Jedes
+   Material ist ein eigenes Shader-Programm und verhindert jede Sortierung; das
+   ist der teuerste Posten in der Szene. Gleiche Farbe + gleiche Rauheit teilen
+   sich jetzt EIN Material.
+   ACHTUNG: Wer das Material danach noch veraendert (Textur anhaengen, Farbe
+   umsetzen), muss `stdMat(...,true)` mit `einzeln=true` anfordern — sonst faerbt
+   er alle Mitbenutzer mit um. */
+var _matCache={};
+function stdMat(c,rough,einzeln){
+  var r=rough!==undefined?rough:0.8;
+  if(einzeln){var m0=new THREE.MeshStandardMaterial({color:c,roughness:r});m0.envMapIntensity=0.35;return m0;}
+  var k=c+"_"+r;
+  var m=_matCache[k];
+  if(!m){m=new THREE.MeshStandardMaterial({color:c,roughness:r});m.envMapIntensity=0.35;_matCache[k]=m;}
+  return m;}
 // Prozedurale Struktur-Texturen gegen flache Einfarb-Flaechen
 function _strukTex(kind){var cv=document.createElement("canvas");cv.width=cv.height=128;var c=cv.getContext("2d");
   c.fillStyle="#9a9a9a";c.fillRect(0,0,128,128);
@@ -1070,7 +1085,7 @@ function _roadTex(){var cv=document.createElement("canvas");cv.width=cv.height=2
     for(var seg=0;seg<5;seg++){rx+=(Math.random()-0.5)*46;ry+=(Math.random()-0.5)*46;c.lineTo(rx,ry);}
     c.stroke();}
   return new THREE.CanvasTexture(cv);}
-var strMatH=stdMat(0x4a4a53,0.92),strMatV=stdMat(0x4a4a53,0.92);
+var strMatH=stdMat(0x4a4a53,0.92,true),strMatV=stdMat(0x4a4a53,0.92,true);  /* einzeln: laengs/quer eigene Textur */
 (function(){var a=_roadTex();a.wrapS=a.wrapT=THREE.RepeatWrapping;a.repeat.set(Math.round(RL/6),1);strMatH.map=a;strMatH.needsUpdate=true;
   var b=_roadTex();b.wrapS=b.wrapT=THREE.RepeatWrapping;b.repeat.set(1,Math.round(RL/6));strMatV.map=b;strMatV.needsUpdate=true;})();
 /* 🌊🚂 W2a (User: „See oder Meer mit Eisenbahnbrücke, grosse Landschaft"): Meer im Westen,
@@ -1164,7 +1179,7 @@ var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_d
     for(var i=0;i<=128;i+=32){c.beginPath();c.moveTo(i,0);c.lineTo(i,128);c.stroke();c.beginPath();c.moveTo(0,i);c.lineTo(128,i);c.stroke();}
     for(var s=0;s<400;s++){var v=(Math.random()*20)|0;c.fillStyle="rgba("+(150+v)+","+(146+v)+","+(136+v)+",0.05)";c.fillRect(Math.random()*128,Math.random()*128,2,2);}
     return new THREE.CanvasTexture(cv);}
-  var SZ9=GH*CS/2,tMat=stdMat(0xd4d1c8,0.9),tMatV=stdMat(0xd4d1c8,0.9);
+  var SZ9=GH*CS/2,tMat=stdMat(0xd4d1c8,0.9,true),tMatV=stdMat(0xd4d1c8,0.9,true);  /* einzeln */
   (function(){var s1=_walkTex();s1.wrapS=s1.wrapT=THREE.RepeatWrapping;s1.repeat.set(Math.round(RL/4),1);tMat.map=s1;tMat.needsUpdate=true;
     var s2=_walkTex();s2.wrapS=s2.wrapT=THREE.RepeatWrapping;s2.repeat.set(1,Math.round(RL/4));tMatV.map=s2;tMatV.needsUpdate=true;})();
   function tr(w,d,x,z,h){var t=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),w>d?tMat:tMatV);
@@ -1408,7 +1423,7 @@ var dorfFenster=[];
     var g=new THREE.Group();
     var w=4+(seed%3),d=3.6+((seed*7)%2),h=2.3+((seed*3)%2)*0.5;
     var wandC=WANDF[seed%WANDF.length],dachC=DACHF[seed%DACHF.length];
-    var bMat=stdMat(wandC,0.85);bMat.map=putzTex(w/2.2,h/2.2);(window._wandMats=window._wandMats||[]).push(bMat);
+    var bMat=stdMat(wandC,0.85,true);bMat.map=putzTex(w/2.2,h/2.2);   /* einzeln: bekommt eigene Textur */(window._wandMats=window._wandMats||[]).push(bMat);
     var sokl=new THREE.Mesh(new THREE.BoxGeometry(w+0.5,0.4,d+0.5),betMat(0xc4beb0,0.9));
     sokl.position.y=0.09;sokl.receiveShadow=true;sokl.castShadow=true;g.add(sokl); // Fundament (ueberstehend, versenkt) — Haus stand nackt im Gras
     var body=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),bMat);
@@ -1421,7 +1436,7 @@ var dorfFenster=[];
         for(var sx=((sy/8)%2)*8;sx<128;sx+=16){sc2.fillStyle="rgba(0,0,0,0.2)";sc2.fillRect(sx,sy,1,6);}}
       window._schindelTex=new THREE.CanvasTexture(scv);window._schindelTex.wrapS=window._schindelTex.wrapT=THREE.RepeatWrapping;window._schindelTex.repeat.set(2,3);}
     [[-1,1],[1,-1]].forEach(function(sgn){
-      var dMat=stdMat(dachC,0.75);dMat.map=window._schindelTex;
+      var dMat=stdMat(dachC,0.75,true);dMat.map=window._schindelTex;   /* einzeln: eigene Textur */
       var pl=new THREE.Mesh(new THREE.BoxGeometry(dl,0.14,d+0.5),dMat);
       pl.position.set(sgn[0]*w/4,h+0.6,0);pl.rotation.z=sgn[1]*Math.atan2(1.2,w/2);pl.castShadow=true;g.add(pl);});
     var giebel=new THREE.Mesh(new THREE.CylinderGeometry(0.01,w/2*0.98,1.15,3,1),stdMat(wandC,0.85));
@@ -1446,7 +1461,7 @@ var dorfFenster=[];
     var g=new THREE.Group(),bx=0;
     for(var k=0;k<n;k++){
       var bw=5.2+((k*7)%3)*0.9,et=2+((k*5)%3),hh=et*2.5+0.5,dep=7.2;
-      var wm=stdMat(ZF[(k*3)%ZF.length],0.86);wm.map=putzTex(bw/2.2,hh/2.2);(window._wandMats=window._wandMats||[]).push(wm);
+      var wm=stdMat(ZF[(k*3)%ZF.length],0.86,true);wm.map=putzTex(bw/2.2,hh/2.2);   /* einzeln */(window._wandMats=window._wandMats||[]).push(wm);
       var kp=new THREE.Mesh(new THREE.BoxGeometry(bw,hh,dep),wm);
       kp.position.set(bx+bw/2,hh/2,0);kp.castShadow=true;kp.receiveShadow=true;g.add(kp);
       var bas=new THREE.Mesh(new THREE.BoxGeometry(bw+0.2,0.7,dep+0.2),betMat(0xbdb7a9,0.9));
@@ -1579,7 +1594,7 @@ var dorfFenster=[];
   /* 🚶 Hinterhof-Gehweg zwischen Haeuserzeile (±(SZ+31)) und 2. Reihe (±(SZ+47)):
      der Streifen dazwischen war blanke Wiese (User: „hinten auch ... gehweg?"). */
   (function hinterweg(){
-    var wM=stdMat(0xd0cdc4,0.9);
+    var wM=stdMat(0xd0cdc4,0.9,true);   /* einzeln: bekommt Kopfstein-Textur nachgeladen */
     if(typeof ladeTex==="function")ladeTex("textures/th5/kopfstein.png",30,1,function(t){wM.map=t;wM.color.setHex(0xffffff);wM.needsUpdate=true;});
     [-(SZ+39),SZ+39].forEach(function(wz){
       var w=new THREE.Mesh(new THREE.PlaneGeometry(96,2.4),wM);
@@ -1622,7 +1637,7 @@ var dorfFenster=[];
     var _q=wegVonStrasse(x,z);x=_q[0];z=_q[1];
     var g=new THREE.Group();
     var h=etagen*1.9+0.4;
-    var blkM=stdMat(farbe,0.88);blkM.map=putzTex(w/2.6,h/2.6);(window._wandMats=window._wandMats||[]).push(blkM);
+    var blkM=stdMat(farbe,0.88,true);blkM.map=putzTex(w/2.6,h/2.6);   /* einzeln */(window._wandMats=window._wandMats||[]).push(blkM);
     var body=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),blkM);
     body.position.y=h/2;body.castShadow=true;body.receiveShadow=true;g.add(body);
     var att=new THREE.Mesh(new THREE.BoxGeometry(w+0.3,0.25,d+0.3),betMat(0x8a8a88,0.8));
@@ -1666,7 +1681,7 @@ var dorfFenster=[];
   block(-60,SZ+42,Math.PI/2,3,9,7,0xd0c8ba);block(60,SZ+44,-Math.PI/2,3,9,7,0xc8bcae);
   // Kirche mit Turm + Spitze
   (function(){var g=new THREE.Group();
-    var kirchM=stdMat(0xe8e2d4,0.85);
+    var kirchM=stdMat(0xe8e2d4,0.85,true);   /* einzeln: bekommt Backstein nachgeladen */
     ladeTex("textures/th/backstein.jpg",3,2,function(t){kirchM.map=t;kirchM.color.setHex(0xd8cfc0);kirchM.needsUpdate=true;});
     /* 🚪 W2b: Kirche BEGEHBAR — Wände mit Türöffnung statt massiver Box + eingerichteter Innenraum */
     function kw(w,h,d,x,y,z){var m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),kirchM);m.position.set(x,y,z);m.castShadow=true;m.receiveShadow=true;g.add(m);return m;}
@@ -5916,12 +5931,104 @@ function loop(now){
         if(wa9.length)netSend({t:"wachs",a:wa9});}}}
     saveTick+=dt;if(saveTick>6){saveTick=0;saveGame();}
   }
+  if(!_lodBereit&&performance.now()>4000){lodAufbau();autoKollider();}
+  else if(_lodBereit&&(++_lodTick%8===0)){var _p=spielerPos();lodTakt(_p.x,_p.z);}
   renderer.render(scene,camera);
 }
 requestAnimationFrame(loop);
 addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);});
 window.__CAM=function(x,z,r,b){followSim=null;camTx=x;camTz=z;camRT=r;camR=r;camB=b;updCam();};
+/* 🚀 ENTFERNUNGS-AUSBLENDUNG. Gemessen: 21 671 Meshes, davon 1001 pro Frame
+   gezeichnet — der Grossteil sind kleine Requisiten (Blumen, Zaunlatten, Moebel),
+   die auf 100 m Entfernung ohnehin ein Pixel gross sind. Sie kosten trotzdem je
+   einen vollen Zeichenaufruf.
+   Kleine Objekte werden deshalb ab `NAH` ausgeblendet, grosse bleiben bis `FERN`
+   sichtbar — Landmarken wie Riesenrad und Windmuehle duerfen NICHT verschwinden,
+   die stehen 190 m weit draussen und sind der halbe Reiz der Karte.
+   Die Liste wird EINMAL aufgebaut; pro Frame laeuft nur ein Abstandsquadrat je
+   Eintrag, und das auch nur alle 8 Frames. */
+/* 🧱 AUTOMATISCHE KOLLIDER. Gemessen: 91 handgepflegte Kollider fuer 137 Baukoerper
+   im begehbaren Bereich — ganze Haeuserzeilen bei z = +-77 hatten gar keinen, man
+   lief mitten durch. Statt die Liste weiter von Hand zu fuehren, werden Kollider
+   aus den GEBAUTEN Meshes abgeleitet.
+   Bewusst konservativ:
+     * nur Meshes mit >= 5 m Grundflaeche UND >= 2,2 m Hoehe (Waende, keine Platten),
+     * nur ausserhalb des Baugrundstuecks (dort baut der Spieler selbst),
+     * und NUR, wenn in der Naehe noch gar kein Kollider steht. Ein zusaetzlicher
+       Kollider ueber einem handgesetzten wuerde dessen TUERLUECKE zumauern und ein
+       begehbares Haus versiegeln — genau das darf nicht passieren.
+   Pro Standort gewinnt die KLEINSTE Grundflaeche: die grosse gehoert meist zur
+   Bodenplatte, die kleine zur Wand. */
+function autoKollider(){
+  var bb=new THREE.Box3(),v=new THREE.Vector3(),kand={},n=0;
+  var PX=GW*CS/2+10, PZ=GH*CS/2+10;                  /* Baugrundstueck aussparen */
+  scene.traverse(function(o){
+    if(!o.isMesh||!o.geometry)return;
+    bb.setFromObject(o);
+    if(!isFinite(bb.min.x))return;
+    var bx=bb.max.x-bb.min.x, bz=bb.max.z-bb.min.z, hy=bb.max.y-Math.max(0,bb.min.y);
+    if(bx<5||bz<5||bx>40||bz>40||hy<2.2||bb.max.y>18)return;
+    bb.getCenter(v);
+    if(Math.abs(v.x)<PX&&Math.abs(v.z)<PZ)return;
+    if(Math.abs(v.x)>130||Math.abs(v.z)>130)return;
+    var k=Math.round(v.x/3)+"_"+Math.round(v.z/3);
+    var e=kand[k];
+    if(!e||bx*bz<e.bx*e.bz)kand[k]={x:v.x,z:v.z,bx:bx,bz:bz};
+  });
+  Object.keys(kand).forEach(function(k){
+    var c=kand[k],nah=false,gr=Math.max(c.bx,c.bz)*0.6;
+    for(var i=0;i<WORLD_SOLIDS.length;i++){var s0=WORLD_SOLIDS[i];
+      if(Math.abs(s0.x-c.x)<gr&&Math.abs(s0.z-c.z)<gr){nah=true;break;}}
+    if(nah)return;                                    /* schon versorgt — Tuer nicht zumauern */
+    addSolid(c.x,c.z,c.bx,c.bz,null);n++;
+  });
+  return n;
+}
+
+var _lodKlein=[],_lodTick=0,_lodBereit=false;
+function lodAufbau(){
+  _lodKlein.length=0;
+  var mitte=new THREE.Vector3(),kugel;
+  scene.traverse(function(n){
+    if(!n.isMesh||!n.geometry)return;
+    if(n.userData&&n.userData.nieAusblenden)return;
+    if(!n.geometry.boundingSphere)n.geometry.computeBoundingSphere();
+    kugel=n.geometry.boundingSphere;if(!kugel)return;
+    var sk=Math.max(Math.abs(n.scale.x),Math.abs(n.scale.y),Math.abs(n.scale.z));
+    var r=kugel.radius*sk;
+    if(r>2.2)return;                       /* gross genug -> immer sichtbar */
+    n.getWorldPosition(mitte);
+    _lodKlein.push({m:n,x:mitte.x,z:mitte.z});
+  });
+  _lodBereit=true;
+  return _lodKlein.length;
+}
+function lodTakt(px,pz){
+  if(!_lodBereit)return;
+  var NAH=78*78;
+  for(var i=0;i<_lodKlein.length;i++){
+    var e=_lodKlein[i],dx=e.x-px,dz=e.z-pz;
+    var sicht=(dx*dx+dz*dz)<NAH;
+    if(e.m.visible!==sicht)e.m.visible=sicht;
+  }
+}
+
 window.__ZEIT=function(u){uhrzeit=u;};
+/* 🔍 Debug-Haken wie in den anderen Spielen (__zs/__np/__lp). Ohne ihn kommt man
+   von aussen weder an Szene noch Renderer: three.js legt `render` als INSTANZ-
+   Eigenschaft an, ein Prototyp-Hook greift also nicht. */
+window.__th={
+  scene:function(){return scene;}, renderer:function(){return renderer;},
+  camera:function(){return camera;},
+  last:function(){var r=renderer.info;return {zeichenaufrufe:r.render.calls,
+    dreiecke:r.render.triangles, texturen:r.memory.textures, geometrien:r.memory.geometries,
+    schatten:renderer.shadowMap.enabled};},
+  solids:function(){return WORLD_SOLIDS.length;},
+  frei:function(x,z){return !inSolid(x,z);},
+  tp:function(x,z){var m=sims[0];if(m){m.x=x;m.z=z;m.mesh.position.set(x,m.mesh.position.y,z);}
+    camTx=x;camTz=z;updCam();},
+  ego:function(an){egoMode=!!an;}
+};
 })();
 </script>
 </body>
