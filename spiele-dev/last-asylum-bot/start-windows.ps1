@@ -19,7 +19,11 @@ param(
     [switch]$Dauerlauf,
     [int]$Minuten = 0,
     [string]$Adb = "",
-    [string]$Serial = ""
+    [string]$Serial = "",
+    # Notausgang: startet ohne das Holen des neuen Standes. Wenn das Update je
+    # der Grund sein sollte, dass gar nichts mehr laeuft, kommt man hiermit
+    # sofort wieder ins Spiel.
+    [switch]$UeberspringeUpdate
 )
 
 $ErrorActionPreference = "Stop"
@@ -29,6 +33,40 @@ function Schritt($text) { Write-Host "`n=== $text ===" -ForegroundColor Cyan }
 function Gut($text)     { Write-Host "  OK  $text" -ForegroundColor Green }
 function Warnung($text) { Write-Host "  !   $text" -ForegroundColor Yellow }
 function Fehler($text)  { Write-Host "  X   $text" -ForegroundColor Red }
+
+# git-Ausgabe als schlichter Text - nie $null, nie eine Ausnahme. Ohne das
+# stolpert der Aufrufer ueber .Trim() auf einem leeren Ergebnis.
+function Git-Text {
+    param([Parameter(ValueFromRemainingArguments = $true)] $Argumente)
+    try {
+        $zeilen = & git -C $PSScriptRoot @Argumente 2>$null
+    } catch {
+        return ""
+    }
+    if ($null -eq $zeilen) { return "" }
+    return (($zeilen | Out-String) -replace "`r", "").Trim()
+}
+
+# git mit harter Zeitgrenze. Fragt git trotz GIT_TERMINAL_PROMPT doch einmal
+# nach etwas, oder haengt das Netz, wartet hier nichts endlos - der Bot soll
+# spielen, nicht auf eine Eingabeaufforderung starren, die niemand sieht.
+# Gibt $true zurueck, wenn der Befehl in der Zeit sauber durchlief.
+function Git-MitZeitlimit {
+    param([string[]]$Argumente, [int]$Sekunden = 120)
+    try {
+        # Nur -NoNewWindow: zusammen mit -WindowStyle wehrt PowerShell den
+        # Aufruf ab ("Parameter set cannot be resolved").
+        $p = Start-Process -FilePath "git" -PassThru -NoNewWindow `
+             -ArgumentList (@("-C", $PSScriptRoot) + $Argumente)
+    } catch {
+        return $false
+    }
+    if (-not $p.WaitForExit($Sekunden * 1000)) {
+        try { $p.Kill() } catch { }
+        return $false
+    }
+    return ($p.ExitCode -eq 0)
+}
 
 # ---------------------------------------------------------------- Python finden
 Schritt "Python"
@@ -200,31 +238,50 @@ if ($paket -and $paket -notmatch "com.phs.global") {
 # aber der einzige Moment, in dem jemand nachschaut. Also hier zuerst holen,
 # damit ein einziger Start alles mitnimmt, was seither dazugekommen ist.
 Schritt "Neuen Stand holen"
-# git schreibt auch Harmloses nach stderr ("Already up to date", Hinweise zum
-# Upstream). Oben steht $ErrorActionPreference = "Stop" - damit kann genau das
-# den ganzen Start abbrechen, obwohl nichts kaputt ist. Fuer diesen Block also
-# bewusst weicher, danach zurueck auf Stop.
-$fehlerregelVorher = $ErrorActionPreference
-$ErrorActionPreference = "Continue"
-$vorher  = (& git -C $PSScriptRoot rev-parse --short HEAD 2>$null | Select-Object -First 1)
-& git -C $PSScriptRoot pull --ff-only 2>&1 | Out-Null
-$nachher = (& git -C $PSScriptRoot rev-parse --short HEAD 2>$null | Select-Object -First 1)
-$offen   = (& git -C $PSScriptRoot status --porcelain 2>$null | Out-String).Trim()
-$ErrorActionPreference = $fehlerregelVorher
+# GRUNDREGEL: Dieser Block ist eine Bequemlichkeit. Er darf den Start NIE
+# verhindern - lieber mit altem Stand spielen als gar nicht. Darum liegt alles
+# in try/finally, und der Bot laeuft danach in jedem Fall weiter.
+#
+# Zwei Fallen stecken hier drin, beide unsichtbar:
+#  1) git fragt nach Zugangsdaten und wartet. In einem minimierten Fenster
+#     sieht das niemand - der Bot "laeuft einfach nicht", ohne Fehlermeldung.
+#     GIT_TERMINAL_PROMPT=0 laesst git stattdessen scheitern.
+#  2) Oben steht $ErrorActionPreference = "Stop". git schreibt auch Harmloses
+#     nach stderr; das allein kann den ganzen Start abbrechen.
+if (-not $UeberspringeUpdate) {
+    $fehlerregelVorher = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
+    $env:GIT_TERMINAL_PROMPT = "0"      # niemals nach Passwort fragen
+    $env:GCM_INTERACTIVE = "never"      # auch der Windows-Credential-Manager nicht
+    try {
+        $vorher = Git-Text "rev-parse" "--short" "HEAD"
+        $zug = Git-MitZeitlimit @("pull", "--ff-only") 120
+        $nachher = Git-Text "rev-parse" "--short" "HEAD"
+        $offen = Git-Text "status" "--porcelain"
 
-if (-not $nachher) {
-    Warnung "Kein Git-Ordner - der Bot laeuft mit dem Stand, der hier liegt."
-} elseif ($vorher -ne $nachher) {
-    Gut "Neue Fassung geholt: $vorher -> $nachher"
-} else {
-    if ($offen) {
-        # Die stille Falle: eine geaenderte Datei blockiert jedes kuenftige
-        # Update, und ohne Hinweis merkt das niemand.
-        Warnung "Geaenderte Dateien blockieren neue Fassungen - so raeumt man auf:"
-        Write-Host "     git -C `"$PSScriptRoot`" checkout -- . ; git -C `"$PSScriptRoot`" pull"
-    } else {
-        Gut "Stand ist aktuell ($nachher)"
+        if (-not $nachher) {
+            Warnung "Kein Git-Ordner - der Bot laeuft mit dem Stand, der hier liegt."
+        } elseif (-not $zug) {
+            Warnung "Holen hat zu lange gedauert oder brauchte ein Passwort - alter Stand, es geht weiter."
+            Write-Host "     Einmal von Hand pruefen: git -C `"$PSScriptRoot`" pull"
+        } elseif ($vorher -ne $nachher) {
+            Gut "Neue Fassung geholt: $vorher -> $nachher"
+        } elseif ($offen) {
+            # Die stille Falle: eine geaenderte Datei blockiert jedes kuenftige
+            # Update, und ohne Hinweis merkt das niemand.
+            Warnung "Geaenderte Dateien blockieren neue Fassungen - so raeumt man auf:"
+            Write-Host "     git -C `"$PSScriptRoot`" checkout -- . ; git -C `"$PSScriptRoot`" pull"
+        } else {
+            Gut "Stand ist aktuell ($nachher)"
+        }
+    } catch {
+        Warnung "Neuen Stand holen ging schief - der Bot startet trotzdem."
+        Write-Host "     $($_.Exception.Message)"
+    } finally {
+        $ErrorActionPreference = $fehlerregelVorher
     }
+} else {
+    Warnung "Update uebersprungen (-UeberspringeUpdate)."
 }
 
 # ------------------------------------------------------------------- Auftraege

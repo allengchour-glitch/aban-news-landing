@@ -2335,6 +2335,19 @@ class TestLebenszeichen(unittest.TestCase):
         eng.stats = {"tap": 7, "task:sammeln": 3}
         return eng
 
+
+    def test_git_fragt_nie_nach_zugangsdaten(self):
+        """Ein wartender Passwort-Dialog sieht aus wie ein toter Bot.
+
+        git blockiert bei fehlenden Zugangsdaten, bis das Zeitlimit greift -
+        alle zehn Minuten, ohne dass irgendwo ein Fehler steht.
+        """
+        umgebung = Engine._git_umgebung()
+        self.assertEqual(umgebung.get("GIT_TERMINAL_PROMPT"), "0")
+        self.assertEqual(umgebung.get("GCM_INTERACTIVE"), "never")
+        self.assertIn("PATH", {k.upper(): v for k, v in umgebung.items()},
+                      "die uebrige Umgebung muss erhalten bleiben")
+
     def test_datei_entsteht_und_nennt_den_stand(self):
         import tempfile
         with tempfile.TemporaryDirectory() as ordner:

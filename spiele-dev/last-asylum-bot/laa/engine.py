@@ -831,6 +831,20 @@ class Engine:
             eigene_groessen=len(self.cfg.template_skalen),
         )
 
+    @staticmethod
+    def _git_umgebung() -> Dict[str, str]:
+        """Umgebung fuer jeden git-Aufruf: niemals nach Zugangsdaten fragen.
+
+        Fragt git nach Benutzer und Passwort, wartet es auf eine Eingabe, die
+        hier nie kommt - der Aufruf haengt bis zum Zeitlimit, und das alle paar
+        Minuten. Von aussen sieht der Bot dann eingefroren aus, ohne dass
+        irgendwo ein Fehler steht. Lieber sauber scheitern.
+        """
+        umgebung = dict(os.environ)
+        umgebung["GIT_TERMINAL_PROMPT"] = "0"
+        umgebung["GCM_INTERACTIVE"] = "never"
+        return umgebung
+
     def _lebenszeichen(self, spec: Dict[str, Any]) -> None:
         """Kurz ins Repository schreiben, dass der Bot lebt - und was er tut.
 
@@ -846,8 +860,8 @@ class Engine:
         ziel = os.path.join(wurzel, "austausch", "lauf.json")
 
         def git(*rest):
-            return subprocess.run(["git", "-C", wurzel, *rest],
-                                  capture_output=True, timeout=120)
+            return subprocess.run(["git", "-C", wurzel, *rest], capture_output=True,
+                                  timeout=120, env=self._git_umgebung())
 
         # Ein abstuerzender Bot startet jede Minute neu. Ohne Sperre schriebe
         # er dann jede Minute einen Commit - genau dann, wenn ohnehin niemand
@@ -946,15 +960,16 @@ class Engine:
 
         wurzel = spec.get("verzeichnis") or self.cfg.root
         try:
+            umgebung = self._git_umgebung()
             vorher = subprocess.run(["git", "-C", wurzel, "rev-parse", "HEAD"],
-                                    capture_output=True, timeout=60)
+                                    capture_output=True, timeout=60, env=umgebung)
             if vorher.returncode != 0:
                 self.log.debug("Kein Git-Verzeichnis - kein Selbst-Update")
                 return
             hole = subprocess.run(["git", "-C", wurzel, "pull", "--ff-only"],
-                                  capture_output=True, timeout=180)
+                                  capture_output=True, timeout=180, env=umgebung)
             nachher = subprocess.run(["git", "-C", wurzel, "rev-parse", "HEAD"],
-                                     capture_output=True, timeout=60)
+                                     capture_output=True, timeout=60, env=umgebung)
         except Exception as exc:  # pragma: no cover - Netz/Umgebung
             self.log.warn(f"Selbst-Update nicht moeglich: {exc}")
             return
