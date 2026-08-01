@@ -1191,9 +1191,33 @@ var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_d
       tr(2*(RX-5),2.2,0,z9,0.06);       // Mittelteil zwischen den Querstrassen
       tr(LR,2.2,-(RB+LR/2),z9,0.06);    // West-Rand
       tr(LR,2.2,(RB+LR/2),z9,0.06);});});// Ost-Rand
-  [RX,-RX].forEach(function(xc){ // Querstrassen: nur zwischen den Hauptstrassen (endet an deren Kante)
-    tr(2.2,2*SZ9+14,xc-6.1,0,0.05);
-    tr(2.2,2*SZ9+14,xc+6.1,0,0.05);});
+  [RX,-RX].forEach(function(xc){ // Querstrassen: enden EXAKT an der Fahrbahnkante der
+    // Hauptstrasse. Vorher 2*SZ9+14 = 106 -> Ende bei +-53, die Hauptstrasse (16 breit,
+    // Mitte z=+-58) beginnt aber schon bei 50: der Gehweg ragte 3 m in die Kreuzung.
+    tr(2.2,2*(SZ9+12)-16,xc-6.1,0,0.05);
+    tr(2.2,2*(SZ9+12)-16,xc+6.1,0,0.05);});
+  /* 🛣️ Kreuzungsflaechen: eine eigene Platte knapp UEBER den beiden Fahrbahnen deckt
+     die Naht ab (zwei gleich hohe Ebenen flimmern gegeneinander), und Haltelinien
+     geben der leeren Flaeche eine Ordnung. */
+  (function kreuzungen(){
+    /* Die Platte muss die Fahrbahn-TEXTUR tragen, sonst liegt ein glatter, hellerer
+       Fleck mitten auf der Kreuzung — eine reine Farbflaeche wirkt neben der
+       texturierten Strasse immer heller. Die Textur wird geklont, damit sie eine
+       eigene Wiederholung bekommen kann. */
+    var kMat=stdMat(0x4a4a53,0.92,true);
+    if(strMatH&&strMatH.map){var kt=strMatH.map.clone();kt.needsUpdate=true;
+      kt.wrapS=kt.wrapT=THREE.RepeatWrapping;kt.repeat.set(1.7,2.7);kMat.map=kt;}
+    var wMat=stdMat(0xd8d8cc,0.75);wMat.envMapIntensity=0.12;
+    [RX,-RX].forEach(function(xc){ [SZ9+12,-(SZ9+12)].forEach(function(zc){
+      var k=new THREE.Mesh(new THREE.PlaneGeometry(10,16),kMat);
+      k.rotation.x=-Math.PI/2;k.position.set(xc,0.002,zc);k.receiveShadow=true;scene.add(k);
+      /* Haltelinien: quer zur jeweiligen Zufahrt, knapp vor der Kreuzung */
+      [[xc-5.6,zc,0.3,7.2],[xc+5.6,zc,0.3,7.2],      /* Ost/West-Zufahrt (Hauptstrasse) */
+       [xc,zc-8.6,7.2,0.3],[xc,zc+8.6,7.2,0.3]].forEach(function(h){
+        var l=new THREE.Mesh(new THREE.PlaneGeometry(h[2],h[3]),wMat);
+        l.rotation.x=-Math.PI/2;l.position.set(h[0],0.008,h[1]);scene.add(l);});
+    });});
+  })();
   // Bordsteine an den Fahrbahnkanten + weicher Erdstreifen zwischen Gehweg und Rasen
   var bordM=betMat(0xbfbcb2,0.85);
   if(!_texErde)_texErde=_strukTex("erde");
@@ -1840,7 +1864,13 @@ var dorfFenster=[];
       // Parzelle: Lattenzaun (18x14), Gartenweg, Einfahrt, Hecken, Baum
       function zaun(w9,d9,zx,zz){var zn=new THREE.Mesh(new THREE.BoxGeometry(w9,0.7,d9),zaunM);zn.position.set(zx,0.35,zz);g.add(zn);}
       zaun(18,0.14,0,-7);zaun(0.14,14,-9,0);zaun(0.14,14,9,0);
-      zaun(6.6,0.14,-5.7,7);zaun(4.6,0.14,6.7,7); // Luecken: Gartentor + Einfahrt
+      /* Vorderzaun mit ZWEI echten Luecken. Vorher lief das rechte Segment von
+         x = +4,4 bis +9,0 — die Garage steht aber bei x = +5,7 und ihre Einfahrt ist
+         3,0 m breit (4,2 bis 7,2): der Zaun stand also mitten in der Einfahrt.
+         Jetzt: Gartentor bei x = -1,4 … +1,4, Einfahrt bei +4,2 … +7,2. */
+      zaun(7.6,0.14,-5.2,7);    // -9,0 … -1,4
+      zaun(2.8,0.14, 2.8,7);    // +1,4 … +4,2  (zwischen Gartentor und Einfahrt)
+      zaun(1.8,0.14, 8.1,7);    // +7,2 … +9,0
       var weg=new THREE.Mesh(new THREE.PlaneGeometry(1.3,8.8),einfM);weg.rotation.x=-Math.PI/2;weg.position.set(0,0.012,7.6);weg.receiveShadow=true;g.add(weg); // bis ans Trottoir
       var einf=new THREE.Mesh(new THREE.PlaneGeometry(3.0,9.2),einfM);einf.rotation.x=-Math.PI/2;einf.position.set(5.7,0.012,7.3);einf.receiveShadow=true;g.add(einf); // Einfahrt bis zur Strasse
       [-6.5,-3.2].forEach(function(hx){var he=new THREE.Mesh(new THREE.BoxGeometry(2.6,0.55,0.5),heckM);he.position.set(hx,0.28,6.4);he.castShadow=true;g.add(he);});
