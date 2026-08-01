@@ -6108,7 +6108,10 @@ window.__th={
     return b&&b.style.display==='block'?b.textContent:null;},
   einsteigen:function(){fahrtEinsteigen();return !!_fahrt;},
   fahrtStand:function(){return _fahrt?{t:+_fahrt.t.toFixed(2),
-    hoehe:+(window._camHebung||0).toFixed(2),typ:_fahrt.f.typ}:null;}
+    hoehe:+(window._camHebung||0).toFixed(2),typ:_fahrt.f.typ}:null;},
+  aussteigen:function(){fahrtAussteigen();},
+  bahnProfil:function(typ){var A=FAHRT_ART[typ],o={x:0,z:0},r=[];
+    for(var i=0;i<=10;i++)r.push(+A.bahn(i/10,o).y.toFixed(1));return r;}
 };
 })();
 </script>
