@@ -211,8 +211,12 @@ public static extern uint SetThreadExecutionState(uint esFlags);
         if (-not ("Win32.Schlaf" -as [type])) {
             Add-Type -Name Schlaf -Namespace Win32 -MemberDefinition $signatur | Out-Null
         }
-        # ES_CONTINUOUS | ES_SYSTEM_REQUIRED
-        [void][Win32.Schlaf]::SetThreadExecutionState(0x80000000 -bor 0x00000001)
+        # ES_CONTINUOUS (0x80000000) | ES_SYSTEM_REQUIRED (0x1) = 2147483649.
+        # Nicht als Hex schreiben: PowerShell liest 0x80000000 als vorzeichen-
+        # behaftete 32-Bit-Zahl, also als -2147483648. Nach dem Oder kommt
+        # -2147483647 heraus, und eine negative Zahl passt in kein UInt32 -
+        # genau daran ist es am 01.08. gescheitert.
+        [void][Win32.Schlaf]::SetThreadExecutionState([uint32]2147483649)
         Gut "Ruhezustand ausgesetzt, solange der Bot laeuft."
     } catch {
         Warnung "Ruhezustand liess sich nicht aussetzen: $($_.Exception.Message)"
