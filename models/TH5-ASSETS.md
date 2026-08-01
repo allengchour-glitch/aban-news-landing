@@ -679,6 +679,84 @@ liest sich als Treppe).
 
 Generator: `tools/assets/mk_th25_flughafen.py`
 
+
+## 1z. Charge 32 — FREIZEITPARK-ERWEITERUNG (`models/th32_*.glb`)
+
+Baut auf Charge 9 (`th13_*`, Jahrmarkt) auf. **Mit Animation und Texturen.**
+
+| Datei | Maße (B×T×H) | Animation | Hinweis |
+|---|---|---|---|
+| `th32_achterbahn_kurve.glb` | 7,9 × 7,3 × 6,8 | — | **90°-Kurve auf 12×12-Kachel** |
+| `th32_achterbahn_station.glb` | 13,2 × 10,6 × 10,7 | — | **12,0 m lang**, Bahnsteig, Dach, Pult |
+| `th32_kettenkarussell.glb` | 18,4 × 18,4 × 14,9 | `DrehkranzAction` (8,3 s) | 16 Sitze, ausgestellt |
+| `th32_piratenschiff.glb` | 20,0 × 13,0 × 13,2 | `PendelAction` (6,2 s) | Schiffsschaukel ±34° |
+| `th32_teetassen.glb` | 17,0 × 17,0 × 8,6 | 4 Clips (8,3 s) | Teller + 3 **gegenläufige** Unterteller |
+| `th32_wildwasserbahn.glb` | 30,7 × 22,7 × 12,0 | — | Liftberg, Sturzrinne, Becken, 2 Boote |
+| `th32_geisterbahn.glb` | 20,0 × 16,7 × 13,0 | — | Ein-/Ausfahrt, kindgerecht (kein Blut) |
+| `th32_parkeingang.glb` | 27,8 × 10,0 × 13,9 | 4 × `DrehkreuzN` (10 s) | Torbogen, 4 Kassen, Drehkreuze |
+
+Generatoren: `tools/assets/mk_th32_freizeitpark.py` · `tools/assets/mk_th32_texturen.py`
+
+### 🎢 Schienen-Schnittstelle (der Grund für diese Charge)
+`th13_achterbahn_modul` konnte nur geradeaus. Kurve und Station bedienen exakt dieselbe
+Schnittstelle, damit sich daraus eine Strecke legen lässt:
+
+```
+Fahrbahnmitte y = 0 · Schienenpaar y = ±0,62 · Profil 0,15 × 0,15
+Mittelrohr 0,28 unter der Schienenmitte · Schienen-Mittelhöhe z = 6,60 · Steigung 0
+```
+
+> ⚠️ **Die Kurve wird an der KACHELMITTE verankert, nicht an ihrer Bounding-Box-Mitte.**
+> Sie belegt die Kachel `x,y ∈ [−6, +6]`, ihr Bogen läuft aber nur durch einen Quadranten
+> (Bogenmitte (−6, +6), Radius 6,0) — die Bounding-Box ist deshalb nur 7,9 × 7,3 groß und
+> liegt **außermittig**. Wer das Modell auf seine eigene Box zentriert, verschiebt die
+> Gleisenden und die Kachel passt nicht mehr. Ein-/Austritt liegen bei (−6, 0) und (0, +6).
+
+### 🎬 Animationen
+Die GLB tragen echte glTF-Animationen; im Spiel wie bei den Charakteren abspielen:
+`mixer = new THREE.AnimationMixer(gltf.scene); gltf.animations.forEach(a => mixer.clipAction(a).play())`.
+
+> ⚠️ **glTF speichert Rotationen als Quaternion.** Zwei Keyframes 0° → 360° sind für den
+> Interpolator identisch — der Spieler sieht **keine** Drehung. Jede Umdrehung wird deshalb
+> in Viertelschritte zerlegt (`dreh_anim()`).
+> ⚠️ **Blender 5 hat die Action-API auf Layer/Slots umgestellt** — `action.fcurves` gibt es
+> nicht mehr. Die Interpolation wird über `preferences.edit.keyframe_new_interpolation_type`
+> gesetzt (LINEAR für Dauerdrehung, BEZIER für das Pendel).
+> ⚠️ Beim Parenten muss `matrix_parent_inverse` gesetzt werden, sonst springt jedes Kind um
+> die Elternposition — der Kettenflieger stand 11 m über seinem Mast.
+
+### 🎨 Texturen (`textures/th32/*.png`)
+512×512, **nahtlos**, geprüft per Kennzahl (Randsprung ÷ Innensprung ≤ 1,5) **und** per
+2×2-Kachelbogen — die Kennzahl allein genügt nicht.
+
+| Datei | Wofür |
+|---|---|
+| `zeltbahn.png` | Markisen, Stationsdach, Schirme (rot-weiß gestreift) |
+| `bohlen.png` | Bahnsteig, Bootsdeck, Stege |
+| `riffelblech.png` | Stahlstege, Gitterroste |
+| `parkpflaster.png` | Wege und Bodenplatten |
+| `wasser.png` | Becken, Rinnen |
+| `lichterband.png` | Leuchtbänder an Fassaden und Bogen |
+
+Die Texturen sind **im GLB eingebettet** (`mat_bild()`), das Spiel braucht keine Extra-Verdrahtung.
+
+> ⚠️ **Fallen bei den Texturen:**
+> * **Die Zellenzahl muss 512 teilen.** Mit 6 Zellen ergibt 512/6 = 85,33 px — die letzte
+>   Reihe wird abgeschnitten und die Kante reißt auf (gemessene Kennzahl 20,3).
+> * **Ein Muster-Index muss umlaufen** (`% BOHLEN`), sonst bekommt die letzte Bohle einen
+>   anderen Farbton als die erste der Nachbarkachel.
+> * **Fuge/Farbwechsel nicht auf die Kachelkante legen.** Das kachelt zwar korrekt, die
+>   Textur ist dann aber nur noch gekachelt brauchbar. Ein Viertel Zelle Versatz löst es.
+> * **`giebel()` baut sein Mesh mit `from_pydata` und hat deshalb keine UVs.** Eine
+>   Bildtextur trifft dann überall denselben Pixel → einfarbige Fläche (das Stationsdach
+>   war rot statt gestreift). Der Helfer legt jetzt UVs aus den Punktkoordinaten an.
+> * **`read_factory_settings()` macht geladene Bilder ungültig.** Ein Image-Cache über
+>   mehrere Modelle hinweg muss in `neu()` geleert werden, sonst
+>   „StructRNA of type Image has been removed".
+> * Prozedurale Koordinaten-Knoten (`Generated`/`Object`) exportiert glTF **nicht** —
+>   gekachelt wird über echte UVs (`uv_kacheln()` skaliert sie mit den Objektmaßen).
+
+---
 ## 1w. Charge 26 — BERGWELT (`models/th26_*.glb`)
 
 Ein eigenes Biom für die Openworld.
