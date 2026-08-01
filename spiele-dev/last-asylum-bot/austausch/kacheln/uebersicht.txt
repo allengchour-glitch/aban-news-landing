@@ -1,4 +1,4 @@
-Quelle: versammlung.png  (1440x2560)
+Quelle: schild.png  (1440x2560)
 
 Kachel      x0     y0   Breite   Hoehe
 z1s1.png        0      0      480     640
