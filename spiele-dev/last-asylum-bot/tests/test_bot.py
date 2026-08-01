@@ -2211,5 +2211,79 @@ class TestEchteTemplates(unittest.TestCase):
         self.assertGreaterEqual(gefunden, 8)
 
 
+class TestEchterBestaetigenDialog(unittest.TestCase):
+    """Gegen einen echten Bildschirm gemessen, nicht gegen eine Vermutung.
+
+    austausch/schild.png zeigt den Abbruch-Dialog "Verbindung waehrend des
+    Login-Vorgangs unterbrochen [1019]" mit einem einzelnen goldenen
+    Bestaetigen-Knopf. Der Bot stand davor, ohne ihn zu treffen: der Knopf ist
+    0.068 hoch (die Regel liess 0.06 zu) und nur zu 45 % golden, weil die weisse
+    Schrift und das Funkeln den Rest belegen (die Regel verlangte 60 %).
+
+    Beide Schranken waren geraten. Dieser Test misst sie am Bild nach, damit
+    niemand sie wieder zudreht.
+    """
+
+    BILD = os.path.join(ROOT, "austausch", "schild.png")
+
+    def setUp(self):
+        if not os.path.exists(self.BILD):
+            self.skipTest("austausch/schild.png liegt nicht vor")
+        self.screen = Image.load(self.BILD)
+        self.cfg = json.load(open(os.path.join(ROOT, "config", "last-asylum.json"),
+                                  encoding="utf-8"))
+
+    def regel(self, name):
+        for r in self.cfg["rules"]:
+            if r["name"] == name:
+                return r
+        self.fail(f"Regel {name} fehlt")
+
+    @staticmethod
+    def suche(screen, k):
+        return matcher.find_color_button(
+            screen, k["rgb"], tolerance=k.get("tolerance", 45),
+            min_w=k.get("min_w", 0.12), max_w=k.get("max_w", 0.8),
+            min_h=k.get("min_h", 0.015), max_h=k.get("max_h", 0.06),
+            region=k.get("region"), min_fuellung=k.get("min_fuellung", 0.6))
+
+    def test_der_goldene_knopf_wird_gefunden(self):
+        bed = self.regel("spiel-update-bestaetigen")["match"]["all"][0]["farbknopf"]
+        treffer = self.suche(self.screen, bed)
+        self.assertTrue(treffer, "der einzelne Bestaetigen-Knopf muss gefunden werden")
+        m = treffer[0]
+        # Der Knopf liegt bei x 437..996, y 1250..1423. Getippt wird die Mitte
+        # des Fundes - die muss darin liegen, sonst geht der Tipp daneben.
+        cx, cy = m.x + m.w / 2, m.y + m.h / 2
+        self.assertTrue(437 <= cx <= 996 and 1250 <= cy <= 1423,
+                        f"Tippziel {cx:.0f},{cy:.0f} liegt neben dem Knopf")
+
+    def test_die_schutzbedingungen_sehen_einen_zweiten_knopf(self):
+        """Blau und Rot duerfen nicht an derselben Schranke scheitern.
+
+        Uebersieht die Regel den Abbrechen-Knopf, haelt sie einen Kauf-Dialog
+        faelschlich fuer einen harmlosen Hinweis und tippt Gold an.
+        """
+        regel = self.regel("spiel-update-bestaetigen")
+        for i in (1, 2):
+            k = regel["match"]["all"][i]["not"]["farbknopf"]
+            self.assertGreaterEqual(k.get("max_h", 0), 0.07,
+                                    "Schutzbedingung waere zu knapp fuer echte Knoepfe")
+            self.assertLessEqual(k.get("min_fuellung", 0.6), 0.45,
+                                 "Knoepfe mit heller Schrift erreichen keine 60 % Fuellung")
+            self.assertFalse(self.suche(self.screen, k),
+                             "auf diesem Hinweis-Dialog steht kein zweiter Knopf")
+
+    def test_vorlage_bestaetigen_passt_auf_den_knopf(self):
+        pfad = os.path.join(ROOT, "templates", "ui", "btn_bestaetigen.png")
+        if not os.path.exists(pfad):
+            self.skipTest("Vorlage fehlt")
+        vorlage = Image.load(pfad)
+        # Bildschirm 1440 breit, Vorlagen auf Basisbreite 1080 -> Faktor 4/3.
+        treffer = matcher.find(self.screen, vorlage, threshold=0.8, scale=4 / 3)
+        self.assertTrue(treffer, "die Vorlage muss den Knopf im echten Bild finden")
+
+
+
 if __name__ == "__main__":
     unittest.main()
