@@ -758,6 +758,55 @@ Die Texturen sind **im GLB eingebettet** (`mat_bild()`), das Spiel braucht keine
 
 ---
 
+
+## 1z2. Charge 33 — PARK-AUSSTATTUNG (`models/th33_*.glb`)
+
+Das, was einem Freizeitpark neben den Fahrgeschäften fehlt. Bank, Laterne, Mülleimer,
+Hecke und Brunnen gibt es bereits (th4/th5/th6) — hier steht nur, was es **noch nicht** gab.
+
+| Datei | Maße (B×T×H) | Raster | Hinweis |
+|---|---|---|---|
+| `th33_warteschlange_modul.glb` | 4,26 × 0,52 × 1,19 | **x += 4,00** | Pfosten + durchhängender Gurt |
+| `th33_parkzaun_modul.glb` | 4,14 × 0,34 × 1,79 | **x += 4,00** | Schmiedeeisen mit Goldspitzen |
+| `th33_parklaterne.glb` | 2,4 × 0,7 × 5,4 | frei | 2 Leuchten, Wimpel, Blumenampeln |
+| `th33_wegweiser.glb` | 2,4 × 2,4 × 3,5 | frei | 4 Schilder, gestaffelte Höhen |
+| `th33_imbisswagen.glb` | 5,1 × 4,7 × 3,1 | Ausgabe auf +y | Markise, Theke, Menütafel, Räder |
+| `th33_toilettenhaus.glb` | 7,3 × 5,3 × 4,5 | Eingänge auf +y | **echte Türöffnungen**, Piktogramme |
+| `th33_parkplan.glb` | 3,7 × 1,0 × 3,6 | Karte auf +y | Übersichtstafel mit Leuchtband |
+| `th33_kassenhaus.glb` | 4,2 × 4,2 × 4,7 | Schalter auf +y | Scheibe, Ablage, Preisschild |
+| `th33_blumenrabatte.glb` | 4,0 × 2,2 × 0,9 | frei | 46 Blüten, unregelmäßig gesetzt |
+
+Generator: `tools/assets/mk_th33_parkausstattung.py` · Texturen aus `textures/th32`.
+
+> ⚠️ **Bei den beiden Modulen ist das Raster 4,000 m, die Bounding-Box aber größer**
+> (4,26 bzw. 4,14). Der Pfosten steht **nur am linken Modulende** und ragt mit seinem
+> halben Fuß darüber hinaus. Erst hatte jedes Modul beide Enden — aneinandergereiht
+> standen dann zwei deckungsgleiche Pfosten auf jeder Fuge und flimmerten gegeneinander.
+> Anker ist die Rasterlinie, **nicht** die Box-Mitte.
+
+> ⚠️ **`box()` setzt die Skalierung bereits auf die Bauteilmaße** — wer sie danach
+> nachjustiert, muss **multiplizieren**. Ein `o.scale[1] = 1.9` machte aus dem
+> Warteschlangen-Gurt ein 1,9 m dickes Brett (gemessen: Modul 1,90 m tief statt 0,52).
+
+---
+
+## 🧍 Menschenmengen aus den NPC-Modellen — die Skinned-Clone-Falle
+
+Für `neon-park.html` werden ~78 Besucher aus `npc_*.glb` gebaut. Dabei ist eine Falle,
+die **jede** Session trifft, die Figuren vervielfältigen will:
+
+> ⚠️ **Die NPC-Modelle sind SkinnedMeshes. `Object3D.clone()` kopiert das Skelett nicht mit.**
+> Die Klone zeigen weiter auf die Knochen der Vorlage — hängt die nicht in der Szene,
+> werden ihre Weltmatrizen nie aktualisiert und die Geometrie kollabiert. Symptom: der
+> Gast steht in den Daten korrekt (2 SkinnedMeshes, `visible=true`, Größe 1,97 × 1,72)
+> und ist **trotzdem unsichtbar**. Kein Fehler in der Konsole.
+>
+> Ohne `SkeletonUtils` ist der saubere Weg, die **Ruhepose einmal in ein statisches Mesh
+> zu backen** und das zu klonen (`entskinnen()` in `neon-park.html`): pro Mesh ein
+> `THREE.Mesh` mit derselben Geometrie, `applyMatrix4(n.matrixWorld)`, `frustumCulled=false`.
+> Für Statisten, die man ohnehin nicht animiert, ist das die richtige Lösung — und billiger.
+
+---
 ## 🎡 Freizeitpark-Quartier in `traumhaus.html` — fertiger Einbau
 
 **Das Quartier gibt es schon** (`viertel({name:"Freizeitpark", x:-190, z:158, w:170, d:92 …})`,

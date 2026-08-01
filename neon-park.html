@@ -112,20 +112,26 @@ renderer.setSize(W,H);renderer.outputEncoding=THREE.sRGBEncoding;
 document.body.appendChild(renderer.domElement);
 addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);});
 
-scene.add(new THREE.HemisphereLight(0xdff0ff,0x5a6a52,0.95));
-var sun=new THREE.DirectionalLight(0xfff2dd,0.95);sun.position.set(40,70,-30);scene.add(sun);
+scene.add(new THREE.HemisphereLight(0xdff0ff,0x5a6a52,0.52));
+var sun=new THREE.DirectionalLight(0xfff2dd,1.25);sun.position.set(40,70,-30);
+sun.castShadow=true;sun.shadow.mapSize.set(1024,1024);
+sun.shadow.camera.left=-90;sun.shadow.camera.right=90;
+sun.shadow.camera.top=90;sun.shadow.camera.bottom=-90;sun.shadow.camera.far=260;
+scene.add(sun);
+renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
 
 /* ---------- Boden + Wege ---------- */
 var tl=new THREE.TextureLoader();
 function tex(u,r){var t=tl.load(u);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(r,r);return t;}
 var gras=new THREE.Mesh(new THREE.PlaneGeometry(300,300),
   new THREE.MeshLambertMaterial({map:tex("/textures/tex_grass.png",60)}));
-gras.rotation.x=-Math.PI/2;scene.add(gras);
+gras.rotation.x=-Math.PI/2;gras.receiveShadow=true;scene.add(gras);
 var wegMat=new THREE.MeshLambertMaterial({map:tex("/textures/th32/parkpflaster.png",1)});
 function weg(x,z,b,t,rot){var m=new THREE.Mesh(new THREE.PlaneGeometry(b,t),wegMat.clone());
   m.material.map=tex("/textures/th32/parkpflaster.png",1);
   m.material.map.repeat.set(b/2.6,t/2.6);
-  m.rotation.x=-Math.PI/2;m.rotation.z=rot||0;m.position.set(x,0.02,z);scene.add(m);return m;}
+  m.rotation.x=-Math.PI/2;m.rotation.z=rot||0;m.position.set(x,0.02,z);
+  m.receiveShadow=true;scene.add(m);return m;}
 weg(0,26,10,40);weg(0,0,64,10);weg(-26,-16,10,44);weg(26,-16,10,44);weg(0,-40,64,10);
 
 /* ---------- Modell-Laden ---------- */
@@ -134,7 +140,7 @@ function laden(datei,x,z,drehung,cb){
   offen++;
   LOADER.load("/models/"+datei+".glb",function(g){
     var o=g.scene;o.position.set(x,0,z);o.rotation.y=drehung||0;
-    o.traverse(function(n){if(n.isMesh){n.frustumCulled=true;}});
+    o.traverse(function(n){if(n.isMesh){n.frustumCulled=true;n.castShadow=true;n.receiveShadow=true;}});
     scene.add(o);
     var mx=null;
     if(g.animations&&g.animations.length){
@@ -204,11 +210,48 @@ laden("th13_imbissbude",-12,14,0);
 laden("th13_losbude",12,14,0);
 laden("th13_zuckerwatte_stand",-12,-2,0);
 laden("th13_lichterbogen",0,52,0);
-laden("th5_parkbank",-7,20,0);laden("th5_parkbank",7,20,Math.PI);
-laden("th6_papierkorb",-9,20,0);laden("th6_papierkorb",9,20,0);
-laden("th5_laterne_altstadt",-14,32,0);laden("th5_laterne_altstadt",14,32,0);
-laden("th4_tanne",-44,10,0);laden("th4_tanne",44,10,0);
-laden("th4_tanne",-44,-34,0);laden("th4_tanne",44,-34,0);
+
+/* ---------- Ausstattung: der Park soll bewohnt aussehen, nicht leergeraeumt ----------
+   Reihenfolge bewusst: erst die grossen Sachen (Wege gibt es schon), dann Moeblierung,
+   dann Gruen. Alles per Schleife statt 60 Einzelzeilen. */
+function reihe(datei,x0,z0,dx,dz,n,rot){for(var i=0;i<n;i++)laden(datei,x0+dx*i,z0+dz*i,rot||0);}
+
+/* Warteschlangen zu den drei Fahrgeschaeften (Raster 4,00 m) */
+reihe("th33_warteschlange_modul",-38,-2.4,4,0,4);
+reihe("th33_warteschlange_modul",22,-4.6,4,0,4);
+reihe("th33_warteschlange_modul",-13.5,-40,4,0,5);
+
+/* Parkzaun als Einfassung — vorn Luecke fuer den Eingang */
+reihe("th33_parkzaun_modul",-46,-60,4,0,23);
+reihe("th33_parkzaun_modul",-46,58,4,0,9);
+reihe("th33_parkzaun_modul",10,58,4,0,9);
+reihe("th33_parkzaun_modul",-48,-56,0,4,29,Math.PI/2);
+reihe("th33_parkzaun_modul",48,-56,0,4,29,Math.PI/2);
+
+/* Laternen und Wegweiser entlang der Hauptachse */
+reihe("th33_parklaterne",-6.5,38,0,-12,7);
+reihe("th33_parklaterne",6.5,38,0,-12,7);
+laden("th33_wegweiser",-9,6,0.6);laden("th33_wegweiser",9,-30,-0.6);
+
+/* Service rund um den Eingang */
+laden("th33_parkplan",-9,46,0);
+laden("th33_kassenhaus",-13,56,0);laden("th33_kassenhaus",13,56,0);
+laden("th33_toilettenhaus",22,40,0);
+laden("th33_imbisswagen",-20,34,0.3);laden("th33_imbisswagen",20,-2,-1.9);
+
+/* Baenke, Koerbe, Beete — paarweise am Weg */
+for(var _i=0;_i<6;_i++){
+  var _z=32-_i*13;
+  laden("th5_parkbank",-6.4,_z,Math.PI/2);laden("th5_parkbank",6.4,_z,-Math.PI/2);
+  laden("th6_papierkorb",-8.2,_z-2.2,0);laden("th6_papierkorb",8.2,_z-2.2,0);
+  laden("th33_blumenrabatte",-10.5,_z-6,0);laden("th33_blumenrabatte",10.5,_z-6,0);
+}
+reihe("th6_hecke_modul",-16,10,0,-6,5);reihe("th6_hecke_modul",16,10,0,-6,5);
+
+/* Baumkulisse am Rand */
+var _BAEUME=[[-44,10],[44,10],[-44,-34],[44,-34],[-42,30],[42,30],[-40,-52],[40,-52],
+             [-24,52],[24,52],[-44,-8],[44,-8],[-34,-56],[34,-56]];
+_BAEUME.forEach(function(p,i){laden(i%2?"th4_tanne":"th4_eiche",p[0],p[1],i*0.7);});
 
 /* ---------- Achterbahn: Strecke + Zug ----------
    Die Strecke ist eine analytische Ovalbahn; die GLB-Kacheln werden nur
@@ -274,6 +317,97 @@ function setzeZug(){
   });
 }
 setzeZug();
+
+/* ---------- Besucher ----------
+   Ein Freizeitpark ohne Leute wirkt wie eine Baustelle. Die Gaeste laufen auf
+   einem festen Rundweg, nicht zufaellig — Zufallsbewegung sieht aus wie Ameisen.
+   Geladen wird jedes Modell EINMAL und dann geklont: 30 einzelne GLB-Ladevorgaenge
+   waeren 30-mal dieselbe Datei ueber die Leitung. */
+var GAESTE=[],GAST_MODELLE=["npc_ma","npc_fa","npc_mb","npc_fb","npc_mc","npc_fc"];
+var ROUTEN=[
+  /* grosser Rundgang ueber alle Fahrgeschaefte */
+  [[0,46],[0,24],[-16,10],[-30,-6],[-30,-22],[-12,-36],[0,-40],[12,-36],
+   [30,-22],[30,-6],[16,10],[0,24]],
+  /* Eingangsplatz und Imbissmeile */
+  [[-16,44],[16,44],[18,34],[10,28],[-10,28],[-18,34]],
+  /* Schleife um die Achterbahn */
+  [[-14,52],[14,52],[16,44],[8,40],[-8,40],[-16,44]],
+  /* Weg zum Piratenschiff und zurueck */
+  [[-8,-14],[-8,-34],[8,-34],[8,-14]],
+  /* Hauptachse: hier laeuft der Spieler, hier muessen ihm Leute begegnen */
+  [[-3,46],[-3,-38],[3,-38],[3,46]]];
+/* Ein Teil der Gaeste STEHT (schaut zu, wartet an der Schlange). Wenn alle laufen,
+   sieht der Park aus wie ein Bahnhof zur Rushhour. */
+var STEHER=[[-30,-3.5],[-30,-24.5],[29,-5],[29,-23],[-11,-41],[11,-41],
+            [-6.6,52],[6.6,52],[-19,33],[21,39],[-9,44],[9,44]];
+/* ⚠️ Die NPC-Modelle sind SKINNED. `Object3D.clone()` kopiert das Skelett NICHT mit:
+   die Klone zeigen weiter auf die Knochen der Vorlage, die nie in der Szene haengt —
+   ihre Weltmatrizen werden also nie aktualisiert und die Geometrie kollabiert. Der
+   Gast stand dann korrekt in den Daten, war aber unsichtbar (2 SkinnedMeshes,
+   visible=true, Groesse 1,97 x 1,72 — und trotzdem nichts im Bild).
+   Ohne SkeletonUtils ist der saubere Weg: die Ruhepose EINMAL in ein statisches Mesh
+   backen und das klonen. Wir animieren die Gaeste ohnehin nicht. */
+function entskinnen(root){
+  root.updateMatrixWorld(true);
+  var g=new THREE.Group();
+  root.traverse(function(n){
+    if(!n.isMesh&&!n.isSkinnedMesh)return;
+    var m=new THREE.Mesh(n.geometry,n.material);
+    m.applyMatrix4(n.matrixWorld);
+    m.frustumCulled=false;m.castShadow=false;m.receiveShadow=true;
+    g.add(m);
+  });
+  return g;
+}
+function gastFigur(vorlage,i){
+  var g=vorlage.clone(true);g.rotation.y=Math.random()*6.28;scene.add(g);
+  if(i%4===3&&STEHER.length){                       /* jeder vierte bleibt stehen */
+    var p=STEHER[(i/4|0)%STEHER.length];
+    g.position.set(p[0]+(Math.random()-0.5)*1.8,0,p[1]+(Math.random()-0.5)*1.8);
+    GAESTE.push({g:g,steht:true,ph:Math.random()*6.28});
+    return;
+  }
+  /* Die Hauptachse bekommt das dreifache Gewicht: dort laeuft der Spieler, dort
+     muss Betrieb sein. Gleichverteilt waren es dort nur alle 19 m ein Gast. */
+  var GEWICHT=[0,1,2,3,4,4,4];
+  var r=GEWICHT[i%GEWICHT.length];
+  GAESTE.push({g:g,r:r,seg:(i*3)%ROUTEN[r].length,f:Math.random(),
+               v:0.8+Math.random()*0.7,spur:(Math.random()-0.5)*3.2,ph:Math.random()*6.28});
+}
+var ANZ_GAESTE=78;
+GAST_MODELLE.forEach(function(datei,mi){
+  offen++;
+  LOADER.load("/models/"+datei+".glb",function(gl){
+    var v=entskinnen(gl.scene);
+    var bb=new THREE.Box3().setFromObject(v),gr=new THREE.Vector3();bb.getSize(gr);
+    if(gr.y>0.2)v.scale.setScalar(1.72/gr.y);          /* alle gleich gross */
+    v.updateMatrixWorld(true);
+    var n=Math.round(ANZ_GAESTE/GAST_MODELLE.length);
+    for(var i=0;i<n;i++)gastFigur(v,mi*n+i);
+    fertig++;fortschritt();
+  },undefined,function(){fertig++;fortschritt();});
+});
+function bewegeGaeste(dt,t){
+  for(var i=0;i<GAESTE.length;i++){
+    var q=GAESTE[i];
+    if(q.steht){                                       /* Zuschauer: nur leichtes Wippen */
+      q.g.position.y=Math.abs(Math.sin(t*1.6+q.ph))*0.02;
+      q.g.rotation.y+=Math.sin(t*0.5+q.ph)*dt*0.25;
+      continue;
+    }
+    var W=ROUTEN[q.r];
+    var a=W[q.seg],b=W[(q.seg+1)%W.length];
+    var dx=b[0]-a[0],dz=b[1]-a[1],L=Math.hypot(dx,dz)||1;
+    q.f+=q.v*dt/L;
+    if(q.f>=1){q.f-=1;q.seg=(q.seg+1)%W.length;
+      a=W[q.seg];b=W[(q.seg+1)%W.length];
+      dx=b[0]-a[0];dz=b[1]-a[1];L=Math.hypot(dx,dz)||1;}
+    var nx=-dz/L,nz=dx/L;                              /* seitlicher Versatz = Spur */
+    q.g.position.set(a[0]+dx*q.f+nx*q.spur, Math.abs(Math.sin(t*4.4+q.ph))*0.06,
+                     a[1]+dz*q.f+nz*q.spur);
+    q.g.rotation.y=Math.atan2(dx,dz);
+  }
+}
 
 /* ---------- Spieler ---------- */
 var AUG=1.66;
@@ -543,6 +677,8 @@ function frame(now){
     });
   }
 
+  if(GAESTE.length)bewegeGaeste(dt,t);
+
   /* Tickets */
   for(var k=0;k<TICKETS.length;k++){
     var ti=TICKETS[k];if(ti.weg)continue;
@@ -593,6 +729,14 @@ window.__np={
     rides:RIDES.map(function(r){return r.id+":"+(r.an?1:0);}),
     zug:ZUGAN,mitfahrt:+MITFAHRT.toFixed(1)};},
   tp:function(x,z){ich.x=x;ich.z=z;},
+  gaeste:function(){return {n:GAESTE.length,
+    p0:GAESTE.length?[+GAESTE[0].g.position.x.toFixed(2),+GAESTE[0].g.position.z.toFixed(2)]:null,
+    alle:GAESTE.map(function(q){return [+q.g.position.x.toFixed(0),+q.g.position.z.toFixed(0)];}),
+    probe:(function(){if(!GAESTE.length)return null;var sk=0,me=0,sicht=0,box=null;
+      GAESTE[0].g.traverse(function(n){if(n.isSkinnedMesh)sk++;else if(n.isMesh)me++;
+        if(n.isMesh&&n.visible)sicht++;});
+      var bb=new THREE.Box3().setFromObject(GAESTE[0].g),v=new THREE.Vector3();bb.getSize(v);
+      return {skinned:sk,mesh:me,sichtbar:sicht,groesse:[+v.x.toFixed(2),+v.y.toFixed(2),+v.z.toFixed(2)]};})()};},
   tpPartner:function(x,z){partner.x=x;partner.z=z;partner.da=true;ONLINE=true;},
   start:start
 };
