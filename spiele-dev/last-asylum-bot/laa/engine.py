@@ -866,6 +866,33 @@ class Engine:
             self.log.debug("Lebenszeichen: kein Git", grund=str(exc)[:120])
             return
 
+        # Ein Bild dazu, sonst weiss man zwar DASS er laeuft, aber nicht WO er
+        # steht. Halbe Groesse reicht zum Wiedererkennen und kostet ein Drittel;
+        # fuer einen Ausschnitt in voller Aufloesung gibt es 'teilen'. Eigener,
+        # laengerer Abstand - ein Bild wiegt hundertmal so viel wie die Zahlen.
+        dateien = [os.path.join("austausch", "lauf.json")]
+        bild_name = None
+        bild_abstand = float(spec.get("bild_abstand", 3600))
+        bild_ziel = os.path.join(wurzel, "austausch", "lauf.png")
+        if bild_abstand >= 0:
+            faellig = True
+            if bild_abstand > 0 and os.path.exists(bild_ziel):
+                try:
+                    faellig = time.time() - os.path.getmtime(bild_ziel) >= bild_abstand
+                except OSError:
+                    pass
+            if faellig:
+                try:
+                    # Frisch aufnehmen: das zuletzt gesehene Bild kann vom
+                    # letzten Tipp stammen und damit schon veraltet sein.
+                    schirm = self.capture()
+                    os.makedirs(os.path.dirname(bild_ziel), exist_ok=True)
+                    schirm.box_scaled_by(float(spec.get("bild_faktor", 0.5))).save(bild_ziel)
+                    bild_name = "austausch/lauf.png"
+                    dateien.append(os.path.join("austausch", "lauf.png"))
+                except Exception as exc:  # pragma: no cover - Geraet/Datei
+                    self.log.debug("Lebenszeichen ohne Bild", grund=str(exc)[:120])
+
         # Die groessten Zaehler zuerst - das ist die Kurzfassung dessen, womit
         # der Bot seine Zeit verbracht hat.
         oben = sorted(self.stats.items(), key=lambda p: -p[1])[:12]
@@ -880,6 +907,7 @@ class Engine:
             "vorlagen_offen": len(self.cfg.offene_templates),
             "verworfene_vorlagen": sorted(self._verworfen),
             "verdaechtige_regeln": {k: v for k, v in self._folgenlos.items() if v >= 2},
+            "bild": bild_name,
         }
         try:
             os.makedirs(os.path.dirname(ziel), exist_ok=True)
@@ -893,7 +921,7 @@ class Engine:
         if not spec.get("hochladen", True):
             return
         try:
-            git("add", "--", os.path.join("austausch", "lauf.json"))
+            git("add", "--", *dateien)
             git("commit", "-m", f"Lebenszeichen {bericht['zeit']} - Schritt {self.steps}")
             schub = git("push")
         except Exception as exc:  # pragma: no cover - Netz/Umgebung

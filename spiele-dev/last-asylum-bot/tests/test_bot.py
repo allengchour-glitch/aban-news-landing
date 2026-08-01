@@ -2335,6 +2335,38 @@ class TestLebenszeichen(unittest.TestCase):
                              "innerhalb des Mindestabstands darf nichts neu geschrieben werden")
             self.assertEqual(os.path.getmtime(ziel), zuerst)
 
+    def test_bild_kommt_mit_und_steht_im_bericht(self):
+        """Ohne Bild weiss man DASS er laeuft, aber nicht WO er steht."""
+        import tempfile
+        with tempfile.TemporaryDirectory() as ordner:
+            eng = self.bau(ordner)
+            eng.run_actions([{"lebenszeichen": {"hochladen": False}}], "test")
+            bild = os.path.join(ordner, "austausch", "lauf.png")
+            self.assertTrue(os.path.exists(bild), "lauf.png muss entstehen")
+            d = json.load(open(os.path.join(ordner, "austausch", "lauf.json"),
+                               encoding="utf-8"))
+            self.assertEqual(d["bild"], "austausch/lauf.png")
+            # halbe Kantenlaenge des FakeDevice-Bildes (120x200)
+            self.assertEqual(Image.load(bild).width, 60)
+
+    def test_bild_wird_nicht_bei_jedem_lebenszeichen_neu_geschrieben(self):
+        """Zahlen sind billig, Bilder nicht - sie brauchen einen eigenen Takt."""
+        import tempfile
+        with tempfile.TemporaryDirectory() as ordner:
+            eng = self.bau(ordner)
+            eng.run_actions([{"lebenszeichen": {"hochladen": False}}], "test")
+            bild = os.path.join(ordner, "austausch", "lauf.png")
+            zuerst = os.path.getmtime(bild)
+            eng.run_actions([{"lebenszeichen": {"hochladen": False,
+                                                "mindestabstand": 0,
+                                                "bild_abstand": 3600}}], "test")
+            self.assertEqual(os.path.getmtime(bild), zuerst,
+                             "innerhalb des Bild-Abstands darf kein neues Bild entstehen")
+            d = json.load(open(os.path.join(ordner, "austausch", "lauf.json"),
+                               encoding="utf-8"))
+            self.assertIsNone(d["bild"], "ohne neues Bild darf der Bericht keines melden")
+
+
     def test_ohne_mindestabstand_wird_fortgeschrieben(self):
         import tempfile
         with tempfile.TemporaryDirectory() as ordner:

@@ -6048,14 +6048,16 @@
     },
     {
       "name": "lebenszeichen",
-      "_zweck": "Schreibt austausch/lauf.json und laedt sie hoch. Von aussen sah ein abgestuerzter Bot bisher genauso aus wie ein zufriedener: gar nichts. Steht der Zeitstempel still, ist der Bot stehengeblieben - und die Zaehler zeigen, womit er zuletzt beschaeftigt war. Der Mindestabstand verhindert, dass ein Absturz-Neustart im Minutentakt Commits erzeugt.",
+      "_zweck": "Schreibt austausch/lauf.json plus austausch/lauf.png und laedt beides hoch. Von aussen sah ein abgestuerzter Bot bisher genauso aus wie ein zufriedener: gar nichts. Steht der Zeitstempel still, ist der Bot stehengeblieben - und das Bild zeigt, vor welchem Bildschirm. Zahlen alle 10 Minuten, Bild hoechstens stuendlich (ein Bild wiegt hundertmal so viel). at_start sorgt dafuer, dass gleich nach dem Start ein Bild da ist; der Mindestabstand verhindert, dass eine Absturzschleife im Minutentakt Commits erzeugt.",
       "every": 900,
       "at_start": true,
       "priority": 95,
       "do": [
         {
           "lebenszeichen": {
-            "mindestabstand": 600
+            "mindestabstand": 600,
+            "bild_abstand": 3600,
+            "bild_faktor": 0.5
           }
         }
       ]
