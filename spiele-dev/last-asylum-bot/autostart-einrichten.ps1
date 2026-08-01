@@ -92,8 +92,31 @@ timeout /t 60 /nobreak >nul
 goto schleife
 :ende
 "@
-Set-Content -Path $Starter -Value $inhalt -Encoding OEM
-Gut "Autostart eingerichtet: $Starter"
+# Laeuft die Schleife gerade, haelt cmd.exe diese Datei offen und sie laesst
+# sich nicht ueberschreiben ("Der Datenstrom war nicht lesbar"). Frueher brach
+# das Skript daran ab - und startete den Bot dann gar nicht mehr. Steht schon
+# dasselbe drin, ist Schreiben ohnehin ueberfluessig; klappt es trotzdem nicht,
+# reicht eine Warnung.
+$schonDa = $false
+if (Test-Path $Starter) {
+    try {
+        $alt = (Get-Content -Path $Starter -Raw -ErrorAction Stop)
+        $schonDa = ($alt.TrimEnd() -eq $inhalt.TrimEnd())
+    } catch { }
+}
+if ($schonDa) {
+    Gut "Autostart steht bereits richtig: $Starter"
+} else {
+    try {
+        Set-Content -Path $Starter -Value $inhalt -Encoding OEM -ErrorAction Stop
+        Gut "Autostart eingerichtet: $Starter"
+    } catch {
+        Warnung "Startdatei ist gerade in Benutzung - bleibt unveraendert."
+        Write-Host "     Das ist meist harmlos: die laufende Schleife haelt sie offen."
+        Write-Host "     Soll sie wirklich neu geschrieben werden, erst alle Bot-Fenster"
+        Write-Host "     schliessen und dieses Skript dann noch einmal starten."
+    }
+}
 Write-Host "     Start:    $VerzoegerungSekunden Sekunden nach jeder Anmeldung"
 Write-Host "     Laufzeit: ohne Limit, nach einem Absturz Neustart in 60 Sekunden"
 Write-Host ""
