@@ -879,7 +879,7 @@
           "max_w": 0.12,
           "min_h": 0.012,
           "max_h": 0.05,
-          "min_fuellung": 0.45,
+          "min_fuellung": 0.66,
           "region": [
             0.11,
             0.1,
