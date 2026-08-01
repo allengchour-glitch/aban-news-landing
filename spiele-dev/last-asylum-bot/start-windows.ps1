@@ -193,6 +193,40 @@ if ($paket -and $paket -notmatch "com.phs.global") {
     Warnung "Das Spiel scheint nicht offen zu sein - oeffne Last Asylum, bevor es losgeht."
 }
 
+# ------------------------------------------------------------- Neuen Stand holen
+# Bisher zog nur der laufende Bot alle dreissig Minuten `git pull`. Steht er
+# still - abgestuerzt, PC neu gestartet, Fenster geschlossen -, kam gar nichts
+# mehr an: weder ein Fehler-Fix noch eine auftrag.txt. Genau dann ist ein Start
+# aber der einzige Moment, in dem jemand nachschaut. Also hier zuerst holen,
+# damit ein einziger Start alles mitnimmt, was seither dazugekommen ist.
+Schritt "Neuen Stand holen"
+# git schreibt auch Harmloses nach stderr ("Already up to date", Hinweise zum
+# Upstream). Oben steht $ErrorActionPreference = "Stop" - damit kann genau das
+# den ganzen Start abbrechen, obwohl nichts kaputt ist. Fuer diesen Block also
+# bewusst weicher, danach zurueck auf Stop.
+$fehlerregelVorher = $ErrorActionPreference
+$ErrorActionPreference = "Continue"
+$vorher  = (& git -C $PSScriptRoot rev-parse --short HEAD 2>$null | Select-Object -First 1)
+& git -C $PSScriptRoot pull --ff-only 2>&1 | Out-Null
+$nachher = (& git -C $PSScriptRoot rev-parse --short HEAD 2>$null | Select-Object -First 1)
+$offen   = (& git -C $PSScriptRoot status --porcelain 2>$null | Out-String).Trim()
+$ErrorActionPreference = $fehlerregelVorher
+
+if (-not $nachher) {
+    Warnung "Kein Git-Ordner - der Bot laeuft mit dem Stand, der hier liegt."
+} elseif ($vorher -ne $nachher) {
+    Gut "Neue Fassung geholt: $vorher -> $nachher"
+} else {
+    if ($offen) {
+        # Die stille Falle: eine geaenderte Datei blockiert jedes kuenftige
+        # Update, und ohne Hinweis merkt das niemand.
+        Warnung "Geaenderte Dateien blockieren neue Fassungen - so raeumt man auf:"
+        Write-Host "     git -C `"$PSScriptRoot`" checkout -- . ; git -C `"$PSScriptRoot`" pull"
+    } else {
+        Gut "Stand ist aktuell ($nachher)"
+    }
+}
+
 # ------------------------------------------------------------------- Auftraege
 # Eine Live-Verbindung von Claude zu diesem PC gibt es nicht. Der Bot zieht aber
 # ohnehin alle dreissig Minuten `git pull` und startet bei neuem Stand neu -

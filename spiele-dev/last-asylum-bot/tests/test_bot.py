@@ -2285,5 +2285,68 @@ class TestEchterBestaetigenDialog(unittest.TestCase):
 
 
 
+class TestLebenszeichen(unittest.TestCase):
+    """Von aussen muss sichtbar sein, ob der Bot noch laeuft.
+
+    Ohne das ist die Frage "laeuft der Bot?" nur am PC zu beantworten - ein
+    abgestuerzter Bot sieht aus der Ferne genauso aus wie ein zufriedener.
+    """
+
+    def bau(self, ordner):
+        import subprocess
+        subprocess.run(["git", "init", "-q", ordner], check=True)
+        for name, wert in (("user.email", "bot@test"), ("user.name", "Bot")):
+            subprocess.run(["git", "-C", ordner, "config", name, wert], check=True)
+        open(os.path.join(ordner, "start"), "w").write("x")
+        subprocess.run(["git", "-C", ordner, "add", "-A"], check=True)
+        subprocess.run(["git", "-C", ordner, "commit", "-qm", "start"], check=True)
+        cfg = Config.from_dict({"package": "x", "tasks": [], "rules": []},
+                               path=os.path.join(ordner, "cfg.json"))
+        dev = FakeDevice([noise(120, 200, 5)], loop=True)
+        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None)
+        eng.steps = 42
+        eng.stats = {"tap": 7, "task:sammeln": 3}
+        return eng
+
+    def test_datei_entsteht_und_nennt_den_stand(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as ordner:
+            eng = self.bau(ordner)
+            eng.run_actions([{"lebenszeichen": {"hochladen": False}}], "test")
+            ziel = os.path.join(ordner, "austausch", "lauf.json")
+            self.assertTrue(os.path.exists(ziel), "lauf.json muss entstehen")
+            d = json.load(open(ziel, encoding="utf-8"))
+            self.assertEqual(d["schritte"], 42)
+            self.assertEqual(d["zaehler"]["tap"], 7)
+            self.assertTrue(d["zeit"] and d["fassung"])
+
+    def test_absturzschleife_erzeugt_keine_commit_flut(self):
+        """Ein Bot, der jede Minute neu startet, darf nicht jede Minute schreiben."""
+        import tempfile
+        with tempfile.TemporaryDirectory() as ordner:
+            eng = self.bau(ordner)
+            eng.run_actions([{"lebenszeichen": {"hochladen": False}}], "test")
+            ziel = os.path.join(ordner, "austausch", "lauf.json")
+            zuerst = os.path.getmtime(ziel)
+            eng.steps = 999
+            eng.run_actions([{"lebenszeichen": {"hochladen": False,
+                                                "mindestabstand": 600}}], "test")
+            self.assertEqual(json.load(open(ziel, encoding="utf-8"))["schritte"], 42,
+                             "innerhalb des Mindestabstands darf nichts neu geschrieben werden")
+            self.assertEqual(os.path.getmtime(ziel), zuerst)
+
+    def test_ohne_mindestabstand_wird_fortgeschrieben(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as ordner:
+            eng = self.bau(ordner)
+            eng.run_actions([{"lebenszeichen": {"hochladen": False}}], "test")
+            eng.steps = 999
+            eng.run_actions([{"lebenszeichen": {"hochladen": False,
+                                                "mindestabstand": 0}}], "test")
+            ziel = os.path.join(ordner, "austausch", "lauf.json")
+            self.assertEqual(json.load(open(ziel, encoding="utf-8"))["schritte"], 999)
+
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -6047,6 +6047,20 @@
       ]
     },
     {
+      "name": "lebenszeichen",
+      "_zweck": "Schreibt austausch/lauf.json und laedt sie hoch. Von aussen sah ein abgestuerzter Bot bisher genauso aus wie ein zufriedener: gar nichts. Steht der Zeitstempel still, ist der Bot stehengeblieben - und die Zaehler zeigen, womit er zuletzt beschaeftigt war. Der Mindestabstand verhindert, dass ein Absturz-Neustart im Minutentakt Commits erzeugt.",
+      "every": 900,
+      "at_start": true,
+      "priority": 95,
+      "do": [
+        {
+          "lebenszeichen": {
+            "mindestabstand": 600
+          }
+        }
+      ]
+    },
+    {
       "name": "selbst-aktualisieren",
       "every": 1800,
       "at_start": false,

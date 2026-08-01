@@ -467,6 +467,8 @@ class Engine:
             self._selbstbericht(value if isinstance(value, dict) else {})
         elif key == "selbst_aktualisieren":
             self._selbst_aktualisieren(value if isinstance(value, dict) else {})
+        elif key == "lebenszeichen":
+            self._lebenszeichen(value if isinstance(value, dict) else {})
         elif key == "stop":
             raise StopRun(str(value) if value not in (True, None) else "Aktion 'stop'")
         else:
@@ -828,6 +830,81 @@ class Engine:
             eigene_groessen=len(self.cfg.template_skalen),
         )
 
+    def _lebenszeichen(self, spec: Dict[str, Any]) -> None:
+        """Kurz ins Repository schreiben, dass der Bot lebt - und was er tut.
+
+        Bisher war die Frage 'laeuft der Bot?' nur am PC zu beantworten. Von
+        aussen sah ein abgestuerzter Bot genauso aus wie ein zufriedener: gar
+        nichts. Diese Datei schliesst die Luecke - Zeitpunkt, Schrittzahl,
+        Fassung und die haeufigsten Zaehler. Steht der Zeitstempel still, ist
+        der Bot stehengeblieben, und man sieht sofort, bei welchem Stand.
+        """
+        import subprocess
+
+        wurzel = spec.get("verzeichnis") or self.cfg.root
+        ziel = os.path.join(wurzel, "austausch", "lauf.json")
+
+        def git(*rest):
+            return subprocess.run(["git", "-C", wurzel, *rest],
+                                  capture_output=True, timeout=120)
+
+        # Ein abstuerzender Bot startet jede Minute neu. Ohne Sperre schriebe
+        # er dann jede Minute einen Commit - genau dann, wenn ohnehin niemand
+        # etwas davon hat. Also ein Mindestabstand, unabhaengig vom Takt.
+        abstand = float(spec.get("mindestabstand", 600))
+        if abstand > 0 and os.path.exists(ziel):
+            try:
+                if time.time() - os.path.getmtime(ziel) < abstand:
+                    self.log.debug("Lebenszeichen noch frisch - nichts zu tun")
+                    return
+            except OSError:
+                pass
+
+        try:
+            kopf = git("rev-parse", "--short", "HEAD").stdout.decode().strip()
+        except Exception as exc:  # pragma: no cover - Netz/Umgebung
+            self.log.debug("Lebenszeichen: kein Git", grund=str(exc)[:120])
+            return
+
+        # Die groessten Zaehler zuerst - das ist die Kurzfassung dessen, womit
+        # der Bot seine Zeit verbracht hat.
+        oben = sorted(self.stats.items(), key=lambda p: -p[1])[:12]
+        bericht = {
+            "zeit": time.strftime("%Y-%m-%d %H:%M:%S"),
+            "zeit_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+            "fassung": kopf,
+            "schritte": self.steps,
+            "gleiche_ansicht": self.gleiche_ansicht,
+            "unbekannt_am_stueck": self.unknown_streak,
+            "zaehler": dict(oben),
+            "vorlagen_offen": len(self.cfg.offene_templates),
+            "verworfene_vorlagen": sorted(self._verworfen),
+            "verdaechtige_regeln": {k: v for k, v in self._folgenlos.items() if v >= 2},
+        }
+        try:
+            os.makedirs(os.path.dirname(ziel), exist_ok=True)
+            with open(ziel, "w", encoding="utf-8") as fh:
+                json.dump(bericht, fh, ensure_ascii=False, indent=1)
+                fh.write("\n")
+        except OSError as exc:
+            self.log.warn(f"Lebenszeichen liess sich nicht schreiben: {exc}")
+            return
+
+        if not spec.get("hochladen", True):
+            return
+        try:
+            git("add", "--", os.path.join("austausch", "lauf.json"))
+            git("commit", "-m", f"Lebenszeichen {bericht['zeit']} - Schritt {self.steps}")
+            schub = git("push")
+        except Exception as exc:  # pragma: no cover - Netz/Umgebung
+            self.log.debug("Lebenszeichen nicht hochgeladen", grund=str(exc)[:120])
+            return
+        if schub.returncode != 0:
+            # Kein Grund zur Aufregung: die Datei liegt lokal, der naechste
+            # Versuch nimmt sie mit. Nur nicht stillschweigend uebergehen.
+            self.log.debug("Lebenszeichen blieb liegen",
+                           grund=schub.stderr.decode("utf-8", "replace").strip()[:160])
+
     def _selbst_aktualisieren(self, spec: Dict[str, Any]) -> None:
         """Neue Fassung holen und sich dafuer selbst beenden.
 
@@ -854,7 +931,9 @@ class Engine:
             return
         if hole.returncode != 0:
             grund = hole.stderr.decode("utf-8", "replace").strip()
-            if "would be overwritten" in grund or "local changes" in grund:
+            abgedriftet = ("not possible to fast-forward" in grund.lower()
+                           or "diverged" in grund.lower())
+            if "would be overwritten" in grund or "local changes" in grund or abgedriftet:
                 # Genau die Falle, wegen der Gelerntes jetzt daneben liegt:
                 # eine von Hand oder frueher vom Bot geaenderte Datei blockiert
                 # jede neue Fassung - still, bis es jemand bemerkt.
