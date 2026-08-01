@@ -3040,6 +3040,33 @@ setTimeout(function baueGebaeude(){
       g.position.set(-68.5,0,-84);scene.add(g);
       addSolid(-68.5,-84,5.2,5.2,null); /* 🛣️ war -70.5 → ragte in die West-Laengsstrasse (-83..-73) */
     })();
+    /* 🌳 WOHNSTRASSEN-BEGRUENUNG. Die Haeuser haben Vorgaerten mit Zaun und Hecke,
+       aber der Streifen zwischen Gehwegkante und Gartenzaun war kahles Gras — die
+       Zeile sah dadurch aus wie eine Neubausiedlung vor der Uebergabe.
+       Baeume und Laternen wechseln sich ab (beides an derselben Stelle waere ein
+       Wald), Briefkasten und Muelleimer stehen an jedem zweiten Gartentor.
+       Wird HIER gebaut und nicht bei den Haeusern: `bau()` ist erst in diesem
+       Abschnitt definiert. */
+    (function wohnstrassen(){
+      var BAUM=["th4_ahorn.glb","th4_birke.glb","th4_eiche.glb"];
+      function zeile(x0,x1,zBaum,zRand,dir){
+        var i=0;
+        for(var x=x0;x<=x1;x+=12,i++){
+          if(i%2===0)bau(BAUM[i%3],6.2,x,0,zBaum,(i*1.1)%6,false,null,true);
+          else        bau("th5_laterne_altstadt.glb",4.4,x,0,zBaum,0,false,null,true);
+          if(i%2===1){
+            bau("th3_briefkasten.glb",1.2,x+3.2,0,zRand,dir>0?Math.PI:0,false,null,true);
+            bau("th4_muelleimer.glb",0.9,x+4.4,0,zRand,0,false,null,true);
+          }
+          if(i%3===2)bau("th33_blumenrabatte.glb",0.9,x+6,0,zBaum,0,false,null,true);
+        }
+      }
+      /* Nordzeile: Haeuser bei z=-77, Gehwegkante bei rund -67 -> Streifen dazwischen */
+      zeile(-66,60,-69.5,-71.2,-1);
+      /* Suedzeile: gespiegelt */
+      zeile(-54,66, 69.5, 71.2, 1);
+    })();
+
     /* ⛪ KIRCHHOF: Friedhof suedlich der Kathedrale, Zaun um das ganze Geviert.
        Das Geviert liegt bewusst bei x = -73 … -45: die West-Laengsstrasse belegt
        x = -83 … -73, ein Zaun weiter westlich stuende auf der Fahrbahn.
