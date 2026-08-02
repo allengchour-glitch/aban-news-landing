@@ -2472,3 +2472,17 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
 - **Tooling:** playwright neu installiert (nach /tmp-Wipe), site_shot.mjs + Proxy-Route-Trick funktioniert wieder.
 - **revid.ai-Key** (Video-Gen, ~28 Tage gültig) in /tmp/revid_api_key.txt gesichert (nicht committet). User sollte ihn
   als Env REVID_API_KEY setzen für Dauerbetrieb.
+
+### revid.ai-Video-Produktion LIVE 2026-08-02 («nutze revid voll gas»)
+- **API geklärt:** POST https://www.revid.ai/api/public/v3/render (Header `key:`), workflow `script-to-video`,
+  aspectRatio 9:16, media.type moving-image/quality pro, voice.enabled=false (Marken-Regel: kein Voiceover),
+  captions.enabled=true. Status-Poll GET /api/public/v2/status?pid= → `videoUrl`. ~16 Credits/Video, ~2 Min Render.
+  ⚠️ Renders NUR per curl (Agent-Proxy 403t Python-urllib). Key /tmp/revid_api_key.txt (~28 Tage, User setzt REVID_API_KEY).
+  ⚠️ Kein Credit-Balance-Endpoint (v2/account etc. alle 404) → Restsaldo nur im revid-Dashboard sichtbar.
+  ⚠️ Skript-Text mit ECHTEN Umlauten (ü/ä) — ASCII (fuer/Armbaender) landet 1:1 in den Captions (unsauber, neu gerendert).
+- **5 Premium-Reels erzeugt** (9:16, ~15s, CH-Szenerie, deutsche Captions, kein Voiceover): ventilatoren, schmuck,
+  sonnenbrillen, beauty, brand. Alle auf Shopify-CDN hochgeladen (durable) + in `automation/reels_seed.csv` als `ready`
+  (platforms instagram,facebook, Captions mit «🔗 luxestyle.ch Link in Bio» + Hashtags). IDs revid-<slug>.
+- **Posten:** braucht Meta-Token (/tmp weg) → andere Umgebung/PC-Claude mit gültigem Token postet aus der Queue;
+  Doppelpost-Wachen in meta_reel_post.mjs greifen. QA verifiziert per ffmpeg-Kontaktbogen (imageio-ffmpeg installiert).
+- **Tooling:** /tmp/revid/*.sh (poll/batch/queue), /tmp/ffmpeg_path.txt (echtes ffmpeg für Frame-QA).
