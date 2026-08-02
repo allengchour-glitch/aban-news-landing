@@ -124,6 +124,8 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 <button id="shopBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;cursor:pointer;color:#3a2a10;background:linear-gradient(90deg,#ffd166,#ffb04a)">🛒 Einkaufen · 60 $</button>
 <button id="npcBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;cursor:pointer;color:#fff;background:linear-gradient(90deg,#4aa0d8,#2a6aa8)">💬 Ansprechen</button>
 <button id="fahrtBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;cursor:pointer;color:#fff;background:linear-gradient(90deg,#2f8fd8,#7a3ad0)">🎡 Einsteigen</button>
+<div id="coupHud" style="display:none;position:fixed;left:50%;transform:translateX(-50%);top:calc(112px + env(safe-area-inset-top));z-index:17;background:rgba(30,10,20,.88);color:#ffd9e0;border:2px solid #b02a5a;border-radius:14px;padding:8px 18px;font-weight:900;font-size:.95rem"></div>
+<button id="coupBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;cursor:pointer;color:#fff;background:linear-gradient(90deg,#2a2a3a,#7a1a3a)">🏦 Bank-Coup zu zweit</button>
 <button id="coasterBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;cursor:pointer;color:#fff;background:linear-gradient(90deg,#e8543a,#b02a5a)">🎢 Achterbahn fahren</button>
 <button id="villaBtn" style="display:none;position:fixed;left:10px;bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:10px 16px;font-weight:900;cursor:pointer;color:#fff;background:linear-gradient(90deg,#8a5ad0,#5a7ae0)">🏰 Villa-Vorlage · 3500 $</button>
 <button id="buskBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(66px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;font-size:.95rem;cursor:pointer;color:#5a3a10;background:linear-gradient(90deg,#ffd166,#ffb84a);box-shadow:0 8px 24px rgba(200,140,40,.4)">🎸 Straßenmusik machen</button>
@@ -2761,7 +2763,10 @@ setTimeout(function baueGebaeude(){
         /* 🎡 Fahrgeschaeft: die Lage steht ERST hier fest — viertel() setzt sie
            prozedural und entzerren() rueckt sie danach noch. Wir merken uns das
            Wrapper-Objekt und lesen die Position beim Einsteigen frisch aus. */
-        if(b.fahrt)FAHRTEN.push({typ:b.fahrt,w:w9,name:b.file});},true);
+        if(b.fahrt)FAHRTEN.push({typ:b.fahrt,w:w9,name:b.file});
+        /* 🏦 Ebenso die Bank: der Koop-Coup braucht ihre tatsaechliche Lage, nicht die
+           geratene aus dem cfg — entzerren() verschiebt sie danach noch. */
+        if(/bank/.test(b.file))window._bankPos={x:w9.position.x,z:w9.position.z};},true);
       var tuer=null;
       if(b.tuer!==false){
         tuer=laengs?{a:"z",at:bz-seite*(bd/2+0.5),c:bx,w:3.2}
@@ -3990,6 +3995,7 @@ function onNetMsg(m){
       hint("🙈 VERSTECK DICH! Du hast 20 Sekunden …");beep(600,.1,"sine",.05);}
     else{hideSpiel=null;document.getElementById("hideHud").style.display="none";if(m.found){hint("🎉 Gefunden! +100 $ — alle haben Spaß!");beep(880,.09,"square",.05);}}}
   else if(m.t==="mitfahrt"&&!mpHost)hint(m.on?"🚗👫 Du fährst als Beifahrer mit!":"🚶 Ausgestiegen — ihr seid wieder zu Fuß");
+  else if(m.t==="coupStart"){coupStart(true);}
   else if(m.t==="coasterStart"){var C9=window._coaster;if(C9&&!C9.faehrt){C9.faehrt=true;C9.v=5;C9.t=0;C9.runden=0;}}
   else if(m.t==="coaster"&&!mpHost){var C8=window._coaster;if(C8){C8.t=m.tt;C8.v=m.v;C8.faehrt=true;}}
   else if(m.t==="brunnen"&&!mpHost){var B9=window._brunnen;if(B9)hearts(B9.x,B9.z);if(sims[m.si])simEmoji(sims[m.si],"✨");beep(720,.08,"sine",.04);hint("⛲ Erfrischung am Brunnen! +Laune");}
@@ -5271,6 +5277,66 @@ function layoutLinkeSpalte(){
     setz("top",Math.round(mr?mr.top+6:130)+"px");}}
 addEventListener("resize",function(){setTimeout(layoutLinkeSpalte,60);});
 addEventListener("orientationchange",function(){setTimeout(layoutLinkeSpalte,260);});
+/* ═══════ 🏦 BANK-COUP ZU ZWEIT ═══════════════════════════════════════════════════
+   User: „lustiges zusammen spiel machen, mit guter mission, wie bank ueberfall".
+   Drei Phasen, beide Spieler werden gebraucht:
+     1 KNACKEN  — beide muessen an der Bank stehen, 12 s durchhalten. Geht einer weg,
+                  bricht der Coup ab. Das erzwingt Absprache statt Alleingang.
+     2 FLUCHT   — Alarm, Fahndung steigt, Polizei rueckt aus. 60 s Zeit, um zum
+                  Bahnhofs-Parkplatz zu kommen — beide, nicht nur einer.
+     3 BEUTE    — geteilt, aber deutlich mehr als jeder Coup allein bringt.
+   Solo ist er absichtlich nicht spielbar; der Knopf sagt das auch. */
+var COUP={phase:0,t:0,beute:0};
+function coupZone(){return window._bankPos||{x:172,z:-20};}
+function coupFluchtZone(){return {x:30,z:104};}                 /* Bahnhofs-Parkplatz */
+function coupBtnUpd(){
+  var b=document.getElementById("coupBtn");if(!b)return;
+  if(!running||buildMode||COUP.phase>0){b.style.display="none";return;}
+  var p=spielerPos(),z=coupZone();
+  b.style.display=(Math.hypot(p.x-z.x,p.z-z.z)<12)?"block":"none";}
+function coupStart(silent){
+  if(COUP.phase>0)return;
+  if(!MPs){hint("🏦 Der grosse Coup geht nur zu zweit — hol dir einen Mitspieler.");return;}
+  COUP.phase=1;COUP.t=12;COUP.beute=0;
+  hint("🏦 Beide an der Bank bleiben — 12 Sekunden!");
+  beep(140,.3,"sawtooth",.06);
+  if(!silent&&MPs)netSend({t:"coupStart"});}
+function coupEnde(txt,ton){
+  COUP.phase=0;COUP.t=0;
+  var b=document.getElementById("coupHud");if(b)b.style.display="none";
+  if(txt)hint(txt);
+  if(ton)beep(ton,.25,"square",.05);}
+function updCoup(dt){
+  var hud=document.getElementById("coupHud");
+  if(COUP.phase===0){if(hud)hud.style.display="none";return;}
+  var me=spielerPos(),z=coupZone(),fl=coupFluchtZone();
+  var partner=MPs?sims[1-meinSi()]:null;
+  COUP.t-=dt;
+  if(COUP.phase===1){
+    var ichDa=Math.hypot(me.x-z.x,me.z-z.z)<14;
+    var duDa=partner?Math.hypot(partner.x-z.x,partner.z-z.z)<14:false;
+    if(!ichDa||!duDa){coupEnde("🏦 Abgebrochen — ihr müsst BEIDE an der Bank bleiben.",180);return;}
+    if(COUP.t<=0){
+      COUP.phase=2;COUP.t=60;
+      COUP.beute=2200+Math.floor(Math.random()*900);
+      if(typeof wanted!=="undefined")wanted=Math.max(wanted||0,3);
+      hint("🚨 Alarm! Beute "+COUP.beute+" $ — beide zum Parkplatz am Bahnhof!");
+      beep(880,.15,"square",.06);}}
+  else if(COUP.phase===2){
+    var ichWeg=Math.hypot(me.x-fl.x,me.z-fl.z)<16;
+    var duWeg=partner?Math.hypot(partner.x-fl.x,partner.z-fl.z)<16:false;
+    if(ichWeg&&duWeg){
+      geld+=COUP.beute;geldSend();updHUD();
+      stats.coups=(stats.coups||0)+1;
+      coupEnde("🏦✅ Geschafft! "+COUP.beute+" $ geteilt — sauber gearbeitet.",660);
+      if(typeof wanted!=="undefined")wanted=0;
+      return;}
+    if(COUP.t<=0){coupEnde("🚔 Zu langsam — die Beute ist weg.",160);return;}}
+  if(hud){
+    hud.style.display="block";
+    hud.textContent=(COUP.phase===1?"🏦 Tresor knacken  ":"🚨 Flucht zum Parkplatz  ")
+      +Math.max(0,Math.ceil(COUP.t))+" s"
+      +(COUP.phase===2?"  ·  "+COUP.beute+" $":"");}}
 function egoToggle(){
   egoMode=!egoMode;
   var _me=sims[meinSi()]||sims[0];
@@ -5593,6 +5659,7 @@ function tapAt(px,py){
 document.getElementById("zoomIn").onclick=function(){camRT=Math.max(7,camRT*0.8);};
 document.getElementById("zoomOut").onclick=function(){camRT=Math.min(135,camRT*1.25);followSim=null;if(egoMode)egoToggle();};
 document.getElementById("egoBtn").onclick=function(){egoToggle();};
+document.getElementById("coupBtn").onclick=function(){coupStart();};
 document.getElementById("coasterBtn").onclick=function(){coasterEinsteigen();};
 document.getElementById("fahrtBtn").onclick=function(){fahrtEinsteigen();};
 document.getElementById("npcBtn").onclick=function(){npcAnsprechen();};
@@ -6159,7 +6226,7 @@ function loop(now){
     if(Math.abs(camRT-camR)>0.02){camR+=(camRT-camR)*Math.min(1,dt*8);
       if(Math.abs(camRT-camR)<=0.02)camR=camRT;updCam();}
     updFollow(dt);updMinimap(dt);updLampPool(dt);updCoaster(dt,now);coasterBtnUpd();
-    updFahrt(dt);fahrtBtnUpd();npcBtnUpd();
+    updFahrt(dt);fahrtBtnUpd();npcBtnUpd();updCoup(dt);coupBtnUpd();
     sims.forEach(function(s,si){updSim(s,si,dt,now);});
     for(var ki=0;ki<kinder.length;ki++)updKind(kinder[ki],dt,now);
     updHund(dt,now);
