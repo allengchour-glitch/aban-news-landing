@@ -263,10 +263,14 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
       <button class="btn ghost" id="hostBtn" style="margin-top:0">Raum erstellen</button>
       <input type="text" id="mpCode" placeholder="CODE" maxlength="4" style="width:80px;text-transform:uppercase">
       <button class="btn ghost" id="joinBtn" style="margin-top:0">Beitreten</button>
+      <button class="btn ghost" id="sucheBtn" style="margin-top:0">🔎 Räume suchen</button>
     </div>
+    <div id="mpListe" style="display:none;margin-top:10px;text-align:left;max-width:400px;margin-left:auto;margin-right:auto"></div>
     <div id="mpLobby" style="display:none;margin-top:8px">
       Raum-Code: <b id="mpCodeShow" style="font-size:1.3rem;letter-spacing:4px;color:#e8722a"></b>
       <div id="mpStatus" style="font-size:.85rem;color:#5a7a9a">Warte auf Mitspieler …</div>
+      <div id="mpSpieler" style="margin-top:10px;text-align:left;max-width:320px;margin-left:auto;margin-right:auto"></div>
+      <button class="btn" id="mpStartBtn" style="margin-top:10px;display:none;font-size:.95rem;padding:10px 26px">▶ Spiel starten</button>
       <button class="btn ghost" id="mpBackBtn" style="margin-top:8px;display:none;font-size:.9rem;padding:8px 18px">↩ Abbrechen / neuer Versuch</button>
     </div>
   </div>
@@ -4370,8 +4374,17 @@ function onNetMsg(m){
   else if(m.t==="coaster"&&!mpHost){var C8=window._coaster;if(C8){C8.t=m.tt;C8.v=m.v;C8.faehrt=true;}}
   else if(m.t==="brunnen"&&!mpHost){var B9=window._brunnen;if(B9)hearts(B9.x,B9.z);if(sims[m.si])simEmoji(sims[m.si],"✨");beep(720,.08,"sine",.04);hint("⛲ Erfrischung am Brunnen! +Laune");}
   else if(m.t==="pickup"&&pickups[m.i]){pickups[m.i].active=m.on;pickups[m.i].mesh.visible=m.on;}
-  else if(m.t==="hallo"&&mpHost){netSend({t:"state",sn:snapshot()});chatAdd("System",m.n+" baut jetzt mit!");}
-  else if(m.t==="state"&&!mpHost){loadSnapshot(m.sn);startGame();}
+  else if(m.t==="hallo"&&mpHost){
+    LOBBY.spieler=[myName,(m.n||"Gast")];lobbyNamenUpd();lobbyStartKnopf(!LOBBY.gestartet);
+    netSend({t:"lobby",s:LOBBY.spieler});
+    netSend({t:"state",sn:snapshot()});chatAdd("System",m.n+" baut jetzt mit!");
+    if(LOBBY.gestartet)netSend({t:"los"});}
+  /* Antwort fuer den Raum-Browser: ohne die bleibt der eigene Raum in MP.suche()
+     unsichtbar, weil die Probe nur auf „__lobby" hoert. */
+  else if(m.t==="__lobby?"&&mpHost)netSend({t:"__lobby",n:myName,p:LOBBY.spieler.length||1});
+  else if(m.t==="lobby"&&!mpHost){LOBBY.spieler=m.s||[];lobbyNamenUpd();}
+  else if(m.t==="los"&&!mpHost){LOBBY.gestartet=true;if(!running)startGame();}
+  else if(m.t==="state"&&!mpHost){loadSnapshot(m.sn);if(LOBBY.gestartet&&!running)startGame();}  /* Start wartet auf {t:"los"} vom Host */
   else if(m.t==="sims"&&!mpHost){m.a.forEach(function(sd,i){if(sims[i])sims[i].net=sd;});
     var cm9=m.ca?((m.ca.vi>=0&&verkehr[m.ca.vi])?verkehr[m.ca.vi]:window.autoRec):null;
     if(cm9&&cm9.mesh){cm9.mesh.visible=true;cm9.mesh.position.x=m.ca.x;cm9.mesh.position.z=m.ca.z;cm9.mesh.rotation.y=m.ca.r;}
@@ -6485,45 +6498,104 @@ document.getElementById("mpBackBtn").onclick=function(){
   document.getElementById("mpBackBtn").style.display="none";
   var st=document.getElementById("mpStatus");if(st)st.style.color="#5a7a9a";
   document.getElementById("netSetup").style.display="flex";};
-document.getElementById("hostBtn").onclick=function(){
-  if(typeof MP==="undefined"){alert("Online-Modul nicht geladen");return;}
+/* ═══════════ 🌐 KOOP-LOBBY: Raumsuche + Namen + Start ═══════════════════════════
+   User: „mit koop server suchen und joinen so dass man namen sieht ... namen anzeigen
+   bis man startet wenn der joint".
+   Bisher gab es nur „Raum erstellen" mit gewuerfeltem Code — wer keinen Code hatte,
+   kam nicht rein, und das Spiel startete in dem Moment, in dem jemand verband: man
+   sah nie, WER da ist. Jetzt:
+     🔎 Raeume suchen  -> MP.suche() klappert die oeffentlichen Codes ab und listet
+                          Raum, Hostname und Spielerzahl; ein Tipp tritt bei.
+     Lobby            -> zeigt beide Namen, sobald der Gast da ist.
+     ▶ Starten        -> nur der Host; erst dann laeuft das Spiel los. */
+var LOBBY={spieler:[],gestartet:false};
+function lobbyNamenUpd(){
+  var el=document.getElementById("mpSpieler");if(!el)return;
+  if(!LOBBY.spieler.length){el.innerHTML="";return;}
+  el.innerHTML="<div style='font-weight:800;color:#2a6ab0;margin-bottom:4px'>👥 Im Raum:</div>"+
+    LOBBY.spieler.map(function(n,i){
+      return "<div style='padding:5px 10px;background:#fff8ec;border:2px solid #f0c8a0;border-radius:10px;margin-bottom:5px'>"+
+             (i===0?"👑 ":"🙋 ")+String(n).replace(/[<>&]/g,"")+"</div>";}).join("");}
+function lobbyStartKnopf(an){
+  var b=document.getElementById("mpStartBtn");if(b)b.style.display=an?"inline-block":"none";}
+function lobbyStarten(){
+  if(LOBBY.gestartet)return;LOBBY.gestartet=true;
+  lobbyStartKnopf(false);
+  if(mpHost)netSend({t:"los"});
+  if(!running)startGame();}
+document.getElementById("mpStartBtn").onclick=lobbyStarten;
+document.getElementById("sucheBtn").onclick=function(){
+  if(typeof MP==="undefined"||!MP.suche){alert("Online-Modul nicht geladen");return;}
+  var box=document.getElementById("mpListe");
+  box.style.display="block";
+  box.innerHTML="<div style='color:#5a7a9a'>🔎 Suche offene Räume … (bis 5 s)</div>";
+  var gefunden=[];
+  function zeichne(){
+    if(!gefunden.length){
+      box.innerHTML="<div style='color:#5a7a9a;margin-bottom:6px'>Kein offener Raum gefunden.</div>"+
+        "<button class='btn ghost' id='pubHostBtn' style='margin-top:0;font-size:.9rem;padding:8px 18px'>➕ Öffentlichen Raum eröffnen</button>";
+      document.getElementById("pubHostBtn").onclick=function(){raumEroeffnen([]);};
+      return;}
+    box.innerHTML="<div style='font-weight:800;color:#2a6ab0;margin-bottom:6px'>Offene Räume:</div>"+
+      gefunden.map(function(r,i){
+        return "<button class='btn ghost' data-i='"+i+"' style='display:block;width:100%;margin:0 0 6px;font-size:.92rem;padding:9px 14px;text-align:left'>"+
+               "🎮 "+String(r.name).replace(/[<>&]/g,"")+" · Raum "+r.code+" · "+r.spieler+"/2</button>";}).join("");
+    Array.prototype.forEach.call(box.querySelectorAll("button[data-i]"),function(b){
+      b.onclick=function(){beitreten(gefunden[+b.getAttribute("data-i")].code);};});}
+  MP.suche("traumhaus",{fund:function(r){gefunden.push(r);zeichne();},
+                        fertig:function(){zeichne();}});};
+function raumEroeffnen(belegt){
   myName=(document.getElementById("mpName").value.trim()||"Host").slice(0,12);
-  try{var cs=localStorage.getItem("th_save_coop");if(cs)loadSnapshot(JSON.parse(cs));}catch(e){} /* 🩹 Schwarm-P1: gemeinsames Haus überlebt jetzt einen Host-Reload */
-  MPs=MP.host("traumhaus");mpHost=true;window._roomCode=MPs.code;
-  document.getElementById("netSetup").style.display="none";
-  document.getElementById("mpLobby").style.display="block";
-  document.getElementById("mpCodeShow").textContent=MPs.code;
+  LOBBY.spieler=[myName];LOBBY.gestartet=false;
+  try{var cs=localStorage.getItem("th_save_coop");if(cs)loadSnapshot(JSON.parse(cs));}catch(e){}
+  MPs=MP.hostPublic("traumhaus",belegt);mpHost=true;window._roomCode=MPs.code;
+  lobbyAnzeigen(MPs.code);
   MPs.onMessage(onNetMsg);
-  MPs.onStatus(function(st){
-    /* 🔎 „suche" hiess bisher nur „suche" — bei drei Vermittlungs-Servern wartet man
-       sonst bis zu 27 s vor einer schwarzen Wand. Jetzt steht dran, welcher gerade
-       probiert wird. */
-    var txt={waiting:"Warte auf Mitspieler …",connected:"Verbunden! Spiel startet …",lost:"Verbindung verloren — versuche Reconnect …",closed:"Verbindung beendet"}[st];
-    if(st==="suche")txt="Suche Vermittlungs-Server "+(MPs._serverNr||1)+"/"+(MPs._serverAnzahl||1)+" …";
-    document.getElementById("mpStatus").textContent=txt||st;
-    if(st==="waiting"){document.getElementById("mpCodeShow").textContent=MPs.code;window._roomCode=MPs.code;} /* 🩹 Schwarm-P3: Code kann nach ID-Kollision neu gewürfelt sein */
-    if(st==="connected"&&!running)startGame();
-    document.getElementById("mpBackBtn").style.display=(st==="closed")?"inline-block":"none";
-    document.getElementById("netBadge").style.background=st==="connected"?"rgba(90,150,90,.9)":"rgba(190,90,60,.9)";});
-  if(MPs.ready&&MPs.ready.catch)MPs.ready.catch(function(err){mpLobbyFehler(err&&err.message||"Verbindung fehlgeschlagen");});};
-document.getElementById("joinBtn").onclick=function(){
-  if(typeof MP==="undefined"){alert("Online-Modul nicht geladen");return;}
-  myName=(document.getElementById("mpName").value.trim()||"Gast").slice(0,12);
-  var code=(document.getElementById("mpCode").value||"").trim().toUpperCase();
-  if(code.length!==4){alert("4-stelligen Raum-Code eingeben");return;}
-  MPs=MP.join("traumhaus",code);mpHost=false;window._roomCode=code;
+  MPs.onStatus(hostStatus);
+  if(MPs.ready&&MPs.ready.catch)MPs.ready.catch(function(err){mpLobbyFehler(err&&err.message||"Verbindung fehlgeschlagen");});}
+function lobbyAnzeigen(code){
   document.getElementById("netSetup").style.display="none";
+  document.getElementById("mpListe").style.display="none";
   document.getElementById("mpLobby").style.display="block";
   document.getElementById("mpCodeShow").textContent=code;
+  lobbyNamenUpd();}
+function hostStatus(st){
+  var txt={waiting:"Warte auf Mitspieler …",connected:"Verbunden!",lost:"Verbindung verloren — versuche Reconnect …",closed:"Verbindung beendet"}[st];
+  if(st==="suche")txt="Suche Vermittlungs-Server "+(MPs._serverNr||1)+"/"+(MPs._serverAnzahl||1)+" …";
+  document.getElementById("mpStatus").textContent=txt||st;
+  if(st==="waiting"){document.getElementById("mpCodeShow").textContent=MPs.code;window._roomCode=MPs.code;}
+  document.getElementById("mpBackBtn").style.display=(st==="closed")?"inline-block":"none";
+  document.getElementById("netBadge").style.background=st==="connected"?"rgba(90,150,90,.9)":"rgba(190,90,60,.9)";}
+function beitreten(code){
+  myName=(document.getElementById("mpName").value.trim()||"Gast").slice(0,12);
+  LOBBY.spieler=[];LOBBY.gestartet=false;
+  MPs=MP.join("traumhaus",code);mpHost=false;window._roomCode=code;
+  lobbyAnzeigen(code);
   document.getElementById("mpStatus").textContent="Verbinde …";
   MPs.onMessage(onNetMsg);
   MPs.onStatus(function(st){
-    if(st==="connected"){document.getElementById("mpStatus").textContent="Verbunden — lade Haus …";netSend({t:"hallo",n:myName});}
+    if(st==="connected"){document.getElementById("mpStatus").textContent="Verbunden — warte auf Start durch den Host …";netSend({t:"hallo",n:myName});}
     if(st==="lost")document.getElementById("mpStatus").textContent="Verbindung verloren — Reconnect …";
     if(st==="closed"){document.getElementById("mpStatus").textContent="Verbindung beendet";document.getElementById("mpBackBtn").style.display="inline-block";}
     document.getElementById("netBadge").style.background=st==="connected"?"rgba(90,150,90,.9)":"rgba(190,90,60,.9)";});
+  if(MPs.ready&&MPs.ready.catch)MPs.ready.catch(function(err){mpLobbyFehler(err&&err.message||"Verbindung fehlgeschlagen");});}
+document.getElementById("hostBtn").onclick=function(){
+  if(typeof MP==="undefined"){alert("Online-Modul nicht geladen");return;}
+  myName=(document.getElementById("mpName").value.trim()||"Host").slice(0,12);
+  LOBBY.spieler=[myName];LOBBY.gestartet=false;
+  try{var cs=localStorage.getItem("th_save_coop");if(cs)loadSnapshot(JSON.parse(cs));}catch(e){} /* 🩹 Schwarm-P1: gemeinsames Haus überlebt jetzt einen Host-Reload */
+  MPs=MP.host("traumhaus");mpHost=true;window._roomCode=MPs.code;
+  lobbyAnzeigen(MPs.code);
+  MPs.onMessage(onNetMsg);
+  /* Kein Auto-Start mehr: frueher lief das Spiel in dem Moment los, in dem jemand
+     verband — man sah nie, wer beigetreten ist. Der Host startet jetzt selbst. */
+  MPs.onStatus(hostStatus);
   if(MPs.ready&&MPs.ready.catch)MPs.ready.catch(function(err){mpLobbyFehler(err&&err.message||"Verbindung fehlgeschlagen");});};
-
+document.getElementById("joinBtn").onclick=function(){
+  if(typeof MP==="undefined"){alert("Online-Modul nicht geladen");return;}
+  var code=(document.getElementById("mpCode").value||"").trim().toUpperCase();
+  if(code.length!==4){alert("4-stelligen Raum-Code eingeben");return;}
+  beitreten(code);};
 // ===================== Live-Voice-Chat (WebRTC über PeerJS) =====================
 var voice={stream:null,call:null,on:false,muted:false,remoteEl:null};
 function voiceRemote(rs){
@@ -6772,6 +6844,14 @@ window.__th={
   fahrtStand:function(){return _fahrt?{t:+_fahrt.t.toFixed(2),
     hoehe:+(window._camHebung||0).toFixed(2),typ:_fahrt.f.typ}:null;},
   aussteigen:function(){fahrtAussteigen();},
+  /* Testzugang fuer die Koop-Lobby: Netz-Nachrichten lassen sich einspeisen, ohne
+     dass zwei vollstaendige 3D-Seiten parallel laufen muessen (das schafft der
+     Test-Browser nicht). */
+  netTest:function(m){onNetMsg(m);},
+  laeuft:function(){return running;},
+  lobby:function(){return {spieler:LOBBY.spieler.slice(),gestartet:LOBBY.gestartet,
+    start:getComputedStyle(document.getElementById("mpStartBtn")).display,
+    text:(document.getElementById("mpSpieler")||{}).textContent||""};},
   bahnProfil:function(typ){var A=FAHRT_ART[typ],o={x:0,z:0},r=[];
     for(var i=0;i<=10;i++)r.push(+A.bahn(i/10,o).y.toFixed(1));return r;}
 };
