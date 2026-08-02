@@ -20,6 +20,16 @@ stages:
   - traffic
   - brain
 
+# ⛔ KEINE Pipeline bei Push (2026-08-02): Alle Jobs sind auf schedule/web/manual gegatet;
+# ohne diese workflow-Regel legte GitLab bei JEDEM Push auf main eine Pipeline an, die am
+# blockierenden Manual-Job (youtube-learn, kein allow_failure) scheiterte → Dauer-Fehlermails.
+# Diese Regel unterbindet Push-Pipelines; Schedule + „Run pipeline"(web) + manuell laufen weiter.
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push"'
+      when: never
+    - when: always
+
 # 🧠 aban-Brain — Selbst-Verbesserung OHNE GitHub Actions (umgeht die Actions-Sperre).
 # Läuft auf GitLabs Gratis-Runner. Holt sich IMMER frisch den aktuellen Code von GitHub,
 # scannt + fixt sicher (rel=noopener) und schreibt Report/Score/Vorschläge auf einen
