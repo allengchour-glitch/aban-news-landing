@@ -131,10 +131,12 @@ if ($Jetzt) {
     }
     # Direkt starten statt ueber die Startdatei - die wartet erst die
     # Anmelde-Verzoegerung ab, und darauf will jetzt niemand warten.
-    Start-Process -FilePath "powershell.exe" -ArgumentList @(
-        "-NoProfile", "-ExecutionPolicy", "Bypass",
-        "-File", "`"$PSScriptRoot\start-windows.ps1`"", "-Scharf", "-Dauerlauf"
-    ) -WorkingDirectory $PSScriptRoot
+    # -ArgumentList als EINE fertig zitierte Zeichenkette, nicht als Feld:
+    # PowerShell fuegt ein Feld ungeschuetzt mit Leerzeichen zusammen. Liegt der
+    # Bot unter "C:\Users\Max Muster\bot", zerfaellt der Pfad sonst in zwei
+    # Argumente und der Start geht ins Leere - ohne erkennbaren Grund.
+    $befehl = '-NoProfile -ExecutionPolicy Bypass -File "{0}\start-windows.ps1" -Scharf -Dauerlauf' -f $PSScriptRoot
+    Start-Process -FilePath "powershell.exe" -ArgumentList $befehl -WorkingDirectory $PSScriptRoot
     Gut "Bot laeuft jetzt in einem eigenen Fenster."
     Write-Host "     Protokoll: $PSScriptRoot\logs\"
 }

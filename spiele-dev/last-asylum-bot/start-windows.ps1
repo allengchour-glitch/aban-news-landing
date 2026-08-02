@@ -29,6 +29,12 @@ param(
 $ErrorActionPreference = "Stop"
 Set-Location -Path $PSScriptRoot
 
+# Gilt fuer JEDEN git-Aufruf in diesem Skript: nie nach Zugangsdaten fragen.
+# Eine Passwortabfrage in einem minimierten Fenster sieht niemand - der Start
+# haengt dann stumm, und die Neustart-Schleife macht daraus eine Endlosschleife.
+$env:GIT_TERMINAL_PROMPT = "0"
+$env:GCM_INTERACTIVE = "never"
+
 function Schritt($text) { Write-Host "`n=== $text ===" -ForegroundColor Cyan }
 function Gut($text)     { Write-Host "  OK  $text" -ForegroundColor Green }
 function Warnung($text) { Write-Host "  !   $text" -ForegroundColor Yellow }
@@ -50,22 +56,136 @@ function Git-Text {
 # git mit harter Zeitgrenze. Fragt git trotz GIT_TERMINAL_PROMPT doch einmal
 # nach etwas, oder haengt das Netz, wartet hier nichts endlos - der Bot soll
 # spielen, nicht auf eine Eingabeaufforderung starren, die niemand sieht.
-# Gibt $true zurueck, wenn der Befehl in der Zeit sauber durchlief.
+#
+# Rueckgabe: "ok" | "zeit" (Zeitgrenze erreicht) | "fehler". Der Unterschied
+# zaehlt: bei "zeit" lohnt ein zweiter Versuch, bei "fehler" nicht - und eine
+# Meldung, die beides zusammenwirft, schickt einen auf die falsche Suche.
 function Git-MitZeitlimit {
     param([string[]]$Argumente, [int]$Sekunden = 120)
+    $alle = @("-C", $PSScriptRoot) + $Argumente
+    # JEDES Argument einzeln in Anfuehrungszeichen. Start-Process fuegt die
+    # Liste ungeschuetzt mit Leerzeichen zusammen: ein Ordner wie
+    # "C:\Users\Max Muster\bot" zerfiele sonst in zwei Argumente, und leere
+    # Elemente verschwinden ganz - dann landet das naechste Wort hinter -C.
+    $zeile = ($alle | ForEach-Object { '"' + ([string]$_ -replace '"', '\"') + '"' }) -join " "
     try {
         # Nur -NoNewWindow: zusammen mit -WindowStyle wehrt PowerShell den
         # Aufruf ab ("Parameter set cannot be resolved").
-        $p = Start-Process -FilePath "git" -PassThru -NoNewWindow `
-             -ArgumentList (@("-C", $PSScriptRoot) + $Argumente)
+        $p = Start-Process -FilePath "git" -PassThru -NoNewWindow -ArgumentList $zeile
     } catch {
-        return $false
+        return "fehler"
     }
     if (-not $p.WaitForExit($Sekunden * 1000)) {
         try { $p.Kill() } catch { }
-        return $false
+        return "zeit"
     }
-    return ($p.ExitCode -eq 0)
+    if ($p.ExitCode -eq 0) { return "ok" }
+    return "fehler"
+}
+
+# Ein Startabbruch war bisher unsichtbar: das Autostart-Fenster ist minimiert,
+# und die Neustart-Schleife probiert es stumm alle 60 Sekunden erneut. Von
+# aussen sah das genauso aus wie ein zufriedener Bot - naemlich nach nichts.
+# Darum schreibt jeder Abbruch von hier an seinen Grund ins Repository.
+#
+# Auch das ist nur eine Meldung und darf niemals selbst zum Abbruchgrund
+# werden - deshalb liegt alles in try/catch und der exit-Code kommt am Ende
+# in jedem Fall.
+function Abbruch {
+    param([string]$Grund, [string[]]$Hinweise = @(), [int]$Code = 1)
+    Fehler $Grund
+    foreach ($h in $Hinweise) { Write-Host "     $h" }
+    try {
+        $ordner = Join-Path $PSScriptRoot "austausch"
+        if (-not (Test-Path $ordner)) { New-Item -ItemType Directory -Path $ordner | Out-Null }
+        $datei = Join-Path $ordner "start-fehler.txt"
+        $zeilen = @(
+            "# Der Start ist abgebrochen. Diese Datei sagt wo.",
+            "zeit:   $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')",
+            "rechner: $env:COMPUTERNAME",
+            "grund:  $Grund"
+        ) + ($Hinweise | ForEach-Object { "hinweis: $_" })
+        Set-Content -Path $datei -Value $zeilen -Encoding UTF8
+        [void](Git-MitZeitlimit @("add", "--", "austausch/start-fehler.txt") 30)
+        [void](Git-MitZeitlimit @("commit", "-m", "Start abgebrochen: $Grund") 30)
+        # Nicht "hochgeladen" melden, wenn der push scheitert - eine Meldung,
+        # die einen Fehlschlag wie einen Erfolg aussehen laesst, ist schlimmer
+        # als gar keine.
+        if ((Git-MitZeitlimit @("push") 60) -eq "ok") {
+            Warnung "Grund in austausch/start-fehler.txt vermerkt und hochgeladen."
+        } else {
+            Warnung "Grund in austausch/start-fehler.txt vermerkt - Hochladen ging nicht."
+        }
+    } catch {
+        Warnung "Der Grund liess sich nicht hochladen: $($_.Exception.Message)"
+    }
+    exit $Code
+}
+
+# Laeuft der Start durch, muss die alte Fehlermeldung weg - sonst sucht man
+# spaeter nach einem Problem, das laengst behoben ist.
+function Abbruch-Vermerk-Loeschen {
+    try {
+        $datei = Join-Path $PSScriptRoot "austausch\start-fehler.txt"
+        if (-not (Test-Path $datei)) { return }
+        Remove-Item $datei -Force
+        [void](Git-MitZeitlimit @("add", "--", "austausch/start-fehler.txt") 30)
+        [void](Git-MitZeitlimit @("commit", "-m", "Start laeuft wieder") 30)
+        [void](Git-MitZeitlimit @("push") 60)
+    } catch { }
+}
+
+# ------------------------------------------------------------- Neuen Stand holen
+# Bisher zog nur der laufende Bot alle dreissig Minuten `git pull`. Steht er
+# still - abgestuerzt, PC neu gestartet, Fenster geschlossen -, kam gar nichts
+# mehr an: weder ein Fehler-Fix noch eine auftrag.txt. Genau dann ist ein Start
+# aber der einzige Moment, in dem jemand nachschaut. Also hier zuerst holen,
+# damit ein einziger Start alles mitnimmt, was seither dazugekommen ist.
+Schritt "Neuen Stand holen"
+# GRUNDREGEL: Dieser Block ist eine Bequemlichkeit. Er darf den Start NIE
+# verhindern - lieber mit altem Stand spielen als gar nicht. Darum liegt alles
+# in try/finally, und der Bot laeuft danach in jedem Fall weiter.
+#
+# Zwei Fallen stecken hier drin, beide unsichtbar:
+#  1) git fragt nach Zugangsdaten und wartet. In einem minimierten Fenster
+#     sieht das niemand - der Bot "laeuft einfach nicht", ohne Fehlermeldung.
+#     GIT_TERMINAL_PROMPT=0 laesst git stattdessen scheitern.
+#  2) Oben steht $ErrorActionPreference = "Stop". git schreibt auch Harmloses
+#     nach stderr; das allein kann den ganzen Start abbrechen.
+if (-not $UeberspringeUpdate) {
+    $fehlerregelVorher = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
+    try {
+        $vorher = Git-Text "rev-parse" "--short" "HEAD"
+        $zug = Git-MitZeitlimit @("pull", "--ff-only") 120
+        $nachher = Git-Text "rev-parse" "--short" "HEAD"
+        $offen = Git-Text "status" "--porcelain"
+
+        if (-not $nachher) {
+            Warnung "Kein Git-Ordner - der Bot laeuft mit dem Stand, der hier liegt."
+        } elseif ($zug -eq "zeit") {
+            Warnung "Holen hat zu lange gedauert - alter Stand, es geht trotzdem weiter."
+        } elseif ($zug -ne "ok") {
+            Warnung "Holen ist fehlgeschlagen - alter Stand, es geht trotzdem weiter."
+            Write-Host "     Einmal von Hand pruefen: git -C `"$PSScriptRoot`" pull"
+        } elseif ($vorher -ne $nachher) {
+            Gut "Neue Fassung geholt: $vorher -> $nachher"
+        } elseif ($offen) {
+            # Die stille Falle: eine geaenderte Datei blockiert jedes kuenftige
+            # Update, und ohne Hinweis merkt das niemand.
+            Warnung "Geaenderte Dateien blockieren neue Fassungen - so raeumt man auf:"
+            Write-Host "     git -C `"$PSScriptRoot`" checkout -- . ; git -C `"$PSScriptRoot`" pull"
+        } else {
+            Gut "Stand ist aktuell ($nachher)"
+        }
+    } catch {
+        Warnung "Neuen Stand holen ging schief - der Bot startet trotzdem."
+        Write-Host "     $($_.Exception.Message)"
+    } finally {
+        $ErrorActionPreference = $fehlerregelVorher
+    }
+} else {
+    Warnung "Update uebersprungen (-UeberspringeUpdate)."
 }
 
 # ---------------------------------------------------------------- Python finden
@@ -78,8 +198,8 @@ foreach ($kandidat in @("python", "python3", "py")) {
     } catch { }
 }
 if (-not $python) {
-    Fehler "Kein Python gefunden. Installieren: https://www.python.org/downloads/ (Haken bei 'Add to PATH')"
-    exit 1
+    Abbruch "Kein Python gefunden" @(
+        "Installieren: https://www.python.org/downloads/ (Haken bei 'Add to PATH')")
 }
 
 # ------------------------------------------------------------------ numpy holen
@@ -96,7 +216,7 @@ if ($LASTEXITCODE -ne 0) {
 # -------------------------------------------------------- Konfiguration pruefen
 Schritt "Konfiguration und Templates"
 & $python bot.py check
-if ($LASTEXITCODE -ne 0) { Fehler "Konfiguration ist fehlerhaft - Abbruch"; exit 1 }
+if ($LASTEXITCODE -ne 0) { Abbruch "Konfiguration ist fehlerhaft" @("bot.py check meldet einen Fehler") }
 if ($NurPruefen) { Write-Host "`nFertig (nur geprueft)." -ForegroundColor Cyan; exit 0 }
 
 # --------------------------------------------------------------- ADB aufspueren
@@ -128,11 +248,10 @@ if (-not $Adb) {
     }
 }
 if (-not $Adb) {
-    Fehler "adb.exe fehlt weiterhin."
-    Write-Host "     1. Platform-Tools von Hand laden: https://developer.android.com/tools/releases/platform-tools"
-    Write-Host "     2. ZIP nach C:\platform-tools entpacken (adb.exe muss direkt darin liegen)"
-    Write-Host "     3. Skript erneut starten - oder Pfad mitgeben: .\start-windows.ps1 -Adb C:\pfad\adb.exe"
-    exit 1
+    Abbruch "adb.exe fehlt" @(
+        "1. Platform-Tools laden: https://developer.android.com/tools/releases/platform-tools",
+        "2. ZIP nach C:\platform-tools entpacken (adb.exe muss direkt darin liegen)",
+        "3. Skript erneut starten - oder Pfad mitgeben: -Adb C:\pfad\adb.exe")
 }
 Gut "adb: $Adb"
 
@@ -193,12 +312,11 @@ if ($LASTEXITCODE -ne 0) {
     if ($LASTEXITCODE -ne 0) { $null = Starte-BlueStacks }
     & $python bot.py --adb "$Adb" devices
     if ($LASTEXITCODE -ne 0) {
-        Fehler "Weder Handy noch Emulator erreichbar."
-        Write-Host "     Handy:      USB-Debugging an, Kabel steckt, 'Diesem Computer vertrauen?' bestaetigt."
-        Write-Host "     BlueStacks: Einstellungen -> Erweitert -> 'Android Debug Bridge (ADB)' einschalten,"
-        Write-Host "                 dann BlueStacks neu starten und dieses Skript nochmal ausfuehren."
-        Write-Host "     Manuell:    $Adb connect 127.0.0.1:<port aus den BlueStacks-Einstellungen>"
-        exit 1
+        Abbruch "Weder Handy noch Emulator erreichbar" @(
+            "Handy:      USB-Debugging an, Kabel steckt, 'Diesem Computer vertrauen?' bestaetigt.",
+            "BlueStacks: Einstellungen -> Erweitert -> 'Android Debug Bridge (ADB)' einschalten,",
+            "            dann BlueStacks neu starten und dieses Skript nochmal ausfuehren.",
+            "Manuell:    $Adb connect 127.0.0.1:<port aus den BlueStacks-Einstellungen>")
     }
 }
 
@@ -229,59 +347,6 @@ $paket = & $python bot.py --adb "$Adb" @geraet package 2>$null
 if ($paket) { Gut "App im Vordergrund: $paket" }
 if ($paket -and $paket -notmatch "com.phs.global") {
     Warnung "Das Spiel scheint nicht offen zu sein - oeffne Last Asylum, bevor es losgeht."
-}
-
-# ------------------------------------------------------------- Neuen Stand holen
-# Bisher zog nur der laufende Bot alle dreissig Minuten `git pull`. Steht er
-# still - abgestuerzt, PC neu gestartet, Fenster geschlossen -, kam gar nichts
-# mehr an: weder ein Fehler-Fix noch eine auftrag.txt. Genau dann ist ein Start
-# aber der einzige Moment, in dem jemand nachschaut. Also hier zuerst holen,
-# damit ein einziger Start alles mitnimmt, was seither dazugekommen ist.
-Schritt "Neuen Stand holen"
-# GRUNDREGEL: Dieser Block ist eine Bequemlichkeit. Er darf den Start NIE
-# verhindern - lieber mit altem Stand spielen als gar nicht. Darum liegt alles
-# in try/finally, und der Bot laeuft danach in jedem Fall weiter.
-#
-# Zwei Fallen stecken hier drin, beide unsichtbar:
-#  1) git fragt nach Zugangsdaten und wartet. In einem minimierten Fenster
-#     sieht das niemand - der Bot "laeuft einfach nicht", ohne Fehlermeldung.
-#     GIT_TERMINAL_PROMPT=0 laesst git stattdessen scheitern.
-#  2) Oben steht $ErrorActionPreference = "Stop". git schreibt auch Harmloses
-#     nach stderr; das allein kann den ganzen Start abbrechen.
-if (-not $UeberspringeUpdate) {
-    $fehlerregelVorher = $ErrorActionPreference
-    $ErrorActionPreference = "Continue"
-    $env:GIT_TERMINAL_PROMPT = "0"      # niemals nach Passwort fragen
-    $env:GCM_INTERACTIVE = "never"      # auch der Windows-Credential-Manager nicht
-    try {
-        $vorher = Git-Text "rev-parse" "--short" "HEAD"
-        $zug = Git-MitZeitlimit @("pull", "--ff-only") 120
-        $nachher = Git-Text "rev-parse" "--short" "HEAD"
-        $offen = Git-Text "status" "--porcelain"
-
-        if (-not $nachher) {
-            Warnung "Kein Git-Ordner - der Bot laeuft mit dem Stand, der hier liegt."
-        } elseif (-not $zug) {
-            Warnung "Holen hat zu lange gedauert oder brauchte ein Passwort - alter Stand, es geht weiter."
-            Write-Host "     Einmal von Hand pruefen: git -C `"$PSScriptRoot`" pull"
-        } elseif ($vorher -ne $nachher) {
-            Gut "Neue Fassung geholt: $vorher -> $nachher"
-        } elseif ($offen) {
-            # Die stille Falle: eine geaenderte Datei blockiert jedes kuenftige
-            # Update, und ohne Hinweis merkt das niemand.
-            Warnung "Geaenderte Dateien blockieren neue Fassungen - so raeumt man auf:"
-            Write-Host "     git -C `"$PSScriptRoot`" checkout -- . ; git -C `"$PSScriptRoot`" pull"
-        } else {
-            Gut "Stand ist aktuell ($nachher)"
-        }
-    } catch {
-        Warnung "Neuen Stand holen ging schief - der Bot startet trotzdem."
-        Write-Host "     $($_.Exception.Message)"
-    } finally {
-        $ErrorActionPreference = $fehlerregelVorher
-    }
-} else {
-    Warnung "Update uebersprungen (-UeberspringeUpdate)."
 }
 
 # ------------------------------------------------------------------- Auftraege
@@ -362,6 +427,10 @@ public static extern uint SetThreadExecutionState(uint esFlags);
         Warnung "Ruhezustand liess sich nicht aussetzen: $($_.Exception.Message)"
     }
 }
+
+# Bis hierher gekommen heisst: der Start hat geklappt. Eine alte Fehlermeldung
+# muss jetzt weg, sonst sucht man spaeter nach einem laengst behobenen Problem.
+Abbruch-Vermerk-Loeschen
 
 if ($Scharf -and $Dauerlauf) {
     Schritt "Bot laeuft SCHARF ohne Zeitlimit"
