@@ -1,0 +1,26 @@
+{
+ "zeit": "2026-08-02 21:59:41",
+ "zeit_utc": "2026-08-02T21:59:41Z",
+ "fassung": "367979b",
+ "schritte": 19,
+ "gleiche_ansicht": 3,
+ "unbekannt_am_stueck": 0,
+ "zaehler": {
+  "wirkungslos": 22,
+  "taps": 8,
+  "drags": 8,
+  "task:spiel-im-vordergrund": 2,
+  "swipes": 2,
+  "task:kalibrieren": 1,
+  "task:bauen-und-aufwerten": 1,
+  "task:forschung": 1,
+  "task:truppe-1-aufwerten": 1,
+  "task:tagesziele": 1,
+  "task:zuflucht": 1,
+  "task:allianz-geschenke": 1
+ },
+ "vorlagen_offen": 0,
+ "verworfene_vorlagen": [],
+ "verdaechtige_regeln": {},
+ "bild": "austausch/lauf.png"
+}
