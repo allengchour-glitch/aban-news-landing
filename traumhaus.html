@@ -468,6 +468,18 @@ function putzTex(rx,ry){
 // ===================== Grundstück =====================
 var GW=72,GH=46,CS=2; // Open-World XXL-BREIT 2026-07-25 (alt 60x46/50x38 → Migration in loadSnapshot)
 var RX=GW*CS/2+6,RL=2*RX+48; // Querstraßen-Abstand (x) + Straßenlänge — skalieren mit der Map
+/* 🏗️ BAUFENSTER (User: „das bauland kann 1/4 von mitte sein, du kannst der rest
+   fuellen mit sachen wo n stadt passen"). Das Gitter bleibt 72 x 46 Zellen — daran
+   haengen Saves, Wegfindung, Sim-Logik und die Strassenlage (RX). Neu GEBAUT wird
+   aber nur noch in der Mitte: 36 x 24 Zellen = 72 x 48 m, also ein Viertel der
+   alten Flaeche (halbe Kantenlaenge je Richtung). BAUH ist bewusst gerade, sonst
+   liegt das Fenster 1 m aus der Mitte. Der frei gewordene Ring ringsum wird in
+   baueGebaeude() mit Stadt bebaut.
+   Zwei getrennte Pruefungen: inLot() bleibt fuer Bewegung, Kollision und ABREISSEN
+   zustaendig — wer vorher weiter aussen gebaut hat, kaeme sonst an sein eigenes
+   Haus nicht mehr heran. inBau() gilt nur fuers Neusetzen. */
+var BAUW=2*Math.round(GW/4),BAUH=2*Math.round(GH/4);
+var BAUX0=Math.round((GW-BAUW)/2),BAUY0=Math.round((GH-BAUH)/2);
 function cx(gx){return (gx-GW/2+0.5)*CS;}
 function cz(gy){return (gy-GH/2+0.5)*CS;}
 // Rasen mit Textur
@@ -1126,7 +1138,16 @@ FLOORS.forEach(function(fl){fl.texture=fl.tex?fl.tex():null;});
     Object.keys(floors).forEach(function(k){if(floors[k]===p[1]){var q=k.split(",");applyFloor(+q[0],+q[1],p[1]);}});});});
 FLOORS.push({n:"Laminat",e:"🟨",tex:null,col:0xd8b878,cost:10,texture:null});
 // Gitter (nur im Baumodus)
-var gridHelper=new THREE.GridHelper(GW*CS,GW,0xffffff,0xffffff);
+/* Das Gitter zeigte 144 x 144 m — die ganze alte Flaeche. Es umreisst jetzt genau
+   das Baufenster, damit man beim Bauen sieht, wo man setzen darf. GridHelper kann
+   nur quadratisch, deshalb von Hand aus zwei Linienscharen. */
+var gridHelper=(function(){
+  var pts=[],W=BAUW*CS/2,H=BAUH*CS/2;
+  for(var i=0;i<=BAUW;i++){var x=-W+i*CS;pts.push(x,0,-H,x,0,H);}
+  for(var j=0;j<=BAUH;j++){var z=-H+j*CS;pts.push(-W,0,z,W,0,z);}
+  var g=new THREE.BufferGeometry();
+  g.setAttribute("position",new THREE.Float32BufferAttribute(pts,3));
+  return new THREE.LineSegments(g,new THREE.LineBasicMaterial({color:0xffffff}));})();
 gridHelper.material.transparent=true;gridHelper.material.opacity=0.22;gridHelper.position.y=0.02;gridHelper.visible=false;scene.add(gridHelper);
 // Weg + Umgebung
 var weg=new THREE.Mesh(new THREE.PlaneGeometry(3,10),stdMat(0xc8beA8,0.9));weg.rotation.x=-Math.PI/2;weg.position.set(0,-0.005,GH*CS/2+5);weg.receiveShadow=true;scene.add(weg);
@@ -2876,6 +2897,96 @@ setTimeout(function baueGebaeude(){
       for(var z2=0;z2<9;z2++)bau("th33_parkzaun_modul.glb",1.79,PX-128+z2*4.1,0,PZ-56,0,false,null,true);
       for(var z3=0;z3<9;z3++)bau("th33_parkzaun_modul.glb",1.79,PX-128+z3*4.1,0,PZ+56,0,false,null,true);
     },420);
+    /* ═══════════ 🏙️ STADTFUELLUNG AUF DEM GRUNDSTUECKSRAND ═══════════════════════
+       User: „das bauland kann 1/4 von mitte sein, du kannst der rest fuellen mit
+       sachen wo n stadt passen". Das Baufenster (inBau) ist jetzt die Mitte mit
+       36 x 24 Zellen = 72 x 48 m. Zwischen ihm und den Hauptstrassen (x = ±78,
+       z = ±58) lag ein 25 bis 30 m breiter Ring blanker Rasen — der wird bebaut:
+         Norden  Wohnzeile mit Vorgaerten, zur Hauptstrasse ausgerichtet
+         Sueden  Ladenzeile mit Kiosk und Marktstaenden
+         Osten   Quartierspark mit Spielplatz
+         Westen  Platz mit Bushalte, Telefonzelle und Parkplatz
+       Der Zugangsweg bei x = 0 nach Norden bleibt frei, sonst kaeme man nicht
+       mehr auf sein eigenes Grundstueck. bau() laeuft hier MIT wegVonStrasse(),
+       damit garantiert nichts auf Fahrbahn oder Trottoir landet. */
+    (function stadtfuellung(){
+      var NZ=40, SZ0=-40;                     // Zeilenmitten Nord/Sued
+      /* Grundstuecksgrenze sichtbar machen: gepflasterter Rundweg um das Baufenster
+         plus Hecke aussen. Ohne das steht man vor einer Wiese und weiss nicht, wo
+         man bauen darf — das Gitter sieht man ja nur im Baumodus. */
+      var BW=BAUW*CS/2+3, BH=BAUH*CS/2+3;
+      var wegM=betMat(0xcfc7b6,0.92);
+      [[2*BW+4,2.4,0,-BH],[2*BW+4,2.4,0,BH]].forEach(function(p){
+        var m=new THREE.Mesh(new THREE.BoxGeometry(p[0],0.08,p[1]),wegM);
+        m.position.set(p[2],0.04,p[3]);m.receiveShadow=true;scene.add(m);});
+      [[2.4,2*BH,-BW,0],[2.4,2*BH,BW,0]].forEach(function(p){
+        var m=new THREE.Mesh(new THREE.BoxGeometry(p[0],0.08,p[1]),wegM);
+        m.position.set(p[2],0.04,p[3]);m.receiveShadow=true;scene.add(m);});
+      /* Hecke aussen am Weg, mit Toren zur Zufahrt (x = 0 nach Norden, sonst Ecken frei) */
+      for(var hx=-BW+4;hx<=BW-4;hx+=4){
+        if(Math.abs(hx)>5)bau("th6_hecke_modul.glb",1.3,hx,0,BH+2.4,0,false,null);
+        bau("th6_hecke_modul.glb",1.3,hx,0,-BH-2.4,0,false,null);}
+      for(var hz=-BH+4;hz<=BH-4;hz+=4){
+        bau("th6_hecke_modul.glb",1.3,-BW-2.4,0,hz,Math.PI/2,false,null);
+        bau("th6_hecke_modul.glb",1.3,BW+2.4,0,hz,Math.PI/2,false,null);}
+      /* Ecken markieren + Zufahrt beschildern */
+      [[-BW,-BH],[BW,-BH],[-BW,BH],[BW,BH]].forEach(function(e){
+        bau("th5_poller.glb",1.0,e[0],0,e[1],0,false,null);});
+      bau("th5_ortsschild.glb",2.6,7,0,BH+3,0,false,null);
+      /* Norden: Wohnzeile. Luecke bei |x| < 9 fuer den Zugangsweg. */
+      [["th22_doppelhaus.glb",7.5,-62,12,9],["th7_reihenhaus_modul.glb",8,-46,10,7],
+       ["th22_bungalow.glb",4.6,-30,11,9],["th8_stadthaus_offen.glb",8.5,-16,10,9],
+       ["th22_bungalow.glb",4.6,16,11,9],["th8_stadthaus_offen.glb",8.5,30,10,9],
+       ["th7_reihenhaus_modul.glb",8,46,10,7],["th22_doppelhaus.glb",7.5,62,12,9]
+      ].forEach(function(h,i){
+        bau(h[0],h[1],h[2],0,NZ,Math.PI,false,null);
+        addSolid(h[2],NZ,h[3],h[4],{a:"z",at:NZ+h[4]/2,c:h[2],w:3.2});
+        bau("th2_gartenzaun.glb",1.0,h[2],0,NZ+7.5,0,false,null);
+        bau(i%2?"th2_blumenbeet.glb":"th4_busch_blueten.glb",i%2?0.5:1.2,h[2]-4,0,NZ+6,0,false,null);
+        bau("th3_briefkasten.glb",1.25,h[2]+4.5,0,NZ+7.2,0,false,null);
+        if(i%2===0)bau("th4_laterne_modern.glb",5.2,h[2]+8,0,NZ+9,0,false,null);
+        bau(i%3===0?"th4_ahorn.glb":"th4_birke.glb",6.5,h[2]-7,0,NZ+10,0,false,null);});
+      /* Sueden: Ladenzeile */
+      [["th8_laden_offen.glb",7.5,-58,11,9],["th23_apotheke.glb",7,-42,10,8],
+       ["th23_post.glb",7,-26,10,8],["th8_werkstatt_offen.glb",7,-8,11,9],
+       ["th23_arztpraxis.glb",7,10,10,8],["th8_laden_offen.glb",7.5,28,11,9],
+       ["th7_lagerhalle.glb",7.5,46,13,10],["th23_bank.glb",8,62,11,9]
+      ].forEach(function(h,i){
+        bau(h[0],h[1],h[2],0,SZ0,0,false,null);
+        addSolid(h[2],SZ0,h[3],h[4],{a:"z",at:SZ0-h[4]/2,c:h[2],w:3.2});
+        if(i%2===0)bau("th5_parkbank.glb",0.9,h[2]+5,0,SZ0-8,Math.PI,false,null);
+        if(i%3===1)bau("th6_papierkorb.glb",0.9,h[2]-5,0,SZ0-8,0,false,null);
+        if(i%2===1)bau("th5_laterne_altstadt.glb",5.0,h[2]-7,0,SZ0-9.5,0,false,null);});
+      bau("th3_kiosk.glb",3.4,0,0,SZ0-9,0,false,null);
+      bau("th5_marktstand.glb",3.0,-14,0,SZ0-10,0,false,null);
+      bau("th5_marktstand.glb",3.0,14,0,SZ0-10,0,false,null);
+      bau("th6_litfasssaeule.glb",3.2,20,0,SZ0-9,0,false,null);
+      /* Osten: Quartierspark mit Spielplatz */
+      var PX2=56;
+      bau("th16_pavillon.glb",4.2,PX2,0,18,0,false,null);   addSolid(PX2,18,7,7);
+      bau("th16_spielturm.glb",4.0,PX2+4,0,2,0.4,false,null);
+      bau("th16_sandkasten.glb",0.5,PX2-6,0,2,0,false,null);
+      bau("th16_schaukel.glb",2.6,PX2+2,0,-8,0,false,null);
+      bau("th16_wippe.glb",1.0,PX2-6,0,-8,0.8,false,null);
+      bau("th5_parkbrunnen.glb",2.2,PX2,0,-18,0,false,null);
+      [[-24,6],[-14,-2],[8,6],[24,-4]].forEach(function(p,i){
+        bau(i%2?"th4_eiche.glb":"th5_baum_ahorn.glb",7.5,PX2+p[1],0,p[0],0,false,null);});
+      [[-20,1],[0,-1],[12,1]].forEach(function(p){
+        bau("th5_parkbank.glb",0.9,PX2+p[1]*6,0,p[0],p[1]>0?Math.PI/2:-Math.PI/2,false,null);});
+      /* Westen: Quartiersplatz mit Bushalte und Parkplatz */
+      var WX=-56;
+      bau("th5_bushaltestelle.glb",3.2,WX-8,0,10,Math.PI/2,false,null);
+      bau("th5_telefonzelle.glb",2.4,WX-8,0,2,0,false,null);
+      bau("th6_brunnen_trog.glb",1.1,WX+2,0,0,0,false,null);  addSolid(WX+2,0,3,3);
+      bau("th3_bushalte.glb",3.0,WX-8,0,-10,Math.PI/2,false,null);
+      bau("th6_stromkasten.glb",1.5,WX+6,0,-16,0,false,null);
+      [-22,-14,-6,2,10,18].forEach(function(pz,i){        // Hecke als Platzkante
+        bau("th6_hecke_modul.glb",1.3,WX+9,0,pz,0,false,null);});
+      [["th_auto_kombi.glb",-18],["th7_taxi.glb",-10],["th_auto_van.glb",14]].forEach(function(a){
+        bau(a[0],1.6,WX-3,0,a[1],Math.PI/2,false,null);});
+      bau("th4_laterne_modern.glb",5.2,WX,0,20,0,false,null);
+      bau("th4_laterne_modern.glb",5.2,WX,0,-20,0,false,null);
+    })();
     /* 🚜 BAUERNHOF-VIERTEL weit draussen auf dem Feld (User: „bauernhaeuser farm staelle
        windmuehle weit weg aufs feld wie farm etc., wie in richtiger landschaft"). Der Hof
        stand bisher zwischen Ringstrasse und Hochhaeusern — das passt nicht zusammen. */
@@ -3367,8 +3478,8 @@ setTimeout(function baueGebaeude(){
       function zaunReihe(x0,z0,n,achse,luecke){
         for(var i=0;i<n;i++){
           if(luecke&&luecke.indexOf(i)>=0)continue;
-          if(achse==="x")bau("th33_parkzaun_modul",1.8,x0+2+i*4,0,z0,0,false,null,true);
-          else            bau("th33_parkzaun_modul",1.8,x0,0,z0+2+i*4,Math.PI/2,false,null,true);
+          if(achse==="x")bau("th33_parkzaun_modul.glb",1.8,x0+2+i*4,0,z0,0,false,null,true);
+          else            bau("th33_parkzaun_modul.glb",1.8,x0,0,z0+2+i*4,Math.PI/2,false,null,true);
         }
       }
       zaunReihe(W,N,7,"x",[3]);        /* Nordseite, Haupttor in der Mitte */
@@ -3917,6 +4028,7 @@ var buildMode=false,curItem=null,curRot=0,delMode=false,running=false;
 var romantik=false;
 function fkey(x,y){return x+","+y;}
 function inLot(x,y){return x>=0&&x<GW&&y>=0&&y<GH;}
+function inBau(x,y){return x>=BAUX0&&x<BAUX0+BAUW&&y>=BAUY0&&y<BAUY0+BAUH;}
 
 // ===================== Bau-Ausführung (lokal + Netz identisch) =====================
 var wandMat=stdMat(0xf2ead8,0.85),wandMatIn=stdMat(0xe8d8c0,0.85);
@@ -4088,7 +4200,7 @@ function furnCells(f){var s=f.def.size||[1,1],w=s[0],d=s[1];
 function footprintFree(def,gx,gy,rot,ignore){ /* 🩹 Schwarm-P2: ALLE Zellen pruefen (Bett 2x2/Sofa 2x1 ueberlappten) */
   var cells=furnCells({gx:gx,gy:gy,rot:rot||0,def:def});
   for(var i=0;i<cells.length;i++){var cx9=cells[i][0],cy9=cells[i][1];
-    if(!inLot(cx9,cy9))return false;
+    if(!inBau(cx9,cy9))return false;
     for(var j=0;j<furn.length;j++){if(ignore&&furn[j]===ignore)continue;
       var oc=furnCells(furn[j]);
       for(var k=0;k<oc.length;k++)if(oc[k][0]===cx9&&oc[k][1]===cy9)return false;}}
@@ -5821,7 +5933,7 @@ var dragging=false,dragBtn=0,lx=0,ly=0,pinchD=0,downT=0,downX=0,downY=0;
 var _paintSet=null,_paintHinted=false;
 function paintFloorAt(px,py){
   if(!buildMode||!curItem||delMode||curItem.indexOf("boden")!==0)return false;
-  var c=pickCell(px,py);if(!c||!inLot(c.gx,c.gy))return true;
+  var c=pickCell(px,py);if(!c||!inBau(c.gx,c.gy))return true;
   var key=c.gx+"_"+c.gy;if(_paintSet&&_paintSet.has(key))return true;
   var def=defOf(curItem);
   if(geld<def.cost){if(!_paintHinted){_paintHinted=true;hint("💰 Zu wenig Geld!");}return true;}
@@ -5890,7 +6002,7 @@ function refreshGhost(){
   scene.add(ghost);}
 function ghostFollow(px,py){
   if(!ghost)return;var c=pickCell(px,py);if(!c)return;
-  var inL=inLot(c.gx,c.gy);
+  var inL=inBau(c.gx,c.gy);
   var gdef=defOf(curItem);
   if(curItem==="wand"||curItem==="fenster"||curItem==="tuer"||(gdef&&gdef.paint)){
     var e=nearestEdge(c);ghost.position.set(e.wx,0,e.wz);ghost.rotation.y=e.d===1?Math.PI/2:0;
@@ -6454,11 +6566,11 @@ function stampVilla(){
   var W9=VILLA.w,H9=VILLA.h,ax=-1,ay=-1;
   var cands=[[((GW-W9)/2)|0,4],[((GW-W9)/2)|0,((GH-H9)/2)|0],[4,4],[GW-W9-4,4],[4,GH-H9-4],[GW-W9-4,GH-H9-4]];
   for(var ci=0;ci<cands.length&&ax<0;ci++){var cx0=cands[ci][0],cy0=cands[ci][1],ok=true;
-    for(var x=0;x<W9&&ok;x++)for(var y=0;y<H9&&ok;y++){var _vx=cx0+x,_vy=cy0+y;if(!inLot(_vx,_vy)||!cellFree(_vx,_vy)||floors[fkey(_vx,_vy)]!==undefined||walls[_vx+","+_vy+",0"]||walls[_vx+","+_vy+",1"])ok=false;} /* 🩹 Schwarm-P3: nie ueber Gebautes stempeln */
+    for(var x=0;x<W9&&ok;x++)for(var y=0;y<H9&&ok;y++){var _vx=cx0+x,_vy=cy0+y;if(!inBau(_vx,_vy)||!cellFree(_vx,_vy)||floors[fkey(_vx,_vy)]!==undefined||walls[_vx+","+_vy+",0"]||walls[_vx+","+_vy+",1"])ok=false;} /* 🩹 Schwarm-P3: nie ueber Gebautes stempeln */
     if(ok){ax=cx0;ay=cy0;}}
   if(ax<0){ /* voller Scan */
     for(var sy=1;sy<GH-H9&&ax<0;sy++)for(var sx=1;sx<GW-W9&&ax<0;sx++){var ok2=true;
-      for(var x2=0;x2<W9&&ok2;x2++)for(var y2=0;y2<H9&&ok2;y2++){var _wx=sx+x2,_wy=sy+y2;if(!inLot(_wx,_wy)||!cellFree(_wx,_wy)||floors[fkey(_wx,_wy)]!==undefined||walls[_wx+","+_wy+",0"]||walls[_wx+","+_wy+",1"])ok2=false;}
+      for(var x2=0;x2<W9&&ok2;x2++)for(var y2=0;y2<H9&&ok2;y2++){var _wx=sx+x2,_wy=sy+y2;if(!inBau(_wx,_wy)||!cellFree(_wx,_wy)||floors[fkey(_wx,_wy)]!==undefined||walls[_wx+","+_wy+",0"]||walls[_wx+","+_wy+",1"])ok2=false;}
       if(ok2){ax=sx;ay=sy;}}}
   if(ax<0){hint("🏰 Kein Platz frei — räume eine 20×14-Fläche frei!");return;}
   geld-=3500;geldSend();
