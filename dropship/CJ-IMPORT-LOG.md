@@ -2486,3 +2486,22 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
 - **Posten:** braucht Meta-Token (/tmp weg) → andere Umgebung/PC-Claude mit gültigem Token postet aus der Queue;
   Doppelpost-Wachen in meta_reel_post.mjs greifen. QA verifiziert per ffmpeg-Kontaktbogen (imageio-ffmpeg installiert).
 - **Tooling:** /tmp/revid/*.sh (poll/batch/queue), /tmp/ffmpeg_path.txt (echtes ffmpeg für Frame-QA).
+
+### Shop-Polish-Workflow (100-Agent, autonom) 2026-08-02 — 46 Agenten, 10 Dimensionen
+Katalog-weiter Audit (26'299 aktiv) + Live-Storefront. **Autonom angewandte Fixes:**
+- **Off-Brand-Haftung:** 26 Waffen (Nunchaku/Survival-Messer) + 4 Adult-Artikel (Body-Shaper offen, Strumpfhose
+  offener Schritt, aufblasbarer-Penis-Kostüm) → DRAFT (Tags offbrand-waffe/adult-auto-draft). Zahlungsanbieter-Risiko.
+- **Menü-Fix:** 2 tote Links auf `klima-ventilatoren` (0 aktiv, Sackgasse in Hitzewelle) → `ventilatoren` (77 aktiv);
+  in Highlights (/en/) + Wohnen&Garten. menuUpdate, 141 Items erhalten, verifiziert.
+- **10 SEO-Titel** gefüllt (waren leer, additive/safe).
+- **5 Leak-Titel** bereinigt: 2× Titan-Schneidebrett (Rohcode AS-CJ##X##T → mit Größe disambiguiert), Time-Force-
+  Armreif (TS5094BR23_), Guess-Handyhülle (Garbage-Code), Hantelsatz („Restauriert B"-Suffix entfernt).
+**Ermessens-Befunde gemeldet (NICHT auto-appliziert — User entscheidet / DRY-First):**
+- ⚠️ **6 Smartwatches mit illegalen Medizin-Claims** (Blutzucker/EKG/Blutdruck) — Rechts-Haftung! Claims aus
+  Titel+Beschreibung entfernen ODER draften. Nur 1 ID sicher (15448875172225), Rest braucht Beschreibungs-Scan.
+- **Bilder:** 3'326 (12,6%) mit ≤1 Bild → Karussell blockiert. Fortura-Backfill-Runner deckt 1'356 ab (Feed-EAN).
+- **Duplikate:** 280 Gruppen/667 Produkte (v.a. Fasnacht-Kostüme) — per Gruppe prüfen, NIE Titel-only massen-draften.
+- **Fehlklassifikation:** Uhren-Armbänder in ⌚-Collection, 3D-Hologramm-„Ventilatoren" (Werbedisplays) in Ventilatoren.
+- **Pricing:** einige sperrige CJ >150 (Hundesofas/Sonnenschirm/Nachttisch) — Bürostühle BEHALTEN (User-Entscheid).
+- **Collections:** ventilatoren-kuehlung dünn, ein paar leere Shells, Duplikat-Metalldetektor-Collection.
+- **Storefront:** Sommer-Kollektion (Ad-Landing) prüfen; einzelne Karten zeigen Lieferanten-Marketing-Bilder.
