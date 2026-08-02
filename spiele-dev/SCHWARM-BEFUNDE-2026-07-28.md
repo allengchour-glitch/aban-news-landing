@@ -1142,3 +1142,34 @@ ElevenLabs fällt aus. Möglichkeiten ohne neuen Dienst:
   Effekt-Bibliothek ausgebaut werden (Schritte, Türen, Kasse, Motor), kostet nichts
   und lädt nichts nach
 - Fertige Musik liegt in `automation/music/`
+
+---
+
+## Modell-Bestand (geprüft 2026-07-30)
+
+**743 GLB-Modelle, 245 STL-Referenzen, Manifest `models/TH5-ASSETS.md` (1202 Zeilen, Pakete th4–th33).
+Davon sind 612 im Spiel ungenutzt.** Die neuesten Pakete sind praktisch komplett unangetastet:
+
+| Paket | Inhalt | genutzt |
+|---|---|---|
+| **th25** Flughafen | Terminal (53 m), Tower, Flugzeug, Hangar, Landebahn-Modul, Radarturm, Gepäck-/Tankwagen | 0/9 |
+| **th26** Berge | Felswand-Modul, Wasserfall, Höhleneingang, Berghütte, **Seilbahn: Station + Gondel + Stütze**, Hängebrücke, Gipfelkreuz, Bergsee | 0/11 |
+| **th29** Winter | Weihnachtsbude, Christbaum, Eisbahn, Schneemänner, Rodelhang, Skiliftmast | 0/6 |
+| **th30** Menschen | Mann, Frau, Kind, Arbeiter, Hund — echte Figuren statt der prozeduralen | 0/5 |
+| **th31** Waffen | 14 Stück (Schwerter, Bogen, Armbrust, Schilde, Stäbe, Blaster) — eher für Wildnis | 0/14 |
+| **th32** Fahrgeschäfte | **Achterbahn-Kurve + -Station**, Kettenkarussell, Piratenschiff, Teetassen, Wildwasserbahn, Geisterbahn, Parkeingang | 0/8 |
+| **th33** Park-Ausstattung | Warteschlange, Parkzaun, Laterne, Wegweiser, Imbisswagen, Toilettenhaus, Parkplan, Kassenhaus, Blumenrabatte | 1/9 |
+
+### Was daraus direkt folgt
+
+- **`th32_achterbahn_kurve` + `th32_achterbahn_station` existieren.** Der Wunsch „rollercoaster stl
+  kopieren und animationen" ist damit ohne Neubau machbar: Die Fahrlogik (`updCoaster`, Catmull-Rom,
+  Wagen, Ego, Koop) bleibt; nur die prozeduralen Tubes werden gegen die Modelle getauscht.
+- **th26 enthält eine vollständige Seilbahn** (Station, Gondel, Stütze) — dieselbe Fahrlogik wie die
+  Achterbahn liesse sich wiederverwenden, das wäre ein zweites Fahrgeschäft fast gratis.
+- **th30 liefert echte Menschen-Modelle.** Fussgänger und Bewohner sind bisher prozedural.
+- Für den **Freizeitpark** liegt mit th32 + th33 ein komplettes Set bereit — der Generator kann es
+  in einem Durchgang platzieren.
+
+**Reihenfolge-Empfehlung:** th32/th33 in den Freizeitpark (grösster sichtbarer Gewinn), dann th26
+Seilbahn, dann th30 Figuren.
