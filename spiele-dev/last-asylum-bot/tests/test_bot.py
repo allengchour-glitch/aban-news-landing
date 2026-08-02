@@ -2557,5 +2557,89 @@ class TestLadebildschirm(unittest.TestCase):
 
 
 
+class TestAnsichtenSammeln(unittest.TestCase):
+    """Der Bot soll die fehlenden Bildschirme selbst beschaffen.
+
+    32 Vorlagen fehlen und blockieren Aufgaben - darunter das automatische
+    Beitreten zu Versammlungen. Bisher hiess das: der Nutzer macht ein Foto.
+    """
+
+    def bau(self, ordner, bilder):
+        import subprocess
+        subprocess.run(["git", "init", "-q", ordner], check=True)
+        for k, v in (("user.email", "b@t"), ("user.name", "Bot")):
+            subprocess.run(["git", "-C", ordner, "config", k, v], check=True)
+        open(os.path.join(ordner, "start"), "w").write("x")
+        subprocess.run(["git", "-C", ordner, "add", "-A"], check=True)
+        subprocess.run(["git", "-C", ordner, "commit", "-qm", "start"], check=True)
+        cfg = Config.from_dict({"package": "x", "tasks": [], "rules": []},
+                               path=os.path.join(ordner, "cfg.json"))
+        dev = FakeDevice(bilder, loop=True)
+        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=1,
+                     state_file=os.path.join(ordner, "zustand.json"))
+        return eng, dev
+
+    def test_neue_ansichten_landen_im_ordner_gleiche_nicht(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as ordner:
+            a, b = noise(120, 200, 11), noise(120, 200, 22)
+            eng, dev = self.bau(ordner, [a, b])
+            aktion = [{"ansicht_sammeln": {"hochladen": False}}]
+            for bild in (a, a, b, b, a):
+                eng.screen = bild
+                eng.run_actions(aktion, "test")
+            ziel = os.path.join(ordner, "austausch", "ansichten")
+            dateien = sorted(f for f in os.listdir(ziel) if f.endswith(".png"))
+            self.assertEqual(len(dateien), 2,
+                             f"zwei verschiedene Ansichten, gesammelt: {dateien}")
+            self.assertTrue(os.path.exists(os.path.join(ziel, "liste.txt")))
+
+    def test_obergrenze_wird_eingehalten(self):
+        """Ohne Grenze laeuft das Repository mit Bildern voll."""
+        import tempfile
+        with tempfile.TemporaryDirectory() as ordner:
+            bilder = [noise(120, 200, 100 + i) for i in range(6)]
+            eng, dev = self.bau(ordner, bilder)
+            for bild in bilder:
+                eng.screen = bild
+                eng.run_actions([{"ansicht_sammeln": {"hochladen": False,
+                                                      "hoechstens": 3}}], "test")
+            ziel = os.path.join(ordner, "austausch", "ansichten")
+            dateien = [f for f in os.listdir(ziel) if f.endswith(".png")]
+            self.assertEqual(len(dateien), 3)
+
+    def test_gesammeltes_ueberlebt_den_neustart(self):
+        """Sonst faengt der Bot nach jedem Absturz von vorn an zu sammeln."""
+        import tempfile
+        with tempfile.TemporaryDirectory() as ordner:
+            a = noise(120, 200, 33)
+            eng, dev = self.bau(ordner, [a])
+            eng.screen = a
+            eng.run_actions([{"ansicht_sammeln": {"hochladen": False}}], "test")
+            cfg = Config.from_dict({"package": "x", "tasks": [], "rules": []},
+                                   path=os.path.join(ordner, "cfg.json"))
+            zweiter = Engine(cfg, FakeDevice([a], loop=True), logger=quiet(),
+                             sleep=lambda s: None, seed=1,
+                             state_file=os.path.join(ordner, "zustand.json"))
+            zweiter.screen = a
+            zweiter.run_actions([{"ansicht_sammeln": {"hochladen": False}}], "test")
+            ziel = os.path.join(ordner, "austausch", "ansichten")
+            self.assertEqual(len([f for f in os.listdir(ziel) if f.endswith(".png")]), 1,
+                             "dieselbe Ansicht darf nach einem Neustart nicht erneut anfallen")
+
+    def test_schwarzes_bild_wird_nicht_gesammelt(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as ordner:
+            leer = Image.new(120, 200, (0, 0, 0))
+            eng, dev = self.bau(ordner, [leer])
+            eng.screen = leer
+            eng.run_actions([{"ansicht_sammeln": {"hochladen": False}}], "test")
+            ziel = os.path.join(ordner, "austausch", "ansichten")
+            self.assertFalse(os.path.isdir(ziel) and
+                             [f for f in os.listdir(ziel) if f.endswith(".png")],
+                             "ein leerer Bildschirm ist keine Ansicht")
+
+
+
 if __name__ == "__main__":
     unittest.main()

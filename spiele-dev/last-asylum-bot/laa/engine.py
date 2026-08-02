@@ -129,6 +129,11 @@ class Engine:
         self._regel_pause: Dict[str, float] = {}
         self._regel_zeiten: Dict[str, list] = {}
         self._geduld: Dict[str, tuple] = {}   # Regel -> (seit, zuletzt)
+        self._ansichten_datei = (
+            os.path.join(os.path.dirname(os.path.abspath(state_file)), "ansichten.json")
+            if state_file else None
+        )
+        self._ansichten: Dict[str, str] = {}
         self._offene_pruefung: Optional[tuple] = None
         self._folgenlos: Dict[str, int] = {}   # Vorlage -> Tipps ohne jede Wirkung
         self._verworfen: set = set()           # aussortiert - nicht mehr suchen
@@ -167,6 +172,7 @@ class Engine:
         self._now = now
         self._letzter_lauf: Dict[str, float] = self._zustand_laden()
         self._auswege = self._auswege_laden()
+        self._ansichten = self._ansichten_laden()
         self._erkundet = self._erkundung_laden()
         self._gelerntes_anwenden()
 
@@ -468,6 +474,8 @@ class Engine:
             self._selbstbericht(value if isinstance(value, dict) else {})
         elif key == "selbst_aktualisieren":
             self._selbst_aktualisieren(value if isinstance(value, dict) else {})
+        elif key == "ansicht_sammeln":
+            self._ansicht_sammeln(value if isinstance(value, dict) else {})
         elif key == "lebenszeichen":
             self._lebenszeichen(value if isinstance(value, dict) else {})
         elif key == "stop":
@@ -830,6 +838,94 @@ class Engine:
             "   Selbst gelernt", brauchbar=gelernt, aussortiert=verworfen,
             eigene_groessen=len(self.cfg.template_skalen),
         )
+
+    def _ansicht_sammeln(self, spec: Dict[str, Any]) -> None:
+        """Jede noch nie gesehene Ansicht einmal ins Repository legen.
+
+        32 Vorlagen fehlen, und jede blockiert Aufgaben - Versammlung
+        beitreten, Allianz-Forschung, Falkenturm. Vorlagen kann nur schneiden,
+        wer den Bildschirm sieht; bisher hiess das: der Nutzer macht ein Foto.
+        Der Bot laeuft aber ohnehin durch all diese Bildschirme.
+
+        Also sammelt er sie selbst ein: neue Ansicht (nach dem groben
+        Fingerabdruck, der auch Haenger erkennt) -> einmal ablegen, nie wieder.
+        Halbe Kantenlaenge reicht zum Erkennen, was drauf ist; wo es dann um
+        Millimeter geht, holt 'teilen' das Bild in voller Aufloesung nach.
+        """
+        import subprocess
+
+        hoechstens = int(spec.get("hoechstens", 40))
+        if len(self._ansichten) >= hoechstens:
+            return
+        screen = self.screen
+        if screen is None or screen.ist_einfarbig():
+            return
+
+        finger = self._ansicht_finger(screen).hex()[:24]
+        if finger in self._ansichten:
+            return
+
+        wurzel = spec.get("verzeichnis") or self.cfg.root
+        ordner = os.path.join(wurzel, "austausch", "ansichten")
+        nummer = len(self._ansichten) + 1
+        name = f"{nummer:02d}-{finger[:8]}.png"
+        try:
+            os.makedirs(ordner, exist_ok=True)
+            screen.box_scaled_by(float(spec.get("bild_faktor", 0.5))).save(
+                os.path.join(ordner, name))
+        except (OSError, ValueError) as exc:
+            self.log.debug("Ansicht liess sich nicht ablegen", grund=str(exc)[:120])
+            return
+
+        self._ansichten[finger] = name
+        self._ansichten_sichern()
+        # Wonach der Bot gerade sucht, sagt oft mehr ueber den Bildschirm als
+        # das Bild allein - das steht in der Liste daneben.
+        letzte = sorted(self.stats.items(), key=lambda p: -p[1])[:3]
+        try:
+            with open(os.path.join(ordner, "liste.txt"), "a", encoding="utf-8") as fh:
+                fh.write(f"{name}\t{time.strftime('%Y-%m-%d %H:%M:%S')}\t"
+                         f"Schritt {self.steps}\t{dict(letzte)}\n")
+        except OSError:
+            pass
+        self.bump("ansicht-gesammelt")
+        self.log.info(f"Neue Ansicht abgelegt ({nummer}/{hoechstens})", datei=name)
+
+        # Nicht bei jedem Bild hochladen - das gaebe vierzig Commits.
+        stapel = int(spec.get("stapel", 5))
+        if nummer % stapel and nummer < hoechstens:
+            return
+        if not spec.get("hochladen", True):
+            return
+
+        def git(*rest):
+            return subprocess.run(["git", "-C", wurzel, *rest], capture_output=True,
+                                  timeout=180, env=self._git_umgebung())
+        try:
+            git("add", "--", os.path.join("austausch", "ansichten"))
+            git("commit", "-m", f"Bildschirme gesammelt: {nummer} Ansichten")
+            git("push")
+        except Exception as exc:  # pragma: no cover - Netz/Umgebung
+            self.log.debug("Ansichten nicht hochgeladen", grund=str(exc)[:120])
+
+    def _ansichten_laden(self) -> Dict[str, str]:
+        if not self._ansichten_datei or not os.path.exists(self._ansichten_datei):
+            return {}
+        try:
+            with open(self._ansichten_datei, "r", encoding="utf-8") as fh:
+                daten = json.load(fh)
+            return {str(k): str(v) for k, v in daten.items()} if isinstance(daten, dict) else {}
+        except (OSError, ValueError):
+            return {}
+
+    def _ansichten_sichern(self) -> None:
+        if not self._ansichten_datei:
+            return
+        try:
+            with open(self._ansichten_datei, "w", encoding="utf-8") as fh:
+                json.dump(self._ansichten, fh, ensure_ascii=False, indent=1)
+        except OSError:
+            pass
 
     @staticmethod
     def _git_umgebung() -> Dict[str, str]:

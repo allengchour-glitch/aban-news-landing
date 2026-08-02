@@ -237,7 +237,7 @@ class Config:
             "wait_template", "start_app", "stop_app", "restart_app", "log",
             "screenshot", "repeat", "stop", "back", "run_task", "type_text", "wenn",
             "lerne_objekte", "optimiere_takte", "kalibriere", "selbst_aktualisieren", "selbstbericht",
-            "lebenszeichen",
+            "lebenszeichen", "ansicht_sammeln",
         }
         task_names = {t.name for t in self.tasks}
 

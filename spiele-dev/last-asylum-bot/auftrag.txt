@@ -1,12 +1,15 @@
 # Auftrag fuer den naechsten Start des Bots.
 # Wird vom Startskript abgearbeitet und danach zu auftrag-erledigt.txt.
 #
-# Die drei feinschliff-Korrekturen stehen inzwischen direkt in der
-# Konfiguration - feinschliff ist hier nicht mehr noetig.
+# Ein Bild in voller Aufloesung vom aktuellen Bildschirm. Zwei offene Fragen
+# haengen daran:
+#  - hud/schild_aktiv.png (der Schild war beim letzten Versuch von einem
+#    Verbindungs-Dialog verdeckt)
+#  - die sechs Stellen, die 'blasen-einsammeln-ohne-vorlage' im Minutentakt
+#    antippt, ohne dass etwas verschwindet
 #
-# Was jetzt fehlt, ist ein Bild der Stadt im Normalzustand. Der Bot meldet
-# alle 15 Sekunden "Eingesammelt: 6 Stueck" an Stellen, die nicht
-# verschwinden. Ohne Bild bleibt das Raten; mit Bild ist in Minuten klar,
-# welche sechs Elemente das sind.
+# Alles Weitere sammelt der Bot jetzt von allein: die Aufgabe
+# 'ansichten-sammeln' legt jede neue Ansicht in austausch/ansichten/ ab.
+# Daraus kommen die drei Vorlagen fuer 'versammlung-beitreten'.
 
 teilen stadt
