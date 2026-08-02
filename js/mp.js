@@ -329,6 +329,58 @@
       if (FORCE_LOCAL) localEngine(S, gameId, true); else peerEngine(S, gameId, true, true);
       return S;
     },
+    /* 🔎 RAUM-SUCHE (User: „mit koop server suchen und joinen so dass man namen sieht").
+       PeerJS hat KEINE Raumliste — der Vermittlungs-Server kennt nur IDs, die man
+       schon kennt. Ein Server-Browser geht deshalb nur ueber einen FESTEN Vorrat
+       oeffentlicher Raum-Codes, den alle Clients kennen: MP.PUBLIC. Gesucht wird,
+       indem jeder Code kurz angewaehlt wird. Kommt eine Verbindung zustande, sitzt
+       dort ein Host und wartet; die Probe fragt „__lobby?" und bekommt Name und
+       Spielerzahl zurueck, dann trennt sie sofort wieder.
+       Belegte 2er-Raeume nehmen die Probe gar nicht erst an — sie tauchen also
+       korrekterweise nicht in der Liste auf.
+       Das Spiel MUSS auf „__lobby?" antworten, sonst bleibt sein Raum unsichtbar. */
+    PUBLIC: ["PUBA", "PUBB", "PUBC", "PUBD", "PUBE", "PUBF"],
+    suche: function (gameId, opt) {
+      opt = opt || {};
+      var codes = opt.codes || MP.PUBLIC, offen = codes.length, gefunden = [];
+      var frist = opt.frist || 5000, tot = false;
+      var alle = [];
+      function fertig() {
+        if (tot) return; tot = true;
+        alle.forEach(function (s) { try { s.close(); } catch (e) {} });
+        if (opt.fertig) try { opt.fertig(gefunden); } catch (e) {}
+      }
+      codes.forEach(function (code) {
+        var s = MP.join(gameId, code), erledigt = false, t = null;
+        alle.push(s);
+        function schluss(info) {
+          if (erledigt) return; erledigt = true;
+          if (t) clearTimeout(t);
+          try { s.close(); } catch (e) {}
+          if (info) { gefunden.push(info); if (opt.fund) try { opt.fund(info); } catch (e) {} }
+          if (--offen <= 0) fertig();
+        }
+        t = setTimeout(function () { schluss(null); }, frist);
+        s.onMessage(function (d) {
+          if (d && d.t === "__lobby") schluss({ code: code, name: d.n || "?", spieler: d.p || 1 });
+        });
+        s.onStatus(function (st) {
+          if (st === "connected") { try { s.send({ t: "__lobby?" }); } catch (e) {} }
+          else if (st === "closed") schluss(null);
+        });
+        if (s.ready && s.ready.catch) s.ready.catch(function () { schluss(null); });
+      });
+      if (!codes.length) fertig();
+      return { abbrechen: fertig };
+    },
+    /* Ersten freien oeffentlichen Raum belegen. Reihenfolge = MP.PUBLIC, damit
+       Suchende zuverlaessig von vorne fuendig werden. */
+    hostPublic: function (gameId, belegt) {
+      belegt = belegt || [];
+      for (var i = 0; i < MP.PUBLIC.length; i++)
+        if (belegt.indexOf(MP.PUBLIC[i]) < 0) return MP._hostFixed(gameId, MP.PUBLIC[i]);
+      return MP._hostFixed(gameId, MP.PUBLIC[0]);
+    },
     // ⚡ 1-Tipp Schnell-Koop OHNE Code: erst versuchen einem Public-Raum beizutreten,
     // ist er leer -> selbst Host des Public-Raums werden. Kein Code-Austausch nötig.
     // Läuft eine Session-Kette (join → hostFixed → join …) und spiegelt sie in EINE Außen-Session.

@@ -263,10 +263,14 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
       <button class="btn ghost" id="hostBtn" style="margin-top:0">Raum erstellen</button>
       <input type="text" id="mpCode" placeholder="CODE" maxlength="4" style="width:80px;text-transform:uppercase">
       <button class="btn ghost" id="joinBtn" style="margin-top:0">Beitreten</button>
+      <button class="btn ghost" id="sucheBtn" style="margin-top:0">🔎 Räume suchen</button>
     </div>
+    <div id="mpListe" style="display:none;margin-top:10px;text-align:left;max-width:400px;margin-left:auto;margin-right:auto"></div>
     <div id="mpLobby" style="display:none;margin-top:8px">
       Raum-Code: <b id="mpCodeShow" style="font-size:1.3rem;letter-spacing:4px;color:#e8722a"></b>
       <div id="mpStatus" style="font-size:.85rem;color:#5a7a9a">Warte auf Mitspieler …</div>
+      <div id="mpSpieler" style="margin-top:10px;text-align:left;max-width:320px;margin-left:auto;margin-right:auto"></div>
+      <button class="btn" id="mpStartBtn" style="margin-top:10px;display:none;font-size:.95rem;padding:10px 26px">▶ Spiel starten</button>
       <button class="btn ghost" id="mpBackBtn" style="margin-top:8px;display:none;font-size:.9rem;padding:8px 18px">↩ Abbrechen / neuer Versuch</button>
     </div>
   </div>
@@ -468,6 +472,18 @@ function putzTex(rx,ry){
 // ===================== Grundstück =====================
 var GW=72,GH=46,CS=2; // Open-World XXL-BREIT 2026-07-25 (alt 60x46/50x38 → Migration in loadSnapshot)
 var RX=GW*CS/2+6,RL=2*RX+48; // Querstraßen-Abstand (x) + Straßenlänge — skalieren mit der Map
+/* 🏗️ BAUFENSTER (User: „das bauland kann 1/4 von mitte sein, du kannst der rest
+   fuellen mit sachen wo n stadt passen"). Das Gitter bleibt 72 x 46 Zellen — daran
+   haengen Saves, Wegfindung, Sim-Logik und die Strassenlage (RX). Neu GEBAUT wird
+   aber nur noch in der Mitte: 36 x 24 Zellen = 72 x 48 m, also ein Viertel der
+   alten Flaeche (halbe Kantenlaenge je Richtung). BAUH ist bewusst gerade, sonst
+   liegt das Fenster 1 m aus der Mitte. Der frei gewordene Ring ringsum wird in
+   baueGebaeude() mit Stadt bebaut.
+   Zwei getrennte Pruefungen: inLot() bleibt fuer Bewegung, Kollision und ABREISSEN
+   zustaendig — wer vorher weiter aussen gebaut hat, kaeme sonst an sein eigenes
+   Haus nicht mehr heran. inBau() gilt nur fuers Neusetzen. */
+var BAUW=2*Math.round(GW/4),BAUH=2*Math.round(GH/4);
+var BAUX0=Math.round((GW-BAUW)/2),BAUY0=Math.round((GH-BAUH)/2);
 function cx(gx){return (gx-GW/2+0.5)*CS;}
 function cz(gy){return (gy-GH/2+0.5)*CS;}
 // Rasen mit Textur
@@ -480,7 +496,7 @@ var WORLD_POIS=[
   [-33,86,"🏛️","Altstadt"],[68,68,"🌳","Grosser Park"],[96,14,"⛲","Brunnen-Park"],
   [98,-30,"🛝","Spielplatz"],[0,102,"🚉","Bahnhof"],[26,67,"🏪","Marktplatz"],
   [96,-33,"🏰","Villen Ost"],[-96,18,"🏰","Villen West"],[10,139,"⛵","Seepark"],[-232,0,"🌊","Meer"],
-  [172,0,"🏢","Gewerbe Ost"],[0,216,"🏟️","Sportpark"],[60,330,"🎡","Freizeitpark"],[-190,212,"🎢","Achterbahn"]];
+  [172,0,"🏢","Gewerbe Ost"],[0,216,"🏟️","Sportpark"],[60,330,"🎡","Freizeitpark"],[-190,212,"🎢","Achterbahn"],[155,86,"🚡","Seilbahn"]];
 var WORLD_SOLIDS=[];
 /* Gitter-Index (16 m Zellen): inSolid lief linear ueber ALLE Kollider und wird pro
    Bewegungsschritt jedes Bewohners/Autos gerufen. Mit den Landschafts-Hindernissen
@@ -997,6 +1013,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     window._eingefroren=n;}
   function _bewegtMarkieren(){
     [window._seeZug&&window._seeZug.g,window._coaster&&window._coaster.zug].forEach(function(o){if(o)o._bewegt=true;});
+    ((window._seilbahn||{}).gond||[]).forEach(function(g){if(g.w)g.w._bewegt=true;});
     (verkehr||[]).forEach(function(v){if(v.mesh)v.mesh._bewegt=true;});
     (window._wasser||[]).forEach(function(w){if(w.mesh)w.mesh._bewegt=true;});
     (fussg||[]).forEach(function(f){if(f.mesh)f.mesh._bewegt=true;});
@@ -1044,6 +1061,12 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
         if(m.opacity>=0.82){m.transparent=false;m.opacity=1;m.needsUpdate=true;n++;}});});
     window._opakGemacht=n;}
   function _spaetEinfrieren(){_bewegtMarkieren();_schattenSparen();_opakSchalten();_einfrieren();}
+  /* ⚠️ _einfrieren() setzt matrixAutoUpdate=false. Es laeuft 9 s nach dem Laden — also
+     VOR entzerren() (14 s) und entwirren() (15.5/32 s). Wer danach noch .position
+     aendert, verschiebt nur eine Zahl: die Weltmatrix wird nie neu gerechnet, das
+     Modell bleibt sichtbar stehen. Genau deshalb blieben die Ueberschneidungen trotz
+     Entzerrung bestehen. Jede spaete Verschiebung muss die Matrix selbst nachziehen. */
+  window._nachRuecken=function(o){o.updateMatrix();o.updateMatrixWorld(true);};
   if(document.readyState==="complete")setTimeout(_spaetEinfrieren,9000);
   else window.addEventListener("load",function(){setTimeout(_spaetEinfrieren,9000);});
   if(document.readyState==="complete")setTimeout(_streuStart,60);
@@ -1119,7 +1142,16 @@ FLOORS.forEach(function(fl){fl.texture=fl.tex?fl.tex():null;});
     Object.keys(floors).forEach(function(k){if(floors[k]===p[1]){var q=k.split(",");applyFloor(+q[0],+q[1],p[1]);}});});});
 FLOORS.push({n:"Laminat",e:"🟨",tex:null,col:0xd8b878,cost:10,texture:null});
 // Gitter (nur im Baumodus)
-var gridHelper=new THREE.GridHelper(GW*CS,GW,0xffffff,0xffffff);
+/* Das Gitter zeigte 144 x 144 m — die ganze alte Flaeche. Es umreisst jetzt genau
+   das Baufenster, damit man beim Bauen sieht, wo man setzen darf. GridHelper kann
+   nur quadratisch, deshalb von Hand aus zwei Linienscharen. */
+var gridHelper=(function(){
+  var pts=[],W=BAUW*CS/2,H=BAUH*CS/2;
+  for(var i=0;i<=BAUW;i++){var x=-W+i*CS;pts.push(x,0,-H,x,0,H);}
+  for(var j=0;j<=BAUH;j++){var z=-H+j*CS;pts.push(-W,0,z,W,0,z);}
+  var g=new THREE.BufferGeometry();
+  g.setAttribute("position",new THREE.Float32BufferAttribute(pts,3));
+  return new THREE.LineSegments(g,new THREE.LineBasicMaterial({color:0xffffff}));})();
 gridHelper.material.transparent=true;gridHelper.material.opacity=0.22;gridHelper.position.y=0.02;gridHelper.visible=false;scene.add(gridHelper);
 // Weg + Umgebung
 var weg=new THREE.Mesh(new THREE.PlaneGeometry(3,10),stdMat(0xc8beA8,0.9));weg.rotation.x=-Math.PI/2;weg.position.set(0,-0.005,GH*CS/2+5);weg.receiveShadow=true;scene.add(weg);
@@ -1325,10 +1357,16 @@ var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_d
      Zubringer: x=±RX zwischen Querstrasse und Ring. */
   (function ringTrottoirs(){
     var RGZ_N=-100,RGZ_S=118,RGX=112;
-    [[RGZ_N,-105.6],[RGZ_N,-94.4],[RGZ_S,112.4],[RGZ_S,123.6]].forEach(function(P){
-      tr(2*RGX-8,2.0,0,P[1],0.052);});                   // Ring Nord/Sued — 0.002 hoeher: an den Ecken lagen zwei Gehwege exakt aufeinander
-    [[-RGX,-117.6],[-RGX,-106.4],[RGX,106.4],[RGX,117.6]].forEach(function(P){
-      tr(2.0,RGZ_S-RGZ_N-8,P[1],(RGZ_N+RGZ_S)/2,0.054);});// Ring West/Ost
+    /* Die Gehwege endeten 4 m VOR der Eckenmitte und lagen damit mitten auf der
+       Eck-Fahrbahn (User-Screenshot: heller Streifen quer durch den Kreis).
+       Jetzt laufen sie bis zur jeweils passenden Aussen-/Innenflucht durch, dort
+       treffen sich Laengs- und Querstueck sauber ueber Eck. */
+    var AUS=RGX+5.6, INN=RGX-5.6;                        // Gehwegfluchten links/rechts
+    tr(2*AUS,2.0,0,-105.6,0.052); tr(2*INN,2.0,0,-94.4,0.052);   // Ring Nord
+    tr(2*INN,2.0,0,112.4,0.052);  tr(2*AUS,2.0,0,123.6,0.052);   // Ring Sued
+    var zA0=RGZ_N-5.6, zA1=RGZ_S+5.6, zI0=RGZ_N+5.6, zI1=RGZ_S-5.6;
+    tr(2.0,zA1-zA0,-117.6,(zA0+zA1)/2,0.054); tr(2.0,zI1-zI0,-106.4,(zI0+zI1)/2,0.054); // Ring West
+    tr(2.0,zI1-zI0,106.4,(zI0+zI1)/2,0.054);  tr(2.0,zA1-zA0,117.6,(zA0+zA1)/2,0.054);  // Ring Ost
     [RX,-RX].forEach(function(xc){                        // Zubringer nach Norden und Sueden
       [xc-5.6,xc+5.6].forEach(function(xe){
         tr(2.0,Math.abs(RGZ_N+SZ9+23)-6,xe,(RGZ_N-(SZ9+23))/2,0.05);
@@ -1459,7 +1497,10 @@ var dorfFenster=[];
   strasseMesh(10,2*SZ+46,-RX,0);strasseMesh(10,2*SZ+46,RX,0); // laenger: aeussere Zebras+Haltelinien liegen auf Asphalt
   // ---- Aeussere Ringstrasse: bindet Downtown (N), Bahnhof (S), Villen (O/W) an ----
   (function ring(){
-    var RGZ_N=-100,RGZ_S=118,RGX=112,RLEN=2*RGX+10,RTIEF=2*Math.abs(RGZ_N)+2*RGZ_S;
+    /* RLEN war 2*RGX+10 — die Nord/Sued-Fahrbahn ragte damit 5 m ueber die Kurve
+       hinaus ins Gras. Sie endet jetzt exakt in der Eckenmitte; die Rundung macht
+       die Eckscheibe. */
+    var RGZ_N=-100,RGZ_S=118,RGX=112,RLEN=2*RGX,RTIEF=2*Math.abs(RGZ_N)+2*RGZ_S;
     strasseMesh(RLEN,9,0,RGZ_N);strasseMesh(RLEN,9,0,RGZ_S);
     strasseMesh(9,RGZ_S-RGZ_N,-RGX,(RGZ_N+RGZ_S)/2);strasseMesh(9,RGZ_S-RGZ_N,RGX,(RGZ_N+RGZ_S)/2);
     // Zubringer: Querstrassen-Enden an den Ring anschliessen
@@ -1469,10 +1510,18 @@ var dorfFenster=[];
     /* 🛣️ Die Ring-Segmente endeten als harte Kante im Gras/Sand — "Kreuzung, dann endet die
        Strasse" (User). Die vier Ecken bekommen jetzt eine ausgerundete Fahrbahn mit Bordstein,
        damit der Ring sichtbar geschlossen ist statt abzubrechen. */
+    /* ❗ Hier stand CircleGeometry(9) — das ist die Strassen BREITE, nicht der Radius.
+       Der Teller war damit doppelt so breit wie die Fahrbahn, fraß die Gehwege und lag
+       als schwarze Scheibe im Gras (User-Screenshot „strasse hier gefaellt mir nicht").
+       Die Fahrbahn ist 9 m breit, also 4.5 m Halbbreite — genau das ist der Eckradius. */
     [[-RGX,RGZ_N],[RGX,RGZ_N],[-RGX,RGZ_S],[RGX,RGZ_S]].forEach(function(E){
-      var eck=new THREE.Mesh(new THREE.CircleGeometry(9,22),strMatH.clone());
+      var eck=new THREE.Mesh(new THREE.CircleGeometry(4.5,24),strMatH.clone());
       eck.rotation.x=-Math.PI/2;eck.position.set(E[0],-0.0035,E[1]);eck.receiveShadow=true;scene.add(eck);
-      var bord=new THREE.Mesh(new THREE.RingGeometry(9,10.6,26),betMat(0xd0cdc4,0.9));
+      /* Bordstein nur im AUSSENbogen der Kurve — innen liegt die Fahrbahn weiter. */
+      var sx=E[0]>0?1:-1, sz=E[1]>0?1:-1;
+      /* RingGeometry liegt in XY; nach rotation.x=-90 gilt x=r*cos(t), z=-r*sin(t). */
+      var start=(sx>0?(sz>0?-Math.PI/2:0):(sz>0?Math.PI:Math.PI/2));
+      var bord=new THREE.Mesh(new THREE.RingGeometry(4.5,6.1,14,1,start,Math.PI/2),betMat(0xd0cdc4,0.9));
       bord.rotation.x=-Math.PI/2;bord.position.set(E[0],0.02,E[1]);bord.receiveShadow=true;scene.add(bord);});
     // Mittelstreifen auf dem Ring
     var rmat=stdMat(0xd8d8cc,0.75);rmat.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(rmat);
@@ -2852,6 +2901,96 @@ setTimeout(function baueGebaeude(){
       for(var z2=0;z2<9;z2++)bau("th33_parkzaun_modul.glb",1.79,PX-128+z2*4.1,0,PZ-56,0,false,null,true);
       for(var z3=0;z3<9;z3++)bau("th33_parkzaun_modul.glb",1.79,PX-128+z3*4.1,0,PZ+56,0,false,null,true);
     },420);
+    /* ═══════════ 🏙️ STADTFUELLUNG AUF DEM GRUNDSTUECKSRAND ═══════════════════════
+       User: „das bauland kann 1/4 von mitte sein, du kannst der rest fuellen mit
+       sachen wo n stadt passen". Das Baufenster (inBau) ist jetzt die Mitte mit
+       36 x 24 Zellen = 72 x 48 m. Zwischen ihm und den Hauptstrassen (x = ±78,
+       z = ±58) lag ein 25 bis 30 m breiter Ring blanker Rasen — der wird bebaut:
+         Norden  Wohnzeile mit Vorgaerten, zur Hauptstrasse ausgerichtet
+         Sueden  Ladenzeile mit Kiosk und Marktstaenden
+         Osten   Quartierspark mit Spielplatz
+         Westen  Platz mit Bushalte, Telefonzelle und Parkplatz
+       Der Zugangsweg bei x = 0 nach Norden bleibt frei, sonst kaeme man nicht
+       mehr auf sein eigenes Grundstueck. bau() laeuft hier MIT wegVonStrasse(),
+       damit garantiert nichts auf Fahrbahn oder Trottoir landet. */
+    (function stadtfuellung(){
+      var NZ=40, SZ0=-40;                     // Zeilenmitten Nord/Sued
+      /* Grundstuecksgrenze sichtbar machen: gepflasterter Rundweg um das Baufenster
+         plus Hecke aussen. Ohne das steht man vor einer Wiese und weiss nicht, wo
+         man bauen darf — das Gitter sieht man ja nur im Baumodus. */
+      var BW=BAUW*CS/2+3, BH=BAUH*CS/2+3;
+      var wegM=betMat(0xcfc7b6,0.92);
+      [[2*BW+4,2.4,0,-BH],[2*BW+4,2.4,0,BH]].forEach(function(p){
+        var m=new THREE.Mesh(new THREE.BoxGeometry(p[0],0.08,p[1]),wegM);
+        m.position.set(p[2],0.04,p[3]);m.receiveShadow=true;scene.add(m);});
+      [[2.4,2*BH,-BW,0],[2.4,2*BH,BW,0]].forEach(function(p){
+        var m=new THREE.Mesh(new THREE.BoxGeometry(p[0],0.08,p[1]),wegM);
+        m.position.set(p[2],0.04,p[3]);m.receiveShadow=true;scene.add(m);});
+      /* Hecke aussen am Weg, mit Toren zur Zufahrt (x = 0 nach Norden, sonst Ecken frei) */
+      for(var hx=-BW+4;hx<=BW-4;hx+=4){
+        if(Math.abs(hx)>5)bau("th6_hecke_modul.glb",1.3,hx,0,BH+2.4,0,false,null);
+        bau("th6_hecke_modul.glb",1.3,hx,0,-BH-2.4,0,false,null);}
+      for(var hz=-BH+4;hz<=BH-4;hz+=4){
+        bau("th6_hecke_modul.glb",1.3,-BW-2.4,0,hz,Math.PI/2,false,null);
+        bau("th6_hecke_modul.glb",1.3,BW+2.4,0,hz,Math.PI/2,false,null);}
+      /* Ecken markieren + Zufahrt beschildern */
+      [[-BW,-BH],[BW,-BH],[-BW,BH],[BW,BH]].forEach(function(e){
+        bau("th5_poller.glb",1.0,e[0],0,e[1],0,false,null);});
+      bau("th5_ortsschild.glb",2.6,7,0,BH+3,0,false,null);
+      /* Norden: Wohnzeile. Luecke bei |x| < 9 fuer den Zugangsweg. */
+      [["th22_doppelhaus.glb",7.5,-62,12,9],["th7_reihenhaus_modul.glb",8,-46,10,7],
+       ["th22_bungalow.glb",4.6,-30,11,9],["th8_stadthaus_offen.glb",8.5,-16,10,9],
+       ["th22_bungalow.glb",4.6,16,11,9],["th8_stadthaus_offen.glb",8.5,30,10,9],
+       ["th7_reihenhaus_modul.glb",8,46,10,7],["th22_doppelhaus.glb",7.5,62,12,9]
+      ].forEach(function(h,i){
+        bau(h[0],h[1],h[2],0,NZ,Math.PI,false,null);
+        addSolid(h[2],NZ,h[3],h[4],{a:"z",at:NZ+h[4]/2,c:h[2],w:3.2});
+        bau("th2_gartenzaun.glb",1.0,h[2],0,NZ+7.5,0,false,null);
+        bau(i%2?"th2_blumenbeet.glb":"th4_busch_blueten.glb",i%2?0.5:1.2,h[2]-4,0,NZ+6,0,false,null);
+        bau("th3_briefkasten.glb",1.25,h[2]+4.5,0,NZ+7.2,0,false,null);
+        if(i%2===0)bau("th4_laterne_modern.glb",5.2,h[2]+8,0,NZ+9,0,false,null);
+        bau(i%3===0?"th4_ahorn.glb":"th4_birke.glb",6.5,h[2]-7,0,NZ+10,0,false,null);});
+      /* Sueden: Ladenzeile */
+      [["th8_laden_offen.glb",7.5,-58,11,9],["th23_apotheke.glb",7,-42,10,8],
+       ["th23_post.glb",7,-26,10,8],["th8_werkstatt_offen.glb",7,-8,11,9],
+       ["th23_arztpraxis.glb",7,10,10,8],["th8_laden_offen.glb",7.5,28,11,9],
+       ["th7_lagerhalle.glb",7.5,46,13,10],["th23_bank.glb",8,62,11,9]
+      ].forEach(function(h,i){
+        bau(h[0],h[1],h[2],0,SZ0,0,false,null);
+        addSolid(h[2],SZ0,h[3],h[4],{a:"z",at:SZ0-h[4]/2,c:h[2],w:3.2});
+        if(i%2===0)bau("th5_parkbank.glb",0.9,h[2]+5,0,SZ0-8,Math.PI,false,null);
+        if(i%3===1)bau("th6_papierkorb.glb",0.9,h[2]-5,0,SZ0-8,0,false,null);
+        if(i%2===1)bau("th5_laterne_altstadt.glb",5.0,h[2]-7,0,SZ0-9.5,0,false,null);});
+      bau("th3_kiosk.glb",3.4,0,0,SZ0-9,0,false,null);
+      bau("th5_marktstand.glb",3.0,-14,0,SZ0-10,0,false,null);
+      bau("th5_marktstand.glb",3.0,14,0,SZ0-10,0,false,null);
+      bau("th6_litfasssaeule.glb",3.2,20,0,SZ0-9,0,false,null);
+      /* Osten: Quartierspark mit Spielplatz */
+      var PX2=56;
+      bau("th16_pavillon.glb",4.2,PX2,0,18,0,false,null);   addSolid(PX2,18,7,7);
+      bau("th16_spielturm.glb",4.0,PX2+4,0,2,0.4,false,null);
+      bau("th16_sandkasten.glb",0.5,PX2-6,0,2,0,false,null);
+      bau("th16_schaukel.glb",2.6,PX2+2,0,-8,0,false,null);
+      bau("th16_wippe.glb",1.0,PX2-6,0,-8,0.8,false,null);
+      bau("th5_parkbrunnen.glb",2.2,PX2,0,-18,0,false,null);
+      [[-24,6],[-14,-2],[8,6],[24,-4]].forEach(function(p,i){
+        bau(i%2?"th4_eiche.glb":"th5_baum_ahorn.glb",7.5,PX2+p[1],0,p[0],0,false,null);});
+      [[-20,1],[0,-1],[12,1]].forEach(function(p){
+        bau("th5_parkbank.glb",0.9,PX2+p[1]*6,0,p[0],p[1]>0?Math.PI/2:-Math.PI/2,false,null);});
+      /* Westen: Quartiersplatz mit Bushalte und Parkplatz */
+      var WX=-56;
+      bau("th5_bushaltestelle.glb",3.2,WX-8,0,10,Math.PI/2,false,null);
+      bau("th5_telefonzelle.glb",2.4,WX-8,0,2,0,false,null);
+      bau("th6_brunnen_trog.glb",1.1,WX+2,0,0,0,false,null);  addSolid(WX+2,0,3,3);
+      bau("th3_bushalte.glb",3.0,WX-8,0,-10,Math.PI/2,false,null);
+      bau("th6_stromkasten.glb",1.5,WX+6,0,-16,0,false,null);
+      [-22,-14,-6,2,10,18].forEach(function(pz,i){        // Hecke als Platzkante
+        bau("th6_hecke_modul.glb",1.3,WX+9,0,pz,0,false,null);});
+      [["th_auto_kombi.glb",-18],["th7_taxi.glb",-10],["th_auto_van.glb",14]].forEach(function(a){
+        bau(a[0],1.6,WX-3,0,a[1],Math.PI/2,false,null);});
+      bau("th4_laterne_modern.glb",5.2,WX,0,20,0,false,null);
+      bau("th4_laterne_modern.glb",5.2,WX,0,-20,0,false,null);
+    })();
     /* 🚜 BAUERNHOF-VIERTEL weit draussen auf dem Feld (User: „bauernhaeuser farm staelle
        windmuehle weit weg aufs feld wie farm etc., wie in richtiger landschaft"). Der Hof
        stand bisher zwischen Ringstrasse und Hochhaeusern — das passt nicht zusammen. */
@@ -2932,6 +3071,123 @@ setTimeout(function baueGebaeude(){
       window._coaster={kurve:kurve,zug:zugG,t:0,v:0,CX:CX,CZ:CZ,faehrt:false,mit:false};
       addSolid(CX,CZ-22,13,6,{a:"z",at:CZ-19.2,c:CX,w:6});   /* Station solide, Zugang offen */
     })();
+    /* 🚡 SEILBAHN auf den Hausberg — die drei th26-Modelle (Station, Stuetze, Gondel)
+       lagen ungenutzt im Repo. Route und Hoehen sind aus der Bergkette oben gerechnet,
+       nicht geschaetzt: Berg Nr. 5 steht bei (121.5, 174.9), Grundradius 51.75, Hoehe 75,
+       Fussy = -6. Die Kegelflaeche liefert damit fuer jeden Punkt die Gelaendehoehe:
+         y(d) = -6 + 75 * (1 - d/51.75)
+       Die Bergstation sitzt bei d = 31 auf y = 24, die Talstation weit ausserhalb des
+       Kegels auf flachem Grund. Die Stuetzen stehen auf der so berechneten Hoehe,
+       damit keine in der Luft haengt oder im Hang steckt. */
+    (function seilbahn(){
+      var BX=121.5,BZ=174.9,BRAD=51.75,BHOCH=75,BFUSS=-6;
+      function bergH(x,z){                       // Gelaendehoehe auf dem Hausberg
+        var d=Math.hypot(x-BX,z-BZ);
+        if(d>=BRAD)return 0;
+        return Math.max(0,BFUSS+BHOCH*(1-d/BRAD));}
+      /* Der Kegel steigt mit 75 m auf 51.75 m Radius, also rund 55 Grad. Auf so einem
+         Hang schwebt JEDE grosszuegige Terrasse als Betonklotz ueber der Wiese (erste
+         Fassung, im Screenshot geprueft). Die Bergstation steht deshalb auf einer
+         Felsnase im Hangmaterial, und zwar weit oben: d = 20.3 -> Gelaende 39.6.
+         Die Talstation stand erst 64 m entfernt — bei 27 m langen Stationen berührten
+         sich die beiden fast (User: „seilbahnhaus weiter weg und oben").
+         Der Standort (228, 24) stammt aus einer Suche IM SPIEL ueber die ganze Karte:
+         geprueft wurden echte 3D-Kaesten aller 353 geladenen Modelle, wegVonStrasse()
+         und inSolid() fuer die 32 x 32 m Grundflaeche, dazu fuer JEDEN der fuenf
+         Stuetzenplaetze dasselbe. Innerhalb der Stadt gab es keinen einzigen freien
+         Platz dieser Groesse — die Station ist mit 17 x 27.5 m groesser als jedes
+         Wohnhaus. Ergebnis: 165 m Fahrstrecke von Osten ueber „Gewerbe Ost" hinweg
+         zur Bergstation auf 40 m Hoehe. */
+      var TAL={x:228,z:24},BERG={x:129,z:156};
+      var TALY=0,BERGY=40;                       // Bahnsteighoehen
+      var SEILH=8;                               // Seil haengt 8 m ueber dem Bahnsteig
+      var laenge=Math.hypot(BERG.x-TAL.x,BERG.z-TAL.z);
+      var qx=(BERG.z-TAL.z)/laenge,qz=-(BERG.x-TAL.x)/laenge;   // Querrichtung fuer Berg-/Talspur
+      var SPUR=2.6;                              // Abstand der beiden Seile
+      var winkel=Math.atan2(BERG.x-TAL.x,BERG.z-TAL.z);
+      function amSeil(t,spur){                   // Punkt auf dem Seil, t=0 Tal .. 1 Berg
+        var o=spur*SPUR/2;
+        return new THREE.Vector3(TAL.x+(BERG.x-TAL.x)*t+qx*o,
+                                 TALY+SEILH+(BERGY-TALY)*t,
+                                 TAL.z+(BERG.z-TAL.z)*t+qz*o);}
+      /* Felssockel im Kegelmaterial (0x7d7468, flatShading) — so liest sich der Unterbau
+         als Felsnase des Berges und nicht als freistehende Betonplatte. */
+      var felsSockelM=new THREE.MeshStandardMaterial({color:0x7d7468,roughness:1,flatShading:true,envMapIntensity:0.2});
+      /* Die Station ist 17 x 27 m gross (gemessen: Modell 20.6 x 11.5 x 33.3, auf 9.5 m
+         Hoehe skaliert) — der Sockel muss diese Grundflaeche wirklich tragen. */
+      var sock=new THREE.Mesh(new THREE.CylinderGeometry(15,21,BERGY+2,7),felsSockelM);
+      sock.position.set(BERG.x,BERGY-(BERGY+2)/2,BERG.z);sock.rotation.y=winkel;
+      sock.scale.z=1.5;                                   // laengs zur Bahn gestreckt
+      sock.receiveShadow=true;sock.castShadow=true;scene.add(sock);
+      var gel=new THREE.Mesh(new THREE.BoxGeometry(24,0.3,34),stdMat(0x8f9aa6,0.8));
+      gel.position.set(BERG.x,BERGY+0.15,BERG.z);gel.rotation.y=winkel;
+      gel.receiveShadow=true;scene.add(gel);
+      /* Gelaender rundum — sonst wirkt die Aussichtsplattform ungesichert */
+      var glM=new THREE.MeshStandardMaterial({color:0x6f7883,roughness:0.5,metalness:0.5});
+      for(var gi=0;gi<22;gi++){
+        var gu=gi/22*Math.PI*2;
+        var glx=Math.cos(gu)*9,glz=Math.sin(gu)*7;
+        var wx=BERG.x+glx*Math.cos(winkel)+glz*Math.sin(winkel);
+        var wz=BERG.z-glx*Math.sin(winkel)+glz*Math.cos(winkel);
+        var po=new THREE.Mesh(new THREE.CylinderGeometry(0.07,0.07,1.1,5),glM);
+        po.position.set(wx,BERGY+0.85,wz);scene.add(po);}
+      /* Stationen */
+      var talG=null;
+      bau("th26_seilbahn_station.glb",9.5,TAL.x,TALY,TAL.z,winkel,false,function(w){
+        talG=w;w.userData.fest=1;FAHRTEN.push({typ:"seilbahn",w:w,name:"th26_seilbahn_station.glb"});},true);
+      bau("th26_seilbahn_station.glb",9.5,BERG.x,BERGY+0.3,BERG.z,winkel+Math.PI,false,
+        function(w){w.userData.fest=1;},true);
+      /* Stuetzen auf gerechneter Gelaendehoehe, jede genau unter dem Seil */
+      var seilM=new THREE.MeshStandardMaterial({color:0x3c4148,roughness:0.5,metalness:0.6});
+      /* Stuetzenpunkte aus derselben Suche: alle fuenf stehen auf freiem Grund und
+         nicht auf Fahrbahn oder Trottoir. */
+      [0.2,0.42,0.62,0.78,0.9].forEach(function(t){
+        var m=amSeil(t,0),gy=bergH(m.x,m.z);
+        bau("th26_seilbahn_stuetze.glb",Math.max(6,m.y-gy),m.x,gy,m.z,winkel,false,
+          /* bau() skaliert gleichmaessig ueber die Hoehe — bei 15 m Mast wird der
+             Schaft dadurch klobig. Quer schlanker ziehen. */
+          function(w,root){root.scale.x*=0.45;root.scale.z*=0.45;w.userData.fest=1;},true);});
+      /* Trag- und Zugseil als duenne Tubes, je Spur eines */
+      [-1,1].forEach(function(sp){
+        var k=new THREE.CatmullRomCurve3([amSeil(0,sp),amSeil(0.5,sp),amSeil(1,sp)]);
+        var t2=new THREE.Mesh(new THREE.TubeGeometry(k,24,0.07,5,false),seilM);
+        scene.add(t2);});
+      /* Gondeln: 4 Stueck, zwei je Richtung, laufen dauernd */
+      var gond=[];
+      for(var i=0;i<4;i++){(function(i){
+        var spur=i<2?1:-1,t0=(i%2)*0.5;
+        bau("th26_seilbahn_gondel.glb",3.2,0,0,0,0,false,function(w){
+          w.userData.fest=1;
+          /* Gleich auf das Seil setzen: bis zum ersten updSeilbahn() lagen sonst alle
+             vier Gondeln uebereinander im Nullpunkt — das meldete die Ueberschneidungs-
+             Pruefung voellig zu Recht als Fehler. */
+          var u0=spur>0?t0:1-t0, of0=spur*SPUR/2;
+          w.position.set(TAL.x+(BERG.x-TAL.x)*u0+qx*of0,
+                         TALY+SEILH-3.2+(BERGY-TALY)*u0,
+                         TAL.z+(BERG.z-TAL.z)*u0+qz*of0);
+          w.rotation.y=winkel;
+          gond.push({w:w,spur:spur,t:t0});},true);})(i);}
+      /* Bergstation ohne Ziel waere eine Fahrt ins Nichts — oben stehen Huette,
+         Gipfelkreuz und Felsen (ebenfalls th26, ebenfalls bisher ungenutzt). */
+      function aufTerrasse(lx,lz){
+        return [BERG.x+lx*Math.cos(winkel)+lz*Math.sin(winkel),
+                BERG.z-lx*Math.sin(winkel)+lz*Math.cos(winkel)];}
+      var pH=aufTerrasse(-6.5,-4);  bau("th26_berghuette.glb",4.4,pH[0],BERGY,pH[1],winkel+0.5,false,null,true);
+      var pK=aufTerrasse(7,-4);     bau("th26_gipfelkreuz.glb",4.2,pK[0],BERGY,pK[1],0,false,null,true);
+      var pF=aufTerrasse(7.5,4.5);  bau("th26_felsformation.glb",2.8,pF[0],BERGY,pF[1],1.1,false,null,true);
+      var pF2=aufTerrasse(-7,5);    bau("th26_felsformation.glb",2.2,pF2[0],BERGY,pF2[1],2.4,false,null,true);
+      window._seilbahn={tal:TAL,berg:BERG,taly:TALY,bergy:BERGY,seilh:SEILH,
+                        qx:qx,qz:qz,spur:SPUR,winkel:winkel,gond:gond,laenge:laenge};
+      /* GEMESSENE Grundflaeche statt geschaetzter: das Modell ist 20.6 x 11.5 x 33.3 und
+         wird auf 9.5 m Hoehe skaliert -> 17 x 27.5 m. Der alte 12 x 10-Kollider deckte
+         nur ein Viertel davon ab, deshalb standen Baeume und Laternen mitten im Haus
+         (User: „viele stl ueberkreuzung"). Beide Stationen sind begehbar, also bleibt
+         auf der Laengsseite eine 6 m breite Tuerluecke. */
+      var aw=Math.abs(17*Math.cos(winkel))+Math.abs(27.5*Math.sin(winkel));   // achsenparallele Huelle
+      var ad=Math.abs(17*Math.sin(winkel))+Math.abs(27.5*Math.cos(winkel));
+      addSolid(TAL.x,TAL.z,aw,ad,{a:"x",at:TAL.x-aw/2,c:TAL.z,w:6});
+      addSolid(BERG.x,BERG.z,42,50);   /* Fuss der Felsnase — nicht hineinlaufen */
+    })();
     /* 🔧 Nach dem Laden aller Modelle: echte Masse messen und die Reihen entzerren.
        Damit gibt es auch dann keine Ueberschneidung, wenn ein Modell groesser ausfaellt
        als im cfg angenommen — das gilt genauso fuer jeden neuen STL-Schwung. */
@@ -2951,7 +3207,7 @@ setTimeout(function baueGebaeude(){
             var min=bb.min[achse],max=bb.max[achse],breite=max-min;
             if(kante!==null&&min<kante+LUECKE){
               var schub=(kante+LUECKE)-min;
-              b.w.position[achse]+=schub;
+              b.w.position[achse]+=schub;window._nachRuecken(b.w);
               max+=schub;}
             kante=max;});
           /* Quer zur Strasse: breite Modelle ragen sonst ueber die Fahrbahn in die
@@ -2962,9 +3218,98 @@ setTimeout(function baueGebaeude(){
             var bb=new THREE.Box3().setFromObject(b.w);
             var ik=seite>0?bb.min[quer]-mitte:mitte-bb.max[quer];
             if(ik<innen)noetig=Math.max(noetig,innen-ik);});
-          if(noetig>0)reihe.forEach(function(b){b.w.position[quer]+=seite*noetig;});});});
+          if(noetig>0)reihe.forEach(function(b){
+            b.w.position[quer]+=seite*noetig;window._nachRuecken(b.w);});});});
       window._entzerrt=1;
     },14000);
+    /* 🧩 GLOBALER ENTWIRRER (User: „viele stl ueberkreuzung? passe es an?").
+       entzerren() oben raeumt nur INNERHALB eines Viertels auf. Gemessen blieben
+       trotzdem 49 Paare uebrig, die sich in echten 3D-Kaesten schneiden — vor allem
+       in den handgesetzten Hauszeilen bei z = ±70..82, wo Baeume, Buden und Haeuser
+       aus verschiedenen Bauabschnitten aufeinandertreffen.
+       Regeln, damit das Verschieben nicht neue Fehler baut:
+         * es weicht immer das KLEINERE Objekt aus (die Landmarke bleibt stehen),
+         * geschoben wird entlang der Achse mit der GERINGSTEN Ueberlappung,
+         * hoechstens 9 m, und
+         * das Ziel muss wegVonStrasse() unveraendert lassen — sonst landet das
+           Objekt auf Fahrbahn oder Trottoir, und genau das war der alte Fehler.
+       Wer nicht regelkonform ausweichen kann, bleibt lieber stehen. */
+    function entwirren(){
+      /* 🧩 GLOBALER ENTWIRRER (User: „viele stl ueberkreuzung? passe es an?").
+         entzerren() oben raeumt nur INNERHALB eines Viertels auf. Gemessen blieben
+         trotzdem 49 Paare uebrig, die sich in echten 3D-Kaesten schneiden — vor allem
+         in den handgesetzten Hauszeilen bei z = ±70..82, wo Baeume, Buden und Haeuser
+         aus verschiedenen Bauabschnitten aufeinandertreffen.
+         Wichtig ist, WIE verschoben wird. Die erste Fassung schob einfach entlang der
+         Achse mit der kleinsten Ueberlappung — sie bewegte 74 Objekte und senkte die
+         Zahl der Ueberschneidungen von 49 auf 48, weil jeder Schub das Objekt ins
+         naechste Modell druckte. Jetzt wird jeder Kandidatenplatz VORHER geprueft:
+           * er muss frei von ALLEN anderen Modellen in der Nachbarschaft sein,
+           * wegVonStrasse() darf ihn nicht verschieben (also weder Fahrbahn noch
+             Trottoir), und
+           * er darf hoechstens 10 m entfernt liegen.
+         Findet sich kein solcher Platz, bleibt das Objekt stehen — lieber eine
+         bekannte Ueberschneidung als ein Baum mitten auf der Kreuzung.
+         Verschoben wird immer das kleinere Objekt; userData.fest schuetzt alles,
+         dessen Position Mechanik traegt (Seilbahnstuetzen haengen am Seil). */
+      var G=window._gebaeude||[],E=[];
+      G.forEach(function(w){
+        var b=new THREE.Box3().setFromObject(w);
+        if(!isFinite(b.min.x))return;
+        E.push({w:w,b:b,fest:!!(w.userData&&w.userData.fest),
+                v:(b.max.x-b.min.x)*(b.max.z-b.min.z)});});
+      function schneidet(a,b){
+        return Math.min(a.max.x,b.max.x)-Math.max(a.min.x,b.min.x)>1.2&&
+               Math.min(a.max.z,b.max.z)-Math.max(a.min.z,b.min.z)>1.2&&
+               Math.min(a.max.y,b.max.y)-Math.max(a.min.y,b.min.y)>1.2;}
+      function paare(){
+        var p=[];
+        for(var i=0;i<E.length;i++)for(var j=i+1;j<E.length;j++)
+          if(schneidet(E[i].b,E[j].b))p.push([E[i],E[j]]);
+        return p;}
+      var bewegt=0,offen=0,vorher=paare().length;
+      var RI=[[1,0],[-1,0],[0,1],[0,-1],[0.7,0.7],[-0.7,0.7],[0.7,-0.7],[-0.7,-0.7]];
+      for(var runde=0;runde<5;runde++){
+        var P=paare();
+        if(!P.length)break;
+        for(var k=0;k<P.length;k++){
+          var A=P[k][0],B=P[k][1];
+          if(A.fest&&B.fest){continue;}
+          if(!schneidet(A.b,B.b))continue;           // schon durch einen frueheren Schub geloest
+          /* Erst das kleinere Objekt ausweichen lassen; findet es keinen Platz,
+             darf auch das groessere ruecken. Sonst bleiben Paare stehen, bei denen
+             der Kleine eingekeilt ist. */
+          var reihenfolge=A.fest?[B]:(B.fest?[A]:(A.v<=B.v?[A,B]:[B,A]));
+          var gefunden=false;
+          for(var o=0;o<reihenfolge.length&&!gefunden;o++){
+            var kand=reihenfolge[o];
+            for(var d=2;d<=14&&!gefunden;d+=2){
+              for(var r=0;r<RI.length&&!gefunden;r++){
+                var nx=kand.w.position.x+RI[r][0]*d, nz=kand.w.position.z+RI[r][1]*d;
+                var q=wegVonStrasse(nx,nz);
+                if(Math.hypot(q[0]-nx,q[1]-nz)>0.01)continue;      // Fahrbahn/Trottoir
+                var nb=kand.b.clone();
+                nb.translate(new THREE.Vector3(nx-kand.w.position.x,0,nz-kand.w.position.z));
+                var frei=true;
+                for(var m=0;m<E.length&&frei;m++){
+                  if(E[m]===kand)continue;
+                  if(Math.abs(E[m].w.position.x-nx)>60||Math.abs(E[m].w.position.z-nz)>60)continue;
+                  if(schneidet(nb,E[m].b))frei=false;}
+                if(!frei)continue;
+                kand.w.position.x=nx;kand.w.position.z=nz;kand.b=nb;
+                window._nachRuecken(kand.w);
+                bewegt++;gefunden=true;}}}
+          if(!gefunden)offen++;}}
+      var w2=window._entwirrt||{vorher:vorher,bewegt:0,ohnePlatz:0};
+      window._entwirrt={vorher:w2.vorher,nachher:paare().length,
+                        bewegt:w2.bewegt+bewegt,ohnePlatz:offen,laeufe:(w2.laeufe||0)+1};
+    }
+    /* Die GLB-Dateien laden asynchron: nach 15 s waren erst rund 250 der 353 Modelle
+       da, der Rest kam danach und brachte neue Ueberschneidungen mit. Der Entwirrer
+       laeuft deshalb zweimal — einmal frueh fuer den sichtbaren Kern, einmal spaet,
+       wenn wirklich alles geladen ist. Der zweite Lauf ist idempotent. */
+    setTimeout(entwirren,15500);
+    setTimeout(entwirren,32000);
   },260);
   /* Die alte Stadt-Scheune ist raus: eine Scheune zwischen Ringstrasse und Hochhaeusern
      ergibt kein stimmiges Bild. Der Hof steht jetzt draussen auf dem Feld. */
@@ -3137,8 +3482,8 @@ setTimeout(function baueGebaeude(){
       function zaunReihe(x0,z0,n,achse,luecke){
         for(var i=0;i<n;i++){
           if(luecke&&luecke.indexOf(i)>=0)continue;
-          if(achse==="x")bau("th33_parkzaun_modul",1.8,x0+2+i*4,0,z0,0,false,null,true);
-          else            bau("th33_parkzaun_modul",1.8,x0,0,z0+2+i*4,Math.PI/2,false,null,true);
+          if(achse==="x")bau("th33_parkzaun_modul.glb",1.8,x0+2+i*4,0,z0,0,false,null,true);
+          else            bau("th33_parkzaun_modul.glb",1.8,x0,0,z0+2+i*4,Math.PI/2,false,null,true);
         }
       }
       zaunReihe(W,N,7,"x",[3]);        /* Nordseite, Haupttor in der Mitte */
@@ -3687,6 +4032,7 @@ var buildMode=false,curItem=null,curRot=0,delMode=false,running=false;
 var romantik=false;
 function fkey(x,y){return x+","+y;}
 function inLot(x,y){return x>=0&&x<GW&&y>=0&&y<GH;}
+function inBau(x,y){return x>=BAUX0&&x<BAUX0+BAUW&&y>=BAUY0&&y<BAUY0+BAUH;}
 
 // ===================== Bau-Ausführung (lokal + Netz identisch) =====================
 var wandMat=stdMat(0xf2ead8,0.85),wandMatIn=stdMat(0xe8d8c0,0.85);
@@ -3858,7 +4204,7 @@ function furnCells(f){var s=f.def.size||[1,1],w=s[0],d=s[1];
 function footprintFree(def,gx,gy,rot,ignore){ /* 🩹 Schwarm-P2: ALLE Zellen pruefen (Bett 2x2/Sofa 2x1 ueberlappten) */
   var cells=furnCells({gx:gx,gy:gy,rot:rot||0,def:def});
   for(var i=0;i<cells.length;i++){var cx9=cells[i][0],cy9=cells[i][1];
-    if(!inLot(cx9,cy9))return false;
+    if(!inBau(cx9,cy9))return false;
     for(var j=0;j<furn.length;j++){if(ignore&&furn[j]===ignore)continue;
       var oc=furnCells(furn[j]);
       for(var k=0;k<oc.length;k++)if(oc[k][0]===cx9&&oc[k][1]===cy9)return false;}}
@@ -4028,8 +4374,17 @@ function onNetMsg(m){
   else if(m.t==="coaster"&&!mpHost){var C8=window._coaster;if(C8){C8.t=m.tt;C8.v=m.v;C8.faehrt=true;}}
   else if(m.t==="brunnen"&&!mpHost){var B9=window._brunnen;if(B9)hearts(B9.x,B9.z);if(sims[m.si])simEmoji(sims[m.si],"✨");beep(720,.08,"sine",.04);hint("⛲ Erfrischung am Brunnen! +Laune");}
   else if(m.t==="pickup"&&pickups[m.i]){pickups[m.i].active=m.on;pickups[m.i].mesh.visible=m.on;}
-  else if(m.t==="hallo"&&mpHost){netSend({t:"state",sn:snapshot()});chatAdd("System",m.n+" baut jetzt mit!");}
-  else if(m.t==="state"&&!mpHost){loadSnapshot(m.sn);startGame();}
+  else if(m.t==="hallo"&&mpHost){
+    LOBBY.spieler=[myName,(m.n||"Gast")];lobbyNamenUpd();lobbyStartKnopf(!LOBBY.gestartet);
+    netSend({t:"lobby",s:LOBBY.spieler});
+    netSend({t:"state",sn:snapshot()});chatAdd("System",m.n+" baut jetzt mit!");
+    if(LOBBY.gestartet)netSend({t:"los"});}
+  /* Antwort fuer den Raum-Browser: ohne die bleibt der eigene Raum in MP.suche()
+     unsichtbar, weil die Probe nur auf „__lobby" hoert. */
+  else if(m.t==="__lobby?"&&mpHost)netSend({t:"__lobby",n:myName,p:LOBBY.spieler.length||1});
+  else if(m.t==="lobby"&&!mpHost){LOBBY.spieler=m.s||[];lobbyNamenUpd();}
+  else if(m.t==="los"&&!mpHost){LOBBY.gestartet=true;if(!running)startGame();}
+  else if(m.t==="state"&&!mpHost){loadSnapshot(m.sn);if(LOBBY.gestartet&&!running)startGame();}  /* Start wartet auf {t:"los"} vom Host */
   else if(m.t==="sims"&&!mpHost){m.a.forEach(function(sd,i){if(sims[i])sims[i].net=sd;});
     var cm9=m.ca?((m.ca.vi>=0&&verkehr[m.ca.vi])?verkehr[m.ca.vi]:window.autoRec):null;
     if(cm9&&cm9.mesh){cm9.mesh.visible=true;cm9.mesh.position.x=m.ca.x;cm9.mesh.position.z=m.ca.z;cm9.mesh.rotation.y=m.ca.r;}
@@ -5246,8 +5601,29 @@ var FAHRT_ART={
       return {x:o.x+Math.cos(a)*9.4, z:o.z+Math.sin(a*1.4)*7.2, y:y};}},
   geisterbahn:{dauer:24, nah:13, text:"👻 Geisterbahn fahren",
     bahn:function(t,o){var a=t*Math.PI*2;
-      return {x:o.x+Math.cos(a)*6.4+Math.sin(a*3)*1.8, z:o.z+Math.sin(a)*5.2, y:1.5};}}
+      return {x:o.x+Math.cos(a)*6.4+Math.sin(a*3)*1.8, z:o.z+Math.sin(a)*5.2, y:1.5};}},
+  /* 🚡 Seilbahn: Rundfahrt Tal -> Berg -> Tal. Die Bergspur liegt seitlich versetzt,
+     deshalb wechselt bei t=0.5 die Spur — wie bei einer echten Pendelbahn. */
+  seilbahn:{dauer:46, nah:11, text:"🚡 Seilbahn auf den Berg",
+    bahn:function(t,o){
+      var S=window._seilbahn;if(!S)return {x:o.x,z:o.z,y:1};
+      var u=t<0.46?t/0.46:(t<0.54?1:1-(t-0.54)/0.46);
+      var off=(t<0.5?1:-1)*S.spur/2;
+      return {x:S.tal.x+(S.berg.x-S.tal.x)*u+S.qx*off,
+              z:S.tal.z+(S.berg.z-S.tal.z)*u+S.qz*off,
+              y:S.taly+S.seilh-1.7+(S.bergy-S.taly)*u};}}
 };
+/* Die Gondeln fahren immer, auch ohne Fahrgast — sonst wirkt die Bahn tot. */
+function updSeilbahn(dt){
+  var S=window._seilbahn;if(!S||!S.gond.length)return;
+  for(var i=0;i<S.gond.length;i++){
+    var g=S.gond[i];
+    g.t+=dt/34;if(g.t>1)g.t-=1;
+    var u=g.spur>0?g.t:1-g.t, off=g.spur*S.spur/2;
+    g.w.position.set(S.tal.x+(S.berg.x-S.tal.x)*u+S.qx*off,
+                     S.taly+S.seilh-3.2+(S.bergy-S.taly)*u,   /* Modell haengt unter dem Seil */
+                     S.tal.z+(S.berg.z-S.tal.z)*u+S.qz*off);
+    g.w.rotation.y=S.winkel;}}
 function fahrtNah(){
   var p=spielerPos(),best=null,bd=1e9;
   for(var i=0;i<FAHRTEN.length;i++){
@@ -5570,7 +5946,7 @@ var dragging=false,dragBtn=0,lx=0,ly=0,pinchD=0,downT=0,downX=0,downY=0;
 var _paintSet=null,_paintHinted=false;
 function paintFloorAt(px,py){
   if(!buildMode||!curItem||delMode||curItem.indexOf("boden")!==0)return false;
-  var c=pickCell(px,py);if(!c||!inLot(c.gx,c.gy))return true;
+  var c=pickCell(px,py);if(!c||!inBau(c.gx,c.gy))return true;
   var key=c.gx+"_"+c.gy;if(_paintSet&&_paintSet.has(key))return true;
   var def=defOf(curItem);
   if(geld<def.cost){if(!_paintHinted){_paintHinted=true;hint("💰 Zu wenig Geld!");}return true;}
@@ -5639,7 +6015,7 @@ function refreshGhost(){
   scene.add(ghost);}
 function ghostFollow(px,py){
   if(!ghost)return;var c=pickCell(px,py);if(!c)return;
-  var inL=inLot(c.gx,c.gy);
+  var inL=inBau(c.gx,c.gy);
   var gdef=defOf(curItem);
   if(curItem==="wand"||curItem==="fenster"||curItem==="tuer"||(gdef&&gdef.paint)){
     var e=nearestEdge(c);ghost.position.set(e.wx,0,e.wz);ghost.rotation.y=e.d===1?Math.PI/2:0;
@@ -6122,45 +6498,104 @@ document.getElementById("mpBackBtn").onclick=function(){
   document.getElementById("mpBackBtn").style.display="none";
   var st=document.getElementById("mpStatus");if(st)st.style.color="#5a7a9a";
   document.getElementById("netSetup").style.display="flex";};
-document.getElementById("hostBtn").onclick=function(){
-  if(typeof MP==="undefined"){alert("Online-Modul nicht geladen");return;}
+/* ═══════════ 🌐 KOOP-LOBBY: Raumsuche + Namen + Start ═══════════════════════════
+   User: „mit koop server suchen und joinen so dass man namen sieht ... namen anzeigen
+   bis man startet wenn der joint".
+   Bisher gab es nur „Raum erstellen" mit gewuerfeltem Code — wer keinen Code hatte,
+   kam nicht rein, und das Spiel startete in dem Moment, in dem jemand verband: man
+   sah nie, WER da ist. Jetzt:
+     🔎 Raeume suchen  -> MP.suche() klappert die oeffentlichen Codes ab und listet
+                          Raum, Hostname und Spielerzahl; ein Tipp tritt bei.
+     Lobby            -> zeigt beide Namen, sobald der Gast da ist.
+     ▶ Starten        -> nur der Host; erst dann laeuft das Spiel los. */
+var LOBBY={spieler:[],gestartet:false};
+function lobbyNamenUpd(){
+  var el=document.getElementById("mpSpieler");if(!el)return;
+  if(!LOBBY.spieler.length){el.innerHTML="";return;}
+  el.innerHTML="<div style='font-weight:800;color:#2a6ab0;margin-bottom:4px'>👥 Im Raum:</div>"+
+    LOBBY.spieler.map(function(n,i){
+      return "<div style='padding:5px 10px;background:#fff8ec;border:2px solid #f0c8a0;border-radius:10px;margin-bottom:5px'>"+
+             (i===0?"👑 ":"🙋 ")+String(n).replace(/[<>&]/g,"")+"</div>";}).join("");}
+function lobbyStartKnopf(an){
+  var b=document.getElementById("mpStartBtn");if(b)b.style.display=an?"inline-block":"none";}
+function lobbyStarten(){
+  if(LOBBY.gestartet)return;LOBBY.gestartet=true;
+  lobbyStartKnopf(false);
+  if(mpHost)netSend({t:"los"});
+  if(!running)startGame();}
+document.getElementById("mpStartBtn").onclick=lobbyStarten;
+document.getElementById("sucheBtn").onclick=function(){
+  if(typeof MP==="undefined"||!MP.suche){alert("Online-Modul nicht geladen");return;}
+  var box=document.getElementById("mpListe");
+  box.style.display="block";
+  box.innerHTML="<div style='color:#5a7a9a'>🔎 Suche offene Räume … (bis 5 s)</div>";
+  var gefunden=[];
+  function zeichne(){
+    if(!gefunden.length){
+      box.innerHTML="<div style='color:#5a7a9a;margin-bottom:6px'>Kein offener Raum gefunden.</div>"+
+        "<button class='btn ghost' id='pubHostBtn' style='margin-top:0;font-size:.9rem;padding:8px 18px'>➕ Öffentlichen Raum eröffnen</button>";
+      document.getElementById("pubHostBtn").onclick=function(){raumEroeffnen([]);};
+      return;}
+    box.innerHTML="<div style='font-weight:800;color:#2a6ab0;margin-bottom:6px'>Offene Räume:</div>"+
+      gefunden.map(function(r,i){
+        return "<button class='btn ghost' data-i='"+i+"' style='display:block;width:100%;margin:0 0 6px;font-size:.92rem;padding:9px 14px;text-align:left'>"+
+               "🎮 "+String(r.name).replace(/[<>&]/g,"")+" · Raum "+r.code+" · "+r.spieler+"/2</button>";}).join("");
+    Array.prototype.forEach.call(box.querySelectorAll("button[data-i]"),function(b){
+      b.onclick=function(){beitreten(gefunden[+b.getAttribute("data-i")].code);};});}
+  MP.suche("traumhaus",{fund:function(r){gefunden.push(r);zeichne();},
+                        fertig:function(){zeichne();}});};
+function raumEroeffnen(belegt){
   myName=(document.getElementById("mpName").value.trim()||"Host").slice(0,12);
-  try{var cs=localStorage.getItem("th_save_coop");if(cs)loadSnapshot(JSON.parse(cs));}catch(e){} /* 🩹 Schwarm-P1: gemeinsames Haus überlebt jetzt einen Host-Reload */
-  MPs=MP.host("traumhaus");mpHost=true;window._roomCode=MPs.code;
-  document.getElementById("netSetup").style.display="none";
-  document.getElementById("mpLobby").style.display="block";
-  document.getElementById("mpCodeShow").textContent=MPs.code;
+  LOBBY.spieler=[myName];LOBBY.gestartet=false;
+  try{var cs=localStorage.getItem("th_save_coop");if(cs)loadSnapshot(JSON.parse(cs));}catch(e){}
+  MPs=MP.hostPublic("traumhaus",belegt);mpHost=true;window._roomCode=MPs.code;
+  lobbyAnzeigen(MPs.code);
   MPs.onMessage(onNetMsg);
-  MPs.onStatus(function(st){
-    /* 🔎 „suche" hiess bisher nur „suche" — bei drei Vermittlungs-Servern wartet man
-       sonst bis zu 27 s vor einer schwarzen Wand. Jetzt steht dran, welcher gerade
-       probiert wird. */
-    var txt={waiting:"Warte auf Mitspieler …",connected:"Verbunden! Spiel startet …",lost:"Verbindung verloren — versuche Reconnect …",closed:"Verbindung beendet"}[st];
-    if(st==="suche")txt="Suche Vermittlungs-Server "+(MPs._serverNr||1)+"/"+(MPs._serverAnzahl||1)+" …";
-    document.getElementById("mpStatus").textContent=txt||st;
-    if(st==="waiting"){document.getElementById("mpCodeShow").textContent=MPs.code;window._roomCode=MPs.code;} /* 🩹 Schwarm-P3: Code kann nach ID-Kollision neu gewürfelt sein */
-    if(st==="connected"&&!running)startGame();
-    document.getElementById("mpBackBtn").style.display=(st==="closed")?"inline-block":"none";
-    document.getElementById("netBadge").style.background=st==="connected"?"rgba(90,150,90,.9)":"rgba(190,90,60,.9)";});
-  if(MPs.ready&&MPs.ready.catch)MPs.ready.catch(function(err){mpLobbyFehler(err&&err.message||"Verbindung fehlgeschlagen");});};
-document.getElementById("joinBtn").onclick=function(){
-  if(typeof MP==="undefined"){alert("Online-Modul nicht geladen");return;}
-  myName=(document.getElementById("mpName").value.trim()||"Gast").slice(0,12);
-  var code=(document.getElementById("mpCode").value||"").trim().toUpperCase();
-  if(code.length!==4){alert("4-stelligen Raum-Code eingeben");return;}
-  MPs=MP.join("traumhaus",code);mpHost=false;window._roomCode=code;
+  MPs.onStatus(hostStatus);
+  if(MPs.ready&&MPs.ready.catch)MPs.ready.catch(function(err){mpLobbyFehler(err&&err.message||"Verbindung fehlgeschlagen");});}
+function lobbyAnzeigen(code){
   document.getElementById("netSetup").style.display="none";
+  document.getElementById("mpListe").style.display="none";
   document.getElementById("mpLobby").style.display="block";
   document.getElementById("mpCodeShow").textContent=code;
+  lobbyNamenUpd();}
+function hostStatus(st){
+  var txt={waiting:"Warte auf Mitspieler …",connected:"Verbunden!",lost:"Verbindung verloren — versuche Reconnect …",closed:"Verbindung beendet"}[st];
+  if(st==="suche")txt="Suche Vermittlungs-Server "+(MPs._serverNr||1)+"/"+(MPs._serverAnzahl||1)+" …";
+  document.getElementById("mpStatus").textContent=txt||st;
+  if(st==="waiting"){document.getElementById("mpCodeShow").textContent=MPs.code;window._roomCode=MPs.code;}
+  document.getElementById("mpBackBtn").style.display=(st==="closed")?"inline-block":"none";
+  document.getElementById("netBadge").style.background=st==="connected"?"rgba(90,150,90,.9)":"rgba(190,90,60,.9)";}
+function beitreten(code){
+  myName=(document.getElementById("mpName").value.trim()||"Gast").slice(0,12);
+  LOBBY.spieler=[];LOBBY.gestartet=false;
+  MPs=MP.join("traumhaus",code);mpHost=false;window._roomCode=code;
+  lobbyAnzeigen(code);
   document.getElementById("mpStatus").textContent="Verbinde …";
   MPs.onMessage(onNetMsg);
   MPs.onStatus(function(st){
-    if(st==="connected"){document.getElementById("mpStatus").textContent="Verbunden — lade Haus …";netSend({t:"hallo",n:myName});}
+    if(st==="connected"){document.getElementById("mpStatus").textContent="Verbunden — warte auf Start durch den Host …";netSend({t:"hallo",n:myName});}
     if(st==="lost")document.getElementById("mpStatus").textContent="Verbindung verloren — Reconnect …";
     if(st==="closed"){document.getElementById("mpStatus").textContent="Verbindung beendet";document.getElementById("mpBackBtn").style.display="inline-block";}
     document.getElementById("netBadge").style.background=st==="connected"?"rgba(90,150,90,.9)":"rgba(190,90,60,.9)";});
+  if(MPs.ready&&MPs.ready.catch)MPs.ready.catch(function(err){mpLobbyFehler(err&&err.message||"Verbindung fehlgeschlagen");});}
+document.getElementById("hostBtn").onclick=function(){
+  if(typeof MP==="undefined"){alert("Online-Modul nicht geladen");return;}
+  myName=(document.getElementById("mpName").value.trim()||"Host").slice(0,12);
+  LOBBY.spieler=[myName];LOBBY.gestartet=false;
+  try{var cs=localStorage.getItem("th_save_coop");if(cs)loadSnapshot(JSON.parse(cs));}catch(e){} /* 🩹 Schwarm-P1: gemeinsames Haus überlebt jetzt einen Host-Reload */
+  MPs=MP.host("traumhaus");mpHost=true;window._roomCode=MPs.code;
+  lobbyAnzeigen(MPs.code);
+  MPs.onMessage(onNetMsg);
+  /* Kein Auto-Start mehr: frueher lief das Spiel in dem Moment los, in dem jemand
+     verband — man sah nie, wer beigetreten ist. Der Host startet jetzt selbst. */
+  MPs.onStatus(hostStatus);
   if(MPs.ready&&MPs.ready.catch)MPs.ready.catch(function(err){mpLobbyFehler(err&&err.message||"Verbindung fehlgeschlagen");});};
-
+document.getElementById("joinBtn").onclick=function(){
+  if(typeof MP==="undefined"){alert("Online-Modul nicht geladen");return;}
+  var code=(document.getElementById("mpCode").value||"").trim().toUpperCase();
+  if(code.length!==4){alert("4-stelligen Raum-Code eingeben");return;}
+  beitreten(code);};
 // ===================== Live-Voice-Chat (WebRTC über PeerJS) =====================
 var voice={stream:null,call:null,on:false,muted:false,remoteEl:null};
 function voiceRemote(rs){
@@ -6203,11 +6638,11 @@ function stampVilla(){
   var W9=VILLA.w,H9=VILLA.h,ax=-1,ay=-1;
   var cands=[[((GW-W9)/2)|0,4],[((GW-W9)/2)|0,((GH-H9)/2)|0],[4,4],[GW-W9-4,4],[4,GH-H9-4],[GW-W9-4,GH-H9-4]];
   for(var ci=0;ci<cands.length&&ax<0;ci++){var cx0=cands[ci][0],cy0=cands[ci][1],ok=true;
-    for(var x=0;x<W9&&ok;x++)for(var y=0;y<H9&&ok;y++){var _vx=cx0+x,_vy=cy0+y;if(!inLot(_vx,_vy)||!cellFree(_vx,_vy)||floors[fkey(_vx,_vy)]!==undefined||walls[_vx+","+_vy+",0"]||walls[_vx+","+_vy+",1"])ok=false;} /* 🩹 Schwarm-P3: nie ueber Gebautes stempeln */
+    for(var x=0;x<W9&&ok;x++)for(var y=0;y<H9&&ok;y++){var _vx=cx0+x,_vy=cy0+y;if(!inBau(_vx,_vy)||!cellFree(_vx,_vy)||floors[fkey(_vx,_vy)]!==undefined||walls[_vx+","+_vy+",0"]||walls[_vx+","+_vy+",1"])ok=false;} /* 🩹 Schwarm-P3: nie ueber Gebautes stempeln */
     if(ok){ax=cx0;ay=cy0;}}
   if(ax<0){ /* voller Scan */
     for(var sy=1;sy<GH-H9&&ax<0;sy++)for(var sx=1;sx<GW-W9&&ax<0;sx++){var ok2=true;
-      for(var x2=0;x2<W9&&ok2;x2++)for(var y2=0;y2<H9&&ok2;y2++){var _wx=sx+x2,_wy=sy+y2;if(!inLot(_wx,_wy)||!cellFree(_wx,_wy)||floors[fkey(_wx,_wy)]!==undefined||walls[_wx+","+_wy+",0"]||walls[_wx+","+_wy+",1"])ok2=false;}
+      for(var x2=0;x2<W9&&ok2;x2++)for(var y2=0;y2<H9&&ok2;y2++){var _wx=sx+x2,_wy=sy+y2;if(!inBau(_wx,_wy)||!cellFree(_wx,_wy)||floors[fkey(_wx,_wy)]!==undefined||walls[_wx+","+_wy+",0"]||walls[_wx+","+_wy+",1"])ok2=false;}
       if(ok2){ax=sx;ay=sy;}}}
   if(ax<0){hint("🏰 Kein Platz frei — räume eine 20×14-Fläche frei!");return;}
   geld-=3500;geldSend();
@@ -6272,7 +6707,7 @@ function loop(now){
     if(Math.abs(camRT-camR)>0.02){camR+=(camRT-camR)*Math.min(1,dt*8);
       if(Math.abs(camRT-camR)<=0.02)camR=camRT;updCam();}
     updFollow(dt);updMinimap(dt);updLampPool(dt);updCoaster(dt,now);coasterBtnUpd();
-    updFahrt(dt);fahrtBtnUpd();npcBtnUpd();updCoup(dt);coupBtnUpd();
+    updFahrt(dt);updSeilbahn(dt);fahrtBtnUpd();npcBtnUpd();updCoup(dt);coupBtnUpd();
     sims.forEach(function(s,si){updSim(s,si,dt,now);});
     for(var ki=0;ki<kinder.length;ki++)updKind(kinder[ki],dt,now);
     updHund(dt,now);
@@ -6409,6 +6844,14 @@ window.__th={
   fahrtStand:function(){return _fahrt?{t:+_fahrt.t.toFixed(2),
     hoehe:+(window._camHebung||0).toFixed(2),typ:_fahrt.f.typ}:null;},
   aussteigen:function(){fahrtAussteigen();},
+  /* Testzugang fuer die Koop-Lobby: Netz-Nachrichten lassen sich einspeisen, ohne
+     dass zwei vollstaendige 3D-Seiten parallel laufen muessen (das schafft der
+     Test-Browser nicht). */
+  netTest:function(m){onNetMsg(m);},
+  laeuft:function(){return running;},
+  lobby:function(){return {spieler:LOBBY.spieler.slice(),gestartet:LOBBY.gestartet,
+    start:getComputedStyle(document.getElementById("mpStartBtn")).display,
+    text:(document.getElementById("mpSpieler")||{}).textContent||""};},
   bahnProfil:function(typ){var A=FAHRT_ART[typ],o={x:0,z:0},r=[];
     for(var i=0;i<=10;i++)r.push(+A.bahn(i/10,o).y.toFixed(1));return r;}
 };
