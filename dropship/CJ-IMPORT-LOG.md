@@ -2432,3 +2432,27 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
   (draften = potenzielle Hochmargen-Sales verlieren vs. behalten = gelegentliche grosse Refunds). NICHT auto-massen-gedraftet.
 - **Bestätigt gesund:** „Ohne SKU" (294) sind alt-kuratierte Bestseller (Slim Wallet 5.0★ etc.) — NICHT draften.
   Der Katalog braucht KEINE Massen-Chirurgie; das Refund-Leck war auf die schon-gedrafteten Hochpreis-Geräte begrenzt.
+
+### Session 2026-08-02b — «100 agent go» → Fulfillment-Fix + Storefront + E-Mail-Triage + GitLab-Fix
+- **Task A (Fulfillment):** 12 AC/Grossartikel gedraftet (User: „nur AC/Grossgeräte") — nur CN-Dropship (CJ-)
+  ≥150 CHF & sperrig: Faltbares Hundezelt 1354, Garten-Schaukel 593, Laufband 342, Luftkühler 336, 4× Zelt,
+  3× Hundesofa/Pet-Sofa. Tags nicht-lieferbar-ch-hochpreis/sperrig-cn-versand. **Fortura behalten** (zuverlässiger
+  Feed-Lieferant, wie die Kinder-Elektroautos), Bürostuhl/Piano/Perücke/Schweisswagen bleiben.
+- **⛔ NICHT gemacht (Super-GAU vermieden):** katalogweites CONTINUE→DENY (87,5% der 26k stehen so — für
+  Dropship KORREKT; DENY hätte alles unkaufbar gemacht). Siehe Nachtrag oben.
+- **Task D (Storefront-Conversion):** Startseiten-Position 1 (`product_list_schweiz`) zeigte den **veralteten
+  1.-August-Promo `erste-august`** (heute 2.8. = vorbei) → auf **`ventilatoren`** umgebogen (211 Prod, 30/30 aktiv,
+  erfüllbare Kühl-Accessoires: Clip-/Nacken-/Mini-Ventilatoren 6–18 CHF). Bewiesene Hitzewelle-Nachfrage, jetzt oben.
+  ⚠️ `klima-ventilatoren`/`ventilatoren-kuehlung`/`haustier-kuehlung` sind auf Storefront LEER (Top-40 alle DRAFT,
+  inkl. falsch einsortierter Noctua-PC-Gehäuselüfter) → NICHT featurebar; nur `ventilatoren` (211) ist sauber aktiv.
+  Backup /tmp/index_backup_20260802.json, JSON validiert, per assets.json geprüft (Cache hinkt nach). 25-Limit gewahrt.
+- **Task B (Pinterest-Feed):** Shopify-Seite GESUND (Produkte zum Pinterest-Kanal 302994456961 publiziert, Bilder da).
+  Feed-Fehler „CH, de" liegen auf **Pinterest-Seite** (Katalog-Ingestion) → nur User: Pinterest Business Hub →
+  Kataloge → Datenquelle → Fehler ansehen / erneut genehmigen.
+- **Task C (GitLab-CI):** Dauer-Fehlermails (cb8e1644 auf main) — Ursache: keine `workflow:`-Regel → GitLab legte
+  bei JEDEM Push eine Pipeline an, die am blockierenden Manual-Job `youtube-learn` (kein allow_failure) scheiterte.
+  Fix: `workflow: rules` unterbindet Push-Pipelines (schedule/web/manuell laufen weiter). **Muss nach `main` gemergt
+  werden, damit GitLab es zieht.**
+- **E-Mail-Triage (14 Tage):** Kein verlorener Kundenkontakt im Posteingang. Offen für User: Payoneer-Antrag
+  („final reminder"), Pinterest-Feed (s.o.), Google Merchant+Ads jetzt verknüpft (Gratis-Listings freischaltbar).
+  Zweiter Shop **PawStyle CH** aktiv (Shopify-Rechnung). Rest = Newsletter-Rauschen.
