@@ -2416,3 +2416,19 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
 - **🔒 GUARD-RULE (konsolidiert):** KEINE Hochpreis-/Grossgeräte (>~150 CHF: Klimageräte, Boote, Grossgeräte), die
   nicht zuverlässig per Dropship **in die Schweiz** lieferbar sind. Nachfrage nach Sommer-Kühlung ist real (3 CH-Käufe
   in der Hitzewelle) → mit **erfüllbaren günstigen Kühl-Accessoires** bedienen statt un-lieferbaren ACs.
+
+### Nachtrag 2026-08-02 — Katalog-weites Fulfillment-Audit (26'298 aktiv) + ⛔ Anti-Massen-DENY-Lektion
+- **Dump:** 26'298 ACTIVE Produkte (GraphQL-productsCount cappt bei 10k → real ~26k). Analyse `/tmp/active_catalog.jsonl`.
+- **⛔ WICHTIGSTE LEKTION (verhindert Super-GAU):** 23'004 (87,5%) stehen auf `inventoryPolicy=CONTINUE` + qty=0.
+  Das ist für einen **Dropship-Shop das KORREKTE Standard-Setting** (kein Eigenbestand, Lieferant versendet on-demand).
+  **Blind `DENY` setzen (naive Anwendung von GEHIRN-Regel #16, die für BigBuy-Bestandssync galt) würde den GANZEN
+  Shop unkaufbar machen → 0 Verkäufe.** NIEMALS katalogweit CONTINUE→DENY. Regel #16 gilt nur für Lieferanten MIT
+  echtem Bestandsfeed (BigBuy tracked:true), NICHT für CJ-On-Demand-Dropship.
+- **Echtes, eng begrenztes Risiko:** nicht die Policy, sondern **wenige Hochpreis-Artikel, deren CN-Lieferant nicht
+  zuverlässig in die CH liefert** (= Ursache #1006/#1007/#1008). 126 Artikel ≥150 CHF auf CONTINUE (bis 1354 CHF
+  Faltbares Hundezelt). Ein geplatzter Kauf kostet hier viel + CN-Fracht teurer Ware in die CH ist am unzuverlässigsten.
+- **Aktion:** „Industrieller Luftkühler" (336 CHF, id 15454472339841) → DRAFT (Tags nicht-lieferbar-ch/hochpreis-ac-risiko)
+  — gleiche AC-Kategorie wie die 2 erstatteten Klimageräte. Rest der ≥150-CHF-Hochpreis-Ware: **User-Entscheid**
+  (draften = potenzielle Hochmargen-Sales verlieren vs. behalten = gelegentliche grosse Refunds). NICHT auto-massen-gedraftet.
+- **Bestätigt gesund:** „Ohne SKU" (294) sind alt-kuratierte Bestseller (Slim Wallet 5.0★ etc.) — NICHT draften.
+  Der Katalog braucht KEINE Massen-Chirurgie; das Refund-Leck war auf die schon-gedrafteten Hochpreis-Geräte begrenzt.
