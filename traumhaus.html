@@ -480,7 +480,7 @@ var WORLD_POIS=[
   [-33,86,"🏛️","Altstadt"],[68,68,"🌳","Grosser Park"],[96,14,"⛲","Brunnen-Park"],
   [98,-30,"🛝","Spielplatz"],[0,102,"🚉","Bahnhof"],[26,67,"🏪","Marktplatz"],
   [96,-33,"🏰","Villen Ost"],[-96,18,"🏰","Villen West"],[10,139,"⛵","Seepark"],[-232,0,"🌊","Meer"],
-  [172,0,"🏢","Gewerbe Ost"],[0,216,"🏟️","Sportpark"],[60,330,"🎡","Freizeitpark"],[-190,212,"🎢","Achterbahn"]];
+  [172,0,"🏢","Gewerbe Ost"],[0,216,"🏟️","Sportpark"],[60,330,"🎡","Freizeitpark"],[-190,212,"🎢","Achterbahn"],[155,86,"🚡","Seilbahn"]];
 var WORLD_SOLIDS=[];
 /* Gitter-Index (16 m Zellen): inSolid lief linear ueber ALLE Kollider und wird pro
    Bewegungsschritt jedes Bewohners/Autos gerufen. Mit den Landschafts-Hindernissen
@@ -997,6 +997,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     window._eingefroren=n;}
   function _bewegtMarkieren(){
     [window._seeZug&&window._seeZug.g,window._coaster&&window._coaster.zug].forEach(function(o){if(o)o._bewegt=true;});
+    ((window._seilbahn||{}).gond||[]).forEach(function(g){if(g.w)g.w._bewegt=true;});
     (verkehr||[]).forEach(function(v){if(v.mesh)v.mesh._bewegt=true;});
     (window._wasser||[]).forEach(function(w){if(w.mesh)w.mesh._bewegt=true;});
     (fussg||[]).forEach(function(f){if(f.mesh)f.mesh._bewegt=true;});
@@ -1044,6 +1045,12 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
         if(m.opacity>=0.82){m.transparent=false;m.opacity=1;m.needsUpdate=true;n++;}});});
     window._opakGemacht=n;}
   function _spaetEinfrieren(){_bewegtMarkieren();_schattenSparen();_opakSchalten();_einfrieren();}
+  /* ⚠️ _einfrieren() setzt matrixAutoUpdate=false. Es laeuft 9 s nach dem Laden — also
+     VOR entzerren() (14 s) und entwirren() (15.5/32 s). Wer danach noch .position
+     aendert, verschiebt nur eine Zahl: die Weltmatrix wird nie neu gerechnet, das
+     Modell bleibt sichtbar stehen. Genau deshalb blieben die Ueberschneidungen trotz
+     Entzerrung bestehen. Jede spaete Verschiebung muss die Matrix selbst nachziehen. */
+  window._nachRuecken=function(o){o.updateMatrix();o.updateMatrixWorld(true);};
   if(document.readyState==="complete")setTimeout(_spaetEinfrieren,9000);
   else window.addEventListener("load",function(){setTimeout(_spaetEinfrieren,9000);});
   if(document.readyState==="complete")setTimeout(_streuStart,60);
@@ -1325,10 +1332,16 @@ var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_d
      Zubringer: x=±RX zwischen Querstrasse und Ring. */
   (function ringTrottoirs(){
     var RGZ_N=-100,RGZ_S=118,RGX=112;
-    [[RGZ_N,-105.6],[RGZ_N,-94.4],[RGZ_S,112.4],[RGZ_S,123.6]].forEach(function(P){
-      tr(2*RGX-8,2.0,0,P[1],0.052);});                   // Ring Nord/Sued — 0.002 hoeher: an den Ecken lagen zwei Gehwege exakt aufeinander
-    [[-RGX,-117.6],[-RGX,-106.4],[RGX,106.4],[RGX,117.6]].forEach(function(P){
-      tr(2.0,RGZ_S-RGZ_N-8,P[1],(RGZ_N+RGZ_S)/2,0.054);});// Ring West/Ost
+    /* Die Gehwege endeten 4 m VOR der Eckenmitte und lagen damit mitten auf der
+       Eck-Fahrbahn (User-Screenshot: heller Streifen quer durch den Kreis).
+       Jetzt laufen sie bis zur jeweils passenden Aussen-/Innenflucht durch, dort
+       treffen sich Laengs- und Querstueck sauber ueber Eck. */
+    var AUS=RGX+5.6, INN=RGX-5.6;                        // Gehwegfluchten links/rechts
+    tr(2*AUS,2.0,0,-105.6,0.052); tr(2*INN,2.0,0,-94.4,0.052);   // Ring Nord
+    tr(2*INN,2.0,0,112.4,0.052);  tr(2*AUS,2.0,0,123.6,0.052);   // Ring Sued
+    var zA0=RGZ_N-5.6, zA1=RGZ_S+5.6, zI0=RGZ_N+5.6, zI1=RGZ_S-5.6;
+    tr(2.0,zA1-zA0,-117.6,(zA0+zA1)/2,0.054); tr(2.0,zI1-zI0,-106.4,(zI0+zI1)/2,0.054); // Ring West
+    tr(2.0,zI1-zI0,106.4,(zI0+zI1)/2,0.054);  tr(2.0,zA1-zA0,117.6,(zA0+zA1)/2,0.054);  // Ring Ost
     [RX,-RX].forEach(function(xc){                        // Zubringer nach Norden und Sueden
       [xc-5.6,xc+5.6].forEach(function(xe){
         tr(2.0,Math.abs(RGZ_N+SZ9+23)-6,xe,(RGZ_N-(SZ9+23))/2,0.05);
@@ -1459,7 +1472,10 @@ var dorfFenster=[];
   strasseMesh(10,2*SZ+46,-RX,0);strasseMesh(10,2*SZ+46,RX,0); // laenger: aeussere Zebras+Haltelinien liegen auf Asphalt
   // ---- Aeussere Ringstrasse: bindet Downtown (N), Bahnhof (S), Villen (O/W) an ----
   (function ring(){
-    var RGZ_N=-100,RGZ_S=118,RGX=112,RLEN=2*RGX+10,RTIEF=2*Math.abs(RGZ_N)+2*RGZ_S;
+    /* RLEN war 2*RGX+10 — die Nord/Sued-Fahrbahn ragte damit 5 m ueber die Kurve
+       hinaus ins Gras. Sie endet jetzt exakt in der Eckenmitte; die Rundung macht
+       die Eckscheibe. */
+    var RGZ_N=-100,RGZ_S=118,RGX=112,RLEN=2*RGX,RTIEF=2*Math.abs(RGZ_N)+2*RGZ_S;
     strasseMesh(RLEN,9,0,RGZ_N);strasseMesh(RLEN,9,0,RGZ_S);
     strasseMesh(9,RGZ_S-RGZ_N,-RGX,(RGZ_N+RGZ_S)/2);strasseMesh(9,RGZ_S-RGZ_N,RGX,(RGZ_N+RGZ_S)/2);
     // Zubringer: Querstrassen-Enden an den Ring anschliessen
@@ -1469,10 +1485,18 @@ var dorfFenster=[];
     /* 🛣️ Die Ring-Segmente endeten als harte Kante im Gras/Sand — "Kreuzung, dann endet die
        Strasse" (User). Die vier Ecken bekommen jetzt eine ausgerundete Fahrbahn mit Bordstein,
        damit der Ring sichtbar geschlossen ist statt abzubrechen. */
+    /* ❗ Hier stand CircleGeometry(9) — das ist die Strassen BREITE, nicht der Radius.
+       Der Teller war damit doppelt so breit wie die Fahrbahn, fraß die Gehwege und lag
+       als schwarze Scheibe im Gras (User-Screenshot „strasse hier gefaellt mir nicht").
+       Die Fahrbahn ist 9 m breit, also 4.5 m Halbbreite — genau das ist der Eckradius. */
     [[-RGX,RGZ_N],[RGX,RGZ_N],[-RGX,RGZ_S],[RGX,RGZ_S]].forEach(function(E){
-      var eck=new THREE.Mesh(new THREE.CircleGeometry(9,22),strMatH.clone());
+      var eck=new THREE.Mesh(new THREE.CircleGeometry(4.5,24),strMatH.clone());
       eck.rotation.x=-Math.PI/2;eck.position.set(E[0],-0.0035,E[1]);eck.receiveShadow=true;scene.add(eck);
-      var bord=new THREE.Mesh(new THREE.RingGeometry(9,10.6,26),betMat(0xd0cdc4,0.9));
+      /* Bordstein nur im AUSSENbogen der Kurve — innen liegt die Fahrbahn weiter. */
+      var sx=E[0]>0?1:-1, sz=E[1]>0?1:-1;
+      /* RingGeometry liegt in XY; nach rotation.x=-90 gilt x=r*cos(t), z=-r*sin(t). */
+      var start=(sx>0?(sz>0?-Math.PI/2:0):(sz>0?Math.PI:Math.PI/2));
+      var bord=new THREE.Mesh(new THREE.RingGeometry(4.5,6.1,14,1,start,Math.PI/2),betMat(0xd0cdc4,0.9));
       bord.rotation.x=-Math.PI/2;bord.position.set(E[0],0.02,E[1]);bord.receiveShadow=true;scene.add(bord);});
     // Mittelstreifen auf dem Ring
     var rmat=stdMat(0xd8d8cc,0.75);rmat.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(rmat);
@@ -2932,6 +2956,123 @@ setTimeout(function baueGebaeude(){
       window._coaster={kurve:kurve,zug:zugG,t:0,v:0,CX:CX,CZ:CZ,faehrt:false,mit:false};
       addSolid(CX,CZ-22,13,6,{a:"z",at:CZ-19.2,c:CX,w:6});   /* Station solide, Zugang offen */
     })();
+    /* 🚡 SEILBAHN auf den Hausberg — die drei th26-Modelle (Station, Stuetze, Gondel)
+       lagen ungenutzt im Repo. Route und Hoehen sind aus der Bergkette oben gerechnet,
+       nicht geschaetzt: Berg Nr. 5 steht bei (121.5, 174.9), Grundradius 51.75, Hoehe 75,
+       Fussy = -6. Die Kegelflaeche liefert damit fuer jeden Punkt die Gelaendehoehe:
+         y(d) = -6 + 75 * (1 - d/51.75)
+       Die Bergstation sitzt bei d = 31 auf y = 24, die Talstation weit ausserhalb des
+       Kegels auf flachem Grund. Die Stuetzen stehen auf der so berechneten Hoehe,
+       damit keine in der Luft haengt oder im Hang steckt. */
+    (function seilbahn(){
+      var BX=121.5,BZ=174.9,BRAD=51.75,BHOCH=75,BFUSS=-6;
+      function bergH(x,z){                       // Gelaendehoehe auf dem Hausberg
+        var d=Math.hypot(x-BX,z-BZ);
+        if(d>=BRAD)return 0;
+        return Math.max(0,BFUSS+BHOCH*(1-d/BRAD));}
+      /* Der Kegel steigt mit 75 m auf 51.75 m Radius, also rund 55 Grad. Auf so einem
+         Hang schwebt JEDE grosszuegige Terrasse als Betonklotz ueber der Wiese (erste
+         Fassung, im Screenshot geprueft). Die Bergstation steht deshalb auf einer
+         Felsnase im Hangmaterial, und zwar weit oben: d = 20.3 -> Gelaende 39.6.
+         Die Talstation stand erst 64 m entfernt — bei 27 m langen Stationen berührten
+         sich die beiden fast (User: „seilbahnhaus weiter weg und oben").
+         Der Standort (228, 24) stammt aus einer Suche IM SPIEL ueber die ganze Karte:
+         geprueft wurden echte 3D-Kaesten aller 353 geladenen Modelle, wegVonStrasse()
+         und inSolid() fuer die 32 x 32 m Grundflaeche, dazu fuer JEDEN der fuenf
+         Stuetzenplaetze dasselbe. Innerhalb der Stadt gab es keinen einzigen freien
+         Platz dieser Groesse — die Station ist mit 17 x 27.5 m groesser als jedes
+         Wohnhaus. Ergebnis: 165 m Fahrstrecke von Osten ueber „Gewerbe Ost" hinweg
+         zur Bergstation auf 40 m Hoehe. */
+      var TAL={x:228,z:24},BERG={x:129,z:156};
+      var TALY=0,BERGY=40;                       // Bahnsteighoehen
+      var SEILH=8;                               // Seil haengt 8 m ueber dem Bahnsteig
+      var laenge=Math.hypot(BERG.x-TAL.x,BERG.z-TAL.z);
+      var qx=(BERG.z-TAL.z)/laenge,qz=-(BERG.x-TAL.x)/laenge;   // Querrichtung fuer Berg-/Talspur
+      var SPUR=2.6;                              // Abstand der beiden Seile
+      var winkel=Math.atan2(BERG.x-TAL.x,BERG.z-TAL.z);
+      function amSeil(t,spur){                   // Punkt auf dem Seil, t=0 Tal .. 1 Berg
+        var o=spur*SPUR/2;
+        return new THREE.Vector3(TAL.x+(BERG.x-TAL.x)*t+qx*o,
+                                 TALY+SEILH+(BERGY-TALY)*t,
+                                 TAL.z+(BERG.z-TAL.z)*t+qz*o);}
+      /* Felssockel im Kegelmaterial (0x7d7468, flatShading) — so liest sich der Unterbau
+         als Felsnase des Berges und nicht als freistehende Betonplatte. */
+      var felsSockelM=new THREE.MeshStandardMaterial({color:0x7d7468,roughness:1,flatShading:true,envMapIntensity:0.2});
+      /* Die Station ist 17 x 27 m gross (gemessen: Modell 20.6 x 11.5 x 33.3, auf 9.5 m
+         Hoehe skaliert) — der Sockel muss diese Grundflaeche wirklich tragen. */
+      var sock=new THREE.Mesh(new THREE.CylinderGeometry(15,21,BERGY+2,7),felsSockelM);
+      sock.position.set(BERG.x,BERGY-(BERGY+2)/2,BERG.z);sock.rotation.y=winkel;
+      sock.scale.z=1.5;                                   // laengs zur Bahn gestreckt
+      sock.receiveShadow=true;sock.castShadow=true;scene.add(sock);
+      var gel=new THREE.Mesh(new THREE.BoxGeometry(24,0.3,34),stdMat(0x8f9aa6,0.8));
+      gel.position.set(BERG.x,BERGY+0.15,BERG.z);gel.rotation.y=winkel;
+      gel.receiveShadow=true;scene.add(gel);
+      /* Gelaender rundum — sonst wirkt die Aussichtsplattform ungesichert */
+      var glM=new THREE.MeshStandardMaterial({color:0x6f7883,roughness:0.5,metalness:0.5});
+      for(var gi=0;gi<22;gi++){
+        var gu=gi/22*Math.PI*2;
+        var glx=Math.cos(gu)*9,glz=Math.sin(gu)*7;
+        var wx=BERG.x+glx*Math.cos(winkel)+glz*Math.sin(winkel);
+        var wz=BERG.z-glx*Math.sin(winkel)+glz*Math.cos(winkel);
+        var po=new THREE.Mesh(new THREE.CylinderGeometry(0.07,0.07,1.1,5),glM);
+        po.position.set(wx,BERGY+0.85,wz);scene.add(po);}
+      /* Stationen */
+      var talG=null;
+      bau("th26_seilbahn_station.glb",9.5,TAL.x,TALY,TAL.z,winkel,false,function(w){
+        talG=w;w.userData.fest=1;FAHRTEN.push({typ:"seilbahn",w:w,name:"th26_seilbahn_station.glb"});},true);
+      bau("th26_seilbahn_station.glb",9.5,BERG.x,BERGY+0.3,BERG.z,winkel+Math.PI,false,
+        function(w){w.userData.fest=1;},true);
+      /* Stuetzen auf gerechneter Gelaendehoehe, jede genau unter dem Seil */
+      var seilM=new THREE.MeshStandardMaterial({color:0x3c4148,roughness:0.5,metalness:0.6});
+      /* Stuetzenpunkte aus derselben Suche: alle fuenf stehen auf freiem Grund und
+         nicht auf Fahrbahn oder Trottoir. */
+      [0.2,0.42,0.62,0.78,0.9].forEach(function(t){
+        var m=amSeil(t,0),gy=bergH(m.x,m.z);
+        bau("th26_seilbahn_stuetze.glb",Math.max(6,m.y-gy),m.x,gy,m.z,winkel,false,
+          /* bau() skaliert gleichmaessig ueber die Hoehe — bei 15 m Mast wird der
+             Schaft dadurch klobig. Quer schlanker ziehen. */
+          function(w,root){root.scale.x*=0.45;root.scale.z*=0.45;w.userData.fest=1;},true);});
+      /* Trag- und Zugseil als duenne Tubes, je Spur eines */
+      [-1,1].forEach(function(sp){
+        var k=new THREE.CatmullRomCurve3([amSeil(0,sp),amSeil(0.5,sp),amSeil(1,sp)]);
+        var t2=new THREE.Mesh(new THREE.TubeGeometry(k,24,0.07,5,false),seilM);
+        scene.add(t2);});
+      /* Gondeln: 4 Stueck, zwei je Richtung, laufen dauernd */
+      var gond=[];
+      for(var i=0;i<4;i++){(function(i){
+        var spur=i<2?1:-1,t0=(i%2)*0.5;
+        bau("th26_seilbahn_gondel.glb",3.2,0,0,0,0,false,function(w){
+          w.userData.fest=1;
+          /* Gleich auf das Seil setzen: bis zum ersten updSeilbahn() lagen sonst alle
+             vier Gondeln uebereinander im Nullpunkt — das meldete die Ueberschneidungs-
+             Pruefung voellig zu Recht als Fehler. */
+          var u0=spur>0?t0:1-t0, of0=spur*SPUR/2;
+          w.position.set(TAL.x+(BERG.x-TAL.x)*u0+qx*of0,
+                         TALY+SEILH-3.2+(BERGY-TALY)*u0,
+                         TAL.z+(BERG.z-TAL.z)*u0+qz*of0);
+          w.rotation.y=winkel;
+          gond.push({w:w,spur:spur,t:t0});},true);})(i);}
+      /* Bergstation ohne Ziel waere eine Fahrt ins Nichts — oben stehen Huette,
+         Gipfelkreuz und Felsen (ebenfalls th26, ebenfalls bisher ungenutzt). */
+      function aufTerrasse(lx,lz){
+        return [BERG.x+lx*Math.cos(winkel)+lz*Math.sin(winkel),
+                BERG.z-lx*Math.sin(winkel)+lz*Math.cos(winkel)];}
+      var pH=aufTerrasse(-6.5,-4);  bau("th26_berghuette.glb",4.4,pH[0],BERGY,pH[1],winkel+0.5,false,null,true);
+      var pK=aufTerrasse(7,-4);     bau("th26_gipfelkreuz.glb",4.2,pK[0],BERGY,pK[1],0,false,null,true);
+      var pF=aufTerrasse(7.5,4.5);  bau("th26_felsformation.glb",2.8,pF[0],BERGY,pF[1],1.1,false,null,true);
+      var pF2=aufTerrasse(-7,5);    bau("th26_felsformation.glb",2.2,pF2[0],BERGY,pF2[1],2.4,false,null,true);
+      window._seilbahn={tal:TAL,berg:BERG,taly:TALY,bergy:BERGY,seilh:SEILH,
+                        qx:qx,qz:qz,spur:SPUR,winkel:winkel,gond:gond,laenge:laenge};
+      /* GEMESSENE Grundflaeche statt geschaetzter: das Modell ist 20.6 x 11.5 x 33.3 und
+         wird auf 9.5 m Hoehe skaliert -> 17 x 27.5 m. Der alte 12 x 10-Kollider deckte
+         nur ein Viertel davon ab, deshalb standen Baeume und Laternen mitten im Haus
+         (User: „viele stl ueberkreuzung"). Beide Stationen sind begehbar, also bleibt
+         auf der Laengsseite eine 6 m breite Tuerluecke. */
+      var aw=Math.abs(17*Math.cos(winkel))+Math.abs(27.5*Math.sin(winkel));   // achsenparallele Huelle
+      var ad=Math.abs(17*Math.sin(winkel))+Math.abs(27.5*Math.cos(winkel));
+      addSolid(TAL.x,TAL.z,aw,ad,{a:"x",at:TAL.x-aw/2,c:TAL.z,w:6});
+      addSolid(BERG.x,BERG.z,42,50);   /* Fuss der Felsnase — nicht hineinlaufen */
+    })();
     /* 🔧 Nach dem Laden aller Modelle: echte Masse messen und die Reihen entzerren.
        Damit gibt es auch dann keine Ueberschneidung, wenn ein Modell groesser ausfaellt
        als im cfg angenommen — das gilt genauso fuer jeden neuen STL-Schwung. */
@@ -2951,7 +3092,7 @@ setTimeout(function baueGebaeude(){
             var min=bb.min[achse],max=bb.max[achse],breite=max-min;
             if(kante!==null&&min<kante+LUECKE){
               var schub=(kante+LUECKE)-min;
-              b.w.position[achse]+=schub;
+              b.w.position[achse]+=schub;window._nachRuecken(b.w);
               max+=schub;}
             kante=max;});
           /* Quer zur Strasse: breite Modelle ragen sonst ueber die Fahrbahn in die
@@ -2962,9 +3103,98 @@ setTimeout(function baueGebaeude(){
             var bb=new THREE.Box3().setFromObject(b.w);
             var ik=seite>0?bb.min[quer]-mitte:mitte-bb.max[quer];
             if(ik<innen)noetig=Math.max(noetig,innen-ik);});
-          if(noetig>0)reihe.forEach(function(b){b.w.position[quer]+=seite*noetig;});});});
+          if(noetig>0)reihe.forEach(function(b){
+            b.w.position[quer]+=seite*noetig;window._nachRuecken(b.w);});});});
       window._entzerrt=1;
     },14000);
+    /* 🧩 GLOBALER ENTWIRRER (User: „viele stl ueberkreuzung? passe es an?").
+       entzerren() oben raeumt nur INNERHALB eines Viertels auf. Gemessen blieben
+       trotzdem 49 Paare uebrig, die sich in echten 3D-Kaesten schneiden — vor allem
+       in den handgesetzten Hauszeilen bei z = ±70..82, wo Baeume, Buden und Haeuser
+       aus verschiedenen Bauabschnitten aufeinandertreffen.
+       Regeln, damit das Verschieben nicht neue Fehler baut:
+         * es weicht immer das KLEINERE Objekt aus (die Landmarke bleibt stehen),
+         * geschoben wird entlang der Achse mit der GERINGSTEN Ueberlappung,
+         * hoechstens 9 m, und
+         * das Ziel muss wegVonStrasse() unveraendert lassen — sonst landet das
+           Objekt auf Fahrbahn oder Trottoir, und genau das war der alte Fehler.
+       Wer nicht regelkonform ausweichen kann, bleibt lieber stehen. */
+    function entwirren(){
+      /* 🧩 GLOBALER ENTWIRRER (User: „viele stl ueberkreuzung? passe es an?").
+         entzerren() oben raeumt nur INNERHALB eines Viertels auf. Gemessen blieben
+         trotzdem 49 Paare uebrig, die sich in echten 3D-Kaesten schneiden — vor allem
+         in den handgesetzten Hauszeilen bei z = ±70..82, wo Baeume, Buden und Haeuser
+         aus verschiedenen Bauabschnitten aufeinandertreffen.
+         Wichtig ist, WIE verschoben wird. Die erste Fassung schob einfach entlang der
+         Achse mit der kleinsten Ueberlappung — sie bewegte 74 Objekte und senkte die
+         Zahl der Ueberschneidungen von 49 auf 48, weil jeder Schub das Objekt ins
+         naechste Modell druckte. Jetzt wird jeder Kandidatenplatz VORHER geprueft:
+           * er muss frei von ALLEN anderen Modellen in der Nachbarschaft sein,
+           * wegVonStrasse() darf ihn nicht verschieben (also weder Fahrbahn noch
+             Trottoir), und
+           * er darf hoechstens 10 m entfernt liegen.
+         Findet sich kein solcher Platz, bleibt das Objekt stehen — lieber eine
+         bekannte Ueberschneidung als ein Baum mitten auf der Kreuzung.
+         Verschoben wird immer das kleinere Objekt; userData.fest schuetzt alles,
+         dessen Position Mechanik traegt (Seilbahnstuetzen haengen am Seil). */
+      var G=window._gebaeude||[],E=[];
+      G.forEach(function(w){
+        var b=new THREE.Box3().setFromObject(w);
+        if(!isFinite(b.min.x))return;
+        E.push({w:w,b:b,fest:!!(w.userData&&w.userData.fest),
+                v:(b.max.x-b.min.x)*(b.max.z-b.min.z)});});
+      function schneidet(a,b){
+        return Math.min(a.max.x,b.max.x)-Math.max(a.min.x,b.min.x)>1.2&&
+               Math.min(a.max.z,b.max.z)-Math.max(a.min.z,b.min.z)>1.2&&
+               Math.min(a.max.y,b.max.y)-Math.max(a.min.y,b.min.y)>1.2;}
+      function paare(){
+        var p=[];
+        for(var i=0;i<E.length;i++)for(var j=i+1;j<E.length;j++)
+          if(schneidet(E[i].b,E[j].b))p.push([E[i],E[j]]);
+        return p;}
+      var bewegt=0,offen=0,vorher=paare().length;
+      var RI=[[1,0],[-1,0],[0,1],[0,-1],[0.7,0.7],[-0.7,0.7],[0.7,-0.7],[-0.7,-0.7]];
+      for(var runde=0;runde<5;runde++){
+        var P=paare();
+        if(!P.length)break;
+        for(var k=0;k<P.length;k++){
+          var A=P[k][0],B=P[k][1];
+          if(A.fest&&B.fest){continue;}
+          if(!schneidet(A.b,B.b))continue;           // schon durch einen frueheren Schub geloest
+          /* Erst das kleinere Objekt ausweichen lassen; findet es keinen Platz,
+             darf auch das groessere ruecken. Sonst bleiben Paare stehen, bei denen
+             der Kleine eingekeilt ist. */
+          var reihenfolge=A.fest?[B]:(B.fest?[A]:(A.v<=B.v?[A,B]:[B,A]));
+          var gefunden=false;
+          for(var o=0;o<reihenfolge.length&&!gefunden;o++){
+            var kand=reihenfolge[o];
+            for(var d=2;d<=14&&!gefunden;d+=2){
+              for(var r=0;r<RI.length&&!gefunden;r++){
+                var nx=kand.w.position.x+RI[r][0]*d, nz=kand.w.position.z+RI[r][1]*d;
+                var q=wegVonStrasse(nx,nz);
+                if(Math.hypot(q[0]-nx,q[1]-nz)>0.01)continue;      // Fahrbahn/Trottoir
+                var nb=kand.b.clone();
+                nb.translate(new THREE.Vector3(nx-kand.w.position.x,0,nz-kand.w.position.z));
+                var frei=true;
+                for(var m=0;m<E.length&&frei;m++){
+                  if(E[m]===kand)continue;
+                  if(Math.abs(E[m].w.position.x-nx)>60||Math.abs(E[m].w.position.z-nz)>60)continue;
+                  if(schneidet(nb,E[m].b))frei=false;}
+                if(!frei)continue;
+                kand.w.position.x=nx;kand.w.position.z=nz;kand.b=nb;
+                window._nachRuecken(kand.w);
+                bewegt++;gefunden=true;}}}
+          if(!gefunden)offen++;}}
+      var w2=window._entwirrt||{vorher:vorher,bewegt:0,ohnePlatz:0};
+      window._entwirrt={vorher:w2.vorher,nachher:paare().length,
+                        bewegt:w2.bewegt+bewegt,ohnePlatz:offen,laeufe:(w2.laeufe||0)+1};
+    }
+    /* Die GLB-Dateien laden asynchron: nach 15 s waren erst rund 250 der 353 Modelle
+       da, der Rest kam danach und brachte neue Ueberschneidungen mit. Der Entwirrer
+       laeuft deshalb zweimal — einmal frueh fuer den sichtbaren Kern, einmal spaet,
+       wenn wirklich alles geladen ist. Der zweite Lauf ist idempotent. */
+    setTimeout(entwirren,15500);
+    setTimeout(entwirren,32000);
   },260);
   /* Die alte Stadt-Scheune ist raus: eine Scheune zwischen Ringstrasse und Hochhaeusern
      ergibt kein stimmiges Bild. Der Hof steht jetzt draussen auf dem Feld. */
@@ -5246,8 +5476,29 @@ var FAHRT_ART={
       return {x:o.x+Math.cos(a)*9.4, z:o.z+Math.sin(a*1.4)*7.2, y:y};}},
   geisterbahn:{dauer:24, nah:13, text:"👻 Geisterbahn fahren",
     bahn:function(t,o){var a=t*Math.PI*2;
-      return {x:o.x+Math.cos(a)*6.4+Math.sin(a*3)*1.8, z:o.z+Math.sin(a)*5.2, y:1.5};}}
+      return {x:o.x+Math.cos(a)*6.4+Math.sin(a*3)*1.8, z:o.z+Math.sin(a)*5.2, y:1.5};}},
+  /* 🚡 Seilbahn: Rundfahrt Tal -> Berg -> Tal. Die Bergspur liegt seitlich versetzt,
+     deshalb wechselt bei t=0.5 die Spur — wie bei einer echten Pendelbahn. */
+  seilbahn:{dauer:46, nah:11, text:"🚡 Seilbahn auf den Berg",
+    bahn:function(t,o){
+      var S=window._seilbahn;if(!S)return {x:o.x,z:o.z,y:1};
+      var u=t<0.46?t/0.46:(t<0.54?1:1-(t-0.54)/0.46);
+      var off=(t<0.5?1:-1)*S.spur/2;
+      return {x:S.tal.x+(S.berg.x-S.tal.x)*u+S.qx*off,
+              z:S.tal.z+(S.berg.z-S.tal.z)*u+S.qz*off,
+              y:S.taly+S.seilh-1.7+(S.bergy-S.taly)*u};}}
 };
+/* Die Gondeln fahren immer, auch ohne Fahrgast — sonst wirkt die Bahn tot. */
+function updSeilbahn(dt){
+  var S=window._seilbahn;if(!S||!S.gond.length)return;
+  for(var i=0;i<S.gond.length;i++){
+    var g=S.gond[i];
+    g.t+=dt/34;if(g.t>1)g.t-=1;
+    var u=g.spur>0?g.t:1-g.t, off=g.spur*S.spur/2;
+    g.w.position.set(S.tal.x+(S.berg.x-S.tal.x)*u+S.qx*off,
+                     S.taly+S.seilh-3.2+(S.bergy-S.taly)*u,   /* Modell haengt unter dem Seil */
+                     S.tal.z+(S.berg.z-S.tal.z)*u+S.qz*off);
+    g.w.rotation.y=S.winkel;}}
 function fahrtNah(){
   var p=spielerPos(),best=null,bd=1e9;
   for(var i=0;i<FAHRTEN.length;i++){
@@ -6272,7 +6523,7 @@ function loop(now){
     if(Math.abs(camRT-camR)>0.02){camR+=(camRT-camR)*Math.min(1,dt*8);
       if(Math.abs(camRT-camR)<=0.02)camR=camRT;updCam();}
     updFollow(dt);updMinimap(dt);updLampPool(dt);updCoaster(dt,now);coasterBtnUpd();
-    updFahrt(dt);fahrtBtnUpd();npcBtnUpd();updCoup(dt);coupBtnUpd();
+    updFahrt(dt);updSeilbahn(dt);fahrtBtnUpd();npcBtnUpd();updCoup(dt);coupBtnUpd();
     sims.forEach(function(s,si){updSim(s,si,dt,now);});
     for(var ki=0;ki<kinder.length;ki++)updKind(kinder[ki],dt,now);
     updHund(dt,now);
