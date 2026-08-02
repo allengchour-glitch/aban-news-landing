@@ -289,6 +289,8 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
       </details>
       <button class="btn ghost" id="netHostPubBtn" style="display:none" title="Raum ohne Code — jeder kann beitreten">🌍 Offener Raum</button>
       <button class="btn ghost" id="netJoinPubBtn" style="display:none" title="Offenem Raum ohne Code beitreten">🌍 Offen beitreten</button>
+      <button class="btn ghost" id="netSucheBtn" style="margin-top:0" title="Offene Räume suchen und mit einem Tipp beitreten">🔎 Räume suchen</button>
+      <div id="netListe" style="flex-basis:100%;display:none;text-align:left;max-width:400px;margin:6px auto 0"></div>
       <div id="netStatus" style="flex-basis:100%;min-height:1.15em;font-size:.82rem;font-weight:700;color:#7a8a9a"></div>
     </div>
     <div id="netLobby" style="display:none;margin-top:8px">
@@ -3525,14 +3527,18 @@ function netTryReconnect(){ // Gast: mit Backoff neu zum Host verbinden und Snap
       setTimeout(function(){if(!settled&&NET.on&&!(c&&c.open))netTryReconnect();},Math.min(6000,delay+3000)); // Versuch lief ins Leere -> nächster Backoff
     }catch(e){netTryReconnect();}
   },delay);}
-function netHostReset(){try{voiceStop();}catch(e){}NET.host=false;NET.pubWanted=false;NET._brkAuto=false;NET._autoShare=false; /* 🩹 Schwarm-P2/P3: Auto-Failover-Budget + Share-Flag freigeben — sonst nur 1 Failover pro Seiten-Load / verspätetes Share-Sheet */try{if(NET.peer)NET.peer.destroy();}catch(e){}NET.peer=null;NET.conns=[];NET.names=[];NET.cfgs=[];NET.ready=[];
+function netHostReset(){try{voiceStop();}catch(e){}NET.host=false;NET.pubWanted=false;NET.pubCode=null;NET._brkAuto=false;NET._autoShare=false; /* 🩹 Schwarm-P2/P3: Auto-Failover-Budget + Share-Flag freigeben — sonst nur 1 Failover pro Seiten-Load / verspätetes Share-Sheet */try{if(NET.peer)NET.peer.destroy();}catch(e){}NET.peer=null;NET.conns=[];NET.names=[];NET.cfgs=[];NET.ready=[];
   clearTimeout(NET._tmo);
   var b=document.getElementById("netHostBtn");if(b){b.disabled=false;b.textContent="Raum erstellen";}
   var j=document.getElementById("netJoinBtn");if(j)j.disabled=false;
   document.getElementById("chatToggle").style.display="none";
   document.getElementById("netSetup").style.display="flex";document.getElementById("netLobby").style.display="none";}
 function netHostBoot(){ // ID-Kollision (unavailable-id) -> neuen Code würfeln + retry (bis 3×)
-  if(NET.pubWanted){NET.code="OFEN";} // 🌍 Offener Raum: fester Code, jeder kann ohne Code beitreten
+  /* 🌍 Offener Raum. Frueher war das GENAU EIN Code ("OFEN") — es konnte also nie
+     mehr als einen oeffentlichen Raum geben, und ein Raum-Browser haette immer nur
+     denselben gefunden. Jetzt gibt es einen Vorrat (LP_PUBLIC); ist einer belegt,
+     rutscht der Host auf den naechsten. */
+  if(NET.pubWanted){NET.code=NET.pubCode||LP_PUBLIC[0];}
   else{NET.code="";var A="ABCDEFGHJKLMNPQRSTUVWXYZ";for(var i=0;i<4;i++)NET.code+=A[(Math.random()*A.length)|0];}
   try{NET.peer=new Peer(netRoomId(NET.code),peerCfg());}catch(e){netStatus("Online-Modul-Fehler — Seite neu laden.","#e05a5a");netHostReset();return;}
   clearTimeout(NET._tmo);
@@ -3550,9 +3556,19 @@ function netHostBoot(){ // ID-Kollision (unavailable-id) -> neuen Code würfeln 
   NET.peer.on("call",voiceAnswer); /* 🎙️ eingehende Voice-Anrufe annehmen */
   NET.peer.on("disconnected",function(){try{NET.peer.reconnect();}catch(e){}}); // Signaling-Abriss -> reconnect
   NET.peer.on("error",function(e){var t=e&&e.type;
-    if(t==="unavailable-id"&&NET.pubWanted){netStatus("🌍 Offener Raum existiert schon — ich trete automatisch bei …","#2a7d46"); // Quick-Play-Rennen: statt Sackgasse automatisch dem Sieger-Raum beitreten
+    if(t==="unavailable-id"&&NET.pubWanted){
+      /* Belegt: erst den naechsten freien oeffentlichen Code probieren, statt sofort
+         dem einen Raum beizutreten — so entstehen mehrere parallele Runden. */
+      var pi=LP_PUBLIC.indexOf(NET.code);
+      if(pi>=0&&pi+1<LP_PUBLIC.length){
+        var naechst=LP_PUBLIC[pi+1];
+        netStatus("🌍 Raum "+NET.code+" ist belegt — versuche "+naechst+" …","#2a7d46");
+        try{NET.peer.destroy();}catch(_){}NET.peer=null;NET.pubCode=naechst;
+        setTimeout(netHostBoot,250);return;}
+      netStatus("🌍 Alle offenen Räume belegt — ich trete automatisch bei …","#2a7d46");
+      var zielCode=NET.code;
       netHostReset();NET.quick=true; // quick=true: falls der Sieger-Raum doch weg ist, öffne ich selbst einen
-      setTimeout(function(){document.getElementById("netCode").value="OFEN";document.getElementById("netJoinBtn").click();},350);return;}
+      setTimeout(function(){document.getElementById("netCode").value=zielCode;document.getElementById("netJoinBtn").click();},350);return;}
     if(t==="unavailable-id"&&NET._tries<3){NET._tries++;try{NET.peer.destroy();}catch(_){}netHostBoot();return;}
     if(NET.peer&&NET.peer._opened)return; // Verbindung steht schon — Fehler nicht fatal
     clearTimeout(NET._tmo);
@@ -3569,6 +3585,13 @@ function netHostBoot(){ // ID-Kollision (unavailable-id) -> neuen Code würfeln 
   NET.peer.on("connection",function(c){
     NET.conns.push(c); // erst annehmen — 'hallo' (Neuzugang) vs. 'rejoin' (Wiedereintritt) entscheidet der Datenkanal
     c.on("data",function(d){try{var m=JSON.parse(d);}catch(e){return;}
+      /* 🔎 Anfrage des Raum-Browsers. Antwortet mit Hostname und Spielerzahl und
+         legt KEINEN Spieler an — dafuer ist weiter unten "hallo" zustaendig.
+         Ohne diese Antwort bleibt der Raum in der Suche unsichtbar. */
+      if(m.t==="__lobby?"){
+        try{c.send(JSON.stringify({t:"__lobby",n:NET.names[0]||"Host",
+          p:NET.names.length,voll:!!(NET.started||NET.names.length>=4)}));}catch(e){}
+        return;}
       if(m.t==="hallo"){
         if(NET.started||(G&&running)||NET.names.length>=4){ // Raum voll oder Spiel läuft -> Neuzugang ablehnen
           try{c.send(JSON.stringify({t:"full"}));}catch(e){}
@@ -3613,6 +3636,61 @@ function netHostBoot(){ // ID-Kollision (unavailable-id) -> neuen Code würfeln 
       netConnInfo();netPlayersUpd();});
   });
 }
+/* ═══════════ 🔎 RAUM-BROWSER (User: „lebenspfad auch coop online server joinen") ═══
+   PeerJS kennt keine Raumliste. Gesucht wird deshalb in einem festen Vorrat
+   oeffentlicher Raum-Codes, den alle Clients kennen. Jeder Code wird kurz
+   angewaehlt, mit "__lobby?" gefragt und sofort wieder getrennt — der Host legt
+   dabei keinen Spieler an. Volle oder laufende Raeume melden voll:true und
+   erscheinen ausgegraut statt zu verschwinden, damit man sieht, dass dort etwas
+   los ist. */
+var LP_PUBLIC=["OFEN","OFAA","OFAB","OFAC","OFAD"];
+function netSuche(){
+  if(typeof Peer==="undefined"){netStatus("Online-Modul nicht geladen — Seite neu laden.","#e05a5a");return;}
+  if(NET.peer){netStatus("Erst den aktuellen Raum verlassen.","#e05a5a");return;}
+  var box=document.getElementById("netListe");box.style.display="block";
+  box.innerHTML="<div style='color:#7a8a9a;font-size:.85rem'>🔎 Suche offene Räume … (bis 5 s)</div>";
+  var gefunden=[],offen=LP_PUBLIC.length,peers=[];
+  function zeichne(){
+    var frei=gefunden.filter(function(r){return !r.voll;});
+    if(!gefunden.length){
+      box.innerHTML="<div style='color:#7a8a9a;font-size:.85rem;margin-bottom:6px'>Kein offener Raum gefunden.</div>"+
+        "<button class='btn ghost' id='lpPubHost' style='margin-top:0;font-size:.88rem;padding:8px 16px'>➕ Öffentlichen Raum eröffnen</button>";
+      var b=document.getElementById("lpPubHost");
+      if(b)b.onclick=function(){document.getElementById("netHostPubBtn").click();};
+      return;}
+    box.innerHTML="<div style='font-weight:800;color:#2a6ab0;font-size:.9rem;margin-bottom:6px'>Offene Räume:</div>"+
+      gefunden.map(function(r,i){
+        return "<button class='btn ghost' data-i='"+i+"'"+(r.voll?" disabled":"")+
+          " style='display:block;width:100%;margin:0 0 6px;font-size:.9rem;padding:9px 14px;text-align:left"+
+          (r.voll?";opacity:.45":"")+"'>🎮 "+String(r.name).replace(/[<>&]/g,"")+
+          " · Raum "+r.code+" · "+r.spieler+"/4"+(r.voll?" (läuft)":"")+"</button>";}).join("");
+    Array.prototype.forEach.call(box.querySelectorAll("button[data-i]"),function(b){
+      b.onclick=function(){
+        var r=gefunden[+b.getAttribute("data-i")];
+        box.style.display="none";
+        document.getElementById("netCode").value=r.code;
+        document.getElementById("netJoinBtn").click();};});}
+  LP_PUBLIC.forEach(function(code){
+    var pr=null,fertig=false,t=null;
+    function schluss(info){
+      if(fertig)return;fertig=true;
+      if(t)clearTimeout(t);
+      try{if(pr)pr.destroy();}catch(e){}
+      if(info)gefunden.push(info);
+      if(--offen<=0||info)zeichne();}
+    try{pr=new Peer(undefined,peerCfg());}catch(e){schluss(null);return;}
+    peers.push(pr);
+    t=setTimeout(function(){schluss(null);},5000);
+    pr.on("error",function(){schluss(null);});
+    pr.on("open",function(){
+      var c;try{c=pr.connect(netRoomId(code),{reliable:true});}catch(e){schluss(null);return;}
+      if(!c){schluss(null);return;}
+      c.on("open",function(){try{c.send(JSON.stringify({t:"__lobby?"}));}catch(e){}});
+      c.on("data",function(d){var m;try{m=JSON.parse(d);}catch(e){return;}
+        if(m&&m.t==="__lobby")schluss({code:code,name:m.n||"?",spieler:m.p||1,voll:!!m.voll});});
+      c.on("error",function(){schluss(null);});
+      c.on("close",function(){schluss(null);});});});}
+document.getElementById("netSucheBtn").onclick=netSuche;
 document.getElementById("netHostBtn").onclick=function(){
   if(typeof Peer==="undefined"){netStatus("Online-Modul nicht geladen — Seite neu laden.","#e05a5a");return;}
   if(NET.peer)return; // Doppelklick-Schutz
