@@ -2400,3 +2400,19 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
 - Showcase neu: House-Version gelöscht (8GtRvhID50U), Premium-Version → youtube.com/shorts/nuqGBole9HY.
 - MERKER: LuxeStyle-Marken-Videos = luxe-premium (elegant) als Default für YouTube/Marken; luxe-hype-pro
   nur für schnelle Produkt-Cuts. NIE die generischen luxe-house/hype1-3.
+
+## Session 2026-08-02 — Live-Order-Audit + Fulfillment-Guard verifiziert (Shopify REST/GraphQL)
+- **Umgebung:** Container gewiped; lokaler Checkout lag auf veralteter/vermischter Spiele-Historie (Ledger 7588),
+  während der **echte Branch-Stand auf origin bei 21515 lief** (andere Umgebung pusht CJ-Ledger-auto). Lokal auf
+  origin zurückgesetzt. Shopify-Client-Credentials neu geliefert → Live-Zugriff (Token `/tmp/cj_shop_token.json`).
+  **CJ_EMAIL/CJ_API_KEY hier nicht gesetzt** → kein eigener Import-Lauf; Ledger wächst über die andere Umgebung.
+- **🧾 Order-Audit (alle 8 Orders #1003–#1010, live):** PAID behalten **nur 2** (#1004 31.90 + #1005 41.90 = 73.80).
+  REFUNDED 5 (955.42) — davon **2 eigene Tests** (alleng0@hotmail.com) + **3 echte Kunden**, alle wegen
+  Un-Lieferbarkeit erstattet: #1006 Léa/Lausanne 426.51 (Olimpia-Klima, ausverkauft), #1007 Suchthilfe Ost
+  (Organisation) 265.90 (BEKO-Klima, **nicht in CH lieferbar**), #1008 Melanie/Zürich 177.21 (Intex-Boot, ausverkauft).
+- **✅ VERIFIZIERT (neu 2026-08-02):** Cleanup vollständig — die 3 Problem-Produkte sind DRAFT (inv=-1); Katalog-Scan
+  zeigt **0 aktive Produkte über 150 CHF**; noch aktive „Klima"-Artikel sind alle billige lieferbare Accessoires
+  (USB-Ventilator 22.90, Kühldecke 28.90, Klima-Fernbedienung 4.90, klimat. Haustierbett 18.90). Erfüllungs-Bomben weg.
+- **🔒 GUARD-RULE (konsolidiert):** KEINE Hochpreis-/Grossgeräte (>~150 CHF: Klimageräte, Boote, Grossgeräte), die
+  nicht zuverlässig per Dropship **in die Schweiz** lieferbar sind. Nachfrage nach Sommer-Kühlung ist real (3 CH-Käufe
+  in der Hitzewelle) → mit **erfüllbaren günstigen Kühl-Accessoires** bedienen statt un-lieferbaren ACs.
