@@ -400,11 +400,19 @@ function _bumpBasis(){
   for(var i=0;i<5200;i++){var v=(Math.random()*90)|0;        /* koerniger Putz */
     c.fillStyle="rgba("+(128+v-45)+","+(128+v-45)+","+(128+v-45)+",0.55)";
     c.fillRect(Math.random()*N,Math.random()*N,2,2);}
-  c.strokeStyle="rgba(60,60,60,0.30)";c.lineWidth=1.4;       /* Abzugslinien der Kelle */
-  for(var y=0;y<N;y+=9){var jy=y+((Math.random()*3)|0);
-    c.beginPath();c.moveTo(0,jy);c.lineTo(N,jy);c.stroke();}
-  c.strokeStyle="rgba(200,200,200,0.22)";
-  for(var y2=2;y2<N;y2+=9){c.beginPath();c.moveTo(0,y2);c.lineTo(N,y2);c.stroke();}
+  /* ⚠️ KEINE regelmaessigen Linien. Die erste Fassung hatte alle 9 px eine
+     "Kellen-Abzugslinie" — gekachelt ergab das rund 35 gleichmaessige Querstreifen
+     ueber die Wand. Putz braucht KORN und weiche Flecken, keine Geraden. */
+  for(var j=0;j<2600;j++){var w=(Math.random()*70)|0;       /* zweite, groebere Koernung */
+    c.fillStyle="rgba("+(128+w-35)+","+(128+w-35)+","+(128+w-35)+",0.35)";
+    c.fillRect(Math.random()*N,Math.random()*N,3,3);}
+  for(var k=0;k<30;k++){                                     /* weiche Unebenheiten */
+    var gx=Math.random()*N,gy=Math.random()*N,gr=6+Math.random()*16;
+    var g=c.createRadialGradient(gx,gy,1,gx,gy,gr);
+    var hell=Math.random()<0.5;
+    g.addColorStop(0,hell?"rgba(190,190,190,0.16)":"rgba(70,70,70,0.16)");
+    g.addColorStop(1,"rgba(128,128,128,0)");
+    c.fillStyle=g;c.beginPath();c.arc(gx,gy,gr,0,6.283);c.fill();}
   _bumpPutz=cv;return cv;}
 function putzBump(rx,ry){
   var t=new THREE.CanvasTexture(_bumpBasis());
@@ -429,13 +437,22 @@ function putzTex(rx,ry){
     for(var i=0;i<2600;i++){var v=(Math.random()*34)|0;
       c.fillStyle="rgba("+(255-v)+","+(253-v)+","+(246-v)+",0.5)";
       c.fillRect(Math.random()*N,Math.random()*N,2,2);}
-    c.strokeStyle="rgba(90,84,74,0.07)";c.lineWidth=1;          /* feine Abzugslinien */
-    for(var y=0;y<N;y+=9){var jy=y+((Math.random()*3)|0);
-      c.beginPath();c.moveTo(0,jy);c.lineTo(N,jy);c.stroke();}
-    for(var k=0;k<18;k++){                                       /* leichte Wolken/Flecken */
-      var g=c.createRadialGradient(Math.random()*N,Math.random()*N,2,Math.random()*N,Math.random()*N,10+Math.random()*20);
-      g.addColorStop(0,"rgba(120,114,104,0.05)");g.addColorStop(1,"rgba(0,0,0,0)");
-      c.fillStyle=g;c.fillRect(0,0,N,N);}
+    /* ⚠️ Hier stand der dritte Streifen-Grund: `createRadialGradient` wurde mit ZWEI
+       VERSCHIEDENEN Zufallszentren aufgerufen (x0,y0 und x1,y1 je eigenes
+       Math.random). Das ergibt keinen runden Fleck, sondern einen schraegen Keil —
+       und der wurde mit `fillRect(0,0,N,N)` ueber die ganze Kachel gezogen.
+       Jetzt echte runde Flecken (gleiches Zentrum), lokal gefuellt und in 3x3
+       Versaetzen gezeichnet, damit sie ueber die Kachelgrenze weiterlaufen. */
+    for(var k=0;k<22;k++){
+      var gx=Math.random()*N,gy=Math.random()*N,gr=7+Math.random()*13;
+      var dunkel=Math.random()<0.6;
+      for(var ox=-1;ox<=1;ox++)for(var oy=-1;oy<=1;oy++){
+        var cx=gx+ox*N,cy=gy+oy*N;
+        if(cx<-gr||cx>N+gr||cy<-gr||cy>N+gr)continue;
+        var g=c.createRadialGradient(cx,cy,1,cx,cy,gr);
+        g.addColorStop(0,dunkel?"rgba(120,114,104,0.10)":"rgba(255,254,248,0.12)");
+        g.addColorStop(1,"rgba(120,114,104,0)");
+        c.fillStyle=g;c.beginPath();c.arc(cx,cy,gr,0,6.283);c.fill();}}
     _texPutz=new THREE.CanvasTexture(cv);}
   /* Kleiner Pool statt einer Kopie pro Haus: jede Kopie ist ein eigener GPU-Upload,
      bei ~40 Gebaeuden hat das den Seitenstart spuerbar verlangsamt. */
@@ -1486,7 +1503,7 @@ var dorfFenster=[];
     var w=4+(seed%3),d=3.6+((seed*7)%2),h=2.3+((seed*3)%2)*0.5;
     var wandC=WANDF[seed%WANDF.length],dachC=DACHF[seed%DACHF.length];
     var bMat=stdMat(wandC,0.85,true);bMat.map=putzTex(w/2.2,h/2.2);   /* einzeln: bekommt eigene Textur */
-    bMat.bumpMap=putzBump(w/2.2,h/2.2);bMat.bumpScale=0.035;(window._wandMats=window._wandMats||[]).push(bMat);
+    bMat.bumpMap=putzBump(w/2.2,h/2.2);bMat.bumpScale=0.022;(window._wandMats=window._wandMats||[]).push(bMat);
     var sokl=new THREE.Mesh(new THREE.BoxGeometry(w+0.5,0.4,d+0.5),betMat(0xc4beb0,0.9));
     sokl.position.y=0.09;sokl.receiveShadow=true;sokl.castShadow=true;g.add(sokl); // Fundament (ueberstehend, versenkt) — Haus stand nackt im Gras
     var body=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),bMat);
@@ -1526,7 +1543,7 @@ var dorfFenster=[];
     for(var k=0;k<n;k++){
       var bw=5.2+((k*7)%3)*0.9,et=2+((k*5)%3),hh=et*2.5+0.5,dep=7.2;
       var wm=stdMat(ZF[(k*3)%ZF.length],0.86,true);wm.map=putzTex(bw/2.2,hh/2.2);   /* einzeln */
-      wm.bumpMap=putzBump(bw/2.2,hh/2.2);wm.bumpScale=0.035;(window._wandMats=window._wandMats||[]).push(wm);
+      wm.bumpMap=putzBump(bw/2.2,hh/2.2);wm.bumpScale=0.022;(window._wandMats=window._wandMats||[]).push(wm);
       var kp=new THREE.Mesh(new THREE.BoxGeometry(bw,hh,dep),wm);
       kp.position.set(bx+bw/2,hh/2,0);kp.castShadow=true;kp.receiveShadow=true;g.add(kp);
       var bas=new THREE.Mesh(new THREE.BoxGeometry(bw+0.2,0.7,dep+0.2),betMat(0xbdb7a9,0.9));
@@ -1703,7 +1720,7 @@ var dorfFenster=[];
     var g=new THREE.Group();
     var h=etagen*1.9+0.4;
     var blkM=stdMat(farbe,0.88,true);blkM.map=putzTex(w/2.6,h/2.6);   /* einzeln */
-    blkM.bumpMap=putzBump(w/2.6,h/2.6);blkM.bumpScale=0.035;(window._wandMats=window._wandMats||[]).push(blkM);
+    blkM.bumpMap=putzBump(w/2.6,h/2.6);blkM.bumpScale=0.022;(window._wandMats=window._wandMats||[]).push(blkM);
     var body=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),blkM);
     body.position.y=h/2;body.castShadow=true;body.receiveShadow=true;g.add(body);
     var att=new THREE.Mesh(new THREE.BoxGeometry(w+0.3,0.25,d+0.3),betMat(0x8a8a88,0.8));
@@ -2239,7 +2256,11 @@ var dorfFenster=[];
     ampel(K[0]-6.3,K[1]-6.3,1,0);ampel(K[0]+6.3,K[1]+6.3,1,Math.PI);});
 })();
 // Putz-Struktur auf alle Nachbarhaus-Waende (getoent je Hausfarbe)
-ladeTex("textures/th/putz.jpg",4,2.5,function(t){(window._wandMats||[]).forEach(function(m){m.map=t;m.roughness=0.72;m.needsUpdate=true;});});
+/* ⚠️ `textures/th/putz.jpg` ist ein FOTO und nicht kachelbar. Mit Wiederholung
+   (4 x 2,5) liefen vier senkrechte Naehte ueber jede Fassade — im Spiel sah das
+   aus, als waeren die Waende breit gestreift. Ersetzt durch eine nahtlos erzeugte
+   Textur (tools/assets/mk_th32_texturen.py -> hausputz, Nahtkennzahl 0,96). */
+ladeTex("textures/th32/hausputz.png",3,2,function(t){(window._wandMats||[]).forEach(function(m){m.map=t;m.roughness=0.72;m.needsUpdate=true;});});
 // ---- Immobilien-Imperium: Nachbarhaeuser kaufen, taeglich Miete kassieren ----
 var immo=[]; // gekaufte Haus-Indizes
 function immoFlagge(hs){var fg=new THREE.Group();

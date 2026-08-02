@@ -224,8 +224,35 @@ def lichterband():
     rgb = schiene + f*(lampe**0.6)[...,None] + f*glow[...,None]*0.55
     speichern("lichterband", rgb); pruef_nahtlos("lichterband", rgb)
 
+# ------------------------------------------------ 7) Hausputz (Fassaden)
+def hausputz():
+    """Fassadenputz fuer die Wohnhaeuser. Ersetzt `textures/th/putz.jpg`: das Foto
+    ist NICHT kachelbar und wird mit Wiederholung (4 x 2,5) auf jede Wand gelegt —
+    dadurch laufen vier senkrechte Naehte ueber die Fassade, die im Spiel als
+    "breite Striche" auffallen.
+    Hier entsteht das Muster wie in der ganzen Charge per Wrap-Arithmetik: Korn,
+    weiche Unebenheiten und feine Risse werden modulo N gezeichnet."""
+    korn = feinstruktur(71, 1, 1)*0.55 + feinstruktur(72, 2, 2)*0.45
+    wolke = blur(noise(5, 73), 3)
+    # Risse: duenne, gekruemmte Linien — ueber wrap_d gezeichnet, also nahtlos
+    riss = np.zeros((N, N), np.float32)
+    r = np.random.default_rng(74)
+    for _ in range(26):
+        py, px = float(r.integers(0, N)), float(r.integers(0, N))
+        ang = r.uniform(0, 2*np.pi)
+        for step in range(int(r.uniform(14, 46))):
+            py = (py + np.sin(ang)*2.0) % N
+            px = (px + np.cos(ang)*2.0) % N
+            ang += r.uniform(-0.35, 0.35)
+            dy, dx = wrap_d(py, px)
+            riss = np.maximum(riss, np.clip(1.0 - np.hypot(dy, dx)/1.6, 0, 1))
+    riss = blur(riss, 1)
+    g = 0.86 + 0.10*korn + 0.06*wolke - 0.16*riss
+    rgb = np.stack([g*1.00, g*0.995, g*0.965], -1)   # leicht warmer Putzton
+    speichern("hausputz", rgb); pruef_nahtlos("hausputz", rgb)
+
 if __name__ == "__main__":
     print("Texturen Charge 32 (Freizeitpark):")
-    for fn in (zeltbahn, bohlen, riffelblech, parkpflaster, wasser, lichterband):
+    for fn in (zeltbahn, bohlen, riffelblech, parkpflaster, wasser, lichterband, hausputz):
         fn()
     print("fertig")
