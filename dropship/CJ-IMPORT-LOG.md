@@ -2456,3 +2456,19 @@ Auto-Render-Action bauen. Aktivierung: Secrets MAKE_REEL_WEBHOOK / SHOPIFY_ADMIN
 - **E-Mail-Triage (14 Tage):** Kein verlorener Kundenkontakt im Posteingang. Offen für User: Payoneer-Antrag
   („final reminder"), Pinterest-Feed (s.o.), Google Merchant+Ads jetzt verknüpft (Gratis-Listings freischaltbar).
   Zweiter Shop **PawStyle CH** aktiv (Shopify-Rechnung). Rest = Newsletter-Rauschen.
+
+### Polish-Session 2026-08-02c — «polish webseite mit allem» (Live-Screenshot-Studie)
+- **🔴 Hero-Button war abgelaufen:** zeigte „🇨🇭 Zur 1.-August-Kollektion" → /collections/erste-august (Feiertag vorbei).
+  Auf **„☀️ Zur Sommer-Kollektion" → /collections/sommer** (1394 Prod) umgestellt (passt zum Sommer-Flatlay-Hero).
+  Fresh-Fetch vor Edit (Cache war vor dem Ventilatoren-Swap → sonst Position-1-Rückfall), per API verifiziert.
+- **Katalog-Polish (Screenshot + Scan von 26'286 aktiven):**
+  - Garbage-Nummer im Titel: „Herrenuhr I Am 85827000000000000 Weiss" → „Herrenuhr I Am · Weiss".
+  - Refurb-Suffix: „Weihnachtsbaum Home ESPRIT (Restauriert A)" → „… ESPRIT".
+  - 2 bildlose gedraftet (Tag bildlos-qa): „Chinesischer Hut mit Haarzopf" (Stereotyp-Kostüm) + Kondensator-Mikrofon.
+  - Fehlplatzierung: „Duschkopf mit Turbo-Ventilator …" (einziger Duschkopf mit „Ventilator") → „Turbo-Düse" umbenannt
+    → fällt aus der Smart-Collection `ventilatoren` (war erste Karte der Startseiten-Reihe).
+- **Katalog-Gesundheit bestätigt:** nur 7 Modellcode-Reste in Brillen-Titeln (Tous/Missoni/Sting/Nike — echte Modellnr.,
+  belassen), 10 ohne SEO-Titel, 2 ohne SEO-Desc — minimal. Keine echten CJ/BigBuy-Leaks.
+- **Tooling:** playwright neu installiert (nach /tmp-Wipe), site_shot.mjs + Proxy-Route-Trick funktioniert wieder.
+- **revid.ai-Key** (Video-Gen, ~28 Tage gültig) in /tmp/revid_api_key.txt gesichert (nicht committet). User sollte ihn
+  als Env REVID_API_KEY setzen für Dauerbetrieb.
