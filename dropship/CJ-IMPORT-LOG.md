@@ -2579,3 +2579,14 @@ Der seit Wochen offene «Merchant-Ziel-Land»-Hebel (Memory §16e) ist umgesetzt
   nominative Kompatibilitäts-Nennung ist legal, Produkt-als-Marke nicht.
 - Geprüft & sauber: 54 weitere Marken-Treffer waren legitime «für X»-Kompatibilität; Off-white-Tastenkappen = Farbe;
   Licht-/Phototherapie-Nagellampen = Kosmetik-Begriff (ok). Englische Titel: nur 8, meist Eigennamen/Fashion-Begriffe.
+
+### 💶 BigBuy-Reaktivierung mit €1000 Moneybox (2026-08-04, User «check neue produkte die rendieren»)
+- **API-Key Production neu** (User), Moneybox **€1000 bestätigt** via /user/purse → BigBuy-Bestellungen wieder erfüllbar!
+- **⚠️ API-Änderung entdeckt: `shipping/orders.json` ist TOT** (404 für ALLES, auch DE) — CH-Lieferbarkeits-Wahrheit
+  jetzt via **`order/check.json`** (liefert total inkl. Versand; CH-Versand konstant **€27.94** SEUR). Guard-Tools
+  müssen auf order/check umgestellt werden, sonst falsche «nicht-lieferbar»-Drafts!
+- **Rentabilitäts-Analyse** (Uhren 8.5k / Schmuck 26k / Parfum 42k Produkte, lagernd ∩ CH ∩ Marge≥15€ bei realistischem
+  VK=85% UVP): 18 Gewinner, alle CH-verifiziert per order/check. **15 importiert** (ACTIVE, tracked+DENY, 6 Kanäle):
+  InnovaGoods Beauty-Packs (CBD/Kombucha/Rice-Routinen) CHF 60.90–210.90, Marge €16–122/Verkauf.
+- Uhren/Schmuck ernüchternd: Marken-Uhren haben nach €28 Versand <15€ Marge (BigBuy-Wholesale zu teuer). Parfum/Beauty-
+  Packs sind die BigBuy-CH-Nische. €1000 bleibt als Fulfillment-Kapital (Moneybox zahlt pro Order ~€45–100 landed).
