@@ -3691,5 +3691,92 @@ class TestDringendesUnterbrichtDieAufgabe(unittest.TestCase):
 
 
 
+class TestKalibrierungIstSchnellUndTrotzdemRichtig(unittest.TestCase):
+    """44 Sekunden Kalibrierung sind zu teuer, wenn eine Versammlung 60 dauert.
+
+    Aus dem Protokoll des Nutzers vom 04.08.: 00:44:53 Aufgabe kalibrieren,
+    00:45:37 Ergebnis - 44 Sekunden, in denen der Bot nichts anderes tut. Sie
+    laeuft etwa alle zwoelf Minuten.
+
+    Der Trick: die Kalibrierung braucht nur das Groessen-VERHAELTNIS, nicht die
+    Position. Das bleibt beim Verkleinern erhalten.
+    """
+
+    def test_verkleinert_findet_denselben_faktor(self):
+        bild = os.path.join(ROOT, "austausch", "stadt.png")
+        if not os.path.exists(bild):
+            self.skipTest("stadt.png liegt nicht vor")
+        cfg = Config.load(os.path.join(ROOT, "config", "last-asylum.json"))
+        cfg.validate()
+        screen = Image.load(bild)
+        tpl = cfg.template("ui/back_arrow.png", optional=True)
+        if tpl is None:
+            self.skipTest("ui/back_arrow.png fehlt")
+        schritte = [0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1]
+
+        def besten_faktor(bild_, tpl_):
+            best, faktor = 0.0, None
+            for f in schritte:
+                hit = matcher.best_score(bild_, tpl_, scale=f)
+                if hit and hit.score > best:
+                    best, faktor = hit.score, f
+            return faktor, best
+
+        voll_faktor, voll_score = besten_faktor(screen, tpl)
+        klein_faktor, klein_score = besten_faktor(screen.box_scaled_by(0.5),
+                                                  tpl.box_scaled_by(0.5))
+        self.assertEqual(klein_faktor, voll_faktor,
+                         f"verkleinert kam {klein_faktor} statt {voll_faktor}")
+        self.assertGreater(klein_score, voll_score - 0.05,
+                           f"der Wert bricht ein: {klein_score:.3f} statt {voll_score:.3f}")
+
+    def test_kalibrierung_verkleinert_wirklich(self):
+        import inspect
+        quelle = inspect.getsource(Engine._kalibriere)
+        self.assertIn("box_scaled_by(verkleinern)", quelle,
+                      "ohne Verkleinern dauert die Kalibrierung ein Vielfaches")
+        self.assertIn("schritte[::2]", quelle,
+                      "der grobe Vorlauf spart die Haelfte der Suchen")
+
+    def test_untergrenze_rechnet_den_kleinsten_faktor_mit(self):
+        """Gesucht wird Vorlage MAL Faktor - nicht die Vorlage allein.
+
+        Erste Fassung dieser Grenze sah nur die Vorlagengroesse an. Bei Faktor
+        0.5 und Verkleinerung 0.5 blieb von einer 80er Vorlage ein 20er Muster,
+        und die Kalibrierung fand den falschen Faktor. Ein bestehender Test hat
+        das aufgedeckt - dieser hier haelt die Lehre fest.
+        """
+        import inspect
+        quelle = inspect.getsource(Engine._kalibriere)
+        self.assertIn("min(schritte)", quelle,
+                      "die Untergrenze muss den kleinsten gesuchten Faktor einrechnen")
+
+    def test_verkleinerte_kalibrierung_findet_kleine_muster_trotzdem(self):
+        """Gegenprobe am Verhalten statt am Quelltext."""
+        import tempfile
+        ordner = tempfile.mkdtemp()
+        try:
+            tdir = os.path.join(ordner, "templates", "ui")
+            os.makedirs(tdir)
+            marke = noise(80, 80, 130)
+            marke.save(os.path.join(tdir, "back_arrow.png"))
+            screen = noise(600, 900, 131)
+            paste(screen, marke.box_scale(56, 56), 200, 300)   # Faktor 0.7
+            with open(os.path.join(ordner, "conf.json"), "w", encoding="utf-8") as fh:
+                json.dump({"base_width": 600, "ui_skala": 1.0}, fh)
+            cfg = Config.load(os.path.join(ordner, "conf.json"))
+            eng = Engine(cfg, FakeDevice([screen], loop=True), logger=quiet(),
+                         sleep=lambda s: None, seed=1,
+                         state_file=os.path.join(ordner, "zustand.json"))
+            eng.run_actions([{"kalibriere": {"templates": ["ui/back_arrow.png"],
+                                             "mindest_score": 0.8, "min_belege": 1}}])
+            self.assertAlmostEqual(cfg.ui_skala, 0.7, delta=0.06,
+                                   msg="auch kleine Muster muessen gefunden werden")
+        finally:
+            import shutil
+            shutil.rmtree(ordner, ignore_errors=True)
+
+
+
 if __name__ == "__main__":
     unittest.main()

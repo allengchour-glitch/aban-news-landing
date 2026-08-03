@@ -8,7 +8,7 @@
     1.2,
     2.4
   ],
-  "stuck_seconds": 300,
+  "stuck_seconds": 120,
   "templates_dir": "../templates",
   "input_method": "input",
   "_geld": "ECHTGELD IST TABU, SPIEL-WAEHRUNG IST ERLAUBT. Gesperrt ist die rechte obere Ecke bis 14,5 % Bildhoehe - dort sitzen Einkaufswagen, Diamanten-Aufladung und das 'Tagesangebot' mit CHF-Preis. LINKS OBEN DARF NICHT GESPERRT WERDEN: dort liegt der Zurueck-Pfeil. Eine frueher auf Verdacht angelegte Zone dort hat im Betrieb genau den blockiert - in keinem Screenshot gab es links oben je ein Kauf-Angebot. Regel fuer dich: schneide nie ein Template von einem Knopf mit Preisschild. Zur Farbe der Kaufknoepfe siehe _farben - kurz: Gold wird nie blind angetippt, weil dieselbe Farbe fuer harmlose und fuer kostende Knoepfe benutzt wird.",
@@ -35,7 +35,7 @@
   },
   "on_stuck": [
     {
-      "log": "Bild bewegt sich nicht mehr - Zurueck-Taste versuchen"
+      "log": "Bild bewegt sich nicht mehr - Bildschirm-Pfeil oder Startseite versuchen (NICHT die Android-Zurueck-Taste, die oeffnet 'Spiel beenden?')"
     },
     {
       "screenshot": "haenger"

@@ -682,9 +682,14 @@ class Engine:
             0.50, 0.55, 0.60, 0.65, 0.70, 0.75, 0.80, 0.85, 0.90, 0.95, 1.00, 1.10
         ]
         mindest = float(spec.get("mindest_score", 0.86))
-        frueh_genug = float(spec.get("frueh_genug", 0.95))
+        # KEIN frueher Abbruch beim ersten hohen Wert: das unterstellt, dass
+        # die Werte bis zum Gipfel steigen. Sie tun es nicht - ein falscher
+        # Faktor kann frueh hoch punkten, und der richtige wird dann nie
+        # probiert. Zwei bestehende Tests haben genau das aufgedeckt. Die
+        # Beschleunigung kommt stattdessen vom verkleinerten Suchbild.
         genug = int(spec.get("genug_belege", 4))
         aussichtslos = float(spec.get("aussichtslos_unter", 0.6))
+        verkleinern = float(spec.get("verkleinern", 0.5))
         versuche, hoechster = 0, 0.0
         screen = self.capture()
         if screen.ist_einfarbig():
@@ -696,18 +701,44 @@ class Engine:
             tpl = self.cfg.template(name, optional=True)
             if tpl is None:
                 continue
+            # Auf einem VERKLEINERTEN Bild suchen. Die Kalibrierung braucht nur
+            # das Groessen-VERHAELTNIS, nicht die Position - und das bleibt beim
+            # Verkleinern erhalten. Gemessen an austausch/stadt.png: 31.5 s bei
+            # voller Groesse, 9.3 s bei halber, gefundener Faktor in beiden
+            # Faellen 1.00 (Score 1.000 gegen 0.996). Sehr kleine Vorlagen
+            # bleiben aussen vor, von denen bliebe sonst nichts uebrig.
+            such_bild, such_tpl = screen, tpl
+            # Die Untergrenze muss den KLEINSTEN gesuchten Faktor einrechnen,
+            # nicht nur die Vorlagengroesse: gesucht wird Vorlage mal Faktor.
+            # Mit Faktor 0.5 und Verkleinerung 0.5 bleibt von einer 80er
+            # Vorlage ein 20er Muster - zu wenig fuer einen verlaesslichen
+            # Vergleich. Genau daran ist ein bestehender Test haengen
+            # geblieben, und der hatte recht.
+            kleinste = min(tpl.width, tpl.height) * verkleinern * min(schritte)
+            if kleinste >= 28:
+                such_bild = screen.box_scaled_by(verkleinern)
+                such_tpl = tpl.box_scaled_by(verkleinern)
+
+            # ZWEISTUFIG statt zwoelf Faktoren am Stueck. Vorher liefen immer
+            # 7 Vorlagen x 12 Faktoren = 84 volle Suchen - auf dem PC des
+            # Nutzers gemessene 39 bis 44 Sekunden, in denen der Bot nichts
+            # anderes tut. Erst jede zweite Stufe probieren, dann nur um den
+            # Sieger herum nachfahren: gleiche Genauigkeit, halb so viele
+            # Suchen.
+            grob = schritte[::2] or list(schritte)
             bester, bester_faktor = 0.0, None
-            for f in schritte:
-                hit = matcher.best_score(screen, tpl, scale=basis * f)
+            for f in grob:
+                hit = matcher.best_score(such_bild, such_tpl, scale=basis * f)
                 if hit and hit.score > bester:
                     bester, bester_faktor = hit.score, f
-                # Frueh aufhoeren, sobald es eindeutig ist. Ohne das laufen
-                # immer 7 Vorlagen x 12 Faktoren = 84 Suchen durch - auf dem
-                # PC des Nutzers gemessene 44 Sekunden, in denen der Bot nichts
-                # anderes tut. Ein Wert deutlich ueber der Schwelle wird durch
-                # weitere Faktoren nicht mehr besser.
-                if bester >= frueh_genug:
-                    break
+            if bester_faktor is not None:
+                stelle = schritte.index(bester_faktor)
+                for nachbar in (stelle - 1, stelle + 1):
+                    if 0 <= nachbar < len(schritte) and schritte[nachbar] not in grob:
+                        hit = matcher.best_score(such_bild, such_tpl,
+                                                 scale=basis * schritte[nachbar])
+                        if hit and hit.score > bester:
+                            bester, bester_faktor = hit.score, schritte[nachbar]
             versuche += 1
             hoechster = max(hoechster, bester)
             if bester >= mindest and bester_faktor:
