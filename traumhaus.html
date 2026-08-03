@@ -6918,17 +6918,21 @@ function lodAufbau(){
     var r=kugel.radius*sk;
     if(r>2.2)return;                       /* gross genug -> immer sichtbar */
     n.getWorldPosition(mitte);
-    _lodKlein.push({m:n,x:mitte.x,z:mitte.z});
+    /* Zwei Stufen: Winziges (Sprossen, Griffe, Torlatten, Fensterbaenke) ist nur
+       aus der Naehe ueberhaupt lesbar, kostet aber je einen vollen Zeichenaufruf.
+       Nach dem Einbau der Fenster- und Tuerdetails stiegen die Aufrufe von 270
+       auf 1148 — deshalb verschwindet dieses Kleinzeug schon ab 34 m. */
+    _lodKlein.push({m:n,x:mitte.x,z:mitte.z,nah:(r<0.55)});
   });
   _lodBereit=true;
   return _lodKlein.length;
 }
 function lodTakt(px,pz){
   if(!_lodBereit)return;
-  var NAH=78*78;
+  var NAH=78*78, SEHRNAH=34*34;
   for(var i=0;i<_lodKlein.length;i++){
     var e=_lodKlein[i],dx=e.x-px,dz=e.z-pz;
-    var sicht=(dx*dx+dz*dz)<NAH;
+    var sicht=(dx*dx+dz*dz)<(e.nah?SEHRNAH:NAH);
     if(e.m.visible!==sicht)e.m.visible=sicht;
   }
 }
