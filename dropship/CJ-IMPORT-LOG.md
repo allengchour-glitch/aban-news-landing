@@ -2505,3 +2505,12 @@ Katalog-weiter Audit (26'299 aktiv) + Live-Storefront. **Autonom angewandte Fixe
 - **Pricing:** einige sperrige CJ >150 (Hundesofas/Sonnenschirm/Nachttisch) — Bürostühle BEHALTEN (User-Entscheid).
 - **Collections:** ventilatoren-kuehlung dünn, ein paar leere Shells, Duplikat-Metalldetektor-Collection.
 - **Storefront:** Sommer-Kollektion (Ad-Landing) prüfen; einzelne Karten zeigen Lieferanten-Marketing-Bilder.
+
+### Menü + Website Polish 2026-08-03
+- **Menü (`main-menu`, 141 Items):** (1) **63 `/en/`-Links → Deutsch gestrippt** (46% des Menüs zeigte Englisch für
+  de-CH-Publikum!). (2) 6 tote Collection-Links (0 aktiv auf Storefront) umgebogen: topseller→bestseller,
+  premium-marken-lager→luxestyle-premium, elektriker-werkzeug→elektronik-technik, modellautos→spielzeug,
+  wm-fussball-2026→fussball-fanshop. Verifiziert: 0 /en/, 0 tote Handles verbleibend.
+- **Startseite:** Reihe `product_list_topseller` (tote `topseller`-Collection, 2012 Produkte ALLE gedraftet) → `bestseller`.
+- **Befund:** topseller/premium-marken-lager (7499)/elektriker-werkzeug (582) sind Alt-Collections mit 100% gedrafteter
+  Ware (BigBuy-Bereinigung) — Menü/Startseite verlinkten auf leere Seiten. Alle 121 Menü-Handles auf Aktiv-Bestand geprüft.
