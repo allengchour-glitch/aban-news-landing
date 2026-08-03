@@ -13,8 +13,12 @@ const DRY=process.env.DRY==='1', CAP=parseInt(process.env.CAP||'40',10);
 const LEDGER='dropship/cj_niche_done.txt';
 const PUBS=['301970915713','301971014017','302032716161','302566834561','302872297857','302994456961'].map(id=>({publicationId:`gid://shopify/Publication/${id}`}));
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-const chf=(usd,grams)=>{const u=parseFloat((''+usd).split('--')[0])||0;let m=u<8?2.4:u<20?2.2:u<50?2.0:1.85;let p=Math.max(u*m,4.90);
- const kg=(parseFloat(grams)||0)/1000; if(kg>0.4) p=Math.max(p, u*0.92+(3.4+16.3*kg)-6.3+4); // Gewichts-Boden 2026-07-09
+const chf=(usd,grams)=>{const u=parseFloat((''+usd).split('--')[0])||0;
+ // 2026-08-03: China→CH-Fracht REAL ~CHF 15 (Order #1011: $15.77) — MUSS in den Preis, sonst Verlust bei billiger Ware!
+ const kg=(parseFloat(grams)||0)/1000;
+ const freight=Math.max(15, 3.4+16.3*kg);      // Fracht CHF: min ~15 (leicht), +Gewicht für schwere
+ const landed=u*0.9+freight;                    // Einstandskosten CHF (Produkt + Fracht)
+ let p=Math.max(landed*1.35, landed+6, 19.90);  // 35% Marge, min CHF 6 Deckung, absoluter Boden 19.90
  return (Math.floor(p)+0.90).toFixed(2);};
 
 // ── Fashion-Modus (Zalando-Stil): CJ-Varianten "Farbe-Grösse" → Shopify Farbe+Grösse-Optionen ──

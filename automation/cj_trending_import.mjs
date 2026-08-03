@@ -13,7 +13,10 @@ const DRY=process.env.DRY==='1', CAP=parseInt(process.env.CAP||'40',10);
 const LEDGER='dropship/cj_niche_done.txt';
 const PUBS=['301970915713','301971014017','302032716161','302566834561','302872297857','302994456961'].map(id=>({publicationId:`gid://shopify/Publication/${id}`}));
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-const chf=usd=>{const u=parseFloat((''+usd).split('--')[0])||0;let m=u<8?2.4:u<20?2.2:u<50?2.0:1.85;const p=Math.max(u*m,4.90);return (Math.floor(p)+0.90).toFixed(2);};
+const chf=usd=>{const u=parseFloat((''+usd).split('--')[0])||0;
+ // 2026-08-03: China→CH-Fracht ~CHF 15 (Order #1011) fest einrechnen, sonst Verlust bei billiger Ware
+ const landed=u*0.9+15; const p=Math.max(landed*1.35, landed+6, 19.90);
+ return (Math.floor(p)+0.90).toFixed(2);};
 
 // ── Fashion-Modus (Zalando-Stil): CJ-Varianten "Farbe-Grösse" → Shopify Farbe+Grösse-Optionen ──
 const DECOLOR={apricot:'Aprikose',pink:'Pink','light pink':'Rosa','hot pink':'Pink','sky blue':'Himmelblau','light blue':'Hellblau','dark blue':'Dunkelblau','wine red':'Weinrot','rose red':'Rosarot','army green':'Armeegrün','light green':'Hellgrün','dark green':'Dunkelgrün','light grey':'Hellgrau','dark grey':'Dunkelgrau','navy blue':'Marineblau',black:'Schwarz',white:'Weiss',red:'Rot',blue:'Blau',green:'Grün',yellow:'Gelb',grey:'Grau',gray:'Grau',beige:'Beige',brown:'Braun',navy:'Marineblau',khaki:'Khaki',purple:'Lila',violet:'Violett',orange:'Orange',rose:'Rosé',coffee:'Kaffeebraun',silver:'Silber',gold:'Gold',champagne:'Champagner',ivory:'Elfenbein',burgundy:'Bordeaux',camel:'Camel',turquoise:'Türkis',mint:'Mintgrün',lavender:'Lavendel',cream:'Creme',nude:'Nude','dark pink':'Dunkelrosa','deep blue':'Dunkelblau','light yellow':'Hellgelb','fluorescent green':'Neongrün','light purple':'Helllila','dark brown':'Dunkelbraun',multicolor:'Bunt',multi:'Bunt'};

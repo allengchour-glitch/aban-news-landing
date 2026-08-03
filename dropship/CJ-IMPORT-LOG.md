@@ -2532,3 +2532,16 @@ Katalog-weiter Audit (26'299 aktiv) + Live-Storefront. **Autonom angewandte Fixe
      logisticName aus freightCalculate, products[{vid,quantity}]. Danach in CJ-UI per Karte zahlen.
   4. **deleteOrder braucht HTTP DELETE** (nicht POST). **Nach Zahlung: getOrderDetail liefert trackNumber** →
      Shopify fulfillmentCreateV2(lineItemsByFulfillmentOrder+trackingInfo+notifyCustomer:true).
+
+### 💰 PROFITABILITÄTS-FIX 2026-08-03 (User: «alle preise anpassen, keinen Verlust mehr»)
+**Wurzel:** Die alte Preisformel (`u*margin`, Boden 4.90) **ignorierte die China→CH-Fracht** — die ist REAL **~CHF 14–16**
+(Order #1011: $15.77), NICHT die im Memory angenommenen «3–6 CHF». → **65% der CJ-Ware (14'238 Produkte < CHF 24.90)
+verkaufte mit Verlust.**
+- **Formel gefixt** (cj_category_fill.mjs + cj_trending_import.mjs): `landed = kosten + max(15, gewichts-fracht)`,
+  `preis = max(landed*1.35, landed+6, 19.90)` → künftige Importe immer profitabel.
+- **Bestand-Reprice:** Runner `/tmp/reprice_runner.mjs` hebt alle **16'168 CJ-Produkte < CHF 30 um +CHF 16** (Fracht),
+  auf X.90 gerundet, via productVariantsBulkUpdate. Ledger `/tmp/reprice_done.txt`. Bsp: Mini-Speaker CHF 29.90→45.90.
+- **Kuratierte Ware (WALLET/WATCH-SKUs, 1520 Stück) + Fortura (2948) NICHT betroffen** — die sind gesund bepreist
+  (Fortura = EU-Lager, andere Fracht-Ökonomie).
+- ⚠️ Folge: billige Novelty-Artikel werden teurer/evtl. unverkäuflich — das ist die Realität von China-Dropship in die CH
+  (Fracht > Warenwert). Break-even-Preis statt Verlust-Verkauf. Künftig ggf. solche Artikel gar nicht erst importieren.
