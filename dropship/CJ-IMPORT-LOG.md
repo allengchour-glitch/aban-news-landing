@@ -2569,3 +2569,13 @@ Der seit Wochen offene «Merchant-Ziel-Land»-Hebel (Memory §16e) ist umgesetzt
 - **User-Frage «mehr Text?»:** Nein — Startseiten-Textmenge ist jetzt gesund (Hero→USP→Trust→SEO-Block). Nächster
   Text-Hebel = Kollektions-Beschreibungen (Kategorie-Seiten), nicht mehr Startseite.
 - 9 sichtbare Billig-Ventilatoren (Startseiten-Reihe) sofort auf 15.90 vorgezogen (Reprice-Queue läuft).
+
+### Tiefen-Sweep 2 (2026-08-04, «fix weiter»)
+- **⚖️ 19 Smartwatches: illegale Medizin-Claims (Blutzucker/EKG/Blutdruck/Harnsäure) aus Titeln entfernt** (Audit-Befund
+  jetzt vollständig abgearbeitet; 7 holprige Ergebnisse handpoliert). ⚠️ Beschreibungen können Claims noch enthalten —
+  bei Gelegenheit Desc-Pass. Herzfrequenz/Fitness-Begriffe belassen (zulässig).
+- **2 Fälschungs-Risiko-Produkte GEDRAFTET:** «iPhone 12» + «Samsung 870 EVO SSD» via CJ (Marken-Hardware aus CN = Fake-Risiko).
+- **8 Marken-Titel auf «für X»-Form** (Xbox-Kühlstation, Fitbit-Armband, AirPods-Case, DJI/GoPro/Xiaomi-Zubehör) —
+  nominative Kompatibilitäts-Nennung ist legal, Produkt-als-Marke nicht.
+- Geprüft & sauber: 54 weitere Marken-Treffer waren legitime «für X»-Kompatibilität; Off-white-Tastenkappen = Farbe;
+  Licht-/Phototherapie-Nagellampen = Kosmetik-Begriff (ok). Englische Titel: nur 8, meist Eigennamen/Fashion-Begriffe.
