@@ -1574,7 +1574,7 @@ class TestGelernteAuswege(unittest.TestCase):
             shutil.rmtree(ordner, ignore_errors=True)
 
 
-class TestErkundung(unittest.TestCase):
+class TestErkundungAufVerrauschtemBild(unittest.TestCase):
     """Steckt der Bot fest, probiert er selbst einen Knopf - mit Leitplanken."""
 
     def bau(self, ordner, knopf_rgb, wirkt=True, extra=None):
@@ -1964,10 +1964,18 @@ class TestZurueckPfeil(unittest.TestCase):
             roh = _json.load(fh)
         gefunden = []
 
+        # Drei Wege fuehren zur Zurueck-Taste, nicht einer. Die erste Fassung
+        # dieses Tests sah nur den ersten - {"back": true} und {"key": "4"}
+        # (der Tastencode als Zahl) waeren durchgerutscht.
+        verboten = {"KEYCODE_BACK", "BACK", "4"}
+
         def pruefe(knoten, wo):
             if isinstance(knoten, dict):
-                if knoten.get("key") == "KEYCODE_BACK":
-                    gefunden.append(wo)
+                taste = knoten.get("key")
+                if taste is not None and str(taste).strip().upper() in verboten:
+                    gefunden.append(f"{wo} (key={taste})")
+                if "back" in knoten:
+                    gefunden.append(f"{wo} (Aktion 'back')")
                 for k, v in knoten.items():
                     pruefe(v, f"{wo}>{k}")
             elif isinstance(knoten, list):
@@ -2274,6 +2282,32 @@ class TestEchterBestaetigenDialog(unittest.TestCase):
         self.assertTrue(437 <= cx <= 996 and 1250 <= cy <= 1423,
                         f"Tippziel {cx:.0f},{cy:.0f} liegt neben dem Knopf")
 
+
+    def test_bestaetigen_wird_bei_einem_zweiten_knopf_nicht_getippt(self):
+        """Gold kann Geld kosten - ein Kauf-Dialog hat immer einen zweiten Knopf.
+
+        Bis zum 02.08. fehlte die Vorlage, die Regel lief also nie. Seit sie da
+        ist, greift sie - ohne diese Sicherung wuerde sie jeden goldenen
+        'Bestaetigen' antippen, auch den in einem Kaufangebot.
+        """
+        regel = self.regel("belohnung-bestaetigen")
+        bedingungen = regel["match"].get("all")
+        self.assertIsNotNone(bedingungen, "die Regel braucht mehr als die blosse Vorlage")
+        nicht = [b["not"]["farbknopf"]["rgb"] for b in bedingungen if "not" in b]
+        self.assertEqual(len(nicht), 2, f"blau und rot muessen ausgeschlossen sein: {nicht}")
+
+        eng = motor(self.BILD)
+        # Denselben Bildschirm nehmen, aber einen blauen Abbrechen-Knopf
+        # danebenmalen - dann darf die Regel nicht mehr greifen.
+        screen = eng.screen
+        for y in range(1270, 1400):
+            for x in range(120, 400):
+                screen.data[(y * screen.width + x) * 3 + 0] = 58
+                screen.data[(y * screen.width + x) * 3 + 1] = 142
+                screen.data[(y * screen.width + x) * 3 + 2] = 230
+        self.assertFalse(eng.evaluate(regel["match"], screen),
+                         "mit einem zweiten Knopf daneben darf Gold nicht getippt werden")
+
     def test_die_schutzbedingungen_sehen_einen_zweiten_knopf(self):
         """Blau und Rot duerfen nicht an derselben Schranke scheitern.
 
@@ -2304,7 +2338,11 @@ class TestEchterBestaetigenDialog(unittest.TestCase):
             self.skipTest("Vorlage fehlt")
         eng = motor(self.BILD)
         regel = self.regel("belohnung-bestaetigen")
-        treffer = eng.find(regel["match"])
+        # evaluate statt find: die Regel hat seit dem 03.08. die Kauf-Sicherung
+        # und ist damit ein all-Block, kein blosser Vorlagen-Eintrag mehr.
+        self.assertTrue(eng.evaluate(regel["match"], eng.screen),
+                        "die Regel muss auf dem Hinweis-Dialog greifen")
+        treffer = eng.last_match
         self.assertIsNotNone(treffer, "die Vorlage muss den Knopf im echten Bild finden")
         cx, cy = treffer.center
         self.assertTrue(437 <= cx <= 996 and 1250 <= cy <= 1423,
@@ -2386,8 +2424,25 @@ class TestLebenszeichen(unittest.TestCase):
             d = json.load(open(os.path.join(ordner, "austausch", "lauf.json"),
                                encoding="utf-8"))
             self.assertEqual(d["bild"], "austausch/lauf.png")
-            # halbe Kantenlaenge des FakeDevice-Bildes (120x200)
-            self.assertEqual(Image.load(bild).width, 60)
+            # Vorgabe 0.35 der Kantenlaenge des FakeDevice-Bildes (120x200)
+            self.assertEqual(Image.load(bild).width, 42)
+
+    def test_gleicher_bildschirm_erzeugt_kein_zweites_bild(self):
+        """Ein zweites Bild desselben Bildschirms sagt nichts und wiegt viel."""
+        import tempfile
+        with tempfile.TemporaryDirectory() as ordner:
+            eng = self.bau(ordner)
+            eng.run_actions([{"lebenszeichen": {"hochladen": False}}], "test")
+            bild = os.path.join(ordner, "austausch", "lauf.png")
+            zuerst = os.path.getmtime(bild)
+            eng.run_actions([{"lebenszeichen": {"hochladen": False,
+                                                "mindestabstand": 0,
+                                                "bild_abstand": 0}}], "test")
+            self.assertEqual(os.path.getmtime(bild), zuerst,
+                             "unveraenderter Bildschirm darf kein neues Bild erzeugen")
+            d = json.load(open(os.path.join(ordner, "austausch", "lauf.json"),
+                               encoding="utf-8"))
+            self.assertIn("unveraendert", d["bild"] or "")
 
     def test_bild_wird_nicht_bei_jedem_lebenszeichen_neu_geschrieben(self):
         """Zahlen sind billig, Bilder nicht - sie brauchen einen eigenen Takt."""
@@ -2638,6 +2693,33 @@ class TestAnsichtenSammeln(unittest.TestCase):
             self.assertFalse(os.path.isdir(ziel) and
                              [f for f in os.listdir(ziel) if f.endswith(".png")],
                              "ein leerer Bildschirm ist keine Ansicht")
+
+
+
+class TestTestdateiIstGesund(unittest.TestCase):
+    """Ein doppelt vergebener Klassenname loescht die erste Fassung lautlos.
+
+    TestErkundung war zweimal definiert - vier Tests liefen monatelang nie,
+    ohne dass irgendetwas rot wurde.
+    """
+
+    def test_keine_doppelten_klassennamen(self):
+        import ast
+        import collections
+        baum = ast.parse(open(__file__, encoding="utf-8").read())
+        namen = [n.name for n in baum.body if isinstance(n, ast.ClassDef)]
+        doppelt = [n for n, k in collections.Counter(namen).items() if k > 1]
+        self.assertEqual(doppelt, [], f"doppelt vergebene Klassennamen: {doppelt}")
+
+    def test_keine_doppelten_testnamen_je_klasse(self):
+        import ast
+        import collections
+        baum = ast.parse(open(__file__, encoding="utf-8").read())
+        for klasse in [n for n in baum.body if isinstance(n, ast.ClassDef)]:
+            namen = [f.name for f in klasse.body
+                     if isinstance(f, ast.FunctionDef) and f.name.startswith("test")]
+            doppelt = [n for n, k in collections.Counter(namen).items() if k > 1]
+            self.assertEqual(doppelt, [], f"{klasse.name}: {doppelt}")
 
 
 

@@ -6,3 +6,7 @@ __pycache__/
 zustand.json
 templates/entdeckt/
 templates/gelernt/
+# Vom Bot erzeugte Statusdateien am falschen Ort - kamen am 02.08. durch ein
+# unbedachtes 'git add -A' ins Repository. Der Ort ist behoben, die Sperre
+# bleibt als Netz.
+config/austausch/

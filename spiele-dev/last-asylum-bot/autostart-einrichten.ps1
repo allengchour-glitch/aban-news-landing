@@ -74,6 +74,12 @@ if ($Aufgabenplanung) {
     Register-ScheduledTask -TaskName $Aufgabe -Action $aktion -Trigger $ausloeser `
         -Settings $einst -Description "Spielt Last Asylum selbstaendig weiter" | Out-Null
     Gut "Geplante Aufgabe '$Aufgabe' eingerichtet."
+    # WICHTIG: hier aufhoeren. Ohne das legt der Rest zusaetzlich die Datei im
+    # Autostart-Ordner an - dann starten zwei Bots auf demselben Geraet und
+    # tippen sich gegenseitig ins Handwerk.
+    Write-Host "     Der Autostart-Ordner wird dabei bewusst NICHT zusaetzlich belegt -"
+    Write-Host "     zwei Startwege wuerden zwei Bots auf demselben Geraet bedeuten."
+    exit 0
 }
 
 # --------------------------------------------- Variante B: Autostart-Ordner
@@ -85,12 +91,18 @@ rem Automatisch erzeugt von autostart-einrichten.ps1 - nicht von Hand aendern.
 cd /d "$PSScriptRoot"
 timeout /t $VerzoegerungSekunden /nobreak >nul
 :schleife
-if exist "STOP" goto ende
+rem Bei STOP nicht aussteigen, sondern warten - sonst heisst "STOP loeschen"
+rem in Wahrheit "neu anmelden oder von Hand starten", und der Bot bleibt
+rem stumm liegen, obwohl die Datei laengst weg ist.
+:warten
+if not exist "STOP" goto los
+timeout /t 30 /nobreak >nul
+goto warten
+:los
 powershell -NoProfile -ExecutionPolicy Bypass -WindowStyle Minimized -File "start-windows.ps1" -Scharf -Dauerlauf
 rem Abgestuerzt oder beendet: kurz warten und von vorn.
 timeout /t 60 /nobreak >nul
 goto schleife
-:ende
 "@
 # Laeuft die Schleife gerade, haelt cmd.exe diese Datei offen und sie laesst
 # sich nicht ueberschreiben ("Der Datenstrom war nicht lesbar"). Frueher brach
@@ -121,7 +133,7 @@ Write-Host "     Start:    $VerzoegerungSekunden Sekunden nach jeder Anmeldung"
 Write-Host "     Laufzeit: ohne Limit, nach einem Absturz Neustart in 60 Sekunden"
 Write-Host ""
 Write-Host "  Anhalten:     New-Item `"$PSScriptRoot\STOP`"" -ForegroundColor Yellow
-Write-Host "  Weiterlaufen: die Datei STOP wieder loeschen"
+Write-Host "  Weiterlaufen: die Datei STOP wieder loeschen (laeuft dann binnen 30 Sekunden an)"
 Write-Host "  Ganz weg:     .\autostart-einrichten.ps1 -Entfernen"
 
 if ($Jetzt) {

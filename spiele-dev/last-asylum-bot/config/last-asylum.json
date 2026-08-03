@@ -653,8 +653,58 @@
       "priority": 180,
       "cooldown": 1.0,
       "match": {
-        "template": "ui/btn_bestaetigen.png",
-        "optional": true
+        "all": [
+          {
+            "template": "ui/btn_bestaetigen.png",
+            "optional": true
+          },
+          {
+            "not": {
+              "farbknopf": {
+                "rgb": [
+                  58,
+                  142,
+                  230
+                ],
+                "tolerance": 40,
+                "min_w": 0.12,
+                "max_w": 0.5,
+                "min_h": 0.02,
+                "max_h": 0.08,
+                "region": [
+                  0.0,
+                  0.4,
+                  1.0,
+                  0.68
+                ],
+                "min_fuellung": 0.35
+              }
+            }
+          },
+          {
+            "not": {
+              "farbknopf": {
+                "rgb": [
+                  228,
+                  58,
+                  52
+                ],
+                "tolerance": 45,
+                "min_w": 0.12,
+                "max_w": 0.5,
+                "min_h": 0.02,
+                "max_h": 0.08,
+                "region": [
+                  0.0,
+                  0.4,
+                  1.0,
+                  0.68
+                ],
+                "min_fuellung": 0.35
+              }
+            }
+          }
+        ]
       },
       "do": [
         {
@@ -666,7 +716,8 @@
             1.3
           ]
         }
-      ]
+      ],
+      "_zweck": "Tippt den goldenen 'Bestaetigen'-Knopf. Bis zum 02.08. war die Vorlage nicht vorhanden, die Regel lief also nie - seit die Vorlage da ist, greift sie, und Gold kann im Spiel Geld oder Diamanten kosten. Sie bekommt darum dieselbe Sicherung wie spiel-update-bestaetigen: nur tippen, wenn KEIN blauer oder roter Knopf auf derselben Hoehe danebensteht. Ein Kauf-Dialog hat immer einen zweiten Knopf; ein blosser Hinweis nicht."
     },
     {
       "name": "allianz-hilfe-geben",
@@ -6102,7 +6153,7 @@
           "lebenszeichen": {
             "mindestabstand": 600,
             "bild_abstand": 3600,
-            "bild_faktor": 0.5
+            "bild_faktor": 0.35
           }
         }
       ]

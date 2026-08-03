@@ -134,6 +134,7 @@ class Engine:
             if state_file else None
         )
         self._ansichten: Dict[str, str] = {}
+        self._bild_finger: Optional[bytes] = None
         self._offene_pruefung: Optional[tuple] = None
         self._folgenlos: Dict[str, int] = {}   # Vorlage -> Tipps ohne jede Wirkung
         self._verworfen: set = set()           # aussortiert - nicht mehr suchen
@@ -865,7 +866,7 @@ class Engine:
         if finger in self._ansichten:
             return
 
-        wurzel = spec.get("verzeichnis") or self.cfg.root
+        wurzel = self._projekt_wurzel(spec)
         ordner = os.path.join(wurzel, "austausch", "ansichten")
         nummer = len(self._ansichten) + 1
         name = f"{nummer:02d}-{finger[:8]}.png"
@@ -903,8 +904,14 @@ class Engine:
                                   timeout=180, env=self._git_umgebung())
         try:
             git("add", "--", os.path.join("austausch", "ansichten"))
-            git("commit", "-m", f"Bildschirme gesammelt: {nummer} Ansichten")
-            git("push")
+            eingetragen = git("commit", "-m", f"Bildschirme gesammelt: {nummer} Ansichten")
+            if eingetragen.returncode != 0:
+                return
+            if git("push").returncode != 0:
+                # Wie beim Lebenszeichen: ein liegengebliebener Commit blockiert
+                # jedes spaetere 'pull --ff-only'.
+                git("reset", "--soft", "HEAD~1")
+                self.log.warn("Ansichten nicht hochgeladen - Commit zurueckgenommen")
         except Exception as exc:  # pragma: no cover - Netz/Umgebung
             self.log.debug("Ansichten nicht hochgeladen", grund=str(exc)[:120])
 
@@ -926,6 +933,31 @@ class Engine:
                 json.dump(self._ansichten, fh, ensure_ascii=False, indent=1)
         except OSError:
             pass
+
+    def _projekt_wurzel(self, spec: Dict[str, Any]) -> str:
+        """Der Bot-Ordner - nicht der Ordner der Konfigurationsdatei.
+
+        cfg.root zeigt dorthin, wo last-asylum.json liegt, also nach config/.
+        Lebenszeichen und gesammelte Ansichten landeten damit in
+        config/austausch/, waehrend alle Werkzeuge und die Doku in austausch/
+        nachsehen. Von aussen sah es aus, als schriebe der Bot gar nichts.
+
+        Darum von dort aus aufwaerts suchen, bis ein Ordner nach dem Projekt
+        aussieht (bot.py) oder ein eigenes Git-Verzeichnis hat.
+        """
+        vorgabe = spec.get("verzeichnis")
+        if vorgabe:
+            return str(vorgabe)
+        ordner = self.cfg.root
+        for _ in range(4):
+            if (os.path.exists(os.path.join(ordner, "bot.py"))
+                    or os.path.exists(os.path.join(ordner, ".git"))):
+                return ordner
+            eltern = os.path.dirname(ordner)
+            if eltern == ordner:
+                break
+            ordner = eltern
+        return self.cfg.root
 
     @staticmethod
     def _git_umgebung() -> Dict[str, str]:
@@ -952,7 +984,7 @@ class Engine:
         """
         import subprocess
 
-        wurzel = spec.get("verzeichnis") or self.cfg.root
+        wurzel = self._projekt_wurzel(spec)
         ziel = os.path.join(wurzel, "austausch", "lauf.json")
 
         def git(*rest):
@@ -997,10 +1029,20 @@ class Engine:
                     # Frisch aufnehmen: das zuletzt gesehene Bild kann vom
                     # letzten Tipp stammen und damit schon veraltet sein.
                     schirm = self.capture()
-                    os.makedirs(os.path.dirname(bild_ziel), exist_ok=True)
-                    schirm.box_scaled_by(float(spec.get("bild_faktor", 0.5))).save(bild_ziel)
-                    bild_name = "austausch/lauf.png"
-                    dateien.append(os.path.join("austausch", "lauf.png"))
+                    finger = self._ansicht_finger(schirm)
+                    if finger == self._bild_finger and os.path.exists(bild_ziel):
+                        # Derselbe Bildschirm wie beim letzten Mal - ein zweites
+                        # Bild davon sagt nichts Neues und wiegt ein Vielfaches
+                        # des Berichts. Bei stuendlich sind das sonst 15 MB am
+                        # Tag, die dauerhaft in der Git-Historie liegen bleiben.
+                        bild_name = "austausch/lauf.png (unveraendert)"
+                    else:
+                        os.makedirs(os.path.dirname(bild_ziel), exist_ok=True)
+                        schirm.box_scaled_by(
+                            float(spec.get("bild_faktor", 0.35))).save(bild_ziel)
+                        self._bild_finger = finger
+                        bild_name = "austausch/lauf.png"
+                        dateien.append(os.path.join("austausch", "lauf.png"))
                 except Exception as exc:  # pragma: no cover - Geraet/Datei
                     self.log.debug("Lebenszeichen ohne Bild", grund=str(exc)[:120])
 
@@ -1033,15 +1075,33 @@ class Engine:
             return
         try:
             git("add", "--", *dateien)
-            git("commit", "-m", f"Lebenszeichen {bericht['zeit']} - Schritt {self.steps}")
+            eingetragen = git("commit", "-m",
+                              f"Lebenszeichen {bericht['zeit']} - Schritt {self.steps}")
+            if eingetragen.returncode != 0:
+                text = (eingetragen.stdout + eingetragen.stderr).decode("utf-8", "replace")
+                if "nothing to commit" not in text:
+                    # Der haeufigste Grund: git kennt auf diesem Rechner keinen
+                    # Namen. Bisher fiel das nirgends auf - der Bot schrieb
+                    # brav Dateien, die nie jemand zu sehen bekam.
+                    self.log.warn("Lebenszeichen liess sich nicht eintragen",
+                                  grund=" ".join(text.split())[:200])
+                return
             schub = git("push")
         except Exception as exc:  # pragma: no cover - Netz/Umgebung
             self.log.debug("Lebenszeichen nicht hochgeladen", grund=str(exc)[:120])
             return
         if schub.returncode != 0:
-            # Kein Grund zur Aufregung: die Datei liegt lokal, der naechste
-            # Versuch nimmt sie mit. Nur nicht stillschweigend uebergehen.
-            self.log.debug("Lebenszeichen blieb liegen",
+            # WICHTIG: der Commit liegt jetzt lokal und die Branch ist der
+            # Ferne voraus. Bliebe er liegen, scheiterte jedes kuenftige
+            # 'git pull --ff-only' - der Bot bekaeme nie wieder eine neue
+            # Fassung, wegen einer blossen Statusmeldung. Also zuruecknehmen;
+            # die Datei bleibt im Arbeitsstand und faehrt beim naechsten Mal mit.
+            zurueck = git("reset", "--soft", "HEAD~1")
+            self.log.warn(
+                "Lebenszeichen nicht hochgeladen - Commit zurueckgenommen"
+                if zurueck.returncode == 0 else
+                "Lebenszeichen nicht hochgeladen UND nicht zurueckgenommen - "
+                "die Branch ist der Ferne voraus, kuenftige Updates blockieren",
                            grund=schub.stderr.decode("utf-8", "replace").strip()[:160])
 
     def _selbst_aktualisieren(self, spec: Dict[str, Any]) -> None:
