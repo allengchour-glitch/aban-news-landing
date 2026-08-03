@@ -96,22 +96,29 @@ def find_all(
         return []
 
     # Bei Mehrfach-Suche mehr Kandidaten vorschlagen, sonst fallen Treffer hinten runter.
+    # ALLE Kandidaten verfeinern, erst dann sortieren und kuerzen. Vorher brach
+    # die Schleife beim ersten Treffer ueber der Schwelle ab - bei limit=1 also
+    # immer beim erstbesten Grob-Kandidaten. Der grobe Durchlauf rechnet aber
+    # auf einem stark verkleinerten Bild; welcher Kandidat dort vorn liegt, sagt
+    # wenig darueber, wo der beste Treffer wirklich sitzt. Das abschliessende
+    # sort() war damit wirkungslos - es sortierte eine einelementige Liste.
     candidates = _coarse_candidates(sub, tpl, limit)
-    results: List[Match] = []
-    taken: List[Match] = []
+    gefunden: List[Match] = []
     for cx, cy, radius in candidates:
         best = _refine(sub, tpl, cx, cy, radius)
         if best is None or best[0] < threshold:
             continue
         score, x, y = best
-        m = Match(score, x + sub_l, y + sub_t, tpl.width, tpl.height)
-        if any(_overlaps(m, o) for o in taken):
+        gefunden.append(Match(score, x + sub_l, y + sub_t, tpl.width, tpl.height))
+
+    gefunden.sort(key=lambda m: -m.score)
+    results: List[Match] = []
+    for m in gefunden:
+        if any(_overlaps(m, o) for o in results):
             continue
-        taken.append(m)
         results.append(m)
         if len(results) >= limit:
             break
-    results.sort(key=lambda m: -m.score)
     return results
 
 
@@ -126,7 +133,10 @@ def _coarse_candidates(sub: Image, tpl: Image, limit: int = 1) -> List[Tuple[int
     """Liste von (x, y, Suchradius) in Voll-Koordinaten des Suchfensters."""
     factor = min(1.0, COARSE_WIDTH / float(sub.width))
     # Template darf beim Verkleinern nicht verschwinden.
-    factor = max(factor, 6.0 / max(4, min(tpl.width, tpl.height)))
+    # Nicht unter 14 px schrumpfen lassen: bei 6 px bleibt von einer kleinen
+    # Vorlage im groben Durchlauf kein Muster mehr uebrig, und der richtige Ort
+    # taucht in der Kandidatenliste gar nicht erst auf.
+    factor = max(factor, 14.0 / max(4, min(tpl.width, tpl.height)))
     factor = min(1.0, factor)
     if factor >= 0.95:
         return [(0, 0, max(sub.width, sub.height))]

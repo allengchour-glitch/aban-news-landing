@@ -128,6 +128,13 @@ class Engine:
         self._regel_finger: Dict[str, tuple] = {}
         self._regel_pause: Dict[str, float] = {}
         self._regel_zeiten: Dict[str, list] = {}
+        self._geduld: Dict[str, tuple] = {}   # Regel -> (seit, zuletzt)
+        self._ansichten_datei = (
+            os.path.join(os.path.dirname(os.path.abspath(state_file)), "ansichten.json")
+            if state_file else None
+        )
+        self._ansichten: Dict[str, str] = {}
+        self._bild_finger: Optional[bytes] = None
         self._offene_pruefung: Optional[tuple] = None
         self._folgenlos: Dict[str, int] = {}   # Vorlage -> Tipps ohne jede Wirkung
         self._verworfen: set = set()           # aussortiert - nicht mehr suchen
@@ -153,11 +160,17 @@ class Engine:
         self._last_text: Dict[str, str] = {}
         self._gemeldet_fehlend = set()
         self._tipp_verlauf: List[tuple] = []
+        # Waehrend Ausweg-Suche und Erkundung gilt die Wirkungslos-Bremse nicht:
+        # auf einem festgefahrenen Bildschirm ruehrt sich per Definition nichts,
+        # und genau dann wuerde die Bremse den Fluchtweg stumm legen.
+        self._auf_der_flucht = False
         self._schwarz_gemeldet = False
         self._last_frame: Optional[Image] = None
         self._last_change = clock()
         self._scale: Optional[float] = None
         self._knapp: Dict[str, int] = {}          # Vorlage -> Fehlgriffe am Stueck
+        # Vorlage -> (gesucht, getroffen, bester je erreichter Wert)
+        self._vorlagen_zaehler: Dict[str, tuple] = {}
         self._nachjustiert: Dict[str, int] = {}   # Vorlage -> wie oft schon vermessen
 
         # Standardmaessig aus: Tests und Replays sollen sich nichts merken.
@@ -166,6 +179,7 @@ class Engine:
         self._now = now
         self._letzter_lauf: Dict[str, float] = self._zustand_laden()
         self._auswege = self._auswege_laden()
+        self._ansichten = self._ansichten_laden()
         self._erkundet = self._erkundung_laden()
         self._gelerntes_anwenden()
 
@@ -381,6 +395,14 @@ class Engine:
             ev="vergleich", template=name,
             score=round(wert, 4), schwelle=schwelle, treffer=getroffen,
         )
+        # Mitzaehlen, wie oft eine Vorlage gesucht wurde und wie oft sie traf.
+        # Ein Spiel-Update zeichnet Knoepfe neu; eine Vorlage, die frueher
+        # zuverlaessig traf und jetzt hundertmal hintereinander danebenliegt,
+        # ist veraltet - nicht fehlend. Ohne diese Zaehlung sieht das niemand:
+        # der Bot ueberspringt den Schritt einfach still.
+        gesucht, traf, bestwert = self._vorlagen_zaehler.get(name, (0, 0, 0.0))
+        self._vorlagen_zaehler[name] = (gesucht + 1, traf + (1 if getroffen else 0),
+                                        max(bestwert, wert))
         if getroffen:
             self._knapp.pop(name, None)
             return bester
@@ -467,6 +489,10 @@ class Engine:
             self._selbstbericht(value if isinstance(value, dict) else {})
         elif key == "selbst_aktualisieren":
             self._selbst_aktualisieren(value if isinstance(value, dict) else {})
+        elif key == "ansicht_sammeln":
+            self._ansicht_sammeln(value if isinstance(value, dict) else {})
+        elif key == "lebenszeichen":
+            self._lebenszeichen(value if isinstance(value, dict) else {})
         elif key == "stop":
             raise StopRun(str(value) if value not in (True, None) else "Aktion 'stop'")
         else:
@@ -639,18 +665,53 @@ class Engine:
         # Vorlagen, die deutlich aus der Reihe tanzen, stammen aus einer anderen
         # Aufnahme-Groesse. Statt sie den Median verfaelschen zu lassen, bekommt
         # jede von ihnen ihren eigenen Nachschlag.
-        ausreisser = {}
+        # WICHTIG - hier steckte ein Fehler, der zu falschen Tippstellen fuehrt.
+        # Der gemessene Faktor f ist ABSOLUT (die Messung oben laesst den
+        # eigenen Nachschlag bewusst weg), gesucht ist aber der Nachschlag
+        # RELATIV zum Median. Bisher wurde nur eingetragen, wer diesmal aus der
+        # Reihe tanzte. Eine Vorlage, die beim vorigen Mal Ausreisser war und
+        # jetzt nicht mehr, behielt ihren alten Nachschlag - und der wurde ab
+        # da zusaetzlich zum neuen Median gerechnet. Beispiel: eigen 1.3 aus
+        # Lauf 1, in Lauf 2 misst sich dieselbe Vorlage zu 1.0 bei Median 1.0 -
+        # gesucht 1.0, gerechnet 1.3. Die Vorlage passt dann 30 % zu gross,
+        # trifft daneben, und der Bot tippt an der falschen Stelle.
+        #
+        # Darum: fuer JEDE gemessene Vorlage neu setzen (oder loeschen, wenn
+        # kein Nachschlag noetig ist) und die nicht gemessenen umrechnen,
+        # damit ihre absolute Groesse gleich bleibt.
+        vorher_skala = self.cfg.ui_skala
+        neue_skalen = dict(self.cfg.template_skalen)
+        gemessen = {name for name, _, _ in gefunden}
         for name, f, _ in gefunden:
-            if median and abs(f - median) / median > 0.08:
-                ausreisser[name] = round(f / median, 3)
-        if ausreisser:
-            self.cfg.template_skalen.update(ausreisser)
+            nachschlag = round(f / median, 3) if median else 1.0
+            if abs(nachschlag - 1.0) <= 0.03:
+                neue_skalen.pop(name, None)
+            else:
+                neue_skalen[name] = nachschlag
+        if median and vorher_skala and abs(median - vorher_skala) > 0.001:
+            # Nicht gemessene Vorlagen: ihr Nachschlag galt gegen den ALTEN
+            # Median. Damit sie gleich gross bleiben, mit dem Verhaeltnis
+            # nachziehen.
+            verhaeltnis = vorher_skala / median
+            for name in list(neue_skalen):
+                if name in gemessen:
+                    continue
+                gezogen = round(neue_skalen[name] * verhaeltnis, 3)
+                if abs(gezogen - 1.0) <= 0.03:
+                    neue_skalen.pop(name, None)
+                else:
+                    neue_skalen[name] = gezogen
+
+        if neue_skalen != self.cfg.template_skalen:
+            entfallen = sorted(set(self.cfg.template_skalen) - set(neue_skalen))
+            self.cfg.template_skalen = neue_skalen
             self.log.info(
-                "Vorlagen mit eigener Groesse gemerkt",
-                vorlagen=", ".join(f"{n}={v}" for n, v in sorted(ausreisser.items())),
+                "Vorlagen mit eigener Groesse aufgefrischt",
+                vorlagen=", ".join(f"{n}={v}" for n, v in sorted(neue_skalen.items())) or "keine",
+                entfallen=", ".join(entfallen) or "keine",
             )
             self._config_patch(
-                lambda roh: roh.setdefault("template_skalen", {}).update(ausreisser)
+                lambda roh: roh.__setitem__("template_skalen", dict(neue_skalen))
             )
 
         if abs(median - self.cfg.ui_skala) < 0.03:
@@ -687,6 +748,28 @@ class Engine:
             hit = matcher.best_score(screen, tpl, scale=basis * f)
             if hit and hit.score > bester + 0.02:
                 bester, bester_faktor = hit.score, f
+
+        # Das Raster springt in Schritten von acht bis zehn Prozent - deutlich
+        # gröber, als eine Vorlage es vertraegt. Schon fuenf Prozent daneben
+        # kosten spuerbar Punkte, der wahre Gipfel liegt also oft ZWISCHEN zwei
+        # Rasterpunkten. Darum um den besten Rasterwert herum noch einmal fein
+        # nachfahren: das kostet ein paar Sekunden und trifft danach die Mitte
+        # des Knopfes statt seinen Rand.
+        if bester_faktor is not None:
+            fein = bester_faktor
+            schritt = 0.02
+            umgebung = [round(bester_faktor + i * schritt, 3) for i in range(-5, 6) if i]
+            for f in umgebung:
+                if f <= 0:
+                    continue
+                hit = matcher.best_score(screen, tpl, scale=basis * f)
+                if hit and hit.score > bester:
+                    bester, fein = hit.score, f
+            if fein != bester_faktor:
+                self.log.debug("Feinjustage", template=name,
+                               grob=bester_faktor, fein=fein, score=round(bester, 3))
+            bester_faktor = fein
+
         if bester_faktor is None or bester < schwelle:
             # Sehr niedrige Werte heissen: die Vorlage ist gar nicht im Bild.
             # Das ist kein Groessen-Problem und darf keinen der drei Versuche
@@ -746,19 +829,73 @@ class Engine:
         except Exception as exc:
             self.log.warn(f"Gelerntes nicht lesbar: {exc}")
             return
+        # Alles Gelernte kommt aus dem Bot selbst - eine halb geschriebene oder
+        # von Hand verstellte Datei darf ihn aber weder abstuerzen lassen noch
+        # mit unsinnigen Werten weiterlaufen lassen. Also jeden Wert einzeln
+        # pruefen und begrenzen, statt der Datei zu glauben.
+        def zahl(wert, unten, oben):
+            try:
+                z = float(wert)
+            except (TypeError, ValueError):
+                return None
+            return z if unten <= z <= oben and z == z else None
+
+        verworfen = []
+        skala = zahl(roh.get("ui_skala"), 0.2, 3.0)
         if "ui_skala" in roh:
-            self.cfg.ui_skala = float(roh["ui_skala"])
+            if skala is None:
+                verworfen.append(f"ui_skala={roh.get('ui_skala')!r}")
+            else:
+                self.cfg.ui_skala = skala
         for name, wert in (roh.get("template_skalen") or {}).items():
-            self.cfg.template_skalen[str(name)] = float(wert)
-        takte = {t["name"]: t["every"] for t in roh.get("tasks", []) if "every" in t}
+            eigen = zahl(wert, 0.2, 5.0)
+            if eigen is None:
+                verworfen.append(f"{name}={wert!r}")
+                continue
+            self.cfg.template_skalen[str(name)] = eigen
+        takte = {}
+        for eintrag in roh.get("tasks", []):
+            if not isinstance(eintrag, dict) or "every" not in eintrag:
+                continue
+            takt = zahl(eintrag.get("every"), 5.0, 86400.0)
+            if takt is None:
+                verworfen.append(f"Takt {eintrag.get('name')}={eintrag.get('every')!r}")
+                continue
+            takte[eintrag.get("name")] = takt
         for task in self.cfg.tasks:
             if task.name in takte:
-                task.every = float(takte[task.name])
+                task.every = takte[task.name]
+        if verworfen:
+            self.log.warn("Unsinnige Werte im Gelernten uebergangen",
+                          werte=", ".join(verworfen[:8]))
         if roh:
             self.log.info(
                 "Gelerntes uebernommen", datei=os.path.basename(self._gelernt_datei),
                 groessen=len(roh.get("template_skalen") or {}), takte=len(takte),
             )
+
+    VERDACHT_AB = 25          # so oft gesucht, bevor "trifft nie" etwas heisst
+
+    def veraltete_vorlagen(self, ab: Optional[int] = None) -> List[tuple]:
+        """Vorlagen, die oft gesucht wurden und nie trafen.
+
+        Das ist der Unterschied zwischen "Vorlage fehlt" (nie geschnitten) und
+        "Vorlage veraltet" (geschnitten, aber das Spiel sieht heute anders
+        aus). Der zweite Fall war bisher voellig unsichtbar - der Bot
+        uebersprang den Schritt still, und niemand erfuhr, dass ein Update ihm
+        die Grundlage entzogen hat.
+
+        Der beste je erreichte Wert sagt dabei, woran es liegt: nahe an der
+        Schwelle heisst 'knapp daneben, vielleicht nur die Groesse', sehr
+        niedrig heisst 'dieses Bild gibt es so nicht mehr'.
+        """
+        grenze = int(ab if ab is not None else self.VERDACHT_AB)
+        raus = []
+        for name, (gesucht, traf, bestwert) in self._vorlagen_zaehler.items():
+            if gesucht >= grenze and traf == 0:
+                raus.append((name, gesucht, round(bestwert, 3)))
+        raus.sort(key=lambda e: -e[1])
+        return raus
 
     def _selbstbericht(self, spec: Dict[str, Any]) -> None:
         """Sagen, was gerade fehlt - und was es kostet.
@@ -768,6 +905,15 @@ class Engine:
         Aufgaben blockiert, und nennt die teuersten zuerst. Dann weiss man
         genau, welcher Ausschnitt am meisten bringt.
         """
+        # offene_templates fuellt sich erst bei validate(). Wird der Bericht
+        # aus einem Zusammenhang gerufen, in dem das nicht lief, meldete er
+        # froehlich "keine Vorlage fehlt" - obwohl 32 fehlten. Lieber einmal
+        # selbst nachsehen als eine beruhigende Unwahrheit ausgeben.
+        if not self.cfg.offene_templates:
+            try:
+                self.cfg.validate()
+            except Exception as exc:  # pragma: no cover - Konfigurationsfehler
+                self.log.debug("Selbstbericht: validate ging nicht", grund=str(exc)[:120])
         offen = list(self.cfg.offene_templates)
         if not offen:
             self.log.info("Selbstbericht: keine Vorlage fehlt")
@@ -780,6 +926,15 @@ class Engine:
                 name = knoten.get("template")
                 if isinstance(name, str) and name in betroffen:
                     betroffen[name].add(wo)
+                # tap_first fuehrt seine Vorlagen als blosse Zeichenketten in
+                # 'of'. Ohne diesen Zweig blieben sie im Bericht unsichtbar -
+                # von 32 fehlenden Vorlagen tauchten nur sechs ueberhaupt auf,
+                # und ausgerechnet die aus tap_first fehlten alle.
+                fuer = knoten.get("of")
+                if isinstance(fuer, list):
+                    for eintrag in fuer:
+                        if isinstance(eintrag, str) and eintrag in betroffen:
+                            betroffen[eintrag].add(wo)
                 for v in knoten.values():
                     suche(v, wo)
             elif isinstance(knoten, list):
@@ -800,7 +955,9 @@ class Engine:
             key=lambda kv: (kritisch.index(kv[0]) if kv[0] in kritisch else len(kritisch),
                             -len(kv[1]), kv[0]),
         )
-        wieviele = int(spec.get("hoechstens", 6))
+        # Vorgabe hochgesetzt: bei sechs blieben 26 von 32 fehlenden Vorlagen
+        # ungenannt - der Bericht sagte damit vor allem, was er verschweigt.
+        wieviele = int(spec.get("hoechstens", 20))
         self.log.info(
             f"Selbstbericht: {len(offen)} Vorlagen fehlen - die wichtigsten zuerst"
         )
@@ -821,12 +978,291 @@ class Engine:
                           folgenlose_tipps=wie_oft)
         if self._auswege:
             self.log.info("   Gelernte Auswege", bildschirme=len(self._auswege))
+        veraltet = self.veraltete_vorlagen()
+        if veraltet:
+            self.log.warn(
+                f"   {len(veraltet)} Vorlage(n) treffen nie mehr - moeglicherweise "
+                f"vom Spiel neu gezeichnet")
+            for name, gesucht, bestwert in veraltet[:8]:
+                self.log.warn(f"      {name}", gesucht=gesucht, bester_wert=bestwert)
         gelernt = len(self.cfg.template_gruppe("gelernt/blasen/*.png"))
         verworfen = len(self.cfg.template_gruppe("gelernt/verworfen/*.png"))
         self.log.info(
             "   Selbst gelernt", brauchbar=gelernt, aussortiert=verworfen,
             eigene_groessen=len(self.cfg.template_skalen),
         )
+
+    def _ansicht_sammeln(self, spec: Dict[str, Any]) -> None:
+        """Jede noch nie gesehene Ansicht einmal ins Repository legen.
+
+        32 Vorlagen fehlen, und jede blockiert Aufgaben - Versammlung
+        beitreten, Allianz-Forschung, Falkenturm. Vorlagen kann nur schneiden,
+        wer den Bildschirm sieht; bisher hiess das: der Nutzer macht ein Foto.
+        Der Bot laeuft aber ohnehin durch all diese Bildschirme.
+
+        Also sammelt er sie selbst ein: neue Ansicht (nach dem groben
+        Fingerabdruck, der auch Haenger erkennt) -> einmal ablegen, nie wieder.
+        Halbe Kantenlaenge reicht zum Erkennen, was drauf ist; wo es dann um
+        Millimeter geht, holt 'teilen' das Bild in voller Aufloesung nach.
+        """
+        import subprocess
+
+        hoechstens = int(spec.get("hoechstens", 40))
+        if len(self._ansichten) >= hoechstens:
+            return
+        screen = self.screen
+        if screen is None or screen.ist_einfarbig():
+            return
+
+        finger = self._ansicht_finger(screen).hex()[:24]
+        if finger in self._ansichten:
+            return
+
+        wurzel = self._projekt_wurzel(spec)
+        ordner = os.path.join(wurzel, "austausch", "ansichten")
+        nummer = len(self._ansichten) + 1
+        name = f"{nummer:02d}-{finger[:8]}.png"
+        try:
+            os.makedirs(ordner, exist_ok=True)
+            screen.box_scaled_by(float(spec.get("bild_faktor", 0.5))).save(
+                os.path.join(ordner, name))
+        except (OSError, ValueError) as exc:
+            self.log.debug("Ansicht liess sich nicht ablegen", grund=str(exc)[:120])
+            return
+
+        self._ansichten[finger] = name
+        self._ansichten_sichern()
+        # Wonach der Bot gerade sucht, sagt oft mehr ueber den Bildschirm als
+        # das Bild allein - das steht in der Liste daneben.
+        letzte = sorted(self.stats.items(), key=lambda p: -p[1])[:3]
+        # Das Wichtigste an einer neuen Ansicht ist, ob der Bot ueberhaupt
+        # wusste, was er damit anfangen soll. Unbekannte Bildschirme sind
+        # genau die, fuer die eine Vorlage fehlt - und die zuerst dran sind.
+        kennung = "UNBEKANNT" if self.unknown_streak > 0 else "bekannt"
+        try:
+            with open(os.path.join(ordner, "liste.txt"), "a", encoding="utf-8") as fh:
+                fh.write(f"{name}\t{time.strftime('%Y-%m-%d %H:%M:%S')}\t"
+                         f"Schritt {self.steps}\t{kennung}\t{dict(letzte)}\n")
+        except OSError:
+            pass
+        self.bump("ansicht-gesammelt")
+        self.log.info(f"Neue Ansicht abgelegt ({nummer}/{hoechstens})", datei=name)
+
+        # Nicht bei jedem Bild hochladen - das gaebe vierzig Commits.
+        stapel = int(spec.get("stapel", 5))
+        if nummer % stapel and nummer < hoechstens:
+            return
+        if not spec.get("hochladen", True):
+            return
+
+        def git(*rest):
+            return subprocess.run(["git", "-C", wurzel, *rest], capture_output=True,
+                                  timeout=180, env=self._git_umgebung())
+        try:
+            git("add", "--", os.path.join("austausch", "ansichten"))
+            eingetragen = git("commit", "-m", f"Bildschirme gesammelt: {nummer} Ansichten")
+            if eingetragen.returncode != 0:
+                return
+            if git("push").returncode != 0:
+                # Wie beim Lebenszeichen: ein liegengebliebener Commit blockiert
+                # jedes spaetere 'pull --ff-only'.
+                git("reset", "--soft", "HEAD~1")
+                self.log.warn("Ansichten nicht hochgeladen - Commit zurueckgenommen")
+        except Exception as exc:  # pragma: no cover - Netz/Umgebung
+            self.log.warn("Ansichten nicht hochgeladen", grund=str(exc)[:120])
+
+    def _ansichten_laden(self) -> Dict[str, str]:
+        if not self._ansichten_datei or not os.path.exists(self._ansichten_datei):
+            return {}
+        try:
+            with open(self._ansichten_datei, "r", encoding="utf-8") as fh:
+                daten = json.load(fh)
+            return {str(k): str(v) for k, v in daten.items()} if isinstance(daten, dict) else {}
+        except (OSError, ValueError):
+            return {}
+
+    def _ansichten_sichern(self) -> None:
+        if not self._ansichten_datei:
+            return
+        try:
+            with open(self._ansichten_datei, "w", encoding="utf-8") as fh:
+                json.dump(self._ansichten, fh, ensure_ascii=False, indent=1)
+        except OSError:
+            pass
+
+    def _projekt_wurzel(self, spec: Dict[str, Any]) -> str:
+        """Der Bot-Ordner - nicht der Ordner der Konfigurationsdatei.
+
+        cfg.root zeigt dorthin, wo last-asylum.json liegt, also nach config/.
+        Lebenszeichen und gesammelte Ansichten landeten damit in
+        config/austausch/, waehrend alle Werkzeuge und die Doku in austausch/
+        nachsehen. Von aussen sah es aus, als schriebe der Bot gar nichts.
+
+        Darum von dort aus aufwaerts suchen, bis ein Ordner nach dem Projekt
+        aussieht (bot.py) oder ein eigenes Git-Verzeichnis hat.
+        """
+        vorgabe = spec.get("verzeichnis")
+        if vorgabe:
+            return str(vorgabe)
+        ordner = self.cfg.root
+        for _ in range(4):
+            if (os.path.exists(os.path.join(ordner, "bot.py"))
+                    or os.path.exists(os.path.join(ordner, ".git"))):
+                return ordner
+            eltern = os.path.dirname(ordner)
+            if eltern == ordner:
+                break
+            ordner = eltern
+        return self.cfg.root
+
+    @staticmethod
+    def _git_umgebung() -> Dict[str, str]:
+        """Umgebung fuer jeden git-Aufruf: niemals nach Zugangsdaten fragen.
+
+        Fragt git nach Benutzer und Passwort, wartet es auf eine Eingabe, die
+        hier nie kommt - der Aufruf haengt bis zum Zeitlimit, und das alle paar
+        Minuten. Von aussen sieht der Bot dann eingefroren aus, ohne dass
+        irgendwo ein Fehler steht. Lieber sauber scheitern.
+        """
+        umgebung = dict(os.environ)
+        umgebung["GIT_TERMINAL_PROMPT"] = "0"
+        umgebung["GCM_INTERACTIVE"] = "never"
+        return umgebung
+
+    def _lebenszeichen(self, spec: Dict[str, Any]) -> None:
+        """Kurz ins Repository schreiben, dass der Bot lebt - und was er tut.
+
+        Bisher war die Frage 'laeuft der Bot?' nur am PC zu beantworten. Von
+        aussen sah ein abgestuerzter Bot genauso aus wie ein zufriedener: gar
+        nichts. Diese Datei schliesst die Luecke - Zeitpunkt, Schrittzahl,
+        Fassung und die haeufigsten Zaehler. Steht der Zeitstempel still, ist
+        der Bot stehengeblieben, und man sieht sofort, bei welchem Stand.
+        """
+        import subprocess
+
+        wurzel = self._projekt_wurzel(spec)
+        ziel = os.path.join(wurzel, "austausch", "lauf.json")
+
+        def git(*rest):
+            return subprocess.run(["git", "-C", wurzel, *rest], capture_output=True,
+                                  timeout=120, env=self._git_umgebung())
+
+        # Ein abstuerzender Bot startet jede Minute neu. Ohne Sperre schriebe
+        # er dann jede Minute einen Commit - genau dann, wenn ohnehin niemand
+        # etwas davon hat. Also ein Mindestabstand, unabhaengig vom Takt.
+        abstand = float(spec.get("mindestabstand", 600))
+        if abstand > 0 and os.path.exists(ziel):
+            try:
+                if time.time() - os.path.getmtime(ziel) < abstand:
+                    self.log.debug("Lebenszeichen noch frisch - nichts zu tun")
+                    return
+            except OSError:
+                pass
+
+        try:
+            kopf = git("rev-parse", "--short", "HEAD").stdout.decode().strip()
+        except Exception as exc:  # pragma: no cover - Netz/Umgebung
+            self.log.debug("Lebenszeichen: kein Git", grund=str(exc)[:120])
+            return
+
+        # Ein Bild dazu, sonst weiss man zwar DASS er laeuft, aber nicht WO er
+        # steht. Halbe Groesse reicht zum Wiedererkennen und kostet ein Drittel;
+        # fuer einen Ausschnitt in voller Aufloesung gibt es 'teilen'. Eigener,
+        # laengerer Abstand - ein Bild wiegt hundertmal so viel wie die Zahlen.
+        dateien = [os.path.join("austausch", "lauf.json")]
+        bild_name = None
+        bild_abstand = float(spec.get("bild_abstand", 3600))
+        bild_ziel = os.path.join(wurzel, "austausch", "lauf.png")
+        if bild_abstand >= 0:
+            faellig = True
+            if bild_abstand > 0 and os.path.exists(bild_ziel):
+                try:
+                    faellig = time.time() - os.path.getmtime(bild_ziel) >= bild_abstand
+                except OSError:
+                    pass
+            if faellig:
+                try:
+                    # Frisch aufnehmen: das zuletzt gesehene Bild kann vom
+                    # letzten Tipp stammen und damit schon veraltet sein.
+                    schirm = self.capture()
+                    finger = self._ansicht_finger(schirm)
+                    if finger == self._bild_finger and os.path.exists(bild_ziel):
+                        # Derselbe Bildschirm wie beim letzten Mal - ein zweites
+                        # Bild davon sagt nichts Neues und wiegt ein Vielfaches
+                        # des Berichts. Bei stuendlich sind das sonst 15 MB am
+                        # Tag, die dauerhaft in der Git-Historie liegen bleiben.
+                        bild_name = "austausch/lauf.png (unveraendert)"
+                    else:
+                        os.makedirs(os.path.dirname(bild_ziel), exist_ok=True)
+                        schirm.box_scaled_by(
+                            float(spec.get("bild_faktor", 0.35))).save(bild_ziel)
+                        self._bild_finger = finger
+                        bild_name = "austausch/lauf.png"
+                        dateien.append(os.path.join("austausch", "lauf.png"))
+                except Exception as exc:  # pragma: no cover - Geraet/Datei
+                    self.log.debug("Lebenszeichen ohne Bild", grund=str(exc)[:120])
+
+        # Die groessten Zaehler zuerst - das ist die Kurzfassung dessen, womit
+        # der Bot seine Zeit verbracht hat.
+        oben = sorted(self.stats.items(), key=lambda p: -p[1])[:12]
+        bericht = {
+            "zeit": time.strftime("%Y-%m-%d %H:%M:%S"),
+            "zeit_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+            "fassung": kopf,
+            "schritte": self.steps,
+            "gleiche_ansicht": self.gleiche_ansicht,
+            "unbekannt_am_stueck": self.unknown_streak,
+            "zaehler": dict(oben),
+            "vorlagen_offen": len(self.cfg.offene_templates),
+            "vorlagen_veraltet": [
+                {"vorlage": n, "gesucht": g, "bester_wert": b}
+                for n, g, b in self.veraltete_vorlagen()[:10]
+            ],
+            "verworfene_vorlagen": sorted(self._verworfen),
+            "verdaechtige_regeln": {k: v for k, v in self._folgenlos.items() if v >= 2},
+            "bild": bild_name,
+        }
+        try:
+            os.makedirs(os.path.dirname(ziel), exist_ok=True)
+            with open(ziel, "w", encoding="utf-8") as fh:
+                json.dump(bericht, fh, ensure_ascii=False, indent=1)
+                fh.write("\n")
+        except OSError as exc:
+            self.log.warn(f"Lebenszeichen liess sich nicht schreiben: {exc}")
+            return
+
+        if not spec.get("hochladen", True):
+            return
+        try:
+            git("add", "--", *dateien)
+            eingetragen = git("commit", "-m",
+                              f"Lebenszeichen {bericht['zeit']} - Schritt {self.steps}")
+            if eingetragen.returncode != 0:
+                text = (eingetragen.stdout + eingetragen.stderr).decode("utf-8", "replace")
+                if "nothing to commit" not in text:
+                    # Der haeufigste Grund: git kennt auf diesem Rechner keinen
+                    # Namen. Bisher fiel das nirgends auf - der Bot schrieb
+                    # brav Dateien, die nie jemand zu sehen bekam.
+                    self.log.warn("Lebenszeichen liess sich nicht eintragen",
+                                  grund=" ".join(text.split())[:200])
+                return
+            schub = git("push")
+        except Exception as exc:  # pragma: no cover - Netz/Umgebung
+            self.log.debug("Lebenszeichen nicht hochgeladen", grund=str(exc)[:120])
+            return
+        if schub.returncode != 0:
+            # WICHTIG: der Commit liegt jetzt lokal und die Branch ist der
+            # Ferne voraus. Bliebe er liegen, scheiterte jedes kuenftige
+            # 'git pull --ff-only' - der Bot bekaeme nie wieder eine neue
+            # Fassung, wegen einer blossen Statusmeldung. Also zuruecknehmen;
+            # die Datei bleibt im Arbeitsstand und faehrt beim naechsten Mal mit.
+            zurueck = git("reset", "--soft", "HEAD~1")
+            self.log.warn(
+                "Lebenszeichen nicht hochgeladen - Commit zurueckgenommen"
+                if zurueck.returncode == 0 else
+                "Lebenszeichen nicht hochgeladen UND nicht zurueckgenommen - "
+                "die Branch ist der Ferne voraus, kuenftige Updates blockieren",
+                           grund=schub.stderr.decode("utf-8", "replace").strip()[:160])
 
     def _selbst_aktualisieren(self, spec: Dict[str, Any]) -> None:
         """Neue Fassung holen und sich dafuer selbst beenden.
@@ -840,21 +1276,24 @@ class Engine:
 
         wurzel = spec.get("verzeichnis") or self.cfg.root
         try:
+            umgebung = self._git_umgebung()
             vorher = subprocess.run(["git", "-C", wurzel, "rev-parse", "HEAD"],
-                                    capture_output=True, timeout=60)
+                                    capture_output=True, timeout=60, env=umgebung)
             if vorher.returncode != 0:
                 self.log.debug("Kein Git-Verzeichnis - kein Selbst-Update")
                 return
             hole = subprocess.run(["git", "-C", wurzel, "pull", "--ff-only"],
-                                  capture_output=True, timeout=180)
+                                  capture_output=True, timeout=180, env=umgebung)
             nachher = subprocess.run(["git", "-C", wurzel, "rev-parse", "HEAD"],
-                                     capture_output=True, timeout=60)
+                                     capture_output=True, timeout=60, env=umgebung)
         except Exception as exc:  # pragma: no cover - Netz/Umgebung
             self.log.warn(f"Selbst-Update nicht moeglich: {exc}")
             return
         if hole.returncode != 0:
             grund = hole.stderr.decode("utf-8", "replace").strip()
-            if "would be overwritten" in grund or "local changes" in grund:
+            abgedriftet = ("not possible to fast-forward" in grund.lower()
+                           or "diverged" in grund.lower())
+            if "would be overwritten" in grund or "local changes" in grund or abgedriftet:
                 # Genau die Falle, wegen der Gelerntes jetzt daneben liegt:
                 # eine von Hand oder frueher vom Bot geaenderte Datei blockiert
                 # jede neue Fassung - still, bis es jemand bemerkt.
@@ -864,7 +1303,11 @@ class Engine:
                     grund=grund.splitlines()[0][:160] if grund else "",
                 )
             else:
-                self.log.debug("git pull ging nicht durch", grund=grund[:200])
+                # Nicht auf debug verstecken: die Aufgabe laeuft nur alle 30
+                # Minuten, es droht also keine Log-Flut - und ohne Meldung
+                # bleibt der Bot stumm auf einer alten Fassung stehen.
+                self.log.warn("Selbst-Update fehlgeschlagen - Bot bleibt auf alter Fassung",
+                              grund=" ".join(grund.split())[:200])
             return
         alt = vorher.stdout.decode().strip()
         neu = nachher.stdout.decode().strip()
@@ -898,6 +1341,19 @@ class Engine:
         min_laeufe = int(spec.get("min_laeufe", 5))
         unten = float(spec.get("min_takt", 300))
         oben = float(spec.get("max_takt", 86400))
+        # Aufgaben, deren Sinn NICHT im Antippen liegt: Waechter, Selbstpflege,
+        # Berichte. Am Erfolgsmass "wie viele Tipps" gemessen laufen die
+        # zwangslaeufig leer und wuerden bis auf 24 Stunden gedrosselt - also
+        # genau die Aufgaben, die haeufig laufen muessen, damit ueberhaupt
+        # jemand merkt, wenn etwas klemmt.
+        ausnahmen = set(spec.get("ausnahmen", []))
+
+        # Nur Zeilen seit der letzten Anpassung auswerten. Sonst zaehlen
+        # dieselben alten Laeufe bei jedem Durchgang erneut mit, und der Takt
+        # schraubt sich Runde um Runde weiter nach oben, ohne dass je neue
+        # Belege dazukommen.
+        stand = float(getattr(self.cfg, "takte_stand", 0.0) or 0.0)
+        neuster = stand
 
         werte: Dict[str, List[int]] = {}
         for pfad in sorted(_glob.glob(muster)):
@@ -908,19 +1364,26 @@ class Engine:
                             d = json.loads(zeile)
                         except ValueError:
                             continue
-                        if d.get("ev") == "aufgabe":
-                            werte.setdefault(d["aufgabe"], []).append(int(d.get("tipps", 0)))
+                        if d.get("ev") != "aufgabe":
+                            continue
+                        ts = float(d.get("ts", 0.0) or 0.0)
+                        if ts and ts <= stand:
+                            continue
+                        neuster = max(neuster, ts)
+                        werte.setdefault(d["aufgabe"], []).append(int(d.get("tipps", 0)))
             except OSError:
                 continue
 
         if not werte:
-            self.log.debug("Noch keine Aufgaben-Daten zum Auswerten")
+            self.log.debug("Keine neuen Aufgaben-Daten seit der letzten Anpassung")
             return
 
         aenderungen = {}
         for task in self.cfg.tasks:
             reihe = werte.get(task.name)
             if not task.enabled or not reihe or len(reihe) < min_laeufe:
+                continue
+            if task.name in ausnahmen:
                 continue
             schnitt = sum(reihe) / len(reihe)
             alt = task.every
@@ -936,6 +1399,12 @@ class Engine:
                 continue
             task.every = neu
             aenderungen[task.name] = (alt, neu, schnitt, len(reihe))
+
+        # Auch ohne Aenderung den Stand fortschreiben - sonst werden dieselben
+        # Zeilen beim naechsten Durchgang wieder angerechnet.
+        if neuster > stand:
+            self.cfg.takte_stand = neuster
+            self._config_patch(lambda roh: roh.__setitem__("takte_stand", neuster))
 
         if not aenderungen:
             self.log.info("Takte passen - nichts zu aendern")
@@ -1006,8 +1475,15 @@ class Engine:
             ausschnitt = vorher.crop(x0, y0, x1 - x0, y1 - y0)
             if _schon_bekannt(ausschnitt, ziel):
                 continue
-            name = f"{len(vorhanden) + neu:02d}.png"
+            # Freie Nummer suchen statt zaehlen: sortiert _pruefe_verdacht eine
+            # Vorlage aus, entsteht eine Luecke in der Nummerierung - und die
+            # naechste gelernte Vorlage ueberschriebe dann eine vorhandene.
+            i = 0
+            while os.path.exists(os.path.join(ziel, f"{i:02d}.png")):
+                i += 1
+            name = f"{i:02d}.png"
             ausschnitt.save(os.path.join(ziel, name))
+            vorhanden.append(name)
             neu += 1
             self.log.info(
                 "Neues Objekt gelernt", datei=f"{ordner}/{name}",
@@ -1070,7 +1546,7 @@ class Engine:
         self.bump("nachrichten")
         self.log.info(f"⌨ getippt: {text}")
 
-    def _tap_point(self, value: Any) -> None:
+    def _tap_point(self, value: Any, zwingend: bool = False) -> None:
         screen = self.screen or self.capture()
         # Liste von Punkten? Einen zufaellig nehmen - so trifft man auch dann
         # freies Gelaende, wenn an einer Stelle gerade ein Gebaeude steht.
@@ -1080,14 +1556,22 @@ class Engine:
         px = int(round(x * screen.width)) if abs(x) <= 1.0 else int(x)
         py = int(round(y * screen.height)) if abs(y) <= 1.0 else int(y)
         px, py = human_point(px, py, max(6, screen.width // 60), max(6, screen.height // 120))
-        self._tap_abs(px, py, "Punkt")
+        self._tap_abs(px, py, "Punkt", zwingend=zwingend)
 
-    def _tap_abs(self, x: int, y: int, why: str) -> None:
+    def _tap_abs(self, x: int, y: int, why: str, zwingend: bool = False) -> None:
+        """Antippen. 'zwingend' hebt nur die Wirkungslos-Bremse auf, nie die Tabu-Zone.
+
+        Die Bremse fragt: hat sich an dieser Stelle beim letzten Mal etwas
+        geruehrt? Auf einem festgefahrenen Bildschirm lautet die Antwort immer
+        nein - und genau dort setzen Ausweg-Suche und Erkundung an. Ohne diese
+        Ausnahme legt die Bremse also ausgerechnet den Fluchtweg stumm, und der
+        Bot bleibt stehen, obwohl er den Ausgang schon gefunden hatte.
+        """
         screen = self.screen
         if screen is not None:
             x = max(0, min(x, screen.width - 1))
             y = max(0, min(y, screen.height - 1))
-            if self._wirkungslos(x, y, screen):
+            if not (zwingend or self._auf_der_flucht) and self._wirkungslos(x, y, screen):
                 self.log.debug("Gleicher Tipp ohne Wirkung - uebersprungen", x=x, y=y)
                 self.bump("wirkungslos")
                 # Uebersprungen heisst: derselbe Tipp hat schon einmal nichts
@@ -1242,6 +1726,11 @@ class Engine:
             self.bump(f"rule:{rule.name}")
             score = f" ({self.last_match.score:.2f})" if self.last_match else ""
             self.log.info(f"✓ {rule.name}{score}")
+            if self._noch_geduldig(rule):
+                # Sonst zaehlt die Festgefahren-Pruefung den Ladebildschirm hoch
+                # und schickt den Bot nach fuenfzehn Schritten auf Ausweg-Suche
+                # - mitten in einen Vorgang, der von allein fertig wird.
+                self.gleiche_ansicht = 0
             self.run_actions(rule.do, f"Regel '{rule.name}'")
             return True
         return False
@@ -1317,7 +1806,11 @@ class Engine:
         """
         schluessel = self._ansicht_schluessel()
         if schluessel is None:
-            self.run_actions(self.cfg.on_unknown, woher)
+            self._auf_der_flucht = True
+            try:
+                self.run_actions(self.cfg.on_unknown, woher)
+            finally:
+                self._auf_der_flucht = False
             return
         schritte = list(self.cfg.on_unknown)
         gemerkt = self._auswege.get(schluessel)
@@ -1325,7 +1818,7 @@ class Engine:
             # Auf diesem Bildschirm hat der Bot den Knopf selbst gefunden.
             xr, yr = gemerkt["tap"]
             self.log.debug("Bekannter Bildschirm - selbst gefundener Knopf", bei=f"{xr}/{yr}")
-            self._tap_point([[xr, yr]])
+            self._tap_point([[xr, yr]], zwingend=True)
             self._do_sleep([0.8, 1.2])
             if self._ansicht_finger(self.capture()) != self._finger_jetzt:
                 return
@@ -1337,7 +1830,11 @@ class Engine:
                            schritt=gemerkt + 1)
         vorher = self._finger_jetzt
         for nr in reihenfolge:
-            self.run_actions([schritte[nr]], woher)
+            self._auf_der_flucht = True
+            try:
+                self.run_actions([schritte[nr]], woher)
+            finally:
+                self._auf_der_flucht = False
             self._do_sleep([0.8, 1.2])
             jetzt = self._ansicht_finger(self.capture())
             if jetzt == vorher:
@@ -1362,6 +1859,32 @@ class Engine:
     ERKUNDUNGS_FARBEN = [(120, 181, 54), (58, 142, 230)]
     # Oben liegt das Angebots-Banner, ganz unten die Navigationsleiste.
     ERKUNDUNGS_ZONE = [0.05, 0.18, 0.95, 0.88]
+    ERKUNDUNG_VERFAELLT = 7 * 24 * 3600.0   # nach einer Woche darf neu probiert werden
+
+    def _sieht_aus_wie_benutzen(self, cx: int, cy: int) -> bool:
+        """Liegt an dieser Stelle der 'Benutzen'-Knopf?
+
+        Die Erkundung tippt blaue Knoepfe, weil Blau im Spiel Handlung oder
+        Abbrechen bedeutet - beides harmlos. 'Benutzen' im Beutel ist aber
+        dasselbe Blau, und ein Tipp darauf verbraucht einen Gegenstand.
+        Ausdauer-Fläschchen sollen fuer den Krieg bleiben, also lieber einen
+        Erkundungs-Versuch auslassen als einen Vorrat.
+        """
+        vorlage = self.cfg.template("ui/btn_benutzen.png", optional=True)
+        if vorlage is None or self.screen is None:
+            return False
+        breite = int(vorlage.width * 1.6) + 40
+        hoehe = int(vorlage.height * 1.6) + 40
+        x = max(0, min(cx - breite // 2, self.screen.width - 1))
+        y = max(0, min(cy - hoehe // 2, self.screen.height - 1))
+        breite = min(breite, self.screen.width - x)
+        hoehe = min(hoehe, self.screen.height - y)
+        if breite < vorlage.width or hoehe < vorlage.height:
+            return False
+        ausschnitt = self.screen.crop(x, y, breite, hoehe)
+        skala = self._scale if self._scale is not None else 1.0
+        skala *= float(self.cfg.template_skalen.get("ui/btn_benutzen.png", 1.0))
+        return matcher.find(ausschnitt, vorlage, threshold=0.82, scale=skala) is not None
 
     def _erkunden(self, schluessel: str, vorher) -> None:
         """Letzte Stufe: einen Knopf ausprobieren, den es noch nicht kennt.
@@ -1376,6 +1899,26 @@ class Engine:
         if not self.cfg.erkunden or self.screen is None:
             return
         schon = self._erkundet.setdefault(schluessel, [])
+        # Das Budget verfaellt nach einer Weile. Bisher galt es endgueltig und
+        # ueberlebte jeden Neustart: nach sechs Versuchen war die letzte
+        # Rettung fuer diesen Bildschirm FUER IMMER verbraucht - auch wenn das
+        # Spiel dort inzwischen ganz andere Knoepfe zeigt. Ein Bildschirm
+        # aendert sich mit Updates und Events; das Gedaechtnis darf nicht
+        # starrer sein als das Spiel.
+        jetzt = self._now()
+        frisch = []
+        for eintrag in schon:
+            if len(eintrag) >= 3:
+                if jetzt - float(eintrag[2]) < self.ERKUNDUNG_VERFAELLT:
+                    frisch.append(eintrag)
+            else:
+                frisch.append(list(eintrag) + [jetzt])   # alte Form nachruesten
+        if frisch != schon:
+            # Nicht nur auf die Laenge schauen: Eintraege der alten Form
+            # ([x, y] ohne Zeitstempel) bekommen hier einen - dabei bleibt die
+            # Laenge gleich, und der Nachtrag ginge sonst verloren.
+            schon[:] = frisch
+            self._erkundung_sichern()
         if len(schon) >= int(self.cfg.erkunden_hoechstens):
             return
         for rgb in self.ERKUNDUNGS_FARBEN:
@@ -1386,18 +1929,26 @@ class Engine:
                 cx, cy = treffer.center
                 xr = round(cx / self.screen.width, 3)
                 yr = round(cy / self.screen.height, 3)
-                if any(abs(xr - a) < 0.04 and abs(yr - b) < 0.03 for a, b in schon):
+                if any(abs(xr - e[0]) < 0.04 and abs(yr - e[1]) < 0.03 for e in schon):
                     continue
                 if self._tabu_treffer(cx, cy, self.screen) is not None:
                     continue
-                schon.append([xr, yr])
+                # 'Benutzen' im Beutel hat genau dieses Blau. Ein Erkundungs-
+                # Tipp darauf verbraucht einen Gegenstand - und die Ausdauer-
+                # Fläschchen sollen ausdruecklich fuer den Krieg bleiben. Was
+                # aussieht wie dieser Knopf, wird darum uebersprungen.
+                if self._sieht_aus_wie_benutzen(cx, cy):
+                    self.log.debug("Erkundung: sieht aus wie 'Benutzen' - uebersprungen",
+                                   bei=f"{xr:.2f}/{yr:.2f}")
+                    continue
+                schon.append([xr, yr, self._now()])
                 self._erkundung_sichern()
                 self.bump("erkundet")
                 self.log.info(
                     "Nichts half - unbekannten Knopf ausprobieren",
                     bei=f"{xr:.2f}/{yr:.2f}", schon_probiert=len(schon),
                 )
-                self._tap_abs(cx, cy, "erkundung")
+                self._tap_abs(cx, cy, "erkundung", zwingend=True)
                 self._do_sleep([1.0, 1.5])
                 if self._ansicht_finger(self.capture()) != vorher:
                     self._auswege[schluessel] = {"tap": [xr, yr]}
@@ -1427,7 +1978,11 @@ class Engine:
         try:
             with open(self._erkundung_datei, "r", encoding="utf-8") as fh:
                 return {str(k): list(v) for k, v in json.load(fh).items()}
-        except Exception:
+        except Exception as exc:
+            # Die beiden Geschwister-Lader melden sich, dieser schluckte alles.
+            # Ein verlorenes Erkundungs-Gedaechtnis ist verschmerzbar - dass es
+            # verloren ging, sollte trotzdem irgendwo stehen.
+            self.log.warn(f"Erkundung nicht lesbar, fange frisch an: {exc}")
             return {}
 
     def _ansicht_schluessel(self) -> Optional[str]:
@@ -1467,6 +2022,12 @@ class Engine:
         """
         if self._clock() < self._regel_pause.get(rule.name, -1e9):
             return True
+        if self._noch_geduldig(rule):
+            # Eine wartende Regel bewirkt per Definition nichts am Bild. Beide
+            # Bremsen wuerden sie darum stilllegen - und der Bot faenge an, auf
+            # einem Ladebildschirm herumzutippen, statt ihn zu Ende laden zu
+            # lassen. Genau davor schuetzt dieses Feld.
+            return False
         if self._regel_ausser_rand(rule):
             return True
         grenze = int(getattr(self.cfg, "regel_wirkungslos_grenze", 0) or 0)
@@ -1529,6 +2090,53 @@ class Engine:
                 )
             except OSError as exc:  # pragma: no cover - Dateisystem
                 self.log.warn(f"Vorlage nicht verschiebbar: {exc}")
+
+    NEUE_EPISODE = 60.0   # Untergrenze; der tatsaechliche Wert kommt aus _neue_episode
+
+    def _neue_episode(self) -> float:
+        """Ab welcher Pause gilt das Warten als neuer Vorgang?
+
+        Fest auf 60 Sekunden war das eine Schleife: eine Regel, deren Geduld
+        abgelaufen ist, wird fuer regel_wirkungslos_pause (300 s) stillgelegt.
+        Kommt sie danach zurueck, liegt der letzte Treffer 300 Sekunden
+        zurueck - also mehr als 60, also "neuer Vorgang", also wieder volle
+        Geduld. Ein wirklich haengender Bildschirm wurde so nie als haengend
+        behandelt. Die Grenze muss darum ueber der Stilllegungspause liegen.
+        """
+        pause = float(getattr(self.cfg, "regel_wirkungslos_pause", 300.0) or 300.0)
+        return max(self.NEUE_EPISODE, pause * 2.0)
+
+    def _noch_geduldig(self, rule) -> bool:
+        """Darf diese Regel gerade beliebig oft greifen, ohne zu wirken?
+
+        'geduldig: true' heisst unbegrenzt, eine Zahl heisst so viele Sekunden.
+        Die Grenze ist wichtig: ein Ladebildschirm, der laedt, wird von allein
+        fertig - einer, der haengt, nicht. Ohne Grenze wartet der Bot vor einem
+        eingefrorenen Balken bis in alle Ewigkeit.
+        """
+        wert = getattr(rule, "geduldig", False)
+        if wert is False or wert is None:
+            return False
+        jetzt = self._clock()
+        seit, zuletzt = self._geduld.get(rule.name, (jetzt, jetzt))
+        # NEUE_EPISODE darf nicht groesser sein als die Pause, mit der eine
+        # Regel stillgelegt wird - sonst gilt nach jeder Pause wieder ein
+        # frischer Vorgang, und ein wirklich haengender Bildschirm wird nie als
+        # solcher behandelt.
+        if jetzt - zuletzt > self._neue_episode():
+            seit = jetzt          # war lange nicht dran: neuer Vorgang
+        self._geduld[rule.name] = (seit, jetzt)
+        if wert is True:
+            return True
+        grenze = float(wert)
+        if grenze <= 0 or jetzt - seit < grenze:
+            return True
+        self.bump("geduld-am-ende")
+        self.log.warn(
+            f"Regel '{rule.name}' wartet zu lange - ab jetzt als haengend behandeln",
+            sekunden=int(jetzt - seit),
+        )
+        return False
 
     def _regel_ausser_rand(self, rule) -> bool:
         """Eine Regel, die staendig greift, kommt offensichtlich nicht weiter.

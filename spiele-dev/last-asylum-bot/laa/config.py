@@ -23,6 +23,16 @@ class Rule:
     cooldown: float = 0.0
     once: bool = False
     enabled: bool = True
+    # Regeln, die absichtlich immer wieder dasselbe tun: warten. Die Bremsen
+    # gegen Endlos-Schleifen wuerden genau die stilllegen - ein Ladebildschirm
+    # sieht nun einmal minutenlang gleich aus, und das ist kein Fehler.
+    #   false  - normale Regel
+    #   true   - unbegrenzt geduldig
+    #   <Zahl> - so viele Sekunden geduldig, danach gilt der Bildschirm als
+    #            haengend und die ueblichen Auswege greifen wieder. Ohne diese
+    #            Grenze wuerde der Bot vor einem eingefrorenen Ladebalken bis
+    #            in alle Ewigkeit warten.
+    geduldig: Any = False
 
 
 @dataclass
@@ -60,6 +70,9 @@ class Config:
     templates_dir: str = "templates"
     input_method: str = "input"
     ui_skala: float = 1.0  # zusaetzlicher Faktor, vom Bot selbst kalibriert
+    # Zeitstempel der zuletzt ausgewerteten Protokollzeile. Ohne den zaehlen
+    # dieselben alten Laeufe bei jeder Takt-Anpassung erneut mit.
+    takte_stand: float = 0.0
     template_skalen: Dict[str, float] = field(default_factory=dict)
     kritische_templates: List[str] = field(default_factory=list)
     erkunden: bool = True          # feststeckend selbst einen Knopf probieren
@@ -105,6 +118,7 @@ class Config:
         cfg.templates_dir = raw.get("templates_dir", "templates")
         cfg.input_method = raw.get("input_method", "input")
         cfg.ui_skala = float(raw.get("ui_skala", 1.0))
+        cfg.takte_stand = float(raw.get("takte_stand", 0.0))
         cfg.template_skalen = {
             str(k): float(v) for k, v in raw.get("template_skalen", {}).items()
         }
@@ -135,6 +149,7 @@ class Config:
                     cooldown=float(item.get("cooldown", 0.0)),
                     once=bool(item.get("once", False)),
                     enabled=bool(item.get("enabled", True)),
+                    geduldig=item.get("geduldig", False),
                 )
             )
         cfg.rules.sort(key=lambda r: -r.priority)
@@ -226,6 +241,7 @@ class Config:
             "wait_template", "start_app", "stop_app", "restart_app", "log",
             "screenshot", "repeat", "stop", "back", "run_task", "type_text", "wenn",
             "lerne_objekte", "optimiere_takte", "kalibriere", "selbst_aktualisieren", "selbstbericht",
+            "lebenszeichen", "ansicht_sammeln",
         }
         task_names = {t.name for t in self.tasks}
 

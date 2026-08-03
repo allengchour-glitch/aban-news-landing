@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+import glob
 import json
 import random
 import sys
@@ -35,6 +36,22 @@ def paste(dst: Image, src: Image, x: int, y: int) -> None:
         d = ((y + j) * dst.width + x) * 3
         dst.data[d : d + src.width * 3] = src.data[s : s + src.width * 3]
     dst._gray = None
+
+
+def motor(bildpfad, cfg=None):
+    """Engine mit der echten Konfiguration - so sieht der Bot es wirklich.
+
+    Wichtig gegenueber matcher.find: die Engine bringt base_width, ui_skala und
+    die selbst gemessenen Vorlagen-Groessen mit. Wer daran vorbei misst, prueft
+    seine eigene Vermutung.
+    """
+    from laa.adb import FakeDevice as _FD
+    if cfg is None:
+        cfg = Config.load(os.path.join(ROOT, "config", "last-asylum.json"))
+    eng = Engine(cfg, _FD([Image.new(10, 10)], loop=True), logger=quiet(),
+                 sleep=lambda s: None, seed=1)
+    eng.screen = Image.load(bildpfad)
+    return eng
 
 
 def quiet() -> Logger:
@@ -1227,6 +1244,52 @@ class TestSpielBeendenNotbremse(unittest.TestCase):
         self.assertGreater(b, r, "zuletzt muss der blaue Knopf geprüft werden")
         self.assertEqual(regel.do[-2], {"tap_match": {}})
 
+    def test_durchlauf_tippt_wirklich_den_blauen_knopf(self):
+        """Der Test, der die Notbremse wirklich bewacht.
+
+        Bisher wurde nur die FORM der Regel geprueft: steht sie oben, endet sie
+        mit tap_match. Ob sie auf einem echten 'Spiel beenden?' auch greift und
+        wohin sie dann tippt, blieb ungeprueft - die Notbremse haette sich
+        abschalten lassen, ohne dass ein Test rot wird.
+        """
+        cfg = Config.load(os.path.join(ROOT, "config", "last-asylum.json"))
+        regel = next(r for r in cfg.rules if r.name == "spiel-beenden-abbrechen")
+        gold = regel.match["all"][0]["farbknopf"]
+        blau = regel.match["all"][-1]["farbknopf"]
+
+        breite, hoehe = 1440, 2560
+        screen = Image.new(breite, hoehe, (28, 32, 42))
+
+        def knopf(rgb, x0, y0, w, h):
+            for y in range(y0, y0 + h):
+                for x in range(x0, x0 + w):
+                    for k, v in enumerate(rgb):
+                        screen.data[(y * breite + x) * 3 + k] = v
+            # weisser Schriftbalken, wie ihn echte Knoepfe tragen
+            for y in range(y0 + h // 3, y0 + 2 * h // 3):
+                for x in range(x0 + w // 5, x0 + 4 * w // 5):
+                    if (x - x0) % 9 < 5:
+                        for k in range(3):
+                            screen.data[(y * breite + x) * 3 + k] = 255
+
+        kw, kh = int(0.25 * breite), int(0.045 * hoehe)
+        blau_x, blau_y = int(0.18 * breite), int(0.5 * hoehe)
+        gold_x, gold_y = int(0.58 * breite), int(0.5 * hoehe)
+        knopf(blau["rgb"], blau_x, blau_y, kw, kh)   # links: Abbrechen
+        knopf(gold["rgb"], gold_x, gold_y, kw, kh)   # rechts: Beenden
+
+        dev = FakeDevice([screen], loop=True)
+        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=5)
+        eng.step()
+
+        self.assertTrue(dev.taps, "auf 'Spiel beenden?' muss die Notbremse greifen")
+        x, y = dev.taps[0]
+        self.assertTrue(blau_x <= x <= blau_x + kw and blau_y <= y <= blau_y + kh,
+                        f"getippt wurde {x},{y} - das ist nicht der blaue Abbrechen-Knopf "
+                        f"(x {blau_x}..{blau_x + kw}, y {blau_y}..{blau_y + kh})")
+        self.assertFalse(gold_x <= x <= gold_x + kw,
+                         "der orange Beenden-Knopf darf nie getroffen werden")
+
 
 class TestLernFilter(unittest.TestCase):
     """Laufschriften sind keine Ertrags-Blasen."""
@@ -1295,9 +1358,19 @@ class TestNachmessenVerbrauch(unittest.TestCase):
 
 
 class TestErsatzPunkt(unittest.TestCase):
-    """Jedes tap_first braucht einen Ausweg."""
+    """Jedes tap_first braucht einen Ausweg - solange die Aufgabe laeuft.
 
-    def test_alle_tap_first_haben_einen_ersatz_punkt(self):
+    Der Test verlangte den Ersatz-Punkt bisher ausnahmslos. Das ist einen
+    Schritt zu weit: ein GERATENER Ersatz-Punkt ist schlechter als keiner. Bei
+    'zuflucht' zeigte er auf x=0.02, den aeussersten linken Bildrand, ohne dass
+    je jemand nachgesehen haette, was dort liegt - und der Bot lernt aus solchen
+    Blindtipps auch noch vermeintliche Auswege.
+
+    Der Ausweg fuer abgeschaltete Aufgaben ist, dass sie nicht laufen. Der Test
+    prueft darum nur, was tatsaechlich laeuft.
+    """
+
+    def test_alle_laufenden_tap_first_haben_einen_ersatz_punkt(self):
         import json as _json
 
         with open(os.path.join(ROOT, "config", "last-asylum.json"), encoding="utf-8") as fh:
@@ -1314,7 +1387,12 @@ class TestErsatzPunkt(unittest.TestCase):
                 for v in knoten:
                     pruefe(v, wo)
 
-        for gruppe in ("rules", "tasks", "on_unknown", "on_stuck"):
+        for gruppe in ("rules", "tasks"):
+            for eintrag in roh.get(gruppe, []):
+                if not eintrag.get("enabled", True):
+                    continue          # laeuft nicht, kann also nirgends steckenbleiben
+                pruefe(eintrag, f"{gruppe}:{eintrag.get('name')}")
+        for gruppe in ("on_unknown", "on_stuck"):
             pruefe(roh.get(gruppe, []), gruppe)
         self.assertEqual(
             ohne, [],
@@ -1558,7 +1636,7 @@ class TestGelernteAuswege(unittest.TestCase):
             shutil.rmtree(ordner, ignore_errors=True)
 
 
-class TestErkundung(unittest.TestCase):
+class TestErkundungAufVerrauschtemBild(unittest.TestCase):
     """Steckt der Bot fest, probiert er selbst einen Knopf - mit Leitplanken."""
 
     def bau(self, ordner, knopf_rgb, wirkt=True, extra=None):
@@ -1948,10 +2026,18 @@ class TestZurueckPfeil(unittest.TestCase):
             roh = _json.load(fh)
         gefunden = []
 
+        # Drei Wege fuehren zur Zurueck-Taste, nicht einer. Die erste Fassung
+        # dieses Tests sah nur den ersten - {"back": true} und {"key": "4"}
+        # (der Tastencode als Zahl) waeren durchgerutscht.
+        verboten = {"KEYCODE_BACK", "BACK", "4"}
+
         def pruefe(knoten, wo):
             if isinstance(knoten, dict):
-                if knoten.get("key") == "KEYCODE_BACK":
-                    gefunden.append(wo)
+                taste = knoten.get("key")
+                if taste is not None and str(taste).strip().upper() in verboten:
+                    gefunden.append(f"{wo} (key={taste})")
+                if "back" in knoten:
+                    gefunden.append(f"{wo} (Aktion 'back')")
                 for k, v in knoten.items():
                     pruefe(v, f"{wo}>{k}")
             elif isinstance(knoten, list):
@@ -2209,6 +2295,1222 @@ class TestEchteTemplates(unittest.TestCase):
                 self.assertGreaterEqual(min(img.width, img.height), 20, name)
                 gefunden += 1
         self.assertGreaterEqual(gefunden, 8)
+
+
+class TestEchterBestaetigenDialog(unittest.TestCase):
+    """Gegen einen echten Bildschirm gemessen, nicht gegen eine Vermutung.
+
+    austausch/schild.png zeigt den Abbruch-Dialog "Verbindung waehrend des
+    Login-Vorgangs unterbrochen [1019]" mit einem einzelnen goldenen
+    Bestaetigen-Knopf. Der Bot stand davor, ohne ihn zu treffen: der Knopf ist
+    0.068 hoch (die Regel liess 0.06 zu) und nur zu 45 % golden, weil die weisse
+    Schrift und das Funkeln den Rest belegen (die Regel verlangte 60 %).
+
+    Beide Schranken waren geraten. Dieser Test misst sie am Bild nach, damit
+    niemand sie wieder zudreht.
+    """
+
+    BILD = os.path.join(ROOT, "austausch", "schild.png")
+
+    def setUp(self):
+        if not os.path.exists(self.BILD):
+            self.skipTest("austausch/schild.png liegt nicht vor")
+        self.screen = Image.load(self.BILD)
+        self.cfg = json.load(open(os.path.join(ROOT, "config", "last-asylum.json"),
+                                  encoding="utf-8"))
+
+    def regel(self, name):
+        for r in self.cfg["rules"]:
+            if r["name"] == name:
+                return r
+        self.fail(f"Regel {name} fehlt")
+
+    @staticmethod
+    def suche(screen, k):
+        return matcher.find_color_button(
+            screen, k["rgb"], tolerance=k.get("tolerance", 45),
+            min_w=k.get("min_w", 0.12), max_w=k.get("max_w", 0.8),
+            min_h=k.get("min_h", 0.015), max_h=k.get("max_h", 0.06),
+            region=k.get("region"), min_fuellung=k.get("min_fuellung", 0.6))
+
+    def test_der_goldene_knopf_wird_gefunden(self):
+        bed = self.regel("spiel-update-bestaetigen")["match"]["all"][0]["farbknopf"]
+        treffer = self.suche(self.screen, bed)
+        self.assertTrue(treffer, "der einzelne Bestaetigen-Knopf muss gefunden werden")
+        m = treffer[0]
+        # Der Knopf liegt bei x 437..996, y 1250..1423. Getippt wird die Mitte
+        # des Fundes - die muss darin liegen, sonst geht der Tipp daneben.
+        cx, cy = m.x + m.w / 2, m.y + m.h / 2
+        self.assertTrue(437 <= cx <= 996 and 1250 <= cy <= 1423,
+                        f"Tippziel {cx:.0f},{cy:.0f} liegt neben dem Knopf")
+
+
+    def test_bestaetigen_wird_bei_einem_zweiten_knopf_nicht_getippt(self):
+        """Gold kann Geld kosten - ein Kauf-Dialog hat immer einen zweiten Knopf.
+
+        Bis zum 02.08. fehlte die Vorlage, die Regel lief also nie. Seit sie da
+        ist, greift sie - ohne diese Sicherung wuerde sie jeden goldenen
+        'Bestaetigen' antippen, auch den in einem Kaufangebot.
+        """
+        regel = self.regel("belohnung-bestaetigen")
+        bedingungen = regel["match"].get("all")
+        self.assertIsNotNone(bedingungen, "die Regel braucht mehr als die blosse Vorlage")
+        nicht = [b["not"]["farbknopf"]["rgb"] for b in bedingungen if "not" in b]
+        self.assertEqual(len(nicht), 2, f"blau und rot muessen ausgeschlossen sein: {nicht}")
+
+        eng = motor(self.BILD)
+        # Denselben Bildschirm nehmen, aber einen blauen Abbrechen-Knopf
+        # danebenmalen - dann darf die Regel nicht mehr greifen.
+        screen = eng.screen
+        for y in range(1270, 1400):
+            for x in range(120, 400):
+                screen.data[(y * screen.width + x) * 3 + 0] = 58
+                screen.data[(y * screen.width + x) * 3 + 1] = 142
+                screen.data[(y * screen.width + x) * 3 + 2] = 230
+        self.assertFalse(eng.evaluate(regel["match"], screen),
+                         "mit einem zweiten Knopf daneben darf Gold nicht getippt werden")
+
+    def test_die_schutzbedingungen_sehen_einen_zweiten_knopf(self):
+        """Blau und Rot duerfen nicht an derselben Schranke scheitern.
+
+        Uebersieht die Regel den Abbrechen-Knopf, haelt sie einen Kauf-Dialog
+        faelschlich fuer einen harmlosen Hinweis und tippt Gold an.
+        """
+        regel = self.regel("spiel-update-bestaetigen")
+        for i in (1, 2):
+            k = regel["match"]["all"][i]["not"]["farbknopf"]
+            self.assertGreaterEqual(k.get("max_h", 0), 0.07,
+                                    "Schutzbedingung waere zu knapp fuer echte Knoepfe")
+            self.assertLessEqual(k.get("min_fuellung", 0.6), 0.45,
+                                 "Knoepfe mit heller Schrift erreichen keine 60 % Fuellung")
+            self.assertFalse(self.suche(self.screen, k),
+                             "auf diesem Hinweis-Dialog steht kein zweiter Knopf")
+
+    def test_vorlage_bestaetigen_passt_auf_den_knopf(self):
+        """Ueber die Engine pruefen, nicht ueber den Matcher direkt.
+
+        Die erste Fassung dieses Tests rief matcher.find mit scale=4/3 auf -
+        dem Faktor, den ich fuer richtig hielt. Er bestand, und die Vorlage
+        traf im echten Bot trotzdem nie: base_width steht auf 1440, die Engine
+        rechnet also gar nicht um. Ein Test, der die eigene Annahme einsetzt
+        statt die des Programms, bestaetigt nur sich selbst.
+        """
+        pfad = os.path.join(ROOT, "templates", "ui", "btn_bestaetigen.png")
+        if not os.path.exists(pfad):
+            self.skipTest("Vorlage fehlt")
+        eng = motor(self.BILD)
+        regel = self.regel("belohnung-bestaetigen")
+        # evaluate statt find: die Regel hat seit dem 03.08. die Kauf-Sicherung
+        # und ist damit ein all-Block, kein blosser Vorlagen-Eintrag mehr.
+        self.assertTrue(eng.evaluate(regel["match"], eng.screen),
+                        "die Regel muss auf dem Hinweis-Dialog greifen")
+        treffer = eng.last_match
+        self.assertIsNotNone(treffer, "die Vorlage muss den Knopf im echten Bild finden")
+        cx, cy = treffer.center
+        self.assertTrue(437 <= cx <= 996 and 1250 <= cy <= 1423,
+                        f"Tippziel {cx},{cy} liegt neben dem Knopf")
+
+
+
+class TestLebenszeichen(unittest.TestCase):
+    """Von aussen muss sichtbar sein, ob der Bot noch laeuft.
+
+    Ohne das ist die Frage "laeuft der Bot?" nur am PC zu beantworten - ein
+    abgestuerzter Bot sieht aus der Ferne genauso aus wie ein zufriedener.
+    """
+
+    def bau(self, ordner):
+        import subprocess
+        subprocess.run(["git", "init", "-q", ordner], check=True)
+        for name, wert in (("user.email", "bot@test"), ("user.name", "Bot")):
+            subprocess.run(["git", "-C", ordner, "config", name, wert], check=True)
+        open(os.path.join(ordner, "start"), "w").write("x")
+        subprocess.run(["git", "-C", ordner, "add", "-A"], check=True)
+        subprocess.run(["git", "-C", ordner, "commit", "-qm", "start"], check=True)
+        cfg = Config.from_dict({"package": "x", "tasks": [], "rules": []},
+                               path=os.path.join(ordner, "cfg.json"))
+        dev = FakeDevice([noise(120, 200, 5)], loop=True)
+        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None)
+        eng.steps = 42
+        eng.stats = {"tap": 7, "task:sammeln": 3}
+        return eng
+
+
+    def test_git_fragt_nie_nach_zugangsdaten(self):
+        """Ein wartender Passwort-Dialog sieht aus wie ein toter Bot.
+
+        git blockiert bei fehlenden Zugangsdaten, bis das Zeitlimit greift -
+        alle zehn Minuten, ohne dass irgendwo ein Fehler steht.
+        """
+        umgebung = Engine._git_umgebung()
+        self.assertEqual(umgebung.get("GIT_TERMINAL_PROMPT"), "0")
+        self.assertEqual(umgebung.get("GCM_INTERACTIVE"), "never")
+        self.assertIn("PATH", {k.upper(): v for k, v in umgebung.items()},
+                      "die uebrige Umgebung muss erhalten bleiben")
+
+    def test_datei_entsteht_und_nennt_den_stand(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as ordner:
+            eng = self.bau(ordner)
+            eng.run_actions([{"lebenszeichen": {"hochladen": False}}], "test")
+            ziel = os.path.join(ordner, "austausch", "lauf.json")
+            self.assertTrue(os.path.exists(ziel), "lauf.json muss entstehen")
+            d = json.load(open(ziel, encoding="utf-8"))
+            self.assertEqual(d["schritte"], 42)
+            self.assertEqual(d["zaehler"]["tap"], 7)
+            self.assertTrue(d["zeit"] and d["fassung"])
+
+    def test_absturzschleife_erzeugt_keine_commit_flut(self):
+        """Ein Bot, der jede Minute neu startet, darf nicht jede Minute schreiben."""
+        import tempfile
+        with tempfile.TemporaryDirectory() as ordner:
+            eng = self.bau(ordner)
+            eng.run_actions([{"lebenszeichen": {"hochladen": False}}], "test")
+            ziel = os.path.join(ordner, "austausch", "lauf.json")
+            zuerst = os.path.getmtime(ziel)
+            eng.steps = 999
+            eng.run_actions([{"lebenszeichen": {"hochladen": False,
+                                                "mindestabstand": 600}}], "test")
+            self.assertEqual(json.load(open(ziel, encoding="utf-8"))["schritte"], 42,
+                             "innerhalb des Mindestabstands darf nichts neu geschrieben werden")
+            self.assertEqual(os.path.getmtime(ziel), zuerst)
+
+    def test_bild_kommt_mit_und_steht_im_bericht(self):
+        """Ohne Bild weiss man DASS er laeuft, aber nicht WO er steht."""
+        import tempfile
+        with tempfile.TemporaryDirectory() as ordner:
+            eng = self.bau(ordner)
+            eng.run_actions([{"lebenszeichen": {"hochladen": False}}], "test")
+            bild = os.path.join(ordner, "austausch", "lauf.png")
+            self.assertTrue(os.path.exists(bild), "lauf.png muss entstehen")
+            d = json.load(open(os.path.join(ordner, "austausch", "lauf.json"),
+                               encoding="utf-8"))
+            self.assertEqual(d["bild"], "austausch/lauf.png")
+            # Vorgabe 0.35 der Kantenlaenge des FakeDevice-Bildes (120x200)
+            self.assertEqual(Image.load(bild).width, 42)
+
+    def test_gleicher_bildschirm_erzeugt_kein_zweites_bild(self):
+        """Ein zweites Bild desselben Bildschirms sagt nichts und wiegt viel."""
+        import tempfile
+        with tempfile.TemporaryDirectory() as ordner:
+            eng = self.bau(ordner)
+            eng.run_actions([{"lebenszeichen": {"hochladen": False}}], "test")
+            bild = os.path.join(ordner, "austausch", "lauf.png")
+            zuerst = os.path.getmtime(bild)
+            eng.run_actions([{"lebenszeichen": {"hochladen": False,
+                                                "mindestabstand": 0,
+                                                "bild_abstand": 0}}], "test")
+            self.assertEqual(os.path.getmtime(bild), zuerst,
+                             "unveraenderter Bildschirm darf kein neues Bild erzeugen")
+            d = json.load(open(os.path.join(ordner, "austausch", "lauf.json"),
+                               encoding="utf-8"))
+            self.assertIn("unveraendert", d["bild"] or "")
+
+    def test_bild_wird_nicht_bei_jedem_lebenszeichen_neu_geschrieben(self):
+        """Zahlen sind billig, Bilder nicht - sie brauchen einen eigenen Takt."""
+        import tempfile
+        with tempfile.TemporaryDirectory() as ordner:
+            eng = self.bau(ordner)
+            eng.run_actions([{"lebenszeichen": {"hochladen": False}}], "test")
+            bild = os.path.join(ordner, "austausch", "lauf.png")
+            zuerst = os.path.getmtime(bild)
+            eng.run_actions([{"lebenszeichen": {"hochladen": False,
+                                                "mindestabstand": 0,
+                                                "bild_abstand": 3600}}], "test")
+            self.assertEqual(os.path.getmtime(bild), zuerst,
+                             "innerhalb des Bild-Abstands darf kein neues Bild entstehen")
+            d = json.load(open(os.path.join(ordner, "austausch", "lauf.json"),
+                               encoding="utf-8"))
+            self.assertIsNone(d["bild"], "ohne neues Bild darf der Bericht keines melden")
+
+
+    def test_ohne_mindestabstand_wird_fortgeschrieben(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as ordner:
+            eng = self.bau(ordner)
+            eng.run_actions([{"lebenszeichen": {"hochladen": False}}], "test")
+            eng.steps = 999
+            eng.run_actions([{"lebenszeichen": {"hochladen": False,
+                                                "mindestabstand": 0}}], "test")
+            ziel = os.path.join(ordner, "austausch", "lauf.json")
+            self.assertEqual(json.load(open(ziel, encoding="utf-8"))["schritte"], 999)
+
+
+
+class TestGeduld(unittest.TestCase):
+    """Warten muss erlaubt sein - aber nicht endlos.
+
+    Ein Ladebildschirm sieht minutenlang gleich aus. Die Bremsen gegen
+    Endlos-Schleifen wuerden genau die Regel stilllegen, die ihn erkennt, und
+    der Bot faenge an, darauf herumzutippen. Umgekehrt darf er vor einem
+    eingefrorenen Ladebalken nicht bis in alle Ewigkeit warten.
+    """
+
+    def bau(self, geduldig, uhr):
+        tpl = noise(20, 20, 77)
+        screen = noise(200, 300, 78)
+        paste(screen, tpl, 40, 50)
+        tpl.save(os.path.join(self.ordner, "warten.png"))
+        cfg = Config.from_dict({
+            "package": "x",
+            "templates_dir": ".",
+            "regel_wirkungslos_grenze": 2,
+            "regel_hoechstens_je_fenster": 3,
+            "rules": [{"name": "warten", "geduldig": geduldig,
+                       "match": {"template": "warten.png", "threshold": 0.8},
+                       "do": [{"sleep": 0}]}],
+        }, path=os.path.join(self.ordner, "cfg.json"))
+        dev = FakeDevice([screen], loop=True)
+        return Engine(cfg, dev, logger=quiet(), sleep=lambda s: None,
+                      seed=3, clock=uhr)
+
+    def setUp(self):
+        import tempfile
+        self._tmp = tempfile.TemporaryDirectory()
+        self.ordner = self._tmp.name
+
+    def tearDown(self):
+        self._tmp.cleanup()
+
+    def test_ohne_geduld_wird_die_regel_gebremst(self):
+        jetzt = [1000.0]
+        eng = self.bau(False, lambda: jetzt[0])
+        for _ in range(12):
+            eng.step()
+            jetzt[0] += 1
+        self.assertTrue(eng.stats.get("regel-gebremst", 0)
+                        or eng.stats.get("regel-stillgelegt", 0),
+                        "eine normale Dauer-Regel muss gebremst werden")
+
+    def test_geduldige_regel_darf_lange_warten(self):
+        jetzt = [1000.0]
+        eng = self.bau(True, lambda: jetzt[0])
+        for _ in range(40):
+            eng.step()
+            jetzt[0] += 1
+        self.assertEqual(eng.stats.get("regel-gebremst", 0), 0)
+        self.assertEqual(eng.stats.get("regel-stillgelegt", 0), 0)
+        self.assertEqual(eng.gleiche_ansicht, 0,
+                         "die Festgefahren-Pruefung darf nicht hochzaehlen")
+
+    def test_geduld_mit_grenze_laeuft_ab(self):
+        jetzt = [1000.0]
+        eng = self.bau(120, lambda: jetzt[0])
+        for _ in range(6):          # innerhalb der Grenze: unangetastet
+            eng.step()
+            jetzt[0] += 10
+        self.assertEqual(eng.stats.get("geduld-am-ende", 0), 0)
+        for _ in range(12):         # ueber 120 Sekunden hinaus
+            eng.step()
+            jetzt[0] += 10
+        self.assertGreater(eng.stats.get("geduld-am-ende", 0), 0,
+                           "nach der Grenze muss der Bildschirm als haengend gelten")
+
+    def test_lange_pause_startet_die_geduld_neu(self):
+        """Zwei getrennte Ladevorgaenge duerfen nicht zusammengezaehlt werden."""
+        jetzt = [1000.0]
+        eng = self.bau(120, lambda: jetzt[0])
+        for _ in range(6):
+            eng.step()
+            jetzt[0] += 10
+        jetzt[0] += 600            # lange nichts - neuer Vorgang
+        for _ in range(6):
+            eng.step()
+            jetzt[0] += 10
+        self.assertEqual(eng.stats.get("geduld-am-ende", 0), 0)
+
+
+class TestLadebildschirm(unittest.TestCase):
+    """Der Startbildschirm ist kein unbekannter Bildschirm, sondern Warten."""
+
+    def test_regel_ist_geduldig_und_tippt_nicht(self):
+        cfg = json.load(open(os.path.join(ROOT, "config", "last-asylum.json"),
+                             encoding="utf-8"))
+        regel = next(r for r in cfg["rules"] if r["name"] == "ladebildschirm-abwarten")
+        self.assertTrue(regel.get("geduldig"))
+        erlaubt = {"log", "sleep"}
+        for schritt in regel["do"]:
+            self.assertIn(next(iter(schritt)), erlaubt,
+                          "auf dem Ladebildschirm darf nichts angetippt werden")
+
+
+    def test_durchlauf_auf_dem_startbildschirm_tippt_nichts(self):
+        """Der Test, der den Fehler gefunden haette.
+
+        Die Vorlagen-Tests prueften nur, ob eine Vorlage passt. Ob die Regel im
+        echten Durchlauf ueberhaupt drankommt, prueft erst dieser hier: vorher
+        arbeitete der Bot auf dem Ladebildschirm Aufgaben ab und tippte in der
+        Stadt herum, die es gar nicht gab.
+        """
+        bild = os.path.join(ROOT, "austausch", "ladebildschirm.png")
+        if not os.path.exists(bild):
+            self.skipTest("ladebildschirm.png liegt nicht vor")
+        cfg = Config.load(os.path.join(ROOT, "config", "last-asylum.json"))
+        dev = FakeDevice([Image.load(bild)], loop=True)
+        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=1)
+        for _ in range(4):
+            eng.step()
+        self.assertEqual(dev.taps, [], f"auf dem Ladebildschirm wurde getippt: {dev.taps}")
+        self.assertEqual(dev.swipes, [], "und gewischt werden darf auch nicht")
+        self.assertGreater(eng.stats.get("rule:ladebildschirm-abwarten", 0), 0,
+                           "die Warte-Regel muss ueberhaupt drankommen")
+
+    def test_vorlage_trifft_das_echte_bild_und_sonst_nichts(self):
+        """Auch hier ueber die Engine - sie bringt ihre eigene Skalierung mit."""
+        bild = os.path.join(ROOT, "austausch", "ladebildschirm.png")
+        anderes = os.path.join(ROOT, "austausch", "schild.png")
+        pfad = os.path.join(ROOT, "templates", "ui", "ladebildschirm.png")
+        for p in (bild, anderes, pfad):
+            if not os.path.exists(p):
+                self.skipTest(f"{os.path.basename(p)} liegt nicht vor")
+        cfg = Config.load(os.path.join(ROOT, "config", "last-asylum.json"))
+        regel = next(r for r in cfg.rules if r.name == "ladebildschirm-abwarten")
+        eng = motor(bild, cfg)
+        self.assertIsNotNone(eng.find(regel.match),
+                             "auf dem Startbildschirm muss die Vorlage greifen")
+        eng.screen = Image.load(anderes)
+        self.assertIsNone(eng.find(regel.match),
+                          "die Vorlage darf nicht auf einem anderen Bildschirm anschlagen")
+
+
+
+class TestAnsichtenSammeln(unittest.TestCase):
+    """Der Bot soll die fehlenden Bildschirme selbst beschaffen.
+
+    32 Vorlagen fehlen und blockieren Aufgaben - darunter das automatische
+    Beitreten zu Versammlungen. Bisher hiess das: der Nutzer macht ein Foto.
+    """
+
+    def bau(self, ordner, bilder):
+        import subprocess
+        subprocess.run(["git", "init", "-q", ordner], check=True)
+        for k, v in (("user.email", "b@t"), ("user.name", "Bot")):
+            subprocess.run(["git", "-C", ordner, "config", k, v], check=True)
+        open(os.path.join(ordner, "start"), "w").write("x")
+        subprocess.run(["git", "-C", ordner, "add", "-A"], check=True)
+        subprocess.run(["git", "-C", ordner, "commit", "-qm", "start"], check=True)
+        cfg = Config.from_dict({"package": "x", "tasks": [], "rules": []},
+                               path=os.path.join(ordner, "cfg.json"))
+        dev = FakeDevice(bilder, loop=True)
+        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=1,
+                     state_file=os.path.join(ordner, "zustand.json"))
+        return eng, dev
+
+    def test_neue_ansichten_landen_im_ordner_gleiche_nicht(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as ordner:
+            a, b = noise(120, 200, 11), noise(120, 200, 22)
+            eng, dev = self.bau(ordner, [a, b])
+            aktion = [{"ansicht_sammeln": {"hochladen": False}}]
+            for bild in (a, a, b, b, a):
+                eng.screen = bild
+                eng.run_actions(aktion, "test")
+            ziel = os.path.join(ordner, "austausch", "ansichten")
+            dateien = sorted(f for f in os.listdir(ziel) if f.endswith(".png"))
+            self.assertEqual(len(dateien), 2,
+                             f"zwei verschiedene Ansichten, gesammelt: {dateien}")
+            self.assertTrue(os.path.exists(os.path.join(ziel, "liste.txt")))
+
+    def test_obergrenze_wird_eingehalten(self):
+        """Ohne Grenze laeuft das Repository mit Bildern voll."""
+        import tempfile
+        with tempfile.TemporaryDirectory() as ordner:
+            bilder = [noise(120, 200, 100 + i) for i in range(6)]
+            eng, dev = self.bau(ordner, bilder)
+            for bild in bilder:
+                eng.screen = bild
+                eng.run_actions([{"ansicht_sammeln": {"hochladen": False,
+                                                      "hoechstens": 3}}], "test")
+            ziel = os.path.join(ordner, "austausch", "ansichten")
+            dateien = [f for f in os.listdir(ziel) if f.endswith(".png")]
+            self.assertEqual(len(dateien), 3)
+
+    def test_gesammeltes_ueberlebt_den_neustart(self):
+        """Sonst faengt der Bot nach jedem Absturz von vorn an zu sammeln."""
+        import tempfile
+        with tempfile.TemporaryDirectory() as ordner:
+            a = noise(120, 200, 33)
+            eng, dev = self.bau(ordner, [a])
+            eng.screen = a
+            eng.run_actions([{"ansicht_sammeln": {"hochladen": False}}], "test")
+            cfg = Config.from_dict({"package": "x", "tasks": [], "rules": []},
+                                   path=os.path.join(ordner, "cfg.json"))
+            zweiter = Engine(cfg, FakeDevice([a], loop=True), logger=quiet(),
+                             sleep=lambda s: None, seed=1,
+                             state_file=os.path.join(ordner, "zustand.json"))
+            zweiter.screen = a
+            zweiter.run_actions([{"ansicht_sammeln": {"hochladen": False}}], "test")
+            ziel = os.path.join(ordner, "austausch", "ansichten")
+            self.assertEqual(len([f for f in os.listdir(ziel) if f.endswith(".png")]), 1,
+                             "dieselbe Ansicht darf nach einem Neustart nicht erneut anfallen")
+
+    def test_schwarzes_bild_wird_nicht_gesammelt(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as ordner:
+            leer = Image.new(120, 200, (0, 0, 0))
+            eng, dev = self.bau(ordner, [leer])
+            eng.screen = leer
+            eng.run_actions([{"ansicht_sammeln": {"hochladen": False}}], "test")
+            ziel = os.path.join(ordner, "austausch", "ansichten")
+            self.assertFalse(os.path.isdir(ziel) and
+                             [f for f in os.listdir(ziel) if f.endswith(".png")],
+                             "ein leerer Bildschirm ist keine Ansicht")
+
+
+
+class TestTestdateiIstGesund(unittest.TestCase):
+    """Ein doppelt vergebener Klassenname loescht die erste Fassung lautlos.
+
+    TestErkundung war zweimal definiert - vier Tests liefen monatelang nie,
+    ohne dass irgendetwas rot wurde.
+    """
+
+    def test_keine_doppelten_klassennamen(self):
+        import ast
+        import collections
+        baum = ast.parse(open(__file__, encoding="utf-8").read())
+        namen = [n.name for n in baum.body if isinstance(n, ast.ClassDef)]
+        doppelt = [n for n, k in collections.Counter(namen).items() if k > 1]
+        self.assertEqual(doppelt, [], f"doppelt vergebene Klassennamen: {doppelt}")
+
+    def test_keine_doppelten_testnamen_je_klasse(self):
+        import ast
+        import collections
+        baum = ast.parse(open(__file__, encoding="utf-8").read())
+        for klasse in [n for n in baum.body if isinstance(n, ast.ClassDef)]:
+            namen = [f.name for f in klasse.body
+                     if isinstance(f, ast.FunctionDef) and f.name.startswith("test")]
+            doppelt = [n for n, k in collections.Counter(namen).items() if k > 1]
+            self.assertEqual(doppelt, [], f"{klasse.name}: {doppelt}")
+
+
+
+class TestFluchtwegWirdNichtGebremst(unittest.TestCase):
+    """Die Wirkungslos-Bremse darf nicht ausgerechnet den Ausgang zumauern.
+
+    Die Bremse fragt: hat sich an dieser Stelle beim letzten Mal etwas
+    geruehrt? Auf einem festgefahrenen Bildschirm ist die Antwort immer nein -
+    und genau dort setzen Ausweg-Suche und Erkundung an.
+    """
+
+    def test_gleicher_fluchttipp_wird_wiederholt(self):
+        screen = noise(200, 300, 55)
+        cfg = Config.from_dict({
+            "package": "x",
+            "on_unknown": [{"tap": [0.5, 0.5]}],
+            "rules": [], "tasks": [],
+        })
+        dev = FakeDevice([screen], loop=True)   # Bild aendert sich NIE
+        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=4)
+        eng.screen = screen
+        eng.capture()
+        for _ in range(4):
+            eng._ausweg_suchen("test")
+        self.assertGreaterEqual(
+            len(dev.taps), 4,
+            f"jeder Ausweg-Versuch muss tippen duerfen, getippt wurde: {dev.taps}")
+
+    def test_normaler_tipp_bleibt_gebremst(self):
+        """Die Bremse selbst muss weiter wirken - sonst haemmert der Bot."""
+        screen = noise(200, 300, 56)
+        cfg = Config.from_dict({"package": "x", "rules": [], "tasks": []})
+        dev = FakeDevice([screen], loop=True)
+        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=4)
+        eng.screen = screen
+        for _ in range(5):
+            eng._tap_abs(100, 150, "Punkt")
+        self.assertEqual(len(dev.taps), 1,
+                         f"ausserhalb der Flucht darf nur der erste Tipp durch: {dev.taps}")
+
+    def test_tabu_zone_gilt_auch_auf_der_flucht(self):
+        """Echtgeld bleibt tabu - auch wenn der Bot festsitzt."""
+        screen = noise(200, 300, 57)
+        cfg = Config.from_dict({
+            "package": "x", "rules": [], "tasks": [],
+            "tabu_regionen": [[0.0, 0.0, 1.0, 1.0]],
+        })
+        dev = FakeDevice([screen], loop=True)
+        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=4)
+        eng.screen = screen
+        eng._auf_der_flucht = True
+        eng._tap_abs(100, 150, "Punkt")
+        self.assertEqual(dev.taps, [], "die Tabu-Zone darf die Flucht nicht aushebeln")
+
+
+
+class TestTaktAnpassungMisstNurNeues(unittest.TestCase):
+    """Alte Protokollzeilen duerfen nicht bei jedem Durchgang erneut zaehlen.
+
+    Sonst schraubt sich der Takt Runde um Runde weiter nach oben, obwohl gar
+    keine neuen Belege dazugekommen sind - bis alles nur noch einmal am Tag
+    laeuft.
+    """
+
+    def schreibe(self, ordner, eintraege):
+        pfad = os.path.join(ordner, "lauf.jsonl")
+        with open(pfad, "w", encoding="utf-8") as fh:
+            for name, tipps, ts in eintraege:
+                fh.write(json.dumps({"ev": "aufgabe", "aufgabe": name,
+                                     "tipps": tipps, "ts": ts}) + "\n")
+        return os.path.join(ordner, "*.jsonl")
+
+    def motor(self, ordner, aufgaben):
+        cfg = Config.from_dict({"package": "x", "rules": [], "tasks": aufgaben},
+                               path=os.path.join(ordner, "cfg.json"))
+        return Engine(cfg, FakeDevice([noise(40, 60, 1)], loop=True),
+                      logger=quiet(), sleep=lambda s: None, seed=1)
+
+    def test_dieselben_zeilen_wirken_nur_einmal(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as ordner:
+            muster = self.schreibe(ordner, [("leerlauf", 0, 1000.0 + i) for i in range(5)])
+            eng = self.motor(ordner, [{"name": "leerlauf", "every": 600,
+                                       "do": [{"log": "x"}]}])
+            spec = {"logs": muster, "min_laeufe": 3, "min_takt": 300, "max_takt": 86400}
+            eng._optimiere_takte(spec)
+            nach_erstem = next(t.every for t in eng.cfg.tasks if t.name == "leerlauf")
+            self.assertGreater(nach_erstem, 600, "leerlaufende Aufgabe muss seltener werden")
+            for _ in range(3):
+                eng._optimiere_takte(spec)
+            nach_weiteren = next(t.every for t in eng.cfg.tasks if t.name == "leerlauf")
+            self.assertEqual(nach_weiteren, nach_erstem,
+                             "ohne neue Belege darf sich nichts mehr aendern")
+
+    def test_ausnahmen_werden_nie_gedrosselt(self):
+        """Waechter tippen nie - am Tipp-Mass gemessen wuerden sie totgedrosselt."""
+        import tempfile
+        with tempfile.TemporaryDirectory() as ordner:
+            muster = self.schreibe(ordner, [("lebenszeichen", 0, 1000.0 + i) for i in range(5)])
+            eng = self.motor(ordner, [{"name": "lebenszeichen", "every": 900,
+                                       "do": [{"log": "x"}]}])
+            eng._optimiere_takte({"logs": muster, "min_laeufe": 3,
+                                  "ausnahmen": ["lebenszeichen"]})
+            self.assertEqual(next(t.every for t in eng.cfg.tasks if t.name == "lebenszeichen"),
+                             900, "eine Ausnahme darf nicht angefasst werden")
+
+
+
+class TestBesterTrefferStattErstemKandidaten(unittest.TestCase):
+    """find() muss den besten Treffer liefern, nicht den erstbesten.
+
+    Der grobe Vorlauf rechnet auf ~180 px Breite. Ein feines Muster mittelt
+    sich dort zu Grau weg, und eine graue Flaeche anderswo sieht besser aus als
+    die echte Fundstelle. Vorher brach die Schleife beim ersten Kandidaten
+    ueber der Schwelle ab - das abschliessende Sortieren lief damit auf einer
+    einelementigen Liste und war wirkungslos. Gemessen: alte Fassung 9 von 12,
+    neue 11 von 12.
+    """
+
+    def test_feines_muster_wird_trotz_grauem_koeder_gefunden(self):
+        breite, hoehe, kante = 900, 1200, 40
+        tpl = Image.new(kante, kante, (0, 0, 0))
+        for y in range(kante):
+            for x in range(kante):
+                wert = 255 if (x + y) % 2 == 0 else 0
+                for k in range(3):
+                    tpl.data[(y * kante + x) * 3 + k] = wert
+
+        richtig = 0
+        for versuch in range(12):
+            screen = Image.new(breite, hoehe, (128, 128, 128))
+            zx, zy = 600 + versuch, 800
+            for y in range(kante):
+                for x in range(kante):
+                    for k in range(3):
+                        screen.data[((zy + y) * breite + zx + x) * 3 + k] = \
+                            tpl.data[(y * kante + x) * 3 + k]
+            # Koeder: fast einfarbig, sieht im groben Durchlauf besser aus
+            for y in range(kante):
+                for x in range(kante):
+                    wert = 130 if (x + y) % 2 == 0 else 126
+                    for k in range(3):
+                        screen.data[((200 + y) * breite + 150 + x) * 3 + k] = wert
+            treffer = matcher.find(screen, tpl, threshold=0.3)
+            if treffer and abs(treffer.x - zx) <= 2 and abs(treffer.y - zy) <= 2:
+                richtig += 1
+        self.assertGreaterEqual(richtig, 11, f"nur {richtig} von 12 richtig gefunden")
+
+
+
+class TestVorlagenAnleitungStimmt(unittest.TestCase):
+    """Die Anleitung in der Konfiguration darf nicht in die Irre fuehren.
+
+    Sie schrieb bis zum 03.08. vor, Vorlagen auf 75 Prozent zu verkleinern -
+    bei base_width 1440 ist das falsch, und danach geschnittene Vorlagen trafen
+    im Bot nie. Eine falsche Anleitung kostet mehr als gar keine.
+    """
+
+    def test_anleitung_widerspricht_base_width_nicht(self):
+        cfg = json.load(open(os.path.join(ROOT, "config", "last-asylum.json"),
+                             encoding="utf-8"))
+        text = cfg.get("_vorlagen_herkunft", "")
+        self.assertTrue(text, "_vorlagen_herkunft fehlt")
+        self.assertEqual(cfg.get("base_width"), 1440)
+        self.assertIn("1440", text)
+        self.assertIn("ORIGINALGROESSE", text.upper())
+
+    def test_vorhandene_vorlagen_passen_zur_basisbreite(self):
+        """Keine Vorlage darf breiter sein als der Bildschirm."""
+        muster = os.path.join(ROOT, "templates", "**", "*.png")
+        zu_breit = []
+        for pfad in glob.glob(muster, recursive=True):
+            bild = Image.load(pfad)
+            if bild.width > 1440 or bild.height > 2560:
+                zu_breit.append((os.path.relpath(pfad, ROOT), bild.width, bild.height))
+        self.assertEqual(zu_breit, [], f"Vorlagen groesser als der Bildschirm: {zu_breit}")
+
+
+
+class TestFarbschrankenSindGemessen(unittest.TestCase):
+    """Fuellgrad-Schranken gegen echte Knoepfe pruefen, nicht gegen Vorstellungen.
+
+    Dreimal in drei Tagen war eine solche Schranke gegen eine Vermutung gesetzt
+    und damit unerreichbar: rote Abzeichen bei 0.75, der goldene Bestaetigen-
+    Knopf bei 0.60, blaue Knoepfe bei 0.78. Eine Flaeche mit heller Schrift
+    darauf erreicht diese Werte nie - die Schrift belegt den Rest.
+    """
+
+    @staticmethod
+    def knopf(rgb, beschriftet=True, breite=300, hoehe=90):
+        bild = Image.new(700, 400, (25, 30, 40))
+        x0, y0 = 200, 150
+        for y in range(y0, y0 + hoehe):
+            for x in range(x0, x0 + breite):
+                for k, v in enumerate(rgb):
+                    bild.data[(y * 700 + x) * 3 + k] = v
+        if beschriftet:
+            for y in range(y0 + 26, y0 + 64):
+                for x in range(x0 + 40, x0 + breite - 40):
+                    if (x - x0) % 9 < 6:
+                        for k in range(3):
+                            bild.data[(y * 700 + x) * 3 + k] = 255
+        return bild
+
+    @staticmethod
+    def abzeichen(ziffern, durchmesser=44):
+        bild = Image.new(200, 200, (30, 40, 50))
+        r = durchmesser // 2
+        for y in range(200):
+            for x in range(200):
+                if (x - 100) ** 2 + (y - 100) ** 2 <= r * r:
+                    for k, v in enumerate((228, 58, 52)):
+                        bild.data[(y * 200 + x) * 3 + k] = v
+        if ziffern:
+            breite = 7 * ziffern
+            for y in range(91, 109):
+                for x in range(100 - breite // 2, 100 + breite // 2):
+                    if (x - (100 - breite // 2)) % 7 < 5:
+                        for k in range(3):
+                            bild.data[(y * 200 + x) * 3 + k] = 255
+        return bild
+
+    def regel(self, name):
+        cfg = json.load(open(os.path.join(ROOT, "config", "last-asylum.json"),
+                             encoding="utf-8"))
+        return next(r for r in cfg["rules"] if r["name"] == name)
+
+    def test_blauer_knopf_mit_schrift_wird_erkannt(self):
+        k = self.regel("blauer-knopf-generisch")["match"]["farbknopf"]
+        bild = self.knopf(k["rgb"])
+        treffer = matcher.find_color_button(
+            bild, k["rgb"], tolerance=k["tolerance"], min_w=k["min_w"], max_w=k["max_w"],
+            min_h=k["min_h"], max_h=0.30, min_fuellung=k["min_fuellung"])
+        self.assertTrue(treffer,
+                        f"ein beschrifteter blauer Knopf erreicht die geforderten "
+                        f"{k['min_fuellung']} Fuellung nicht")
+
+    def test_rote_abzeichen_mit_zahl_werden_erkannt(self):
+        k = self.regel("roter-punkt-pruefen")["match"]["farbknopf"]
+        for ziffern in (0, 1, 2):
+            with self.subTest(ziffern=ziffern):
+                treffer = matcher.find_color_button(
+                    self.abzeichen(ziffern), k["rgb"], tolerance=k["tolerance"],
+                    min_w=k["min_w"], max_w=k["max_w"], min_h=k["min_h"],
+                    max_h=k["max_h"], min_fuellung=k["min_fuellung"])
+                self.assertTrue(treffer,
+                                f"Abzeichen mit {ziffern} Ziffern faellt durch "
+                                f"min_fuellung={k['min_fuellung']}")
+
+    def test_ein_voller_kreis_kommt_nie_ueber_785_promille(self):
+        """Die Rechnung dahinter - damit niemand wieder 0.9 hinschreibt."""
+        import math
+        for name in ("roter-punkt-pruefen",):
+            k = self.regel(name)["match"]["farbknopf"]
+            self.assertLess(k["min_fuellung"], math.pi / 4,
+                            f"{name}: mehr als {math.pi/4:.3f} kann ein Kreis nicht sein")
+
+
+
+class TestSelbstberichtVerschweigtNichts(unittest.TestCase):
+    """Ein Bericht, der beruhigt statt zu berichten, ist schlimmer als keiner.
+
+    Er sammelte nur Vorlagen unter dem Schluessel 'template' - die aus
+    tap_first stehen aber als blosse Zeichenketten in 'of' und blieben damit
+    unsichtbar. Und ohne vorheriges validate() meldete er "keine Vorlage
+    fehlt", obwohl 32 fehlten.
+    """
+
+    def motor(self):
+        cfg = Config.load(os.path.join(ROOT, "config", "last-asylum.json"))
+        return Engine(cfg, FakeDevice([Image.new(10, 10)], loop=True),
+                      logger=quiet(), sleep=lambda s: None)
+
+    def test_ohne_validate_wird_trotzdem_berichtet(self):
+        eng = self.motor()
+        self.assertEqual(eng.cfg.offene_templates, [], "Vorbedingung: noch nicht geprueft")
+        eng._selbstbericht({"hoechstens": 40})
+        self.assertGreater(len(eng.cfg.offene_templates), 0,
+                           "der Bericht muss selbst nachsehen, statt Ruhe zu melden")
+
+    def test_tap_first_vorlagen_tauchen_auf(self):
+        cfg = Config.load(os.path.join(ROOT, "config", "last-asylum.json"))
+        cfg.validate()
+        aus_tap_first = set()
+
+        def suche(knoten):
+            if isinstance(knoten, dict):
+                fuer = knoten.get("of")
+                if isinstance(fuer, list):
+                    for e in fuer:
+                        if isinstance(e, str) and e.endswith(".png"):
+                            aus_tap_first.add(e)
+                for v in knoten.values():
+                    suche(v)
+            elif isinstance(knoten, list):
+                for v in knoten:
+                    suche(v)
+
+        for task in cfg.tasks:
+            suche(task.do)
+        fehlend = aus_tap_first & set(cfg.offene_templates)
+        if not fehlend:
+            self.skipTest("derzeit fehlt keine tap_first-Vorlage")
+
+        gesehen = []
+        eng = Engine(cfg, FakeDevice([Image.new(10, 10)], loop=True),
+                     logger=Logger(level="info"), sleep=lambda s: None)
+        eng.log.info = lambda msg, **kw: gesehen.append(f"{msg} {kw}")
+        eng._selbstbericht({"hoechstens": 40})
+        text = " ".join(gesehen)
+        for name in sorted(fehlend):
+            self.assertIn(name, text, f"{name} fehlt im Bericht")
+
+
+
+class TestKalibrierungRechnetNichtDoppelt(unittest.TestCase):
+    """Ein alter Nachschlag darf nach einer Neukalibrierung nicht obendrauf kommen.
+
+    Der gemessene Faktor ist absolut, der gespeicherte Nachschlag relativ zum
+    Median. Bisher wurde nur eingetragen, wer GERADE aus der Reihe tanzte - wer
+    beim vorigen Mal Ausreisser war und jetzt nicht mehr, behielt seinen alten
+    Wert und wurde ab da zusaetzlich zum neuen Median gerechnet. Die Vorlage
+    passt dann zu gross, trifft daneben, und der Bot tippt an die falsche
+    Stelle.
+    """
+
+    def motor(self, skalen, ui_skala=1.0):
+        cfg = Config.from_dict({"package": "x", "rules": [], "tasks": [],
+                                "base_width": 200})
+        cfg.ui_skala = ui_skala
+        cfg.template_skalen = dict(skalen)
+        eng = Engine(cfg, FakeDevice([noise(200, 300, 3)], loop=True),
+                     logger=quiet(), sleep=lambda s: None, seed=1)
+        return cfg, eng
+
+    def anwenden(self, eng, gefunden, median):
+        """Den Nachschlag-Teil der Kalibrierung nachbilden."""
+        vorher = eng.cfg.ui_skala
+        neue = dict(eng.cfg.template_skalen)
+        gemessen = {n for n, _, _ in gefunden}
+        for name, f, _ in gefunden:
+            nach = round(f / median, 3) if median else 1.0
+            if abs(nach - 1.0) <= 0.03:
+                neue.pop(name, None)
+            else:
+                neue[name] = nach
+        if median and vorher and abs(median - vorher) > 0.001:
+            verh = vorher / median
+            for name in list(neue):
+                if name in gemessen:
+                    continue
+                gez = round(neue[name] * verh, 3)
+                if abs(gez - 1.0) <= 0.03:
+                    neue.pop(name, None)
+                else:
+                    neue[name] = gez
+        return neue
+
+    def test_alter_nachschlag_verschwindet_wenn_er_nicht_mehr_noetig_ist(self):
+        cfg, eng = self.motor({"nav/burg.png": 1.3}, ui_skala=1.0)
+        neue = self.anwenden(eng, [("nav/burg.png", 1.0, 0.95),
+                                   ("nav/held.png", 1.0, 0.95)], median=1.0)
+        self.assertNotIn("nav/burg.png", neue,
+                         "der alte Nachschlag wuerde sonst zum neuen Median dazugerechnet")
+
+    def test_nicht_gemessene_vorlagen_behalten_ihre_groesse(self):
+        """Ihr Nachschlag galt gegen den alten Median - er muss mitziehen."""
+        cfg, eng = self.motor({"tasche/truhe.png": 1.3}, ui_skala=1.0)
+        neue = self.anwenden(eng, [("nav/burg.png", 0.5, 0.95)], median=0.5)
+        # absolute Groesse vorher 1.0*1.3 = 1.3, nachher 0.5*x = 1.3 -> x = 2.6
+        self.assertAlmostEqual(neue["tasche/truhe.png"], 2.6, places=2)
+
+    def test_echte_kalibrierung_setzt_die_werte_neu(self):
+        """Gegen die Engine selbst, nicht nur gegen die nachgebaute Rechnung."""
+        import inspect
+        quelle = inspect.getsource(Engine._kalibriere)
+        self.assertIn("neue_skalen", quelle,
+                      "die Kalibrierung muss alle Nachschlaege neu setzen")
+        self.assertNotIn("ausreisser[name] = round(f / median, 3)", quelle,
+                         "die alte, nur ergaenzende Fassung ist noch drin")
+
+
+
+class TestErkundungSchontVorraete(unittest.TestCase):
+    """Die Erkundung darf keinen Gegenstand verbrauchen.
+
+    Sie tippt blaue Knoepfe, weil Blau im Spiel Handlung oder Abbrechen
+    bedeutet - beides harmlos. 'Benutzen' im Beutel ist aber dasselbe Blau, und
+    die Ausdauer-Fläschchen sollen ausdruecklich fuer den Krieg bleiben.
+    """
+
+    def test_benutzen_knopf_wird_uebersprungen(self):
+        pfad = os.path.join(ROOT, "templates", "ui", "btn_benutzen.png")
+        if not os.path.exists(pfad):
+            self.skipTest("ui/btn_benutzen.png fehlt")
+        vorlage = Image.load(pfad)
+        screen = noise(1440, 2560, 71)
+        # Den echten Knopf mitten in die Erkundungs-Zone setzen.
+        zx, zy = 500, 1200
+        paste(screen, vorlage, zx, zy)
+        cfg = Config.load(os.path.join(ROOT, "config", "last-asylum.json"))
+        eng = Engine(cfg, FakeDevice([screen], loop=True), logger=quiet(),
+                     sleep=lambda s: None, seed=2)
+        eng.screen = screen
+        eng._scale = 1.0
+        mitte_x, mitte_y = zx + vorlage.width // 2, zy + vorlage.height // 2
+        self.assertTrue(eng._sieht_aus_wie_benutzen(mitte_x, mitte_y),
+                        "der Benutzen-Knopf muss erkannt werden")
+
+    def test_andere_stellen_werden_nicht_faelschlich_geschont(self):
+        screen = noise(1440, 2560, 72)
+        cfg = Config.load(os.path.join(ROOT, "config", "last-asylum.json"))
+        eng = Engine(cfg, FakeDevice([screen], loop=True), logger=quiet(),
+                     sleep=lambda s: None, seed=2)
+        eng.screen = screen
+        eng._scale = 1.0
+        self.assertFalse(eng._sieht_aus_wie_benutzen(700, 1500),
+                         "ohne den Knopf darf nichts uebersprungen werden")
+
+
+
+class TestFeinjustageDerVorlagenGroesse(unittest.TestCase):
+    """Das Raster ist groeber als die Vorlage es vertraegt.
+
+    FEIN_SCHRITTE springt in Acht- bis Zehn-Prozent-Schritten. Liegt der wahre
+    Faktor dazwischen, bleibt der beste Rasterwert weit unter der Schwelle -
+    die Vorlage gilt als nicht gefunden, oder sie trifft versetzt und der Tipp
+    landet am Rand statt in der Mitte.
+
+    Gemessen an austausch/schild.png mit echtem Faktor 1.13:
+    bester Rasterwert 1.18 -> 0.737, nach dem Feinlauf 1.14 -> 0.981.
+    """
+
+    def test_feinlauf_findet_den_gipfel_zwischen_zwei_rasterpunkten(self):
+        bild = os.path.join(ROOT, "austausch", "schild.png")
+        vorlage = os.path.join(ROOT, "templates", "ui", "btn_bestaetigen.png")
+        for p in (bild, vorlage):
+            if not os.path.exists(p):
+                self.skipTest(f"{os.path.basename(p)} liegt nicht vor")
+        screen = Image.load(bild)
+        # Die Vorlage so verkleinern, dass ihr Faktor zwischen zwei
+        # Rasterpunkten liegt (1.08 und 1.18).
+        ziel = 1.13
+        klein = Image.load(vorlage).box_scaled_by(1.0 / ziel)
+
+        def punkt(f):
+            hit = matcher.best_score(screen, klein, scale=f)
+            return hit.score if hit else 0.0
+
+        grob_score, grob = max((punkt(f), f) for f in Engine.FEIN_SCHRITTE)
+        fein_score, _fein = max((punkt(round(grob + i * 0.02, 3)), round(grob + i * 0.02, 3))
+                                for i in range(-5, 6))
+        self.assertLess(grob_score, 0.85,
+                        "Vorbedingung: der reine Rasterwert soll unter der Schwelle liegen")
+        self.assertGreater(fein_score, 0.95,
+                           f"der Feinlauf muss den Gipfel finden: grob {grob_score:.3f}, "
+                           f"fein {fein_score:.3f}")
+
+    def test_nachjustieren_macht_den_feinlauf_wirklich(self):
+        import inspect
+        quelle = inspect.getsource(Engine._nachjustieren)
+        self.assertIn("Feinjustage", quelle,
+                      "ohne Feinlauf bleibt der Gipfel zwischen den Rasterpunkten liegen")
+
+
+
+class TestGelerntesWirdGeprueft(unittest.TestCase):
+    """Eine verdorbene gelernt.json darf den Bot nicht mitreissen.
+
+    Sie wurde bisher ungeprueft uebernommen: ein Text statt einer Zahl warf
+    beim Start eine Ausnahme, ein Zahlendreher wie 30 statt 3.0 machte alle
+    Vorlagen zehnmal zu gross - der Bot tippte danach nur noch daneben.
+    """
+
+    def bau(self, inhalt):
+        import tempfile
+        self.ordner = tempfile.mkdtemp()
+        with open(os.path.join(self.ordner, "gelernt.json"), "w", encoding="utf-8") as fh:
+            json.dump(inhalt, fh)
+        cfg = Config.from_dict({"package": "x", "rules": [],
+                                "tasks": [{"name": "t", "every": 900, "do": [{"log": "x"}]}]},
+                               path=os.path.join(self.ordner, "cfg.json"))
+        return Engine(cfg, FakeDevice([noise(40, 60, 2)], loop=True), logger=quiet(),
+                      sleep=lambda s: None, seed=1,
+                      state_file=os.path.join(self.ordner, "zustand.json"))
+
+    def tearDown(self):
+        import shutil
+        shutil.rmtree(getattr(self, "ordner", ""), ignore_errors=True)
+
+    def test_unsinnige_werte_werden_uebergangen(self):
+        eng = self.bau({"ui_skala": 30.0,
+                        "template_skalen": {"a.png": "viel", "b.png": 1.3},
+                        "tasks": [{"name": "t", "every": -5}]})
+        self.assertEqual(eng.cfg.ui_skala, 1.0, "30.0 ist keine plausible Oberflaechen-Groesse")
+        self.assertNotIn("a.png", eng.cfg.template_skalen)
+        self.assertEqual(eng.cfg.template_skalen.get("b.png"), 1.3, "Gutes muss durchkommen")
+        self.assertEqual(next(t.every for t in eng.cfg.tasks if t.name == "t"), 900,
+                         "ein negativer Takt darf nicht uebernommen werden")
+
+    def test_kaputte_datei_stoppt_den_start_nicht(self):
+        import tempfile
+        ordner = tempfile.mkdtemp()
+        try:
+            with open(os.path.join(ordner, "gelernt.json"), "w", encoding="utf-8") as fh:
+                fh.write("{kein json")
+            cfg = Config.from_dict({"package": "x", "rules": [], "tasks": []},
+                                   path=os.path.join(ordner, "cfg.json"))
+            eng = Engine(cfg, FakeDevice([noise(40, 60, 2)], loop=True), logger=quiet(),
+                         sleep=lambda s: None, seed=1,
+                         state_file=os.path.join(ordner, "zustand.json"))
+            self.assertEqual(eng.cfg.ui_skala, 1.0)
+        finally:
+            import shutil
+            shutil.rmtree(ordner, ignore_errors=True)
+
+
+
+class TestGeduldSchleifeUndErkundungsBudget(unittest.TestCase):
+    """Zwei Mechanismen, die sich selbst aushebelten."""
+
+    def test_neue_episode_liegt_ueber_der_stilllegungspause(self):
+        """Sonst faengt die Geduld nach jeder Pause von vorn an.
+
+        Ablauf der Schleife: Geduld laeuft ab -> Regel wird fuer 300 s
+        stillgelegt -> kommt zurueck -> letzter Treffer liegt 300 s zurueck,
+        also mehr als 60 -> "neuer Vorgang" -> volle Geduld -> wieder exempt.
+        Der Haenger wird nie als Haenger behandelt.
+        """
+        cfg = Config.from_dict({"package": "x", "rules": [], "tasks": [],
+                                "regel_wirkungslos_pause": 300})
+        eng = Engine(cfg, FakeDevice([noise(40, 60, 8)], loop=True),
+                     logger=quiet(), sleep=lambda s: None, seed=1)
+        self.assertGreater(eng._neue_episode(), cfg.regel_wirkungslos_pause,
+                           "die Episoden-Grenze muss ueber der Stilllegungspause liegen")
+
+    def test_erkundungs_budget_verfaellt(self):
+        """Sonst ist die letzte Rettung nach sechs Versuchen fuer immer weg."""
+        import tempfile
+        ordner = tempfile.mkdtemp()
+        try:
+            screen = noise(1440, 2560, 9)
+            cfg = Config.from_dict({"package": "x", "rules": [], "tasks": [],
+                                    "erkunden_hoechstens": 2},
+                                   path=os.path.join(ordner, "cfg.json"))
+            uhr = [1000.0]
+            eng = Engine(cfg, FakeDevice([screen], loop=True), logger=quiet(),
+                         sleep=lambda s: None, seed=1,
+                         state_file=os.path.join(ordner, "zustand.json"),
+                         now=lambda: uhr[0])
+            eng.screen = screen
+            eng._finger_jetzt = eng._ansicht_finger(screen)
+            schluessel = eng._ansicht_schluessel()
+            eng._erkundet[schluessel] = [[0.5, 0.5, 1000.0], [0.6, 0.6, 1000.0]]
+            # Direkt nach den Versuchen: Budget erschoepft, nichts passiert.
+            eng._erkunden(schluessel, eng._finger_jetzt)
+            self.assertEqual(len(eng._erkundet[schluessel]), 2)
+            # Eine Woche spaeter muss wieder Platz sein.
+            uhr[0] += 8 * 24 * 3600
+            eng._erkunden(schluessel, eng._finger_jetzt)
+            self.assertLessEqual(len(eng._erkundet[schluessel]), 2)
+            self.assertTrue(all(uhr[0] - e[2] < eng.ERKUNDUNG_VERFAELLT
+                                for e in eng._erkundet[schluessel] if len(e) >= 3),
+                            "abgelaufene Eintraege muessen verschwinden")
+        finally:
+            import shutil
+            shutil.rmtree(ordner, ignore_errors=True)
+
+    def test_alte_eintraege_ohne_zeitstempel_brechen_nichts(self):
+        """Bestehende erkundung.json-Dateien haben nur [x, y]."""
+        import tempfile
+        ordner = tempfile.mkdtemp()
+        try:
+            screen = noise(1440, 2560, 10)
+            cfg = Config.from_dict({"package": "x", "rules": [], "tasks": []},
+                                   path=os.path.join(ordner, "cfg.json"))
+            eng = Engine(cfg, FakeDevice([screen], loop=True), logger=quiet(),
+                         sleep=lambda s: None, seed=1,
+                         state_file=os.path.join(ordner, "zustand.json"))
+            eng.screen = screen
+            eng._finger_jetzt = eng._ansicht_finger(screen)
+            schluessel = eng._ansicht_schluessel()
+            eng._erkundet[schluessel] = [[0.5, 0.5]]      # alte Form
+            eng._erkunden(schluessel, eng._finger_jetzt)  # darf nicht krachen
+            self.assertTrue(all(len(e) >= 3 for e in eng._erkundet[schluessel]),
+                            "alte Eintraege muessen einen Zeitstempel bekommen")
+        finally:
+            import shutil
+            shutil.rmtree(ordner, ignore_errors=True)
+
+
+
+class TestStartskriptWirdBewacht(unittest.TestCase):
+    """Textpruefung des PowerShell-Skripts - laeuft ueberall, braucht kein pwsh.
+
+    Am Startskript sind mehrere Fehler vorbeigekommen, die kein Python-Test
+    sehen konnte, weil kein Test es je angesehen hat: eine Zahl, die als
+    negatives Int32 gelesen wird; zwei einander ausschliessende Parameter; ein
+    git-Aufruf ohne Zeitgrenze, der auf eine Passwortabfrage wartet, die
+    niemand sieht.
+    """
+
+    def skript(self, name="start-windows.ps1"):
+        pfad = os.path.join(ROOT, name)
+        if not os.path.exists(pfad):
+            self.skipTest(f"{name} liegt nicht vor")
+        return open(pfad, encoding="utf-8").read().split("\n")
+
+    def test_kein_git_aufruf_ohne_zeitgrenze(self):
+        """Ausserhalb der beiden Helfer darf kein git direkt aufgerufen werden."""
+        zeilen = self.skript()
+        in_helfer = False
+        verdaechtig = []
+        for nr, zeile in enumerate(zeilen, 1):
+            nackt = zeile.strip()
+            if nackt.startswith("function Git-"):
+                in_helfer = True
+            elif in_helfer and nackt == "}":
+                in_helfer = False
+            if in_helfer or nackt.startswith("#"):
+                continue
+            if "& git " in zeile or zeile.strip().startswith("git "):
+                verdaechtig.append(f"{nr}: {nackt[:70]}")
+        self.assertEqual(verdaechtig, [],
+                         "git nur ueber Git-Text/Git-MitZeitlimit aufrufen: "
+                         + "; ".join(verdaechtig))
+
+    def test_keine_grossen_hex_zahlen(self):
+        """0x80000000 liest PowerShell als negatives Int32 - als Dezimalzahl schreiben."""
+        import re
+        schlimm = []
+        for nr, zeile in enumerate(self.skript(), 1):
+            # Kommentare ausnehmen: dort steht die Erklaerung des Fehlers vom
+            # 01.08. samt der Zahl, und die soll stehen bleiben duerfen.
+            code = zeile.split("#", 1)[0]
+            for treffer in re.findall(r"0x[0-9a-fA-F]{8}", code):
+                if int(treffer, 16) > 2147483647:
+                    schlimm.append(f"{nr}: {treffer}")
+        self.assertEqual(schlimm, [], "; ".join(schlimm))
+
+    def test_start_process_bekommt_eine_zeichenkette(self):
+        """-ArgumentList als Feld zerbricht an Pfaden mit Leerzeichen."""
+        import re
+        schlimm = []
+        for name in ("start-windows.ps1", "autostart-einrichten.ps1"):
+            for nr, zeile in enumerate(self.skript(name), 1):
+                if "Start-Process" in zeile and re.search(r"-ArgumentList\s+@\(", zeile):
+                    schlimm.append(f"{name}:{nr}")
+        self.assertEqual(schlimm, [],
+                         "Argumente vorher selbst in Anfuehrungszeichen setzen: "
+                         + "; ".join(schlimm))
+
+    def test_passwortabfrage_ist_abgeschaltet(self):
+        text = "\n".join(self.skript())
+        self.assertIn("GIT_TERMINAL_PROMPT", text,
+                      "ohne das wartet git im minimierten Fenster auf eine Eingabe")
+
+
+
+class TestVeralteteVorlagenFallenAuf(unittest.TestCase):
+    """"Vorlage fehlt" und "Vorlage veraltet" sind zwei verschiedene Sachen.
+
+    Ein Spiel-Update zeichnet Knoepfe neu. Eine Vorlage, die frueher
+    zuverlaessig traf und jetzt nie mehr, ist nicht fehlend - sie ist
+    ueberholt. Bisher war das voellig unsichtbar: der Bot uebersprang den
+    Schritt still, und niemand erfuhr, dass ihm ein Update die Grundlage
+    entzogen hat.
+    """
+
+    def motor(self):
+        tpl = noise(30, 30, 61)
+        screen = noise(400, 600, 62)          # Vorlage kommt NICHT vor
+        cfg = Config.from_dict({"package": "x", "rules": [], "tasks": [],
+                                "templates_dir": self.ordner})
+        tpl.save(os.path.join(self.ordner, "alt.png"))
+        eng = Engine(cfg, FakeDevice([screen], loop=True), logger=quiet(),
+                     sleep=lambda s: None, seed=1)
+        eng.screen = screen
+        return eng
+
+    def setUp(self):
+        import tempfile
+        self._tmp = tempfile.TemporaryDirectory()
+        self.ordner = self._tmp.name
+
+    def tearDown(self):
+        self._tmp.cleanup()
+
+    def test_oft_gesucht_nie_getroffen_faellt_auf(self):
+        eng = self.motor()
+        for _ in range(6):
+            eng.find({"template": "alt.png", "threshold": 0.9, "optional": True})
+        self.assertEqual(eng.veraltete_vorlagen(ab=5)[0][0], "alt.png")
+        self.assertEqual(eng.veraltete_vorlagen(ab=100), [],
+                         "unter der Grenze darf nichts gemeldet werden")
+
+    def test_treffer_raeumt_den_verdacht_aus(self):
+        tpl = noise(30, 30, 63)
+        screen = noise(400, 600, 64)
+        paste(screen, tpl, 100, 200)
+        cfg = Config.from_dict({"package": "x", "rules": [], "tasks": [],
+                                "templates_dir": self.ordner})
+        tpl.save(os.path.join(self.ordner, "gut.png"))
+        eng = Engine(cfg, FakeDevice([screen], loop=True), logger=quiet(),
+                     sleep=lambda s: None, seed=1)
+        eng.screen = screen
+        for _ in range(6):
+            eng.find({"template": "gut.png", "threshold": 0.8, "optional": True})
+        self.assertEqual(eng.veraltete_vorlagen(ab=5), [],
+                         "eine Vorlage, die trifft, ist nicht veraltet")
+
+    def test_lebenszeichen_nennt_die_veralteten(self):
+        import tempfile, subprocess
+        with tempfile.TemporaryDirectory() as ordner:
+            subprocess.run(["git", "init", "-q", ordner], check=True)
+            for k, v in (("user.email", "b@t"), ("user.name", "Bot")):
+                subprocess.run(["git", "-C", ordner, "config", k, v], check=True)
+            eng = self.motor()
+            for _ in range(6):
+                eng.find({"template": "alt.png", "threshold": 0.9, "optional": True})
+            eng.VERDACHT_AB = 5
+            eng.run_actions([{"lebenszeichen": {"hochladen": False,
+                                                "verzeichnis": ordner}}], "test")
+            d = json.load(open(os.path.join(ordner, "austausch", "lauf.json"),
+                               encoding="utf-8"))
+            namen = [e["vorlage"] for e in d["vorlagen_veraltet"]]
+            self.assertIn("alt.png", namen,
+                          "das Lebenszeichen muss veraltete Vorlagen mitmelden")
+
 
 
 if __name__ == "__main__":

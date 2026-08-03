@@ -302,6 +302,35 @@
   ],
   "rules": [
     {
+      "name": "ladebildschirm-abwarten",
+      "priority": 245,
+      "cooldown": 0,
+      "geduldig": 900,
+      "_zweck": "Der Startbildschirm mit dem LAST-ASYLUM-Logo. Hier gibt es nichts zu tippen - das Spiel laedt. Ohne diese Regel ist der Bildschirm fuer den Bot unbekannt: er sucht Knoepfe, tippt daneben und lernt aus dem Unsinn auch noch dazu. 'geduldig' nimmt ihn aus beiden Schleifen-Bremsen und aus der Festgefahren-Pruefung, aber nur 15 Minuten lang. Ein Ladebildschirm, der laedt, ist bis dahin fertig; einer, der haengt, wird danach wie jeder andere Haenger behandelt - Ausweg suchen, notfalls App neu starten.",
+      "match": {
+        "template": "ui/ladebildschirm.png",
+        "threshold": 0.8,
+        "region": [
+          0.0,
+          0.0,
+          1.0,
+          0.4
+        ],
+        "optional": true
+      },
+      "do": [
+        {
+          "log": "Ladebildschirm - abwarten, nicht tippen"
+        },
+        {
+          "sleep": [
+            6.0,
+            11.0
+          ]
+        }
+      ]
+    },
+    {
       "name": "spiel-beenden-abbrechen",
       "priority": 260,
       "_zweck": "Notbremse: 'Spiel beenden?' zeigt Abbrechen (blau) und Bestaetigen (orange) nebeneinander. Ein Fehlgriff auf Bestaetigen beendet das Spiel. Erkennt der Bot beide Knoepfe in der Bildmitte, tippt er den blauen.",
@@ -382,13 +411,14 @@
               "min_w": 0.14,
               "max_w": 0.5,
               "min_h": 0.02,
-              "max_h": 0.06,
+              "max_h": 0.08,
               "region": [
                 0.2,
                 0.4,
                 0.8,
                 0.68
-              ]
+              ],
+              "min_fuellung": 0.45
             }
           },
           {
@@ -403,13 +433,14 @@
                 "min_w": 0.12,
                 "max_w": 0.5,
                 "min_h": 0.02,
-                "max_h": 0.06,
+                "max_h": 0.08,
                 "region": [
                   0.0,
                   0.4,
                   1.0,
                   0.68
-                ]
+                ],
+                "min_fuellung": 0.35
               }
             }
           },
@@ -425,13 +456,14 @@
                 "min_w": 0.12,
                 "max_w": 0.5,
                 "min_h": 0.02,
-                "max_h": 0.06,
+                "max_h": 0.08,
                 "region": [
                   0.0,
                   0.4,
                   1.0,
                   0.68
-                ]
+                ],
+                "min_fuellung": 0.35
               }
             }
           }
@@ -621,8 +653,58 @@
       "priority": 180,
       "cooldown": 1.0,
       "match": {
-        "template": "ui/btn_bestaetigen.png",
-        "optional": true
+        "all": [
+          {
+            "template": "ui/btn_bestaetigen.png",
+            "optional": true
+          },
+          {
+            "not": {
+              "farbknopf": {
+                "rgb": [
+                  58,
+                  142,
+                  230
+                ],
+                "tolerance": 40,
+                "min_w": 0.12,
+                "max_w": 0.5,
+                "min_h": 0.02,
+                "max_h": 0.08,
+                "region": [
+                  0.0,
+                  0.4,
+                  1.0,
+                  0.68
+                ],
+                "min_fuellung": 0.35
+              }
+            }
+          },
+          {
+            "not": {
+              "farbknopf": {
+                "rgb": [
+                  228,
+                  58,
+                  52
+                ],
+                "tolerance": 45,
+                "min_w": 0.12,
+                "max_w": 0.5,
+                "min_h": 0.02,
+                "max_h": 0.08,
+                "region": [
+                  0.0,
+                  0.4,
+                  1.0,
+                  0.68
+                ],
+                "min_fuellung": 0.35
+              }
+            }
+          }
+        ]
       },
       "do": [
         {
@@ -634,7 +716,8 @@
             1.3
           ]
         }
-      ]
+      ],
+      "_zweck": "Tippt den goldenen 'Bestaetigen'-Knopf. Bis zum 02.08. war die Vorlage nicht vorhanden, die Regel lief also nie - seit die Vorlage da ist, greift sie, und Gold kann im Spiel Geld oder Diamanten kosten. Sie bekommt darum dieselbe Sicherung wie spiel-update-bestaetigen: nur tippen, wenn KEIN blauer oder roter Knopf auf derselben Hoehe danebensteht. Ein Kauf-Dialog hat immer einen zweiten Knopf; ein blosser Hinweis nicht."
     },
     {
       "name": "allianz-hilfe-geben",
@@ -767,7 +850,7 @@
       "name": "blauer-knopf-generisch",
       "priority": 144,
       "cooldown": 25,
-      "_zweck": "Blau ist im Spiel entweder eine Handlung ('Los' bei Arena und Koenigsstadtkampf, 'Versammeln' beim Monster) oder 'Abbrechen'. Beides ist ungefaehrlich - schlimmstenfalls bricht der Bot etwas ab. Damit kommt er aus Event-Popups heraus, ohne dass es dafuer je eine Vorlage braucht. Der untere Rand ist ausgenommen: dort liegt das Angebots-Banner. Am 31.07. griff die Regel sechzehnmal hintereinander mit einem Fuellgrad von nur 0.59 - das war kein Knopf, sondern eine blaeuliche Flaeche. Ein echter Knopf ist fast vollstaendig ausgefuellt, deshalb jetzt 0.78 und mindestens 18 Prozent Bildbreite.",
+      "_zweck": "Blau ist im Spiel entweder eine Handlung ('Los' bei Arena und Koenigsstadtkampf, 'Versammeln' beim Monster) oder 'Abbrechen'. Beides ist ungefaehrlich - schlimmstenfalls bricht der Bot etwas ab. Damit kommt er aus Event-Popups heraus, ohne dass es dafuer je eine Vorlage braucht. Der untere Rand ist ausgenommen: dort liegt das Angebots-Banner. Am 31.07. griff die Regel sechzehnmal hintereinander mit einem Fuellgrad von nur 0.59 - das war kein Knopf, sondern eine blaeuliche Flaeche. Ein echter Knopf ist fast vollstaendig ausgefuellt, deshalb jetzt 0.78 und mindestens 18 Prozent Bildbreite. NACHGEMESSEN 03.08.: min_fuellung stand auf 0.78 - unerreichbar. Ein blauer Knopf mit weisser Beschriftung kommt gemessen hoechstens auf 0.69, die Schrift belegt den Rest. Die 0.78 waren gegen eine Vorstellung gesetzt, nicht gegen einen Knopf; die Regel konnte also nur bei UNbeschrifteten blauen Flaechen greifen - genau das Gegenteil des Gemeinten. Jetzt 0.65: unter dem gemessenen Knopf-Wert, aber ueber dem Fehltreffer von 0.59 am 31.07.",
       "match": {
         "farbknopf": {
           "rgb": [
@@ -786,7 +869,7 @@
             1.0,
             0.88
           ],
-          "min_fuellung": 0.78
+          "min_fuellung": 0.65
         }
       },
       "do": [
@@ -905,7 +988,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -3662,7 +3745,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -3741,7 +3824,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -3820,7 +3903,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -3899,7 +3982,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -3978,7 +4061,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -4057,7 +4140,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -4136,7 +4219,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -4215,7 +4298,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -4294,7 +4377,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -4417,7 +4500,7 @@
       "every": 1800,
       "at_start": true,
       "priority": 125,
-      "_zweck": "In die Zuflucht wechseln und alles einsammeln (Kraeuter, Geschenke, Offline-Einnahmen). Die Regeln oben erledigen das Einsammeln, sobald der Bildschirm sichtbar ist. Fuer den Wechsel braucht es nav/zuflucht.png (der Umschalter am linken Bildrand).",
+      "_zweck": "In die Zuflucht wechseln und alles einsammeln (Kraeuter, Geschenke, Offline-Einnahmen). Die Regeln oben erledigen das Einsammeln, sobald der Bildschirm sichtbar ist. Fuer den Wechsel braucht es nav/zuflucht.png (der Umschalter am linken Bildrand). 03.08.: der Ersatzpunkt im tap_first war geraten (1 Stelle(n) entfernt) - ein blinder Tipp an den aeussersten linken Bildrand, ohne dass je jemand nachgesehen haette, was dort liegt. Solange nav/zuflucht.png fehlt, laeuft die Aufgabe lieber sauber leer als blind zu tippen. AUS seit 03.08.: nav/zuflucht.png fehlt. Mit dem geratenen Ersatz-Punkt tippte die Aufgabe blind an den linken Bildrand, ohne Ersatz-Punkt bliebe sie stehen - beides nichts wert. Der Ansichten-Sammler liefert den Bildschirm, dann Vorlage schneiden und wieder anschalten.",
       "do": [
         {
           "log": "Zuflucht besuchen und abernten"
@@ -4426,10 +4509,6 @@
           "tap_first": {
             "of": [
               "nav/zuflucht.png"
-            ],
-            "fallback": [
-              0.02,
-              0.35
             ],
             "after": [
               3.0,
@@ -4513,7 +4592,8 @@
             1.5
           ]
         }
-      ]
+      ],
+      "enabled": false
     },
     {
       "name": "events",
@@ -5204,7 +5284,7 @@
       "every": 3600,
       "at_start": true,
       "priority": 112,
-      "_zweck": "Soldaten der hoechsten freigeschalteten Stufe ausbilden. Stand 31.07.: S8 ist noch mit einem Schloss versehen, hoechste freie Stufe ist S7 - der Wunsch 'nur T8' geht also erst, wenn das Schloss faellt. Im Trainingsplatz gibt es zwei Knoepfe: das BLAUE 'Trainieren' startet die normale Ausbildung, das ORANGE 'Jetzt trainieren' kuerzt sie ab und kostet dafuer. Genommen wird das blaue - siehe _farben.",
+      "_zweck": "Soldaten der hoechsten freigeschalteten Stufe ausbilden. Stand 31.07.: S8 ist noch mit einem Schloss versehen, hoechste freie Stufe ist S7 - der Wunsch 'nur T8' geht also erst, wenn das Schloss faellt. Im Trainingsplatz gibt es zwei Knoepfe: das BLAUE 'Trainieren' startet die normale Ausbildung, das ORANGE 'Jetzt trainieren' kuerzt sie ab und kostet dafuer. Genommen wird das blaue - siehe _farben. AUS seit 03.08.: alle fuenf gebrauchten Vorlagen fehlen (kaserne/gebaeude, ausbilden_menue, stufe_t8, btn_ausbilden, ui/btn_max). Ohne sie kann die Aufgabe nichts ausrichten ausser stuendlich irgendwohin zu tippen - und blinde Tipps in der Stadt lernt der Bot dann auch noch als vermeintliche Auswege. Wieder anschalten, sobald die Vorlagen geschnitten sind (der Ansichten-Sammler liefert die Bildschirme).",
       "do": [
         {
           "log": "Soldaten ausbilden (hoechste Stufe)"
@@ -5317,7 +5397,8 @@
             1.5
           ]
         }
-      ]
+      ],
+      "enabled": false
     },
     {
       "name": "heilen",
@@ -5491,7 +5572,8 @@
         }
       ],
       "at_start": true,
-      "_zweck": "Verwundete Truppen kosten Kampfkraft, solange sie im Lazarett liegen. Der Bot oeffnet das Lazarett und heilt alles, was geht. Braucht ui/btn_heilen.png; der Knopf ist gruen, deshalb greift notfalls auch die generische Gruen-Regel."
+      "_zweck": "Verwundete Truppen kosten Kampfkraft, solange sie im Lazarett liegen. Der Bot oeffnet das Lazarett und heilt alles, was geht. Braucht ui/btn_heilen.png; der Knopf ist gruen, deshalb greift notfalls auch die generische Gruen-Regel. AUS seit 03.08.: ui/btn_heilen.png fehlt, und der hier beschriebene Rueckfall auf die Gruen-Regel kann bauartbedingt nicht greifen - die Aufgabe ist vorher fertig. Ein Versprechen, das der Ablauf nicht einloest, ist schlimmer als keines.",
+      "enabled": false
     },
     {
       "name": "sammeln",
@@ -6038,7 +6120,48 @@
             "logs": "logs/*.jsonl",
             "min_laeufe": 3,
             "min_takt": 300,
-            "max_takt": 86400
+            "max_takt": 86400,
+            "ausnahmen": [
+              "spiel-im-vordergrund",
+              "lebenszeichen",
+              "selbst-aktualisieren",
+              "kalibrieren",
+              "selbstbericht",
+              "ansichten-sammeln",
+              "selbst-optimieren"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "ansichten-sammeln",
+      "_zweck": "Legt jede noch nie gesehene Ansicht einmal in austausch/ansichten/ ab. 32 Vorlagen fehlen, und jede blockiert Aufgaben - Versammlung beitreten, Allianz-Forschung, Falkenturm. Vorlagen schneiden kann nur, wer den Bildschirm sieht; der Bot laeuft ohnehin durch all diese Bildschirme. Halbe Kantenlaenge reicht zum Erkennen, was drauf ist; wo es auf Millimeter ankommt, holt 'teilen' das Bild in voller Aufloesung nach. Nach 40 Ansichten ist Schluss, hochgeladen wird in Fuenferstapeln - sonst laeuft das Repository voll. Der kurze Takt ist Absicht: je mehr verschiedene Bildschirme, desto besser.",
+      "every": 30,
+      "at_start": false,
+      "priority": 30,
+      "do": [
+        {
+          "ansicht_sammeln": {
+            "hoechstens": 60,
+            "stapel": 5,
+            "bild_faktor": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "name": "lebenszeichen",
+      "_zweck": "Schreibt austausch/lauf.json plus austausch/lauf.png und laedt beides hoch. Von aussen sah ein abgestuerzter Bot bisher genauso aus wie ein zufriedener: gar nichts. Steht der Zeitstempel still, ist der Bot stehengeblieben - und das Bild zeigt, vor welchem Bildschirm. Zahlen alle 10 Minuten, Bild hoechstens stuendlich (ein Bild wiegt hundertmal so viel). at_start sorgt dafuer, dass gleich nach dem Start ein Bild da ist; der Mindestabstand verhindert, dass eine Absturzschleife im Minutentakt Commits erzeugt.",
+      "every": 900,
+      "at_start": true,
+      "priority": 95,
+      "do": [
+        {
+          "lebenszeichen": {
+            "mindestabstand": 600,
+            "bild_abstand": 3600,
+            "bild_faktor": 0.35
           }
         }
       ]
@@ -6154,7 +6277,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -6233,7 +6356,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -6312,7 +6435,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -6391,7 +6514,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -6470,7 +6593,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -6549,7 +6672,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -6628,7 +6751,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -6707,7 +6830,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -6786,7 +6909,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -6903,7 +7026,7 @@
       "do": [
         {
           "selbstbericht": {
-            "hoechstens": 6
+            "hoechstens": 20
           }
         }
       ]
@@ -7186,7 +7309,7 @@
   ],
   "_kritische_templates": "Diese Vorlagen nennt der Selbstbericht zuerst, egal an wie vielen Aufgaben sie sonst haengen. Es sind die, ohne die der Bot Schaden nicht abwenden kann - der Schutzschild. Nach dem Verlust von zwei Staedten am 31.07. steht er vor allem anderen.",
   "_farben": "FARBEN DER KNOEPFE, am 31.07. an echten Dialogen geprueft - die einfache Regel 'Gold = Geld' stimmt so NICHT: GOLD/ORANGE ist die Farbe der Haupthandlung, und die kann harmlos sein ('Zerlegen' in der Ausruestungswerkstatt) oder etwas kosten ('Falkenturm-Ergaenzung CHF 4.40', '50 Spenden' mit Diamant, 'Bestaetigen' bei '2 Diamanten ausgeben'). Am Bild allein ist das nicht zu unterscheiden - deshalb wird Gold NIE blind angetippt, weder beim Erkunden noch von einer allgemeinen Regel. Gold nur ueber eine benannte Vorlage, wo klar ist, was der Knopf tut. BLAU ist entweder eine Handlung ('Los', 'Versammeln') oder 'Abbrechen'. Beides ist ungefaehrlich: schlimmstenfalls bricht der Bot etwas ab. Darum darf Blau allgemein getippt werden. GRUEN ist Abholen/Bestaetigen ohne Kosten. GRAU ist die guenstige Alternative - bei der Allianz-Technologie steht neben dem goldenen '50 Spenden' (Diamanten) ein graues '200 Spenden' (Ressourcen); gespendet wird immer das graue. ROT ist Abbrechen/Schliessen.",
-  "_vorlagen_herkunft": "Die Vorlagen sind auf Basisbreite 1080 abgelegt und werden zur Laufzeit hochskaliert. Aus einem Handy-Screenshot (1440x3088) schneidet man also den Ausschnitt und verkleinert ihn auf 75 Prozent. Weil das Spiel seine Oberflaeche an der BILDHOEHE bemisst, passt eine so geschnittene Vorlage im flacheren Emulator-Fenster (1440x2560) noch nicht: dort ist alles um 2560/3088 = 0.83 kleiner. Diesen Unterschied misst der Bot selbst aus - global ueber die Aufgabe 'kalibrieren', einzeln nach drei Fehlgriffen. Von Hand nachrechnen muss man da nichts.",
+  "_vorlagen_herkunft": "base_width steht auf 1440 - genauso breit wie der Emulator-Bildschirm. Die Engine rechnet Vorlagen also NICHT um; wer aus einem Emulator-Screenshot schneidet, legt den Ausschnitt in ORIGINALGROESSE ab. Nicht verkleinern. Werkzeug: python3 bot.py crop <bild.png> --box l,t,r,b -o templates/<name>.png. ACHTUNG, teuer gelernt (01./02.08.): hier stand vorher, Vorlagen gehoerten auf Basisbreite 1080 und muessten auf 75 Prozent verkleinert werden. Danach geschnittene Vorlagen trafen im Bot NIE - und der Test dazu bestand trotzdem, weil er den Faktor 4/3 selbst einsetzte statt die Engine zu fragen. Vorlagen immer mit Engine.find pruefen. Aeltere Vorlagen stammen von einem Handy (1440x3088) und brauchen darum doch einen Faktor - den misst der Bot selbst aus (Aufgabe 'kalibrieren', einzeln nach drei Fehlgriffen) und legt ihn in gelernt.json ab. Von Hand nachrechnen muss man nichts.",
   "_ziel": "So soll die Stadt aussehen (Bild des Benutzers vom 31.07.): keine Ertrags-Blasen ueber den Gebaeuden und kein roter Punkt an den Symbolen. Daran misst sich, ob der Bot seine Runde wirklich zu Ende gebracht hat - nicht daran, wie viele Tipps er gemacht hat.",
   "_gelerntes": "Was der Bot selbst misst - Groessen, Takte, Auswege - schreibt er NICHT in diese Datei, sondern in gelernt.json neben zustand.json. Grund: diese Datei liegt unter Git. Eine geaenderte Datei laesst 'git pull --ff-only' scheitern, und dann bekommt der Bot nie wieder eine neue Fassung - still, bis es jemand bemerkt. Beim Start legt er gelernt.json ueber die Werte von hier. Steckt der Ordner doch einmal fest, hilft: git checkout -- config/ && git pull",
   "_tabu": "Die Zone deckt nur den Einkaufswagen und die Diamanten-Anzeige ganz oben rechts ab. Sie reichte bis 0.145 hinunter und hat damit das Schliesskreuz der Dialoge mit verdeckt - das sitzt bei y 0.10 bis 0.11. Im Lauf vom 31.07. war das Ergebnis: 'Tipp in Tabu-Zone blockiert ... grund=ui/popup_close.png', danach 'Regel dialog-schliessen bewirkt nichts - stillgelegt'. Der Bot kam aus keinem Dialog mehr heraus. Eine Tabu-Zone muss so eng wie moeglich sein: was sie zu viel abdeckt, faellt nicht als Fehler auf, sondern als lahmgelegte Regel.",
