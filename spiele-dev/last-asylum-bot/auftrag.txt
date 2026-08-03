@@ -1,0 +1,12 @@
+# Auftrag fuer den naechsten Start des Bots.
+# Wird vom Startskript abgearbeitet und danach zu auftrag-erledigt.txt.
+#
+# 'teilen stadt' hat funktioniert - das Bild lag aber auf dem
+# Allianz-Geschenk-Bildschirm, nicht in der Stadt. Was jetzt fehlt, ist die
+# STADT selbst mit der HUD-Leiste oben: dort stehen Ausdauer/Energie als Zahl
+# (fuer "Versammlung ab 20 Energie") und das Schild-Symbol.
+#
+# Der Ansichten-Sammler laeuft parallel und legt jede neue Ansicht ab; dieses
+# eine Bild brauche ich aber in voller Aufloesung, um Ziffern zu schneiden.
+
+teilen hud
