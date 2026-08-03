@@ -1,0 +1,576 @@
+# -*- coding: utf-8 -*-
+"""Asset-Charge 34 (th34_*): HAUS-BAUKASTEN.
+Baut auf Charge 9 (th13_*, Jahrmarkt) auf und ergaenzt sie um das, was dort fehlt:
+eine echte Streckenfuehrung fuer die Achterbahn und die grossen Fahrgeschaefte
+eines Parks. Familienfreundlich, keine Waffen, kein Blut.
+
+Konventionen wie th5-th13 (siehe models/TH5-ASSETS.md):
+  * Ursprung mittig, Unterkante exakt z=0, Meter, PBR-Materialien.
+  * Bevel + Auto-Smooth ueber `runden()` — KEINE harten Kanten.
+  * Schauseite (Eingang/Theke/Schriftzug) liegt auf Blender +y  ->  three.js -z.
+  * `export_scene.gltf(..., export_apply=True)` ist PFLICHT, sonst fehlt der Bevel im GLB.
+  * `primitive_cube_add(size=1)` -> Kantenlaenge 1, Skalierung = Mass (NICHT /2).
+  * `rot=(pi/2,0,0)` legt die Zylinderachse auf -y; fuer Raeder braucht es `rot=(0,pi/2,0)`.
+  * Lichter sind emissive Materialien — ein Park lebt vom Licht.
+
+DAS RASTER — der ganze Sinn dieser Charge
+  Alle Teile sitzen auf EINEM Raster, damit man ohne Nachmessen bauen kann:
+
+      Wandmodul      4,000 (x) x 0,300 (y) x 2,750 (z)   ->  reihen: x += 4,00
+      Geschossdecke  4,000 x 4,000 x 0,250
+      Geschosshoehe  2,750 + 0,250 = 3,000               ->  stapeln: z += 3,00
+      Ecke           0,300 x 0,300 Pfeiler, Aussenkante buendig zur Wandflucht
+
+  Jedes Teil ist in x UND y auf die Mitte zentriert, die Unterkante liegt auf
+  z = 0. Ein Wandmodul an (0,0) belegt also x -2,00 … +2,00 und y -0,15 … +0,15.
+  Die Wandflucht ist damit y = 0 — aussen ist +y (three.js -z, die Schauseite).
+
+  ⚠️ Die Bounding-Box ist bei einigen Teilen GROESSER als das Raster: Fensterbank,
+  Gesims und Tuerstufe springen bewusst vor. Verankert wird immer am RASTER, nie
+  an der Box-Mitte. Steht bei jedem Teil in der Tabelle in models/TH5-ASSETS.md.
+
+Texturen kommen aus `textures/th32` (Charge 32), die Fassade aus `hausputz.png`.
+"""
+import bpy, bmesh, os, math
+from mathutils import Vector
+
+TEXDIR = "/home/user/aban-news-landing/textures/th32"
+_TEXCACHE = {}
+
+OUT_GLB = "/home/user/aban-news-landing/models"
+OUT_STL = "/home/user/aban-news-landing/models/stl"
+os.makedirs(OUT_STL, exist_ok=True)
+
+TAU = math.tau
+
+def neu():
+    bpy.ops.wm.read_factory_settings(use_empty=True)
+    _TEXCACHE.clear()   # die alten Image-Datenbloecke sind jetzt ungueltig
+
+def nur(o):
+    bpy.context.view_layer.objects.active = o
+    for s_ in bpy.context.scene.objects: s_.select_set(False)
+    o.select_set(True)
+
+def mat(name, rgb, rough=0.7, metal=0.0, emit=None, estr=1.4):
+    m = bpy.data.materials.new(name); m.use_nodes = True
+    b = m.node_tree.nodes["Principled BSDF"]
+    b.inputs["Base Color"].default_value = (rgb[0], rgb[1], rgb[2], 1)
+    b.inputs["Roughness"].default_value = rough
+    b.inputs["Metallic"].default_value = metal
+    if emit is not None:
+        b.inputs["Emission Color"].default_value = (emit[0], emit[1], emit[2], 1)
+        b.inputs["Emission Strength"].default_value = estr
+    return m
+
+
+def mat_bild(name, datei, farbe=(1.0,1.0,1.0), rough=0.8, metal=0.0):
+    """Material mit echter Bildtextur. Die Textur landet IM GLB (Blender bettet sie
+    beim glTF-Export ein), das Spiel braucht also keine Extra-Verdrahtung.
+    Prozedurale Koordinaten-Knoten (TexCoord/Mapping mit `Generated`) exportiert
+    glTF NICHT — deshalb wird ueber echte UVs gekachelt, siehe `uv_kacheln()`."""
+    m = mat(name, farbe, rough, metal)
+    nt = m.node_tree
+    tex = nt.nodes.new("ShaderNodeTexImage")
+    if datei not in _TEXCACHE:
+        _TEXCACHE[datei] = bpy.data.images.load(os.path.join(TEXDIR, datei))
+    tex.image = _TEXCACHE[datei]
+    tex.extension = 'REPEAT'
+    tex.location = (-380, 240)
+    b = nt.nodes["Principled BSDF"]
+    nt.links.new(tex.outputs["Color"], b.inputs["Base Color"])
+    return m
+
+def uv_kacheln(o, kachel=2.0):
+    """UVs auf Weltmass bringen. Eine Wuerfelseite hat UV 0..1, egal ob sie 0,2 m
+    oder 30 m gross ist — ohne Umrechnung ist dieselbe Textur auf dem Boden riesig
+    und am Pfosten winzig. Skaliert wird mit den beiden GROESSTEN Abmessungen des
+    Objekts; fuer Platten, Decks und Daecher ist das genau richtig."""
+    if o is None or o.type != 'MESH' or not o.data.uv_layers: return o
+    d = sorted([abs(v) for v in o.dimensions], reverse=True)
+    fu, fv = max(0.05, d[0]/kachel), max(0.05, d[1]/kachel)
+    uv = o.data.uv_layers[0].data
+    for l in uv:
+        l.uv[0] *= fu; l.uv[1] *= fv
+    return o
+
+def leucht(name, rgb, estr=3.0):
+    return mat(name, rgb, 0.25, 0.0, rgb, estr)
+
+def box(x, y, z, sx, sy, sz, m=None):
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(x, y, z))
+    o = bpy.context.active_object; o.scale = (sx, sy, sz)
+    if m: o.data.materials.append(m)
+    return o
+
+def zyl(x, y, z, r, h, m=None, seg=16, rot=(0,0,0)):
+    bpy.ops.mesh.primitive_cylinder_add(radius=r, depth=h, location=(x,y,z),
+                                        vertices=seg, rotation=rot)
+    o = bpy.context.active_object
+    if m: o.data.materials.append(m)
+    return o
+
+def kugel(x, y, z, r, m=None, seg=10):
+    bpy.ops.mesh.primitive_uv_sphere_add(radius=r, location=(x,y,z), segments=seg*2, ring_count=seg)
+    o = bpy.context.active_object
+    if m: o.data.materials.append(m)
+    return o
+
+def kegel(x, y, z, r1, r2, h, m=None, seg=12, rot=(0,0,0)):
+    bpy.ops.mesh.primitive_cone_add(radius1=r1, radius2=r2, depth=h, location=(x,y,z),
+                                    vertices=seg, rotation=rot)
+    o = bpy.context.active_object
+    if m: o.data.materials.append(m)
+    return o
+
+def ring_t(x, y, z, R, r, m=None, mj=24, mn=8, rot=(0,0,0)):
+    bpy.ops.mesh.primitive_torus_add(location=(x,y,z), rotation=rot,
+                                     major_radius=R, minor_radius=r,
+                                     major_segments=mj, minor_segments=mn)
+    o = bpy.context.active_object
+    if m: o.data.materials.append(m)
+    return o
+
+def halbkugel(x, y, z, r, m=None, seg=16, flach=1.0):
+    """Kuppel: obere Haelfte einer Kugel. Eine skalierte Vollkugel ist KEINE Kuppel —
+    ihre untere Haelfte steckt im Bauwerk und taucht unter z=0."""
+    o = kugel(x, y, z, r, m, seg)
+    nur(o)
+    if abs(flach - 1.0) > 1e-6:
+        o.scale[2] = flach
+        bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+    bm = bmesh.new(); bm.from_mesh(o.data)
+    bmesh.ops.bisect_plane(bm, geom=bm.verts[:] + bm.edges[:] + bm.faces[:],
+                           plane_co=(0,0,0), plane_no=(0,0,1), clear_inner=True)
+    bmesh.ops.holes_fill(bm, edges=bm.edges[:])
+    bm.to_mesh(o.data); bm.free(); o.data.update()
+    return o
+
+def strebe(p0, p1, d, m=None):
+    """Schraege Strebe zwischen zwei Punkten — als Quader, damit sie im Bevel
+    sauber bleibt. Die Rotation wird aus der Richtung gerechnet."""
+    v = Vector(p1) - Vector(p0); L = v.length
+    if L < 1e-5: return None
+    o = box((p0[0]+p1[0])/2, (p0[1]+p1[1])/2, (p0[2]+p1[2])/2, L, d, d, m)
+    o.rotation_euler = v.to_track_quat('X', 'Z').to_euler()
+    return o
+
+def giebel(cx, cy, cz, halbb, hoehe, tiefe, m=None, achse='x'):
+    """Dreiecksgiebel als echtes Prisma. `kegel(vertices=4)` taugt dafuer NICHT:
+    das ergibt eine Pyramide, deren Ecken auf den Achsen liegen."""
+    h2 = tiefe/2.0
+    if achse == 'x':
+        v = [(-halbb,-h2,0), (halbb,-h2,0), (0,-h2,hoehe),
+             (-halbb, h2,0), (halbb, h2,0), (0, h2,hoehe)]
+    else:
+        v = [(-h2,-halbb,0), (-h2,halbb,0), (-h2,0,hoehe),
+             ( h2,-halbb,0), ( h2,halbb,0), ( h2,0,hoehe)]
+    f = [(0,1,2), (3,5,4), (0,2,5,3), (1,4,5,2), (0,3,4,1)]
+    me = bpy.data.meshes.new("Giebel"); me.from_pydata(v, [], f); me.update()
+    o = bpy.data.objects.new("Giebel", me); bpy.context.collection.objects.link(o)
+    o.location = (cx, cy, cz)
+    if m: me.materials.append(m)
+    bpy.context.view_layer.objects.active = o
+    bm = bmesh.new(); bm.from_mesh(me)
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
+    bm.to_mesh(me); bm.free(); me.update()
+    uvl = me.uv_layers.new(name="UVMap")
+    for poly in me.polygons:
+        for li in poly.loop_indices:
+            v = me.vertices[me.loops[li].vertex_index].co
+            uvl.data[li].uv = ((v.x if achse == 'x' else v.y), v.z)
+    return o
+
+def girlande(p0, p1, n, sag, mats, rad=0.10, kabel=None):
+    """Lichterkette mit Durchhang zwischen zwei Punkten."""
+    for i in range(n + 1):
+        t = i/float(n)
+        x = p0[0] + (p1[0]-p0[0])*t
+        y = p0[1] + (p1[1]-p0[1])*t
+        z = p0[2] + (p1[2]-p0[2])*t - sag*math.sin(math.pi*t)
+        if kabel and i < n:
+            t2 = (i+1)/float(n)
+            x2 = p0[0] + (p1[0]-p0[0])*t2
+            y2 = p0[1] + (p1[1]-p0[1])*t2
+            z2 = p0[2] + (p1[2]-p0[2])*t2 - sag*math.sin(math.pi*t2)
+            strebe((x,y,z), (x2,y2,z2), 0.035, kabel)
+        kugel(x, y, z, rad, mats[i % len(mats)], 7)
+
+def runden(width=0.02, segments=2, winkel=42):
+    for o in list(bpy.context.scene.objects):
+        if o.type != 'MESH': continue
+        nur(o)
+        bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+        if o.get("nb"):
+            try: bpy.ops.object.shade_auto_smooth(angle=math.radians(38))
+            except Exception: pass
+            continue
+        m = o.modifiers.new("Bevel", 'BEVEL')
+        d_min = max(1e-4, min(o.dimensions))
+        m.width = min(width, 0.28 * d_min)
+        m.segments = segments
+        m.use_clamp_overlap = True
+        m.limit_method = 'ANGLE'; m.angle_limit = math.radians(winkel)
+        try: bpy.ops.object.shade_auto_smooth(angle=math.radians(38))
+        except Exception: pass
+
+def flach(o):
+    """Vom globalen Bevel ausnehmen (Torus, Lampenkugeln — schon rund)."""
+    if o is not None: o["nb"] = 1
+    return o
+
+def dreh_anim(objs, name, achse=2, frames=120, umdrehungen=1.0, hin_her=False,
+              winkel=None, pivot=(0.0, 0.0, 0.0)):
+    """Bewegte Baugruppe: die Objekte bekommen ein Empty als Elternteil, das Empty
+    wird animiert. So dreht sich alles GEMEINSAM um EINE Achse.
+
+    ⚠️ Zwei Fallen, die glTF-Animationen sonst still kaputtmachen:
+      1. glTF speichert Rotationen als QUATERNION. Zwei Keyframes 0 -> 360 Grad
+         sind fuer den Interpolator identisch — der Spieler sieht KEINE Drehung.
+         Deshalb wird jede Umdrehung in Viertelschritte zerlegt.
+      2. Die Standard-Interpolation ist BEZIER. Eine Dauerdrehung ruckelt dann an
+         jedem Keyframe. Alle Keys werden auf LINEAR gesetzt.
+    `hin_her=True` + `winkel` gibt stattdessen eine Pendelbewegung (Schiffschaukel)."""
+    emp = bpy.data.objects.new(name, None)
+    bpy.context.collection.objects.link(emp)
+    emp.empty_display_size = 0.5
+    emp.location = pivot
+    bpy.context.view_layer.update()
+    for o in objs:
+        if o is None: continue
+        o.parent = emp
+        # OHNE die Inverse springt jedes Kind um die Elternposition — der Kettenflieger
+        # stand danach 11 m ueber dem Mast.
+        o.matrix_parent_inverse = emp.matrix_world.inverted()
+    if hin_her:
+        w = winkel if winkel is not None else math.radians(30)
+        keys = [(0, -w), (frames*0.25, 0.0), (frames*0.5, w),
+                (frames*0.75, 0.0), (frames, -w)]
+        ipol = 'BEZIER'          # Pendel: Bezier ist hier RICHTIG (Umkehrpunkte weich)
+    else:
+        n = max(4, int(round(4*abs(umdrehungen))))
+        keys = [(frames*i/n, TAU*umdrehungen*i/n) for i in range(n + 1)]
+        ipol = 'LINEAR'
+    # Interpolation ueber die VOREINSTELLUNG setzen, nicht ueber `action.fcurves`:
+    # Blender 5 hat die Action-API auf Layer/Slots umgestellt, `fcurves` gibt es
+    # dort nicht mehr (AttributeError beim ersten Lauf).
+    prefs = bpy.context.preferences.edit
+    alt_ip = prefs.keyframe_new_interpolation_type
+    prefs.keyframe_new_interpolation_type = ipol
+    try:
+        for f, a in keys:
+            emp.rotation_euler[achse] = a
+            emp.keyframe_insert("rotation_euler", frame=max(1.0, f), index=achse)
+    finally:
+        prefs.keyframe_new_interpolation_type = alt_ip
+    return emp
+
+def export(name, bevel=0.02, seg=2, anim=None):
+    """`anim` ist eine Funktion, die NACH dem Runden die Baugruppen verhaengt und
+    animiert. Reihenfolge ist wichtig: `runden()` wendet Transformationen an —
+    danach zu parenten ist sicher, davor wuerde das Elternteil mitskaliert."""
+    runden(bevel, seg)
+    if anim: anim()
+    for o in bpy.context.scene.objects: o.select_set(True)
+    p1 = os.path.join(OUT_GLB, name + ".glb")
+    # export_apply=True ist PFLICHT — sonst landet der Bevel NICHT im GLB.
+    bpy.ops.export_scene.gltf(filepath=p1, export_format='GLB', use_selection=False,
+                              export_apply=True, export_animations=True,
+                              export_frame_range=False, export_anim_slide_to_zero=True)
+    p2 = os.path.join(OUT_STL, name + ".stl")
+    try: bpy.ops.wm.stl_export(filepath=p2)
+    except Exception: bpy.ops.export_mesh.stl(filepath=p2)
+    print("  ->", name, os.path.getsize(p1), "B")
+
+def felskoerper(cx, cy, z0, sx, sy, sz, m, seed=0, rau=0.28, unterteil=3,
+                kipp=(0.0, 0.0, 0.0), flachboden=True, name="Felskoerper"):
+    """Unregelmaessiger Fels statt Quader — uebernommen aus Charge 26 (th26).
+    Icosphaere mit radial verrauschten Punkten, danach EXAKT auf (sx, sy, sz)
+    normiert: nur so bleibt das Mass erhalten und der tiefste Punkt liegt auf z0.
+    Achtung: Blenders `subdivisions` zaehlt Stufen (1->20 Dreiecke, 2->80, 3->320),
+    und `runden()` darf den Koerper nicht anfassen — Bevel + Auto-Smooth machen
+    aus dem facettierten Fels einen Kartoffel-Blob."""
+    import random as _r
+    bm = bmesh.new()
+    bmesh.ops.create_icosphere(bm, subdivisions=unterteil, radius=1.0)
+    rnd = _r.Random(seed)
+    R = __import__("mathutils").Euler(kipp, 'XYZ').to_matrix()
+    for v in bm.verts:
+        v.co *= (1.0 + rnd.uniform(-rau, rau))
+        if flachboden and v.co.z < -0.55:
+            v.co.z = -0.55 - (v.co.z + 0.55)*0.25
+        v.co = R @ v.co
+    me = bpy.data.meshes.new(name); bm.to_mesh(me); bm.free()
+    o = bpy.data.objects.new(name, me); bpy.context.collection.objects.link(o)
+    if m: me.materials.append(m)
+    xs = [v.co.x for v in me.vertices]; ys = [v.co.y for v in me.vertices]; zs = [v.co.z for v in me.vertices]
+    mnx, mxx, mny, mxy, mnz, mxz = min(xs), max(xs), min(ys), max(ys), min(zs), max(zs)
+    fx = sx/max(1e-6, mxx-mnx); fy = sy/max(1e-6, mxy-mny); fz = sz/max(1e-6, mxz-mnz)
+    for v in me.vertices:
+        v.co.x = (v.co.x - (mnx+mxx)/2)*fx
+        v.co.y = (v.co.y - (mny+mxy)/2)*fy
+        v.co.z = (v.co.z - mnz)*fz
+    me.update()
+    o.location = (cx, cy, z0); o["nb"] = 1
+    bpy.context.view_layer.objects.active = o
+    return o
+
+def seit(vorher):
+    """Alle Objekte, die seit dem Schnappschuss `vorher` dazugekommen sind —
+    so muss keine Baugruppe von Hand aufgelistet werden."""
+    return [o for o in bpy.context.scene.objects if o not in vorher]
+
+FB = 0.12   # Oberkante der Parkbodenplatte. Jedes Geraet bekommt sein z als
+            # FB + Hoehe ueber Boden — sonst steckt es im Belag.
+
+def platte(B, T, m, z=None):
+    return box(0, 0, (z if z else FB)/2.0, B, T, (z if z else FB), m)
+
+# ---------------------------------------------------------------- Schienenprofil
+# Masse aus th13_achterbahn_modul, damit die Teile zusammenpassen.
+SPUR, ZS, PROF, ROHR = 0.62, 6.60, 0.15, 0.28
+
+def gleis_segment(p0, p1, m_sch, m_rohr=None, quer=None):
+    """EIN Schienensegment zwischen zwei Mittelpunkten der Fahrbahn.
+    Beide Schienen werden entlang der Segmentrichtung gelegt und um die
+    Fahrbahnmitte seitlich versetzt — bei einer KURVE darf der Versatz nicht
+    entlang der Welt-y-Achse laufen, sondern muss senkrecht zur Fahrtrichtung
+    stehen, sonst laufen die Schienen im Bogen auseinander."""
+    a, b = Vector(p0), Vector(p1)
+    v = b - a; L = v.length
+    if L < 1e-6: return
+    n = Vector((-v.y, v.x, 0.0))          # Normale in der Grundrissebene
+    if n.length < 1e-6: n = Vector((0.0, 1.0, 0.0))
+    n.normalize()
+    for s in (-1, 1):
+        o = strebe(tuple(a + n*(s*SPUR)), tuple(b + n*(s*SPUR)), PROF, m_sch)
+    if m_rohr:
+        strebe(tuple(a - Vector((0,0,ROHR))), tuple(b - Vector((0,0,ROHR))), 0.20, m_rohr)
+    if quer:
+        mid = (a + b)/2 - Vector((0, 0, 0.14))
+        o = strebe(tuple(mid - n*0.80), tuple(mid + n*0.80), 0.11, quer)
+
+
+
+# ---------------------------------------------------------------- Rastermasse
+BR, DI, WH, DE = 4.00, 0.30, 2.75, 0.25      # Breite, Dicke, Wandhoehe, Deckenstaerke
+GH = WH + DE                                  # Geschosshoehe 3,000
+
+def _mats():
+    """Ein Satz Materialien fuer alle Teile — gleiche Farbwelt ueber den Baukasten."""
+    return {
+      "putz":  mat_bild("HbPutz",  "hausputz.png", (0.97,0.95,0.90), 0.85),
+      "sockel":mat("HbSockel", (0.62,0.60,0.56), 0.90),
+      "rahm":  mat("HbRahmen", (0.95,0.94,0.90), 0.60),
+      "bank":  mat("HbBank",   (0.80,0.78,0.72), 0.75),
+      "glas":  mat("HbGlas",   (0.68,0.82,0.90), 0.15, 0.05),
+      "holz":  mat("HbHolz",   (0.46,0.30,0.18), 0.70),
+      "dach":  mat("HbDach",   (0.44,0.26,0.22), 0.75),
+      "metall":mat("HbMetall", (0.72,0.74,0.78), 0.35, 0.55),
+      "boden": mat_bild("HbBoden", "bohlen.png", (1.0,0.96,0.90), 0.85),
+    }
+
+def sockelband(m):
+    """Umlaufendes Sockelband am Wandfuss — ohne das steht jede Wand wie ein
+    Brett auf dem Boden."""
+    return box(0, 0, 0.22, BR, DI + 0.08, 0.44, m)
+
+def putzflaeche(x, z, bx, bz, m, kachel=1.6):
+    """Wandstueck mit auf Weltmass gebrachten UVs."""
+    return uv_kacheln(box(x, 0, z, bx, DI, bz, m), kachel)
+
+# ================================================================ 1) Wand voll
+def wand_voll():
+    """Geschlossenes Wandmodul. Sockelband unten, Traufgesims oben — genau die
+    zwei Kanten, die eine Wand als Bauteil lesbar machen."""
+    neu(); M = _mats()
+    putzflaeche(0, WH/2, BR, WH, M["putz"])
+    sockelband(M["sockel"])
+    box(0, 0, WH - 0.09, BR, DI + 0.12, 0.18, M["sockel"])   # Traufgesims
+    export("th34_wand_voll", 0.014, 2)
+
+# ================================================================ 2) Wand mit Fenster
+def _fenster(cx, cz, fb, fh, M):
+    """Fensteroeffnung als DREI Wandstuecke plus Laibung — ein aufgemaltes
+    Rechteck auf voller Wand ist kein Fenster, man sieht keine Tiefe."""
+    lo, ro = cx - fb/2, cx + fb/2
+    putzflaeche((-BR/2 + lo)/2, cz, lo + BR/2, fh, M["putz"])           # links
+    putzflaeche((ro + BR/2)/2, cz, BR/2 - ro, fh, M["putz"])            # rechts
+    box(cx, 0, cz, fb, DI*0.55, fh, M["glas"])                          # Glas, zurueckgesetzt
+    for s in (-1, 1):                                                    # Laibung
+        box(cx + s*(fb/2 + 0.06), 0, cz, 0.12, DI + 0.02, fh + 0.24, M["rahm"])
+    box(cx, 0, cz + fh/2 + 0.06, fb + 0.24, DI + 0.02, 0.12, M["rahm"])  # Sturz
+    box(cx, 0.06, cz - fh/2 - 0.09, fb + 0.42, DI + 0.22, 0.10, M["bank"])  # Bank
+    box(cx, -DI*0.18, cz, 0.05, 0.05, fh, M["rahm"])                     # Sprossen
+    box(cx, -DI*0.18, cz, fb, 0.05, 0.05, M["rahm"])
+
+def wand_fenster():
+    """Wandmodul mit einem mittigen Fenster 1,60 x 1,30."""
+    neu(); M = _mats()
+    FB, FH, FZ = 1.60, 1.30, 1.52
+    putzflaeche(0, (FZ - FH/2)/2, BR, FZ - FH/2, M["putz"])              # Bruestung
+    putzflaeche(0, (FZ + FH/2 + WH)/2, BR, WH - FZ - FH/2, M["putz"])    # Sturzfeld
+    _fenster(0, FZ, FB, FH, M)
+    sockelband(M["sockel"])
+    box(0, 0, WH - 0.09, BR, DI + 0.12, 0.18, M["sockel"])
+    export("th34_wand_fenster", 0.014, 2)
+
+def wand_fenster2():
+    """Wandmodul mit zwei schmalen Fenstern — fuer Treppenhaus und Bad."""
+    neu(); M = _mats()
+    FB, FH, FZ = 0.85, 1.30, 1.52
+    putzflaeche(0, (FZ - FH/2)/2, BR, FZ - FH/2, M["putz"])
+    putzflaeche(0, (FZ + FH/2 + WH)/2, BR, WH - FZ - FH/2, M["putz"])
+    putzflaeche(0, FZ, 1.10, FH, M["putz"])                              # Mittelpfeiler
+    for s in (-1, 1):
+        cx = s*1.10
+        box(cx, 0, FZ, FB, DI*0.55, FH, M["glas"])
+        for q in (-1, 1):
+            box(cx + q*(FB/2 + 0.06), 0, FZ, 0.12, DI + 0.02, FH + 0.24, M["rahm"])
+        box(cx, 0, FZ + FH/2 + 0.06, FB + 0.24, DI + 0.02, 0.12, M["rahm"])
+        box(cx, 0.06, FZ - FH/2 - 0.09, FB + 0.42, DI + 0.22, 0.10, M["bank"])
+        box(cx, -DI*0.18, FZ, 0.05, 0.05, FH, M["rahm"])
+    putzflaeche(0, FZ, 0.0001, FH, M["putz"])
+    sockelband(M["sockel"])
+    box(0, 0, WH - 0.09, BR, DI + 0.12, 0.18, M["sockel"])
+    export("th34_wand_fenster2", 0.014, 2)
+
+# ================================================================ 4) Wand mit Tuer
+def wand_tuer():
+    """Wandmodul mit Haustuer 1,10 x 2,15, Zarge, Oberlicht und Stufe."""
+    neu(); M = _mats()
+    TB, TH = 1.10, 2.15
+    putzflaeche(0, (TH + WH)/2, BR, WH - TH, M["putz"])                  # Sturzfeld
+    for s in (-1, 1):                                                     # Wandfelder seitlich
+        b = BR/2 - TB/2
+        putzflaeche(s*(TB/2 + b/2), TH/2, b, TH, M["putz"])
+    box(0, 0, TH/2, TB, DI*0.5, TH, M["holz"])                            # Tuerblatt
+    # Die Fuellungen sassen bei TH*0.30 +- TH*0.24 und waren TH*0.26 hoch — die
+    # untere ragte damit 0,15 m UNTER die Tuer hinaus (gemessene zmin -0,151).
+    for cz in (TH*0.28, TH*0.66):
+        box(0, -DI*0.16, cz, TB*0.62, 0.04, TH*0.24, M["holz"])
+    box(0, -DI*0.16, TH - 0.24, TB*0.70, 0.04, 0.22, M["glas"])           # Oberlicht
+    for s in (-1, 1):                                                     # Zarge
+        box(s*(TB/2 + 0.07), 0, (TH + 0.14)/2, 0.14, DI + 0.04, TH + 0.14, M["rahm"])
+    box(0, 0, TH + 0.07, TB + 0.28, DI + 0.04, 0.14, M["rahm"])           # Sturz
+    box(0, -DI*0.30, TH*0.48, 0.06, 0.06, 0.26, M["metall"])              # Griff
+    box(0, 0.22, 0.07, TB + 0.60, 0.66, 0.14, M["bank"])                  # Stufe
+    sockelband(M["sockel"])
+    box(0, 0, WH - 0.09, BR, DI + 0.12, 0.18, M["sockel"])
+    export("th34_wand_tuer", 0.014, 2)
+
+# ================================================================ 5) Wand mit Garagentor
+def wand_tor():
+    """Wandmodul mit Sektional-Garagentor 2,60 x 2,10."""
+    neu(); M = _mats()
+    TB, TH = 2.60, 2.10
+    putzflaeche(0, (TH + WH)/2, BR, WH - TH, M["putz"])
+    for s in (-1, 1):
+        b = BR/2 - TB/2
+        putzflaeche(s*(TB/2 + b/2), TH/2, b, TH, M["putz"])
+    box(0, 0, TH/2, TB, DI*0.42, TH, M["rahm"])                           # Torblatt
+    for q in range(1, 5):                                                 # Paneelfugen
+        box(0, -DI*0.14, q*TH/5, TB + 0.02, 0.05, 0.05, M["metall"])
+    for s in (-1, 1):
+        box(s*(TB/2 + 0.09), 0, (TH + 0.18)/2, 0.18, DI + 0.04, TH + 0.18, M["sockel"])
+    box(0, 0, TH + 0.09, TB + 0.36, DI + 0.04, 0.18, M["sockel"])
+    box(0, -DI*0.26, 0.68, 0.44, 0.08, 0.10, M["metall"])                 # Griff
+    sockelband(M["sockel"])
+    box(0, 0, WH - 0.09, BR, DI + 0.12, 0.18, M["sockel"])
+    export("th34_wand_tor", 0.014, 2)
+
+# ================================================================ 6) Ecke
+def ecke():
+    """Eckpfeiler 0,30 x 0,30, Aussenkanten buendig zur Wandflucht beider Seiten.
+    Ohne ihn klafft an jeder Hausecke eine Fuge, weil zwei Wandmodule im rechten
+    Winkel nur ihre Stirnseiten aneinanderlegen."""
+    neu(); M = _mats()
+    box(0, 0, WH/2, DI, DI, WH, M["putz"])
+    box(0, 0, 0.22, DI + 0.10, DI + 0.10, 0.44, M["sockel"])
+    box(0, 0, WH - 0.09, DI + 0.14, DI + 0.14, 0.18, M["sockel"])
+    for zz in (0.9, 1.55, 2.2):                                           # Eckquaderung
+        box(0, 0, zz, DI + 0.06, DI + 0.06, 0.22, M["bank"])
+    export("th34_ecke", 0.012, 2)
+
+# ================================================================ 7) Geschossdecke
+def decke():
+    """Decken-/Bodenplatte 4,00 x 4,00 x 0,25. Oberseite gedielt, Unterseite glatt."""
+    neu(); M = _mats()
+    # Nur EINE Platte. Eine zweite Dielenschicht bei DE-0.015 (0,03 hoch) reichte
+    # von 0,235 bis 0,265 und ueberlappte damit die Oberkante bei 0,250 — im Bild
+    # flimmerte der Boden gegen sich selbst.
+    uv_kacheln(box(0, 0, DE/2, BR, BR, DE, M["boden"]), 1.4)
+    for s in (-1, 1):                                                     # Randbalken
+        box(0, s*(BR/2 - 0.06), DE/2, BR, 0.12, DE, M["sockel"])
+        box(s*(BR/2 - 0.06), 0, DE/2, 0.12, BR, DE, M["sockel"])
+    export("th34_decke", 0.010, 2)
+
+# ================================================================ 8) Satteldach-Modul
+def dach_sattel():
+    """Satteldach-Abschnitt, 4,00 m lang, First in x — beliebig reihbar.
+    Als PRISMA gebaut: `kegel(vertices=4)` waere eine Pyramide, deren Ecken auf
+    den Achsen liegen, und das Modul waere breiter als sein Raster."""
+    neu(); M = _mats()
+    SP, HH = 4.40, 1.70                     # Spannweite quer, Firsthoehe
+    o = giebel(0, 0, 0, SP/2, HH, BR, M["dach"], 'y')
+    for s in (-1, 1):                       # Traufbrett
+        box(0, s*(SP/2 - 0.06), 0.10, BR + 0.04, 0.16, 0.20, M["holz"])
+    box(0, 0, HH - 0.04, BR + 0.04, 0.26, 0.14, M["holz"])   # Firstziegel
+    export("th34_dach_sattel", 0.012, 2)
+
+# ================================================================ 9) Giebelwand
+def dach_giebel():
+    """Giebel-Abschluss fuer das Satteldach — dreieckige Wandflaeche mit
+    Lueftungsluke."""
+    neu(); M = _mats()
+    SP, HH = 4.40, 1.70
+    g = giebel(0, 0, 0, SP/2, HH, DI, M["putz"], 'x')
+    box(0, 0, HH*0.42, 0.62, DI + 0.06, 0.46, M["holz"])
+    box(0, -DI*0.4, HH*0.42, 0.46, 0.05, 0.32, M["metall"])
+    export("th34_dach_giebel", 0.012, 2)
+
+# ================================================================ 10) Treppe
+def treppe_modul():
+    """Gerader Treppenlauf ueber eine Geschosshoehe (3,00 m) auf 4,00 m Lauflaenge.
+    17 Steigungen a 0,176 — das ist die Steigung, die sich im Spiel begehbar
+    anfuehlt; flacher wird der Lauf zu lang fuer das Raster."""
+    neu(); M = _mats()
+    n = 17
+    st, au = GH/n, BR/n
+    for i in range(n):
+        box(-BR/2 + au*(i + 0.5), 0, st*(i + 0.5), au*1.02, 1.10, st, M["sockel"])
+        box(-BR/2 + au*(i + 0.5), 0, st*(i + 1) - 0.02, au*1.06, 1.14, 0.04, M["bank"])
+    for s in (-1, 1):                                                     # Wange + Handlauf
+        for i in range(0, n, 3):
+            box(-BR/2 + au*(i + 0.5), s*0.58, st*(i + 1) + 0.50, 0.07, 0.07, 1.00, M["metall"])
+        o = box(0, s*0.58, GH/2 + 0.52, BR*1.03, 0.09, 0.09, M["metall"])
+        o.rotation_euler[1] = -math.atan2(GH, BR)
+    export("th34_treppe", 0.012, 2)
+
+# ================================================================ 11) Balkon
+def balkon():
+    """Auskragender Balkon, 4,00 m breit, 1,60 m tief — passt genau auf ein
+    Wandmodul und wird an dessen Aussenseite gesetzt."""
+    neu(); M = _mats()
+    T = 1.60
+    box(0, T/2, 0.09, BR, T, 0.18, M["sockel"])
+    box(0, T - 0.06, 0.62, BR, 0.10, 0.90, M["rahm"])                     # Bruestung vorn
+    for s in (-1, 1):
+        box(s*(BR/2 - 0.05), T/2, 0.62, 0.10, T, 0.90, M["rahm"])
+    for i in range(11):                                                   # Staebe
+        box(-BR/2 + 0.2 + i*0.36, T - 0.06, 0.60, 0.05, 0.06, 0.84, M["metall"])
+    box(0, T - 0.06, 1.10, BR, 0.14, 0.08, M["holz"])                     # Handlauf
+    # ACHTUNG: Die Konsolen haengen ABSICHTLICH unter z = 0. Der Balkon wird an
+    # der Geschossdecke montiert, seine OBERKANTE ist der Bezugspunkt — die
+    # Streben greifen darunter an die Fassade. Einziges Teil der Charge mit
+    # zmin < 0; steht so in der Doku.
+    for s in (-1, 1):
+        o = strebe((s*1.5, 0.06, 0.02), (s*1.5, T - 0.3, -0.55), 0.12, M["sockel"])
+    export("th34_balkon", 0.012, 2)
+
+if __name__ == "__main__":
+    print("Asset-Charge 34 (th34, Haus-Baukasten):")
+    for fn in (wand_voll, wand_fenster, wand_fenster2, wand_tuer, wand_tor,
+               ecke, decke, dach_sattel, dach_giebel, treppe_modul, balkon):
+        fn()
+    print("fertig")
