@@ -66,7 +66,8 @@
       _msg: [], _st: [],
       onMessage: function (f) { S._msg.push(f); },
       onStatus: function (f) { S._st.push(f); },
-      send: function () {}, sendFast: function () {}, close: function () {}
+      send: function () {}, sendFast: function () {}, close: function () {},
+      info: null /* {n:Hostname,p:Spielerzahl} — fuer die Antwort an Raum-Browser-Proben */
     };
     S._emit = function (d) {
       for (var i = 0; i < S._msg.length; i++) { try { S._msg[i](d); } catch (e) {} }
@@ -180,7 +181,7 @@
           try { if (peer) { dying = true; peer.destroy(); try { peer.socket && peer.socket.close(); } catch (e2) {} } } catch (e) {}
           S._serverNr = brokerVersuche + 1; S._serverAnzahl = MP_BROKERS.length;
           S._setStatus("suche"); boot(); return; }
-        fail(isHost ? "Kein Vermittlungs-Server erreichbar (" + MP_BROKERS.length + " versucht) — Internet oder Firewall prüfen."
+        fail(isHost ? "Vermittlungs-Server antwortet nicht (" + MP_BROKERS.length + " versucht). Meist hilft: ~1 Minute warten und nochmal versuchen — der Gratis-Server bremst bei vielen Versuchen kurz hintereinander."
                     : "Raum " + S.code + " antwortet nicht — Code prüfen, dann nochmal.");
       }, JOIN_TIMEOUT);
       peer.on("open", function () {
@@ -189,6 +190,22 @@
       });
       peer.on("connection", function (conn) {
         if (!isHost) return;
+        /* 🔎 Raum-Browser-Probe: antwortet mit Rauminfo und belegt NIE den Gast-Slot.
+           Ohne diese Weiche wurde die Probe als Gast angenommen (main=conn) — der Raum
+           galt als voll, und ihr Trennen liess den Host "Verbindung verloren" melden. */
+        if (conn.label === "probe") {
+          conn.on("data", function (d) {
+            var m; try { m = JSON.parse(d); } catch (e) { return; }
+            if (m && m.t === "__lobby?") {
+              try { conn.send(JSON.stringify({ t: "__lobby",
+                n: (S.info && S.info.n) || "Host",
+                p: (S.info && S.info.p) || 1,
+                voll: !!(main && main.open) })); } catch (e) {}
+            }
+          });
+          setTimeout(function () { try { conn.close(); } catch (e) {} }, 12000);
+          return;
+        }
         if (conn.label === "fast") { /* A3: fast nur vom verbundenen Gast, kein Hijack durch Fremde/Doppelte */
           if (!main || !main.open || conn.peer !== main.peer) { try { conn.close(); } catch (e) {} return; }
           if (fast && fast !== conn) { try { fast.close(); } catch (e) {} } /* 🩹 Schwarm-P3: Zombie-fast vom selben Gast ersetzen — nach Reconnect blieb der Spam-Kanal sonst tot */
@@ -341,36 +358,51 @@
        Das Spiel MUSS auf „__lobby?" antworten, sonst bleibt sein Raum unsichtbar. */
     PUBLIC: ["PUBA", "PUBB", "PUBC", "PUBD", "PUBE", "PUBF"],
     suche: function (gameId, opt) {
+      /* ⚠️ EIN einziger Peer fuer ALLE Proben. Die erste Fassung oeffnete pro Code
+         eine eigene Peer-Verbindung (6 gleichzeitig von einer IP) — die Gratis-
+         Cloud drosselt genau das, und danach lief sogar das normale „Raum
+         erstellen" in den Timeout („Kein Vermittlungs-Server erreichbar",
+         User-Screenshot). Ein Peer darf beliebig viele fremde IDs anwaehlen. */
       opt = opt || {};
-      var codes = opt.codes || MP.PUBLIC, offen = codes.length, gefunden = [];
-      var frist = opt.frist || 5000, tot = false;
-      var alle = [];
+      var codes = opt.codes || MP.PUBLIC, gefunden = [], tot = false;
+      var frist = opt.frist || 7000, offen = codes.length;
+      var peer = null, gesamtT = null;
       function fertig() {
         if (tot) return; tot = true;
-        alle.forEach(function (s) { try { s.close(); } catch (e) {} });
+        if (gesamtT) clearTimeout(gesamtT);
+        try { if (peer) peer.destroy(); } catch (e) {}
         if (opt.fertig) try { opt.fertig(gefunden); } catch (e) {}
       }
-      codes.forEach(function (code) {
-        var s = MP.join(gameId, code), erledigt = false, t = null;
-        alle.push(s);
-        function schluss(info) {
-          if (erledigt) return; erledigt = true;
-          if (t) clearTimeout(t);
-          try { s.close(); } catch (e) {}
-          if (info) { gefunden.push(info); if (opt.fund) try { opt.fund(info); } catch (e) {} }
-          if (--offen <= 0) fertig();
-        }
-        t = setTimeout(function () { schluss(null); }, frist);
-        s.onMessage(function (d) {
-          if (d && d.t === "__lobby") schluss({ code: code, name: d.n || "?", spieler: d.p || 1 });
-        });
-        s.onStatus(function (st) {
-          if (st === "connected") { try { s.send({ t: "__lobby?" }); } catch (e) {} }
-          else if (st === "closed") schluss(null);
-        });
-        if (s.ready && s.ready.catch) s.ready.catch(function () { schluss(null); });
+      if (!window.Peer || !codes.length) { setTimeout(fertig, 0); return { abbrechen: fertig }; }
+      gesamtT = setTimeout(fertig, frist + 4000);
+      try { peer = new Peer(undefined, mpPeerCfg()); } catch (e) { fertig(); return { abbrechen: fertig }; }
+      peer.on("error", function (e) {
+        /* peer-unavailable = dieser eine Raum ist leer — normal, NICHT der Peer kaputt */
+        if (e && e.type === "peer-unavailable") return;
+        fertig();
       });
-      if (!codes.length) fertig();
+      peer.on("open", function () {
+        codes.forEach(function (code) {
+          var erledigt = false, t = null, c = null;
+          function schluss(info) {
+            if (erledigt) return; erledigt = true;
+            if (t) clearTimeout(t);
+            try { if (c) c.close(); } catch (e) {}
+            if (info) { gefunden.push(info); if (opt.fund) try { opt.fund(info); } catch (e) {} }
+            if (--offen <= 0) fertig();
+          }
+          t = setTimeout(function () { schluss(null); }, frist);
+          try { c = peer.connect(pid(gameId, code), { reliable: true, label: "probe" }); } catch (e) { schluss(null); return; }
+          if (!c) { schluss(null); return; }
+          c.on("open", function () { try { c.send(JSON.stringify({ t: "__lobby?" })); } catch (e) {} });
+          c.on("data", function (d) {
+            var m; try { m = JSON.parse(d); } catch (e) { return; }
+            if (m && m.t === "__lobby") schluss({ code: code, name: m.n || "?", spieler: m.p || 1, voll: !!m.voll });
+          });
+          c.on("close", function () { schluss(null); });
+          c.on("error", function () { schluss(null); });
+        });
+      });
       return { abbrechen: fertig };
     },
     /* Ersten freien oeffentlichen Raum belegen. Reihenfolge = MP.PUBLIC, damit

@@ -6622,6 +6622,7 @@ document.getElementById("mpBackBtn").onclick=function(){
      ▶ Starten        -> nur der Host; erst dann laeuft das Spiel los. */
 var LOBBY={spieler:[],gestartet:false};
 function lobbyNamenUpd(){
+  if(MPs&&mpHost)MPs.info={n:LOBBY.spieler[0]||myName,p:LOBBY.spieler.length||1};
   var el=document.getElementById("mpSpieler");if(!el)return;
   if(!LOBBY.spieler.length){el.innerHTML="";return;}
   el.innerHTML="<div style='font-weight:800;color:#2a6ab0;margin-bottom:4px'>👥 Im Raum:</div>"+
@@ -6650,10 +6651,11 @@ document.getElementById("sucheBtn").onclick=function(){
       return;}
     box.innerHTML="<div style='font-weight:800;color:#2a6ab0;margin-bottom:6px'>Offene Räume:</div>"+
       gefunden.map(function(r,i){
-        return "<button class='btn ghost' data-i='"+i+"' style='display:block;width:100%;margin:0 0 6px;font-size:.92rem;padding:9px 14px;text-align:left'>"+
-               "🎮 "+String(r.name).replace(/[<>&]/g,"")+" · Raum "+r.code+" · "+r.spieler+"/2</button>";}).join("");
+        return "<button class='btn ghost' data-i='"+i+"'"+(r.voll?" disabled":"")+
+               " style='display:block;width:100%;margin:0 0 6px;font-size:.92rem;padding:9px 14px;text-align:left"+(r.voll?";opacity:.45":"")+"'>"+
+               "🎮 "+String(r.name).replace(/[<>&]/g,"")+" · Raum "+r.code+" · "+r.spieler+"/2"+(r.voll?" (voll)":"")+"</button>";}).join("");
     Array.prototype.forEach.call(box.querySelectorAll("button[data-i]"),function(b){
-      b.onclick=function(){beitreten(gefunden[+b.getAttribute("data-i")].code);};});}
+      b.onclick=function(){var r=gefunden[+b.getAttribute("data-i")];if(!r.voll)beitreten(r.code);};});}
   MP.suche("traumhaus",{fund:function(r){gefunden.push(r);zeichne();},
                         fertig:function(){zeichne();}});};
 function raumEroeffnen(belegt){
@@ -6661,6 +6663,7 @@ function raumEroeffnen(belegt){
   LOBBY.spieler=[myName];LOBBY.gestartet=false;
   try{var cs=localStorage.getItem("th_save_coop");if(cs)loadSnapshot(JSON.parse(cs));}catch(e){}
   MPs=MP.hostPublic("traumhaus",belegt);mpHost=true;window._roomCode=MPs.code;
+  MPs.info={n:myName,p:1};   /* Rauminfo fuer den Raum-Browser */
   lobbyAnzeigen(MPs.code);
   MPs.onMessage(onNetMsg);
   MPs.onStatus(hostStatus);
@@ -6697,6 +6700,7 @@ document.getElementById("hostBtn").onclick=function(){
   LOBBY.spieler=[myName];LOBBY.gestartet=false;
   try{var cs=localStorage.getItem("th_save_coop");if(cs)loadSnapshot(JSON.parse(cs));}catch(e){} /* 🩹 Schwarm-P1: gemeinsames Haus überlebt jetzt einen Host-Reload */
   MPs=MP.host("traumhaus");mpHost=true;window._roomCode=MPs.code;
+  MPs.info={n:myName,p:1};
   lobbyAnzeigen(MPs.code);
   MPs.onMessage(onNetMsg);
   /* Kein Auto-Start mehr: frueher lief das Spiel in dem Moment los, in dem jemand
