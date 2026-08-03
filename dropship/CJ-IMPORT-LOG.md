@@ -2545,3 +2545,9 @@ verkaufte mit Verlust.**
   (Fortura = EU-Lager, andere Fracht-Ökonomie).
 - ⚠️ Folge: billige Novelty-Artikel werden teurer/evtl. unverkäuflich — das ist die Realität von China-Dropship in die CH
   (Fracht > Warenwert). Break-even-Preis statt Verlust-Verkauf. Künftig ggf. solche Artikel gar nicht erst importieren.
+
+### Traffic-Aufbau 2026-08-03: 2 SEO-Ratgeber-Artikel (Ratgeber-Blog)
+Organischer Google-Traffic (autonom, gratis): «Die besten Mini-Ventilatoren für unterwegs 2026» (→/collections/ventilatoren)
++ «Sonnenbrillen-Trends 2026 Schweizer Sommer-Guide» (→/collections/sonnenbrillen-alle + /collections/sommer). Saisonal, mit
+internen Links + SEO-Summary. Grosse Traffic-Hebel bleiben user-seitig: TikTok-App-Audit (→9 Reels posten), Google-Merchant
+Ziel-Land=CH (Gratis-Shopping), Pinterest-Feed-Reparatur.
