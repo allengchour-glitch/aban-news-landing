@@ -2551,3 +2551,13 @@ Organischer Google-Traffic (autonom, gratis): «Die besten Mini-Ventilatoren fü
 + «Sonnenbrillen-Trends 2026 Schweizer Sommer-Guide» (→/collections/sonnenbrillen-alle + /collections/sommer). Saisonal, mit
 internen Links + SEO-Summary. Grosse Traffic-Hebel bleiben user-seitig: TikTok-App-Audit (→9 Reels posten), Google-Merchant
 Ziel-Land=CH (Gratis-Shopping), Pinterest-Feed-Reparatur.
+
+### 🎯 GOOGLE-MERCHANT CH-FREISCHALTUNG (2026-08-04, via PC-Claude-Browser) — #1-Gratis-Traffic-Hebel ERLEDIGT
+Der seit Wochen offene «Merchant-Ziel-Land»-Hebel (Memory §16e) ist umgesetzt (Konto LuxeStyle CH 5797470070):
+1. **Versandservice «Standardversand Schweiz»**: Switzerland, CHF, Flat 7.90, gratis ab 60, Lieferzeit 6–14 Werktage (ehrlich).
+2. **Rückgabe**: bestehende VERIFIZIERTE CH-Richtlinie (30T, kostenlos) belassen. ⚠️ Diskrepanz notiert: Website-Policy sagt
+   «kostenlos nur bei Defekt» — falls Google später moniert, Website-Policy auf generell kostenlos angleichen (Conversion-Plus).
+3. **Feed-Countries: Switzerland HINZUGEFÜGT (jetzt DE+CH)**. DE bewusst belassen (gestuft; Entfernen erst wenn CH-Listings
+   live). ⚠️ UI-Falle: beim ersten Speichern warf der Country-Editor DE raus — nachkontrollieren nach jedem Speichern!
+4. Marketing methods = Free listings (nichts Kostenpflichtiges aktiviert).
+→ 542+ aktive Produkte werden für Schweizer Gratis-Shopping-Listings freigegeben (CH-Scorecard «Great»). Propagation 1–2 Tage.
