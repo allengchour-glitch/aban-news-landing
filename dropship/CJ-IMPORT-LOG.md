@@ -2514,3 +2514,21 @@ Katalog-weiter Audit (26'299 aktiv) + Live-Storefront. **Autonom angewandte Fixe
 - **Startseite:** Reihe `product_list_topseller` (tote `topseller`-Collection, 2012 Produkte ALLE gedraftet) → `bestseller`.
 - **Befund:** topseller/premium-marken-lager (7499)/elektriker-werkzeug (582) sind Alt-Collections mit 100% gedrafteter
   Ware (BigBuy-Bereinigung) — Menü/Startseite verlinkten auf leere Seiten. Alle 121 Menü-Handles auf Aktiv-Bestand geprüft.
+
+### Bestellung #1011 FULFILLED (2026-08-03) — erste durchgängige CJ-Abwicklung
+- Kunde Markus Herger, Schönenbuch CH. Produkt: Reise-Hängematte CJYDQTLY00023-Yellow+green, CHF 14.90.
+- **CJ-Order LX1011B** (SD2608031739360668500) angelegt (API, exakte vid F3A02596…), **bezahlt** ($21.77 = $6 Produkt
+  + $15.77 Fracht CJPacket Ordinary) — **per Kreditkarte pro Order** (User via PC-Claude).
+- **Tracking EQKPT8612321546YQ** → Shopify #1011 via fulfillmentCreateV2 auf FULFILLED gesetzt, Kunde benachrichtigt.
+- **⚠️ Kleiner Verlust:** ~CHF 18–20 Kosten vs. CHF 14.90 → Hängematte unterpreist, Preis später anheben.
+- **🔑 LEHREN (wichtig für künftige Fulfillments):**
+  1. **CJ Wallet braucht $2.000-Minimum (Wire) / Payoneer** — ABER **pro Order geht Karte/PayPal direkt** (kein Wallet nötig!).
+     Zahlungs-Bildschirm der Order → „Mehr" → Kreditkarte/PayPal/Klarna/iDEAL/Pix verfügbar.
+  2. **Auto-Sync-Orders landen in „Importiert → Ungültige Bestellungen / Nicht verbunden"** (unsere Produkte wurden direkt
+     via Shopify-API angelegt, nicht über CJ-Import) → KEIN Pay-Button. Der „Verbinden"-Dialog mappt nur POSITIONS-basiert
+     (kein Suchfeld) = Farb-Vertausch-Gefahr bei 33 Varianten → NICHT nutzen.
+  3. **Sauberer Weg = CJ-Order per API `createOrderV2`** mit exakter vid (SKU→vid via product/query), Felder:
+     shippingCountry(voller Name!)+shippingCountryCode+shippingCustomerName(!)+Province/City/Address/Zip/Phone,
+     logisticName aus freightCalculate, products[{vid,quantity}]. Danach in CJ-UI per Karte zahlen.
+  4. **deleteOrder braucht HTTP DELETE** (nicht POST). **Nach Zahlung: getOrderDetail liefert trackNumber** →
+     Shopify fulfillmentCreateV2(lineItemsByFulfillmentOrder+trackingInfo+notifyCustomer:true).
