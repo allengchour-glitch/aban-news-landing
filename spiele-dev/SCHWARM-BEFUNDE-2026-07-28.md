@@ -1173,3 +1173,30 @@ Davon sind 612 im Spiel ungenutzt.** Die neuesten Pakete sind praktisch komplett
 
 **Reihenfolge-Empfehlung:** th32/th33 in den Freizeitpark (grösster sichtbarer Gewinn), dann th26
 Seilbahn, dann th30 Figuren.
+
+---
+
+## 📌 Nachtrag 2026-08-03 — Koop-Drossel-Lektion (teuer gelernt, NIE vergessen)
+
+**Symptom (User-Screenshot):** „⏱️ Kein Vermittlungs-Server erreichbar" beim Hosten in
+lebenspfad — obwohl beide Broker (0.peerjs.com, peerjs.92k.de) gesund waren (HTTP 200 < 1 s).
+
+**Ursache:** Die erste Fassung der Raumsuche öffnete **pro öffentlichem Raum-Code einen
+eigenen `new Peer()`** — 5–6 gleichzeitige Registrierungen von einer IP. Die Gratis-Cloud
+drosselt genau das, und die Drossel hält **minutenlang** an: danach läuft auch normales
+Hosten/Joinen in den 15-s-Timeout. In der Sandbox reproduziert — nach mehreren Suchläufen
+drosselten BEIDE Broker unsere IP.
+
+**Regeln:**
+1. **Ein Peer darf beliebig viele fremde IDs anwählen** (`peer.connect(...)` mehrfach).
+   Raumsuche = EIN Peer, alle Codes darüber. Nie ein Peer pro Code.
+2. `peer-unavailable` heißt nur „dieser Raum ist leer" — Peer lebt weiter, NICHT abbrechen.
+3. **Proben brauchen ein eigenes Label** (`{label:"probe"}`): mp.js-Hosts nahmen die Probe
+   sonst als echten Gast an (`main=conn`) → Raum galt als voll, Trennen der Probe
+   löste „Verbindung verloren" beim Host aus.
+4. Fehlertext ehrlich formulieren: „~1 Minute warten und nochmal versuchen — der
+   Gratis-Server bremst bei vielen Versuchen kurz hintereinander" statt „Internet prüfen".
+5. Beim Testen in der Sandbox: jeder Testlauf verbrennt die IP weiter. E2E-Tests mit
+   langen Timeouts (45 s) fahren, nicht in schneller Folge wiederholen.
+
+Fix gemergt als PR #2158 (mp.js + traumhaus.html + lebenspfad.html, je EIN Such-Peer).
