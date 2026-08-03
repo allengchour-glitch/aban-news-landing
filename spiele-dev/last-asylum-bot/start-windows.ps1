@@ -26,7 +26,13 @@ param(
     [switch]$UeberspringeUpdate
 )
 
-$ErrorActionPreference = "Stop"
+# Bewusst NICHT "Stop": das Skript ruft ueberall native Befehle (python, adb,
+# git) und leitet deren stderr um. In Windows PowerShell 5.1 macht "Stop"
+# daraus einen abbrechenden NativeCommandError - schon eine harmlose Zeile wie
+# "* daemon not running; starting now" beendet dann den ganzen Start, im
+# minimierten Autostart-Fenster unsichtbar. Der Erfolg jedes Aufrufs wird
+# ohnehin ueber $LASTEXITCODE bzw. den Rueckgabewert geprueft.
+$ErrorActionPreference = "Continue"
 Set-Location -Path $PSScriptRoot
 
 # Gilt fuer JEDEN git-Aufruf in diesem Skript: nie nach Zugangsdaten fragen.
@@ -153,8 +159,6 @@ Schritt "Neuen Stand holen"
 #  2) Oben steht $ErrorActionPreference = "Stop". git schreibt auch Harmloses
 #     nach stderr; das allein kann den ganzen Start abbrechen.
 if (-not $UeberspringeUpdate) {
-    $fehlerregelVorher = $ErrorActionPreference
-    $ErrorActionPreference = "Continue"
     try {
         $vorher = Git-Text "rev-parse" "--short" "HEAD"
         $zug = Git-MitZeitlimit @("pull", "--ff-only") 120
@@ -181,8 +185,6 @@ if (-not $UeberspringeUpdate) {
     } catch {
         Warnung "Neuen Stand holen ging schief - der Bot startet trotzdem."
         Write-Host "     $($_.Exception.Message)"
-    } finally {
-        $ErrorActionPreference = $fehlerregelVorher
     }
 } else {
     Warnung "Update uebersprungen (-UeberspringeUpdate)."
@@ -308,8 +310,14 @@ function Starte-BlueStacks {
 & $python bot.py --adb "$Adb" devices
 if ($LASTEXITCODE -ne 0) {
     Warnung "Kein Geraet gefunden - suche nach einem Emulator ..."
-    $null = Verbinde-Emulator $Adb
-    if ($LASTEXITCODE -ne 0) { $null = Starte-BlueStacks }
+    # Den RUECKGABEWERT auswerten, nicht $LASTEXITCODE. Der stammt hier vom
+    # letzten `adb connect` in der Funktion - und adb quittiert ein
+    # fehlgeschlagenes connect mit 0. Die Entscheidung "muss BlueStacks
+    # gestartet werden?" haette also an einer Groesse gehangen, die mit dem
+    # Ergebnis nichts zu tun hat: der eingebaute Automatikstart lief nie an,
+    # und die Neustart-Schleife wiederholte den Abbruch alle 60 Sekunden.
+    # Zwanzig Zeilen weiter oben macht es Starte-BlueStacks bereits richtig.
+    if (-not (Verbinde-Emulator $Adb)) { $null = Starte-BlueStacks }
     & $python bot.py --adb "$Adb" devices
     if ($LASTEXITCODE -ne 0) {
         Abbruch "Weder Handy noch Emulator erreichbar" @(
