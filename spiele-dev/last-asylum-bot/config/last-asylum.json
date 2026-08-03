@@ -988,7 +988,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -3745,7 +3745,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -3824,7 +3824,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -3903,7 +3903,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -3982,7 +3982,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -4061,7 +4061,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -4140,7 +4140,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -4219,7 +4219,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -4298,7 +4298,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -4377,7 +4377,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -4500,7 +4500,7 @@
       "every": 1800,
       "at_start": true,
       "priority": 125,
-      "_zweck": "In die Zuflucht wechseln und alles einsammeln (Kraeuter, Geschenke, Offline-Einnahmen). Die Regeln oben erledigen das Einsammeln, sobald der Bildschirm sichtbar ist. Fuer den Wechsel braucht es nav/zuflucht.png (der Umschalter am linken Bildrand).",
+      "_zweck": "In die Zuflucht wechseln und alles einsammeln (Kraeuter, Geschenke, Offline-Einnahmen). Die Regeln oben erledigen das Einsammeln, sobald der Bildschirm sichtbar ist. Fuer den Wechsel braucht es nav/zuflucht.png (der Umschalter am linken Bildrand). 03.08.: der Ersatzpunkt im tap_first war geraten (1 Stelle(n) entfernt) - ein blinder Tipp an den aeussersten linken Bildrand, ohne dass je jemand nachgesehen haette, was dort liegt. Solange nav/zuflucht.png fehlt, laeuft die Aufgabe lieber sauber leer als blind zu tippen. AUS seit 03.08.: nav/zuflucht.png fehlt. Mit dem geratenen Ersatz-Punkt tippte die Aufgabe blind an den linken Bildrand, ohne Ersatz-Punkt bliebe sie stehen - beides nichts wert. Der Ansichten-Sammler liefert den Bildschirm, dann Vorlage schneiden und wieder anschalten.",
       "do": [
         {
           "log": "Zuflucht besuchen und abernten"
@@ -4509,10 +4509,6 @@
           "tap_first": {
             "of": [
               "nav/zuflucht.png"
-            ],
-            "fallback": [
-              0.02,
-              0.35
             ],
             "after": [
               3.0,
@@ -4596,7 +4592,8 @@
             1.5
           ]
         }
-      ]
+      ],
+      "enabled": false
     },
     {
       "name": "events",
@@ -5287,7 +5284,7 @@
       "every": 3600,
       "at_start": true,
       "priority": 112,
-      "_zweck": "Soldaten der hoechsten freigeschalteten Stufe ausbilden. Stand 31.07.: S8 ist noch mit einem Schloss versehen, hoechste freie Stufe ist S7 - der Wunsch 'nur T8' geht also erst, wenn das Schloss faellt. Im Trainingsplatz gibt es zwei Knoepfe: das BLAUE 'Trainieren' startet die normale Ausbildung, das ORANGE 'Jetzt trainieren' kuerzt sie ab und kostet dafuer. Genommen wird das blaue - siehe _farben.",
+      "_zweck": "Soldaten der hoechsten freigeschalteten Stufe ausbilden. Stand 31.07.: S8 ist noch mit einem Schloss versehen, hoechste freie Stufe ist S7 - der Wunsch 'nur T8' geht also erst, wenn das Schloss faellt. Im Trainingsplatz gibt es zwei Knoepfe: das BLAUE 'Trainieren' startet die normale Ausbildung, das ORANGE 'Jetzt trainieren' kuerzt sie ab und kostet dafuer. Genommen wird das blaue - siehe _farben. AUS seit 03.08.: alle fuenf gebrauchten Vorlagen fehlen (kaserne/gebaeude, ausbilden_menue, stufe_t8, btn_ausbilden, ui/btn_max). Ohne sie kann die Aufgabe nichts ausrichten ausser stuendlich irgendwohin zu tippen - und blinde Tipps in der Stadt lernt der Bot dann auch noch als vermeintliche Auswege. Wieder anschalten, sobald die Vorlagen geschnitten sind (der Ansichten-Sammler liefert die Bildschirme).",
       "do": [
         {
           "log": "Soldaten ausbilden (hoechste Stufe)"
@@ -5400,7 +5397,8 @@
             1.5
           ]
         }
-      ]
+      ],
+      "enabled": false
     },
     {
       "name": "heilen",
@@ -5574,7 +5572,8 @@
         }
       ],
       "at_start": true,
-      "_zweck": "Verwundete Truppen kosten Kampfkraft, solange sie im Lazarett liegen. Der Bot oeffnet das Lazarett und heilt alles, was geht. Braucht ui/btn_heilen.png; der Knopf ist gruen, deshalb greift notfalls auch die generische Gruen-Regel."
+      "_zweck": "Verwundete Truppen kosten Kampfkraft, solange sie im Lazarett liegen. Der Bot oeffnet das Lazarett und heilt alles, was geht. Braucht ui/btn_heilen.png; der Knopf ist gruen, deshalb greift notfalls auch die generische Gruen-Regel. AUS seit 03.08.: ui/btn_heilen.png fehlt, und der hier beschriebene Rueckfall auf die Gruen-Regel kann bauartbedingt nicht greifen - die Aufgabe ist vorher fertig. Ein Versprechen, das der Ablauf nicht einloest, ist schlimmer als keines.",
+      "enabled": false
     },
     {
       "name": "sammeln",
@@ -6278,7 +6277,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -6357,7 +6356,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -6436,7 +6435,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -6515,7 +6514,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -6594,7 +6593,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -6673,7 +6672,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -6752,7 +6751,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -6831,7 +6830,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -6910,7 +6909,7 @@
               "max_w": 0.12,
               "min_h": 0.012,
               "max_h": 0.05,
-              "min_fuellung": 0.45
+              "min_fuellung": 0.66
             },
             "region": [
               0.0,
@@ -7027,7 +7026,7 @@
       "do": [
         {
           "selbstbericht": {
-            "hoechstens": 6
+            "hoechstens": 20
           }
         }
       ]

@@ -201,8 +201,13 @@ def cmd_teilen(args) -> int:
     os.makedirs(ordner, exist_ok=True)
 
     # Alte Bilder wegraeumen - das Repository soll nicht zulaufen.
+    # Ohne die ausgeschriebene Rechnung: bei --behalten 1 ergab alte[:-0] eine
+    # LEERE Liste, es wurde also nie etwas geloescht und der Ordner wuchs
+    # unbegrenzt. Negative Scheiben sind hier eine Falle.
     alte = sorted(glob.glob(os.path.join(ordner, "*.png")))
-    for pfad in alte[:-max(0, args.behalten - 1)] if args.behalten else alte:
+    behalten = max(0, int(args.behalten) - 1) if args.behalten else 0
+    zu_loeschen = alte[:len(alte) - behalten] if behalten else alte
+    for pfad in zu_loeschen:
         os.remove(pfad)
 
     img = Image.load(args.image) if args.image else make_device(args).screencap()
@@ -222,7 +227,13 @@ def cmd_teilen(args) -> int:
     git("add", "--", ordner)
     ergebnis = git("commit", "-m", f"Bildschirm zum Anschauen: {safe}")
     if ergebnis.returncode != 0 and b"nothing to commit" not in ergebnis.stdout:
-        print(ergebnis.stdout.decode("utf-8", "replace")[:300], file=sys.stderr)
+        # Frueher lief es hier weiter und meldete am Ende "Hochgeladen" - obwohl
+        # gar nichts eingetragen war. Der haeufigste Grund (git kennt auf
+        # diesem Rechner keinen Namen) stand dabei in stderr, das weggeworfen
+        # wurde.
+        text = (ergebnis.stdout + ergebnis.stderr).decode("utf-8", "replace")
+        print("Eintragen fehlgeschlagen:", " ".join(text.split())[:300], file=sys.stderr)
+        return 1
     schub = git("push")
     if schub.returncode != 0:
         print("Hochladen fehlgeschlagen:",
@@ -339,6 +350,9 @@ def cmd_entdecke(args) -> int:
     return 0
 
 
+MIN_BELEGE = 5   # so viele Treffer braucht ein Schwellen-Vorschlag
+
+
 def cmd_lernen(args) -> int:
     """Aus den JSONL-Protokollen echter Läufe bessere Schwellen ableiten."""
     import json as _json
@@ -386,7 +400,12 @@ def cmd_lernen(args) -> int:
         ja_min = ja[0] if ja else None
         nein_max = nein[-1] if nein else None
         neu = ""
-        if ja_min is not None and nein_max is not None and nein_max < ja_min - 0.02:
+        # Mindestens fuenf Treffer verlangen. Aus einem einzigen Vergleich eine
+        # Schwelle abzuleiten heisst, den Zufall eines Laufs festzuschreiben -
+        # und eine zu niedrige Schwelle greift danach dauerhaft daneben.
+        if len(ja) < MIN_BELEGE:
+            neu = f"zu wenig ({len(ja)})"
+        elif ja_min is not None and nein_max is not None and nein_max < ja_min - 0.02:
             # Genau in die Lücke legen – mit etwas Abstand nach unten.
             neu = round(max(0.5, (ja_min + nein_max) / 2), 3)
             vorschlaege[name] = neu

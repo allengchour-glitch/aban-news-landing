@@ -87,7 +87,12 @@ def hochladen(ordner: str, quelle: str) -> bool:
     git("add", "--", ordner)
     ergebnis = git("commit", "-m", f"Kacheln zum Anschauen: {os.path.basename(quelle)}")
     if ergebnis.returncode != 0 and b"nothing to commit" not in ergebnis.stdout:
-        print(ergebnis.stdout.decode("utf-8", "replace")[:300], file=sys.stderr)
+        # Nicht weiterlaufen und am Ende "Hochgeladen" melden - der haeufigste
+        # Grund (git kennt keinen Namen) stand ausserdem in stderr, das hier
+        # weggeworfen wurde.
+        text = (ergebnis.stdout + ergebnis.stderr).decode("utf-8", "replace")
+        print("Eintragen fehlgeschlagen:", " ".join(text.split())[:300], file=sys.stderr)
+        return False
     schub = git("push")
     if schub.returncode != 0:
         print("Hochladen fehlgeschlagen:",

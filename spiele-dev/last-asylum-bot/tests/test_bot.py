@@ -1312,9 +1312,19 @@ class TestNachmessenVerbrauch(unittest.TestCase):
 
 
 class TestErsatzPunkt(unittest.TestCase):
-    """Jedes tap_first braucht einen Ausweg."""
+    """Jedes tap_first braucht einen Ausweg - solange die Aufgabe laeuft.
 
-    def test_alle_tap_first_haben_einen_ersatz_punkt(self):
+    Der Test verlangte den Ersatz-Punkt bisher ausnahmslos. Das ist einen
+    Schritt zu weit: ein GERATENER Ersatz-Punkt ist schlechter als keiner. Bei
+    'zuflucht' zeigte er auf x=0.02, den aeussersten linken Bildrand, ohne dass
+    je jemand nachgesehen haette, was dort liegt - und der Bot lernt aus solchen
+    Blindtipps auch noch vermeintliche Auswege.
+
+    Der Ausweg fuer abgeschaltete Aufgaben ist, dass sie nicht laufen. Der Test
+    prueft darum nur, was tatsaechlich laeuft.
+    """
+
+    def test_alle_laufenden_tap_first_haben_einen_ersatz_punkt(self):
         import json as _json
 
         with open(os.path.join(ROOT, "config", "last-asylum.json"), encoding="utf-8") as fh:
@@ -1331,7 +1341,12 @@ class TestErsatzPunkt(unittest.TestCase):
                 for v in knoten:
                     pruefe(v, wo)
 
-        for gruppe in ("rules", "tasks", "on_unknown", "on_stuck"):
+        for gruppe in ("rules", "tasks"):
+            for eintrag in roh.get(gruppe, []):
+                if not eintrag.get("enabled", True):
+                    continue          # laeuft nicht, kann also nirgends steckenbleiben
+                pruefe(eintrag, f"{gruppe}:{eintrag.get('name')}")
+        for gruppe in ("on_unknown", "on_stuck"):
             pruefe(roh.get(gruppe, []), gruppe)
         self.assertEqual(
             ohne, [],
@@ -2977,6 +2992,62 @@ class TestFarbschrankenSindGemessen(unittest.TestCase):
             k = self.regel(name)["match"]["farbknopf"]
             self.assertLess(k["min_fuellung"], math.pi / 4,
                             f"{name}: mehr als {math.pi/4:.3f} kann ein Kreis nicht sein")
+
+
+
+class TestSelbstberichtVerschweigtNichts(unittest.TestCase):
+    """Ein Bericht, der beruhigt statt zu berichten, ist schlimmer als keiner.
+
+    Er sammelte nur Vorlagen unter dem Schluessel 'template' - die aus
+    tap_first stehen aber als blosse Zeichenketten in 'of' und blieben damit
+    unsichtbar. Und ohne vorheriges validate() meldete er "keine Vorlage
+    fehlt", obwohl 32 fehlten.
+    """
+
+    def motor(self):
+        cfg = Config.load(os.path.join(ROOT, "config", "last-asylum.json"))
+        return Engine(cfg, FakeDevice([Image.new(10, 10)], loop=True),
+                      logger=quiet(), sleep=lambda s: None)
+
+    def test_ohne_validate_wird_trotzdem_berichtet(self):
+        eng = self.motor()
+        self.assertEqual(eng.cfg.offene_templates, [], "Vorbedingung: noch nicht geprueft")
+        eng._selbstbericht({"hoechstens": 40})
+        self.assertGreater(len(eng.cfg.offene_templates), 0,
+                           "der Bericht muss selbst nachsehen, statt Ruhe zu melden")
+
+    def test_tap_first_vorlagen_tauchen_auf(self):
+        cfg = Config.load(os.path.join(ROOT, "config", "last-asylum.json"))
+        cfg.validate()
+        aus_tap_first = set()
+
+        def suche(knoten):
+            if isinstance(knoten, dict):
+                fuer = knoten.get("of")
+                if isinstance(fuer, list):
+                    for e in fuer:
+                        if isinstance(e, str) and e.endswith(".png"):
+                            aus_tap_first.add(e)
+                for v in knoten.values():
+                    suche(v)
+            elif isinstance(knoten, list):
+                for v in knoten:
+                    suche(v)
+
+        for task in cfg.tasks:
+            suche(task.do)
+        fehlend = aus_tap_first & set(cfg.offene_templates)
+        if not fehlend:
+            self.skipTest("derzeit fehlt keine tap_first-Vorlage")
+
+        gesehen = []
+        eng = Engine(cfg, FakeDevice([Image.new(10, 10)], loop=True),
+                     logger=Logger(level="info"), sleep=lambda s: None)
+        eng.log.info = lambda msg, **kw: gesehen.append(f"{msg} {kw}")
+        eng._selbstbericht({"hoechstens": 40})
+        text = " ".join(gesehen)
+        for name in sorted(fehlend):
+            self.assertIn(name, text, f"{name} fehlt im Bericht")
 
 
 

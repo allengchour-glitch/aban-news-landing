@@ -784,6 +784,15 @@ class Engine:
         Aufgaben blockiert, und nennt die teuersten zuerst. Dann weiss man
         genau, welcher Ausschnitt am meisten bringt.
         """
+        # offene_templates fuellt sich erst bei validate(). Wird der Bericht
+        # aus einem Zusammenhang gerufen, in dem das nicht lief, meldete er
+        # froehlich "keine Vorlage fehlt" - obwohl 32 fehlten. Lieber einmal
+        # selbst nachsehen als eine beruhigende Unwahrheit ausgeben.
+        if not self.cfg.offene_templates:
+            try:
+                self.cfg.validate()
+            except Exception as exc:  # pragma: no cover - Konfigurationsfehler
+                self.log.debug("Selbstbericht: validate ging nicht", grund=str(exc)[:120])
         offen = list(self.cfg.offene_templates)
         if not offen:
             self.log.info("Selbstbericht: keine Vorlage fehlt")
@@ -796,6 +805,15 @@ class Engine:
                 name = knoten.get("template")
                 if isinstance(name, str) and name in betroffen:
                     betroffen[name].add(wo)
+                # tap_first fuehrt seine Vorlagen als blosse Zeichenketten in
+                # 'of'. Ohne diesen Zweig blieben sie im Bericht unsichtbar -
+                # von 32 fehlenden Vorlagen tauchten nur sechs ueberhaupt auf,
+                # und ausgerechnet die aus tap_first fehlten alle.
+                fuer = knoten.get("of")
+                if isinstance(fuer, list):
+                    for eintrag in fuer:
+                        if isinstance(eintrag, str) and eintrag in betroffen:
+                            betroffen[eintrag].add(wo)
                 for v in knoten.values():
                     suche(v, wo)
             elif isinstance(knoten, list):
@@ -816,7 +834,9 @@ class Engine:
             key=lambda kv: (kritisch.index(kv[0]) if kv[0] in kritisch else len(kritisch),
                             -len(kv[1]), kv[0]),
         )
-        wieviele = int(spec.get("hoechstens", 6))
+        # Vorgabe hochgesetzt: bei sechs blieben 26 von 32 fehlenden Vorlagen
+        # ungenannt - der Bericht sagte damit vor allem, was er verschweigt.
+        wieviele = int(spec.get("hoechstens", 20))
         self.log.info(
             f"Selbstbericht: {len(offen)} Vorlagen fehlen - die wichtigsten zuerst"
         )
