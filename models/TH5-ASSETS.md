@@ -759,6 +759,57 @@ Die Texturen sind **im GLB eingebettet** (`mat_bild()`), das Spiel braucht keine
 ---
 
 
+
+## 1z3. Charge 34 — HAUS-BAUKASTEN (`models/th34_*.glb`)
+
+Modulare Teile zum Häuserbauen. Der ganze Sinn der Charge ist **ein** Raster, damit
+man ohne Nachmessen zusammensetzen kann.
+
+```
+Wandmodul      4,000 (x) × 0,300 (y) × 2,750 (z)   →  reihen:  x += 4,00
+Geschossdecke  4,000 × 4,000 × 0,250
+Geschosshöhe   2,750 + 0,250 = 3,000               →  stapeln: z += 3,00
+Ecke           0,300 × 0,300 Pfeiler
+```
+
+Jedes Teil ist in x **und** y auf die Mitte zentriert, die Unterkante liegt auf z = 0.
+Ein Wandmodul an (0,0) belegt x −2,00 … +2,00 und y −0,15 … +0,15. Die Wandflucht
+ist damit y = 0; **außen ist +y** (three.js −z, die Schauseite).
+
+| Datei | Maße (B×T×H) | Raster | Inhalt |
+|---|---|---|---|
+| `th34_wand_voll.glb` | **4,000** × 0,42 × **2,750** | x += 4,00 | Sockelband, Traufgesims |
+| `th34_wand_fenster.glb` | **4,000** × 0,53 × **2,750** | x += 4,00 | Fenster 1,60 × 1,30 mit Laibung, Bank, Sturz, Sprossen |
+| `th34_wand_fenster2.glb` | **4,000** × 0,53 × **2,750** | x += 4,00 | zwei schmale Fenster (Treppenhaus, Bad) |
+| `th34_wand_tuer.glb` | **4,000** × 0,76 × **2,750** | x += 4,00 | Haustür 1,10 × 2,15, Zarge, Oberlicht, Griff, Stufe |
+| `th34_wand_tor.glb` | **4,000** × 0,42 × **2,750** | x += 4,00 | Sektional-Garagentor 2,60 × 2,10 |
+| `th34_ecke.glb` | 0,44 × 0,44 × **2,750** | Hausecke | Eckquaderung, Sockel, Gesims |
+| `th34_decke.glb` | **4,000** × **4,000** × **0,250** | z += 3,00 | gedielte Platte mit Randbalken |
+| `th34_dach_sattel.glb` | 4,04 × 4,44 × 1,73 | x += 4,00 | Satteldach-Abschnitt, First in x |
+| `th34_dach_giebel.glb` | 4,39 × 0,36 × 1,70 | Abschluss | Giebeldreieck mit Lüftungsluke |
+| `th34_treppe.glb` | 4,01 × 1,25 × 3,82 | eine Geschosshöhe | 17 Steigungen à 0,176, Handlauf |
+| `th34_balkon.glb` | **4,000** × 1,61 × 1,75 | an ein Wandmodul | Brüstung, Handlauf, Konsolen |
+
+Generator: `tools/assets/mk_th34_hausbaukasten.py` · Texturen aus `textures/th32` (Fassade: `hausputz.png`).
+
+> ⚠️ **Verankert wird am RASTER, nicht an der Bounding-Box.** Bei Fensterbank, Gesims
+> und Türstufe springt die Box über das Raster hinaus (Türmodul 0,76 statt 0,30 tief) —
+> wer auf die Box-Mitte zentriert, verschiebt die Wandflucht.
+
+> ⚠️ **`th34_balkon` ist das einzige Teil mit zmin < 0** (−0,605). Das ist Absicht: der
+> Balkon wird an der Geschossdecke montiert, seine **Oberkante** ist der Bezugspunkt,
+> die Konsolen greifen darunter an die Fassade.
+
+> 🔧 Vier Fehler, die erst die Messung bzw. der Render gezeigt hat — alle behoben:
+> * **Zargen und Randbalken waren höher als ihr Bauteil, saßen aber auf dessen Mitte**
+>   und ragten dadurch unter den Boden (zmin −0,151 / −0,130 / −0,010).
+> * Die **untere Türfüllung** stand bei z = 0,13 und war 0,56 hoch — sie hing unter der Tür.
+> * Die Decke hatte **zwei überlappende Dielenschichten** (0,235…0,265 gegen Oberkante
+>   0,250) und flimmerte gegen sich selbst.
+> * Ein **C-Kommentar `/* */` im Python-Generator** — die Datei parste nicht mehr, und
+>   ein „0 Tracebacks"-Check fing das nicht. `ast.parse` nach jeder Änderung fängt es.
+
+---
 ## 1z2. Charge 33 — PARK-AUSSTATTUNG (`models/th33_*.glb`)
 
 Das, was einem Freizeitpark neben den Fahrgeschäften fehlt. Bank, Laterne, Mülleimer,
