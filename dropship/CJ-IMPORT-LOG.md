@@ -2590,3 +2590,16 @@ Der seit Wochen offene «Merchant-Ziel-Land»-Hebel (Memory §16e) ist umgesetzt
   InnovaGoods Beauty-Packs (CBD/Kombucha/Rice-Routinen) CHF 60.90–210.90, Marge €16–122/Verkauf.
 - Uhren/Schmuck ernüchternd: Marken-Uhren haben nach €28 Versand <15€ Marge (BigBuy-Wholesale zu teuer). Parfum/Beauty-
   Packs sind die BigBuy-CH-Nische. €1000 bleibt als Fulfillment-Kapital (Moneybox zahlt pro Order ~€45–100 landed).
+
+### 📱 Mobile/Desktop-Optimierung (2026-08-04, «desktop und handy optimieren»)
+Screenshot-Studie Mobile (390px) + Desktop: Startseite mobil gesund (2er-Karten, Trust-Icons). **3 Conversion-Fixes:**
+1. **Varianten-Picker buttons→dropdowns** (templates/product.json variant_picker): 33-Farb-Produkte zeigten 4 Bildschirme
+   Button-Liste vor der Beschreibung — jetzt kompaktes Dropdown. (Gültige Werte: "dropdowns"/"buttons", Block-Schema
+   blocks/variant-picker.liquid.)
+2. **Englische Sticky-Kaufleiste ("Add To Cart") = App seowill-sticky-cart** → App-Embed in settings_data.json
+   disabled:true. Horizons NATIVES Sticky-ATC (enable_sticky_add_to_cart:true, de.json «In den Warenkorb legen»)
+   übernimmt — deutsch. Lehre: Englische UI-Texte können von App-Embeds kommen, nicht vom Theme.
+3. **Versandschwellen-Chaos vereinheitlicht:** Trust-Block sagte «ab CHF 50», Merchant 60, real 65 → überall **CHF 65**
+   (index/collection/header, 4 Stellen).
+⚠️ Rest-Punkt: Varianten-WERTE teils Englisch («Green + gray» neben «Himmelblau») — CJ-Import-Rohdaten; Massen-
+Übersetzung wäre eigener Lauf (Option-Values via productOptionUpdate), notiert.
