@@ -2900,5 +2900,85 @@ class TestVorlagenAnleitungStimmt(unittest.TestCase):
 
 
 
+class TestFarbschrankenSindGemessen(unittest.TestCase):
+    """Fuellgrad-Schranken gegen echte Knoepfe pruefen, nicht gegen Vorstellungen.
+
+    Dreimal in drei Tagen war eine solche Schranke gegen eine Vermutung gesetzt
+    und damit unerreichbar: rote Abzeichen bei 0.75, der goldene Bestaetigen-
+    Knopf bei 0.60, blaue Knoepfe bei 0.78. Eine Flaeche mit heller Schrift
+    darauf erreicht diese Werte nie - die Schrift belegt den Rest.
+    """
+
+    @staticmethod
+    def knopf(rgb, beschriftet=True, breite=300, hoehe=90):
+        bild = Image.new(700, 400, (25, 30, 40))
+        x0, y0 = 200, 150
+        for y in range(y0, y0 + hoehe):
+            for x in range(x0, x0 + breite):
+                for k, v in enumerate(rgb):
+                    bild.data[(y * 700 + x) * 3 + k] = v
+        if beschriftet:
+            for y in range(y0 + 26, y0 + 64):
+                for x in range(x0 + 40, x0 + breite - 40):
+                    if (x - x0) % 9 < 6:
+                        for k in range(3):
+                            bild.data[(y * 700 + x) * 3 + k] = 255
+        return bild
+
+    @staticmethod
+    def abzeichen(ziffern, durchmesser=44):
+        bild = Image.new(200, 200, (30, 40, 50))
+        r = durchmesser // 2
+        for y in range(200):
+            for x in range(200):
+                if (x - 100) ** 2 + (y - 100) ** 2 <= r * r:
+                    for k, v in enumerate((228, 58, 52)):
+                        bild.data[(y * 200 + x) * 3 + k] = v
+        if ziffern:
+            breite = 7 * ziffern
+            for y in range(91, 109):
+                for x in range(100 - breite // 2, 100 + breite // 2):
+                    if (x - (100 - breite // 2)) % 7 < 5:
+                        for k in range(3):
+                            bild.data[(y * 200 + x) * 3 + k] = 255
+        return bild
+
+    def regel(self, name):
+        cfg = json.load(open(os.path.join(ROOT, "config", "last-asylum.json"),
+                             encoding="utf-8"))
+        return next(r for r in cfg["rules"] if r["name"] == name)
+
+    def test_blauer_knopf_mit_schrift_wird_erkannt(self):
+        k = self.regel("blauer-knopf-generisch")["match"]["farbknopf"]
+        bild = self.knopf(k["rgb"])
+        treffer = matcher.find_color_button(
+            bild, k["rgb"], tolerance=k["tolerance"], min_w=k["min_w"], max_w=k["max_w"],
+            min_h=k["min_h"], max_h=0.30, min_fuellung=k["min_fuellung"])
+        self.assertTrue(treffer,
+                        f"ein beschrifteter blauer Knopf erreicht die geforderten "
+                        f"{k['min_fuellung']} Fuellung nicht")
+
+    def test_rote_abzeichen_mit_zahl_werden_erkannt(self):
+        k = self.regel("roter-punkt-pruefen")["match"]["farbknopf"]
+        for ziffern in (0, 1, 2):
+            with self.subTest(ziffern=ziffern):
+                treffer = matcher.find_color_button(
+                    self.abzeichen(ziffern), k["rgb"], tolerance=k["tolerance"],
+                    min_w=k["min_w"], max_w=k["max_w"], min_h=k["min_h"],
+                    max_h=k["max_h"], min_fuellung=k["min_fuellung"])
+                self.assertTrue(treffer,
+                                f"Abzeichen mit {ziffern} Ziffern faellt durch "
+                                f"min_fuellung={k['min_fuellung']}")
+
+    def test_ein_voller_kreis_kommt_nie_ueber_785_promille(self):
+        """Die Rechnung dahinter - damit niemand wieder 0.9 hinschreibt."""
+        import math
+        for name in ("roter-punkt-pruefen",):
+            k = self.regel(name)["match"]["farbknopf"]
+            self.assertLess(k["min_fuellung"], math.pi / 4,
+                            f"{name}: mehr als {math.pi/4:.3f} kann ein Kreis nicht sein")
+
+
+
 if __name__ == "__main__":
     unittest.main()

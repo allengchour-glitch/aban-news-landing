@@ -887,10 +887,14 @@ class Engine:
         # Wonach der Bot gerade sucht, sagt oft mehr ueber den Bildschirm als
         # das Bild allein - das steht in der Liste daneben.
         letzte = sorted(self.stats.items(), key=lambda p: -p[1])[:3]
+        # Das Wichtigste an einer neuen Ansicht ist, ob der Bot ueberhaupt
+        # wusste, was er damit anfangen soll. Unbekannte Bildschirme sind
+        # genau die, fuer die eine Vorlage fehlt - und die zuerst dran sind.
+        kennung = "UNBEKANNT" if self.unknown_streak > 0 else "bekannt"
         try:
             with open(os.path.join(ordner, "liste.txt"), "a", encoding="utf-8") as fh:
                 fh.write(f"{name}\t{time.strftime('%Y-%m-%d %H:%M:%S')}\t"
-                         f"Schritt {self.steps}\t{dict(letzte)}\n")
+                         f"Schritt {self.steps}\t{kennung}\t{dict(letzte)}\n")
         except OSError:
             pass
         self.bump("ansicht-gesammelt")
@@ -917,7 +921,7 @@ class Engine:
                 git("reset", "--soft", "HEAD~1")
                 self.log.warn("Ansichten nicht hochgeladen - Commit zurueckgenommen")
         except Exception as exc:  # pragma: no cover - Netz/Umgebung
-            self.log.debug("Ansichten nicht hochgeladen", grund=str(exc)[:120])
+            self.log.warn("Ansichten nicht hochgeladen", grund=str(exc)[:120])
 
     def _ansichten_laden(self) -> Dict[str, str]:
         if not self._ansichten_datei or not os.path.exists(self._ansichten_datei):
@@ -1147,7 +1151,11 @@ class Engine:
                     grund=grund.splitlines()[0][:160] if grund else "",
                 )
             else:
-                self.log.debug("git pull ging nicht durch", grund=grund[:200])
+                # Nicht auf debug verstecken: die Aufgabe laeuft nur alle 30
+                # Minuten, es droht also keine Log-Flut - und ohne Meldung
+                # bleibt der Bot stumm auf einer alten Fassung stehen.
+                self.log.warn("Selbst-Update fehlgeschlagen - Bot bleibt auf alter Fassung",
+                              grund=" ".join(grund.split())[:200])
             return
         alt = vorher.stdout.decode().strip()
         neu = nachher.stdout.decode().strip()

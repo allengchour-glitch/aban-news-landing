@@ -850,7 +850,7 @@
       "name": "blauer-knopf-generisch",
       "priority": 144,
       "cooldown": 25,
-      "_zweck": "Blau ist im Spiel entweder eine Handlung ('Los' bei Arena und Koenigsstadtkampf, 'Versammeln' beim Monster) oder 'Abbrechen'. Beides ist ungefaehrlich - schlimmstenfalls bricht der Bot etwas ab. Damit kommt er aus Event-Popups heraus, ohne dass es dafuer je eine Vorlage braucht. Der untere Rand ist ausgenommen: dort liegt das Angebots-Banner. Am 31.07. griff die Regel sechzehnmal hintereinander mit einem Fuellgrad von nur 0.59 - das war kein Knopf, sondern eine blaeuliche Flaeche. Ein echter Knopf ist fast vollstaendig ausgefuellt, deshalb jetzt 0.78 und mindestens 18 Prozent Bildbreite.",
+      "_zweck": "Blau ist im Spiel entweder eine Handlung ('Los' bei Arena und Koenigsstadtkampf, 'Versammeln' beim Monster) oder 'Abbrechen'. Beides ist ungefaehrlich - schlimmstenfalls bricht der Bot etwas ab. Damit kommt er aus Event-Popups heraus, ohne dass es dafuer je eine Vorlage braucht. Der untere Rand ist ausgenommen: dort liegt das Angebots-Banner. Am 31.07. griff die Regel sechzehnmal hintereinander mit einem Fuellgrad von nur 0.59 - das war kein Knopf, sondern eine blaeuliche Flaeche. Ein echter Knopf ist fast vollstaendig ausgefuellt, deshalb jetzt 0.78 und mindestens 18 Prozent Bildbreite. NACHGEMESSEN 03.08.: min_fuellung stand auf 0.78 - unerreichbar. Ein blauer Knopf mit weisser Beschriftung kommt gemessen hoechstens auf 0.69, die Schrift belegt den Rest. Die 0.78 waren gegen eine Vorstellung gesetzt, nicht gegen einen Knopf; die Regel konnte also nur bei UNbeschrifteten blauen Flaechen greifen - genau das Gegenteil des Gemeinten. Jetzt 0.65: unter dem gemessenen Knopf-Wert, aber ueber dem Fehltreffer von 0.59 am 31.07.",
       "match": {
         "farbknopf": {
           "rgb": [
@@ -869,7 +869,7 @@
             1.0,
             0.88
           ],
-          "min_fuellung": 0.78
+          "min_fuellung": 0.65
         }
       },
       "do": [
@@ -6138,13 +6138,13 @@
     {
       "name": "ansichten-sammeln",
       "_zweck": "Legt jede noch nie gesehene Ansicht einmal in austausch/ansichten/ ab. 32 Vorlagen fehlen, und jede blockiert Aufgaben - Versammlung beitreten, Allianz-Forschung, Falkenturm. Vorlagen schneiden kann nur, wer den Bildschirm sieht; der Bot laeuft ohnehin durch all diese Bildschirme. Halbe Kantenlaenge reicht zum Erkennen, was drauf ist; wo es auf Millimeter ankommt, holt 'teilen' das Bild in voller Aufloesung nach. Nach 40 Ansichten ist Schluss, hochgeladen wird in Fuenferstapeln - sonst laeuft das Repository voll. Der kurze Takt ist Absicht: je mehr verschiedene Bildschirme, desto besser.",
-      "every": 45,
+      "every": 30,
       "at_start": false,
       "priority": 30,
       "do": [
         {
           "ansicht_sammeln": {
-            "hoechstens": 40,
+            "hoechstens": 60,
             "stapel": 5,
             "bild_faktor": 0.5
           }
