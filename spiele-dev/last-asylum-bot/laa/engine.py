@@ -738,6 +738,28 @@ class Engine:
             hit = matcher.best_score(screen, tpl, scale=basis * f)
             if hit and hit.score > bester + 0.02:
                 bester, bester_faktor = hit.score, f
+
+        # Das Raster springt in Schritten von acht bis zehn Prozent - deutlich
+        # gröber, als eine Vorlage es vertraegt. Schon fuenf Prozent daneben
+        # kosten spuerbar Punkte, der wahre Gipfel liegt also oft ZWISCHEN zwei
+        # Rasterpunkten. Darum um den besten Rasterwert herum noch einmal fein
+        # nachfahren: das kostet ein paar Sekunden und trifft danach die Mitte
+        # des Knopfes statt seinen Rand.
+        if bester_faktor is not None:
+            fein = bester_faktor
+            schritt = 0.02
+            umgebung = [round(bester_faktor + i * schritt, 3) for i in range(-5, 6) if i]
+            for f in umgebung:
+                if f <= 0:
+                    continue
+                hit = matcher.best_score(screen, tpl, scale=basis * f)
+                if hit and hit.score > bester:
+                    bester, fein = hit.score, f
+            if fein != bester_faktor:
+                self.log.debug("Feinjustage", template=name,
+                               grob=bester_faktor, fein=fein, score=round(bester, 3))
+            bester_faktor = fein
+
         if bester_faktor is None or bester < schwelle:
             # Sehr niedrige Werte heissen: die Vorlage ist gar nicht im Bild.
             # Das ist kein Groessen-Problem und darf keinen der drei Versuche
@@ -797,14 +819,45 @@ class Engine:
         except Exception as exc:
             self.log.warn(f"Gelerntes nicht lesbar: {exc}")
             return
+        # Alles Gelernte kommt aus dem Bot selbst - eine halb geschriebene oder
+        # von Hand verstellte Datei darf ihn aber weder abstuerzen lassen noch
+        # mit unsinnigen Werten weiterlaufen lassen. Also jeden Wert einzeln
+        # pruefen und begrenzen, statt der Datei zu glauben.
+        def zahl(wert, unten, oben):
+            try:
+                z = float(wert)
+            except (TypeError, ValueError):
+                return None
+            return z if unten <= z <= oben and z == z else None
+
+        verworfen = []
+        skala = zahl(roh.get("ui_skala"), 0.2, 3.0)
         if "ui_skala" in roh:
-            self.cfg.ui_skala = float(roh["ui_skala"])
+            if skala is None:
+                verworfen.append(f"ui_skala={roh.get('ui_skala')!r}")
+            else:
+                self.cfg.ui_skala = skala
         for name, wert in (roh.get("template_skalen") or {}).items():
-            self.cfg.template_skalen[str(name)] = float(wert)
-        takte = {t["name"]: t["every"] for t in roh.get("tasks", []) if "every" in t}
+            eigen = zahl(wert, 0.2, 5.0)
+            if eigen is None:
+                verworfen.append(f"{name}={wert!r}")
+                continue
+            self.cfg.template_skalen[str(name)] = eigen
+        takte = {}
+        for eintrag in roh.get("tasks", []):
+            if not isinstance(eintrag, dict) or "every" not in eintrag:
+                continue
+            takt = zahl(eintrag.get("every"), 5.0, 86400.0)
+            if takt is None:
+                verworfen.append(f"Takt {eintrag.get('name')}={eintrag.get('every')!r}")
+                continue
+            takte[eintrag.get("name")] = takt
         for task in self.cfg.tasks:
             if task.name in takte:
-                task.every = float(takte[task.name])
+                task.every = takte[task.name]
+        if verworfen:
+            self.log.warn("Unsinnige Werte im Gelernten uebergangen",
+                          werte=", ".join(verworfen[:8]))
         if roh:
             self.log.info(
                 "Gelerntes uebernommen", datei=os.path.basename(self._gelernt_datei),
@@ -1378,8 +1431,15 @@ class Engine:
             ausschnitt = vorher.crop(x0, y0, x1 - x0, y1 - y0)
             if _schon_bekannt(ausschnitt, ziel):
                 continue
-            name = f"{len(vorhanden) + neu:02d}.png"
+            # Freie Nummer suchen statt zaehlen: sortiert _pruefe_verdacht eine
+            # Vorlage aus, entsteht eine Luecke in der Nummerierung - und die
+            # naechste gelernte Vorlage ueberschriebe dann eine vorhandene.
+            i = 0
+            while os.path.exists(os.path.join(ziel, f"{i:02d}.png")):
+                i += 1
+            name = f"{i:02d}.png"
             ausschnitt.save(os.path.join(ziel, name))
+            vorhanden.append(name)
             neu += 1
             self.log.info(
                 "Neues Objekt gelernt", datei=f"{ordner}/{name}",
@@ -1853,7 +1913,11 @@ class Engine:
         try:
             with open(self._erkundung_datei, "r", encoding="utf-8") as fh:
                 return {str(k): list(v) for k, v in json.load(fh).items()}
-        except Exception:
+        except Exception as exc:
+            # Die beiden Geschwister-Lader melden sich, dieser schluckte alles.
+            # Ein verlorenes Erkundungs-Gedaechtnis ist verschmerzbar - dass es
+            # verloren ging, sollte trotzdem irgendwo stehen.
+            self.log.warn(f"Erkundung nicht lesbar, fange frisch an: {exc}")
             return {}
 
     def _ansicht_schluessel(self) -> Optional[str]:

@@ -3157,5 +3157,102 @@ class TestErkundungSchontVorraete(unittest.TestCase):
 
 
 
+class TestFeinjustageDerVorlagenGroesse(unittest.TestCase):
+    """Das Raster ist groeber als die Vorlage es vertraegt.
+
+    FEIN_SCHRITTE springt in Acht- bis Zehn-Prozent-Schritten. Liegt der wahre
+    Faktor dazwischen, bleibt der beste Rasterwert weit unter der Schwelle -
+    die Vorlage gilt als nicht gefunden, oder sie trifft versetzt und der Tipp
+    landet am Rand statt in der Mitte.
+
+    Gemessen an austausch/schild.png mit echtem Faktor 1.13:
+    bester Rasterwert 1.18 -> 0.737, nach dem Feinlauf 1.14 -> 0.981.
+    """
+
+    def test_feinlauf_findet_den_gipfel_zwischen_zwei_rasterpunkten(self):
+        bild = os.path.join(ROOT, "austausch", "schild.png")
+        vorlage = os.path.join(ROOT, "templates", "ui", "btn_bestaetigen.png")
+        for p in (bild, vorlage):
+            if not os.path.exists(p):
+                self.skipTest(f"{os.path.basename(p)} liegt nicht vor")
+        screen = Image.load(bild)
+        # Die Vorlage so verkleinern, dass ihr Faktor zwischen zwei
+        # Rasterpunkten liegt (1.08 und 1.18).
+        ziel = 1.13
+        klein = Image.load(vorlage).box_scaled_by(1.0 / ziel)
+
+        def punkt(f):
+            hit = matcher.best_score(screen, klein, scale=f)
+            return hit.score if hit else 0.0
+
+        grob_score, grob = max((punkt(f), f) for f in Engine.FEIN_SCHRITTE)
+        fein_score, _fein = max((punkt(round(grob + i * 0.02, 3)), round(grob + i * 0.02, 3))
+                                for i in range(-5, 6))
+        self.assertLess(grob_score, 0.85,
+                        "Vorbedingung: der reine Rasterwert soll unter der Schwelle liegen")
+        self.assertGreater(fein_score, 0.95,
+                           f"der Feinlauf muss den Gipfel finden: grob {grob_score:.3f}, "
+                           f"fein {fein_score:.3f}")
+
+    def test_nachjustieren_macht_den_feinlauf_wirklich(self):
+        import inspect
+        quelle = inspect.getsource(Engine._nachjustieren)
+        self.assertIn("Feinjustage", quelle,
+                      "ohne Feinlauf bleibt der Gipfel zwischen den Rasterpunkten liegen")
+
+
+
+class TestGelerntesWirdGeprueft(unittest.TestCase):
+    """Eine verdorbene gelernt.json darf den Bot nicht mitreissen.
+
+    Sie wurde bisher ungeprueft uebernommen: ein Text statt einer Zahl warf
+    beim Start eine Ausnahme, ein Zahlendreher wie 30 statt 3.0 machte alle
+    Vorlagen zehnmal zu gross - der Bot tippte danach nur noch daneben.
+    """
+
+    def bau(self, inhalt):
+        import tempfile
+        self.ordner = tempfile.mkdtemp()
+        with open(os.path.join(self.ordner, "gelernt.json"), "w", encoding="utf-8") as fh:
+            json.dump(inhalt, fh)
+        cfg = Config.from_dict({"package": "x", "rules": [],
+                                "tasks": [{"name": "t", "every": 900, "do": [{"log": "x"}]}]},
+                               path=os.path.join(self.ordner, "cfg.json"))
+        return Engine(cfg, FakeDevice([noise(40, 60, 2)], loop=True), logger=quiet(),
+                      sleep=lambda s: None, seed=1,
+                      state_file=os.path.join(self.ordner, "zustand.json"))
+
+    def tearDown(self):
+        import shutil
+        shutil.rmtree(getattr(self, "ordner", ""), ignore_errors=True)
+
+    def test_unsinnige_werte_werden_uebergangen(self):
+        eng = self.bau({"ui_skala": 30.0,
+                        "template_skalen": {"a.png": "viel", "b.png": 1.3},
+                        "tasks": [{"name": "t", "every": -5}]})
+        self.assertEqual(eng.cfg.ui_skala, 1.0, "30.0 ist keine plausible Oberflaechen-Groesse")
+        self.assertNotIn("a.png", eng.cfg.template_skalen)
+        self.assertEqual(eng.cfg.template_skalen.get("b.png"), 1.3, "Gutes muss durchkommen")
+        self.assertEqual(next(t.every for t in eng.cfg.tasks if t.name == "t"), 900,
+                         "ein negativer Takt darf nicht uebernommen werden")
+
+    def test_kaputte_datei_stoppt_den_start_nicht(self):
+        import tempfile
+        ordner = tempfile.mkdtemp()
+        try:
+            with open(os.path.join(ordner, "gelernt.json"), "w", encoding="utf-8") as fh:
+                fh.write("{kein json")
+            cfg = Config.from_dict({"package": "x", "rules": [], "tasks": []},
+                                   path=os.path.join(ordner, "cfg.json"))
+            eng = Engine(cfg, FakeDevice([noise(40, 60, 2)], loop=True), logger=quiet(),
+                         sleep=lambda s: None, seed=1,
+                         state_file=os.path.join(ordner, "zustand.json"))
+            self.assertEqual(eng.cfg.ui_skala, 1.0)
+        finally:
+            import shutil
+            shutil.rmtree(ordner, ignore_errors=True)
+
+
+
 if __name__ == "__main__":
     unittest.main()
