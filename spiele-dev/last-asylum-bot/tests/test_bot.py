@@ -3441,5 +3441,77 @@ class TestStartskriptWirdBewacht(unittest.TestCase):
 
 
 
+class TestVeralteteVorlagenFallenAuf(unittest.TestCase):
+    """"Vorlage fehlt" und "Vorlage veraltet" sind zwei verschiedene Sachen.
+
+    Ein Spiel-Update zeichnet Knoepfe neu. Eine Vorlage, die frueher
+    zuverlaessig traf und jetzt nie mehr, ist nicht fehlend - sie ist
+    ueberholt. Bisher war das voellig unsichtbar: der Bot uebersprang den
+    Schritt still, und niemand erfuhr, dass ihm ein Update die Grundlage
+    entzogen hat.
+    """
+
+    def motor(self):
+        tpl = noise(30, 30, 61)
+        screen = noise(400, 600, 62)          # Vorlage kommt NICHT vor
+        cfg = Config.from_dict({"package": "x", "rules": [], "tasks": [],
+                                "templates_dir": self.ordner})
+        tpl.save(os.path.join(self.ordner, "alt.png"))
+        eng = Engine(cfg, FakeDevice([screen], loop=True), logger=quiet(),
+                     sleep=lambda s: None, seed=1)
+        eng.screen = screen
+        return eng
+
+    def setUp(self):
+        import tempfile
+        self._tmp = tempfile.TemporaryDirectory()
+        self.ordner = self._tmp.name
+
+    def tearDown(self):
+        self._tmp.cleanup()
+
+    def test_oft_gesucht_nie_getroffen_faellt_auf(self):
+        eng = self.motor()
+        for _ in range(6):
+            eng.find({"template": "alt.png", "threshold": 0.9, "optional": True})
+        self.assertEqual(eng.veraltete_vorlagen(ab=5)[0][0], "alt.png")
+        self.assertEqual(eng.veraltete_vorlagen(ab=100), [],
+                         "unter der Grenze darf nichts gemeldet werden")
+
+    def test_treffer_raeumt_den_verdacht_aus(self):
+        tpl = noise(30, 30, 63)
+        screen = noise(400, 600, 64)
+        paste(screen, tpl, 100, 200)
+        cfg = Config.from_dict({"package": "x", "rules": [], "tasks": [],
+                                "templates_dir": self.ordner})
+        tpl.save(os.path.join(self.ordner, "gut.png"))
+        eng = Engine(cfg, FakeDevice([screen], loop=True), logger=quiet(),
+                     sleep=lambda s: None, seed=1)
+        eng.screen = screen
+        for _ in range(6):
+            eng.find({"template": "gut.png", "threshold": 0.8, "optional": True})
+        self.assertEqual(eng.veraltete_vorlagen(ab=5), [],
+                         "eine Vorlage, die trifft, ist nicht veraltet")
+
+    def test_lebenszeichen_nennt_die_veralteten(self):
+        import tempfile, subprocess
+        with tempfile.TemporaryDirectory() as ordner:
+            subprocess.run(["git", "init", "-q", ordner], check=True)
+            for k, v in (("user.email", "b@t"), ("user.name", "Bot")):
+                subprocess.run(["git", "-C", ordner, "config", k, v], check=True)
+            eng = self.motor()
+            for _ in range(6):
+                eng.find({"template": "alt.png", "threshold": 0.9, "optional": True})
+            eng.VERDACHT_AB = 5
+            eng.run_actions([{"lebenszeichen": {"hochladen": False,
+                                                "verzeichnis": ordner}}], "test")
+            d = json.load(open(os.path.join(ordner, "austausch", "lauf.json"),
+                               encoding="utf-8"))
+            namen = [e["vorlage"] for e in d["vorlagen_veraltet"]]
+            self.assertIn("alt.png", namen,
+                          "das Lebenszeichen muss veraltete Vorlagen mitmelden")
+
+
+
 if __name__ == "__main__":
     unittest.main()

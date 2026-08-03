@@ -169,6 +169,8 @@ class Engine:
         self._last_change = clock()
         self._scale: Optional[float] = None
         self._knapp: Dict[str, int] = {}          # Vorlage -> Fehlgriffe am Stueck
+        # Vorlage -> (gesucht, getroffen, bester je erreichter Wert)
+        self._vorlagen_zaehler: Dict[str, tuple] = {}
         self._nachjustiert: Dict[str, int] = {}   # Vorlage -> wie oft schon vermessen
 
         # Standardmaessig aus: Tests und Replays sollen sich nichts merken.
@@ -393,6 +395,14 @@ class Engine:
             ev="vergleich", template=name,
             score=round(wert, 4), schwelle=schwelle, treffer=getroffen,
         )
+        # Mitzaehlen, wie oft eine Vorlage gesucht wurde und wie oft sie traf.
+        # Ein Spiel-Update zeichnet Knoepfe neu; eine Vorlage, die frueher
+        # zuverlaessig traf und jetzt hundertmal hintereinander danebenliegt,
+        # ist veraltet - nicht fehlend. Ohne diese Zaehlung sieht das niemand:
+        # der Bot ueberspringt den Schritt einfach still.
+        gesucht, traf, bestwert = self._vorlagen_zaehler.get(name, (0, 0, 0.0))
+        self._vorlagen_zaehler[name] = (gesucht + 1, traf + (1 if getroffen else 0),
+                                        max(bestwert, wert))
         if getroffen:
             self._knapp.pop(name, None)
             return bester
@@ -864,6 +874,29 @@ class Engine:
                 groessen=len(roh.get("template_skalen") or {}), takte=len(takte),
             )
 
+    VERDACHT_AB = 25          # so oft gesucht, bevor "trifft nie" etwas heisst
+
+    def veraltete_vorlagen(self, ab: Optional[int] = None) -> List[tuple]:
+        """Vorlagen, die oft gesucht wurden und nie trafen.
+
+        Das ist der Unterschied zwischen "Vorlage fehlt" (nie geschnitten) und
+        "Vorlage veraltet" (geschnitten, aber das Spiel sieht heute anders
+        aus). Der zweite Fall war bisher voellig unsichtbar - der Bot
+        uebersprang den Schritt still, und niemand erfuhr, dass ein Update ihm
+        die Grundlage entzogen hat.
+
+        Der beste je erreichte Wert sagt dabei, woran es liegt: nahe an der
+        Schwelle heisst 'knapp daneben, vielleicht nur die Groesse', sehr
+        niedrig heisst 'dieses Bild gibt es so nicht mehr'.
+        """
+        grenze = int(ab if ab is not None else self.VERDACHT_AB)
+        raus = []
+        for name, (gesucht, traf, bestwert) in self._vorlagen_zaehler.items():
+            if gesucht >= grenze and traf == 0:
+                raus.append((name, gesucht, round(bestwert, 3)))
+        raus.sort(key=lambda e: -e[1])
+        return raus
+
     def _selbstbericht(self, spec: Dict[str, Any]) -> None:
         """Sagen, was gerade fehlt - und was es kostet.
 
@@ -945,6 +978,13 @@ class Engine:
                           folgenlose_tipps=wie_oft)
         if self._auswege:
             self.log.info("   Gelernte Auswege", bildschirme=len(self._auswege))
+        veraltet = self.veraltete_vorlagen()
+        if veraltet:
+            self.log.warn(
+                f"   {len(veraltet)} Vorlage(n) treffen nie mehr - moeglicherweise "
+                f"vom Spiel neu gezeichnet")
+            for name, gesucht, bestwert in veraltet[:8]:
+                self.log.warn(f"      {name}", gesucht=gesucht, bester_wert=bestwert)
         gelernt = len(self.cfg.template_gruppe("gelernt/blasen/*.png"))
         verworfen = len(self.cfg.template_gruppe("gelernt/verworfen/*.png"))
         self.log.info(
@@ -1174,6 +1214,10 @@ class Engine:
             "unbekannt_am_stueck": self.unknown_streak,
             "zaehler": dict(oben),
             "vorlagen_offen": len(self.cfg.offene_templates),
+            "vorlagen_veraltet": [
+                {"vorlage": n, "gesucht": g, "bester_wert": b}
+                for n, g, b in self.veraltete_vorlagen()[:10]
+            ],
             "verworfene_vorlagen": sorted(self._verworfen),
             "verdaechtige_regeln": {k: v for k, v in self._folgenlos.items() if v >= 2},
             "bild": bild_name,
