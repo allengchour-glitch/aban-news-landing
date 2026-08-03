@@ -1815,6 +1815,7 @@ class Engine:
     ERKUNDUNGS_FARBEN = [(120, 181, 54), (58, 142, 230)]
     # Oben liegt das Angebots-Banner, ganz unten die Navigationsleiste.
     ERKUNDUNGS_ZONE = [0.05, 0.18, 0.95, 0.88]
+    ERKUNDUNG_VERFAELLT = 7 * 24 * 3600.0   # nach einer Woche darf neu probiert werden
 
     def _sieht_aus_wie_benutzen(self, cx: int, cy: int) -> bool:
         """Liegt an dieser Stelle der 'Benutzen'-Knopf?
@@ -1854,6 +1855,26 @@ class Engine:
         if not self.cfg.erkunden or self.screen is None:
             return
         schon = self._erkundet.setdefault(schluessel, [])
+        # Das Budget verfaellt nach einer Weile. Bisher galt es endgueltig und
+        # ueberlebte jeden Neustart: nach sechs Versuchen war die letzte
+        # Rettung fuer diesen Bildschirm FUER IMMER verbraucht - auch wenn das
+        # Spiel dort inzwischen ganz andere Knoepfe zeigt. Ein Bildschirm
+        # aendert sich mit Updates und Events; das Gedaechtnis darf nicht
+        # starrer sein als das Spiel.
+        jetzt = self._now()
+        frisch = []
+        for eintrag in schon:
+            if len(eintrag) >= 3:
+                if jetzt - float(eintrag[2]) < self.ERKUNDUNG_VERFAELLT:
+                    frisch.append(eintrag)
+            else:
+                frisch.append(list(eintrag) + [jetzt])   # alte Form nachruesten
+        if frisch != schon:
+            # Nicht nur auf die Laenge schauen: Eintraege der alten Form
+            # ([x, y] ohne Zeitstempel) bekommen hier einen - dabei bleibt die
+            # Laenge gleich, und der Nachtrag ginge sonst verloren.
+            schon[:] = frisch
+            self._erkundung_sichern()
         if len(schon) >= int(self.cfg.erkunden_hoechstens):
             return
         for rgb in self.ERKUNDUNGS_FARBEN:
@@ -1864,7 +1885,7 @@ class Engine:
                 cx, cy = treffer.center
                 xr = round(cx / self.screen.width, 3)
                 yr = round(cy / self.screen.height, 3)
-                if any(abs(xr - a) < 0.04 and abs(yr - b) < 0.03 for a, b in schon):
+                if any(abs(xr - e[0]) < 0.04 and abs(yr - e[1]) < 0.03 for e in schon):
                     continue
                 if self._tabu_treffer(cx, cy, self.screen) is not None:
                     continue
@@ -1876,7 +1897,7 @@ class Engine:
                     self.log.debug("Erkundung: sieht aus wie 'Benutzen' - uebersprungen",
                                    bei=f"{xr:.2f}/{yr:.2f}")
                     continue
-                schon.append([xr, yr])
+                schon.append([xr, yr, self._now()])
                 self._erkundung_sichern()
                 self.bump("erkundet")
                 self.log.info(
@@ -2026,7 +2047,20 @@ class Engine:
             except OSError as exc:  # pragma: no cover - Dateisystem
                 self.log.warn(f"Vorlage nicht verschiebbar: {exc}")
 
-    NEUE_EPISODE = 60.0   # so lange Pause, und das Warten faengt von vorn an
+    NEUE_EPISODE = 60.0   # Untergrenze; der tatsaechliche Wert kommt aus _neue_episode
+
+    def _neue_episode(self) -> float:
+        """Ab welcher Pause gilt das Warten als neuer Vorgang?
+
+        Fest auf 60 Sekunden war das eine Schleife: eine Regel, deren Geduld
+        abgelaufen ist, wird fuer regel_wirkungslos_pause (300 s) stillgelegt.
+        Kommt sie danach zurueck, liegt der letzte Treffer 300 Sekunden
+        zurueck - also mehr als 60, also "neuer Vorgang", also wieder volle
+        Geduld. Ein wirklich haengender Bildschirm wurde so nie als haengend
+        behandelt. Die Grenze muss darum ueber der Stilllegungspause liegen.
+        """
+        pause = float(getattr(self.cfg, "regel_wirkungslos_pause", 300.0) or 300.0)
+        return max(self.NEUE_EPISODE, pause * 2.0)
 
     def _noch_geduldig(self, rule) -> bool:
         """Darf diese Regel gerade beliebig oft greifen, ohne zu wirken?
@@ -2041,7 +2075,11 @@ class Engine:
             return False
         jetzt = self._clock()
         seit, zuletzt = self._geduld.get(rule.name, (jetzt, jetzt))
-        if jetzt - zuletzt > self.NEUE_EPISODE:
+        # NEUE_EPISODE darf nicht groesser sein als die Pause, mit der eine
+        # Regel stillgelegt wird - sonst gilt nach jeder Pause wieder ein
+        # frischer Vorgang, und ein wirklich haengender Bildschirm wird nie als
+        # solcher behandelt.
+        if jetzt - zuletzt > self._neue_episode():
             seit = jetzt          # war lange nicht dran: neuer Vorgang
         self._geduld[rule.name] = (seit, jetzt)
         if wert is True:

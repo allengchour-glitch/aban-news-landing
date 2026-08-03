@@ -1244,6 +1244,52 @@ class TestSpielBeendenNotbremse(unittest.TestCase):
         self.assertGreater(b, r, "zuletzt muss der blaue Knopf geprüft werden")
         self.assertEqual(regel.do[-2], {"tap_match": {}})
 
+    def test_durchlauf_tippt_wirklich_den_blauen_knopf(self):
+        """Der Test, der die Notbremse wirklich bewacht.
+
+        Bisher wurde nur die FORM der Regel geprueft: steht sie oben, endet sie
+        mit tap_match. Ob sie auf einem echten 'Spiel beenden?' auch greift und
+        wohin sie dann tippt, blieb ungeprueft - die Notbremse haette sich
+        abschalten lassen, ohne dass ein Test rot wird.
+        """
+        cfg = Config.load(os.path.join(ROOT, "config", "last-asylum.json"))
+        regel = next(r for r in cfg.rules if r.name == "spiel-beenden-abbrechen")
+        gold = regel.match["all"][0]["farbknopf"]
+        blau = regel.match["all"][-1]["farbknopf"]
+
+        breite, hoehe = 1440, 2560
+        screen = Image.new(breite, hoehe, (28, 32, 42))
+
+        def knopf(rgb, x0, y0, w, h):
+            for y in range(y0, y0 + h):
+                for x in range(x0, x0 + w):
+                    for k, v in enumerate(rgb):
+                        screen.data[(y * breite + x) * 3 + k] = v
+            # weisser Schriftbalken, wie ihn echte Knoepfe tragen
+            for y in range(y0 + h // 3, y0 + 2 * h // 3):
+                for x in range(x0 + w // 5, x0 + 4 * w // 5):
+                    if (x - x0) % 9 < 5:
+                        for k in range(3):
+                            screen.data[(y * breite + x) * 3 + k] = 255
+
+        kw, kh = int(0.25 * breite), int(0.045 * hoehe)
+        blau_x, blau_y = int(0.18 * breite), int(0.5 * hoehe)
+        gold_x, gold_y = int(0.58 * breite), int(0.5 * hoehe)
+        knopf(blau["rgb"], blau_x, blau_y, kw, kh)   # links: Abbrechen
+        knopf(gold["rgb"], gold_x, gold_y, kw, kh)   # rechts: Beenden
+
+        dev = FakeDevice([screen], loop=True)
+        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=5)
+        eng.step()
+
+        self.assertTrue(dev.taps, "auf 'Spiel beenden?' muss die Notbremse greifen")
+        x, y = dev.taps[0]
+        self.assertTrue(blau_x <= x <= blau_x + kw and blau_y <= y <= blau_y + kh,
+                        f"getippt wurde {x},{y} - das ist nicht der blaue Abbrechen-Knopf "
+                        f"(x {blau_x}..{blau_x + kw}, y {blau_y}..{blau_y + kh})")
+        self.assertFalse(gold_x <= x <= gold_x + kw,
+                         "der orange Beenden-Knopf darf nie getroffen werden")
+
 
 class TestLernFilter(unittest.TestCase):
     """Laufschriften sind keine Ertrags-Blasen."""
@@ -3251,6 +3297,147 @@ class TestGelerntesWirdGeprueft(unittest.TestCase):
         finally:
             import shutil
             shutil.rmtree(ordner, ignore_errors=True)
+
+
+
+class TestGeduldSchleifeUndErkundungsBudget(unittest.TestCase):
+    """Zwei Mechanismen, die sich selbst aushebelten."""
+
+    def test_neue_episode_liegt_ueber_der_stilllegungspause(self):
+        """Sonst faengt die Geduld nach jeder Pause von vorn an.
+
+        Ablauf der Schleife: Geduld laeuft ab -> Regel wird fuer 300 s
+        stillgelegt -> kommt zurueck -> letzter Treffer liegt 300 s zurueck,
+        also mehr als 60 -> "neuer Vorgang" -> volle Geduld -> wieder exempt.
+        Der Haenger wird nie als Haenger behandelt.
+        """
+        cfg = Config.from_dict({"package": "x", "rules": [], "tasks": [],
+                                "regel_wirkungslos_pause": 300})
+        eng = Engine(cfg, FakeDevice([noise(40, 60, 8)], loop=True),
+                     logger=quiet(), sleep=lambda s: None, seed=1)
+        self.assertGreater(eng._neue_episode(), cfg.regel_wirkungslos_pause,
+                           "die Episoden-Grenze muss ueber der Stilllegungspause liegen")
+
+    def test_erkundungs_budget_verfaellt(self):
+        """Sonst ist die letzte Rettung nach sechs Versuchen fuer immer weg."""
+        import tempfile
+        ordner = tempfile.mkdtemp()
+        try:
+            screen = noise(1440, 2560, 9)
+            cfg = Config.from_dict({"package": "x", "rules": [], "tasks": [],
+                                    "erkunden_hoechstens": 2},
+                                   path=os.path.join(ordner, "cfg.json"))
+            uhr = [1000.0]
+            eng = Engine(cfg, FakeDevice([screen], loop=True), logger=quiet(),
+                         sleep=lambda s: None, seed=1,
+                         state_file=os.path.join(ordner, "zustand.json"),
+                         now=lambda: uhr[0])
+            eng.screen = screen
+            eng._finger_jetzt = eng._ansicht_finger(screen)
+            schluessel = eng._ansicht_schluessel()
+            eng._erkundet[schluessel] = [[0.5, 0.5, 1000.0], [0.6, 0.6, 1000.0]]
+            # Direkt nach den Versuchen: Budget erschoepft, nichts passiert.
+            eng._erkunden(schluessel, eng._finger_jetzt)
+            self.assertEqual(len(eng._erkundet[schluessel]), 2)
+            # Eine Woche spaeter muss wieder Platz sein.
+            uhr[0] += 8 * 24 * 3600
+            eng._erkunden(schluessel, eng._finger_jetzt)
+            self.assertLessEqual(len(eng._erkundet[schluessel]), 2)
+            self.assertTrue(all(uhr[0] - e[2] < eng.ERKUNDUNG_VERFAELLT
+                                for e in eng._erkundet[schluessel] if len(e) >= 3),
+                            "abgelaufene Eintraege muessen verschwinden")
+        finally:
+            import shutil
+            shutil.rmtree(ordner, ignore_errors=True)
+
+    def test_alte_eintraege_ohne_zeitstempel_brechen_nichts(self):
+        """Bestehende erkundung.json-Dateien haben nur [x, y]."""
+        import tempfile
+        ordner = tempfile.mkdtemp()
+        try:
+            screen = noise(1440, 2560, 10)
+            cfg = Config.from_dict({"package": "x", "rules": [], "tasks": []},
+                                   path=os.path.join(ordner, "cfg.json"))
+            eng = Engine(cfg, FakeDevice([screen], loop=True), logger=quiet(),
+                         sleep=lambda s: None, seed=1,
+                         state_file=os.path.join(ordner, "zustand.json"))
+            eng.screen = screen
+            eng._finger_jetzt = eng._ansicht_finger(screen)
+            schluessel = eng._ansicht_schluessel()
+            eng._erkundet[schluessel] = [[0.5, 0.5]]      # alte Form
+            eng._erkunden(schluessel, eng._finger_jetzt)  # darf nicht krachen
+            self.assertTrue(all(len(e) >= 3 for e in eng._erkundet[schluessel]),
+                            "alte Eintraege muessen einen Zeitstempel bekommen")
+        finally:
+            import shutil
+            shutil.rmtree(ordner, ignore_errors=True)
+
+
+
+class TestStartskriptWirdBewacht(unittest.TestCase):
+    """Textpruefung des PowerShell-Skripts - laeuft ueberall, braucht kein pwsh.
+
+    Am Startskript sind mehrere Fehler vorbeigekommen, die kein Python-Test
+    sehen konnte, weil kein Test es je angesehen hat: eine Zahl, die als
+    negatives Int32 gelesen wird; zwei einander ausschliessende Parameter; ein
+    git-Aufruf ohne Zeitgrenze, der auf eine Passwortabfrage wartet, die
+    niemand sieht.
+    """
+
+    def skript(self, name="start-windows.ps1"):
+        pfad = os.path.join(ROOT, name)
+        if not os.path.exists(pfad):
+            self.skipTest(f"{name} liegt nicht vor")
+        return open(pfad, encoding="utf-8").read().split("\n")
+
+    def test_kein_git_aufruf_ohne_zeitgrenze(self):
+        """Ausserhalb der beiden Helfer darf kein git direkt aufgerufen werden."""
+        zeilen = self.skript()
+        in_helfer = False
+        verdaechtig = []
+        for nr, zeile in enumerate(zeilen, 1):
+            nackt = zeile.strip()
+            if nackt.startswith("function Git-"):
+                in_helfer = True
+            elif in_helfer and nackt == "}":
+                in_helfer = False
+            if in_helfer or nackt.startswith("#"):
+                continue
+            if "& git " in zeile or zeile.strip().startswith("git "):
+                verdaechtig.append(f"{nr}: {nackt[:70]}")
+        self.assertEqual(verdaechtig, [],
+                         "git nur ueber Git-Text/Git-MitZeitlimit aufrufen: "
+                         + "; ".join(verdaechtig))
+
+    def test_keine_grossen_hex_zahlen(self):
+        """0x80000000 liest PowerShell als negatives Int32 - als Dezimalzahl schreiben."""
+        import re
+        schlimm = []
+        for nr, zeile in enumerate(self.skript(), 1):
+            # Kommentare ausnehmen: dort steht die Erklaerung des Fehlers vom
+            # 01.08. samt der Zahl, und die soll stehen bleiben duerfen.
+            code = zeile.split("#", 1)[0]
+            for treffer in re.findall(r"0x[0-9a-fA-F]{8}", code):
+                if int(treffer, 16) > 2147483647:
+                    schlimm.append(f"{nr}: {treffer}")
+        self.assertEqual(schlimm, [], "; ".join(schlimm))
+
+    def test_start_process_bekommt_eine_zeichenkette(self):
+        """-ArgumentList als Feld zerbricht an Pfaden mit Leerzeichen."""
+        import re
+        schlimm = []
+        for name in ("start-windows.ps1", "autostart-einrichten.ps1"):
+            for nr, zeile in enumerate(self.skript(name), 1):
+                if "Start-Process" in zeile and re.search(r"-ArgumentList\s+@\(", zeile):
+                    schlimm.append(f"{name}:{nr}")
+        self.assertEqual(schlimm, [],
+                         "Argumente vorher selbst in Anfuehrungszeichen setzen: "
+                         + "; ".join(schlimm))
+
+    def test_passwortabfrage_ist_abgeschaltet(self):
+        text = "\n".join(self.skript())
+        self.assertIn("GIT_TERMINAL_PROMPT", text,
+                      "ohne das wartet git im minimierten Fenster auf eine Eingabe")
 
 
 

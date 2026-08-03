@@ -400,10 +400,16 @@ if (Test-Path $auftrag) {
     $kopf = "# erledigt am " + (Get-Date -Format "yyyy-MM-dd HH:mm")
     Set-Content -Path $fertig -Value (@($kopf) + $erledigt) -Encoding UTF8
     Remove-Item $auftrag -Force
-    & git -C $PSScriptRoot add -- auftrag.txt auftrag-erledigt.txt austausch 2>$null
-    & git -C $PSScriptRoot commit -m "Auftrag erledigt: $($erledigt -join ', ')" 2>$null | Out-Null
-    & git -C $PSScriptRoot push 2>$null | Out-Null
-    Gut "$($erledigt.Count) Auftrag/Auftraege erledigt und hochgeladen."
+    # Ueber Git-MitZeitlimit, nicht direkt: diese drei Aufrufe liegen VOR dem
+    # Botstart. Wartet einer davon auf eine Passwortabfrage, startet der Bot
+    # nie - im minimierten Fenster sieht das niemand.
+    [void](Git-MitZeitlimit @("add", "--", "auftrag.txt", "auftrag-erledigt.txt", "austausch") 60)
+    [void](Git-MitZeitlimit @("commit", "-m", "Auftrag erledigt: $($erledigt -join ', ')") 60)
+    if ((Git-MitZeitlimit @("push") 120) -eq "ok") {
+        Gut "$($erledigt.Count) Auftrag/Auftraege erledigt und hochgeladen."
+    } else {
+        Warnung "$($erledigt.Count) Auftrag/Auftraege erledigt - Hochladen ging nicht."
+    }
 }
 
 # ------------------------------------------------------------------- Bot starten
