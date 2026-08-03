@@ -70,6 +70,9 @@ class Config:
     templates_dir: str = "templates"
     input_method: str = "input"
     ui_skala: float = 1.0  # zusaetzlicher Faktor, vom Bot selbst kalibriert
+    # Zeitstempel der zuletzt ausgewerteten Protokollzeile. Ohne den zaehlen
+    # dieselben alten Laeufe bei jeder Takt-Anpassung erneut mit.
+    takte_stand: float = 0.0
     template_skalen: Dict[str, float] = field(default_factory=dict)
     kritische_templates: List[str] = field(default_factory=list)
     erkunden: bool = True          # feststeckend selbst einen Knopf probieren
@@ -115,6 +118,7 @@ class Config:
         cfg.templates_dir = raw.get("templates_dir", "templates")
         cfg.input_method = raw.get("input_method", "input")
         cfg.ui_skala = float(raw.get("ui_skala", 1.0))
+        cfg.takte_stand = float(raw.get("takte_stand", 0.0))
         cfg.template_skalen = {
             str(k): float(v) for k, v in raw.get("template_skalen", {}).items()
         }

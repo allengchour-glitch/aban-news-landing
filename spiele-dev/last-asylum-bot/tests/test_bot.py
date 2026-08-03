@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+import glob
 import json
 import random
 import sys
@@ -2720,6 +2721,182 @@ class TestTestdateiIstGesund(unittest.TestCase):
                      if isinstance(f, ast.FunctionDef) and f.name.startswith("test")]
             doppelt = [n for n, k in collections.Counter(namen).items() if k > 1]
             self.assertEqual(doppelt, [], f"{klasse.name}: {doppelt}")
+
+
+
+class TestFluchtwegWirdNichtGebremst(unittest.TestCase):
+    """Die Wirkungslos-Bremse darf nicht ausgerechnet den Ausgang zumauern.
+
+    Die Bremse fragt: hat sich an dieser Stelle beim letzten Mal etwas
+    geruehrt? Auf einem festgefahrenen Bildschirm ist die Antwort immer nein -
+    und genau dort setzen Ausweg-Suche und Erkundung an.
+    """
+
+    def test_gleicher_fluchttipp_wird_wiederholt(self):
+        screen = noise(200, 300, 55)
+        cfg = Config.from_dict({
+            "package": "x",
+            "on_unknown": [{"tap": [0.5, 0.5]}],
+            "rules": [], "tasks": [],
+        })
+        dev = FakeDevice([screen], loop=True)   # Bild aendert sich NIE
+        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=4)
+        eng.screen = screen
+        eng.capture()
+        for _ in range(4):
+            eng._ausweg_suchen("test")
+        self.assertGreaterEqual(
+            len(dev.taps), 4,
+            f"jeder Ausweg-Versuch muss tippen duerfen, getippt wurde: {dev.taps}")
+
+    def test_normaler_tipp_bleibt_gebremst(self):
+        """Die Bremse selbst muss weiter wirken - sonst haemmert der Bot."""
+        screen = noise(200, 300, 56)
+        cfg = Config.from_dict({"package": "x", "rules": [], "tasks": []})
+        dev = FakeDevice([screen], loop=True)
+        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=4)
+        eng.screen = screen
+        for _ in range(5):
+            eng._tap_abs(100, 150, "Punkt")
+        self.assertEqual(len(dev.taps), 1,
+                         f"ausserhalb der Flucht darf nur der erste Tipp durch: {dev.taps}")
+
+    def test_tabu_zone_gilt_auch_auf_der_flucht(self):
+        """Echtgeld bleibt tabu - auch wenn der Bot festsitzt."""
+        screen = noise(200, 300, 57)
+        cfg = Config.from_dict({
+            "package": "x", "rules": [], "tasks": [],
+            "tabu_regionen": [[0.0, 0.0, 1.0, 1.0]],
+        })
+        dev = FakeDevice([screen], loop=True)
+        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=4)
+        eng.screen = screen
+        eng._auf_der_flucht = True
+        eng._tap_abs(100, 150, "Punkt")
+        self.assertEqual(dev.taps, [], "die Tabu-Zone darf die Flucht nicht aushebeln")
+
+
+
+class TestTaktAnpassungMisstNurNeues(unittest.TestCase):
+    """Alte Protokollzeilen duerfen nicht bei jedem Durchgang erneut zaehlen.
+
+    Sonst schraubt sich der Takt Runde um Runde weiter nach oben, obwohl gar
+    keine neuen Belege dazugekommen sind - bis alles nur noch einmal am Tag
+    laeuft.
+    """
+
+    def schreibe(self, ordner, eintraege):
+        pfad = os.path.join(ordner, "lauf.jsonl")
+        with open(pfad, "w", encoding="utf-8") as fh:
+            for name, tipps, ts in eintraege:
+                fh.write(json.dumps({"ev": "aufgabe", "aufgabe": name,
+                                     "tipps": tipps, "ts": ts}) + "\n")
+        return os.path.join(ordner, "*.jsonl")
+
+    def motor(self, ordner, aufgaben):
+        cfg = Config.from_dict({"package": "x", "rules": [], "tasks": aufgaben},
+                               path=os.path.join(ordner, "cfg.json"))
+        return Engine(cfg, FakeDevice([noise(40, 60, 1)], loop=True),
+                      logger=quiet(), sleep=lambda s: None, seed=1)
+
+    def test_dieselben_zeilen_wirken_nur_einmal(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as ordner:
+            muster = self.schreibe(ordner, [("leerlauf", 0, 1000.0 + i) for i in range(5)])
+            eng = self.motor(ordner, [{"name": "leerlauf", "every": 600,
+                                       "do": [{"log": "x"}]}])
+            spec = {"logs": muster, "min_laeufe": 3, "min_takt": 300, "max_takt": 86400}
+            eng._optimiere_takte(spec)
+            nach_erstem = next(t.every for t in eng.cfg.tasks if t.name == "leerlauf")
+            self.assertGreater(nach_erstem, 600, "leerlaufende Aufgabe muss seltener werden")
+            for _ in range(3):
+                eng._optimiere_takte(spec)
+            nach_weiteren = next(t.every for t in eng.cfg.tasks if t.name == "leerlauf")
+            self.assertEqual(nach_weiteren, nach_erstem,
+                             "ohne neue Belege darf sich nichts mehr aendern")
+
+    def test_ausnahmen_werden_nie_gedrosselt(self):
+        """Waechter tippen nie - am Tipp-Mass gemessen wuerden sie totgedrosselt."""
+        import tempfile
+        with tempfile.TemporaryDirectory() as ordner:
+            muster = self.schreibe(ordner, [("lebenszeichen", 0, 1000.0 + i) for i in range(5)])
+            eng = self.motor(ordner, [{"name": "lebenszeichen", "every": 900,
+                                       "do": [{"log": "x"}]}])
+            eng._optimiere_takte({"logs": muster, "min_laeufe": 3,
+                                  "ausnahmen": ["lebenszeichen"]})
+            self.assertEqual(next(t.every for t in eng.cfg.tasks if t.name == "lebenszeichen"),
+                             900, "eine Ausnahme darf nicht angefasst werden")
+
+
+
+class TestBesterTrefferStattErstemKandidaten(unittest.TestCase):
+    """find() muss den besten Treffer liefern, nicht den erstbesten.
+
+    Der grobe Vorlauf rechnet auf ~180 px Breite. Ein feines Muster mittelt
+    sich dort zu Grau weg, und eine graue Flaeche anderswo sieht besser aus als
+    die echte Fundstelle. Vorher brach die Schleife beim ersten Kandidaten
+    ueber der Schwelle ab - das abschliessende Sortieren lief damit auf einer
+    einelementigen Liste und war wirkungslos. Gemessen: alte Fassung 9 von 12,
+    neue 11 von 12.
+    """
+
+    def test_feines_muster_wird_trotz_grauem_koeder_gefunden(self):
+        breite, hoehe, kante = 900, 1200, 40
+        tpl = Image.new(kante, kante, (0, 0, 0))
+        for y in range(kante):
+            for x in range(kante):
+                wert = 255 if (x + y) % 2 == 0 else 0
+                for k in range(3):
+                    tpl.data[(y * kante + x) * 3 + k] = wert
+
+        richtig = 0
+        for versuch in range(12):
+            screen = Image.new(breite, hoehe, (128, 128, 128))
+            zx, zy = 600 + versuch, 800
+            for y in range(kante):
+                for x in range(kante):
+                    for k in range(3):
+                        screen.data[((zy + y) * breite + zx + x) * 3 + k] = \
+                            tpl.data[(y * kante + x) * 3 + k]
+            # Koeder: fast einfarbig, sieht im groben Durchlauf besser aus
+            for y in range(kante):
+                for x in range(kante):
+                    wert = 130 if (x + y) % 2 == 0 else 126
+                    for k in range(3):
+                        screen.data[((200 + y) * breite + 150 + x) * 3 + k] = wert
+            treffer = matcher.find(screen, tpl, threshold=0.3)
+            if treffer and abs(treffer.x - zx) <= 2 and abs(treffer.y - zy) <= 2:
+                richtig += 1
+        self.assertGreaterEqual(richtig, 11, f"nur {richtig} von 12 richtig gefunden")
+
+
+
+class TestVorlagenAnleitungStimmt(unittest.TestCase):
+    """Die Anleitung in der Konfiguration darf nicht in die Irre fuehren.
+
+    Sie schrieb bis zum 03.08. vor, Vorlagen auf 75 Prozent zu verkleinern -
+    bei base_width 1440 ist das falsch, und danach geschnittene Vorlagen trafen
+    im Bot nie. Eine falsche Anleitung kostet mehr als gar keine.
+    """
+
+    def test_anleitung_widerspricht_base_width_nicht(self):
+        cfg = json.load(open(os.path.join(ROOT, "config", "last-asylum.json"),
+                             encoding="utf-8"))
+        text = cfg.get("_vorlagen_herkunft", "")
+        self.assertTrue(text, "_vorlagen_herkunft fehlt")
+        self.assertEqual(cfg.get("base_width"), 1440)
+        self.assertIn("1440", text)
+        self.assertIn("ORIGINALGROESSE", text.upper())
+
+    def test_vorhandene_vorlagen_passen_zur_basisbreite(self):
+        """Keine Vorlage darf breiter sein als der Bildschirm."""
+        muster = os.path.join(ROOT, "templates", "**", "*.png")
+        zu_breit = []
+        for pfad in glob.glob(muster, recursive=True):
+            bild = Image.load(pfad)
+            if bild.width > 1440 or bild.height > 2560:
+                zu_breit.append((os.path.relpath(pfad, ROOT), bild.width, bild.height))
+        self.assertEqual(zu_breit, [], f"Vorlagen groesser als der Bildschirm: {zu_breit}")
 
 
 

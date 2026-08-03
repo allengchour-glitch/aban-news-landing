@@ -6121,7 +6121,16 @@
             "logs": "logs/*.jsonl",
             "min_laeufe": 3,
             "min_takt": 300,
-            "max_takt": 86400
+            "max_takt": 86400,
+            "ausnahmen": [
+              "spiel-im-vordergrund",
+              "lebenszeichen",
+              "selbst-aktualisieren",
+              "kalibrieren",
+              "selbstbericht",
+              "ansichten-sammeln",
+              "selbst-optimieren"
+            ]
           }
         }
       ]
@@ -7301,7 +7310,7 @@
   ],
   "_kritische_templates": "Diese Vorlagen nennt der Selbstbericht zuerst, egal an wie vielen Aufgaben sie sonst haengen. Es sind die, ohne die der Bot Schaden nicht abwenden kann - der Schutzschild. Nach dem Verlust von zwei Staedten am 31.07. steht er vor allem anderen.",
   "_farben": "FARBEN DER KNOEPFE, am 31.07. an echten Dialogen geprueft - die einfache Regel 'Gold = Geld' stimmt so NICHT: GOLD/ORANGE ist die Farbe der Haupthandlung, und die kann harmlos sein ('Zerlegen' in der Ausruestungswerkstatt) oder etwas kosten ('Falkenturm-Ergaenzung CHF 4.40', '50 Spenden' mit Diamant, 'Bestaetigen' bei '2 Diamanten ausgeben'). Am Bild allein ist das nicht zu unterscheiden - deshalb wird Gold NIE blind angetippt, weder beim Erkunden noch von einer allgemeinen Regel. Gold nur ueber eine benannte Vorlage, wo klar ist, was der Knopf tut. BLAU ist entweder eine Handlung ('Los', 'Versammeln') oder 'Abbrechen'. Beides ist ungefaehrlich: schlimmstenfalls bricht der Bot etwas ab. Darum darf Blau allgemein getippt werden. GRUEN ist Abholen/Bestaetigen ohne Kosten. GRAU ist die guenstige Alternative - bei der Allianz-Technologie steht neben dem goldenen '50 Spenden' (Diamanten) ein graues '200 Spenden' (Ressourcen); gespendet wird immer das graue. ROT ist Abbrechen/Schliessen.",
-  "_vorlagen_herkunft": "Die Vorlagen sind auf Basisbreite 1080 abgelegt und werden zur Laufzeit hochskaliert. Aus einem Handy-Screenshot (1440x3088) schneidet man also den Ausschnitt und verkleinert ihn auf 75 Prozent. Weil das Spiel seine Oberflaeche an der BILDHOEHE bemisst, passt eine so geschnittene Vorlage im flacheren Emulator-Fenster (1440x2560) noch nicht: dort ist alles um 2560/3088 = 0.83 kleiner. Diesen Unterschied misst der Bot selbst aus - global ueber die Aufgabe 'kalibrieren', einzeln nach drei Fehlgriffen. Von Hand nachrechnen muss man da nichts.",
+  "_vorlagen_herkunft": "base_width steht auf 1440 - genauso breit wie der Emulator-Bildschirm. Die Engine rechnet Vorlagen also NICHT um; wer aus einem Emulator-Screenshot schneidet, legt den Ausschnitt in ORIGINALGROESSE ab. Nicht verkleinern. Werkzeug: python3 bot.py crop <bild.png> --box l,t,r,b -o templates/<name>.png. ACHTUNG, teuer gelernt (01./02.08.): hier stand vorher, Vorlagen gehoerten auf Basisbreite 1080 und muessten auf 75 Prozent verkleinert werden. Danach geschnittene Vorlagen trafen im Bot NIE - und der Test dazu bestand trotzdem, weil er den Faktor 4/3 selbst einsetzte statt die Engine zu fragen. Vorlagen immer mit Engine.find pruefen. Aeltere Vorlagen stammen von einem Handy (1440x3088) und brauchen darum doch einen Faktor - den misst der Bot selbst aus (Aufgabe 'kalibrieren', einzeln nach drei Fehlgriffen) und legt ihn in gelernt.json ab. Von Hand nachrechnen muss man nichts.",
   "_ziel": "So soll die Stadt aussehen (Bild des Benutzers vom 31.07.): keine Ertrags-Blasen ueber den Gebaeuden und kein roter Punkt an den Symbolen. Daran misst sich, ob der Bot seine Runde wirklich zu Ende gebracht hat - nicht daran, wie viele Tipps er gemacht hat.",
   "_gelerntes": "Was der Bot selbst misst - Groessen, Takte, Auswege - schreibt er NICHT in diese Datei, sondern in gelernt.json neben zustand.json. Grund: diese Datei liegt unter Git. Eine geaenderte Datei laesst 'git pull --ff-only' scheitern, und dann bekommt der Bot nie wieder eine neue Fassung - still, bis es jemand bemerkt. Beim Start legt er gelernt.json ueber die Werte von hier. Steckt der Ordner doch einmal fest, hilft: git checkout -- config/ && git pull",
   "_tabu": "Die Zone deckt nur den Einkaufswagen und die Diamanten-Anzeige ganz oben rechts ab. Sie reichte bis 0.145 hinunter und hat damit das Schliesskreuz der Dialoge mit verdeckt - das sitzt bei y 0.10 bis 0.11. Im Lauf vom 31.07. war das Ergebnis: 'Tipp in Tabu-Zone blockiert ... grund=ui/popup_close.png', danach 'Regel dialog-schliessen bewirkt nichts - stillgelegt'. Der Bot kam aus keinem Dialog mehr heraus. Eine Tabu-Zone muss so eng wie moeglich sein: was sie zu viel abdeckt, faellt nicht als Fehler auf, sondern als lahmgelegte Regel.",

@@ -160,6 +160,10 @@ class Engine:
         self._last_text: Dict[str, str] = {}
         self._gemeldet_fehlend = set()
         self._tipp_verlauf: List[tuple] = []
+        # Waehrend Ausweg-Suche und Erkundung gilt die Wirkungslos-Bremse nicht:
+        # auf einem festgefahrenen Bildschirm ruehrt sich per Definition nichts,
+        # und genau dann wuerde die Bremse den Fluchtweg stumm legen.
+        self._auf_der_flucht = False
         self._schwarz_gemeldet = False
         self._last_frame: Optional[Image] = None
         self._last_change = clock()
@@ -1177,6 +1181,19 @@ class Engine:
         min_laeufe = int(spec.get("min_laeufe", 5))
         unten = float(spec.get("min_takt", 300))
         oben = float(spec.get("max_takt", 86400))
+        # Aufgaben, deren Sinn NICHT im Antippen liegt: Waechter, Selbstpflege,
+        # Berichte. Am Erfolgsmass "wie viele Tipps" gemessen laufen die
+        # zwangslaeufig leer und wuerden bis auf 24 Stunden gedrosselt - also
+        # genau die Aufgaben, die haeufig laufen muessen, damit ueberhaupt
+        # jemand merkt, wenn etwas klemmt.
+        ausnahmen = set(spec.get("ausnahmen", []))
+
+        # Nur Zeilen seit der letzten Anpassung auswerten. Sonst zaehlen
+        # dieselben alten Laeufe bei jedem Durchgang erneut mit, und der Takt
+        # schraubt sich Runde um Runde weiter nach oben, ohne dass je neue
+        # Belege dazukommen.
+        stand = float(getattr(self.cfg, "takte_stand", 0.0) or 0.0)
+        neuster = stand
 
         werte: Dict[str, List[int]] = {}
         for pfad in sorted(_glob.glob(muster)):
@@ -1187,19 +1204,26 @@ class Engine:
                             d = json.loads(zeile)
                         except ValueError:
                             continue
-                        if d.get("ev") == "aufgabe":
-                            werte.setdefault(d["aufgabe"], []).append(int(d.get("tipps", 0)))
+                        if d.get("ev") != "aufgabe":
+                            continue
+                        ts = float(d.get("ts", 0.0) or 0.0)
+                        if ts and ts <= stand:
+                            continue
+                        neuster = max(neuster, ts)
+                        werte.setdefault(d["aufgabe"], []).append(int(d.get("tipps", 0)))
             except OSError:
                 continue
 
         if not werte:
-            self.log.debug("Noch keine Aufgaben-Daten zum Auswerten")
+            self.log.debug("Keine neuen Aufgaben-Daten seit der letzten Anpassung")
             return
 
         aenderungen = {}
         for task in self.cfg.tasks:
             reihe = werte.get(task.name)
             if not task.enabled or not reihe or len(reihe) < min_laeufe:
+                continue
+            if task.name in ausnahmen:
                 continue
             schnitt = sum(reihe) / len(reihe)
             alt = task.every
@@ -1215,6 +1239,12 @@ class Engine:
                 continue
             task.every = neu
             aenderungen[task.name] = (alt, neu, schnitt, len(reihe))
+
+        # Auch ohne Aenderung den Stand fortschreiben - sonst werden dieselben
+        # Zeilen beim naechsten Durchgang wieder angerechnet.
+        if neuster > stand:
+            self.cfg.takte_stand = neuster
+            self._config_patch(lambda roh: roh.__setitem__("takte_stand", neuster))
 
         if not aenderungen:
             self.log.info("Takte passen - nichts zu aendern")
@@ -1349,7 +1379,7 @@ class Engine:
         self.bump("nachrichten")
         self.log.info(f"⌨ getippt: {text}")
 
-    def _tap_point(self, value: Any) -> None:
+    def _tap_point(self, value: Any, zwingend: bool = False) -> None:
         screen = self.screen or self.capture()
         # Liste von Punkten? Einen zufaellig nehmen - so trifft man auch dann
         # freies Gelaende, wenn an einer Stelle gerade ein Gebaeude steht.
@@ -1359,14 +1389,22 @@ class Engine:
         px = int(round(x * screen.width)) if abs(x) <= 1.0 else int(x)
         py = int(round(y * screen.height)) if abs(y) <= 1.0 else int(y)
         px, py = human_point(px, py, max(6, screen.width // 60), max(6, screen.height // 120))
-        self._tap_abs(px, py, "Punkt")
+        self._tap_abs(px, py, "Punkt", zwingend=zwingend)
 
-    def _tap_abs(self, x: int, y: int, why: str) -> None:
+    def _tap_abs(self, x: int, y: int, why: str, zwingend: bool = False) -> None:
+        """Antippen. 'zwingend' hebt nur die Wirkungslos-Bremse auf, nie die Tabu-Zone.
+
+        Die Bremse fragt: hat sich an dieser Stelle beim letzten Mal etwas
+        geruehrt? Auf einem festgefahrenen Bildschirm lautet die Antwort immer
+        nein - und genau dort setzen Ausweg-Suche und Erkundung an. Ohne diese
+        Ausnahme legt die Bremse also ausgerechnet den Fluchtweg stumm, und der
+        Bot bleibt stehen, obwohl er den Ausgang schon gefunden hatte.
+        """
         screen = self.screen
         if screen is not None:
             x = max(0, min(x, screen.width - 1))
             y = max(0, min(y, screen.height - 1))
-            if self._wirkungslos(x, y, screen):
+            if not (zwingend or self._auf_der_flucht) and self._wirkungslos(x, y, screen):
                 self.log.debug("Gleicher Tipp ohne Wirkung - uebersprungen", x=x, y=y)
                 self.bump("wirkungslos")
                 # Uebersprungen heisst: derselbe Tipp hat schon einmal nichts
@@ -1601,7 +1639,11 @@ class Engine:
         """
         schluessel = self._ansicht_schluessel()
         if schluessel is None:
-            self.run_actions(self.cfg.on_unknown, woher)
+            self._auf_der_flucht = True
+            try:
+                self.run_actions(self.cfg.on_unknown, woher)
+            finally:
+                self._auf_der_flucht = False
             return
         schritte = list(self.cfg.on_unknown)
         gemerkt = self._auswege.get(schluessel)
@@ -1609,7 +1651,7 @@ class Engine:
             # Auf diesem Bildschirm hat der Bot den Knopf selbst gefunden.
             xr, yr = gemerkt["tap"]
             self.log.debug("Bekannter Bildschirm - selbst gefundener Knopf", bei=f"{xr}/{yr}")
-            self._tap_point([[xr, yr]])
+            self._tap_point([[xr, yr]], zwingend=True)
             self._do_sleep([0.8, 1.2])
             if self._ansicht_finger(self.capture()) != self._finger_jetzt:
                 return
@@ -1621,7 +1663,11 @@ class Engine:
                            schritt=gemerkt + 1)
         vorher = self._finger_jetzt
         for nr in reihenfolge:
-            self.run_actions([schritte[nr]], woher)
+            self._auf_der_flucht = True
+            try:
+                self.run_actions([schritte[nr]], woher)
+            finally:
+                self._auf_der_flucht = False
             self._do_sleep([0.8, 1.2])
             jetzt = self._ansicht_finger(self.capture())
             if jetzt == vorher:
@@ -1681,7 +1727,7 @@ class Engine:
                     "Nichts half - unbekannten Knopf ausprobieren",
                     bei=f"{xr:.2f}/{yr:.2f}", schon_probiert=len(schon),
                 )
-                self._tap_abs(cx, cy, "erkundung")
+                self._tap_abs(cx, cy, "erkundung", zwingend=True)
                 self._do_sleep([1.0, 1.5])
                 if self._ansicht_finger(self.capture()) != vorher:
                     self._auswege[schluessel] = {"tap": [xr, yr]}
