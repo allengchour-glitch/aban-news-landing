@@ -2561,3 +2561,11 @@ Der seit Wochen offene «Merchant-Ziel-Land»-Hebel (Memory §16e) ist umgesetzt
    live). ⚠️ UI-Falle: beim ersten Speichern warf der Country-Editor DE raus — nachkontrollieren nach jedem Speichern!
 4. Marketing methods = Free listings (nichts Kostenpflichtiges aktiviert).
 → 542+ aktive Produkte werden für Schweizer Gratis-Shopping-Listings freigegeben (CH-Scorecard «Great»). Propagation 1–2 Tage.
+
+### Marken-Risiko-Bereinigung + Startseiten-Review (2026-08-04)
+- **18 CJ-Titel mit Marken-Namen bereinigt** (Mercedes-Benz-Tasche!, Chanel-Stil ×7, BMW-Deko, Gucci etc.) = Abmahn-Risiko.
+  ⚠️ Lehre: Kompatibilitäts-Nennungen («Ladegerät FÜR iPhone») sind ok (nominative Nutzung) — 7 solcher Titel nach
+  Über-Strippen sauber neu formuliert. Importer sollten künftig Marken-Anker prüfen (Stil-Kopien draften/umbenennen).
+- **User-Frage «mehr Text?»:** Nein — Startseiten-Textmenge ist jetzt gesund (Hero→USP→Trust→SEO-Block). Nächster
+  Text-Hebel = Kollektions-Beschreibungen (Kategorie-Seiten), nicht mehr Startseite.
+- 9 sichtbare Billig-Ventilatoren (Startseiten-Reihe) sofort auf 15.90 vorgezogen (Reprice-Queue läuft).
