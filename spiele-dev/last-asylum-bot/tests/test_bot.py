@@ -3513,5 +3513,183 @@ class TestVeralteteVorlagenFallenAuf(unittest.TestCase):
 
 
 
+class TestZahlenLesen(unittest.TestCase):
+    """Der Bot konnte nur sehen OB etwas da ist, nie WIE VIEL.
+
+    Damit war jeder Wunsch mit einer Menge darin unerreichbar: "Versammlung ab
+    20 Energie", "nur Monster bis Stufe 6", "nicht beitreten wenn zu stark".
+    Kein OCR noetig - die Ziffern eines Spiels sind zehn feste Bilder.
+    """
+
+    ZIFFERN = {
+        "0": ((1, 1, 1), (1, 0, 1), (1, 0, 1), (1, 0, 1), (1, 1, 1)),
+        "1": ((0, 1, 0), (1, 1, 0), (0, 1, 0), (0, 1, 0), (1, 1, 1)),
+        "2": ((1, 1, 1), (0, 0, 1), (1, 1, 1), (1, 0, 0), (1, 1, 1)),
+        "3": ((1, 1, 1), (0, 0, 1), (0, 1, 1), (0, 0, 1), (1, 1, 1)),
+        "4": ((1, 0, 1), (1, 0, 1), (1, 1, 1), (0, 0, 1), (0, 0, 1)),
+        "5": ((1, 1, 1), (1, 0, 0), (1, 1, 1), (0, 0, 1), (1, 1, 1)),
+        "6": ((1, 1, 1), (1, 0, 0), (1, 1, 1), (1, 0, 1), (1, 1, 1)),
+        "7": ((1, 1, 1), (0, 0, 1), (0, 1, 0), (0, 1, 0), (0, 1, 0)),
+        "8": ((1, 1, 1), (1, 0, 1), (1, 1, 1), (1, 0, 1), (1, 1, 1)),
+        "9": ((1, 1, 1), (1, 0, 1), (1, 1, 1), (0, 0, 1), (1, 1, 1)),
+    }
+    ZOOM = 6
+
+    def bild(self, muster):
+        h, b = len(muster), len(muster[0])
+        img = Image.new(b * self.ZOOM, h * self.ZOOM, (20, 24, 30))
+        for y in range(h * self.ZOOM):
+            for x in range(b * self.ZOOM):
+                if muster[y // self.ZOOM][x // self.ZOOM]:
+                    for k in range(3):
+                        img.data[(y * b * self.ZOOM + x) * 3 + k] = 240
+        return img
+
+    def vorlagen(self):
+        return {z: self.bild(m) for z, m in self.ZIFFERN.items()}
+
+    def schreibe(self, text, breite=400, hoehe=80, x0=30, y0=20):
+        screen = Image.new(breite, hoehe, (20, 24, 30))
+        x = x0
+        for zeichen in text:
+            ziffer = self.bild(self.ZIFFERN[zeichen])
+            paste(screen, ziffer, x, y0)
+            x += ziffer.width + 4
+        return screen
+
+    def test_einzelne_und_mehrstellige_zahlen(self):
+        from laa import zahlen
+        vorl = self.vorlagen()
+        for text in ("7", "20", "45", "108", "999"):
+            with self.subTest(text=text):
+                gelesen = zahlen.lies_zahl(self.schreibe(text), vorl, threshold=0.9)
+                self.assertEqual(gelesen, int(text))
+
+    def test_doppelfunde_an_derselben_stelle_werden_eingedampft(self):
+        """Eine 8 findet sich auch dort, wo eine 3 steht - nur schlechter.
+
+        Ohne das Eindampfen kaeme aus '83' schnell '883', und mit einer falsch
+        gelesenen Zahl wird danach gerechnet.
+        """
+        from laa import zahlen
+        gelesen = zahlen.lies_zahl(self.schreibe("83"), self.vorlagen(), threshold=0.7)
+        self.assertEqual(gelesen, 83)
+
+    def test_ohne_ziffern_kein_ergebnis(self):
+        from laa import zahlen
+        self.assertIsNone(zahlen.lies_zahl(self.schreibe("42"), {}, threshold=0.9))
+        leer = Image.new(200, 60, (20, 24, 30))
+        self.assertIsNone(zahlen.lies_zahl(leer, self.vorlagen(), threshold=0.9))
+
+    def test_bedingung_zahl_greift_nur_ueber_der_grenze(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as ordner:
+            zordner = os.path.join(ordner, "ziffern")
+            os.makedirs(zordner)
+            for zeichen, muster in self.ZIFFERN.items():
+                self.bild(muster).save(os.path.join(zordner, f"{zeichen}.png"))
+            cfg = Config.from_dict({"package": "x", "rules": [], "tasks": [],
+                                    "templates_dir": ordner})
+            for text, grenze, erwartet in (("25", 20, True), ("12", 20, False)):
+                with self.subTest(text=text):
+                    screen = self.schreibe(text)
+                    eng = Engine(cfg, FakeDevice([screen], loop=True), logger=quiet(),
+                                 sleep=lambda s: None, seed=1)
+                    eng.screen = screen
+                    eng._scale = 1.0
+                    self.assertEqual(
+                        eng.evaluate({"zahl": {"mindestens": grenze, "threshold": 0.9}},
+                                     screen),
+                        erwartet)
+
+    def test_fehlende_ziffern_machen_die_bedingung_falsch(self):
+        """Eine Regel darf nicht losgehen, weil der Bot die Menge nicht kennt."""
+        screen = self.schreibe("99")
+        cfg = Config.from_dict({"package": "x", "rules": [], "tasks": []})
+        eng = Engine(cfg, FakeDevice([screen], loop=True), logger=quiet(),
+                     sleep=lambda s: None, seed=1)
+        eng.screen = screen
+        self.assertFalse(eng.evaluate({"zahl": {"mindestens": 20}}, screen))
+
+    def test_konfiguration_verlangt_eine_grenze(self):
+        cfg = Config.from_dict({
+            "package": "x", "tasks": [],
+            "rules": [{"name": "ohne-grenze", "match": {"zahl": {"region": [0, 0, 1, 1]}},
+                       "do": [{"log": "x"}]}],
+        })
+        self.assertTrue(any("mindestens" in p for p in cfg.validate()),
+                        "eine Zahl ohne Grenze ist immer wahr - das ist nie gemeint")
+
+
+
+class TestDringendesUnterbrichtDieAufgabe(unittest.TestCase):
+    """Eine Versammlung steht nur etwa eine Minute offen.
+
+    Aufgaben wie 'monster-jagen' laufen mit ihren Wartezeiten mehrere Minuten
+    am Stueck. Ohne Unterbrechung verschlaeft der Bot alles, was in dieser Zeit
+    passiert - und gerade das Beitreten ist die ergiebigste Art zu kaempfen.
+    """
+
+    def bau(self, dringend_prio=205):
+        tpl = noise(40, 40, 91)
+        screen = noise(400, 600, 92)
+        paste(screen, tpl, 120, 300)
+        cfg = Config.from_dict({
+            "package": "x",
+            "templates_dir": self.ordner,
+            "base_width": 400,          # sonst rechnet die Engine die Vorlage klein
+            "rules": [{"name": "dringend", "priority": dringend_prio,
+                       "match": {"template": "eilig.png", "threshold": 0.8},
+                       "do": [{"log": "sofort"}]}],
+            "tasks": [],
+        })
+        tpl.save(os.path.join(self.ordner, "eilig.png"))
+        dev = FakeDevice([screen], loop=True)
+        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=1)
+        eng.screen = screen
+        return eng
+
+    def setUp(self):
+        import tempfile
+        self._tmp = tempfile.TemporaryDirectory()
+        self.ordner = self._tmp.name
+
+    def tearDown(self):
+        self._tmp.cleanup()
+
+    def test_lange_wartezeit_wird_unterbrochen(self):
+        eng = self.bau()
+        eng._do_sleep([4.0, 4.0])
+        self.assertGreater(eng.stats.get("rule:dringend", 0), 0,
+                           "waehrend einer langen Wartezeit muss nachgesehen werden")
+
+    def test_kurze_wartezeit_nicht(self):
+        """Sonst kostet jeder Zehntelschlaf einen Bildschirm."""
+        eng = self.bau()
+        eng._do_sleep([0.5, 0.5])
+        self.assertEqual(eng.stats.get("rule:dringend", 0), 0)
+
+    def test_unwichtige_regeln_unterbrechen_nicht(self):
+        eng = self.bau(dringend_prio=100)
+        eng._do_sleep([4.0, 4.0])
+        self.assertEqual(eng.stats.get("rule:dringend", 0), 0,
+                         "nur Regeln ab DRINGEND_AB duerfen unterbrechen")
+
+    def test_keine_verschachtelung(self):
+        """Die gepruefte Regel darf nicht selbst wieder pruefen."""
+        eng = self.bau()
+        eng.cfg.rules[0].do = [{"sleep": [4.0, 4.0]}]
+        eng._do_sleep([4.0, 4.0])
+        self.assertLessEqual(eng.stats.get("rule:dringend", 0), 1,
+                             "die Zwischenpruefung darf sich nicht selbst aufrufen")
+
+    def test_versammlungsregel_liegt_ueber_der_unterbrechungsgrenze(self):
+        cfg = Config.load(os.path.join(ROOT, "config", "last-asylum.json"))
+        regel = next(r for r in cfg.rules if r.name == "versammlung-sofort-beitreten")
+        self.assertGreaterEqual(regel.priority, Engine.DRINGEND_AB,
+                                "sonst kann sie keine laufende Aufgabe unterbrechen")
+
+
+
 if __name__ == "__main__":
     unittest.main()

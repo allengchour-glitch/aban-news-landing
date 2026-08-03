@@ -8,7 +8,7 @@ import random
 import time
 from typing import Any, Dict, List, Optional, Sequence
 
-from . import matcher
+from . import matcher, zahlen
 from .adb import Device, human_point
 from .config import Config, ConfigError, Task
 from .image import Image
@@ -164,6 +164,7 @@ class Engine:
         # auf einem festgefahrenen Bildschirm ruehrt sich per Definition nichts,
         # und genau dann wuerde die Bremse den Fluchtweg stumm legen.
         self._auf_der_flucht = False
+        self._in_zwischenpruefung = False
         self._schwarz_gemeldet = False
         self._last_frame: Optional[Image] = None
         self._last_change = clock()
@@ -171,6 +172,7 @@ class Engine:
         self._knapp: Dict[str, int] = {}          # Vorlage -> Fehlgriffe am Stueck
         # Vorlage -> (gesucht, getroffen, bester je erreichter Wert)
         self._vorlagen_zaehler: Dict[str, tuple] = {}
+        self._ziffern_cache: Optional[Dict[str, Image]] = None
         self._nachjustiert: Dict[str, int] = {}   # Vorlage -> wie oft schon vermessen
 
         # Standardmaessig aus: Tests und Replays sollen sich nichts merken.
@@ -313,6 +315,21 @@ class Engine:
             return all(self.evaluate(c, screen) for c in cond["all"])
         if "not" in cond:
             return not self.evaluate(cond["not"], screen)
+        if "zahl" in cond:
+            # Bedingung auf eine gelesene Zahl: {"zahl": {"region": [...],
+            # "mindestens": 20}}. Fehlen die Ziffern-Vorlagen oder ist an der
+            # Stelle nichts zu lesen, gilt die Bedingung als NICHT erfuellt -
+            # eine Regel, die eine Menge voraussetzt, darf nicht losgehen, nur
+            # weil der Bot die Menge nicht kennt.
+            spec = cond["zahl"]
+            wert = self.lies_zahl(spec)
+            if wert is None:
+                return False
+            if "mindestens" in spec and wert < float(spec["mindestens"]):
+                return False
+            if "hoechstens" in spec and wert > float(spec["hoechstens"]):
+                return False
+            return True
         if "farbknopf" in cond:
             spec = cond["farbknopf"]
             treffer = matcher.find_color_button(
@@ -499,11 +516,49 @@ class Engine:
             raise ConfigError(f"{where}: unbekannte Aktion '{key}'")
 
     # ------------------------------------------------------- einzelne Aktionen
+    # Regeln ab dieser Prioritaet duerfen eine laufende Aufgabe unterbrechen.
+    # Eine Versammlung steht nur etwa eine Minute offen; eine Aufgabe wie
+    # 'monster-jagen' laeuft mit ihren Wartezeiten aber mehrere Minuten am
+    # Stueck. Ohne Unterbrechung kaeme der Bot regelmaessig zu spaet - und
+    # gerade das Beitreten ist die ergiebigste Art zu kaempfen.
+    DRINGEND_AB = 200
+    ZWISCHENPRUEFUNG_AB = 1.5   # erst ab dieser Wartezeit lohnt das Nachsehen
+
     def _do_sleep(self, value: Any) -> None:
         if isinstance(value, (list, tuple)) and len(value) >= 2:
-            self._sleep(self.rng.uniform(float(value[0]), float(value[1])))
+            dauer = self.rng.uniform(float(value[0]), float(value[1]))
         else:
-            self._sleep(float(value))
+            dauer = float(value)
+        # Lange Wartezeiten aufteilen und dazwischen nach dringenden Regeln
+        # sehen. Sonst verschlaeft der Bot alles, was waehrend einer Aufgabe
+        # passiert.
+        if dauer < self.ZWISCHENPRUEFUNG_AB or self._in_zwischenpruefung:
+            self._sleep(dauer)
+            return
+        haelfte = dauer / 2.0
+        self._sleep(haelfte)
+        self._zwischenpruefung()
+        self._sleep(haelfte)
+
+    def _zwischenpruefung(self) -> None:
+        """Waehrend einer Wartezeit kurz nach dringenden Regeln sehen.
+
+        Nur Regeln ab DRINGEND_AB, und nur eine je Wartezeit: das kostet einen
+        Bildschirm und ein paar Zehntel, verhindert aber, dass eine Versammlung
+        oder ein Angriffs-Hinweis minutenlang unbemerkt bleibt.
+
+        Der Schalter verhindert Verschachtelung - sonst koennte die gepruefte
+        Regel selbst wieder warten und dabei erneut pruefen.
+        """
+        self._in_zwischenpruefung = True
+        try:
+            screen = self.capture()
+            if self._try_rules(screen, min_priority=self.DRINGEND_AB):
+                self.bump("zwischendurch-gehandelt")
+        except Exception as exc:  # pragma: no cover - Geraet
+            self.log.debug("Zwischenpruefung uebersprungen", grund=str(exc)[:120])
+        finally:
+            self._in_zwischenpruefung = False
 
     def _tap_match(self, spec: Dict[str, Any]) -> None:
         if self.last_match is None:
@@ -627,6 +682,10 @@ class Engine:
             0.50, 0.55, 0.60, 0.65, 0.70, 0.75, 0.80, 0.85, 0.90, 0.95, 1.00, 1.10
         ]
         mindest = float(spec.get("mindest_score", 0.86))
+        frueh_genug = float(spec.get("frueh_genug", 0.95))
+        genug = int(spec.get("genug_belege", 4))
+        aussichtslos = float(spec.get("aussichtslos_unter", 0.6))
+        versuche, hoechster = 0, 0.0
         screen = self.capture()
         if screen.ist_einfarbig():
             return
@@ -642,8 +701,30 @@ class Engine:
                 hit = matcher.best_score(screen, tpl, scale=basis * f)
                 if hit and hit.score > bester:
                     bester, bester_faktor = hit.score, f
+                # Frueh aufhoeren, sobald es eindeutig ist. Ohne das laufen
+                # immer 7 Vorlagen x 12 Faktoren = 84 Suchen durch - auf dem
+                # PC des Nutzers gemessene 44 Sekunden, in denen der Bot nichts
+                # anderes tut. Ein Wert deutlich ueber der Schwelle wird durch
+                # weitere Faktoren nicht mehr besser.
+                if bester >= frueh_genug:
+                    break
+            versuche += 1
+            hoechster = max(hoechster, bester)
             if bester >= mindest and bester_faktor:
                 gefunden.append((name, bester_faktor, bester))
+                # Genug Belege beisammen? Dann reicht es. Der Median aus drei
+                # bis vier Vorlagen ist so gut wie der aus sieben.
+                if len(gefunden) >= genug:
+                    break
+            elif not gefunden and versuche >= 3 and hoechster < aussichtslos:
+                # Drei Navigations-Vorlagen probiert, keine auch nur in der
+                # Naehe: das ist nicht die Stadt, sondern ein Dialog oder ein
+                # Vollbild. Weiterzusuchen kostet nur Zeit - im Protokoll des
+                # Nutzers 44 Sekunden fuer ein Ergebnis, das von Anfang an
+                # feststand ("zu wenig Belege").
+                self.log.debug("Kalibrierung: falscher Bildschirm - spaeter erneut",
+                               bester=round(hoechster, 3))
+                break
 
         # Ein einziger Beleg ist keine Messung. Auf einem Vollbild wie
         # 'Taegliche Aufgaben' ist von den Navigations-Vorlagen ohnehin keine
@@ -896,6 +977,45 @@ class Engine:
                 raus.append((name, gesucht, round(bestwert, 3)))
         raus.sort(key=lambda e: -e[1])
         return raus
+
+    def _ziffern(self, ordner: str = "ziffern") -> Dict[str, Image]:
+        """Die Ziffern-Vorlagen, einmal geladen und gemerkt."""
+        if getattr(self, "_ziffern_cache", None) is None:
+            pfad = os.path.join(self.cfg.root, self.cfg.templates_dir, ordner)
+            self._ziffern_cache = zahlen.lade_ziffern(pfad)
+            if self._ziffern_cache:
+                self.log.debug("Ziffern geladen", anzahl=len(self._ziffern_cache))
+        return self._ziffern_cache
+
+    def lies_zahl(self, spec: Dict[str, Any]) -> Optional[int]:
+        """Eine Zahl vom Bildschirm lesen - Energie, Stufe, Staerke.
+
+        Ohne das kann der Bot nur erkennen, OB etwas da ist, nie WIE VIEL.
+        Alle Wuensche mit einer Menge darin - 'Versammlung ab 20 Energie',
+        'nur Monster bis Stufe 6', 'nicht beitreten wenn zu stark' - haengen
+        daran.
+        """
+        screen = self.screen or self.capture()
+        ziffern = self._ziffern(spec.get("ordner", "ziffern"))
+        if not ziffern:
+            if "ziffern" not in self._gemeldet_fehlend:
+                self._gemeldet_fehlend.add("ziffern")
+                self.log.info(
+                    "Zahlen lesen geht noch nicht - es fehlen die Ziffern-Vorlagen",
+                    hilfe="templates/ziffern/0.png bis 9.png aus einem Screenshot schneiden",
+                )
+            return None
+        skala = self._scale if self._scale is not None else 1.0
+        skala *= float(spec.get("skala", 1.0))
+        wert = zahlen.lies_zahl(
+            screen, ziffern,
+            region=spec.get("region"),
+            threshold=float(spec.get("threshold", 0.80)),
+            scale=skala,
+            hoechstens=int(spec.get("hoechstens", 6)),
+        )
+        self.log.debug("Zahl gelesen", wert=wert, region=spec.get("region"))
+        return wert
 
     def _selbstbericht(self, spec: Dict[str, Any]) -> None:
         """Sagen, was gerade fehlt - und was es kostet.

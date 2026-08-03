@@ -302,6 +302,41 @@
   ],
   "rules": [
     {
+      "name": "versammlung-sofort-beitreten",
+      "priority": 205,
+      "cooldown": 3,
+      "_zweck": "ZEITKRITISCH: eine Versammlung steht laut Nutzer nur etwa EINE MINUTE offen. Die Aufgabe 'versammlung-beitreten' laeuft alle fuenf Minuten und geht den ganzen Weg ueber das Allianz-Menue - damit kommt der Bot regelmaessig zu spaet. Diese Regel greift stattdessen, sobald der blaue Beitreten-Knopf ueberhaupt sichtbar ist, egal wo der Bot gerade steht. Prioritaet 205 liegt ueber DRINGEND_AB (200), sie darf also auch eine laufende Aufgabe unterbrechen - genau dafuer ist die Zwischenpruefung gebaut. Braucht allianz/beitreten.png; bis die Vorlage da ist, greift sie nie (optional), schadet aber auch nicht.",
+      "match": {
+        "template": "allianz/beitreten.png",
+        "threshold": 0.87,
+        "optional": true
+      },
+      "do": [
+        {
+          "log": "Versammlung offen - sofort beitreten"
+        },
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            1.0,
+            1.6
+          ]
+        },
+        {
+          "tap_template": {
+            "template": "ui/btn_bestaetigen.png",
+            "optional": true,
+            "after": [
+              1.0,
+              1.6
+            ]
+          }
+        }
+      ]
+    },
+    {
       "name": "ladebildschirm-abwarten",
       "priority": 245,
       "cooldown": 0,

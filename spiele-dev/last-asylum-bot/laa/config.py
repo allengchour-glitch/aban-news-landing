@@ -304,8 +304,18 @@ class Config:
                     problems.append(f"{where}: 'farbknopf' braucht ein Objekt mit 'rgb'")
             elif "app_im_vordergrund" in cond:
                 pass
+            elif "zahl" in cond:
+                spec = cond["zahl"]
+                if not isinstance(spec, dict):
+                    problems.append(f"{where}: 'zahl' braucht ein Objekt")
+                elif not ("mindestens" in spec or "hoechstens" in spec):
+                    # Eine Zahl ohne Grenze zu lesen und dann immer wahr zu
+                    # sein, ist mit Sicherheit nicht gemeint.
+                    problems.append(f"{where}: 'zahl' braucht 'mindestens' oder 'hoechstens'")
             elif "always" not in cond:
-                problems.append(f"{where}: Bedingung ohne template/pixel/farbknopf/app_im_vordergrund/always")
+                problems.append(
+                    f"{where}: Bedingung ohne template/pixel/farbknopf/zahl/"
+                    f"app_im_vordergrund/always")
 
         for rule in self.rules:
             check_match(f"Regel '{rule.name}'", rule.match)
