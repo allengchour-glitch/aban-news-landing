@@ -16,9 +16,11 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 const chf=(usd,grams)=>{const u=parseFloat((''+usd).split('--')[0])||0;
  // 2026-08-03: China→CH-Fracht REAL ~CHF 15 (Order #1011: $15.77) — MUSS in den Preis, sonst Verlust bei billiger Ware!
  const kg=(parseFloat(grams)||0)/1000;
- const freight=Math.max(15, 3.4+16.3*kg);      // Fracht CHF: min ~15 (leicht), +Gewicht für schwere
- const landed=u*0.9+freight;                    // Einstandskosten CHF (Produkt + Fracht)
- let p=Math.max(landed*1.35, landed+6, 19.90);  // 35% Marge, min CHF 6 Deckung, absoluter Boden 19.90
+ // Kunde zahlt CHF 7 Versand unter Gratis-Schwelle → nur die Fracht-LÜCKE (Fracht - 7) in den Preis
+ const freight=Math.max(15, 3.4+16.3*kg);       // reale Fracht CHF
+ const gap=Math.max(0, freight-7);              // vom Preis zu deckende Fracht-Lücke (~CHF 8 leicht)
+ const landed=u*0.9+gap;                        // Kosten die der Produktpreis tragen muss
+ let p=Math.max(landed*1.4, landed+5, 14.90);   // Marge, min CHF 5 Deckung, Boden 14.90
  return (Math.floor(p)+0.90).toFixed(2);};
 
 // ── Fashion-Modus (Zalando-Stil): CJ-Varianten "Farbe-Grösse" → Shopify Farbe+Grösse-Optionen ──

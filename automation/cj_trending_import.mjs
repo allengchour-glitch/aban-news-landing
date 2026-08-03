@@ -14,8 +14,8 @@ const LEDGER='dropship/cj_niche_done.txt';
 const PUBS=['301970915713','301971014017','302032716161','302566834561','302872297857','302994456961'].map(id=>({publicationId:`gid://shopify/Publication/${id}`}));
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 const chf=usd=>{const u=parseFloat((''+usd).split('--')[0])||0;
- // 2026-08-03: China→CH-Fracht ~CHF 15 (Order #1011) fest einrechnen, sonst Verlust bei billiger Ware
- const landed=u*0.9+15; const p=Math.max(landed*1.35, landed+6, 19.90);
+ // 2026-08-03: Kunde zahlt CHF7 Versand → Fracht-Lücke ~CHF8 in Preis (Fracht 15 - 7)
+ const landed=u*0.9+8; const p=Math.max(landed*1.4, landed+5, 14.90);
  return (Math.floor(p)+0.90).toFixed(2);};
 
 // ── Fashion-Modus (Zalando-Stil): CJ-Varianten "Farbe-Grösse" → Shopify Farbe+Grösse-Optionen ──
