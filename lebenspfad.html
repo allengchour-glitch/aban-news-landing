@@ -3548,7 +3548,7 @@ function netHostBoot(){ // ID-Kollision (unavailable-id) -> neuen Code würfeln 
     if(!NET._brkAuto){NET._brkAuto=true;peerNextBroker(); /* 🔁 automatisch Ersatz-Server versuchen — kein „nochmal tippen" */
       netStatus("🔁 Server träge — ich wechsle automatisch auf den Ersatz-Server …","#b06a2a");
       setTimeout(netHostBoot,250);return;}
-    netStatus("⏱️ Kein Vermittlungs-Server erreichbar — Internet prüfen und nochmal versuchen.","#e05a5a");
+    netStatus("⏱️ Vermittlungs-Server antwortet nicht. Meist hilft: ~1 Minute warten und nochmal versuchen (der Gratis-Server bremst bei vielen Versuchen kurz hintereinander).","#e05a5a");
     netHostReset();
   },15000);
   NET.peer.on("open",function(){clearTimeout(NET._tmo);NET.peer._opened=true;NET._brkAuto=false;
@@ -3578,7 +3578,7 @@ function netHostBoot(){ // ID-Kollision (unavailable-id) -> neuen Code würfeln 
       if(!NET._brkAuto){NET._brkAuto=true;peerNextBroker(); /* 🔁 automatischer Server-Wechsel statt „nochmal tippen" */
         netStatus("🔁 Server nicht erreichbar — ich wechsle automatisch auf den Ersatz-Server …","#b06a2a");
         setTimeout(netHostBoot,250);return;}
-      netStatus("⏱️ Kein Vermittlungs-Server erreichbar — Internet prüfen und nochmal versuchen.","#e05a5a");netHostReset();return;}
+      netStatus("⏱️ Vermittlungs-Server antwortet nicht. Meist hilft: ~1 Minute warten und nochmal versuchen (der Gratis-Server bremst bei vielen Versuchen kurz hintereinander).","#e05a5a");netHostReset();return;}
     netStatus("Online-Fehler ("+t+") — nochmal versuchen.","#e05a5a");
     netHostReset();
   });
@@ -3645,13 +3645,17 @@ function netHostBoot(){ // ID-Kollision (unavailable-id) -> neuen Code würfeln 
    los ist. */
 var LP_PUBLIC=["OFEN","OFAA","OFAB","OFAC","OFAD"];
 function netSuche(){
+  /* ⚠️ EIN einziger Peer fuer alle Proben. Die erste Fassung oeffnete fuenf Peers
+     gleichzeitig — die Gratis-Cloud drosselt das pro IP, und danach lief sogar das
+     normale Hosten in den 15-s-Timeout („Kein Vermittlungs-Server erreichbar",
+     User-Screenshot). Ein Peer darf beliebig viele fremde IDs anwaehlen;
+     peer-unavailable heisst nur „dieser Raum ist leer" und laesst ihn heil. */
   if(typeof Peer==="undefined"){netStatus("Online-Modul nicht geladen — Seite neu laden.","#e05a5a");return;}
   if(NET.peer){netStatus("Erst den aktuellen Raum verlassen.","#e05a5a");return;}
   var box=document.getElementById("netListe");box.style.display="block";
-  box.innerHTML="<div style='color:#7a8a9a;font-size:.85rem'>🔎 Suche offene Räume … (bis 5 s)</div>";
-  var gefunden=[],offen=LP_PUBLIC.length,peers=[];
+  box.innerHTML="<div style='color:#7a8a9a;font-size:.85rem'>🔎 Suche offene Räume … (bis 7 s)</div>";
+  var gefunden=[],offen=LP_PUBLIC.length,pr=null,tot=false,gesamtT=null;
   function zeichne(){
-    var frei=gefunden.filter(function(r){return !r.voll;});
     if(!gefunden.length){
       box.innerHTML="<div style='color:#7a8a9a;font-size:.85rem;margin-bottom:6px'>Kein offener Raum gefunden.</div>"+
         "<button class='btn ghost' id='lpPubHost' style='margin-top:0;font-size:.88rem;padding:8px 16px'>➕ Öffentlichen Raum eröffnen</button>";
@@ -3667,29 +3671,37 @@ function netSuche(){
     Array.prototype.forEach.call(box.querySelectorAll("button[data-i]"),function(b){
       b.onclick=function(){
         var r=gefunden[+b.getAttribute("data-i")];
+        if(r.voll)return;
         box.style.display="none";
         document.getElementById("netCode").value=r.code;
         document.getElementById("netJoinBtn").click();};});}
-  LP_PUBLIC.forEach(function(code){
-    var pr=null,fertig=false,t=null;
-    function schluss(info){
-      if(fertig)return;fertig=true;
-      if(t)clearTimeout(t);
-      try{if(pr)pr.destroy();}catch(e){}
-      if(info)gefunden.push(info);
-      if(--offen<=0||info)zeichne();}
-    try{pr=new Peer(undefined,peerCfg());}catch(e){schluss(null);return;}
-    peers.push(pr);
-    t=setTimeout(function(){schluss(null);},5000);
-    pr.on("error",function(){schluss(null);});
-    pr.on("open",function(){
-      var c;try{c=pr.connect(netRoomId(code),{reliable:true});}catch(e){schluss(null);return;}
+  function fertig(){
+    if(tot)return;tot=true;
+    if(gesamtT)clearTimeout(gesamtT);
+    try{if(pr)pr.destroy();}catch(e){}
+    zeichne();}
+  gesamtT=setTimeout(fertig,11000);
+  try{pr=new Peer(undefined,peerCfg());}catch(e){fertig();return;}
+  pr.on("error",function(e){
+    if(e&&e.type==="peer-unavailable")return;   /* leerer Raum — normal */
+    fertig();});
+  pr.on("open",function(){
+    LP_PUBLIC.forEach(function(code){
+      var erledigt=false,t=null,c=null;
+      function schluss(info){
+        if(erledigt)return;erledigt=true;
+        if(t)clearTimeout(t);
+        try{if(c)c.close();}catch(e){}
+        if(info)gefunden.push(info);
+        if(--offen<=0)fertig();else if(info)zeichne();}
+      t=setTimeout(function(){schluss(null);},7000);
+      try{c=pr.connect(netRoomId(code),{reliable:true});}catch(e){schluss(null);return;}
       if(!c){schluss(null);return;}
       c.on("open",function(){try{c.send(JSON.stringify({t:"__lobby?"}));}catch(e){}});
       c.on("data",function(d){var m;try{m=JSON.parse(d);}catch(e){return;}
         if(m&&m.t==="__lobby")schluss({code:code,name:m.n||"?",spieler:m.p||1,voll:!!m.voll});});
-      c.on("error",function(){schluss(null);});
-      c.on("close",function(){schluss(null);});});});}
+      c.on("close",function(){schluss(null);});
+      c.on("error",function(){schluss(null);});});});}
 document.getElementById("netSucheBtn").onclick=netSuche;
 document.getElementById("netHostBtn").onclick=function(){
   if(typeof Peer==="undefined"){netStatus("Online-Modul nicht geladen — Seite neu laden.","#e05a5a");return;}
