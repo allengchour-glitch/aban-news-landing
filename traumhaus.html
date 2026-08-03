@@ -1548,6 +1548,78 @@ var dorfFenster=[];
   // Nachbarhaus prozedural: Sockel, Waende, Satteldach, Tuer, Fenster, Kamin
   var WANDF=[0xf2e4c8,0xe8d0b0,0xd8e0e8,0xf0d8d8,0xe0e8d0,0xf4ead4,0xd8c8e0,0xe8e2d0];
   var DACHF=[0x8a4a3a,0x5a5a64,0x7a5a40,0x4a5a6a,0x9a5a4a,0x6a6a58];
+  /* 🪟🚪 FENSTER- UND TUERBAUKASTEN.
+     Die Dorfhaeuser hatten Fenster OHNE Rahmen — eine nackte Glasscheibe auf der
+     Wand — und die Tuer war eine einzelne Platte ohne Zarge, Griff und Stufe.
+     Beide Gruppen werden mit Blickrichtung +z gebaut; der Aufrufer setzt sie an
+     die Wand und dreht sie. Das Glasmaterial wird zurueckgegeben, damit es
+     weiterhin in `dorfFenster` fuer die Nachtbeleuchtung landet. */
+  var _rahmM=null,_bankM=null,_griffM=null;
+  function _fdMats(){
+    if(!_rahmM){_rahmM=stdMat(0xf2eee4,0.62);_bankM=betMat(0xd8d2c4,0.8);
+                _griffM=stdMat(0xb8a878,0.35,0.6);}
+  }
+  function fensterGruppe(bw,bh,laden){
+    _fdMats();
+    var g=new THREE.Group();
+    var glasM=new THREE.MeshStandardMaterial({color:0xbfd8e8,emissive:0xffd890,
+      emissiveIntensity:0,roughness:0.2,metalness:0.05});
+    g.add(new THREE.Mesh(new THREE.BoxGeometry(bw,bh,0.04),glasM));
+    var lb=0.09;                                             /* Rahmenbreite */
+    [[bh/2+lb/2],[-bh/2-lb/2]].forEach(function(o){
+      var r=new THREE.Mesh(new THREE.BoxGeometry(bw+2*lb,lb,0.09),_rahmM);
+      r.position.set(0,o[0],0.03);g.add(r);});
+    [-1,1].forEach(function(sx){
+      var r=new THREE.Mesh(new THREE.BoxGeometry(lb,bh,0.09),_rahmM);
+      r.position.set(sx*(bw/2+lb/2),0,0.03);g.add(r);});
+    var sp1=new THREE.Mesh(new THREE.BoxGeometry(0.05,bh,0.06),_rahmM);   /* Sprossen */
+    sp1.position.z=0.04;g.add(sp1);
+    var sp2=new THREE.Mesh(new THREE.BoxGeometry(bw,0.05,0.06),_rahmM);
+    sp2.position.z=0.04;g.add(sp2);
+    var bank=new THREE.Mesh(new THREE.BoxGeometry(bw+0.34,0.08,0.22),_bankM);
+    bank.position.set(0,-bh/2-lb-0.04,0.09);g.add(bank);      /* Fensterbank */
+    var stz=new THREE.Mesh(new THREE.BoxGeometry(bw+0.34,0.10,0.14),_bankM);
+    stz.position.set(0,bh/2+lb+0.05,0.05);g.add(stz);         /* Sturz */
+    if(laden){                                                /* Fensterlaeden */
+      var ldM=stdMat(0x3f6b4a,0.75);
+      [-1,1].forEach(function(sx){
+        var l=new THREE.Mesh(new THREE.BoxGeometry(bw*0.5,bh,0.05),ldM);
+        l.position.set(sx*(bw/2+lb+bw*0.25),0,0.07);
+        l.rotation.y=sx*0.22;g.add(l);
+        for(var q=0;q<3;q++){
+          var la=new THREE.Mesh(new THREE.BoxGeometry(bw*0.42,0.035,0.02),_rahmM);
+          la.position.set(sx*(bw/2+lb+bw*0.25),-bh*0.28+q*bh*0.28,0.10);
+          la.rotation.y=sx*0.22;g.add(la);}});
+    }
+    g.traverse(function(n){if(n.isMesh)n.castShadow=true;});
+    return {g:g,glas:glasM};
+  }
+  function tuerGruppe(bw,bh,farbe){
+    _fdMats();
+    var g=new THREE.Group(),blM=stdMat(farbe||0x6a4a30,0.55);
+    var bl=new THREE.Mesh(new THREE.BoxGeometry(bw,bh,0.07),blM);
+    bl.position.z=0.02;g.add(bl);
+    [bh*0.24,-bh*0.22].forEach(function(oy){                  /* Fuellungen */
+      var f=new THREE.Mesh(new THREE.BoxGeometry(bw*0.62,bh*0.3,0.02),blM);
+      f.position.set(0,oy,0.06);g.add(f);});
+    var obM=new THREE.MeshStandardMaterial({color:0xcfe4f0,emissive:0xffd890,
+      emissiveIntensity:0,roughness:0.2});
+    var ob=new THREE.Mesh(new THREE.BoxGeometry(bw*0.66,0.16,0.03),obM);
+    ob.position.set(0,bh/2-0.22,0.06);g.add(ob);              /* Oberlicht */
+    [[bh/2+0.12,bw+0.24,0.12],[-bh/2-0.05,bw+0.30,0.10]].forEach(function(o){
+      var r=new THREE.Mesh(new THREE.BoxGeometry(o[1],o[2],0.12),_rahmM);
+      r.position.set(0,o[0],0.05);g.add(r);});                /* Sturz + Schwelle */
+    [-1,1].forEach(function(sx){
+      var r=new THREE.Mesh(new THREE.BoxGeometry(0.11,bh+0.2,0.12),_rahmM);
+      r.position.set(sx*(bw/2+0.055),0.05,0.05);g.add(r);});  /* Zarge */
+    var gr=new THREE.Mesh(new THREE.BoxGeometry(0.05,0.05,0.22),_griffM);
+    gr.position.set(bw*0.34,0,0.13);g.add(gr);                /* Griff */
+    var st=new THREE.Mesh(new THREE.BoxGeometry(bw+0.5,0.12,0.5),_bankM);
+    st.position.set(0,-bh/2-0.06,0.22);g.add(st);             /* Tuerstufe */
+    g.traverse(function(n){if(n.isMesh)n.castShadow=true;});
+    return {g:g,ober:obM};
+  }
+
   function haus(x,z,rotY,seed){
     var _q=wegVonStrasse(x,z);x=_q[0];z=_q[1];
     var g=new THREE.Group();
@@ -1576,12 +1648,16 @@ var dorfFenster=[];
     [d/2-0.06,-d/2+0.06].forEach(function(gz){
       var tri=new THREE.Mesh(new THREE.CylinderGeometry(0.01,w*0.5,1.2,3,1),stdMat(wandC,0.85));
       tri.scale.z=0.02;tri.position.set(0,h+0.58,gz);tri.rotation.y=Math.PI/2;g.add(tri);});
-    var tuer=new THREE.Mesh(new THREE.BoxGeometry(0.8,1.6,0.08),stdMat(0x6a4a30,0.6));
-    tuer.position.set(w/2-1,0.8,d/2+0.04);g.add(tuer);
+    var TF=[0x6a4a30,0x3f5f7a,0x7a3a34,0x4a5a3a];
+    var td=tuerGruppe(0.92,1.98,TF[seed%TF.length]);
+    td.g.position.set(w/2-1,0.99,d/2+0.05);g.add(td.g);dorfFenster.push(td.ober);
     for(var fx=0;fx<2;fx++){
-      var fe=new THREE.Mesh(new THREE.BoxGeometry(0.8,0.8,0.06),
-        new THREE.MeshStandardMaterial({color:0xbfd8e8,emissive:0xffd890,emissiveIntensity:0,roughness:0.2}));
-      fe.position.set(-w/2+1+fx*1.5,1.35,d/2+0.04);g.add(fe);dorfFenster.push(fe.material);}
+      var fd=fensterGruppe(0.86,0.86,(seed+fx)%2===0);   /* jedes zweite mit Laeden */
+      fd.g.position.set(-w/2+1+fx*1.5,1.42,d/2+0.05);g.add(fd.g);
+      dorfFenster.push(fd.glas);}
+    if(h>2.6){                                          /* die Giebelwand war leer */
+      var fo=fensterGruppe(0.72,0.62,false);
+      fo.g.position.set(0,h+0.42,d/2+0.05);g.add(fo.g);dorfFenster.push(fo.glas);}
     var kamin=new THREE.Mesh(new THREE.BoxGeometry(0.45,1.1,0.45),stdMat(0x8a7a6a,0.8));
     kamin.position.set(-w/2+0.9,h+0.9,-d/4);kamin.castShadow=true;g.add(kamin);
     g.position.set(x,0,z);g.rotation.y=rotY;scene.add(g);addSolidRot(x,z,w+0.5,d+0.5,rotY,null); /* 🧱 Dorfhaus solide */
@@ -1689,7 +1765,28 @@ var dorfFenster=[];
         la.rotation.y=rot;la.castShadow=true;g.add(la);}
       [0.28,0.74].forEach(function(h){
         var ri=new THREE.Mesh(_zaunRiegelG,_zaunM);
-        ri.scale.x=len/6.4;ri.position.set(ax,h,az);ri.rotation.y=rot;g.add(ri);});}
+        ri.scale.x=len/6.4;ri.position.set(ax,h,az);ri.rotation.y=rot;g.add(ri);});
+      /* 🚪 Gartentor: im Zaun war bisher nur eine LUECKE. Jetzt zwei Pfosten und ein
+         Fluegel, der halb offen steht — geschlossen saehe es aus wie zugemauert,
+         gar keins wie ein vergessener Zaun. */
+      if(mitTor){
+        [-1,1].forEach(function(sp){
+          var pf=new THREE.Mesh(new THREE.BoxGeometry(0.16,1.25,0.16),_torM);
+          pf.position.set(ax+Math.cos(rot)*sp*1.5,0.62,az-Math.sin(rot)*sp*1.5);
+          pf.rotation.y=rot;pf.castShadow=true;g.add(pf);
+          var kn=new THREE.Mesh(new THREE.SphereGeometry(0.10,8,6),_torM);
+          kn.position.set(ax+Math.cos(rot)*sp*1.5,1.30,az-Math.sin(rot)*sp*1.5);g.add(kn);});
+        var fl=new THREE.Group();
+        fl.add(new THREE.Mesh(new THREE.BoxGeometry(1.32,0.86,0.05),_torM)).children
+          [fl.children.length-1].position.set(0.66,0.55,0);
+        for(var q=0;q<5;q++){
+          var la2=new THREE.Mesh(new THREE.BoxGeometry(0.07,0.94,0.07),_torM);
+          la2.position.set(0.16+q*0.28,0.58,0.02);fl.add(la2);}
+        fl.position.set(ax+Math.cos(rot)*(-1.42),0,az-Math.sin(rot)*(-1.42));
+        fl.rotation.y=rot-0.55;                              /* halb offen */
+        fl.traverse(function(n){if(n.isMesh)n.castShadow=true;});
+        g.add(fl);
+      }}
     seite(7.6,0,dir*4.9,0,true);                                   // Strassenseite mit Tor
     seite(7.0,-3.8,dir*1.4,Math.PI/2,false);                       // links
     seite(7.0,3.8,dir*1.4,Math.PI/2,false);                        // rechts
@@ -1969,7 +2066,22 @@ var dorfFenster=[];
       // Garage seitlich mit Tor
       var gar=new THREE.Mesh(new THREE.BoxGeometry(3.4,2.6,4.4),vilM);gar.position.set(5.7,1.3,0.6);gar.castShadow=true;g.add(gar);
       var garD=new THREE.Mesh(new THREE.BoxGeometry(3.8,0.3,4.8),betMat(0x9a948a,0.8));garD.position.set(5.7,2.75,0.6);g.add(garD);
-      var tor=new THREE.Mesh(new THREE.BoxGeometry(2.6,1.9,0.08),stdMat(0xcac2b2,0.6));tor.position.set(5.7,0.95,2.82);g.add(tor);
+      /* 🚗 Garagentor: war eine flache Platte. Jetzt ein Sektionaltor mit
+         waagrechten Paneelfugen, Griff, Zarge und Sturz — von der Einfahrt aus
+         schaut man genau darauf. */
+      var torM=stdMat(0xd0c8b6,0.55),fugM=stdMat(0x9a9284,0.6);
+      var tor=new THREE.Mesh(new THREE.BoxGeometry(2.6,1.9,0.08),torM);
+      tor.position.set(5.7,0.95,2.82);tor.castShadow=true;g.add(tor);
+      for(var pq=1;pq<5;pq++){
+        var fu=new THREE.Mesh(new THREE.BoxGeometry(2.62,0.045,0.02),fugM);
+        fu.position.set(5.7,pq*0.38,2.87);g.add(fu);}
+      [-1,1].forEach(function(sq){
+        var za=new THREE.Mesh(new THREE.BoxGeometry(0.16,2.05,0.20),betMat(0xc8c0b0,0.75));
+        za.position.set(5.7+sq*1.38,1.02,2.84);za.castShadow=true;g.add(za);});
+      var stu=new THREE.Mesh(new THREE.BoxGeometry(2.92,0.16,0.20),betMat(0xc8c0b0,0.75));
+      stu.position.set(5.7,2.02,2.84);g.add(stu);
+      var tgr=new THREE.Mesh(new THREE.BoxGeometry(0.42,0.07,0.09),stdMat(0x8a8478,0.4,0.5));
+      tgr.position.set(5.7,0.62,2.90);g.add(tgr);
       // Parzelle: Lattenzaun (18x14), Gartenweg, Einfahrt, Hecken, Baum
       function zaun(w9,d9,zx,zz){var zn=new THREE.Mesh(new THREE.BoxGeometry(w9,0.7,d9),zaunM);zn.position.set(zx,0.35,zz);g.add(zn);}
       zaun(18,0.14,0,-7);zaun(0.14,14,-9,0);zaun(0.14,14,9,0);
