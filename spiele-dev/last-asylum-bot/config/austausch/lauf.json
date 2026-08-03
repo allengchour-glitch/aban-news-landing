@@ -1,7 +1,7 @@
 {
- "zeit": "2026-08-02 23:52:19",
- "zeit_utc": "2026-08-02T23:52:19Z",
- "fassung": "cad02fc0b",
+ "zeit": "2026-08-03 00:05:00",
+ "zeit_utc": "2026-08-03T00:05:00Z",
+ "fassung": "5e1b7a5eb",
  "schritte": 18,
  "gleiche_ansicht": 2,
  "unbekannt_am_stueck": 0,
@@ -22,5 +22,5 @@
  "vorlagen_offen": 0,
  "verworfene_vorlagen": [],
  "verdaechtige_regeln": {},
- "bild": "austausch/lauf.png"
+ "bild": null
 }
