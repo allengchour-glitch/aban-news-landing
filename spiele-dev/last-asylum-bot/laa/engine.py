@@ -655,18 +655,53 @@ class Engine:
         # Vorlagen, die deutlich aus der Reihe tanzen, stammen aus einer anderen
         # Aufnahme-Groesse. Statt sie den Median verfaelschen zu lassen, bekommt
         # jede von ihnen ihren eigenen Nachschlag.
-        ausreisser = {}
+        # WICHTIG - hier steckte ein Fehler, der zu falschen Tippstellen fuehrt.
+        # Der gemessene Faktor f ist ABSOLUT (die Messung oben laesst den
+        # eigenen Nachschlag bewusst weg), gesucht ist aber der Nachschlag
+        # RELATIV zum Median. Bisher wurde nur eingetragen, wer diesmal aus der
+        # Reihe tanzte. Eine Vorlage, die beim vorigen Mal Ausreisser war und
+        # jetzt nicht mehr, behielt ihren alten Nachschlag - und der wurde ab
+        # da zusaetzlich zum neuen Median gerechnet. Beispiel: eigen 1.3 aus
+        # Lauf 1, in Lauf 2 misst sich dieselbe Vorlage zu 1.0 bei Median 1.0 -
+        # gesucht 1.0, gerechnet 1.3. Die Vorlage passt dann 30 % zu gross,
+        # trifft daneben, und der Bot tippt an der falschen Stelle.
+        #
+        # Darum: fuer JEDE gemessene Vorlage neu setzen (oder loeschen, wenn
+        # kein Nachschlag noetig ist) und die nicht gemessenen umrechnen,
+        # damit ihre absolute Groesse gleich bleibt.
+        vorher_skala = self.cfg.ui_skala
+        neue_skalen = dict(self.cfg.template_skalen)
+        gemessen = {name for name, _, _ in gefunden}
         for name, f, _ in gefunden:
-            if median and abs(f - median) / median > 0.08:
-                ausreisser[name] = round(f / median, 3)
-        if ausreisser:
-            self.cfg.template_skalen.update(ausreisser)
+            nachschlag = round(f / median, 3) if median else 1.0
+            if abs(nachschlag - 1.0) <= 0.03:
+                neue_skalen.pop(name, None)
+            else:
+                neue_skalen[name] = nachschlag
+        if median and vorher_skala and abs(median - vorher_skala) > 0.001:
+            # Nicht gemessene Vorlagen: ihr Nachschlag galt gegen den ALTEN
+            # Median. Damit sie gleich gross bleiben, mit dem Verhaeltnis
+            # nachziehen.
+            verhaeltnis = vorher_skala / median
+            for name in list(neue_skalen):
+                if name in gemessen:
+                    continue
+                gezogen = round(neue_skalen[name] * verhaeltnis, 3)
+                if abs(gezogen - 1.0) <= 0.03:
+                    neue_skalen.pop(name, None)
+                else:
+                    neue_skalen[name] = gezogen
+
+        if neue_skalen != self.cfg.template_skalen:
+            entfallen = sorted(set(self.cfg.template_skalen) - set(neue_skalen))
+            self.cfg.template_skalen = neue_skalen
             self.log.info(
-                "Vorlagen mit eigener Groesse gemerkt",
-                vorlagen=", ".join(f"{n}={v}" for n, v in sorted(ausreisser.items())),
+                "Vorlagen mit eigener Groesse aufgefrischt",
+                vorlagen=", ".join(f"{n}={v}" for n, v in sorted(neue_skalen.items())) or "keine",
+                entfallen=", ".join(entfallen) or "keine",
             )
             self._config_patch(
-                lambda roh: roh.setdefault("template_skalen", {}).update(ausreisser)
+                lambda roh: roh.__setitem__("template_skalen", dict(neue_skalen))
             )
 
         if abs(median - self.cfg.ui_skala) < 0.03:
@@ -1721,6 +1756,31 @@ class Engine:
     # Oben liegt das Angebots-Banner, ganz unten die Navigationsleiste.
     ERKUNDUNGS_ZONE = [0.05, 0.18, 0.95, 0.88]
 
+    def _sieht_aus_wie_benutzen(self, cx: int, cy: int) -> bool:
+        """Liegt an dieser Stelle der 'Benutzen'-Knopf?
+
+        Die Erkundung tippt blaue Knoepfe, weil Blau im Spiel Handlung oder
+        Abbrechen bedeutet - beides harmlos. 'Benutzen' im Beutel ist aber
+        dasselbe Blau, und ein Tipp darauf verbraucht einen Gegenstand.
+        Ausdauer-Fläschchen sollen fuer den Krieg bleiben, also lieber einen
+        Erkundungs-Versuch auslassen als einen Vorrat.
+        """
+        vorlage = self.cfg.template("ui/btn_benutzen.png", optional=True)
+        if vorlage is None or self.screen is None:
+            return False
+        breite = int(vorlage.width * 1.6) + 40
+        hoehe = int(vorlage.height * 1.6) + 40
+        x = max(0, min(cx - breite // 2, self.screen.width - 1))
+        y = max(0, min(cy - hoehe // 2, self.screen.height - 1))
+        breite = min(breite, self.screen.width - x)
+        hoehe = min(hoehe, self.screen.height - y)
+        if breite < vorlage.width or hoehe < vorlage.height:
+            return False
+        ausschnitt = self.screen.crop(x, y, breite, hoehe)
+        skala = self._scale if self._scale is not None else 1.0
+        skala *= float(self.cfg.template_skalen.get("ui/btn_benutzen.png", 1.0))
+        return matcher.find(ausschnitt, vorlage, threshold=0.82, scale=skala) is not None
+
     def _erkunden(self, schluessel: str, vorher) -> None:
         """Letzte Stufe: einen Knopf ausprobieren, den es noch nicht kennt.
 
@@ -1747,6 +1807,14 @@ class Engine:
                 if any(abs(xr - a) < 0.04 and abs(yr - b) < 0.03 for a, b in schon):
                     continue
                 if self._tabu_treffer(cx, cy, self.screen) is not None:
+                    continue
+                # 'Benutzen' im Beutel hat genau dieses Blau. Ein Erkundungs-
+                # Tipp darauf verbraucht einen Gegenstand - und die Ausdauer-
+                # Fläschchen sollen ausdruecklich fuer den Krieg bleiben. Was
+                # aussieht wie dieser Knopf, wird darum uebersprungen.
+                if self._sieht_aus_wie_benutzen(cx, cy):
+                    self.log.debug("Erkundung: sieht aus wie 'Benutzen' - uebersprungen",
+                                   bei=f"{xr:.2f}/{yr:.2f}")
                     continue
                 schon.append([xr, yr])
                 self._erkundung_sichern()

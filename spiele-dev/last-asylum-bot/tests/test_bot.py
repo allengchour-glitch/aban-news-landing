@@ -3051,5 +3051,111 @@ class TestSelbstberichtVerschweigtNichts(unittest.TestCase):
 
 
 
+class TestKalibrierungRechnetNichtDoppelt(unittest.TestCase):
+    """Ein alter Nachschlag darf nach einer Neukalibrierung nicht obendrauf kommen.
+
+    Der gemessene Faktor ist absolut, der gespeicherte Nachschlag relativ zum
+    Median. Bisher wurde nur eingetragen, wer GERADE aus der Reihe tanzte - wer
+    beim vorigen Mal Ausreisser war und jetzt nicht mehr, behielt seinen alten
+    Wert und wurde ab da zusaetzlich zum neuen Median gerechnet. Die Vorlage
+    passt dann zu gross, trifft daneben, und der Bot tippt an die falsche
+    Stelle.
+    """
+
+    def motor(self, skalen, ui_skala=1.0):
+        cfg = Config.from_dict({"package": "x", "rules": [], "tasks": [],
+                                "base_width": 200})
+        cfg.ui_skala = ui_skala
+        cfg.template_skalen = dict(skalen)
+        eng = Engine(cfg, FakeDevice([noise(200, 300, 3)], loop=True),
+                     logger=quiet(), sleep=lambda s: None, seed=1)
+        return cfg, eng
+
+    def anwenden(self, eng, gefunden, median):
+        """Den Nachschlag-Teil der Kalibrierung nachbilden."""
+        vorher = eng.cfg.ui_skala
+        neue = dict(eng.cfg.template_skalen)
+        gemessen = {n for n, _, _ in gefunden}
+        for name, f, _ in gefunden:
+            nach = round(f / median, 3) if median else 1.0
+            if abs(nach - 1.0) <= 0.03:
+                neue.pop(name, None)
+            else:
+                neue[name] = nach
+        if median and vorher and abs(median - vorher) > 0.001:
+            verh = vorher / median
+            for name in list(neue):
+                if name in gemessen:
+                    continue
+                gez = round(neue[name] * verh, 3)
+                if abs(gez - 1.0) <= 0.03:
+                    neue.pop(name, None)
+                else:
+                    neue[name] = gez
+        return neue
+
+    def test_alter_nachschlag_verschwindet_wenn_er_nicht_mehr_noetig_ist(self):
+        cfg, eng = self.motor({"nav/burg.png": 1.3}, ui_skala=1.0)
+        neue = self.anwenden(eng, [("nav/burg.png", 1.0, 0.95),
+                                   ("nav/held.png", 1.0, 0.95)], median=1.0)
+        self.assertNotIn("nav/burg.png", neue,
+                         "der alte Nachschlag wuerde sonst zum neuen Median dazugerechnet")
+
+    def test_nicht_gemessene_vorlagen_behalten_ihre_groesse(self):
+        """Ihr Nachschlag galt gegen den alten Median - er muss mitziehen."""
+        cfg, eng = self.motor({"tasche/truhe.png": 1.3}, ui_skala=1.0)
+        neue = self.anwenden(eng, [("nav/burg.png", 0.5, 0.95)], median=0.5)
+        # absolute Groesse vorher 1.0*1.3 = 1.3, nachher 0.5*x = 1.3 -> x = 2.6
+        self.assertAlmostEqual(neue["tasche/truhe.png"], 2.6, places=2)
+
+    def test_echte_kalibrierung_setzt_die_werte_neu(self):
+        """Gegen die Engine selbst, nicht nur gegen die nachgebaute Rechnung."""
+        import inspect
+        quelle = inspect.getsource(Engine._kalibriere)
+        self.assertIn("neue_skalen", quelle,
+                      "die Kalibrierung muss alle Nachschlaege neu setzen")
+        self.assertNotIn("ausreisser[name] = round(f / median, 3)", quelle,
+                         "die alte, nur ergaenzende Fassung ist noch drin")
+
+
+
+class TestErkundungSchontVorraete(unittest.TestCase):
+    """Die Erkundung darf keinen Gegenstand verbrauchen.
+
+    Sie tippt blaue Knoepfe, weil Blau im Spiel Handlung oder Abbrechen
+    bedeutet - beides harmlos. 'Benutzen' im Beutel ist aber dasselbe Blau, und
+    die Ausdauer-Fläschchen sollen ausdruecklich fuer den Krieg bleiben.
+    """
+
+    def test_benutzen_knopf_wird_uebersprungen(self):
+        pfad = os.path.join(ROOT, "templates", "ui", "btn_benutzen.png")
+        if not os.path.exists(pfad):
+            self.skipTest("ui/btn_benutzen.png fehlt")
+        vorlage = Image.load(pfad)
+        screen = noise(1440, 2560, 71)
+        # Den echten Knopf mitten in die Erkundungs-Zone setzen.
+        zx, zy = 500, 1200
+        paste(screen, vorlage, zx, zy)
+        cfg = Config.load(os.path.join(ROOT, "config", "last-asylum.json"))
+        eng = Engine(cfg, FakeDevice([screen], loop=True), logger=quiet(),
+                     sleep=lambda s: None, seed=2)
+        eng.screen = screen
+        eng._scale = 1.0
+        mitte_x, mitte_y = zx + vorlage.width // 2, zy + vorlage.height // 2
+        self.assertTrue(eng._sieht_aus_wie_benutzen(mitte_x, mitte_y),
+                        "der Benutzen-Knopf muss erkannt werden")
+
+    def test_andere_stellen_werden_nicht_faelschlich_geschont(self):
+        screen = noise(1440, 2560, 72)
+        cfg = Config.load(os.path.join(ROOT, "config", "last-asylum.json"))
+        eng = Engine(cfg, FakeDevice([screen], loop=True), logger=quiet(),
+                     sleep=lambda s: None, seed=2)
+        eng.screen = screen
+        eng._scale = 1.0
+        self.assertFalse(eng._sieht_aus_wie_benutzen(700, 1500),
+                         "ohne den Knopf darf nichts uebersprungen werden")
+
+
+
 if __name__ == "__main__":
     unittest.main()
