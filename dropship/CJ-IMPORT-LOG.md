@@ -2663,3 +2663,11 @@ Geminis #1-Audit-Befund (Sortiments-Breite = Ramschladen-Wirkung) umgesetzt — 
    (Landing-Pages übernehmen die Tiefe). **Voll-Backup: dropship/menu_backup_2026-08-06.json** (Wiederherstellung möglich).
 2. **Startseite:** mode_row/schmuck_row/pl_beauty auf Position 3–5 vorgezogen — Elektronik/Technik-Reihen nach hinten.
    Erster Eindruck = Mode·Schmuck·Beauty (die Kategorien mit den 5.0★-Produkten), Long-Tail bleibt über Mehr/Suche/Sale.
+
+## 2026-08-04 Fortura-Produkttyp-Leak (User-Fund im Kollektions-Filter)
+Der Produkttyp-Filter auf Kollektionsseiten zeigte **«Fortura-CH»** (Lieferantenname!) — beide Fortura-Importer
+setzten `productType:'Fortura-CH'` auf alle 2'946 Produkte. Fix: (1) Bestand per Titel-Mapper umgetypt
+(Kostüme & Verkleidung 2'496 / Spielzeug 256 / Accessoires 94 / Partydeko 56 / Beauty 24 / Haushalt 14 /
+Schweizer Editionen 6; Runner /tmp/fortura_type_runner.sh, Ledger /tmp/fortura_type_done.txt);
+(2) Importer gepatcht: `forturaType(title)`-Mapper statt Hardcode + «ab CHF 50»→«ab CHF 65».
+**Regel verschärft: productType ist KUNDEN-SICHTBAR (Filter!) — nie Lieferanten-/interne Namen als Typ.**
