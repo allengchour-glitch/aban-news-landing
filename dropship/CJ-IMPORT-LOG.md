@@ -2633,3 +2633,12 @@ Schmuck-SETS (Halskette+Ohrringe) gehören legitim in BEIDE Collections, nicht �
 ### ✅ REPRICE ABGESCHLOSSEN (2026-08-05): 7089/7089
 Alle 6'746 Verlust-Artikel (CJ < CHF 13) auf Boden 15.90 + 343 Über-Preisungen revertiert. Zusammen mit den
 frachtbewussten Importer-Formeln gilt: **kein Produkt im Katalog verkauft mehr unter Einstandskosten.**
+
+### 🎯 PINTEREST-FEED-WURZEL GEFUNDEN + FIX (2026-08-05, via PC-Claude + API)
+**222'114 Artikel failten seit 25.7.** Diagnose: Fehler 139 (99'772: Produkt-Links ≠ verifizierte Domain) + Fehler 1009
+(122'342 Bilder, vermutl. Folgefehler). **Wurzel: `luxestyle.ch` war bei Pinterest NIE verifiziert** — verifiziert waren
+nur Alt-Domains (luxestyle.com.co, *.myshopify.com). Fix: PC-Claude holte den HTML-Verify-Tag
+(p:domain_verify=2dfeba07f6618890b38985e5b46ad70c), ich habe ihn per Theme-API in layout/theme.liquid <head> eingefügt
+(live bestätigt) → User/PC-Claude klickt «Verifizieren». Einpflegen läuft automatisch alle 1–2 Tage — kein Retry-Button
+(Shopify-App-gesteuert). Pinterest-App-Creds (1585205) in /tmp/pinterest_creds.env für späteren API-Zugang (OAuth braucht
+registrierte Redirect-URI in der App).
