@@ -2619,3 +2619,13 @@ Display BEWUSST in Uhren belassen; Ersatzbänder → Tag smartwatch-armband). Da
 (Ohrringe raus aus Halsketten, Cuban-Kette raus aus Armbänder, «Ventilator-Reiniger»→«Lüfter-Reinigungsspray»).
 ⚠️ Regex-Lehre: Komposita brauchen `uhr\b` (Ende) statt `\buhr` (Anfang) — «Sportuhr» sonst als Misfit fehlerkannt;
 Schmuck-SETS (Halskette+Ohrringe) gehören legitim in BEIDE Collections, nicht «fixen».
+
+### GitLab-Fix auf main GEMERGT + #1011-Tracking-Korrektur (2026-08-04)
+- **PR #2161 (chirurgisch, 1 Datei) via API gemergt** → workflow-Regel unterbindet Push-Pipelines auf main,
+  tägliche «Failed pipeline»-Mails gestoppt. ⚠️ Lehre: Der grosse Sammel-PR #1608 ist NICHT mergebar —
+  main hat inzwischen eine UNVERWANDTE Historie (neu geschrieben). Für main-Fixes: Mini-Branch von origin/main
+  via git-Plumbing (hash-object/commit-tree, kein Checkout nötig) + eigener PR + API-Merge.
+- **#1011: CJ vergab beim Label-Druck ein ZWEITES Tracking** (App: CJPWV3080601607YQ; API/initial: EQKPT8612321546YQ).
+  Beide via fulfillmentTrackingInfoUpdateV2 am Fulfillment hinterlegt (notifyCustomer:false). Lehre: nach CJ-Zahlung
+  Tracking später nochmal gegen die App/API prüfen — die erste Nummer kann ersetzt werden.
+- Payoneer verifiziert (User) → CJ-Wallet-Aufladung künftig möglich.
