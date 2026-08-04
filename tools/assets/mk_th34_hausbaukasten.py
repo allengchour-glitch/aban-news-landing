@@ -598,7 +598,112 @@ def _b_balkon():
 def balkon():
     _modul("th34_balkon", _b_balkon, 0.012)
 
-# ================================================================ 12) Beispielhaus
+# ================================================================ 12) Erweiterung
+def _b_wand_schaufenster():
+    """Erdgeschoss-Wand mit Schaufenster fuer Stadthaeuser: breite Verglasung,
+    Sockelplatte, Markisenkasten."""
+    M = _mats()
+    FB, FH, FZ = 3.10, 1.75, 1.60
+    putzflaeche(0, (FZ - FH/2)/2, BR, FZ - FH/2, M["putz"])
+    putzflaeche(0, (FZ + FH/2 + WH)/2, BR, WH - FZ - FH/2, M["putz"])
+    for s2 in (-1, 1):
+        b = (BR - FB)/2
+        putzflaeche(s2*(FB/2 + b/2), FZ, b, FH, M["putz"])
+    box(0, 0, FZ, FB, DI*0.5, FH, M["glas"])
+    box(0, -DI*0.18, FZ, 0.06, 0.06, FH, M["rahm"])            # Mittelpfosten
+    for s2 in (-1, 1):
+        box(s2*(FB/2 + 0.07), 0, FZ, 0.14, DI + 0.02, FH + 0.26, M["rahm"])
+    box(0, 0, FZ + FH/2 + 0.07, FB + 0.28, DI + 0.02, 0.14, M["rahm"])
+    box(0, 0.10, FZ - FH/2 - 0.10, FB + 0.36, DI + 0.30, 0.12, M["bank"])   # Sockelplatte
+    box(0, 0.16, FZ + FH/2 + 0.30, FB + 0.30, 0.42, 0.34, M["dach"])        # Markisenkasten
+    sockelband(M["sockel"])
+    box(0, 0, WH - 0.09, BR, DI + 0.12, 0.18, M["sockel"])
+
+def wand_schaufenster(): _modul("th34_wand_schaufenster", _b_wand_schaufenster, 0.014)
+
+def _b_erker():
+    """Erker: dreiseitig vorspringender Fenstererker, sitzt VOR einem Wandmodul.
+    Ragt 0,90 m aus der Wandflucht — deshalb ist die Bounding-Box tiefer als das
+    Raster, verankert wird trotzdem am Modulmittelpunkt."""
+    M = _mats()
+    VT, EB, EH = 0.90, 2.60, 1.90
+    for (px, py, bx, by, rot) in ((0, VT, EB, 0.16, 0),
+                                  (-EB/2 + 0.08, VT/2, 0.16, VT, 0),
+                                  ( EB/2 - 0.08, VT/2, 0.16, VT, 0)):
+        box(px, py, 0.14, bx + 0.30, by + 0.30, 0.28, M["sockel"])          # Boden
+        box(px, py, 0.28 + EH/2, bx, by, EH, M["glas"])                     # Glas
+        box(px, py, 0.28 + EH + 0.10, bx + 0.30, by + 0.30, 0.20, M["bank"])# Deckplatte
+    for s2 in (-1, 1):                                                       # Ecklisenen
+        box(s2*(EB/2 - 0.08), VT - 0.08, 0.28 + EH/2, 0.20, 0.20, EH, M["rahm"])
+    box(0, VT/2, 0.28 + EH + 0.32, EB + 0.34, VT + 0.34, 0.24, M["dach"])   # Erkerdach
+    for s2 in (-1, 1):                                                       # Konsolen
+        strebe((s2*0.9, 0.06, 0.14), (s2*0.9, VT - 0.2, -0.50), 0.14, M["sockel"])
+
+def erker(): _modul("th34_erker", _b_erker, 0.012)
+
+def _b_gaube():
+    """Schleppgaube fuers Satteldach. Sitzt auf der Dachflaeche; die Neigung des
+    Satteldachs betraegt atan(1,70 / 2,22) = 37,4 Grad — die Wangen sind exakt so
+    angeschnitten, sonst klafft zwischen Gaube und Dachhaut ein Spalt."""
+    M = _mats()
+    GB, GH2, GT = 1.70, 1.15, 1.30
+    box(0, GT/2, GH2/2, GB, 0.14, GH2, M["putz"])                # Stirnwand
+    box(0, GT/2, GH2*0.55, GB - 0.44, 0.10, GH2*0.62, M["glas"])
+    for s2 in (-1, 1):
+        box(s2*(GB/2 - 0.06), GT/2, GH2/2, 0.12, GT, GH2, M["putz"])
+    box(0, GT/2 - 0.08, GH2 + 0.10, GB + 0.32, GT + 0.30, 0.16, M["dach"])  # Gaubendach
+    box(0, GT/2, GH2*0.20, GB + 0.26, GT + 0.10, 0.12, M["bank"])           # Sohlbank
+
+def gaube(): _modul("th34_gaube", _b_gaube, 0.012)
+
+def _b_dach_pult():
+    """Pultdach-Abschnitt 4,00 m — fuer Anbauten, Garagen und Carports.
+    Als PRISMA gebaut, nicht als gekippter Quader: ein gekippter Quader haette an
+    Traufe und First keilfoermige Luecken."""
+    M = _mats()
+    SP, HH = 4.40, 1.10
+    v = [(-BR/2, -SP/2, 0.0), (BR/2, -SP/2, 0.0), (BR/2, SP/2, HH), (-BR/2, SP/2, HH),
+         (-BR/2, -SP/2, 0.22), (BR/2, -SP/2, 0.22), (BR/2, SP/2, HH + 0.22), (-BR/2, SP/2, HH + 0.22)]
+    f = [(0,1,2,3),(4,7,6,5),(0,4,5,1),(1,5,6,2),(2,6,7,3),(3,7,4,0)]
+    me = bpy.data.meshes.new("Pult"); me.from_pydata(v, [], f); me.update()
+    o = bpy.data.objects.new("Pult", me); bpy.context.collection.objects.link(o)
+    me.materials.append(M["dach"]); bpy.context.view_layer.objects.active = o
+    bm = bmesh.new(); bm.from_mesh(me); bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
+    bm.to_mesh(me); bm.free(); me.update()
+    for (py, pz) in ((-SP/2 + 0.06, 0.11), (SP/2 - 0.06, HH + 0.11)):
+        box(0, py, pz, BR + 0.04, 0.16, 0.22, M["holz"])          # Traufbretter
+
+def dach_pult(): _modul("th34_dach_pult", _b_dach_pult, 0.012)
+
+def _b_dach_flach():
+    """Flachdach mit Attika — fuer Stadt- und Gewerbebauten. Die Attika ist ein
+    RING aus vier Balken: eine Vollplatte deckt die Dachflaeche zu und macht aus
+    jedem Flachdach einen Klotz."""
+    M = _mats()
+    box(0, 0, DE/2, BR, BR, DE, M["sockel"])                      # Dachplatte
+    box(0, 0, DE + 0.02, BR - 0.5, BR - 0.5, 0.06, M["dach"])     # Kiesfeld
+    for s2 in (-1, 1):
+        box(0, s2*(BR/2 - 0.11), DE + 0.30, BR, 0.22, 0.60, M["putz"])
+        box(s2*(BR/2 - 0.11), 0, DE + 0.30, 0.22, BR - 0.44, 0.60, M["putz"])
+    for s2 in (-1, 1):                                            # Abdeckplatte
+        box(0, s2*(BR/2 - 0.11), DE + 0.63, BR + 0.10, 0.32, 0.08, M["bank"])
+        box(s2*(BR/2 - 0.11), 0, DE + 0.63, 0.32, BR - 0.44, 0.08, M["bank"])
+
+def dach_flach(): _modul("th34_dach_flach", _b_dach_flach, 0.012)
+
+def _b_kamin():
+    """Schornstein mit Krone und Abdeckung."""
+    M = _mats()
+    box(0, 0, 0.85, 0.62, 0.62, 1.70, M["sockel"])
+    box(0, 0, 1.76, 0.78, 0.78, 0.22, M["bank"])
+    for s2 in (-1, 1):
+        box(s2*0.26, 0, 2.02, 0.10, 0.62, 0.30, M["bank"])
+    box(0, 0, 2.20, 0.86, 0.86, 0.10, M["bank"])
+    box(0, 0, 0.85, 0.66, 0.66, 0.10, M["bank"])                  # Zierring
+
+def kamin(): _modul("th34_kamin", _b_kamin, 0.010)
+
+# ================================================================ 13) Beispielhaus
 def _teil(fn, px, py, rot=0.0, pz=0.0):
     """Baut ein Modul und setzt es als GANZES an seinen Platz.
     Das Empty bekommt bewusst KEINE matrix_parent_inverse — die Kinder SOLLEN sich
@@ -645,12 +750,15 @@ def beispielhaus():
     for sx in (-4, 4):
         _teil(_b_dach_giebel, sx, 0, math.pi/2, 2*GH)
     _teil(_b_balkon, 2, -2, math.pi, GH + WH)
+    _teil(_b_gaube, -2, -1.1, math.pi, 2*GH + 0.30)   # Schleppgaube ins Suddach
+    _teil(_b_kamin, 2.6, 0.9, 0, 2*GH + 0.9)          # Schornstein am First
     export("th34_beispielhaus", 0.014, 2)
 
 if __name__ == "__main__":
     print("Asset-Charge 34 (th34, Haus-Baukasten):")
     for fn in (wand_voll, wand_fenster, wand_fenster2, wand_tuer, wand_tor,
                ecke, decke, dach_sattel, dach_giebel, treppe_modul, balkon,
+               wand_schaufenster, erker, gaube, dach_pult, dach_flach, kamin,
                beispielhaus):
         fn()
     print("fertig")
