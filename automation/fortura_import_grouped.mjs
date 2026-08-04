@@ -6,6 +6,16 @@
 import fs from 'node:fs';
 import { catTags } from './cat_tags.mjs';
 import { fortCatTags } from './fortura_cat.mjs';
+function forturaType(t){
+  const tl=(t||'').toLowerCase();
+  if(/luftballon|ballon(?!.*[aä]rmel)|girlande|konfetti|wimpel|partydeko|party-?set|tischdeko|servietten|pi[nñ]ata|folienballon|deko\b|banner\b|tischdecke|strohhalm/.test(tl))return 'Partydeko & Ballone';
+  if(/spielzeug|puzzle|pl[üu]sch|kuscheltier|puppe\b|schwimmbrille|taucherbrille|wasserpistole|seifenblasen|kreisel|bausteine|knete|springseil|kartenspiel/.test(tl))return 'Spielzeug & Spiele';
+  if(/badeset|schaumbad|badesalz|badebombe|seife\b|duschgel|bodylotion|pflegeset|kosmetikset/.test(tl))return 'Beauty & Pflege';
+  if(/schweiz|edelweiss|1\.\s*august|matterhorn|alphorn/.test(tl))return 'Schweizer Editionen';
+  if(/sonnenbrille|schmuck|kette\b|armband|ohrring|tasche\b|rucksack|schal\b|f[äa]cher|geldb[öo]rse|krawatte|fliege\b|hosentr[äa]ger|g[üu]rtel/.test(tl))return 'Accessoires';
+  if(/tasse\b|becher\b|glas\b|gl[äa]ser|kissen|decke\b|organizer|aufbewahrung|lampe|leuchte|kerze/.test(tl))return 'Haushalt & Wohnen';
+  return 'Kostüme & Verkleidung';
+}
 const CID=process.env.SHOPIFY_CLIENT_ID, CSEC=process.env.SHOPIFY_CLIENT_SECRET;
 const SHOP='au3j0y-hq.myshopify.com', LOC='gid://shopify/Location/109350125953';
 const PUBS=['301970915713','301971014017','302032716161','302566834561','302872297857','302994456961'].map(id=>({publicationId:`gid://shopify/Publication/${id}`}));
@@ -93,11 +103,11 @@ for(const [key,grp] of groups){
   const specs=[['Marke',pick(base,COL.marke)],['Farbe',pick(base,COL.farbe)],['Masse',pick(base,COL.dimension)],['Anlass',pick(base,COL.anlass)],['Lieferumfang',pick(base,COL.lieferumfangDE)]].filter(([,v])=>v);
   const specTable=specs.length?`<h4>Details</h4><ul>${specs.map(([k,v])=>`<li><strong>${k}:</strong> ${v}</li>`).join('')}</ul>`:'';
   const veNote=ve>1?`<p>📦 Verkauf in Bündeln zu ${ve} Stück.</p>`:'';
-  const desc=`<p>${marketing}</p>${specTable}${veNote}<h4>Warum bei LuxeStyle kaufen?</h4><ul><li>🇨🇭 <strong>Versand aus der Schweiz</strong> – Lieferung in nur 1–2 Werktagen (DPD)</li><li>📦 Gratis-Versand ab CHF 50</li><li>↩️ 30 Tage Rückgaberecht</li><li>🔒 Kauf auf Rechnung mit Klarna · TWINT · Karten · PayPal · Apple Pay</li><li>💬 Schweizer Support: info@luxestyle.ch</li></ul>`;
+  const desc=`<p>${marketing}</p>${specTable}${veNote}<h4>Warum bei LuxeStyle kaufen?</h4><ul><li>🇨🇭 <strong>Versand aus der Schweiz</strong> – Lieferung in nur 1–2 Werktagen (DPD)</li><li>📦 Gratis-Versand ab CHF 65</li><li>↩️ 30 Tage Rückgaberecht</li><li>🔒 Kauf auf Rechnung mit Klarna · TWINT · Karten · PayPal · Apple Pay</li><li>💬 Schweizer Support: info@luxestyle.ch</li></ul>`;
   const slug=(normT(title).replace(/\s+/g,'-').slice(0,42))+'-fg'+key.replace(/[^a-z0-9]/gi,'').toLowerCase().slice(0,12);
   const tags=[...new Set(['fortura','dropship','ch-lager','schweiz-versand','neu',...FT_TAGS,...fortCatTags(base['Grp-Bez'],base['Kategorie'],title),...catTags(title)])];
-  const input={title,handle:slug,productType:'Fortura-CH',vendor:'LuxeStyle',status:'ACTIVE',tags,descriptionHtml:desc,
-    seo:{title:`${title} | LuxeStyle`.slice(0,70),description:`${title} – schnelle CH-Lieferung, Gratis-Versand ab CHF 50.`.slice(0,320)},
+  const input={title,handle:slug,productType:forturaType(title),vendor:'LuxeStyle',status:'ACTIVE',tags,descriptionHtml:desc,
+    seo:{title:`${title} | LuxeStyle`.slice(0,70),description:`${title} – schnelle CH-Lieferung, Gratis-Versand ab CHF 65.`.slice(0,320)},
     productOptions:[{name:optName,values:optValues.map(v=>({name:v}))}],variants,
     files:img?[{originalSource:img,contentType:'IMAGE'}]:[]};
   const r=await sgql(SET,{input});
