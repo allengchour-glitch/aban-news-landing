@@ -1189,7 +1189,12 @@ var strMatH=stdMat(0x4a4a53,0.92,true),strMatV=stdMat(0x4a4a53,0.92,true);  /* e
   if(typeof ladeTex==="function")ladeTex("textures/th/sand.jpg",7,140,function(t){sand.material.map=t;sand.material.needsUpdate=true;}); /* 🏖️ ~2u/Kachel statt 7-8u — sonst wirken die Sandwellen riesig */ /* 🏖️ KI-Textur (Pollinations, gratis) */
   /* Zufahrts-Strasse: von der West-Strasse (x=-RX) zur Küste bei z=-30 */
   var zuf=new THREE.Mesh(new THREE.PlaneGeometry(56,10),betMat(0x6b6b72,0.9));
-  zuf.rotation.x=-Math.PI/2;zuf.rotation.z=Math.PI/2;zuf.position.set(-RX-28,-0.003,-30);zuf.receiveShadow=true;scene.add(zuf);
+  /* 🐛 `rotation.z=PI/2` hat diese Zufahrt um 90 Grad gedreht: statt von der
+     West-Strasse zum Strand zu fuehren, lag sie als 56 m langer grauer Riegel
+     LAENGS auf der West-Ringstrasse (x -111 … -101, z -58 … -2) und deckte deren
+     rechte Spur zu. Nach `rotation.x` liegt die Ebene bereits richtig: 56 in x,
+     10 in z — also von x -134 (Wendeplatz am Strand) bis x -78 (West-Strasse). */
+  zuf.rotation.x=-Math.PI/2;zuf.position.set(-RX-28,-0.003,-30);zuf.receiveShadow=true;scene.add(zuf);
   /* 🅿️ Wendeplatz am Strand statt abrupt endender Fahrbahn */
   var wp=new THREE.Mesh(new THREE.CircleGeometry(9,24),betMat(0x6b6b72,0.9));
   wp.rotation.x=-Math.PI/2;wp.position.set(-132,-0.0025,-30);wp.receiveShadow=true;scene.add(wp); /* ans WESTENDE der Zufahrt (-134..-78), nicht mittendrauf */
@@ -1740,7 +1745,9 @@ var dorfFenster=[];
      vier Dorfhaeuser sassen mitten auf dem Vorderzaun, im Gartentor und in der
      Garageneinfahrt (User-Markierung auf der Draufsicht). Frei bleiben
      West z -42, -24, -6, 44 und Ost z -8, 4, 22, 40. */
-  [-42,-24,-6,44].forEach(function(hz){haus(-(RX+11),hz,Math.PI/2,seed++);});
+  /* z = -24 faellt weg: die Strandzufahrt liegt bei z -35 … -25 und das Haus
+     reichte bis -27 — es stand mit einer Ecke auf der Fahrbahn. */
+  [-42,-20,-6,44].forEach(function(hz){haus(-(RX+11),hz,Math.PI/2,seed++);});
   [-8,4,22,40].forEach(function(hz){haus(RX+11,hz,-Math.PI/2,seed++);}); // zwischen den Hauptstrassen: nichts ragt in Fahrbahn/Gehweg
   // Vorgaerten: Plattenweg zur Tuer + Hecken + Blumen (Haeuser wirkten wegelos im Gras)
   if(!_texBlatt)_texBlatt=_strukTex("blatt");
