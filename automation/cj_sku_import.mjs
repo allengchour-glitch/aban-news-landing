@@ -144,7 +144,7 @@ for (const item of ITEMS) {
     tags: [...new Set(['trend', 'viral', 'video-hit', 'cj-real', 'dropship', 'neu',
       ...((process.env.WH || '').trim() ? ['schnell-versand', 'eu-lager'] : []),
       ...catTags(`${title} ${d.productNameEn || ''} ${val || ''}`)])],
-    descriptionHtml: g.html + '\n<p>🚚 Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · 🇨🇭 LuxeStyle</p>',
+    descriptionHtml: g.html + '\n<p>🚚 Gratis-Versand ab CHF 65 · 30 Tage Rückgabe · 🇨🇭 LuxeStyle</p>',
     seo: { title: (title + ' | LuxeStyle CH').slice(0, 70), description: `${title} – der Trend-Hit bei LuxeStyle Schweiz.`.slice(0, 320) },
     productOptions: [{ name: 'Variante', values: [{ name: 'Standard' }] }],
     variants: [{ optionValues: [{ optionName: 'Variante', name: 'Standard' }], price: chf(d.sellPrice, d.variants?.[0]?.variantWeight), inventoryItem: { sku: ('CJ-' + pid).slice(0, 70), tracked: false }, inventoryPolicy: 'CONTINUE' }],

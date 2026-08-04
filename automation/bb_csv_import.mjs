@@ -39,9 +39,9 @@ for(const it of viable.slice(0,LIMIT)){
   const qty=Math.max(1,Math.min(Number(it.qty)||1,20));
   const tags=[...new Set(['bigbuy','dropship','neu','bb-lieferbar-ch',...catTags(title+' '+(it.cat||''))])];
   const slug=(title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,46))+'-'+String(it.ref).toLowerCase();
-  const desc=`<p>${title}</p><p>📦 Lieferung aus EU-Lager · Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · Kauf auf Rechnung mit Klarna & TWINT · 🇨🇭 LuxeStyle</p>`;
+  const desc=`<p>${title}</p><p>📦 Lieferung aus EU-Lager · Gratis-Versand ab CHF 65 · 30 Tage Rückgabe · Kauf auf Rechnung mit Klarna & TWINT · 🇨🇭 LuxeStyle</p>`;
   const input={title,handle:slug,productType:'BigBuy-CH',vendor:'LuxeStyle',status:'ACTIVE',tags,descriptionHtml:desc,
-    seo:{title:`${title} | LuxeStyle`.slice(0,70),description:`${title} – schnelle EU-Lieferung, Gratis-Versand ab CHF 50.`.slice(0,320)},
+    seo:{title:`${title} | LuxeStyle`.slice(0,70),description:`${title} – schnelle EU-Lieferung, Gratis-Versand ab CHF 65.`.slice(0,320)},
     productOptions:[{name:'Titel',values:[{name:'Standard'}]}],
     variants:[{optionValues:[{optionName:'Titel',name:'Standard'}],price,inventoryItem:{sku:`bb-${it.ref}`.slice(0,70),tracked:true},inventoryPolicy:'DENY',inventoryQuantities:[{locationId:LOC,name:'available',quantity:qty}]}],
     files:[{originalSource:img,contentType:'IMAGE'}]};
