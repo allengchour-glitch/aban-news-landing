@@ -2671,3 +2671,12 @@ setzten `productType:'Fortura-CH'` auf alle 2'946 Produkte. Fix: (1) Bestand per
 Schweizer Editionen 6; Runner /tmp/fortura_type_runner.sh, Ledger /tmp/fortura_type_done.txt);
 (2) Importer gepatcht: `forturaType(title)`-Mapper statt Hardcode + «ab CHF 50»→«ab CHF 65».
 **Regel verschärft: productType ist KUNDEN-SICHTBAR (Filter!) — nie Lieferanten-/interne Namen als Typ.**
+
+## 2026-08-04 Screenshot-Fix-Runde 2 (Collections)
+- **Marken-Namedropping-Altlast:** 13 generische Collections (damen-mode, topseller, sub-taschen, sonnenbrillen…)
+  erzählten von Michael Kors/Thomas Sabo/Versace/Porsche Design — Groq-Texte aus der BigBuy-Marken-Ära, heute
+  irreführend (Versace/Sabo: 0 aktive). Alle 13 ehrlich neu geschrieben (kategoriebezogen, ohne Marken-Versprechen).
+  Marken-Collections (michael-kors: 15 aktive, marke-chanel: 3) bleiben — dort stimmt es.
+  ⚠️ Shopify-Suche: `title:X` findet Wortmitte NICHT — `title:*X*` nötig (Kors 15 vs 0!).
+- **«ab CHF 50» in 394 weiteren Collection-Beschreibungen → CHF 65** (Sweep komplett; Produkt-Sweep läuft separat).
+- Such-Platzhalter mobil gekürzt («Wonach suchst du?» statt abgeschnittenem Langtext).
