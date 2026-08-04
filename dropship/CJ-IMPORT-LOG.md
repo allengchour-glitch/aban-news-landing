@@ -2642,3 +2642,16 @@ nur Alt-Domains (luxestyle.com.co, *.myshopify.com). Fix: PC-Claude holte den HT
 (live bestätigt) → User/PC-Claude klickt «Verifizieren». Einpflegen läuft automatisch alle 1–2 Tage — kein Retry-Button
 (Shopify-App-gesteuert). Pinterest-App-Creds (1585205) in /tmp/pinterest_creds.env für späteren API-Zugang (OAuth braucht
 registrierte Redirect-URI in der App).
+
+### 🧠 Multi-AI-Conversion-Audit (2026-08-06, «webseite analysieren mit grok und andere ai»)
+Gemini 2.5-flash + Groq llama-3.1-8b (llama-70b TPD-Limit erschöpft durch Importer, qwen32b abgeschaltet, DeepSeek
+ohne Guthaben) mit echtem Storefront-Text (Home/Produkt/Ad-Landing) gefüttert. **Konsens-Befunde:**
+1. **Social Proof unsichtbar** → geprüft: Judge.me RENDERT auf Produktseiten (53 jdgm-Treffer live, AIs sehen kein JS).
+   Echtes Problem bleibt: fast keine Produkte haben Reviews (nur ~3 mit CJ-Quelle; NIE Fake-Reviews). Organisch via
+   Judge.me-Post-Purchase-Mails — wächst mit Bestellungen.
+2. **Lieferzeit widersprüchlich** («viele Artikel in 1–2 Tagen» vs. EU-Lager vs. CN 10–20T) → **GEFIXT:** Ankündigungs-
+   leiste sagt jetzt «Lieferzeit je Produkt 2–14 Tage, transparent auf jeder Produktseite». CJ-Produktseiten haben den
+   ehrlichen TRUST-Block (10–20T) schon.
+3. **Sortiment zu breit = Ramschladen-Wirkung** (Gemini #1, strategisch): 26k Produkte aus allen Kategorien untergraben
+   Vertrauen. → USER-ENTSCHEIDUNG (Nischen-Schärfung vs. Everything-Store); Startseite ist immerhin fashion-first kuratiert.
+Rest (Preisklarheit/Checkout) generisch — Preise/TWINT/Klarna sind bereits klar ausgezeichnet.
