@@ -3778,5 +3778,56 @@ class TestKalibrierungIstSchnellUndTrotzdemRichtig(unittest.TestCase):
 
 
 
+class TestMatcherVorfilter(unittest.TestCase):
+    """Fehlschlaege sind der Normalfall - sie muessen billig sein.
+
+    Von 28 Regeln passt hoechstens eine. Gemessen kostete ein Fehlschlag
+    vorher 0.500 s, weil alle sechs Grob-Kandidaten fein nachgerechnet wurden;
+    ein Treffer kostet 0.22 s. Der Vorfilter dreht das um.
+
+    Die Schranke stammt aus einer MESSUNG ueber 120 Vergleiche auf zwei echten
+    Bildschirmen: echte Treffer begannen bei einem Grob-Wert von 0.847,
+    Fehlschlaege endeten bei 0.839. Die Luecke ist real, aber viel zu schmal -
+    darum liegt die Schranke bei 0.55, mit grossem Abstand nach unten.
+    """
+
+    def test_kein_vorfilter_auf_den_groben_wert(self):
+        """Ausprobiert, gemessen, widerlegt - und darum verboten.
+
+        Ein Vorfilter auf den groben Wert sah an 120 Vergleichen sauber aus
+        (echte Treffer ab 0.847, Fehlschlaege bis 0.839). Bei einem Muster ohne
+        grosse Flaechen faellt der grobe Wert aber deutlich tiefer, obwohl der
+        Treffer echt ist - fuenf Tests fielen darueber. Ein stumm ausfallender
+        Treffer sieht von aussen aus wie "da war nichts" und ist der teuerste
+        Fehler in diesem Bot.
+        """
+        self.assertFalse(hasattr(matcher, "GROB_AUSSICHTSLOS"),
+                         "der Vorfilter ist bewusst wieder draussen")
+
+    def test_echte_treffer_ueberleben_den_vorfilter(self):
+        faelle = [("stadt.png", "ui/btn_abholen.png"),
+                  ("stadt.png", "allianz/geschenke.png"),
+                  ("stadt.png", "ui/back_arrow.png"),
+                  ("schild.png", "ui/btn_bestaetigen.png")]
+        geprueft = 0
+        for bild, vorlage in faelle:
+            pfad = os.path.join(ROOT, "austausch", bild)
+            vpfad = os.path.join(ROOT, "templates", *vorlage.split("/"))
+            if not (os.path.exists(pfad) and os.path.exists(vpfad)):
+                continue
+            geprueft += 1
+            treffer = matcher.find(Image.load(pfad), Image.load(vpfad), threshold=0.85)
+            self.assertIsNotNone(treffer, f"{vorlage} auf {bild} ging verloren")
+        if not geprueft:
+            self.skipTest("keine Austausch-Bilder vorhanden")
+
+    def test_eindeutiger_treffer_bricht_frueh_ab(self):
+        import inspect
+        quelle = inspect.getsource(matcher.find_all)
+        self.assertIn("SICHER_GENUG", quelle,
+                      "ein nahezu perfekter Treffer macht weitere Kandidaten ueberfluessig")
+
+
+
 if __name__ == "__main__":
     unittest.main()

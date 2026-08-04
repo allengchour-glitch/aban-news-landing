@@ -25,6 +25,7 @@ HAVE_NUMPY = _np is not None
 COARSE_WIDTH = 180  # Zielbreite des Grob-Durchlaufs
 MAX_SAMPLES = 64  # Stichproben-Pixel im Grob-Durchlauf (nur ohne numpy)
 CANDIDATES = 6  # so viele Grob-Treffer werden fein nachgerechnet
+SICHER_GENUG = 0.97  # ab hier lohnt kein weiterer Kandidat mehr
 
 
 class Match(NamedTuple):
@@ -102,6 +103,19 @@ def find_all(
     # auf einem stark verkleinerten Bild; welcher Kandidat dort vorn liegt, sagt
     # wenig darueber, wo der beste Treffer wirklich sitzt. Das abschliessende
     # sort() war damit wirkungslos - es sortierte eine einelementige Liste.
+    # KEIN Vorfilter auf den groben Wert - ausprobiert und wieder verworfen.
+    #
+    # Die Idee war: liegt schon der beste GROBE Wert weit unter allem, was je
+    # ein Treffer war, spare man sich das teure Nachrechnen. Gemessen an 120
+    # Vergleichen ueber zwei echte Bildschirme sah das sauber aus - echte
+    # Treffer ab Grob-Wert 0.847, Fehlschlaege bis 0.839 - und eine Schranke
+    # bei 0.55 schien reichlich Abstand zu haben.
+    #
+    # Fuenf bestehende Tests haben es widerlegt: bei einem Muster ohne grosse
+    # Flaechen faellt der grobe Wert deutlich tiefer, obwohl der Treffer echt
+    # ist. Der Vorfilter warf ihn weg. Ein stumm ausfallender Treffer ist der
+    # teuerste Fehler in diesem Bot - er sieht von aussen aus wie "da war
+    # nichts". Vier gesparte Zehntelsekunden wiegen das nicht auf.
     candidates = _coarse_candidates(sub, tpl, limit)
     gefunden: List[Match] = []
     for cx, cy, radius in candidates:
@@ -110,6 +124,15 @@ def find_all(
             continue
         score, x, y = best
         gefunden.append(Match(score, x + sub_l, y + sub_t, tpl.width, tpl.height))
+        # Ein nahezu perfekter Treffer wird von keinem spaeteren Kandidaten
+        # mehr geschlagen - dann lohnt das Weiterrechnen nicht. Gemessen kostet
+        # das Verfeinern aller sechs Kandidaten 0.213 s gegenueber 0.035 s fuer
+        # einen; bei einem eindeutigen Bild ist das reine Wartezeit.
+        # ABSICHTLICH hoch angesetzt: in den mehrdeutigen Faellen, um die es bei
+        # der Korrektur ging, liegen die Werte deutlich darunter, dort wird
+        # weiterhin alles nachgerechnet.
+        if len(gefunden) >= limit and score >= SICHER_GENUG:
+            break
 
     gefunden.sort(key=lambda m: -m.score)
     results: List[Match] = []
@@ -129,8 +152,16 @@ def _overlaps(a: Match, b: Match) -> bool:
 
 
 # --------------------------------------------------------------- Grob-Durchlauf
-def _coarse_candidates(sub: Image, tpl: Image, limit: int = 1) -> List[Tuple[int, int, int]]:
-    """Liste von (x, y, Suchradius) in Voll-Koordinaten des Suchfensters."""
+def _coarse_candidates(sub: Image, tpl: Image, limit: int = 1,
+                       mit_wert: bool = False):
+    """Liste von (x, y, Suchradius) in Voll-Koordinaten des Suchfensters.
+
+    Mit `mit_wert` zusaetzlich der beste Grob-Wert. Der taugt als Vorfilter:
+    an 120 Vergleichen ueber zwei echte Bildschirme gemessen begannen ECHTE
+    Treffer bei einem Grob-Wert von 0.847, waehrend Fehlschlaege bei 0.839
+    endeten. Die Luecke ist real, aber viel zu schmal zum Draufsetzen - darum
+    liegt die Schranke weit darunter (siehe GROB_AUSSICHTSLOS).
+    """
     factor = min(1.0, COARSE_WIDTH / float(sub.width))
     # Template darf beim Verkleinern nicht verschwinden.
     # Nicht unter 14 px schrumpfen lassen: bei 6 px bleibt von einer kleinen
@@ -139,20 +170,24 @@ def _coarse_candidates(sub: Image, tpl: Image, limit: int = 1) -> List[Tuple[int
     factor = max(factor, 14.0 / max(4, min(tpl.width, tpl.height)))
     factor = min(1.0, factor)
     if factor >= 0.95:
-        return [(0, 0, max(sub.width, sub.height))]
+        leer = [(0, 0, max(sub.width, sub.height))]
+        return (leer, 1.0) if mit_wert else leer
 
     csub = sub.box_scaled_by(factor)
     ctpl = tpl.box_scaled_by(factor)
     if ctpl.width < 2 or ctpl.height < 2 or ctpl.width > csub.width or ctpl.height > csub.height:
-        return [(0, 0, max(sub.width, sub.height))]
+        leer = [(0, 0, max(sub.width, sub.height))]
+        return (leer, 1.0) if mit_wert else leer
 
     wieviele = max(CANDIDATES, limit * 4)
     scores = _score_map(csub, ctpl, wieviele)
     if not scores:
-        return [(0, 0, max(sub.width, sub.height))]
+        leer = [(0, 0, max(sub.width, sub.height))]
+        return (leer, 1.0) if mit_wert else leer
     top = sorted(scores, key=lambda s: -s[0])[:wieviele]
     radius = int(math.ceil(1.0 / factor)) + 2
-    return [(int(x / factor), int(y / factor), radius) for _, x, y in top]
+    liste = [(int(x / factor), int(y / factor), radius) for _, x, y in top]
+    return (liste, top[0][0]) if mit_wert else liste
 
 
 def _score_map(img: Image, tpl: Image, wieviele: int = CANDIDATES) -> List[Tuple[float, int, int]]:
