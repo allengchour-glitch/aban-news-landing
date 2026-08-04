@@ -158,11 +158,11 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
     const pidNum = numId(p.id);
     const rawSku = p.variants?.edges?.[0]?.node?.sku || '';
     const cjSku = rawSku.replace(/^CJ-/i, '').trim();
-    if (!cjSku) { console.log(`· ${p.handle}: keine SKU → skip`); continue; }
+    if (!cjSku) { console.log(`· ${p.handle}: keine SKU → skip`); if (!DRY) { try { fs.appendFileSync(LEDGER, pidNum + '\n'); } catch {} } continue; }
     try {
       const resolved = await resolvePid(cjSku);
       const cjpid = resolved?.pid;
-      if (!cjpid) { console.log(`· ${p.handle}: keine CJ-pid für ${cjSku} → skip`); continue; }
+      if (!cjpid) { console.log(`· ${p.handle}: keine CJ-pid für ${cjSku} → skip`); if (!DRY) { try { fs.appendFileSync(LEDGER, pidNum + '\n'); } catch {} } continue; }
       if (DEBUG) console.log(`    [DEBUG] ${p.handle}: pid ${cjpid} via ${resolved.via}`);
       const cr = await cjGet(ctok, '/product/productComments', { pid: cjpid, pageNum: 1, pageSize: 30 });
       await sleep(1100);
@@ -171,7 +171,7 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
       const picked = (list || [])
         .filter(c => Number(c.score) >= MIN_SCORE && (c.comment || '').trim().length >= 8)
         .slice(0, PER);
-      if (!picked.length) { console.log(`· ${p.handle}: 0 echte ≥${MIN_SCORE}★-Kommentare bei CJ → skip`); continue; }
+      if (!picked.length) { console.log(`· ${p.handle}: 0 echte ≥${MIN_SCORE}★-Kommentare bei CJ → skip`); if (!DRY) { try { fs.appendFileSync(LEDGER, pidNum + '\n'); } catch {} } continue; }
 
       const bodiesDE = await translateDE(picked.map(c => c.comment.trim()));
       let sent = 0;
