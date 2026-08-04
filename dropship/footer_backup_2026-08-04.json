@@ -1,0 +1,97 @@
+{
+ "id": "gid://shopify/Menu/310224126337",
+ "handle": "footer",
+ "items": [
+  {
+   "id": "gid://shopify/MenuItem/783988949377",
+   "title": "🇨🇭 Über uns",
+   "type": "PAGE",
+   "url": "/en/pages/ueber-uns",
+   "resourceId": "gid://shopify/Page/697899549057"
+  },
+  {
+   "id": "gid://shopify/MenuItem/783988982145",
+   "title": "❓ FAQ",
+   "type": "PAGE",
+   "url": "/en/pages/faq",
+   "resourceId": "gid://shopify/Page/697899516289"
+  },
+  {
+   "id": "gid://shopify/MenuItem/783989014913",
+   "title": "🛡️ Garantie",
+   "type": "PAGE",
+   "url": "/en/pages/garantie",
+   "resourceId": "gid://shopify/Page/697899942273"
+  },
+  {
+   "id": "gid://shopify/MenuItem/783989047681",
+   "title": "📦 Tracking",
+   "type": "PAGE",
+   "url": "/en/pages/tracking",
+   "resourceId": "gid://shopify/Page/697900073345"
+  },
+  {
+   "id": "gid://shopify/MenuItem/783989080449",
+   "title": "💎 Warum LuxeStyle",
+   "type": "PAGE",
+   "url": "/en/pages/ueber-uns",
+   "resourceId": "gid://shopify/Page/697899549057"
+  },
+  {
+   "id": "gid://shopify/MenuItem/783989113217",
+   "title": "📜 Widerruf (14 Tage)",
+   "type": "PAGE",
+   "url": "/en/pages/widerruf",
+   "resourceId": "gid://shopify/Page/697996345729"
+  },
+  {
+   "id": "gid://shopify/MenuItem/783989145985",
+   "title": "📋 AGB",
+   "type": "PAGE",
+   "url": "/en/pages/agb",
+   "resourceId": "gid://shopify/Page/697899352449"
+  },
+  {
+   "id": "gid://shopify/MenuItem/783989178753",
+   "title": "🔒 Datenschutz",
+   "type": "PAGE",
+   "url": "/en/pages/datenschutz",
+   "resourceId": "gid://shopify/Page/697899385217"
+  },
+  {
+   "id": "gid://shopify/MenuItem/783989211521",
+   "title": "📍 Impressum",
+   "type": "PAGE",
+   "url": "/en/pages/impressum",
+   "resourceId": "gid://shopify/Page/697899417985"
+  },
+  {
+   "id": "gid://shopify/MenuItem/783989244289",
+   "title": "📖 Magazin",
+   "type": "BLOG",
+   "url": "/en/blogs/magazin",
+   "resourceId": "gid://shopify/Blog/119677616513"
+  },
+  {
+   "id": "gid://shopify/MenuItem/783989277057",
+   "title": "Deine Datenschutz-Einstellungen",
+   "type": "PAGE",
+   "url": "/en/pages/cookie-richtlinie",
+   "resourceId": "gid://shopify/Page/697899909505"
+  },
+  {
+   "id": "gid://shopify/MenuItem/784717152641",
+   "title": "☀️ Sommer 2026",
+   "type": "HTTP",
+   "url": "/collections/sommer-2026",
+   "resourceId": null
+  },
+  {
+   "id": "gid://shopify/MenuItem/785243079041",
+   "title": "Deine Datenschutz-Einstellungen",
+   "type": "PAGE",
+   "url": "/en/pages/data-sharing-opt-out",
+   "resourceId": "gid://shopify/Page/698054934913"
+  }
+ ]
+}

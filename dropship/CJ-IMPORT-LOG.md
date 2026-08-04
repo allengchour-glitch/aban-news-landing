@@ -2695,3 +2695,15 @@ Hundehalsband) trugen Tag `elektronik` aus CJ-Elektronik/Gadget-Läufen → Tag 
 Elektronik-Gruppen → haustier/spielzeug statt elektronik (ausser smart/gps/led). ⚠️ Scan-Regex-Falle:
 `leine\b` ohne führendes \b traf «K**leine** Powerbank»; Lookahead `armband(?!.*smart)` verfehlt «Smart Armband»
 (smart steht VOR armband) → Misfit-Scans immer mit Positiv-Tech-Ausschlussliste nachfiltern.
+
+## 2026-08-04 Fehler-Sweep autonom (User «suche fehler selber»)
+- **Menü-Links:** alle Collections existieren, publiziert, nicht leer ✓. Preise: keine <=1, die 8 >=400 sind echte
+  Fortura-Lagerware ✓. Titel: 0 echte Ref./BB-Leaks (Shopify-Wildcard `*Ref.*` traf «Reflekt…»/«BBQ» — Falle!).
+- **Footer-Menü:** Emojis raus, Duplikat «Warum LuxeStyle» entfernt, klare Namen; /en/-URLs im API-Response sind
+  nur Anzeige-Artefakt, Storefront rendert deutsch ✓. Backup dropship/footer_backup_2026-08-04.json.
+- **💰 GRATIS-VERSAND-BALKEN-BUG:** layout/theme.liquid Cart-Fortschrittsbalken hatte `SCHWELLE=5000` Rappen
+  (CHF 50) — zeigte «Gratis-Versand erreicht» ab CHF 50, echte Schwelle ist 65! → 6500. ⚠️ Bei CHF-Sweeps auch
+  JS-Konstanten in Rappen prüfen, nicht nur Text.
+- **Produktseite:** Trust-Zeile + Lieferbox hatten CHF 50 (templates/product.json) → 65. **Lieferzeit-Block log:**
+  «Versand aus EU-Lager, 3–7 Tage» für ALLE Produkte (auch CJ-China!) → jetzt tag-bewusst: fortura/ch-lager →
+  «🇨🇭 Blitzversand 1–3 Tage», eu-lager → 3–7 Tage, sonst «Internationaler Versand 7–14 Tage».
