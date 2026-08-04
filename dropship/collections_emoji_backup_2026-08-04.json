@@ -1,0 +1,2354 @@
+[
+ {
+  "id": "gid://shopify/Collection/687341994369",
+  "title": "👶 Baby & Kleinkind",
+  "handle": "baby-kleinkind",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687409594753",
+  "title": "💸 Lieblinge unter CHF 50",
+  "handle": "bestseller-unter-50",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687409660289",
+  "title": "⚡ Express-Lieferung EU",
+  "handle": "express-lieferung",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687410119041",
+  "title": "✨ Im Video vorgestellt",
+  "handle": "tiktok-ads-ready",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687421620609",
+  "title": "🏡 Home & Family",
+  "handle": "home-family",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687449735553",
+  "title": "🏆 Top 5 Favoriten",
+  "handle": "top-5-start",
+  "sortOrder": "MANUAL"
+ },
+ {
+  "id": "gid://shopify/Collection/687522021761",
+  "title": "🎁 Vatertag 2026 – Geschenke für Papa",
+  "handle": "vatertag-2026-papa",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687522054529",
+  "title": "🔥 Bestseller",
+  "handle": "bestseller-shop",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687522251137",
+  "title": "🆕 Neu eingetroffen",
+  "handle": "neu",
+  "sortOrder": "CREATED_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/687522283905",
+  "title": "👨 Für Ihn",
+  "handle": "fur-ihn",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687522316673",
+  "title": "👩 Für Sie",
+  "handle": "fur-sie",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687522480513",
+  "title": "✈️ Reisen & Sommer",
+  "handle": "reisen-sommer",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687522775425",
+  "title": "🏠 Wohnen & Dekoration",
+  "handle": "wohnen-dekoration",
+  "sortOrder": "CREATED_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/687523299713",
+  "title": "💼 Büro & Home Office",
+  "handle": "buro-home-office",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687524118913",
+  "title": "🎁 Mystery & Top-Deals",
+  "handle": "mystery-top-deals",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687524381057",
+  "title": "👗 Damen-Mode",
+  "handle": "damen-mode",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687524970881",
+  "title": "🎁 Bundles & Deals",
+  "handle": "launch-week",
+  "sortOrder": "CREATED_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/687534997889",
+  "title": "💍 Hochzeitsgeschenke",
+  "handle": "hochzeitsgeschenke",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687535030657",
+  "title": "🎓 Berufseinstieg & Abschluss",
+  "handle": "berufseinstieg-abschluss",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687542698369",
+  "title": "🏕️ Outdoor & Garten",
+  "handle": "outdoor-garten",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687545581953",
+  "title": "🌱 Vegan & Cruelty-Free",
+  "handle": "vegan",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687691071873",
+  "title": "🎁 Wellness-Box Bundles",
+  "handle": "wellness-bundles",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687691137409",
+  "title": "✨ TikTok-Hits 2026",
+  "handle": "tiktok-viral",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687691170177",
+  "title": "💰 Unter CHF 25 — Impulse-Käufe",
+  "handle": "unter-chf-25",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687698116993",
+  "title": "🌿 Wellness-Komplettset — Spa zuhause",
+  "handle": "wellness-komplettset",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687723184513",
+  "title": "🚀 Trend-Favoriten",
+  "handle": "tiktok-hero-products",
+  "sortOrder": "MANUAL"
+ },
+ {
+  "id": "gid://shopify/Collection/687724560769",
+  "title": "💎 Premium Schmuck",
+  "handle": "premium-schmuck",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687774499201",
+  "title": "⭐ Top 10 Bestseller",
+  "handle": "bestseller-premium-heroes",
+  "sortOrder": "MANUAL"
+ },
+ {
+  "id": "gid://shopify/Collection/687774531969",
+  "title": "🎁 Premium-Bundles — Spare CHF 19+",
+  "handle": "premium-bundles",
+  "sortOrder": "MANUAL"
+ },
+ {
+  "id": "gid://shopify/Collection/687789113729",
+  "title": "🔥 Hero-Favoriten",
+  "handle": "bestseller",
+  "sortOrder": "MANUAL"
+ },
+ {
+  "id": "gid://shopify/Collection/687793897857",
+  "title": "🎁 Premium Geschenke",
+  "handle": "premium-geschenke",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687966585217",
+  "title": "🏺 Vasen",
+  "handle": "vasen",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687966617985",
+  "title": "🖼️ Wandkunst",
+  "handle": "wandkunst",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687966650753",
+  "title": "📦 Aufbewahrung",
+  "handle": "aufbewahrung-sub",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687966683521",
+  "title": "🎧 Audio",
+  "handle": "audio-sub",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687966716289",
+  "title": "🏠 Smart Home",
+  "handle": "smart-home-sub",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687966749057",
+  "title": "🔌 Ladegeräte",
+  "handle": "ladegeraete",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687966781825",
+  "title": "📸 Foto & Video",
+  "handle": "foto-tech",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687966814593",
+  "title": "🎮 Gaming",
+  "handle": "gaming",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687966847361",
+  "title": "🍸 Bar-Tools",
+  "handle": "bar-tools",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687966912897",
+  "title": "🍽️ Servieren",
+  "handle": "servieren",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687966945665",
+  "title": "🏖️ Strand",
+  "handle": "strand",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687966978433",
+  "title": "🌊 Pool",
+  "handle": "pool",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687967011201",
+  "title": "🌻 Garten",
+  "handle": "garten",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687967043969",
+  "title": "⛺ Camping",
+  "handle": "camping-sub",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687967076737",
+  "title": "🧘 Yoga",
+  "handle": "yoga",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687967109505",
+  "title": "💪 Recovery",
+  "handle": "recovery",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687967142273",
+  "title": "🧳 Reise-Gadgets & Organizer",
+  "handle": "reise-gadgets",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687967175041",
+  "title": "📱 Auto-Halterungen",
+  "handle": "auto-halterungen",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687967207809",
+  "title": "🧹 Auto-Reinigung",
+  "handle": "auto-reinigung",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687967240577",
+  "title": "🔋 Auto-Power",
+  "handle": "auto-power",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687967273345",
+  "title": "👛 Wallets",
+  "handle": "wallets-sub",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687967306113",
+  "title": "👖 Gürtel",
+  "handle": "guertel",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687967338881",
+  "title": "🧢 Caps & Hüte",
+  "handle": "caps-huete",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687967371649",
+  "title": "✨ Hautpflege-Tools",
+  "handle": "hautpflege-tools",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687967437185",
+  "title": "🪡 Akupressur",
+  "handle": "akupressur",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/687980052865",
+  "title": "✨ Neuheiten 2026",
+  "handle": "neu-eingetroffen",
+  "sortOrder": "CREATED_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/688005775745",
+  "title": "✨ Highlights – Schmuck & Mode",
+  "handle": "highlights",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688013836673",
+  "title": "👔 Herren-Mode",
+  "handle": "herren-mode-sub",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688013902209",
+  "title": "💪 Fitness",
+  "handle": "fitness-sub",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688018162049",
+  "title": "👟 Schuhe",
+  "handle": "schuhe",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688018194817",
+  "title": "👠 Damen-Schuhe",
+  "handle": "damen-schuhe",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688018227585",
+  "title": "👞 Herren-Schuhe",
+  "handle": "herren-schuhe",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688018424193",
+  "title": "🍴 Küchengeräte",
+  "handle": "kuechengeraete",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688018456961",
+  "title": "🔌 Coole Gadgets",
+  "handle": "gadgets",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688399745409",
+  "title": "🏖️ Strand-Look",
+  "handle": "strand-look",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688399778177",
+  "title": "💼 Office-Look",
+  "handle": "office-look",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688399810945",
+  "title": "🌃 Abend-Look",
+  "handle": "abend-look",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688449749377",
+  "title": "🇨🇭 Schweiz Edition",
+  "handle": "schweiz-edition",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688562700673",
+  "title": "☀️ Grill & BBQ",
+  "handle": "grill-bbq",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688562766209",
+  "title": "🚗 Auto & Handy",
+  "handle": "auto-handy",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688563519873",
+  "title": "👗 Kleider",
+  "handle": "sub-kleider",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688563552641",
+  "title": "👗 Röcke",
+  "handle": "sub-roecke",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688563585409",
+  "title": "👙 Bademode",
+  "handle": "sub-bademode",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688563618177",
+  "title": "📿 Halsketten",
+  "handle": "sub-halsketten",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/688563650945",
+  "title": "💎 Ohrringe",
+  "handle": "sub-ohrringe",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688563683713",
+  "title": "💫 Armbänder",
+  "handle": "sub-armbaender",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/688563716481",
+  "title": "💡 Beleuchtung",
+  "handle": "sub-beleuchtung",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688563749249",
+  "title": "🪴 Vasen & Deko",
+  "handle": "sub-deko",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688563814785",
+  "title": "🌸 Aroma & Diffuser",
+  "handle": "sub-aroma-diffuser",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688563847553",
+  "title": "💆 Massage & Wellness",
+  "handle": "sub-massage",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688563880321",
+  "title": "👜 Taschen & Rucksäcke",
+  "handle": "sub-taschen",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688563913089",
+  "title": "⌚ Uhren",
+  "handle": "sub-uhren",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688564306305",
+  "title": "🇨🇭 1. August — Schweizer Edition",
+  "handle": "erste-august",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688564339073",
+  "title": "🧔 Bart & Rasur",
+  "handle": "sub-bart-rasur",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688564371841",
+  "title": "🧘 Yoga & Fitness",
+  "handle": "sub-yoga-fitness",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688564404609",
+  "title": "🍶 Trinkflaschen & Thermo",
+  "handle": "sub-trinkflaschen",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688564437377",
+  "title": "👶 Baby & Kids",
+  "handle": "sub-baby-kids",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688564470145",
+  "title": "🐾 Haustier",
+  "handle": "sub-haustier",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688564502913",
+  "title": "🧳 Reise & Outdoor",
+  "handle": "sub-reise",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688564535681",
+  "title": "🍳 Küche & Kochen",
+  "handle": "sub-kueche",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688576364929",
+  "title": "📱 Handy-Zubehör",
+  "handle": "handy-zubehoer",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688577282433",
+  "title": "💍 Ringe",
+  "handle": "sub-ringe",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688577577345",
+  "title": "🔥 Trends & Gadgets",
+  "handle": "trends-gadgets",
+  "sortOrder": "CREATED_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/688582656385",
+  "title": "🔥 Hype 2026 — Trends & Bestseller",
+  "handle": "hype-2026",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688583082369",
+  "title": "💞 Partner & Paare",
+  "handle": "partner-paare",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688585933185",
+  "title": "👕 Herren-Shirts & Tops",
+  "handle": "herren-shirts",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688585965953",
+  "title": "👔 Herren-Hemden",
+  "handle": "herren-hemden",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688585998721",
+  "title": "👖 Herren-Hosen",
+  "handle": "herren-hosen",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688586031489",
+  "title": "🩳 Herren-Sets",
+  "handle": "herren-sets-sub",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688586621313",
+  "title": "👚 Damen-Blusen & Tops",
+  "handle": "damen-blusen",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688586654081",
+  "title": "👖 Damen-Hosen",
+  "handle": "damen-hosen",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688586686849",
+  "title": "👗 Damen-Sets & 2-Teiler",
+  "handle": "damen-sets",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688587407745",
+  "title": "🎁 Schmuck-Sets",
+  "handle": "schmuck-sets",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688596976001",
+  "title": "🧸 Spielzeug & Plüsch",
+  "handle": "spielzeug",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688600547713",
+  "title": "💎 Premium-Auswahl",
+  "handle": "luxus-highend",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688642589057",
+  "title": "🛋️ Loungewear",
+  "handle": "loungewear",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688683942273",
+  "title": "✨ LuxeStyle Premium",
+  "handle": "luxestyle-premium",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688698163585",
+  "title": "🧢 Caps & Hüte",
+  "handle": "caps-hute",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688698655105",
+  "title": "💧 Wasserfester Schmuck",
+  "handle": "wasserfester-schmuck",
+  "sortOrder": "MANUAL"
+ },
+ {
+  "id": "gid://shopify/Collection/688698884481",
+  "title": "🌸 Parfum & Düfte",
+  "handle": "parfum-duefte",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688724935041",
+  "title": "🖱️ Mauspads",
+  "handle": "mauspads",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688725197185",
+  "title": "🏅 Sport & Outdoor",
+  "handle": "sport-outdoor",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688725819777",
+  "title": "🖨️ Büro & Schreibwaren",
+  "handle": "buero-schreibwaren",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688726081921",
+  "title": "✏️ Gravur · Personalisiert",
+  "handle": "gravur-personalisiert",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688731816321",
+  "title": "🧩 Puzzles",
+  "handle": "spielzeug-puzzles",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688731849089",
+  "title": "🧸 Plüsch & Kuscheltiere",
+  "handle": "spielzeug-pluesch",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688731881857",
+  "title": "🦸 Action- & Sammelfiguren",
+  "handle": "spielzeug-figuren",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688731914625",
+  "title": "🎲 Brett- & Gesellschaftsspiele",
+  "handle": "spielzeug-brettspiele",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688731947393",
+  "title": "👶 Puppen & Puppenhaus",
+  "handle": "spielzeug-puppen",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688731980161",
+  "title": "🎭 Kostüme & Verkleidung",
+  "handle": "spielzeug-kostueme",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688732766593",
+  "title": "🧠 Lernspielzeug",
+  "handle": "spielzeug-lernen",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688732799361",
+  "title": "🎨 Basteln & Kneten",
+  "handle": "spielzeug-basteln",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688732832129",
+  "title": "🚗 Fahrzeuge & RC",
+  "handle": "spielzeug-fahrzeuge",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688732864897",
+  "title": "🌊 Outdoor & Wasser",
+  "handle": "spielzeug-outdoor-wasser",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688732897665",
+  "title": "🎹 Musik-Spielzeug",
+  "handle": "spielzeug-musik",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688732930433",
+  "title": "💄 Kinder-Schminksets",
+  "handle": "spielzeug-schminkset",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688732963201",
+  "title": "🧱 Bau- & Spielsets",
+  "handle": "spielzeug-bausets",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688740663681",
+  "title": "🌿 Garten & Balkon",
+  "handle": "garten-balkon",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688748200321",
+  "title": "🔌 Elektriker & Installation",
+  "handle": "elektriker-werkzeug",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688906764673",
+  "title": "🏃 Trainingsanzüge & Sets",
+  "handle": "trainingsanzuege-sets",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688928817537",
+  "title": "💪 Fitness & Training",
+  "handle": "fitness-training",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688928915841",
+  "title": "🚲 Velo & Radsport",
+  "handle": "velo-radsport",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688929079681",
+  "title": "🎣 Angeln",
+  "handle": "angeln",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688929177985",
+  "title": "🤿 Tauchen & Schnorcheln",
+  "handle": "tauchen-schnorcheln",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688929210753",
+  "title": "🔍 Metalldetektoren & Schatzsuche",
+  "handle": "metalldetektoren-schatzsuche",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688929243521",
+  "title": "🎌 Anime & Manga",
+  "handle": "anime",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688929276289",
+  "title": "🤿 Tauchen & Schnorcheln",
+  "handle": "tauchen",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688929309057",
+  "title": "🔍 Metalldetektoren & Schatzsuche",
+  "handle": "metalldetektor",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688929341825",
+  "title": "🚲 Velo & Radsport",
+  "handle": "velo",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688929374593",
+  "title": "💪 Fitness & Training",
+  "handle": "fitness",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688929997185",
+  "title": "🎨 Basteln & DIY",
+  "handle": "bastel-diy",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688930062721",
+  "title": "⌚ Uhren",
+  "handle": "uhren",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688975675777",
+  "title": "👝 Leder & Accessoires",
+  "handle": "lederwaren",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/688980754817",
+  "title": "⚽ Fussball & Fan 2026",
+  "handle": "wm-fussball-2026",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689027416449",
+  "title": "💄 Beauty & Pflege",
+  "handle": "beauty-pflege",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689027449217",
+  "title": "💋 Make-up & Kosmetik",
+  "handle": "make-up",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689027481985",
+  "title": "🧴 Gesichts- & Hautpflege",
+  "handle": "hautpflege",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689027514753",
+  "title": "💆 Beauty-Tools",
+  "handle": "beauty-tools",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689027645825",
+  "title": "⌚ Herren-Uhren",
+  "handle": "herren-uhren",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689027678593",
+  "title": "⌚ Damen-Uhren",
+  "handle": "damen-uhren",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689027711361",
+  "title": "👛 Portemonnaie & Kleinleder",
+  "handle": "portemonnaie",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689027776897",
+  "title": "🎒 Rucksäcke",
+  "handle": "rucksaecke",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689028989313",
+  "title": "🧦 Socken & Strümpfe",
+  "handle": "socken-strumpfe",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689048125825",
+  "title": "🎌 Anime & Manga",
+  "handle": "anime-manga",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689055596929",
+  "title": "✏️ Selbst gestalten",
+  "handle": "✏️-selbst-gestalten",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689055629697",
+  "title": "🎁 Geschenke bis CHF 30",
+  "handle": "🎁-geschenke-bis-chf-30",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689055662465",
+  "title": "💎 Premium ab CHF 80",
+  "handle": "💎-premium-ab-chf-80",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689063592321",
+  "title": "⭐ Topseller",
+  "handle": "topseller",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689066639745",
+  "title": "🏃 Marken-Sportswear",
+  "handle": "marken-sport",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689066672513",
+  "title": "💄 Beauty-Marken",
+  "handle": "beauty-marken",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689066901889",
+  "title": "🎧 Tech & Audio-Marken",
+  "handle": "tech-marken",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689066934657",
+  "title": "👔 Mode-Marken",
+  "handle": "mode-marken",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689118380417",
+  "title": "🔥 Bestseller & Lieblinge",
+  "handle": "favoriten",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689118740865",
+  "title": "🚗 Auto-Zubehör",
+  "handle": "auto-zubehoer",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689118773633",
+  "title": "⛺ Camping & Outdoor",
+  "handle": "camping-outdoor",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689118871937",
+  "title": "🏊 Pool & Schwimmen",
+  "handle": "pool-schwimmen",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689119068545",
+  "title": "💇 Haarstyling & Tools",
+  "handle": "haarstyling-tools",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689119134081",
+  "title": "🍸 Bar & Wein",
+  "handle": "bar-wein",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689160388993",
+  "title": "🪴 Pflanzgefässe & Töpfe",
+  "handle": "garten-pflanzgefaesse",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689160421761",
+  "title": "🔆 Gartenleuchten & Solar",
+  "handle": "garten-leuchten",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689160454529",
+  "title": "🌸 Gartendeko",
+  "handle": "garten-deko-outdoor",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689160487297",
+  "title": "✂️ Garten-Werkzeug & Pflege",
+  "handle": "garten-werkzeug-pflege",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689160520065",
+  "title": "⛺ Zelte & Schlafsäcke",
+  "handle": "camping-schlafen",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689160552833",
+  "title": "🍳 Camping-Küche",
+  "handle": "camping-kueche",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689160585601",
+  "title": "🔦 Outdoor-Licht & Tools",
+  "handle": "camping-licht-outdoor",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689160618369",
+  "title": "🥃 Gläser",
+  "handle": "bar-glaeser",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689160651137",
+  "title": "🍸 Cocktail & Shaker",
+  "handle": "bar-cocktail",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689160683905",
+  "title": "🍷 Wein-Accessoires",
+  "handle": "bar-wein-accessoires",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689160716673",
+  "title": "🎒 Schulrucksäcke",
+  "handle": "rucksaecke-schule",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689160749441",
+  "title": "💼 Laptop- & Business-Rucksäcke",
+  "handle": "rucksaecke-laptop",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689160782209",
+  "title": "🏔️ Sport- & Wanderrucksäcke",
+  "handle": "rucksaecke-sport",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689167303041",
+  "title": "👟 Sneaker",
+  "handle": "schuhe-sneaker",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689167335809",
+  "title": "🩴 Sandalen & Espadrilles",
+  "handle": "schuhe-sandalen",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689167368577",
+  "title": "🥾 Stiefel & Boots",
+  "handle": "schuhe-stiefel",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689167401345",
+  "title": "💄 Make-up",
+  "handle": "beauty-makeup",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689167434113",
+  "title": "🕶️ Sonnenbrillen Damen",
+  "handle": "sonnenbrillen-damen",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689167466881",
+  "title": "🕶️ Sonnenbrillen Herren",
+  "handle": "sonnenbrillen-herren",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689227137409",
+  "title": "🛴 E-Scooter & Trottinett",
+  "handle": "e-scooter-trottinett",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689252467073",
+  "title": "🚁 Drohnen & Kameras",
+  "handle": "drohnen-kameras",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689252729217",
+  "title": "📽️ Beamer & Projektoren",
+  "handle": "beamer-projektoren",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689252893057",
+  "title": "⌚ Smartwatches & Wearables",
+  "handle": "smartwatches-wearables",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689253089665",
+  "title": "☕ Kaffee & Espresso",
+  "handle": "kaffee-maschinen",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689253253505",
+  "title": "🧸 Kinderspielzeug",
+  "handle": "kinderspielzeug",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689253515649",
+  "title": "🧘 Yoga & Pilates",
+  "handle": "yoga-pilates",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689253613953",
+  "title": "🐾 Haustier-Tech",
+  "handle": "haustier-tech",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689282220417",
+  "title": "🔥 Trend-Gadgets",
+  "handle": "trend-gadgets",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689310105985",
+  "title": "⚽ Vereins-Fanartikel",
+  "handle": "vereins-fanartikel",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689312760193",
+  "title": "❄️ Klima & Ventilatoren",
+  "handle": "klima-ventilatoren",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689313743233",
+  "title": "🏠 Staubsauger & Haushalt",
+  "handle": "staubsauger-haushalt",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689316692353",
+  "title": "💆 Beauty-Geräte & Haarentfernung",
+  "handle": "beauty-geraete",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689316725121",
+  "title": "🔥 Wärme & Komfort",
+  "handle": "waerme-komfort",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689353392513",
+  "title": "🌸 Damen-Düfte",
+  "handle": "damen-duefte",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689353425281",
+  "title": "🧔 Herren-Düfte",
+  "handle": "herren-duefte",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689353458049",
+  "title": "🖱️ Gaming-Mäuse",
+  "handle": "gaming-maeuse",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689353490817",
+  "title": "🎧 Gaming-Headsets",
+  "handle": "gaming-headsets",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689353523585",
+  "title": "🎮 Controller & Gamepads",
+  "handle": "gaming-controller",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689362698625",
+  "title": "🍳 Küchenhelfer & Gadgets",
+  "handle": "kuechenhelfer",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689471816065",
+  "title": "💆 Wellness & Massage",
+  "handle": "wellness-massage",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689473945985",
+  "title": "🏖️ Strand & Wasserspass",
+  "handle": "strand-wasserspass",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689518379393",
+  "title": "💎 Moissanit-Schmuck — die clevere Diamant-Alternative",
+  "handle": "moissanit-schmuck",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689520476545",
+  "title": "💅 Nägel & Maniküre",
+  "handle": "naegel-manikuere",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689520509313",
+  "title": "👁️ Wimpern & Lashes",
+  "handle": "wimpern-lashes",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689586143617",
+  "title": "🦷 Zahnpflege",
+  "handle": "zahnpflege",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689586176385",
+  "title": "💚 Wellness & Gesundheit",
+  "handle": "wellness-gesundheit",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689637523841",
+  "title": "🖥️ Elektronik & Computer",
+  "handle": "elektronik-computer",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689638670721",
+  "title": "♻️ Refurbished – Generalüberholt & günstiger",
+  "handle": "refurbished",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689681006977",
+  "title": "📱 Elektronik & Technik",
+  "handle": "elektronik-technik",
+  "sortOrder": "CREATED_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689681269121",
+  "title": "🖨️ 3D-Druck & Filament",
+  "handle": "3d-druck",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689698439553",
+  "title": "🖱️ PC-Gaming",
+  "handle": "pc-gaming",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689698472321",
+  "title": "🎮 PlayStation (PS4/PS5)",
+  "handle": "playstation",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689698505089",
+  "title": "🎮 Xbox",
+  "handle": "xbox",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689698537857",
+  "title": "🕹️ Nintendo & Switch",
+  "handle": "nintendo-switch",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689698570625",
+  "title": "👾 Retro & Handheld-Gaming",
+  "handle": "retro-handheld",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689700372865",
+  "title": "🧵 3D-Filament (PLA/PETG/Resin)",
+  "handle": "3d-filament",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689700405633",
+  "title": "🖨️ 3D-Drucker & Stifte",
+  "handle": "3d-drucker",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689700471169",
+  "title": "🔧 3D-Druck-Zubehör",
+  "handle": "3d-zubehoer",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689701257601",
+  "title": "🏷️ Angebote & Deals",
+  "handle": "angebote",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689701454209",
+  "title": "🎨 Basteln & DIY",
+  "handle": "basteln-diy",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689701650817",
+  "title": "🔌 Elektronik für Bastler",
+  "handle": "maker-elektronik",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689713054081",
+  "title": "🎧 Kopfhörer & Audio",
+  "handle": "kopfhoerer-audio",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689713119617",
+  "title": "🖥️ Computer & Zubehör",
+  "handle": "computer-zubehoer",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689713152385",
+  "title": "💾 Speicher & Datenträger",
+  "handle": "speicher-datentraeger",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689713283457",
+  "title": "🚁 Drohnen & FPV",
+  "handle": "drohnen-fpv",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689713316225",
+  "title": "📽️ Beamer & Heimkino",
+  "handle": "beamer-heimkino",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689713545601",
+  "title": "💻 Laptop- & Tablet-Zubehör",
+  "handle": "laptop-tablet-zubehoer",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689714200961",
+  "title": "⚡ Hightech & Gadgets",
+  "handle": "hightech-gadgets",
+  "sortOrder": "CREATED_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689714987393",
+  "title": "🚗 Auto & KFZ-Zubehör",
+  "handle": "auto-kfz-zubehoer",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689715708289",
+  "title": "🍳 Küchen-Gadgets & Helfer",
+  "handle": "kuechen-gadgets",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689715741057",
+  "title": "✨ IPL & Haarentfernung",
+  "handle": "ipl-haarentfernung",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689715773825",
+  "title": "💧 Gesichtspflege-Geräte",
+  "handle": "gesichtspflege-geraete",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689715806593",
+  "title": "🌿 Nachhaltig & Wiederverwendbar",
+  "handle": "nachhaltig-eco",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689715839361",
+  "title": "🤖 Smart Home & Smarte Gadgets",
+  "handle": "smart-home-gadgets",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689718329729",
+  "title": "🐾 Haustier-Gadgets & Smart-Pet",
+  "handle": "haustier-gadgets",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689718362497",
+  "title": "🎁 Geschenke für Ihn",
+  "handle": "geschenke-fuer-ihn",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689718428033",
+  "title": "🎁 Geschenke für Sie",
+  "handle": "geschenke-fuer-sie",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689718460801",
+  "title": "🎁 Geschenke für Kinder",
+  "handle": "geschenke-fuer-kinder",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689718493569",
+  "title": "🧔 Herren-Grooming & Bartpflege",
+  "handle": "herren-grooming",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689718526337",
+  "title": "🧘 Wellness & Selfcare",
+  "handle": "wellness-selfcare",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689718559105",
+  "title": "🧥 Damen-Jacken & Mäntel",
+  "handle": "damen-jacken-maentel",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689718624641",
+  "title": "🧶 Damen-Strick & Pullover",
+  "handle": "damen-strick-pullover",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689718657409",
+  "title": "💡 LED & Ambiente-Beleuchtung",
+  "handle": "led-ambiente",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689718690177",
+  "title": "🖥️ Home-Office & Desk-Setup",
+  "handle": "home-office-setup",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689718854017",
+  "title": "📐 Mess- & Prüfwerkzeug",
+  "handle": "messwerkzeug",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689719673217",
+  "title": "🚬 Raucher- & Dreh-Zubehör (18+)",
+  "handle": "raucherzubehoer",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689719837057",
+  "title": "🛋️ Kuschel- & Heizdecken",
+  "handle": "kuschel-heizdecken",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689719902593",
+  "title": "🎯 Sets & Bundles",
+  "handle": "sets-bundles",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689719935361",
+  "title": "🛋️ Kissen & Wohntextilien",
+  "handle": "kissen-wohntextilien",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689719968129",
+  "title": "💅 Maniküre & Nagel-Geräte",
+  "handle": "nagel-geraete",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689720000897",
+  "title": "🌱 Indoor-Gärtnern & Grow",
+  "handle": "indoor-grow",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689721213313",
+  "title": "⌚ Chronographen & Automatik",
+  "handle": "chronographen-automatik",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689721278849",
+  "title": "🍳 Kochen & Backen",
+  "handle": "kochen-backen",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689721311617",
+  "title": "🍷 Trinken & Barware",
+  "handle": "trinken-barware",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689721344385",
+  "title": "💇 Haarpflege",
+  "handle": "haarpflege",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689721377153",
+  "title": "💅 Nägel & Nagellack",
+  "handle": "naegel",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689721409921",
+  "title": "🏋️ Fitness-Geräte & Home-Gym",
+  "handle": "fitness-geraete",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689721442689",
+  "title": "🐾 Hunde-Zubehör",
+  "handle": "haustier-hund",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689721475457",
+  "title": "🐾 Katzen-Zubehör",
+  "handle": "haustier-katze",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689721508225",
+  "title": "🐾 Futter & Näpfe",
+  "handle": "haustier-futter-naepfe",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689721999745",
+  "title": "❄️ Winter & Kälte",
+  "handle": "winter-kaelte",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689722032513",
+  "title": "👜 Handtaschen & Umhängetaschen",
+  "handle": "handtaschen-umhaengetaschen",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689722065281",
+  "title": "🧳 Reisegepäck",
+  "handle": "reisegepaeck",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689722098049",
+  "title": "🧥 Herren-Jacken & Hoodies",
+  "handle": "herren-jacken",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689722130817",
+  "title": "🧶 Herren-Pullover & Strick",
+  "handle": "herren-pullover",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689722163585",
+  "title": "🚗 Auto-Pflege & Reinigung",
+  "handle": "auto-pflege",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689722196353",
+  "title": "🌀 Ventilatoren",
+  "handle": "ventilatoren",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689722229121",
+  "title": "💨 Luftreiniger & Klimageräte",
+  "handle": "luftreiniger-klimageraete",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689722261889",
+  "title": "💡 Lampen & Leuchten",
+  "handle": "lampen-leuchten",
+  "sortOrder": "PRICE_ASC"
+ },
+ {
+  "id": "gid://shopify/Collection/689725604225",
+  "title": "🏎️ Modellautos & Sammlerfahrzeuge",
+  "handle": "modellautos",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689726030209",
+  "title": "📷 RC-Autos & Ferngesteuert",
+  "handle": "rc-ferngesteuert",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689741267329",
+  "title": "⚽ Fan-Zone Schweiz – WM 2026",
+  "handle": "fan-zone-schweiz",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689745592705",
+  "title": "🎒 Schulstart 2026",
+  "handle": "schulstart",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689745625473",
+  "title": "❄️ Ventilatoren & Kühlung",
+  "handle": "ventilatoren-kuehlung",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689745822081",
+  "title": "🐾 Haustier-Sommer & Kühlung",
+  "handle": "haustier-kuehlung",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689745887617",
+  "title": "🧳 Ordnung & Aufbewahrung",
+  "handle": "ordnung-aufbewahrung",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689745985921",
+  "title": "🫙 Küchen-Organisation",
+  "handle": "kueche-organisation",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689746084225",
+  "title": "🚗 Auto-Halterungen & Laden",
+  "handle": "auto-handy-laden",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689746248065",
+  "title": "🧺 Picknick & Strand",
+  "handle": "picknick-strand",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689746280833",
+  "title": "💡 Solar- & Gartenlicht",
+  "handle": "solar-gartenlicht",
+  "sortOrder": "PRICE_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689746903425",
+  "title": "🔥 Viral-Hits & TikTok-Trends",
+  "handle": "viral-hits",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689772331393",
+  "title": "👠 Damenschuhe",
+  "handle": "damenschuhe",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689772364161",
+  "title": "👞 Herrenschuhe",
+  "handle": "herrenschuhe",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689772396929",
+  "title": "🏃 Sneaker & Sportschuhe",
+  "handle": "sneaker-sportschuhe",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689772429697",
+  "title": "🧒 Kinderschuhe",
+  "handle": "kinderschuhe",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689775182209",
+  "title": "👕 T-Shirts & Tops",
+  "handle": "t-shirts-tops",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689775214977",
+  "title": "👖 Jeans & Denim",
+  "handle": "jeans-denim",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689775247745",
+  "title": "🩱 Jumpsuits & Overalls",
+  "handle": "jumpsuits-overalls",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689775280513",
+  "title": "💇 Haarfarbe & Coloration",
+  "handle": "haarfarbe-coloration",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689775313281",
+  "title": "⚡ Haushaltsgeräte",
+  "handle": "haushaltsgeraete",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689775346049",
+  "title": "🔩 Bohrer, Sägen & Werkzeug-Zubehör",
+  "handle": "bohrer-saegen-zubehoer",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689775378817",
+  "title": "🕶️ Sonnenbrillen (alle)",
+  "handle": "sonnenbrillen-alle",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689775411585",
+  "title": "🩳 Shorts & Bermudas",
+  "handle": "shorts-bermudas",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689775444353",
+  "title": "🧘 Leggings & Tights",
+  "handle": "leggings",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689775477121",
+  "title": "🧥 Westen & Gilets",
+  "handle": "westen-gilets",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689775509889",
+  "title": "🎤 Mikrofone & Streaming",
+  "handle": "mikrofone",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689775542657",
+  "title": "🩲 Unterwäsche",
+  "handle": "unterwaesche",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689775575425",
+  "title": "🌙 Nachtwäsche & Pyjamas",
+  "handle": "nachtwaesche-pyjamas",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689775608193",
+  "title": "🧣 Mützen, Schals & Stirnbänder",
+  "handle": "muetzen-schals",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689775640961",
+  "title": "🍽️ Geschirr & Servieren",
+  "handle": "geschirr-servieren",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689775673729",
+  "title": "🍳 Pfannen & Töpfe",
+  "handle": "pfannen-toepfe",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689775870337",
+  "title": "👡 Sandalen",
+  "handle": "sub-sandalen",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689775903105",
+  "title": "👢 Stiefel & Boots",
+  "handle": "sub-stiefel-boots",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689775935873",
+  "title": "👠 Pumps & High Heels",
+  "handle": "sub-pumps-heels",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689775968641",
+  "title": "🥿 Ballerinas & Flats",
+  "handle": "sub-ballerinas",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689776001409",
+  "title": "🩴 Hausschuhe & Slipper",
+  "handle": "sub-hausschuhe",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689776034177",
+  "title": "🏃 Lauf- & Sportschuhe",
+  "handle": "sub-laufschuhe",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689776066945",
+  "title": "🥾 Wander- & Arbeitsschuhe",
+  "handle": "sub-wander-arbeitsschuhe",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689776198017",
+  "title": "💻 PC-Komponenten & Speicher",
+  "handle": "pc-komponenten",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689776329089",
+  "title": "🕹️ Spass-Elektronik & RC",
+  "handle": "spass-elektronik",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689776853377",
+  "title": "🌿 Smoke & Chill Zubehör",
+  "handle": "smoke-zubehoer",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689777017217",
+  "title": "📦 Verpackung & Versandmaterial",
+  "handle": "verpackung-versand",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689777049985",
+  "title": "🎀 Geschenkverpackung",
+  "handle": "geschenkverpackung",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689778000257",
+  "title": "🧥 Jacken & Outdoor-Mode",
+  "handle": "jacken-outdoor",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689778033025",
+  "title": "🥾 Wandern & Trekking",
+  "handle": "wandern-trekking",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689778065793",
+  "title": "🔧 Ersatzteile & Zubehör",
+  "handle": "ersatzteile-zubehoer",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689831346561",
+  "title": "🦸 Actionfiguren & Sammelfiguren",
+  "handle": "actionfiguren",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689834393985",
+  "title": "⚡ EU-Lager — Schnell geliefert",
+  "handle": "eu-lager-schnell",
+  "sortOrder": "CREATED_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689837736321",
+  "title": "💎 Premium & Marken",
+  "handle": "premium-marken-lager",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689869685121",
+  "title": "🥽 VR, AI & Neuheiten",
+  "handle": "vr-ai-neuheiten",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689869816193",
+  "title": "📱 Handyhüllen & Cases",
+  "handle": "handy-huellen",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689869881729",
+  "title": "🛡️ Panzerglas & Displayschutz",
+  "handle": "handy-schutzglas",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689869947265",
+  "title": "🔌 Ladegeräte & Kabel",
+  "handle": "handy-laden",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689869980033",
+  "title": "🔋 Powerbanks",
+  "handle": "handy-powerbanks",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689870012801",
+  "title": "🧲 Halterungen & MagSafe",
+  "handle": "handy-halterungen",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689870045569",
+  "title": "🤳 Selfie, Gimbal & Stative",
+  "handle": "handy-selfie-video",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689870963073",
+  "title": "🎨 Selbst gestalten – Deine Design-Produkte",
+  "handle": "selbst-gestalten",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689883971969",
+  "title": "💐 Damenparfüm",
+  "handle": "parfuem-damen",
+  "sortOrder": "CREATED_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/689884004737",
+  "title": "🧔 Herrenparfüm",
+  "handle": "parfuem-herren",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689884037505",
+  "title": "🐶 Hundewelt",
+  "handle": "hundewelt",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689884070273",
+  "title": "🐱 Katzenwelt",
+  "handle": "katzenwelt",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689884103041",
+  "title": "🧩 Puzzles",
+  "handle": "puzzles",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689884135809",
+  "title": "🔊 Lautsprecher & Boxen",
+  "handle": "lautsprecher",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689884168577",
+  "title": "☕ Kaffee-Ecke",
+  "handle": "kaffee-ecke",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689884201345",
+  "title": "🍷 Wein & Bar",
+  "handle": "wein-bar",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689884234113",
+  "title": "💇 Haarstyling-Geräte",
+  "handle": "haarstyling-geraete",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689884266881",
+  "title": "💅 Nails & Nagelstudio",
+  "handle": "nagelstudio",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689991745921",
+  "title": "🏊 Schwimmen & Badi",
+  "handle": "schwimmen-badi",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689991778689",
+  "title": "⚽ Fussball & Fanshop",
+  "handle": "fussball-fanshop",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689991811457",
+  "title": "🔩 Bohren & Sägen",
+  "handle": "bohren-saegen",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689991844225",
+  "title": "🪚 Schleifen & Trennen",
+  "handle": "schleifen-trennen",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689991876993",
+  "title": "⌨️ Tastaturen & Mäuse",
+  "handle": "tastatur-maus",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689991909761",
+  "title": "📶 Netzwerk & WLAN",
+  "handle": "netzwerk-router",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/689991942529",
+  "title": "🔌 Kabel & Adapter",
+  "handle": "kabel-adapter",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690562924929",
+  "title": "🎭 Kostüme & Fasnacht",
+  "handle": "kostueme-fasnacht",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690562990465",
+  "title": "🎃 Halloween",
+  "handle": "fortura-halloween",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690563023233",
+  "title": "🎉 Party & Deko",
+  "handle": "party-deko-ch",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690563056001",
+  "title": "🎄 Weihnachten",
+  "handle": "fortura-weihnachten",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690573050241",
+  "title": "🚀 Blitzversand · 1–2 Tage aus der Schweiz",
+  "handle": "blitzversand-schweiz",
+  "sortOrder": "CREATED_DESC"
+ },
+ {
+  "id": "gid://shopify/Collection/690576785793",
+  "title": "👗 Damenkostüme",
+  "handle": "ft-damenkostuem",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690576818561",
+  "title": "🤵 Herrenkostüme",
+  "handle": "ft-herrenkostuem",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690576851329",
+  "title": "🎭 Unisex- & Tierkostüme",
+  "handle": "ft-unisexkostuem",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690576884097",
+  "title": "🧒 Kinderkostüme",
+  "handle": "ft-kinderkostuem",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690576916865",
+  "title": "🇨🇭 Trachten & Edelweiss",
+  "handle": "ft-trachten",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690576949633",
+  "title": "💇 Perücken",
+  "handle": "ft-peruecke",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690576982401",
+  "title": "🎩 Hüte & Kopfbedeckung",
+  "handle": "ft-kostuem-hut",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690577015169",
+  "title": "😷 Masken",
+  "handle": "ft-maske",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690577047937",
+  "title": "🧤 Kostüm-Accessoires",
+  "handle": "ft-kostuem-accessoire",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690577080705",
+  "title": "⚽ Fanartikel & Länder",
+  "handle": "ft-fanartikel",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690577146241",
+  "title": "🧸 Plüschtiere",
+  "handle": "ft-pluesch",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690577179009",
+  "title": "🚜 BRUDER Fahrzeuge",
+  "handle": "ft-bruder",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690577211777",
+  "title": "🏠 Wohndeko",
+  "handle": "ft-wohndeko-ft",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690577244545",
+  "title": "🎈 Ballone & Deko",
+  "handle": "ft-ballone",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690626527617",
+  "title": "🍽️ Näpfe & Futter-Zubehör",
+  "handle": "haustier-napf-futter",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690626560385",
+  "title": "🌈 LED-Strips & Lichterketten",
+  "handle": "licht-led-strip",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690626593153",
+  "title": "🛋️ Tisch- & Schreibtischlampen",
+  "handle": "licht-tischlampe",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690626625921",
+  "title": "🏛️ Steh- & Deckenlampen",
+  "handle": "licht-decken-steh",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690626658689",
+  "title": "🌙 Nachtlicht & Projektoren",
+  "handle": "licht-nachtlicht-projektor",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690626691457",
+  "title": "☀️ Solar- & Aussenleuchten",
+  "handle": "licht-solar-aussen",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690801836417",
+  "title": "⌚ Herrenuhren",
+  "handle": "uhren-herren",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690801869185",
+  "title": "⌚ Damenuhren",
+  "handle": "uhren-damen",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690801901953",
+  "title": "👠 High Heels & Pumps",
+  "handle": "schuhe-absatz",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690801934721",
+  "title": "🧴 Hautpflege",
+  "handle": "beauty-hautpflege",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690801967489",
+  "title": "💇 Haarpflege & Styling",
+  "handle": "beauty-haar",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690802000257",
+  "title": "💅 Nageldesign",
+  "handle": "beauty-naegel",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690802065793",
+  "title": "🌸 Parfum & Düfte",
+  "handle": "beauty-duefte",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690802098561",
+  "title": "🍳 Küche",
+  "handle": "wohnen-kueche",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690802131329",
+  "title": "🛁 Badezimmer",
+  "handle": "wohnen-bad",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690802164097",
+  "title": "📦 Aufbewahrung & Ordnung",
+  "handle": "wohnen-aufbewahrung",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690802196865",
+  "title": "🎧 Kopfhörer & Lautsprecher",
+  "handle": "elektronik-audio",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690802262401",
+  "title": "🔌 Ladegeräte & Powerbanks",
+  "handle": "elektronik-laden",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690802295169",
+  "title": "📱 Handy-Zubehör",
+  "handle": "elektronik-handy",
+  "sortOrder": "BEST_SELLING"
+ },
+ {
+  "id": "gid://shopify/Collection/690802327937",
+  "title": "🧥 Damen Jacken & Mäntel",
+  "handle": "damen-jacken",
+  "sortOrder": "BEST_SELLING"
+ }
+]
