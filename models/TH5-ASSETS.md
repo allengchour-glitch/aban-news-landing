@@ -789,6 +789,7 @@ ist damit y = 0; **außen ist +y** (three.js −z, die Schauseite).
 | `th34_dach_giebel.glb` | 4,39 × 0,36 × 1,70 | Abschluss | Giebeldreieck mit Lüftungsluke |
 | `th34_treppe.glb` | 4,01 × 1,25 × 3,82 | eine Geschosshöhe | 17 Steigungen à 0,176, Handlauf |
 | `th34_balkon.glb` | **4,000** × 1,61 × 1,75 | an ein Wandmodul | Brüstung, Handlauf, Konsolen |
+| `th34_beispielhaus.glb` | 8,64 × 5,93 × 7,73 | — | **fertig zusammengesetzt** aus den Modulen |
 
 Generator: `tools/assets/mk_th34_hausbaukasten.py` · Texturen aus `textures/th32` (Fassade: `hausputz.png`).
 
@@ -800,7 +801,20 @@ Generator: `tools/assets/mk_th34_hausbaukasten.py` · Texturen aus `textures/th3
 > Balkon wird an der Geschossdecke montiert, seine **Oberkante** ist der Bezugspunkt,
 > die Konsolen greifen darunter an die Fassade.
 
-> 🔧 Vier Fehler, die erst die Messung bzw. der Render gezeigt hat — alle behoben:
+> 🧩 **`th34_beispielhaus` ist die Bauanleitung UND der Raster-Test.** Es ist nur aus
+> den dokumentierten Schritten zusammengesetzt (x += 4,00, z += 3,00), ohne eine
+> einzige Sonderzahl. Bliebe an einer Ecke oder einem Geschossstoß eine Fuge, wäre
+> die Maßangabe falsch. Gemessene Höhe 7,73 = 2 × 3,00 + 1,73 Dach — genau wie
+> gerechnet. Wer den Kasten benutzt, kann den Aufbau dort ablesen:
+>
+> ```
+> Süd  y = -2, rot π      Nord y = +2, rot 0
+> West x = -4, rot π/2    Ost  x = +4, rot -π/2
+> Ecken (±4, ±2) · Decken (±2, 0) auf z = 2,75 und 5,75
+> Dach  (±2, 0) auf z = 6,00 · Giebel (±4, 0) quer dazu
+> ```
+>
+> 🔧 Fünf Fehler, die erst die Messung bzw. der Render gezeigt hat — alle behoben:
 > * **Zargen und Randbalken waren höher als ihr Bauteil, saßen aber auf dessen Mitte**
 >   und ragten dadurch unter den Boden (zmin −0,151 / −0,130 / −0,010).
 > * Die **untere Türfüllung** stand bei z = 0,13 und war 0,56 hoch — sie hing unter der Tür.
@@ -808,6 +822,10 @@ Generator: `tools/assets/mk_th34_hausbaukasten.py` · Texturen aus `textures/th3
 >   0,250) und flimmerte gegen sich selbst.
 > * Ein **C-Kommentar `/* */` im Python-Generator** — die Datei parste nicht mehr, und
 >   ein „0 Tracebacks"-Check fing das nicht. `ast.parse` nach jeder Änderung fängt es.
+> * **Jedes Modul rief selbst `neu()`**, was die Szene leert. Das Beispielhaus bestand
+>   deshalb nur aus dem zuletzt gesetzten Teil (gemessen 4,00 × 1,61 — der Balkon).
+>   Die Geometrie liegt jetzt in `_b_*`-Funktionen ohne `neu()`; `_modul()` exportiert
+>   ein Einzelteil, `beispielhaus()` kombiniert dieselben Bauer zu einem Haus.
 
 ---
 ## 1z2. Charge 33 — PARK-AUSSTATTUNG (`models/th33_*.glb`)

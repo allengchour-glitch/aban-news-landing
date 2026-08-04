@@ -379,15 +379,25 @@ def putzflaeche(x, z, bx, bz, m, kachel=1.6):
     """Wandstueck mit auf Weltmass gebrachten UVs."""
     return uv_kacheln(box(x, 0, z, bx, DI, bz, m), kachel)
 
+def _modul(name, bauer, bevel=0.014):
+    """Ein Bauteil einzeln exportieren. Die Geometrie steckt in den `_b_*`-Funktionen,
+    die NICHT `neu()` rufen — nur so lassen sie sich auch zu einem Haus kombinieren.
+    Vorher rief jedes Modul selbst `neu()`, was die Szene leert: das Beispielhaus
+    bestand deshalb nur aus dem zuletzt gesetzten Teil (gemessen 4,00 x 1,61 —
+    das war der Balkon)."""
+    neu(); bauer(); export(name, bevel, 2)
+
 # ================================================================ 1) Wand voll
-def wand_voll():
+def _b_wand_voll():
     """Geschlossenes Wandmodul. Sockelband unten, Traufgesims oben — genau die
     zwei Kanten, die eine Wand als Bauteil lesbar machen."""
-    neu(); M = _mats()
+    M = _mats()
     putzflaeche(0, WH/2, BR, WH, M["putz"])
     sockelband(M["sockel"])
     box(0, 0, WH - 0.09, BR, DI + 0.12, 0.18, M["sockel"])   # Traufgesims
-    export("th34_wand_voll", 0.014, 2)
+
+def wand_voll():
+    _modul("th34_wand_voll", _b_wand_voll, 0.014)
 
 # ================================================================ 2) Wand mit Fenster
 def _fenster(cx, cz, fb, fh, M):
@@ -404,20 +414,22 @@ def _fenster(cx, cz, fb, fh, M):
     box(cx, -DI*0.18, cz, 0.05, 0.05, fh, M["rahm"])                     # Sprossen
     box(cx, -DI*0.18, cz, fb, 0.05, 0.05, M["rahm"])
 
-def wand_fenster():
+def _b_wand_fenster():
     """Wandmodul mit einem mittigen Fenster 1,60 x 1,30."""
-    neu(); M = _mats()
+    M = _mats()
     FB, FH, FZ = 1.60, 1.30, 1.52
     putzflaeche(0, (FZ - FH/2)/2, BR, FZ - FH/2, M["putz"])              # Bruestung
     putzflaeche(0, (FZ + FH/2 + WH)/2, BR, WH - FZ - FH/2, M["putz"])    # Sturzfeld
     _fenster(0, FZ, FB, FH, M)
     sockelband(M["sockel"])
     box(0, 0, WH - 0.09, BR, DI + 0.12, 0.18, M["sockel"])
-    export("th34_wand_fenster", 0.014, 2)
 
-def wand_fenster2():
+def wand_fenster():
+    _modul("th34_wand_fenster", _b_wand_fenster, 0.014)
+
+def _b_wand_fenster2():
     """Wandmodul mit zwei schmalen Fenstern — fuer Treppenhaus und Bad."""
-    neu(); M = _mats()
+    M = _mats()
     FB, FH, FZ = 0.85, 1.30, 1.52
     putzflaeche(0, (FZ - FH/2)/2, BR, FZ - FH/2, M["putz"])
     putzflaeche(0, (FZ + FH/2 + WH)/2, BR, WH - FZ - FH/2, M["putz"])
@@ -433,12 +445,14 @@ def wand_fenster2():
     putzflaeche(0, FZ, 0.0001, FH, M["putz"])
     sockelband(M["sockel"])
     box(0, 0, WH - 0.09, BR, DI + 0.12, 0.18, M["sockel"])
-    export("th34_wand_fenster2", 0.014, 2)
+
+def wand_fenster2():
+    _modul("th34_wand_fenster2", _b_wand_fenster2, 0.014)
 
 # ================================================================ 4) Wand mit Tuer
-def wand_tuer():
+def _b_wand_tuer():
     """Wandmodul mit Haustuer 1,10 x 2,15, Zarge, Oberlicht und Stufe."""
-    neu(); M = _mats()
+    M = _mats()
     TB, TH = 1.10, 2.15
     putzflaeche(0, (TH + WH)/2, BR, WH - TH, M["putz"])                  # Sturzfeld
     for s in (-1, 1):                                                     # Wandfelder seitlich
@@ -457,12 +471,14 @@ def wand_tuer():
     box(0, 0.22, 0.07, TB + 0.60, 0.66, 0.14, M["bank"])                  # Stufe
     sockelband(M["sockel"])
     box(0, 0, WH - 0.09, BR, DI + 0.12, 0.18, M["sockel"])
-    export("th34_wand_tuer", 0.014, 2)
+
+def wand_tuer():
+    _modul("th34_wand_tuer", _b_wand_tuer, 0.014)
 
 # ================================================================ 5) Wand mit Garagentor
-def wand_tor():
+def _b_wand_tor():
     """Wandmodul mit Sektional-Garagentor 2,60 x 2,10."""
-    neu(); M = _mats()
+    M = _mats()
     TB, TH = 2.60, 2.10
     putzflaeche(0, (TH + WH)/2, BR, WH - TH, M["putz"])
     for s in (-1, 1):
@@ -477,25 +493,29 @@ def wand_tor():
     box(0, -DI*0.26, 0.68, 0.44, 0.08, 0.10, M["metall"])                 # Griff
     sockelband(M["sockel"])
     box(0, 0, WH - 0.09, BR, DI + 0.12, 0.18, M["sockel"])
-    export("th34_wand_tor", 0.014, 2)
+
+def wand_tor():
+    _modul("th34_wand_tor", _b_wand_tor, 0.014)
 
 # ================================================================ 6) Ecke
-def ecke():
+def _b_ecke():
     """Eckpfeiler 0,30 x 0,30, Aussenkanten buendig zur Wandflucht beider Seiten.
     Ohne ihn klafft an jeder Hausecke eine Fuge, weil zwei Wandmodule im rechten
     Winkel nur ihre Stirnseiten aneinanderlegen."""
-    neu(); M = _mats()
+    M = _mats()
     box(0, 0, WH/2, DI, DI, WH, M["putz"])
     box(0, 0, 0.22, DI + 0.10, DI + 0.10, 0.44, M["sockel"])
     box(0, 0, WH - 0.09, DI + 0.14, DI + 0.14, 0.18, M["sockel"])
     for zz in (0.9, 1.55, 2.2):                                           # Eckquaderung
         box(0, 0, zz, DI + 0.06, DI + 0.06, 0.22, M["bank"])
-    export("th34_ecke", 0.012, 2)
+
+def ecke():
+    _modul("th34_ecke", _b_ecke, 0.012)
 
 # ================================================================ 7) Geschossdecke
-def decke():
+def _b_decke():
     """Decken-/Bodenplatte 4,00 x 4,00 x 0,25. Oberseite gedielt, Unterseite glatt."""
-    neu(); M = _mats()
+    M = _mats()
     # Nur EINE Platte. Eine zweite Dielenschicht bei DE-0.015 (0,03 hoch) reichte
     # von 0,235 bis 0,265 und ueberlappte damit die Oberkante bei 0,250 — im Bild
     # flimmerte der Boden gegen sich selbst.
@@ -503,38 +523,44 @@ def decke():
     for s in (-1, 1):                                                     # Randbalken
         box(0, s*(BR/2 - 0.06), DE/2, BR, 0.12, DE, M["sockel"])
         box(s*(BR/2 - 0.06), 0, DE/2, 0.12, BR, DE, M["sockel"])
-    export("th34_decke", 0.010, 2)
+
+def decke():
+    _modul("th34_decke", _b_decke, 0.01)
 
 # ================================================================ 8) Satteldach-Modul
-def dach_sattel():
+def _b_dach_sattel():
     """Satteldach-Abschnitt, 4,00 m lang, First in x — beliebig reihbar.
     Als PRISMA gebaut: `kegel(vertices=4)` waere eine Pyramide, deren Ecken auf
     den Achsen liegen, und das Modul waere breiter als sein Raster."""
-    neu(); M = _mats()
+    M = _mats()
     SP, HH = 4.40, 1.70                     # Spannweite quer, Firsthoehe
     o = giebel(0, 0, 0, SP/2, HH, BR, M["dach"], 'y')
     for s in (-1, 1):                       # Traufbrett
         box(0, s*(SP/2 - 0.06), 0.10, BR + 0.04, 0.16, 0.20, M["holz"])
     box(0, 0, HH - 0.04, BR + 0.04, 0.26, 0.14, M["holz"])   # Firstziegel
-    export("th34_dach_sattel", 0.012, 2)
+
+def dach_sattel():
+    _modul("th34_dach_sattel", _b_dach_sattel, 0.012)
 
 # ================================================================ 9) Giebelwand
-def dach_giebel():
+def _b_dach_giebel():
     """Giebel-Abschluss fuer das Satteldach — dreieckige Wandflaeche mit
     Lueftungsluke."""
-    neu(); M = _mats()
+    M = _mats()
     SP, HH = 4.40, 1.70
     g = giebel(0, 0, 0, SP/2, HH, DI, M["putz"], 'x')
     box(0, 0, HH*0.42, 0.62, DI + 0.06, 0.46, M["holz"])
     box(0, -DI*0.4, HH*0.42, 0.46, 0.05, 0.32, M["metall"])
-    export("th34_dach_giebel", 0.012, 2)
+
+def dach_giebel():
+    _modul("th34_dach_giebel", _b_dach_giebel, 0.012)
 
 # ================================================================ 10) Treppe
-def treppe_modul():
+def _b_treppe_modul():
     """Gerader Treppenlauf ueber eine Geschosshoehe (3,00 m) auf 4,00 m Lauflaenge.
     17 Steigungen a 0,176 — das ist die Steigung, die sich im Spiel begehbar
     anfuehlt; flacher wird der Lauf zu lang fuer das Raster."""
-    neu(); M = _mats()
+    M = _mats()
     n = 17
     st, au = GH/n, BR/n
     for i in range(n):
@@ -545,13 +571,15 @@ def treppe_modul():
             box(-BR/2 + au*(i + 0.5), s*0.58, st*(i + 1) + 0.50, 0.07, 0.07, 1.00, M["metall"])
         o = box(0, s*0.58, GH/2 + 0.52, BR*1.03, 0.09, 0.09, M["metall"])
         o.rotation_euler[1] = -math.atan2(GH, BR)
-    export("th34_treppe", 0.012, 2)
+
+def treppe_modul():
+    _modul("th34_treppe", _b_treppe_modul, 0.012)
 
 # ================================================================ 11) Balkon
-def balkon():
+def _b_balkon():
     """Auskragender Balkon, 4,00 m breit, 1,60 m tief — passt genau auf ein
     Wandmodul und wird an dessen Aussenseite gesetzt."""
-    neu(); M = _mats()
+    M = _mats()
     T = 1.60
     box(0, T/2, 0.09, BR, T, 0.18, M["sockel"])
     box(0, T - 0.06, 0.62, BR, 0.10, 0.90, M["rahm"])                     # Bruestung vorn
@@ -566,11 +594,63 @@ def balkon():
     # zmin < 0; steht so in der Doku.
     for s in (-1, 1):
         o = strebe((s*1.5, 0.06, 0.02), (s*1.5, T - 0.3, -0.55), 0.12, M["sockel"])
-    export("th34_balkon", 0.012, 2)
+
+def balkon():
+    _modul("th34_balkon", _b_balkon, 0.012)
+
+# ================================================================ 12) Beispielhaus
+def _teil(fn, px, py, rot=0.0, pz=0.0):
+    """Baut ein Modul und setzt es als GANZES an seinen Platz.
+    Das Empty bekommt bewusst KEINE matrix_parent_inverse — die Kinder SOLLEN sich
+    mitbewegen. (Genau umgekehrt zur Regel bei Animationen, wo die Inverse die
+    Weltlage der Kinder erhaelt.)"""
+    vor = set(bpy.context.scene.objects)
+    fn()
+    emp = bpy.data.objects.new("Platz", None)
+    bpy.context.collection.objects.link(emp)
+    emp.location = (px, py, pz); emp.rotation_euler[2] = rot
+    for o in list(bpy.context.scene.objects):
+        if o in vor or o is emp: continue
+        o.parent = emp
+    return emp
+
+def beispielhaus():
+    """Fertiges Haus, NUR aus den dokumentierten Rasterschritten zusammengesetzt —
+    keine Sonderzahlen. Das ist zugleich der Beweis, dass das Raster stimmt: bliebe
+    an Ecken oder Geschossstoessen eine Fuge, waere die Massangabe falsch.
+
+    Grundriss 8 x 4 m (zwei Module breit, eines tief), zwei Geschosse:
+        Sued  y = -2, rot pi     |  Nord y = +2, rot 0
+        West  x = -4, rot pi/2   |  Ost  x = +4, rot -pi/2
+        Ecken (+-4, +-2) · Decken (+-2, 0) auf z = 2,75 bzw. 5,75
+        Satteldach (+-2, 0) auf z = 6,00 · Giebel (+-4, 0) quer dazu
+    """
+    neu()
+    def w(fn, px, py, rot, g):
+        _teil(fn, px, py, rot, g*GH)
+    for g in (0, 1):
+        w(_b_wand_tuer if g == 0 else _b_wand_fenster, -2, -2, math.pi, g)   # Sued
+        w(_b_wand_fenster,                           2, -2, math.pi, g)
+        w(_b_wand_fenster2, -2, 2, 0, g)                                  # Nord
+        w(_b_wand_voll,      2, 2, 0, g)
+        w(_b_wand_tor if g == 0 else _b_wand_fenster, -4, 0,  math.pi/2, g)  # West
+        w(_b_wand_fenster,                          4, 0, -math.pi/2, g)  # Ost
+        for sx in (-4, 4):
+            for sy in (-2, 2):
+                _teil(_b_ecke, sx, sy, 0, g*GH)
+        for sx in (-2, 2):
+            _teil(_b_decke, sx, 0, 0, g*GH + WH)
+    for sx in (-2, 2):
+        _teil(_b_dach_sattel, sx, 0, 0, 2*GH)
+    for sx in (-4, 4):
+        _teil(_b_dach_giebel, sx, 0, math.pi/2, 2*GH)
+    _teil(_b_balkon, 2, -2, math.pi, GH + WH)
+    export("th34_beispielhaus", 0.014, 2)
 
 if __name__ == "__main__":
     print("Asset-Charge 34 (th34, Haus-Baukasten):")
     for fn in (wand_voll, wand_fenster, wand_fenster2, wand_tuer, wand_tor,
-               ecke, decke, dach_sattel, dach_giebel, treppe_modul, balkon):
+               ecke, decke, dach_sattel, dach_giebel, treppe_modul, balkon,
+               beispielhaus):
         fn()
     print("fertig")
