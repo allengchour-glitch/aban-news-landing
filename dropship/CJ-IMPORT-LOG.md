@@ -2629,3 +2629,7 @@ Schmuck-SETS (Halskette+Ohrringe) gehören legitim in BEIDE Collections, nicht �
   Beide via fulfillmentTrackingInfoUpdateV2 am Fulfillment hinterlegt (notifyCustomer:false). Lehre: nach CJ-Zahlung
   Tracking später nochmal gegen die App/API prüfen — die erste Nummer kann ersetzt werden.
 - Payoneer verifiziert (User) → CJ-Wallet-Aufladung künftig möglich.
+
+### ✅ REPRICE ABGESCHLOSSEN (2026-08-05): 7089/7089
+Alle 6'746 Verlust-Artikel (CJ < CHF 13) auf Boden 15.90 + 343 Über-Preisungen revertiert. Zusammen mit den
+frachtbewussten Importer-Formeln gilt: **kein Produkt im Katalog verkauft mehr unter Einstandskosten.**
