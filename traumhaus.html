@@ -1086,7 +1086,17 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     g.position.set(0,0,-90.5);scene.add(g);})();
   // ---- Gleis am Stadtrand (Süden) ----
   (function gleis(){var g=new THREE.Group();
-    for(var s3=-120;s3<120;s3+=2.2){var schw=new THREE.Mesh(new THREE.BoxGeometry(3.4,0.16,0.6),stdMat(0x5a4230,0.85));schw.position.set(s3,0.08,0);g.add(schw);}
+    /* 🚦 BAHNUEBERGANG. Das Gleis lief bei z=112 quer ueber die Muendungen der
+       beiden Sued-Zubringer (x = ±RX): 0,16 m hohe Schwellen mitten auf der
+       Fahrbahn. An einem echten Uebergang liegt die Strasse buendig zwischen den
+       Schienen — also dort keine Schwellen, sondern eine ebene Platte. */
+    for(var s3=-120;s3<120;s3+=2.2){
+      if(Math.abs(Math.abs(s3)-RX)<5.6)continue;
+      var schw=new THREE.Mesh(new THREE.BoxGeometry(3.4,0.16,0.6),stdMat(0x5a4230,0.85));schw.position.set(s3,0.08,0);g.add(schw);}
+    /* KEINE Deckplatte am Uebergang: ein 0,16 m hoher Quader las sich von oben
+       wie eine Stufe quer ueber die Fahrbahn — schlimmer als die Schwellen.
+       Ohne Schwellen laufen nur die beiden flachen Schienen ueber den Asphalt,
+       genau wie an einem echten Uebergang. */
     [-1.3,1.3].forEach(function(rx){var sch=new THREE.Mesh(new THREE.BoxGeometry(240,0.12,0.16),stdMat(0x88888e,0.4));sch.position.set(0,0.2,rx);g.add(sch);});
     g.position.set(0,0.01,112);scene.add(g);})(); // Gleis weiter raus (schnitt sonst durch den See)
 })();
@@ -1188,8 +1198,15 @@ var strMatH=stdMat(0x4a4a53,0.92,true),strMatV=stdMat(0x4a4a53,0.92,true);  /* e
   sand.rotation.x=-Math.PI/2;sand.position.set(-128,-0.02,0);sand.receiveShadow=true;scene.add(sand);
   if(typeof ladeTex==="function")ladeTex("textures/th/sand.jpg",7,140,function(t){sand.material.map=t;sand.material.needsUpdate=true;}); /* 🏖️ ~2u/Kachel statt 7-8u — sonst wirken die Sandwellen riesig */ /* 🏖️ KI-Textur (Pollinations, gratis) */
   /* Zufahrts-Strasse: von der West-Strasse (x=-RX) zur Küste bei z=-30 */
-  var zuf=new THREE.Mesh(new THREE.PlaneGeometry(56,10),betMat(0x6b6b72,0.9));
-  zuf.rotation.x=-Math.PI/2;zuf.rotation.z=Math.PI/2;zuf.position.set(-RX-28,-0.003,-30);zuf.receiveShadow=true;scene.add(zuf);
+  /* Farbton auf Fahrbahn-Grau: mit 0x6b6b72 las sich die Zufahrt aus der Luft
+     wie ein Betonplatz, nicht wie eine Strasse. */
+  var zuf=new THREE.Mesh(new THREE.PlaneGeometry(56,10),betMat(0x4a4a53,0.92));
+  /* 🐛 `rotation.z=PI/2` hat diese Zufahrt um 90 Grad gedreht: statt von der
+     West-Strasse zum Strand zu fuehren, lag sie als 56 m langer grauer Riegel
+     LAENGS auf der West-Ringstrasse (x -111 … -101, z -58 … -2) und deckte deren
+     rechte Spur zu. Nach `rotation.x` liegt die Ebene bereits richtig: 56 in x,
+     10 in z — also von x -134 (Wendeplatz am Strand) bis x -78 (West-Strasse). */
+  zuf.rotation.x=-Math.PI/2;zuf.position.set(-RX-28,-0.003,-30);zuf.receiveShadow=true;scene.add(zuf);
   /* 🅿️ Wendeplatz am Strand statt abrupt endender Fahrbahn */
   var wp=new THREE.Mesh(new THREE.CircleGeometry(9,24),betMat(0x6b6b72,0.9));
   wp.rotation.x=-Math.PI/2;wp.position.set(-132,-0.0025,-30);wp.receiveShadow=true;scene.add(wp); /* ans WESTENDE der Zufahrt (-134..-78), nicht mittendrauf */
@@ -1362,15 +1379,38 @@ var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_d
        Jetzt laufen sie bis zur jeweils passenden Aussen-/Innenflucht durch, dort
        treffen sich Laengs- und Querstueck sauber ueber Eck. */
     var AUS=RGX+5.6, INN=RGX-5.6;                        // Gehwegfluchten links/rechts
-    tr(2*AUS,2.0,0,-105.6,0.052); tr(2*INN,2.0,0,-94.4,0.052);   // Ring Nord
-    tr(2*INN,2.0,0,112.4,0.052);  tr(2*AUS,2.0,0,123.6,0.052);   // Ring Sued
+    /* 🚧 MUENDUNGEN AUSSPAREN. Der innere Ring-Gehweg lief als EIN Streifen ueber
+       die volle Breite — also quer ueber die Muendungen der beiden Zubringer bei
+       x = ±RX. Die Seitenstrasse endete dadurch an einer durchgehenden Bordkante,
+       und die Zubringer-Gehwege ragten ihrerseits 1,1 m in die Ring-Fahrbahn
+       (User-Markierung auf der Draufsicht). Die inneren Haupt- und Querstrassen
+       machen es weiter oben schon richtig, der Ring war der Nachzuegler. */
+    var HB=4.8;                                          // halbe Fahrbahn Zubringer/Zufahrt
+    function stueck(a0,a1,laengs,fest,y){                // ein Gehwegstueck, wenn lang genug
+      if(a1-a0<0.6)return;
+      if(laengs)tr(a1-a0,2.0,(a0+a1)/2,fest,y); else tr(2.0,a1-a0,fest,(a0+a1)/2,y);}
+    function mitLuecken(von,bis,luecken,laengs,fest,y){
+      var g=von;
+      luecken.slice().sort(function(p,q){return p-q;}).forEach(function(c){
+        stueck(g,Math.min(bis,c-HB),laengs,fest,y); g=Math.max(g,c+HB);});
+      stueck(g,bis,laengs,fest,y);}
+    tr(2*AUS,2.0,0,-105.6,0.052);                                   // Ring Nord aussen
+    mitLuecken(-INN,INN,[-RX,RX],true,-94.4,0.052);                 // Ring Nord innen
+    mitLuecken(-INN,INN,[-RX,RX],true,112.4,0.052);                 // Ring Sued innen
+    tr(2*AUS,2.0,0,123.6,0.052);                                    // Ring Sued aussen
     var zA0=RGZ_N-5.6, zA1=RGZ_S+5.6, zI0=RGZ_N+5.6, zI1=RGZ_S-5.6;
-    tr(2.0,zA1-zA0,-117.6,(zA0+zA1)/2,0.054); tr(2.0,zI1-zI0,-106.4,(zI0+zI1)/2,0.054); // Ring West
+    /* Die Strandzufahrt (z = -30) quert den West-Ring — beide West-Gehwege
+       brauchen dort ebenfalls eine Luecke, sonst endet auch sie an einer Kante. */
+    mitLuecken(zA0,zA1,[-30],false,-117.6,0.054);                   // Ring West aussen
+    mitLuecken(zI0,zI1,[-30],false,-106.4,0.054);                   // Ring West innen
     tr(2.0,zI1-zI0,106.4,(zI0+zI1)/2,0.054);  tr(2.0,zA1-zA0,117.6,(zA0+zA1)/2,0.054);  // Ring Ost
     [RX,-RX].forEach(function(xc){                        // Zubringer nach Norden und Sueden
       [xc-5.6,xc+5.6].forEach(function(xe){
-        tr(2.0,Math.abs(RGZ_N+SZ9+23)-6,xe,(RGZ_N-(SZ9+23))/2,0.05);
-        tr(2.0,Math.abs(RGZ_S-(SZ9+23))-6,xe,(RGZ_S+(SZ9+23))/2,0.05);});});
+        /* Fruehere Laenge |RGZ_N+SZ9+23|-6 endete bei z = -97 und damit 1,1 m
+           INNERHALB der Ring-Fahrbahn (Kante -95,5). Jetzt buendig an der
+           Aussenkante des Ring-Gehwegs. */
+        stueck(RGZ_N+5.6, -(SZ9+23)+3, false, xe, 0.05);
+        stueck(SZ9+23-3, RGZ_S-5.6,    false, xe, 0.05);});});
   })();
   // Zebrastreifen an den Kreuzungen (Fussgaenger queren die Hauptstrassen)
   var zMat=new THREE.MeshStandardMaterial({color:0xcfcfc6,roughness:0.85});zMat.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(zMat);
@@ -1734,8 +1774,16 @@ var dorfFenster=[];
   [64].forEach(function(hx){haus(hx,SZ+31,Math.PI,seed++);}); /* Die Suedseite ist inzwischen
      Stadtzentrum (Altstadt, Ladenzeile, Rathaus, Marktplatz, Park) — dort ist nur noch ein
      Bauplatz frei. Wohnen findet im Norden statt, das gibt beiden Seiten Luft. */ // -20/34 raus: Wirtshaus + Marktplatz brauchen den Platz
-  [-42,-24,2,20,44].forEach(function(hz){haus(-(RX+11),hz,Math.PI/2,seed++);});
-  [-44,-26,4,22,40].forEach(function(hz){haus(RX+11,hz,-Math.PI/2,seed++);}); // zwischen den Hauptstrassen: nichts ragt in Fahrbahn/Gehweg
+  /* 🏡 VILLENPARZELLEN AUSSPAREN. Die Villen stehen bei (-96|8), (-96|28),
+     (96|-22) und (96|-44) und haben je eine Parzelle von 18 x 14 m — auf der
+     Strassenseite endet sie genau bei x = -+89. Genau dort stand diese Reihe:
+     vier Dorfhaeuser sassen mitten auf dem Vorderzaun, im Gartentor und in der
+     Garageneinfahrt (User-Markierung auf der Draufsicht). Frei bleiben
+     West z -42, -24, -6, 44 und Ost z -8, 4, 22, 40. */
+  /* z = -24 faellt weg: die Strandzufahrt liegt bei z -35 … -25 und das Haus
+     reichte bis -27 — es stand mit einer Ecke auf der Fahrbahn. */
+  [-42,-20,-6,44].forEach(function(hz){haus(-(RX+11),hz,Math.PI/2,seed++);});
+  [-8,4,22,40].forEach(function(hz){haus(RX+11,hz,-Math.PI/2,seed++);}); // zwischen den Hauptstrassen: nichts ragt in Fahrbahn/Gehweg
   // Vorgaerten: Plattenweg zur Tuer + Hecken + Blumen (Haeuser wirkten wegelos im Gras)
   if(!_texBlatt)_texBlatt=_strukTex("blatt");
   var heckM=new THREE.MeshStandardMaterial({color:0x4a7a42,roughness:0.95,map:_texBlatt}),wegM=betMat(0xcfc8b8,0.9),
