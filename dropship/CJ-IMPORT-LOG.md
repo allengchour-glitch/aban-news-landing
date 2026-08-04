@@ -2610,3 +2610,12 @@ Die **Ad-Landing `/collections/sommer`** (Ziel: Frauen 18–34) wurde von **Kind
 **Fix:** `sandale`-Regel aus dem RuleSet entfernt (13 Regeln übrig; Sandalen bleiben via sub-sandalen/damen-schuhe
 erreichbar). Ergebnis: Top-20 = Sommerkleider/Strandkleider/Sonnenbrillen, **0 Kinder-Artikel** — Landing passt wieder
 zur Ziel-Kundin. (Audit-Befund «Sommer-Ad-Landing prüfen» damit erledigt.) Collection 931 Produkte, Beschreibung+SEO ok.
+
+### Katalogweiter Kollektions-Fix (2026-08-05, «produkten in richtige kollektion, ich finde immer fehler»)
+Systemische Antwort statt Einzelfixes — **250 falsche kategorie-Tags katalogweit bereinigt** (Tag-vs-Titel-Konsistenz
+über alle 26k): 29 Tops/Shirts mit kategorie-halskette, 16 Fussketten als kategorie-armband, 63 Nachthemden/Blusen/
+Röcke als kategorie-kleid, 138 Uhren-Ersatzbänder/MP3-Player mit uhren/kategorie-uhr (smarte Fitness-Tracker mit
+Display BEWUSST in Uhren belassen; Ersatzbänder → Tag smartwatch-armband). Dazu 3 Menü-Collection-Einzelfixes
+(Ohrringe raus aus Halsketten, Cuban-Kette raus aus Armbänder, «Ventilator-Reiniger»→«Lüfter-Reinigungsspray»).
+⚠️ Regex-Lehre: Komposita brauchen `uhr\b` (Ende) statt `\buhr` (Anfang) — «Sportuhr» sonst als Misfit fehlerkannt;
+Schmuck-SETS (Halskette+Ohrringe) gehören legitim in BEIDE Collections, nicht «fixen».
