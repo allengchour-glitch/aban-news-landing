@@ -705,8 +705,15 @@ def _b_gaube():
     for s2 in (-1, 1):                            # Wangen, unten auf Dachneigung
         keil_x([(-GT, ZH), (0, 0), (0, GH2), (-GT, GH2 + DA)],
                s2*(GB/2 - 0.06), 0.12, M["putz"])
-    box(0, -0.07, GH2/2, GB, 0.14, GH2, M["putz"])                # Stirnwand VORNE
-    box(0, -0.09, GH2*0.55, GB - 0.44, 0.10, GH2*0.62, M["glas"])
+    # Die Stirnwand ist ein RAHMEN, kein Brett. In der ersten Fassung war sie ein
+    # Vollquader 0,14 tief und die Glasscheibe 0,10 tief an derselben Stelle —
+    # das Glas steckte KOMPLETT in der Wand. Im Bild: eine blinde Putzflaeche.
+    box(0, -0.07, 0.15, GB, 0.14, 0.30, M["putz"])                # Bruestung
+    box(0, -0.07, GH2 - 0.11, GB, 0.14, 0.22, M["putz"])          # Sturz
+    for s2 in (-1, 1):
+        box(s2*(GB/2 - 0.11), -0.07, GH2/2, 0.22, 0.14, GH2, M["putz"])
+    box(0, -0.05, 0.615, GB - 0.44, 0.08, 0.63, M["glas"])        # Scheibe
+    box(0, -0.01, 0.615, 0.05, 0.07, 0.63, M["rahm"])             # Sprosse
     box(0, 0.03, 0.06, GB + 0.20, 0.26, 0.12, M["bank"])          # Sohlbank
     kz = lambda y: GH2 + DA - (DA/GT)*(y + GT)    # Oberkante der Wange bei y
     keil_x([(-GT - 0.02, kz(-GT - 0.02)), (0.16, kz(0.16)),
