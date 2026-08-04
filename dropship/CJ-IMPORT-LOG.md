@@ -2687,3 +2687,11 @@ Blitzversand-Artikel (Fortura) kommen ab CH-Lager. Fix: Hero = «Premium-Style. 
 Artikel ab CH-Lager in 1–2 Tagen · Lieferzeit transparent auf jeder Produktseite». Auch SEO-Textblock
 («heute bestellt, oft schon morgen») + Spotlight («blitzschnell ab Schweiz») ehrlich ersetzt; «10'000»→«25'000».
 Verifiziert: 0 Rest-Treffer der irreführenden Phrasen in index.json.
+
+## 2026-08-04 Hundehalsband-in-Elektronik (User-Fund)
+Elektronik-Reihe zeigte Hundehalsband — 12 Misfits (Katzenspielzeug elektrisch, Plüschtiere, Tablet-Kissen,
+Hundehalsband) trugen Tag `elektronik` aus CJ-Elektronik/Gadget-Läufen → Tag entfernt, korrekt umgetaggt
+(haustier/pet, spielzeug, home). cj_category_fill hat jetzt Titel-Wache: Haustier-/Plüsch-Artikel aus
+Elektronik-Gruppen → haustier/spielzeug statt elektronik (ausser smart/gps/led). ⚠️ Scan-Regex-Falle:
+`leine\b` ohne führendes \b traf «K**leine** Powerbank»; Lookahead `armband(?!.*smart)` verfehlt «Smart Armband»
+(smart steht VOR armband) → Misfit-Scans immer mit Positiv-Tech-Ausschlussliste nachfiltern.

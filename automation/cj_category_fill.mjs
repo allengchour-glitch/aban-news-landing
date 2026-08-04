@@ -256,8 +256,17 @@ for(const [cat,label] of grp.cats){
    const productOptions=fash?fash.productOptions:[{name:'Variante',values:[{name:'Standard'}]}];
    const variants=fash?fash.variants:[{optionValues:[{optionName:'Variante',name:'Standard'}],price:chf(p.sellPrice, p.productWeight||p.variantWeight),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false},inventoryPolicy:'CONTINUE'}];
    const katTag=(LABELTAG.find(([re])=>re.test(label||''))||[])[1];
-   const tagsFinal=[...(process.env.WAREHOUSE?[...grp.tags,'eu-lager','schnelle-lieferung']:grp.tags),...(katTag?[katTag]:[])];
-   const input={title,handle:slug,productType:grp.type,vendor:'LuxeStyle',status:'ACTIVE',tags:tagsFinal,descriptionHtml:html,
+   let tagsFinal=[...(process.env.WAREHOUSE?[...grp.tags,'eu-lager','schnelle-lieferung']:grp.tags),...(katTag?[katTag]:[])];
+   // Titel-Wache: Haustier-/Plüsch-Artikel aus CJ-Elektronik/Gadget-Kategorien nicht als Elektronik taggen (Hundehalsband-Falle 2026-08-04)
+   let typeFinal=grp.type;
+   if(/hundehalsband|\bhalsband\b|hundeleine|hundegeschirr|katzenspielzeug|kratzbaum|katzenklo|futternapf|hundebett|katzenbett/i.test(title)&&!/smart|gps|led|leucht/i.test(title)){
+     tagsFinal=tagsFinal.filter(t=>!['elektronik','tech','gadget','gadgets','trend'].includes(t)).concat(['haustier','pet']);
+     typeFinal='Haustierbedarf';
+   } else if(/plüsch|kuscheltier/i.test(title)&&!/lampe|licht/i.test(title)){
+     tagsFinal=tagsFinal.filter(t=>!['elektronik','tech'].includes(t)).concat(['spielzeug']);
+     typeFinal='Spielzeug & Spiele';
+   }
+   const input={title,handle:slug,productType:typeFinal,vendor:'LuxeStyle',status:'ACTIVE',tags:tagsFinal,descriptionHtml:html,
     seo:{title:(title+' | LuxeStyle CH').slice(0,70),description:(`${title} – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 65, 30 Tage Rückgabe.`).slice(0,320)},
     productOptions, variants,
     files:[{originalSource:imgs[0],contentType:'IMAGE'}]};
