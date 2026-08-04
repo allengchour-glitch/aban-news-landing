@@ -568,9 +568,59 @@ def balkon():
         o = strebe((s*1.5, 0.06, 0.02), (s*1.5, T - 0.3, -0.55), 0.12, M["sockel"])
     export("th34_balkon", 0.012, 2)
 
+# ================================================================ 12) Beispielhaus
+def _teil(fn, px, py, rot=0.0, pz=0.0):
+    """Baut ein Modul und setzt es als GANZES an seinen Platz.
+    Das Empty bekommt bewusst KEINE matrix_parent_inverse — die Kinder SOLLEN sich
+    mitbewegen. (Genau umgekehrt zur Regel bei Animationen, wo die Inverse die
+    Weltlage der Kinder erhaelt.)"""
+    vor = set(bpy.context.scene.objects)
+    fn()
+    emp = bpy.data.objects.new("Platz", None)
+    bpy.context.collection.objects.link(emp)
+    emp.location = (px, py, pz); emp.rotation_euler[2] = rot
+    for o in list(bpy.context.scene.objects):
+        if o in vor or o is emp: continue
+        o.parent = emp
+    return emp
+
+def beispielhaus():
+    """Fertiges Haus, NUR aus den dokumentierten Rasterschritten zusammengesetzt —
+    keine Sonderzahlen. Das ist zugleich der Beweis, dass das Raster stimmt: bliebe
+    an Ecken oder Geschossstoessen eine Fuge, waere die Massangabe falsch.
+
+    Grundriss 8 x 4 m (zwei Module breit, eines tief), zwei Geschosse:
+        Sued  y = -2, rot pi     |  Nord y = +2, rot 0
+        West  x = -4, rot pi/2   |  Ost  x = +4, rot -pi/2
+        Ecken (+-4, +-2) · Decken (+-2, 0) auf z = 2,75 bzw. 5,75
+        Satteldach (+-2, 0) auf z = 6,00 · Giebel (+-4, 0) quer dazu
+    """
+    neu()
+    def w(fn, px, py, rot, g):
+        _teil(fn, px, py, rot, g*GH)
+    for g in (0, 1):
+        w(wand_tuer if g == 0 else wand_fenster, -2, -2, math.pi, g)   # Sued
+        w(wand_fenster,                           2, -2, math.pi, g)
+        w(wand_fenster2, -2, 2, 0, g)                                  # Nord
+        w(wand_voll,      2, 2, 0, g)
+        w(wand_tor if g == 0 else wand_fenster, -4, 0,  math.pi/2, g)  # West
+        w(wand_fenster,                          4, 0, -math.pi/2, g)  # Ost
+        for sx in (-4, 4):
+            for sy in (-2, 2):
+                _teil(ecke, sx, sy, 0, g*GH)
+        for sx in (-2, 2):
+            _teil(decke, sx, 0, 0, g*GH + WH)
+    for sx in (-2, 2):
+        _teil(dach_sattel, sx, 0, 0, 2*GH)
+    for sx in (-4, 4):
+        _teil(dach_giebel, sx, 0, math.pi/2, 2*GH)
+    _teil(balkon, 2, -2, math.pi, GH + WH)
+    export("th34_beispielhaus", 0.014, 2)
+
 if __name__ == "__main__":
     print("Asset-Charge 34 (th34, Haus-Baukasten):")
     for fn in (wand_voll, wand_fenster, wand_fenster2, wand_tuer, wand_tor,
-               ecke, decke, dach_sattel, dach_giebel, treppe_modul, balkon):
+               ecke, decke, dach_sattel, dach_giebel, treppe_modul, balkon,
+               beispielhaus):
         fn()
     print("fertig")
