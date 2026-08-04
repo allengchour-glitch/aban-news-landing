@@ -2603,3 +2603,10 @@ Screenshot-Studie Mobile (390px) + Desktop: Startseite mobil gesund (2er-Karten,
    (index/collection/header, 4 Stellen).
 ⚠️ Rest-Punkt: Varianten-WERTE teils Englisch («Green + gray» neben «Himmelblau») — CJ-Import-Rohdaten; Massen-
 Übersetzung wäre eigener Lauf (Option-Values via productOptionUpdate), notiert.
+
+### Sommer-Kollektions-Polish (2026-08-05, «andere kollektion polish»)
+Die **Ad-Landing `/collections/sommer`** (Ziel: Frauen 18–34) wurde von **Kinder-Sandalen dominiert** — die breite
+`TITLE CONTAINS 'sandale'`-Regel flutete BEST_SELLING mit Kinderschuhen (Top-20 war >⅔ Kinder/Unisex-Sandalen).
+**Fix:** `sandale`-Regel aus dem RuleSet entfernt (13 Regeln übrig; Sandalen bleiben via sub-sandalen/damen-schuhe
+erreichbar). Ergebnis: Top-20 = Sommerkleider/Strandkleider/Sonnenbrillen, **0 Kinder-Artikel** — Landing passt wieder
+zur Ziel-Kundin. (Audit-Befund «Sommer-Ad-Landing prüfen» damit erledigt.) Collection 931 Produkte, Beschreibung+SEO ok.
