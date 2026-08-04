@@ -2655,3 +2655,11 @@ ohne Guthaben) mit echtem Storefront-Text (Home/Produkt/Ad-Landing) gefüttert. 
 3. **Sortiment zu breit = Ramschladen-Wirkung** (Gemini #1, strategisch): 26k Produkte aus allen Kategorien untergraben
    Vertrauen. → USER-ENTSCHEIDUNG (Nischen-Schärfung vs. Everything-Store); Startseite ist immerhin fashion-first kuratiert.
 Rest (Preisklarheit/Checkout) generisch — Preise/TWINT/Klarna sind bereits klar ausgezeichnet.
+
+### 🎯 Premium-Schärfung umgesetzt (2026-08-06, User «mach du mal was richtig hälst»)
+Geminis #1-Audit-Befund (Sortiments-Breite = Ramschladen-Wirkung) umgesetzt — ohne ein Produkt zu löschen, reversibel:
+1. **Menü 13→8 Top-Level** (141→85 Items): Kern = Highlights/Damen/Herren/Schmuck&Uhren/Beauty/Schuhe + saisonal
+   «🌀 Sommer & Kühlung». Kinder/Sport/Wohnen/Technik/Haustier/Kostüme als Ebene-1-Links unter «✨ Mehr & Sale»
+   (Landing-Pages übernehmen die Tiefe). **Voll-Backup: dropship/menu_backup_2026-08-06.json** (Wiederherstellung möglich).
+2. **Startseite:** mode_row/schmuck_row/pl_beauty auf Position 3–5 vorgezogen — Elektronik/Technik-Reihen nach hinten.
+   Erster Eindruck = Mode·Schmuck·Beauty (die Kategorien mit den 5.0★-Produkten), Long-Tail bleibt über Mehr/Suche/Sale.
