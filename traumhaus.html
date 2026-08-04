@@ -6922,8 +6922,20 @@ function autoKollider(){
    die Ladenzeile (drei Haeuser im 7-m-Abstand) ihre Nachbarn mit auf und der Kollider
    mauert die Gasse dazwischen zu. Darum bekommt jedes Bauteil per NAECHSTE-MITTE-Regel
    genau einen Kollider zugeordnet — ein Nachbarhaus ist immer naeher an seinem eigenen. */
+/* Fahrbahnbaender (Mittellinie + halbe Breite inkl. Gehweg). Dieselben Achsen, die
+   `wegVonStrasse` benutzt — dort grosszuegiger, weil sie ganze Objekte verschiebt. */
+var STRASSENBAND=null;
 function kolliderNachziehen(){
   if(!WORLD_SOLIDS.length)return 0;
+  if(!STRASSENBAND){var SZr=GH*CS/2+12;
+    STRASSENBAND=[{achse:"z",c: SZr,h:8.0,von:-RL/2,bis:RL/2},
+                  {achse:"z",c:-SZr,h:8.0,von:-RL/2,bis:RL/2},
+                  {achse:"x",c: RX, h:8.0,von:-124,bis:124},
+                  {achse:"x",c:-RX, h:8.0,von:-124,bis:124},
+                  {achse:"x",c: 112,h:7.0,von:-104,bis:122},
+                  {achse:"x",c:-112,h:7.0,von:-104,bis:122},
+                  {achse:"z",c: 118,h:7.0,von:-118,bis:118},
+                  {achse:"z",c:-100,h:7.0,von:-118,bis:118}];}
   var bb=new THREE.Box3(),teile=[];
   scene.traverse(function(o){
     if(!o.isMesh||!o.geometry)return;
@@ -6931,6 +6943,12 @@ function kolliderNachziehen(){
     if(!isFinite(bb.min.x))return;
     var bx=bb.max.x-bb.min.x,bz=bb.max.z-bb.min.z,hy=bb.max.y-Math.max(0,bb.min.y);
     if(hy<2.2||bx>45||bz>45)return;          /* Bodenplatten, Wiesen, Wege raus */
+    /* 🔦 Ohne diese zwei Zeilen verschluckte der Bahnhof einen Laternenmast 30 m
+       weiter oestlich: 26 x 11 wuchs auf 43,3 x 14,5. Ein Mast ist 0,30 breit und
+       6,2 hoch, kam also durch den Hoehenfilter. Und ein Baum haengt seine Krone
+       ab 2 m ueber dem Boden auf — beides ist kein Baukoerper. */
+    if(Math.max(bx,bz)<1.6)return;           /* Maste, Pfosten, Stämme */
+    if(bb.min.y>1.2)return;                  /* Kronen, Vordaecher, Obergeschosse */
     teile.push({x0:bb.min.x,x1:bb.max.x,z0:bb.min.z,z1:bb.max.z,
                 cx:(bb.min.x+bb.max.x)/2,cz:(bb.min.z+bb.max.z)/2});
   });
@@ -6952,34 +6970,104 @@ function kolliderNachziehen(){
                z0:Math.min(e.z0,t.z0),z1:Math.max(e.z1,t.z1)}
              :{x0:t.x0,x1:t.x1,z0:t.z0,z1:t.z1};
   }
-  var geaendert=[];
+  /* PASS 1 — Vorschlag je Kollider berechnen, noch nichts anwenden. */
+  var vor=[];
   for(i=0;i<WORLD_SOLIDS.length;i++){
     var s2=WORLD_SOLIDS[i],b=u[i];
-    if(!b)continue;
+    if(!b){vor.push(null);continue;}
     /* Deckel gegen Ausreisser: hoechstens das Dreifache plus 2 m. */
     var mw=s2.hw*3+2,md=s2.hd*3+2;
     var nx0=Math.max(b.x0,s2.x-mw),nx1=Math.min(b.x1,s2.x+mw);
     var nz0=Math.max(b.z0,s2.z-md),nz1=Math.min(b.z1,s2.z+md);
-    var nhw=Math.max(s2.hw,(nx1-nx0)/2), nhd=Math.max(s2.hd,(nz1-nz0)/2);
-    if(nhw<=s2.hw+0.4&&nhd<=s2.hd+0.4)continue;      /* passt schon */
-    var alt=[+(2*s2.hw).toFixed(1),+(2*s2.hd).toFixed(1),+s2.x.toFixed(1),+s2.z.toFixed(1)];
-    var sgnZ=s2.door&&s2.door.a==="z"?(s2.door.at>=s2.z?1:-1):0;
-    var sgnX=s2.door&&s2.door.a==="x"?(s2.door.at>=s2.x?1:-1):0;
-    s2.x=(nx0+nx1)/2; s2.z=(nz0+nz1)/2; s2.hw=nhw; s2.hd=nhd;
-    if(s2.door){                                     /* Tuer auf die neue Wandflucht */
-      if(s2.door.a==="z")s2.door.at=s2.z+sgnZ*s2.hd;
-      else s2.door.at=s2.x+sgnX*s2.hw;
+    /* 🛣️ Erste Fassung ohne diese Klemme: die Fahrbahn-Treffer stiegen von 27 auf 77.
+       Vordaecher, Treppen und Rampen ragen ueber die Wandflucht, und der Kollider
+       wuchs mit ihnen auf die Strasse — z. B. das Haus bei (-68,5|-84) zurueck in die
+       West-Querstrasse, aus der es eigens verschoben worden war. Der Kollider darf
+       ein Fahrbahnband nur betreten, wenn er ohnehin schon drin steckt. */
+    for(var r=0;r<STRASSENBAND.length;r++){var R=STRASSENBAND[r];
+      if(R.achse==="z"){
+        if(s2.x<R.von-2||s2.x>R.bis+2)continue;
+        if(s2.z<R.c-R.h)nz1=Math.min(nz1,R.c-R.h);
+        else if(s2.z>R.c+R.h)nz0=Math.max(nz0,R.c+R.h);
+      }else{
+        if(s2.z<R.von-2||s2.z>R.bis+2)continue;
+        if(s2.x<R.c-R.h)nx1=Math.min(nx1,R.c-R.h);
+        else if(s2.x>R.c+R.h)nx0=Math.max(nx0,R.c+R.h);
+      }
+    }
+    /* Nie kleiner als bisher — sonst reisst die Klemme ein bestehendes Haus auf. */
+    nx0=Math.min(nx0,s2.x-s2.hw); nx1=Math.max(nx1,s2.x+s2.hw);
+    nz0=Math.min(nz0,s2.z-s2.hd); nz1=Math.max(nz1,s2.z+s2.hd);
+    vor.push({x0:nx0,x1:nx1,z0:nz0,z1:nz1});
+  }
+  /* Wo landet jede Tuer, wenn der Vorschlag gilt? Die Tuer wandert auf die neue
+     Wandflucht, ihre Laengskoordinate bleibt. */
+  var tuerP=[];
+  for(i=0;i<WORLD_SOLIDS.length;i++){
+    var s3=WORLD_SOLIDS[i];if(!s3.door){tuerP.push(null);continue;}
+    var v3=vor[i]||{x0:s3.x-s3.hw,x1:s3.x+s3.hw,z0:s3.z-s3.hd,z1:s3.z+s3.hd};
+    var d3=s3.door;
+    if(d3.a==="z")tuerP.push({x:d3.c, z:(d3.at>=s3.z?v3.z1:v3.z0)});
+    else          tuerP.push({x:(d3.at>=s3.x?v3.x1:v3.x0), z:d3.c});
+  }
+  /* 🚪 Zweite Falle: ein gewachsener Kollider legte sich ueber die Tuer des NACHBARN —
+     zwei Gebaeude waren danach nicht mehr zu betreten (gemessen: tuerZu 2). Ein
+     fremder Tuerpunkt klemmt den Vorschlag genauso ab wie ein Fahrbahnband; gekuerzt
+     wird die Seite, die am wenigsten kostet. */
+  for(i=0;i<vor.length;i++){
+    var v4=vor[i];if(!v4)continue;
+    for(var q=0;q<tuerP.length;q++){
+      var T=tuerP[q];if(!T||q===i)continue;
+      if(T.x<=v4.x0||T.x>=v4.x1||T.z<=v4.z0||T.z>=v4.z1)continue;
+      var s5=WORLD_SOLIDS[i];
+      var dl=T.x-v4.x0,dr=v4.x1-T.x,db=T.z-v4.z0,dt=v4.z1-T.z;
+      var m5=Math.min(dl,dr,db,dt);
+      if(m5===dl)v4.x0=Math.min(T.x+0.3,s5.x-s5.hw);
+      else if(m5===dr)v4.x1=Math.max(T.x-0.3,s5.x+s5.hw);
+      else if(m5===db)v4.z0=Math.min(T.z+0.3,s5.z-s5.hd);
+      else v4.z1=Math.max(T.z-0.3,s5.z+s5.hd);
+    }
+  }
+  /* PASS 2 — anwenden. */
+  var geaendert=[];
+  for(i=0;i<WORLD_SOLIDS.length;i++){
+    var s6=WORLD_SOLIDS[i],v6=vor[i];
+    if(!v6)continue;
+    var nhw=(v6.x1-v6.x0)/2, nhd=(v6.z1-v6.z0)/2;
+    if(nhw<=s6.hw+0.4&&nhd<=s6.hd+0.4)continue;      /* passt schon */
+    var alt=[+(2*s6.hw).toFixed(1),+(2*s6.hd).toFixed(1),+s6.x.toFixed(1),+s6.z.toFixed(1)];
+    if(s6.door)s6.door._alt=s6.door.at;
+    var sgnZ=s6.door&&s6.door.a==="z"?(s6.door.at>=s6.z?1:-1):0;
+    var sgnX=s6.door&&s6.door.a==="x"?(s6.door.at>=s6.x?1:-1):0;
+    s6.x=(v6.x0+v6.x1)/2; s6.z=(v6.z0+v6.z1)/2; s6.hw=nhw; s6.hd=nhd;
+    if(s6.door){                                     /* Tuer auf die neue Wandflucht */
+      if(s6.door.a==="z")s6.door.at=s6.z+sgnZ*s6.hd;
+      else s6.door.at=s6.x+sgnX*s6.hw;
     }
     /* Das Gitter kennt den Kollider nur in seinen alten Zellen — neu eintragen. */
-    var gx0=Math.floor((s2.x-s2.hw)/SOLID_CELL),gx1=Math.floor((s2.x+s2.hw)/SOLID_CELL);
-    var gz0=Math.floor((s2.z-s2.hd)/SOLID_CELL),gz1=Math.floor((s2.z+s2.hd)/SOLID_CELL);
+    var gx0=Math.floor((s6.x-s6.hw)/SOLID_CELL),gx1=Math.floor((s6.x+s6.hw)/SOLID_CELL);
+    var gz0=Math.floor((s6.z-s6.hd)/SOLID_CELL),gz1=Math.floor((s6.z+s6.hd)/SOLID_CELL);
     for(var gx=gx0;gx<=gx1;gx++)for(var gz=gz0;gz<=gz1;gz++){
       var kk=gx+"_"+gz,bu=SOLID_GRID[kk]||(SOLID_GRID[kk]=[]);
-      if(bu.indexOf(s2)<0)bu.push(s2);
+      if(bu.indexOf(s6)<0)bu.push(s6);
     }
-    geaendert.push({x:+s2.x.toFixed(1),z:+s2.z.toFixed(1),alt:alt,
-                    neu:[+(2*nhw).toFixed(1),+(2*nhd).toFixed(1)],tuer:!!s2.door});
+    geaendert.push({x:+s6.x.toFixed(1),z:+s6.z.toFixed(1),alt:alt,
+                    neu:[+(2*nhw).toFixed(1),+(2*nhd).toFixed(1)],tuer:!!s6.door});
   }
+  /* 🚪 Letzte Sicherung: ist eine Tuer trotz Klemme zugewachsen (weil der Nachbar
+     schon vor dem Wachsen so gross war), bleibt sie lieber an ihrem alten Platz.
+     Ein Haus, das man nicht betreten kann, ist schlimmer als eine Tuer, die 1 m
+     hinter der Wandflucht sitzt. */
+  var zu=0;
+  for(i=0;i<WORLD_SOLIDS.length;i++){
+    var s7=WORLD_SOLIDS[i];if(!s7.door||s7.door._alt===undefined)continue;
+    var d7=s7.door, px=(d7.a==="z")?d7.c:d7.at, pz=(d7.a==="z")?d7.at:d7.c;
+    if(!inSolid(px,pz)){delete d7._alt;continue;}
+    var neuAt=d7.at; d7.at=d7._alt; delete d7._alt;
+    px=(d7.a==="z")?d7.c:d7.at; pz=(d7.a==="z")?d7.at:d7.c;
+    if(inSolid(px,pz)){d7.at=neuAt;zu++;}          /* beides zu — nur melden */
+  }
+  window._kolliderZu=zu;
   window._kolliderBericht=geaendert;
   return geaendert.length;
 }
@@ -7027,8 +7115,9 @@ window.__th={
     dreiecke:r.render.triangles, texturen:r.memory.textures, geometrien:r.memory.geometries,
     schatten:renderer.shadowMap.enabled};},
   solids:function(){return WORLD_SOLIDS.length;},
-  kollider:function(){return window._kolliderBericht||[];},
+  kollider:function(){return {geaendert:window._kolliderBericht||[],zugewachsen:window._kolliderZu||0};},
   rohSolids:function(){return WORLD_SOLIDS;},
+  achsen:function(){return {SZr:GH*CS/2+12,RX:RX,RL:RL};},
   frei:function(x,z){return !inSolid(x,z);},
   tp:function(x,z){var m=sims[0];if(m){m.x=x;m.z=z;m.mesh.position.set(x,m.mesh.position.y,z);}
     camTx=x;camTz=z;updCam();},
