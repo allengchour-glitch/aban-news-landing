@@ -2680,3 +2680,10 @@ Schweizer Editionen 6; Runner /tmp/fortura_type_runner.sh, Ledger /tmp/fortura_t
   ⚠️ Shopify-Suche: `title:X` findet Wortmitte NICHT — `title:*X*` nötig (Kors 15 vs 0!).
 - **«ab CHF 50» in 394 weiteren Collection-Beschreibungen → CHF 65** (Sweep komplett; Produkt-Sweep läuft separat).
 - Such-Platzhalter mobil gekürzt («Wonach suchst du?» statt abgeschnittenem Langtext).
+
+## 2026-08-04 Hero-Ehrlichkeit (User: «sind nicht alle schweizer produkte und schneller versand»)
+Hero versprach pauschal «🇨🇭 Schneller Versand in die ganze Schweiz» + «Schweizer Tempo» — irreführend, nur
+Blitzversand-Artikel (Fortura) kommen ab CH-Lager. Fix: Hero = «Premium-Style. Schweizer Shop.» + «Blitzversand-
+Artikel ab CH-Lager in 1–2 Tagen · Lieferzeit transparent auf jeder Produktseite». Auch SEO-Textblock
+(«heute bestellt, oft schon morgen») + Spotlight («blitzschnell ab Schweiz») ehrlich ersetzt; «10'000»→«25'000».
+Verifiziert: 0 Rest-Treffer der irreführenden Phrasen in index.json.
