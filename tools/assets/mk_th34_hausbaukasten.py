@@ -181,6 +181,35 @@ def giebel(cx, cy, cz, halbb, hoehe, tiefe, m=None, achse='x'):
             uvl.data[li].uv = ((v.x if achse == 'x' else v.y), v.z)
     return o
 
+def keil_x(prof, cx, breite, m=None, cy=0.0, cz=0.0):
+    """Extrudiert ein beliebiges konvexes Profil aus der y-z-Ebene entlang x.
+    Damit sind Gaubenwangen, Erkerkonsolen und Pultflaechen EIN Bauteil statt
+    drei handgeschriebener `from_pydata`-Bloecke.
+
+    ⚠️ UVs werden hier erzeugt. `from_pydata` legt KEINE UV-Ebene an; ein Mesh
+    ohne UVs zeigt eine Bildtextur als einfarbige Flaeche (genau der Fehler, der
+    in Charge 32 das gestreifte Stationsdach knallrot gemacht hat)."""
+    n = len(prof)
+    v = [(cx - breite/2.0, cy + p[0], cz + p[1]) for p in prof] + \
+        [(cx + breite/2.0, cy + p[0], cz + p[1]) for p in prof]
+    f = [tuple(range(n)), tuple(range(2*n - 1, n - 1, -1))]
+    for i in range(n):
+        j = (i + 1) % n
+        f.append((i, j, n + j, n + i))
+    me = bpy.data.meshes.new("Keil"); me.from_pydata(v, [], f); me.update()
+    o = bpy.data.objects.new("Keil", me); bpy.context.collection.objects.link(o)
+    if m: me.materials.append(m)
+    bpy.context.view_layer.objects.active = o
+    bm = bmesh.new(); bm.from_mesh(me)
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
+    bm.to_mesh(me); bm.free(); me.update()
+    uvl = me.uv_layers.new(name="UVMap")
+    for poly in me.polygons:
+        for li in poly.loop_indices:
+            p = me.vertices[me.loops[li].vertex_index].co
+            uvl.data[li].uv = (p.x if abs(poly.normal.x) < 0.5 else p.y, p.z)
+    return o
+
 def girlande(p0, p1, n, sag, mats, rad=0.10, kabel=None):
     """Lichterkette mit Durchhang zwischen zwei Punkten."""
     for i in range(n + 1):
@@ -355,6 +384,12 @@ def gleis_segment(p0, p1, m_sch, m_rohr=None, quer=None):
 # ---------------------------------------------------------------- Rastermasse
 BR, DI, WH, DE = 4.00, 0.30, 2.75, 0.25      # Breite, Dicke, Wandhoehe, Deckenstaerke
 GH = WH + DE                                  # Geschosshoehe 3,000
+DSP, DHH = 4.40, 1.70                         # Satteldach: Spannweite quer, Firsthoehe
+DNEIG = DHH / (DSP/2.0)                       # 0,7727 -> 37,7 Grad Dachneigung
+
+# Diese drei Zahlen standen frueher als Literale in dach_sattel, dach_giebel UND
+# in der Gaube. Als die Gaube dazukam, war ihr Anschnitt aus einer per Hand
+# nachgerechneten Neigung gebaut — driftet eine der Kopien, klafft eine Fuge.
 
 def _mats():
     """Ein Satz Materialien fuer alle Teile — gleiche Farbwelt ueber den Baukasten."""
@@ -533,7 +568,7 @@ def _b_dach_sattel():
     Als PRISMA gebaut: `kegel(vertices=4)` waere eine Pyramide, deren Ecken auf
     den Achsen liegen, und das Modul waere breiter als sein Raster."""
     M = _mats()
-    SP, HH = 4.40, 1.70                     # Spannweite quer, Firsthoehe
+    SP, HH = DSP, DHH                       # Spannweite quer, Firsthoehe
     o = giebel(0, 0, 0, SP/2, HH, BR, M["dach"], 'y')
     for s in (-1, 1):                       # Traufbrett
         box(0, s*(SP/2 - 0.06), 0.10, BR + 0.04, 0.16, 0.20, M["holz"])
@@ -547,7 +582,7 @@ def _b_dach_giebel():
     """Giebel-Abschluss fuer das Satteldach — dreieckige Wandflaeche mit
     Lueftungsluke."""
     M = _mats()
-    SP, HH = 4.40, 1.70
+    SP, HH = DSP, DHH
     g = giebel(0, 0, 0, SP/2, HH, DI, M["putz"], 'x')
     box(0, 0, HH*0.42, 0.62, DI + 0.06, 0.46, M["holz"])
     box(0, -DI*0.4, HH*0.42, 0.46, 0.05, 0.32, M["metall"])
@@ -615,7 +650,10 @@ def _b_wand_schaufenster():
         box(s2*(FB/2 + 0.07), 0, FZ, 0.14, DI + 0.02, FH + 0.26, M["rahm"])
     box(0, 0, FZ + FH/2 + 0.07, FB + 0.28, DI + 0.02, 0.14, M["rahm"])
     box(0, 0.10, FZ - FH/2 - 0.10, FB + 0.36, DI + 0.30, 0.12, M["bank"])   # Sockelplatte
-    box(0, 0.16, FZ + FH/2 + 0.30, FB + 0.30, 0.42, 0.34, M["dach"])        # Markisenkasten
+    # Der Markisenkasten sass bei FZ+FH/2+0.30 und ragte damit auf 2,945 — ueber
+    # die Wandkrone von 2,750. Ein Wandmodul MUSS aber genau 2,750 hoch bleiben,
+    # sonst stimmt der Geschossstoss beim Stapeln nicht mehr.
+    box(0, 0.16, 2.53, FB + 0.30, 0.42, 0.30, M["dach"])                    # Markisenkasten
     sockelband(M["sockel"])
     box(0, 0, WH - 0.09, BR, DI + 0.12, 0.18, M["sockel"])
 
@@ -637,22 +675,43 @@ def _b_erker():
         box(s2*(EB/2 - 0.08), VT - 0.08, 0.28 + EH/2, 0.20, 0.20, EH, M["rahm"])
     box(0, VT/2, 0.28 + EH + 0.32, EB + 0.34, VT + 0.34, 0.24, M["dach"])   # Erkerdach
     for s2 in (-1, 1):                                                       # Konsolen
-        strebe((s2*0.9, 0.06, 0.14), (s2*0.9, VT - 0.2, -0.50), 0.14, M["sockel"])
+        # Vorher zwei duenne Streben — im Bild las sich das wie abgebrochene
+        # Beine. Ein Erker haengt an KRAGSTEINEN: massives Dreieck, an der Wand
+        # am tiefsten, zur Erkerfront hin auslaufend.
+        keil_x([(0.02, 0.14), (VT, 0.14), (0.02, -0.55)], s2*0.9, 0.18, M["sockel"])
 
 def erker(): _modul("th34_erker", _b_erker, 0.012)
 
 def _b_gaube():
-    """Schleppgaube fuers Satteldach. Sitzt auf der Dachflaeche; die Neigung des
-    Satteldachs betraegt atan(1,70 / 2,22) = 37,4 Grad — die Wangen sind exakt so
-    angeschnitten, sonst klafft zwischen Gaube und Dachhaut ein Spalt."""
+    """Schleppgaube fuers Satteldach.
+
+    ⚠️ ZWEI Fehler steckten in der ersten Fassung, beide erst im Bild sichtbar:
+    (1) Die Stirnwand sass bei y = GT/2 — also MITTIG zwischen den Wangen statt
+        vorne. Von der Schauseite sah die Gaube dadurch aus wie eine oben offene
+        Kiste: man blickte an der Wand vorbei ins Innere.
+    (2) Die Wangen waren Quader mit waagrechter Unterkante. Eine Gaube sitzt aber
+        auf einer 37,7-Grad-Schraege — der Quader verschwand hinten im Dach und
+        stand vorne in der Luft.
+    Jetzt: Wangen als Keil, dessen Unterkante GENAU auf DNEIG liegt.
+
+    ANKER (wichtig fuers Setzen): Ursprung ist die VORDERE UNTERKANTE, also der
+    Punkt, wo die Gaube die Dachhaut trifft. y = 0 ist die Traufseite, der Koerper
+    liegt bei negativem y (dachaufwaerts). Damit setzt man sie mit genau einer
+    Zahl: der Dachhoehe an der gewuenschten Traufe."""
     M = _mats()
-    GB, GH2, GT = 1.70, 1.15, 1.30
-    box(0, GT/2, GH2/2, GB, 0.14, GH2, M["putz"])                # Stirnwand
-    box(0, GT/2, GH2*0.55, GB - 0.44, 0.10, GH2*0.62, M["glas"])
-    for s2 in (-1, 1):
-        box(s2*(GB/2 - 0.06), GT/2, GH2/2, 0.12, GT, GH2, M["putz"])
-    box(0, GT/2 - 0.08, GH2 + 0.10, GB + 0.32, GT + 0.30, 0.16, M["dach"])  # Gaubendach
-    box(0, GT/2, GH2*0.20, GB + 0.26, GT + 0.10, 0.12, M["bank"])           # Sohlbank
+    GB, GH2, GT = 1.70, 1.15, 1.30                # Breite, Stirnhoehe, Tiefe
+    ZH = GT * DNEIG                               # 1,0045 — Anschnitt hinten
+    DA = 0.42                                     # Dachueberhoehung hinten
+    for s2 in (-1, 1):                            # Wangen, unten auf Dachneigung
+        keil_x([(-GT, ZH), (0, 0), (0, GH2), (-GT, GH2 + DA)],
+               s2*(GB/2 - 0.06), 0.12, M["putz"])
+    box(0, -0.07, GH2/2, GB, 0.14, GH2, M["putz"])                # Stirnwand VORNE
+    box(0, -0.09, GH2*0.55, GB - 0.44, 0.10, GH2*0.62, M["glas"])
+    box(0, 0.03, 0.06, GB + 0.20, 0.26, 0.12, M["bank"])          # Sohlbank
+    kz = lambda y: GH2 + DA - (DA/GT)*(y + GT)    # Oberkante der Wange bei y
+    keil_x([(-GT - 0.02, kz(-GT - 0.02)), (0.16, kz(0.16)),
+            (0.16, kz(0.16) + 0.14), (-GT - 0.02, kz(-GT - 0.02) + 0.14)],
+           0, GB + 0.30, M["dach"])                                # Gaubendach
 
 def gaube(): _modul("th34_gaube", _b_gaube, 0.012)
 
@@ -662,14 +721,8 @@ def _b_dach_pult():
     Traufe und First keilfoermige Luecken."""
     M = _mats()
     SP, HH = 4.40, 1.10
-    v = [(-BR/2, -SP/2, 0.0), (BR/2, -SP/2, 0.0), (BR/2, SP/2, HH), (-BR/2, SP/2, HH),
-         (-BR/2, -SP/2, 0.22), (BR/2, -SP/2, 0.22), (BR/2, SP/2, HH + 0.22), (-BR/2, SP/2, HH + 0.22)]
-    f = [(0,1,2,3),(4,7,6,5),(0,4,5,1),(1,5,6,2),(2,6,7,3),(3,7,4,0)]
-    me = bpy.data.meshes.new("Pult"); me.from_pydata(v, [], f); me.update()
-    o = bpy.data.objects.new("Pult", me); bpy.context.collection.objects.link(o)
-    me.materials.append(M["dach"]); bpy.context.view_layer.objects.active = o
-    bm = bmesh.new(); bm.from_mesh(me); bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
-    bm.to_mesh(me); bm.free(); me.update()
+    keil_x([(-SP/2, 0.0), (SP/2, HH), (SP/2, HH + 0.22), (-SP/2, 0.22)],
+           0, BR, M["dach"])
     for (py, pz) in ((-SP/2 + 0.06, 0.11), (SP/2 - 0.06, HH + 0.11)):
         box(0, py, pz, BR + 0.04, 0.16, 0.22, M["holz"])          # Traufbretter
 
@@ -692,13 +745,16 @@ def _b_dach_flach():
 def dach_flach(): _modul("th34_dach_flach", _b_dach_flach, 0.012)
 
 def _b_kamin():
-    """Schornstein mit Krone und Abdeckung."""
+    """Schornstein mit Krone und Abdeckung.
+    Die Krone stand vorher nur auf ZWEI Pfosten (x-Seiten) — von vorn sah der
+    Kamin dadurch aus wie ein T. Eine Krone ist ein RING: vier Pfosten."""
     M = _mats()
-    box(0, 0, 0.85, 0.62, 0.62, 1.70, M["sockel"])
-    box(0, 0, 1.76, 0.78, 0.78, 0.22, M["bank"])
-    for s2 in (-1, 1):
+    box(0, 0, 0.85, 0.62, 0.62, 1.70, M["dach"])                  # Schaft, Ziegelton
+    box(0, 0, 1.76, 0.78, 0.78, 0.22, M["bank"])                  # Gesims
+    for s2 in (-1, 1):                                            # Krone, 4 Pfosten
         box(s2*0.26, 0, 2.02, 0.10, 0.62, 0.30, M["bank"])
-    box(0, 0, 2.20, 0.86, 0.86, 0.10, M["bank"])
+        box(0, s2*0.26, 2.02, 0.42, 0.10, 0.30, M["bank"])
+    box(0, 0, 2.20, 0.86, 0.86, 0.10, M["bank"])                  # Abdeckplatte
     box(0, 0, 0.85, 0.66, 0.66, 0.10, M["bank"])                  # Zierring
 
 def kamin(): _modul("th34_kamin", _b_kamin, 0.010)
@@ -750,7 +806,12 @@ def beispielhaus():
     for sx in (-4, 4):
         _teil(_b_dach_giebel, sx, 0, math.pi/2, 2*GH)
     _teil(_b_balkon, 2, -2, math.pi, GH + WH)
-    _teil(_b_gaube, -2, -1.1, math.pi, 2*GH + 0.30)   # Schleppgaube ins Suddach
+    # Gaube: Traufe der Gaube bei y = -1,90 (0,30 innerhalb der Dachtraufe -2,20).
+    # Die Setzhoehe ist KEINE geratene Zahl, sondern die Dachhoehe an genau
+    # dieser Stelle — sonst steckt die Gaube im Dach (so war es im ersten Bild:
+    # 0,55 m zu tief, sichtbar blieb nur das Gaubendach als Platte).
+    GA_Y = -1.90
+    _teil(_b_gaube, -2, GA_Y, math.pi, 2*GH + DHH*(1 - abs(GA_Y)/(DSP/2)))
     _teil(_b_kamin, 2.6, 0.9, 0, 2*GH + 0.9)          # Schornstein am First
     export("th34_beispielhaus", 0.014, 2)
 
