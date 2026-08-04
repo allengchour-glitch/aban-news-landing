@@ -1734,8 +1734,14 @@ var dorfFenster=[];
   [64].forEach(function(hx){haus(hx,SZ+31,Math.PI,seed++);}); /* Die Suedseite ist inzwischen
      Stadtzentrum (Altstadt, Ladenzeile, Rathaus, Marktplatz, Park) — dort ist nur noch ein
      Bauplatz frei. Wohnen findet im Norden statt, das gibt beiden Seiten Luft. */ // -20/34 raus: Wirtshaus + Marktplatz brauchen den Platz
-  [-42,-24,2,20,44].forEach(function(hz){haus(-(RX+11),hz,Math.PI/2,seed++);});
-  [-44,-26,4,22,40].forEach(function(hz){haus(RX+11,hz,-Math.PI/2,seed++);}); // zwischen den Hauptstrassen: nichts ragt in Fahrbahn/Gehweg
+  /* 🏡 VILLENPARZELLEN AUSSPAREN. Die Villen stehen bei (-96|8), (-96|28),
+     (96|-22) und (96|-44) und haben je eine Parzelle von 18 x 14 m — auf der
+     Strassenseite endet sie genau bei x = -+89. Genau dort stand diese Reihe:
+     vier Dorfhaeuser sassen mitten auf dem Vorderzaun, im Gartentor und in der
+     Garageneinfahrt (User-Markierung auf der Draufsicht). Frei bleiben
+     West z -42, -24, -6, 44 und Ost z -8, 4, 22, 40. */
+  [-42,-24,-6,44].forEach(function(hz){haus(-(RX+11),hz,Math.PI/2,seed++);});
+  [-8,4,22,40].forEach(function(hz){haus(RX+11,hz,-Math.PI/2,seed++);}); // zwischen den Hauptstrassen: nichts ragt in Fahrbahn/Gehweg
   // Vorgaerten: Plattenweg zur Tuer + Hecken + Blumen (Haeuser wirkten wegelos im Gras)
   if(!_texBlatt)_texBlatt=_strukTex("blatt");
   var heckM=new THREE.MeshStandardMaterial({color:0x4a7a42,roughness:0.95,map:_texBlatt}),wegM=betMat(0xcfc8b8,0.9),
