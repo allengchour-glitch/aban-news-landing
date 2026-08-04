@@ -789,7 +789,13 @@ ist damit y = 0; **außen ist +y** (three.js −z, die Schauseite).
 | `th34_dach_giebel.glb` | 4,39 × 0,36 × 1,70 | Abschluss | Giebeldreieck mit Lüftungsluke |
 | `th34_treppe.glb` | 4,01 × 1,25 × 3,82 | eine Geschosshöhe | 17 Steigungen à 0,176, Handlauf |
 | `th34_balkon.glb` | **4,000** × 1,61 × 1,75 | an ein Wandmodul | Brüstung, Handlauf, Konsolen |
-| `th34_beispielhaus.glb` | 8,64 × 5,93 × 7,73 | — | **fertig zusammengesetzt** aus den Modulen |
+| `th34_wand_schaufenster.glb` | **4,000** × 0,61 × **2,750** | x += 4,00 | Ladenfront, Markisenkasten, Sockel |
+| `th34_erker.glb` | 2,94 × 1,30 × 3,17 | **vor** ein Wandmodul | dreiseitig, Kragsteine, eigenes Dach |
+| `th34_gaube.glb` | 2,00 × 1,48 × 1,71 | **auf** die Dachfläche | Schleppgaube, Fenster, Sohlbank |
+| `th34_dach_pult.glb` | 4,04 × 4,44 × 1,32 | x += 4,00 | Pultdach für Anbau, Garage, Carport |
+| `th34_dach_flach.glb` | 4,10 × 4,10 × 0,92 | x += 4,00 | Flachdach mit Attika-Ring und Kiesfeld |
+| `th34_kamin.glb` | 0,86 × 0,86 × 2,25 | frei aufs Dach | Schaft, Gesims, Krone, Abdeckplatte |
+| `th34_beispielhaus.glb` | 8,64 × 5,93 × 9,15 | — | **fertig zusammengesetzt** aus den Modulen |
 
 Generator: `tools/assets/mk_th34_hausbaukasten.py` · Texturen aus `textures/th32` (Fassade: `hausputz.png`).
 
@@ -797,9 +803,23 @@ Generator: `tools/assets/mk_th34_hausbaukasten.py` · Texturen aus `textures/th3
 > und Türstufe springt die Box über das Raster hinaus (Türmodul 0,76 statt 0,30 tief) —
 > wer auf die Box-Mitte zentriert, verschiebt die Wandflucht.
 
-> ⚠️ **`th34_balkon` ist das einzige Teil mit zmin < 0** (−0,605). Das ist Absicht: der
-> Balkon wird an der Geschossdecke montiert, seine **Oberkante** ist der Bezugspunkt,
-> die Konsolen greifen darunter an die Fassade.
+> ⚠️ **Zwei Teile haben zmin < 0** — `th34_balkon` (−0,605) und `th34_erker` (−0,545).
+> Das ist Absicht: beide werden an der Geschossdecke montiert, ihre **Oberkante** ist
+> der Bezugspunkt, die Kragsteine greifen darunter an die Fassade. Alle anderen 16
+> Teile stehen exakt auf z = 0.
+
+> 📐 **Setzhöhen der Aufsätze — nicht raten, ausrechnen.** Die Dachneigung liegt einmal
+> im Generator als `DSP, DHH = 4,40, 1,70` → `DNEIG = 0,7727` (37,7°); vorher stand sie
+> dreimal als Literal da. Die **Gaube** ist an ihrer **vorderen Unterkante** verankert
+> (y = 0 ist die Traufseite, der Körper liegt bei negativem y, dachaufwärts); die
+> Wangen sind unten auf `DNEIG` angeschnitten. Setzt man sie an y_traufe, ist die Höhe
+> `z_dach + DHH · (1 − |y_traufe| / (DSP/2))`. Im Beispielhaus: y = −1,90 → z = 6,232.
+> Mit der geratenen Zahl 6,30 steckte sie 0,55 m **im Dach**, sichtbar blieb nur das
+> Gaubendach als Platte auf der Ziegelfläche.
+
+> ⚠️ **`th34_dach_flach` ist 4,10 breit, das Raster bleibt 4,000.** Die Attika kragt je
+> Seite 0,05 aus. Aneinandergereiht überlappen sich zwei Flachdächer also um 0,10 —
+> gewollt, sonst klafft an der Fuge ein Spalt. Anker ist wie überall die Rastermitte.
 
 > 🧩 **`th34_beispielhaus` ist die Bauanleitung UND der Raster-Test.** Es ist nur aus
 > den dokumentierten Schritten zusammengesetzt (x += 4,00, z += 3,00), ohne eine
@@ -814,7 +834,7 @@ Generator: `tools/assets/mk_th34_hausbaukasten.py` · Texturen aus `textures/th3
 > Dach  (±2, 0) auf z = 6,00 · Giebel (±4, 0) quer dazu
 > ```
 >
-> 🔧 Fünf Fehler, die erst die Messung bzw. der Render gezeigt hat — alle behoben:
+> 🔧 Neun Fehler, die erst die Messung bzw. der Render gezeigt hat — alle behoben:
 > * **Zargen und Randbalken waren höher als ihr Bauteil, saßen aber auf dessen Mitte**
 >   und ragten dadurch unter den Boden (zmin −0,151 / −0,130 / −0,010).
 > * Die **untere Türfüllung** stand bei z = 0,13 und war 0,56 hoch — sie hing unter der Tür.
@@ -826,6 +846,22 @@ Generator: `tools/assets/mk_th34_hausbaukasten.py` · Texturen aus `textures/th3
 >   deshalb nur aus dem zuletzt gesetzten Teil (gemessen 4,00 × 1,61 — der Balkon).
 >   Die Geometrie liegt jetzt in `_b_*`-Funktionen ohne `neu()`; `_modul()` exportiert
 >   ein Einzelteil, `beispielhaus()` kombiniert dieselben Bauer zu einem Haus.
+> * Der **Markisenkasten** des Schaufensters saß auf 2,945 und durchbrach damit die
+>   Wandkrone von 2,750 — beim Stapeln hätte das Obergeschoss darauf gestanden.
+> * Die **Stirnwand der Gaube** saß bei y = GT/2, also mittig zwischen den Wangen statt
+>   vorne. Von der Schauseite las sich die Gaube als oben offene Kiste.
+> * Die **Gaubenscheibe** war 0,10 tief und lag in einer 0,14 tiefen Vollwand — komplett
+>   verdeckt. Eine Fensterwand ist ein **Rahmen** (Brüstung, Sturz, zwei Pfosten), nie
+>   ein Vollquader mit einer Scheibe darin.
+> * Die **Erkerkonsolen** waren zwei dünne Streben und lasen sich wie abgebrochene Beine;
+>   die **Kaminkrone** stand nur auf zwei Pfosten und sah von vorn aus wie ein T. Beides
+>   ist jetzt massiv bzw. ein Ring aus vier.
+>
+> 🧰 `keil_x(profil, cx, breite, mat)` extrudiert ein y-z-Profil entlang x und ersetzt
+> drei handgeschriebene `from_pydata`-Blöcke (Pultfläche, Gaubenwangen, Kragsteine).
+> **Es erzeugt UVs** — `from_pydata` legt keine UV-Ebene an, und ein Mesh ohne UVs zeigt
+> eine Bildtextur als einfarbige Fläche (derselbe Fehler machte in Charge 32 das
+> gestreifte Stationsdach knallrot).
 
 ---
 ## 1z2. Charge 33 — PARK-AUSSTATTUNG (`models/th33_*.glb`)
