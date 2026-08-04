@@ -2707,3 +2707,10 @@ Elektronik-Gruppen → haustier/spielzeug statt elektronik (ausser smart/gps/led
 - **Produktseite:** Trust-Zeile + Lieferbox hatten CHF 50 (templates/product.json) → 65. **Lieferzeit-Block log:**
   «Versand aus EU-Lager, 3–7 Tage» für ALLE Produkte (auch CJ-China!) → jetzt tag-bewusst: fortura/ch-lager →
   «🇨🇭 Blitzversand 1–3 Tage», eu-lager → 3–7 Tage, sonst «Internationaler Versand 7–14 Tage».
+
+## 2026-08-04 Fehler-Sweep 3 (Bulk-Export 27'063 aktive)
+Bulk-Scan: **0 bildlose, 0 CJK-Titel** ✓. 40 Klein-Titel: 33 legitime Marken (bworld/iTag/mSATA…),
+**7 kaputte repariert** (Marken-Strip-Reste «inspirierte …», abgeschnittener Sandalen-Titel, «goldene»→
+«Goldfarbene» Halskette, «mini Power Bank»→«Mini-Powerbank», Flüssiglatex). Misfit-Scan 7 Pools:
+schmuck/kueche/kinder/spielzeug/herren sauber; 2 Motorrad-Masken aus beauty→sport, 7 «für Herren»-Artikel
+aus damen→herren. ⚠️ Regex-Falle: `men.?s` traf «Na**mens**-Armreif». Policy-Seiten alle 200 ✓.
