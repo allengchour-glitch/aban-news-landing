@@ -2771,3 +2771,13 @@ Skelett-UHREN, Fledermaus-ÄRMEL, Kürbis-FARBEN, Bräter/Glückskürbis ausgesc
 Maske/Horror/Deko-Kontext) + 14 vorgetaggte = **197 in der Collection**. Produkte bleiben zusätzlich in ihren
 normalen Kategorien (Tag additiv). Menü: «Halloween 🎃» als erster Punkt unter «Mehr & Sale» (saisonaler
 Akzent bewusst mit Emoji). TODO Saison: ~Sept. Homepage-Reihe auf halloween umwidmen (25-Sektionen-Limit!).
+
+## 2026-08-05 Black-Friday-Vorbau (User «black friday?»)
+Smart-Collection **Black Friday** (handle `black-friday`, gid 691265438081, Regel tag=black-friday,
+publiziert, aktuell LEER — bewusst noch nicht im Menü). **Playbook für November:**
+1. ~20.11.: Deal-Produkte wählen (Bestseller + hohe Marge), `compareAtPrice`=alter Preis + Preis senken
+   (echte Streichpreise, CH-Preisbekanntgabeverordnung: Streichpreis muss zuvor ernsthaft verlangt worden sein!),
+   Tag `black-friday` drauf → Collection füllt sich.
+2. 24.11.: Menüpunkt «Black Friday» (Top-Level oder Mehr&Sale Pos. 1), Homepage-Reihe umwidmen
+   (25-Sektionen-Limit), Announcement-Bar-Slot, ggf. BF-Rabattcode (nicht mit WELCOME10 stapelbar machen).
+3. 01.12.: zurückbauen (Menü raus, Tags können bleiben).
