@@ -1,0 +1,1235 @@
+{
+ "traumhaus.html": [
+  {
+   "titel": "Verlässt der Host das Spiel, hängt der Gast in einer toten Welt fest — ohne Meldung, ohne Ausweg und ohne Steuerung",
+   "datei": "traumhaus.html",
+   "zeile": 6579,
+   "code": "    if(st===\"closed\"){document.getElementById(\"mpStatus\").textContent=\"Verbindung beendet\";document.getElementById(\"mpBackBtn\").style.display=\"inline-block\";}",
+   "ablauf": "Raum erstellen, beitreten, Host startet. Nach ein paar Minuten schliesst der Host den Tab (oder das Handy verliert das Netz). mp.js versucht 5 Reconnects und meldet dann status=\"closed\".",
+   "folge": "Der einzige Effekt beim Gast sind Texte in #mpStatus/#mpBackBtn — die liegen in #start, das startGame() per classList.add(\"hide\") ausgeblendet hat, sind also unsichtbar. MPs bleibt gesetzt und mpHost bleibt false, deshalb greifen weiter alle Gast-Sperren: updSim (Zeile 5398 'if(MPs&&!mpHost)') interpoliert die Figur nur noch auf s.net → die eigene Spielfigur steht für immer still und reagiert auf Joystick/WASD nicht mehr; die Uhr steht (Zeile 6672 'if(!MPs||mpHost)'), Quests/Erfolge laufen nicht, und saveGame() bricht für Gäste ab, d.h. der ganze Fortschritt ist weg. Nur ein Reload der Seite hilft, und nichts sagt dem Spieler das.",
+   "schwere": "hoch",
+   "fix": "Im \"closed\"-Zweig von beitreten() (und in hostStatus) den laufenden Fall behandeln: bei running den Koop beenden statt nur DOM-Text zu setzen, z. B. 'if(st===\"closed\"&&running){mpHost=true;MPs=null;hint(\"🔌 Partner hat das Spiel verlassen — du spielst allein weiter\");}' — dann steuert der Ex-Gast seine Figur wieder selbst und der Stand wird wieder gespeichert."
+  },
+  {
+   "titel": "Bank-Coup: beide Peers würfeln eine eigene Beute und zahlen sie beide aus — doppeltes Geld, unterschiedliche Anzeige",
+   "datei": "traumhaus.html",
+   "zeile": 5751,
+   "code": "      geld+=COUP.beute;geldSend();updHUD();",
+   "ablauf": "Zu zweit an die Bank stellen, Coup starten (updCoup läuft in Zeile 6710 ohne jede Host-Prüfung auf BEIDEN Geräten), 12 s durchhalten, dann beide zum Bahnhofs-Parkplatz laufen.",
+   "folge": "COUP.beute wird in Zeile 5743 auf jedem Gerät separat mit Math.random() gewürfelt → Host sieht im Coup-HUD z. B. \"2400 $\", der Gast \"2900 $\". Beim Erfolg addiert JEDER seine eigene Beute und schickt sie zusätzlich per geldSend() als Delta an den anderen. Ergebnis: die Kasse steigt um Beute(Host)+Beute(Gast), also rund das Doppelte des versprochenen Betrags — die Meldung sagt \"2400 $ geteilt\", das Konto springt um 5300. Der Coup ist damit die mit Abstand lohnendste Geldquelle im Spiel.",
+   "schwere": "hoch",
+   "fix": "Beute und Auszahlung nur beim Host: in updCoup die Zeilen 5743 und 5751 mit 'if(!MPs||mpHost)' klammern und den Betrag beim Phasenwechsel einmal per netSend({t:\"coupBeute\",v:COUP.beute}) an den Gast schicken (der setzt damit nur seine HUD-Anzeige); das Geld erreicht den Gast ohnehin über das geld-Delta."
+  },
+  {
+   "titel": "Der 9-Sekunden-Einfrierer setzt matrixAutoUpdate=false auf bewegte Weltobjekte — Zug, Helikopter, Ballon, Tiere und Münzen bleiben danach für immer stehen",
+   "datei": "traumhaus.html",
+   "zeile": 1015,
+   "code": "    [window._seeZug&&window._seeZug.g,window._coaster&&window._coaster.zug].forEach(function(o){if(o)o._bewegt=true;});",
+   "ablauf": "Seite laden und einfach ~10 s zusehen. `_spaetEinfrieren()` läuft 9 s nach dem load-Event (Zeile 1070) und ruft `_einfrieren()` (Zeile 1006-1013), das JEDEM Top-Level-Kind der Szene `o.matrixAutoUpdate=false` setzt, sofern es nicht vorher `_bewegt` markiert wurde. `_bewegtMarkieren()` markiert aber nur `_seeZug`, `_coaster.zug`, Seilbahn-Gondeln, `verkehr`, `_wasser`, `fussg`, `sims`, `polizei` und `_muehle`. NICHT markiert sind: `window._zug.mesh` (Stadt-Zug, Zeile 2459 `scene.add(zugG)`), `window._heli.mesh` (Zeile 2472), `window._ballon.mesh` (Zeile 3723), die Tiere aus `window._tiere.enten/.land` (Zeile 2681/2683 `scene.add(d)`/`scene.add(m)`), die Pickup-Gruppen (Zeile 4541 `g.position.set(...);scene.add(g)`) sowie `window.autoRec.mesh` (Spieler-Auto, Zeile 4100), `haustier.mesh` (Zeile 4163) und `kinder[].mesh`. Alle diese Objekte werden per `setTimeout(...,0)` gebaut, sind also zum Einfrier-Zeitpunkt garantiert schon in der Szene. Die zweite Fluchttür `o.userData.animiert` (Zeile 1010) wird im ganzen File nirgends gesetzt.",
+   "folge": "Genau 9 s nach dem Laden bleibt der Stadt-Zug auf den Gleisen stehen (`updZug` schreibt weiter `z.mesh.position.x`, three.js rechnet die Matrix aber nie mehr neu), der Helikopter hängt bewegungslos in der Luft und dreht nur noch seinen Rotor (der ist ein Kind-Objekt), der Heissluftballon zieht nicht mehr über die Stadt, Enten/Hunde/Kühe stehen fest und zappeln nur noch mit den Beinen, und die Münzen/Geschenke drehen sich nicht mehr. Wer den Spielstand schnell genug lädt (Klick auf «Solo bauen» innerhalb der 9 s), erwischt zusätzlich sein eigenes Auto: Einsteigen und Gasgeben bewegt dann die Kamera, aber das Auto-Modell bleibt sichtbar geparkt stehen. Dasselbe gilt für den Hund und für Kinder aus dem Spielstand.",
+   "schwere": "hoch",
+   "fix": "In `_bewegtMarkieren()` (Zeile 1014-1022) die fehlenden Objekte ergänzen, z. B. direkt nach Zeile 1015: `[window._zug&&window._zug.mesh,window._heli&&window._heli.mesh,window._ballon&&window._ballon.mesh,window.autoRec&&window.autoRec.mesh,haustier&&haustier.mesh].forEach(function(o){if(o)o._bewegt=true;});` plus `(pickups||[]).forEach(function(p){if(p.mesh)p.mesh._bewegt=true;});`, `(kinder||[]).forEach(function(k){if(k.mesh)k.mesh._bewegt=true;});` und `((window._tiere||{}).enten||[]).concat(((window._tiere||{}).land)||[]).forEach(function(t){if(t.mesh)t.mesh._bewegt=true;});`. Zusätzlich sollte `applyFurn` beim Anlegen von `autoRec`/`haustier` gleich `m._bewegt=true` setzen, damit auch später gebaute Autos/Hunde nie eingefroren werden."
+  },
+  {
+   "titel": "Die LOD-Ausblendung merkt sich die Position bewegter Objekte einmalig bei 4 s — die Spielfigur wird ausgeblendet, sobald man sich vom Startpunkt entfernt",
+   "datei": "traumhaus.html",
+   "zeile": 6809,
+   "code": "    _lodKlein.push({m:n,x:mitte.x,z:mitte.z});",
+   "ablauf": "`loop()` ruft bei `performance.now()>4000` einmalig `lodAufbau()` (Zeile 6742). Das läuft durch die GANZE Szene und sammelt jedes Mesh mit Radius < 2,2 m samt seiner WELTPOSITION zu diesem Zeitpunkt. Die Körperteile von Max und Mia (Kopf r=0,21, Torso, Haare, Nase, Augen, Mund aus `mkBewohner`, Zeile 4585-4594) und die geladene Charakter-GLB aus `attachRealChar` erfüllen das Kriterium und landen mit eingefrorener Koordinate in `_lodKlein`. Danach setzt `lodTakt()` alle 8 Frames `e.m.visible = (Abstand der EINGEFRORENEN Position zur AKTUELLEN Spielerposition < 78 m)` (Zeile 6817-6821). Die einzige vorgesehene Ausnahme `n.userData.nieAusblenden` (Zeile 6802) wird im ganzen File nie gesetzt. Reproduktion: Spiel starten und ca. 80 m vom Startgrundstück weglaufen (jedes Viertel der Karte liegt weiter weg — Markt, Bahnhof, Freizeitpark).",
+   "folge": "Die eigene Spielfigur und der Partner verschwinden komplett (nur der Schatten/Emoji-Sprite bleibt), sobald man sich weit genug vom eingefrorenen Bezugspunkt entfernt; kommt man zurück, ploppen sie wieder auf. Wird die Figur bei einem Klick auf «Solo bauen» erst nach der 4-Sekunden-Marke bewegt, steht der eingefrorene Bezugspunkt sogar im Weltursprung (0/0) — dann ist die Figur schon direkt beim Start unsichtbar (Startpunkt −67/43 = 79,6 m > 78 m). Umgekehrt, wenn th_mann.glb erst nach 4 s ankommt: `lodTakt` schaltet die von `attachRealChar` (Zeile 4626) versteckten Klötzchen-Körperteile zwangsweise wieder auf `visible=true` — dann steckt ein eckiger Kopf im realistischen Charakter.",
+   "schwere": "hoch",
+   "fix": "Bewegte Objekte aus dem LOD-Index heraushalten: in `mkBewohner` (Zeile 4596) `g.userData.nieAusblenden=true;` setzen (analog für NPC-/Tier-/Fahrzeug-Gruppen) und in `lodAufbau` die Abfrage aus Zeile 6802 auf die Elternkette ausweiten, z. B. `for(var a=n;a;a=a.parent){if(a.userData&&a.userData.nieAusblenden)return;}` — der Prüfpunkt existiert bereits, er greift nur nicht, weil er nur den Knoten selbst prüft und das Flag nirgends gesetzt wird."
+  },
+  {
+   "titel": "Die Gratis-Markierung der Villa-Vorlage wird nicht gespeichert — nach einem Neuladen zahlt der Abriss der Villa wieder Geld aus (Geld-Duplikation)",
+   "datei": "traumhaus.html",
+   "zeile": 4311,
+   "code": "  furn:furn.map(function(f){return {id:f.id,x:f.gx,y:f.gy,r:f.rot,fid:f.fid,lv:f.lv||1,w:f.wachs||0};}),",
+   "ablauf": "1) Villa-Vorlage stempeln (stampVilla, Z. 6636) — kostet 3500 $. Alle Teile werden als gratis markiert: Möbel per f.gratis=1 (Z. 6657), Wände/Böden per window._gratisBau (Z. 6651-6655). 2) 6 Sekunden warten (Autosave, Z. 6740) oder einfach weiterspielen. 3) Seite neu laden und über 'Solo bauen' den Spielstand laden (Z. 6486-6488). 4) Villa Stück für Stück abreissen. snapshot() (Z. 4311) speichert pro Möbel nur id/x/y/r/fid/lv/w — das Feld gratis fehlt; window._gratisBau kommt im ganzen snapshot() gar nicht vor. Beim Abriss greifen deshalb die Rückzahlungen in Z. 4196 (Möbel), Z. 4228 (Wände) und Z. 4232 (Böden) wieder, weil f.gratis undefined und window._gratisBau undefined ist.",
+   "folge": "Der Spieler bekommt für eine 3500-$-Villa rund 9500 $ zurück (Grössenordnung laut Kommentar Z. 6649). Beliebig oft wiederholbar: stempeln → neu laden → abreissen → +6000 $. Der bereits eingebaute Exploit-Schutz ist nach jedem Neuladen wirkungslos, die Wirtschaft (Preise, Aufträge, Vermögens-Quests) ist damit entwertet.",
+   "schwere": "hoch",
+   "fix": "In snapshot() das Flag mitspeichern: im furn-Map-Objekt `g:f.gratis?1:0` ergänzen und zusätzlich `gb:window._gratisBau||null` in den Snapshot aufnehmen. In loadSnapshot() nach applyFurn `if(f.g){var r=furn[furn.length-1];if(r)r.gratis=1;}` setzen und `window._gratisBau=sn.gb||{}` wiederherstellen (Schlüssel müssen wie in Z. 6653/6655 um mx9/my9 verschoben werden)."
+  },
+  {
+   "titel": "Villa-Möbel verlieren beim Umstellen/Drehen/Aufwerten die Gratis-Markierung und lassen sich danach für 50 % verkaufen — Geldpresse",
+   "datei": "traumhaus.html",
+   "zeile": 4261,
+   "code": "  doPlaceFurn(id,nx,ny,rot,false,undefined,lv0);",
+   "ablauf": "Villa für 3500 $ stempeln (Knopf 🏰). Ein gestempeltes Möbel antippen → „↔️ Umstellen\" (kostenlos) oder „🔄 Drehen\" (kostenlos) → dann „Verkaufen\". editVerschiebe/edRot löschen den alten Datensatz (furn.splice) und legen über doPlaceFurn einen NEUEN an — der neue Datensatz hat kein f.gratis mehr, weil das Flag nur einmal in stampVilla (Z. 6657) gesetzt wird. removeFurnAt (Z. 4196) zahlt deshalb wieder die vollen 50 % aus. Für alle 31 Villa-Möbel wiederholen.",
+   "folge": "Die 31 Villa-Möbel haben zusammen 11'920 $ Katalogwert → ca. 5'960 $ Rückzahlung für einen 3'500-$-Stempel. Netto +2'460 $ pro Durchgang, beliebig oft wiederholbar (nach dem Abräumen ist die Fläche wieder frei). Genau die Presse, die der Kommentar in Z. 4193 schliessen wollte.",
+   "schwere": "hoch",
+   "fix": "In editVerschiebe (4261), edRot (4280) und edUp (4294) das Flag mitnehmen: nach dem doPlaceFurn-Aufruf `var _n=furn[furn.length-1]; if(_n&&f9.gratis)_n.gratis=1;` (bei edUp ggf. bewusst löschen, weil dort echtes Geld bezahlt wurde)."
+  },
+  {
+   "titel": "Im Koop verdeckt die Emote-Leiste (piBar) im Querformat den halben Joystick — Steuern loest stattdessen Winken/Geschenk aus.",
+   "datei": "traumhaus.html",
+   "zeile": 146,
+   "code": "<div id=\"piBar\" style=\"position:fixed;left:66px;bottom:calc(64px + env(safe-area-inset-bottom));z-index:14;display:none;gap:6px\">",
+   "ablauf": "Online-Koop starten (Raum-Code), Handy quer halten. Zeile 6468 schaltet piBar bei MPs dauerhaut auf display:flex und blendet sie nie wieder aus. Die Querformat-Regel Zeile 46 zieht den Joystick nach unten links: '#joy{bottom:calc(12px + env(safe-area-inset-bottom)) !important;left:calc(12px + env(safe-area-inset-left)) !important}'. Damit liegt der Joystick bei x 12..124 / y(von unten) 12..124, Kreismittelpunkt (68|68), Radius 56. Die drei .tbtn-Knoepfe der piBar (je 48px, Zeile 147-149) liegen bei x 66..222 / y 64..112 — der erste Knopf (Winken) hat seinen Mittelpunkt bei (90|88), also nur ~30px vom Joystick-Zentrum entfernt. piBar hat z-index 14, #joy nur z-index 13 (Zeile 180), also gewinnt piBar jeden Fingerdruck.",
+   "folge": "Wer den Joystick nach rechts/oben oben schiebt, trifft die Emote-Knoepfe: die Figur bleibt stehen und stattdessen wird gewinkt, ein Geschenk verschickt oder ein Tanz vorgeschlagen. Im Koop ist die Laufsteuerung auf dem Handy dadurch teilweise blockiert.",
+   "schwere": "hoch",
+   "fix": "In der Querformat-Media-Query (Zeile 45-58) die piBar aus dem Joystick-Bereich holen, z. B. '#piBar{left:auto !important;right:calc(80px + env(safe-area-inset-right)) !important;bottom:calc(12px + env(safe-area-inset-bottom)) !important}' — oder piBar generell auf 'left:calc(140px + env(safe-area-inset-left))' setzen, damit sie rechts neben dem 112px breiten Joystick beginnt."
+  },
+  {
+   "titel": "Jeder Fingertipp auf die 3D-Szene loest tapAt zweimal aus (touchend + nachgereichtes Kompatibilitaets-mouseup) — Boeden kosten doppelt, Kamera-Folgen schaltet sich sofort wieder aus.",
+   "datei": "traumhaus.html",
+   "zeile": 5991,
+   "code": "    if(Math.hypot(t.clientX-downX,t.clientY-downY)<12)tapAt(t.clientX,t.clientY);}});",
+   "ablauf": "Ein kurzer Tipp ohne Fingerbewegung erzeugt kein touchmove, daher ruft niemand preventDefault (touchstart Zeile 5977 ist {passive:true}, touchend Zeile 5989 hat gar keinen preventDefault). Der Browser schickt deshalb nach touchend die Ersatz-Mausereignisse mousedown+mouseup an dasselbe Canvas. Ablauf A (Bauen): Bodenbelag in der Palette waehlen, einmal aufs Grundstueck tippen. touchstart -> _paintSet=new Set() + paintFloorAt bucht ab; touchend -> tapAt, _paintSet-Sperre greift, ok; dann synthetisches mousedown (Zeile 5956-5957) -> '_paintSet=new Set()' setzt die Sperre ZURUECK und paintFloorAt bucht ein zweites Mal ab. Ablauf B (Leben): Max oder Mia antippen. touchend -> tapAt setzt followSim=s2 ('Kamera folgt …'); synthetisches mouseup (Zeile 5965-5966, downT stammt vom synthetischen mousedown, also <260ms, Distanz 0) -> tapAt erneut, followSim===s2 -> followSim=null, 'Kamera frei'.",
+   "folge": "Auf dem Handy kostet jede einzeln angetippte Bodenkachel doppelt so viel Geld wie angezeigt (die Kommentar-Sperre in Zeile 6064-6067 wirkt nur fuer Maus). Und der auf dem Startbildschirm beworbene 'Tipp auf Max/Mia = Kamera folgt' tut sichtbar nichts — der Hinweis blitzt auf und wird sofort widerrufen.",
+   "schwere": "hoch",
+   "fix": "Ersatz-Mausereignisse nach Touch unterdruecken: im touchend-Handler (Zeile 5989) 'e.preventDefault();' aufrufen (Listener nicht passiv registrieren) ODER einen Zeitstempel setzen — 'window._lastTouch=performance.now();' in touchend und in mousedown/mouseup jeweils 'if(performance.now()-(window._lastTouch||0)<600)return;' voranstellen."
+  },
+  {
+   "titel": "Die gruene Bau-Vorschau (Ghost) wird nur von mousemove bewegt — auf dem Handy klebt sie unbewegt im Weltursprung.",
+   "datei": "traumhaus.html",
+   "zeile": 5964,
+   "code": "  if(buildMode)ghostFollow(e.clientX,e.clientY);});",
+   "ablauf": "'🔨 Bauen' antippen, eine Wand oder ein Moebel in der Palette waehlen. refreshGhost() (Zeile 6002-6015) erzeugt das Vorschau-Mesh und fuegt es mit scene.add(ghost) ohne Position hinzu, also bei (0,0,0). Die einzige Stelle, die ghost.position setzt und die Farbe gruen/rot faerbt, ist ghostFollow (Zeile 6016-6026) — und ghostFollow wird im ganzen File ausschliesslich hier aus dem mousemove-Handler gerufen. Die Touch-Handler (touchstart 5977, touchmove 5982, touchend 5989) rufen es nie.",
+   "folge": "Auf dem Handy sitzt ein gruener Klotz fest in der Grundstuecksmitte und wandert nie zum Finger. Man sieht vor dem Tippen weder, wo das Teil landet, noch ob der Platz frei ist (rot/gruen) und in welche Richtung es gedreht liegt — man baut blind und merkt erst nach dem Bezahlen 'Hier steht schon etwas'.",
+   "schwere": "hoch",
+   "fix": "In touchstart und touchmove die Vorschau mitziehen: in Zeile 5979 nach paintFloorAt(lx,ly) ergaenzen 'if(buildMode)ghostFollow(lx,ly);' und in Zeile 5983/5985 im Einfinger-Zweig ebenso 'if(buildMode)ghostFollow(lx,ly);'."
+  },
+  {
+   "titel": "Querformat: die Werkzeugleiste (Drehen/Abreissen) wird unter den Pokal-Knopf geschoben — 'Drehen' ist nicht antippbar.",
+   "datei": "traumhaus.html",
+   "zeile": 57,
+   "code": "  #tools{left:calc(10px + env(safe-area-inset-left));right:auto;top:70px;bottom:auto}",
+   "ablauf": "Handy quer (jedes Handy erfuellt 'orientation:landscape and max-height:620px', Zeile 45; im Hochformat blockt ohnehin #rotHint, Zeile 95). '🔨 Bauen' antippen: Zeile 6428 setzt #tools auf flex. #tools landet damit bei left 10px / top 70px. Der Pokal-Knopf #achBtn steht fest bei 'left:10px;top:calc(64px + env(safe-area-inset-top))' mit 48x48 (Zeile 216) und wird beim Spielstart eingeblendet (Zeile 6457) und nie wieder versteckt. Im Querformat ist env(safe-area-inset-top)=0, also belegt achBtn y 64..112, der erste .tbtn (#rotBtn) y 70..118 — 42 der 48 Pixel liegen uebereinander. achBtn hat z-index 14, #tools nur z-index 13 (Zeile 77), der Pokal liegt also obenauf.",
+   "folge": "Im Bau-Modus oeffnet der Tipp auf '🔄 Drehen' die Erfolge-Liste statt das Moebel zu drehen. Da auf dem Handy keine R-Taste da ist (Tastatur-Fallback Zeile 6366), lassen sich Moebel/Waende quer gar nicht mehr drehen — nur der '🧨 Abreissen'-Knopf darunter bleibt erreichbar.",
+   "schwere": "hoch",
+   "fix": "In der Querformat-Media-Query den Startpunkt unter den Pokal legen: '#tools{...;top:120px;bottom:auto}' (statt 70px) — oder in Zeile 6428 zusaetzlich den Pokal ausblenden, solange buildMode aktiv ist."
+  },
+  {
+   "titel": "Der Bank-Coup loest nie eine echte Fahndung aus — die Fluchtphase ist voellig gefahrlos",
+   "datei": "traumhaus.html",
+   "zeile": 5744,
+   "code": "      if(typeof wanted!==\"undefined\")wanted=Math.max(wanted||0,3);",
+   "ablauf": "Koop-Runde starten, zu zweit zur Bank (Gewerbe Ost) laufen, den Knopf 'Bank-Coup' druecken und 12 s durchhalten. Phase 2 startet mit dem Hinweis '🚨 Alarm! ... beide zum Parkplatz am Bahnhof!'.",
+   "folge": "Es taucht kein einziges Polizeiauto auf und das Fahndungs-HUD (⭐) bleibt leer. Die als Kernstueck angekuendigte Flucht ist eine reine Spazierfahrt ohne Verfolger — der Coup fuehlt sich kaputt/leer an.",
+   "schwere": "hoch",
+   "fix": "Statt der direkten Zuweisung `setWanted(Math.max(wanted,3))` aufrufen (spawnt die Autos + aktualisiert das HUD). Analog in coupEnde/Zeile 5754 `setWanted(0)` statt `wanted=0`."
+  },
+  {
+   "titel": "Der Gast sieht den Fahndungsstand nie: updPolizei setzt beim Gast wanted in jedem Frame wieder auf 0",
+   "datei": "traumhaus.html",
+   "zeile": 5085,
+   "code": "  if(!polizei.length){if(wanted!==0){wanted=0;updWantedHUD();if(MPs&&mpHost)netSend({t:\"wanted\",w:0});}return;} /* 🩹 Entwarnung auch an den Gast */",
+   "ablauf": "Im Koop nachts ein krummes Ding drehen, das schiefgeht (oder Bank-Coup) → der Host ruft wantedPlus() und schickt {t:\"wanted\",w:3}.",
+   "folge": "Der Gast-Handler (Zeile 4403) setzt zwar 'wanted=m.w|0' und zeigt den Stern-HUD, ruft aber nicht setWanted() — beim Gast bleibt das Array polizei deshalb leer. Schon im nächsten Frame läuft updPolizei (Zeile 6716, ohne Host-Guard), sieht polizei.length===0 und setzt wanted sofort wieder auf 0 und blendet die Sterne aus. Der Gast sieht die Fahndung also höchstens einen Frame lang; wenn die Polizei den Host später schnappt, verschwindet beim Gast nur kommentarlos Geld (Busse aus Zeile 5094 kommt als geld-Delta an) — genau das Problem, das der Fix in Zeile 4403 beheben sollte. Zusätzlich ist der Werkstatt-Knopf (Zeile 6102 'if(wanted<=0)') für den Gast dauerhaft tot.",
+   "schwere": "mittel",
+   "fix": "updPolizei beim Gast gar nicht simulieren lassen: als erste Zeile der Funktion 'if(MPs&&!mpHost)return;' ergänzen — dann bleibt der vom Host geschickte wanted-Wert stehen."
+  },
+  {
+   "titel": "In der Lobby reisst die Verbindung nach 6 Sekunden ab: der Keepalive steckt hinter 'if(running)'",
+   "datei": "traumhaus.html",
+   "zeile": 6733,
+   "code": "      if(window._thHbT<=0){window._thHbT=2;netSend({t:\"hb\"});}}",
+   "ablauf": "Raum erstellen, Gast tritt bei, beide stehen in der Lobby (\"👥 Im Raum: …\") und der Host liest erst den Namen, bevor er ▶ Starten drückt — also länger als 6 Sekunden warten.",
+   "folge": "Vor dem Start ist running=false, damit läuft der ganze loop-Rumpf nicht: weder der Gast-Heartbeat (diese Zeile) noch der Host-Snapshot {t:\"sims\"} werden gesendet. Nach dem hallo/lobby/state-Austausch ist der Kanal still, und der 6-Sekunden-Watchdog in js/mp.js (Zeile 98 'Date.now()-lastRecv>6000') schlägt auf beiden Seiten zu: Status springt auf \"lost\", der Host schliesst beide DataChannels, der Gast baut neu auf. Beide sehen im Lobby-Status im ~7-Sekunden-Takt \"Verbindung verloren — versuche Reconnect …\", das Netz-Badge blinkt rot, und der Host schickt bei jedem Reconnect erneut den kompletten state plus \"… baut jetzt mit!\" in den Chat. Drückt der Host ausgerechnet in einem lost-Fenster auf Starten, geht das {t:\"los\"} ins Leere (MPs.send verwirft es bei main===null).",
+   "schwere": "mittel",
+   "fix": "Den Keepalive aus dem running-Block herausziehen und für beide Rollen senden, z. B. ein setInterval(function(){if(MPs&&MPs.status===\"connected\")netSend({t:\"hb\"});},2000) direkt nach dem Verbinden — dann bleibt auch die Wartezeit in der Lobby verbindungsstabil."
+  },
+  {
+   "titel": "applyFurn hängt sein Möbel-Modell auch dann in die Szene, wenn der Datensatz zwischenzeitlich aus furn entfernt wurde — unlöschbare Geister-Möbel",
+   "datei": "traumhaus.html",
+   "zeile": 4181,
+   "code": "    scene.add(m);rec.mesh=m;",
+   "ablauf": "`applyFurn` legt den Datensatz `rec` mit `mesh:null` sofort in `furn` (Zeile 4166-4167) und lädt das GLB erst asynchron nach. Alle Lösch-/Umbau-Pfade prüfen nur `if(f.mesh)scene.remove(f.mesh)` — bei noch laufendem Ladevorgang ist `mesh` null, der Datensatz wird trotzdem aus `furn` gespliced: `removeFurnAt` (Zeile 4192-4197), `editVerschiebe` (4258-4259), `edRot` (4278-4279), `edUp` (4291-4292) und vor allem `loadSnapshot` (Zeile 4328: `furn.slice().forEach(function(f){if(f.mesh)scene.remove(f.mesh);...});furn=[];`). Der noch laufende Callback führt danach trotzdem Zeile 4181 aus. Sicher reproduzierbar über den Startbildschirm: «🌐 Raum erstellen» tippen (Zeile 6550/6586 lädt th_save_coop → alle Möbel-GLBs starten zu laden) → «Zurück» (mpBackBtn, Zeile 6495) → «Solo bauen» (Zeile 6488 lädt den Solo-Stand und leert `furn`, während die Koop-Modelle noch unterwegs sind).",
+   "folge": "Die Möbel des anderen Spielstands stehen anschliessend mitten im Haus, gehören aber zu keinem `furn`-Eintrag mehr: sie lassen sich nicht antippen, nicht verschieben, nicht drehen und nicht verkaufen und bleiben bis zum Neuladen der Seite stehen. Bei Lampen (`def.light`, Zeile 4186) bleibt zusätzlich eine PointLight dauerhaft in der Szene — jede Wiederholung kostet einen weiteren Lichtplatz und Zeichenaufrufe. Dieselbe Lücke gilt für Auto (Zeile 4094-4101) und Hund (Zeile 4163): wer zweimal schnell hintereinander eines platziert, hat das erste Modell für immer als Geist in der Welt.",
+   "schwere": "mittel",
+   "fix": "Im Lade-Callback vor dem Einhängen prüfen, ob der Datensatz noch lebt: in Zeile 4168 `loadTH(id,function(tpl){if(!tpl)return;` erweitern zu `loadTH(id,function(tpl){if(!tpl||furn.indexOf(rec)<0)return;` — analog bei Auto/Hund abfragen, ob `window.autoRec`/`haustier` inzwischen ersetzt wurde, bevor `scene.add(m)` läuft."
+  },
+  {
+   "titel": "Der Vermögens-Endlosauftrag setzt sein Ziel bei jedem Laden am aktuellen Vermögen neu — das Ziel läuft davon und ist nie erreichbar",
+   "datei": "traumhaus.html",
+   "zeile": 5243,
+   "code": " function(n,b){var t=Math.round((hausWert()+geld+n*1500+2500)/500)*500;return {e:\"💎\",tx:\"Steigere dein Vermögen auf \"+t+\" $\",rw:400+n*160,ok:function(){return hausWert()+geld>=t;}};},",
+   "ablauf": "1) Stadt-Aufträge bis questIdx=10 erfüllen (die 7 festen QUESTS plus 3 Endlos-Aufträge) — dann greift PQ_TPL[3], der Vermögens-Auftrag. 2) Ziel wird einmalig in ensurePQ() (Z. 5247) berechnet, z. B. 'Steigere dein Vermögen auf 20000 $'. 3) Geld verdienen bis knapp unter das Ziel, z. B. 19500 $. 4) Seite neu laden und Spielstand laden. snapshot() speichert nur `pqb` = die Basislinie window._pq.basis (Z. 4317), nicht das berechnete Ziel t und nicht window._pq selbst. loadSnapshot() setzt window._pq=null (Z. 4350). 5) ensurePQ() baut die Vorlage neu — bei PQ_TPL[3] wird t aber NICHT aus der Basislinie b abgeleitet, sondern aus dem AKTUELLEN hausWert()+geld. Neues Ziel: ~22000 $.",
+   "folge": "Der Auftrag zeigt nach jedem Neuladen ein um mindestens 2500 $ höheres Ziel als das eigene Vermögen. Wer regelmässig neu lädt, kann diesen Stadt-Auftrag nie abschliessen und hängt dauerhaft in der Auftragskette fest (alle folgenden Endlos-Aufträge und die Belohnung von 400+n*160 $ bleiben gesperrt). Der Kommentar in Z. 5250 behauptet, genau dieses Weglaufen sei behoben — für diese eine Vorlage stimmt das nicht.",
+   "schwere": "mittel",
+   "fix": "Ziel aus der persistierten Basislinie ableiten statt aus dem Live-Stand: in ensurePQ() die Basislinie um `verm:hausWert()+geld` erweitern (Z. 5254) und in PQ_TPL[3] `var t=Math.round((b.verm+n*1500+2500)/500)*500;` verwenden. Dann bleibt t über Reloads stabil."
+  },
+  {
+   "titel": "Der Emote-Zähler der Koop-Team-Aufgabe wird nicht gespeichert, sein Startwert aber schon — nach einem Host-Reload zählt die Aufgabe zu wenig",
+   "datei": "traumhaus.html",
+   "zeile": 5277,
+   "code": " [\"😮\",\"Macht 10 Emotes zusammen\",200,function(){return window._emoteCount||0;},10],",
+   "ablauf": "1) Koop-Runde: Host und Gast erfüllen die ersten fünf Team-Aufgaben, teamIdx erreicht 5 (Emote-Aufgabe). 2) teamArm() (Z. 5281) verankert teamBase[5] = window._emoteCount, also den Zählerstand der laufenden Sitzung, z. B. 6 (doEmote zählt hoch, Z. 4452). 3) Der Host speichert: snapshot() legt teamBase als `tb` ab (Z. 4311) — window._emoteCount kommt im Snapshot nicht vor. 4) Host lädt neu und eröffnet den Raum erneut; loadSnapshot() setzt teamBase=sn.tb (Z. 4342), window._emoteCount startet wieder bei 0. 5) teamProg() (Z. 5282) rechnet Math.max(0, Math.min(10, 0-6)).",
+   "folge": "Die Team-Aufgabe 'Macht 10 Emotes zusammen' steht nach dem Neuladen bei 0/10 und bleibt dort, obwohl beide Spieler Emotes machen — die ersten 6 Emotes zählen gar nicht. Statt 10 sind 16 Emotes nötig, ohne dass die Anzeige das erklärt. Die 200-$-Belohnung und die Rotation zur nächsten Team-Aufgabe verzögern sich entsprechend.",
+   "schwere": "mittel",
+   "fix": "In snapshot() `em:window._emoteCount||0` mitspeichern und in loadSnapshot() `if(sn.em!==undefined)window._emoteCount=sn.em;` setzen — analog zu den bereits gesicherten Tageslimits in Z. 4318-4320/4351-4353."
+  },
+  {
+   "titel": "Die Markthalle setzt stats.ernten auf 0 — Erfolg „Grüner Daumen\" und die Team-Aufgabe „6 Ernten\" werden dadurch unerreichbar",
+   "datei": "traumhaus.html",
+   "zeile": 6112,
+   "code": "  geld+=erloes;stats.ernten=0;geldSend();",
+   "ablauf": "Gemüsebeet bauen, ernten lassen (updBeete, Z. 4887 zahlt bereits +35 $ und zählt stats.ernten hoch), dann in der Markthalle verkaufen. Der Zähler dient gleichzeitig als Lager UND als Lebenszeit-Statistik: ACH-Eintrag „gaertner\" prüft `stats.ernten>=5` (Z. 3974), TEAMQ prüft `stats.ernten` gegen die bei teamArm gemerkte Basislinie (Z. 5276/5282).",
+   "folge": "Wer nach jeder 1–4 Ernten verkauft, bekommt den Erfolg „🥕 Grüner Daumen\" nie — der Zähler springt jedes Mal zurück auf 0. Im Koop ist es schlimmer: teamBase wurde z. B. bei 5 eingemessen, nach dem Verkauf steht der Fortschritt dauerhaft bei 0/6 und man braucht 11 statt 6 Ernten. Zusätzlich wird jede Ernte zweimal bezahlt (35 $ beim Ernten + 45 $ beim Verkauf).",
+   "schwere": "mittel",
+   "fix": "Lager und Statistik trennen: `stats.ernteLager` für den Verkauf einführen (Z. 4887 beide hochzählen, Z. 6109–6112 nur das Lager lesen und auf 0 setzen), stats.ernten nie zurücksetzen."
+  },
+  {
+   "titel": "Kontext-Knoepfe (Strassenmusik / Krummes Ding / Ernte) haben keine buildMode-Sperre und legen sich ueber die Moebel-Palette.",
+   "datei": "traumhaus.html",
+   "zeile": 4795,
+   "code": "  b.style.display=crimeAvailable()?\"block\":\"none\";",
+   "ablauf": "Im Spiel bis 17:00 warten und dann '🔨 Bauen' antippen. updCrime(dt) laeuft in der Frame-Schleife (Zeile 6715) ohne jeden buildMode-Vorbehalt, und weder crimeAvailable() (Zeile 4790-4792), buskAvailable() (Zeile 6389) noch growSellAvailable() (Zeile 4788) pruefen buildMode. #buskBtn steht fest auf 'left:50%;bottom:calc(66px + env(safe-area-inset-bottom));z-index:14' (Zeile 131), #crimeBtn auf bottom:10px (Zeile 133), #growBtn auf bottom:122px (Zeile 132). Die Palette (Zeile 69) beginnt bei bottom:0 und ist rund 122px hoch (6 + palCats 44 + 6 + palItems 56 + 4 + 6) — sie hat aber nur z-index 12, die Knoepfe z-index 14.",
+   "folge": "Im Bau-Modus liegt abends '🎸 Strassenmusik machen' quer ueber der Kategorie-Zeile und nachts '🕶️ Krummes Ding drehen …' ueber der Moebel-Zeile. Wer mittig eine Kategorie oder ein Moebel antippen will, startet stattdessen das Musik-Minispiel bzw. eine Straftat — und die verdeckten Palettenfelder sind gar nicht erreichbar.",
+   "schwere": "mittel",
+   "fix": "Die drei Verfuegbarkeits-Pruefungen um '&& !buildMode' erweitern — in Zeile 4788 (growSellAvailable), Zeile 4791 (crimeAvailable) und Zeile 6389 (buskAvailable) jeweils 'running&&!buildMode&&…'."
+  },
+  {
+   "titel": "Waende, Fenster, Tueren und Boeden lassen sich ausserhalb des Baufensters setzen, obwohl der Bau-Geist rot anzeigt",
+   "datei": "traumhaus.html",
+   "zeile": 6070,
+   "code": "    var e=nearestEdge(c);doPlaceWall(e.x,e.y,e.d,curItem);geld-=def.cost;}",
+   "ablauf": "Bau-Modus an, 'Wand' (oder ein Bodenbelag) waehlen, mit der Maus/dem Finger auf eine Zelle ausserhalb des mittleren Baufensters tippen — z. B. auf den Rundweg oder die Wiese ausserhalb der Hecke, aber noch innerhalb des 72x46-Gitters.",
+   "folge": "Die Wand bzw. der Bodenbelag wird tatsaechlich gebaut und bezahlt, obwohl die Vorschau (ghostFollow, Zeile 6018/6022 pruefen inBau) sie ROT als 'nicht erlaubt' markiert. Man kann quer durch Stadtstrassen mauern; Moebel werden an derselben Stelle korrekt abgelehnt — die Regeln widersprechen sich also sichtbar.",
+   "schwere": "mittel",
+   "fix": "In tapAt vor den beiden Zweigen (Zeile 6063 fuer Boden, Zeile 6069 fuer Wand/Fenster/Tuer) auf `inBau(c.gx,c.gy)` pruefen und sonst mit Hinweis abbrechen — genau wie es paintFloorAt (Zeile 5949) und footprintFree bereits tun."
+  },
+  {
+   "titel": "Max und Mia benutzen NIE ein Moebelstueck — die Beduerfnis-Schwelle kann nach dem Fix-auf-100 nie mehr unterschritten werden",
+   "datei": "traumhaus.html",
+   "zeile": 4718,
+   "code": "  if(wv<55){var f=findFurnFor(worst);",
+   "ablauf": "Beliebig lange spielen: Bett, Sofa, Fernseher, Dusche, Herd hinstellen und warten — auch nachts (Schlafenszeit-Zweig Zeile 4716/4717).",
+   "folge": "Die Bewohner laufen nur noch zufaellig herum. Niemand legt sich je ins Bett, setzt sich aufs Sofa, duscht oder isst. Alle `use`-Daten im Katalog (Pose, Dauer, Sitz-Offset) sowie die Funktionen findFurnFor/useCell/arrive/simUse sind toter Code, weil updSim in Zeile 5415 jeden Frame ALLE Beduerfnisse auf 100 setzt — `wv` ist immer 100, also nie < 55, und `s.needs.energie<96` in Zeile 4717 ist ebenfalls nie wahr.",
+   "schwere": "mittel",
+   "fix": "Wenn die Beduerfnisse absichtlich aus sind, die Moebelnutzung entkoppeln (z. B. in simThink mit kleiner Wahrscheinlichkeit ein zufaelliges `use`-Moebel ansteuern bzw. nachts das Bett) — sonst wirkt das eingerichtete Haus tot."
+  },
+  {
+   "titel": "Tageslimit für krumme Dinger gilt nur für den Host — der Gast kann beliebig oft zuschlagen",
+   "datei": "traumhaus.html",
+   "zeile": 4812,
+   "code": "  if(MPs&&!mpHost)return; // Host entscheidet",
+   "ablauf": "Als Gast beitreten, mindestens einen Spieltag mitspielen und dann nachts (21–5 Uhr) den Krimi-Knopf mehrfach hintereinander benutzen.",
+   "folge": "Der Zähler window._coupHeute wird erst in Zeile 4817 hochgezählt — also NACH diesem Early-Return, den Gast nie erreicht. Der Gast prüft in startCrime (Zeile 4799) folglich einen Stand, der seit dem Beitritts-Snapshot eingefroren ist; sobald der Tag wechselt, ist 'window._coupTag===tag' falsch und die Sperre greift gar nicht mehr. Beim Host wiederum läuft startCrime über den Netz-Pfad mit silent=true, wo die Limit-Prüfung ebenfalls übersprungen wird. Folge im Spiel: der Host bekommt ab dem dritten Versuch \"👮 Zwei krumme Dinger an einem Tag reichen\" und ist blockiert, während der Gast unbegrenzt weiter Beute (die der Host berechnet und per geld-Delta an beide ausschüttet) einfährt.",
+   "schwere": "niedrig",
+   "fix": "Den Zähler vor dem Early-Return führen: die Zeile 'window._coupHeute=(window._coupTag===tag?(window._coupHeute||0):0)+1;window._coupTag=tag;' in finishCrime über 'if(MPs&&!mpHost)return;' verschieben, damit beide Peers mitzählen."
+  },
+  {
+   "titel": "loadSnapshot entfernt ein vorhandenes Haustier nicht — der Hund aus dem Koop-Stand landet dauerhaft im Solo-Spielstand",
+   "datei": "traumhaus.html",
+   "zeile": 4340,
+   "code": "  if(sn.hu&&!haustier)applyFurn(\"hund\",sn.hu.x+mx9,sn.hu.y+my9,0);",
+   "ablauf": "1) Im Koop-Stand (th_save_coop) existiert ein Hund, im Solo-Stand (th_save1) nicht. 2) Im Startmenü '🎮 Raum erstellen' tippen — hostBtn lädt sofort den Koop-Stand (Z. 6586), der Hund wird erzeugt und haustier ist gesetzt. 3) Mit '↩ Zurück' (mpBackBtn, Z. 6495) zurück ins Menü. 4) 'Solo bauen' tippen — soloBtn lädt th_save1 (Z. 6488). loadSnapshot räumt zwar Wände, Böden, Möbel, Kinder und sogar window.autoRec auf (Z. 4325-4328, 4354), setzt haustier aber nie zurück; die Zeile prüft nur `!haustier` und lässt das bestehende Tier stehen. 5) Der 6-Sekunden-Autosave schreibt den Hund über `hu:haustier?...` (Z. 4311) in den Solo-Stand.",
+   "folge": "Der Spieler bekommt im Solo-Spiel einen Hund geschenkt, den er dort nie gekauft hat — inklusive Erfolg '🐕 Bester Freund' (Z. 3973). Umgekehrt kann ein Hund auch nach dem Wechsel in einen Stand ohne Haustier nicht verschwinden. Der Zustand ist dauerhaft, weil er sofort mitgespeichert wird.",
+   "schwere": "niedrig",
+   "fix": "In loadSnapshot() vor Z. 4340 das alte Tier abräumen, analog zum Auto in Z. 4325: `if(haustier){scene.remove(haustier.mesh);haustier=null;}` und danach wie gehabt `if(sn.hu)applyFurn(\"hund\",...)`."
+  },
+  {
+   "titel": "Die Streunerkatze kann praktisch nie zu Besuch kommen, weil ihr Modell nur beim Hundekauf geladen wird",
+   "datei": "traumhaus.html",
+   "zeile": 5309,
+   "code": "    if(!MODELS.hund)return; // Katze = kleiner grau getönter Vierbeiner",
+   "ablauf": "Neues Spiel, keinen Hund (450 $) kaufen und einfach spielen. Der NPC-Pool in updNpcs (Zeile 5375) enthaelt zu jeder Tageszeit 'katze'.",
+   "folge": "Wird 'katze' ausgewuerfelt, bricht spawnNpc still ab: Es erscheint gar kein Besucher, der Timer ist verbraucht. Die Szene '🐈 Eine Streunerkatze schaut vorbei' bekommt der Spieler nie zu sehen, ausserdem fallen dadurch zufaellig Besucher-Zyklen komplett aus. MODELS.hund wird ausschliesslich in applyFurn (Zeile 4163, def.pet) gefuellt; baueTiere benutzt einen eigenen Loader und schreibt nicht nach MODELS.",
+   "schwere": "niedrig",
+   "fix": "Das Hund-Modell einmalig beim Start vorladen (`loadTH(\"hund\",function(){})`) oder 'katze' nur dann in den Pool aufnehmen, wenn `MODELS.hund` vorhanden ist."
+  },
+  {
+   "titel": "Immobilien-Preise, Miete und NPC-Auftragslohn werden in '§' statt in '$' angezeigt",
+   "datei": "traumhaus.html",
+   "zeile": 2330,
+   "code": "  if(best>=0&&!fahren&&!buildMode){kb.style.display=\"block\";kb.textContent=\"🏠 \"+H[best].preis+\" §\";kb.dataset.idx=best;}",
+   "ablauf": "Zu einem der Dorfhaeuser laufen — der Kauf-Knopf erscheint. Danach ein Haus kaufen und einen Tageswechsel abwarten, bzw. einen Passanten ansprechen, der einen Auftrag gibt.",
+   "folge": "Der Kauf-Knopf zeigt z. B. '🏠 2400 §', die Fehlermeldung 'dir fehlen 600 §', der Miet-Hinweis '+150 § Miete pro Tag' (Zeile 2343), die taegliche Mieteinnahme (Zeile 6672) und der Passanten-Lohn (Zeile 5557) ebenfalls '§'. Ueberall sonst im Spiel steht '$' — es sieht nach einer zweiten, kaputten Waehrung aus.",
+   "schwere": "niedrig",
+   "fix": "In den fuenf Stellen `§` durch `$` ersetzen (offenbar wurde beim Escapen `$` mit `§` verwechselt)."
+  }
+ ],
+ "lebenspfad.html": [
+  {
+   "titel": "Online-Deadlock: Wenn der Gastgeber die App in den Hintergrund schiebt, kann die Runde von niemandem mehr weitergeführt werden.",
+   "datei": "lebenspfad.html",
+   "zeile": 2158,
+   "code": "  if(!NET.on||!NET.host||!G||!running)return;",
+   "ablauf": "Koop-Spiel mit 2-4 Leuten. Der Gastgeber ist am Zug und sperrt sein Handy / wechselt die App (Tab im Hintergrund). Die WebRTC-Verbindung bleibt offen: der PeerJS-Datenkanal-Callback in Zeile 3618 beantwortet weiterhin jeden 'ping' mit 'pong', also läuft der Gast-Heartbeat (netStartHeartbeat, Z. 3489) sauber weiter und netPresent(0) liefert für Gäste `NET.conns.length>0` = true (Z. 3154). Damit greift der Pause-Bildschirm nicht: netCheckPause (Z. 3182) setzt curAbsent nur, wenn netPresent(cur) false ist, also bleibt das Overlay #netPause versteckt - kein 'Spieler überspringen', kein 'Alleine weiterspielen'. Gleichzeitig steht der einzige Ausweg-Automatismus still: updAfk läuft laut Z. 2158 NUR beim Host, und seine Uhr ist `_afkT+=dt` aus der requestAnimationFrame-Schleife - im Hintergrund-Tab friert rAF ein, der 150-Sekunden-Auto-Zug (Z. 2168) wird also genau dann nie erreicht, wenn er gebraucht wird. Auch der Skip-Knopf hilft nicht: er ist für Gäste ausgeblendet (Z. 3187) und verweigert beim Host das Überspringen des eigenen Sitzes (`if(cur===NET.my)return;`, Z. 3190).",
+   "folge": "Alle Mitspieler sehen dauerhaft '⏳ <Name> ist dran …' mit deaktiviertem Drehen-Knopf, ohne Hinweis und ohne einen einzigen Knopf, der weiterhilft. Die Partie ist tot; nur Seite-neu-laden hilft, und damit ist das Online-Spiel weg.",
+   "schwere": "hoch",
+   "fix": "updAfk auch bei Gästen laufen lassen und die Zeit mit der Wanduhr messen (Date.now()-Stempel in einem setInterval statt `_afkT+=dt` aus rAF). Zusätzlich in netCheckPause einen 'lebt zwar, reagiert aber nicht'-Fall ergänzen: wenn seit >60 s keine Spielnachricht des aktiven Spielers kam, das #netPause-Overlay mit Skip (für alle) bzw. 'Alleine weiterspielen' anzeigen, und in der Skip-Behandlung `if(cur===NET.my)return;` durch eine Prüfung ersetzen, die den eigenen Sitz nur dann schützt, wenn man tatsächlich noch reagiert."
+  },
+  {
+   "titel": "Nach endgültig gescheitertem Reconnect versteckt netCheckPause das Rettungs-Overlay — der Gast hängt unrettbar im Spiel fest",
+   "datei": "lebenspfad.html",
+   "zeile": 3178,
+   "code": "  if(!NET.host&&NET.conns.length===0){ // Gast hat den Host verloren",
+   "ablauf": "Host und Gast spielen online. Der Host schliesst den Tab (oder verliert dauerhaft das Netz). Beim Gast schlägt der Pong-Watchdog an (Zeile 3493), NET.conns wird geleert, das Overlay «Verbindung zum Gastgeber verloren» mit dem Knopf «🎮 Alleine weiterspielen» erscheint korrekt. Danach läuft netTryReconnect: jeder Versuch setzt in Zeile 3519 sofort NET.conns=[c] mit einer Verbindung, die nie aufgeht (der Host-Peer existiert nicht mehr, PeerJS meldet peer-unavailable am Peer, nicht am Kanal — c.close() feuert nicht). Nach 8 Versuchen greift Zeile 3512 `if(NET._reTries>8){netCheckPause();return;}` — und genau dieser Aufruf blendet das Overlay wieder AUS, weil netCheckPause nur `NET.conns.length===0` prüft, nicht `NET.conns[0].open`. NET.conns enthält aber noch die tote, nie geöffnete Verbindung des 8. Versuchs.",
+   "folge": "Der Gast steht im laufenden Spiel ohne jedes Overlay. Ist er selbst dran, ist der Dreh-Knopf aktiv, aber roll() bricht in Zeile 2073 mit «📴 Getrennt — warte auf Verbindung …» ab (dort wird korrekt `.open` geprüft). Ist ein anderer dran, sieht er ewig «⏳ X ist dran …». Der Knopf «Alleine weiterspielen» ist verschwunden — genau in dem Moment, in dem er gebraucht wird. Einziger Ausweg: Seite neu laden.",
+   "schwere": "hoch",
+   "fix": "In Zeile 3178 dieselbe Prüfung wie in roll() verwenden: `if(!NET.host&&!(NET.conns[0]&&NET.conns[0].open)){` — dann bleibt das Overlay mit dem Solo-Knopf sichtbar, solange keine OFFENE Verbindung zum Host besteht."
+  },
+  {
+   "titel": "sendPick hat keinen Drift-Guard: Der Gast wendet eine Kartenwahl lokal an, obwohl die Nachricht den Host nie erreicht",
+   "datei": "lebenspfad.html",
+   "zeile": 4208,
+   "code": "  if(NET.on){var pm={t:\"pick\",k:k,seq:window._cardSeq};netSend(pm);NET.q.push(pm);} // seq -> Empfänger erkennt veraltete/fremde Karten",
+   "ablauf": "Gast ist am Zug, eine Ereignis-/Quiz-/Meilenstein-Karte ist offen. Genau in diesem Moment reisst die WebRTC-Verbindung kurz ab (Handy im Hintergrund, WLAN→Mobilfunk — laut Kommentar Zeile 3497 die häufigste Abbruchursache). Der Gast tippt eine Option an: showCard erlaubt den Klick weiterhin (Zeile 4201 prüft nur `G.turn!==NET.my`), sendPick läuft durch. netSend (Zeile 3201) wirft beim Senden auf die tote Verbindung eine Exception, die im try/catch verschluckt wird — der Host bekommt NICHTS. Der Gast pusht dieselbe Nachricht aber in seine eigene NET.q und wendet sie in updNet über cardPick(m.k) an.",
+   "folge": "Der Gast sieht seine Wahl ausgeführt (Stats ändern sich, Zug endet), der Host und alle anderen Gäste sehen die Karte weiter offen. Die Spielstände laufen hart auseinander; nach ca. 10 s meldet die Prüfsumme «Nicht mehr synchron», der Gast wird per Snapshot zurückgesetzt und seine Entscheidung ist weg. Zusätzlich setzt Zeile 4207 `_pickDone=_cardSeq`, sodass er nach dem Reconnect für dieselbe Karte gar nicht mehr wählen kann — bis der AFK-Watchdog nach 150 s zufällig für ihn wählt.",
+   "schwere": "hoch",
+   "fix": "In sendPick denselben Drift-Guard einbauen, den roll() in Zeile 2073 schon hat: vor dem Setzen von _pickDone `if(NET.on&&!NET.host&&!(NET.conns[0]&&NET.conns[0].open)){announce(\"📴 Getrennt — warte auf Verbindung …\",\"#ffb46e\");return;}`."
+  },
+  {
+   "titel": "Online-Runde und Solo-Spiel teilen sich denselben Speicher-Slot — die Koop-Runde überschreibt den laufenden Solo-Spielstand unwiderruflich",
+   "datei": "lebenspfad.html",
+   "zeile": 1928,
+   "code": "function saveGame(){if(!G)return;lsSet(SAVE_KEY,JSON.stringify(G,function(k,v){return k===\"pawn\"?undefined:v;}));if(NET.on)lsSet(SAVE_KEY+\"_net\",\"1\");else lsDel(SAVE_KEY+\"_net\");} // auch Online-Spiele sichern -> nach Reload als Einzelspiel fortsetzbar",
+   "ablauf": "Solo ein Leben bis Kapitel 5 spielen, Tab schliessen (Stand liegt in lp_save1). Später Startseite -> Online -> Raum beitreten. Im Online-Spiel ruft JEDER Client bei jedem Zugende endTurnSoon() -> saveGame() auf (Zeile 2255/2264), also schreibt auch der Gast den gemeinsamen 4-Spieler-Zustand in denselben Schlüssel lp_save1. Nach 2 Zügen die Online-Runde verlassen und auf der Startseite »Weiterspielen« tippen.",
+   "folge": "Statt des eigenen Solo-Lebens erscheint die fremde Koop-Runde als 4-Spieler-Hotseat. Der Solo-Fortschritt ist endgültig weg — es gibt keinen zweiten Slot. Das mitgeschriebene Flag SAVE_KEY+\"_net\" wird nirgends im Code wieder gelesen, trennt also nichts.",
+   "schwere": "hoch",
+   "fix": "Online-Stände unter eigenem Schlüssel ablegen: in saveGame `var key=NET.on?SAVE_KEY+\"_net\":SAVE_KEY;lsSet(key,...)` und loadGame/contBtn beide Slots getrennt anbieten (bzw. beim Online-Spiel gar nicht in lp_save1 schreiben)."
+  },
+  {
+   "titel": "Kaufen ohne Deckung: applyFx kappt negative Geldbetraege bei 0, es gibt keine Preispruefung — teure Karten sind mit 0 💰 gratis",
+   "datei": "lebenspfad.html",
+   "zeile": 4237,
+   "code": "p.geld=Math.max(0,p.geld+(fx.geld||0));",
+   "ablauf": "applyFx ist die einzige Stelle, die Geld abbucht, und klemmt das Ergebnis auf >=0 ab, ohne vorher zu pruefen, ob der Spieler den Preis ueberhaupt bezahlen kann. Aufrufer ohne jede Preispruefung: hausCard (Z. 4395, applyFx(p,{geld:-10,glueck:3})), wedCard (Z. 4385, {geld:-8,glueck:6,freunde:4}), autoCard (Z. 4381, {geld:-6,glueck:2}), jobCard/Gruender:in (Z. 4177, {geld:-5}) und ALLE Ereignis-Optionen (Z. 4493 applyFx(p,o.fx);) — darunter 'Sabbatical nehmen' {geld:-7,glueck:8,wissen:3} und 'Auszeit fuer die Seele' {geld:-7,glueck:7,wissen:3} in Kapitel 5. Konkret: Kapitel 5 (Feld 89) 'Ja — grosse Hochzeit' waehlen (Geld faellt auf 0), danach auf jedem Ereignisfeld die teuerste Option nehmen, am Meilenstein 107/125 '🏠 Kaufen — Wurzeln schlagen'. Jedes Mal: Kosten 0, voller Bonus. Dass die Pruefung fehlt, zeigt der Vergleich mit tauschCard, die es richtig macht: Z. 4340 'if(p.geld<cost){' blendet den Tausch aus, wenn das Geld nicht reicht.",
+   "folge": "Die dominante Strategie ist, Geld sofort auf 0 zu bringen und dann alles gratis zu kaufen: Haus (+3 ❤️ plus dauerhaft +2 ❤️ pro Meilenstein), Hochzeit (+6 ❤️ +4 👥), Auto (+2 ❤️ plus Turbo-Feld bei einer 6) und alle Luxus-Ereignisse. Ein Spieler, der ehrlich spart, zahlt fuer dasselbe bis zu 24 💰. Die Kartentexte ('−10 💰') luegen dann sichtbar: die Anzeige zeigt −10 💰, der Geldstand aendert sich nicht.",
+   "schwere": "hoch",
+   "fix": "In applyFx vor dem Abbuchen den Fehlbetrag wie beim Rechnungsfeld in Glueck umwandeln, oder — analog zu tauschCard Z. 4340 — die Kauf-Optionen sperren: in showCard (Z. 4196) Optionen mit o.cost>p.geld als deaktiviert rendern und in hausCard/wedCard/autoCard/Ereignis-Optionen o.cost=-fx.geld setzen."
+  },
+  {
+   "titel": "Robo aus der Online-Lobby entfernen verschiebt die Sitze, aber nicht die Verbindungs-Indizes (c._idx) – ein Gast wird dauerhaft unspielbar",
+   "datei": "lebenspfad.html",
+   "zeile": 3458,
+   "code": "        if(bi>=0){NET.names.splice(bi,1);NET.cfgs.splice(bi,1);NET.ready.splice(bi,1);if(NET.bots)NET.bots=[];}",
+   "ablauf": "Online-Raum erstellen (Host = Sitz 0). In der Lobby auf \"+ 🤖 Robo hinzufügen\" tippen (Robo = Sitz 1). Danach tritt ein Freund bei – im 'hallo'-Zweig bekommt er c._idx = NET.names.length-1 = 2 (Zeile 3600). Jetzt tippt der Host auf \"🤖 Robo entfernen\": names/cfgs/ready werden per splice(1,1) kompaktiert, aber c._idx des Gastes bleibt 2. Anders als im Lobby-close-Handler (Zeile 3632, dort steht cc._idx--) wird hier nicht neu indiziert und auch kein neues 'welcome' geschickt. Runde starten.",
+   "folge": "Der Gast bekommt in netLaunch (Zeile 3843) you:2 gesendet, obwohl freshState nur 2 Spieler (0 und 1) anlegt. Bei ihm ist NET.my=2 → myTurn() wird nie wahr, der Würfelknopf bleibt gesperrt (\"⏳ … ist dran\"), sein Name steht als \"undefined\" im Chat. Zusätzlich blockt der Host seine Züge (Zeile 3623: c._idx!==G.turn), und netBroadcastPres setzt a[2]=true statt a[1] → der Host sieht den Gast als abwesend und bekommt das Pause-Overlay \"Warte auf …\". Die Runde ist tot.",
+   "schwere": "hoch",
+   "fix": "Im Entfern-Zweig genauso reindizieren wie im close-Handler: nach dem splice über NET.conns laufen, für jede Verbindung mit c._idx>bi ein c._idx-- machen und jedem ein aktualisiertes {t:\"welcome\",idx:c._idx} schicken (und NET.bots ebenfalls per splice(bi,1) statt =[] behandeln)."
+  },
+  {
+   "titel": "startMove() wird nach dem Glücksrad ohne Zustandsprüfung ausgeführt - nach Resync oder Skip zieht die falsche Figur ungefragt los.",
+   "datei": "lebenspfad.html",
+   "zeile": 2089,
+   "code": "    startMove(n+bonus);",
+   "ablauf": "rollCore() setzt G.phase='rolling' und startet showWheel(n, cb). Der Callback cb kommt erst ~3,05 s später (2400 ms Rad-Animation + 650 ms Nachlauf, Z. 2116-2123). Innerhalb dieser 3 Sekunden kann der Zustand komplett gewechselt haben: (a) Der Host drückt '⏭️ Spieler überspringen' -> {t:'drop'} -> updNet (Z. 3261-3265) setzt done=true und ruft sofort nextTurn(), also G.turn+1 und G.phase='idle'. (b) Häufiger noch: die Desync-Erkennung schlägt an und netApplySync() ruft begin(st) (Z. 3301), das pawns komplett neu baut und G.phase='idle', moveQ=0, moveTo=-1 setzt. Wenn danach der Rad-Callback feuert, ruft er blind startMove(n+bonus); startMove (Z. 2128-2131) prüft weder G.phase noch ob G.turn noch derselbe ist, sondern setzt G.phase='moving' und nimmt hopFrom aus dem Feld des JETZT aktiven Spielers.",
+   "folge": "Ein Spieler, der gar nicht gewürfelt hat, läuft plötzlich mehrere Felder weiter (mit fremder Augenzahl) und landet auf einem Feld samt Ereigniskarte. Nach dem Resync springt das Spiel dadurch zusätzlich aus dem Takt.",
+   "schwere": "mittel",
+   "fix": "Beim Aufruf ein Zug-Token merken und im Callback prüfen: in rollCore `var tk=G.turn, seq=(window._moveSeq=(window._moveSeq||0)+1);` und im showWheel-Callback vorne `if(!running||!G||G.phase!==\"rolling\"||G.turn!==tk||seq!==window._moveSeq)return;` einsetzen (analog in glueckswheelCard)."
+  },
+  {
+   "titel": "nextTurn() ist nicht gegen Doppelaufruf geschützt - während der 850-ms-Wartezeit von endTurnSoon kann ein zweiter Zugwechsel dazwischenfunken und einen Spieler überspringen.",
+   "datei": "lebenspfad.html",
+   "zeile": 2255,
+   "code": "function endTurnSoon(){updPlayers();saveGame();setTimeout(nextTurn,Math.round(850/OPT.tempo));}",
+   "ablauf": "Jede Karte/jedes Feld beendet den Zug über endTurnSoon(), das nextTurn per setTimeout um 850/OPT.tempo ms verzögert - der Timer wird nirgends gespeichert und nie abgebrochen. Kommt in diesem Fenster eine {t:'drop'}-Nachricht (Host drückt 'Spieler überspringen'), ruft updNet in Z. 3264 direkt `nextTurn()` auf; kurz darauf feuert der noch laufende Timer nextTurn ein zweites Mal. Dasselbe Muster in playerDeath (Z. 2316: `setTimeout(function(){if(allDone)showEnd();else nextTurn();},2600);`) - hier ist das Fenster sogar 2,6 s lang, also gut treffbar, während der Trauer-Moment läuft.",
+   "folge": "Der Zug rückt zweimal weiter: ein Mitspieler wird komplett übersprungen und wundert sich, warum er nie drankommt; online sind die Clients danach unterschiedlich weit (G.turn/G.round auseinander) und es folgt das 'Nicht mehr synchron'-Overlay.",
+   "schwere": "mittel",
+   "fix": "Den Timer merken und vor jedem Zugwechsel löschen, z. B. `function endTurnSoon(){updPlayers();saveGame();clearTimeout(window._turnTO);window._turnTO=setTimeout(nextTurn,Math.round(850/OPT.tempo));}` und am Anfang von nextTurn `clearTimeout(window._turnTO);window._turnTO=null;`; den 2600-ms-Timer in playerDeath ebenso über window._turnTO führen."
+  },
+  {
+   "titel": "Hintergrund-Host sendet weiter Prüfsummen, verarbeitet aber die Lockstep-Queue nicht - die Gäste werden per Resync auf den veralteten Host-Stand zurückgeworfen.",
+   "datei": "lebenspfad.html",
+   "zeile": 3308,
+   "code": "  NET._chk=setInterval(function(){if(!NET.host||!NET.on||!G||!running)return;",
+   "ablauf": "updNet() - der einzige Ort, an dem NET.q abgearbeitet wird - hängt an requestAnimationFrame (Aufruf nur in loop(), Z. 2988) und steht im Hintergrund-Tab still. netStartChkTimer benutzt dagegen setInterval, das in Hintergrund-Tabs weiterläuft (nur gedrosselt). Konkret: Der Host schiebt die App weg, während ein Gast am Zug ist. Der Gast würfelt, der Host relayt die Nachricht zwar (Datenkanal-Callback netOnMsg, Z. 3202) und legt sie in seine Queue, arbeitet sie aber nie ab - sein G bleibt stehen. Trotzdem verschickt er alle 5 s {t:'chk'} mit seinem alten turn/round/tiles. Der Gast vergleicht in netCheckChk (Z. 3311-3327), zählt zwei Fehltreffer, zeigt 'Nicht mehr synchron' und fordert {t:'resync'} an. Der Host beantwortet das aus dem Datenkanal-Callback (Z. 3617 -> netSyncTo) und liefert genau seinen VERALTETEN Snapshot aus.",
+   "folge": "Bei allen Gästen springt das Spiel mehrere Züge zurück: Figuren stehen wieder auf alten Feldern, Geld/Glück/Wissen sind zurückgesetzt, getroffene Kartenentscheidungen sind weg. Für die Spieler sieht das aus wie ein zufälliger Rückschritt bzw. verlorener Fortschritt.",
+   "schwere": "mittel",
+   "fix": "Den Checksum-Sender an den Simulationsfortschritt koppeln, statt blind zu senden: im setInterval nur senden, wenn seit dem letzten Frame tatsächlich ein Loop-Durchlauf stattfand und NET.q leer ist (z. B. Zeitstempel `window._lastLoopT` in loop() setzen und in Z. 3308 `if(NET.q.length||performance.now()-(window._lastLoopT||0)>2000)return;` ergänzen). Analog netSyncTo/netSyncAll blockieren, solange die eigene Queue nicht abgearbeitet ist."
+  },
+  {
+   "titel": "Beim Rejoin wird der Snapshot VOR der noch unverarbeiteten Auto-Kartenwahl gezogen — Rückkehrer und Host liegen sofort einen halben Zug auseinander",
+   "datei": "lebenspfad.html",
+   "zeile": 3615,
+   "code": "        netSyncTo(c);netBroadcastPres();netConnInfo();",
+   "ablauf": "Ein Gast (Index ri) ist am Zug, eine Karte ist offen, dann bricht seine Verbindung ab. Er verbindet sich neu und schickt {t:\"rejoin\"}. Der Host löst in Zeile 3614 zuerst die offene Karte auf: sendPick(...) sendet {t:\"pick\"} an alle UND legt die Nachricht nur in die eigene NET.q — angewendet wird sie erst im nächsten updNet-Frame. Direkt danach ruft Zeile 3615 netSyncTo(c) auf, das über netStateSnapshot() synchron ein G abzieht, in dem die Kartenwirkung noch NICHT enthalten ist. Beim Rückkehrer trifft erst das pick ein (landet in NET.q), dann das sync — und netApplySync leert in Zeile 3297 `NET.q=[]`, schliesst die Karte und setzt `_pickDone=_cardSeq` (Zeile 3300). Das pick ist damit beim Gast gelöscht, beim Host wird es einen Frame später ausgeführt.",
+   "folge": "Sofort nach dem «🔌 Wieder verbunden — synchronisiere …» steht der Rückkehrer auf dem Stand VOR seiner Karte, während Host und alle anderen bereits den Kartenausgang gebucht und den Zug weitergegeben haben. Der Rückkehrer sieht das Spiel einfrieren (falsche Stats, falscher Zug-Inhaber), kann nichts tippen, und erst nach 2 fehlgeschlagenen Prüfsummen (~10–15 s) kommt das Overlay «Nicht mehr synchron» plus ein zweiter Resync.",
+   "schwere": "mittel",
+   "fix": "Reihenfolge umdrehen bzw. Queue vor dem Snapshot leeren: in Zeile 3614/3615 erst netSyncTo(c) aufrufen und die Auto-Kartenwahl danach senden — oder generell in netStateSnapshot/netSyncTo die noch offenen Einträge aus NET.q vorher abarbeiten, damit der Snapshot nie hinter der eigenen Sendewarteschlange zurückbleibt (gleiches Problem hat netSyncAll in Zeile 3276)."
+  },
+  {
+   "titel": "Der Knopf »Weiterspielen (Spielstand)« bleibt nach Spielende sichtbar und startet dann heimlich ein komplett neues Leben",
+   "datei": "lebenspfad.html",
+   "zeile": 4145,
+   "code": "document.getElementById(\"contBtn\").onclick=function(){begin(loadGame());};",
+   "ablauf": "Ein Spiel starten und bis zum Ziel/Endbildschirm spielen. showEnd() löscht den Stand (Zeile 2320: `running=false;lsDel(SAVE_KEY);`). Dann auf »Neues Leben ▶« (newBtn, Zeile 4146) tippen — der Startbildschirm kommt zurück, contBtn wird aber nirgends wieder auf `hide` gesetzt (das `classList.remove(\"hide\")` läuft nur einmal beim Seitenladen, Zeile 3031). Jetzt auf »Weiterspielen (Spielstand) ▶« tippen.",
+   "folge": "loadGame() liefert null, begin(null) startet ein frisches Spiel mit den Startbildschirm-Einstellungen. Der Spieler tippt auf »Weiterspielen« und steht ohne Vorwarnung wieder als Kind auf Feld 0 — es sieht aus, als sei der Spielstand kaputt.",
+   "schwere": "mittel",
+   "fix": "In showEnd() direkt nach `lsDel(SAVE_KEY)` ergänzen: `var cb=document.getElementById(\"contBtn\");if(cb)cb.classList.add(\"hide\");` und im onclick absichern: `var s=loadGame();if(!s)return;begin(s);`."
+  },
+  {
+   "titel": "Gestorbene Spielfiguren stehen nach dem Neuladen wieder aufrecht und lebendig auf dem Brett — Grabstein und Trauer-Look fallen aus dem Spielstand",
+   "datei": "lebenspfad.html",
+   "zeile": 4022,
+   "code": "    placePawn(i);syncFam(i);agePawn(i,false); // Look passend zum Kapitel-Alter (Start = Kind)",
+   "ablauf": "Im Modus »Echtes Leben« (adultChk) eine riskante Ereignis-Option wählen, bis playerDeath() greift (Zeile 2283). Dort werden Figur umgelegt/ausgegraut und ein Grabstein in die Szene gebaut — alles nur als THREE-Objekte, nichts davon steckt in G. playerDeath ruft in Zeile 2314 saveGame(). Seite neu laden und »Weiterspielen« tippen.",
+   "folge": "begin() baut für JEDEN Spieler per mkPawn eine normale, bunte, aufrechte Figur (Zeile 4012) — p.dead wird beim Laden nirgends ausgewertet. Der Tote steht wieder quicklebendig auf seinem Todesfeld, Grabstein und graue Färbung sind verschwunden; nur die Spielerkarte zeigt noch ⚰️. Mitspieler halten ihn für wieder im Spiel.",
+   "schwere": "mittel",
+   "fix": "In der Spieler-Schleife von begin() nach agePawn ergänzen: `if(p.dead){var pw=pawns[i];pw.rotation.z=Math.PI/2;pw.position.y=0.3;pw.traverse(function(n){if(n.isMesh&&n.material&&n.material.color)n.material.color.lerp(new THREE.Color(0x9a9aa8),0.7);});}` — idealerweise plus Grabstein-Aufbau (Code aus playerDeath in eine Funktion mkGrave(i) auslagern)."
+  },
+  {
+   "titel": "Geräte-Sync überschreibt Statistik und Erfolge des Empfänger-Geräts komplett, statt sie zusammenzuführen",
+   "datei": "lebenspfad.html",
+   "zeile": 3894,
+   "code": "  if(m.stats)lsSet(\"lp_stats\",m.stats);",
+   "ablauf": "Auf dem PC 20 Spiele gespielt (LPSTATS.games=20, Bestleistung, 6/8 Erfolge). Auf dem Handy 2 Spiele. Menü -> »📱↔💻 Auf anderes Gerät« am HANDY senden, Code am PC unter »Spielstand holen« eingeben. syncApply() schreibt die Handy-Werte 1:1 über lp_stats und lp_ach und lädt LPSTATS/LPACH neu (Zeilen 3894–3898).",
+   "folge": "Auf dem PC stehen danach 2 statt 20 Spiele, die Bestleistung ist weg und die Erfolgs-Galerie fällt von 6/8 auf 1/8 zurück. Freigeschaltete Looks (STYLE_UNLOCK/HAIR_UNLOCK hängen an LPSTATS.games, Zeile 2341) sind wieder gesperrt. Der Spieler wollte nur einen Spielstand mitnehmen und verliert seinen gesamten Sammelfortschritt.",
+   "schwere": "mittel",
+   "fix": "Statt Überschreiben mergen: Zähler mit Math.max bzw. Summe (games/lives/bestScore/goalsReached/totalDeaths) und Erfolge als Vereinigung (`for(var a in inAch)if(!LPACH[a])LPACH[a]=inAch[a];`), danach einmal saveStats()/lsSet(\"lp_ach\",…)."
+  },
+  {
+   "titel": "Tutorial verspricht eine Wertung, die der Code nicht umsetzt: Geld zaehlt nur halb so viel wie die anderen Werte",
+   "datei": "lebenspfad.html",
+   "zeile": 2318,
+   "code": "function lifeScore(p){return p.geld+p.glueck*2+p.wissen*2+p.freunde*2+(goalMet(p)?12:0);}",
+   "ablauf": "Das Tutorial (Z. 4101) sagt woertlich: 'Am Ende zaehlen alle Punkte zusammen (💰+❤️+🧠+👥) — wer am meisten hat, gewinnt.' Die Endabrechnung nutzt aber lifeScore, das Glueck/Wissen/Freunde doppelt gewichtet und zusaetzlich 12 Punkte fuers Rundenziel vergibt. Nachvollziehbar am Endbildschirm (Z. 2359): dort steht '💰30 ❤️10 🧠5 👥5' neben z.B. '70 Lebenspunkte' — 30+10+5+5 ergibt aber 50.",
+   "folge": "Wer nach der Tutorial-Regel spielt und Geld hortet statt es fuer Auto/Hochzeit/Haus auszugeben, verliert systematisch: 1 💰 ist nur halb so viel wert wie 1 ❤️. Zusammen mit dem fehlenden Preis-Check (Befund 1) ist Geldsparen sogar doppelt bestraft. Ausserdem passt die angezeigte Punktzahl nicht zu den daneben gezeigten Werten.",
+   "schwere": "mittel",
+   "fix": "Entweder Z. 4101 an den Code anpassen ('❤️🧠👥 zaehlen doppelt, 💰 einfach, Rundenziel +12') oder lifeScore auf die versprochene Summe umstellen: return p.geld+p.glueck+p.wissen+p.freunde+(goalMet(p)?12:0);"
+  },
+  {
+   "titel": "Die 3D-Szene wird auch dann in voller Bildrate weitergerendert, wenn ein deckendes Overlay (Start/Menü) davorliegt — zusätzlich zwingt das backdrop-filter des Overlays das Handy, den bewegten Canvas jedes Bild neu weichzuzeichnen.",
+   "datei": "lebenspfad.html",
+   "zeile": 3013,
+   "code": "  renderer.render(scene,camera);",
+   "ablauf": "Spiel auf dem Handy öffnen (Startbildschirm '.overlay#start' liegt sofort deckend über dem Canvas) oder mitten im Spiel ☰ / ESC drücken (#menuO, ebenfalls .overlay, z-index 45). loop() läuft unverändert per requestAnimationFrame weiter: renderer.render(scene,camera) in Zeile 3013 hat keinerlei Sichtbarkeits-Abfrage, und shadowMap.autoUpdate ist an — also zwei volle Szenen-Durchgänge (Schattenkarte + Bild) pro Frame für ein Bild, das kein Mensch sieht. Darüber liegt '.overlay' (Zeile 92) mit 'backdrop-filter:blur(5px)', obwohl der Hintergrund-Verlauf bereits zu 96–97 % deckend ist; weil der Canvas dahinter sich jeden Frame ändert, muss der Blur jeden Frame neu berechnet werden.",
+   "folge": "Das Handy wird auf dem Startbildschirm und im Pausenmenü heiss, der Akku fällt sichtbar, und der Charakter-Picker reagiert träge: jeder Tipp auf ◀/▶/Hautton löst zusätzlich ein synchrones renderer.readRenderTargetPixels (Zeile 3056, ~870 KB bei DPR 3) aus, das auf die ohnehin ausgelastete GPU wartet. Der Spieler merkt es als Ruckeln und Verzögerung genau dort, wo er die ersten 30 Sekunden verbringt.",
+   "schwere": "mittel",
+   "fix": "In loop() vor dem Rendern abbrechen, wenn ein deckendes Overlay offen ist bzw. document.hidden gilt — z. B. `if(document.hidden||(!document.getElementById('start').classList.contains('hide'))||menuOpen){return;}` direkt vor Zeile 3013 (bzw. auf ~10 fps drosseln), und in Zeile 92 'backdrop-filter:blur(5px)' aus '.overlay' streichen (bringt bei 96 % Deckkraft optisch nichts)."
+  },
+  {
+   "titel": "Die Spielernamen-Felder auf dem Startbildschirm haben font-size .85rem — iOS Safari zoomt beim Antippen automatisch in die Seite hinein und wieder heraus kommt man nicht.",
+   "datei": "lebenspfad.html",
+   "zeile": 3035,
+   "code": "    inp.style.cssText=\"width:110px;padding:9px 10px;border-radius:10px;border:3px solid #\"+(\"00000\"+PCOLORS[i].toString(16)).slice(-6)+\";background:#fffdf6;color:#2a3040;font-weight:800;text-align:center;font-size:.85rem\";",
+   "ablauf": "Startbildschirm auf einem iPhone öffnen → Spielerzahl wählen → in eines der Namensfelder (#pn0 … #pn3) tippen. Die Schriftgrösse ist .85rem = 13,6 px, also unter der 16-px-Schwelle, ab der Safari beim Fokussieren automatisch hineinzoomt. Das <meta viewport> in Zeile 18 enthält zwar 'maximum-scale=1, user-scalable=no', aber genau das ignoriert iOS seit iOS 10 — der Fokus-Zoom passiert trotzdem, und weil user-scalable=no gesetzt ist, kann der Spieler danach nicht mehr herauszoomen. Dass es ein Versehen ist, zeigt der Code direkt daneben: #netName (Z. 279), #netCode (Z. 286), #syncCode (Z. 314) und #chatIn (Z. 136) haben alle bewusst exakt font-size:16px. Dieselbe Lücke hat das Oma-Hilde-Eingabefeld #omaIn (Z. 241, ebenfalls font-size:.85rem).",
+   "folge": "Nach dem Antippen des Namensfelds ist die Startseite vergrössert und verschoben; die Buttons 'Leben beginnen', die Charakterkarten und der Online-Kasten liegen ausserhalb des Bildes und lassen sich nicht mehr zurückzoomen. Der Spieler muss die Seite neu laden.",
+   "schwere": "mittel",
+   "fix": "In Zeile 3035 'font-size:.85rem' auf 'font-size:16px' ändern (und dieselbe Änderung in Zeile 241 für #omaIn) — genau wie bei den anderen vier Eingabefeldern der Datei."
+  },
+  {
+   "titel": "Der runde Oma-Hilde-Chatknopf liegt auf dem Handy genau über dem rechten Ende der Fortschrittsleiste und verdeckt Zielflagge und Spielerpunkt im Endspiel.",
+   "datei": "lebenspfad.html",
+   "zeile": 235,
+   "code": "<button id=\"chatBtn\" title=\"Chat mit Oma Hilde\" style=\"position:fixed;bottom:96px;right:14px;z-index:16;border:2px solid rgba(120,110,80,.3);background:rgba(255,253,246,.95);border-radius:50%;width:52px;height:52px;font-size:1.5rem;cursor:pointer;box-shadow:0 3px 12px rgba(60,40,10,.25)\" class=\"hide\">💬</button>",
+   "ablauf": "Spiel auf einem Handy (z. B. 390 px breit) starten — Zeile 4031 blendet #chatBtn ein. Der Knopf ist fix positioniert bei right:14px/bottom:96px, 52×52 px, also x 324–376, y 96–148 von unten, mit deckendem Hintergrund und z-index:16. Die Fortschrittsleiste #progMap liegt in #hud (z-index:10) und wird unter 480 px durch Zeile 123 auf 'bottom:88px;width:92vw' gesetzt, also x ≈ 16–374, y 88–104. Die Zielflagge bekommt in Zeile 1959 'right:-4px;top:-15px', der Punkt des Spielers am Streckenende in Zeile 1966 'left:calc(100% - 5px);top:-11px' — beide landen bei x 366–378, y 96–108 und damit vollständig hinter dem Chatknopf.",
+   "folge": "Im letzten Kapitel, wenn es spannend wird, sieht der Spieler seinen eigenen Positionspunkt und die 🏁-Zielflagge nicht mehr — sie stecken hinter dem undurchsichtigen 💬-Knopf. Er kann nicht erkennen, wie weit er noch vom Ziel entfernt ist.",
+   "schwere": "mittel",
+   "fix": "In der @media(max-width:480px)-Regel (Zeile 123) #progMap zusätzlich schmaler/höher legen, z. B. `#progMap{bottom:88px;width:calc(100vw - 150px)}` — oder #chatBtn auf 'bottom:150px' verschieben, wo bereits Platz frei ist (unter #emoBtn bei bottom:160px)."
+  },
+  {
+   "titel": "Die drei Lobby-Knöpfe zum Teilen des Raum-Codes sind nur rund 20 px hoch und stehen ohne Abstand nebeneinander — auf dem Handy praktisch nicht sicher zu treffen.",
+   "datei": "lebenspfad.html",
+   "zeile": 297,
+   "code": "<button id=\"netCopyBtn\" style=\"border:1px solid #b8c8d8;background:#fff;border-radius:8px;padding:2px 8px;font-size:.75rem;cursor:pointer\">📋 Kopieren</button>",
+   "ablauf": "Auf dem Handy 'Raum erstellen' tippen → #netLobby erscheint. In derselben Zeile stehen #netCopyBtn, #netShareBtn und #netWaBtn, alle mit 'padding:2px 8px' und 'font-size:.75rem' (12 px). Wegen des globalen Resets '*{…padding:0}' in Zeile 32 gibt es keine Browser-Grundpolsterung, die das ausgleicht: die Trefferfläche ist rechnerisch ca. 12 px Text × 1,2 + 4 px Polsterung + 2 px Rahmen ≈ 20–21 px hoch. Die @media(pointer:coarse)-Regeln in den Zeilen 111–114 und 127–130 vergrössern nur #menuBtn, #muteBtn, #rollBtn und die Stat-/Item-Chips — diese drei Knöpfe sind dort nicht enthalten.",
+   "folge": "Beim Versuch, dem Freund den Raum-Link zu schicken, trifft der Spieler mit dem Daumen ständig den falschen der drei nebeneinanderliegenden Knöpfe oder gar keinen — genau im wichtigsten Schritt des Online-Modus (ohne geteilten Link kommt kein Mitspieler dazu).",
+   "schwere": "mittel",
+   "fix": "In Zeile 297 bei allen drei Knöpfen 'padding:2px 8px' durch 'padding:10px 12px;min-height:44px' ersetzen und dem umgebenden <div> 'display:flex;flex-wrap:wrap;gap:8px' geben, damit sie sich nicht berühren."
+  },
+  {
+   "titel": "Das Oma-Hilde-Chatfenster lässt sich nur über ein ✕ von etwa 18×20 px schliessen, weil sein Öffnen-Knopf exakt darunter liegt und verdeckt wird.",
+   "datei": "lebenspfad.html",
+   "zeile": 238,
+   "code": "    <span>👵 Oma Hilde</span><button id=\"chatX\" style=\"border:0;background:none;font-size:1.1rem;cursor:pointer;color:#4a3010\">✕</button></div>",
+   "ablauf": "Im Spiel unten rechts auf 💬 (#chatBtn, bottom:96px/right:14px, z-index 16) tippen. Es öffnet sich #chatW mit exakt derselben Position 'bottom:96px;right:14px' und z-index:35 (Zeile 236) — der Öffnen-Knopf liegt also vollständig unter dem Fenster und kann nicht mehr als Umschalter angetippt werden, obwohl cb.onclick in Zeile 2871 ein toggle wäre. Bleibt nur #chatX (Zeile 2874: cw.classList.add('hide')). Dieser Button hat weder Grösse noch Polsterung, und der globale Reset '*{…padding:0}' in Zeile 32 nimmt ihm auch die Browser-Grundpolsterung — Trefferfläche ist nur die Glyphe selbst, ca. 18×20 px. Ein Tippen neben das Fenster schliesst nichts (kein Backdrop-Handler vorhanden).",
+   "folge": "Das Chatfenster (bis 320×400 px) verdeckt ein Viertel des Bildschirms samt Würfelknopf-Umgebung, und der Spieler stochert mehrfach am winzigen ✕ herum, bevor er es zubekommt.",
+   "schwere": "mittel",
+   "fix": "In Zeile 238 dem ✕ eine echte Trefferfläche geben: style um 'width:44px;height:44px;line-height:44px;padding:0' ergänzen (Kopfzeile hat genug Höhe, da display:flex mit align-items:center)."
+  },
+  {
+   "titel": "Quiz-Karte sagt online \"kein Zeitdruck\", schaltet den 22-Sekunden-Timeout aber trotzdem scharf",
+   "datei": "lebenspfad.html",
+   "zeile": 4327,
+   "code": "    timed?'⏳ 22 Sekunden!<div id=\"qTimer\"><div id=\"qBar\"></div></div>':\"Überleg in Ruhe — kein Zeitdruck.\",opts);",
+   "ablauf": "Im Menü (☰) \"🦋 Bewegung\" ausschalten (setzt OPT.motion=false, also timed=false, Zeile 4311). Dann ein Online-Spiel starten und auf ein ❓-Quizfeld ziehen.",
+   "folge": "Die Karte zeigt \"Überleg in Ruhe — kein Zeitdruck.\" und es gibt keinen Fortschrittsbalken (Zeile 4329 hängt ebenfalls an `timed`). Der Timer wird aber wegen `if(timed||NET.on)` (Zeile 4330) trotzdem gestartet und feuert nach 22,3 s sendPick(3) = die versteckte Timeout-Option. Der Spieler verliert die Quizfrage mit \"⏳ ZEIT UM!\", obwohl ihm ausdrücklich gesagt wurde, es gebe keine Zeitbegrenzung – und die Quiz-Serie (quizStreak) wird auf 0 zurückgesetzt.",
+   "schwere": "mittel",
+   "fix": "Die Anzeigebedingung an dieselbe Bedingung wie den Timer koppeln: `var timed=OPT.motion||NET.on;` (bzw. eine gemeinsame Variable für Text, Balken und setTimeout verwenden)."
+  },
+  {
+   "titel": "finishPlayer setzt G.phase auf \"idle\", bevor der verzögerte nextTurn läuft – ein Leertasten-Druck überspringt einen Spieler",
+   "datei": "lebenspfad.html",
+   "zeile": 2279,
+   "code": "  G.phase=\"idle\";endTurnSoon();",
+   "ablauf": "Lokales Spiel mit 2–4 Spielern am PC. Ein Spieler erreicht das Zielfeld (tile 143) → onLand ruft finishPlayer, das G.phase=\"idle\" setzt und dann endTurnSoon() mit setTimeout(nextTurn, ~850 ms) plant. Innerhalb dieser 850 ms die LEERTASTE drücken: der Keydown-Handler (Zeile 2127) prüft nur `G.phase===\"idle\"` und ruft roll() → rollCore(); dort greift `if(p.done){nextTurn();return;}` und der Zug wird sofort weitergegeben. 850 ms später feuert der bereits geplante nextTurn ein zweites Mal.",
+   "folge": "Der Zug springt zweimal weiter – ein Mitspieler wird komplett übersprungen. Würfelt der nächste Spieler in dem Zeitfenster noch, schaltet der verspätete nextTurn mitten in der Bewegung auf den übernächsten Spieler um (updMove arbeitet dann mit dem falschen G.turn) und die Figur springt/versetzt sich sichtbar. In allen anderen endTurnSoon-Pfaden ist G.phase noch \"landed\", nur hier ist der Weg offen.",
+   "schwere": "mittel",
+   "fix": "In finishPlayer die Zeile zu `G.phase=\"landed\";endTurnSoon();` ändern (nextTurn setzt \"idle\" ohnehin selbst), oder in endTurnSoon G.phase auf einen neutralen Wert wie \"wait\" setzen, den roll() nicht akzeptiert."
+  },
+  {
+   "titel": "'🎮 Alleine weiterspielen' schaltet den Online-Modus ab, leert aber die Lockstep-Queue nicht - alte Netz-Nachrichten wirken im Solo-Spiel weiter.",
+   "datei": "lebenspfad.html",
+   "zeile": 3254,
+   "code": "  if(!NET.q.length||!G||!running){NET._qHeadRef=null;return;}",
+   "ablauf": "Der Solo-Knopf (Z. 3193) setzt NET.on=false, zerstört den Peer und stoppt Heartbeat/Checksum-Timer, lässt NET.q aber unangetastet. updNet() prüft in Z. 3254 nur `!NET.q.length||!G||!running` - NICHT `NET.on`. Ablauf: Der Gast drückt 'Drehen!' (roll(), Z. 2074, legt {t:'roll'} in NET.q), die Verbindung bricht direkt danach ab; die Nachricht bleibt in der Queue liegen, weil G.phase inzwischen 'rolling'/'moving'/'landed' ist und updNet den Kopf nur bei phase==='idle' abarbeitet. Der Gast tippt im Verbindungs-Overlay auf 'Alleine weiterspielen'. Sobald der laufende Zug endet und G.phase wieder 'idle' wird, feuert updNet den liegengebliebenen Eintrag ab und ruft rollCore() - für den inzwischen aktiven nächsten Spieler.",
+   "folge": "Im gerade auf Solo umgestellten Spiel dreht sich das Rad von selbst und eine Figur zieht los, ohne dass jemand getippt hat. Bei einem liegengebliebenen {t:'pick'} wird zusätzlich eine fremde Kartenwahl auf die eigene Karte angewandt.",
+   "schwere": "niedrig",
+   "fix": "Im Solo-Handler (Z. 3193) die Queue mitleeren: `NET.q=[];NET._qHeadRef=null;` ergänzen und in updNet zusätzlich absichern: `if(!NET.on||!NET.q.length||!G||!running){NET.q.length=0;NET._qHeadRef=null;return;}`."
+  },
+  {
+   "titel": "Jede neu gestartete Online-Runde wird als geladener Spielstand behandelt und begrüsst mit »Willkommen zurück auf dem Pfad!«",
+   "datei": "lebenspfad.html",
+   "zeile": 4041,
+   "code": "  announce(saved?\"Willkommen zurück auf dem Pfad!\":\"DAS LEBEN BEGINNT\",\"#ffd166\");",
+   "ablauf": "Raum erstellen, Freund beitreten lassen, »Start« drücken. netLaunch -> beginNet baut in Zeile 3851 einen frischen Zustand g0 und ruft in Zeile 3855 `begin(g0)` — der Parameter `saved` ist also truthy, obwohl es ein brandneues Spiel ist.",
+   "folge": "Alle Online-Spieler sehen zum Start »Willkommen zurück auf dem Pfad!« statt »DAS LEBEN BEGINNT«; zusätzlich entfallen wegen derselben `if(!saved)`-Bedingungen der Einsteiger-Hinweis (Zeile 4043) und die Ansage des Rundenziels (Zeile 4044) — online erfährt niemand per Ansage, was das Rundenziel ist.",
+   "schwere": "niedrig",
+   "fix": "begin() einen zweiten Parameter geben, z.B. `function begin(saved,isNew)` und in beginNet `begin(g0,true)` aufrufen; im Rumpf `var cont=saved&&!isNew;` benutzen und alle `saved`-Abfragen der Zeilen 4041–4044 auf `cont` umstellen."
+  },
+  {
+   "titel": "Der Vergleichs-Zwischenspeicher der Statuswerte wird beim Spielstart nicht zurückgesetzt — neue Runde blinkt mit falschen Auf-/Ab-Pfeilen",
+   "datei": "lebenspfad.html",
+   "zeile": 1977,
+   "code": "    window._prevStats=window._prevStats||{};var pv=window._prevStats[i]=window._prevStats[i]||{};",
+   "ablauf": "Ein Spiel zu Ende spielen (z.B. Endstand 💰48 ❤️31 🧠19 👥22), im Endbildschirm »Neues Leben ▶« und dann »Leben beginnen ▶« tippen. begin() setzt pawns, forkSel, moveQ usw. zurück (Zeile 4001–4006), fasst window._prevStats aber nicht an; updPlayers() vergleicht die Startwerte 20/10/5/5 also mit den Endwerten des VORIGEN Spiels.",
+   "folge": "Direkt beim Start der neuen Runde flackern alle vier Werte-Chips als Veränderung (grüne/rote statUp/statDn-Animation, CSS Zeile 46/47), obwohl noch kein Zug gemacht wurde — es sieht aus, als hätte man schon Punkte verloren.",
+   "schwere": "niedrig",
+   "fix": "In begin() bei den übrigen Resets ergänzen: `window._prevStats={};` (Zeile 4001 neben `forkSel=null;moveTo=-1;moveQ=0;hopT=0;`)."
+  },
+  {
+   "titel": "Die Ablehn-Belohnung der Haus-Karte (+2 🧠 +1 💰) laesst sich zweimal kassieren, weil die Karte in Kapitel 5 UND 6 angeboten wird und beim Ablehnen kein Merker gesetzt wird",
+   "datei": "lebenspfad.html",
+   "zeile": 4431,
+   "code": "if((ch===5||ch===6)&&!(p.items&&p.items.haus)){hausCard(p,endTurnSoon);return;} // 🏠 Eigenheim",
+   "ablauf": "Volles Spiel (8 Kapitel), Spieler hat bei der Hochzeit in Kapitel 4 '🕊 Noch nicht' gewaehlt (p.fam.partner bleibt false). Meilenstein Kapitel 5 (Feld 107): Z. 4430 greift nicht (kein Partner), also laeuft Z. 4431 und zeigt hausCard. Der Spieler waehlt '🏕 Weiter zur Miete' (Z. 4396: applyFx(p,{wissen:2,geld:1})) — dabei wird KEIN Merker gesetzt, p.items.haus bleibt leer. Meilenstein Kapitel 6 (Feld 125): dieselbe Bedingung ist wieder wahr, dieselbe Karte erscheint erneut, ablehnen gibt nochmals +2 🧠 +1 💰. Dass das nicht so gedacht ist, zeigt der Kurz-Modus, der genau dafuer Flags hat: Z. 4399 'if(!(p.items&&p.items.haus)&&!p.fam.askedH){p.fam.askedH=true;...}'.",
+   "folge": "Wer nicht heiratet, bekommt dieselbe Eigenheim-Karte samt Text zweimal vorgesetzt und sammelt gratis 2x(+2 🧠 +1 💰) ein — Geld aus dem Nichts, ohne Gegenleistung.",
+   "schwere": "niedrig",
+   "fix": "In Z. 4431 dasselbe Flag wie im Kurz-Modus nutzen: 'if((ch===5||ch===6)&&!(p.items&&p.items.haus)&&!p.fam.askedH){p.fam.askedH=true;hausCard(p,endTurnSoon);return;}'."
+  },
+  {
+   "titel": "Rechnungsfeld zeigt bei Pleite die volle Abbuchung an, obwohl gar kein Geld abgebucht wurde",
+   "datei": "lebenspfad.html",
+   "zeile": 4456,
+   "code": "floatStat(\"−\"+c2+\" 💰\",\"#ff8a8a\",f.x,f.z);emote(G.turn,\"trauer\");tears(f.x,f.z);colorFlash(\"255,90,90\",c2>=5); // Figur sackt zusammen + 💧 + roter Blitz",
+   "ablauf": "Spieler steht mit 0 💰 (z.B. nach der grossen Hochzeit) auf einem Rechnungsfeld 'g-' in Kapitel 5 ohne Kinder: c2=2+5+0=7 (Z. 4452). Z. 4453 rechnet short=7 und p.geld=Math.max(0,0-7)=0. Z. 4454 zieht korrekt 7 ❤️ ab und meldet '−0 💰 · −7 ❤️ (Pleite!)'. Direkt danach schwebt aber ueber der Figur unbedingt '−7 💰', weil floatStat immer c2 statt des tatsaechlich bezahlten (c2-short) nimmt.",
+   "folge": "Der Spieler sieht gleichzeitig '−0 💰' im Banner und '−7 💰' ueber der Figur, sein Geldstand aendert sich aber nicht — die Anzeige widerspricht sich selbst und man glaubt, Geld verloren zu haben, das gar nicht da war.",
+   "schwere": "niedrig",
+   "fix": "In Z. 4456 den tatsaechlich gezahlten Betrag anzeigen: floatStat(\"−\"+(c2-short)+\" 💰\", ...) und bei short>0 zusaetzlich floatStat(\"−\"+short+\" ❤️\", ...)."
+  },
+  {
+   "titel": "Falscher Hinweis \"nur ein Feld vom Meilenstein entfernt\" auf dem ersten Feld der Studium-Nebenroute (Index-Nachbarschaft statt Pfad-Nachbarschaft)",
+   "datei": "lebenspfad.html",
+   "zeile": 2235,
+   "code": "  if(f.type!==\"m\"){var nb=fields[p.tile+1],pb=fields[p.tile-1];",
+   "ablauf": "An der Weggabelung auf Feld 39 (\"Studium oder Abenteuer?\") die Option \"🎓 Studium\" wählen. Die Nebenroute von FORKS[0] wird beim Aufbau als erste an fields angehängt, ihr erstes Feld hat deshalb den Index 144. Auf diesem Feld landen (moveQ läuft dort aus).",
+   "folge": "Die Nachbarschaftsprüfung nimmt fields[143] – das ist das Zielfeld/der letzte Meilenstein des Hauptpfads, nicht der Pfadnachbar – und zeigt \"😮 Ooh — nur ein Feld vom Meilenstein entfernt!\" samt Ton, obwohl der Spieler mitten in Kapitel 3 auf einer Nebenroute steht und weit von jedem Meilenstein entfernt ist.",
+   "schwere": "niedrig",
+   "fix": "Statt fields[p.tile±1] die echten Pfad-Nachbarn benutzen: den Nachfolger über f.nxt (bzw. p.tile+1 nur wenn f.nxt undefined und p.tile<NFIELDS) ermitteln und den Vorgänger-Check auf Hauptpfad-Felder (p.tile<NFIELDS) beschränken."
+  },
+  {
+   "titel": "Im lokalen Spiel gegen Robo bleibt der Würfelknopf während des Robo-Zugs aktiv und beschriftet \"🎡 Drehen!\"",
+   "datei": "lebenspfad.html",
+   "zeile": 2263,
+   "code": "  rollBtn.innerHTML=(NET.on&&G.turn!==NET.my)?\"⏳ \"+G.players[G.turn].name+\" ist dran …\":\"🎡 Drehen!\";",
+   "ablauf": "Startbildschirm: 1 Spieler wählen, \"🤖 Robo\"-Häkchen setzen, Spiel starten. Nach dem eigenen Zug ist Robo dran – updBot würfelt erst nach 1,3 s Denkpause. In dieser Zeit auf den grossen Knopf tippen (oder LEER drücken).",
+   "folge": "Die Sperrung hängt ausschliesslich an NET.on, deshalb ist der Knopf im lokalen Spiel immer freigeschaltet und behauptet \"🎡 Drehen!\", obwohl der Robo am Zug ist. Der Klick landet in rollCore und würfelt für den Robo (\"Robo dreht eine 4!\") – der Spieler denkt, er habe für sich selbst gewürfelt, und die Zugreihenfolge wirkt kaputt.",
+   "schwere": "niedrig",
+   "fix": "Sperre und Beschriftung auch am Bot-Sitz ausrichten, z. B. `var fremd=(NET.on&&G.turn!==NET.my)||!!G.players[G.turn].bot;` und diese Variable für rollBtn.disabled und rollBtn.innerHTML verwenden."
+  }
+ ],
+ "neon-wildnis.html": [
+  {
+   "titel": "Nach ⚡ Schnell-Koop kann der Spieler solo starten — beim Verbinden baut startGame(true) die komplette Welt ein zweites Mal auf, ohne die alte zu entfernen",
+   "datei": "neon-wildnis.html",
+   "zeile": 5006,
+   "code": "    if(NET.role===\"host\"){NET_FORCE_SEED=(Math.random()*1e9)|0;NET.s.send({t:\"start\",seed:NET_FORCE_SEED});spawnRemote();startGame(true);}",
+   "ablauf": "Startbildschirm → «⚡ Schnell zusammen spielen — 1 Tipp» antippen (Status «Warte auf Mitspieler…»). Der Knopf «▶ Los geht's» liegt direkt darüber im selben Overlay und ist weiter klickbar → antippen, Welt startet solo (running=true). Sobald irgendwann ein Mitspieler auftaucht und dieser Client die Host-Rolle bekommt, feuert NET.s.ready.then() und ruft startGame(true) ein ZWEITES Mal. Es gibt keinen `if(running) return`-Schutz — anders als beim Gast (Zeile 4869: «Doppel-Start-Guard») und anders als bei den Koop-Knöpfen selbst, die alle `if(running){coopStatusMsg(\"Koop bitte VOR dem Start…\")}` prüfen.",
+   "folge": "Die Welt wird komplett verdoppelt: buildGround() (Zeile 480 `ground=new THREE.Mesh(g,m);…scene.add(ground)`) hängt eine ZWEITE 800×800-Bodenebene in die Szene, die alte bleibt drin. placeResources() macht nur `resources.length=0` (Zeile 654) — die ~500 alten Baum-/Fels-/Kristall-Meshes bleiben für immer gerendert und unabbaubar. villages, colliders, npcs, stations, loots, worldProps, structures werden nirgends geleert → doppelte Dörfer/Stationen auf Mini- und Weltkarte, doppelte Kollisionskreise (man läuft plötzlich gegen unsichtbare Wände), doppelte NPCs. Draw-Calls und Speicher verdoppeln sich, das Spiel ruckelt bis zum Einfrieren; zusätzlich sind Inventar/Level/Tag zurückgesetzt, obwohl der Spieler schon gespielt hat.",
+   "schwere": "hoch",
+   "fix": "Am Anfang von startGame() abbrechen, wenn die Welt schon steht: `function startGame(fresh){ if(running&&!fresh_rebuild) return; …}` — bzw. minimal an beiden Host-Aufrufstellen den gleichen Guard wie beim Gast setzen: `if(NET.role===\"host\"){…;spawnRemote();if(!running)startGame(true);}` (Zeile 5006) und `if(role===\"host\"){…;spawnRemote();if(!running)startGame(true);}` (Zeile 4864)."
+  },
+  {
+   "titel": "Dieselbe Lücke im Code-Koop: «🏠 Raum öffnen» + danach «▶ Los geht's» ⇒ zweiter Weltaufbau beim Beitritt des Freundes",
+   "datei": "neon-wildnis.html",
+   "zeile": 4864,
+   "code": "    if(role===\"host\"){NET_FORCE_SEED=(Math.random()*1e9)|0;NET.s.send({t:\"start\",seed:NET_FORCE_SEED});spawnRemote();startGame(true);}sendMyChar();",
+   "ablauf": "«oder mit Code · Freund einladen» aufklappen → «🏠 Raum öffnen» → Raum-Code wird angezeigt, man schickt ihn per «📲 Link teilen» an den Freund. Während man wartet (kann Minuten dauern) drückt man «▶ Los geht's» und spielt solo weiter. Wenn der Freund dann den Code eingibt, löst NET.s.ready.then() aus und ruft startGame(true) erneut auf. Der Host-Zweig prüft `running` nicht; nur der Gast-Zweig in onNetMsg (Zeile 4869: `if(running){NET.on=true;sendMyChar();return;}`) hat den Guard.",
+   "folge": "Identisch zum Schnell-Koop-Fall: zweite Bodenebene, ~500 verwaiste Ressourcen-Meshes in der Szene, doppelte Dörfer/Stationen/Kollider/NPCs, Framerate bricht ein, laufender Fortschritt (Inventar, Level, Tag) ist weg.",
+   "schwere": "hoch",
+   "fix": "`if(!running)startGame(true);` statt `startGame(true);` — oder besser einen zentralen Guard `if(running)return;` an den Anfang von startGame() setzen, dann sind beide Stellen (4864 und 5006) auf einmal abgedeckt."
+  },
+  {
+   "titel": "Tag/Nacht-Uhr und Wellen laufen rein lokal — jedes Overlay friert sie ein, Host und Gast landen dauerhaft in verschiedenen Tagen",
+   "datei": "neon-wildnis.html",
+   "zeile": 4144,
+   "code": "  dayT+=dt;var cyc=isNight?NIGHTLEN:DAYLEN;",
+   "ablauf": "Koop starten (Raum öffnen / beitreten), beide sind im gleichen Seed. Ein Spieler betritt eine Station (Minispiel-Iframe), öffnet die Weltkarte, das Pause-Menü oder die Perk-Wahl. frame() springt dann bei Zeile 4753 (`if(stationOpen){if(running&&!paused)netTick(dt);return;}`) bzw. 4754 raus, BEVOR `updDayNight(dt)` in Zeile 4780 läuft — `netTick` läuft absichtlich weiter, die Verbindung überlebt also. Nach 2 Minuten Minispiel zurück in die Welt. Dasselbe passiert, wenn ein Handy-Spieler kurz die App wechselt (requestAnimationFrame steht). Es gibt in onNetMsg (ab Zeile 4867) keinerlei Nachricht für day/dayT/isNight/waveNum — nichts holt die Uhr je wieder ein.",
+   "folge": "Ein Spieler steht bei Tag 3 in der Mittagssonne, der andere kämpft in Nacht 3 gegen Welle 3. DAYLEN=240s/NIGHTLEN=90s (Zeile 3360) — schon 2 Minuten Versatz sind über ein Drittel Zyklus. Die Ansage «🌙 WELLE x», Boss-Spawns, der Tageszähler, die XP-Belohnung fürs überlebte Nachtende und die Truhen-Respawns (Zeile 4164) feuern bei beiden zu völlig verschiedenen Zeitpunkten. Der Partner-Avatar rennt sichtbar durch die eigene Nacht, während er selbst Tag hat. Der Versatz wächst mit jedem Overlay weiter und wird nie korrigiert.",
+   "schwere": "hoch",
+   "fix": "Die Uhr aus einer gemeinsamen Basis rechnen statt aus aufsummiertem dt: beim Start T0=Date.now() (Host schickt T0 zusammen mit dem Seed in {t:\"start\"}), dann in updDayNight die verstrichene Echtzeit seit T0 verwenden. Minimal-Variante: Host schickt alle 2s {t:\"clock\",day,dayT,isNight,waveNum}, der Gast übernimmt die Werte."
+  },
+  {
+   "titel": "Truhen, Bauten und der Sieg-Nexus werden nie an den Partner gesendet — jeder öffnet dieselbe Truhe und kassiert doppelt",
+   "datei": "neon-wildnis.html",
+   "zeile": 2973,
+   "code": "  lt.opened=true;lootOpened.push(lt.id);lootOpenedTotal++;",
+   "ablauf": "Beide Spieler laufen zur selben Truhe (die Loot-Positionen sind über den geteilten Seed bei beiden identisch, placeLoot Zeile 1512). Spieler A drückt E/🖐️ → openLoot() setzt nur lokal lt.opened=true und füllt A's Inventar. Es geht keine Nachricht raus — openLoot enthält keinen einzigen NET-Aufruf. Spieler B sieht die Truhe weiter geschlossen (Deckel zu, Marker sichtbar) und öffnet sie ebenfalls. Gleiches Muster bei confirmBuild → placeStructure (Zeile 4090) und beim Sieg-Nexus (Zeile 4094 `if(type===\"nexus\"){onNexusBuilt();return;}`).",
+   "folge": "Die Beute verdoppelt sich: jede Truhe/Ruine/Gruft gibt jedem Spieler die volle Ladung inklusive XP. Umgekehrt existieren die Bauten des Partners beim anderen gar nicht — die Kollisionsprüfung in Zeile 4768 (`if(s.type===\"wand\"&&...)`) läuft nur über die eigene structures-Liste, der Partner läuft also durch deine Mauer, sieht deine Werkbank/dein Bett nicht und kann sie nicht benutzen. Und wer den Nexus baut, gewinnt allein: beim Partner passiert nichts, er spielt weiter.",
+   "schwere": "hoch",
+   "fix": "Zwei Nachrichten über den zuverlässigen Kanal ergänzen: in openLoot `NET.s.send({t:\"loot\",id:lt.id,from:NET.role})` und in confirmBuild `NET.s.send({t:\"build\",ty:type,x:...,z:...,from:NET.role})`. In onNetMsg den Empfang idempotent anwenden (Truhe über lootOpened.indexOf(id) abfangen, Bau nur setzen wenn an der Stelle noch nichts steht) und dabei NICHT erneut senden."
+  },
+  {
+   "titel": "Ein gefällter Baum bleibt während der Fall-Animation angreifbar und zahlt bei JEDEM weiteren Schlag erneut +3 Holz — unbegrenzte Holzquelle aus einem einzigen Baum.",
+   "datei": "neon-wildnis.html",
+   "zeile": 3948,
+   "code": "if(r.type===\"tree\"){inv.wood+=3;totalWood+=3;gainXP(1);toast(\"🪵 +3 Holz\");floatText(r.x,r.baseY+2.4,r.z,\"+3 🪵\",\"#e6b98a\");r.falling=0.01;shake=Math.min(shake+0.22,0.5);sfx(90,0.16,\"sawtooth\",0.05,55);if(navigator.vibrate)navigator.vibrate(45);}",
+   "ablauf": "Zu einem Baum laufen und E/Leertaste gedrückt halten (bzw. den ⚔️-Knopf halten). Der erste Treffer setzt r.hp<=0, gibt +3 Holz und startet NUR die Fall-Animation (r.falling=0.01) — r.dead bleibt false. findNear() (Z. 3828) überspringt aber ausschliesslich Ressourcen mit r.dead (`if(r.dead)continue;`), also bleibt derselbe Baum weiter das Ziel. Jeder Folgeschlag macht r.hp noch negativer, läuft erneut in `if(r.hp<=0)` und zahlt wieder +3 Holz +1 XP — und setzt r.falling wieder auf 0.01, wodurch der Baum die 0,8s-Fallzeit (Z. 3960: `if(f>=1){r.dead=true;...}`) nie erreicht. Bei Tastatur-Repeat ca. 25-30 Schläge/s, mobil alle 240 ms.",
+   "folge": "Der Baum kippt nie um, wackelt nur, und der Holz-Zähler rast hoch (~90 Holz/Sekunde). Alle Holzkosten (Nexus-Turm 30 🪵, Werkbank, Mauern) sind damit sofort bezahlt, ebenso die Quest „Sammle 10 Holz\" und jede Bounty „Sammle X Holz\" (totalWood zählt mit) plus unbegrenzt XP → Level-Perks. Fels, Kristall und Busch sind NICHT betroffen, weil die ihr r.dead=true sofort setzen.",
+   "schwere": "hoch",
+   "fix": "Fallende Bäume wie tote behandeln: in findNear() Z. 3828 auf `if(r.dead||r.falling)continue;` erweitern (oder im Baum-Zweig als erstes `if(r.falling)return;` prüfen)."
+  },
+  {
+   "titel": "Im Querformat liegen Minimap und Zoom-Knöpfe (fest von oben positioniert) exakt über den Aktionsknöpfen unten rechts — der ✓-Knopf ist komplett verdeckt.",
+   "datei": "neon-wildnis.html",
+   "zeile": 178,
+   "code": "#minimap{pointer-events:auto;position:fixed;right:calc(12px + env(safe-area-inset-right));top:calc(152px + env(safe-area-inset-top));z-index:20;width:120px;height:120px;border-radius:50%;border:2px solid rgba(130,200,255,.55);background:rgba(8,20,32,.55);box-shadow:0 4px 16px rgba(0,0,0,.4)}",
+   "ablauf": "Handy quer halten (z. B. 800×360 oder 844×390 CSS-px), Spiel starten, 🔨 antippen, ein Bauteil wählen und den ✓-Knopf drücken wollen. Rechnung ohne Safe-Areas bei 800×360: Minimap belegt y 152–272 / x 668–788 (die Verkleinerung auf 92px greift nur bei max-width:600px, im Querformat ist die Breite >600 → volle 120px). #bConfirm (Zeile 75: bottom 130px, 64px gross) liegt bei y 166–230 / x 712–776, also VOLLSTÄNDIG innerhalb der Minimap. #zoomBtns (Zeile 181, top 280px) liegt bei y 280–314 / x 714–788 und überlappt den oberen Teil von #bAct (y 242–320 / x 698–776). Minimap (z-index 20) und Zoom-Leiste (z-index 21) haben pointer-events:auto und liegen im selben Stacking-Context wie die .btn-Knöpfe (die kein z-index haben) → sie fangen die Berührung ab.",
+   "folge": "Bauen ist im Querformat unmöglich: Der Tipp auf ✓ trifft die Minimap und öffnet stattdessen die Weltkarte (Handler Zeile 4746/4747). Auch der Haupt-Aktionsknopf 🪓 und 💥/⚡ sind am oberen Rand von Minimap/Zoom-Knöpfen blockiert. Im Hochformat tritt das nicht auf — der Spieler dreht das Handy und das Spiel wird unbedienbar.",
+   "schwere": "hoch",
+   "fix": "Minimap und #zoomBtns im Querformat unten/oben links verankern oder ausblenden, z. B. `@media (orientation:landscape) and (max-height:520px){#minimap{width:80px;height:80px;top:calc(6px + env(safe-area-inset-top))}#zoomBtns{top:calc(92px + env(safe-area-inset-top))}}` — plus den 92px-Regeln von Zeile 179/184 eine `(max-height:520px)`-Variante geben, damit sie im Querformat ebenfalls greifen."
+  },
+  {
+   "titel": "Ein fallender Baum bleibt anvisierbar und gibt bei jedem weiteren Schlag erneut +3 Holz — unbegrenzte Holz-Duplikation.",
+   "datei": "neon-wildnis.html",
+   "zeile": 3828,
+   "code": "  for(var i=0;i<resources.length;i++){var r=resources[i];if(r.dead)continue;var dx=r.x-player.position.x,dz=r.z-player.position.z,d=dx*dx+dz*dz;if(d<best){best=d;nearRes=r;}}",
+   "ablauf": "Baum fällen bis r.hp<=0. In harvest() (Z. 3948) wird dann inv.wood+=3, totalWood+=3 gesetzt und r.falling=0.01 gestartet. r.dead wird aber erst in updResources() (Z. 3960) gesetzt, wenn die 0,8s-Fall-Animation durch ist. findNear() filtert nur r.dead, NICHT r.falling — der Baum bleibt also weiter nearRes. harvest() hat vor 'if(!nearRes)return;var r=nearRes;' (Z. 3940) keinerlei Prüfung auf r.hp<=0 oder r.falling. Jeder weitere Schlag läuft erneut in 'if(r.hp<=0)' und setzt r.falling=0.01 zurück → die Animation endet nie. Auf dem Handy reicht das blosse GEDRÜCKT-HALTEN des ⚔️-Knopfs (Dauerangriff alle 240ms, Z. 4293) für ~3 Extra-Schläge pro Baum; wer weiter tippt, erntet denselben Baum endlos.",
+   "folge": "Der Spieler bekommt +3 🪵 pro Zusatz-Schlag am selben, bereits gefällten Baum (mit Toast, Partikeln, Bildschirm-Wackeln). Der Baum verschwindet nie. Holz ist damit unbegrenzt, die Quest »Sammle 10 Holz«, der Nexus (30 Holz) und alle Holz-Bounties sind trivial — und die Ressourcen-Ökonomie ist kaputt.",
+   "schwere": "hoch",
+   "fix": "In findNear() den fallenden Baum ausschliessen, genau wie es canWalk() in Z. 4329 bereits tut ('if(r2.dead||r2.falling)continue;'): 'if(r.dead||r.falling)continue;'. Alternativ/zusätzlich in harvest() vor dem Schaden 'if(r.falling||r.hp<=0)return;' einfügen."
+  },
+  {
+   "titel": "spawnTraveler prüft die Sperre `traveler`, die erst im GLB-Callback gesetzt wird — bei langsamem Laden entstehen mehrere Händler, alle bis auf einen bleiben für immer eingefroren stehen",
+   "datei": "neon-wildnis.html",
+   "zeile": 1439,
+   "code": "  if(traveler||villages.length<2||!THREE.GLTFLoader)return;",
+   "ablauf": "updLively() ruft pro Frame mit 0,5 % Wahrscheinlichkeit spawnTraveler() auf (Zeile 1462: `if(!traveler&&villages.length>=2&&Math.random()<0.005)spawnTraveler();`). `traveler` wird aber erst am Ende des asynchronen GLTFLoader-Callbacks gesetzt (Zeile 1446: `traveler={g:g,mix:mix,from:0,to:1,f:0,pauseT:0};`). Solange das anime_*.glb lädt (~0,5–2 s beim ersten Mal), bleibt `traveler` null → bei 60 fps werden in dieser Zeit mit hoher Wahrscheinlichkeit 2–3 weitere Ladevorgänge gestartet. Jeder Callback baut eine eigene Gruppe, hängt sie per `scene.add(g)` ans Dorf 0 und überschreibt `traveler` — nur die zuletzt fertige Gruppe wird von updTraveler() noch bewegt.",
+   "folge": "Am Startdorf stehen ein oder mehrere zusätzliche Dorfbewohner samt Handkarren regungslos in der Landschaft (Animation läuft nicht, da ihr Mixer nie geupdatet wird) und lassen sich nie wieder entfernen. Schlägt das Modell dauerhaft fehl (leerer error-Handler `function(){}`), wird zusätzlich alle ~3 Sekunden für die gesamte Sitzung ein neuer GLB-Request abgesetzt.",
+   "schwere": "mittel",
+   "fix": "Eine synchrone Sperre setzen, bevor geladen wird: in spawnTraveler() direkt nach dem Guard `traveler={g:null,pending:true};` (bzw. eine eigene Variable `_travLoading=true`) setzen, im Erfolgs-Callback befüllen und im error-Callback wieder freigeben."
+  },
+  {
+   "titel": "Level-Up-Perk fällt aus dem Save: Warteschlange perkQueue wird nicht gespeichert",
+   "datei": "neon-wildnis.html",
+   "zeile": 4402,
+   "code": "  var s={seed:SEED,inv:inv,tools:tools,equip:equip,hp:hp,maxHp:maxHp,xp:xp,level:level,kills:kills,day:day,dayT:dayT,isNight:isNight,nights:nights,quest:quest,won:won,",
+   "ablauf": "Genug XP sammeln → gainXP erhöht level, maxHp und setzt perkQueue+=ups (Zeile 3529), die Upgrade-Karten öffnen sich und warten unbegrenzt. Der Frame-Loop pausiert zwar (Zeile 4754 `if(!running||paused||perkChoosing||mapOpen){...return;}`), aber Tab wechseln / Handy sperren löst visibilitychange bzw. pagehide → saveOnLeave() → saveGame() aus (Zeilen 4538–4541), und das prüft perkChoosing nicht. Danach Seite neu laden und „Weiterspielen\".",
+   "folge": "Der Spieler ist auf dem neuen Level (mehr Max-HP), die Upgrade-Auswahl kommt aber nie wieder — das gewählte Perk fehlt dauerhaft. Bei mehreren gleichzeitigen Level-Ups gehen alle offenen Karten verloren.",
+   "schwere": "mittel",
+   "fix": "`pq:perkQueue|0` mit ins Save-Objekt aufnehmen und beim Laden `perkQueue=sv.pq|0;if(perkQueue>0)showPerkPick();` ausführen (im else-Zweig Zeile 5061 perkQueue=0 setzen)."
+  },
+  {
+   "titel": "Neuladen während der Nacht setzt die laufende Nachtwelle komplett zurück",
+   "datei": "neon-wildnis.html",
+   "zeile": 5045,
+   "code": "    waveNum=nights|0;if(isNight){waveActive=true;waveToSpawn=6+waveNum*4;waveSpawned=0;if(typeof updWaveHud===\"function\")updWaveHud();} /* Welle nach Laden korrekt fortsetzen */",
+   "ablauf": "In der Nacht spielen (z. B. Welle 4 = 22 Gegner), 20 davon erledigen — der Autosave alle 10 s schreibt isNight:true und nights mit, aber weder waveSpawned noch die noch lebenden Monster. Seite neu laden und „Weiterspielen\".",
+   "folge": "Die HUD-Anzeige springt von „🌙 Welle 4 · 👹 2\" zurück auf 22, die ganze Welle muss noch einmal gekämpft werden. Umgekehrt lässt sich damit der kills-Zähler farmen (Quests „Erlege 40/80 Monster\" und Bounties zählen die wiederholten Kills mit).",
+   "schwere": "mittel",
+   "fix": "waveSpawned im Save mitführen (`ws:waveSpawned|0`) und beim Laden `waveSpawned=Math.min(sv.ws|0,waveToSpawn);` statt 0 setzen."
+  },
+  {
+   "titel": "Schnell-Koop belegt immer nur den einen Raum «PUBA» — ein zweites Paar hängt zwei Minuten und bekommt dann «Kein Mitspieler gefunden»",
+   "datei": "neon-wildnis.html",
+   "zeile": 4996,
+   "code": "  try{NET.s=MP.quick(\"wildnis\");}catch(e){coopStatusMsg(\"Fehler: \"+e.message);return;}",
+   "ablauf": "Paar 1 spielt bereits über «⚡ Schnell zusammen spielen». Paar 2 tippt denselben Knopf. MP.quick wird ohne room-Parameter aufgerufen, js/mp.js:389 setzt daraufhin room fest auf \"PUBA\". Beitreten scheitert, weil der Host von Paar 1 den Raum als voll abweist (js/mp.js:197 `if (main) { try { conn.close(); } catch (e) {} return; }`); anschliessend scheitert auch das eigene Hosten mit unavailable-id (js/mp.js:216). Die quick-Kette läuft ihre 4 Phasen ab, jede mit dem 5er-Reconnect-Backoff.",
+   "folge": "Beide Spieler von Paar 2 sehen 1–2 Minuten lang «⚠️ Verbindung wackelt…» und am Ende «❌ Kein Mitspieler gefunden» — obwohl in MP.PUBLIC (js/mp.js:342) fünf freie Räume stehen. Sie finden sich auch untereinander nicht, obwohl beide gleichzeitig suchen.",
+   "schwere": "mittel",
+   "fix": "Raum durchreichen statt Default nehmen: entweder über MP.PUBLIC iterieren (`MP.quick(\"wildnis\", MP.PUBLIC[i])`, bei «Kein Mitspieler gefunden» den nächsten Code probieren) oder MP.suche(\"wildnis\") + MP.hostPublic(\"wildnis\", belegteCodes) verwenden."
+  },
+  {
+   "titel": "Eine im Schmiede-Shop gekaufte Waffe/Rüstung überschreibt dauerhaft ALLE späteren Quest- und Werkbank-Stufen — es gibt kein Ablegen, also verpuffen die teuersten Belohnungen und Craft-Kosten wirkungslos.",
+   "datei": "neon-wildnis.html",
+   "zeile": 3309,
+   "code": "function weaponAtk(){if(equip.wid&&WSHOP_BY[equip.wid])return WSHOP_BY[equip.wid].atk+PERK.atk;return (WEAP_ATK[equip.weapon]||0)+PERK.atk;}",
+   "ablauf": "An der Schmiede das billigste Kurzschwert kaufen (6 💎, atk 3) → equip.wid ist gesetzt (Z. 3346). Danach die Quest „Erlege 80 Monster\" abschliessen: Z. 4563 setzt equip.weapon=3 und meldet „🌟 NEUE WAFFE: Neon-Klinge\" (atk 7). weaponAtk() liest aber wegen des gesetzten wid weiter nur den Shop-Wert 3. Genauso an der Werkbank: sword3 kostet 8 💎 + 6 🪨 (Z. 3191), doCraft (Z. 4004/4005) bucht das Material ab und setzt equip.weapon=3 — ohne jede Wirkung. Identisch für Rüstung: damagePlayer (Z. 3591) nimmt `ASHOP_BY[equip.aid].def` vorrangig, ein 8-💎-Wildleder-Panzer (def 3) blockiert also Kristallrüstung (def 7). Im Shop-Menü (Z. 3315-3330) gibt es nur „Anlegen\", kein Ablegen → der Zustand ist nicht mehr rückgängig zu machen.",
+   "folge": "Der Spieler zahlt zweimal: erst 6-8 💎 im Shop, dann 8 💎 + 6 🪨 an der Werkbank bzw. 80 Monster für die Quest — und wird dabei nicht stärker. Die Toast-Meldung „NEUE WAFFE\" erscheint, die Waffe taucht aber weder in der Hand noch im Ausrüstungs-HUD auf (gearUpd Z. 3431/3432 bevorzugt ebenfalls wid/aid). Wer früh das billigste Teil kauft, ist bis zum nächsten Shop-Kauf dauerhaft schwächer als ohne Kauf.",
+   "schwere": "mittel",
+   "fix": "Statt Vorrang das Maximum nehmen: `return Math.max(WSHOP_BY[equip.wid].atk,(WEAP_ATK[equip.weapon]||0))+PERK.atk;` (analog für die Rüstung in Z. 3591 und 5325) — oder im Shop eine „Ablegen\"-Schaltfläche ergänzen, die wid/aid auf 0 setzt."
+  },
+  {
+   "titel": "Fass-/Kisten-IDs werden aus `loots.length` gebildet und verschieben sich, sobald der Tages-Cache beim Laden dazukommt oder wegfällt → bereits geplünderte Container sind nach einem Neustart wieder voll.",
+   "datei": "neon-wildnis.html",
+   "zeile": 2929,
+   "code": "var isBar=rnd()<0.5;var id=\"C\"+loots.length;var opened=lootOpened.indexOf(id)>=0;",
+   "ablauf": "Beim Start füllt placeLoot() zuerst 11 Einträge L0..L10 (Z. 1512-1519), danach schiebt `if(day>1)spawnDayCache(true)` (Z. 5035) je nach Tages-RNG (Z. 4133: `if(rC()>=0.5)return;`) eine weitere Truhe in `loots` (Z. 4140), erst danach kommt in decorateWorld GRAVE (Z. 2906) und dann die Fässer/Kisten. Deren ID hängt also direkt an der aktuellen Array-Länge. Spielstand an Tag 3 (Cache vorhanden): die Container heissen C13, C14, …; Spieler plündert sie, die IDs landen in lootOpened und werden gespeichert (Z. 4405). An Tag 4 (kein Cache) heissen dieselben Container C12, C13, … → die Zuordnung ist um eins verschoben.",
+   "folge": "Nach dem Neuladen stehen die gestern geleerten Fässer/Kisten wieder gefüllt in der Welt und lassen sich erneut ausräumen (Holz/Stein/Beeren/Fleisch) — inklusive lootOpenedTotal++, das die Quest „Öffne 3 Truhen oder Ruinen\" und die Bounty „Öffne 2 Truhen/Ruinen\" (5-15 💎) mit antreibt. Gleichzeitig verschwindet je ein nie angerührter Container komplett (`if(opened)m.visible=false;`, Z. 2932). Für Truhen/Ruinen ist ein Respawn alle 2 Tage bewusst vorgesehen (Z. 4164), für Fässer/Kisten laut Kommentar ausdrücklich NICHT.",
+   "schwere": "mittel",
+   "fix": "Stabile, positionsbasierte ID vergeben statt Array-Index, z. B. `var id=\"C\"+Math.round(x)+\"_\"+Math.round(z);` (analog zu den gespeicherten Fell-Koordinaten in Z. 4406)."
+  },
+  {
+   "titel": "harvest() hat keinerlei Cooldown; per Tastatur-Autorepeat (E/Leertaste) feuert es ~30×/s und umgeht damit den 240-ms-Takt, der als einzige Schlagrate-Grenze existiert.",
+   "datei": "neon-wildnis.html",
+   "zeile": 4219,
+   "code": "if(e.key.toLowerCase()===\"e\"){harvest();}",
+   "ablauf": "Der Mobil-Pfad drosselt bewusst auf 240 ms (Z. 4293: `iv=setInterval(fire,240)`), harvest() selbst prüft aber nur Zustände, keine Zeit (Z. 3902: `if(dead||!running||paused||perkChoosing||stationOpen)return;`). Der keydown-Handler filtert `e.repeat` nicht heraus, also löst jedes vom Browser wiederholte keydown einen vollen Schlag aus: E oder Leertaste gedrückt halten = 25-30 Nahkampftreffer bzw. Abbau-Schläge pro Sekunde. Gleiches gilt für Klick-Spam auf dem ⚔️-Knopf (Z. 4296).",
+   "folge": "Jeder Gegner inklusive Boss stirbt beim Gedrückthalten praktisch sofort (Kills, XP, Loot-Orbs mit 💎 im Sekundentakt), Felsen/Kristalle sind ohne Spitzhacke genauso schnell abgebaut wie mit — Werkzeug- und Waffen-Upgrades verlieren ihren Sinn. Zugleich ist das der Hebel, der Befund 1 von „nervig\" auf „~90 Holz/s\" hochskaliert.",
+   "schwere": "mittel",
+   "fix": "In harvest() einen Takt einbauen, der für alle Eingabewege gilt, z. B. am Funktionsanfang `if(performance.now()-(window._hvT||0)<240)return;window._hvT=performance.now();` — dann ist die Tastatur nicht schneller als der Mobil-Knopf."
+  },
+  {
+   "titel": "Die Zoom-Knöpfe ➕/➖ sind nur 34×34 px gross und haben — anders als die .btn-Knöpfe — keine vergrösserte Trefferfläche.",
+   "datei": "neon-wildnis.html",
+   "zeile": 182,
+   "code": "#zoomBtns .zbtn{width:34px;height:34px;border-radius:50%;border:1px solid rgba(130,200,255,.55);background:rgba(8,20,32,.72);color:#cfe9ff;font-size:1.05rem;font-weight:900;display:flex;align-items:center;justify-content:center;cursor:pointer;user-select:none}",
+   "ablauf": "Auf dem Handy spielen und rechts oben unter der Minimap ➕ oder ➖ antippen. Beide Knöpfe stehen mit nur 6px Abstand nebeneinander (`#zoomBtns{...gap:6px}`, Zeile 181). Die runden Spielknöpfe haben dafür extra `.btn::after{content:\"\";position:absolute;inset:-6px;border-radius:50%}` (Zeile 72) als unsichtbare Vergrösserung — die .zbtn haben das nicht.",
+   "folge": "Der Spieler trifft beim Zoomen regelmässig den falschen Knopf oder gar keinen; die Kamera springt in die falsche Richtung. Gleiches Problem hat .sysbtn, die bei ≤560px auf 40×40 schrumpft (Zeile 154) — beides unter der 44px-Mindestgrösse.",
+   "schwere": "mittel",
+   "fix": "`.zbtn` auf `width:44px;height:44px` setzen (oder `.zbtn::after{content:\"\";position:absolute;inset:-7px;border-radius:50%}` ergänzen wie bei .btn) und den gap auf 10px erhöhen; `.sysbtn` bei ≤560px nicht unter 44px schrumpfen lassen."
+  },
+  {
+   "titel": "Die als Ess-Knöpfe beworbenen Vorrats-Chips 🍓/🍖 sind auf schmalen Handys nur rund 26×18 px gross.",
+   "datei": "neon-wildnis.html",
+   "zeile": 150,
+   "code": "  .inv{font-size:.78rem}",
+   "ablauf": "Der Startbildschirm bewirbt das ausdrücklich: `<span class=\"chip\"><b>🍓/🍖</b> tippen = essen</span>` (Zeile 247). Gebunden wird es in Zeile 4299 mit `bindTap(\"wMeat\",eat);bindTap(\"wBerry\",eat);`. Auf einem Handy ≤560px greift die Regel in Zeile 149/150/151: `#invBar{gap:3px;padding:4px 7px}`, `.inv{font-size:.78rem}`, `.inv .ic{font-size:.92rem}` — das Klick-Element ist damit nur so gross wie Icon+Zahl (ca. 26px breit, ca. 18px hoch). Weder `.inv` noch `#invBar`-Kinder haben eine min-height oder eine ::after-Hitbox wie `.btn` (Zeile 72). Zusätzlich stehen die Chips mit nur 3px Abstand nebeneinander, direkt neben 💎 und 🪨, die auf einen Tipp gar nicht reagieren.",
+   "folge": "Beeren/Fleisch essen misslingt im Kampf immer wieder (man trifft 💎 statt 🍓, oder gar nichts) — der Spieler stirbt, obwohl er Nahrung im Inventar hat, und hält die Funktion für kaputt.",
+   "schwere": "mittel",
+   "fix": "Den essbaren Chips eine echte Trefferfläche geben, z. B. `#wBerry,#wMeat{min-width:44px;min-height:44px;justify-content:center;position:relative}` bzw. `#wBerry::after,#wMeat::after{content:\"\";position:absolute;inset:-10px}` und den gap in #invBar auf mindestens 8px lassen."
+  },
+  {
+   "titel": "Die Koop-Emote-Leiste liegt über dem linken Joystick und der oberen Kante des Haupt-Aktionsknopfes.",
+   "datei": "neon-wildnis.html",
+   "zeile": 4823,
+   "code": "    bar.style.cssText=\"position:fixed;left:50%;transform:translateX(-50%);bottom:calc(96px + env(safe-area-inset-bottom));display:none;gap:8px;z-index:40;pointer-events:auto\";",
+   "ablauf": "Koop starten (⚡ Schnell zusammen spielen); sobald der Status \"connected\" ist, blendet `updOnline()` (Zeile 4830) die Emote-Leiste ein. Sie ist 5×44px + 4×8px gap = 252px breit und zentriert. Auf einem 390px-Handy liegt sie bei x 69–321, y (von unten) 96–140. Der Joystick #stick ist bei ≤430px 100×100 gross bei left 20 / bottom 28 (Zeilen 69, 83) → x 20–120, y 28–128. Überlappung x 69–120 / y 96–128, also die obere rechte Ecke des Joysticks — genau dort, wo man für \"nach vorne rechts laufen\" hinzieht. Da die Emotes echte <button>-Elemente mit z-index 40 über dem #hud (z-index 2) sind, fängt die Leiste die Berührung ab; auch der Ausweich-Handler für den schwebenden Joystick (Zeile 4245) schliesst `button` explizit aus. Ebenso überlappt sie bei x 258–302 / y 96–140 die obere linke Ecke von #bAct (right 24, bottom 40, 78px).",
+   "folge": "Im Koop sendet der Spieler beim Loslaufen ungewollt ein 👋-Emote statt zu laufen; die Figur bleibt stehen. Auch der Angriffsknopf reagiert am oberen Rand nicht.",
+   "schwere": "mittel",
+   "fix": "Die Emote-Leiste aus der Daumenzone heben, z. B. `bottom` auf `calc(210px + env(safe-area-inset-bottom))` setzen oder sie als schmale Spalte am rechten oberen Rand platzieren; alternativ nur auf Tipp auf einen kleinen 😊-Knopf einblenden statt dauerhaft."
+  },
+  {
+   "titel": "Wenn ein Wächter-Turm (oder eine Stachelfalle) den Todesstoss gegen den Boss setzt, entfällt die komplette Boss-Belohnung.",
+   "datei": "neon-wildnis.html",
+   "zeile": 4123,
+   "code": "          if(tgt.hp<=0){var idx=monsters.indexOf(tgt);if(idx>=0){scene.remove(tgt.mesh);monsters.splice(idx,1);clearWarn(tgt);rewardKill(tgt);killSfx(tgt.boss);}}}}}",
+   "ablauf": "Ab Nacht 2 erscheint jede 2. Nacht ein Boss (Z. 4148). Türme schiessen nachts automatisch auf den nächsten Gegner, inklusive Boss (Z. 4121-4123). Wer den Boss auf ~1 HP prügelt und ihn dann in Turm-Reichweite (16) laufen lässt, bekommt den Kill vom Turm. Alle anderen Kill-Pfade — Nahkampf (Z. 3927), Schockwelle (Z. 3602), Wurf (Z. 3627), Kettenblitz (Z. 3682) — enthalten den Block 'if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(e.x,e.z);}'. In updStructures fehlt dieser Block bei Turm UND Falle (Z. 4117) — der Block wurde kopiert, die Boss-Sonderbehandlung nicht mitgenommen.",
+   "folge": "Kein »🏆 Boss besiegt! Legendäre Beute«, keine 60 XP, keine 3 legendären Loot-Orbs, kein Koop-Broadcast an den Partner. Der Boss-Balken verschwindet einfach. window.__bossKills bleibt 0, also wird das Abzeichen »🐉 Drachentöter« (Z. 4498) nie freigeschaltet, selbst nach beliebig vielen erlegten Bossen.",
+   "schwere": "mittel",
+   "fix": "In Turm- und Fallen-Kill den gleichen Zweig ergänzen: 'var _wb=tgt.boss; ... if(_wb){window.__bossKills=(window.__bossKills|0)+1;bossReward(tgt.x,tgt.z);}' (beim Turm zusätzlich updWaveHud() aufrufen, das dort ebenfalls fehlt)."
+  },
+  {
+   "titel": "Der Spieler-Pfeil auf Minimap und Weltkarte zeigt exakt 180° verkehrt — nach hinten statt in Blickrichtung.",
+   "datei": "neon-wildnis.html",
+   "zeile": 4669,
+   "code": "  ctx.fillStyle=\"#fff\";ctx.save();ctx.translate(cx,cy);ctx.rotate(-player.rotation.y);ctx.beginPath();ctx.moveTo(0,-5);ctx.lineTo(3.5,4);ctx.lineTo(-3.5,4);ctx.closePath();ctx.fill();ctx.restore();",
+   "ablauf": "Spiel starten und einfach loslaufen, dabei auf die Minimap oben rechts schauen. Die Karte ist Norden-oben: pt() (Z. 4643) bildet Welt +z auf Bildschirm UNTEN ab, und compass8() (Z. 2386) definiert Norden = -z, passend zum 'N' oben (Z. 4674). Die Blickrichtung des Helden ist (sin ry, cos ry) — so rechnet faceTo() (Z. 3955) und die Laufdrehung ta=Math.atan2(cr.x,cr.z) (Z. 4773). Canvas-rotate(-ry) auf den Punkt (0,-5) ergibt aber die Bildschirmrichtung (-sin ry, -cos ry), also genau die Gegenrichtung. Läuft man nach Süden (+z, auf der Karte nach unten), zeigt der Pfeil nach oben.",
+   "folge": "Auf der 800×800-Karte orientiert man sich falsch: der Pfeil zeigt konsequent dorthin, wo man herkommt. Beim Suchen von Stationen/Dorf nach Kompass-Hinweisen der NPCs läuft man in die falsche Richtung. Dieselbe Zeile ist in drawWorldMap (Z. 4702, 'Du'-Pfeil) noch einmal kopiert und dort ebenso falsch.",
+   "schwere": "mittel",
+   "fix": "In beiden Fällen 'ctx.rotate(-player.rotation.y)' durch 'ctx.rotate(Math.PI-player.rotation.y)' ersetzen (oder den Pfeil-Pfad spiegeln: moveTo(0,5)/lineTo(3.5,-4)/lineTo(-3.5,-4))."
+  },
+  {
+   "titel": "Beim Morgengrauen geleerte Monsterliste wird von noch laufenden Monster-GLB-Ladevorgängen wieder befüllt — Gegner überleben die Nacht und laufen am helllichten Tag herum",
+   "datei": "neon-wildnis.html",
+   "zeile": 4171,
+   "code": "      monsters.forEach(function(e){scene.remove(e.mesh);clearWarn(e);});monsters.length=0;",
+   "ablauf": "Ab Tag 2 sind mehrere Mobs (ork, imp, stachel, daemon, yeti) mit `skinned:true` markiert und werden in spawnMonster() pro Spawn frisch per GLTFLoader geladen; erst im Callback erfolgt `monsters.push({mesh:o,…})` (Zeile 1063). spawnMonster() liefert aber sofort 1 zurück, der Nacht-Spawner (Zeile 4212) läuft bis Sekundenbruchteile vor dem Morgengrauen weiter. Fällt der Tageswechsel (Zeile 4171) zwischen Ladestart und Callback, löscht er die Liste, danach schiebt der Callback das Monster wieder hinein und `scene.add(o)`.",
+   "folge": "Ein oder mehrere Monster stehen/laufen tagsüber in der Welt, greifen den Spieler beim Sammeln/Bauen an, obwohl «☀️ Tag X — Welle überlebt!» gemeldet wurde. Das Wellen-HUD zählt sie nicht (waveActive ist bereits false); sie verschwinden erst beim nächsten Morgengrauen wieder.",
+   "schwere": "niedrig",
+   "fix": "Einen Generationszähler mitführen: vor `monsters.length=0` z. B. `_monGen++;` und im GLB-Callback von spawnMonster/spawnGlbBoss vor dem push prüfen `if(myGen!==_monGen){scene.remove? nicht adden; return;}` — also Mesh gar nicht erst in die Szene hängen, wenn die Nacht inzwischen vorbei ist."
+  },
+  {
+   "titel": "Kumulativer Holz-Zähler totalWood wird nicht gespeichert und startet nach dem Laden bei 0",
+   "datei": "neon-wildnis.html",
+   "zeile": 3394,
+   "code": "var totalWood=0;",
+   "ablauf": "90 Holz fällen und beim Bauen wieder ausgeben (inv.wood sinkt, totalWood bleibt 90), speichern/neu laden. totalWood beginnt wieder bei 0, obwohl das Save inv, kills, day usw. korrekt zurückbringt.",
+   "folge": "Das Abzeichen „🪵 Holzfäller\" (Bedingung `inv.wood>=100||totalWood>=100`, Zeile 4496) ist trotz hunderter gefällter Bäume nur noch über 100 Holz gleichzeitig im Beutel erreichbar; die Bounty „Sammle X Holz\" und die Fortschrittsanzeige der ersten Quest starten ebenfalls neu.",
+   "schwere": "niedrig",
+   "fix": "`tw:totalWood|0` ins Save-Objekt aufnehmen, beim Laden `totalWood=sv.tw|0;` und im Frisch-Start-Zweig (Zeile 5061) `totalWood=0;` setzen."
+  },
+  {
+   "titel": "Morgengrauen-Bonus aufs Freundschaftsband wird lokal und stumm vergeben — die Bandstufen (und damit die max. Lebenspunkte) laufen zwischen den Spielern auseinander",
+   "datei": "neon-wildnis.html",
+   "zeile": 4159,
+   "code": "      if(NET.on&&NET.remote&&NET.remote.visible&&!NET.remoteDowned&&Math.hypot(NET.remote.position.x-player.position.x,NET.remote.position.z-player.position.z)<10){",
+   "ablauf": "Kurz vor Sonnenaufgang neben dem Partner sterben (Koop-Zustand «Gefallen»). Beim Tageswechsel prüft der Gefallene nur `NET.remoteDowned` — das ist der Zustand des ANDEREN und false — und kassiert `bondGain(2,true)`. Das silent-Flag unterdrückt die {t:\"bond\"}-Nachricht (Zeile 3711). Der lebende Partner sieht dagegen `NET.remoteDowned===true` und bekommt nichts. Derselbe Effekt tritt bei jedem Grenzfall der 10m-Distanz auf (beide messen gegen die interpolierte Partnerposition) und erst recht, sobald die Tagesuhren auseinanderlaufen (Befund 1) — dann ist der Sonnenaufgang bei beiden zu unterschiedlichen Zeitpunkten und die 10m-Bedingung völlig unabhängig.",
+   "folge": "Der als gemeinsam gedachte Band-Zähler (nw_bond) driftet dauerhaft. Da jede Bandstufe +1 maximales ❤️ gibt (Zeile 3707: «Euer Band wächst — Stufe x! (+1 ❤️ max)»), haben beide Spieler nach ein paar Tagen unterschiedliche Bandstufen und unterschiedliche maximale Lebenspunkte, obwohl sie dieselbe Runde spielen. Zeile 3714 hält ausdrücklich fest, dass es «kein nw_bond-Drift» geben soll.",
+   "schwere": "niedrig",
+   "fix": "Den Dawn-Bonus nur auf EINER Seite auslösen und übertragen: `if(NET.role===\"host\"){bondGain(2);}` (ohne silent, damit die {t:\"bond\",n:2}-Nachricht ihn beim Gast nachträgt) — und die Bedingung nicht an `NET.remoteDowned` koppeln, sondern nur an Sichtbarkeit + Distanz."
+  }
+ ],
+ "neon-survivor.html": [
+  {
+   "titel": "Der Online-Client kann Ability (Leertaste) und Skills (1/2/3) auslösen — sie wirken lokal auf die gespiegelte Welt, die der Host gar nicht kennt.",
+   "datei": "neon-survivor.html",
+   "zeile": 629,
+   "code": "if(e.key===\" \"&&running&&!paused){if(e.preventDefault)e.preventDefault();castAbility();}",
+   "ablauf": "Zwei Spieler starten Online-Koop, der Gast (coopMode==='client') sitzt am PC mit Tastatur. Im Spiel drückt er Leertaste oder 1/2/3. Die Touch-Buttons sind für Clients zwar per coopSetup()/showTouchBtns(false) (Z. 1906) ausgeblendet, die Tastatur-Handler in Z. 629/630 prüfen coopMode aber NICHT. castAbility() (Z. 743) und castSkill(1) (Z. 760) laufen über die Spiegel-Gegner: hitEnemy(en, …) mit en.hp==1 (in applySnap Z. 2063 gesetzt) → killEnemy → Gegner explodiert und verschwindet. 66 ms später kommt der nächste Host-Snapshot, applySnap sieht idx in `seen` und !e.active und aktiviert denselben Gegner wieder (Z. 2063).",
+   "folge": "Der Gast sieht bei jedem Tastendruck Gegner explodieren, die sofort wieder auferstehen — dazu Kills/XP/Loot, die im HUD nach 66 ms wieder verschwinden. Bei Blink (castSkill(2), Z. 766) wird `player` teleportiert — das ist beim Client die Spiegelfigur des HOSTS: der Partner springt 9 Einheiten weit und rutscht dann zurück. Nichts davon passiert beim Host: die beiden Bildschirme zeigen unterschiedliche Welten.",
+   "schwere": "hoch",
+   "fix": "In beiden Handlern (Z. 629 und 630) den Client sperren, z. B. `if(coopMode!=='client')` vor castAbility()/castSkill() ergänzen — analog zum bereits vorhandenen showTouchBtns(false) in coopSetup()."
+  },
+  {
+   "titel": "Pause (Esc/P) beim Online-Client friert nur den Client ein — der Host simuliert weiter und die Figur des Gasts wird währenddessen totgeschlagen.",
+   "datei": "neon-survivor.html",
+   "zeile": 1622,
+   "code": "if(running&&!paused&&coopMode==='client'){clientFrame(dt);} /* Online-Client: nur rendern + Input senden — Host simuliert */",
+   "ablauf": "Der Gast drückt im laufenden Online-Koop Esc oder P (Handler Z. 629 setzt paused=!paused, ohne coopMode zu prüfen; genauso der Touch-Pause-Knopf Z. 653). Dadurch wird clientFrame(dt) nicht mehr aufgerufen. clientFrame ist aber die EINZIGE Stelle, die den Move-Vektor sendet (Z. 2143 `netSess.sendFast({k:'i',…})`). Nach 600 ms verwirft hostApplyInput den Input als veraltet (Z. 1960 `performance.now()-netInT<600`) und setzt nx=nz=0. Der Host simuliert unverändert weiter, der Gast steht bewegungslos im Gegner-Feld.",
+   "folge": "Der Gast sieht ein eingefrorenes Bild (Gegner werden nicht mehr interpoliert), kann sich nicht bewegen und wird trotzdem weiter getroffen — applySnap läuft nämlich weiter (Z. 2170 prüft nur `running`, nicht `paused`) und schreibt die sinkenden HP ins HUD. Nach dem Aufheben der Pause ist er oft schon am Boden oder tot. Pause fühlt sich an wie ein Bug/Absturz.",
+   "schwere": "hoch",
+   "fix": "Pause für den Client deaktivieren (in Z. 629 und Z. 653 `&&coopMode!=='client'` ergänzen) — oder eine Pause-Nachricht an den Host senden, der dann beide anhält."
+  },
+  {
+   "titel": "Beim Verbindungsverlust wird netSess nur auf null gesetzt, nie geschlossen — der PeerJS-Peer bleibt als Zombie unter der festen Raum-ID \"aban-nsurv-OFEN\" registriert und lässt neue Spieler ewig hängen.",
+   "datei": "neon-survivor.html",
+   "zeile": 2194,
+   "code": "  netSess=null;",
+   "ablauf": "Spieler A öffnet «🌍 Offener Raum» → hostFixed(\"OFEN\") legt `new window.Peer(\"aban-nsurv-\"+code)` an (Z. 2209). Spieler B tritt bei, beide spielen. B schliesst den Tab → main.on(\"close\") (Z. 2218) → S2._set(\"closed\") → coopNetStatus('closed') → Z. 2194 setzt netSess=null und Z. 2196 schaltet A auf 'ai'. netClose() bzw. netSess.close() wird NIE aufgerufen, also wird `peer.destroy()` nie ausgeführt und die ID \"aban-nsurv-OFEN\" bleibt beim Vermittlungs-Server belegt. Spieler C drückt jetzt «🌍 Offener Raum»: MP.join(\"nsurv\",\"OFEN\") verbindet sich erfolgreich mit dem Zombie. Auf der Host-Seite läuft peer.on(\"connection\") noch, main wird ersetzt (Z. 2214/2215), aber S2._set(\"connected\") kehrt sofort zurück, weil S2.status bereits \"closed\" ist (Z. 2205).",
+   "folge": "Spieler C liest «✅ Offenen Raum gefunden — der Host startet gleich…» (Z. 2260) und wartet für immer: es kommt nie ein 'bg'-Event, das Spiel startet nie, es gibt auch keine Fehlermeldung und keinen Timeout. Der offene Raum ist für alle dauerhaft tot, solange A den Tab offen hat. js/mp.js Z. 108-115 dokumentiert genau dieses Zombie-Problem und zerstört den Peer dort — hostFixed/coopNetStatus tun es nicht.",
+   "schwere": "hoch",
+   "fix": "In coopNetStatus Z. 2194 statt `netSess=null;` erst `netClose();` aufrufen (das ruft netSess.close() → peer.destroy()) und danach netSess=null setzen."
+  },
+  {
+   "titel": "Stirbt der Spieler im selben Frame, in dem er aufsteigt, bleibt das Spiel nach «Nochmal» eingefroren (paused=true) hinter einer alten Level-Up-Karte.",
+   "datei": "neon-survivor.html",
+   "zeile": 1580,
+   "code": "function gameOver(){if(!running)return;running=false;shake=1.2;hurt=0;hurtEl.style.opacity=0;stopMusic();",
+   "ablauf": "1) Mit wenig HP in einen Pulk laufen. 2) In Zeile 1703/1712 zieht der Gegner-/Kugel-Kontakt die HP auf <=0. 3) WEITER UNTEN im selben Frame läuft die Orb-Schleife (Z. 1717-1719): ein eingesammeltes XP-Orb löst levelUp() aus -> paused=true, #levelup wird eingeblendet. 4) Erst danach greift die Todesprüfung in Z. 1723 -> gameOver(). gameOver() räumt cancelPlacing/closeBuildMenu/closeStructMenu auf, setzt aber NIE paused=false und blendet #levelup NIE aus. Weil #over (DOM-Zeile 201) nach #levelup (DOM-Zeile 176) steht und beide z-index:20 haben, liegt der Game-Over-Screen sichtbar oben. 5) «Nochmal ▶» drücken: start() (Z. 1574) versteckt nur #start/#over/#win -> #levelup wird wieder sichtbar, running=true, paused ist immer noch true.",
+   "folge": "Die neue Runde startet komplett eingefroren: kein Gegner bewegt sich, die Figur reagiert nicht, stattdessen klebt der alte «Level N — wähle»-Dialog auf dem Schirm. Esc/P hilft nicht (Z. 629 blockt die Pause-Taste, solange #levelup nicht 'hide' hat). Nur ein Klick auf die alte Karte löst die Blockade — und wendet dann das Upgrade der VORIGEN Runde auf die neue an; bei einer Waffenkarte läuft S.weapons[id]++ auf einem frischen S-Objekt (undefined++) und schreibt NaN in die Waffenstufe. Gleicher Ablauf bei win() (Z. 1591).",
+   "schwere": "hoch",
+   "fix": "In gameOver() und win() ergänzen: paused=false; document.getElementById(\"levelup\").classList.add(\"hide\"); — zusätzlich in start() (Z. 1574) paused=false setzen und #levelup mit ausblenden."
+  },
+  {
+   "titel": "Der Startscreen mit der Werkstatt wird beim ersten Start ausgeblendet und nie wieder eingeblendet — verdiente Kerne sind gespeichert, aber nicht mehr ausgebbar.",
+   "datei": "neon-survivor.html",
+   "zeile": 1574,
+   "code": "document.getElementById(\"start\").classList.add(\"hide\");document.getElementById(\"over\").classList.add(\"hide\");",
+   "ablauf": "Seite laden -> Start ▶ -> sterben -> Game-Over zeigt \"+N ⬢ Kerne\" -> einziger Knopf ist \"Nochmal ▶\" (Zeile 210), der sofort start() aufruft und den Startscreen erneut versteckt. Grep über die ganze Datei: classList.remove(\"hide\") wird für das Element #start NIRGENDS aufgerufen (nur für levelup/buildmenu/structmenu/over/win/cbBar).",
+   "folge": "Werkstatt (#shop, Kerne ausgeben), Pilotenwahl (#chars), Bestenliste (#startLb) und der Tages-Challenge-Knopf sind nach dem ersten Start nur noch per Seiten-Neuladen erreichbar. Der Spieler sammelt Runde für Runde Kerne, sieht sie aber nur als Zahl im Game-Over und kann die permanenten Upgrades nicht kaufen — die Meta-Progression steht still.",
+   "schwere": "hoch",
+   "fix": "Im Game-Over- und Sieg-Overlay einen Knopf \"🏠 Menü\" ergänzen, der over/win versteckt, running=false lässt und document.getElementById(\"start\").classList.remove(\"hide\") plus showBest(); renderShop(); renderChars(); aufruft."
+  },
+  {
+   "titel": "Jedes Loslassen eines beliebigen zweiten Fingers loescht den Joystick — die Figur bleibt mitten im Kampf stehen",
+   "datei": "neon-survivor.html",
+   "zeile": 656,
+   "code": "addEventListener(\"touchend\",function(){touch=null;});",
+   "ablauf": "Auf dem Handy Spiel starten. Linker Daumen zieht (Figur laeuft). Mit dem rechten Daumen kurz den ⚡-Knopf (oder ⏸ / einen Skill-Knopf ✹⚡✚) antippen und wieder loslassen. Der linke Daumen bleibt die ganze Zeit auf dem Schirm und zieht weiter.",
+   "folge": "Die Figur bleibt sofort stehen, obwohl der Daumen weiter zieht. Erst wenn man den linken Daumen komplett abhebt und neu aufsetzt, laeuft sie wieder. Genau in dem Moment, in dem man die Faehigkeit zuendet (also im dichtesten Schwarm), verliert man die Bewegung — das kostet direkt HP. Die Knopf-Handler rufen zwar e.stopPropagation() bei touchstart auf (Zeile 645/649/654), aber es gibt keinen touchend-Handler auf den Knoepfen, also erreicht das touchend-Event immer das window.",
+   "schwere": "hoch",
+   "fix": "Nur zuruecksetzen, wenn wirklich kein Finger mehr liegt bzw. wenn der Joystick-Finger losgelassen wurde: touch beim touchstart mit e.changedTouches[0].identifier merken und im touchend nur dann touch=null setzen, wenn dieser Identifier in e.changedTouches vorkommt (ersatzweise minimal: `addEventListener(\"touchend\",function(e){if(e.touches.length===0)touch=null;});`)."
+  },
+  {
+   "titel": "Der ✕-Knopf beim Platzieren liegt auf allen Hochformat-Handys ueber dem 🔨-Bau-Knopf (und ab <420 px auch ueber ⚡)",
+   "datei": "neon-survivor.html",
+   "zeile": 139,
+   "code": "<button id=\"cancelBtn\" title=\"Abbrechen (Esc)\" style=\"position:fixed;left:50%;transform:translateX(24px);bottom:26px;z-index:9;width:94px;height:64px;...\">✕</button>",
+   "ablauf": "Handy im Hochformat (z. B. 390 px breit). Welle ueberleben bis zur Bauphase → 🔨 → eine Struktur waehlen → Platzier-Modus. Jetzt sind ✓/✕ (z-index 9) sichtbar, 🔨 (z-index 7) und ⚡ (z-index 7) bleiben eingeblendet, weil startPlacing() sie nicht ausblendet und updateBuildBtn() weiter display:flex setzt.",
+   "folge": "Rechnung: cancelBtn belegt x = [W/2+24, W/2+118], buildBtn belegt x = [W-178, W-104]. Sie ueberlappen fuer jede Breite W < 592 px — also auf JEDEM Hochformat-Handy. Bei 390 px liegt ✕ auf x 219–313 und verdeckt 🔨 (212–286) fast vollstaendig; ⚡ (298–372) wird ab W < 420 px ebenfalls angeschnitten. Optisch klebt das rote ✕-Rechteck auf dem runden 🔨-Knopf, und weil ✕ den hoeheren z-index hat, bricht jeder Tipp auf 🔨 oder auf den linken Rand von ⚡ stattdessen die Platzierung ab.",
+   "schwere": "hoch",
+   "fix": "Beim Platzieren die Spiel-Knoepfe wegnehmen: in showPlaceButtons(on) zusaetzlich buildBtn und abBtn/skBtn1-3 auf display:none setzen (und in cancelPlacing/endBuildPhase wieder zurueck) — oder ✓/✕ zentriert uebereinander/schmaler legen, z. B. translateX(-104px)/translateX(8px) mit width:96px reicht nicht; sauber ist das Ausblenden."
+  },
+  {
+   "titel": "Im Platzier-Modus friert der Bauphasen-Timer ein, die Spielzeit laeuft aber weiter — unbegrenztes, gefahrloses Farmen von Zeitrekord und Kernen",
+   "datei": "neon-survivor.html",
+   "zeile": 1668,
+   "code": "      if(!buildMenuOpen&&!placing){S.buildT-=dt;if(S.buildT<=0)endBuildPhase();}",
+   "ablauf": "Welle ueberleben (30s) -> Bauphase startet, alle Gegner werden geloescht (enterBuildPhase, Z.1193) -> Bau-Menue oeffnen (B / Hammer) -> irgendeine Struktur anklicken (z.B. Neon-Mauer, 8 Schrott) -> es erscheint der Geist. Jetzt NICHT bestaetigen. startPlacing setzt paused=false, also laeuft die Hauptschleife und damit 'S.t+=dt' (Z.1624), aber S.buildT wird wegen '!placing' nie heruntergezaehlt, endBuildPhase kommt nie, es spawnen keine Gegner (Spawn-Code steht in 'if(S.buildPhase===\"combat\")', Z.1654) und der Spieler kann nicht getroffen werden. Der Zustand bleibt beliebig lange bestehen (Menue-Fall ist abgefangen: dort ist paused=true).",
+   "folge": "Der HUD-Timer laeuft weiter, waehrend 'Bauphase 22s' eingefroren steht. Am Rundenende gilt earned=Math.floor(S.kills/3)+Math.floor(S.t/8) (Z.1585) — also 1 Kern je 8 Sekunden AFK, dazu ein beliebig hoher Zeitrekord in ns_best/Bestenliste. Der komplette Werkstatt-Shop (~2400 Kerne) laesst sich risikolos ueber Nacht erfarmen, der Rekord wird wertlos. Zusaetzlich sind Heil-Feld (3 HP/s) und alle Skill-Cooldowns in diesem Zustand aktiv, d.h. man heilt sich gleichzeitig kostenlos voll.",
+   "schwere": "hoch",
+   "fix": "Die Zeit-/Belohnungsuhr im Bauphasen-Zweig anhalten oder den Timer auch beim Platzieren laufen lassen: entweder in Z.1624 'if(S.buildPhase===\"combat\")S.t+=dt;' oder Z.1668 auf 'if(!buildMenuOpen){S.buildT-=dt;if(S.buildT<=0){cancelPlacing();endBuildPhase();}}' aendern."
+  },
+  {
+   "titel": "hostFixed (Offener Raum) hat keinen Traffic-Watchdog — bei hartem Abbruch des Gasts (Netz weg, Handy gesperrt) merkt der Host den Weggang nie und der Partner bleibt für den Rest der Runde als bewegungslose Statue stehen.",
+   "datei": "neon-survivor.html",
+   "zeile": 2218,
+   "code": "    c.on(\"close\",function(){if(!byUs)S2._set(\"closed\");});",
+   "ablauf": "Zwei Spieler im «🌍 Offener Raum» (Host läuft über hostFixed, nicht über mp.js/peerEngine). Der Gast verliert hart die Verbindung (Flugmodus, Tab-Crash, Mobilfunk-Abriss). Bei einem harten Abriss feuert das DataChannel-\"close\"-Event oft gar nicht oder erst nach sehr langem ICE-Timeout — genau deshalb hat js/mp.js Z. 93-100 einen startWd()-Watchdog (Stille >6 s = Abriss). hostFixed (Z. 2200-2229) hat weder einen Watchdog noch einen 'lost'-Zustand: es gibt nur diesen einen close-Handler. Solange er nicht feuert, bleibt S2.status \"connected\".",
+   "folge": "Der Host bekommt weder 'lost' noch 'closed', coopNetStatus wird nie gerufen, es gibt keine Meldung und keine KI-Übernahme (Z. 2196). netIn veraltet nach 600 ms, also setzt hostApplyInput nx=nz=0 (Z. 1960) — P2 bleibt bewegungslos mitten in der Arena stehen, feuert weiter mit dem geteilten Build (p2WeaponTick), wird umzingelt und geht zu Boden. Der Host rennt hin um wiederzubeleben, P2 geht sofort wieder zu Boden, und wenn beide unten sind, ist die Runde vorbei — ohne dass der Host je erfährt, dass der Mitspieler längst weg ist.",
+   "schwere": "mittel",
+   "fix": "In hostFixed denselben Watchdog wie in mp.js einbauen: in einem 2s-Intervall prüfen, ob seit >6 s keine Daten mehr kamen (lastRecv in den beiden `c.on(\"data\", …)`-Handlern Z. 2213/2217 aktualisieren) und dann S2._set(\"closed\") auslösen."
+  },
+  {
+   "titel": "p2SetName greift auf P2.userData statt P2.g.userData zu — das Namensschild des Online-Partners wird nie gezeichnet.",
+   "datei": "neon-survivor.html",
+   "zeile": 2014,
+   "code": "  var g=(typeof P2!==\"undefined\"&&P2)?P2:null;if(!g||!g.userData||!g.userData.nameSpr)return;",
+   "ablauf": "Online-Koop starten. Der Host sendet {e:'nm',n:…} (Z. 2230), der Gast antwortet mit {k:'nm',n:…} (Z. 2173); beide Seiten landen in p2SetName(). Dort ist `g` das P2-Objekt aus mkP2() — ein einfaches Objekt `{g:…,bm:…,hp:…}` (Z. 1868). Das Sprite hängt aber an der THREE.Group: `g.userData.nameSpr=sp` in Z. 1866 wird auf die Group gesetzt, die als `P2.g` gespeichert ist. `P2.userData` ist somit immer undefined und die Funktion steigt in Z. 2014 sofort aus.",
+   "folge": "Das ausdrücklich gewollte Namensschild über dem orangen Buddy (Kommentar Z. 1863: «Online-Koop zeigt den echten Partner-Namen») erscheint in keiner einzigen Runde — der Sprite bleibt auf visible=false (Z. 1866). Man sieht online nie, wer der Mitspieler ist (nur die kleine HUD-Zeile).",
+   "schwere": "mittel",
+   "fix": "In Z. 2014 `?P2:null` auf `?P2.g:null` ändern (Sprite und Canvas liegen in P2.g.userData). Zusätzlich beim Client bedenken, dass P2 die eigene Figur ist — dort gehört der Partner-Name an `player`, nicht an P2.g."
+  },
+  {
+   "titel": "Mehrere Level in einem Frame lösen levelUp() mehrfach aus; jeder Aufruf überschreibt den vorherigen Dialog, der Spieler darf nur einmal wählen.",
+   "datei": "neon-survivor.html",
+   "zeile": 1718,
+   "code": "      if(od<1.0){spawnFlash(o.m.position.x,0.8,o.m.position.z,0xffe08a,0.55,0.12);o.active=false;o.m.visible=false;o.m.position.y=-99;S.xp+=(S.xpMul||1);if(S.xp>=S.xpNeed){S.xp=0;S.lvl++;S.xpNeed=Math.floor(S.xpNeed*1.4)+2;levelUp();}}",
+   "ablauf": "Mit ⚡ PULS-BLAST oder ✹ NOVA einen dicht stehenden Pulk auf einmal töten (Z. 743 bzw. 759): killEnemy droppt pro Gegner bis zu 6 Orbs direkt neben dem Spieler (Z. 726). Die Orb-Schleife in Z. 1717-1719 läuft in EINEM Frame komplett durch und sammelt alle Orbs ein, die innerhalb od<1.0 liegen. Bei niedrigem S.xpNeed (Start: 4) wird die Schwelle in derselben Schleife zwei- oder dreimal überschritten. levelUp() (Z. 997) setzt jedes Mal nur paused=true und baut #ups per box.innerHTML=\"\" komplett neu auf — es gibt keine Warteschlange.",
+   "folge": "Der Spieler springt sichtbar von Lv 3 auf Lv 5, bekommt aber nur EINE Auswahlkarte zu sehen. Die Upgrades der übersprungenen Level sind ersatzlos weg — auf Dauer fühlt sich der Charakter deutlich schwächer an, als der Level-Anzeige entspricht.",
+   "schwere": "mittel",
+   "fix": "Ausstehende Level zählen statt sofort öffnen: in der Orb-Schleife nur S.pendingLevels++ setzen und levelUp() erst aufrufen, wenn kein Dialog offen ist; im Karten-onclick (Z. 1005) statt paused=false prüfen, ob noch pendingLevels>0 sind, und dann levelUp() erneut öffnen."
+  },
+  {
+   "titel": "Tages-Challenge-Läufe werden trotz Rekord-Sperre in Profil und Bestenliste geschrieben — Game-Over feiert einen \"NEUEN REKORD\", der nirgends im Rekord landet.",
+   "datei": "neon-survivor.html",
+   "zeile": 1588,
+   "code": "nsShowGameOver(recordRun(curName,S.t,S.wave,S.kills));",
+   "ablauf": "\"🗓️ Tages-Challenge\" spielen und länger überleben als je zuvor. Zeile 1581 blockt setBest() wegen !dailyMode, aber recordRun() wird unbedingt aufgerufen und schreibt p.bestTime/p.bestWave/p.mostKills nach ns_profile sowie einen Eintrag nach ns_leaderboard; nsShowGameOver zeigt daraufhin \"🎉 NEUER REKORD\" samt Konfetti (Zeile 917).",
+   "folge": "Widersprüchliche Anzeigen: Game-Over feiert Rekord, das HUD/Startscreen-Feld \"🏆 Rekord: Xs\" bleibt auf dem alten Wert stehen. Zusätzlich verdrängen Seed-Läufe der Tages-Challenge echte Solo-Zeiten aus der Top-10-Bestenliste.",
+   "schwere": "mittel",
+   "fix": "recordRun im dailyMode entweder ganz überspringen oder mit eigenem Schlüssel führen, z. B. nsShowGameOver(dailyMode?recordRun(curName+\" (Tag)\",...):recordRun(curName,...)) — konsistent zur !dailyMode-Bedingung in Zeile 1581/1593."
+  },
+  {
+   "titel": "Der beitretende Online-Spieler (Client) bekommt für den kompletten Koop-Lauf keine Kerne, keine Runde und keinen Bestenlisten-Eintrag gutgeschrieben.",
+   "datei": "neon-survivor.html",
+   "zeile": 2146,
+   "code": "function clientOver(m){ /* Game-Over-Anzeige aus dem Host-Event */",
+   "ablauf": "Über \"🌍 Sofort zusammen spielen\" einem Raum beitreten (coopMode='client') -> 20 Minuten spielen -> Host stirbt -> Host sendet {e:'ov'} -> netMsg ruft clientOver(m) auf. clientOver setzt nur running=false und füllt die Texte; saveCores(), recordRun(), setBest() und der aban_neon_xp-Block aus gameOver() (Zeilen 1585/1588) laufen beim Client nie. Es wird sogar aktiv geleert: nsRound/nsRunStats/nsBestStats/nsLboard werden auf \"\" gesetzt (Zeile 2151/2152).",
+   "folge": "Der Gast sieht nach jedem Online-Koop-Abend weiterhin 0 ⬢ Kerne in der Werkstatt und \"Erste Runde — viel Glück!\" auf dem Startscreen, während der Host für denselben Lauf Kerne, Runden-Zähler und Veteranen-Bonus kassiert. Online-Koop fühlt sich für den Gast fortschrittslos an.",
+   "schwere": "mittel",
+   "fix": "In clientOver(m) die vom Host mitgeschickten Werte verbuchen: var earned=Math.floor((m.kk||0)/3)+Math.floor((m.s||0)/8); saveCores(loadCores()+earned); und nsShowGameOver(recordRun(curName,m.s||0,m.wv||1,m.kk||0)) statt die Felder zu leeren (analog in clientWin)."
+  },
+  {
+   "titel": "Ein zweiter Finger irgendwo auf dem Bildschirm setzt den Joystick-Nullpunkt auf die aktuelle Fingerposition — die Figur stoppt",
+   "datei": "neon-survivor.html",
+   "zeile": 638,
+   "code": "  if(e.touches[0])touch={x:e.touches[0].clientX,y:e.touches[0].clientY,sx:e.touches[0].clientX,sy:e.touches[0].clientY};},{passive:true});",
+   "ablauf": "Handy, laufendes Spiel. Linker Daumen zieht nach links unten (Figur laeuft). Mit dem rechten Daumen irgendwo auf die freie Spielflaeche tippen (nicht auf einen Knopf, sonst greift stopPropagation).",
+   "folge": "Der Handler liest e.touches[0] — das ist der bereits liegende ERSTE Finger, nicht der neue. Damit werden x/y und sx/sy auf dieselben Koordinaten gesetzt, der Abstand zum Ankerpunkt ist 0 und faellt unter die 12-px-Totzone (Zeile 1629/1630). Die Figur bleibt stehen, bis man den Daumen abhebt und neu aufsetzt.",
+   "schwere": "mittel",
+   "fix": "Den neu aufgesetzten Finger nehmen und einen laufenden Joystick nicht ueberschreiben: `if(!touch&&e.changedTouches[0]){var t=e.changedTouches[0];touch={x:t.clientX,y:t.clientY,sx:t.clientX,sy:t.clientY,id:t.identifier};}`"
+  },
+  {
+   "titel": "Der Koloss-Boss-Balken liegt im Querformat direkt auf dem HUD-Panel",
+   "datei": "neon-survivor.html",
+   "zeile": 92,
+   "code": "#cbBar{position:fixed;top:calc(10px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);width:min(460px,70vw);z-index:4;pointer-events:none;text-align:center}",
+   "ablauf": "Handy quer halten (z. B. 844x390) oder Tablet hochkant (768 px) und bis Ende Phase 2 spielen, bis cb_start(0) den WAECHTER startet und #cbBar eingeblendet wird.",
+   "folge": "Die Umschalt-Regel auf Zeile 99 greift nur bis 640 px Breite; darueber bleibt der Balken oben mittig. Bei 844 px ist er min(460,590)=460 px breit und belegt x 192–652, das HUD-Panel (max-width 430, links ab ~14 px bzw. ~61 px mit Notch-Inset) belegt x bis ~444–491. Beide starten bei top ~10 px, cbBar hat z-index 4, #hud keinen → der Bossname «WAECHTER» und der rote HP-Balken werden ueber Level/Zeit/Kills und die HP/XP-Leisten gemalt. Im Querformat, wo ohnehin nur ~390 px Hoehe da sind, ist ausgerechnet im Bosskampf weder die eigene HP noch die Boss-HP sicher lesbar.",
+   "schwere": "mittel",
+   "fix": "Die Umschaltung an die Hoehe statt nur an die Breite haengen, z. B. zusaetzlich `@media(max-height:520px){#cbBar{top:auto;bottom:calc(112px + env(safe-area-inset-bottom));width:min(300px,42vw)}}` — oder den Breakpoint auf max-width:900px anheben."
+  },
+  {
+   "titel": "KI-Partner gibt unbegrenzte Gratis-Wiederbelebungen und doppelten Schaden bei identischer Belohnung — der 250-Kerne-Notkern und die Bestenliste sind entwertet",
+   "datei": "neon-survivor.html",
+   "zeile": 1724,
+   "code": "      else if(coopOn()&&P2.down<=0){S.hp=0;p1DownFn();} /* Koop: erst am Boden — Partner kann retten */",
+   "ablauf": "Auf dem Startbildschirm nur das Haekchen '🤖 KI-Partner (Solo mit Bot)' setzen und starten. Faellt die HP auf 0, kommt statt gameOver p1DownFn() (p1Down=20s); waehrend p1Down>0 ist der Spieler komplett unverwundbar (Biss-Check Z.1703 und Kugel-Check Z.1712 pruefen beide p1Down<=0). updAI (Z.1942) laeuft mit Tempo 13 direkt zum Gefallenen, Z.2003 belebt nach 3s wieder — beliebig oft, ohne Kosten, ohne Cooldown, ohne Limit. Parallel feuert p2WeaponTick (Z.1965) denselben Build mit vollem S.dmg aus einer zweiten Position, waehrend Spawnrate, Gegner-HP und XP-Pool unveraendert bleiben.",
+   "folge": "Sterben ist praktisch unmoeglich, Schaden ist verdoppelt, aber recordRun (Z.1588) und die Kern-Auszahlung (Z.1585) unterscheiden nicht zwischen Solo und Bot-Lauf. Die Meta-Verbesserung '✨ Notkern — 1x Wiederbelebung/Run' fuer 250 Kerne (Z.951, teuerster Posten im Shop) wird durch ein kostenloses Haekchen unendlich uebertroffen; Bot-Laeufe verdraengen Solo-Laeufe aus derselben Bestenliste.",
+   "schwere": "mittel",
+   "fix": "Wiederbelebungen im Koop begrenzen (z.B. Zaehler pro Run wie S.revives) und Bot-Laeufe in recordRun/Kern-Auszahlung kennzeichnen bzw. mit Faktor werten, z.B. 'var earned=Math.floor((Math.floor(S.kills/3)+Math.floor(S.t/8))*(coopMode?0.5:1));'."
+  },
+  {
+   "titel": "Loot-Affix '+Projektil' ist bei Seltenheit 'Gewoehnlich' wirkungslos, das Belohnungs-Popup meldet ihn trotzdem",
+   "datei": "neon-survivor.html",
+   "zeile": 1792,
+   "code": " {l:\"+Projektil\",f:function(p){if(p>=1.6)S.multishot++;}}",
+   "ablauf": "Beliebigen Gegner toeten, bis Loot faellt (killEnemy Z.733). 'Gewoehnlich' hat Gewicht 60 von 100 und cnt:1, d.h. es wird genau ein Affix aus den 8 gezogen (applyLoot Z.1814). Wird '+Projektil' gezogen, wird f(1.0) aufgerufen — die Bedingung p>=1.6 ist falsch, S.multishot bleibt unveraendert. Direkt danach zeigt lootPop trotzdem '[Gewoehnlich] +Projektil' an.",
+   "folge": "Rund 7-8 % aller Loot-Aufnahmen (60 % Gewoehnlich x 1/8 Affixe) sind eine Null-Belohnung mit Fanfare, Ring-Effekt und Sound. Der Spieler sieht '+Projektil', die Bolt-Salve bleibt aber gleich breit — es fuehlt sich wie ein verschluckter Drop an.",
+   "schwere": "mittel",
+   "fix": "Entweder den Affix bei zu geringer Staerke gar nicht erst ziehen lassen oder ihn immer wirken lassen, z.B. '{l:\"+Projektil\",f:function(p){if(p<1.6)S.dmg*=1.10;else S.multishot++;}}'."
+  },
+  {
+   "titel": "Die Boss-Krone (bossAdorn) wird nur beim regulären Boss-Tod abgenommen — nach jedem anderen Despawn trägt ein normaler Gegner der nächsten Runde die Boss-Verzierung.",
+   "datei": "neon-survivor.html",
+   "zeile": 727,
+   "code": "  if(en.baseWaveBoss){if(en._adorned){en.m.remove(bossAdorn);en._adorned=false;}S.bossWave=false;S.bossWaveBoss=null;",
+   "ablauf": "1) Bis Welle 5 spielen, der Boss-Ansturm startet (spawnBossWave, Z. 713-718: boss.m.add(getBossAdorn()); boss._adorned=true — bossAdorn ist ein einziges geteiltes Group-Objekt, Z. 701-709). 2) Während der Boss noch lebt sterben. gameOver() setzt zwar S.bossWave=false, nimmt die Krone aber nicht ab; reset() (Z. 622) setzt nur o.active=false / o.m.visible=false / y=-99 und lässt _adorned=true samt Kind-Objekt stehen. Gleicher Effekt bei cb_start (Z. 1393), das über Z. 1663 (S.t>=RUN_T) auch mitten im Boss-Ansturm feuern kann. 3) «Nochmal» drücken.",
+   "folge": "In der neuen Runde greift getMesh() denselben Pool-Eintrag wieder ab und spawnEnemy macht daraus z.B. einen kleinen orangen Schwarm-Gegner — der aber weiterhin Krone, Halo und Schulterpanzer des Bosses trägt und mitskaliert. Sieht aus wie ein Grafikfehler und täuscht einen Boss vor; bleibt sichtbar, bis der nächste Welle-5-Boss die Verzierung wieder an sich zieht.",
+   "schwere": "niedrig",
+   "fix": "Das Abnehmen aus killEnemy in eine eigene Funktion ziehen (if(en._adorned){en.m.remove(bossAdorn);en._adorned=false;}) und sie zusätzlich in reset() (bei Z. 622 pro Pool-Eintrag) sowie in cb_start beim Deaktivieren der Gegner (Z. 1393) aufrufen."
+  },
+  {
+   "titel": "announce() hängt an EINEM geteilten DOM-Element, aber jeder Aufruf startet einen eigenen 1600-ms-Ausblend-Timer — der Timer der alten Meldung löscht die neue.",
+   "datei": "neon-survivor.html",
+   "zeile": 691,
+   "code": "  setTimeout(function(){c.style.opacity=\"0\";},1600);}",
+   "ablauf": "Zwei Meldungen kurz hintereinander, z.B. Z. 1662 announce(\"⚠️ BOSS!\") und ~1,3 s später der Phasenwechsel Z. 1647 announce(\"⚠ PHASE n/5 — schneller!\"), oder Boss-Kill (Z. 736 \"Boss besiegt! 🏆\") gefolgt von einem Loot-/Evolutions-Text. Der erste setTimeout kennt den Textwechsel nicht und setzt opacity=\"0\" auf dasselbe Element #center.",
+   "folge": "Die zweite, oft wichtigere Meldung (Phasenwechsel, Koloss-Warnung, Evolution) blitzt nur für Sekundenbruchteile auf und verschwindet — der Spieler bekommt Warnungen schlicht nicht zu lesen.",
+   "schwere": "niedrig",
+   "fix": "Timer-Handle merken und beim nächsten Aufruf löschen: var _anT=null; in announce() zuerst clearTimeout(_anT), dann _anT=setTimeout(...,1600)."
+  },
+  {
+   "titel": "Die drei Skill-Knoepfe schrumpfen auf Handys auf 42x42 px und liegen damit unter der 44-px-Mindestgroesse",
+   "datei": "neon-survivor.html",
+   "zeile": 106,
+   "code": "@media(max-width:640px){.skbtn{width:42px;height:42px;right:34px;font-size:1rem}#skBtn1{bottom:104px}#skBtn2{bottom:152px}#skBtn3{bottom:200px}}",
+   "ablauf": "Handy (Breite <= 640 px), Spiel starten, Abyss-Skills freischalten — showTouchBtns(true) blendet skBtn1/2/3 ein. Im Gefecht mit dem Daumen einen der drei uebereinanderliegenden Knoepfe treffen wollen.",
+   "folge": "Die Trefferflaeche ist 42x42 px (unter den 44 px, die auf Touch als Minimum gelten), der senkrechte Abstand betraegt nur 48 px Raster, also 6 px Luft zwischen zwei Knoepfen. Mit dem Daumen erwischt man regelmaessig den Nachbar-Skill oder gar nichts — die Faehigkeit zuendet nicht bzw. die falsche geht los und die Abklingzeit ist verbraten. Auf Geraeten ueber 640 px sind es 48 px, dort faellt es nicht auf.",
+   "schwere": "niedrig",
+   "fix": "Im Media-Query mindestens 44x44 lassen und den Abstand mitziehen: `.skbtn{width:44px;height:44px;right:34px;font-size:1rem}#skBtn1{bottom:104px}#skBtn2{bottom:156px}#skBtn3{bottom:208px}` (>=10 px Luft zwischen den Knoepfen)."
+  },
+  {
+   "titel": "Seltenheitsleiter ist verdreht: 'Selten' gibt pro Affix weniger Wirkung als das haeufigere 'Magisch'",
+   "datei": "neon-survivor.html",
+   "zeile": 1769,
+   "code": " {n:\"Selten\",    c:0xb15cff,cnt:2,pow:1.6,w:11},",
+   "ablauf": "Zwei Drops einsammeln: ein blaues 'Magisch' (pow 1.7) und ein lila 'Selten' (pow 1.6). applyLoot ruft af.f(r.pow) auf — z.B. '+Max-HP' gibt Math.round(14*1.7)=24 HP beim haeufigen Magisch, aber nur Math.round(14*1.6)=22 HP beim selteneren Selten. Dasselbe bei '+Schaden' (x1.238 vs. x1.224) und allen anderen Affixen.",
+   "folge": "Der lila Drop, der laut Optik/Gewichtung (w:11 gegen w:26) die bessere Stufe ist, liefert pro Affix weniger als der blaue. Wer die Popup-Werte vergleicht, sieht die Aufwertung als Abwertung; die Rarity-Progression stimmt nicht.",
+   "schwere": "niedrig",
+   "fix": "pow monoton steigend machen, z.B. Selten auf 1.9 setzen: ' {n:\"Selten\",    c:0xb15cff,cnt:2,pow:1.9,w:11},' (Legendaer 2.1 bleibt darueber)."
+  },
+  {
+   "titel": "Mini-Boss-Timer laeuft nur in der Kampfphase mit, die Uhr S.t aber auch in der Bauphase — Bosse stauen sich und kommen doppelt",
+   "datei": "neon-survivor.html",
+   "zeile": 1662,
+   "code": "        if(S.t>=S.bossT&&!S.bossWave){spawnEnemy(true);announce(\"⚠️ BOSS!\");S.bossT+=45;beep(120,.4,\"sawtooth\",.1);screenFlash(\"rgba(255,40,90,.22)\",0.5,420);spawnRing(player.position.x,player.position.z,0xff2266,1,30,0.9);shake=Math.max(shake,0.85);} /* 💥 Schwarm: periodischer Boss bekommt Auftritt-Wucht wie die Boss-Welle */",
+   "ablauf": "Normal spielen. Diese Zeile steht im Zweig 'if(S.buildPhase===\"combat\")', S.t+=dt (Z.1624) laeuft dagegen auch waehrend der 22s Bauphase. Konkret: Kampf 1 endet bei t=30 (bossT=40, kein Boss), Bauphase bis t=52. Kampf 2 startet bei t=52 -> sofort Boss, bossT=85. Kampf 2 endet t=82, Bauphase bis t=104. Kampf 3 startet bei t=104 -> sofort Boss (bossT=130), bei t=130 noch im selben Kampf ein zweiter Boss. cb_down resynchronisiert bossT ausdruecklich (Z.1426), fuer die Bauphase fehlt das.",
+   "folge": "Der Boss-Rhythmus wird unregelmaessig: in einer Welle erscheint direkt beim Wellenstart ein Boss und kurz darauf noch einer, in der naechsten Welle gar keiner. Mit dem eingefrorenen Platzier-Modus (Befund 1) staut sich der Rueckstand unbegrenzt und beim Bestaetigen spawnen mehrere Bosse in Folge-Frames.",
+   "schwere": "niedrig",
+   "fix": "Beim Verlassen der Bauphase nachziehen — in endBuildPhase (Z.1199) ergaenzen: 'if(S.bossT<S.t)S.bossT=S.t+45;'."
+  },
+  {
+   "titel": "Boss-Krone bleibt am recycelten Gegner-Mesh hängen — normale Gegner tragen danach den Boss-Schmuck",
+   "datei": "neon-survivor.html",
+   "zeile": 664,
+   "code": "  en.shooter=false; en.splitter=false; en.shootT=0; en.raider=false; en.baseWaveBoss=false; en._tele=0; /* 🐛 Schwarm: Warn-Ring-Flag beim Pool-Recycling zurücksetzen (sonst übersprang ein recycelter Boss seinen ersten Telegraph) */",
+   "ablauf": "`spawnBossWave` hängt dem Ansturm-Boss die geteilte Gruppe `bossAdorn` an (`boss.m.add(getBossAdorn());boss._adorned=true;`, Z. 717). Entfernt wird sie nur an zwei Stellen: in `killEnemy` beim Tod des Boss (Z. 727) und in `spawnBossWave` selbst, falls ausgerechnet dasselbe Pool-Objekt wieder Boss wird (Z. 713). Stirbt der Spieler während eines Boss-Ansturms (Welle 5/10/…), setzt `gameOver` nur `S.bossWave=false`; `reset()` (Z. 622) deaktiviert alle Pool-Gegner, lässt `_adorned` und das angehängte Kind-Objekt aber stehen. Beim «Nochmal ▶» liefert `getMesh(enemies,…)` genau dieses Mesh als ersten normalen Gegner zurück — die obige Reset-Zeile setzt zwar `raider/baseWaveBoss/_tele` zurück, aber nicht `_adorned` und entfernt `bossAdorn` nicht.",
+   "folge": "Direkt nach dem Neustart läuft ein gewöhnlicher kleiner Gegner mit Krone, Halo, Schulterpanzern und Visier durchs Bild — er sieht aus wie der Boss, hat aber 1–5 HP. Erst wenn der nächste Ansturm-Boss spawnt, wandert der Schmuck (geteiltes Objekt) wieder weg.",
+   "schwere": "niedrig",
+   "fix": "In `spawnEnemy` die Zeile um das Ablegen der Krone ergänzen: `if(en._adorned){en.m.remove(bossAdorn);en._adorned=false;}` — analog zu Z. 713 in `spawnBossWave`."
+  },
+  {
+   "titel": "Schützen feuern beim Eintritt in die Reichweite sofort, ohne die 0,5-s-Auflade-Warnung",
+   "datei": "neon-survivor.html",
+   "zeile": 1696,
+   "code": "      if(e2.shooter){e2.shootT-=dt;if(e2.shootT<=0&&ped<42){enemyShoot(e2.m.position.x,e2.m.position.z,13,_tp.x,_tp.z);e2.shootT=2.8;}}",
+   "ablauf": "Der Schützen-Gegner spawnt in `spawnEnemy` mit `en.shootT=1.5+rnd()` (Z. 678) auf einem Radius von `ARENA*0.82` ≈ 57 Einheiten um den Spieler. Der Countdown `e2.shootT-=dt` läuft immer, das Feuern ist aber zusätzlich an `ped<42` gekoppelt. Bei Tempo 1.8 braucht der Schütze mehrere Sekunden für die 15 Einheiten bis zur 42er-Grenze — `shootT` ist dann längst tief negativ. Die Auflade-Animation in `animEnemy` (Z. 836) verlangt `e2.shootT>0&&e2.shootT<0.5`, wird also übersprungen.",
+   "folge": "Jeder Schütze schiesst seinen ersten Schuss in der Millisekunde, in der er die Reichweite betritt — ohne das sonst übliche Zusammenzucken als Vorwarnung. Der Spieler wird von der ersten Kugel jedes Schützen ohne Tell überrascht.",
+   "schwere": "niedrig",
+   "fix": "Den Countdown nur in Reichweite laufen lassen bzw. beim Eintritt neu aufziehen: `if(e2.shooter){if(ped<42){e2.shootT-=dt;if(e2.shootT<=0){enemyShoot(...);e2.shootT=2.8;}}else e2.shootT=Math.max(e2.shootT,1.5);}`"
+  }
+ ],
+ "neon-realm.html": [
+  {
+   "titel": "Nach dem Tod im Dungeon setzt „Aufstehen\" inDungeon nicht zurück — der Spieler steht danach unbeweglich fest und kommt nur per Seiten-Reload wieder raus.",
+   "datei": "neon-realm.html",
+   "zeile": 2074,
+   "code": "  G.hp=G.maxhp;player.position.set(0,0,14);vx=0;vz=0;document.getElementById(\"deadO\").classList.add(\"hide\");running=true;};",
+   "ablauf": "Portal in der Ruinenstadt mit [E] betreten → in der Tiefe von den 7 Eliten bzw. dem Wächter der Tiefe getötet werden (hitPlayer, Z. 969 zeigt deadO) → Button „Aufstehen ▶\" drücken. Der Spieler wird auf (0,14) im Dorf gesetzt, aber inDungeon bleibt true. In der Hauptschleife greift dann weiter die Dungeon-Kollision (Z. 1985-1989): isFloor(0,14) ist false (cellOf(0,14) = [-167,5], das Grid liegt um DX=500 herum), ebenso beide Achsen-Ausweichprüfungen → der else-Zweig zieht jede Bewegung sofort wieder ab und setzt vx=vz=0.",
+   "folge": "Der Held klebt fest auf der Stelle. Laufen, Joystick, Rolle und Dash bewirken nichts, es gibt kein Rückportal in Reichweite und keinen NPC ([E] tut nichts). Die Overlay-Aussage „Du erwachst im Nexus-Dorf\" stimmt zwar optisch, aber das Spiel ist nur noch per F5 spielbar (der Save selbst ist ok, weil saveGame im Dungeon G.px auf das Portal setzt).",
+   "schwere": "hoch",
+   "fix": "Im reviveBtn-Handler vor dem Umsetzen der Position den Dungeon sauber verlassen: `if(inDungeon)exitDungeon();` (setzt inDungeon=false, blendet Landschaft/Vegetation wieder ein und räumt dgn.foes) — danach erst `player.position.set(0,0,14)`."
+  },
+  {
+   "titel": "genDungeon leert dgn.foes ERST NACH dem Einfügen des Minibosses — der „Wächter der Tiefe\" wird beim Verlassen nie entfernt und bleibt für immer als aktiver Gegner samt Licht in der Szene.",
+   "datei": "neon-realm.html",
+   "zeile": 1744,
+   "code": "  dgn.foes=[];",
+   "ablauf": "Zeile 1741 legt den Miniboss an: `enemies.push(mb);dgn.foes.push(mb);`. Drei Zeilen später wird `dgn.foes=[]` zugewiesen und die Referenz weggeworfen; danach kommen nur die 7 Eliten hinein. exitDungeon (Z. 1762) räumt aber ausschliesslich dgn.foes auf. Ablauf im Spiel: Portal betreten → Truhe holen → grünes Rückportal mit [E] nutzen, ohne den Wächter zu töten. Das wiederholt sich bei jedem Dungeon-Besuch.",
+   "folge": "Pro Dungeon-Lauf bleibt dauerhaft ein unsichtbarer, aktiver Gegner bei x≈500 zurück — inklusive seiner PointLight in der Szene. Drei Folgen, die der Spieler merkt: (1) er zählt in updSpawns in `total` mit, d. h. der globale ENEMY_CAP (22 Desktop / 15 Mobil) füllt sich mit Leichen → die Oberwelt wird von Lauf zu Lauf leerer, nach ~15–22 Läufen spawnt gar nichts mehr; (2) freeRig wird nie aufgerufen, also bleibt sein Rig-Slot belegt — nach 8 Dungeon-Läufen ist RIG_MAX erreicht und KEIN Wisp/Golem/Wächter bekommt mehr sein GLB-Modell, alle Gegner sind wieder nackte Oktaeder; (3) jede Runde eine zusätzliche PointLight = Shader-Neukompilierung und dauerhaft teurere Beleuchtung → Ruckeln.",
+   "schwere": "hoch",
+   "fix": "Zeile 1744 (`dgn.foes=[];`) ersatzlos streichen — dgn.foes wird bereits in exitDungeon zurückgesetzt und muss vor dem Miniboss-Block nicht erneut geleert werden. Alternativ die Leerung vor den Miniboss-IIFE (vor Zeile 1732) verschieben."
+  },
+  {
+   "titel": "Nach dem Neuladen ist die Zitadelle wieder versiegelt, obwohl alle 3 Obelisken im Spielstand als aktiviert gespeichert sind — der Endboss ist nicht mehr erreichbar.",
+   "datei": "neon-realm.html",
+   "zeile": 2047,
+   "code": "  if(typeof initSystems===\"function\")initSystems();",
+   "ablauf": "1. Alle 3 Obelisken mit [E] aktivieren → Meldung „⚡ Die Zitadelle ist offen!\", G.qstage=5 und G.obel=[true,true,true] werden gespeichert (Zeile 1608/1610). 2. Seite neu laden, „Weiterspielen ▶\". 3. Quest-Text zeigt korrekt „Betritt die Zitadelle (Südosten) und besiege den NEXUS\" (QSTAGES[5]). 4. Richtung Zitadelle laufen.",
+   "folge": "An der Zonengrenze wird der Spieler zurückgestossen mit dem Hinweis „⚡ Eine Barriere hält dich fern — aktiviere die 3 Obelisken!\" (Zeile 2000-2003), obwohl die Quest 3/3 meldet. Da der Boss erst bei d < ZONES[4].r*0,7 spawnt (Zeile 1683-1684), ist er nicht mehr erreichbar; ausserdem spawnen in der Zitadelle keine Gegner (Zeile 996). Grund: `ZONES[4]` ist statisch mit `locked:true` deklariert (Zeile 345) und wird ausschliesslich in Zeile 1608 beim Aktivieren des dritten Obelisken freigeschaltet — begin()/initSystems() stellen den Zustand aus dem Save nie wieder her. Erholung nur, indem der Spieler zufällig nochmals einen (scheinbar unaktivierten) Obelisken berührt.",
+   "schwere": "hoch",
+   "fix": "In begin() nach dem Laden aus dem Save ableiten, z. B. direkt nach Zeile 2042: `if(G.obel&&G.obel.filter(Boolean).length>=3)ZONES[4].locked=false;` (alternativ in initSystems()).",
+   "code_hinweis": "Zeile 345: ` {n:\"Zitadelle\",x:100,z:95,r:70,c:0xff4d6d,locked:true}`"
+  },
+  {
+   "titel": "Die Dungeon-Truhe laesst sich unbegrenzt farmen: garantiert +20 Scherben und 2 mindestens epische Items pro Runde, ohne jede Kosten oder Wartezeit",
+   "datei": "neon-realm.html",
+   "zeile": 1617,
+   "code": "      G.inv.push(l1);G.inv.push(l2);G.shards+=20;G.shardsEarned=(G.shardsEarned||0)+20;G.dungeonRuns=(G.dungeonRuns||0)+1;if(l1.r>=3||l2.r>=3)G.legFound=(G.legFound||0)+1;",
+   "ablauf": "Zum violetten Portal in der Ruinenstadt laufen, [E] -> enterDungeon(). Zur Truhe laufen und [E] druecken (Zeile 1613 prueft NUR die Distanz <3.5 — der Waechter der Tiefe muss nicht besiegt werden, man kann an ihm und den 7 Eliten vorbeirennen). Belohnung kassieren, zum gruenen Rueckportal, [E] -> exitDungeon() setzt den Spieler auf player.position.set(portal.x,0,portal.z+3) (Zeile 1764), also 3 Einheiten vom Weltportal entfernt. Der Eintritts-Check in doInteract (Zeile 1611) erlaubt aber bis 4.5 Einheiten -> ein einziger weiterer [E]-Druck startet sofort den naechsten, frisch generierten Dungeon mit frischer Truhe (genDungeon setzt dgn.chestOpen=false, Zeile 1695). Alternativ: im Dungeon speichern/neu laden, denn saveGame() setzt die Position ebenfalls ans Portal.",
+   "folge": "Endlos-Geldpresse und Item-Presse. Pro Runde (unter einer Minute, ohne Kampf) gibt es 20 Scherben plus zwei Items, die durch l1.r=Math.max(2,l1.r) ZWINGEND mindestens 'Episch' sind (normale Gegner: 18% Dropchance und davon nur 10% episch). Die 15-Scherben-Quest bei Schmied Von ist damit in der ersten Runde erledigt, und der Spieler hat nach wenigen Minuten Ausruestung, die den Rest des Spiels — inklusive NEXUS-Boss — trivialisiert. Der Rest der Wirtschaft (1–2 Scherben pro Gegner) ist entwertet.",
+   "schwere": "hoch",
+   "fix": "Truhen-Belohnung an einen persistenten Zaehler koppeln, z. B. nur die erste Truhe pro Spieltag/Level voll auszahlen und danach stark reduziert; ausserdem den Rueckwurf-Punkt aus der Portal-Reichweite schieben (exitDungeon: portal.z+6 statt +3) und das Oeffnen der Truhe daran binden, dass der Waechter der Tiefe tot ist (Pruefung auf dgn.foes[0].active in Zeile 1613)."
+  },
+  {
+   "titel": "Der Skill-Baum laesst sich auf dem Handy gar nicht oeffnen — er haengt allein an der Taste T.",
+   "datei": "neon-realm.html",
+   "zeile": 617,
+   "code": "  if(k===\"t\")togglePanel(\"skillPanel\");",
+   "ablauf": "Handy: Spiel starten, Gegner besiegen bis Level-Up (gainXp Zeile 762 vergibt jedes Level `G.sp++`). Danach den Skill-Baum suchen: In #touchUI (Zeile 189-198) gibt es nur den 🎒-Knopf, der per touchstart auf togglePanel(\"invPanel\") gebunden ist (Zeile 644). Kein Touch-Element ruft togglePanel(\"skillPanel\") auf, das Pausenmenue renderMenu() (Zeile 2051-2056) bietet nur Musik/Effekte, und der Hilfe-Text (Zeile 2063) verweist nur auf die Taste T. Grep ueber die ganze Datei nach \"skillPanel\" bestaetigt: einziger Oeffner ist Zeile 617.",
+   "folge": "Alle passiven Skills (Wucht/Tempo/Fokus etc.) bleiben auf Handy/Tablet fuer immer auf Stufe 0. Die gesammelten Skillpunkte stapeln sich unbenutzbar, der Held bleibt deutlich schwaecher als auf dem Desktop — und der Spieler sieht nie, dass es einen Skill-Baum gibt.",
+   "schwere": "hoch",
+   "fix": "In #touchUI einen zweiten kleinen Knopf neben #tInv einfuegen (z. B. `<button id=\"tSkl\">🌟</button>` mit denselben 44x44-Regeln wie #tInv, aber anderer right-Position) und ihn in dem isTouch-Block analog zu Zeile 644 binden: `document.getElementById(\"tSkl\").addEventListener(\"touchstart\",function(e){e.preventDefault();e.stopPropagation();togglePanel(\"skillPanel\");},{passive:false});`"
+  },
+  {
+   "titel": "Der virtuelle Joystick reagiert auch durch offene Menues und Dialoge hindurch — der Held rennt los, waehrend man im Inventar tippt.",
+   "datei": "neon-realm.html",
+   "zeile": 631,
+   "code": "    if(t.clientX<W*0.45&&t.clientY>H*0.4&&joy.id===null){joy.id=t.identifier;joy.active=true;jpos(t);}}},{passive:true});",
+   "ablauf": "Der touchstart-Listener haengt am window und prueft nur die Bildschirmposition, nicht ob gerade ein Panel/Dialog offen ist. Die Touch-Knoepfe sind geschuetzt (bindBtn ruft e.stopPropagation(), Zeile 635-644) — Panel- und Dialog-Elemente aber nicht: .slot/.node/#dialog button nutzen ausschliesslich onclick (Zeile 715/726/746/1573), der touchstart blubbert also ungehindert bis ans window durch. Zugleich pausiert das Spiel bei offenen Panels/Dialogen nicht (togglePanel Zeile 686 setzt `paused` nicht; die Hauptschleife laeuft weiter, Zeile 1975 `if(running&&!paused)`). Ablauf am Handy: 🎒 tippen → Inventar oeffnet (zentriert, width min(600px,94vw), max-height 86vh) → ein Item in der linken unteren Panel-Haelfte antippen oder dort scrollen. Dasselbe beim NPC-Gespraech: #dialog sitzt bei bottom:12% und ist 92vw breit (Zeile 61), der Knopf \"Weiter ▶\" liegt damit im Joystick-Bereich x<45%W / y>40%H.",
+   "folge": "Waehrend man Ausruestung anlegt oder eine Dialogoption tippt, sprintet der Held mit voller Geschwindigkeit los (jpos rechnet vom fixen joyBase-Mittelpunkt aus, der Ausschlag wird sofort auf 1.0 geklemmt). Man verlaesst die NPC-Reichweite, laeuft in Gegner und verliert Leben, ohne etwas zu sehen, weil das Panel das Bild verdeckt.",
+   "schwere": "hoch",
+   "fix": "Am Anfang des touchstart-Handlers abbrechen, wenn die Welt gerade nicht bedient werden soll: `if(paused||dialogOpen||!document.getElementById(\"invPanel\").classList.contains(\"hide\")||!document.getElementById(\"skillPanel\").classList.contains(\"hide\"))return;` — alternativ zusaetzlich `if(t.target!==document.body&&t.target.closest(\".panel,#dialog,.overlay\"))continue;`"
+  },
+  {
+   "titel": "Obelisken-Fortschritt und Zitadellen-Barriere werden beim Laden eines Spielstands nicht wiederhergestellt",
+   "datei": "neon-realm.html",
+   "zeile": 508,
+   "code": "  obelisks.push({m:ob,ring:ring,x:o[1],z:o[2],on:false,zone:o[0]});",
+   "ablauf": "Quest bis Stufe 4 spielen, alle 3 Obelisken mit [E] aktivieren (ZONES[4].locked wird auf false gesetzt, G.qstage=5, G.obel=[true,true,true] wird gespeichert). Spiel schliessen, neu laden, \"Weiterspielen\" klicken. begin() (Z. 2038-2050) stellt zwar G aus dem Save her, setzt aber weder obelisks[i].on aus G.obel noch ZONES[4].locked aus G.obel/G.bossDead — beides steht wieder auf dem Literal-Startwert (on:false hier, locked:true in Z. 345). Dann Richtung Zitadelle (100/95) laufen.",
+   "folge": "Die Quest-Anzeige sagt \"Betritt die Zitadelle und besiege den NEXUS\", aber die Barriere in Z. 2000-2003 stösst den Spieler wieder weg mit \"⚡ Eine Barriere hält dich fern — aktiviere die 3 Obelisken!\". Auf der Minimap leuchten die Obelisken wieder gelb (nicht aktiviert), die Ringe drehen langsam. Der Spieler muss die 3 Obelisken erneut ablaufen. Schlimmer noch: das erneute [E] am Obelisken läuft in Z. 1608 wieder in den Zweig G.qstage=5 — wer den NEXUS bereits besiegt hatte (qstage 6), wird damit im Questlog auf Stufe 5 zurückgesetzt und bekommt eine Aufgabe, die er nicht mehr erfüllen kann (updBossTrigger spawnt wegen G.bossDead keinen Boss mehr).",
+   "schwere": "hoch",
+   "fix": "In begin() nach dem Laden von G die Weltobjekte synchronisieren: for(var i=0;i<obelisks.length;i++)obelisks[i].on=!!G.obel[i]; und ZONES[4].locked=!(G.obel[0]&&G.obel[1]&&G.obel[2]); — zusätzlich in Z. 1608 den Quest-Sprung absichern: if(G.qstage<5)G.qstage=5;"
+  },
+  {
+   "titel": "Obelisken-/Zitadellen-Zustand wird beim Laden nicht aus dem Save wiederhergestellt — nach „Weiterspielen\" ist die Zitadelle wieder versiegelt, obwohl der Quest-Text zum Betreten auffordert.",
+   "datei": "neon-realm.html",
+   "zeile": 2041,
+   "code": "  G.ach=G.ach||{};G.kills=G.kills||0;G.shardsEarned=G.shardsEarned||0;G.legFound=G.legFound||0;G.dungeonRuns=G.dungeonRuns||0;",
+   "ablauf": "Alle 3 Obelisken aktivieren (G.obel=[true,true,true], ZONES[4].locked=false, G.qstage=5) → Seite neu laden → „Weiterspielen ▶\". begin() stellt zwar HP/EN/Position her, überträgt G.obel aber nie auf `obelisks[i].on` (Z. 508, hart on:false) und setzt ZONES[4].locked (Z. 345, hart true) nicht zurück. Beim Anlaufen der Zitadelle greift wieder die Barriere in Z. 2000-2003.",
+   "folge": "Die Quest-Anzeige sagt „Betritt die Zitadelle (Südosten) und besiege den NEXUS\", aber eine unsichtbare Barriere schiebt den Spieler bei jedem Versuch weg mit dem Hinweis „aktiviere die 3 Obelisken\" — die laut Spielstand längst aktiv sind. Auch die Obelisken selbst leuchten wieder im Aus-Zustand (Minimap gelb statt grün). Der Hauptquest-Fortschritt ist blockiert, bis der Spieler zufällig erneut zu einem Obelisken läuft und [E] drückt (dann kippen alle 3 auf einmal, weil G.obel bereits true ist).",
+   "schwere": "mittel",
+   "fix": "In begin() nach dem Laden den Weltzustand nachziehen: `for(var i=0;i<obelisks.length;i++)obelisks[i].on=!!(G.obel&&G.obel[i]); if(G.obel&&G.obel.filter(Boolean).length>=3)ZONES[4].locked=false;`"
+  },
+  {
+   "titel": "Stirbt der Spieler und lädt die Seite neu statt „Wiederbeleben\" zu drücken, startet er mit 0 HP.",
+   "datei": "neon-realm.html",
+   "zeile": 969,
+   "code": "  if(G.hp<=0){G.hp=0;running=false;saveGame();document.getElementById(\"deadO\").classList.remove(\"hide\");beep(80,.5,\"sawtooth\",.09);}}",
+   "ablauf": "1. Von Gegnern getötet werden → Todes-Overlay, dabei wird G.hp=0 in den Spielstand geschrieben. 2. Statt „Wiederbeleben\" die Seite neu laden (F5) und „Weiterspielen ▶\" drücken.",
+   "folge": "begin() clampt nur nach unten (`G.hp=Math.min(G.hp,playerMaxHp())`, Zeile 2042) und heilt nie → der Spieler läuft mit leerem HP-Balken herum und stirbt beim allerersten Treffer sofort wieder. Wer nach dem Tod immer neu lädt, landet in einer Todesschleife. Verschärft: der Wiederbeleben-Knopf (Zeile 2074) speichert nicht und benutzt `G.maxhp` statt `playerMaxHp()`, füllt bei ausgerüstetem Vital-Kern/Titan also gar nicht komplett auf.",
+   "schwere": "mittel",
+   "fix": "Beim Laden auf Leben prüfen, z. B. in begin() nach Zeile 2042: `if(G.hp<=0){G.hp=playerMaxHp();player.position.set(0,0,14);}` — und in reviveBtn `G.hp=playerMaxHp();saveGame();` setzen."
+  },
+  {
+   "titel": "Im Querformat ueberlappen sich der Inventar-Knopf und der gruene E-Knopf.",
+   "datei": "neon-realm.html",
+   "zeile": 132,
+   "code": "#tInv{position:absolute;top:162px;right:116px;width:44px;height:44px;border-radius:10px;border:1px solid #3a4170;background:rgba(16,20,43,.8);color:#cfd8ff;font-size:1.35rem;pointer-events:auto}",
+   "ablauf": "#tInv ist von OBEN positioniert (top:162px, 44px hoch → 162..206), #tAct von UNTEN (Zeile 131: `#tAct{right:112px;bottom:132px;...}`, .tbtn ist 68x68 → von oben H-200..H-132). Waagerecht liegt #tInv (right 116..160) komplett innerhalb von #tAct (right 112..180). Senkrecht ueberlappen beide, sobald 295px < innerHeight < 405px — genau der Bereich typischer Handy-Querformat-Hoehen (iPhone quer ~375, Galaxy quer ~360, iPhone SE quer ~320). Es gibt keine einzige Media-Query fuer geringe Hoehe; die vorhandene (Zeile 139) greift nur bei max-width:560px, im Querformat ist die Breite aber >560. Ablauf: Handy quer halten, zu Mira/Von/Kael laufen → updPrompt (Zeile 1897) blendet #tAct ein, es liegt jetzt unter dem 🎒-Knopf, der im DOM spaeter steht (Zeile 197 vs. 194) und damit obenauf zeichnet und Taps abfaengt.",
+   "folge": "Tippt man den oberen Rand des gruenen E-Knopfs, oeffnet sich stattdessen das Inventar. Reden mit NPCs, Obelisken aktivieren und Truhe oeffnen scheitern scheinbar grundlos — bis man zufaellig weiter unten trifft.",
+   "schwere": "mittel",
+   "fix": "Landscape-Regel ergaenzen, die #tInv aus der Knopfwolke schiebt, z. B. `@media (max-height:460px){#tInv{top:12px;right:176px}}` (dort ist frei: Minimap endet bei right 154, menuBtn/muteBtn liegen bei right 12..108)."
+  },
+  {
+   "titel": "Der blur-Handler bricht nur die Ladung ab, leert aber nicht das keys-Objekt — nach einem Tab-/Fensterwechsel läuft der Held endlos von allein weiter.",
+   "datei": "neon-realm.html",
+   "zeile": 621,
+   "code": "addEventListener(\"blur\",function(){attackRelease();}); // Tab-Wechsel während Ladung: sauber abbrechen",
+   "ablauf": "W (oder eine Pfeiltaste) gedrückt halten, während des Laufens Alt+Tab drücken bzw. in einen anderen Tab wechseln, dann zurückkehren und die Taste loslassen. Das keyup-Event (Z. 620) geht an das andere Fenster, `keys.w` bleibt auf true; moveVec (Z. 646-649) liefert weiter vollen Ausschlag.",
+   "folge": "Der Held rennt nach der Rückkehr ununterbrochen in eine Richtung weiter, ohne dass eine Taste gedrückt ist — bis zur Weltgrenze bzw. mitten in Gegnergruppen hinein. Erst erneutes Drücken und Loslassen genau dieser Taste stoppt ihn; wer das nicht errät, hält das Spiel für kaputt.",
+   "schwere": "niedrig",
+   "fix": "Im blur-Handler zusätzlich die Tastenmatrix leeren: `addEventListener(\"blur\",function(){keys={};attackRelease();});`"
+  },
+  {
+   "titel": "Der Seraph-Weltboss-Cooldown wird nicht gespeichert — nach einem Neuladen kann er sofort wieder erscheinen und legendäre Beute liefern.",
+   "datei": "neon-realm.html",
+   "zeile": 1799,
+   "code": "  scene.remove(seraph.g);seraph=null;seraphCD=DAYLEN*1.5;",
+   "ablauf": "1. Nachts den Seraph besiegen → garantierter legendärer Gegenstand + 30 ◆ + 90 XP (Zeile 1795-1796), Cooldown 225 s. 2. Seite neu laden und weiterspielen. 3. Bis zur nächsten Nacht (dayA<0.12) warten.",
+   "folge": "`seraphCD` ist eine reine Laufzeit-Variable (Zeile 1773) und startet nach jedem Laden bei 0, während der Spawn nur an `G.qstage>=2` hängt (Zeile 1805). Der eigentlich 1,5 Tage lange Cooldown ist damit durch Neuladen aushebelbar: Spieler können den Weltboss pro Nacht farmen und in kurzer Zeit beliebig viele legendäre Items sammeln — die Fortschrittskurve des Spiels bricht zusammen.",
+   "schwere": "niedrig",
+   "fix": "Cooldown in den Save legen: `G.seraphCD=DAYLEN*1.5;` statt der lokalen Variable schreiben und in begin() `seraphCD=G.seraphCD||0;` wiederherstellen (mit `G.seraphCD=seraphCD` im Autosave)."
+  },
+  {
+   "titel": "Die 15 Scherben des Waechters der Tiefe werden dem Konto gutgeschrieben, aber nicht in G.shardsEarned gezaehlt — der Erfolg 'Sammler' bleibt zu lange gesperrt",
+   "datei": "neon-realm.html",
+   "zeile": 885,
+   "code": "    G.shards+=15;showHint(\"🎁 \"+RARS[mi2.r].n+\": \"+mi2.n+\" (+\"+mi2.v+\" \"+mi2.stat+\") — [I]\",3000);camShake=0.8;}",
+   "ablauf": "Im Dungeon 'Die Tiefe' den Waechter der Tiefe (miniboss) besiegen. killEnemy zaehlt in Zeile 874 korrekt die 5 Elite-Scherben auf G.shardsEarned, der Miniboss-Bonus von 15 Scherben in Zeile 885 wird jedoch nur auf G.shards addiert. Alle anderen Quellen (Kills 874, Truhe 1617, Seraph 1796) buchen beide Zaehler.",
+   "folge": "Der Erfolg 'Sammler — Verdiene 100 Scherben' (Zeile 1833 prueft G.shardsEarned>=100) loest sichtbar zu spaet aus: Wer mehrere Waechter erlegt hat, sieht im HUD z. B. laengst ueber 100 Scherben, der Erfolg bleibt aber gesperrt (pro Waechter fehlen 15 im Zaehler). Fuer den Spieler wirkt der Erfolg schlicht kaputt.",
+   "schwere": "niedrig",
+   "fix": "In Zeile 885 analog zu den anderen Stellen mitbuchen: G.shards+=15;G.shardsEarned=(G.shardsEarned||0)+15;"
+  },
+  {
+   "titel": "Beim Ablegen eines Relikts wird die aktuelle Gesundheit nicht neu begrenzt — man behaelt HP oberhalb des echten Maximums",
+   "datei": "neon-realm.html",
+   "zeile": 715,
+   "code": "    if(it)d.onclick=function(){G.inv.push(it);G.equip[s[0]]=null;beep(300,.06,\"triangle\",.04);renderInv();updHUD();};",
+   "ablauf": "Einen 'Vital-Kern' (+maxhp) ausruesten, dann auf volle HP kommen (jedes Level-Up setzt in Zeile 763 G.hp=playerMaxHp(), also inklusive Relikt-Bonus). Inventar [I] oeffnen und den Relikt-Slot anklicken, um ihn abzulegen. Der Ablege-Pfad ruft nur renderInv()/updHUD() auf; die Klammer aus dem Ausruest-Pfad daneben (Zeile 727: if(G.hp>playerMaxHp())G.hp=playerMaxHp();) fehlt hier.",
+   "folge": "G.hp bleibt bis zu +35 ueber dem jetzt gueltigen playerMaxHp(). Der Spieler laeuft mit einem versteckten Extra-Lebenspolster herum (die HP-Leiste zeigt es wegen overflow:hidden nur als 'voll' an) und der Relikt-Slot ist frei fuer nichts — die Obergrenze fuer Gesundheit laesst sich so umgehen. Nach einem Neuladen verschwindet der Bonus wieder (begin() klemmt in Zeile 2042), was zusaetzlich inkonsistent wirkt.",
+   "schwere": "niedrig",
+   "fix": "Im Ablege-Handler dieselbe Klammer setzen: G.equip[s[0]]=null;if(G.hp>playerMaxHp())G.hp=playerMaxHp();"
+  }
+ ],
+ "js/mp.js": [
+  {
+   "titel": "Der 6-Sekunden-Watchdog trennt jede Verbindung, in der das Spiel gerade nichts sendet — der Transport selbst schickt kein Keepalive.",
+   "datei": "js/mp.js",
+   "zeile": 98,
+   "code": "        if (S.status === \"connected\" && Date.now() - lastRecv > 6000) { clearInterval(wd); wd = null; lost(); }",
+   "ablauf": "Traumhaus: Host oeffnet einen Raum, Gast tritt bei, sendet einmal {t:\"hallo\"}, Host antwortet mit lobby+state. Danach steht die Lobby still, weil laut Design erst der Host auf \"▶ Starten\" tippen muss (traumhaus.html:6524 lobbyStarten). Der einzige Keepalive des Spiels ({t:\"hb\"} alle 2 s, traumhaus.html:6733) liegt INNERHALB von `if(running)` (traumhaus.html:6664) und laeuft in der Lobby also gar nicht. Nach 6 s Stille feuert der Watchdog auf BEIDEN Seiten und ruft lost().",
+   "folge": "Waehrend man in der Lobby die Namen liest und ueberlegt, ob man startet, springt die Anzeige alle ~7 s von \"Verbunden!\" auf \"Verbindung verloren — versuche Reconnect …\" und zurueck. Der Gast schickt bei jedem Reconnect erneut \"hallo\", der Host haengt jedes Mal \"X baut jetzt mit!\" in den Chat und schickt den ganzen Snapshot neu. Wer sich mehr als ein paar Sekunden Zeit laesst, glaubt die Verbindung sei kaputt und bricht ab.",
+   "schwere": "hoch",
+   "fix": "In startWd() zusaetzlich einen eigenen Keepalive starten, statt sich auf Spiel-Traffic zu verlassen: ein zweites setInterval(2000), das `S.send({t:\"__ka\"})` (bzw. main.send) schickt, und in recv() Nachrichten mit t===\"__ka\" nur fuer lastRecv verwenden und NICHT an S._emit weitergeben. Beide Intervalle in giveUp()/fail()/S.close() mit aufraeumen."
+  },
+  {
+   "titel": "Eine Lobby-Probe von MP.suche zaehlt beim Host als echter Gast: der wartende Raum geht auf \"connected\", dann auf \"lost\" und stirbt nach ~57 s.",
+   "datei": "js/mp.js",
+   "zeile": 134,
+   "code": "        if (!byUs && S.status !== \"closed\") lost();",
+   "ablauf": "Traumhaus: Spieler A eroeffnet einen oeffentlichen Raum (MP.hostPublic → _hostFixed → Status \"waiting\"). Spieler B tippt \"🔎 Räume suchen\" (traumhaus.html:6545 MP.suche). Die Probe ist ein ganz normales MP.join (mp.js:354): sie verbindet sich, der Main-Kanal geht auf \"open\", der Host setzt Status \"connected\" und startWd() (mp.js:124) und loest sogar S.ready aus. Die Probe fragt \"__lobby?\", bekommt die Antwort und ruft sofort s.close() (mp.js:359). Beim Host feuert nun c.on(\"close\"); der Guard in Zeile 133 greift NICHT, weil S.status inzwischen \"connected\" ist → lost().",
+   "folge": "Der wartende Host sieht ohne eigenes Zutun \"Verbunden!\" (Badge gruen), unmittelbar danach \"Verbindung verloren — versuche Reconnect …\". Kommt in den naechsten ~57 s kein echter Gast, laeuft die Reconnect-Kette (600 ms→6 s Backoff, MAX_RECONN 5) durch und giveUp() zerstoert den Peer: Status \"closed\", Raum weg, der Host muss zurueck und neu eroeffnen. Ein Raum stirbt also allein davon, dass jemand die Raumliste geoeffnet hat.",
+   "schwere": "hoch",
+   "fix": "Die Probe als solche kennzeichnen und nie als Gast behandeln: in MP.suche den Kanal mit Label \"lobby\" oeffnen und in peer.on(\"connection\") (mp.js:190) ein `if (conn.label === \"lobby\")` VOR der main-Zuweisung behandeln — dort nur die __lobby?-Anfrage beantworten und den Kanal schliessen, ohne main zu setzen, ohne _setStatus(\"connected\") und ohne startWd(). Alternativ als Minimalfix: in c.on(\"close\") beim Host nur dann lost() rufen, wenn ueber den Kanal je etwas anderes als __lobby? ankam — sonst zurueck auf \"waiting\"."
+  },
+  {
+   "titel": "S.send() verwirft \"zuverlässige\" Nachrichten stillschweigend, sobald der Kanal gerade nicht offen ist — es gibt keine Warteschlange und keine Rückmeldung",
+   "datei": "js/mp.js",
+   "zeile": 233,
+   "code": "    S.send = function (o) { try { if (main && main.open) main.send(o); } catch (e) {} };",
+   "ablauf": "Der Header dieser Datei verspricht für send() \"zuverlässig/geordnet (Events: Wellen, Revive, GameOver)\". Während des von mp.js selbst vorgesehenen Zustands \"lost\" ist main aber entweder null (Host, Zeile 156) oder ein noch nicht offener Neuversuch (Gast, Zeile 161) — jeder send() fällt dann ohne Fehler ins Leere. Die Spiele senden weiter, weil sie erst bei \"closed\" abschalten (neon-dungeon.html:349 setzt NETON=false erst bei closed). Konkret in neon-dungeon.html:505: `bossHp-=_dmg; if(NETON&&dnet)try{dnet.send({t:\"bhit\",d:_dmg});}` — der Schaden wird lokal SOFORT angewandt und nur als Delta verschickt.",
+   "folge": "Jeder Treffer, der in ein Reconnect-Fenster fällt, ist für immer weg: die Boss-Leben laufen zwischen Host und Gast dauerhaft auseinander. Einer sieht den Boss sterben und winGame(), der andere prügelt auf einen Boss mit Restleben ein. Genauso verschwinden {t:\"bwin\"} (neon-dungeon.html:555) und {t:\"bheal\"} — ein Spieler bleibt dann im bereits gewonnenen Kampf hängen.",
+   "schwere": "hoch",
+   "fix": "In send() bei nicht offenem Kanal puffern statt verwerfen: `if (main && main.open) main.send(o); else { if (S._q.length < 200) S._q.push(o); }` und die Queue im open-Handler von wireMain (Zeile 121-129) direkt nach S._setStatus(\"connected\") in Reihenfolge abschicken. Mindestens aber einen Rückgabewert (true/false) liefern, damit die Spiele den Verlust merken können."
+  },
+  {
+   "titel": "Die Raumsuche zerstört den wartenden Host: die Probe belegt seinen Spieler-Platz, löst \"Verbunden!\" aus und beim Trennen den Verbindungsverlust-Abbau",
+   "datei": "js/mp.js",
+   "zeile": 354,
+   "code": "        var s = MP.join(gameId, code), erledigt = false, t = null;",
+   "ablauf": "MP.suche baut mit einem VOLLWERTIGEN MP.join eine ganz normale Gast-Verbindung auf. Beim wartenden Host läuft sie in peer.on(\"connection\") ohne Label durch nach `main = conn; wireMain(conn)` (Zeile 198), der open-Handler setzt S._setStatus(\"connected\") (Zeile 124). Die Probe fragt \"__lobby?\", der Host antwortet (traumhaus.html:4384), dann ruft schluss() sofort s.close() (Zeile 359). Der close-Handler des Hosts läuft in `if (isHost && S.status !== \"connected\")` — die Bedingung ist FALSCH, weil der Status ja gerade auf connected steht — und fällt deshalb in lost() (Zeile 134). Ablauf im Spiel: Spieler A tippt \"➕ Öffentlichen Raum eröffnen\" (traumhaus.html:6537), Spieler B tippt \"🔎 Räume suchen\" (traumhaus.html:6528).",
+   "folge": "Bei Spieler A springt die Anzeige ohne jeden Mitspieler von \"Warte auf Mitspieler …\" auf \"Verbunden!\" (netBadge wird grün) und eine Sekunde später auf \"Verbindung verloren — versuche Reconnect …\". Der Host schliesst beide Kanäle und läuft in die Reconnect-Kette; kommt in ca. 56 s (5 Versuche à backoff+9000, Zeile 157) kein echter Gast, ruft giveUp() peer.destroy() — der öffentliche Raum ist tot und taucht in KEINER Suche mehr auf, A muss neu eröffnen. Zusätzlich blockiert jede laufende Probe den 1v1-Platz: ein echter Beitretender wird in Zeile 197 abgewiesen und landet in seiner eigenen \"Verbindung verloren\"-Schleife.",
+   "schwere": "hoch",
+   "fix": "Die Probe darf keine Spielverbindung sein: in MP.suche eine eigene Verbindung mit Label anlegen (analog zu \"fast\"), und in peerEngine peer.on(\"connection\") ganz oben behandeln — `if (conn.label === \"probe\") { conn.on(\"open\", function(){ conn.send({t:\"__lobby\", ...}); }); return; }` — sodass sie weder main belegt noch den Status auf \"connected\" kippt."
+  },
+  {
+   "titel": "Der im localStorage gespeicherte Broker-Zähler wird nie zurückgesetzt — nach einem Fehler bleibt das Gerät dauerhaft (auch nach Neuladen) auf einem anderen Vermittlungs-Server, und der Gast probiert nur EINEN weiteren durch.",
+   "datei": "js/mp.js",
+   "zeile": 224,
+   "code": "          if (!retried) { retried = true; mpNextBroker(); clearTimeout(tmo); try { dying = true; peer.destroy(); try { peer.socket && peer.socket.close(); } catch (e2) {} } catch (e) {} boot(); return; }",
+   "ablauf": "`mpNextBroker()` (Z.48) erhöht `aban_broker` im localStorage; `mpPeerCfg()` (Z.43) liest den Wert bei JEDEM boot() wieder. Es gibt im ganzen Repo (grep: nur Z.43/48/174) KEINE Stelle, die den Zähler nach einer erfolgreichen Verbindung oder beim Laden auf 0 zurücksetzt — der Wert wandert also über Sitzungen und Spiele hinweg immer weiter. Konkret: Gerät B hat durch zwei frühere Netz-Hänger den Stand 2 (= `0.peerjs.com`). Gerät A steht auf 1 (= `peerjs.92k.de`) und hostet dort (z.B. neon-survivor «🌍 Offener Raum» / neon-zusammen MP.quick / Raum-Code-Host). B tippt den richtigen Code bzw. denselben Knopf: Versuch 1 auf Index 2 → peer-unavailable → `retried=true`, `mpNextBroker()` → Index 0. Index 0 ist `null` = PeerJS-Standard-Cloud, und die ist laut vendored `js/vendor/peerjs.min.js` ebenfalls `0.peerjs.com` — also derselbe Server wie Index 2. Versuch 2 scheitert erneut, `retried` ist jetzt true → `fail(\"Raum \" + S.code + \" nicht gefunden — Code prüfen!\")`. Index 1, wo der Host wirklich sitzt, wird nie probiert. Im «Offener Raum»-Fall (neon-survivor.html:2258 ff.) macht B danach selbst einen OFEN-Raum auf dem falschen Server auf → beide warten endlos.",
+   "folge": "Der Spieler gibt einen völlig korrekten Raum-Code ein und bekommt «Raum XXXX nicht gefunden — Code prüfen!»; beim 1-Tipp-Koop warten beide ewig auf «Warte auf Mitspieler», obwohl beide denselben Knopf gedrückt haben. Reproduzierbar dauerhaft auf dem betroffenen Gerät, weil der Zähler gespeichert bleibt und auch Neuladen ihn nicht zurücksetzt.",
+   "schwere": "hoch",
+   "fix": "Zwei kleine Änderungen: (1) beim erfolgreichen (Re-)Connect den Zähler zurücksetzen — in `wireMain`s open-Handler bei `ever = true` zusätzlich `try{localStorage.setItem(\"aban_broker\",\"0\")}catch(e){}`; (2) im peer-unavailable-Zweig statt des einmaligen `retried`-Flags denselben Zähler wie im Timeout-Pfad benutzen (`if (brokerVersuche < MP_BROKERS.length - 1) { brokerVersuche++; mpNextBroker(); … boot(); return; }`), damit ALLE Broker durchprobiert werden."
+  },
+  {
+   "titel": "Beim Gast-Reconnect wird der alte main-Kanal nicht geschlossen, deshalb weist der Host jeden Neuversuch als \"Raum voll\" ab und der Gast verbraucht sein Reconnect-Budget",
+   "datei": "js/mp.js",
+   "zeile": 161,
+   "code": "            try { main = peer.connect(pid(gameId, S.code), { reliable: true }); wireMain(main); } catch (e) { giveUp(); return; }",
+   "ablauf": "Im Host-Zweig von lost() werden beide Kanäle bewusst geschlossen (Zeile 153-155, mit Kommentar). Im Gast-Zweig fehlt das: main wird einfach überschrieben, die alte DataConnection bleibt beim Host offen. Einseitiger Abriss ist der Normalfall, weil der Watchdog nur den Empfang misst: Der Host pausiert kurz (Menü, Hintergrund-Tab) und sendet nichts mehr, empfängt aber weiter den Positions-Spam des Gastes — der Host-Watchdog schweigt also, der Gast-Watchdog feuert nach 6 s. Der Gast verbindet neu, beim Host greift Zeile 197 `if (main) { try { conn.close(); } catch (e) {} return; }`, weil sein altes main noch steht. Der Neuversuch stirbt, lost() zählt reconns hoch, das wiederholt sich bei backoff 600/1020/1734/2948/5013 ms, und bei reconns >= MAX_RECONN (Zeile 146) ruft giveUp().",
+   "folge": "Der Gast hängt zehn Sekunden bis über eine halbe Minute in \"Verbindung verloren — Reconnect …\" und wird im ungünstigen Fall endgültig auf \"closed\" gesetzt (Peer zerstört, kein weiterer Versuch), obwohl der Host die ganze Zeit erreichbar war und auf seinem Bildschirm noch \"Verbunden\" anzeigt.",
+   "schwere": "mittel",
+   "fix": "Im Gast-Zweig von lost() vor dem Neuaufbau symmetrisch zum Host aufräumen: `try { if (main) main.close(); } catch (e) {} try { if (fast) fast.close(); } catch (e) {} fast = null; main = null;` — dann meldet der Host den alten Kanal als geschlossen, gibt seinen Slot frei und der erste Neuversuch greift sofort."
+  },
+  {
+   "titel": "Auch ein Fehler mitten im laufenden Spiel verstellt den gespeicherten Broker-Zähler dauerhaft — genau das, was der Kommentar zwei Zeilen tiefer verhindern will.",
+   "datei": "js/mp.js",
+   "zeile": 214,
+   "code": "      try { var _t = err && err.type; if (_t === \"network\" || _t === \"server-error\" || _t === \"socket-error\" || _t === \"socket-closed\") mpNextBroker(); } catch (e) {}",
+   "ablauf": "Der Aufruf steht vor jeder Prüfung von `ever` (also auch bei längst verbundener Session) und läuft immer, sobald der Broker-Socket wegbricht — z.B. wenn der Partner sein Handy sperrt, das WLAN kurz kippt oder der Host-Tab geschlossen wird (PeerJS meldet dann `socket-closed`/`network`). `mpNextBroker()` schreibt sofort in den localStorage. Der Kommentar in Z.222 («Boot-Retry würde den Broker-Index kippen») zeigt, dass genau das vermieden werden soll — die Zeile darüber kippt ihn aber trotzdem. Beim nächsten Spielstart (auch nach Neuladen/Neustart) liest `mpPeerCfg()` den neuen Index und meldet sich bei einem anderen Vermittlungs-Server an als der Freund.",
+   "folge": "Nach einer ganz normalen Koop-Runde, die durch einen kurzen Netz-Hänger endete, finden sich dieselben zwei Spieler beim nächsten Versuch nicht mehr — der Raum-Code, den vorhin noch funktioniert hat, liefert «nicht gefunden». Das Verhalten ist gespeichert und übersteht das Neuladen.",
+   "schwere": "mittel",
+   "fix": "Nur bei noch nie zustande gekommener Verbindung wechseln: `if (!ever && (_t === \"network\" || _t === \"server-error\" || _t === \"socket-error\" || _t === \"socket-closed\")) mpNextBroker();`"
+  },
+  {
+   "titel": "Die Raumsuche startet alle 6 oeffentlichen Raeume gleichzeitig und bricht nach 5 s ab — kuerzer als der eigene Verbindungs-Timeout von 9 s.",
+   "datei": "js/mp.js",
+   "zeile": 346,
+   "code": "      var frist = opt.frist || 5000, tot = false;",
+   "ablauf": "In traumhaus.html Zeile 6528-6546 tippt man auf \"🔎 Räume suchen\". MP.suche ruft in Zeile 353 fuer alle 6 Codes aus MP.PUBLIC gleichzeitig MP.join auf -> 6 parallele PeerJS-Peers, jeder mit eigenem WSS zum Vermittler und eigener RTCPeerConnection, die gegen die 5 ICE-Server aus Zeile 35-41 sammelt (davon 3 TURN-Relays bei openrelay.metered.ca). Jede Sonde, die auf einen leeren Code trifft, bekommt peer-unavailable und startet in Zeile 224 nochmal komplett neu auf dem naechsten Vermittler — in Spitzen also ~12 Peers und ~12 TURN-Aushandlungen auf einmal. Nach exakt 5 s ruft der Timer aus Zeile 363 schluss(null) fuer alles, was noch nicht fertig ist, obwohl MP.join selbst laut JOIN_TIMEOUT (Zeile 54) noch 4 Sekunden Zeit haette.",
+   "folge": "Im Mobilfunknetz, wo eine TURN-vermittelte Aushandlung regelmaessig laenger als 5 s braucht und der Gratis-Relay bei so vielen gleichzeitigen Allokationen von einer IP drosselt, meldet der Raum-Browser auf dem Handy \"Kein offener Raum gefunden\", obwohl ein Host wartet. Am Desktop im WLAN findet dieselbe Suche den Raum. Dazu ruckelt/heizt das Geraet waehrend der Suche, weil ein Dutzend PeerConnections parallel Kandidaten sammeln.",
+   "schwere": "mittel",
+   "fix": "Die Frist mindestens auf JOIN_TIMEOUT anheben (var frist = opt.frist || (JOIN_TIMEOUT + 1000)) und die Codes nicht alle auf einmal anwaehlen: in codes.forEach nur 2 Sonden gleichzeitig starten und die naechste erst in schluss() nachziehen. Fuer die Sonden ausserdem eine schlanke ICE-Liste (nur STUN) verwenden — der kurze Lobby-Handshake braucht keine drei TURN-Relays."
+  },
+  {
+   "titel": "\"Oeffentlichen Raum eroeffnen\" scheitert hart auf PUBA, obwohl 5 freie Public-Codes existieren — hostPublic hat keinen Ausweich-Versuch.",
+   "datei": "js/mp.js",
+   "zeile": 381,
+   "code": "if (belegt.indexOf(MP.PUBLIC[i]) < 0) return MP._hostFixed(gameId, MP.PUBLIC[i]);",
+   "ablauf": "In PUBA laeuft bereits eine volle 2er-Partie. Spieler B sucht (MP.suche): der volle Raum lehnt die Sonde ab (Z.197 `if (main) { conn.close(); return; }`) und taucht - wie im Kommentar Z.339 dokumentiert - korrekterweise NICHT in der Liste auf. B bekommt \"Kein offener Raum gefunden\" und tippt \"➕ Oeffentlichen Raum eroeffnen\" -> traumhaus.html:6537 ruft `raumEroeffnen([])`, also mit LEERER belegt-Liste (der einzige Aufrufer, es gibt keinen zweiten). hostPublic nimmt deshalb immer MP.PUBLIC[0] = \"PUBA\" und ruft _hostFixed mit noRegen=true -> peer.on(\"error\") type \"unavailable-id\" -> Z.217 `fail(\"Public-Raum bereits belegt\")`. Es wird kein einziger der freien Codes PUBB..PUBF probiert. Derselbe Effekt tritt auf, wenn zwei Spieler gleichzeitig suchen und beide danach PUBA greifen.",
+   "folge": "Der Spieler bekommt \"Public-Raum bereits belegt\" / \"Verbindung fehlgeschlagen\" und kann keinen oeffentlichen Raum eroeffnen, obwohl 5 von 6 Raeumen frei sind. Mit wiederholtem Tippen aendert sich nichts — der Schnell-Koop ist fuer ihn tot.",
+   "schwere": "mittel",
+   "fix": "hostPublic zu einer Kette machen statt einem einmaligen Versuch: die zurueckgegebene Session ueberwachen und bei Scheitern (ready-Reject bzw. Status \"closed\", solange nie verbunden) automatisch den naechsten Code aus MP.PUBLIC probieren — analog zur Phasen-Kette in MP.quick (Z.394-399). Der Fallback in Z.382 (`return MP._hostFixed(gameId, MP.PUBLIC[0]);`) sollte dann ebenfalls den zuletzt ungetesteten Code nehmen."
+  },
+  {
+   "titel": "Toter dritter Vermittlungs-Server: MP_BROKERS[2] ist identisch mit dem Default MP_BROKERS[0], und mpPeerCfg kopiert das unterscheidende Feld path gar nicht.",
+   "datei": "js/mp.js",
+   "zeile": 30,
+   "code": "{ host: \"0.peerjs.com\", port: 443, secure: true, path: \"/\" }",
+   "ablauf": "MP_BROKERS[0] = null bedeutet PeerJS-Default; im mitgelieferten js/vendor/peerjs.min.js ist CLOUD_HOST=\"0.peerjs.com\" mit Port 443/secure — also exakt Eintrag [2]. Das einzige Feld, das Eintrag [2] zusaetzlich setzt (path: \"/\"), wird in mpPeerCfg Z.45 `if (b) { o.host = b.host; o.port = b.port; o.secure = b.secure; }` nicht uebernommen (kopierter Block, path vergessen) — und entspricht ohnehin dem Default. Faellt die PeerJS-Cloud aus, laeuft die Broker-Rotation in boot() (Z.178, `brokerVersuche < MP_BROKERS.length - 1`) trotzdem ueber alle drei Eintraege, davon einer garantiert derselbe tote Server.",
+   "folge": "Der Spieler wartet beim Verbindungsaufbau 9 s laenger (3 x JOIN_TIMEOUT statt 2), sieht die Zwischenmeldung \"Suche Vermittlungs-Server 3/3\" und bekommt am Ende die irrefuehrende Fehlermeldung \"Kein Vermittlungs-Server erreichbar (3 versucht)\", obwohl real nur 2 verschiedene Server probiert wurden. Zusaetzlich koennen Host und Gast auf Index 0 bzw. 2 landen und glauben, auf verschiedenen Servern zu suchen, obwohl es derselbe ist.",
+   "schwere": "niedrig",
+   "fix": "MP_BROKERS[2] durch einen wirklich anderen Broker ersetzen (oder streichen) und in mpPeerCfg auch `path` mitkopieren: `if (b) { o.host = b.host; o.port = b.port; o.secure = b.secure; if (b.path) o.path = b.path; }`."
+  }
+ ]
+}
