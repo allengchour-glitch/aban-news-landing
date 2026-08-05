@@ -2816,3 +2816,16 @@ Trend-Kategorien-Liste Pos. 2. Menü-Erwähnungen mitumbenannt (falls vorhanden)
   hatte tote Regel → TYPE 'Partydeko & Ballone' OR tag partydeko = **57 Produkte** wieder drin ✓;
   black-friday bleibt bewusst leer-publiziert (November).
 - ⚠️ API-Falle: `publishedOnCurrentPublication` braucht App-Publication → `publishedOnPublication(id)` nutzen.
+
+## 2026-08-05 Varianten-Nachrüstung (User-Funde: «verschiedene Farben aber keine Auswahl» + «1 anzeige, mehrere auswahl, bild wechselt»)
+- **Pilot-Merge Widmann-Anzüge:** 5 gleichnamige «Kostüm Hosenanzug» (88 CHF, fgss3865/4099/3933/4035/4101)
+  → EIN Produkt «Kostüm Hosenanzug «Good Vibes» · 5 Designs» mit Optionen Design×Grösse (24 Varianten,
+  echte Bestände tracked+DENY, SKUs bleiben fortura-<art>-<size> → Bestell-Mapping intakt), Design-Namen
+  per **Gemini Vision vom Produktbild** gelesen (Hippie/Tropicana/Tie Dye/Flamingo/Copacabana), je Variante
+  eigenes Bild (productCreateMedia→variant mediaId → Horizon wechselt Bild bei Auswahl). 4 Quell-Produkte
+  DRAFT mit Tag merged-in-good-vibes. **Muster für weitere Fortura-Titel-Familien.**
+- **automation/cj_variant_backfill.mjs NEU:** rüstet FAST-CJ-Produkten (1 Standard-Variante) die echten
+  CJ-Farben/Grössen nach (product/query→parseVar, DE-Farbübersetzung, Preis=max(bestehend,Formel) — nie
+  unter reprice-Boden, SKU CJ-<variantSku>); ohne CJ-Auswahl → «Erhältlich in den Farben…»-Zeile wird zu
+  «Lieferung wie abgebildet» + Gewicht als Technische Details. Runner /tmp/variant_backfill_runner.sh
+  (Ledger dropship/_cj_variants_done.txt, CJ_SLEEP 900 — teilt Limit mit Grind+Reviews).
