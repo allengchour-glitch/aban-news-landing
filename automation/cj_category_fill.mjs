@@ -265,6 +265,10 @@ for(const [cat,label] of grp.cats){
    } else if(/plüsch|kuscheltier/i.test(title)&&!/lampe|licht/i.test(title)){
      tagsFinal=tagsFinal.filter(t=>!['elektronik','tech'].includes(t)).concat(['spielzeug']);
      typeFinal='Spielzeug & Spiele';
+   } else if(/hydraulik|wegeventil|steuerventil|holzspalter|traktor|bew[äa]sserung/i.test(title)){
+     // CJ listet Hydraulik-"Joystick"-Ventile unter Gaming/Joysticks (Garten-Filter-Falle 2026-08-05)
+     tagsFinal=tagsFinal.filter(t=>!['gaming','ps4','ps5','xbox','konsole','gadgets','elektronik','tech'].includes(t)).concat(['garten']);
+     typeFinal=/bew[äa]sserung/i.test(title)?'Garten & Pflanzen':'Gartenwerkzeug';
    }
    const input={title,handle:slug,productType:typeFinal,vendor:'LuxeStyle',status:'ACTIVE',tags:tagsFinal,descriptionHtml:html,
     seo:{title:(title+' | LuxeStyle CH').slice(0,70),description:(`${title} – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 65, 30 Tage Rückgabe.`).slice(0,320)},

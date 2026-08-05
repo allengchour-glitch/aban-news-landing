@@ -2787,3 +2787,8 @@ Halloween-Saison an 3 Stellen injiziert OHNE neue Sektion (25er-Limit): (1) `hal
 cl_trends collection_list, (2) Kategorie-Grid-Kachel trends-gadgets→halloween (Trends hat eigene Reihe),
 (3) Announcement-Slot 4 → «🎃 Halloween-Shop ist da». Redundanz-Check: die 3 «Top 10 Bestseller»-Namen
 sind nur Admin-intern (echt: parfuem-damen/bestseller/wohnen-dekoration) — kundenseitig kein Duplikat.
+
+## 2026-08-05 Garten-Filter zeigte «Gaming» (User-Fund)
+4 Produkte in garten-balkon hatten productType Gaming: Hydraulik-«Joystick»-Ventile (CJ listet sie unter
+Joysticks/Gaming!) + «Bewässerungs-computer». Typen → Gartenwerkzeug/Garten & Pflanzen. cj_category_fill
+Titel-Wache erweitert: hydraulik/wegeventil/holzspalter/traktor/bewässerung → nie Gaming-Tags/-Typ.
