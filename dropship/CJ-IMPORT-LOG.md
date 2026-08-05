@@ -2829,3 +2829,12 @@ Trend-Kategorien-Liste Pos. 2. Menü-Erwähnungen mitumbenannt (falls vorhanden)
   unter reprice-Boden, SKU CJ-<variantSku>); ohne CJ-Auswahl → «Erhältlich in den Farben…»-Zeile wird zu
   «Lieferung wie abgebildet» + Gewicht als Technische Details. Runner /tmp/variant_backfill_runner.sh
   (Ledger dropship/_cj_variants_done.txt, CJ_SLEEP 900 — teilt Limit mit Grind+Reviews).
+
+## 2026-08-05 Fehler-Sweep 6: Blog + alle 27k Beschreibungen (User «mehr und überall»)
+- **48 Blog-Artikel «ab CHF 50»→65** (Vorsicht: «unter CHF 50»-Geschenk-Guides sind LEGITIME Titel — nur
+  Versandschwellen-Muster ersetzt).
+- **Beschreibungs-Bulk-Scan (27'204):** nur 2 Lieferanten-Leaks (TEMU-Abholhinweis in Armatur, «BigBuy
+  Fashion»-Marke in Sweater) + 5 CJK-Zeichen-Reste (Schönheits鏡, Trägerスタイル …) → alle 7 direkt gefixt.
+- **311 Produkte mit englischen Spec-Blöcken** («Product information:», «Package includes», «1 x …») →
+  Gemini-Übersetzungs-Runner /tmp/desc_engl_runner.sh (Wachen: Längen-Ratio 0.6–1.8, <ul>-Zahl gleich,
+  kein KI-Meta-Gerede; Ledger /tmp/desc_engl_done.txt).
