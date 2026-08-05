@@ -3161,6 +3161,90 @@ setTimeout(function baueGebaeude(){
       bau("th4_laterne_modern.glb",5.2,WX,0,20,0,false,null);
       bau("th4_laterne_modern.glb",5.2,WX,0,-20,0,false,null);
     })();
+    /* ═══════════ 🧱 BAUKASTEN-ZEILE (Charge 34 der Modell-Session) ═══════════════
+       Der th34-Haus-Baukasten (18 Module, models/TH5-ASSETS.md §1z3) lag komplett
+       ungenutzt im Repo. Hier steht er erstmals im Spiel: eine Häuserzeile südlich
+       des Süd-Rings — das fertig montierte Beispielhaus plus zwei aus Modulen
+       gesetzte Varianten. Standorte aus der In-Game-Platzsuche (3D-frei, nicht auf
+       Strasse/Trottoir, mit Strassenanbindung).
+       REGELN aus der Doku — teuer erlernt, nicht wiederholen:
+         * Anker ist die RASTERMITTE, nie die Bounding-Box (Tuermodul ist 0,76 tief,
+           die Wandflucht bleibt y=0). Deshalb hier ein eigener Lader OHNE die
+           BBox-Zentrierung/Skalierung von bau(): Module kommen in Originalmassen.
+         * Raster: Wand 4,00 in x · Geschoss 3,00 in y · aussen ist -z (bei rot 0).
+         * Balkon/Erker haben Unterkante < 0 (Absicht, Kragsteine) — Anker oben. */
+    (function baukastenZeile(){
+      function modul(file,x,y,z,rot){
+        GL.load("/models/"+file,function(g){var r=g.scene;
+          r.traverse(function(n){if(n.isMesh){n.castShadow=true;n.receiveShadow=true;
+            if(n.material)n.material.envMapIntensity=0.3;}});
+          var w=new THREE.Group();w.add(r);
+          w.position.set(x,y,z);w.rotation.y=rot||0;scene.add(w);
+          w.userData.fest=1;                       /* Raster-Teile nie vom Entwirrer verschieben */
+          (window._gebaeude=window._gebaeude||[]).push(w);},undefined,function(){});}
+      /* ⚠️ Die Platzsuche prüft Gebäude-Kästen und Strassen, aber KEIN Wasser — der
+         erste Wurf stellte das Beispielhaus mitten in den Seepark-See (Seemitte
+         10,139, Screenshot). Die Zeile weicht deshalb nach Westen aus; Radius 40 m
+         um die Seemitte bleibt frei. */
+      /* 1) Beispielhaus — fertig montiert, dient zugleich als Sicht-Referenz dafür,
+            dass die selbstgesetzten Module dieselben Fluchten treffen. */
+      modul("th34_beispielhaus.glb",-62,0,134,0);
+      addSolid(-62,134,9.2,6.5,{a:"z",at:137.2,c:-62,w:2});
+      /* 2) Stadthaus 12 x 4, zwei Geschosse, Flachdach: EG Laden mit Schaufenstern
+            und Tür, OG Wohnungen mit Balkon. Front zeigt nach Süden (+z), also rot π. */
+      (function stadthaus(){
+        var HX=-86,HZ=134;
+        [["th34_wand_schaufenster.glb",-4],["th34_wand_tuer.glb",0],["th34_wand_schaufenster.glb",4]]
+          .forEach(function(m){modul(m[0],HX+m[1],0,HZ+2,Math.PI);});
+        [["th34_wand_fenster.glb",-4],["th34_wand_fenster.glb",0],["th34_wand_voll.glb",4]]
+          .forEach(function(m){modul(m[0],HX+m[1],0,HZ-2,0);});         // Rückseite
+        modul("th34_wand_fenster2.glb",HX-6,0,HZ,Math.PI/2);            // West-Seite
+        modul("th34_wand_voll.glb",HX+6,0,HZ,-Math.PI/2);               // Ost-Seite
+        [[-6,-2],[6,-2],[-6,2],[6,2]].forEach(function(e){modul("th34_ecke.glb",HX+e[0],0,HZ+e[1],0);});
+        [-4,0,4].forEach(function(dx){modul("th34_decke.glb",HX+dx,2.75,HZ,0);});
+        [["th34_wand_fenster.glb",-4],["th34_wand_fenster.glb",0],["th34_wand_fenster.glb",4]]
+          .forEach(function(m){modul(m[0],HX+m[1],3,HZ+2,Math.PI);});   // OG Front
+        [["th34_wand_fenster.glb",-4],["th34_wand_voll.glb",0],["th34_wand_fenster.glb",4]]
+          .forEach(function(m){modul(m[0],HX+m[1],3,HZ-2,0);});
+        modul("th34_wand_fenster2.glb",HX-6,3,HZ,Math.PI/2);
+        modul("th34_wand_fenster2.glb",HX+6,3,HZ,-Math.PI/2);
+        [[-6,-2],[6,-2],[-6,2],[6,2]].forEach(function(e){modul("th34_ecke.glb",HX+e[0],3,HZ+e[1],0);});
+        [-4,0,4].forEach(function(dx){modul("th34_dach_flach.glb",HX+dx,6,HZ,0);});
+        modul("th34_balkon.glb",HX,6,HZ+2,Math.PI);                     /* Anker oben — Doku */
+        addSolid(HX,HZ,13,5,{a:"z",at:HZ+2.5,c:HX,w:2});
+      })();
+      /* 3) Wohnhaus 8 x 4, zwei Geschosse, Satteldach mit Gaube und Kamin. */
+      (function wohnhaus(){
+        var HX=38,HZ=134;
+        [["th34_wand_tuer.glb",-2],["th34_wand_fenster.glb",2]]
+          .forEach(function(m){modul(m[0],HX+m[1],0,HZ+2,Math.PI);});
+        [["th34_wand_fenster.glb",-2],["th34_wand_voll.glb",2]]
+          .forEach(function(m){modul(m[0],HX+m[1],0,HZ-2,0);});
+        modul("th34_wand_fenster2.glb",HX-4,0,HZ,Math.PI/2);
+        modul("th34_wand_voll.glb",HX+4,0,HZ,-Math.PI/2);
+        [[-4,-2],[4,-2],[-4,2],[4,2]].forEach(function(e){modul("th34_ecke.glb",HX+e[0],0,HZ+e[1],0);});
+        [-2,2].forEach(function(dx){modul("th34_decke.glb",HX+dx,2.75,HZ,0);});
+        [["th34_wand_fenster.glb",-2],["th34_wand_fenster.glb",2]]
+          .forEach(function(m){modul(m[0],HX+m[1],3,HZ+2,Math.PI);});
+        [["th34_wand_voll.glb",-2],["th34_wand_fenster.glb",2]]
+          .forEach(function(m){modul(m[0],HX+m[1],3,HZ-2,0);});
+        modul("th34_wand_fenster2.glb",HX-4,3,HZ,Math.PI/2);
+        modul("th34_wand_fenster2.glb",HX+4,3,HZ,-Math.PI/2);
+        [[-4,-2],[4,-2],[-4,2],[4,2]].forEach(function(e){modul("th34_ecke.glb",HX+e[0],3,HZ+e[1],0);});
+        [-2,2].forEach(function(dx){modul("th34_dach_sattel.glb",HX+dx,6,HZ,0);});
+        modul("th34_dach_giebel.glb",HX-4,6,HZ,0);
+        modul("th34_dach_giebel.glb",HX+4,6,HZ,0);
+        /* Gaube: Formel aus der Doku — z_dach + DHH*(1-|y_traufe|/(DSP/2)),
+           DSP=4.40, DHH=1.70; Traufabstand 1.55 -> 6 + 1.70*(1-1.55/2.20) = 6.50.
+           Vorderkante ist der Anker, Gaube sitzt auf der Südflaeche. */
+        modul("th34_gaube.glb",HX,6.5,HZ+1.55,Math.PI);
+        modul("th34_kamin.glb",HX+2.6,7.0,HZ-0.9,0);
+        addSolid(HX,HZ,9,5,{a:"z",at:HZ+2.5,c:HX,w:2});
+      })();
+      /* Vorplatz-Deko sparsam: je eine Laterne zwischen den Häusern */
+      bau("th4_laterne_modern.glb",5.2,-74,0,139,0,false,null,true);
+      bau("th4_laterne_modern.glb",5.2,50,0,139,0,false,null,true);
+    })();
     /* 🚜 BAUERNHOF-VIERTEL weit draussen auf dem Feld (User: „bauernhaeuser farm staelle
        windmuehle weit weg aufs feld wie farm etc., wie in richtiger landschaft"). Der Hof
        stand bisher zwischen Ringstrasse und Hochhaeusern — das passt nicht zusammen. */
