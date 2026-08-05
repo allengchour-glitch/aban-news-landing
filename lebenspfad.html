@@ -89,7 +89,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 #card button:hover{border-color:#ffcf3a;background:#fffbe8;transform:translateY(-1px)}
 #card button small{display:block;color:#6a5a2c;font-weight:600;margin-top:3px;font-size:.76rem}
 /* Overlays */
-.overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;background:linear-gradient(180deg,rgba(110,200,245,.96),rgba(255,244,214,.97));backdrop-filter:blur(5px);padding:20px;z-index:40;overflow:auto}
+.overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;background:linear-gradient(180deg,rgba(110,200,245,.96),rgba(255,244,214,.97));padding:20px;z-index:40;overflow:auto}
 .overlay::before,.overlay::after{content:"";flex:1 0 10px} /* Feder: kurz = zentriert, lang = scrollbar ab OBEN (Titel nie abgeschnitten) */
 .overlay .kicker{letter-spacing:.5em;font-size:.72rem;color:#4a6a8a;text-transform:uppercase;margin-bottom:12px;font-weight:800}
 .overlay h1{font-size:clamp(2.2rem,8vw,3.6rem);font-weight:900;background:linear-gradient(92deg,#ff8c2a,#ff5db8 45%,#2f8cff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 3px 0 rgba(255,255,255,.8)) drop-shadow(0 8px 22px rgba(80,60,20,.25))}
@@ -120,7 +120,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
   #chapterTag small{font-size:.62rem}
   #turnTag{font-size:.72rem;top:62px;left:auto;right:10px;transform:none;max-width:56vw;overflow:hidden;text-overflow:ellipsis;text-align:right} /* nowrap + Ellipsis statt Überlauf; small bricht darunter */
   .pcard .items span{font-size:15px;min-width:24px;height:24px;line-height:24px}
-  #progMap{bottom:88px;width:92vw}
+  #progMap{bottom:88px;width:calc(100vw - 150px)} /* Schwarm-4: schmaler — rechtes Ende (🏁 + Spielerpunkt) verschwand sonst hinter dem 💬-Chatknopf (right:14px, 52px breit) */
   #card{padding:16px}
   #card h3{font-size:1.05rem}
 }
@@ -235,10 +235,10 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 <button id="chatBtn" title="Chat mit Oma Hilde" style="position:fixed;bottom:96px;right:14px;z-index:16;border:2px solid rgba(120,110,80,.3);background:rgba(255,253,246,.95);border-radius:50%;width:52px;height:52px;font-size:1.5rem;cursor:pointer;box-shadow:0 3px 12px rgba(60,40,10,.25)" class="hide">💬</button>
 <div id="chatW" class="hide" style="position:fixed;bottom:96px;right:14px;width:min(320px,90vw);height:min(400px,60vh);background:#fffdf6;border:3px solid #ffcf3a;border-radius:18px;z-index:35;display:flex;flex-direction:column;box-shadow:0 16px 44px rgba(60,40,10,.35);overflow:hidden">
   <div style="background:linear-gradient(92deg,#ffd166,#ffb46e);padding:10px 14px;font-weight:900;color:#4a3010;display:flex;justify-content:space-between;align-items:center">
-    <span>👵 Oma Hilde</span><button id="chatX" style="border:0;background:none;font-size:1.1rem;cursor:pointer;color:#4a3010">✕</button></div>
+    <span>👵 Oma Hilde</span><button id="chatX" style="border:0;background:none;font-size:1.1rem;cursor:pointer;color:#4a3010;width:44px;height:44px;line-height:44px;padding:0;margin:-10px -12px -10px 0;text-align:center">✕</button><!-- 44px-Trefferfläche (Schwarm-4): der 💬-Öffnen-Knopf liegt exakt unter dem Fenster, ✕ ist der einzige Ausweg --></div>
   <div id="chatLog" style="flex:1;overflow-y:auto;padding:10px;display:flex;flex-direction:column;gap:8px;font-size:.85rem"></div>
   <div style="display:flex;gap:6px;padding:8px;border-top:2px solid #f0e0b8">
-    <input id="omaIn" type="text" maxlength="80" placeholder="Frag Oma Hilde…" style="flex:1;border:2px solid #e8d8b0;border-radius:10px;padding:8px 10px;font-size:.85rem;background:#fff;color:#2a3040">
+    <input id="omaIn" type="text" maxlength="80" placeholder="Frag Oma Hilde…" style="flex:1;border:2px solid #e8d8b0;border-radius:10px;padding:8px 10px;font-size:16px;background:#fff;color:#2a3040"><!-- 16px: iOS-Fokus-Zoom vermeiden (Schwarm-4) -->
     <button id="chatGo" style="border:0;background:linear-gradient(92deg,#ffd166,#ff7ad9);border-radius:10px;padding:8px 14px;font-weight:900;cursor:pointer;color:#4a3010">➤</button>
   </div>
 </div>
@@ -294,7 +294,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
       <div id="netStatus" style="flex-basis:100%;min-height:1.15em;font-size:.82rem;font-weight:700;color:#7a8a9a"></div>
     </div>
     <div id="netLobby" style="display:none;margin-top:8px">
-      <div>Raum-Code: <b id="netCodeShow" style="font-size:1.3rem;letter-spacing:4px;color:#e8722a"></b> <button id="netCopyBtn" style="border:1px solid #b8c8d8;background:#fff;border-radius:8px;padding:2px 8px;font-size:.75rem;cursor:pointer">📋 Kopieren</button> <button id="netShareBtn" style="border:1px solid #7db88a;background:#eaf9ee;border-radius:8px;padding:2px 8px;font-size:.75rem;cursor:pointer">📲 Link teilen</button> <button id="netWaBtn" style="border:1px solid #25c366;background:#e7f9ee;border-radius:8px;padding:2px 8px;font-size:.75rem;cursor:pointer">💬 WhatsApp</button></div>
+      <div>Raum-Code: <b id="netCodeShow" style="font-size:1.3rem;letter-spacing:4px;color:#e8722a"></b> <button id="netCopyBtn" style="border:1px solid #b8c8d8;background:#fff;border-radius:10px;padding:10px 12px;min-height:44px;font-size:.8rem;cursor:pointer;margin:3px 2px">📋 Kopieren</button> <button id="netShareBtn" style="border:1px solid #7db88a;background:#eaf9ee;border-radius:10px;padding:10px 12px;min-height:44px;font-size:.8rem;cursor:pointer;margin:3px 2px">📲 Link teilen</button> <button id="netWaBtn" style="border:1px solid #25c366;background:#e7f9ee;border-radius:10px;padding:10px 12px;min-height:44px;font-size:.8rem;cursor:pointer;margin:3px 2px">💬 WhatsApp</button></div>
       <div id="netModeTag" style="font-size:.8rem;font-weight:800;color:#2a6ab0"></div>
       <div id="netPlayers" style="margin:6px 0;font-weight:700;display:flex;flex-wrap:wrap;gap:6px;justify-content:center"></div>
       <div id="netCharWrap" style="margin:8px auto"></div>
@@ -1925,8 +1925,8 @@ function freshState(np,adult,mode){
   var ps=[];np=Math.max(1,Math.min(4,np|0)); // Overflow nie zulassen: max 4 Spieler
   for(var i=0;i<np;i++)ps.push({name:PNAMES[i]||("Spieler "+(i+1)),col:PCOLORS[i%PCOLORS.length],tile:0,geld:20,glueck:10,wissen:5,freunde:5,bio:[],alive:true,done:false,fam:{partner:false,kids:0,askedK:false},items:{},album:[],hist:[{g:20,h:10,w:5,f:5}]});
   return {v:4,mode:mode==="kurz"?"kurz":"voll",adult:!!adult,players:ps,turn:0,round:1,phase:"idle",t:0,goal:GOALS[(Math.random()*GOALS.length)|0]};}
-function saveGame(){if(!G)return;lsSet(SAVE_KEY,JSON.stringify(G,function(k,v){return k==="pawn"?undefined:v;}));if(NET.on)lsSet(SAVE_KEY+"_net","1");else lsDel(SAVE_KEY+"_net");} // auch Online-Spiele sichern -> nach Reload als Einzelspiel fortsetzbar
-function loadGame(){var raw=lsGet(SAVE_KEY);if(!raw)return null;try{var s=JSON.parse(raw);
+function saveGame(){if(!G)return;lsSet(NET.on?SAVE_KEY+"_net":SAVE_KEY,JSON.stringify(G,function(k,v){return k==="pawn"?undefined:v;}));} // Schwarm-4: Online-Runde in EIGENEM Slot — überschreibt nie mehr den Solo-Spielstand; bleibt nach Reload als Einzelspiel fortsetzbar (Fallback in loadGame)
+function loadGame(){var raw=lsGet(SAVE_KEY)||lsGet(SAVE_KEY+"_net");if(!raw)return null;try{var s=JSON.parse(raw);
   if(!(s&&(s.v===3||s.v===4)&&s.players&&s.players.length))return null; // v3 (ohne route/mode) bleibt ladbar
   if(s.mode!=="kurz")s.mode="voll";
   s.players.forEach(function(p){if(typeof p.tile!=="number"||p.tile<0)p.tile=0;});
@@ -2085,7 +2085,10 @@ function rollCore(){
   // 3D-Würfel rollt neben der Figur (Show — Ergebnis steht fest); reduziert: direkt Ergebnis
   if(OPT.motion&&die3d&&pawns[G.turn])dieShow(n,pawns[G.turn].position.x+2.4,pawns[G.turn].position.z+1.8);
   var bonus=(p.items&&p.items.auto&&n===6)?1:0; // 🚗 Turbo: bei einer 6 fährt das Auto 1 Feld weiter
-  showWheel(n,function(){bigNum(n,"#fff2c0"); // 🎲 Ergebnis GROSS aufpoppen (1.6→1.0, kurze Freeze)
+  NET._turnT=Date.now(); // Schwarm-4: Aktivitäts-Uhr
+  var tk=G.turn,seq=(window._moveSeq=(window._moveSeq||0)+1); // Schwarm-4: Zug-Token — der Rad-Callback (~3s) darf nach Skip/Resync keine fremde Figur ziehen
+  showWheel(n,function(){if(!running||!G||G.phase!=="rolling"||G.turn!==tk||seq!==window._moveSeq)return; // Zustand hat inzwischen gewechselt -> verwerfen
+    bigNum(n,"#fff2c0"); // 🎲 Ergebnis GROSS aufpoppen (1.6→1.0, kurze Freeze)
     startMove(n+bonus);
     if(bonus){announce("🚗 TURBO! 6 + 1 Extra-Feld","#ffd166");beep(90,.3,"sawtooth",.06);}});
 }
@@ -2153,23 +2156,26 @@ function updBot(dt){
     if(Math.random()<0.35)emote(G.turn,Math.random()<0.5?"jubel":"wink");}
 }
 // ⏰ AFK-Watchdog (nur Host, nur online): anwesender aber untätiger Spieler -> Warnung nach 40s, Auto-Zug nach 60s
-var _afkT=0,_afkSig="",_afkWarned=false;
-function updAfk(dt){
+var _afkT0=0,_afkSig="",_afkWarned=false;
+function updAfk(dt){ // Schwarm-4: Uhr = Wanduhr (Date.now) statt rAF-dt — im Hintergrund-Tab fror die rAF-Uhr genau dann ein, wenn der Auto-Zug gebraucht wurde
   if(!NET.on||!NET.host||!G||!running)return;
   var p=G.players[G.turn];if(!p||p.bot||p.dead||p.done)return;
-  if(typeof netPresent==="function"&&!netPresent(G.turn)){_afkT=0;return;} // abwesend -> Pause-System übernimmt
+  if(typeof netPresent==="function"&&!netPresent(G.turn)){_afkT0=0;return;} // abwesend -> Pause-System übernimmt
   var canAct=(G.phase==="idle")||!!window._cardOpts;
-  if(!canAct){_afkT=0;_afkWarned=false;return;}
+  if(!canAct){_afkT0=0;_afkWarned=false;return;}
   var sig=G.turn+"|"+G.phase+"|"+(window._cardSeq||0);
-  if(sig!==_afkSig){_afkSig=sig;_afkT=0;_afkWarned=false;}
-  _afkT+=dt;
-  if(_afkT>120&&!_afkWarned){_afkWarned=true;announce("⏰ "+p.name+" ist dran — in 30s übernimmt Robo den Zug …","#ffb46e"); /* ⏱️ Online-Koop: viel mehr Bedenkzeit (2min + 30s) — Freunde werden nicht rausgeworfen */
+  if(sig!==_afkSig||!_afkT0){_afkSig=sig;_afkT0=Date.now();_afkWarned=false;}
+  var el=(Date.now()-_afkT0)/1000;
+  if(el>120&&!_afkWarned){_afkWarned=true;announce("⏰ "+p.name+" ist dran — in 30s übernimmt Robo den Zug …","#ffb46e"); /* ⏱️ Online-Koop: viel mehr Bedenkzeit (2min + 30s) — Freunde werden nicht rausgeworfen */
     netSend({t:"chat",n:"System",x:"⏰ "+p.name+": noch 30s, dann übernimmt Robo!"});}
-  if(_afkT>150){_afkT=0;_afkWarned=false;
+  if(el>150){_afkT0=Date.now();_afkWarned=false;
     chatAdd&&chatAdd("System","🤖 Robo übernimmt den Zug von "+p.name);
     if(window._cardOpts){sendPick((Math.random()*window._cardOpts.length)|0);}
     else{netSend({t:"roll"});NET.q.push({t:"roll"});}}
 }
+// ⏱️ Schwarm-4: setInterval läuft (gedrosselt) auch im Hintergrund-Tab weiter — AFK-Watchdog + „reagiert nicht"-Check
+// dürfen nicht allein an rAF hängen, sonst Deadlock, sobald der Host die App wegschiebt.
+setInterval(function(){if(NET.on&&running&&G){try{updAfk(0);}catch(e){}try{netCheckPause();}catch(e){}}},5000);
 function updMove(dt){
   if(G.phase!=="moving")return;
   var p=G.players[G.turn],pw=pawns[G.turn];
@@ -2252,9 +2258,11 @@ function onLand(){
   if(typeof handleField==="function")handleField(p,f);
   else endTurnSoon();
 }
-function endTurnSoon(){updPlayers();saveGame();setTimeout(nextTurn,Math.round(850/OPT.tempo));}
+function endTurnSoon(){updPlayers();saveGame();clearTimeout(window._turnTO);window._turnTO=setTimeout(nextTurn,Math.round(850/OPT.tempo));} // Schwarm-4: Timer merken — sonst Doppel-nextTurn (drop im 850ms-Fenster) und ein Spieler wird übersprungen
 function nextTurn(){
   if(!G)return;
+  clearTimeout(window._turnTO);window._turnTO=null; // Schwarm-4: verhindert zweiten Zugwechsel durch noch laufenden endTurnSoon-Timer
+  NET._turnT=Date.now(); // Aktivitäts-Uhr für „reagiert nicht"-Overlay
   var allDone=G.players.every(function(p){return p.done;});
   if(allDone){showEnd();return;}
   var tries=0;
@@ -2276,7 +2284,7 @@ function finishPlayer(p){if(!p.hist)p.hist=[];p.hist.push({g:p.geld,h:p.glueck,w
   beep(880,.4,"triangle",.08);buzz([60,50,60,50,120]);
   (function(){var f=fields[p.tile];if(f)for(var c=0;c<3;c++)(function(cc){setTimeout(function(){confetti(f.x+(Math.random()-0.5)*4,f.z+(Math.random()-0.5)*4,0xf0c8ff);},cc*200);})(c); // 🎆 Ziel-Erreicht-Höhepunkt
     jingle();setTimeout(jingle,420);zoomPunch(0.18);colorFlash("245,200,255",false);})();
-  G.phase="idle";endTurnSoon();
+  G.phase="landed";endTurnSoon(); // Schwarm-4: nicht schon „idle" — LEER/Klick konnte im 850ms-Fenster rollCore starten und einen Spieler überspringen (nextTurn setzt selbst „idle")
 }
 // ===================== Ende: Punkte + Biografie =====================
 function tollBell(n){for(var i=0;i<n;i++)setTimeout(function(){beep(196,1.2,"sine",.09);beep(392,0.8,"sine",.04);},i*900);}
@@ -2313,11 +2321,12 @@ function playerDeath(p,how){
   p.bio.push("verstarb — "+(how||"mitten im Leben")+" ⚰️ Grabspruch: R.I.P., Kapitel "+(chapterOf(p.tile)+1));
   updPlayers();saveGame();
   var allDone=G.players.every(function(x){return x.done;});
-  setTimeout(function(){if(allDone)showEnd();else nextTurn();},2600);
+  clearTimeout(window._turnTO);window._turnTO=setTimeout(function(){if(allDone)showEnd();else nextTurn();},2600); // Schwarm-4: über denselben Timer — kein Doppel-nextTurn im 2,6s-Trauer-Fenster
 }
 function lifeScore(p){return p.geld+p.glueck*2+p.wissen*2+p.freunde*2+(goalMet(p)?12:0);}
 function showEnd(){
-  running=false;lsDel(SAVE_KEY);
+  running=false;lsDel(SAVE_KEY);if(NET.on)lsDel(SAVE_KEY+"_net");
+  var _cb=document.getElementById("contBtn");if(_cb&&!loadGame())_cb.classList.add("hide"); // Schwarm-4: Spielstand ist weg -> „Weiterspielen" verschwindet (startete sonst heimlich ein neues Leben)
   // 🔊 Batch 7/7: Loop ausblenden, damit die Siegesfanfare frei steht
   music.on=false;clearInterval(window._musFade);
   window._musFade=setInterval(function(){try{if(MUS.volume>0.03)MUS.volume=Math.max(0,MUS.volume-0.05);else{MUS.volume=0;if(!MUS.paused)MUS.pause();clearInterval(window._musFade);}}catch(e){clearInterval(window._musFade);}},60);
@@ -2984,7 +2993,7 @@ window.__lp={
 var last=performance.now();
 function loop(now){
   requestAnimationFrame(loop);
-  var dt=Math.min(0.05,(now-last)/1000);last=now;
+  var dt=Math.min(0.05,(now-last)/1000);last=now;window._lastLoopT=now; // Schwarm-4: Lebenszeichen der Simulation (Checksum/Sync-Sender prüfen das)
   if(running&&G){G.t+=dt;updBot(dt);updAfk(dt);updMove(dt);updMusic(dt);updConfs(dt);updDie(dt);updLandRings(dt);updPonds(G.t);updFlies(dt,G.t);updFam(dt);updTurnMarker(dt);updDucks(dt,G.t);updBalloons(G.t);updStorks(dt);updEmotes(dt);updDiscBounce(dt);updLandmarks(dt,G.t);updPawnBlobs();updClouds(dt);updButterflies(dt,G.t);updBirds(dt,G.t);updIdleLife(dt);updDekoCoins(G.t);updDriftBalloons(dt,G.t);updBdayCakes(dt);updNet();
     if(window._lpWindmill)window._lpWindmill.rotation.z+=dt*(OPT.motion?1.15:0); // Windrad dreht
     if(window._lpFlag)for(var fq=0;fq<window._lpFlag.length;fq++){var _q=window._lpFlag[fq];
@@ -3010,7 +3019,8 @@ function loop(now){
     window._lpBillboards[0].position.set(_sx,64,_sz);if(window._lpBillboards[1])window._lpBillboards[1].position.set(_sx,64,_sz-1);
     for(var bb=0;bb<window._lpBillboards.length;bb++)window._lpBillboards[bb].lookAt(camera.position);}
   updateCamera(dt);
-  renderer.render(scene,camera);
+  // Schwarm-4: hinter deckendem Start-/Menü-Overlay (oder unsichtbarem Tab) nicht rendern — sparte auf Handys Akku/Hitze genau dort, wo die ersten 30s verbracht werden
+  if(!(document.hidden||menuOpen||!document.getElementById("start").classList.contains("hide")))renderer.render(scene,camera);
 }
 requestAnimationFrame(loop);
 // Charakter-Vorschau-Dimensionen ZUERST (vor renderNames/renderCharUI, sonst cv.width=undefined -> leere Vorschau)
@@ -3032,7 +3042,7 @@ var selN=1; /* 🌐 Online-Koop = jeder wählt nur SEINEN 1 Charakter (User); me
 })();
 function renderNames(){var nr=document.getElementById("nameRow");nr.innerHTML="";
   for(var i=0;i<selN;i++){var inp=document.createElement("input");inp.type="text";inp.maxLength=12;inp.placeholder=PNAMES[i];inp.id="pn"+i;
-    inp.style.cssText="width:110px;padding:9px 10px;border-radius:10px;border:3px solid #"+("00000"+PCOLORS[i].toString(16)).slice(-6)+";background:#fffdf6;color:#2a3040;font-weight:800;text-align:center;font-size:.85rem";
+    inp.style.cssText="width:110px;padding:9px 10px;border-radius:10px;border:3px solid #"+("00000"+PCOLORS[i].toString(16)).slice(-6)+";background:#fffdf6;color:#2a3040;font-weight:800;text-align:center;font-size:16px"; // Schwarm-4: 16px wie #netName/#netCode — unter 16px zoomt iOS beim Fokus rein (und user-scalable=no lässt nicht mehr rauszoomen)
     nr.appendChild(inp);}
   renderCharUI();}
 // ===================== Charakter-Picker (Startscreen): 👩/👨 + 4 Styles + 3 Hauttöne =====================
@@ -3175,7 +3185,7 @@ function netCheckPause(){var ov=document.getElementById("netPause");if(!ov)retur
   if(!NET.on||!running||!G){ov.classList.add("hide");return;}
   var skip=document.getElementById("netPauseSkip"),solo=document.getElementById("netPauseSolo");
   var txt=document.getElementById("netPauseTxt"),sub=document.getElementById("netPauseSub"),ic=document.getElementById("netPauseIcon");
-  if(!NET.host&&NET.conns.length===0){ // Gast hat den Host verloren
+  if(!NET.host&&!(NET.conns[0]&&NET.conns[0].open)){ // Gast hat den Host verloren (Schwarm-4: auch tote, nie geöffnete Reconnect-Verbindung zählt als getrennt — sonst verschwand das Solo-Overlay nach 8 Fehlversuchen)
     ov.classList.remove("hide");ic.textContent="📴";txt.textContent="Verbindung zum Gastgeber verloren";
     sub.textContent="Warte auf Reconnect – oder spiel dein Leben alleine zu Ende (Spielstand ist gesichert).";
     skip.style.display="none";solo.style.display="inline-block";return;}
@@ -3185,6 +3195,13 @@ function netCheckPause(){var ov=document.getElementById("netPause");if(!ov)retur
     txt.textContent="Warte auf "+((G.players[cur]&&G.players[cur].name)||"Mitspieler")+" …";
     sub.textContent=NET.host?"Ist die Person weg? Du kannst sie überspringen.":"Der Gastgeber kann sie bei Bedarf überspringen.";
     skip.style.display=NET.host?"inline-block":"none";solo.style.display="none";return;}
+  // Schwarm-4: „lebt zwar, reagiert aber nicht" — z. B. Host-App im Hintergrund (Datenkanal antwortet weiter auf Pings,
+  // aber rAF/updNet stehen). Ohne diesen Fall gab es KEINEN Knopf und die Runde war tot.
+  if(cur!==NET.my&&!(G.players[cur]&&G.players[cur].done)&&(Date.now()-(NET._turnT||Date.now()))>120000){
+    ov.classList.remove("hide");ic.textContent="⏳";
+    txt.textContent=((G.players[cur]&&G.players[cur].name)||"Mitspieler")+" reagiert nicht";
+    sub.textContent=NET.host?"Du kannst den Zug überspringen.":"Warte weiter — oder spiel dein Leben alleine zu Ende (Spielstand ist gesichert).";
+    skip.style.display=NET.host?"inline-block":"none";solo.style.display=NET.host?"none":"inline-block";return;}
   ov.classList.add("hide");}
 (function(){var skip=document.getElementById("netPauseSkip"),solo=document.getElementById("netPauseSolo");
   if(skip)skip.onclick=function(){if(!NET.host||!G)return;var cur=G.turn;if(cur===NET.my)return;
@@ -3281,10 +3298,14 @@ function updNet(){
 function netStateSnapshot(){ // G ohne three.js-pawn-Refs serialisierbar machen
   try{return JSON.parse(JSON.stringify(G,function(k,v){return k==="pawn"?undefined:v;}));}catch(e){return null;}}
 function netSyncTo(c){ // vollständigen Zustand an EINE Verbindung schicken (Reconnect)
-  if(!NET.host||!G||!c)return;var st=netStateSnapshot();if(!st)return;
+  if(!NET.host||!G||!c)return;
+  if(running&&performance.now()-(window._lastLoopT||0)>2000)return; // Schwarm-4: eigene Simulation steht (Hintergrund) -> Snapshot wäre veraltet; Gast fragt per Watchdog erneut
+  var st=netStateSnapshot();if(!st)return;
   try{c.send(JSON.stringify({t:"sync",state:st,seed:NET.seed>>>0,turn:G.turn,names:NET.names,cfgs:NET.cfgs,cardSeq:window._cardSeq||0}));}catch(e){}}
 function netSyncAll(){ // vollständigen Zustand an alle Gäste (Resync nach Desync)
-  if(!NET.host||!G)return;var st=netStateSnapshot();if(!st)return;
+  if(!NET.host||!G)return;
+  if(running&&performance.now()-(window._lastLoopT||0)>2000)return; // Schwarm-4: s. netSyncTo
+  var st=netStateSnapshot();if(!st)return;
   netSend({t:"sync",state:st,seed:NET.seed>>>0,turn:G.turn,names:NET.names,cfgs:NET.cfgs,cardSeq:window._cardSeq||0});}
 function netApplySync(m){ // Gast: G aus Snapshot rekonstruieren + Lockstep deterministisch fortsetzen
   if(NET.host)return;
@@ -3306,6 +3327,7 @@ function netApplySync(m){ // Gast: G aus Snapshot rekonstruieren + Lockstep dete
 function netStartChkTimer(){ // Host: periodischer State-Checksum an alle Gäste
   if(NET._chk)clearInterval(NET._chk);
   NET._chk=setInterval(function(){if(!NET.host||!NET.on||!G||!running)return;
+    if(NET.q.length||performance.now()-(window._lastLoopT||0)>2000)return; // Schwarm-4: Hintergrund-Tab (rAF steht) / unbearbeitete Queue -> KEINE veraltete Prüfsumme senden — sonst werden Gäste per Resync zurückgeworfen
     netSend({t:"chk",turn:G.turn,round:G.round,tiles:G.players.map(function(p){return p.tile;}),done:G.players.map(function(p){return p.done?1:0;}),seed:NET.seed>>>0});
   },5000);}
 function netCheckChk(m){ // Gast: eigenen Stand mit Host-Checksum vergleichen
@@ -3455,7 +3477,9 @@ function netLobbyShow(){document.getElementById("netSetup").style.display="none"
       var anchor=document.getElementById("netPlayers");if(anchor&&anchor.parentNode)anchor.parentNode.insertBefore(bb,anchor.nextSibling);
       bb.onclick=function(){if(!NET.host)return;
         var bi=NET.names.indexOf("Robo 🤖");
-        if(bi>=0){NET.names.splice(bi,1);NET.cfgs.splice(bi,1);NET.ready.splice(bi,1);if(NET.bots)NET.bots=[];}
+        if(bi>=0){NET.names.splice(bi,1);NET.cfgs.splice(bi,1);NET.ready.splice(bi,1);if(NET.bots)NET.bots.splice(bi,1);
+          NET.conns.forEach(function(cc){if(cc._idx!=null&&cc._idx>bi)cc._idx--; // Schwarm-4: wie im close-Handler reindizieren — sonst startet ein später beigetretener Gast mit you=2 bei nur 2 Spielern (unspielbar)
+            if(cc._idx!=null){try{cc.send(JSON.stringify({t:"welcome",idx:cc._idx}));}catch(e){}}});}
         else{if(NET.names.length>=4){netStatus("Raum ist voll (4).","#e05a5a");return;}
           NET.names.push("Robo 🤖");NET.cfgs.push({g:"m",style:2,skin:2,hair:3,pants:4,cloth:10,meshy:"ninja"});
           NET.ready[NET.names.length-1]=true;NET.bots=NET.bots||[];NET.bots[NET.names.length-1]=true;}
@@ -3611,8 +3635,11 @@ function netHostBoot(){ // ID-Kollision (unavailable-id) -> neuen Code würfeln 
         NET.conns.forEach(function(oc){if(oc!==c&&oc._idx===ri){try{oc.close();}catch(e){}var oi=NET.conns.indexOf(oc);if(oi>=0)NET.conns.splice(oi,1);}}); // toten alten Kanal desselben Slots schließen -> schneller Reconnect statt Ablehnung
         c._idx=ri;
         if(NET.present)NET.present[ri]=true;
-        if(window._cardOpts&&G&&G.turn===ri){try{sendPick((Math.random()*window._cardOpts.length)|0);}catch(e){}} /* 🩹 Schwarm-P1: offene Karte des Rückkehrers auflösen — sonst hing der Zug bis zum AFK-Timeout (~2,5 Min Gummiband) */
-        netSyncTo(c);netBroadcastPres();netConnInfo();
+        if(window._cardOpts&&G&&G.turn===ri){try{sendPick((Math.random()*window._cardOpts.length)|0);}catch(e){} /* 🩹 Schwarm-P1: offene Karte des Rückkehrers auflösen — sonst hing der Zug bis zum AFK-Timeout (~2,5 Min Gummiband) */
+          (function warte(n){ /* Schwarm-4: Snapshot erst NACH verarbeiteter Auto-Wahl + Zugende ziehen — sonst kehrt der Gast einen halben Zug hinter dem Host zurück (sofortiger Desync) */
+            if(n<30&&(NET.q.length||window._cardOpts||(G&&G.phase!=="idle"))){setTimeout(function(){warte(n+1);},150);return;}
+            netSyncTo(c);netBroadcastPres();netConnInfo();})(0);}
+        else{netSyncTo(c);netBroadcastPres();netConnInfo();}
         if(G&&G.players[ri])chatAdd("System",G.players[ri].name+" ist wieder da");return;}
       if(m.t==="resync"){netSyncTo(c);return;} // Gast hat Desync erkannt -> Snapshot nachliefern
       if(m.t==="ping"){try{c.send(JSON.stringify({t:"pong",ts:m.ts}));}catch(e){}return;} // gezielte Ping-Antwort
@@ -3903,11 +3930,10 @@ function syncBundle(){var chars={};CHARKEYS.forEach(function(k){var v=lsGet(k);i
   return JSON.stringify({t:"lpsync",save:lsGet(SAVE_KEY)||null,stats:lsGet("lp_stats")||null,ach:lsGet("lp_ach")||null,chars:chars});}
 function syncApply(m){ /* empfangener Stand: speichern + sofort nutzbar machen */
   if(m.save)lsSet(SAVE_KEY,m.save);
-  if(m.stats)lsSet("lp_stats",m.stats);
-  if(m.ach)lsSet("lp_ach",m.ach);
+  // Schwarm-4: Statistik/Erfolge MERGEN statt überschreiben — sonst löschte ein Handy mit 2 Spielen die 20 Spiele + Erfolge des PCs
+  if(m.stats){try{var inS=JSON.parse(m.stats)||{};for(var sk in inS){if(typeof inS[sk]==="number")LPSTATS[sk]=Math.max(LPSTATS[sk]||0,inS[sk]);else if(LPSTATS[sk]==null)LPSTATS[sk]=inS[sk];}saveStats();}catch(e){}}
+  if(m.ach){try{var inA=JSON.parse(m.ach)||{};for(var ak in inA)if(!LPACH[ak])LPACH[ak]=inA[ak];lsSet("lp_ach",JSON.stringify(LPACH));}catch(e){}}
   if(m.chars)for(var k in m.chars)if(CHARKEYS.indexOf(k)>=0)lsSet(k,m.chars[k]);
-  try{LPSTATS=JSON.parse(lsGet("lp_stats")||"{}")||{};}catch(e){}
-  try{LPACH=JSON.parse(lsGet("lp_ach")||"{}")||{};}catch(e){}
   var cb=document.getElementById("contBtn");if(cb&&loadGame())cb.classList.remove("hide");}
 function syncSendStart(){ /* Sende-Seite: Raum mit Zufalls-Code oeffnen, Bundle bei Verbindung schicken */
   if(typeof Peer==="undefined"){syncStatus("Online-Modul nicht geladen — Seite neu laden.","#e05a5a");return;}
@@ -4010,7 +4036,7 @@ function begin(saved){
   if(useBot&&G.players[1]){G.players[1].name="Robo";G.players[1].bot=true;} // 🤖 Solo-Gegner
   if(G.mode!=="kurz")G.mode="voll"; // alte v3-Saves defensiv
   if(!G.goal)G.goal=GOALS[(NET.on?(NET.seed>>>3)%GOALS.length:(Math.random()*GOALS.length))|0]; // online: seed-deterministisch (sonst Ziel-Desync)
-  forkSel=null;moveTo=-1;moveQ=0;hopT=0;
+  forkSel=null;moveTo=-1;moveQ=0;hopT=0;window._moveSeq=(window._moveSeq||0)+1; // Schwarm-4: laufende Rad-Callbacks entwerten (Resync baut alles neu)
   G.players.forEach(function(pp){if(!fields[pp.tile])pp.tile=0;}); // unbekannter Feld-Index -> Start (nie crashen)
   if(!saved){for(var ni=0;ni<G.players.length;ni++){var el=document.getElementById("pn"+ni);
     if(el&&el.value.trim())G.players[ni].name=el.value.trim().slice(0,12);}}
@@ -4032,6 +4058,8 @@ function begin(saved){
       var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false}));
       sp.scale.set(1.7,0.48,1);sp.position.y=2.15;pawns[i].add(sp);})();
     placePawn(i);syncFam(i);agePawn(i,false); // Look passend zum Kapitel-Alter (Start = Kind)
+    if(p.dead){var pwD=pawns[i];pwD.rotation.z=Math.PI/2;pwD.position.y=0.3; // ⚰️ Schwarm-4: Tote nach Laden wieder umlegen + ausgrauen (standen sonst quicklebendig da)
+      pwD.traverse(function(nn){if(nn.isMesh&&nn.material&&nn.material.color)nn.material.color.lerp(new THREE.Color(0x9a9aa8),0.7);});}
     if(p.items&&p.items.auto)enableCar(i); // gespeichertes Auto wieder aufbauen
     var bl2=new THREE.Mesh(new THREE.CircleGeometry(0.55,12),new THREE.MeshBasicMaterial({color:0x2a4a2a,transparent:true,opacity:0.22}));
     bl2.rotation.x=-Math.PI/2;bl2.position.y=0.05;scene.add(bl2);pawnBlobs.push(bl2);});
@@ -4043,7 +4071,7 @@ function begin(saved){
   document.getElementById("chatBtn").classList.remove("hide");
   rollBtn.classList.remove("hide");rollBtn.disabled=false;
   document.getElementById("emoBtn").classList.remove("hide");
-  G.phase="idle";running=true;
+  G.phase="idle";running=true;NET._turnT=Date.now(); // Schwarm-4: Aktivitäts-Uhr frisch starten
   // 🎥 Kamera SOFORT auf die Startfigur setzen (sonst driftet camT langsam von (0,0) heran → Figur wirkt „unsichtbar")
   (function(){var t=G.players[G.turn].tile,f=fields[t]||fields[0];if(f){camT.x=f.x;camT.z=f.z;
     var camH=16.5*(H>W?1.45:1)*zoomK;camera.position.set(f.x,camH,f.z+15*(H>W?1.3:1)*zoomK);camera.lookAt(f.x,0.5,f.z-2);}})();
@@ -4110,7 +4138,7 @@ var TUT_STEPS=[
  ["🎲","Würfeln & Laufen","Tippe auf <b>Drehen!</b> — deine Figur läuft die bunten Felder entlang.<br><br>Das Ziel: <b>einmal durchs ganze Leben</b> — vom Kind bis zum Lebensabend, in 8 Kapiteln."],
  ["🟡","Die Felder","Jede Farbe ist eine kleine Überraschung:<br><br>💰 <b>Geld</b> · ❤️ <b>Glück</b> · 🧠 <b>Wissen</b> · 👥 <b>Freunde</b><br><br>✨ <b>Weisse Felder</b> = Ereignis-Karte mit Entscheidung. Lies sie und wähle, was DU tun würdest — <b>falsch gibt es nicht!</b>"],
  ["⭐","Meilensteine","Am <b>orangen Stern-Feld</b> beginnt ein neues Lebenskapitel:<br><br>💼 Beruf wählen · 🚗 Auto kaufen · 💍 Heiraten · 👶 Kinder · 🏠 Haus<br><br>Alles, was du bekommst, läuft sichtbar neben deiner Figur mit!"],
- ["🏁","Gewinnen","Am Ende zählen <b>alle Punkte zusammen</b> (💰+❤️+🧠+👥) — wer am meisten hat, gewinnt.<br><br>💫 Extra-Tipp: Landet ihr auf <b>demselben Feld</b>, gibt es eine Begegnung — mit Umarmung, Tanz oder Küsschen 😘 und Bonus für beide!"]];
+ ["🏁","Gewinnen","Am Ende zählen <b>alle Punkte zusammen</b> — ❤️ 🧠 👥 zählen <b>doppelt</b>, 💰 einfach, und das 🎯 Rundenziel bringt <b>+12</b>. Wer am meisten hat, gewinnt.<br><br>💫 Extra-Tipp: Landet ihr auf <b>demselben Feld</b>, gibt es eine Begegnung — mit Umarmung, Tanz oder Küsschen 😘 und Bonus für beide!"]];
 function showTutorial(st){
   st=st|0;lsSet("lp_tut_seen","1");
   var ov=document.getElementById("tutOv");
@@ -4154,7 +4182,7 @@ document.getElementById("restartBtn").onclick=function(){var b=document.getEleme
   if(b.dataset.armed){lsDel(SAVE_KEY);location.reload();}
   else{b.dataset.armed="1";b.textContent="Sicher? Nochmal tippen";}};
 document.getElementById("startBtn").onclick=function(){lsDel(SAVE_KEY);begin(null);};
-document.getElementById("contBtn").onclick=function(){begin(loadGame());};
+document.getElementById("contBtn").onclick=function(){var s=loadGame();if(!s)return;begin(s);}; // Schwarm-4: nie versehentlich begin(null) = neues Spiel
 document.getElementById("newBtn").onclick=function(){document.getElementById("endO").classList.add("hide");document.getElementById("start").classList.remove("hide");renderStartStats();
   if(NET.on){ // Online beenden: sauber trennen, Lobby zurücksetzen
     try{if(NET.peer)NET.peer.destroy();}catch(e){}if(NET._hb)clearInterval(NET._hb);
@@ -4216,10 +4244,11 @@ function showCard(kick,title,txt,opts){
   cardEl.classList.add("on");beep(520,.08,"triangle",.05);cardRustle(); // 🔊 sanftes Seiten-Rascheln beim Aufdecken
 }
 function sendPick(k){ // genau EINE Wahl pro Karte (verhindert Quiz-Timeout+Klick-Doppel im Lockstep)
+  if(NET.on&&!NET.host&&!(NET.conns[0]&&NET.conns[0].open)){announce("📴 Getrennt — warte auf Verbindung …","#ffb46e");return;} // Schwarm-4: Drift-Guard wie roll() — sonst wendet der Gast die Wahl lokal an, obwohl sie den Host nie erreicht
   if(window._pickDone===window._cardSeq)return;window._pickDone=window._cardSeq;
   if(NET.on){var pm={t:"pick",k:k,seq:window._cardSeq};netSend(pm);NET.q.push(pm);} // seq -> Empfänger erkennt veraltete/fremde Karten
   else cardPick(k);}
-function cardPick(k){var opts=window._cardOpts;if(!opts||!opts[k])return;clearTimeout(window._qTO);
+function cardPick(k){var opts=window._cardOpts;if(!opts||!opts[k])return;clearTimeout(window._qTO);NET._turnT=Date.now(); // Schwarm-4: Aktivitäts-Uhr
   window._cardOpts=null;cardEl.classList.remove("on");opts[k].fn();}
 function fxLabel(fx){var parts=[];
   if(fx.geld)parts.push((fx.geld>0?"+":"")+fx.geld+" 💰");
@@ -4246,10 +4275,15 @@ function applyFx(p,fx){showFx(p,fx);
     if(net>=6)zoomPunch(0.16); // grosser Gesamtgewinn: Zoom-Punch
     if((fx.geld||0)>=6&&pawns[pi]){moneyRain(pawns[pi].position.x,pawns[pi].position.z,12);zoomPunch(0.16);} // 💰 Geld-Regen
     if((fx.geld||0)<=-5&&pawns[pi])tears(pawns[pi].position.x,pawns[pi].position.z);}
+  // Schwarm-4 (Verhaltensänderung): fehlendes Geld wird wie am Rechnungsfeld in Glück umgewandelt —
+  // vorher kappte Math.max(0,…) still bei 0 und Haus/Hochzeit/Luxus-Optionen waren mit 0 💰 gratis (dominante Strategie).
+  var kurz=Math.max(0,-(fx.geld||0)-p.geld);
   p.geld=Math.max(0,p.geld+(fx.geld||0));
-  p.glueck=Math.max(0,p.glueck+(fx.glueck||0));
+  p.glueck=Math.max(0,p.glueck+(fx.glueck||0)-kurz);
   p.wissen=Math.max(0,p.wissen+(fx.wissen||0));
   p.freunde=Math.max(0,p.freunde+(fx.freunde||0));
+  if(kurz>0){if(pi>=0&&pawns[pi])floatStat("−"+kurz+" ❤️ (Pleite)","#ff8a8a",pawns[pi].position.x,pawns[pi].position.z,520);
+    showHint("⚠️ Nicht genug 💰 — der Rest kostet "+kurz+" ❤️ Glück.",3000);}
   if(p.geld===0&&!p._pleite){p._pleite=true;showHint("⚠️ Pleite! Kein Geld mehr bei Rechnungen kostet es jetzt Glück statt Geld.",3200);}
 }
 // ===================== ❓🔄🏁 Stations-Events (Pass B2): mehr als Würfeln =====================
@@ -4320,7 +4354,7 @@ function quizCard(p){ // ❓ 15s-Sanduhr (Balken); reduzierte Bewegung: ohne Zei
   var avail=[],i;for(i=0;i<QUIZ.length;i++)if(G.quizU.indexOf(i)<0)avail.push(i);
   if(!avail.length){G.quizU=[];for(i=0;i<QUIZ.length;i++)avail.push(i);}
   var qi=avail[(srand()*avail.length)|0];G.quizU.push(qi);
-  var Q=QUIZ[qi],right=Q.a[Q.c],timed=OPT.motion;
+  var Q=QUIZ[qi],right=Q.a[Q.c],timed=OPT.motion||NET.on; // Schwarm-4: Anzeige = Timer — online ist der 22s-Timeout IMMER scharf, also nie „kein Zeitdruck" behaupten
   cardEl.style.borderColor="#8a5aff";
   function fin(ok,toolate){
     if(ok){p.quizStreak=(p.quizStreak||0)+1;
@@ -4339,7 +4373,7 @@ function quizCard(p){ // ❓ 15s-Sanduhr (Balken); reduzierte Bewegung: ohne Zei
     timed?'⏳ 22 Sekunden!<div id="qTimer"><div id="qBar"></div></div>':"Überleg in Ruhe — kein Zeitdruck.",opts);
   clearTimeout(window._qTO);
   if(timed)requestAnimationFrame(function(){requestAnimationFrame(function(){var b=document.getElementById("qBar");if(b)b.style.width="0%";});});
-  if(timed||NET.on){ // Online IMMER scharf schalten (auch bei OPT.motion=aus) -> AFK erzeugt keinen Soft-Lock
+  if(timed){ // Online IMMER scharf (timed enthält NET.on) -> AFK erzeugt keinen Soft-Lock
     window._qTO=setTimeout(function(){ // nur der aktive Spieler löst den Timeout aus (Online: ein Absender)
       if(!window._cardOpts)return;
       if(NET.on&&G.turn!==NET.my)return;
@@ -4413,7 +4447,9 @@ function shortMileChain(p){ // ⚡ Kurz-Modus: das große Lebens-Kapitel — Hoc
 function glueckswheelCard(p){ // 🎰 Glücksrad des Lebens — deterministischer Lockstep-Draw, Rad nur Visualisierung (wie der Würfelwurf)
   var n=1+((srand()*6)|0);
   announce("🎰 GLÜCKSRAD!","#d94fd0");beep(660,.08,"triangle",.05);
+  var tk=G.turn,seq=(window._moveSeq=(window._moveSeq||0)+1); // Schwarm-4: Zug-Token wie in rollCore — kein blindes Anwenden nach Skip/Resync
   showWheel(n,function(){
+    if(!running||!G||G.turn!==tk||seq!==window._moveSeq)return;
     var R=[{t:"+4 💰",fx:{geld:4}},{t:"+3 ❤️",fx:{glueck:3}},{t:"+3 🧠",fx:{wissen:3}},{t:"+3 👥",fx:{freunde:3}},{t:"−2 💰 · kleines Pech",fx:{geld:-2}},{t:"JACKPOT! +2 auf ALLES",fx:{geld:2,glueck:2,wissen:2,freunde:2}}][n-1];
     applyFx(p,R.fx);announce("🎰 "+R.t,n===6?"#ffe98a":(n===5?"#ff8a8a":"#e0a0ff"));
     if(n===6){confetti(fields[p.tile].x,fields[p.tile].z,0xd94fd0,18);jingle();zoomPunch(0.16);buzz([50,40,90]);}

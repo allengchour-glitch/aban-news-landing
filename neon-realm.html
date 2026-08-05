@@ -129,7 +129,8 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
 #tDodge{right:106px;bottom:30px;border-color:#5ef2ff;background:rgba(16,50,64,.55);color:#7de3ff}
 #tBolt{right:24px;bottom:188px;border-color:#ffcf6e;background:rgba(64,48,16,.55);color:#ffd166}
 #tAct{right:112px;bottom:132px;border-color:#6affab;background:rgba(18,58,36,.55);color:#8affc0;font-size:1.2rem}
-#tInv{position:absolute;top:162px;right:116px;width:44px;height:44px;border-radius:10px;border:1px solid #3a4170;background:rgba(16,20,43,.8);color:#cfd8ff;font-size:1.35rem;pointer-events:auto}
+#tInv,#tSkl{position:absolute;top:162px;right:116px;width:44px;height:44px;border-radius:10px;border:1px solid #3a4170;background:rgba(16,20,43,.8);color:#cfd8ff;font-size:1.35rem;pointer-events:auto}
+#tSkl{right:168px} /* Skill-Baum auf Touch: sonst nur über Taste T erreichbar */
 /* Mobile Skill-Buttons (Nova/Signature + Kettenblitz bzw. Ultimate) — ≥44px, kollisionsfrei zur bestehenden Button-Wolke */
 #tSkA{right:24px;bottom:280px;border-color:#ffd166;background:rgba(64,48,16,.55);color:#ffd166}
 #tSkB{right:106px;bottom:224px;border-color:#b98bff;background:rgba(40,20,70,.55);color:#d9b8ff}
@@ -141,6 +142,11 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
   #clock{top:130px;left:12px;transform:none;font-size:.9rem}
   #quests{font-size:.95rem}
   #comboTag{top:44%} /* Hochformat: über den Helden statt in die Quest-Box */
+}
+/* Flache Screens (Handy quer): 🎒/🌟 aus der Knopfwolke schieben — bei 295–405px Höhe lag #tInv sonst auf dem grünen E-Knopf (#tAct) */
+@media (max-height:460px){
+  #tInv{top:12px;right:176px}
+  #tSkl{top:12px;right:228px}
 }
 </style>
 </head>
@@ -195,6 +201,7 @@ html,body{height:100%;overflow:hidden;background:#05060f;color:#eaf0ff;font-fami
   <button class="tbtn hide" id="tSkA"><span class="bi">💥</span><span class="bcd"></span></button>
   <button class="tbtn hide" id="tSkB"><span class="bi">🌩</span><span class="bcd"></span></button>
   <button id="tInv">🎒</button>
+  <button id="tSkl">🌟</button>
 </div>
 
 <div class="overlay" id="start">
@@ -596,7 +603,7 @@ function freshState(){return {
   quests:{},qstage:0,obel:[false,false,false],bossDead:false,
   ach:{},kills:0,shardsEarned:0,legFound:0,dungeonRuns:0,
   t:0,px:0,pz:14,day:0};}
-function saveGame(){if(!G)return;if(inDungeon){G.px=portal.x;G.pz=portal.z+3;}else{G.px=player.position.x;G.pz=player.position.z;}lsSet(SAVE_KEY,JSON.stringify(G));}
+function saveGame(){if(!G)return;if(inDungeon){G.px=portal.x;G.pz=portal.z+6;}else{G.px=player.position.x;G.pz=player.position.z;}lsSet(SAVE_KEY,JSON.stringify(G));}
 function loadGame(){var raw=lsGet(SAVE_KEY);if(!raw)return null;try{var s=JSON.parse(raw);return (s&&s.lvl)?s:null;}catch(e){return null;}}
 
 // ===================== Eingabe =====================
@@ -627,7 +634,10 @@ if(isTouch){document.getElementById("touchUI").style.display="block";document.ge
     var dx=t.clientX-joy.cx,dy=t.clientY-joy.cy,m=Math.hypot(dx,dy),mx=r.width/2;
     if(m>mx){dx*=mx/m;dy*=mx/m;}
     joy.x=dx/mx;joy.y=dy/mx;jk.style.transform="translate(calc(-50% + "+dx+"px),calc(-50% + "+dy+"px))";}
-  addEventListener("touchstart",function(e){for(var i=0;i<e.changedTouches.length;i++){var t=e.changedTouches[i];
+  addEventListener("touchstart",function(e){
+    // Panel/Dialog/Pause offen: Joystick nicht greifen lassen — sonst rennt der Held los, während man im Inventar tippt
+    if(paused||dialogOpen||!document.getElementById("invPanel").classList.contains("hide")||!document.getElementById("skillPanel").classList.contains("hide"))return;
+    for(var i=0;i<e.changedTouches.length;i++){var t=e.changedTouches[i];
     if(t.clientX<W*0.45&&t.clientY>H*0.4&&joy.id===null){joy.id=t.identifier;joy.active=true;jpos(t);}}},{passive:true});
   addEventListener("touchmove",function(e){for(var i=0;i<e.changedTouches.length;i++){var t=e.changedTouches[i];if(t.identifier===joy.id)jpos(t);}},{passive:true});
   function jend(e){for(var i=0;i<e.changedTouches.length;i++){if(e.changedTouches[i].identifier===joy.id){joy.id=null;joy.active=false;joy.x=0;joy.y=0;jk.style.transform="translate(-50%,-50%)";}}}
@@ -642,6 +652,7 @@ if(isTouch){document.getElementById("touchUI").style.display="block";document.ge
   bindBtn("tSkA",function(){castSkill("nova");}); // Nova/Klassen-Signature
   bindBtn("tSkB",function(){if(G&&G.lvl>=9&&skillCD.ult<=0.05)castSkill("ult");else castSkill("chain");}); // Ultimate wenn bereit, sonst Kettenblitz
   document.getElementById("tInv").addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();togglePanel("invPanel");},{passive:false});
+  document.getElementById("tSkl").addEventListener("touchstart",function(e){e.preventDefault();e.stopPropagation();togglePanel("skillPanel");},{passive:false});
 }
 function moveVec(){var x=0,z=0;
   if(keys.w||keys.arrowup)z-=1;if(keys.s||keys.arrowdown)z+=1;if(keys.a||keys.arrowleft)x-=1;if(keys.d||keys.arrowright)x+=1;
@@ -1605,12 +1616,14 @@ function doInteract(){
       if(G.qstage<4){showHint("Der Obelisk schweigt noch — folge erst deinen Aufgaben.");return;}
       ob.on=true;G.obel[i]=true;beep(1200,.4,"triangle",.08);burst(ob.x,4,ob.z,0x6affab,22,7);camShake=0.5;
       announce("Obelisk aktiviert! ("+G.obel.filter(Boolean).length+"/3)","#6affab");
-      if(G.obel.filter(Boolean).length>=3){ZONES[4].locked=false;G.qstage=5;announce("⚡ Die Zitadelle ist offen!","#ff4d6d");
+      if(G.obel.filter(Boolean).length>=3){ZONES[4].locked=false;if(G.qstage<5)G.qstage=5;announce("⚡ Die Zitadelle ist offen!","#ff4d6d"); // qstage 6 (NEXUS tot) nicht zurückstufen
         heroPlay("victory",0.2);} // steht am Obelisken → Sieger-Pose passt immer (Klassen ohne Clip: still)
       renderQuests();saveGame();return;}}
   if(!inDungeon&&Math.hypot(portal.x-px,portal.z-pz)<4.5){enterDungeon();return;}
   if(inDungeon){
     if(dgn.chest&&!dgn.chestOpen&&Math.hypot(dgn.chest.x-px,dgn.chest.z-pz)<3.5){
+      // Balance: Truhe erst nach dem Wächter — sonst kostenlose Endlos-Farm (2 Epics + 20 ◆ pro Lauf ohne Kampf)
+      for(var fj=0;fj<dgn.foes.length;fj++)if(dgn.foes[fj].miniboss&&dgn.foes[fj].active){showHint("⚔ Der Wächter der Tiefe bewacht die Truhe — besiege ihn zuerst!");return;}
       dgn.chestOpen=true;if(dgn.chestMesh){dgn.chestMesh.material.emissiveIntensity=2.2;dgn.chestMesh.rotation.x=-0.5;}
       var l1=rollItem(G.lvl+2);l1.r=Math.max(2,l1.r);l1.v=Math.round(l1.v*1.25);
       var l2=rollItem(G.lvl+2);l2.r=Math.max(2,l2.r);l2.v=Math.round(l2.v*1.25);
@@ -1729,6 +1742,7 @@ function genDungeon(){
   dgn.chest={x:DX+best2[0]*DCELL,z:DZ+best2[1]*DCELL};
   var ch=new THREE.Mesh(new THREE.BoxGeometry(1.6,1.1,1.1),mat(0x2a1a08,0xffcf6e,0.9));ch.position.set(dgn.chest.x,0.55,dgn.chest.z);dgn.group.add(ch);dgn.chestMesh=ch;
   // Wächter der Tiefe: Miniboss bewacht die Truhe (Guardian-GLB, gerigt; Fallback Warden/Primitiv)
+  dgn.foes=[]; // VOR dem Wächter leeren — stand die Leerung danach, räumte exitDungeon ihn nie ab (Geister-Gegner + Licht + Rig-Leck)
   (function(){var g=new THREE.Group();
     if(!monBuf.guardian&&wardenModel)g.add(wardenModel.clone(true));
     else{var b2=new THREE.Mesh(new THREE.IcosahedronGeometry(2.2,0),mat(0x1a0a2e,0xb98bff,1.0));b2.position.y=2.2;b2.castShadow=true;g.add(b2);}
@@ -1741,7 +1755,6 @@ function genDungeon(){
     enemies.push(mb);dgn.foes.push(mb);
     if(monBuf.guardian)attachMonster(mb,"guardian",1.5);})(); // 2.8 → ~4.2 Einheiten Mini-Boss-Präsenz
   // 7 Eliten auf entfernten Bodenzellen
-  dgn.foes=[];
   for(var si3=0;si3<7;si3++){var sk2=fkeys[(Math.random()*fkeys.length)|0].split(","),sx3=DX+(+sk2[0])*DCELL,sz3=DZ+(+sk2[1])*DCELL;
     if(Math.hypot(sx3-DX,sz3-DZ)<12){si3--;continue;}
     spawnEnemy((Math.random()*4)|0,sx3,sz3,true);dgn.foes.push(enemies[enemies.length-1]);}
@@ -1761,7 +1774,7 @@ function exitDungeon(){
   // Dungeon-Gegner entfernen
   for(var i=0;i<dgn.foes.length;i++){var f=dgn.foes[i];if(f.active){f.active=false;scene.remove(f.g);freeRig(f);}}
   dgn.foes=[];if(dgn.group){scene.remove(dgn.group);dgn.group=null;}
-  player.position.set(portal.x,0,portal.z+3);vx=0;vz=0;
+  player.position.set(portal.x,0,portal.z+6);vx=0;vz=0; // +6: ausserhalb der Portal-Reichweite (4.5), sonst startet ein einziges [E] sofort den nächsten Lauf
   announce("Zurück im Reich","#7de3ff");saveGame();
 }
 // Portal in der Ruinenstadt
@@ -2040,6 +2053,10 @@ function begin(){
   G=saved||freshState();
   G.ach=G.ach||{};G.kills=G.kills||0;G.shardsEarned=G.shardsEarned||0;G.legFound=G.legFound||0;G.dungeonRuns=G.dungeonRuns||0;
   G.hp=Math.min(G.hp,playerMaxHp());G.en=Math.min(G.en,playerMaxEn()); // Klassen-Wechsel: alte Saves sauber clampen
+  if(G.hp<=0){G.hp=playerMaxHp();G.px=0;G.pz=14;} // Tod + Neuladen: sonst erwacht man mit 0 HP in der Todesschleife
+  // Save → Weltzustand: Obelisken + Zitadellen-Barriere wiederherstellen (Literale stehen sonst nach Neuladen wieder auf aus/versiegelt)
+  if(G.obel)for(var oi=0;oi<obelisks.length;oi++)obelisks[oi].on=!!G.obel[oi];
+  ZONES[4].locked=!(G.obel&&G.obel.filter(Boolean).length>=3);
   player.position.set(G.px||0,0,G.pz||14);
   try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();if(actx.state==="suspended")actx.resume();}catch(e){}
   document.getElementById("start").classList.add("hide");
@@ -2071,7 +2088,8 @@ document.getElementById("startBtn").onclick=begin;
 (function(){if(loadGame()){document.getElementById("startBtn").textContent="Weiterspielen ▶";var wb=document.getElementById("wipeBtn");wb.classList.remove("hide");
   wb.onclick=function(){if(wb.dataset.armed){lsDel(SAVE_KEY);location.reload();}else{wb.dataset.armed="1";wb.textContent="Sicher? Nochmal tippen zum Löschen";}};}})();
 document.getElementById("reviveBtn").onclick=function(){
-  G.hp=G.maxhp;player.position.set(0,0,14);vx=0;vz=0;document.getElementById("deadO").classList.add("hide");running=true;};
+  if(inDungeon)exitDungeon(); // sonst bleibt die Dungeon-Kollision aktiv und der Held klebt im Dorf fest
+  G.hp=playerMaxHp();player.position.set(0,0,14);vx=0;vz=0;document.getElementById("deadO").classList.add("hide");running=true;saveGame();}; // playerMaxHp: Relikt-Bonus mitzählen; save: sonst steht nach F5 weiter hp=0 im Spielstand
 document.getElementById("winBtn").onclick=function(){document.getElementById("winO").classList.add("hide");running=true;};
 window.__realm={pos:function(x,z){player.position.x=x;player.position.z=z;},occl:function(){return occluders.map(function(o){return{x:o.x,z:o.z,cur:Math.round(o.cur*100)/100};});}};
 requestAnimationFrame(loop);

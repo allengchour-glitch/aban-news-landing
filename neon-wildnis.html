@@ -37,6 +37,8 @@ canvas{display:block;touch-action:none}
 .inv .ic{font-size:1.25rem}
 .inv.tool{padding-left:8px;margin-left:2px;border-left:1px solid rgba(120,200,255,.25);color:#ffd166}
 .inv.bump{animation:invbump .35s ease}
+#wBerry,#wMeat{position:relative;cursor:pointer}
+#wBerry::after,#wMeat::after{content:"";position:absolute;inset:-10px -3px} /* 🍓/🍖 „tippen = essen": echte Trefferfläche — Chips waren auf Handys nur ~26×18px */
 @keyframes invbump{0%{transform:scale(1)}35%{transform:scale(1.55);color:#fff}100%{transform:scale(1)}}
 #topLeft{position:absolute;top:calc(8px + env(safe-area-inset-top));left:12px;font-weight:800}
 #clock{font-size:1rem;background:rgba(10,14,32,.6);border-radius:12px;padding:5px 10px;display:inline-block;border:1px solid rgba(120,200,255,.2)}
@@ -151,7 +153,7 @@ canvas{display:block;touch-action:none}
   .inv .ic{font-size:.92rem}
   .inv.tool .ic{font-size:.92rem}
   #sysRow{gap:6px}
-  .sysbtn{width:40px;height:40px;font-size:1.1rem} /* kleiner → mehr Abstand zur Inventar-Leiste */
+  .sysbtn{width:44px;height:44px;font-size:1.1rem} /* kompakte Schrift, aber nicht unter 44px Trefferfläche schrumpfen */
   .inv.tool span:last-child{display:none} /* nur Icon, spart Breite */
   .inv.tool{padding-left:5px;margin-left:1px}
   #topLeft{top:calc(58px + env(safe-area-inset-top))}
@@ -178,10 +180,17 @@ canvas{display:block;touch-action:none}
 #minimap{pointer-events:auto;position:fixed;right:calc(12px + env(safe-area-inset-right));top:calc(152px + env(safe-area-inset-top));z-index:20;width:120px;height:120px;border-radius:50%;border:2px solid rgba(130,200,255,.55);background:rgba(8,20,32,.55);box-shadow:0 4px 16px rgba(0,0,0,.4)}
 @media(max-width:600px){#minimap{width:92px;height:92px;top:calc(138px + env(safe-area-inset-top))}}
 /* 🔍 Zoom-Buttons neben/unter der Minimap (Wildnis-Paket #2) */
-#zoomBtns{position:fixed;right:calc(12px + env(safe-area-inset-right));top:calc(280px + env(safe-area-inset-top));z-index:21;display:flex;gap:6px;pointer-events:auto}
-#zoomBtns .zbtn{width:34px;height:34px;border-radius:50%;border:1px solid rgba(130,200,255,.55);background:rgba(8,20,32,.72);color:#cfe9ff;font-size:1.05rem;font-weight:900;display:flex;align-items:center;justify-content:center;cursor:pointer;user-select:none}
+#zoomBtns{position:fixed;right:calc(12px + env(safe-area-inset-right));top:calc(280px + env(safe-area-inset-top));z-index:21;display:flex;gap:10px;pointer-events:auto}
+#zoomBtns .zbtn{position:relative;width:34px;height:34px;border-radius:50%;border:1px solid rgba(130,200,255,.55);background:rgba(8,20,32,.72);color:#cfe9ff;font-size:1.05rem;font-weight:900;display:flex;align-items:center;justify-content:center;cursor:pointer;user-select:none}
+#zoomBtns .zbtn::after{content:"";position:absolute;inset:-7px;border-radius:50%} /* unsichtbare 44px-Hitbox wie .btn — 34px war unter der Mindest-Trefferfläche */
 #zoomBtns .zbtn:active{transform:scale(.92)}
 @media(max-width:600px){#zoomBtns{top:calc(236px + env(safe-area-inset-top))}}
+/* 📱 Querformat: Minimap (top 152) + Zoom (top 280) lagen exakt über ✓/⚔️ unten rechts → nach ganz oben, Quest rückt daneben */
+@media (orientation:landscape) and (max-height:520px){
+  #minimap{width:80px;height:80px;top:calc(6px + env(safe-area-inset-top))}
+  #zoomBtns{top:calc(92px + env(safe-area-inset-top))}
+  #quest{right:calc(104px + env(safe-area-inset-right))}
+}
 </style>
 </head>
 <body>
@@ -1437,6 +1446,7 @@ var sparks=[],fishes=[],shoots=[];
 var traveler=null;
 function spawnTraveler(){
   if(traveler||villages.length<2||!THREE.GLTFLoader)return;
+  traveler={pending:true}; /* 🔒 synchron sperren — GLB lädt async, sonst startet updLively mehrere Händler-Ladevorgänge */
   new THREE.GLTFLoader().load("/models/"+ANIME_NPC[(Math.random()*ANIME_NPC.length)|0]+".glb",function(gl){
     var g=new THREE.Group();
     var o=gl.scene;o.scale.setScalar(1.35);o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;}});g.add(o);
@@ -1444,10 +1454,10 @@ function spawnTraveler(){
     var v0=villages[0];g.position.set(v0.x+8,groundH(v0.x+8,v0.z),v0.z);scene.add(g);
     var mix=null;if(gl.animations&&gl.animations.length){mix=new THREE.AnimationMixer(o);mix.clipAction(gl.animations[0]).play();}
     traveler={g:g,mix:mix,from:0,to:1,f:0,pauseT:0};
-  },undefined,function(){});
+  },undefined,function(){traveler=null;}); /* Fehlschlag: Sperre freigeben (sonst nie wieder ein Händler) */
 }
 function updTraveler(dt){
-  var t=traveler;if(!t)return;
+  var t=traveler;if(!t||t.pending)return;
   if(t.mix)t.mix.update(dt);
   if(t.pauseT>0){t.pauseT-=dt;return;} // Rast am Dorfplatz
   var A=villages[t.from],B=villages[t.to];if(!A||!B)return;
@@ -2926,7 +2936,7 @@ function decorateWorld(){
   });
   // --- CC0-Container als extra Beute über die Karte (Fässer/Kisten öffenbar) ---
   farScatter(Math.round(9*VF),20,function(x,z){
-    var isBar=rnd()<0.5;var id="C"+loots.length;var opened=lootOpened.indexOf(id)>=0;
+    var isBar=rnd()<0.5;var id="C"+Math.round(x)+"_"+Math.round(z);var opened=lootOpened.indexOf(id)>=0; /* 🩹 positionsbasierte ID — "C"+loots.length verschob sich, sobald der Tages-Cache beim Laden dazukam/wegfiel */
     var m=cc0inst(isBar?"cc0_barrel":"cc0_crate",1.1);if(!m)return;
     m.position.set(x,groundH(x,z),z);m.rotation.y=rnd()*6.28;
     if(opened)m.visible=false;
@@ -2971,6 +2981,7 @@ var LOOT_EMPTY={chest:"Truhe ist leer",ruin:"Ruine schon geplündert",grave:"Gru
 function openLoot(lt){
   if(lt.opened){toast(LOOT_EMPTY[lt.type]||"Leer");return;}
   lt.opened=true;lootOpened.push(lt.id);lootOpenedTotal++;
+  if(NET.on&&NET.s)try{NET.s.send({t:"loot",id:lt.id,from:NET.role});}catch(e){} /* 📦 Partner informieren — sonst kassieren beide dieselbe Truhe */
   if(lt.mesh.userData.lid)lt.mesh.userData.lid.rotation.x=-0.9;
   if(lt.mesh.userData.marker)lt.mesh.userData.marker.visible=false;
   var gain,head="📦 Gefunden:";
@@ -3306,7 +3317,7 @@ function buildShopWeapon(def){
   return g;}
 var WEAP_NAME=["Faust","🗡️ Bronze","⚔️ Kriegsaxt","🌟 Neon-Klinge"], ARMOR_NAME=["—","🥋 Leder","🛡️ Eisen","💠 Kristall"];
 function gearStore(k){return (k==="weapon"||k==="armor")?equip:tools;}
-function weaponAtk(){if(equip.wid&&WSHOP_BY[equip.wid])return WSHOP_BY[equip.wid].atk+PERK.atk;return (WEAP_ATK[equip.weapon]||0)+PERK.atk;}
+function weaponAtk(){var b=WEAP_ATK[equip.weapon]||0;if(equip.wid&&WSHOP_BY[equip.wid])b=Math.max(b,WSHOP_BY[equip.wid].atk);return b+PERK.atk;} /* 🩹 Shop ODER Quest/Werkbank — das Bessere zählt (billige Shop-Waffe machte teure Upgrades wirkungslos) */
 function openWShop(){
   var ov=document.getElementById("wshopOv");
   if(!ov){ov=document.createElement("div");ov.id="wshopOv";
@@ -3588,7 +3599,7 @@ function updDodge(dt){
   if(Math.random()<0.5)burst(nx,player.position.y+0.4,nz,0x9fe8ff,2);
 }
 var _lowT=0,_hurtT=0;
-function damagePlayer(d,src){if(dead)return;if(dodgeT>0)return;if(performance.now()-_hurtT<420)return;_hurtT=performance.now();/* G5: kurze Treffer-Unverwundbarkeit → kein Rudel-Burst-Tod in 1s */sfx(120,0.14,"sawtooth",0.06);/* 💨 Rolle = unverwundbar */var _adef=(equip.aid&&ASHOP_BY[equip.aid])?ASHOP_BY[equip.aid].def:(ARMOR_DEF[equip.armor]||0);d=Math.max(1,d-(_adef+PERK.def));hp-=d;if(typeof floatText==="function")floatText(player.position.x,player.position.y+2.4,player.position.z,"-"+Math.round(d),"#ff5c6a");hurtFlash();if(navigator.vibrate)navigator.vibrate(35);if(src)dmgDir(src);heroAct("hit",1.4); /* 📳 Handy-Haptik bei Treffer */if(hp<=0){hp=0;playerDie();}else if(hp/maxHp<=0.25&&performance.now()-_lowT>2600){_lowT=performance.now();sfx(660,0.07,"sine",0.05);setTimeout(function(){sfx(520,0.09,"sine",0.05);},140);} /* 🚨 Herzschlag-Warnton bei kritischem HP */hpUpd();}
+function damagePlayer(d,src){if(dead)return;if(dodgeT>0)return;if(performance.now()-_hurtT<420)return;_hurtT=performance.now();/* G5: kurze Treffer-Unverwundbarkeit → kein Rudel-Burst-Tod in 1s */sfx(120,0.14,"sawtooth",0.06);/* 💨 Rolle = unverwundbar */var _adef=Math.max((equip.aid&&ASHOP_BY[equip.aid])?ASHOP_BY[equip.aid].def:0,ARMOR_DEF[equip.armor]||0);d=Math.max(1,d-(_adef+PERK.def));/* 🩹 Shop-Rüstung darf bessere Quest/Craft-Rüstung nicht überschreiben */hp-=d;if(typeof floatText==="function")floatText(player.position.x,player.position.y+2.4,player.position.z,"-"+Math.round(d),"#ff5c6a");hurtFlash();if(navigator.vibrate)navigator.vibrate(35);if(src)dmgDir(src);heroAct("hit",1.4); /* 📳 Handy-Haptik bei Treffer */if(hp<=0){hp=0;playerDie();}else if(hp/maxHp<=0.25&&performance.now()-_lowT>2600){_lowT=performance.now();sfx(660,0.07,"sine",0.05);setTimeout(function(){sfx(520,0.09,"sine",0.05);},140);} /* 🚨 Herzschlag-Warnton bei kritischem HP */hpUpd();}
 // 💥 Skill (RPG-Fusion aus realm): Schockwelle — AoE-Schaden auf alle nahen Monster, ab Level 2, Cooldown
 var skillCd=0,SKILL_CD=7,_skillShown=false;
 function useSkill(){
@@ -3825,7 +3836,7 @@ var nearRes=null,nearMon=null,nearAni=null,nearWork=null,nearMerchant=false,near
 var merchant={x:null,z:null};
 function findNear(){
   nearRes=null;nearMon=null;nearAni=null;nearWork=null;var best=3.6*3.6;
-  for(var i=0;i<resources.length;i++){var r=resources[i];if(r.dead)continue;var dx=r.x-player.position.x,dz=r.z-player.position.z,d=dx*dx+dz*dz;if(d<best){best=d;nearRes=r;}}
+  for(var i=0;i<resources.length;i++){var r=resources[i];if(r.dead||r.falling)continue;var dx=r.x-player.position.x,dz=r.z-player.position.z,d=dx*dx+dz*dz;if(d<best){best=d;nearRes=r;}} /* 🩹 falling wie dead (vgl. canWalk): fallender Baum zahlte sonst pro Extra-Schlag erneut +3 Holz */
   var bm=3.0*3.0;
   for(var j=0;j<monsters.length;j++){var e=monsters[j];var dx2=e.x-player.position.x,dz2=e.z-player.position.z,d2=dx2*dx2+dz2*dz2;if(d2<bm){bm=d2;nearMon=e;}}
   var ba=3.2*3.2;
@@ -3900,6 +3911,7 @@ function talkToNpc(){
 }
 function harvest(){
   if(dead||!running||paused||perkChoosing||stationOpen)return; /* Guards für alle 4 Call-Sites (Tap/Halten/E/Space) */
+  var _hn=performance.now();if(_hn-(window._hvT||0)<200)return;window._hvT=_hn; /* ⏱️ Schlag-Takt: Tastatur-Autorepeat (~30/s) darf nicht schneller sein als der 240ms-Mobil-Knopf */
   findNear(); // frisch bestimmen → korrekt auch bei Einzelaufruf/Tap
   // Werkbank in der Nähe (und nichts Wichtigeres) → Crafting öffnen
   if(nearMerchant&&!nearMon&&!nearAni&&!buildMode){openTrade();return;}
@@ -4088,6 +4100,7 @@ function confirmBuild(){
   if(!ghost||!ghostValid){toast("Hier kannst du nicht bauen");return;}
   var type=ghostType,c=RECIPES[type].cost;for(var k in c)inv[k]-=c[k];invUpd();
   placeStructure(type,ghost.position.x,ghost.position.z);
+  if(NET.on&&NET.s)try{NET.s.send({t:"build",ty:type,x:+ghost.position.x.toFixed(1),z:+ghost.position.z.toFixed(1),from:NET.role});}catch(e){} /* 🏗️ Bauten (inkl. Nexus) existierten sonst nur beim Erbauer */
   burst(ghost.position.x,ghost.position.y+1,ghost.position.z,0x6affc0,10);
   toast(RECIPES[type].ic+" "+RECIPES[type].name+" gebaut!");
   disposeGhost();
@@ -4114,13 +4127,13 @@ function updStructures(dt){
       // Heil-Aura
       if(Math.hypot(s.x-player.position.x,s.z-player.position.z)<5&&hp<maxHp){hp=Math.min(maxHp,hp+4*dt);hpUpd();}}
     if(s.type==="bett"){if(Math.hypot(s.x-player.position.x,s.z-player.position.z)<3.5&&hp<maxHp){hp=Math.min(maxHp,hp+6*dt);hpUpd();}}
-    if(s.type==="falle"){s.cd=(s.cd||0)-dt;if(s.cd<=0){var hitAny=false;for(var mf=monsters.length-1;mf>=0;mf--){var em=monsters[mf]; /* Schwarm-P3: rückwärts iterieren → splice überspringt den nächsten Gegner nicht mehr */if((em.x-s.x)*(em.x-s.x)+(em.z-s.z)*(em.z-s.z)<2.4*2.4){em.hp-=2;hitAny=true;burst(em.x,groundH(em.x,em.z)+0.6,em.z,0xff6a6a,4);if(em.hp<=0){var idf=monsters.indexOf(em);if(idf>=0){scene.remove(em.mesh);monsters.splice(idf,1);clearWarn(em);rewardKill(em);killSfx(em.boss);updWaveHud();}}}}if(hitAny)s.cd=0.9;else s.cd=0.3;}}
+    if(s.type==="falle"){s.cd=(s.cd||0)-dt;if(s.cd<=0){var hitAny=false;for(var mf=monsters.length-1;mf>=0;mf--){var em=monsters[mf]; /* Schwarm-P3: rückwärts iterieren → splice überspringt den nächsten Gegner nicht mehr */if((em.x-s.x)*(em.x-s.x)+(em.z-s.z)*(em.z-s.z)<2.4*2.4){em.hp-=2;hitAny=true;burst(em.x,groundH(em.x,em.z)+0.6,em.z,0xff6a6a,4);if(em.hp<=0){var idf=monsters.indexOf(em);if(idf>=0){scene.remove(em.mesh);monsters.splice(idf,1);clearWarn(em);rewardKill(em);killSfx(em.boss);if(em.boss){window.__bossKills=(window.__bossKills|0)+1;bossReward(em.x,em.z);}updWaveHud();}}}}if(hitAny)s.cd=0.9;else s.cd=0.3;}}
     if(s.type==="nexus"){if(s.mesh.userData.orb)s.mesh.userData.orb.rotation.y+=dt*1.2;if(s.mesh.userData.ring)s.mesh.userData.ring.rotation.z+=dt*0.8;
       s.spk=(s.spk||0)-dt;if(s.spk<=0){s.spk=0.4+Math.random()*0.3;burst(s.x+(Math.random()-.5)*2,groundH(s.x,s.z)+5.6+(Math.random()-.5)*2,s.z+(Math.random()-.5)*2,0xc98bff,1);}}
     if(s.type==="turm"){s.cd-=dt;if(s.mesh.userData.orb)s.mesh.userData.orb.rotation.y+=dt*2;
       if(isNight&&s.cd<=0){var tgt=null,bd=16*16;for(var m=0;m<monsters.length;m++){var e=monsters[m];var d=(e.x-s.x)*(e.x-s.x)+(e.z-s.z)*(e.z-s.z);if(d<bd){bd=d;tgt=e;}}
         if(tgt){tgt.hp-=1;burst(tgt.x,groundH(tgt.x,tgt.z)+1,tgt.z,0xff8ad8,4);s.cd=0.8;
-          if(tgt.hp<=0){var idx=monsters.indexOf(tgt);if(idx>=0){scene.remove(tgt.mesh);monsters.splice(idx,1);clearWarn(tgt);rewardKill(tgt);killSfx(tgt.boss);}}}}}
+          if(tgt.hp<=0){var idx=monsters.indexOf(tgt);if(idx>=0){scene.remove(tgt.mesh);monsters.splice(idx,1);clearWarn(tgt);rewardKill(tgt);killSfx(tgt.boss);if(tgt.boss){window.__bossKills=(window.__bossKills|0)+1;bossReward(tgt.x,tgt.z);}updWaveHud();}}}}} /* 🩹 Turm/Falle: Boss-Belohnung + Wellen-HUD wie bei allen anderen Kill-Pfaden */
   }
 }
 
@@ -4405,7 +4418,8 @@ function saveGame(){
     loot:lootOpened,
     fell:resources.filter(function(r){return r.dead;}).map(function(r){return{x:Math.round(r.x),z:Math.round(r.z),rg:r.regrow};}),
     perk:PERK,
-    qp:{f:qProg.flug|0,a:qProg.arenaCr|0,r:qProg.raceWin|0,k:qProg.koloss|0},bn:bountyN|0,lootT:lootOpenedTotal|0,gd:npcs.map(function(n){return n.giftDay===day?1:0;})}; /* 📜 W3-Quest-Fortschritt + Bounty-Zähler */
+    qp:{f:qProg.flug|0,a:qProg.arenaCr|0,r:qProg.raceWin|0,k:qProg.koloss|0},bn:bountyN|0,lootT:lootOpenedTotal|0,gd:npcs.map(function(n){return n.giftDay===day?1:0;}),
+    pq:perkQueue|0,ws:waveSpawned|0}; /* 📜 W3-Quest-Fortschritt + Bounty-Zähler; pq=offene Perk-Wahlen, ws=Wellen-Fortschritt (saveOnLeave feuert auch bei offener Perk-Wahl) */
   lsSet("nw_save1",JSON.stringify(s));
   // 🏆 Rekord mitschreiben (Sucht-Faktor: eigenen Bestwert schlagen)
   try{var b=JSON.parse(lsGet("nw_best")||"{}");
@@ -4666,7 +4680,7 @@ function updMinimap(){var cv=document.getElementById("minimap");if(!cv||!running
     if(edge){var pa2=Math.atan2(rz,rx);ctx.save();ctx.translate(mx,my);ctx.rotate(pa2);ctx.fillStyle="#eaffff";ctx.beginPath();ctx.moveTo(6,0);ctx.lineTo(1,-3);ctx.lineTo(1,3);ctx.closePath();ctx.fill();ctx.restore();}
   }
   // Spieler (Mitte, Pfeil in Blickrichtung)
-  ctx.fillStyle="#fff";ctx.save();ctx.translate(cx,cy);ctx.rotate(-player.rotation.y);ctx.beginPath();ctx.moveTo(0,-5);ctx.lineTo(3.5,4);ctx.lineTo(-3.5,4);ctx.closePath();ctx.fill();ctx.restore();
+  ctx.fillStyle="#fff";ctx.save();ctx.translate(cx,cy);ctx.rotate(Math.PI-player.rotation.y);ctx.beginPath();ctx.moveTo(0,-5);ctx.lineTo(3.5,4);ctx.lineTo(-3.5,4);ctx.closePath();ctx.fill();ctx.restore(); /* 🧭 Blickrichtung=(sin ry,cos ry), Karte +z=unten → π−ry, sonst zeigt der Pfeil nach hinten */
   ctx.restore();
   // Rand
   ctx.strokeStyle="rgba(130,200,255,.5)";ctx.lineWidth=2;ctx.beginPath();ctx.arc(cx,cy,R-1,0,6.283);ctx.stroke();
@@ -4699,7 +4713,7 @@ function drawWorldMap(){var cv=document.getElementById("wmCanvas");if(!cv)return
   ctx.textAlign="center";ctx.textBaseline="middle";
   pts.forEach(function(p){var q=P(p.x,p.z);
     if(p.kind==="station"||p.kind==="city"||p.kind==="home"||p.kind==="village")_wmHit.push({sx:q[0],sy:q[1],x:p.x,z:p.z,name:p.name||"Ort"}); /* 🚀 anklickbar zum Hinreisen */
-    if(p.kind==="me"){ctx.save();ctx.translate(q[0],q[1]);ctx.rotate(-player.rotation.y);ctx.fillStyle="#7de3ff";ctx.beginPath();ctx.moveTo(0,-13);ctx.lineTo(9,10);ctx.lineTo(-9,10);ctx.closePath();ctx.fill();ctx.restore();
+    if(p.kind==="me"){ctx.save();ctx.translate(q[0],q[1]);ctx.rotate(Math.PI-player.rotation.y);ctx.fillStyle="#7de3ff";ctx.beginPath();ctx.moveTo(0,-13);ctx.lineTo(9,10);ctx.lineTo(-9,10);ctx.closePath();ctx.fill();ctx.restore(); /* 🧭 wie Minimap: π−ry statt −ry */
       ctx.fillStyle="#7de3ff";ctx.font="bold 13px sans-serif";ctx.fillText("Du",q[0],q[1]+22);return;}
     if(p.kind==="friend"){ctx.fillStyle="#35d0ff";ctx.beginPath();ctx.arc(q[0],q[1],9,0,6.283);ctx.fill();ctx.strokeStyle="#eaffff";ctx.lineWidth=2;ctx.stroke();ctx.fillStyle="#eaffff";ctx.font="bold 13px sans-serif";ctx.fillText(p.name||"Freund",q[0],q[1]+21);return;} /* 🧭 Distanz-Label */
     ctx.font=(p.kind==="city"?"30px":(p.kind==="station"?"24px":"22px"))+" sans-serif";ctx.fillText(p.icon||"•",q[0],q[1]);
@@ -4820,7 +4834,7 @@ function setOnline(state){_onlineState=state;updOnline();}
 function ensureEmoteBar(){
   var bar=document.getElementById("emoteBar");
   if(!bar){bar=document.createElement("div");bar.id="emoteBar";
-    bar.style.cssText="position:fixed;left:50%;transform:translateX(-50%);bottom:calc(96px + env(safe-area-inset-bottom));display:none;gap:8px;z-index:40;pointer-events:auto";
+    bar.style.cssText="position:fixed;left:50%;transform:translateX(-50%);bottom:calc(214px + env(safe-area-inset-bottom));display:none;gap:8px;z-index:40;pointer-events:auto"; /* 📱 aus der Daumenzone: bei 96px lag die Leiste über Joystick + ⚔️-Knopf und fing deren Taps ab */
     ["👋","❤️","😂","🧘","🆘"].forEach(function(em){var b=document.createElement("button");b.textContent=em;
       b.style.cssText="width:44px;height:44px;border-radius:50%;border:2px solid rgba(120,200,255,.4);background:rgba(16,24,46,.82);font-size:1.35rem;cursor:pointer";
       b.onclick=function(ev){ev.stopPropagation();sendEmote(em);};bar.appendChild(b);});
@@ -4842,7 +4856,10 @@ function updOnline(){
   b.textContent=txt;b.style.background=bg;b.style.borderColor=bd;b.style.color=col;
 }
 var _hbIv=null;
-function hbStart(){if(_hbIv)clearInterval(_hbIv);_hbIv=setInterval(function(){try{if(NET.s&&NET.s.status==="connected")NET.s.send({t:"hb"});}catch(e){}},2000);} /* 💓 Heartbeat hält die Datachannel wach */
+function hbStart(){if(_hbIv)clearInterval(_hbIv);_hbIv=setInterval(function(){try{if(NET.s&&NET.s.status==="connected"){NET.s.send({t:"hb"});
+  /* 🕐 Host = Uhr-Autorität: Overlays/Minispiele/Tab-Wechsel frieren dayT lokal ein — ohne Abgleich
+     driften Tag/Nacht + Wellen der Partner dauerhaft auseinander. Alle 2s Huckepack auf dem Heartbeat. */
+  if(NET.role==="host"&&running)NET.s.send({t:"clock",d:day,dt:+dayT.toFixed(1),n:isNight?1:0,ns:nights|0,w:waveNum|0});}}catch(e){}},2000);} /* 💓 Heartbeat hält die Datachannel wach */
 function hbStop(){if(_hbIv){clearInterval(_hbIv);_hbIv=null;}}
 function netResetRemote(){NET.remoteDowned=false;NET.lastRemoteMelee=0;NET.rt.hp=null;NET.rt.tLast=0;NET.rt.vx=NET.rt.vz=0;NET.remoteHpPct=-1;if(NET.remoteHpCv&&typeof drawRemoteHp==="function")drawRemoteHp(100);} /* Partner-Zustand sauber nullen */
 function netStart(role,code){
@@ -4861,7 +4878,10 @@ function netStart(role,code){
   NET.s.onMessage(onNetMsg);
   NET.s.ready.then(function(){
     NET.on=true;
-    if(role==="host"){NET_FORCE_SEED=(Math.random()*1e9)|0;NET.s.send({t:"start",seed:NET_FORCE_SEED});spawnRemote();startGame(true);}sendMyChar();
+    /* 🩹 Doppel-Start-Guard (wie beim Gast): Host konnte nach »Raum öffnen« solo starten — beim Beitritt des
+       Freundes baute startGame(true) die Welt ein ZWEITES Mal auf (doppelter Boden/Dörfer/Collider, Reset).
+       Läuft die Welt schon, den ECHTEN Seed schicken statt neu würfeln, damit der Gast dieselbe Welt baut. */
+    if(role==="host"){NET_FORCE_SEED=running?SEED:((Math.random()*1e9)|0);NET.s.send({t:"start",seed:NET_FORCE_SEED});spawnRemote();if(!running)startGame(true);}sendMyChar();
   }).catch(function(e){coopStatusMsg("❌ "+(e&&e.message||"Verbindung fehlgeschlagen"));});
 }
 function onNetMsg(d){
@@ -4881,6 +4901,20 @@ function onNetMsg(d){
   if(d.t==="revive"&&d.from!==NET.role&&_downed){respawnSelf(true);}
   if(d.t==="act"&&d.from!==NET.role&&d.intent){heroActRemote(d.intent);if(d.intent==="melee")NET.lastRemoteMelee=performance.now();} /* ⚔️ Partner-Kampfanimation + Combo-Fenster */
   if(d.t==="bond"&&d.from!==NET.role){var _bn=Math.max(0,Math.min(5,d.n|0));window._bondPts=(window._bondPts|0)+_bn;if(typeof bondUpd==="function")bondUpd();} /* 🤝 Band wächst bei BEIDEN */
+  if(d.t==="clock"&&NET.role!=="host"&&running){ /* 🕐 Uhr vom Host übernehmen — nur bei echtem Drift (>3s/Phasen-Flip), sonst Ruhe */
+    var _cy2=d.n?NIGHTLEN:DAYLEN;
+    if(d.n!==(isNight?1:0)||(d.d|0)!==day||Math.abs((+d.dt||0)-dayT)>3){
+      day=d.d|0;nights=d.ns|0;waveNum=d.w|0;dayT=Math.min(+d.dt||0,_cy2-0.05);
+      if(d.n&&!isNight){isNight=true;waveActive=true;waveToSpawn=6+waveNum*4;waveSpawned=0;} /* verpassten Nacht-Flip nachholen */
+      else if(!d.n&&isNight){isNight=false;waveActive=false;monsters.forEach(function(e){scene.remove(e.mesh);clearWarn(e);});monsters.length=0;} /* verpassten Morgen nachholen */
+      else isNight=!!d.n;
+      updWaveHud();}}
+  if(d.t==="loot"&&d.from!==NET.role&&d.id){for(var _lj=0;_lj<loots.length;_lj++){var _lf=loots[_lj];if(_lf.id!==d.id)continue; /* 📦 Partner hat geöffnet — spiegeln, Beute NICHT doppelt */
+    if(!_lf.opened){_lf.opened=true;if(lootOpened.indexOf(d.id)<0)lootOpened.push(d.id);
+      if(_lf.mesh&&_lf.mesh.userData){if(_lf.mesh.userData.lid)_lf.mesh.userData.lid.rotation.x=-0.9;if(_lf.mesh.userData.marker)_lf.mesh.userData.marker.visible=false;}
+      if((_lf.type==="barrel"||_lf.type==="crate")&&_lf.mesh)_lf.mesh.visible=false;}break;}}
+  if(d.t==="build"&&d.from!==NET.role&&running&&RECIPES[d.ty]){var _bDup=false;for(var _bj=0;_bj<structures.length;_bj++){var _s3=structures[_bj];if(_s3.type===d.ty&&Math.abs(_s3.x-d.x)<0.6&&Math.abs(_s3.z-d.z)<0.6){_bDup=true;break;}}
+    if(!_bDup){placeStructure(d.ty,+d.x||0,+d.z||0);toast("🔨 Partner: "+RECIPES[d.ty].ic+" "+RECIPES[d.ty].name);if(d.ty==="nexus")onNexusBuilt();}} /* 🏗️ Partner-Bauten bei beiden; Nexus-Sieg gilt fürs Team */
   if(d.t==="bosskill"&&d.from!==NET.role&&running){announce("🏆 Partner hat "+(d.lbl||"den Boss")+" besiegt!","#7dffc8");
     /* K4: Bond kommt jetzt über die {t:bond,n:2}-Message aus bondGain (Killer-Seite) — hier NICHT mehr doppelt addieren */
     if(typeof heroActRemote==="function")heroActRemote("victory");
@@ -4993,7 +5027,21 @@ function netStartQuick(){ /* ⚡ 1-Tipp Schnell-Koop ohne Code (öffentlicher Ra
   try{if(NET.s)NET.s.close();}catch(e){}NET.s=null;netResetRemote();
   if(running){coopStatusMsg("Koop bitte VOR dem Start — erst »Neue Welt starten«.");return;}
   coopStatusMsg("⚡ Suche Mitspieler…");setOnline("waiting");
-  try{NET.s=MP.quick("wildnis");}catch(e){coopStatusMsg("Fehler: "+e.message);return;}
+  /* 🔎 Nicht stur "PUBA": erst offene Räume scannen (wartende Hosts antworten auf __lobby?), sonst freie
+     Public-Räume der Reihe nach probieren — EIN volles Paar blockierte sonst den Schnell-Koop für alle. */
+  if(!MP.suche||!MP.PUBLIC){netQuickGo(["PUBA"],0);return;}
+  var _qLos=false;
+  MP.suche("wildnis",{frist:3000,
+    fund:function(f){if(_qLos||!f||f.voll)return;_qLos=true;netQuickGo([f.code],0);}, /* wartender Host gefunden → sofort dazu */
+    fertig:function(gefunden){if(_qLos)return;_qLos=true;
+      var belegt=(gefunden||[]).map(function(f){return f.code;});
+      var frei=MP.PUBLIC.filter(function(c){return belegt.indexOf(c)<0;});
+      netQuickGo(frei.length?frei:MP.PUBLIC.slice(),0);}});
+}
+function netQuickGo(rooms,idx){ /* ⚡ Verbindungsaufbau für EINEN Public-Raum; bei Fehlschlag nächsten Raum probieren */
+  if(idx>=rooms.length||idx>=3){coopStatusMsg("❌ Kein Mitspieler gefunden — nochmal tippen.");setOnline("solo");return;}
+  try{NET.s=MP.quick("wildnis",rooms[idx]);}catch(e){coopStatusMsg("Fehler: "+e.message);return;}
+  var _mySess=NET.s;
   NET.role="quick";NET._seq=0;NET._rseq=0; /* wird bei Verbindung auf host/join gesetzt */
   NET.s.onStatus(function(st){
     if(st==="waiting"){coopStatusMsg("⚡ Warte auf Mitspieler… (öffentlicher Raum)");setOnline("waiting");}
@@ -5003,10 +5051,14 @@ function netStartQuick(){ /* ⚡ 1-Tipp Schnell-Koop ohne Code (öffentlicher Ra
   NET.s.onMessage(onNetMsg);
   NET.s.ready.then(function(){
     NET.on=true;NET.role=NET.s.role||NET.role;
-    if(NET.role==="host"){NET_FORCE_SEED=(Math.random()*1e9)|0;NET.s.send({t:"start",seed:NET_FORCE_SEED});spawnRemote();startGame(true);}
+    /* 🩹 Doppel-Start-Guard: »▶ Los geht's« während der Mitspieler-Suche startete solo — beim Verbinden
+       darf startGame(true) die Welt nicht nochmal aufbauen; laufender Host schickt seinen echten Seed. */
+    if(NET.role==="host"){NET_FORCE_SEED=running?SEED:((Math.random()*1e9)|0);NET.s.send({t:"start",seed:NET_FORCE_SEED});spawnRemote();if(!running)startGame(true);}
     else spawnRemote(); /* Gast: wartet auf "start"-Nachricht */
     sendMyChar();
-  }).catch(function(e){coopStatusMsg("❌ "+(e&&e.message||"Verbindung fehlgeschlagen"));setOnline("solo");});
+  }).catch(function(e){
+    if(NET.s===_mySess&&idx+1<rooms.length&&idx+1<3){coopStatusMsg("⚡ Raum belegt — probiere nächsten…");netQuickGo(rooms,idx+1);return;} /* nächster Public-Raum */
+    coopStatusMsg("❌ "+(e&&e.message||"Verbindung fehlgeschlagen"));setOnline("solo");});
 }
 (function(){var q=document.getElementById("coopQuick");if(q)q.onclick=netStartQuick;
   var h=document.getElementById("coopHost"),j=document.getElementById("coopJoin");
@@ -5042,7 +5094,8 @@ function startGame(fresh){
   if(sv){
     if(sv.inv)inv=sv.inv;if(sv.tools)tools=sv.tools;if(sv.equip)equip=sv.equip;normInv();
     hp=sv.hp||100;day=sv.day||1;dayT=sv.dayT||0;isNight=!!sv.isNight;nights=sv.nights||0;won=!!sv.won;
-    waveNum=nights|0;if(isNight){waveActive=true;waveToSpawn=6+waveNum*4;waveSpawned=0;if(typeof updWaveHud==="function")updWaveHud();} /* Welle nach Laden korrekt fortsetzen */
+    waveNum=nights|0;if(isNight){waveActive=true;waveToSpawn=6+waveNum*4;waveSpawned=Math.min(sv.ws|0,waveToSpawn);if(typeof updWaveHud==="function")updWaveHud();} /* Welle nach Laden fortsetzen — ws: schon gespawnte Gegner nicht nochmal (Kill-Farm) */
+    perkQueue=sv.pq|0;if(perkQueue>0)showPerkPick(); /* offene Level-Up-Wahl(en) nachholen — gingen sonst verloren */
     if(sv.maxHp)maxHp=sv.maxHp;if(sv.xp!=null)xp=sv.xp;if(sv.level)level=sv.level;if(sv.kills)kills=sv.kills;
     if(sv.perk)for(var pk in PERK)if(typeof sv.perk[pk]==="number")PERK[pk]=sv.perk[pk]; // gewählte Level-Perks zurück
     if(sv.qp){qProg.flug=sv.qp.f|0;qProg.arenaCr=sv.qp.a|0;qProg.raceWin=sv.qp.r|0;qProg.koloss=sv.qp.k|0;}else{qProg.flug=0;qProg.arenaCr=0;qProg.raceWin=0;qProg.koloss=0;} /* 📜 W3: defensiv (alte Saves: 0) */
@@ -5058,7 +5111,7 @@ function startGame(fresh){
     while(quest<QUESTS.length&&QUESTS[quest].done()){var _sq=QUESTS[quest]; /* 🩹 Schwarm-P1: beim Überspringen erledigter Quests Ausrüstung TROTZDEM vergeben */
       if((_sq.gw|0)>equip.weapon)equip.weapon=_sq.gw|0;if((_sq.ga|0)>equip.armor)equip.armor=_sq.ga|0;quest++;}
   } else {for(var _pk in PERK)PERK[_pk]=0;equip.weapon=0;equip.armor=0; /* 🩹 Kimi-P1: frischer Start muss Perks/Ausrüstung nullen — sonst stapeln sich Klassen-Boni bei Restart */
-    qProg.flug=0;qProg.arenaCr=0;qProg.raceWin=0;qProg.koloss=0;bountyN=0;bounty=null;lootOpenedTotal=0;inv={wood:0,stone:0,crystal:0,berry:0,meat:0};tools={axe:0,pick:0};hp=100;maxHp=100;xp=0;level=1;kills=0;day=1;dayT=0;isNight=false;nights=0;won=false;normInv();player.position.set(NET.on?(NET.role==="host"?-2.5:2.5):0,0,0);
+    qProg.flug=0;qProg.arenaCr=0;qProg.raceWin=0;qProg.koloss=0;bountyN=0;bounty=null;lootOpenedTotal=0;perkQueue=0;waveSpawned=0;inv={wood:0,stone:0,crystal:0,berry:0,meat:0};tools={axe:0,pick:0};hp=100;maxHp=100;xp=0;level=1;kills=0;day=1;dayT=0;isNight=false;nights=0;won=false;normInv();player.position.set(NET.on?(NET.role==="host"?-2.5:2.5):0,0,0);
     var _c=getChar();if(_c&&_c.cls){ // 🔀 Klassen-Bonus (Realm) einmalig auf den frischen Start
       if(_c.cls.atk)PERK.atk+=_c.cls.atk;if(_c.cls.spd)PERK.spd+=_c.cls.spd;
       if(_c.cls.skillcd)PERK.skillcd+=_c.cls.skillcd;
@@ -5322,7 +5375,7 @@ window.__nw={
   craft:function(id){doCraft(id);},
   openCraft:openCraft,closeCraft:closeCraft,
   tools:function(){return tools;},
-  gear:function(){var _ad=(equip.aid&&ASHOP_BY[equip.aid])?ASHOP_BY[equip.aid].def:(ARMOR_DEF[equip.armor]||0);return {weapon:equip.weapon,armor:equip.armor,wid:equip.wid||0,aid:equip.aid||0,atk:weaponAtk(),def:_ad};},
+  gear:function(){var _ad=Math.max((equip.aid&&ASHOP_BY[equip.aid])?ASHOP_BY[equip.aid].def:0,ARMOR_DEF[equip.armor]||0);return {weapon:equip.weapon,armor:equip.armor,wid:equip.wid||0,aid:equip.aid||0,atk:weaponAtk(),def:_ad};}, /* def wie damagePlayer: das Bessere zählt */
   spawnAnimal:function(sp){return spawnAnimal(player.position.x,player.position.z,sp);},
   toAnimal:function(){for(var i=0;i<animals.length;i++){if(animals[i].alive){player.position.x=animals[i].x-1.5;player.position.z=animals[i].z;return animals[i];}}return spawnAnimal(player.position.x,player.position.z);},
   animals:function(){var n=0;for(var i=0;i<animals.length;i++)if(animals[i].alive)n++;return n;},
