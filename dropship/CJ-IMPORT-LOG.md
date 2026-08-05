@@ -2745,3 +2745,5 @@ info@shopcom.ch in Gmail (User hängt PDF an). ⚠️ Gmail-MCP kann Anhänge we
 ⚠️ PDF-Formular-Lektion: fill_pdf_form_with_annotations erzeugt ANNOTATIONEN — Handy-Viewer (User!) zeigen
 die nicht an. Fix: Texte per reportlab-Overlay + pypdf merge_page fest in den Seiteninhalt einbrennen.
 Zudem Linien-Start pixelgenau messen (Seite 1: x=241pt, nicht Label-Ende+Gap).
+
+**Status 05.08.: Anmeldeformular ausgefüllt+unterschrieben an info@shopcom.ch GESENDET (User bestätigt). Warten auf Freischaltung + Feed-Zugang. Importer bereit.**
