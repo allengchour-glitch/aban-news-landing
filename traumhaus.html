@@ -557,7 +557,7 @@ function wegVonStrasse(x,z){
   for(var z=-84;z<=84;z+=26){pts.push([RXl,z],[-RXl,z]);}          // Querstrassen
   for(var xr=-104;xr<=104;xr+=34){pts.push([xr,-93],[xr,125]);}    // Ringstrasse Nord/Sued
   for(var zr=-80;zr<=100;zr+=34){pts.push([119,zr],[-119,zr]);}    // Ringstrasse West/Ost
-  pts.push([68,87],[-4,78],[-33,86],[30,104],[0,146],[-24,74]);    // Plaetze, Parkplatz, Seepark
+  pts.push([68,87],[-4,78],[-33,86],[25,97],[0,146],[-24,74]);    // Plaetze, Parkplatz, Seepark
   var _lampPoolTexC=null;
   function _lampPoolTex(){
     if(_lampPoolTexC)return _lampPoolTexC;
@@ -726,9 +726,12 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
   var hMat=new THREE.MeshStandardMaterial({map:hTex,color:0x9aba7c,roughness:1,envMapIntensity:0.16});
   for(var h=0;h<14;h++){var a=h/14*6.283,r=95+((h*37)%40);
     var hx0=Math.cos(a)*r,hz0=Math.sin(a)*r;
-    if(hx0<-112)continue;                        // nicht ins Meer
-    if(Math.hypot(hx0,hz0-146)<40)continue;      // nicht in den Seepark
     var hR=14+((h*7)%12);
+    if(hx0<-112)continue;                        // nicht ins Meer
+    /* 🐛 Der Check prueffte nur die Huegel-MITTE (40 m) — mit bis zu 25 m Radius
+       ragte die helle Kuppe unter das transparente Seewasser (User-Screenshot
+       „wasser?"). Jetzt zaehlt Mitte + Radius. */
+    if(Math.hypot(hx0,hz0-146)<30+hR)continue;   // nicht in den Seepark
     if(Math.abs(hx0)<RL/2+2+hR&&Math.abs(Math.abs(hz0)-(GH*CS/2+12))<5+hR)continue; // nicht auf Hauptstrassen
     if(Math.abs(Math.abs(hx0)-RX)<5+hR&&Math.abs(hz0)<78+hR)continue; // nicht auf Querstrassen
     if(Math.abs(Math.abs(hx0)-112)<6+hR&&hz0>-108&&hz0<126)continue; // nicht auf der Ringstrasse (x)
@@ -951,41 +954,67 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       [-(SZa+12+13),SZa+12+13].forEach(function(zf){reihe(zf,"x",-RL/2+14,RL/2-14,13);});
       [-(RX+10),RX+10].forEach(function(xf){reihe(xf,"z",-(SZa+34),SZa+34,13);});   // Querstrasse: Fahrbahn 5, Gehweg 7.4
     })();
-    (function parkplatz(){ /* Asphaltflaeche mit Markierung + abgestellte Autos */
-      var PX=30,PZ=104,PW=26,PD=18;  /* Bahnhofs-Parkplatz — per Freiflaechen-Solver gesetzt */
+    (function parkplatz(){
+      /* 🅿️ User: „parkplatz viel groesser, man sollte platz haben zum fahren hinten
+         vorne und seite und eine ein- und ausfahrt".
+         Die Nachbarn sind IM SPIEL gemessen (nicht geraten): bei z=105.6 beginnt die
+         Gebaeudezeile vor der Ringstrasse (Turmbau x 30.4..41.6), suedlich bei z=88.1
+         endet das Gebaeude (26,80), oestlich bei x=44.5 steht die Litfass-Gruppe.
+         Der Platz nutzt das Maximum dazwischen: 36 x 16 (vorher 26 x 18 mit Bauten
+         darin). Layout: Stellreihen an Nord- und Suedkante, 5.6 m Fahrgasse in der
+         Mitte, Ein- UND Ausfahrt als Asphaltbaender durch die Gebaeudeluecke
+         (x 5.6..30.4) zur Ringstrasse, mit Pfeilen und Bordstein-Luecken. */
+      var PX=25,PZ=97,PW=36,PD=16;
       var pl=new THREE.Mesh(new THREE.PlaneGeometry(PW,PD),strMatH.clone());
       pl.rotation.x=-Math.PI/2;pl.position.set(PX,-0.004,PZ);pl.receiveShadow=true;scene.add(pl);
       var mM=new THREE.MeshStandardMaterial({color:0xd8d8cc,roughness:0.8});mM.envMapIntensity=0.12;
-      for(var b=0;b<=8;b++){var st=new THREE.Mesh(new THREE.PlaneGeometry(0.2,5),mM);
-        st.rotation.x=-Math.PI/2;st.position.set(PX-PW/2+2+b*2.8,0.004,PZ-PD/4);scene.add(st);
-        var st2=new THREE.Mesh(new THREE.PlaneGeometry(0.2,5),mM);
-        st2.rotation.x=-Math.PI/2;st2.position.set(PX-PW/2+2+b*2.8,0.004,PZ+PD/4);scene.add(st2);}
+      (window._markMats=window._markMats||[]).push(mM);
+      var RB=2.8,RT=5.2,N=11,R0=PX-(N*RB)/2;
+      [-1,1].forEach(function(seite){                       /* Reihen an den Kanten */
+        var zr=PZ+seite*(PD/2-RT/2);
+        for(var b=0;b<=N;b++){
+          var st=new THREE.Mesh(new THREE.PlaneGeometry(0.2,RT),mM);
+          st.rotation.x=-Math.PI/2;st.position.set(R0+b*RB,0.004,zr);scene.add(st);}});
       var AF=[0xc23b32,0x2f6fb8,0xe8e4dc,0x3a3f47,0x4e9a5a,0xd8a83a,0x8a5ad0];
-      for(var a=0;a<9;a++){
-        var reihe2=a<5?-1:1,idx=a<5?a:a-5;
-        var ax=PX-PW/2+3.4+idx*2.8,az=PZ+reihe2*PD/4;
+      for(var a=0;a<10;a++){
+        var seite=a%2?1:-1, idx=(a*3+1)%N;
+        var ax=R0+RB/2+idx*RB, az=PZ+seite*(PD/2-RT/2);
         var g=new THREE.Group();
         var k=new THREE.Mesh(new THREE.BoxGeometry(1.8,0.85,4.0),new THREE.MeshStandardMaterial({color:AF[(a*3)%AF.length],roughness:0.35,metalness:0.3}));
         k.position.y=0.75;k.castShadow=true;g.add(k);
         var d=new THREE.Mesh(new THREE.BoxGeometry(1.6,0.62,2.1),new THREE.MeshStandardMaterial({color:0x2a2e34,roughness:0.15,metalness:0.2,transparent:true,opacity:0.85}));
-        d.position.set(0,1.42,-0.25);g.add(d);
+        d.position.set(0,1.42,-0.25*seite);g.add(d);
         [[-0.85,1.4],[0.85,1.4],[-0.85,-1.4],[0.85,-1.4]].forEach(function(w){
           var r=new THREE.Mesh(new THREE.CylinderGeometry(0.33,0.33,0.22,10),stdMat(0x22252a,0.5));
           r.rotation.z=Math.PI/2;r.position.set(w[0],0.33,w[1]);g.add(r);});
-        g.position.set(ax,0,az);g.rotation.y=(Math.random()-0.5)*0.08;scene.add(g);}
-      /* Struktur wie beim Rest der Stadt: Bordkante ringsum, Gruenstreifen zwischen den
-       Reihen, Zufahrt im Norden offen (User: „parkplaetze schoener gestalten, Struktur und
-       Textur wie alles andere"). */
-    var kM=betMat(0xd0cdc4,0.9);
-    [[0,-PD/2-0.4,PW+1.6,0.8],[0,PD/2+0.4,PW+1.6,0.8],[-PW/2-0.4,0,0.8,PD+1.6],[PW/2+0.4,0,0.8,PD+1.6]]
-      .forEach(function(k,i){
-        if(i===0)return;                                   /* Nordseite bleibt Zufahrt */
-        var kb=new THREE.Mesh(new THREE.BoxGeometry(k[2],0.18,k[3]),kM);
-        kb.position.set(PX+k[0],0.09,PZ+k[1]);kb.receiveShadow=true;scene.add(kb);});
-    var gruen=new THREE.Mesh(new THREE.PlaneGeometry(PW-4,1.8),new THREE.MeshStandardMaterial({color:0x5f9a52,roughness:0.95}));
-    gruen.rotation.x=-Math.PI/2;gruen.position.set(PX,0.006,PZ);gruen.receiveShadow=true;scene.add(gruen);
-    for(var tb=0;tb<3;tb++)baum2(PX-8+tb*8,PZ,0.62);        /* Baumreihe im Mittelstreifen */
-    addSolid(PX,PZ,PW+1,PD+1,{a:"z",at:PZ-PD/2-0.5,c:PX,w:PW});  /* offene Zufahrt an der Nordseite */
+        g.position.set(ax,0,az);g.rotation.y=(a%3-1)*0.03+(seite<0?Math.PI:0);scene.add(g);}
+      /* Bordstein aussen; Sued-Kante mit zwei Luecken fuer Ein-/Ausfahrt */
+      var kM=betMat(0xd0cdc4,0.9);
+      var EIN=11,AUS=25;                                    /* beide in der Gebaeudeluecke 5.6..30.4 */
+      function bord(x,z,w,d){var kb=new THREE.Mesh(new THREE.BoxGeometry(w,0.18,d),kM);
+        kb.position.set(x,0.09,z);kb.receiveShadow=true;scene.add(kb);}
+      bord(PX,PZ-PD/2-0.4,PW+1.6,0.8);
+      bord(PX-PW/2-0.4,PZ,0.8,PD+1.6); bord(PX+PW/2+0.4,PZ,0.8,PD+1.6);
+      var s0=PX-PW/2,s1=EIN-3,s2=EIN+3,s3=AUS-3,s4=AUS+3,s5=PX+PW/2;
+      bord((s0+s1)/2,PZ+PD/2+0.4,s1-s0,0.8);
+      bord((s2+s3)/2,PZ+PD/2+0.4,s3-s2,0.8);
+      bord((s4+s5)/2,PZ+PD/2+0.4,s5-s4,0.8);
+      /* Zufahrtsbaender bis zur Ringstrassen-Fahrbahn (z=113.5) + Pfeile */
+      [EIN,AUS].forEach(function(zx,zi){
+        var band=new THREE.Mesh(new THREE.PlaneGeometry(6,9),strMatH.clone());
+        band.rotation.x=-Math.PI/2;band.position.set(zx,-0.0035,PZ+PD/2+4.6);band.receiveShadow=true;scene.add(band);
+        var pf=new THREE.Mesh(new THREE.PlaneGeometry(0.5,2.4),mM);
+        pf.rotation.x=-Math.PI/2;pf.position.set(zx,0.005,PZ+PD/2+3.4);scene.add(pf);
+        var sp=new THREE.Mesh(new THREE.PlaneGeometry(1.3,0.5),mM);
+        sp.rotation.x=-Math.PI/2;sp.rotation.z=zi?Math.PI/4:-Math.PI/4;
+        sp.position.set(zx,0.005,PZ+PD/2+2.2);scene.add(sp);});
+      /* Gruenstreifen + Baumreihe an der Nordkante */
+      var gruen=new THREE.Mesh(new THREE.PlaneGeometry(PW-4,1.6),new THREE.MeshStandardMaterial({color:0x5f9a52,roughness:0.95}));
+      gruen.rotation.x=-Math.PI/2;gruen.position.set(PX,0.006,PZ-PD/2-1.6);gruen.receiveShadow=true;scene.add(gruen);
+      for(var tb=0;tb<4;tb++)baum2(PX-13.5+tb*9,PZ-PD/2-1.7,0.62);
+      /* Keine Voll-Kollider: nur die beiden Stellreihen, die Fahrgasse bleibt frei. */
+      addSolid(PX,PZ-(PD/2-RT/2),N*RB+0.6,RT*0.9);
+      addSolid(PX,PZ+(PD/2-RT/2),N*RB+0.6,RT*0.9);
     })();
     /* 📱 Auf dem Handy zwei Drittel der Streu-Objekte — die Landschaft bleibt voll,
        aber es sind hunderte Draw-Calls weniger. */
@@ -3028,7 +3057,10 @@ setTimeout(function baueGebaeude(){
               {file:"th23_apotheke.glb",h:7,w:12,d:10},
               {file:"th23_polizeiwache.glb",h:8.5,w:16,d:12}]});
     viertel({name:"Sportpark Sued",x:0,z:216,w:180,d:84,achse:"x",boden:"rasen",
-      anschluss:[0,146],abstand:15,luecke:18,rand:18,
+      /* 🐛 anschluss war [0,146] — die SEEMITTE. Der Verbinder endete als Asphalt-
+         zunge samt Mittelstreifen und Laterne mitten im Wasser (User: „wasser?").
+         Jetzt endet er am Suedufer (Wasserradius ~20 + Sandring). */
+      anschluss:[0,172],abstand:15,luecke:18,rand:18,
       bauten:[{file:"th19_schwimmbad.glb",h:9,w:22,d:16},
               {file:"th19_tennishalle.glb",h:10,w:22,d:16},
               {file:"th19_fitnessstudio.glb",h:8,w:18,d:14},
@@ -3542,6 +3574,12 @@ setTimeout(function baueGebaeude(){
                 var nx=kand.w.position.x+RI[r][0]*d, nz=kand.w.position.z+RI[r][1]*d;
                 var q=wegVonStrasse(nx,nz);
                 if(Math.hypot(q[0]-nx,q[1]-nz)>0.01)continue;      // Fahrbahn/Trottoir
+                /* 💧 Kein Ausweichen ins Wasser: Seepark (0,146), Fluss-Band, Meer.
+                   Ohne diesen Check schob der Entwirrer Baenke in den See
+                   (User-Screenshot „wasser?" — Bretter trieben schraeg im Wasser). */
+                if(Math.hypot(nx,nz-146)<27)continue;
+                if(nz>-97&&nz<-84&&nx<82)continue;
+                if(nx<-112)continue;
                 var nb=kand.b.clone();
                 nb.translate(new THREE.Vector3(nx-kand.w.position.x,0,nz-kand.w.position.z));
                 var frei=true;
@@ -3569,7 +3607,10 @@ setTimeout(function baueGebaeude(){
      ergibt kein stimmiges Bild. Der Hof steht jetzt draussen auf dem Feld. */
   /* 📏 Hoehe 6 -> 4.5 und von z=70.5 auf 80: der Bau war groesser als alles ringsum und
      seine Markise stand auf dem Trottoir (User-Screenshot). */
-  bau("bd_market.glb",4.5,26,0,80,Math.PI,false,function(w9,root9){ // Stray-Face ("Geister-Dreieck") ausblenden
+  /* 🎪 User: „stand passt nicht dort, eher bei Freizeitpark" — der gestreifte
+     Marktstand klemmte direkt am Parkplatz-Nordrand. Jetzt steht er als
+     Markt-Bude an der Freizeitpark-Zufahrt. */
+  bau("bd_market.glb",4.5,20,0,294,0,false,function(w9,root9){ // Stray-Face ("Geister-Dreieck") ausblenden
     root9.traverse(function(n9){if(!n9.isMesh||!n9.geometry)return;
       n9.geometry.computeBoundingBox();var bb9=n9.geometry.boundingBox,sz9=new THREE.Vector3();bb9.getSize(sz9);
       var duenn=Math.min(sz9.x,sz9.y,sz9.z)<0.012,gross=Math.max(sz9.x,sz9.y,sz9.z)>0.55;
@@ -3599,7 +3640,9 @@ setTimeout(function baueGebaeude(){
   bau("th3_wippe.glb",1.25,91,0,-26,Math.PI/2,false);
   bau("th3_karussell.glb",1.3,103,0,-23,0,false);
   // Markt-Platz (Suedzeile)
-  bau("th3_marktstand.glb",1.35,62,0,86,Math.PI,false);bau("th3_marktstand.glb",1.35,74,0,86,Math.PI,false); /* 🌳 Markt in den PARK verlegt */
+  /* 🎪 User: „stand passt nicht dort, eher bei Freizeitpark" — die zwei Buden standen
+     verloren zwischen Parkplatz und Bahn. Jetzt flankieren sie die Park-Zufahrt. */
+  bau("th3_marktstand.glb",1.35,36,0,300,0,false);bau("th3_marktstand.glb",1.35,84,0,300,0,false);
   (function riesenPark(){ /* 🌳 W2a: grosser Park rund um den Markt-Platz */
     var pb=new THREE.Mesh(new THREE.PlaneGeometry(36,18),betMat(0xcfc8b8,0.9));
     pb.rotation.x=-Math.PI/2;pb.position.set(68,-0.008,87);pb.receiveShadow=true;scene.add(pb);
@@ -3622,7 +3665,7 @@ setTimeout(function baueGebaeude(){
     bau("th5_ortsschild.glb",2.4,64,0,58,Math.PI,false);
     bau("th5_telefonzelle.glb",2.7,73,0,57,Math.PI,false);
     bau("th5_poller.glb",1.05,68,0,56,0,false);
-    bau("th5_marktstand.glb",1.5,48,0,86,-Math.PI/2,false);
+    bau("th5_marktstand.glb",1.5,60,0,302,0,false); /* 🎪 vom Parkplatzrand an die Freizeitpark-Zufahrt */
     /* ── th6: Stadt-Kleinzeug ── */
     bau("th6_papierkorb.glb",0.9,58,0,80,0,false);bau("th6_papierkorb.glb",0.9,78,0,88,0,false);
     bau("th6_blumenkuebel.glb",0.7,60,0,79,0,false);bau("th6_blumenkuebel.glb",0.7,76,0,79,0,false);
@@ -3881,7 +3924,9 @@ setTimeout(function baueGebaeude(){
   bau("th3_blumenkuebel.glb",0.7,0,0,50.2,0,false);
   bau("th3_blumenkuebel.glb",0.7,84,0,-31,0,false);
   // See: Steg + Ruderboot
-  bau("th3_steg.glb",0.8,10,0,139,-Math.PI/4,false);
+  /* Der Steg lag frei MITTEN im Wasser (10,139 = 9.9 m von der Seemitte) — Deko aus
+     der Zeit, als der See woanders lag. Jetzt am Suedost-Ufer, radial ins Wasser. */
+  bau("th3_steg.glb",0.8,14.5,0,135,Math.PI/4+Math.PI/2,false,null,true);
   bau("th3_ruderboot.glb",0.55,-91,-0.04,80,0.6,false);
   // Park: Picknicktische
   bau("th3_picknick.glb",0.85,62,0,-32,0.4,false);
@@ -3907,8 +3952,9 @@ setTimeout(function baueGebaeude(){
   [-87,-91,-95,-99].forEach(function(xx){bau("th4_zaun_holz.glb",0.95,xx,0,-25,0,false);bau("th4_zaun_holz.glb",0.95,xx,0,-41,0,false);});
   // Vogelhäuser
   bau("th4_vogelhaus.glb",2,62,0,-36,0.6,false);bau("th4_vogelhaus.glb",2,-62,0,20,0,false);
-  // See: Bogenbrücke ans Ufer, Schwan aufs Wasser, Sonnenschirme
-  bau("th4_bruecke.glb",1.1,-3,0,135.5,Math.PI/2,false);
+  // Schwan aufs Wasser, Sonnenschirme; die Bogenbruecke stand MITTEN im See —
+  // jetzt quert sie den Fluss im Norden, wo eine Bruecke hingehoert.
+  bau("th4_bruecke.glb",1.1,30,0,-90,0,false,null,true);
   bau("th4_schwan.glb",0.75,-5,-0.02,140,0.6,false);
   bau("th4_sonnenschirm.glb",2.4,13,0,135,0.4,false);bau("th4_sonnenschirm.glb",2.4,94,0,-13,1.2,false);
   /* ─────────── 🎡 MEHR DETAILS aus der Modell-Bibliothek (User: „umgebung wie echt,
@@ -5998,7 +6044,7 @@ addEventListener("orientationchange",function(){setTimeout(layoutLinkeSpalte,260
    Solo ist er absichtlich nicht spielbar; der Knopf sagt das auch. */
 var COUP={phase:0,t:0,beute:0};
 function coupZone(){return window._bankPos||{x:172,z:-20};}
-function coupFluchtZone(){return {x:30,z:104};}                 /* Bahnhofs-Parkplatz */
+function coupFluchtZone(){return {x:25,z:97};}                  /* Bahnhofs-Parkplatz (vergroessert) */
 function coupBtnUpd(){
   var b=document.getElementById("coupBtn");if(!b)return;
   if(!running||buildMode||COUP.phase>0){b.style.display="none";return;}
