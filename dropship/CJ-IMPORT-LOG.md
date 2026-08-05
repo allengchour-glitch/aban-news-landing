@@ -2781,3 +2781,9 @@ publiziert, aktuell LEER — bewusst noch nicht im Menü). **Playbook für Novem
 2. 24.11.: Menüpunkt «Black Friday» (Top-Level oder Mehr&Sale Pos. 1), Homepage-Reihe umwidmen
    (25-Sektionen-Limit), Announcement-Bar-Slot, ggf. BF-Rabattcode (nicht mit WELCOME10 stapelbar machen).
 3. 01.12.: zurückbauen (Menü raus, Tags können bleiben).
+
+## 2026-08-05 Startseiten-Verbesserung 2 (User «startseite verbessern mehr?»)
+Halloween-Saison an 3 Stellen injiziert OHNE neue Sektion (25er-Limit): (1) `halloween` vorne in
+cl_trends collection_list, (2) Kategorie-Grid-Kachel trends-gadgets→halloween (Trends hat eigene Reihe),
+(3) Announcement-Slot 4 → «🎃 Halloween-Shop ist da». Redundanz-Check: die 3 «Top 10 Bestseller»-Namen
+sind nur Admin-intern (echt: parfuem-damen/bestseller/wohnen-dekoration) — kundenseitig kein Duplikat.
