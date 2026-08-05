@@ -2792,3 +2792,12 @@ sind nur Admin-intern (echt: parfuem-damen/bestseller/wohnen-dekoration) — kun
 4 Produkte in garten-balkon hatten productType Gaming: Hydraulik-«Joystick»-Ventile (CJ listet sie unter
 Joysticks/Gaming!) + «Bewässerungs-computer». Typen → Gartenwerkzeug/Garten & Pflanzen. cj_category_fill
 Titel-Wache erweitert: hydraulik/wegeventil/holzspalter/traktor/bewässerung → nie Gaming-Tags/-Typ.
+
+## 2026-08-05 Fehler-Sweep 4: Typ-Verteilungs-Audit über 12 Tag-Pools
+Methode: pro Pool (garten/damen/herren/schmuck/beauty/kueche/haustier/spielzeug/elektronik/home/uhren/schuhe)
+seltene productTypes flaggen → Titel prüfen. Funde gefixt (16): **«Cat»-Falle** — Cat-Eye-NÄGEL (5),
+Cat-TASTENKAPPEN, «Ghost Cat»-Joystick, Cat-Eye-OHRRINGE trugen haustier/katze-Tags (englisches «Cat» im
+Titel!) → Pet-Tags raus; 6 Smartwatches + Katzenball + Perlen-Tasche aus schmuck-Tag raus (uhren/taschen rein).
+Familien-/Unisex-Artikel in damen+herren+kinder = korrekt, bleiben. **Nachzügler: 3'630 DRAFTs mit Typ
+Fortura-CH** (Aktiv-Sweep deckte Drafts nicht) → Runner läuft erneut (gleicher Mapper, Schwinger/Edelweiss→
+Schweizer Editionen). ⚠️ Tagger-Regel fürs GEHIRN: englisches «Cat»/«Cat Eye» NIE als Katze taggen.
