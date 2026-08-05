@@ -2806,3 +2806,13 @@ Schweizer Editionen). ⚠️ Tagger-Regel fürs GEHIRN: englisches «Cat»/«Cat
 Collection `erste-august` («1. August — Schweizer Edition», 270 Produkte) → **«Schweizer Editionen»**
 (evergreen, 1. August vorbei; Handle bleibt). Startseite: Kategorie-Grid-Kachel bar-wein→«Schweiz 🇨🇭»,
 Trend-Kategorien-Liste Pos. 2. Menü-Erwähnungen mitumbenannt (falls vorhanden). SEO neu.
+
+## 2026-08-05 Fehler-Sweep 5: Pages + leere Collections (User «gibt sicher viel mehr fehler»)
+- **11 Kundenseiten mit «ab CHF 50»** (AGB, FAQ×2, Versand×5, Launch, 2 Geschenk-Guides) → CHF 65.
+  ⚠️ Der Produkt-/Collection-Sweep deckte PAGES nicht ab — Pages sind eigene Objekte!
+- **unsere-story VERSTECKT:** behauptete «Wir haben 5 kuratierte Hero-Produkte» + Anti-Dropshipping-Rhetorik
+  — Altlast der 5-Heroes-Ära, Glaubwürdigkeits-Killer bei 26k Produkten. ueber-uns bleibt die echte Seite.
+- **Leere publizierte Collections:** silvester-neujahr + loreal → unpublished (Onlineshop); party-deko-ch
+  hatte tote Regel → TYPE 'Partydeko & Ballone' OR tag partydeko = **57 Produkte** wieder drin ✓;
+  black-friday bleibt bewusst leer-publiziert (November).
+- ⚠️ API-Falle: `publishedOnCurrentPublication` braucht App-Publication → `publishedOnPublication(id)` nutzen.
