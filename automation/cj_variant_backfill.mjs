@@ -36,11 +36,31 @@ const MAT_DE = { plastic:'Kunststoff', metal:'Metall', glass:'Glas', 'stainless 
   pvc:'PVC', sponge:'Schaumstoff', iron:'Eisen', rubber:'Gummi', paper:'Papier', crystal:'Kristall',
   pearl:'Perle', 'zircon':'Zirkonia', flannel:'Flanell', 'oxford cloth':'Oxford-Gewebe', spandex:'Elasthan' };
 const deMat = m => { const k=(m||'').toLowerCase().trim(); return MAT_DE[k] || m; };
+function extractSpecs(desc){
+  const t=(desc||'').replace(/<br\s*\/?\s*>/gi,'\n').replace(/<[^>]+>/g,' ');
+  const MAP={size:'Masse',dimensions:'Masse','product size':'Masse',thickness:'Dicke',length:'Länge',
+    width:'Breite',height:'Höhe',diameter:'Durchmesser',capacity:'Fassungsvermögen',voltage:'Spannung',
+    power:'Leistung','battery capacity':'Akku-Kapazität','cable length':'Kabellänge'};
+  const rows=[];const seen=new Set();
+  for(const line of t.split('\n')){
+    const m=line.match(/^\s*([A-Za-z][A-Za-z ]{2,20}):\s*([^:]{2,60})$/);
+    if(!m) continue;
+    const key=m[1].trim().toLowerCase();
+    if(!(key in MAP)||seen.has(MAP[key])) continue;
+    const val=m[2].trim().replace(/\s+/g,' ');
+    if(!/\d/.test(val)) continue;              // nur Werte mit Zahlen (Masse/Watt/ml …)
+    if(/color|colour/i.test(key)) continue;
+    seen.add(MAP[key]); rows.push(`${MAP[key]}: ${val}`);
+    if(rows.length>=4) break;
+  }
+  return rows;
+}
 function buildDetails(cj, colors, sizes){
   const rows=[];
   const mats=(cj?.materialNameEn||[]).map(deMat).filter(Boolean);
   if(mats.length) rows.push(`Material: ${[...new Set(mats)].join(', ')}`);
   const w=Number(cj?.productWeight)||0; if(w>0) rows.push(`Gewicht: ca. ${w>=1000?(w/1000).toFixed(1)+' kg':Math.round(w)+' g'}`);
+  for(const r of extractSpecs(cj?.description)) rows.push(r);
   if((cj?.productProEn||[]).includes('BATTERY')) rows.push('Mit Batterie/Akku');
   if(colors&&colors.length>1) rows.push(`Farben: ${colors.join(', ')}`);
   if(sizes&&sizes.length>1) rows.push(`Grössen: ${sizes.join(', ')}`);
