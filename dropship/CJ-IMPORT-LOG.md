@@ -2753,3 +2753,13 @@ Anfrage-Mail an info@dameco.ch als Gmail-Entwurf (Dropshipping-Konditionen, Feed
 Saisondeko/Laternen/LED-Lichterketten für Herbst/Weihnachten). Grosshandels-Shop shop.dameco.ch braucht
 freigeschaltetes Händlerkonto (Login JS-rendered, keine offene Registrierung) → E-Mail ist der Einstieg.
 Importer folgt nach Feed-Format-Kenntnis dem Shopcom/Fortura-Muster.
+
+## 2026-08-05 POD-Editor-Sticker-Fix (User-Fund «bild fehler?»)
+Sticker-Kacheln im Selbst-gestalten-Editor waren broken: Quelle war `abannews.com/social/stickers/` —
+die aban-Session hat die Seite umgebaut → index.json 404 → JS-Fallback-Liste lud 18 Namen, deren PNGs
+ebenfalls 404. **Fix:** 67 Sticker-PNGs + Index als `stk-<name>.png`/`stk-index.json` auf Shopify-CDN
+(upload_to_shopify_cdn.mjs, URLs aus Antwort!), Designer-JS: STICKER_BASE → CDN-`…/files/stk-` (Trick:
+JS baut INDEX=BASE+"index.json" → passt exakt auf stk-index.json), als `lspod-designer-v2.js` hochgeladen,
+**37 Editor-Produkte** per descriptionHtml-Replace auf die neue URL umgestellt. Bonus: alle 67 Sticker
+statt 18 Fallback. Kopie: pod/designer-cdn-v2.js. **Regel: POD-Assets NIE auf abannews.com hosten —
+fremde Session, kann jederzeit brechen. Immer Shopify-CDN.**
