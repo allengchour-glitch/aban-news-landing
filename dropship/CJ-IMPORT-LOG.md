@@ -2714,3 +2714,11 @@ Bulk-Scan: **0 bildlose, 0 CJK-Titel** ✓. 40 Klein-Titel: 33 legitime Marken (
 «Goldfarbene» Halskette, «mini Power Bank»→«Mini-Powerbank», Flüssiglatex). Misfit-Scan 7 Pools:
 schmuck/kueche/kinder/spielzeug/herren sauber; 2 Motorrad-Masken aus beauty→sport, 7 «für Herren»-Artikel
 aus damen→herren. ⚠️ Regex-Falle: `men.?s` traf «Na**mens**-Armreif». Policy-Seiten alle 200 ✓.
+
+## 2026-08-05 Warenkorbabbrecher-Recovery per API+Gmail (User «mach warenkorb per api oder port»)
+Shopifys native Abbrecher-Mail hat KEINEN API-Schalter (Admin-only). Workaround gebaut: `abandonedCheckouts`
+per GraphQL (15 total, 4 echte Kunden, 6 eigene Tests) → personalisierte Recovery-Mails (Produkt, CHF, Recovery-
+Link, WELCOME10, TWINT/Klarna-Trust) als **Gmail-Entwürfe** — User muss nur noch Senden drücken. Ledger
+`dropship/_abandoned_drafted.txt` (Checkout-URLs) gegen Doppel-Entwürfe. Bei künftigen Keepalives: neue
+Abbrecher prüfen → neue Entwürfe. Native Automation (Admin → Marketing → Automationen) bleibt der bessere
+Dauerweg = 1 User-Klick.
