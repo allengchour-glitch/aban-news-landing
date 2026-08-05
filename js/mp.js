@@ -88,6 +88,7 @@
     if (!window.Peer) { S._setStatus("closed"); S._rej(new Error("PeerJS nicht geladen (js/vendor/peerjs.min.js)")); return; }
     var peer = null, main = null, fast = null, ever = false, byUs = false, dying = false /* absichtliches Zerstoeren — unterdrueckt den Reconnect-Handler */, tmo = null, tries = 0, retried = false, brokerVersuche = 0;
     var lastRecv = 0, wd = null, reconns = 0, MAX_RECONN = 5;
+    var sendQ = []; /* 🩹 Schwarm4: "zuverlässige" Events während lost/Reconnect puffern statt still verwerfen */
     // Watchdog: DataChannel-close wird bei hartem Abbruch (Tab zu, Netz weg) oft
     // erst nach langem ICE-Timeout gemeldet → Stille >6s bei laufendem Traffic
     // (Spiele senden Snapshots/Pings im Sekundentakt) gilt als Abriss.
@@ -96,7 +97,11 @@
       if (wd) clearInterval(wd);
       wd = setInterval(function () {
         if (S.status === "closed") { clearInterval(wd); return; }
-        if (S.status === "connected" && Date.now() - lastRecv > 6000) { clearInterval(wd); wd = null; lost(); }
+        if (S.status === "connected" && Date.now() - lastRecv > 6000) { clearInterval(wd); wd = null; lost(); return; }
+        /* 🩹 Schwarm4: eigener Transport-Keepalive — in der Lobby sendet das Spiel oft
+           nichts (hb läuft erst im Match), ohne Keepalive feuerte der 6s-Watchdog dann
+           beidseitig mitten im Warten und riss die Verbindung im Sekundentakt ab. */
+        try { if (S.status === "connected" && main && main.open) main.send({ t: "__ka" }); } catch (e) {}
       }, 2000);
     }
     function fail(msg) {
@@ -114,7 +119,7 @@
       S._setStatus("closed");
       try { if (peer) { dying = true; peer.destroy(); try { peer.socket && peer.socket.close(); } catch (e2) {} } } catch (e) {}
     }
-    function recv(d) { lastRecv = Date.now(); S._emit(d); }
+    function recv(d) { lastRecv = Date.now(); if (d && d.t === "__ka") return; /* Transport-Keepalive zählt nur für lastRecv, geht NICHT ans Spiel */ S._emit(d); }
     function wireFast(c) { c.on("data", function (d) { if (c !== fast) return; recv(d); }); } /* A1: Zombie-Kanal füttert lastRecv nicht */
     function wireMain(c) {
       /* A1 (Rest-Audit): Identitäts-Guards — Events eines ERSETZTEN Kanals (ICE-Timeout
@@ -122,7 +127,12 @@
       c.on("open", function () {
         if (c !== main) return; // Identitaets-Guard (Audit A1)
         ever = true; clearTimeout(tmo); clearTimeout(rt); reconns = 0; // erfolgreicher (Re)Connect -> Reconnect-Budget erneuern + Kettentimer stoppen
+        /* 🩹 Schwarm4: Erfolg -> Broker-Zähler zurück auf Standard. Ohne Reset driftete das
+           Gerät nach jedem Netz-Hänger dauerhaft (localStorage!) auf einen anderen
+           Vermittlungs-Server als der Mitspieler — korrekte Raum-Codes fanden sich nie mehr. */
+        try { localStorage.setItem("aban_broker", "0"); } catch (e) {}
         S._setStatus("connected"); startWd();
+        while (sendQ.length) { try { c.send(sendQ.shift()); } catch (e) { break; } } /* 🩹 Schwarm4: gepufferte Events in Reihenfolge nachliefern */
         if (!isHost) { // 2. Kanal: unreliable für Positions-Spam
           try { fast = peer.connect(pid(gameId, S.code), { label: "fast", reliable: false }); wireFast(fast); } catch (e) {}
         }
@@ -159,6 +169,12 @@
       } else {
         rt = setTimeout(function () {
           if (S.status !== "lost") return;
+          /* 🩹 Schwarm4: alte Kanäle symmetrisch zum Host-Zweig schliessen — sonst hält das
+             alte main beim Host den 1v1-Slot besetzt und jeder Neuversuch wird als "Raum
+             voll" abgewiesen, bis das Reconnect-Budget verbraucht ist. */
+          try { if (main) main.close(); } catch (e) {}
+          try { if (fast) fast.close(); } catch (e) {}
+          fast = null; main = null;
           try { main = peer.connect(pid(gameId, S.code), { reliable: true }); wireMain(main); } catch (e) { giveUp(); return; }
           rt = setTimeout(function () { if (S.status === "lost") lost(); }, backoff + 7000);
         }, backoff);
@@ -228,7 +244,10 @@
       })(peer);
       peer.on("error", function (err) {
         if (byUs) return; /* 🩹 Schwarm-P2: nach close() darf kein Retry mehr booten (Zombie-Peer) */
-      try { var _t = err && err.type; if (_t === "network" || _t === "server-error" || _t === "socket-error" || _t === "socket-closed") mpNextBroker(); } catch (e) {}
+      /* 🩹 Schwarm4: nur bei NIE zustande gekommener Verbindung den Broker wechseln — ein
+         Netz-Hänger mitten im Spiel verstellte sonst den gespeicherten Zähler dauerhaft
+         und die Spieler fanden sich beim nächsten Versuch nicht mehr. */
+      try { var _t = err && err.type; if (!ever && (_t === "network" || _t === "server-error" || _t === "socket-error" || _t === "socket-closed")) mpNextBroker(); } catch (e) {}
         var t = err && err.type;
         if (isHost && t === "unavailable-id") {
           if (noRegen) { fail("Public-Raum bereits belegt"); return; } // Quick-Match: auf Beitreten wechseln
@@ -237,8 +256,11 @@
         }
         if (t === "peer-unavailable") {
           if (ever) return; /* 🩹 Schwarm-P2: mitten im Spiel übernimmt lost() den Reconnect — Boot-Retry würde den Broker-Index kippen */
-          /* 🔁 Raum evtl. auf dem ANDEREN Broker → dort automatisch weitersuchen statt aufgeben */
-          if (!retried) { retried = true; mpNextBroker(); clearTimeout(tmo); try { dying = true; peer.destroy(); try { peer.socket && peer.socket.close(); } catch (e2) {} } catch (e) {} boot(); return; }
+          /* 🔁 Raum evtl. auf dem ANDEREN Broker → dort automatisch weitersuchen statt aufgeben.
+             🩹 Schwarm4: ALLE Broker durchprobieren (wie im Timeout-Pfad), nicht nur einen —
+             mit dem einmaligen retried-Flag wurde der Server, auf dem der Host wirklich sitzt,
+             je nach gespeichertem Zähler-Stand nie probiert. */
+          if (brokerVersuche < MP_BROKERS.length - 1) { brokerVersuche++; retried = true; mpNextBroker(); clearTimeout(tmo); try { dying = true; peer.destroy(); try { peer.socket && peer.socket.close(); } catch (e2) {} } catch (e) {} boot(); return; }
           fail("Raum " + S.code + " nicht gefunden — Code prüfen!");
         }
         else if (!ever && (t === "network" || t === "server-error" || t === "socket-error" || t === "socket-closed")) {
@@ -247,7 +269,7 @@
         }
       });
     }
-    S.send = function (o) { try { if (main && main.open) main.send(o); } catch (e) {} };
+    S.send = function (o) { try { if (main && main.open) main.send(o); else if (S.status !== "closed" && sendQ.length < 200) sendQ.push(o); } catch (e) {} }; /* 🩹 Schwarm4: puffern statt verwerfen — sonst gehen Boss-Treffer/GameOver im Reconnect-Fenster für immer verloren */
     S.sendFast = function (o) { try { if (fast && fast.open) fast.send(o); else if (main && main.open) main.send(o); } catch (e) {} };
     S.close = function () { byUs = true; clearTimeout(tmo); if (wd) clearInterval(wd); S._setStatus("closed"); try { if (peer) { dying = true; peer.destroy(); try { peer.socket && peer.socket.close(); } catch (e2) {} } } catch (e) {} };
     boot();
@@ -406,12 +428,49 @@
       return { abbrechen: fertig };
     },
     /* Ersten freien oeffentlichen Raum belegen. Reihenfolge = MP.PUBLIC, damit
-       Suchende zuverlaessig von vorne fuendig werden. */
+       Suchende zuverlaessig von vorne fuendig werden.
+       🩹 Schwarm4: Kette statt Einmal-Versuch — belegt eine volle Partie die feste ID
+       (unavailable-id -> fail "Public-Raum bereits belegt"), wird automatisch der
+       naechste Code aus MP.PUBLIC probiert statt hart zu scheitern, obwohl 5 von 6
+       Raeumen frei sind. Aussen-Session spiegelt die Kette (analog MP.quick). */
     hostPublic: function (gameId, belegt) {
       belegt = belegt || [];
-      for (var i = 0; i < MP.PUBLIC.length; i++)
-        if (belegt.indexOf(MP.PUBLIC[i]) < 0) return MP._hostFixed(gameId, MP.PUBLIC[i]);
-      return MP._hostFixed(gameId, MP.PUBLIC[0]);
+      var codes = [], i;
+      for (i = 0; i < MP.PUBLIC.length; i++)
+        if (belegt.indexOf(MP.PUBLIC[i]) < 0) codes.push(MP.PUBLIC[i]);
+      if (!codes.length) codes = MP.PUBLIC.slice();
+      var outer = mkSession("host", codes[0]), inner = null, idx = 0, closedByUs = false, everConnected = false, _info = null;
+      /* info/_peer muessen an die INNERE Session durchgereicht werden (Raum-Browser-Antwort + Voice) */
+      try {
+        Object.defineProperty(outer, "info", { get: function () { return _info; }, set: function (v) { _info = v; if (inner) inner.info = v; } });
+        Object.defineProperty(outer, "_peer", { get: function () { return inner && inner._peer; } });
+      } catch (e) {}
+      function settle() { outer.ready.catch(function () {}); try { outer._rej(new Error("Alle öffentlichen Räume belegt — gleich nochmal versuchen.")); } catch (e) {} }
+      function wire(sess) {
+        if (closedByUs) { try { sess.close(); } catch (e) {} return; }
+        inner = sess; outer.code = sess.code; sess.info = _info;
+        sess.onMessage(function (d) { outer._emit(d); });
+        outer.send = function (o) { sess.send(o); };
+        outer.sendFast = function (o) { sess.sendFast(o); };
+        sess.onStatus(function (st) {
+          outer._serverNr = sess._serverNr; outer._serverAnzahl = sess._serverAnzahl;
+          if (st === "connected") everConnected = true;
+          if (st === "closed" && !closedByUs && !everConnected && idx + 1 < codes.length) { idx++; wire(MP._hostFixed(gameId, codes[idx])); return; }
+          if (st === "closed") settle();
+          outer._setStatus(st);
+        });
+        sess.ready.then(function () { outer._res(outer); }).catch(function () {});
+        if (sess.status === "closed") { /* Session starb SYNCHRON (z.B. PeerJS fehlt) — onStatus feuert nie mehr */
+          setTimeout(function () {
+            if (closedByUs) return;
+            if (!everConnected && idx + 1 < codes.length) { idx++; wire(MP._hostFixed(gameId, codes[idx])); }
+            else { settle(); outer._setStatus("closed"); }
+          }, 0);
+        }
+      }
+      wire(MP._hostFixed(gameId, codes[0]));
+      outer.close = function () { closedByUs = true; if (inner) inner.close(); settle(); outer._setStatus("closed"); };
+      return outer;
     },
     // ⚡ 1-Tipp Schnell-Koop OHNE Code: erst versuchen einem Public-Raum beizutreten,
     // ist er leer -> selbst Host des Public-Raums werden. Kein Code-Austausch nötig.

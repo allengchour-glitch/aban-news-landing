@@ -97,6 +97,7 @@ canvas{display:block}
 #cbPips i{width:22px;height:4px;border-radius:2px;background:rgba(255,255,255,.18)}
 #cbPips i.on{background:#ff7ad9;box-shadow:0 0 8px #ff7ad9}
 @media(max-width:640px){#cbBar{top:auto;bottom:calc(112px + env(safe-area-inset-bottom));width:min(300px,58vw)}}
+@media(max-height:520px){#cbBar{top:auto;bottom:calc(112px + env(safe-area-inset-bottom));width:min(300px,42vw)}} /* Querformat-Handys: oben lag der Boss-Balken sonst direkt auf dem HUD-Panel */
 /* Abyss-Skills: 3 runde Touch-Buttons rechts über dem Ability-Knopf (nur COARSE, radiale CD-Anzeige) */
 .skbtn{position:fixed;right:31px;z-index:7;width:48px;height:48px;border-radius:50%;border:2px solid #7fe7ff;background:rgba(14,26,44,.6);color:#bff2ff;font-size:1.15rem;font-weight:800;cursor:pointer;display:none;padding:0;line-height:1}
 #skBtn1{bottom:108px}#skBtn2{bottom:164px}#skBtn3{bottom:220px}
@@ -208,6 +209,7 @@ canvas{display:block}
   <div id="nsBestStats" style="color:#ffd166;font-weight:700;font-size:.95rem;margin-top:4px"></div>
   <div id="nsLboard" style="margin-top:8px;font-size:.85rem;color:#c7cbe6;line-height:1.5;width:100%;max-width:300px"></div>
   <button class="btn" id="againBtn">Nochmal ▶</button>
+  <button class="btn ghost" id="menuBtn">🏠 Menü</button>
   <button class="btn ghost" id="shareBtn">Teilen 📋</button>
   <p class="small">5 Min KI ohne Hype, werktäglich — <a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener">Newsletter →</a></p>
 </div>
@@ -217,6 +219,7 @@ canvas{display:block}
   <h1 id="winT" class="rec">🏆 DURCHGESPIELT!</h1>
   <p id="winV"></p>
   <button class="btn" id="winAgainBtn">Nochmal ▶</button>
+  <button class="btn ghost" id="winMenuBtn">🏠 Menü</button>
   <button class="btn ghost" id="winShareBtn">Teilen 📋</button>
   <p class="small">Geschafft! Mehr Spiele: <a href="/spiele.html">spiele</a></p>
 </div>
@@ -626,8 +629,11 @@ function reset(){
   cb_abort();                   // Koloss-Boss-Engine aufraeumen (Funktions-Deklaration → gehoisted)
 }
 var moveX=0,moveZ=0,keys={};
-addEventListener("keydown",function(e){keys[e.key.toLowerCase()]=true;if((e.key==="Escape"||e.key.toLowerCase()==="p")&&running&&document.getElementById("levelup").classList.contains("hide")&&!buildMenuOpen&&!placing&&!demolishMode){paused=!paused;announce(paused?"⏸ Pause (Esc/P)":"");}if(e.key===" "&&running&&!paused){if(e.preventDefault)e.preventDefault();castAbility();}
-if(running&&!paused&&(e.key==="1"||e.key==="2"||e.key==="3"))castSkill(+e.key);});
+/* Online-Client: Pause/Ability/Skills liegen beim HOST — lokal wirkten sie nur auf die Spiegel-Welt
+   (Gegner explodierten und standen nach dem nächsten Snapshot wieder auf; Pause fror nur das eigene Bild ein,
+   während der Host weitersimulierte und die eigene Figur totgeschlagen wurde) → für den Client sperren. */
+addEventListener("keydown",function(e){keys[e.key.toLowerCase()]=true;if((e.key==="Escape"||e.key.toLowerCase()==="p")&&running&&coopMode!=='client'&&document.getElementById("levelup").classList.contains("hide")&&!buildMenuOpen&&!placing&&!demolishMode){paused=!paused;announce(paused?"⏸ Pause (Esc/P)":"");}if(e.key===" "&&running&&!paused&&coopMode!=='client'){if(e.preventDefault)e.preventDefault();castAbility();}
+if(running&&!paused&&coopMode!=='client'&&(e.key==="1"||e.key==="2"||e.key==="3"))castSkill(+e.key);});
 addEventListener("keyup",function(e){keys[e.key.toLowerCase()]=false;});
 var touch=null;
 addEventListener("touchstart",function(e){if(demolishMode&&e.touches[0]){structTapAt(e.touches[0].clientX,e.touches[0].clientY);return;}
@@ -635,7 +641,8 @@ addEventListener("touchstart",function(e){if(demolishMode&&e.touches[0]){structT
   if(!running||paused)return;
   var _lu=document.getElementById("levelup"),_bm=document.getElementById("buildmenu");
   if((_lu&&!_lu.classList.contains("hide"))||(_bm&&!_bm.classList.contains("hide")))return;
-  if(e.touches[0])touch={x:e.touches[0].clientX,y:e.touches[0].clientY,sx:e.touches[0].clientX,sy:e.touches[0].clientY};},{passive:true});
+  /* S6: den NEU aufgesetzten Finger nehmen (e.touches[0] war der schon liegende!) + laufenden Joystick nie überschreiben — ein 2. Finger stoppte sonst die Figur */
+  if(!touch&&e.changedTouches[0]){var t0=e.changedTouches[0];touch={x:t0.clientX,y:t0.clientY,sx:t0.clientX,sy:t0.clientY,id:t0.identifier};}},{passive:true});
 // Touch-Buttons (⚡/⏸) NUR im Spiel zeigen — im Menü verdecken sie sonst Text + Werkstatt-Buttons
 var COARSE=window.matchMedia&&window.matchMedia("(pointer:coarse)").matches;
 function showTouchBtns(on){if(!COARSE)return;var ab=document.getElementById("abBtn"),pb=document.getElementById("pauseBtn");
@@ -650,10 +657,11 @@ function showTouchBtns(on){if(!COARSE)return;var ab=document.getElementById("abB
   b.addEventListener("click",function(e){e.stopPropagation();if(running&&!paused)castSkill(n);});});
 (function(){var pb=document.getElementById("pauseBtn");if(!pb)return;
   function tgl(e){e.preventDefault&&e.preventDefault();e.stopPropagation();
-    if(running&&document.getElementById("levelup").classList.contains("hide")){paused=!paused;pb.textContent=paused?"▶":"⏸";announce(paused?"⏸ Pause":"");}}
+    if(running&&coopMode!=='client'&&document.getElementById("levelup").classList.contains("hide")){paused=!paused;pb.textContent=paused?"▶":"⏸";announce(paused?"⏸ Pause":"");}} /* Client-Pause s. keydown-Kommentar */
   pb.addEventListener("touchstart",tgl,{passive:false});pb.addEventListener("click",tgl);})();
-addEventListener("touchmove",function(e){if(touch&&e.touches[0]){touch.x=e.touches[0].clientX;touch.y=e.touches[0].clientY;e.preventDefault();}},{passive:false}); /* S1: preventDefault nur bei aktivem Joystick → Overlays scrollen */
-addEventListener("touchend",function(){touch=null;});
+addEventListener("touchmove",function(e){if(!touch)return;for(var _ti=0;_ti<e.touches.length;_ti++){var _tt=e.touches[_ti];if(_tt.identifier===touch.id){touch.x=_tt.clientX;touch.y=_tt.clientY;e.preventDefault();break;}}},{passive:false}); /* S1: preventDefault nur bei aktivem Joystick → Overlays scrollen; S6: per Identifier nur DEN Joystick-Finger verfolgen */
+function relTouch(e){if(!touch)return;for(var _ti=0;_ti<e.changedTouches.length;_ti++)if(e.changedTouches[_ti].identifier===touch.id){touch=null;return;}} /* S6: nur das Loslassen des Joystick-Fingers löscht den Joystick — jeder Button-Tipp mit dem 2. Finger stoppte sonst die Figur mitten im Schwarm */
+addEventListener("touchend",relTouch);addEventListener("touchcancel",relTouch);
 
 function nearestEnemy(){var best=null,bd=1e9;for(var i=0;i<enemies.length;i++){var en=enemies[i];if(!en.active)continue;var dx=en.m.position.x-player.position.x,dz=en.m.position.z-player.position.z;var d=dx*dx+dz*dz;if(d<bd){bd=d;best=en;}}return best;}
 
@@ -887,15 +895,18 @@ function getProfile(n){var all=loadProfiles(),p=all[nsKey(n)]||{};return{bestTim
 function loadLeaderboard(){try{var a=JSON.parse(localStorage.getItem("ns_leaderboard")||"[]");return Array.isArray(a)?a:[];}catch(e){return[];}}
 function saveLeaderboard(a){try{localStorage.setItem("ns_leaderboard",JSON.stringify(a.slice(0,10)));}catch(e){}}
 // Beendeten Run eintragen → Profil-Bestwerte + Bestenliste (Top-Zeiten). Gibt Auswertung fürs Game-Over zurück.
-function recordRun(name,time,wave,kills){
+// mode 'dry'  = nur auswerten, NICHTS speichern (Tages-Challenge — konsistent zur setBest-Sperre, sonst feierte
+//               das Game-Over einen «Rekord», der nirgends landet, und Seed-Läufe verdrängten echte Solo-Zeiten);
+// mode 'soft' = Runde/Kills zählen, aber keine Rekorde/Bestenliste (🤖 KI-Partner: Gratis-Revives entwerten Rekorde).
+function recordRun(name,time,wave,kills,mode){
   var k=nsKey(name),all=loadProfiles(),p=all[k]||{bestTime:0,bestWave:0,mostKills:0,runs:0,totalKills:0};
   var s=Math.max(0,Math.floor(time||0)),w=Math.max(1,wave|0),ki=Math.max(0,kills|0);
-  var recTime=s>(p.bestTime||0),recWave=w>(p.bestWave||0),recKills=ki>(p.mostKills||0);
+  var recTime=!mode&&s>(p.bestTime||0),recWave=!mode&&w>(p.bestWave||0),recKills=!mode&&ki>(p.mostKills||0);
   p.runs=(p.runs||0)+1; p.totalKills=(p.totalKills||0)+ki;
   if(recTime)p.bestTime=s; if(recWave)p.bestWave=w; if(recKills)p.mostKills=ki;
-  all[k]=p; saveProfiles(all);
-  var lb=loadLeaderboard(),entry={name:k,time:s,wave:w,kills:ki,t:Date.now()}; lb.push(entry);
-  lb.sort(function(a,b){return (b.time-a.time)||(b.kills-a.kills);}); saveLeaderboard(lb);
+  all[k]=p; if(mode!=='dry')saveProfiles(all);
+  var lb=loadLeaderboard(),entry={name:k,time:s,wave:w,kills:ki,t:Date.now()};
+  if(!mode){lb.push(entry);lb.sort(function(a,b){return (b.time-a.time)||(b.kills-a.kills);});saveLeaderboard(lb);}
   var top=lb.slice(0,3).map(function(e){return{name:e.name,time:e.time,wave:e.wave,kills:e.kills,me:(e===entry)};});
   return{round:p.runs,time:s,wave:w,kills:ki,best:{bestTime:p.bestTime,bestWave:p.bestWave,mostKills:p.mostKills,runs:p.runs,totalKills:p.totalKills},
     recTime:recTime,recWave:recWave,recKills:recKills,rec:(recTime||recWave||recKills),lb:top};
@@ -995,6 +1006,7 @@ function buildChoices(){
 }
 var paused=false;
 function levelUp(){
+  if(!document.getElementById("levelup").classList.contains("hide")){S.pendingLv=(S.pendingLv||0)+1;return;} /* mehrere Level in EINEM Frame (Orb-Pulk): merken statt Dialog überschreiben — jede Wahl kommt nacheinander dran */
   paused=true; levelUpFx(); var box=document.getElementById("ups"); box.innerHTML="";
   if(coopMode==='host')netEv({e:'lu'}); /* Client sieht: Partner wählt (geteilter Build) */
   buildChoices().forEach(function(u,ci){var b=document.createElement("button");
@@ -1002,7 +1014,8 @@ function levelUp(){
     var sp=u.n.indexOf(" "),ic=sp>0?u.n.slice(0,sp):"⬆",rest=sp>0?u.n.slice(sp+1):u.n; /* fuehrendes Emoji als Icon-Kachel */
     b.innerHTML='<span class="uic">'+ic+'</span><span class="utx">'+rest+"<small>"+u.d+"</small></span>";
     b.style.animationDelay=(ci*70)+"ms";
-    b.onclick=function(){u.f();renderUpRow();paused=false;document.getElementById("levelup").classList.add("hide");beep(520,.12,"triangle",.07);if(coopMode==='host')netEv({e:'an',t:"⬆ "+u.n});};box.appendChild(b);});
+    b.onclick=function(){u.f();renderUpRow();document.getElementById("levelup").classList.add("hide");beep(520,.12,"triangle",.07);if(coopMode==='host')netEv({e:'an',t:"⬆ "+u.n});
+      if((S.pendingLv||0)>0){S.pendingLv--;levelUp();}else paused=false;};box.appendChild(b);}); /* ausstehende Level nachziehen */
   document.getElementById("luTitle").textContent="Level "+S.lvl+" — wähle (Waffe oder Bonus)";
   document.getElementById("levelup").classList.remove("hide");
 }
@@ -1143,7 +1156,10 @@ function setGhost(x,z){if(!ghost)return;var m=structFootprint(placing);
   x=Math.max(-ARENA+m,Math.min(ARENA-m,x));z=Math.max(-ARENA+m,Math.min(ARENA-m,z));
   ghost.position.set(x,0,z);ghostX=x;ghostZ=z;ghostValid=validPlace(x,z,placing);
   var c=ghostValid?0x66ff88:0xff4d5e;ghost.traverse(function(n){if(n.isMesh){n.material.color.setHex(c);if(n.material.emissive)n.material.emissive.setHex(c);}});}
-function showPlaceButtons(on){var ok=document.getElementById("okBtn"),cc=document.getElementById("cancelBtn");if(ok)ok.style.display=on?"block":"none";if(cc)cc.style.display=on?"block":"none";}
+function showPlaceButtons(on){var ok=document.getElementById("okBtn"),cc=document.getElementById("cancelBtn");if(ok)ok.style.display=on?"block":"none";if(cc)cc.style.display=on?"block":"none";
+  /* ✓/✕ überlappen im Hochformat (<592px Breite) 🔨 und ⚡ → Spiel-Knöpfe während des Platzierens ausblenden, danach normal wiederherstellen */
+  if(on){["buildBtn","abBtn","skBtn1","skBtn2","skBtn3"].forEach(function(id){var b=document.getElementById(id);if(b)b.style.display="none";});}
+  else{updateBuildBtn();if(running&&coopMode!=='client')showTouchBtns(true);}}
 function startPlacing(type){if(S.scrap<BUILD_DEFS[type].cost)return;
   buildMenuOpen=false;document.getElementById("buildmenu").classList.add("hide");paused=false;
   placing=type;makeGhost(type);showPlaceButtons(true);
@@ -1571,28 +1587,30 @@ function start(){
   var input=document.getElementById("nameInput");
   curName=nsSetName((input&&input.value)?input.value:nsGetName());
   var hn=document.getElementById("hudName");if(hn)hn.textContent=curName?("👤 "+curName):"";
-  if(dailyMode)_srng=mulberry32((dayNo*2654435761)>>>0);reset();running=true;document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("win").classList.add("hide");document.getElementById("hud").classList.remove("hide");
+  if(dailyMode)_srng=mulberry32((dayNo*2654435761)>>>0);reset();running=true;paused=false;document.getElementById("levelup").classList.add("hide");document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("win").classList.add("hide");document.getElementById("hud").classList.remove("hide");
   hurt=0;hurtEl.style.opacity=0;showTouchBtns(true);updateBuildBtn();
   var mi=(coopMode==='client'&&pendingMap!=null)?pendingMap:(dailyMode?(dayNo%MAPS.length):Math.floor(rnd()*MAPS.length));
   curMapIdx=mi;var m=applyMap(mi);coopSetup();announce("» "+m.name+" «");startMusic();
   if(!coopMode){try{if(!localStorage.getItem("ns_moveTip")){localStorage.setItem("ns_moveTip","1");setTimeout(function(){if(running&&!paused)announce(IS_TOUCH?"🕹️ Finger ziehen = laufen · 🔫 Schuss automatisch!":"⌨️ WASD/Pfeile = laufen · 🔫 Schuss automatisch!");},1600);}}catch(e){}}} /* 🆕 Anfänger-Hinweis beim allerersten Start */
 function showBest(){var b=bestTime();document.getElementById("best").textContent=b>0?"🏆 Rekord: "+b+"s":"";nsRefreshWelcome();}
 function gameOver(){if(!running)return;running=false;shake=1.2;hurt=0;hurtEl.style.opacity=0;stopMusic();
-  if(coopMode==='host')netEv({e:'ov',s:Math.floor(S.t),lv:S.lvl,kk:S.kills,wv:S.wave});showTouchBtns(false);cancelPlacing();closeBuildMenu();closeStructMenu();demolishMode=false;S.bossWave=false;cb_abort();showPlaceButtons(false);updateBuildBtn();var s=Math.floor(S.t),b=bestTime(),rec=!dailyMode&&s>b;if(rec)setBest(s);
+  paused=false;document.getElementById("levelup").classList.add("hide"); /* Tod im Level-Up-Frame: sonst startete «Nochmal» eingefroren (paused=true) hinter der alten Karte */
+  if(coopMode==='host')netEv({e:'ov',s:Math.floor(S.t),lv:S.lvl,kk:S.kills,wv:S.wave});showTouchBtns(false);cancelPlacing();closeBuildMenu();closeStructMenu();demolishMode=false;S.bossWave=false;cb_abort();showPlaceButtons(false);updateBuildBtn();var s=Math.floor(S.t),b=bestTime(),rec=!dailyMode&&coopMode!=='ai'&&s>b;if(rec)setBest(s); /* 🤖-Läufe (Gratis-Revives+Doppel-Feuer) setzen keinen Zeitrekord */
   document.getElementById("finalT").textContent="Überlebt: "+s+"s";
   var f=document.getElementById("finalT");f.className=rec?"rec":"";
   var pre=dailyMode?("🗓️ Tages-Challenge #"+dayNo+" · "):(rec&&s>0?"🎉 <b>Neuer Rekord!</b> · ":"🏆 Rekord "+b+"s · ");
-  var earned=Math.floor(S.kills/3)+Math.floor(S.t/8);saveCores(loadCores()+earned);try{if(!STATION){var _gx=(+(localStorage.getItem('aban_neon_xp')||0)||0)+S.kills+S.lvl*5;localStorage.setItem('aban_neon_xp',_gx);}}catch(e){}renderShop(); /* 💠 Cross-Game-XP — nur solo (als Arena zahlt die Wildnis ein → keine Doppelzählung); ||0 fängt NaN */
+  var earned=Math.floor((Math.floor(S.kills/3)+Math.floor(S.t/8))*(coopMode==='ai'?0.5:1));saveCores(loadCores()+earned);try{if(!STATION){ /* 🤖 KI-Partner = halber Kern-Lohn: unbegrenzte Gratis-Revives machten den 250er-Notkern + Kern-Farmen sonst wertlos */var _gx=(+(localStorage.getItem('aban_neon_xp')||0)||0)+S.kills+S.lvl*5;localStorage.setItem('aban_neon_xp',_gx);}}catch(e){}renderShop(); /* 💠 Cross-Game-XP — nur solo (als Arena zahlt die Wildnis ein → keine Doppelzählung); ||0 fängt NaN */
   document.getElementById("verdict").innerHTML=pre+"Level "+S.lvl+" · "+S.kills+" Gegner · <b>+"+earned+" ⬢ Kerne</b>";
   // Mehr-Runden-Speicherstand: Run eintragen (Profil + Bestenliste) und Game-Over-Extras füllen
-  nsShowGameOver(recordRun(curName,S.t,S.wave,S.kills));
+  nsShowGameOver(recordRun(curName,S.t,S.wave,S.kills,dailyMode?'dry':(coopMode==='ai'?'soft':0)));
   if(STATION)stationPost({t:"stationDone",score:S.kills+(S.lvl*10)}); /* 🌲 Wildnis-Arena: Score melden (Kristall-Belohnung) */
   document.getElementById("over").classList.remove("hide");}
 function win(){if(S.won)return;S.won=true;running=false;shake=1.5;hurt=0;hurtEl.style.opacity=0;stopMusic();
+  paused=false;document.getElementById("levelup").classList.add("hide"); /* wie gameOver: Sieg im Level-Up-Frame darf die neue Runde nicht einfrieren */
   if(coopMode==='host')netEv({e:'wn',s:Math.floor(S.t),lv:S.lvl,kk:S.kills});showTouchBtns(false);cancelPlacing();closeBuildMenu();closeStructMenu();demolishMode=false;S.bossWave=false;cb_abort();showPlaceButtons(false);updateBuildBtn();
-  var _ws=Math.floor(S.t);if(!dailyMode&&_ws>bestTime())setBest(_ws); /* P7: Sieg zählt auch als Zeit-Rekord (vorher nur gameOver) */
-  var earned=Math.floor(S.kills/3)+Math.floor(S.t/8)+150;saveCores(loadCores()+earned);try{if(!STATION){var _gx=(+(localStorage.getItem('aban_neon_xp')||0)||0)+S.kills+S.lvl*5+40;localStorage.setItem('aban_neon_xp',_gx);}}catch(e){}renderShop(); /* 💠 Cross-Game-XP (Sieg) — nur solo */
-  var _r=recordRun(curName,S.t,S.wave,S.kills); // Sieg zählt auch als gespielte Runde
+  var _ws=Math.floor(S.t);if(!dailyMode&&coopMode!=='ai'&&_ws>bestTime())setBest(_ws); /* P7: Sieg zählt auch als Zeit-Rekord (vorher nur gameOver); 🤖-Läufe ausgenommen */
+  var earned=Math.floor((Math.floor(S.kills/3)+Math.floor(S.t/8))*(coopMode==='ai'?0.5:1))+150;saveCores(loadCores()+earned);try{if(!STATION){var _gx=(+(localStorage.getItem('aban_neon_xp')||0)||0)+S.kills+S.lvl*5+40;localStorage.setItem('aban_neon_xp',_gx);}}catch(e){}renderShop(); /* 💠 Cross-Game-XP (Sieg) — nur solo */
+  var _r=recordRun(curName,S.t,S.wave,S.kills,dailyMode?'dry':(coopMode==='ai'?'soft':0)); // Sieg zählt auch als gespielte Runde (Tag/Bot ohne Rekord-Einträge, s. recordRun)
   document.getElementById("winV").innerHTML="In "+mmss(S.t)+" geschafft · Level "+S.lvl+" · "+S.kills+" Gegner · <b>+"+earned+" ⬢ Kerne</b> · Runde #"+_r.round;
   if(STATION)stationPost({t:"stationDone",score:S.kills+(S.lvl*10)}); /* 🌲 Wildnis-Arena: Sieg zählt erst recht */
   document.getElementById("win").classList.remove("hide");beep(660,.5,"triangle",.1);nsConfetti();}
@@ -1607,6 +1625,11 @@ function coopAgain(){ /* Nochmal: Online-Client fragt den Host, Host startet + k
 }
 document.getElementById("againBtn").onclick=coopAgain;
 document.getElementById("winAgainBtn").onclick=coopAgain;
+function backToMenu(){ /* zurück zum Startscreen — vorher war die Werkstatt nach dem 1. Start unerreichbar (Kerne verdient, aber nie ausgebbar) */
+  document.getElementById("over").classList.add("hide");document.getElementById("win").classList.add("hide");document.getElementById("hud").classList.add("hide");
+  document.getElementById("start").classList.remove("hide");renderShop();renderChars();showBest();}
+document.getElementById("menuBtn").onclick=backToMenu;
+document.getElementById("winMenuBtn").onclick=backToMenu;
 document.getElementById("winShareBtn").onclick=function(){var txt="Neon Survivor 🏆 DURCHGESPIELT in "+mmss(S.t)+" — Lv "+S.lvl+", "+S.kills+" Kills\nabannews.com/neon-wildnis.html";if(navigator.share)navigator.share({text:txt}).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(txt).then(function(){document.getElementById("winShareBtn").textContent="Kopiert 📋";});};
 document.getElementById("shareBtn").onclick=function(){var txt="Neon Survivor 🚀 — "+(dailyMode?"Tages-Challenge #"+dayNo+": ":"")+Math.floor(S.t)+"s überlebt, Lv "+S.lvl+", "+S.kills+" Kills\nabannews.com/neon-wildnis.html";if(navigator.share)navigator.share({text:txt}).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(txt).then(function(){document.getElementById("shareBtn").textContent="Kopiert 📋";});};
 
@@ -1665,7 +1688,7 @@ function loop(now){
       }
       }
     } else { // Wellenpause — bauen
-      if(!buildMenuOpen&&!placing){S.buildT-=dt;if(S.buildT<=0)endBuildPhase();}
+      if(!buildMenuOpen){S.buildT-=dt;if(S.buildT<=0)endBuildPhase();} /* ⏱ Platzier-Modus hält den Timer NICHT mehr an: S.t lief weiter → risikoloses AFK-Farmen von Kernen/Rekord; endBuildPhase räumt den Geist via cancelPlacing selbst ab (Menü-Fall bleibt: dort ist paused=true) */
     }
     updateBuildRuntime(dt); collectScrap(dt); healFields(dt);
     cb_update(dt); // Koloss-Boss-Engine (KI, Telegrafen, Boss-Projektile, HP-Balken)
@@ -1789,7 +1812,7 @@ var AFFIXES=[
  {l:"+Feuerrate",f:function(p){S.haste=Math.max(0.4,S.haste*(1-0.08*p));}},
  {l:"+Magnet",   f:function(p){S.pickup+=0.8*p;}},
  {l:"+XP",       f:function(p){S.xpMul=(S.xpMul||1)+0.08*p;}},
- {l:"+Projektil",f:function(p){if(p>=1.6)S.multishot++;}}
+ {l:"+Projektil",f:function(p){if(p>=1.6)S.multishot++;else S.dmg*=1.10;}} /* Gewöhnlich (pow 1.0): kleiner Schadens-Bonus statt Null-Effekt mit Fanfare */
 ];
 function rollRarity(bias){var tw=0,ws=RARITY.map(function(r,idx){var w=r.w*(1+(bias||0)*idx*0.7);tw+=w;return w;});var x=rnd()*tw;for(var i=0;i<RARITY.length;i++){x-=ws[i];if(x<=0)return i;}return 0;}
 function spawnLoot(x,z,bias){var g=getMesh(loot,lootMesh);var ri=rollRarity(bias);g.active=true;g.m.visible=true;g.rar=ri;var lc=RARITY[ri].c;g.m.material.color.setHex(lc);g.m.material.emissive.setHex(lc);g.m.scale.setScalar(0.85+ri*0.28);g.m.position.set(x,0.7,z);
@@ -2011,7 +2034,7 @@ function coopSimP2(dt){ /* Simulation (lokal/Host): P2 bewegen + feuern, Down-/R
 function netEv(o){if(netSess){try{netSess.send(o);}catch(e){}}}
 var netPartnerName="";
 function p2SetName(n){netPartnerName=nsClean(n);setCoopTag();
-  var g=(typeof P2!=="undefined"&&P2)?P2:null;if(!g||!g.userData||!g.userData.nameSpr)return;
+  var g=(typeof P2!=="undefined"&&P2&&coopMode!=='client')?P2.g:null;if(!g||!g.userData||!g.userData.nameSpr)return; /* Sprite hängt an der THREE-Group P2.g (P2.userData gibt es nicht → Schild wurde nie gezeichnet); beim Client ist P2 die EIGENE Figur → dort kein Partner-Schild, die HUD-Zeile zeigt den Host */
   var sp=g.userData.nameSpr,cv=g.userData.nameCv,c=cv.getContext("2d");
   c.clearRect(0,0,256,64);
   if(!netPartnerName){sp.visible=false;return;}
@@ -2147,14 +2170,17 @@ function clientOver(m){ /* Game-Over-Anzeige aus dem Host-Event */
   running=false;stopMusic();showTouchBtns(false);
   document.getElementById("finalT").textContent="Überlebt: "+(m.s||0)+"s";
   document.getElementById("finalT").className="";
-  document.getElementById("verdict").innerHTML="🌐 Online-Koop · Level "+(m.lv||1)+" · "+(m.kk||0)+" Gegner · Welle "+(m.wv||1);
-  document.getElementById("nsRound").textContent="";var rc=document.getElementById("nsRec");if(rc)rc.style.display="none";
-  document.getElementById("nsRunStats").innerHTML="";document.getElementById("nsBestStats").innerHTML="";document.getElementById("nsLboard").innerHTML="";
+  /* Gast verbucht denselben Lohn wie der Host (Werte kommen aus dem 'ov'-Event) — vorher ging jeder Koop-Abend für den Gast ohne Kerne/Runde/Bestenliste aus */
+  var earned=Math.floor((m.kk||0)/3)+Math.floor((m.s||0)/8);saveCores(loadCores()+earned);renderShop();
+  document.getElementById("verdict").innerHTML="🌐 Online-Koop · Level "+(m.lv||1)+" · "+(m.kk||0)+" Gegner · Welle "+(m.wv||1)+" · <b>+"+earned+" ⬢ Kerne</b>";
+  nsShowGameOver(recordRun(curName,m.s||0,m.wv||1,m.kk||0));
   document.getElementById("over").classList.remove("hide");beep(80,.6,"sawtooth",.09);
 }
 function clientWin(m){
   running=false;stopMusic();showTouchBtns(false);
-  document.getElementById("winV").innerHTML="🌐 Online-Koop · in "+mmss(m.s||0)+" geschafft · Level "+(m.lv||1)+" · "+(m.kk||0)+" Gegner";
+  var earned=Math.floor((m.kk||0)/3)+Math.floor((m.s||0)/8)+150;saveCores(loadCores()+earned);renderShop(); /* Gast: gleicher Sieg-Lohn wie der Host */
+  recordRun(curName,m.s||0,S.wave||1,m.kk||0);
+  document.getElementById("winV").innerHTML="🌐 Online-Koop · in "+mmss(m.s||0)+" geschafft · Level "+(m.lv||1)+" · "+(m.kk||0)+" Gegner · <b>+"+earned+" ⬢ Kerne</b>";
   document.getElementById("win").classList.remove("hide");beep(660,.5,"triangle",.1);nsConfetti();
 }
 function netMsg(m,roleOverride){ /* eingehende Nachrichten (beide Rollen) — defensiv, unbekannte Typen ignorieren */
@@ -2191,7 +2217,7 @@ function coopNetStatus(st){ /* Disconnect: sauberer Fallback statt Crash */
   if(st==='lost'){if(running&&(coopMode==='host'||coopMode==='client'))announce("⚠ Verbindung wackelt — versuche Reconnect…");return;}
   if(st!=='closed')return;
   if(coopMode!=='host'&&coopMode!=='client')return; /* Lobby-Fehler regeln die .catch-Handler */
-  netSess=null;
+  netClose(); /* Peer WIRKLICH zerstören (close() → peer.destroy) — netSess=null allein liess "aban-nsurv-OFEN" als Zombie-ID beim Vermittlungs-Server registriert und neue Spieler hingen ewig */
   if(running){
     if(coopMode==='host'){coopMode='ai';setCoopTag();announce("🔌 Verbindung weg — 🤖 KI übernimmt deinen Partner!");}
     else{coopMode='ai';announce("🔌 Verbindung weg — Solo-Neustart mit 🤖 KI-Partner");start();}
@@ -2205,16 +2231,21 @@ function hostFixed(code){ /* Offener Raum: mp.js kann keine festen Codes hosten 
   S2._set=function(st){if(S2.status===st||S2.status==="closed")return;S2.status=st;for(var i=0;i<S2._st.length;i++){try{S2._st[i](st);}catch(e){}}};
   S2.ready=new Promise(function(res,rej){S2._res=res;S2._rej=rej;});
   if(!window.Peer){S2._set("closed");S2._rej(new Error("PeerJS nicht geladen (js/vendor/peerjs.min.js)."));return S2;}
-  var peer=null,main=null,fast=null,byUs=false,tmo=null;
+  var peer=null,main=null,fast=null,byUs=false,tmo=null,lastRecv=0,wd=null;
+  /* Watchdog wie js/mp.js: harter Abriss (Netz weg/Tab-Crash) feuert das DataChannel-close oft NIE →
+     Stille >6s bei laufendem Traffic (Inputs/Keepalive im Sekundentakt) gilt als Abriss, sonst steht P2 als Statue rum */
+  function startWd(){lastRecv=Date.now();if(wd)clearInterval(wd);
+    wd=setInterval(function(){if(S2.status==="closed"){clearInterval(wd);wd=null;return;}
+      if(S2.status==="connected"&&Date.now()-lastRecv>6000){clearInterval(wd);wd=null;S2._set("closed");try{peer.destroy();}catch(e){}}},2000);}
   try{peer=new window.Peer("aban-nsurv-"+code,{debug:0});}catch(e){S2._set("closed");S2._rej(e);return S2;}
   tmo=setTimeout(function(){if(S2.status==="connecting"){S2._set("closed");try{peer.destroy();}catch(e){}S2._rej(new Error("Vermittlungs-Server (0.peerjs.com) nicht erreichbar — Internet prüfen."));}},15000);
   peer.on("open",function(){clearTimeout(tmo);S2._set("waiting");});
   peer.on("connection",function(c){
-    if(c.label==="fast"){fast=c;c.on("data",function(d){S2._emit(d);});return;}
+    if(c.label==="fast"){fast=c;c.on("data",function(d){lastRecv=Date.now();S2._emit(d);});return;}
     if(main&&main.open){try{c.close();}catch(e){}return;} /* Raum voll (2 Spieler) */
     main=c;
-    c.on("open",function(){S2._set("connected");S2._res(S2);});
-    c.on("data",function(d){S2._emit(d);});
+    c.on("open",function(){S2._set("connected");startWd();S2._res(S2);});
+    c.on("data",function(d){lastRecv=Date.now();S2._emit(d);});
     c.on("close",function(){if(!byUs)S2._set("closed");});
   });
   peer.on("disconnected",function(){if(!byUs){try{peer.reconnect();}catch(e){}}});
@@ -2224,7 +2255,7 @@ function hostFixed(code){ /* Offener Raum: mp.js kann keine festen Codes hosten 
   });
   S2.send=function(o){try{if(main&&main.open)main.send(o);}catch(e){}};
   S2.sendFast=function(o){try{if(fast&&fast.open)fast.send(o);else if(main&&main.open)main.send(o);}catch(e){}};
-  S2.close=function(){byUs=true;clearTimeout(tmo);S2._set("closed");try{peer.destroy();}catch(e){}};
+  S2.close=function(){byUs=true;clearTimeout(tmo);if(wd){clearInterval(wd);wd=null;}S2._set("closed");try{peer.destroy();}catch(e){}};
   return S2;
 }
 function hostStart(){coopMode='host';dailyMode=false;start();netEv({e:'bg',mi:curMapIdx});netEv({e:'nm',n:nsGetName()||"Gastgeber"});}
