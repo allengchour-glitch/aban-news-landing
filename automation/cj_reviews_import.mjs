@@ -29,6 +29,7 @@ if (!/myshopify\.com$/.test(SHOP)) SHOP = 'au3j0y-hq.myshopify.com';
 const QUERY = process.env.QUERY || 'tag:cj-real';
 const ONLY = (process.env.ONLY || '').split(',').map(s => s.trim()).filter(Boolean);
 const LIMIT = Math.max(1, parseInt(process.env.LIMIT || '25', 10) || 25);
+const CJ_SLEEP = Math.max(200, parseInt(process.env.CJ_SLEEP || '1100', 10) || 1100);
 const PER = Math.max(1, parseInt(process.env.PER || '6', 10) || 6);
 const MIN_SCORE = Math.max(1, Math.min(5, parseInt(process.env.MIN_SCORE || '4', 10) || 4));
 const DRY = process.env.DRY_RUN === '1';
@@ -143,7 +144,7 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
     ];
     for (const [label, path, params] of strategies) {
       const r = await cjGet(ctok, path, params);
-      await sleep(1100);
+      await sleep(CJ_SLEEP);
       const d = r?.data;
       const listed = d?.list || d?.content || (Array.isArray(d) ? d : null);
       const pid = d?.pid || d?.productId || (Array.isArray(listed) ? (listed[0]?.pid || listed[0]?.productId) : null);
@@ -165,7 +166,7 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
       if (!cjpid) { console.log(`· ${p.handle}: keine CJ-pid für ${cjSku} → skip`); if (!DRY) { try { fs.appendFileSync(LEDGER, pidNum + '\n'); } catch {} } continue; }
       if (DEBUG) console.log(`    [DEBUG] ${p.handle}: pid ${cjpid} via ${resolved.via}`);
       const cr = await cjGet(ctok, '/product/productComments', { pid: cjpid, pageNum: 1, pageSize: 30 });
-      await sleep(1100);
+      await sleep(CJ_SLEEP);
       const list = cr?.data?.list || cr?.data?.comments || cr?.data?.content || cr?.data?.commentList || (Array.isArray(cr?.data) ? cr.data : []);
       if (DEBUG) console.log(`    [DEBUG] comments(${cjpid}): result=${cr?.result} dataKeys=${cr?.data && typeof cr.data === 'object' ? Object.keys(cr.data).join(',') : typeof cr?.data} listLen=${Array.isArray(list) ? list.length : 'n/a'}${cr?.message ? ' msg=' + cr.message : ''}`);
       const picked = (list || [])
