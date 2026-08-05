@@ -2722,3 +2722,14 @@ Link, WELCOME10, TWINT/Klarna-Trust) als **Gmail-Entwürfe** — User muss nur n
 `dropship/_abandoned_drafted.txt` (Checkout-URLs) gegen Doppel-Entwürfe. Bei künftigen Keepalives: neue
 Abbrecher prüfen → neue Entwürfe. Native Automation (Admin → Marketing → Automationen) bleibt der bessere
 Dauerweg = 1 User-Klick.
+
+## 2026-08-05 CH-Lager-Expansion: Shopcom (#1 von 3, User «intresse an alle 3»)
+Plan: ① Shopcom (Büron LU, 8'500+ Produkte CH-Lager: Haushalt/Küche/Baby/Spielwaren/IT-Zubehör/Outdoor/
+Party) → ② Dameco (Saisondeko) → ③ Alltron/Brack (Elektronik, braucht HR-Eintrag). Vorbau FERTIG:
+- **Anfrage-Mail an info@shopcom.ch als Gmail-Entwurf** beim User (Dropshipping-Konditionen + CSV-Feed).
+  Registrierung: shopcom.ch/Registrieren (JTL-Shop) — braucht User-Firmendaten.
+- **automation/shopcom_import.mjs** fertig gebaut (Fortura-Muster): COLMAP-Platzhalter (gegen echten Feed
+  verifizieren!), alle Wachen (norm-Titel, IMG_SEEN, HTTP-200, Kleinticket MIN_VK 14.90, EXCLUDE inkl.
+  TABAK/VAPE — Shopcom führt die!), shopcomType()-Mapper (kein Lieferanten-Leak), tracked+DENY+Feed-Menge,
+  productSet synchronous, 6 Publications. Preis: max(UVP, EK*2.0, EK+8+6), .90-Endung. DRY-Modus.
+Nächster Schritt sobald Feed-Zugang da: Feed → /tmp/shopcom_feed.csv, COLMAP prüfen, DRY, scharf.
