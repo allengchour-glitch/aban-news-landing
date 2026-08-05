@@ -2763,3 +2763,11 @@ JS baut INDEX=BASE+"index.json" → passt exakt auf stk-index.json), als `lspod-
 **37 Editor-Produkte** per descriptionHtml-Replace auf die neue URL umgestellt. Bonus: alle 67 Sticker
 statt 18 Fallback. Kopie: pod/designer-cdn-v2.js. **Regel: POD-Assets NIE auf abannews.com hosten —
 fremde Session, kann jederzeit brechen. Immer Shopify-CDN.**
+
+## 2026-08-05 Halloween-Collection (User: «fortura hat halloween sachen, eigene kategorie»)
+Smart-Collection **Halloween** (handle `halloween`, gid 691264881025, Regel tag=halloween, BEST_SELLING,
+SEO + Beschreibung, in alle 6 Publications publiziert ✓). **183 Produkte getaggt** (Titel-Scan mit 9b-Wachen:
+Skelett-UHREN, Fledermaus-ÄRMEL, Kürbis-FARBEN, Bräter/Glückskürbis ausgeschlossen; Totenkopf nur mit
+Maske/Horror/Deko-Kontext) + 14 vorgetaggte = **197 in der Collection**. Produkte bleiben zusätzlich in ihren
+normalen Kategorien (Tag additiv). Menü: «Halloween 🎃» als erster Punkt unter «Mehr & Sale» (saisonaler
+Akzent bewusst mit Emoji). TODO Saison: ~Sept. Homepage-Reihe auf halloween umwidmen (25-Sektionen-Limit!).
