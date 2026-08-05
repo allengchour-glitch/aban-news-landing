@@ -2801,3 +2801,8 @@ Titel!) → Pet-Tags raus; 6 Smartwatches + Katzenball + Perlen-Tasche aus schmu
 Familien-/Unisex-Artikel in damen+herren+kinder = korrekt, bleiben. **Nachzügler: 3'630 DRAFTs mit Typ
 Fortura-CH** (Aktiv-Sweep deckte Drafts nicht) → Runner läuft erneut (gleicher Mapper, Schwinger/Edelweiss→
 Schweizer Editionen). ⚠️ Tagger-Regel fürs GEHIRN: englisches «Cat»/«Cat Eye» NIE als Katze taggen.
+
+## 2026-08-05 Schweizer Editionen evergreen + Startseite (User «schweizer edition auch startseite?»)
+Collection `erste-august` («1. August — Schweizer Edition», 270 Produkte) → **«Schweizer Editionen»**
+(evergreen, 1. August vorbei; Handle bleibt). Startseite: Kategorie-Grid-Kachel bar-wein→«Schweiz 🇨🇭»,
+Trend-Kategorien-Liste Pos. 2. Menü-Erwähnungen mitumbenannt (falls vorhanden). SEO neu.
