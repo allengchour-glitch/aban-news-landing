@@ -2421,9 +2421,8 @@ var dorfFenster=[];
       uhr.position.set(0,6.2,4.83);g.add(uhr);dorfFenster.push(uhr.material);
       // Bahnsteig zum Gleis + Perrondach + Baenke
       var stg=new THREE.Mesh(new THREE.BoxGeometry(34,0.42,5),betMat(0xcac4b6,0.9));stg.position.set(0,0.21,-8.5);stg.receiveShadow=true;g.add(stg);
-      for(var pd=0;pd<5;pd++){var px8=-13+pd*6.5;
-        var st8=new THREE.Mesh(new THREE.CylinderGeometry(0.11,0.13,3.4,8),stdMat(0x4a5058,0.5));st8.position.set(px8,1.7,-9.6);g.add(st8);}
-      var pdach=new THREE.Mesh(new THREE.BoxGeometry(30,0.28,4.4),stdMat(0x5a6068,0.7));pdach.position.set(0,3.5,-9.4);pdach.castShadow=true;g.add(pdach);
+      /* Das alte Blech-Perrondach (Box + 5 Rohrstuetzen) ist raus — an seiner Stelle
+         stehen jetzt die richtigen th17_bahnsteigdach-Module (unten via bau()). */
       [-9,0,9].forEach(function(bxx){
         var bk=new THREE.Mesh(new THREE.BoxGeometry(2.2,0.14,0.6),stdMat(0x8a6a48,0.7));bk.position.set(bxx,0.85,-7.4);bk.castShadow=true;g.add(bk);
         var lehn=new THREE.Mesh(new THREE.BoxGeometry(2.2,0.6,0.1),stdMat(0x8a6a48,0.7));lehn.position.set(bxx,1.2,-7.75);g.add(lehn);
@@ -2705,16 +2704,29 @@ setTimeout(function baueVerkehr(){
     });
   })();
   // ---- Fahrender Zug ----
+  /* User: „eisenbahn auch schoener" — der Zug war 4 graue Boxen, dabei liegen
+     th17_lokomotive und th17_personenwagen im Repo. Gemessen: Lok 3.1 x 5.0 x 19.0,
+     Wagen 3.05 x 4.0 x 24.0 (Laengsachse z). Einheitlicher Massstab 0.5 (gleiche
+     Spurweite!), Fahrt laeuft in x -> rot y=-PI/2. Laden asynchron in die fahrende
+     Gruppe; bis dahin faehrt sie leer und unsichtbar mit — kein Fallback noetig. */
   var zugG=new THREE.Group();
-  var lokF=[0xc23a3a,0x3a5ac2,0x3aa05a];
-  for(var w=0;w<4;w++){var wag=new THREE.Group();
-    var korp=new THREE.Mesh(new THREE.BoxGeometry(6,2.4,2.4),stdMat(w===0?0x2a2a34:lokF[w%3],0.5));korp.position.y=1.6;korp.castShadow=true;wag.add(korp);
-    var band=new THREE.Mesh(new THREE.BoxGeometry(5.4,0.7,2.44),stdMat(0xbcd8e8,0.2));band.position.y=2.1;wag.add(band);
-    if(w===0){var kab=new THREE.Mesh(new THREE.BoxGeometry(2,1,2.4),stdMat(0x2a2a34,0.5));kab.position.set(2,3,0);wag.add(kab);}
-    for(var r=0;r<2;r++)[-1,1].forEach(function(sn){var rad=new THREE.Mesh(new THREE.CylinderGeometry(0.5,0.5,0.3,12),stdMat(0x1a1a20,0.5));rad.rotation.z=Math.PI/2;rad.position.set(-1.8+r*3.6,0.5,sn*1.1);wag.add(rad);});
-    wag.position.set(-w*6.6,0,0);zugG.add(wag);}
-  zugG.position.set(-120,0.01,112);zugG.rotation.y=0;scene.add(zugG);
-  window._zug={mesh:zugG,pos:-120,speed:14};
+  (function(){
+    var ZS=0.5, teile=[["th17_lokomotive.glb",0],["th17_personenwagen.glb",1],["th17_personenwagen.glb",2]];
+    var offs=[0,-(19.02*ZS/2+24*ZS/2+0.7),-(19.02*ZS/2+24*ZS*1.5+1.4)];
+    teile.forEach(function(t,i){
+      GL.load("/models/"+t[0],function(gg){var r=gg.scene;
+        r.traverse(function(n){if(n.isMesh){n.castShadow=true;if(n.material)n.material.envMapIntensity=0.3;}});
+        r.scale.setScalar(ZS);
+        var b=new THREE.Box3().setFromObject(r);
+        r.position.y=-b.min.y+0.12;                 /* auf Schienenoberkante */
+        var w=new THREE.Group();w.add(r);
+        w.rotation.y=-Math.PI/2;                    /* Laengsachse z -> Fahrt in x */
+        w.position.x=offs[i];
+        zugG.add(w);},undefined,function(){});});
+  })();
+  zugG.position.set(-120,0.01,112);scene.add(zugG);
+  /* halt/cool: der Zug haelt jetzt am Bahnsteig (siehe updZug) */
+  window._zug={mesh:zugG,pos:-120,speed:14,halt:0,cool:0};
   baueSchranken();
   // ---- Helikopter kreist am Himmel ----
   var heliG=new THREE.Group();
@@ -2752,8 +2764,18 @@ function updWasser(dt,now){if((++_wasserFrame&1))return; // jeden 2. Frame reich
       var edge=Math.max(Math.abs(b[i]),Math.abs(b[i+1])),damp=edge>11?0.15:1;
       pa[i+2]=b[i+2]+(Math.sin(now*0.002+b[i]*0.3)*0.09+Math.cos(now*0.0015+b[i+1]*0.3)*0.07)*damp;}
     w.geo.attributes.position.needsUpdate=true;});}
+window._updZug=updZug; /* Testzugang */
 function updZug(dt){var z=window._zug;if(!z)return;
-  z.pos+=z.speed*dt;if(z.pos>140)z.pos=-140;z.mesh.position.x=z.pos;
+  /* 🚉 Halt am Bahnsteig (x=0): 7 s Aufenthalt, danach 25 s Sperre, damit er
+     nicht bei jeder Ueberfahrt erneut haelt. Sanftes Anfahren/Bremsen ueber v. */
+  if(z.halt>0){z.halt-=dt;if(z.halt<=0)z.cool=25;updSchranken(dt,z.pos);return;}
+  if(z.cool>0)z.cool-=dt;
+  var v=z.speed;
+  if(z.cool<=0&&z.pos<0&&z.pos>-30)v=Math.max(3,z.speed*(-z.pos)/30);  /* bremsen */
+  if(z.cool>20)v=Math.min(z.speed,z.speed*(26-z.cool)/5);              /* anfahren */
+  z.pos+=v*dt;
+  if(z.cool<=0&&z.pos>=0&&z.pos<3){z.halt=7;z.pos=0;}
+  if(z.pos>140)z.pos=-140;z.mesh.position.x=z.pos;
   updSchranken(dt,z.pos);}
 /* 🚂 BAHNUEBERGANG (User: „bahnuebergang bariere animationen wenn zug kommt").
    Die Gleise bei z=112 kreuzen die beiden Zubringer bei x=±78. Naehert sich der Zug,
@@ -4055,6 +4077,41 @@ setTimeout(function baueGebaeude(){
      sonst stehen sie in der Fahrbahn. */
   for(var om=0;om<7;om++)bau("th17_oberleitungsmast.glb",7.5,-108+om*36,0,108.5,0,false,null,true);
   bau("th17_tramhaltestelle.glb",3.0,-20,0,108,Math.PI,false,null,true);
+  /* ── 🚉 Bahnsteig-Ausbau (User: „eisenbahn station viel schoener") ─────────────
+     Drei th17_bahnsteigdach-Module ersetzen das alte Blechdach, dazu Sicherheits-
+     linie an der Kante, Fahrplantafel, wartende Fahrgaeste (th30 — lagen ungenutzt
+     im Repo) und Oberleitungsdraehte zwischen den vorhandenen Masten. */
+  /* z=109.6 statt 110.3: mit 4.6 m Tiefe ragte das Dach sonst bis ueber die
+     Schiene und ueberdeckte den haltenden Zug (Screenshot). */
+  [-11,0,11].forEach(function(dx){
+    bau("th17_bahnsteigdach.glb",3.6,dx,0.42,109.6,Math.PI,false,null,true);});
+  (function(){var lin=new THREE.Mesh(new THREE.PlaneGeometry(32,0.28),
+      new THREE.MeshStandardMaterial({color:0xe8e4da,roughness:0.8}));
+    lin.rotation.x=-Math.PI/2;lin.position.set(0,0.435,112.15);scene.add(lin);
+    /* Fahrplantafel mit gemalter Abfahrtstafel */
+    var cv=document.createElement("canvas");cv.width=256;cv.height=160;var c=cv.getContext("2d");
+    c.fillStyle="#1a2a4a";c.fillRect(0,0,256,160);
+    c.fillStyle="#ffd84a";c.font="bold 26px sans-serif";c.fillText("Abfahrt",14,34);
+    c.fillStyle="#fff";c.font="20px sans-serif";
+    c.fillText("08:15   Ost      Gleis 1",14,72);
+    c.fillText("08:45   West   Gleis 1",14,104);
+    c.fillText("09:15   Ost      Gleis 1",14,136);
+    var tafel=new THREE.Mesh(new THREE.BoxGeometry(2.6,1.6,0.1),
+      new THREE.MeshStandardMaterial({map:new THREE.CanvasTexture(cv),roughness:0.5}));
+    tafel.position.set(13,2.3,110.4);scene.add(tafel);
+    [12,14].forEach(function(px){var pf=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.07,2.3,7),stdMat(0x3a4048,0.5));
+      pf.position.set(px,1.15,110.4);scene.add(pf);});
+    /* Oberleitung: Tragseil + Fahrdraht ueber dem Gleis, Masten stehen bei -108..108 */
+    var drahtM=new THREE.MeshStandardMaterial({color:0x3a3f46,roughness:0.4,metalness:0.7});
+    [[6.55],[7.05]].forEach(function(dy){
+      var dr=new THREE.Mesh(new THREE.BoxGeometry(236,0.05,0.05),drahtM);
+      dr.position.set(0,dy[0],112);scene.add(dr);});
+  })();
+  /* Wartende Fahrgaeste auf dem Bahnsteig */
+  bau("th30_mensch_frau.glb",1.7,-6,0.42,110.4,0,false,null,true);
+  bau("th30_mensch_mann.glb",1.8,4,0.42,110.2,0.4,false,null,true);
+  bau("th30_kind.glb",1.24,4.9,0.42,110.4,-0.3,false,null,true);
+  bau("th6_papierkorb.glb",0.9,-10,0.42,110.2,0,false,null,true);
 
 },0);
 function updTiere(dt,now){var M9=window._muehle;if(M9)M9.rotation.z+=dt*1.1;
