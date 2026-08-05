@@ -2733,3 +2733,12 @@ Party) → ② Dameco (Saisondeko) → ③ Alltron/Brack (Elektronik, braucht HR
   TABAK/VAPE — Shopcom führt die!), shopcomType()-Mapper (kein Lieferanten-Leak), tracked+DENY+Feed-Menge,
   productSet synchronous, 6 Publications. Preis: max(UVP, EK*2.0, EK+8+6), .90-Endung. DRY-Modus.
 Nächster Schritt sobald Feed-Zugang da: Feed → /tmp/shopcom_feed.csv, COLMAP prüfen, DRY, scharf.
+
+## 2026-08-05 Shopcom-Anmeldung komplett vorbereitet
+User registrierte sich → Shopcom schickte 2 PDF-Formulare (Fachhandel + Dropshipping). Dropshipping-PDF per
+pdf-Skill ausgefüllt (keine Formularfelder → Annotations auf Struktur-Koordinaten): alle Felder, 6 Produkt-
+Checkboxen, Kanäle, Shopify, Lieferanten 4-10, Umsatz ehrlich bis 5k, Ort/Datum Belp 05.08. + User-Unterschrift
+(Foto 180° gedreht, freigestellt, als PNG-Overlay auf die Linie). Firmendaten aus Shopcom-Bestätigungsmail:
+Alleng Chour, Hühnerhubelstrasse 37, 3123 Belp, +41795382814. PDF an User gesendet; Antwort-Entwurf an
+info@shopcom.ch in Gmail (User hängt PDF an). ⚠️ Gmail-MCP kann Anhänge weder lesen noch (praktisch) senden
+(kein Attachment-Download-Tool; 364KB-Base64 zu gross) → User lud PDFs in den Chat.
