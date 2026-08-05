@@ -2747,3 +2747,9 @@ die nicht an. Fix: Texte per reportlab-Overlay + pypdf merge_page fest in den Se
 Zudem Linien-Start pixelgenau messen (Seite 1: x=241pt, nicht Label-Ende+Gap).
 
 **Status 05.08.: Anmeldeformular ausgefüllt+unterschrieben an info@shopcom.ch GESENDET (User bestätigt). Warten auf Freischaltung + Feed-Zugang. Importer bereit.**
+
+## 2026-08-05 CH-Lager #2: Dameco angestossen
+Anfrage-Mail an info@dameco.ch als Gmail-Entwurf (Dropshipping-Konditionen, Feed, Registrierung; Fokus
+Saisondeko/Laternen/LED-Lichterketten für Herbst/Weihnachten). Grosshandels-Shop shop.dameco.ch braucht
+freigeschaltetes Händlerkonto (Login JS-rendered, keine offene Registrierung) → E-Mail ist der Einstieg.
+Importer folgt nach Feed-Format-Kenntnis dem Shopcom/Fortura-Muster.
