@@ -1615,6 +1615,65 @@ var dorfFenster=[];
         var st9=new THREE.Mesh(new THREE.PlaneGeometry(0.3,3),rmat);
         st9.rotation.x=-Math.PI/2;st9.position.set(rx9,0.005,rz9);scene.add(st9);});}
   })();
+  /* ═══════════ 🛣️ RANDLINIEN + LEITPLANKEN (User: „strassen wie echt") ═══════════
+     Bestand: Mittellinien (gestrichelt) gab es auf Haupt, Quer und Ring — aber keine
+     durchgezogenen RANDLINIEN und keine LEITPLANKEN. Beides hier:
+       * Randlinien 0.15 m, mit Luecken an Kreuzungen/Zubringern/Zufahrten,
+         y=0.0052 (ueber Fahrbahn -0.003, unter Zebra 0.008 — kein Z-Streit).
+       * Leitplanken dort, wo eine echte Strasse welche hat: West-Ring zur MEERSEITE
+         und an den Flussquerungen der beiden Querstrassen. Pfosten als EIN
+         InstancedMesh (Handy: 1 Draw-Call statt ~90). */
+  (function randUndPlanke(){
+    var lM=stdMat(0xd8d8cc,0.75);lM.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(lM);
+    var _rlY=0;
+    function randl(w,h,x,z){var p=new THREE.Mesh(new THREE.PlaneGeometry(w,h),lM);
+      p.rotation.x=-Math.PI/2;p.position.set(x,0.0052+(_rlY++%7)*0.0002,z);scene.add(p);}
+    /* Segment mit Luecken: laengs=true -> Linie laeuft in x, fest=z */
+    function linie(von,bis,luecken,laengs,fest){
+      var g=von;
+      luecken.slice().sort(function(a,b){return a[0]-b[0];}).forEach(function(c){
+        if(c[0]-c[1]>g+0.6)laengs?randl(c[0]-c[1]-g,0.15,(g+c[0]-c[1])/2,fest):randl(0.15,c[0]-c[1]-g,fest,(g+c[0]-c[1])/2);
+        g=Math.max(g,c[0]+c[1]);});
+      if(bis>g+0.6)laengs?randl(bis-g,0.15,(g+bis)/2,fest):randl(0.15,bis-g,fest,(g+bis)/2);}
+    var SZr=GH*CS/2+12;                                   /* Hauptstrassen-Mitte z=±58 */
+    /* Hauptstrassen (16 m breit -> Rand ±7.5), Luecken an den Kreuzungen x=±RX */
+    [-SZr,SZr].forEach(function(zc){[-7.5,7.5].forEach(function(o){
+      linie(-RL/2,RL/2,[[-RX,7],[RX,7]],true,zc+o);});});
+    /* Querstrassen (10 m -> Rand ±4.6), Luecken an den Hauptkreuzungen */
+    [-RX,RX].forEach(function(xc){[-4.6,4.6].forEach(function(o){
+      linie(-SZr-11,SZr+11,[[-SZr,8.5],[SZr,8.5]],false,xc+o);});});
+    /* Ring (9 m -> Rand ±3.75). Nord/Sued: Luecken an den Zubringern x=±RX und
+       (Sued) an Parkplatz-Ein-/Ausfahrt x=11/25; West: Luecke Strandzufahrt z=-30;
+       Ecken bleiben frei (Radius 4.5). */
+    var N=-100,S=118,X=112,E=6.5;
+    [-3.75,3.75].forEach(function(o){
+      linie(-X+E,X-E,[[-RX,6],[RX,6]],true,N+o);
+      linie(-X+E,X-E,[[-RX,6],[RX,6],[11,3.4],[25,3.4]],true,S+o);
+      linie(N+E,S-E,[[-30,5.5]],false,-X+o);
+      linie(N+E,S-E,[],false,X+o);});
+    /* ── Leitplanken ── */
+    var holmM=new THREE.MeshStandardMaterial({color:0xb4b9c0,roughness:0.35,metalness:0.65});
+    var pfPos=[];
+    function planke(x0,z0,x1,z1){
+      var dx=x1-x0,dz=z1-z0,len=Math.hypot(dx,dz),wk=Math.atan2(dx,dz);
+      var holm=new THREE.Mesh(new THREE.BoxGeometry(0.06,0.34,len),holmM);
+      holm.position.set((x0+x1)/2,0.62,(z0+z1)/2);holm.rotation.y=wk;
+      holm.castShadow=true;scene.add(holm);
+      for(var t=0;t<=len;t+=4)pfPos.push([x0+dx*(t/len||0),z0+dz*(t/len||0),wk]);}
+    /* West-Ring, Meerseite (Fahrbahn-Aussenkante -116.5, Planke 0.8 davor),
+       unterbrochen an der Strandzufahrt z=-30 */
+    planke(-117.3,-94,-117.3,-36);
+    planke(-117.3,-24,-117.3,112);
+    /* Flussquerungen der Querstrassen (Fluss-Band z -94..-87). Der Fluss endet
+       bei x=80 — an der Ost-Querstrasse (x=78) liegt nur die WESTseite am Wasser,
+       die Ostseite waere eine Planke im Trockenen. */
+    [-RX-5.4,-RX+5.4,RX-5.4].forEach(function(px){planke(px,-96,px,-85);});
+    var pfG=new THREE.BoxGeometry(0.14,0.7,0.09);
+    var inst=new THREE.InstancedMesh(pfG,holmM,pfPos.length);
+    var d=new THREE.Object3D();
+    pfPos.forEach(function(p,i){d.position.set(p[0],0.35,p[1]);d.rotation.y=p[2];d.updateMatrix();inst.setMatrixAt(i,d.matrix);});
+    inst.castShadow=true;scene.add(inst);
+  })();
   var _qMat=stdMat(0xd8d8cc,0.75);_qMat.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(_qMat);
   var _NM2=Math.round(RL/10);for(var ms2=0;ms2<_NM2;ms2++){var _dx2=-RL/2+5+ms2*10;if(!_dashFrei(_dx2))continue;
     var st2=new THREE.Mesh(new THREE.PlaneGeometry(3,0.3),_qMat);
