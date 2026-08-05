@@ -760,6 +760,76 @@ Die Texturen sind **im GLB eingebettet** (`mat_bild()`), das Spiel braucht keine
 
 
 
+## 1z4. Charge 35 — ZIERWERK (`models/th35_*.glb`)
+
+Der Bestand war gut im **Bauen** und schwach im **Schmücken**: fast alles bestand aus
+Quadern mit Bevel — und ein Quader mit Bevel bleibt ein Quader. Was einem Ort Schönheit
+gibt, ist gekrümmt. Charge 35 baut genau das, mit zwei Werkzeugen, die es hier vorher
+nicht gab.
+
+| Datei | Maße (B×T×H) | Dreiecke | Inhalt |
+|---|---|---|---|
+| `th35_brunnen_zier.glb` | 3,32 × 3,32 × 2,56 | 10 332 | zweischaliger Zierbrunnen, 8 Fontänen |
+| `th35_laterne_schmiede.glb` | 1,81 × 0,80 × 4,55 | 12 608 | Kandelaber, Stützvoluten, 2 Blumenampeln |
+| `th35_torbogen.glb` | 4,60 × 0,80 × 3,85 | 23 672 | Schmiedetor, zwei Flügel, Bogenfüllung |
+| `th35_pflanzschale.glb` | 1,23 × 1,22 × 1,16 | 30 150 | Zierschale auf Balusterfuß, überhängend bepflanzt |
+| `th35_bank_zier.glb` | 1,83 × 0,64 × 0,98 | 8 320 | Gussbank, Volutenwangen, Holzlatten |
+| `th35_pergola.glb` | 3,87 × 2,74 × 3,11 | 32 176 | Rosenpergola, Durchgang 2,00 × 2,20 |
+| `th35_sonnenuhr.glb` | 1,24 × 1,24 × 1,62 | 3 604 | Balustersäule, Zifferblatt, Gnomon 47° |
+| `th35_balustrade.glb` | **2,000** × 0,36 × 1,09 | 4 324 | 7 Balustren, **Raster x += 2,00** |
+| `th35_ensemble.glb` | 17,20 × 17,20 × 4,55 | 215 242 | **Brunnenplatz**, nur aus den Teilen oben |
+
+Generator: `tools/assets/mk_th35_zierwerk.py` · Texturen aus `textures/th32`.
+Alle neun Teile: zmin = 0,000, in x und y auf die Mitte zentriert, Schauseite +y.
+
+### Die zwei neuen Werkzeuge
+
+> 🛠️ **`dreh(profil, m, seg)` — Drehkörper.** Ein Profil aus `(radius, höhe)`-Punkten
+> wird um die Z-Achse gedreht. Damit entstehen Schalen, Balustren, Vasen und Sockel in
+> **einem** Stück. Eine Brunnenschale aus fünf gestapelten Zylindern zeigt fünf sichtbare
+> Absätze; ein Drehkörper hat eine stetige Silhouette, und genau daran erkennt das Auge
+> „gedrechselt" statt „gebastelt". Ein Profilpunkt mit r = 0 ist erlaubt — aber nur am
+> Anfang oder Ende, mittendrin entstehen Flächen mit Nullbreite.
+
+> 🛠️ **`rohr(punkte, r)` — Rundrohr entlang eines Linienzugs**, gebaut als Blender-Kurve
+> mit `bevel_depth` und sofort zu Mesh gewandelt (glTF exportiert keine Kurven).
+> `glatt=True` legt eine Bézier-Kurve mit AUTO-Griffen durch die Punkte: an geraden
+> Segmenten sieht man jeden Knick, und ein Schmiedebogen mit Knick sieht aus wie ein
+> Rohrschaden. Dazu `bogen_pkt()` für Rundbögen und `volute_pkt()` für Schnecken — deren
+> Radius läuft **logarithmisch** nach innen, sonst wird aus der Volute eine Sprungfeder.
+
+> ⚠️ **Drehkörper und Rohre dürfen NICHT durch `runden()`.** Sie sind bereits rund; ein
+> zweiter Bevel auf einer 48-seitigen Schale erzeugt nur Fehlkanten und verdreifacht die
+> Dreiecke. Beide Helfer setzen darum selbst das `nb`-Flag.
+
+### 🔧 Fünf Fehler, die erst der Render gezeigt hat
+
+* **Gold wurde schwarz.** `metallic 0,90` heißt: das Material zeigt fast nur Spiegelung —
+  und ohne Environment-Map ist da nichts zu spiegeln. Die Kugeln am Brunnenrand sahen aus
+  wie Oliven. Halbmetallisch (0,45) und heller, dann trägt die diffuse Farbe.
+* **Ein Rohrende steht nicht auf `z − r`.** Der Bevelkreis liegt quer zur Tangente; läuft
+  das Bein senkrecht aus, ist die Unterkante genau der Endpunkt. Erst z = 0,02
+  (zmin 0,016), dann z = 0,032 (zmin 0,028) — die Bank schwebte beide Male. Jetzt enden
+  die Beine auf 0,03 und stehen auf vier Fußplatten.
+* **`volute_pkt` lag in der falschen Ebene.** Ohne den Schalter `ebene="yz"` stand die
+  Volute der Bank quer zur Wange und blies deren Tiefe von 0,66 auf **1,70 m** auf.
+* **Überhängende Pflanzen sind keine Linien.** Zwei Anläufe gescheitert: dicke Bögen nach
+  außen (= fünf Henkel an einer Suppenterrine), dann dünne Rohre gerade nach unten
+  (= Fransenvorhang aus grünen Stangen). Eine hängende Pflanze ist eine **Kette aus
+  Blattballen**, die nach unten kleiner werden und seitlich auswandern. Rohre können das
+  nicht.
+* **Vier Balustraden auf einem Kreis** lasen sich wie vier vergessene Zaunstücke. Erst
+  aneinandergereiht (Raster 2,00 → x = ±1, ±3, ±5) wird daraus eine Brüstung.
+
+> 🧩 **`th35_ensemble` ist der Maßstabs-Test.** Ein Teil allein sieht immer gut aus; erst
+> nebeneinander fällt auf, wenn die Bank zu klein oder die Laterne zu groß ist. Der Platz
+> ist ausschließlich aus den acht Teilen zusammengesetzt.
+
+> 📁 **Pfade kommen aus `__file__`**, nicht aus einem festen `/home`-Pfad. Charge 34 ließ
+> sich in einem zweiten Arbeitsbaum nicht bauen, weil `OUT_GLB` fest verdrahtet war und
+> ins falsche Verzeichnis schrieb.
+
+---
 ## 1z3. Charge 34 — HAUS-BAUKASTEN (`models/th34_*.glb`)
 
 Modulare Teile zum Häuserbauen. Der ganze Sinn der Charge ist **ein** Raster, damit
