@@ -2742,3 +2742,6 @@ Checkboxen, Kanäle, Shopify, Lieferanten 4-10, Umsatz ehrlich bis 5k, Ort/Datum
 Alleng Chour, Hühnerhubelstrasse 37, 3123 Belp, +41795382814. PDF an User gesendet; Antwort-Entwurf an
 info@shopcom.ch in Gmail (User hängt PDF an). ⚠️ Gmail-MCP kann Anhänge weder lesen noch (praktisch) senden
 (kein Attachment-Download-Tool; 364KB-Base64 zu gross) → User lud PDFs in den Chat.
+⚠️ PDF-Formular-Lektion: fill_pdf_form_with_annotations erzeugt ANNOTATIONEN — Handy-Viewer (User!) zeigen
+die nicht an. Fix: Texte per reportlab-Overlay + pypdf merge_page fest in den Seiteninhalt einbrennen.
+Zudem Linien-Start pixelgenau messen (Seite 1: x=241pt, nicht Label-Ende+Gap).
