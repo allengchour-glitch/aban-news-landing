@@ -28,6 +28,33 @@ const FARBE_DE = { red:'Rot', blue:'Blau', black:'Schwarz', white:'Weiss', green
   coffee:'Kaffeebraun', champagne:'Champagner', multicolor:'Mehrfarbig', transparent:'Transparent' };
 const deColor = c => { const k=(c||'').toLowerCase().trim(); return FARBE_DE[k] || c; };
 
+const MAT_DE = { plastic:'Kunststoff', metal:'Metall', glass:'Glas', 'stainless steel':'Edelstahl',
+  cotton:'Baumwolle', polyester:'Polyester', wood:'Holz', ceramic:'Keramik', silicone:'Silikon',
+  'silica gel':'Silikon', leather:'Leder', 'pu leather':'PU-Leder', pu:'PU-Leder', alloy:'Metall-Legierung',
+  'zinc alloy':'Zinklegierung', copper:'Kupfer', acrylic:'Acryl', nylon:'Nylon', canvas:'Canvas',
+  latex:'Latex', resin:'Harz', bamboo:'Bambus', linen:'Leinen', velvet:'Samt', tpu:'TPU', abs:'ABS',
+  pvc:'PVC', sponge:'Schaumstoff', iron:'Eisen', rubber:'Gummi', paper:'Papier', crystal:'Kristall',
+  pearl:'Perle', 'zircon':'Zirkonia', flannel:'Flanell', 'oxford cloth':'Oxford-Gewebe', spandex:'Elasthan' };
+const deMat = m => { const k=(m||'').toLowerCase().trim(); return MAT_DE[k] || m; };
+function buildDetails(cj, colors, sizes){
+  const rows=[];
+  const mats=(cj?.materialNameEn||[]).map(deMat).filter(Boolean);
+  if(mats.length) rows.push(`Material: ${[...new Set(mats)].join(', ')}`);
+  const w=Number(cj?.productWeight)||0; if(w>0) rows.push(`Gewicht: ca. ${w>=1000?(w/1000).toFixed(1)+' kg':Math.round(w)+' g'}`);
+  if((cj?.productProEn||[]).includes('BATTERY')) rows.push('Mit Batterie/Akku');
+  if(colors&&colors.length>1) rows.push(`Farben: ${colors.join(', ')}`);
+  if(sizes&&sizes.length>1) rows.push(`Grössen: ${sizes.join(', ')}`);
+  if(!rows.length) return '';
+  return `\n<h3>Technische Details</h3><ul>${rows.map(r=>'<li>'+r+'</li>').join('')}</ul>`;
+}
+async function attachVideo(stok, productId, cj){
+  const vurl=cj?.productVideo;
+  if(!vurl||!/^https?:\/\//.test(vurl)) return false;
+  const r=await gql(stok,`mutation($id:ID!,$m:[CreateMediaInput!]!){ productCreateMedia(productId:$id,media:$m){ mediaUserErrors{message} } }`,
+    {id:productId,m:[{originalSource:vurl,mediaContentType:'VIDEO',alt:'Produktvideo'}]});
+  return !(r?.data?.productCreateMedia?.mediaUserErrors||[]).length;
+}
+
 function parseVar(v){ const k=(v.variantKey||'').trim(); const i=k.lastIndexOf('-'); let color=null,size=null;
   const SZ=/^(XXS|XS|S|M|L|XL|XXL|3XL|4XL|5XL|\d{2,3}(cm|mm)?|One Size|Free Size)$/i;
   if(i>0){ const a=k.slice(0,i).trim(), b=k.slice(i+1).trim();
@@ -79,8 +106,10 @@ async function cjGet(tok,path,params){ const qs=new URLSearchParams(params).toSt
         if(!useC&&!useS){
           // CJ hat real keine Auswahl → irreführende Farb-Zeile strippen
           const dh=p.descriptionHtml||'';
-          const dh2=dh.replace(/<li>Erhältlich in (den Farben|verschiedenen Farben)[^<]*<\/li>/i,'<li>Lieferung wie abgebildet</li>');
+          let dh2=dh.replace(/<li>Erhältlich in (den Farben|verschiedenen Farben)[^<]*<\/li>/i,'<li>Lieferung wie abgebildet</li>');
+          if(!dh2.includes('Technische Details')) dh2+=buildDetails(cj?.data,null,null);
           if(dh2!==dh&&!DRY){ await gql(stok,`mutation($i:ProductInput!){ productUpdate(input:$i){ userErrors{message} } }`,{i:{id:p.id,descriptionHtml:dh2}}); }
+          if(!DRY) await attachVideo(stok,p.id,cj?.data);
           if(!DRY)fs.appendFileSync(LEDGER,pid+'\n');
           console.log('· keine CJ-Auswahl:',p.title.slice(0,50)); continue;
         }
@@ -100,11 +129,11 @@ async function cjGet(tok,path,params){ const qs=new URLSearchParams(params).toSt
           const errs=res?.data?.productSet?.userErrors||[];
           if(errs.length){ console.log('✗',p.title.slice(0,45),JSON.stringify(errs).slice(0,140)); continue; }
           // Gewicht als Technisches Detail ergänzen (einmalig)
-          const w=Number(cj?.data?.productWeight)||0;
-          if(w>0&&!(p.descriptionHtml||'').includes('Gewicht:')){
-            const dh2=(p.descriptionHtml||'')+`\n<p><strong>Technische Details:</strong> Gewicht ca. ${w} g${sizes.length?` · Grössen: ${sizes.join(', ')}`:''}${colors.length?` · Farben: ${colors.join(', ')}`:''}</p>`;
-            await gql(stok,`mutation($i:ProductInput!){ productUpdate(input:$i){ userErrors{message} } }`,{i:{id:p.id,descriptionHtml:dh2}});
+          if(!(p.descriptionHtml||'').includes('Technische Details')){
+            const dh2=(p.descriptionHtml||'')+buildDetails(cj?.data,colors,sizes);
+            if(dh2!==(p.descriptionHtml||'')) await gql(stok,`mutation($i:ProductInput!){ productUpdate(input:$i){ userErrors{message} } }`,{i:{id:p.id,descriptionHtml:dh2}});
           }
+          await attachVideo(stok,p.id,cj?.data);
           fs.appendFileSync(LEDGER,pid+'\n'); upgraded++;
           console.log('✓',p.title.slice(0,55),'→',newVars.length,'Varianten');
         }
