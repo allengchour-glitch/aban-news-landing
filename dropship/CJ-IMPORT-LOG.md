@@ -2965,3 +2965,13 @@ vorsichtige spätere Runden; TWS-Kopfhörer-Cluster (10×) Dedup-Kandidat.
 ⚠️ SELBST-FALLE BESTÄTIGT (2. Mal, nach Hängematte): Wildcard-Titel-Suche + Massen-Update OHNE per-Produkt-Check
 benannte 5 fremde Uhren um → via bulk_products.jsonl (Titel-Snapshot!) restauriert. REGEL VERSCHÄRFT: Titel-Updates
 NUR per exakter ID nach Einzel-Verifikation; bulk-Snapshot vor Massenaktionen ist die Lebensversicherung.
+
+**2026-08-06 Patrouille Teil 3 (Spielzeug/Beleuchtung/Küche):**
+- 🚨 ADULT-PRODUKT IM KINDERSPIELZEUG: «Wasser-Heimtrainer für Beckenboden-Training» = Hydropumpe (X20/X30/Max7)
+  → DRAFT adult-draft. Shop-weiter Adult-Sweep: sauber (nur Analog-Uhren-Fehltreffer bei *Anal* — Falle erkannt
+  BEVOR gehandelt). 13 Tierspielzeuge + Reisbehälter aus tag spielzeug entfernt, Spielzeug-Beschreibung ehrlich
+  (war: Playmobil/Ravensburger/Barbie-Namedropping ohne Bestand).
+- Beleuchtung: 2 Video-Beamer («Lumina»/«GlowCast» als 'Stimmungslicht' getarnt, HDMI/PS4-Ports!) enttaggt→Elektronik;
+  Beschreibung ehrlich (war: Philips/Marmor/Gorilla-Lampen = BigBuy-Relikte). Uhren-Titel-Restore nach eigener
+  Wildcard-Panne (5 Uhren via bulk-Snapshot zurückbenannt). Pet-Tagger fertig (1'122 Produkte tag haustier).
+- Küche visuell sauber. Ehrlichkeits-Regel: Collection-Texte dürfen NUR nennen was aktiv ist.
