@@ -760,6 +760,58 @@ Die Texturen sind **im GLB eingebettet** (`mat_bild()`), das Spiel braucht keine
 
 
 
+## 1z5. Charge 36 — PARK- UND PLATZSCHMUCK (`models/th36_*.glb`)
+
+Fortsetzung von Charge 35 mit denselben zwei Werkzeugen. Charge 35 hat das **Mobiliar**
+eines Zierplatzes gebaut (Brunnen, Bank, Laterne, Balustrade); Charge 36 baut, was einen
+ganzen **Park** ausmacht: ein Bauwerk zum Draufschauen, eine Brücke zum Drübergehen, eine
+Einfriedung zum Reihen und die kleinen Dinge dazwischen.
+
+| Datei | Maße (B×T×H) | Dreiecke | Inhalt |
+|---|---|---|---|
+| `th36_musikpavillon.glb` | 5,60 × 5,93 × 4,90 | 12 518 | achteckig, 8 Säulen, geschweiftes Dach, Treppe |
+| `th36_zierzaun.glb` | **2,040** × 0,26 × 1,56 | 8 286 | Schmiedezaun, Speerspitzen, Volutenfries |
+| `th36_bogenbruecke.glb` | 7,76 × 3,14 × 1,69 | 14 384 | Steinbogen, Docken, Flügelmauern |
+| `th36_vogeltraenke.glb` | 0,75 × 0,74 × 1,00 | 2 542 | Drehkörper vom Fuß bis zum Rand, 2 Vögel |
+| `th36_obelisk.glb` | 3,08 × 3,05 × 5,20 | 5 312 | gestufter Sockel, Bronzetafeln, Buchskranz |
+| `th36_trinkbrunnen.glb` | 2,56 × 1,40 × 1,97 | 5 908 | Schweizer Dorfbrunnen, Trog + Stock |
+| `th36_rondell.glb` | 3,00 × 3,00 × 1,12 | 36 600 | rundes Beet, Einfassung, Buchsrand |
+| `th36_ensemble.glb` | 22,00 × 22,00 × 5,20 | 232 736 | **Kurpark**, nur aus den Teilen oben |
+
+Generator: `tools/assets/mk_th36_parkschmuck.py` · Werkzeug: `tools/assets/th_werkzeug.py`.
+Alle acht: zmin = 0,000, Schauseite +y.
+
+> 🧰 **`th_werkzeug.py` — gemeinsamer Werkzeugkasten.** `dreh()`, `rohr()`, `bogen_pkt()`,
+> `volute_pkt()`, `box()`, `runden()`, `export()` liegen jetzt EINMAL da und werden von
+> Charge 35 **und** 36 importiert. Vorher stand derselbe 200-Zeilen-Block in jeder Charge
+> noch einmal — beim Gold-Fix hätte man ihn zweimal ändern müssen und die zweite Kopie
+> vergessen. Charge 35 wurde nach dem Herauslösen neu gebaut: Dreiecke und Maße sind
+> identisch (Brunnen 10 332 Tri, Ensemble 215 242 Tri), nur die GLB-Bytes unterscheiden
+> sich — der glTF-Export nummeriert Materialien nicht reproduzierbar durch.
+
+> ⚠️ **`th36_zierzaun` ist 2,040 breit, das Raster bleibt 2,000** — der Pfostenring kragt
+> je Seite 0,02 aus. Aneinandergereiht überlappen sich zwei Module also um 0,04; gewollt,
+> sonst klafft an der Fuge ein Spalt. Damit ist er mit `th35_balustrade` (Raster 2,00)
+> mischbar: Stein und Eisen im selben Zug.
+
+> ⚠️ **`th36_musikpavillon` ist in y NICHT zentriert** (yM +0,165): die Zugangstreppe
+> springt auf der Schauseite vor. Verankert wird am Achteck-Mittelpunkt, nicht an der Box.
+
+### 🔧 Drei Fehler, die erst der Render gezeigt hat
+
+* **Die Brücke schwebte.** Der Gehweg-Bogen startete auf z = 0,55 und endete damit 43 cm
+  über dem Boden — dazu zwei runde Klötze als Widerlager, die aussahen wie vergessene
+  Sockel. Eine Brücke muss am Ufer den Boden berühren, sonst ist sie eine Rampe ins
+  Nichts. Jetzt Basis 0,14, Flügelmauern und Anschlussplatten.
+* **Ein Rohr liegt mit seiner MITTE auf der Kurve.** Die Bogenlaibung auf z = 0,02 mit
+  r = 0,16 tauchte 12 cm unter den Boden (zmin −0,123). Dieselbe Rechnung wie bei den
+  Kugeln: die Achse gehört auf z = r.
+* **Verstreute Erbsen, zum zweiten Mal.** Acht einzelne Laubkugeln im Kreis um den
+  Obelisken — genau der Fehler, der in Charge 35 schon an der Sonnenuhr auftrat. Ein
+  Buchskranz braucht so viele Ballen, dass sie sich **überlappen**; erst dann ist es eine
+  Hecke und keine Streuung.
+
+---
 ## 1z4. Charge 35 — ZIERWERK (`models/th35_*.glb`)
 
 Der Bestand war gut im **Bauen** und schwach im **Schmücken**: fast alles bestand aus
