@@ -2869,3 +2869,7 @@ templates/page.merkliste.json, Page 699965571457), Menüpunkt «♥ Merkliste».
 (DiscountAutomaticNode/2363896299905, kombinierbar mit Versandrabatt, ohne Code sichtbar im Warenkorb) +
 Ankündigungs-Slot 5 dazu. ⚠️ Fund: automatischer Gratis-Versand stand noch auf CHF 50, Shop kommuniziert überall 65
 → auf 65 angeglichen (Node 2338579513729). Bestehende Mengen-Codes (BUNDLE20 ab 80, BEAUTYDUO 2+) bleiben.
+
+**2026-08-06 Kinder & Baby:** Collection sub-baby-kids «Baby & Kids»→«Kinder & Baby» umbenannt, Regeln erweitert
+(+tag kinder/spielzeug), SEO auf CHF 65 korrigiert (stand noch 50!). Menü «Mehr & Sale > Kinder» zeigte nur auf
+spielzeug (951) — jetzt auf sub-baby-kids (1'570) mit Unterpunkten Spielzeug & Plüsch + Kinderschuhe.
