@@ -2898,3 +2898,11 @@ Schutzliste = 96 Handles (Menü+Startseite). Schuh-Falle: damenschuhe/herrenschu
 BEIDE im Menü → Menü konsolidiert auf damen-schuhe/herren-schuhe, Dubletten depubliziert. Leere (silvester/loreal/
 black-friday) depubliziert — ⚠️ black-friday im Nov WIEDER publizieren (BF-Playbook)! Preis-Check: <5CHF=nur POD-Sticker
 (ok), >500=Animatronics/Kinderautos (ok), 0 Preis-0-Produkte. Regel: Collections-Dedup periodisch via norm-Titel.
+
+**2026-08-06 Fehler-Sweep #3 (Produktseite):** (1) «Kundenbewertungen» erschien DOPPELT — judgeme_core-App-Embed
+injiziert das Widget automatisch UND templates/product.json hatte ein explizites judge_me-Widget-Block-Section →
+explizite Section + leere Geister-_blocks-Section entfernt (Order jetzt main+recommendations). (2) Ein-Varianten-
+Produkte zeigten sinnlose Zeile «Variante: Standard» → luxVarHide-Skript in theme.liquid blendet Picker mit nur
+1 Option «Standard» aus. (3) Blitz-Rotation: ALPHA/PRICE_DESC zeigten teure Kinderautos/Skelette als ersten
+Eindruck → SORTS auf CREATED_DESC/BEST_SELLING/CREATED reduziert. Neueste 100 Importe: 0 bildlos/0 FAILED/0 CJK.
+Titel-Leak-Scan: sauber (Ref./The = Reflex/Thermo-Fehltreffer, 16c-Falle bestätigt).
