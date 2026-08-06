@@ -2858,3 +2858,9 @@ BigBuy-Rest zu Recht gedraftet, 0 wiederbelebbar).
 - Listen-Ansicht: 3. Umschalter in `snippets/grid-density-controls.liquid` (value=list, eigenes SVG) + CSS
   `[product-grid-view='list']` (1 Spalte, Bild 200px links, Details rechts). Kompakt-Ansicht zeigt seit heute Preise
   (blocks/_product-card-gallery.liquid) + Filter-Labels DE via theme.liquid-Skript.
+
+**2026-08-06 Merkliste + Listen-Ansicht v2:** Listen-Ansicht neu (Galaxus-Stil): `.card-gallery` explizit Spalte 1
+(140px/104px mobil) — Falle: 1. Kind der Karte ist ein UNSICHTBARER shopify-app-block, nie `:first-child` fürs Bild nehmen.
+Mobile hat jetzt auch das Listen-Icon. NEU Merkliste (localStorage `lux_wish`): Herz-Button auf jeder Karte
+(blocks/_product-card-gallery.liquid + JS/CSS in theme.liquid), Seite /pages/merkliste (sections/lux-merkliste.liquid +
+templates/page.merkliste.json, Page 699965571457), Menüpunkt «♥ Merkliste». Einkaufs-Button = bestehender Quick-Add (Tasche).
