@@ -2933,3 +2933,9 @@ Notiert für später: einzelne Maschinen-Titel («Luminous Sonne Mond Stern…»
 recommendation_type stand auf `complementary` (liefert nur manuell gepflegte Ergänzungsprodukte aus S&D-App = 0).
 Auf `related` umgestellt (algorithmisch, API liefert 8 Treffer) + Überschrift «Ähnliche Produkte». Reviews-Duplikat-Fix
 visuell bestätigt (nur noch 1× Kundenbewertungen).
+
+**2026-08-06 Sweep #6:** «Ähnliche Produkte» rendert verifiziert (4 Karten). ⚠️ Dabei entdeckt: «PALESTINE FAITH OVER
+FEAR»-Hoodie + «Israel Flaggen Cap» als generisch betitelte Aktive → beide DRAFT (statement-motiv-draft; Regel:
+Polit-/Konflikt-Merch raus, religiöse Deko wie Jesus-Leinwand/Bibel-Anhänger = normale Handelsware, bleibt).
+Bulk-Scan 234'174 Varianten: nur 1 Produkt mit compareAt<=price (52 Varianten Anzughose) → Streichpreis genullt.
+Menü-Collection-Beschreibungen: 0 englisch/leer.
