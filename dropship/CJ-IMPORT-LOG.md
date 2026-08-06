@@ -2879,3 +2879,14 @@ Fund: premium-geschenke (Geschenkideen-Reihe) hatte Regel geschenk+premium = nur
 wie Parfüm!) → Regel auf tag:geschenk allein = 4'699 Produkte, Top10 aktiv. Screenshot-Verify: DE-Filter, Herzen,
 Merkliste-Menü, Listen-Icon alle live. Produkttyp-Dubletten Gadget(713)→Gadgets, Accessoire→Accessoires gemerged.
 Theme-Sweep «CHF 50»: sauber. Regel-Lehre: Reihen-Collections regelmässig auf «aktiv in Top10» prüfen, nicht nur count.
+
+**2026-08-06 ⚠️ CJ-PUNKTE-FALLE (NEUE MASTER-LESSON):** CJ-Tagesbudget REAL aufgebraucht (code 16900500, 85'150 Punkte
+verbraucht, /product/query kostet 10!). Folge: variant_backfill + reviews_import bekamen data:null, werteten das als
+«keine Auswahl/keine Kommentare» und LEDGERTEN fälschlich → Ledger-Vergiftung. FIX: beide Engines prüfen jetzt
+code 16900500 → sofortiger Abbruch OHNE Ledger; variant_backfill überspringt CJ-Fehler ohne Ledger. Varianten-Ledger
+GELEERT (Backup /tmp/variants_ledger_backup_*) — Re-Run ist idempotent (schon angereicherte = 1 Query-freier Skip).
+Reviews-Ledger NICHT zurückgesetzt (Re-Scan = zigtausend Punkte für fast 0 Ertrag). REGEL: Jede CJ-Engine MUSS
+code≠200-Antworten von «leerem Ergebnis» unterscheiden, sonst frisst sie das eigene Backlog. Punkte resetten täglich.
+**Kollektions-Dedup:** 4 überlappende Lade-Kollektionen → nur «Ladegeräte & Powerbanks» (elektronik-laden, 556) bleibt
+publiziert; ladegeraete/handy-laden/handy-powerbanks vom Online-Store genommen (waren in keinem Menü, nur Such-Duplikate).
+Topseller-Reihe 7→15 kuratierte Review-Gewinner. Shop hat 497 Collections — weitere Dup-Sweeps lohnen.

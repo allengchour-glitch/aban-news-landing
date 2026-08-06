@@ -72,7 +72,9 @@ async function cjToken() {
 async function cjGet(tok, path, params) {
   const qs = new URLSearchParams(params).toString();
   const r = await fetch(`${CJ_BASE}${path}?${qs}`, { headers: { 'CJ-Access-Token': tok } });
-  return r.json().catch(() => ({}));
+  const j = await r.json().catch(() => ({}));
+  if (j?.code === 16900500) { console.log('CJ-Punkte aufgebraucht → Abbruch (kein Ledger-Schreiben mehr).'); process.exit(0); }
+  return j;
 }
 
 // ── Gemini DE-Übersetzung (optional, Batch je Produkt) ──
