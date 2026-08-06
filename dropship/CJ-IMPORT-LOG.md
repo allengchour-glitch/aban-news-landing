@@ -2922,3 +2922,9 @@ BEST_SELLING (Kachelbilder ≠ Schuhe-Kachel). (4) Desktop kompakter: alle 12 Re
 luxGrid5-CSS (Kollektions-/Suchseiten 5 Spalten default). (5) Rotation erweitert: blitz_rotate.sh rotiert jetzt
 7 Reihen-Collections (Blitz/Elektronik/Trends/Wohnen/Geschenke/Parfum/EU) alle 6h. (6) Bulk-Scan 27'260 Aktive:
 0 ohne Bild — beige Karten in Screenshots = Lazy-Loading, kein Datenfehler.
+
+**2026-08-06 Sweep #5 (Screenshot-Patrouille):** Warenkorb-Empfehlungen waren ENGLISCH («You may also like»/
+«View all» hardcoded in templates/cart.json) → «Das könnte dir auch gefallen»/«Alle anzeigen». Neuheiten-Collection
+hatte absurde Alt-Beschreibung («Tierbetten»!) → neutral neu geschrieben + SEO. Verifiziert: Neuheiten-Filter
+funktionieren wieder (2'523 Artikel), Suche zeigt 5 Spalten/DE-Filter/Herzen/Listen-Icon, Merkliste-Seite läuft.
+Notiert für später: einzelne Maschinen-Titel («Luminous Sonne Mond Stern…») könnten eine Titel-Polish-Runde brauchen.
