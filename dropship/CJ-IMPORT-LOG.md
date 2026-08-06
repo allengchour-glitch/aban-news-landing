@@ -2912,3 +2912,13 @@ Einzel-Listings «· Gr. X») zu je 1 Produkt mit Grösse-Varianten fusioniert (
 Preis/SKU/EAN/Bestand je Variante, tracked DENY, Location-Qty). Verlierer-Listings → DRAFT + Tag merged-in-<keeper>.
 Muster wie Good-Vibes-Merge, jetzt automatisiert. Offen: Farb-Familien (gleiche Ware, andere Farbe = separate Titel)
 noch nicht gemerged — braucht per-Farbe-Medien-Zuordnung (wie Good-Vibes manuell).
+
+**2026-08-06 Sweep #4 (User-Screenshots):** (1) Popeye/DuffMan/Kampfjetpilot/Waggishemd: Suffix+suffixlose Paare
+fusioniert — SKU-Suffix verrät Grösse (-1=S,-2=M,-3=L); Kampfjetpilot jetzt S/M/L/XL in EINEM Produkt; Waggishemd
+war echtes Duplikat (2×XL) → gedraftet. (2) 10 von 11 fast identischen Nackenventilatoren gedraftet
+(sortiment-dedup-draft), behalten: «Nackenventilator mit Digitalanzeige» 13.90. ⚠️ *Neck*-Suche trifft
+Neckholder-Kleider — Ventilator-Dedup NUR über Collection! (3) Kachel «Für Ihn»→«Herren-Mode» + fur-ihn auf
+BEST_SELLING (Kachelbilder ≠ Schuhe-Kachel). (4) Desktop kompakter: alle 12 Reihen 5 Spalten/10 Produkte +
+luxGrid5-CSS (Kollektions-/Suchseiten 5 Spalten default). (5) Rotation erweitert: blitz_rotate.sh rotiert jetzt
+7 Reihen-Collections (Blitz/Elektronik/Trends/Wohnen/Geschenke/Parfum/EU) alle 6h. (6) Bulk-Scan 27'260 Aktive:
+0 ohne Bild — beige Karten in Screenshots = Lazy-Loading, kein Datenfehler.
