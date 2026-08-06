@@ -2939,3 +2939,11 @@ FEAR»-Hoodie + «Israel Flaggen Cap» als generisch betitelte Aktive → beide 
 Polit-/Konflikt-Merch raus, religiöse Deko wie Jesus-Leinwand/Bibel-Anhänger = normale Handelsware, bleibt).
 Bulk-Scan 234'174 Varianten: nur 1 Produkt mit compareAt<=price (52 Varianten Anzughose) → Streichpreis genullt.
 Menü-Collection-Beschreibungen: 0 englisch/leer.
+
+**2026-08-06 CK-Modell-Merge (User: «ähnliche Fehler wie ich melde»):** Cluster-Analyse über 27'260 Aktive
+(48 Fast-Duplikat-Cluster; POD-Designs/Modellnummern = ok). Fortura-Kostüme mit SKU fortura-CK<modell><grösse>:
+14 Modelle fusioniert — Kinder- UND Erwachsenen-Listings desselben Modells vereint (z.B. Wednesday: XS-L + 140-164cm
+in EINEM Produkt; 5 Wednesday-Modelle → «· Modell 2-4» nummeriert; Eiskönigin 8 Grössen). Tool /tmp/ck_merge.py
+(Union aller Varianten, Grössen-Whitelist 104-190cm gegen Modellnummern-Falle, skip bei Grössen-Kollision → 6 offen).
+Verlierer → DRAFT merged-ck-<modell>. Offen notiert: 374 Exakt-Titel-Gruppen (864 Produkte, meist CJ) für
+vorsichtige spätere Runden; TWS-Kopfhörer-Cluster (10×) Dedup-Kandidat.
