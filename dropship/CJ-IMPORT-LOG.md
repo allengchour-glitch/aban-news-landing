@@ -2982,3 +2982,8 @@ Haupt-Collection sub-haustier → «Haustierwelt» (1'239 Produkte, verlinkte Be
 haustier-hunde(~535)/haustier-katzen(~425)/tier-leinen-kleidung(~321)/tierspielzeug(~192)/tier-naepfe-fuettern(~138)/
 tier-pflege-unterwegs(~44). Menü: 6 Unterpunkte unter Mehr & Sale > Haustier. Sub-Tags: sub-hund/sub-katze/
 sub-tierkleidung/sub-tierspielzeug/sub-futter/sub-tierpflege/sub-tiertransport — Importer können sie künftig direkt setzen.
+
+**2026-08-06 Werkzeug-Analyse (User «gibt es werkzeuge und elektronik? oder neue lieferant»):** Elektronik gesund
+(1'485 Typ-Elektronik aktiv, CJ-Gadgets). Werkzeug = BigBuy-Friedhof (elektriker 0, elektrowerkzeug 1, messwerkzeug 1,
+koffer 1, handwerkzeug 6 aktiv) → 6 tote Werkzeug-Collections vom Online-Store depubliziert. Für echtes Werkzeug/
+Marken-Elektronik braucht es Lieferant: Shopcom (angemeldet, wartet), Dameco (Gmail-Entwurf bereit), Alltron (braucht HR).
