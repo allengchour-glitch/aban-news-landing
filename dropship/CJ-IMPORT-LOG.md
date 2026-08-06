@@ -2947,3 +2947,14 @@ in EINEM Produkt; 5 Wednesday-Modelle → «· Modell 2-4» nummeriert; Eisköni
 (Union aller Varianten, Grössen-Whitelist 104-190cm gegen Modellnummern-Falle, skip bei Grössen-Kollision → 6 offen).
 Verlierer → DRAFT merged-ck-<modell>. Offen notiert: 374 Exakt-Titel-Gruppen (864 Produkte, meist CJ) für
 vorsichtige spätere Runden; TWS-Kopfhörer-Cluster (10×) Dedup-Kandidat.
+
+**2026-08-06 Kategorie-Patrouille (Screenshots, User «keine falschen produkte in kategorie»):**
+- ⚠️ NEUE REGEL-LEHRE: Collection-Regeln mit TITLE CONTAINS «Katze»/«Hund»/«Pflanze» = Compound-Falle auf
+  Regel-Ebene (Katzenmuster-Hemd in Haustier, Pflanzenmuster-Strumpfhose in Garten!). Smart-Regeln können keine
+  Ausnahmen → Muster: Code-seitig strikt taggen (mit Ausschlüssen), Collection NUR auf TAG/TYPE-Regeln.
+- Garten & Balkon: 5 Fremdlinge enttaggt (Kräuter-Pflaster/Pflegestift=Hautpflege, Pflanzenmuster-Mode ×2,
+  Katzen-Kletterbaum), 3 Typ-Fixes (Sonnenschirm/Windspiel→Deko, Korea-Grill→Grill&BBQ). cat_tags.mjs gehärtet
+  (pflanzen(?!muster), krauter→krautergarten/-beet/-topf).
+- Haustier: Regel auf TAG haustier/pet + TYPE Haustierbedarf umgestellt; /tmp/pet_tagger.py taggt 1'122 echte
+  Tierprodukte (inc/exc-Regex; Fallen gefunden: Halsband=Schmuck!, Kaninchen-Sandalen, Skibrille Katzenohren,
+  Katzenauge-Nagelsticker). Cat-Eye-Schmuck/Brillen (3) enttaggt.

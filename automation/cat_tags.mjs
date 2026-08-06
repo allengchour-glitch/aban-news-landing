@@ -38,7 +38,7 @@ export function catTags(text) {
     // Fitness / Outdoor
     [/\byoga\b|widerstandsband|resistance.?band|\bhantel\b|fitness/, ['fitness']],
     [/camping|\bzelt\b|wandern/,                                ['outdoor', 'camping']],
-    [/sonnenschirm|gartenmoebel|liegestuhl|hangematte|\bgrill\b|\bgarten\b|\bbalkon\b|blumentopf|blumenkasten|ubertopf|pflanzentopf|pflanzkubel|\bpflanze\b|pflanzen|rankgitter|blumenampel|hangepflanz|bewasserung|giesskanne|giess|vogelhaus|vogelfutter|vogeltrank|windspiel|windlicht|solarleuchte|solarlampe|solar.?licht|gartenzwerg|gartendeko|krauter|blumenkasten/, ['outdoor', 'garten']],
+    [/sonnenschirm|gartenmoebel|liegestuhl|hangematte|\bgrill\b|\bgarten\b|\bbalkon\b|blumentopf|blumenkasten|ubertopf|pflanzentopf|pflanzkubel|\bpflanze\b(?!nmuster)|pflanzen(?!muster)|rankgitter|blumenampel|hangepflanz|bewasserung|giesskanne|giess|vogelhaus|vogelfutter|vogeltrank|windspiel|windlicht|solarleuchte|solarlampe|solar.?licht|gartenzwerg|gartendeko|krautergarten|krauterbeet|krautertopf|blumenkasten/, ['outdoor', 'garten']],
     [/luftmatratze|schwimmreif|pool\b|planschbecken|strandtuch/, ['strand', 'sommer']],
     [/haarmaske|shampoo|haaroel|haarspulung|conditioner|haarkur/, ['beauty']],
     // Sommer / Ventilator
