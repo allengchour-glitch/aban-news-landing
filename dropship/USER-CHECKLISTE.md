@@ -167,3 +167,16 @@ Trockenlauf der Spam-Moderation ergab: **FB-Token ungültig/abgelaufen** (`OAuth
 - Als GitHub-Secrets: `FB_PAGE_ACCESS_TOKEN` (+ `FB_PAGE_ID`), `IG_ACCESS_TOKEN` (+ `IG_USER_ID`) — oder `META_ACCESS_TOKEN`.
 - Danach läuft: ✅ Auto-Post FB/IG + ✅ Spam-Moderation (`social-comment-moderate.yml`, 3×/Tag). Test: Workflow „Social Spam-Moderation" → dry_run=true.
 - Sofort & ohne Token: Metas eingebaute Filter (IG → Kommentare → manueller Filter + „Links ausblenden"; FB → Moderationshilfe/Keyword-Blockliste).
+
+## 📋 To-do MORGEN (2026-08-07)
+**Deine Klicks (je 2–5 Min):**
+1. **Google Merchant Center:** Ziel-Land auf NUR Schweiz stellen → gibt die «Missing shipping info»-Produkte frei (#1 Gratis-Traffic-Hebel!)
+2. **Shop-App-Profil** (Admin → Vertriebskanäle → Shop): Logo + Banner + Slogan setzen; dabei in Einstellungen → Allgemein die Shop-Beschreibung «…und nach Deutschland» → «…in die ganze Schweiz» ändern
+3. **Search & Discovery App:** Filter «Availability»→«Verfügbarkeit», «Price»→«Preis» umbenennen + Filter für Farbe/Grösse aktivieren (mein Theme-Fix deckt die Labels ab, aber sauber ist sauber)
+4. **Dameco-Anfrage** in Gmail absenden (Entwurf liegt bereit) · Shopcom-Postfach auf Freischaltung prüfen
+5. **Pinterest:** Claim auf Logo-Konto umziehen (blaues Konto: Claim entfernen)
+6. **Shopify Admin → Marketing → Automationen:** «Warenkorbabbruch»-Automation aktivieren
+7. Optional: Kimi aufladen (platform.moonshot.ai) · CH-Telefonnummer fürs Trust-Signal prüfen (Sipcall/Peoplefone)
+
+**Läuft automatisch (ich):** CJ-Grind + Varianten-Backfill sobald CJ-Punkte resetten · Google-Metafelder fertigsetzen ·
+Neuheiten/Blitz-Rotation · weitere Fehler-Sweeps (TWS-Kopfhörer-Dedup, Titel-Polish, 6 offene Kostüm-Gruppen)
