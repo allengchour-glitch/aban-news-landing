@@ -2975,3 +2975,10 @@ NUR per exakter ID nach Einzel-Verifikation; bulk-Snapshot vor Massenaktionen is
   Beschreibung ehrlich (war: Philips/Marmor/Gorilla-Lampen = BigBuy-Relikte). Uhren-Titel-Restore nach eigener
   Wildcard-Panne (5 Uhren via bulk-Snapshot zurückbenannt). Pet-Tagger fertig (1'122 Produkte tag haustier).
 - Küche visuell sauber. Ehrlichkeits-Regel: Collection-Texte dürfen NUR nennen was aktiv ist.
+
+**2026-08-06 Haustierwelt-Ausbau (User «schöne haustier kollektion mit guter unterteilung»):**
+Haupt-Collection sub-haustier → «Haustierwelt» (1'239 Produkte, verlinkte Bereichs-Übersicht in Beschreibung).
+6 NEUE Unter-Collections (tag-basiert, code-getaggt via /tmp/pet_sub_tagger.py, alle 6 Publications):
+haustier-hunde(~535)/haustier-katzen(~425)/tier-leinen-kleidung(~321)/tierspielzeug(~192)/tier-naepfe-fuettern(~138)/
+tier-pflege-unterwegs(~44). Menü: 6 Unterpunkte unter Mehr & Sale > Haustier. Sub-Tags: sub-hund/sub-katze/
+sub-tierkleidung/sub-tierspielzeug/sub-futter/sub-tierpflege/sub-tiertransport — Importer können sie künftig direkt setzen.
