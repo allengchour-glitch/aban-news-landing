@@ -2999,3 +2999,9 @@ metafieldsSet-Batches (mm-google-shopping; gender aus damen/herren-Tags, sonst u
 → Gemini-Fallback. 8 CH-Conversion-Hebel erhalten; Status: Swissness-PDP ✅ (Delivery-Box), Zoll-FAQ ❌→✅ NEU
 (FAQ-Seite: «keine Zoll-/Einfuhrgebühren» + Versandherkunft transparent — CH-Freigrenze erklärt), CH-Lager-Empfehlungen
 ✅ (Blitz-Reihe Pos. 2), Rückgabe ✅. NUR-USER: echte CH-Telefonnummer im Shop, CH-Rücksendeadresse, Checkout-A/B.
+
+**2026-08-06 «nach Deutschland»-Fix per Theme (User «fix per port»):** shop.description ist per API NICHT schreibbar
+(GraphQL shopUpdate existiert nicht, REST PUT shop.json → 406). Der Text steckt aber in Homepage-Meta/OG/Twitter-Tags
+via snippets/meta-tags.liquid (og_description = page_description|shop.description) → Liquid-replace-Filter eingebaut:
+'in die Schweiz und nach Deutschland' → 'in die ganze Schweiz'. Damit sind SEO+Social sauber; das Feld im Admin
+(Shop-App-Kanal/Onboarding-Text) kann weiterhin nur der User ändern. Shop-Kanal-Publikation verifiziert (20/20 neueste).
