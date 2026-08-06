@@ -2845,3 +2845,16 @@ Collection blitzversand-schweiz (690573050241) durch CREATED_DESC→BEST_SELLING
 → die Reihe zeigt immer andere Produkte (User: «immer andere sachen projezieren»). State: /tmp/blitz_sort_idx.
 Ausserdem: Parfüm-Reihe (pl_beauty) + Menü auf parfum-duefte umgebogen (Damen-/Herrenparfüm-Collections = nur 1-2 aktiv,
 BigBuy-Rest zu Recht gedraftet, 0 wiederbelebbar).
+
+**2026-08-06 Filter-leer-Fix + Listen-Ansicht + Schmuck-Typen + Swiss-Edition-Drafts:**
+- ⚠️ LEHRE: **Shopify deaktiviert Storefront-Filter bei Collections >5000 Produkten** («Filter leer»-Meldung User).
+  neu-eingetroffen hatte 38'281 (Regel tag:dropship = ganzer Katalog!) → Regel neu: TAG=neuheit. NEU: `/tmp/neuheit_runner.sh`
+  (+/tmp/neuheit.py, in Keepalive-Set!) pflegt Tag `neuheit` = Produkte der letzten 7 Tage (~3'435), 2×/Tag. Filter gehen wieder.
+  damen-mode 7'745 aktiv = bleibt >5000 → Filter dort platformbedingt NICHT möglich (ehrlich kommuniziert).
+- premium-schmuck: 105 Produkte von Typ «Schmuck» auf echte Typen (Ohrringe/Halskette/Armband/Ring/…) umtypisiert →
+  Produkttyp-Filter zeigt jetzt echte Auswahl statt 1 Ring.
+- 7 «· Swiss Edition»-POD-Kleider (Hoodie/Sweatshirt/Shirt/Tank/Jogger) GEDRAFTET (Tag mockup-defekt-draft) —
+  Mockups hatten schwarze ausgefranste Freisteller-Ränder (User: «passen nicht, nimm raus»).
+- Listen-Ansicht: 3. Umschalter in `snippets/grid-density-controls.liquid` (value=list, eigenes SVG) + CSS
+  `[product-grid-view='list']` (1 Spalte, Bild 200px links, Details rechts). Kompakt-Ansicht zeigt seit heute Preise
+  (blocks/_product-card-gallery.liquid) + Filter-Labels DE via theme.liquid-Skript.
