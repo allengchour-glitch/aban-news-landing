@@ -2928,3 +2928,8 @@ luxGrid5-CSS (Kollektions-/Suchseiten 5 Spalten default). (5) Rotation erweitert
 hatte absurde Alt-Beschreibung («Tierbetten»!) → neutral neu geschrieben + SEO. Verifiziert: Neuheiten-Filter
 funktionieren wieder (2'523 Artikel), Suche zeigt 5 Spalten/DE-Filter/Herzen/Listen-Icon, Merkliste-Seite läuft.
 Notiert für später: einzelne Maschinen-Titel («Luminous Sonne Mond Stern…») könnten eine Titel-Polish-Runde brauchen.
+
+**2026-08-06 «Ähnliche Produkte»-Fix:** Produktseiten-Empfehlungssektion war IMMER LEER (grosse weisse Fläche) —
+recommendation_type stand auf `complementary` (liefert nur manuell gepflegte Ergänzungsprodukte aus S&D-App = 0).
+Auf `related` umgestellt (algorithmisch, API liefert 8 Treffer) + Überschrift «Ähnliche Produkte». Reviews-Duplikat-Fix
+visuell bestätigt (nur noch 1× Kundenbewertungen).
