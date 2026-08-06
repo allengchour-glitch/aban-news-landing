@@ -2873,3 +2873,9 @@ Ankündigungs-Slot 5 dazu. ⚠️ Fund: automatischer Gratis-Versand stand noch 
 **2026-08-06 Kinder & Baby:** Collection sub-baby-kids «Baby & Kids»→«Kinder & Baby» umbenannt, Regeln erweitert
 (+tag kinder/spielzeug), SEO auf CHF 65 korrigiert (stand noch 50!). Menü «Mehr & Sale > Kinder» zeigte nur auf
 spielzeug (951) — jetzt auf sub-baby-kids (1'570) mit Unterpunkten Spielzeug & Plüsch + Kinderschuhe.
+
+**2026-08-06 Polish-Sweep:** Alle 75 Menü-Collections geprüft (0 leer/unpubliziert). Startseiten-Reihen validiert —
+Fund: premium-geschenke (Geschenkideen-Reihe) hatte Regel geschenk+premium = nur 1 aktives Produkt (BigBuy-Draft-Falle
+wie Parfüm!) → Regel auf tag:geschenk allein = 4'699 Produkte, Top10 aktiv. Screenshot-Verify: DE-Filter, Herzen,
+Merkliste-Menü, Listen-Icon alle live. Produkttyp-Dubletten Gadget(713)→Gadgets, Accessoire→Accessoires gemerged.
+Theme-Sweep «CHF 50»: sauber. Regel-Lehre: Reihen-Collections regelmässig auf «aktiv in Top10» prüfen, nicht nur count.
