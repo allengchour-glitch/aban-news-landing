@@ -3005,3 +3005,8 @@ metafieldsSet-Batches (mm-google-shopping; gender aus damen/herren-Tags, sonst u
 via snippets/meta-tags.liquid (og_description = page_description|shop.description) → Liquid-replace-Filter eingebaut:
 'in die Schweiz und nach Deutschland' → 'in die ganze Schweiz'. Damit sind SEO+Social sauber; das Feld im Admin
 (Shop-App-Kanal/Onboarding-Text) kann weiterhin nur der User ändern. Shop-Kanal-Publikation verifiziert (20/20 neueste).
+
+**2026-08-06 Sweep #7:** To-do-Liste 07.08. in USER-CHECKLISTE. Englisch-Titel-Scan über 27k: nur 4 Treffer
+(SEO-Engine wirkt) → 2 gefixt (Cord-Mantel, Chupa Chups — war zugleich Duplikat, SKU-identisch, schon gedraftet).
+TWS-Dedup: 7 generische 15.90-In-Ears gedraftet (sortiment-dedup-draft), kuratierte «Name»-Serie (AirBeat…) bleibt.
+Medien-Bulk 27'109: 0 Hauptbilder nicht-READY. GMC-Metafelder laufen weiter.
