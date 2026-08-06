@@ -3016,3 +3016,9 @@ Produkte passend, 1× Reviews). Halloween: Fetisch-artige «Latex-Haube» auf Po
 Kuscheldecke zeigte HAPPY-EASTER-Motiv → Tag weg + Titel «Oster-Print». Schweizer Editionen: 4 cj-real-Produkte
 mit Fake-«Schweizer»-Titel (Uhr/Pullover/Sandalen/Geldbörse — Swissness-Risiko!) → Titel bereinigt, fallen via
 Titel-Regel aus der Collection. Damen-Mode: sauber. REGEL: «Schweizer» im Titel NUR für echte CH-Bezug-Ware (POD/Fortura).
+
+**2026-08-06 Sweep #9:** Abandoned Checkouts seit 04.08.: 0 (nichts zu recovern). Impressum verifiziert vollständig
+(Fehlalarm). Such-Suggest funktioniert. 5 der 6 CK-Kollisions-Modelle gelöst (Duplikat-Produkt je gedraftet) →
+3 weitere Modelle fusioniert (Mr Crazy L/XL/152, Umhang Hexe 3 Grössen, Marsupilami 6 Grössen). Offen: CK4237
+Bad Boy (3-fach-Kollision über mehrere Produkte, manuell). Hinweis Performance: Startseiten-HTML ~5MB (25 Sektionen)
+— möglicher späterer Optimierungspunkt.
