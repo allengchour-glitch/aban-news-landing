@@ -2838,3 +2838,10 @@ Trend-Kategorien-Liste Pos. 2. Menü-Erwähnungen mitumbenannt (falls vorhanden)
 - **311 Produkte mit englischen Spec-Blöcken** («Product information:», «Package includes», «1 x …») →
   Gemini-Übersetzungs-Runner /tmp/desc_engl_runner.sh (Wachen: Längen-Ratio 0.6–1.8, <ul>-Zahl gleich,
   kein KI-Meta-Gerede; Ledger /tmp/desc_engl_done.txt).
+
+**2026-08-06 Startseite Blitzversand:** Reihe `product_list_blitz` auf Position 2 (direkt unter Hero) verschoben.
+NEU: `/tmp/blitz_rotate.sh` (Dauerläufer, in Keepalive-Restart-Set aufnehmen!) rotiert alle 6h die Sortierung der
+Collection blitzversand-schweiz (690573050241) durch CREATED_DESC→BEST_SELLING→ALPHA_ASC→PRICE_DESC→ALPHA_DESC→CREATED
+→ die Reihe zeigt immer andere Produkte (User: «immer andere sachen projezieren»). State: /tmp/blitz_sort_idx.
+Ausserdem: Parfüm-Reihe (pl_beauty) + Menü auf parfum-duefte umgebogen (Damen-/Herrenparfüm-Collections = nur 1-2 aktiv,
+BigBuy-Rest zu Recht gedraftet, 0 wiederbelebbar).
