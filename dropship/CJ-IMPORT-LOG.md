@@ -2864,3 +2864,8 @@ BigBuy-Rest zu Recht gedraftet, 0 wiederbelebbar).
 Mobile hat jetzt auch das Listen-Icon. NEU Merkliste (localStorage `lux_wish`): Herz-Button auf jeder Karte
 (blocks/_product-card-gallery.liquid + JS/CSS in theme.liquid), Seite /pages/merkliste (sections/lux-merkliste.liquid +
 templates/page.merkliste.json, Page 699965571457), Menüpunkt «♥ Merkliste». Einkaufs-Button = bestehender Quick-Add (Tasche).
+
+**2026-08-06 Mengenrabatt + Versand-Angleich:** NEU automatischer «Mengenrabatt — 10% ab 3 Artikeln»
+(DiscountAutomaticNode/2363896299905, kombinierbar mit Versandrabatt, ohne Code sichtbar im Warenkorb) +
+Ankündigungs-Slot 5 dazu. ⚠️ Fund: automatischer Gratis-Versand stand noch auf CHF 50, Shop kommuniziert überall 65
+→ auf 65 angeglichen (Node 2338579513729). Bestehende Mengen-Codes (BUNDLE20 ab 80, BEAUTYDUO 2+) bleiben.
