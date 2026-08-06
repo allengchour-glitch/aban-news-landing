@@ -2906,3 +2906,9 @@ Produkte zeigten sinnlose Zeile «Variante: Standard» → luxVarHide-Skript in 
 1 Option «Standard» aus. (3) Blitz-Rotation: ALPHA/PRICE_DESC zeigten teure Kinderautos/Skelette als ersten
 Eindruck → SORTS auf CREATED_DESC/BEST_SELLING/CREATED reduziert. Neueste 100 Importe: 0 bildlos/0 FAILED/0 CJK.
 Titel-Leak-Scan: sauber (Ref./The = Reflex/Thermo-Fehltreffer, 16c-Falle bestätigt).
+
+**2026-08-06 Grössen-Merge (User «1 bild mehrere auswahl»):** 28 Fortura-Familien (76 grössen-gesplittete
+Einzel-Listings «· Gr. X») zu je 1 Produkt mit Grösse-Varianten fusioniert (/tmp/size_merge.py, productSet:
+Preis/SKU/EAN/Bestand je Variante, tracked DENY, Location-Qty). Verlierer-Listings → DRAFT + Tag merged-in-<keeper>.
+Muster wie Good-Vibes-Merge, jetzt automatisiert. Offen: Farb-Familien (gleiche Ware, andere Farbe = separate Titel)
+noch nicht gemerged — braucht per-Farbe-Medien-Zuordnung (wie Good-Vibes manuell).
