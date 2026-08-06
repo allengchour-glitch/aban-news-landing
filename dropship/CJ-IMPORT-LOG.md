@@ -2987,3 +2987,10 @@ sub-tierkleidung/sub-tierspielzeug/sub-futter/sub-tierpflege/sub-tiertransport �
 (1'485 Typ-Elektronik aktiv, CJ-Gadgets). Werkzeug = BigBuy-Friedhof (elektriker 0, elektrowerkzeug 1, messwerkzeug 1,
 koffer 1, handwerkzeug 6 aktiv) → 6 tote Werkzeug-Collections vom Online-Store depubliziert. Für echtes Werkzeug/
 Marken-Elektronik braucht es Lieferant: Shopcom (angemeldet, wartet), Dameco (Gmail-Entwurf bereit), Alltron (braucht HR).
+
+**2026-08-06 Doppelpost-Dedup + Google Merchant:** User fand Katzentoiletten doppelt → Analyse: 151 Titel+Preis-
+Duplikat-Gruppen (195 überzählig). LEHRE: Dedup-Schlüssel = VARIANT-SKU (Fortura-Doppel-Import: gleiche SKU je 1×
+mit/ohne EAN = echtes Duplikat; verschiedene SKUs bei gleichem Titel = Farben, NICHT draften!). /tmp/sku_dedup.py
+draftet Überzählige (Keep: mit Barcode/meiste Medien), Tag duplikat-auto-draft. Google Merchant: Bulk-Scan 27'109
+Aktive → condition fehlte bei 25'633 (!), age_group/gender bei ~2'900 → /tmp/gmc_metafields.py setzt alle via
+metafieldsSet-Batches (mm-google-shopping; gender aus damen/herren-Tags, sonst unisex).
