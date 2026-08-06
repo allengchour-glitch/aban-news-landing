@@ -2890,3 +2890,11 @@ code≠200-Antworten von «leerem Ergebnis» unterscheiden, sonst frisst sie das
 **Kollektions-Dedup:** 4 überlappende Lade-Kollektionen → nur «Ladegeräte & Powerbanks» (elektronik-laden, 556) bleibt
 publiziert; ladegeraete/handy-laden/handy-powerbanks vom Online-Store genommen (waren in keinem Menü, nur Such-Duplikate).
 Topseller-Reihe 7→15 kuratierte Review-Gewinner. Shop hat 497 Collections — weitere Dup-Sweeps lohnen.
+
+**2026-08-06 Fehler-Sweep #2 (Collections-Dedup gross):** 497 Collections analysiert → 26 Titel-Dubletten-Gruppen +
+3 leere. 29 depubliziert (Online-Store): sub-uhren(1625!), beauty-duefte(1290), fitness(852), uhren-herren/damen-uhren,
+marke-adidas/puma/reebok/under-armour/gant, fortura-halloween, schuhe-stiefel, damen-jacken, bastel-diy uvm. —
+Schutzliste = 96 Handles (Menü+Startseite). Schuh-Falle: damenschuhe/herrenschuhe UND damen-schuhe/herren-schuhe waren
+BEIDE im Menü → Menü konsolidiert auf damen-schuhe/herren-schuhe, Dubletten depubliziert. Leere (silvester/loreal/
+black-friday) depubliziert — ⚠️ black-friday im Nov WIEDER publizieren (BF-Playbook)! Preis-Check: <5CHF=nur POD-Sticker
+(ok), >500=Animatronics/Kinderautos (ok), 0 Preis-0-Produkte. Regel: Collections-Dedup periodisch via norm-Titel.
