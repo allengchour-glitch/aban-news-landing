@@ -2962,3 +2962,6 @@ vorsichtige spätere Runden; TWS-Kopfhörer-Cluster (10×) Dedup-Kandidat.
 **2026-08-06 Patrouille Teil 2:** Uhren-Beschreibung name-droppte Tissot/Citizen/Seiko/Certina — alle 0 aktiv
 (BigBuy gedraftet) → ehrlich neu geschrieben. 2 Uhren hiessen nur «Armband» → «…Armbanduhr». Küche sauber
 (⚠️ Beschreibung erwähnt Spülmaschinen/60cm-Geräte = auch Alt-BigBuy → bei nächster Text-Runde neutralisieren).
+⚠️ SELBST-FALLE BESTÄTIGT (2. Mal, nach Hängematte): Wildcard-Titel-Suche + Massen-Update OHNE per-Produkt-Check
+benannte 5 fremde Uhren um → via bulk_products.jsonl (Titel-Snapshot!) restauriert. REGEL VERSCHÄRFT: Titel-Updates
+NUR per exakter ID nach Einzel-Verifikation; bulk-Snapshot vor Massenaktionen ist die Lebensversicherung.
