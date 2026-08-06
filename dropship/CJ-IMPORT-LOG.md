@@ -2958,3 +2958,7 @@ vorsichtige spätere Runden; TWS-Kopfhörer-Cluster (10×) Dedup-Kandidat.
 - Haustier: Regel auf TAG haustier/pet + TYPE Haustierbedarf umgestellt; /tmp/pet_tagger.py taggt 1'122 echte
   Tierprodukte (inc/exc-Regex; Fallen gefunden: Halsband=Schmuck!, Kaninchen-Sandalen, Skibrille Katzenohren,
   Katzenauge-Nagelsticker). Cat-Eye-Schmuck/Brillen (3) enttaggt.
+
+**2026-08-06 Patrouille Teil 2:** Uhren-Beschreibung name-droppte Tissot/Citizen/Seiko/Certina — alle 0 aktiv
+(BigBuy gedraftet) → ehrlich neu geschrieben. 2 Uhren hiessen nur «Armband» → «…Armbanduhr». Küche sauber
+(⚠️ Beschreibung erwähnt Spülmaschinen/60cm-Geräte = auch Alt-BigBuy → bei nächster Text-Runde neutralisieren).
