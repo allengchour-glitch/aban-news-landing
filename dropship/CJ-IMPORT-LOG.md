@@ -3010,3 +3010,9 @@ via snippets/meta-tags.liquid (og_description = page_description|shop.descriptio
 (SEO-Engine wirkt) → 2 gefixt (Cord-Mantel, Chupa Chups — war zugleich Duplikat, SKU-identisch, schon gedraftet).
 TWS-Dedup: 7 generische 15.90-In-Ears gedraftet (sortiment-dedup-draft), kuratierte «Name»-Serie (AirBeat…) bleibt.
 Medien-Bulk 27'109: 0 Hauptbilder nicht-READY. GMC-Metafelder laufen weiter.
+
+**2026-08-06 Screenshot-Runde #8:** Wednesday-Merge visuell verifiziert (Grössen-Dropdown, CH-Lager-Box, Ähnliche
+Produkte passend, 1× Reviews). Halloween: Fetisch-artige «Latex-Haube» auf Pos. 1 → adult-draft; «Halloween»-
+Kuscheldecke zeigte HAPPY-EASTER-Motiv → Tag weg + Titel «Oster-Print». Schweizer Editionen: 4 cj-real-Produkte
+mit Fake-«Schweizer»-Titel (Uhr/Pullover/Sandalen/Geldbörse — Swissness-Risiko!) → Titel bereinigt, fallen via
+Titel-Regel aus der Collection. Damen-Mode: sauber. REGEL: «Schweizer» im Titel NUR für echte CH-Bezug-Ware (POD/Fortura).
