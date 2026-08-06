@@ -2994,3 +2994,8 @@ mit/ohne EAN = echtes Duplikat; verschiedene SKUs bei gleichem Titel = Farben, N
 draftet Überzählige (Keep: mit Barcode/meiste Medien), Tag duplikat-auto-draft. Google Merchant: Bulk-Scan 27'109
 Aktive → condition fehlte bei 25'633 (!), age_group/gender bei ~2'900 → /tmp/gmc_metafields.py setzt alle via
 metafieldsSet-Batches (mm-google-shopping; gender aus damen/herren-Tags, sonst unisex).
+
+**2026-08-06 Pro-Tipps-Runde (User «frage kimi»):** Kimi weiter gesperrt (insufficient balance, nur User kann laden)
+→ Gemini-Fallback. 8 CH-Conversion-Hebel erhalten; Status: Swissness-PDP ✅ (Delivery-Box), Zoll-FAQ ❌→✅ NEU
+(FAQ-Seite: «keine Zoll-/Einfuhrgebühren» + Versandherkunft transparent — CH-Freigrenze erklärt), CH-Lager-Empfehlungen
+✅ (Blitz-Reihe Pos. 2), Rückgabe ✅. NUR-USER: echte CH-Telefonnummer im Shop, CH-Rücksendeadresse, Checkout-A/B.
