@@ -3062,3 +3062,9 @@ add.js ✓. LEHRE: Menü-Links nach Locale-Änderungen IMMER auf /en/-Präfixe p
 - **Kollektions-Dublette:** fur-ihn («Herren-Mode», 2950) vs. herren-mode-sub (gleicher Titel, 40) → Sub umbenannt «Herren-Bekleidung».
 - **⚠️ Neue API-Falle: `media_count:0` ist KEIN gültiges Produktsuch-Feld** — Shopify ignoriert es still und liefert ALLE Produkte (productsCount capped 10000). Bildlos-QA nur über Bulk-Export/mediaCount client-seitig!
 - Neue Importe (764 seit 04.08.) stichprobengeprüft: 0 bildlos, 0 Preisfehler, 0 englische Titel. Menü-/Footer-Links sonst alle 200.
+
+## 2026-08-07 · Sweep #15 («oh suche noch mehr fehler»)
+- **Leere Filter-Spalte bei Gross-Kollektionen (>5000 = Shopify-Filter-Limit, z.B. Damen-Mode 7787):** «Filter»-Titel + leere linke Spalte sahen kaputt aus. Fix in theme.liquid (lux-empty-facets): `.facets-block-wrapper--vertical:not(:has(input,select))` ausblenden + Grid-Reset `.main-collection-grid{grid-column:2/var(--full-width-column-number)}` (Horizon shiftet sonst via `--facets-vertical-col-width:6` weiter). ⚠️ Cache-Lag beachten.
+- **Versand-Seite ↔ Hero-Widerspruch:** Seite sagte «CH 2-7 Werktage», Hero verspricht «CH-Lager 1–2 Tage» → Seite präzisiert: «Blitzversand-Artikel ab CH-Lager: 1–2 Werktage · übrige Lagerartikel: 2-7 Werktage».
+- **Homepage-Reihe 2 hiess nackt «Ventilatoren»** (product_list_schweiz zeigt Collection ventilatoren, Heading=Collection-Titel) → Collection umbenannt «Ventilatoren & Kühlung».
+- Geprüft & sauber: compareAt-Preise aller 3194 Neuheiten (0 kaputte Sale-Badges), Kinder-/Spielzeug-/Baby-Kollektionen ohne Adult/Waffen-Fehlgriffe, 0 ACTIVE mit duplikat-tag, 0 «· Gr.»-Suffix-Reste, keine neuen Warenkorbabbrüche seit 04.07., Order #1011 (03.08., 21.90) fulfilled. Merkliste-Seite ok.
