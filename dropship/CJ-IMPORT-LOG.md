@@ -3036,3 +3036,10 @@ geprüft (Marke in Beschreibung + 0 aktive Produkte = Lüge). Nur noch 2 Treffer
 herren-grooming (Philips) + herren-uhren (Citizen/Seiko) → ehrlich neu geschrieben. Beschreibungs-Hygiene damit durch.
 Polish #11b: 8 Maschinen-Titel per exakter ID bereinigt (Luminous→Leuchtzeiger, «Männerleuchtende Sternmechanische
 Uhr»→«Mechanische Herrenuhr Sternenhimmel», Analogie→Analog).
+
+**2026-08-07 Polish #12 — CJ-PUNKTE-BUDGET-ENTSCHEIDUNG:** Punkte waren mittags SCHON WIEDER weg. Verursacher:
+reviews_runner (4 Such-Strategien × Tausende Produkte für ~0 Ertrag — CJ hat fast nie Kommentare, Decke längst
+bestätigt). → **reviews_runner DEAKTIVIERT** (/tmp/reviews_runner.sh.disabled, aus Keepalive-Set genommen).
+Punkte-Budget gehört jetzt: Grind + Varianten-Backfill. Backfill-Patch: CJ-Fehler 1602001/1600200 (Produkt bei CJ
+gelöscht) → ledgern statt Endlos-Retry. Scans sauber: 0 Übersetzungs-Müll-Titel, 0 unglaubwürdige Streichpreise
+(compareAt>2.5×) über alle 234k Varianten.

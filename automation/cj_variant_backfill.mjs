@@ -118,7 +118,13 @@ async function cjGet(tok,path,params){ const qs=new URLSearchParams(params).toSt
       try{
         const cj=await cjGet(ctok,'/product/query',{pid:m[1]}); await sleep(CJ_SLEEP);
         if(cj?.code===16900500){ console.log('CJ-Punkte aufgebraucht → Abbruch (kein Ledger).'); process.exit(0); }
-        if(!cj?.data){ console.log('· CJ-Fehler code='+(cj?.code||'?')+' (kein Ledger):',p.title.slice(0,40)); continue; }
+        if(!cj?.data){
+          if(cj?.code===1602001||cj?.code===1600200){ // Produkt bei CJ geloescht/ungueltig → nie wieder versuchen
+            if(!DRY)fs.appendFileSync(LEDGER,pid+'\n');
+            console.log('· CJ-Produkt weg code='+cj.code+' (geledgert):',p.title.slice(0,40)); continue;
+          }
+          console.log('· CJ-Fehler code='+(cj?.code||'?')+' (kein Ledger):',p.title.slice(0,40)); continue;
+        }
         const cvs=(cj?.data?.variants||[]).map(parseVar).filter(v=>v.color||v.size);
         const curPrice=parseFloat(vs[0].price);
         const colors=[...new Set(cvs.map(v=>v.color).filter(Boolean))].map(deColor);
