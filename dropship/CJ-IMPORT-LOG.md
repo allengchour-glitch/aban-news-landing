@@ -3030,3 +3030,7 @@ ohne Bestand!); Typ Halsketten(3)→Halskette. Beauty·Premium: Beschreibung ehr
 «Muttertag-Box 2026»→«Geschenkbox Elegance». Schuhe: Beschreibung ehrlich (Rennstiefel-Lüge), Typ-Merges
 Damen-Schuhe/Damen-Sandalen→Damenschuhe(8), Herren-Schuhe→Herrenschuhe(7). MUSTER: Alt-Beschreibungen
 name-droppen gedraftete BigBuy-Marken — bei jeder Kollektion prüfen.
+
+**2026-08-07 Polish #11 (systematischer Marken-Lügen-Sweep):** Alle 75 Menü-Kollektionen gegen 43 Marken-Namen
+geprüft (Marke in Beschreibung + 0 aktive Produkte = Lüge). Nur noch 2 Treffer (Rest gestern schon gefixt):
+herren-grooming (Philips) + herren-uhren (Citizen/Seiko) → ehrlich neu geschrieben. Beschreibungs-Hygiene damit durch.
