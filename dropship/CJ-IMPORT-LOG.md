@@ -3043,3 +3043,11 @@ bestätigt). → **reviews_runner DEAKTIVIERT** (/tmp/reviews_runner.sh.disabled
 Punkte-Budget gehört jetzt: Grind + Varianten-Backfill. Backfill-Patch: CJ-Fehler 1602001/1600200 (Produkt bei CJ
 gelöscht) → ledgern statt Endlos-Retry. Scans sauber: 0 Übersetzungs-Müll-Titel, 0 unglaubwürdige Streichpreise
 (compareAt>2.5×) über alle 234k Varianten.
+
+**2026-08-07 Sweep #13 — 🚨 FOOTER WAR KOMPLETT TOT:** ALLE Footer-Seiten-Links hatten /en/-Präfix (englische
+Locale-URLs, en ist NICHT publiziert) → 11× 404: AGB, Impressum, Datenschutz, FAQ, Widerruf, Garantie, Tracking,
+Über uns, Cookie… (rechtlich kritisch — Impressum/AGB unerreichbar!). Footer-Menü komplett neu (14 Links, /pages/…,
+NEU: Versand & Lieferung, Rückgabe, Kontakt & Support). Duplikat-Seite versand-lieferzeiten depubliziert;
+data-sharing-opt-out war unpubliziert aber verlinkt → publiziert. Alle Links verifiziert 200. Warenkorb-Smoke-Test:
+add.js ✓. LEHRE: Menü-Links nach Locale-Änderungen IMMER auf /en/-Präfixe prüfen. Notiert: Warenkorb zeigt
+«- Standard»-Suffix bei Ein-Varianten-Produkten (Default-Title-Konversion = späterer Backfill-Ausbau).
