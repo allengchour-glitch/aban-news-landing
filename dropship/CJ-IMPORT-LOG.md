@@ -3022,3 +3022,11 @@ Titel-Regel aus der Collection. Damen-Mode: sauber. REGEL: «Schweizer» im Tite
 3 weitere Modelle fusioniert (Mr Crazy L/XL/152, Umhang Hexe 3 Grössen, Marsupilami 6 Grössen). Offen: CK4237
 Bad Boy (3-fach-Kollision über mehrere Produkte, manuell). Hinweis Performance: Startseiten-HTML ~5MB (25 Sektionen)
 — möglicher späterer Optimierungspunkt.
+
+**2026-08-07 Morgen-Sweep #10:** ✅ CJ-Punkte resettet (52k) — Grind+Backfill laufen wieder. Homepage-Rotation:
+CREATED (älteste zuerst) zeigte Taranteln/Clowns/Bierbong als ersten Eindruck → SORTS nur noch CREATED_DESC/
+BEST_SELLING. «Für Ihn»→«Herren-Mode» umbenannt + ehrliche Beschreibung (Chopard/Jaguar/Certina-Namedropping
+ohne Bestand!); Typ Halsketten(3)→Halskette. Beauty·Premium: Beschreibung ehrlich (Glättbürste/Haartrockner-Lüge),
+«Muttertag-Box 2026»→«Geschenkbox Elegance». Schuhe: Beschreibung ehrlich (Rennstiefel-Lüge), Typ-Merges
+Damen-Schuhe/Damen-Sandalen→Damenschuhe(8), Herren-Schuhe→Herrenschuhe(7). MUSTER: Alt-Beschreibungen
+name-droppen gedraftete BigBuy-Marken — bei jeder Kollektion prüfen.
