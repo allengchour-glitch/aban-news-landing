@@ -3034,3 +3034,5 @@ name-droppen gedraftete BigBuy-Marken — bei jeder Kollektion prüfen.
 **2026-08-07 Polish #11 (systematischer Marken-Lügen-Sweep):** Alle 75 Menü-Kollektionen gegen 43 Marken-Namen
 geprüft (Marke in Beschreibung + 0 aktive Produkte = Lüge). Nur noch 2 Treffer (Rest gestern schon gefixt):
 herren-grooming (Philips) + herren-uhren (Citizen/Seiko) → ehrlich neu geschrieben. Beschreibungs-Hygiene damit durch.
+Polish #11b: 8 Maschinen-Titel per exakter ID bereinigt (Luminous→Leuchtzeiger, «Männerleuchtende Sternmechanische
+Uhr»→«Mechanische Herrenuhr Sternenhimmel», Analogie→Analog).
