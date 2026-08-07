@@ -180,3 +180,5 @@ Trockenlauf der Spam-Moderation ergab: **FB-Token ungültig/abgelaufen** (`OAuth
 
 **Läuft automatisch (ich):** CJ-Grind + Varianten-Backfill sobald CJ-Punkte resetten · Google-Metafelder fertigsetzen ·
 Neuheiten/Blitz-Rotation · weitere Fehler-Sweeps (TWS-Kopfhörer-Dedup, Titel-Polish, 6 offene Kostüm-Gruppen)
+
+- [ ] **Popup-Timing (2 Min):** Shopify Admin → Forms → WELCOME10-Popup → Trigger von «sofort» auf **10–15 s Verzögerung** (oder Exit-Intent) stellen. Mobil verdeckt es sonst sofort Hero/Produkt — gerade bei Ad-Traffic auf Produktseiten kostet das Käufe.

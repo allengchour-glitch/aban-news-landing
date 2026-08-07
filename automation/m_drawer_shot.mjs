@@ -34,6 +34,11 @@ const p = await ctx.newPage();
 try{ await p.goto(URL, {waitUntil:'domcontentloaded', timeout:90000}); }catch(e){ console.log('nav:',e.message); }
 await p.waitForTimeout(6000);
 try{ await p.addStyleTag({ content:`[class*="cookie" i],[id*="shopify-pc" i]{display:none!important}` }); }catch{}
+// Newsletter-Popup gezielt schliessen (nicht CSS-hiden — sonst verschwindet auch der Cart-Drawer)
+try{ await p.locator('[aria-label*="chlie" i], [aria-label*="lose" i], .close-button').first().click({timeout:3500}); }catch{}
+try{ await p.mouse.click(349,250); }catch{} // Fallback: ×-Position des Forms-Popups
+try{ await p.keyboard.press('Escape'); }catch{}
+await p.waitForTimeout(1000);
 if(MODE==='menu'){
   const burger = p.locator('header button[aria-label*="enü" i], header .header-drawer, header summary, header button:has(svg)').first();
   try{ await burger.click({timeout:8000}); }catch(e){ console.log('click:',e.message); }

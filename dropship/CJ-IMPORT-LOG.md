@@ -3076,3 +3076,9 @@ add.js ✓. LEHRE: Menü-Links nach Locale-Änderungen IMMER auf /en/-Präfixe p
 - **Mobile-QA sonst sauber:** Kollektion (Suchleiste, Filter, 2er-Grid, Preise, Quick-ATC, Herzen) + Produktseite (ATC/Shop Pay, Lieferbox, Akkordeons, Ähnliche Produkte) einwandfrei deutsch.
 - **Tool neu: `automation/m_drawer_shot.mjs`** (Mobile-Interaktions-Shots: menu/cart/searchbar; POST-Bodies via postDataBuffer→Datei, nie als curl-Arg — Null-Byte-Falle).
 - ⚠️ Shopify ignoriert unbekannte Query-Params im Cache-Key — «?cachebust» erzwingt KEINEN frischen Render; 500er-Rate nur über wiederholte Messung erkennbar.
+
+## 2026-08-07 · Mobile-Polish-Runde 2 («polish mehr handy version»)
+- **Menü-Drawer mobil: einwandfrei** (9 Bereiche + ♥ Merkliste, kein Z-Index-Overlay, sauberes ×).
+- **Cart-Drawer mobil: rendert sauber deutsch** («Dein Warenkorb ist leer»-State mit Login-Hinweis + Weiter-einkaufen). ⚠️ Tool-Limitation: curl-Proxy ist cookielos → ATC-POST landet in anderer Session; echte Cart-Funktion war per cart/add.js-Smoke-Test (Cookie-Jar) schon verifiziert.
+- **📌 UX-Befund: WELCOME10-Popup (Shopify Forms) feuert mobil SOFORT beim Einstieg** und verdeckt Hero/Produkt — auf Produktseiten (Ad-Traffic!) kostet das Conversion. Empfehlung in USER-CHECKLISTE: Trigger auf ~10-15s Verzögerung oder Exit-Intent stellen (nur im Forms-Admin klickbar, keine API).
+- `automation/m_drawer_shot.mjs` gehärtet: Popup per Klick schliessen (CSS-Hide versteckte sonst auch den Cart-Drawer-Dialog), Koordinaten-Fallback fürs Forms-×.
