@@ -3051,3 +3051,14 @@ NEU: Versand & Lieferung, Rückgabe, Kontakt & Support). Duplikat-Seite versand-
 data-sharing-opt-out war unpubliziert aber verlinkt → publiziert. Alle Links verifiziert 200. Warenkorb-Smoke-Test:
 add.js ✓. LEHRE: Menü-Links nach Locale-Änderungen IMMER auf /en/-Präfixe prüfen. Notiert: Warenkorb zeigt
 «- Standard»-Suffix bei Ein-Varianten-Produkten (Default-Title-Konversion = späterer Backfill-Ausbau).
+
+## 2026-08-07 · Voll-Sweep #14 («suche noch mal alles ab»)
+- **🎃→⚡ Startseiten-Reihe 1 entgruselt:** Blitzversand-Reihe (Position 1!) zeigte Best-Seller der ch-lager-Ware = Halloween-Grusel (Tarantel, Killer-Clown-Skelett, Sensenmann, Bier-Kanüle) unter dem Premium-Hero. ch-lager ist 79% Fortura-Kostüme (2316/2942). Fix: 317 präsentable ch-lager-Produkte kuratiert getaggt `blitz-front` (Badesets/Plüsch ohne Maske/Taschen/Ballone/Schweizer Ed.; Ausschluss-Regex Grusel/Kostüm/Maske/Waffen), neue Smart-Collection **blitzversand-highlights** (691351716225, 6 Kanäle publiziert), Homepage-Reihe `product_list_blitz` darauf umgebogen, `/tmp/blitz_rotate.sh` rotiert jetzt die neue Collection (alte ID ersetzt, Runner neu gestartet). Voll-Sortiment bleibt unter /collections/blitzversand-schweiz im Menü.
+- **/en/-404-Falle Teil 2 (Hauptmenü!):** «Schweizer Editionen» + «Halloween» zeigten auf `/en/collections/…` = 404. Menü 310224093569 per menuUpdate gefixt (IDs behalten), beide 200 verifiziert. **Regel: Bei JEDEM Menü-Edit alle URLs auf /en/-Präfix prüfen.**
+- **404-Seite war englisch:** templates/404.json hatte hartkodiert «Page not found»/«Continue shopping»/«Discover something new» → deutsch übersetzt (Seite nicht gefunden / Weiter einkaufen / Entdecke etwas Neues).
+- **Babynest-Fix:** «Babybett im Uterus-Design» (Maschinen-Titel) → «Babynest aus reiner Baumwolle · ergonomisch & atmungsaktiv»; Hauptbild war englisches Werbe-Testbild (Fluoreszenz-Messgerät!) → echtes Produktbild nach vorn. Auch «Wärmegurt Taille & Uterus» → «…Taille & Unterleib».
+- **Sport-Uhr Active gedraftet:** kein Lieferanten-SKU + Hauptbild zeigt «For Porsche Design watchband»-Armbänder statt Uhr (Tags keine-lieferanten-ref, bild-mismatch). Swatch bb-V3401400 ist echte BigBuy-Markenware → bleibt, Preis 104.77→104.90.
+- **125 krumme BigBuy-Preise** (Reprice-Engine-Reste wie 56.74/39.67) aufwärts auf .90 gerundet (nie unter Kostenboden, da nur erhöht).
+- **Kollektions-Dublette:** fur-ihn («Herren-Mode», 2950) vs. herren-mode-sub (gleicher Titel, 40) → Sub umbenannt «Herren-Bekleidung».
+- **⚠️ Neue API-Falle: `media_count:0` ist KEIN gültiges Produktsuch-Feld** — Shopify ignoriert es still und liefert ALLE Produkte (productsCount capped 10000). Bildlos-QA nur über Bulk-Export/mediaCount client-seitig!
+- Neue Importe (764 seit 04.08.) stichprobengeprüft: 0 bildlos, 0 Preisfehler, 0 englische Titel. Menü-/Footer-Links sonst alle 200.
