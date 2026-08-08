@@ -714,7 +714,11 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     /* Schneelinie: 44 war zu hoch (halbe Kette blieb schneefrei), 34 dann zu tief —
        seit der Guertel bei r 300 liegt, sieht man vor allem die HOHEN Gipfel, und
        die waren fast vollstaendig weiss. 48 laesst dem Fels wieder zwei Drittel. */
-    var SCHNEE=48, WIESE=8;                      // Welthoehe: Schneelinie, Fusssaum
+    /* Schneelinie, vierter und letzter Wert. 44 zu hoch, 34 zu tief, 48 war
+       richtig — solange die Normalen falsch herum zeigten und ueberhaupt kein
+       Schnee lag. Mit korrekten Normalen deckt 48 die halbe Flanke zu. 60 mit
+       weichem 20-m-Uebergang laesst eine Kappe stehen und den Fels darunter. */
+    var SCHNEE=60, WIESE=8;                      // Welthoehe: Schneelinie, Fusssaum
     function rnd(i,k){var x=Math.sin(i*12.9898+k*78.233)*43758.5453;return x-Math.floor(x);}
     /* 🏔️ HOEHENFELD statt Kegel.
        Ein Kegel — auch verrauscht, geschert und ausgeflaert — bleibt EIN Gipfel
@@ -798,7 +802,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
         var fels=0.38+rnd(seed,5)*0.13+rnd(v2,seed+11)*0.06;
         fels*=0.88+0.24*Math.max(0,son);           // Exposition, milder
         var c0,c1,c2;
-        var schneeAn=(wy-SCHNEE)/14;               // Hoehe
+        var schneeAn=(wy-SCHNEE)/20;               // Hoehe, weicher Uebergang
         /* ⚠️ Mit 0,42 lag NIRGENDS Schnee. Der Grund steckt im neuen Profil: bei
            Exponent 1,45 sind die oberen Flanken um 60 Grad steil, die Normale hat
            dort ny ~ 0,45 — die Schwelle schnitt also genau die Gipfelregion weg,
