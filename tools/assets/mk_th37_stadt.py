@@ -492,16 +492,18 @@ def _wagen(prof, breite, lack, M, radstand, r_rad, tueren=()):
             # gedreht, dazu ein dunkles Radhaus dahinter — erst das gibt dem Rad Tiefe.
             flach(zyl(xr, s*(breite/2 - 0.115), r_rad, r_rad + 0.05, 0.03,
                       M["fuge"], 18, (math.pi/2, 0, 0)))
-            for k in range(9):
-                aa = math.pi*k/8
-                wl = box(xr + math.cos(aa)*(r_rad + 0.055), s*(breite/2 - 0.02),
-                         r_rad + math.sin(aa)*(r_rad + 0.055), 0.145, 0.10, 0.08, lack)
-                # ⚠️ Vorzeichen: ein Quader, um y mit ry gedreht, legt seine
-                # lange Achse auf (cos ry, -sin ry). Tangential heisst
-                # (-sin aa, cos aa) — daraus folgt ry = -(aa + pi/2), NICHT
-                # +(aa + pi/2). Mit dem falschen Vorzeichen standen die Segmente
-                # radial ab und der Radlauf sah aus wie ein Zahnrad.
-                wl.rotation_euler[1] = -(aa + math.pi/2)
+            # Dritter Anlauf am Radlauf, und der letzte:
+            #   1. Rohr bei y = breite/2 + 0,01, r 0,045 -> ragte 5,5 cm heraus und
+            #      stand als Drahtbuegel NEBEN dem Wagen.
+            #   2. Neun Quader tangential -> lasen sich als Zackenkranz, weil jedes
+            #      Segment eine eigene Silhouette hat.
+            #   3. Wieder ein Rohr, aber halb IM Blech: Mitte 4,5 cm innerhalb der
+            #      Flanke, Querschnitt 6 cm. Sichtbar bleiben 1,5 cm — eine weiche
+            #      durchgehende Wulst, genau wie an einem echten Kotfluegel.
+            rohr([(xr + math.cos(aa)*(r_rad + 0.055), s*(breite/2 - 0.045),
+                   r_rad + math.sin(aa)*(r_rad + 0.055))
+                  for aa in [math.pi*k/8 for k in range(9)]],
+                 0.06, lack, 10, True, "Radlauf")
         box((x0 + x1)/2, s*(breite/2 + 0.015), r_rad + 0.26,
             (x1 - x0)*0.74, 0.03, 0.05, M["chrom"])                  # Zierleiste
         for tx in tueren:                                            # Tuerfugen
