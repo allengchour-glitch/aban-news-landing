@@ -498,7 +498,7 @@ var WORLD_POIS=[
   [-33,86,"🏛️","Altstadt"],[68,68,"🌳","Grosser Park"],[96,14,"⛲","Brunnen-Park"],
   [98,-30,"🛝","Spielplatz"],[0,102,"🚉","Bahnhof"],[26,67,"🏪","Marktplatz"],
   [96,-33,"🏰","Villen Ost"],[-96,18,"🏰","Villen West"],[10,139,"⛵","Seepark"],[-232,0,"🌊","Meer"],
-  [172,0,"🏢","Gewerbe Ost"],[0,216,"🏟️","Sportpark"],[60,330,"🎡","Freizeitpark"],[-190,212,"🎢","Achterbahn"],[155,86,"🚡","Seilbahn"],[-74.5,148,"🌷","Kurpark"]];
+  [172,0,"🏢","Gewerbe Ost"],[0,216,"🏟️","Sportpark"],[60,330,"🎡","Freizeitpark"],[-190,212,"🎢","Achterbahn"],[155,86,"🚡","Seilbahn"],[-74.5,148,"🌷","Kurpark"],[190,190,"🏙️","Stadtviertel"]];
 var WORLD_SOLIDS=[];
 /* Gitter-Index (16 m Zellen): inSolid lief linear ueber ALLE Kollider und wird pro
    Bewegungsschritt jedes Bewohners/Autos gerufen. Mit den Landschafts-Hindernissen
@@ -3143,6 +3143,33 @@ setTimeout(function baueGebaeude(){
               {file:"th23_post.glb",h:8,w:15,d:11},
               {file:"th23_apotheke.glb",h:7,w:12,d:10},
               {file:"th23_polizeiwache.glb",h:8.5,w:16,d:12}]});
+    /* 🏙️ STADTVIERTEL SUEDOST — die Stadthaeuser und Fahrzeuge aus Charge 37.
+       Sie lagen bisher nur in models/, im Spiel sah sie niemand. Standort so
+       gewaehlt, dass `viertelFrei` zu allen bestehenden Vierteln Luft laesst:
+       Gewerbe Ost endet bei z = 75, Sportpark bei x = 90, Freizeitpark bei
+       z = 275. Anschluss an die Suedost-Ecke der Ringstrasse.
+       ⚠️ `bau()` skaliert auf die HOEHE — hier stehen die gemessenen Werte aus
+       models/TH5-ASSETS.md, nicht geschaetzte. */
+    var _sv = viertel({name:"Stadtviertel",x:190,z:190,w:110,d:90,achse:"x",boden:"platz",
+      anschluss:[112,118],abstand:15,luecke:16,rand:16,
+      bauten:[{file:"th37_altbau.glb",     h:16.40,w:11.4,d:10.9},
+              {file:"th37_eckhaus.glb",    h:13.40,w:10.7,d:11.5},
+              {file:"th37_reihenhaus.glb", h: 9.70,w: 6.8,d: 9.3},
+              {file:"th37_cafe.glb",       h: 6.74,w: 9.7,d:10.2},
+              {file:"th37_reihenhaus.glb", h: 9.70,w: 6.8,d: 9.3},
+              {file:"th37_altbau.glb",     h:16.40,w:11.4,d:10.9}]});
+    if(_sv){
+      /* Vier Wagen am Bordstein. Front zeigt bei diesen Modellen auf +x, also
+         rot=0 fuer die eine Fahrtrichtung und PI fuer die Gegenrichtung.
+         ohneSchutz=true: die Viertelstrasse ist keine der Hauptachsen, die
+         `wegVonStrasse` kennt — der Schutz wuerde die Wagen von der Fahrbahn
+         schieben, auf die sie gerade gehoeren. */
+      [["th37_limousine.glb",  1.44,-34,-3.0,0],
+       ["th37_kombi.glb",      1.70,-13,-3.0,0],
+       ["th37_sportwagen.glb", 1.18, 11, 3.0,Math.PI],
+       ["th37_lieferwagen.glb",2.50, 33, 3.0,Math.PI]].forEach(function(C){
+        bau(C[0],C[1],190+C[2],0,190+C[3],C[4],false,null,true);});
+    }
     viertel({name:"Sportpark Sued",x:0,z:216,w:180,d:84,achse:"x",boden:"rasen",
       /* 🐛 anschluss war [0,146] — die SEEMITTE. Der Verbinder endete als Asphalt-
          zunge samt Mittelstreifen und Laterne mitten im Wasser (User: „wasser?").
@@ -3176,7 +3203,11 @@ setTimeout(function baueGebaeude(){
               {file:"th33_kassenhaus.glb",h:4.7,w:5,d:5},
               {file:"th33_toilettenhaus.glb",h:4.5,w:8,d:6},
               {file:"th33_imbisswagen.glb",h:3.1,w:6,d:5},
-              {file:"th13_imbissbude.glb",h:3.6,w:6,d:5}]});
+              {file:"th13_imbissbude.glb",h:3.6,w:6,d:5},
+              /* 🎯 Schiessbude aus Charge 37 — familienfreundlich: Klappziele,
+                 Blechdosen, Budengewehre mit Korkkugel. `tuer:false`, weil man
+                 an die Theke tritt und nicht hineingeht. */
+              {file:"th37_schiessbude.glb",h:3.3,w:5.2,d:3.2,tuer:false}]});
     /* Park-Ausstattung entlang der Hauptachse: Wegweiser, Plan, Beete, Laternen */
     setTimeout(function parkDeko(){
       var PX=60,PZ=330;
