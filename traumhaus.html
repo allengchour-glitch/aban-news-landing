@@ -3305,13 +3305,18 @@ setTimeout(function baueGebaeude(){
       for(var i=0;i<1500;i++){
         var a2=(i*2.399963)%6.283, rr=146+((i*37)%64)+((i*13)%7)*0.4;
         var wx=Math.cos(a2)*rr, wz=Math.sin(a2)*rr;
-        if(wx<-130&&Math.abs(wz)<180)continue;                 // Meer
+        if(wx<-118&&Math.abs(wz)<184)continue;                 // Meer UND Sandstrand
         /* ⚠️ Der erste Guertel lag bei r 182…212 — und war unsichtbar, weil die
            BERGFUESSE bis r 132 nach innen reichen. Die Baeume standen im Fels.
            Jetzt weiter innen und explizit gegen die gemeldeten Fuesse geprueft. */
         var imFels=false, BB=window._berge||[];
         for(var m9=0;m9<BB.length;m9++){
-          if(Math.hypot(wx-BB[m9].x,wz-BB[m9].z)<BB[m9].r+3){imFels=true;break;}}
+          /* r*0.80 statt des vollen Fusses: die aeussersten 20 % des Kegelfusses
+             sind flach ausgeflaert, dort steht ein Baum wie an einem Hang. Mit
+             dem vollen Radius blieb fast nichts uebrig — die Fuesse reichen bis
+             r 102 nach innen und der Guertel waere leer geblieben. Genau so
+             sieht eine Baumgrenze aus: der Wald steigt ein Stueck mit. */
+          if(Math.hypot(wx-BB[m9].x,wz-BB[m9].z)<BB[m9].r*0.80){imFels=true;break;}}
         if(imFels)continue;
         var frei=true;
         for(var q=0;q<VIERTEL.length;q++){var v=VIERTEL[q];
