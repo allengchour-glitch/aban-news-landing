@@ -772,13 +772,13 @@ Wagen und eine Kirmesbude.
 | `th37_eckhaus.glb` | 10,71 × 11,47 × 13,40 | 17 140 | Rundecke mit Turmdach, Ladenfront, Markise, Ladenschild, Fensterläden |
 | `th37_reihenhaus.glb` | 6,74 × 9,22 × 9,70 | 14 132 | Giebel zur Straße, Ziegeldach, Läden, Rinne, **Raster x += 6,00** |
 | `th37_cafe.glb` | 9,64 × 10,17 × 6,74 | 16 336 | Markise, Ladenschild, 4 Tische mit Schirmen, Pflanzkübel |
-| `th37_limousine.glb` | 4,60 × 2,14 × 1,44 | 2 816 | viertürig, Front auf **+x** |
-| `th37_kombi.glb` | 4,76 × 1,94 × 1,70 | 3 084 | durchlaufende Dachlinie, Reling |
-| `th37_sportwagen.glb` | 4,30 × 2,14 × 1,18 | 3 128 | Fastback, Heckflügel |
-| `th37_lieferwagen.glb` | 5,24 × 2,30 × 2,50 | 3 516 | Kasten, Schiebetür, Flügeltüren |
+| `th37_limousine.glb` | 4,61 × 2,14 × 1,44 | 13 360 | viertürig, Front auf **+x** |
+| `th37_kombi.glb` | 4,77 × 1,96 × 1,70 | 13 628 | durchlaufende Dachlinie, Reling |
+| `th37_sportwagen.glb` | 4,31 × 2,14 × 1,18 | 13 240 | Fastback, Heckflügel |
+| `th37_lieferwagen.glb` | 5,25 × 2,30 × 2,50 | 13 628 | Kasten, Schiebetür, Flügeltüren |
 | `th37_schiessbude.glb` | 5,16 × 3,13 × 3,30 | 10 752 | Klappziele, Dosen, zwei Budengewehre |
 | `th37_wasserpistole.glb` | 0,77 × 0,18 × 0,50 | 2 384 | Spielzeug-Requisite |
-| `th37_strassenzug.glb` | 50,40 × 20,17 × 16,40 | 121 292 | **Maßstabs-Test**, nur aus den Teilen oben |
+| `th37_strassenzug.glb` | 50,40 × 20,17 × 16,40 | 162 604 | **Maßstabs-Test**, nur aus den Teilen oben |
 
 Generator: `tools/assets/mk_th37_stadt.py` · Werkzeug: `tools/assets/th_werkzeug.py`.
 Alle elf: zmin = 0,000. **Fahrzeuge zeigen mit der Front auf +x**, nicht auf +y — sie
@@ -806,6 +806,29 @@ Die erste Fassung war korrekt, aber karg. Ergänzt wurden **Fensterläden** mit 
 Rhythmus und eine zweite Tiefenstufe. Und ein Dach als glatte Fläche ist die größte
 einzelne Schwachstelle — es ist die zweitgrößte sichtbare Fläche am Haus und trägt
 sonst keinerlei Maßstab.
+
+### 🚗 Dritter Durchgang: Zierrat an den Fahrzeugen
+
+Speichenfelgen, Radläufe, Chrom-Zierleiste, Türfugen mit Griffen, Kühlergrill, runde
+Scheinwerfer mit Chromring. Der Zierrat sitzt in `_wagen()`, damit jede Verbesserung
+sofort allen vier zugutekommt — die Form steckt allein im übergebenen Seitenprofil.
+Speichen sind dabei der Unterschied zwischen „Rad" und „schwarze Scheibe": eine glatte
+Felge liest sich aus jeder Entfernung als Loch.
+
+> 🛞 **Der Radlauf brauchte drei Anläufe** — er steht hier, weil das Muster übertragbar
+> ist. (1) Ein Rohr bei y = Breite/2 + 0,01 mit r = 0,045 ragte 5,5 cm heraus und stand
+> als **Drahtbügel neben** dem Wagen. (2) Neun tangential gedrehte Quader lasen sich als
+> **Zackenkranz**, weil jedes Segment eine eigene Silhouette hat — und beim ersten
+> Versuch stand das Vorzeichen der Drehung falsch (ein um y mit `ry` gedrehter Quader
+> legt seine lange Achse auf `(cos ry, −sin ry)`; tangential heißt `(−sin a, cos a)`,
+> also `ry = −(a + π/2)`). (3) Wieder ein Rohr, aber **halb im Blech**: Mitte 4,5 cm
+> innerhalb der Flanke, Querschnitt 6 cm, sichtbar bleiben 1,5 cm. Eine weiche
+> durchgehende Wulst, wie an einem echten Kotflügel.
+
+> ⚠️ **Radhaus-Scheibe unter dem Boden.** Die dunkle Scheibe hinter dem Reifen hatte
+> Radius `r_rad + 0,05` auf Höhe `r_rad` — also 5 cm **unter** z = 0 (gemessen zmin
+> −0,050 bei allen vier Wagen). Sie zeigt nur den Spalt hinter dem Reifen und muss
+> darum knapp **kleiner** als das Rad sein.
 
 ### 🔧 Fünf Fehler, die erst der Render gezeigt hat
 
