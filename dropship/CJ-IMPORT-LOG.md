@@ -3091,3 +3091,13 @@ Systematischer Validator über 22 Menü-Kategorien (MUSS-/VERBOTEN-Regex pro Kol
 - **Ballerinas-Kollektion** enthält per Regel bewusst Loafers/Mokassins → Titel ehrlich: «Ballerinas, Flats & Loafers».
 - **Als korrekt verifiziert (keine Aktion):** Uhren-«Armbänder» sind Uhrenband-Zubehör/Tracker (gehören dazu), Pendants in Halsketten ok, «Jupe» ist Schweizer Rock-Wort, Heels/Mules/Pantoletten/Flip-Flops = Schuhe (Validator-Lücke, kein Shopfehler), Knöchel-Schmuck (Fusskettchen) bleibt in Armbändern.
 - **Lehre:** Uppercase-Guards wie \bROCK\b funktionieren NICHT mit re.I — Guard muss ohne IGNORECASE laufen oder anders formuliert sein.
+
+## 2026-08-08 · Kategorie-Sweep Runde 2 («früf weiter auf alle fehler»)
+Weitere 22 Menü-Kategorien validiert (Bekleidung/Accessoires/Hobby, /tmp/cat_misfits2.json). Regel-Fallen gefixt:
+- **Geschenkverpackung:** TITLE-Regel «Organza» zog Givenchy-Parfüm ORGANZA + Organza-BLUSE + Organza-SCHAL rein; «Schleife» zog Kleider «mit Schleife». Beide Regeln raus (ersetzt durch «Geschenkschleife»), echte Dekostoff-Organza per Tag `geschenkverpackung` gehalten. → 33 statt 40 Produkte, sauber.
+- **Wandern & Trekking:** «Schlafsack»-Regel zog BABY-Schlafsäcke, Hundebett-Schlafsack, Seidenstrumpf-Schlafsack → Regel jetzt «Camping-Schlafsack», 3 echte Camping-Schlafsäcke per Tag `wandern` gehalten. → 142 Produkte.
+- **Mützen & Schals:** «Poncho»-Regel zog Fasnacht-Kostüme (Zombie/Löwe/Biene/Voodoo-Poncho) → Regel raus, 2 Mode-Ponchos (Batik, Stillponcho) per Tag gehalten. Plüsch-Esel + Satin-Kostümweste per Titel-Fix von der «Halstuch»-Regel befreit.
+- **Herren-Pullover:** «Herren Rundhals»-Regel zog T-SHIRTS → verengt auf «Herren Rundhals-Strick».
+- **T-Shirts & Tops:** 2 «Camisole-Kleid» → «Trägerkleid» umbenannt (raus aus Tops, korrektes Deutsch).
+- **Fitness & Training** (TAG fitness) enthält bewusst Outdoor/Camping-Ware → Kollektion ehrlich umbenannt «Sport, Fitness & Outdoor».
+- **Fehlalarme bestätigt korrekt:** Hoodies in «Herren-Jacken & Hoodies» (Kollektionstitel sagt es), Adidas-Fussballschuhe im Fanshop, Guilty-Pleasure-Fetish-Mode in Dessous (18+-Zone), Edelstein/Ear-Cuffs/Manschettenknöpfe in Premium-Schmuck.
