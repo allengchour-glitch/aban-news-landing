@@ -1,0 +1,62 @@
+import json,subprocess,time,os,io,re
+from PIL import Image
+TOK=open("/tmp/cj_shop_token.txt").read().strip()
+def gql(q,v=None):
+    p=json.dumps({"query":q,"variables":v or {}})
+    for _ in range(4):
+        r=subprocess.run(["curl","-s","--max-time","60","https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json","-H","X-Shopify-Access-Token: "+TOK,"-H","Content-Type: application/json","-d",p],capture_output=True,text=True)
+        try:
+            d=json.loads(r.stdout)
+            if "data" in d: return d
+        except Exception: pass
+        time.sleep(3)
+    return {}
+def fetch(url):
+    try:
+        r=subprocess.run(["curl","-sL","--max-time","25",url.split("?")[0]],capture_output=True)
+        if len(r.stdout)<500: return None
+        return Image.open(io.BytesIO(r.stdout)).convert("L")
+    except Exception: return None
+def textscore(im):
+    if im is None: return 999
+    im=im.resize((400,400)); px=im.load(); rows=0
+    for y in range(0,400,2):
+        runs=0; dark=0; prev=False
+        for x in range(0,400,2):
+            d=px[x,y]<110; dark+=d
+            if d and not prev: runs+=1
+            prev=d
+        if runs>=8 and dark<140: rows+=1
+    return rows
+Q='''query($c:String){products(first:50,after:$c,query:"status:ACTIVE"){pageInfo{hasNextPage endCursor}
+ nodes{id title media(first:6){nodes{id ... on MediaImage{image{url}}}}}}}'''
+state="/tmp/textbild_cursor.txt"
+cur=(open(state).read().strip() or None) if os.path.exists(state) else None
+sc=hit=fix=0
+log=open("/tmp/textbild_hits.txt","a")
+while True:
+    d=gql(Q,{"c":cur}); pg=(d.get("data") or {}).get("products")
+    if not pg: break
+    for p in pg["nodes"]:
+        sc+=1
+        ms=[m for m in p["media"]["nodes"] if m.get("image")]
+        if len(ms)<2: continue
+        s0=textscore(fetch(ms[0]["image"]["url"]))
+        if s0<8: continue
+        hit+=1
+        best=None;bs=s0
+        for m in ms[1:5]:
+            s=textscore(fetch(m["image"]["url"]))
+            if s<bs: bs=s; best=m
+            if s<=1: break
+        if best and bs<=3:
+            r=gql('mutation($id:ID!,$m:[MoveInput!]!){productReorderMedia(id:$id,moves:$m){userErrors{message}}}',
+                  {"id":p["id"],"m":[{"id":best["id"],"newPosition":"0"}]})
+            if not (r.get("data") or {}).get("productReorderMedia",{}).get("userErrors"):
+                fix+=1
+                log.write(f'{p["id"]}\t{s0}->{bs}\t{p["title"][:60]}\n'); log.flush()
+            time.sleep(0.2)
+    if not pg["pageInfo"]["hasNextPage"]: break
+    cur=pg["pageInfo"]["endCursor"]; open(state,"w").write(cur)
+    if sc%200<50: print(f"gescannt {sc} | Text-Hauptbilder {hit} | umsortiert {fix}",flush=True)
+print(f"FERTIG: {sc} gescannt, {hit} mit Text-Hauptbild, {fix} auf sauberes Bild umgestellt")
