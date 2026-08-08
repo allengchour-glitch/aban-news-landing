@@ -74,17 +74,31 @@ def rad(x, y, z, r, br, felge, reifen):
         flach(zyl(x, y + s*(br/2 + 0.005), z, r*0.62, 0.03, felge, 16, (math.pi/2, 0, 0)))
     flach(zyl(x, y, z, r*0.16, br + 0.04, felge, 10, (math.pi/2, 0, 0)))
 
-def _mats():
+def _mats(wand=(0.94,0.91,0.85), zier=None, dachf=(0.40,0.26,0.24)):
+    """Materialsatz mit WAEHLBARER Fassadenfarbe.
+
+    ⚠️ Der erste Wurf gab allen vier Haeusern denselben Satz: Putz (0,94|0,91|0,85),
+    Rahmen (0,96|0,95|0,92), Werkstein (0,82|0,79|0,72). Im Render standen vier
+    weisse Kisten — das ganze Relief aus Gesimsen, Gewaenden und Balkonen war
+    unsichtbar, weil es KEINEN KONTRAST zum Grund hatte. Genau der Befund
+    „Haeuser zu simple Textur": es lag nie an der Textur, sondern daran, dass
+    Wand und Zierglied dieselbe Helligkeit hatten.
+    Jetzt traegt jedes Haus eine eigene Wandfarbe, die Ziederglieder bleiben
+    nahezu weiss — dann liest sich jedes Gesims.
+
+    Und das Glas war mit (0,62|0,78|0,88) heller als die Wand: Fenster wirkten
+    wie aufgeklebte weisse Rechtecke statt wie Oeffnungen."""
+    z = zier if zier else (0.97, 0.96, 0.94)
     return {
-      "putz":  mat_bild("SdPutz", "hausputz.png", (0.94,0.91,0.85), 0.88),
-      "putz2": mat("SdPutz2", (0.86,0.78,0.68), 0.88),
-      "sockel":mat("SdSockel", (0.60,0.58,0.54), 0.90),
-      "stein": mat("SdStein",  (0.82,0.79,0.72), 0.86),
-      "dach":  mat("SdDach",   (0.40,0.26,0.24), 0.74),
+      "putz":  mat_bild("SdPutz", "hausputz.png", wand, 0.88, 0.0, True),
+      "putz2": mat("SdPutz2", tuple(c*0.88 for c in wand), 0.88),
+      "sockel":mat("SdSockel", tuple(c*0.62 for c in wand), 0.90),
+      "stein": mat("SdStein",  z, 0.84),
+      "dach":  mat("SdDach",   dachf, 0.74),
       "dach2": mat("SdDach2",  (0.32,0.35,0.40), 0.70),
-      "glas":  mat("SdGlas",   (0.62,0.78,0.88), 0.12, 0.10),
-      "rahm":  mat("SdRahmen", (0.96,0.95,0.92), 0.55),
-      "holz":  mat_bild("SdHolz", "bohlen.png", (0.66,0.48,0.30), 0.78),
+      "glas":  mat("SdGlas",   (0.28,0.42,0.52), 0.10, 0.15),
+      "rahm":  mat("SdRahmen", z, 0.55),
+      "holz":  mat_bild("SdHolz", "bohlen.png", (0.78,0.60,0.40), 0.78, 0.0, True),
       "eisen": mat("SdEisen",  (0.16,0.17,0.19), 0.45, 0.60),
       "gold":  mat("SdGold",   (0.90,0.74,0.36), 0.34, 0.45),
       "markise":mat("SdMarkise",(0.72,0.22,0.24), 0.72),
@@ -115,6 +129,18 @@ def _modul(name, bauer, bevel=0.012):
     neu(); bauer(); export(name, bevel, 2)
 
 # ---------------------------------------------------------------- Bausteine
+def _rahmen(x, yf, z, b, h, st, M, mat_="rahm"):
+    """Rahmen als VIER Balken um eine Oeffnung — nie als Platte.
+
+    ⚠️ Genau dieser Fehler steckte in der ersten Fassung und schon in der Gaube
+    von Charge 35: eine Vollplatte in Fenstergroesse, davor gesetzt, deckt die
+    Scheibe komplett zu. Im Render waren alle Fenster weisse Rechtecke, und die
+    Fassade sah aus wie bekleben statt gebaut."""
+    box(x, yf, z + h/2 + st/2, b + 2*st, 0.08, st, M[mat_])          # Sturz
+    box(x, yf, z - h/2 - st/2, b + 2*st, 0.08, st, M[mat_])          # Bruestung
+    for s9 in (-1, 1):
+        box(x + s9*(b/2 + st/2), yf, z, st, 0.08, h, M[mat_])        # Gewaende
+
 def _fenster(x, z, b, h, M, yf, bank=True, sprossen=True):
     """Fenster mit Laibung, Rahmen, Scheibe, Bank — die Einheit, aus der jede
     Fassade besteht. Ohne Laibung klebt das Glas auf der Wand und die Fassade
@@ -122,21 +148,25 @@ def _fenster(x, z, b, h, M, yf, bank=True, sprossen=True):
 
     ⚠️ `yf` ist die WANDFLAECHE, nicht die Wandtiefe. Erst nahm die Funktion die
     Tiefe und rechnete `tiefe/2` — beim Cafe stimmt das nicht, dessen Baukoerper
-    sitzt bei y = -1,2 und nicht auf der Mitte. Die Fenster waeren 1,2 m vor der
-    Fassade in der Luft gehangen."""
-    box(x, yf - 0.02, z, b + 0.18, 0.08, h + 0.18, M["rahm"])        # Gewaende
-    box(x, yf - 0.06, z, b, 0.06, h, M["glas"])
+    sitzt bei y = -1,2 und nicht auf der Mitte."""
+    # ⚠️ Zweiter Anlauf am selben Fenster. Die Scheibe lag bei yf-0,07, also INNEN
+    # in der Wand — und die Wand ist ein voller Quader ohne Loch. Durch die
+    # Rahmenoeffnung sah man darum den Putz, nicht das Glas. Jetzt steht das
+    # ganze Fenster VOR der Fassade: Rahmen bei yf+0,03, Scheibe knapp dahinter.
+    # Das ist bei einem Gruenderzeitbau ohnehin richtig — Gewaende kragen vor.
+    box(x, yf + 0.015, z, b, 0.05, h, M["glas"])
+    _rahmen(x, yf + 0.03, z, b, h, 0.10, M)
     if sprossen:
-        box(x, yf - 0.10, z, 0.045, 0.06, h, M["rahm"])
-        box(x, yf - 0.10, z + h*0.16, b, 0.06, 0.045, M["rahm"])
+        box(x, yf + 0.045, z, 0.045, 0.05, h, M["rahm"])
+        box(x, yf + 0.045, z + h*0.16, b, 0.05, 0.045, M["rahm"])
     if bank:
-        box(x, yf + 0.04, z - h/2 - 0.09, b + 0.30, 0.20, 0.07, M["stein"])
+        box(x, yf + 0.04, z - h/2 - 0.14, b + 0.30, 0.20, 0.07, M["stein"])
 
 def _tuer(x, z0, b, h, M, yf):
-    box(x, yf - 0.02, z0 + h/2, b + 0.22, 0.09, h + 0.14, M["rahm"])
-    box(x, yf - 0.07, z0 + h/2 - 0.10, b, 0.07, h - 0.20, M["holz"])
-    box(x, yf - 0.07, z0 + h - 0.13, b, 0.07, 0.22, M["glas"])
-    kugel(x + b/2 - 0.10, yf - 0.13, z0 + h*0.45, 0.05, M["gold"], 9)
+    box(x, yf + 0.02, z0 + h/2 - 0.10, b, 0.06, h - 0.20, M["holz"])
+    box(x, yf + 0.02, z0 + h - 0.13, b, 0.06, 0.22, M["glas"])       # Oberlicht
+    _rahmen(x, yf + 0.035, z0 + h/2, b, h, 0.12, M)
+    kugel(x + b/2 - 0.10, yf + 0.07, z0 + h*0.45, 0.05, M["gold"], 9)
     box(x, yf + 0.16, z0 + 0.05, b + 0.34, 0.42, 0.10, M["stein"])   # Stufe
 
 def _gesims(z, b, t, M, vor=0.16):
@@ -150,7 +180,7 @@ def _b_altbau():
     Was einen Altbau ausmacht, ist nicht die Wandfarbe, sondern das RELIEF:
     Sockelband, Fenstergewaende, Stockwerkgesimse, Kranzgesims. Eine glatte Box
     mit Fenstertextur bleibt eine Box, egal wie gut die Textur ist."""
-    M = _mats()
+    M = _mats((0.86,0.74,0.54), None, (0.36,0.34,0.38))
     B, T = 11.00, 9.40
     GH, EG = 3.20, 3.90                       # Regelgeschoss, Erdgeschoss
     box(0, 0, 0.30, B + 0.30, T + 0.30, 0.60, M["sockel"])            # Sockel
@@ -204,7 +234,7 @@ def _b_eckhaus():
     """Eckhaus mit abgerundeter Ecke und Ladenlokal, 10,00 x 10,00 x 12,00 m.
     Die runde Ecke ist ein Drehkoerper-Viertel — als abgeschraegter Quader
     gebaut haette das Haus eine Fase statt eines Rundturms."""
-    M = _mats()
+    M = _mats((0.70,0.76,0.72), None, (0.34,0.30,0.32))
     B, T, GH, EG = 10.00, 10.00, 3.10, 4.00
     H = EG + 2*GH
     box(-0.9, 0, H/2, B - 1.8, T, H, M["putz"])
@@ -220,8 +250,8 @@ def _b_eckhaus():
          M["stein"], 28, x=B/2 - 4.10, y=T/2 - 4.10, name="Eckgesims")
     # Ladenfront im Erdgeschoss (Schauseite +y und -x)
     for xa in (-3.40, -1.10):
-        box(xa, T/2 - 0.10, 2.20, 1.90, 0.14, 2.60, M["glas"])
-        box(xa, T/2 - 0.04, 2.20, 2.10, 0.10, 2.80, M["rahm"])
+        box(xa, T/2 + 0.02, 2.20, 1.90, 0.10, 2.60, M["glas"])
+        _rahmen(xa, T/2 + 0.04, 2.20, 1.90, 2.60, 0.11, M)
     box(-2.25, T/2 + 0.62, 3.90, 5.20, 1.30, 0.26, M["markise"])       # Markise
     for s in (-1, 1):
         strebe((-2.25 + s*2.4, T/2 + 0.10, 4.05), (-2.25 + s*2.4, T/2 + 1.20, 3.86),
@@ -255,7 +285,7 @@ def eckhaus(): _modul("th37_eckhaus", _b_eckhaus, 0.012)
 def _b_reihenhaus():
     """Schmales Reihenhaus mit Giebel zur Strasse, 6,00 x 8,60 x 11,40 m.
     Reihbar: die Seitenwaende sind flach, x += 6,00."""
-    M = _mats()
+    M = _mats((0.80,0.54,0.44), None, (0.42,0.26,0.22))
     B, T, GH = 6.00, 8.60, 2.90
     KH = 2*GH + 0.60                                   # Traufhoehe
     box(0, 0, 0.26, B + 0.16, T + 0.16, 0.52, M["sockel"])
@@ -285,7 +315,7 @@ def reihenhaus(): _modul("th37_reihenhaus", _b_reihenhaus, 0.010)
 def _b_cafe():
     """Eckcafe mit Terrasse, 9,00 x 7,40 x 7,60 m — Markise, vier Tische mit
     Stuehlen und Sonnenschirmen, Pflanzkuebel als Terrassengrenze."""
-    M = _mats()
+    M = _mats((0.94,0.86,0.68), None, (0.38,0.32,0.34))
     B, T, EG = 9.00, 7.40, 4.10
     box(0, -1.2, 0.26, B + 0.16, T - 2.2, 0.52, M["sockel"])
     box(0, -1.2, EG/2 + 0.40, B, T - 2.4, EG, M["putz"])
@@ -294,8 +324,8 @@ def _b_cafe():
     box(0, -1.2, EG + 2.52, B + 0.24, T - 2.7, 0.24, M["dach2"])
     ty = T/2 - 2.4
     for xa in (-2.80, 0.0, 2.80):
-        box(xa, ty, 2.10, 2.20, 0.14, 2.60, M["glas"])
-        box(xa, ty + 0.03, 2.10, 2.40, 0.10, 2.84, M["rahm"])
+        box(xa, ty + 0.02, 2.10, 2.20, 0.10, 2.60, M["glas"])
+        _rahmen(xa, ty + 0.04, 2.10, 2.20, 2.60, 0.11, M)
     _tuer(-3.80, 0.50, 1.10, 2.50, M, ty)
     box(0, ty + 1.05, 3.86, B - 0.4, 2.10, 0.22, M["markise"])         # Markise
     for xa in (-3.6, 0, 3.6):

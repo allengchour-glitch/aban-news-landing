@@ -59,14 +59,50 @@ def mat(name, rgb, rough=0.7, metal=0.0, emit=None, estr=1.4):
         b.inputs["Emission Strength"].default_value = estr
     return m
 
-def mat_bild(name, datei, farbe=(1.0,1.0,1.0), rough=0.8, metal=0.0):
+def mat_bild(name, datei, farbe=(1.0,1.0,1.0), rough=0.8, metal=0.0, tint=False):
+    """Material mit Bildtextur.
+
+    ⚠️ `farbe` wirkt NUR mit `tint=True`. Ohne den Schalter wird die Textur direkt
+    auf Base Color gelegt und die uebergebene Farbe ist wirkungslos — in Charge 37
+    bekamen dadurch vier Haeuser dieselbe weisse Putzflaeche, obwohl jedem eine
+    eigene Fassadenfarbe mitgegeben war. Im Render standen vier weisse Kisten.
+    Mit `tint=True` haengt ein Multiply-Mix dazwischen: Textur x Farbe. Das
+    Verhalten OHNE Schalter bleibt unveraendert, damit Charge 35/36 nicht neu
+    gebaut werden muessen.
+
+    Die Sockel des Mix-Knotens werden ueber ihren TYP gesucht, nicht ueber Index
+    oder Namen: `ShaderNodeMix` hat mehrere Sockel namens „A"/„B" (je Datentyp),
+    und die Reihenfolge hat sich zwischen Blender-Versionen schon geaendert."""
     m = mat(name, farbe, rough, metal)
     nt = m.node_tree
     tex = nt.nodes.new("ShaderNodeTexImage")
     if datei not in _TEXCACHE:
         _TEXCACHE[datei] = bpy.data.images.load(os.path.join(TEXDIR, datei))
     tex.image = _TEXCACHE[datei]; tex.extension = 'REPEAT'; tex.location = (-380, 240)
-    nt.links.new(tex.outputs["Color"], nt.nodes["Principled BSDF"].inputs["Base Color"])
+    b = nt.nodes["Principled BSDF"]
+    if not tint:
+        nt.links.new(tex.outputs["Color"], b.inputs["Base Color"])
+        return m
+    mx = None
+    for typ in ("ShaderNodeMix", "ShaderNodeMixRGB"):
+        try:
+            mx = nt.nodes.new(typ)
+            if typ == "ShaderNodeMix": mx.data_type = 'RGBA'
+            mx.blend_type = 'MULTIPLY'
+            break
+        except Exception:
+            mx = None
+    if mx is None:
+        nt.links.new(tex.outputs["Color"], b.inputs["Base Color"])
+        return m
+    mx.location = (-160, 240)
+    fac = [i for i in mx.inputs if i.type == 'VALUE']
+    if fac: fac[0].default_value = 1.0
+    cols = [i for i in mx.inputs if i.type == 'RGBA']
+    outs = [o for o in mx.outputs if o.type == 'RGBA']
+    cols[0].default_value = (farbe[0], farbe[1], farbe[2], 1.0)
+    nt.links.new(tex.outputs["Color"], cols[1])
+    nt.links.new(outs[0], b.inputs["Base Color"])
     return m
 
 def leucht(name, rgb, estr=3.0):
