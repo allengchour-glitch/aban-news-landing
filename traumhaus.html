@@ -716,71 +716,95 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
        die waren fast vollstaendig weiss. 48 laesst dem Fels wieder zwei Drittel. */
     var SCHNEE=48, WIESE=8;                      // Welthoehe: Schneelinie, Fusssaum
     function rnd(i,k){var x=Math.sin(i*12.9898+k*78.233)*43758.5453;return x-Math.floor(x);}
-    function bergGeo(rad,hoch,seg,seed,fussY){
-      var g=new THREE.ConeGeometry(rad,hoch,seg,5);
-      var p=g.attributes.position,n=p.count,col=new Float32Array(n*3);
-      for(var v=0;v<n;v++){
-        var vx=p.getX(v),vy=p.getY(v),vz=p.getZ(v);
-        var t=(vy+hoch/2)/hoch;                  // 0 = Fuss, 1 = Spitze
-        var r=Math.hypot(vx,vz);
-        if(r>0.001){
-          /* Radiale Stoerung nach dem WINKEL, nicht nach dem Index: so bekommt
-             jeder Grat ueber die ganze Hoehe dieselbe Richtung und der Berg
-             bekommt Rippen statt Rauschen. */
-          var w=Math.atan2(vz,vx);
-          var f=1+(rnd(Math.round(w*100),seed)-0.5)*0.30*(1-t*0.55)
-                 +(rnd(v,seed+7)-0.5)*0.10;
-          vx*=f; vz*=f;
-        }
-        vy+=(rnd(v,seed+3)-0.5)*hoch*0.09*(1-Math.abs(t-0.5)*1.4);
-        /* ⛰️ Das eigentliche Problem war nicht die Farbe, sondern die SILHOUETTE:
-           ein Kegel ist symmetrisch, und ein symmetrisches Dreieck liest sich
-           immer als Zelt, egal wie fein die Flanke verrauscht ist. Zwei Griffe:
-           1. SCHERUNG — die Spitze kippt seitlich aus der Achse (bis 0,26 rad).
-              Damit hat jeder Berg eine steile und eine flache Flanke.
-           2. KONKAVER FUSS — der Radius flaert unten auf. Ein echter Berg ist
-              nicht gerade, er wird nach unten hin schneller breit. */
-        var kx=(rnd(seed,21)-0.5)*0.52, kz=(rnd(seed,22)-0.5)*0.52;
-        vx+=kx*t*rad; vz+=kz*t*rad;
-        var fl=1+0.38*(1-t)*(1-t);
-        vx*=fl; vz*=fl;
-        p.setXYZ(v,vx,vy,vz);
-        var wy=vy+fussY, c;
-        /* Grundton PRO BERG plus feines Korn pro Punkt. Ohne den Bergton sahen
-           alle 34 gleich aus — vorher gab es wenigstens zwei abwechselnde Graus. */
-        var fels=0.34+rnd(seed,5)*0.14+rnd(v,seed+11)*0.07;
-        if(wy>SCHNEE){                            // Schnee, weich eingeblendet
-          var m=Math.min(1,(wy-SCHNEE)/5);       // schaerferer Uebergang
-          c=[fels+(0.95-fels)*m, fels+0.02+(0.97-fels)*m, fels+0.05+(1.00-fels)*m];
-        }else if(wy<WIESE){                       // Fusssaum ins Wiesengruen
-          var m2=Math.min(1,(WIESE-wy)/10);
-          c=[fels*(1-m2)+0.42*m2, fels*(1-m2)+0.56*m2, fels*(1-m2)+0.34*m2];
-        }else{
-          var m3=(wy-WIESE)/(SCHNEE-WIESE);       // Fels -> heller Schutt
-          c=[fels+0.16*m3, fels+0.15*m3, fels+0.14*m3];
-        }
-        col[v*3]=c[0];col[v*3+1]=c[1];col[v*3+2]=c[2];
+    /* 🏔️ HOEHENFELD statt Kegel.
+       Ein Kegel — auch verrauscht, geschert und ausgeflaert — bleibt EIN Gipfel
+       mit rundum gleichem Hang. Echte Berge sind Massive: mehrere Gipfel, die
+       sich einen Sockel teilen, dazwischen Grate und Saettel. Darum wird hier
+       kein Primitiv verformt, sondern eine Hoehenfunktion ueber einem Polarraster
+       ausgewertet:
+
+         H(x,z) = max ueber alle Gipfel von  h_g * (1 - d_g)^1.7
+
+       Der Exponent 1,7 ist der Punkt, an dem es "wie echt" wird: bei 1,0 haette
+       man wieder gerade Kegelflanken. Groesser als 1 heisst STEIL OBEN und FLACH
+       AM FUSS — genau das Profil eines Berges. Das `max` erzeugt dort, wo sich
+       zwei Gipfelglocken schneiden, automatisch einen GRAT.
+
+       ⚠️ Berg Nr. 5 (der Hausberg der Seilbahn) bleibt ein reiner Kegel: die
+       Seilbahn rechnet ihre Stuetzen- und Stationshoehen mit
+       y(d) = -6 + 75*(1 - d/51.75). Jede andere Form liesse die Stuetzen in der
+       Luft haengen oder im Hang stecken. */
+    function bergGeo(rad,hoch,seed,fussY,einzel){
+      var NR=12, NA=24;
+      var gip=[{dx:0,dz:0,h:hoch,s:1.0}];
+      if(!einzel){
+        var ng=2+Math.floor(rnd(seed,1)*3);        // 2..4 Gipfel je Massiv
+        for(var k=1;k<ng;k++){
+          var ga=rnd(seed,10+k)*6.283, gd=rad*(0.26+rnd(seed,20+k)*0.36);
+          gip.push({dx:Math.cos(ga)*gd, dz:Math.sin(ga)*gd,
+                    h:hoch*(0.52+rnd(seed,30+k)*0.34),
+                    s:0.50+rnd(seed,40+k)*0.28});}
       }
-      p.needsUpdate=true;
-      g.setAttribute("color",new THREE.BufferAttribute(col,3));
-      g.computeVertexNormals();
-      return g;
+      var EXP=einzel?1.0:1.7;
+      function H(x,z){
+        var hh=0;
+        for(var g=0;g<gip.length;g++){
+          var G=gip[g], d=Math.hypot(x-G.dx,z-G.dz)/(rad*G.s);
+          if(d<1){var v=G.h*Math.pow(1-d,EXP); if(v>hh)hh=v;}}
+        return hh;
+      }
+      var pos=[],idx=[],ringR=[];
+      for(var ri=0;ri<=NR;ri++){
+        /* Ringe nach aussen dichter: am Fuss passiert die Form, oben ist Fels. */
+        ringR.push(rad*Math.pow(ri/NR,0.85));}
+      for(var ri2=0;ri2<=NR;ri2++){
+        for(var ai=0;ai<NA;ai++){
+          var aa=ai/NA*6.283;
+          /* Gratrauschen nach dem WINKEL: so laeuft eine Rippe ueber die ganze
+             Flanke durch, statt punktweise zu zittern. */
+          var kerbe=einzel?1:(1+(rnd(Math.round(aa*40),seed+3)-0.5)*0.22);
+          var rr=ringR[ri2]*kerbe;
+          var px=Math.cos(aa)*rr, pz=Math.sin(aa)*rr;
+          var py=H(px,pz);
+          if(!einzel)py*=1+(rnd(ri2*97+ai,seed+9)-0.5)*0.07;
+          pos.push(px,py-hoch*0.0,pz);}}
+      for(var r3=0;r3<NR;r3++)for(var a3=0;a3<NA;a3++){
+        var a4=(a3+1)%NA, o0=r3*NA, o1=(r3+1)*NA;
+        idx.push(o0+a3,o1+a3,o1+a4, o0+a3,o1+a4,o0+a4);}
+      var g2=new THREE.BufferGeometry();
+      g2.setAttribute("position",new THREE.Float32BufferAttribute(pos,3));
+      g2.setIndex(idx);
+      g2.computeVertexNormals();
+      /* Farbe erst JETZT — sie braucht die Normale. Schnee liegt nicht auf einer
+         Hoehenlinie, sondern dort, wo er LIEGENBLEIBT: an steilen Waenden rutscht
+         er ab. Dazu eine leichte Expositionsabstufung (Sonnenseite heller), sonst
+         wirkt das Massiv wie aus Gips gegossen. */
+      var np=g2.attributes.position, nn=g2.attributes.normal, n2=np.count;
+      var col=new Float32Array(n2*3);
+      var sx=0.46,sy=0.74,sz=0.49;                 // Sonnenrichtung, normiert
+      for(var v2=0;v2<n2;v2++){
+        var wy=np.getY(v2)+fussY;
+        var ny=nn.getY(v2);                        // 1 = eben, 0 = senkrecht
+        var son=nn.getX(v2)*sx+ny*sy+nn.getZ(v2)*sz;
+        var fels=0.30+rnd(seed,5)*0.13+rnd(v2,seed+11)*0.06;
+        fels*=0.82+0.30*Math.max(0,son);           // Exposition
+        var c0,c1,c2;
+        var schneeAn=(wy-SCHNEE)/14;               // Hoehe
+        var haelt=(ny-0.42)/0.30;                  // Neigung: unter 0,42 rutscht es
+        var m=Math.min(1,Math.max(0,Math.min(schneeAn,haelt)));
+        if(wy<WIESE){
+          var m2=Math.min(1,(WIESE-wy)/10);
+          c0=fels*(1-m2)+0.40*m2; c1=fels*(1-m2)+0.54*m2; c2=fels*(1-m2)+0.32*m2;
+        }else{
+          var m3=Math.min(1,(wy-WIESE)/(SCHNEE-WIESE));
+          c0=fels+0.15*m3; c1=fels+0.145*m3; c2=fels+0.14*m3;
+          c0=c0+(0.95-c0)*m; c1=c1+(0.97-c1)*m; c2=c2+(1.00-c2)*m;
+        }
+        col[v2*3]=c0;col[v2*3+1]=c1;col[v2*3+2]=c2;
+      }
+      g2.setAttribute("color",new THREE.BufferAttribute(col,3));
+      return g2;
     }
-    /* 📏 GUERTEL NACH AUSSEN, 212 -> 300.
-       Zwei Aufgaben hintereinander sind an derselben Enge gescheitert: fuer ein
-       neues Stadtviertel gab es zwischen r 140 und 340 keinen freien 76 x 86 m
-       Platz, und der Waldsaum stand im Fels, weil die Bergfuesse bis r 102 nach
-       innen reichen. Ursache ist nicht die Platzierung, sondern der Radius des
-       Guertels. Aussen herum gewinnt die Karte rund 90 m Ring — Raum fuer Wald,
-       Felder und kuenftige Viertel.
-
-       ⚠️ BERG NR. 5 BLEIBT, WO ER IST. Die Seilbahn rechnet ihre Bergstation aus
-       genau seinen Zahlen (121,5 | 174,9 / Radius 51,75 / Hoehe 75); zieht man
-       ihn weg, endet die Fahrt in der Luft. Er bleibt als HAUSBERG vor der Kette
-       stehen — das sieht ohnehin besser aus als eine gleichmaessige Wand.
-
-       Ausgespart werden die drei Viertel, die jetzt im neuen Guertelbereich
-       liegen: Freizeitpark, Sportpark und die Achterbahn. */
     var QSPERR=[[60,330,200,80],[0,216,110,60],[-190,212,80,60],[172,0,70,90]];
     var N=34;
     for(var i=0;i<N;i++){
@@ -794,8 +818,10 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       for(var qs=0;qs<QSPERR.length;qs++){var Q=QSPERR[qs];
         if(Math.abs(bx-Q[0])<Q[2]+rad*0.9&&Math.abs(bz-Q[1])<Q[3]+rad*0.9){sperr=true;break;}}
       if(sperr)continue;
-      var fussY=hoch/2-6;
-      var berg=new THREE.Mesh(bergGeo(rad,hoch,9+(i%4),i*3+1,fussY),felsVM);
+      /* Das Hoehenfeld liefert y = 0 am Fuss (der Kegel lieferte -hoch/2), der
+         Sockel liegt darum direkt auf -6 statt auf hoch/2-6. */
+      var fussY=-6;
+      var berg=new THREE.Mesh(bergGeo(rad,hoch,i*3+1,fussY,i===5),felsVM);
       berg.position.set(bx,fussY,bz);berg.rotation.y=(i*0.7)%6.283;berg.userData.gelaende=1;
       berg.receiveShadow=true;scene.add(berg);
       /* Fuss melden. Ein Berg der Hoehe 97 hat 80 m Basisradius — seine Sohle
