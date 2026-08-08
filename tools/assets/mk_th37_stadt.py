@@ -209,8 +209,11 @@ def _schild(x, yf, z, b, M, farbe="markise"):
     """Ladenschild ueber der Front: Tafel, Rahmen, drei angedeutete Wortbloecke.
     Echte Schrift braeuchte eine Textur; drei Bloecke lesen sich aus Spielabstand
     genauso als Beschriftung und kosten nichts."""
-    box(x, yf + 0.09, z, b, 0.10, 0.52, M[farbe])
-    box(x, yf + 0.13, z, b + 0.10, 0.05, 0.62, M["stein"])
+    # ⚠️ Zum DRITTEN Mal dieselbe Falle in dieser Charge: die Rahmenplatte lag
+    # VOR der Tafel und deckte sie ganz zu — im Render ein leeres weisses Brett
+    # statt eines farbigen Schilds. Was hinten liegen soll, gehoert nach hinten.
+    box(x, yf + 0.07, z, b + 0.12, 0.06, 0.64, M["stein"])   # Rueckplatte
+    box(x, yf + 0.12, z, b, 0.06, 0.50, M[farbe])            # Tafel davor
     for k in range(3):
         box(x - b*0.26 + k*b*0.26, yf + 0.16, z, b*0.17, 0.03, 0.16, M["rahm"])
 
@@ -274,6 +277,15 @@ def _b_altbau():
         box(0, T/2 + 1.06, zz + 1.15, 2.30, 0.10, 1.70, M["glas"])
         for s in (-1, 1):
             box(s*1.30, T/2 + 0.82, zz + 1.15, 0.10, 0.55, 1.70, M["glas"])
+        # Der Erker war eine 2,30 x 1,70 grosse dunkle Flaeche ohne jede Teilung —
+        # aus der Entfernung ein Loch in der Fassade. Rahmen, zwei Pfosten, ein
+        # Kaempfer: erst die Teilung macht daraus ein Fenster.
+        _rahmen(0, T/2 + 1.14, zz + 1.15, 2.30, 1.70, 0.10, M)
+        for mx in (-0.77, 0.77):
+            box(mx, T/2 + 1.14, zz + 1.15, 0.07, 0.06, 1.70, M["rahm"])
+        box(0, T/2 + 1.14, zz + 1.15 + 0.42, 2.30, 0.06, 0.07, M["rahm"])
+        for s in (-1, 1):
+            box(s*1.30, T/2 + 0.86, zz + 1.15 + 0.42, 0.08, 0.55, 0.07, M["rahm"])
     box(0, T/2 + 0.55, EG + 0.72, 3.20, 1.30, 0.22, M["stein"])       # Erkerkonsole
     for s in (-1, 1):                                                 # Kragsteine
         strebe((s*1.20, T/2 + 0.20, EG + 0.62), (s*1.20, T/2 + 1.00, EG + 0.10),
