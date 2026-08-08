@@ -490,7 +490,11 @@ def _wagen(prof, breite, lack, M, radstand, r_rad, tueren=()):
             # Ein Radlauf ist keine Linie vor dem Blech, sondern eine Wulst IM
             # Blech. Darum halb eingelassene Segmente entlang des Bogens, tangential
             # gedreht, dazu ein dunkles Radhaus dahinter — erst das gibt dem Rad Tiefe.
-            flach(zyl(xr, s*(breite/2 - 0.115), r_rad, r_rad + 0.05, 0.03,
+            # ⚠️ Radius r_rad + 0,05 auf Hoehe r_rad heisst: die Scheibe reicht
+            # 5 cm UNTER den Boden (gemessen zmin -0,050 bei allen vier Wagen).
+            # Sie soll nur den dunklen Spalt hinter dem Reifen zeigen, also
+            # knapp kleiner als das Rad.
+            flach(zyl(xr, s*(breite/2 - 0.115), r_rad, r_rad*0.97, 0.03,
                       M["fuge"], 18, (math.pi/2, 0, 0)))
             # Dritter Anlauf am Radlauf, und der letzte:
             #   1. Rohr bei y = breite/2 + 0,01, r 0,045 -> ragte 5,5 cm heraus und
