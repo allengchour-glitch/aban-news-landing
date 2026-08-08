@@ -498,7 +498,7 @@ var WORLD_POIS=[
   [-33,86,"🏛️","Altstadt"],[68,68,"🌳","Grosser Park"],[96,14,"⛲","Brunnen-Park"],
   [98,-30,"🛝","Spielplatz"],[0,102,"🚉","Bahnhof"],[26,67,"🏪","Marktplatz"],
   [96,-33,"🏰","Villen Ost"],[-96,18,"🏰","Villen West"],[10,139,"⛵","Seepark"],[-232,0,"🌊","Meer"],
-  [172,0,"🏢","Gewerbe Ost"],[0,216,"🏟️","Sportpark"],[60,330,"🎡","Freizeitpark"],[-190,212,"🎢","Achterbahn"],[155,86,"🚡","Seilbahn"],[-74.5,148,"🌷","Kurpark"]];
+  [172,0,"🏢","Gewerbe Ost"],[0,216,"🏟️","Sportpark"],[60,330,"🎡","Freizeitpark"],[-190,212,"🎢","Achterbahn"],[155,86,"🚡","Seilbahn"],[-74.5,148,"🌷","Kurpark"],[172,60,"🏙️","Stadthaeuser Ost"]];
 var WORLD_SOLIDS=[];
 /* Gitter-Index (16 m Zellen): inSolid lief linear ueber ALLE Kollider und wird pro
    Bewegungsschritt jedes Bewohners/Autos gerufen. Mit den Landschafts-Hindernissen
@@ -3135,14 +3135,51 @@ setTimeout(function baueGebaeude(){
   /* ═══ Neue Viertel ausserhalb der Ringstrasse (der Generator setzt Strasse, Trottoir,
      Belag, Bebauung mit Mindestabstand, Laternen, Baeume und Kollider selbst) ═══ */
   setTimeout(function(){
-    viertel({name:"Gewerbe Ost",x:172,z:0,w:96,d:150,achse:"z",boden:"platz",
-      anschluss:[112,0],abstand:13,luecke:16,rand:16,
+    var _go = viertel({name:"Gewerbe Ost",x:172,z:0,w:96,d:150,achse:"z",boden:"platz",
+      anschluss:[112,0],abstand:13,luecke:12,rand:14,
       bauten:[{file:"th20_parkgarage.glb",h:11,w:20,d:15},
               {file:"th22_garage.glb",h:3.4,w:7,d:6},
               {file:"th23_bank.glb",h:9,w:16,d:12},
               {file:"th23_post.glb",h:8,w:15,d:11},
               {file:"th23_apotheke.glb",h:7,w:12,d:10},
-              {file:"th23_polizeiwache.glb",h:8.5,w:16,d:12}]});
+              {file:"th23_polizeiwache.glb",h:8.5,w:16,d:12},
+              /* ⚠️ `bau()` skaliert auf die HOEHE — hier stehen die gemessenen
+                 Werte aus models/TH5-ASSETS.md, nicht geschaetzte. */
+              {file:"th37_altbau.glb",     h:16.40,w:11.4,d:10.9},
+              {file:"th37_eckhaus.glb",    h:13.40,w:10.7,d:11.5},
+              {file:"th37_reihenhaus.glb", h: 9.70,w: 6.8,d: 9.3},
+              {file:"th37_cafe.glb",       h: 6.74,w: 9.7,d:10.2}]});
+    if(_go){
+      /* Vier Wagen am Bordstein der Viertelstrasse. Die Strasse laeuft in z, die
+         Front der Modelle zeigt auf +x — also -+PI/2 fuer die beiden Richtungen.
+         ohneSchutz=true: `wegVonStrasse` kennt nur die Hauptachsen und wuerde die
+         Wagen von der Fahrbahn schieben, auf die sie gerade gehoeren. */
+      [["th37_limousine.glb",  1.44,-3.2,-46, Math.PI/2],
+       ["th37_kombi.glb",      1.70,-3.2,-18, Math.PI/2],
+       ["th37_sportwagen.glb", 1.18, 3.2, 16,-Math.PI/2],
+       ["th37_lieferwagen.glb",2.50, 3.2, 44,-Math.PI/2]].forEach(function(C){
+        bau(C[0],C[1],172+C[2],0,C[3],C[4],false,null,true);});
+    }
+    /* 🏙️ STADTVIERTEL SUEDOST — die Stadthaeuser und Fahrzeuge aus Charge 37.
+       Sie lagen bisher nur in models/, im Spiel sah sie niemand. Standort so
+       gewaehlt, dass `viertelFrei` zu allen bestehenden Vierteln Luft laesst:
+       Gewerbe Ost endet bei z = 75, Sportpark bei x = 90, Freizeitpark bei
+       z = 275. Anschluss an die Suedost-Ecke der Ringstrasse.
+       ⚠️ `bau()` skaliert auf die HOEHE — hier stehen die gemessenen Werte aus
+       models/TH5-ASSETS.md, nicht geschaetzte. */
+    /* 🏙️ Die Stadthaeuser aus Charge 37 haengen am OSTVIERTEL statt an einem
+       eigenen Standort.
+       Gemessen: zwischen Radius 140 und 340 gibt es rings um die Stadt KEINEN
+       freien 76 x 86 m grossen Platz — der Gebirgsguertel (59 Felskoerper auf
+       r 210…290) ist geschlossen, und innerhalb des Rings ist ohnehin alles
+       belegt. Zwei Anlaeufe mit eigenem Viertel endeten darum zwischen Felsen:
+       (190|190) lag bei r 269 mitten im Guertel, (292|0) hatte zwei Berge auf
+       der Zufahrt. `viertelFrei` merkt das nicht — es prueft andere Viertel und
+       Kollider, nicht das Gelaende.
+       Das Ostviertel hat sich seinen Platz im Gebirge schon freigeschnitten und
+       ist per Strasse angebunden; aus reinem Gewerbe wird damit ein gemischtes
+       Quartier, was ohnehin lebendiger ist. Damit die vier Haeuser hineinpassen,
+       ruecken `luecke` und `rand` von 16 auf 12 bzw. 14 zusammen. */
     viertel({name:"Sportpark Sued",x:0,z:216,w:180,d:84,achse:"x",boden:"rasen",
       /* 🐛 anschluss war [0,146] — die SEEMITTE. Der Verbinder endete als Asphalt-
          zunge samt Mittelstreifen und Laterne mitten im Wasser (User: „wasser?").
@@ -3176,7 +3213,11 @@ setTimeout(function baueGebaeude(){
               {file:"th33_kassenhaus.glb",h:4.7,w:5,d:5},
               {file:"th33_toilettenhaus.glb",h:4.5,w:8,d:6},
               {file:"th33_imbisswagen.glb",h:3.1,w:6,d:5},
-              {file:"th13_imbissbude.glb",h:3.6,w:6,d:5}]});
+              {file:"th13_imbissbude.glb",h:3.6,w:6,d:5},
+              /* 🎯 Schiessbude aus Charge 37 — familienfreundlich: Klappziele,
+                 Blechdosen, Budengewehre mit Korkkugel. `tuer:false`, weil man
+                 an die Theke tritt und nicht hineingeht. */
+              {file:"th37_schiessbude.glb",h:3.3,w:5.2,d:3.2,tuer:false}]});
     /* Park-Ausstattung entlang der Hauptachse: Wegweiser, Plan, Beete, Laternen */
     setTimeout(function parkDeko(){
       var PX=60,PZ=330;
