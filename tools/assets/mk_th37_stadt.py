@@ -66,12 +66,22 @@ def keil_y(prof, cy, breite, m=None, cx=0.0, cz=0.0, name="Profil"):
             uvl.data[li].uv = (p.x if abs(poly.normal.y) < 0.5 else p.y, p.z)
     return o
 
-def rad(x, y, z, r, br, felge, reifen):
-    """Ein Rad: Reifen + Felge + Nabe. Die Zylinderachse muss auf y liegen —
-    `rot=(pi/2,0,0)` legt sie dorthin (fuer x waere es (0,pi/2,0))."""
+def rad(x, y, z, r, br, felge, reifen, chrom=None):
+    """Ein Rad: Reifen, Felgenschuessel, Speichen, Nabe. Die Zylinderachse muss
+    auf y liegen — `rot=(pi/2,0,0)` legt sie dorthin (fuer x waere es (0,pi/2,0)).
+
+    Die Speichen sind der Unterschied zwischen „Rad" und „schwarze Scheibe": eine
+    glatte Felge liest sich aus jeder Entfernung als Loch."""
     flach(zyl(x, y, z, r, br, reifen, 20, (math.pi/2, 0, 0)))
-    for s in (-1, 1):
-        flach(zyl(x, y + s*(br/2 + 0.005), z, r*0.62, 0.03, felge, 16, (math.pi/2, 0, 0)))
+    for s9 in (-1, 1):
+        ya = y + s9*(br/2 + 0.006)
+        flach(zyl(x, ya, z, r*0.62, 0.03, felge, 16, (math.pi/2, 0, 0)))
+        for k in range(5):
+            a = TAU*k/5 + 0.3
+            sp = box(x + math.cos(a)*r*0.34, ya + s9*0.012, z + math.sin(a)*r*0.34,
+                     r*0.44, 0.02, r*0.16, felge)
+            sp.rotation_euler[1] = -a
+        flach(zyl(x, ya + s9*0.02, z, r*0.17, 0.03, chrom or felge, 12, (math.pi/2, 0, 0)))
     flach(zyl(x, y, z, r*0.16, br + 0.04, felge, 10, (math.pi/2, 0, 0)))
 
 def _mats(wand=(0.94,0.91,0.85), zier=None, dachf=(0.40,0.26,0.24)):
@@ -116,6 +126,7 @@ def _mats(wand=(0.94,0.91,0.85), zier=None, dachf=(0.40,0.26,0.24)):
       "reifen":mat("SdReifen", (0.09,0.09,0.10), 0.85),
       "felge": mat("SdFelge",  (0.80,0.82,0.86), 0.25, 0.80),
       "chrom": mat("SdChrom",  (0.86,0.88,0.92), 0.15, 0.85),
+      "fuge":  mat("SdFuge",   (0.10,0.10,0.12), 0.60),
       "licht": leucht("SdLicht", (1.00,0.94,0.78), 2.6),
       "rueck": leucht("SdRueck", (1.00,0.28,0.20), 2.2),
       # Jahrmarkt
@@ -459,25 +470,46 @@ def _b_cafe():
 def cafe(): _modul("th37_cafe", _b_cafe, 0.010)
 
 # ================================================================ 5-8) Fahrzeuge
-def _wagen(prof, breite, lack, M, radstand, r_rad, dach_ab=0.0):
+def _wagen(prof, breite, lack, M, radstand, r_rad, tueren=()):
     """Gemeinsamer Aufbau aller vier Wagen: Karosserie aus dem Seitenprofil,
-    Fensterband, Raeder, Leuchten, Stossfaenger, Kennzeichen.
-    So bleiben die Fahrzeuge untereinander stimmig, ohne dass vier Mal dasselbe
-    dasteht — die Form steckt allein im uebergebenen Profil."""
+    Raeder, Radlaeufe, Chromleiste, Tuerfugen und Griffe, Grill, Leuchten,
+    Stossfaenger, Kennzeichen.
+
+    Die Form steckt allein im uebergebenen Profil — so bleiben die Fahrzeuge
+    untereinander stimmig, ohne dass vier Mal dasselbe dasteht. Der ZIERRAT
+    steckt hier, damit eine Verbesserung sofort allen vier zugutekommt."""
     keil_y(prof, 0.0, breite, lack, name="Karosse")
-    for s in (-1, 1):                                                  # Raeder
-        for xr in radstand:
-            rad(xr, s*(breite/2 - 0.09), r_rad, r_rad, 0.20, M["felge"], M["reifen"])
     xs = [p[0] for p in prof]
-    L = max(xs) - min(xs)
-    box(min(xs) + 0.06, 0, r_rad + 0.16, 0.16, breite - 0.14, 0.26, M["chrom"])
-    box(max(xs) - 0.06, 0, r_rad + 0.16, 0.16, breite - 0.14, 0.26, M["chrom"])
+    x0, x1 = min(xs), max(xs)
     for s in (-1, 1):
-        box(max(xs) - 0.04, s*(breite/2 - 0.30), r_rad + 0.40, 0.10, 0.34, 0.18, M["licht"])
-        box(min(xs) + 0.04, s*(breite/2 - 0.28), r_rad + 0.42, 0.10, 0.30, 0.14, M["rueck"])
-        box(max(xs) - 0.30, s*(breite/2 + 0.01), r_rad + 0.62, 0.16, 0.06, 0.10, M["chrom"])
-    box(max(xs) - 0.02, 0, r_rad + 0.02, 0.06, 0.44, 0.14, M["chrom"])   # Kennzeichen
-    box(min(xs) + 0.02, 0, r_rad + 0.02, 0.06, 0.44, 0.14, M["chrom"])
+        yf = s*(breite/2 - 0.09)
+        for xr in radstand:
+            rad(xr, yf, r_rad, r_rad, 0.20, M["felge"], M["reifen"], M["chrom"])
+            # Radlauf: ein Bogen ueber dem Rad. Ohne ihn sitzt das Rad wie ein
+            # aufgeklebter Kreis an einer glatten Flanke.
+            rohr([(xr + math.cos(a)*(r_rad + 0.10), s*(breite/2 + 0.01),
+                   r_rad + math.sin(a)*(r_rad + 0.10))
+                  for a in [math.pi*k/8 for k in range(9)]],
+                 0.045, lack, 8, True, "Radlauf")
+        box((x0 + x1)/2, s*(breite/2 + 0.015), r_rad + 0.26,
+            (x1 - x0)*0.74, 0.03, 0.05, M["chrom"])                  # Zierleiste
+        for tx in tueren:                                            # Tuerfugen
+            box(tx, s*(breite/2 + 0.008), r_rad + 0.42, 0.025, 0.02, 0.62, M["fuge"])
+            box(tx + 0.30, s*(breite/2 + 0.02), r_rad + 0.40, 0.16, 0.04, 0.045, M["chrom"])
+    box(x1 - 0.05, 0, r_rad + 0.30, 0.10, breite - 0.44, 0.24, M["fuge"])   # Kuehlergrill
+    for k in range(3):
+        box(x1 - 0.02, 0, r_rad + 0.22 + k*0.08, 0.06, breite - 0.48, 0.03, M["chrom"])
+    box(x0 + 0.06, 0, r_rad + 0.16, 0.16, breite - 0.14, 0.26, M["chrom"])  # Stossfaenger
+    box(x1 - 0.06, 0, r_rad + 0.16, 0.16, breite - 0.14, 0.26, M["chrom"])
+    for s in (-1, 1):
+        flach(zyl(x1 - 0.02, s*(breite/2 - 0.30), r_rad + 0.42, 0.115, 0.10,
+                  M["licht"], 14, (0, math.pi/2, 0)))                # Scheinwerfer
+        flach(zyl(x1 - 0.05, s*(breite/2 - 0.30), r_rad + 0.42, 0.135, 0.05,
+                  M["chrom"], 14, (0, math.pi/2, 0)))
+        box(x0 + 0.03, s*(breite/2 - 0.28), r_rad + 0.42, 0.08, 0.30, 0.14, M["rueck"])
+        box(x0 + 0.01, s*(breite/2 - 0.28), r_rad + 0.42, 0.06, 0.34, 0.18, M["chrom"])
+    box(x1 - 0.02, 0, r_rad + 0.02, 0.06, 0.44, 0.14, M["chrom"])    # Kennzeichen
+    box(x0 + 0.02, 0, r_rad + 0.02, 0.06, 0.44, 0.14, M["chrom"])
 
 def _b_limousine():
     """Viertuerige Limousine, 4,56 x 1,82 x 1,46 m. Das Profil ist der ganze
@@ -487,7 +519,7 @@ def _b_limousine():
     P = [(-2.28,0.18),(-2.28,0.62),(-1.95,0.66),(-1.30,0.70),(-0.80,1.06),
          (-0.10,1.42),(0.95,1.44),(1.55,1.06),(2.05,0.70),(2.28,0.62),(2.28,0.20),
          (1.70,0.14),(0.60,0.12),(-0.70,0.12),(-1.80,0.14)]
-    _wagen(P, BR, M["lackA"], M, (-1.44, 1.42), R)
+    _wagen(P, BR, M["lackA"], M, (-1.44, 1.42), R, (-0.78, 0.30))
     for s in (-1, 1):                                                  # Fensterband
         keil_y([(-0.62,0.98),(-0.02,1.30),(0.86,1.32),(1.32,1.00)],
                s*(BR/2 - 0.03), 0.06, M["scheibe"], name="Seitenglas")
@@ -508,7 +540,7 @@ def _b_kombi():
     P = [(-2.36,0.18),(-2.36,0.66),(-2.30,1.52),(-1.10,1.60),(0.40,1.62),
          (1.10,1.58),(1.62,1.10),(2.10,0.72),(2.36,0.64),(2.36,0.20),
          (1.72,0.14),(0.50,0.12),(-0.80,0.12),(-1.86,0.14)]
-    _wagen(P, BR, M["lackD"], M, (-1.50, 1.48), R)
+    _wagen(P, BR, M["lackD"], M, (-1.50, 1.48), R, (-0.86, 0.02))
     for s in (-1, 1):
         keil_y([(-2.10,1.00),(-2.06,1.44),(-0.10,1.48),(-0.06,1.02)],
                s*(BR/2 - 0.03), 0.06, M["scheibe"], name="Seitenglas")
@@ -531,7 +563,7 @@ def _b_sportwagen():
     P = [(-2.13,0.16),(-2.13,0.52),(-1.60,0.62),(-0.70,1.00),(0.10,1.18),
          (0.80,1.16),(1.42,0.86),(2.00,0.58),(2.13,0.50),(2.13,0.18),
          (1.60,0.10),(0.40,0.08),(-0.80,0.08),(-1.70,0.12)]
-    _wagen(P, BR, M["lackB"], M, (-1.34, 1.34), R)
+    _wagen(P, BR, M["lackB"], M, (-1.34, 1.34), R, (-0.30,))
     for s in (-1, 1):
         keil_y([(-0.40,0.86),(0.18,1.06),(0.76,1.04),(1.06,0.84)],
                s*(BR/2 - 0.03), 0.06, M["scheibe"], name="Seitenglas")
@@ -553,7 +585,7 @@ def _b_lieferwagen():
     R, BR = 0.37, 2.00
     P = [(-2.60,0.20),(-2.60,2.42),(1.20,2.42),(1.55,1.30),(2.20,0.78),
          (2.60,0.70),(2.60,0.22),(1.90,0.14),(0.40,0.12),(-1.20,0.12),(-2.10,0.14)]
-    _wagen(P, BR, M["lackC"], M, (-1.66, 1.66), R)
+    _wagen(P, BR, M["lackC"], M, (-1.66, 1.66), R, (0.20,))
     keil_y([(1.24,2.36),(1.52,1.34),(1.56,1.30),(1.22,2.32)], 0, BR - 0.24,
            M["scheibe"], name="Frontscheibe")
     for s in (-1, 1):
