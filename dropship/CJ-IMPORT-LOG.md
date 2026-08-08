@@ -3082,3 +3082,12 @@ add.js ✓. LEHRE: Menü-Links nach Locale-Änderungen IMMER auf /en/-Präfixe p
 - **Cart-Drawer mobil: rendert sauber deutsch** («Dein Warenkorb ist leer»-State mit Login-Hinweis + Weiter-einkaufen). ⚠️ Tool-Limitation: curl-Proxy ist cookielos → ATC-POST landet in anderer Session; echte Cart-Funktion war per cart/add.js-Smoke-Test (Cookie-Jar) schon verifiziert.
 - **📌 UX-Befund: WELCOME10-Popup (Shopify Forms) feuert mobil SOFORT beim Einstieg** und verdeckt Hero/Produkt — auf Produktseiten (Ad-Traffic!) kostet das Conversion. Empfehlung in USER-CHECKLISTE: Trigger auf ~10-15s Verzögerung oder Exit-Intent stellen (nur im Forms-Admin klickbar, keine API).
 - `automation/m_drawer_shot.mjs` gehärtet: Popup per Klick schliessen (CSS-Hide versteckte sonst auch den Cart-Drawer-Dialog), Koordinaten-Fallback fürs Forms-×.
+
+## 2026-08-08 · Kategorie-Korrektheits-Sweep («alles 0 fehler und produkten in richtigen kategorie»)
+Systematischer Validator über 22 Menü-Kategorien (MUSS-/VERBOTEN-Regex pro Kollektion, /tmp/cat_misfits.json). Ergebnis:
+- **Kleider bereinigt (12):** Nachthemden/Morgenrobe/Camisole→Tag nachtwaesche, 3 Röcke→kategorie-rock, Yoga-Body/Tunika/Jumpsuit/Set→kategorie-kleid entfernt. **Röcke:** Schwangerschafts-Yoga-HOSE raus.
+- **Irreführende Schmuck-Titel (Bild-verifiziert!):** «Abalone-Muschelanhänger»→«…-Armband», «Gold verzierte Kette»→«Verknotetes Ketten-Armband», «Silberne Perlenkette»→«Silbernes Perlen-Armband» — alle 3 SIND Armbänder, sassen richtig, nur Titel log. «Dünnes Wasserdichtes Herrenarmband» ist lt. Beschreibung eine UHR → «Dünne wasserdichte Herren-Armbanduhr».
+- **Kinderschuh-Maschinentitel-Katastrophen:** «Plüsch-Kotzen»(!!)→«Kinder-Stiefeletten britischer Stil», «Sportfreunde»→«Kinder-Sneakers», «Prinzessinnen-Bäder»→«Mädchen-Ballerinas» (+Beschreibungen mitgefixt).
+- **Ballerinas-Kollektion** enthält per Regel bewusst Loafers/Mokassins → Titel ehrlich: «Ballerinas, Flats & Loafers».
+- **Als korrekt verifiziert (keine Aktion):** Uhren-«Armbänder» sind Uhrenband-Zubehör/Tracker (gehören dazu), Pendants in Halsketten ok, «Jupe» ist Schweizer Rock-Wort, Heels/Mules/Pantoletten/Flip-Flops = Schuhe (Validator-Lücke, kein Shopfehler), Knöchel-Schmuck (Fusskettchen) bleibt in Armbändern.
+- **Lehre:** Uppercase-Guards wie \bROCK\b funktionieren NICHT mit re.I — Guard muss ohne IGNORECASE laufen oder anders formuliert sein.
