@@ -730,6 +730,17 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
           vx*=f; vz*=f;
         }
         vy+=(rnd(v,seed+3)-0.5)*hoch*0.09*(1-Math.abs(t-0.5)*1.4);
+        /* ⛰️ Das eigentliche Problem war nicht die Farbe, sondern die SILHOUETTE:
+           ein Kegel ist symmetrisch, und ein symmetrisches Dreieck liest sich
+           immer als Zelt, egal wie fein die Flanke verrauscht ist. Zwei Griffe:
+           1. SCHERUNG — die Spitze kippt seitlich aus der Achse (bis 0,26 rad).
+              Damit hat jeder Berg eine steile und eine flache Flanke.
+           2. KONKAVER FUSS — der Radius flaert unten auf. Ein echter Berg ist
+              nicht gerade, er wird nach unten hin schneller breit. */
+        var kx=(rnd(seed,21)-0.5)*0.52, kz=(rnd(seed,22)-0.5)*0.52;
+        vx+=kx*t*rad; vz+=kz*t*rad;
+        var fl=1+0.38*(1-t)*(1-t);
+        vx*=fl; vz*=fl;
         p.setXYZ(v,vx,vy,vz);
         var wy=vy+fussY, c;
         /* Grundton PRO BERG plus feines Korn pro Punkt. Ohne den Bergton sahen
