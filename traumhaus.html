@@ -711,7 +711,10 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     /* Schneelinie 44 war zu hoch: die Berge sind 42..97 hoch und stehen mit dem
        Fuss bei hoch/2-6, ihre Gipfel liegen also auf 36..91 — die halbe Kette
        blieb schneefrei und wirkte einfarbig. 34 gibt gut zwei Drittel eine Kappe. */
-    var SCHNEE=34, WIESE=8;                      // Welthoehe: Schneelinie, Fusssaum
+    /* Schneelinie: 44 war zu hoch (halbe Kette blieb schneefrei), 34 dann zu tief —
+       seit der Guertel bei r 300 liegt, sieht man vor allem die HOHEN Gipfel, und
+       die waren fast vollstaendig weiss. 48 laesst dem Fels wieder zwei Drittel. */
+    var SCHNEE=48, WIESE=8;                      // Welthoehe: Schneelinie, Fusssaum
     function rnd(i,k){var x=Math.sin(i*12.9898+k*78.233)*43758.5453;return x-Math.floor(x);}
     function bergGeo(rad,hoch,seg,seed,fussY){
       var g=new THREE.ConeGeometry(rad,hoch,seg,5);
