@@ -799,8 +799,13 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
         var wy=np.getY(v2)+fussY;
         var ny=nn.getY(v2);                        // 1 = eben, 0 = senkrecht
         var son=nn.getX(v2)*sx+ny*sy+nn.getZ(v2)*sz;
-        var fels=0.38+rnd(seed,5)*0.13+rnd(v2,seed+11)*0.06;
-        fels*=0.88+0.24*Math.max(0,son);           // Exposition, milder
+        /* ⚠️ Der Fels lag bei 0,42…0,79 Grau — und brannte unter dem Szenenlicht
+           (Hemisphaere + zwei Richtungslichter + envMap) zu Weiss aus. Aus der
+           Naehe war die ganze Kette schneebedeckt, obwohl die Schneeprobe korrekt
+           rechnete: der GRUND war weiss, nicht der Schnee zu tief. Echter Fels
+           hat Albedo 0,2…0,35 — erst damit steht der Schnee als Kappe darauf. */
+        var fels=0.22+rnd(seed,5)*0.10+rnd(v2,seed+11)*0.05;
+        fels*=0.85+0.25*Math.max(0,son);           // Exposition
         var c0,c1,c2;
         var schneeAn=(wy-SCHNEE)/20;               // Hoehe, weicher Uebergang
         /* ⚠️ Mit 0,42 lag NIRGENDS Schnee. Der Grund steckt im neuen Profil: bei
@@ -815,7 +820,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
           c0=fels*(1-m2)+0.40*m2; c1=fels*(1-m2)+0.54*m2; c2=fels*(1-m2)+0.32*m2;
         }else{
           var m3=Math.min(1,(wy-WIESE)/(SCHNEE-WIESE));
-          c0=fels+0.15*m3; c1=fels+0.145*m3; c2=fels+0.14*m3;
+          c0=fels+0.10*m3; c1=fels+0.098*m3; c2=fels+0.095*m3;
           c0=c0+(0.95-c0)*m; c1=c1+(0.97-c1)*m; c2=c2+(1.00-c2)*m;
         }
         col[v2*3]=c0;col[v2*3+1]=c1;col[v2*3+2]=c2;
