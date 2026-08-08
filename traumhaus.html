@@ -774,7 +774,11 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       var fussY=hoch/2-6;
       var berg=new THREE.Mesh(bergGeo(rad,hoch,9+(i%4),i*3+1,fussY),felsVM);
       berg.position.set(bx,fussY,bz);berg.rotation.y=(i*0.7)%6.283;berg.userData.gelaende=1;
-      berg.receiveShadow=true;scene.add(berg);}
+      berg.receiveShadow=true;scene.add(berg);
+      /* Fuss melden. Ein Berg der Hoehe 97 hat 80 m Basisradius — seine Sohle
+         reicht damit bis r 132 nach innen, weit vor die Bergmitte. Wer spaeter
+         etwas ins Vorland setzt, braucht diese Zahl, sonst steht es im Fels. */
+      (window._berge=window._berge||[]).push({x:bx,z:bz,r:rad*1.38});}
     /* Vorgelagerte Huegel als Uebergang von der Ebene ins Gebirge */
     var vhM=new THREE.MeshStandardMaterial({color:0x8faa72,roughness:1,flatShading:true,envMapIntensity:0.16});
     for(var v=0;v<26;v++){
@@ -3293,15 +3297,22 @@ setTimeout(function baueGebaeude(){
        300 Matrizen. Kosten: 2 Aufrufe fuer den ganzen Wald. Die Farbe variiert
        per `setColorAt`, sonst steht dort eine Mauer aus identischen Baeumen.
 
-       Der Guertel laeuft bei r 182…212: innen beginnen die vorgelagerten Huegel,
-       ab 212 stehen die Berge. Ausgespart werden Meer, alle Viertel samt Rand
-       und die Zufahrtsschneisen. */
+       Der Guertel laeuft bei r 146…210 und weicht den gemeldeten Bergfuessen
+       aus. Ausgespart werden Meer, alle Viertel samt Rand und die Zufahrts-
+       schneisen. */
     setTimeout(function waldsaum(){
       var kand=[];
       for(var i=0;i<1500;i++){
-        var a2=(i*2.399963)%6.283, rr=182+((i*37)%31)+((i*13)%7)*0.4;
+        var a2=(i*2.399963)%6.283, rr=146+((i*37)%64)+((i*13)%7)*0.4;
         var wx=Math.cos(a2)*rr, wz=Math.sin(a2)*rr;
         if(wx<-130&&Math.abs(wz)<180)continue;                 // Meer
+        /* ⚠️ Der erste Guertel lag bei r 182…212 — und war unsichtbar, weil die
+           BERGFUESSE bis r 132 nach innen reichen. Die Baeume standen im Fels.
+           Jetzt weiter innen und explizit gegen die gemeldeten Fuesse geprueft. */
+        var imFels=false, BB=window._berge||[];
+        for(var m9=0;m9<BB.length;m9++){
+          if(Math.hypot(wx-BB[m9].x,wz-BB[m9].z)<BB[m9].r+3){imFels=true;break;}}
+        if(imFels)continue;
         var frei=true;
         for(var q=0;q<VIERTEL.length;q++){var v=VIERTEL[q];
           if(Math.abs(wx-v.x)<v.w/2+10&&Math.abs(wz-v.z)<v.d/2+10){frei=false;break;}}
