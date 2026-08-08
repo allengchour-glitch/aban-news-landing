@@ -496,7 +496,12 @@ def _wagen(prof, breite, lack, M, radstand, r_rad, tueren=()):
                 aa = math.pi*k/8
                 wl = box(xr + math.cos(aa)*(r_rad + 0.055), s*(breite/2 - 0.02),
                          r_rad + math.sin(aa)*(r_rad + 0.055), 0.145, 0.10, 0.08, lack)
-                wl.rotation_euler[1] = aa + math.pi/2
+                # ⚠️ Vorzeichen: ein Quader, um y mit ry gedreht, legt seine
+                # lange Achse auf (cos ry, -sin ry). Tangential heisst
+                # (-sin aa, cos aa) — daraus folgt ry = -(aa + pi/2), NICHT
+                # +(aa + pi/2). Mit dem falschen Vorzeichen standen die Segmente
+                # radial ab und der Radlauf sah aus wie ein Zahnrad.
+                wl.rotation_euler[1] = -(aa + math.pi/2)
         box((x0 + x1)/2, s*(breite/2 + 0.015), r_rad + 0.26,
             (x1 - x0)*0.74, 0.03, 0.05, M["chrom"])                  # Zierleiste
         for tx in tueren:                                            # Tuerfugen
@@ -602,7 +607,9 @@ def _b_lieferwagen():
         box(1.14, s*(BR/2 + 0.09), 1.44, 0.16, 0.12, 0.14, M["lackC"])
     for s in (-1, 1):                                                    # Fluegeltueren
         box(-2.59, s*(BR/4), 1.30, 0.04, BR/2 - 0.10, 2.10, M["lackC"])
-    box(0, 0, 2.46, 4.40, BR - 0.30, 0.08, M["lackC"])                   # Dachreling
+    # 4,40 lang und auf x=0 zentriert ragte die Reling 1 m ueber die
+    # Windschutzscheibe hinaus — von der Seite ein Vordach statt eines Traegers.
+    box(-0.80, 0, 2.46, 3.60, BR - 0.30, 0.08, M["lackC"])               # Dachreling
 
 def lieferwagen(): _modul("th37_lieferwagen", _b_lieferwagen, 0.012)
 
