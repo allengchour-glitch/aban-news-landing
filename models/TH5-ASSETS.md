@@ -768,17 +768,17 @@ Wagen und eine Kirmesbude.
 
 | Datei | Maße (B×T×H) | Dreiecke | Inhalt |
 |---|---|---|---|
-| `th37_altbau.glb` | 11,34 × 10,89 × 16,40 | 22 280 | Gründerzeit, 4 Geschosse, Erker, Balkone, Gauben |
-| `th37_eckhaus.glb` | 10,71 × 11,47 × 13,40 | 9 472 | Rundecke mit Turmdach, Ladenfront, Markise |
-| `th37_reihenhaus.glb` | 6,39 × 9,22 × 9,70 | 6 680 | Giebel zur Straße, **Raster x += 6,00** |
-| `th37_cafe.glb` | 9,64 × 10,17 × 6,74 | 15 796 | Markise, 4 Tische mit Schirmen, Pflanzkübel |
+| `th37_altbau.glb` | 11,34 × 10,89 × 16,40 | 33 548 | Gründerzeit, Erker mit Sprossen, Balkone, Verdachungen, Eckquaderung, Fallrohre |
+| `th37_eckhaus.glb` | 10,71 × 11,47 × 13,40 | 17 140 | Rundecke mit Turmdach, Ladenfront, Markise, Ladenschild, Fensterläden |
+| `th37_reihenhaus.glb` | 6,74 × 9,22 × 9,70 | 14 132 | Giebel zur Straße, Ziegeldach, Läden, Rinne, **Raster x += 6,00** |
+| `th37_cafe.glb` | 9,64 × 10,17 × 6,74 | 16 336 | Markise, Ladenschild, 4 Tische mit Schirmen, Pflanzkübel |
 | `th37_limousine.glb` | 4,60 × 2,14 × 1,44 | 2 816 | viertürig, Front auf **+x** |
 | `th37_kombi.glb` | 4,76 × 1,94 × 1,70 | 3 084 | durchlaufende Dachlinie, Reling |
 | `th37_sportwagen.glb` | 4,30 × 2,14 × 1,18 | 3 128 | Fastback, Heckflügel |
 | `th37_lieferwagen.glb` | 5,24 × 2,30 × 2,50 | 3 516 | Kasten, Schiebetür, Flügeltüren |
 | `th37_schiessbude.glb` | 5,16 × 3,13 × 3,30 | 10 752 | Klappziele, Dosen, zwei Budengewehre |
 | `th37_wasserpistole.glb` | 0,77 × 0,18 × 0,50 | 2 384 | Spielzeug-Requisite |
-| `th37_strassenzug.glb` | 49,90 × 17,97 × 16,40 | 84 528 | **Maßstabs-Test**, nur aus den Teilen oben |
+| `th37_strassenzug.glb` | 50,40 × 20,17 × 16,40 | 121 292 | **Maßstabs-Test**, nur aus den Teilen oben |
 
 Generator: `tools/assets/mk_th37_stadt.py` · Werkzeug: `tools/assets/th_werkzeug.py`.
 Alle elf: zmin = 0,000. **Fahrzeuge zeigen mit der Front auf +x**, nicht auf +y — sie
@@ -796,7 +796,18 @@ stehen an einer Straße, nicht auf einem Sockel.
 > Feuerwaffen, keine realen Maße: STL ist ein Druckformat, und maßgetreue Waffenteile
 > entstehen hier nicht.
 
-### 🔧 Vier Fehler, die erst der Render gezeigt hat
+### 🎀 Zweiter Durchgang: Zierrat
+
+Die erste Fassung war korrekt, aber karg. Ergänzt wurden **Fensterläden** mit Lamellen,
+**Verdachungen** über der Beletage (nur dort — über allen Geschossen wäre es Kitsch),
+**Eckquaderung**, **Ziegelreihen** auf dem Satteldach samt Rinne und Fallrohr,
+**Ladenschilder** und eine Sprossenteilung im Erker. Zwei Bretter neben einem Fenster
+ändern mehr am Gesamteindruck als jede Texturverfeinerung: sie geben der Fassade
+Rhythmus und eine zweite Tiefenstufe. Und ein Dach als glatte Fläche ist die größte
+einzelne Schwachstelle — es ist die zweitgrößte sichtbare Fläche am Haus und trägt
+sonst keinerlei Maßstab.
+
+### 🔧 Fünf Fehler, die erst der Render gezeigt hat
 
 * **Vier weiße Kisten.** Alle Häuser hatten denselben Materialsatz — Putz, Rahmen und
   Werkstein lagen zwischen 0,82 und 0,97 Helligkeit. Das ganze Relief aus Gesimsen,
@@ -812,6 +823,10 @@ stehen an einer Straße, nicht auf einem Sockel.
   hat: durch die Rahmenöffnung sah man den Putz. Jetzt steht das Fenster vor der
   Fassade, wie es bei vorkragenden Gewänden ohnehin richtig ist. `_rahmen()` legt immer
   vier Balken, nie eine Platte.
+* **Die Platte deckte die Tafel zu — zum dritten Mal in derselben Charge.** Beim
+  Ladenschild lag die Rahmenplatte vor der farbigen Tafel; im Render ein leeres weißes
+  Brett. Merksatz für den ganzen Baukasten: *was hinten liegen soll, gehört nach hinten,
+  und ein Rahmen sind vier Balken.*
 * **Die Straße lag hinter den Häusern.** Im Straßenzug bei y = −6, aber die Schauseite
   ist +y: im Render sah man eine Häuserzeile und sonst nichts, die vier Wagen standen
   verdeckt dahinter.
