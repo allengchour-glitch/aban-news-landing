@@ -692,9 +692,61 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
      Weit draussen (r 210..290), damit zwischen Ringstrasse und Gebirge Platz fuer neue
      Viertel bleibt. Fels-Kegel mit Schneekappe, drei Staffeln fuer Tiefe. */
   (function berge(){
-    var felsM=new THREE.MeshStandardMaterial({color:0x7d7468,roughness:1,flatShading:true,envMapIntensity:0.2});
-    var felsM2=new THREE.MeshStandardMaterial({color:0x6a6358,roughness:1,flatShading:true,envMapIntensity:0.2});
-    var schneeM=new THREE.MeshStandardMaterial({color:0xf2f5f8,roughness:0.85,flatShading:true,envMapIntensity:0.3});
+    /* ⛰️ Vorher: `ConeGeometry(rad, hoch, 6..8, 1)` in EINEM Grau, dazu eine zweite
+       kleine Kegelspitze als Schneekappe. Aus jeder Perspektive standen damit
+       6-seitige Pyramiden am Horizont — und weil die Berge in praktisch jedem
+       Blick vorkommen, war das die groesste einzelne Schwachstelle im Bild.
+
+       Drei Aenderungen, alle ohne Mehrkosten beim Zeichnen:
+       1. MEHR RINGE (heightSegments 5) und mehr Seiten, dann die Punkte
+          deterministisch verrauscht — daraus werden Grate statt Kanten.
+       2. FARBE PRO PUNKT statt pro Berg: dunkler Fels unten, heller Schutt in der
+          Mitte, Schnee oben. Die Grenze ist eine WELTHOEHE, keine Kegelhoehe —
+          so liegt der Schnee ueber die ganze Kette auf derselben Linie, wie in
+          echten Gebirgen. Am Fuss laeuft die Farbe ins Wiesengruen aus.
+       3. Die aufgesetzte Schneekappe faellt weg; sie war ein zweiter Koerper,
+          der bei jeder Drehung gegen den Berg verrutschte. */
+    var felsVM=new THREE.MeshStandardMaterial({vertexColors:true,roughness:1,
+                                               flatShading:true,envMapIntensity:0.2});
+    var SCHNEE=44, WIESE=8;                      // Welthoehe: Schneelinie, Fusssaum
+    function rnd(i,k){var x=Math.sin(i*12.9898+k*78.233)*43758.5453;return x-Math.floor(x);}
+    function bergGeo(rad,hoch,seg,seed,fussY){
+      var g=new THREE.ConeGeometry(rad,hoch,seg,5);
+      var p=g.attributes.position,n=p.count,col=new Float32Array(n*3);
+      for(var v=0;v<n;v++){
+        var vx=p.getX(v),vy=p.getY(v),vz=p.getZ(v);
+        var t=(vy+hoch/2)/hoch;                  // 0 = Fuss, 1 = Spitze
+        var r=Math.hypot(vx,vz);
+        if(r>0.001){
+          /* Radiale Stoerung nach dem WINKEL, nicht nach dem Index: so bekommt
+             jeder Grat ueber die ganze Hoehe dieselbe Richtung und der Berg
+             bekommt Rippen statt Rauschen. */
+          var w=Math.atan2(vz,vx);
+          var f=1+(rnd(Math.round(w*100),seed)-0.5)*0.30*(1-t*0.55)
+                 +(rnd(v,seed+7)-0.5)*0.10;
+          vx*=f; vz*=f;
+        }
+        vy+=(rnd(v,seed+3)-0.5)*hoch*0.09*(1-Math.abs(t-0.5)*1.4);
+        p.setXYZ(v,vx,vy,vz);
+        var wy=vy+fussY, c;
+        var fels=0.40+rnd(v,seed+11)*0.10;       // Fels: koerniges Grau
+        if(wy>SCHNEE){                            // Schnee, weich eingeblendet
+          var m=Math.min(1,(wy-SCHNEE)/9);
+          c=[fels+(0.95-fels)*m, fels+0.02+(0.97-fels)*m, fels+0.05+(1.00-fels)*m];
+        }else if(wy<WIESE){                       // Fusssaum ins Wiesengruen
+          var m2=Math.min(1,(WIESE-wy)/10);
+          c=[fels*(1-m2)+0.42*m2, fels*(1-m2)+0.56*m2, fels*(1-m2)+0.34*m2];
+        }else{
+          var m3=(wy-WIESE)/(SCHNEE-WIESE);       // Fels -> heller Schutt
+          c=[fels+0.16*m3, fels+0.15*m3, fels+0.14*m3];
+        }
+        col[v*3]=c[0];col[v*3+1]=c[1];col[v*3+2]=c[2];
+      }
+      p.needsUpdate=true;
+      g.setAttribute("color",new THREE.BufferAttribute(col,3));
+      g.computeVertexNormals();
+      return g;
+    }
     var N=34;
     for(var i=0;i<N;i++){
       var a=i/N*6.283+((i*13)%7)*0.02;
@@ -703,13 +755,10 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       var rad=hoch*(0.62+((i%4)*0.07));
       var bx=Math.cos(a)*r,bz=Math.sin(a)*r;
       if(bx<-150&&Math.abs(bz)<170)continue;      // Westen ist offenes Meer
-      var geo=new THREE.ConeGeometry(rad,hoch,6+(i%3),1);
-      var berg=new THREE.Mesh(geo,i%2?felsM:felsM2);
-      berg.position.set(bx,hoch/2-6,bz);berg.rotation.y=(i*0.7)%6.283;berg.userData.gelaende=1;
-      berg.receiveShadow=true;scene.add(berg);
-      if(hoch>62){                         // Schneekappe nur auf den hohen
-        var kap=new THREE.Mesh(new THREE.ConeGeometry(rad*0.34,hoch*0.3,6+(i%3),1),schneeM);
-        kap.position.set(bx,hoch-6-hoch*0.15,bz);kap.rotation.y=berg.rotation.y;kap.userData.gelaende=1;scene.add(kap);}}
+      var fussY=hoch/2-6;
+      var berg=new THREE.Mesh(bergGeo(rad,hoch,9+(i%4),i*3+1,fussY),felsVM);
+      berg.position.set(bx,fussY,bz);berg.rotation.y=(i*0.7)%6.283;berg.userData.gelaende=1;
+      berg.receiveShadow=true;scene.add(berg);}
     /* Vorgelagerte Huegel als Uebergang von der Ebene ins Gebirge */
     var vhM=new THREE.MeshStandardMaterial({color:0x8faa72,roughness:1,flatShading:true,envMapIntensity:0.16});
     for(var v=0;v<26;v++){
