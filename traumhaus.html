@@ -3298,7 +3298,7 @@ setTimeout(function baueGebaeude(){
        und die Zufahrtsschneisen. */
     setTimeout(function waldsaum(){
       var kand=[];
-      for(var i=0;i<620;i++){
+      for(var i=0;i<1500;i++){
         var a2=(i*2.399963)%6.283, rr=182+((i*37)%31)+((i*13)%7)*0.4;
         var wx=Math.cos(a2)*rr, wz=Math.sin(a2)*rr;
         if(wx<-130&&Math.abs(wz)<180)continue;                 // Meer
@@ -3317,7 +3317,7 @@ setTimeout(function baueGebaeude(){
             if(Math.hypot(dx2,dz2)<9)frei=false;}}
         if(!frei)continue;
         kand.push([wx,wz,i]);
-        if(kand.length>=300)break;
+        if(kand.length>=620)break;
       }
       if(!kand.length)return;
       var n=kand.length;
@@ -3341,6 +3341,13 @@ setTimeout(function baueGebaeude(){
       st.instanceMatrix.needsUpdate=true; kr.instanceMatrix.needsUpdate=true;
       if(kr.instanceColor)kr.instanceColor.needsUpdate=true;
       st.castShadow=kr.castShadow=true; st.userData.nieAusblenden=kr.userData.nieAusblenden=1;
+      /* ⚠️ InstancedMesh-Falle: three.js cullt gegen die Bounding-Sphere der EINEN
+         Geometrie am Objektursprung — nicht gegen die Instanzen. Der ganze Wald
+         verschwand darum, sobald die Kamera nicht zufaellig Richtung Weltmitte
+         schaute; in der Draufsicht standen nur ein paar Gruppen. Entweder man
+         rechnet eine Sphere ueber alle Matrizen, oder man schaltet das Culling
+         fuer diese zwei Objekte ab — bei 2 Zeichenaufrufen lohnt der Aufwand nicht. */
+      st.frustumCulled=false; kr.frustumCulled=false;
       scene.add(st); scene.add(kr);
     },1400);
     /* Park-Ausstattung entlang der Hauptachse: Wegweiser, Plan, Beete, Laternen */
