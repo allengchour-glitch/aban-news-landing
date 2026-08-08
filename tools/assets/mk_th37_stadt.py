@@ -102,6 +102,9 @@ def _mats(wand=(0.94,0.91,0.85), zier=None, dachf=(0.40,0.26,0.24)):
       "eisen": mat("SdEisen",  (0.16,0.17,0.19), 0.45, 0.60),
       "gold":  mat("SdGold",   (0.90,0.74,0.36), 0.34, 0.45),
       "markise":mat("SdMarkise",(0.72,0.22,0.24), 0.72),
+      "laden": mat("SdLaden",  (0.32,0.42,0.34), 0.72),
+      "ladenD":mat("SdLadenD", (0.24,0.33,0.27), 0.72),
+      "metall":mat("SdMetall", (0.62,0.64,0.68), 0.40, 0.55),
       "laub":  mat("SdLaub",   (0.28,0.48,0.24), 0.85),
       "bluete":mat("SdBluete", (0.90,0.44,0.52), 0.70),
       # Fahrzeuge
@@ -169,6 +172,76 @@ def _tuer(x, z0, b, h, M, yf):
     kugel(x + b/2 - 0.10, yf + 0.07, z0 + h*0.45, 0.05, M["gold"], 9)
     box(x, yf + 0.16, z0 + 0.05, b + 0.34, 0.42, 0.10, M["stein"])   # Stufe
 
+def _laden_flgl(x, yf, z, b, h, M):
+    """Fensterlaeden links und rechts, mit Lamellen. Zwei Bretter neben einem
+    Fenster aendern mehr am Gesamteindruck als jede Texturverfeinerung: sie
+    geben der Fassade Rhythmus und eine zweite Tiefenstufe."""
+    for s9 in (-1, 1):
+        lx = x + s9*(b/2 + 0.16)
+        box(lx, yf + 0.10, z, 0.28, 0.05, h, M["laden"])
+        for k in range(7):
+            box(lx, yf + 0.13, z - h/2 + h*(k + 0.5)/7, 0.24, 0.03, h/11, M["ladenD"])
+
+def _verdachung(x, yf, z, b, M):
+    """Fensterverdachung — die kleine Bekroenung ueber einem Fenster. Beim
+    Gruenderzeitbau sitzt sie nur ueber dem ersten Obergeschoss (Beletage)."""
+    box(x, yf + 0.10, z, b + 0.42, 0.26, 0.10, M["stein"])
+    box(x, yf + 0.06, z - 0.09, b + 0.30, 0.20, 0.09, M["stein"])
+    for s9 in (-1, 1):
+        box(x + s9*(b/2 + 0.09), yf + 0.05, z - 0.30, 0.10, 0.16, 0.42, M["stein"])
+
+def _quaderung(cx, cy, z0, z1, M, n=9):
+    """Eckquaderung: abwechselnd lange und kurze Steine ueber die Hausecke, je
+    einer auf jeder der beiden Fassaden. Ohne sie verliert sich die Kante einer
+    verputzten Fassade voellig — die Ecke ist die Stelle, an der ein Haus seine
+    Koerperlichkeit zeigt."""
+    sx = 1 if cx > 0 else -1
+    sy = 1 if cy > 0 else -1
+    for k in range(n):
+        hh = (z1 - z0)/n*0.70
+        zz = z0 + (z1 - z0)*(k + 0.5)/n
+        a = 0.62 if k % 2 == 0 else 0.34
+        b = 0.34 if k % 2 == 0 else 0.62
+        box(cx - sx*a/2, cy - sy*0.07, zz, a, 0.16, hh, M["stein"])
+        box(cx - sx*0.07, cy - sy*b/2, zz, 0.16, b, hh, M["stein"])
+
+def _schild(x, yf, z, b, M, farbe="markise"):
+    """Ladenschild ueber der Front: Tafel, Rahmen, drei angedeutete Wortbloecke.
+    Echte Schrift braeuchte eine Textur; drei Bloecke lesen sich aus Spielabstand
+    genauso als Beschriftung und kosten nichts."""
+    # ⚠️ Zum DRITTEN Mal dieselbe Falle in dieser Charge: die Rahmenplatte lag
+    # VOR der Tafel und deckte sie ganz zu — im Render ein leeres weisses Brett
+    # statt eines farbigen Schilds. Was hinten liegen soll, gehoert nach hinten.
+    box(x, yf + 0.07, z, b + 0.12, 0.06, 0.64, M["stein"])   # Rueckplatte
+    box(x, yf + 0.12, z, b, 0.06, 0.50, M[farbe])            # Tafel davor
+    for k in range(3):
+        box(x - b*0.26 + k*b*0.26, yf + 0.16, z, b*0.17, 0.03, 0.16, M["rahm"])
+
+def _dachziegel(cz, halbb, hoehe, tiefe, M, n=9):
+    """Ziegelreihen auf einem Satteldach. Ein Dach als glatte Flaeche ist die
+    groesste einzelne Schwachstelle: es ist die zweitgroesste sichtbare Flaeche
+    am Haus und traegt sonst keinerlei Massstab."""
+    L = math.hypot(halbb, hoehe)
+    ry = math.atan2(hoehe, halbb)
+    for s9 in (-1, 1):
+        dx, dz = -s9*halbb/L, hoehe/L                     # aufwaerts entlang der Schraege
+        nx, nz = s9*hoehe/L, halbb/L                      # nach aussen
+        for k in range(n):
+            t = (k + 0.5)/n
+            px = s9*halbb + dx*L*t + nx*0.05
+            pz = cz + dz*L*t + nz*0.05
+            zi = box(px, 0, pz, L/n*1.16, tiefe, 0.07, M["dach"])
+            zi.rotation_euler[1] = s9*ry
+    box(0, 0, cz + hoehe + 0.05, 0.34, tiefe + 0.06, 0.16, M["dach"])   # Firstziegel
+    for s9 in (-1, 1):                                                   # Rinne
+        flach(zyl(s9*(halbb + 0.10), 0, cz + 0.02, 0.075, tiefe + 0.10,
+                  M["metall"], 10, (math.pi/2, 0, 0)))
+
+def _fallrohr(x, y, z0, z1, M):
+    flach(zyl(x, y, (z0 + z1)/2, 0.055, z1 - z0, M["metall"], 10))
+    for k in range(int((z1 - z0)/2.2) + 1):
+        flach(zyl(x, y, z0 + 0.4 + k*2.2, 0.075, 0.10, M["metall"], 10))
+
 def _gesims(z, b, t, M, vor=0.16):
     box(0, 0, z, b + vor, t + vor, 0.14, M["stein"])
 
@@ -204,6 +277,15 @@ def _b_altbau():
         box(0, T/2 + 1.06, zz + 1.15, 2.30, 0.10, 1.70, M["glas"])
         for s in (-1, 1):
             box(s*1.30, T/2 + 0.82, zz + 1.15, 0.10, 0.55, 1.70, M["glas"])
+        # Der Erker war eine 2,30 x 1,70 grosse dunkle Flaeche ohne jede Teilung —
+        # aus der Entfernung ein Loch in der Fassade. Rahmen, zwei Pfosten, ein
+        # Kaempfer: erst die Teilung macht daraus ein Fenster.
+        _rahmen(0, T/2 + 1.14, zz + 1.15, 2.30, 1.70, 0.10, M)
+        for mx in (-0.77, 0.77):
+            box(mx, T/2 + 1.14, zz + 1.15, 0.07, 0.06, 1.70, M["rahm"])
+        box(0, T/2 + 1.14, zz + 1.15 + 0.42, 2.30, 0.06, 0.07, M["rahm"])
+        for s in (-1, 1):
+            box(s*1.30, T/2 + 0.86, zz + 1.15 + 0.42, 0.08, 0.55, 0.07, M["rahm"])
     box(0, T/2 + 0.55, EG + 0.72, 3.20, 1.30, 0.22, M["stein"])       # Erkerkonsole
     for s in (-1, 1):                                                 # Kragsteine
         strebe((s*1.20, T/2 + 0.20, EG + 0.62), (s*1.20, T/2 + 1.00, EG + 0.10),
@@ -226,6 +308,15 @@ def _b_altbau():
         box(s*2.80, T/2 - 1.80, EG + 3*GH + 1.42, 1.10, 0.10, 0.80, M["glas"])
         box(s*2.80, T/2 - 1.30, EG + 3*GH + 2.02, 1.90, 1.60, 0.14, M["dach"])
     box(3.90, -T/2 + 1.60, EG + 3*GH + 1.90, 0.80, 0.80, 2.00, M["dach"])   # Kamin
+    # Beletage: Verdachung nur ueber dem ERSTEN Obergeschoss. Ueber allen dreien
+    # waere es Kitsch — die Staffelung nach oben hin schlichter ist die Regel.
+    for xa in (-4.10, -1.60, 1.60, 4.10):
+        _verdachung(xa, T/2, EG + 0.90 + 1.05 + 1.10, 1.20, M)
+    for sx in (-1, 1):
+        for sy in (-1, 1):
+            _quaderung(sx*B/2, sy*T/2, 0.62, EG + 0.22, M, 7)
+    for sx in (-1, 1):
+        _fallrohr(sx*(B/2 - 0.30), T/2 + 0.12, 0.10, EG + 3*GH + 0.70, M)
 
 def altbau(): _modul("th37_altbau", _b_altbau, 0.012)
 
@@ -278,6 +369,12 @@ def _b_eckhaus():
     flach(kugel(B/2 - 4.10, T/2 - 4.10, H + 2.60, 0.22, M["gold"], 12))
     strebe((B/2 - 4.10, T/2 - 4.10, H + 2.70), (B/2 - 4.10, T/2 - 4.10, H + 3.20),
            0.05, M["gold"])
+    _schild(-2.25, T/2, 4.28, 4.60, M)
+    for g in range(2):
+        zz = EG + 0.30 + g*GH + 1.00
+        for xa in (-3.60, -1.20):
+            _laden_flgl(xa, T/2, zz, 1.10, 1.70, M)
+    _fallrohr(-B/2 + 0.24, T/2 - 0.12, 0.10, H + 0.05, M)
 
 def eckhaus(): _modul("th37_eckhaus", _b_eckhaus, 0.012)
 
@@ -303,6 +400,11 @@ def _b_reihenhaus():
            0, T + 0.40, M["dach"], name="Giebel")
     box(0, 0, KH + 0.40, B + 0.28, T + 0.50, 0.16, M["holz"])          # Traufbrett
     _fenster(0, KH + 1.30, 0.90, 1.00, M, T/2 + 0.20, False)
+    _dachziegel(KH + 0.40, B/2 + 0.20, 2.30, T + 0.40, M, 9)
+    _laden_flgl(1.35, T/2, 1.85, 1.60, 1.60, M)
+    for xa in (-1.55, 1.35):
+        _laden_flgl(xa, T/2, GH + 2.10, 1.30, 1.60, M)
+    _fallrohr(B/2 - 0.22, T/2 + 0.10, 0.10, KH + 0.30, M)
     box(2.30, -T/2 + 2.20, KH + 2.40, 0.70, 0.70, 1.80, M["dach"])     # Kamin
     for k in range(3):                                                  # Blumenkasten
         box(1.35, T/2 + 0.16, 1.10, 1.70, 0.26, 0.24, M["holz"])
@@ -328,6 +430,7 @@ def _b_cafe():
         _rahmen(xa, ty + 0.04, 2.10, 2.20, 2.60, 0.11, M)
     _tuer(-3.80, 0.50, 1.10, 2.50, M, ty)
     box(0, ty + 1.05, 3.86, B - 0.4, 2.10, 0.22, M["markise"])         # Markise
+    _schild(0, ty, 4.72, 5.20, M, "markise")
     for xa in (-3.6, 0, 3.6):
         strebe((xa, ty + 0.10, 3.95), (xa, ty + 2.05, 3.62), 0.07, M["eisen"])
     for xa in (-3.4, 3.4):                                             # Terrasse
