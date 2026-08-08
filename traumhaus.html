@@ -4040,13 +4040,47 @@ setTimeout(function baueGebaeude(){
     bau("th7_hochhaus_dach.glb",3.6,-90,24,-112,0,false);
     bau("th7_parkhaus.glb",9.8,96,0,-118,0,false);
     bau("th7_lagerhalle.glb",9.0,97,0,-84,0,false);
-    bau("th7_taxi.glb",1.7,6,0,94,Math.PI/2,false);
+    /* ── 🚉 BAHNHOFSVORPLATZ (User: „platz schoener, bahnhof trottoir frei") ────
+       Vorher: dunkler Belag, Taxi mitten auf dem Platz, sonst nichts. Jetzt eine
+       helle Pflasterflaeche mit dem Zierwerk aus Charge 35/36 (lag ungenutzt),
+       das Taxi wartet in einer markierten Bucht am Rand, die Platzmitte und das
+       Trottoir zum Portal bleiben FREI. */
+    (function vorplatz(){
+      /* ⚠️ GEMESSEN: die Schule steht bei (-6,88) und reicht bis z=94.5 — zwischen
+         ihr und dem Bahnhofsportal (z=97.1) liegt nur eine 2.5-m-Gasse. Der erste
+         Wurf stellte Pflaster und Deko bis z=92 auf — mitten in die Schule, und
+         verstopfte genau das Trottoir, das frei sein soll.
+         Jetzt: durchgehendes helles Gehwegband in der Gasse, die Portalachse und
+         die Gasse bleiben MOEBELFREI; das Portal wird nur von zwei Laternen und
+         zwei Pflanzschalen flankiert, der Rest steht auf der freien Ostflaeche. */
+      var pf=new THREE.Mesh(new THREE.PlaneGeometry(28,2.6),betMat(0xd6cfc0,0.9));
+      pf.rotation.x=-Math.PI/2;pf.position.set(0,-0.001,95.9);pf.receiveShadow=true;scene.add(pf);
+      bau("th35_laterne_schmiede.glb",4.2,-5.5,0,95.9,0,false,null,true);
+      bau("th35_laterne_schmiede.glb",4.2,5.5,0,95.9,0,false,null,true);
+      bau("th35_pflanzschale.glb",0.8,-3.3,0,95.7,0,false,null,true);
+      bau("th35_pflanzschale.glb",0.8,3.3,0,95.7,0,false,null,true);
+      /* Ostflaeche neben dem Bahnhof: kleiner Warteplatz mit Brunnen und Bank */
+      var op=new THREE.Mesh(new THREE.PlaneGeometry(8,7),betMat(0xd6cfc0,0.9));
+      op.rotation.x=-Math.PI/2;op.position.set(17.5,-0.001,98);op.receiveShadow=true;scene.add(op);
+      bau("th36_trinkbrunnen.glb",1.6,16,0,98,0,false,null,true);
+      bau("th35_bank_zier.glb",1.0,19.5,0,98,-Math.PI/2,false,null,true);
+      bau("th36_vogeltraenke.glb",1.1,15,0,100.3,0,false,null,true);
+      /* Taxibucht mit Markierung am Parkstreifen */
+      var tb=new THREE.Mesh(new THREE.PlaneGeometry(6,3),strMatH.clone());
+      tb.rotation.x=-Math.PI/2;tb.position.set(11,-0.0005,91.4);tb.receiveShadow=true;scene.add(tb);
+      var cv=document.createElement("canvas");cv.width=128;cv.height=48;var c=cv.getContext("2d");
+      c.fillStyle="#d8d8cc";c.font="bold 34px sans-serif";c.fillText("TAXI",14,36);
+      var tm=new THREE.Mesh(new THREE.PlaneGeometry(2.6,1),
+        new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(cv),transparent:true}));
+      tm.rotation.x=-Math.PI/2;tm.position.set(11,0.006,90.2);scene.add(tm);
+    })();
+    bau("th7_taxi.glb",1.7,11,0,91.4,Math.PI/2,false,null,true);
     bau("th7_lieferwagen.glb",2.5,12,0,55,Math.PI/2,false);
     bau("th7_lkw.glb",3.7,90,0,-74,0,false);
     bau("th7_denkmal.glb",5.3,68,0,92,Math.PI,false);
     /* ➕ "mehr sachen": Reserven verbaut */
     bau("th5_bushaltestelle.glb",2.5,30,0,-55.8,0,false);          /* 2. Haltestelle an der Nordstrasse */
-    bau("th6_kiosk.glb",2.6,-12,0,92,Math.PI,false);               /* Kiosk am Bahnhofsvorplatz */
+    bau("th6_kiosk.glb",2.6,-16.5,0,93,Math.PI/2,false,null,true); /* Kiosk an den Platz-Westrand — stand halb im Weg */
     bau("th6_brunnen_trog.glb",0.9,-92,0,-44,0.3,false);           /* Traenke am Bauernhof */
     bau("th6_pylonen.glb",0.6,-24,0,96,0.6,false);                 /* Pylonen an der Baustelle */
     bau("th6_schild_stop.glb",2.4,-74,0,-54,0,false);
