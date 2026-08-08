@@ -763,14 +763,34 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       g.computeVertexNormals();
       return g;
     }
+    /* 📏 GUERTEL NACH AUSSEN, 212 -> 300.
+       Zwei Aufgaben hintereinander sind an derselben Enge gescheitert: fuer ein
+       neues Stadtviertel gab es zwischen r 140 und 340 keinen freien 76 x 86 m
+       Platz, und der Waldsaum stand im Fels, weil die Bergfuesse bis r 102 nach
+       innen reichen. Ursache ist nicht die Platzierung, sondern der Radius des
+       Guertels. Aussen herum gewinnt die Karte rund 90 m Ring — Raum fuer Wald,
+       Felder und kuenftige Viertel.
+
+       ⚠️ BERG NR. 5 BLEIBT, WO ER IST. Die Seilbahn rechnet ihre Bergstation aus
+       genau seinen Zahlen (121,5 | 174,9 / Radius 51,75 / Hoehe 75); zieht man
+       ihn weg, endet die Fahrt in der Luft. Er bleibt als HAUSBERG vor der Kette
+       stehen — das sieht ohnehin besser aus als eine gleichmaessige Wand.
+
+       Ausgespart werden die drei Viertel, die jetzt im neuen Guertelbereich
+       liegen: Freizeitpark, Sportpark und die Achterbahn. */
+    var QSPERR=[[60,330,200,80],[0,216,110,60],[-190,212,80,60],[172,0,70,90]];
     var N=34;
     for(var i=0;i<N;i++){
       var a=i/N*6.283+((i*13)%7)*0.02;
-      var r=212+((i*47)%78);
+      var r=(i===5)?213:300+((i*47)%96);
       var hoch=42+((i*29)%56);            // 42..97
       var rad=hoch*(0.62+((i%4)*0.07));
       var bx=Math.cos(a)*r,bz=Math.sin(a)*r;
       if(bx<-150&&Math.abs(bz)<170)continue;      // Westen ist offenes Meer
+      var sperr=false;
+      for(var qs=0;qs<QSPERR.length;qs++){var Q=QSPERR[qs];
+        if(Math.abs(bx-Q[0])<Q[2]+rad*0.9&&Math.abs(bz-Q[1])<Q[3]+rad*0.9){sperr=true;break;}}
+      if(sperr)continue;
       var fussY=hoch/2-6;
       var berg=new THREE.Mesh(bergGeo(rad,hoch,9+(i%4),i*3+1,fussY),felsVM);
       berg.position.set(bx,fussY,bz);berg.rotation.y=(i*0.7)%6.283;berg.userData.gelaende=1;
@@ -782,7 +802,9 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     /* Vorgelagerte Huegel als Uebergang von der Ebene ins Gebirge */
     var vhM=new THREE.MeshStandardMaterial({color:0x8faa72,roughness:1,flatShading:true,envMapIntensity:0.16});
     for(var v=0;v<26;v++){
-      var av=v/26*6.283+0.11,rv=170+((v*31)%36);
+      /* Die Vorhuegel sind der Uebergang von der Ebene ins Gebirge — sie muessen
+         mit dem Guertel mitwandern, sonst stehen sie mitten im neuen Vorland. */
+      var av=v/26*6.283+0.11,rv=248+((v*31)%44);
       var vr=18+((v*11)%16);
       var vx=Math.cos(av)*rv,vz=Math.sin(av)*rv;
       if(vx<-120&&Math.abs(vz)<170)continue;      // nicht ins Meer
@@ -3297,13 +3319,13 @@ setTimeout(function baueGebaeude(){
        300 Matrizen. Kosten: 2 Aufrufe fuer den ganzen Wald. Die Farbe variiert
        per `setColorAt`, sonst steht dort eine Mauer aus identischen Baeumen.
 
-       Der Guertel laeuft bei r 146…210 und weicht den gemeldeten Bergfuessen
+       Der Guertel laeuft bei r 150…284 und weicht den gemeldeten Bergfuessen
        aus. Ausgespart werden Meer, alle Viertel samt Rand und die Zufahrts-
        schneisen. */
     setTimeout(function waldsaum(){
       var kand=[];
-      for(var i=0;i<1500;i++){
-        var a2=(i*2.399963)%6.283, rr=146+((i*37)%64)+((i*13)%7)*0.4;
+      for(var i=0;i<2600;i++){
+        var a2=(i*2.399963)%6.283, rr=150+((i*37)%128)+((i*13)%7)*0.4;
         var wx=Math.cos(a2)*rr, wz=Math.sin(a2)*rr;
         if(wx<-118&&Math.abs(wz)<184)continue;                 // Meer UND Sandstrand
         /* ⚠️ Der erste Guertel lag bei r 182…212 — und war unsichtbar, weil die
@@ -3333,7 +3355,7 @@ setTimeout(function baueGebaeude(){
             if(Math.hypot(dx2,dz2)<9)frei=false;}}
         if(!frei)continue;
         kand.push([wx,wz,i]);
-        if(kand.length>=620)break;
+        if(kand.length>=900)break;
       }
       if(!kand.length)return;
       var n=kand.length;
