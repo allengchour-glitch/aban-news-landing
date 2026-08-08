@@ -774,7 +774,11 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       var fussY=hoch/2-6;
       var berg=new THREE.Mesh(bergGeo(rad,hoch,9+(i%4),i*3+1,fussY),felsVM);
       berg.position.set(bx,fussY,bz);berg.rotation.y=(i*0.7)%6.283;berg.userData.gelaende=1;
-      berg.receiveShadow=true;scene.add(berg);}
+      berg.receiveShadow=true;scene.add(berg);
+      /* Fuss melden. Ein Berg der Hoehe 97 hat 80 m Basisradius — seine Sohle
+         reicht damit bis r 132 nach innen, weit vor die Bergmitte. Wer spaeter
+         etwas ins Vorland setzt, braucht diese Zahl, sonst steht es im Fels. */
+      (window._berge=window._berge||[]).push({x:bx,z:bz,r:rad*1.38});}
     /* Vorgelagerte Huegel als Uebergang von der Ebene ins Gebirge */
     var vhM=new THREE.MeshStandardMaterial({color:0x8faa72,roughness:1,flatShading:true,envMapIntensity:0.16});
     for(var v=0;v<26;v++){
@@ -3283,6 +3287,85 @@ setTimeout(function baueGebaeude(){
                  Blechdosen, Budengewehre mit Korkkugel. `tuer:false`, weil man
                  an die Theke tritt und nicht hineingeht. */
               {file:"th37_schiessbude.glb",h:3.3,w:5.2,d:3.2,tuer:false}]});
+    /* 🌲 WALDSAUM. Zwischen Ringstrasse und Gebirge lag eine einzige flache
+       gruene Flaeche — 90 m Nichts zwischen dem letzten Haus und dem ersten
+       Felsen. Ein Waldguertel am Bergfuss schliesst die Luecke und gibt der
+       Ebene Tiefe.
+
+       ⚠️ Als 300 Einzelmeshes waeren das 600 Zeichenaufrufe — das Spiel liegt
+       schon bei ueber 1000. Darum `InstancedMesh`: EINE Geometrie, EIN Material,
+       300 Matrizen. Kosten: 2 Aufrufe fuer den ganzen Wald. Die Farbe variiert
+       per `setColorAt`, sonst steht dort eine Mauer aus identischen Baeumen.
+
+       Der Guertel laeuft bei r 146…210 und weicht den gemeldeten Bergfuessen
+       aus. Ausgespart werden Meer, alle Viertel samt Rand und die Zufahrts-
+       schneisen. */
+    setTimeout(function waldsaum(){
+      var kand=[];
+      for(var i=0;i<1500;i++){
+        var a2=(i*2.399963)%6.283, rr=146+((i*37)%64)+((i*13)%7)*0.4;
+        var wx=Math.cos(a2)*rr, wz=Math.sin(a2)*rr;
+        if(wx<-118&&Math.abs(wz)<184)continue;                 // Meer UND Sandstrand
+        /* ⚠️ Der erste Guertel lag bei r 182…212 — und war unsichtbar, weil die
+           BERGFUESSE bis r 132 nach innen reichen. Die Baeume standen im Fels.
+           Jetzt weiter innen und explizit gegen die gemeldeten Fuesse geprueft. */
+        var imFels=false, BB=window._berge||[];
+        for(var m9=0;m9<BB.length;m9++){
+          /* r*0.80 statt des vollen Fusses: die aeussersten 20 % des Kegelfusses
+             sind flach ausgeflaert, dort steht ein Baum wie an einem Hang. Mit
+             dem vollen Radius blieb fast nichts uebrig — die Fuesse reichen bis
+             r 102 nach innen und der Guertel waere leer geblieben. Genau so
+             sieht eine Baumgrenze aus: der Wald steigt ein Stueck mit. */
+          if(Math.hypot(wx-BB[m9].x,wz-BB[m9].z)<BB[m9].r*0.80){imFels=true;break;}}
+        if(imFels)continue;
+        var frei=true;
+        for(var q=0;q<VIERTEL.length;q++){var v=VIERTEL[q];
+          if(Math.abs(wx-v.x)<v.w/2+10&&Math.abs(wz-v.z)<v.d/2+10){frei=false;break;}}
+        if(!frei)continue;
+        /* Zufahrtsschneise: die Anbindungen laufen radial nach aussen. Ein
+           Streifen von 9 m um die Verbindungslinie Stadtmitte -> Viertelmitte
+           bleibt frei, sonst waechst der Wald ueber die Strasse. */
+        for(var q2=0;q2<VIERTEL.length&&frei;q2++){var v2=VIERTEL[q2];
+          var L=Math.hypot(v2.x,v2.z); if(L<1)continue;
+          var t=(wx*v2.x+wz*v2.z)/(L*L);
+          if(t>0&&t<1.2){
+            var dx2=wx-v2.x*t, dz2=wz-v2.z*t;
+            if(Math.hypot(dx2,dz2)<9)frei=false;}}
+        if(!frei)continue;
+        kand.push([wx,wz,i]);
+        if(kand.length>=620)break;
+      }
+      if(!kand.length)return;
+      var n=kand.length;
+      var stG=new THREE.CylinderGeometry(0.45,0.75,3.2,5),
+          krG=new THREE.ConeGeometry(2.7,9.0,7,2);
+      var stM=new THREE.MeshStandardMaterial({color:0x5a4432,roughness:1,flatShading:true,envMapIntensity:0.15}),
+          krM=new THREE.MeshStandardMaterial({color:0xffffff,roughness:1,flatShading:true,envMapIntensity:0.15});
+      var st=new THREE.InstancedMesh(stG,stM,n), kr=new THREE.InstancedMesh(krG,krM,n);
+      var M4=new THREE.Matrix4(), Q=new THREE.Quaternion(), P=new THREE.Vector3(), S=new THREE.Vector3();
+      var C=new THREE.Color();
+      for(var k=0;k<n;k++){
+        var w=kand[k], sk=0.72+((w[2]*17)%9)*0.075;             // 0,72 … 1,32
+        Q.setFromAxisAngle(new THREE.Vector3(0,1,0),(w[2]*0.7)%6.283);
+        P.set(w[0],1.6*sk,w[1]); S.set(sk,sk,sk);
+        st.setMatrixAt(k,M4.compose(P,Q,S));
+        P.set(w[0],(3.2+4.5)*sk,w[1]);
+        kr.setMatrixAt(k,M4.compose(P,Q,S));
+        C.setHSL(0.30+((w[2]*11)%9)*0.006, 0.34+((w[2]*7)%5)*0.03, 0.20+((w[2]*5)%7)*0.022);
+        kr.setColorAt(k,C);
+      }
+      st.instanceMatrix.needsUpdate=true; kr.instanceMatrix.needsUpdate=true;
+      if(kr.instanceColor)kr.instanceColor.needsUpdate=true;
+      st.castShadow=kr.castShadow=true; st.userData.nieAusblenden=kr.userData.nieAusblenden=1;
+      /* ⚠️ InstancedMesh-Falle: three.js cullt gegen die Bounding-Sphere der EINEN
+         Geometrie am Objektursprung — nicht gegen die Instanzen. Der ganze Wald
+         verschwand darum, sobald die Kamera nicht zufaellig Richtung Weltmitte
+         schaute; in der Draufsicht standen nur ein paar Gruppen. Entweder man
+         rechnet eine Sphere ueber alle Matrizen, oder man schaltet das Culling
+         fuer diese zwei Objekte ab — bei 2 Zeichenaufrufen lohnt der Aufwand nicht. */
+      st.frustumCulled=false; kr.frustumCulled=false;
+      scene.add(st); scene.add(kr);
+    },1400);
     /* Park-Ausstattung entlang der Hauptachse: Wegweiser, Plan, Beete, Laternen */
     setTimeout(function parkDeko(){
       var PX=60,PZ=330;
