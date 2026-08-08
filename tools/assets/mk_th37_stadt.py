@@ -485,12 +485,18 @@ def _wagen(prof, breite, lack, M, radstand, r_rad, tueren=()):
         yf = s*(breite/2 - 0.09)
         for xr in radstand:
             rad(xr, yf, r_rad, r_rad, 0.20, M["felge"], M["reifen"], M["chrom"])
-            # Radlauf: ein Bogen ueber dem Rad. Ohne ihn sitzt das Rad wie ein
-            # aufgeklebter Kreis an einer glatten Flanke.
-            rohr([(xr + math.cos(a)*(r_rad + 0.10), s*(breite/2 + 0.01),
-                   r_rad + math.sin(a)*(r_rad + 0.10))
-                  for a in [math.pi*k/8 for k in range(9)]],
-                 0.045, lack, 8, True, "Radlauf")
+            # ⚠️ Erst war der Radlauf ein Rohr bei y = breite/2 + 0,01 — im Render
+            # ein duenner Drahtbuegel, der NEBEN der Karosserie in der Luft stand.
+            # Ein Radlauf ist keine Linie vor dem Blech, sondern eine Wulst IM
+            # Blech. Darum halb eingelassene Segmente entlang des Bogens, tangential
+            # gedreht, dazu ein dunkles Radhaus dahinter — erst das gibt dem Rad Tiefe.
+            flach(zyl(xr, s*(breite/2 - 0.115), r_rad, r_rad + 0.05, 0.03,
+                      M["fuge"], 18, (math.pi/2, 0, 0)))
+            for k in range(9):
+                aa = math.pi*k/8
+                wl = box(xr + math.cos(aa)*(r_rad + 0.055), s*(breite/2 - 0.02),
+                         r_rad + math.sin(aa)*(r_rad + 0.055), 0.145, 0.10, 0.08, lack)
+                wl.rotation_euler[1] = aa + math.pi/2
         box((x0 + x1)/2, s*(breite/2 + 0.015), r_rad + 0.26,
             (x1 - x0)*0.74, 0.03, 0.05, M["chrom"])                  # Zierleiste
         for tx in tueren:                                            # Tuerfugen
@@ -572,9 +578,9 @@ def _b_sportwagen():
            M["scheibe"], name="Frontscheibe")
     keil_y([(-0.50,0.88),(0.14,1.10),(0.18,1.06),(-0.46,0.84)], 0, BR - 0.24,
            M["scheibe"], name="Heckscheibe")
-    box(-2.02, 0, 1.06, 0.16, BR - 0.42, 0.06, M["lackB"])              # Heckfluegel
-    for s in (-1, 1):
-        box(-2.02, s*(BR/2 - 0.24), 0.94, 0.10, 0.06, 0.20, M["lackB"])
+    box(-2.00, 0, 0.99, 0.20, BR - 0.60, 0.05, M["lackB"])              # Heckfluegel
+    for s in (-1, 1):                                    # schmaler und tiefer:
+        box(-2.00, s*(BR/2 - 0.34), 0.92, 0.09, 0.05, 0.15, M["lackB"])
 
 def sportwagen(): _modul("th37_sportwagen", _b_sportwagen, 0.012)
 
