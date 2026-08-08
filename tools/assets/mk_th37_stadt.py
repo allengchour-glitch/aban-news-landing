@@ -564,19 +564,23 @@ def strassenzug():
     wenn es zu gross ist. Fahrbahn 7 m, Gehweg beidseits."""
     neu()
     M = _mats()
-    st = box(0, -6.0, 0.01, 44, 7.0, 0.02, M["sockel"])
-    for s in (-1, 1):
-        box(0, -6.0 + s*4.4, 0.07, 44, 1.8, 0.14, M["stein"])
+    # ⚠️ Erst lag die Strasse bei y = -6, also HINTER den Haeusern: deren
+    # Schauseite ist +y. Im Render sah man eine Haeuserzeile und sonst nichts,
+    # die vier Wagen standen verdeckt dahinter.
+    box(0, 10.5, 0.01, 44, 7.0, 0.02, M["sockel"])                   # Fahrbahn
+    for yy in (6.6, 14.4):
+        box(0, yy, 0.07, 44, 1.8, 0.14, M["stein"])                  # Gehwege
     _teil(_b_altbau, -13.0, 0)
     _teil(_b_eckhaus, 0.5, 0.4)
     _teil(_b_reihenhaus, 9.5, -0.3)
     _teil(_b_reihenhaus, 15.5, -0.3)
     _teil(_b_cafe, -22.0, -0.6)
-    _teil(_b_limousine, -16.0, -8.4, math.pi)
-    _teil(_b_kombi, -8.0, -8.4, math.pi)
-    _teil(_b_sportwagen, 2.0, -3.6, 0)
-    _teil(_b_lieferwagen, 12.0, -3.6, 0)
-    _teil(_b_schiessbude, 20.5, -1.0)
+    _teil(_b_limousine, -15.0, 8.6, 0)                # am Bordstein, Front +x
+    _teil(_b_kombi, -7.0, 8.6, 0)
+    _teil(_b_sportwagen, 4.0, 12.4, math.pi)          # Gegenrichtung
+    _teil(_b_lieferwagen, 14.0, 8.6, 0)
+    _teil(_b_schiessbude, 21.0, 4.2)
+    _teil(_b_wasserpistole, 18.6, 5.0, 0.4, 1.10)     # auf der Theke danebengelegt
     export("th37_strassenzug", 0.012, 2)
 
 if __name__ == "__main__":

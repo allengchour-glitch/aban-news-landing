@@ -760,6 +760,63 @@ Die Texturen sind **im GLB eingebettet** (`mat_bild()`), das Spiel braucht keine
 
 
 
+## 1z6. Charge 37 — STADTHAEUSER, FAHRZEUGE, SCHIESSBUDE (`models/th37_*.glb`)
+
+Drei Gruppen, ein Generator. Charge 34 ist ein **Baukasten** — gut zum Selberbauen,
+aber jedes Haus daraus sieht gleich aus. Hier stehen vier **Charaktere**, dazu vier
+Wagen und eine Kirmesbude.
+
+| Datei | Maße (B×T×H) | Dreiecke | Inhalt |
+|---|---|---|---|
+| `th37_altbau.glb` | 11,34 × 10,89 × 16,40 | 22 280 | Gründerzeit, 4 Geschosse, Erker, Balkone, Gauben |
+| `th37_eckhaus.glb` | 10,71 × 11,47 × 13,40 | 9 472 | Rundecke mit Turmdach, Ladenfront, Markise |
+| `th37_reihenhaus.glb` | 6,39 × 9,22 × 9,70 | 6 680 | Giebel zur Straße, **Raster x += 6,00** |
+| `th37_cafe.glb` | 9,64 × 10,17 × 6,74 | 15 796 | Markise, 4 Tische mit Schirmen, Pflanzkübel |
+| `th37_limousine.glb` | 4,60 × 2,14 × 1,44 | 2 816 | viertürig, Front auf **+x** |
+| `th37_kombi.glb` | 4,76 × 1,94 × 1,70 | 3 084 | durchlaufende Dachlinie, Reling |
+| `th37_sportwagen.glb` | 4,30 × 2,14 × 1,18 | 3 128 | Fastback, Heckflügel |
+| `th37_lieferwagen.glb` | 5,24 × 2,30 × 2,50 | 3 516 | Kasten, Schiebetür, Flügeltüren |
+| `th37_schiessbude.glb` | 5,16 × 3,13 × 3,30 | 10 752 | Klappziele, Dosen, zwei Budengewehre |
+| `th37_wasserpistole.glb` | 0,77 × 0,18 × 0,50 | 2 384 | Spielzeug-Requisite |
+| `th37_strassenzug.glb` | 49,90 × 17,97 × 16,40 | 84 528 | **Maßstabs-Test**, nur aus den Teilen oben |
+
+Generator: `tools/assets/mk_th37_stadt.py` · Werkzeug: `tools/assets/th_werkzeug.py`.
+Alle elf: zmin = 0,000. **Fahrzeuge zeigen mit der Front auf +x**, nicht auf +y — sie
+stehen an einer Straße, nicht auf einem Sockel.
+
+> 🛠️ **`keil_y(prof, cy, breite)` — Profil aus der x-z-Ebene entlang y extrudiert.**
+> Das Gegenstück zu `keil_x` aus Charge 34 und das Werkzeug für Fahrzeuge: man zeichnet
+> die **Seitenansicht** und zieht sie auf Wagenbreite. Aus Kisten gestapelt bekommt man
+> nie eine Windschutzscheibenneigung hin. Die Deckflächen werden **trianguliert**, nicht
+> als N-Gon geschlossen — ein Auto-Seitenriss ist nicht konvex (die Fensterlinie springt
+> zurück), und ein N-Gon darüber faltet sich.
+
+> 🎯 **Die Schießbude ist ausdrücklich familienfreundlich.** Klappziele, Blechdosen und
+> zwei bunte Budengewehre mit Korkkugel — Spielzeug in Spielzeugfarben. Keine echten
+> Feuerwaffen, keine realen Maße: STL ist ein Druckformat, und maßgetreue Waffenteile
+> entstehen hier nicht.
+
+### 🔧 Vier Fehler, die erst der Render gezeigt hat
+
+* **Vier weiße Kisten.** Alle Häuser hatten denselben Materialsatz — Putz, Rahmen und
+  Werkstein lagen zwischen 0,82 und 0,97 Helligkeit. Das ganze Relief aus Gesimsen,
+  Gewänden und Balkonen war unsichtbar, weil es **keinen Kontrast zum Grund** hatte.
+  Es lag nie an der Textur. Das ist die Antwort auf den alten Befund „Häuser zu simple
+  Textur": jedes Haus braucht eine eigene Wandfarbe und nahezu weiße Zierglieder.
+* **Die Wandfarbe kam nicht an.** `mat_bild` legt die Textur **direkt** auf Base Color
+  und wirft die übergebene Farbe weg. Neuer Schalter `tint=True` hängt einen
+  Multiply-Mix dazwischen. Ohne Schalter bleibt das alte Verhalten — deshalb mussten
+  Charge 35/36 nicht neu gebaut werden.
+* **Fenster als Vollplatte statt als Rahmen** — dieselbe Falle wie bei der Gaube in
+  Charge 35. Und im zweiten Anlauf lag die Scheibe **innen in der Wand**, die kein Loch
+  hat: durch die Rahmenöffnung sah man den Putz. Jetzt steht das Fenster vor der
+  Fassade, wie es bei vorkragenden Gewänden ohnehin richtig ist. `_rahmen()` legt immer
+  vier Balken, nie eine Platte.
+* **Die Straße lag hinter den Häusern.** Im Straßenzug bei y = −6, aber die Schauseite
+  ist +y: im Render sah man eine Häuserzeile und sonst nichts, die vier Wagen standen
+  verdeckt dahinter.
+
+---
 ## 1z5. Charge 36 — PARK- UND PLATZSCHMUCK (`models/th36_*.glb`)
 
 Fortsetzung von Charge 35 mit denselben zwei Werkzeugen. Charge 35 hat das **Mobiliar**
