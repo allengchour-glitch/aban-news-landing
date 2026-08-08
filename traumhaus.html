@@ -837,13 +837,16 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     if(x<-116)return false;                                                    // Meer + Strand (Baeume standen im Wasser)
     if(Math.abs(x)<GW*CS/2+4+pad&&Math.abs(z)<GH*CS/2+6+pad)return false;      // Baugrundstueck
     if(Math.hypot(x,z-146)<24+pad)return false;                                // Seepark + Promenade
-    if(Math.abs(Math.abs(z)-(GH*CS/2+12))<8+pad&&Math.abs(x)<RL/2+4)return false;  // Haupt-/Querstrassen
+    /* 8 -> 11: freiPlatz prueft nur den ANKERPUNKT. Ein Baum mit 7 m Krone stand
+       damit zwar mittig 8 m neben der Fahrbahn, haengte aber mit dem halben Wipfel
+       darueber (gemessen an der Suedstrasse). 11 m deckt die groesste Streu-Krone ab. */
+    if(Math.abs(Math.abs(z)-(GH*CS/2+12))<11+pad&&Math.abs(x)<RL/2+4)return false;  // Hauptstrassen
     /* Querstrassen inkl. Zubringer bis zum Ring: die alte Grenze |z|<78 endete am
        Strassenende, die Zubringer (z bis ±120) waren ungeschuetzt — dort standen dann
        Blumen und Schilf auf dem Asphalt (User-Screenshot). */
-    if(Math.abs(Math.abs(x)-RX)<8+pad&&Math.abs(z)<122)return false;
-    if(Math.abs(Math.abs(x)-112)<8+pad&&z>-108&&z<126)return false;             // Ringstrasse
-    if((Math.abs(z+100)<8+pad||Math.abs(z-118)<8+pad)&&Math.abs(x)<120)return false;
+    if(Math.abs(Math.abs(x)-RX)<9.5+pad&&Math.abs(z)<122)return false;
+    if(Math.abs(Math.abs(x)-112)<9.5+pad&&z>-108&&z<126)return false;           // Ringstrasse
+    if((Math.abs(z+100)<9.5+pad||Math.abs(z-118)<9.5+pad)&&Math.abs(x)<120)return false;
     if(z>88&&z<118&&Math.abs(x)<80)return false;                               // Bahnhofsviertel
     if(z>62&&z<110&&x>-58&&x<8)return false;                                   // Altstadt-Suedviertel
     if(Math.abs(z+90.5)<10&&x>-122&&x<82)return false;                         // Fluss im Norden
@@ -908,8 +911,11 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       var weg=new THREE.Mesh(g,pM);
       weg.rotation.x=-Math.PI/2;weg.position.set(SX,-0.008,SZ2);weg.receiveShadow=true;scene.add(weg);
       /* Stichstrasse von der Sued-Ringstrasse (z=118) hinunter zum Seepark */
-      var zu=new THREE.Mesh(new THREE.PlaneGeometry(8,32),strMatH.clone());
-      zu.rotation.x=-Math.PI/2;zu.position.set(0,-0.003,SZ2-30);zu.receiveShadow=true;scene.add(zu);
+      /* 🐛 Die Stichstrasse zum Seepark lief von z=100 bis 132 — also quer durch
+         Gleis (z=112) UND Bahnsteig. Sie beginnt jetzt am Sued-Ring (z=118) und
+         endet am Seeufer; die Bahn quert sie nicht mehr. */
+      var zu=new THREE.Mesh(new THREE.PlaneGeometry(8,26),strMatH.clone());
+      zu.rotation.x=-Math.PI/2;zu.position.set(0,-0.003,SZ2-13);zu.receiveShadow=true;scene.add(zu);
       /* Baenke + Laternen entlang der Promenade (prozedural — bau() gibt es hier noch nicht) */
       var holzM=stdMat(0x8a6a44,0.85),mastM=stdMat(0x3a3a42,0.5);
       var sitzG=new THREE.BoxGeometry(1.8,0.12,0.5),lehnG=new THREE.BoxGeometry(1.8,0.5,0.1),
@@ -3220,34 +3226,53 @@ setTimeout(function baueGebaeude(){
       [[-BW,-BH],[BW,-BH],[-BW,BH],[BW,BH]].forEach(function(e){
         bau("th5_poller.glb",1.0,e[0],0,e[1],0,false,null);});
       bau("th5_ortsschild.glb",2.6,7,0,BH+3,0,false,null);
-      /* Norden: Wohnzeile. Luecke bei |x| < 9 fuer den Zugangsweg. */
-      [["th22_doppelhaus.glb",7.5,-62,12,9],["th7_reihenhaus_modul.glb",8,-46,10,7],
-       ["th22_bungalow.glb",4.6,-30,11,9],["th8_stadthaus_offen.glb",8.5,-16,10,9],
-       ["th22_bungalow.glb",4.6,16,11,9],["th8_stadthaus_offen.glb",8.5,30,10,9],
-       ["th7_reihenhaus_modul.glb",8,46,10,7],["th22_doppelhaus.glb",7.5,62,12,9]
-      ].forEach(function(h,i){
-        bau(h[0],h[1],h[2],0,NZ,Math.PI,false,null);
-        addSolid(h[2],NZ,h[3],h[4],{a:"z",at:NZ+h[4]/2,c:h[2],w:3.2});
-        bau("th2_gartenzaun.glb",1.0,h[2],0,NZ+7.5,0,false,null);
-        bau(i%2?"th2_blumenbeet.glb":"th4_busch_blueten.glb",i%2?0.5:1.2,h[2]-4,0,NZ+6,0,false,null);
-        bau("th3_briefkasten.glb",1.25,h[2]+4.5,0,NZ+7.2,0,false,null);
-        if(i%2===0)bau("th4_laterne_modern.glb",5.2,h[2]+8,0,NZ+9,0,false,null);
-        bau(i%3===0?"th4_ahorn.glb":"th4_birke.glb",6.5,h[2]-7,0,NZ+10,0,false,null);});
-      /* Sueden: Ladenzeile */
-      [["th8_laden_offen.glb",7.5,-58,11,9],["th23_apotheke.glb",7,-42,10,8],
-       ["th23_post.glb",7,-26,10,8],["th8_werkstatt_offen.glb",7,-8,11,9],
-       ["th23_arztpraxis.glb",7,10,10,8],["th8_laden_offen.glb",7.5,28,11,9],
-       ["th7_lagerhalle.glb",7.5,46,13,10],["th23_bank.glb",8,62,11,9]
-      ].forEach(function(h,i){
-        bau(h[0],h[1],h[2],0,SZ0,0,false,null);
-        addSolid(h[2],SZ0,h[3],h[4],{a:"z",at:SZ0-h[4]/2,c:h[2],w:3.2});
-        if(i%2===0)bau("th5_parkbank.glb",0.9,h[2]+5,0,SZ0-8,Math.PI,false,null);
-        if(i%3===1)bau("th6_papierkorb.glb",0.9,h[2]-5,0,SZ0-8,0,false,null);
-        if(i%2===1)bau("th5_laterne_altstadt.glb",5.0,h[2]-7,0,SZ0-9.5,0,false,null);});
-      bau("th3_kiosk.glb",3.4,0,0,SZ0-9,0,false,null);
-      bau("th5_marktstand.glb",3.0,-14,0,SZ0-10,0,false,null);
-      bau("th5_marktstand.glb",3.0,14,0,SZ0-10,0,false,null);
-      bau("th6_litfasssaeule.glb",3.2,20,0,SZ0-9,0,false,null);
+      /* ⚠️ GEMESSENE GRUNDFLAECHEN — bau() skaliert NUR ueber die Hoehe, die Breite
+         ergibt sich aus dem Modell. Die erste Fassung nannte w:11,d:9 im cfg und
+         setzte die Haeuser 14 m auseinander; real sind es aber:
+           th23_bank 30.1 x 23.7 · th23_post 27.7 x 22.6 · th22_bungalow 25.5 x 19.4
+           th23_arztpraxis 24.5 x 20.1 · th8_laden_offen 22.9 x 18.4
+         In den nur ~22 m tiefen Ring zwischen Baufenster und Hauptstrasse passt
+         davon nichts: die Haeuser ueberlappten sich um bis zu 10 m und standen bis
+         zu 2.4 m auf der Fahrbahn. Bank/Post/Apotheke/Arztpraxis stehen ausserdem
+         laengst im Viertel „Behoerden" — hier waren sie Dubletten.
+         Jetzt nur noch Modelle, die in das Band passen, mit Abstand aus der
+         GEMESSENEN Breite + 7 m Luecke:
+           th22_doppelhaus 15.4 x 11.9 · th7_reihenhaus_modul 5.0 x 7.0 */
+      var NB=[["th22_doppelhaus.glb",7.5,15.4],["reihe3",0,17],["th22_doppelhaus.glb",7.5,15.4],
+              ["reihe3",0,17],["th22_doppelhaus.glb",7.5,15.4]];
+      function reihenhausTerrasse(mx,mz,rot){          /* 3 Module aneinander = Terrasse */
+        for(var i=-1;i<=1;i++){
+          bau("th7_reihenhaus_modul.glb",8,mx+i*5.6,0,mz,rot,false,null,true);}
+        addSolid(mx,mz,17.6,7.6,{a:"z",at:mz+(rot?-3.8:3.8),c:mx,w:3});}
+      function zeile(liste,z,rot,vorgarten){
+        /* Von links nach rechts setzen, Cursor = rechte Kante des letzten Baus.
+           Luecke |x| < 11 bleibt frei (Zugangsweg zum Grundstueck). */
+        var LUE=7, ges=0;
+        liste.forEach(function(e){ges+=e[2];});
+        ges+=LUE*(liste.length-1);
+        var cur=-ges/2;
+        liste.forEach(function(e,i){
+          var mx=cur+e[2]/2; cur+=e[2]+LUE;
+          if(Math.abs(mx)<11)return;                    /* Zugangsweg frei lassen */
+          if(e[0]==="reihe3"){reihenhausTerrasse(mx,z,rot);}
+          else{
+            bau(e[0],e[1],mx,0,z,rot,false,null,true);
+            addSolid(mx,z,e[2]+0.6,12.5,{a:"z",at:z+(rot?-6.2:6.2),c:mx,w:3.2});}
+          /* Vorgarten zur Strasse hin */
+          bau("th2_gartenzaun.glb",1.0,mx,0,z+vorgarten,0,false,null,true);
+          if(i%2===0)bau("th2_blumenbeet.glb",0.5,mx-5,0,z+vorgarten-1.6,0,false,null,true);
+          bau("th3_briefkasten.glb",1.25,mx+5.5,0,z+vorgarten-0.4,0,false,null,true);
+          if(i%2===1)bau("th4_laterne_modern.glb",5.2,mx+9,0,z+vorgarten+0.8,0,false,null,true);
+          bau(i%3===0?"th4_ahorn.glb":"th4_birke.glb",6.5,mx-8,0,z+vorgarten+1.4,0,false,null,true);});}
+      zeile(NB,NZ,Math.PI,7.5);                         /* Norden: Front zur Hauptstrasse */
+      /* Sueden: Ladenzeile — dieselben Groessen, aber Werkstatt/Lagerhalle als
+         Gewerbe-Note (17.7 x 12.9 passt gerade noch ins Band). */
+      var SB=[["th7_lagerhalle.glb",7.5,17.7],["reihe3",0,17],["th22_doppelhaus.glb",7.5,15.4],
+              ["reihe3",0,17],["th7_lagerhalle.glb",7.5,17.7]];
+      zeile(SB,SZ0,0,-7.5);
+      bau("th3_kiosk.glb",3.4,0,0,SZ0-9,0,false,null,true);
+      bau("th6_litfasssaeule.glb",3.2,20,0,SZ0-9,0,false,null,true);
+      [-24,24].forEach(function(bx){bau("th5_parkbank.glb",0.9,bx,0,SZ0-8.5,Math.PI,false,null,true);});
       /* Osten: Quartierspark mit Spielplatz */
       var PX2=56;
       bau("th16_pavillon.glb",4.2,PX2,0,18,0,false,null);   addSolid(PX2,18,7,7);
@@ -3601,6 +3626,72 @@ setTimeout(function baueGebaeude(){
          * das Ziel muss wegVonStrasse() unveraendert lassen — sonst landet das
            Objekt auf Fahrbahn oder Trottoir, und genau das war der alte Fehler.
        Wer nicht regelkonform ausweichen kann, bleibt lieber stehen. */
+    /* ═══════════ 🛣️ KORRIDORE + FREIRAEUMEN ═══════════════════════════════════
+       wegVonStrasse() schuetzt nur den ANKERPUNKT eines Objekts. Ein 30 m breites
+       Haus, dessen Mitte 12 m neben der Fahrbahn liegt, ragt trotzdem 6 m hinein —
+       gemessen standen so 28 Modelle auf der Fahrbahn und 21 auf dem Trottoir.
+       Diese Stufe prueft die ECHTE Bounding-Box gegen alle Strassenkorridore und
+       schiebt das Objekt quer zur Strasse heraus, auf die Seite, auf der seine
+       Mitte ohnehin schon liegt. Sie laeuft VOR dem Entwirrer, damit der die
+       danach entstehenden Nachbarschafts-Konflikte gleich mit aufloest. */
+    var KORRIDORE=(function(){
+      var SZr=GH*CS/2+12, K=[];
+      /* [name, laengsAchse, mitte(quer), von, bis, halbeSperrbreite] */
+      K.push(["Haupt N","x",-SZr,-RL/2,RL/2,10.8]);
+      K.push(["Haupt S","x", SZr,-RL/2,RL/2,10.8]);
+      K.push(["Quer W","z",-RX,-SZr-34,SZr+34,8.0]);
+      K.push(["Quer O","z", RX,-SZr-34,SZr+34,8.0]);
+      K.push(["Ring N","x",-100,-112,112,7.2]);
+      K.push(["Ring S","x", 118,-112,112,7.2]);
+      K.push(["Ring W","z",-112,-100,118,7.2]);
+      K.push(["Ring O","z", 112,-100,118,7.2]);
+      K.push(["Zubringer W","z",-RX,-100,118,7.2]);
+      K.push(["Zubringer O","z", RX,-100,118,7.2]);
+      K.push(["Strandzufahrt","x",-30,-134,-78,5.6]);
+      K.push(["Seepark-Stich","z",0,118,146,4.6]);
+      return K;})();
+    window._KORRIDORE=KORRIDORE;
+    /* Groesste Ueberlappung einer Box mit irgendeinem Korridor. */
+    function korridorKonflikt(b){
+      var best=null;
+      for(var i=0;i<KORRIDORE.length;i++){var k=KORRIDORE[i],laengs=k[1]==="x";
+        var aMin=laengs?b.min.x:b.min.z, aMax=laengs?b.max.x:b.max.z;
+        if(aMax<k[3]-1||aMin>k[4]+1)continue;
+        var qMin=laengs?b.min.z:b.min.x, qMax=laengs?b.max.z:b.max.x, m=k[2];
+        var ue=Math.min(qMax,m+k[5])-Math.max(qMin,m-k[5]);
+        if(ue>0.4&&(!best||ue>best.ue))best={ue:ue,achse:laengs?"z":"x",mitte:m,rand:k[5],name:k[0]};}
+      return best;}
+    function freiRaeumen(){
+      var G=window._gebaeude||[],E=[],raus=0,fest=0;
+      G.forEach(function(w){
+        var b=new THREE.Box3().setFromObject(w);
+        if(!isFinite(b.min.x)||b.max.y-b.min.y<0.45)return;   /* flache Deko darf am Rand liegen */
+        E.push({w:w,b:b,fest:!!(w.userData&&w.userData.fest)});});
+      for(var runde=0;runde<2;runde++)
+        for(var i=0;i<E.length;i++){
+          var e=E[i];if(e.fest)continue;
+          var k=korridorKonflikt(e.b);if(!k)continue;
+          var p=e.w.position[k.achse];
+          var seite=(p>=k.mitte)?1:-1;
+          /* Zielposition: Boxkante genau `rand` + 0.7 m Reserve von der Mitte weg */
+          /* Beide Seiten durchrechnen: erst die, auf der die Mitte schon liegt.
+             ⚠️ Der Schub ist Ziel MINUS Kante — ein zusaetzliches `seite*` davor
+             drehte in der ersten Fassung das Vorzeichen und schob die Objekte
+             TIEFER in die Strasse (13 verschoben, 52 steckengeblieben). */
+          var gemacht=false;
+          [seite,-seite].forEach(function(sd){
+            if(gemacht)return;
+            var kante=sd>0?(k.achse==="z"?e.b.min.z:e.b.min.x)
+                          :(k.achse==="z"?e.b.max.z:e.b.max.x);
+            var schub=(k.mitte+sd*(k.rand+0.7))-kante;
+            if(Math.abs(schub)>26)return;                     /* zu weit — Landmarke */
+            var neu=e.w.position.clone();neu[k.achse]+=schub;
+            var nb=e.b.clone();nb.translate(new THREE.Vector3(neu.x-e.w.position.x,0,neu.z-e.w.position.z));
+            if(korridorKonflikt(nb))return;                   /* wuerde in den naechsten Korridor rutschen */
+            e.w.position.copy(neu);window._nachRuecken(e.w);
+            e.b=nb;raus++;gemacht=true;});
+          if(!gemacht)fest++;}
+      window._freigeraeumt={verschoben:raus,steckengeblieben:fest};}
     function entwirren(){
       /* 🧩 GLOBALER ENTWIRRER (User: „viele stl ueberkreuzung? passe es an?").
          entzerren() oben raeumt nur INNERHALB eines Viertels auf. Gemessen blieben
@@ -3654,7 +3745,7 @@ setTimeout(function baueGebaeude(){
               for(var r=0;r<RI.length&&!gefunden;r++){
                 var nx=kand.w.position.x+RI[r][0]*d, nz=kand.w.position.z+RI[r][1]*d;
                 var q=wegVonStrasse(nx,nz);
-                if(Math.hypot(q[0]-nx,q[1]-nz)>0.01)continue;      // Fahrbahn/Trottoir
+                if(Math.hypot(q[0]-nx,q[1]-nz)>0.01)continue;      // Fahrbahn/Trottoir (Ankerpunkt)
                 /* 💧 Kein Ausweichen ins Wasser: Seepark (0,146), Fluss-Band, Meer.
                    Ohne diesen Check schob der Entwirrer Baenke in den See
                    (User-Screenshot „wasser?" — Bretter trieben schraeg im Wasser). */
@@ -3663,6 +3754,10 @@ setTimeout(function baueGebaeude(){
                 if(nx<-112)continue;
                 var nb=kand.b.clone();
                 nb.translate(new THREE.Vector3(nx-kand.w.position.x,0,nz-kand.w.position.z));
+                /* ⚠️ wegVonStrasse prueft nur den ANKER. Ohne den Box-Test schob der
+                   Entwirrer breite Objekte zurueck in Fahrbahnen, die freiRaeumen()
+                   gerade freigemacht hatte — gemessen 4 Rueckfaelle. */
+                if(korridorKonflikt(nb))continue;
                 var frei=true;
                 for(var m=0;m<E.length&&frei;m++){
                   if(E[m]===kand)continue;
@@ -3681,8 +3776,8 @@ setTimeout(function baueGebaeude(){
        da, der Rest kam danach und brachte neue Ueberschneidungen mit. Der Entwirrer
        laeuft deshalb zweimal — einmal frueh fuer den sichtbaren Kern, einmal spaet,
        wenn wirklich alles geladen ist. Der zweite Lauf ist idempotent. */
-    setTimeout(entwirren,15500);
-    setTimeout(entwirren,32000);
+    setTimeout(function(){freiRaeumen();entwirren();},15500);
+    setTimeout(function(){freiRaeumen();entwirren();},32000);
   },260);
   /* Die alte Stadt-Scheune ist raus: eine Scheune zwischen Ringstrasse und Hochhaeusern
      ergibt kein stimmiges Bild. Der Hof steht jetzt draussen auf dem Feld. */
@@ -3779,7 +3874,7 @@ setTimeout(function baueGebaeude(){
     addSolid(-46,80,12.8,10.8,{a:"z",at:85.4,c:-46,w:3.0}); /* Stadthaus: Tuer +z (rot=PI) */
     addSolid(-24,74,8.6,9.6,{a:"x",at:-19.7,c:74,w:3.0});   /* Laden: Tuer +x (rot=-PI/2) */
     addSolid(-6,88,14.8,12.8,{a:"z",at:94.4,c:-6,w:4.5});   /* Werkstatt: Tor +z (rot=PI) */
-    addSolid(-58,-78,27,15,{a:"x",at:-71.5,c:-78,w:4.0});   /* Kathedrale: Portal -x (rot=PI/2) */
+    addSolid(-56,-77.5,21,18,{a:"z",at:-68.5,c:-56,w:4.5}); /* Kathedrale: Portal nach Sueden zum Vorplatz */
     /* 🧱 Runde 2: restliche feste Gebaeude solide machen (User "polish alles") */
     addSolid(64,-79,7.4,11.4,{a:"z",at:-73.3,c:64,w:2.2});   /* Dorf-Kirche (RX-14,-SZ-33), Tuer Sued */
     [[-8,0],[-1,0],[6,0]].forEach(function(_s){addSolid(_s[0],78,6.8,5.4,{a:"z",at:75.3,c:_s[0]+2.35,w:2.0});}); /* Ladenzeile (SZ+32): Eingang rechts vorn */
@@ -3864,7 +3959,30 @@ setTimeout(function baueGebaeude(){
     bau("th8_stadthaus_offen.glb",9.2,-46,0,80,Math.PI,false);
     bau("th8_laden_offen.glb",3.9,-24,0,74,-Math.PI/2,false);
     bau("th8_werkstatt_offen.glb",5.3,-6,0,88,Math.PI,false);
-    bau("th8_kirche_offen.glb",21,-58,0,-78,Math.PI/2,false); /* 🛣️ war bei z=-62 → stand 8m IN der Nordstrasse (Band -63..-53) */
+    /* ⛪ KATHEDRALE — auf das verfuegbare Band zugeschnitten statt verschoben.
+       GEMESSEN: auf 21 m Hoehe ist th8_kirche_offen 33 x 28 m. Zwischen dem
+       Sperrband der Nordstrasse (bis z = -68.8) und dem Fluss (Wasser -94..-87)
+       liegen 18 m — 28 m Tiefe passen dort nicht, das Bauwerk ragte 6 m in die
+       West-Querstrasse und 4.8 m in die Nordstrasse.
+       Drei In-Game-Standortsuchen haben gezeigt, dass es AUCH SONST nirgends im
+       Stadtgebiet 28 m freies Band gibt: mit reiner Kollisionsfreiheit landete der
+       Dom zwischen den Downtown-Tuermen, mit echtem Freiraum-Radius nur noch 350 m
+       ausserhalb der Stadt. Beides waere schlechter als eine etwas kleinere Kirche
+       am richtigen Ort.
+       Darum: Hoehe 21 -> 13, damit 20.4 x 17.3. Bei (-56, -77.5) bleibt zur
+       Querstrasse 3.8 m und zur Nordstrasse 8.6 m Luft, das Wasser ist 1 m weg. */
+    bau("th8_kirche_offen.glb",13,-56,0,-77.5,Math.PI,false,null,true);
+    (function domVorplatz(){
+      var DX=-56, DZ=-77.5;
+      var pl=new THREE.Mesh(new THREE.PlaneGeometry(24,7),betMat(0xd2cbbc,0.9));
+      pl.rotation.x=-Math.PI/2;pl.position.set(DX,-0.002,DZ+12);pl.receiveShadow=true;scene.add(pl);
+      [-9,9].forEach(function(px){
+        bau("th35_laterne_schmiede.glb",4.2,DX+px,0,DZ+12,0,false,null,true);});
+      bau("th36_obelisk.glb",4.2,DX,0,DZ+12,0,false,null,true);
+      [-11,11].forEach(function(bx){bau("th35_bank_zier.glb",1.0,DX+bx,0,DZ+14,0,false,null,true);});
+      bau("th35_pflanzschale.glb",0.9,DX-5,0,DZ+10,0,false,null,true);
+      bau("th35_pflanzschale.glb",0.9,DX+5,0,DZ+10,0,false,null,true);
+    })();
     (function glockenturm(){ /* ⛪ Die Kathedrale sah von aussen wie ein schmuckloser Klotz aus — Turm gibt ihr die Silhouette */
       var g=new THREE.Group(),tm=betMat(0xe4ddcc,0.9),dm=stdMat(0x5a6470,0.65);
       var sch=new THREE.Mesh(new THREE.BoxGeometry(5.2,26,5.2),tm);sch.position.y=13;sch.castShadow=true;sch.receiveShadow=true;g.add(sch);
@@ -4039,7 +4157,11 @@ setTimeout(function baueGebaeude(){
     for(var _tw=0;_tw<4;_tw++)bau("th7_hochhaus_modul.glb",6.0,-90,_tw*6,-112,0,false);
     bau("th7_hochhaus_dach.glb",3.6,-90,24,-112,0,false);
     bau("th7_parkhaus.glb",9.8,96,0,-118,0,false);
-    bau("th7_lagerhalle.glb",9.0,97,0,-84,0,false);
+    /* Zwischen Ost-Querstrasse (Sperrband bis x=86) und Ost-Ring (ab 104.8) liegen
+     18.8 m. Die Halle war auf 9 m Hoehe skaliert 21 m BREIT und passte in keiner
+     Position hinein — auf 7.5 m sind es 17.7 m, zentriert auf x=96 bleibt beidseits
+     Luft. */
+  bau("th7_lagerhalle.glb",7.5,96,0,-84,0,false);
     /* ── 🚉 BAHNHOFSVORPLATZ (User: „platz schoener, bahnhof trottoir frei") ────
        Vorher: dunkler Belag, Taxi mitten auf dem Platz, sonst nichts. Jetzt eine
        helle Pflasterflaeche mit dem Zierwerk aus Charge 35/36 (lag ungenutzt),
@@ -4076,7 +4198,7 @@ setTimeout(function baueGebaeude(){
     })();
     bau("th7_taxi.glb",1.7,11,0,91.4,Math.PI/2,false,null,true);
     bau("th7_lieferwagen.glb",2.5,12,0,55,Math.PI/2,false);
-    bau("th7_lkw.glb",3.7,90,0,-74,0,false);
+    bau("th7_lkw.glb",3.7,90,0,-78,0,false);          /* war -74: stand im Nordstrassen-Band */
     bau("th7_denkmal.glb",5.3,68,0,92,Math.PI,false);
     /* ➕ "mehr sachen": Reserven verbaut */
     bau("th5_bushaltestelle.glb",2.5,30,0,-55.8,0,false);          /* 2. Haltestelle an der Nordstrasse */
@@ -4127,7 +4249,9 @@ setTimeout(function baueGebaeude(){
   // Mülleimer (Haltestelle + Spielplatz)
   bau("th4_muelleimer.glb",0.9,-5,0,50.2,0,false);bau("th4_muelleimer.glb",0.9,88,0,7,0,false);
   // Zaun am Bauernhof-Gehege
-  [-27,-31,-35,-39].forEach(function(zz){bau("th4_zaun_holz.glb",0.95,-85,0,zz,Math.PI/2,false);bau("th4_zaun_holz.glb",0.95,-101,0,zz,Math.PI/2,false);});
+  /* Die Strandzufahrt quert bei z=-30 — dort bleibt eine Torluecke, sonst stand
+     der Weidezaun mitten auf der Fahrbahn. */
+  [-23,-39,-43].forEach(function(zz){bau("th4_zaun_holz.glb",0.95,-85,0,zz,Math.PI/2,false);bau("th4_zaun_holz.glb",0.95,-101,0,zz,Math.PI/2,false);});
   [-87,-91,-95,-99].forEach(function(xx){bau("th4_zaun_holz.glb",0.95,xx,0,-25,0,false);bau("th4_zaun_holz.glb",0.95,xx,0,-41,0,false);});
   // Vogelhäuser
   bau("th4_vogelhaus.glb",2,62,0,-36,0.6,false);bau("th4_vogelhaus.glb",2,-62,0,20,0,false);
@@ -4140,7 +4264,7 @@ setTimeout(function baueGebaeude(){
      mehr details und stl"). Von 681 Modellen lagen ~600 ungenutzt herum. Positionen per
      Freiflaechen-Solver gegen Strassen, Grundstueck, Fluss, Seepark und alle Kollider. ── */
   // Spielplatz + Park-Ausstattung im grossen Park
-  bau("th16_spielturm.glb",4.2,88,0,72,5.9,false);
+  bau("th16_spielturm.glb",4.2,88,0,76,5.9,false);   /* war z=72: ragte 1.1 m ins Suedstrassen-Band */
   bau("th16_schaukel.glb",2.6,66,0,84,4.0,false);
   bau("th16_wippe.glb",1.0,46,0,72,5.1,false);
   bau("th16_sandkasten.glb",0.5,56,0,84,2.3,false);
@@ -4173,7 +4297,12 @@ setTimeout(function baueGebaeude(){
     bau("th17_signal.glb",3.2,gx+6.5,0,107.5,Math.PI,false,null,true);});
   /* Gleis z=112, Ringstrasse z=118 (Band 113.5..122.5) — Masten auf die Suedseite,
      sonst stehen sie in der Fahrbahn. */
-  for(var om=0;om<7;om++)bau("th17_oberleitungsmast.glb",7.5,-108+om*36,0,108.5,0,false,null,true);
+  /* ⚠️ Der Mast ist auf 7.5 m Hoehe skaliert 11.2 m BREIT (Ausleger ueber das Gleis).
+     Bei -108+om*36 landeten fuenf von sieben in einem Strassenkorridor: x=±108 im
+     Ring, x=±72 in den Zubringern, x=0 in der Seepark-Stichstrasse. Jetzt nur noch
+     Positionen mit >=9 m Abstand zu jeder Querachse. */
+  [-96,-60,-24,24,60,96].forEach(function(mx){
+    bau("th17_oberleitungsmast.glb",7.5,mx,0,108.5,0,false,null,true);});
   bau("th17_tramhaltestelle.glb",3.0,-20,0,108,Math.PI,false,null,true);
   /* ── 🚉 Bahnsteig-Ausbau (User: „eisenbahn station viel schoener") ─────────────
      Drei th17_bahnsteigdach-Module ersetzen das alte Blechdach, dazu Sicherheits-
