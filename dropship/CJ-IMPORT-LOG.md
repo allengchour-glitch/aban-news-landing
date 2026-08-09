@@ -3670,3 +3670,36 @@ Kollektionen ist das reiner Zufall: `blitzversand-highlights` zeigte auf Positio
 **Badesets**, `premium-geschenke` 7 von 8 Mal **18k-Gold-Schmuck**, `trends-gadgets` 6 von 12
 **Drohnen** zu CHF 177–206. Frische Bilder sind wertlos, wenn die gezeigte Ware absurd ist.
 Rotation auf `CREATED_DESC`/`BEST_SELLING` beschränkt, betroffene Kollektionen sofort umgestellt.
+
+### 🚨 Merchant-Problemliste: 17 Richtlinienverstösse aus dem Google-Kanal genommen (2026-08-09)
+Der User lieferte den echten Merchant-Export (6'883 Zeilen). Verteilung der 6'765 Ablehnungen:
+
+| Anzahl | Meldung |
+|---:|---|
+| 6'012 | Over capacity for Shopping ads (**in CSS program**) |
+| 316 | Image too small (<500×500) |
+| 105 | Product page unavailable |
+| 90 | Pending online store check |
+| 80 | Promotional overlay on image |
+| 36 | Missing product price · 24 Missing product image |
+| 17 | **Richtlinienverstösse** (Drogen / Erwachseneninhalte / persönliche Notlagen) |
+
+**Zuerst die 17 Verstösse — sie gefährden das GANZE Konto, nicht nur den Artikel:**
+- **CBD (3):** InnovaGoods-Gesichtspflege mit CBD → Google führt das unter «Illegal drugs».
+- **Erwachseneninhalte (5):** Yoga-Shorts «Lift-Effekt», Halter-Neck-Kleid, Pailletten-Minikleid,
+  Seitenschläferkissen, Roll-On-Parfum — Googles Klassifikator stuft sie so ein, unabhängig davon,
+  wie harmlos die Ware tatsächlich ist.
+- **Persönliche Notlagen (9):** Umstandskleid, Schwangerschaftskissen, Hörgerät für Senioren,
+  Notfallknopf, Gehstock, Arthritis-Fingertrainer. Google verbietet **personalisierte Werbung**,
+  die Schwangerschaft, Alter oder Gesundheitszustand ausnutzt.
+
+**Alle 17 nur aus dem Google-&-YouTube-Kanal genommen** (`publishableUnpublish`) und getaggt
+(`google-gesperrt-cbd` / `-adult` / `-notlage`). **Sie bleiben im eigenen Shop verkäuflich** —
+ein Schwangerschaftskissen darf man verkaufen, nur nicht über Google bewerben. Nichts gelöscht.
+Werkzeug: `automation/merchant_issue_fix.py <export.csv>`.
+
+**Wichtige Einordnung zu «Over capacity»:** Der Zusatz **«in CSS program»** zeigt, dass es ein
+**Kontingent des Kontos** ist, kein Produktfehler. Kein Produkt-Fix der Welt behebt das —
+nur weniger Artikel im Anzeigenziel oder eine Feed-Regel im Merchant Center.
+Das bestätigt die Richtung der Feed-Kürzung, ändert aber nichts daran, dass sie die
+**kostenlosen Einträge** unnötig mitgenommen hat.
