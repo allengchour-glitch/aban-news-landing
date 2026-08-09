@@ -2884,6 +2884,67 @@ setTimeout(function baueVerkehr(){
   /* halt/cool: der Zug haelt jetzt am Bahnsteig (siehe updZug) */
   window._zug={mesh:zugG,pos:-120,speed:14,halt:0,cool:0};
   baueSchranken();
+  /* ☁️ HIMMEL. Bisher war er EINE Farbe: `scene.background` als Volltonflaeche.
+     In jeder Bodenansicht ist das die groesste Flaeche im Bild — mehr als Boden,
+     Haeuser und Berge zusammen. Zwei Zutaten aendern das:
+
+     1. VERLAUFSKUPPEL. Eine Kugel von innen (BackSide) mit einer 2x64-Textur:
+        oben dunkler, am Horizont hell. Die Textur ist GRAUSTUFIG und wird mit der
+        aktuellen Himmelsfarbe MULTIPLIZIERT — so bleibt der Tag-Nacht-Wechsel
+        genau erhalten und ich muss pro Bild nur eine Materialfarbe setzen statt
+        Vertexdaten zu aktualisieren.
+        `fog:false` ist Pflicht: der Nebel der Szene wuerde die Kuppel sonst
+        wieder zu genau der Volltonfarbe einebnen, die sie ersetzen soll.
+
+     2. WOLKEN als Instanzen. 15 Ballen aus je 6 abgeflachten Kugeln, zusammen 90
+        Instanzen in EINEM Zeichenaufruf. Sie haengen an einer Gruppe, die sich
+        langsam dreht — damit zieht der ganze Himmel, ohne dass pro Bild 90
+        Matrizen neu gerechnet werden. */
+  (function himmel(){
+    var cv=document.createElement("canvas");cv.width=2;cv.height=64;
+    var cx2=cv.getContext("2d"),gr=cx2.createLinearGradient(0,0,0,64);
+    gr.addColorStop(0.00,"#8e8e8e");      // Zenit: dunkler
+    gr.addColorStop(0.55,"#d2d2d2");
+    gr.addColorStop(1.00,"#ffffff");      // Horizont: volle Himmelsfarbe
+    cx2.fillStyle=gr;cx2.fillRect(0,0,2,64);
+    var gt=new THREE.CanvasTexture(cv);gt.needsUpdate=true;
+    /* ⚠️ RADIUS 880 WAR ZU GROSS. Die Spielkamera hat far = 600 — die Kuppel lag
+       damit komplett hinter der fernen Ebene und wurde weggeschnitten. Im Spiel
+       waere gar nichts zu sehen gewesen; in meinem Pruefbild schon, weil dessen
+       Kamera far = 1600 hat. Ein Werkzeug, das grosszuegiger ist als das Ziel,
+       verdeckt genau solche Fehler. 520 liegt sicher innerhalb.
+       ⚠️ Und die Startfarbe steht hier, nicht erst in der Tag/Nacht-Schleife:
+       sonst ist der Himmel in den ersten Bildern (und im Menue, wo die Schleife
+       noch nicht laeuft) grau statt blau. */
+    var dom=new THREE.Mesh(new THREE.SphereGeometry(520,24,16),
+      new THREE.MeshBasicMaterial({map:gt,color:0xb4dcf2,side:THREE.BackSide,
+                                   fog:false,depthWrite:false}));
+    dom.renderOrder=-10;dom.frustumCulled=false;dom.userData.nieAusblenden=1;scene.add(dom);
+    window._skyDome=dom;
+
+    var grp=new THREE.Group();grp.userData.nieAusblenden=1;scene.add(grp);
+    var puffG=new THREE.SphereGeometry(1,7,5);
+    var puffM=new THREE.MeshBasicMaterial({color:0xf4fbff,fog:false,
+                                           transparent:true,opacity:0.9,depthWrite:false});
+    var NB=15,NP=6,inst=new THREE.InstancedMesh(puffG,puffM,NB*NP);
+    inst.frustumCulled=false;inst.renderOrder=-9;inst.userData.nieAusblenden=1;
+    var M5=new THREE.Matrix4(),Q5=new THREE.Quaternion(),P5=new THREE.Vector3(),S5=new THREE.Vector3();
+    function r5(i,k){var x=Math.sin(i*12.9898+k*78.233)*43758.5453;return x-Math.floor(x);}
+    for(var b=0;b<NB;b++){
+      var ba=b/NB*6.283+r5(b,1)*0.4, br2=180+r5(b,2)*240, bh=95+r5(b,3)*70;
+      var bx=Math.cos(ba)*br2, bz=Math.sin(ba)*br2, gr2=16+r5(b,4)*16;
+      for(var q=0;q<NP;q++){
+        var qa=q/NP*6.283+r5(b*7+q,5)*0.8, qd=gr2*(0.25+r5(b*7+q,6)*0.75);
+        P5.set(bx+Math.cos(qa)*qd, bh+r5(b*7+q,7)*gr2*0.22, bz+Math.sin(qa)*qd);
+        var sc5=gr2*(0.42+r5(b*7+q,8)*0.42);
+        S5.set(sc5,sc5*0.44,sc5*0.86);
+        Q5.identity();
+        inst.setMatrixAt(b*NP+q,M5.compose(P5,Q5,S5));
+      }
+    }
+    inst.instanceMatrix.needsUpdate=true;grp.add(inst);
+    window._wolkenGrp=grp;window._wolkenMat=puffM;
+  })();
   // ---- Helikopter kreist am Himmel ----
   var heliG=new THREE.Group();
   var hbody=new THREE.Mesh(new THREE.BoxGeometry(3.4,1.6,1.6),stdMat(0x2a3a5a,0.5));hbody.position.y=0;heliG.add(hbody);
@@ -7753,6 +7814,13 @@ function loop(now){
     var skyC=new THREE.Color(0x9fd0ea).lerp(new THREE.Color(0x141c30),1-Math.min(1,dayA*1.4));
     if(dayA>0.02&&dayA<0.55)skyC.lerp(new THREE.Color(0xff9a52).setHex(0xff9a52),(0.55-dayA)/0.55*0.5); // Abend-/Morgenrot
     scene.background.copy(skyC);scene.fog.color.copy(skyC);
+    /* Kuppel und Wolken mit dem Tageslauf mitfuehren. Die Kuppeltextur ist grau,
+       die Farbe traegt also den ganzen Verlauf — eine Zuweisung pro Bild. */
+    if(window._skyDome)window._skyDome.material.color.copy(skyC).multiplyScalar(1.12);
+    if(window._wolkenMat){
+      window._wolkenMat.color.copy(skyC).lerp(new THREE.Color(0xffffff),0.55+dayA*0.35);
+      window._wolkenMat.opacity=0.55+dayA*0.38;}
+    if(window._wolkenGrp)window._wolkenGrp.rotation.y+=0.000045;
     furn.forEach(function(f){if(f.plight)f.plight.intensity=dayA<0.3?(f.def&&f.def.light===2?2.2:1.1):0;}); /* 💡 Kandelaber heller als Garten-Laterne */
     var nacht9=dayA<0.3?1:0;
     if(window._dorfNacht!==nacht9){window._dorfNacht=nacht9;
