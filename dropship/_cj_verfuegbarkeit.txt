@@ -153,3 +153,11 @@ gid://shopify/Product/15492129128833	ok
 gid://shopify/Product/15492129096065	ok
 gid://shopify/Product/15492129063297	ok
 gid://shopify/Product/15492129030529	ok
+gid://shopify/Product/15492128997761	ok
+gid://shopify/Product/15492128964993	ok
+gid://shopify/Product/15492128932225	ok
+gid://shopify/Product/15492128899457	ok
+gid://shopify/Product/15492128571777	ok
+gid://shopify/Product/15492128309633	ok
+gid://shopify/Product/15492128276865	ok
+gid://shopify/Product/15492128211329	ok

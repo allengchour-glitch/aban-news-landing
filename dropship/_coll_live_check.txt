@@ -137,3 +137,11 @@ damen-hosen	ok	28	Damen-Hosen
 damen-sets	ok	28	Damen-Sets & 2-Teiler
 schmuck-sets	ok	28	Schmuck-Sets
 sg-bekleidung	ok	18	Bekleidung selbst gestalten
+sg-taschen	ok	9	Taschen selbst gestalten
+sg-wohnen	ok	9	Wohnen & Deko selbst gestalten
+sg-trinken	ok	7	Tassen & Flaschen selbst gestalten
+sg-accessoires	ok	7	Accessoires selbst gestalten
+sg-alle	ok	28	Selbst gestalten – alle Produkte
+spielzeug	ok	28	Spielzeug & Plüsch
+luxus-highend	ok	17	Premium-Auswahl
+loungewear	ok	5	Loungewear
