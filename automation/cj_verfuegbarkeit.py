@@ -66,17 +66,29 @@ def gql(q, v=None):
     return {}
 
 
+UUID = re.compile(r'^[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$', re.I)
+
+
 def cj_kennt(sku):
-    """-> True (vorhanden) / False (sicher weg) / None (unklar, nicht anfassen)"""
+    """-> True (vorhanden) / False (sicher weg) / None (unklar, nicht anfassen)
+
+    ⚠️ TEUER GELERNT (2026-08-09): Es gibt DREI SKU-Formen, nicht zwei.
+      a) CJ-<Ziffern>   numerische pid
+      b) <variantSku>   z.B. CJLY291603001AZ
+      c) CJ-<UUID>      z.B. CJ-5AF5A72D-0897-4AF6-AFF5-D6A33F2D3A01  ← aeltere CJ-Produkte
+    Form (c) landete zuerst im variantSku-Zweig, bekam dort korrekt «nicht gefunden» — und wurde
+    faelschlich als «bei CJ verschwunden» gewertet. Zwei kerngesunde Produkte wurden dadurch
+    gedraftet. Ein «nicht gefunden» beweist nur, dass DIESE eine Abfrage nichts fand, nicht dass
+    das Produkt weg ist. Darum wird jede Form ueber ihren eigenen Endpunkt geprueft, und bei
+    Unsicherheit gilt weiterhin: nicht anfassen."""
     s = (sku or "").strip()
-    m = re.match(r'^CJ-([0-9]{10,})$', s.upper())
-    if m:
-        d = cj(f"/api2.0/v1/product/variant/query?pid={m.group(1)}")
+    kern = re.sub(r'^CJ-', '', s, flags=re.I)
+    if re.fullmatch(r'[0-9]{10,}', kern) or UUID.fullmatch(kern):
+        d = cj(f"/api2.0/v1/product/variant/query?pid={kern}")
     else:
-        vsku = re.sub(r'^CJ-', '', s, flags=re.I)
-        if not re.fullmatch(r'[A-Za-z0-9._-]{6,40}', vsku):
+        if not re.fullmatch(r'[A-Za-z0-9._-]{6,40}', kern):
             return None
-        d = cj(f"/api2.0/v1/product/query?variantSku={vsku}")
+        d = cj(f"/api2.0/v1/product/query?variantSku={kern}")
     if d is None:
         return None                      # Netz/Drossel -> unklar
     code = str(d.get("code"))

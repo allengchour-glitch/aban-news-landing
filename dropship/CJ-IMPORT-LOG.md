@@ -3512,3 +3512,38 @@ unveröffentlichen. Umgekehrt laufen bestehende Links und Suchtreffer zwischenze
 Nicht gelöscht — der Inhalt bleibt im Admin erhalten.
 ⚠️ Shopifys 301 greift erst, wenn unter dem Pfad nichts mehr liegt; solange der Edge-Cache die
 alte Seite ausliefert, antwortet sie weiter mit 200. Nachprüfen, nicht sofort urteilen.
+
+### ⛔ FEHLALARM im Verfügbarkeits-Audit — zwei gesunde Produkte gedraftet (2026-08-09)
+Der Audit meldete zwei Produkte als «bei CJ verschwunden» und setzte sie auf DRAFT.
+**Beide existieren bei CJ einwandfrei.** Ursache: Es gibt **DREI** SKU-Formen, ich kannte nur zwei.
+
+| Form | Beispiel | richtiger Endpunkt |
+|---|---|---|
+| numerische pid | `CJ-2603190158441627400` | `product/variant/query?pid=` |
+| variantSku | `CJLY291603001AZ` | `product/query?variantSku=` |
+| **UUID-pid** | `CJ-5AF5A72D-0897-4AF6-AFF5-D6A33F2D3A01` | `product/variant/query?pid=` ← **fehlte** |
+
+Die UUID-Form (ältere CJ-Produkte) landete im variantSku-Zweig, bekam dort völlig korrekt
+«nicht gefunden» — und das wurde als Beweis gewertet, dass das Produkt weg ist.
+**Ein «nicht gefunden» beweist nur, dass DIESE Abfrage nichts fand.**
+Betroffen: «EAGET T1 Micro SD Speicherkarte» und «Mini USB Stick 4GB 8GB 16GB» — beide sofort
+wieder ACTIVE, Tag entfernt, in alle Kanäle zurückpubliziert.
+Detektor korrigiert und gegen alle drei Formen plus einen Negativfall verifiziert
+(`CJ-QUATSCH123` → False).
+
+**Was den Schaden klein gehalten hat:** die Drei-Zustands-Logik (vorhanden/weg/**unklar**) und
+dass der Audit langsam läuft. Wäre er schnell durchgelaufen, wären es hunderte gewesen.
+**Regel: Bevor ein Audit Produkte deaktiviert, alle im Katalog vorkommenden ID-Formen erheben —
+nicht die Formen annehmen, die man zufällig zuerst gesehen hat.**
+
+### 🧹 Zwei weitere leere Kategorieseiten + toter Menüeintrag
+`verpackung-versand` (10 Produkte, alle DRAFT) und `parfuem-damen` (628 Produkte, alle DRAFT)
+antworteten mit 200 und «Keine Produkte gefunden» → aus allen Kanälen genommen.
+`verpackung-versand` hing im Hauptmenü unter «Mehr & Sale» — der Eintrag wurde mit entfernt,
+sonst hätte der Kunde ab sofort einen 404-Link im Menü gehabt. **Kollektion entfernen und
+Menüeintrag stehenlassen ist kein Fortschritt, sondern ein neuer Fehler.**
+
+**Alle 12 Startseiten-Reihen live geprüft:** blitzversand-highlights, ventilatoren,
+neu-eingetroffen, damen-mode, premium-schmuck, parfum-duefte, trends-gadgets, bestseller,
+eu-lager-schnell, elektronik-technik, wohnen-dekoration, premium-geschenke — **alle gefüllt.**
+(`parfum-duefte` ist die Startseiten-Reihe, NICHT das entfernte `parfuem-damen`.)

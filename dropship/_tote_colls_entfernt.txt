@@ -10,3 +10,5 @@ marken-sport	unpublished	Marken-Sportswear
 tech-marken	unpublished	Tech & Audio-Marken
 damen-duefte	unpublished	Damen-Düfte
 herren-duefte	unpublished	Herren-Düfte
+verpackung-versand	unpublished	Verpackung & Versandmaterial
+parfuem-damen	unpublished	Damenparfüm

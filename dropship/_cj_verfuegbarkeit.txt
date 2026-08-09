@@ -180,8 +180,6 @@ gid://shopify/Product/15492091347329	ok
 gid://shopify/Product/15492091019649	ok
 gid://shopify/Product/15492090757505	ok
 gid://shopify/Product/15492088529281	ok
-gid://shopify/Product/15492085973377	bei-cj-weg	CJ-5AF5A72D-0897-4AF6-AFF5-D6A33F2D3A01
-gid://shopify/Product/15492085776769	bei-cj-weg	CJ-F345E20A-FD18-4919-AC46-5B6A4144926C
 gid://shopify/Product/15492084924801	ok
 gid://shopify/Product/15492080435585	ok
 gid://shopify/Product/15492080075137	ok
