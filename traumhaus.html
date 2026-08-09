@@ -3496,6 +3496,22 @@ setTimeout(function baueGebaeude(){
        als 48 Einzelstuecke waeren es 96 Zeichenaufrufe. */
     (function landstrasse(){
       var R=200, HB=4.2, N=64;
+      /* 🔁 EINMAL RICHTIG, DANN NIE WIEDER. Die Wickelrichtung selbst gebauter
+         Flaechen ist mir in dieser Datei jetzt DREIMAL falsch herum geraten —
+         bei den Bergen, bei den Feldern und hier bei den Zubringern. Symptom ist
+         jedes Mal ein anderes (Beleuchtung von innen, kein Schnee, unsichtbare
+         Flaeche), die Ursache dieselbe. Darum legt dieser Helfer die Reihenfolge
+         nicht mehr fest, sondern RECHNET sie: Kreuzprodukt bilden, und wenn die
+         y-Komponente nach unten zeigt, umdrehen. */
+      function quadOben(pp,ii,A,B,C,D){
+        var vb0=pp.length/3;
+        [A,B,C,D].forEach(function(P){pp.push(P[0],P[1],P[2]);});
+        var ux=B[0]-A[0],uy=B[1]-A[1],uz=B[2]-A[2];
+        var vx=C[0]-A[0],vy=C[1]-A[1],vz=C[2]-A[2];
+        var ny=uz*vx-ux*vz;                 // y-Komponente von u x v
+        if(ny>=0)ii.push(vb0,vb0+1,vb0+2, vb0,vb0+2,vb0+3);
+        else      ii.push(vb0,vb0+2,vb0+1, vb0,vb0+3,vb0+2);
+      }
       var pos=[],idx=[],vb=0, dpos=[],didx=[],dvb=0;
       for(var i=0;i<N;i++){
         var a0=i/N*6.283, a1=(i+1)/N*6.283;
@@ -3528,16 +3544,13 @@ setTimeout(function baueGebaeude(){
         var aa=gr9*Math.PI/180, ca=Math.cos(aa), sa=Math.sin(aa);
         var qx=-sa, qz=ca;                       // quer zur Fahrtrichtung
         var r0=118, r1=R+HB;
-        [[-1,1],[1,1],[1,-1],[-1,-1]].forEach(function(P){ /* Reihenfolge: Vorderseite oben */});
-        var A=[r0,-1],B=[r0,1],C=[r1,1],D=[r1,-1];
-        [A,B,C,D].forEach(function(P){
-          pos.push(ca*P[0]+qx*P[1]*HB, 0.012, sa*P[0]+qz*P[1]*HB);});
-        idx.push(vb,vb+2,vb+1, vb,vb+3,vb+2); vb+=4;
+        function pkt(rr9,q9,hh9){return [ca*rr9+qx*q9, hh9, sa*rr9+qz*q9];}
+        quadOben(pos,idx, pkt(r0,-HB,0.012),pkt(r0,HB,0.012),
+                          pkt(r1,HB,0.012), pkt(r1,-HB,0.012));
         for(var t9=0.08;t9<0.95;t9+=0.10){       // Mittelstreifen
           var rm=r0+(r1-r0)*t9, rl=(r1-r0)*0.035;
-          [[rm-rl,-0.18],[rm-rl,0.18],[rm+rl,0.18],[rm+rl,-0.18]].forEach(function(P){
-            dpos.push(ca*P[0]+qx*P[1], 0.022, sa*P[0]+qz*P[1]);});
-          didx.push(dvb,dvb+2,dvb+1, dvb,dvb+3,dvb+2); dvb+=4;
+          quadOben(dpos,didx, pkt(rm-rl,-0.18,0.022),pkt(rm-rl,0.18,0.022),
+                              pkt(rm+rl,0.18,0.022), pkt(rm+rl,-0.18,0.022));
         }
       });
       window._zubringer=ZUB;
