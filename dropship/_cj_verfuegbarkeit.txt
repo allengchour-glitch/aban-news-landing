@@ -500,3 +500,6 @@ gid://shopify/Product/15491405840769	ok
 gid://shopify/Product/15491405676929	ok
 gid://shopify/Product/15491405480321	ok
 gid://shopify/Product/15491404890497	ok
+gid://shopify/Product/15491404824961	ok
+gid://shopify/Product/15491404693889	ok
+gid://shopify/Product/15491404628353	ok
