@@ -722,7 +722,11 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
        Gipfel liegen jetzt auf 79…184 statt 36…91. Bei 60 waere alles ab dem
        halben Hang weiss; 92 laesst zwei Drittel Fels und setzt die Kappe dorthin,
        wo sie in den Alpen auch liegt. */
-    var SCHNEE=92, WIESE=8;                      // Welthoehe: Schneelinie, Fusssaum
+    /* 92 war zu hoch angesetzt: die Gipfel liegen auf 79…184, mit 92 bekamen nur
+       die hoechsten ueberhaupt eine Kappe und die uebrigen blieben nackt. 70
+       gibt allen ausser den kleinsten einen weissen Gipfel — und genau das ist
+       das Bild, das eine Alpenkette ausmacht. */
+    var SCHNEE=70, WIESE=8;                      // Welthoehe: Schneelinie, Fusssaum
     function rnd(i,k){var x=Math.sin(i*12.9898+k*78.233)*43758.5453;return x-Math.floor(x);}
     /* 🏔️ HOEHENFELD statt Kegel.
        Ein Kegel — auch verrauscht, geschert und ausgeflaert — bleibt EIN Gipfel
