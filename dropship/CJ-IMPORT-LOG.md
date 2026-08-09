@@ -3229,3 +3229,44 @@ darum nicht mehr mit, solange das Aktiv-Audit läuft.
 - **Menü-Voll-Check (112 Links):** 2 echte 404 (`/en/collections/erste-august`, `/en/collections/halloween`)
   → korrigiert. Die übrigen 25 «Fehler» waren **429 aus dem eigenen Parallel-Curl**, keine Shop-Fehler —
   Menülinks darum seriell oder mit Pause prüfen.
+
+## 2026-08-09 — 🚨 CJ-Connector legt seit #1005 nur leere Bestell-Hüllen an (Order #1012)
+**Befund bei der Bearbeitung von Shopify-Order #1012** (bezahlt, CHF 32.90, 1× Interaktives
+Katzenspielzeug `CJ-2603190158441627400`, an angela gugger, Lehnweg 16, 3123 Belp):
+
+Die Shopify-CJ-Anbindung hatte die Bestellung **automatisch angelegt** (`DP2608091100100654700`) —
+aber als **leere Hülle**: `vid: null`, `productAmount: 0.0`, `logisticName: null`.
+Ohne Varianten-ID kann CJ die Bestellung **nicht bepreisen und damit nie bezahlt werden** —
+sie bleibt für immer auf `orderStatus: CREATED`.
+
+**Das betrifft ALLE 8 Auto-Bestellungen #1005–#1012** — jede einzelne hat `vid: null` und
+`productAmount: 0.0`. Es wurde also **nie eine Bestellung über den Connector ausgeliefert**.
+Die einzige je versandte CJ-Bestellung ist `LX1011B` (SHIPPED, USD 21.77) — die wurde **manuell**
+per `createOrderV2` angelegt, nachdem `LX1011` im Papierkorb landete. Genau dieser Workaround
+ist der einzige funktionierende Weg.
+
+**Rezept für jede künftige Bestellung** (Auto-Hülle ignorieren, nicht löschen):
+1. `vid` holen: `GET /api2.0/v1/product/variant/query?pid=<pid aus SKU CJ-…>`
+2. Fracht: `POST /api2.0/v1/logistic/freightCalculate` mit `{startCountryCode:"CN",endCountryCode:"CH",products:[{vid,quantity}]}`
+3. `POST /api2.0/v1/shopping/order/createOrderV2` mit `orderNumber:"LX<Nr>"` + `logisticName` + `vid`
+4. Bezahlen aus Guthaben, dann Tracking zurück nach Shopify.
+
+**⚠️ Pflichtfeld Telefon:** `createOrderV2` scheitert ohne `shippingPhone`
+(`1001: Must be a 6-32 digit number`). Bei #1012 hat der Kunde **keine Telefonnummer** angegeben →
+nicht erfindbar, muss vom User kommen. #1008 hat dasselbe Problem.
+
+**⚠️ CJ-Guthaben steht auf 0.00** (`/shopping/pay/getBalance`) → bezahlen derzeit unmöglich.
+Punkte sind reichlich (52'177), die zahlen aber keine Bestellungen.
+
+**Frachtlage für #1012 (Ware USD 11.50, Kunde zahlte CHF 32.90, ~0.85 USD→CHF):**
+
+| Versand | Fracht USD | Vollkosten CHF | Marge CHF | Dauer |
+|---|---|---|---|---|
+| PostNL | 20.52 | 27.22 | **+5.68** | 15–45 Tage ❌ bricht das 7–12-Werktage-Versprechen |
+| YunExpress Sensitive | 28.32 | 33.85 | −0.95 | 8–17 Tage ✅ nah am Versprechen |
+| CJPacket Sensitive | 33.25 | 38.04 | −5.14 | 5–10 Tage |
+
+**Lehre:** Die Shop-Beschreibung verspricht «Lieferung in 7–12 Werktagen». Bei CJ-China ist das für
+diese Preisklasse nur mit Minus-Marge zu halten. Entweder Versandversprechen realistisch anpassen
+(z. B. «10–20 Werktage») oder Verkaufspreise um ~CHF 6–8 anheben — sonst ist jede pünktliche
+Lieferung ein Verlustgeschäft.
