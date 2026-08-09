@@ -3270,3 +3270,16 @@ Punkte sind reichlich (52'177), die zahlen aber keine Bestellungen.
 diese Preisklasse nur mit Minus-Marge zu halten. Entweder Versandversprechen realistisch anpassen
 (z. B. «10–20 Werktage») oder Verkaufspreise um ~CHF 6–8 anheben — sonst ist jede pünktliche
 Lieferung ein Verlustgeschäft.
+
+**✅ LX1012 angelegt (2026-08-09):** `SD2608091234260646300`, YunExpress Sensitive,
+Ware USD 11.50 + Fracht 28.32 = **USD 39.82**, Telefon `0795382814`.
+Telefonnummer-Quelle wenn der Checkout keine liefert: **`customer.defaultAddress.phone`** im
+Shopify-Kundenkonto (hier `alleng0@hotmail.com` → 0795382814, bestätigt durch #1003/#1009/#1010).
+
+**⛔ Bezahlen geht NICHT über die API:** `POST /shopping/pay/payBalance` antwortet mit
+`1603100 Order not found` — sowohl mit `orderId` (2608091234280646800) als auch mit `cjOrderCode`
+(SD…). `/shopping/order/confirmOrder` unterstützt weder GET noch POST (`16900202`).
+Auch die einzige je bezahlte Bestellung `LX1011B` hat einen `paymentDate`, aber wurde offenbar in
+der CJ-Weboberfläche beglichen. **Die Zahlung bleibt damit ein User-Schritt:**
+Guthaben aufladen unter `cjdropshipping.com/myCJ.html#/myBalance`, dann Orders → LX1012 → Pay.
+Guthaben stand bei Anlage auf **0.00 USD**.
