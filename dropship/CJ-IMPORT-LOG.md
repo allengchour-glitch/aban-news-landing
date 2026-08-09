@@ -3613,3 +3613,21 @@ Der Schlüssel ist damit doppelt wichtig: für die Rückseiten-Fotos UND für di
 **Kein Behelfsbild erfinden.** Regel 4 (Trikot-Falle): Die Vorschau muss dem echten Produkt
 entsprechen. Ein generiertes Rückenteil mit erfundenen Nähten oder Etiketten wäre schlimmer als
 gar keine Rückseite.
+
+### 🖨️ Printful-Schlüssel da — und #1005 hatte gar kein Tracking (2026-08-09)
+User gab den Printful-API-Key (in `/tmp/printful_key.txt`, chmod 600, in `.gitignore`, **nie committen**).
+Store: **LuxeStyle** (18288470, Typ shopify). Scopes: orders, sync_products (lesend+schreibend).
+
+**Sofortbefund:** Die einzige Printful-Bestellung `165452870` ist seit **14.07.** versandt
+(LPS Latvian Post, Tracking `LY074030804LV`, an Alain Schutz, Payerne) — Shopify-Order **#1005**
+stand zwar auf FULFILLED, aber **ohne jede Tracking-Information** (`trackingInfo: []`).
+Der Kunde bekam eine Versandmail ohne Sendungsverfolgung und wartete fast einen Monat ohne Auskunft.
+Echte Nummer per `fulfillmentTrackingInfoUpdateV2` nachgetragen, mit Kundenbenachrichtigung.
+
+⚠️ **Muster, das sich heute zum dritten Mal zeigt:** #1011 hatte eine erfundene Nummer, #1005 gar
+keine, #1012 wartet korrekt. Fulfillment-Status und Tracking sind zwei verschiedene Dinge —
+«FULFILLED» allein sagt nichts darüber, ob der Kunde etwas verfolgen kann.
+**Regel: nach jedem Fulfillment prüfen, dass `trackingInfo` gefüllt UND beim Lieferanten belegt ist.**
+
+Mit dem Schlüssel wird jetzt auch `automation/printful_sync.mjs` scharf (war ohne Key ein No-op —
+POD-Bestellungen gingen also gar nicht automatisch an Printful).

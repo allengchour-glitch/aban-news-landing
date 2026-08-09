@@ -383,3 +383,15 @@ gid://shopify/Product/15479437394305	CJ-CJYD300490101AZ	Elegante Leder-Sandalen 
 gid://shopify/Product/15479452205441	CJ-2604220635481609200	Ganzjahres Autositzauflage
 gid://shopify/Product/15481605259649	CJ-CJYD298666001AZ	Trend-Sandalen
 gid://shopify/Product/15479514366337	CJ-2606110904531635300	Magnetische Powerbank mit Ständer
+gid://shopify/Product/15479514825089	CJ-2605170708381632700	Magnetische 10'000 mAh Power Bank
+gid://shopify/Product/15479625875841	CJ-1601446499014160384	Tennis-Schläger für Switch & Switch OLED Controller
+gid://shopify/Product/15479640719745	CJ-1370606016252743680	Externe Halterung für Barcode-Drucker
+gid://shopify/Product/15480561303937	CJ-2604250756081608900	Leder-Lenkrad-Abdeckung
+gid://shopify/Product/15480161206657	CJ-CJNS298665801AZ	Herren Mesh-Sneaker mit Rebound-Sohle
+gid://shopify/Product/15484355740033	CJ-2407040759581625000	Krokodil-Boot
+gid://shopify/Product/15484294627713	CJ-2606110721581616000	Autohalter fuer Becher
+gid://shopify/Product/15481068159361	CJ-1403547871806099456	Mückenabwehr Armband
+gid://shopify/Product/15481765495169	CJ-D7D18751-346C-477E-BB2E-E7B8FFA8D0F8	Interne 2.5" SATA3 SSD für Notebook & Desktop
+gid://shopify/Product/15480570085761	CJ-2504010257261604800	Mobile Festplatte mit grosser Speicherkapazität
+gid://shopify/Product/15484710027649	CJ-1394488997161603072	USB-Stick im Schoggi-Tafel-Design
+gid://shopify/Product/15480570708353	CJ-2409210732551618900	6-in-1 Docking Station für Steam Deck
