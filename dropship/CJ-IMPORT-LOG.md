@@ -3837,3 +3837,46 @@ beendet sich mit «Supervisor läuft bereits». Verifiziert: zweiter Start abgew
 **Regel für jeden Dauerläufer: `flock` statt `pgrep`.** Ein Prüf-dann-Starte ohne Sperre ist
 kein Schutz, sondern nur ein verkleinertes Zeitfenster. Und: nach `pkill` immer nachzählen,
 bevor man neu startet — `pkill` meldet Erfolg, auch wenn es den Prozess gar nicht traf.
+
+### 🔴 Rundum-Audit (10 Agenten): ein Rabatt, der den Kauf TEURER macht (2026-08-09)
+**Der teuerste Einzelbefund — belegt im echten Checkout:**
+Ein Automatikrabatt gewährt Gratis-Versand **ab CHF 49**. Ein zweiter Automatikrabatt («2+ Artikel
+−10 %») zieht die Zwischensumme darunter — und damit fällt der Gratis-Versand weg:
+`3 × 16.90 = 50.70 → −10 % = 45.63 → + 7.00 Versand = **52.63**` statt 50.70.
+**Der Rabatt kostet den Kunden CHF 1.93 mehr.** Betroffen ist jede Zwischensumme CHF 49.00–54.44.
+Ursache: Die Gratisversand-Bedingung prüft die Summe **nach** Rabatt statt davor.
+
+**Vier Schwellen gleichzeitig live:** 49 (wirksam, Automatikrabatt) · 50 (Ankündigungsband +
+Warenkorb-Script) · 65 (in 1'822 von 2'400 Produkttexten) — und im Versandprofil zusätzlich
+Regeln ab 50 UND ab 65. Meine Angleichung auf 50 heute war deshalb unvollständig: **den
+CHF-49-Automatikrabatt kannte ich nicht.**
+
+**`WELCOME10` wird ab 2 Artikeln abgelehnt** — mit derselben Antwort wie ein Fantasiecode
+(`applicable:false`, getestet gegen `QUATSCH123`). Grund: der Automatikrabatt kombiniert nicht
+mit Code-Rabatten. Der Code wird gleichzeitig im Band, im Popup, im Footer und in **1'000 von
+1'000** geprüften Produktbeschreibungen beworben.
+
+**Sofort behoben (keine Geschäftsentscheidung nötig):**
+1. **Kollektionsseiten waren bis 1'488 px breit** bei 390 px Bildschirm — Ursache exakt lokalisiert:
+   `lux_subchips` in `templates/collection.json`, äusserer Container mit
+   `max-width:var(--page-width,1200px)` ohne Viewport-Begrenzung, innen `width:max-content`
+   (1'626 px). Folge: das Popup wurde 1'489 px breit, sein Schliesskreuz lag **526 px ausserhalb
+   des Bildschirms**, und der Cookie-Banner war auf 8 von 9 Kollektionen **nicht antippbar**.
+   → `width:100%;max-width:min(var(--page-width,1200px),100vw);min-width:0;box-sizing:border-box`
+2. **Cookie-Banner deckte 73 % der Sticky-Kaufleiste ab** (z-index 99999 über 7); ein Tipp auf die
+   Knopfmitte traf messbar den Banner. → Banner wird um die Leistenhöhe angehoben, solange sie sichtbar ist.
+3. Schliesskreuz des Popups von 26×26 auf **44×44 px**; eigene Suchleiste auf der Produktseite
+   mobil ausgeblendet (das Header-Lupensymbol leistet dasselbe und kostet keine 60 px Höhe).
+
+**Weitere hohe Befunde, noch offen:** bei **96–100 % der mehrfarbigen Produkte fehlen
+Variantenbilder** (Farbe wählen ändert das Bild nicht — Theme ist in Ordnung, die Daten fehlen);
+**Mehrwort-Suche verknüpft mit ODER statt UND** («uhr damen» liefert exakt die 1'002 Treffer von
+«damen» allein); ~19 % der Hauptbilder sind Lieferanten-Werbegrafiken, obwohl im selben Produkt
+ein sauberes Foto auf Position 2/3 liegt.
+
+**Ausdrücklich in Ordnung — hier NICHT nachbessern:** Desktop-Produktseite (12/12 alles im Fold),
+Warenkorb-Rechnung (5/5 exakt), Weg zur Kasse mit TWINT/Klarna/PayPal, 0 Lieferanten-Leaks auf
+11 Produktseiten, alle 100 Menü-Kollektionen gefüllt und 200, alle 6 Rechtsseiten 200 und
+inhaltlich konsistent, Sitemap 28'005 URLs exakt passend, 0 Reste deinstallierter Apps,
+0 gefälschte Verknappung, 27'188/27'188 Produkte mit Hauptbild, Handy-Menü korrekt (z-index-Fix
+von 2026-07-26 hält).
