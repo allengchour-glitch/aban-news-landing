@@ -3494,3 +3494,21 @@ abrufen und Shopifys Cache abwarten; die Wahrheit über den Stand steht in der T
 `ueber-uns-story`), Garantie (`garantie` + `30-tage-garantie`), Beauty-Routine
 (`beauty-routine-10-minuten` + `morgen-beauty-routine-10-minuten`). `/pages/versand` liefert 404,
 ist aber nirgends verlinkt (Menü-Check sauber) — also kein Kundenproblem, nur Altlast.
+
+### 🔁 Doppelte Seiten per 301 zusammengeführt (2026-08-09)
+Vier Themen existierten doppelt **veröffentlicht** — klassischer Duplicate-Content, der die eigene
+Seite in der Suche gegen sich selbst antreten lässt. In jedem Paar war die im Menü verlinkte Seite
+die ausführlichere und neuere, die Dublette eine ältere Kurzfassung ohne Traffic-Pfad:
+
+| Dublette | → behalten | Grösse |
+|---|---|---|
+| `versand-lieferzeit` | `versand-lieferung` | 844 → 2893 Zeichen |
+| `ueber-uns-story` | `ueber-uns` | 1981 → 4551 |
+| `30-tage-garantie` | `garantie` | 927 → 4801 |
+| `morgen-beauty-routine-10-minuten` | `beauty-routine-10-minuten` | 1299 → 1800 |
+
+**Reihenfolge ist wichtig:** erst `urlRedirectCreate` (301) anlegen, DANN die Dublette
+unveröffentlichen. Umgekehrt laufen bestehende Links und Suchtreffer zwischenzeitlich ins 404.
+Nicht gelöscht — der Inhalt bleibt im Admin erhalten.
+⚠️ Shopifys 301 greift erst, wenn unter dem Pfad nichts mehr liegt; solange der Edge-Cache die
+alte Seite ausliefert, antwortet sie weiter mit 200. Nachprüfen, nicht sofort urteilen.
