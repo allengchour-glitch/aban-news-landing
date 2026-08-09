@@ -376,3 +376,28 @@ ventilatoren	ok	28	Ventilatoren & Kühlung
 luftreiniger-klimageraete	ok	28	Luftreiniger & Klimageräte
 lampen-leuchten	ok	28	Lampen & Leuchten
 frauen-favoriten	ok	26	Frauen-Favoriten
+modellautos	ok	5	Modellautos & Sammlerfahrzeuge
+unter-30	ok	13	Lieblinge unter CHF 30
+see-und-sonne-wasserfest	ok	10	See & Sonne – wasserfester Schmuck
+rc-ferngesteuert	ok	26	RC-Autos & Ferngesteuert
+fan-zone-schweiz	unveroeffentlicht	0	Fan-Zone Schweiz – WM 2026
+schulstart	ok	5	Schulstart 2026
+ventilatoren-kuehlung	ok	28	Ventilatoren & Kühlung
+haustier-kuehlung	unveroeffentlicht	0	Haustier-Sommer & Kühlung
+ordnung-aufbewahrung	ok	10	Ordnung & Aufbewahrung
+kueche-organisation	unveroeffentlicht	0	Küchen-Organisation
+auto-handy-laden	unveroeffentlicht	0	Auto-Halterungen & Laden
+picknick-strand	ok	10	Picknick & Strand
+solar-gartenlicht	unveroeffentlicht	0	Solar- & Gartenlicht
+viral-hits	ok	28	Viral-Hits & TikTok-Trends
+damenschuhe	unveroeffentlicht	0	Damenschuhe
+herrenschuhe	unveroeffentlicht	0	Herrenschuhe
+sneaker-sportschuhe	ok	28	Sneaker & Sportschuhe
+kinderschuhe	ok	28	Kinderschuhe
+t-shirts-tops	ok	28	T-Shirts & Tops
+jeans-denim	ok	28	Jeans & Denim
+jumpsuits-overalls	ok	28	Jumpsuits & Overalls
+haarfarbe-coloration	ok	6	Haarfarbe & Coloration
+haushaltsgeraete	ok	28	Haushaltsgeräte
+bohrer-saegen-zubehoer	unveroeffentlicht	0	Bohrer, Sägen & Werkzeug-Zubehör
+sonnenbrillen-alle	ok	28	Sonnenbrillen (alle)
