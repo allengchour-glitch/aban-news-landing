@@ -3767,3 +3767,32 @@ nicht später jemand die «falsche» der beiden entfernt.
 **Für die Rechnung wichtig:** Bei Ø CHF 25 Warenkorb und CHF 20–30 echter Fracht ist **jede
 Bestellung ein Zuschussgeschäft**, unabhängig von der Schwelle. Der Hebel ist nicht der Versand,
 sondern der Warenkorbwert bzw. Verkaufspreise, die die China-Fracht tragen.
+
+### ✨ Startseite: Hero und Vertrauens-Sektion repariert (2026-08-09)
+**1. Hero-Typografie.** Überschrift und Untertitel steckten in EINEM Textblock mit
+`type_preset: h2` und `font_size: 2.5rem` — der `<p>` erbte die Überschriftengrösse und war am
+Handy **396 px hoch (47 % des Bildschirms)**, wodurch der einzige Button unter die Faltkante
+rutschte (bei 375×667 gar nicht vorhanden). Getrennt in zwei Blöcke: Headline als **`<h1>`**
+(die sichtbare Aussage war bisher nur h2), Untertitel als eigener Absatz mit `paragraph`-Preset
+und 1.0625rem, gekürzt auf eine Aussage. Hero-Innenabstand oben 100 → 40.
+
+**2. `lux_spotlight_favs` — und dabei ein Vertrauensproblem gefunden.**
+Die Sektion ist hartcodiertes HTML und war verrottet:
+- **Kachel 4 verlinkte ein DRAFT-Produkt** (`mini-robo-diffuser-…`, live HTTP 404) → entfernt
+- Preise standen als `CHF 49.9` statt `49.90` → alle drei korrigiert
+- Titel waren hart auf 54 Zeichen geschnitten und endeten mitten im Wort («50m wasser»,
+  «Fitness-Tra», «USB-betrie») → auf lesbare Volltitel gesetzt
+- **⚠️ Die Sterne beim Slim Wallet waren keine Kundenbewertungen.** Das Produkt trägt nur
+  `supplier.rating = 5` — die Bewertung des **Lieferanten**, nicht von Käufern. Angezeigt wurde
+  aber «★★★★★ (5 Bewertungen)». Sterne dort entfernt. Von den vier Kacheln hatte nur die
+  Smartwatch echte Judge.me-Bewertungen (`reviews.rating_count = 5`).
+- Überschrift «Unsere Favoriten mit 5-Sterne-Bewertungen» → **«Unsere Bestseller»**, weil sich
+  eine 5-Sterne-Aussage über den ganzen Block nicht belegen lässt.
+
+**Regel:** `supplier.rating` ist NICHT `reviews.rating`. Lieferantenbewertungen dürfen nie als
+Kundenbewertungen dargestellt werden — das fällt unter Fake-Reviews (CLAUDE.md: «NIE Fake-Reviews»).
+Vor jeder Sterne-Anzeige prüfen, aus welchem Namensraum der Wert stammt.
+
+**Bleibt strukturell:** Die Sektion ist handgeschriebenes HTML mit fest eingetragenen Bildern,
+Preisen und Sternen — sie altert unbemerkt weiter. Dauerhaft gehört sie durch eine dynamische
+Produktliste auf einer Kollektion ersetzt, dann verschwinden gedraftete Produkte von selbst.
