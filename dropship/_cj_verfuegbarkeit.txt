@@ -492,3 +492,6 @@ gid://shopify/Product/15491406987649	ok
 gid://shopify/Product/15491406922113	ok
 gid://shopify/Product/15491406791041	ok
 gid://shopify/Product/15491406725505	ok
+gid://shopify/Product/15491406496129	ok
+gid://shopify/Product/15491406365057	ok
+gid://shopify/Product/15491406266753	ok
