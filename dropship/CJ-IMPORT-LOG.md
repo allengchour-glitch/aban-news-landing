@@ -3170,3 +3170,37 @@ Der User fand auf /search?q=katzen einen «Katzen-Gurt», dessen Hauptbild eine 
 - **Wichtige Differenzierung der Draft-Gründe:** Ein Teil ist zu Recht raus (`nicht-lieferbar-ch` — BigBuy versendet nicht in die CH). Aber **127 Stück CHF 60–290 tragen nur `lager-unbekannt-draft`** (Stanley 38, Knipex 28, DeWalt 12, Bosch 2, Ryobi 1, Bahco, Facom, Irimo). Die sind NICHT unlieferbar — beim Aufräumen war bloss der Lagerstand unbekannt. **Bei CHF 250 ist die 28-EUR-Fracht 10% statt 100%** — die Unrentabel-Logik von 07-10 galt nur für Billigware. → In USER-CHECKLISTE: `BIGBUY_API_KEY` setzen, dann prüft der Viability-Guard und aktiviert die lieferbaren automatisch. Ohne Prüfung KEINE Aktivierung (Ghost-Sale = Ursache der 4 Erstattungen).
 - **Sofort umgesetzt über CJ (verifizierbar, 3–6 CHF Fracht):** CJ-Gruppe `cjwerkzeug` auf **10 Kategorien** erweitert (+ Maschinen & Zubehör, Diagnose-Werkzeuge, Werkzeug allgemein). Importiert u.a. Leistungsmesser ToolkitRC WM150, Digital-Neigungsmesser, Bohrlehre, Manometer, Akku-Gartenschere, Magnet-Schraubenzieher-Set.
 - **Neue Kollektion «🔧 Werkzeug & Maschinen»** (`werkzeug-maschinen`, TAG=werkzeug, CREATED_DESC, 6 Kanäle publiziert, **1'121 Produkte**) und ins Hauptmenü unter «Mehr & Sale» eingehängt.
+
+## 2026-08-09 — 💸 BigBuy-Rentabilität: Vollkosten statt nur Fracht (User «bigbuy aufpassen nur rentable produkte»)
+**Der Fehler:** `bb_revive_scan.py` prüfte Rentabilität nur über die **Fracht** (`ship*CHF > vk*0.35`).
+Der **Einkaufspreis (`wholesalePrice`) fehlte komplett** — ein Artikel konnte im Einkauf plus Fracht teurer
+sein als der eigene VK und wäre trotzdem freigeschaltet worden.
+
+**Vollkosten-Rechnung (jetzt in beiden Tools):** `Kosten = (wholesalePrice + CH-Fracht) × 0.93`.
+Freischalten nur bei `Marge ≥ CHF 12` **und** `VK ≥ Kosten × 1.35`. Ohne EK → **nie** aktivieren
+(`kein-ek-unpruefbar`), weil Rentabilität dann unbeweisbar ist.
+
+**EK-Abruf (teuer gesucht):**
+- numerische SKU `BB-<Zahl>` → `/rest/catalog/product/{id}.json` → `wholesalePrice`
+- Referenz `BB-S…`/`BB-V…` → `/rest/catalog/productinformationbysku/{ref}.json` → `id`
+  → `/rest/catalog/product/{id}.json` → `wholesalePrice`
+- ⚠️ `/rest/catalog/productinformation/bysku/{ref}.json` und `/rest/catalog/productsku/…` geben **400**.
+
+**Die harte Zahl:** BigBuy verlangt für die CH pauschal **~27.94 EUR** (SEUR), teils 37.72.
+Typischer Artikel: EK 4–8 CHF, Fracht 27.94 → **Vollkosten ~30–34 CHF**. Alles unter ~CHF 45 VK ist
+garantierter Verlust. Beispiele aus dem Live-Audit:
+`VK 19.90 − EK 4.00 − Fracht 27.94 = Marge −9.80` · `VK 14.90 − EK 4.84 − Fracht 37.72 = −24.68`.
+
+**Audit der bereits AKTIVEN BigBuy-Produkte** (`automation/bb_aktiv_marge.py`, 317 Stück):
+Marge < CHF 5 → **DRAFT + Tag `bb-unrentabel-draft`** (nie gelöscht, nach Preisanpassung wiederbelebbar).
+In der ersten Stichprobe waren **14 von 16 Verlustbringer**.
+
+**Regel für jede Session:** BigBuy-Artikel nur aktivieren, wenn EK **und** Fracht bekannt sind und die
+Marge nach Vollkosten stimmt. Ein aktives Verlustprodukt ist schlimmer als gar kein Produkt —
+jeder Verkauf kostet Geld. CJ bleibt der rentable Kanal (Fracht 3–6 CHF).
+
+**Nebenbefunde derselben Runde:** 2 Menülinks zeigten noch auf `/en/collections/…` (404) → korrigiert.
+Preis-/Lager-Audit über 920 Produkte: 0 Fehler (98 % ungetrackt = Dropship, `CONTINUE` dort korrekt;
+Streichpreise durchweg plausibel ~1.6×). Waisen-Scan über 12'000 Produkte: **0 Produkte ohne Kollektion**.
+Google-Merchant «Bild <500×500»: `automation/bild_klein_fix.py` tauscht ein grösseres Medium auf
+Position 0; ohne Ersatz → Tag `bild-zu-klein`.

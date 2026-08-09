@@ -44,13 +44,29 @@ for gid,title,vk,sku in pool:
     if gid in done: continue
     n+=1
     s=sku.upper().replace("BB-","")
-    ref = s if not re.fullmatch(r'\d+',s) else (bb(f"/rest/catalog/product/{s}.json") or {}).get("sku")
+    info = bb(f"/rest/catalog/product/{s}.json") if re.fullmatch(r'\d+',s) else None
+    ref = s if info is None else (info or {}).get("sku")
     if not ref: f.write(f"{gid}\tkein-ref\n"); f.flush(); continue
     sh=bb("/rest/shipping/orders.json",{"order":{"delivery":{"isoCountry":"CH","postcode":"8000","town":"Zurich"},"products":[{"reference":ref,"quantity":1}]}})
     opts=(sh.get("shippingOptions") if isinstance(sh,dict) else sh) or []
     if not opts: f.write(f"{gid}\tkein-ch-versand\n"); f.flush(); time.sleep(0.8); continue
     ship=min(o.get("cost",999) for o in opts)
-    if ship*CHF > vk*0.35: f.write(f"{gid}\tmarge-zu-tief\t{ship}\n"); f.flush(); time.sleep(0.8); continue
+    # ---- ECHTE Rentabilität (User 2026-08-09 «bigbuy aufpassen nur rentable produkte») ----
+    # Bisher wurde NUR die Fracht geprüft. Der Einkaufspreis (wholesalePrice) fehlte komplett →
+    # Artikel konnten im Einkauf teurer als der eigene VK sein. Jetzt: Vollkosten-Rechnung.
+    ek = (info or {}).get("wholesalePrice")
+    if ek is None:
+        # Referenz (BB-S…/BB-V…) → interne BigBuy-ID → Produktdaten mit wholesalePrice
+        pi = bb(f"/rest/catalog/productinformationbysku/{ref}.json")
+        pid = (pi[0].get("id") if isinstance(pi,list) and pi else None)
+        if pid: ek = (bb(f"/rest/catalog/product/{pid}.json") or {}).get("wholesalePrice")
+    if ek is None:
+        # ohne EK ist Rentabilität nicht beweisbar → nicht aktivieren (Regel: nie blind)
+        f.write(f"{gid}\tkein-ek-unpruefbar\n"); f.flush(); time.sleep(0.8); continue
+    kosten = (float(ek)+float(ship))*CHF          # EK + Fracht in CHF
+    marge  = vk - kosten
+    if marge < 12 or vk < kosten*1.35:
+        f.write(f"{gid}\tmarge-zu-tief\tEK{ek}\tFracht{ship}\tVK{vk}\tMarge{round(marge,2)}\n"); f.flush(); time.sleep(0.8); continue
     time.sleep(0.8)
     chk=bb("/rest/order/check.json",{"order":{"internalReference":"stock","language":"de","paymentMethod":"moneybox","carriers":[{"name":"seur"}],"shippingAddress":ADDR,"products":[{"reference":ref,"quantity":1}]}})
     t=json.dumps(chk)
@@ -62,7 +78,7 @@ for gid,title,vk,sku in pool:
     for pub in ["301970915713","301971014017","302032716161","302566834561","302994456961"]:
         gql('mutation($id:ID!,$p:[PublicationInput!]!){publishablePublish(id:$id,input:$p){userErrors{message}}}',{"id":gid,"p":[{"publicationId":"gid://shopify/Publication/"+pub}]})
         time.sleep(0.08)
-    akt+=1; f.write(f"{gid}\tAKTIVIERT\t{ship}\n"); f.flush()
-    print(f'✅ CHF {vk:>7} (Fracht {ship}) {title[:50]}',flush=True)
+    akt+=1; f.write(f"{gid}\tAKTIVIERT\tEK{ek}\tFracht{ship}\tVK{vk}\tMarge{round(marge,2)}\n"); f.flush()
+    print(f'✅ VK {vk} − EK {ek} − Fracht {ship} → Marge CHF {round(marge,2)} · {title[:45]}',flush=True)
     time.sleep(0.9)
 print(f"FERTIG: {n} geprüft, {akt} aktiviert")
