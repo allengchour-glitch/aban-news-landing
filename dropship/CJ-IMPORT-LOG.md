@@ -3391,3 +3391,22 @@ Die Engine lief korrekt für #1012, hätte aber bei anderen Bestellungen Schaden
 
 **Regel: nach jedem Automatik-Bau die eigenen Annahmen gegen echte Katalogdaten prüfen.**
 Die SKU-Form von einer einzigen Bestellung auf 23'000 Produkte zu verallgemeinern war der Fehler.
+
+### 🐛 Selbst-Audit Nachlauf-Automatik (`cj_fulfill_engine.py`) — 3 weitere Fehler
+1. **Interner Lieferanten-Code in der Kunden-Versandmail.** Als Versanddienst wurde CJs
+   `trackingProvider` durchgereicht — bei #1012 wäre das **`Yun_Standard_Electric`** gewesen.
+   Das steht so in der Versandbestätigung des Kunden. Jetzt bildet `carrier_name()` auf lesbare
+   Namen ab (`YunExpress`, `CJPacket`, `PostNL`, `4PX`, `DHL` …), Fallback `CJPacket`.
+   Verifiziert: `Yun_Standard_Electric` → `YunExpress`.
+2. **Stille 30-Bestellungen-Grenze.** `shopify_offen()` lud pauschal die 30 neuesten bezahlten
+   Bestellungen. Ab der 31. wäre eine ältere versandte Bestellung nie gefunden worden — und die
+   Meldung hätte fälschlich «Shopify bereits None» gesagt statt einen Fehler zu zeigen.
+   Ersetzt durch `shopify_bestellung(name)`, das gezielt nach der Bestellnummer sucht.
+3. **Falschmeldung bei API-Aussetzer.** Scheiterte `getOrderDetail`, fiel der Code auf den
+   Listeneintrag zurück — der hat keine Tracking-Nummer, also hätte das Log «nichts zu tun»
+   gemeldet, obwohl die Bestellung womöglich längst unterwegs war. Jetzt wird der Lauf für diese
+   Bestellung sauber übersprungen und im nächsten Durchgang erneut versucht.
+
+**Muster hinter allen drei:** ein Fehlerfall, der wie ein Normalfall aussieht. Genau die sind
+gefährlich, weil das Log ruhig bleibt. Bei Automatiken gilt: jeder unerwartete Zustand muss
+sichtbar anders aussehen als «alles erledigt».

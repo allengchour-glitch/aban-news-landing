@@ -94,25 +94,49 @@ def bezahlen(det):
     return False, " | ".join(fehler)
 
 
-def shopify_offen():
-    """Shopify-Bestellnummer -> (fulfillmentOrderId, schon erledigt?)"""
-    q = '''{orders(first:30, query:"financial_status:paid", sortKey:CREATED_AT, reverse:true){nodes{
+def shopify_bestellung(name):
+    """Eine bestimmte Bestellung gezielt holen.
+    ⚠️ Vorher wurden pauschal die 30 neuesten bezahlten Bestellungen geladen — sobald der Shop
+    mehr als 30 hat, wäre eine ältere versandte Bestellung stillschweigend nie gefunden worden
+    und die Meldung hätte fälschlich «Shopify bereits None» gesagt."""
+    q = '''query($q:String!){orders(first:5, query:$q){nodes{
       name displayFulfillmentStatus
       fulfillmentOrders(first:5){nodes{id status}}
     }}}'''
-    res = {}
-    for o in ((gql(q).get("data") or {}).get("orders") or {}).get("nodes") or []:
-        fo = [n for n in o["fulfillmentOrders"]["nodes"] if n["status"] in ("OPEN", "IN_PROGRESS", "SCHEDULED")]
-        res[o["name"]] = (fo[0]["id"] if fo else None, o["displayFulfillmentStatus"])
-    return res
+    nodes = ((gql(q, {"q": f"name:{name.lstrip('#')}"}).get("data") or {}).get("orders") or {}).get("nodes") or []
+    for o in nodes:
+        if o["name"].lstrip("#") != name.lstrip("#"):
+            continue
+        fo = [n for n in o["fulfillmentOrders"]["nodes"]
+              if n["status"] in ("OPEN", "IN_PROGRESS", "SCHEDULED")]
+        return (fo[0]["id"] if fo else None), o["displayFulfillmentStatus"]
+    return None, None
 
 
-def fulfillen(fo_id, track, carrier):
+# CJs trackingProvider ist ein interner Code (z.B. 'Yun_Standard_Electric'). Der landet
+# ungefiltert in der Versandmail an den Kunden -> auf lesbare Namen abbilden.
+CARRIER = {
+    "yun": "YunExpress", "cjpacket": "CJPacket", "postnl": "PostNL",
+    "4px": "4PX", "sunyou": "SunYou", "china": "China Post", "ems": "EMS",
+    "dhl": "DHL", "ups": "UPS", "fedex": "FedEx", "usps": "USPS",
+}
+
+
+def carrier_name(provider, logistic):
+    for quelle in (provider, logistic):
+        s = (quelle or "").lower()
+        for k, v in CARRIER.items():
+            if k in s:
+                return v
+    return "CJPacket"
+
+
+def fulfillen(fo_id, track, provider, logistic):
     m = '''mutation($f:FulfillmentV2Input!){ fulfillmentCreateV2(fulfillment:$f){
        fulfillment{ status trackingInfo{number company} } userErrors{message field} }}'''
     v = {"f": {
         "lineItemsByFulfillmentOrder": [{"fulfillmentOrderId": fo_id}],
-        "trackingInfo": {"number": track, "company": carrier or "CJPacket",
+        "trackingInfo": {"number": track, "company": carrier_name(provider, logistic),
                          "url": f"https://t.17track.net/en#nums={track}"},
         "notifyCustomer": NOTIFY,
     }}
@@ -126,7 +150,6 @@ def main():
     zeilen = [l.strip().split("\t") for l in open(LEDGER) if l.strip()]
     bal = guthaben()
     cjo = cj_bestellungen()
-    shop = shopify_offen()
     print(f"CJ-Guthaben {bal:.2f} USD | {len(cjo)} CJ-Bestellungen | DRY={DRY}", flush=True)
 
     for t in zeilen:
@@ -135,7 +158,12 @@ def main():
         det = cjo.get(lx.lstrip("#"))
         if not det:
             print(f"  {name}: {lx} nicht in der CJ-Liste", flush=True); continue
-        voll = (cj(f"/api2.0/v1/shopping/order/getOrderDetail?orderId={det.get('orderId')}").get("data")) or det
+        voll = (cj(f"/api2.0/v1/shopping/order/getOrderDetail?orderId={det.get('orderId')}").get("data"))
+        if not voll:
+            # Nicht auf den Listeneintrag ausweichen: der hat keine Tracking-Nummer, und
+            # «nichts zu tun» wäre dann eine Falschmeldung für eine womöglich versandte Bestellung.
+            print(f"  {name} ({lx}): ⚠️ Detailabruf bei CJ fehlgeschlagen — nächster Lauf", flush=True)
+            continue
         status = voll.get("orderStatus")
         betrag = float(voll.get("orderAmount") or 0)
 
@@ -154,13 +182,16 @@ def main():
 
         track = voll.get("trackNumber")
         if status in ("SHIPPED", "DELIVERED") and track:
-            fo_id, ff_status = shop.get(name, (None, None))
+            fo_id, ff_status = shopify_bestellung(name)
             if not fo_id:
-                print(f"  {name} ({lx}): versendet ({track}), Shopify bereits {ff_status}", flush=True)
+                print(f"  {name} ({lx}): versendet ({track}), Shopify bereits "
+                      f"{ff_status or 'nicht gefunden'}", flush=True)
                 continue
             if DRY:
-                print(f"  {name} ({lx}): würde Shopify mit {track} fulfillen", flush=True); continue
-            r = fulfillen(fo_id, track, voll.get("trackingProvider"))
+                print(f"  {name} ({lx}): würde Shopify mit {track} fulfillen "
+                      f"(Versand: {carrier_name(voll.get('trackingProvider'), voll.get('logisticName'))})",
+                      flush=True); continue
+            r = fulfillen(fo_id, track, voll.get("trackingProvider"), voll.get("logisticName"))
             errs = r.get("userErrors") or []
             print(f"  {name} ({lx}): {'✅ fulfilled ' + track if not errs else '❌ ' + str(errs[:1])}", flush=True)
             continue
