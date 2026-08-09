@@ -57,3 +57,10 @@ _lporig2.html
 _thdbg.html
 _thshot_*.html
 _th*.html
+
+# Sonden- und Messdateien der Spiele-Werkzeuge (spiele-dev/tools, Schwarm-Agenten).
+# Muster: _x_* (Agenten), _*_tmp.html (th-lib), sowie lose Playwright-Skripte im Root.
+# Die entstehen bei jeder Messung neu und gehoeren nie ins Repo.
+_x_*
+_*_tmp.html
+_th_dbg.html
