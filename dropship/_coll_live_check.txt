@@ -88,3 +88,31 @@ gadgets	ok	28	Coole Gadgets
 us-summer-2026	ok	10	US / Summer 2026
 sommer	ok	28	Sommer-Kollektion 2026
 home-gadgets	ok	7	Home & Gadgets
+accessories	ok	6	Accessories
+strand-bademode	ok	8	Strand & Bademode
+hautpflege-skincare	ok	28	Hautpflege & Skincare
+wellness-beauty-tools	ok	28	Wellness & Beauty-Tools
+deko-wohnaccessoires	ok	28	Deko & Wohnaccessoires
+beleuchtung-lampen	ok	28	Beleuchtung & Lampen
+kueche-tisch	ok	28	Küche & Tisch
+strand-look	ok	11	Strand-Look
+office-look	ok	12	Office-Look
+abend-look	ok	12	Abend-Look
+selbst-gestalten-1	ok	28	Selbst gestalten
+schweiz-edition	ok	28	Schweiz Edition
+sticker-aufkleber	ok	28	Sticker & Aufkleber
+grill-bbq	ok	21	Grill & BBQ
+auto-handy	ok	6	Auto & Handy
+sub-kleider	ok	28	Kleider
+sub-roecke	ok	28	Röcke
+sub-bademode	ok	28	Bademode
+sub-halsketten	ok	28	Halsketten
+sub-ohrringe	ok	28	Ohrringe
+sub-armbaender	ok	28	Armbänder
+sub-beleuchtung	ok	28	Beleuchtung
+sub-deko	ok	28	Vasen & Deko
+sub-aroma-diffuser	ok	28	Aroma & Diffuser
+sub-massage	ok	28	Massage & Wellness
+sub-taschen	ok	28	Taschen & Rucksäcke
+sub-uhren	ok	28	Uhren
+erste-august	ok	28	Schweizer Editionen
