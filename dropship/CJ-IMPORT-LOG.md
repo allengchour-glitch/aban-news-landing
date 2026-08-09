@@ -3297,3 +3297,36 @@ damit keine verwirrende zweite Versandmail rausgeht).
 **Regel: Tracking-Nummern vor dem Eintragen gegen die Lieferanten-Bestellliste prüfen.**
 Eine erfundene oder aus einer stornierten Bestellung übernommene Nummer ist schlimmer als gar
 keine — der Kunde sieht «Versendet», die Sendung existiert aber nicht.
+
+### 🤖 `automation/cj_order_engine.py` — Bestell-Automatik ohne CJ-Produktverbindung (2026-08-09)
+**Warum:** CJ bepreist Bestellungen nur, wenn jedes Shopify-Produkt in der CJ-Weboberfläche
+manuell «verbunden» wurde (`my.html#/products-connection/pending-connection`). Unsere ~23'000
+Produkte kamen per Shopify-API rein, sind also unverbunden. **Eine API zum Verbinden gibt es
+nicht** — geprüft: `shopping/store/list`, `product/connection/list`, `shopping/product/list`
+antworten alle `1600101 Interface not found`. Von Hand ist das bei 23'000 Produkten unmöglich.
+
+**Lösung:** Die CJ-pid steckt bereits in unserer SKU (`CJ-<pid>`) → Bestellung direkt per
+`createOrderV2` anlegen, Verbindung komplett umgehen. Der Engine holt offene bezahlte Shopify-
+Bestellungen, löst SKU→pid→vid auf, rechnet die Fracht und legt `LX<Nr>` bei CJ an.
+
+**Frachtwahl:** schnellste Option, die rentabel bleibt **und** ≤20 Tage braucht. Greift keine,
+wird die rentable-aber-langsame genommen und das ausgewiesen — «zu langsam» und «Verlust» sind
+verschiedene Probleme und werden getrennt gemeldet (erste Fassung warf beides in einen Topf und
+meldete für PostNL fälschlich «VERLUST», obwohl die Marge +6.96 betrug).
+
+**⚠️ Wechselkurs NIE schätzen:** mit geratenen 0.85 statt der echten **USD→CHF 0.810** wurde
+#1012 als Minusgeschäft (−0.95) ausgewiesen, obwohl es knapp im Plus lag (+0.65). Der Engine
+holt den Kurs jetzt live (frankfurter.dev, Fallback open.er-api.com) und **bricht ab**, wenn
+keiner erreichbar ist. Zum Vergleich EUR→CHF = 0.9347 (der BigBuy-Audit rechnete mit 0.93 —
+nah genug, seine DRAFT-Entscheidungen bleiben gültig).
+
+**⚠️ Doppel-Anlage-Sperre:** Vor jeder Anlage wird die **komplette CJ-Bestellliste** abgefragt
+(`shopping/order/list`, alle Seiten) und bei vorhandener `LX<Nr>` abgebrochen. Der lokale Ledger
+allein reicht nicht — stirbt ein Lauf zwischen CJ-Anlage und Ledger-Schreiben (passiert hier
+ständig durch Turn-Reaping), würde die Bestellung sonst ein zweites Mal angelegt und doppelt
+bezahlt. Gleiche Lehre wie beim Social-Doppelpost: **gegen die Plattform-Wahrheit prüfen, nicht
+nur gegen den eigenen Ledger** — hier kostet der Fehler echtes Geld.
+
+**Bleibt manuell:** das Bezahlen. `payBalance` lehnt sowohl `orderId` als auch `cjOrderCode` mit
+«Order not found» ab, `confirmOrder` akzeptiert weder GET noch POST. Angelegte Bestellungen
+landen auf `orderStatus: IN_CART` und werden in der CJ-Oberfläche bezahlt (so lief auch LX1011B).
