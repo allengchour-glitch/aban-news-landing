@@ -3393,8 +3393,22 @@ setTimeout(function baueGebaeude(){
        um 6 % dunkler. */
     (function felder(){
       var pos=[],col=[],idx=[],vb=0,rects=[];
-      var FARB=[[0.42,0.58,0.26],[0.52,0.64,0.28],[0.74,0.68,0.32],
-                [0.40,0.31,0.23],[0.58,0.66,0.33],[0.66,0.62,0.28]];
+      /* ⚠️ VERTEXFARBEN SIND LINEAR. Beim ersten Versuch standen hier die Werte,
+         die ich als sRGB gemeint hatte — und alle 22 Felder rendeten cremeweiss.
+         three.js reicht ein Float-Farbattribut ungewandelt an den Shader; linear
+         0,42 kommt als sRGB 0,68 heraus, also viel heller als gedacht. Die
+         Bodentexturen daneben durchlaufen dagegen die sRGB-Dekodierung und sehen
+         darum "richtig" aus — der direkte Vergleich hat mich in die Irre gefuehrt.
+         Darum stehen hier die GEMEINTEN sRGB-Werte und werden umgerechnet.
+         (Dasselbe erklaert rueckwirkend, warum der Bergfels dreimal zu hell war.) */
+      function srgb(c){return [Math.pow(c[0],2.2),Math.pow(c[1],2.2),Math.pow(c[2],2.2)];}
+      var FARB=[[0.45,0.62,0.28],   // junge Saat
+                [0.52,0.68,0.32],   // Gras
+                [0.80,0.72,0.36],   // Weizen
+                [0.42,0.32,0.24],   // frisch gepfluegt
+                [0.58,0.70,0.36],   // Wiese
+                [0.70,0.64,0.30]    // Stoppelfeld
+               ].map(srgb);
       function frei(x,z,rad2){
         if(x<-118&&Math.abs(z)<184)return false;                  // Meer + Strand
         var BB=window._berge||[];
