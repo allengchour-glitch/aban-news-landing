@@ -6,7 +6,12 @@ source /tmp/secrets_env.sh 2>/dev/null
 # Startseiten-Reihen + Menü-Gegenstücke, die sich sonst doppeln würden
 COLLS=(691351716225 690573050241 689681006977 688577577345 687522775425 687793897857 688698884481 689834393985)
 #        blitz-high    blitz-CH-voll ventilatoren neu-eingetr. trends      elektronik  wohnen      eu-lager
-SORTS=(CREATED_DESC PRICE_DESC PRICE_ASC ALPHA_ASC ALPHA_DESC)  # BEST_SELLING raus: ohne Verkäufe ≈ CREATED → Dubletten
+# ⚠️ 2026-08-09 korrigiert: ALPHA_* und PRICE_* sind bei drei- bis vierstelligen Kollektionen
+# reiner Zufall. Der Agenten-Audit fand als Folge dieser Rotation Badesets als Aushängeschild
+# (blitzversand ALPHA_ASC), einen 18k-Gold-Block als "Geschenkideen" und sechs Drohnen als
+# "Trends". Frische Bilder sind nichts wert, wenn die gezeigte Ware absurd ist.
+# Es bleiben nur Sortierungen, die inhaltlich sinnvoll sind.
+SORTS=(CREATED_DESC BEST_SELLING)
 NS=${#SORTS[@]}
 while true; do
   STEP=$(cat /tmp/blitz_sort_idx 2>/dev/null || echo 0)
