@@ -3737,3 +3737,33 @@ Auch die These «ohne GTIN und Marke → Ablehnung» trifft auf 0 Produkte zu: S
 (Kinderware als «adult» — falsche Werte sind schlimmer als fehlende), ~20 weitere
 Richtlinien-Artikel im Feed (Nahrungsergänzung, Blutzucker-Messversprechen, «Mercedes-Benz»-Tasche),
 715 Apparel ohne `color`, 63 aktive Produkte mit HTTP 404 (Importer vergisst die Publikation).
+
+### 💰 Versandwerte vereinheitlicht — Entscheid: CHF 7.00, gratis ab CHF 50 (User delegierte 2026-08-09)
+**Datengrundlage statt Bauchgefühl.** Die vier bezahlten Bestellungen:
+`#1004 24.90 · #1005 34.90 · #1011 14.90 · #1012 25.90` → **Warenkorb Ø CHF 25.15, Median 25.40.**
+Jede zahlte CHF 7.00 Versand; **0 von 4 erreichten eine der beiden Schwellen** (weder 50 noch 65).
+
+**Warum 50 und nicht 65:** Bei Ø 25 Franken bedeutet «ab 65» für den Kunden *drei* Artikel — das
+wirkt unerreichbar und motiviert niemanden. «Ab 50» heisst *einen dazulegen*. Dazu greift im
+Checkout ohnehin die 50er-Regel (im Profil sind **beide** aktiv, Shopify nimmt die günstigere),
+und die Versandbedingung nennt 50. Die Angleichung folgt also der Realität, statt einen dritten
+Wert zu erfinden. Versandertrag zu schützen wäre sinnlos: CHF 7 decken die echte Fracht
+(CJ USD 20–28, BigBuy EUR 27.94) ohnehin nicht annähernd.
+
+**Angeglichen:**
+- `layout/theme.liquid`: Gratisversand-Balken `SCHWELLE 6500 → 5000`. Vorher zeigte er einem
+  Kunden bei CHF 52 «noch 13 Franken bis Gratis-Versand», obwohl er ihn längst hatte.
+- `/pages/versand-lieferung`, `/pages/versand-lieferzeit`, `/pages/faq`: **CHF 4.90 → 7.00**
+  (4.90 war schlicht falsch — der Checkout verlangt 7.00) und **ab 65 → ab 50**
+- Ankündigungsleiste (`sections/header-group.json`): 65 → 50
+- Produktbeschreibungen: der Werbeblock mit der Schwelle wird ohnehin gerade entfernt
+- Policies nannten bereits korrekt CHF 50 — unverändert
+
+⚠️ **Das Versandprofil selbst wurde NICHT angefasst.** Dort sind zwei Gratis-Regeln aktiv
+(≥50 und ≥65); das Kundenergebnis ist korrekt, weil die günstigere gewinnt. Eine Regel zu löschen
+ist ein Eingriff in den Checkout und laut Memory als riskant vermerkt — hier festgehalten, damit
+nicht später jemand die «falsche» der beiden entfernt.
+
+**Für die Rechnung wichtig:** Bei Ø CHF 25 Warenkorb und CHF 20–30 echter Fracht ist **jede
+Bestellung ein Zuschussgeschäft**, unabhängig von der Schwelle. Der Hebel ist nicht der Versand,
+sondern der Warenkorbwert bzw. Verkaufspreise, die die China-Fracht tragen.
