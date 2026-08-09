@@ -11,7 +11,7 @@ while true; do
   # CJ-Grind-Runner mitlaufen lassen (Turn-Reaping killt sie sonst jede Runde)
   for R in cj_runner2 cj_runner3 cj_runner4 cj_runner5; do
     [ -f /tmp/$R.sh ] || continue
-    pgrep -f "RUNNER=$R" >/dev/null || pgrep -f "/tmp/$R.sh" >/dev/null || { setsid bash /tmp/$R.sh >> /tmp/$R.log 2>&1 & echo "$(date -u +%H:%M) restart $R"; sleep 3; }
+    pgrep -f "cj_runner_template.sh $R" >/dev/null || { setsid bash /tmp/$R.sh >> /tmp/$R.log 2>&1 & echo "$(date -u +%H:%M) restart $R"; sleep 3; }
   done
   sleep 120
 done

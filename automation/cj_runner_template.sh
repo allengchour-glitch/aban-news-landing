@@ -20,7 +20,9 @@ cd /home/user/aban-news-landing || exit 1
 source /tmp/secrets_env.sh 2>/dev/null
 source /tmp/cj_creds.env 2>/dev/null
 
-RUNNER="${RUNNER:-cj_runner_x}"
+# Name auch als ARGUMENT annehmen: nach `exec` steht die Env nicht in der Kommandozeile,
+# der Supervisor koennte den Prozess sonst nicht wiederfinden und startet endlos neue.
+RUNNER="${1:-${RUNNER:-cj_runner_x}}"
 LOG="/tmp/${RUNNER}.log"
 IDXF="/tmp/${RUNNER}_idx"
 RNDF="/tmp/${RUNNER}_round"
