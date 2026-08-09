@@ -3381,6 +3381,84 @@ setTimeout(function baueGebaeude(){
        Der Guertel laeuft bei r 150…284 und weicht den gemeldeten Bergfuessen
        aus. Ausgespart werden Meer, alle Viertel samt Rand und die Zufahrts-
        schneisen. */
+    /* 🌾 FELDER. Nach Bergen und Wald ist die WIESE die groesste einfarbige
+       Flaeche im Bild — ein durchgehendes Gruen vom letzten Haus bis zum Wald.
+       Eine Kulturlandschaft besteht aus Flicken: junge Saat, reifes Gras, Weizen,
+       frisch gepfluegter Acker. Genau das gibt der Ebene Massstab, weil das Auge
+       an den Kanten ablesen kann, wie weit etwas weg ist.
+
+       ⚠️ ALLE Felder liegen in EINEM Mesh mit Vertexfarben. Als Einzelflaechen
+       waeren es bei 22 Feldern mit je 9 Streifen fast 200 Zeichenaufrufe; so ist
+       es EINER. Die Streifen sind zugleich die Pflugfurchen: jeder zweite ist
+       um 6 % dunkler. */
+    (function felder(){
+      var pos=[],col=[],idx=[],vb=0,rects=[];
+      /* ⚠️ VERTEXFARBEN SIND LINEAR. Beim ersten Versuch standen hier die Werte,
+         die ich als sRGB gemeint hatte — und alle 22 Felder rendeten cremeweiss.
+         three.js reicht ein Float-Farbattribut ungewandelt an den Shader; linear
+         0,42 kommt als sRGB 0,68 heraus, also viel heller als gedacht. Die
+         Bodentexturen daneben durchlaufen dagegen die sRGB-Dekodierung und sehen
+         darum "richtig" aus — der direkte Vergleich hat mich in die Irre gefuehrt.
+         Darum stehen hier die GEMEINTEN sRGB-Werte und werden umgerechnet.
+         (Dasselbe erklaert rueckwirkend, warum der Bergfels dreimal zu hell war.) */
+      function srgb(c){return [Math.pow(c[0],2.2),Math.pow(c[1],2.2),Math.pow(c[2],2.2)];}
+      var FARB=[[0.45,0.62,0.28],   // junge Saat
+                [0.52,0.68,0.32],   // Gras
+                [0.80,0.72,0.36],   // Weizen
+                [0.42,0.32,0.24],   // frisch gepfluegt
+                [0.58,0.70,0.36],   // Wiese
+                [0.70,0.64,0.30]    // Stoppelfeld
+               ].map(srgb);
+      function frei(x,z,rad2){
+        if(x<-118&&Math.abs(z)<184)return false;                  // Meer + Strand
+        var BB=window._berge||[];
+        for(var m=0;m<BB.length;m++)
+          if(Math.hypot(x-BB[m].x,z-BB[m].z)<BB[m].r*0.80+rad2)return false;
+        for(var q=0;q<VIERTEL.length;q++){var v=VIERTEL[q];
+          if(Math.abs(x-v.x)<v.w/2+rad2+8&&Math.abs(z-v.z)<v.d/2+rad2+8)return false;
+          var L=Math.hypot(v.x,v.z); if(L<1)continue;
+          var t=(x*v.x+z*v.z)/(L*L);
+          if(t>0&&t<1.25&&Math.hypot(x-v.x*t,z-v.z*t)<12+rad2)return false;}
+        for(var r2=0;r2<rects.length;r2++)
+          if(Math.hypot(x-rects[r2][0],z-rects[r2][1])<rects[r2][2]+rad2+6)return false;
+        return true;
+      }
+      for(var i=0,gesetzt=0;i<900&&gesetzt<22;i++){
+        var aa=(i*2.399963)%6.283, rr=152+((i*53)%126);
+        var fx=Math.cos(aa)*rr, fz=Math.sin(aa)*rr;
+        var bw=17+((i*31)%22), bd=13+((i*17)%16);
+        var rad2=Math.hypot(bw,bd)/2;
+        if(!frei(fx,fz,rad2))continue;
+        rects.push([fx,fz,rad2]); gesetzt++;
+        var dr=((i*7)%628)/100, cs=Math.cos(dr), sn=Math.sin(dr);
+        var F=FARB[i%FARB.length], NS=9;
+        for(var st=0;st<NS;st++){
+          var u0=-bw/2+bw*st/NS, u1=-bw/2+bw*(st+1)/NS, d2=bd/2;
+          var f2=(st%2)?0.94:1.0;
+          [[u0,-d2],[u1,-d2],[u1,d2],[u0,d2]].forEach(function(P){
+            pos.push(fx+P[0]*cs-P[1]*sn, 0.02, fz+P[0]*sn+P[1]*cs);
+            col.push(F[0]*f2,F[1]*f2,F[2]*f2);});
+          /* ⚠️ ZUM ZWEITEN MAL in dieser Datei dieselbe Falle — bei den Bergen
+             war es dieselbe. Die Reihenfolge (0,1,2) ergibt hier ein
+             Kreuzprodukt mit negativer y-Komponente: die Vorderseite zeigt nach
+             UNTEN, und `side: FrontSide` cullt sie von oben gesehen komplett weg.
+             Die 22 Felder waren im Speicher vorhanden und trotzdem unsichtbar —
+             nachgewiesen mit einer Sonde, nicht geraten. Merksatz: bei jeder
+             selbst gebauten Flaeche einmal das Kreuzprodukt nachrechnen. */
+          idx.push(vb,vb+2,vb+1, vb,vb+3,vb+2); vb+=4;
+        }
+      }
+      if(!pos.length)return;
+      var g3=new THREE.BufferGeometry();
+      g3.setAttribute("position",new THREE.Float32BufferAttribute(pos,3));
+      g3.setAttribute("color",new THREE.Float32BufferAttribute(col,3));
+      g3.setIndex(idx); g3.computeVertexNormals();
+      var fm=new THREE.MeshStandardMaterial({vertexColors:true,roughness:1,envMapIntensity:0.14});
+      var fmesh=new THREE.Mesh(g3,fm);
+      fmesh.receiveShadow=true; fmesh.frustumCulled=false;
+      fmesh.userData.nieAusblenden=1; scene.add(fmesh);
+      window._felder=rects;      // der Waldsaum weicht ihnen aus
+    })();
     setTimeout(function waldsaum(){
       var kand=[];
       for(var i=0;i<2600;i++){
@@ -3390,6 +3468,11 @@ setTimeout(function baueGebaeude(){
         /* ⚠️ Der erste Guertel lag bei r 182…212 — und war unsichtbar, weil die
            BERGFUESSE bis r 132 nach innen reichen. Die Baeume standen im Fels.
            Jetzt weiter innen und explizit gegen die gemeldeten Fuesse geprueft. */
+        var FE=window._felder||[];                             // nicht in die Felder
+        var imFeld=false;
+        for(var f9=0;f9<FE.length;f9++)
+          if(Math.hypot(wx-FE[f9][0],wz-FE[f9][1])<FE[f9][2]+2){imFeld=true;break;}
+        if(imFeld)continue;
         var imFels=false, BB=window._berge||[];
         for(var m9=0;m9<BB.length;m9++){
           /* r*0.80 statt des vollen Fusses: die aeussersten 20 % des Kegelfusses
