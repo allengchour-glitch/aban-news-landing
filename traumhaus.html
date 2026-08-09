@@ -1550,14 +1550,18 @@ var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_d
     b.position.set(x,0.06,z);b.receiveShadow=true;scene.add(b);}
   function erd(w,d,x,z){var e=new THREE.Mesh(new THREE.PlaneGeometry(w,d),erdM);
     e.rotation.x=-Math.PI/2;e.position.set(x,0.005,z);e.receiveShadow=true;scene.add(e);}
+  /* 🐛 5.05 -> 8.05: Der Bordstein stammt aus der Zeit, als die Hauptstrassen 10 m
+     breit waren (Halbbreite 5). Nach der Verbreiterung auf 16 m blieb er stehen —
+     seither lief eine Betonkante 3 m INNERHALB der Fahrbahn, mitten durch den
+     Parkstreifen. Jetzt sitzt er auf der echten Kante (Halbbreite 8). */
   [SZ9+12,-(SZ9+12)].forEach(function(zc){
-    [zc>0?zc-5.05:zc+5.05,zc>0?zc+5.05:zc-5.05].forEach(function(zb){ // Bordstein beidseitig
+    [zc>0?zc-8.05:zc+8.05,zc>0?zc+8.05:zc-8.05].forEach(function(zb){ // Bordstein beidseitig
       bord(2*(RX-5),0.26,0,zb);bord(LR,0.26,-(RB+LR/2),zb);bord(LR,0.26,(RB+LR/2),zb);});
-    [zc>0?zc-7.55:zc+7.55,zc>0?zc+7.55:zc-7.55].forEach(function(ze){ // Erdstreifen an der Aussenkante der Platten
+    [zc>0?zc-10.6:zc+10.6,zc>0?zc+10.6:zc-10.6].forEach(function(ze){ // Erdstreifen AUSSEN neben dem Gehweg (8.0..10.2)
       erd(2*(RX-5),0.7,0,ze);erd(LR,0.7,-(RB+LR/2),ze);erd(LR,0.7,(RB+LR/2),ze);});});
   [RX,-RX].forEach(function(xc){
     [xc-5.05,xc+5.05].forEach(function(xb){bord(0.26,2*SZ9+14,xb,0);});
-    [xc-7.55,xc+7.55].forEach(function(xe){erd(0.7,2*SZ9+14,xe,0);});});
+    [xc-7.8,xc+7.8].forEach(function(xe){erd(0.7,2*SZ9+14,xe,0);});});   /* aussen neben dem Gehweg (bis 7.4) */
   /* 🅿️ Parkstreifen entlang beider Hauptstrassen + Bushaltebucht (User: „genuegend
      Parkplaetze, dass Auto und Bushaltestelle parkieren koennen"). Liegen auf den 3 m,
      die die Verbreiterung je Seite gebracht hat — der Fahrstreifen bleibt frei. */
@@ -1853,6 +1857,83 @@ var dorfFenster=[];
     var d=new THREE.Object3D();
     pfPos.forEach(function(p,i){d.position.set(p[0],0.35,p[1]);d.rotation.y=p[2];d.updateMatrix();inst.setMatrixAt(i,d.matrix);});
     inst.castShadow=true;scene.add(inst);
+  })();
+  /* ═══════════ 🛣️ STRASSENDETAILS (User: „strasse besser schoener") ═══════════════
+     Bisher: Asphaltflaeche + Trottoirplatte + Linien. Was einer echten Strasse noch
+     fehlte, ist genau das, was man aus Augenhoehe zuerst sieht:
+       * BORDSTEIN mit sichtbarer Kante — die Trottoirplatte hatte 6 cm und ging
+         ohne Kante in den Asphalt ueber. Ein 14 cm hoher Randstein mit hellerer
+         Oberkante trennt Gehweg und Fahrbahn sichtbar.
+       * RICHTUNGSPFEILE vor den vier Hauptkreuzungen (geradeaus + abbiegen).
+       * GULLYS in der Rinne, alle 22 m, sowie Schachtdeckel in der Fahrbahnmitte.
+       * DOPPELTE SPERRLINIE auf den 16 m breiten Hauptstrassen — zwei durchgezogene
+         statt der gestrichelten Mittellinie, wie bei vierspurigen Ortsdurchfahrten.
+       * ASPHALTFLICKEN — leicht dunklere Rechtecke, damit die Fahrbahn nicht wie
+         frisch gegossen aussieht.
+     Gully- und Pfeilgeometrien laufen als InstancedMesh (je 1 Zeichenaufruf). */
+  (function strassenDetails(){
+    var SZd=GH*CS/2+12;                                   /* Hauptstrassen-Mitte 58 */
+    /* Bordsteine gibt es schon weiter oben (bord()/erd()); sie sassen nur auf der
+       falschen Halbbreite. Hier keine zweiten bauen — zwei Kanten auf derselben
+       Stelle streiten sich um die Sichtbarkeit. */
+    /* ── Gullys in der Rinne + Schachtdeckel in der Fahrbahn ── */
+    var gulliG=new THREE.BoxGeometry(0.62,0.04,0.42);
+    var gulliM=new THREE.MeshStandardMaterial({color:0x3a3d43,roughness:0.85,metalness:0.35});
+    var gP=[];
+    [-SZd,SZd].forEach(function(zc){[-7.6,7.6].forEach(function(o){
+      for(var x=-RL/2+14;x<RL/2-14;x+=22){
+        if(Math.abs(Math.abs(x)-RX)<12)continue;
+        gP.push([x,zc+o,0]);}});});
+    [-RX,RX].forEach(function(xc){[-4.6,4.6].forEach(function(o){
+      for(var z=-SZd-24;z<SZd+24;z+=22){
+        if(Math.abs(Math.abs(z)-SZd)<13)continue;
+        gP.push([xc+o,z,Math.PI/2]);}});});
+    var gInst=new THREE.InstancedMesh(gulliG,gulliM,gP.length);
+    var dm=new THREE.Object3D();
+    gP.forEach(function(p,i){dm.position.set(p[0],0.028,p[1]);dm.rotation.y=p[2];dm.updateMatrix();gInst.setMatrixAt(i,dm.matrix);});
+    gInst.receiveShadow=true;scene.add(gInst);
+    var schachtG=new THREE.CircleGeometry(0.42,14);
+    var sP=[];
+    [-SZd,SZd].forEach(function(zc){for(var x=-80;x<=80;x+=40)if(Math.abs(Math.abs(x)-RX)>12)sP.push([x,zc-3.4]);});
+    [-RX,RX].forEach(function(xc){for(var z=-40;z<=40;z+=40)sP.push([xc+2.2,z]);});
+    var sInst=new THREE.InstancedMesh(schachtG,gulliM,sP.length);
+    sP.forEach(function(p,i){dm.position.set(p[0],0.007,p[1]);dm.rotation.set(-Math.PI/2,0,0);dm.updateMatrix();sInst.setMatrixAt(i,dm.matrix);dm.rotation.set(0,0,0);});
+    sInst.receiveShadow=true;scene.add(sInst);
+    /* ── Doppelte Sperrlinie auf den Hauptstrassen ── */
+    var lM=stdMat(0xd8d8cc,0.75);lM.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(lM);
+    [-SZd,SZd].forEach(function(zc){[-0.3,0.3].forEach(function(o){
+      [[-RL/2,-RX-9],[-RX+9,RX-9],[RX+9,RL/2]].forEach(function(seg){
+        if(seg[1]-seg[0]<2)return;
+        var l=new THREE.Mesh(new THREE.PlaneGeometry(seg[1]-seg[0],0.16),lM);
+        l.rotation.x=-Math.PI/2;l.position.set((seg[0]+seg[1])/2,0.0056,zc+o);scene.add(l);});});});
+    /* ── Richtungspfeile vor den vier Hauptkreuzungen ── */
+    var pfeilForm=new THREE.Shape();
+    pfeilForm.moveTo(-0.34,-2.2);pfeilForm.lineTo(0.34,-2.2);pfeilForm.lineTo(0.34,0.7);
+    pfeilForm.lineTo(1.05,0.7);pfeilForm.lineTo(0,2.2);pfeilForm.lineTo(-1.05,0.7);
+    pfeilForm.lineTo(-0.34,0.7);pfeilForm.closePath();
+    var pfeilG=new THREE.ShapeGeometry(pfeilForm);
+    var pP=[];
+    [[RX,SZd],[RX,-SZd],[-RX,SZd],[-RX,-SZd]].forEach(function(K){
+      /* je Anfahrt zwei Pfeile, 12 und 17 m vor der Kreuzungsmitte */
+      [[-1,0],[1,0],[0,-1],[0,1]].forEach(function(d){
+        for(var n=0;n<2;n++){
+          var ab=24+n*6;   /* hinter Zebra (16 m) und Haltelinie (19.5 m) */
+          var px=K[0]+d[0]*ab, pz=K[1]+d[1]*ab;
+          var spur=d[0]?3.6:2.4;
+          px+= d[0]? 0 : (d[1]>0? spur:-spur);
+          pz+= d[1]? 0 : (d[0]>0? spur:-spur);
+          var rot=d[0]? (d[0]>0?-Math.PI/2:Math.PI/2) : (d[1]>0?Math.PI:0);
+          pP.push([px,pz,rot]);}});});
+    var pInst=new THREE.InstancedMesh(pfeilG,lM,pP.length);
+    pP.forEach(function(p,i){
+      dm.position.set(p[0],0.0058,p[1]);dm.rotation.set(-Math.PI/2,0,p[2]);dm.scale.set(1,1,1);
+      dm.updateMatrix();pInst.setMatrixAt(i,dm.matrix);});
+    pInst.receiveShadow=true;scene.add(pInst);
+    dm.rotation.set(0,0,0);
+    /* ⚠️ Asphaltflicken wieder entfernt: ohne Textur rendert eine flache Flaeche
+       HELLER als die texturierte Fahrbahn — im Screenshot lasen sich die Flicken
+       wie graue Render-Fehler statt wie Ausbesserungen. Wer sie will, muss die
+       Strassentextur mitgeben, nicht nur eine Farbe. */
   })();
   var _qMat=stdMat(0xd8d8cc,0.75);_qMat.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(_qMat);
   var _NM2=Math.round(RL/10);for(var ms2=0;ms2<_NM2;ms2++){var _dx2=-RL/2+5+ms2*10;if(!_dashFrei(_dx2))continue;
@@ -3416,12 +3497,18 @@ setTimeout(function baueGebaeude(){
   setTimeout(function(){
     var _go = viertel({name:"Gewerbe Ost",x:172,z:0,w:96,d:150,achse:"z",boden:"platz",
       anschluss:[112,0],abstand:13,luecke:12,rand:14,
-      bauten:[{file:"th20_parkgarage.glb",h:11,w:20,d:15},
-              {file:"th22_garage.glb",h:3.4,w:7,d:6},
-              {file:"th23_bank.glb",h:9,w:16,d:12},
-              {file:"th23_post.glb",h:8,w:15,d:11},
-              {file:"th23_apotheke.glb",h:7,w:12,d:10},
-              {file:"th23_polizeiwache.glb",h:8.5,w:16,d:12},
+      /* ⚠️ GEMESSEN statt geschaetzt — die th37-Zeilen unten machen es seit Charge 37
+         richtig, die aelteren th20/th22/th23 standen noch mit Phantasiewerten da:
+         Parkgarage 20x15 statt real 54.7x37, Bank 16x12 statt 33.9x26.6, Post
+         15x11 statt 31.7x25.8, Polizeiwache 16x12 statt 32.3x25.4. Der Reihen-
+         Generator setzte sie danach viel zu eng — zwei Bauten ueberlappten sich
+         um 10.7 m, und entzerren() bekam es nicht mehr auf. */
+      bauten:[{file:"th20_parkgarage.glb",h:11,w:54.7,d:37.0},
+              {file:"th22_garage.glb",h:3.4,w: 5.9,d: 8.0},
+              {file:"th23_bank.glb",h:9,w:33.9,d:26.6},
+              {file:"th23_post.glb",h:8,w:31.7,d:25.8},
+              {file:"th23_apotheke.glb",h:7,w:18.9,d:16.3},
+              {file:"th23_polizeiwache.glb",h:8.5,w:32.3,d:25.4},
               /* ⚠️ `bau()` skaliert auf die HOEHE — hier stehen die gemessenen
                  Werte aus models/TH5-ASSETS.md, nicht geschaetzte. */
               {file:"th37_altbau.glb",     h:16.40,w:11.4,d:10.9},
@@ -4177,7 +4264,7 @@ setTimeout(function baueGebaeude(){
     /* 🔧 Nach dem Laden aller Modelle: echte Masse messen und die Reihen entzerren.
        Damit gibt es auch dann keine Ueberschneidung, wenn ein Modell groesser ausfaellt
        als im cfg angenommen — das gilt genauso fuer jeden neuen STL-Schwung. */
-    setTimeout(function entzerren(){
+    function entzerren(){
       var LUECKE=6;
       VIERTEL.forEach(function(v){
         if(!v.bauten||!v.bauten.length)return;
@@ -4206,8 +4293,13 @@ setTimeout(function baueGebaeude(){
             if(ik<innen)noetig=Math.max(noetig,innen-ik);});
           if(noetig>0)reihe.forEach(function(b){
             b.w.position[quer]+=seite*noetig;window._nachRuecken(b.w);});});});
-      window._entzerrt=1;
-    },14000);
+      window._entzerrt=(window._entzerrt||0)+1;
+    }
+    /* 🐛 entzerren() lief nur EINMAL bei 14 s. Modelle, die spaeter fertig laden,
+       waren da noch nicht vermessen und blieben verkeilt — im Viertel „Gewerbe Ost"
+       ueberlappten zwei Hallen um 10.7 m. Wie beim Entwirrer braucht es einen
+       zweiten, spaeten Lauf. */
+    setTimeout(entzerren,14000);
     /* 🧩 GLOBALER ENTWIRRER (User: „viele stl ueberkreuzung? passe es an?").
        entzerren() oben raeumt nur INNERHALB eines Viertels auf. Gemessen blieben
        trotzdem 49 Paare uebrig, die sich in echten 3D-Kaesten schneiden — vor allem
@@ -4371,7 +4463,16 @@ setTimeout(function baueGebaeude(){
        laeuft deshalb zweimal — einmal frueh fuer den sichtbaren Kern, einmal spaet,
        wenn wirklich alles geladen ist. Der zweite Lauf ist idempotent. */
     setTimeout(function(){freiRaeumen();entwirren();},15500);
+    /* ⚠️ Hier stand einmal ein zweiter entzerren()-Lauf, um spaet geladene Modelle
+       nachzuentzerren. GEMESSEN: er schob dabei 18 Objekte zurueck in Strassen-
+       korridore (entzerren() kennt nur Reihen, keine Fahrbahnen) und freiRaeumen()
+       bekam sie wegen der 26-m-Schubgrenze nicht alle zurueck. Eine Ueberschneidung
+       im Gewerbegebiet ist das kleinere Uebel als 18 Bauten auf der Fahrbahn. */
     setTimeout(function(){freiRaeumen();entwirren();},32000);
+    /* Dritter Lauf: die letzten GLB-Dateien sind erst nach ~45 s da. Ohne ihn
+       haengt das Messergebnis davon ab, WANN man misst — mit 557 geladenen
+       Modellen sah man 16 Strassenkonflikte, mit allen 640 dann 0. */
+    setTimeout(function(){freiRaeumen();entwirren();},50000);
   },260);
   /* Die alte Stadt-Scheune ist raus: eine Scheune zwischen Ringstrasse und Hochhaeusern
      ergibt kein stimmiges Bild. Der Hof steht jetzt draussen auf dem Feld. */
