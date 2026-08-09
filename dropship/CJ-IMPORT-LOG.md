@@ -3703,3 +3703,37 @@ Werkzeug: `automation/merchant_issue_fix.py <export.csv>`.
 nur weniger Artikel im Anzeigenziel oder eine Feed-Regel im Merchant Center.
 Das bestätigt die Richtung der Feed-Kürzung, ändert aber nichts daran, dass sie die
 **kostenlosen Einträge** unnötig mitgenommen hat.
+
+### 🏆 Merchant-Audit (8 Agenten): der grösste Blocker war Werbetext in der Beschreibung
+**97,7 % aller Feed-Beschreibungen** (4'884 von 5'000 Stichprobe) enthielten Rabattcode und
+Versandwerbung: «🇨🇭 Schweizer Online-Shop · Gratisversand ab CHF 50 · Lieferung in 7–12
+Werktagen · 30 Tage Rückgabe · 10% mit Code **WELCOME10**». Google verbietet Werbetext im
+`description`-Attribut. **Das erklärt eine Massenablehnung besser als jede einzelne Feldlücke** —
+es trifft den ganzen Feed gleichzeitig. Kein Produkt hatte ein `description`-Override, Google
+las `body_html` also 1:1.
+
+`automation/promo_aus_beschreibung.py` entfernt genau diesen Absatz — verifiziert an Einzelfällen:
+entfernt wird nur der Werbeabsatz, «Produktdetails», Farbliste und Merkmale bleiben vollständig.
+Wächter: sinkt die Beschreibung unter 80 Zeichen Klartext, wird das Produkt übersprungen
+(eine leere Beschreibung ist bei Google schlimmer als eine mit Werbung) — in 9'000 Produkten
+kam das kein einziges Mal vor.
+
+**Drei Probleme auf einen Schlag:**
+1. der Google-Verstoss selbst,
+2. die widersprüchliche Gratis-Schwelle (Beschreibungen tragen mal CHF 50, mal CHF 65) verschwindet
+   aus 3'400+ Texten, **ohne dass die Preisfrage entschieden werden muss**,
+3. der Grossteil der Emoji-Überladung (1'113 von 5'000) stammt aus diesem Block.
+Die Information geht dem Kunden nicht verloren — sie steht im Theme, wo sie hingehört.
+
+**Was die Agenten ausdrücklich WIDERLEGT haben** (wichtig, um nicht ins Leere zu arbeiten):
+0 Produkte ohne Bild · 0 Bilder auf fremden Hosts (51'344 URLs geprüft) · 0 Preise unter CHF 3 ·
+0 ungültige Streichpreise · 0 Preisabweichungen Feed↔Landingpage (60 Live-Seiten) ·
+0 Lieferantennamen in 5'000 Titeln und Beschreibungen · 0 Waffen/Glücksspiel/E-Zigaretten ·
+die ~40 Disney/Marvel-Artikel sind **lizenzierte** Fortura-Originalware (Rubie's/Widmann).
+Auch die These «ohne GTIN und Marke → Ablehnung» trifft auf 0 Produkte zu: Shopify liefert
+`vendor` als brand-Fallback und die Varianten-SKU als mpn.
+
+**Noch offen aus dem Audit (automatisch machbar):** 51 Produkte mit **falschem** age_group
+(Kinderware als «adult» — falsche Werte sind schlimmer als fehlende), ~20 weitere
+Richtlinien-Artikel im Feed (Nahrungsergänzung, Blutzucker-Messversprechen, «Mercedes-Benz»-Tasche),
+715 Apparel ohne `color`, 63 aktive Produkte mit HTTP 404 (Importer vergisst die Publikation).
