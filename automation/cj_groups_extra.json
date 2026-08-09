@@ -1,0 +1,16 @@
+{
+ "cjwerkzeug": {
+  "cats": [
+   ["55795653-09E8-4EE6-B477-1E30E7A601B2","Handwerkzeuge"],
+   ["7B18EF9A-B48E-4917-84AF-624919C32CA6","Werkzeug-Sets"],
+   ["9FC79C6B-AE70-472C-B8F8-D62479F0D03E","Elektrowerkzeuge"],
+   ["4D7853CE-9E1C-4103-A06F-46401827A535","Messwerkzeuge"],
+   ["924090C3-8179-437F-8219-37582113FB08","Werkzeug-Aufbewahrung"],
+   ["CDB10A90-3D34-4396-99B2-919E7CAD4B53","Gartenwerkzeuge"],
+   ["8D23F08A-3D9E-4A29-A184-EB6F8145E739","Auto-Werkzeug & Pflege"]
+  ],
+  "tags": ["werkzeug","heimwerken","neu"],
+  "type": "Werkzeug & Heimwerken",
+  "ban": "(waffe|messer set|machete|dolch|schwert|armbrust|erotik|sex)"
+ }
+}
