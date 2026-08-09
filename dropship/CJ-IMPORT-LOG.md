@@ -3410,3 +3410,21 @@ Die SKU-Form von einer einzigen Bestellung auf 23'000 Produkte zu verallgemeiner
 **Muster hinter allen drei:** ein Fehlerfall, der wie ein Normalfall aussieht. Genau die sind
 gefährlich, weil das Log ruhig bleibt. Bei Automatiken gilt: jeder unerwartete Zustand muss
 sichtbar anders aussehen als «alles erledigt».
+
+### 🔎 `automation/cj_verfuegbarkeit.py` — Ghost-Sale-Schutz für CJ (2026-08-09)
+Ein bei CJ eingestelltes Produkt bleibt im Shop kaufbar; der Fehler fällt erst auf, wenn der Kunde
+schon bezahlt hat und die Bestellung mit «variantSku nicht gefunden» scheitert. Derselbe Ghost-Sale
+wie bei BigBuy, nur später sichtbar (CJ-Artikel führen keinen Bestand).
+
+Der Audit prüft aktive `cj-real`-Produkte über ihre SKU (`variantSku` bzw. numerische pid) gegen CJ.
+Nicht mehr geführte Produkte → **DRAFT + Tag `cj-nicht-mehr-verfuegbar`** (nie gelöscht).
+
+**Zwei Vorsichtsmassnahmen, ohne die das Werkzeug gefährlich wäre:**
+- `cj_kennt()` gibt **drei** Werte zurück: vorhanden / sicher weg / **unklar**. Nur ein eindeutiges
+  «not found» draftet. Drossel, Timeout oder unbekannter Fehlercode gelten als *unklar* und landen
+  bewusst NICHT im Ledger — der nächste Lauf prüft erneut. Ein API-Aussetzer darf niemals
+  hunderte gesunde Produkte aus dem Shop nehmen.
+- **Punkte-Bremse:** CJ deckelt die Abfragen täglich, und der Import-Grind braucht sie auch.
+  Fällt `pointsInfo.remaining` unter `PUNKTE_RESERVE` (400), pausiert der Audit von selbst.
+
+Erster Lauf: 82 geprüft, alle vorhanden, 0 Fehlalarme. Läuft unter `fixer_keepalive.sh` weiter.
