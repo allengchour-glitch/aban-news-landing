@@ -116,3 +116,7 @@ sub-massage	ok	28	Massage & Wellness
 sub-taschen	ok	28	Taschen & Rucksäcke
 sub-uhren	ok	28	Uhren
 erste-august	ok	28	Schweizer Editionen
+sub-bart-rasur	ok	28	Bart & Rasur
+sub-yoga-fitness	ok	28	Yoga & Fitness
+sub-trinkflaschen	ok	28	Trinkflaschen & Thermo
+sub-baby-kids	ok	28	Kinder & Baby
