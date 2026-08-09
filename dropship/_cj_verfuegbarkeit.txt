@@ -88,3 +88,4 @@ gid://shopify/Product/15492138140033	ok
 gid://shopify/Product/15492138074497	ok
 gid://shopify/Product/15492138041729	ok
 gid://shopify/Product/15492138008961	ok
+gid://shopify/Product/15492136173953	ok
