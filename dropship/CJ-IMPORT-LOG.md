@@ -3796,3 +3796,25 @@ Vor jeder Sterne-Anzeige prüfen, aus welchem Namensraum der Wert stammt.
 **Bleibt strukturell:** Die Sektion ist handgeschriebenes HTML mit fest eingetragenen Bildern,
 Preisen und Sternen — sie altert unbemerkt weiter. Dauerhaft gehört sie durch eine dynamische
 Produktliste auf einer Kollektion ersetzt, dann verschwinden gedraftete Produkte von selbst.
+
+### ⚙️ CJ-Grind wieder auf vier Runner — und eine Fehldiagnose von mir korrigiert (2026-08-09)
+**Ich habe dem User mehrfach gemeldet, die CJ-Zugangsdaten seien beim Wipe verloren.
+Das war falsch.** Ich hatte `/tmp/cj_email` und `/tmp/cj_apikey` abgefragt — die Daten liegen
+aber in **`/tmp/cj_creds.env`** und waren die ganze Zeit da. Nur die Runner-**Skripte** fehlten.
+**Lehre: erst alle plausiblen Ablageorte prüfen, bevor man etwas als verloren meldet.**
+
+**Neu gebaut:** `automation/cj_runner_template.sh` + `cj_runner2..5` mit zwei eingebauten
+Gegenmitteln zu den dokumentierten Fallen:
+1. **Tiefen-Ramp mit persistentem Rundenzähler.** `cj_category_fill` paginiert immer ab Seite 1
+   bis `MAXPAGE`. Bleibt MAXPAGE konstant, scannt jeder Lauf dieselben abgegrasten Seiten und
+   meldet `total 0 / FERTIG: 0` — das sieht aus wie ein Token- oder Punkteproblem, ist aber
+   keines. `MAXPAGE = 20 + ROUND*5`, Zähler in `/tmp/cj_runnerN_round` (überlebt Neustarts),
+   Rücksetzung bei 60 für einen frischen Sweep. Alle vier auf ROUND=5 gesetzt → **Tiefe 45**.
+2. **Geteilter Token-Cache** `/tmp/cj_token_shared.txt` (20 Min). CJ erlaubt `getAccessToken`
+   nur 1×/300 s — vier Runner mit eigenem Abruf reissen das Limit sofort, alle bekommen ein
+   leeres Token, und früher folgte darauf 30 Minuten Strafschlaf. Jetzt: gemeinsamer Cache,
+   versetzter Start (0/3/6/9 s), bei Drossel 120 s Pause und Weiterverwendung des alten Tokens.
+
+Gruppen sind auf die vier Runner aufgeteilt (Werkzeug/Schmuck/Home · Elektronik/Gaming ·
+Schuhe/Taschen/Mode · Auto/Beauty/Haustier); Überschneidungen fängt der Ledger ab.
+Alle vier laufen jetzt im `fixer_keepalive`-Supervisor mit.
