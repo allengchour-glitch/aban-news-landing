@@ -271,3 +271,102 @@ bar-wein-accessoires	ok	28	Wein-Accessoires
 rucksaecke-schule	ok	7	Schulrucksäcke
 rucksaecke-laptop	ok	22	Laptop- & Business-Rucksäcke
 rucksaecke-sport	ok	25	Sport- & Wanderrucksäcke
+schuhe-sneaker	ok	28	Sneaker
+schuhe-sandalen	ok	28	Sandalen & Espadrilles
+schuhe-stiefel	ok	28	Stiefel & Boots
+beauty-makeup	ok	28	Make-up
+sonnenbrillen-damen	ok	28	Sonnenbrillen Damen
+sonnenbrillen-herren	ok	11	Sonnenbrillen Herren
+e-scooter-trottinett	unveroeffentlicht	0	E-Scooter & Trottinett
+drohnen-kameras	ok	5	Drohnen & Kameras
+beamer-projektoren	unveroeffentlicht	0	Beamer & Projektoren
+smartwatches-wearables	ok	28	Smartwatches & Wearables
+kaffee-maschinen	unveroeffentlicht	0	Kaffee & Espresso
+kinderspielzeug	ok	28	Kinderspielzeug
+yoga-pilates	ok	13	Yoga & Pilates
+haustier-tech	unveroeffentlicht	0	Haustier-Tech
+trend-gadgets	ok	28	Trend-Gadgets
+vereins-fanartikel	unveroeffentlicht	0	Vereins-Fanartikel
+klima-ventilatoren	unveroeffentlicht	0	Klima & Ventilatoren
+staubsauger-haushalt	unveroeffentlicht	0	Staubsauger & Haushalt
+beauty-geraete	unveroeffentlicht	0	Beauty-Geräte & Haarentfernung
+waerme-komfort	ok	22	Wärme & Komfort
+damen-duefte	TOTE-SEITE	0	Damen-Düfte
+herren-duefte	TOTE-SEITE	0	Herren-Düfte
+gaming-maeuse	ok	28	Gaming-Mäuse
+gaming-headsets	ok	16	Gaming-Headsets
+gaming-controller	ok	28	Controller & Gamepads
+kuechenhelfer	ok	28	Küchenhelfer & Gadgets
+wellness-massage	ok	22	Wellness & Massage
+strand-wasserspass	ok	28	Strand & Wasserspass
+moissanit-schmuck	ok	9	Moissanit-Schmuck — die clevere Diamant-Alternative
+naegel-manikuere	ok	28	Nägel & Maniküre
+wimpern-lashes	ok	10	Wimpern & Lashes
+zahnpflege	ok	28	Zahnpflege
+wellness-gesundheit	ok	22	Wellness & Gesundheit
+elektronik-computer	ok	28	Elektronik & Computer
+gaming-zubehor	ok	28	Gaming-Zubehör
+elektronik-gadgets	ok	28	Elektronik & Gadgets
+pc-homeoffice	ok	28	PC & Homeoffice
+refurbished	unveroeffentlicht	0	Refurbished – Generalüberholt & günstiger
+arbeitskleidung	unveroeffentlicht	0	Arbeitskleidung & Berufsbekleidung
+elektronik-technik	ok	27	Elektronik & Technik
+3d-druck	ok	28	3D-Druck & Filament
+pc-gaming	ok	28	PC-Gaming
+playstation	ok	28	PlayStation (PS4/PS5)
+xbox	ok	28	Xbox
+nintendo-switch	ok	28	Nintendo & Switch
+retro-handheld	ok	28	Retro & Handheld-Gaming
+3d-filament	ok	10	3D-Filament (PLA/PETG/Resin)
+3d-drucker	ok	8	3D-Drucker & Stifte
+3d-zubehoer	ok	19	3D-Druck-Zubehör
+angebote	ok	28	Angebote & Deals
+basteln-diy	ok	28	Basteln & DIY
+maker-elektronik	unveroeffentlicht	0	Elektronik für Bastler
+kopfhoerer-audio	ok	28	Kopfhörer & Audio
+computer-zubehoer	ok	28	Computer & Zubehör
+speicher-datentraeger	ok	28	Speicher & Datenträger
+drohnen-fpv	ok	28	Drohnen & FPV
+beamer-heimkino	ok	20	Beamer & Heimkino
+laptop-tablet-zubehoer	ok	28	Laptop- & Tablet-Zubehör
+hightech-gadgets	ok	28	Hightech & Gadgets
+auto-kfz-zubehoer	ok	28	Auto & KFZ-Zubehör
+kuechen-gadgets	ok	28	Küchen-Gadgets & Helfer
+ipl-haarentfernung	ok	13	IPL & Haarentfernung
+gesichtspflege-geraete	ok	28	Gesichtspflege-Geräte
+nachhaltig-eco	ok	28	Nachhaltig & Wiederverwendbar
+smart-home-gadgets	ok	28	Smart Home & Smarte Gadgets
+haustier-gadgets	ok	8	Haustier-Gadgets & Smart-Pet
+geschenke-fuer-ihn	ok	27	Geschenke für Ihn
+geschenke-fuer-sie	ok	28	Geschenke für Sie
+geschenke-fuer-kinder	ok	28	Geschenke für Kinder
+herren-grooming	ok	23	Herren-Grooming & Bartpflege
+wellness-selfcare	ok	28	Wellness & Selfcare
+damen-jacken-maentel	ok	28	Damen-Jacken & Mäntel
+damen-strick-pullover	ok	28	Damen-Strick & Pullover
+led-ambiente	ok	22	LED & Ambiente-Beleuchtung
+home-office-setup	ok	26	Home-Office & Desk-Setup
+handwerkzeug	unveroeffentlicht	0	Handwerkzeug
+elektrowerkzeug	unveroeffentlicht	0	Elektrowerkzeug
+messwerkzeug	unveroeffentlicht	0	Mess- & Prüfwerkzeug
+werkzeugkoffer-sets	unveroeffentlicht	0	Werkzeugkoffer & Sets
+raucherzubehoer	ok	28	Raucher- & Dreh-Zubehör (18+)
+kuschel-heizdecken	ok	6	Kuschel- & Heizdecken
+sets-bundles	ok	28	Sets & Bundles
+kissen-wohntextilien	ok	28	Kissen & Wohntextilien
+nagel-geraete	ok	19	Maniküre & Nagel-Geräte
+indoor-grow	unveroeffentlicht	0	Indoor-Gärtnern & Grow
+chronographen-automatik	ok	28	Chronographen & Automatik
+kochen-backen	ok	28	Kochen & Backen
+trinken-barware	ok	28	Trinken & Barware
+haarpflege	ok	12	Haarpflege
+naegel	ok	28	Nägel & Nagellack
+fitness-geraete	ok	28	Fitness-Geräte & Home-Gym
+haustier-hund	ok	28	Hunde-Zubehör
+haustier-katze	ok	28	Katzen-Zubehör
+haustier-futter-naepfe	ok	28	Futter & Näpfe
+unisex-parfum-sets	ok	6	Unisex & Sets
+winter-kaelte	ok	28	Winter & Kälte
+handtaschen-umhaengetaschen	ok	28	Handtaschen & Umhängetaschen
+reisegepaeck	ok	28	Reisegepäck
+herren-jacken	http-103	0	Herren-Jacken & Hoodies
