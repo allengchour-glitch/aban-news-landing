@@ -718,7 +718,15 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
        richtig — solange die Normalen falsch herum zeigten und ueberhaupt kein
        Schnee lag. Mit korrekten Normalen deckt 48 die halbe Flanke zu. 60 mit
        weichem 20-m-Uebergang laesst eine Kappe stehen und den Fels darunter. */
-    var SCHNEE=60, WIESE=8;                      // Welthoehe: Schneelinie, Fusssaum
+    /* Schneelinie zum fuenften Mal — diesmal, weil die Berge doppelt so hoch sind.
+       Gipfel liegen jetzt auf 79…184 statt 36…91. Bei 60 waere alles ab dem
+       halben Hang weiss; 92 laesst zwei Drittel Fels und setzt die Kappe dorthin,
+       wo sie in den Alpen auch liegt. */
+    /* Schneelinie 110 bei Gipfeln von 79…184: die Kappe sitzt auf dem oberen
+       Drittel der hohen Berge, die niedrigen bleiben gruen-grau. Vorher stand
+       hier 70 — zusammen mit der alten Neigungsprobe ergab das eine Kette, die
+       unten hell und oben dunkel war. */
+    var SCHNEE=110, WIESE=8;                      // Welthoehe: Schneelinie, Fusssaum
     function rnd(i,k){var x=Math.sin(i*12.9898+k*78.233)*43758.5453;return x-Math.floor(x);}
     /* 🏔️ HOEHENFELD statt Kegel.
        Ein Kegel — auch verrauscht, geschert und ausgeflaert — bleibt EIN Gipfel
@@ -751,7 +759,9 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       }
       /* 1,7 gab Nadeln. 1,45 ist noch deutlich konkav — steil oben, flach am
          Fuss — aber die Gipfel bleiben Berge und werden keine Zinnen. */
-      var EXP=einzel?1.0:1.45;
+      /* 1,45 -> 1,58: steiler oben, breiter am Fuss. Zusammen mit dem schmaleren
+         Grundradius gibt das die aufragende Form statt des gedrungenen Kegels. */
+      var EXP=einzel?1.0:1.58;
       function H(x,z){
         var hh=0;
         for(var g=0;g<gip.length;g++){
@@ -811,17 +821,22 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
            Farbe steht. Fels muss hier bei 0,12…0,23 liegen, damit ueberhaupt ein
            Unterschied zum Schnee sichtbar wird. Gemessen wurde das nicht an der
            Zahl, sondern am Bild: dreimal derselbe weisse Berg. */
-        var fels=0.12+rnd(seed,5)*0.07+rnd(v2,seed+11)*0.04;
+        var fels=0.16+rnd(seed,5)*0.08+rnd(v2,seed+11)*0.04;
         fels*=0.85+0.25*Math.max(0,son);           // Exposition
         var c0,c1,c2;
-        var schneeAn=(wy-SCHNEE)/20;               // Hoehe, weicher Uebergang
-        /* ⚠️ Mit 0,42 lag NIRGENDS Schnee. Der Grund steckt im neuen Profil: bei
-           Exponent 1,45 sind die oberen Flanken um 60 Grad steil, die Normale hat
-           dort ny ~ 0,45 — die Schwelle schnitt also genau die Gipfelregion weg,
-           auf der der Schnee liegen soll. 0,28 laesst Grate und Kuppen weiss und
-           haelt ihn weiterhin von den senkrechten Waenden fern. */
-        var haelt=(ny-0.28)/0.26;
-        var m=Math.min(1,Math.max(0,Math.min(schneeAn,haelt)));
+        /* ⚠️ GEMESSEN, NICHT GERATEN — und es war genau andersherum als gedacht.
+           Sonde auf dem hoechsten Berg (Gipfel 183,8):
+               wy 183,8  ny 0,225  Farbe 0,38
+               wy 142    ny 0,292  Farbe 0,58
+               wy  92    ny 0,348  Farbe 0,78
+           Die Flanke wurde nach UNTEN heller. Grund: `min(hoehe, neigung)` liess
+           die Neigung entscheiden, und die steilste Stelle eines Berges ist der
+           GIPFEL — dort war ny am kleinsten, also am wenigsten Schnee. Physikalisch
+           nicht falsch, im Bild aber verkehrt herum: dunkle Spitze, helle Hänge.
+           Jetzt entscheidet die HOEHE; die Neigung duennt nur noch die
+           allersteilsten Waende aus. Das ist das Bild einer Alpenkette. */
+        var m=Math.min(1,Math.max(0,(wy-SCHNEE)/25));
+        if(ny<0.22)m*=0.25+(Math.max(0,ny)/0.22)*0.75;
         if(wy<WIESE){
           var m2=Math.min(1,(WIESE-wy)/10);
           c0=fels*(1-m2)+0.40*m2; c1=fels*(1-m2)+0.54*m2; c2=fels*(1-m2)+0.32*m2;
@@ -839,9 +854,18 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     var N=34;
     for(var i=0;i<N;i++){
       var a=i/N*6.283+((i*13)%7)*0.02;
-      var r=(i===5)?213:300+((i*47)%96);
-      var hoch=42+((i*29)%56);            // 42..97
-      var rad=hoch*(0.62+((i%4)*0.07));
+      /* 🇨🇭 HOEHER UND STEILER. Vorher 42…97 m hoch bei r 300 — aus der Stadt
+         wirkten sie wie Huegel. Jetzt 85…190 m, dafuer weiter draussen (r 350…470):
+         fast doppelte Hoehe bei nur 1,2-facher Entfernung ergibt gut die
+         anderthalbfache scheinbare Groesse.
+         Der Radius waechst NICHT mit: 0,40…0,535 statt 0,62…0,83 der Hoehe. Genau
+         das macht den Unterschied zwischen einem Huegel und einem Schweizer Berg —
+         nicht die Hoehe allein, sondern das VERHAELTNIS von Hoehe zu Grundflaeche.
+         ⚠️ Der Fuss darf die Landstrasse (r 200) nicht erreichen: groesster Fuss
+         ist 190*0,535*1,38 = 140, kleinster Abstand 350 - 140 = 210. Passt. */
+      var r=(i===5)?213:350+((i*47)%120);
+      var hoch=(i===5)?75:85+((i*29)%106);          // Hausberg fest, sonst 85..190
+      var rad=(i===5)?51.75:hoch*(0.40+((i%4)*0.045));
       var bx=Math.cos(a)*r,bz=Math.sin(a)*r;
       if(bx<-150&&Math.abs(bz)<170)continue;      // Westen ist offenes Meer
       var sperr=false;
@@ -3452,7 +3476,12 @@ setTimeout(function baueGebaeude(){
        die Nachbarviertel sind nah). Deshalb suedlich hinter den Sportpark, wo 240x110
        frei sind — angebunden ueber dessen Zufahrt. */
     viertel({name:"Freizeitpark",x:60,z:330,w:330,d:110,achse:"x",boden:"kies",
-      anschluss:[0,258],abstand:18,luecke:20,rand:20,
+      /* ⚠️ Der Anschluss zeigte auf (0|258) — das ist die NORDKANTE des Sportparks,
+         nicht dessen Strasse. Die verlaeuft auf seiner Mittelachse bei z = 216.
+         Wer vom Freizeitpark kam, stand also 42 m vor der naechsten Fahrbahn im
+         Rasen (User: „obe sind strassen noch nicht verbunden"). Ein Anschluss
+         muss auf eine STRASSE zeigen, nicht auf einen Viertelrand. */
+      anschluss:[0,216],abstand:18,luecke:20,rand:20,
       bauten:[{file:"th32_parkeingang.glb",h:14,w:28,d:10},
               {file:"th13_riesenrad.glb",h:26,w:22,d:16,tuer:false,fahrt:"riesenrad"},
               {file:"th32_kettenkarussell.glb",h:15,w:19,d:19,tuer:false,fahrt:"kettenkarussell"},
