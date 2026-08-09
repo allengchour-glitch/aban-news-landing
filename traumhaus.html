@@ -2756,6 +2756,15 @@ document.addEventListener("DOMContentLoaded",function(){});
     hint("\uD83C\uDFE0\u2705 Haus gekauft! Ab morgen: +150 \u00A7 Miete pro Tag");};})();
 // ---- Verkehr: 6 fahrende Autos + Bus-Linie mit Haltestelle ----
 var verkehr=[],busRec=null;
+/* Wagen-Lader mit Cache je DATEI. `loadTH` kann nur Ids der Form th_<id>.glb —
+   die Charge-37-Modelle heissen anders. */
+function ladeWagen(datei,cb){
+  if(MODELS[datei]){cb(MODELS[datei]);return;}
+  if(!GL){cb(null);return;}
+  GL.load("/models/"+datei,function(g){
+    g.scene.traverse(function(n){if(n.isMesh){n.castShadow=true;n.receiveShadow=true;
+      if(n.material)n.material.envMapIntensity=0.4;}});
+    MODELS[datei]=g.scene;cb(g.scene);},undefined,function(){cb(null);});}
 var _lichtTexW=null,_lichtTexR=null;
 function _glowTex(core,edge){var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");
   var g=c.createRadialGradient(32,32,1,32,32,31);g.addColorStop(0,core);g.addColorStop(0.35,core);g.addColorStop(1,edge);
@@ -2780,18 +2789,32 @@ setTimeout(function baueVerkehr(){
     /* 📱 Jedes Auto ist ein GLB-Klon mit ~8k Dreiecken — 34 Stueck sind ~270k. Auf dem Handy
      darum 20 statt 34; die Strassen wirken trotzdem belebt. */
   var _AN=(typeof _mobil!=="undefined"&&_mobil)?20:34;
-  var _IDS=[];for(var _q=0;_q<_AN;_q++)_IDS.push("auto_kombi");
+  /* 🚗 VIER MODELLE STATT EINEM. Vorher fuhren alle 34 Wagen als derselbe
+     `auto_kombi`, nur in sechs Farbtoenen — aus jeder Perspektive dieselbe
+     Silhouette (User: „autos sind gar nicht schoen"). Die vier Wagen aus
+     Charge 37 haben je ein eigenes Seitenprofil, Speichenfelgen, Radlaeufe,
+     Zierleiste und Grill — und sind mit ~0,5 MB obendrein ein Viertel so gross
+     wie der alte Kombi (1,9 MB), bis dahin die schwerste Datei der Seite. */
+  var WAGEN=["th37_limousine.glb","th37_kombi.glb","th37_sportwagen.glb","th37_lieferwagen.glb"];
+  var _IDS=[];for(var _q=0;_q<_AN;_q++)_IDS.push(WAGEN[_q%WAGEN.length]);
   /* ⚡ Der Verkehr zog frueher alle drei Auto-Modelle (~7 MB) in den kritischen Ladepfad —
      zusammen mit den Bewohner-Modellen die groessten Dateien der Seite. Jetzt nur noch der
      Kombi (1,9 MB); die 6 Farbtoene sorgen weiter fuer Abwechslung, Van und Flitzer bleiben
      kaufbar und werden dann bei Bedarf geladen. */
   _IDS.forEach(function(id,i){
-    loadTH(id,function(tpl){if(!tpl)return;
+    ladeWagen(id,function(tpl){if(!tpl)return;
       var m=tpl.clone(true);
       m.traverse(function(n){if(n.isMesh&&n.material){n.material=n.material.clone();
-        if(i>0)n.material.color.lerp(new THREE.Color(TINT[i%TINT.length]),0.35);}});
+        /* Nur die LACKteile umfaerben. Vorher traf der Farbstich jedes Material —
+           bei einem Modell ohne Chrom und Speichen fiel das nicht auf, bei den
+           neuen schon (sonst: rosa Reifen, gruene Scheiben). */
+        if(i>=WAGEN.length&&/lack/i.test(n.material.name||""))
+          n.material.color.lerp(new THREE.Color(TINT[i%TINT.length]),0.42);}});
       var bb=new THREE.Box3().setFromObject(m),sz=new THREE.Vector3();bb.getSize(sz);
-      m.scale.setScalar(3.9/(Math.max(sz.x,sz.z)||1));
+      /* 4,4 statt 3,9: die th37-Wagen sind massstaeblich zu den Haeusern gebaut
+         (4,3…5,25 m lang) und wirkten auf 3,9 normiert zu klein neben den
+         Gehwegen. Die Fahrbahn ist 16 m breit — 4,4 m passt bequem. */
+      m.scale.setScalar(4.4/(Math.max(sz.x,sz.z)||1));
       var b2=new THREE.Box3().setFromObject(m);
       var r=ROUTEN[i%ROUTEN.length];
       var _pr=Math.floor(i/ROUTEN.length),_np=Math.ceil(_AN/ROUTEN.length);
@@ -2847,10 +2870,11 @@ setTimeout(function baueVerkehr(){
       for(var sl=-2;sl<=2;sl++){var ln=new THREE.Mesh(new THREE.PlaneGeometry(0.16,5),lineMat);
         ln.rotation.x=-Math.PI/2;ln.position.set(px+sl*3.6,0.02,pz);scene.add(ln);}
       // 2 geparkte Autos in die Taschen
-      ["auto_kombi","auto_van"].forEach(function(id,k){
-        loadTH(id,function(tpl){if(!tpl)return;var m=tpl.clone(true);
+      ["th37_limousine.glb","th37_lieferwagen.glb"].forEach(function(id,k){
+        ladeWagen(id,function(tpl){if(!tpl)return;var m=tpl.clone(true);
           m.traverse(function(n){if(n.isMesh&&n.material){n.material=n.material.clone();
-            n.material.color.lerp(new THREE.Color(k?0x4a7ad0:0xd06a4a),0.4);}});
+            if(/lack/i.test(n.material.name||""))
+              n.material.color.lerp(new THREE.Color(k?0x4a7ad0:0xd06a4a),0.45);}});
           var bb=new THREE.Box3().setFromObject(m),sz=new THREE.Vector3();bb.getSize(sz);
           m.scale.setScalar(3.9/(Math.max(sz.x,sz.z)||1));
           var b2=new THREE.Box3().setFromObject(m);
