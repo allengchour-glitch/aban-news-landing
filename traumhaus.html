@@ -2784,7 +2784,10 @@ setTimeout(function baueVerkehr(){
     {axis:"x",z:-SZ-10,dir:-1,speed:4.8},{axis:"x",z:-SZ-7,dir:-1,speed:6.0},
     {axis:"z",x:-(RX+2.5),dir:1,speed:4.5},{axis:"z",x:-(RX-2.5),dir:-1,speed:5.1},
     {axis:"z",x:RX+2.5,dir:-1,speed:5},{axis:"z",x:RX-2.5,dir:1,speed:4.4},
-    {axis:"z",x:-109.5,dir:1,speed:7.0},{axis:"z",x:114.5,dir:-1,speed:7.2}];
+    {axis:"z",x:-109.5,dir:1,speed:7.0},{axis:"z",x:114.5,dir:-1,speed:7.2},
+    /* 🛣️ Landstrasse: `pos` ist hier die BOGENLAENGE, nicht x oder z. */
+    {axis:"ring",r:197.5,dir:1,speed:8.4},{axis:"ring",r:202.5,dir:-1,speed:8.0},
+    {axis:"ring",r:197.5,dir:1,speed:7.2},{axis:"ring",r:202.5,dir:-1,speed:9.0}];
   var TINT=[0xffffff,0xd84a3a,0x3a6ad8,0x4aa05a,0xe8c43a,0x8a5ac8];
     /* 📱 Jedes Auto ist ein GLB-Klon mit ~8k Dreiecken — 34 Stueck sind ~270k. Auf dem Handy
      darum 20 statt 34; die Strassen wirken trotzdem belebt. */
@@ -2818,7 +2821,10 @@ setTimeout(function baueVerkehr(){
       var b2=new THREE.Box3().setFromObject(m);
       var r=ROUTEN[i%ROUTEN.length];
       var _pr=Math.floor(i/ROUTEN.length),_np=Math.ceil(_AN/ROUTEN.length);
-      var rec={mesh:m,route:r,pos:-150+((_pr+0.5)/_np)*300+((i*37)%17)-8,homeY:-b2.min.y+0.01,speed:r.speed*(0.82+((i*13)%9)*0.045)};
+      var _start=(r.axis==="ring")
+        ? ((_pr+0.5)/_np)*6.283185*r.r + ((i*53)%97)          // ueber den Umfang verteilen
+        : -150+((_pr+0.5)/_np)*300+((i*37)%17)-8;
+      var rec={mesh:m,route:r,pos:_start,homeY:-b2.min.y+0.01,speed:r.speed*(0.82+((i*13)%9)*0.045)};
       rec.kopf=[mkLicht("w"),mkLicht("w")];rec.heck=[mkLicht("r"),mkLicht("r")];
       scene.add(m);verkehr.push(rec);});});
   // Bus prozedural (OeV): gelb, Fensterband, faehrt Suedstrasse, haelt an der Haltestelle
@@ -3076,12 +3082,17 @@ function updVerkehr(dt){
     if(v===driveCar){if(v.kopf){v.kopf[0].material.opacity=v.kopf[1].material.opacity=0;v.heck[0].material.opacity=v.heck[1].material.opacity=0;}return;}
     var _pv=v.pos;
     v.pos+=v.route.dir*(v.speed||v.route.speed)*dt;
-    var lim=(v.route.axis==="x"?GW*CS/2:GH*CS/2)+80; // weit außerhalb der Sicht (im Dunst) umkehren
-    if(v.pos>lim)v.pos=-lim;if(v.pos<-lim)v.pos=lim;
+    if(v.route.axis==="ring"){                 // Ring: Bogenlaenge umlaufend
+      var U=6.283185*v.route.r;
+      if(v.pos>U)v.pos-=U; if(v.pos<0)v.pos+=U;
+    }else{
+      var lim=(v.route.axis==="x"?GW*CS/2:GH*CS/2)+80; // weit außerhalb der Sicht umkehren
+      if(v.pos>lim)v.pos=-lim;if(v.pos<-lim)v.pos=lim;
+    }
     /* 🚦 Verkehrsregeln: an Rot/Gelb vor der Haltelinie stehen bleiben UND Abstand zum
        Vordermann halten. Vorher wurde die Position hart auf die Haltelinie geklemmt —
        Autos sprangen dadurch und fuhren ineinander. */
-    if(ampRed(v.route.axis)){
+    if(v.route.axis!=="ring"&&ampRed(v.route.axis)){
       var ctrs=v.route.axis==="x"?[RX,-RX]:[GH*CS/2+12,-(GH*CS/2+12)],off=v.route.axis==="x"?9.5:11;
       for(var ci=0;ci<2;ci++){var sl=ctrs[ci]-v.route.dir*off;
         if(v.route.dir>0){if(_pv<=sl&&v.pos>sl)v.pos=sl;}
@@ -3097,7 +3108,16 @@ function updVerkehr(dt){
       if(gap>0&&gap<7.5){v.pos=o.pos-v.route.dir*7.5;break;}}
     var px,pz,fx=0,fz=0;
     // Modell-Vorderachse ist +x -> Rotation entsprechend (vorher 90° verdreht = seitwaerts)
-    if(v.route.axis==="x"){px=v.pos;pz=v.route.z;fx=v.route.dir;v.mesh.position.set(px,v.homeY,pz);v.mesh.rotation.y=v.route.dir>0?0:Math.PI;}
+    if(v.route.axis==="ring"){
+      /* Ein Quader mit Front auf +x zeigt nach Drehung um y auf
+         (cos ry, 0, -sin ry). Fuer die Tangente (tx,tz) folgt ry = atan2(-tz,tx). */
+      var an9=v.pos/v.route.r;
+      px=Math.cos(an9)*v.route.r; pz=Math.sin(an9)*v.route.r;
+      fx=-Math.sin(an9)*v.route.dir; fz=Math.cos(an9)*v.route.dir;
+      v.mesh.position.set(px,v.homeY,pz);
+      v.mesh.rotation.y=Math.atan2(-fz,fx);
+    }
+    else if(v.route.axis==="x"){px=v.pos;pz=v.route.z;fx=v.route.dir;v.mesh.position.set(px,v.homeY,pz);v.mesh.rotation.y=v.route.dir>0?0:Math.PI;}
     else{px=v.route.x;pz=v.pos;fz=v.route.dir;v.mesh.position.set(px,v.homeY,pz);v.mesh.rotation.y=v.route.dir>0?-Math.PI/2:Math.PI/2;}
     if(v.kopf){var qx=fz,qz=-fx; // senkrecht zur Fahrtrichtung
       var opK=nn?1:0,opH=nn?0.85:0;
@@ -3498,8 +3518,62 @@ setTimeout(function baueGebaeude(){
         g.setIndex(ii); g.computeVertexNormals();
         var m=new THREE.Mesh(g,mat); m.receiveShadow=true; m.frustumCulled=false;
         m.userData.nieAusblenden=1; scene.add(m); return m;}
+      /* 🛣️ ZUBRINGER. Eine Ringstrasse ohne Zufahrten ist eine Rennstrecke: man
+         kommt nur dort auf sie, wo zufaellig eine Viertel-Stichstrasse kreuzt.
+         Sechs radiale Verbinder fuehren vom Stadtring (r 118) hinaus auf die
+         Landstrasse. Die Winkel meiden Meer (142…218 Grad) und die vorhandenen
+         Stichstrassen bei 0, 90 und 180 Grad. */
+      var ZUB=[30,60,120,240,300,330];
+      ZUB.forEach(function(gr9){
+        var aa=gr9*Math.PI/180, ca=Math.cos(aa), sa=Math.sin(aa);
+        var qx=-sa, qz=ca;                       // quer zur Fahrtrichtung
+        var r0=118, r1=R+HB;
+        [[-1,1],[1,1],[1,-1],[-1,-1]].forEach(function(P){ /* Reihenfolge: Vorderseite oben */});
+        var A=[r0,-1],B=[r0,1],C=[r1,1],D=[r1,-1];
+        [A,B,C,D].forEach(function(P){
+          pos.push(ca*P[0]+qx*P[1]*HB, 0.012, sa*P[0]+qz*P[1]*HB);});
+        idx.push(vb,vb+2,vb+1, vb,vb+3,vb+2); vb+=4;
+        for(var t9=0.08;t9<0.95;t9+=0.10){       // Mittelstreifen
+          var rm=r0+(r1-r0)*t9, rl=(r1-r0)*0.035;
+          [[rm-rl,-0.18],[rm-rl,0.18],[rm+rl,0.18],[rm+rl,-0.18]].forEach(function(P){
+            dpos.push(ca*P[0]+qx*P[1], 0.022, sa*P[0]+qz*P[1]);});
+          didx.push(dvb,dvb+2,dvb+1, dvb,dvb+3,dvb+2); dvb+=4;
+        }
+      });
+      window._zubringer=ZUB;
       mesh(pos,idx,betMat(0x4a4a53,0.92));
       mesh(dpos,didx,new THREE.MeshStandardMaterial({color:0xd8d8cc,roughness:0.8}));
+      /* 🚧 BANKETT UND LEITPFOSTEN — das, was eine Asphaltbahn erst zu einer
+         fertigen Landstrasse macht. Ohne Bankett endet der Belag als harte Kante
+         im Gras; ohne Leitpfosten fehlt der Massstab entlang der Fahrbahn. */
+      var bp=[],bi=[],bv=0;
+      for(var i2=0;i2<N;i2++){
+        var b0=i2/N*6.283, b1=(i2+1)/N*6.283;
+        var bmx=Math.cos((b0+b1)/2)*R, bmz=Math.sin((b0+b1)/2)*R;
+        if(bmx<-118&&Math.abs(bmz)<184)continue;
+        [-1,1].forEach(function(sd){
+          [[b0,HB],[b0,HB+1.5],[b1,HB+1.5],[b1,HB]].forEach(function(P){
+            bp.push(Math.cos(P[0])*(R+sd*P[1]),0.008,Math.sin(P[0])*(R+sd*P[1]));});
+          if(sd<0)bi.push(bv,bv+2,bv+1, bv,bv+3,bv+2);
+          else     bi.push(bv,bv+1,bv+2, bv,bv+2,bv+3);
+          bv+=4;});
+      }
+      mesh(bp,bi,betMat(0x9a9384,0.98));
+      var lpG=new THREE.CylinderGeometry(0.06,0.07,1.0,5),
+          lpM=new THREE.MeshStandardMaterial({color:0xf0efe8,roughness:0.7});
+      var NLP=48, lp=new THREE.InstancedMesh(lpG,lpM,NLP*2);
+      var Mlp=new THREE.Matrix4(),Qlp=new THREE.Quaternion(),Plp=new THREE.Vector3(),Slp=new THREE.Vector3(1,1,1);
+      var nlp=0;
+      for(var k2=0;k2<NLP;k2++){
+        var ka=k2/NLP*6.283;
+        var kx=Math.cos(ka)*R, kz=Math.sin(ka)*R;
+        if(kx<-118&&Math.abs(kz)<184)continue;
+        [-1,1].forEach(function(sd){
+          Plp.set(Math.cos(ka)*(R+sd*(HB+1.1)),0.5,Math.sin(ka)*(R+sd*(HB+1.1)));
+          lp.setMatrixAt(nlp++,Mlp.compose(Plp,Qlp,Slp));});
+      }
+      lp.count=nlp; lp.instanceMatrix.needsUpdate=true;
+      lp.frustumCulled=false; lp.userData.nieAusblenden=1; scene.add(lp);
       window._landstrasse=R;
     })();
     /* 🌾 FELDER. Nach Bergen und Wald ist die WIESE die groesste einfarbige
