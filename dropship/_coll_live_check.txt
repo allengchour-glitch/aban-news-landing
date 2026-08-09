@@ -370,3 +370,9 @@ winter-kaelte	ok	28	Winter & Kälte
 handtaschen-umhaengetaschen	ok	28	Handtaschen & Umhängetaschen
 reisegepaeck	ok	28	Reisegepäck
 herren-jacken	http-103	0	Herren-Jacken & Hoodies
+herren-pullover	ok	28	Herren-Pullover & Strick
+auto-pflege	ok	14	Auto-Pflege & Reinigung
+ventilatoren	ok	28	Ventilatoren & Kühlung
+luftreiniger-klimageraete	ok	28	Luftreiniger & Klimageräte
+lampen-leuchten	ok	28	Lampen & Leuchten
+frauen-favoriten	ok	26	Frauen-Favoriten
