@@ -722,11 +722,11 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
        Gipfel liegen jetzt auf 79…184 statt 36…91. Bei 60 waere alles ab dem
        halben Hang weiss; 92 laesst zwei Drittel Fels und setzt die Kappe dorthin,
        wo sie in den Alpen auch liegt. */
-    /* 92 war zu hoch angesetzt: die Gipfel liegen auf 79…184, mit 92 bekamen nur
-       die hoechsten ueberhaupt eine Kappe und die uebrigen blieben nackt. 70
-       gibt allen ausser den kleinsten einen weissen Gipfel — und genau das ist
-       das Bild, das eine Alpenkette ausmacht. */
-    var SCHNEE=70, WIESE=8;                      // Welthoehe: Schneelinie, Fusssaum
+    /* Schneelinie 110 bei Gipfeln von 79…184: die Kappe sitzt auf dem oberen
+       Drittel der hohen Berge, die niedrigen bleiben gruen-grau. Vorher stand
+       hier 70 — zusammen mit der alten Neigungsprobe ergab das eine Kette, die
+       unten hell und oben dunkel war. */
+    var SCHNEE=110, WIESE=8;                      // Welthoehe: Schneelinie, Fusssaum
     function rnd(i,k){var x=Math.sin(i*12.9898+k*78.233)*43758.5453;return x-Math.floor(x);}
     /* 🏔️ HOEHENFELD statt Kegel.
        Ein Kegel — auch verrauscht, geschert und ausgeflaert — bleibt EIN Gipfel
@@ -824,20 +824,19 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
         var fels=0.16+rnd(seed,5)*0.08+rnd(v2,seed+11)*0.04;
         fels*=0.85+0.25*Math.max(0,son);           // Exposition
         var c0,c1,c2;
-        var schneeAn=(wy-SCHNEE)/20;               // Hoehe, weicher Uebergang
-        /* ⚠️ Mit 0,42 lag NIRGENDS Schnee. Der Grund steckt im neuen Profil: bei
-           Exponent 1,45 sind die oberen Flanken um 60 Grad steil, die Normale hat
-           dort ny ~ 0,45 — die Schwelle schnitt also genau die Gipfelregion weg,
-           auf der der Schnee liegen soll. 0,28 laesst Grate und Kuppen weiss und
-           haelt ihn weiterhin von den senkrechten Waenden fern. */
-        /* ⚠️ Dritte Anpassung derselben Schwelle, und jedes Mal aus demselben
-           Grund: sie haengt am PROFIL. Mit Exponent 1,58 und schmalem Fuss sind
-           die oberen Flanken rund 70 Grad steil, ny liegt dort nur noch bei
-           0,33…0,36 — mit der alten Schwelle 0,28/0,26 kamen davon nur 23 %
-           Schnee an, und die Kette blieb praktisch schneefrei. Merke: wer das
-           Bergprofil aendert, muss die Schneeprobe mit aendern. */
-        var haelt=(ny-0.20)/0.20;
-        var m=Math.min(1,Math.max(0,Math.min(schneeAn,haelt)));
+        /* ⚠️ GEMESSEN, NICHT GERATEN — und es war genau andersherum als gedacht.
+           Sonde auf dem hoechsten Berg (Gipfel 183,8):
+               wy 183,8  ny 0,225  Farbe 0,38
+               wy 142    ny 0,292  Farbe 0,58
+               wy  92    ny 0,348  Farbe 0,78
+           Die Flanke wurde nach UNTEN heller. Grund: `min(hoehe, neigung)` liess
+           die Neigung entscheiden, und die steilste Stelle eines Berges ist der
+           GIPFEL — dort war ny am kleinsten, also am wenigsten Schnee. Physikalisch
+           nicht falsch, im Bild aber verkehrt herum: dunkle Spitze, helle Hänge.
+           Jetzt entscheidet die HOEHE; die Neigung duennt nur noch die
+           allersteilsten Waende aus. Das ist das Bild einer Alpenkette. */
+        var m=Math.min(1,Math.max(0,(wy-SCHNEE)/25));
+        if(ny<0.22)m*=0.25+(Math.max(0,ny)/0.22)*0.75;
         if(wy<WIESE){
           var m2=Math.min(1,(WIESE-wy)/10);
           c0=fels*(1-m2)+0.40*m2; c1=fels*(1-m2)+0.54*m2; c2=fels*(1-m2)+0.32*m2;
