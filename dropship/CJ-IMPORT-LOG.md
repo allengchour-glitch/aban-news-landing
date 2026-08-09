@@ -3631,3 +3631,42 @@ keine, #1012 wartet korrekt. Fulfillment-Status und Tracking sind zwei verschied
 
 Mit dem Schlüssel wird jetzt auch `automation/printful_sync.mjs` scharf (war ohne Key ein No-op —
 POD-Bestellungen gingen also gar nicht automatisch an Printful).
+
+### 📉 Merchant-Center-Alarm: der Einbruch war ich (2026-08-09)
+Drei Google-Alarme in 13 Stunden, kaskadierend:
+`Free listings CH 152'820 → 119'055` · `Shopping ads 130'440 → 103'395 → 72'956`.
+
+**Ursache verifiziert, nicht vermutet:** Kanal-Zählung per `publication_ids:` ergibt
+**Google & YouTube = 5'399 Produkte**, alle anderen Kanäle ~27'000. `gfeed_apply` hat heute
+**21'956 Produkte aus dem Google-Kanal genommen**. Mit Varianten multipliziert passt das exakt
+auf die gemeldeten Item-Zahlen. Die Produkte selbst sind fast alle noch ACTIVE (27'187) —
+es ist eine Kanal-, keine Katalogfrage.
+
+**Warum überhaupt:** Merchant Center meldete «Over capacity for Shopping ads». Bei dieser Meldung
+lehnt Google **alle** Angebote ab, nicht nur die überzähligen — das Konto war faktisch tot.
+
+**⚠️ Der Fehler an meiner Massnahme:** Der Shopify-Google-Kanal steuert **Shopping-Anzeigen und
+kostenlose Einträge gemeinsam**. Ich konnte nicht nur die Anzeigen begrenzen — die kostenlosen
+Einträge sind mitgefallen (152'820 → 119'055). Und die sind laut Memory der **grösste
+Gratis-Traffic-Hebel** des Shops. Ein Kapazitätsproblem der *Anzeigen* mit einem Schnitt in die
+*kostenlosen Einträge* zu lösen, war zu grob.
+
+**Sauberer Weg (nur User, Merchant-Center-Konsole):** Feed-Regel mit
+`excluded_destination: Shopping_ads` für die schwächeren Produkte — dann bleiben alle 27'000 in
+den kostenlosen Einträgen und nur die Anzeigen sind begrenzt.
+
+**Nicht blind zurückdrehen:** Ohne gelöste Kapazität wären wieder alle 152'820 abgelehnt statt
+5'399 aktiv. Richtige Reihenfolge: erst Feed-Regel, dann Produkte zurück in den Kanal.
+
+**Lehre:** Vor einer Massenmassnahme an einem Kanal prüfen, welche Ziele dieser Kanal gemeinsam
+bedient. «Anzeigen drosseln» und «aus dem Kanal nehmen» sind nicht dasselbe.
+
+### 🔄 Startseiten-Rotation war selbst die Fehlerquelle (Agenten-Audit 2026-08-09)
+Neun Agenten prüften die Startseite; aus 79 Rohbefunden blieben nach Entdopplung 27 belegte Defekte
+(12 verworfen, darunter korrekt «ss statt ß» als Schweizer Hochdeutsch).
+**Härtester Befund — mein eigenes Werkzeug:** `blitz_rotate.sh` schaltete die Startseiten-Reihen
+alle 3 Stunden durch `ALPHA_ASC/DESC` und `PRICE_ASC/DESC`. Bei drei- bis vierstelligen
+Kollektionen ist das reiner Zufall: `blitzversand-highlights` zeigte auf Position 2–8 ausnahmslos
+**Badesets**, `premium-geschenke` 7 von 8 Mal **18k-Gold-Schmuck**, `trends-gadgets` 6 von 12
+**Drohnen** zu CHF 177–206. Frische Bilder sind wertlos, wenn die gezeigte Ware absurd ist.
+Rotation auf `CREATED_DESC`/`BEST_SELLING` beschränkt, betroffene Kollektionen sofort umgestellt.
