@@ -236,3 +236,38 @@ marke-under-armour	unveroeffentlicht	0	Under Armour
 marke-champion	unveroeffentlicht	0	Champion
 marke-jack-jones	unveroeffentlicht	0	Jack & Jones
 marke-chanel	unveroeffentlicht	0	Chanel
+marke-reebok	TOTE-SEITE	0	Reebok
+marke-gant	unveroeffentlicht	0	Gant
+marke-logitech	unveroeffentlicht	0	Logitech
+marke-clinique	ok	5	Clinique
+marke-artdeco	unveroeffentlicht	0	Artdeco
+marke-versa	unveroeffentlicht	0	Versa
+marke-quid	unveroeffentlicht	0	Quid
+marke-safta	ok	5	Safta
+marke-nacon	unveroeffentlicht	0	Nacon
+marke-hi-tec	unveroeffentlicht	0	Hi-Tec
+marke-project-x-paris	unveroeffentlicht	0	Project X Paris
+marke-startech	unveroeffentlicht	0	Startech
+marken-sport	TOTE-SEITE	0	Marken-Sportswear
+beauty-marken	ok	5	Beauty-Marken
+tech-marken	TOTE-SEITE	0	Tech & Audio-Marken
+mode-marken	unveroeffentlicht	0	Mode-Marken
+favoriten	ok	13	Bestseller & Lieblinge
+auto-zubehoer	ok	28	Auto-Zubehör
+camping-outdoor	ok	28	Camping & Outdoor
+pool-schwimmen	ok	11	Pool & Schwimmen
+haarstyling-tools	ok	28	Haarstyling & Tools
+bar-wein	ok	7	Bar & Wein
+garten-pflanzgefaesse	ok	28	Pflanzgefässe & Töpfe
+garten-leuchten	ok	28	Gartenleuchten & Solar
+garten-deko-outdoor	ok	13	Gartendeko
+garten-werkzeug-pflege	ok	28	Garten-Werkzeug & Pflege
+camping-schlafen	ok	27	Zelte & Schlafsäcke
+camping-kueche	ok	28	Camping-Küche
+camping-licht-outdoor	ok	28	Outdoor-Licht & Tools
+bar-glaeser	ok	10	Gläser
+bar-cocktail	ok	20	Cocktail & Shaker
+bar-wein-accessoires	ok	28	Wein-Accessoires
+rucksaecke-schule	ok	7	Schulrucksäcke
+rucksaecke-laptop	ok	22	Laptop- & Business-Rucksäcke
+rucksaecke-sport	ok	25	Sport- & Wanderrucksäcke
