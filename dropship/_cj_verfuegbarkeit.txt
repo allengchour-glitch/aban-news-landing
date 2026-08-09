@@ -161,3 +161,24 @@ gid://shopify/Product/15492128571777	ok
 gid://shopify/Product/15492128309633	ok
 gid://shopify/Product/15492128276865	ok
 gid://shopify/Product/15492128211329	ok
+gid://shopify/Product/15492128178561	ok
+gid://shopify/Product/15492128145793	ok
+gid://shopify/Product/15492128113025	ok
+gid://shopify/Product/15492128080257	ok
+gid://shopify/Product/15492128047489	ok
+gid://shopify/Product/15492128014721	ok
+gid://shopify/Product/15492127981953	ok
+gid://shopify/Product/15492127949185	ok
+gid://shopify/Product/15492127916417	ok
+gid://shopify/Product/15492127883649	ok
+gid://shopify/Product/15492127850881	ok
+gid://shopify/Product/15492092494209	ok
+gid://shopify/Product/15492092232065	ok
+gid://shopify/Product/15492091937153	ok
+gid://shopify/Product/15492091642241	ok
+gid://shopify/Product/15492091347329	ok
+gid://shopify/Product/15492091019649	ok
+gid://shopify/Product/15492090757505	ok
+gid://shopify/Product/15492088529281	ok
+gid://shopify/Product/15492085973377	bei-cj-weg	CJ-5AF5A72D-0897-4AF6-AFF5-D6A33F2D3A01
+gid://shopify/Product/15492085776769	bei-cj-weg	CJ-F345E20A-FD18-4919-AC46-5B6A4144926C

@@ -145,3 +145,85 @@ sg-alle	ok	28	Selbst gestalten – alle Produkte
 spielzeug	ok	28	Spielzeug & Plüsch
 luxus-highend	ok	17	Premium-Auswahl
 loungewear	ok	5	Loungewear
+luxestyle-premium	ok	28	LuxeStyle Premium
+michael-kors	unveroeffentlicht	0	Michael Kors
+calvin-klein	unveroeffentlicht	0	Calvin Klein
+hugo-boss	unveroeffentlicht	0	Hugo Boss
+tommy-hilfiger	TOTE-SEITE	0	Tommy Hilfiger
+guess	TOTE-SEITE	0	Guess
+dolce-gabbana	unveroeffentlicht	0	Dolce & Gabbana
+yves-saint-laurent	unveroeffentlicht	0	Yves Saint Laurent
+swatch	ok	5	Swatch
+casio	unveroeffentlicht	0	Casio
+olivia-burton	unveroeffentlicht	0	Olivia Burton
+police	TOTE-SEITE	0	Police
+citizen	unveroeffentlicht	0	Citizen
+festina	unveroeffentlicht	0	Festina
+kenzo	unveroeffentlicht	0	Kenzo
+elie-saab	unveroeffentlicht	0	Elie Saab
+pierre-cardin	unveroeffentlicht	0	Pierre Cardin
+morellato	unveroeffentlicht	0	Morellato
+lotus-uhren	unveroeffentlicht	0	Lotus
+lancome	unveroeffentlicht	0	Lancôme
+loreal	unveroeffentlicht	0	L'Oréal
+weleda	unveroeffentlicht	0	Weleda
+lorus	unveroeffentlicht	0	Lorus
+paul-hewitt	unveroeffentlicht	0	Paul Hewitt
+tom-hope	TOTE-SEITE	0	Tom Hope
+adidas	unveroeffentlicht	0	Adidas
+puma	unveroeffentlicht	0	Puma
+reebok	TOTE-SEITE	0	Reebok
+under-armour	unveroeffentlicht	0	Under Armour
+fila	unveroeffentlicht	0	Fila
+superdry	unveroeffentlicht	0	Superdry
+caps-hute	ok	28	Caps & Hüte
+wasserfester-schmuck	ok	14	Wasserfester Schmuck
+parfum-duefte	ok	28	Parfum & Düfte
+mauspads	ok	28	Mauspads
+sport-outdoor	ok	28	Sport & Outdoor
+buero-schreibwaren	ok	10	Büro & Schreibwaren
+gravur-personalisiert	ok	7	Gravur · Personalisiert
+spielzeug-puzzles	ok	28	Puzzles
+spielzeug-pluesch	ok	5	Plüsch & Kuscheltiere
+spielzeug-figuren	unveroeffentlicht	0	Action- & Sammelfiguren
+spielzeug-brettspiele	unveroeffentlicht	0	Brett- & Gesellschaftsspiele
+spielzeug-puppen	unveroeffentlicht	0	Puppen & Puppenhaus
+spielzeug-kostueme	unveroeffentlicht	0	Kostüme & Verkleidung
+spielzeug-lernen	ok	13	Lernspielzeug
+spielzeug-basteln	ok	14	Basteln & Kneten
+spielzeug-fahrzeuge	ok	7	Fahrzeuge & RC
+spielzeug-outdoor-wasser	ok	18	Outdoor & Wasser
+spielzeug-musik	ok	22	Musik-Spielzeug
+spielzeug-schminkset	ok	28	Kinder-Schminksets
+spielzeug-bausets	ok	6	Bau- & Spielsets
+garten-balkon	ok	28	Garten & Balkon
+elektriker-werkzeug	unveroeffentlicht	0	Elektriker & Installation
+trainingsanzuege-sets	ok	15	Trainingsanzüge & Sets
+fitness-training	ok	28	Sport, Fitness & Outdoor
+velo-radsport	ok	8	Velo & Radsport
+angeln	ok	10	Angeln
+tauchen-schnorcheln	TOTE-SEITE	0	Tauchen & Schnorcheln
+metalldetektoren-schatzsuche	unveroeffentlicht	0	Metalldetektoren & Schatzsuche
+anime	ok	5	Anime & Manga
+tauchen	TOTE-SEITE	0	Tauchen & Schnorcheln
+metalldetektor	unveroeffentlicht	0	Metalldetektoren & Schatzsuche
+velo	ok	8	Velo & Radsport
+fitness	ok	28	Fitness & Training
+bastel-diy	ok	28	Basteln & DIY
+uhren	ok	28	Uhren
+lederwaren	ok	13	Leder & Accessoires
+wm-fussball-2026	unveroeffentlicht	0	Fussball & Fan 2026
+beauty-pflege	ok	28	Beauty & Pflege
+make-up	ok	28	Make-up & Kosmetik
+hautpflege	ok	28	Gesichts- & Hautpflege
+beauty-tools	ok	28	Beauty-Tools
+herren-uhren	ok	28	Herren-Uhren
+damen-uhren	unveroeffentlicht	0	Damen-Uhren
+portemonnaie	ok	28	Portemonnaie & Kleinleder
+rucksaecke	ok	28	Rucksäcke
+gant	unveroeffentlicht	0	Gant
+socken-strumpfe	unveroeffentlicht	0	Socken & Strümpfe
+anime-manga	ok	5	Anime & Manga
+✏️-selbst-gestalten	unveroeffentlicht	0	Selbst gestalten
+🎁-geschenke-bis-chf-30	ok	28	Geschenke bis CHF 30
+💎-premium-ab-chf-80	ok	28	Premium ab CHF 80
