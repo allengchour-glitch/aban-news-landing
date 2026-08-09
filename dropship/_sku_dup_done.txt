@@ -14,3 +14,7 @@ gid://shopify/Product/15460056531329	CJ-CJQZ298898701AZ	Maxi-Rock mit Elastikgü
 gid://shopify/Product/15460284170625	CJ-CJQZ298898701AZ	Weites Maxi-Kleid
 gid://shopify/Product/15474790334849	CJ-CJYD296373701AZ	Retro-Lederrucksack für Herren
 gid://shopify/Product/15475162808705	CJ-CJYD296373701AZ	Retro-Leder-Rucksack
+gid://shopify/Product/15479420158337	CJ-2505150505541613600	Jianwu UKW-Marinefunkgerät für Fahrzeuge
+gid://shopify/Product/15479421108609	CJ-2505150505541613600	Jianwu VHF/UHF-Mobilfunkgerät
+gid://shopify/Product/15413651046785	CJQZ291649101AZ	Strand-Maxirock · Damen, A-Linie mit Rüschen, gefüttert (Sommer 2026)
+gid://shopify/Product/15413083046273	CJNT291604301AZ	UV-Schutz Strandcardigan · Damen, leicht & langärmlig (Sommer 2026)
