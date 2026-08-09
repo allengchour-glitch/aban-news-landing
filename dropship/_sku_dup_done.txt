@@ -395,3 +395,16 @@ gid://shopify/Product/15481765495169	CJ-D7D18751-346C-477E-BB2E-E7B8FFA8D0F8	Int
 gid://shopify/Product/15480570085761	CJ-2504010257261604800	Mobile Festplatte mit grosser Speicherkapazität
 gid://shopify/Product/15484710027649	CJ-1394488997161603072	USB-Stick im Schoggi-Tafel-Design
 gid://shopify/Product/15480570708353	CJ-2409210732551618900	6-in-1 Docking Station für Steam Deck
+gid://shopify/Product/15480570773889	CJ-2409210711191626700	M.2 SSD Aluminiumgehäuse mit Thunderbolt 4
+gid://shopify/Product/15480571036033	CJ-1777653772848734208	USB ISP Programmierkabel für Mikrocontroller
+gid://shopify/Product/15480571167105	CJ-CJYD198106101AZ	USB Stick für Auto und mehr (3.2 Gen 1)
+gid://shopify/Product/15485503209857	CJ-2607140840031619500	Leichtes Pop-up Strandzelt für 2–3 Personen
+gid://shopify/Product/15481773621633	CJ-2606040908271624800	Kopfhoerer mit Uebersetzung
+gid://shopify/Product/15490701721985	CJ-2604140059561624300	Mini Make-up Pinsel Set
+gid://shopify/Product/15484397781377	CJ-2604040230031617400	Mechanische Skelett-Armbanduhr für Herren
+gid://shopify/Product/15484523708801	CJ-CJYD282510801AZ	Kinder Sommer-Halbsandalen mit Klettverschluss
+gid://shopify/Product/15485457727873	CJ-CJYD189247101AZ	Kinder-Hausschuhe Pinguin (Herbst/Winter)
+gid://shopify/Product/15492071358849	CJ-CJXX304532701AZ	Herren Relaxed-Fit Bootcut Hose
+gid://shopify/Product/15492097343873	CJ-2604171036421631500	Professioneller Golf-Entfernungsmesser
+gid://shopify/Product/15492097671553	CJ-2603190106241612100	Stossfestes Edelstahl-Manometer
+gid://shopify/Product/15492141941121	CJ-2608090357001608500	5-in-1 Outdoor-Tool aus Edelstahl
