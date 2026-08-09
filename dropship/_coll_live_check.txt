@@ -227,3 +227,12 @@ anime-manga	ok	5	Anime & Manga
 ✏️-selbst-gestalten	unveroeffentlicht	0	Selbst gestalten
 🎁-geschenke-bis-chf-30	ok	28	Geschenke bis CHF 30
 💎-premium-ab-chf-80	ok	28	Premium ab CHF 80
+topseller	ok	8	Topseller
+marke-nike	unveroeffentlicht	0	Nike
+marke-adidas	unveroeffentlicht	0	Adidas
+marke-new-era	unveroeffentlicht	0	New Era
+marke-puma	unveroeffentlicht	0	Puma
+marke-under-armour	unveroeffentlicht	0	Under Armour
+marke-champion	unveroeffentlicht	0	Champion
+marke-jack-jones	unveroeffentlicht	0	Jack & Jones
+marke-chanel	unveroeffentlicht	0	Chanel
