@@ -23,11 +23,11 @@ for(const h of handles){
    const main=document.querySelector('main');
    const g=main.querySelector('[class*="media" i] img');
    const h1=main.querySelector('h1');
-   const pr=[...main.querySelectorAll('[class*="price" i]')].find(x=>x.children.length===0&&/CHF/.test(x.textContent)&&x.getBoundingClientRect().width>40);
-   const atc=[...main.querySelectorAll('button')].find(x=>/In den Warenkorb legen/.test(x.textContent)&&x.getBoundingClientRect().width>200);
-   return {chrome:t(g),h1:t(h1),preis:t(pr),atc:t(atc),vh:innerHeight};
+   const pr=[...main.querySelectorAll('[class*="price" i]')].find(x=>x.children.length===0&&/CHF/.test(x.textContent)&&x.getBoundingClientRect().width>40&&!x.closest('.sticky-add-to-cart'));
+   const atc=[...main.querySelectorAll('button')].find(x=>/In den Warenkorb legen/.test(x.textContent)&&x.getBoundingClientRect().width>200&&!x.closest('.sticky-add-to-cart'));
+   const ck=[...document.querySelectorAll('*')].filter(e=>/Wir nutzen Cookies/.test(e.textContent)&&e.children.length<=6).pop(); const cr=ck?ck.getBoundingClientRect():null; const np=[...document.querySelectorAll('dialog[open],[role=dialog]')].map(e=>{const r=e.getBoundingClientRect();return Math.round(r.height)}); return {chrome:t(g),h1:t(h1),preis:t(pr),atc:t(atc),vh:innerHeight,cookieTop:cr?Math.round(cr.top):null,cookieH:cr?Math.round(cr.height):null,dlg:np};
   });
-  console.log([h.slice(0,42),r.chrome,r.h1,r.preis,r.atc,r.vh,(r.preis!==null&&r.preis<r.vh),(r.atc!==null&&r.atc<r.vh)].join('\t'));
+  console.log([h.slice(0,42),r.chrome,r.h1,r.preis,r.atc,r.vh,(r.preis!==null&&r.preis<r.vh),(r.atc!==null&&r.atc<r.vh),'cookie@'+r.cookieTop+'/h'+r.cookieH].join('\t'));
  }catch(e){ console.log(h+'\tFEHLER '+e.message.slice(0,40)); }
  await new Promise(r=>setTimeout(r,1500));
 }
