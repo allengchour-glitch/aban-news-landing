@@ -52,3 +52,4 @@ dist/
 # Meshy-Rohmodelle (unoptimiert) — komprimierte Web-Modelle liegen in models/
 game/assets/*.glb
 bigbuy_key.txt
+printful_key.txt
