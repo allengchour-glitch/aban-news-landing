@@ -401,3 +401,46 @@ haarfarbe-coloration	ok	6	Haarfarbe & Coloration
 haushaltsgeraete	ok	28	Haushaltsgeräte
 bohrer-saegen-zubehoer	unveroeffentlicht	0	Bohrer, Sägen & Werkzeug-Zubehör
 sonnenbrillen-alle	ok	28	Sonnenbrillen (alle)
+shorts-bermudas	ok	28	Shorts & Bermudas
+leggings	ok	28	Leggings & Tights
+westen-gilets	ok	28	Westen & Gilets
+mikrofone	ok	28	Mikrofone & Streaming
+unterwaesche	ok	14	Unterwäsche
+nachtwaesche-pyjamas	ok	28	Nachtwäsche & Pyjamas
+muetzen-schals	ok	28	Mützen, Schals & Stirnbänder
+geschirr-servieren	ok	28	Geschirr & Servieren
+pfannen-toepfe	ok	28	Pfannen & Töpfe
+sub-sandalen	ok	28	Sandalen
+sub-stiefel-boots	ok	28	Stiefel & Boots
+sub-pumps-heels	http-429	0	Pumps & High Heels
+sub-ballerinas	ok	28	Ballerinas, Flats & Loafers
+sub-hausschuhe	ok	28	Hausschuhe & Slipper
+sub-laufschuhe	ok	28	Lauf- & Sportschuhe
+sub-wander-arbeitsschuhe	http-429	0	Wander- & Arbeitsschuhe
+pc-komponenten	ok	28	PC-Komponenten & Speicher
+spass-elektronik	ok	28	Spass-Elektronik & RC
+smoke-zubehoer	ok	7	Smoke & Chill Zubehör
+verpackung-versand	TOTE-SEITE	0	Verpackung & Versandmaterial
+geschenkverpackung	ok	21	Geschenkverpackung
+jacken-outdoor	ok	28	Jacken & Outdoor-Mode
+wandern-trekking	ok	28	Wandern & Trekking
+ersatzteile-zubehoer	ok	28	Ersatzteile & Zubehör
+dessous-reizwaesche	ok	6	Dessous & Reizwäsche
+actionfiguren	ok	5	Actionfiguren & Sammelfiguren
+eu-lager-schnell	http-429	0	EU-Lager — Schnell geliefert
+premium-marken-lager	ok	5	Premium & Marken
+vr-ai-neuheiten	ok	28	VR, AI & Neuheiten
+handy-huellen	ok	28	Handyhüllen & Cases
+handy-schutzglas	http-429	0	Panzerglas & Displayschutz
+handy-laden	unveroeffentlicht	0	Ladegeräte & Kabel
+handy-powerbanks	unveroeffentlicht	0	Powerbanks
+handy-halterungen	ok	28	Halterungen & MagSafe
+handy-selfie-video	ok	22	Selfie, Gimbal & Stative
+selbst-gestalten	http-429	0	Selbst gestalten – Deine Design-Produkte
+parfuem-damen	TOTE-SEITE	0	Damenparfüm
+parfuem-herren	http-429	0	Herrenparfüm
+hundewelt	ok	28	Hundewelt
+katzenwelt	http-429	0	Katzenwelt
+puzzles	http-429	0	Puzzles
+lautsprecher	ok	28	Lautsprecher & Boxen
+kaffee-ecke	ok	26	Kaffee-Ecke

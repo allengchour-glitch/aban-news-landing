@@ -3454,3 +3454,22 @@ liefern korrekt 404, sind also schon aus dem Shop.
 **Folgeregel:** Wenn ein Marge- oder Verfügbarkeits-Audit Produkte draftet, können dadurch
 **Marken-/Nischen-Kollektionen leerlaufen.** Nach jedem solchen Lauf gehört der Kollektions-Check
 hinterher — sonst bleiben leere Kategorieseiten im Menü stehen.
+
+### 🧹 12 leere Markenseiten entfernt — die Folgekosten des Marge-Audits (2026-08-09)
+Die vorhergesagte Kettenreaktion ist eingetreten: Als das BigBuy-Marge-Audit 129 unrentable
+Produkte draftete, liefen deren **Marken- und Nischen-Kollektionen leer**. Der Live-Check fand
+12 Seiten, die mit **HTTP 200 und «Keine Produkte gefunden»** antworteten — der Kunde klickt eine
+Marke an und landet im Nichts:
+`tommy-hilfiger` · `guess` · `police` · `reebok` · `marke-reebok` · `tom-hope` · `marken-sport` ·
+`tech-marken` · `damen-duefte` · `herren-duefte` · `tauchen` · `tauchen-schnorcheln`
+
+Alle aus den sechs Kanälen genommen (**nie gelöscht** — kommt wieder Ware rein, können sie zurück).
+Verifiziert: liefern jetzt 404. Menülinks waren keine betroffen.
+⚠️ `tauchen` gibt 301 auf `tauchen-schnorcheln` — die Kette endet erst nach der Weiterleitung im
+404. Beim Prüfen von Kollektionen also immer `-L` folgen, sonst sieht ein toter Link gesund aus.
+
+**Werkzeug:** `automation/tote_collections_aufraeumen.py` — liest den Live-Check, nimmt
+TOTE-SEITE-Kollektionen aus allen Kanälen und meldet Menülinks, die dadurch ins Leere zeigen.
+
+**Feste Reihenfolge ab jetzt:** Produkte draften → `coll_live_check.py` → `tote_collections_aufraeumen.py`.
+Wer nur draftet, hinterlässt leere Kategorien im Shop.

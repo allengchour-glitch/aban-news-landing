@@ -1,0 +1,12 @@
+tommy-hilfiger	unpublished	Tommy Hilfiger
+guess	unpublished	Guess
+police	unpublished	Police
+tom-hope	unpublished	Tom Hope
+reebok	unpublished	Reebok
+tauchen-schnorcheln	unpublished	Tauchen & Schnorcheln
+tauchen	unpublished	Tauchen & Schnorcheln
+marke-reebok	unpublished	Reebok
+marken-sport	unpublished	Marken-Sportswear
+tech-marken	unpublished	Tech & Audio-Marken
+damen-duefte	unpublished	Damen-Düfte
+herren-duefte	unpublished	Herren-Düfte
