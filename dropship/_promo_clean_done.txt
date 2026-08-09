@@ -495,3 +495,4 @@ gid://shopify/Product/15430695256449	bereinigt
 gid://shopify/Product/15430856376705	bereinigt
 gid://shopify/Product/15430856442241	bereinigt
 gid://shopify/Product/15430856573313	bereinigt
+gid://shopify/Product/15430856606081	bereinigt
