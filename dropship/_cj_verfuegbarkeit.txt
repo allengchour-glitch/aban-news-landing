@@ -388,3 +388,8 @@ gid://shopify/Product/15491599040897	ok
 gid://shopify/Product/15491591438721	ok
 gid://shopify/Product/15491591274881	ok
 gid://shopify/Product/15491591209345	ok
+gid://shopify/Product/15491591176577	ok
+gid://shopify/Product/15491591143809	ok
+gid://shopify/Product/15491591078273	ok
+gid://shopify/Product/15491548578177	ok
+gid://shopify/Product/15491547758977	ok
