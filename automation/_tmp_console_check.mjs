@@ -41,7 +41,7 @@ await ctx.route('**/*', async route=>{
 });
 const p = await ctx.newPage();
 p.on('console', m=>{ if(m.type()==='error') consoleErr.push(m.text().slice(0,300)); });
-p.on('pageerror', e=>{ pageErr.push((e.name||'Error')+': '+(e.message||'').slice(0,300)); });
+p.on('pageerror', e=>{ pageErr.push((e.name||'Error')+': '+(e.message||'')+' | STACK: '+String(e.stack||'').slice(0,800)); });
 try{ await p.goto(URL, {waitUntil:'load', timeout:120000}); }catch(e){ console.log('NAV:', e.message); }
 await p.waitForTimeout(12000);
 const perf = await p.evaluate(()=>{
