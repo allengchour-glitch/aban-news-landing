@@ -1,3 +1,6 @@
+// Mehrere Handy-Screenshots in einem Lauf (390px). Entstanden im Rundum-Audit 2026-08-09
+// als Ergänzung zu site_shot.mjs, das nur eine URL pro Aufruf schiesst.
+// Aufruf: node automation/mobile_multi_shot.mjs <url1> <url2> ...
 import { chromium } from 'playwright';
 import { execFile } from 'node:child_process';
 import fs from 'node:fs';
