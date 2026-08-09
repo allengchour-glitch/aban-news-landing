@@ -138,3 +138,14 @@ gid://shopify/Product/15454057628033	CJ-2607080925391609100	Silber 925 Platin-ve
 gid://shopify/Product/15454197318017	CJ-2410310143511628800	Smart Sports Watch mit Kamera und AMOLED-Bildschirm
 gid://shopify/Product/15454035018113	CJ-2605060143211636400	Wasserdichtes Armbanduhr
 gid://shopify/Product/15454057791873	CJ-2607080303481611400	Sterlingsilber-Ohrstecker mit viereckigem Zirkonia
+gid://shopify/Product/15454197449089	CJ-2410200952481624000	Multifunktions Quarz-Wasserdichter Kalenderarmband
+gid://shopify/Product/15454035149185	CJ-2605040638581604900	Elegantes Herrenarmband
+gid://shopify/Product/15454270030209	CJ-2607080212031602000	Geometrische Ohrhänger
+gid://shopify/Product/15454197580161	CJ-2408280621441621900	Damen Armbanduhr mit Sonnenbrille
+gid://shopify/Product/15454270161281	CJ-2607080129531634100	Französische Vintage-Titanstahl Ohrringe mit 18 Karat Goldveredelung
+gid://shopify/Product/15454056251777	CJ-2604170128461621700	Automatik-Uhr
+gid://shopify/Product/15454197678465	CJ-2407080842581602800	Sport-Armbanduhr mit Bluetooth-Call & Schrittzähler
+gid://shopify/Product/15454058021249	CJ-2607070711231619700	Retrofarbige Öl-Tropfen Ohrringe für Damen
+gid://shopify/Product/15454201315713	CJ-1763822390196310016	Trendige Multifunktion digitale wasserdichte Armbanduhr
+gid://shopify/Product/15454271340929	CJ-2607070644051634500	Katzenpfoten-Steckohrringe aus 999er Silber
+gid://shopify/Product/15454036066689	CJ-2604090606521627900	Herren-Mechanik-Armbanduhr
