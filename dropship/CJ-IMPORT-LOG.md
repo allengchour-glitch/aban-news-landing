@@ -3473,3 +3473,24 @@ TOTE-SEITE-Kollektionen aus allen Kanälen und meldet Menülinks, die dadurch in
 
 **Feste Reihenfolge ab jetzt:** Produkte draften → `coll_live_check.py` → `tote_collections_aufraeumen.py`.
 Wer nur draftet, hinterlässt leere Kategorien im Shop.
+
+### ⚡ Startseite war 4.1 MB — Bremsklotz auf dem Handy (2026-08-09)
+Gesundheits-Check aller Kernseiten: alle 200, aber die **Startseite lieferte 4.15 MB HTML in 3.6 s** —
+das Vierfache jeder anderen Seite (Kollektionen ~0.9 MB, Rechtsseiten ~0.4 MB).
+
+**Ursache gemessen, nicht geraten:** 709 `<img>`-Tags bei 127 Produkten, allein 487 KB `srcset`.
+Jede Produktkarte rendert bis zu **6** Karussell-Slides, obwohl das Karussell nur **3** zeigt —
+die übrigen sind Variantenbilder, die kein Besucher je sieht (CJ-Produkte haben bis 15+ davon).
+Fix in `snippets/card-gallery.liquid`: harte Kappe **6 → 4** (3 sichtbare + 1 Reserve für
+Hover/Variantenwechsel). Im Theme verifiziert (`if forloop.index > 4`).
+
+⚠️ **Messfalle:** Ein `?cb=`-Parameter an der Startseite liefert eine **andere, 11 KB grosse Antwort** —
+damit lässt sich der Edge-Cache NICHT umgehen und die Messung ist wertlos. Immer die nackte URL
+abrufen und Shopifys Cache abwarten; die Wahrheit über den Stand steht in der Theme-Datei
+(Admin-API), nicht in der ausgelieferten Seite.
+
+**Nebenbefund — doppelte Seiten (SEO-Duplicate-Content):** Mehrere Themen existieren doppelt
+*veröffentlicht*: Versand (`versand-lieferung` + `versand-lieferzeit`), Über uns (`ueber-uns` +
+`ueber-uns-story`), Garantie (`garantie` + `30-tage-garantie`), Beauty-Routine
+(`beauty-routine-10-minuten` + `morgen-beauty-routine-10-minuten`). `/pages/versand` liefert 404,
+ist aber nirgends verlinkt (Menü-Check sauber) — also kein Kundenproblem, nur Altlast.
