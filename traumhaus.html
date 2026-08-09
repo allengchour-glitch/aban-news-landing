@@ -2756,6 +2756,15 @@ document.addEventListener("DOMContentLoaded",function(){});
     hint("\uD83C\uDFE0\u2705 Haus gekauft! Ab morgen: +150 \u00A7 Miete pro Tag");};})();
 // ---- Verkehr: 6 fahrende Autos + Bus-Linie mit Haltestelle ----
 var verkehr=[],busRec=null;
+/* Wagen-Lader mit Cache je DATEI. `loadTH` kann nur Ids der Form th_<id>.glb —
+   die Charge-37-Modelle heissen anders. */
+function ladeWagen(datei,cb){
+  if(MODELS[datei]){cb(MODELS[datei]);return;}
+  if(!GL){cb(null);return;}
+  GL.load("/models/"+datei,function(g){
+    g.scene.traverse(function(n){if(n.isMesh){n.castShadow=true;n.receiveShadow=true;
+      if(n.material)n.material.envMapIntensity=0.4;}});
+    MODELS[datei]=g.scene;cb(g.scene);},undefined,function(){cb(null);});}
 var _lichtTexW=null,_lichtTexR=null;
 function _glowTex(core,edge){var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");
   var g=c.createRadialGradient(32,32,1,32,32,31);g.addColorStop(0,core);g.addColorStop(0.35,core);g.addColorStop(1,edge);
@@ -2780,18 +2789,32 @@ setTimeout(function baueVerkehr(){
     /* 📱 Jedes Auto ist ein GLB-Klon mit ~8k Dreiecken — 34 Stueck sind ~270k. Auf dem Handy
      darum 20 statt 34; die Strassen wirken trotzdem belebt. */
   var _AN=(typeof _mobil!=="undefined"&&_mobil)?20:34;
-  var _IDS=[];for(var _q=0;_q<_AN;_q++)_IDS.push("auto_kombi");
+  /* 🚗 VIER MODELLE STATT EINEM. Vorher fuhren alle 34 Wagen als derselbe
+     `auto_kombi`, nur in sechs Farbtoenen — aus jeder Perspektive dieselbe
+     Silhouette (User: „autos sind gar nicht schoen"). Die vier Wagen aus
+     Charge 37 haben je ein eigenes Seitenprofil, Speichenfelgen, Radlaeufe,
+     Zierleiste und Grill — und sind mit ~0,5 MB obendrein ein Viertel so gross
+     wie der alte Kombi (1,9 MB), bis dahin die schwerste Datei der Seite. */
+  var WAGEN=["th37_limousine.glb","th37_kombi.glb","th37_sportwagen.glb","th37_lieferwagen.glb"];
+  var _IDS=[];for(var _q=0;_q<_AN;_q++)_IDS.push(WAGEN[_q%WAGEN.length]);
   /* ⚡ Der Verkehr zog frueher alle drei Auto-Modelle (~7 MB) in den kritischen Ladepfad —
      zusammen mit den Bewohner-Modellen die groessten Dateien der Seite. Jetzt nur noch der
      Kombi (1,9 MB); die 6 Farbtoene sorgen weiter fuer Abwechslung, Van und Flitzer bleiben
      kaufbar und werden dann bei Bedarf geladen. */
   _IDS.forEach(function(id,i){
-    loadTH(id,function(tpl){if(!tpl)return;
+    ladeWagen(id,function(tpl){if(!tpl)return;
       var m=tpl.clone(true);
       m.traverse(function(n){if(n.isMesh&&n.material){n.material=n.material.clone();
-        if(i>0)n.material.color.lerp(new THREE.Color(TINT[i%TINT.length]),0.35);}});
+        /* Nur die LACKteile umfaerben. Vorher traf der Farbstich jedes Material —
+           bei einem Modell ohne Chrom und Speichen fiel das nicht auf, bei den
+           neuen schon (sonst: rosa Reifen, gruene Scheiben). */
+        if(i>=WAGEN.length&&/lack/i.test(n.material.name||""))
+          n.material.color.lerp(new THREE.Color(TINT[i%TINT.length]),0.42);}});
       var bb=new THREE.Box3().setFromObject(m),sz=new THREE.Vector3();bb.getSize(sz);
-      m.scale.setScalar(3.9/(Math.max(sz.x,sz.z)||1));
+      /* 4,4 statt 3,9: die th37-Wagen sind massstaeblich zu den Haeusern gebaut
+         (4,3…5,25 m lang) und wirkten auf 3,9 normiert zu klein neben den
+         Gehwegen. Die Fahrbahn ist 16 m breit — 4,4 m passt bequem. */
+      m.scale.setScalar(4.4/(Math.max(sz.x,sz.z)||1));
       var b2=new THREE.Box3().setFromObject(m);
       var r=ROUTEN[i%ROUTEN.length];
       var _pr=Math.floor(i/ROUTEN.length),_np=Math.ceil(_AN/ROUTEN.length);
@@ -2847,10 +2870,11 @@ setTimeout(function baueVerkehr(){
       for(var sl=-2;sl<=2;sl++){var ln=new THREE.Mesh(new THREE.PlaneGeometry(0.16,5),lineMat);
         ln.rotation.x=-Math.PI/2;ln.position.set(px+sl*3.6,0.02,pz);scene.add(ln);}
       // 2 geparkte Autos in die Taschen
-      ["auto_kombi","auto_van"].forEach(function(id,k){
-        loadTH(id,function(tpl){if(!tpl)return;var m=tpl.clone(true);
+      ["th37_limousine.glb","th37_lieferwagen.glb"].forEach(function(id,k){
+        ladeWagen(id,function(tpl){if(!tpl)return;var m=tpl.clone(true);
           m.traverse(function(n){if(n.isMesh&&n.material){n.material=n.material.clone();
-            n.material.color.lerp(new THREE.Color(k?0x4a7ad0:0xd06a4a),0.4);}});
+            if(/lack/i.test(n.material.name||""))
+              n.material.color.lerp(new THREE.Color(k?0x4a7ad0:0xd06a4a),0.45);}});
           var bb=new THREE.Box3().setFromObject(m),sz=new THREE.Vector3();bb.getSize(sz);
           m.scale.setScalar(3.9/(Math.max(sz.x,sz.z)||1));
           var b2=new THREE.Box3().setFromObject(m);
@@ -3442,6 +3466,42 @@ setTimeout(function baueGebaeude(){
        Der Guertel laeuft bei r 150…284 und weicht den gemeldeten Bergfuessen
        aus. Ausgespart werden Meer, alle Viertel samt Rand und die Zufahrts-
        schneisen. */
+    /* 🛣️ LANDSTRASSE. Bisher war das Strassennetz ein STERN: von der
+       Ringstrasse fuehrt je eine Stichstrasse zu jedem Viertel, und dort endet
+       sie. Wer vom Gewerbegebiet zum Sportpark will, muss zurueck in die Stadt
+       (User: „strassen koennte mehr sein und alle verbunden").
+       Eine Ringlandstrasse bei r = 200 schneidet alle Stichstrassen und macht
+       aus dem Stern ein NETZ — ab jetzt gibt es zu jedem Ziel zwei Wege.
+       Sie liegt in EINEM Mesh (Fahrbahn) plus einem zweiten (Mittelstreifen);
+       als 48 Einzelstuecke waeren es 96 Zeichenaufrufe. */
+    (function landstrasse(){
+      var R=200, HB=4.2, N=64;
+      var pos=[],idx=[],vb=0, dpos=[],didx=[],dvb=0;
+      for(var i=0;i<N;i++){
+        var a0=i/N*6.283, a1=(i+1)/N*6.283;
+        /* Meer aussparen: im Westen liegt bei r 200 offenes Wasser. */
+        var mx=Math.cos((a0+a1)/2)*R, mz=Math.sin((a0+a1)/2)*R;
+        if(mx<-118&&Math.abs(mz)<184)continue;
+        [[a0,-1],[a0,1],[a1,1],[a1,-1]].forEach(function(P){
+          pos.push(Math.cos(P[0])*(R+P[1]*HB),0.012,Math.sin(P[0])*(R+P[1]*HB));});
+        idx.push(vb,vb+2,vb+1, vb,vb+3,vb+2); vb+=4;   // Wicklung: Vorderseite nach OBEN
+        if(i%2===0){                                    // Mittelstreifen, gestrichelt
+          var am=(a0+a1)/2, ad=(a1-a0)*0.32;
+          [[am-ad,-0.18],[am-ad,0.18],[am+ad,0.18],[am+ad,-0.18]].forEach(function(P){
+            dpos.push(Math.cos(P[0])*(R+P[1]),0.022,Math.sin(P[0])*(R+P[1]));});
+          didx.push(dvb,dvb+2,dvb+1, dvb,dvb+3,dvb+2); dvb+=4;
+        }
+      }
+      function mesh(pp,ii,mat){
+        var g=new THREE.BufferGeometry();
+        g.setAttribute("position",new THREE.Float32BufferAttribute(pp,3));
+        g.setIndex(ii); g.computeVertexNormals();
+        var m=new THREE.Mesh(g,mat); m.receiveShadow=true; m.frustumCulled=false;
+        m.userData.nieAusblenden=1; scene.add(m); return m;}
+      mesh(pos,idx,betMat(0x4a4a53,0.92));
+      mesh(dpos,didx,new THREE.MeshStandardMaterial({color:0xd8d8cc,roughness:0.8}));
+      window._landstrasse=R;
+    })();
     /* 🌾 FELDER. Nach Bergen und Wald ist die WIESE die groesste einfarbige
        Flaeche im Bild — ein durchgehendes Gruen vom letzten Haus bis zum Wald.
        Eine Kulturlandschaft besteht aus Flicken: junge Saat, reifes Gras, Weizen,
@@ -3472,6 +3532,8 @@ setTimeout(function baueGebaeude(){
                ].map(srgb);
       function frei(x,z,rad2){
         if(x<-118&&Math.abs(z)<184)return false;                  // Meer + Strand
+        var LR=window._landstrasse||0;                            // nicht auf die Landstrasse
+        if(LR&&Math.abs(Math.hypot(x,z)-LR)<10+rad2)return false;
         var BB=window._berge||[];
         for(var m=0;m<BB.length;m++)
           if(Math.hypot(x-BB[m].x,z-BB[m].z)<BB[m].r*0.80+rad2)return false;
@@ -3529,6 +3591,8 @@ setTimeout(function baueGebaeude(){
         /* ⚠️ Der erste Guertel lag bei r 182…212 — und war unsichtbar, weil die
            BERGFUESSE bis r 132 nach innen reichen. Die Baeume standen im Fels.
            Jetzt weiter innen und explizit gegen die gemeldeten Fuesse geprueft. */
+        var LR2=window._landstrasse||0;
+        if(LR2&&Math.abs(Math.hypot(wx,wz)-LR2)<9)continue;     // nicht auf die Landstrasse
         var FE=window._felder||[];                             // nicht in die Felder
         var imFeld=false;
         for(var f9=0;f9<FE.length;f9++)
