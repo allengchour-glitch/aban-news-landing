@@ -3424,7 +3424,14 @@ setTimeout(function baueGebaeude(){
           [[u0,-d2],[u1,-d2],[u1,d2],[u0,d2]].forEach(function(P){
             pos.push(fx+P[0]*cs-P[1]*sn, 0.02, fz+P[0]*sn+P[1]*cs);
             col.push(F[0]*f2,F[1]*f2,F[2]*f2);});
-          idx.push(vb,vb+1,vb+2, vb,vb+2,vb+3); vb+=4;
+          /* ⚠️ ZUM ZWEITEN MAL in dieser Datei dieselbe Falle — bei den Bergen
+             war es dieselbe. Die Reihenfolge (0,1,2) ergibt hier ein
+             Kreuzprodukt mit negativer y-Komponente: die Vorderseite zeigt nach
+             UNTEN, und `side: FrontSide` cullt sie von oben gesehen komplett weg.
+             Die 22 Felder waren im Speicher vorhanden und trotzdem unsichtbar —
+             nachgewiesen mit einer Sonde, nicht geraten. Merksatz: bei jeder
+             selbst gebauten Flaeche einmal das Kreuzprodukt nachrechnen. */
+          idx.push(vb,vb+2,vb+1, vb,vb+3,vb+2); vb+=4;
         }
       }
       if(!pos.length)return;
