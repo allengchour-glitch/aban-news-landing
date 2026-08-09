@@ -1,0 +1,90 @@
+frontpage	ok	16	Home page
+naturkosmetik-beauty	ok	11	Naturkosmetik & Beauty
+baby-kleinkind	ok	28	Baby & Kleinkind
+reise-outdoor	unveroeffentlicht	0	Reise & Outdoor
+schule-buro	ok	5	Schule & Büro
+self-care-wellness-1	unveroeffentlicht	0	Self-Care & Wellness
+bestseller-unter-50	ok	28	Lieblinge unter CHF 50
+express-lieferung	ok	9	Express-Lieferung EU
+tiktok-ads-ready	ok	9	Im Video vorgestellt
+home-family	ok	6	Home & Family
+top-5-start	ok	9	Top 5 Favoriten
+herrenuhren-schmuck	ok	28	Herrenuhren & Schmuck
+baby-kids	ok	23	Baby & Kids
+vatertag-2026-papa	ok	11	Vatertag 2026 – Geschenke für Papa
+bestseller-shop	ok	16	Bestseller
+neu	ok	28	Neu eingetroffen
+fur-ihn	ok	28	Herren-Mode
+fur-sie	ok	28	Für Sie
+reisen-sommer	ok	28	Reisen & Sommer
+wohnen-dekoration	ok	28	Wohnen & Dekoration
+weihnachten-2026	ok	10	Christmas 2026
+buro-home-office	ok	10	Büro & Home Office
+mystery-top-deals	ok	5	Mystery & Top-Deals
+damen-mode	ok	28	Damen-Mode
+launch-week	ok	7	Bundles & Deals
+hochzeitsgeschenke	ok	9	Hochzeitsgeschenke
+berufseinstieg-abschluss	ok	10	Berufseinstieg & Abschluss
+halloween-2026	ok	28	Halloween 2026
+black-friday-2026	ok	4	Black Friday & Cyber Week
+silvester-neujahr	unveroeffentlicht	0	New Year & Silvester
+outdoor-garten	ok	28	Outdoor & Garten
+vegan	ok	28	Vegan & Cruelty-Free
+wellness-bundles	ok	7	Wellness-Box Bundles
+tiktok-viral	ok	5	TikTok-Hits 2026
+unter-chf-25	ok	28	Unter CHF 25 — Impulse-Käufe
+wellness-komplettset	ok	28	Wellness-Komplettset — Spa zuhause
+geschenke-unter-30	ok	28	Geschenke unter CHF 30 (getaggt)
+aromatherapie	ok	8	Aromatherapie · Diffuser & Öle
+beauty-selfcare	ok	27	Beauty & Self-Care
+tiktok-hero-products	ok	5	Trend-Favoriten
+premium-schmuck	ok	28	Premium Schmuck
+bestseller-premium-heroes	ok	7	Top 10 Bestseller
+premium-bundles	ok	4	Premium-Bundles — Spare CHF 19+
+bestseller	ok	15	Hero-Favoriten
+made-in-switzerland-premium	ok	22	Curated Premium
+premium-beauty	ok	9	Beauty · Premium
+premium-geschenke	ok	28	Premium Geschenke
+kleine-geschenke-mitbringsel	ok	28	Kleine Geschenke & Mitbringsel unter CHF 20
+geschenke-unter-50-franken	ok	28	Geschenke unter CHF 50
+kuche-kochen	ok	28	Küche & Kochen
+sonnenbrillen-eyewear	ok	28	Sonnenbrillen & Eyewear
+geschenke-unter-100-franken	ok	28	Geschenke unter CHF 100
+sommer-2026	ok	28	Sommer 2026
+vasen	ok	11	Vasen
+wandkunst	ok	10	Wandkunst
+aufbewahrung-sub	ok	28	Aufbewahrung
+audio-sub	ok	11	Audio
+smart-home-sub	ok	12	Smart Home
+ladegeraete	unveroeffentlicht	0	Ladegeräte
+foto-tech	ok	11	Foto & Video
+gaming	ok	28	Gaming
+bar-tools	ok	7	Bar-Tools
+servieren	ok	8	Servieren
+strand	ok	28	Strand
+pool	ok	11	Pool
+garten	ok	28	Garten
+camping-sub	ok	28	Camping
+yoga	ok	13	Yoga
+recovery	ok	22	Recovery
+reise-gadgets	ok	28	Reise-Gadgets & Organizer
+auto-halterungen	ok	28	Auto-Halterungen
+auto-reinigung	ok	10	Auto-Reinigung
+auto-power	ok	5	Auto-Power
+wallets-sub	ok	16	Wallets
+guertel	ok	28	Gürtel
+caps-huete	ok	28	Caps & Hüte
+hautpflege-tools	ok	28	Hautpflege-Tools
+akupressur	ok	12	Akupressur
+neu-eingetroffen	ok	28	Neuheiten 2026
+highlights	ok	28	Highlights – Schmuck & Mode
+herren-mode-sub	ok	28	Herren-Bekleidung
+fitness-sub	ok	28	Fitness
+schuhe	ok	28	Schuhe
+damen-schuhe	ok	28	Damen-Schuhe
+herren-schuhe	ok	28	Herren-Schuhe
+kuechengeraete	ok	28	Küchengeräte
+gadgets	ok	28	Coole Gadgets
+us-summer-2026	ok	10	US / Summer 2026
+sommer	ok	28	Sommer-Kollektion 2026
+home-gadgets	ok	7	Home & Gadgets

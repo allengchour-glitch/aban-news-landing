@@ -3428,3 +3428,29 @@ Nicht mehr geführte Produkte → **DRAFT + Tag `cj-nicht-mehr-verfuegbar`** (ni
   Fällt `pointsInfo.remaining` unter `PUNKTE_RESERVE` (400), pausiert der Audit von selbst.
 
 Erster Lauf: 82 geprüft, alle vorhanden, 0 Fehlalarme. Läuft unter `fixer_keepalive.sh` weiter.
+
+### 🔎 Kollektions-Live-Check (2026-08-09) — und eine Methoden-Lehre
+**Der Test war zuerst falsch.** Ein erster Durchlauf prüfte nur den Seitentext auf «Keine Produkte
+gefunden» und meldete drei unveröffentlichte Kollektionen als «zeigt Ware» — Shopifys 404-Seite
+enthält diesen Text schlicht nicht. **Ohne HTTP-Statuscode ist so ein Test wertlos.**
+Zweiter Stolperstein: die 404-Vorlage verlinkt selbst vier Empfehlungsprodukte, ein reiner
+Produkt-Zähler hätte sie also für gefüllt gehalten. Dritter: `productsCount` aus dem Admin zählt
+Entwürfe mit und hinkt Regeländerungen hinterher — die Wahrheit ist allein die ausgelieferte Seite.
+Vierter: ohne `-L` wurde jede umbenannte Kollektion (301) als Fehler gemeldet; jetzt wird der
+Weiterleitung gefolgt und nur eine Landung auf der Startseite gilt als Problem
+(`kuche-kochen` und `sonnenbrillen-eyewear` sind so von «Fehler» zu «ok, 28 Produkte» geworden).
+
+**Werkzeug:** `automation/coll_live_check.py` — ruft jede der 505 Kollektionen als Kunde ab,
+seriell mit Pause (parallel lief es in Shopifys 429-Drossel und erzeugte 25 Phantom-Fehler).
+Drei Zustände: `ok` · `TOTE-SEITE` (200, aber keine Ware — der eigentliche Fehler) ·
+`unveroeffentlicht` (404).
+
+**Befund:** Von 505 Kollektionen ist genau **eine** eine tote Seite gewesen: `tom-hope`
+(HTTP 200, «Keine Produkte gefunden»). Ihr einziges Produkt war ein BigBuy-Armband, das mein
+Marge-Audit als unrentabel gedraftet hatte — eine Markenseite ohne Ware. Aus allen sechs Kanälen
+genommen. Die drei Kollektionen mit 0 Produkten (`silvester-neujahr`, `loreal`, `black-friday`)
+liefern korrekt 404, sind also schon aus dem Shop.
+
+**Folgeregel:** Wenn ein Marge- oder Verfügbarkeits-Audit Produkte draftet, können dadurch
+**Marken-/Nischen-Kollektionen leerlaufen.** Nach jedem solchen Lauf gehört der Kollektions-Check
+hinterher — sonst bleiben leere Kategorieseiten im Menü stehen.
