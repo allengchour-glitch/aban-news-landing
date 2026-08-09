@@ -3581,3 +3581,35 @@ beides CJ-Nachbauten, keine Markenware. Die 5 «Fein»-Treffer sind Fehlalarme d
 Grund: die 127 echten Marken-Werkzeuge lagen bei BigBuy und sind dort **ausverkauft** (ER003) oder
 margen-negativ. `werkzeug-maschinen` hat 1'158 Produkte — durchweg No-Name-Ware von CJ.
 Markenwerkzeug ist über die aktuellen Lieferanten nicht beschaffbar.
+
+### 🎨 POD-Rückseite: kein fehlendes Feature, sondern ein Datenfehler (User-Frage 2026-08-09)
+Der Gestalter zeigt keinen «Vorne / Hinten»-Umschalter. **Die Technik ist aber komplett vorhanden:**
+- `pod/designer-cdn-v2.js` führt beide Seiten (`state.layers={front:[],back:[]}`, Texte
+  `front:"Vorne", back:"Hinten"`) und schreibt pro Seite eine eigene Druckdatei in die
+  Bestell-Eigenschaften (`buildProps()` mit Präfix «Vorne · » / «Hinten · »).
+- `automation/printful_sync.mjs` liest das aus (`/Hinten|Back/i` → `side='back'`) und setzt bei
+  Textilien die Printful-Platzierung `back` (`placementFor()`).
+
+**Die eine Zeile, an der es hängt:**
+```js
+var sides=[{k:"front",…}];
+imgBack && imgBack!==imgFront && sides.push({k:"back",…});
+```
+Der Umschalter erscheint nur, wenn ein Rückseiten-**Vorschaubild** hinterlegt ist, das sich vom
+Vorderbild unterscheidet. Ist-Stand:
+- 14 von 27 Editor-Produkten haben gar kein `data-img-back`
+- die übrigen 13 haben **dieselbe URL wie vorne** (T-Shirt: `blank-tee-white.png` in beiden
+  Attributen) → die Wache greift korrekt, der Schalter bleibt stumm
+
+**Was fehlt, sind echte Rückseiten-Fotos.** Im Repo gibt es keine (`pod/blanks/`, `pod/templates/`
+und `pod/tees/` enthalten ausschliesslich Vorderansichten), und `PRINTFUL_API_KEY` ist **nicht
+gesetzt** — Printfuls offizielle Blank-Mockups sind damit nicht abrufbar.
+
+⚠️ **Grösserer Nebenbefund:** Ohne `PRINTFUL_API_KEY` ist `printful_sync.mjs` ein **No-op**
+(«Kein PRINTFUL_API_KEY → No-op»). POD-Bestellungen werden also **gar nicht automatisch an
+Printful übergeben** — das erklärt, warum Order #1005 seinerzeit von Hand abgewickelt wurde.
+Der Schlüssel ist damit doppelt wichtig: für die Rückseiten-Fotos UND für die POD-Abwicklung.
+
+**Kein Behelfsbild erfinden.** Regel 4 (Trikot-Falle): Die Vorschau muss dem echten Produkt
+entsprechen. Ein generiertes Rückenteil mit erfundenen Nähten oder Etiketten wäre schlimmer als
+gar keine Rückseite.
