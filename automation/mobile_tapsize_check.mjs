@@ -1,3 +1,5 @@
+// Misst Tippflächen auf dem Handy (390px): findet Bedienelemente unter 44x44 px.
+// Entstanden im Rundum-Audit 2026-08-09. Aufruf: node automation/mobile_tapsize_check.mjs <url> <out.png> [scrollY]
 import { chromium } from 'playwright';
 import { execFile } from 'node:child_process';
 import fs from 'node:fs';
