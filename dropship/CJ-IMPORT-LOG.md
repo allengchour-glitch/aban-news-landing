@@ -3204,3 +3204,28 @@ Preis-/Lager-Audit über 920 Produkte: 0 Fehler (98 % ungetrackt = Dropship, `CO
 Streichpreise durchweg plausibel ~1.6×). Waisen-Scan über 12'000 Produkte: **0 Produkte ohne Kollektion**.
 Google-Merchant «Bild <500×500»: `automation/bild_klein_fix.py` tauscht ein grösseres Medium auf
 Position 0; ohne Ersatz → Tag `bild-zu-klein`.
+
+### Nachtrag 2026-08-09 — Rate-Limit-Falle + Dubletten-Ground-Truth
+**⚠️ BigBuy-Rate-Limit wurde als Datenfehler fehlinterpretiert:** `bb_revive_scan` und `bb_aktiv_marge`
+liefen gleichzeitig gegen die BigBuy-API. Das Limit ist **über alle Skripte geteilt** (CLAUDE.md §14) →
+die Antwort `You exceeded the rate limit` ist kein JSON und wurde als «kein Einkaufspreis» gewertet →
+134 Produkte landeten fälschlich auf `kein-ek-unpruefbar`. **Fix:** `bb()` erkennt jetzt `rate limit` im
+Rohtext und wiederholt mit Backoff (8/16/24/… s, 6 Versuche); die Falschbefunde wurden zurückgesetzt.
+**Regel: immer nur EIN BigBuy-Skript gleichzeitig laufen lassen** — der Supervisor führt `bb_revive_scan`
+darum nicht mehr mit, solange das Aktiv-Audit läuft.
+
+**Dubletten — Ground Truth über den kompletten Katalog (27'572 Produkte, lokaler Voll-Export):**
+- **Handle-Kollisionen (`-1`/`-2`-Suffix = stiller Doppelimport): 0.** Sauber.
+- **Exakt identische Titel: 100 Gruppen / 225 Produkte** — davon nur **1** auch mit gleichem Preis.
+  Die 99 übrigen sind echte, verschiedene Artikel mit generischem Titel (z. B. drei verschiedene
+  «Smartwatch mit Herzfrequenz» zu 22.90 / 40.90 / 47.90) → **kein Draften** (Lehre 2026-07-26).
+- Der eine echte Fall: «Kostüm Marsupilami» lag doppelt (Fortura CK4383 mit 116–190 cm und CK4763 mit
+  nur 180/190 cm). CK4763 ist vollständig in CK4383 enthalten → DRAFT + `duplikat-auto-draft`.
+- **Titel-Cluster-Heuristik ist eine Fehlalarm-Quelle:** «21× smartwatch mit bluetooth» entstand nur,
+  weil der Schlüssel alles nach `·`/`–` abschnitt — die Volltitel sind klar verschieden.
+  Ebenso «194 englische Titel»: fast alle sind eingedeutschte Lehnwörter (Wireless-Charger,
+  Cashmere-Look, Western-Style). Vor jedem Massen-Eingriff die Volltitel ansehen.
+- **Waisen-Scan: 0 Produkte ohne Kollektion** — jedes Produkt ist über die Navigation erreichbar.
+- **Menü-Voll-Check (112 Links):** 2 echte 404 (`/en/collections/erste-august`, `/en/collections/halloween`)
+  → korrigiert. Die übrigen 25 «Fehler» waren **429 aus dem eigenen Parallel-Curl**, keine Shop-Fehler —
+  Menülinks darum seriell oder mit Pause prüfen.

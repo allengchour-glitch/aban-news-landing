@@ -2,12 +2,18 @@ import json,subprocess,time,os,re
 KEY=open("/tmp/bigbuy_key.txt").read().strip()
 STOK=open("/tmp/cj_shop_token.txt").read().strip()
 def bb(path,body=None):
+    """Rate-Limit ist ueber alle BigBuy-Skripte geteilt (CLAUDE.md §14) -> Retry mit Backoff,
+    sonst wird 'You exceeded the rate limit' faelschlich als fehlender Einkaufspreis gewertet."""
     a=["curl","-s","--max-time","35","-H","Authorization: Bearer "+KEY]
     if body is not None: a+=["-X","POST","-H","Content-Type: application/json","-d",json.dumps(body)]
     a.append("https://api.bigbuy.eu"+path)
-    r=subprocess.run(a,capture_output=True,text=True)
-    try: return json.loads(r.stdout)
-    except Exception: return {"_raw":r.stdout[:150]}
+    for att in range(6):
+        out=subprocess.run(a,capture_output=True,text=True).stdout
+        if "rate limit" in out.lower():
+            time.sleep(8*(att+1)); continue
+        try: return json.loads(out)
+        except Exception: time.sleep(3)
+    return None
 def gql(q,v=None):
     p=json.dumps({"query":q,"variables":v or {}})
     for _ in range(3):

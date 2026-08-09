@@ -14,11 +14,19 @@ STOK=open("/tmp/cj_shop_token.txt").read().strip()
 DRY=os.environ.get("DRY")=="1"
 CHF=0.93
 def bb(path,body=None):
+    """BigBuys Rate-Limit ist ueber ALLE laufenden Skripte geteilt (CLAUDE.md §14).
+    Ohne diesen Retry kam 'You exceeded the rate limit' als JSON-Fehler zurueck und wurde
+    faelschlich als 'kein Einkaufspreis' gewertet -> Produkte galten als unpruefbar."""
     a=["curl","-s","--max-time","35","-H","Authorization: Bearer "+KEY]
     if body is not None: a+=["-X","POST","-H","Content-Type: application/json","-d",json.dumps(body)]
     a.append("https://api.bigbuy.eu"+path)
-    try: return json.loads(subprocess.run(a,capture_output=True,text=True).stdout)
-    except Exception: return None
+    for att in range(6):
+        out=subprocess.run(a,capture_output=True,text=True).stdout
+        if "rate limit" in out.lower():
+            time.sleep(8*(att+1)); continue
+        try: return json.loads(out)
+        except Exception: time.sleep(3)
+    return None
 def gql(q,v=None):
     p=json.dumps({"query":q,"variables":v or {}})
     for _ in range(4):
