@@ -3547,3 +3547,37 @@ Menüeintrag stehenlassen ist kein Fortschritt, sondern ein neuer Fehler.**
 neu-eingetroffen, damen-mode, premium-schmuck, parfum-duefte, trends-gadgets, bestseller,
 eu-lager-schnell, elektronik-technik, wohnen-dekoration, premium-geschenke — **alle gefüllt.**
 (`parfum-duefte` ist die Startseiten-Reihe, NICHT das entfernte `parfuem-damen`.)
+
+### 🔁 411 echte Dubletten — der User hat die Lücke gefunden (2026-08-09)
+**User-Fund:** In `werkzeug-maschinen` standen zwei Kartenpaare direkt nebeneinander:
+«Stossfestes Edelstahl-Manometer» / «Stossfestes Manometer aus Edelstahl» (beide CHF 131.90) und
+«Professioneller Golf-Entfernungsmesser» / «Profi Golf-Entfernungsmesser & Monokular»
+(beide CHF 69.90). Gleiches Bild, gleicher Preis — **und dieselbe SKU**
+(`CJ-2603190106241612100` bzw. `CJ-2604171036421631500`).
+
+**Warum alle bisherigen Detektoren daran vorbeigelaufen sind:**
+- **Titel-Dedup**: die Titel sind *umformuliert* (Wortstellung, Synonyme) → normalisiert nicht gleich
+- **Bild-Dedup**: CJ lädt dasselbe Bild pro Listing unter neuer CDN-URL hoch → URLs verschieden
+- Der frühere `dup_scan.py` sah zwar 489 SKU-Gruppen, wurde aber auf 169 «echte» gefiltert —
+  diese Fälle fielen dabei raus.
+
+Die **Lieferanten-SKU ist der einzige Anker, der Umformulierung UND Neu-Upload überlebt.**
+`automation/sku_dup_scan.py` gruppiert danach: **411 Dubletten** über den ganzen aktiven Katalog.
+
+**Zwei Regeln, die im Werkzeug stecken:**
+- **POD-Rohlinge ausnehmen** — T-Shirts, Tassen, Sticker und Poster teilen sich legitim eine
+  Blank-SKU über hunderte Designs. Ohne diese Ausnahme wäre der halbe Editor-Katalog gedraftet worden.
+- **Behalten wird die vollständigste Fassung (meiste Varianten)**, erst bei Gleichstand die älteste.
+  «Ältestes behalten» wäre falsch: bei `BB-S0800438` hätte es die Fassung mit 4 Grössen zugunsten
+  einer mit 1 gedraftet. Das ist die Lehre aus dem Kostüm-Fall — wer die vollständigere Fassung
+  draftet, nimmt dem Kunden Auswahl weg.
+
+### 🔧 Marken-Werkzeug: Fehlanzeige
+Auf Nachfrage geprüft — **kein Wera, Bosch, Stanley, Knipex, Bahco, Gedore, Hazet, Einhell,
+DeWalt oder Metabo** im aktiven Katalog. Was es gibt, sind nur **Zubehörteile**:
+ein Doppel-Ladegerät für Makita-18V-Akkus (CHF 53.90) und eines für Milwaukee M18 (CHF 41.90) —
+beides CJ-Nachbauten, keine Markenware. Die 5 «Fein»-Treffer sind Fehlalarme der Textsuche
+(Süsswasserperle **fein**, **Fein**silber, **Fein**cord).
+Grund: die 127 echten Marken-Werkzeuge lagen bei BigBuy und sind dort **ausverkauft** (ER003) oder
+margen-negativ. `werkzeug-maschinen` hat 1'158 Produkte — durchweg No-Name-Ware von CJ.
+Markenwerkzeug ist über die aktuellen Lieferanten nicht beschaffbar.
