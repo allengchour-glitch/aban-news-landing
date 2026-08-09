@@ -95,29 +95,96 @@ def offene_bestellungen():
       id name createdAt totalPriceSet{shopMoney{amount}}
       shippingAddress{name address1 address2 city zip provinceCode province countryCodeV2 phone}
       customer{ defaultAddress{phone} phone }
-      lineItems(first:20){nodes{ title quantity sku
+      lineItems(first:20){nodes{ title quantity sku variantTitle
         originalUnitPriceSet{shopMoney{amount}} }}
     }}}'''
     return ((gql(q).get("data") or {}).get("orders") or {}).get("nodes") or []
 
 
-def vid_fuer(sku):
-    """SKU 'CJ-<pid>' -> Varianten-ID. Ein pid kann mehrere Varianten haben; ohne
-    Variantenangabe in der Bestellung nehmen wir die einzige bzw. die erste."""
-    m = re.match(r'^CJ-([0-9]{10,})', (sku or "").upper())
+def norm(s):
+    s = (s or "").lower()
+    for a, b in (("ä","ae"),("ö","oe"),("ü","ue"),("ß","ss")):
+        s = s.replace(a, b)
+    return re.sub(r'[^a-z0-9]', '', s)
+
+
+# Farbnamen DE->EN, damit die Shopify-Variante gegen CJs englische variantKey matchbar ist
+FARBE_EN = {"schwarz":"black","weiss":"white","rot":"red","blau":"blue","gruen":"green",
+            "gelb":"yellow","rosa":"pink","pink":"pink","lila":"purple","violett":"purple",
+            "grau":"gray","braun":"brown","orange":"orange","beige":"beige","gold":"gold",
+            "silber":"silver","marineblau":"navy","tuerkis":"turquoise","weinrot":"wine"}
+
+
+def vid_fuer(sku, variant_title):
+    """Shopify-SKU + gewaehlte Variante -> passende CJ-Varianten-ID.
+
+    ⚠️ Frueher wurde blind vs[0] genommen. Bei den 133 CJ-Produkten mit Farb-/Groessenvarianten
+    haette der Kunde damit IMMER die erste Variante bekommen — falsche Farbe, falsche Groesse.
+
+    Es gibt ZWEI SKU-Formen im Katalog:
+      a) 'CJ-<pid>'          (numerisch) -> Produkt-ID, Variante muss ueber den Titel gesucht werden
+      b) '<CJ-variantSku>'   z.B. CJLY291603001AZ -> identifiziert die Variante EXAKT
+    Form (b) ist der Normalfall bei Variantenprodukten und wird direkt aufgeloest — kein Raten.
+    Nur bei (a) mit mehreren Varianten wird ueber den Variantentitel gematcht; ist die Zuordnung
+    nicht eindeutig, wird NICHT bestellt, sondern gemeldet. Lieber ein Mensch schaut drauf,
+    als dass das falsche Paket beim Kunden landet."""
+    s = (sku or "").strip()
+    m = re.match(r'^CJ-([0-9]{10,})$', s.upper())
+
     if not m:
-        return None, "sku-ohne-cj-pid"
+        # Form (b): CJ-eigene variantSku -> exakte Variante
+        vsku = re.sub(r'^CJ-', '', s, flags=re.I)
+        if not re.fullmatch(r'[A-Za-z0-9._-]{6,40}', vsku):
+            return None, f"SKU «{s}» passt zu keinem CJ-Schema"
+        d = cj(f"/api2.0/v1/product/query?variantSku={vsku}")
+        data = d.get("data")
+        vs = (data or {}).get("variants") or [] if isinstance(data, dict) else []
+        if not vs:
+            return None, f"variantSku «{vsku}» bei CJ nicht gefunden"
+        exakt = [v for v in vs if (v.get("variantSku") or "").upper() == vsku.upper()]
+        if len(exakt) == 1:
+            return exakt[0], None
+        return None, f"variantSku «{vsku}» nicht eindeutig ({len(exakt)} Treffer)"
+
+    # Form (a): numerische pid
     d = cj(f"/api2.0/v1/product/variant/query?pid={m.group(1)}")
     vs = d.get("data") or []
     if not vs:
         return None, "keine-variante-bei-cj"
-    return vs[0], None
+    if len(vs) == 1:
+        return vs[0], None
+
+    vt = (variant_title or "").strip()
+    if not vt or vt.lower() in ("default title", "standard", "einheitsgrösse", "einheitsgroesse"):
+        return None, f"{len(vs)} CJ-Varianten, aber Bestellung ohne Variantenangabe — manuell prüfen"
+
+    # Kundenwahl "Schwarz / M" -> jeder Teil muss im CJ-variantKey vorkommen,
+    # deutsche Farbe ersatzweise auch in ihrer englischen Entsprechung.
+    teile = [t for t in re.split(r'\s*/\s*', vt) if t.strip()]
+
+    def teil_passt(teil, key):
+        n = norm(teil)
+        if n and n in key:
+            return True
+        en = FARBE_EN.get(n)
+        return bool(en and norm(en) in key)
+
+    treffer = [v for v in vs
+               if all(teil_passt(t, norm(v.get("variantKey"))) for t in teile)]
+    if len(treffer) == 1:
+        return treffer[0], None
+    keys = ", ".join(str(v.get("variantKey")) for v in vs[:6])
+    return None, (f"Variante «{vt}» nicht eindeutig zuzuordnen "
+                  f"({len(treffer)} Treffer unter {len(vs)}: {keys}) — manuell bestellen")
 
 
-def fracht(vid, menge):
+def fracht(produkte):
+    """Fracht fuer ALLE Artikel der Bestellung zusammen.
+    ⚠️ Frueher wurde nur der erste Artikel uebergeben — bei Mehrpositions-Bestellungen war die
+    Fracht dadurch zu niedrig angesetzt, die Marge zu optimistisch, und CJ verlangte spaeter den
+    echten (hoeheren) Betrag."""
     d = cj("/api2.0/v1/logistic/freightCalculate",
-           {"startCountryCode": "CN", "endCountryCode": "CH",
-            "products": [{"vid": vid, "quantity": menge}]})
+           {"startCountryCode": "CN", "endCountryCode": "CH", "products": produkte})
     return [o for o in (d.get("data") or []) if o.get("logisticPrice") is not None]
 
 
@@ -171,7 +238,33 @@ def cj_bestellnummern():
     return nums
 
 
+def token_pruefen():
+    """Ein abgelaufener CJ-Token laesst die Automatik STILL sterben: alle Aufrufe scheitern,
+    aber es sieht aus wie 'nichts zu tun'. Darum bei jedem Lauf laut melden, wie lange er noch
+    gilt — und rechtzeitig daran erinnern, dass nur der User ihn erneuern kann
+    (/tmp/cj_email + /tmp/cj_apikey gingen beim Container-Wipe verloren)."""
+    d = cj("/api2.0/v1/setting/get")
+    if d.get("code") != 200:
+        print(f"🔴 CJ-Token wird nicht akzeptiert ({d.get('message')}) — "
+              f"E-Mail + API-Key vom User nötig, sonst läuft nichts.", flush=True)
+        return False
+    try:
+        exp = json.load(open("/tmp/cj_token.json")).get("exp")
+        if exp:
+            rest = (exp / 1000 - time.time()) / 86400
+            if rest < 3:
+                print(f"🔴 CJ-Token läuft in {rest:.1f} Tagen ab — /tmp/cj_email + /tmp/cj_apikey "
+                      f"fehlen, ohne sie stoppt die Bestell-Automatik.", flush=True)
+            elif rest < 7:
+                print(f"⚠️ CJ-Token noch {rest:.1f} Tage gültig.", flush=True)
+    except Exception:
+        pass
+    return True
+
+
 def main():
+    if not token_pruefen():
+        return
     done = {}
     if os.path.exists(LEDGER):
         for l in open(LEDGER):
@@ -200,14 +293,22 @@ def main():
             print(f"  {o['name']}: ⚠️ keine brauchbare Telefonnummer — CJ lehnt das ab, User fragen", flush=True)
             continue
 
-        items = [li for li in o["lineItems"]["nodes"] if (li.get("sku") or "").upper().startswith("CJ-")]
+        alle = o["lineItems"]["nodes"]
+        items = [li for li in alle if (li.get("sku") or "").upper().startswith("CJ-")]
         if not items:
             print(f"  {o['name']}: keine CJ-Artikel (anderer Lieferant)", flush=True)
+            continue
+        if len(items) != len(alle):
+            # Gemischte Bestellung: der Nicht-CJ-Teil muss separat beim anderen Lieferanten
+            # bestellt werden. Automatisch nur den CJ-Teil anzulegen wuerde spaeter beim
+            # Fulfillment eine "versendet"-Mail fuer Ware ausloesen, die nie bestellt wurde.
+            fremd = [li.get("sku") for li in alle if li not in items]
+            print(f"  {o['name']}: ⚠️ gemischte Bestellung (auch {fremd}) — manuell aufteilen", flush=True)
             continue
 
         produkte, ware_usd, fehler = [], 0.0, None
         for li in items:
-            v, err = vid_fuer(li["sku"])
+            v, err = vid_fuer(li["sku"], li.get("variantTitle"))
             if err:
                 fehler = f"{li['sku']}: {err}"; break
             produkte.append({"vid": v["vid"], "quantity": li["quantity"]})
@@ -217,7 +318,7 @@ def main():
             print(f"  {o['name']}: ⚠️ {fehler}", flush=True)
             continue
 
-        opts = fracht(produkte[0]["vid"], produkte[0]["quantity"])
+        opts = fracht(produkte)
         if not opts:
             print(f"  {o['name']}: ⚠️ keine Versandoption in die CH", flush=True)
             continue

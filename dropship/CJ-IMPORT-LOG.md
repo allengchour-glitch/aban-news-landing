@@ -3360,3 +3360,34 @@ Läuft unter `fixer_keepalive.sh` mit, überlebt also das Turn-Reaping.
 **beide Dateien sind beim Container-Wipe verloren gegangen.** Der aktuelle Token in `/tmp/_cjtok`
 läuft am **2026-08-18** ab; danach steht die Bestell-Automatik still, bis der User E-Mail +
 API-Key neu hinterlegt. Rechtzeitig einfordern.
+
+### 🐛 Selbst-Audit der Bestell-Automatik (2026-08-09) — 4 Fehler gefunden und behoben
+Die Engine lief korrekt für #1012, hätte aber bei anderen Bestellungen Schaden angerichtet:
+
+1. **Falsche Variante an den Kunden (schwer).** `vid_fuer()` nahm blind `vs[0]`. **133 CJ-Produkte
+   haben Varianten** (Kleider, Röcke, Poloshirts) — jede solche Bestellung hätte die *erste*
+   Variante geliefert statt der bestellten Farbe/Grösse.
+   **Ursache des Denkfehlers:** ich hatte die SKU-Form von #1012 (`CJ-2603190158441627400`,
+   numerische pid) für die einzige gehalten. Variantenprodukte tragen aber **CJs eigene
+   `variantSku`** (`CJLY291603001AZ`) → `GET /product/query?variantSku=<sku>` löst die Variante
+   **exakt** auf, ganz ohne Raten. Verifiziert: 9/9 korrekt (`Dunkelblau / S` → `Dark Blue-S`,
+   `Braun / XL` → `Brown-XL`), numerische Form funktioniert weiter.
+   Bleibt eine pid-SKU mit mehreren Varianten übrig, wird über den Variantentitel gematcht
+   (deutsche Farben werden auf Englisch gemappt) — **und bei Uneindeutigkeit NICHT bestellt,
+   sondern gemeldet.** Nie raten, wenn ein falsches Paket die Folge wäre.
+
+2. **Fracht nur für den ersten Artikel.** `fracht(produkte[0]…)` — bei Mehrpositions-Bestellungen
+   war die Fracht zu niedrig, die Marge zu optimistisch, und CJ verlangte später den echten Betrag.
+   Jetzt geht die komplette Produktliste in `freightCalculate`.
+
+3. **Gemischte Bestellungen.** Enthält eine Bestellung CJ- **und** Fortura-/BigBuy-Artikel, wurde
+   nur der CJ-Teil bestellt — das spätere Fulfillment hätte aber die GANZE Bestellung als
+   «versendet» gemeldet, inklusive nie bestellter Ware. Solche Bestellungen werden jetzt
+   abgelehnt und zur manuellen Aufteilung gemeldet.
+
+4. **Stiller Tod bei Token-Ablauf.** Ein abgelaufener Token lässt jeden Aufruf scheitern, das Log
+   sagt aber nur «nichts zu tun». `token_pruefen()` meldet jetzt bei jedem Lauf Restlaufzeit und
+   bricht bei ungültigem Token laut ab.
+
+**Regel: nach jedem Automatik-Bau die eigenen Annahmen gegen echte Katalogdaten prüfen.**
+Die SKU-Form von einer einzigen Bestellung auf 23'000 Produkte zu verallgemeinern war der Fehler.
