@@ -3330,3 +3330,33 @@ nur gegen den eigenen Ledger** — hier kostet der Fehler echtes Geld.
 **Bleibt manuell:** das Bezahlen. `payBalance` lehnt sowohl `orderId` als auch `cjOrderCode` mit
 «Order not found» ab, `confirmOrder` akzeptiert weder GET noch POST. Angelegte Bestellungen
 landen auf `orderStatus: IN_CART` und werden in der CJ-Oberfläche bezahlt (so lief auch LX1011B).
+
+### ✅ #1012 bezahlt — Ablauf, der funktioniert (2026-08-09)
+Bezahlt am **2026-08-09 13:23:35** über die CJ-Oberfläche, **$39.82** (Ware 11.50 + YunExpress 28.32).
+Der rot markierte Hinweis **«Übergrösse»** in der Bestellliste hat den Betrag **nicht** verändert —
+kein Sperrgut-Zuschlag. Tracking wird schon bei der Zahlung vergeben: `YT2622100705040170`
+(`trackingProvider: Yun_Standard_Electric`), Status springt aber erst auf `UNSHIPPED`.
+
+**CJ-Statuskette:** `IN_CART` (angelegt, unbezahlt) → `UNSHIPPED` (bezahlt, Tracking vergeben,
+Paket aber noch nicht übergeben) → `SHIPPED` → `DELIVERED`.
+**Erst bei `SHIPPED` nach Shopify fulfillen** — bei `UNSHIPPED` zeigt die Sendungsverfolgung
+tagelang «keine Informationen», und der Kunde hätte wieder einen toten Link (#1011-Lehre).
+
+**Wichtig — Kreditkarte geht nur auf `app.cjdropshipping.com`,** nicht auf `cjdropshipping.com`.
+Auf der Hauptdomain erscheint bei manchen Konten nur Payoneer. Weitere Wege: Zahlungslink für
+Karte auf Anfrage; Banküberweisung bringt bis 2 % Bonus, dauert aber 3–4 Tage.
+
+**⚠️ Adress-Dialog-Falle:** Im «Adresse aktualisieren»-Fenster klappt die **Lager**-Auswahl
+(China-Lager, US-Lager, Deutschland-Lager …) optisch über dem Feld **Land** auf. Wer dort
+zugreift, setzt versehentlich «China-Lager» als Lieferland. Land muss **Schweiz** bleiben,
+das Lager steht in einem eigenen Feld weiter unten.
+
+### 🔁 `automation/cj_fulfill_runner.sh` — Dauerlauf (alles ausser Bezahlen)
+Alle 20 Min: `cj_order_engine.py` (neue bezahlte Shopify-Bestellungen bei CJ anlegen) →
+`cj_fulfill_engine.py` (bezahlen sobald Guthaben da ist, Tracking nach Shopify) → Ledger committen.
+Läuft unter `fixer_keepalive.sh` mit, überlebt also das Turn-Reaping.
+
+**⚠️ Token-Lücke:** Der Runner frischt den CJ-Token aus `/tmp/cj_email` + `/tmp/cj_apikey` auf —
+**beide Dateien sind beim Container-Wipe verloren gegangen.** Der aktuelle Token in `/tmp/_cjtok`
+läuft am **2026-08-18** ab; danach steht die Bestell-Automatik still, bis der User E-Mail +
+API-Key neu hinterlegt. Rechtzeitig einfordern.
