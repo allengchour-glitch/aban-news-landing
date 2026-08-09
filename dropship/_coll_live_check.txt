@@ -444,3 +444,12 @@ katzenwelt	http-429	0	Katzenwelt
 puzzles	http-429	0	Puzzles
 lautsprecher	ok	28	Lautsprecher & Boxen
 kaffee-ecke	ok	26	Kaffee-Ecke
+wein-bar	ok	18	Wein & Bar
+haarstyling-geraete	ok	28	Haarstyling-Geräte
+nagelstudio	http-429	0	Nails & Nagelstudio
+schwimmen-badi	ok	28	Schwimmen & Badi
+fussball-fanshop	ok	28	Fussball & Fanshop
+bohren-saegen	ok	10	Bohren & Sägen
+schleifen-trennen	ok	6	Schleifen & Trennen
+tastatur-maus	ok	28	Tastaturen & Mäuse
+netzwerk-router	ok	28	Netzwerk & WLAN
