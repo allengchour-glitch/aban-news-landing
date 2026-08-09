@@ -459,3 +459,47 @@ fortura-halloween	unveroeffentlicht	0	Halloween
 party-deko-ch	ok	28	Party & Deko
 fortura-weihnachten	ok	10	Weihnachten
 blitzversand-schweiz	ok	28	Blitzversand · 1–2 Tage aus der Schweiz
+ft-damenkostuem	ok	28	Damenkostüme
+ft-herrenkostuem	ok	28	Herrenkostüme
+ft-unisexkostuem	ok	28	Unisex- & Tierkostüme
+ft-kinderkostuem	ok	28	Kinderkostüme
+ft-trachten	ok	28	Trachten & Edelweiss
+ft-peruecke	ok	28	Perücken
+ft-kostuem-hut	ok	28	Hüte & Kopfbedeckung
+ft-maske	ok	28	Masken
+ft-kostuem-accessoire	ok	28	Kostüm-Accessoires
+ft-fanartikel	http-429	0	Fanartikel & Länder
+ft-pluesch	ok	28	Plüschtiere
+ft-bruder	ok	28	BRUDER Fahrzeuge
+ft-wohndeko-ft	ok	13	Wohndeko
+ft-ballone	ok	28	Ballone & Deko
+haustier-napf-futter	ok	28	Näpfe & Futter-Zubehör
+licht-led-strip	http-429	0	LED-Strips & Lichterketten
+licht-tischlampe	ok	28	Tisch- & Schreibtischlampen
+licht-decken-steh	ok	21	Steh- & Deckenlampen
+licht-nachtlicht-projektor	ok	28	Nachtlicht & Projektoren
+licht-solar-aussen	ok	28	Solar- & Aussenleuchten
+uhren-herren	unveroeffentlicht	0	Herrenuhren
+uhren-damen	ok	28	Damenuhren
+schuhe-absatz	ok	28	High Heels & Pumps
+beauty-hautpflege	ok	28	Hautpflege
+beauty-haar	http-429	0	Haarpflege & Styling
+beauty-naegel	ok	28	Nageldesign
+beauty-duefte	http-429	0	Parfum & Düfte
+wohnen-kueche	ok	28	Küche
+wohnen-bad	ok	28	Badezimmer
+wohnen-aufbewahrung	ok	28	Aufbewahrung & Ordnung
+elektronik-audio	http-429	0	Kopfhörer & Lautsprecher
+elektronik-laden	ok	28	Ladegeräte & Powerbanks
+elektronik-handy	unveroeffentlicht	0	Handy-Zubehör
+damen-jacken	unveroeffentlicht	0	Damen Jacken & Mäntel
+halloween	ok	28	Halloween
+black-friday	unveroeffentlicht	0	Black Friday
+haustier-hunde	ok	28	Hunde
+haustier-katzen	http-429	0	Katzen
+tier-leinen-kleidung	ok	28	Leinen, Geschirre & Tierkleidung
+tierspielzeug	ok	28	Tierspielzeug
+tier-naepfe-fuettern	ok	28	Näpfe & Füttern
+tier-pflege-unterwegs	ok	28	Pflege & Unterwegs
+blitzversand-highlights	ok	28	⚡ Blitzversand-Highlights
+werkzeug-maschinen	http-429	0	🔧 Werkzeug & Maschinen
