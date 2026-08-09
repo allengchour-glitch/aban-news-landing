@@ -817,7 +817,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
            Farbe steht. Fels muss hier bei 0,12…0,23 liegen, damit ueberhaupt ein
            Unterschied zum Schnee sichtbar wird. Gemessen wurde das nicht an der
            Zahl, sondern am Bild: dreimal derselbe weisse Berg. */
-        var fels=0.12+rnd(seed,5)*0.07+rnd(v2,seed+11)*0.04;
+        var fels=0.16+rnd(seed,5)*0.08+rnd(v2,seed+11)*0.04;
         fels*=0.85+0.25*Math.max(0,son);           // Exposition
         var c0,c1,c2;
         var schneeAn=(wy-SCHNEE)/20;               // Hoehe, weicher Uebergang
@@ -826,7 +826,13 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
            dort ny ~ 0,45 — die Schwelle schnitt also genau die Gipfelregion weg,
            auf der der Schnee liegen soll. 0,28 laesst Grate und Kuppen weiss und
            haelt ihn weiterhin von den senkrechten Waenden fern. */
-        var haelt=(ny-0.28)/0.26;
+        /* ⚠️ Dritte Anpassung derselben Schwelle, und jedes Mal aus demselben
+           Grund: sie haengt am PROFIL. Mit Exponent 1,58 und schmalem Fuss sind
+           die oberen Flanken rund 70 Grad steil, ny liegt dort nur noch bei
+           0,33…0,36 — mit der alten Schwelle 0,28/0,26 kamen davon nur 23 %
+           Schnee an, und die Kette blieb praktisch schneefrei. Merke: wer das
+           Bergprofil aendert, muss die Schneeprobe mit aendern. */
+        var haelt=(ny-0.20)/0.20;
         var m=Math.min(1,Math.max(0,Math.min(schneeAn,haelt)));
         if(wy<WIESE){
           var m2=Math.min(1,(WIESE-wy)/10);
