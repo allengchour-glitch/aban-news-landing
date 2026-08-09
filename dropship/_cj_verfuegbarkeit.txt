@@ -445,3 +445,5 @@ gid://shopify/Product/15491419439489	ok
 gid://shopify/Product/15491419308417	ok
 gid://shopify/Product/15491419144577	ok
 gid://shopify/Product/15491419013505	ok
+gid://shopify/Product/15491418882433	ok
+gid://shopify/Product/15491418751361	ok
