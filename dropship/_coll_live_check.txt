@@ -120,3 +120,20 @@ sub-bart-rasur	ok	28	Bart & Rasur
 sub-yoga-fitness	ok	28	Yoga & Fitness
 sub-trinkflaschen	ok	28	Trinkflaschen & Thermo
 sub-baby-kids	ok	28	Kinder & Baby
+sub-haustier	ok	28	Haustierwelt
+sub-reise	ok	28	Reise & Outdoor
+sub-kueche	ok	28	Küche & Kochen
+handy-zubehoer	ok	28	Handy-Zubehör
+sub-ringe	ok	24	Ringe
+trends-gadgets	ok	28	Trends & Gadgets
+hype-2026	ok	28	Hype 2026 — Trends & Bestseller
+partner-paare	ok	19	Partner & Paare
+herren-shirts	ok	28	Herren-Shirts & Tops
+herren-hemden	ok	28	Herren-Hemden
+herren-hosen	ok	28	Herren-Hosen
+herren-sets-sub	ok	22	Herren-Sets
+damen-blusen	ok	28	Damen-Blusen & Tops
+damen-hosen	ok	28	Damen-Hosen
+damen-sets	ok	28	Damen-Sets & 2-Teiler
+schmuck-sets	ok	28	Schmuck-Sets
+sg-bekleidung	ok	18	Bekleidung selbst gestalten
