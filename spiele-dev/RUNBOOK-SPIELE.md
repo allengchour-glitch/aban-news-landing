@@ -1,5 +1,11 @@
 # 🎮 RUNBOOK Spiele-Entwicklung (Skill-Bibliothek, Hermes-Prinzip)
 
+> 🏙️ **Für `traumhaus.html` zuerst `spiele-dev/RUNBOOK-TRAUMHAUS.md` lesen** — Karte der
+> Datei, die drei Regeln (bau() skaliert nur über die Höhe · wegVonStrasse prüft nur den
+> Ankerpunkt · _einfrieren friert Matrizen ein) und die fertigen Werkzeuge unter
+> `spiele-dev/tools/` (th-pruef, th-mass, th-blick) statt jedes Mal neue Sonden.
+
+
 > Für jede Session, die an den Browser-Spielen arbeitet (`neon-*.html`, `lebenspfad.html`,
 > `wort-*.html`). Wiederkehrende Aufgaben sind hier als fertige „Skills" dokumentiert —
 > nicht neu erfinden, einfach ausführen. Stand: 2026-07-09.

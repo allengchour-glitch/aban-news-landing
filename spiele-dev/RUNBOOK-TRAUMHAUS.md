@@ -1,0 +1,93 @@
+# 🏙️ RUNBOOK TRAUMHAUS — Karte der Datei und alle teuer gelernten Regeln
+
+> Für jede Session, die `traumhaus.html` anfasst. **Zuerst lesen.** Die Datei ist
+> ~600 kB in einer einzigen IIFE; ohne diese Karte sucht man lange und tritt in
+> Fallen, die hier schon einmal Stunden gekostet haben.
+
+## 🔧 Werkzeuge — nicht jedes Mal neu bauen
+
+```bash
+# Gesamtprüfung: Straßenkorridore, Überschneidungen, 404, JS-Fehler, Zeichenaufrufe
+/opt/node22/bin/node spiele-dev/tools/th-pruef.mjs
+/opt/node22/bin/node spiele-dev/tools/th-pruef.mjs --wartezeit 60000
+
+# Grundfläche eines Modells bei Zielhöhe (Pflicht vor jedem viertel()-cfg!)
+/opt/node22/bin/node spiele-dev/tools/th-mass.mjs th23_bank:9 th20_parkgarage:11
+
+# Screenshot aus dem laufenden Spiel
+/opt/node22/bin/node spiele-dev/tools/th-blick.mjs 78 58 45 0.9 /tmp/kreuzung.png
+```
+
+Eigene Sonde nötig? `spiele-dev/tools/th-lib.mjs` → `mitSonden(datei, {name: "function(){…}"}, ziel)`
+hängt sie in `window.__th` ein; der Code läuft im IIFE-Scope und sieht `scene`,
+`renderer`, `WORLD_SOLIDS`, `wegVonStrasse`, `korridorKonflikt`, `window._gebaeude`.
+
+## 📐 Die drei Regeln, an denen fast alles gescheitert ist
+
+**1. `bau()` skaliert NUR über die Höhe.** Breite und Tiefe folgen aus dem Modell.
+Wer sie im `viertel()`-cfg schätzt, setzt die Reihe zu eng. Gemessen: `th20_parkgarage`
+bei 11 m ist **54,7 × 37 m**, im cfg stand 20 × 15 — zwei Bauten überlappten um 10,7 m.
+→ **Immer `th-mass.mjs` laufen lassen und die echten Werte eintragen.**
+
+**2. `wegVonStrasse()` und `freiPlatz()` prüfen nur den ANKERPUNKT.** Ein 30 m breites
+Haus, dessen Mitte 12 m neben der Fahrbahn steht, ragt trotzdem 6 m hinein und gilt als
+frei. Für Flächen gilt `korridorKonflikt(box)` gegen `window._KORRIDORE`.
+→ Nach jedem Platzieren `th-pruef.mjs`; Sollwert **0 im Korridor**.
+
+**3. `_einfrieren()` setzt nach 9 s `matrixAutoUpdate=false`.** Jede spätere
+Positionsänderung ändert nur eine Zahl — das Modell bleibt sichtbar stehen. Deshalb war
+`entzerren()` (14 s) jahrelang wirkungslos.
+→ Nach jeder späten Verschiebung `window._nachRuecken(objekt)` aufrufen.
+
+## 🗺️ Wo steht was
+
+| Bereich | Anker zum Grepen |
+|---|---|
+| Weltmaße, Baufenster | `var GW=72,GH=46,CS=2` · `var BAUW=` · `inBau(` |
+| Straßenkorridore | `var KORRIDORE=` · `korridorKonflikt(` |
+| Straßenraster, Ring | `function strasseMesh(` · `(function ring(){` |
+| Gehwege, Bordstein | `function tr(` · `var bordM=` · `(function randUndPlanke(){` |
+| Markierungen, Details | `(function strassenDetails(){` · `function zebra(` · `_dashFrei(` |
+| Freiflächen-Solver | `function freiPlatz(` · `function streu(` |
+| Viertel-Generator | `function viertel(` · `viertel({name:"` |
+| Aufräumstufen | `function entzerren(` · `function freiRaeumen(` · `function entwirren(` |
+| Modelle laden | `function bau(` · `var GL=` · `window._gebaeude` |
+| Kollision | `function addSolid(` · `addSolidRot(` · `inSolid(` · `SOLID_GRID` |
+| Fahrgeschäfte, Seilbahn | `var FAHRT_ART=` · `window._seilbahn` |
+| Eisenbahn | `window._zug` · `function updZug(` · `baueSchranken(` |
+| Koop | `js/mp.js` · `onNetMsg(` · `LOBBY` · `lobbyNamenUpd(` |
+| Testzugang | `window.__th={` · `window.__CAM=` |
+
+## ⚠️ Fallen, die schon zugeschlagen haben
+
+* **Modellnamen ohne `.glb`** → stiller 404, das Objekt fehlt einfach. Immer mit Endung.
+* **Zu früh gemessen.** Die letzten GLB-Dateien kommen nach ~45 s. Bei 557 statt 640
+  geladenen Modellen zeigte die Prüfung 16 Straßenkonflikte, bei voller Szene 0.
+* **Kamera in der Wand.** `__CAM` mit kleinem Radius und flacher Neigung landet in
+  Gebäuden; man fotografiert eine Wand. Im Zweifel Radius ≥ 40, Neigung ≥ 0,8.
+* **Untexturierte Fläche rendert HELLER als die texturierte Fahrbahn.** „Asphaltflicken"
+  in dunklerem Grau sahen aus wie Render-Fehler. Wer Flicken will, muss die
+  Straßentextur mitgeben.
+* **`entzerren()` kennt nur Reihen, keine Fahrbahnen.** Ein zweiter später Lauf schob
+  18 Objekte zurück auf die Straßen. Nach jeder Entzerrung muss `freiRaeumen()` laufen.
+* **Zwei Kanten an derselben Stelle streiten sich.** Es gab schon Bordsteine; ein
+  zweiter Satz an gleicher Position flimmert. Erst grepen, dann bauen.
+* **Maße veralten still.** Der Bordstein saß auf Halbbreite 5,05 aus der Zeit, als die
+  Hauptstraße 10 m breit war — nach der Verbreiterung auf 16 m lief er 3 m *innerhalb*
+  der Fahrbahn. Wer eine Straße verbreitert, muss alles Abhängige mitziehen.
+* **Die Platzsuche kennt kein Wasser.** Ein Haus landete mitten im Seepark-See.
+  Wasserflächen selbst ausschließen (Seemitte 0/146 r≈27, Fluss-Band z −94…−87, Meer x<−112).
+* **Kollisionsfrei ≠ frei.** Eine Standortsuche nur gegen Boxen stellte die Kathedrale
+  zwischen die Downtown-Türme. Wer „ringsherum frei" will, braucht einen Freiraum-Radius —
+  und muss dabei `scene.children` prüfen, nicht nur `window._gebaeude` (die Türme sind
+  prozedural und stehen dort nicht drin).
+
+## 🎯 Sollwerte einer sauberen Szene
+
+| Messwert | Soll |
+|---|---|
+| Objekte im Straßenkorridor | 0 |
+| Größte Überschneidung | ≈ 6,3 m (Bergstation ↔ oberste Seilbahnstütze, gewollt) |
+| Fehlende Modelle (404) | 0 |
+| JS-Fehler | 0 |
+| Zeichenaufrufe | < 2000 |
