@@ -2908,21 +2908,30 @@ setTimeout(function baueVerkehr(){
     gr.addColorStop(1.00,"#ffffff");      // Horizont: volle Himmelsfarbe
     cx2.fillStyle=gr;cx2.fillRect(0,0,2,64);
     var gt=new THREE.CanvasTexture(cv);gt.needsUpdate=true;
-    var dom=new THREE.Mesh(new THREE.SphereGeometry(880,24,16),
-      new THREE.MeshBasicMaterial({map:gt,side:THREE.BackSide,fog:false,depthWrite:false}));
+    /* ⚠️ RADIUS 880 WAR ZU GROSS. Die Spielkamera hat far = 600 — die Kuppel lag
+       damit komplett hinter der fernen Ebene und wurde weggeschnitten. Im Spiel
+       waere gar nichts zu sehen gewesen; in meinem Pruefbild schon, weil dessen
+       Kamera far = 1600 hat. Ein Werkzeug, das grosszuegiger ist als das Ziel,
+       verdeckt genau solche Fehler. 520 liegt sicher innerhalb.
+       ⚠️ Und die Startfarbe steht hier, nicht erst in der Tag/Nacht-Schleife:
+       sonst ist der Himmel in den ersten Bildern (und im Menue, wo die Schleife
+       noch nicht laeuft) grau statt blau. */
+    var dom=new THREE.Mesh(new THREE.SphereGeometry(520,24,16),
+      new THREE.MeshBasicMaterial({map:gt,color:0xb4dcf2,side:THREE.BackSide,
+                                   fog:false,depthWrite:false}));
     dom.renderOrder=-10;dom.frustumCulled=false;dom.userData.nieAusblenden=1;scene.add(dom);
     window._skyDome=dom;
 
     var grp=new THREE.Group();grp.userData.nieAusblenden=1;scene.add(grp);
     var puffG=new THREE.SphereGeometry(1,7,5);
-    var puffM=new THREE.MeshBasicMaterial({color:0xffffff,fog:false,
-                                           transparent:true,opacity:0.92,depthWrite:false});
+    var puffM=new THREE.MeshBasicMaterial({color:0xf4fbff,fog:false,
+                                           transparent:true,opacity:0.9,depthWrite:false});
     var NB=15,NP=6,inst=new THREE.InstancedMesh(puffG,puffM,NB*NP);
     inst.frustumCulled=false;inst.renderOrder=-9;inst.userData.nieAusblenden=1;
     var M5=new THREE.Matrix4(),Q5=new THREE.Quaternion(),P5=new THREE.Vector3(),S5=new THREE.Vector3();
     function r5(i,k){var x=Math.sin(i*12.9898+k*78.233)*43758.5453;return x-Math.floor(x);}
     for(var b=0;b<NB;b++){
-      var ba=b/NB*6.283+r5(b,1)*0.4, br2=210+r5(b,2)*300, bh=95+r5(b,3)*70;
+      var ba=b/NB*6.283+r5(b,1)*0.4, br2=180+r5(b,2)*240, bh=95+r5(b,3)*70;
       var bx=Math.cos(ba)*br2, bz=Math.sin(ba)*br2, gr2=16+r5(b,4)*16;
       for(var q=0;q<NP;q++){
         var qa=q/NP*6.283+r5(b*7+q,5)*0.8, qd=gr2*(0.25+r5(b*7+q,6)*0.75);
