@@ -1,6 +1,15 @@
 #!/bin/bash
 # Hält alle Katalog-Reiniger am Leben (Turn-Reaping killt sie sonst). Alle Scripts sind resumable
-# (eigene Cursor-Dateien) → Neustart setzt fort, kein Doppelarbeit.
+# (eigene Cursor-Dateien) → Neustart setzt fort, keine Doppelarbeit.
+#
+# ⚠️ EINZEL-SPERRE (2026-08-09 teuer gelernt): Ohne sie liefen nach mehreren Neustarts DREI
+# Supervisoren gleichzeitig. Jeder prüfte "läuft der Runner schon?" und startete bei Nein einen —
+# im selben Zeitfenster taten das alle drei. Ergebnis nach 28 Minuten: 13 Kopien JE Runner,
+# also 52 Prozesse, die gemeinsam auf CJ und Shopify eindroschen. Der pgrep-Test allein genügt
+# nicht, weil zwischen Prüfung und Start ein Rennen entsteht (dieselbe TOCTOU-Falle wie beim
+# Social-Doppelpost). flock stellt sicher, dass es diesen Prozess nur EINMAL gibt.
+exec 9>/tmp/fixer_keepalive.lock
+flock -n 9 || { echo "$(date -u +%H:%M) Supervisor läuft bereits — dieser Start endet."; exit 0; }
 while true; do
   for p in default_variant_fix textbild_fix gfeed_apply bild_klein_fix cj_verfuegbarkeit coll_live_check sku_dup_scan promo_aus_beschreibung; do
     [ -f /tmp/$p.py ] || continue

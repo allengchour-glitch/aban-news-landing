@@ -3818,3 +3818,22 @@ Gegenmitteln zu den dokumentierten Fallen:
 Gruppen sind auf die vier Runner aufgeteilt (Werkzeug/Schmuck/Home · Elektronik/Gaming ·
 Schuhe/Taschen/Mode · Auto/Beauty/Haustier); Überschneidungen fängt der Ledger ab.
 Alle vier laufen jetzt im `fixer_keepalive`-Supervisor mit.
+
+### ⚠️ 52 Runner-Kopien durch drei parallele Supervisoren (eigener Fehler, 2026-08-09)
+Beim Keepalive fiel eine Prozesszahl von **53** statt 4 auf. Ursache: Ich hatte
+`fixer_keepalive.sh` im Lauf des Tages mehrfach neu gestartet und mich darauf verlassen, dass
+`pkill` den alten beendet — tatsächlich liefen am Ende **drei Supervisoren gleichzeitig**.
+
+Der Schutz im Supervisor war ein `pgrep`-Test («läuft der Runner schon?»). Der genügt nicht:
+Zwischen Prüfung und Start liegt ein Zeitfenster, und drei Supervisoren treffen es gemeinsam.
+Nach 28 Minuten mit 120-Sekunden-Takt waren daraus **13 Kopien JE Runner = 52 Prozesse**, die
+zusammen auf CJ und Shopify eindroschen. Das ist exakt dieselbe TOCTOU-Falle wie beim
+Social-Doppelpost — dort prüft `seen()` vorher und `mark()` schreibt erst nachher.
+
+**Fix:** `flock` auf `/tmp/fixer_keepalive.lock` ganz oben im Supervisor. Ein zweiter Start
+beendet sich mit «Supervisor läuft bereits». Verifiziert: zweiter Start abgewiesen, danach
+**genau 1 Supervisor und genau 4 Runner** (je einer für cj_runner2–5).
+
+**Regel für jeden Dauerläufer: `flock` statt `pgrep`.** Ein Prüf-dann-Starte ohne Sperre ist
+kein Schutz, sondern nur ein verkleinertes Zeitfenster. Und: nach `pkill` immer nachzählen,
+bevor man neu startet — `pkill` meldet Erfolg, auch wenn es den Prozess gar nicht traf.
