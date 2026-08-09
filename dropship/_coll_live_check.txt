@@ -453,3 +453,9 @@ bohren-saegen	ok	10	Bohren & Sägen
 schleifen-trennen	ok	6	Schleifen & Trennen
 tastatur-maus	ok	28	Tastaturen & Mäuse
 netzwerk-router	ok	28	Netzwerk & WLAN
+kabel-adapter	ok	28	Kabel & Adapter
+kostueme-fasnacht	ok	28	Kostüme & Fasnacht
+fortura-halloween	unveroeffentlicht	0	Halloween
+party-deko-ch	ok	28	Party & Deko
+fortura-weihnachten	ok	10	Weihnachten
+blitzversand-schweiz	ok	28	Blitzversand · 1–2 Tage aus der Schweiz
