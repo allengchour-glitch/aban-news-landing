@@ -3282,4 +3282,18 @@ Shopify-Kundenkonto (hier `alleng0@hotmail.com` → 0795382814, bestätigt durch
 Auch die einzige je bezahlte Bestellung `LX1011B` hat einen `paymentDate`, aber wurde offenbar in
 der CJ-Weboberfläche beglichen. **Die Zahlung bleibt damit ein User-Schritt:**
 Guthaben aufladen unter `cjdropshipping.com/myCJ.html#/myBalance`, dann Orders → LX1012 → Pay.
-Guthaben stand bei Anlage auf **0.00 USD**.
+Guthaben stand bei Anlage auf **0.00 USD**. LX1012 steht danach auf `orderStatus: IN_CART`
+(= liegt im CJ-Warenkorb und wartet auf Zahlung) — nicht mit `CREATED` verwechseln.
+
+### 👻 Phantom-Tracking bei #1011 entfernt (2026-08-09)
+Shopify-Order #1011 (Reise-Hängematte, FULFILLED) trug **zwei** Tracking-Nummern:
+`CJPWV3080601607YQ` und `EQKPT8612321546YQ`. Abgleich gegen die komplette CJ-Bestellliste:
+**nur `EQKPT8612321546YQ` existiert** (aus LX1011B). `CJPWV3080601607YQ` kommt in KEINER
+CJ-Bestellung vor — die trashige `LX1011` hatte gar keine Tracking-Nummer.
+Der Kunde hatte also einen Link, der sich nie bewegt. Per
+`fulfillmentTrackingInfoUpdateV2` auf die echte Nummer reduziert (`notifyCustomer:false`,
+damit keine verwirrende zweite Versandmail rausgeht).
+
+**Regel: Tracking-Nummern vor dem Eintragen gegen die Lieferanten-Bestellliste prüfen.**
+Eine erfundene oder aus einer stornierten Bestellung übernommene Nummer ist schlimmer als gar
+keine — der Kunde sieht «Versendet», die Sendung existiert aber nicht.
