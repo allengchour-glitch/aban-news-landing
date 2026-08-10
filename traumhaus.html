@@ -117,6 +117,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
   <div class="panel" id="geld">💰 5000</div>
   <div class="panel" id="uhr">🕗 Tag 1 · 08:00</div>
   <div class="panel needs" id="needsBox"></div>
+  <div class="panel" id="stufeBox" style="cursor:pointer;max-width:46vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"></div>
 </div>
 <div id="netBadge">🌐 verbunden</div>
 <button id="modeBtn">🔨 Bauen</button>
@@ -288,6 +289,11 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
       <div>🔨 <b>Bauen</b> — „Bauen" tippen → etwas wählen → aufs Grundstück tippen</div>
       <div>💰 <b>Geld verdienen</b> — die Aufträge vom Bürgermeister erfüllen</div>
       <div>👫 <b>Tipp auf Max/Mia</b> — Kamera folgt. Herd = 🍳 Kochen, Teich = 🎣 Angeln</div>
+      <div style="margin-top:8px;padding:9px 11px;border-radius:10px;background:#fff4dc;border:1px dashed #d8a84a">
+        🏅 <b>Dein Ziel: die Bauabnahme.</b> Alle 4 Tage kommt der Inspektor und prüft
+        <b>Hauswert</b>, <b>Wohnbereiche</b> und die <b>Laune deiner Bewohner</b>.
+        Bestehst du, steigst du eine Wohnstufe auf — von der Hütte bis zum Palast —
+        und verdienst dauerhaft mehr. Oben rechts steht immer, was noch fehlt.</div>
     </div>
     <button id="introOk" style="margin-top:20px;border:0;border-radius:40px;padding:14px 42px;font-size:1.12rem;font-weight:900;color:#fff;background:linear-gradient(90deg,#ff8c5a,#e85aa0);cursor:pointer;min-height:48px;box-shadow:0 8px 24px rgba(232,90,160,.4)">Los geht's! ▶</button>
   </div>
@@ -5481,13 +5487,103 @@ var ACH=[
  ["autodieb","🚗","Autodieb","Ein fahrendes Auto geklaut",function(){return (stats.autosGeklaut||0)>=1;}],
  ["fluchtprofi","🏁","Fluchtprofi","Der Polizei entkommen",function(){return (stats.entkommen||0)>=1;}],
  ["umlackierer","🎨","Umlackierer","Auto in der Einfahrt versteckt (Fahndung getilgt)",function(){return (stats.lackiert||0)>=1;}],
- ["reich","🤑","Wohlhabend","10.000 $ besessen",function(){return geld>=10000;}]
+ ["reich","🤑","Wohlhabend","10.000 $ besessen",function(){return geld>=10000;}],
+ /* 🏅 Die Wohnstufen sind der rote Faden des Spiels — sie gehoeren in die Erfolge,
+    sonst ist der Aufstieg nach der Meldung wieder unsichtbar. */
+ ["abnahme1","📋","Abgenommen","Die erste Bauabnahme bestanden",function(){return wohnstufe>=1;}],
+ ["abnahme3","🏰","Traumvilla","Wohnstufe Traumvilla erreicht",function(){return wohnstufe>=3;}],
+ ["abnahme5","👑","Palastherr","Hoechste Wohnstufe erreicht",function(){return wohnstufe>=5;}]
 ];
 function hausWert(){var w=0;
   furn.forEach(function(f9){w+=Math.round(f9.def.cost*(1+0.6*((f9.lv||1)-1)));});
   w+=Object.keys(walls).length*30+Object.keys(floors).length*10;
   if(window.autoRec)w+=defOf(window.autoRec.id).cost;
   return w;}
+/* ═══════════ 🏅 WOHNSTUFEN UND BAUABNAHME ═══════════════════════════════════════
+   Das Spiel hatte alles ausser einem GRUND. prestigeName() vergab zwar Titel nach
+   Hauswert, aber daran hing nichts — man baute ins Leere, und nach den sieben festen
+   Stadt-Auftraegen kamen nur noch dieselben skalierten Wiederholungen.
+
+   Die Bauabnahme gibt dem Sandkasten ein Rueckgrat:
+     * ein ZIEL, das immer sichtbar ist (Kopfzeile, ein Tipp zeigt die Details),
+     * ein TERMIN, der naeherrueckt — alle vier Spieltage kommt die Abnahme,
+     * drei Kriterien, die verschiedene Spielweisen belohnen: Wert (bauen),
+       Vielfalt (verschiedene Raeume statt 20x dieselbe Lampe) und Zufriedenheit
+       (fuer die Bewohner bauen, nicht nur teuer),
+     * eine BELOHNUNG, die man spuert: Praemie plus dauerhaft +12 % auf alle
+       Einnahmen je Stufe,
+     * und KEIN Fehlschlag-Strafe. Wer nicht besteht, bekommt gesagt was fehlt und
+       einen neuen Termin. Druck ja, Frust nein. */
+var WOHNSTUFEN=[
+ /* Name,               Wert,  Kategorien, Zufriedenheit, Praemie */
+ ["⛺ Hütte",              0, 0,  0,    0],
+ ["🏠 Zuhause",         2500, 3, 55,  400],
+ ["🏡 Schmuckstück",    6000, 4, 62,  900],
+ ["🏰 Traumvilla",     12000, 5, 68, 1800],
+ ["🏛️ Anwesen",        25000, 6, 74, 3500],
+ ["👑 Palast",         50000, 7, 80, 7000]
+];
+var wohnstufe=0, naechsteAbnahme=4;
+function stufenBonus(){return 1+wohnstufe*0.12;}      /* +12 % Einnahmen je Stufe */
+/* Wie viele KATEGORIEN sind moebliert? Belohnt ein vollstaendiges Haus statt
+   zwanzig Kopien desselben Stuecks. */
+function katVielfalt(){
+  var g={};furn.forEach(function(f9){
+    for(var k in KATALOG)for(var i=0;i<KATALOG[k].length;i++)
+      if(KATALOG[k][i].id===f9.id){g[k]=1;return;}});
+  return Object.keys(g).length;}
+function zufriedenheit(){
+  if(!sims.length)return 0;
+  var su=0,n=0;
+  sims.forEach(function(s9){if(!s9.needs)return;
+    su+=(s9.needs.hunger+s9.needs.energie+s9.needs.spass+s9.needs.hygiene)/4;n++;});
+  return n?Math.round(su/n):0;}
+/* Fehlliste fuer die naechste Stufe — dieselbe Funktion speist Kopfzeile UND Abnahme. */
+function stufenLuecke(){
+  var z=WOHNSTUFEN[wohnstufe+1];
+  if(!z)return null;
+  var w=hausWert(),k=katVielfalt(),zu=zufriedenheit();
+  return {ziel:z,wert:w,kat:k,zuf:zu,
+          fehltWert:Math.max(0,z[1]-w),fehltKat:Math.max(0,z[2]-k),fehltZuf:Math.max(0,z[3]-zu),
+          erfuellt:w>=z[1]&&k>=z[2]&&zu>=z[3]};}
+function stufeHudUpd(){
+  var el=document.getElementById("stufeBox");if(!el)return;
+  var l=stufenLuecke();
+  if(!l){el.textContent="👑 Palast — alles erreicht";return;}
+  var tage=Math.max(0,naechsteAbnahme-tag);
+  var kurz=l.fehltWert?("+"+l.fehltWert+" $")
+          :l.fehltKat?("+"+l.fehltKat+" Bereich"+(l.fehltKat>1?"e":""))
+          :l.fehltZuf?("+"+l.fehltZuf+" Laune"):"bereit ✓";
+  /* ⚠️ Reihenfolge ist hier eine Design-Entscheidung: Erst stand der STUFENNAME
+     vorn — auf dem Handy schnitt die Kopfzeile dann ausgerechnet den Fehlbetrag ab,
+     also genau die Information, wegen der die Anzeige existiert. Jetzt kommt immer
+     zuerst, was zu tun ist, dann der Termin; der Titel nur, wenn Platz bleibt. */
+  el.textContent="🏅 "+kurz+" · "+tage+"T"
+    +(innerWidth>=1000?"  ("+l.ziel[0]+")":"");
+  el.style.background=l.erfuellt?"rgba(180,240,190,.92)":"";}
+/* Die Abnahme selbst: ein Ereignis mit klarer Ansage, kein stiller Zahlensprung. */
+function bauabnahme(){
+  var l=stufenLuecke();
+  if(!l){naechsteAbnahme=tag+4;return;}
+  var z=l.ziel;
+  function zeile(ok,txt){return (ok?"✅ ":"❌ ")+txt;}
+  if(l.erfuellt){
+    wohnstufe++;
+    var pr=Math.round(z[4]);geld+=pr;geldSend();
+    hint("🏅 ABNAHME BESTANDEN — "+z[0]+"!  +"+pr+" $  ·  Einnahmen jetzt +"+Math.round((stufenBonus()-1)*100)+" %");
+    beep(660,.12,"triangle",.06);setTimeout(function(){beep(880,.16,"triangle",.06);},150);
+    if(typeof hearts==="function")hearts(0,0);
+    stats.abnahmen=(stats.abnahmen||0)+1;
+  }else{
+    hint("📋 Bauabnahme: noch nicht "+z[0]+" — "
+      +zeile(l.fehltWert===0,"Wert "+l.wert+"/"+z[1]+" $")+"  "
+      +zeile(l.fehltKat===0,"Bereiche "+l.kat+"/"+z[2])+"  "
+      +zeile(l.fehltZuf===0,"Laune "+l.zuf+"/"+z[3]));
+    beep(240,.18,"sawtooth",.05);
+  }
+  naechsteAbnahme=tag+4;
+  stufeHudUpd();updHUD();
+}
 function prestigeName(w){
   if(w<2500)return "⛺ Hütte";if(w<6000)return "🏠 Zuhause";if(w<12000)return "🏡 Schmuckstück";
   if(w<25000)return "🏰 Traumvilla";if(w<50000)return "🏛️ Anwesen";if(w<100000)return "👑 Palast";
@@ -5821,7 +5917,7 @@ function snapshot(){return {gw:GW,gh:GH,floors:floors,walls:Object.keys(walls).r
      einem Neuladen wieder frei. */
   pqb:(window._pq&&window._pq.basis)||null,
   em:window._emoteCount||0, /* 🩹 Schwarm-4: Basiswert der Emote-Team-Aufgabe (tb) wird gespeichert, der Zaehler fehlte — nach Host-Reload zaehlte die Aufgabe zu wenig */
-  cpT:window._coupTag,cpH:window._coupHeute,
+  cpT:window._coupTag,cpH:window._coupHeute,ws:wohnstufe,na:naechsteAbnahme,
   bkT:window._buskTag,bkH:window._buskHeute,
   anC:window._angelCd};}
 function loadSnapshot(sn){
@@ -5868,6 +5964,9 @@ function loadSnapshot(sn){
   if(sn.pqb){window._pqBasis={idx:sn.qi,b:sn.pqb};window._pq=null;}
   if(sn.em!==undefined)window._emoteCount=sn.em; /* 🩹 Schwarm-4: passend zur gespeicherten teamBase */
   if(sn.cpT!==undefined)window._coupTag=sn.cpT;if(sn.cpH!==undefined)window._coupHeute=sn.cpH;
+  if(sn.ws!==undefined)wohnstufe=sn.ws|0;
+  /* Ohne Termin im Stand kaeme die Abnahme nach jedem Laden sofort. */
+  naechsteAbnahme=(sn.na!==undefined&&sn.na>0)?sn.na:(sn.tag||tag)+4;
   if(sn.bkT!==undefined)window._buskTag=sn.bkT;if(sn.bkH!==undefined)window._buskHeute=sn.bkH;
   if(sn.anC!==undefined)window._angelCd=sn.anC;
   kinder.slice().forEach(function(k){scene.remove(k.mesh);});kinder=[];
@@ -7912,6 +8011,16 @@ document.getElementById("achBtn").onclick=function(){
   document.getElementById("hausWertTxt").textContent=prestigeName(w2)+" · "+w2+" $ · "+done+"/"+ACH.length;
   document.getElementById("achPanel").style.display="flex";};
 document.getElementById("achClose").onclick=function(){document.getElementById("achPanel").style.display="none";};
+/* Ein Tipp auf die Kopfzeile erklaert die drei Kriterien — ohne Menue, ohne Text-
+   wand, direkt dort wo das Ziel steht. */
+(function(){var el=document.getElementById("stufeBox");if(!el)return;
+  el.onclick=function(){
+    var l=stufenLuecke();
+    if(!l){hint("👑 Hoechste Stufe erreicht — der Palast steht.");return;}
+    var z=l.ziel;
+    hint("🏅 Naechste Stufe "+z[0]+" — Hauswert "+l.wert+"/"+z[1]+" $ · Wohnbereiche "
+      +l.kat+"/"+z[2]+" · Laune der Bewohner "+l.zuf+"/"+z[3]
+      +"  (Abnahme an Tag "+naechsteAbnahme+")");};})();
 var hintT=null;
 function hint(t){var h=document.getElementById("hint");h.textContent=t;h.style.opacity=1;
   var dauer=Math.min(9000,Math.max(3500,3000+String(t).length*55)); // langsam lesbar: lange Texte bleiben länger
@@ -7996,6 +8105,7 @@ document.getElementById("modeBtn").onclick=function(){buildMode=!buildMode;
   gridHelper.visible=buildMode;refreshGhost();};
 function updHUD(){
   document.getElementById("geld").textContent="💰 "+geld;
+  stufeHudUpd();                      /* 🏅 Ziel bleibt immer sichtbar */
   var hh=Math.floor(uhrzeit/60)%24,mm=Math.floor(uhrzeit%60);
   document.getElementById("uhr").textContent=(hh<6||hh>=21?"🌙":"🕗")+" Tag "+tag+" · "+String(hh).padStart(2,"0")+":"+String(mm).padStart(2,"0")+" "+SAISON[calcSaison()][0].split(" ")[0]+(wetter==="regen"?"🌧️":wetter==="schnee"?"🌨️":"");
   var nb=document.getElementById("needsBox");nb.innerHTML="";
@@ -8247,7 +8357,11 @@ function loop(now){
       if(_z.x<_z.min){_z.x=_z.min;_z.dir=1;}else if(_z.x>_z.max){_z.x=_z.max;_z.dir=-1;}
       _z.g.position.x=_z.x;_z.g.rotation.y=_z.dir<0?0:Math.PI;}
     // Uhr: 1 Spielminute = 0.5s (Host führt, Gast empfängt)
-    if(!MPs||mpHost){uhrzeit+=dt*4;if(uhrzeit>=1440){uhrzeit-=1440;tag++;if(immo.length){var miete=immo.length*150;geld+=miete;geldSend();updHUD();hint("\uD83C\uDFE0\uD83D\uDCB0 Mieteinnahmen: +"+miete+" $ ("+immo.length+" H\u00E4user)");}rollWetter();applySaison();hint(SAISON[calcSaison()][0]+(wetter==="regen"?" · 🌧️ Regen":wetter==="schnee"?" · 🌨️ Schnee":""));}}
+    if(!MPs||mpHost){uhrzeit+=dt*4;if(uhrzeit>=1440){uhrzeit-=1440;tag++;
+      if(immo.length){var miete=Math.round(immo.length*150*stufenBonus());geld+=miete;geldSend();updHUD();hint("\uD83C\uDFE0\uD83D\uDCB0 Mieteinnahmen: +"+miete+" $ ("+immo.length+" H\u00E4user)");}
+      /* 🏅 Die Bauabnahme ist der Taktgeber des Spiels — sie kommt zum Termin,
+         egal was der Spieler gerade tut, und sagt konkret, was noch fehlt. */
+      if(tag>=naechsteAbnahme)setTimeout(bauabnahme,1400);rollWetter();applySaison();hint(SAISON[calcSaison()][0]+(wetter==="regen"?" · 🌧️ Regen":wetter==="schnee"?" · 🌨️ Schnee":""));}}
     // Tag/Nacht
     var hh=uhrzeit/60,dayA=Math.max(0,Math.sin((hh-5.75)/14*Math.PI)); // Sonne 5:45-19:45 — Abend hat echtes Restlicht
     var wDim=wetter==="sonne"?1:0.62;
@@ -8605,6 +8719,16 @@ window.__th={
      dass zwei vollstaendige 3D-Seiten parallel laufen muessen (das schafft der
      Test-Browser nicht). */
   netTest:function(m){onNetMsg(m);},
+  /* Testzugang zur Bauabnahme: Zustand lesen und den Termin ausloesen, ohne vier
+     Spieltage abzuwarten. */
+  stufe:function(){var l=stufenLuecke();
+    return {stufe:wohnstufe,name:WOHNSTUFEN[wohnstufe][0],bonus:+stufenBonus().toFixed(2),
+            termin:naechsteAbnahme,tag:tag,
+            luecke:l&&{wert:l.wert,kat:l.kat,zuf:l.zuf,fehltWert:l.fehltWert,
+                       fehltKat:l.fehltKat,fehltZuf:l.fehltZuf,erfuellt:l.erfuellt},
+            hud:(document.getElementById("stufeBox")||{}).textContent};},
+  abnahme:function(){bauabnahme();return this.stufe();},
+  geldSetz:function(v){geld=v;updHUD();},
   laeuft:function(){return running;},
   lobby:function(){return {spieler:LOBBY.spieler.slice(),gestartet:LOBBY.gestartet,
     start:getComputedStyle(document.getElementById("mpStartBtn")).display,
