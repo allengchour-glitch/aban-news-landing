@@ -4307,3 +4307,44 @@ grösste Hebel. Aufräumen wäre eine reine Preisentscheidung — deshalb nur ge
   «Thin Content» für Google.
 - **2 von 6'000 Produkten** mit glattem Preis statt .90-Endung — vernachlässigbar.
 - **0 externe Links** in Produktbeschreibungen.
+
+## 📢 Social Media + Werbeaussagen: falsche Schweiz-Versprechen entfernt (2026-08-10)
+
+### Der Befund
+In der Reel-Warteschlange standen **30 fertige Reels auf `ready`** — alle Video-URLs live geprüft
+(30/30 erreichbar). **21 davon versprachen «Blitzversand aus der Schweiz»**, und für **13 liess
+sich nachweisen**, dass das beworbene Produkt eine CJ-Nummer trägt und weder `ch-lager` noch eine
+Fortura-SKU hat: die Ware kommt aus China, 8–16 Tage. Diese Reels wären beim nächsten Post-Lauf
+unverändert veröffentlicht worden.
+
+**Schwerer wog ein Einzelfall:** Ein Reel warb mit «Handverlesener Edelstahl-Schmuck **aus der
+Schweiz**». Das ist keine Lieferaussage, sondern eine **Herkunftsangabe** — und die Ware ist
+CJ-Import. Eine Schweizer Herkunftsbezeichnung setzt überwiegende Wertschöpfung in der Schweiz
+voraus; hier war sie schlicht unzutreffend. Formulierung entfernt.
+
+### Behoben
+- **22 Reel-Captions** berichtigt (`automation/reel_caption_wahrheit.py`): «Blitzversand aus der
+  Schweiz» → «Schweizer Online-Shop · Kauf auf Rechnung mit Klarna & TWINT». Beides stimmt: der
+  Shop ist schweizerisch, liefert in die ganze Schweiz und bietet Rechnungskauf.
+  Danach: **0 von 30 ready-Reels** mit unhaltbarem Schweiz-Versprechen.
+- **Die Quelle mit abgestellt:** `cj_video_reel_engine.mjs` schrieb den Satz in JEDE neue Caption —
+  obwohl die Engine ausschliesslich CJ-Ware verarbeitet. Vorlage korrigiert.
+- **19 Kollektionsbeschreibungen** umformuliert (`automation/kollektion_lieferaussage_fix.py`).
+  Grundlage ist keine Vermutung, sondern eine Messung des Schweizer-Lager-Anteils je Kollektion
+  (Stichprobe bis 60 Produkte). Ab 50 % bleibt die Aussage stehen:
+  - **berechtigt, unverändert (9):** party-deko-ch, blitzversand-schweiz, ft-herrenkostuem,
+    ft-kinderkostuem, ft-maske, ft-pluesch, ft-wohndeko-ft (je 100 %), halloween (83 %),
+    beauty-haar (76 %)
+  - **umformuliert (19):** uhren-damen/-herren, elektronik-audio/-laden/-handy, licht-led-strip/
+    -tischlampe/-decken-steh/-nachtlicht-projektor, wohnen-kueche/-bad/-aufbewahrung,
+    beauty-naegel (0 %), beauty-duefte (8 %), damen-jacken (5 %), haustier-napf-futter (3 %),
+    schuhe-absatz (0 %), beauty-hautpflege (33 %), fortura-weihnachten (36 %)
+
+### ⛔ Blockiert — nur der Betreiber kann das lösen
+**Alle Meta-Zugangsdaten sind mit dem Container-Wipe verloren** (`/tmp/meta_page_token`,
+`meta_ig_id`, `meta_app_id`, `meta_app_secret`). Ohne frisches Token ist **kein Post auf
+Instagram oder Facebook möglich** — die 30 fertigen Reels und 111 gerenderten Videos liegen
+bereit und gehen raus, sobald ein Token da ist. Threads bleibt laut Anweisung aus.
+
+Dass die Warteschlange gerade stillsteht, hatte einen guten Nebeneffekt: Die falschen
+Versprechen wurden korrigiert, **bevor** sie öffentlich wurden.

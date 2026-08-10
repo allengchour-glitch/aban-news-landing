@@ -146,3 +146,4 @@ gid://shopify/Product/15468317344129	nicht-versendbar	Business-Trolley aus Alumi
 gid://shopify/Product/15446272639361	ok	LED Laser Offroad-Scheinwerfer
 gid://shopify/Product/15448884609409	ok	Elektrisches Verdunkelungsrollo mit Solarpanel
 gid://shopify/Product/15450757955969	nicht-versendbar	Waschmaschinen-Schrank 64x25
+gid://shopify/Product/15453898998145	nicht-versendbar	Kinder-Trolleykoffer 20 Zoll erweiterbar
