@@ -62,4 +62,7 @@ while True:
     if not pg["pageInfo"]["hasNextPage"]: break
     cur=pg["pageInfo"]["endCursor"]; open(state,"w").write(cur)
     if sc%200<50: print(f"gescannt {sc} | Text-Hauptbilder {hit} | umsortiert {fix}",flush=True)
+# Cursor am Ende löschen: der Katalog wächst täglich um Hunderte CJ-Importe. Bliebe der Cursor
+# stehen, startete jeder Folgelauf am Ende und prüfte nie wieder etwas ("FERTIG: 37 gescannt").
+if os.path.exists(state): os.remove(state)
 print(f"FERTIG: {sc} gescannt, {hit} mit Text-Hauptbild, {fix} auf sauberes Bild umgestellt")

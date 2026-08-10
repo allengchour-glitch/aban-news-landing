@@ -4262,3 +4262,48 @@ bereits nach altem Muster bereinigten Produkte erneut geprüft werden.
 - **«Meta-Description und Open-Graph fehlen»** war ein Messfehler meinerseits: Mein Suchmuster
   erwartete die Attribute in einer Zeile, das Theme schreibt sie mehrzeilig. Tatsächlich sind
   Description, og:title, og:image und 11 weitere OG-Tags vorhanden.
+
+## 💸 Rabatte und Versand: vierter Fundort der 65 — und ein Praxistest am echten Warenkorb (2026-08-10)
+
+**Vierter Fundort, jetzt beseitigt:** Ein **automatischer Rabatt** mit dem Titel
+«Gratis-Versand ab CHF 65» war aktiv (Mindestbestellwert 65). Er war vollständig **redundant** —
+das Lieferprofil gewährt Gratis-Versand bereits ab CHF 50 — und sein Titel kann als Rabattzeile
+im Warenkorb erscheinen und damit der überall sonst genannten 50er-Schwelle widersprechen.
+Deaktiviert (`discountAutomaticDeactivate`, Status jetzt EXPIRED).
+
+**Praxistest mit echter Warenkorb-Sitzung** (Cookie-Jar, Adresse CH/8001):
+| Warenkorb | nach Rabatt | angebotener Versand |
+|---|---|---|
+| CHF 31.80 | 28.62 | Standard 7.00 |
+| CHF 63.60 | 57.24 | **Kostenloser Versand 0.00** + Standard 7.00 |
+| CHF 52.60 | 47.34 | Standard 7.00 |
+
+Der Versand funktioniert also genau wie versprochen: **CHF 7.00, gratis ab CHF 50** — und das
+Abschalten des 65er-Rabatts hat daran nichts geändert.
+
+**Aufschlussreich ist die dritte Zeile.** Es gibt einen automatischen Rabatt
+**«Bundle: 2+ Artikel −10 %»** (über eine Shopify-Funktion, taucht in `discountNodes` nicht auf —
+sichtbar nur in `cart.js`). Shopify prüft die Gratis-Versand-Grenze am **rabattierten** Betrag.
+Ein Warenkorb über CHF 52.60 fällt dadurch auf 47.34 und zahlt Versand. Das Band liegt bei
+Listenpreis **50.00–55.55** mit 2+ Artikeln.
+
+**Das ist KEIN Fehler im Shop, und ich habe bewusst nichts daran geändert:** Der Fortschritts-
+balken im Warenkorb rechnet bereits mit `cart.total_price`, also mit demselben rabattierten
+Betrag — er sagt dem Kunden bei 52.60 korrekt «Noch CHF 2.66 bis zum Gratis-Versand». Jede
+prozentuale Rabattaktion erzeugt zwangsläufig so ein Band; eine niedrigere Schwelle verschiebt
+es nur. Wer es ganz auflösen will, müsste den 2+-Rabatt abschaffen — das ist eine Preisfrage.
+
+**Nebenbefund, keine Aktion:** 17 aktive Rabattcodes (WELCOME10, FIRST15, TIKTOK10/20, INSTA15,
+NEWSLETTER10, SUMMER15, BIRTHDAY15, COMEBACK10, BUNDLE10/20, GIFT20, BEAUTYDUO, REVIEW10,
+WELCOMEBACK20, VIPCLUB10, SHIP50) plus BLACKFRIDAY30 vorgemerkt. Codes wandern erfahrungsgemäss
+in Gutschein-Portale; 20–30 % ohne Mindestbestellwert (TIKTOK20, WELCOMEBACK20) sind der
+grösste Hebel. Aufräumen wäre eine reine Preisentscheidung — deshalb nur gemeldet.
+
+## ✅ Weitere Prüfungen ohne Befund
+- **«28 % der Produkte haben eine englische Option ‹Title / Default Title›»** — kundenseitig
+  unsichtbar: das Theme blendet Einzeloptionen aus, der Begriff steht nur im JSON-Datenblock.
+  Live geprüft, kein Handlungsbedarf.
+- **0 Gruppen mit identischem Beschreibungstext** (≥8 gleiche) in 6'000 Produkten — kein
+  «Thin Content» für Google.
+- **2 von 6'000 Produkten** mit glattem Preis statt .90-Endung — vernachlässigbar.
+- **0 externe Links** in Produktbeschreibungen.
