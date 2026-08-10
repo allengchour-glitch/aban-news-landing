@@ -87,3 +87,12 @@ gid://shopify/Product/15480484331905	ok	NFC Chipkarten-Set mit Yuan Coin Chips
 gid://shopify/Product/15480563892609	ok	Multifunktionales Mikrofon mit Rauschunterdrückung
 gid://shopify/Product/15451920662913	nicht-versendbar	Professionelle 4/4 Geige – Premium Klang
 gid://shopify/Product/15482002932097	ok	EV Ladebox mit Fahrzeug- und Haushaltsanschluss
+gid://shopify/Product/15449485607297	ok	Motorrad-Kamera mit GPS
+gid://shopify/Product/15481681117569	ok	Mini Beamer für Smartphone-Projektion
+gid://shopify/Product/15480410276225	ok	Magnetischer Fluid-Lautsprecher mit Lichteffekt
+gid://shopify/Product/15454058545537	nicht-versendbar	Katzenkletterwand mit Nest und Kratzbrett
+gid://shopify/Product/15449130238337	ok	3D Hologramm-LED-Display 60cm
+gid://shopify/Product/15448908366209	ok	Mechanische Herrenuhr
+gid://shopify/Product/15453921837441	ok	Keramik-Schatzbecken mit Handmalerei
+gid://shopify/Product/15448673812865	ok	Gefütterter Daunenmantel mit Kapuze
+gid://shopify/Product/15447611769217	ok	Reisetasche aus Crazy Horse Leder

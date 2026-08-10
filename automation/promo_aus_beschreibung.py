@@ -37,6 +37,12 @@ WERBUNG = [
     # eigenständige Rabattcode-Zeile
     re.compile(r'<p>[^<]*Code\s*<strong>\s*WELCOME10\s*</strong>[^<]*</p>', re.S),
     re.compile(r'<p>[^<]*WELCOME10[^<]*</p>', re.S),
+    # Dieselben Werbeversprechen stehen bei vielen Produkten als LISTENPUNKTE statt als Absatz.
+    # Die reine <p>-Regel liess deshalb 15 % der Feed-Beschreibungen unberührt — und dort stand
+    # weiterhin die inzwischen falsche Schwelle «ab CHF 65» (richtig: 50). Entfernt werden nur
+    # Punkte, die AUSSCHLIESSLICH Shop-Versprechen enthalten, nie Produktangaben.
+    re.compile(r'<li>(?:(?!</li>).)*?(?:WELCOME10|Gratis-?\s?[Vv]ersand|Sicher\s+einkaufen|'
+               r'R[üu]ckgabe:\s*30\s*Tage)(?:(?!</li>).)*?</li>', re.S),
 ]
 
 
@@ -64,6 +70,8 @@ def saeubern(html):
     for rx in WERBUNG:
         neu = rx.sub("", neu)
     neu = re.sub(r'(?:<p>\s*</p>\s*)+', "", neu)
+    # Leergeräumte Listen entfernen, sonst bleibt ein <ul></ul>-Gerippe stehen.
+    neu = re.sub(r'<ul>\s*</ul>', "", neu)
     neu = re.sub(r'\n{3,}', "\n\n", neu).strip()
     return neu
 
@@ -87,7 +95,8 @@ def main():
             if p["id"] in done:
                 continue
             alt = p["descriptionHtml"] or ""
-            if not re.search(r'WELCOME10|Gratis-?\s?[Vv]ersand|Schweizer\s+(?:Online-)?Shop', alt):
+            if not re.search(r'WELCOME10|Gratis-?\s?[Vv]ersand|Schweizer\s+(?:Online-)?Shop'
+                             r'|Sicher\s+einkaufen|R[üu]ckgabe:\s*30\s*Tage', alt):
                 continue
             neu = saeubern(alt)
             if neu == alt:
