@@ -5866,3 +5866,7 @@ gid://shopify/Product/15490462515585	29->2	Camping-Kocher
 gid://shopify/Product/15490462712193	23->0	Gehstock mit Fußstütze
 gid://shopify/Product/15490549940609	20->0	Babyflaschenbürste 7-in-1
 gid://shopify/Product/15490550104449	12->0	Jute Wäschekorb
+gid://shopify/Product/15490613936513	8->0	Geblümtes Baumwollhemd mit Stickerei
+gid://shopify/Product/15490614231425	46->0	Dünne Sommerhosen
+gid://shopify/Product/15490614362497	8->0	Kaschmir-Leggings für Herbst & Winter
+gid://shopify/Product/15490615542145	36->0	Outdoor Tactical Bauchtasche mit Holster
