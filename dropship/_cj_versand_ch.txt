@@ -189,3 +189,8 @@ gid://shopify/Product/15463782711681	nicht-versendbar	Faltbare Haustiertransport
 gid://shopify/Product/15455161024897	nicht-versendbar	Bambus-Käsebrett mit 4 Edelstahl-Messer
 gid://shopify/Product/15459531096449	nicht-versendbar	Turmventilator mit Nasskühlung & Ionentechnologie
 gid://shopify/Product/15453773824385	ok	Black Tech Power-Mechanik Marathon-Laufschuhe
+gid://shopify/Product/15453898539393	nicht-versendbar	Männer Travel Bag
+gid://shopify/Product/15455745737089	nicht-versendbar	3-in-1 Baby-Schaukelrahmen für Innen und Aussen
+gid://shopify/Product/15472930062721	ok	Externes Mikrofon
+gid://shopify/Product/15449451856257	nicht-versendbar	Kühlende Hundebett
+gid://shopify/Product/15449495863681	nicht-versendbar	Rückenlehne Gartenstühle Set
