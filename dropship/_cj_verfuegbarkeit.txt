@@ -606,3 +606,12 @@ gid://shopify/Product/15491385033089	ok
 gid://shopify/Product/15491384934785	ok
 gid://shopify/Product/15491384770945	ok
 gid://shopify/Product/15491384607105	ok
+gid://shopify/Product/15491384476033	ok
+gid://shopify/Product/15491383067009	ok
+gid://shopify/Product/15491382772097	ok
+gid://shopify/Product/15491382641025	ok
+gid://shopify/Product/15491382444417	ok
+gid://shopify/Product/15491381789057	ok
+gid://shopify/Product/15491248652673	ok
+gid://shopify/Product/15491163783553	ok
+gid://shopify/Product/15491163750785	ok
