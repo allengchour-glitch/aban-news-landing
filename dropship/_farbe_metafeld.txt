@@ -27,3 +27,9 @@ gid://shopify/Product/15492131684737	Weiss
 gid://shopify/Product/15492131717505	Silber
 gid://shopify/Product/15448077500801	Rosa
 gid://shopify/Product/15493107941761	Gelb
+gid://shopify/Product/15448904171905	Grün
+gid://shopify/Product/15448904565121	Transparent
+gid://shopify/Product/15448905154945	Blau
+gid://shopify/Product/15448912724353	Transparent
+gid://shopify/Product/15449073123713	Blau
+gid://shopify/Product/15449076269441	Gelb
