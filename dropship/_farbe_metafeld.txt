@@ -33,3 +33,7 @@ gid://shopify/Product/15448905154945	Blau
 gid://shopify/Product/15448912724353	Transparent
 gid://shopify/Product/15449073123713	Blau
 gid://shopify/Product/15449076269441	Gelb
+gid://shopify/Product/15449167790465	Blau
+gid://shopify/Product/15449477677441	Grün
+gid://shopify/Product/15449590825345	Gelb
+gid://shopify/Product/15450749960577	Transparent
