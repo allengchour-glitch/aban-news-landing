@@ -78,3 +78,5 @@ gid://shopify/Product/15491385196929	Grün
 gid://shopify/Product/15491416949121	Mehrfarbig
 gid://shopify/Product/15491521151361	Schwarz
 gid://shopify/Product/15493346296193	Mehrfarbig
+gid://shopify/Product/15493442732417	Silber
+gid://shopify/Product/15493444534657	Silber

@@ -6192,3 +6192,14 @@ gid://shopify/Product/15493366612353	14->1	Magnetisches Wireless Auto-Ladegerät
 gid://shopify/Product/15493367005569	15->0	Eleganter Edelstahlring für Damen
 gid://shopify/Product/15493367431553	27->2	Vielseitige Outdoor-Schultertasche
 gid://shopify/Product/15493367595393	63->0	Bluetooth MP3 FM Transmitter mit Dual-USB
+gid://shopify/Product/15493442765185	120->0	Trendiger Rucksack
+gid://shopify/Product/15493442929025	12->1	Militärring für Herren mit Kreuz-Design
+gid://shopify/Product/15493442961793	21->0	Business Outdoor Rucksack aus PU-Leder
+gid://shopify/Product/15493443223937	55->0	2-in-1 Wireless Charger für Handy, Uhr & Kopfhörer
+gid://shopify/Product/15493443322241	9->0	Retro-Stil Smaragd-Diamant-Goldring
+gid://shopify/Product/15493443453313	9->0	Faltbarer Handyhalter mit Powerbank-Gehäuse
+gid://shopify/Product/15493443682689	24->0	Ultradünnes 10W Wireless Ladegerät
+gid://shopify/Product/15493443748225	8->0	Halskette mit ovalem Retro-Anhänger
+gid://shopify/Product/15493444174209	14->0	Halsreif mit Anhänger für Damen
+gid://shopify/Product/15493444239745	79->0	Ugreen USB-C Ladekabel (3A, Nylon)
+gid://shopify/Product/15493444305281	28->0	Halskette Holzperlen & Blattgold-Anhänger

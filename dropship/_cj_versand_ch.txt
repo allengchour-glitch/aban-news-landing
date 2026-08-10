@@ -67,3 +67,23 @@ gid://shopify/Product/15447592108417	ok	Mondphasen-Sonnenuhr-Taschenuhr mit Klap
 gid://shopify/Product/15448847581569	ok	WLAN-Gamepad für Retro-Gaming
 gid://shopify/Product/15476177666433	ok	Baseball Bomberjacke mit Drachen- und Tigerstickerei
 gid://shopify/Product/15449839829377	ok	Stiletto-Sandalen
+gid://shopify/Product/15452686156161	nicht-versendbar	3-stöckiger Katzen-Schlafplatz mit Kratzfläche
+gid://shopify/Product/15453743415681	nicht-versendbar	Klappbare HD-Aufnahmedrohne mit Anti-Verwackelung
+gid://shopify/Product/15481691603329	ok	T07 Full HD Smart Projektor (320 ANSI Lumen)
+gid://shopify/Product/15481774866817	ok	Hörtest-Headset mit Luftleitung (HB-7)
+gid://shopify/Product/15446273819009	nicht-versendbar	Soozier Boxsack mit Standfuss und Reflex-Bar
+gid://shopify/Product/15430345490817	ok	Moissanite-Kette «Aurora» · 925 Silber, GRA-zertifiziert
+gid://shopify/Product/15447560978817	ok	3-in-1 Magnetische Ladestation
+gid://shopify/Product/15480569168257	ok	Externe Mechanische Plug-and-Play Gaming Festplatte
+gid://shopify/Product/15446279094657	nicht-versendbar	61-Tasten Keyboard mit Ständer und Bank
+gid://shopify/Product/15479469506945	ok	Seagate Exos Enterprise Helium Festplatte 10 TB
+gid://shopify/Product/15491411575169	nicht-versendbar	Minimalistischer Schreibtisch für Home Office
+gid://shopify/Product/15481259327873	nicht-versendbar	Outdoor Solargenerator 300W
+gid://shopify/Product/15484488286593	nicht-versendbar	Katzenbaum mit Klettergerüst
+gid://shopify/Product/15453898211713	nicht-versendbar	Doppelkammer-Fritteuse mit großem Fassungsvermögen
+gid://shopify/Product/15479339155841	ok	Handheld mit drehbarem Bildschirm
+gid://shopify/Product/15480340316545	ok	Externes Festplatten-Lesegerät
+gid://shopify/Product/15480484331905	ok	NFC Chipkarten-Set mit Yuan Coin Chips
+gid://shopify/Product/15480563892609	ok	Multifunktionales Mikrofon mit Rauschunterdrückung
+gid://shopify/Product/15451920662913	nicht-versendbar	Professionelle 4/4 Geige – Premium Klang
+gid://shopify/Product/15482002932097	ok	EV Ladebox mit Fahrzeug- und Haushaltsanschluss
