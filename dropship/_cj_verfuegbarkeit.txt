@@ -1405,3 +1405,10 @@ gid://shopify/Product/15484931998081	ok
 gid://shopify/Product/15484930949505	ok
 gid://shopify/Product/15484930818433	ok
 gid://shopify/Product/15484930752897	ok
+gid://shopify/Product/15484930589057	ok
+gid://shopify/Product/15484929540481	ok
+gid://shopify/Product/15484928917889	ok
+gid://shopify/Product/15484924756353	ok
+gid://shopify/Product/15484924658049	ok
+gid://shopify/Product/15484923838849	ok
+gid://shopify/Product/15484922888577	ok

@@ -70,3 +70,10 @@ gid://shopify/Product/15480168743297	Gold
 gid://shopify/Product/15480274780545	Rot
 gid://shopify/Product/15480631984513	Schwarz
 gid://shopify/Product/15485395599745	Silber
+gid://shopify/Product/15487652626817	Gold
+gid://shopify/Product/15489580007809	Gold
+gid://shopify/Product/15489580171649	Silber
+gid://shopify/Product/15490775646593	Schwarz
+gid://shopify/Product/15491385196929	Grün
+gid://shopify/Product/15491416949121	Mehrfarbig
+gid://shopify/Product/15491521151361	Schwarz
