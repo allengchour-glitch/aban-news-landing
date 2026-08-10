@@ -409,3 +409,4 @@ gid://shopify/Product/15492097343873	CJ-2604171036421631500	Professioneller Golf
 gid://shopify/Product/15492097671553	CJ-2603190106241612100	Stossfestes Edelstahl-Manometer
 gid://shopify/Product/15492141941121	CJ-2608090357001608500	5-in-1 Outdoor-Tool aus Edelstahl
 gid://shopify/Product/15493088477569	CJ-2604011031071600700	Kissen Grün Leinen-Mix mit Kordelzug
+gid://shopify/Product/15493088870785	CJ-CJNZ304339401AZ	High Waist Cropped Jeans im Retro-Look
