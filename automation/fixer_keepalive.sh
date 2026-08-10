@@ -17,6 +17,8 @@ while true; do
   done
   # Bestell-/Fulfill-Runner (Shell) mitlaufen lassen
   pgrep -f "/tmp/cj_fulfill_runner.sh" >/dev/null || { setsid bash /tmp/cj_fulfill_runner.sh >> /tmp/cj_fulfill_runner.log 2>&1 & echo "$(date -u +%H:%M) restart cj_fulfill_runner"; }
+  # Website-Hygiene (Lieferanten-Leaks aus Kundentexten) mitlaufen lassen
+  [ -f /tmp/website_hygiene_runner.sh ] && { pgrep -f "/tmp/website_hygiene_runner.sh" >/dev/null || { setsid bash /tmp/website_hygiene_runner.sh >> /tmp/website_hygiene_runner.log 2>&1 & echo "$(date -u +%H:%M) restart website_hygiene"; }; }
   # CJ-Grind-Runner mitlaufen lassen (Turn-Reaping killt sie sonst jede Runde)
   for R in cj_runner2 cj_runner3 cj_runner4 cj_runner5; do
     [ -f /tmp/$R.sh ] || continue
