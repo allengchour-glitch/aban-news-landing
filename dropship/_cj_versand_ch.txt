@@ -61,3 +61,9 @@ gid://shopify/Product/15449452642689	nicht-versendbar	Anti-Schnarch-Gerät Muske
 gid://shopify/Product/15447899734401	ok	Vintage Vollnarbenleder-Gürtel
 gid://shopify/Product/15446268117377	ok	Pocket Remote Controller Hall Rocker
 gid://shopify/Product/15448904728961	ok	Mechanische Skelett-Herrenuhr
+gid://shopify/Product/15479452041601	nicht-versendbar	Ganzjahres-Autositzauflage mit Volleinfassung
+gid://shopify/Product/15481840501121	nicht-versendbar	Outdoor Mobile Powerbank 192Wh
+gid://shopify/Product/15447592108417	ok	Mondphasen-Sonnenuhr-Taschenuhr mit Klappdeckel
+gid://shopify/Product/15448847581569	ok	WLAN-Gamepad für Retro-Gaming
+gid://shopify/Product/15476177666433	ok	Baseball Bomberjacke mit Drachen- und Tigerstickerei
+gid://shopify/Product/15449839829377	ok	Stiletto-Sandalen
