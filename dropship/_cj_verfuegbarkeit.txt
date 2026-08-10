@@ -859,3 +859,11 @@ gid://shopify/Product/15489534722433	ok
 gid://shopify/Product/15489534624129	ok
 gid://shopify/Product/15489534493057	ok
 gid://shopify/Product/15489534427521	ok
+gid://shopify/Product/15489534329217	ok
+gid://shopify/Product/15489442546049	ok
+gid://shopify/Product/15489440055681	ok
+gid://shopify/Product/15489439662465	ok
+gid://shopify/Product/15489439334785	ok
+gid://shopify/Product/15489439039873	ok
+gid://shopify/Product/15489438712193	ok
+gid://shopify/Product/15489437729153	ok
