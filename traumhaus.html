@@ -8586,6 +8586,10 @@ window.__th={
     dreiecke:r.render.triangles, texturen:r.memory.textures, geometrien:r.memory.geometries,
     schatten:renderer.shadowMap.enabled};},
   solids:function(){return WORLD_SOLIDS.length;},
+  /* Was die Spielfigur GERADE unter den Fuessen hat — zum Nachmessen des
+     begehbaren Gelaendes, statt im Szenenbaum nach ihrem Mesh zu suchen. */
+  simInfo:function(){var m=sims[0];return m?{x:+m.x.toFixed(1),z:+m.z.toFixed(1),
+    gelH:m._gelH||0, meshY:m.mesh?+m.mesh.position.y.toFixed(2):null}:null;},
   kollider:function(){return {geaendert:window._kolliderBericht||[],zugewachsen:window._kolliderZu||0};},
   rohSolids:function(){return WORLD_SOLIDS;},
   achsen:function(){return {SZr:GH*CS/2+12,RX:RX,RL:RL};},
