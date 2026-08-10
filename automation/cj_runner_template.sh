@@ -52,12 +52,15 @@ while true; do
   TOK=$(hole_token)
   pick=$(( (i % N) + 1 ))
   eval "G=\${$pick}"
-  # Tiefe wächst mit der Runde; bei 60 zurücksetzen, damit frisch eingestellte Ware
-  # auf den vorderen Seiten auch wieder erfasst wird.
-  TIEFE=$(( 20 + ROUND * 5 ))
-  [ "$TIEFE" -gt 60 ] && TIEFE=20 && ROUND=1
+  # FENSTER STATT RAMPE (2026-08-10): cj_category_fill merkt sich seit heute je Kategorie,
+  # bis zu welcher Seite es gelesen hat, und macht dort weiter. Damit ist die alte Tiefen-
+  # Rampe überflüssig — schlimmer noch, sie war der Grund für den leeren Punktetopf: mit
+  # MAXPAGE=45 wurden pro Lauf und Kategorie 45 Seiten gelesen, davon 44 längst abgegraste.
+  # An einem Tag kostete das 73'220 CJ-Punkte für rund 20 neue Produkte. MAXPAGE bedeutet
+  # jetzt «wie viele NEUE Seiten pro Lauf» — ein kleines Fenster genügt, es wandert ja weiter.
+  TIEFE=6
   if [ -n "$TOK" ]; then
-    echo "$(date +%T) GRP=$G Runde=$ROUND Tiefe=$TIEFE" >> "$LOG"
+    echo "$(date +%T) GRP=$G Runde=$ROUND Fenster=$TIEFE Seiten (ab gespeichertem Zeiger)" >> "$LOG"
     GRP=$G CAP=12 MAXPAGE=$TIEFE GROUPS_FILE=/tmp/cj_groups_extra.json CJ_TOKEN="$TOK" \
       /opt/node22/bin/node automation/cj_category_fill.mjs >> "$LOG" 2>&1
   else

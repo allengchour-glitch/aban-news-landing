@@ -256,10 +256,26 @@ const st=DRY?null:await shTok();
 let total=0;
 for(const [cat,label] of grp.cats){
  if(total>=CAP)break; let got=0; const perCat=PERCAT||Math.ceil(CAP/3);
- for(let page=1;page<=MAXPAGE && total<CAP && got<perCat;page++){
+ // SEITEN-ZEIGER JE KATEGORIE (2026-08-10). Vorher begann jeder Lauf wieder bei Seite 1 und
+ // paginierte bis MAXPAGE — also wurden dieselben, längst abgegrasten Seiten immer wieder
+ // gelesen. Das kostete CJ-Punkte ohne Ertrag: an einem Tag 73'220 Punkte für rund 20 neue
+ // Produkte, danach war das Budget leer und der Grind stand. Jetzt merkt sich jede Kategorie,
+ // bis wohin sie gelesen wurde, und macht dort weiter. Ein Zeiger pro Datei statt einer
+ // gemeinsamen JSON: vier Runner schreiben parallel, eine geteilte Datei würde sich gegenseitig
+ // überschreiben.
+ const ZDIR='dropship/_cj_pages'; try{fs.mkdirSync(ZDIR,{recursive:true});}catch{}
+ const zFile=`${ZDIR}/${String(cat).replace(/[^A-Za-z0-9_-]/g,'')}`;
+ let startSeite=1;
+ try{ const v=parseInt(fs.readFileSync(zFile,'utf8').trim(),10); if(v>0)startSeite=v; }catch{}
+ let letzteSeite=startSeite;
+ for(let page=startSeite;page<startSeite+MAXPAGE && total<CAP && got<perCat;page++){
+  letzteSeite=page;
   const WH=(process.env.WAREHOUSE||'').trim(); // EU-Lager-Filter (z.B. DE) — User 2026-07-07 «cj sachen aus eu lager»
   const j=await cj(`/product/list?pageSize=30&pageNum=${page}&categoryId=${cat}${WH?`&countryCode=${WH}`:''}`); await sleep(700);
-  const list=(j.data&&j.data.list)||[]; if(!list.length)break;
+  const list=(j.data&&j.data.list)||[];
+  // Leere Seite = Ende der Kategorie. Zeiger auf 1 zurücksetzen, damit beim nächsten Durchgang
+  // frisch eingestellte Ware auf den vorderen Seiten wieder erfasst wird.
+  if(!list.length){ letzteSeite=0; break; }
   for(const p of list){
    if(total>=CAP)break;
    const nm=p.productNameEn||''; if(!nm||done.has(String(p.pid))||(grp.ban&&grp.ban.test(nm)))continue;
@@ -332,6 +348,11 @@ for(const [cat,label] of grp.cats){
    await sleep(300);
   }
  }
- console.log(`${label}: total ${total}`);
+ // Zeiger fortschreiben — NACH der Seitenschleife, nicht darin: bei einer leeren Seite wird
+ // die Schleife mit `break` verlassen, ein Schreibbefehl am Schleifenende käme dann nie dran.
+ // Genau daran scheiterte der erste Anlauf (alle Zeiger blieben auf 21 stehen).
+ // letzteSeite===0 bedeutet «Kategorie war zu Ende» -> wieder bei Seite 1 beginnen.
+ try{ fs.writeFileSync(zFile, String(letzteSeite===0?1:letzteSeite+1)); }catch{}
+ console.log(`${label}: total ${total} (Zeiger → Seite ${letzteSeite===0?1:letzteSeite+1})`);
 }
 console.log(`\nFERTIG: ${total} ${grp.type}${DRY?' [DRY]':''}.`);
