@@ -152,3 +152,6 @@ gid://shopify/Product/15449112707457	ok	Patchwork Denim-Jacke mit Reverskragen
 gid://shopify/Product/15448657789313	ok	Leinen-Blazer mit Pailletten und Stehkragen
 gid://shopify/Product/15467104010625	nicht-versendbar	Willkommens-Wandbild mit Beleuchtung
 gid://shopify/Product/15481681314177	ok	USB Kondensatormikrofon für Desktop & Notebook
+gid://shopify/Product/15454350803329	ok	Herren-Automatic-Sportuhren wasserdicht
+gid://shopify/Product/15455373623681	nicht-versendbar	Kamera-Drohne mit Airdrop-Funktion
+gid://shopify/Product/15478713516417	ok	Transparentes Armbanduhr
