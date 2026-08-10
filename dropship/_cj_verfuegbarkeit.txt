@@ -881,3 +881,9 @@ gid://shopify/Product/15489424130433	ok
 gid://shopify/Product/15489418035585	ok
 gid://shopify/Product/15489326383489	ok
 gid://shopify/Product/15489325760897	ok
+gid://shopify/Product/15489325367681	ok
+gid://shopify/Product/15489105953153	ok
+gid://shopify/Product/15489105428865	ok
+gid://shopify/Product/15489105133953	ok
+gid://shopify/Product/15489104773505	ok
+gid://shopify/Product/15489104347521	ok
