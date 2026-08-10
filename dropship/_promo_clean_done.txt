@@ -10308,3 +10308,4 @@ gid://shopify/Product/15450848067969	bereinigt
 gid://shopify/Product/15450848100737	bereinigt
 gid://shopify/Product/15450848166273	bereinigt
 gid://shopify/Product/15450848199041	bereinigt
+gid://shopify/Product/15450848264577	bereinigt

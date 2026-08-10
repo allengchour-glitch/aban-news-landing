@@ -25,3 +25,4 @@ gid://shopify/Product/15492005036417	Weiss
 gid://shopify/Product/15492131619201	Silber
 gid://shopify/Product/15492131684737	Weiss
 gid://shopify/Product/15492131717505	Silber
+gid://shopify/Product/15448077500801	Rosa
