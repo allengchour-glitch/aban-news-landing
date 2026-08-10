@@ -6208,3 +6208,7 @@ gid://shopify/Product/15412899676545	18->0	Edelstahl-Trinkflasche «Hydro» 570 
 gid://shopify/Product/15412902855041	36->1	Mondstein-Blütenring «Fleur» – zarter Statement-Ring
 gid://shopify/Product/15430408438145	17->1	Herren Sling-Tasche «Ranger» · Crazy-Horse-Echtleder
 gid://shopify/Product/15443496960385	23->0	Smartwatch «PulseFit» · Fitness & Anrufe
+gid://shopify/Product/15445799666049	37->0	Make-up Pinselset, 10-teilig
+gid://shopify/Product/15446021833089	79->2	6-teiliges Kochlöffel-Set aus Teakholz
+gid://shopify/Product/15446022619521	18->2	Kartoffelpresse mit Hebel – Edelstahl
+gid://shopify/Product/15446023700865	51->0	Japanisches Sashimi- und Fischfiletiermesser

@@ -54,7 +54,12 @@ while(made<BATCH){
       const url=execFileSync('/opt/node22/bin/node',['automation/upload_to_shopify_cdn.mjs',out,title],{env:{...process.env,SHOPIFY_SHOP:SHOP},encoding:'utf8'}).trim().split('\n').pop().trim();
       if(!/^https/.test(url)){ console.log('  CDN-Upload fehlgeschlagen',pid,url.slice(0,60)); continue; }
       const link=`luxestyle.ch/products/${n.handle}`;
-      const cap=`«${title}» ✨ Jetzt bei LuxeStyle${price?` — CHF ${price}`:''}. Blitzversand aus der Schweiz · −10% mit Code WELCOME10 🇨🇭\n🔗 ${link} (Link in Bio)`;
+      // ⚠️ KEIN «Blitzversand aus der Schweiz» für CJ-Ware. Diese Engine verarbeitet
+      // ausschliesslich CJ-Produkte, und die kommen aus China (8–16 Tage). Die alte Caption
+      // versprach öffentlich Schweizer Lagerversand — bei 13 fertigen Reels in der Warteschlange
+      // nachgewiesen (2026-08-10). Was stimmt: der Shop IST schweizerisch, liefert in die ganze
+      // Schweiz und bietet Rechnungskauf. Genau das steht jetzt da.
+      const cap=`«${title}» ✨ Jetzt bei LuxeStyle${price?` — CHF ${price}`:''}. Schweizer Online-Shop · Kauf auf Rechnung mit Klarna & TWINT · −10% mit Code WELCOME10 🇨🇭\n🔗 ${link} (Link in Bio)`;
       const tags=[...catTags(title),'#schweiz','#luxestyle','#reels'].join(' ');
       appendReel(`cjreel-${pid}`,url,cap,tags,'instagram,facebook');
       made++; console.log(`  ✅ Reel ${made}/${BATCH}: ${shortT} → queue`);
