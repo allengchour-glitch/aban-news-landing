@@ -4446,3 +4446,51 @@ Drei Probleme auf einmal: Kundentäuschung (anderer Markenname), englischer Werb
 Hauptbild (Google-Merchant-Grund) und ein Billig-Eindruck im Premium-Segment.
 `textbild_fix.py` ist genau dafür da und hat bereits 6'206 Produkte umsortiert — die
 Uhren-Kategorie (527 + 377 Artikel) steht offenbar noch aus. Läuft im Supervisor weiter.
+
+## 🎯 TikTok: die Zahlen des eigenen Shops sprechen dagegen (2026-08-10)
+
+**Kein TikTok-Konnektor in dieser Sitzung** — Kampagne `1869987705486481` und die ATC-Adgroup
+`1870271591940273` sind von hier aus nicht abrufbar. Spend und ATC-Events kann ich also nicht
+nachsehen. Was ich sehr wohl auswerten kann, ist die Herkunft der Bestellungen im Shop selbst:
+
+| Bestellung | Datum | Betrag | erste Quelle | letzte Quelle |
+|---|---|---|---|---|
+| #1012 | 09.08. | 32.90 | direct | direct |
+| #1011 | 03.08. | 21.90 | **Google/SEO** | **Google/SEO** |
+| #1010 | 11.07. | 44.90 | direct | direct |
+| #1009 | 10.07. | 40.90 | direct | direct |
+| #1008 | 08.07. | 177.21 | **Google** | **Google** |
+| #1007 | 07.07. | 265.90 | **Google** | direct |
+| #1006 | 07.07. | 426.51 | **Google** | **Google** |
+| #1005 | 03.07. | 41.90 | direct | direct |
+| #1004 | 25.06. | 31.90 | direct | direct |
+| #1003 | 21.06. | 33.90 | direct | direct |
+
+**In der gesamten Bestellhistorie taucht TikTok kein einziges Mal auf** — weder als erste noch
+als letzte Berührung. Vier von zehn Bestellungen kommen aus **Google**, der Rest direkt.
+Die Kampagne hatte bis 09.07. bereits **CHF 63.88 bei 0 Käufen** verbrannt (CTR 0.18 %); läuft
+sie seither mit den geplanten 20 CHF/Tag weiter, wären das inzwischen mehrere hundert Franken.
+
+**Das ordnet die heutige Arbeit ein:** Der Kanal, der nachweislich verkauft, ist Google — und
+genau dort standen bis heute 13'184 qualifizierte Produkte ausserhalb des Feeds, weil eine
+willkürliche 5'000er-Grenze sie herausgeschnitten hatte. Die Wiederherstellung wirkt damit auf
+den einzigen Kanal mit belegten Verkäufen, kostet nichts und läuft ohne Tagesbudget.
+
+**Empfehlung, sobald der TikTok-Konnektor wieder da ist:** zuerst Spend seit dem 10.07. gegen
+ATC-Events halten. Sind nach einem Monat keine 30–50 Add-to-Cart-Events zusammengekommen, hat
+die Lernphase ihr Ziel verfehlt — dann Budget stoppen statt weiter hochstufen. Das ist eine
+Geldfrage und gehört dem Betreiber vorgelegt, nicht autonom entschieden.
+
+**Was ohne Konnektor bereitliegt:** 5 TikTok-Einträge in der Warteschlange (2 `ready`,
+3 `tiktok-entwurf`). TikTok-Posting war ohnehin nie automatisiert (kein API-Upload, siehe
+Gedächtnis) — das läuft über den PC-Claude oder von Hand.
+
+## 🔧 Polish-Fortschritt: Uhren-Hauptbilder
+Die gezielte Prüfung der Uhren-Kategorie bestätigt den Befund und zeigt zugleich seine Grenze:
+**136 von 200 geprüften Uhren (68 %) haben ein Text-/Collagen-Hauptbild — aber nur 1 liess sich
+umsortieren.** Bei den übrigen sind ALLE vorhandenen Bilder Collagen; der Lieferant liefert
+schlicht keine freigestellten Produktfotos. Umsortieren hilft hier nicht.
+**Der gangbare Weg wäre Zuschneiden:** Die Collagen sind zweigeteilt (links Verpackung auf Weiss,
+rechts das Produkt) — die rechte Hälfte allein ergäbe ein sauberes Bild. Das ist automatisierbar,
+aber nur mit Layout-Erkennung, sonst schneidet man bei abweichenden Collagen das Produkt ab.
+Als eigener, sorgfältiger Schritt vorgemerkt.

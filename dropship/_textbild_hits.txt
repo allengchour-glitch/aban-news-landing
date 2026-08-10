@@ -6237,3 +6237,4 @@ gid://shopify/Product/15447884267905	92->2	Quadratisches Halstuch mit UV-Schutz
 gid://shopify/Product/15447885480321	136->0	Vielseitiger Vintage-Halsschal
 gid://shopify/Product/15447886987649	43->0	Seidenschal mit Magnetverschluss
 gid://shopify/Product/15447887970689	29->0	Hut, Handschuhe & Schal 3-in-1 Set
+gid://shopify/Product/15448875925889	10->0	Lederarmband für Apple Watch

@@ -28,8 +28,13 @@ def textscore(im):
             prev=d
         if runs>=8 and dark<140: rows+=1
     return rows
-Q='''query($c:String){products(first:50,after:$c,query:"status:ACTIVE"){pageInfo{hasNextPage endCursor}
- nodes{id title media(first:6){nodes{id ... on MediaImage{image{url}}}}}}}'''
+# Optionaler Filter, damit einzelne Kategorien vorgezogen werden können. Anlass: die Uhren
+# (904 Artikel) haben auffällig oft eine Lieferanten-Collage als Hauptbild — mit englischem
+# Werbetext und fremder Marke. Ohne Filter käme die Kategorie erst nach Zehntausenden anderer
+# Produkte an die Reihe.
+QUERY=os.environ.get("QUERY","status:ACTIVE")
+Q=f'''query($c:String){{products(first:50,after:$c,query:"{QUERY}"){{pageInfo{{hasNextPage endCursor}}
+ nodes{{id title media(first:6){{nodes{{id ... on MediaImage{{image{{url}}}}}}}}}}}}}}'''
 # Cursor und Ledger im Repo, nicht in /tmp: dieser Lauf lädt für JEDES Produkt bis zu fünf
 # Bilder herunter und bewertet sie. Geht der Cursor bei einem Container-Wipe verloren,
 # beginnt die Bildanalyse wieder bei null — das kostet Stunden und Bandbreite umsonst.

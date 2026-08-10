@@ -184,3 +184,8 @@ gid://shopify/Product/15454039245185	ok	Männer Echtleder-Umhängetasche grosser
 gid://shopify/Product/15448881627521	ok	KM7 SE Android 11 TV Box
 gid://shopify/Product/15449466962305	nicht-versendbar	Fettreduziergerät
 gid://shopify/Product/15449467224449	nicht-versendbar	Fitness-Yoga-Stuhl
+gid://shopify/Product/15448847221121	ok	Smartphone Game Controller Black Warrior
+gid://shopify/Product/15463782711681	nicht-versendbar	Faltbare Haustiertransporttasche für unterwegs
+gid://shopify/Product/15455161024897	nicht-versendbar	Bambus-Käsebrett mit 4 Edelstahl-Messer
+gid://shopify/Product/15459531096449	nicht-versendbar	Turmventilator mit Nasskühlung & Ionentechnologie
+gid://shopify/Product/15453773824385	ok	Black Tech Power-Mechanik Marathon-Laufschuhe
