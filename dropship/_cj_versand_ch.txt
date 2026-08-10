@@ -147,3 +147,8 @@ gid://shopify/Product/15446272639361	ok	LED Laser Offroad-Scheinwerfer
 gid://shopify/Product/15448884609409	ok	Elektrisches Verdunkelungsrollo mit Solarpanel
 gid://shopify/Product/15450757955969	nicht-versendbar	Waschmaschinen-Schrank 64x25
 gid://shopify/Product/15453898998145	nicht-versendbar	Kinder-Trolleykoffer 20 Zoll erweiterbar
+gid://shopify/Product/15449484067201	nicht-versendbar	Rollstuhl für Hunde mit Hinterbein-Lähmung
+gid://shopify/Product/15449112707457	ok	Patchwork Denim-Jacke mit Reverskragen
+gid://shopify/Product/15448657789313	ok	Leinen-Blazer mit Pailletten und Stehkragen
+gid://shopify/Product/15467104010625	nicht-versendbar	Willkommens-Wandbild mit Beleuchtung
+gid://shopify/Product/15481681314177	ok	USB Kondensatormikrofon für Desktop & Notebook

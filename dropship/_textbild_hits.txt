@@ -6220,3 +6220,16 @@ gid://shopify/Product/15447571104129	12->0	Wiederaufladbares Batterie-Set Nr. 5 
 gid://shopify/Product/15447572218241	74->2	BLTouch Auto-Leveling Sensor Upgrade-Kit
 gid://shopify/Product/15447572513153	24->3	Prusa Mini Magnetisches Heizbett mit PEI-Platte
 gid://shopify/Product/15447572775297	24->3	Prusa Mini Magnet-Heizbett mit PEI-Platte
+gid://shopify/Product/15447610458497	32->0	Corduroy Rucksack im Preppy-Stil
+gid://shopify/Product/15447612883329	13->0	Sportliche Umhängetasche für Alltag und Freizeit
+gid://shopify/Product/15447613145473	21->0	Wasserdichte Crossbody Bag für Herren
+gid://shopify/Product/15447614554497	12->0	Tier-Print Rucksack mit viel Stauraum
+gid://shopify/Product/15447615046017	84->0	Minimalistische Crossbody Bag für Herren
+gid://shopify/Product/15447615865217	46->0	Faltbare, wasserdichte Sport-Brusttasche
+gid://shopify/Product/15447617470849	26->0	Samt-Lendenkissenbezug ohne Füllung (6er-Set)
+gid://shopify/Product/15447617700225	32->0	Samt-Lendenkissenhülle, 4er-Set
+gid://shopify/Product/15447618453889	124->0	Sofa Kissenbezug «Quiet Years»
+gid://shopify/Product/15447618978177	105->0	Kissenbezug mit Quasten im -Stil
+gid://shopify/Product/15447629758849	11->0	Lockenstab für Damen, Gradient Purple oder Champagne Gold
+gid://shopify/Product/15447630872961	34->0	Automatischer Lockenstab mit Ionen-Funktion
+gid://shopify/Product/15447866311041	22->1	30W GaN Schnellladegerät mit einziehbaren Steckern
