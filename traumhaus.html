@@ -748,14 +748,25 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
        Luft haengen oder im Hang stecken. */
     function bergGeo(rad,hoch,seed,fussY,einzel){
       var NR=12, NA=24;
+      /* ⚠️ WARUM ES TROTZ MEHRERER GIPFEL NACH KEGEL AUSSAH: die Nebengipfel lagen
+         im KREIS um die Mitte verteilt und der Grundriss war ein Kreis. Rundum
+         gleich weit, rundum gleich hoch — das ergibt wieder Rotationssymmetrie,
+         und die liest das Auge immer als Kegel, egal wie viele Spitzen oben sind.
+         Echte Massive haben eine RICHTUNG: ein Grat zieht durch, die Gipfel sitzen
+         darauf aufgereiht, quer dazu faellt es steil ab.
+         Darum jetzt: eine Gratachse pro Berg, die Gipfel liegen entlang dieser
+         Achse (mit wenig Streuung quer), und der Grundriss ist eine Ellipse. */
+      var gratA=rnd(seed,2)*6.283, gcs=Math.cos(gratA), gsn=Math.sin(gratA);
+      var streck=1.35+rnd(seed,4)*0.55;            // Laenge des Grats gegen die Breite
       var gip=[{dx:0,dz:0,h:hoch,s:1.0}];
       if(!einzel){
         var ng=2+Math.floor(rnd(seed,1)*3);        // 2..4 Gipfel je Massiv
         for(var k=1;k<ng;k++){
-          var ga=rnd(seed,10+k)*6.283, gd=rad*(0.26+rnd(seed,20+k)*0.36);
-          gip.push({dx:Math.cos(ga)*gd, dz:Math.sin(ga)*gd,
-                    h:hoch*(0.52+rnd(seed,30+k)*0.34),
-                    s:0.50+rnd(seed,40+k)*0.28});}
+          var laengs=(rnd(seed,10+k)*2-1)*rad*0.62;   // entlang des Grats
+          var quer  =(rnd(seed,20+k)*2-1)*rad*0.14;   // nur wenig daneben
+          gip.push({dx:gcs*laengs-gsn*quer, dz:gsn*laengs+gcs*quer,
+                    h:hoch*(0.58+rnd(seed,30+k)*0.32),
+                    s:0.42+rnd(seed,40+k)*0.22});}
       }
       /* 1,7 gab Nadeln. 1,45 ist noch deutlich konkav — steil oben, flach am
          Fuss — aber die Gipfel bleiben Berge und werden keine Zinnen. */
@@ -765,7 +776,12 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       function H(x,z){
         var hh=0;
         for(var g=0;g<gip.length;g++){
-          var G=gip[g], d=Math.hypot(x-G.dx,z-G.dz)/(rad*G.s);
+          var G=gip[g];
+          /* Abstand in GRAT-Koordinaten messen: laengs gestaucht, quer gedehnt —
+             daraus wird aus jeder Gipfelglocke ein Rueckhang statt einer Kuppel. */
+          var ux=x-G.dx, uz=z-G.dz;
+          var ul=(gcs*ux+gsn*uz)/streck, uq=(-gsn*ux+gcs*uz)*0.92;
+          var d=Math.hypot(ul,uq)/(rad*G.s);
           if(d<1){var v=G.h*Math.pow(1-d,EXP); if(v>hh)hh=v;}}
         return hh;
       }
@@ -780,7 +796,10 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
              Flanke durch, statt punktweise zu zittern. */
           var kerbe=einzel?1:(1+(rnd(Math.round(aa*40),seed+3)-0.5)*0.22);
           var rr=ringR[ri2]*kerbe;
-          var px=Math.cos(aa)*rr, pz=Math.sin(aa)*rr;
+          /* Der Raster-Ring wird laengs des Grats mitgestreckt, sonst endet die
+             Flaeche vor dem Berg und der Grat wird abgeschnitten. */
+          var lx=Math.cos(aa)*rr*streck, lz=Math.sin(aa)*rr;
+          var px=gcs*lx-gsn*lz, pz=gsn*lx+gcs*lz;
           var py=H(px,pz);
           if(!einzel)py*=1+(rnd(ri2*97+ai,seed+9)-0.5)*0.07;
           pos.push(px,py-hoch*0.0,pz);}}
