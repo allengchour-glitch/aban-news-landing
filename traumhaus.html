@@ -870,7 +870,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       return g2;
     }
     var QSPERR=[[60,330,200,80],[0,216,110,60],[-190,212,80,60],[172,0,70,90],
-                [60,-330,320,320]];   // Grosser Berg
+                [60,-420,300,300]];   // Grosser Berg
     var N=34;
     for(var i=0;i<N;i++){
       var a=i/N*6.283+((i*13)%7)*0.02;
@@ -916,7 +916,15 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
 
      Profil: 190 m auf 300 m Radius mit Exponent 1,5. Mittlere Neigung rund 31
      Grad — steil genug fuer einen Berg, flach genug zum Hochlaufen. */
-  window.GBERG={x:60,z:-330,rad:300,hoch:190,exp:1.5,grat:0.7};
+  /* ⚠️ ERST STAND ER BEI (60|-330) MIT RADIUS 300 — und griff damit bis z = -30
+     aus, also mitten in die Stadt. Im Bild standen die Hochhaeuser im Hang, und
+     schlimmer: `gelaendeH` lieferte im Nordteil der Stadt bis zu 50 m, waehrend
+     die Gebaeude auf y = 0 blieben. Ein begehbarer Berg darf die bebaute Flaeche
+     NICHT beruehren.
+     Jetzt: Fuss bei z = -160, Stadtrand liegt bei z = -130 — 30 m Luft. Und der
+     Mittelpunkt liegt 424 m vom Zentrum, damit innerhalb der Kamera-Fernebene
+     (600); weiter weg waere er aus der Stadt gar nicht zu sehen. */
+  window.GBERG={x:60,z:-420,rad:200,hoch:170,exp:1.5,grat:0.7};
   window.gelaendeH=function(x,z){
     /* ⚠️ Erste Fassung war H = hoch*(1-r/rad)^exp — also rotationssymmetrisch,
        und damit exakt das, was als „Kegel" bemaengelt wurde. Die Form muss aus
@@ -7352,7 +7360,9 @@ function steerMove(s9,sv,dt,sprint){
      Gewerbe Ost (x 172), Sportpark (z 216), Freizeitpark (x −190), Bauernhof (z −196),
      Achterbahn (z 234) und den Strand (x −135). Der Schwarm hat es als P0 gemeldet.
      Jetzt umfasst die Grenze die ganze bebaute Welt mit Rand. */
-  var lim=300,limZ=400;   /* Freizeitpark liegt jetzt bei z=330 — vorher war er unerreichbar */
+  /* limZ von 400 auf 520: sonst endet die Welt vor dem Grossen Berg (Fuss bei
+     z = -160, Gipfel bei -420) und man kann ihn gar nicht besteigen. */
+  var lim=340,limZ=520;
   nx=Math.max(-lim,Math.min(lim,nx));nz=Math.max(-limZ,Math.min(limZ,nz));
   function cellX(w){return Math.round(w/CS+GW/2-0.5);}
   function cellY(w){return Math.round(w/CS+GH/2-0.5);}
