@@ -748,14 +748,25 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
        Luft haengen oder im Hang stecken. */
     function bergGeo(rad,hoch,seed,fussY,einzel){
       var NR=12, NA=24;
+      /* ⚠️ WARUM ES TROTZ MEHRERER GIPFEL NACH KEGEL AUSSAH: die Nebengipfel lagen
+         im KREIS um die Mitte verteilt und der Grundriss war ein Kreis. Rundum
+         gleich weit, rundum gleich hoch — das ergibt wieder Rotationssymmetrie,
+         und die liest das Auge immer als Kegel, egal wie viele Spitzen oben sind.
+         Echte Massive haben eine RICHTUNG: ein Grat zieht durch, die Gipfel sitzen
+         darauf aufgereiht, quer dazu faellt es steil ab.
+         Darum jetzt: eine Gratachse pro Berg, die Gipfel liegen entlang dieser
+         Achse (mit wenig Streuung quer), und der Grundriss ist eine Ellipse. */
+      var gratA=rnd(seed,2)*6.283, gcs=Math.cos(gratA), gsn=Math.sin(gratA);
+      var streck=1.35+rnd(seed,4)*0.55;            // Laenge des Grats gegen die Breite
       var gip=[{dx:0,dz:0,h:hoch,s:1.0}];
       if(!einzel){
         var ng=2+Math.floor(rnd(seed,1)*3);        // 2..4 Gipfel je Massiv
         for(var k=1;k<ng;k++){
-          var ga=rnd(seed,10+k)*6.283, gd=rad*(0.26+rnd(seed,20+k)*0.36);
-          gip.push({dx:Math.cos(ga)*gd, dz:Math.sin(ga)*gd,
-                    h:hoch*(0.52+rnd(seed,30+k)*0.34),
-                    s:0.50+rnd(seed,40+k)*0.28});}
+          var laengs=(rnd(seed,10+k)*2-1)*rad*0.62;   // entlang des Grats
+          var quer  =(rnd(seed,20+k)*2-1)*rad*0.14;   // nur wenig daneben
+          gip.push({dx:gcs*laengs-gsn*quer, dz:gsn*laengs+gcs*quer,
+                    h:hoch*(0.58+rnd(seed,30+k)*0.32),
+                    s:0.42+rnd(seed,40+k)*0.22});}
       }
       /* 1,7 gab Nadeln. 1,45 ist noch deutlich konkav — steil oben, flach am
          Fuss — aber die Gipfel bleiben Berge und werden keine Zinnen. */
@@ -765,7 +776,12 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       function H(x,z){
         var hh=0;
         for(var g=0;g<gip.length;g++){
-          var G=gip[g], d=Math.hypot(x-G.dx,z-G.dz)/(rad*G.s);
+          var G=gip[g];
+          /* Abstand in GRAT-Koordinaten messen: laengs gestaucht, quer gedehnt —
+             daraus wird aus jeder Gipfelglocke ein Rueckhang statt einer Kuppel. */
+          var ux=x-G.dx, uz=z-G.dz;
+          var ul=(gcs*ux+gsn*uz)/streck, uq=(-gsn*ux+gcs*uz)*0.92;
+          var d=Math.hypot(ul,uq)/(rad*G.s);
           if(d<1){var v=G.h*Math.pow(1-d,EXP); if(v>hh)hh=v;}}
         return hh;
       }
@@ -780,7 +796,10 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
              Flanke durch, statt punktweise zu zittern. */
           var kerbe=einzel?1:(1+(rnd(Math.round(aa*40),seed+3)-0.5)*0.22);
           var rr=ringR[ri2]*kerbe;
-          var px=Math.cos(aa)*rr, pz=Math.sin(aa)*rr;
+          /* Der Raster-Ring wird laengs des Grats mitgestreckt, sonst endet die
+             Flaeche vor dem Berg und der Grat wird abgeschnitten. */
+          var lx=Math.cos(aa)*rr*streck, lz=Math.sin(aa)*rr;
+          var px=gcs*lx-gsn*lz, pz=gsn*lx+gcs*lz;
           var py=H(px,pz);
           if(!einzel)py*=1+(rnd(ri2*97+ai,seed+9)-0.5)*0.07;
           pos.push(px,py-hoch*0.0,pz);}}
@@ -850,7 +869,8 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       g2.setAttribute("color",new THREE.BufferAttribute(col,3));
       return g2;
     }
-    var QSPERR=[[60,330,200,80],[0,216,110,60],[-190,212,80,60],[172,0,70,90]];
+    var QSPERR=[[60,330,200,80],[0,216,110,60],[-190,212,80,60],[172,0,70,90],
+                [60,-420,300,300]];   // Grosser Berg
     var N=34;
     for(var i=0;i<N;i++){
       var a=i/N*6.283+((i*13)%7)*0.02;
@@ -882,7 +902,137 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
          reicht damit bis r 132 nach innen, weit vor die Bergmitte. Wer spaeter
          etwas ins Vorland setzt, braucht diese Zahl, sonst steht es im Fels. */
       (window._berge=window._berge||[]).push({x:bx,z:bz,r:rad*1.38});}
-    /* Vorgelagerte Huegel als Uebergang von der Ebene ins Gebirge */
+    /* ═══ 🏔️ DER GROSSE BERG — begehbar, befahrbar ═══════════════════════════════
+     Der Wunsch war: EIN richtig grosser Berg, den man selbst besteigen kann, mit
+     Gehweg und Fahrweg. Das geht nur, wenn die Spielfigur ihre Hoehe aus dem
+     GELAENDE bekommt — bisher stand sie immer auf y = 0 (`updSim` setzte die
+     Meshhoehe hart auf 0).
+
+     Darum ist die Form KEINE Mesh-Dekoration, sondern eine Funktion:
+         gelaendeH(x,z)  ->  Hoehe an dieser Stelle
+     Aus derselben Funktion entstehen die Sichtflaeche, die Wege UND die Hoehe der
+     Figur. Damit koennen Bild und Begehbarkeit gar nicht auseinanderlaufen —
+     der klassische Fehler bei begehbarem Gelaende.
+
+     Profil: 190 m auf 300 m Radius mit Exponent 1,5. Mittlere Neigung rund 31
+     Grad — steil genug fuer einen Berg, flach genug zum Hochlaufen. */
+  /* ⚠️ ERST STAND ER BEI (60|-330) MIT RADIUS 300 — und griff damit bis z = -30
+     aus, also mitten in die Stadt. Im Bild standen die Hochhaeuser im Hang, und
+     schlimmer: `gelaendeH` lieferte im Nordteil der Stadt bis zu 50 m, waehrend
+     die Gebaeude auf y = 0 blieben. Ein begehbarer Berg darf die bebaute Flaeche
+     NICHT beruehren.
+     Jetzt: Fuss bei z = -160, Stadtrand liegt bei z = -130 — 30 m Luft. Und der
+     Mittelpunkt liegt 424 m vom Zentrum, damit innerhalb der Kamera-Fernebene
+     (600); weiter weg waere er aus der Stadt gar nicht zu sehen. */
+  window.GBERG={x:60,z:-420,rad:200,hoch:170,exp:1.5,grat:0.7};
+  window.gelaendeH=function(x,z){
+    /* ⚠️ Erste Fassung war H = hoch*(1-r/rad)^exp — also rotationssymmetrisch,
+       und damit exakt das, was als „Kegel" bemaengelt wurde. Die Form muss aus
+       derselben Funktion kommen wie die Begehbarkeit, darum steckt der Grat
+       HIER drin und nicht in der Geometrie:
+         * `mod` dehnt den Grundriss zur Ellipse (cos 2a) und legt Rippen darauf,
+         * zwei Nebengipfel sitzen auf der Gratachse und werden per max()
+           verschmolzen — dort, wo sich zwei Kuppen schneiden, entsteht ein Grat.
+       Alles analytisch, also billig genug fuer jeden Frame der Spielfigur. */
+    var G=window.GBERG;
+    var ux=x-G.x, uz=z-G.z, r=Math.hypot(ux,uz);
+    if(r>G.rad*1.30)return 0;
+    var a=Math.atan2(uz,ux);
+    function kuppe(cx0,cz0,hh,rr0){
+      var vx=x-cx0, vz=z-cz0, vr=Math.hypot(vx,vz);
+      var va=Math.atan2(vz,vx);
+      var mod=1+0.24*Math.cos(2*(va-G.grat))+0.075*Math.sin(5*va+1.1)+0.045*Math.sin(9*va+0.4);
+      var d=vr/(rr0*mod);
+      return d>=1?0:hh*Math.pow(1-d,G.exp);
+    }
+    var h=kuppe(G.x,G.z,G.hoch,G.rad);
+    var c1=Math.cos(G.grat),s1=Math.sin(G.grat);
+    h=Math.max(h,kuppe(G.x+c1*G.rad*0.46,G.z+s1*G.rad*0.46,G.hoch*0.62,G.rad*0.52));
+    h=Math.max(h,kuppe(G.x-c1*G.rad*0.52,G.z-s1*G.rad*0.52,G.hoch*0.48,G.rad*0.46));
+    return h;
+  };
+  (function grosserBerg(){
+    var G=window.GBERG, NR=26, NA=48;
+    var pos=[],idx=[],col=[];
+    for(var ri=0;ri<=NR;ri++){
+      /* Raster bis 1,32*rad: der Grundriss ist jetzt eine Ellipse mit Nebengipfeln
+         und reicht weiter als der Grundradius. Punkte ausserhalb liefern Hoehe 0
+         und bilden einen flachen Saum — besser als ein abgeschnittener Grat. */
+      var rr=G.rad*1.32*Math.pow(ri/NR,0.80);
+      for(var ai=0;ai<NA;ai++){
+        var aa=ai/NA*6.283;
+        /* Gratrippen wie bei der Kette, aber flacher — der Berg soll begehbar
+           bleiben und keine Kletterwand werden. */
+        var kerbe=1+Math.sin(aa*7+1.3)*0.045+Math.sin(aa*13)*0.025;
+        var px=G.x+Math.cos(aa)*rr*kerbe, pz=G.z+Math.sin(aa)*rr*kerbe;
+        pos.push(px, window.gelaendeH(px,pz), pz);
+      }
+    }
+    for(var r3=0;r3<NR;r3++)for(var a3=0;a3<NA;a3++){
+      var a4=(a3+1)%NA,o0=r3*NA,o1=(r3+1)*NA;
+      idx.push(o0+a3,o1+a4,o1+a3, o0+a3,o0+a4,o1+a4);
+    }
+    var g=new THREE.BufferGeometry();
+    g.setAttribute("position",new THREE.Float32BufferAttribute(pos,3));
+    g.setIndex(idx); g.computeVertexNormals();
+    var np=g.attributes.position,nn=g.attributes.normal,cc=new Float32Array(np.count*3);
+    for(var v=0;v<np.count;v++){
+      var wy=np.getY(v), ny=nn.getY(v);
+      var fels=0.16+((v*37)%13)*0.004;
+      var c0,c1,c2;
+      if(wy<26){                                  // Fuss: Almwiese
+        var mg=Math.min(1,(26-wy)/22);
+        c0=fels*(1-mg)+0.13*mg; c1=fels*(1-mg)+0.22*mg; c2=fels*(1-mg)+0.09*mg;
+      }else{ c0=fels; c1=fels*1.01; c2=fels*1.03; }
+      var m=Math.min(1,Math.max(0,(wy-118)/28));  // Schneekappe
+      if(ny<0.22)m*=0.25+(Math.max(0,ny)/0.22)*0.75;
+      c0=c0+(0.95-c0)*m; c1=c1+(0.97-c1)*m; c2=c2+(1.00-c2)*m;
+      cc[v*3]=c0;cc[v*3+1]=c1;cc[v*3+2]=c2;
+    }
+    g.setAttribute("color",new THREE.BufferAttribute(cc,3));
+    var bm=new THREE.Mesh(g,new THREE.MeshStandardMaterial({vertexColors:true,roughness:1,
+                                                            flatShading:true,envMapIntensity:0.2}));
+    bm.userData.gelaende=1; bm.userData.nieAusblenden=1; bm.frustumCulled=false;
+    bm.receiveShadow=true; scene.add(bm);
+
+    /* 🛣️ FAHRWEG: Serpentine vom Fuss zum Gipfel. Sie folgt derselben
+       Hoehenfunktion, liegt also IMMER auf dem Hang — kein Schweben, kein
+       Versinken, egal wie sich das Profil spaeter aendert. */
+    function band(vonR,bisR,uml,breite,hoehe,mat,stufen){
+      var pp=[],ii=[],vb=0;
+      for(var i=0;i<stufen;i++){
+        var t0=i/stufen, t1=(i+1)/stufen;
+        function pkt(t,sd){
+          var rr=vonR+(bisR-vonR)*t, aa=t*uml*6.283;
+          var cx1=G.x+Math.cos(aa)*rr, cz1=G.z+Math.sin(aa)*rr;
+          var qx=-Math.sin(aa), qz=Math.cos(aa);
+          var ex=cx1+qx*sd*breite/2, ez=cz1+qz*sd*breite/2;
+          return [ex, window.gelaendeH(ex,ez)+hoehe, ez];
+        }
+        var A=pkt(t0,-1),B=pkt(t0,1),C=pkt(t1,1),D=pkt(t1,-1);
+        [A,B,C,D].forEach(function(P){pp.push(P[0],P[1],P[2]);});
+        ii.push(vb,vb+2,vb+1, vb,vb+3,vb+2); vb+=4;
+      }
+      var gg=new THREE.BufferGeometry();
+      gg.setAttribute("position",new THREE.Float32BufferAttribute(pp,3));
+      gg.setIndex(ii); gg.computeVertexNormals();
+      var mm=new THREE.Mesh(gg,mat); mm.receiveShadow=true; mm.frustumCulled=false;
+      mm.userData.nieAusblenden=1; scene.add(mm); return mm;
+    }
+    band(G.rad*0.98, G.rad*0.05, 3.0, 7.0, 0.22, betMat(0x4a4a53,0.92), 300);   // Fahrweg
+    band(G.rad*0.96, G.rad*0.04, 1.35, 2.2, 0.26, betMat(0xb9ae95,0.98), 220);  // Wanderweg
+
+    /* Gipfelplateau mit Kreuz und Aussichtsbank */
+    var gy=window.gelaendeH(G.x,G.z);
+    var pl=new THREE.Mesh(new THREE.CylinderGeometry(7,8.5,0.6,16),betMat(0x8f8a80,0.95));
+    pl.position.set(G.x,gy+0.1,G.z); pl.receiveShadow=true; scene.add(pl);
+    var kr1=new THREE.Mesh(new THREE.BoxGeometry(0.35,6.5,0.35),stdMat(0x6a4a2e,0.8));
+    kr1.position.set(G.x,gy+3.6,G.z); kr1.castShadow=true; scene.add(kr1);
+    var kr2=new THREE.Mesh(new THREE.BoxGeometry(2.6,0.35,0.35),stdMat(0x6a4a2e,0.8));
+    kr2.position.set(G.x,gy+5.2,G.z); scene.add(kr2);
+    if(window.WORLD_POIS)window.WORLD_POIS.push([G.x,G.z,"🏔️","Grosser Berg"]);
+  })();
+  /* Vorgelagerte Huegel als Uebergang von der Ebene ins Gebirge */
     var vhM=new THREE.MeshStandardMaterial({color:0x8faa72,roughness:1,flatShading:true,envMapIntensity:0.16});
     for(var v=0;v<26;v++){
       /* Die Vorhuegel sind der Uebergang von der Ebene ins Gebirge — sie muessen
@@ -6810,7 +6960,13 @@ function updSim(s,si,dt,now){
     var moving=(s.state==="walk"||s.state==="steer"||s.state==="dance"||(MPs&&!mpHost&&s.net&&s._netMoved));
     if(s.walkAction)s.walkAction.paused=!moving;
     if(s.state==="dance"&&s.walkAction)s.walkAction.timeScale=1.5;else if(s.walkAction)s.walkAction.timeScale=1.1;}
-  m.position.set(s.x,0,s.z);m.rotation.set(0,s.rot,0);
+  /* 🏔️ GELAENDEHOEHE. Bisher stand jede Figur hart auf y = 0 — auf einem Berg
+     waere sie im Fels gelaufen. Die Hoehe kommt aus derselben Funktion, aus der
+     auch der Berg und seine Wege gebaut sind; Bild und Begehbarkeit koennen
+     damit nicht auseinanderlaufen. */
+  var _gy=window.gelaendeH?window.gelaendeH(s.x,s.z):0;
+  s._gelH=_gy;
+  m.position.set(s.x,_gy,s.z);m.rotation.set(0,s.rot,0);
   if(s.state==="dance"){
     var dtm=now*0.006;
     m.rotation.y=s.rot+Math.sin(dtm)*0.7;m.position.y=Math.abs(Math.sin(dtm*1.5))*0.18;
@@ -6845,13 +7001,19 @@ function updCam(){
       _yaw=carRot;_ex=_a9.position.x+Math.sin(_yaw)*0.35;_ez=_a9.position.z+Math.cos(_yaw)*0.35;_ey=_a9.position.y+1.55;}
     else{var _me=followSim||sims[meinSi()]||sims[0];if(!_me){egoMode=false;return;}
       _yaw=Math.PI+camA; /* Blick = Kamera-Yaw → Steuerung bleibt „läuft wohin du schaust" */
-      _ex=_me.x;_ez=_me.z;_ey=1.42+(window._camHebung||0);   /* Achterbahn: Sitzhoehe mitnehmen */
+      /* Ego-Hoehe: Fahrgeschaeft ODER Gelaende — nie beides addieren, sonst
+         steht man beim Einsteigen auf einem Berg doppelt hoch. */
+      _ex=_me.x;_ez=_me.z;
+      _ey=1.42+Math.max(window._camHebung||0, _me._gelH||0);
       if(_me.mesh&&_me.mesh.visible)_me.mesh.visible=false; /* eigenen Körper ausblenden (sonst Blick in den Kopf) */}
     var _pit=(0.8-camB)*0.9;
     camera.position.set(_ex,_ey,_ez);
     camera.lookAt(_ex+Math.sin(_yaw)*Math.cos(_pit),_ey+Math.sin(_pit),_ez+Math.cos(_yaw)*Math.cos(_pit));
     return;}
-  var _hb=window._camHebung||0;
+  /* Verfolgerkamera: dieselbe Regel. Ohne die Gelaendehoehe blieb die Kamera am
+     Boden, waehrend die Figur den Berg hochlief — man sah nur noch Hang. */
+  var _hb=Math.max(window._camHebung||0,
+                   (followSim&&followSim._gelH)||(sims[meinSi()]&&sims[meinSi()]._gelH)||0);
   camera.position.set(camTx+Math.sin(camA)*Math.cos(camB)*camR,Math.sin(camB)*camR+2+_hb,camTz+Math.cos(camA)*Math.cos(camB)*camR);
   camera.lookAt(camTx,0.6+_hb,camTz);}
 /* ═══════ 🎢 ACHTERBAHN FAHREN (Ego-Perspektive, koop-tauglich) ═══════════════════
@@ -7209,7 +7371,9 @@ function steerMove(s9,sv,dt,sprint){
      Gewerbe Ost (x 172), Sportpark (z 216), Freizeitpark (x −190), Bauernhof (z −196),
      Achterbahn (z 234) und den Strand (x −135). Der Schwarm hat es als P0 gemeldet.
      Jetzt umfasst die Grenze die ganze bebaute Welt mit Rand. */
-  var lim=300,limZ=400;   /* Freizeitpark liegt jetzt bei z=330 — vorher war er unerreichbar */
+  /* limZ von 400 auf 520: sonst endet die Welt vor dem Grossen Berg (Fuss bei
+     z = -160, Gipfel bei -420) und man kann ihn gar nicht besteigen. */
+  var lim=340,limZ=520;
   nx=Math.max(-lim,Math.min(lim,nx));nz=Math.max(-limZ,Math.min(limZ,nz));
   function cellX(w){return Math.round(w/CS+GW/2-0.5);}
   function cellY(w){return Math.round(w/CS+GH/2-0.5);}
