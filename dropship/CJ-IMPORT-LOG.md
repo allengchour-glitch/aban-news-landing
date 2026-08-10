@@ -4193,3 +4193,40 @@ Kein Fulfillment-Risiko: Lieferprofile bestimmen nur, was der Kunde zahlt.
 Kasse nicht bestellbar. Alle vier sind aber bereits DRAFT (zwei davon heute gedraftet).
 Rechtsseiten (Impressum, AGB, Widerruf, Datenschutz, Versand), Kontakt, robots.txt, sitemap.xml
 und die Suche liefern alle HTTP 200.
+
+## 🎨 POD-Editor: Rückseite war abgeschaltet, nicht kaputt (User-Frage 2026-08-10)
+
+**Der Editor kann die Rückseite von Anfang an** — `designer.js` legt eine zweite Registerkarte an,
+**aber nur wenn sich das Rückbild vom Vorderbild unterscheidet**:
+`if(imgBack && imgBack !== imgFront) sides.push({k:'back', …})`.
+Beim «Klassischen Unisex T-Shirt» standen in `data-img-front` und `data-img-back` **dieselbe**
+Datei (`blank-tee-white.png`) — die Bedingung war also nie erfüllt, die Registerkarte blieb weg.
+
+**Ursache im Erzeuger:** `pod_inject_designer.mjs` setzte den Rückwert bewusst auf leer, sobald es
+für die Vorderseite eine helle Produkt-Vorlage gab (`snippet(bg, tpl?'':…)`). Gedacht war das für
+Poster; getroffen hat es alle Textilien mit Farbvorlage.
+
+**Behoben:**
+1. `data-img-back` zeigt jetzt auf das **echte Printful-Rückenmockup**
+   (`unisex-classic-tee-white-back-…jpg`, geprüft: sauberer, gerader weisser Rücken ohne Aufdruck) —
+   die Registerkarte «🔄 Hinten» ist live.
+2. `pod_inject_designer.mjs` unterdrückt die Rückseite nicht mehr wegen einer Front-Vorlage;
+   nur Poster bleiben einseitig.
+3. **Zweiter, versteckter Fehler in `designer.js`:** `variantBg()` wertete die Farb-Map
+   (`data-img-map`) **unabhängig von der aktiven Seite** aus. Bei einem Farbprodukt hätte die
+   Rückseite weiterhin die **Vorderansicht** der gewählten Farbe gezeigt — der Kunde hätte auf
+   einem Vorderbild gestaltet und geglaubt, es sei der Rücken. Das verstösst direkt gegen
+   Projektregel 4 («Vorschau muss dem echten Produkt entsprechen»). Die Map gilt jetzt nur noch
+   vorne; für hinten kann `data-img-map-back` mitgegeben werden.
+4. `automation/pod_editor_qa.mjs`: **30 Editor-Produkte, 0 Befunde.**
+
+**Grenze, ehrlich benannt:** Von 38 Editor-Produkten hat **nur dieses eine** ein echtes
+Rückenmockup; beim Fan-Trikot (DRAFT) gibt es ebenfalls eines. Für alle übrigen fehlt schlicht das
+Rückseiten-Blank — ohne echtes Foto lässt sich keine ehrliche Vorschau bauen. Nächster Schritt
+wäre, die Rückansichten über den Printful-Mockup-Generator zu erzeugen; die Katalog-API liefert
+pro Farbe nur Vorderfotos.
+
+⚠️ **Achtung für später:** Die Storefront lädt **nicht** `abannews.com/pod/designer.js`, sondern
+`lspod-designer-v2.js` vom Shopify-CDN. Die Repo-Datei `pod/designer-cdn-v2.js` weicht von der
+Live-Fassung ab (verschiedene Prüfsummen). Änderungen an `designer.js` wirken erst nach einem
+neuen CDN-Upload — und dessen URL kommt laut Regel 4 **aus der Upload-Antwort, nie geraten.**

@@ -78,7 +78,13 @@ do{
     const cmap=colorMapFor(p, vAll);     // {variantId: farb-template} → Editor zeigt gewählte Farbe
     const isPoster=(p.productType||'').toLowerCase()==='poster' || (p.tags||[]).map(t=>String(t).toLowerCase()).includes('pod-poster');
     const clean=stripOld(p.descriptionHtml||'');
-    const newDesc=snippet(bg, tpl?'':(isPoster?'':back), vid, isPoster, cmap)+clean;
+    // Rückseite NICHT mehr unterdrücken, nur weil es eine helle Front-Vorlage (tpl) gibt.
+    // Bisher fiel `back` in diesem Fall auf '' zurück — dadurch fehlte die Rückseiten-Registerkarte
+    // beim T-Shirt, obwohl das echte Printful-Rückenmockup vorliegt (User-Meldung 2026-08-10).
+    // Poster bleiben einseitig. Der Editor blendet die Registerkarte ohnehin nur ein, wenn sich
+    // das Rückbild vom Vorderbild unterscheidet.
+    const backImg=isPoster?'':(back&&back!==bg?back:'');
+    const newDesc=snippet(bg, backImg, vid, isPoster, cmap)+clean;
     if(newDesc===p.descriptionHtml){ console.log(`= ${p.title}: unverändert`); continue; }
     if(DRY){ console.log(`DRY ${p.title}: front=${front.split('/').pop()} back=${back?back.split('/').pop():'–'}`); changed++; continue; }
     const r=await gql(tok,M,{p:{id:p.id,descriptionHtml:newDesc}});

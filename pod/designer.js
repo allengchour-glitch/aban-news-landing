@@ -80,6 +80,7 @@
     var fallbackVar=container.getAttribute('data-variant')||'';
     // Varianten-bewusst: optionale Map {variantId: bildUrl} → Canvas zeigt die gewählte Variante (z.B. Farbe)
     var imgMap={}; try{ imgMap=JSON.parse(container.getAttribute('data-img-map')||'{}')||{}; }catch(e){ imgMap={}; }
+    var imgMapBack={}; try{ imgMapBack=JSON.parse(container.getAttribute('data-img-map-back')||'{}')||{}; }catch(e){ imgMapBack={}; }
     // Seitenverhältnis + Druckauflösung pro Produkt (Default: quadratisch 1200px → unverändert für bestehende Produkte)
     var RATIO=parseFloat(container.getAttribute('data-ratio')); if(!(RATIO>0)) RATIO=1;        // Höhe/Breite
     var REF=parseInt(container.getAttribute('data-ref'),10); if(!(REF>=600)) REF=1200;          // Basis-/Druckbreite px
@@ -90,7 +91,19 @@
     function curLayers(){ return state.layers[state.active]; }
     function curImg(){ for(var i=0;i<sides.length;i++){ if(sides[i].k===state.active) return sides[i].img; } return imgFront; }
     // Hintergrundbild = Variantenbild (falls Map-Treffer) sonst Seitenbild
-    function variantBg(){ try{ var vid=getVariantId(findForm(),fallbackVar); if(vid&&imgMap[vid]) return imgMap[vid]; }catch(e){} return curImg(); }
+    // Die Varianten-Map (z.B. Farbwahl) gilt NUR für die Vorderseite: sie enthält Front-
+    // Vorlagen. Ohne diese Einschränkung zeigte die Rückseite weiterhin das Vorderbild der
+    // gewählten Farbe — der Kunde hätte auf einer Vorderansicht gestaltet und geglaubt, es sei
+    // die Rückseite (2026-08-10 gefunden). Für die Rückseite kann optional eine eigene Map
+    // `data-img-map-back` mitgegeben werden; fehlt sie, gilt das allgemeine Rückseitenbild.
+    function variantBg(){
+      try{
+        var vid=getVariantId(findForm(),fallbackVar);
+        var map=(state.active==='back')?imgMapBack:imgMap;
+        if(vid&&map[vid]) return map[vid];
+      }catch(e){}
+      return curImg();
+    }
     function applyBg(){ if(stage) stage.style.backgroundImage="url('"+variantBg()+"')"; }
     function findLayer(id){ var a=curLayers(); for(var i=0;i<a.length;i++) if(a[i].id===id) return a[i]; return null; }
 
