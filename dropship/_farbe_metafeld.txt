@@ -58,3 +58,15 @@ gid://shopify/Product/15470011875713	Schwarz
 gid://shopify/Product/15470012006785	Rosa
 gid://shopify/Product/15470659928449	Silber
 gid://shopify/Product/15472047653249	Silber
+gid://shopify/Product/15474494701953	Silber
+gid://shopify/Product/15475998720385	Schwarz
+gid://shopify/Product/15476126253441	Mehrfarbig
+gid://shopify/Product/15476178190721	Silber
+gid://shopify/Product/15477388116353	Blau
+gid://shopify/Product/15477526921601	Silber
+gid://shopify/Product/15477527118209	Silber
+gid://shopify/Product/15478374302081	Silber
+gid://shopify/Product/15480168743297	Gold
+gid://shopify/Product/15480274780545	Rot
+gid://shopify/Product/15480631984513	Schwarz
+gid://shopify/Product/15485395599745	Silber
