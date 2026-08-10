@@ -3973,3 +3973,44 @@ falscher. Bleibt als Handarbeit offen; die POD-Titel («Tasse «Hoi»») sind oh
   für Lieferantennummern. Ohne `re.I` und mit Ausnahmeliste bleiben 14 echte Treffer.
 - «1 Lieferantenname sichtbar» — «CJ-02, CJ-03» in einer Beschreibung sind Farbvarianten-Codes,
   nicht der Lieferant CJ.
+
+## 🔎 Fehlersuche Teil 2, 2026-08-10 (Kollektionen, Produktseiten, Preise)
+
+### Behoben
+- **«Geschenke unter CHF 30» enthielt einen E-Roller für CHF 791.90.** Die beiden Regeln
+  `tag = geschenk` und `tag = unter-30` waren **ODER**-verknüpft (`appliedDisjunctively: true`),
+  und weil kein Produkt den Tag `unter-30` trägt, blieb faktisch «alles mit Tag geschenk» —
+  ohne jede Preisgrenze. Neu konjunktiv `tag = geschenk` UND `Preis < 30`: **4'820 → 2'650
+  Produkte, teuerstes CHF 29.90.** Ein Kollektionstitel ist ein Versprechen; wer «unter CHF 30»
+  anklickt und CHF 792 sieht, glaubt auch der nächsten Preisangabe nicht mehr.
+  Tool: `automation/kollektion_versprechen_fix.py` (prüft nach dem Schreiben nach, weil Shopify
+  Smart Collections asynchron neu befüllt).
+- **Zwei doppelte Kollektionen** aus dem Verkauf genommen, mit 301-Weiterleitung (live geprüft):
+  `bestseller-unter-50` → `geschenke-unter-50-franken` (identische Regel `Preis < 50`; der
+  Handle versprach «bestseller», gefiltert wurde nur der Preis) und `elektronik-computer` →
+  `elektronik-technik` (gleiche Trefferzahl; die Zielkollektion steht in Menü **und** Startseite).
+
+### Geprüft und in Ordnung
+- **25 zufällige Produktseiten live**: alle HTTP 200, Kaufformular vorhanden, Product-Schema da,
+  Preis sichtbar, 0 Liquid-Fehler, kein Lieferantenname im Quelltext.
+- **Preise**: keine Ausreisser (Minimum CHF 4.90 Sticker, Maximum CHF 625 Kinder-Elektroauto),
+  0 Produkte unter CHF 3.
+- **Bild-Hosts**: alle 27'397 Hauptbilder liegen auf `cdn.shopify.com` — kein Fremdhost, kein
+  Hotlinking auf Lieferantenserver.
+- **Preis-Kollektionen** «Geschenke bis CHF 30», «Unter CHF 25», «Kleine Geschenke unter 20»,
+  «Geschenke unter CHF 100»: konjunktiv gebaut, teuerster Artikel exakt an der Grenze. Korrekt.
+
+### ⚠️ Zwei offene Verdachtsfälle (bewusst NICHT gehandelt — Messgrundlage reicht nicht)
+1. **Schwere CJ-Ware und der Versand in die Schweiz.** Für den «Kletterbaum aus Massivholz»
+   (18 kg, CHF 296.90) gab `logistic/freightCalculate` **code 200 mit leerer Optionsliste**
+   zurück — genau das Muster, das bei BigBuy «nie in die CH versendbar» bedeutete (#1006).
+   Bevor daraus eine Massenaktion wird, braucht es eine Gegenprobe an einem leichten Artikel —
+   die scheiterte, weil CJs Punktebudget für heute erschöpft ist («Insufficient API points.
+   Used today: 717»). **Erst mit frischem Punktebudget verifizieren, dann entscheiden.**
+   146 aktive Produkte kosten CHF 150+, davon 125 von CJ.
+2. **295 Produkte tragen den Tag `eu-lager`** und landen in «EU-Lager — Schnell geliefert»
+   (Hauptmenü), `delivery_block.mjs` verspricht dort **5–10 Tage**. In der Stichprobe sind
+   aber ausschliesslich CJ-Artikel — und im Projekt-Gedächtnis steht, dass CJs EU-Lager-Filter
+   nur noch `total 0` liefert, es also gar keinen EU-Bestand mehr gibt. Der Tag wird nur gesetzt,
+   wenn beim Import `WAREHOUSE`/`WH` gesetzt war. Falls die Ware aus China kommt, ist das ein
+   falsches Lieferversprechen. Auch das braucht CJ-Punkte zur Klärung.
