@@ -6166,3 +6166,10 @@ gid://shopify/Product/15493258641793	98->0	Benshang Glaswischer für hohe Fenste
 gid://shopify/Product/15493258740097	28->0	Schutzgehäuse für Raspberry Pi 4 mit Lüfter
 gid://shopify/Product/15493258772865	21->0	High-Speed Glasfaser-Netzwerkkabel
 gid://shopify/Product/15493258936705	23->0	Smarte Videotürklingel
+gid://shopify/Product/15493259821441	20->0	Silikon-Frischhaltebeutel für Lebensmittel
+gid://shopify/Product/15493259854209	116->3	Bambusschöpfer mit Griff
+gid://shopify/Product/15493260050817	51->0	Schneidebrett Akazienholz Schachbrettmuster
+gid://shopify/Product/15493260083585	44->1	Tragbare Outdoor-Dusche
+gid://shopify/Product/15493260214657	73->0	Tragbarer Eis-Crushing-Entsafter
+gid://shopify/Product/15493260247425	110->0	Keramik Bad-Set: Lotion, Zahnbürstenhalter, Becher
+gid://shopify/Product/15493260378497	101->0	Japanische Schürze, wasserabweisend
