@@ -181,3 +181,4 @@ gid://shopify/Product/15453401088385	nicht-versendbar	Stehventilator mit Fernbed
 gid://shopify/Product/15446277554561	nicht-versendbar	Sunset Akustikgitarre mit Zubehör
 gid://shopify/Product/15453783359873	nicht-versendbar	Mehrstöckiger Katzenbaum mit Sisal-Kratzposten
 gid://shopify/Product/15454039245185	ok	Männer Echtleder-Umhängetasche grosser Fassungsvermögen
+gid://shopify/Product/15448881627521	ok	KM7 SE Android 11 TV Box
