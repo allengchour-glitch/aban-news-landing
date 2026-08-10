@@ -6152,3 +6152,5 @@ gid://shopify/Product/15493189927297	46->2	Farbwechselnde Foundation
 gid://shopify/Product/15493190156673	198->0	Zelt- und Outdoor-Hammer
 gid://shopify/Product/15493190615425	31->3	Vintage Kerosinlampe für Outdoor & Camping
 gid://shopify/Product/15493192515969	125->1	Seilzug-Zubehör für Outdoor-Tools
+gid://shopify/Product/15493224857985	57->0	3D-Druck Damen Longsleeve mit Kapuze
+gid://shopify/Product/15493243339137	116->0	Wandteppich
