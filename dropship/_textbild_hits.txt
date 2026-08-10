@@ -6154,3 +6154,15 @@ gid://shopify/Product/15493190615425	31->3	Vintage Kerosinlampe für Outdoor & C
 gid://shopify/Product/15493192515969	125->1	Seilzug-Zubehör für Outdoor-Tools
 gid://shopify/Product/15493224857985	57->0	3D-Druck Damen Longsleeve mit Kapuze
 gid://shopify/Product/15493243339137	116->0	Wandteppich
+gid://shopify/Product/15493243404673	11->3	Wandteppich mit Print-Design
+gid://shopify/Product/15493245043073	88->0	Minimalistische Weltkarten-Wanddeko
+gid://shopify/Product/15493246091649	80->0	Business Rucksack 3-teilig
+gid://shopify/Product/15493247926657	18->1	Business Rucksack mit USB-Anschluss
+gid://shopify/Product/15493248057729	21->0	Eleganter, leichter Laptop-Rucksack
+gid://shopify/Product/15493250351489	59->0	Business-Schnürschuhe für Herren
+gid://shopify/Product/15493251727745	44->1	EDC Outdoor-Messer mit D2-Klinge
+gid://shopify/Product/15493251891585	27->0	Faltmesser mit Holzgriff und Lasermuster
+gid://shopify/Product/15493258641793	98->0	Benshang Glaswischer für hohe Fenster
+gid://shopify/Product/15493258740097	28->0	Schutzgehäuse für Raspberry Pi 4 mit Lüfter
+gid://shopify/Product/15493258772865	21->0	High-Speed Glasfaser-Netzwerkkabel
+gid://shopify/Product/15493258936705	23->0	Smarte Videotürklingel
