@@ -18,9 +18,12 @@ import json, os, re, subprocess, time
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
 DRY = os.environ.get("DRY") == "1"
 LEDGER = "dropship/_seo_versand_fix.txt"
-# Auch «ab 65.-» und «ab CHF 65.00» erwischen, aber nie eine Zahl 65 in anderem Zusammenhang
-# (z.B. «65 cm», «65 g») — deshalb muss «CHF»/«Fr.» direkt davor stehen.
-RX = re.compile(r'(ab\s+)(?:CHF|Fr\.?)\s*65(?:[.,]-{0,2}|\.00)?', re.I)
+# «CHF»/«Fr.» muss direkt davor stehen, damit keine Zahl 65 in anderem Zusammenhang getroffen
+# wird («65 cm», «65 g»).
+# ⚠️ Der Nachkommateil darf NUR Betragsschreibweisen schlucken («65.-», «65.--», «65.00»).
+# Eine frühere Fassung erlaubte dort auch ein einzelnes Komma — und verschluckte damit das
+# Satzkomma: aus «ab CHF 65, 30 Tage Rückgabe» wurde «ab CHF 50 30 Tage Rückgabe».
+RX = re.compile(r'(ab\s+)(?:CHF|Fr\.?)\s*65(?:\.-{1,2}|\.00)?', re.I)
 
 
 def gql(q, v=None):

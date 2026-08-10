@@ -4230,3 +4230,35 @@ pro Farbe nur Vorderfotos.
 `lspod-designer-v2.js` vom Shopify-CDN. Die Repo-Datei `pod/designer-cdn-v2.js` weicht von der
 Live-Fassung ab (verschiedene Prüfsummen). Änderungen an `designer.js` wirken erst nach einem
 neuen CDN-Upload — und dessen URL kommt laut Regel 4 **aus der Upload-Antwort, nie geraten.**
+
+## 🔍 Dritter Fundort der falschen Versand-Schwelle: die Google-Suchtreffer (2026-08-10)
+
+Nachdem «Gratis-Versand ab CHF 65» aus dem **Theme** und aus den **Produktbeschreibungen**
+entfernt war, stand die falsche Zahl an einer dritten, unsichtbaren Stelle immer noch:
+in der **SEO-Beschreibung** (`global.description_tag`) — dem Text, den Google im Suchergebnis
+anzeigt. Betroffen sind praktisch **alle aktiven Produkte** (in 10'000 geprüften: 9'704).
+Damit hatte diese Fassung die grösste Reichweite von allen dreien.
+
+`automation/seo_versandschwelle_fix.py` ersetzt ausschliesslich die Zahl (65 → 50) und lässt
+den Satz sonst unverändert. Läuft im Supervisor mit.
+
+**Eigener Fehler, im Probelauf gefangen:** Die erste Regex erlaubte im Nachkommateil auch ein
+einzelnes Komma (`[.,]-{0,2}`) — und verschluckte damit das **Satzkomma**: aus «ab CHF 65, 30 Tage
+Rückgabe» wurde «ab CHF 50 30 Tage Rückgabe». Jetzt werden nur echte Betragsschreibweisen
+geschluckt («65.-», «65.--», «65.00»). Gegenprobe mit fünf Varianten inkl. «Kabel 65 cm» (bleibt
+unangetastet) läuft sauber durch.
+
+## 🧹 Werbetext: 15 % waren als LISTENPUNKTE getarnt
+`promo_aus_beschreibung.py` traf nur `<p>`-Absätze. Bei 626 von 4'000 geprüften Produkten stand
+derselbe Werbeblock aber in `<li>`-Punkten («Rückgabe: 30 Tage · Gratis-Versand ab CHF 65»,
+«Sicher einkaufen: Code WELCOME10»). Regel ergänzt (nur Punkte, die ausschliesslich Shop-
+Versprechen enthalten — nie Produktangaben), leergeräumte `<ul>` werden mit entfernt.
+Der alte Ledger wurde nach `_promo_clean_done_runde1.txt` gesichert und geleert, damit die
+bereits nach altem Muster bereinigten Produkte erneut geprüft werden.
+
+## ✅ Zwei Verdachtsfälle geprüft, die KEINE Fehler waren
+- **«93 % ohne SEO-Titel»** ist kein Mangel: Shopify setzt den Titel-Tag aus Produktname +
+  Shopname zusammen («Klassisches Unisex T-Shirt – Selbst gestalten – LuxeStyle»). Live geprüft.
+- **«Meta-Description und Open-Graph fehlen»** war ein Messfehler meinerseits: Mein Suchmuster
+  erwartete die Attribute in einer Zeile, das Theme schreibt sie mehrzeilig. Tatsächlich sind
+  Description, og:title, og:image und 11 weitere OG-Tags vorhanden.

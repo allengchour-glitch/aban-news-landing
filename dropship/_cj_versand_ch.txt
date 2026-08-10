@@ -96,3 +96,7 @@ gid://shopify/Product/15448908366209	ok	Mechanische Herrenuhr
 gid://shopify/Product/15453921837441	ok	Keramik-Schatzbecken mit Handmalerei
 gid://shopify/Product/15448673812865	ok	Gefütterter Daunenmantel mit Kapuze
 gid://shopify/Product/15447611769217	ok	Reisetasche aus Crazy Horse Leder
+gid://shopify/Product/15453787849089	nicht-versendbar	Sisal-Kletterrahmen für Katzen
+gid://shopify/Product/15453792665985	ok	Elektronische Hundezaun-Anlage
+gid://shopify/Product/15448667488641	ok	Kurzer Langarm-Mantel mit Diamanten
+gid://shopify/Product/15447569465729	ok	ELRS 3-in-1 Flugsteuerung mit Empfänger
