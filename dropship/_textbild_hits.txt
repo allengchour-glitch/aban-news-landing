@@ -6238,3 +6238,9 @@ gid://shopify/Product/15447885480321	136->0	Vielseitiger Vintage-Halsschal
 gid://shopify/Product/15447886987649	43->0	Seidenschal mit Magnetverschluss
 gid://shopify/Product/15447887970689	29->0	Hut, Handschuhe & Schal 3-in-1 Set
 gid://shopify/Product/15448875925889	10->0	Lederarmband für Apple Watch
+gid://shopify/Product/15493582127489	22->2	Wasserdichte Quarzuhr für Herren
+gid://shopify/Product/15493582258561	66->0	Modische Armbanduhr für Sie und Ihn
+gid://shopify/Product/15493582455169	40->1	Quarzuhr für Herren – Schlicht & Elegant
+gid://shopify/Product/15493582684545	20->0	Business-Armbanduhr im koreanischen Stil
+gid://shopify/Product/15493583208833	30->1	Geschenkset für den Freund
+gid://shopify/Product/15493619057025	87->0	Herren-Armbanduhr, Leuchtend, Wasserdicht
