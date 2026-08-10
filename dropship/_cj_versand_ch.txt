@@ -102,3 +102,5 @@ gid://shopify/Product/15448667488641	ok	Kurzer Langarm-Mantel mit Diamanten
 gid://shopify/Product/15447569465729	ok	ELRS 3-in-1 Flugsteuerung mit Empfänger
 gid://shopify/Product/15446273360257	nicht-versendbar	Faltbare Hantelbank für Krafttraining
 gid://shopify/Product/15448877826433	ok	GPS SOS Armband mit Herzfrequenz- und Sturzalarm
+gid://shopify/Product/15490703098241	nicht-versendbar	Eckiger Beistelltisch mit Sanduhr-Timer
+gid://shopify/Product/15493443551617	ok	Vintage Crazy Horse Lederrucksack
