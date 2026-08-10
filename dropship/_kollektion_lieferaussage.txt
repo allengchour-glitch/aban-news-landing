@@ -11,3 +11,9 @@ beauty-hautpflege	33%	umformuliert
 beauty-naegel	0%	umformuliert
 beauty-duefte	8%	umformuliert
 wohnen-kueche	3%	umformuliert
+wohnen-bad	0%	umformuliert
+wohnen-aufbewahrung	0%	umformuliert
+elektronik-audio	0%	umformuliert
+elektronik-laden	0%	umformuliert
+elektronik-handy	0%	umformuliert
+damen-jacken	5%	umformuliert

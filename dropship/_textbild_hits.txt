@@ -6212,3 +6212,6 @@ gid://shopify/Product/15445799666049	37->0	Make-up Pinselset, 10-teilig
 gid://shopify/Product/15446021833089	79->2	6-teiliges Kochlöffel-Set aus Teakholz
 gid://shopify/Product/15446022619521	18->2	Kartoffelpresse mit Hebel – Edelstahl
 gid://shopify/Product/15446023700865	51->0	Japanisches Sashimi- und Fischfiletiermesser
+gid://shopify/Product/15447569170817	22->0	Anti-Verlust Locator für Karten
+gid://shopify/Product/15447569367425	51->0	Akku für elektrische Relaxsessel, 2500 mAh
+gid://shopify/Product/15447569596801	39->1	9V Alkaline Batterien, 12er-Pack
