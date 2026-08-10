@@ -4494,3 +4494,37 @@ schlicht keine freigestellten Produktfotos. Umsortieren hilft hier nicht.
 rechts das Produkt) — die rechte Hälfte allein ergäbe ein sauberes Bild. Das ist automatisierbar,
 aber nur mit Layout-Erkennung, sonst schneidet man bei abweichenden Collagen das Produkt ab.
 Als eigener, sorgfältiger Schritt vorgemerkt.
+
+## ✋ KORREKTUR: «69 % der Uhren haben ein Text-Hauptbild» war ein Messfehler (2026-08-10)
+
+Weiter oben steht, in der Uhren-Kategorie hätten **440 von 638 Produkten (69 %)** ein
+Text-/Collagen-Hauptbild. **Diese Zahl ist falsch und darf nicht als Mängelliste verwendet werden.**
+
+Beim Bau des Zuschneide-Werkzeugs habe ich ein angebliches Collagen-Bild geöffnet und ein
+tadelloses Profifoto vorgefunden: ein grüner Chronograph, freigestellt, professionell
+ausgeleuchtet. Der Textwert lag trotzdem bei 82. Der Grund ist offensichtlich, sobald man
+hinsieht: **Zifferblätter bestehen aus Zahlen, Strichen und Skalen** («UNITS PER HOUR», 60er-
+Teilung, Chronographen-Zähler). Das Mass zählt Hell-Dunkel-Wechsel pro Zeile — eine Uhr sieht
+danach zwangsläufig aus wie beschrifteter Text. In dieser Kategorie misst die Heuristik also
+im Wesentlichen sich selbst.
+
+**Was daraus folgt — und was nicht:**
+- Die **Zahl** ist ungültig. Wie viele Uhren tatsächlich eine Lieferanten-Collage zeigen, ist
+  offen; belegt sind die beiden Fälle, die ich mit eigenen Augen gesehen habe.
+- Das **Werkzeug** bleibt trotzdem brauchbar. `textbild_fix.py` tauscht nur, wenn ein
+  Alternativbild sehr sauber ist (Wert ≤3) — deshalb hat es in 638 Uhren nur **7-mal**
+  gehandelt. Eine Stichprobe dieser 7 zeigt: das neue Hauptbild ist jeweils ein freigestelltes
+  Produktfoto auf Weiss, also eine echte Verbesserung. Der hohe Textwert wirkt als
+  Kandidatenfilter, nicht als Urteil — genau richtig.
+
+**Das Zuschneide-Werkzeug (`automation/collage_zuschnitt.py`) bleibt vorerst UNGENUTZT.**
+Es findet an den beiden echten Collagen keine Trennkante: Meine Annahme «links flau, rechts
+kontrastreich» stimmt nicht, weil die schwarze Verpackung auf der weissen linken Hälfte selbst
+starken Kontrast erzeugt. Ein Zuschneider, der die Kante nicht zuverlässig findet, schneidet
+irgendwann ein Produkt in zwei Teile — deshalb wird er nicht scharf geschaltet, sondern liegt
+dokumentiert bereit, bis die Kantenerkennung wirklich trägt.
+
+**Lehre, dritte Wiederholung an einem Tag:** Erst messen, dann glauben — und bei jeder
+auffälligen Quote das Rohmaterial ansehen. Heute waren es «50 tote Menü-Links» (unvollständige
+Kollektionsliste), «77 Lieferantencodes im Titel» (Regex traf «Skulptur») und jetzt «69 %
+Text-Hauptbilder» (Zifferblätter). Jedes Mal hätte blindes Handeln Schaden angerichtet.
