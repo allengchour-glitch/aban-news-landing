@@ -4046,3 +4046,37 @@ statt sich zu merken, wo man schon war.
   ebenfalls mit leerer Liste (`code 16900500`). Der erste Anlauf hat deshalb vier Zeiger auf 1
   zurückgesetzt und die Tiefe verloren. Jetzt wird nur bei **`code === 200`** zurückgesetzt;
   bei jedem anderen Code bleibt der Zeiger stehen. Wiederhergestellt.
+
+## 🖼️ Bild-Qualität + Nachtrag Lieferantenquellen (2026-08-10)
+
+### Text-Hauptbilder: der grösste Bildmangel im Shop
+`automation/textbild_fix.py` (jetzt IM REPO, vorher nur /tmp) bewertet Hauptbilder auf
+Text-Muster und zieht ein sauberes Produktfoto nach vorn. Zwischenstand: **von 5'800 geprüften
+Produkten haben 3'401 (59 %) ein Werbe-/Textbild als Hauptbild**, 1'316 sind bereits umgestellt.
+Cursor und Ledger liegen neu unter `dropship/` statt in /tmp — der Lauf lädt pro Produkt bis zu
+fünf Bilder herunter; ginge der Cursor bei einem Wipe verloren, begänne die Analyse von vorn.
+
+### Gegenprobe zum eigenen Werkzeug
+Ein Umsortierer, der «am wenigsten Text» bevorzugt, könnte ein generisches Stockfoto vor das
+echte Produktfoto ziehen. Deshalb alle **5'841** umsortierten Produkte gegen Stock-Muster
+(`photo-<id>`, unsplash/pexels/shutterstock) geprüft: **genau 1 Treffer** — und der war schon
+vor dem Umsortieren Hauptbild. Das Werkzeug erzeugt den Fehler also nicht.
+
+### Der eine Treffer war allerdings gravierend
+**«Cellulite Massage Roller»** zeigte als Hauptbild eine **Curology-Reinigungstube** (fremdes
+Markenprodukt, Unsplash-Stockfoto); Bild 3 war eine Gesichtsmasken-Behandlung. Mit dem echten
+Produktfoto (`cellulite-massage-roller-gen1.jpg`) lagen also drei von vier Bildern daneben.
+Behoben: echtes Bild auf Position 0, die drei fremden Stockfotos gelöscht. Ein fremdes
+Markenprodukt auf der eigenen Produktseite ist nicht nur irreführend, sondern ein Markenrisiko.
+
+### ⚠️ Nachtrag: der Guard hatte eine Lücke
+`ohne_lieferantenref_guard.py` prüft «hat irgendeine SKU». Damit rutschen **97 Produkte** durch,
+deren SKU zwar existiert, aber **keine Lieferantenreferenz** ist:
+- **59 kuratierte Eigenprodukte** (`WALLET-BLK`, `WATCH-001`, `LX-25-…`) — selbst vergebene
+  Kennungen ohne Bezugsquelle, dasselbe Risiko wie die bereits gedrafteten 266.
+- **38 mit AliExpress-Property-Strings** (`14:29#Pink 2pcs`, `200000182:193#black cologne`) —
+  eine echte Referenz, aber bei einem nicht angebundenen Lieferanten; nur von Hand bestellbar.
+
+**Bewusst noch NICHT gedraftet.** Die 266 waren die dokumentierte Regel aus §14 («keine SKU»);
+diese 97 sind ein Grenzfall, bei dem eine manuelle Beschaffung möglich ist. Bei den 59
+kuratierten hängt es daran, ob es je eine Quelle gab — das weiss nur der Betreiber.

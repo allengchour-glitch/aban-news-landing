@@ -30,10 +30,13 @@ def textscore(im):
     return rows
 Q='''query($c:String){products(first:50,after:$c,query:"status:ACTIVE"){pageInfo{hasNextPage endCursor}
  nodes{id title media(first:6){nodes{id ... on MediaImage{image{url}}}}}}}'''
-state="/tmp/textbild_cursor.txt"
+# Cursor und Ledger im Repo, nicht in /tmp: dieser Lauf lädt für JEDES Produkt bis zu fünf
+# Bilder herunter und bewertet sie. Geht der Cursor bei einem Container-Wipe verloren,
+# beginnt die Bildanalyse wieder bei null — das kostet Stunden und Bandbreite umsonst.
+state=os.environ.get("CURSOR","dropship/_textbild_cursor.txt")
 cur=(open(state).read().strip() or None) if os.path.exists(state) else None
 sc=hit=fix=0
-log=open("/tmp/textbild_hits.txt","a")
+log=open("dropship/_textbild_hits.txt","a")
 while True:
     d=gql(Q,{"c":cur}); pg=(d.get("data") or {}).get("products")
     if not pg: break
