@@ -4161,3 +4161,35 @@ liessen sich einer passenden Kollektion zuordnen; für die übrigen 317 wäre je
 Ein HTTP 404 ist für einen nicht mehr geführten Artikel die richtige Antwort — Google entfernt
 ihn sauber aus dem Index, während eine Weiterleitung auf eine unpassende Seite als «Soft 404»
 gewertet wird und schlechter ist.
+
+## 🚚💰 Versandangaben: Shop sagte 65, Kasse verlangt 50 — und 4.90 statt 7.00 (2026-08-10)
+
+**Wahrheit aus dem Lieferprofil (nachgelesen, nicht vermutet):** Zone Schweiz hat drei aktive
+Sätze — «Standard» CHF 7.00, «Standard» gratis ab CHF 65 (Preisspanne desselben Satzes) und
+«Kostenloser Versand» gratis ab CHF 50. Shopify zeigt den günstigsten passenden Satz, also gilt
+für Kundinnen und Kunden **effektiv CHF 50**.
+
+**Zwei falsche Angaben im Theme gefunden und korrigiert** (6 Stellen in drei Vorlagen):
+- «Gratis-Versand **ab CHF 65**» → **ab CHF 50** (Startseite, Kollektionsseiten, Produktseiten).
+  Auf der Startseite standen damit 50 und 65 gleichzeitig auf derselben Seite.
+- «sonst **CHF 4.90**» → **CHF 7.00**. Das war die gefährlichere Angabe: der Kunde liest 4.90 und
+  zahlt an der Kasse 7.00 — ein klassischer Abbruchgrund und in der Schweiz ein Problem mit der
+  Preisklarheit.
+
+**Bewusst NICHT angefasst: die 65er-Regel im Lieferprofil selbst.** Sie hängt als Preisspannen-
+Bedingung am Satz «Standard»; die Bedingung zu löschen würde den Satz auf «immer gratis» stellen.
+Sie ändert für Kundinnen und Kunden nichts (ab 50 gilt ohnehin gratis) — das Risiko einer
+Fehlbedienung ist grösser als der kosmetische Gewinn. **Verbindlich ist ab jetzt: CHF 7.00
+Versand, gratis ab CHF 50.**
+
+## 🩹 Lieferprofil «Zendrop»: 11 aktive Produkte mit Gratis-Versand ohne Mindestbestellwert
+Das Alt-Profil der Zendrop-App enthielt **220 Varianten von 11 aktiven Produkten** mit dem Satz
+«Free Shipping 0.00 USD» — **ohne jede Bedingung**. Ein Gua-Sha-Set für CHF 16.90 wurde also
+versandkostenfrei ausgeliefert, während die Fracht aus China real bei rund CHF 15 liegt. Alle
+220 Varianten sind jetzt dem Standardprofil zugeordnet (CHF 7.00 / gratis ab 50).
+Kein Fulfillment-Risiko: Lieferprofile bestimmen nur, was der Kunde zahlt.
+
+**Geprüft, kein Befund:** «Shopify Collective» hat **keine Zone** — Produkte darin wären an der
+Kasse nicht bestellbar. Alle vier sind aber bereits DRAFT (zwei davon heute gedraftet).
+Rechtsseiten (Impressum, AGB, Widerruf, Datenschutz, Versand), Kontakt, robots.txt, sitemap.xml
+und die Suche liefern alle HTTP 200.
