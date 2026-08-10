@@ -5926,3 +5926,4 @@ gid://shopify/Product/15491403317633	9->1	Geometrischer Geburtsstein-Ring
 gid://shopify/Product/15491403383169	12->0	Personalisierter Damen-Abschlussring mit Gravur
 gid://shopify/Product/15491404333441	51->0	Spitzenkleid mit Stickereien in A-Linie
 gid://shopify/Product/15491404431745	24->0	Ärmelloses Minikleid mit Rundhals und Spaghettiträgern
+gid://shopify/Product/15491405906305	53->0	Trägerloses Plisseekleid mit Schlitz
