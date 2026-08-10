@@ -183,6 +183,12 @@ async function attachVideo(st,productId,vurl,cjpid){
   const up=await fetch(tgt.url,{method:'POST',body:form}); if(up.status!==201&&up.status!==200)return;
   await sgql(st,MED,{id:productId,m:[{originalSource:tgt.resourceUrl,mediaContentType:'VIDEO'}]});
   console.log('  🎬 Video angehängt');
+  // Das Video darf NICHT das Hauptmedium werden: sonst zeigen Kollektionskacheln kein
+  // Produktbild und Google Merchant bekommt kein image_link (22 Produkte waren so betroffen,
+  // gefunden im Katalog-Audit 2026-08-10). Darum das erste fertige Bild wieder nach vorn.
+  const mm=await sgql(st,`query($id:ID!){product(id:$id){media(first:25){nodes{id mediaContentType ... on MediaImage{status}}}}}`,{id:productId});
+  const ersteBild=(mm?.data?.product?.media?.nodes||[]).find(x=>x.mediaContentType==='IMAGE'&&x.status==='READY');
+  if(ersteBild) await sgql(st,`mutation($id:ID!,$m:[MoveInput!]!){productReorderMedia(id:$id,moves:$m){userErrors{message}}}`,{id:productId,m:[{id:ersteBild.id,newPosition:'0'}]});
  }catch{}
 }
 
