@@ -60,3 +60,4 @@ gid://shopify/Product/15449172148609	ok	S925 Sterling Silber Moissanit Ring, Ass
 gid://shopify/Product/15449452642689	nicht-versendbar	Anti-Schnarch-Gerät Muskelstimulator Pro mit 20 Leitstreifen
 gid://shopify/Product/15447899734401	ok	Vintage Vollnarbenleder-Gürtel
 gid://shopify/Product/15446268117377	ok	Pocket Remote Controller Hall Rocker
+gid://shopify/Product/15448904728961	ok	Mechanische Skelett-Herrenuhr
