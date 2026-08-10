@@ -738,3 +738,7 @@ gid://shopify/Product/15433462219137	65->50
 gid://shopify/Product/15433462251905	65->50
 gid://shopify/Product/15433462284673	65->50
 gid://shopify/Product/15433462350209	65->50
+gid://shopify/Product/15433462808961	65->50
+gid://shopify/Product/15433462841729	65->50
+gid://shopify/Product/15433462874497	65->50
+gid://shopify/Product/15433462907265	65->50
