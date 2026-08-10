@@ -3880,3 +3880,50 @@ Warenkorb-Rechnung (5/5 exakt), Weg zur Kasse mit TWINT/Klarna/PayPal, 0 Liefera
 inhaltlich konsistent, Sitemap 28'005 URLs exakt passend, 0 Reste deinstallierter Apps,
 0 gefälschte Verknappung, 27'188/27'188 Produkte mit Hauptbild, Handy-Menü korrekt (z-index-Fix
 von 2026-07-26 hält).
+
+## 🧹 Sauber-Lauf 2026-08-10 («sauber machen alles»)
+
+**Behoben:**
+- **17 tote Produktseiten** (ACTIVE, aber nie im Onlineshop publiziert → HTTP 404, teils seit
+  11 Tagen). Ursache gefunden und an der Wurzel repariert: `cj_category_fill.mjs` rief
+  `publishablePublish` ohne Quittung und ohne Wiederholung auf — bei Drossel/Netz-Aussetzer
+  schlug der Aufruf still fehl und das Produkt blieb unsichtbar. `sgql()` hat jetzt 4 Versuche
+  mit Timeout, und `publishVerified()` gilt erst als erledigt, wenn Shopify `userErrors: []`
+  meldet. `automation/unpublizierte_finden.py` läuft zusätzlich als Dauerwache.
+- **2 unverkäufliche Produkte** (Lost Nomade, Discovery-Set): DENY + Bestand 0 → im Shop
+  sichtbar, aber nicht kaufbar. Auf DRAFT + Tag `ausverkauft-lieferant`.
+- **17 Varianten entkoppelt** (Slim Kartenetui, POD-Shirt, POD-Tasche): Bestandsverfolgung war
+  bei Dropship/Print-on-Demand eingeschaltet und stand dauerhaft auf 0 → widersprüchliche
+  Verfügbarkeit Richtung Google. Tool `automation/lagerstand_hygiene.py` trennt sauber zwischen
+  «nicht kaufbar → draften» und «kaufbar, nur falsch getrackt → entkoppeln». Wichtig: der
+  POD-Editor darf dabei NIE mitgedraftet werden (Projektregel 4).
+- **Google-Kanal wiederhergestellt** (`automation/gfeed_restore.py`): `gfeed_apply.py` hatte den
+  Feed auf die besten 5'000 gekürzt — von ~18'200 qualifizierten Produkten flogen ~13'200 nur
+  wegen der willkürlichen Grenze raus. Das erklärt den Einbruch 152'820 → 72'956 Merchant-Artikel.
+  Bei **kostenlosen Einträgen** kostet ein zusätzliches Produkt nichts, also zurück in den Kanal;
+  die 8'410 hart disqualifizierten (unter 3 Bildern, Preis <15, Code im Titel, keine
+  Lieferanten-SKU, Kostüm/Erotik/Refurb) bleiben bewusst draussen. `gfeed_apply.py` wurde
+  gestoppt und aus dem Supervisor entfernt.
+- **Farb-Metafeld für Mode** (`automation/farbe_metafeld.py`): `color` ist bei Google nur für
+  «Apparel & Accessories» Pflicht — deshalb nur Mode-Tags. Produkte mit Options-Namen «Farbe»
+  werden übersprungen (Shopify liefert die Farbe dort variantengenau); bei mehr als einem
+  Farbwort im Titel wird NICHTS geschrieben, weil eine geratene Farbe schlimmer ist als eine
+  fehlende.
+- **Supervisor-Abkühlzeit**: durchlaufende Reiniger starteten alle 120 s neu und fragten den
+  ganzen Katalog immer wieder ab. Neustart jetzt erst, wenn das Log 30 Minuten alt ist.
+
+**⚠️ Zwei Fehlalarme — beide durch Nachprüfen entlarvt, nicht durch Handeln:**
+1. **«50 tote Menü-Links»** — falsch. `collections(first:250)` liefert nur die ersten 250; der
+   Shop hat **505**. Alles, was auf Seite 2+ lag, sah aus wie «existiert nicht». Nach voller
+   Paginierung: **0** tote Links. Regel: Bei Existenz-Prüfungen NIE gegen eine ungepaginierte
+   Liste testen.
+2. **«2 Menü-Links mit /en/-Präfix liefern 404»** — kundenseitig falsch. Die Admin-API gibt bei
+   COLLECTION-Einträgen eine markt-/lokal-abhängige URL zurück; die **Storefront rendert
+   `/collections/…`** (im HTML der Startseite kein einziges `/en/`). Ground Truth ist das
+   gerenderte HTML, nicht das `url`-Feld der Admin-API.
+
+**Geprüft und sauber (nicht erneut anfassen):** 0 Klartext-Secrets in getrackten Dateien;
+505 Kollektionen, davon nur 2 leer (beide bereits unpubliziert); 101 Menü-Links live geprüft,
+alle 200 ausser den beiden Shopify-Kontoportal-URLs (406 gegenüber curl ist dort normal);
+21'649 Entwürfe haben zu ~2/3 einen expliziten Grund-Tag, der Rest sind Alt-Entwürfe ohne
+Lieferanten-SKU (korrekt draussen, laut §14 unverkäuflich).
