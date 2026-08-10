@@ -182,3 +182,5 @@ gid://shopify/Product/15446277554561	nicht-versendbar	Sunset Akustikgitarre mit 
 gid://shopify/Product/15453783359873	nicht-versendbar	Mehrstöckiger Katzenbaum mit Sisal-Kratzposten
 gid://shopify/Product/15454039245185	ok	Männer Echtleder-Umhängetasche grosser Fassungsvermögen
 gid://shopify/Product/15448881627521	ok	KM7 SE Android 11 TV Box
+gid://shopify/Product/15449466962305	nicht-versendbar	Fettreduziergerät
+gid://shopify/Product/15449467224449	nicht-versendbar	Fitness-Yoga-Stuhl
