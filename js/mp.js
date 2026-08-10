@@ -24,10 +24,13 @@
   /* 🌐 Broker-Ersatz: PeerJS-Cloud zeitweise down -> nach Server-Fehler naechsten Broker merken */
   /* Mehrere Vermittlungs-Server: faellt einer aus, wird der naechste probiert.
      null = PeerJS-Cloud (Standard). Reihenfolge = Versuchsreihenfolge. */
+  /* ⚠️ Der dritte Eintrag war WIRKUNGSLOS: 0.peerjs.com ist genau der Default
+     (null), und mpPeerCfg kopierte das einzige unterscheidende Feld `path` gar
+     nicht mit. Ein „dritter Server" der in Wahrheit der erste ist, kostet beim
+     Failover nur Zeit. Jetzt zwei echte Server — und path wird mitkopiert. */
   var MP_BROKERS = [
     null,
-    { host: "peerjs.92k.de", port: 443, secure: true },
-    { host: "0.peerjs.com", port: 443, secure: true, path: "/" }
+    { host: "peerjs.92k.de", port: 443, secure: true }
   ];
   /* 🌐 ICE: STUN fuers Standard-NAT + oeffentlicher Gratis-TURN-Relay, damit die
      Verbindung auch hinter striktem/symmetrischem NAT (Mobilfunk/CGNAT) haelt.
@@ -42,7 +45,7 @@
   function mpPeerCfg() {
     var i = 0; try { i = (+(localStorage.getItem("aban_broker") || 0)) % MP_BROKERS.length; } catch (e) {}
     var b = MP_BROKERS[i], o = { debug: 0, config: { iceServers: MP_ICE, sdpSemantics: "unified-plan" } };
-    if (b) { o.host = b.host; o.port = b.port; o.secure = b.secure; }
+    if (b) { o.host = b.host; o.port = b.port; o.secure = b.secure; if (b.path) o.path = b.path; }
     return o;
   }
   function mpNextBroker() { try { var i = ((+(localStorage.getItem("aban_broker") || 0)) + 1) % MP_BROKERS.length; localStorage.setItem("aban_broker", String(i)); } catch (e) {} }

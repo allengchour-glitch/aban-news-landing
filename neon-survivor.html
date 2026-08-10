@@ -104,7 +104,8 @@ canvas{display:block}
 .skbtn .skcd{position:absolute;inset:0;border-radius:50%;pointer-events:none;display:block}
 .skbtn small{position:absolute;right:-3px;top:-5px;font-size:.58rem;background:#10142b;border:1px solid #3a4170;border-radius:8px;padding:0 4px;color:#9fb2ff;pointer-events:none}
 .skbtn .sklock{position:absolute;left:0;right:0;bottom:1px;font-size:.52rem;color:#ffd166;font-weight:700;pointer-events:none;text-align:center}
-@media(max-width:640px){.skbtn{width:42px;height:42px;right:34px;font-size:1rem}#skBtn1{bottom:104px}#skBtn2{bottom:152px}#skBtn3{bottom:200px}}
+/* 42 -> 44 px: unter 44 px trifft man auf dem Handy daneben (Mindestgroesse fuer Beruehrungsflaechen). Abstaende mitgezogen, damit >=10 px Luft bleibt. */
+@media(max-width:640px){.skbtn{width:44px;height:44px;right:34px;font-size:1rem}#skBtn1{bottom:104px}#skBtn2{bottom:156px}#skBtn3{bottom:208px}}
 </style>
 </head>
 <body>
@@ -670,6 +671,10 @@ function spawnEnemy(boss){
     if(_ae>=(IS_TOUCH?120:200))return;}
   var en=getMesh(enemies,enemyMesh); en.active=true; en.m.visible=true; en.boss=!!boss;
   en.shooter=false; en.splitter=false; en.shootT=0; en.raider=false; en.baseWaveBoss=false; en._tele=0; /* 🐛 Schwarm: Warn-Ring-Flag beim Pool-Recycling zurücksetzen (sonst übersprang ein recycelter Boss seinen ersten Telegraph) */
+  /* 🩹 Die Boss-Krone wurde nur beim regulaeren Boss-TOD abgenommen. Nach jedem
+     anderen Despawn (Wellenende, Reset) trug der recycelte Gegner sie weiter —
+     normale Gegner liefen mit Boss-Schmuck herum. */
+  if(en._adorned){en.m.remove(bossAdorn);en._adorned=false;}
   var a=rnd()*Math.PI*2, r=ARENA*0.82;
   var esx=Math.max(-ARENA+2,Math.min(ARENA-2,player.position.x+Math.cos(a)*r));
   var esz=Math.max(-ARENA+2,Math.min(ARENA-2,player.position.z+Math.sin(a)*r));
@@ -696,7 +701,11 @@ function spawnEnemy(boss){
 function announce(txt){if(coopMode==='host'&&netSess&&txt){try{netSess.send({e:'an',t:txt});}catch(e){}}
   var c=document.getElementById("center")||(function(){var d=document.createElement("div");d.id="center";d.style.cssText="position:fixed;top:26%;left:0;right:0;text-align:center;font-weight:900;font-size:clamp(1.5rem,4.6vw,2.15rem);letter-spacing:.5px;color:#ff7ad9;text-shadow:0 2px 12px #000,0 0 24px rgba(255,122,217,.75),0 0 46px rgba(255,122,217,.35);pointer-events:none;transition:opacity .4s;z-index:6";document.body.appendChild(d);return d;})();c.textContent=txt;c.style.opacity="1";
   if(txt&&c.animate){try{c.animate([{transform:"translateY(-16px) scale(.6)",opacity:0},{transform:"translateY(0) scale(1.08)",opacity:1,offset:.35},{transform:"translateY(0) scale(1)",opacity:1}],{duration:520,easing:"cubic-bezier(.2,.9,.3,1.2)"});}catch(e){}}
-  setTimeout(function(){c.style.opacity="0";},1600);}
+  /* 🩹 Alle Meldungen teilen sich EIN Element, aber jeder Aufruf startete einen
+     eigenen 1600-ms-Timer — der Timer der ALTEN Meldung blendete die neue aus,
+     manchmal nach 100 ms. Handle merken und vorher loeschen. */
+  if(window._anT)clearTimeout(window._anT);
+  window._anT=setTimeout(function(){c.style.opacity="0";window._anT=null;},1600);}
 function mmss(t){var s=Math.max(0,Math.floor(t));return Math.floor(s/60)+":"+("0"+(s%60)).slice(-2);}
 var RUN_T=600, PHASE_T=120; // 10-Min-Run, 5 Phasen
 function spawnFinalBoss(){announce("☠ ENDBOSS — besiege ihn!");beep(80,.6,"sawtooth",.12);shake=1.0;
@@ -1213,6 +1222,10 @@ function enterBuildPhase(){if(S.buildPhase!=="combat"||S.finalBoss||CB.active)re
 function endBuildPhase(){if(S.buildPhase!=="build")return;cancelPlacing();closeBuildMenu();demolishMode=false;showPlaceButtons(false);
   var cc=document.getElementById("cancelBtn");if(cc)cc.style.display="none";
   S.buildPhase="combat";S.wave++;S.waveT=0;S.spawnT=0;
+  /* 🩹 S.bossT lief nur in der Kampfphase weiter, die Uhr S.t aber auch waehrend
+     der Bauphase. Nach einer langen Bauphase war bossT laengst ueberschritten und
+     die aufgestauten Bosse kamen alle 45 s hintereinander. Faellig-Zeit nachziehen. */
+  if(S.bossT<S.t)S.bossT=S.t+45;
   for(var i=structures.length-1;i>=0;i--){var st=structures[i];if(st.expireWave!=null&&S.wave>st.expireWave)removeStruct(st,i);}
   updateScrapHUD();updateBuildBtn();spawnRing(player.position.x,player.position.z,0x5ef2ff,1,26,0.75);spawnRing(player.position.x,player.position.z,0xff7ad9,0.6,14,0.5,0.2);screenFlash("rgba(94,242,255,.2)",0.4,300);
   if(!S.finalBoss&&S.wave%5===0)spawnBossWave();else{announce("⚔ WELLE "+S.wave);beep(300,.25,"sawtooth",.07);}}
@@ -1789,7 +1802,7 @@ function lootMesh(){var m=new THREE.Mesh(new THREE.OctahedronGeometry(0.55,0),ma
 var RARITY=[
  {n:"Gewöhnlich",c:0xdfe6ff,cnt:1,pow:1.0,w:60},
  {n:"Magisch",   c:0x4aa3ff,cnt:1,pow:1.7,w:26},
- {n:"Selten",    c:0xb15cff,cnt:2,pow:1.6,w:11},
+ {n:"Selten",    c:0xb15cff,cnt:2,pow:1.9,w:11},   /* 1.6 -> 1.9: „Selten" gab pro Affix WENIGER als das haeufigere „Magisch" (1.8) — die Leiter war verdreht */
  {n:"Legendär",  c:0xff9a2e,cnt:3,pow:2.1,w:3}
 ];
 /* Phase 4: Loot-Optik — Schatz-/Waffen-Modelle statt Oktaeder (unskinned -> clone erlaubt), pro Rarity vor-getönt.

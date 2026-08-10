@@ -625,7 +625,10 @@ addEventListener("keydown",function(e){var k=e.key.toLowerCase();keys[k]=true;
   if(k==="escape"){if(!document.getElementById("invPanel").classList.contains("hide")||!document.getElementById("skillPanel").classList.contains("hide")||dialogOpen){closePanels();closeDialog();}else toggleMenu();}
 });
 addEventListener("keyup",function(e){keys[e.key.toLowerCase()]=false;if(e.key===" ")attackRelease();});
-addEventListener("blur",function(){attackRelease();}); // Tab-Wechsel während Ladung: sauber abbrechen
+/* 🩹 keys musste MIT geleert werden: der Handler brach nur die Ladung ab, die
+   gedrueckte Richtungstaste blieb im keys-Objekt stehen. Nach einem Tab-Wechsel
+   lief der Held endlos von allein weiter. */
+addEventListener("blur",function(){keys={};attackRelease();}); // Tab-Wechsel: Ladung abbrechen UND Tasten loslassen
 var isTouch=("ontouchstart" in window);
 var joy={active:false,id:null,cx:0,cy:0,x:0,y:0};
 if(isTouch){document.getElementById("touchUI").style.display="block";document.getElementById("keysHelp").style.display="none";
@@ -723,7 +726,11 @@ function renderInv(){
   [["waffe","⚔ Waffe"],["ruestung","🛡 Rüstung"],["relikt","💠 Relikt"]].forEach(function(s){
     var it=G.equip[s[0]],d=document.createElement("div");d.className="slot"+(it?" r"+it.r+" eq":"");
     d.innerHTML="<div class='nm'>"+s[1]+"</div><div class='st'>"+(it?it.n+" (+"+it.v+" "+it.stat+")":"— leer —")+"</div>";
-    if(it)d.onclick=function(){G.inv.push(it);G.equip[s[0]]=null;beep(300,.06,"triangle",.04);renderInv();updHUD();};
+    /* 🩹 Nach dem Ablegen fehlte die Deckelung: man behielt HP oberhalb des
+       echten Maximums, bis der naechste Schaden kam. */
+    if(it)d.onclick=function(){G.inv.push(it);G.equip[s[0]]=null;
+      if(G.hp>playerMaxHp())G.hp=playerMaxHp();
+      beep(300,.06,"triangle",.04);renderInv();updHUD();};
     er.appendChild(d);});
   var gr=document.getElementById("invGrid");gr.innerHTML="";
   if(!G.inv.length)gr.innerHTML="<div style='color:#8b93b8;font-size:.85rem'>Leer — besiege Gegner für Loot!</div>";
@@ -893,7 +900,8 @@ function killEnemy(e,i){
   if(e.miniboss){announce("Wächter der Tiefe besiegt!","#b98bff");
     if(heroRig&&(heroRig.cur==="idle"||heroRig.cur==="walk"))heroPlay("victory",0.2);
     var mi2=rollItem(G.lvl+3);mi2.r=Math.max(2,mi2.r);mi2.v=Math.round(mi2.v*1.3);G.inv.push(mi2);
-    G.shards+=15;showHint("🎁 "+RARS[mi2.r].n+": "+mi2.n+" (+"+mi2.v+" "+mi2.stat+") — [I]",3000);camShake=0.8;}
+    G.shards+=15;G.shardsEarned=(G.shardsEarned||0)+15;   /* 🩹 fehlte: Erfolg „Sammler" blieb zu lange gesperrt */
+    showHint("🎁 "+RARS[mi2.r].n+": "+mi2.n+" (+"+mi2.v+" "+mi2.stat+") — [I]",3000);camShake=0.8;}
   if(e.boss){G.bossDead=true;onBossDead();}
   updHUD();saveGame();
 }
