@@ -3891,7 +3891,7 @@ function beginNet(init){
   g0.goal=null; // 🎯 zufälliges freshState-Ziel verwerfen -> begin() setzt es seed-deterministisch (sonst hat jeder Client ein anderes Rundenziel)
   for(var i=0;i<g0.players.length;i++){g0.players[i].name=init.names[i];
     if(init.bots&&init.bots[i])g0.players[i].bot=true;} // 🤖 Robo-Sitze auf ALLEN Clients markieren
-  begin(g0);
+  begin(g0,true);   /* frische Online-Runde, keine Fortsetzung */
   document.getElementById("chatToggle").style.display="block";
   chatAdd("System","Online-Spiel gestartet — viel Glück! Du bist "+init.names[NET.my]+".");
   rollBtn.disabled=!myTurn();
@@ -4029,14 +4029,19 @@ function voiceStart(){
 (function(){var vb=document.getElementById("voiceBtn");if(!vb)return;
   vb.onclick=function(){if(VOICE.on)voiceStop();else voiceStart();};})();
 
-function begin(saved){
+/* 🩹 `saved` bedeutete zweierlei: „hier ist ein Zustandsobjekt" UND „das ist eine
+   Fortsetzung". Bei Online-Runden wird ein frisch gebauter Zustand uebergeben —
+   jede neue Runde begruesste darum mit „Willkommen zurueck auf dem Pfad!", zeigte
+   kein Tutorial und nannte das Rundenziel nicht. `frisch` trennt die beiden. */
+function begin(saved,frisch){
+  var fortsetzung=saved&&!frisch;
   var useBot=(!NET.on&&selN===1&&document.getElementById("botChk")&&document.getElementById("botChk").checked&&!saved);
   G=saved||freshState(useBot?2:selN,document.getElementById("adultChk")&&document.getElementById("adultChk").checked,
     (document.getElementById("kurzChk")&&document.getElementById("kurzChk").checked)?"kurz":"voll");
   if(useBot&&G.players[1]){G.players[1].name="Robo";G.players[1].bot=true;} // 🤖 Solo-Gegner
   if(G.mode!=="kurz")G.mode="voll"; // alte v3-Saves defensiv
   if(!G.goal)G.goal=GOALS[(NET.on?(NET.seed>>>3)%GOALS.length:(Math.random()*GOALS.length))|0]; // online: seed-deterministisch (sonst Ziel-Desync)
-  forkSel=null;moveTo=-1;moveQ=0;hopT=0;window._moveSeq=(window._moveSeq||0)+1; // Schwarm-4: laufende Rad-Callbacks entwerten (Resync baut alles neu)
+  forkSel=null;moveTo=-1;moveQ=0;hopT=0;window._prevStats={};   /* 🩹 sonst blinkt die neue Runde mit den Auf-/Ab-Pfeilen der alten */window._moveSeq=(window._moveSeq||0)+1; // Schwarm-4: laufende Rad-Callbacks entwerten (Resync baut alles neu)
   G.players.forEach(function(pp){if(!fields[pp.tile])pp.tile=0;}); // unbekannter Feld-Index -> Start (nie crashen)
   if(!saved){for(var ni=0;ni<G.players.length;ni++){var el=document.getElementById("pn"+ni);
     if(el&&el.value.trim())G.players[ni].name=el.value.trim().slice(0,12);}}
@@ -4078,10 +4083,10 @@ function begin(saved){
   // 💬 Online: Chat dauerhaft sichtbar (User: „man wird viel schreiben")
   if(NET.on){var _cb=document.getElementById("chatBox");if(_cb){_cb.style.display="flex";_cb.classList.remove("mini");}}
   initProgMap();updPlayers();updChapter();albumBadge();
-  announce(saved?"Willkommen zurück auf dem Pfad!":"DAS LEBEN BEGINNT","#ffd166");
-  if(!saved&&!NET.on&&!lsGet("lp_tut_seen"))setTimeout(function(){showTutorial(0);},900); /* ❓ erstes Spiel: kurzes Anfaenger-Tutorial */
-  if(!saved)showHint(G.players.length>1?"Reihum würfeln — trefft ihr euch auf einem Feld, gibt es eine Begegnung! 💫":"Würfle mit LEER oder dem Knopf!",4200);
-  if(!saved&&G.goal)setTimeout(function(){announce("🎯 Ziel: "+G.goal.ic+" "+G.goal.n,"#7ad9a0");},2400); // Rundenziel zu Beginn zeigen (+12 Bonus)
+  announce(fortsetzung?"Willkommen zurück auf dem Pfad!":"DAS LEBEN BEGINNT","#ffd166");
+  if(!fortsetzung&&!NET.on&&!lsGet("lp_tut_seen"))setTimeout(function(){showTutorial(0);},900); /* ❓ erstes Spiel: kurzes Anfaenger-Tutorial */
+  if(!fortsetzung)showHint(G.players.length>1?"Reihum würfeln — trefft ihr euch auf einem Feld, gibt es eine Begegnung! 💫":"Würfle mit LEER oder dem Knopf!",4200);
+  if(!fortsetzung&&G.goal)setTimeout(function(){announce("🎯 Ziel: "+G.goal.ic+" "+G.goal.n,"#7ad9a0");},2400); // Rundenziel zu Beginn zeigen (+12 Bonus)
 }
 var menuOpen=false;
 function renderMenu(){

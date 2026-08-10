@@ -1052,6 +1052,12 @@ function pickMob(x,z){ // gewichtete Auswahl, härtere Gegner erst an späteren 
   for(var i=0;i<pool.length;i++){r-=wOf(pool[i]);if(r<=0)return pool[i];}
   return pool[pool.length-1];
 }
+/* 🌅 GENERATIONSZAEHLER. Geskinnte Gegner werden pro Spawn asynchron nachgeladen.
+   Wenn das Morgengrauen die Liste zwischendurch leert, kam der Callback trotzdem
+   und haengte den Gegner in Szene UND Liste — er ueberlebte die Nacht und lief am
+   helllichten Tag herum. Jede Nacht bekommt eine Generation; Callbacks aus einer
+   alten Generation werfen ihr Modell weg, statt es einzuhaengen. */
+var _monGen=0;
 function spawnMonster(forceId,fx,fz){ /* ⚔️ W4: optional forceId/fx/fz (nur Tests) — Spielpfad ruft ohne Argumente auf */
   var x,z;
   if(fx!=null){x=fx;z=fz;}
@@ -1061,7 +1067,8 @@ function spawnMonster(forceId,fx,fz){ /* ⚔️ W4: optional forceId/fx/fz (nur 
   if(forceId){for(var fi2=0;fi2<MOBS.length;fi2++)if(MOBS[fi2].id===forceId)M=MOBS[fi2];if(!M)return 0;}
   else M=pickMob(x,z);
   if(M.skinned&&THREE.GLTFLoader){ // geskinnte GLBs: pro Spawn frisch laden (Klonen bricht Skinning in r128)
-    (function(MM,xx,zz){new THREE.GLTFLoader().load("/models/"+MM.file,function(g){
+    (function(MM,xx,zz,gen){new THREE.GLTFLoader().load("/models/"+MM.file,function(g){
+      if(gen!==_monGen)return;                 /* Nacht ist vorbei — Modell verwerfen */
       var o=g.scene;o.traverse(function(n){if(n.isMesh){n.castShadow=true;n.frustumCulled=false;if(n.material)toonify(n,true);}});
       // Bind-Pose-BBox live messen und auf Zielhöhe normieren (Meta-Höhen der Kits sind unzuverlässig)
       var bb=new THREE.Box3().setFromObject(o),hh=Math.max(0.001,bb.max.y-bb.min.y);
@@ -1072,7 +1079,7 @@ function spawnMonster(forceId,fx,fz){ /* ⚔️ W4: optional forceId/fx/fz (nur 
       monsters.push({mesh:o,x:xx,z:zz,hp:Math.round(MM.hp*(1+Math.min(1.0,nights*0.08))),maxhp:Math.round(MM.hp*(1+Math.min(1.0,nights*0.08))),dmg:MM.dmg,role:MM.role,t:Math.random()*6,spd:MM.spd,baseScale:k,kind:MM.id,walk:true,fly:false,wings:null,rig:rig,yOff:-bb.min.y*k}); /* G6: Fuß-Erdung persistieren */
       if(rig)setAnim(rig,rig.actions.walk?"walk":"idle",0);
       if(typeof updWaveHud==="function")updWaveHud();
-    },undefined,function(){});})(M,x,z);
+    },undefined,function(){});})(M,x,z,_monGen);
     return 1;
   }
   var m,sc;
@@ -4181,7 +4188,7 @@ function updDayNight(dt){
             if(lt2.mesh&&lt2.mesh.userData){if(lt2.mesh.userData.lid)lt2.mesh.userData.lid.rotation.x=0;if(lt2.mesh.userData.marker)lt2.mesh.userData.marker.visible=true;}}}
         if(_rs>0)setTimeout(function(){announce("📦 Die Wildnis hat neue Schätze versteckt!","#ffd166");},2600);}
       saveGame();
-      monsters.forEach(function(e){scene.remove(e.mesh);clearWarn(e);});monsters.length=0;
+      _monGen++;monsters.forEach(function(e){scene.remove(e.mesh);clearWarn(e);});monsters.length=0;
       spawnDayCache(false);}
     updWaveHud();}
   var f=dayT/cyc;
@@ -4419,7 +4426,7 @@ function saveGame(){
     fell:resources.filter(function(r){return r.dead;}).map(function(r){return{x:Math.round(r.x),z:Math.round(r.z),rg:r.regrow};}),
     perk:PERK,
     qp:{f:qProg.flug|0,a:qProg.arenaCr|0,r:qProg.raceWin|0,k:qProg.koloss|0},bn:bountyN|0,lootT:lootOpenedTotal|0,gd:npcs.map(function(n){return n.giftDay===day?1:0;}),
-    pq:perkQueue|0,ws:waveSpawned|0}; /* 📜 W3-Quest-Fortschritt + Bounty-Zähler; pq=offene Perk-Wahlen, ws=Wellen-Fortschritt (saveOnLeave feuert auch bei offener Perk-Wahl) */
+    pq:perkQueue|0,ws:waveSpawned|0,tw:totalWood|0}; /* 📜 W3-Quest-Fortschritt + Bounty-Zähler; pq=offene Perk-Wahlen, ws=Wellen-Fortschritt; tw=kumulatives Holz (Erfolg „Holzfäller" und die Sammel-Quests rechnen damit — ohne Speichern fing es nach jedem Laden bei 0 an) */
   lsSet("nw_save1",JSON.stringify(s));
   // 🏆 Rekord mitschreiben (Sucht-Faktor: eigenen Bestwert schlagen)
   try{var b=JSON.parse(lsGet("nw_best")||"{}");
@@ -4906,7 +4913,7 @@ function onNetMsg(d){
     if(d.n!==(isNight?1:0)||(d.d|0)!==day||Math.abs((+d.dt||0)-dayT)>3){
       day=d.d|0;nights=d.ns|0;waveNum=d.w|0;dayT=Math.min(+d.dt||0,_cy2-0.05);
       if(d.n&&!isNight){isNight=true;waveActive=true;waveToSpawn=6+waveNum*4;waveSpawned=0;} /* verpassten Nacht-Flip nachholen */
-      else if(!d.n&&isNight){isNight=false;waveActive=false;monsters.forEach(function(e){scene.remove(e.mesh);clearWarn(e);});monsters.length=0;} /* verpassten Morgen nachholen */
+      else if(!d.n&&isNight){isNight=false;waveActive=false;_monGen++;monsters.forEach(function(e){scene.remove(e.mesh);clearWarn(e);});monsters.length=0;} /* verpassten Morgen nachholen */
       else isNight=!!d.n;
       updWaveHud();}}
   if(d.t==="loot"&&d.from!==NET.role&&d.id){for(var _lj=0;_lj<loots.length;_lj++){var _lf=loots[_lj];if(_lf.id!==d.id)continue; /* 📦 Partner hat geöffnet — spiegeln, Beute NICHT doppelt */
@@ -5096,6 +5103,7 @@ function startGame(fresh){
     hp=sv.hp||100;day=sv.day||1;dayT=sv.dayT||0;isNight=!!sv.isNight;nights=sv.nights||0;won=!!sv.won;
     waveNum=nights|0;if(isNight){waveActive=true;waveToSpawn=6+waveNum*4;waveSpawned=Math.min(sv.ws|0,waveToSpawn);if(typeof updWaveHud==="function")updWaveHud();} /* Welle nach Laden fortsetzen — ws: schon gespawnte Gegner nicht nochmal (Kill-Farm) */
     perkQueue=sv.pq|0;if(perkQueue>0)showPerkPick(); /* offene Level-Up-Wahl(en) nachholen — gingen sonst verloren */
+    totalWood=sv.tw|0;
     if(sv.maxHp)maxHp=sv.maxHp;if(sv.xp!=null)xp=sv.xp;if(sv.level)level=sv.level;if(sv.kills)kills=sv.kills;
     if(sv.perk)for(var pk in PERK)if(typeof sv.perk[pk]==="number")PERK[pk]=sv.perk[pk]; // gewählte Level-Perks zurück
     if(sv.qp){qProg.flug=sv.qp.f|0;qProg.arenaCr=sv.qp.a|0;qProg.raceWin=sv.qp.r|0;qProg.koloss=sv.qp.k|0;}else{qProg.flug=0;qProg.arenaCr=0;qProg.raceWin=0;qProg.koloss=0;} /* 📜 W3: defensiv (alte Saves: 0) */
@@ -5111,7 +5119,7 @@ function startGame(fresh){
     while(quest<QUESTS.length&&QUESTS[quest].done()){var _sq=QUESTS[quest]; /* 🩹 Schwarm-P1: beim Überspringen erledigter Quests Ausrüstung TROTZDEM vergeben */
       if((_sq.gw|0)>equip.weapon)equip.weapon=_sq.gw|0;if((_sq.ga|0)>equip.armor)equip.armor=_sq.ga|0;quest++;}
   } else {for(var _pk in PERK)PERK[_pk]=0;equip.weapon=0;equip.armor=0; /* 🩹 Kimi-P1: frischer Start muss Perks/Ausrüstung nullen — sonst stapeln sich Klassen-Boni bei Restart */
-    qProg.flug=0;qProg.arenaCr=0;qProg.raceWin=0;qProg.koloss=0;bountyN=0;bounty=null;lootOpenedTotal=0;perkQueue=0;waveSpawned=0;inv={wood:0,stone:0,crystal:0,berry:0,meat:0};tools={axe:0,pick:0};hp=100;maxHp=100;xp=0;level=1;kills=0;day=1;dayT=0;isNight=false;nights=0;won=false;normInv();player.position.set(NET.on?(NET.role==="host"?-2.5:2.5):0,0,0);
+    qProg.flug=0;qProg.arenaCr=0;qProg.raceWin=0;qProg.koloss=0;bountyN=0;bounty=null;lootOpenedTotal=0;perkQueue=0;waveSpawned=0;totalWood=0;inv={wood:0,stone:0,crystal:0,berry:0,meat:0};tools={axe:0,pick:0};hp=100;maxHp=100;xp=0;level=1;kills=0;day=1;dayT=0;isNight=false;nights=0;won=false;normInv();player.position.set(NET.on?(NET.role==="host"?-2.5:2.5):0,0,0);
     var _c=getChar();if(_c&&_c.cls){ // 🔀 Klassen-Bonus (Realm) einmalig auf den frischen Start
       if(_c.cls.atk)PERK.atk+=_c.cls.atk;if(_c.cls.spd)PERK.spd+=_c.cls.spd;
       if(_c.cls.skillcd)PERK.skillcd+=_c.cls.skillcd;

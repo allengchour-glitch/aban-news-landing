@@ -2830,6 +2830,9 @@ var dorfFenster=[];
    aus, als waeren die Waende breit gestreift. Ersetzt durch eine nahtlos erzeugte
    Textur (tools/assets/mk_th32_texturen.py -> hausputz, Nahtkennzahl 0,96). */
 ladeTex("textures/th32/hausputz.png",3,2,function(t){(window._wandMats||[]).forEach(function(m){m.map=t;m.roughness=0.72;m.needsUpdate=true;});});
+/* 🩹 Waehrungszeichen: Hauspreise, Miete und der NPC-Auftragslohn standen als
+   "\u00A7" (§) im Code — beim Escapen wurde $ mit § verwechselt. Ueberall sonst
+   rechnet das Spiel in $, die Anzeige widersprach sich also. Fuenf Stellen. */
 // ---- Immobilien-Imperium: Nachbarhaeuser kaufen, taeglich Miete kassieren ----
 var immo=[]; // gekaufte Haus-Indizes
 function immoFlagge(hs){var fg=new THREE.Group();
@@ -2845,7 +2848,7 @@ function updImmo(dt){
   for(var i=0;i<H.length;i++){if(immo.indexOf(i)>=0)continue;
     var d=Math.hypot(me.x-H[i].x,me.z-H[i].z);if(d<bd){bd=d;best=i;}}
   var kb=document.getElementById("kaufBtn");
-  if(best>=0&&!fahren&&!buildMode){kb.style.display="block";kb.textContent="\uD83C\uDFE0 "+H[best].preis+" \u00A7";kb.dataset.idx=best;}
+  if(best>=0&&!fahren&&!buildMode){kb.style.display="block";kb.textContent="\uD83C\uDFE0 "+H[best].preis+" $";kb.dataset.idx=best;}
   else kb.style.display="none";}
 document.addEventListener("DOMContentLoaded",function(){});
 (function(){var kb=document.createElement("button");kb.id="kaufBtn";
@@ -2855,10 +2858,10 @@ document.addEventListener("DOMContentLoaded",function(){});
   document.body.appendChild(kb);
   kb.onclick=function(){var i=+kb.dataset.idx,hs=window._immo&&window._immo[i];if(!hs||immo.indexOf(i)>=0)return;
     if(Math.hypot(sims[0].x-hs.x,sims[0].z-hs.z)>7){kb.style.display="none";return;} // Distanz frisch pruefen
-    if(geld<hs.preis){hint("\uD83D\uDCB8 Zu teuer \u2014 dir fehlen "+(hs.preis-geld)+" \u00A7");beep(200,.15,"sawtooth",.05);return;}
+    if(geld<hs.preis){hint("\uD83D\uDCB8 Zu teuer \u2014 dir fehlen "+(hs.preis-geld)+" $");beep(200,.15,"sawtooth",.05);return;}
     geld-=hs.preis;geldSend();immo.push(i);if(MPs&&mpHost)netSend({t:"immo",i:i});if(!hs.flagge)immoFlagge(hs);stats.immobilien=(stats.immobilien||0)+1;updHUD(); /* 🩹 Schwarm-P3: Gast erfaehrt vom Hauskauf */
     beep(660,.09,"square",.05);setTimeout(function(){beep(880,.11,"square",.05);},90);
-    hint("\uD83C\uDFE0\u2705 Haus gekauft! Ab morgen: +150 \u00A7 Miete pro Tag");};})();
+    hint("\uD83C\uDFE0\u2705 Haus gekauft! Ab morgen: +150 $ Miete pro Tag");};})();
 // ---- Verkehr: 6 fahrende Autos + Bus-Linie mit Haltestelle ----
 var verkehr=[],busRec=null;
 /* Wagen-Lader mit Cache je DATEI. `loadTH` kann nur Ids der Form th_<id>.glb —
@@ -5698,7 +5701,11 @@ function loadSnapshot(sn){
         if(f.w>0.85)sp9.material.color.setHex(0xe8722a);});}}});
   if(sn.au){if(window.autoRec){scene.remove(window.autoRec.mesh);window.autoRec=null;}
     applyFurn(sn.au.id,sn.au.x+mx9,sn.au.y+my9,0);}
-  if(sn.hu&&!haustier)applyFurn("hund",sn.hu.x+mx9,sn.hu.y+my9,0);
+  /* 🩹 Anders als beim Auto eine Zeile hoeher wurde ein VORHANDENES Haustier nicht
+     abgeraeumt: `!haustier` liess den Hund aus dem Koop-Stand einfach stehen, wenn
+     man danach einen Solo-Stand ohne Hund lud. Jetzt gleiches Muster wie beim Auto. */
+  if(haustier){scene.remove(haustier.mesh);haustier=null;}
+  if(sn.hu)applyFurn("hund",sn.hu.x+mx9,sn.hu.y+my9,0);
   if(sn.qb!==undefined){questBusy=!!sn.qb;if(questBusy)buergermeisterPending=true;}
   if(sn.we)setWetter(sn.we);applySaison();if(sn.tq!==undefined)teamIdx=sn.tq;if(sn.tb)teamBase=sn.tb;if(sn.tbg!==undefined)teamBasis=sn.tbg; /* 🩹 Schwarm-P2: Team-Quest-Basiswerte ueberleben den Reload */
   (window._immo||[]).forEach(function(h9){if(h9.flagge){scene.remove(h9.flagge);h9.flagge=null;}});
@@ -6178,12 +6185,16 @@ function finishCrime(){
   var job=crime.job;crime.on=false;
   sims.forEach(function(s2,i){s2.state="idle";s2.mesh.visible=true;
     s2.x=cx(2+i*2);s2.z=cz(GH-1);s2.pose="stand";});
-  if(MPs&&!mpHost)return; // Host entscheidet
+  /* 🩹 Der Tageszaehler stand HINTER dem Host-Return — beim Gast wurde nie
+     hochgezaehlt, sein Limit „zwei krumme Dinger pro Tag" griff also nie und er
+     konnte beliebig oft zuschlagen. Jetzt zaehlen beide Peers mit, entschieden
+     wird weiterhin nur beim Host. */
+  window._coupHeute=(window._coupTag===tag?(window._coupHeute||0):0)+1;window._coupTag=tag;
+  if(MPs&&!mpHost)return; // Host entscheidet ueber Erfolg und Beute
   var lv=skills.krimi.lv;
   var chance=0.55+lv*0.07+(crime.accomplice?0.15:0)-job.risk*0.5+(crime.mgBonus||0);crime.mgBonus=0;
   var ok=Math.random()<chance;
   var beute=Math.round(job.base*(1+lv*0.4)*(crime.accomplice?1.7:1));
-  window._coupHeute=(window._coupTag===tag?(window._coupHeute||0):0)+1;window._coupTag=tag;
   if(ok){geld+=beute;stats.coupsOk++;
     crimeScene(true,job,beute);
     skillXp("krimi",2);}
@@ -6926,7 +6937,7 @@ function npcAnsprechen(){
   if(Math.random()<0.35){
     var a=NPC_AUFTRAEGE[(Math.random()*NPC_AUFTRAEGE.length)|0];
     geld+=a[1];geldSend();updHUD();
-    hint("💬 „"+a[0]+"“  → +"+a[1]+" §");
+    hint("💬 „"+a[0]+"“  → +"+a[1]+" $");
     beep(700,.09,"sine",.05);setTimeout(function(){beep(920,.11,"sine",.05);},110);
     stats.gespraeche=(stats.gespraeche||0)+1;
   }else{
@@ -8072,7 +8083,7 @@ function loop(now){
       if(_z.x<_z.min){_z.x=_z.min;_z.dir=1;}else if(_z.x>_z.max){_z.x=_z.max;_z.dir=-1;}
       _z.g.position.x=_z.x;_z.g.rotation.y=_z.dir<0?0:Math.PI;}
     // Uhr: 1 Spielminute = 0.5s (Host führt, Gast empfängt)
-    if(!MPs||mpHost){uhrzeit+=dt*4;if(uhrzeit>=1440){uhrzeit-=1440;tag++;if(immo.length){var miete=immo.length*150;geld+=miete;geldSend();updHUD();hint("\uD83C\uDFE0\uD83D\uDCB0 Mieteinnahmen: +"+miete+" \u00A7 ("+immo.length+" H\u00E4user)");}rollWetter();applySaison();hint(SAISON[calcSaison()][0]+(wetter==="regen"?" · 🌧️ Regen":wetter==="schnee"?" · 🌨️ Schnee":""));}}
+    if(!MPs||mpHost){uhrzeit+=dt*4;if(uhrzeit>=1440){uhrzeit-=1440;tag++;if(immo.length){var miete=immo.length*150;geld+=miete;geldSend();updHUD();hint("\uD83C\uDFE0\uD83D\uDCB0 Mieteinnahmen: +"+miete+" $ ("+immo.length+" H\u00E4user)");}rollWetter();applySaison();hint(SAISON[calcSaison()][0]+(wetter==="regen"?" · 🌧️ Regen":wetter==="schnee"?" · 🌨️ Schnee":""));}}
     // Tag/Nacht
     var hh=uhrzeit/60,dayA=Math.max(0,Math.sin((hh-5.75)/14*Math.PI)); // Sonne 5:45-19:45 — Abend hat echtes Restlicht
     var wDim=wetter==="sonne"?1:0.62;
