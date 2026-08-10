@@ -62,3 +62,4 @@ gid://shopify/Product/15484427305345	hundegeschirr-leine-mit-ausbruchschutz-6087
 gid://shopify/Product/15485455630721	kinder-hausschuhe-pinguin-752512	Kinder Hausschuhe Pinguin
 gid://shopify/Product/15492135518593	loose-fit-jeans-im-american-style-603500	Loose-fit Jeans im American Style
 gid://shopify/Product/15493062558081	retro-cropped-jeans-fur-damen-609200	Retro Cropped Jeans für Damen
+gid://shopify/Product/15493720146305	bestickter-samt-kissenbezug-827968	Bestickter Samt-Kissenbezug

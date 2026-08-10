@@ -6246,3 +6246,4 @@ gid://shopify/Product/15493583208833	30->1	Geschenkset für den Freund
 gid://shopify/Product/15493619057025	87->0	Herren-Armbanduhr, Leuchtend, Wasserdicht
 gid://shopify/Product/15447874371969	46->1	Akku für Fernsteuerung TX16, TX12 & Boxer
 gid://shopify/Product/15447890821505	32->0	Leichter Schal mit Wasserwellenmuster
+gid://shopify/Product/15447923818881	13->0	3M Thinsulate Winterhandschuhe für Damen & Herren
