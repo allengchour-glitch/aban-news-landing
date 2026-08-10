@@ -3927,3 +3927,49 @@ von 2026-07-26 hält).
 alle 200 ausser den beiden Shopify-Kontoportal-URLs (406 gegenüber curl ist dort normal);
 21'649 Entwürfe haben zu ~2/3 einen expliziten Grund-Tag, der Rest sind Alt-Entwürfe ohne
 Lieferanten-SKU (korrekt draussen, laut §14 unverkäuflich).
+
+## 🔎 Katalog-Audit 2026-08-10 («fehler und dublette suchen»)
+
+Werkzeug: `automation/katalog_audit.py` — exportiert **alle aktiven Produkte** einmal komplett
+(27'419) und rechnet dann lokal. Grund für den Voll-Export: Dublettenfragen lassen sich nur
+über den Gesamtbestand beantworten. Beide grossen Fehlschlüsse dieses Projekts kamen daher,
+dass gegen eine unvollständige Liste geprüft wurde — Shopifys `title:"…"`-Suche (16c) und die
+250er-Kollektionsseite (10.08.). Bericht: `dropship/KATALOG-AUDIT.md`.
+
+### Dubletten: **keine**
+- 0 Gruppen mit gleichem Titel **und** gleichem Hauptbild.
+- 0 echte SKU-Dubletten (die 8 Treffer waren Printful-Blanks — dieselbe Variantennummer für
+  verschiedene Motive ist bei Print-on-Demand korrekt).
+- 4 Paare teilen ein Hauptbild: jeweils Einzelartikel + zugehöriges Set-Bundle. Kein Fehler —
+  die Bundles sind eigene Produkte mit eigener SKU, nennen ihren Inhalt und tragen «2-teilig»
+  bzw. «3-teilig» im Titel.
+- 137 Gruppen mit gleichem Titel sind Grössen-/Farbvarianten. Nicht anfassen (Regel vom 26.07.).
+
+### Behobene Fehler
+- **22 Produkte hatten ein VIDEO als Hauptmedium** — sie sahen im Export wie «ohne Bild» aus,
+  hatten aber 6–21 Bilder. Folge: leere Kollektionskacheln und kein `image_link` für Google.
+  Behoben (`automation/video_als_hauptbild_fix.py`) und an der Wurzel abgestellt: der Importer
+  schiebt nach dem Anhängen des CJ-Videos das erste fertige Bild wieder auf Position 0.
+- **14 Titel begannen mit einem Modellcode** («YSM8003 Rahmenlose Sonnenbrille»). Der Code wird
+  **ans Ende verschoben, nicht gelöscht** — «ER26500» ist eine genormte Batteriegrösse, «ELM327»
+  der OBD2-Chipstandard, «BM800» ein gesuchtes Mikrofonmodell. Löschen hätte Bedeutung und
+  Suchtreffer vernichtet.
+- **266 Produkte ohne jede Lieferanten-SKU** auf DRAFT (`keine-lieferanten-ref`, rückholbar mit
+  `REVIVE=1`). Es wurde eigens geprüft, dass **keine** Variante eine SKU trägt — nicht nur die
+  erste. Beleg für den Ernstfall: von zehn Bestellungen ist genau die eine ohne SKU (**#1008**)
+  bis heute unerfüllt. 33 davon trugen den Tag `bestseller` — gerade die werden bevorzugt
+  gekauft und hätten storniert werden müssen.
+
+### Bewusst NICHT automatisiert
+**490 sehr kurze Titel** («Nachthemd», «Bikini-Set»). Der naheliegende Fix — ein Merkmal aus der
+Beschreibung anhängen — wurde getestet und **verworfen**: er erzeugte «Keramiktopf aus Marmor»,
+«Nachthemd aus Wolle» und «Bambus-Rollo aus Bambus». Materialangaben aus Fliesstext sind zu
+unzuverlässig (dieselbe Lehre wie Regel 9 bei Groq-Titeln). Ein kurzer Titel ist besser als ein
+falscher. Bleibt als Handarbeit offen; die POD-Titel («Tasse «Hoi»») sind ohnehin Absicht.
+
+### Zwei eigene Fehlalarme, die die Regex-Regel (9b) bestätigen
+- «77 Lieferantencodes im Titel» — mein Muster traf mit `re.I` die Wörter **Skulptur** und
+  **Skull** (über `SKU`) sowie **Reflexzonen** (über `Ref…`) und hielt Batteriecodes wie CR2025
+  für Lieferantennummern. Ohne `re.I` und mit Ausnahmeliste bleiben 14 echte Treffer.
+- «1 Lieferantenname sichtbar» — «CJ-02, CJ-03» in einer Beschreibung sind Farbvarianten-Codes,
+  nicht der Lieferant CJ.
