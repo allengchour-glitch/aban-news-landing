@@ -6203,3 +6203,4 @@ gid://shopify/Product/15493443748225	8->0	Halskette mit ovalem Retro-Anhänger
 gid://shopify/Product/15493444174209	14->0	Halsreif mit Anhänger für Damen
 gid://shopify/Product/15493444239745	79->0	Ugreen USB-C Ladekabel (3A, Nylon)
 gid://shopify/Product/15493444305281	28->0	Halskette Holzperlen & Blattgold-Anhänger
+gid://shopify/Product/15493476581761	36->0	Retro Lederarmband für Apple Watch

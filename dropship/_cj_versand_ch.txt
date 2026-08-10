@@ -110,3 +110,5 @@ gid://shopify/Product/15448884543873	ok	Solar-Jalousien mit 15-Kanal-Fernbedienu
 gid://shopify/Product/15468317245825	nicht-versendbar	Multifunktionaler USB-Trolley 20 Zoll
 gid://shopify/Product/15454117134721	ok	Multifunktionaler Rucksack
 gid://shopify/Product/15485045670273	nicht-versendbar	Kabellose Hochdruck-Pistole für die Autowäsche
+gid://shopify/Product/15453921051009	nicht-versendbar	Luftreiniger für Haustiere
+gid://shopify/Product/15484487303553	nicht-versendbar	Katzenbett und Kletterturm
