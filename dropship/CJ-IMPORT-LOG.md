@@ -4109,3 +4109,55 @@ Lieferantenreferenz gedraftet, BigBuy-Verlustbringer entfernt.
 die Umsätze #1011 (21.16 netto) und #1012 (31.95 netto) decken ihn bereits.
 **Offen bleibt:** die **97 Produkte mit selbst vergebener oder AliExpress-Kennung** (59 kuratiert,
 38 AliExpress) sind dieselbe Risikoklasse wie #1008 und stehen weiter aktiv im Shop.
+
+## 🚚 CJ-Versandprüfung Schweiz — neuer Guard (2026-08-10)
+
+**Anlass:** das negative Auszahlungsguthaben. Für BigBuy gibt es die Lieferbarkeitsprüfung seit
+Juli; für CJ fehlte sie, obwohl CJ inzwischen fast den ganzen Katalog stellt.
+
+**Methode und Gegenprobe (Pflicht, sonst wertlos):**
+`logistic/freightCalculate` liefert für einen 500-g-Artikel **11 Versandoptionen** (USD 13–15),
+für einen 18-kg-Kletterbaum **null Optionen — bei identischem `code: 200`**. Die leere Liste ist
+also eine echte Aussage. Wichtig: bei erschöpftem Punktebudget kommt ebenfalls eine leere Liste,
+dann aber mit `code 16900500`. Ohne diese Unterscheidung würde der Guard bei leerem Budget den
+halben Katalog draften. Genau deshalb hatte ich am Vormittag noch NICHT gehandelt.
+
+**Ergebnis (Prüfung ab CHF 150, teuerste zuerst):**
+**31 Produkte auf DRAFT** (`cj-nicht-versendbar-ch`, rückholbar mit `REVIVE=1`) — Bürostühle,
+Katzenbäume, Schweisswagen, Topfsets, Picknickwagen: durchweg 10–22 kg. 8 als versendbar
+bestätigt, 84 blieben **unklar** (Punktebudget) und wurden **nicht angetastet**; sie kommen beim
+nächsten Lauf dran (der Guard hängt jetzt im Supervisor).
+
+**Zwei Zusatzbefunde:**
+- **Eine Versandoption zu HABEN genügt nicht.** «Smartes Hantel-Set» (CHF 319.90) hatte genau
+  einen Versandweg — für **USD 373.34**. Jeder Verkauf wäre ein Verlust von Hunderten Franken.
+  Der Guard prüft deshalb auch die Wirtschaftlichkeit (Fracht > 50 % des Verkaufspreises = raus).
+- **`code 1602002` = «vom Lieferanten ausgelistet»** (Digitalpiano). Wird als nicht lieferbar
+  behandelt.
+
+**Wieder aufgetreten: die Drei-SKU-Formen-Falle.** Der erste Lauf meldete für 24 von 50 Produkten
+«Product not found» — weil er nur `variantSku` abfragte. CJ nutzt daneben rein numerische pids und
+UUID-pids. Mit der Erkennung aus dem Bestell-Motor lösen sich diese Fehlalarme auf.
+
+**Eigener Bug, gefunden und behoben:** Der Probelauf (`DRY=1`) schrieb «ok» in den Ledger. Der
+scharfe Lauf hätte diese Produkte dann stillschweigend übersprungen — das «Smarte Hantel-Set»
+war schon so durchgerutscht. Ledger bereinigt, `DRY` schreibt jetzt nichts mehr.
+
+## ✅ Nachkontrolle aller heutigen Eingriffe
+- «Geschenke unter CHF 30»: 2'672 Produkte, teuerstes **CHF 29.90** — Versprechen hält.
+- Aktive Produkte mit Bestand 0: **0**. Aktiv-aber-nicht-publiziert: **0**.
+- Gedraftet und nirgends mehr aktiv: 307 ohne Lieferantenquelle, 31 nicht CH-versendbar,
+  2'580 ausverkauft.
+- Weiterleitungen live geprüft: `bestseller-unter-50` → `geschenke-unter-50-franken`,
+  `elektronik-computer` → `elektronik-technik` (beide HTTP 200 am Ziel).
+- **`eu-lager`-Verdacht entschärft:** In **keiner** der 250 geprüften Beschreibungen steht ein
+  5–10-Tage-Versprechen. Der `delivery_block`-Code kennt die Zuordnung, rendert sie hier aber
+  nicht. Übrig bleibt der Kollektionstitel «EU-Lager — Schnell geliefert» im Menü; ob die 295
+  Artikel wirklich aus einem EU-Lager kommen, ist ohne CJ-Punkte nicht zu klären. **Nicht
+  umbenannt** — eine unbelegte Vermutung soll kein echtes Verkaufsargument zerstören.
+
+**Bewusste Nicht-Entscheidung: keine Weiterleitungen für die 338 gedrafteten Produkte.** Nur 21
+liessen sich einer passenden Kollektion zuordnen; für die übrigen 317 wäre jedes Ziel geraten.
+Ein HTTP 404 ist für einen nicht mehr geführten Artikel die richtige Antwort — Google entfernt
+ihn sauber aus dem Index, während eine Weiterleitung auf eine unpassende Seite als «Soft 404»
+gewertet wird und schlechter ist.
