@@ -5870,3 +5870,8 @@ gid://shopify/Product/15490613936513	8->0	Geblümtes Baumwollhemd mit Stickerei
 gid://shopify/Product/15490614231425	46->0	Dünne Sommerhosen
 gid://shopify/Product/15490614362497	8->0	Kaschmir-Leggings für Herbst & Winter
 gid://shopify/Product/15490615542145	36->0	Outdoor Tactical Bauchtasche mit Holster
+gid://shopify/Product/15490702999937	9->1	Vintage Vorhang mit Spitze und Perlen
+gid://shopify/Product/15490703065473	37->0	Wandregal für Kosmetik & Desinfektionsmittel
+gid://shopify/Product/15490724856193	38->0	Weihnachtsmann Malerei-Set
+gid://shopify/Product/15490725020033	54->0	Ölgemälde
+gid://shopify/Product/15490725118337	126->0	Digitales Malen nach Zahlen – Eigenes Motiv
