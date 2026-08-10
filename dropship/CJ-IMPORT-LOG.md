@@ -4080,3 +4080,32 @@ deren SKU zwar existiert, aber **keine Lieferantenreferenz** ist:
 **Bewusst noch NICHT gedraftet.** Die 266 waren die dokumentierte Regel aus §14 («keine SKU»);
 diese 97 sind ein Grenzfall, bei dem eine manuelle Beschaffung möglich ist. Bei den 59
 kuratierten hängt es daran, ob es je eine Quelle gab — das weiss nur der Betreiber.
+
+## 💸 Negatives Auszahlungsguthaben −CHF 32.69 erklärt (2026-08-10)
+
+Der Betrag stimmt auf den Rappen und ist **kein Fehler im Shop**, sondern die Rechnung für fünf
+Bestellungen, die nicht geliefert werden konnten:
+
+| Bestellung | Betrag | Artikel | Ursache |
+|---|---|---|---|
+| #1006 | 426.51 | BigBuy-Klimagerät | beim Lieferanten ausverkauft (ER003) |
+| #1007 | 265.90 | BigBuy-Raumkühler | dito |
+| #1008 | 177.21 | Schlauchboot Intex | **ohne Lieferanten-SKU** — unbestellbar |
+| #1010 |  44.90 | Denver-Kopfhörer (BigBuy) | – |
+| #1009 |  40.90 | Xiaomi-Kopfhörer (BigBuy) | – |
+| **Summe** | **955.42** | | alle vollständig erstattet |
+
+**Rechnung:** Netto eingegangen 1'049.07 − erstattet 955.42 − bereits ausbezahlt 126.34 = **−32.69**.
+Davon sind **CHF 31.22 verlorene Zahlungsgebühren**: Shopify erstattet dem Kunden den BRUTTO-Betrag,
+behält die Transaktionsgebühr aber ein. Die restlichen CHF 1.47 waren zu früh ausbezahlt
+(Auszahlungen am 15./16.07. aus Umsätzen, die danach storniert wurden).
+
+**Das ist die Rechnung für unverkäufliche Ware.** CHF 955 sind ein- und wieder ausgegangen, fünf
+Kundinnen und Kunden haben bezahlt und nichts erhalten, und der Shop bleibt mit CHF 31 Gebühren
+zurück. Genau dieses Muster begründet die beiden Aufräumaktionen vom 10.08.: 266 Produkte ohne
+Lieferantenreferenz gedraftet, BigBuy-Verlustbringer entfernt.
+
+**Kein Handlungsbedarf beim Saldo selbst** — er wird mit den nächsten Auszahlungen verrechnet;
+die Umsätze #1011 (21.16 netto) und #1012 (31.95 netto) decken ihn bereits.
+**Offen bleibt:** die **97 Produkte mit selbst vergebener oder AliExpress-Kennung** (59 kuratiert,
+38 AliExpress) sind dieselbe Risikoklasse wie #1008 und stehen weiter aktiv im Shop.
