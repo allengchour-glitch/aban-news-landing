@@ -4348,3 +4348,36 @@ bereit und gehen raus, sobald ein Token da ist. Threads bleibt laut Anweisung au
 
 Dass die Warteschlange gerade stillsteht, hatte einen guten Nebeneffekt: Die falschen
 Versprechen wurden korrigiert, **bevor** sie öffentlich wurden.
+
+## 📸 Instagram-Doppelposts: Werkzeug gebaut, Ausführung liegt beim Betreiber (2026-08-10)
+
+**Warum ich es nicht selbst ausführen kann — zwei unabhängige Gründe:**
+1. **Kein Zugang.** Sämtliche Meta-Zugangsdaten sind mit dem Container-Wipe verloren
+   (`meta_page_token`, `meta_ig_id`, `meta_app_id`, `meta_app_secret`), und in dieser Sitzung
+   ist kein Instagram-/Meta-Konnektor verfügbar. Ich kann die Beiträge weder lesen noch löschen.
+2. **Löschen ist aus der Sitzung gesperrt.** Das steht schon seit 2026-07-28 im Gedächtnis:
+   veröffentlichte Beiträge zu löschen wird hier blockiert. Selbst mit Token müsste der Lauf
+   lokal oder über den PC-Claude erfolgen.
+
+**Was ich stattdessen geliefert habe:** `automation/ig_dubletten.mjs` — startklar, sobald ein
+Token da ist.
+
+**Erkennung nach Beweiskraft getrennt** (weil Löschen unumkehrbar ist):
+- **🔴 stark, löschbar:** gleiche Mediendatei oder gleiche Produkt-URL in der Caption.
+- **🟡 schwach, nur Bericht:** gleiche ersten drei Caption-Wörter. Ein Selbsttest zeigte, warum
+  die im Gedächtnis dokumentierte 45-Zeichen-Signatur allein nicht genügt: «Ring-Set Eternità ✨
+  Jetzt bei LuxeStyle — CHF 35.90» und «Ring-Set Eternità 💍 stapelbar — jetzt entdecken!» meinen
+  dasselbe Produkt, laufen aber nach 16 Zeichen auseinander. Drei Wörter treffen beide — sind
+  dafür aber zu grob zum blinden Löschen, denn zwei Artikel derselben Reihe beginnen oft gleich.
+
+**Sicherheitsregeln:**
+- Der **älteste** Beitrag einer Gruppe bleibt immer stehen (er trägt die Interaktionen).
+- Beiträge ab **500 Aufrufen** werden nie gelöscht — Reichweite wiegt schwerer als Ordnung
+  (entspricht der Regel aus dem Gedächtnis).
+- Ohne `--loeschen` passiert nichts; der Bericht ist die Voreinstellung.
+
+**Aufruf für den Betreiber (lokal / PC-Claude):**
+```
+META_ACCESS_TOKEN=… IG_USER_ID=17841480560863361 node automation/ig_dubletten.mjs
+META_ACCESS_TOKEN=… IG_USER_ID=17841480560863361 node automation/ig_dubletten.mjs --loeschen
+```
