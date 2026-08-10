@@ -267,15 +267,21 @@ for(const [cat,label] of grp.cats){
  const zFile=`${ZDIR}/${String(cat).replace(/[^A-Za-z0-9_-]/g,'')}`;
  let startSeite=1;
  try{ const v=parseInt(fs.readFileSync(zFile,'utf8').trim(),10); if(v>0)startSeite=v; }catch{}
- let letzteSeite=startSeite;
+ let letzteSeite=startSeite, zeigerBehalten=false;
  for(let page=startSeite;page<startSeite+MAXPAGE && total<CAP && got<perCat;page++){
   letzteSeite=page;
   const WH=(process.env.WAREHOUSE||'').trim(); // EU-Lager-Filter (z.B. DE) — User 2026-07-07 «cj sachen aus eu lager»
   const j=await cj(`/product/list?pageSize=30&pageNum=${page}&categoryId=${cat}${WH?`&countryCode=${WH}`:''}`); await sleep(700);
   const list=(j.data&&j.data.list)||[];
-  // Leere Seite = Ende der Kategorie. Zeiger auf 1 zurücksetzen, damit beim nächsten Durchgang
-  // frisch eingestellte Ware auf den vorderen Seiten wieder erfasst wird.
-  if(!list.length){ letzteSeite=0; break; }
+  // ⚠️ «Leere Liste» heisst NICHT automatisch «Kategorie zu Ende». Bei erschöpftem Punkte-
+  // budget antwortet CJ mit code 16900500 und ebenfalls leerer Liste. Wer das verwechselt,
+  // setzt alle Seiten-Zeiger auf 1 zurück und verliert die mühsam erarbeitete Tiefe — beim
+  // ersten Anlauf am 10.08. ist genau das mit vier Kategorien passiert.
+  if(!list.length){
+    if(Number(j.code)===200){ letzteSeite=0; }          // wirklich am Ende -> neu von vorn
+    else { console.log(`  ⛔ CJ-Fehler ${j.code}: ${String(j.message||'').slice(0,60)} — Zeiger bleibt`); zeigerBehalten=true; }
+    break;
+  }
   for(const p of list){
    if(total>=CAP)break;
    const nm=p.productNameEn||''; if(!nm||done.has(String(p.pid))||(grp.ban&&grp.ban.test(nm)))continue;
@@ -352,7 +358,7 @@ for(const [cat,label] of grp.cats){
  // die Schleife mit `break` verlassen, ein Schreibbefehl am Schleifenende käme dann nie dran.
  // Genau daran scheiterte der erste Anlauf (alle Zeiger blieben auf 21 stehen).
  // letzteSeite===0 bedeutet «Kategorie war zu Ende» -> wieder bei Seite 1 beginnen.
- try{ fs.writeFileSync(zFile, String(letzteSeite===0?1:letzteSeite+1)); }catch{}
- console.log(`${label}: total ${total} (Zeiger → Seite ${letzteSeite===0?1:letzteSeite+1})`);
+ if(!zeigerBehalten){ try{ fs.writeFileSync(zFile, String(letzteSeite===0?1:letzteSeite+1)); }catch{} }
+ console.log(`${label}: total ${total}${zeigerBehalten?' (Zeiger unveraendert — CJ-Fehler)':` (Zeiger → Seite ${letzteSeite===0?1:letzteSeite+1})`}`);
 }
 console.log(`\nFERTIG: ${total} ${grp.type}${DRY?' [DRY]':''}.`);

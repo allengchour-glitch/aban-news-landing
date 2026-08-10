@@ -63,6 +63,13 @@ while true; do
     echo "$(date +%T) GRP=$G Runde=$ROUND Fenster=$TIEFE Seiten (ab gespeichertem Zeiger)" >> "$LOG"
     GRP=$G CAP=12 MAXPAGE=$TIEFE GROUPS_FILE=/tmp/cj_groups_extra.json CJ_TOKEN="$TOK" \
       /opt/node22/bin/node automation/cj_category_fill.mjs >> "$LOG" 2>&1
+    # Punktetopf leer -> weiterlaufen bringt nichts und erzeugt nur QPS-Drosselung.
+    # Lange Pause, bis CJ das Tagesbudget zurücksetzt. (KEIN Strafschlaf wegen vermuteter
+    # Punkteknappheit — hier steht die Ursache ausdrücklich in der Antwort.)
+    if tail -40 "$LOG" | grep -q "Insufficient API points"; then
+      echo "$(date +%T) CJ-Tagesbudget erschöpft — Pause 30 Min" >> "$LOG"
+      sleep 1800
+    fi
   else
     echo "$(date +%T) kein CJ-Token (Drossel) — kurze Pause, KEIN Strafschlaf" >> "$LOG"
     sleep 120
