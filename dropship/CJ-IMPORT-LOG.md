@@ -4381,3 +4381,38 @@ Token da ist.
 META_ACCESS_TOKEN=… IG_USER_ID=17841480560863361 node automation/ig_dubletten.mjs
 META_ACCESS_TOKEN=… IG_USER_ID=17841480560863361 node automation/ig_dubletten.mjs --loeschen
 ```
+
+## 🗑️ Instagram-Doppelposts gelöscht (2026-08-10, mit frischem Token)
+
+**Zugang wiederhergestellt:** Betreiber lieferte ein User-Token (App «LuxeStyle Social»
+1680844973132194). Daraus Seiten-Token für **LuxeStyle CH** (1049840534888592) gezogen und die
+IG-ID bestätigt: **17841480560863361 · @luxestyle.ch · 199 Beiträge · 157 Follower**.
+Alle nötigen Rechte vorhanden, inkl. `instagram_manage_contents` (Voraussetzung fürs Löschen).
+Token liegt ausschliesslich unter `/tmp` mit `chmod 600`, nicht im Repo.
+
+**Ergebnis des Berichtslaufs über 50 Beiträge: genau EINE echte Dublettengruppe.**
+Produkt «Silber-Armreif *Serpent*», dreimal veröffentlicht:
+- behalten (ältester): 09.08. `instagram.com/p/Db1nmkoisM-/`
+- gelöscht: 10.08. `instagram.com/p/Db2QzYDilh9/` (0 Aufrufe)
+- gelöscht: 10.08. `instagram.com/p/Db2pHZkDdMq/` (0 Aufrufe)
+
+**Bestätigt:** `media_count` **199 → 197**, Kontrolllauf findet keine starke Dublette mehr.
+
+**Der Doppelpost ist HEUTE entstanden** — also nach dem Container-Wipe, als in dieser Sitzung
+gar kein Meta-Token vorhanden war. Er kann somit nicht von den Automaten hier stammen; eine
+andere Instanz (PC-Claude oder manuell) hat gepostet. Die fünf Schutzschichten der Poster
+greifen nur innerhalb ihrer eigenen Umgebung — **wer von einem zweiten Rechner postet, umgeht
+sie alle.** Das ist die eigentliche verbleibende Lücke.
+
+**Die vier 🟡-Verdachtsfälle wurden bewusst NICHT gelöscht — und das war richtig:** Sie kamen
+alle aus derselben Caption-Vorlage («Für di oder zum Verschänke? 🎁 …»), betrafen aber
+verschiedene Produkte (Sonnenbrille «Riviera», Herren-Sneaker «Marco», Moissanite-Herzkette
+«Coeur»). Ein Automat, der auf Textähnlichkeit löscht, hätte hier drei einwandfreie Beiträge
+vernichtet. Die Trennung in starke und schwache Treffer hat sich beim ersten Einsatz bewährt.
+
+**⏳ Offen: Der Token läuft am 10.08. um 21:00 UTC ab** (kurzlebiges User-Token, ~2 Stunden).
+Für einen langlebigen Seiten-Token (~60 Tage) fehlt das **App-Geheimnis**
+(Meta-Dashboard → App-Einstellungen → Allgemein → «App-Geheimnis anzeigen»). Ohne das steht
+der Social-Betrieb morgen wieder still. Neue Reels habe ich deshalb bewusst noch nicht
+angestossen — ein Autopilot, der einmal postet und dann ausfällt, richtet mehr Verwirrung an
+als Nutzen.
