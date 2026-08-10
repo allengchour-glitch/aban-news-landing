@@ -4014,3 +4014,35 @@ falscher. Bleibt als Handarbeit offen; die POD-Titel («Tasse «Hoi»») sind oh
    nur noch `total 0` liefert, es also gar keinen EU-Bestand mehr gibt. Der Tag wird nur gesetzt,
    wenn beim Import `WAREHOUSE`/`WH` gesetzt war. Falls die Ware aus China kommt, ist das ein
    falsches Lieferversprechen. Auch das braucht CJ-Punkte zur Klärung.
+
+## ⚡ CJ-Grind: Ursache des Punkte-Verbrauchs gefunden (2026-08-10)
+
+**Symptom:** Der Ledger wuchs nur noch um ~1–20 Produkte pro Stunde, obwohl vier Runner liefen.
+**Messung:** CJ meldet `Insufficient API points. Used today: 73'220, Remaining: 0`. Das Tagesbudget
+war also nicht knapp — es war **komplett verbraucht**, für rund 20 neue Produkte.
+
+**Ursache:** `cj_category_fill.mjs` paginierte in JEDEM Lauf wieder ab **Seite 1** bis `MAXPAGE`.
+Die Runner hatten `MAXPAGE` über die Runden-Rampe auf 20–60 hochgezogen. Pro Lauf und Kategorie
+wurden also bis zu 60 Seiten gelesen, von denen 59 längst abgegrast waren. Bei ~30 Kategorien je
+Gruppe und vier parallelen Runnern verbrennt das ein Tagesbudget in Stunden — ohne Ertrag.
+Die frühere Diagnose «DEPTH-Reset» (siehe CLAUDE.md) behandelte das Symptom: sie grub tiefer,
+statt sich zu merken, wo man schon war.
+
+**Behoben:**
+1. **Seiten-Zeiger je Kategorie** — `dropship/_cj_pages/<categoryId>` hält die nächste zu lesende
+   Seite. Jeder Lauf macht dort weiter. Eine Datei pro Kategorie, weil vier Runner parallel
+   schreiben und eine gemeinsame JSON sich gegenseitig überschriebe.
+2. **`MAXPAGE` heisst jetzt «neue Seiten pro Lauf»** und steht auf **6** statt 20–60. Der Zeiger
+   wandert ja weiter, die Rampe ist überflüssig.
+3. **Zeiger seeded auf Seite 21** — die Seiten 1–20 wurden von jedem bisherigen Lauf gelesen.
+4. **Pause statt Dauerfeuer**, wenn das Budget leer ist (30 Min), sonst erzeugen die Runner nur
+   noch QPS-Drosselung (`Too Many Requests, QPS limit is 1 time/1second`).
+
+**⚠️ Zwei Fallen beim Bau, beide erst durch Nachmessen aufgefallen:**
+- **Der Schreibbefehl stand am Ende der Seitenschleife** — und die wird bei leerer Seite per
+  `break` verlassen. Also wurde der Zeiger nie geschrieben, alle blieben auf 21. Er gehört
+  **hinter** die Schleife.
+- **«Leere Liste» ist nicht «Kategorie zu Ende».** Bei erschöpftem Punktebudget antwortet CJ
+  ebenfalls mit leerer Liste (`code 16900500`). Der erste Anlauf hat deshalb vier Zeiger auf 1
+  zurückgesetzt und die Tiefe verloren. Jetzt wird nur bei **`code === 200`** zurückgesetzt;
+  bei jedem anderen Code bleibt der Zeiger stehen. Wiederhergestellt.
