@@ -5864,3 +5864,5 @@ gid://shopify/Product/15490167570817	42->3	Herren Leder-Slipper
 gid://shopify/Product/15490168553857	16->3	Outdoor Casual Sandalen für Herren
 gid://shopify/Product/15490462515585	29->2	Camping-Kocher
 gid://shopify/Product/15490462712193	23->0	Gehstock mit Fußstütze
+gid://shopify/Product/15490549940609	20->0	Babyflaschenbürste 7-in-1
+gid://shopify/Product/15490550104449	12->0	Jute Wäschekorb
