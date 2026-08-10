@@ -520,3 +520,8 @@ gid://shopify/Product/15491402891649	ok
 gid://shopify/Product/15491402793345	ok
 gid://shopify/Product/15491402695041	ok
 gid://shopify/Product/15491402629505	ok
+gid://shopify/Product/15491402301825	ok
+gid://shopify/Product/15491402170753	ok
+gid://shopify/Product/15491401712001	ok
+gid://shopify/Product/15491401580929	ok
+gid://shopify/Product/15491401482625	ok
