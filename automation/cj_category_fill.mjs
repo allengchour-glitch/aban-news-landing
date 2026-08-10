@@ -141,7 +141,32 @@ const MAXPAGE=Number(process.env.MAXPAGE||5), PERCAT=Number(process.env.PERCAT||
 
 async function cj(path){const r=await fetch('https://developers.cjdropshipping.com/api2.0/v1'+path,{headers:{'CJ-Access-Token':CJT}});return r.json();}
 async function shTok(){for(let a=0;a<5;a++){try{const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:CID,client_secret:CSEC,grant_type:'client_credentials'})});const t=await r.text();try{const tok=JSON.parse(t).access_token;if(tok)return tok;}catch{}}catch{}await sleep(2000*(a+1));}throw new Error('shTok: kein Token nach 5 Versuchen');}
-async function sgql(t,q,v){const r=await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':t},body:JSON.stringify({query:q,variables:v})});return r.json();}
+// Wiederholt bei Drossel/Netz-Aussetzer. Ohne das schlug einzelne Aufrufe still fehl — was
+// beim Publizieren teuer war: 17 Produkte wurden angelegt, aber nie veröffentlicht und
+// lieferten wochenlang 404 (Sauber-Lauf 2026-08-10).
+async function sgql(t,q,v){
+ for(let i=0;i<4;i++){
+  try{
+   const r=await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':t},body:JSON.stringify({query:q,variables:v}),signal:AbortSignal.timeout(60000)});
+   const j=await r.json();
+   if(j&&j.data)return j;                       // echte Antwort (auch mit userErrors)
+   if(r.status!==429&&r.status<500)return j;    // fachlicher Fehler -> nicht wiederholen
+  }catch{}
+  await sleep(1500*(i+1));
+ }
+ return {};
+}
+// Publizieren MIT Quittung: erst wenn Shopify keine Fehler meldet, gilt es als erledigt.
+async function publishVerified(t,pid){
+ for(let i=0;i<3;i++){
+  const r=await sgql(t,PUB,{id:pid,p:PUBS});
+  const errs=r?.data?.publishablePublish?.userErrors;
+  if(Array.isArray(errs)&&errs.length===0)return true;
+  await sleep(2000*(i+1));
+ }
+ console.log('  ⚠️ Publizieren fehlgeschlagen',pid);
+ return false;
+}
 const SET=`mutation($i:ProductSetInput!){productSet(synchronous:true,input:$i){product{id}userErrors{message}}}`;
 const MED=`mutation($id:ID!,$m:[CreateMediaInput!]!){productCreateMedia(productId:$id,media:$m){mediaUserErrors{message}}}`;
 const PUB=`mutation($id:ID!,$p:[PublicationInput!]!){publishablePublish(id:$id,input:$p){userErrors{message}}}`;
@@ -294,7 +319,7 @@ for(const [cat,label] of grp.cats){
    if(e.length||!pid){console.log('  ✗',title.slice(0,30),JSON.stringify(e).slice(0,80));continue;}
    const media=imgs.slice(1).map(u=>({originalSource:u,mediaContentType:'IMAGE'}));
  if(media.length)await sgql(st,MED,{id:pid,m:media});
-   await sgql(st,PUB,{id:pid,p:PUBS});
+   await publishVerified(st,pid);
  if(d.productVideo&&/^https/.test(d.productVideo))await attachVideo(st,pid,d.productVideo,p.pid);
    fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid));
    got++;total++; console.log(`✅ ${title} → ${pid.split('/').pop()}`);
