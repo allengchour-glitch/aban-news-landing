@@ -6204,3 +6204,5 @@ gid://shopify/Product/15493444174209	14->0	Halsreif mit Anhänger für Damen
 gid://shopify/Product/15493444239745	79->0	Ugreen USB-C Ladekabel (3A, Nylon)
 gid://shopify/Product/15493444305281	28->0	Halskette Holzperlen & Blattgold-Anhänger
 gid://shopify/Product/15493476581761	36->0	Retro Lederarmband für Apple Watch
+gid://shopify/Product/15412899676545	18->0	Edelstahl-Trinkflasche «Hydro» 570 ml
+gid://shopify/Product/15412902855041	36->1	Mondstein-Blütenring «Fleur» – zarter Statement-Ring
