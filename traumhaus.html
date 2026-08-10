@@ -916,18 +916,41 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
 
      Profil: 190 m auf 300 m Radius mit Exponent 1,5. Mittlere Neigung rund 31
      Grad — steil genug fuer einen Berg, flach genug zum Hochlaufen. */
-  window.GBERG={x:60,z:-330,rad:300,hoch:190,exp:1.5};
+  window.GBERG={x:60,z:-330,rad:300,hoch:190,exp:1.5,grat:0.7};
   window.gelaendeH=function(x,z){
+    /* ⚠️ Erste Fassung war H = hoch*(1-r/rad)^exp — also rotationssymmetrisch,
+       und damit exakt das, was als „Kegel" bemaengelt wurde. Die Form muss aus
+       derselben Funktion kommen wie die Begehbarkeit, darum steckt der Grat
+       HIER drin und nicht in der Geometrie:
+         * `mod` dehnt den Grundriss zur Ellipse (cos 2a) und legt Rippen darauf,
+         * zwei Nebengipfel sitzen auf der Gratachse und werden per max()
+           verschmolzen — dort, wo sich zwei Kuppen schneiden, entsteht ein Grat.
+       Alles analytisch, also billig genug fuer jeden Frame der Spielfigur. */
     var G=window.GBERG;
-    var d=Math.hypot(x-G.x,z-G.z)/G.rad;
-    if(d>=1)return 0;
-    return G.hoch*Math.pow(1-d,G.exp);
+    var ux=x-G.x, uz=z-G.z, r=Math.hypot(ux,uz);
+    if(r>G.rad*1.30)return 0;
+    var a=Math.atan2(uz,ux);
+    function kuppe(cx0,cz0,hh,rr0){
+      var vx=x-cx0, vz=z-cz0, vr=Math.hypot(vx,vz);
+      var va=Math.atan2(vz,vx);
+      var mod=1+0.24*Math.cos(2*(va-G.grat))+0.075*Math.sin(5*va+1.1)+0.045*Math.sin(9*va+0.4);
+      var d=vr/(rr0*mod);
+      return d>=1?0:hh*Math.pow(1-d,G.exp);
+    }
+    var h=kuppe(G.x,G.z,G.hoch,G.rad);
+    var c1=Math.cos(G.grat),s1=Math.sin(G.grat);
+    h=Math.max(h,kuppe(G.x+c1*G.rad*0.46,G.z+s1*G.rad*0.46,G.hoch*0.62,G.rad*0.52));
+    h=Math.max(h,kuppe(G.x-c1*G.rad*0.52,G.z-s1*G.rad*0.52,G.hoch*0.48,G.rad*0.46));
+    return h;
   };
   (function grosserBerg(){
     var G=window.GBERG, NR=26, NA=48;
     var pos=[],idx=[],col=[];
     for(var ri=0;ri<=NR;ri++){
-      var rr=G.rad*Math.pow(ri/NR,0.80);
+      /* Raster bis 1,32*rad: der Grundriss ist jetzt eine Ellipse mit Nebengipfeln
+         und reicht weiter als der Grundradius. Punkte ausserhalb liefern Hoehe 0
+         und bilden einen flachen Saum — besser als ein abgeschnittener Grat. */
+      var rr=G.rad*1.32*Math.pow(ri/NR,0.80);
       for(var ai=0;ai<NA;ai++){
         var aa=ai/NA*6.283;
         /* Gratrippen wie bei der Kette, aber flacher — der Berg soll begehbar
