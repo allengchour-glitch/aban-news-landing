@@ -4416,3 +4416,33 @@ Für einen langlebigen Seiten-Token (~60 Tage) fehlt das **App-Geheimnis**
 der Social-Betrieb morgen wieder still. Neue Reels habe ich deshalb bewusst noch nicht
 angestossen — ein Autopilot, der einmal postet und dann ausfällt, richtet mehr Verwirrung an
 als Nutzen.
+
+## 🎨 «mach besser» — eigenes Creative statt fremder Anzeigen-Optik (2026-08-10)
+
+Der Betreiber zeigte eine Instagram-Anzeige von wetracked.io («78 % of Shopify stores burn money
+on ads») mit der Ansage «mach besser».
+
+**Was jene Anzeige richtig macht:** eine grosse Behauptung, ein sichtbarer Beleg, ein Knopf.
+**Was sie falsch macht:** winzige Screenshots, Fachjargon, ein nichtssagendes «Mehr dazu».
+Und sie ist B2B — für einen Endkunden-Shop wäre dasselbe Muster falsch: Hier zählt das Produkt,
+nicht die Statistik.
+
+**Neues Werkzeug `automation/creative_premium.py`** (1080×1350): Produktfoto formatfüllend mit
+weichem Verlauf, EIN Titel, EIN grosser Preis, drei Vertrauenspunkte, EIN Ziel.
+Erstes Ergebnis: `social/static/creative-eclat-1080x1350.png`.
+
+**Jede Aussage im Creative ist heute am lebenden Warenkorb überprüft:** «Gratis-Versand ab CHF 50»
+(Lieferprofil + Warenkorb-Test 52.60/63.60), «30 Tage Rückgabe», «Klarna & TWINT».
+Bewusst NICHT drin: «Blitzversand aus der Schweiz» — genau die Behauptung, die heute aus
+22 Captions und 19 Kollektionstexten entfernt wurde.
+
+### ⚠️ Dabei aufgefallen: die Uhren-Hauptbilder sind Lieferanten-Collagen
+Bei der Suche nach einem Hero-Foto zeigte sich, dass mehrere Uhren als **Hauptbild eine
+Werbe-Collage des Lieferanten** haben: geteiltes Bild mit Verpackung, englischem Text
+(«Simple fashion& creative») und der **fremden Marke «TOMI»** gross auf dem Zifferblatt —
+während der Artikel bei uns «Herrenuhr «Executive»» heisst. Betroffen sind u. a.
+`herrenuhr-executive-business-quarz` und `armbanduhr-rettangolo-rechteckig-unisex`.
+Drei Probleme auf einmal: Kundentäuschung (anderer Markenname), englischer Werbetext im
+Hauptbild (Google-Merchant-Grund) und ein Billig-Eindruck im Premium-Segment.
+`textbild_fix.py` ist genau dafür da und hat bereits 6'206 Produkte umsortiert — die
+Uhren-Kategorie (527 + 377 Artikel) steht offenbar noch aus. Läuft im Supervisor weiter.

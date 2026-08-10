@@ -172,3 +172,12 @@ gid://shopify/Product/15448884674945	ok	Smarte Solar-Jalousie mit Fernbedienung
 gid://shopify/Product/15451639284097	ok	TRUERC X-AIR MKII Antennenbrille
 gid://shopify/Product/15479470850433	ok	Mini mSATA SSD 512 GB für Computer
 gid://shopify/Product/15480285626753	nicht-versendbar	Cuktech P23 Powerbank mit 25000mAh und 210W
+gid://shopify/Product/15450775716225	nicht-versendbar	Aquarium-Unterschrank 81x aus Holz
+gid://shopify/Product/15453540974977	nicht-versendbar	Schwarzes Kabelgefängnis-Lüster
+gid://shopify/Product/15493084807553	ok	Japanischer Bonsai-Topf aus Yixing-Ton
+gid://shopify/Product/15452675867009	nicht-versendbar	Bambus-Schneidbrett-Set
+gid://shopify/Product/15450783383937	nicht-versendbar	2-in-1 Rebounder und Fussballtor
+gid://shopify/Product/15453401088385	nicht-versendbar	Stehventilator mit Fernbedienung
+gid://shopify/Product/15446277554561	nicht-versendbar	Sunset Akustikgitarre mit Zubehör
+gid://shopify/Product/15453783359873	nicht-versendbar	Mehrstöckiger Katzenbaum mit Sisal-Kratzposten
+gid://shopify/Product/15454039245185	ok	Männer Echtleder-Umhängetasche grosser Fassungsvermögen
