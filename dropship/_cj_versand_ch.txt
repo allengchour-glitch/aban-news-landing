@@ -155,3 +155,20 @@ gid://shopify/Product/15481681314177	ok	USB Kondensatormikrofon für Desktop & N
 gid://shopify/Product/15454350803329	ok	Herren-Automatic-Sportuhren wasserdicht
 gid://shopify/Product/15455373623681	nicht-versendbar	Kamera-Drohne mit Airdrop-Funktion
 gid://shopify/Product/15478713516417	ok	Transparentes Armbanduhr
+gid://shopify/Product/15480409686401	ok	Wasserdichter Outdoor-Lautsprecher im Stein-Design
+gid://shopify/Product/15481777062273	ok	Wasserdichte Leucht-Herrenuhr
+gid://shopify/Product/15493084512641	nicht-versendbar	Faltbarer Holzkohlegrill für Camping & Garten
+gid://shopify/Product/15448881070465	nicht-versendbar	Mini-Drohne mit HD-Kamera & Screen-Steuerung
+gid://shopify/Product/15449124307329	nicht-versendbar	Gesichts-Sauerstoff-Spray mit Farblichtmaske
+gid://shopify/Product/15477423047041	nicht-versendbar	Faltbares Babybett mit Höhenverstellung
+gid://shopify/Product/15481764708737	ok	Profi Kondensator-Mikrofon für Gaming & Streaming
+gid://shopify/Product/15447566025089	nicht-versendbar	3000A Auto Notstarter Power Bank
+gid://shopify/Product/15452686713217	nicht-versendbar	Handgeflochtenes Katzenkörbchen mit Drehfunktion und weicher Polsterun
+gid://shopify/Product/15449825935745	nicht-versendbar	Outdoor Power Supply
+gid://shopify/Product/15453532553601	nicht-versendbar	Goldener Oval-Spiegel
+gid://shopify/Product/15454132240769	ok	Multifunktions-Armbanduhr mit Saphirglas
+gid://shopify/Product/15448667947393	ok	Kaschmir-Kurzmantel für Damen
+gid://shopify/Product/15448884674945	ok	Smarte Solar-Jalousie mit Fernbedienung
+gid://shopify/Product/15451639284097	ok	TRUERC X-AIR MKII Antennenbrille
+gid://shopify/Product/15479470850433	ok	Mini mSATA SSD 512 GB für Computer
+gid://shopify/Product/15480285626753	nicht-versendbar	Cuktech P23 Powerbank mit 25000mAh und 210W
