@@ -6219,3 +6219,4 @@ gid://shopify/Product/15447569629569	14->0	FPV Crossing Machine RTF Set für Ein
 gid://shopify/Product/15447571104129	12->0	Wiederaufladbares Batterie-Set Nr. 5 & Nr. 7
 gid://shopify/Product/15447572218241	74->2	BLTouch Auto-Leveling Sensor Upgrade-Kit
 gid://shopify/Product/15447572513153	24->3	Prusa Mini Magnetisches Heizbett mit PEI-Platte
+gid://shopify/Product/15447572775297	24->3	Prusa Mini Magnet-Heizbett mit PEI-Platte
