@@ -6174,3 +6174,6 @@ gid://shopify/Product/15493260214657	73->0	Tragbarer Eis-Crushing-Entsafter
 gid://shopify/Product/15493260247425	110->0	Keramik Bad-Set: Lotion, Zahnbürstenhalter, Becher
 gid://shopify/Product/15493260378497	101->0	Japanische Schürze, wasserabweisend
 gid://shopify/Product/15493276369281	64->1	Diamantstickerei Mutterliebe
+gid://shopify/Product/15493319033217	8->2	Wasserdichtes USB-Ladegerät für Fahrzeuge
+gid://shopify/Product/15493319197057	24->0	Wasserdichtes Motorrad-Ladegerät mit Dual-USB
+gid://shopify/Product/15493320638849	28->1	Naturkristall Armband – verschiedene Designs
