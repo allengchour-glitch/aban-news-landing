@@ -453,3 +453,11 @@ gid://shopify/Product/15494256787841	CJ-1784858306457120768	Retro Crazy Horse Le
 gid://shopify/Product/15494257213825	CJ-1784782677955063808	Business Commute Rucksack 3-teiliges Set
 gid://shopify/Product/15494257475969	CJ-1784125496276553728	LED-Hüfttasche mit Bluetooth-Display
 gid://shopify/Product/15494344966529	CJ-1780165700401766400	Lederrucksack "Crazy Horse" 18 Zoll
+gid://shopify/Product/15494345425281	CJ-1780102555385733120	Faltbare Kleidersack-Tasche
+gid://shopify/Product/15494345916801	CJ-1779475799708545024	Spaceman Schulrucksack für Jungen
+gid://shopify/Product/15494346768769	CJ-1779447825777041408	Leder-Rucksack „Crazy Horse“
+gid://shopify/Product/15494347096449	CJ-1779080245048516608	Vielseitiger Laptop-Rucksack für Alltag und Uni
+gid://shopify/Product/15494348046721	CJ-1777296875419348992	Multifunktionale 2-in-1 Reise-Anzugtasche
+gid://shopify/Product/15494349226369	CJ-1777253875813195776	Trolley Rucksack Ultraleicht
+gid://shopify/Product/15494350111105	CJ-1776933932940926976	Sportlicher Herren Rucksack für Schule & Freizeit
+gid://shopify/Product/15494350504321	CJ-1776156280881688576	Outdoor Camping- & Wanderrucksack (56-75L)
