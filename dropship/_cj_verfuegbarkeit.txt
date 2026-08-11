@@ -2702,3 +2702,11 @@ gid://shopify/Product/15480411062657	ok
 gid://shopify/Product/15480410964353	ok
 gid://shopify/Product/15480410669441	ok
 gid://shopify/Product/15480410636673	ok
+gid://shopify/Product/15480410505601	ok
+gid://shopify/Product/15480410341761	ok
+gid://shopify/Product/15480410276225	ok
+gid://shopify/Product/15480410243457	ok
+gid://shopify/Product/15480410145153	ok
+gid://shopify/Product/15480410112385	ok
+gid://shopify/Product/15480410079617	ok
+gid://shopify/Product/15480409948545	ok
