@@ -6293,3 +6293,6 @@ gid://shopify/Product/15448588943745	56->0	Ombre Baumwollkleid mit One-Shoulder-
 gid://shopify/Product/15448641012097	10->0	High-Waist Capri Yoga-Hose mit Bauchkontrolle
 gid://shopify/Product/15448653988225	50->0	Bestickte Retro Samthosen mit weitem Bein
 gid://shopify/Product/15448655724929	11->0	Smoke Grey Washed Denim Jeans Straight Tube
+gid://shopify/Product/15448671486337	29->1	Daunenmantel Slim-Fit
+gid://shopify/Product/15448719360385	27->0	Freizeit-Sakko mit Digitaldruck
+gid://shopify/Product/15448747475329	123->0	Geblümtes 3/4-Arm Top mit Fransen
