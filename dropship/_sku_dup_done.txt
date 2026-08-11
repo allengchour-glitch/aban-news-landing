@@ -461,3 +461,13 @@ gid://shopify/Product/15494348046721	CJ-1777296875419348992	Multifunktionale 2-i
 gid://shopify/Product/15494349226369	CJ-1777253875813195776	Trolley Rucksack Ultraleicht
 gid://shopify/Product/15494350111105	CJ-1776933932940926976	Sportlicher Herren Rucksack für Schule & Freizeit
 gid://shopify/Product/15494350504321	CJ-1776156280881688576	Outdoor Camping- & Wanderrucksack (56-75L)
+gid://shopify/Product/15494459457921	CJ-1758002897914179584	Ergonomischer, wasserdichter Schulrucksack
+gid://shopify/Product/15494462013825	CJ-1757386903973797888	Business Notebook Rucksack – gross & robust
+gid://shopify/Product/15494462570881	CJ-1757023366403330048	Kinderrucksack Super Leicht
+gid://shopify/Product/15494463684993	CJ-1756602541711826944	Freizeitrucksack für Herren
+gid://shopify/Product/15494464307585	CJ-1756544901837238272	Grosser, wasserdichter Outdoor-Rucksack für Herren
+gid://shopify/Product/15494464864641	CJ-1755191204540592128	MR Brillen-Aufbewahrungsbox
+gid://shopify/Product/15494465290625	CJ-1754432067313606656	Robuster Hartschalen-Rucksack mit Geometermuster
+gid://shopify/Product/15494466699649	CJ-1753977472850337792	Multifunktionaler Picknick Rucksack
+gid://shopify/Product/15494467387777	CJ-1753604714731679744	Reise-Rucksack aus echtem Leder für Herren
+gid://shopify/Product/15494496584065	CJ-1746117627677782016	Vintage Lederrucksack für Damen und Herren

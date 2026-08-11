@@ -134,7 +134,40 @@ AUSNAHMEN = {
 }
 
 
-def kategorie(titel, tags):
+# Zweite Ebene: die Warengruppe des Katalogs. Nach dem ersten Durchlauf blieben 3'116 Produkte
+# im Google-Kanal ohne Kategorie, weil ihnen die Mode-/Schmuck-Tags fehlen — sie sind schlicht
+# keine Mode. Ihr `productType` ist aber gepflegt und eindeutig genug:
+#     406 Auto-Zubehör · 380 Basteln & DIY · 343 Taschen · 205 Spielzeug · 178 Gaming …
+# Bewusst NICHT abgebildet: «Trend-Gadget» (874) und «Trend-Produkt» (165). Das sind Sammelkörbe
+# ohne gemeinsame Warengruppe — vom Küchenhelfer bis zum Nachtlicht. Eine falsche Kategorie
+# schadet dort mehr als eine fehlende, weil Google danach in den falschen Suchen ausspielt.
+NACH_TYP = {
+    "Auto-Zubehör":          "Vehicles & Parts > Vehicle Parts & Accessories",
+    "Basteln & DIY":         "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts",
+    "Taschen":               "Apparel & Accessories > Handbags, Wallets & Cases > Handbags",
+    "Spielzeug & Spiele":    "Toys & Games > Toys",
+    "Gaming-Zubehör":        "Electronics > Video Game Console Accessories",
+    "Werkzeug & Heimwerken": "Hardware > Tools",
+    "Werkzeug":              "Hardware > Tools",
+    "Musikinstrumente":      "Arts & Entertainment > Hobbies & Creative Arts > Musical Instruments",
+    "Sport & Outdoor":       "Sporting Goods",
+    "Partydeko & Ballone":   "Home & Garden > Decor > Party Supplies",
+    "Audio":                 "Electronics > Audio",
+    "Beauty Tools":          "Health & Beauty > Personal Care > Cosmetics",
+    "Beauty & Pflege":       "Health & Beauty > Personal Care",
+    "Wellness & Spa":        "Health & Beauty > Health Care",
+    "Haushalt & Wohnen":     "Home & Garden > Household Supplies",
+    "Deko & Wohnaccessoires": "Home & Garden > Decor",
+    "Damenmode":             "Apparel & Accessories > Clothing",
+    "Herrenmode":            "Apparel & Accessories > Clothing",
+    "Haustierbedarf":        "Animals & Pet Supplies > Pet Supplies",
+    "Aufbewahrung & Organizer": "Home & Garden > Household Supplies > Storage & Organization",
+    "Elektronik":            "Electronics",
+    "Schmuck":               "Apparel & Accessories > Jewelry",
+}
+
+
+def kategorie(titel, tags, typ=None):
     titel = titel or ""
     for muster, pfad in VORRANG:
         if muster.search(titel):
@@ -147,7 +180,7 @@ def kategorie(titel, tags):
         if sperre and sperre.search(titel):
             continue
         return pfad
-    return None
+    return NACH_TYP.get((typ or "").strip())
 
 
 def main():
@@ -161,7 +194,7 @@ def main():
     stapel = []
     while True:
         d = gql('query($c:String){products(first:150,after:$c,query:"status:ACTIVE"){'
-                'pageInfo{hasNextPage endCursor} nodes{id title tags '
+                'pageInfo{hasNextPage endCursor} nodes{id title tags productType '
                 'g:publishedOnPublication(publicationId:"gid://shopify/Publication/302872297857") '
                 'mf:metafield(namespace:"mm-google-shopping",key:"%s"){value}}}}' % FELD,
                 {"c": cur})
@@ -175,7 +208,7 @@ def main():
             gesehen += 1
             if p["id"] in done:
                 continue
-            neu = kategorie(p["title"], p["tags"])
+            neu = kategorie(p["title"], p["tags"], p.get("productType"))
             if not neu:
                 ohne_regel += 1
                 continue
