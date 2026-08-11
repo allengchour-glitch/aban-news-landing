@@ -419,3 +419,4 @@ gid://shopify/Product/15493809570177	CJ-2507170756301622900	Keramik-Saucenschale
 gid://shopify/Product/15493809701249	CJ-2507160621071622600	Bambus magnetischer Messerhalter, doppelseitig
 gid://shopify/Product/15493845123457	CJ-2601230524541625800	Kupfer Wasserhahn für Badewanne, Schwarz
 gid://shopify/Product/15493849940353	CJ-5E88F226-3C05-4F11-B0B9-260513392C39	Make-up Pinselset, 9-teilig
+gid://shopify/Product/15493869470081	CJ-1562345495736102912	Velvet-Kissenbezug
