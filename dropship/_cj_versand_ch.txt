@@ -233,3 +233,8 @@ gid://shopify/Product/15450773160321	nicht-versendbar	Katzenbaum 45.5x aus Kiefe
 gid://shopify/Product/15452686549377	nicht-versendbar	20,5-Zoll Hochgezogenes Geflochtenes Katzenbett mit Kissen, Braun
 gid://shopify/Product/15472047686017	nicht-versendbar	Rundes Keramik-Waschbecken
 gid://shopify/Product/15493811175809	nicht-versendbar	Topf-Set mit Goldgriffen, 12-teilig
+gid://shopify/Product/15493859443073	nicht-versendbar	Gusseisen-Kochgeschirr-Set, 4-teilig
+gid://shopify/Product/15493883986305	ok	Hundesofa Queen Bed für Mensch und Tier
+gid://shopify/Product/15493866160513	nicht-versendbar	Multifunktionale, klappbare Hantelbank
+gid://shopify/Product/15493874352513	ok	Elektrische Oberfräse mit Fasen- und Trimmfunktion
+gid://shopify/Product/15493861638529	ok	3-in-1 Multifunktions-Walzwerk für Goldschmiede

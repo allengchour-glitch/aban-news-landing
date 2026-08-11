@@ -6247,3 +6247,8 @@ gid://shopify/Product/15493619057025	87->0	Herren-Armbanduhr, Leuchtend, Wasserd
 gid://shopify/Product/15447874371969	46->1	Akku für Fernsteuerung TX16, TX12 & Boxer
 gid://shopify/Product/15447890821505	32->0	Leichter Schal mit Wasserwellenmuster
 gid://shopify/Product/15447923818881	13->0	3M Thinsulate Winterhandschuhe für Damen & Herren
+gid://shopify/Product/15447951606145	49->0	Tie-Dye Hoodie für Haustiere & Besitzer
+gid://shopify/Product/15447951835521	25->0	Weihnachts-Hoodie für die ganze Familie
+gid://shopify/Product/15447952327041	17->0	Colorblock Raglan Hoodie für Eltern und Kinder
+gid://shopify/Product/15447952556417	42->0	Familien-Sweatshirts und Baby-Onesies
+gid://shopify/Product/15447952884097	15->0	Retro Hip-Hop Hoodie für Teenager
