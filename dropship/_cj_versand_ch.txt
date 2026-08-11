@@ -576,3 +576,6 @@ gid://shopify/Product/15450068189569	ok	Wasserdichte Wanderschuhe
 gid://shopify/Product/15454203904385	ok	Erweiterbarer Multifunktions-Rollkoffer 20 Zoll
 gid://shopify/Product/15450559447425	ok	Leichte Wander- & Sportschuhe für Herren
 gid://shopify/Product/15450041057665	ok	Schnürstiefel für Herren
+gid://shopify/Product/15449495929217	nicht-versendbar	Robuster Stahl-A-Frame für Liegestühle, 150 kg
+gid://shopify/Product/15451901788545	nicht-versendbar	Outdoor Liegestuhl-Kissen – wasserfest & farbecht
+gid://shopify/Product/15455531270529	ok	IPL-Hautverjüngungsinstrument für Zuhause
