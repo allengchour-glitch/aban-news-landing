@@ -390,3 +390,5 @@ gid://shopify/Product/15453898408321	nicht-versendbar	Reisegepäck-Trolley mit C
 gid://shopify/Product/15455796035969	ok	Männer Leder Crossbody Rucksack
 gid://shopify/Product/15458651308417	nicht-versendbar	Split-Typ Luftkühler für Haushalt & Büro
 gid://shopify/Product/15448657756545	ok	Commuter Cardigan Plus-Size Langarmshirt
+gid://shopify/Product/15493933007233	nicht-versendbar	Hundehüsli aus Massivholz, waschbar
+gid://shopify/Product/15493932908929	nicht-versendbar	Handgemachtes Rattan-Haustierbett
