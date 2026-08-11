@@ -478,3 +478,9 @@ gid://shopify/Product/15453897949569	nicht-versendbar	20-Zoll Koffer mit Frontö
 gid://shopify/Product/15453898801537	nicht-versendbar	Aluminium Reisegepäck Trolley
 gid://shopify/Product/15454108090753	nicht-versendbar	Glas-Aquarium für den Schreibtisch
 gid://shopify/Product/15454415225217	nicht-versendbar	Leiser Ventilator mit Sprachsteuerung
+gid://shopify/Product/15455515935105	nicht-versendbar	Extra große Katzenklo mit Spritzschutz
+gid://shopify/Product/15462220267905	ok	Wollfutter-Mantel
+gid://shopify/Product/15464375091585	ok	Tarnweste Set
+gid://shopify/Product/15479340663169	ok	Full-HD Mini-Beamer mit Autofokus
+gid://shopify/Product/15453783884161	nicht-versendbar	Katzenkletterwand
+gid://shopify/Product/15454249091457	ok	Grosses Reise-Rucksack für Unisex
