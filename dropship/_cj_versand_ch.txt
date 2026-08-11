@@ -525,3 +525,10 @@ gid://shopify/Product/15453920428417	nicht-versendbar	Intelligente Vogel-Futters
 gid://shopify/Product/15454013063553	nicht-versendbar	22-Zoll Alu-rahmen Reisekoffer wasserdicht
 gid://shopify/Product/15455515607425	ok	Grauer Tuchbeutel
 gid://shopify/Product/15458674246017	ok	Taktische Weste für Herren
+gid://shopify/Product/15494627983745	nicht-versendbar	Beheizbare Buffetplatte aus Edelstahl
+gid://shopify/Product/15454235066753	ok	Wetterstation mit Multifunktion
+gid://shopify/Product/15493861278081	ok	Drehmomentschlüssel-Set für hohe Präzision
+gid://shopify/Product/15453744497025	nicht-versendbar	Klappbarer Quadrocopter mit Fernsteuerung
+gid://shopify/Product/15453920821633	nicht-versendbar	Multifunktionale Reinigungsmaschine
+gid://shopify/Product/15479484744065	ok	Stratos 2 Ultra GPS Smartwatch
+gid://shopify/Product/15480569430401	ok	USB4 SSD-Gehäuse für Notebooks, bis 40 Gbit/s
