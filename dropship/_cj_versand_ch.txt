@@ -381,3 +381,11 @@ gid://shopify/Product/15446024552833	nicht-versendbar	Damast-Steakmesser-Set fü
 gid://shopify/Product/15446273425793	nicht-versendbar	Eisbad-Tauchbecken für umfassende Erholung
 gid://shopify/Product/15449171100033	ok	S925 Sterling Silber Moissanit Ring mit Stern-Halo
 gid://shopify/Product/15449176703361	ok	Gesichtsreinigungsbürste aus Silikon
+gid://shopify/Product/15449112674689	ok	Kurze Lederjacke im American Style
+gid://shopify/Product/15451904049537	nicht-versendbar	Wasserdichtes Outdoor-Liegekissen
+gid://shopify/Product/15453764977025	nicht-versendbar	Reisegepäck mit Aluminium-Rahmen
+gid://shopify/Product/15446273458561	nicht-versendbar	Mini-Pedaltrainer mit LCD-Display
+gid://shopify/Product/15453618176385	ok	Feldüberwachungskamera mit WLAN-APP & Bluetooth
+gid://shopify/Product/15453898408321	nicht-versendbar	Reisegepäck-Trolley mit Code-Schloss
+gid://shopify/Product/15455796035969	ok	Männer Leder Crossbody Rucksack
+gid://shopify/Product/15458651308417	nicht-versendbar	Split-Typ Luftkühler für Haushalt & Büro
