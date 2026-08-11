@@ -240,3 +240,16 @@ gid://shopify/Product/15470078263681	Partydeko & Ballone	Magic Wasser Ballone
 gid://shopify/Product/15470078296449	Spielzeug & Spiele	Plüsch Pikachu
 gid://shopify/Product/15470078394753	Spielzeug & Spiele	Plüsch Alligator
 gid://shopify/Product/15470078493057	Fasnachts-/Scherzartikel	Pappbecher aus Frischfaser
+gid://shopify/Product/15469990019457	Spielzeug & Spiele	Umhängetasche aus Plüsch
+gid://shopify/Product/15469990084993	Spielzeug & Spiele	Umhängetasche aus Plüsch
+gid://shopify/Product/15469996999041	Partydeko & Ballone	Wurfbeutel / Konfettitasche
+gid://shopify/Product/15469997064577	Partydeko & Ballone	Wurfbeutel / Konfettitasche
+gid://shopify/Product/15469997588865	Spielzeug & Spiele	Umhängetasche aus Plüsch
+gid://shopify/Product/15469997719937	Spielzeug & Spiele	Umhängetasche aus Plüsch
+gid://shopify/Product/15469999817089	Spielzeug & Spiele	Umhängetasche aus Plüsch
+gid://shopify/Product/15469999882625	Spielzeug & Spiele	Umhängetasche aus Plüsch
+gid://shopify/Product/15470013415809	Partydeko & Ballone	Wurfbeutel / Konfettitasche
+gid://shopify/Product/15470013546881	Partydeko & Ballone	Wurfbeutel / Konfettitasche
+gid://shopify/Product/15470017315201	Partydeko & Ballone	Wurfbeutel / Konfettitasche
+gid://shopify/Product/15470017413505	Partydeko & Ballone	Wurfbeutel / Konfettitasche
+gid://shopify/Product/15470073053569	Spielzeug & Spiele	Plüsch Tiger mit Jungen

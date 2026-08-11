@@ -91,8 +91,12 @@ def grund(p):
 def main():
     cur, alle = None, []
     while True:
+        # ⚠️ NICHT auf status:ACTIVE einschränken. Entwürfe behalten den Tag sonst und stehen
+        # in dem Moment wieder auf der Startseite, in dem jemand sie reaktiviert — beim ersten
+        # Lauf blieben so 13 Plüschtaschen und Konfettibeutel als stille Rückkehrer liegen.
+        # (Der Kollektionszähler zeigt Entwürfe übrigens mit: 74 statt der 59 sichtbaren.)
         d = gql('query($c:String){products(first:250,after:$c,'
-                'query:"status:ACTIVE AND tag:%s"){pageInfo{hasNextPage endCursor} '
+                'query:"tag:%s"){pageInfo{hasNextPage endCursor} '
                 'nodes{id title productType}}}' % TAG, {"c": cur})
         pg = (d.get("data") or {}).get("products")
         if not pg:
