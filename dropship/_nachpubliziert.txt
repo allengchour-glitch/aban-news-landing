@@ -65,3 +65,4 @@ gid://shopify/Product/15493062558081	retro-cropped-jeans-fur-damen-609200	Retro 
 gid://shopify/Product/15493720146305	bestickter-samt-kissenbezug-827968	Bestickter Samt-Kissenbezug
 gid://shopify/Product/15493810028929	rx-008-metall-schleifgerat-mit-festem-winkel-625200	RX-008 Metall-Schleifgerät mit festem Winkel
 gid://shopify/Product/15493849350529	make-up-pinsel-set-392c39	Make-up Pinsel Set
+gid://shopify/Product/15493864161665	smarter-bluetooth-lautsprecher-deae2e	Smarter Bluetooth Lautsprecher
