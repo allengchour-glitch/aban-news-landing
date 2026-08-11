@@ -6322,3 +6322,12 @@ gid://shopify/Product/15449113231745	139->0	Herren Übergangsjacke mit Reverskra
 gid://shopify/Product/15449113461121	43->2	Freizeit-Sakko aus Wildlederimitat
 gid://shopify/Product/15449113559425	34->0	Trenchcoat für Herren, diverse Farben
 gid://shopify/Product/15449131221377	36->0	LF05 Kabellose Bluetooth AI Sprachmaus
+gid://shopify/Product/15449478070657	20->0	Herzförmige Ohrstecker mit Rubin oder Saphir
+gid://shopify/Product/15449478201729	11->2	Sterlingsilber Kreuzanhänger mit Moissanit
+gid://shopify/Product/15449478300033	24->1	Sterne Ohrringe mit Smaragd
+gid://shopify/Product/15449478627713	50->3	Sonnenstrahlen-Ohrhänger aus Titanstahl
+gid://shopify/Product/15449478660481	42->3	Perlen-Schmuckset
+gid://shopify/Product/15449478824321	12->0	Weisse Perle im Kreis
+gid://shopify/Product/15449478922625	142->0	Frischer Süsswasserperlen-Schmuck
+gid://shopify/Product/15449478955393	61->0	Naturperlen Kette
+gid://shopify/Product/15449479020929	98->0	Natürliche Süsswasserperlen

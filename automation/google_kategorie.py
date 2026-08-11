@@ -115,14 +115,38 @@ VORRANG = [
 ]
 
 
+# Wie sauber sind die Tags wirklich? Nachgezählt am 11.08. mit wortgenauen Mustern:
+#   schuhe            2'613 Produkte →  2 Fehltreffer (0,1 %)
+#   kategorie-tasche    891 Produkte →  4 Fehltreffer (0,6 %)
+#   uhren               811 Produkte →  0 Fehltreffer
+# Also gut genug, um darauf zu bauen. (Die erste Messung meldete 8 % — sie war falsch: das
+# Muster «sand» traf «Sandalen», «tisch» traf «minimalis-tisch». Genau die Substring-Falle,
+# vor der Regel 9b warnt. Wortgrenzen sind Pflicht, auch beim blossen Nachzählen.)
+# Für die verbliebenen Einzelfälle: Trifft das Muster, wird das Tag ignoriert und die nächste
+# Regel geprüft — ein Schuhregal ist kein Schuh, aber eben auch nicht kategorielos.
+AUSNAHMEN = {
+    "schuhe": re.compile(r'Schuhregal|Schuhschrank|Schuh-?Organizer|Schuhb[üu]rste|'
+                         r'Schuhspanner|Eau de|Sandalwood|Sandelholz', re.I),
+    "damenschuhe": re.compile(r'Schuhregal|Schuhschrank|Schuh-?Organizer', re.I),
+    "herrenschuhe": re.compile(r'Schuhregal|Schuhschrank|Schuh-?Organizer', re.I),
+    "kategorie-tasche": re.compile(r'Pinsel-?[Ss]et|Schrank-?Organizer|Schuh-?Organizer', re.I),
+    "damen-taschen": re.compile(r'Pinsel-?[Ss]et|Schrank-?Organizer', re.I),
+}
+
+
 def kategorie(titel, tags):
+    titel = titel or ""
     for muster, pfad in VORRANG:
-        if muster.search(titel or ""):
+        if muster.search(titel):
             return pfad
     t = {x.lower() for x in tags}
     for tag, pfad in REGELN:
-        if tag in t:
-            return pfad
+        if tag not in t:
+            continue
+        sperre = AUSNAHMEN.get(tag)
+        if sperre and sperre.search(titel):
+            continue
+        return pfad
     return None
 
 

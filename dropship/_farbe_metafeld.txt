@@ -104,3 +104,8 @@ gid://shopify/Product/15470011842945	Schwarz
 gid://shopify/Product/15470012662145	Gold
 gid://shopify/Product/15470076952961	Weiss
 gid://shopify/Product/15493922881921	Schwarz
+gid://shopify/Product/15412964786561	Blau
+gid://shopify/Product/15481773982081	Transparent
+gid://shopify/Product/15484389589377	Rot
+gid://shopify/Product/15484389982593	Mehrfarbig
+gid://shopify/Product/15484390441345	Gold
