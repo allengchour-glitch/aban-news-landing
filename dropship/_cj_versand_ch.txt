@@ -455,3 +455,8 @@ gid://shopify/Product/15449177588097	nicht-versendbar	Gold Wandspiegel mit Perle
 gid://shopify/Product/15458990227841	ok	Faltbarer 4K-Drohne mit Fernsteuerung
 gid://shopify/Product/15447565042049	nicht-versendbar	Quadrocopter mit Hindernisvermeidung und Fernsteuerung
 gid://shopify/Product/15450301170049	ok	Sitzkissen mit Lendenstuetze
+gid://shopify/Product/15450782990721	nicht-versendbar	Punching Ball Set mit Standfuss & Boxhandschuhen
+gid://shopify/Product/15443241107841	ok	Moissanit-Ohrhänger «Halo» 1 ct · 925 Silber
+gid://shopify/Product/15443500433793	nicht-versendbar	Mini-Drohne «SkyPro» · faltbar
+gid://shopify/Product/15453771104641	ok	Aromadiffuser mit Glas-Wasserbehälter
+gid://shopify/Product/15453897720193	nicht-versendbar	Retro-Ledertasche
