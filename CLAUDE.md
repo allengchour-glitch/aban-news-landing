@@ -55,6 +55,26 @@ Kollektionsbeschreibung versprach danach noch «Plüsch … Party» → nach jed
 (3) `products(first:20)` fand die Lostrommel nicht (Relevanz-Sortierung) — bei Einzelsuchen die volle Liste ziehen.
 **Offen für den Betreiber: Lohnt die Startseiten-Reihe überhaupt?** Ohne Kostüm/Spielzeug bleiben nur ~59 Artikel.
 
+## 🔎 Google-Produktkategorie + Kategorie-SEO (2026-08-11)
+`automation/google_kategorie.py` setzt `mm-google-shopping.google_product_category` als **Text-Pfad**
+(«Apparel & Accessories > Jewelry > Watches» — so liegen die vorhandenen Werte im Shop; Nummern-IDs
+bewusst NICHT, eine falsch erinnerte Zahl fällt niemandem auf). Abdeckung **6 % → 90 %** (22'834 Produkte).
+Drei Ebenen: (1) Titel-Vorrang für Smartwatch/Fitness-Tracker → Wearable Technology (der Tag `uhren`
+hätte sie zu Schmuck-Uhren gemacht), (2) Katalog-Tags, (3) `productType` als Auffangnetz
+(Auto-Zubehör/Basteln/Taschen/Gaming/Werkzeug…). **⛔ NIE vorhandene Werte überschreiben** — der Probelauf
+zeigte 1'208 Verschlechterungen (Smartwatch→Jewelry, Laptoptasche→Electronics, Perfume→Cosmetics);
+Abweichungen landen zum Nachsehen in `dropship/GOOGLE-KATEGORIE-ABWEICHUNGEN.md`.
+**Auch die Warengruppe irrt:** unter «Spielzeug & Spiele» stehen 8 Kleidungsstücke («Plüschjacke»,
+«Plüschmütze») — Kleidungswort im Titel sticht die Warengruppe. «Trend-Gadget» (874) + «Trend-Produkt» (165)
+bleiben bewusst ohne Kategorie: Sammelkörbe ohne gemeinsame Warengruppe, falsch wäre schlimmer als leer.
+Dazu 13 Kategorie-SEO-Beschreibungen gesetzt (`automation/koll_seo_fuellen.py`, ~150 Zeichen, nur geprüfte
+Aussagen: gratis ab CHF 50 / 30 Tage Rückgabe — **kein** «Blitzversand» ausser für CH-Lager-Ware).
+**Kollektions-Audit:** 505 Kollektionen, 3 leer (alle unveröffentlicht = harmlos), 20 dünn. Die
+unveröffentlichten Grossen (`uhren-herren` 543, `beauty-duefte` 1290, `damen-jacken` 377) sind
+**Doppelgänger** der Menü-Kategorien (`herren-uhren`, `parfum-duefte`, `damen-jacken-maentel`) — zu Recht aus,
+nicht freischalten. `schule-buro` war live mit **1** Produkt mitten im Schulanfang → auf Smart-Regel
+`schule-buero` umgestellt, 27 Produkte (`automation/schule_buero_fuellen.py`).
+
 ## 📦 Schatten-Bestellungen bei CJ (2026-08-11)
 Zu JEDER Shopify-Bestellung seit #1001 liegen bei CJ **zwei** Aufträge: einer unter der Shopify-Nummer
 («#1012», von der CJ-eigenen Shopify-App) und einer unter «LX1012» (von `cj_order_engine.py`). Der Automat
