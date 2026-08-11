@@ -521,3 +521,7 @@ gid://shopify/Product/15454094426497	ok	Katzenhängematte mit Fensterhalter für
 gid://shopify/Product/15447639687553	nicht-versendbar	Faltbares Katzenbett mit Höhle
 gid://shopify/Product/15494392381825	ok	Minimalistischer Multifunktions-Reiserucksack
 gid://shopify/Product/15443532185985	nicht-versendbar	Powerbank «PowerCore» · Schnellladen
+gid://shopify/Product/15453920428417	nicht-versendbar	Intelligente Vogel-Futterstelle mit Solar
+gid://shopify/Product/15454013063553	nicht-versendbar	22-Zoll Alu-rahmen Reisekoffer wasserdicht
+gid://shopify/Product/15455515607425	ok	Grauer Tuchbeutel
+gid://shopify/Product/15458674246017	ok	Taktische Weste für Herren
