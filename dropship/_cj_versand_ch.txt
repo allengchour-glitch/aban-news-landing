@@ -560,3 +560,4 @@ gid://shopify/Product/15494856180097	nicht-versendbar	Tongtian Klettergerüst f�
 gid://shopify/Product/15494855360897	nicht-versendbar	Aluminium-Magnesium Rollkoffer mit TSA-Schloss
 gid://shopify/Product/15446267298177	ok	Vertikaler Gaming-Pistolengriff mit Trigger
 gid://shopify/Product/15494344868225	ok	Lederrucksack "Crazy Horse" (36-55L)
+gid://shopify/Product/15448004919681	ok	Seiden-Top mit Schleifendetail für Damen
