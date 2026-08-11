@@ -471,3 +471,4 @@ gid://shopify/Product/15494465290625	CJ-1754432067313606656	Robuster Hartschalen
 gid://shopify/Product/15494466699649	CJ-1753977472850337792	Multifunktionaler Picknick Rucksack
 gid://shopify/Product/15494467387777	CJ-1753604714731679744	Reise-Rucksack aus echtem Leder für Herren
 gid://shopify/Product/15494496584065	CJ-1746117627677782016	Vintage Lederrucksack für Damen und Herren
+gid://shopify/Product/15494984401281	CJ-2606160844511603100	Personalisiertes Geburtsstein-Zirkon Armband
