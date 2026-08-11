@@ -6331,3 +6331,9 @@ gid://shopify/Product/15449478824321	12->0	Weisse Perle im Kreis
 gid://shopify/Product/15449478922625	142->0	Frischer Süsswasserperlen-Schmuck
 gid://shopify/Product/15449478955393	61->0	Naturperlen Kette
 gid://shopify/Product/15449479020929	98->0	Natürliche Süsswasserperlen
+gid://shopify/Product/15449501860225	18->0	Weisse Gerade Beine Jeans für Grössen
+gid://shopify/Product/15449502056833	9->2	Loose-Fit Damenhosen mit Kurzschnitt
+gid://shopify/Product/15449502220673	9->0	Weite Damenjeans in Uni-Farben
+gid://shopify/Product/15449502351745	13->0	Sleek Oberteil
+gid://shopify/Product/15449503203713	28->0	Gerissene Damenjeans High-Street-Stil
+gid://shopify/Product/15449503859073	56->0	Retro Pfirsichform Nostalgische Weitbein-Jeans Damen
