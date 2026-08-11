@@ -139,7 +139,34 @@ if(process.env.GROUPS_FILE && fs.existsSync(process.env.GROUPS_FILE)){
 const GSLEEP=Number(process.env.GSLEEP||4200), CJSLEEP=Number(process.env.CJSLEEP||950);
 const MAXPAGE=Number(process.env.MAXPAGE||5), PERCAT=Number(process.env.PERCAT||0); // tiefere Paginierung fürs „voll"-Füllen
 
-async function cj(path){const r=await fetch('https://developers.cjdropshipping.com/api2.0/v1'+path,{headers:{'CJ-Access-Token':CJT}});return r.json();}
+// ⚠️ Diese Funktion hatte weder Zeitgrenze noch Wiederholung, und `r.json()` warf bei jeder
+// Antwort, die kein JSON war. Am 11.08. lieferte der Proxy den nackten Text
+// «DNS resolution failure» — daraus wurde ein `SyntaxError`, der den GANZEN Runner beendete.
+// Der Runner deutete den Abbruch als «CJ-Tagesbudget erschöpft» und legte sich 30 Minuten
+// schlafen. Ein Netz-Zucken von einer Sekunde kostete so eine halbe Stunde Import; alle vier
+// Runner traf es reihum, weshalb der Ledger fast stillstand (25'773 → 25'775 in einer Stunde).
+//
+// Zweitens die QPS-Drossel: CJ erlaubt EINE Anfrage pro Sekunde und zählt sie über alle
+// Prozesse gemeinsam. Vier parallele Runner überschreiten das zwangsläufig. Antwort 1600200
+// ist also normal und kein Fehler — sie wird abgewartet, nicht weitergereicht.
+async function cj(path){
+ for(let i=0;i<5;i++){
+  try{
+   const r=await fetch('https://developers.cjdropshipping.com/api2.0/v1'+path,
+     {headers:{'CJ-Access-Token':CJT},signal:AbortSignal.timeout(45000)});
+   const t=await r.text();
+   let j; try{ j=JSON.parse(t); }catch{
+    // Kein JSON = Proxy-/Netzmeldung. Wiederholen statt sterben.
+    await sleep(2000*(i+1)); continue;
+   }
+   if(Number(j.code)===1600200){ await sleep(1500*(i+1)); continue; }   // QPS-Drossel
+   return j;
+  }catch{ await sleep(2000*(i+1)); }
+ }
+ // Nach fünf Versuchen aufgeben — aber MIT gültiger Form, damit der Aufrufer den Zeiger
+ // behält statt die Kategorie fälschlich als «zu Ende» zu behandeln.
+ return {code:0,message:'keine Antwort nach 5 Versuchen',data:null};
+}
 async function shTok(){for(let a=0;a<5;a++){try{const r=await fetch(`https://${SHOP}/admin/oauth/access_token`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:CID,client_secret:CSEC,grant_type:'client_credentials'})});const t=await r.text();try{const tok=JSON.parse(t).access_token;if(tok)return tok;}catch{}}catch{}await sleep(2000*(a+1));}throw new Error('shTok: kein Token nach 5 Versuchen');}
 // Wiederholt bei Drossel/Netz-Aussetzer. Ohne das schlug einzelne Aufrufe still fehl — was
 // beim Publizieren teuer war: 17 Produkte wurden angelegt, aber nie veröffentlicht und
