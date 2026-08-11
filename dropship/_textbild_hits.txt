@@ -6321,3 +6321,4 @@ gid://shopify/Product/15449112936833	66->0	Freizeit Sakko im britischen Stil fü
 gid://shopify/Product/15449113231745	139->0	Herren Übergangsjacke mit Reverskragen
 gid://shopify/Product/15449113461121	43->2	Freizeit-Sakko aus Wildlederimitat
 gid://shopify/Product/15449113559425	34->0	Trenchcoat für Herren, diverse Farben
+gid://shopify/Product/15449131221377	36->0	LF05 Kabellose Bluetooth AI Sprachmaus
