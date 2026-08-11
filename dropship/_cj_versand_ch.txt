@@ -555,3 +555,4 @@ gid://shopify/Product/15481680494977	ok	Thermokamera
 gid://shopify/Product/15455796101505	ok	Weisse Bluse mit Falten
 gid://shopify/Product/15448041914753	ok	Kurzarm-Cardigan-Bluse mit kleinem Revers
 gid://shopify/Product/15491547758977	nicht-versendbar	Alu-Koffer mit Zahlenschloss
+gid://shopify/Product/15476377420161	ok	Slim-Fit Hoodie
