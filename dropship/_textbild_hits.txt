@@ -6348,3 +6348,8 @@ gid://shopify/Product/15450171572609	16->0	Kleiner GPS-Tracker
 gid://shopify/Product/15450171769217	16->0	OBD-GPS-Locator
 gid://shopify/Product/15450172195201	41->0	GPS-Ortungsgerät
 gid://shopify/Product/15450172719489	44->0	GPS-Auto-Ortungsgerät
+gid://shopify/Product/15450214629761	15->0	Intelligenter Auto-Duftverteiler
+gid://shopify/Product/15450214859137	13->0	Sojawachskerze mit Zitrus- und Holznoten – ideal für Bad & Y
+gid://shopify/Product/15450215022977	17->0	Lenkrad-Abdeckung
+gid://shopify/Product/15450215055745	10->0	Lenkradbezug Suede
+gid://shopify/Product/15450215088513	10->0	Lenkradbezug
