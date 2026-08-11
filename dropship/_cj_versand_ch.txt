@@ -374,3 +374,10 @@ gid://shopify/Product/15452681273729	ok	Retro-CD-Player mit Vinyl-Look
 gid://shopify/Product/15453743841665	nicht-versendbar	Kleiner FPV-Drohne mit F4-Steuerung
 gid://shopify/Product/15458987934081	ok	8K Drohne für Profi-Aufnahmen
 gid://shopify/Product/15481755402625	ok	Elegante handgemachte Lederschuhe mit dicker Sohle
+gid://shopify/Product/15493258543489	ok	Universal Connection Protokoll Kommunikations-Check
+gid://shopify/Product/15493845451137	ok	Vollautomatischer Sojamilchbereiter
+gid://shopify/Product/15450757038465	nicht-versendbar	Waschmaschinen-Unterschrank mit Schublade
+gid://shopify/Product/15446024552833	nicht-versendbar	Damast-Steakmesser-Set für den Haushalt
+gid://shopify/Product/15446273425793	nicht-versendbar	Eisbad-Tauchbecken für umfassende Erholung
+gid://shopify/Product/15449171100033	ok	S925 Sterling Silber Moissanit Ring mit Stern-Halo
+gid://shopify/Product/15449176703361	ok	Gesichtsreinigungsbürste aus Silikon

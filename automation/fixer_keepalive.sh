@@ -30,6 +30,12 @@ while true; do
   pgrep -f "/tmp/cj_fulfill_runner.sh" >/dev/null || { setsid bash /tmp/cj_fulfill_runner.sh >> /tmp/cj_fulfill_runner.log 2>&1 & echo "$(date -u +%H:%M) restart cj_fulfill_runner"; }
   # Website-Hygiene (Lieferanten-Leaks aus Kundentexten) mitlaufen lassen
   [ -f /tmp/website_hygiene_runner.sh ] && { pgrep -f "/tmp/website_hygiene_runner.sh" >/dev/null || { setsid bash /tmp/website_hygiene_runner.sh >> /tmp/website_hygiene_runner.log 2>&1 & echo "$(date -u +%H:%M) restart website_hygiene"; }; }
+  # Social-Autopilot + Reel-Motor: liegen jetzt IM REPO (nicht mehr nur /tmp), überleben also
+  # den nächsten Wipe. Beide haben eine eigene flock-Sperre, ein Doppelstart ist folgenlos.
+  for S in social_autopilot reel_engine_runner; do
+    [ -f "$HOME/aban-news-landing/automation/$S.sh" ] || continue
+    pgrep -f "automation/$S.sh" >/dev/null || { setsid bash "$HOME/aban-news-landing/automation/$S.sh" >> /tmp/$S.log 2>&1 & echo "$(date -u +%H:%M) restart $S"; }
+  done
   # CJ-Grind-Runner mitlaufen lassen (Turn-Reaping killt sie sonst jede Runde)
   for R in cj_runner2 cj_runner3 cj_runner4 cj_runner5; do
     [ -f /tmp/$R.sh ] || continue
