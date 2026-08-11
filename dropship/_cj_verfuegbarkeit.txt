@@ -2729,3 +2729,13 @@ gid://shopify/Product/15480344641921	ok
 gid://shopify/Product/15480344314241	ok
 gid://shopify/Product/15480343953793	ok
 gid://shopify/Product/15480343495041	ok
+gid://shopify/Product/15480341856641	ok
+gid://shopify/Product/15480341791105	ok
+gid://shopify/Product/15480341692801	ok
+gid://shopify/Product/15480341594497	ok
+gid://shopify/Product/15480341463425	ok
+gid://shopify/Product/15480341397889	ok
+gid://shopify/Product/15480340414849	ok
+gid://shopify/Product/15480340349313	ok
+gid://shopify/Product/15480340316545	ok
+gid://shopify/Product/15480340283777	ok
