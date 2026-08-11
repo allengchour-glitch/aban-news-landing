@@ -448,3 +448,5 @@ gid://shopify/Product/15449446023553	ok	Moissanite Ring mit Doppelhallo
 gid://shopify/Product/15470685290881	nicht-versendbar	Tierfriseur-Set
 gid://shopify/Product/15446024192385	nicht-versendbar	Stehender Grill-Organizer mit grosser Kapazität
 gid://shopify/Product/15448937202049	nicht-versendbar	Stuhl-Katzenbett aus Holz
+gid://shopify/Product/15481681871233	ok	Drahtloses Ansteckmikrofon mit Rauschunterdrückung
+gid://shopify/Product/15493717033345	ok	Klassische Leucht-Automatikuhr mit Saphirglas
