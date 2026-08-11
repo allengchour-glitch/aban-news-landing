@@ -534,3 +534,8 @@ gid://shopify/Product/15479484744065	ok	Stratos 2 Ultra GPS Smartwatch
 gid://shopify/Product/15480569430401	ok	USB4 SSD-Gehäuse für Notebooks, bis 40 Gbit/s
 gid://shopify/Product/15494643581313	nicht-versendbar	Mehrstufige Katzen-Kletterplattform Holz
 gid://shopify/Product/15494642106753	nicht-versendbar	Elektrische Fritteuse
+gid://shopify/Product/15494643253633	ok	Buchförmiges Schneidebrett 4er-Set mit Ständer
+gid://shopify/Product/15455656411521	nicht-versendbar	Portables Outdoor Luftzelt
+gid://shopify/Product/15466641523073	nicht-versendbar	Gras-Hacker
+gid://shopify/Product/15470368981377	nicht-versendbar	Faltbarer Gartenschirm 2.5m
+gid://shopify/Product/15479402561921	ok	Performance Drum- und Perkussionsmikrofon
