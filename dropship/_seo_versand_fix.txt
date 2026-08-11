@@ -13358,3 +13358,10 @@ gid://shopify/Product/15454012735873	65->50
 gid://shopify/Product/15454012801409	65->50
 gid://shopify/Product/15454012866945	65->50
 gid://shopify/Product/15454012932481	65->50
+gid://shopify/Product/15454012998017	65->50
+gid://shopify/Product/15454013063553	65->50
+gid://shopify/Product/15454013096321	65->50
+gid://shopify/Product/15454013129089	65->50
+gid://shopify/Product/15454013161857	65->50
+gid://shopify/Product/15454013194625	65->50
+gid://shopify/Product/15454013260161	65->50
