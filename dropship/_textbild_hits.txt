@@ -6270,3 +6270,8 @@ gid://shopify/Product/15448039915905	155->0	Langarm-Shirt mit Rundhals und Knopf
 gid://shopify/Product/15448040210817	37->1	Gestreifter Jupe im Preppy-Stil mit A-Linie
 gid://shopify/Product/15448040309121	85->0	Satinbluse mit Stehkragen und Schleifen-Detail
 gid://shopify/Product/15448041619841	18->1	Bodycon Camisole mit Spitze
+gid://shopify/Product/15448042406273	114->0	Elegantes Kurzarm-Shirt mit Holzohr-Rüschen
+gid://shopify/Product/15448042570113	85->3	Elegante Bluse mit Puffärmeln und Raffung
+gid://shopify/Product/15448042963329	11->0	Gestreifte Bluse mit Peter-Pan-Kragen
+gid://shopify/Product/15448076091777	31->0	Casual Damen-Schwimm-Top
+gid://shopify/Product/15448076779905	68->0	Damen-Badeanzug-Set
