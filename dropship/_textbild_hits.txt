@@ -6343,3 +6343,4 @@ gid://shopify/Product/15449588892033	13->0	Adjustable Silberringe
 gid://shopify/Product/15449589711233	9->0	Edelstahlring mit 26 Buchstaben
 gid://shopify/Product/15449589973377	29->0	Paraiba-Tourmalin-Ring mit Diamanten
 gid://shopify/Product/15449590563201	12->1	Katzenring anpassbar
+gid://shopify/Product/15450171179393	26->0	Laser-Geschwindigkeitsmessgerät

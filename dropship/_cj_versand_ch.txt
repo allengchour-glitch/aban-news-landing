@@ -440,3 +440,4 @@ gid://shopify/Product/15451638235521	nicht-versendbar	Gimbal Anti-Shake Stabilis
 gid://shopify/Product/15454204690817	nicht-versendbar	Retro-Militär-Armbanduhr
 gid://shopify/Product/15455531499905	ok	Feng-Shui-Dekoration
 gid://shopify/Product/15468317442433	ok	Reisetasche aus Rindsleder, gross
+gid://shopify/Product/15448587698561	ok	Bodycon-Kleid mit handbesetzten Strasssteinen
