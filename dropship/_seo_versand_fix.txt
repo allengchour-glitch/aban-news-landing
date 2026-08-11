@@ -18605,3 +18605,10 @@ gid://shopify/Product/15469960495489	65->50
 gid://shopify/Product/15469960528257	65->50
 gid://shopify/Product/15469960561025	65->50
 gid://shopify/Product/15469960593793	65->50
+gid://shopify/Product/15469960626561	65->50
+gid://shopify/Product/15469960659329	65->50
+gid://shopify/Product/15469960692097	65->50
+gid://shopify/Product/15469960757633	65->50
+gid://shopify/Product/15469960790401	65->50
+gid://shopify/Product/15469960823169	65->50
+gid://shopify/Product/15469960855937	65->50
