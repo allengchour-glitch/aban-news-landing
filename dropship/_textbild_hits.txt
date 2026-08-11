@@ -6337,3 +6337,9 @@ gid://shopify/Product/15449502220673	9->0	Weite Damenjeans in Uni-Farben
 gid://shopify/Product/15449502351745	13->0	Sleek Oberteil
 gid://shopify/Product/15449503203713	28->0	Gerissene Damenjeans High-Street-Stil
 gid://shopify/Product/15449503859073	56->0	Retro Pfirsichform Nostalgische Weitbein-Jeans Damen
+gid://shopify/Product/15449586434433	20->0	Smart Clutch für Herren
+gid://shopify/Product/15449587286401	44->3	Minimalistisches AirTag-Geldbörse für Herren
+gid://shopify/Product/15449588892033	13->0	Adjustable Silberringe
+gid://shopify/Product/15449589711233	9->0	Edelstahlring mit 26 Buchstaben
+gid://shopify/Product/15449589973377	29->0	Paraiba-Tourmalin-Ring mit Diamanten
+gid://shopify/Product/15449590563201	12->1	Katzenring anpassbar
