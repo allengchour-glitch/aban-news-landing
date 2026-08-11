@@ -75,6 +75,23 @@ unveröffentlichten Grossen (`uhren-herren` 543, `beauty-duefte` 1290, `damen-ja
 nicht freischalten. `schule-buro` war live mit **1** Produkt mitten im Schulanfang → auf Smart-Regel
 `schule-buero` umgestellt, 27 Produkte (`automation/schule_buero_fuellen.py`).
 
+## ✅ Geprüft und SAUBER (2026-08-11 — nicht erneut durchkämmen)
+- **29'225 aktive Produkte:** 0 ohne Bild, 0 ohne Preis, 0 ohne Beschreibung. Produkt-SEO-Beschreibung
+  fehlt bei **5**. (SEO-*Titel* fehlt bei 24'190 — das ist KEIN Mangel: Shopifys Vorgabe
+  «Produkttitel – Shopname» ist meist besser als ein selbstgebauter.)
+- **Übersell-Risiko:** von 316'146 Varianten mit Bestand 0 waren nur 26 `tracked+CONTINUE` → behoben.
+- **Teure Ware:** nur **8** aktive Produkte ab CHF 300, alle Fortura/CH-Lager (Kinder-Elektroautos,
+  Halloween-Animatronics). Die CHF 1'000–3'100-Elektronik (Samsung-Tablet, 100"-TVs, Videowall,
+  «Generalüberholt») ist durchweg **DRAFT**. ⚠️ Die Kollektions-Abfrage im Admin zeigt Entwürfe MIT —
+  `products(first:n)` auf einer Kollektion ohne Status-Filter täuscht «aktiv» vor.
+- **Kollektionen:** 3 leer (alle unveröffentlicht), 20 dünn, 0 tote Menü-Links.
+- **Titel-Anglizismen:** 459 vorgemerkt, davon nur einige Dutzend echt unübersetzt — «High-Waist»,
+  «Loose-Fit», «Slim Fit» sind im CH-Modehandel normal, kein Fehler.
+- **Abgebrochene Warenkörbe:** 10 offen (CHF 570.61), der jüngste vom **4. Juli**. Seither erreicht
+  fast niemand die Kasse — Rückhol-Mails wären sinnlos, der Engpass liegt VOR dem Warenkorb.
+- **Startseiten-Reihen** (alle 12 geprüft): kein Kostüm/Plüsch/Lizenz mehr. Einzelfund «Badeset Dino
+  **Duft** Apfel» führte «Parfum & Düfte» an (Tag `parfum`) → entfernt.
+
 ## 📦 Schatten-Bestellungen bei CJ (2026-08-11)
 Zu JEDER Shopify-Bestellung seit #1001 liegen bei CJ **zwei** Aufträge: einer unter der Shopify-Nummer
 («#1012», von der CJ-eigenen Shopify-App) und einer unter «LX1012» (von `cj_order_engine.py`). Der Automat
