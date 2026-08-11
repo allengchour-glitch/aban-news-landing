@@ -21,7 +21,30 @@ Vor dem Publizieren wird der aktuelle Status geprüft: Produkte, die inzwischen 
 (Duplikate, ausverkauft, Richtlinienverstoss), werden übersprungen — sonst holt dieses
 Skript genau die Ware zurück, die andere Reiniger bewusst entfernt haben.
 
-DRY=1 meldet nur.
+ZWEITE KORREKTUR (2026-08-11): Zwei der sechs Ausschlussgründe sind **Anzeigen-Regeln, die
+versehentlich auf die kostenlosen Einträge angewendet wurden**:
+  • `preis-unter-15`  (2'881 Artikel) — Google Merchant kennt keine Preisuntergrenze.
+  • `unter-3-bildern` (2'166 Artikel) — verlangt wird genau EIN `image_link`.
+Für bezahlte Anzeigen sind beide Hürden sinnvoll (billige Ware verbrennt Klickbudget, ein
+einzelnes Bild verkauft schlecht). Für Gratis-Einträge kosten sie nur Reichweite — und Google
+ist der einzige Kanal mit belegten Verkäufen (4 von 10 Bestellungen; TikTok bislang keine).
+Beispiel aus der Stichprobe: ein Handyhalter mit **sechs** Bildern flog allein am Preis
+(CHF 14.90) raus.
+
+Die anderen vier Gründe bleiben draussen, und zwar aus je eigenem Grund: `kein-werbe-sortiment`
+(Kostüm/Erotik/Refurb) riskiert eine Konto-Sperre, `code-im-titel`/`code-in-variante` liefern
+unlesbare Anzeigentexte, und `keine-lieferanten-sku` ist die Risikoklasse der Bestellung #1008
+— unprüfbare Ware, die man nicht bewerben sollte, bevor man sie liefern kann.
+
+⚠️ Die Gründe werden in `gfeed_score.py` per `elif` geprüft, also **nur der erste zählt**. Ein
+Artikel mit dem Etikett `unter-3-bildern` kann zusätzlich einen zu tiefen Preis ODER gar keine
+Lieferanten-SKU haben — das wurde nie geprüft, weil die Kette vorher abbrach. Beim Zurückholen
+werden die restlichen Bedingungen deshalb **live neu geprüft**, statt dem Etikett zu vertrauen.
+Insbesondere: mindestens ein Bild (0 Bilder = sichere Merchant-Ablehnung) und eine
+Lieferanten-SKU.
+
+  DRY=1                                  meldet nur.
+  AUCH=preis-unter-15,unter-3-bildern    holt zusätzlich diese Ausschlussgründe zurück.
 """
 import json, os, subprocess, time
 
@@ -54,6 +77,13 @@ def gql(q, v=None):
 def main():
     rows = json.load(open(SCORES))
     qualifiziert = [r[0] for r in rows if r[1] > 0]
+    auch = {g.strip() for g in os.environ.get("AUCH", "").split(",") if g.strip()}
+    nachzuegler = set()
+    if auch:
+        nachzuegler = {r[0] for r in rows if r[1] == -1 and r[2] in auch}
+        qualifiziert = qualifiziert + sorted(nachzuegler)
+        print(f"zusätzlich freigegebene Gründe: {', '.join(sorted(auch))} "
+              f"→ {len(nachzuegler)} Artikel", flush=True)
     print(f"bewertet {len(rows)} | qualifiziert {len(qualifiziert)}", flush=True)
 
     done = set()
@@ -64,18 +94,42 @@ def main():
 
     f = open(LEDGER, "a")
     zurueck = schon_drin = uebersprungen = 0
+    gruende = {}
     for i in range(0, len(offen), 100):
         teil = offen[i:i + 100]
-        d = gql('query($ids:[ID!]!){nodes(ids:$ids){... on Product{id status '
+        d = gql('query($ids:[ID!]!){nodes(ids:$ids){... on Product{id status mediaCount{count} '
+                'priceRangeV2{minVariantPrice{amount}} variants(first:1){nodes{sku}} '
                 'g:publishedOnPublication(publicationId:"%s")}}}' % GOOG, {"ids": teil})
         for n in (d.get("data") or {}).get("nodes") or []:
             if not n:
                 continue
             if n["status"] != "ACTIVE":
                 # Ein anderer Reiniger hat das Produkt bewusst aus dem Verkauf genommen.
+                # ⚠️ Übersprungene NICHT in den Ledger schreiben — weder im Probelauf noch
+                # scharf. Ein DRAFT kann morgen wieder ACTIVE sein, eine fehlende SKU kann
+                # nachgetragen werden; ein Ledger-Eintrag würde das Produkt für immer
+                # unsichtbar machen. Die erneute Prüfung kostet nichts, sie hängt ohnehin
+                # an der Sammelabfrage.
                 uebersprungen += 1
-                f.write(f"{n['id']}\tuebersprungen-{n['status'].lower()}\n")
                 continue
+            if n["id"] in nachzuegler:
+                # Etikett nicht vertrauen — die `elif`-Kette in gfeed_score.py hat die
+                # übrigen Bedingungen bei diesen Artikeln nie geprüft (siehe Modulkommentar).
+                bilder = ((n.get("mediaCount") or {}).get("count")) or 0
+                preis = float(n["priceRangeV2"]["minVariantPrice"]["amount"])
+                vs = (n.get("variants") or {}).get("nodes") or []
+                sku = (vs[0].get("sku") if vs else "") or ""
+                fehlt = None
+                if bilder < 1:
+                    fehlt = "ohne-bild"          # Merchant lehnt ohne image_link sicher ab
+                elif preis <= 0:
+                    fehlt = "ohne-preis"
+                elif not sku.startswith(("CJ-", "bb-", "fortura-")):
+                    fehlt = "keine-lieferanten-sku"
+                if fehlt:
+                    uebersprungen += 1
+                    gruende[fehlt] = gruende.get(fehlt, 0) + 1
+                    continue
             if n["g"]:
                 schon_drin += 1
                 f.write(f"{n['id']}\tschon-im-kanal\n")
@@ -98,6 +152,8 @@ def main():
               f"schon drin {schon_drin} | übersprungen {uebersprungen}", flush=True)
     print(f"{'(DRY) ' if DRY else ''}FERTIG: {zurueck} zurück im Google-Kanal, "
           f"{schon_drin} waren schon drin, {uebersprungen} bewusst draussen gelassen")
+    for g, n in sorted(gruende.items(), key=lambda x: -x[1]):
+        print(f"  draussen wegen {g}: {n}")
 
 
 if __name__ == "__main__":
