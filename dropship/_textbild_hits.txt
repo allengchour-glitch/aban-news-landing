@@ -6262,3 +6262,11 @@ gid://shopify/Product/15447988076929	8->0	Eleganter Tankini mit hohem Halsaussch
 gid://shopify/Product/15447988240769	28->0	Casual Damen-Tanktop
 gid://shopify/Product/15447988830593	20->1	Gefaltete Blumenprint Rüschenbluse mit Bändern
 gid://shopify/Product/15447989191041	11->0	Elegante V-Neck Leinen-Weste
+gid://shopify/Product/15448027070849	17->0	UV-Schutz-Cape für Damen, lockerer Schnitt
+gid://shopify/Product/15448038769025	89->1	Spitzenbesetzte Bluse als Strand-Cardigan
+gid://shopify/Product/15448039489921	26->1	Langarm-Bluse einfarbig Regular-Fit
+gid://shopify/Product/15448039719297	155->0	V-Neck Langarmshirt mit asymmetrischem Saum
+gid://shopify/Product/15448039915905	155->0	Langarm-Shirt mit Rundhals und Knopfleiste
+gid://shopify/Product/15448040210817	37->1	Gestreifter Jupe im Preppy-Stil mit A-Linie
+gid://shopify/Product/15448040309121	85->0	Satinbluse mit Stehkragen und Schleifen-Detail
+gid://shopify/Product/15448041619841	18->1	Bodycon Camisole mit Spitze
