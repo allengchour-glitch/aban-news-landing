@@ -19809,3 +19809,11 @@ gid://shopify/Product/15470015742337	65->50
 gid://shopify/Product/15470015775105	65->50
 gid://shopify/Product/15470015807873	65->50
 gid://shopify/Product/15470015840641	65->50
+gid://shopify/Product/15470015873409	65->50
+gid://shopify/Product/15470015906177	65->50
+gid://shopify/Product/15470015938945	65->50
+gid://shopify/Product/15470015971713	65->50
+gid://shopify/Product/15470016004481	65->50
+gid://shopify/Product/15470016037249	65->50
+gid://shopify/Product/15470016070017	65->50
+gid://shopify/Product/15470016135553	65->50
