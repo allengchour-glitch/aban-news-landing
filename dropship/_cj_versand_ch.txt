@@ -520,3 +520,4 @@ gid://shopify/Product/15453773037953	ok	Zweiteiler-Optik Gerade Arbeitshose
 gid://shopify/Product/15454094426497	ok	Katzenhängematte mit Fensterhalter für Balkon
 gid://shopify/Product/15447639687553	nicht-versendbar	Faltbares Katzenbett mit Höhle
 gid://shopify/Product/15494392381825	ok	Minimalistischer Multifunktions-Reiserucksack
+gid://shopify/Product/15443532185985	nicht-versendbar	Powerbank «PowerCore» · Schnellladen
