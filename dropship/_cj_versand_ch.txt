@@ -556,3 +556,7 @@ gid://shopify/Product/15455796101505	ok	Weisse Bluse mit Falten
 gid://shopify/Product/15448041914753	ok	Kurzarm-Cardigan-Bluse mit kleinem Revers
 gid://shopify/Product/15491547758977	nicht-versendbar	Alu-Koffer mit Zahlenschloss
 gid://shopify/Product/15476377420161	ok	Slim-Fit Hoodie
+gid://shopify/Product/15494856180097	nicht-versendbar	Tongtian Klettergerüst für Katzen
+gid://shopify/Product/15494855360897	nicht-versendbar	Aluminium-Magnesium Rollkoffer mit TSA-Schloss
+gid://shopify/Product/15446267298177	ok	Vertikaler Gaming-Pistolengriff mit Trigger
+gid://shopify/Product/15494344868225	ok	Lederrucksack "Crazy Horse" (36-55L)
