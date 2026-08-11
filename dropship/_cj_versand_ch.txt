@@ -409,3 +409,9 @@ gid://shopify/Product/15475019383169	nicht-versendbar	Grosser Hängekorb aus Bau
 gid://shopify/Product/15477468922241	nicht-versendbar	Multifunktionaler Reisekoffer
 gid://shopify/Product/15480282022273	ok	Kabelloser Kamera-Dolly
 gid://shopify/Product/15447638147457	nicht-versendbar	Faltbares Katzenzeltbett
+gid://shopify/Product/15448667652481	ok	Extra-langer dunkelroter Wollmantel für Damen
+gid://shopify/Product/15449571066241	ok	Baumwollhosen, loose, high-waist
+gid://shopify/Product/15443241140609	ok	Edelstein-Kreuz-Anhänger «Rubin» · 925 Silber
+gid://shopify/Product/15448891720065	ok	3D-Druckstift für farbige Kreationen
+gid://shopify/Product/15448891752833	ok	3D-Druckstift mit OLED-Display
+gid://shopify/Product/15449469911425	ok	Mehrfarben-3D-Druckstift
