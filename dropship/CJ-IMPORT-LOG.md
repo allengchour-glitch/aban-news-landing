@@ -4528,3 +4528,52 @@ dokumentiert bereit, bis die Kantenerkennung wirklich trägt.
 auffälligen Quote das Rohmaterial ansehen. Heute waren es «50 tote Menü-Links» (unvollständige
 Kollektionsliste), «77 Lieferantencodes im Titel» (Regex traf «Skulptur») und jetzt «69 %
 Text-Hauptbilder» (Zifferblätter). Jedes Mal hätte blindes Handeln Schaden angerichtet.
+
+## 🔑 Stiller Totalausfall: das Shopify-Token läuft nach 24 h ab (2026-08-10)
+
+**Entdeckt durch einen Zufallsbefund:** Eine Abfrage auf die heutigen Importe lieferte
+**0 Produkte**, obwohl es Hunderte sein mussten. Ursache: `Invalid API key or access token`.
+Shopify hat den dauerhaften `shpat_`-Token abgeschafft; der Client-Credentials-Grant gilt nur
+**rund 24 Stunden**. Alle Reiniger lesen `/tmp/cj_shop_token.txt` **einmal beim Start**.
+
+**Warum das gefährlicher ist, als es klingt:** Läuft das Token ab, geben die GraphQL-Helfer nach
+ihren Wiederholungen ein leeres Ergebnis zurück, und die Schleifen enden mit «keine Daten» —
+also **exakt so, wie ein sauberer, vollständiger Durchlauf aussieht**. Der Supervisor startet
+die Skripte pflichtbewusst neu, sie scheitern erneut, und im Log steht kein einziger Fehler.
+Die gesamte Katalogpflege hätte tagelang stillstehen können, ohne dass es auffällt.
+
+**Behoben:** `automation/shop_token_refresh.sh` erneuert das Token, sobald es älter als 12 h ist —
+also lange vor Ablauf —, **prüft das neue Token gegen `shop.json` und ersetzt das alte nur bei
+HTTP 200** (ein kaputtes Token wäre schlimmer als ein altes). Der Supervisor ruft es als
+allererstes in jedem Durchlauf auf.
+
+## 🚚 CJ-Versand-Guard: zwei eigene Fehler, die echte Verlustbringer durchliessen
+
+**1. Falscher Filter.** Der Guard suchte `status:ACTIVE AND tag:cj-real`. Ein Teil der CJ-Ware
+trägt diesen Tag gar nicht — das **«Ovale Pflanzgefäss im Antik-Stil» (CHF 529.90, 15 kg)** hatte
+nur `heimwerken,neu,werkzeug` und blieb deshalb ausserhalb der Prüfung live, obwohl CJ dafür
+**keine einzige Versandoption in die Schweiz** anbietet. Massgeblich ist jetzt die SKU, nicht das
+Etikett.
+
+**2. Stille Teilprüfung.** Beim Blättern durch den Katalog beendete eine einzelne gedrosselte
+Seite die Paginierung — kommentarlos. Die Prüfliste schrumpfte dadurch von 125 auf 13 Produkte,
+und der Lauf meldete trotzdem «FERTIG». Jetzt wird bis zu dreimal wiederholt, und wenn es
+endgültig scheitert, steht ausdrücklich **«Liste ist UNVOLLSTÄNDIG»** im Protokoll — mit der Zahl
+der tatsächlich gesehenen Produkte.
+
+**Nach der Reparatur: 28'388 Produkte durchgesehen** und drei Verlustbringer gefunden:
+| Produkt | Preis | Befund |
+|---|---|---|
+| Ovales Pflanzgefäss | 529.90 | 15 kg, **keine** CH-Versandoption |
+| Smart Futterboot | 165.90 | Fracht CHF 194.62 = **117 %** des Preises |
+| Werkzeugkasten | 162.90 | Fracht CHF 93.00 = **57 %** des Preises |
+
+Alle drei auf DRAFT. Das Futterboot ist das lehrreichste Beispiel: Es *hatte* eine Versandoption —
+sie kostete nur mehr als das Produkt. Ohne die Wirtschaftlichkeitsregel wäre es als «versendbar»
+durchgegangen.
+
+## ✅ Die heutigen Importe sind sauber
+Prüfung der **800 heute angelegten Produkte**: 0 unpubliziert, 0 mit Video als Hauptmedium
+(die Importer-Reparatur wirkt), 0 mit dem alten Werbeblock, 0 ohne Produkttyp, 0 ohne SKU,
+nur 2 mit weniger als zwei Bildern. Die Korrekturen von heute Morgen greifen also bei der
+laufenden Produktion.

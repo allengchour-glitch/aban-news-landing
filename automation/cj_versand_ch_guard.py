@@ -121,8 +121,12 @@ def main():
     if REVIVE:
         query = f"status:DRAFT AND tag:{TAG}"
     else:
-        query = "status:ACTIVE AND tag:cj-real"
-    cur, kandidaten = None, []
+        # ⚠️ NICHT nach `tag:cj-real` filtern. Der Tag fehlt bei einem Teil der CJ-Ware —
+        # das «Ovale Pflanzgefäss» (CHF 529.90, 15 kg, nachweislich NICHT in die CH versendbar)
+        # trug nur `heimwerken,neu,werkzeug` und blieb deshalb ausserhalb der Prüfung live.
+        # Massgeblich ist die SKU, nicht das Etikett.
+        query = "status:ACTIVE"
+    cur, kandidaten, gescannt, luecken = None, [], 0, 0
     while True:
         d = gql('query($c:String,$q:String!){products(first:100,after:$c,query:$q){'
                 'pageInfo{hasNextPage endCursor} nodes{id title '
@@ -130,17 +134,30 @@ def main():
                 {"c": cur, "q": query})
         pg = (d.get("data") or {}).get("products")
         if not pg:
-            break
+            # ⚠️ NICHT einfach abbrechen. Genau das hat die Prüfliste stillschweigend von 125 auf
+            # 13 Produkte verkürzt: eine einzelne gedrosselte Seite beendete die Paginierung, und
+            # der Rest des Katalogs wurde nie angesehen — ohne jede Meldung. Eine stille
+            # Teilprüfung ist gefährlicher als gar keine, weil sie wie ein Ergebnis aussieht.
+            luecken += 1
+            if luecken > 3:
+                print(f"  ⚠️ Abbruch nach {luecken} Fehlversuchen — Liste ist UNVOLLSTÄNDIG "
+                      f"({gescannt} Produkte gesehen)", flush=True)
+                break
+            time.sleep(10)
+            continue
+        gescannt += len(pg["nodes"])
+        luecken = 0
         for p in pg["nodes"]:
             preis = float(p["priceRangeV2"]["minVariantPrice"]["amount"])
             sku = (p["variants"]["nodes"][0]["sku"] if p["variants"]["nodes"] else "") or ""
-            if preis >= MINPREIS and sku:
+            if preis >= MINPREIS and re.match(r'^CJ-', sku or '', re.I):
                 kandidaten.append((p["id"], p["title"], preis, sku))
         if not pg["pageInfo"]["hasNextPage"]:
             break
         cur = pg["pageInfo"]["endCursor"]
     kandidaten.sort(key=lambda x: -x[2])            # teuerste zuerst
-    print(f"zu prüfen (ab CHF {MINPREIS:.0f}): {len(kandidaten)}", flush=True)
+    print(f"{gescannt} aktive Produkte durchgesehen | zu prüfen (ab CHF {MINPREIS:.0f}, "
+          f"CJ-SKU): {len(kandidaten)}", flush=True)
 
     done = set()
     if os.path.exists(LEDGER):

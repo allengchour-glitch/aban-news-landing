@@ -63,3 +63,5 @@ gid://shopify/Product/15485455630721	kinder-hausschuhe-pinguin-752512	Kinder Hau
 gid://shopify/Product/15492135518593	loose-fit-jeans-im-american-style-603500	Loose-fit Jeans im American Style
 gid://shopify/Product/15493062558081	retro-cropped-jeans-fur-damen-609200	Retro Cropped Jeans für Damen
 gid://shopify/Product/15493720146305	bestickter-samt-kissenbezug-827968	Bestickter Samt-Kissenbezug
+gid://shopify/Product/15493810028929	rx-008-metall-schleifgerat-mit-festem-winkel-625200	RX-008 Metall-Schleifgerät mit festem Winkel
+gid://shopify/Product/15493849350529	make-up-pinsel-set-392c39	Make-up Pinsel Set

@@ -86,3 +86,9 @@ gid://shopify/Product/15493575639425	Silber
 gid://shopify/Product/15493576720769	Gold
 gid://shopify/Product/15493577310593	Silber
 gid://shopify/Product/15493577474433	Silber
+gid://shopify/Product/15493797052801	Schwarz
+gid://shopify/Product/15493811732865	Silber
+gid://shopify/Product/15493811863937	Silber
+gid://shopify/Product/15493851120001	Grau
+gid://shopify/Product/15493852496257	Rot
+gid://shopify/Product/15493852627329	Grün

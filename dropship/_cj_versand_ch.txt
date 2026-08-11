@@ -209,3 +209,9 @@ gid://shopify/Product/15454334714241	ok	Retro-Leder Reisetasche
 gid://shopify/Product/15454351098241	ok	Mechanische Armbanduhr Edelstahl
 gid://shopify/Product/15460760781185	nicht-versendbar	Smarter Futterspender für Hunde und Katzen
 gid://shopify/Product/15448670667137	ok	Farbiger Patchwork Lammfell-Mantel
+gid://shopify/Product/15493849874817	ok	Leder Reisetasche im Retro-Stil
+gid://shopify/Product/15493075992961	nicht-versendbar	Ovales Pflanzgefäss im Antik-Stil
+gid://shopify/Product/15493085102465	ok	Spezialwerkzeug-Set für Motor-Timing (22-teilig)
+gid://shopify/Product/15493057905025	ok	Digitaler Messschieber für Perlen & Edelsteine
+gid://shopify/Product/15493277876609	nicht-versendbar	Smart Futterboot mit Fernsteuerung
+gid://shopify/Product/15492130439553	nicht-versendbar	Werkzeugkasten

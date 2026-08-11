@@ -11,6 +11,9 @@
 exec 9>/tmp/fixer_keepalive.lock
 flock -n 9 || { echo "$(date -u +%H:%M) Supervisor läuft bereits — dieser Start endet."; exit 0; }
 while true; do
+  # ZUERST das Shopify-Token frisch halten. Es ist nur ~24 h gültig; läuft es ab, scheitern ALLE
+  # Reiniger lautlos («keine Daten») und der Supervisor startet sie endlos ins Leere.
+  [ -f /tmp/shop_token_refresh.sh ] && bash /tmp/shop_token_refresh.sh
   for p in default_variant_fix textbild_fix bild_klein_fix cj_verfuegbarkeit coll_live_check sku_dup_scan promo_aus_beschreibung gfeed_restore farbe_metafeld cj_versand_ch_guard seo_versandschwelle_fix unpublizierte_finden lagerstand_hygiene; do
     [ -f /tmp/$p.py ] || continue
     pgrep -f "$p.py" >/dev/null && continue
