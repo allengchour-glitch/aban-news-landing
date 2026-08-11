@@ -546,3 +546,12 @@ gid://shopify/Product/15454197776769	ok	Mini-Handheld-Scanner mit Bildschirm und
 gid://shopify/Product/15454766170497	ok	Herren-Automatic-Mechanik-Uhr
 gid://shopify/Product/15481681838465	ok	Kabelloses Ansteckmikrofon für Mobilgeräte
 gid://shopify/Product/15493858328961	ok	Grosser, multifunktionaler Reise-Rucksack
+gid://shopify/Product/15494690996609	nicht-versendbar	Grosser Katzenbaum mit Sisalsäule
+gid://shopify/Product/15494694994305	nicht-versendbar	Katzenbaum "Briefkasten" mit Sisal und Katzenminze
+gid://shopify/Product/15494691291521	nicht-versendbar	Elektrischer Korean BBQ & Hot Pot
+gid://shopify/Product/15494690636161	nicht-versendbar	Grosser Katzenbaum mit integriertem Regal
+gid://shopify/Product/15494694568321	ok	Trinkwasserpumpe für Kaffee- und Verkaufsautomaten
+gid://shopify/Product/15481680494977	ok	Thermokamera
+gid://shopify/Product/15455796101505	ok	Weisse Bluse mit Falten
+gid://shopify/Product/15448041914753	ok	Kurzarm-Cardigan-Bluse mit kleinem Revers
+gid://shopify/Product/15491547758977	nicht-versendbar	Alu-Koffer mit Zahlenschloss
