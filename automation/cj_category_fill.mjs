@@ -198,6 +198,21 @@ const SET=`mutation($i:ProductSetInput!){productSet(synchronous:true,input:$i){p
 const MED=`mutation($id:ID!,$m:[CreateMediaInput!]!){productCreateMedia(productId:$id,media:$m){mediaUserErrors{message}}}`;
 const PUB=`mutation($id:ID!,$p:[PublicationInput!]!){publishablePublish(id:$id,input:$p){userErrors{message}}}`;
 // CJ-Produktvideo via Staged-Upload anhängen (externe URLs nimmt Shopify nicht an) — 2026-07-06
+// Wartet, bis Shopify mindestens ein Bild fertig verarbeitet hat. Gibt false zurück, wenn
+// nach mehreren Anläufen keines READY ist — dann sind sie FAILED oder die Quelle war tot.
+async function hatBild(st,productId){
+ for(let i=0;i<6;i++){
+  const r=await sgql(st,`query($id:ID!){product(id:$id){media(first:12){nodes{
+    ... on MediaImage{status} mediaContentType}}}}`,{id:productId});
+  const nodes=r?.data?.product?.media?.nodes||[];
+  if(nodes.some(n=>n.mediaContentType==='IMAGE'&&n.status==='READY'))return true;
+  // Solange noch etwas verarbeitet wird, lohnt das Warten; sind alle fertig und keines READY,
+  // ändert sich nichts mehr.
+  if(nodes.length&&nodes.every(n=>n.status&&n.status!=='PROCESSING'&&n.status!=='UPLOADED'))return false;
+  await sleep(2500*(i+1));
+ }
+ return false;
+}
 async function attachVideo(st,productId,vurl,cjpid){
  try{
   const vr=await fetch(vurl,{signal:AbortSignal.timeout(90000)}); if(!vr.ok)return;
@@ -374,6 +389,19 @@ for(const [cat,label] of grp.cats){
    if(e.length||!pid){console.log('  ✗',title.slice(0,30),JSON.stringify(e).slice(0,80));continue;}
    const media=imgs.slice(1).map(u=>({originalSource:u,mediaContentType:'IMAGE'}));
  if(media.length)await sgql(st,MED,{id:pid,m:media});
+   // ⚠️ BILD-QUITTUNG VOR DEM VERÖFFENTLICHEN (11.08.2026). Shopify lädt Bilder asynchron
+   // nach; scheitern ALLE, bleibt `mediaCount` auf 7 stehen, aber `featuredMedia` ist null.
+   // Genau so stand «Outdoor Camping Gerades Messer» live im Shop UND im Google-Kanal — mit
+   // sieben Medien im Status FAILED und keinem einzigen sichtbaren Bild. In der Kollektion
+   // ein leeres Feld, bei Google eine sichere Ablehnung. Ein Produkt ohne Bild ist kein
+   // Produkt: dann lieber als Entwurf liegen lassen, als es unsichtbar zu verkaufen.
+   if(!await hatBild(st,pid)){
+    await sgql(st,`mutation($i:ProductInput!){productUpdate(input:$i){userErrors{message}}}`,
+               {i:{id:pid,status:'DRAFT',tags:['bilder-fehlgeschlagen']}});
+    console.log('  ⛔ kein Bild geladen → DRAFT:',title.slice(0,44));
+    fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid));
+    continue;
+   }
    await publishVerified(st,pid);
  if(d.productVideo&&/^https/.test(d.productVideo))await attachVideo(st,pid,d.productVideo,p.pid);
    fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid));
