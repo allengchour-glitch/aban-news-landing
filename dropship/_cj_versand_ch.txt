@@ -532,3 +532,5 @@ gid://shopify/Product/15453744497025	nicht-versendbar	Klappbarer Quadrocopter mi
 gid://shopify/Product/15453920821633	nicht-versendbar	Multifunktionale Reinigungsmaschine
 gid://shopify/Product/15479484744065	ok	Stratos 2 Ultra GPS Smartwatch
 gid://shopify/Product/15480569430401	ok	USB4 SSD-Gehäuse für Notebooks, bis 40 Gbit/s
+gid://shopify/Product/15494643581313	nicht-versendbar	Mehrstufige Katzen-Kletterplattform Holz
+gid://shopify/Product/15494642106753	nicht-versendbar	Elektrische Fritteuse
