@@ -40,6 +40,29 @@
    Gemeinsamer Test jetzt in `gfeed_restore.lieferantenref()`; 269 Produkte zurückgeholt.
    **Offen: die ~30 Altprodukte über CJ-Suche wieder an eine pid binden** (CJ-Punktebudget nötig).
 
+## 🖼️ Startseite: das CH-Lager ist ein Fasnachts-Grosshandel (Screenshot-Studie 2026-08-11)
+Der Screenshot der Startseite zeigte als **erste acht Artikel** des «Premium-Style»-Shops: Badeset Dino,
+Pappbecher aus Frischfaser, Plüsch Alligator, **Plüsch Pikachu** (Lizenzware!), Magic Wasser Ballone,
+Plüschwolf. Ursache war nicht das Theme, sondern der Tag `blitz-front` (Kollektion ⚡ Blitzversand-Highlights):
+302 Artikel, davon **195 Spielzeug + 42 Partydeko = 78 %**. Dahinter die unbequeme Wahrheit über das
+Schweizer Lager insgesamt: von 2'593 CH-Artikeln sind **2'194 Kostüme** und 243 Spielzeug — Fortura ist im
+Kern ein Fasnachts-/Party-Grosshandel. Das «Blitzversand ab CH-Lager in 1–2 Tagen»-Versprechen stimmt, die
+Ware dahinter passt aber nicht zur Marke. `automation/blitzfront_kuratieren.py` hat 243 Artikel aus der
+Startreihe genommen (bleiben 59: Beauty-Sets, Taschen, Wohnaccessoires, Schweizer Editionen); die Artikel
+bleiben im Shop und in der Kollektion `blitzversand-schweiz`. **Fallen dabei:** (1) Einweggeschirr steht als
+«Haushalt & Wohnen» im Katalog und rutscht durch jede Warengruppen-Prüfung — per Titel fangen; (2) die
+Kollektionsbeschreibung versprach danach noch «Plüsch … Party» → nach jeder Kuratierung den Text nachziehen;
+(3) `products(first:20)` fand die Lostrommel nicht (Relevanz-Sortierung) — bei Einzelsuchen die volle Liste ziehen.
+**Offen für den Betreiber: Lohnt die Startseiten-Reihe überhaupt?** Ohne Kostüm/Spielzeug bleiben nur ~59 Artikel.
+
+## 📦 Schatten-Bestellungen bei CJ (2026-08-11)
+Zu JEDER Shopify-Bestellung seit #1001 liegen bei CJ **zwei** Aufträge: einer unter der Shopify-Nummer
+(«#1012», von der CJ-eigenen Shopify-App) und einer unter «LX1012» (von `cj_order_engine.py`). Der Automat
+bezahlt nur die LX-Variante (`cj_bestellungen()` legt «#1012» als «1012» ab, gesucht wird «LX1012») — es droht
+also kein automatischer Doppelkauf. **Gefährlich wird es, wenn jemand in der CJ-Konsole den zahlbaren Schatten
+begleicht**: dieselbe Ware ginge zweimal raus, der Shop zahlte zweimal. `cj_fulfill_engine.schatten_warnen()`
+meldet jetzt jeden Schatten MIT Preis. Gelöscht wird nichts automatisch — das sind Aufträge beim Lieferanten.
+
 ## ⚠️ CJ-Grind-Plateau-Falle (teuer gelernt 2026-07-29)
 Wenn der CJ-Ledger flach steht, ist es MEIST **keine** Token-/Punkte-Panne — Token prüfen zeigt oft `code:200`,
 Punkte reichlich. Diagnose-Reihenfolge: (1) `product/list?categoryId=…` liefert `data.total` >0 (Katalog da);
