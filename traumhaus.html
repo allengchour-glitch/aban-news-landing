@@ -5567,21 +5567,29 @@ function bauabnahme(){
   if(!l){naechsteAbnahme=tag+4;return;}
   var z=l.ziel;
   function zeile(ok,txt){return (ok?"✅ ":"❌ ")+txt;}
+  var meldung;
   if(l.erfuellt){
     wohnstufe++;
     var pr=Math.round(z[4]);geld+=pr;geldSend();
-    hint("🏅 ABNAHME BESTANDEN — "+z[0]+"!  +"+pr+" $  ·  Einnahmen jetzt +"+Math.round((stufenBonus()-1)*100)+" %");
+    meldung="🏅 ABNAHME BESTANDEN — "+z[0]+"!  +"+pr+" $  ·  Einnahmen jetzt +"+Math.round((stufenBonus()-1)*100)+" %";
+    hint(meldung);
     beep(660,.12,"triangle",.06);setTimeout(function(){beep(880,.16,"triangle",.06);},150);
     if(typeof hearts==="function")hearts(0,0);
     stats.abnahmen=(stats.abnahmen||0)+1;
   }else{
-    hint("📋 Bauabnahme: noch nicht "+z[0]+" — "
+    meldung="📋 Bauabnahme: noch nicht "+z[0]+" — "
       +zeile(l.fehltWert===0,"Wert "+l.wert+"/"+z[1]+" $")+"  "
       +zeile(l.fehltKat===0,"Bereiche "+l.kat+"/"+z[2])+"  "
-      +zeile(l.fehltZuf===0,"Laune "+l.zuf+"/"+z[3]));
+      +zeile(l.fehltZuf===0,"Laune "+l.zuf+"/"+z[3]);
+    hint(meldung);
     beep(240,.18,"sawtooth",.05);
   }
   naechsteAbnahme=tag+4;
+  /* 🤝 Der Tageswechsel (und damit diese Funktion) laeuft NUR beim Host. Ohne
+     diese Nachricht sah der Gast weder Abnahme noch Aufstieg, und sein
+     stufenBonus() blieb dauerhaft bei 1.0 — die Einnahmen der beiden Peers
+     liefen still auseinander. */
+  if(MPs&&mpHost)netSend({t:"stufe",ws:wohnstufe,na:naechsteAbnahme,txt:meldung});
   stufeHudUpd();updHUD();
 }
 function prestigeName(w){
@@ -6028,6 +6036,8 @@ function onNetMsg(m){
   else if(m.t==="moebelStat"&&mpHost){stats.moebelGekauft=(stats.moebelGekauft||0)+1;} /* 🩹 Schwarm-P2: Gast-Moebel zaehlen fuer Team-Quest */ /* 🩹 Gast-Fang zählt beim Host für Quests/Team-Quests */
   else if(m.t==="tanzBoost"&&mpHost){if(m.s>=0.999)stats.tanzPerfekt=(stats.tanzPerfekt||0)+1;tanzApply(m.s);}
   else if(m.t==="quest"&&!mpHost)questIdx=m.i;
+  else if(m.t==="stufe"&&!mpHost){wohnstufe=m.ws|0;naechsteAbnahme=m.na||tag+4;
+    if(m.txt)hint(m.txt);stufeHudUpd();updHUD();}
   else if(m.t==="teamq"&&!mpHost){teamIdx=m.i;}
   else if(m.t==="steer"&&mpHost){if(sims[1])sims[1].netSteer={x:m.x,z:m.z,t:performance.now()};}
   else if(m.t==="wachs"&&!mpHost){m.a.forEach(function(e9){
