@@ -2552,3 +2552,17 @@ gid://shopify/Product/15480492196225	ok
 gid://shopify/Product/15480492032385	ok
 gid://shopify/Product/15480491966849	ok
 gid://shopify/Product/15480491671937	ok
+gid://shopify/Product/15480491540865	ok
+gid://shopify/Product/15480491442561	ok
+gid://shopify/Product/15480491245953	ok
+gid://shopify/Product/15480491114881	ok
+gid://shopify/Product/15480490918273	ok
+gid://shopify/Product/15480490819969	ok
+gid://shopify/Product/15480490656129	ok
+gid://shopify/Product/15480490492289	ok
+gid://shopify/Product/15480490361217	ok
+gid://shopify/Product/15480490262913	ok
+gid://shopify/Product/15480490066305	ok
+gid://shopify/Product/15480489935233	ok
+gid://shopify/Product/15480489705857	ok
+gid://shopify/Product/15480489476481	ok
