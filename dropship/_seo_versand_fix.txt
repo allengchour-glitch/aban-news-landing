@@ -5823,3 +5823,16 @@ gid://shopify/Product/15448949096833	65->50
 gid://shopify/Product/15448949129601	65->50
 gid://shopify/Product/15448949195137	65->50
 gid://shopify/Product/15448949260673	65->50
+gid://shopify/Product/15448949293441	65->50
+gid://shopify/Product/15448949358977	65->50
+gid://shopify/Product/15448949457281	65->50
+gid://shopify/Product/15448949522817	65->50
+gid://shopify/Product/15448949621121	65->50
+gid://shopify/Product/15448949752193	65->50
+gid://shopify/Product/15448950047105	65->50
+gid://shopify/Product/15448950112641	65->50
+gid://shopify/Product/15448950178177	65->50
+gid://shopify/Product/15448950210945	65->50
+gid://shopify/Product/15448950243713	65->50
+gid://shopify/Product/15448950276481	65->50
+gid://shopify/Product/15448950309249	65->50
