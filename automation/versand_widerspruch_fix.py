@@ -13,8 +13,15 @@ def gql(q,v=None):
 PATS=[
  (re.compile(r'<p>\s*Versand:\s*ca\.\s*\d+\s*[–-]\s*\d+\s*Tage\.?\s*</p>',re.I),""),          # doppelte Versandzeile
  (re.compile(r'Versand:\s*ca\.\s*\d+\s*[–-]\s*\d+\s*Tage\.?',re.I),""),
- (re.compile(r'Gratis[- ]Versand ab CHF 50',re.I),"Gratis-Versand ab CHF 65"),
- (re.compile(r'Kostenloser Versand ab CHF 50',re.I),"Gratis-Versand ab CHF 65"),
+ # ⚠️ RICHTUNG UMGEDREHT (11.08.2026). Diese beiden Regeln schrieben «ab CHF 50» auf
+ # «ab CHF 65» — sie stammen aus der Zeit, als 65 die geltende Schwelle war. Inzwischen ist
+ # 50 richtig (am lebenden Warenkorb geprüft: gratis ab 50.00, sonst CHF 7.00). Dieser
+ # Reiniger arbeitete also gegen `seo_versandschwelle_fix.py`: der eine setzte 65 → 50, der
+ # andere 50 → 65, und je nachdem, wer zuletzt lief, stand im Shop mal das eine, mal das
+ # andere. Zwei Reiniger mit gegensätzlichem Ziel sind schlimmer als gar keiner, weil das
+ # Ergebnis vom Zufall abhängt und niemand den Widerspruch im Log sieht.
+ (re.compile(r'Gratis[- ]Versand ab CHF 65(?![0-9])',re.I),"Gratis-Versand ab CHF 50"),
+ (re.compile(r'Kostenloser Versand ab CHF 65(?![0-9])',re.I),"Gratis-Versand ab CHF 50"),
  (re.compile(r'Abholung bei TK und TEMU[^<.]*\.?',re.I),""),
  (re.compile(r'\bTEMU\b',re.I),""),
  (re.compile(r'Bei Fragen bitte den Händler kontaktieren\.?',re.I),""),

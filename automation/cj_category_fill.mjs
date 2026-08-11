@@ -374,13 +374,34 @@ for(const [cat,label] of grp.cats){
    { const gender=grp.tags.includes('damen')?'female':grp.tags.includes('herren')?'male':'unisex';
      const age=(grp.tags.includes('kinder')||grp.tags.includes('baby-kids'))?'kids':'adult';
      const mf=[{namespace:'mm-google-shopping',key:'gender',value:gender,type:'single_line_text_field'},
-               {namespace:'mm-google-shopping',key:'age_group',value:age,type:'single_line_text_field'}];
+               {namespace:'mm-google-shopping',key:'age_group',value:age,type:'single_line_text_field'},
+               // `condition` fehlte hier — und damit bei JEDEM neu importierten Produkt. Am
+               // 11.08. waren es 1'856 von 1'856 Tagesimporten ohne dieses Feld. Die
+               // Nachfüll-Skripte unter automation/google_feed/ laufen nur einmal; was der
+               // Importer nicht mitschreibt, fehlt ab dem nächsten Tag wieder. «new» stimmt
+               // hier immer: Gebrauchtes und Generalüberholtes ist im Shop durchweg DRAFT.
+               {namespace:'mm-google-shopping',key:'condition',value:'new',type:'single_line_text_field'}];
+     // Farbe aus der Varianten-Option übernehmen, wenn es eine gibt — Google fragt sie bei
+     // Bekleidung ab, und sie steht hier ohnehin schon sauber übersetzt bereit.
+     { const farbOpt=(productOptions||[]).find(o=>o.name==='Farbe');
+       const ersteFarbe=farbOpt?.values?.[0]?.name;
+       if(ersteFarbe&&ersteFarbe.length<=40)
+         mf.push({namespace:'mm-google-shopping',key:'color',value:ersteFarbe,type:'single_line_text_field'}); }
      // Material NUR wenn ein echtes Material-Wort drinsteht (sonst greift der Regex Feldlabels wie «Material Name»)
      const MATWORDS=/baumwolle|cotton|polyester|leder|leather|metall|metal|silber|silver|gold|edelstahl|stainless|kunststoff|plastic|acryl|nylon|wolle|wool|seide|silk|leinen|linen|keramik|ceramic|holz|wood|glas|glass|zink|legierung|alloy|gummi|silikon|silicone|strick|fleece|denim|jeans|samt|velvet|spitze|lace/i;
      const mm=(feats||'').match(/\b(?:material|made of|fabric|composition)\b[:\s]+([a-zA-ZäöüÄÖÜ0-9%,\s\/-]{3,40})/i);
-     if(mm){const mat=mm[1].replace(/\s+/g,' ').trim().replace(/[.,;]$/,'');
-       if(mat.length>=3 && MATWORDS.test(mat) && !/^(name|type|typ|color|colour|farbe|size|art)\b/i.test(mat))
-         mf.push({namespace:'mm-google-shopping',key:'material',value:mat.slice(0,50),type:'single_line_text_field'});}
+     // ⚠️ NUR DAS MATERIALWORT NEHMEN, nicht den ganzen Fund. Der Ausdruck griff über das
+     // Material hinaus in die nächste Tabellenüberschrift und schrieb «Polyester Style»
+     // (174×), «Plastic Packing list» (73×), «Alloy Packing list» (27×) in den Feed — Google
+     // liest das als Materialangabe. Von 4'924 gesetzten Werten waren 4'566 solcher Müll.
+     // Ein falscher Wert ist im Feed schlechter als ein leerer.
+     if(mm){const roh=mm[1].replace(/\s+/g,' ').trim();
+       const treffer=roh.match(MATWORDS);
+       if(treffer && !/^(name|type|typ|color|colour|farbe|size|art)\b/i.test(roh)){
+         const mat=treffer[0];
+         mf.push({namespace:'mm-google-shopping',key:'material',
+                  value:mat.charAt(0).toUpperCase()+mat.slice(1).toLowerCase(),
+                  type:'single_line_text_field'});}}
      input.metafields=mf; }
    // Dubletten-Wache: existiert schon ein aktives Produkt mit exakt diesem Titel? (Lieferant listet gleiche Artikel mehrfach)
    const dq=await sgql(st,`query($q:String!){products(first:1,query:$q){edges{node{id}}}}`,{q:`title:"${title.replace(/"/g,'')}" status:active`});
