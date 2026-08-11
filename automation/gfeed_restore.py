@@ -46,13 +46,46 @@ Lieferanten-SKU.
   DRY=1                                  meldet nur.
   AUCH=preis-unter-15,unter-3-bildern    holt zusätzlich diese Ausschlussgründe zurück.
 """
-import json, os, subprocess, time
+import json, os, re, subprocess, time
 
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
 DRY = os.environ.get("DRY") == "1"
 GOOG = "gid://shopify/Publication/302872297857"
 SCORES = os.environ.get("SCORES", "/tmp/gfeed_scores.json")
 LEDGER = "dropship/_gfeed_restore.txt"
+
+
+def lieferantenref(sku):
+    """Hat dieses Produkt eine Referenz, mit der man beim Lieferanten bestellen kann?
+
+    ⚠️ Die ursprüngliche Prüfung war `sku.startswith(("CJ-","bb-","fortura-"))` — und damit
+    zu eng. Eine Zählung über alle 29'046 aktiven Produkte am 11.08. zeigte 919 angebliche
+    Artikel «ohne Lieferanten-SKU». Tatsächlich unprüfbar sind davon nur 74:
+
+        472  Printful (POD)         SKU-Form «5599797_4012» — Druck auf Bestellung
+        346  CJ-Varianten-SKU       «CJYD…», «CJLY…», «CJLX…» — gültige CJ-Referenz
+         15  eigenes Bündel         «LX-BUNDLE-…» — aus eigenen Artikeln zusammengestellt
+         12  BigBuy-Referenz        «BB-V0100921» — gültig, nur gross geschrieben
+         74  wirklich unprüfbar     «WATCH-001», «cool-sharp», «14:691;5:200000990» …
+
+    Die CJ-Varianten-SKU ist dieselbe Form, die `cj_versand_ch_guard.py` längst als eine von
+    drei gültigen SKU-Formen behandelt. Sie hier nicht zu kennen, hat 346 verkäufliche
+    Produkte grundlos aus dem Google-Kanal gehalten.
+    """
+    s = (sku or "").strip()
+    if not s:
+        return False
+    if "_" in s and s.split("_")[0].isdigit():
+        return True                                   # Printful: <produkt>_<variante>
+    if re.match(r'^CJ', s, re.I):
+        return True                                   # CJ-…  /  CJYD…  /  CJLY…
+    if re.match(r'^bb[-_]?[SV0-9]', s, re.I):
+        return True                                   # BigBuy, gross wie klein
+    if re.match(r'^fortura', s, re.I):
+        return True
+    if re.match(r'^(LX|LXSCH)[-_]', s, re.I):
+        return True                                   # eigenes Bündel aus eigener Ware
+    return False
 
 
 def gql(q, v=None):
@@ -124,7 +157,7 @@ def main():
                     fehlt = "ohne-bild"          # Merchant lehnt ohne image_link sicher ab
                 elif preis <= 0:
                     fehlt = "ohne-preis"
-                elif not sku.startswith(("CJ-", "bb-", "fortura-")):
+                elif not lieferantenref(sku):
                     fehlt = "keine-lieferanten-sku"
                 if fehlt:
                     uebersprungen += 1

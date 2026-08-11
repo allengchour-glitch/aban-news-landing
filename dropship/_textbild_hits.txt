@@ -6306,3 +6306,12 @@ gid://shopify/Product/15448933761409	41->0	Automatischer Lockenstab für grosse 
 gid://shopify/Product/15448934941057	52->2	Seiden-Satin Schlafhaube für alle Haartypen
 gid://shopify/Product/15448937005441	18->0	LED-Photonenmaske mit Hals- und Hautpflege
 gid://shopify/Product/15448949195137	45->0	Smarter Futterautomat mit Timer
+gid://shopify/Product/15449079742849	18->3	Magnetischer Türvorhang mit 3D-Muster
+gid://shopify/Product/15449095831937	24->3	Bandeau-Minikleid mit Off-Shoulder-Schnitt
+gid://shopify/Product/15449095864705	12->0	Damen Minikleid mit Schnürung und Pailletten
+gid://shopify/Product/15449096028545	36->0	Retro Paillettenkleid mit Perlen
+gid://shopify/Product/15449096126849	22->0	Lässiges Split-Kleid für Damen
+gid://shopify/Product/15449096192385	38->0	Bodycon Maxikleid mit V-Ausschnitt und Kettendetails
+gid://shopify/Product/15449096487297	9->0	Retro Halterneck Minikleid mit Blumenstickerei
+gid://shopify/Product/15449096782209	28->0	Kurzes Kapuzen-Sweatshirt für Damen
+gid://shopify/Product/15449110905217	37->1	Spitzen-Langarmshirt aus Samt
