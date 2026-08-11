@@ -3,6 +3,33 @@
 > 🔗 **ZUERST `SHARED-MEMORY.md` (Repo-Root) lesen** — mehrere Sessions arbeiten parallel auf diesem
 > Repo + Shop; dort steht, wer was „besitzt" + der Live-Stand. CJ-Import/Katalog/Social = NUR diese Session.
 
+## 🩺 Fünf Lehren vom 2026-08-11 (Fehlersuche)
+1. **`pgrep -f <name>` findet die EIGENE Kommandozeile.** Ein `pgrep -f social_autopilot && echo läuft`
+   meldete «läuft» für ein Skript, das gar nicht mehr existierte — das Suchmuster stand im eigenen
+   Bash-Aufruf. Prozessprüfungen deshalb mit `ps -eo args | grep …`, oder das Muster nicht im Aufruf
+   nennen. Ein halber Tag toter Social-Autopilot galt so als gesund.
+2. **Was nur in /tmp lebt, ist verloren** (zweites Mal nach 2026-06-06). `social_autopilot.sh` und
+   `reel_engine_runner.sh` standen als Dauerläufer im Gedächtnis, existierten aber nur unter /tmp und
+   waren nach dem Wipe weg. Beide liegen jetzt in `automation/` und werden vom Supervisor gestartet.
+   **Regel: Ein Dauerläufer, der nicht committet ist, existiert nicht.**
+3. **Eine 0 im Lagerstand kann eine Aussage sein, keine Nachlässigkeit.** Beim POD-Shirt stand 5XL auf 0,
+   acht andere Grössen auf 9999 — sah nach vergessenem Wert aus. Printful-Abfrage: 5XL ist NUR im
+   US-Lager (`US=in_stock`, kein EU), die anderen Grössen in EU/UK/CA. Die 0 war korrekt. Statt
+   «auf 9999 heben» wurde `DENY` gesetzt. **Vor jeder Bestandskorrektur den Lieferanten fragen.**
+4. **`cj()` in cj_category_fill.mjs hatte weder Zeitgrenze noch Wiederholung.** Der Proxy antwortete mit
+   dem nackten Text «DNS resolution failure» → `r.json()` warf → der ganze Runner starb → das
+   Runner-Skript deutete es als Punktemangel und schlief 30 Minuten. Jetzt: 5 Versuche, Text-Parse
+   abgesichert, QPS-Antwort 1600200 wird abgewartet (CJ zählt 1 Anfrage/s über ALLE Prozesse gemeinsam,
+   4 Runner reissen das Limit zwangsläufig).
+5. **Google-Gratis-Einträge ≠ bezahlte Anzeigen.** `gfeed_score.py` schloss 5'047 Produkte wegen
+   «Preis unter 15» und «unter 3 Bildern» aus — beides sind Anzeigen-Qualitätsregeln. Merchant verlangt
+   genau EIN `image_link` und kennt keine Preisuntergrenze. Google ist der einzige Kanal mit belegten
+   Verkäufen (4 von 10 Bestellungen; TikTok: keine). **4'330 Produkte zurückgeholt** (Kanal 13'184 →
+   25'092 von 29'049 aktiven). Draussen bleiben Kostüm/Erotik/Refurb (Kontosperre-Risiko), Code-Titel
+   und die 328 ohne Lieferanten-SKU (Risikoklasse #1008). ⚠️ Die Gründe in `gfeed_score.py` stehen in
+   einer `elif`-Kette — **nur der erste zählt**; beim Zurückholen müssen die übrigen Bedingungen live
+   nachgeprüft werden (0 Bilder = sichere Merchant-Ablehnung).
+
 ## ⚠️ CJ-Grind-Plateau-Falle (teuer gelernt 2026-07-29)
 Wenn der CJ-Ledger flach steht, ist es MEIST **keine** Token-/Punkte-Panne — Token prüfen zeigt oft `code:200`,
 Punkte reichlich. Diagnose-Reihenfolge: (1) `product/list?categoryId=…` liefert `data.total` >0 (Katalog da);

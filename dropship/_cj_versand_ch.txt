@@ -402,3 +402,7 @@ gid://shopify/Product/15468733890945	nicht-versendbar	Leichter Reise-Trolley mit
 gid://shopify/Product/15493479006593	ok	Motorrad-Hartschalenrucksack, 15L erweiterbar
 gid://shopify/Product/15476177305985	ok	Baseballjacke mit Tiger- und Phönix-Stickerei
 gid://shopify/Product/15446267101569	ok	Kabelloser Elite Gaming Controller
+gid://shopify/Product/15449167364481	nicht-versendbar	Handgepäck-Trolley 20 Zoll mit Frontöffnung
+gid://shopify/Product/15449171493249	ok	Prinzessschliff Moissanit Verlobungsring-Set
+gid://shopify/Product/15470741127553	nicht-versendbar	Dusche-Set aus Edelstahl
+gid://shopify/Product/15475019383169	nicht-versendbar	Grosser Hängekorb aus Baumwollgarn
