@@ -442,3 +442,9 @@ gid://shopify/Product/15455531499905	ok	Feng-Shui-Dekoration
 gid://shopify/Product/15468317442433	ok	Reisetasche aus Rindsleder, gross
 gid://shopify/Product/15448587698561	ok	Bodycon-Kleid mit handbesetzten Strasssteinen
 gid://shopify/Product/15451917091201	nicht-versendbar	2-in-1 Katzenstufen & Kratzbaum mit Sisal
+gid://shopify/Product/15450758414721	nicht-versendbar	Heizkörperverkleidung mit Ablage
+gid://shopify/Product/15453773627777	ok	Kleiner Schreibtisch-Luftbefeuchter
+gid://shopify/Product/15449446023553	ok	Moissanite Ring mit Doppelhallo
+gid://shopify/Product/15470685290881	nicht-versendbar	Tierfriseur-Set
+gid://shopify/Product/15446024192385	nicht-versendbar	Stehender Grill-Organizer mit grosser Kapazität
+gid://shopify/Product/15448937202049	nicht-versendbar	Stuhl-Katzenbett aus Holz
