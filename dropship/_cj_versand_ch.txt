@@ -406,3 +406,6 @@ gid://shopify/Product/15449167364481	nicht-versendbar	Handgepäck-Trolley 20 Zol
 gid://shopify/Product/15449171493249	ok	Prinzessschliff Moissanit Verlobungsring-Set
 gid://shopify/Product/15470741127553	nicht-versendbar	Dusche-Set aus Edelstahl
 gid://shopify/Product/15475019383169	nicht-versendbar	Grosser Hängekorb aus Baumwollgarn
+gid://shopify/Product/15477468922241	nicht-versendbar	Multifunktionaler Reisekoffer
+gid://shopify/Product/15480282022273	ok	Kabelloser Kamera-Dolly
+gid://shopify/Product/15447638147457	nicht-versendbar	Faltbares Katzenzeltbett
