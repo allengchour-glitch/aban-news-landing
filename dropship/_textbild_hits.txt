@@ -6302,3 +6302,7 @@ gid://shopify/Product/15448802328961	64->1	QIBEST Diamond Liquid Lidschatten
 gid://shopify/Product/15448877400449	26->0	T-förmiges Lederarmband für Smartwatch
 gid://shopify/Product/15448882250113	36->0	Infrarot-Fernbedienung für Smartphones
 gid://shopify/Product/15448929698177	34->3	Bounce Curl Styling-Kamm für Locken
+gid://shopify/Product/15448933761409	41->0	Automatischer Lockenstab für grosse Wellen
+gid://shopify/Product/15448934941057	52->2	Seiden-Satin Schlafhaube für alle Haartypen
+gid://shopify/Product/15448937005441	18->0	LED-Photonenmaske mit Hals- und Hautpflege
+gid://shopify/Product/15448949195137	45->0	Smarter Futterautomat mit Timer

@@ -92,3 +92,15 @@ gid://shopify/Product/15493811863937	Silber
 gid://shopify/Product/15493851120001	Grau
 gid://shopify/Product/15493852496257	Rot
 gid://shopify/Product/15493852627329	Grün
+gid://shopify/Product/15453760520577	Bronze
+gid://shopify/Product/15453772382593	Blau
+gid://shopify/Product/15469918650753	Braun
+gid://shopify/Product/15469918683521	Schwarz
+gid://shopify/Product/15469994803585	Gold
+gid://shopify/Product/15469998899585	Silber
+gid://shopify/Product/15470000701825	Silber
+gid://shopify/Product/15470011089281	Rosa
+gid://shopify/Product/15470011842945	Schwarz
+gid://shopify/Product/15470012662145	Gold
+gid://shopify/Product/15470076952961	Weiss
+gid://shopify/Product/15493922881921	Schwarz

@@ -392,3 +392,13 @@ gid://shopify/Product/15458651308417	nicht-versendbar	Split-Typ Luftkühler für
 gid://shopify/Product/15448657756545	ok	Commuter Cardigan Plus-Size Langarmshirt
 gid://shopify/Product/15493933007233	nicht-versendbar	Hundehüsli aus Massivholz, waschbar
 gid://shopify/Product/15493932908929	nicht-versendbar	Handgemachtes Rattan-Haustierbett
+gid://shopify/Product/15449433014657	ok	HD-Lace Haarperücke aus echtem Haar
+gid://shopify/Product/15446279029121	nicht-versendbar	Nebelmaschine mit RGB-LED und Fernbedienung
+gid://shopify/Product/15454218486145	ok	Herz-Stickerei Schuhe & Sandalen mit Farbenfroher Kombination
+gid://shopify/Product/15446272147841	nicht-versendbar	Kinder Scooter 2-Rad mit Handbremse
+gid://shopify/Product/15484500115841	nicht-versendbar	Mehrstöckiges Holz-Schuhregal
+gid://shopify/Product/15490462712193	ok	Gehstock mit Fußstütze
+gid://shopify/Product/15468733890945	nicht-versendbar	Leichter Reise-Trolley mit Zahlenschloss
+gid://shopify/Product/15493479006593	ok	Motorrad-Hartschalenrucksack, 15L erweiterbar
+gid://shopify/Product/15476177305985	ok	Baseballjacke mit Tiger- und Phönix-Stickerei
+gid://shopify/Product/15446267101569	ok	Kabelloser Elite Gaming Controller
