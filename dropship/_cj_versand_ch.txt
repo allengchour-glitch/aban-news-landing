@@ -568,3 +568,9 @@ gid://shopify/Product/15493191696769	nicht-versendbar	Hexagonales Garten-Gewäch
 gid://shopify/Product/15446267888001	ok	Kabelgebundener Hall Rocker Game Controller
 gid://shopify/Product/15448930877825	ok	Kabelloser 2-in-1 Glätt- und Stylingkamm
 gid://shopify/Product/15451923710337	ok	Armband mit Glückskatze aus Jadeit
+gid://shopify/Product/15489661993345	ok	Kompakter Entfeuchter
+gid://shopify/Product/15447609966977	ok	Retro Canvas Rucksack (Gross/Klein)
+gid://shopify/Product/15448839160193	nicht-versendbar	4er-Set klappbare Stühle, Grau
+gid://shopify/Product/15449127059841	nicht-versendbar	Automatischer Ballwerfer für Hunde
+gid://shopify/Product/15450068189569	ok	Wasserdichte Wanderschuhe
+gid://shopify/Product/15454203904385	ok	Erweiterbarer Multifunktions-Rollkoffer 20 Zoll
