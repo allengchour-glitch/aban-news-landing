@@ -25,10 +25,20 @@
    «Preis unter 15» und «unter 3 Bildern» aus — beides sind Anzeigen-Qualitätsregeln. Merchant verlangt
    genau EIN `image_link` und kennt keine Preisuntergrenze. Google ist der einzige Kanal mit belegten
    Verkäufen (4 von 10 Bestellungen; TikTok: keine). **4'330 Produkte zurückgeholt** (Kanal 13'184 →
-   25'092 von 29'049 aktiven). Draussen bleiben Kostüm/Erotik/Refurb (Kontosperre-Risiko), Code-Titel
-   und die 328 ohne Lieferanten-SKU (Risikoklasse #1008). ⚠️ Die Gründe in `gfeed_score.py` stehen in
-   einer `elif`-Kette — **nur der erste zählt**; beim Zurückholen müssen die übrigen Bedingungen live
-   nachgeprüft werden (0 Bilder = sichere Merchant-Ablehnung).
+   25'092 von 29'049 aktiven). Draussen bleiben Kostüm/Erotik/Refurb (Kontosperre-Risiko) und
+   Code-Titel. ⚠️ Die Gründe in `gfeed_score.py` stehen in einer `elif`-Kette — **nur der erste
+   zählt**; beim Zurückholen müssen die übrigen Bedingungen live nachgeprüft werden (0 Bilder =
+   sichere Merchant-Ablehnung).
+6. **«Keine Lieferanten-SKU» war zu eng definiert — 845 von 919 Fehlalarmen.** Der Test
+   `sku.startswith(("CJ-","bb-","fortura-"))` kannte nur EINE der gültigen Formen. Wahrheit über
+   alle 29'046 aktiven Produkte: 472 Printful-POD (`5599797_4012`), 346 **CJ-Varianten-SKU**
+   (`CJYD…`/`CJLY…`/`CJLX…` — dieselbe Form, die `cj_versand_ch_guard.py` längst kennt), 15 eigene
+   Bündel (`LX-…`), 12 BigBuy in GROSSschrift (`BB-V0100921`) — alle bestellbar. **Wirklich
+   unprüfbar sind nur 74**, davon ~30 hand-kuratierte Altprodukte aus den ersten Sessions
+   (WATCH-001, WALLET-BLK, LED-001 …) und ~11 mit AliExpress-Attributstrings (`14:691;5:200000990`).
+   Dazwischen stehen echte Bewertungssieger (Herrenuhr 5,0★) — pauschales Draften wäre teuer.
+   Gemeinsamer Test jetzt in `gfeed_restore.lieferantenref()`; 269 Produkte zurückgeholt.
+   **Offen: die ~30 Altprodukte über CJ-Suche wieder an eine pid binden** (CJ-Punktebudget nötig).
 
 ## ⚠️ CJ-Grind-Plateau-Falle (teuer gelernt 2026-07-29)
 Wenn der CJ-Ledger flach steht, ist es MEIST **keine** Token-/Punkte-Panne — Token prüfen zeigt oft `code:200`,

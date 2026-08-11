@@ -6315,3 +6315,9 @@ gid://shopify/Product/15449096192385	38->0	Bodycon Maxikleid mit V-Ausschnitt un
 gid://shopify/Product/15449096487297	9->0	Retro Halterneck Minikleid mit Blumenstickerei
 gid://shopify/Product/15449096782209	28->0	Kurzes Kapuzen-Sweatshirt für Damen
 gid://shopify/Product/15449110905217	37->1	Spitzen-Langarmshirt aus Samt
+gid://shopify/Product/15449110937985	44->1	Locker sitzendes Baumwoll-Sweatshirt mit Wachsprint
+gid://shopify/Product/15449112740225	51->0	Winddichte Herrenjacke für Frühling und Herbst
+gid://shopify/Product/15449112936833	66->0	Freizeit Sakko im britischen Stil für Herren
+gid://shopify/Product/15449113231745	139->0	Herren Übergangsjacke mit Reverskragen
+gid://shopify/Product/15449113461121	43->2	Freizeit-Sakko aus Wildlederimitat
+gid://shopify/Product/15449113559425	34->0	Trenchcoat für Herren, diverse Farben
