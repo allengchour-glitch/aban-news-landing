@@ -20,7 +20,7 @@
 #      "brand": "LUXESTYLE.CH",
 #      "scenes": [
 #        { "text": "Premium-Mode aus der Schweiz", "seconds": 3, "bg": "#0b0b0c" },
-#        { "text": "Versandkostenfrei ab CHF 65", "seconds": 3, "image": "pfad.jpg" }
+#        { "text": "Versandkostenfrei ab CHF 50", "seconds": 3, "image": "pfad.jpg" }
 #      ]
 #    }
 # =============================================================================

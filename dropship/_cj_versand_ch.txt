@@ -574,3 +574,5 @@ gid://shopify/Product/15448839160193	nicht-versendbar	4er-Set klappbare Stühle,
 gid://shopify/Product/15449127059841	nicht-versendbar	Automatischer Ballwerfer für Hunde
 gid://shopify/Product/15450068189569	ok	Wasserdichte Wanderschuhe
 gid://shopify/Product/15454203904385	ok	Erweiterbarer Multifunktions-Rollkoffer 20 Zoll
+gid://shopify/Product/15450559447425	ok	Leichte Wander- & Sportschuhe für Herren
+gid://shopify/Product/15450041057665	ok	Schnürstiefel für Herren

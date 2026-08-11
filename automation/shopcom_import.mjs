@@ -133,10 +133,10 @@ async function img200(url) {
     if (!(await img200(r.img))) { console.log('· Bild tot:', r.name.slice(0,50)); continue; }
     const title = r.name.replace(/\s+/g,' ').trim().slice(0, 90);
     const tags = [...new Set(['shopcom','dropship','ch-lager','blitzversand','schweiz-versand','neu', ...catTags(title)])];
-    const desc = `<p>${(r.desc || title)}</p><ul><li>🇨🇭 <strong>Blitzversand aus dem Schweizer Lager</strong> – Lieferung in 1–3 Werktagen</li><li>📦 Gratis-Versand ab CHF 65</li><li>↩️ 30 Tage Rückgaberecht</li><li>🔒 Kauf auf Rechnung mit Klarna · TWINT · Karten · PayPal · Apple Pay</li><li>💬 Schweizer Support: info@luxestyle.ch</li></ul>`;
+    const desc = `<p>${(r.desc || title)}</p><ul><li>🇨🇭 <strong>Blitzversand aus dem Schweizer Lager</strong> – Lieferung in 1–3 Werktagen</li><li>📦 Gratis-Versand ab CHF 50</li><li>↩️ 30 Tage Rückgaberecht</li><li>🔒 Kauf auf Rechnung mit Klarna · TWINT · Karten · PayPal · Apple Pay</li><li>💬 Schweizer Support: info@luxestyle.ch</li></ul>`;
     if (DRY) { console.log(`[DRY] ${title} | VK ${vk} | Typ ${shopcomType(title)} | Tags ${tags.join(',')}`); made++; continue; }
     const input = { title, productType: shopcomType(title), vendor: 'LuxeStyle', status: 'ACTIVE', tags, descriptionHtml: desc,
-      seo: { title: `${title} | LuxeStyle`.slice(0,70), description: `${title} – Blitzversand aus dem Schweizer Lager, Gratis-Versand ab CHF 65.`.slice(0,320) },
+      seo: { title: `${title} | LuxeStyle`.slice(0,70), description: `${title} – Blitzversand aus dem Schweizer Lager, Gratis-Versand ab CHF 50.`.slice(0,320) },
       productOptions: [{ name: 'Titel', values: [{ name: 'Standard' }] }],
       variants: [{ optionValues: [{ optionName: 'Titel', name: 'Standard' }], price: vk.toFixed(2), barcode: r.ean || undefined,
         inventoryItem: { sku: `shopcom-${r.art}`.slice(0,70), tracked: true }, inventoryPolicy: 'DENY',

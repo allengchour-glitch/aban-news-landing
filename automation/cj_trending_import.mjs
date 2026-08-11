@@ -145,7 +145,7 @@ async function attachVideo(st,productId,vurl,cjpid){
  }catch{}
 }
 
-const TRUST=`<div style="background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;"><strong>\u{1F6E1}️ Sorglos shoppen:</strong> ✅ Geprüfte Qualität · \u{1F69A} Lieferung ca. 10–20 Tage · \u{1F504} 30 Tage Rückgabe · \u{1F1E8}\u{1F1ED} Schweizer Shop · \u{1F4B3} TWINT, Karte & Klarna.</div>\n<p>Gratis-Versand ab CHF 65 · <strong>–10 % mit Code WELCOME10</strong></p>`;
+const TRUST=`<div style="background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;"><strong>\u{1F6E1}️ Sorglos shoppen:</strong> ✅ Geprüfte Qualität · \u{1F69A} Lieferung ca. 10–20 Tage · \u{1F504} 30 Tage Rückgabe · \u{1F1E8}\u{1F1ED} Schweizer Shop · \u{1F4B3} TWINT, Karte & Klarna.</div>\n<p>Gratis-Versand ab CHF 50 · <strong>–10 % mit Code WELCOME10</strong></p>`;
 
 async function gemini(nameEn,feats,kat){
  const prompt=`Du textest für einen Schweizer Beauty-Shop. Aus dem englischen Produktnamen (und Feature-Text) mache:
@@ -257,7 +257,7 @@ for(const p of cand){
  const variants=fash?fash.variants:[{optionValues:[{optionName:'Variante',name:'Standard'}],price:chf(p.sellPrice),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false},inventoryPolicy:'CONTINUE'}];
  const input={title,handle:slug,productType:'Trend-Gadget',vendor:'LuxeStyle',status:'ACTIVE',
   tags:VIDEO_ONLY?['trend','viral','video-hit','cj-video','cj-real','dropship','neu']:['trend','viral','video-hit','cj-real','dropship','neu'],descriptionHtml:html,
-  seo:{title:(title+' | LuxeStyle CH').slice(0,70),description:(`${title} – der Trend-Hit bei LuxeStyle Schweiz. Gratis-Versand ab CHF 65, 30 Tage Rückgabe.`).slice(0,320)},
+  seo:{title:(title+' | LuxeStyle CH').slice(0,70),description:(`${title} – der Trend-Hit bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.`).slice(0,320)},
   productOptions,variants,files:[{originalSource:imgs[0],contentType:'IMAGE'}]};
  // Dubletten-Wache: gleicher Titel schon aktiv? → überspringen (Lieferant listet gleiche Artikel mehrfach)
  const dq=await sgql(st,`query($q:String!){products(first:1,query:$q){edges{node{id}}}}`,{q:`title:"${title.replace(/"/g,'')}" status:active`});

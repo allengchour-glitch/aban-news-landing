@@ -203,7 +203,7 @@ for (const rec of recs.slice(0, LIMIT)) {
   const desc = `<p>${marketing}</p>${specTable}${veNote}`
     + `<h4>Warum bei LuxeStyle kaufen?</h4><ul>`
     + `<li>🇨🇭 <strong>Versand aus der Schweiz</strong> – Lieferung in nur 1–2 Werktagen (DPD)</li>`
-    + `<li>📦 Gratis-Versand ab CHF 65</li>`
+    + `<li>📦 Gratis-Versand ab CHF 50</li>`
     + `<li>↩️ 30 Tage Rückgaberecht</li>`
     + `<li>🔒 Kauf auf Rechnung mit Klarna · TWINT · Karten · PayPal · Apple Pay</li>`
     + `<li>💬 Schweizer Support: info@luxestyle.ch</li></ul>`;
@@ -212,7 +212,7 @@ for (const rec of recs.slice(0, LIMIT)) {
     ...fortCatTags(rec['Grp-Bez'], rec['Kategorie'], title), ...catTags(title)])];
   const input = {
     title, handle: slug, productType: forturaType(title), vendor: 'LuxeStyle', status: 'ACTIVE', tags, descriptionHtml: desc,
-    seo: { title: `${title} | LuxeStyle`.slice(0,70), description: `${title} – schnelle CH-Lieferung aus der Schweiz, Gratis-Versand ab CHF 65.`.slice(0,320) },
+    seo: { title: `${title} | LuxeStyle`.slice(0,70), description: `${title} – schnelle CH-Lieferung aus der Schweiz, Gratis-Versand ab CHF 50.`.slice(0,320) },
     productOptions: [{ name: 'Titel', values: [{ name: 'Standard' }] }],
     variants: [{ optionValues: [{ optionName: 'Titel', name: 'Standard' }], price: price.toFixed(2),
       inventoryItem: { sku: `fortura-${art}`.slice(0,70), tracked: true }, inventoryPolicy: 'DENY',
