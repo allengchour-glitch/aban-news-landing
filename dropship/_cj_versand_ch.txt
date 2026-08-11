@@ -539,3 +539,10 @@ gid://shopify/Product/15455656411521	nicht-versendbar	Portables Outdoor Luftzelt
 gid://shopify/Product/15466641523073	nicht-versendbar	Gras-Hacker
 gid://shopify/Product/15470368981377	nicht-versendbar	Faltbarer Gartenschirm 2.5m
 gid://shopify/Product/15479402561921	ok	Performance Drum- und Perkussionsmikrofon
+gid://shopify/Product/15484606316929	nicht-versendbar	Business-Rollkoffer mit Aluminiumrahmen
+gid://shopify/Product/15493865013633	ok	Waben-Bratpfanne aus Edelstahl, doppelseitig
+gid://shopify/Product/15452679569793	nicht-versendbar	Misting-Fan mit 5 Funktionen
+gid://shopify/Product/15454197776769	ok	Mini-Handheld-Scanner mit Bildschirm und WLAN
+gid://shopify/Product/15454766170497	ok	Herren-Automatic-Mechanik-Uhr
+gid://shopify/Product/15481681838465	ok	Kabelloses Ansteckmikrofon für Mobilgeräte
+gid://shopify/Product/15493858328961	ok	Grosser, multifunktionaler Reise-Rucksack
