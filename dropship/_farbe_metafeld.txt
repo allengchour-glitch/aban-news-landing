@@ -111,3 +111,6 @@ gid://shopify/Product/15484389982593	Mehrfarbig
 gid://shopify/Product/15484390441345	Gold
 gid://shopify/Product/15494119522689	Transparent
 gid://shopify/Product/15494269960577	Braun
+gid://shopify/Product/15494854902145	Violett
+gid://shopify/Product/15494856278401	Silber
+gid://shopify/Product/15494892945793	Mehrfarbig
