@@ -167,6 +167,11 @@ NACH_TYP = {
 }
 
 
+SCHUHWERK = re.compile(r'\b\w*(schuhe?|stiefel|sandalen|slipper|pantoffeln)\b', re.I)
+KLEIDUNG = re.compile(r'\b\w*(jacke|m[üu]tze|hose|pullover|pulli|schal|handschuh\w*|socken|'
+                      r'shirt|kleid|mantel|weste|hemd|hoodie|str[üu]mpfe|stiefel|sandalen)\b', re.I)
+
+
 def kategorie(titel, tags, typ=None):
     titel = titel or ""
     for muster, pfad in VORRANG:
@@ -180,7 +185,17 @@ def kategorie(titel, tags, typ=None):
         if sperre and sperre.search(titel):
             continue
         return pfad
-    return NACH_TYP.get((typ or "").strip())
+    typ = (typ or "").strip()
+    # ⚠️ Auch die Warengruppe irrt. Unter «Spielzeug & Spiele» stehen acht Kleidungsstücke —
+    # «Plüschjacke», «Plüschmütze Panda», «Baby-Schuhe mit Plüschfutter». Das Wort «Plüsch»
+    # hat sie dorthin sortiert, nicht ihr Zweck. Eine Jacke als «Toys» anzubieten, spielt sie
+    # in den falschen Suchen aus. Das Kleidungswort im Titel sticht deshalb die Warengruppe.
+    if typ == "Spielzeug & Spiele":
+        if SCHUHWERK.search(titel):
+            return "Apparel & Accessories > Shoes"
+        if KLEIDUNG.search(titel):
+            return "Apparel & Accessories > Clothing"
+    return NACH_TYP.get(typ)
 
 
 def main():

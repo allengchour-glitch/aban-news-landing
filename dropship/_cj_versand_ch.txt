@@ -484,3 +484,11 @@ gid://shopify/Product/15464375091585	ok	Tarnweste Set
 gid://shopify/Product/15479340663169	ok	Full-HD Mini-Beamer mit Autofokus
 gid://shopify/Product/15453783884161	nicht-versendbar	Katzenkletterwand
 gid://shopify/Product/15454249091457	ok	Grosses Reise-Rucksack für Unisex
+gid://shopify/Product/15481840927105	nicht-versendbar	Magsafe Powerbank 30W Fast Charge
+gid://shopify/Product/15493810192769	nicht-versendbar	Bohemian Geschirr-Set für Suppe und Fisch
+gid://shopify/Product/15447869751681	nicht-versendbar	Solar Power Lithium-Batterie
+gid://shopify/Product/15448589009281	ok	Leinen-Hemdblusenkleid mit Taillengürtel
+gid://shopify/Product/15448720441729	ok	Herren Kaschmir-Kurzmantel Doubleface
+gid://shopify/Product/15450783285633	nicht-versendbar	Fussballtor mit Torwand 240x92x150 cm
+gid://shopify/Product/15450840695169	nicht-versendbar	Radiatorenverkleidung aus Kiefernholz
+gid://shopify/Product/15450844987777	nicht-versendbar	Gartenofen 35x aus Cortenstahl
