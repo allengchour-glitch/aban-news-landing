@@ -12693,3 +12693,13 @@ gid://shopify/Product/15453809607041	65->50
 gid://shopify/Product/15453809639809	65->50
 gid://shopify/Product/15453809672577	65->50
 gid://shopify/Product/15453809705345	65->50
+gid://shopify/Product/15453809738113	65->50
+gid://shopify/Product/15453809770881	65->50
+gid://shopify/Product/15453809803649	65->50
+gid://shopify/Product/15453809836417	65->50
+gid://shopify/Product/15453809869185	65->50
+gid://shopify/Product/15453809901953	65->50
+gid://shopify/Product/15453809934721	65->50
+gid://shopify/Product/15453809967489	65->50
+gid://shopify/Product/15453810000257	65->50
+gid://shopify/Product/15453810065793	65->50
