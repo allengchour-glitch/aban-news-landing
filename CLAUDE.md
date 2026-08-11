@@ -75,6 +75,30 @@ unveröffentlichten Grossen (`uhren-herren` 543, `beauty-duefte` 1290, `damen-ja
 nicht freischalten. `schule-buro` war live mit **1** Produkt mitten im Schulanfang → auf Smart-Regel
 `schule-buero` umgestellt, 27 Produkte (`automation/schule_buero_fuellen.py`).
 
+## 🧨 URSACHEN statt Symptome (20-Agenten-Audit, 2026-08-11)
+Ein Fan-out über 20 Prüfdimensionen auf einem lokalen Voll-Export (`/tmp/export.jsonl`, 51'791 Zeilen)
+fand drei Fehler, die **täglich neu entstanden**, weil nur das Ergebnis geputzt wurde, nie die Quelle:
+1. **«Gratis-Versand ab CHF 65» war in 12 Importern fest verdrahtet** (24 Stellen). `seo_versandschwelle_fix.py`
+   korrigierte sie, der CJ-Grind legte täglich neue an — 4'514 der Betroffenen stammten aus August, also
+   NACH dem Korrekturlauf. Quelle korrigiert; Runner neu gestartet (alter Code lebt sonst im Speicher weiter).
+2. **`versand_widerspruch_fix.py` schrieb CHF 50 → 65 ZURÜCK.** Zwei Reiniger mit gegensätzlichem Ziel:
+   je nachdem, wer zuletzt lief, stand im Shop mal das eine, mal das andere. Richtung umgedreht.
+   **Regel: Bei jeder Textregel prüfen, ob ein anderer Reiniger dieselbe Stelle gegenläufig anfasst.**
+3. **`condition` fehlte bei ALLEN neu importierten Produkten** (1'856 von 1'856 am 11.08.). Die Backfill-
+   Skripte unter `automation/google_feed/` laufen einmalig; was der Importer nicht mitschreibt, fehlt am
+   nächsten Tag wieder. Jetzt setzt `cj_category_fill.mjs` condition=new + color aus der Farb-Option mit.
+   Dazu: der Material-Extraktor griff über das Materialwort hinaus («Polyester **Style**» 174×,
+   «Plastic **Packing list**» 73×) — 4'566 von 4'924 Werten waren Müll. Jetzt nur noch das Materialwort.
+4. **Bild-Quittung vor dem Veröffentlichen.** «Outdoor Camping Gerades Messer» stand live im Shop UND im
+   Google-Kanal mit 7 Medien im Status FAILED und **keinem** sichtbaren Bild (`mediaCount`>0, aber
+   `featuredMedia`=null — daran erkennt man es im Export). Importer publiziert jetzt nur mit ≥1 READY-Bild.
+5. **1'084 Produkte in den Google-Kanal nachgezogen** (`automation/google_kanal_nachziehen.py`). Von 3'686
+   aktiven Nicht-Google-Produkten bleiben 2'602 bewusst draussen: 2'435 heikel (Kostüm/Erotik/Refurb/Messer
+   — **auch Shisha/Vape/Tabak**, der erste Entwurf hätte eine Shisha für CHF 104.90 publiziert), 95 Code im
+   Titel, 72 ohne Lieferanten-SKU.
+⚠️ **Der Export ist ein Schnappschuss.** Agenten meldeten 7'680 falsche Versandschwellen — live waren die
+Stichproben längst korrigiert, weil ein Reiniger parallel lief. Befunde gegen die Live-Daten gegenprüfen.
+
 ## ✅ Geprüft und SAUBER (2026-08-11 — nicht erneut durchkämmen)
 - **29'225 aktive Produkte:** 0 ohne Bild, 0 ohne Preis, 0 ohne Beschreibung. Produkt-SEO-Beschreibung
   fehlt bei **5**. (SEO-*Titel* fehlt bei 24'190 — das ist KEIN Mangel: Shopifys Vorgabe
