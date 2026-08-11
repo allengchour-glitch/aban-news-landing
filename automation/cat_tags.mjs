@@ -2,15 +2,25 @@
 // (DE-Titel + EN-Name + Suchbegriff) auf die Tags, die die Smart-Collections wirklich matchen.
 // Wortgrenzen beachten (GEHIRN 9b: kurze Wörter wie hut/ring/fan verankert, sonst Schutz/Reinigung/Elefant-Falle).
 // Nur EXISTIERENDE Collection-Tags verwenden (siehe /tmp/colls.json Taxonomie).
+// ⚠️ ZWEI KOMPOSITUM-FALLEN, die 20 Spielzeugfahrzeuge falsch einsortiert haben (11.08.2026):
+//   «Anhänger»  → Schmuck-Anhänger UND Traktor-Anhänger. 11 BRUDER-/John-Deere-/Fendt-Modelle
+//                 landeten so in der Halsketten-Kollektion.
+//   «Cat»       → Katze UND Caterpillar. 9 Bagger und Kettendozer galten als Haustierbedarf.
+// Beides sind keine Regex-Fehler im engeren Sinn — die Wörter sind wirklich mehrdeutig. Nur
+// der Zusammenhang entscheidet, und der steht im Titel. Trifft eines dieser Muster, wird das
+// betroffene Schlagwort übersprungen (Regel 9b: deutsche Wortformen mitdenken).
+const FAHRZEUG = /traktor|bagger|lkw|kipper|dozer|lader|schlepper|maehdrescher|bruder|john deere|fendt|claas|case ih|new holland|caterpillar|bworld|roadmax|beregnung|frontlader|teleskoplader/;
+
 export function catTags(text) {
   const s = ' ' + (text || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '') + ' ';
+  const istFahrzeug = FAHRZEUG.test(s);
   const out = new Set();
   const R = [
     // Schmuck
     [/ohrring|ohrhanger|creol|creyol|ohrstecker|earring/,        ['ohrringe', 'schmuck', 'damen']],
     [/armband(?!uhr)|armreif|bracelet|\banklet\b|fusskett/,      ['kategorie-armband', 'schmuck']],
     [/armbanduhr|damenuhr|herrenuhr|kinderuhr|unisex.?uhr|\buhr\b|\bwatch\b|smartwatch|wanduhr|tischuhr|wecker/, ['uhr', 'schmuck']],
-    [/halskette|\bkette\b|necklace|anhanger|collier|choker|\btassel\b/, ['kategorie-halskette', 'schmuck']],
+    [istFahrzeug ? /halskette|necklace|collier|choker/ : /halskette|\bkette\b|necklace|anhanger|collier|choker|\btassel\b/, ['kategorie-halskette', 'schmuck']],
     [/\bring\b|siegelring|damenring|herrenring|verlobungsring|ehering/, ['schmuck', 'damen']],
     [/perlen|pearl/,                                             ['schmuck', 'perlen']],
     // Eyewear
@@ -47,7 +57,7 @@ export function catTags(text) {
     [/\bauto\b|\bkfz\b|autozubehor/,                            ['auto']],
     [/\bhandy\b|\bphone\b|telefon|airpod|kopfhorer|earbud|ladegerat|ladekabel|smartwatch/, ['gadget']],
     // Haustier / Baby
-    [/\bhund\b|\bkatze\b|haustier|\bdog\b|\bcat\b|\bpet\b/,     ['haustier']],
+    [istFahrzeug ? /\bhund\b|\bkatze\b|haustier/ : /\bhund\b|\bkatze\b|haustier|\bdog\b|\bcat\b|\bpet\b/,     ['haustier']],
     [/\bbaby\b|kleinkind|sabbertuch|schnuller/,                 ['baby', 'kinder']],
     // Herren-Grooming
     [/bartschneider|haarschneider|rasierer|bartpflege|trimmer/, ['herren']],

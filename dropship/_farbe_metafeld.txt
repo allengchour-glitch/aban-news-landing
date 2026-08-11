@@ -114,3 +114,5 @@ gid://shopify/Product/15494269960577	Braun
 gid://shopify/Product/15494854902145	Violett
 gid://shopify/Product/15494856278401	Silber
 gid://shopify/Product/15494892945793	Mehrfarbig
+gid://shopify/Product/15494984630657	Türkis
+gid://shopify/Product/15495015661953	Mehrfarbig
