@@ -389,3 +389,4 @@ gid://shopify/Product/15453618176385	ok	Feldüberwachungskamera mit WLAN-APP & B
 gid://shopify/Product/15453898408321	nicht-versendbar	Reisegepäck-Trolley mit Code-Schloss
 gid://shopify/Product/15455796035969	ok	Männer Leder Crossbody Rucksack
 gid://shopify/Product/15458651308417	nicht-versendbar	Split-Typ Luftkühler für Haushalt & Büro
+gid://shopify/Product/15448657756545	ok	Commuter Cardigan Plus-Size Langarmshirt

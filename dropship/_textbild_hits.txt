@@ -6290,3 +6290,4 @@ gid://shopify/Product/15448588419457	11->0	Elegantes Midi-Kleid mit Rundhals und
 gid://shopify/Product/15448588517761	28->0	Doppelreihiges Schnürkleid für festliche Anlässe
 gid://shopify/Product/15448588583297	16->0	Elegantes V-Neck Langarm-Top mit Spitze
 gid://shopify/Product/15448588943745	56->0	Ombre Baumwollkleid mit One-Shoulder-Design
+gid://shopify/Product/15448641012097	10->0	High-Waist Capri Yoga-Hose mit Bauchkontrolle
