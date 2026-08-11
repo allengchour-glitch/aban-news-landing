@@ -2267,8 +2267,11 @@ function nextTurn(){
   if(allDone){showEnd();return;}
   var tries=0;
   do{G.turn=(G.turn+1)%G.players.length;if(G.turn===0)G.round++;tries++;}while(G.players[G.turn].done&&tries<8);
-  G.phase="idle";rollBtn.disabled=NET.on&&G.turn!==NET.my;
-  rollBtn.innerHTML=(NET.on&&G.turn!==NET.my)?"⏳ "+G.players[G.turn].name+" ist dran …":"🎡 Drehen!"; /* P5: unconditional — Solo-Start nach Koop-Runde blieb sonst auf „⏳ …" hängen */
+  /* 🩹 Am Robo-Sitz blieb der Knopf aktiv und stand auf „🎡 Drehen!" — ein Klick
+     wuerfelte fuer den Bot. `fremd` deckt Online-Fremdzuege UND lokale Bot-Zuege. */
+  var _fremd=(NET.on&&G.turn!==NET.my)||!!(G.players[G.turn]&&G.players[G.turn].bot);
+  G.phase="idle";rollBtn.disabled=_fremd;
+  rollBtn.innerHTML=_fremd?"⏳ "+G.players[G.turn].name+" ist dran …":"🎡 Drehen!"; /* P5: unconditional — Solo-Start nach Koop-Runde blieb sonst auf „⏳ …" hängen */
   updPlayers();updChapter();saveGame();
   if(G.players.length>1&&!G.players[G.turn].done){
     if(NET.on&&G.turn===NET.my)announce("🎲 DU BIST DRAN — Drehen!","#8fffb0",5200); /* Koop: eigener Zug unuebersehbar */

@@ -7014,7 +7014,11 @@ function updNpcs(dt,now){
     var pool=[];
     if(hh>=8&&hh<12)pool.push("postbote","postbote");
     if(hh>=13&&hh<18){pool.push("nachbarin","haendler");if(kinder.length)pool.push("nachbarskind","nachbarskind");}
-    pool.push("katze");
+    /* 🐈 Die Katze prueft beim Spawn MODELS.hund (sie ist ein grau getoenter
+       Hund-Klon) — das Modell lud aber nur beim Hundekauf. Ohne Hund im Haus
+       schlug jeder Katzenbesuch still fehl. Solange das Modell fehlt, kommt sie
+       gar nicht erst in den Besuchs-Pool; nachladen stoesst der Pool selbst an. */
+    if(MODELS.hund)pool.push("katze");else loadTH("hund",function(){});
     var _amt=polizeiPending?"polizist":(buergermeisterPending?"buergermeister":null); /* 🩹 Schwarm-P1: Amts-NPCs umgehen das <2-Gate; Flag fällt erst NACH echtem Spawn — sonst friert die Quest-Kette ein (questBusy bleibt true) */
     if(_amt){if(spawnNpc(_amt)){if(_amt==="polizist")polizeiPending=false;else buergermeisterPending=false;}}
     else if(pool.length&&npcs.length<2)spawnNpc(pool[(Math.random()*pool.length)|0]);}

@@ -4176,8 +4176,14 @@ function updDayNight(dt){
         if(!df){df=document.createElement("div");df.id="dawnFlash";df.style.cssText="position:fixed;inset:0;pointer-events:none;z-index:44;opacity:0;background:radial-gradient(ellipse at center,rgba(255,230,150,0) 30%,rgba(255,210,110,.4) 100%)";document.body.appendChild(df);}
         if(df.animate)df.animate([{opacity:0},{opacity:0.7},{opacity:0}],{duration:1100,easing:"ease-out"});})();
       if(typeof burst==="function")burst(player.position.x,player.position.y+2,player.position.z,0xffe08a,16);
-      if(NET.on&&NET.remote&&NET.remote.visible&&!NET.remoteDowned&&Math.hypot(NET.remote.position.x-player.position.x,NET.remote.position.z-player.position.z)<10){
-        bondGain(2,true);setTimeout(function(){announce("🤝 Gemeinsam überlebt!","#7dffc8");},1200);}
+      /* 🩹 Vorher: bondGain(2,true) — silent, auf BEIDEN Peers lokal. Bewerteten die
+         beiden Seiten Sichtbarkeit/Distanz unterschiedlich (oder war einer kurz
+         am Boden), liefen die Bandstufen und damit die Max-HP still auseinander.
+         Jetzt loest nur der Host aus, NICHT silent — bondGain sendet {t:"bond"}
+         und traegt den Bonus beim Partner nach. remoteDowned zaehlt nicht mehr:
+         am Boden ist nicht tot, ueberlebt haben beide. */
+      if(NET.on&&NET.role==="host"&&NET.remote&&NET.remote.visible&&Math.hypot(NET.remote.position.x-player.position.x,NET.remote.position.z-player.position.z)<10){
+        bondGain(2);setTimeout(function(){announce("🤝 Gemeinsam überlebt!","#7dffc8");},1200);}
       try{if(day>(window._runRecDay||0)&&(window._runRecDay||0)>0){window._runRecDay=Infinity; /* 🏆 Rekord nur EINMAL pro Lauf feiern */
         setTimeout(function(){announce("🏆 NEUER REKORD — Tag "+day+"! 🌟","#ffd166");inv.crystal+=3;invUpd();},1600);}}catch(e){}
       setTimeout(function(){if(typeof npcs!=="undefined"&&npcs.length)announce("🎁 Die Dorfbewohner haben neue Geschenke für dich!","#8affb0");},5200);

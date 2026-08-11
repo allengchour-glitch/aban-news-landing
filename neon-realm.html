@@ -603,7 +603,9 @@ function freshState(){return {
   quests:{},qstage:0,obel:[false,false,false],bossDead:false,
   ach:{},kills:0,shardsEarned:0,legFound:0,dungeonRuns:0,
   t:0,px:0,pz:14,day:0};}
-function saveGame(){if(!G)return;if(inDungeon){G.px=portal.x;G.pz=portal.z+6;}else{G.px=player.position.x;G.pz=player.position.z;}lsSet(SAVE_KEY,JSON.stringify(G));}
+function saveGame(){if(!G)return;if(inDungeon){G.px=portal.x;G.pz=portal.z+6;}else{G.px=player.position.x;G.pz=player.position.z;}
+  G.seraphCD=seraphCD;   /* 🩹 sonst kann der Weltboss nach jedem Neuladen sofort wieder erscheinen und legendaere Beute liefern */
+  lsSet(SAVE_KEY,JSON.stringify(G));}
 function loadGame(){var raw=lsGet(SAVE_KEY);if(!raw)return null;try{var s=JSON.parse(raw);return (s&&s.lvl)?s:null;}catch(e){return null;}}
 
 // ===================== Eingabe =====================
@@ -2062,6 +2064,7 @@ function begin(){
   G.ach=G.ach||{};G.kills=G.kills||0;G.shardsEarned=G.shardsEarned||0;G.legFound=G.legFound||0;G.dungeonRuns=G.dungeonRuns||0;
   G.hp=Math.min(G.hp,playerMaxHp());G.en=Math.min(G.en,playerMaxEn()); // Klassen-Wechsel: alte Saves sauber clampen
   if(G.hp<=0){G.hp=playerMaxHp();G.px=0;G.pz=14;} // Tod + Neuladen: sonst erwacht man mit 0 HP in der Todesschleife
+  seraphCD=G.seraphCD||0;   /* 🩹 Weltboss-Cooldown wiederherstellen (Gegenstueck zu saveGame) */
   // Save → Weltzustand: Obelisken + Zitadellen-Barriere wiederherstellen (Literale stehen sonst nach Neuladen wieder auf aus/versiegelt)
   if(G.obel)for(var oi=0;oi<obelisks.length;oi++)obelisks[oi].on=!!G.obel[oi];
   ZONES[4].locked=!(G.obel&&G.obel.filter(Boolean).length>=3);
