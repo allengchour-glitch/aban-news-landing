@@ -431,3 +431,18 @@ gid://shopify/Product/15493929075073	CJ-2412200823581610700	Kaffee Tamper 58mm A
 gid://shopify/Product/15493929271681	CJ-2412200258011600100	Magnetische Teetasse mit Sieb, 600 ml
 gid://shopify/Product/15493929566593	CJ-2412180831101610100	Mini-Mixer für frische Säfte
 gid://shopify/Product/15493929959809	CJ-1790300764779323392	Geschmiedete Drachen-Machete
+gid://shopify/Product/15494117228929	CJ-2407180330461627100	Vielseitiger 45L Fitness Rucksack
+gid://shopify/Product/15494118867329	CJ-2407121610171617700	Business-Reisetasche für Herren, Canvas
+gid://shopify/Product/15494119784833	CJ-2407120925501619700	Mesh Rucksack Transparent und schlicht
+gid://shopify/Product/15494120735105	CJ-2407111004261605400	Business Rucksack mit Hartschale
+gid://shopify/Product/15494121423233	CJ-2407070649421624100	Business Laptop Rucksack – Elegant Schwarz
+gid://shopify/Product/15494122766721	CJ-2407051441031608300	Faltbare Sporttasche für leichte Wanderungen
+gid://shopify/Product/15494124405121	CJ-2407040331411613100	Trolley-Schulranzen mit sechs Rollen
+gid://shopify/Product/15494125289857	CJ-2407021008371621800	Outdoor Rucksack für Uni und Reisen (20-35L)
+gid://shopify/Product/15494222676353	CJ-1797963252429758464	Lederrucksack
+gid://shopify/Product/15494222905729	CJ-1797857925147406336	Business Commuter Laptop Rucksack
+gid://shopify/Product/15494223167873	CJ-1797472250543738880	Handtasche aus Rindsleder mit Reissverschluss
+gid://shopify/Product/15494223430017	CJ-1796094118976827392	Retro Umhängetasche aus Crazy Horse Leder
+gid://shopify/Product/15494223561089	CJ-1795753928932470784	Holografischer 3D-Rucksack mit LED-Display
+gid://shopify/Product/15494223888769	CJ-1795690367518511104	Shiralee Outdoor Rucksack
+gid://shopify/Product/15494224183681	CJ-1794311371308408832	Sportlicher Reise-Rucksack

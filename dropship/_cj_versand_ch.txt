@@ -450,3 +450,5 @@ gid://shopify/Product/15446024192385	nicht-versendbar	Stehender Grill-Organizer 
 gid://shopify/Product/15448937202049	nicht-versendbar	Stuhl-Katzenbett aus Holz
 gid://shopify/Product/15481681871233	ok	Drahtloses Ansteckmikrofon mit Rauschunterdrückung
 gid://shopify/Product/15493717033345	ok	Klassische Leucht-Automatikuhr mit Saphirglas
+gid://shopify/Product/15449171689857	ok	Moissanit-Ring S925 Silber, Sonnenblumen-Halo, Platin
+gid://shopify/Product/15449177588097	nicht-versendbar	Gold Wandspiegel mit Perlenrahmen

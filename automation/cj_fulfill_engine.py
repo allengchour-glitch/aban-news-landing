@@ -144,6 +144,40 @@ def fulfillen(fo_id, track, provider, logistic):
     return (r.get("data") or {}).get("fulfillmentCreateV2") or {}
 
 
+def schatten_warnen(cjo):
+    """Meldet Doppelgänger-Bestellungen, die nicht von diesem Automaten stammen.
+
+    GEFUNDEN AM 11.08.2026: Bei CJ liegen zu JEDER Shopify-Bestellung seit #1001 zwei Aufträge —
+    einmal unter der Shopify-Nummer («#1012») und einmal unter der Nummer dieses Automaten
+    («LX1012»). Die «#»-Aufträge legt die CJ-eigene Shopify-Anbindung an, nicht dieses Skript.
+
+        #1012    CREATED    39.82 USD   ohne Tracking      ← Schatten, zahlbar
+        LX1012   UNSHIPPED  39.82 USD   YT2622100705040170 ← der echte, bezahlte Auftrag
+
+    Bezahlt werden sie hier nicht: `cj_bestellungen()` legt sie unter der Nummer OHNE «#» ab
+    («1012»), gesucht wird aber «LX1012». Der Automat greift also am Schatten vorbei. Gefährlich
+    wird es, wenn jemand in der CJ-Konsole den zahlbaren Schatten begleicht: dann geht dieselbe
+    Ware zweimal an dieselbe Kundin, und der Shop zahlt zweimal.
+
+    Gelöscht wird hier nichts — das sind Aufträge beim Lieferanten, und ein Skript, das
+    Bestellungen still entfernt, ist gefährlicher als eine Warnung. Gemeldet wird nur, was
+    tatsächlich Geld kosten könnte: ein Schatten MIT Preis.
+    """
+    riskant = []
+    for num, o in cjo.items():
+        if num.startswith("LX") or not str(o.get("orderAmount") or "").strip():
+            continue
+        if float(o.get("orderAmount") or 0) <= 0:
+            continue
+        if f"LX{num}" in cjo:
+            riskant.append((num, float(o["orderAmount"])))
+    if riskant:
+        print("  ⚠️ SCHATTEN-BESTELLUNGEN bei CJ (von der CJ-Shopify-App, zahlbar!):", flush=True)
+        for num, betrag in riskant:
+            print(f"     #{num}: {betrag:.2f} USD — NICHT bezahlen, LX{num} ist der echte "
+                  f"Auftrag. In der CJ-Konsole löschen.", flush=True)
+
+
 def main():
     if not os.path.exists(LEDGER):
         print("kein Ledger — erst cj_order_engine.py laufen lassen"); return
@@ -151,6 +185,7 @@ def main():
     bal = guthaben()
     cjo = cj_bestellungen()
     print(f"CJ-Guthaben {bal:.2f} USD | {len(cjo)} CJ-Bestellungen | DRY={DRY}", flush=True)
+    schatten_warnen(cjo)
 
     for t in zeilen:
         name = t[0]                      # z.B. #1012
