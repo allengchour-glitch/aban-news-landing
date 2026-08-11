@@ -16972,3 +16972,5 @@ gid://shopify/Product/15460759568769	65->50
 gid://shopify/Product/15460759699841	65->50
 gid://shopify/Product/15460759798145	65->50
 gid://shopify/Product/15460760191361	65->50
+gid://shopify/Product/15460760289665	65->50
+gid://shopify/Product/15460760355201	65->50
