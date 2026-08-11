@@ -120,25 +120,33 @@ def main():
             print(f"     {t[:44]:<46} {', '.join(f'{k}={w}' for k, w in neu)}", flush=True)
         return
 
+    # ⚠️ Der Ledger merkt sich PRODUKT UND FELD, nicht nur das Produkt. Ein Produkt kann
+    # mehrere Felder brauchen; scheitert eines, muss genau dieses beim nächsten Lauf erneut
+    # dran sein. Ein Ledger nach Produkt-ID hätte den Rest stillschweigend übersprungen —
+    # dieselbe Falle wie beim Versand-Guard, der ein ungeprüftes «ok» merkte.
     done = set()
     if os.path.exists(LEDGER):
-        done = {l.split("\t")[0] for l in open(LEDGER)}
-    offen = [a for a in aufgaben if a[0] not in done]
-    print(f"noch offen: {len(offen)}", flush=True)
+        for l in open(LEDGER):
+            t = l.rstrip("\n").split("\t")
+            if len(t) >= 2:
+                done.add((t[0], t[1]))
+
+    felder = [{"ownerId": gid, "namespace": NS, "key": key,
+               "type": "single_line_text_field", "value": wert}
+              for gid, _, neu in aufgaben for key, wert in neu
+              if (gid, key) not in done]
+    print(f"noch offen: {len(felder)} Felder", flush=True)
 
     f = open(LEDGER, "a")
-    stapel, n = [], 0
-    for gid, titel, neu in offen:
-        for key, wert in neu:
-            stapel.append({"ownerId": gid, "namespace": NS, "key": key,
-                           "type": "single_line_text_field", "value": wert})
-        if len(stapel) >= 25:
-            n += schreiben(stapel, f)
-            stapel = []
-            if n % 500 < 25:
-                print(f"  … {n} Felder gesetzt", flush=True)
-    if stapel:
-        n += schreiben(stapel, f)
+    n = 0
+    # ⚠️ HART auf 25 begrenzen. Der erste Entwurf hängte erst alle Felder eines Produkts an
+    # und prüfte danach auf «>= 25» — so entstanden Stapel mit 26 oder 27 Einträgen, die
+    # Shopify komplett abwies («Exceeded the maximum metafields input limit of 25»). Die
+    # Felder waren damit still verloren; im Log stand nur eine Warnzeile zwischen Tausenden.
+    for i in range(0, len(felder), 25):
+        n += schreiben(felder[i:i + 25], f)
+        if i % 500 < 25:
+            print(f"  … {n} Felder gesetzt", flush=True)
     print(f"FERTIG: {n} Metafelder gesetzt")
 
 
