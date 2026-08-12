@@ -6354,3 +6354,4 @@ gid://shopify/Product/15450215022977	17->0	Lenkrad-Abdeckung
 gid://shopify/Product/15450215055745	10->0	Lenkradbezug Suede
 gid://shopify/Product/15450215088513	10->0	Lenkradbezug
 gid://shopify/Product/15450215186817	20->0	Lenkradbezug Holzprägung
+gid://shopify/Product/15466070311297	25->0	Elegantes A-Linien Midikleid mit V-Ausschnitt
