@@ -686,3 +686,6 @@ gid://shopify/Product/15495147225473	nicht-versendbar	5L Multikocher mit Timer
 gid://shopify/Product/15495144505729	nicht-versendbar	Automatischer Kochtopf 3L
 gid://shopify/Product/15495194378625	nicht-versendbar	Mandarin Duck Hot Pot & Elektro-Rechaud
 gid://shopify/Product/15495192969601	ok	Reisetasche aus Rindsleder für Herren
+gid://shopify/Product/15495234519425	nicht-versendbar	Inneres Loch Training Gleithammer Abziehwerkzeug
+gid://shopify/Product/15495232618881	nicht-versendbar	Gaming-PC-Gehäuse Glas Wasserkühlung Weiss
+gid://shopify/Product/15495226196353	nicht-versendbar	Kratzbaum «Cat Tower»
