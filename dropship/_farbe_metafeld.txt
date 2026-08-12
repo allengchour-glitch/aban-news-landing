@@ -117,3 +117,5 @@ gid://shopify/Product/15494892945793	Mehrfarbig
 gid://shopify/Product/15494984630657	Türkis
 gid://shopify/Product/15495015661953	Mehrfarbig
 gid://shopify/Product/15495027032449	Transparent
+gid://shopify/Product/15495110164865	Silber
+gid://shopify/Product/15495110590849	Mehrfarbig
