@@ -6802,3 +6802,5 @@ gid://shopify/Product/15495321584001	bereinigt
 gid://shopify/Product/15495321649537	bereinigt
 gid://shopify/Product/15495321747841	bereinigt
 gid://shopify/Product/15495321813377	bereinigt
+gid://shopify/Product/15495391641985	bereinigt
+gid://shopify/Product/15495392067969	bereinigt
