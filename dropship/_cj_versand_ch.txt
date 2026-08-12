@@ -689,3 +689,6 @@ gid://shopify/Product/15495192969601	ok	Reisetasche aus Rindsleder für Herren
 gid://shopify/Product/15495234519425	nicht-versendbar	Inneres Loch Training Gleithammer Abziehwerkzeug
 gid://shopify/Product/15495232618881	nicht-versendbar	Gaming-PC-Gehäuse Glas Wasserkühlung Weiss
 gid://shopify/Product/15495226196353	nicht-versendbar	Kratzbaum «Cat Tower»
+gid://shopify/Product/15495896465793	nicht-versendbar	Katzenbaum mit Kratzstamm und Haus
+gid://shopify/Product/15495783448961	nicht-versendbar	Massivholz Katzenbaum mit Kletterelementen
+gid://shopify/Product/15495785873793	nicht-versendbar	Kratzbaum «Regenwald» für Katzen
