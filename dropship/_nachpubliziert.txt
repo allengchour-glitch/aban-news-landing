@@ -70,3 +70,4 @@ gid://shopify/Product/15495065043329	farbgel-frosted-sealing-layer-15-ml-499072	
 gid://shopify/Product/15495065076097	memory-foam-gel-lendenkissen-fur-burostuhl-587776	Memory Foam Gel Lendenkissen für Bürostuhl
 gid://shopify/Product/15495074873729	transparentes-verlangerungsgel-fur-nagel-ed1334	Transparentes Verlängerungsgel für Nägel
 gid://shopify/Product/15495088243073	gw168-5g-fpv-drohne-mit-hd-kamera-fa3af6	GW168 5G FPV-Drohne mit HD-Kamera
+gid://shopify/Product/15495088275841	niche-vintage-chunky-soled-sneakers-629600	Niche Vintage Chunky-soled Sneakers
