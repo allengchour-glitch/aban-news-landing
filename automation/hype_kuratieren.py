@@ -38,9 +38,12 @@ LEDGER = "dropship/_hype_verlauf.txt"
 
 QUELLE = "Web-Recherche 12.08.2026 (TikTok-/Dropshipping-Trendberichte August 2026)"
 THEMEN = {
+    # ⚠️ «IPL» ohne Wortgrenze steckt in «L-IPL-iner»: der erste Lauf setzte einen
+    # «Peel-Off Lipliner» als Beauty-GERÄT auf die Startseite. Dieselbe Falle wie «rock» in
+    # «GT Line ROCK» aus dem Projektgedächtnis — bei Abkürzungen immer \b.
     "Beauty-Gerät": re.compile(
-        r'IPL|Mikrostrom|LED-Maske|Gesichtsreinigungsb[üu]rste|Dermaroller|Gua Sha|Jade Roller|'
-        r'Haarentfernungs', re.I),
+        r'\bIPL\b|Mikrostrom|LED-Maske|Gesichtsreinigungsb[üu]rste|Dermaroller|Gua Sha|'
+        r'Jade Roller|Haarentfernungs', re.I),
     "Hautpflege-Serum": re.compile(
         r'Schneckencreme|Snail|Serum|Ampullen|Retinol|Hyalurons[äa]ure', re.I),
     "Mini-Beamer": re.compile(r'Mini-?\s?(?:Beamer|Projektor)|Smart Mini Beamer', re.I),
@@ -52,6 +55,11 @@ THEMEN = {
 }
 # Warengruppen, die schon einmal aus der Startreihe genommen wurden.
 RAUS_TYP = {"Spielzeug & Spiele", "Partydeko & Ballone", "Kostüme & Verkleidung"}
+# Die Startseite ist die Fläche, die jede Besucherin ungefragt sieht — auch die, die mit einem
+# Kind daneben sitzt. Der erste Lauf hätte ein «Intim-Pflegeserum für Frauen» dorthin gestellt.
+# Das Produkt ist völlig in Ordnung, der Platz ist es nicht.
+NICHT_STARTSEITE = re.compile(r'Intim|Erotik|Vaginal|Menstruation|H[äa]morrhoid|Anti-?Pilz|'
+                              r'Nagelpilz|Warzen|Hemorrhoid', re.I)
 
 
 def gql(q, v=None):
@@ -164,7 +172,7 @@ def main():
         p = json.loads(zeile)
         if p["status"] != "ACTIVE" or not p.get("g"):
             continue
-        if (p.get("productType") or "") in RAUS_TYP:
+        if (p.get("productType") or "") in RAUS_TYP or NICHT_STARTSEITE.search(p["title"]):
             continue
         if (p.get("mediaCount") or {}).get("count", 0) < 2:
             continue
