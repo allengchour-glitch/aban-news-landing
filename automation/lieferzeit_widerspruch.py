@@ -31,8 +31,44 @@ LEDGER = "dropship/_lieferzeit_widerspruch.txt"
 
 # Nur Zusagen, die eine SCHNELLE Lieferung behaupten. Die Zeitspannen selbst (10–20 Tage)
 # bleiben unangetastet — sie sind die richtige Angabe.
-SCHNELL_SATZ = re.compile(r'[^.<>]*\b(?:Expresslieferung\s+innerhalb\s+von\s+\d+\s*Tag\w*|'
-                          r'sofort\s+lieferbar|sofort\s+verf[üu]gbar)\b[^.<>]*\.?', re.I)
+# ⚠️ Die WENDUNG entfernen, nicht den Satz. «Das Kleid ist sofort lieferbar und in den Grössen
+# S–XL erhältlich» enthält neben der falschen Zusage eine echte Information; wer den ganzen
+# Satz streicht, nimmt der Kundin die Grössenangabe mit. Genauso bei «Sie ist sofort lieferbar
+# und wird sorgfältig verpackt».
+LIEFERBAR = r'sofort\s+(?:lieferbar|verf[üu]gbar)'
+# Die Reihenfolge entscheidet, ob der Satz danach noch steht. «… ist sofort lieferbar UND WIRD
+# sorgfältig verpackt» braucht das «ist» nicht mehr (der zweite Teil bringt sein eigenes Verb
+# mit), «… ist sofort lieferbar UND IN den Grössen S–XL erhältlich» braucht es sehr wohl.
+SCHNELL_REGELN = [
+    (re.compile(r'\s*(?:ist|sind)\s+' + LIEFERBAR + r'\s+und\s+'
+                r'(?=(?:wird|werden|kann|k[öo]nnen|kommt|hat|haben|liegt|passt)\b)', re.I), ' '),
+    (re.compile(LIEFERBAR + r'\s+und\s+', re.I), ''),
+    (re.compile(r'\s*,?\s+und\s+' + LIEFERBAR, re.I), ''),
+    (re.compile(r'\s*(?:ist|sind)\s+' + LIEFERBAR, re.I), ''),
+    (re.compile(r'\s*' + LIEFERBAR, re.I), ''),
+    # Die Express-Zusage steht für sich allein — dort fällt der ganze Satz.
+    (re.compile(r'[^.<>]*\bExpresslieferung\s+innerhalb\s+von\s+\d+\s*Tag\w*[^.<>]*\.?', re.I), ''),
+]
+
+
+def schnell_weg(text):
+    """Gibt den Text unverändert zurück, wenn keine Regel greift — sonst geglättet.
+
+    ⚠️ Die Glättung DARF NICHT bedingungslos laufen. «\\s{2,}» → « » verändert praktisch jede
+    Beschreibung im Katalog; im ersten Anlauf meldete dieses Skript deshalb 5'718 «Fälle», von
+    denen 5'712 gar keine Schnellzusage enthielten. Der Vergleich «neu != alt» nützt nichts,
+    wenn schon das Werkzeug selbst jeden Text anfasst.
+    """
+    neu = text
+    for muster, ersatz in SCHNELL_REGELN:
+        neu = muster.sub(ersatz, neu)
+    if neu == text:
+        return text
+    neu = re.sub(r'\s{2,}', ' ', neu)
+    neu = re.sub(r'\s+([.,;:])', r'\1', neu)
+    # Der entfernte Zusatz hinterlässt sonst einen nackten Gedankenstrich am Zeilenende
+    # («Zigarettenhalter mit Band – </h3>»).
+    return re.sub(r'\s*[–—·-]\s*(?=</|$)', '', neu)
 SCHNELL_TITEL = re.compile(r'\s*[–—·-]?\s*\bSofort\s+Lieferbar\b\s*', re.I)
 
 
@@ -55,6 +91,10 @@ def gql(q, v=None):
     return {}
 
 
+def _neu_for_show(html):
+    return schnell_weg(html)
+
+
 def main():
     aufgaben = []
     for zeile in open(EXPORT):
@@ -65,18 +105,29 @@ def main():
         if "ch-lager" in tags:
             continue                       # dort stimmt die schnelle Zusage
         t, html = p["title"], (p.get("descriptionHtml") or "")
-        neu_html = SCHNELL_SATZ.sub("", html)
-        neu_html = re.sub(r'<li\b[^>]*>\s*</li>', '', neu_html)
-        neu_html = re.sub(r'<p\b[^>]*>\s*</p>', '', neu_html)
-        neu_html = re.sub(r'\s{2,}', ' ', neu_html)
+        # ⚠️ NUR AUFRÄUMEN, WO AUCH ETWAS ENTFERNT WURDE. Der erste Entwurf liess die
+        # Leerraum-Normalisierung («\s{2,}» → « ») und das Entfernen leerer Absätze
+        # bedingungslos laufen — und meldete daraufhin 5'734 «Widersprüche», von denen 5'728
+        # gar keine Schnellzusage enthielten. Sie hätten alle eine sinnlose Textänderung
+        # bekommen. Ein Reiniger, der jede Beschreibung anfasst, ist kein Reiniger.
+        neu_html = schnell_weg(html)
+        if neu_html != html:
+            neu_html = re.sub(r'<li\b[^>]*>\s*</li>', '', neu_html)
+            neu_html = re.sub(r'<p\b[^>]*>\s*</p>', '', neu_html)
+            neu_html = re.sub(r'\s{2,}', ' ', neu_html)
         neu_t = re.sub(r'\s{2,}', ' ', SCHNELL_TITEL.sub(' ', t)).strip(" ·-–—,")
         if neu_html != html or (neu_t != t and len(neu_t) >= 12):
             aufgaben.append((p["id"], t, neu_t if len(neu_t) >= 12 else t, html, neu_html))
 
     print(f"Widersprüchliche Lieferversprechen: {len(aufgaben)}", flush=True)
     for _, t, neu_t, html, _ in aufgaben:
-        m = SCHNELL_SATZ.search(html)
-        print(f"   {t[:42]:<44} weg: «{(m.group(0).strip() if m else '')[:44]}»", flush=True)
+        import difflib
+        a = re.sub(r'<[^>]+>', ' ', html)
+        b = re.sub(r'<[^>]+>', ' ', _neu_for_show(html))
+        print(f"   {t[:42]:<44}", flush=True)
+        for zeile in difflib.unified_diff(a.split('. '), b.split('. '), n=0, lineterm=''):
+            if zeile.startswith(('-', '+')) and not zeile.startswith(('---', '+++')):
+                print(f"      {zeile[0]} {zeile[1:].strip()[:78]}", flush=True)
         if neu_t != t:
             print(f"   {'':<44} Titel → «{neu_t[:44]}»", flush=True)
     if DRY or not aufgaben:
