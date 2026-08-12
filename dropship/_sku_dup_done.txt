@@ -493,3 +493,4 @@ gid://shopify/Product/15495105380737	CJ-1752148015403511808	Knochenbeil mit Kupf
 gid://shopify/Product/15495105544577	CJ-1748785014038335488	Geschmiedetes Edelstahl-Hackmesser
 gid://shopify/Product/15495105905025	CJ-1745796446013624320	Micro-Tech A5 Outdoor-Messer mit Multifunktion
 gid://shopify/Product/15495106003329	CJ-1742099742634553344	Drehbares Regal für 3D-Würfel-Mousseformen
+gid://shopify/Product/15495114654081	CJ-2410200525031604100	Hundelöwenmähne für Fasnacht und Fotoshooting

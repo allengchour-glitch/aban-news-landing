@@ -3967,3 +3967,8 @@ gid://shopify/Product/15478470148481	ok
 gid://shopify/Product/15478470082945	ok
 gid://shopify/Product/15478470017409	ok
 gid://shopify/Product/15478469951873	ok
+gid://shopify/Product/15478469886337	ok
+gid://shopify/Product/15478469788033	ok
+gid://shopify/Product/15478469689729	ok
+gid://shopify/Product/15478469525889	ok
+gid://shopify/Product/15478469394817	ok
