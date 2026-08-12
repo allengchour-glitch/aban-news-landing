@@ -684,3 +684,5 @@ gid://shopify/Product/15494642368897	ok	Naturholz Katzenkratzbaum mit Rattan-Nes
 gid://shopify/Product/15495155679617	nicht-versendbar	Hydraulischer Kabelschneider
 gid://shopify/Product/15495147225473	nicht-versendbar	5L Multikocher mit Timer
 gid://shopify/Product/15495144505729	nicht-versendbar	Automatischer Kochtopf 3L
+gid://shopify/Product/15495194378625	nicht-versendbar	Mandarin Duck Hot Pot & Elektro-Rechaud
+gid://shopify/Product/15495192969601	ok	Reisetasche aus Rindsleder für Herren
