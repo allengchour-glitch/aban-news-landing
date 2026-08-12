@@ -612,3 +612,14 @@ gid://shopify/Product/15449477742977	ok	Moissanite Ring Sterling Silber
 gid://shopify/Product/15450556105089	ok	Retro Skateboard-Schuh aus Rindsleder
 gid://shopify/Product/15452679864705	nicht-versendbar	Faltbares Campingwagen
 gid://shopify/Product/15454107959681	ok	Phototherapie-Gesundheitslampe
+gid://shopify/Product/15454501339521	ok	Infrarot-Therapieband für Tiere
+gid://shopify/Product/15455268962689	ok	Gestricktes T-Shirt Herren Kurzarm Rundhals
+gid://shopify/Product/15479625515393	nicht-versendbar	Universelles Sitzkissen mit hochelastischem Schwamm
+gid://shopify/Product/15492098982273	ok	Digitaler 6-in-1 pH-Meter Wassertester
+gid://shopify/Product/15446015443329	nicht-versendbar	Emaillierter Gusseisen-Topf mit 6 Quart
+gid://shopify/Product/15449099239809	ok	Gravity Shisha – Vielseitig & Kompakt
+gid://shopify/Product/15451902509441	nicht-versendbar	Outdoor Liegestuhl-Kissen, wasserfest
+gid://shopify/Product/15451903164801	nicht-versendbar	Outdoor Liegestuhl-Kissen · 183 × 53 cm
+gid://shopify/Product/15452676096385	ok	Rote Obstschale
+gid://shopify/Product/15454110712193	nicht-versendbar	Gusseiserne Grillpfanne
+gid://shopify/Product/15455657492865	nicht-versendbar	Kristall Whisky Gläser Set
