@@ -177,7 +177,50 @@ def kollektion_sichern():
     return cid
 
 
+def kontaktbogen():
+    """Baut ein Bildraster der aktuellen Reihe — zum Ansehen, bevor sie live geht."""
+    import os as _os
+    from PIL import Image, ImageDraw
+    d = gql('{c:collections(first:1,query:"handle:%s"){nodes{products(first:24)'
+            '{nodes{title featuredMedia{... on MediaImage{image{url}}}}}}}}' % HANDLE)
+    knoten = ((d.get("data") or {}).get("c") or {}).get("nodes") or []
+    if not knoten:
+        print("Kollektion nicht gefunden.", flush=True)
+        return
+    ps = knoten[0]["products"]["nodes"]
+    _os.makedirs("/tmp/hype", exist_ok=True)
+    bilder = []
+    for i, p in enumerate(ps):
+        u = ((p.get("featuredMedia") or {}).get("image") or {}).get("url")
+        if not u:
+            continue
+        f = f"/tmp/hype/{i:02d}.jpg"
+        subprocess.run(["curl", "-s", "--max-time", "40", "-o", f,
+                        u.split("?")[0] + "?width=500"])
+        bilder.append((f, p["title"]))
+    S, SPALTEN = 340, 4
+    zeilen = (len(bilder) + SPALTEN - 1) // SPALTEN
+    bl = Image.new("RGB", (SPALTEN * S, max(1, zeilen) * (S + 30)), "white")
+    zeichner = ImageDraw.Draw(bl)
+    for i, (f, t) in enumerate(bilder):
+        try:
+            im = Image.open(f).convert("RGB").resize((S, S))
+        except Exception:
+            continue
+        x, y = (i % SPALTEN) * S, (i // SPALTEN) * (S + 30)
+        bl.paste(im, (x, y))
+        zeichner.text((x + 4, y + S + 8), f"{i + 1}. {t[:44]}", fill="black")
+    bl.save("/tmp/hype_kontakt.png")
+    print(f"Kontaktbogen mit {len(bilder)} Bildern: /tmp/hype_kontakt.png\n"
+          f"→ ansehen! Wasserzeichen, Infografiken, Schaufensterpuppen und fremdsprachige\n"
+          f"  Bildtexte fallen nur hier auf. Untaugliche mit «{AUSGEMUSTERT}» markieren.",
+          flush=True)
+
+
 def main():
+    if os.environ.get("KONTAKT") == "1":
+        kontaktbogen()
+        return
     print(f"Quelle der Themen: {QUELLE}\n", flush=True)
     abgelaufene_raeumen()
 
@@ -193,8 +236,11 @@ def main():
         preis = float(p["priceRangeV2"]["minVariantPrice"]["amount"])
         if preis < 19:
             continue
-        if TAG in (p.get("tags") or []):
+        tags = p.get("tags") or []
+        if TAG in tags:
             continue                       # steht schon in der Reihe
+        if AUSGEMUSTERT in tags:
+            continue                       # Bild schon einmal als untauglich befunden
         for thema, muster in THEMEN.items():
             if muster.search(p["title"]):
                 kandidaten[thema].append(
@@ -221,6 +267,15 @@ def main():
     f = open(LEDGER, "a")
     n = 0
     for thema, gid, t, preis, _ in gewaehlt:
+        # ⚠️ LIVE GEGENPRÜFEN, nicht dem Export glauben. Der Export ist ein Schnappschuss;
+        # `hype-bild-schwach` wird nach einer Bildprüfung gesetzt, also fast immer NACH dem
+        # letzten Export. Ohne diese Abfrage holt der nächste Lauf genau die Produkte zurück,
+        # die man eben wegen ihres Bildes aussortiert hat.
+        d = gql('query($id:ID!){node(id:$id){... on Product{tags status}}}', {"id": gid})
+        knoten = (d.get("data") or {}).get("node") or {}
+        if AUSGEMUSTERT in (knoten.get("tags") or []) or knoten.get("status") != "ACTIVE":
+            print(f"   übersprungen (live): {t[:48]}", flush=True)
+            continue
         r = gql('mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}',
                 {"id": gid, "t": [TAG, "hype-seit-" + HEUTE]})
         if ((r.get("data") or {}).get("tagsAdd") or {}).get("userErrors"):
