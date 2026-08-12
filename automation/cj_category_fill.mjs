@@ -393,7 +393,17 @@ for(const [cat,label] of grp.cats){
      // Bekleidung ab, und sie steht hier ohnehin schon sauber übersetzt bereit.
      { const farbOpt=(productOptions||[]).find(o=>o.name==='Farbe');
        const ersteFarbe=farbOpt?.values?.[0]?.name;
-       if(ersteFarbe&&ersteFarbe.length<=40)
+       // ⚠️ Der Wert wurde bisher WÖRTLICH übernommen und nur auf LÄNGE geprüft. Bei CJ-Ware
+       // trägt die Option «Farbe» aber oft Grösse+Farbe, eine Stilnummer oder einen Rohcode —
+       // «Black-1XL» (25×), «Style 1-1 PC» (40×), «Amber-30X50cm», «1PC-Sponge brush»,
+       // «ESFY…». Alle sind kürzer als 40 Zeichen und rutschten durch. Ergebnis: 1'571 der
+       // gesetzten Farbwerte waren keine Farbe. Google filtert damit («Damenkleid schwarz») —
+       // ein falscher Wert macht das Produkt unauffindbar, ein leerer kostet nichts.
+       // Deshalb: nur schreiben, was ohne Ziffer, Grössenkürzel und Mengenwort auskommt.
+       const istFarbe=ersteFarbe&&ersteFarbe.length<=40
+         &&!/\d|\bStyle\b|\bPCS?\b|\bpair\b|\bSet\b|\bYards?\b|\bcm\b|\bmm\b|\bml\b|\bInch\b|\btype\b|Picture\s*Color|Random|Assorted/i.test(ersteFarbe)
+         &&!/^(?:XXS|XS|S|M|L|XL|XXL)\s*[-–\/]/i.test(ersteFarbe);
+       if(istFarbe)
          mf.push({namespace:'mm-google-shopping',key:'color',value:ersteFarbe,type:'single_line_text_field'}); }
      // Material NUR wenn ein echtes Material-Wort drinsteht (sonst greift der Regex Feldlabels wie «Material Name»)
      const MATWORDS=/baumwolle|cotton|polyester|leder|leather|metall|metal|silber|silver|gold|edelstahl|stainless|kunststoff|plastic|acryl|nylon|wolle|wool|seide|silk|leinen|linen|keramik|ceramic|holz|wood|glas|glass|zink|legierung|alloy|gummi|silikon|silicone|strick|fleece|denim|jeans|samt|velvet|spitze|lace/i;
