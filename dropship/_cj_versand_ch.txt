@@ -667,3 +667,17 @@ gid://shopify/Product/15448915018113	ok	Rock Biker Hosenträger im Postapokalyps
 gid://shopify/Product/15454641553793	ok	Automaticische Herrenuhr Edelstahlarmband 41 mm Gehäuse
 gid://shopify/Product/15455322734977	ok	Retro-Vollleder Herren-Rucksack
 gid://shopify/Product/15494467092865	ok	Reise-Rucksack aus echtem Leder
+gid://shopify/Product/15495139197313	nicht-versendbar	Lautloses Katzen-Laufrad aus Holz
+gid://shopify/Product/15495112130945	nicht-versendbar	Kratzbaum aus Stroh für Katzen
+gid://shopify/Product/15495112917377	nicht-versendbar	Nachttisch-Hundebett zum Selberbauen
+gid://shopify/Product/15495127433601	ok	Pneumatisches Handpackgerät A19
+gid://shopify/Product/15495127630209	nicht-versendbar	Manuelles Umreifungsset für schwere Lasten
+gid://shopify/Product/15495138967937	ok	Kratzbaum mit Tauchturm
+gid://shopify/Product/15495111999873	ok	Kletterbaum mit Sisal und Liegeflächen
+gid://shopify/Product/15495139066241	nicht-versendbar	Katzen-Kletterturm mit Schlafhöhlen
+gid://shopify/Product/15495118225793	ok	Trolley Rucksack für Schüler, gross
+gid://shopify/Product/15495138345345	nicht-versendbar	Kuh-Katzenbaum mit Kratzstamm und Liegeflächen
+gid://shopify/Product/15495137624449	nicht-versendbar	Sommerliches Holzbett für Hunde
+gid://shopify/Product/15495132905857	ok	Vintage Rucksack aus Rindsleder
+gid://shopify/Product/15495132447105	ok	Rucksack aus echtem Rindsleder
+gid://shopify/Product/15494642368897	ok	Naturholz Katzenkratzbaum mit Rattan-Nest
