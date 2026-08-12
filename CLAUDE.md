@@ -1,5 +1,98 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🔁 Nachkontrolle vom 2026-08-12 — was der erste Aufräumtag ÜBERSEHEN hat
+Ein zweiter Fan-out prüfte, ob die Reparaturen vom 11.08. halten. Sie halten — aber vier davon
+waren **zu eng gefasst**, und das Muster dahinter wiederholt sich:
+1. **Nach dem suchen, was die Kundin SIEHT, nicht nach den eigenen Klassennamen.** Der
+   Produktdetails-Reiniger kannte `ls-feed-details` + `ls-produktdetails` und meldete «0 doppelte
+   Blöcke». Die Nachkontrolle suchte nach der ÜBERSCHRIFT und fand **1'444 aktive Produkte**, bei
+   denen «Produktdetails» weiterhin zweimal untereinander steht — ein dritter Generator schreibt
+   `<div class="gmc-details">` mit `<h3>`. Bei 605 widersprechen sich dabei die Materialangaben.
+   Wer nach seinen eigenen Spuren sucht, prüft nur die Fehler, die er schon kennt.
+2. **Ein Nachfüll-Skript ist die Reparatur, nie die Lösung.** `google_product_category` wurde am
+   11.08. von 6 % auf 87 % gehoben; tags darauf trugen **6 von 1'912** Neuimporten den Wert = 0 %.
+   Der Importer schrieb ihn nicht mit → die Abdeckung wäre täglich um ~2 Punkte zurückgefallen.
+   Exakt derselbe Fehler war Stunden zuvor bei `condition` behoben worden, eine Feldebene weiter
+   steckte er unverändert drin. **Regel: Zu jedem Backfill gehört die Frage, wer das Feld beim
+   NÄCHSTEN Produkt schreibt.** Jetzt: `automation/google_kategorie.mjs`, vom CJ-Importer benutzt.
+3. **Ein Wort zu treffen ist nicht dasselbe wie das Muster zu treffen.** Am 11.08. wurde
+   «Blutzucker» aus 11 Armbändern gestrichen. Dieselben Armbänder versprachen weiter **EKG,
+   Blutdruck, Harnsäure und Blutfett** — 135 aktive Wearables, alle im Google-Kanal. Ebenso
+   fehlten 6 Medizingeräte, weil sie ANDERS HEISSEN: «Hörverstärker» statt «Hörgerät»,
+   «Stirnthermometer», «Milchpumpe», «Handgelenk-Lichtwellen-Therapiegerät» (650-nm-Laser, der
+   angeblich «Fettschichten um rote Blutkörperchen auflöst»). **Bei Medizinprodukten nach der
+   FUNKTION suchen, nicht nach der Produktbezeichnung des Verkäufers.**
+4. **Eine frühere Verbesserung hat die Falschangabe erst erzeugt.** Sessions haben den
+   Refurb-Zusatz («Restauriert A») aus TITELN gestrippt, damit sie sauber aussehen. Die Aussage
+   blieb im Beschreibungstext, das Metafeld `condition` blieb auf `new` → 5 Produkte meldeten
+   generalüberholte Ware als fabrikneu. Das ist Misrepresentation, der häufigste Grund für eine
+   sofortige Merchant-Kontosperre. **Wer eine Angabe aus einem Feld entfernt, muss prüfen, welches
+   ANDERE Feld sie getragen hat.**
+
+## 🛡️ Google-Kanal: 88 sperr-riskante Produkte entfernt (2026-08-12)
+Der Kanal ist der einzige mit belegten Verkäufen (Merchant-Screenshot des Users: **52 Klicks,
++206 %, 3'170 Impressionen — praktisch alles organisch**). Entsprechend teuer wäre eine Sperre.
+Gefunden und entfernt (`automation/google_kanal_saeubern.py`, Ledger `_google_kanal_gesaeubert.txt`):
+32 Rauchzubehör (17 mit Warengruppe «Raucherzubehör» + Tags `raucher`/`18plus` — standen trotzdem
+im Feed), 26 Waffen (Klingen als «Küche & Bar» getarnt, gemeldet als «Home & Garden > Kitchen»),
+10 fremde Marken im eigenen Titel («im **Chanel**-Stil» → Markenname aus dem Titel gestrichen,
+Produkt bleibt), 5 Refurb-als-neu, 5 als `nicht-bewerben`/`nur-onlineshop` markierte (Entscheidung
+war getroffen, aber nie in den Kanal durchgesetzt), 5 Cuttermesser (Hausregel, KEIN
+Richtlinienverstoss — Unterschied gehört ins Ledger), 4 Erotik. **Das «Faltbare Butterfly-Messer»
+ist nach WG Art. 4 eine in der Schweiz verbotene Waffe → DRAFT, Tag `waffengesetz-verboten`.**
+⚠️ Fehltreffer, die im Probelauf aufflogen: «Damen Plus-Grössen **Straps** Flachschuhe» und
+«**Straps** Gaze Kleid» — das ist das englische Wort für Riemen, nicht «Strapse». «Washed
+**Machete** Jeans» ist eine Waschung, «Samurai mit Katana, 30 cm» eine Dekofigur.
+
+## 📐 Google-Kategorie: gegen die ECHTE Taxonomie prüfen (2026-08-12)
+`automation/google_kategorie_pruefen.py` lädt Googles Quelldatei
+(`google.com/basepages/producttype/taxonomy-with-ids.en-US.txt`, 5'595 Pfade) und prüft jeden
+gesetzten Wert. **1'875 waren ungültig.** Der grösste Block war eine bewusste Entscheidung:
+Um Smartwatches nicht unter «Schmuck > Uhren» zu legen, zeigte eine Vorrang-Regel nach
+«Electronics > … > **Wearable Technology** > Smart Watches». Diesen Zweig gibt es bei Google
+nicht — er stammt aus SHOPIFYS Taxonomie («wearable» kommt in Googles Datei kein einziges Mal
+vor). Google verwarf den Wert; 204 Smartwatches standen faktisch ohne Kategorie da.
+**Ein gröberer richtiger Wert ist im Feed immer besser als ein präziser falscher.**
+Das allgemeine Mittel statt einer Fehlerliste: ungültigen Pfad Glied für Glied kürzen, bis ein
+gültiger Vorfahr übrig bleibt — so fällt auch jeder KÜNFTIGE Irrläufer weich. Weiter korrigiert:
+«Home & Garden > Decor > Party Supplies» → «Arts & Entertainment > Party & Celebration > Party
+Supplies» (46), «Barbeque Grills» → «Kitchen Appliances > Outdoor Grills».
+**Nummern sind gültig, aber blind:** 1'618 Werte waren reine IDs («1604», «222»). Google nimmt
+sie an — nur fällt niemandem auf, dass ein Sticker «Ski» unter «Sporting Goods» und ein
+Fahrradhelm unter «Lawn & Garden» steht. Alle in ihren Textpfad übersetzt.
+
+## 💸 «Relativer Boden» ist kein Boden (teuer gelernt 2026-08-12)
+2'355 aktive CJ-Produkte lagen unter dem Preisboden von CHF 14.90 — bei 1'012 sogar mit ALLEN
+Varianten (Damenkleid einheitlich CHF 4.90, Oversized Hoodie ab CHF 4.90). Bei China-Fracht von
+CHF 3–6 ist das je Verkauf ein sicherer Verlust; alle sind `tracked=false` + `CONTINUE`, also
+ohne Bestandsbremse. **Der Importer war NICHT die Quelle** — er rechnet
+`Math.max(landed*1.4, landed+5, 14.90)` und kann nichts Billigeres anlegen. Gesenkt hat
+`google_feed/reprice_to_benchmark.py`: sein Boden war `cur*0.60`, also relativ. Der begrenzt den
+einzelnen SCHRITT, nicht das ERGEBNIS — über mehrere Läufe sinkt der Preis geometrisch
+(10.90 → 6.90 → 4.90). Absoluter Boden eingebaut; `automation/preisboden.py` hebt den Altbestand
+variantenweise an (das repariert nebenbei die 102 Produkte, die mit «ab CHF 4.90» warben, weil
+eine Zubehör-«Farbe» wie «Memory card-8G» die billigste Variante war).
+
+## 🧪 Handwerks-Fallen dieses Tages (kurz, aber teuer)
+- **Verneinungen lesen.** Ein Massagegerät schrieb «**KEIN** medizinisches Gerät – dient dem
+  Wohlbefinden» — das Muster las die Verneinung als Geständnis und hätte es gedraftet. Ebenso
+  ist «FDA-zertifiziert» bei einer Trinkwasserpumpe die LEBENSMITTEL-Behörde, kein Medizinsiegel.
+- **Krankheitsname ≠ Heilversprechen.** «Nicht kompatibel mit Myopie-Linsen», «Option für Myopie
+  verfügbar», «hilft, Karies vorzubeugen» und «um das **Erscheinungsbild** von Besenreisern zu
+  verbessern» sind Passform-, Vorbeuge- und korrekte Kosmetikaussagen. Erst Krankheitsname PLUS
+  Wirkwort ergibt eine Heilaussage — von 10 Kandidaten blieben 3 echte übrig.
+- **Regex-Backtracking auf 31'000 Beschreibungen.** `[^.!?]*WORT[^.!?]*` auf beiden Seiten stand
+  nach zwei Minuten noch. Lösung: linear nach dem Wort suchen, die Satzgrenzen danach mit
+  Zeichenketten-Operationen bestimmen (`satz_um()` in `heilversprechen.py`).
+- **Wird die REGEL erweitert, ist das alte Erledigt-Zeichen wertlos.** Der zweite
+  Produktdetails-Lauf hätte mit dem alten Ledger ausgerechnet die 1'595 bereits «erledigten»
+  Produkte übersprungen — also genau die, bei denen der dritte Block noch steht. Neue Regel →
+  neues Ledger (`_produktdetails_vereint2.txt`).
+- **Zu wenig Kontext im eigenen Prüfmuster.** Eine Suche mit `.{50}` vor dem Treffer meldete «0
+  Fälle» für die CHF-49-Schwelle — kurze SEO-Texte haben keine 50 Zeichen davor. Erst die
+  lockere Prüfung zeigte: die Schwelle ist tatsächlich weg. Ein «0» aus einem zu strengen Muster
+  sieht aus wie ein Erfolg.
+
 > 🔗 **ZUERST `SHARED-MEMORY.md` (Repo-Root) lesen** — mehrere Sessions arbeiten parallel auf diesem
 > Repo + Shop; dort steht, wer was „besitzt" + der Live-Stand. CJ-Import/Katalog/Social = NUR diese Session.
 
