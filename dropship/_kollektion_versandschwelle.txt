@@ -1,0 +1,50 @@
+gid://shopify/Collection/687295136129	schwelle-50	Home page
+gid://shopify/Collection/687341863297	schwelle-50	Naturkosmetik & Beauty
+gid://shopify/Collection/687342092673	schwelle-50	Küche & Kochen
+gid://shopify/Collection/687342125441	schwelle-50	Self-Care & Wellness
+gid://shopify/Collection/687409594753	schwelle-50	Lieblinge unter CHF 50
+gid://shopify/Collection/687409660289	schwelle-50	Express-Lieferung EU
+gid://shopify/Collection/687410119041	schwelle-50	Im Video vorgestellt
+gid://shopify/Collection/687421620609	schwelle-50	Home & Family
+gid://shopify/Collection/687449735553	schwelle-50	Top 5 Favoriten
+gid://shopify/Collection/687520186753	schwelle-50	Herrenuhren & Schmuck
+gid://shopify/Collection/687520219521	schwelle-50	Sonnenbrillen & Eyewear
+gid://shopify/Collection/687520285057	schwelle-50	Baby & Kids
+gid://shopify/Collection/687522021761	schwelle-50	Vatertag 2026 – Geschenke für Papa
+gid://shopify/Collection/687522054529	schwelle-50	Bestseller
+gid://shopify/Collection/687522251137	schwelle-50	Neu eingetroffen
+gid://shopify/Collection/687522316673	schwelle-50	Für Sie
+gid://shopify/Collection/687522480513	schwelle-50	Reisen & Sommer
+gid://shopify/Collection/687522775425	schwelle-50	Wohnen & Dekoration
+gid://shopify/Collection/687523266945	schwelle-50	Christmas 2026
+gid://shopify/Collection/687523299713	schwelle-50	Büro & Home Office
+gid://shopify/Collection/687524118913	schwelle-50	Mystery & Top-Deals
+gid://shopify/Collection/687524381057	schwelle-50	Damen-Mode
+gid://shopify/Collection/687524970881	schwelle-50	Bundles & Deals
+gid://shopify/Collection/687534997889	schwelle-50	Hochzeitsgeschenke
+gid://shopify/Collection/687535030657	schwelle-50	Berufseinstieg & Abschluss
+gid://shopify/Collection/687539421569	schwelle-50	Halloween 2026
+gid://shopify/Collection/687539454337	schwelle-50	Black Friday & Cyber Week
+gid://shopify/Collection/687539487105	schwelle-50	New Year & Silvester
+gid://shopify/Collection/687542698369	schwelle-50	Outdoor & Garten
+gid://shopify/Collection/687545581953	schwelle-50	Vegan & Cruelty-Free
+gid://shopify/Collection/687691071873	schwelle-50	Wellness-Box Bundles
+gid://shopify/Collection/687691137409	schwelle-50	TikTok-Hits 2026
+gid://shopify/Collection/687691170177	schwelle-50	Unter CHF 25 — Impulse-Käufe
+gid://shopify/Collection/687698116993	schwelle-50	Wellness-Komplettset — Spa zuhause
+gid://shopify/Collection/687698149761	schwelle-50	Geschenke unter CHF 30 (getaggt)
+gid://shopify/Collection/687698313601	schwelle-50	Beauty & Self-Care
+gid://shopify/Collection/687723184513	schwelle-50	Trend-Favoriten
+gid://shopify/Collection/687724560769	schwelle-50	Premium Schmuck
+gid://shopify/Collection/687774499201	schwelle-50	Top 10 Bestseller
+gid://shopify/Collection/687774531969	schwelle-50	Premium-Bundles — Spare CHF 19+
+gid://shopify/Collection/687789113729	schwelle-50	Hero-Favoriten
+gid://shopify/Collection/687793897857	schwelle-50	Premium Geschenke
+gid://shopify/Collection/687937323393	schwelle-50	Geschenke unter CHF 50
+gid://shopify/Collection/687937356161	schwelle-50	Geschenke unter CHF 100
+gid://shopify/Collection/687964750209	schwelle-50	Sommer 2026
+gid://shopify/Collection/687966585217	schwelle-50	Vasen
+gid://shopify/Collection/687966617985	schwelle-50	Wandkunst
+gid://shopify/Collection/687966650753	schwelle-50	Aufbewahrung
+gid://shopify/Collection/687966683521	schwelle-50	Audio
+gid://shopify/Collection/687966716289	schwelle-50	Smart Home
