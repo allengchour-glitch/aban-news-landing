@@ -39,6 +39,36 @@ Positionsänderung ändert nur eine Zahl — das Modell bleibt sichtbar stehen. 
 `entzerren()` (14 s) jahrelang wirkungslos.
 → Nach jeder späten Verschiebung `window._nachRuecken(objekt)` aufrufen.
 
+## 🎮 Spielschleife (seit 2026-08-11)
+
+**Bauabnahme:** Alle 4 Spieltage kommt der **Bauinspektor** zu Fuß (NPC-Typ `inspektor`,
+Amts-Gate wie Polizist/Bürgermeister) und prüft drei Kriterien: **Hauswert**,
+**Wohnbereiche** (`katVielfalt()`, max 6 — „bau" enthält keine Möbel!) und **Komfort**
+(`komfort()` = Möbel mit `use`-Eigenschaft; die Bedürfnisse sind bewusst abgeschaltet
+und stehen fest auf 100 — nie wieder als Kriterium verwenden). Bestehen ⇒ `wohnstufe++`,
+Prämie, dauerhaft +12 % je Stufe auf **alle sechs** Einnahmequellen (Lohn, Ernte,
+Markthalle, Straßenmusik, Lieferung, Angeln — via `stufenBonus()`), Luxus-Möbel mit
+`stufe:` im KATALOG schalten frei. Host sendet `{t:"stufe"}` an den Gast.
+Kopfzeile `#stufeBox` zeigt immer, was fehlt — **die Handlung vorn, der Titel nur bei
+Platz** (auf dem Handy wurde sonst genau der Fehlbetrag abgeschnitten).
+Blitz-Lieferungen sind auf 4/Tag gedeckelt (`_liefHeute/_liefTag`), krumme Dinger auf
+2/Tag für **beide** Peers.
+
+## 🧪 Testzugänge (window.__th + Globals)
+
+| Zugang | Zweck |
+|---|---|
+| `__th.stufe()` / `__th.abnahme()` | Wohnstufen-Zustand lesen / Abnahme sofort auslösen |
+| `__th.geldSetz(v)` · `__th.furnIds()` | Geld setzen · platzierte Möbel je ID zählen |
+| `__th.zaehle("poller\|laterne")` | Modelle per Muster live zählen (braucht `userData.datei` aus `bau()`) |
+| `__th.inspektorRuf()` · `__th.npcListe()` | Inspektor anfordern · NPC-Zustände lesen |
+| `__th.netTest(msg)` | Netznachricht in `onNetMsg` einspeisen (Gast-Pfade testen) |
+| `window._updZug(dt)` · `window._updNpcs(dt,now)` | Zug/NPC-Logik direkt antreiben |
+
+⚠️ **Der Software-Renderer im Test läuft mit ~2 fps** — Spielzeit vergeht ~25× langsamer.
+Abläufe (Zughalt, NPC-Besuch) NIE in Echtzeit abwarten, sondern die `_upd*`-Funktionen
+mit künstlichem dt treiben. Genau dafür sind sie exponiert.
+
 ## 🗺️ Wo steht was
 
 | Bereich | Anker zum Grepen |
@@ -57,6 +87,8 @@ Positionsänderung ändert nur eine Zahl — das Modell bleibt sichtbar stehen. 
 | Eisenbahn | `window._zug` · `function updZug(` · `baueSchranken(` |
 | Koop | `js/mp.js` · `onNetMsg(` · `LOBBY` · `lobbyNamenUpd(` |
 | Testzugang | `window.__th={` · `window.__CAM=` |
+| Wohnstufen/Abnahme | `var WOHNSTUFEN=` · `function bauabnahme(` · `inspektorPending` |
+| Möbel-Freischaltung | `stufe:` im `KATALOG` · `ERSATZ=` (Villa-Substitution) |
 
 ## ⚠️ Fallen, die schon zugeschlagen haben
 
