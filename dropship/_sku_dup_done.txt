@@ -473,3 +473,5 @@ gid://shopify/Product/15494467387777	CJ-1753604714731679744	Reise-Rucksack aus e
 gid://shopify/Product/15494496584065	CJ-1746117627677782016	Vintage Lederrucksack für Damen und Herren
 gid://shopify/Product/15494984401281	CJ-2606160844511603100	Personalisiertes Geburtsstein-Zirkon Armband
 gid://shopify/Product/15495066419585	CJ-1391643760634499072	Farbgel «Frosted Sealing Layer»
+gid://shopify/Product/15495066255745	CJ-1526824119776587776	Memory Foam Gel Lendenkissen für Bürostühle
+gid://shopify/Product/15495081132417	CJ-0B5FF8A9-F95B-4D5A-A7E3-C8F37CED1334	Transparenter Gel-Lack

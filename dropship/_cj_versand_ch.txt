@@ -606,3 +606,9 @@ gid://shopify/Product/15491910762881	nicht-versendbar	Robuste Drehkoffer
 gid://shopify/Product/15448018354561	ok	Leinen-Stricktop mit Rundhals und langen Ärmeln
 gid://shopify/Product/15451904541057	nicht-versendbar	Outdoor Liegestuhlauflage, wasserfest
 gid://shopify/Product/15493847548289	ok	Leder-Reise-Laptop-Rucksack
+gid://shopify/Product/15448942412161	nicht-versendbar	Erhöhtes Katzenbett mit drehbarem Eierkorb
+gid://shopify/Product/15449129124225	nicht-versendbar	LNDU CL01 4K WLAN Überwachungskamera
+gid://shopify/Product/15449477742977	ok	Moissanite Ring Sterling Silber
+gid://shopify/Product/15450556105089	ok	Retro Skateboard-Schuh aus Rindsleder
+gid://shopify/Product/15452679864705	nicht-versendbar	Faltbares Campingwagen
+gid://shopify/Product/15454107959681	ok	Phototherapie-Gesundheitslampe
