@@ -72,3 +72,4 @@ gid://shopify/Product/15495074873729	transparentes-verlangerungsgel-fur-nagel-ed
 gid://shopify/Product/15495088243073	gw168-5g-fpv-drohne-mit-hd-kamera-fa3af6	GW168 5G FPV-Drohne mit HD-Kamera
 gid://shopify/Product/15495088275841	niche-vintage-chunky-soled-sneakers-629600	Niche Vintage Chunky-soled Sneakers
 gid://shopify/Product/15495104430465	elektrischer-hot-pot-mit-vielfaltigen-funktion-622700	Elektrischer Hot Pot mit vielfältigen Funktionen
+gid://shopify/Product/15495195263361	anti-kick-decke-fur-studentenwohnheime-388800	Anti-Kick-Decke für Studentenwohnheime
