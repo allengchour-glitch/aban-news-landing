@@ -66,3 +66,5 @@ gid://shopify/Product/15493720146305	bestickter-samt-kissenbezug-827968	Bestickt
 gid://shopify/Product/15493810028929	rx-008-metall-schleifgerat-mit-festem-winkel-625200	RX-008 Metall-Schleifgerät mit festem Winkel
 gid://shopify/Product/15493849350529	make-up-pinsel-set-392c39	Make-up Pinsel Set
 gid://shopify/Product/15493864161665	smarter-bluetooth-lautsprecher-deae2e	Smarter Bluetooth Lautsprecher
+gid://shopify/Product/15495065043329	farbgel-frosted-sealing-layer-15-ml-499072	Farbgel «Frosted Sealing Layer» 15 ml
+gid://shopify/Product/15495065076097	memory-foam-gel-lendenkissen-fur-burostuhl-587776	Memory Foam Gel Lendenkissen für Bürostuhl
