@@ -225,42 +225,6 @@
       "desc": "Halbjahres-Wechsel. 25 Ausgaben aban news durch. Heute der Friday-Werkzeugkasten mit H1-Bilanz: zwei neue Tools, eine harte Wahrheit über meinen eigenen Stack",
       "hero": "/img/issues/025.svg",
       "file": "/archive/025-2026-07-03-werkzeugkasten-h1-bilanz-quantensprung-entlarvt.html"
-    },
-    {
-      "num": "026",
-      "date": "2026-07-06",
-      "slug": "sovereign-ai-in-der-praxis",
-      "title": "Ausgabe 026 — Sovereign-AI in der Praxis — was DACH wirklich nutzen kann",
-      "desc": "Neues Halbjahr, alte Frage: Wem gehören die Daten, die du in deine KI-Tools kippst? Drei Sovereign-AI-Entwicklungen, die für DACH-Solopreneure praktisch zählen ",
-      "hero": "/img/issues/026.svg",
-      "file": "/archive/026-2026-07-06-sovereign-ai-in-der-praxis.html"
-    },
-    {
-      "num": "027",
-      "date": "2026-07-07",
-      "slug": "belege-automatisch-erfassen",
-      "title": "Ausgabe 027 — Belege automatisch erfassen — drei KI-Wege, zwei Wochen getestet",
-      "desc": "Buchhaltung wegautomatisieren? Zwei Wochen, 60 echte Belege, drei KI-Wege getestet — Claude Vision, bexio, sevDesk. Was wirklich Zeit spart, ehrlich verglichen.",
-      "hero": "/img/issues/027.svg",
-      "file": "/archive/027-2026-07-07-belege-automatisch-erfassen.html"
-    },
-    {
-      "num": "028",
-      "date": "2026-07-08",
-      "slug": "automatisierung-40-prozent-ehrliche-rechnung",
-      "title": "Ausgabe 028 — „Automatisierung spart 40 % deiner Woche“ — die ehrliche Rechnung",
-      "desc": "Eine virale Zahl im Faktencheck: „Automatisierung spart 40 % deiner Woche.",
-      "hero": "/img/issues/028.svg",
-      "file": "/archive/028-2026-07-08-automatisierung-40-prozent-ehrliche-rechnung.html"
-    },
-    {
-      "num": "029",
-      "date": "2026-07-09",
-      "slug": "akquise-ohne-kaltakquise",
-      "title": "Ausgabe 029 — Akquise ohne Kaltakquise — drei warme Wege (mit KI-Hilfe)",
-      "desc": "Kaltakquise nervt — und ist meist überflüssig. Drei warme Akquise-Wege für DACH-Solopreneure mit gemessenen Antwortquoten, plus ein Anlass-Finder-Prompt. KI hil",
-      "hero": "/img/issues/029.svg",
-      "file": "/archive/029-2026-07-09-akquise-ohne-kaltakquise.html"
     }
   ]
 }
