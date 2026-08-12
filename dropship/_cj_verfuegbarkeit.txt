@@ -3034,3 +3034,10 @@ gid://shopify/Product/15479533961601	ok
 gid://shopify/Product/15479532945793	ok
 gid://shopify/Product/15479532880257	ok
 gid://shopify/Product/15479532781953	ok
+gid://shopify/Product/15479532749185	ok
+gid://shopify/Product/15479532650881	ok
+gid://shopify/Product/15479532552577	ok
+gid://shopify/Product/15479532454273	ok
+gid://shopify/Product/15479531471233	ok
+gid://shopify/Product/15479530717569	ok
+gid://shopify/Product/15479530652033	ok
