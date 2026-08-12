@@ -253,3 +253,26 @@ gid://shopify/Product/15470013546881	Partydeko & Ballone	Wurfbeutel / Konfettita
 gid://shopify/Product/15470017315201	Partydeko & Ballone	Wurfbeutel / Konfettitasche
 gid://shopify/Product/15470017413505	Partydeko & Ballone	Wurfbeutel / Konfettitasche
 gid://shopify/Product/15470073053569	Spielzeug & Spiele	Plüsch Tiger mit Jungen
+gid://shopify/Product/15469916029313	Fasnachts-/Scherzartikel	Tasche klein aus Kunstfell
+gid://shopify/Product/15469918650753	Tag fasnacht	Herzförmige Tasche braun Bayern
+gid://shopify/Product/15469918683521	Tag fasnacht	Herzförmige Tasche schwarz Bayern
+gid://shopify/Product/15469921927553	Tag bild-zu-klein	Bade- & Duschgel Men's 360ml
+gid://shopify/Product/15469927465345	Tag bild-zu-klein	Geschenkset MEN'S COLLECTION Sixpack Pflegeset
+gid://shopify/Product/15469928022401	Tag bild-zu-klein	Bade- & Duschgel MEN'S COLLECTION Bierflaschen-Optik 360 ml
+gid://shopify/Product/15469971308929	Tag bild-zu-klein	Edelweisshemd langarm geknöpft
+gid://shopify/Product/15469991428481	Fasnachts-/Scherzartikel	Chinesischer Sonnenschirm
+gid://shopify/Product/15469995262337	Fasnachts-/Scherzartikel	Schwarzer Kopfschmuck
+gid://shopify/Product/15469997359489	Fasnachts-/Scherzartikel	Schottentasche mit Pelz
+gid://shopify/Product/15469999423873	Fasnachts-/Scherzartikel	Polizei-Abzeichen in Brieftasche
+gid://shopify/Product/15470000996737	Dublette in derselben Reihe	Rucksack Clarity transparent
+gid://shopify/Product/15470010892673	Fasnachts-/Scherzartikel	Aladins Wunderlampe
+gid://shopify/Product/15470012858753	Dublette in derselben Reihe	Rucksack Clarity transparent
+gid://shopify/Product/15470014431617	Fasnachts-/Scherzartikel	Halskette Morticia Wednesday
+gid://shopify/Product/15470017610113	Fasnachts-/Scherzartikel	Gürtel mit Felltasche
+gid://shopify/Product/15470022099329	Tag fanartikel	Fahne Schweiz
+gid://shopify/Product/15470031864193	Tag fanartikel	Tischtuch Schweiz
+gid://shopify/Product/15470034223489	Tag fanartikel	Fahnenkette Schweizer Kantone
+gid://shopify/Product/15470036091265	Tag fanartikel	Flagge Schweiz 90x90 cm
+gid://shopify/Product/15470077608321	Tag fanartikel	Schweizer Lampion-Set
+gid://shopify/Product/15470077936001	Dublette in derselben Reihe	Badeset Romantic Dreams
+gid://shopify/Product/15470078919041	Tag bild-zu-klein	Badeset Dino Duft Apfel

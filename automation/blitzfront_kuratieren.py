@@ -56,7 +56,30 @@ RAUS_TITEL = re.compile(r'Partybrille|Party-?Skibrille|Scherzartikel|Konfetti|Lu
                         # deshalb durch die Warengruppen-Prüfung — der «Pappbecher aus
                         # Frischfaser» aus dem Screenshot ist genau so hereingekommen.
                         r'Einwegbecher|Pappbecher|Plastikbecher|Trinkbecher|Einweggeschirr|'
-                        r'Pappteller|Servietten|Strohhalm|Trinkhalm', re.I)
+                        r'Pappteller|Servietten|Strohhalm|Trinkhalm|'
+                        # ── NACHTRAG 12.08.2026 ──────────────────────────────────────────
+                        # Die Nachkontrolle fand 26 der verbliebenen 59 weiterhin fehl am
+                        # Platz. Der erste Lauf filterte nach WARENGRUPPE — und Fortura
+                        # vergibt Fasnachtsware auch die Warengruppen «Accessoires»,
+                        # «Haushalt & Wohnen» und «Schweizer Editionen». Dieselbe
+                        # Einweggeschirr-Falle, nur eine Ebene höher.
+                        r'Polizei-?Abzeichen|Sheriffstern|'   # Imitat eines Hoheitszeichens
+                        r'Morticia|Wednesday|'                # Figurenbezug wie beim Pikachu
+                        r'Chinesischer Sonnenschirm|'         # Text: «wenn Du Dich verkleiden willst»
+                        r'Aladins? Wunderlampe|'
+                        r'Schottentasche|Felltasche|Kunstfell|Kopfschmuck', re.I)
+
+# Verkleidungs-Tags. `kostuem-accessoire` steht BEWUSST nicht dabei: der Tag beschreibt den
+# Regalplatz des Lieferanten, und die so markierte Ware ist zu 90 % gewöhnliche Handtaschen,
+# Partybrillen und Modeschmuck. Wer ihn mitfiltert, räumt die halbe Reihe aus Versehen leer.
+RAUS_TAG = {"fasnacht", "kostueme", "herrenkostuem", "damenkostuem", "kostuem-hut",
+            # Fanartikel = Schweizer Fahnen, Lampions, Fahnenketten. Anlass «1. August» und
+            # «Fanparty» — heute ist der 12. August, die Saison ist seit elf Tagen vorbei.
+            "fanartikel",
+            # Ein Artikel, dessen Bild schon als zu klein markiert ist, gehört nicht auf die
+            # prominenteste Fläche des Shops. Fünf der sechs haben zudem nur EIN Bild, also
+            # auch kein Karussell.
+            "bild-zu-klein"}
 
 
 def gql(q, v=None):
@@ -78,13 +101,27 @@ def gql(q, v=None):
     return {}
 
 
-def grund(p):
+def norm(t):
+    s = t.lower()
+    for a, b in (("ä", "ae"), ("ö", "oe"), ("ü", "ue"), ("ß", "ss")):
+        s = s.replace(a, b)
+    return re.sub(r'[^a-z0-9]+', '', s)
+
+
+def grund(p, doppelt=frozenset()):
     if p["productType"] in RAUS_TYP:
         return p["productType"]
     if LIZENZ.search(p["title"]):
         return "Lizenzware"
     if RAUS_TITEL.search(p["title"]):
         return "Fasnachts-/Scherzartikel"
+    treffer = RAUS_TAG & {t.lower() for t in (p.get("tags") or [])}
+    if treffer:
+        return "Tag " + sorted(treffer)[0]
+    if p["id"] in doppelt:
+        # «Badeset Romantic Dreams» lag zweimal in derselben Reihe, zu CHF 24.90 und 27.50 —
+        # nebeneinander auf einer Startseite sieht das nach einem kaputten Shop aus.
+        return "Dublette in derselben Reihe"
     return None
 
 
@@ -97,7 +134,7 @@ def main():
         # (Der Kollektionszähler zeigt Entwürfe übrigens mit: 74 statt der 59 sichtbaren.)
         d = gql('query($c:String){products(first:250,after:$c,'
                 'query:"tag:%s"){pageInfo{hasNextPage endCursor} '
-                'nodes{id title productType}}}' % TAG, {"c": cur})
+                'nodes{id title productType tags status}}}' % TAG, {"c": cur})
         pg = (d.get("data") or {}).get("products")
         if not pg:
             print("  ⚠️ Abbruch — Liste unvollständig", flush=True)
@@ -107,7 +144,19 @@ def main():
             break
         cur = pg["pageInfo"]["endCursor"]
 
-    raus = [(p, grund(p)) for p in alle]
+    # Dubletten in derselben Reihe finden: gleicher Titel, mehrere Produkte — alle ausser dem
+    # ersten fliegen aus der Reihe (bleiben aber im Shop).
+    gesehen, doppelt = {}, set()
+    # ACTIVE zuerst betrachten: sonst behielte ein Entwurf den Platz in der Reihe und das
+    # sichtbare Produkt flöge hinaus — genau verkehrt herum.
+    for p in sorted(alle, key=lambda x: x.get("status") != "ACTIVE"):
+        n = norm(p["title"])
+        if n in gesehen:
+            doppelt.add(p["id"])
+        else:
+            gesehen[n] = p["id"]
+
+    raus = [(p, grund(p, doppelt)) for p in alle]
     raus = [(p, g) for p, g in raus if g]
     bleibt = len(alle) - len(raus)
     print(f"Tag {TAG}: {len(alle)} Artikel | entfernen: {len(raus)} | bleibt: {bleibt}", flush=True)
