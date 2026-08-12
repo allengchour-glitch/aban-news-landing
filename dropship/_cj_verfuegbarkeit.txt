@@ -3393,3 +3393,12 @@ gid://shopify/Product/15479434445185	ok
 gid://shopify/Product/15479434412417	ok
 gid://shopify/Product/15479434281345	ok
 gid://shopify/Product/15479434248577	ok
+gid://shopify/Product/15479434150273	ok
+gid://shopify/Product/15479434117505	ok
+gid://shopify/Product/15479434019201	ok
+gid://shopify/Product/15479433986433	ok
+gid://shopify/Product/15479433953665	ok
+gid://shopify/Product/15479433888129	ok
+gid://shopify/Product/15479421731201	ok
+gid://shopify/Product/15479421600129	ok
+gid://shopify/Product/15479421534593	ok
