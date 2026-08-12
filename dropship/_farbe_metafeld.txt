@@ -121,3 +121,4 @@ gid://shopify/Product/15495110164865	Silber
 gid://shopify/Product/15495110590849	Mehrfarbig
 gid://shopify/Product/15495190315393	Schwarz
 gid://shopify/Product/15495193067905	Grün
+gid://shopify/Product/15495401275777	Transparent
