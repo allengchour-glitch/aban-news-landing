@@ -475,3 +475,21 @@ gid://shopify/Product/15494984401281	CJ-2606160844511603100	Personalisiertes Geb
 gid://shopify/Product/15495066419585	CJ-1391643760634499072	Farbgel «Frosted Sealing Layer»
 gid://shopify/Product/15495066255745	CJ-1526824119776587776	Memory Foam Gel Lendenkissen für Bürostühle
 gid://shopify/Product/15495081132417	CJ-0B5FF8A9-F95B-4D5A-A7E3-C8F37CED1334	Transparenter Gel-Lack
+gid://shopify/Product/15495109312897	CJ-2606160740461633600	Geburtsstein-Armband mit Initialen
+gid://shopify/Product/15495108657537	CJ-2606160817431630200	Herzformiger Zircon-Schmuck
+gid://shopify/Product/15495090766209	CJ-5BB5A5C2-33AF-4C7E-8E7B-D02FA9FA3AF6	5G-Kamera Drohne
+gid://shopify/Product/15495090798977	CJ-CJYD275562701AZ	Vintage Sneaker
+gid://shopify/Product/15495103873409	CJ-2408180605291610300	Spezialbesen für Küche und Haushalt
+gid://shopify/Product/15495103971713	CJ-2408180215171601200	Antihaft-Topf für Induktion und Gas
+gid://shopify/Product/15495104135553	CJ-2408150151411610700	3D Delfin Silikonform für Desserts
+gid://shopify/Product/15495104299393	CJ-2408141037231602200	Mini Induktionskochfeld, rund
+gid://shopify/Product/15495104430465	CJ-2408130623291622700	Elektrischer Hot Pot mit vielfältigen Funktionen
+gid://shopify/Product/15495104561537	CJ-CJNY305223001AZ	Warme Kindergarten-Finkli für Babys & Kleinkinder
+gid://shopify/Product/15495104627073	CJ-2408120640001624300	Elektro-Backpfanne mit Hot Pot & Grill
+gid://shopify/Product/15495104758145	CJ-2408120256271614000	Mini Sojamilchmaschine mit Teesieb
+gid://shopify/Product/15495104987521	CJ-2408090214071611200	Multifunktionaler Siebträger-Ständer
+gid://shopify/Product/15495105249665	CJ-2408010126111606000	Edelstahlpfanne mit Abtropfgestell
+gid://shopify/Product/15495105380737	CJ-1752148015403511808	Knochenbeil mit Kupfergriff
+gid://shopify/Product/15495105544577	CJ-1748785014038335488	Geschmiedetes Edelstahl-Hackmesser
+gid://shopify/Product/15495105905025	CJ-1745796446013624320	Micro-Tech A5 Outdoor-Messer mit Multifunktion
+gid://shopify/Product/15495106003329	CJ-1742099742634553344	Drehbares Regal für 3D-Würfel-Mousseformen
