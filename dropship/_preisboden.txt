@@ -1098,3 +1098,103 @@ gid://shopify/Product/15450828865921	21	Spray-Trinkflasche für Sport & Freizeit
 gid://shopify/Product/15450828898689	58	Thermo-Strumpfhose mit Fleece-Futter
 gid://shopify/Product/15450829128065	18	Elektrischer Augenbrauenentferner
 gid://shopify/Product/15450829160833	15	Kreatives Sturmfeuerzeug mit Doppelflamme
+gid://shopify/Product/15450829259137	9	Selbstreinigende Katzenbürste aus Stahl
+gid://shopify/Product/15450829390209	18	Galaxy Kristallkugel LED Nachtlicht
+gid://shopify/Product/15450829422977	1	Mini-Falt-Drohne mit HD-Kamera
+gid://shopify/Product/15450829488513	4	Tassen- und Gläserreiniger für die Küche
+gid://shopify/Product/15450829586817	11	Mattierendes Concealer Make-up, ölregulierend
+gid://shopify/Product/15450829619585	1	Brasilianisches Echthaar glatt
+gid://shopify/Product/15450829881729	41	Kühlende Liegematte für Haustiere
+gid://shopify/Product/15450829914497	8	Kabellose 2-in-1 Glättbürste für schnelles Styling
+gid://shopify/Product/15450830012801	6	AirTag Leder-Portemonnaie mit RFID-Schutz
+gid://shopify/Product/15450830045569	4	Elektrischer Krallenschleifer für Haustiere
+gid://shopify/Product/15450830176641	12	Kuschel-Hoodie mit grosser Tasche
+gid://shopify/Product/15450830406017	6	Kopfhörer mit Mikrofon
+gid://shopify/Product/15450830471553	2	Gaming Mauspad mit RGB-Beleuchtung
+gid://shopify/Product/15450830635393	5	Brief-Halskette mit Umschlag-Anhänger
+gid://shopify/Product/15450830733697	33	Warme Lammkaschmir Leggings für den Winter
+gid://shopify/Product/15450830930305	1	Wasserdichte Sport-Kopfhörer mit Bluetooth
+gid://shopify/Product/15450830995841	5	Fitness Widerstandsband-Set mit Griffen
+gid://shopify/Product/15450831225217	10	Baby Badeliege für Neugeborene
+gid://shopify/Product/15450831454593	2	LED-Getränkehalter für Ihr Auto
+gid://shopify/Product/15450831487361	75	Duschkopf mit Turbo-Düse & Wassersparfunktion
+gid://shopify/Product/15450831683969	10	LED Laser Rolling Pet Toy Ball
+gid://shopify/Product/15450831716737	2	Halterung für Rückspiegel-Handy
+gid://shopify/Product/15450831847809	3	3-in-1 Trinkflasche für Haustiere mit Futter & Kotbeutel
+gid://shopify/Product/15450831978881	2	2-in-1 Trink- und Futterflasche für Haustiere
+gid://shopify/Product/15450832011649	6	Frucht-Infuser Wasserflasche 1000ml
+gid://shopify/Product/15450832109953	3	Superhelle LED-Taschenlampe mit Fokus
+gid://shopify/Product/15450832175489	2	Kabelloser Mini-Staubsauger 5000Pa
+gid://shopify/Product/15450832306561	1	Elektrischer Fusselentferner mit LED-Display
+gid://shopify/Product/15450832568705	4	U-förmiges Schwangerschaftskissen aus Eisseide
+gid://shopify/Product/15450832601473	8	Baumwoll-Set für Jungen (Frühling/Herbst)
+gid://shopify/Product/15450832634241	20	Spitze Herrenschuhe zum Schnüren
+gid://shopify/Product/15450832667009	12	Riesiger Teddybär – Plüschtier mit Leder-Optik
+gid://shopify/Product/15450832699777	4	Mini GPS Tracker mit Echtzeit-Ortung
+gid://shopify/Product/15450832830849	3	Drahtloses Dual-Ladegerät für Smartphones
+gid://shopify/Product/15450832863617	14	LED Sensor-Lichtleiste
+gid://shopify/Product/15450832896385	4	Interaktives Slow-Feeder Spielzeug für Hunde & Katzen
+gid://shopify/Product/15450832929153	10	Rollkragen Strickkleid für Damen
+gid://shopify/Product/15450832961921	4	Intelligenter Rollball für Katzen
+gid://shopify/Product/15450833158529	92	Leinenhemd mit Stehkragen für Herren
+gid://shopify/Product/15450833289601	43	Herren T-Shirt aus Eisseide mit Kurzarm
+gid://shopify/Product/15450833322369	3	LED-Schminkbox mit Lichtspiegel
+gid://shopify/Product/15450833453441	11	Hallux Valgus Korrektor Schiene
+gid://shopify/Product/15450833486209	52	High-Waist Leggings für Fitness & Yoga
+gid://shopify/Product/15450833617281	1	2-in-1 Auto Becherwärmer & Kühler
+gid://shopify/Product/15450833650049	16	Warmer Wintermantel für Hunde
+gid://shopify/Product/15450834338177	5	Bluetooth-Stirnband für Fitness & Yoga
+gid://shopify/Product/15450834567553	3	Fitness-Yogamatte (10mm)
+gid://shopify/Product/15450834633089	3	V-Shape Gesichtsstraffer mit EMS
+gid://shopify/Product/15450834665857	7	Waben Katzenstreu-Matte
+gid://shopify/Product/15450834796929	3	Unzerstörbarer Kauknochen für Hunde
+gid://shopify/Product/15450834829697	12	Tragbarer Hunde-Kotgreifer mit Beutelspender
+gid://shopify/Product/15450834928001	1	Lippenstift & Lipliner Set – 12 Farben
+gid://shopify/Product/15450834993537	4	360° Automatische elektrische Zahnbürste mit Blaulicht
+gid://shopify/Product/15450835059073	2	Kabelloser Handstaubsauger für Auto & Zuhause
+gid://shopify/Product/15450835091841	3	Steamy Cat Bürste Avocado
+gid://shopify/Product/15450835124609	6	Multifunktionaler Gemüseschneider 7-in-1
+gid://shopify/Product/15450835190145	6	Gleitende Pizza-Schaufel aus Holz
+gid://shopify/Product/15450835222913	15	Elefanten-Kuschelkissen mit Decke
+gid://shopify/Product/15450835255681	1	Magnetisches 3-in-1 Ladekabel mit LED-Licht
+gid://shopify/Product/15450835288449	13	Kühlende Migräne-Mütze
+gid://shopify/Product/15450835321217	9	Jade-Gesichtsroller für natürliche Massage
+gid://shopify/Product/15450835386753	22	Fleece-Kapuzenpullover für Hunde mit Früchtedesign
+gid://shopify/Product/15450835485057	69	Knöchelstütze für Sport und Alltag
+gid://shopify/Product/15450835517825	9	Smarte Thermosflasche 450ml
+gid://shopify/Product/15450835648897	6	Smart Egg Lernspiel: Formen & Farben
+gid://shopify/Product/15450835681665	24	Unisex Korean Style Mesh-Sneaker
+gid://shopify/Product/15450835714433	5	Yoga Ligament Dehnungsband
+gid://shopify/Product/15450836107649	4	Rollender Grillkorb aus Metall
+gid://shopify/Product/15450836173185	1	Freizeit Cargo Shorts für Herren
+gid://shopify/Product/15450836205953	13	Tierhaarentferner-Handschuh für Hunde & Katzen
+gid://shopify/Product/15450836304257	1	Mechanische Gaming-Tastatur für Notebooks
+gid://shopify/Product/15450836468097	15	Baby Sommer Set – T-Shirt & Shorts für Mädchen & Jungen
+gid://shopify/Product/15450836500865	4	Küchenbürste mit Seifenspender
+gid://shopify/Product/15450836566401	15	LED Wasserwellen Projektionsleuchte
+gid://shopify/Product/15450836599169	68	Magnetische Kunstwimpern für einen ausdrucksstarken Blick
+gid://shopify/Product/15450836697473	11	Beheizbare Wimpernzange mit Temperaturkontrolle
+gid://shopify/Product/15450836730241	10	Faltbarer Pool für Haustiere
+gid://shopify/Product/15450836795777	3	LED-Nagelknipser für Haustiere
+gid://shopify/Product/15450836861313	8	3-in-1 Wireless Ladestation für iPhone & Android
+gid://shopify/Product/15450836926849	1	Gua Sha Schaber mit LED und Mikrostrom
+gid://shopify/Product/15450837057921	36	CD Pattern MagSafe Hülle mit Ständer
+gid://shopify/Product/15450837156225	78	Panda Magnetring Handyhülle
+gid://shopify/Product/15450837221761	3	3D Planeten Kristallkugel Nachtlicht
+gid://shopify/Product/15450837254529	3	Selbst-rührende Tasse für Kaffee & mehr
+gid://shopify/Product/15450837385601	6	Hyaluron Gesichtsserum gegen trockene Haut
+gid://shopify/Product/15450837451137	21	Busy Board Lernspielzeug für Kleinkinder
+gid://shopify/Product/15450837582209	65	Handy Schutzhülle mit Kartenfach
+gid://shopify/Product/15450837647745	4	Handfeger-Kehrmaschine 3-in-1
+gid://shopify/Product/15450837680513	18	Baby Zweiteiler "Kleiner Duft"
+gid://shopify/Product/15450837746049	14	USB-Ladegerät mit 4 Ports und Quick Charge 3.0
+gid://shopify/Product/15450837778817	37	Polo-Shirt gestreift mit Reverskragen
+gid://shopify/Product/15450837909889	26	Beleuchtetes LED-Bild mit Sonnenschein-Effekt
+gid://shopify/Product/15450838073729	46	Nahtlose Yoga Leggings für Damen
+gid://shopify/Product/15450838270337	14	Oberschenkel- & Bauchtrainer mit Feder
+gid://shopify/Product/15450838303105	15	High-Waist Yoga-Hose für Damen
+gid://shopify/Product/15450838335873	4	Tragbarer 2-in-1 Trink- und Fressnapf für Hunde
+gid://shopify/Product/15450838401409	4	Selbstmischende Tasse
+gid://shopify/Product/15450838532481	3	Chivo kw10pro Smartwatch für Damen
+gid://shopify/Product/15450838761857	2	LED Ringlicht für Streaming & Fotografie
+gid://shopify/Product/15450838860161	11	Multifunktionaler Fitness-Ring

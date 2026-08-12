@@ -59,9 +59,17 @@ while true; do
     fi
   fi
   # CJ-Grind-Runner mitlaufen lassen (Turn-Reaping killt sie sonst jede Runde)
+  # ⚠️ MIT SPERRE STARTEN (12.08.2026). Der pgrep-Test allein genügt nicht: `engines_up.sh`
+  # prüft und startet dieselben Runner, und wer zwischen fremder Prüfung und fremdem Start
+  # startet, erzeugt eine zweite Kopie. Genau so lief heute jeder Runner doppelt. Die
+  # Sperre gehört dem laufenden Runner für seine ganze Lebensdauer — ein Zweitstart endet
+  # dann von selbst, egal von welcher Seite er kommt. Gleicher Sperrname wie in engines_up.sh.
   for R in cj_runner2 cj_runner3 cj_runner4 cj_runner5; do
     [ -f /tmp/$R.sh ] || continue
-    pgrep -f "cj_runner_template.sh $R" >/dev/null || { setsid bash /tmp/$R.sh >> /tmp/$R.log 2>&1 & echo "$(date -u +%H:%M) restart $R"; sleep 3; }
+    pgrep -f "cj_runner_template.sh $R" >/dev/null && continue
+    setsid bash -c "exec 9>/tmp/lock_cj_runner_template-$R.lock; flock -n 9 || exit 0;
+                    exec bash /tmp/$R.sh" >> /tmp/$R.log 2>&1 &
+    echo "$(date -u +%H:%M) restart $R"; sleep 3
   done
   sleep 120
 done

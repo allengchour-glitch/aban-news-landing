@@ -27,8 +27,15 @@ start() {    # $1 = Skriptpfad, $2 = optionales Argument
   [ -f "$1" ] || { echo "fehlt: $1"; return; }
   laeuft "$1" "${2:-}" && return
   local name; name=$(basename "$1" .sh)${2:+-$2}
-  # secrets_env.sh mitgeben: cj_queue_runner bricht sonst mit «SHOPIFY_CLIENT_ID fehlt» ab.
-  setsid bash -c "source /tmp/secrets_env.sh 2>/dev/null; exec bash '$1' ${2:-}" \
+  # ⚠️ SPERRE JE DAUERLÄUFER (12.08.2026). `laeuft` prüft, `setsid` startet — dazwischen liegt
+  # ein Moment, und in dem startet `fixer_keepalive.sh` dieselben CJ-Runner aus seiner eigenen
+  # Schleife. Heute standen dadurch nach einem Keepalive-Aufruf ZWEI Prozesse je Runner; im
+  # August waren es aus demselben Grund schon einmal dreizehn. Ein besserer Prüftest hilft
+  # dagegen nicht — die Prüfung ist ja korrekt, sie ist nur veraltet, sobald sie fertig ist.
+  # Die Sperre hält der Runner selbst für seine ganze Laufzeit: Ein zweiter Start bekommt sie
+  # nicht und endet sofort. Damit ist es gleichgültig, wer alles startet und wie oft.
+  setsid bash -c "exec 9>/tmp/lock_$name.lock; flock -n 9 || exit 0;
+                  source /tmp/secrets_env.sh 2>/dev/null; exec bash '$1' ${2:-}" \
     >> "/tmp/$name.log" 2>&1 &
   echo "gestartet: $1 ${2:-}"
   sleep 3
