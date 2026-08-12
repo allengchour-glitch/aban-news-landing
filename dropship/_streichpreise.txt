@@ -1,0 +1,12 @@
+gid://shopify/Product/15408457744769	krumm	Premium Bambus Aroma Diffuser 300ml
+gid://shopify/Product/15408457941377	krumm	Rosenquarz Gua Sha Set
+gid://shopify/Product/15408457974145	krumm	Jade Roller Premium Doppelseitig
+gid://shopify/Product/15408458006913	krumm	Kristall-Set 3-teilig
+gid://shopify/Product/15408458072449	krumm	Cellulite Massage Roller
+gid://shopify/Product/15408458170753	krumm	Bambus Aufbewahrungssystem Modular
+gid://shopify/Product/15408458236289	krumm	Bambus Kosmetik-Organizer Premium
+gid://shopify/Product/15408458563969	krumm	Premium Home Wellness Bundle · Diffuser + 6 ätherische Öle + Salzlampe + Kristall-Trio
+gid://shopify/Product/15452618588545	Schein-Rabatt 4.9 %	Geburtstags-Geschenkset «Aura» · 3-teilig
+gid://shopify/Product/15452618654081	Schein-Rabatt 7.4 %	Sommer-Set «Badi-Ready» · 3-teilig
+gid://shopify/Product/15452618686849	Schein-Rabatt 3.5 %	Kleeblatt-Glücks-Duo · 2-teilig
+gid://shopify/Product/15452618719617	Schein-Rabatt 3.5 %	Ring-Stack-Set «Eternità» · 2-teilig
