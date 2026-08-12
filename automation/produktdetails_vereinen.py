@@ -30,9 +30,27 @@ import json, os, re, subprocess, time
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
 DRY = os.environ.get("DRY") == "1"
 EXPORT = os.environ.get("EXPORT", "/tmp/export.jsonl")
-LEDGER = "dropship/_produktdetails_vereint.txt"
+# ⚠️ EIGENES LEDGER FÜR DEN ZWEITEN DURCHGANG. Im ersten stehen 1'595 Produkte als «erledigt» —
+# und genau die sind es, bei denen der dritte Block (`gmc-details`) jetzt noch zusammenzuführen
+# ist. Mit dem alten Ledger würde der Lauf ausgerechnet die Betroffenen überspringen und
+# «nichts zu tun» melden. Wird die REGEL erweitert, ist das alte Erledigt-Zeichen wertlos.
+LEDGER = "dropship/_produktdetails_vereint2.txt"
 
-BLOCK = re.compile(r'<div class="(?:ls-feed-details|ls-produktdetails)">.*?</div>', re.S | re.I)
+# ⚠️ NACHTRAG 12.08.2026 — ES WAREN DREI BLÖCKE, NICHT ZWEI.
+# Der erste Lauf kannte `ls-feed-details` und `ls-produktdetails` und meldete danach «0 aktive
+# Produkte mit doppeltem Block». Die Nachkontrolle zählte anders: sie suchte nach der
+# sichtbaren ÜBERSCHRIFT statt nach den bekannten Klassennamen — und fand 1'444 aktive
+# Produkte, bei denen «Produktdetails» weiterhin zweimal untereinander steht. Der dritte
+# Generator schreibt `<div class="gmc-details">` mit `<h3>` statt `<h4>`.
+# Lehre: Beim Aufräumen nach dem suchen, was die Kundin SIEHT (die Überschrift), nicht nach
+# dem, was der eigene Code hinterlässt (die Klasse). Sonst prüft man nur die Fehler, die man
+# schon kennt, und meldet Vollzug.
+# Der Inhalt ist wichtiger als die Doppelung: bei 605 der Produkte widersprechen sich die
+# Materialangaben («Polyester, Elastan» gegen «Polyester»). Reines Löschen des zweiten Blocks
+# würde die genauere Angabe stillschweigend durch die gröbere ersetzen — deshalb wird
+# zusammengeführt, nicht gelöscht.
+BLOCK = re.compile(r'<div class="(?:ls-feed-details|ls-produktdetails|gmc-details)"[^>]*>'
+                   r'.*?</div>', re.S | re.I)
 EINTRAG = re.compile(r'<li>\s*<strong>\s*([^<:]+?)\s*:?\s*</strong>\s*([^<]*)</li>', re.I)
 
 FARBE = {
@@ -131,14 +149,22 @@ def vereinen(html):
             erst[0] = False
             return neu
         return ""
-    return BLOCK.sub(ersetze, html), True
+    neu_html = BLOCK.sub(ersetze, html)
+    # Spur des ersten Laufs: dort wurde die Klasse entfernt statt des Divs, zurück blieb ein
+    # leeres «<div class="">». Harmlos, aber es gehört weg.
+    neu_html = re.sub(r'<div class="">\s*</div>', '', neu_html)
+    return neu_html, True
 
 
 def main():
     aufgaben = []
     for zeile in open(EXPORT):
         p = json.loads(zeile)
-        if p["status"] != "ACTIVE":
+        # ⚠️ Entwürfe MIT aufräumen. 1'212 DRAFTs tragen die Doppelung ebenfalls; der Autopilot
+        # schaltet laufend Entwürfe auf ACTIVE, also käme der bereinigte Fehler von dort
+        # automatisch zurück. Ein Reiniger, der nur das Sichtbare putzt, arbeitet gegen eine
+        # Quelle, die weiterläuft.
+        if p["status"] == "ARCHIVED":
             continue
         d = p.get("descriptionHtml") or ""
         neu, geaendert = vereinen(d)
