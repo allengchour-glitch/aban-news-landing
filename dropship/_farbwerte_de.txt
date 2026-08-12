@@ -1,0 +1,200 @@
+gid://shopify/Product/15412828733825	1	2-teiliges Sommer-Set – Zip-Top & Rüschen-Shorts (Damen)
+gid://shopify/Product/15412830634369	1	Strand-Cardigan «Riviera» – Leichter UV-Schutz-Überwurf
+gid://shopify/Product/15412899643777	2	Reise-Kulturbeutel «Voyage» – XL Hänge-Organizer
+gid://shopify/Product/15412899676545	2	Edelstahl-Trinkflasche «Hydro» 570 ml
+gid://shopify/Product/15412911964545	1	2-teiliges Leinen-Set «Provence» – Hemd & Wide-Leg-Hose
+gid://shopify/Product/15412918190465	1	Blumen-Maxikleid «Fleurette» – Neckholder mit Fishtail
+gid://shopify/Product/15412919533953	2	Midikleid «Bluette» – Fake-2-Teiler mit V-Ausschnitt
+gid://shopify/Product/15412969406849	1	T-Shirt-Kleid «Casa» – locker mit Print
+gid://shopify/Product/15412976746881	4	Baseball-Cap «Navy» – Washed Cotton
+gid://shopify/Product/15412976845185	2	Baseball-Cap «Washed» – Vintage Damen
+gid://shopify/Product/15413025145217	1	Boho-Kleid «Ibiza» – Baumwoll-Leinen, locker
+gid://shopify/Product/15413041168769	4	Vintage-Cap «Heritage» – Washed, bestickt (Unisex)
+gid://shopify/Product/15413041889665	4	Vintage-Cap «Blessed» – Washed, bestickt (Unisex)
+gid://shopify/Product/15413955887489	2	Regenwolken-Aroma-Diffuser · 7 Nachtlichter & Luftbefeuchter
+gid://shopify/Product/15413955985793	1	Schmuck-Set Edelstahl wasserfest · 18K vergoldet, anlauffrei
+gid://shopify/Product/15413956051329	2	Handy-Makeover-Set · Charms, Grip & MagSafe-Halter
+gid://shopify/Product/15413961130369	2	Sonnenuntergang-Projektionslampe · 16 Farben, dimmbar
+gid://shopify/Product/15413961195905	2	LED-Spiegeluhr minimalistisch · Wecker & Temperatur
+gid://shopify/Product/15421165502849	1	Sommer-Set «Riviera» · 2-teilig, lässig (Damen)
+gid://shopify/Product/15421167075713	3	Baskenmütze «Riviera» · Denim mit Farbstreifen (Unisex)
+gid://shopify/Product/15427283157377	1	T-Shirt zum Selbstgestalten
+gid://shopify/Product/15428286513537	2	Auto Rücksitz-Organizer: Mehr Stauraum & Ordnung im Nu.
+gid://shopify/Product/15443497025921	1	Smartwatch «ActiveOne» · Fitness & Anrufe
+gid://shopify/Product/15446065873281	1	Sonnenschutz-Gesichtsmaske mit Krempe
+gid://shopify/Product/15446069936513	1	Schlafmaske gegen müde Augen
+gid://shopify/Product/15446274670977	1	Handliche Isoliertasche für unterwegs
+gid://shopify/Product/15447586931073	1	Taktische Sportuhr mit vielen Funktionen
+gid://shopify/Product/15447594172801	1	Elegantes Strickkleid mit Stehkragen
+gid://shopify/Product/15447595975041	1	Elegantes A-Linien Plisseekleid mit hoher Taille
+gid://shopify/Product/15447596302721	2	Glänzendes Mini-Kleid mit Raffung
+gid://shopify/Product/15447596499329	1	Abendkleid mit Perlen & Rüschen
+gid://shopify/Product/15447596663169	2	Chiffonkleid mit Blumenprint und Rüschen
+gid://shopify/Product/15447597089153	1	Florales Etuikleid mit Ballonärmeln
+gid://shopify/Product/15447598072193	1	Gestreiftes Langarm-Hemdblusenkleid
+gid://shopify/Product/15447598268801	1	Damen Kleid mit Puffärmeln und Taillengürtel
+gid://shopify/Product/15447598498177	1	Ärmelloses Casual-Kleid im Vintage-Stil
+gid://shopify/Product/15447599350145	2	Elegantes trägerloses A-Linien-Kleid
+gid://shopify/Product/15447599546753	1	Patchwork Off-Shoulder Maxi-Kleid aus Baumwolle
+gid://shopify/Product/15447600365953	1	Loose-Fit Tunic mit kurzen Ärmeln
+gid://shopify/Product/15447601021313	1	Puffärmel-Kleid mit Schnürung
+gid://shopify/Product/15447601611137	1	Herren Langarm Freizeit Hemd
+gid://shopify/Product/15447601971585	1	Herren Hemd Langarm "Nouveau Riche" Stil
+gid://shopify/Product/15447602364801	3	Herren Leinenhemd Langarm
+gid://shopify/Product/15447602758017	1	Herren Hemd Kurzarm mit Reverskragen
+gid://shopify/Product/15447603413377	5	Leinenhemd Kurzarm Loose-Fit für Herren
+gid://shopify/Product/15447603806593	2	Casual Loose-fit T-Shirt mit zwei Taschen
+gid://shopify/Product/15447603937665	4	Herren Jacquard Polo-Shirt mit Reissverschluss
+gid://shopify/Product/15447604265345	3	Leinenhemd für Herren
+gid://shopify/Product/15447604461953	1	Gestreiftes Kurzarmhemd für Herren · Modell 2
+gid://shopify/Product/15447604658561	2	Polo-Shirt Kurzarm Slim-Fit Piqué-Baumwolle
+gid://shopify/Product/15447605510529	1	Leinenhemd langärmlig für Herren
+gid://shopify/Product/15447606002049	1	Herren Hemd Leinen-Optik Langarm Loose Fit
+gid://shopify/Product/15447606198657	2	Jacquard Polo-Shirt mit Reverskragen
+gid://shopify/Product/15447606428033	2	Herren Langarmhemd mit Revers
+gid://shopify/Product/15447606657409	3	Leinenhemd Kurzarm für Herren
+gid://shopify/Product/15447607443841	1	Leichte Leinenjacke für Herren
+gid://shopify/Product/15447607968129	4	UV-Schutz Shirt für Outdoor-Sport
+gid://shopify/Product/15447608263041	1	Herren Kunstfelljacke, British Style
+gid://shopify/Product/15447612522881	1	Outdoor Canvas Rucksack – wasserdicht
+gid://shopify/Product/15447613768065	1	Taktischer 511 Outdoor Rucksack 45L
+gid://shopify/Product/15447615865217	1	Faltbare, wasserdichte Sport-Brusttasche
+gid://shopify/Product/15447616061825	2	Freizeit-Umhängetasche
+gid://shopify/Product/15447634903425	1	Doppellagiges Katzenbett aus Rattan
+gid://shopify/Product/15447638868353	2	Kuscheliges Katzensofa mit Cord-Fleece
+gid://shopify/Product/15447884530049	3	Wollschal einfarbig für Damen
+gid://shopify/Product/15447885185409	1	Organza Schal mit Quasten
+gid://shopify/Product/15447889084801	2	Kurzer Cardigan aus Chiffon mit UV-Schutz
+gid://shopify/Product/15447889969537	1	Warmer Schal aus Fuchsfell und Rexkaninchenfell
+gid://shopify/Product/15447891542401	4	Crinkled Satin Schal – Seidig Glatt
+gid://shopify/Product/15447891771777	1	Kopftuch im Ethno-Stil
+gid://shopify/Product/15447891902849	5	Jacquard Schal mit Cashew-Muster und Quasten
+gid://shopify/Product/15447892230529	1	Eleganter vielseitiger quadratischer Schal
+gid://shopify/Product/15447892656513	1	Gebets-Schal mit Ethno-Muster
+gid://shopify/Product/15447893049729	8	Retro-Schal mit Quasten, vielseitig tragbar
+gid://shopify/Product/15447894688129	1	UV-Schutz Gesichtsmaske
+gid://shopify/Product/15447896195457	3	Multifunktionaler Jacquard Schal
+gid://shopify/Product/15447896752513	3	Winddichte Winter-Fleecemaske für draussen
+gid://shopify/Product/15447897604481	2	Atmungsaktive Ice-Silk Gesichtsmaske
+gid://shopify/Product/15447899931009	2	Korsett mit Fischgrät-Stäbchen und 3 Verschlüssen
+gid://shopify/Product/15447900881281	2	Multifunktionaler Gürtel mit Automatik-Schnalle
+gid://shopify/Product/15447904354689	1	Atmungsaktives Korsett zur Haltungskorrektur
+gid://shopify/Product/15447905698177	3	Elastischer Herren-Gürtel mit Automatikschliesse
+gid://shopify/Product/15447906910593	1	Eleganter Ledergürtel mit Metallschnalle A
+gid://shopify/Product/15447908581761	1	Taillengürtel mit Dornschliesse
+gid://shopify/Product/15447908909441	2	Vintage Wildleder-Gürtel mit Dornschliesse
+gid://shopify/Product/15447918051713	1	Trendige Sonnenbrille mit UV400 Schutz
+gid://shopify/Product/15447918477697	1	Kinder Schwimmbrille HD, wasserdicht, Antibeschlag
+gid://shopify/Product/15447918739841	2	Kinder Schwimmbrille Wasserdicht, Anti-Beschlag
+gid://shopify/Product/15447919001985	2	Kinder Schwimmbrille wasserdicht, HD & Antifog
+gid://shopify/Product/15447919559041	1	Tauchmaske, wasserdicht & beschlagfrei
+gid://shopify/Product/15447920542081	2	UV-Schutzhandschuhe mit Zwei-Finger-Schnitt
+gid://shopify/Product/15447920836993	4	Glänzende, ellenbogenlange Kostümhandschuhe
+gid://shopify/Product/15447921754497	2	Warme Touchscreen-Handschuhe mit Fleecefutter
+gid://shopify/Product/15447922213249	2	Dicke Thermo-Daunen- und Baumwollhandschuhe
+gid://shopify/Product/15447922540929	1	Dual-Use Colorblock Strickhandschuhe im Maillard-Stil
+gid://shopify/Product/15447922803073	4	Warme Lederhandschuhe mit Fleecefutter
+gid://shopify/Product/15447923491201	2	Wollmischung Fingerlose Strickhandschuhe
+gid://shopify/Product/15447923818881	2	3M Thinsulate Winterhandschuhe für Damen & Herren
+gid://shopify/Product/15447924375937	2	Vielseitige Strickstulpen für Damen
+gid://shopify/Product/15447924638081	2	Warme Winter-Skihandschuhe mit Touchscreen
+gid://shopify/Product/15447925916033	1	Warme Touchscreen-Handschuhe für Ski und Velo
+gid://shopify/Product/15447926342017	1	Katzenpfoten-Handschuhe Plüsch
+gid://shopify/Product/15447926636929	1	Damen-Handschuhe aus Schafsleder, Touchscreen
+gid://shopify/Product/15447928832385	2	Warme Plüsch-Handschuhe für Damen
+gid://shopify/Product/15447931060609	3	Fleece-gefütterte Kinder-Handschuhe
+gid://shopify/Product/15447934304641	1	Reflektierende Outdoor Velo-Socken
+gid://shopify/Product/15447934468481	1	Retro Patchwork Socken für Damen
+gid://shopify/Product/15447935058305	1	3er-Pack Ultra-Soft Sheer Tights
+gid://shopify/Product/15447935385985	1	3 Paar 20D Ultra-Sheer Strumpfhosen mit Shaping-Top
+gid://shopify/Product/15447935648129	1	6 Paar Plus Size Strumpfhosen für Damen
+gid://shopify/Product/15447936205185	1	Beinwärmer mit Stern- und Knochen-Elementen
+gid://shopify/Product/15447945249153	1	Knights Cap Strohhut
+gid://shopify/Product/15447979983233	1	Nahtloser Sport-BH mit hoher Elastizität
+gid://shopify/Product/15447986405761	1	Pailletten-Top mit Spaghettiträgern
+gid://shopify/Product/15448001216897	1	Künstlerische Weste aus Baumwoll-Leinen-Mix
+gid://shopify/Product/15448003608961	1	Damen Sport-Tanktop mit integrierten BH-Pads
+gid://shopify/Product/15448003805569	1	Sport-BH mit Polsterung und schönem Rückendesign
+gid://shopify/Product/15448004919681	1	Seiden-Top mit Schleifendetail für Damen
+gid://shopify/Product/15448007410049	1	U-Boot-Neck Camisole mit Kontrastträgern
+gid://shopify/Product/15448008163713	1	Asymmetrisches Kurzarm-Shirt mit U-Boot-Ausschnitt
+gid://shopify/Product/15448016224641	1	Halterneck Yoga-Top Kurzarm für Damen
+gid://shopify/Product/15448024580481	1	Mesh Langarm-Top mit Camisole
+gid://shopify/Product/15448034181505	1	Elegantes Langarmshirt mit Schnürung
+gid://shopify/Product/15448038998401	1	Spitzenbesetzte Langarmbluse mit Wellenmuster
+gid://shopify/Product/15448039129473	1	Vielseitige Langarm-Bluse für Frühling & Sommer
+gid://shopify/Product/15448040046977	1	Locker sitzendes Langarm-Top für Damen
+gid://shopify/Product/15448080744833	1	Off-Shoulder Langarmshirt mit Spitze
+gid://shopify/Product/15448088314241	1	U-Ausschnitt Slimming Sport-BH
+gid://shopify/Product/15448088347009	1	Sport-Top mit starkem Halt und Polsterung
+gid://shopify/Product/15448088445313	1	Yoga-Sport-BH mit dünnen Trägern
+gid://shopify/Product/15448092934529	1	Besticktes V-Neck Shirt aus Baumwoll-Leinen
+gid://shopify/Product/15448093000065	1	Gestreiftes Langarmshirt für vielseitige Looks
+gid://shopify/Product/15448102601089	1	Baumwoll-Leinen Top mit Rundhals und 3/4-Ärmeln
+gid://shopify/Product/15448104206721	1	V-Ausschnitt Strickpullover für Damen · Modell 2
+gid://shopify/Product/15448104632705	1	Bedruckter Zip-Up Hoodie – Locker geschnitten
+gid://shopify/Product/15448104763777	1	V-Neck Pullover im Retro-Stil
+gid://shopify/Product/15448495194497	1	Luftiges Sporttop mit Kordelzug
+gid://shopify/Product/15448495325569	1	Integriertes Sport-Tanktop für Damen
+gid://shopify/Product/15448504336769	1	Unifarbener Kapuzenpullover für Damen
+gid://shopify/Product/15448531075457	1	Einteiliger Damen-Badeanzug
+gid://shopify/Product/15448548376961	1	Casual Romper-Set mit Spaghettiträger-Top
+gid://shopify/Product/15448573378945	1	Gemustertes Sommerkleid mit Stickereien
+gid://shopify/Product/15448585863553	1	Leinen-Baumwoll-Kleid Ärmellos
+gid://shopify/Product/15448586879361	1	Gestreiftes A-Linien-Kleid mit Puffärmeln
+gid://shopify/Product/15448590254465	1	Woll-Cardigan mit Revers und Doppelreissverschluss
+gid://shopify/Product/15448590385537	1	Lockerer Pullover mit Rundhals und Knöpfen
+gid://shopify/Product/15448590418305	1	V-Neck Pullover mit lockerer Passform
+gid://shopify/Product/15448590778753	1	Damen Strickjacke mit Knopfleiste und langen Ärmeln
+gid://shopify/Product/15448591401345	1	Gehäkelter Pullover mit Dreiviertelärmeln
+gid://shopify/Product/15448591892865	1	Strick-Cardigan im Retro-Look
+gid://shopify/Product/15448592417153	2	Strickpullover mit Fledermausärmeln
+gid://shopify/Product/15448593138049	1	Strickpullover mit Rüschenärmeln und Knöpfen
+gid://shopify/Product/15448593858945	1	Strickpullover Rundhals Loose-Fit
+gid://shopify/Product/15448594284929	2	Strick-Cardigan mit Reverskragen und Farbblöcken
+gid://shopify/Product/15448594514305	1	Leichter Cardigan mit Taschen
+gid://shopify/Product/15448595038593	1	Hooded Pullover Sweater für Damen
+gid://shopify/Product/15448595169665	3	Vielseitiger, weicher Damenpullover
+gid://shopify/Product/15448595267969	2	Dünner Langarm V-Pullover
+gid://shopify/Product/15448595431809	1	Long Cardigan mit Oversize-Passform und Taschen
+gid://shopify/Product/15448595726721	3	Damen Rollkragenpullover aus Strick
+gid://shopify/Product/15448595759489	1	Strick-Cardigan mit Rundhals und Knöpfen
+gid://shopify/Product/15448595923329	1	Gestreiftes Strick-Pyjama-Set mit Shorts
+gid://shopify/Product/15448596349313	1	Matte Sport Yoga-Set mit Shorts und BH
+gid://shopify/Product/15448599232897	1	Trägerloser Bikini für Strand und Thermalbad
+gid://shopify/Product/15448599298433	1	Push-up Bikini-Set mit Bügel
+gid://shopify/Product/15448600478081	1	Houndstooth-Set: Jacke und Hose
+gid://shopify/Product/15448600904065	1	Ultra-dünne Ice-Silk Leggings für den Sommer
+gid://shopify/Product/15448601526657	2	Winter Leggings mit Pfirsichpo-Effekt
+gid://shopify/Product/15448602444161	1	Freizeit-Hosen mit Schnürung am Knöchel
+gid://shopify/Product/15448602575233	3	Umstands-Capri-Leggings mit hohem Bund
+gid://shopify/Product/15448603853185	2	Fitness Leggings mit Shaping-Effekt
+gid://shopify/Product/15448604344705	1	Elegante High-Waist Business-Hose mit Knopfdetails
+gid://shopify/Product/15448606048641	2	High-Waist Fitness Leggings mit Taschen
+gid://shopify/Product/15448606343553	6	High-Waist Yoga Leggings
+gid://shopify/Product/15448606507393	1	Gerippte Strickhose für Damen
+gid://shopify/Product/15448607326593	1	Maxirock A-Linie mit Bindegürtel
+gid://shopify/Product/15448607392129	2	Eleganter Faltenrock mit Raffung
+gid://shopify/Product/15448608145793	1	Yoga Sport Maxirock mit Taschen
+gid://shopify/Product/15448608407937	1	Yoga-Rockhose-Set für grosse Grössen
+gid://shopify/Product/15448609161601	1	Eleganter A-Linien Midirock – Schwarz
+gid://shopify/Product/15448610603393	2	Satin-Midi-Rock mit hohem Bund und Schlitz
+gid://shopify/Product/15448613945729	1	A-Linien Midirock für grosse Grössen
+gid://shopify/Product/15448620564865	1	Vielseitige Jeans für Frühling und Herbst
+gid://shopify/Product/15448635507073	1	Irregular Design Straight-Leg Jeans
+gid://shopify/Product/15448636948865	2	High-Waist Straight-Leg Jeans für Damen – Pink
+gid://shopify/Product/15448639897985	2	High-Waist Yoga Shorts für Damen
+gid://shopify/Product/15448640520577	1	High-Waist Yoga Shorts «Peach Butt»
+gid://shopify/Product/15448641864065	3	Nahtlose High-Waist Tie-Dye Yoga Shorts
+gid://shopify/Product/15448642191745	1	High-Waist Yoga Leggings mit Taschen
+gid://shopify/Product/15448642912641	1	Eng anliegende Yoga-Shorts für Damen
+gid://shopify/Product/15448643240321	1	High-Waist Weite-Bein Shorts
+gid://shopify/Product/15448643338625	1	Trendige Washed Denim Shorts mit Rissen
+gid://shopify/Product/15448643371393	1	Blumige Patchwork Low-Rise Shorts für Damen
+gid://shopify/Product/15448644026753	1	High-Waist Yoga Shorts im Zweiteiler-Look
+gid://shopify/Product/15448644321665	1	Leichte Outdoor-Shorts für Damen
+gid://shopify/Product/15448644419969	1	High-Waist Cropped Shorts mit weitem Bein
+gid://shopify/Product/15448644878721	3	Bequeme Shorts mit Kordelzug für Damen
+gid://shopify/Product/15448645304705	1	Leichte Leinen-Shorts mit Taschen
+gid://shopify/Product/15448645370241	1	Stylishe Yoga-Shorts für Damen
+gid://shopify/Product/15448646189441	1	High-Waist Slim-Fit Yoga Leggings
