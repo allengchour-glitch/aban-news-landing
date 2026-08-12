@@ -2127,7 +2127,11 @@ function showWheel(n,done){
   requestAnimationFrame(anim);
 }
 rollBtn.onclick=roll;
-addEventListener("keydown",function(e){if(e.key===" "&&running){e.preventDefault();if(G.phase==="idle")roll();}});
+addEventListener("keydown",function(e){if(e.key===" "&&running){e.preventDefault();
+  /* 🩹 Die Robo-Sperre deckte nur den KNOPF ab — die Leertaste wuerfelte weiter
+     fuer den Bot (und online fuer den Gegner). Gleiche Bedingung wie am Knopf. */
+  var _fremd=(NET.on&&G.turn!==NET.my)||!!(G.players[G.turn]&&G.players[G.turn].bot);
+  if(G.phase==="idle"&&!_fremd)roll();}});
 function startMove(n){
   G.phase="moving";moveQ=n;hopT=0;moveTo=-1;
   var p=G.players[G.turn];hopFrom={x:fields[p.tile].x,z:fields[p.tile].z};

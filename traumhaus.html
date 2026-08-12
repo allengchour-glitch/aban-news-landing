@@ -253,7 +253,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 <div class="overlay" id="start">
   <div class="tag">aban news · Bau-Simulation · Sims-Style</div>
   <h1>🏡 TRAUMHAUS</h1>
-  <p>Baue dein Haus: <b>Wände, Böden, Türen, Fenster</b> und echte 3D-Möbel vom Doppelbett bis zur Monstera. Deine Bewohner <b>Max &amp; Mia</b> haben eigene Bedürfnisse — Hunger, Energie, Spaß, Hygiene — und einen eigenen Kopf. Tag- und Nachtwechsel inklusive.</p>
+  <p>Baue dein Haus: <b>Wände, Böden, Türen, Fenster</b> und echte 3D-Möbel vom Doppelbett bis zur Monstera. Deine Bewohner <b>Max &amp; Mia</b> leben ihr eigenes Leben — sie kochen, angeln, tanzen und erkunden die Stadt. Alle 4 Tage kommt die <b>Bauabnahme</b>: besteh sie und steig von der Hütte bis zum Palast auf. Tag- und Nachtwechsel inklusive.</p>
   <p id="tipRow" style="font-size:.9rem"><b>Bauen:</b> Kategorie wählen → aufs Grundstück tippen · <b>🔄</b> dreht · <b>🧨</b> reißt ab · Kamera: ziehen oder <b>Tab</b>/Q/E dreht, Rad/Kneifen/± zoomt · <b>🕹️ Joystick/WASD steuert deinen Bewohner direkt!</b> · <b>Shift</b> oder Joystick ganz drücken = 🏃 rennen · Tipp auf Max/Mia = Kamera folgt · Herd = 🍳 Kochen · Teich = 🎣 Angeln · Stereo = 💃 Tanzen</p>
   <label style="display:flex;gap:8px;align-items:center;background:#fff8ec;border:2px solid #f0c8a0;border-radius:12px;padding:10px 14px;margin:8px 0;max-width:430px;font-size:.9rem">
     <input type="checkbox" id="romChk" style="width:20px;height:20px;accent-color:#e85aa0"> 💞 <b>Romantik-Modus (ab 18)</b>: Flirten, Küsse &amp; Turteln im Bett — frech, aber diskret (Ausblende wie im Original)
@@ -4506,6 +4506,29 @@ setTimeout(function baueGebaeude(){
         var ue=Math.min(qMax,m+k[5])-Math.max(qMin,m-k[5]);
         if(ue>0.4&&(!best||ue>best.ue))best={ue:ue,achse:laengs?"z":"x",mitte:m,rand:k[5],name:k[0]};}
       return best;}
+    /* 🧱 KOLLIDER MITZIEHEN. freiRaeumen/entwirren laufen bei 15.5-50 s — NACH
+       kolliderNachziehen() (4 s). Ohne diese Funktion blieb der Kollider eines
+       verschobenen Hauses am ALTEN Ort stehen: dort eine unsichtbare Wand, am
+       neuen Ort ein durchlaufbares Haus. Verschoben wird jeder Solid, dessen
+       Zentrum in der alten Box lag; danach wird das Nachschlage-Gitter neu
+       gebaut (addSolid fuellt es nur inkrementell). */
+    var _gridDirty=false;
+    function solidsMitziehen(altBox,dx,dz){
+      for(var i=0;i<WORLD_SOLIDS.length;i++){var so=WORLD_SOLIDS[i];
+        if(so.x>=altBox.min.x-0.5&&so.x<=altBox.max.x+0.5&&
+           so.z>=altBox.min.z-0.5&&so.z<=altBox.max.z+0.5){
+          so.x+=dx;so.z+=dz;
+          if(so.door){if(so.door.at!==undefined)so.door.at+=(so.door.a==="x"?dx:dz);
+                      if(so.door.c!==undefined)so.door.c+=(so.door.a==="x"?dz:dx);}
+          _gridDirty=true;}}}
+    function gridNeu(){
+      if(!_gridDirty)return;_gridDirty=false;
+      SOLID_GRID={};
+      WORLD_SOLIDS.forEach(function(so){
+        var gx0=Math.floor((so.x-so.hw)/SOLID_CELL),gx1=Math.floor((so.x+so.hw)/SOLID_CELL);
+        var gz0=Math.floor((so.z-so.hd)/SOLID_CELL),gz1=Math.floor((so.z+so.hd)/SOLID_CELL);
+        for(var gx=gx0;gx<=gx1;gx++)for(var gz=gz0;gz<=gz1;gz++){
+          var k=gx+"_"+gz;(SOLID_GRID[k]||(SOLID_GRID[k]=[])).push(so);}});}
     function freiRaeumen(){
       var G=window._gebaeude||[],E=[],raus=0,fest=0;
       G.forEach(function(w){
@@ -4533,9 +4556,12 @@ setTimeout(function baueGebaeude(){
             var neu=e.w.position.clone();neu[k.achse]+=schub;
             var nb=e.b.clone();nb.translate(new THREE.Vector3(neu.x-e.w.position.x,0,neu.z-e.w.position.z));
             if(korridorKonflikt(nb))return;                   /* wuerde in den naechsten Korridor rutschen */
+            var _dx=neu.x-e.w.position.x,_dz=neu.z-e.w.position.z;
+            solidsMitziehen(e.b,_dx,_dz);
             e.w.position.copy(neu);window._nachRuecken(e.w);
             e.b=nb;raus++;gemacht=true;});
           if(!gemacht)fest++;}
+      gridNeu();
       window._freigeraeumt={verschoben:raus,steckengeblieben:fest};}
     function entwirren(){
       /* 🧩 GLOBALER ENTWIRRER (User: „viele stl ueberkreuzung? passe es an?").
@@ -4609,10 +4635,12 @@ setTimeout(function baueGebaeude(){
                   if(Math.abs(E[m].w.position.x-nx)>60||Math.abs(E[m].w.position.z-nz)>60)continue;
                   if(schneidet(nb,E[m].b))frei=false;}
                 if(!frei)continue;
+                solidsMitziehen(kand.b,nx-kand.w.position.x,nz-kand.w.position.z);
                 kand.w.position.x=nx;kand.w.position.z=nz;kand.b=nb;
                 window._nachRuecken(kand.w);
                 bewegt++;gefunden=true;}}}
           if(!gefunden)offen++;}}
+      gridNeu();
       var w2=window._entwirrt||{vorher:vorher,bewegt:0,ohnePlatz:0};
       window._entwirrt={vorher:w2.vorher,nachher:paare().length,
                         bewegt:w2.bewegt+bewegt,ohnePlatz:offen,laeufe:(w2.laeufe||0)+1};
@@ -5521,11 +5549,17 @@ function hausWert(){var w=0;
 var WOHNSTUFEN=[
  /* Name,               Wert,  Kategorien, Zufriedenheit, Praemie */
  ["⛺ Hütte",              0, 0,  0,    0],
- ["🏠 Zuhause",         2500, 3, 55,  400],
- ["🏡 Schmuckstück",    6000, 4, 62,  900],
- ["🏰 Traumvilla",     12000, 5, 68, 1800],
- ["🏛️ Anwesen",        25000, 6, 74, 3500],
- ["👑 Palast",         50000, 7, 80, 7000]
+ /* Spalte 3 war „Zufriedenheit" — totes Kriterium: die Beduerfnisse sind bewusst
+    abgeschaltet („wie GTA") und stehen fest auf 100, jede Schwelle war immer
+    erfuellt. Jetzt zaehlt KOMFORT: nutzbare Moebel (mit use-Eigenschaft), also
+    Dinge, an denen die Bewohner wirklich etwas tun koennen.
+    Und der Palast verlangte 7 Wohnbereiche — katVielfalt() kann aber hoechstens 6
+    zaehlen (bau enthaelt keine Moebel): die hoechste Stufe war unerreichbar. */
+ ["🏠 Zuhause",         2500, 3,  2,  400],
+ ["🏡 Schmuckstück",    6000, 4,  4,  900],
+ ["🏰 Traumvilla",     12000, 5,  6, 1800],
+ ["🏛️ Anwesen",        25000, 6,  9, 3500],
+ ["👑 Palast",         50000, 6, 12, 7000]
 ];
 var wohnstufe=0, naechsteAbnahme=4;
 function stufenBonus(){return 1+wohnstufe*0.12;}      /* +12 % Einnahmen je Stufe */
@@ -5536,17 +5570,14 @@ function katVielfalt(){
     for(var k in KATALOG)for(var i=0;i<KATALOG[k].length;i++)
       if(KATALOG[k][i].id===f9.id){g[k]=1;return;}});
   return Object.keys(g).length;}
-function zufriedenheit(){
-  if(!sims.length)return 0;
-  var su=0,n=0;
-  sims.forEach(function(s9){if(!s9.needs)return;
-    su+=(s9.needs.hunger+s9.needs.energie+s9.needs.spass+s9.needs.hygiene)/4;n++;});
-  return n?Math.round(su/n):0;}
+function komfort(){
+  var k=0;furn.forEach(function(f9){if(f9.def&&f9.def.use)k++;});
+  return k;}
 /* Fehlliste fuer die naechste Stufe — dieselbe Funktion speist Kopfzeile UND Abnahme. */
 function stufenLuecke(){
   var z=WOHNSTUFEN[wohnstufe+1];
   if(!z)return null;
-  var w=hausWert(),k=katVielfalt(),zu=zufriedenheit();
+  var w=hausWert(),k=katVielfalt(),zu=komfort();
   return {ziel:z,wert:w,kat:k,zuf:zu,
           fehltWert:Math.max(0,z[1]-w),fehltKat:Math.max(0,z[2]-k),fehltZuf:Math.max(0,z[3]-zu),
           erfuellt:w>=z[1]&&k>=z[2]&&zu>=z[3]};}
@@ -5557,7 +5588,7 @@ function stufeHudUpd(){
   var tage=Math.max(0,naechsteAbnahme-tag);
   var kurz=l.fehltWert?("+"+l.fehltWert+" $")
           :l.fehltKat?("+"+l.fehltKat+" Bereich"+(l.fehltKat>1?"e":""))
-          :l.fehltZuf?("+"+l.fehltZuf+" Laune"):"bereit ✓";
+          :l.fehltZuf?("+"+l.fehltZuf+" Komfort-Möbel"):"bereit ✓";
   /* ⚠️ Reihenfolge ist hier eine Design-Entscheidung: Erst stand der STUFENNAME
      vorn — auf dem Handy schnitt die Kopfzeile dann ausgerechnet den Fehlbetrag ab,
      also genau die Information, wegen der die Anzeige existiert. Jetzt kommt immer
@@ -6530,7 +6561,7 @@ function updBeete(dt){
       for(var si2=0;si2<sims.length;si2++){var s5=sims[si2];
         if(s5.mesh.visible&&Math.hypot(s5.x-cx(f3.gx),s5.z-cz(f3.gy))<2.4){
           f3.wachs=0;f3.sprossen.forEach(function(sp6){sp6.scale.setScalar(0.05);sp6.material.color.setHex(0x3a8a3a);});
-          var ertrag=35+skills.arbeit.lv*8;geld+=ertrag;stats.ernten++;stats.ernteLager=(stats.ernteLager||0)+1;geldSend(); /* 🩹 Schwarm-4: Lager (verkaufbar) getrennt von der Lebenszeit-Statistik */
+          var ertrag=Math.round((35+skills.arbeit.lv*8)*stufenBonus());geld+=ertrag;stats.ernten++;stats.ernteLager=(stats.ernteLager||0)+1;geldSend(); /* 🩹 Schwarm-4: Lager (verkaufbar) getrennt von der Lebenszeit-Statistik */
           s5.needs.hunger=Math.min(100,s5.needs.hunger+12);
           simEmoji(s5,"🥕");hint("🥕 Ernte! +"+ertrag+" $");updHUD();break;}}}
   }}
@@ -6675,6 +6706,13 @@ var liefer=null;
 var LIEFERZIELE=[["Markt",26,67],["Seepark",10,139],["Spielplatz",98,-30],["Bauernhof",-40,-196],["Windmühle",-136,-196],["Brunnen-Park",96,14],["Sportpark",0,216],["Freizeitpark",60,330],["Gewerbe Ost",172,0]];
 document.getElementById("lieferBtn").onclick=function(){
   if(!fahren||liefer)return;
+  /* 💰 Die Lieferung war die einzige UNGEDECKELTE Geldquelle: ~120-260 $ pro Minute,
+     das 4- bis 7-fache des Tagesgehalts, endlos wiederholbar — sie entwertete Arbeit,
+     Ernte und Auftraege. Vier pro Tag reichen als Bonus-Einkommen. */
+  if(window._liefTag===tag&&(window._liefHeute||0)>=4){
+    hint("📦 Feierabend — die Zentrale hat heute keine Auftraege mehr (4/4). Morgen wieder!");
+    beep(220,.12,"square",.04);return;}
+  window._liefHeute=(window._liefTag===tag?(window._liefHeute||0):0)+1;window._liefTag=tag;
   var kand=LIEFERZIELE.slice().sort(function(){return 0.5-Math.random();})[0];
   var m=driveCar.mesh;if(Math.hypot(kand[1]-m.position.x,kand[2]-m.position.z)<20)kand=LIEFERZIELE.filter(function(z){return z[0]!==kand[0];})[0];
   liefer={n:kand[0],x:kand[1],z:kand[2],t:60};
@@ -6689,7 +6727,7 @@ function updLiefer(dt){
   var m=driveCar.mesh;
   if(Math.hypot(m.position.x-liefer.x,m.position.z-liefer.z)<7){
     var bonus=(sims[1]&&sims[1]._bf)?1.5:1;
-    var lohn=((80+liefer.t*3)*bonus)|0;
+    var lohn=((80+liefer.t*3)*bonus*stufenBonus())|0;
     geld+=lohn;geldSend();stats.lieferungen=(stats.lieferungen||0)+1;updHUD();
     hearts(liefer.x,liefer.z);beep(880,.09,"square",.05);setTimeout(function(){beep(1170,.12,"square",.05);},90);
     hint("📦✅ Geliefert! +"+lohn+" $"+(bonus>1?" (Team-Bonus 👫)":""));
@@ -6761,6 +6799,7 @@ function updWork(dt){
   else if(arbeiten&&(hh>=17||hh<9)){arbeiten=false;
     if(window.autoRec){window.autoRec.state="heim";window.autoRec.mesh.position.set(70,0.01,GH*CS/2+11);window.autoRec.mesh.visible=true;}
     var lohn=2*(100+skills.arbeit.lv*40);
+    lohn=Math.round(lohn*stufenBonus());   /* 🏅 die Abnahme verspricht „+12 % Einnahmen" — galt vorher nur fuer die Miete */
     geld+=lohn;skillXp("arbeit",1);
     sims.forEach(function(s2,i){
       if(i>0){s2.state="idle";s2.mesh.visible=true;s2.x=cx(2+i*2);s2.z=cz(GH-1);s2.pose="stand";}
@@ -7218,7 +7257,7 @@ function npcAnsprechen(){
   f.stand=true;setTimeout(function(){f.stand=false;},3500);       // bleibt kurz stehen
   if(Math.random()<0.35){
     var a=NPC_AUFTRAEGE[(Math.random()*NPC_AUFTRAEGE.length)|0];
-    geld+=a[1];geldSend();updHUD();
+    geld+=Math.round(a[1]*stufenBonus());geldSend();updHUD();
     hint("💬 „"+a[0]+"“  → +"+a[1]+" $");
     beep(700,.09,"sine",.05);setTimeout(function(){beep(920,.11,"sine",.05);},110);
     stats.gespraeche=(stats.gespraeche||0)+1;
@@ -7797,7 +7836,7 @@ document.getElementById("markthalleBtn").onclick=function(){ /* 🥕 Markthalle:
      (Erfolg „Grüner Daumen", Team-Aufgabe „6 Ernten") und wurde hier faelschlich genullt. */
   var e9=stats.ernteLager||0;if(e9<=0){hint("🌱 Erst ernten — dann verkaufen!");return;}
   var erloes=Math.round(e9*45*(1+skills.arbeit.lv*0.15));
-  geld+=erloes;stats.ernteLager=0;geldSend();
+  erloes=Math.round(erloes*stufenBonus());geld+=erloes;stats.ernteLager=0;geldSend();
   hint("🥕 "+e9+" Ernten verkauft: +"+erloes+" $ (Marktpreis!)");
   sims.forEach(function(s8){simEmoji(s8,"🤑");});
   beep(700,.09,"triangle",.05);setTimeout(function(){beep(950,.12,"triangle",.06);},120);updHUD();};
@@ -7908,7 +7947,7 @@ function angelResult(ms){
 function angelEnd(){
   ANGEL.on=false;clearTimeout(ANGEL.tmr);
   document.getElementById("angel").style.display="none";
-  if(ANGEL.geldSum>0){geld+=ANGEL.geldSum;geldSend();updHUD();}
+  if(ANGEL.geldSum>0){geld+=Math.round(ANGEL.geldSum*stufenBonus());geldSend();updHUD();}
   sims.forEach(function(s2){s2.needs.spass=Math.min(100,s2.needs.spass+8+ANGEL.fang*4);});
   window._angelCd=uhrzeit;
   hint(ANGEL.fang>0?"🎣 "+ANGEL.fang+" Fisch"+(ANGEL.fang>1?"e":"")+" gefangen · +"+ANGEL.geldSum+" $":"🌊 Heute beißt nichts …");}
@@ -8041,7 +8080,7 @@ document.getElementById("achClose").onclick=function(){document.getElementById("
     if(!l){hint("👑 Hoechste Stufe erreicht — der Palast steht.");return;}
     var z=l.ziel;
     hint("🏅 Naechste Stufe "+z[0]+" — Hauswert "+l.wert+"/"+z[1]+" $ · Wohnbereiche "
-      +l.kat+"/"+z[2]+" · Laune der Bewohner "+l.zuf+"/"+z[3]
+      +l.kat+"/"+z[2]+" · Komfort (nutzbare Möbel) "+l.zuf+"/"+z[3]
       +"  (Abnahme an Tag "+naechsteAbnahme+")");};})();
 var hintT=null;
 function hint(t){var h=document.getElementById("hint");h.textContent=t;h.style.opacity=1;
@@ -8363,6 +8402,10 @@ function stampVilla(){
       if(ok2){ax=sx;ay=sy;}}}
   if(ax<0){hint("🏰 Kein Platz frei — räume eine 20×14-Fläche frei!");return;}
   geld-=3500;geldSend();
+  /* 🔒 Die Vorlage stellte das ab Stufe 1 gesperrte Designer-Sofa auch bei Stufe 0
+     ins Haus und umging damit die frische Freischaltung. Gesperrte Stuecke werden
+     durch ihr freies Pendant ersetzt — die Vorlage bleibt vollstaendig moebliert. */
+  var ERSATZ={sofa_design:"sofa",himmelbett:"bett",standuhr:"lampe",haistatue:"topfpflanze",pferdestatue:"topfpflanze"};
   /* 🐛 Schwarm-Befund: 3500 rein, ~9500 beim Abriss zurueck — beliebig oft wiederholbar.
      Alles Gestempelte wird als gratis markiert und zahlt beim Abriss nichts aus. */
   window._gratisBau=window._gratisBau||{};
@@ -8370,7 +8413,10 @@ function stampVilla(){
     doPlaceFloor(gx,gy,f[2]);window._gratisBau["f"+fkey(gx,gy)]=1;});
   VILLA.walls.forEach(function(w){var gx=ax+w[0],gy=ay+w[1];
     doPlaceWall(gx,gy,w[2],w[3]);window._gratisBau["w"+gx+","+gy+","+w[2]]=1;});
-  VILLA.furn.forEach(function(f){doPlaceFurn(f[0],ax+f[1],ay+f[2],f[3]);
+  VILLA.furn.forEach(function(f){
+    var _id=f[0],_d=defOf(_id);
+    if(_d&&_d.stufe&&_d.stufe>wohnstufe)_id=ERSATZ[_id]||"topfpflanze";
+    doPlaceFurn(_id,ax+f[1],ay+f[2],f[3]);
     var _neu=furn[furn.length-1];if(_neu)_neu.gratis=1;});
   stats.moebelGekauft=(stats.moebelGekauft||0)+VILLA.furn.length;
   updHUD();beep(660,.1,"triangle",.06);setTimeout(function(){beep(880,.14,"triangle",.06);},140);
@@ -8446,9 +8492,15 @@ function loop(now){
     document.getElementById("minimap").style.display=(running&&!buildMode)?"block":"none";
     layoutLinkeSpalte();
     /* 🗺️ Einmal-Tipp: sonst findet niemand die grosse Karte hinter dem Radar */
-    if(running&&!buildMode&&!window._mapTip){window._mapTip=true;
-      try{if(!localStorage.getItem("th_maptip")){localStorage.setItem("th_maptip","1");
-        setTimeout(function(){hint("🗺️ Tipp aufs Radar = grosse Weltkarte");},4000);}}catch(e){}}
+    /* 🩹 Der Einmal-Tipp feuerte, waehrend die Intro-Karte noch offen war — der
+       Hinweis lief unsichtbar dahinter ab und das localStorage-Flag war trotzdem
+       gesetzt: fuer immer verbraucht, nie gesehen. Erst zeigen, wenn die Karte zu ist. */
+    if(running&&!buildMode&&!window._mapTip){
+      var _ic=document.getElementById("introCard");
+      if(!_ic||_ic.style.display==="none"||!_ic.style.display){
+        window._mapTip=true;
+        try{if(!localStorage.getItem("th_maptip")){localStorage.setItem("th_maptip","1");
+          setTimeout(function(){hint("🗺️ Tipp aufs Radar = grosse Weltkarte");},4000);}}catch(e){}}}
     document.getElementById("emoteToggle").style.display=(running&&!buildMode&&!fahren)?"block":"none";
     document.getElementById("micBtn").style.display=(running&&!buildMode&&!fahren&&MPs)?"block":"none";
     document.getElementById("pingBtn").style.display=(running&&!buildMode&&!fahren&&MPs)?"block":"none";
@@ -8762,6 +8814,7 @@ window.__th={
             hud:(document.getElementById("stufeBox")||{}).textContent};},
   abnahme:function(){bauabnahme();return this.stufe();},
   geldSetz:function(v){geld=v;updHUD();},
+  furnIds:function(){var ids={};furn.forEach(function(f){ids[f.id]=(ids[f.id]||0)+1;});return ids;},
   laeuft:function(){return running;},
   lobby:function(){return {spieler:LOBBY.spieler.slice(),gestartet:LOBBY.gestartet,
     start:getComputedStyle(document.getElementById("mpStartBtn")).display,
