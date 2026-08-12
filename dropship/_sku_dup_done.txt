@@ -472,3 +472,4 @@ gid://shopify/Product/15494466699649	CJ-1753977472850337792	Multifunktionaler Pi
 gid://shopify/Product/15494467387777	CJ-1753604714731679744	Reise-Rucksack aus echtem Leder für Herren
 gid://shopify/Product/15494496584065	CJ-1746117627677782016	Vintage Lederrucksack für Damen und Herren
 gid://shopify/Product/15494984401281	CJ-2606160844511603100	Personalisiertes Geburtsstein-Zirkon Armband
+gid://shopify/Product/15495066419585	CJ-1391643760634499072	Farbgel «Frosted Sealing Layer»
