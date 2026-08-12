@@ -1,0 +1,25 @@
+gid://shopify/Product/15448935629185	draft-medizinprodukt	Atemtrainer mit Vibrations- und Überdruckfunktion
+gid://shopify/Product/15449123488129	draft-medizinprodukt	Atemtrainer Notfallmaske
+gid://shopify/Product/15454198595969	draft-medizinprodukt	Fetusstethoskop
+gid://shopify/Product/15463670808961	draft-medizinprodukt	Tragbarer Ultraschall-Vernebler für Zuhause
+gid://shopify/Product/15479398039937	draft-medizinprodukt	Im-Ohr-Hörgerät mit Ladeetui
+gid://shopify/Product/15479398924673	draft-medizinprodukt	Mini Hörgerät für Senioren
+gid://shopify/Product/15479401185665	draft-medizinprodukt	Digitales Hörgerät für Senioren
+gid://shopify/Product/15479401251201	draft-medizinprodukt	Hörgerät mit Geräuschunterdrückung
+gid://shopify/Product/15479402758529	draft-medizinprodukt	Im-Ohr Hörgerät für Senioren
+gid://shopify/Product/15479402955137	draft-medizinprodukt	Hörgerät für Senioren mit natürlichem Klang
+gid://shopify/Product/15479534158209	draft-medizinprodukt	Wiederaufladbares Hörgerät mit Digitalanzeige
+gid://shopify/Product/15480947310977	draft-medizinprodukt	Hörgerät mit Klangverstärkung
+gid://shopify/Product/15481774866817	draft-medizinprodukt	Hörtest-Headset mit Luftleitung (HB-7)
+gid://shopify/Product/15493259264385	draft-medizinprodukt	Ventilator Nasenpolster-Set
+gid://shopify/Product/15448870748545	blutzucker-gestrichen	Smarter Gesundheits-Tracker Ring mit Ladecase
+gid://shopify/Product/15448871797121	blutzucker-gestrichen	Smart Ring Gesundheits-Tracker mit Ladecase
+gid://shopify/Product/15448875172225	blutzucker-gestrichen	Fitness-Smartwatch mit Herzfrequenz-Tracking
+gid://shopify/Product/15448875696513	blutzucker-gestrichen	Smartes Gesundheits-Armband mit Fernpflege
+gid://shopify/Product/15448912494977	blutzucker-gestrichen	F600 Fitness-Smartwatch mit Aktivitäts-Tracking
+gid://shopify/Product/15454180049281	blutzucker-gestrichen	Smart Armband mit EKG & Körpertemperaturmessung
+gid://shopify/Product/15454197744001	blutzucker-gestrichen	Smart-Armbanduhr mit Gesundheits-Features
+gid://shopify/Product/15479468654977	blutzucker-gestrichen	Smarte Gesundheits-Uhr
+gid://shopify/Product/15479485202817	blutzucker-gestrichen	Smartwatch mit Müdigkeits- & Schlafanalyse
+gid://shopify/Product/15480173101441	blutzucker-gestrichen	Smartwatch-Armband mit Temperaturmessung
+gid://shopify/Product/15480459231617	blutzucker-gestrichen	T92 Smartwatch mit Bluetooth-Anrufen & Gesundheits-Tracker

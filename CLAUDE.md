@@ -99,6 +99,36 @@ fand drei Fehler, die **täglich neu entstanden**, weil nur das Ergebnis geputzt
 ⚠️ **Der Export ist ein Schnappschuss.** Agenten meldeten 7'680 falsche Versandschwellen — live waren die
 Stichproben längst korrigiert, weil ein Reiniger parallel lief. Befunde gegen die Live-Daten gegenprüfen.
 
+## 🩻 Medizinprodukte + falsche Gesundheitsversprechen (2026-08-11)
+**Gefunden über die Shop-Suche**: «Ventilator» lieferte im August als ERSTEN Treffer ein
+«Ventilator Nasenpolster-Set» (CHF 45.90) — Zubehör für eine **Beatmungsmaske**. Im Englischen
+heisst das Gerät «ventilator», im Deutschen «Beatmungsgerät»; die Übersetzung war wörtlich
+übernommen. Die Spur führte zu **14 aktiven Medizingeräten**: 8 Hörgeräte (CHF 40–79), ein
+Hörtest-Headset (CHF 200.90), ein **Fetusstethoskop**, 2 Atemtrainer/Notfallmasken, ein
+Ultraschall-Vernebler. Nach MepV brauchen die eine Konformitätsbewertung; Hörgeräte werden zudem
+angepasst, nicht versandt. → alle auf DRAFT mit Tag `medizinprodukt-pruefen` (nicht gelöscht —
+mit Unterlagen wieder freischaltbar). `automation/medizinprodukte_guard.py`.
+**Dazu 11 Wearables mit Blutzucker-Versprechen** («Smart Armband mit EKG, Blutzucker- &
+Körpertemperaturmessung», CHF 59.90). Kein Konsumenten-Armband misst Blutzucker durch die Haut —
+wer als Diabetikerin darauf vertraut, riskiert eine Unterzuckerung. Behauptung aus Titel und Text
+gestrichen, Produkte bleiben aktiv.
+⚠️ **Zwei Fehltreffer NICHT anfassen**: «Silberoxid-Knopfzellen» nennt Blutzuckermessgeräte als
+Einsatzzweck der Batterie, «Saure Zungen» führt Glukosesirup in der Zutatenliste. Das Muster
+greift deshalb nur bei Armband/Uhr/Ring.
+**Suche danach gegengeprüft**: «Ventilator» liefert jetzt echte Lüfter, «Hörgerät» nur noch ein
+Reinigungsset (Zubehör, kein Gerät).
+
+## 🔗 Tote Verweise in Produkttexten (2026-08-11)
+Jede Beschreibung endet mit «👉 Passt dazu: …». Von 34 Zielen liefen 3 ins Leere:
+`beauty-geraete` (20× verlinkt), `handwerkzeug`, `elektrowerkzeug`. Ursache war NICHT ein falscher
+Link, sondern die **Publish-Falle**: Die Kollektionen existieren mit 58/275/96 Produkten, waren
+aber nie im Onlineshop veröffentlicht. Freigeschaltet + Text/SEO ergänzt, alle drei liefern 200.
+**Von 80 Kollektions-Links in allen Menüs zeigt keiner auf eine unveröffentlichte Kollektion.**
+82 weitere unveröffentlichte Kollektionen (≥20 Produkte) sind Doppelgänger der Menü-Kategorien
+(`damenschuhe` vs. `damen-schuhe`) — bleiben zu Recht aus, sonst konkurrierende Seiten.
+⚠️ Bei schnellen Link-Prüfungen antwortet luxestyle.ch mit **429**; das ist die eigene Drosselung,
+kein toter Link. Mit Pause nachprüfen, bevor man es als Fehler meldet.
+
 ## 🧽 Kundensichtbarer Text bereinigt (2026-08-11, «mache alles fehler frei»)
 - **42 Beschreibungen**: Lieferantencodes aus dem Farb-/Variantentext («Farben: CK228-1, CK228-2»,
   «Farbe: RM47-Plaid» → «Farbe: Plaid»). `automation/farbcode_bereinigen.py`.
