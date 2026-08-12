@@ -59,6 +59,16 @@
     @media(max-width:1560px){.hnav .lk--lo{display:none}}
     @media(max-width:1400px){.hnav{gap:.95rem;font-size:.89rem}}
     @media(max-width:820px){.hnav .lk{display:none}.hnav .lk--keep{display:inline}}
+    /* Unter ~600px brach nichts um (flex-wrap:nowrap + white-space:nowrap) — die Zeile
+       wurde 619px breit und die ganze Seite bekam horizontales Scrollen auf dem Handy. */
+    @media(max-width:600px){
+      header .wrap{gap:.55rem}
+      .hnav{gap:.55rem}
+      .hnav .lk--keep{display:none}
+      .lang{font-size:.72rem}.lang a{padding:.3rem .45rem}
+      .hide-xs{display:none}
+      .hnav .btn--sm{padding:.5rem .8rem;font-size:.85rem}
+    }
     /* Schnell-Link-Leiste — alle wichtigen Ziele, auf dem Handy horizontal scrollbar */
     .quicklinks{background:#fff;border-bottom:1px solid var(--line)}
     .quicklinks .qwrap{max-width:1140px;margin:0 auto;display:flex;align-items:center;gap:.5rem;overflow-x:auto;padding:.55rem 1.25rem;scrollbar-width:thin}
@@ -265,7 +275,7 @@
       <a href="https://abannews.beehiiv.com" class="lk lk--lo" target="_blank" rel="noopener" title="Schon Premium? Anmelden per Magic-Link (beehiiv)">Pro-Login</a>
       <a href="/shop.html" class="lk lk--lo">Shop</a>
       <span class="lang" role="group" aria-label="Sprache wählen"><a href="/" class="on" aria-current="page">DE</a><a href="/en/">EN</a><a href="/fr/">FR</a><a href="/it/">IT</a></span>
-      <a href="#signup" class="btn btn--amber btn--sm">Gratis abonnieren</a>
+      <a href="#signup" class="btn btn--amber btn--sm"><span class="hide-xs">Gratis </span>abonnieren</a>
     </nav>
   </div>
 </header>
@@ -504,7 +514,7 @@
       <p class="sub">Kurze, ehrliche Tool-Checks &amp; Faktenchecks als Video — täglich neu, ohne Hype.</p>
       <div style="display:flex;justify-content:center;margin:1.2rem 0">
         <a id="reelteaserwrap" href="/reels" style="display:none;width:248px;max-width:80vw;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 8px 26px rgba(0,0,0,.10);background:#000">
-          <video id="reelteaser" muted loop playsinline preload="metadata" style="display:block;width:100%;aspect-ratio:9/16;object-fit:cover" role="img" aria-label="KI-Reel Vorschau"></video>
+          <video id="reelteaser" muted loop playsinline preload="none" style="display:block;width:100%;aspect-ratio:9/16;object-fit:cover" role="img" aria-label="KI-Reel Vorschau"></video>
         </a>
       </div>
       <p><a href="/reels" class="btn btn--amber">Alle KI-Reels ansehen →</a></p>
@@ -516,11 +526,14 @@
     if(!v) return;
     fetch('/media/reels/manifest.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(d){
       var reels=(d&&d.reels)||[]; if(!reels.length) return;
-      v.src=reels[0].file; w.style.display='block';
-      var play=function(){ v.play().catch(function(){}); };
+      /* Die Reel-Datei ist ~8 MB. src sofort zu setzen hiess: jeder Handy-Besuch der
+         Startseite lud das komplette Video, auch wenn nie bis dahin gescrollt wurde.
+         Jetzt haengt src erst, wenn der Teaser sich dem Bildschirm naehert. */
+      var file=reels[0].file; w.style.display='block';
+      var play=function(){ if(!v.src){v.src=file;} v.play().catch(function(){}); };
       if('IntersectionObserver' in window){
-        new IntersectionObserver(function(es){es.forEach(function(e){ e.isIntersecting?play():v.pause(); });},{threshold:0.4}).observe(v);
-      } else { v.setAttribute('autoplay',''); play(); }
+        new IntersectionObserver(function(es){es.forEach(function(e){ e.isIntersecting?play():v.pause(); });},{threshold:0.15,rootMargin:'200px'}).observe(v);
+      } else { play(); }
     }).catch(function(){});
   })();
   </script>
