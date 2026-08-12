@@ -6356,3 +6356,7 @@ gid://shopify/Product/15450215088513	10->0	Lenkradbezug
 gid://shopify/Product/15450215186817	20->0	Lenkradbezug Holzprägung
 gid://shopify/Product/15466070311297	25->0	Elegantes A-Linien Midikleid mit V-Ausschnitt
 gid://shopify/Product/15469436240257	9->0	Gefütterte Fleece-Hose mit hohem Bund
+gid://shopify/Product/15469984219521	41->0	Perücke Beautiful blond
+gid://shopify/Product/15469984317825	27->0	Perücke Djamilla Bob blond
+gid://shopify/Product/15469984416129	37->2	Perücke Amara, grau-schwarz
+gid://shopify/Product/15469984743809	34->0	Perücke Stalker orange, lange
