@@ -529,3 +529,4 @@ gid://shopify/Product/15495731970433	CJ-1413326298939527168	Hall Sofa Kissenbezu
 gid://shopify/Product/15495732461953	CJ-1412999384240623616	Tragbare Kindermatratze für Büro, Auto & Zuhause
 gid://shopify/Product/15495733084545	CJ-1412335779467890688	Marokkanisches Kissen mit Tufting
 gid://shopify/Product/15495733281153	CJ-1412332410972016640	Nordisches Kissen mit Quasten – Grün
+gid://shopify/Product/15496017576321	CJ-2510260243271607700	Besticktes Anti-Verlust-Halsband mit Telefonnummer
