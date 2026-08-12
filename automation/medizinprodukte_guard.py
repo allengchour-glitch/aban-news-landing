@@ -39,8 +39,32 @@ DRY = os.environ.get("DRY") == "1"
 EXPORT = os.environ.get("EXPORT", "/tmp/export.jsonl")
 LEDGER = "dropship/_medizinprodukte.txt"
 
-GERAET = re.compile(r'H[öo]rger[äa]t|H[öo]rtest|Fetusstethoskop|Atemtrainer|Notfallmaske|'
-                    r'Vernebler|Inhalator|Ventilator[- ]Nasen|CPAP', re.I)
+# ⚠️ NACHTRAG 12.08.2026 — die Nachkontrolle fand NEUN weitere aktive Geräte. Alle waren
+# gestern schon da; das Muster hat sie nicht erkannt, weil sie ANDERS HEISSEN. Der
+# «Hörverstärker für Senioren» (CHF 78.90) ist dasselbe Gerät wie die acht gedrafteten
+# Hörgeräte, nur mit einem Wort davor, das nicht auf der Liste stand. Lehre: bei
+# Medizinprodukten nach der FUNKTION suchen, nicht nach der Produktbezeichnung des Verkäufers.
+GERAET = re.compile(r'H[öo]rger[äa]t|H[öo]rverst[äa]rker|H[öo]rtest|Fetusstethoskop|'
+                    r'Atemtrainer|Notfallmaske|Vernebler|Inhalator|Ventilator[- ]Nasen|CPAP|'
+                    r'(?:Stirn|Fieber|Ohr)thermometer|Thermometer.{0,20}kontaktlos|'
+                    r'kontaktlos.{0,20}Thermometer|Milchpumpe|Entlastungsschuh|'
+                    r'Vorfuss\w*schuh|Zahnsteinentferner|Zahnstein\w*Entferner|'
+                    r'Lichtwellen[- ]?Therapie|Lasertherapie\w*|Blutbestrahlung', re.I)
+# ⚠️ Zubehör ist kein Gerät. Das «Reinigungsset für digitale Hörgeräte» trägt das Wort
+# «Hörgerät» im Titel und ist doch nur eine Bürste mit Tuch.
+ZUBEHOER = re.compile(r'Reinigungs(?:set|-?Set|b[üu]rste)|Pflegeset|Ersatz(?:filter|polster)|'
+                      r'Aufbewahrungsbox|Etui\b', re.I)
+
+# ⚠️ Eine Selbstaussage im Text («dies ist ein medizinisches Gerät», «FDA-zertifiziert») war im
+# ersten Entwurf ein Draft-Grund. Der Probelauf zeigte, warum das nicht trägt:
+#   • Ein Massagegerät schrieb «KEIN medizinisches Gerät – dient dem Wohlbefinden» — also genau
+#     den richtigen Hinweis. Das Muster las die Verneinung als Geständnis.
+#   • Eine Trinkwasserpumpe nannte «lebensmittelechte Materialien, von der US FDA zertifiziert».
+#     Das ist die Lebensmittelbehörde in ihrer Lebensmittelrolle, kein Medizinproduktesiegel.
+# Übrig blieben zwei echte Fälle (LED-Maske, Photonen-Gerät) — und bei denen ist nicht das
+# Produkt das Problem, sondern der Satz. Die Behauptung wird deshalb in
+# `heilversprechen.py` gestrichen; gedraftet wird hier nur, was der FUNKTION nach ein
+# Medizingerät ist.
 # Nur Tragbares zählt als Kandidat für das Blutzucker-Versprechen.
 TRAGBAR = re.compile(r'armband|smartwatch|uhr\b|watch|\bring\b|tracker|band\b', re.I)
 ZUCKER_TITEL = re.compile(r'\s*[,·&-]?\s*Blutzucker\s*-?\s*(?:und|&|,)?\s*', re.I)
@@ -94,7 +118,7 @@ def main():
             continue
         t = p["title"]
         html = p.get("descriptionHtml") or ""
-        if GERAET.search(t):
+        if GERAET.search(t) and not ZUBEHOER.search(t):
             geraete.append((p["id"], t, float(p["priceRangeV2"]["minVariantPrice"]["amount"])))
             continue
         if not TRAGBAR.search(t):

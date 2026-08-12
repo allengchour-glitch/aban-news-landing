@@ -104,14 +104,22 @@ def gql(q, v=None):
     return {}
 
 
-# Der Tag `uhren` steckt auch auf Smartwatches und Fitness-Trackern. Die gehören NICHT unter
-# Schmuck-Uhren, sondern zu tragbarer Elektronik — dort sucht auch die Kundschaft danach.
-# Diese Titelmuster stechen deshalb die Tag-Regeln.
+# ⚠️ HIER STAND EIN GUT GEMEINTER FEHLER (korrigiert 12.08.2026).
+# Der Tag `uhren` steckt auch auf Smartwatches und Fitness-Trackern, und die unter
+# «Schmuck > Uhren» abzulegen fühlte sich falsch an. Also zeigte diese Vorrang-Regel nach
+# «Electronics > Electronics Accessories > Wearable Technology > Smart Watches».
+# Diesen Zweig gibt es in GOOGLES Taxonomie nicht — er stammt aus SHOPIFYS Taxonomie. Geprüft
+# an der Quelldatei (5'595 Pfade): das Wort «wearable» kommt darin kein einziges Mal vor.
+# Folge: Google verwarf den Wert, und 204 Smartwatches standen faktisch ohne Kategorie da —
+# schlechter als die Ungenauigkeit, die vermieden werden sollte.
+# «Apparel & Accessories > Jewelry > Watches» ist der Zweig, den Google für Uhren am
+# Handgelenk tatsächlich führt. Lehre: eine Kategorie nicht danach wählen, wie treffend sie
+# klingt, sondern danach, ob der Empfänger sie kennt.
 VORRANG = [
     (re.compile(r'smart\s*-?\s*watch|smartuhr', re.I),
-     "Electronics > Electronics Accessories > Wearable Technology > Smart Watches"),
+     "Apparel & Accessories > Jewelry > Watches"),
     (re.compile(r'fitness\s*-?\s*(tracker|armband)|activity\s*tracker', re.I),
-     "Electronics > Electronics Accessories > Wearable Technology > Activity Trackers"),
+     "Apparel & Accessories > Jewelry > Watches"),
 ]
 
 
@@ -151,7 +159,10 @@ NACH_TYP = {
     "Werkzeug":              "Hardware > Tools",
     "Musikinstrumente":      "Arts & Entertainment > Hobbies & Creative Arts > Musical Instruments",
     "Sport & Outdoor":       "Sporting Goods",
-    "Partydeko & Ballone":   "Home & Garden > Decor > Party Supplies",
+    # Party Supplies hängt bei Google unter «Arts & Entertainment», nicht unter «Home & Garden
+    # > Decor» — die naheliegende Ableitung «Deko also Home & Garden» war falsch und hat
+    # 46 Produkten einen Pfad gegeben, den Google verwirft.
+    "Partydeko & Ballone":   "Arts & Entertainment > Party & Celebration > Party Supplies",
     "Audio":                 "Electronics > Audio",
     "Beauty Tools":          "Health & Beauty > Personal Care > Cosmetics",
     "Beauty & Pflege":       "Health & Beauty > Personal Care",

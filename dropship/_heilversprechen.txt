@@ -1,0 +1,138 @@
+gid://shopify/Product/15447876567425	wearable-messversprechen	Smart Ring mit Fitness- und Gesundheits-Tracking
+gid://shopify/Product/15448872714625	wearable-messversprechen	Smart Ring mit Gesundheits- und Fitness-Tracking
+gid://shopify/Product/15448873533825	wearable-messversprechen	Smarter Retro Ring für Herzfrequenz
+gid://shopify/Product/15448875172225	wearable-messversprechen	Fitness-Smartwatch mit Herzfrequenz-Tracking
+gid://shopify/Product/15448875499905	wearable-messversprechen	S5 Fitness-Armband mit Temperaturmessung
+gid://shopify/Product/15448875630977	wearable-messversprechen	Smartes Sportarmband mit Herzfrequenzmessung
+gid://shopify/Product/15448875696513	wearable-messversprechen	Smartes Gesundheits-Armband mit Fernpflege
+gid://shopify/Product/15448875762049	wearable-messversprechen	Smartwatch mit Herzfrequenz- und Schlaf-Tracking
+gid://shopify/Product/15448875860353	wearable-messversprechen	Smartes Sportarmband mit Herzfrequenzmessung
+gid://shopify/Product/15448875991425	wearable-messversprechen	Smartes Sportarmband mit Herz
+gid://shopify/Product/15448877105537	wearable-messversprechen	Dual-Screen Smart Armband
+gid://shopify/Product/15448877203841	wearable-messversprechen	Smartwatch mit Herzfrequenz
+gid://shopify/Product/15448877334913	wearable-messversprechen	Smart-Armband mit Pulsmesser
+gid://shopify/Product/15448877597057	wearable-messversprechen	Smart-Armband mit Schritt- & Schlafüberwachung
+gid://shopify/Product/15448877629825	wearable-messversprechen	P10 Smart Health Armband
+gid://shopify/Product/15448877662593	wearable-messversprechen	Kinder Smartwatch mit GPS und Videoanruf
+gid://shopify/Product/15448877826433	wearable-messversprechen	GPS SOS Armband mit Herzfrequenz- und Sturzalarm
+gid://shopify/Product/15448877859201	wearable-messversprechen	Smart-Armband E58 mit Herzfrequenz-Messung
+gid://shopify/Product/15448878023041	wearable-messversprechen	Smartwatch mit Herzfrequenz
+gid://shopify/Product/15448878383489	wearable-messversprechen	Smartes Fitness Armband mit Pulsmesser
+gid://shopify/Product/15448878416257	wearable-messversprechen	Smartwatch mit Fitness-Tracking & Bluetooth-Anrufen
+gid://shopify/Product/15448878514561	wearable-messversprechen	Multifunktionale Outdoor Smartwatch mit Taschenlampe
+gid://shopify/Product/15448878645633	wearable-messversprechen	Smartwatch mit Bluetooth-Telefonie & Fitness-Tracker
+gid://shopify/Product/15448878711169	wearable-messversprechen	Smartwatch & Bluetooth Earbuds Set mit Dual-Armband
+gid://shopify/Product/15448878743937	wearable-messversprechen	Smartwatch mit Bluetooth-Anrufen und Fitness-Tracker
+gid://shopify/Product/15448880480641	wearable-messversprechen	Smart Armband mit Herzfrequenzmessung
+gid://shopify/Product/15448880644481	wearable-messversprechen	Fitness-Smartwatch mit Herzfrequenz-Tracking
+gid://shopify/Product/15448880742785	wearable-messversprechen	Smart Armband für Herzfrequenz & Schlaf
+gid://shopify/Product/15448910922113	wearable-messversprechen	Fitness-Smartwatch mit Herzfrequenz-Tracking
+gid://shopify/Product/15448912494977	wearable-messversprechen	F600 Fitness-Smartwatch mit Aktivitäts-Tracking
+gid://shopify/Product/15449077285249	wearable-messversprechen	W-1 Smart Bracelet Fitness Uhr
+gid://shopify/Product/15449119654273	wearable-messversprechen	Smartwatch mit Gesundheits- und Sportfunktionen
+gid://shopify/Product/15449128403329	wearable-messversprechen	Smart-Armband mit GPS, Herzfrequenz
+gid://shopify/Product/15450857603457	wearable-messversprechen	Smart-Armband
+gid://shopify/Product/15453778706817	wearable-messversprechen	Gesundheits-Armband mit Herzfrequenzmessung
+gid://shopify/Product/15453892903297	wearable-messversprechen	Smartwatch mit Gesundheitsueberwachung
+gid://shopify/Product/15453893001601	wearable-messversprechen	Smartwatch mit Gesundheitsfunktionen
+gid://shopify/Product/15454180049281	wearable-messversprechen	Smart Armband mit & Körpertemperaturmessung
+gid://shopify/Product/15454180213121	wearable-messversprechen	DT Sports Watch mit Herzfrequenz und Bluetooth
+gid://shopify/Product/15454180278657	wearable-messversprechen	Fitness-Armband mit Herzfrequenzmessung
+gid://shopify/Product/15454496129409	wearable-messversprechen	Smarte Armbanduhr mit Sturz-Erkennung
+gid://shopify/Product/15454498488705	wearable-messversprechen	Smart-Armband mit Vollbildschirm
+gid://shopify/Product/15472687776129	wearable-messversprechen	Outdoor-Smartwatch
+gid://shopify/Product/15478467625345	wearable-messversprechen	Smart Armbanduhr
+gid://shopify/Product/15478468346241	wearable-messversprechen	Smartwatch mit Touchscreen und Gesundheitsfunktionen
+gid://shopify/Product/15478469394817	wearable-messversprechen	Smartwatch mit 1.4 Zoll HD-Display und Herzfrequenz
+gid://shopify/Product/15478470017409	wearable-messversprechen	Smart-Armband mit Herzfrequenz
+gid://shopify/Product/15479074062721	wearable-messversprechen	Smartwatch Armband
+gid://shopify/Product/15479378084225	wearable-messversprechen	Armband , Herzfrequenz, Blutsauerstoff, Temperatur
+gid://shopify/Product/15479415374209	wearable-messversprechen	Smartwatch GT mit Gesundheitsfunktionen
+gid://shopify/Product/15479415767425	wearable-messversprechen	Smartwatch rund mit Bluetooth-Telefonie und Herzfrequenz
+gid://shopify/Product/15479416422785	wearable-messversprechen	Smartwatch mit Bluetooth-Anruf und NFC-Zahlung
+gid://shopify/Product/15479416717697	wearable-messversprechen	Smart Bluetooth Sport-Armband
+gid://shopify/Product/15479416914305	wearable-messversprechen	Smartwatch mit Kamera und Telefonfunktion
+gid://shopify/Product/15479417045377	wearable-messversprechen	Smartwatch T98 mit Bluetooth-Anruf und Gesundheitsfunktionen
+gid://shopify/Product/15479417766273	wearable-messversprechen	KT80 Smartwatch mit HD-Display & Bluetooth-Anrufen
+gid://shopify/Product/15479466656129	wearable-messversprechen	HD21 Smartwatch mit Bluetooth-Telefonie
+gid://shopify/Product/15479466885505	wearable-messversprechen	H9 Smartwatch mit Bluetooth-Anruffunktion
+gid://shopify/Product/15479467377025	wearable-messversprechen	X8X9X10 Smartwatch mit Powerbank & Headset
+gid://shopify/Product/15479467475329	wearable-messversprechen	Smartwatch mit Bluetooth-Telefonie & Herzfrequenz
+gid://shopify/Product/15479467737473	wearable-messversprechen	V89 Ultra-dünne Smartwatch mit Bluetooth-Anrufen
+gid://shopify/Product/15479467835777	wearable-messversprechen	Smart Watch Ultra-dünn mit Bluetooth-Anruffunktion
+gid://shopify/Product/15479468065153	wearable-messversprechen	D11 Smartwatch mit Anruffunktion
+gid://shopify/Product/15479468196225	wearable-messversprechen	Smartwatch mit Gesundheits-Monitoring
+gid://shopify/Product/15479468294529	wearable-messversprechen	Outdoor Smartwatch mit Gesundheitsfunktionen
+gid://shopify/Product/15479468654977	wearable-messversprechen	Smarte Gesundheits-Uhr
+gid://shopify/Product/15479468786049	wearable-messversprechen	Smartwatch für Senioren mit GPS
+gid://shopify/Product/15479468982657	wearable-messversprechen	Smartwatch mit Fitness- & Schlaf-Tracking
+gid://shopify/Product/15479469441409	wearable-messversprechen	Smartwatch mit Herzfrequenz- & Schlaf-Tracking
+gid://shopify/Product/15479469638017	wearable-messversprechen	Bluetooth Smartwatch für Damen, ultradünn
+gid://shopify/Product/15479469834625	wearable-messversprechen	Smartwatch für Herzfrequenz, Schlaf & Blutsauerstoff
+gid://shopify/Product/15479469998465	wearable-messversprechen	M99 Smartwatch mit grossem AMOLED-Display
+gid://shopify/Product/15479484154241	wearable-messversprechen	GTS8 Smartwatch mit Bluetooth
+gid://shopify/Product/15479484318081	wearable-messversprechen	Smartwatch S15
+gid://shopify/Product/15479485038977	wearable-messversprechen	Smartwatch 4 mit drehbarer Kamera
+gid://shopify/Product/15479485202817	wearable-messversprechen	Smartwatch mit Müdigkeits- & Schlafanalyse
+gid://shopify/Product/15479485432193	wearable-messversprechen	Smartwatch mit HD-Display und Bluetooth-Anrufen
+gid://shopify/Product/15479485727105	wearable-messversprechen	NFC Smartwatch für Multisport
+gid://shopify/Product/15479485825409	wearable-messversprechen	Smartwatch für Schlaf- und Gesundheitsmonitoring
+gid://shopify/Product/15479486415233	wearable-messversprechen	Outdoor Smartwatch mit Herzfrequenz
+gid://shopify/Product/15479486677377	wearable-messversprechen	H20 Smartwatch für Damen mit HD Bluetooth Anruf
+gid://shopify/Product/15479486808449	wearable-messversprechen	X5 Smartwatch mit Bluetooth & GPS
+gid://shopify/Product/15479487103361	wearable-messversprechen	Multifunktionale Smartwatch mit grossem Display
+gid://shopify/Product/15479487398273	wearable-messversprechen	Sport Smartwatch mit Blutsauerstoffmessung
+gid://shopify/Product/15479487758721	wearable-messversprechen	4G All-Netcom Kinder-Smartwatch
+gid://shopify/Product/15479512924545	wearable-messversprechen	Smart-Armband mit , Herzfrequenz und Temperatur
+gid://shopify/Product/15479513514369	wearable-messversprechen	Smart-Armband mit Herzfrequenzmessung
+gid://shopify/Product/15479513874817	wearable-messversprechen	Tracker mit Farbdisplay
+gid://shopify/Product/15480138793345	wearable-messversprechen	B60 Smart-Armband mit Farbdisplay
+gid://shopify/Product/15480139088257	wearable-messversprechen	Smartwatch mit Bluetooth-Anruf und Herzfrequenzmesser
+gid://shopify/Product/15480140628353	wearable-messversprechen	Smart-Armband mit Herzfrequenz- und Schlaf-Tracking
+gid://shopify/Product/15480161337729	wearable-messversprechen	Smartwatch mit Bluetooth-Anruffunktion
+gid://shopify/Product/15480162681217	wearable-messversprechen	Multifunktionales Sport-Gesundheitsarmband
+gid://shopify/Product/15480164254081	wearable-messversprechen	Outdoor Kompass 5ATM Wasserdichte Smartwatch
+gid://shopify/Product/15480167072129	wearable-messversprechen	Smartwatch mit Herzfrequenz- und Bluetooth-Anruffunktion
+gid://shopify/Product/15480167858561	wearable-messversprechen	Smartwatch mit AMOLED-Display & NFC
+gid://shopify/Product/15480168743297	wearable-messversprechen	Smartwatch Gold Edition mit Herzfrequenzmessung
+gid://shopify/Product/15480170611073	wearable-messversprechen	Smartwatch mit Bluetooth-Anruf & Gesundheits-Tracking
+gid://shopify/Product/15480178114945	wearable-messversprechen	Outdoor Sport Smartwatch mit Bluetooth-Anrufen
+gid://shopify/Product/15480178835841	wearable-messversprechen	Smartwatch mit Körperanalyse & Bluetooth-Anruf
+gid://shopify/Product/15480179589505	wearable-messversprechen	Smartwatch mit Bluetooth-Telefonie
+gid://shopify/Product/15480457691521	wearable-messversprechen	Smart Watch mit Herzfrequenz
+gid://shopify/Product/15480458281345	wearable-messversprechen	GT4MAX Smartwatch mit Bluetooth-Telefonie
+gid://shopify/Product/15480459231617	wearable-messversprechen	T92 Smartwatch mit Bluetooth-Anrufen & Gesundheits-Tracker
+gid://shopify/Product/15480460509569	wearable-messversprechen	Smartwatch mit Bluetooth-Telefonie & Gesundheitsfunktionen
+gid://shopify/Product/15480461296001	wearable-messversprechen	Smart Armband mit Bluetooth-Anruffunktion
+gid://shopify/Product/15480461918593	wearable-messversprechen	Sport Smartwatch mit Bluetooth-Anruffunktion
+gid://shopify/Product/15480479252865	wearable-messversprechen	Smartwatch mit Gesundheits- und Anruffunktion
+gid://shopify/Product/15480826298753	wearable-messversprechen	Wasserdichte Smartwatch mit Gesundheitsmonitoring
+gid://shopify/Product/15480827412865	wearable-messversprechen	M3 Smart Armband mit Farbdisplay
+gid://shopify/Product/15480828100993	wearable-messversprechen	D20 Smart Health Armband Y68 Sports-Armband
+gid://shopify/Product/15480828461441	wearable-messversprechen	F9 Smart-Armband mit Farbdisplay
+gid://shopify/Product/15480828920193	wearable-messversprechen	Smart-Armband mit Herzfrequenz
+gid://shopify/Product/15481067405697	wearable-messversprechen	Smart-Armband
+gid://shopify/Product/15481068421505	wearable-messversprechen	QS19 Smart-Armband mit Gesundheitsmonitoring
+gid://shopify/Product/15481068552577	wearable-messversprechen	DTX Smartwatch 1.78" HD Sport & Alarm
+gid://shopify/Product/15481070780801	wearable-messversprechen	Smart-Armband für Sport und Gesundheit
+gid://shopify/Product/15481073500545	wearable-messversprechen	F18 Smartwatch mit Metallarmband für Damen
+gid://shopify/Product/15481076875649	wearable-messversprechen	Smart-Armband: Herzfrequenz, Temperatur
+gid://shopify/Product/15481248514433	wearable-messversprechen	Smart Armband
+gid://shopify/Product/15481259819393	wearable-messversprechen	V19 Smart Armband mit , PPG und SpO2
+gid://shopify/Product/15484227486081	wearable-messversprechen	Smartwatch mit Sauerstoffmessung
+gid://shopify/Product/15486339580289	wearable-messversprechen	E500 Bluetooth Fitness Armband
+gid://shopify/Product/15489552417153	wearable-messversprechen	Smartwatch 4G
+gid://shopify/Product/15492023943553	wearable-messversprechen	Gesundheits-Smartwatch mit & Körperanalyse
+gid://shopify/Product/15492084924801	wearable-messversprechen	C28 Smartwatch Outdoor Sportuhr
+gid://shopify/Product/15493348393345	wearable-messversprechen	T8 Smartwatch für Damen mit Herzfrequenzmessung
+gid://shopify/Product/15493620072833	wearable-messversprechen	Smartwatch mit NFC und Bluetooth-Telefonie
+gid://shopify/Product/15493830181249	wearable-messversprechen	Smartwatch mit Herzfrequenzmessung
+gid://shopify/Product/15493864554881	wearable-messversprechen	Smartwatch mit Touchscreen & Gesundheitsfunktionen
+gid://shopify/Product/15493869863297	wearable-messversprechen	GT20 Smartwatch mit Bluetooth-Telefonie & Gesundheitsmonitor
+gid://shopify/Product/15493871239553	wearable-messversprechen	2-in-1 Bluetooth Smartwatch mit Herzfrequenz
+gid://shopify/Product/15493871370625	wearable-messversprechen	Smartwatch & Herzfrequenz
+gid://shopify/Product/15493915771265	wearable-messversprechen	Smart-Armband - & Temperaturmessung
+gid://shopify/Product/15495135035777	wearable-messversprechen	Smartwatch mit Herzfrequenz
+gid://shopify/Product/15449428066689	heilaussage-gestrichen	Blaues Licht für reine Haut
+gid://shopify/Product/15449430000001	heilaussage-gestrichen	Rückenstrecker Kissen
+gid://shopify/Product/15449481773441	heilaussage-gestrichen	4-in-1 Hochfrequenz Akne-Stick

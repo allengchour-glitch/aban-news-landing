@@ -23,3 +23,9 @@ gid://shopify/Product/15479468654977	blutzucker-gestrichen	Smarte Gesundheits-Uh
 gid://shopify/Product/15479485202817	blutzucker-gestrichen	Smartwatch mit Müdigkeits- & Schlafanalyse
 gid://shopify/Product/15480173101441	blutzucker-gestrichen	Smartwatch-Armband mit Temperaturmessung
 gid://shopify/Product/15480459231617	blutzucker-gestrichen	T92 Smartwatch mit Bluetooth-Anrufen & Gesundheits-Tracker
+gid://shopify/Product/15454045962625	draft-medizinprodukt	Neuer Hörverstärker mit USB-C für Senioren
+gid://shopify/Product/15466023747969	draft-medizinprodukt	Elektrische, tragbare Milchpumpe
+gid://shopify/Product/15466071458177	draft-medizinprodukt	Tragbare elektrische Milchpumpe (ein- oder doppelseitig)
+gid://shopify/Product/15470741684609	draft-medizinprodukt	Freihändige elektrische Milchpumpe
+gid://shopify/Product/15481801146753	draft-medizinprodukt	Stirnthermometer kontaktlos
+gid://shopify/Product/15490726592897	draft-medizinprodukt	Handgelenk-Lichtwellen-Therapiegerät

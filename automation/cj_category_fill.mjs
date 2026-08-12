@@ -5,6 +5,7 @@
  * ENV: CJ_TOKEN · SHOPIFY_CLIENT_ID/SECRET · GEMINI(/tmp/gemini_key) · GRP=nagel · CAP=40 · DRY=1
  */
 import fs from 'node:fs';
+import {googleKategorie} from './google_kategorie.mjs';
 const SHOP='au3j0y-hq.myshopify.com',API='2025-01';
 const CID=process.env.SHOPIFY_CLIENT_ID,CSEC=process.env.SHOPIFY_CLIENT_SECRET;
 const CJT=(process.env.CJ_TOKEN||'').trim();
@@ -381,6 +382,13 @@ for(const [cat,label] of grp.cats){
                // Importer nicht mitschreibt, fehlt ab dem nächsten Tag wieder. «new» stimmt
                // hier immer: Gebrauchtes und Generalüberholtes ist im Shop durchweg DRAFT.
                {namespace:'mm-google-shopping',key:'condition',value:'new',type:'single_line_text_field'}];
+     // google_product_category — dieselbe Lücke wie bei `condition`, eine Feldebene weiter:
+     // der 11.08.-Backfill hob die Abdeckung auf 87 %, tags darauf trugen 6 von 1'912
+     // Neuimporten den Wert. Was der Importer nicht schreibt, muss jeden Tag nachgeputzt
+     // werden. Die Regeln liegen in google_kategorie.mjs, geprüft gegen Googles Quelldatei.
+     { const gkat=googleKategorie(title,tagsFinal,typeFinal);
+       if(gkat) mf.push({namespace:'mm-google-shopping',key:'google_product_category',
+                         value:gkat,type:'single_line_text_field'}); }
      // Farbe aus der Varianten-Option übernehmen, wenn es eine gibt — Google fragt sie bei
      // Bekleidung ab, und sie steht hier ohnehin schon sauber übersetzt bereit.
      { const farbOpt=(productOptions||[]).find(o=>o.name==='Farbe');
