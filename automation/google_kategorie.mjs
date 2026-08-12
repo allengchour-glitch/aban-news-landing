@@ -93,8 +93,21 @@ const NACH_TYP = {
 // ist im Feed schlechter als ein leerer.
 const SAMMELKORB = new Set(['Trend-Gadget', 'Trend-Produkt']);
 
+// Diese Warengruppen sagen mehr als jeder Tag und werden deshalb ZUERST gefragt. Anlass war
+// die Ballongirlande: sie trägt den Tag `dekoration` und die Warengruppe «Partydeko &
+// Ballone». Der Tag gewann und schrieb «Home & Garden > Decor» — gültig, aber nichtssagend,
+// obwohl die genaue Antwort danebenstand. Umgekehrt bleiben breite Warengruppen wie
+// «Elektronik» hinter den Tags: ein IPL-Gerät ist als «Health & Beauty» besser aufgehoben
+// denn als «Electronics», und genau das leistet der Tag.
+const SPEZIFISCHER_TYP = new Set([
+  'Partydeko & Ballone', 'Gaming-Zubehör', 'Musikinstrumente', 'Auto-Zubehör',
+  'Haustierbedarf', 'Taschen', 'Spielzeug & Spiele', 'Werkzeug & Heimwerken', 'Werkzeug',
+  'Basteln & DIY', 'Gartenwerkzeug', 'Garten & Pflanzen',
+]);
+
 export function googleKategorie(title, tags, productType) {
   for (const [muster, pfad] of VORRANG) if (muster.test(title || '')) return pfad;
+  if (SPEZIFISCHER_TYP.has(productType) && NACH_TYP[productType]) return NACH_TYP[productType];
   const t = new Set((tags || []).map(x => String(x).toLowerCase()));
   for (const [tag, pfad] of NACH_TAG) if (t.has(tag)) return pfad;
   if (SAMMELKORB.has(productType)) return null;
