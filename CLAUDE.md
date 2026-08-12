@@ -99,6 +99,29 @@ fand drei Fehler, die **täglich neu entstanden**, weil nur das Ergebnis geputzt
 ⚠️ **Der Export ist ein Schnappschuss.** Agenten meldeten 7'680 falsche Versandschwellen — live waren die
 Stichproben längst korrigiert, weil ein Reiniger parallel lief. Befunde gegen die Live-Daten gegenprüfen.
 
+## 🧽 Kundensichtbarer Text bereinigt (2026-08-11, «mache alles fehler frei»)
+- **42 Beschreibungen**: Lieferantencodes aus dem Farb-/Variantentext («Farben: CK228-1, CK228-2»,
+  «Farbe: RM47-Plaid» → «Farbe: Plaid»). `automation/farbcode_bereinigen.py`.
+  ⚠️ Mein erster Entwurf ersetzte JEDEN Bindestrich durch ein Leerzeichen, um Reste zu glätten —
+  «Retro-Glam»→«Retro Glam», «Hip-Hop»→«Hip Hop», «Kürbis-Orange»→«Kürbis Orange». 20 einwandfreie
+  Texte wären verschlechtert worden. **Nur an den Rändern aufräumen, nie innen.**
+- **81 Titel**: Artikelnummern am Titelende entfernt («Sport-Yoga Jumpsuit 88201»).
+  `automation/titelcode_entfernen.py`. **41 Codes bewusst BELASSEN**: bei 7× «Taillierte Jeansjacke
+  für Herren – Y110S/Y101S/…» ist der Code das EINZIGE Unterscheidungsmerkmal — ohne ihn gäbe es
+  sieben identische Titel, aus einem Schönheitsfehler würde ein echter Katalogfehler.
+  ⚠️ Schutzliste Pflicht: **UV400** (UV-Schutz), **TR90** (Rahmenmaterial), **RF433** (Funkfrequenz),
+  **SR626SW** (Batterie), **2025/2026** (Modell-/Saisonjahr) sind Aussagen, keine Artikelnummern.
+- **1'316 Produkte**: englische Farbwerte in der Varianten-Auswahl übersetzt («Dark Gray»→«Dunkelgrau»).
+  `automation/farbwerte_uebersetzen.py` (Mutation `productOptionUpdate` + `optionValuesToUpdate`).
+  Grösse-Farbe-Kombis («L-Black», «Black-1XL») bleiben unangetastet — dort ist die STRUKTUR falsch,
+  nicht die Sprache. Bei «Option value already exists» (Option trägt «Gray» UND «Grau») wird
+  übersprungen, sonst würden zwei Varianten verschmolzen.
+- **17 Keyword-Monster-URLs** gekürzt (bis 150 Zeichen, «herrenhose» 3× in einer URL), je mit
+  301-Weiterleitung; alt→301 und neu→200 live geprüft. `automation/handle_kuerzen.py`.
+- **Kassentest nach allen Eingriffen bestanden**: Variante mit Bestand in den Warenkorb → CHF 34.90;
+  bei CHF 69.80 bietet der Shop Gratis-Versand UND Standard CHF 7.00. Leere Grössen sind korrekt
+  `availableForSale=false`.
+
 ## ✅ Geprüft und SAUBER (2026-08-11 — nicht erneut durchkämmen)
 - **29'225 aktive Produkte:** 0 ohne Bild, 0 ohne Preis, 0 ohne Beschreibung. Produkt-SEO-Beschreibung
   fehlt bei **5**. (SEO-*Titel* fehlt bei 24'190 — das ist KEIN Mangel: Shopifys Vorgabe
