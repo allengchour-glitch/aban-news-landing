@@ -94,7 +94,16 @@ for row in rows:
     fl=bb_floor(sku)
     if fl is None:                     # BigBuy, Kosten nicht sicher → NICHT anfassen (kein Verlust)
         skipbb+=1; continue
-    floor = (cur*0.60) if fl=='NOTBB' else fl   # CJ/Eigenware: bis -40% Richtung Benchmark
+    # ⚠️ HIER FEHLTE DER ABSOLUTE BODEN (gefunden 12.08.2026).
+    # «cur*0.60» ist ein RELATIVER Boden: er begrenzt, wie weit EIN Schritt senkt — nicht,
+    # wie tief der Preis am Ende liegt. Bei wiederholten Läufen sinkt der Preis geometrisch
+    # (10.90 → 6.90 → 4.90). Der Importer rechnet mit `Math.max(landed*1.4, landed+5, 14.90)`
+    # und kann gar nichts unter CHF 14.90 anlegen; dieser Reiniger hat die Ware anschliessend
+    # wieder darunter gezogen. Genau das Muster «zwei Skripte mit gegenläufigem Ziel», das im
+    # Projektgedächtnis schon einmal bei der Versandschwelle steht.
+    # China-Fracht kostet CHF 3–6; unter CHF 14.90 ist jeder CJ-Verkauf ein Verlustgeschäft.
+    BODEN = 14.90
+    floor = max(cur*0.60, BODEN) if fl=='NOTBB' else max(fl, BODEN)
     target=price90(max(bench, floor))
     if target>=cur-0.01: skip+=1; continue
     if DRY:
