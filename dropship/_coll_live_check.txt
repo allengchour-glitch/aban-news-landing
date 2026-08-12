@@ -503,3 +503,4 @@ tier-naepfe-fuettern	ok	28	Näpfe & Füttern
 tier-pflege-unterwegs	ok	28	Pflege & Unterwegs
 blitzversand-highlights	ok	28	⚡ Blitzversand-Highlights
 werkzeug-maschinen	http-429	0	🔧 Werkzeug & Maschinen
+hype-jetzt	ok	12	🔥 Gerade im Trend
