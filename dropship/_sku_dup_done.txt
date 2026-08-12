@@ -495,3 +495,37 @@ gid://shopify/Product/15495105905025	CJ-1745796446013624320	Micro-Tech A5 Outdoo
 gid://shopify/Product/15495106003329	CJ-1742099742634553344	Drehbares Regal für 3D-Würfel-Mousseformen
 gid://shopify/Product/15495114654081	CJ-2410200525031604100	Hundelöwenmähne für Fasnacht und Fotoshooting
 gid://shopify/Product/15495211745665	CJ-1446736491165388800	Wärmebett mit Füllung
+gid://shopify/Product/15495404487041	CJ-1445121680426012672	Weihnachtsbaum-Tapestry
+gid://shopify/Product/15495405207937	CJ-1444857188081340416	Tischdecke mit Muster für Couch- oder Esstisch
+gid://shopify/Product/15495406092673	CJ-1443087897371742208	Meditationskissen aus Baumwolle
+gid://shopify/Product/15495406879105	CJ-1442735780383559680	Farbige Häkel-Sofadecke im Streifen-Look
+gid://shopify/Product/15495407632769	CJ-1442703308514004992	Sofa-Schutzhülle für Haustiere, 3-teiliges Set
+gid://shopify/Product/15495408288129	CJ-1442698431314399232	Gepolstertes Tatami-Kissen aus Strohgeflecht
+gid://shopify/Product/15495408943489	CJ-1442677163848503296	DIY Diamant-Malerei Kissenbezug Weihnachten
+gid://shopify/Product/15495409598849	CJ-1442068919950118912	Kissenhülle «Landhausblumen & Vögel»
+gid://shopify/Product/15495586251137	CJ-1439458240969707520	Dicker Teppich für Schlafzimmer im Japan-Korea-Stil
+gid://shopify/Product/15495587398017	CJ-1439134860475240448	Dekokissen für Bett und Frühstück mit Erkerbett
+gid://shopify/Product/15495588118913	CJ-1438706566311317504	Bohemian Regenbogen-Decke für gemütliches Wohnen
+gid://shopify/Product/15495589036417	CJ-1437710476388732928	Kissenbezüge Personality White Couple (2er-Set)
+gid://shopify/Product/15495590871425	CJ-1435930567798558720	Tatami Bodenmatten Set
+gid://shopify/Product/15495592771969	CJ-1435057280688197632	Japanisches Dekokissen
+gid://shopify/Product/15495594869121	CJ-1433018728559284224	Kissenhülle mit 3D-Geometrie in Orange
+gid://shopify/Product/15495595491713	CJ-2410210223421617800	Bettkissen Latex Ice Silk
+gid://shopify/Product/15495607878017	CJ-1431918592055709696	Samt-Kissen mit geometrischer Form
+gid://shopify/Product/15495608566145	CJ-1431452009587937280	Dekorativer Kissenbezug aus Flanell
+gid://shopify/Product/15495609418113	CJ-1431232756091850752	Samt-Kissenhülle mit 3D-Chrysanthemen
+gid://shopify/Product/15495611122049	CJ-1430362405707321344	Sofaüberzug Uni-Farben
+gid://shopify/Product/15495611777409	CJ-1429283630810796032	Sommerliches Leinen-Sofa-Kissen „Dream Paris“
+gid://shopify/Product/15495612334465	CJ-1428901761560743936	Drehbarer Autositzbezug für leichteres Ein- und Aussteigen
+gid://shopify/Product/15495718535553	CJ-1424934298691178496	Leopard Print Kissenbezug mit grosser Rückenlehne
+gid://shopify/Product/15495719518593	CJ-1424923499318874112	Jacquard-Kissenbezug mit Streifenmuster
+gid://shopify/Product/15495723942273	CJ-1420289858584317952	Gesteppter Kissenbezug mit Spitze
+gid://shopify/Product/15495725351297	CJ-1417727149225414656	Blumen-Rhomben-Kissenhülle
+gid://shopify/Product/15495725515137	CJ-1417718097627975680	Samt-Kissenbezug fürs Büro-Sofa
+gid://shopify/Product/15495725810049	CJ-1416956142747258880	Massagekissen mit Infrarot und Doppelrotation
+gid://shopify/Product/15495730659713	CJ-1415595028516048896	Jacquard-Bettwäsche-Set "Golden Lace"
+gid://shopify/Product/15495730987393	CJ-1415553053335097344	Aufblasbares Sitzkissen für Bürostühle
+gid://shopify/Product/15495731970433	CJ-1413326298939527168	Hall Sofa Kissenbezug
+gid://shopify/Product/15495732461953	CJ-1412999384240623616	Tragbare Kindermatratze für Büro, Auto & Zuhause
+gid://shopify/Product/15495733084545	CJ-1412335779467890688	Marokkanisches Kissen mit Tufting
+gid://shopify/Product/15495733281153	CJ-1412332410972016640	Nordisches Kissen mit Quasten – Grün
