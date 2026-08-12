@@ -24,7 +24,8 @@ const PORT = 8099;
 const OUT = process.env.SMOKE_OUT || path.join(os.tmpdir(), "aban-smoke");
 const GAMES = process.argv.slice(2).length
   ? process.argv.slice(2)
-  : ["neon-flug.html", "neon-survivor.html", "wort-des-tages.html", "wortbruecke.html", "spiele.html"];
+  : ["traumhaus.html", "lebenspfad.html", "neon-wildnis.html", "neon-survivor.html",
+     "neon-realm.html", "neon-flug.html", "wort-des-tages.html", "wortbruecke.html", "spiele.html"];
 
 const MIME = {
   ".html": "text/html", ".js": "text/javascript", ".css": "text/css",
@@ -71,8 +72,13 @@ function serve() {
     page.on("pageerror", (e) => errors.push(String(e.message)));
     const tag = game.replace(/\.html$/, "");
     try {
-      await page.goto(`http://localhost:${PORT}/${game}`, { waitUntil: "networkidle", timeout: 15000 });
-      await page.waitForTimeout(700);
+      /* traumhaus laedt ~640 GLB-Modelle (~55 s) — "networkidle" in 15 s ist dort
+         unerreichbar und liess den Smoke als Harness-Fehler durchfallen, obwohl das
+         Spiel fehlerfrei lief. Schwere Seiten: nur "load" abwarten, dann Puffer. */
+      const schwer = /traumhaus/.test(game);
+      await page.goto(`http://localhost:${PORT}/${game}`,
+        schwer ? { waitUntil: "load", timeout: 60000 } : { waitUntil: "networkidle", timeout: 15000 });
+      await page.waitForTimeout(schwer ? 8000 : 700);
       await page.screenshot({ path: path.join(OUT, `${tag}_menu.png`) });
       await page.keyboard.press("Space"); // Start (bei den meisten Spielen)
       // Spiele mit explizitem Start-Knopf (z. B. neon-realm #startBtn): zusätzlich klicken
