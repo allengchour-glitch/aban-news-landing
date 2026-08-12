@@ -623,3 +623,4 @@ gid://shopify/Product/15451903164801	nicht-versendbar	Outdoor Liegestuhl-Kissen 
 gid://shopify/Product/15452676096385	ok	Rote Obstschale
 gid://shopify/Product/15454110712193	nicht-versendbar	Gusseiserne Grillpfanne
 gid://shopify/Product/15455657492865	nicht-versendbar	Kristall Whisky Gläser Set
+gid://shopify/Product/15495091159425	ok	Faltbarer Quadrocopter mit GPS und Kamera
