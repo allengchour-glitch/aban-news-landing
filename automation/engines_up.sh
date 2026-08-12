@@ -23,7 +23,16 @@ laeuft() {   # $1 = Skriptpfad, $2 = optionales erstes Argument
     $1 ~ /(^|\/)bash$/ && $2 == s && (a == "" || $3 == a) { n++ } END { exit(n ? 0 : 1) }'
 }
 
-start() {    # $1 = Skriptpfad, $2 = optionales Argument
+start() {    # $1 = Skriptpfad (wie er in ps steht), $2 = Argument, $3 = abweichender Startbefehl
+  # ⚠️ ERKENNEN UND STARTEN SIND NICHT DASSELBE (12.08.2026 teuer gelernt).
+  # In der Prozessliste stehen die CJ-Runner als «bash /tmp/cj_runner_template.sh cj_runner2».
+  # Daraus zu schliessen, man müsse genau das aufrufen, ist falsch: Gestartet werden MUSS der
+  # Wrapper /tmp/cj_runner2.sh, denn der setzt GRPLIST und RUNNER und ruft die Vorlage dann
+  # selbst per exec auf. Die Vorlage direkt zu starten liess sie sofort sterben —
+  # «(i % N) + 1: division by 0», weil N aus der fehlenden Gruppenliste kommt. Der Aufruf sah
+  # in der Prozessliste identisch aus, funktionierte aber nicht; die Runner galten als
+  # gestartet und waren Sekunden später wieder weg.
+  local startbefehl="${3:-$1 ${2:-}}"
   [ -f "$1" ] || { echo "fehlt: $1"; return; }
   laeuft "$1" "${2:-}" && return
   local name; name=$(basename "$1" .sh)${2:+-$2}
@@ -35,14 +44,15 @@ start() {    # $1 = Skriptpfad, $2 = optionales Argument
   # Die Sperre hält der Runner selbst für seine ganze Laufzeit: Ein zweiter Start bekommt sie
   # nicht und endet sofort. Damit ist es gleichgültig, wer alles startet und wie oft.
   setsid bash -c "exec 9>/tmp/lock_$name.lock; flock -n 9 || exit 0;
-                  source /tmp/secrets_env.sh 2>/dev/null; exec bash '$1' ${2:-}" \
+                  source /tmp/secrets_env.sh 2>/dev/null; exec bash $startbefehl" \
     >> "/tmp/$name.log" 2>&1 &
   echo "gestartet: $1 ${2:-}"
   sleep 3
 }
 
 for R in cj_runner2 cj_runner3 cj_runner4 cj_runner5; do
-  start /tmp/cj_runner_template.sh "$R"
+  # Erkannt wird die Vorlage samt Argument, gestartet der Wrapper — siehe Erklärung in start().
+  start /tmp/cj_runner_template.sh "$R" "/tmp/$R.sh"
 done
 start automation/cj_queue_runner.sh
 start /tmp/autocommit.sh

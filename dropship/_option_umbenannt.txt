@@ -68,3 +68,28 @@ gid://shopify/Product/15454350082433	Farbe→Ausführung	Quadrocopter
 gid://shopify/Product/15454499701121	Farbe→Ausführung	Solar-Boost-Controller
 gid://shopify/Product/15454915232129	Farbe→Ausführung	Aufblasbare Schwimmplattform mit Motor
 gid://shopify/Product/15455004787073	Farbe→Ausführung	HD-Quadcopter mit Fernsteuerung & Hindernisvermeidung
+gid://shopify/Product/15459913433473	Farbe→Ausführung	Moderne Spiegellampe mit 3 Lichtfarben und Nebelresistenz
+gid://shopify/Product/15459913564545	Farbe→Ausführung	LED-Spiegel mit Licht für Badezimmer & Make-up
+gid://shopify/Product/15460584751489	Farbe→Ausführung	Powerbank mit Kabel
+gid://shopify/Product/15470075871617	Farbe→Ausführung	Cotton-Bettbezug
+gid://shopify/Product/15471974973825	Farbe→Ausführung	Schockresistenter Schutz
+gid://shopify/Product/15473085415809	Farbe→Ausführung	Magnetisches Fliegengitter für Fenster
+gid://shopify/Product/15473433379201	Farbe→Ausführung	Drehbarer Tischspiegel im europäischen Stil
+gid://shopify/Product/15473434198401	Farbe→Ausführung	Faux-Fur-Decke im Tie-Dye-Look
+gid://shopify/Product/15474511249793	Farbe→Ausführung	Eingangshakenleiste
+gid://shopify/Product/15475023380865	Farbe→Ausführung	Garten Luxus Kissen Französischer Stil Rot
+gid://shopify/Product/15475057688961	Farbe→Ausführung	Akku-Astschere, bürstenlos
+gid://shopify/Product/15475225821569	Farbe→Ausführung	Solarbetriebene 4G Wildtierkamera
+gid://shopify/Product/15476000293249	Farbe→Ausführung	A5 Notizbuch im Retro-Stil
+gid://shopify/Product/15476113604993	Farbe→Ausführung	TPE Gel-Kissen für Nackenpflege & Tiefschlaf
+gid://shopify/Product/15478274556289	Farbe→Ausführung	Mehrschichtiger Hosenbügel aus Aluminium
+gid://shopify/Product/15478569042305	Farbe→Ausführung	Memphis Glas-Hängelampe
+gid://shopify/Product/15478569238913	Farbe→Ausführung	Gartenschlauch-Düse mit Hochdruckfunktion
+gid://shopify/Product/15478611018113	Farbe→Ausführung	Farbige Wimpern Two-Tone Gradient 007 Purple
+gid://shopify/Product/15478612328833	Farbe→Ausführung	Vintage Preppy Bettwäsche-Set mit Spitze
+gid://shopify/Product/15478612459905	Farbe→Ausführung	Tulpen Diffuser Stein für Aromatherapie
+gid://shopify/Product/15480491114881	Farbe→Ausführung	Handgemachte Maniküre zum Aufkleben
+gid://shopify/Product/15480565563777	Farbe→Ausführung	UGREEN 67W Powerbank mit integriertem USB-C Kabel
+gid://shopify/Product/15483889779073	Farbe→Ausführung	Galaxy-Projektor
+gid://shopify/Product/15484601336193	Farbe→Ausführung	Kühlende Outdoor- und Arbeitsweste mit Ventilator
+gid://shopify/Product/15495236616577	Farbe→Ausführung	Kinder Schwimmschuhe Cartoon
