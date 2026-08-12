@@ -3517,6 +3517,7 @@ setTimeout(function baueGebaeude(){
     root.position.y=center?-(b2.min.y+b2.max.y)/2:-b2.min.y;
     root.traverse(function(n){if(n.isMesh){n.castShadow=true;n.receiveShadow=true;if(n.material)n.material.envMapIntensity=0.3;}});
     var w=new THREE.Group();w.add(root);w.position.set(x,y,z);w.rotation.y=rotY;scene.add(w);
+    w.userData.datei=file;   /* fuer Zaehlungen/Debug: welches Modell steckt in dieser Gruppe */
     if(!window._gebaeude)window._gebaeude=[];window._gebaeude.push(w);if(cb)cb(w,root);},undefined,function(){});}
 
   /* ═══════════════ 🏗️ QUARTIER-GENERATOR ═══════════════════════════════════════════
@@ -8832,6 +8833,10 @@ window.__th={
   furnIds:function(){var ids={};furn.forEach(function(f){ids[f.id]=(ids[f.id]||0)+1;});return ids;},
   inspektorRuf:function(){inspektorPending=true;return true;},
   npcListe:function(){return npcs.map(function(n){return {typ:n.typ,x:+n.x.toFixed(1),z:+n.z.toFixed(1),state:n.state};});},
+  zaehle:function(muster){var re=new RegExp(muster,"i"),z={},sum=0;
+    (window._gebaeude||[]).forEach(function(w){var d=w.userData&&w.userData.datei;
+      if(d&&re.test(d)){z[d]=(z[d]||0)+1;sum++;}});
+    return {summe:sum,je:z,strassenkette:(typeof nachtLampen!=="undefined")?nachtLampen.length:null};},
   laeuft:function(){return running;},
   lobby:function(){return {spieler:LOBBY.spieler.slice(),gestartet:LOBBY.gestartet,
     start:getComputedStyle(document.getElementById("mpStartBtn")).display,
