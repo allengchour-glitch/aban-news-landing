@@ -530,3 +530,6 @@ gid://shopify/Product/15495732461953	CJ-1412999384240623616	Tragbare Kindermatra
 gid://shopify/Product/15495733084545	CJ-1412335779467890688	Marokkanisches Kissen mit Tufting
 gid://shopify/Product/15495733281153	CJ-1412332410972016640	Nordisches Kissen mit Quasten – Grün
 gid://shopify/Product/15496017576321	CJ-2510260243271607700	Besticktes Anti-Verlust-Halsband mit Telefonnummer
+gid://shopify/Product/15496147272065	CJ-1750812172260741120	Kabelloses Bluetooth Grill- und Ofenthermometer
+gid://shopify/Product/15496147992961	CJ-CJYD266515201AZ	Business-Lederschuhe für Herren
+gid://shopify/Product/15496148091265	CJ-1750778567941689344	Koreanische Reisschale aus Kupfer, matt gebürstet

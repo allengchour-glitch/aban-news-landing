@@ -48,3 +48,253 @@ gid://shopify/Collection/687966617985	schwelle-50	Wandkunst
 gid://shopify/Collection/687966650753	schwelle-50	Aufbewahrung
 gid://shopify/Collection/687966683521	schwelle-50	Audio
 gid://shopify/Collection/687966716289	schwelle-50	Smart Home
+gid://shopify/Collection/687966749057	schwelle-50	Ladegeräte
+gid://shopify/Collection/687966781825	schwelle-50	Foto & Video
+gid://shopify/Collection/687966814593	schwelle-50	Gaming
+gid://shopify/Collection/687966847361	schwelle-50	Bar-Tools
+gid://shopify/Collection/687966912897	schwelle-50	Servieren
+gid://shopify/Collection/687966978433	schwelle-50	Pool
+gid://shopify/Collection/687967011201	schwelle-50	Garten
+gid://shopify/Collection/687967043969	schwelle-50	Camping
+gid://shopify/Collection/687967109505	schwelle-50	Recovery
+gid://shopify/Collection/687967142273	schwelle-50	Reise-Gadgets & Organizer
+gid://shopify/Collection/687967175041	schwelle-50	Auto-Halterungen
+gid://shopify/Collection/687967207809	schwelle-50	Auto-Reinigung
+gid://shopify/Collection/687967240577	schwelle-50	Auto-Power
+gid://shopify/Collection/687967273345	schwelle-50	Wallets
+gid://shopify/Collection/687967306113	schwelle-50	Gürtel
+gid://shopify/Collection/687967338881	schwelle-50	Caps & Hüte
+gid://shopify/Collection/687967437185	schwelle-50	Akupressur
+gid://shopify/Collection/688005775745	schwelle-50	Highlights – Schmuck & Mode
+gid://shopify/Collection/688013836673	schwelle-50	Herren-Bekleidung
+gid://shopify/Collection/688013902209	schwelle-50	Fitness
+gid://shopify/Collection/688018194817	schwelle-50	Damen-Schuhe
+gid://shopify/Collection/688018227585	schwelle-50	Herren-Schuhe
+gid://shopify/Collection/688018424193	schwelle-50	Küchengeräte
+gid://shopify/Collection/688018456961	schwelle-50	Coole Gadgets
+gid://shopify/Collection/688049488257	schwelle-50	Sommer-Kollektion 2026
+gid://shopify/Collection/688052830593	schwelle-50	Home & Gadgets
+gid://shopify/Collection/688052896129	schwelle-50	Accessories
+gid://shopify/Collection/688208118145	schwelle-50	Strand & Bademode
+gid://shopify/Collection/688391979393	schwelle-50	Hautpflege & Skincare
+gid://shopify/Collection/688392012161	schwelle-50	Wellness & Beauty-Tools
+gid://shopify/Collection/688392044929	schwelle-50	Deko & Wohnaccessoires
+gid://shopify/Collection/688392110465	schwelle-50	Küche & Tisch
+gid://shopify/Collection/688399745409	schwelle-50	Strand-Look
+gid://shopify/Collection/688399778177	schwelle-50	Office-Look
+gid://shopify/Collection/688399810945	schwelle-50	Abend-Look
+gid://shopify/Collection/688427434369	schwelle-50	Selbst gestalten
+gid://shopify/Collection/688449749377	schwelle-50	Schweiz Edition
+gid://shopify/Collection/688489726337	schwelle-50	Sticker & Aufkleber
+gid://shopify/Collection/688562700673	schwelle-50	Grill & BBQ
+gid://shopify/Collection/688562766209	schwelle-50	Auto & Handy
+gid://shopify/Collection/688563519873	schwelle-50	Kleider
+gid://shopify/Collection/688563552641	schwelle-50	Röcke
+gid://shopify/Collection/688563585409	schwelle-50	Bademode
+gid://shopify/Collection/688563618177	schwelle-50	Halsketten
+gid://shopify/Collection/688563650945	schwelle-50	Ohrringe
+gid://shopify/Collection/688563683713	schwelle-50	Armbänder
+gid://shopify/Collection/688563716481	schwelle-50	Beleuchtung
+gid://shopify/Collection/688563749249	schwelle-50	Vasen & Deko
+gid://shopify/Collection/688563814785	schwelle-50	Aroma & Diffuser
+gid://shopify/Collection/688563847553	schwelle-50	Massage & Wellness
+gid://shopify/Collection/688563880321	schwelle-50	Taschen & Rucksäcke
+gid://shopify/Collection/688563913089	schwelle-50	Uhren
+gid://shopify/Collection/688564306305	schwelle-50	Schweizer Editionen
+gid://shopify/Collection/688564339073	schwelle-50	Bart & Rasur
+gid://shopify/Collection/688564371841	schwelle-50	Yoga & Fitness
+gid://shopify/Collection/688564404609	schwelle-50	Trinkflaschen & Thermo
+gid://shopify/Collection/688564437377	schwelle-50	Kinder & Baby
+gid://shopify/Collection/688564502913	schwelle-50	Reise & Outdoor
+gid://shopify/Collection/688564535681	schwelle-50	Küche & Kochen
+gid://shopify/Collection/688577282433	schwelle-50	Ringe
+gid://shopify/Collection/688577577345	schwelle-50	Trends & Gadgets
+gid://shopify/Collection/688582656385	schwelle-50	Hype 2026 — Trends & Bestseller
+gid://shopify/Collection/688583082369	schwelle-50	Partner & Paare
+gid://shopify/Collection/688585933185	schwelle-50	Herren-Shirts & Tops
+gid://shopify/Collection/688585965953	schwelle-50	Herren-Hemden
+gid://shopify/Collection/688585998721	schwelle-50	Herren-Hosen
+gid://shopify/Collection/688586031489	schwelle-50	Herren-Sets
+gid://shopify/Collection/688586621313	schwelle-50	Damen-Blusen & Tops
+gid://shopify/Collection/688586654081	schwelle-50	Damen-Hosen
+gid://shopify/Collection/688586686849	schwelle-50	Damen-Sets & 2-Teiler
+gid://shopify/Collection/688590029185	schwelle-50	Taschen selbst gestalten
+gid://shopify/Collection/688590061953	schwelle-50	Wohnen & Deko selbst gestalten
+gid://shopify/Collection/688590094721	schwelle-50	Tassen & Flaschen selbst gestalten
+gid://shopify/Collection/688590127489	schwelle-50	Accessoires selbst gestalten
+gid://shopify/Collection/688596976001	schwelle-50	Spielzeug & Plüsch
+gid://shopify/Collection/688642589057	schwelle-50	Loungewear
+gid://shopify/Collection/688683942273	schwelle-50	LuxeStyle Premium
+gid://shopify/Collection/688690954625	schwelle-50	Hugo Boss
+gid://shopify/Collection/688690987393	schwelle-50	Tommy Hilfiger
+gid://shopify/Collection/688691020161	schwelle-50	Guess
+gid://shopify/Collection/688691052929	schwelle-50	Dolce & Gabbana
+gid://shopify/Collection/688691282305	schwelle-50	Yves Saint Laurent
+gid://shopify/Collection/688691315073	schwelle-50	Swatch
+gid://shopify/Collection/688691380609	schwelle-50	Olivia Burton
+gid://shopify/Collection/688691446145	schwelle-50	Citizen
+gid://shopify/Collection/688691511681	schwelle-50	Kenzo
+gid://shopify/Collection/688691544449	schwelle-50	Elie Saab
+gid://shopify/Collection/688691577217	schwelle-50	Pierre Cardin
+gid://shopify/Collection/688691609985	schwelle-50	Morellato
+gid://shopify/Collection/688691642753	schwelle-50	Lotus
+gid://shopify/Collection/688691773825	schwelle-50	Lancôme
+gid://shopify/Collection/688691904897	schwelle-50	Paul Hewitt
+gid://shopify/Collection/688692756865	schwelle-50	Adidas
+gid://shopify/Collection/688692789633	schwelle-50	Puma
+gid://shopify/Collection/688692822401	schwelle-50	Reebok
+gid://shopify/Collection/688692855169	schwelle-50	Under Armour
+gid://shopify/Collection/688698163585	schwelle-50	Caps & Hüte
+gid://shopify/Collection/688698655105	schwelle-50	Wasserfester Schmuck
+gid://shopify/Collection/688698884481	schwelle-50	Parfum & Düfte
+gid://shopify/Collection/688724935041	schwelle-50	Mauspads
+gid://shopify/Collection/688725197185	schwelle-50	Sport & Outdoor
+gid://shopify/Collection/688725819777	schwelle-50	Büro & Schreibwaren
+gid://shopify/Collection/688726081921	schwelle-50	Gravur · Personalisiert
+gid://shopify/Collection/688731816321	schwelle-50	Puzzles
+gid://shopify/Collection/688731849089	schwelle-50	Plüsch & Kuscheltiere
+gid://shopify/Collection/688731881857	schwelle-50	Action- & Sammelfiguren
+gid://shopify/Collection/688731914625	schwelle-50	Brett- & Gesellschaftsspiele
+gid://shopify/Collection/688731947393	schwelle-50	Puppen & Puppenhaus
+gid://shopify/Collection/688731980161	schwelle-50	Kostüme & Verkleidung
+gid://shopify/Collection/688732766593	schwelle-50	Lernspielzeug
+gid://shopify/Collection/688732799361	schwelle-50	Basteln & Kneten
+gid://shopify/Collection/688732832129	schwelle-50	Fahrzeuge & RC
+gid://shopify/Collection/688732864897	schwelle-50	Outdoor & Wasser
+gid://shopify/Collection/688732897665	schwelle-50	Musik-Spielzeug
+gid://shopify/Collection/688732930433	schwelle-50	Kinder-Schminksets
+gid://shopify/Collection/688732963201	schwelle-50	Bau- & Spielsets
+gid://shopify/Collection/688740663681	schwelle-50	Garten & Balkon
+gid://shopify/Collection/688748200321	schwelle-50	Elektriker & Installation
+gid://shopify/Collection/688906764673	schwelle-50	Trainingsanzüge & Sets
+gid://shopify/Collection/688928817537	schwelle-50	Sport, Fitness & Outdoor
+gid://shopify/Collection/688928915841	schwelle-50	Velo & Radsport
+gid://shopify/Collection/688929079681	schwelle-50	Angeln
+gid://shopify/Collection/688929177985	schwelle-50	Tauchen & Schnorcheln
+gid://shopify/Collection/688929243521	schwelle-50	Anime & Manga
+gid://shopify/Collection/688929276289	schwelle-50	Tauchen & Schnorcheln
+gid://shopify/Collection/688929309057	schwelle-50	Metalldetektoren & Schatzsuche
+gid://shopify/Collection/688929341825	schwelle-50	Velo & Radsport
+gid://shopify/Collection/688929374593	schwelle-50	Fitness & Training
+gid://shopify/Collection/688929997185	schwelle-50	Basteln & DIY
+gid://shopify/Collection/688930062721	schwelle-50	Uhren
+gid://shopify/Collection/688975675777	schwelle-50	Leder & Accessoires
+gid://shopify/Collection/688980754817	schwelle-50	Fussball & Fan 2026
+gid://shopify/Collection/689027416449	schwelle-50	Beauty & Pflege
+gid://shopify/Collection/689027449217	schwelle-50	Make-up & Kosmetik
+gid://shopify/Collection/689027481985	schwelle-50	Gesichts- & Hautpflege
+gid://shopify/Collection/689027514753	schwelle-50	Beauty-Tools
+gid://shopify/Collection/689027678593	schwelle-50	Damen-Uhren
+gid://shopify/Collection/689027711361	schwelle-50	Portemonnaie & Kleinleder
+gid://shopify/Collection/689027776897	schwelle-50	Rucksäcke
+gid://shopify/Collection/689028006273	schwelle-50	Gant
+gid://shopify/Collection/689028989313	schwelle-50	Socken & Strümpfe
+gid://shopify/Collection/689048125825	schwelle-50	Anime & Manga
+gid://shopify/Collection/689055596929	schwelle-50	Selbst gestalten
+gid://shopify/Collection/689055629697	schwelle-50	Geschenke bis CHF 30
+gid://shopify/Collection/689055662465	schwelle-50	Premium ab CHF 80
+gid://shopify/Collection/689063592321	schwelle-50	Topseller
+gid://shopify/Collection/689063625089	schwelle-50	Nike
+gid://shopify/Collection/689063657857	schwelle-50	Adidas
+gid://shopify/Collection/689063690625	schwelle-50	New Era
+gid://shopify/Collection/689063723393	schwelle-50	Puma
+gid://shopify/Collection/689063756161	schwelle-50	Under Armour
+gid://shopify/Collection/689063788929	schwelle-50	Champion
+gid://shopify/Collection/689063821697	schwelle-50	Jack & Jones
+gid://shopify/Collection/689063854465	schwelle-50	Chanel
+gid://shopify/Collection/689063887233	schwelle-50	Reebok
+gid://shopify/Collection/689063920001	schwelle-50	Gant
+gid://shopify/Collection/689063952769	schwelle-50	Logitech
+gid://shopify/Collection/689063985537	schwelle-50	Clinique
+gid://shopify/Collection/689064018305	schwelle-50	Artdeco
+gid://shopify/Collection/689064051073	schwelle-50	Versa
+gid://shopify/Collection/689064083841	schwelle-50	Quid
+gid://shopify/Collection/689064116609	schwelle-50	Safta
+gid://shopify/Collection/689064149377	schwelle-50	Nacon
+gid://shopify/Collection/689064182145	schwelle-50	Hi-Tec
+gid://shopify/Collection/689064214913	schwelle-50	Project X Paris
+gid://shopify/Collection/689064247681	schwelle-50	Startech
+gid://shopify/Collection/689066639745	schwelle-50	Marken-Sportswear
+gid://shopify/Collection/689066672513	schwelle-50	Beauty-Marken
+gid://shopify/Collection/689066901889	schwelle-50	Tech & Audio-Marken
+gid://shopify/Collection/689066934657	schwelle-50	Mode-Marken
+gid://shopify/Collection/689118380417	schwelle-50	Bestseller & Lieblinge
+gid://shopify/Collection/689118740865	schwelle-50	Auto-Zubehör
+gid://shopify/Collection/689118773633	schwelle-50	Camping & Outdoor
+gid://shopify/Collection/689118871937	schwelle-50	Pool & Schwimmen
+gid://shopify/Collection/689119068545	schwelle-50	Haarstyling & Tools
+gid://shopify/Collection/689119134081	schwelle-50	Bar & Wein
+gid://shopify/Collection/689160388993	schwelle-50	Pflanzgefässe & Töpfe
+gid://shopify/Collection/689160421761	schwelle-50	Gartenleuchten & Solar
+gid://shopify/Collection/689160454529	schwelle-50	Gartendeko
+gid://shopify/Collection/689160487297	schwelle-50	Garten-Werkzeug & Pflege
+gid://shopify/Collection/689160520065	schwelle-50	Zelte & Schlafsäcke
+gid://shopify/Collection/689160552833	schwelle-50	Camping-Küche
+gid://shopify/Collection/689160585601	schwelle-50	Outdoor-Licht & Tools
+gid://shopify/Collection/689160618369	schwelle-50	Gläser
+gid://shopify/Collection/689160651137	schwelle-50	Cocktail & Shaker
+gid://shopify/Collection/689160683905	schwelle-50	Wein-Accessoires
+gid://shopify/Collection/689160716673	schwelle-50	Schulrucksäcke
+gid://shopify/Collection/689160749441	schwelle-50	Laptop- & Business-Rucksäcke
+gid://shopify/Collection/689160782209	schwelle-50	Sport- & Wanderrucksäcke
+gid://shopify/Collection/689167303041	schwelle-50	Sneaker
+gid://shopify/Collection/689167335809	schwelle-50	Sandalen & Espadrilles
+gid://shopify/Collection/689167368577	schwelle-50	Stiefel & Boots
+gid://shopify/Collection/689167401345	schwelle-50	Make-up
+gid://shopify/Collection/689167434113	schwelle-50	Sonnenbrillen Damen
+gid://shopify/Collection/689167466881	schwelle-50	Sonnenbrillen Herren
+gid://shopify/Collection/689227137409	schwelle-50	E-Scooter & Trottinett
+gid://shopify/Collection/689252467073	schwelle-50	Drohnen & Kameras
+gid://shopify/Collection/689252729217	schwelle-50	Beamer & Projektoren
+gid://shopify/Collection/689252893057	schwelle-50	Smartwatches & Wearables
+gid://shopify/Collection/689253089665	schwelle-50	Kaffee & Espresso
+gid://shopify/Collection/689253253505	schwelle-50	Kinderspielzeug
+gid://shopify/Collection/689253515649	schwelle-50	Yoga & Pilates
+gid://shopify/Collection/689253613953	schwelle-50	Haustier-Tech
+gid://shopify/Collection/689282220417	schwelle-50	Trend-Gadgets
+gid://shopify/Collection/689310105985	schwelle-50	Vereins-Fanartikel
+gid://shopify/Collection/689312760193	schwelle-50	Klima & Ventilatoren
+gid://shopify/Collection/689313743233	schwelle-50	Staubsauger & Haushalt
+gid://shopify/Collection/689316692353	schwelle-50	Beauty-Geräte & Haarentfernung
+gid://shopify/Collection/689316725121	schwelle-50	Wärme & Komfort
+gid://shopify/Collection/689353392513	schwelle-50	Damen-Düfte
+gid://shopify/Collection/689353425281	schwelle-50	Herren-Düfte
+gid://shopify/Collection/689353458049	schwelle-50	Gaming-Mäuse
+gid://shopify/Collection/689353490817	schwelle-50	Gaming-Headsets
+gid://shopify/Collection/689353523585	schwelle-50	Controller & Gamepads
+gid://shopify/Collection/689362698625	schwelle-50	Küchenhelfer & Gadgets
+gid://shopify/Collection/689471816065	schwelle-50	Wellness & Massage
+gid://shopify/Collection/689473945985	schwelle-50	Strand & Wasserspass
+gid://shopify/Collection/689518379393	schwelle-50	Moissanit-Schmuck — die clevere Diamant-Alternative
+gid://shopify/Collection/689520476545	schwelle-50	Nägel & Maniküre
+gid://shopify/Collection/689520509313	schwelle-50	Wimpern & Lashes
+gid://shopify/Collection/689586143617	schwelle-50	Zahnpflege
+gid://shopify/Collection/689586176385	schwelle-50	Wellness & Gesundheit
+gid://shopify/Collection/689637523841	schwelle-50	Elektronik & Computer
+gid://shopify/Collection/689637720449	schwelle-50	Gaming-Zubehör
+gid://shopify/Collection/689637753217	schwelle-50	Elektronik & Gadgets
+gid://shopify/Collection/689637785985	schwelle-50	PC & Homeoffice
+gid://shopify/Collection/689638670721	schwelle-50	Refurbished – Generalüberholt & günstiger
+gid://shopify/Collection/689652400513	schwelle-50	Arbeitskleidung & Berufsbekleidung
+gid://shopify/Collection/689681006977	schwelle-50	Elektronik & Technik
+gid://shopify/Collection/689681269121	schwelle-50	3D-Druck & Filament
+gid://shopify/Collection/689698439553	schwelle-50	PC-Gaming
+gid://shopify/Collection/689698505089	schwelle-50	Xbox
+gid://shopify/Collection/689700372865	schwelle-50	3D-Filament (PLA/PETG/Resin)
+gid://shopify/Collection/689700405633	schwelle-50	3D-Drucker & Stifte
+gid://shopify/Collection/689700471169	schwelle-50	3D-Druck-Zubehör
+gid://shopify/Collection/689701454209	schwelle-50	Basteln & DIY
+gid://shopify/Collection/689701650817	schwelle-50	Elektronik für Bastler
+gid://shopify/Collection/689713054081	schwelle-50	Kopfhörer & Audio
+gid://shopify/Collection/689713119617	schwelle-50	Computer & Zubehör
+gid://shopify/Collection/689713152385	schwelle-50	Speicher & Datenträger
+gid://shopify/Collection/689713283457	schwelle-50	Drohnen & FPV
+gid://shopify/Collection/689713316225	schwelle-50	Beamer & Heimkino
+gid://shopify/Collection/689715708289	schwelle-50	Küchen-Gadgets & Helfer
+gid://shopify/Collection/689715741057	schwelle-50	IPL & Haarentfernung
+gid://shopify/Collection/689715773825	schwelle-50	Gesichtspflege-Geräte
+gid://shopify/Collection/689718329729	schwelle-50	Haustier-Gadgets & Smart-Pet
+gid://shopify/Collection/689718526337	schwelle-50	Wellness & Selfcare
+gid://shopify/Collection/689718690177	schwelle-50	Home-Office & Desk-Setup
+gid://shopify/Collection/689719837057	schwelle-50	Kuschel- & Heizdecken
+gid://shopify/Collection/689719902593	schwelle-50	Sets & Bundles
