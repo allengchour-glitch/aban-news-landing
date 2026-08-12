@@ -5618,7 +5618,7 @@ function bauabnahme(){
     meldung="📋 Bauabnahme: noch nicht "+z[0]+" — "
       +zeile(l.fehltWert===0,"Wert "+l.wert+"/"+z[1]+" $")+"  "
       +zeile(l.fehltKat===0,"Bereiche "+l.kat+"/"+z[2])+"  "
-      +zeile(l.fehltZuf===0,"Laune "+l.zuf+"/"+z[3]);
+      +zeile(l.fehltZuf===0,"Komfort "+l.zuf+"/"+z[3]+" nutzbare Möbel");
     hint(meldung);
     beep(240,.18,"sawtooth",.05);
   }
@@ -6910,7 +6910,7 @@ function updHund(dt,now){
   h.mesh.position.y=Math.abs(Math.sin(now*0.004))*0.04;}
 // ===================== NPCs: Besucher mit eigenem Kopf =====================
 var npcs=[],npcTimer=20,polizeiPending=false;
-var buergermeisterPending=false,questIdx=0,questBusy=false;
+var buergermeisterPending=false,inspektorPending=false,questIdx=0,questBusy=false;
 var QUESTS=[
  ["pool","🏊","Bau einen Pool für die Gemeinde-Gartenschau",300,function(){return furn.some(function(f9){return f9.id==="pool";});}],
  ["beete","🥕","Pflanze 2 Gemüsebeete für den Erntemarkt",250,function(){return furn.filter(function(f9){return f9.beet;}).length>=2;}],
@@ -6987,6 +6987,7 @@ var NPC_DEFS={
  haendler:{farbe:{skin:0xd9a06a,hair:0x2a2a34,top:0x3a8a5a,bottom:0x4a3a28,dress:false,longHair:false},speed:2.0},
  polizist:{farbe:{skin:0xf0c090,hair:0x1a1a24,top:0x2a3a6e,bottom:0x1a2340,dress:false,longHair:false},speed:3.0},
  buergermeister:{farbe:{skin:0xf0c090,hair:0x9a9aa2,top:0x5a2a34,bottom:0x2a2a38,dress:false,longHair:false},speed:1.7},
+ inspektor:{farbe:{skin:0xf0c090,hair:0x4a4a52,top:0x8a8a92,bottom:0x3a3a44,dress:false,longHair:false},speed:2.2},
  nachbarskind:{farbe:{skin:0xffd9b8,hair:0xc8842a,top:0xe86a4a,bottom:0x4a6a9a,dress:false,longHair:false},speed:2.8},
  katze:{speed:2.2}
 };
@@ -7026,6 +7027,11 @@ function npcAct(n){
   else if(n.typ==="polizist"){
     hint("👮 Die Polizei schaut nochmal vorbei … alle unschuldig pfeifen!");npcEmoji(n,"🚨");
     sims.forEach(function(s4){if(s4.mesh.visible)simEmoji(s4,"😇");});}
+  else if(n.typ==="inspektor"){
+    n.t=6;                                       /* bleibt laenger stehen als die anderen */
+    hint("📋 Der Bauinspektor ist da — er prueft Wert, Bereiche und Komfort …");
+    npcEmoji(n,"📋");beep(440,.08,"sine",.04);
+    setTimeout(function(){if(running)bauabnahme();},2600);}
   else if(n.typ==="buergermeister"){
     if(questBusy){
       var rw=questIdx<QUESTS.length?QUESTS[questIdx][3]:(ensurePQ(),window._pq.rw);
@@ -7049,11 +7055,15 @@ function npcEmoji(n,txt){
   var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false}));
   sp.scale.set(0.55,0.55,1);sp.position.y=n.typ==="katze"?0.8:1.75;n.mesh.add(sp);
   setTimeout(function(){if(sp.parent)sp.parent.remove(sp);},3500);}
+window._updNpcs=updNpcs; /* Testzugang — Spiellogik unabhaengig vom rAF-Takt treibbar */
 function updNpcs(dt,now){
   if(MPs&&!mpHost){ // Gast rendert nur
     npcs.forEach(function(n){if(n.net){n.x+=(n.net.x-n.x)*Math.min(1,dt*8);n.z+=(n.net.z-n.z)*Math.min(1,dt*8);n.rot=n.net.r;
       n.mesh.position.set(n.x,0,n.z);n.mesh.rotation.y=n.rot;}});
     return;}
+  /* 🏛️ Ein anstehender Amtsbesuch (Polizist/Buergermeister/Inspektor) wartet nicht
+     den vollen Besuchs-Takt von 25-55 s ab — Aemter kommen puenktlich. */
+  if((polizeiPending||buergermeisterPending||inspektorPending)&&npcTimer>3)npcTimer=3;
   npcTimer-=dt;
   var hh=uhrzeit/60;
   if(npcTimer<=0){npcTimer=25+Math.random()*30;
@@ -7065,8 +7075,8 @@ function updNpcs(dt,now){
        schlug jeder Katzenbesuch still fehl. Solange das Modell fehlt, kommt sie
        gar nicht erst in den Besuchs-Pool; nachladen stoesst der Pool selbst an. */
     if(MODELS.hund)pool.push("katze");else loadTH("hund",function(){});
-    var _amt=polizeiPending?"polizist":(buergermeisterPending?"buergermeister":null); /* 🩹 Schwarm-P1: Amts-NPCs umgehen das <2-Gate; Flag fällt erst NACH echtem Spawn — sonst friert die Quest-Kette ein (questBusy bleibt true) */
-    if(_amt){if(spawnNpc(_amt)){if(_amt==="polizist")polizeiPending=false;else buergermeisterPending=false;}}
+    var _amt=polizeiPending?"polizist":(buergermeisterPending?"buergermeister":(inspektorPending?"inspektor":null)); /* 🩹 Schwarm-P1: Amts-NPCs umgehen das <2-Gate; Flag fällt erst NACH echtem Spawn — sonst friert die Quest-Kette ein (questBusy bleibt true) */
+    if(_amt){if(spawnNpc(_amt)){if(_amt==="polizist")polizeiPending=false;else if(_amt==="buergermeister")buergermeisterPending=false;else inspektorPending=false;}}
     else if(pool.length&&npcs.length<2)spawnNpc(pool[(Math.random()*pool.length)|0]);}
   for(var i=npcs.length-1;i>=0;i--){var n=npcs[i];
     n.walkT+=dt*8;
@@ -8436,7 +8446,12 @@ function loop(now){
       if(immo.length){var miete=Math.round(immo.length*150*stufenBonus());geld+=miete;geldSend();updHUD();hint("\uD83C\uDFE0\uD83D\uDCB0 Mieteinnahmen: +"+miete+" $ ("+immo.length+" H\u00E4user)");}
       /* 🏅 Die Bauabnahme ist der Taktgeber des Spiels — sie kommt zum Termin,
          egal was der Spieler gerade tut, und sagt konkret, was noch fehlt. */
-      if(tag>=naechsteAbnahme)setTimeout(bauabnahme,1400);rollWetter();applySaison();hint(SAISON[calcSaison()][0]+(wetter==="regen"?" · 🌧️ Regen":wetter==="schnee"?" · 🌨️ Schnee":""));}}
+      /* 🏅 Die Abnahme war ein stilles Popup — jetzt kommt der BAUINSPEKTOR sichtbar
+         zu Fuss aufs Grundstueck (gleiches Amts-Gate wie Polizist/Buergermeister)
+         und prueft erst dann. Faellt der Spawn einen ganzen Tag lang aus
+         (NPC-Limit), wird direkt abgenommen — der Termin darf nie verhungern. */
+      if(tag>naechsteAbnahme){inspektorPending=false;setTimeout(bauabnahme,1400);}
+      else if(tag>=naechsteAbnahme)inspektorPending=true;rollWetter();applySaison();hint(SAISON[calcSaison()][0]+(wetter==="regen"?" · 🌧️ Regen":wetter==="schnee"?" · 🌨️ Schnee":""));}}
     // Tag/Nacht
     var hh=uhrzeit/60,dayA=Math.max(0,Math.sin((hh-5.75)/14*Math.PI)); // Sonne 5:45-19:45 — Abend hat echtes Restlicht
     var wDim=wetter==="sonne"?1:0.62;
@@ -8815,6 +8830,8 @@ window.__th={
   abnahme:function(){bauabnahme();return this.stufe();},
   geldSetz:function(v){geld=v;updHUD();},
   furnIds:function(){var ids={};furn.forEach(function(f){ids[f.id]=(ids[f.id]||0)+1;});return ids;},
+  inspektorRuf:function(){inspektorPending=true;return true;},
+  npcListe:function(){return npcs.map(function(n){return {typ:n.typ,x:+n.x.toFixed(1),z:+n.z.toFixed(1),state:n.state};});},
   laeuft:function(){return running;},
   lobby:function(){return {spieler:LOBBY.spieler.slice(),gestartet:LOBBY.gestartet,
     start:getComputedStyle(document.getElementById("mpStartBtn")).display,
