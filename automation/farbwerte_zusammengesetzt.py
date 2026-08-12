@@ -63,11 +63,17 @@ BESTIMMUNG = {
     "steel": "stahl", "charcoal": "anthrazit", "off": "creme", "pure": "rein",
     "yellowish": "gelblich", "purplish": "violett", "reddish": "rötlich",
     "greenish": "grünlich", "bluish": "bläulich", "blackish": "schwärzlich",
-    "all": "komplett", "pure": "rein", "classic": "klassisch", "retro": "retro",
+    "classic": "klassisch", "retro": "retro",
     "vintage": "vintage", "dusty": "staub", "warm": "warm", "cool": "kühl",
 }
-GROESSE = re.compile(r'^(?:XXS|XS|S|M|L|XL|XXL|[2-6]XL|\d{2,3}|One Size|Average Size|Free Size)$',
-                     re.I)
+GROESSE = re.compile(r'^(?:XXS|XS|S|M|L|XL|XXL|[2-6]XL|\d{2,3})$', re.I)
+# Einheitsgrösse heisst auf Deutsch Einheitsgrösse — «Black-Average Size» halb zu übersetzen
+# wäre schlimmer als gar nicht.
+GROESSE_DE = {"one size": "Einheitsgrösse", "average size": "Einheitsgrösse",
+              "free size": "Einheitsgrösse", "standard": "Standard"}
+# «All Black» ist schlicht Schwarz. «Komplettschwarz» wäre eine Wortschöpfung, die im
+# Regal fremder aussieht als das englische Original.
+VERSTAERKER = {"all", "pure", "full", "total", "solid"}
 # Technische Zusätze, die auf Deutsch gleich heissen.
 TECHNISCH = re.compile(r'^(?:USB|EU|US|UK|AU|Type-?C|Plug|Set|PC|PCS|Pack)$', re.I)
 ENDET_AUF_COLOR = re.compile(r'\s+colou?r$', re.I)
@@ -115,6 +121,8 @@ def phrase_de(text):
         return None
     if len(woerter) == 2:
         b, g = woerter[0].lower(), woerter[1].lower()
+        if b in VERSTAERKER and g in GRUND:
+            return GRUND[g].capitalize()          # «All Black» → «Schwarz»
         if g in GRUND and b in BESTIMMUNG:
             return (BESTIMMUNG[b] + GRUND[g]).capitalize()
         # «Gray Green» — zwei Grundwörter: «Graugrün»
@@ -131,8 +139,12 @@ def wert_de(wert):
         return phrase_de(wert)
     neu, geaendert = [], False
     for t in teile:
+        if t.lower() in GROESSE_DE:
+            neu.append(GROESSE_DE[t.lower()])
+            geaendert = True
+            continue
         if GROESSE.match(t) or TECHNISCH.match(t):
-            neu.append(t)                     # Grösse und Technik bleiben, wie sie sind
+            neu.append(t)                     # Grössenkürzel und Technik bleiben, wie sie sind
             continue
         d = phrase_de(t)
         if d is None:

@@ -43,6 +43,21 @@ while true; do
     [ -f "$HOME/aban-news-landing/automation/$S.sh" ] || continue
     pgrep -f "automation/$S.sh" >/dev/null || { setsid bash "$HOME/aban-news-landing/automation/$S.sh" >> /tmp/$S.log 2>&1 & echo "$(date -u +%H:%M) restart $S"; }
   done
+  # LANGE KATALOG-LÄUFE aus dem Repo am Leben halten. Sie brauchen Stunden für 30'000
+  # Produkte und werden vom Turn-Reaping zuverlässig gekillt — heute zweimal mitten im Lauf.
+  # Alle drei sind resumable (eigenes Ledger je Skript), ein Neustart setzt also fort statt
+  # von vorn zu beginnen. Die Sperre verhindert, dass zwei Kopien dasselbe Ledger schreiben.
+  # ⚠️ Ohne `setsid` sterben sie mit dem Turn — genau daran sind sie heute gescheitert.
+  for L in produktdetails_vereinen preisboden farbwerte_zusammengesetzt; do
+    [ -f "$HOME/aban-news-landing/automation/$L.py" ] || continue
+    grep -q "^FERTIG" "/tmp/$L.log" 2>/dev/null && continue      # durchgelaufen
+    pgrep -f "automation/$L.py" >/dev/null && continue
+    ( cd "$HOME/aban-news-landing" && setsid bash -c \
+        "exec 9>/tmp/lock_$L.lock; flock -n 9 || exit 0; exec python3 automation/$L.py" \
+        >> "/tmp/$L.log" 2>&1 & )
+    echo "$(date -u +%H:%M) restart $L"
+    sleep 5
+  done
   # HYPE-REIHE DER STARTSEITE, einmal täglich (Auftrag des Betreibers 12.08.2026: «wenn hype
   # vorbei produkt ändern»). Der Lauf nimmt abgelaufene Artikel aus der Reihe und füllt aus den
   # hinterlegten Themen nach — das ist der Teil, der ohne Zutun laufen muss, damit die Reihe
