@@ -65,3 +65,6 @@ gid://shopify/Product/15454234345857	Farbe→Ausführung	Digitale Lupe mit Mikro
 gid://shopify/Product/15454248927617	Farbe→Ausführung	Velvet-Rauchrohr-Leggings
 gid://shopify/Product/15454249025921	Farbe→Ausführung	Hohe Yoga-Hosen
 gid://shopify/Product/15454350082433	Farbe→Ausführung	Quadrocopter
+gid://shopify/Product/15454499701121	Farbe→Ausführung	Solar-Boost-Controller
+gid://shopify/Product/15454915232129	Farbe→Ausführung	Aufblasbare Schwimmplattform mit Motor
+gid://shopify/Product/15455004787073	Farbe→Ausführung	HD-Quadcopter mit Fernsteuerung & Hindernisvermeidung
