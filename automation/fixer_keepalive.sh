@@ -43,6 +43,21 @@ while true; do
     [ -f "$HOME/aban-news-landing/automation/$S.sh" ] || continue
     pgrep -f "automation/$S.sh" >/dev/null || { setsid bash "$HOME/aban-news-landing/automation/$S.sh" >> /tmp/$S.log 2>&1 & echo "$(date -u +%H:%M) restart $S"; }
   done
+  # HYPE-REIHE DER STARTSEITE, einmal täglich (Auftrag des Betreibers 12.08.2026: «wenn hype
+  # vorbei produkt ändern»). Der Lauf nimmt abgelaufene Artikel aus der Reihe und füllt aus den
+  # hinterlegten Themen nach — das ist der Teil, der ohne Zutun laufen muss, damit die Reihe
+  # nicht ein halbes Jahr lang dieselben sechs Artikel zeigt.
+  # ⚠️ Was er NICHT kann: neue Themen finden. Dafür braucht es eine Web-Recherche, und die
+  # gehört an den Anfang jeder Session (siehe CLAUDE.md). Der Automat hält die Reihe frisch,
+  # aktuell hält sie nur, wer nachschaut, was gerade läuft.
+  HY=/tmp/hype_kuratieren.log
+  if [ -f "$HOME/aban-news-landing/automation/hype_kuratieren.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$HY" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$HOME/aban-news-landing" && setsid python3 automation/hype_kuratieren.py >> "$HY" 2>&1 & )
+      echo "$(date -u +%H:%M) hype_kuratieren gestartet"
+    fi
+  fi
   # CJ-Grind-Runner mitlaufen lassen (Turn-Reaping killt sie sonst jede Runde)
   for R in cj_runner2 cj_runner3 cj_runner4 cj_runner5; do
     [ -f /tmp/$R.sh ] || continue

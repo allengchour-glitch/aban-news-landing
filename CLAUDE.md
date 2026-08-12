@@ -1,5 +1,24 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🔥 DAUERAUFTRAG: Hype-Produkte recherchieren und die Startseite frisch halten
+**User 2026-08-12, wörtlich:** «informiere dich immer über neuste hype produkte und so und mache
+auch in startseite ganz gross irgendwo paar coolen produkten, aber wen hype vorbei produkt ändern.»
+**Zu Beginn JEDER Session:** per Web-Suche nachsehen, was gerade läuft (TikTok-/Dropshipping-Trends),
+die Themenliste in `automation/hype_kuratieren.py` (`THEMEN` + `QUELLE` mit Datum) aktualisieren und
+das Skript laufen lassen. Aufbau:
+- Kollektion **`hype-jetzt` «🔥 Gerade im Trend»** (Smart-Regel Tag `hype-jetzt`, in 6 Kanälen publiziert).
+- Startseite **Position 1 direkt unter dem Hero**, Sektion `pl_trends` umgewidmet: `columns:3`,
+  `max_products:6`, `mobile_columns:"1"` (String! `int` wird mit «must be a string» abgelehnt),
+  `mobile_card_size:86cqw` → wenige, dafür grosse Karten.
+- **Selbstabräumend:** jedes Produkt trägt `hype-seit-JJJJ-MM-TT`; nach `HYPE_TAGE` (21) nimmt der
+  nächste Lauf `hype-jetzt` wieder weg. Ware bleibt im Shop. `fixer_keepalive.sh` startet den Lauf
+  einmal täglich — das hält die Reihe frisch, aber **aktuell** hält sie nur die Recherche.
+- Stand 12.08.2026: Beauty-Geräte, Schnecken-/Serum-Hautpflege, Mini-Beamer, «aesthetic» Ordnung,
+  Shapewear, 3-in-1-Ladestationen (12 Produkte).
+- ⚠️ Fallen aus dem ersten Lauf: **`IPL` ohne `\b` steckt in «L-IPL-iner»** (ein Lipliner wurde als
+  Beauty-Gerät gewählt); ein «Intim-Pflegeserum» wäre auf der Startseite gelandet → `NICHT_STARTSEITE`.
+  Bedingungen für die Reihe: ≥2 Bilder, ab CHF 19, im Google-Kanal, kein Kostüm/Spielzeug/Partydeko.
+
 ## 🔁 Nachkontrolle vom 2026-08-12 — was der erste Aufräumtag ÜBERSEHEN hat
 Ein zweiter Fan-out prüfte, ob die Reparaturen vom 11.08. halten. Sie halten — aber vier davon
 waren **zu eng gefasst**, und das Muster dahinter wiederholt sich:
