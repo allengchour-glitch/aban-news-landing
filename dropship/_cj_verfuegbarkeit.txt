@@ -5017,3 +5017,11 @@ gid://shopify/Product/15472378052993	ok
 gid://shopify/Product/15472377823617	ok
 gid://shopify/Product/15472377692545	ok
 gid://shopify/Product/15472377594241	ok
+gid://shopify/Product/15472377528705	ok
+gid://shopify/Product/15472377495937	ok
+gid://shopify/Product/15472377332097	ok
+gid://shopify/Product/15472377299329	ok
+gid://shopify/Product/15472377266561	ok
+gid://shopify/Product/15472377233793	ok
+gid://shopify/Product/15472377168257	ok
+gid://shopify/Product/15472361275777	ok
