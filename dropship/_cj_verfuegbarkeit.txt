@@ -5362,3 +5362,6 @@ gid://shopify/Product/15470376223105	ok
 gid://shopify/Product/15470376026497	ok
 gid://shopify/Product/15470375993729	ok
 gid://shopify/Product/15470375928193	ok
+gid://shopify/Product/15470375633281	ok
+gid://shopify/Product/15470375371137	ok
+gid://shopify/Product/15470369735041	ok
