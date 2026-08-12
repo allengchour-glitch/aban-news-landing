@@ -694,3 +694,5 @@ gid://shopify/Product/15495783448961	nicht-versendbar	Massivholz Katzenbaum mit 
 gid://shopify/Product/15495785873793	nicht-versendbar	Kratzbaum «Regenwald» für Katzen
 gid://shopify/Product/15496186233217	nicht-versendbar	Sitzbank für Schuhe im Eingangsbereich
 gid://shopify/Product/15496186462593	ok	Trendige Freizeit-Sneaker für Paare
+gid://shopify/Product/15496228340097	nicht-versendbar	Luftfrittiergerät 4.5L
+gid://shopify/Product/15496230011265	ok	Schmuckkassette mit Schlüssel – Mikrofaserleder

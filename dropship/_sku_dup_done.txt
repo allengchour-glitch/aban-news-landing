@@ -533,3 +533,4 @@ gid://shopify/Product/15496017576321	CJ-2510260243271607700	Besticktes Anti-Verl
 gid://shopify/Product/15496147272065	CJ-1750812172260741120	Kabelloses Bluetooth Grill- und Ofenthermometer
 gid://shopify/Product/15496147992961	CJ-CJYD266515201AZ	Business-Lederschuhe für Herren
 gid://shopify/Product/15496148091265	CJ-1750778567941689344	Koreanische Reisschale aus Kupfer, matt gebürstet
+gid://shopify/Product/15496229716353	CJ-2603240309091627200	Personalisierbares, feuchtigkeitsdichtes Zigarettenetui
