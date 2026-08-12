@@ -298,3 +298,41 @@ gid://shopify/Collection/689718526337	schwelle-50	Wellness & Selfcare
 gid://shopify/Collection/689718690177	schwelle-50	Home-Office & Desk-Setup
 gid://shopify/Collection/689719837057	schwelle-50	Kuschel- & Heizdecken
 gid://shopify/Collection/689719902593	schwelle-50	Sets & Bundles
+gid://shopify/Collection/689719968129	schwelle-50	Maniküre & Nagel-Geräte
+gid://shopify/Collection/689721409921	schwelle-50	Fitness-Geräte & Home-Gym
+gid://shopify/Collection/689721442689	schwelle-50	Hunde-Zubehör
+gid://shopify/Collection/689721475457	schwelle-50	Katzen-Zubehör
+gid://shopify/Collection/689721508225	schwelle-50	Futter & Näpfe
+gid://shopify/Collection/689721606529	schwelle-50	Unisex & Sets
+gid://shopify/Collection/689722163585	schwelle-50	Auto-Pflege & Reinigung
+gid://shopify/Collection/689741267329	schwelle-50	Fan-Zone Schweiz – WM 2026
+gid://shopify/Collection/689745592705	schwelle-50	Schulstart 2026
+gid://shopify/Collection/689746903425	schwelle-50	Viral-Hits & TikTok-Trends
+gid://shopify/Collection/689775182209	schwelle-50	T-Shirts & Tops
+gid://shopify/Collection/689775214977	schwelle-50	Jeans & Denim
+gid://shopify/Collection/689775247745	schwelle-50	Jumpsuits & Overalls
+gid://shopify/Collection/689775280513	schwelle-50	Haarfarbe & Coloration
+gid://shopify/Collection/689775313281	schwelle-50	Haushaltsgeräte
+gid://shopify/Collection/689775346049	schwelle-50	Bohrer, Sägen & Werkzeug-Zubehör
+gid://shopify/Collection/689775378817	schwelle-50	Sonnenbrillen (alle)
+gid://shopify/Collection/689775411585	schwelle-50	Shorts & Bermudas
+gid://shopify/Collection/689775444353	schwelle-50	Leggings & Tights
+gid://shopify/Collection/689775477121	schwelle-50	Westen & Gilets
+gid://shopify/Collection/689775509889	schwelle-50	Mikrofone & Streaming
+gid://shopify/Collection/689775542657	schwelle-50	Unterwäsche
+gid://shopify/Collection/689775575425	schwelle-50	Nachtwäsche & Pyjamas
+gid://shopify/Collection/689775608193	schwelle-50	Mützen, Schals & Stirnbänder
+gid://shopify/Collection/689775640961	schwelle-50	Geschirr & Servieren
+gid://shopify/Collection/689775673729	schwelle-50	Pfannen & Töpfe
+gid://shopify/Collection/689776329089	schwelle-50	Spass-Elektronik & RC
+gid://shopify/Collection/689776853377	schwelle-50	Smoke & Chill Zubehör
+gid://shopify/Collection/689777017217	schwelle-50	Verpackung & Versandmaterial
+gid://shopify/Collection/689777049985	schwelle-50	Geschenkverpackung
+gid://shopify/Collection/689778000257	schwelle-50	Jacken & Outdoor-Mode
+gid://shopify/Collection/689778033025	schwelle-50	Wandern & Trekking
+gid://shopify/Collection/689778065793	schwelle-50	Ersatzteile & Zubehör
+gid://shopify/Collection/689831346561	schwelle-50	Actionfiguren & Sammelfiguren
+gid://shopify/Collection/689834393985	schwelle-50	EU-Lager — Schnell geliefert
+gid://shopify/Collection/689869685121	schwelle-50	VR, AI & Neuheiten
+gid://shopify/Collection/691264881025	schwelle-50	Halloween
+gid://shopify/Collection/691265438081	schwelle-50	Black Friday

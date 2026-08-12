@@ -367,3 +367,203 @@ gid://shopify/Product/15448582062465	4	Gestreifter ärmelloser Jumpsuit mit weit
 gid://shopify/Product/15448582259073	5	Eleganter ärmelloser Jumpsuit mit Reverskragen
 gid://shopify/Product/15448582422913	15	Jumpsuit mit Blumenprint und weitem Bein
 gid://shopify/Product/15448582652289	3	Colorblock Jumpsuit mit langen Ärmeln
+gid://shopify/Product/15448582685057	20	Casual Yoga Jumpsuit mit Trägern
+gid://shopify/Product/15448582750593	20	Gerippter Bodycon Jumpsuit mit Spaghettiträgern
+gid://shopify/Product/15448582816129	10	Mesh-Jumpsuit mit Schnürung
+gid://shopify/Product/15448582881665	15	Eleganter ärmelloser Jumpsuit mit V-Ausschnitt
+gid://shopify/Product/15448582914433	6	Gepunkteter Neckholder Off-Shoulder Bodysuit mit Shorts
+gid://shopify/Product/15448582979969	20	Jumpsuit «Casual Washed» mit weitem Bein
+gid://shopify/Product/15448583045505	5	Gestreifter ärmelloser Jumpsuit mit V-Ausschnitt
+gid://shopify/Product/15448583078273	28	V-Ausschnitt Jumpsuit mit weitem Bein – S-Gray
+gid://shopify/Product/15448583242113	1	Overall-Playsuit mit Spaghettiträgern
+gid://shopify/Product/15448583340417	1	Eleganter Jumpsuit mit Puffärmeln
+gid://shopify/Product/15448583471489	10	Vielseitiger Jumpsuit mit weitem Bein
+gid://shopify/Product/15448583537025	10	Gestreifter ärmelloser Leinen-Playsuit
+gid://shopify/Product/15448584880513	1	Tailliertes Minikleid mit 3/4-Ärmeln
+gid://shopify/Product/15448585470337	4	Sportliches Tennis-Kleid mit Reissverschluss
+gid://shopify/Product/15448585765249	12	A-Linien Tennisrock mit Anti-Expositions-Unterlage
+gid://shopify/Product/15448589140353	1	Schürze mit Blumenmuster im französischen Stil
+gid://shopify/Product/15448590614913	1	Damen Strickpullover mit Herzmuster-Reissverschluss
+gid://shopify/Product/15448590713217	4	V-Ausschnitt Strickjacke Langarm
+gid://shopify/Product/15448591434113	1	Strickpullover mit Rückenausschnitt
+gid://shopify/Product/15448591892865	8	Strick-Cardigan im Retro-Look
+gid://shopify/Product/15448592613761	4	Fair Isle Strickpullover mit langen Ärmeln
+gid://shopify/Product/15448592843137	1	Eleganter Rollkragenpullover aus Wolle
+gid://shopify/Product/15448593236353	1	Grobstick-Pullover mit V-Ausschnitt
+gid://shopify/Product/15448595628417	2	Unifarbener Oversize Rollkragenpullover für Damen
+gid://shopify/Product/15448595726721	2	Damen Rollkragenpullover aus Strick
+gid://shopify/Product/15448596349313	2	Matte Sport Yoga-Set mit Shorts und BH
+gid://shopify/Product/15448598479233	1	Prinzessinnenkleid für Teenager
+gid://shopify/Product/15448599724417	1	Lässiges Zweiteiler-Set mit weiten Beinen
+gid://shopify/Product/15448600248705	1	Eleganter Zweiteiler mit Rundhals-Top & Hose
+gid://shopify/Product/15448600478081	1	Houndstooth-Set: Jacke und Hose
+gid://shopify/Product/15448600936833	40	High-Waist Yoga Leggings mit Shaping-Effekt
+gid://shopify/Product/15448602214785	1	Bequeme Capri-Leggings für Damen
+gid://shopify/Product/15448602247553	1	Nahtlose Jacquard Yoga Leggings für Damen
+gid://shopify/Product/15448602509697	3	High-Waist Leggings mit Fleece-Futter
+gid://shopify/Product/15448602542465	3	High-Waist Cropped Leggings für Damen
+gid://shopify/Product/15448602575233	1	Umstands-Capri-Leggings mit hohem Bund
+gid://shopify/Product/15448602739073	1	High-Waist Business Freizeithose für Damen
+gid://shopify/Product/15448603066753	12	High-Waist Yoga Leggings mit Shaping-Effekt – S-Blue
+gid://shopify/Product/15448603132289	6	Po-formende Sport Leggings für Damen
+gid://shopify/Product/15448603361665	29	Dünne High-Waist Yoga Leggings mit weitem Bein
+gid://shopify/Product/15448603853185	1	Fitness Leggings mit Shaping-Effekt
+gid://shopify/Product/15448603918721	1	Nahtlose High-Waist Leggings
+gid://shopify/Product/15448603951489	1	Elegante Flared Pants mit Schlangenprint
+gid://shopify/Product/15448604344705	1	Elegante High-Waist Business-Hose mit Knopfdetails
+gid://shopify/Product/15448604672385	1	Yoga Fitness Leggings Cropped
+gid://shopify/Product/15448604934529	12	High-Waist Yoga Leggings mit Shaping-Effekt – M-Gray Coffee
+gid://shopify/Product/15448605196673	30	Sport Leggings mit Mesh und Seitentaschen
+gid://shopify/Product/15448605458817	1	Leggings im Denim-Look mit Leopardenmuster
+gid://shopify/Product/15448606048641	2	High-Waist Fitness Leggings mit Taschen
+gid://shopify/Product/15448606343553	9	High-Waist Yoga Leggings
+gid://shopify/Product/15448608178561	5	Atmungsaktiver Sport-Minirock
+gid://shopify/Product/15448608276865	49	Knielanger A-Linien-Rock mit Taschen
+gid://shopify/Product/15448608407937	2	Yoga-Rockhose-Set für grosse Grössen
+gid://shopify/Product/15448608506241	1	Langes Damen-Leopardenkleid mit elastischem Bund
+gid://shopify/Product/15448610210177	1	Sportlicher Tennis-Jupe mit Anti-Expositions-Design
+gid://shopify/Product/15448610537857	12	Luftiger Anti-Expositions-Rock mit hoher Taille
+gid://shopify/Product/15448610603393	1	Satin-Midi-Rock mit hohem Bund und Schlitz
+gid://shopify/Product/15448611062145	1	Asymmetrischer Mesh-Jupe
+gid://shopify/Product/15448614240641	1	Chiffon-Puffrock mit Polka Dots
+gid://shopify/Product/15448616272257	1	High-Waist Bootcut Jeans im Vintage-Stil
+gid://shopify/Product/15448624234881	1	High-Waist Flared Jeans im Vintage-Look
+gid://shopify/Product/15448627315073	1	High Waist Straight Leg Jeans
+gid://shopify/Product/15448631214465	2	Denim-Look Leggings mit hohem Bund
+gid://shopify/Product/15448635507073	2	Irregular Design Straight-Leg Jeans
+gid://shopify/Product/15448636948865	1	High-Waist Straight-Leg Jeans für Damen – Pink
+gid://shopify/Product/15448637276545	1	High-Waist Straight-Leg Jeans für Damen – Schwarz
+gid://shopify/Product/15448639603073	1	Caprihose mit weitem Bein und Gummizug
+gid://shopify/Product/15448639897985	2	High-Waist Yoga Shorts für Damen
+gid://shopify/Product/15448640848257	1	High-Waist Yoga Shorts – Nahtloses Tragegefühl
+gid://shopify/Product/15448641208705	4	High-Waist Yoga Shorts mit Farbblock
+gid://shopify/Product/15448641864065	5	Nahtlose High-Waist Tie-Dye Yoga Shorts
+gid://shopify/Product/15448642519425	2	High-Waist Yoga Shorts mit Taschen
+gid://shopify/Product/15448642912641	6	Eng anliegende Yoga-Shorts für Damen
+gid://shopify/Product/15448642945409	12	High-Waist Workout Shorts mit Po-Lifting-Effekt
+gid://shopify/Product/15448643010945	2	Loose-fit Yoga & Fitness Shorts für Damen
+gid://shopify/Product/15448643469697	30	High-Waist Faltenrock mit Anti-Expositions-Design
+gid://shopify/Product/15448643731841	2	High-Waisted Cargo Shorts für Damen
+gid://shopify/Product/15448643862913	2	Sexy Samt-Hotpants mit hoher Taille
+gid://shopify/Product/15448643928449	36	Sportliche Viertellange Shorts für Damen
+gid://shopify/Product/15448644026753	1	High-Waist Yoga Shorts im Zweiteiler-Look
+gid://shopify/Product/15448644092289	15	Leopard-Print Yoga Shorts
+gid://shopify/Product/15448644157825	12	Nahtlose High-Waist Yoga-Hose für Damen
+gid://shopify/Product/15448644321665	1	Leichte Outdoor-Shorts für Damen
+gid://shopify/Product/15448644419969	1	High-Waist Cropped Shorts mit weitem Bein
+gid://shopify/Product/15448644452737	4	Mesh Sportshorts mit Seitenbogen
+gid://shopify/Product/15448644649345	8	Sommer High-Waist Shorts im Zweiteiler-Look
+gid://shopify/Product/15448644878721	1	Bequeme Shorts mit Kordelzug für Damen
+gid://shopify/Product/15448645304705	1	Leichte Leinen-Shorts mit Taschen
+gid://shopify/Product/15448645796225	1	Boho-Chic Latz-Shorts für Damen
+gid://shopify/Product/15448645992833	12	High-Waist Yoga Shorts mit Po-Lifting-Effekt
+gid://shopify/Product/15448646058369	1	Denim Skort im Retro-Stil
+gid://shopify/Product/15448646386049	12	Sport-Shorts mit schnelltrocknendem Nylon-Spandex-Gewebe
+gid://shopify/Product/15448646713729	1	High-Waist Boxer-Style Umstandsunterhose
+gid://shopify/Product/15448646812033	4	Mesh-Panel Sport Leggings für Damen
+gid://shopify/Product/15448647205249	1	High-Waist Shaping Leggings
+gid://shopify/Product/15448647369089	7	Nahtlose Strick-Tie-Dye-Yogahose für Damen
+gid://shopify/Product/15448647532929	1	High-Waist Yoga Pants
+gid://shopify/Product/15448649040257	3	High-Waist Yoga-Pants im europäischen Stil
+gid://shopify/Product/15448649728385	3	High-Waist Capri Leggings für Damen
+gid://shopify/Product/15448649859457	1	High-Waist Yoga-Pants mit Polka-Dots
+gid://shopify/Product/15448650088833	6	High-Waist Hose für Damen
+gid://shopify/Product/15448650580353	25	Nahtlose Sportleggings für Damen
+gid://shopify/Product/15448651104641	2	Figurbetonte Yoga-Hose für Damen
+gid://shopify/Product/15448651235713	5	Bauchkontroll-Shapewear für Yoga & Radsport
+gid://shopify/Product/15448651497857	2	Sport-Leggings für Damen
+gid://shopify/Product/15448651792769	4	Sportliche Wide-Leg Hose für Damen
+gid://shopify/Product/15448652284289	2	Weite Freizeithose aus Baumwoll-Mix
+gid://shopify/Product/15448652644737	1	Retro Cordhose für Damen
+gid://shopify/Product/15448652677505	1	Retro Cropped Wide Leg Jeans
+gid://shopify/Product/15448652939649	1	Weite Freizeithose mit Polka Dots
+gid://shopify/Product/15448653300097	1	Satin Cargo Hose für Damen im Western-Stil
+gid://shopify/Product/15448653398401	1	Atmungsaktive Yoga-Hose mit weitem Bein
+gid://shopify/Product/15448653562241	1	Cordhose im Loose Fit mit weitem Bein
+gid://shopify/Product/15448653758849	1	Freizeit-Hose mit weitem Bein – Reddish Brown
+gid://shopify/Product/15448654152065	1	High-Waist Wide-Leg Hose für Damen
+gid://shopify/Product/15448654381441	1	Semi-transparente Mesh-Haremshose
+gid://shopify/Product/15448655004033	2	Bequeme Tie-Dye Hose mit weitem Bein
+gid://shopify/Product/15448655036801	1	Weite Hose mit überkreuztem Bund
+gid://shopify/Product/15448655135105	2	Bootcut Hose mit V-Bund
+gid://shopify/Product/15448655266177	1	High-Waist Bootcut Sporthose für Damen
+gid://shopify/Product/15448655757697	1	Flowing Floral Wide-Leg Hose für Damen
+gid://shopify/Product/15448656871809	1	Kurzer Wollmantel mit Puppenkragen
+gid://shopify/Product/15448656937345	2	Slim-Fit Sportjacke mit Stehkragen
+gid://shopify/Product/15448659919233	4	Damen Halterneck Top mit Spitze und Rüschen
+gid://shopify/Product/15448660410753	1	Locker geschnittener Langarm-Blazer
+gid://shopify/Product/15448661000577	1	Trägerloses Top mit Resort-Print
+gid://shopify/Product/15448661131649	7	Elegante Chiffon-Cami mit 3D-Effekt
+gid://shopify/Product/15448661459329	2	Halter-Top Yoga Tank mit Polsterung
+gid://shopify/Product/15448661623169	1	Nahtloses, feuchtigkeitsableitendes Yoga-Top
+gid://shopify/Product/15448662606209	1	Rollkragen Strickweste für Damen
+gid://shopify/Product/15448664605057	20	Nahtloses, atmungsaktives Workout-Top
+gid://shopify/Product/15448665424257	2	Midilanger Wollmantel mit Gürtel
+gid://shopify/Product/15448665686401	2	Eleganter Rollkragen-Mantel mit Schalkragen
+gid://shopify/Product/15448666669441	1	Doppelseitiger Fleece-Rollkragenmantel
+gid://shopify/Product/15448667881857	1	Eleganter Wollmantel für Damen – Camel
+gid://shopify/Product/15448668045697	1	Doppelgesichtiger Wollmantel – Lange Ausführung
+gid://shopify/Product/15448668176769	5	Lammfellmantel mit integriertem Fellfutter
+gid://shopify/Product/15448668930433	1	Strick-Cardigan mit Reverskragen und Taschen
+gid://shopify/Product/15448669290881	1	Eleganter Wollmantel mit Revers für Damen
+gid://shopify/Product/15448670470529	1	Mid-length Wollmantel Casual Chic
+gid://shopify/Product/15448670536065	1	Retro Rollkragen Wollmantel mit Knöpfen
+gid://shopify/Product/15448670962049	4	Langer Damenmantel im Kaschmir-Look
+gid://shopify/Product/15448671027585	1	Eleganter Damenmantel mit Fellkragen
+gid://shopify/Product/15448672174465	1	Gefütterter Baumwollmantel mit Prinzessinnenärmeln
+gid://shopify/Product/15448672240001	1	Kurze, locker geschnittene Daunenbaumwolljacke
+gid://shopify/Product/15448672305537	2	Gefütterter Kapuzen-Cardigan, mittellang
+gid://shopify/Product/15448672403841	1	Kurze, locker geschnittene Damen-Steppjacke
+gid://shopify/Product/15448672665985	1	Gefütterter Damen-Mantel mit grossem Kunstfellkragen
+gid://shopify/Product/15448672731521	1	Warme Damen-Steppjacke im japanischen Stil
+gid://shopify/Product/15448672928129	1	Vielseitige, schlankmachende Wattierte Jacke
+gid://shopify/Product/15448672993665	1	Leichte Daunenjacke für Herbst und Winter
+gid://shopify/Product/15448673157505	3	Kurze Daunenjacke für Damen
+gid://shopify/Product/15448673616257	1	Gepolsterte Baumwolljacke für den Winter
+gid://shopify/Product/15448673649025	1	Gefütterter Kapuzenmantel – schlicht & vielseitig
+gid://shopify/Product/15448674009473	2	Kurzer Daunenmantel mit Reissverschluss
+gid://shopify/Product/15448675746177	1	Vielseitiger Baumwollmantel mit Pelzkragen
+gid://shopify/Product/15448676434305	1	Kurze Daunenjacke im Koreanstyle für Damen
+gid://shopify/Product/15448677089665	1	Leichte kurze Baumwoll-Liner-Jacke für Damen
+gid://shopify/Product/15448677286273	1	Vielseitige kurze Baumwoll-Steppjacke Damen
+gid://shopify/Product/15448703467905	1	Rundhals-Cardigan mit Goldknöpfen
+gid://shopify/Product/15448704549249	2	Wollpullover Rollkragen Reversible
+gid://shopify/Product/15448704778625	1	Kurzer Strickpullover mit Rollkragen und Schlitz
+gid://shopify/Product/15448705827201	1	Damen Rollkragenpullover – Locker & Vielseitig
+gid://shopify/Product/15448706515329	1	Vintage Strick-Cardigan für Damen
+gid://shopify/Product/15448707727745	2	Strickpullover aus Merinowolle
+gid://shopify/Product/15448710447489	1	Faltiger Yoga- und Sportrock im Zweiteiler-Look
+gid://shopify/Product/15448711299457	1	Eleganter Satin-Fishtail-Rock mit hoher Taille
+gid://shopify/Product/15448712675713	1	Luftiges Ombre Kurzarmhemd im Resort-Stil
+gid://shopify/Product/15448712741249	2	Freizeit-Übergangsjacke für Herren
+gid://shopify/Product/15448712872321	2	Vielseitiges Kurzarmhemd für Herren
+gid://shopify/Product/15448713101697	2	Herren Freizeithemd mit Revers
+gid://shopify/Product/15448713232769	1	Kurzarm-Freizeithemd aus Leinenmix
+gid://shopify/Product/15448713888129	1	Herren Leinenhemd mit Revers – Locker geschnitten
+gid://shopify/Product/15448714740097	1	Leinenhemd Kurzarm mit Stehkragen
+gid://shopify/Product/15448716771713	1	Gestreiftes Freizeit-Oberteil für Herren
+gid://shopify/Product/15448718737793	1	Gefütterte Baumwolljacke für Herren
+gid://shopify/Product/15448719163777	12	Kurze Shearling-Jacke für Herren mit Fellfutter
+gid://shopify/Product/15448719982977	1	Herren Strick-Cardigan-Weste
+gid://shopify/Product/15448720048513	11	Kimono Jacke für Herren
+gid://shopify/Product/15448720343425	2	Leichter Herren Cardigan aus reiner Wolle
+gid://shopify/Product/15448720441729	1	Herren Kaschmir-Kurzmantel Doubleface
+gid://shopify/Product/15448720671105	1	Retro-Jacke für Herren mit Revers
+gid://shopify/Product/15448720900481	1	Herren Business-Casual Sakko aus Wolle
+gid://shopify/Product/15448748491137	4	V-Ausschnitt Strickjacke (Loose Fit)
+gid://shopify/Product/15448748556673	4	Mink Velvet Cardigan mit Totenkopfmuster
+gid://shopify/Product/15448755601793	1	Midilanger Tüllrock mit elastischem Bund
+gid://shopify/Product/15448757141889	1	Midi-Rock im Retro-Look
+gid://shopify/Product/15448757895553	1	High-Waist Yoga-Pants mit Fleece-Futter
+gid://shopify/Product/15448759337345	1	Slim Fit Jeans mit hohem Bund
+gid://shopify/Product/15448760484225	1	Retro Slim-Fit Stretch Jeans
+gid://shopify/Product/15448788140417	1	Gestreiftes Langarmshirt für Herren
+gid://shopify/Product/15448794136961	1	Leinenhemd für Herren – Gray Black
+gid://shopify/Product/15448794431873	1	Warmer Baumwoll-Steppmantel für Herren
+gid://shopify/Product/15448797839745	1	Kapuzen-Sweatshirt für Herren
+gid://shopify/Product/15448799510913	1	Mattes Rouge mit langem Halt
+gid://shopify/Product/15448803869057	4	2-in-1 Lipgloss & Lippenöl
+gid://shopify/Product/15448806457729	1	Party Lippenstift
+gid://shopify/Product/15448810586497	2	Seiden-Gesichtsmaske mit UV-Schutz
+gid://shopify/Product/15448810815873	1	UV-Schutzmaske aus Maulbeerseide
+gid://shopify/Product/15448811143553	1	Farbwechsel-Sturmhaube für Outdoor-Cycling
