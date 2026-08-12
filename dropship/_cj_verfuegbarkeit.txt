@@ -4112,3 +4112,11 @@ gid://shopify/Product/15477966406017	ok
 gid://shopify/Product/15477966340481	ok
 gid://shopify/Product/15477966274945	ok
 gid://shopify/Product/15477966209409	ok
+gid://shopify/Product/15477966176641	ok
+gid://shopify/Product/15477966111105	ok
+gid://shopify/Product/15477966078337	ok
+gid://shopify/Product/15477965947265	ok
+gid://shopify/Product/15477965914497	ok
+gid://shopify/Product/15477965717889	ok
+gid://shopify/Product/15477965554049	ok
+gid://shopify/Product/15477965390209	ok
