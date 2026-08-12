@@ -1,5 +1,19 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+
+## 🎮 SPIELE-STAND (Traumhaus-Session, 2026-08-12)
+> Fuer die Modell-/Terrain-Session: **`spiele-dev/RUNBOOK-TRAUMHAUS.md` zuerst lesen.**
+- **Spielschleife steht:** Bauabnahme alle 4 Tage (Inspektor kommt zu Fuss), 6 Wohnstufen
+  Huette→Palast, +12 %/Stufe auf alle Einnahmen, Luxus-Moebel schalten frei. Koop-synchron.
+- **Werkzeuge:** `spiele-dev/tools/th-pruef.mjs` (Gesamtpruefung, Exit 1 bei Befund),
+  `th-mass.mjs` (Grundflaeche je Zielhoehe — PFLICHT vor jedem viertel()-cfg!),
+  `th-blick.mjs` (Screenshot). Bitte nach Terrain-/Modell-Chargen th-pruef laufen lassen:
+  Sollwerte 0 im Strassenkorridor, groesste Ueberschneidung 6.3 m (Seilbahn, gewollt).
+- **Regeln, die teuer waren:** bau() skaliert NUR ueber die Hoehe (Grundflaechen MESSEN);
+  wegVonStrasse prueft nur den Ankerpunkt (fuer Flaechen korridorKonflikt); nach spaeten
+  Verschiebungen _nachRuecken() UND Solids mitziehen (passiert in freiRaeumen/entwirren
+  automatisch). Details + 9 Fallen: RUNBOOK-TRAUMHAUS.
+
 > **Mehrere Sessions arbeiten parallel auf DIESEM Repo (`allengchour-glitch/aban-news-landing`)
 > UND demselben Shopify-Shop (LuxeStyle, `au3j0y-hq.myshopify.com` / luxestyle.ch).**
 > Diese Datei verhindert, dass sie sich gegenseitig überschreiben. **Jede Session:** erst hier rein,
