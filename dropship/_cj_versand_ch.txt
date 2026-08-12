@@ -681,3 +681,5 @@ gid://shopify/Product/15495137624449	nicht-versendbar	Sommerliches Holzbett für
 gid://shopify/Product/15495132905857	ok	Vintage Rucksack aus Rindsleder
 gid://shopify/Product/15495132447105	ok	Rucksack aus echtem Rindsleder
 gid://shopify/Product/15494642368897	ok	Naturholz Katzenkratzbaum mit Rattan-Nest
+gid://shopify/Product/15495155679617	nicht-versendbar	Hydraulischer Kabelschneider
+gid://shopify/Product/15495147225473	nicht-versendbar	5L Multikocher mit Timer
