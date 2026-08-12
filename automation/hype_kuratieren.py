@@ -61,6 +61,20 @@ RAUS_TYP = {"Spielzeug & Spiele", "Partydeko & Ballone", "Kostüme & Verkleidung
 NICHT_STARTSEITE = re.compile(r'Intim|Erotik|Vaginal|Menstruation|H[äa]morrhoid|Anti-?Pilz|'
                               r'Nagelpilz|Warzen|Hemorrhoid', re.I)
 
+# ⚠️ DIE BILDPRÜFUNG KANN KEIN MUSTER ERSETZEN — sie braucht einen Blick.
+# Der erste Lauf wählte zwölf Produkte, die nach Zahlen tadellos waren: genug Bilder, richtiger
+# Preis, im Google-Kanal, kein Tag auffällig. Der Kontaktbogen zeigte dann bei VIER, was keine
+# Kennzahl verrät:
+#   • ein Kleid an der Schaufensterpuppe statt an einem Model,
+#   • ein chinesisches Lieferanten-Wasserzeichen mitten im Bild (广州…),
+#   • eine englische Infografik mit Wirkversprechen statt eines Produktfotos,
+#   • ein eingebrannter Bildtext «Samsung UK three-pin» — der falsche Markt für einen CH-Shop.
+# Sie standen auf der prominentesten Fläche des Shops. Aussortierte bekommen deshalb dauerhaft
+# `hype-bild-schwach` und werden nie wieder gewählt.
+# PFLICHT für jeden Lauf: `KONTAKT=1 python3 automation/hype_kuratieren.py` baut den
+# Kontaktbogen der aktuellen Reihe — vor dem Veröffentlichen ansehen (Projektregel 5, Vision-QA).
+AUSGEMUSTERT = "hype-bild-schwach"
+
 
 def gql(q, v=None):
     with open("/tmp/_hy.json", "w") as f:
