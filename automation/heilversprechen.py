@@ -49,17 +49,78 @@ MESSWERT_ROH = re.compile(r'Blutdruck|EKG|ECG|Harns[äa]ure|Blutfett|Lipidprofil
 # Selbst eingetragene Werte sind eine Tagebuchfunktion, kein Messversprechen.
 MANUELL = re.compile(r'manuell|selbst\s+(?:erfass|eintrag|eingeb)|Eingabe', re.I)
 
-# Krankheiten und Heilaussagen bei Ware, die kein Medizinprodukt ist.
-HEILSATZ = re.compile(
-    r'[^.!?]*\b(?:Ischias|Spinalstenose|Hernie\w*|Bandscheibenvorfall|Rosacea|Purpura|'
-    r'Krampfadern|Nagelpilz|Myopie\w*|Kurzsichtigkeit|Arthrose|Rheuma|Neurodermitis|'
-    r'Schuppenflechte|Psoriasis|Migr[äa]ne|Fieber|Karies|Parodontitis|Hämorrhoiden|'
-    r'Depression\w*|Tinnitus)\b[^.!?]*[.!?]?', re.I)
-# «heilt», «kuriert», «behandelt» — Wirkversprechen ohne Krankheitsnamen.
-HEILWORT = re.compile(r'[^.!?]*\b(?:heilt|kuriert|therapiert|behandelt\s+(?:erfolgreich|wirksam)|'
-                      r'medizinisch\s+(?:bewiesen|nachgewiesen)|von\s+[ÄA]rzten\s+empfohlen|'
-                      r'empfohlen\s+von\s+(?:Chiropraktikern|[ÄA]rzten|Physiotherapeuten))'
-                      r'\b[^.!?]*[.!?]?', re.I)
+# Krankheiten und Wirkversprechen bei Ware, die kein Medizinprodukt ist.
+# ⚠️ Diese Wörter werden NUR gesucht — der umgebende Satz wird danach mit Zeichenketten-
+# Operationen abgegrenzt, nicht mit einem Regex. Der erste Entwurf hatte «[^.!?]*WORT[^.!?]*»
+# auf beiden Seiten; auf 31'000 Beschreibungen lief das in katastrophales Backtracking und
+# stand nach zwei Minuten immer noch. Suchen ist linear, Satzgrenzen finden auch.
+KRANKHEIT = re.compile(
+    r'\b(?:Ischias|Spinalstenose|Hernien?|Bandscheibenvorfall|Rosacea|Purpura|'
+    r'Krampfadern|Besenreiser|Spider-?Venen|Nagelpilz|Myopie\w*|Kurzsichtigkeit|'
+    r'Arthrose|Rheuma|Neurodermitis|Schuppenflechte|Psoriasis|H[äa]morrhoiden|'
+    r'Tinnitus|Spinalkanal)\b', re.I)
+# Ein Krankheitsname allein ist keine Heilaussage — es braucht ein Wirkversprechen dazu.
+WIRKWORT = re.compile(r'\b(?:heilt|kuriert|therapiert|lindert|bek[äa]mpft|beseitigt|'
+                      r'wirksam\s+gegen|hilfe|hilft\s+(?:bei|gegen)|Ergebnisse\s+bei|'
+                      r'Abhilfe|behandelt|Linderung)\b', re.I)
+# Diese stehen für sich allein — dafür braucht es keinen Krankheitsnamen.
+STARK = re.compile(r'\b(?:medizinisch\s+(?:bewiesen|nachgewiesen)|klinisch\s+(?:bewiesen|getestet)|'
+                   r'empfohlen\s+von\s+(?:Chiropraktikern|[ÄA]rzten|Physiotherapeuten)|'
+                   r'von\s+[ÄA]rzten\s+empfohlen|heilt\s+\w)', re.I)
+# ⚠️ VIER SATZARTEN, die im ersten Probelauf fälschlich entfernt worden wären:
+#  • «Nicht kompatibel mit Myopie-Linsen» und «Option für Myopie verfügbar» — das ist eine
+#    Passform-Angabe für Brillenträger, keine Behandlung. Wer sie streicht, nimmt der Kundin
+#    genau die Information, wegen der sie den Satz liest.
+#  • «Die Brille ist für Personen mit Kurzsichtigkeit bis 600° geeignet» — eine Spezifikation.
+#  • «hilft, Karies vorzubeugen» bei einer Zahnbürste — Vorbeugung ist bei Mundpflege üblich
+#    und zulässig; Karies und Parodontitis stehen deshalb gar nicht erst auf der Liste.
+#  • «um das ERSCHEINUNGSBILD von Besenreisern zu verbessern» — genau die Formulierung, die
+#    ein Kosmetikum verwenden MUSS. Sie zu löschen hiesse, die korrekte Fassung zu bestrafen.
+KEIN_HEILVERSPRECHEN = re.compile(r'kompatib|geeignet\s+f[üu]r|Option\s+f[üu]r|verf[üu]gbar|'
+                                  r'Erscheinungsbild|Aussehen\s+von|passend\s+f[üu]r|'
+                                  r'nicht\s+geeignet|Brillentr[äa]ger', re.I)
+
+
+def ist_heilaussage(satz):
+    if KEIN_HEILVERSPRECHEN.search(satz):
+        return False
+    if STARK.search(satz):
+        return True
+    return bool(KRANKHEIT.search(satz) and WIRKWORT.search(satz))
+
+
+HEILWORT = re.compile(KRANKHEIT.pattern + "|" + STARK.pattern, re.I)
+
+
+def satz_um(text, i, j):
+    """Grenzt den Satz ab, in dem der Treffer [i:j) liegt — linear, ohne Regex."""
+    a = max((text.rfind(z, 0, i) for z in ".!?>\n"), default=-1)
+    b = min((k for k in (text.find(z, j) for z in ".!?<\n") if k != -1), default=len(text))
+    if text[b:b + 1] in ".!?":
+        b += 1
+    return a + 1, b
+
+
+def heilsaetze_entfernen(html):
+    """Entfernt jeden Satz, der ein Krankheits- oder Wirkversprechen enthält."""
+    weg, neu, ende = [], [], 0
+    for m in HEILWORT.finditer(html):
+        a, b = satz_um(html, m.start(), m.end())
+        if a < ende:
+            continue                                  # Satz schon entfernt
+        satz = html[a:b].strip()
+        if len(satz) < 8 or len(satz) > 400 or not ist_heilaussage(satz):
+            continue
+        neu.append(html[ende:a])
+        weg.append(satz)
+        ende = b
+    if not weg:
+        return html, []
+    neu.append(html[ende:])
+    s = "".join(neu)
+    s = re.sub(r'<li\b[^>]*>\s*</li>', '', s)
+    s = re.sub(r'<p\b[^>]*>\s*</p>', '', s)
+    return re.sub(r'\s{2,}', ' ', s), weg
 # Wo eine Krankheit nur den Anlass beschreibt, ist nichts zu beanstanden.
 HEIL_AUSNAHME = re.compile(r'Fieberthermometer|Fiebermesser|Migr[äa]ne-?Brille|Kost[üu]m|'
                            r'Fasnacht|Karneval', re.I)
@@ -88,12 +149,19 @@ def gql(q, v=None):
 
 def glaetten(s):
     """Räumt auf, was das Herausschneiden aus einer Aufzählung hinterlässt."""
+    # «Herzfrequenz-, Blutdruck- und Blutsauerstoffmessung»: der Bindestrich der ausgeschnittenen
+    # Zusammensetzung bleibt sonst als nacktes «-» stehen.
+    s = re.sub(r'(?<![\wäöüÄÖÜ])[-–]\s*(?=und\b|,|$)', '', s)
     s = re.sub(r'\s*,\s*(?=\)|$)', '', s)          # «(Herzfrequenz, )» → «(Herzfrequenz)»
     s = re.sub(r'\(\s*\)', '', s)                   # leere Klammer
     s = re.sub(r'\s*,\s*,+', ',', s)
     s = re.sub(r',\s*und\b', ' und', s, flags=re.I)
     s = re.sub(r'\s{2,}', ' ', s)
-    return s.strip(" ,;·-–")
+    s = s.strip(" ,;·-–")
+    # Führendes Bindewort, wenn das erste Glied der Aufzählung weggefallen ist:
+    # «EKG-Funktion und Herzfrequenzmessung» → «und Herzfrequenzmessung» → «Herzfrequenzmessung».
+    s = re.sub(r'^(?:und|sowie|oder|,)\s+', '', s, flags=re.I)
+    return s[:1].upper() + s[1:] if s else s
 
 
 TORSO = re.compile(r'(?:\b(?:und|sowie|mit|von|des|der|für|zur|zum|misst|erfasst|'
@@ -138,8 +206,16 @@ def html_saeubern(html):
     return re.sub(r'\s{2,}', ' ', neu), treffer
 
 
+MESSWORT = r'(?:Blutdruck|EKG|ECG|Harns[äa]ure|Blutfett|Lipidprofil|Blutzucker)'
+
+
 def titel_saeubern(t):
-    neu = glaetten(MESSWERT.sub("", t))
+    # «Temperatur- und Blutdruckmessung»: fällt nur das zweite Glied weg, bliebe «Temperatur-»
+    # als Rumpf stehen. Das Grundwort gehört ans erste Glied zurück.
+    neu = re.sub(r'(\w+)-\s+und\s+' + MESSWORT + r'(messung|[üu]berwachung|tracking)',
+                 r'\1\2', t, flags=re.I)
+    neu = re.sub(MESSWORT + r'-\s+und\s+(\w)', r'\1', neu, flags=re.I)
+    neu = glaetten(MESSWERT.sub("", neu))
     neu = re.sub(r'\s*&\s*$', '', neu).strip(" ·-–,&")
     neu = re.sub(r'\b(mit|für|und)\s*$', '', neu, flags=re.I).strip(" ·-–,&")
     return neu
@@ -158,15 +234,11 @@ def main():
             if (neu_html != html or neu_t != t) and len(neu_t) >= 12:
                 wearables.append((p["id"], t, neu_t, html, neu_html, tr))
             continue
-        if HEIL_AUSNAHME.search(t):
+        if HEIL_AUSNAHME.search(t) or not HEILWORT.search(html):
             continue
-        if HEILSATZ.search(html) or HEILWORT.search(html):
-            neu = HEILWORT.sub("", HEILSATZ.sub("", html))
-            neu = re.sub(r'<li\b[^>]*>\s*</li>', '', neu)
-            neu = re.sub(r'<p\b[^>]*>\s*</p>', '', neu)
-            neu = re.sub(r'\s{2,}', ' ', neu)
-            if neu != html:
-                heil.append((p["id"], t, html, neu))
+        neu, weg = heilsaetze_entfernen(html)
+        if weg:
+            heil.append((p["id"], t, html, neu, weg))
 
     print(f"(A) Wearables mit Messversprechen: {len(wearables)}", flush=True)
     for _, alt, neu_t, _, _, tr in wearables[:8 if DRY else 3]:
@@ -176,11 +248,9 @@ def main():
         for a, b in tr[:4]:
             print(f"      «{a[:64]}»\n         → «{b[:64]}»", flush=True)
     print(f"\n(B) Heil-/Krankheitsaussagen: {len(heil)}", flush=True)
-    for _, t, alt, neu in heil[:8 if DRY else 3]:
-        weg = [x.strip() for x in HEILSATZ.findall(alt)][:1]
-        m = HEILSATZ.search(re.sub(r'<[^>]+>', ' ', alt)) or HEILWORT.search(
-            re.sub(r'<[^>]+>', ' ', alt))
-        print(f"   {t[:44]:<46} entfernt: «{(m.group(0).strip() if m else '')[:70]}»", flush=True)
+    for _, t, _, _, weg in heil[:12 if DRY else 4]:
+        print(f"   {t[:40]:<42} entfernt: «{re.sub(r'<[^>]+>', ' ', weg[0]).strip()[:74]}»",
+              flush=True)
     if DRY:
         return
 
@@ -207,7 +277,7 @@ def main():
             f.flush()
             print(f"  … {n1}/{len(wearables)}", flush=True)
         time.sleep(0.3)
-    for gid, t, _, neu in heil:
+    for gid, t, _, neu, _ in heil:
         if gid in done:
             continue
         r = gql('mutation($i:ProductInput!){productUpdate(input:$i){userErrors{message}}}',
