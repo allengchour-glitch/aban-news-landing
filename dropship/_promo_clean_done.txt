@@ -7954,3 +7954,4 @@ gid://shopify/Product/15496379335041	bereinigt
 gid://shopify/Product/15496379367809	bereinigt
 gid://shopify/Product/15496379400577	bereinigt
 gid://shopify/Product/15496379433345	bereinigt
+gid://shopify/Product/15496379498881	bereinigt
