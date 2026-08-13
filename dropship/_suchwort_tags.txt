@@ -3935,3 +3935,5 @@ gid://shopify/Product/15454203675009	kette	Oktopoden-Pendant mit Türkisen Perle
 gid://shopify/Product/15454203707777	uhr	Retro-Armbanduhr Edelstahl
 gid://shopify/Product/15454203773313	uhr	Business-Quarzarmbanduhr mit Mesh-Armband
 gid://shopify/Product/15454203806081	uhr,kette	Herrenuhr Stahlkette Business Casual
+gid://shopify/Product/15454203838849	uhr	Automatische Herrenuhr wasserdicht mit Leuchteffekt
+gid://shopify/Product/15454203871617	uhr	Herrenuhr in Schwarz und Gold mit Kalenderfunktion
