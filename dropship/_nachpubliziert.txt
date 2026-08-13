@@ -79,3 +79,5 @@ gid://shopify/Product/15496361574785	modischer-herren-rucksack-fur-laptop-476544
 gid://shopify/Product/15496361607553	kuchenhelfer-set-rosegold-748800	Küchenhelfer-Set Roségold
 gid://shopify/Product/15496373535105	medaillen-und-munz-sammelbox-aus-nussbaum-623400	Medaillen- und Münz-Sammelbox aus Nussbaum
 gid://shopify/Product/15496373567873	tragerloses-plisseekleid-in-a-linie-613400	Trägerloses Plisseekleid in A-Linie
+gid://shopify/Product/15496385855873	prinzessinnen-sandalen-aus-weichem-leder-632200	Prinzessinnen-Sandalen aus weichem Leder
+gid://shopify/Product/15496385888641	french-wear-nahtlose-ablosbare-nagelsticker-628900	French Wear Nahtlose, ablösbare Nagelsticker
