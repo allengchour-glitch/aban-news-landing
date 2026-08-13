@@ -1418,3 +1418,22 @@ gid://shopify/Product/15448925700481	matte	Schmutzfangmatte für Aussenbereiche
 gid://shopify/Product/15448925962625	huelle	Chenille Kissenhülle oder Kissen mit Füllung
 gid://shopify/Product/15448926126465	kissen	Plüsch-Stützkissen für Seitenschläfer
 gid://shopify/Product/15448926159233	kissen	Atmungsaktives Cartoon-Eisseidenkissen für den Sommer
+gid://shopify/Product/15448926355841	kissen	Sommerliches Eisseiden-Seitenschläferkissen
+gid://shopify/Product/15448926716289	kissen	Schwangerschaftskissen mit Taillenstütze
+gid://shopify/Product/15448926781825	kissen	U-förmiges Samt-Schwangerschaftskissen
+gid://shopify/Product/15448926912897	kissen	Lordosenstützkissen aus Memory Foam
+gid://shopify/Product/15448926945665	kissen	Ergonomisches Nackenkissen aus Schaumstoff
+gid://shopify/Product/15448927011201	kissen	Babykissen im nordischen Stil für die Taille
+gid://shopify/Product/15448927076737	kissen	Memory Foam Sitz- und Rückenkissen
+gid://shopify/Product/15448927175041	kissen	Nackenstützkissen mit Massageperlen
+gid://shopify/Product/15448927240577	kissen	Multifunktionales Ganzkörper-Knetkissen
+gid://shopify/Product/15448927273345	kissen	Nackenkissen für Wimpern- und Brauenbehandlungen
+gid://shopify/Product/15448927338881	kissen	Baby Schräglagerungskissen
+gid://shopify/Product/15448927404417	kissen	Keilförmiges Rückenkissen mit Kopfstütze
+gid://shopify/Product/15448927568257	kissen	Langes, waschbares Seitenschläferkissen
+gid://shopify/Product/15448927666561	kissen	Wolkenkissen im französischen Stil
+gid://shopify/Product/15448927699329	kissen	Zierkissen mit Blumenmuster im französischen Stil
+gid://shopify/Product/15448927863169	kissen	Lesekissen für Einzelbett
+gid://shopify/Product/15448927928705	huelle	Vintage Kissenhülle mit Stickerei
+gid://shopify/Product/15448927961473	kissen	Babykissen mit Kontur aus Buchweizenschalen
+gid://shopify/Product/15448928059777	kissen	Dopamin Fragezeichen Nackenkissen
