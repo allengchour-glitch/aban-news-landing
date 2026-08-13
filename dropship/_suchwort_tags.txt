@@ -2862,3 +2862,23 @@ gid://shopify/Product/15451641446785	ring	Scheinwerfer-Zierring für Golf, Jetta
 gid://shopify/Product/15451641512321	tasche	Velo-Rahmentasche fürs Smartphone
 gid://shopify/Product/15451910570369	regal	Minimalistisches 2-Lagen Metallregal
 gid://shopify/Product/15451912044929	matte	Küchenmatten 2er-Set, rutschfest & wasserdicht
+gid://shopify/Product/15451912798593	kamm	Kabelloser Anionen-Glättkamm mit USB-Ladefunktion
+gid://shopify/Product/15451914076545	kamm	Kabelloser Mini-Glättkamm mit LCD-Anzeige
+gid://shopify/Product/15451914273153	kamm	Kabelloser Glättkamm mit Anionen-Technologie
+gid://shopify/Product/15451914502529	kamm	Kabelloser 2-in-1 Glättkamm mit Ionen-Pflege
+gid://shopify/Product/15451915288961	buerste	Mini Wireless Glättbürste mit Anionenfunktion
+gid://shopify/Product/15451916206465	kamm	Rotlicht Vibrations-Massagekamm für vitales Haar
+gid://shopify/Product/15451916599681	kamm	Elektrischer Kopfhaut-Massagekamm
+gid://shopify/Product/15451918598529	kissen	Smartes Beruhigungskissen mit Schlafliedern
+gid://shopify/Product/15451922661761	armband	Florales Magnetarmband aus Rotkupfer
+gid://shopify/Product/15451923120513	armband	Kupferarmband, mehrlagig, handgeknüpft
+gid://shopify/Product/15451924169089	uhr	Business-Quarzuhr im Retro-Look für Herren
+gid://shopify/Product/15451924234625	uhr	Engine Movement Herren Quarzuhr
+gid://shopify/Product/15451924267393	uhr	Klassische Minimalistische Quarzuhr mit Mesh-Armband
+gid://shopify/Product/15451924365697	uhr	Herren Quarzuhr im Gürtel-Stil
+gid://shopify/Product/15451924431233	uhr	Herren Quarzuhr mit Leuchtzeigern und Stahlband
+gid://shopify/Product/15451924496769	uhr	Solar Taucheruhr aus Edelstahl
+gid://shopify/Product/15451924562305	uhr	Wasserdichte Leuchtquarz-Herrenuhr
+gid://shopify/Product/15451925184897	rucksack	Multifunktionaler Business-Reiserucksack
+gid://shopify/Product/15451925578113	rucksack	Militär-Stil Wanderrucksack, gross
+gid://shopify/Product/15451926462849	kleid	Elegantes Jeanskleid mit Knopfleiste
