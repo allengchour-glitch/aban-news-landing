@@ -6360,3 +6360,4 @@ gid://shopify/Product/15469984219521	41->0	Perücke Beautiful blond
 gid://shopify/Product/15469984317825	27->0	Perücke Djamilla Bob blond
 gid://shopify/Product/15469984416129	37->2	Perücke Amara, grau-schwarz
 gid://shopify/Product/15469984743809	34->0	Perücke Stalker orange, lange
+gid://shopify/Product/15448960991617	68->0	Urne für Haustier-Asche mit Fotorahmen
