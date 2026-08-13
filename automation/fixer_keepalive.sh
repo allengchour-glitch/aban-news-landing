@@ -51,7 +51,12 @@ while true; do
   for L in produktdetails_vereinen preisboden farbwerte_zusammengesetzt suchwort_tags; do
     [ -f "$HOME/aban-news-landing/automation/$L.py" ] || continue
     grep -q "^FERTIG" "/tmp/$L.log" 2>/dev/null && continue      # durchgelaufen
-    pgrep -f "automation/$L.py" >/dev/null && continue
+    # ⚠️ NICHT `pgrep -f`. Steht das Suchmuster in der eigenen Kommandozeile, findet pgrep
+    # sich selbst und meldet «läuft» für einen toten Lauf — heute stand `suchwort_tags` so
+    # eine Viertelstunde still, während jede Prüfung Vollzug meldete. Verglichen werden
+    # deshalb die ARGUMENTE: erstes Feld python3, zweites der Skriptpfad.
+    ps -eo args --no-headers | awk -v s="automation/$L.py" \
+      '$1 ~ /python3$/ && $2 == s {n++} END {exit(n?0:1)}' && continue
     ( cd "$HOME/aban-news-landing" && setsid bash -c \
         "exec 9>/tmp/lock_$L.lock; flock -n 9 || exit 0; exec python3 automation/$L.py" \
         >> "/tmp/$L.log" 2>&1 & )

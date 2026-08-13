@@ -891,3 +891,38 @@ gid://shopify/Product/15448667783553	kleid	Kapuzenkleid mit Regenbogen-Print fü
 gid://shopify/Product/15448667881857	mantel	Eleganter Wollmantel für Damen – Camel
 gid://shopify/Product/15448667947393	mantel	Kaschmir-Kurzmantel für Damen
 gid://shopify/Product/15448668012929	mantel	Eleganter Wollmantel für Business & Alltag
+gid://shopify/Product/15448668045697	mantel	Doppelgesichtiger Wollmantel – Lange Ausführung
+gid://shopify/Product/15448668144001	mantel	Eleganter Wollmantel mit Reverskragen
+gid://shopify/Product/15448668176769	mantel	Lammfellmantel mit integriertem Fellfutter
+gid://shopify/Product/15448668242305	mantel	Damen Wollmantel mit Gürtel und Stehkragen
+gid://shopify/Product/15448668340609	mantel	Eleganter Mid-length Wollmantel mit Kunstpelzkragen
+gid://shopify/Product/15448668438913	mantel	Damen Wollmantel mit Knöpfen
+gid://shopify/Product/15448668668289	mantel	Eleganter Doppelgesicht-Wollmantel
+gid://shopify/Product/15448668701057	mantel	Eleganter Wollmantel im Casual-Stil
+gid://shopify/Product/15448669127041	mantel	Eleganter extra-langer Wollmantel für Damen
+gid://shopify/Product/15448669290881	mantel	Eleganter Wollmantel mit Revers für Damen
+gid://shopify/Product/15448669454721	mantel	Eleganter Wollmantel mit Puppenkragen
+gid://shopify/Product/15448669749633	mantel	Eleganter Herringbone Wollmantel für Damen
+gid://shopify/Product/15448669946241	mantel	Wollmantel mit Daunenfutter für Damen
+gid://shopify/Product/15448670273921	mantel	Damen Wollmantel für Winter Business
+gid://shopify/Product/15448670470529	mantel	Mid-length Wollmantel Casual Chic
+gid://shopify/Product/15448670536065	mantel	Retro Rollkragen Wollmantel mit Knöpfen
+gid://shopify/Product/15448670601601	mantel	Eleganter Doubleface-Wollmantel im Western-Stil
+gid://shopify/Product/15448670765441	mantel	Langer Kapuzenmantel mit 3D-Digitalprint
+gid://shopify/Product/15448670863745	mantel	Mid-Length Kunstpelzmantel mit Blazer-Kragen
+gid://shopify/Product/15448670929281	mantel	Eleganter marineblauer Wollmantel mit Schulter-Design
+gid://shopify/Product/15448670962049	mantel	Langer Damenmantel im Kaschmir-Look
+gid://shopify/Product/15448671027585	mantel	Eleganter Damenmantel mit Fellkragen
+gid://shopify/Product/15448671158657	mantel	Gefütterter Patchwork-Wintermantel mit Kapuze
+gid://shopify/Product/15448671289729	mantel	Gesteppter Baumwollmantel mit Print
+gid://shopify/Product/15448671322497	jacke	Kurze Daunenjacke mit Patchwork-Ärmeln für Damen
+gid://shopify/Product/15448671355265	jacke	Karierte Fleece-gefütterte Kapuzenjacke für Damen
+gid://shopify/Product/15448671388033	mantel	Gesteppter Patchwork-Baumwollmantel
+gid://shopify/Product/15448671453569	mantel	Gefütterter Baumwollmantel mit Blumenprint
+gid://shopify/Product/15448671486337	mantel	Daunenmantel Slim-Fit
+gid://shopify/Product/15448671584641	jacke	Gefütterte Ski-Pufferjacke mit Kapuze
+gid://shopify/Product/15448671814017	jacke	Damen Freizeit-Baumwolljacke mit Knöpfen
+gid://shopify/Product/15448671945089	mantel	Leichter Daunenmantel mit Kapuze
+gid://shopify/Product/15448672043393	jacke	Gefütterte Damen-Pufferjacke mit Kapuze
+gid://shopify/Product/15448672076161	jacke	Damen Steppjacke mit grossem Fellkragen
+gid://shopify/Product/15448672108929	jacke	Leichte Steppjacke mit Stehkragen für Damen
