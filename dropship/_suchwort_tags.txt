@@ -5959,3 +5959,19 @@ gid://shopify/Product/15478612033921	stuhl	Faltbarer Angelstuhl im europäischen
 gid://shopify/Product/15478612132225	stiefel	Gelbe Leder-Winterstiefel für Kinder
 gid://shopify/Product/15478612263297	leuchte	Dimmbare USB Tischleuchte, Akkubetrieben
 gid://shopify/Product/15478612394369	schuh	LED-Kinderschuhe mit USB-Ladefunktion und Flügeln
+gid://shopify/Product/15478612492673	schuh	Thermalschuhe
+gid://shopify/Product/15478612623745	decke	Grobstick Wolldecke
+gid://shopify/Product/15478612689281	stiefel	Gefütterte PVC-Regenstiefel für Kinder
+gid://shopify/Product/15478612984193	decke	Faltbare Kapuzendecke für Mittagsschlaf
+gid://shopify/Product/15478613180801	schuh	Kinder Soft-Sohlen Leder Freizeitschuhe mit Glitzer
+gid://shopify/Product/15478613311873	schuh	Kinder Plüsch-Hausschuhe
+gid://shopify/Product/15478613410177	vorhang	Insektenschutz-Türvorhang für Schlafzimmer
+gid://shopify/Product/15478618227073	guertel	V-Ausschnitt Kleid mit Bastgürtel
+gid://shopify/Product/15478618489217	kleid	Besticktes Mesh-Trägerkleid für Damen
+gid://shopify/Product/15478652043649	ring	Eleganter 4 Karat Radiant-Schliff S925 Silberring
+gid://shopify/Product/15478652305793	ring	Tigers Eye Steinring
+gid://shopify/Product/15478652600705	kleid	Baumwoll-Sommerkleid
+gid://shopify/Product/15478652928385	kette	Perlenkette mit tropfenförmigem Naturstein-Anhänger
+gid://shopify/Product/15478653419905	lampe	Nordische Tischlampe mit Dimmer
+gid://shopify/Product/15478656696705	kleid	Seidenkleid mit Stickereien im französischen Stil
+gid://shopify/Product/15478694838657	spiegel	LED Schminkspiegel, faltbar, mit Licht
