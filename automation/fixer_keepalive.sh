@@ -48,7 +48,7 @@ while true; do
   # Alle drei sind resumable (eigenes Ledger je Skript), ein Neustart setzt also fort statt
   # von vorn zu beginnen. Die Sperre verhindert, dass zwei Kopien dasselbe Ledger schreiben.
   # ⚠️ Ohne `setsid` sterben sie mit dem Turn — genau daran sind sie heute gescheitert.
-  for L in produktdetails_vereinen preisboden farbwerte_zusammengesetzt; do
+  for L in produktdetails_vereinen preisboden farbwerte_zusammengesetzt suchwort_tags; do
     [ -f "$HOME/aban-news-landing/automation/$L.py" ] || continue
     grep -q "^FERTIG" "/tmp/$L.log" 2>/dev/null && continue      # durchgelaufen
     pgrep -f "automation/$L.py" >/dev/null && continue
