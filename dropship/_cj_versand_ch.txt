@@ -720,3 +720,7 @@ gid://shopify/Product/15496600879489	nicht-versendbar	Kompakter Gewürz-Pulveris
 gid://shopify/Product/15496580563329	nicht-versendbar	Shiba Inu Schneidebrett aus Ebenholz
 gid://shopify/Product/15496602845569	ok	Automatische mechanische Armbanduhr aus 316L Edelstahl
 gid://shopify/Product/15496519647617	nicht-versendbar	Bambus-Käseplatte mit 4-teiligem Messerset
+gid://shopify/Product/15496705671553	nicht-versendbar	Power Plate Vibrationsplatte für Zuhause
+gid://shopify/Product/15496704229761	nicht-versendbar	Rhythm Machine Vibrationsplatte
+gid://shopify/Product/15496704557441	nicht-versendbar	Elektrischer Mute Stepper für Zuhause
+gid://shopify/Product/15496703967617	nicht-versendbar	Mini-Stepper für zu Hause – Leise & Kompakt

@@ -1,0 +1,44 @@
+gid://shopify/Article/1001443131777	artikel	9 Geschenkideen für Frauen unter CHF 60 (Muttertag, Geburtstag &amp; mehr)
+gid://shopify/Article/1001545924993	artikel	Adventskalender für Erwachsene 2026: Der ehrliche Vergleich
+gid://shopify/Article/1001546088833	artikel	Bluetooth Kopfhörer mit ANC: Der ehrliche Kaufratgeber
+gid://shopify/Article/1001546121601	artikel	Bluetooth Speaker wasserdicht: Der Outdoor-Ratgeber für Sommer, See und Berg
+gid://shopify/Article/1001546154369	artikel	Wolldecke aus Cashmere richtig pflegen – plus Einrichtungstipps für mehr Hygge
+gid://shopify/Article/1001546187137	artikel	Sojawachs Duftkerzen Ratgeber: Soja vs. Paraffin, Brenndauer & Raumduft
+gid://shopify/Article/1001546219905	artikel	Leder pflegen: Anleitung für langlebige Echtleder-Accessoires
+gid://shopify/Article/1001546252673	artikel	Edelstahl Schmuck Pflege & hypoallergen: Der komplette Ratgeber
+gid://shopify/Article/1001546449281	artikel	Geschenkboxen verschenken: Warum kuratierte Sets das schönste Geschenk sind
+gid://shopify/Article/1001546514817	artikel	Geschenke für Frauen 2026: Ideen mit Stil aus der Schweiz
+gid://shopify/Article/1001546580353	artikel	Geschenke für Männer 2026: Ideen mit Stil aus der Schweiz
+gid://shopify/Article/1001546645889	artikel	Herrenuhr kaufen – worauf achten? Der ehrliche Ratgeber
+gid://shopify/Article/1001546711425	artikel	Hochzeitsgeschenke Schweiz: stilvolle Ideen für das Brautpaar
+gid://shopify/Article/1001546744193	artikel	Home Office gesünder einrichten: 6 Bereiche, die wirklich zählen
+gid://shopify/Article/1001546776961	artikel	Minimalistisch einrichten: Ruhige Wohnaccessoires, die wirklich Bestand haben
+gid://shopify/Article/1001546908033	artikel	RFID Schutz Geldbörse: Wie sinnvoll ist der Schutz wirklich?
+gid://shopify/Article/1001547006337	artikel	Smartwatch für Einsteiger: Der ehrliche Ratgeber 2026
+gid://shopify/Article/1001547071873	artikel	Trockene Heizungsluft im Winter: So verbesserst du dein Raumklima
+gid://shopify/Article/1001547170177	artikel	Wellness Geschenke & Self-Care: Ideen, die wirklich entspannen
+gid://shopify/Article/1001699541377	artikel	Sommerkleider-Trends 2026: Die schönsten Looks für die Schweiz
+gid://shopify/Article/1001699574145	artikel	Aroma-Diffuser kaufen: Der grosse Ratgeber 2026
+gid://shopify/Article/1001699606913	artikel	Geschenkideen Schweiz 2026: für Sie, für Ihn & jeden Anlass
+gid://shopify/Article/1001699639681	artikel	Edelstahl-Schmuck: hautfreundlich, wasserfest & langlebig – der Kaufratgeber
+gid://shopify/Article/1001699672449	artikel	Smartwatch kaufen 2026: Ratgeber, Funktionen & Vergleich
+gid://shopify/Article/1001699934593	artikel	Sommerschuhe 2026: Sandalen, Sneaker & Espadrilles im Trend
+gid://shopify/Article/1001699967361	artikel	Sonnenbrillen-Trends 2026: Welche Form passt zu dir?
+gid://shopify/Article/1001700000129	artikel	Stimmungslicht & LED-Deko: gemütliches Zuhause 2026
+gid://shopify/Article/1001700196737	artikel	Partner-Geschenke & Couple-Sets: Ideen für Verliebte 2026
+gid://shopify/Article/1001700229505	artikel	Taschen-Trends 2026: von Crossbody bis Henkeltasche
+gid://shopify/Article/1001700262273	artikel	Bademode 2026: Bikini & Badeanzug richtig finden
+gid://shopify/Collection/687342027137	kollektion	Reise & Outdoor
+gid://shopify/Collection/687698280833	kollektion	Aromatherapie · Diffuser & Öle
+gid://shopify/Collection/687793602945	kollektion	Curated Premium
+gid://shopify/Collection/687966945665	kollektion	Strand
+gid://shopify/Collection/687967076737	kollektion	Yoga
+gid://shopify/Collection/687967371649	kollektion	Hautpflege-Tools
+gid://shopify/Collection/688049095041	kollektion	US / Summer 2026
+gid://shopify/Collection/688576364929	kollektion	Handy-Zubehör
+gid://shopify/Collection/688587407745	kollektion	Schmuck-Sets
+gid://shopify/Collection/688600547713	kollektion	Premium-Auswahl
+gid://shopify/Collection/688690889089	kollektion	Michael Kors
+gid://shopify/Collection/688691347841	kollektion	Casio
+gid://shopify/Collection/688691413377	kollektion	Police
+gid://shopify/Page/698005782913	seite	weihnachtsgeschenke-last-minute
