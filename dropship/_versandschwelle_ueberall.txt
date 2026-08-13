@@ -42,3 +42,4 @@ gid://shopify/Collection/688690889089	kollektion	Michael Kors
 gid://shopify/Collection/688691347841	kollektion	Casio
 gid://shopify/Collection/688691413377	kollektion	Police
 gid://shopify/Page/698005782913	seite	weihnachtsgeschenke-last-minute
+gid://shopify/Article/1001546908033	artikel	RFID Schutz Geldbörse: Wie sinnvoll ist der Schutz wirklich?

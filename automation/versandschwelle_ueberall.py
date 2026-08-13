@@ -37,9 +37,16 @@ LEDGER = "dropship/_versandschwelle_ueberall.txt"
 SCHWELLE = re.compile(r'((?:Gratis[- ]?[Vv]ersand|[Vv]ersandkostenfrei|gratis|GRATIS)'
                       r'[^<.]{0,40}?(?:ab|über)\s*(?:einem\s+Bestellwert\s+von\s*)?CHF\s*)'
                       r'(65|49)(?![0-9.,])')
-SCHWELLE_UM = re.compile(r'(ab\s*CHF\s*)(65|49)(?![0-9.,])(?=[^<.]{0,30}'
-                         r'(?:GRATIS|gratis|kostenlos|versandkostenfrei))')
-RUECKGABE = re.compile(r'(\d{1,2})(-?t[äa]gige[sn]?\s+R[üu]ckgaberecht|\s*Tage\s+R[üu]ckgaberecht)')
+# ⚠️ Das Werbewort steht mal VOR, mal HINTER der Zahl: «Gratis-Versand ab CHF 65» und
+# «Bei einem Bestellwert ab CHF 65 liefern wir versandkostenfrei». Für die zweite Bauform
+# reichten 30 Zeichen Nachlauf nicht — ein Artikel blieb genau daran hängen.
+SCHWELLE_UM = re.compile(r'(ab\s*CHF\s*)(65|49)(?![0-9.,])(?=[^<]{0,70}'
+                         r'(?:GRATIS|gratis|kostenlos|versandkostenfrei|liefern wir))')
+# Auch «14-tägige Rückgabe», «14 Tage Umtausch», «14-Tage-Rückgabefrist» — der Shop gewährt
+# 30 Tage, also mehr als das Gesetz. Wer 14 verspricht, verschenkt seinen eigenen Vorteil.
+RUECKGABE = re.compile(r'\b(\d{1,2})(\s*-?\s*t[äa]gige[sn]?\s+R[üu]ckgabe\w*|'
+                       r'\s*-?\s*Tage[- ]?R[üu]ckgabe\w*|\s+Tage\s+(?:Umtausch|R[üu]ckgabe))',
+                       re.I)
 
 
 def gql(q, v=None):
