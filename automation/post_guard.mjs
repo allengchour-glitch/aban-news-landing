@@ -12,8 +12,25 @@ const LOCK = '/tmp/ig_post.lock';
 const LEDGER = 'dropship/_posted_media.txt';
 export const mediaKey = u => (u || '').split('?')[0].split('/').pop().toLowerCase().trim();
 
+// ⛔ SECHSTE SCHICHT — DER RIEGEL (Betreiber 13.08.2026: «hör auf insta gleiche sachen zu
+// posten»). Fünf Wachen gab es schon: gemeinsamer Lock, Claim-vor-Post, Inhalts-Sperre über
+// die Caption-Signatur, Live-Abgleich gegen die letzten IG-Posts, ein Ledger im Repo. Sie
+// alle haben eines gemeinsam — sie müssen RICHTIG ARBEITEN, um zu schützen. Diese hier nicht:
+// existiert die Datei, endet jeder Poster sofort, egal was die übrigen Wachen meinen.
+// Sie liegt im Repo und nicht in /tmp, überlebt also den nächsten Container-Wipe.
+// Entfernt wird sie erst, wenn belegt ist, WELCHER Poster doppelt gepostet hat und warum.
+const STOPP = 'dropship/_SOCIAL_STOPP';
+export function stoppAktiv() {
+  return fs.existsSync(STOPP) ||
+         fs.existsSync(new URL('../dropship/_SOCIAL_STOPP', import.meta.url).pathname);
+}
+
 let _released = false;
 export function lock(maxMin = 20) {
+  if (stoppAktiv()) {
+    console.log('[post_guard] ⛔ dropship/_SOCIAL_STOPP gesetzt — es wird NICHTS gepostet.');
+    process.exit(0);
+  }
   try {
     const fd = fs.openSync(LOCK, 'wx'); fs.writeFileSync(fd, String(process.pid)); fs.closeSync(fd);
   } catch {

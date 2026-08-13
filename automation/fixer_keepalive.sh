@@ -79,7 +79,13 @@ while true; do
   [ -f /tmp/website_hygiene_runner.sh ] && { pgrep -f "/tmp/website_hygiene_runner.sh" >/dev/null || { setsid bash /tmp/website_hygiene_runner.sh >> /tmp/website_hygiene_runner.log 2>&1 & echo "$(date -u +%H:%M) restart website_hygiene"; }; }
   # Social-Autopilot + Reel-Motor: liegen jetzt IM REPO (nicht mehr nur /tmp), überleben also
   # den nächsten Wipe. Beide haben eine eigene flock-Sperre, ein Doppelstart ist folgenlos.
+  # ⛔ STOPP-RIEGEL. Der Betreiber hat am 13.08.2026 angeordnet, dass auf Instagram nichts
+  # mehr doppelt erscheint. Solange dropship/_SOCIAL_STOPP existiert, werden die Poster gar
+  # nicht erst gestartet. Das ist die einzige Wache, die nicht davon abhängt, dass eine
+  # andere Wache richtig arbeitet — die fünf bestehenden (Lock, Claim, Inhalts-Sperre,
+  # Live-IG-Abgleich, gemeinsamer Lock) haben offensichtlich nicht gereicht.
   for S in social_autopilot reel_engine_runner; do
+    [ -f "$REPO/dropship/_SOCIAL_STOPP" ] && continue
     fehlt "$REPO/automation/$S.sh" && continue
     pgrep -f "automation/$S.sh" >/dev/null || { setsid bash "$REPO/automation/$S.sh" >> /tmp/$S.log 2>&1 & echo "$(date -u +%H:%M) restart $S"; }
   done
