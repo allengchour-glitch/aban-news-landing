@@ -943,3 +943,131 @@ gid://shopify/Product/15448673026433	jacke	Gefütterte Jeansjacke mit Fleece-Fut
 gid://shopify/Product/15448673059201	jacke	Gefütterte Damen-Freizeitjacke mit langen Ärmeln
 gid://shopify/Product/15448673157505	jacke	Kurze Daunenjacke für Damen
 gid://shopify/Product/15448673419649	jacke	Kurze, locker geschnittene Pufferjacke
+gid://shopify/Product/15448673550721	jacke	Damen-Steppjacke mit Rautenmuster
+gid://shopify/Product/15448673616257	jacke	Gepolsterte Baumwolljacke für den Winter
+gid://shopify/Product/15448673649025	mantel	Gefütterter Kapuzenmantel – schlicht & vielseitig
+gid://shopify/Product/15448673681793	jacke	Gefütterte Baumwolljacke für Damen
+gid://shopify/Product/15448673747329	jacke	Gepolsterte Baumwolljacke mit Blumenmuster
+gid://shopify/Product/15448673812865	mantel	Gefütterter Daunenmantel mit Kapuze
+gid://shopify/Product/15448673845633	jacke	Kurze Daunenjacke für Damen – Kaffeebraun
+gid://shopify/Product/15448673878401	jacke	Kurze Thermo-Steppjacke für Damen
+gid://shopify/Product/15448673943937	weste	Damen Daunen-Baumwollweste
+gid://shopify/Product/15448673976705	jacke	Kurze Daunenjacke mit Kapuze
+gid://shopify/Product/15448674009473	mantel	Kurzer Daunenmantel mit Reissverschluss
+gid://shopify/Product/15448674042241	jacke	Wende-Steppjacke mit Patchwork-Karo
+gid://shopify/Product/15448674075009	mantel	Dunkelbrauner Vintage Baumwollmantel
+gid://shopify/Product/15448674107777	jacke	Doppelseitige Stehkragenjacke für Damen
+gid://shopify/Product/15448674173313	jacke	Gefütterte Daunenjacke mit V-Ausschnitt
+gid://shopify/Product/15448674206081	jacke	Kurze Winterjacke mit Kapuze
+gid://shopify/Product/15448674238849	jacke	Gefütterte Kapuzenjacke für Damen
+gid://shopify/Product/15448674304385	mantel	Gefütterter Damen-Baumwollmantel mit Kragen
+gid://shopify/Product/15448674337153	jacke	Leichte, gefütterte Baumwolljacke für Damen
+gid://shopify/Product/15448674402689	jacke	Extra dicke Daunenjacke im Patchwork-Stil
+gid://shopify/Product/15448674435457	mantel	Gepolsterter Wintermantel für Damen
+gid://shopify/Product/15448674664833	mantel	Retro Wintermantel mit Fleece-Futter
+gid://shopify/Product/15448674730369	mantel	Eleganter kurzer Daunenmantel mit Kunstfell
+gid://shopify/Product/15448674926977	mantel	Knielanger, wattierter Baumwollmantel mit Kapuze
+gid://shopify/Product/15448674992513	mantel	Langer gesteppter Baumwollmantel mit Kragen
+gid://shopify/Product/15448675254657	mantel	Eleganter Daunenmantel, knielang
+gid://shopify/Product/15448675516801	jacke	Leichte, kurze Daunenjacke für Damen
+gid://shopify/Product/15448675746177	mantel	Vielseitiger Baumwollmantel mit Pelzkragen
+gid://shopify/Product/15448676073857	jacke	Damen Freizeitjacke mit Reissverschluss
+gid://shopify/Product/15448676303233	jacke	Gefütterte Daunenjacke für Damen
+gid://shopify/Product/15448676434305	jacke	Kurze Daunenjacke im Koreanstyle für Damen
+gid://shopify/Product/15448676663681	jacke	Gefütterte kurze Kapuzenjacke im Loose Fit
+gid://shopify/Product/15448676958593	jacke	Winterjacke aus Lederimitat mit Fleecefutter
+gid://shopify/Product/15448677286273	jacke	Vielseitige kurze Baumwoll-Steppjacke Damen
+gid://shopify/Product/15448677351809	mantel	Damen-Daunenmantel, mittellang, Weiss
+gid://shopify/Product/15448677515649	jacke	Kurze Stehkragen-Pufferjacke für Damen
+gid://shopify/Product/15448677548417	jacke	Kurze Daunenjacke mit Stehkragen
+gid://shopify/Product/15448701731201	jacke	Kapuzenjacke im American Style für Paare
+gid://shopify/Product/15448703500673	pullover	Strickpullover locker geschnitten
+gid://shopify/Product/15448703566209	pullover	Strickpullover mit Rollkragen und Spitze
+gid://shopify/Product/15448703664513	pullover	V-Ausschnitt Strickpullover mit Ballonärmeln
+gid://shopify/Product/15448703926657	pullover	Damen Strickpullover mit Polo-Kragen & Half-Zip
+gid://shopify/Product/15448703959425	pullover	Strickpullover mit langen Ärmeln
+gid://shopify/Product/15448704352641	pullover	V-Neck Strickpullover für Herbst & Winter
+gid://shopify/Product/15448704450945	pullover	Eleganter Strickpullover mit Lochmuster
+gid://shopify/Product/15448704516481	pullover	Lockerer Strickpullover mit Rundhals
+gid://shopify/Product/15448704549249	pullover	Wollpullover Rollkragen Reversible
+gid://shopify/Product/15448704778625	pullover	Kurzer Strickpullover mit Rollkragen und Schlitz
+gid://shopify/Product/15448704909697	pullover	Gestreifter Strickpullover mit weiten Ärmeln
+gid://shopify/Product/15448705728897	pullover	Damen Strickpullover mit Rundhals und langen Ärmeln
+gid://shopify/Product/15448705827201	pullover	Damen Rollkragenpullover – Locker & Vielseitig
+gid://shopify/Product/15448705859969	pullover	Colorblock Pullover Strickpullover für Damen
+gid://shopify/Product/15448706154881	pullover	Gestreifter Strickpullover für Damen
+gid://shopify/Product/15448707596673	pullover	Ombre Colorblock Strickpullover für Damen
+gid://shopify/Product/15448707727745	pullover	Strickpullover aus Merinowolle
+gid://shopify/Product/15448709923201	rock	Damen Jeansrock mit Knopfleiste
+gid://shopify/Product/15448710087041	rock	Utility-Maxirock mit Kordelzug für den Sommer
+gid://shopify/Product/15448710185345	rock	Leichter Sonnen-Schutzrock mit Schlitz
+gid://shopify/Product/15448710349185	kleid	A-Linien Jeanskleid mit Knopfleiste
+gid://shopify/Product/15448710447489	rock	Faltiger Yoga- und Sportrock im Zweiteiler-Look
+gid://shopify/Product/15448710513025	rock	Eleganter Business-Bleistiftrock mit Polka Dots
+gid://shopify/Product/15448710742401	rock	Eleganter Bodycon Maxirock für den Sommer
+gid://shopify/Product/15448710775169	kleid	Elegantes asymmetrisches Maxikleid mit Polka Dots
+gid://shopify/Product/15448710840705	rock	Vielseitiger High-Waist Yoga-Sportrock
+gid://shopify/Product/15448710873473	rock	High-Waist Tennisrock für Yoga & Fitness
+gid://shopify/Product/15448710971777	rock	Atmungsaktiver floraler Sommerrock
+gid://shopify/Product/15448711004545	rock	Maxirock mit Rüschen und Print
+gid://shopify/Product/15448711070081	rock	Mehrstufiger Tüllrock mit Perlen und Print
+gid://shopify/Product/15448711201153	kleid	Langes A-Linien Abendkleid aus Modal
+gid://shopify/Product/15448711397761	rock	A-Linien Maxirock mit hoher Taille und Spitze
+gid://shopify/Product/15448711692673	rock	Retro Minirock aus Wildlederimitat mit Quasten
+gid://shopify/Product/15448712184193	rock	Langer Bodycon-Jeansrock mit Spitze
+gid://shopify/Product/15448712249729	rock	Weisser Midirock mit Lochstickerei
+gid://shopify/Product/15448712282497	rock	Asymmetrischer Maxirock mit Blumenprint
+gid://shopify/Product/15448712413569	hemd	Locker geschnittenes Langarmhemd aus Baumwolle
+gid://shopify/Product/15448712446337	shirt	Freizeit-Langarmshirt mit Reverskragen
+gid://shopify/Product/15448712577409	hemd	Kurzarmhemd mit Farbblock-Design
+gid://shopify/Product/15448712675713	hemd	Luftiges Ombre Kurzarmhemd im Resort-Stil
+gid://shopify/Product/15448712741249	jacke	Freizeit-Übergangsjacke für Herren
+gid://shopify/Product/15448712774017	jacke	Freizeitjacke für Frühling und Herbst
+gid://shopify/Product/15448712839553	hemd	Leinenhemd im Old-Money-Stil
+gid://shopify/Product/15448712872321	hemd	Vielseitiges Kurzarmhemd für Herren
+gid://shopify/Product/15448713003393	hemd	Herren Langarmhemd mit Mandarin Kragen
+gid://shopify/Product/15448713101697	hemd	Herren Freizeithemd mit Revers
+gid://shopify/Product/15448713200001	hemd	Gestreiftes Langarmhemd mit Reverskragen
+gid://shopify/Product/15448713232769	hemd	Kurzarm-Freizeithemd aus Leinenmix
+gid://shopify/Product/15448713494913	hemd	Gestreiftes Kurzarmhemd für Herren
+gid://shopify/Product/15448713625985	hemd	Gestreiftes Kurzarmhemd für Herren – Schwarz
+gid://shopify/Product/15448713724289	hemd	Herren Langarmhemd Casual – diverse Farben
+gid://shopify/Product/15448713757057	hemd	Herren Langarmhemd mit Kubakragen
+gid://shopify/Product/15448713855361	jacke	Herren Strickjacke Kurzarm Gestreift
+gid://shopify/Product/15448713888129	hemd	Herren Leinenhemd mit Revers – Locker geschnitten
+gid://shopify/Product/15448714314113	pullover	Herren Strickpullover im Häkel-Look
+gid://shopify/Product/15448714510721	mantel	Denim Patch Reversmantel
+gid://shopify/Product/15448714609025	jacke	Herren Strickjacke – Freizeit & Alltag
+gid://shopify/Product/15448714674561	hemd	Hawaiihemd mit Farbblock-Muster
+gid://shopify/Product/15448714740097	hemd	Leinenhemd Kurzarm mit Stehkragen
+gid://shopify/Product/15448714838401	hemd	Kurzarmhemd mit Print für Herren
+gid://shopify/Product/15448714969473	weste	Sonnenschutz Kapuzenweste für Herren
+gid://shopify/Product/15448715133313	hemd	Ice-Silk Kurzarm-Polohemd für Herren
+gid://shopify/Product/15448715657601	shirt	V-Ausschnitt Langarmshirt für Herren
+gid://shopify/Product/15448715723137	hemd	Leinenhemd Langarm – Lässig & Bequem
+gid://shopify/Product/15448715886977	pullover	Herren Strickpullover mit Streifenmuster
+gid://shopify/Product/15448716018049	hemd	Gestreiftes Langarmhemd für Herren
+gid://shopify/Product/15448716050817	hemd	Gestreiftes Kurzarmhemd für Herren – Blau
+gid://shopify/Product/15448716214657	hemd	Retro Langarmhemd für Herren
+gid://shopify/Product/15448716673409	hemd	Herren Kurzarmhemd aus Baumwoll-Leinen
+gid://shopify/Product/15448716902785	jacke	Freizeitjacke für Herren
+gid://shopify/Product/15448716935553	jacke	Gefütterte Winterjacke mit Umlegekragen
+gid://shopify/Product/15448717394305	jacke	Herren-Übergangsjacke mit Revers und Taschen
+gid://shopify/Product/15448717492609	jacke	Legere Herren-Übergangsjacke mit Revers
+gid://shopify/Product/15448717623681	jacke	Corduroy-Jeansjacke für Herren mit Kaninchenhaar
+gid://shopify/Product/15448717787521	hemd	Herren Sommerhemd mit Polster-Schultern
+gid://shopify/Product/15448717853057	jacke	Herren Übergangsjacke mit Revers und Blumenprint
+gid://shopify/Product/15448717918593	jacke	Vielseitige Strickjacke für Herren
+gid://shopify/Product/15448718541185	jacke	Herren Cord-Strickjacke mit Stehkragen
+gid://shopify/Product/15448718672257	jacke	Stylische Slim-Fit Übergangsjacke für Herren
+gid://shopify/Product/15448718737793	jacke	Gefütterte Baumwolljacke für Herren
+gid://shopify/Product/15448719262081	jacke	Herren Slim-Fit Lederjacke mit Reverskragen
+gid://shopify/Product/15448719425921	mantel	Wintermantel für Herren – Braun, lässig & warm
+gid://shopify/Product/15448720146817	jacke	Bestickte Freizeitjacke für Herren
+gid://shopify/Product/15448720310657	pullover	V-Neck Strickpullover im Retro-Stil
+gid://shopify/Product/15448720441729	mantel	Herren Kaschmir-Kurzmantel Doubleface
+gid://shopify/Product/15448720540033	jacke	Herren Retro Übergangsjacke mit Revers
+gid://shopify/Product/15448720572801	weste	Taktische Outdoor Warnweste für Herren
+gid://shopify/Product/15448720769409	pullover	Kapuzenpullover mit Letter-Graffiti-Print
+gid://shopify/Product/15448747671937	shirt	Lässiges Polo-Sweatshirt mit Umlegekragen
+gid://shopify/Product/15448748491137	jacke	V-Ausschnitt Strickjacke (Loose Fit)

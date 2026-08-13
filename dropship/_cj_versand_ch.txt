@@ -707,3 +707,4 @@ gid://shopify/Product/15496379105665	nicht-versendbar	Teigknetmaschine für Küc
 gid://shopify/Product/15496392278401	ok	Airsoda Sprudelwasser-Maschine für Zuhause
 gid://shopify/Product/15496385167745	nicht-versendbar	Hantelstange 1.2m für Kniebeugen & Krafttraining
 gid://shopify/Product/15496382448001	ok	USB Velo-Lampe mit OLED-Display, superhell
+gid://shopify/Product/15496434188673	nicht-versendbar	Katzen-Laufrad: Fitness-Roller für Stubentiger
