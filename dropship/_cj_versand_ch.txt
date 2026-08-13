@@ -702,3 +702,4 @@ gid://shopify/Product/15496324022657	nicht-versendbar	Aufblasbare Gymnastikmatte
 gid://shopify/Product/15496324153729	nicht-versendbar	Verstellbare Gewichtsweste für Fitness & Lauftraining
 gid://shopify/Product/15496324710785	nicht-versendbar	Mini-Laufband für Zuhause
 gid://shopify/Product/15496333525377	nicht-versendbar	Haarspray-Öl-Wärmegerät
+gid://shopify/Product/15496371274113	ok	Retro Casual Rucksack aus Rindsleder für Herren
