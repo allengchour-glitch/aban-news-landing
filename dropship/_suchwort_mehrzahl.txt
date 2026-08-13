@@ -677,3 +677,16 @@ gid://shopify/Product/15453724639617	ketten	S925 Silber Herz-Halskette mit doppe
 gid://shopify/Product/15453724672385	ketten	Perlenkette
 gid://shopify/Product/15453724705153	ketten	Natürliche Süßwasserperlen-Perlenkette
 gid://shopify/Product/15453724901761	ketten	Natürliche Süßwasserperlen-Nackenketten Zubehör
+gid://shopify/Product/15453725458817	ketten	925 Sterlingsilber Barockperle Halskette in Gold
+gid://shopify/Product/15453725589889	kleider	Damenkleid
+gid://shopify/Product/15453725786497	kleider	Modisches Damenkleid mit Digitaldruck
+gid://shopify/Product/15453725819265	kleider	V-Ausschnitt-Minikleid mit Schleife und kurzen Ärmeln
+gid://shopify/Product/15453726081409	kleider	Langes Freizeitkleid für Damen
+gid://shopify/Product/15453726146945	kleider	Einfarbiger Damenkleid ärmellos
+gid://shopify/Product/15453726245249	kleider	Elegant Armlos Modischer Halsausschnitt Damenkleid
+gid://shopify/Product/15453726343553	kleider	Plus-Grössengedrucktes Trägerkleid
+gid://shopify/Product/15453726474625	kleider	Klassisches gerades chic Kurzkleid ohne Ärmel
+gid://shopify/Product/15453726540161	kleider	Damen Langarmkleid mit Gespitzter Silhouette
+gid://shopify/Product/15453726638465	kleider	Damen-Langarmkleid mit Taille
+gid://shopify/Product/15453726671233	kleider	Chic Damenkleid mit Halterneck und Print
+gid://shopify/Product/15453726736769	kleider	Einseitig Schulter Gepflastertes Gerafftes Damenkleid

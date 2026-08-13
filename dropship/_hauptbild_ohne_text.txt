@@ -923,3 +923,4 @@ gid://shopify/Product/15447610458497	schon-sauber	0
 gid://shopify/Product/15447610982785	schon-sauber	0
 gid://shopify/Product/15447611310465	schon-sauber	0
 gid://shopify/Product/15447611539841	schon-sauber	0
+gid://shopify/Product/15447611769217	schon-sauber	0
