@@ -15,14 +15,14 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h2>Premium-Style. Schweizer Shop.</h2><p><strong>🇨🇭 2'600 Artikel ab Schweizer Lager</strong> — in 1–2 Tagen bei dir<br><strong>📦 Alles Übrige direkt ab Werk</strong> — 10–20 Tage, Lieferzeit steht auf jeder Produktseite<br><strong>🚚 Gratis ab CHF 50 · 30 Tage Rückgabe · Kauf auf Rechnung mit Klarna</strong></p>",
+            "text": "<h2>Premium-Style.<br>Schweizer Shop.</h2>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
             "type_preset": "h2",
             "font": "var(--font-body--family)",
-            "font_size": "2.5rem",
-            "line_height": "normal",
+            "font_size": "3.4rem",
+            "line_height": "tight",
             "letter_spacing": "normal",
             "case": "none",
             "wrap": "pretty",
@@ -31,7 +31,7 @@
             "background_color": "#00000073",
             "corner_radius": 14,
             "padding-block-start": 18,
-            "padding-block-end": 18,
+            "padding-block-end": 10,
             "padding-inline-start": 24,
             "padding-inline-end": 24
           },
@@ -51,10 +51,37 @@
             "custom_width_mobile": 100
           },
           "blocks": {}
+        },
+        "text_fakten": {
+          "type": "text",
+          "name": "Fakten",
+          "settings": {
+            "text": "<p><strong>🇨🇭 2'600 Artikel ab Schweizer Lager</strong> — in 1–2 Tagen bei dir<br><strong>📦 Alles Übrige direkt ab Werk</strong> — 10–20 Tage, Lieferzeit auf jeder Produktseite<br><strong>🚚 Gratis ab CHF 50 · 30 Tage Rückgabe · Kauf auf Rechnung mit Klarna</strong></p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "paragraph",
+            "font": "var(--font-body--family)",
+            "font_size": "1.05rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground-heading)",
+            "background": true,
+            "background_color": "#00000073",
+            "corner_radius": 14,
+            "padding-block-start": 12,
+            "padding-block-end": 14,
+            "padding-inline-start": 24,
+            "padding-inline-end": 24
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "text_YLPk4p",
+        "text_fakten",
         "button_H9gpTf"
       ],
       "name": "t:names.hero",
@@ -73,9 +100,9 @@
         "horizontal_alignment": "space-between",
         "vertical_alignment": "flex-end",
         "align_baseline": true,
-        "horizontal_alignment_flex_direction_column": "center",
+        "horizontal_alignment_flex_direction_column": "flex-start",
         "vertical_alignment_flex_direction_column": "flex-end",
-        "gap": 24,
+        "gap": 10,
         "section_width": "page-width",
         "section_height": "medium",
         "section_height_custom": 50,
