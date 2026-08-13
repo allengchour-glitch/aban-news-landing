@@ -462,3 +462,6 @@ gid://shopify/Product/15445800386945	schon-sauber	0
 gid://shopify/Product/15445800452481	schon-sauber	0
 gid://shopify/Product/15445800518017	schon-sauber	0
 gid://shopify/Product/15445800550785	schon-sauber	0
+gid://shopify/Product/15445804941697	schon-sauber	0
+gid://shopify/Product/15445816476033	schon-sauber	2
+gid://shopify/Product/15445827223937	alle-mit-text	-
