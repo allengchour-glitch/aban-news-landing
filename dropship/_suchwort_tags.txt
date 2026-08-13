@@ -111,3 +111,29 @@ gid://shopify/Product/15438841348481	tasche	Sporttasche mit Schuhfach – Alles 
 gid://shopify/Product/15443182846337	kette	Moissanit-Halskette «Aurora» 1 ct · 925 Silber Tropfen-Halo
 gid://shopify/Product/15443219186049	kette	Edelstein-Halskette «Rubin & Smaragd» · 925 Silber Doppel-Halo
 gid://shopify/Product/15443241075073	kette	Edelstein-Halskette «Rubin & Saphir» · 925 Silber
+gid://shopify/Product/15443243598209	kette	Vergoldete Halskette «Blatt» · 18k Gold-Optik
+gid://shopify/Product/15443243663745	kette	Süsswasserperlen-Halskette «Perla» · elegantes Set
+gid://shopify/Product/15443243696513	ring	Schmuck-Set «Trio» · 925 Silber (Kette · Ohrringe · Armband)
+gid://shopify/Product/15443243729281	ring	Zirkonia-Ohrringe «Fächer» Grün · Gold-Optik
+gid://shopify/Product/15445267808641	lampe	Professionelle UV/LED Nageltrocknerlampe
+gid://shopify/Product/15445277933953	lampe	280W UV/LED Nagellampe für Gel- und Acrylnägel
+gid://shopify/Product/15445281833345	leuchte	LED Halbmondleuchte für den Nageltisch
+gid://shopify/Product/15445283602817	lampe	UV/LED Nagellampe für Gel-Nägel mit Touchscreen
+gid://shopify/Product/15445285863809	lampe	UV/LED Nagellampe für Gel-Nägel
+gid://shopify/Product/15445799076225	buerste	Wimpern- & Brauenbürste mit Doppelkopf
+gid://shopify/Product/15445799960961	ring	Contouring & Abdeck-Stick mit natürlichem Finish
+gid://shopify/Product/15445800452481	maske	Mischschale für Gesichtsmasken
+gid://shopify/Product/15446014886273	topf	Antihaft-Milchtopf aus dreischichtigem Edelstahl
+gid://shopify/Product/15446016065921	topf	4-teiliges Multifunktions-Kochtopf-Set
+gid://shopify/Product/15446016557441	pfanne	Edelstahl-Bratpfanne mit Wabenstruktur
+gid://shopify/Product/15446018326913	pfanne	Wokpfanne aus reinem Titan
+gid://shopify/Product/15446019015041	pfanne	Antihaft-Bratpfannen-Set aus Maifanit
+gid://shopify/Product/15446019801473	matte	Silikon-Abtropfmatte für Geschirr
+gid://shopify/Product/15446020161921	topf	Elektrischer Kochtopf mit Keramik-Liner
+gid://shopify/Product/15446023668097	messer	Damast Kochmesser mit Hammerschlag-Finish
+gid://shopify/Product/15446059319681	creme	DR Reismilch Gesichtscreme 50g
+gid://shopify/Product/15446061547905	creme	OUHOE Schneckencreme – Sanfte Gesichtspflege
+gid://shopify/Product/15446061941121	creme	Retinol Nachtcreme für glatte Haut
+gid://shopify/Product/15446062301569	creme	Elektrische straffende Augencreme 50g
+gid://shopify/Product/15446063612289	creme	Haftcreme für Zahnprothesen 28g
+gid://shopify/Product/15446063907201	maske	Golden Peptide Collagen Augenmaske
