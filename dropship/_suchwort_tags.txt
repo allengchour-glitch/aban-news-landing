@@ -5463,3 +5463,32 @@ gid://shopify/Product/15472044933505	jacke	Warme, wasserdichte Winterjacke für 
 gid://shopify/Product/15472047161729	uhr	Digitale Herren-Sportuhr
 gid://shopify/Product/15472047391105	rock	Freizeit-Set mit Pullover und Midirock
 gid://shopify/Product/15472047456641	ring	Herzring aus Titanstahl mit Zirkonia
+gid://shopify/Product/15472047554945	kette	Grosse Holzperlenkette mit Hanfquasten
+gid://shopify/Product/15472047817089	buerste	Katzenpfoten-Massagebürste für die Kopfhaut
+gid://shopify/Product/15472049815937	kleid	Elegantes ärmelloses Maxikleid mit Rundhals
+gid://shopify/Product/15472049881473	kleid	Elegantes Hemdblusenkleid mit Schnürung
+gid://shopify/Product/15472049947009	kleid	Vielseitiges Taillenkleid mit Schleifendetail
+gid://shopify/Product/15472050012545	kleid	Voluminöses Tüllkleid mit Taillenbetonung
+gid://shopify/Product/15472050045313	kleid	Retro-Minikleid mit Streifen & Puffärmeln
+gid://shopify/Product/15472050078081	kleid	Figurbetontes Maxikleid mit V-Ausschnitt
+gid://shopify/Product/15472050143617	kleid	Freizeitkleid mit Blumenmuster
+gid://shopify/Product/15472050340225	kleid	Tie-Dye A-Linien Strickkleid für Damen
+gid://shopify/Product/15472050372993	regal	Minimalistische Laterne im Bücherregal-Design
+gid://shopify/Product/15472050438529	kleid	Spitzenbesetztes Trägerkleid mit hoher Taille
+gid://shopify/Product/15472050504065	kleid	Boho-Minikleid mit Print und Volants
+gid://shopify/Product/15472050602369	maske	Feuchtigkeitsspendende Tuchmaske
+gid://shopify/Product/15472050667905	decke	Kühlende Sommerdecke mit Sojafaserfüllung
+gid://shopify/Product/15472058696065	kleid	Kurzes Strickkleid mit Geometrischem Muster
+gid://shopify/Product/15472058827137	kleid	Elegantes Etuikleid mit Spitze und A-Linien-Rock
+gid://shopify/Product/15472058859905	decke	Sommerdecke aus Baumwolle und Sojafasern
+gid://shopify/Product/15472058958209	kamm	RF-Haarpflegekamm mit EMS-Mikrostrom
+gid://shopify/Product/15472058990977	kette	S925 Silber Halskette Minimalistische Goldkette
+gid://shopify/Product/15472059089281	lampe	LED-Stirnlampe, wasserdicht, Flugzeug-Stil
+gid://shopify/Product/15472059122049	hemd	Leichtes Leinenhemd für Herren
+gid://shopify/Product/15472059285889	shirt	Gestreiftes Kurzarmshirt für Herren
+gid://shopify/Product/15472059318657	hemd	Legeres Kurzarm-Polohemd mit Revers
+gid://shopify/Product/15472059416961	kleid	Elegantes Spitzenkleid mit Schlitz
+gid://shopify/Product/15472059515265	kleid	Elegantes rückenfreies Maxikleid
+gid://shopify/Product/15472059613569	kleid	Elegantes Blumenkleid mit Quadrathals
+gid://shopify/Product/15472059646337	kleid	Elegantes, figurbetontes Strickkleid mit hohem Bund
+gid://shopify/Product/15472059679105	kleid	Elegantes ärmelloses A-Linien-Minikleid
