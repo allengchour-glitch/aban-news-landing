@@ -290,3 +290,12 @@ gid://shopify/Product/15453728833921	sauber	0
 gid://shopify/Product/15453728866689	sauber	0
 gid://shopify/Product/15453730341249	sauber	0
 gid://shopify/Product/15453730374017	sauber	0
+gid://shopify/Product/15453743022465	sauber	0
+gid://shopify/Product/15453743677825	sauber	0
+gid://shopify/Product/15453743743361	sauber	0
+gid://shopify/Product/15453743776129	sauber	0
+gid://shopify/Product/15453743808897	entfernt	1
+gid://shopify/Product/15453744136577	sauber	0
+gid://shopify/Product/15453744169345	sauber	0
+gid://shopify/Product/15453744202113	sauber	0
+gid://shopify/Product/15453744234881	sauber	0
