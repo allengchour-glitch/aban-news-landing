@@ -1534,3 +1534,15 @@ gid://shopify/Product/15484389982593	ketten	Bunte Kristall-Halskette mit Naturst
 gid://shopify/Product/15484390048129	ketten	Schmuck-Set mit Halskette, Armband und Ohrringen
 gid://shopify/Product/15484398272897	kleider	Maxikleid mit Tropenmuster
 gid://shopify/Product/15484398502273	kleider	Strickkleid mit Rundhals und A-Linien-Rock
+gid://shopify/Product/15484398567809	kleider	V-Ausschnitt Freizeitkleid Unifarben
+gid://shopify/Product/15484398698881	kleider	Resortkleid mit Geometermuster
+gid://shopify/Product/15484398862721	kleider	Sommerliches Chiffonkleid mit Blumenprint
+gid://shopify/Product/15484399059329	kleider	A-Linien Trägerkleid mit Taillenschnürung
+gid://shopify/Product/15484399288705	kleider	Etuikleid aus transparentem Stoff
+gid://shopify/Product/15484420063617	taschen	Grosse Sport- und Reisetasche
+gid://shopify/Product/15484500607361	taschen	Kühl- und Picknicktasche 10L
+gid://shopify/Product/15484587114881	ketten	Halskette aus Titanstahl mit Muschel-Anhänger
+gid://shopify/Product/15484587671937	ketten	Vielseitige Zirkon-Halskette für Damen
+gid://shopify/Product/15484594454913	kleider	Elegantes Strickkleid mit Spitze und Neckholder
+gid://shopify/Product/15484594815361	kleider	Leoparden-Maxikleid mit V-Ausschnitt
+gid://shopify/Product/15484595175809	kleider	Off-Shoulder Mesh Trägerloses Maxikleid
