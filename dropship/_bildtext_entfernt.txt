@@ -282,3 +282,11 @@ gid://shopify/Product/15453729554817	sauber	0
 gid://shopify/Product/15453729620353	sauber	0
 gid://shopify/Product/15453729784193	sauber	0
 gid://shopify/Product/15453743317377	sauber	0
+gid://shopify/Product/15453726998913	sauber	0
+gid://shopify/Product/15453727687041	sauber	0
+gid://shopify/Product/15453728768385	sauber	0
+gid://shopify/Product/15453728801153	sauber	0
+gid://shopify/Product/15453728833921	sauber	0
+gid://shopify/Product/15453728866689	sauber	0
+gid://shopify/Product/15453730341249	sauber	0
+gid://shopify/Product/15453730374017	sauber	0
