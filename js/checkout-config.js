@@ -16,6 +16,7 @@ window.ABAN_CHECKOUT = {
   MONITOR_ABO_URL:   "https://buy.stripe.com/7sY3cx0PQ3IUdUP0wd5wI07",   // KI-Sichtbarkeits-Monitor (9 €/Monat, Subscription)
   VORLAGEN_BUY_URL:  "",   // Klartext-Vorlagen-Set (19 €)
   NOTFALL_BUY_URL:   "",   // Der Notfall-Ordner — Vorsorge-Dossier (19 €, PDF; Datei: produkt-imperium/ausgabe/)
+  NOTFALL_EN_BUY_URL: "",  // The Emergency Binder — engl. Ausgabe fuer Expats (19 €, PDF; Datei: produkt-imperium/ausgabe/)
   COMPLIANCE_BUY_URL: "",   // KI-Compliance-Paket regulierte Berufe (39 €)
   SCHNELLSTART_BUY_URL: "", // KI-Schnellstart-Workbook (29 €)
   AUDIT_BUY_URL:     "",   // KI-Sichtbarkeits-Audit Workbook (29 €, einmalig)
