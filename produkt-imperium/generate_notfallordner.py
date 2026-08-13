@@ -49,11 +49,16 @@ CW = W - ML - MR  # nutzbare Breite
 class Ordner:
     """Zeichnet Seiten und verwaltet eindeutige Feldnamen + Fusszeilen."""
 
-    def __init__(self, pfad, probe=False):
+    def __init__(self, pfad, probe=False, fuss_titel="Der Notfall-Ordner",
+                 seite_wort="Seite", probe_wort="LESEPROBE",
+                 dok_titel="Der Notfall-Ordner — Vorsorge-Dossier zum Ausfüllen",
+                 version=None):
         self.c = canvas.Canvas(str(pfad), pagesize=A4)
-        self.c.setTitle("Der Notfall-Ordner — Vorsorge-Dossier zum Ausfüllen")
+        self.c.setTitle(dok_titel)
         self.c.setAuthor("aban news · abannews.com")
         self.probe = probe
+        self.fuss_titel, self.seite_wort, self.probe_wort = fuss_titel, seite_wort, probe_wort
+        self.version = version or VERSION
         self.seite = 0
         self._feld = 0
         self.y = H - MT
@@ -91,12 +96,12 @@ class Ordner:
     def _fuss(self):
         self.c.setFillColor(MUTED)
         self.c.setFont("Helvetica", 8.2)
-        self.c.drawString(ML, 9 * mm, "Der Notfall-Ordner · " + VERSION)
-        self.c.drawRightString(W - MR, 9 * mm, "Seite %d · abannews.com" % self.seite)
+        self.c.drawString(ML, 9 * mm, self.fuss_titel + " · " + self.version)
+        self.c.drawRightString(W - MR, 9 * mm, "%s %d · abannews.com" % (self.seite_wort, self.seite))
         if self.probe:
             self.c.setFillColor(AMBER_DK)
             self.c.setFont("Helvetica-Bold", 8.2)
-            self.c.drawCentredString(W / 2, 9 * mm, "LESEPROBE")
+            self.c.drawCentredString(W / 2, 9 * mm, self.probe_wort)
 
     def abstand(self, h_mm):
         self.y -= h_mm * mm
