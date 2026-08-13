@@ -76,3 +76,7 @@ gid://shopify/Product/15453743055233	entfernt	4
 gid://shopify/Product/15453743088001	entfernt	1
 gid://shopify/Product/15453743120769	sauber	0
 gid://shopify/Product/15453743153537	sauber	0
+gid://shopify/Product/15453743579521	entfernt	3
+gid://shopify/Product/15453743612289	sauber	0
+gid://shopify/Product/15453743645057	entfernt	4
+gid://shopify/Product/15453744365953	sauber	0
