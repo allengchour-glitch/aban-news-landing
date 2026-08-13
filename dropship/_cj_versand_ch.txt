@@ -697,3 +697,7 @@ gid://shopify/Product/15496186462593	ok	Trendige Freizeit-Sneaker für Paare
 gid://shopify/Product/15496228340097	nicht-versendbar	Luftfrittiergerät 4.5L
 gid://shopify/Product/15496230011265	ok	Schmuckkassette mit Schlüssel – Mikrofaserleder
 gid://shopify/Product/15496320516481	nicht-versendbar	JJ-YT1 Klimmzugstange für Türrahmen
+gid://shopify/Product/15496324415873	nicht-versendbar	Multifunktionales Stair Climbing Gerät
+gid://shopify/Product/15496324022657	nicht-versendbar	Aufblasbare Gymnastikmatte für Sport & Training
+gid://shopify/Product/15496324153729	nicht-versendbar	Verstellbare Gewichtsweste für Fitness & Lauftraining
+gid://shopify/Product/15496324710785	nicht-versendbar	Mini-Laufband für Zuhause
