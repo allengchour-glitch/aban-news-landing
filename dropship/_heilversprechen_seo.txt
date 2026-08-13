@@ -1,0 +1,40 @@
+gid://shopify/Product/15448873533825	Smarter Retro Ring für Herzfrequenz
+gid://shopify/Product/15448875172225	Fitness-Smartwatch mit Herzfrequenz-Tracking
+gid://shopify/Product/15448875499905	S5 Fitness-Armband mit Temperaturmessung
+gid://shopify/Product/15448875860353	Smartes Sportarmband mit Herzfrequenzmessung
+gid://shopify/Product/15448875991425	Smartes Sportarmband mit Herzmessung
+gid://shopify/Product/15448877203841	Smartwatch mit Herzfrequenzmessung
+gid://shopify/Product/15448877334913	Smart-Armband mit Pulsmesser
+gid://shopify/Product/15448877629825	P10 Smart Health Armband
+gid://shopify/Product/15448878023041	Smartwatch mit Herzfrequenzmessung
+gid://shopify/Product/15448880644481	Fitness-Smartwatch mit Herzfrequenz-Tracking
+gid://shopify/Product/15448910922113	Fitness-Smartwatch mit Herzfrequenz-Tracking
+gid://shopify/Product/15448912494977	F600 Fitness-Smartwatch mit Aktivitäts-Tracking
+gid://shopify/Product/15449128403329	Smart-Armband mit GPS, Herzfrequenzmessung
+gid://shopify/Product/15450857603457	Smart-Armband
+gid://shopify/Product/15453778706817	Gesundheits-Armband mit Herzfrequenzmessung
+gid://shopify/Product/15454180049281	Smart Armband mit Körpertemperaturmessung
+gid://shopify/Product/15454180278657	Fitness-Armband mit Herzfrequenzmessung
+gid://shopify/Product/15454496129409	Smarte Armbanduhr mit Sturz-Erkennung
+gid://shopify/Product/15478470017409	Smart-Armband mit Herzfrequenzmessung
+gid://shopify/Product/15479378084225	Armband , Herzfrequenz, Blutsauerstoff, Temperatur
+gid://shopify/Product/15479468654977	Smarte Gesundheits-Uhr
+gid://shopify/Product/15479468982657	Smartwatch mit Fitness- & Schlaf-Tracking
+gid://shopify/Product/15479484318081	Smartwatch S15
+gid://shopify/Product/15479485202817	Smartwatch mit Müdigkeits- & Schlafanalyse
+gid://shopify/Product/15479486415233	Outdoor Smartwatch mit Herzfrequenzmessung
+gid://shopify/Product/15479512924545	Smart-Armband mit Herzfrequenz und Temperatur
+gid://shopify/Product/15479513514369	Smart-Armband mit Herzfrequenzmessung
+gid://shopify/Product/15479513874817	Tracker mit Farbdisplay
+gid://shopify/Product/15480161337729	Smartwatch mit Bluetooth-Anruffunktion
+gid://shopify/Product/15480173101441	Smartwatch-Armband mit Temperaturmessung
+gid://shopify/Product/15480178835841	Smartwatch mit Körperanalyse & Bluetooth-Anruf
+gid://shopify/Product/15480457691521	Smart Watch mit Herzfrequenzmessung
+gid://shopify/Product/15480828920193	Smart-Armband mit Herzfrequenz
+gid://shopify/Product/15481076875649	Smart-Armband: Herzfrequenz, Temperatur
+gid://shopify/Product/15481259819393	V19 Smart Armband mit PPG und SpO2
+gid://shopify/Product/15492023943553	Gesundheits-Smartwatch mit Körperanalyse
+gid://shopify/Product/15493830181249	Smartwatch mit Herzfrequenzmessung
+gid://shopify/Product/15493871370625	Smartwatch & Herzfrequenz
+gid://shopify/Product/15493915771265	Smart-Armband für Temperaturmessung
+gid://shopify/Product/15495135035777	Smartwatch mit Herzfrequenzmessung
