@@ -1,0 +1,6 @@
+gid://shopify/Page/697899352449	agb	1 Stellen
+gid://shopify/Page/697899516289	faq	1 Stellen
+gid://shopify/Page/697979863425	versand-lieferzeiten	2 Stellen
+gid://shopify/Page/697996181889	versand	2 Stellen
+gid://shopify/Page/697998082433	faq-haufig-gestellte-fragen	3 Stellen
+gid://shopify/Page/697998770561	versand-lieferzeit	1 Stellen
