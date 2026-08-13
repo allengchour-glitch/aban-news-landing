@@ -618,3 +618,18 @@ gid://shopify/Product/15448105648513	pullover	Kapuzenpullover mit langen Ärmeln
 gid://shopify/Product/15448105681281	jacke	Loose-Fit Kapuzenjacke mit Reissverschluss
 gid://shopify/Product/15448105746817	pullover	Bequemer Kapuzenpullover für Damen
 gid://shopify/Product/15448106238337	pullover	Halloween Kapuzenpullover mit Totenkopf-Print
+gid://shopify/Product/15448106271105	shirt	Colorblock Rundhals-Sweatshirt für Damen
+gid://shopify/Product/15448106336641	shirt	3D Digital Print Freizeit-Sweatshirt für Damen
+gid://shopify/Product/15448106402177	shirt	Unifarbenes Rundhals-Sweatshirt
+gid://shopify/Product/15448106434945	shirt	Sweatshirt mit Leoparden-Kirschen-Print
+gid://shopify/Product/15448106500481	shirt	Raglan-Sweatshirt mit Denim-Patchwork
+gid://shopify/Product/15448106664321	shirt	Sweatshirt Kirschblüten-Muster
+gid://shopify/Product/15448106697089	shirt	Sweatshirt mit Rundhals und Schleifendetail
+gid://shopify/Product/15448106762625	shirt	Retro Henley Langarm-Sweatshirt
+gid://shopify/Product/15448106828161	shirt	Waffle-knit Crewneck Sweatshirt
+gid://shopify/Product/15448106992001	shirt	Freizeit-Sweatshirt mit Stehkragen und Reissverschluss
+gid://shopify/Product/15448107188609	shirt	Rundhals-Sweatshirt in Apricot
+gid://shopify/Product/15448107254145	shirt	Puffärmel Sweatshirt für Damen
+gid://shopify/Product/15448107319681	shirt	Lässiges Cropped Sweatshirt mit Laternenärmeln
+gid://shopify/Product/15448107385217	shirt	Letter Sweatshirt für Damen
+gid://shopify/Product/15448107417985	tasche	Oversized Hoodie mit Bauchtasche
