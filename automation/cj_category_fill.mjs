@@ -381,7 +381,16 @@ for(const [cat,label] of grp.cats){
                // Nachfüll-Skripte unter automation/google_feed/ laufen nur einmal; was der
                // Importer nicht mitschreibt, fehlt ab dem nächsten Tag wieder. «new» stimmt
                // hier immer: Gebrauchtes und Generalüberholtes ist im Shop durchweg DRAFT.
-               {namespace:'mm-google-shopping',key:'condition',value:'new',type:'single_line_text_field'}];
+               {namespace:'mm-google-shopping',key:'condition',value:'new',type:'single_line_text_field'},
+               // `custom_product` sagt Google: dieses Produkt hat KEINE Herstellerkennung (kein
+               // GTIN/EAN, keine MPN). Ohne die Angabe wartet Merchant auf eine Nummer, die es
+               // bei CJ-Ware nie geben wird, und stuft den Eintrag als unvollständig ein.
+               // Stichprobe 13.08.2026: von 300 Produkten im Google-Kanal hatten VIER einen
+               // Barcode — allesamt Fortura-Ware mit echter EAN. CJ-Ware hat nie eine, deshalb
+               // steht der Wert hier fest auf true. Bei einem Lieferanten MIT EAN gehört er
+               // NICHT gesetzt: «hat keine Kennung» wäre dann eine Falschaussage, und die
+               // echte EAN ordnet den Artikel bei Google deutlich besser ein.
+               {namespace:'mm-google-shopping',key:'custom_product',value:'true',type:'boolean'}];
      // google_product_category — dieselbe Lücke wie bei `condition`, eine Feldebene weiter:
      // der 11.08.-Backfill hob die Abdeckung auf 87 %, tags darauf trugen 6 von 1'912
      // Neuimporten den Wert. Was der Importer nicht schreibt, muss jeden Tag nachgeputzt

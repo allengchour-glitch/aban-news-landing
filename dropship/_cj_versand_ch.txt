@@ -724,3 +724,4 @@ gid://shopify/Product/15496705671553	nicht-versendbar	Power Plate Vibrationsplat
 gid://shopify/Product/15496704229761	nicht-versendbar	Rhythm Machine Vibrationsplatte
 gid://shopify/Product/15496704557441	nicht-versendbar	Elektrischer Mute Stepper für Zuhause
 gid://shopify/Product/15496703967617	nicht-versendbar	Mini-Stepper für zu Hause – Leise & Kompakt
+gid://shopify/Product/15496704950657	nicht-versendbar	Smart Music Boxing Maschine
