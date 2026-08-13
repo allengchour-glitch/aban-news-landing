@@ -1389,3 +1389,32 @@ gid://shopify/Product/15448912789889	rucksack	Vakuum-Kompressionsrucksack
 gid://shopify/Product/15448913379713	rucksack	Leichter Wanderrucksack für Outdoor-Abenteuer
 gid://shopify/Product/15448913871233	rucksack	Lederrucksack für Herren
 gid://shopify/Product/15448913969537	rucksack	Wanderrucksack für Outdoor und Freizeit
+gid://shopify/Product/15448914264449	rucksack	Faltbarer Wanderrucksack 20-35L
+gid://shopify/Product/15448914788737	rucksack	Vakuum-Kompressions-Reiserucksack für Herren
+gid://shopify/Product/15448914919809	rucksack	Leichter Wanderrucksack 36-55L
+gid://shopify/Product/15448915214721	rucksack	Wasserdichter Wanderrucksack mit grossem Fassungsvermögen
+gid://shopify/Product/15448915444097	rucksack	Retro Lederrucksack für Herren und Studenten
+gid://shopify/Product/15448915640705	rucksack	Wasserdichter Oxford-Stoff Angelrucksack
+gid://shopify/Product/15448915870081	rucksack	Lederrucksack «Outdoor»
+gid://shopify/Product/15448916722049	flasche	Gepolsterte Thermosflaschen-Tasche
+gid://shopify/Product/15448920588673	huelle	Kissenhülle "Summer Ocean Surf" bestickt
+gid://shopify/Product/15448920785281	huelle	Sofa Kissenhülle mit Blumenmuster
+gid://shopify/Product/15448920818049	huelle	Jacquard Kissenhülle mit Elster und Blumen
+gid://shopify/Product/15448921145729	kissen	Sitzkissen für Gartenbank und Lounger
+gid://shopify/Product/15448921375105	huelle	Sofa Kissenhülle aus Chenille, rutschfest
+gid://shopify/Product/15448921440641	kissen,stuhl	Sitzkissen für Relax- und Schaukelstuhl
+gid://shopify/Product/15448921473409	kissen	Chenille-Sofakissen, rutschfest & universell
+gid://shopify/Product/15448922096001	decke	Mid-Century Modern Luxe Winter Plüsch-Sofadecke
+gid://shopify/Product/15448922227073	kissen	Memory Foam Sitzkissen für Stuhl und Autositz
+gid://shopify/Product/15448922292609	kissen	Aufblasbares Outdoor-Sitzkissen, feuchtigkeitsbeständig
+gid://shopify/Product/15448922489217	kissen	Bettkissen mit schräger Ablage
+gid://shopify/Product/15448922882433	huelle	Wabi-Sabi Kissenhülle Schwarz-Weiss
+gid://shopify/Product/15448924225921	kissen	Memory Foam Sitzkissen mit Lumbalstütze
+gid://shopify/Product/15448924815745	huelle	Retro Kissenhülle im französischen Stil
+gid://shopify/Product/15448925307265	huelle	Kissenhülle bestickt, klassische Ölmalerei
+gid://shopify/Product/15448925503873	kissen	Lendenkissen Bezug
+gid://shopify/Product/15448925634945	matte	Rutschfeste Fussmatte für den Eingangsbereich
+gid://shopify/Product/15448925700481	matte	Schmutzfangmatte für Aussenbereiche
+gid://shopify/Product/15448925962625	huelle	Chenille Kissenhülle oder Kissen mit Füllung
+gid://shopify/Product/15448926126465	kissen	Plüsch-Stützkissen für Seitenschläfer
+gid://shopify/Product/15448926159233	kissen	Atmungsaktives Cartoon-Eisseidenkissen für den Sommer
