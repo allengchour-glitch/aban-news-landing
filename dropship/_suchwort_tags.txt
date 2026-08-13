@@ -633,3 +633,261 @@ gid://shopify/Product/15448107254145	shirt	Puffärmel Sweatshirt für Damen
 gid://shopify/Product/15448107319681	shirt	Lässiges Cropped Sweatshirt mit Laternenärmeln
 gid://shopify/Product/15448107385217	shirt	Letter Sweatshirt für Damen
 gid://shopify/Product/15448107417985	tasche	Oversized Hoodie mit Bauchtasche
+gid://shopify/Product/15448107581825	pullover	Kapuzenpullover für Damen mit Geometrischem Muster
+gid://shopify/Product/15448107680129	shirt	Fisoew Crewneck Sweatshirt mit halbem Raglanarm
+gid://shopify/Product/15448107843969	shirt	Fisoew Cropped Sweatshirt Waffelstrick
+gid://shopify/Product/15448107909505	jacke	Fisoew Bomberjacke mit Reissverschluss
+gid://shopify/Product/15448110530945	hose	3D-Print Latzhose mit weitem Bein
+gid://shopify/Product/15448111219073	hose	Damen Denim Latzhose im Workwear-Stil
+gid://shopify/Product/15448111612289	kleid	Damen Maxikleid mit Leopardenprint und Schnürung
+gid://shopify/Product/15448114299265	hose	Denim-Latzhose im Loose-Fit
+gid://shopify/Product/15448114889089	guertel	Gestreifter ärmelloser Jumpsuit mit Bindegürtel
+gid://shopify/Product/15448115773825	anzug	Capri-Schwimmanzug mit Farbverlauf
+gid://shopify/Product/15448494440833	brille	UV400 Sonnenbrille mit dickem Rahmen
+gid://shopify/Product/15448494473601	brille	Trendige kleine quadratische Sonnenbrille
+gid://shopify/Product/15448496144769	shirt	Trendiges Unisex Langarmshirt im American Style
+gid://shopify/Product/15448501059969	shirt	Tailliertes Langarmshirt mit Puffärmeln – Braun
+gid://shopify/Product/15448504074625	pullover	Waffelstrick Kapuzenpullover mit Kordelzug
+gid://shopify/Product/15448504238465	shirt	Damen Oversized Fleece-Sweatshirt mit Kapuze
+gid://shopify/Product/15448504336769	pullover	Unifarbener Kapuzenpullover für Damen
+gid://shopify/Product/15448507416961	tasche,shirt	Kapuzen-Sweatshirt mit Bauchtasche für Haustiere
+gid://shopify/Product/15448508662145	shirt	Sportlich-legeres Sweatshirt mit Rundhals
+gid://shopify/Product/15448509022593	pullover	Kapuzenpullover Casual Loose Fit
+gid://shopify/Product/15448509153665	pullover	Samt-Kapuzenpullover für Damen und Herren
+gid://shopify/Product/15448509383041	shirt	Gefüttertes Kapuzen-Sweatshirt für Damen – Black-Hoodie
+gid://shopify/Product/15448517017985	guertel	Vintage Ledergürtel handgeflochten
+gid://shopify/Product/15448526356865	tasche	Sommerlicher Jumpsuit mit Taillentasche
+gid://shopify/Product/15448549261697	hemd	Trägerloses Nachthemd mit Spitze – auch für Draussen
+gid://shopify/Product/15448550867329	kleid	Jeans-Look Top mit Tupfenkleid
+gid://shopify/Product/15448551326081	kleid	V-Ausschnitt Laternenärmel Maxikleid
+gid://shopify/Product/15448551719297	kleid	Midilanges Damen-Strickkleid mit halbem Reissverschluss
+gid://shopify/Product/15448552178049	kleid	Damen Off-Shoulder Puffärmel Midikleid
+gid://shopify/Product/15448552505729	kleid	Wickelkleid mit Taillierung und Plissees
+gid://shopify/Product/15448552833409	kleid	Leinenkleid mit Schnürung und V-Ausschnitt
+gid://shopify/Product/15448553488769	kleid	Gestreiftes ärmelloses Midikleid
+gid://shopify/Product/15448553849217	kleid	Spitzen-Häkelkleid mit Taillenbetonung
+gid://shopify/Product/15448554176897	kleid	Figurbetontes Trägerloses Spitzenkleid
+gid://shopify/Product/15448554504577	kleid	Gemustertes Langarmkleid mit Rundhals
+gid://shopify/Product/15448554865025	kleid	Maxikleid mit Rundhals und 3/4-Ärmeln
+gid://shopify/Product/15448555094401	kleid	Strickkleid mit V-Ausschnitt und Schlitz
+gid://shopify/Product/15448555291009	kleid	Weisses Strickkleid für den Strandurlaub
+gid://shopify/Product/15448555553153	kleid	Pailletten One-Shoulder Meerjungfrauenkleid
+gid://shopify/Product/15448573378945	kleid	Gemustertes Sommerkleid mit Stickereien
+gid://shopify/Product/15448584847745	kleid,guertel	Seidenkleid mit V-Ausschnitt und Taillengürtel
+gid://shopify/Product/15448584880513	kleid	Tailliertes Minikleid mit 3/4-Ärmeln
+gid://shopify/Product/15448585011585	kleid	Französisches Spitzenkleid mit 3D-Blumen
+gid://shopify/Product/15448585601409	kleid	Retro Karo Leinenkleid für Damen
+gid://shopify/Product/15448585699713	kleid	Mesh Halterneck A-Linien-Minikleid
+gid://shopify/Product/15448585765249	rock	A-Linien Tennisrock mit Anti-Expositions-Unterlage
+gid://shopify/Product/15448585896321	kleid	Retro Casual Jeanskleid mit grossen Taschen
+gid://shopify/Product/15448586224001	kleid	Etuikleid mit Tüll-Puffärmeln
+gid://shopify/Product/15448586289537	kleid	Chiffonkleid mit V-Ausschnitt und Rüschenärmeln
+gid://shopify/Product/15448586453377	kleid	Etuikleid mit V-Ausschnitt & ausgestellten Ärmeln
+gid://shopify/Product/15448586781057	kleid	Off-Shoulder Etuikleid mit ausgestellten Ärmeln
+gid://shopify/Product/15448586813825	kleid	Bedrucktes Minikleid mit V-Ausschnitt und Spitze
+gid://shopify/Product/15448586977665	kleid	Glockenärmel-Strickkleid mit Rundhals und Streifen
+gid://shopify/Product/15448587075969	kleid	Midikleid mit Zopfmuster und Blumenprint
+gid://shopify/Product/15448587141505	kleid	Leinenkleid mit Print für den Sommer
+gid://shopify/Product/15448587403649	kleid	Retro-Hemdblusenkleid mit Stickerei und Falten
+gid://shopify/Product/15448587665793	kleid	Figurbetontes Etui-Abendkleid mit Rückenschnürung
+gid://shopify/Product/15448587829633	kleid	Elegantes Vintage Maxikleid mit eckigem Ausschnitt
+gid://shopify/Product/15448587927937	kleid	Elegantes Neckholder-Minikleid mit V-Ausschnitt
+gid://shopify/Product/15448587960705	kleid	Spitzenkleid mit Rüschensaum und Knopfleiste
+gid://shopify/Product/15448588190081	kleid	Florales Trägerkleid mit langem Rock
+gid://shopify/Product/15448588517761	kleid	Doppelreihiges Schnürkleid für festliche Anlässe
+gid://shopify/Product/15448588616065	kleid	Elegantes Damenkleid mit 3/4-Ärmeln
+gid://shopify/Product/15448588681601	guertel	Elegantes A-Linien Kleid mit Taillengürtel
+gid://shopify/Product/15448588714369	guertel	Elegantes ärmelloses Kleid mit Taillengürtel
+gid://shopify/Product/15448588747137	kleid	Damen Plisseekleid mit Rundhals und langen Ärmeln
+gid://shopify/Product/15448588812673	matte	Seidenmattes Neckholder-Kleid für Damen
+gid://shopify/Product/15448588878209	kleid	Elegantes Sommerkleid mit Spitze
+gid://shopify/Product/15448588943745	kleid	Ombre Baumwollkleid mit One-Shoulder-Design
+gid://shopify/Product/15448589009281	kleid,guertel	Leinen-Hemdblusenkleid mit Taillengürtel
+gid://shopify/Product/15448589074817	kleid	Ärmelloses Etuikleid mit U-Boot-Ausschnitt
+gid://shopify/Product/15448589205889	tasche	Raglan-Top aus Baumwoll-Leinen mit Knopftaschen
+gid://shopify/Product/15448589238657	kleid	Elegantes A-Linien Midikleid mit eckigem Ausschnitt
+gid://shopify/Product/15448589271425	kleid	Jacquard-Seidenkleid mit A-Linie
+gid://shopify/Product/15448589468033	kleid	Etuikleid mit Rüschenärmeln und Strass-Details
+gid://shopify/Product/15448589730177	kleid	Ärmelloses Strickkleid mit Ajour-Muster
+gid://shopify/Product/15448589894017	kleid	Ärmelloses Midikleid mit Libellen-Print
+gid://shopify/Product/15448590057857	pullover	Polo-Strickpullover mit Denim-Einsatz
+gid://shopify/Product/15448590483841	pullover	Jacquard Strickpullover für Herren
+gid://shopify/Product/15448590614913	pullover	Damen Strickpullover mit Herzmuster-Reissverschluss
+gid://shopify/Product/15448590647681	pullover	Strickpullover mit Rollkragen und Knopfleiste
+gid://shopify/Product/15448590680449	pullover	Damen Strickpullover mit Rollkragen und Knöpfen
+gid://shopify/Product/15448590713217	jacke	V-Ausschnitt Strickjacke Langarm
+gid://shopify/Product/15448590745985	pullover	Hoodie Strickpullover mit Kordelzug
+gid://shopify/Product/15448590778753	jacke	Damen Strickjacke mit Knopfleiste und langen Ärmeln
+gid://shopify/Product/15448590909825	pullover	Rundhals-Strickpullover für Damen
+gid://shopify/Product/15448590975361	shirt	Leichtes Kurzarm-Strickshirt für Damen
+gid://shopify/Product/15448591008129	jacke	V-Ausschnitt Strickjacke mit Streifen
+gid://shopify/Product/15448591434113	pullover	Strickpullover mit Rückenausschnitt
+gid://shopify/Product/15448591860097	pullover	Rundhals Strickpullover mit Knopfleiste
+gid://shopify/Product/15448592417153	pullover	Strickpullover mit Fledermausärmeln
+gid://shopify/Product/15448592613761	pullover	Fair Isle Strickpullover mit langen Ärmeln
+gid://shopify/Product/15448592646529	pullover	Slim-Fit Strickpullover mit V-Ausschnitt
+gid://shopify/Product/15448592777601	pullover	Strickpullover mit Rundhalsausschnitt für Damen
+gid://shopify/Product/15448592810369	pullover	V-Ausschnitt Strickpullover im French-Style
+gid://shopify/Product/15448592843137	pullover	Eleganter Rollkragenpullover aus Wolle
+gid://shopify/Product/15448593039745	ring	Hooded Drawstring Sweater aus Strick
+gid://shopify/Product/15448593138049	pullover	Strickpullover mit Rüschenärmeln und Knöpfen
+gid://shopify/Product/15448593269121	pullover	Dicker Strickpullover mit Puppenkragen
+gid://shopify/Product/15448593432961	pullover	Strickpullover mit Rundhals und langen Ärmeln
+gid://shopify/Product/15448593564033	pullover	Kuscheliger Strickpullover mit Ballonärmeln
+gid://shopify/Product/15448593858945	pullover	Strickpullover Rundhals Loose-Fit
+gid://shopify/Product/15448593924481	pullover	Eleganter Colorblock Strickpullover mit Rundhals
+gid://shopify/Product/15448593957249	shirt	Elegantes Langarmshirt mit Reverskragen
+gid://shopify/Product/15448594088321	pullover	V-Neck Colorblock Strickpullover für Damen
+gid://shopify/Product/15448594186625	pullover	Damen Rollkragen Strickpullover – Loose Fit
+gid://shopify/Product/15448594317697	pullover	Damen Strickpullover mit Reverskragen
+gid://shopify/Product/15448594383233	pullover	Strickpullover mit Laternenärmeln
+gid://shopify/Product/15448594416001	pullover	Eleganter Strickpullover mit Rollkragen
+gid://shopify/Product/15448594710913	pullover	Polo-Rollkragenpullover für Damen
+gid://shopify/Product/15448595169665	pullover	Vielseitiger, weicher Damenpullover
+gid://shopify/Product/15448595300737	pullover	Colorblock Strickpullover mit Rundhals für Damen
+gid://shopify/Product/15448595333505	pullover	Eleganter Strickpullover mit Spitzen-Puffärmeln
+gid://shopify/Product/15448595366273	pullover	Herren Rollkragenpullover aus Modal
+gid://shopify/Product/15448595628417	pullover	Unifarbener Oversize Rollkragenpullover für Damen
+gid://shopify/Product/15448595726721	pullover	Damen Rollkragenpullover aus Strick
+gid://shopify/Product/15448597168513	rock	Ärmelloses Turtleneck-Top mit Satin-Midirock
+gid://shopify/Product/15448597365121	hose	Blazer mit Perlen & Schlaghose 2-teiliges Set
+gid://shopify/Product/15448598086017	hose	Neckholder Twist Top mit Caprihose Set
+gid://shopify/Product/15448598282625	kleid	Romantisches fliessendes Strandkleid-Set
+gid://shopify/Product/15448598479233	kleid	Prinzessinnenkleid für Teenager
+gid://shopify/Product/15448598577537	hose	Elegantes trägerloses Camisole & Laternenhosen-Set
+gid://shopify/Product/15448598610305	anzug	Eleganter Hosenanzug mit weitem Bein
+gid://shopify/Product/15448599593345	kleid	Elegantes Maxikleid mit Blumenmuster
+gid://shopify/Product/15448599658881	rock	Kariertes Bleistiftrock-Set mit Bodycon-Top
+gid://shopify/Product/15448599986561	rock	Eleganter Bleistiftrock mit Perlenstickerei
+gid://shopify/Product/15448602149249	hose	Bequeme Unterhose
+gid://shopify/Product/15448602280321	hose	Leichte Leinen-Baumwollhose mit geradem Bein
+gid://shopify/Product/15448602739073	hose	High-Waist Business Freizeithose für Damen
+gid://shopify/Product/15448605131137	hose	High-Waist Haremshose mit Schlitz und Bindebündchen
+gid://shopify/Product/15448606212481	hose	High-Waist Samthose mit Spitze
+gid://shopify/Product/15448606507393	hose	Gerippte Strickhose für Damen
+gid://shopify/Product/15448607031681	rock	Fliesender Tanzrock
+gid://shopify/Product/15448607326593	rock,guertel	Maxirock A-Linie mit Bindegürtel
+gid://shopify/Product/15448607392129	rock	Eleganter Faltenrock mit Raffung
+gid://shopify/Product/15448607424897	rock	Langer, vielseitiger Damenrock mit leichter Dehnung
+gid://shopify/Product/15448607490433	kleid	Gepunktetes Midikleid in Beige
+gid://shopify/Product/15448607523201	rock	High-Waist Tennis-Minirock mit Falten
+gid://shopify/Product/15448607687041	rock	Blauer Jeansrock mit elastischem Bund
+gid://shopify/Product/15448607850881	rock	Samtrock mit Rüschensaum und Seitenschlitz
+gid://shopify/Product/15448607883649	rock	Schlankheits-Midirock in A-Linie
+gid://shopify/Product/15448607949185	rock	Eleganter A-Linien-Maxirock in Weiss
+gid://shopify/Product/15448608113025	rock	Vintage Stufenrock mit Stickerei und Schleife
+gid://shopify/Product/15448608145793	rock	Yoga Sport Maxirock mit Taschen
+gid://shopify/Product/15448608178561	rock	Atmungsaktiver Sport-Minirock
+gid://shopify/Product/15448608407937	hose	Yoga-Rockhose-Set für grosse Grössen
+gid://shopify/Product/15448608506241	kleid	Langes Damen-Leopardenkleid mit elastischem Bund
+gid://shopify/Product/15448608637313	rock	Eleganter A-Linien Midirock
+gid://shopify/Product/15448608932225	rock	Midilanger A-Linien Plisseerock mit Kordelzug
+gid://shopify/Product/15448609030529	rock	High-Waist Midirock mit Blumenmuster
+gid://shopify/Product/15448609063297	rock	Maxirock aus Tüll mit 3D-Blumenstickerei
+gid://shopify/Product/15448609161601	rock	Eleganter A-Linien Midirock – Schwarz
+gid://shopify/Product/15448609259905	rock	Eleganter Plisseerock für Damen
+gid://shopify/Product/15448609325441	rock	Eleganter Midirock aus Wolle mit hohem Bund
+gid://shopify/Product/15448609423745	rock	High Waist Mini-Jeansrock mit Rüschen
+gid://shopify/Product/15448609456513	rock	Taillenhoher Leinenrock mit geradem Schnitt
+gid://shopify/Product/15448609522049	kleid	Maxikleid mit V-Ausschnitt und Plisseefalten
+gid://shopify/Product/15448609587585	rock	Midi-Faltenrock aus Seide mit A-Linie
+gid://shopify/Product/15448609816961	rock	Gehäkelter Bikini-Wickelrock mit Perlen
+gid://shopify/Product/15448610275713	rock	Vielseitiger Minirock mit Polka Dots
+gid://shopify/Product/15448610406785	rock	Midirock mit Tunnelzug und grossen Taschen
+gid://shopify/Product/15448610636161	rock	High-waist Minirock mit Falten und Karomuster
+gid://shopify/Product/15448610800001	rock	Bohemian Patchwork Maxirock
+gid://shopify/Product/15448610931073	rock	Stretch-Jeansrock mit Knopfleiste
+gid://shopify/Product/15448611291521	rock	Ballett-inspirierter Minirock
+gid://shopify/Product/15448612340097	rock	Damen Maxirock mit Print und Taschen
+gid://shopify/Product/15448613192065	rock	A-Linien Minirock mit hohem Bund
+gid://shopify/Product/15448613552513	rock	Spitzen Minirock mit hoher Taille
+gid://shopify/Product/15448613945729	rock	A-Linien Midirock für grosse Grössen
+gid://shopify/Product/15448614240641	rock	Chiffon-Puffrock mit Polka Dots
+gid://shopify/Product/15448614568321	rock	Gepunkteter Midirock im Koreanischen Stil
+gid://shopify/Product/15448637800833	tasche	Bedruckter Denim Jumpsuit mit Reissverschlusstaschen
+gid://shopify/Product/15448639603073	hose	Caprihose mit weitem Bein und Gummizug
+gid://shopify/Product/15448642847105	hose	Damen Radhose mit Polster
+gid://shopify/Product/15448643469697	rock	High-Waist Faltenrock mit Anti-Expositions-Design
+gid://shopify/Product/15448645665153	hose	Luftige Caprihose mit Taschen für den Sommer
+gid://shopify/Product/15448646713729	hose	High-Waist Boxer-Style Umstandsunterhose
+gid://shopify/Product/15448647139713	hose	Nahtlose High-Waist Fitnesshose für Damen
+gid://shopify/Product/15448647369089	hose	Nahtlose Strick-Tie-Dye-Yogahose für Damen
+gid://shopify/Product/15448647893377	hose	Damen Bootcut Jeanshose mit engem Schnitt
+gid://shopify/Product/15448648810881	hose	Sport- und Yogahose
+gid://shopify/Product/15448649531777	hose	High-Elastic Schnelltrocknend Sportshose
+gid://shopify/Product/15448649564545	hose	PU-Lederhose High-Waist, gefüttert, Cropped
+gid://shopify/Product/15448650416513	hose	Vielseitige Caprihose mit Bündchen
+gid://shopify/Product/15448650482049	hose	Gestreifte Rippenhose mit hohem Bund
+gid://shopify/Product/15448650809729	hose	Gefütterte Schlaghose im europäischen Stil
+gid://shopify/Product/15448650875265	hose	Bootcut Fitnesshose mit Hüft-Push-up
+gid://shopify/Product/15448651170177	hose	Damen Caprihose mit tiefem Bund und Patchwork
+gid://shopify/Product/15448651465089	hose	Atmungsaktive Kompressions-Yogahose mit Shaping-Effekt
+gid://shopify/Product/15448651628929	hose	Fitness- und Yogahose für Damen
+gid://shopify/Product/15448651956609	hose	Weite Cordhose für Herren
+gid://shopify/Product/15448652153217	hose	High-Waist Wide-Leg Anzughose
+gid://shopify/Product/15448652251521	hose	High-Waist Wide Leg Stoffhose
+gid://shopify/Product/15448652284289	hose	Weite Freizeithose aus Baumwoll-Mix
+gid://shopify/Product/15448652349825	hose	Weite Sommerhose mit Elastikbund
+gid://shopify/Product/15448652644737	hose	Retro Cordhose für Damen
+gid://shopify/Product/15448652775809	guertel	Gestreifte Hose mit weitem Bein und Schleifengürtel
+gid://shopify/Product/15448652939649	hose	Weite Freizeithose mit Polka Dots
+gid://shopify/Product/15448653103489	hose	High-Waist Loose Fit Stoffhose
+gid://shopify/Product/15448653463937	hose	Retro-Freizeithose mit weitem Bein und Kordelzug
+gid://shopify/Product/15448653562241	hose	Cordhose im Loose Fit mit weitem Bein
+gid://shopify/Product/15448653627777	hose	Weite Freizeithose mit Digitaldruck
+gid://shopify/Product/15448653922689	hose	Bestickte weiter geschnittene Spitzenhose
+gid://shopify/Product/15448653988225	hose	Bestickte Retro Samthosen mit weitem Bein
+gid://shopify/Product/15448654020993	hose	Weite Freizeithose mit hohem Bund
+gid://shopify/Product/15448654348673	hose	High-Waist Wide Leg Stoffhose – Grau
+gid://shopify/Product/15448654381441	hose	Semi-transparente Mesh-Haremshose
+gid://shopify/Product/15448654741889	hose	Weite Freizeithose mit elastischem Bund
+gid://shopify/Product/15448655266177	hose	High-Waist Bootcut Sporthose für Damen
+gid://shopify/Product/15448655298945	hose	Weite Freizeithose mit Kontrastbund
+gid://shopify/Product/15448655430017	hose	Weite Freizeithose mit Kordelzug
+gid://shopify/Product/15448655561089	hose	Weite Freizeithose aus Baumwoll-Leinen-Mix
+gid://shopify/Product/15448656052609	hose	Leinenhose Loose Fit Cropped
+gid://shopify/Product/15448656347521	hose	Loose Fit High Waist Stoffhose
+gid://shopify/Product/15448656707969	hose	Loose Fit Stoffhose mit Taschen
+gid://shopify/Product/15448656871809	mantel	Kurzer Wollmantel mit Puppenkragen
+gid://shopify/Product/15448656937345	jacke	Slim-Fit Sportjacke mit Stehkragen
+gid://shopify/Product/15448656970113	kleid	Langes Hemdblusenkleid im Vintage-Stil
+gid://shopify/Product/15448657035649	weste	Elegante bordeauxrote Wollweste für Damen
+gid://shopify/Product/15448657265025	pullover	Locker sitzender Langarm-Strickpullover mit Taschen
+gid://shopify/Product/15448657691009	guertel	Lange ärmellose Weste mit Taillengürtel
+gid://shopify/Product/15448657756545	shirt	Commuter Cardigan Plus-Size Langarmshirt
+gid://shopify/Product/15448657920385	pullover	Eleganter Strickpullover mit Farbblock
+gid://shopify/Product/15448659362177	shirt	Langarmshirt mit Rundhals
+gid://shopify/Product/15448660115841	bluse	Damen Kurzbluse mit Rundhals und Knopfleiste
+gid://shopify/Product/15448660345217	shirt	Langarm Sportshirt Loose Fit
+gid://shopify/Product/15448661066113	pullover	Gestreifter Strickpullover mit Rundhals
+gid://shopify/Product/15448662606209	weste	Rollkragen Strickweste für Damen
+gid://shopify/Product/15448663654785	shirt	Rollkragen-Langarmshirt im Casual Fit
+gid://shopify/Product/15448664932737	mantel	Eleganter doppelseitiger Wollmantel
+gid://shopify/Product/15448665063809	tasche	Wildleder-Samt-Blazer mit Pattentaschen
+gid://shopify/Product/15448665424257	mantel	Midilanger Wollmantel mit Gürtel
+gid://shopify/Product/15448665489793	mantel	Mid-length Wollmantel für Damen – Herbst/Winter
+gid://shopify/Product/15448665620865	mantel	Eleganter Colorblock-Kunstpelzmantel
+gid://shopify/Product/15448665653633	mantel	Eleganter Wollmantel im koreanischen Stil
+gid://shopify/Product/15448665719169	mantel	Doppelter Wollmantel mit Taillierung
+gid://shopify/Product/15448665850241	jacke	Colorblock Strickjacke im Oversize-Look
+gid://shopify/Product/15448666014081	mantel	Eleganter Wollmantel für Damen
+gid://shopify/Product/15448666145153	mantel	Eleganter Wollmischmantel für Damen
+gid://shopify/Product/15448666276225	mantel,guertel	Wollmantel mit Revers und Taillengürtel
+gid://shopify/Product/15448666341761	mantel	Eleganter Wollmantel mit Revers und Knöpfen
+gid://shopify/Product/15448666407297	mantel,guertel	Eleganter Wollmantel mit Revers und Bindegürtel
+gid://shopify/Product/15448666472833	mantel	Eleganter Wollmantel im Retro-Stil
+gid://shopify/Product/15448666636673	mantel	Eleganter Kunstpelzmantel für Damen
+gid://shopify/Product/15448666669441	mantel	Doppelseitiger Fleece-Rollkragenmantel
+gid://shopify/Product/15448666833281	mantel	Doppelgesichtiger Wollmantel mit Puppenkragen
+gid://shopify/Product/15448666898817	mantel	Eleganter Mid-Long Wollmantel für Damen
+gid://shopify/Product/15448666964353	mantel	Eleganter doppelseitiger Wollmantel für Damen
+gid://shopify/Product/15448666997121	mantel	Eleganter Doubleface-Wollmantel für Damen
+gid://shopify/Product/15448667029889	mantel	Mid-langer Wollmantel für Herbst & Winter
+gid://shopify/Product/15448667062657	mantel	Chenille Wollmantel mit schmaler Passform
+gid://shopify/Product/15448667586945	mantel	Eleganter Damen-Kurzmantel mit Schal
+gid://shopify/Product/15448667652481	mantel	Extra-langer dunkelroter Wollmantel für Damen
+gid://shopify/Product/15448667750785	mantel	Kurzer, doppelseitiger Wollmantel für Damen
+gid://shopify/Product/15448667783553	kleid	Kapuzenkleid mit Regenbogen-Print für Damen
+gid://shopify/Product/15448667881857	mantel	Eleganter Wollmantel für Damen – Camel
+gid://shopify/Product/15448667947393	mantel	Kaschmir-Kurzmantel für Damen
+gid://shopify/Product/15448668012929	mantel	Eleganter Wollmantel für Business & Alltag

@@ -124,3 +124,10 @@ gid://shopify/Product/15495193067905	Grün
 gid://shopify/Product/15495401275777	Transparent
 gid://shopify/Product/15496263795073	Schwarz
 gid://shopify/Product/15496359379329	Transparent
+gid://shopify/Product/15496371110273	Schwarz
+gid://shopify/Product/15496372388225	Silber
+gid://shopify/Product/15496372650369	Silber
+gid://shopify/Product/15496377958785	Rot
+gid://shopify/Product/15496378712449	Rot
+gid://shopify/Product/15496379367809	Silber
+gid://shopify/Product/15496394572161	Schwarz
