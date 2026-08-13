@@ -88,3 +88,4 @@ gid://shopify/Product/15496442184065	nackenstutzkissen-mit-massagefunktion-62130
 gid://shopify/Product/15496520565121	atmungsaktive-netz-arbeitsschuhe-126848	Atmungsaktive Netz-Arbeitsschuhe
 gid://shopify/Product/15496531181953	induktions-ladegerat-mit-tassenwarmer-885056	Induktions-Ladegerät mit Tassenwärmer
 gid://shopify/Product/15496531214721	handgefertigte-retro-umhangetasche-aus-rindsle-973056	Handgefertigte Retro-Umhängetasche aus Rindsleder
+gid://shopify/Product/15496614969729	rutschfeste-saugfahige-kuchenmatte-4fae6e	Rutschfeste, saugfähige Küchenmatte
