@@ -8,6 +8,27 @@
 # also 52 Prozesse, die gemeinsam auf CJ und Shopify eindroschen. Der pgrep-Test allein genügt
 # nicht, weil zwischen Prüfung und Start ein Rennen entsteht (dieselbe TOCTOU-Falle wie beim
 # Social-Doppelpost). flock stellt sicher, dass es diesen Prozess nur EINMAL gibt.
+# ⚠️ WO LIEGT DAS REPO? NICHT unter $HOME. Diese Zeile ist die Lehre eines still
+# verlorenen halben Tages: $HOME ist hier /root, das Repo liegt unter
+# /home/user/aban-news-landing. Jeder Block, der unter dem Heimatverzeichnis nachsah,
+# fand die Datei nicht und übersprang sie — und zwar LAUTLOS, weil ein `[ -f … ] || continue`
+# wie ein berechtigtes «ist nicht installiert» aussieht. Betroffen waren die vier langen
+# Katalog-Läufe, der Social-Autopilot, der Reel-Motor UND die tägliche Hype-Reihe, also
+# ausgerechnet der Dauerauftrag «wenn Hype vorbei, Produkt ändern». Der Supervisor meldete
+# dabei durchgehend gesunde Neustarts der übrigen Dienste.
+# Der Pfad kommt deshalb aus dem Skript SELBST und nicht aus einer Umgebungsannahme.
+REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+# Ein fehlender Dienst darf nicht LAUTLOS übersprungen werden — genau das hat den Fehler oben
+# einen Tag lang verdeckt. Wer nichts sagt, sieht aus wie «alles in Ordnung». Gemeldet wird
+# einmal je Datei, damit das Log nicht alle zwei Minuten dasselbe wiederholt.
+fehlt() {
+  [ -f "$1" ] && return 1
+  local marke="/tmp/_fehlt_$(basename "$1").marke"
+  [ -f "$marke" ] || { echo "$(date -u +%H:%M) ⚠️ FEHLT: $1 — Dienst läuft nicht"; : > "$marke"; }
+  return 0
+}
+
 exec 9>/tmp/fixer_keepalive.lock
 flock -n 9 || { echo "$(date -u +%H:%M) Supervisor läuft bereits — dieser Start endet."; exit 0; }
 while true; do
@@ -40,8 +61,8 @@ while true; do
   # Social-Autopilot + Reel-Motor: liegen jetzt IM REPO (nicht mehr nur /tmp), überleben also
   # den nächsten Wipe. Beide haben eine eigene flock-Sperre, ein Doppelstart ist folgenlos.
   for S in social_autopilot reel_engine_runner; do
-    [ -f "$HOME/aban-news-landing/automation/$S.sh" ] || continue
-    pgrep -f "automation/$S.sh" >/dev/null || { setsid bash "$HOME/aban-news-landing/automation/$S.sh" >> /tmp/$S.log 2>&1 & echo "$(date -u +%H:%M) restart $S"; }
+    fehlt "$REPO/automation/$S.sh" && continue
+    pgrep -f "automation/$S.sh" >/dev/null || { setsid bash "$REPO/automation/$S.sh" >> /tmp/$S.log 2>&1 & echo "$(date -u +%H:%M) restart $S"; }
   done
   # LANGE KATALOG-LÄUFE aus dem Repo am Leben halten. Sie brauchen Stunden für 30'000
   # Produkte und werden vom Turn-Reaping zuverlässig gekillt — heute zweimal mitten im Lauf.
@@ -49,7 +70,7 @@ while true; do
   # von vorn zu beginnen. Die Sperre verhindert, dass zwei Kopien dasselbe Ledger schreiben.
   # ⚠️ Ohne `setsid` sterben sie mit dem Turn — genau daran sind sie heute gescheitert.
   for L in produktdetails_vereinen preisboden farbwerte_zusammengesetzt suchwort_tags; do
-    [ -f "$HOME/aban-news-landing/automation/$L.py" ] || continue
+    fehlt "$REPO/automation/$L.py" && continue
     grep -q "^FERTIG" "/tmp/$L.log" 2>/dev/null && continue      # durchgelaufen
     # ⚠️ NICHT `pgrep -f`. Steht das Suchmuster in der eigenen Kommandozeile, findet pgrep
     # sich selbst und meldet «läuft» für einen toten Lauf — heute stand `suchwort_tags` so
@@ -57,7 +78,7 @@ while true; do
     # deshalb die ARGUMENTE: erstes Feld python3, zweites der Skriptpfad.
     ps -eo args --no-headers | awk -v s="automation/$L.py" \
       '$1 ~ /python3$/ && $2 == s {n++} END {exit(n?0:1)}' && continue
-    ( cd "$HOME/aban-news-landing" && setsid bash -c \
+    ( cd "$REPO" && setsid bash -c \
         "exec 9>/tmp/lock_$L.lock; flock -n 9 || exit 0; exec python3 automation/$L.py" \
         >> "/tmp/$L.log" 2>&1 & )
     echo "$(date -u +%H:%M) restart $L"
@@ -71,10 +92,10 @@ while true; do
   # gehört an den Anfang jeder Session (siehe CLAUDE.md). Der Automat hält die Reihe frisch,
   # aktuell hält sie nur, wer nachschaut, was gerade läuft.
   HY=/tmp/hype_kuratieren.log
-  if [ -f "$HOME/aban-news-landing/automation/hype_kuratieren.py" ]; then
+  if [ -f "$REPO/automation/hype_kuratieren.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$HY" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
-      ( cd "$HOME/aban-news-landing" && setsid python3 automation/hype_kuratieren.py >> "$HY" 2>&1 & )
+      ( cd "$REPO" && setsid python3 automation/hype_kuratieren.py >> "$HY" 2>&1 & )
       echo "$(date -u +%H:%M) hype_kuratieren gestartet"
     fi
   fi
