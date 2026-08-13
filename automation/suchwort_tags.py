@@ -230,8 +230,16 @@ def main():
             continue
         n += 1
         f.write(f"{gid}\t{','.join(neu)}\t{titel}\n")
+        # ⚠️ NACH JEDEM EINTRAG AUF DIE PLATTE SCHREIBEN, nicht alle 200.
+        # Der erste Anlauf tat das nur alle 200 Zeilen — und kam nie so weit: Das
+        # Turn-Reaping killt lange Läufe zuverlässig nach wenigen Minuten, der Puffer war
+        # dann noch nicht geschrieben, das Ledger blieb leer, und der Supervisor startete
+        # den Lauf von vorn. Nach acht Minuten und mehreren Neustarts standen exakt 0
+        # Produkte im Ledger, obwohl die API sauber antwortete. Ein Ledger, das einen
+        # Absturz nicht überlebt, ist kein Ledger. Das Schreiben kostet nichts gegen den
+        # API-Aufruf daneben.
+        f.flush()
         if n % 200 == 0:
-            f.flush()
             print(f"  … {n}/{len(aufgaben)}", flush=True)
         time.sleep(0.25)
     f.flush()

@@ -1,0 +1,53 @@
+gid://shopify/Product/15396249960833	uhr	Klassische Herrenuhr Edelstahl · Saphirglas, 50m wasserdicht
+gid://shopify/Product/15396250321281	brille	Retro Sonnenbrille Polarisiert UV400 · Unisex Vintage
+gid://shopify/Product/15408458563969	lampe	Premium Home Wellness Bundle · Diffuser + 6 ätherische Öle + Salzlampe + Kristall-Trio
+gid://shopify/Product/15411565035905	lampe	LED Schreibtischlampe Akku – 3 Helligkeitsstufen, Augenschutz & Sunset-Modus
+gid://shopify/Product/15412299661697	matte	Kühlmatte für Hunde & Katzen – Ice-Silk, selbstkühlend (waschbar)
+gid://shopify/Product/15412299760001	brille	Vintage Sonnenbrille Oval – Metallrahmen, UV-Schutz (Damen)
+gid://shopify/Product/15412304773505	messer	Profi Messerschärfer – Präzisions-Schleifer für scharfe Küchenmesser
+gid://shopify/Product/15412304806273	tasche	Elegante Umhängetasche in Lack-Optik – Crossbody, kompakt (3 Farben)
+gid://shopify/Product/15412306772353	buerste	Reise-Schallzahnbürste – 4 Modi, Magnetschwebe-Motor, antibakterielle Box
+gid://shopify/Product/15412307100033	rucksack	LED-Fahrradrucksack mit Blinker – Funk-Fernbedienung, wasserabweisend
+gid://shopify/Product/15412307853697	matte	Silikon-Abtropfmatte XL – rutschfest & hitzebeständig fürs Spülbecken
+gid://shopify/Product/15412361593217	lampe	3D-Druck Nachttischlampe – warmes Nachtlicht & Deko-Objekt fürs Schlafzimmer
+gid://shopify/Product/15412405272961	topf	All-in-One Elektro-Kochtopf – Keramik-Beschichtung, Glasdeckel & Zange
+gid://shopify/Product/15412432175489	decke	Kühlende Sommerdecke – Cool-Feel, atmungsaktiv & waschbar
+gid://shopify/Product/15412447543681	ladegeraet	Auto-Schnellladegerät PD – ausziehbares Kabel, für Apple & Android
+gid://shopify/Product/15412463108481	brille	Polarisierte Sonnenbrille – blendfrei, UV-Schutz, Fashion-Look (Herren)
+gid://shopify/Product/15412659978625	lampe	Mini USB-Taschenlampe – Edelstahl, wiederaufladbar, für Schlüsselbund (4 Farben)
+gid://shopify/Product/15412678328705	lampe	Smart-Anzuchtset mit LED-Pflanzenlampe – 12 Zellen für Setzlinge & Kräuter
+gid://shopify/Product/15412752155009	shirt	Herren Business-Poloshirt – gestrickte Ice-Silk, kühlend (M–3XL, 2 Farben)
+gid://shopify/Product/15412825129345	hose	Leinenhose Damen – Baumwoll-Leinen, locker & atmungsaktiv (viele Farben)
+gid://shopify/Product/15412899676545	flasche	Edelstahl-Trinkflasche «Hydro» 570 ml
+gid://shopify/Product/15412902756737	kette	S925 Silber-Halskette «Éclat» – 1 Karat Moissanite
+gid://shopify/Product/15412902855041	ring	Mondstein-Blütenring «Fleur» – zarter Statement-Ring
+gid://shopify/Product/15412911079809	kette	Kirschblüten-Halskette «Sakura» – zarte Klavikula-Kette
+gid://shopify/Product/15412911178113	armband	7-Chakra Wickelarmband «Harmony» – Naturstein
+gid://shopify/Product/15412919304577	hemd	Herren-Sommerhemd «Monsieur» – French Court Style, Kurzarm
+gid://shopify/Product/15412919533953	kleid	Midikleid «Bluette» – Fake-2-Teiler mit V-Ausschnitt
+gid://shopify/Product/15412959871361	kette	S925 Silber-Halskette «Eternal» – Herz-Anhänger
+gid://shopify/Product/15412960002433	kette	S925 Silber-Halskette «Camélia» – Blüten-Anhänger
+gid://shopify/Product/15412960133505	kette	Halskette & Armband «Planet» – minimalistischer Anhänger
+gid://shopify/Product/15412964688257	ring	Ohrringe «Barque» – geprägtes Design
+gid://shopify/Product/15412976681345	tasche	Schultertasche «Milano» – PU-Leder, grosse Kapazität
+gid://shopify/Product/15412977926529	brille	Sonnenbrille «Chrome» – polarisiert, Color-Changing
+gid://shopify/Product/15412978352513	brille	Sonnenbrille «Photo» – selbsttönend, polarisiert
+gid://shopify/Product/15412978483585	brille	Cat-Eye-Sonnenbrille «Felina» – polarisiert
+gid://shopify/Product/15412978516353	brille	Sport-Sonnenbrille «Velo» – Outdoor & Radsport
+gid://shopify/Product/15413023015297	shirt	Herren-Sommershirt «Breeze» – leicht & atmungsaktiv
+gid://shopify/Product/15413023113601	shirt	Herren-Strickshirt «Riviera» – Cord-Kurzarm
+gid://shopify/Product/15413023342977	hose	Herren-Leinenhose «Lino» – locker & atmungsaktiv
+gid://shopify/Product/15413077410177	kette	Halskette «Coquille» – Muschel-Anhänger mit Tassel
+gid://shopify/Product/15413079343489	brille	Sonnenbrille «Carré» – Retro Small-Square
+gid://shopify/Product/15413083931009	schuh	Herren Laufschuhe · Flyknit, atmungsaktiv, leicht (Sport & Alltag)
+gid://shopify/Product/15413086323073	becher	Thermo-Isolierbecher · Edelstahl, hält warm & kalt (Suppe & Kaffee)
+gid://shopify/Product/15413245641089	hose	Herren Jogginghose · sportlich-bequem, ganzjährig (Sport & Freizeit)
+gid://shopify/Product/15413245673857	hose	Herren Stoffhose plissiert · High-Waist, leicht (Frühling/Sommer)
+gid://shopify/Product/15413245706625	hose	Herren Cordhose Retro · weites Bein, japanischer Stil (Freizeit)
+gid://shopify/Product/15413245968769	hose	Herren Business-Anzughose · elegant, Stretch-Komfort (Frühling–Winter)
+gid://shopify/Product/15413736931713	kette,ring	Smaragd-Zirkon Schmuck-Set «Vintage» · Ohrringe, Ring & Halskette
+gid://shopify/Product/15413961130369	lampe	Sonnenuntergang-Projektionslampe · 16 Farben, dimmbar
+gid://shopify/Product/15413961195905	uhr	LED-Spiegeluhr minimalistisch · Wecker & Temperatur
+gid://shopify/Product/15414147383681	tasche	Strohtasche «Beach» handgewebt · Strandtasche (Sommer 2026)
+gid://shopify/Product/15414270558593	kette	Herz-Mond-Halskette · zarte Schlüsselbein-Kette (Silber-Optik)
+gid://shopify/Product/15414270755201	ring	Ohrringe «Duo» · 2-fach tragbar, Zirkonia in Silber-Optik
