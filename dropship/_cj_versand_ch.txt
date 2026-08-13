@@ -712,3 +712,5 @@ gid://shopify/Product/15496394441089	ok	Vintage Lederrucksack Crazy Horse
 gid://shopify/Product/15496406696321	ok	Retro-Reisetasche aus Crazy Horse Leder
 gid://shopify/Product/15496394932609	nicht-versendbar	Kinder-Reisekoffer zum Sitzen & Fahren
 gid://shopify/Product/15496394899841	ok	Outdoor-Handtasche für Angelausrüstung
+gid://shopify/Product/15496508604801	nicht-versendbar	Ballwurfmaschine für Tennis & Pickleball
+gid://shopify/Product/15496498741633	ok	Saug-, Wisch- & Kehrroboter, ultradünn
