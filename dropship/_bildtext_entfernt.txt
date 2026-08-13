@@ -149,3 +149,10 @@ gid://shopify/Product/15453773857153	entfernt	3
 gid://shopify/Product/15453773889921	sauber	0
 gid://shopify/Product/15453773922689	sauber	0
 gid://shopify/Product/15453774479745	sauber	0
+gid://shopify/Product/15453775266177	entfernt	3
+gid://shopify/Product/15453775331713	sauber	0
+gid://shopify/Product/15453775397249	sauber	0
+gid://shopify/Product/15453777297793	sauber	0
+gid://shopify/Product/15453777330561	sauber	0
+gid://shopify/Product/15453777428865	entfernt	1
+gid://shopify/Product/15453777559937	sauber	0
