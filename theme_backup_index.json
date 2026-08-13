@@ -31,7 +31,7 @@
             "background_color": "#00000073",
             "corner_radius": 14,
             "padding-block-start": 18,
-            "padding-block-end": 10,
+            "padding-block-end": 6,
             "padding-inline-start": 24,
             "padding-inline-end": 24
           },
@@ -56,7 +56,7 @@
           "type": "text",
           "name": "Fakten",
           "settings": {
-            "text": "<p><strong>🇨🇭 2'600 Artikel ab Schweizer Lager</strong> — in 1–2 Tagen bei dir<br><strong>📦 Alles Übrige direkt ab Werk</strong> — 10–20 Tage, Lieferzeit auf jeder Produktseite<br><strong>🚚 Gratis ab CHF 50 · 30 Tage Rückgabe · Kauf auf Rechnung mit Klarna</strong></p>",
+            "text": "<p><strong>🇨🇭 2'600 Artikel ab Schweizer Lager</strong> — in 1–2 Tagen bei dir<br><strong>📦 Alles Übrige direkt ab Werk</strong> — 10–20 Tage<br><strong>🚚 Gratis ab CHF 50 · ↩️ 30 Tage Rückgabe · 💳 Klarna &amp; TWINT</strong></p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -71,7 +71,7 @@
             "background": true,
             "background_color": "#00000073",
             "corner_radius": 14,
-            "padding-block-start": 12,
+            "padding-block-start": 6,
             "padding-block-end": 14,
             "padding-inline-start": 24,
             "padding-inline-end": 24
@@ -102,7 +102,7 @@
         "align_baseline": true,
         "horizontal_alignment_flex_direction_column": "flex-start",
         "vertical_alignment_flex_direction_column": "flex-end",
-        "gap": 10,
+        "gap": 0,
         "section_width": "page-width",
         "section_height": "medium",
         "section_height_custom": 50,
