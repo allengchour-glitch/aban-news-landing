@@ -3836,3 +3836,5 @@ gid://shopify/Product/15448797380993	schon-sauber	0
 gid://shopify/Product/15448797512065	schon-sauber	0
 gid://shopify/Product/15448797643137	schon-sauber	0
 gid://shopify/Product/15448797708673	schon-sauber	0
+gid://shopify/Product/15448797741441	schon-sauber	0
+gid://shopify/Product/15448797839745	schon-sauber	0
