@@ -560,3 +560,10 @@ gid://shopify/Product/15496850473345	CJ-1773552640769658880	Halloween Deko-Kette
 gid://shopify/Product/15496851325313	CJ-1773287438388039680	LED-Hundelicht, farbig, wasserdicht
 gid://shopify/Product/15496852144513	CJ-1763125301279727616	GPS-Tracker für Haustiere – wasserdicht & diebstahlsicher
 gid://shopify/Product/15496853160321	CJ-1760490227270946816	Halsband mit Schleife für Hunde
+gid://shopify/Product/15497235792257	CJ-1385139695083720704	Tastatur- und Maus-Adapter
+gid://shopify/Product/15496981905793	CJ-1748188807901491200	Leuchthalsband USB-Ladefunktion
+gid://shopify/Product/15496982430081	CJ-1741442354575323136	Halsband Taktisches Nylon für mittlere bis grosse Hunde
+gid://shopify/Product/15497150923137	CJ-1709091441500237824	Halsband mit Metallschnalle für Hunde
+gid://shopify/Product/15497151218049	CJ-1707376982645813248	Halsband mit Nieten für grosse Hunde
+gid://shopify/Product/15497151447425	CJ-1707204325002448896	Smart Bark Stopper
+gid://shopify/Product/15497236185473	CJ-1659900708923121664	Halsband Katze Fragmented Flower
