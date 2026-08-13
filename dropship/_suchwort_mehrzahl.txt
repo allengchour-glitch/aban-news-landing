@@ -1732,3 +1732,22 @@ gid://shopify/Product/15492132733313	kleider	Pailletten-Minikleid mit One-Should
 gid://shopify/Product/15492135649665	hosen	Wasserdichte Herren-Arbeitshose mit Fleecefutter
 gid://shopify/Product/15492138008961	taschen	Anti-Strahlung Signal Abschirmtasche
 gid://shopify/Product/15492251550081	kleider	Mittelalterliches Sommerkleid
+gid://shopify/Product/15492252107137	kleider	Elegantes Color-Block Minikleid mit eckigem Ausschnitt
+gid://shopify/Product/15492253843841	kleider	Trägerloses Casual Maxikleid
+gid://shopify/Product/15492254925185	kleider	Samt-Fischschwanzkleid mit Reissverschluss
+gid://shopify/Product/15492266262913	taschen	Tauchgurt mit Schnallen-Gewichtstasche
+gid://shopify/Product/15492312531329	ketten	Elegante minimalistische Halskette
+gid://shopify/Product/15492325900673	kleider	Figurformender Minikleid
+gid://shopify/Product/15492325933441	kleider	Pailletten Neckholder Minikleid
+gid://shopify/Product/15492325966209	kleider	Fishtail Halterneck Spitzenkleid
+gid://shopify/Product/15492326064513	kleider	Off-Shoulder Plisseekleid mit Schlitz
+gid://shopify/Product/15492326097281	kleider	Neckholder Minikleid im europäischen Stil
+gid://shopify/Product/15492326162817	kleider	Halterneck Tie-Dye Minikleid mit Perlen
+gid://shopify/Product/15492326228353	kleider	Romantisches trägerloses Spitzenkleid im French-Stil
+gid://shopify/Product/15492326326657	kleider	Damen Freizeitkleid mit V-Ausschnitt und Schleife
+gid://shopify/Product/15492338352513	kleider	Ärmelloses Halterneck-Leopardenkleid
+gid://shopify/Product/15492997153153	kleider	Elegantes Vintage Samtkleid mit Meerjungfrauen-Saum
+gid://shopify/Product/15492997906817	kleider	Vielseitiges Denim Etuikleid mit A-Linie
+gid://shopify/Product/15493057020289	hosen	Gepunktete Caprihose mit schmaler Passform
+gid://shopify/Product/15493057610113	hosen	High-Waist Fitnesshose mit gedrehten Falten
+gid://shopify/Product/15493057708417	hosen	Lässige Mock-Two-Piece Jogginghose für Damen

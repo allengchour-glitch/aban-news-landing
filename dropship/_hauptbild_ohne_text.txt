@@ -1582,3 +1582,12 @@ gid://shopify/Product/15447974543745	schon-sauber	0
 gid://shopify/Product/15447974740353	schon-sauber	0
 gid://shopify/Product/15447974871425	schon-sauber	0
 gid://shopify/Product/15447974969729	alle-mit-text	-
+gid://shopify/Product/15447975133569	schon-sauber	2
+gid://shopify/Product/15447975264641	schon-sauber	0
+gid://shopify/Product/15447975362945	schon-sauber	0
+gid://shopify/Product/15447975461249	schon-sauber	0
+gid://shopify/Product/15447975625089	schon-sauber	0
+gid://shopify/Product/15447975788929	schon-sauber	0
+gid://shopify/Product/15447975887233	schon-sauber	0
+gid://shopify/Product/15447976018305	schon-sauber	0
+gid://shopify/Product/15447976182145	schon-sauber	0
