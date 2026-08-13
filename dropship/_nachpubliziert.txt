@@ -84,3 +84,4 @@ gid://shopify/Product/15496385888641	french-wear-nahtlose-ablosbare-nagelsticker
 gid://shopify/Product/15496390934913	green-cloud-14-make-up-pinsel-set-865152	Green Cloud 14 Make-up Pinsel-Set
 gid://shopify/Product/15496410562945	off-shoulder-chiffon-kleid-614000	Off-Shoulder Chiffon-Kleid
 gid://shopify/Product/15496410595713	personalisierbares-armband-mit-geburtsblume-634400	Personalisierbares Armband mit Geburtsblume
+gid://shopify/Product/15496442184065	nackenstutzkissen-mit-massagefunktion-621300	Nackenstützkissen mit Massagefunktion
