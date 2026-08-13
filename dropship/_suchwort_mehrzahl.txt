@@ -1977,3 +1977,69 @@ gid://shopify/Product/15495139557761	kleider	Off-Shoulder Spitzenkleid mit Blume
 gid://shopify/Product/15495139688833	kleider	Langes Damenkleid mit Patchwork, ärmellos
 gid://shopify/Product/15495139983745	kleider	Elegantes trägerloses Minikleid
 gid://shopify/Product/15495140475265	kleider	Elegantes V-Ausschnitt Midikleid mit Blumenmuster
+gid://shopify/Product/15495140573569	kleider	Eleganz trifft Polka Dots: Mini A-Linienkleid
+gid://shopify/Product/15495140639105	kleider	Etuikleid mit Gürtel für Pendlerinnen
+gid://shopify/Product/15495140770177	kleider	Elegantes Wickelkleid mit Laternenärmeln
+gid://shopify/Product/15495140934017	kleider	Asymmetrisches Plisseekleid mit Langarm und Stehkragen
+gid://shopify/Product/15495141097857	kleider	Elegantes V-Neck Sommerkleid mit Print
+gid://shopify/Product/15495141818753	taschen	Outdoor Taktik Aufbewahrungstasche
+gid://shopify/Product/15495142801793	taschen	Umhängetasche im Industrial Style
+gid://shopify/Product/15495143096705	taschen	Retro Business Umhängetasche mit grosser Kapazität
+gid://shopify/Product/15495152927105	taschen	Switch Konsole Zubehör-Aufbewahrungstasche
+gid://shopify/Product/15495190937985	ketten	Blumen Armband oder Halskette mit Zirkonia
+gid://shopify/Product/15495192969601	taschen	Reisetasche aus Rindsleder für Herren
+gid://shopify/Product/15495193526657	taschen	Vintage Umhängetasche für Herren, Oxford-Stoff
+gid://shopify/Product/15495193657729	taschen	Schultertasche Nylon Casual
+gid://shopify/Product/15495193723265	taschen	Wiederverwendbare Kraftpapier-Aufbewahrungstasche
+gid://shopify/Product/15495194280321	kleider	Ärmelloses Etuikleid mit V-Ausschnitt
+gid://shopify/Product/15495194509697	kleider	Elegantes Damen Herbst-/Winterkleid
+gid://shopify/Product/15495194640769	kleider	Rundhals-Strickkleid mit Streifenmuster
+gid://shopify/Product/15495212466561	kleider	Spitzenkleid im lockeren Schnitt für Frühling & Sommer
+gid://shopify/Product/15495212663169	kleider	Midikleid aus koreanischem Samt
+gid://shopify/Product/15495212990849	kleider	Besticktes Midikleid mit Rundhalsausschnitt
+gid://shopify/Product/15495216955777	kleider	V-Ausschnitt Schnürkleid aus Baumwoll-Leinen
+gid://shopify/Product/15495221215617	kleider	Samtkleid mit Rüschensaum
+gid://shopify/Product/15495221707137	kleider	Elegantes Langarm-Maxikleid mit Print für Damen
+gid://shopify/Product/15495223181697	kleider	Freizeitkleid mit Rüschenärmeln
+gid://shopify/Product/15495224852865	kleider	Maxikleid mit V-Ausschnitt und Blumenprint
+gid://shopify/Product/15495225999745	kleider	Elegantes Abendkleid mit Schleppe
+gid://shopify/Product/15495229604225	taschen	Canvas Schultertasche "All-match" mit grosser Kapazität
+gid://shopify/Product/15495229964673	taschen	Digitale Aufbewahrungstasche für Kabel & Zubehör
+gid://shopify/Product/15495236977025	ketten	Armband und Halskette mit drei Kreisen
+gid://shopify/Product/15495404749185	kleider	Langes Hemdblusenkleid im French Chic
+gid://shopify/Product/15495406911873	kleider	Elegantes Bodycon-Minikleid mit Strass-Trägern
+gid://shopify/Product/15495586644353	kleider	Rückenfreies Meerjungfrauenkleid im französischen Stil
+gid://shopify/Product/15495587496321	kleider	V-Ausschnitt Maxikleid mit Puffärmeln
+gid://shopify/Product/15495590412673	kleider	Leoparden-Print V-Ausschnitt Trägerkleid
+gid://shopify/Product/15495591035265	kleider	Elegantes Jeanskleid mit Cardigan-Design
+gid://shopify/Product/15495591723393	kleider	Vintage Style Jeanskleid mit V-Ausschnitt
+gid://shopify/Product/15495592345985	kleider	Etuikleid mit Reverskragen und langen Ärmeln
+gid://shopify/Product/15495608041857	kleider	Elegantes, figurbetontes Midikleid mit hoher Taille
+gid://shopify/Product/15495609614721	kleider	Midikleid im Picasso-Stil mit asymmetrischem Saum
+gid://shopify/Product/15495718601089	kleider	Casual A-Linien Midikleid mit Tiermuster
+gid://shopify/Product/15495719649665	kleider	Umstands-Maxikleid mit Schnürung & Perlen
+gid://shopify/Product/15495722533249	kleider	Trägerloses Spitzenkleid für Damen
+gid://shopify/Product/15495724302721	kleider	Retro-Print V-Ausschnitt Freizeitkleid
+gid://shopify/Product/15495725121921	kleider	Elegantes Off-Shoulder Sommerkleid
+gid://shopify/Product/15495725416833	kleider	Elegantes Blumenkleid mit 3D-Schnitt
+gid://shopify/Product/15495730266497	kleider	Ärmelloses Midikleid mit 3D-Print
+gid://shopify/Product/15495730463105	kleider	Schwarzes A-Linien Spitzenkleid mit Lochmuster
+gid://shopify/Product/15495730626945	kleider	Spaghetti-Träger Maxikleid mit Blumenstickerei
+gid://shopify/Product/15495731315073	kleider	Luftiges Leinenkleid für Frühling und Sommer
+gid://shopify/Product/15495732298113	kleider	Bedrucktes V-Ausschnitt Midikleid mit 3/4-Ärmeln
+gid://shopify/Product/15495732855169	kleider	Elegantes florales Spitzenkleid mit V-Ausschnitt
+gid://shopify/Product/15495733117313	kleider	Retro Pailletten Minikleid
+gid://shopify/Product/15495733412225	kleider	Elegantes Satin-Abendkleid mit V-Ausschnitt
+gid://shopify/Product/15495733510529	kleider	Trägerloses Blumenkleid mit A-Linie
+gid://shopify/Product/15495747469697	kleider	Etuikleid mit Rüschen und asymmetrischem Saum
+gid://shopify/Product/15495747731841	kleider	Maxikleid mit Blumenmuster
+gid://shopify/Product/15495748256129	kleider	Etuikleid Satin mit Spitze
+gid://shopify/Product/15495748387201	kleider	Retro Denim V-Ausschnitt Rüschenkleid
+gid://shopify/Product/15495748747649	kleider	Elegantes Polka-Dot Maxikleid mit Schnürung
+gid://shopify/Product/15495748813185	kleider	Langärmliges A-Linien Hemdkleid mit Reverskragen
+gid://shopify/Product/15495749108097	kleider	Boho V-Ausschnitt Midikleid mit Muster
+gid://shopify/Product/15496021311873	taschen	Runde Korbtasche mit Diagonal-Klappe
+gid://shopify/Product/15496077312385	kleider	Süsses A-Linien Minikleid mit Schleife
+gid://shopify/Product/15496077377921	kleider	Loose-fit Leinenkleid mit Knopfdetails
+gid://shopify/Product/15496077443457	kleider	Afrikanisches Maxikleid aus Baumwoll-Mix
+gid://shopify/Product/15496120533377	taschen	Crossbody-Schultertasche für Herren
