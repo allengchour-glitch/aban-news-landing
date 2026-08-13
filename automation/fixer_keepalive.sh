@@ -69,7 +69,7 @@ while true; do
   # Alle drei sind resumable (eigenes Ledger je Skript), ein Neustart setzt also fort statt
   # von vorn zu beginnen. Die Sperre verhindert, dass zwei Kopien dasselbe Ledger schreiben.
   # ⚠️ Ohne `setsid` sterben sie mit dem Turn — genau daran sind sie heute gescheitert.
-  for L in produktdetails_vereinen preisboden farbwerte_zusammengesetzt suchwort_tags; do
+  for L in produktdetails_vereinen preisboden farbwerte_zusammengesetzt suchwort_tags google_identifier; do
     fehlt "$REPO/automation/$L.py" && continue
     grep -q "^FERTIG" "/tmp/$L.log" 2>/dev/null && continue      # durchgelaufen
     # ⚠️ NICHT `pgrep -f`. Steht das Suchmuster in der eigenen Kommandozeile, findet pgrep
@@ -82,6 +82,20 @@ while true; do
         "exec 9>/tmp/lock_$L.lock; flock -n 9 || exit 0; exec python3 automation/$L.py" \
         >> "/tmp/$L.log" 2>&1 & )
     echo "$(date -u +%H:%M) restart $L"
+    sleep 5
+  done
+  # Dasselbe für die langen NODE-Läufe. Eigener Block, weil der Prozesstest auf das erste
+  # argv-Feld schaut und dort `node` statt `python3` steht — ein gemeinsamer Test hätte den
+  # Lauf für tot gehalten und ihn im Zwei-Minuten-Takt ein zweites Mal gestartet.
+  for N in cj_bild_backfill; do
+    fehlt "$REPO/automation/$N.mjs" && continue
+    grep -q "^FERTIG" "/tmp/$N.log" 2>/dev/null && continue
+    ps -eo args --no-headers | awk -v s="automation/$N.mjs" \
+      '$1 ~ /node$/ && $2 == s {n++} END {exit(n?0:1)}' && continue
+    ( cd "$REPO" && setsid bash -c \
+        "exec 9>/tmp/lock_$N.lock; flock -n 9 || exit 0; CAP=900 exec /opt/node22/bin/node automation/$N.mjs" \
+        >> "/tmp/$N.log" 2>&1 & )
+    echo "$(date -u +%H:%M) restart $N"
     sleep 5
   done
   # HYPE-REIHE DER STARTSEITE, einmal täglich (Auftrag des Betreibers 12.08.2026: «wenn hype
