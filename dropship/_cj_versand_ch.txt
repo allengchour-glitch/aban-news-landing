@@ -696,3 +696,4 @@ gid://shopify/Product/15496186233217	nicht-versendbar	Sitzbank für Schuhe im Ei
 gid://shopify/Product/15496186462593	ok	Trendige Freizeit-Sneaker für Paare
 gid://shopify/Product/15496228340097	nicht-versendbar	Luftfrittiergerät 4.5L
 gid://shopify/Product/15496230011265	ok	Schmuckkassette mit Schlüssel – Mikrofaserleder
+gid://shopify/Product/15496320516481	nicht-versendbar	JJ-YT1 Klimmzugstange für Türrahmen
