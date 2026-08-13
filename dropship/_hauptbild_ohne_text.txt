@@ -3857,3 +3857,5 @@ gid://shopify/Product/15448798953857	alle-mit-text	-
 gid://shopify/Product/15448799019393	schon-sauber	0
 gid://shopify/Product/15448799052161	umgestellt	24
 gid://shopify/Product/15448799150465	schon-sauber	0
+gid://shopify/Product/15448799183233	alle-mit-text	-
+gid://shopify/Product/15448799281537	schon-sauber	0
