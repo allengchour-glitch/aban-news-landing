@@ -35,6 +35,15 @@ fehlt() {
 # anderen Inode, der alte Halter merkt davon nichts. So liefen am 13.08. zwei Supervisoren
 # nebeneinander, und am 09.08. waren es drei mit 52 Runner-Kopien. Läuft schon einer, endet
 # der Zweitstart hier von selbst — das ist die richtige Antwort, kein Hindernis.
+# ⚠️ 9>&- AN JEDEM KINDSTART — die Wurzel zweier Rätsel dieses Tages.
+# Ein `exec 9>datei; flock -n 9` vererbt den Deskriptor an JEDES Kind. Die Sperre gehört
+# damit nicht mehr dem Supervisor allein, sondern der ganzen Nachkommenschaft. Folgen,
+# beide am 13.08. beobachtet: (1) Der Supervisor stirbt, ein Reiniger lebt weiter — und
+# hält die Sperre; jeder neue Start endet mit «läuft bereits», obwohl kein Supervisor
+# läuft. Gefunden über /proc/<pid>/fd/9: es war textbild_fix.py. (2) Umgekehrt konnten
+# zwei Supervisoren nebeneinander laufen, weil die Sperre zwischen Eltern und Kindern
+# hin und her ging. Der Schiedsrichter über die kleinere PID bleibt als zweite Wache
+# bestehen; die Ursache ist aber diese Zeile.
 exec 9>/tmp/fixer_keepalive.lock
 flock -n 9 || { echo "$(date -u +%H:%M) Supervisor läuft bereits — dieser Start endet."; exit 0; }
 while true; do
@@ -70,13 +79,13 @@ while true; do
     # nach Bauart, als «keine Daten». Genau so wurde eben eine Auswertung mit «0 Produkte ab
     # CHF 300» beendet, obwohl es Hunderte sind. Zehn Sekunden Abstand kosten nichts und
     # halten das Budget flach. (Dieselbe Lehre wie beim gestaffelten CJ-Runner-Start.)
-    setsid python3 /tmp/$p.py >> /tmp/$p.log 2>&1 & echo "$(date -u +%H:%M) restart $p"
+    setsid python3 /tmp/$p.py >> /tmp/$p.log 2>&1 9>&- & echo "$(date -u +%H:%M) restart $p"
     sleep 10
   done
   # Bestell-/Fulfill-Runner (Shell) mitlaufen lassen
-  pgrep -f "/tmp/cj_fulfill_runner.sh" >/dev/null || { setsid bash /tmp/cj_fulfill_runner.sh >> /tmp/cj_fulfill_runner.log 2>&1 & echo "$(date -u +%H:%M) restart cj_fulfill_runner"; }
+  pgrep -f "/tmp/cj_fulfill_runner.sh" >/dev/null || { setsid bash /tmp/cj_fulfill_runner.sh >> /tmp/cj_fulfill_runner.log 2>&1 9>&- & echo "$(date -u +%H:%M) restart cj_fulfill_runner"; }
   # Website-Hygiene (Lieferanten-Leaks aus Kundentexten) mitlaufen lassen
-  [ -f /tmp/website_hygiene_runner.sh ] && { pgrep -f "/tmp/website_hygiene_runner.sh" >/dev/null || { setsid bash /tmp/website_hygiene_runner.sh >> /tmp/website_hygiene_runner.log 2>&1 & echo "$(date -u +%H:%M) restart website_hygiene"; }; }
+  [ -f /tmp/website_hygiene_runner.sh ] && { pgrep -f "/tmp/website_hygiene_runner.sh" >/dev/null || { setsid bash /tmp/website_hygiene_runner.sh >> /tmp/website_hygiene_runner.log 2>&1 9>&- & echo "$(date -u +%H:%M) restart website_hygiene"; }; }
   # Social-Autopilot + Reel-Motor: liegen jetzt IM REPO (nicht mehr nur /tmp), überleben also
   # den nächsten Wipe. Beide haben eine eigene flock-Sperre, ein Doppelstart ist folgenlos.
   # ⛔ STOPP-RIEGEL. Der Betreiber hat am 13.08.2026 angeordnet, dass auf Instagram nichts
@@ -87,7 +96,7 @@ while true; do
   for S in social_autopilot reel_engine_runner; do
     [ -f "$REPO/dropship/_SOCIAL_STOPP" ] && continue
     fehlt "$REPO/automation/$S.sh" && continue
-    pgrep -f "automation/$S.sh" >/dev/null || { setsid bash "$REPO/automation/$S.sh" >> /tmp/$S.log 2>&1 & echo "$(date -u +%H:%M) restart $S"; }
+    pgrep -f "automation/$S.sh" >/dev/null || { setsid bash "$REPO/automation/$S.sh" >> /tmp/$S.log 2>&1 9>&- & echo "$(date -u +%H:%M) restart $S"; }
   done
   # LANGE KATALOG-LÄUFE aus dem Repo am Leben halten. Sie brauchen Stunden für 30'000
   # Produkte und werden vom Turn-Reaping zuverlässig gekillt — heute zweimal mitten im Lauf.
@@ -105,7 +114,7 @@ while true; do
       '$1 ~ /python3$/ && $2 == s {n++} END {exit(n?0:1)}' && continue
     ( cd "$REPO" && setsid bash -c \
         "exec 9>/tmp/lock_$L.lock; flock -n 9 || exit 0; exec python3 automation/$L.py" \
-        >> "/tmp/$L.log" 2>&1 & )
+        >> "/tmp/$L.log" 2>&1 9>&- & )
     echo "$(date -u +%H:%M) restart $L"
     sleep 5
   done
@@ -119,7 +128,7 @@ while true; do
       '$1 ~ /node$/ && $2 == s {n++} END {exit(n?0:1)}' && continue
     ( cd "$REPO" && setsid bash -c \
         "exec 9>/tmp/lock_$N.lock; flock -n 9 || exit 0; CAP=900 exec /opt/node22/bin/node automation/$N.mjs" \
-        >> "/tmp/$N.log" 2>&1 & )
+        >> "/tmp/$N.log" 2>&1 9>&- & )
     echo "$(date -u +%H:%M) restart $N"
     sleep 5
   done
@@ -134,7 +143,7 @@ while true; do
   if [ -f "$REPO/automation/hype_kuratieren.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$HY" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
-      ( cd "$REPO" && setsid python3 automation/hype_kuratieren.py >> "$HY" 2>&1 & )
+      ( cd "$REPO" && setsid python3 automation/hype_kuratieren.py >> "$HY" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) hype_kuratieren gestartet"
     fi
   fi
@@ -148,7 +157,7 @@ while true; do
     [ -f /tmp/$R.sh ] || continue
     pgrep -f "cj_runner_template.sh $R" >/dev/null && continue
     setsid bash -c "exec 9>/tmp/lock_cj_runner_template-$R.lock; flock -n 9 || exit 0;
-                    exec bash /tmp/$R.sh" >> /tmp/$R.log 2>&1 &
+                    exec bash /tmp/$R.sh" >> /tmp/$R.log 2>&1 9>&- &
     echo "$(date -u +%H:%M) restart $R"; sleep 3
   done
   sleep 120
