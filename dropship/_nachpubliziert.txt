@@ -86,3 +86,5 @@ gid://shopify/Product/15496410562945	off-shoulder-chiffon-kleid-614000	Off-Shoul
 gid://shopify/Product/15496410595713	personalisierbares-armband-mit-geburtsblume-634400	Personalisierbares Armband mit Geburtsblume
 gid://shopify/Product/15496442184065	nackenstutzkissen-mit-massagefunktion-621300	Nackenstützkissen mit Massagefunktion
 gid://shopify/Product/15496520565121	atmungsaktive-netz-arbeitsschuhe-126848	Atmungsaktive Netz-Arbeitsschuhe
+gid://shopify/Product/15496531181953	induktions-ladegerat-mit-tassenwarmer-885056	Induktions-Ladegerät mit Tassenwärmer
+gid://shopify/Product/15496531214721	handgefertigte-retro-umhangetasche-aus-rindsle-973056	Handgefertigte Retro-Umhängetasche aus Rindsleder
