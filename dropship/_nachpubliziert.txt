@@ -85,3 +85,4 @@ gid://shopify/Product/15496390934913	green-cloud-14-make-up-pinsel-set-865152	Gr
 gid://shopify/Product/15496410562945	off-shoulder-chiffon-kleid-614000	Off-Shoulder Chiffon-Kleid
 gid://shopify/Product/15496410595713	personalisierbares-armband-mit-geburtsblume-634400	Personalisierbares Armband mit Geburtsblume
 gid://shopify/Product/15496442184065	nackenstutzkissen-mit-massagefunktion-621300	Nackenstützkissen mit Massagefunktion
+gid://shopify/Product/15496520565121	atmungsaktive-netz-arbeitsschuhe-126848	Atmungsaktive Netz-Arbeitsschuhe
