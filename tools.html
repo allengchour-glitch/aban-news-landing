@@ -56,12 +56,12 @@
     .stars .off{color:#d1d5db}
     .tool-note{font-size:.88rem;line-height:1.5;color:var(--c-text-2);margin:.4rem 0 0}
     .tool-actions{display:flex;justify-content:space-between;align-items:center;margin-top:.5rem;gap:.5rem;flex-wrap:wrap}
-    .tool-actions a{font-size:.85rem;color:var(--c-accent-hi);text-decoration:none;font-weight:600}
+    .tool-actions a{font-size:.9rem;color:var(--c-accent-hi);text-decoration:none;font-weight:600;padding:.45rem .55rem;margin:-.2rem -.25rem;border-radius:6px;min-height:36px;display:inline-flex;align-items:center}
     .tool-actions a:hover{text-decoration:underline}
     .tool-more{display:none;padding-top:.5rem;border-top:1px dashed var(--c-border);font-size:.85rem;color:var(--c-text-2)}
     .tool-more.open{display:block}
     .tool-more h4{margin:.35rem 0 .15rem;font-size:.85rem;color:var(--c-muted);text-transform:uppercase;letter-spacing:.05em}
-    .toggle-btn{background:none;border:none;color:var(--c-accent-hi);font-weight:600;cursor:pointer;font-size:.85rem;padding:0;font-family:inherit}
+    .toggle-btn{background:none;border:none;color:var(--c-accent-hi);font-weight:600;cursor:pointer;font-size:.9rem;padding:.45rem .55rem;margin:-.2rem -.25rem;border-radius:6px;font-family:inherit;min-height:36px}
     .toggle-btn:hover{text-decoration:underline}
     .empty{text-align:center;padding:3rem 1rem;color:var(--c-muted)}
     .reset-btn{background:none;border:1px solid var(--c-border);color:var(--c-muted);padding:.4rem .8rem;border-radius:var(--r);cursor:pointer;font-family:inherit;font-size:.85rem}
@@ -79,7 +79,7 @@
     .score-pill.s-hi{background:#ecfdf5;border-color:#a7f3d0}.score-pill.s-hi .val{color:#047857}
     .score-pill.s-mid{background:#fffbeb;border-color:#fde68a}.score-pill.s-mid .val{color:#b45309}
     .score-pill.s-lo{background:#fef2f2;border-color:#fecaca}.score-pill.s-lo .val{color:#b91c1c}
-    .copy-link{background:none;border:none;cursor:pointer;color:var(--c-muted);font-size:.85rem;padding:0;font-family:inherit}
+    .copy-link{background:none;border:none;cursor:pointer;color:var(--c-muted);font-size:.9rem;padding:.45rem .55rem;margin:-.2rem -.25rem;border-radius:6px;font-family:inherit;min-height:36px}
     .copy-link:hover{color:var(--c-accent-hi)}.copy-link.done{color:#047857;font-weight:600}
     .kbd{display:inline-block;border:1px solid var(--c-border);border-bottom-width:2px;border-radius:4px;padding:0 .3rem;font-size:.72rem;color:var(--c-muted);background:#fff;font-family:ui-monospace,monospace}
     .tool-skel{height:240px;border-radius:var(--r-lg);background:linear-gradient(90deg,#f3f4f6 25%,#e9eaec 37%,#f3f4f6 63%);background-size:400% 100%;animation:shimmer 1.4s ease infinite}
@@ -141,7 +141,7 @@
       <div class="filters" role="region" aria-label="Filter">
         <div>
           <label for="f-search">Suche <span class="kbd" aria-hidden="true">/</span></label>
-          <input type="text" id="f-search" placeholder="Tool, Vendor, Use-Case..." autocomplete="off">
+          <input type="text" id="f-search" placeholder="Suchen: Tool, Anbieter, Aufgabe …" autocomplete="off">
         </div>
         <div>
           <label for="f-category">Kategorie</label>
