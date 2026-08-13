@@ -1730,3 +1730,5 @@ gid://shopify/Product/15492129227137	kleider	Elegantes Maxi-Abendkleid mit Spagh
 gid://shopify/Product/15492132602241	kleider	Neckholder Bodycon Minikleid mit Raffung
 gid://shopify/Product/15492132733313	kleider	Pailletten-Minikleid mit One-Shoulder-Träger
 gid://shopify/Product/15492135649665	hosen	Wasserdichte Herren-Arbeitshose mit Fleecefutter
+gid://shopify/Product/15492138008961	taschen	Anti-Strahlung Signal Abschirmtasche
+gid://shopify/Product/15492251550081	kleider	Mittelalterliches Sommerkleid
