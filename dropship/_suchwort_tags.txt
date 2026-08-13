@@ -926,3 +926,20 @@ gid://shopify/Product/15448671945089	mantel	Leichter Daunenmantel mit Kapuze
 gid://shopify/Product/15448672043393	jacke	Gefütterte Damen-Pufferjacke mit Kapuze
 gid://shopify/Product/15448672076161	jacke	Damen Steppjacke mit grossem Fellkragen
 gid://shopify/Product/15448672108929	jacke	Leichte Steppjacke mit Stehkragen für Damen
+gid://shopify/Product/15448672141697	jacke	Gerippte Baumwoll-Steppjacke im Street-Style
+gid://shopify/Product/15448672174465	mantel	Gefütterter Baumwollmantel mit Prinzessinnenärmeln
+gid://shopify/Product/15448672207233	jacke	Woll-Mohair Strickjacke mit Kapuze
+gid://shopify/Product/15448672240001	jacke	Kurze, locker geschnittene Daunenbaumwolljacke
+gid://shopify/Product/15448672371073	jacke	Gepolsterte Baumwolljacke mit Rundhals
+gid://shopify/Product/15448672403841	jacke	Kurze, locker geschnittene Damen-Steppjacke
+gid://shopify/Product/15448672534913	mantel	Gefütterter Wintermantel für Damen
+gid://shopify/Product/15448672731521	jacke	Warme Damen-Steppjacke im japanischen Stil
+gid://shopify/Product/15448672797057	jacke	Gefütterte Damenjacke mit Blumenmuster
+gid://shopify/Product/15448672829825	jacke	Gepolsterte Langarm-Baumwolljacke mit Rundhals
+gid://shopify/Product/15448672862593	jacke	Gefütterte Herrenjacke mit Stehkragen
+gid://shopify/Product/15448672895361	jacke	Kurze Kapuzenjacke mit Polyester-Füllung
+gid://shopify/Product/15448672993665	jacke	Leichte Daunenjacke für Herbst und Winter
+gid://shopify/Product/15448673026433	jacke	Gefütterte Jeansjacke mit Fleece-Futter
+gid://shopify/Product/15448673059201	jacke	Gefütterte Damen-Freizeitjacke mit langen Ärmeln
+gid://shopify/Product/15448673157505	jacke	Kurze Daunenjacke für Damen
+gid://shopify/Product/15448673419649	jacke	Kurze, locker geschnittene Pufferjacke
