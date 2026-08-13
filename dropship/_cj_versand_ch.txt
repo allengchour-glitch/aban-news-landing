@@ -708,3 +708,7 @@ gid://shopify/Product/15496392278401	ok	Airsoda Sprudelwasser-Maschine für Zuha
 gid://shopify/Product/15496385167745	nicht-versendbar	Hantelstange 1.2m für Kniebeugen & Krafttraining
 gid://shopify/Product/15496382448001	ok	USB Velo-Lampe mit OLED-Display, superhell
 gid://shopify/Product/15496434188673	nicht-versendbar	Katzen-Laufrad: Fitness-Roller für Stubentiger
+gid://shopify/Product/15496394441089	ok	Vintage Lederrucksack Crazy Horse
+gid://shopify/Product/15496406696321	ok	Retro-Reisetasche aus Crazy Horse Leder
+gid://shopify/Product/15496394932609	nicht-versendbar	Kinder-Reisekoffer zum Sitzen & Fahren
+gid://shopify/Product/15496394899841	ok	Outdoor-Handtasche für Angelausrüstung
