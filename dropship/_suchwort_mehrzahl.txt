@@ -999,3 +999,19 @@ gid://shopify/Product/15460659593601	ketten	Halskette und Armband mit Diamanten
 gid://shopify/Product/15460659659137	ketten	Clavicle Chain Armband und Halskette Set
 gid://shopify/Product/15460659822977	ketten	Halskette mit Kreuz-Anhänger
 gid://shopify/Product/15460659888513	ketten	Halskette & Ohrringe Set mit Sternen, Mond & Wolken
+gid://shopify/Product/15460659954049	ketten	Buntes Herz Zirkonia Tennis-Halskette für Damen
+gid://shopify/Product/15460660347265	kleider	Elegantes Strickkleid mit Rundhals und langen Ärmeln
+gid://shopify/Product/15460660511105	kleider	Etuikleid mit Spaghettiträgern
+gid://shopify/Product/15460660642177	kleider	Ärmelloses Sommerkleid mit weitem Schnitt
+gid://shopify/Product/15460664836481	kleider	Sommerliches Trägerkleid – figurbetont & schlank
+gid://shopify/Product/15460664869249	kleider	Tailliertes ärmelloses Stufenkleid
+gid://shopify/Product/15460664967553	ketten	Herz-Halskette aus Titanstahl
+gid://shopify/Product/15460665033089	ketten	Farbgetreue Titan-Stahl Zirkon Halskette
+gid://shopify/Product/15460665065857	kleider	Enges Sommerkleid mit Spaghettiträgern und eckigem Ausschnitt
+gid://shopify/Product/15460665164161	kleider	Bedrucktes Maxikleid mit Kapuze
+gid://shopify/Product/15460665196929	kleider	Plissiertes Batwing-Maxikleid mit asymmetrischem Saum
+gid://shopify/Product/15460672373121	kleider	Retro-Blumenkleid
+gid://shopify/Product/15460672438657	kleider	Elegantes Strickkleid mit Perlen-Details
+gid://shopify/Product/15460672635265	taschen	Handtuchtasche aus Bio-Baumwolle
+gid://shopify/Product/15460701602177	kleider	Abendkleid mit Schleife
+gid://shopify/Product/15460701667713	kleider	Elegantes Satin-Trägerkleid
