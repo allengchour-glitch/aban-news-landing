@@ -590,3 +590,31 @@ gid://shopify/Product/15448102404481	bluse	Uni-Damenbluse mit genähtem Kragen
 gid://shopify/Product/15448102633857	bluse	Elegante Satinbluse mit Schleife
 gid://shopify/Product/15448102994305	tasche,bluse	Langarmbluse mit Klappentaschen und Reverskragen
 gid://shopify/Product/15448103027073	bluse	Gestreifte Kurzarmbluse mit Schleife
+gid://shopify/Product/15448103289217	bluse	Gestreifte Langarmbluse im französischen Stil
+gid://shopify/Product/15448103321985	hemd	Doppellagiges Baumwollhemd
+gid://shopify/Product/15448103813505	hemd	Damen Sommerhemd mit Geometermuster
+gid://shopify/Product/15448103846273	pullover	Kapuzenpullover · Modell 2
+gid://shopify/Product/15448104010113	shirt	Gefüttertes Kapuzen-Sweatshirt für Damen
+gid://shopify/Product/15448104042881	pullover	Kapuzenpullover für Damen
+gid://shopify/Product/15448104075649	pullover	Lockeres Kapuzenpullover für Damen
+gid://shopify/Product/15448104141185	pullover	Kapuzenpullover mit Kordelzug · Modell 2
+gid://shopify/Product/15448104206721	pullover	V-Ausschnitt Strickpullover für Damen · Modell 2
+gid://shopify/Product/15448104305025	pullover	Unisex Kapuzenpullover mit Kordelzug
+gid://shopify/Product/15448104337793	shirt	Sweatshirt mit 3D-Digitaldruck im China-Stil
+gid://shopify/Product/15448104370561	shirt	Elegantes Langarm-Sweatshirt für Damen
+gid://shopify/Product/15448104403329	jacke	Kuhfell-Plüschjacke mit Knöpfen
+gid://shopify/Product/15448104567169	shirt	Damen Pullover Sweatshirt mit Print
+gid://shopify/Product/15448104665473	shirt	Oversized Sweatshirt mit 3D-Effekt
+gid://shopify/Product/15448104862081	pullover	Strickpullover mit Stehkragen für Damen
+gid://shopify/Product/15448104960385	jacke	Kapuzenjacke mit Reissverschluss
+gid://shopify/Product/15448105156993	jacke	Plüsch-Kapuzenjacke mit Reissverschluss
+gid://shopify/Product/15448105288065	shirt	Off-Shoulder Sweatshirt mit Tunnelzug
+gid://shopify/Product/15448105386369	shirt	Off-Shoulder Sweatshirt mit Blumenmuster
+gid://shopify/Product/15448105484673	shirt	Unifarbenes Crewneck Sweatshirt im Relaxed Fit
+gid://shopify/Product/15448105517441	shirt	Trendiges Rundhals-Sweatshirt für Damen
+gid://shopify/Product/15448105550209	pullover	Kapuzenpullover mit Rippstruktur und Fell-Details
+gid://shopify/Product/15448105615745	shirt	Unifarbenes Kapuzen-Sweatshirt mit Kordelzug
+gid://shopify/Product/15448105648513	pullover	Kapuzenpullover mit langen Ärmeln und Taschen
+gid://shopify/Product/15448105681281	jacke	Loose-Fit Kapuzenjacke mit Reissverschluss
+gid://shopify/Product/15448105746817	pullover	Bequemer Kapuzenpullover für Damen
+gid://shopify/Product/15448106238337	pullover	Halloween Kapuzenpullover mit Totenkopf-Print
