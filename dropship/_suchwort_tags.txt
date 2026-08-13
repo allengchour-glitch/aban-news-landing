@@ -51,3 +51,63 @@ gid://shopify/Product/15413961195905	uhr	LED-Spiegeluhr minimalistisch · Wecker
 gid://shopify/Product/15414147383681	tasche	Strohtasche «Beach» handgewebt · Strandtasche (Sommer 2026)
 gid://shopify/Product/15414270558593	kette	Herz-Mond-Halskette · zarte Schlüsselbein-Kette (Silber-Optik)
 gid://shopify/Product/15414270755201	ring	Ohrringe «Duo» · 2-fach tragbar, Zirkonia in Silber-Optik
+gid://shopify/Product/15414271836545	ring	Statement-Ohrringe «Retro» · geometrisch & oversized
+gid://shopify/Product/15414271902081	kette	Halskette mit Ring-Halter-Anhänger · minimalistisch (3 Farben)
+gid://shopify/Product/15414490399105	brille	Oversized-Sonnenbrille «Street» · getönt, Square-Style (3 Farben)
+gid://shopify/Product/15421166059905	tasche	Henkeltasche «Lune» · Top-Handle mit Gold-Clip, Crossbody
+gid://shopify/Product/15421167075713	muetze	Baskenmütze «Riviera» · Denim mit Farbstreifen (Unisex)
+gid://shopify/Product/15421171859841	ring	Statement-Ohrringe «Doré» · gebürstetes Gold, quadratisch
+gid://shopify/Product/15421226746241	kette	Glücks-Halskette «Fortune» · Hufeisen & Kreuz mit Zirkonia
+gid://shopify/Product/15421364896129	jacke	Boho-Jeansjacke «Dentelle» · Denim mit Spitzen-Panel
+gid://shopify/Product/15421364928897	rock	Fransen-Minirock «Santa Fe» · Wildleder-Optik, 2-lagig
+gid://shopify/Product/15421414211969	kette	Moissanite-Herzkette «Coeur» · S925 Silber, Infinity
+gid://shopify/Product/15421414277505	ring	Acryl-Ohrringe «Ambre» · Karamell-Ton, Statement
+gid://shopify/Product/15421442261377	guertel	Sommerkleid «Fleur Noir» · Blumen-Print, Midi mit Bindegürtel
+gid://shopify/Product/15421516218753	guertel	Blazer «Roma» · Tailliert mit Bindegürtel & Revers
+gid://shopify/Product/15421604299137	hemd	Herren-Sommerhemd «Lido» · Stehkragen, Kurzarm Leinen-Look
+gid://shopify/Product/15422037361025	brille	Sonnenbrille «Mirage» · Cat-Eye, verspiegelt
+gid://shopify/Product/15422854463873	tasche	Alltags-Umhängetasche – Selbst gestalten
+gid://shopify/Product/15422912332161	hemd	Herren-Strickhemd «Amalfi» · Ajour-Knit, Camp-Kragen
+gid://shopify/Product/15422937760129	ring	Statement-Ohrringe «Onyx» · Geometrisch, Schwarz
+gid://shopify/Product/15422940447105	flasche	Edelstahl Trinkflasche mit Strohhalm – Selbst gestalten
+gid://shopify/Product/15422956798337	jacke	Unisex Allover-Bomberjacke – Selbst gestalten
+gid://shopify/Product/15422959518081	hose	Recycelte Allover-Jogginghosen – Selbst gestalten
+gid://shopify/Product/15428299194753	grill	Kompakter Klappgrill – Grillvergnügen für unterwegs.
+gid://shopify/Product/15428299260289	pfanne	Outdoor Gusseisenpfanne – Saftiges Fleisch mit Grillstreifen.
+gid://shopify/Product/15428421353857	kette,ring	Layering-Halsketten Set · Gliederkette Gold & Silber
+gid://shopify/Product/15428421386625	kette	Kreuz-Halskette Gold · Edelstahl-Anhänger
+gid://shopify/Product/15428421681537	ring	Stern-Ohrringe Gold · 4-Zack
+gid://shopify/Product/15428421714305	ring	Tropfen-Ohrringe Emaille · Schwarz-Weiss Retro
+gid://shopify/Product/15428429513089	lampe	Retro Flammen-Tischlampe LED · aufladbar
+gid://shopify/Product/15428429578625	flasche	Isolier-Trinkflasche Edelstahl · mit Trage-Hülle
+gid://shopify/Product/15429955944833	shirt	Herren-Langarmshirt «Bamboo» · Bambus-Viskose, atmungsaktiv (vegan)
+gid://shopify/Product/15429975343489	kette	Partner-Halskette «Soulmate» · magnetischer Herz-Anhänger (2 Hälften)
+gid://shopify/Product/15430231032193	lampe	RGB-Wandlampe «Halo» · kabellos, Fernbedienung, ohne Bohren 💡
+gid://shopify/Product/15430233588097	tasche	Weekender-Reisetasche «Voyage» · faltbar, mit Extra-Fach 🧳
+gid://shopify/Product/15430236504449	leuchte	Solar-Gartenleuchte «Lumio» · Aluminium, automatisch ☀️
+gid://shopify/Product/15430344704385	schuh	Herren Trainingsschuhe «Forza» · Gym & Weightlifting
+gid://shopify/Product/15430345425281	tasche	Echtleder-Henkeltasche «Milano» · weiches Rindsleder
+gid://shopify/Product/15430345458049	tasche	Premium Schultertasche «Como» · geräumig, Tragegurt
+gid://shopify/Product/15430345589121	ring	Süsswasserperlen-Ohrringe «Perla» · 925 Silber
+gid://shopify/Product/15430408634753	brille	Shield-Sonnenbrille «Vortex» · One-Piece, UV400
+gid://shopify/Product/15430408700289	brille	Sonnenbrille «Aviateur» · Dual-Bridge, UV400
+gid://shopify/Product/15430462701953	pullover	Herren Strickpullover «Nico» · Half-Neck, Baumwolle
+gid://shopify/Product/15430690865537	ring	Ohrringe «Lotus» · 999 Silber, Emaille (asymmetrisch)
+gid://shopify/Product/15430691029377	ring	Ohrringe «Onda» · unregelmässige Creolen, Gold & Silber
+gid://shopify/Product/15430691062145	kette	Armkette «Papillon» · Schmetterling, Roségold & Perlmutt
+gid://shopify/Product/15430694470017	brille	Sonnenbrille «Riviera» · Oversize Square mit Gold-Detail
+gid://shopify/Product/15431329218945	uhr	Bellevue · Damenuhr Gold mit Kristallen
+gid://shopify/Product/15431376339329	ring	Breil · Damenring Italienisch
+gid://shopify/Product/15431537033601	kette	Edelstahl-Halskette «Goutte» · Tropfen-Anhänger, Silber
+gid://shopify/Product/15431607452033	kette	Halskette «Rosée» · Kristall-Tropfen, Silber
+gid://shopify/Product/15431608140161	brille	Oversize-Sonnenbrille «Riviera» · getönt, UV400
+gid://shopify/Product/15431997325697	ring	Statement-Ohrring-Set «Aurelia» · Creolen & Stecker, Gold
+gid://shopify/Product/15432006992257	kette	Boho-Fusskette «Olivia» · Blatt-Anhänger, Gold
+gid://shopify/Product/15433461465473	huelle	Schutzhüllen-Set für PS5 Gamepad
+gid://shopify/Product/15433464086913	kabel	USB-Adapterkabel für Xbox One Gamecontroller
+gid://shopify/Product/15435203871105	kette	Edelstahl-Halskette «Perla» — Barock-Perlen-Anhänger, wasserfest
+gid://shopify/Product/15435203903873	kette	Halskette «Trio» — Birthstone-Kristalle, silberfarben
+gid://shopify/Product/15438841348481	tasche	Sporttasche mit Schuhfach – Alles dabei, sauber getrennt.
+gid://shopify/Product/15443182846337	kette	Moissanit-Halskette «Aurora» 1 ct · 925 Silber Tropfen-Halo
+gid://shopify/Product/15443219186049	kette	Edelstein-Halskette «Rubin & Smaragd» · 925 Silber Doppel-Halo
+gid://shopify/Product/15443241075073	kette	Edelstein-Halskette «Rubin & Saphir» · 925 Silber
