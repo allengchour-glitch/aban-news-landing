@@ -1204,3 +1204,28 @@ gid://shopify/Product/15469990904193	ketten	Goldene Halskette Griechisch
 gid://shopify/Product/15469992214913	brillen	Party Skibrille neongrün
 gid://shopify/Product/15469992378753	brillen	Party Skibrille neonorange
 gid://shopify/Product/15469992608129	brillen	Partybrille weiss Herzform
+gid://shopify/Product/15469992706433	taschen	Hüfttasche Holo gold
+gid://shopify/Product/15469993034113	taschen	Umhängetasche Hippie
+gid://shopify/Product/15469994705281	brillen	Skibrille mit Katzenohren
+gid://shopify/Product/15469994803585	taschen	Samt Handtasche gold
+gid://shopify/Product/15469994934657	brillen	Partybrille Rapper
+gid://shopify/Product/15469995426177	brillen	Partybrille/Skibrille
+gid://shopify/Product/15469996278145	ketten	Herz - Halskette
+gid://shopify/Product/15469996736897	taschen	Gürteltasche 80ies
+gid://shopify/Product/15469996802433	taschen	Handtasche Filz 20x12x3 cm
+gid://shopify/Product/15469996835201	taschen	Dirndltasche herzförmig rot
+gid://shopify/Product/15469996867969	brillen	Party Skibrille neongelb
+gid://shopify/Product/15469997359489	taschen	Schottentasche mit Pelz
+gid://shopify/Product/15469998309761	ketten	Halskette mit Strasskreuz
+gid://shopify/Product/15469998375297	hosen	Waggishose kurz gelb
+gid://shopify/Product/15469998506369	brillen	Riesen Partybrille mit Strass
+gid://shopify/Product/15469998604673	ketten	Goldfarbene Halskette
+gid://shopify/Product/15469998997889	taschen	Umhängetasche
+gid://shopify/Product/15469999423873	taschen	Polizei-Abzeichen in Brieftasche
+gid://shopify/Product/15469999915393	brillen	Partybrille Steampunk Vintage
+gid://shopify/Product/15470000013697	taschen	Umhängetasche aus Plüsch
+gid://shopify/Product/15470000046465	brillen	Party Skibrille neonblau
+gid://shopify/Product/15470000144769	brillen	Party Skibrille weiss
+gid://shopify/Product/15470000406913	brillen	Partybrille Mirage Regenbogen
+gid://shopify/Product/15470000603521	taschen	Schultertasche mit Pailletten
+gid://shopify/Product/15470000701825	taschen	Umhängetasche Holo silber
