@@ -6360,3 +6360,9 @@ gid://shopify/Product/15484499853697	maske	All-Season Schlafmaske mit Glaskügel
 gid://shopify/Product/15484500181377	regal	Retro Wandregal aus Massivholz
 gid://shopify/Product/15484500607361	tasche	Kühl- und Picknicktasche 10L
 gid://shopify/Product/15484522365313	decke	Mehrlagige Musselindecke aus Baumwolle
+gid://shopify/Product/15484582625665	schuh	Vintage Schnürschuhe für Herren
+gid://shopify/Product/15484587114881	kette	Halskette aus Titanstahl mit Muschel-Anhänger
+gid://shopify/Product/15484587671937	kette	Vielseitige Zirkon-Halskette für Damen
+gid://shopify/Product/15484588228993	anhaenger	Blumenanhänger mit farbigen Edelsteinen
+gid://shopify/Product/15484592521601	hemd	Gemütliches Nachthemd mit Dreiviertelärmeln
+gid://shopify/Product/15484594454913	kleid	Elegantes Strickkleid mit Spitze und Neckholder
