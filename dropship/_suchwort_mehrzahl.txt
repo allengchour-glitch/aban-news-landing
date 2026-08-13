@@ -1229,3 +1229,210 @@ gid://shopify/Product/15470000144769	brillen	Party Skibrille weiss
 gid://shopify/Product/15470000406913	brillen	Partybrille Mirage Regenbogen
 gid://shopify/Product/15470000603521	taschen	Schultertasche mit Pailletten
 gid://shopify/Product/15470000701825	taschen	Umhängetasche Holo silber
+gid://shopify/Product/15470000734593	taschen	Gürteltasche holografisch
+gid://shopify/Product/15470000800129	taschen	Hüfttasche Holo
+gid://shopify/Product/15470000898433	taschen	Hüfttasche Holo rosa
+gid://shopify/Product/15470010663297	brillen	Fliegerbrille
+gid://shopify/Product/15470010696065	ketten	Halskette mit Totenköpfen
+gid://shopify/Product/15470010761601	brillen	Partybrille Rave Holland
+gid://shopify/Product/15470011089281	ketten	Hawaiikette rosa
+gid://shopify/Product/15470011253121	taschen	Umhängetasche Hippie
+gid://shopify/Product/15470011679105	brillen	Partybrille Pilotenbrille
+gid://shopify/Product/15470011842945	taschen	Samt Handtasche schwarz
+gid://shopify/Product/15470011875713	brillen	Party Skibrille schwarz
+gid://shopify/Product/15470012006785	brillen	Partybrille rosa Herzform
+gid://shopify/Product/15470012301697	brillen	Partybrille Bubble
+gid://shopify/Product/15470012662145	taschen	Umhängetasche Holo gold
+gid://shopify/Product/15470012760449	taschen	Hüfttasche Holo silber
+gid://shopify/Product/15470013317505	ketten	Trachtenkette aus Perlen
+gid://shopify/Product/15470013645185	taschen	Wurfbeutel / Konfettitasche
+gid://shopify/Product/15470013743489	taschen	Wurfbeutel / Konfettitasche
+gid://shopify/Product/15470013907329	taschen	Umhängetasche Pirat 25x26 cm
+gid://shopify/Product/15470014431617	ketten	Halskette Morticia Wednesday
+gid://shopify/Product/15470014792065	brillen	Festival Partybrille
+gid://shopify/Product/15470014890369	taschen	Umhängetasche transparent rosa
+gid://shopify/Product/15470015086977	taschen	Umhängetasche 17.5x5x34 cm
+gid://shopify/Product/15470016070017	hosen	Waggishose Kinder kurz blau
+gid://shopify/Product/15470016987521	ketten	Trachtenkette Velour schwarz
+gid://shopify/Product/15470017610113	taschen	Gürtel mit Felltasche
+gid://shopify/Product/15470019871105	hosen	Kinder Waggishose kurz gelb
+gid://shopify/Product/15470019936641	hosen	Waggishose kurz blau
+gid://shopify/Product/15470020100481	brillen	LIMA Schwimmbrille, geteiltes
+gid://shopify/Product/15470023934337	ketten	Wimpelkette Happy Birthday
+gid://shopify/Product/15470032388481	brillen	LIMA Schwimmbrille Antifog
+gid://shopify/Product/15470034223489	ketten	Fahnenkette Schweizer Kantone
+gid://shopify/Product/15470036287873	brillen	SANTOS Schwimmbrille,geteiltes
+gid://shopify/Product/15470078820737	taschen	Badeset in Werkzeugtasche
+gid://shopify/Product/15470350598529	ketten	Böser Auge Halskette
+gid://shopify/Product/15470351286657	ketten	Zylindrische Halskette
+gid://shopify/Product/15470351319425	ketten	Tropfenformiger Diamant-Halsketten-Schmuck
+gid://shopify/Product/15470351417729	ketten	Apfel-Halskette
+gid://shopify/Product/15470351483265	ketten	Trockenblumen-Halskette
+gid://shopify/Product/15470351614337	ketten	Perlen-Armband und Halskette
+gid://shopify/Product/15470351745409	ketten	Regenbogen-Halskette
+gid://shopify/Product/15470351810945	ketten	Rote Blütenhalskette
+gid://shopify/Product/15470351909249	ketten	Ballet-Style Halskette
+gid://shopify/Product/15470352335233	kleider	Elegantes Off-Shoulder Gabardine Maxikleid
+gid://shopify/Product/15470352368001	kleider	Trägerkleid mit Blumenprint
+gid://shopify/Product/15470359019905	ketten	Mond & Stern Medaillon-Halskette
+gid://shopify/Product/15470359085441	ketten	Wolken-Anhänger Halskette
+gid://shopify/Product/15470359118209	ketten	Halskette "Monatsblume" mit runder Box
+gid://shopify/Product/15470359150977	ketten	Layered Zirkonia-Halskette mit Hufeisen-Schliff
+gid://shopify/Product/15470359216513	ketten	Blumen-Halskette im Retro-Stil
+gid://shopify/Product/15470359282049	ketten	Dreamy Katze-Halskette
+gid://shopify/Product/15470359380353	ketten	Halskette mit aufklappbarem Medaillon
+gid://shopify/Product/15470359445889	ketten	Kupferkette Geburtsblume Dezember
+gid://shopify/Product/15470359478657	ketten	Geburtsblumen-Halskette mit Monatsblüte
+gid://shopify/Product/15470359544193	ketten	Halskette mit tropfenförmigem Anhänger
+gid://shopify/Product/15470367277441	ketten	Mond- oder Sonnen-Halskette aus Edelstahl
+gid://shopify/Product/15470367310209	ketten	Herz-Medaillon-Halskette
+gid://shopify/Product/15470368096641	kleider	Elegantes figurbetontes Midi-Abendkleid
+gid://shopify/Product/15470368129409	kleider	Schwarzes Off-Shoulder Midikleid für Damen
+gid://shopify/Product/15470368194945	kleider	Elegantes, tailliertes Neckholder-Abendkleid
+gid://shopify/Product/15470368260481	kleider	Tailliertes Langarm-Midikleid mit V-Ausschnitt
+gid://shopify/Product/15470368358785	kleider	Off-Shoulder Plisseekleid mit hoher Taille
+gid://shopify/Product/15470368489857	kleider	Elegantes, rückenfreies Schlitzkleid mit Strass
+gid://shopify/Product/15470368686465	kleider	Off-Shoulder Paillettenkleid mit fliessenden Bändern
+gid://shopify/Product/15470368883073	kleider	Off-Shoulder Midikleid mit Rüschen und Print
+gid://shopify/Product/15470368948609	kleider	Ärmelloses Retro-Ferienkleid im French-Style
+gid://shopify/Product/15470369014145	kleider	Etuikleid mit Rüschensaum
+gid://shopify/Product/15470369145217	kleider	Gestreiftes Strickkleid mit halbem Rollkragen
+gid://shopify/Product/15470369210753	kleider	Langes Damenkleid mit farbigem Print
+gid://shopify/Product/15470369243521	kleider	Elegantes A-Linien Midikleid mit Puffärmeln
+gid://shopify/Product/15470369505665	kleider	Elegantes trägerloses Satin-Abendkleid
+gid://shopify/Product/15470369636737	kleider	Elegantes Sommerkleid mit Blumenmuster
+gid://shopify/Product/15470369735041	kleider	Elegantes A-Linien Abendkleid mit Volants
+gid://shopify/Product/15470375928193	kleider	Kapuzenkleid mit Tasche
+gid://shopify/Product/15470376026497	kleider	Elegantes Schnürkleid mit langen Ärmeln
+gid://shopify/Product/15470376255873	kleider	Elegantes langes Trägerkleid mit 3D-Blumen
+gid://shopify/Product/15470376354177	kleider	Paillettenbesetztes Minikleid mit langen Ärmeln
+gid://shopify/Product/15470376419713	kleider	Sexy Trägerkleid mit Strass-Applikationen
+gid://shopify/Product/15470376485249	kleider	Heissstein-besticktes Puffärmel-Maxikleid
+gid://shopify/Product/15470376649089	kleider	Ärmelloses Sommerkleid mit Wickelkragen
+gid://shopify/Product/15470376681857	kleider	Elegantes Kurzarmkleid für Damen
+gid://shopify/Product/15470376714625	kleider	Minikleid mit Blumenmuster
+gid://shopify/Product/15470376747393	kleider	Retro Minikleid mit Print
+gid://shopify/Product/15470376780161	kleider	Ärmelloses Midikleid mit Quasten
+gid://shopify/Product/15470376878465	kleider	Elegantes V-Ausschnitt Strickkleid in Rot
+gid://shopify/Product/15470376944001	kleider	Elegantes Etuikleid mit Spitzenrüschen
+gid://shopify/Product/15470377042305	taschen	Herren Umhängetasche für Pendler
+gid://shopify/Product/15470390641025	kleider	Trägerloses Etuikleid mit Strass- und Ketten-Quasten
+gid://shopify/Product/15470394081665	ketten	Teufelsauge Kreuz-Anhänger Halskette
+gid://shopify/Product/15470394900865	kleider	Boho-Chiffonkleid mit Blumenmuster und Puffärmeln
+gid://shopify/Product/15470395883905	kleider	Langes Damenkleid mit schmeichelhaftem Schnitt
+gid://shopify/Product/15470396244353	ketten	Bicolor-Herz-Halskette mit Anhänger
+gid://shopify/Product/15470631616897	kleider	Gestreiftes Strandkleid
+gid://shopify/Product/15470632141185	ketten	Halskette Geschenkbox Retro, zu öffnen
+gid://shopify/Product/15470632337793	ketten	Halskette mit Achat-Anhänger & Zirkonia
+gid://shopify/Product/15470659928449	ketten	Doppellagige 925er Silber Halskette mit Wellen-Design
+gid://shopify/Product/15471253815681	kleider	Damen Casual Leinenkleid mit ausgestellten Ärmeln
+gid://shopify/Product/15471266070913	kleider	Damen Strick Maxikleid mit asymmetrischem Saum
+gid://shopify/Product/15471270199681	kleider	Elegantes Samtkleid mit Off-Shoulder-Design
+gid://shopify/Product/15471270789505	kleider	Elegantes Langarmkleid mit hohem Schlitz
+gid://shopify/Product/15472047227265	taschen	Multifunktionale Umhängetasche
+gid://shopify/Product/15472047554945	ketten	Grosse Holzperlenkette mit Hanfquasten
+gid://shopify/Product/15472049815937	kleider	Elegantes ärmelloses Maxikleid mit Rundhals
+gid://shopify/Product/15472049881473	kleider	Elegantes Hemdblusenkleid mit Schnürung
+gid://shopify/Product/15472049947009	kleider	Vielseitiges Taillenkleid mit Schleifendetail
+gid://shopify/Product/15472050012545	kleider	Voluminöses Tüllkleid mit Taillenbetonung
+gid://shopify/Product/15472050045313	kleider	Retro-Minikleid mit Streifen & Puffärmeln
+gid://shopify/Product/15472050078081	kleider	Figurbetontes Maxikleid mit V-Ausschnitt
+gid://shopify/Product/15472050143617	kleider	Freizeitkleid mit Blumenmuster
+gid://shopify/Product/15472050340225	kleider	Tie-Dye A-Linien Strickkleid für Damen
+gid://shopify/Product/15472050438529	kleider	Spitzenbesetztes Trägerkleid mit hoher Taille
+gid://shopify/Product/15472050504065	kleider	Boho-Minikleid mit Print und Volants
+gid://shopify/Product/15472058696065	kleider	Kurzes Strickkleid mit Geometrischem Muster
+gid://shopify/Product/15472058794369	taschen	Robuste Canvas-Gürteltasche für Werkzeuge
+gid://shopify/Product/15472058827137	kleider	Elegantes Etuikleid mit Spitze und A-Linien-Rock
+gid://shopify/Product/15472058990977	ketten	S925 Silber Halskette Minimalistische Goldkette
+gid://shopify/Product/15472059416961	kleider	Elegantes Spitzenkleid mit Schlitz
+gid://shopify/Product/15472059515265	kleider	Elegantes rückenfreies Maxikleid
+gid://shopify/Product/15472059613569	kleider	Elegantes Blumenkleid mit Quadrathals
+gid://shopify/Product/15472059646337	kleider	Elegantes, figurbetontes Strickkleid mit hohem Bund
+gid://shopify/Product/15472059679105	kleider	Elegantes ärmelloses A-Linien-Minikleid
+gid://shopify/Product/15472059711873	kleider	Ärmelloses Strickkleid für Damen
+gid://shopify/Product/15472059744641	kleider	Elegantes A-Linien Maxikleid mit Spaghettiträgern
+gid://shopify/Product/15472062497153	kleider	Gelbes Blumenkleid
+gid://shopify/Product/15472062595457	kleider	Elegantes Spitzenkleid mit Spaghettiträgern
+gid://shopify/Product/15472062693761	kleider	Elegantes Puffärmel-Maxikleid zum Schnüren
+gid://shopify/Product/15472062955905	kleider	Strickkleid mit Spitze und Blumenmuster
+gid://shopify/Product/15472063054209	kleider	Elegantes, figurbetontes Sommerkleid mit Schlitz
+gid://shopify/Product/15472063218049	kleider	Halterneck A-Linien Blumenkleid für Damen
+gid://shopify/Product/15472063250817	kleider	Elegantes Plisseekleid mit Blumenmuster
+gid://shopify/Product/15472063283585	kleider	Retro-Chic Quasten-Spitzenkleid
+gid://shopify/Product/15472063381889	kleider	Elegantes Satin-Trägerkleid im Bodycon-Stil
+gid://shopify/Product/15472063447425	kleider	Midikleid mit Laternenärmeln und Reissverschluss
+gid://shopify/Product/15472066593153	taschen	Große Reisetasche
+gid://shopify/Product/15472066822529	kleider	Elegantes Plisseekleid mit eckigem Ausschnitt
+gid://shopify/Product/15472217555329	kleider	Damen Bodycon Minikleid mit Rollkragen und Rückenfrei
+gid://shopify/Product/15472217653633	kleider	Spitzenkleid «Hollow-out Strap»
+gid://shopify/Product/15472217686401	kleider	One-Shoulder Abendkleid mit Falten
+gid://shopify/Product/15472274669953	kleider	Kapuzenkleid mit langen Ärmeln
+gid://shopify/Product/15472275587457	taschen	Retro Handtasche aus glänzendem Lackleder
+gid://shopify/Product/15472276046209	kleider	Damen Sommerkleid mit Spitze und Tupfen
+gid://shopify/Product/15472311992705	kleider	Sommerkleid für Sphynx-Katzen
+gid://shopify/Product/15472335290753	kleider	Meerjungfrauen-Abendkleid
+gid://shopify/Product/15472335389057	kleider	Gelbes V-Ausschnitt Trägerkleid für den Urlaub
+gid://shopify/Product/15472335454593	kleider	Besticktes, ärmelloses Maxikleid für Damen
+gid://shopify/Product/15472335585665	kleider	Saphirblaues Neckholder-Minikleid
+gid://shopify/Product/15472335683969	kleider	Lila geblümtes Trägerkleid
+gid://shopify/Product/15472335782273	kleider	Midi-Hemdblusenkleid mit Blumenprint und Taschen
+gid://shopify/Product/15472335847809	kleider	Vintage A-Linien Trägerkleid mit Diagonalstreifen
+gid://shopify/Product/15472335880577	kleider	Retro Polka-Dot Trägerkleid für Damen
+gid://shopify/Product/15472335946113	kleider	Kurzes Strickkleid mit V-Ausschnitt
+gid://shopify/Product/15472336011649	ketten	Halskette mit individuellem Namen (vergoldet)
+gid://shopify/Product/15472336175489	kleider	Minikleid mit Spitze und Spaghettiträgern
+gid://shopify/Product/15472336601473	kleider	Ausgestelltes Sommerkleid mit hoher Taille
+gid://shopify/Product/15472359408001	kleider	Sommerkleid mit Asymmetrie
+gid://shopify/Product/15472378806657	taschen	Tourniquet & Scheren Aufbewahrungstasche
+gid://shopify/Product/15472485269889	taschen	Vintage Businesstasche aus Rindsleder
+gid://shopify/Product/15472485335425	taschen	Leder-Umhängetasche für Herren
+gid://shopify/Product/15472497754497	kleider	Leoparden-Print Trägerkleid Zweiteiler
+gid://shopify/Product/15472563782017	hosen	Herren Relaxed-Fit Straight-Leg Freizeithose
+gid://shopify/Product/15473048387969	kleider	Retro-Fransenkleid mit langen Ärmeln
+gid://shopify/Product/15473048420737	kleider	Perlenbesetztes langes Abendkleid mit V-Ausschnitt
+gid://shopify/Product/15473059594625	kleider	Maxikleid mit Rundhals, langen Ärmeln und Taschen
+gid://shopify/Product/15473059824001	kleider	Blumenkleid mit Volants
+gid://shopify/Product/15473059856769	kleider	Besticktes Sommerkleid
+gid://shopify/Product/15473059922305	kleider	Elegantes Sommer-Maxikleid mit Rüschensaum
+gid://shopify/Product/15473061134721	kleider	UV-Schutz Sommerkleid für Damen
+gid://shopify/Product/15473069392257	ketten	Halskette mit Anhänger aus Edelstahl
+gid://shopify/Product/15473078075777	kleider	Kurzes Ballkleid mit Spitze
+gid://shopify/Product/15473084563841	kleider	Gestreiftes Midikleid für Damen
+gid://shopify/Product/15473084596609	kleider	UV-Schutz Sommerkleid mit Taillenbetonung
+gid://shopify/Product/15473354801537	hosen	Thermohose mit Knieschutz
+gid://shopify/Product/15473387241857	kleider	Elegantes Spitzen-Abendkleid mit V-Ausschnitt
+gid://shopify/Product/15473387569537	kleider	Elegantes Strickkleid für Damen
+gid://shopify/Product/15473444913537	kleider	Elegantes Strandkleid
+gid://shopify/Product/15474038866305	hosen	Schlanke Hochtaillihose
+gid://shopify/Product/15474465735041	kleider	V-Ausschnitt Blumenkleid
+gid://shopify/Product/15474465866113	kleider	Elegante Nachtkleid
+gid://shopify/Product/15474482577793	kleider	Ärmelloses Blumenkleid für Damen
+gid://shopify/Product/15474491195777	taschen	Umhängetasche aus Vollnarbenleder
+gid://shopify/Product/15474491228545	taschen	Simple Canvas Umhängetasche
+gid://shopify/Product/15474790105473	kleider	Ärmelloses Chiffonkleid mit V-Ausschnitt & Rüschen
+gid://shopify/Product/15474790728065	taschen	Gothic-Style Brieftasche
+gid://shopify/Product/15474818023809	ketten	Meilenstein-Plaketten-Set für Babys
+gid://shopify/Product/15475055722881	kleider	Einfarbiges One-Shoulder Minikleid mit langen Ärmeln
+gid://shopify/Product/15475055788417	kleider	Elegantes Halter Neck Bodycon Maxikleid
+gid://shopify/Product/15475056181633	kleider	Minikleid mit langen Ärmeln
+gid://shopify/Product/15475225428353	taschen	Robuste Werkzeugtasche für den Haushalt
+gid://shopify/Product/15475422036353	hosen	Bequeme Herrenhosen
+gid://shopify/Product/15475867025793	hosen	Gerader Jeanshosen
+gid://shopify/Product/15475867156865	hosen	Retro-Bikerhosen
+gid://shopify/Product/15475905593729	ketten	Personalisierte Sternzeichen-Halskette
+gid://shopify/Product/15475946783105	kleider	Midi-Freizeitkleid mit Mandarin-Kragen
+gid://shopify/Product/15475947700609	kleider	Midikleid mit Mesh und Schleifendetail
+gid://shopify/Product/15475948093825	kleider	Polka-Dot Patchwork Minikleid
+gid://shopify/Product/15475948880257	kleider	Mini-Trägerkleid aus Eisseide mit Raffung
+gid://shopify/Product/15475949732225	kleider	Minikleid mit Spitze und Farbblock-Design
+gid://shopify/Product/15475950748033	kleider	Color-Block Strickkleid gestreift
+gid://shopify/Product/15475980960129	hosen	Cordhose-Rock
+gid://shopify/Product/15475998884225	ketten	Grosse Kreuz-Halskette mit Zirkonia
+gid://shopify/Product/15476000031105	hosen	Gefütterte Outdoor Baumwollhose für Damen
+gid://shopify/Product/15476000391553	kleider	Elegantes Etuikleid mit V-Ausschnitt
+gid://shopify/Product/15476000457089	kleider	Strandkleid ärmellos mit Print
+gid://shopify/Product/15476000522625	kleider	Elegantes Trägerkleid mit Schlitz
+gid://shopify/Product/15476113047937	kleider	Farbverlauf-Maxikleid
+gid://shopify/Product/15476126384513	kleider	Kurzarmkleid mit 3D-Effekt und Print
+gid://shopify/Product/15476126515585	kleider	Elegantes Chiffonkleid mit Blumenprint
