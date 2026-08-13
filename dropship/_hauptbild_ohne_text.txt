@@ -3850,3 +3850,10 @@ gid://shopify/Product/15448798364033	umgestellt	6
 gid://shopify/Product/15448798462337	schon-sauber	0
 gid://shopify/Product/15448798495105	schon-sauber	2
 gid://shopify/Product/15448798560641	schon-sauber	0
+gid://shopify/Product/15448798626177	schon-sauber	3
+gid://shopify/Product/15448798691713	schon-sauber	0
+gid://shopify/Product/15448798888321	schon-sauber	0
+gid://shopify/Product/15448798953857	alle-mit-text	-
+gid://shopify/Product/15448799019393	schon-sauber	0
+gid://shopify/Product/15448799052161	umgestellt	24
+gid://shopify/Product/15448799150465	schon-sauber	0
