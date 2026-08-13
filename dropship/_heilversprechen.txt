@@ -136,3 +136,5 @@ gid://shopify/Product/15495135035777	wearable-messversprechen	Smartwatch mit Her
 gid://shopify/Product/15449428066689	heilaussage-gestrichen	Blaues Licht für reine Haut
 gid://shopify/Product/15449430000001	heilaussage-gestrichen	Rückenstrecker Kissen
 gid://shopify/Product/15449481773441	heilaussage-gestrichen	4-in-1 Hochfrequenz Akne-Stick
+gid://shopify/Product/15481259164033	wearable-messversprechen	Überwachungsarmband
+gid://shopify/Product/15493865144705	wearable-messversprechen	Sport Smartwatch

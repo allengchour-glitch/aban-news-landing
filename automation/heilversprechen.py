@@ -210,10 +210,19 @@ MESSWORT = r'(?:Blutdruck|EKG|ECG|Harns[äa]ure|Blutfett|Lipidprofil|Blutzucker)
 
 
 def titel_saeubern(t):
+    # ⚠️ DIE BEHAUPTUNG STEHT NICHT IMMER IN EINER AUFZÄHLUNG. Der erste Entwurf beherrschte
+    # nur die Form «… mit EKG, Blutdruck & Herzfrequenz» und liess deshalb zwei Artikel
+    # unangetastet, bei denen sie am stärksten wirkt — im Produktnamen selbst:
+    # «EKG-Überwachungsarmband» und «EKG Sport Smartwatch», beide CHF 49.90, beide im
+    # Google-Kanal. Weil dort nichts zu ersetzen war, blieben Titel UND Text unverändert, und
+    # die Produkte galten gar nicht erst als Kandidaten. Ein Reiniger, der nur eine Satzform
+    # kennt, meldet «nichts gefunden» und meint «nichts erkannt».
+    # Keine der beiden Beschreibungen belegt übrigens ein EKG; das Wort steht allein im Namen.
+    neu = re.sub(r'^' + MESSWORT + r'[- ]\s*(?=[A-ZÄÖÜ])', '', t)
     # «Temperatur- und Blutdruckmessung»: fällt nur das zweite Glied weg, bliebe «Temperatur-»
     # als Rumpf stehen. Das Grundwort gehört ans erste Glied zurück.
     neu = re.sub(r'(\w+)-\s+und\s+' + MESSWORT + r'(messung|[üu]berwachung|tracking)',
-                 r'\1\2', t, flags=re.I)
+                 r'\1\2', neu, flags=re.I)
     neu = re.sub(MESSWORT + r'-\s+und\s+(\w)', r'\1', neu, flags=re.I)
     neu = glaetten(MESSWERT.sub("", neu))
     neu = re.sub(r'\s*&\s*$', '', neu).strip(" ·-–,&")

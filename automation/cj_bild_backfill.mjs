@@ -28,6 +28,7 @@
  * ENV: CJ_TOKEN (sonst /tmp/cj_token.json) · SHOPIFY_CLIENT_ID/SECRET · CAP=200 · DRY=1
  */
 import fs from 'node:fs';
+import { spawnSync } from 'node:child_process';
 
 const SHOP = 'au3j0y-hq.myshopify.com', API = '2025-01';
 const CID = process.env.SHOPIFY_CLIENT_ID, CSEC = process.env.SHOPIFY_CLIENT_SECRET;
@@ -105,6 +106,25 @@ async function lebt(u) {
   } catch { return false; }
 }
 
+// Liest das Bild per OCR und meldet die Zahl erkannter Wörter; -1 = nicht lesbar.
+// ⚠️ DIESE WACHE FEHLTE IM ERSTEN LAUF, und das war teuer: Ein Kontaktbogen über 24 selbst
+// ergänzte Bilder zeigte bei ACHT englischen Werbetext IM BILD («Deepened pot body design»,
+// «Dog Grinding Teeth», «Shock-absorbing knee pads for safe running»). Google verbietet
+// Werbetext im Produktbild, und in einem Schweizer Shop sagt englischer Marketingtext der
+// Kundin, wo die Ware herkommt. Der Backfill hat also einen Mangel behoben und dabei einen
+// neuen angelegt — deshalb prüft er jetzt jedes Bild, BEVOR er es anhängt.
+// Die Schwelle ist geeicht, nicht geraten: bei denselben 24 Bildern las Tesseract bei jedem
+// sauberen NULL Wörter und bei jedem Textbild vier bis sechsundvierzig. Dazwischen liegt
+// nichts, ein Grenzfall existiert nicht.
+function bildWoerter(u) {
+  try {
+    const r = spawnSync('python3', ['automation/bildtext_pruefen.py', '--url', u],
+                        { encoding: 'utf8', timeout: 60000 });
+    const n = parseInt((r.stdout || '').trim(), 10);
+    return Number.isFinite(n) ? n : -1;
+  } catch { return -1; }
+}
+
 // Zwei URLs zeigen dasselbe Bild, wenn der Dateiname gleich ist — CJ liefert dieselbe Datei
 // unter wechselnden Hosts aus. Ohne diesen Vergleich läge das Hauptbild zweimal am Produkt.
 const dateiname = u => (u.split('?')[0].split('/').pop() || '').toLowerCase();
@@ -137,7 +157,7 @@ async function main() {
   }
 
   const tok = await shTok();
-  let ergaenzt = 0, ohne = 0, tot = 0, unklar = 0;
+  let ergaenzt = 0, ohne = 0, tot = 0, unklar = 0, werbetext = 0, unlesbar = 0;
   const led = fs.createWriteStream(LEDGER, { flags: 'a' });
   for (const o of offen.slice(0, CAP)) {
     const dj = await cj(`/product/query?pid=${o.pid}`);
@@ -164,6 +184,13 @@ async function main() {
       if (neu.length >= MAXBILD) break;
       if (da.has(dateiname(u))) continue;
       if (!(await lebt(u))) { tot++; continue; }
+      // Bis zu drei Wörter sind zulässig: ein Markenschriftzug auf dem Schuh, die Zahl auf
+      // einem Zifferblatt. Ab vier ist es Fliesstext, also Werbung. −1 heisst «nicht lesbar»
+      // und ist KEIN Freibrief — lieber ein Bild weniger als eines mit fremdsprachigem
+      // Werbetext im Google-Feed.
+      const w = bildWoerter(u);
+      if (w === -1) { unlesbar++; continue; }
+      if (w >= 4) { werbetext++; continue; }
       da.add(dateiname(u));
       neu.push(u);
     }
@@ -180,11 +207,12 @@ async function main() {
     ergaenzt++;
     led.write(`${o.id}\t+${neu.length}\t${o.pid}\n`);
     if (ergaenzt % 25 === 0)
-      console.log(`   ${ergaenzt} ergänzt · ${ohne} ohne weitere · ${tot} tote URLs · ${unklar} unklar (später erneut)`);
+      console.log(`   ${ergaenzt} ergänzt · ${ohne} ohne weitere · ${werbetext} Werbetext · ${unlesbar} unlesbar · ${unklar} unklar`);
   }
   console.log(`FERTIG: ${ergaenzt} Produkte mit zusätzlichen Bildern, ` +
               `${ohne} hatten keine weiteren, ${tot} URLs waren tot, ` +
-              `${unklar} ohne belastbare CJ-Antwort (bleiben offen)`);
+              `${unklar} ohne belastbare CJ-Antwort (bleiben offen), ` +
+              `${werbetext} Bilder wegen eingebranntem Werbetext verworfen`);
 }
 
 main();
