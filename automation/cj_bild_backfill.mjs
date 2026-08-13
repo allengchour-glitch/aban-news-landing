@@ -137,11 +137,19 @@ async function main() {
   }
 
   const tok = await shTok();
-  let ergaenzt = 0, ohne = 0, tot = 0;
+  let ergaenzt = 0, ohne = 0, tot = 0, unklar = 0;
   const led = fs.createWriteStream(LEDGER, { flags: 'a' });
   for (const o of offen.slice(0, CAP)) {
     const dj = await cj(`/product/query?pid=${o.pid}`);
     await sleep(CJSLEEP);
+    // ⚠️ EINE FEHLGESCHLAGENE ANFRAGE IST KEIN «HAT KEINE BILDER». Der erste Lauf schrieb
+    // beides in dasselbe Ledger und übersprang das Produkt damit für immer: 530 von 752
+    // galten als bildlos. Die Stichprobe entlarvte es — bei einer der vier geprüften pids
+    // liegen bei CJ ACHT Bilder, die anderen drei waren Drossel (1600200) und Fehlercode
+    // 16900500. Nur `code === 200` beweist eine leere Liste; alles andere heisst «später
+    // nochmal», und dann darf NICHTS ins Ledger. Genau diese Verwechslung von «keine
+    // Antwort» mit «keine Daten» hat hier schon einmal 30 Minuten Strafschlaf ausgelöst.
+    if (Number(dj.code) !== 200) { unklar++; continue; }
     const bilder = ((dj.data || {}).productImageSet || []).filter(u => /^https/.test(u));
     if (bilder.length < 2) { ohne++; led.write(`${o.id}\tkeine-weiteren\t${o.pid}\n`); continue; }
 
@@ -172,10 +180,11 @@ async function main() {
     ergaenzt++;
     led.write(`${o.id}\t+${neu.length}\t${o.pid}\n`);
     if (ergaenzt % 25 === 0)
-      console.log(`   ${ergaenzt} Produkte ergänzt · ${ohne} ohne weitere Bilder · ${tot} tote URLs`);
+      console.log(`   ${ergaenzt} ergänzt · ${ohne} ohne weitere · ${tot} tote URLs · ${unklar} unklar (später erneut)`);
   }
   console.log(`FERTIG: ${ergaenzt} Produkte mit zusätzlichen Bildern, ` +
-              `${ohne} hatten keine weiteren, ${tot} URLs waren tot`);
+              `${ohne} hatten keine weiteren, ${tot} URLs waren tot, ` +
+              `${unklar} ohne belastbare CJ-Antwort (bleiben offen)`);
 }
 
 main();
