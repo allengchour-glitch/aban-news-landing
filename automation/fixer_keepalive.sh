@@ -38,6 +38,19 @@ fehlt() {
 exec 9>/tmp/fixer_keepalive.lock
 flock -n 9 || { echo "$(date -u +%H:%M) Supervisor läuft bereits — dieser Start endet."; exit 0; }
 while true; do
+  # ZWEITE WACHE, unabhängig von flock. Am 13.08. liefen zweimal zwei Supervisoren, obwohl
+  # beide dieselbe Sperrdatei offen hatten UND die Sperre nachweislich gehalten wurde — die
+  # flock-Semantik über exec/setsid/geerbte Deskriptoren hinweg ist hier offenbar nicht
+  # verlässlich. Statt sie weiter zu ergründen, entscheidet ein Kriterium, das nicht davon
+  # abhängt: Wer eine KLEINERE PID sieht, tritt ab. Der älteste Supervisor gewinnt immer,
+  # jeder Doppelstart räumt sich binnen einer Runde selbst weg, und es kann kein Rennen
+  # geben, weil die Regel für alle Beteiligten dieselbe Antwort liefert.
+  aeltere=$(ps -eo pid,args --no-headers \
+    | awk -v me=$$ '$2=="bash" && $3 ~ /fixer_keepalive\.sh$/ && $1 < me {n++} END{print n+0}')
+  if [ "$aeltere" -gt 0 ]; then
+    echo "$(date -u +%H:%M) älterer Supervisor läuft (PID $$ tritt ab)"
+    exit 0
+  fi
   # ZUERST das Shopify-Token frisch halten. Es ist nur ~24 h gültig; läuft es ab, scheitern ALLE
   # Reiniger lautlos («keine Daten») und der Supervisor startet sie endlos ins Leere.
   [ -f /tmp/shop_token_refresh.sh ] && bash /tmp/shop_token_refresh.sh

@@ -43,7 +43,11 @@ start() {    # $1 = Skriptpfad (wie er in ps steht), $2 = Argument, $3 = abweich
   # dagegen nicht — die Prüfung ist ja korrekt, sie ist nur veraltet, sobald sie fertig ist.
   # Die Sperre hält der Runner selbst für seine ganze Laufzeit: Ein zweiter Start bekommt sie
   # nicht und endet sofort. Damit ist es gleichgültig, wer alles startet und wie oft.
-  setsid bash -c "exec 9>/tmp/lock_$name.lock; flock -n 9 || exit 0;
+  # ⚠️ DESKRIPTOR 8, NICHT 9. Mehrere gestartete Skripte sperren INTERN selbst auf fd 9
+  # (fixer_keepalive.sh tut genau das). Deren `exec 9>…` schliesst dann den Deskriptor dieser
+  # Hülle — und gibt damit die Sperre wieder frei, die den Doppelstart verhindern sollte.
+  # Die Hülle bekommt deshalb einen eigenen Deskriptor, den kein Skript benutzt.
+  setsid bash -c "exec 8>/tmp/lock_$name.lock; flock -n 8 || exit 0;
                   source /tmp/secrets_env.sh 2>/dev/null; exec bash $startbefehl" \
     >> "/tmp/$name.log" 2>&1 &
   echo "gestartet: $1 ${2:-}"
