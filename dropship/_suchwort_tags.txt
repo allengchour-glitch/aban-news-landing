@@ -3150,3 +3150,20 @@ gid://shopify/Product/15453724705153	kette	Natürliche Süßwasserperlen-Perlenk
 gid://shopify/Product/15453724901761	kette	Natürliche Süßwasserperlen-Nackenketten Zubehör
 gid://shopify/Product/15453725262209	ring	Europäisch-Amerikanischer Prinzessin-Trauring
 gid://shopify/Product/15453725458817	kette	925 Sterlingsilber Barockperle Halskette in Gold
+gid://shopify/Product/15453725589889	kleid	Damenkleid
+gid://shopify/Product/15453725786497	kleid	Modisches Damenkleid mit Digitaldruck
+gid://shopify/Product/15453725819265	kleid	V-Ausschnitt-Minikleid mit Schleife und kurzen Ärmeln
+gid://shopify/Product/15453726081409	kleid	Langes Freizeitkleid für Damen
+gid://shopify/Product/15453726146945	kleid	Einfarbiger Damenkleid ärmellos
+gid://shopify/Product/15453726245249	kleid	Elegant Armlos Modischer Halsausschnitt Damenkleid
+gid://shopify/Product/15453726343553	kleid	Plus-Grössengedrucktes Trägerkleid
+gid://shopify/Product/15453726474625	kleid	Klassisches gerades chic Kurzkleid ohne Ärmel
+gid://shopify/Product/15453726540161	kleid	Damen Langarmkleid mit Gespitzter Silhouette
+gid://shopify/Product/15453726638465	kleid	Damen-Langarmkleid mit Taille
+gid://shopify/Product/15453726671233	kleid	Chic Damenkleid mit Halterneck und Print
+gid://shopify/Product/15453726736769	kleid	Einseitig Schulter Gepflastertes Gerafftes Damenkleid
+gid://shopify/Product/15453726933377	bluse	Stilvolle Langarm Damenbluse mit Kragen
+gid://shopify/Product/15453726998913	hemd	Damenhemd
+gid://shopify/Product/15453727752577	anhaenger	DIY-Armreif mit kupferveredeltem Silberanhänger
+gid://shopify/Product/15453727916417	anhaenger	Herz-Bär Seidenanhänger
+gid://shopify/Product/15453728047489	anhaenger	Email- und Jadengeschmückter Blütenanhänger – universell tragbar

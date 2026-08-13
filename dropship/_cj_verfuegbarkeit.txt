@@ -6058,3 +6058,6 @@ gid://shopify/Product/15465858826625	ok
 gid://shopify/Product/15465858007425	ok
 gid://shopify/Product/15465857941889	ok
 gid://shopify/Product/15465857909121	ok
+gid://shopify/Product/15466022928769	ok
+gid://shopify/Product/15465884451201	ok
+gid://shopify/Product/15465857843585	ok
