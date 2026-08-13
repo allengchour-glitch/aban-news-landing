@@ -59,3 +59,24 @@ gid://shopify/Product/15430408634753	brillen	Shield-Sonnenbrille «Vortex» · O
 gid://shopify/Product/15430408700289	brillen	Sonnenbrille «Aviateur» · Dual-Bridge, UV400
 gid://shopify/Product/15430491308417	kleider	Damen Maxikleid «Sirena» · Seitenschlitz, einfarbig
 gid://shopify/Product/15430491439489	kleider	Damen Sommerkleid «Bloom» · Träger, Print
+gid://shopify/Product/15430691062145	ketten	Armkette «Papillon» · Schmetterling, Roségold & Perlmutt
+gid://shopify/Product/15430694470017	brillen	Sonnenbrille «Riviera» · Oversize Square mit Gold-Detail
+gid://shopify/Product/15430694502785	taschen	Stroh-Shopper «Capri» · Geflochtene Schultertasche
+gid://shopify/Product/15430695256449	taschen	Handtasche «Onda» · Top-Handle mit Wellen-Struktur
+gid://shopify/Product/15430856573313	taschen	Abendtasche «Farfalla» – Schmetterling, Strass
+gid://shopify/Product/15430857130369	taschen	Schultertasche «Ombra» – weiches Leder, schwarz
+gid://shopify/Product/15431537033601	ketten	Edelstahl-Halskette «Goutte» · Tropfen-Anhänger, Silber
+gid://shopify/Product/15431539655041	taschen	Bombata Laptoptasche 13–15"
+gid://shopify/Product/15431607452033	ketten	Halskette «Rosée» · Kristall-Tropfen, Silber
+gid://shopify/Product/15431608140161	brillen	Oversize-Sonnenbrille «Riviera» · getönt, UV400
+gid://shopify/Product/15431979860353	ketten	Herren-Halskette «Fenrir» · Edelstahl-Weizenkette (wasserfest)
+gid://shopify/Product/15431997391233	ketten	Boho-Halskette «Lagune» · Türkis-Crescent, Gold
+gid://shopify/Product/15432006992257	ketten	Boho-Fusskette «Olivia» · Blatt-Anhänger, Gold
+gid://shopify/Product/15435203871105	ketten	Edelstahl-Halskette «Perla» — Barock-Perlen-Anhänger, wasserfest
+gid://shopify/Product/15435203903873	ketten	Halskette «Trio» — Birthstone-Kristalle, silberfarben
+gid://shopify/Product/15438841348481	taschen	Sporttasche mit Schuhfach – Alles dabei, sauber getrennt.
+gid://shopify/Product/15443182846337	ketten	Moissanit-Halskette «Aurora» 1 ct · 925 Silber Tropfen-Halo
+gid://shopify/Product/15443219186049	ketten	Edelstein-Halskette «Rubin & Smaragd» · 925 Silber Doppel-Halo
+gid://shopify/Product/15443241075073	ketten	Edelstein-Halskette «Rubin & Saphir» · 925 Silber
+gid://shopify/Product/15443243598209	ketten	Vergoldete Halskette «Blatt» · 18k Gold-Optik
+gid://shopify/Product/15443243663745	ketten	Süsswasserperlen-Halskette «Perla» · elegantes Set
