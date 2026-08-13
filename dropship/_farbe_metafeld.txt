@@ -133,3 +133,5 @@ gid://shopify/Product/15496379367809	Silber
 gid://shopify/Product/15496394572161	Schwarz
 gid://shopify/Product/15496426455425	Türkis
 gid://shopify/Product/15496426815873	Silber
+gid://shopify/Product/15496578597249	Gold
+gid://shopify/Product/15496600420737	Grün

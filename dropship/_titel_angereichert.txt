@@ -1,0 +1,102 @@
+gid://shopify/Product/15448075993473	Casual Swimwear	Casual Swimwear · Damen
+gid://shopify/Product/15448076124545	Casual Bademode	Casual Bademode · Damen
+gid://shopify/Product/15448076583297	Bikini-Set	Bikini-Set · Damen
+gid://shopify/Product/15448076648833	Badeanzug-Set	Badeanzug-Set · Damen
+gid://shopify/Product/15448651202945	Legging Tights	Legging Tights · Damen
+gid://shopify/Product/15448757338497	Nachthemd	Nachthemd · Damen
+gid://shopify/Product/15449384616321	Off-Shoulder-Top	Off-Shoulder-Top · Damen
+gid://shopify/Product/15449385238913	Langarm-Shirt	Langarm-Shirt · Damen
+gid://shopify/Product/15449389302145	Satin Bluse	Satin Bluse · Damen
+gid://shopify/Product/15449389859201	Sommer-Top	Sommer-Top · Damen
+gid://shopify/Product/15449390154113	Polka-Dot Bluse	Polka-Dot Bluse · Damen
+gid://shopify/Product/15449392152961	Kurzarmige Bluse	Kurzarmige Bluse · Damen
+gid://shopify/Product/15449393070465	Striped Bluse	Striped Bluse · Damen
+gid://shopify/Product/15449393824129	Blumen-Oberteil	Blumen-Oberteil · Damen
+gid://shopify/Product/15449394413953	Kurzarm-T-Shirt	Kurzarm-T-Shirt · Damen
+gid://shopify/Product/15449397297537	3D-Print-Hoodie	3D-Print-Hoodie · Damen
+gid://shopify/Product/15449398116737	Patchwork-Hoodie	Patchwork-Hoodie · Damen
+gid://shopify/Product/15449401524609	Kapuzen-Hoodie	Kapuzen-Hoodie · Damen
+gid://shopify/Product/15449403031937	Druck-Sweatshirt	Druck-Sweatshirt · Damen
+gid://shopify/Product/15449435210113	Retro Sweatshirt	Retro Sweatshirt · Damen
+gid://shopify/Product/15449473384833	Fitness-Overall	Fitness-Overall · Damen
+gid://shopify/Product/15449502351745	Sleek Oberteil	Sleek Oberteil · Damen
+gid://shopify/Product/15449507987841	Versatiler Kleid	Versatiler Kleid · Damen
+gid://shopify/Product/15449508053377	Blumenapfel	Blumenapfel · Damen
+gid://shopify/Product/15449508249985	Langarm-Dress	Langarm-Dress · Damen
+gid://shopify/Product/15449508512129	Sommerkleid	Sommerkleid · Damen
+gid://shopify/Product/15449508774273	Casual Pullover	Casual Pullover · Damen
+gid://shopify/Product/15449510445441	Kardigan-Sweater	Kardigan-Sweater · Damen
+gid://shopify/Product/15449510969729	Hoodie-Jacke	Hoodie-Jacke · Herren
+gid://shopify/Product/15449511100801	Slim-Fit Jeans	Slim-Fit Jeans · Herren
+gid://shopify/Product/15449511133569	Bequeme Jeans	Bequeme Jeans · Herren
+gid://shopify/Product/15449511330177	Stretch-Hose	Stretch-Hose · Herren
+gid://shopify/Product/15449512771969	Waffel-Pullover	Waffel-Pullover · Damen
+gid://shopify/Product/15449568444801	Elegantes Kleid	Elegantes Kleid · Damen
+gid://shopify/Product/15449568510337	Weiter Midi-Rock	Weiter Midi-Rock · Damen
+gid://shopify/Product/15449568739713	Karierte Bluse	Karierte Bluse · Damen
+gid://shopify/Product/15449569067393	Sommer-Sweater	Sommer-Sweater · Damen
+gid://shopify/Product/15449572770177	Patchwork Jeans	Patchwork Jeans · Damen
+gid://shopify/Product/15449618579841	Faith Sweatshirt	Faith Sweatshirt · Damen
+gid://shopify/Product/15449665175937	Sleeveless Bluse	Sleeveless Bluse · Damen
+gid://shopify/Product/15449839698305	Retro Pumps	Retro Pumps · Damen
+gid://shopify/Product/15449839731073	Leichte Sneaker	Leichte Sneaker · Damen
+gid://shopify/Product/15449839763841	Hohe Sandalen	Hohe Sandalen · Damen
+gid://shopify/Product/15449839894913	Retro-Sandalen	Retro-Sandalen · Damen
+gid://shopify/Product/15449840058753	Satin-Sandalen	Satin-Sandalen · Damen
+gid://shopify/Product/15449840091521	Offene Sandalen	Offene Sandalen · Damen
+gid://shopify/Product/15449840288129	Rote Pumps	Rote Pumps · Damen
+gid://shopify/Product/15449840517505	Suede-Sandalen	Suede-Sandalen · Damen
+gid://shopify/Product/15449840550273	Sommer-Sandalen	Sommer-Sandalen · Damen
+gid://shopify/Product/15449840714113	Bequeme Sandalen	Bequeme Sandalen · Damen
+gid://shopify/Product/15449840943489	Romer-Sandalen	Romer-Sandalen · Damen
+gid://shopify/Product/15449841009025	Flache Sandalen	Flache Sandalen · Damen
+gid://shopify/Product/15449841107329	Runde Sandalen	Runde Sandalen · Damen
+gid://shopify/Product/15449908347265	Hohe Stiefel	Hohe Stiefel · Damen
+gid://shopify/Product/15450009567617	Hochzeitsschuhe	Hochzeitsschuhe · Damen
+gid://shopify/Product/15450050625921	Farbblock-Loafer	Farbblock-Loafer · Herren
+gid://shopify/Product/15452687401345	Bambus-Armband	Bambus-Armband · Damen
+gid://shopify/Product/15453622763905	Luxus-Armband	Luxus-Armband · Damen
+gid://shopify/Product/15453671620993	Herz-Halskette	Herz-Halskette · Damen
+gid://shopify/Product/15453724180865	Herz-Ring	Herz-Ring · Damen
+gid://shopify/Product/15453724213633	Liebesring	Liebesring · Damen
+gid://shopify/Product/15453724311937	Outdoor Schmuck	Outdoor Schmuck · Damen
+gid://shopify/Product/15453724672385	Perlenkette	Perlenkette · Damen
+gid://shopify/Product/15453725065601	Perlen Splitter	Perlen Splitter · Damen
+gid://shopify/Product/15453725491585	Marmergriff Gold	Marmergriff Gold · Damen
+gid://shopify/Product/15453743448449	Retro-Hofkleid	Retro-Hofkleid · Damen
+gid://shopify/Product/15453744234881	Sommerminikleid	Sommerminikleid · Damen
+gid://shopify/Product/15453760160129	Perlen Haarband	Perlen Haarband · Damen
+gid://shopify/Product/15453760258433	3D Kugelpendant	3D Kugelpendant · Damen
+gid://shopify/Product/15453762257281	Kaschmir-Hoodie	Kaschmir-Hoodie · Damen
+gid://shopify/Product/15453770154369	Rüschterock Midi	Rüschterock Midi · Damen
+gid://shopify/Product/15453775135105	T-Shirt	T-Shirt · Herren
+gid://shopify/Product/15453892837761	Rotes Midi-Kleid	Rotes Midi-Kleid · Damen
+gid://shopify/Product/15453999432065	Engel-Ohrhänger	Engel-Ohrhänger · Damen
+gid://shopify/Product/15454046617985	Camo-Mini-Kleid	Camo-Mini-Kleid · Damen
+gid://shopify/Product/15454056284545	Sommerhalskette	Sommerhalskette · Damen
+gid://shopify/Product/15454079844737	Schwarzes Hemd	Schwarzes Hemd · Herren
+gid://shopify/Product/15454093312385	Perlenhalskette	Perlenhalskette · Damen
+gid://shopify/Product/15454104322433	Leopard Jumpsuit	Leopard Jumpsuit · Damen
+gid://shopify/Product/15454114808193	Quarz-Armbanduhr	Quarz-Armbanduhr · Glas
+gid://shopify/Product/15454133059969	Farb-Block Jeans	Farb-Block Jeans · Damen
+gid://shopify/Product/15454192337281	Denim Rock	Denim Rock · Damen
+gid://shopify/Product/15454249025921	Hohe Yoga-Hosen	Hohe Yoga-Hosen · Damen
+gid://shopify/Product/15454301520257	Kleid	Kleid · Damen
+gid://shopify/Product/15454350016897	Herzanhänger	Herzanhänger · Damen
+gid://shopify/Product/15454411882881	Luxus-Ohrhanger	Luxus-Ohrhanger · Damen
+gid://shopify/Product/15454467522945	Holzarmbanduhr	Holzarmbanduhr · Glas
+gid://shopify/Product/15454717739393	Hawaii-Hemd	Hawaii-Hemd · Herren
+gid://shopify/Product/15454718460289	Striped Cardigan	Striped Cardigan · Herren
+gid://shopify/Product/15454782161281	Retro-T-Shirt	Retro-T-Shirt · Herren
+gid://shopify/Product/15455005770113	Oberteil	Oberteil · Damen
+gid://shopify/Product/15455265751425	Edler Stahlring	Edler Stahlring · Damen
+gid://shopify/Product/15455322571137	Farbblock-Dress	Farbblock-Dress · Damen
+gid://shopify/Product/15455323324801	Kapuzenpullover	Kapuzenpullover · Damen
+gid://shopify/Product/15455656149377	Romper-Pyjama	Romper-Pyjama · Damen
+gid://shopify/Product/15455662014849	Stickereie Jeans	Stickereie Jeans · Damen
+gid://shopify/Product/15455821726081	Pfau-Pendant	Pfau-Pendant · Damen
+gid://shopify/Product/15455822446977	Retro-Minirock	Retro-Minirock · Damen
+gid://shopify/Product/15455822643585	Yoga-Hosen	Yoga-Hosen · Damen
+gid://shopify/Product/15456003883393	Sternenring	Sternenring · Damen
+gid://shopify/Product/15458646753665	Sonnenblumenring	Sonnenblumenring · Damen
+gid://shopify/Product/15458764390785	Titan-Armband	Titan-Armband · Damen
