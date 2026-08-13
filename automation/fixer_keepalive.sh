@@ -29,6 +29,12 @@ fehlt() {
   return 0
 }
 
+# ⛔ NIEMALS `rm -f /tmp/fixer_keepalive.lock` VOR DEM START. Die Sperre wird vom Kernel
+# freigegeben, sobald der Halter stirbt — sie zu löschen ist nie nötig und hebt genau den
+# Schutz auf, für den sie da ist: der neue Prozess legt eine NEUE Datei an und sperrt einen
+# anderen Inode, der alte Halter merkt davon nichts. So liefen am 13.08. zwei Supervisoren
+# nebeneinander, und am 09.08. waren es drei mit 52 Runner-Kopien. Läuft schon einer, endet
+# der Zweitstart hier von selbst — das ist die richtige Antwort, kein Hindernis.
 exec 9>/tmp/fixer_keepalive.lock
 flock -n 9 || { echo "$(date -u +%H:%M) Supervisor läuft bereits — dieser Start endet."; exit 0; }
 while true; do

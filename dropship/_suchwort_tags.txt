@@ -5387,3 +5387,79 @@ gid://shopify/Product/15470359380353	kette	Halskette mit aufklappbarem Medaillon
 gid://shopify/Product/15470359445889	kette	Kupferkette Geburtsblume Dezember
 gid://shopify/Product/15470359478657	kette	Geburtsblumen-Halskette mit Monatsblüte
 gid://shopify/Product/15470359544193	kette	Halskette mit tropfenförmigem Anhänger
+gid://shopify/Product/15470359642497	ring	Ocean Coral Muschel-Ohrringe
+gid://shopify/Product/15470359740801	ring	Loving-heart Lace Ohrringe
+gid://shopify/Product/15470359773569	ring	Tropische Fisch-Ohrringe im Office-Stil
+gid://shopify/Product/15470367277441	kette	Mond- oder Sonnen-Halskette aus Edelstahl
+gid://shopify/Product/15470367310209	kette	Herz-Medaillon-Halskette
+gid://shopify/Product/15470367572353	shirt	Elegantes Langarmshirt mit Knopfleiste
+gid://shopify/Product/15470368096641	kleid	Elegantes figurbetontes Midi-Abendkleid
+gid://shopify/Product/15470368129409	kleid	Schwarzes Off-Shoulder Midikleid für Damen
+gid://shopify/Product/15470368194945	kleid	Elegantes, tailliertes Neckholder-Abendkleid
+gid://shopify/Product/15470368260481	kleid	Tailliertes Langarm-Midikleid mit V-Ausschnitt
+gid://shopify/Product/15470368358785	kleid	Off-Shoulder Plisseekleid mit hoher Taille
+gid://shopify/Product/15470368457089	uhr	Stoppuhr mit grossem Display und Zyklus-Timer
+gid://shopify/Product/15470368489857	kleid	Elegantes, rückenfreies Schlitzkleid mit Strass
+gid://shopify/Product/15470368686465	kleid	Off-Shoulder Paillettenkleid mit fliessenden Bändern
+gid://shopify/Product/15470368883073	kleid	Off-Shoulder Midikleid mit Rüschen und Print
+gid://shopify/Product/15470368948609	kleid	Ärmelloses Retro-Ferienkleid im French-Style
+gid://shopify/Product/15470369014145	kleid	Etuikleid mit Rüschensaum
+gid://shopify/Product/15470369145217	kleid	Gestreiftes Strickkleid mit halbem Rollkragen
+gid://shopify/Product/15470369210753	kleid	Langes Damenkleid mit farbigem Print
+gid://shopify/Product/15470369243521	kleid	Elegantes A-Linien Midikleid mit Puffärmeln
+gid://shopify/Product/15470369505665	kleid	Elegantes trägerloses Satin-Abendkleid
+gid://shopify/Product/15470369636737	kleid	Elegantes Sommerkleid mit Blumenmuster
+gid://shopify/Product/15470369735041	kleid	Elegantes A-Linien Abendkleid mit Volants
+gid://shopify/Product/15470375928193	kleid	Kapuzenkleid mit Tasche
+gid://shopify/Product/15470376026497	kleid	Elegantes Schnürkleid mit langen Ärmeln
+gid://shopify/Product/15470376255873	kleid	Elegantes langes Trägerkleid mit 3D-Blumen
+gid://shopify/Product/15470376321409	kissen	Nackenstützkissen mit Massage & Wärme
+gid://shopify/Product/15470376354177	kleid	Paillettenbesetztes Minikleid mit langen Ärmeln
+gid://shopify/Product/15470376419713	kleid	Sexy Trägerkleid mit Strass-Applikationen
+gid://shopify/Product/15470376485249	kleid	Heissstein-besticktes Puffärmel-Maxikleid
+gid://shopify/Product/15470376649089	kleid	Ärmelloses Sommerkleid mit Wickelkragen
+gid://shopify/Product/15470376681857	kleid	Elegantes Kurzarmkleid für Damen
+gid://shopify/Product/15470376714625	kleid	Minikleid mit Blumenmuster
+gid://shopify/Product/15470376747393	kleid	Retro Minikleid mit Print
+gid://shopify/Product/15470376780161	kleid	Ärmelloses Midikleid mit Quasten
+gid://shopify/Product/15470376878465	kleid	Elegantes V-Ausschnitt Strickkleid in Rot
+gid://shopify/Product/15470376944001	kleid	Elegantes Etuikleid mit Spitzenrüschen
+gid://shopify/Product/15470377075073	rock	High-Waisted Wildleder-Fransenrock für Damen
+gid://shopify/Product/15470377173377	rock	Boho-Maxirock mit Print
+gid://shopify/Product/15470380417409	jacke	Thermoaktive Farbwechsel-Herrenjacke
+gid://shopify/Product/15470390215041	hemd	Herren Kurzarmhemd zweifarbig Slim-Fit
+gid://shopify/Product/15470390641025	kleid	Trägerloses Etuikleid mit Strass- und Ketten-Quasten
+gid://shopify/Product/15470394081665	kette	Teufelsauge Kreuz-Anhänger Halskette
+gid://shopify/Product/15470394900865	kleid	Boho-Chiffonkleid mit Blumenmuster und Puffärmeln
+gid://shopify/Product/15470395883905	kleid	Langes Damenkleid mit schmeichelhaftem Schnitt
+gid://shopify/Product/15470396014977	rock	Eleganter High-Waist Bleistiftrock aus PU-Leder
+gid://shopify/Product/15470396244353	kette	Bicolor-Herz-Halskette mit Anhänger
+gid://shopify/Product/15470631616897	kleid	Gestreiftes Strandkleid
+gid://shopify/Product/15470632141185	kette	Halskette Geschenkbox Retro, zu öffnen
+gid://shopify/Product/15470632337793	kette	Halskette mit Achat-Anhänger & Zirkonia
+gid://shopify/Product/15470659928449	kette	Doppellagige 925er Silber Halskette mit Wellen-Design
+gid://shopify/Product/15470660977025	flasche	Sport-Trinkflasche mit grossem Fassungsvermögen
+gid://shopify/Product/15470685356417	flasche	Gewürzflasche aus Glas, 200 ml
+gid://shopify/Product/15470742405505	kamera	Kinder Digitalkamera „Selfie-Spass“
+gid://shopify/Product/15470945010049	pullover	Strickpullover mit Rollkragen und Waffelstruktur
+gid://shopify/Product/15470945173889	rock	High-Waist Stufen-Minirock
+gid://shopify/Product/15470945206657	rock	Gestrickter Plisseerock mit hoher Taille
+gid://shopify/Product/15470945239425	rock	Blumenrock
+gid://shopify/Product/15471032598913	pullover	Strickpullover
+gid://shopify/Product/15471253815681	kleid	Damen Casual Leinenkleid mit ausgestellten Ärmeln
+gid://shopify/Product/15471266070913	kleid	Damen Strick Maxikleid mit asymmetrischem Saum
+gid://shopify/Product/15471270199681	kleid	Elegantes Samtkleid mit Off-Shoulder-Design
+gid://shopify/Product/15471270789505	kleid	Elegantes Langarmkleid mit hohem Schlitz
+gid://shopify/Product/15471974941057	hemd	Fleece-Unterhemd mit V-Ausschnitt
+gid://shopify/Product/15471977202049	muetze	Wollmütze mit Tarnmuster
+gid://shopify/Product/15472044540289	pullover	Hundepullover
+gid://shopify/Product/15472044638593	mantel	Hundemantel für grosse Hunde, beidseitig tragbar
+gid://shopify/Product/15472044704129	weste	Reflektierende Winterweste für grosse Hunde
+gid://shopify/Product/15472044736897	mantel	Hundemantel aus Baumwolle
+gid://shopify/Product/15472044802433	jacke	Hunde-Reissverschlussjacke mit integriertem Geschirr
+gid://shopify/Product/15472044835201	muetze	Hundekleidung mit Wollmütze
+gid://shopify/Product/15472044867969	jacke	Winter-Hundejacke mit Kapuze
+gid://shopify/Product/15472044933505	jacke	Warme, wasserdichte Winterjacke für kleine Hunde
+gid://shopify/Product/15472047161729	uhr	Digitale Herren-Sportuhr
+gid://shopify/Product/15472047391105	rock	Freizeit-Set mit Pullover und Midirock
+gid://shopify/Product/15472047456641	ring	Herzring aus Titanstahl mit Zirkonia
