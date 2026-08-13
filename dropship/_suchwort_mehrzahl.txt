@@ -341,3 +341,17 @@ gid://shopify/Product/15448913084801	taschen	Multifunktionale Angel-Umhängetasc
 gid://shopify/Product/15448913215873	taschen	Tragetasche für Sauerstoffkonzentrator
 gid://shopify/Product/15448913412481	taschen	Sporttasche für Fitness und Wandern
 gid://shopify/Product/15448913543553	taschen	Business-Reisetasche (20-35L)
+gid://shopify/Product/15448913838465	taschen	Business Umhängetasche mit USB-Anschluss
+gid://shopify/Product/15448913936769	taschen	Wasserabweisende Canvas Tragetasche
+gid://shopify/Product/15448914231681	taschen	Grosse Kleidersack-Reisetasche
+gid://shopify/Product/15448914592129	taschen	Freizeit-Schultertasche
+gid://shopify/Product/15448914657665	taschen	Multifunktionale Sporttasche mit zwei Griffen
+gid://shopify/Product/15448914723201	taschen	Leichte Outdoor-Sporttasche
+gid://shopify/Product/15448914887041	taschen	Business Schultertasche
+gid://shopify/Product/15448915313025	taschen	Retro Umhängetasche für Herren
+gid://shopify/Product/15448915378561	taschen	Faltbare Picknick-Kühltasche mit grossem Fassungsvermögen
+gid://shopify/Product/15448915411329	taschen	Elegante Umhängetasche aus Echtleder für Herren
+gid://shopify/Product/15448915935617	taschen	Leder Aktentasche für Herren
+gid://shopify/Product/15448916132225	taschen	Kleine Umhängetasche im Street-Style
+gid://shopify/Product/15448916197761	taschen	Grosse Tragetasche mit Gittermuster
+gid://shopify/Product/15448916230529	taschen	Herren Umhängetasche aus Vollnarbenleder
