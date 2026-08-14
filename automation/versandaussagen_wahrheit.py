@@ -163,13 +163,9 @@ def regeln(w):
     # 3) «📦 Lieferzeit: 🇨🇭 CH/EU ca. 10–20 Tage (inkl. Prüfung & Versand)»
     r.append((re.compile(r'Lieferzeit:\s*🇨🇭\s*CH/EU\s*ca\.\s*\d{1,2}\s*[–-]\s*\d{1,2}\s*Tage'),
               f'Lieferzeit Schweiz: {s} Werktage'))
-    # 4) Der Kopfblock auch als reiner Text (ohne <p class="ls-liefer">-Huelle) und in der
-    #    Variante «Lieferzeit :» — inkl. der 3 Faelle mit kaputtem Flag-Zeichen 🇭🇨 statt 🇨🇭.
-    r.append((re.compile(r'Lieferzeit\s*(?:\(je nach Land\))?\s*:?\s*(?:🇨🇭|🇭🇨)\s*CH\s*/\s*🇪🇺\s*EU:?'
-                         r'\s*\d{1,2}\s*[–-]\s*\d{1,2}\s*Tage'
-                         r'\s*·\s*🇺🇸\s*USA:?\s*\d{1,2}\s*[–-]\s*\d{1,2}\s*Tage'
-                         r'\s*(?:\(Werktage[^)]*\)|·?\s*Werktage(?:,\s*inkl\.\s*Produktion)?)?'),
-              f'Lieferzeit Schweiz: {s} Werktage'))
+    # 4) siehe ABSATZ_USA weiter unten — dieser Baustein steht mit <strong>/<span>
+    #    durchsetzt im Text; er wird als GANZER Absatz getauscht, sonst bliebe ein
+    #    halbes <strong> ohne Gegenstueck stehen und das Markup waere kaputt.
     # 5) «📦 Lieferung CH/EU 6–12 Tage» / «Lieferung CH/EU 3–7 Tage»
     r.append((re.compile(r'Lieferung\s*CH/EU\s*\d{1,2}\s*[–-]\s*\d{1,2}\s*Tage'),
               f'Lieferung Schweiz {s} Werktage'))
@@ -199,6 +195,36 @@ def regeln(w):
     return r
 
 
+# Absatz-Ersetzung fuer den Kopfbaustein OHNE ls-liefer-Huelle. Drei Bedingungen muessen
+# gleichzeitig zutreffen, damit ein Absatz getauscht wird — sonst traefe es Saetze wie
+# «(Produktion in den USA/Mexiko)» oder «Steckdosen fuer USA, Europa»:
+#   a) der Absatz nennt Lieferzeit/Lieferung/Versand,
+#   b) er nennt eine Zeitspanne «N–M Tage»,
+#   c) er nennt EU oder USA als ZIEL (Flagge oder «CH / EU»).
+ABSATZ_USA = re.compile(r'<p\b[^>]*>(?:(?!</p>).)*?</p>', re.S)
+
+
+def absatz_tauschen(h, w):
+    n = 0
+    out = []
+    letzte = 0
+    for m in ABSATZ_USA.finditer(h):
+        seg = m.group(0)
+        roh = re.sub(r'<[^>]+>', '', seg)
+        if not re.search(r'Lieferzeit|Lieferung', roh):
+            continue
+        if not re.search(r'\d{1,2}\s*[–-]\s*\d{1,2}\s*Tage', roh):
+            continue
+        if not re.search(r'(?:🇪🇺|🇺🇸)|CH\s*/\s*EU', roh):
+            continue
+        out.append(h[letzte:m.start()])
+        out.append(f'<p>📦 <strong>Lieferzeit Schweiz:</strong> {SPANNE[w]} Werktage</p>')
+        letzte = m.end()
+        n += 1
+    out.append(h[letzte:])
+    return "".join(out), n
+
+
 def umschreiben(h, w):
     """Gibt (neuer_text, anzahl_treffer) zurueck."""
     n = 0
@@ -207,9 +233,16 @@ def umschreiben(h, w):
         h = BLOCK_RE.sub("", h)
         h = kopfblock(w) + h
         n += 1
+    # ERST die punktgenauen Textregeln — sie ersetzen nur die Lieferaussage und lassen
+    # richtige Nachbarinformation («Gratis-Versand ab CHF 50 · 30 Tage Rückgabe») stehen.
+    # DANN erst der Absatz-Tausch als Auffangnetz fuer die Bausteine, die mit <strong>/<span>
+    # durchsetzt sind. Diese Reihenfolge ist wichtig: umgekehrt haette der Absatz-Tausch bei
+    # 2 Produkten die Gratis-Versand- und Rückgabe-Zusage im selben Absatz mitgerissen.
     for pat, rep in regeln(w):
         h, k = pat.subn(rep, h)
         n += k
+    h, k = absatz_tauschen(h, w)
+    n += k
     return h, n
 
 
