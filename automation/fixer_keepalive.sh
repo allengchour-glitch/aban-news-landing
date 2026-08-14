@@ -159,6 +159,20 @@ while true; do
       echo "$(date -u +%H:%M) hype_kuratieren gestartet"
     fi
   fi
+  # GOOGLE-SPERREN DURCHSETZEN, einmal täglich. Am 14.08.2026 standen ALLE 16 Produkte, die
+  # wegen von Google selbst gemeldeter Richtlinienverstösse aus dem Kanal genommen worden
+  # waren, wieder drin — zurückgeholt von `gfeed_restore.py` (14) und
+  # `google_kanal_nachziehen.py` (2). Beide lesen jetzt `google_sperrliste.py`, aber ein
+  # dritter Publizierer kann morgen dasselbe tun. Dieser Lauf prüft 17 Produkt-IDs und
+  # kostet Sekunden; er ist die Versicherung gegen den Publizierer, den wir noch nicht kennen.
+  MS=/tmp/merchant_sperre_durchsetzen.log
+  if [ -f "$REPO/automation/merchant_sperre_durchsetzen.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$MS" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid python3 automation/merchant_sperre_durchsetzen.py >> "$MS" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) merchant_sperre_durchsetzen gestartet"
+    fi
+  fi
   # CJ-Grind-Runner mitlaufen lassen (Turn-Reaping killt sie sonst jede Runde)
   # ⚠️ MIT SPERRE STARTEN (12.08.2026). Der pgrep-Test allein genügt nicht: `engines_up.sh`
   # prüft und startet dieselben Runner, und wer zwischen fremder Prüfung und fremdem Start

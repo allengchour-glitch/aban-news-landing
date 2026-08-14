@@ -27,7 +27,18 @@ antwortet die API mit «Throttled», und Auswertungen melden fälschlich «keine
 
 DRY=1 meldet nur.
 """
-import json, os, re, subprocess, time
+import json, os, re, subprocess, sys, time
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from google_sperrliste import gesperrte_ids, id_zahl, tag_gesperrt
+
+# ⛔ NACHKONTROLLE 14.08.2026: Dieses Skript hat zwei Produkte in den Google-Kanal
+# publiziert, die wegen von GOOGLE SELBST gemeldeter Richtlinienverstösse dort
+# herausgenommen worden waren — «Pailletten Neckholder Minikleid» (Restricted adult content,
+# 15492325933441) und «Mundspülung» (personal hardships, 15492080435585); beide stehen mit
+# «im-google-kanal» im eigenen Ledger. Die Ausschlussliste unten kennt nur WORTMUSTER im
+# Titel; ein bereits gemeldeter Verstoss steht aber nicht im Titel, sondern als Tag am
+# Produkt. Beides wird jetzt geprüft: Sperr-Ledger und Tag.
 
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
 DRY = os.environ.get("DRY") == "1"
@@ -74,10 +85,18 @@ def gql(q, v=None):
 
 
 def main():
+    sperr = gesperrte_ids()
     kandidaten, gruende = [], {}
     for zeile in open(EXPORT):
         p = json.loads(zeile)
         if p["status"] != "ACTIVE" or p.get("g") or not p.get("os"):
+            continue
+        # ⛔ Von Google gemeldeter Verstoss — steht im Ledger oder als Tag am Produkt.
+        # Das ist keine Vermutung über eine Richtlinie, sondern eine bereits erfolgte
+        # Meldung; ein zweiter Verstoss danach kostet das ganze Merchant-Konto.
+        if id_zahl(p["id"]) in sperr or tag_gesperrt(p.get("tags")):
+            gruende["Google-Sperre (gemeldeter Verstoss)"] = \
+                gruende.get("Google-Sperre (gemeldeter Verstoss)", 0) + 1
             continue
         titel, typ = p["title"], (p.get("productType") or "")
         vs = (p.get("variants") or {}).get("nodes") or []
@@ -120,9 +139,16 @@ def main():
         # ⚠️ Status live gegenprüfen: Der Export ist ein Schnappschuss. Zwischen Export und
         # Lauf kann ein anderer Reiniger das Produkt bewusst gedraftet haben — es dann zu
         # veröffentlichen, würde genau diese Entscheidung rückgängig machen.
-        d = gql('query($id:ID!){node(id:$id){... on Product{status}}}', {"id": gid})
-        if ((d.get("data") or {}).get("node") or {}).get("status") != "ACTIVE":
+        d = gql('query($id:ID!){node(id:$id){... on Product{status tags}}}', {"id": gid})
+        knoten = (d.get("data") or {}).get("node") or {}
+        if knoten.get("status") != "ACTIVE":
             f.write(f"{gid}\tinzwischen-nicht-aktiv\n")
+            continue
+        if tag_gesperrt(knoten.get("tags")):
+            # Zwischen Export und Lauf gesperrt. ⚠️ NICHT quittieren: die Sperre kann mit
+            # Unterlagen aufgehoben werden, ein Ledger-Eintrag hielte das Produkt für immer
+            # aus dem Kanal.
+            print(f"  ⛔ gesperrt, bleibt draussen: {titel[:46]}", flush=True)
             continue
         r = gql('mutation($id:ID!,$p:[PublicationInput!]!){publishablePublish(id:$id,input:$p)'
                 '{userErrors{message}}}', {"id": gid, "p": [{"publicationId": GOOG}]})

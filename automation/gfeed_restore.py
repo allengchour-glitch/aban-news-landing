@@ -46,13 +46,25 @@ Lieferanten-SKU.
   DRY=1                                  meldet nur.
   AUCH=preis-unter-15,unter-3-bildern    holt zusätzlich diese Ausschlussgründe zurück.
 """
-import json, os, re, subprocess, time
+import json, os, re, subprocess, sys, time
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from google_sperrliste import gesperrte_ids, id_zahl, tag_gesperrt
 
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
 DRY = os.environ.get("DRY") == "1"
 GOOG = "gid://shopify/Publication/302872297857"
 SCORES = os.environ.get("SCORES", "/tmp/gfeed_scores.json")
 LEDGER = "dropship/_gfeed_restore.txt"
+
+# ⛔ NACHKONTROLLE 14.08.2026: Dieses Skript hat 14 Produkte zurück in den Google-Kanal
+# publiziert, die `merchant_issue_fix.py` fünf Tage zuvor wegen von GOOGLE SELBST gemeldeter
+# Richtlinienverstösse dort herausgenommen hatte (Ledger-Zeilen «zurueck-im-google-kanal» für
+# 15448825659777, 15449431441793, 15485060841857 …). Der Grund: geprüft wurde nur der STATUS.
+# Ein Produkt, das aus einem einzelnen KANAL gesperrt, im eigenen Shop aber weiter verkäuflich
+# ist, sieht dabei aus wie ein vergessenes Produkt. Wiederholte Verstösse nach einer bereits
+# erfolgten Meldung sind der Standardweg zur Merchant-Kontosperre — und Google ist der einzige
+# Kanal mit belegten Verkäufen. Ab hier gilt: gesperrt heisst gesperrt, Ledger UND Tag.
 
 
 def lieferantenref(sku):
@@ -125,16 +137,31 @@ def main():
     offen = [g for g in qualifiziert if g not in done]
     print(f"noch zu prüfen: {len(offen)}", flush=True)
 
+    sperr = gesperrte_ids()
+    vorher = len(offen)
+    offen = [g for g in offen if id_zahl(g) not in sperr]
+    if vorher != len(offen):
+        print(f"⛔ Google-Sperrliste: {vorher - len(offen)} gemeldete Richtlinienverstösse "
+              f"bleiben draussen", flush=True)
+
     f = open(LEDGER, "a")
-    zurueck = schon_drin = uebersprungen = 0
+    zurueck = schon_drin = uebersprungen = gesperrt = 0
     gruende = {}
     for i in range(0, len(offen), 100):
         teil = offen[i:i + 100]
-        d = gql('query($ids:[ID!]!){nodes(ids:$ids){... on Product{id status mediaCount{count} '
+        d = gql('query($ids:[ID!]!){nodes(ids:$ids){... on Product{id status tags '
+                'mediaCount{count} '
                 'priceRangeV2{minVariantPrice{amount}} variants(first:1){nodes{sku}} '
                 'g:publishedOnPublication(publicationId:"%s")}}}' % GOOG, {"ids": teil})
         for n in (d.get("data") or {}).get("nodes") or []:
             if not n:
+                continue
+            if tag_gesperrt(n.get("tags")):
+                # Zweite Schicht neben der Ledger-Prüfung: fängt auch Produkte, die ein
+                # späterer Lauf gesperrt hat und die noch in keinem Ledger stehen.
+                # ⚠️ NICHT quittieren — die Sperre kann mit Unterlagen aufgehoben werden,
+                # ein Ledger-Eintrag würde das Produkt für immer aus dem Kanal halten.
+                gesperrt += 1
                 continue
             if n["status"] != "ACTIVE":
                 # Ein anderer Reiniger hat das Produkt bewusst aus dem Verkauf genommen.
@@ -184,7 +211,8 @@ def main():
         print(f"  … {i + len(teil)}/{len(offen)} | zurück {zurueck} | "
               f"schon drin {schon_drin} | übersprungen {uebersprungen}", flush=True)
     print(f"{'(DRY) ' if DRY else ''}FERTIG: {zurueck} zurück im Google-Kanal, "
-          f"{schon_drin} waren schon drin, {uebersprungen} bewusst draussen gelassen")
+          f"{schon_drin} waren schon drin, {uebersprungen} bewusst draussen gelassen, "
+          f"{gesperrt} wegen Google-Sperr-Tag draussen")
     for g, n in sorted(gruende.items(), key=lambda x: -x[1]):
         print(f"  draussen wegen {g}: {n}")
 
