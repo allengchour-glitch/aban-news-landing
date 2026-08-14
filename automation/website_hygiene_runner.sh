@@ -23,5 +23,16 @@ while true; do
   echo "$(date -u +%H:%M) kollektion_prompttext --pruefen"
   python3 automation/kollektion_prompttext_fix.py --pruefen 2>&1 | tail -12 || true
 
+  # Bewertungsfoto-Wache (14.08.2026): Zwölf Bewertungsfotos zeigten den Lieferanten
+  # (AliExpress-Bestellabrechnung mit «Cupom AliExpress», AliExpress-App-Screenshot,
+  # chinesisches Versandetikett) oder eine Fremdmarke (AIMIMO-Garantiekarten,
+  # CONTACT'S-Konformitätszertifikat). Judge.me erlaubt kein Bearbeiten von Bewertungsfotos
+  # über die API, also wurden sie aus den Shopify-Metafeldern judgeme.widget /
+  # judgeme.review_widget_data geschnitten. ⚠️ Judge.me schreibt genau diese Metafelder bei
+  # jeder Cache-Erneuerung neu — ohne diesen Nachlauf wären die Bilder danach wieder da.
+  # Der Lauf ist idempotent: findet er nichts, schreibt er nichts.
+  echo "$(date -u +%H:%M) bewertungsfotos_saeubern"
+  python3 automation/bewertungsfotos_saeubern.py --scharf 2>&1 | tail -8 || true
+
   sleep 7200
 done

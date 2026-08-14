@@ -6721,3 +6721,4 @@ gid://shopify/Product/15449133187457	91->2	Falsche Nerzwimpern 3D MK-06 (5 Paar)
 gid://shopify/Product/15449158943105	42->0	Damen Sweatshirt mit 3D-Effekt Print
 gid://shopify/Product/15449426821505	999->0	Make-up-Spiegel mit Musik und Licht
 gid://shopify/Product/15449488884097	54->0	Diamant-Augenwimpern
+gid://shopify/Product/15449571361153	28->1	Damen Cuff Washed Wide-Leg Crop-Jeans
