@@ -19,6 +19,45 @@ das Skript laufen lassen. Aufbau:
   Beauty-Gerät gewählt); ein «Intim-Pflegeserum» wäre auf der Startseite gelandet → `NICHT_STARTSEITE`.
   Bedingungen für die Reihe: ≥2 Bilder, ab CHF 19, im Google-Kanal, kein Kostüm/Spielzeug/Partydeko.
 
+## 🚚 Versandaussagen auf EINE Wahrheit gebracht (2026-08-14)
+1'037 aktive Produkte bewarben «🇨🇭 CH / 🇪🇺 EU: 10–18 Tage · 🇺🇸 USA: 12–22 Tage», und für dieselbe
+Ware standen VIER Lieferzeiten nebeneinander (Richtlinie 5–12 Werktage · Startseite 2–14 Tage ·
+Produkt-Kopfblock 7–14/8–16/10–18 · Trustzeile 10–20 Tage — die letzten beiden auf DERSELBEN Seite,
+live belegt an 15411554910593). `automation/versandaussagen_wahrheit.py`, Ledger
+`_versandaussagen_wahrheit.txt`.
+- **Das Liefergebiet steht nicht im Text, sondern in den Markets.** Es gibt genau EINEN aktiven
+  Markt («Switzerland», Regionen `['CH']`) — niemand ausserhalb der Schweiz kann überhaupt
+  auschecken. Jede EU-/USA-Zusage war damit unerfüllbar. ⚠️ Das Standardprofil hat trotzdem noch
+  eine Zone «International / Rest of World» (CHF 15, aktiv); sie ist wirkungslos, weil kein Markt
+  sie freischaltet. NICHT angefasst — Zonen greifen in den Checkout.
+- **Erst nachsehen, welche Zahl schon entschieden ist.** Mein erster Entwurf setzte 10–18 Werktage.
+  `automation/seiten_versandtext.py` hatte die Shop-Seiten am 12.08. aber längst auf **1–2 Werktage
+  ab CH-Lager / 10–20 Werktage ab Werk** vereinheitlicht, und /pages/versand-lieferung nennt zusätzlich
+  «übrige Lagerartikel: 2–7». Eine eigene Zahl hätte die fünfte widersprechende Zusage erzeugt statt
+  vier aufzulösen. Übernommen: **CH-Lager 1–2 · EU-Lager 2–7 · Druck auf Bestellung 7–14 ·
+  Direktversand 10–20 Werktage**. Die 2'593 CH-Lager-Seiten waren bereits wahr → NICHT angefasst.
+- **Absatz-Ersetzung frisst Nachbarinformation.** Der `<p>`-Tausch (nötig, weil der Baustein mit
+  `<strong>`/`<span>` durchsetzt ist und ein Teiltausch halbe Tags hinterlässt) hätte bei 2 Produkten
+  «Gratis-Versand ab CHF 50 · 30 Tage Rückgabe» mitgerissen. Fix: **erst die punktgenauen Textregeln,
+  DANN der Absatz-Tausch als Auffangnetz.** Kontrolle: jeden zu ersetzenden Absatz einmal ausdrucken.
+- **Ein Landeswort ist kein Lieferziel.** «Produktion in den USA/Mexiko», «Steckdosen für USA,
+  Europa», «Grösse: EU 52, EU 54», «Hut Zylinder USA», «Versand aus EU-Produktion · Lieferung CH»
+  sind Herkunft, Eigenschaft, Grösse, Name. Nur vollständig ausformulierte Bausteine treffen.
+- **Quellen mitrepariert:** `delivery_block.mjs` (schrieb den EU/USA-Block), `cj_category_fill.mjs` +
+  `cj_trending_import.mjs` (Trustzeile «Lieferung ca. 10–20 Tage» in JEDEM neuen Produkt),
+  `cj_gaps_import.mjs` («Lieferung CH/EU 6–12 Tage»), `snippets/ls-lieferzeit.liquid` (hatte einen
+  Übersee-Zweig für US,CA,AU,… — im Live-Theme nicht eingebunden, aber eine gestellte Falle).
+- **Der Export ist zu klein.** Schnappschuss 12.08. = 31'398 aktive, live = 34'590 — der CJ-Grind legt
+  täglich nach. Nach dem Export-Lauf gehört **immer** `QUELLE=live` hinterher, sonst bleiben genau die
+  jüngsten Produkte falsch und der Lauf sieht trotzdem fertig aus.
+- **`shop.description` ist über KEINE Admin-API änderbar.** Die Startseiten-Meta-Description
+  («…schnellem Versand in die Schweiz und **nach Deutschland**») steht in Online Store → Preferences.
+  Bis der Betreiber sie dort ändert, fängt eine `replace`-Regel in `snippets/meta-tags.liquid` sie ab
+  (dieselbe Stelle hatte das für og:description schon, nur nicht für `name="description"`).
+- ⚠️ **PUT auf `/admin/api/…/policies/…json` scheitert LAUTLOS** (kein Fehler, keine Wirkung).
+  Rechtstexte gehen nur per GraphQL `shopPolicyUpdate` — und dessen Input nimmt `type`
+  (`SHIPPING_POLICY`), **nicht** `id`. Ohne Live-Gegenprobe hätte der Lauf als erledigt gegolten.
+
 ## 🔁 Nachkontrolle vom 2026-08-12 — was der erste Aufräumtag ÜBERSEHEN hat
 Ein zweiter Fan-out prüfte, ob die Reparaturen vom 11.08. halten. Sie halten — aber vier davon
 waren **zu eng gefasst**, und das Muster dahinter wiederholt sich:
