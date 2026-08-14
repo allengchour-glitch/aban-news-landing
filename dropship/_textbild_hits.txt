@@ -6616,3 +6616,14 @@ gid://shopify/Product/15449466470785	13->0	Fahrradlicht mit Bremsassistent
 gid://shopify/Product/15449466700161	39->1	Box-Target für Kampfsport
 gid://shopify/Product/15449469223297	18->0	Bildschirmprojektor für Auto
 gid://shopify/Product/15449474335105	34->3	Pullover mit Print
+gid://shopify/Product/15449481773441	20->0	4-in-1 Hochfrequenz Akne-Stick
+gid://shopify/Product/15449483248001	62->3	Verstellbares Katzenhalsband mit Leine
+gid://shopify/Product/15449485377921	86->3	Wasserdichte HD-Kamera für Sport und Outdoor
+gid://shopify/Product/15449485607297	10->3	Motorrad-Kamera mit GPS
+gid://shopify/Product/15449486131585	24->1	Klein, smart, vielseitig: HD-WLAN-Kamera
+gid://shopify/Product/15449487311233	109->2	Haarschneider für den Hausgebrauch
+gid://shopify/Product/15449487475073	19->2	Karaoke-Mikrofon für perfekten Gesang
+gid://shopify/Product/15449487638913	25->0	Elektrische Reinigungsbürste
+gid://shopify/Product/15449490522497	14->0	Edler, isolierter Becher aus Edelstahl
+gid://shopify/Product/15449491210625	29->1	Tassengarnitur mit Wasser-Trennung
+gid://shopify/Product/15449491734913	14->0	Grosses, tragbares Wasser Glas für Kids
