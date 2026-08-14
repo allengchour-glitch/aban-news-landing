@@ -94,3 +94,75 @@ gid://shopify/Product/15449481249153	umsortiert	446x446 → 750x750	Blackhead-En
 gid://shopify/Product/15449483510145	umsortiert	482x482 → 546x567	Automatische Einhandleine für Kleintiere
 gid://shopify/Product/15449488884097	umsortiert	150x150 → 1440x1440	Diamant-Augenwimpern
 gid://shopify/Product/15449569460609	umsortiert	320x426 → 1792x2388	Blumen-Kardigan für Damen
+gid://shopify/Product/15449571361153	umsortiert	120x160 → 1350x1800	Damen Cuff Washed Wide-Leg Crop-Jeans
+gid://shopify/Product/15449596985729	umsortiert	341x468 → 1600x1600	Personalisierte Magnetkugel-Uhr
+gid://shopify/Product/15450018087297	umsortiert	360x360 → 1200x1600	Schwarze Leder-Pumps mit Blockabsatz
+gid://shopify/Product/15450018283905	umsortiert	472x461 → 1440x1440	Rote Hochzeitsschuhe mit Blockabsatz
+gid://shopify/Product/15450061767041	umsortiert	261x232 → 800x800	Atmungsaktive Kletterschuhe
+gid://shopify/Product/15450068189569	umsortiert	726x223 → 800x800	Wasserdichte Wanderschuhe
+gid://shopify/Product/15450116161921	umsortiert	500x484 → 899x801	Portable Nähmaschine
+gid://shopify/Product/15450167509377	umsortiert	413x449 → 1000x1000	Kleine Dashcam mit Full HD
+gid://shopify/Product/15450258637185	umsortiert	530x499 → 800x800	Carbon-Faser Lenkradbezug Clip-on Griffe
+gid://shopify/Product/15450258997633	umsortiert	319x310 → 1280x1280	Ultraleichter Lenkradbezug rutschfest atmung
+gid://shopify/Product/15450302775681	umsortiert	486x544 → 628x631	Armaturenbrettmatte für Dodge RAM 1500/2500/
+gid://shopify/Product/15450542637441	umsortiert	330x440 → 800x800	Robuste Sicherheitsstiefel für Herbst und Wi
+gid://shopify/Product/15450693796225	umsortiert	460x460 → 800x800	Sportliche Mesh-Schuhe für Damen
+gid://shopify/Product/15450730889601	umsortiert	480x480 → 1125x1125	Leichte Anti-Rutsch Hausschuhe für Paare
+gid://shopify/Product/15450742849921	umsortiert	400x400 → 750x988	Winter High-Top Baumwollschuhe für Herren
+gid://shopify/Product/15450828702081	umsortiert	281x289 → 1000x1000	3-in-1 LED Lampe mit Wecker & Wireless Charg
+gid://shopify/Product/15450829390209	umsortiert	457x457 → 1200x1200	Galaxy Kristallkugel LED Nachtlicht
+gid://shopify/Product/15450829422977	umsortiert	218x239 → 790x693	Mini-Falt-Drohne mit HD-Kamera
+gid://shopify/Product/15450829619585	umsortiert	378x357 → 960x960	Brasilianisches Echthaar glatt
+gid://shopify/Product/15450831749505	umsortiert	400x400 → 1300x1300	Diamant-Messerschärfer aus Wolframstahl
+gid://shopify/Product/15450832634241	umsortiert	400x400 → 800x800	Spitze Herrenschuhe zum Schnüren
+gid://shopify/Product/15450833322369	umsortiert	626x303 → 800x800	LED-Schminkbox mit Lichtspiegel
+gid://shopify/Product/15450833781121	umsortiert	400x400 → 1000x1000	Ferngesteuertes Rennauto 1:16 mit LED
+gid://shopify/Product/15450834600321	umsortiert	451x445 → 1600x1600	Winter Plüschjacke – Flauschige Lapel Jacke
+gid://shopify/Product/15450835222913	umsortiert	202x206 → 800x800	Elefanten-Kuschelkissen mit Decke
+gid://shopify/Product/15450835878273	umsortiert	466x567 → 1500x1500	Digitaler Wasserhahn mit Ausziehbrause
+gid://shopify/Product/15450836730241	umsortiert	494x493 → 1920x1080	Faltbarer Pool für Haustiere
+gid://shopify/Product/15450836763009	umsortiert	460x473 → 700x657	Automatischer Glasreiniger aus Edelstahl
+gid://shopify/Product/15450837385601	umsortiert	1400x449 → 1000x1013	Hyaluron Gesichtsserum gegen trockene Haut
+gid://shopify/Product/15450837582209	umsortiert	384x303 → 1000x1300	Handy Schutzhülle mit Kartenfach
+gid://shopify/Product/15450837647745	umsortiert	376x373 → 1342x1792	Handfeger-Kehrmaschine 3-in-1
+gid://shopify/Product/15450838598017	umsortiert	411x406 → 1000x1000	Tragbarer Kindersitz für maximale Sicherheit
+gid://shopify/Product/15450839056769	umsortiert	388x715 → 1000x1000	Elektrischer Mitesser- und Akne-Sauger
+gid://shopify/Product/15450839318913	umsortiert	586x199 → 614x608	6-teiliges Feuchtigkeitspflege-Set
+gid://shopify/Product/15450839679361	umsortiert	504x450 → 1919x1919	Interaktives Zahnpflege-Spielzeug für Hunde
+gid://shopify/Product/15450840072577	umsortiert	453x556 → 1000x1000	Glitzer-Handyhülle mit Treibsand-Effekt
+gid://shopify/Product/15450847904129	umsortiert	370x358 → 1600x1600	Hair Identifier Spray Set – Für Gesichtsenth
+gid://shopify/Product/15450848657793	umsortiert	483x481 → 1920x1920	2-in-1 Damenrasierer für sanfte Körperpflege
+gid://shopify/Product/15450849509761	umsortiert	497x457 → 1920x1440	Sprühmatte für Kinder mit Meerestieren
+gid://shopify/Product/15450850492801	umsortiert	682x492 → 800x800	Teleskopisches Küchenregal
+gid://shopify/Product/15450850525569	umsortiert	400x400 → 1500x1500	Elektrische Entwirrbürste mit Kopfmassage
+gid://shopify/Product/15450850689409	umsortiert	447x462 → 1001x1001	Ultraschall-Massagegerät zur Hautstraffung
+gid://shopify/Product/15450851934593	umsortiert	440x227 → 800x800	6er Set Ätherische Öle
+gid://shopify/Product/15450852032897	umsortiert	497x496 → 790x829	WLAN Repeater für Zuhause
+gid://shopify/Product/15450853278081	umsortiert	376x511 → 800x800	Mini USB-Schweissgerät für Küche & Unterwegs
+gid://shopify/Product/15450854064513	umsortiert	401x358 → 800x800	Wasserdichte Nylon Crossbody Bag
+gid://shopify/Product/15450854883713	umsortiert	301x550 → 800x800	One-Shoulder Plissee-Kleid mit Schlitz
+gid://shopify/Product/15450855047553	umsortiert	363x374 → 1525x1080	Kabelloses Nacken- und Schultermassagegerät 
+gid://shopify/Product/15450856096129	umsortiert	379x339 → 1000x1000	Hallux Valgus Korrektor mit Zehenspreizer
+gid://shopify/Product/15450857767297	umsortiert	356x642 → 800x800	Aloe Vera Feuchtigkeitscreme 260g
+gid://shopify/Product/15450858160513	umsortiert	311x205 → 800x800	Stoff Widerstandsbänder Set
+gid://shopify/Product/15450858258817	umsortiert	411x392 → 766x831	Wasserfester 4-Spitzen Augenbrauenstift
+gid://shopify/Product/15450858488193	umsortiert	317x611 → 1400x1400	Automatischer Trinkbrunnen für Haustiere
+gid://shopify/Product/15450859110785	umsortiert	491x473 → 1001x1001	Hotel Haartrockner
+gid://shopify/Product/15451641414017	umsortiert	497x494 → 1000x1000	Metall-Schutzhülle für Golf Auto Schlüssel
+gid://shopify/Product/15451914797441	umsortiert	432x438 → 1080x1080	Haarschneider Retro-Look für Herren
+gid://shopify/Product/15451915026817	umsortiert	563x313 → 790x2765	Kaltluft-Haarglätter
+gid://shopify/Product/15451926626689	umsortiert	262x264 → 1200x1200	Off-Shoulder Bodycon Minikleid mit Fledermau
+gid://shopify/Product/15452518154625	umsortiert	530x398 → 1340x1787	Partner-Hoodie «Love» für Paare
+gid://shopify/Product/15452601057665	umsortiert	400x400 → 800x800	Nagelfräser · Portables Poliergerät mit Schl
+gid://shopify/Product/15452602728833	umsortiert	350x536 → 800x800	Retro Sonnenbrille
+gid://shopify/Product/15452605710721	umsortiert	636x305 → 1200x1200	Metall-Rosen-Halskette
+gid://shopify/Product/15452675506561	umsortiert	361x343 → 1000x1426	Formende Nagelhose
+gid://shopify/Product/15452683239809	umsortiert	400x400 → 1000x1000	Sicherheitsgurt Schulterpolster Schutz
+gid://shopify/Product/15452688843137	umsortiert	196x196 → 802x802	Retro Streifen-Langrock mit Polo-Kragen & Se
+gid://shopify/Product/15452709716353	umsortiert	300x300 → 800x800	Mesh-Casual-Universelle Plateau-Dad-Schuhe
+gid://shopify/Product/15453406560641	umsortiert	486x488 → 507x510	Wasserdichtes Telefon-Case
+gid://shopify/Product/15453570105729	umsortiert	1199x397 → 540x540	Minimassager
+gid://shopify/Product/15453728899457	umsortiert	379x375 → 930x930	Boho-Plakat mit geometrischen Linien
+gid://shopify/Product/15453742924161	umsortiert	349x301 → 1080x1080	Portable FPV Farbregler
+gid://shopify/Product/15453744398721	umsortiert	504x428 → 1000x1000	Faltbares UAV für Luftaufnahmen
+gid://shopify/Product/15453745283457	umsortiert	495x594 → 1000x1000	Graffiti-Malerei für Wohnzimmer und Schlafzi
