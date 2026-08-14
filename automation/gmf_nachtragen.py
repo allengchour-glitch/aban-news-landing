@@ -69,13 +69,26 @@ def gql(q, v=None):
 
 
 def farbe_aus_optionen(p):
+    """Nur bei EINER einzigen Farbe – sonst nichts.
+
+    ⚠️ 14.08.2026: Diese Funktion nahm den ERSTEN Optionswert und schrieb ihn ins
+    Produkt-Metafeld. Das Metafeld gilt aber für das ganze Produkt, und im Google-Feed
+    ist jede Variante ein eigenes Angebot: bei 16 Hoodie-Farben meldeten alle 96
+    Varianten «Schwarz». 9'866 Produkte standen so im Feed. Bei mehreren Farben gehört
+    die Farbe an die VARIANTE (automation/farbe_je_variante.py) – hier wird dann gar
+    nichts geschrieben, sonst legt dieser Nachtrag den Fehler sofort wieder an.
+    """
     for o in p.get("options") or []:
         if (o.get("name") or "").strip().lower() in ("farbe", "color", "colour"):
-            for w in o.get("values") or []:
-                w = (w or "").strip()
-                # Codes und Monsterwerte taugen nicht als Farbangabe.
-                if 2 <= len(w) <= 30 and not re.search(r'\d{3,}|[;:#]', w):
-                    return w
+            werte = [(w or "").strip() for w in (o.get("values") or [])]
+            werte = [w for w in werte if w]
+            if len(werte) != 1:
+                return None
+            w = werte[0]
+            # Codes und Monsterwerte taugen nicht als Farbangabe.
+            if 2 <= len(w) <= 30 and not re.search(r'\d{3,}|[;:#]', w):
+                return w
+            return None
     return None
 
 

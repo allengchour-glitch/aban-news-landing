@@ -33,6 +33,12 @@ const SIZESET=new Set(['XS','S','M','L','XL','XXL','XXXL','2XL','3XL','4XL','5XL
 const deColor=c=>{const t=(c||'').trim();return DECOLOR[t.toLowerCase()]||t;};
 const isSize=s=>{const u=(s||'').trim().toUpperCase();return SIZESET.has(u)||/^\d{1,2}$/.test(u)||/^(EU|US|UK)?\s?\d{2}$/.test(u);};
 const SORDER=['XS','S','M','L','XL','XXL','2XL','3XL','4XL','5XL','6XL'];
+// Ist der Wert eine brauchbare Farbangabe für Google? Ziffern, Stück-/Stilwörter und
+// Grössen-Präfixe beweisen das Gegenteil («Black-1XL», «Style 1-1 PC», «Picture Color»).
+// Ein leeres Farbfeld kostet im Feed nichts, ein falsches macht die Ware unauffindbar.
+const farbeSauber=c=>{const t=(c||'').trim();return !!t&&t.length<=40
+  &&!/\d|\bStyle\b|\bPCS?\b|\bpair\b|\bSet\b|\bYards?\b|\bcm\b|\bmm\b|\bml\b|\bInch\b|\btype\b|Picture\s*Color|Random|Assorted/i.test(t)
+  &&!/^(?:XXS|XS|S|M|L|XL|XXL)\s*[-–\/]/i.test(t);};
 function parseVar(v){const k=(v.variantKey||'').trim();const i=k.lastIndexOf('-');let color=null,size=null;
  if(i>0){const a=k.slice(0,i).trim(),b=k.slice(i+1).trim();if(isSize(b)){color=a;size=b.toUpperCase();}else color=k;}
  else if(isSize(k))size=k.toUpperCase();else color=k||null;
@@ -47,7 +53,15 @@ function buildFashion(d){
  const seen=new Set(),variants=[];
  for(const v of vs){const ov=[]; if(useC)ov.push({optionName:'Farbe',name:v.color||colors[0]}); if(useS)ov.push({optionName:'Grösse',name:v.size||sizes[0]});
   const key=ov.map(x=>x.name).join('|'); if(seen.has(key))continue; seen.add(key);
-  variants.push({optionValues:ov,price:chf(v.price, v.weight||v.variantWeight),inventoryItem:{sku:('CJ-'+(v.sku||'')).slice(0,70),tracked:false},inventoryPolicy:'CONTINUE'});
+  // ⚠️ FARBE GEHÖRT AN DIE VARIANTE, sobald es mehr als eine gibt (14.08.2026).
+  // Das Produkt-Metafeld `color` liegt auf PRODUKTebene; im Google-Feed ist aber jede
+  // Variante ein eigenes Angebot und erbt diesen einen Wert. So meldeten 9'866 Produkte
+  // ihre 220'526 Varianten alle in der Farbe der ERSTEN — der rote Hoodie stand als
+  // «Schwarz» im Feed und tauchte im Farbfilter «Rot» nie auf.
+  const vmf=[];
+  if(useC&&colors.length>1&&farbeSauber(v.color))
+    vmf.push({namespace:'mm-google-shopping',key:'color',value:v.color,type:'single_line_text_field'});
+  variants.push({optionValues:ov,price:chf(v.price, v.weight||v.variantWeight),inventoryItem:{sku:('CJ-'+(v.sku||'')).slice(0,70),tracked:false},inventoryPolicy:'CONTINUE',...(vmf.length?{metafields:vmf}:{})});
   if(variants.length>=100)break;}
  return {productOptions:opts.map(o=>({name:o.name,values:o.values.map(x=>({name:x}))})),variants};
 }
@@ -467,19 +481,21 @@ for(const [cat,label] of grp.cats){
      // Farbe aus der Varianten-Option übernehmen, wenn es eine gibt — Google fragt sie bei
      // Bekleidung ab, und sie steht hier ohnehin schon sauber übersetzt bereit.
      { const farbOpt=(productOptions||[]).find(o=>o.name==='Farbe');
-       const ersteFarbe=farbOpt?.values?.[0]?.name;
-       // ⚠️ Der Wert wurde bisher WÖRTLICH übernommen und nur auf LÄNGE geprüft. Bei CJ-Ware
-       // trägt die Option «Farbe» aber oft Grösse+Farbe, eine Stilnummer oder einen Rohcode —
-       // «Black-1XL» (25×), «Style 1-1 PC» (40×), «Amber-30X50cm», «1PC-Sponge brush»,
-       // «ESFY…». Alle sind kürzer als 40 Zeichen und rutschten durch. Ergebnis: 1'571 der
-       // gesetzten Farbwerte waren keine Farbe. Google filtert damit («Damenkleid schwarz») —
-       // ein falscher Wert macht das Produkt unauffindbar, ein leerer kostet nichts.
-       // Deshalb: nur schreiben, was ohne Ziffer, Grössenkürzel und Mengenwort auskommt.
-       const istFarbe=ersteFarbe&&ersteFarbe.length<=40
-         &&!/\d|\bStyle\b|\bPCS?\b|\bpair\b|\bSet\b|\bYards?\b|\bcm\b|\bmm\b|\bml\b|\bInch\b|\btype\b|Picture\s*Color|Random|Assorted/i.test(ersteFarbe)
-         &&!/^(?:XXS|XS|S|M|L|XL|XXL)\s*[-–\/]/i.test(ersteFarbe);
-       if(istFarbe)
-         mf.push({namespace:'mm-google-shopping',key:'color',value:ersteFarbe,type:'single_line_text_field'}); }
+       const farben=(farbOpt?.values||[]).map(v=>v.name);
+       // ⚠️ Der Wert wurde bisher WÖRTLICH aus der ERSTEN Variante übernommen und nur auf
+       // LÄNGE geprüft. Zwei Fehler steckten darin, beide teuer:
+       //
+       // (1) Der Wert ist bei CJ-Ware oft gar keine Farbe — «Black-1XL» (25×),
+       //     «Style 1-1 PC» (40×), «Amber-30X50cm», «1PC-Sponge brush». Dagegen hilft
+       //     `farbeSauber()`.
+       // (2) Und selbst wenn er eine Farbe IST, gilt er nur für die erste Variante.
+       //     Das Metafeld liegt auf Produktebene, im Google-Feed ist aber jede Variante ein
+       //     eigenes Angebot: 9'866 Produkte meldeten so alle ihre Farben als die der ersten
+       //     (Fehlersuche 14.08.2026). Deshalb wird das PRODUKT-Feld nur noch bei GENAU EINER
+       //     Farbe geschrieben; bei mehreren trägt jede Variante ihre eigene Farbe
+       //     (siehe buildFashion). Eine falsche Farbe ist schlechter als keine.
+       if(farben.length===1&&farbeSauber(farben[0]))
+         mf.push({namespace:'mm-google-shopping',key:'color',value:farben[0],type:'single_line_text_field'}); }
      // Material NUR wenn ein echtes Material-Wort drinsteht (sonst greift der Regex Feldlabels wie «Material Name»)
      const MATWORDS=/baumwolle|cotton|polyester|leder|leather|metall|metal|silber|silver|gold|edelstahl|stainless|kunststoff|plastic|acryl|nylon|wolle|wool|seide|silk|leinen|linen|keramik|ceramic|holz|wood|glas|glass|zink|legierung|alloy|gummi|silikon|silicone|strick|fleece|denim|jeans|samt|velvet|spitze|lace/i;
      const mm=(feats||'').match(/\b(?:material|made of|fabric|composition)\b[:\s]+([a-zA-ZäöüÄÖÜ0-9%,\s\/-]{3,40})/i);
