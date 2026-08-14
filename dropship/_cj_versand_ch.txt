@@ -736,3 +736,4 @@ gid://shopify/Product/15497425355137	ok	DIY Muskel- und Fitnesstrainer für die 
 gid://shopify/Product/15497437905281	ok	Smartes Türschloss ohne Bohren
 gid://shopify/Product/15497464119681	nicht-versendbar	Faltbarer Wäschekorb für Schlafzimmer
 gid://shopify/Product/15497464414593	ok	LED Photonengerät zur Hautverjüngung
+gid://shopify/Product/15497591128449	nicht-versendbar	Resin Aroma Diffuser
