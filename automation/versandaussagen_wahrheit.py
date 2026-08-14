@@ -463,8 +463,150 @@ def metafeld():
           f"EU/USA-Form, {geschrieben} umgestellt, {fehler} offen geblieben.")
 
 
+
+
+
+# ---------------------------------------------------------------- Seiten-Phase
+# Der Produktlauf allein hätte den Widerspruch nur verschoben: 11 VERÖFFENTLICHTE Shop-Seiten
+# nennen eigene Lieferzeiten, darunter die beiden AGB-Seiten. Gefunden wurden sie erst, als
+# ich nicht nach meinen eigenen Bausteinen suchte, sondern nach dem, was die Kundin liest —
+# jede Zeitspanne auf jeder veröffentlichten Seite, und dann von Hand geprüft.
+#
+# ⚠️ EIN ZEITRAUM IST NICHT AUTOMATISCH EINE LIEFERZEIT. Dieselbe Falle, vor der schon
+# automation/seiten_versandtext.py warnt. Auf denselben Seiten stehen völlig richtige
+# Zeitangaben, die NICHT angefasst werden dürfen:
+#   • «Dauer: 4-5 Tage» (Mehrtageswanderung auf /pages/wanderziele-schweiz-2026)
+#   • «Bearbeitungszeit: 1-3 Tage» beim Fulfillment-Partner (/pages/tracking)
+#   • «Feiertage — eventuelle Verzögerung 1–2 Tage» (Antwortzeit, /pages/kontakt-support)
+#   • «Bei "in transit" · noch 5-7 Tage geduldig sein» (Rat, keine Zusage)
+# Darum wird hier NICHT gemustert, sondern jede Stelle einzeln und vollständig ausgeschrieben
+# ersetzt; jede Vorlage muss GENAU EINMAL vorkommen, sonst bricht der Lauf ab.
+#
+# Sachfehler, der dabei auffiel: /pages/faq stellte «Übersee-Artikel ca. 7–14 Werktage» den
+# «10–20 Werktagen» als SCHNELLERE Ausnahme gegenüber — Übersee ist der langsamste Weg, nicht
+# der schnellste. Die Reihenfolge war schlicht vertauscht.
+SEITEN = {
+    697899352449: [(  # agb — rechtlich bindend
+        '<p>Die Lieferung erfolgt direkt vom Hersteller (Versand ab Werk). Die Lieferzeit '
+        'beträgt 10–20 Werktage. Bei Lieferungen ins Ausland können Zölle und Einfuhrabgaben '
+        'anfallen, die vom Kunden zu tragen sind.</p>',
+        '<p>Wir liefern ausschliesslich in die Schweiz und nach Liechtenstein; ein Versand in '
+        'andere Länder ist nicht möglich. Ein grosser Teil der Ware wird direkt ab dem Lager '
+        'des Herstellers versendet. Die Lieferzeit hängt vom Bezugsweg ab: ab Schweizer Lager '
+        '1–2 Werktage, ab EU-Lager 2–7 Werktage, bei Druck auf Bestellung 7–14 Werktage, im '
+        'Direktversand ab Herstellerlager 10–20 Werktage. Massgeblich ist die Angabe auf der '
+        'jeweiligen Produktseite. Zoll- oder Einfuhrabgaben fallen für Lieferungen in die '
+        'Schweiz und nach Liechtenstein nicht zusätzlich an.</p>')],
+    698055360897: [(  # agb-luxestyle — rechtlich bindend
+        '<p>Lieferzeit: <strong>7-14 Werktage</strong> ab Zahlungseingang, innerhalb der '
+        'Schweiz (inkl. Liechtenstein).</p>',
+        '<p>Lieferzeit ab Zahlungseingang, innerhalb der Schweiz (inkl. Liechtenstein): ab '
+        'Schweizer Lager <strong>1–2 Werktage</strong>, ab EU-Lager <strong>2–7 Werktage</strong>, '
+        'bei Druck auf Bestellung <strong>7–14 Werktage</strong>, im Direktversand ab '
+        'Herstellerlager <strong>10–20 Werktage</strong>. Massgeblich ist die Angabe auf der '
+        'Produktseite. Ein Versand in andere Länder ist nicht möglich.</p>')],
+    697899516289: [  # faq — widersprach sich auf EINER Seite selbst
+        ('🇨🇭 Blitzversand-Artikel kommen in 1–3 Werktagen aus dem Schweizer Lager, '
+         'EU-Lager-Artikel in 3–7 Tagen, international versendete Artikel in 7–14 Tagen.',
+         '🇨🇭 Blitzversand-Artikel kommen in 1–2 Werktagen aus dem Schweizer Lager, Ware ab '
+         'EU-Lager in 2–7 Werktagen, Druck-auf-Bestellung-Artikel in 7–14 Werktagen und Ware '
+         'im Direktversand ab Herstellerlager in 10–20 Werktagen. Geliefert wird ausschliesslich '
+         'in die Schweiz und nach Liechtenstein.'),
+        ('Lieferzeit je nach Produkt in der Regel ca. 10–20 Werktage '
+         '(personalisierte/Print-on-Demand- und Übersee-Artikel ca. 7–14 Werktage).',
+         'Lieferzeit je nach Bezugsweg: ab Schweizer Lager 1–2 Werktage, ab EU-Lager 2–7 '
+         'Werktage, bei Druck auf Bestellung 7–14 Werktage, im Direktversand ab Herstellerlager '
+         '10–20 Werktage.')],
+    698006208897: [(  # schweizer-vs-deutsche-marken — bewarb Lieferung nach Deutschland
+        '<li>🇩🇪 Versand auch nach DE (8-14 Tage)</li>',
+        '<li>🇨🇭 Versand in die ganze Schweiz und nach Liechtenstein</li>')],
+    698444710273: [(  # selbst-gestalten — Einheit angleichen (Tage → Werktage)
+        'in der Regel <strong>ca. 7–14 Tage</strong>',
+        'in der Regel <strong>ca. 7–14 Werktage</strong>')],
+    697996640641: [(  # vatertag-geschenkideen-2026
+        '7-12 Werktagen', '10–20 Werktagen')],
+    # Fünf Ratgeber-/Landingseiten mit der alten Richtlinien-Zahl «5–12 Werktage».
+    # personalisierte-geschenke-fuer-sie bekommt 7–14 (Druck auf Bestellung), die übrigen
+    # 10–20 (Schmuck/Taschen aus dem Direktversand).
+    699143258497: [('Lieferzeit von 5–12 Werktagen', 'Lieferzeit von 10–20 Werktagen'),
+                   ('innerhalb der Schweiz in 5–12 Werktagen',
+                    'innerhalb der Schweiz in 10–20 Werktagen')],
+    699143324033: [('Lieferzeit 5–12 Werktage', 'Lieferzeit 10–20 Werktage')],
+    699143389569: [('In der Regel 5–12 Werktage, schweizweit.',
+                    'In der Regel 10–20 Werktage, schweizweit.'),
+                   ('in der Regel 5–12 Werktage ·', 'in der Regel 10–20 Werktage ·')],
+    699143291265: [('innerhalb von 5–12 Werktagen in die ganze Schweiz',
+                    'innerhalb von 7–14 Werktagen in die ganze Schweiz'),
+                   ('Lieferung in der Regel 5–12 Werktage ·',
+                    'Lieferung in der Regel 7–14 Werktage ·')],
+    699143356801: [('innerhalb von 5–12 Werktagen.', 'innerhalb von 10–20 Werktagen.')],
+}
+
+
+def seiten():
+    import urllib.request as _u
+    basis = "https://au3j0y-hq.myshopify.com/admin/api/2024-10/pages"
+    kopf = {"X-Shopify-Access-Token": TOK, "Content-Type": "application/json"}
+    geaendert = fehler = 0
+    for pid, paare in SEITEN.items():
+        try:
+            with _u.urlopen(_u.Request(f"{basis}/{pid}.json", headers=kopf), timeout=60) as r:
+                seite = json.loads(r.read())["page"]
+        except Exception as e:
+            sys.stderr.write(f"✗ {pid} nicht lesbar ({e}) — bleibt offen\n")
+            fehler += 1
+            continue
+        b = seite.get("body_html") or ""
+        neu = b
+        for alt, ersatz in paare:
+            n = neu.count(alt)
+            if n != 1:
+                sys.stderr.write(f"✗ {seite['handle']}: Vorlage {n}x statt 1x gefunden — "
+                                 f"KEINE Änderung an dieser Seite\n  {alt[:90]}\n")
+                neu = None
+                break
+            neu = neu.replace(alt, ersatz)
+        if neu is None:
+            fehler += 1
+            continue
+        if neu == b:
+            continue
+        if DRY:
+            print(f"DRY {seite['handle']}: {len(paare)} Stelle(n)")
+            for alt, ersatz in paare:
+                print("   ALT:", re.sub(r'<[^>]+>', '', alt)[:130])
+                print("   NEU:", re.sub(r'<[^>]+>', '', ersatz)[:130])
+            geaendert += 1
+            continue
+        payload = json.dumps({"page": {"id": pid, "body_html": neu}}).encode()
+        try:
+            rq = _u.Request(f"{basis}/{pid}.json", data=payload, headers=kopf, method="PUT")
+            with _u.urlopen(rq, timeout=60) as r:
+                r.read()
+        except Exception as e:
+            sys.stderr.write(f"✗ {seite['handle']} nicht schreibbar ({e})\n")
+            fehler += 1
+            continue
+        # Regel 6: erst die Live-Gegenprobe entscheidet, ob es geklappt hat. Ein stummes PUT
+        # hat bei der Versandrichtlinie genau so ausgesehen wie ein Erfolg (siehe CLAUDE.md).
+        try:
+            with _u.urlopen(_u.Request(f"{basis}/{pid}.json", headers=kopf), timeout=60) as r:
+                jetzt = json.loads(r.read())["page"].get("body_html") or ""
+        except Exception:
+            jetzt = ""
+        if all(alt not in jetzt for alt, _ in paare):
+            geaendert += 1
+            print(f"   ✓ {seite['handle']}")
+        else:
+            fehler += 1
+            sys.stderr.write(f"✗ {seite['handle']}: Änderung nicht angekommen\n")
+    print(f"Seiten geändert: {geaendert}, offen geblieben: {fehler}")
+
+
 if __name__ == "__main__":
     if PHASE in ("alle", "produkte"):
         main()
     if PHASE in ("alle", "metafeld"):
         metafeld()
+    if PHASE in ("alle", "seiten"):
+        seiten()
