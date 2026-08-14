@@ -79,12 +79,12 @@ function serve() {
       await page.goto(`http://localhost:${PORT}/${game}`,
         schwer ? { waitUntil: "load", timeout: 60000 } : { waitUntil: "networkidle", timeout: 15000 });
       await page.waitForTimeout(schwer ? 8000 : 700);
-      await page.screenshot({ path: path.join(OUT, `${tag}_menu.png`) });
+      await page.screenshot({ path: path.join(OUT, `${tag}_menu.png`), timeout: schwer ? 90000 : 30000 });
       await page.keyboard.press("Space"); // Start (bei den meisten Spielen)
       // Spiele mit explizitem Start-Knopf (z. B. neon-realm #startBtn): zusätzlich klicken
       try { const sb = await page.$("#startBtn"); if (sb && await sb.isVisible()) await sb.click(); } catch {}
       await page.waitForTimeout(1400);
-      await page.screenshot({ path: path.join(OUT, `${tag}_live.png`) });
+      await page.screenshot({ path: path.join(OUT, `${tag}_live.png`), timeout: schwer ? 90000 : 30000 });
     } catch (e) {
       errors.push("HARNESS: " + e.message);
     }

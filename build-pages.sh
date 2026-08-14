@@ -12,6 +12,8 @@
 #   Build output directory:   _site
 set -euo pipefail
 
+python3 tools/gen_markets_mini.py || true
+
 rm -rf _site
 mkdir -p _site
 
