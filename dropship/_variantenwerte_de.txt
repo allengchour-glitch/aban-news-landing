@@ -1192,3 +1192,240 @@ A2:gid://shopify/Product/15470369145217	0	Gestreiftes Strickkleid mit halbem Rol
 A2:gid://shopify/Product/15470659436929	0	Einschnitt-Kleid
 A2:gid://shopify/Product/15470945075585	0	Gelbe Bluse mit Ruffles
 A2:gid://shopify/Product/15472047522177	0	Strick-Cardigan mit Stehkragen
+A2:gid://shopify/Product/15472058696065	0	Kurzes Strickkleid mit Geometrischem Muster
+A2:gid://shopify/Product/15472062955905	0	Strickkleid mit Spitze und Blumenmuster
+A2:gid://shopify/Product/15473060905345	0	Kontrastfarbener Strickpullover mit Kordelzug
+A2:gid://shopify/Product/15473060938113	0	V-Ausschnitt Strickpullover für Damen
+A2:gid://shopify/Product/15473076765057	0	Koreanisches Strickoberteil
+A2:gid://shopify/Product/15473077551489	0	Lässiger Strickpullover mit Rundhals
+A2:gid://shopify/Product/15473077649793	0	Grauer doppelreihiger Wollpullover mit Stehkragen
+A2:gid://shopify/Product/15473387569537	0	Elegantes Strickkleid für Damen
+A2:gid://shopify/Product/15474466455937	0	Retro-Midi-Rock
+A2:gid://shopify/Product/15474790826369	0	A-Linien Midi-Jupe mit ausgestelltem Saum
+A2:gid://shopify/Product/15475056345473	0	Strick-Cardigan im Preppy-Stil
+A2:gid://shopify/Product/15475057983873	0	Strick-Cardigan mit Knopfleiste
+A2:gid://shopify/Product/15475950748033	0	Color-Block Strickkleid gestreift
+A2:gid://shopify/Product/15476167803265	0	Mid-Sleeve Kleid im Vintage-Stil
+A2:gid://shopify/Product/15476168032641	0	Kleid mit Schleifengürtel und A-Linie
+A2:gid://shopify/Product/15476199391617	0	Elegantes Plissée-Kleid mit Rüschensaum
+A2:gid://shopify/Product/15476214727041	0	Cardigan mit Buchstaben-Stickerei
+A2:gid://shopify/Product/15477130396033	0	Retro-Pullover für Damen
+A2:gid://shopify/Product/15477130461569	0	Strickpullover mit diagonalen Knöpfen
+A2:gid://shopify/Product/15477526004097	0	Cardigan mit Pailletten-Stickerei
+A2:gid://shopify/Product/15477531279745	0	Malaiisch-indonesisches Kleid mit Goldprägung
+A2:gid://shopify/Product/15477531640193	0	Chiffon Maxikleid mit V-Ausschnitt und Volants
+A2:gid://shopify/Product/15478470181249	0	Ärmellose Chiffon-Bluse mit Schleife
+A2:gid://shopify/Product/15478568681857	0	Strandkleid & Bade-Cover-up für Damen
+A2:gid://shopify/Product/15478569959809	0	Koreanischer Grobstrick-Pullover
+A2:gid://shopify/Product/15484398698881	0	Resortkleid mit Geometermuster
+A2:gid://shopify/Product/15484593930625	0	Elegante Morgenrobe aus Eisseide
+A2:gid://shopify/Product/15485497966977	0	Rüschenbluse mit 3D-Effekt
+A2:gid://shopify/Product/15485689954689	0	Damen Bluse mit Puffärmeln und Schleife
+A2:gid://shopify/Product/15485794746753	0	Off-Shoulder Chiffon-Bluse mit Rüschen
+A2:gid://shopify/Product/15485948002689	0	Taktische Weste
+A2:gid://shopify/Product/15486185275777	0	Französisches Oberteil für den Frühling
+A2:gid://shopify/Product/15486308614529	0	Midilanger Jupe mit Kordelzug
+A2:gid://shopify/Product/15489105428865	0	Rollkragenpullover im Oversize-Look
+A2:gid://shopify/Product/15489105953153	0	Retro Strickpullover mit Reissverschluss
+A2:gid://shopify/Product/15489435468161	0	Eleganter Strickpullover mit Farbstreifen
+A2:gid://shopify/Product/15489436451201	1	Kuscheliger Strickpullover im Korean Style
+A2:gid://shopify/Product/15489437729153	0	Mid-length Loose Fit Damen Pullover
+A2:gid://shopify/Product/15489439039873	0	Strick-Cardigan mit Schleife
+A2:gid://shopify/Product/15489581154689	0	Gerafftes Stufenkleid mit Volants
+A2:gid://shopify/Product/15490596536705	0	Karierte Damenkleid
+A2:gid://shopify/Product/15490789114241	0	Legerer Cardigan für Frühling & Herbst
+A2:gid://shopify/Product/15491388703105	0	Ärmelloses Casual-Kleid im Ethno-Stil
+A2:gid://shopify/Product/15491405480321	0	Bedrucktes Baumwollkleid, mittellang, locker
+A2:gid://shopify/Product/15491418194305	0	Elegantes Schnürkleid aus Baumwoll-Leinen
+A2:gid://shopify/Product/15491419570561	0	Besticktes Langarmshirt mit Spitzenbesatz
+A2:gid://shopify/Product/15491508273537	0	Rüschenbluse mit Laternenärmeln
+A2:gid://shopify/Product/15491602776449	0	Strandkleid mit Kapuze
+A2:gid://shopify/Product/15491718054273	0	Weisses Unterkleid für Kimono & Yukata
+A2:gid://shopify/Product/15491718218113	0	Tailliertes Blumenkleid mit Puffärmeln
+A2:gid://shopify/Product/15491857645953	0	Damen Langarm-Bluse mit Schleife
+A2:gid://shopify/Product/15492005724545	0	Strick-Cardigan mit Reissverschluss
+A2:gid://shopify/Product/15492132831617	0	Chiffonbluse mit Schleife und Puffärmeln
+A2:gid://shopify/Product/15492132929921	0	Romantisches Spitzen-Top mit V-Ausschnitt und Rüschen
+A2:gid://shopify/Product/15492132995457	0	Geblümte Rüschenbluse im Lolita-Stil
+A2:gid://shopify/Product/15492255711617	0	Bluse mit 3D-Blumen und Rüschen
+A2:gid://shopify/Product/15492326392193	0	Damen Rollkragen Pullover mit Half-Zip
+A2:gid://shopify/Product/15492996759937	0	Vintage-Leopardenprint Midi-Kleid
+A2:gid://shopify/Product/15492997251457	0	Eleganter Midirock mit Stickerei und Spitze
+A2:gid://shopify/Product/15493007704449	0	Edler Strickpullover mit halblangem Rollkragen
+A2:gid://shopify/Product/15493084348801	0	Elegantes Rüschen-Shirt mit Perlen
+A2:gid://shopify/Product/15493084447105	0	Romantische Perlenbluse im französischen Stil
+A2:gid://shopify/Product/15493705105793	0	Handgestrickter Pullover
+A2:gid://shopify/Product/15493705171329	0	Retro Color-Block Cardigan mit Taschen
+A2:gid://shopify/Product/15493705531777	0	Strandrock mit Quastenriemen für Damen
+A2:gid://shopify/Product/15493705793921	0	High-Waist Stufenrock – Frühling/Sommer
+A2:gid://shopify/Product/15493796987265	0	Vielseitiges Kurzarm-T-Shirt für Damen
+A2:gid://shopify/Product/15493838078337	0	Mid-Length Jacquard Pullover für Damen
+A2:gid://shopify/Product/15493856592257	0	Gestreiftes Langarm-Sweatshirt im Preppy-Stil
+A2:gid://shopify/Product/15495086375297	0	Lässiges Mesh-Kleid in Übergrösse
+D3:gid://shopify/Product/15447942300033	nichts-zu-tun
+D3:gid://shopify/Product/15447944429953	nichts-zu-tun
+D3:gid://shopify/Product/15447947739521	nichts-zu-tun
+D3:gid://shopify/Product/15447947837825	nichts-zu-tun
+D3:gid://shopify/Product/15447948755329	nichts-zu-tun
+D3:gid://shopify/Product/15447954030977	nichts-zu-tun
+D3:gid://shopify/Product/15447977296257	nichts-zu-tun
+D3:gid://shopify/Product/15447978115457	nichts-zu-tun
+D3:gid://shopify/Product/15447988568449	nichts-zu-tun
+D3:gid://shopify/Product/15447988830593	nichts-zu-tun
+D3:gid://shopify/Product/15447989780865	nichts-zu-tun
+D3:gid://shopify/Product/15447991484801	nichts-zu-tun
+D3:gid://shopify/Product/15447991943553	nichts-zu-tun
+D3:gid://shopify/Product/15447994630529	nichts-zu-tun
+D3:gid://shopify/Product/15447994925441	nichts-zu-tun
+D3:gid://shopify/Product/15447995056513	nichts-zu-tun
+D3:gid://shopify/Product/15447997251969	nichts-zu-tun
+D3:gid://shopify/Product/15448002331009	nichts-zu-tun
+D3:gid://shopify/Product/15448008884609	nichts-zu-tun
+D3:gid://shopify/Product/15448009933185	nichts-zu-tun
+D3:gid://shopify/Product/15448010097025	nichts-zu-tun
+D3:gid://shopify/Product/15448013734273	nichts-zu-tun
+D3:gid://shopify/Product/15448015274369	nichts-zu-tun
+D3:gid://shopify/Product/15448018223489	nichts-zu-tun
+D3:gid://shopify/Product/15448018780545	nichts-zu-tun
+D3:gid://shopify/Product/15448019796353	nichts-zu-tun
+D3:gid://shopify/Product/15448021303681	nichts-zu-tun
+D3:gid://shopify/Product/15448022712705	nichts-zu-tun
+D3:gid://shopify/Product/15448022974849	nichts-zu-tun
+D3:gid://shopify/Product/15448023138689	nichts-zu-tun
+D3:gid://shopify/Product/15448023302529	nichts-zu-tun
+D3:gid://shopify/Product/15448023466369	nichts-zu-tun
+D3:gid://shopify/Product/15448023630209	nichts-zu-tun
+D3:gid://shopify/Product/15448025530753	nichts-zu-tun
+D3:gid://shopify/Product/15448025891201	nichts-zu-tun
+D3:gid://shopify/Product/15448026579329	nichts-zu-tun
+D3:gid://shopify/Product/15448026743169	nichts-zu-tun
+D3:gid://shopify/Product/15448027627905	nichts-zu-tun
+D3:gid://shopify/Product/15448030183809	nichts-zu-tun
+D3:gid://shopify/Product/15448030642561	nichts-zu-tun
+D3:gid://shopify/Product/15448032280961	nichts-zu-tun
+D3:gid://shopify/Product/15448034673025	nichts-zu-tun
+D3:gid://shopify/Product/15448035688833	nichts-zu-tun
+D3:gid://shopify/Product/15448038769025	nichts-zu-tun
+D3:gid://shopify/Product/15448042209665	nichts-zu-tun
+D3:gid://shopify/Product/15448042307969	nichts-zu-tun
+D3:gid://shopify/Product/15448042570113	nichts-zu-tun
+D3:gid://shopify/Product/15448042865025	nichts-zu-tun
+D3:gid://shopify/Product/15448043585921	nichts-zu-tun
+D3:gid://shopify/Product/15448043946369	nichts-zu-tun
+D3:gid://shopify/Product/15448077468033	nichts-zu-tun
+D3:gid://shopify/Product/15448077500801	nichts-zu-tun
+D3:gid://shopify/Product/15448077533569	nichts-zu-tun
+D3:gid://shopify/Product/15448077566337	nichts-zu-tun
+D3:gid://shopify/Product/15448077599105	nichts-zu-tun
+D3:gid://shopify/Product/15448077664641	nichts-zu-tun
+D3:gid://shopify/Product/15448077697409	nichts-zu-tun
+D3:gid://shopify/Product/15448077730177	nichts-zu-tun
+D3:gid://shopify/Product/15448077762945	nichts-zu-tun
+D3:gid://shopify/Product/15448077795713	nichts-zu-tun
+D3:gid://shopify/Product/15448079368577	nichts-zu-tun
+D3:gid://shopify/Product/15448080712065	nichts-zu-tun
+D3:gid://shopify/Product/15448081203585	nichts-zu-tun
+D3:gid://shopify/Product/15448092279169	nichts-zu-tun
+D3:gid://shopify/Product/15448092377473	nichts-zu-tun
+D3:gid://shopify/Product/15448092508545	nichts-zu-tun
+D3:gid://shopify/Product/15448092541313	nichts-zu-tun
+D3:gid://shopify/Product/15448093131137	nichts-zu-tun
+D3:gid://shopify/Product/15448101552513	nichts-zu-tun
+D3:gid://shopify/Product/15448102764929	nichts-zu-tun
+D3:gid://shopify/Product/15448102797697	nichts-zu-tun
+D3:gid://shopify/Product/15448495260033	nichts-zu-tun
+D3:gid://shopify/Product/15448584782209	nichts-zu-tun
+D3:gid://shopify/Product/15448587731329	nichts-zu-tun
+D3:gid://shopify/Product/15448587993473	nichts-zu-tun
+D3:gid://shopify/Product/15448590320001	nichts-zu-tun
+D3:gid://shopify/Product/15448592417153	nichts-zu-tun
+D3:gid://shopify/Product/15448592646529	nichts-zu-tun
+D3:gid://shopify/Product/15448593203585	nichts-zu-tun
+D3:gid://shopify/Product/15448593269121	nichts-zu-tun
+D3:gid://shopify/Product/15448593858945	nichts-zu-tun
+D3:gid://shopify/Product/15448593957249	nichts-zu-tun
+D3:gid://shopify/Product/15448595169665	nichts-zu-tun
+D3:gid://shopify/Product/15448595595649	nichts-zu-tun
+D3:gid://shopify/Product/15448598839681	nichts-zu-tun
+D3:gid://shopify/Product/15448598970753	nichts-zu-tun
+D3:gid://shopify/Product/15448602771841	nichts-zu-tun
+D3:gid://shopify/Product/15448603001217	nichts-zu-tun
+D3:gid://shopify/Product/15448605458817	nichts-zu-tun
+D3:gid://shopify/Product/15448609816961	nichts-zu-tun
+D3:gid://shopify/Product/15448611455361	nichts-zu-tun
+D3:gid://shopify/Product/15448659198337	nichts-zu-tun
+D3:gid://shopify/Product/15448660181377	nichts-zu-tun
+D3:gid://shopify/Product/15448660279681	nichts-zu-tun
+D3:gid://shopify/Product/15448661983617	nichts-zu-tun
+D3:gid://shopify/Product/15448662901121	nichts-zu-tun
+D3:gid://shopify/Product/15448665850241	nichts-zu-tun
+D3:gid://shopify/Product/15448668504449	nichts-zu-tun
+D3:gid://shopify/Product/15448672731521	nichts-zu-tun
+D3:gid://shopify/Product/15448703730049	nichts-zu-tun
+D3:gid://shopify/Product/15448704745857	nichts-zu-tun
+D3:gid://shopify/Product/15448704778625	nichts-zu-tun
+D3:gid://shopify/Product/15448704909697	nichts-zu-tun
+D3:gid://shopify/Product/15448705859969	nichts-zu-tun
+D3:gid://shopify/Product/15448711070081	nichts-zu-tun
+D3:gid://shopify/Product/15448712249729	nichts-zu-tun
+D3:gid://shopify/Product/15448755601793	nichts-zu-tun
+D3:gid://shopify/Product/15448756093313	nichts-zu-tun
+D3:gid://shopify/Product/15449056674177	nichts-zu-tun
+D3:gid://shopify/Product/15449059033473	nichts-zu-tun
+D3:gid://shopify/Product/15449060868481	nichts-zu-tun
+D3:gid://shopify/Product/15449061196161	nichts-zu-tun
+D3:gid://shopify/Product/15449061392769	nichts-zu-tun
+D3:gid://shopify/Product/15449061523841	nichts-zu-tun
+D3:gid://shopify/Product/15449061589377	nichts-zu-tun
+D3:gid://shopify/Product/15449061654913	nichts-zu-tun
+D3:gid://shopify/Product/15449062965633	nichts-zu-tun
+D3:gid://shopify/Product/15449104187777	nichts-zu-tun
+D3:gid://shopify/Product/15449104286081	nichts-zu-tun
+D3:gid://shopify/Product/15449104318849	nichts-zu-tun
+D3:gid://shopify/Product/15449105170817	nichts-zu-tun
+D3:gid://shopify/Product/15449105367425	nichts-zu-tun
+D3:gid://shopify/Product/15449107890561	nichts-zu-tun
+D3:gid://shopify/Product/15449147343233	nichts-zu-tun
+D3:gid://shopify/Product/15449159532929	nichts-zu-tun
+D3:gid://shopify/Product/15449365741953	nichts-zu-tun
+D3:gid://shopify/Product/15449391366529	nichts-zu-tun
+D3:gid://shopify/Product/15449475547521	nichts-zu-tun
+D3:gid://shopify/Product/15449508151681	nichts-zu-tun
+D3:gid://shopify/Product/15449510216065	nichts-zu-tun
+D3:gid://shopify/Product/15449510379905	nichts-zu-tun
+D3:gid://shopify/Product/15449510445441	nichts-zu-tun
+D3:gid://shopify/Product/15449510478209	nichts-zu-tun
+D3:gid://shopify/Product/15449510543745	nichts-zu-tun
+D3:gid://shopify/Product/15449618022785	nichts-zu-tun
+D3:gid://shopify/Product/15449618481537	nichts-zu-tun
+D3:gid://shopify/Product/15450063208833	nichts-zu-tun
+D3:gid://shopify/Product/15450066387329	nichts-zu-tun
+D3:gid://shopify/Product/15450849739137	nichts-zu-tun
+D3:gid://shopify/Product/15452711027073	nichts-zu-tun
+D3:gid://shopify/Product/15453895393665	nichts-zu-tun
+D3:gid://shopify/Product/15453921673601	nichts-zu-tun
+D3:gid://shopify/Product/15453922918785	nichts-zu-tun
+D3:gid://shopify/Product/15453956440449	nichts-zu-tun
+D3:gid://shopify/Product/15453999661441	nichts-zu-tun
+D3:gid://shopify/Product/15453999923585	beschreibung	Aerobic-Elternkind-Schuhe atmungsaktiv rutschsicher Innenbereich
+D3:gid://shopify/Product/15454000480641	nichts-zu-tun
+D3:gid://shopify/Product/15454000578945	nichts-zu-tun
+D3:gid://shopify/Product/15454000808321	beschreibung	Wasserdichte Jungenstiefel
+D3:gid://shopify/Product/15454039277953	nichts-zu-tun
+D3:gid://shopify/Product/15454090396033	nichts-zu-tun
+D3:gid://shopify/Product/15454090723713	nichts-zu-tun
+D3:gid://shopify/Product/15454094393729	nichts-zu-tun
+D3:gid://shopify/Product/15454105665921	nichts-zu-tun
+D3:gid://shopify/Product/15454106714497	nichts-zu-tun
+D3:gid://shopify/Product/15454124736897	nichts-zu-tun
+D3:gid://shopify/Product/15454161600897	nichts-zu-tun
+D3:gid://shopify/Product/15454193123713	nichts-zu-tun
+D3:gid://shopify/Product/15454193385857	nichts-zu-tun
+D3:gid://shopify/Product/15454193779073	nichts-zu-tun
+D3:gid://shopify/Product/15454204952961	nichts-zu-tun
+D3:gid://shopify/Product/15454301979009	nichts-zu-tun
+D3:gid://shopify/Product/15458756362625	nichts-zu-tun
+D3:gid://shopify/Product/15458990457217	nichts-zu-tun
+D3:gid://shopify/Product/15458993504641	nichts-zu-tun
+D3:gid://shopify/Product/15459989913985	nichts-zu-tun
+D3:gid://shopify/Product/15489435468161	nichts-zu-tun

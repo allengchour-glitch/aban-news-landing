@@ -97,6 +97,18 @@ WER SCHREIBT DAS FELD BEIM NÄCHSTEN PRODUKT?
  Ohne diesen Teil wäre die Reparatur beim nächsten Import-Lauf wieder aufgefressen — genau der
  Fehler, der bei `condition` und `google_product_category` schon zweimal Geld gekostet hat.
 
+⚠️ «0 Fehler» IST KEIN NACHWEIS. Beim «Herren-Shirt mit abstraktem Muster» (15491406365057)
+   meldete `productOptionUpdate` leere userErrors, der Ledger notierte 12 umbenannte Werte —
+   live standen die Codes «EA1814 …» aber weiterhin da, und `updatedAt` war noch der Vortag.
+   Erst die Nachkontrolle über ALLE 611 angefassten Produkte hat es gefunden; ein zweiter
+   Aufruf hat es dann sauber angewandt. Nach jedem Lauf gegen die Live-Daten nachzählen,
+   nicht dem eigenen Erfolgszähler glauben.
+
+⚠️ NICHT ANGEFASST: 11 Produkte nennen ihre Lieferantencodes zusätzlich im FLIESSTEXT
+   («Erhältlich in verschiedenen Farben (EA1814-EA1825)», «In den Farben QL2780, QL2781 und
+   QL2782 erhältlich»). Ein Feld zu ersetzen ist mechanisch, einen deutschen Satz umzuschreiben
+   nicht — dort würde ein Automat Grammatik zerbrechen. Bleibt offen und ist hier vermerkt.
+
 ⚠️ «Option value already exists» → Wert wird ÜBERSPRUNGEN, nie erzwungen. Sonst verschmilzt
    Shopify zwei Varianten zu einer und der Bestand der zweiten ist weg.
 ⚠️ Die Bestellautomatik ist NICHT betroffen: alle geprüften Varianten tragen die CJ-Varianten-SKU
