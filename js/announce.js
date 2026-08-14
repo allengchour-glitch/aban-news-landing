@@ -31,8 +31,8 @@
     "#aban-ann a:hover{background:rgba(255,255,255,.18);text-decoration:none}" +
     "#aban-ann .m{transition:opacity .4s ease}" +
     "#aban-ann .x{position:absolute;right:6px;top:50%;transform:translateY(-50%);" +
-    "background:transparent;border:0;color:#fff;font-size:1.15rem;line-height:1;cursor:pointer;" +
-    "padding:4px 9px;opacity:.85;border-radius:6px}" +
+    "background:transparent;border:0;color:#fff;font-size:1.25rem;line-height:1;cursor:pointer;" +
+    "padding:10px 12px;opacity:.85;border-radius:8px;min-width:38px;min-height:38px}" +
     "#aban-ann .x:hover{opacity:1;background:rgba(255,255,255,.15)}" +
     "@media(prefers-color-scheme:dark){#aban-ann{background:#92400e}}";
   document.head.appendChild(css);
