@@ -90,3 +90,4 @@ gid://shopify/Product/15496531181953	induktions-ladegerat-mit-tassenwarmer-88505
 gid://shopify/Product/15496531214721	handgefertigte-retro-umhangetasche-aus-rindsle-973056	Handgefertigte Retro-Umhängetasche aus Rindsleder
 gid://shopify/Product/15496614969729	rutschfeste-saugfahige-kuchenmatte-4fae6e	Rutschfeste, saugfähige Küchenmatte
 gid://shopify/Product/15496706261377	gamepad-tablet-mit-huhnchen-griff-1ed939	Gamepad Tablet mit Hühnchen-Griff
+gid://shopify/Product/15497453142401	wasserdichter-reise-rucksack-fur-herren-422272	Wasserdichter Reise-Rucksack für Herren

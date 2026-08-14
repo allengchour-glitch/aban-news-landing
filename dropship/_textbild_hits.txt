@@ -6503,3 +6503,5 @@ gid://shopify/Product/15453792698753	20->2	Mädchen-Lauflernschuhe, nude
 gid://shopify/Product/15453794468225	125->0	Hühnchenbrust Snacks für Katzen
 gid://shopify/Product/15453794500993	121->0	Tier Sofa mit abnehmbarer und waschbarer Hülle
 gid://shopify/Product/15453794992513	58->0	Hundebett mit entfernbarer, waschbarer wasserdichter Randumr
+gid://shopify/Product/15412361593217	144->3	3D-Druck Nachttischlampe – warmes Nachtlicht & Deko-Objekt f
+gid://shopify/Product/15412432175489	13->0	Kühlende Sommerdecke – Cool-Feel, atmungsaktiv & waschbar
