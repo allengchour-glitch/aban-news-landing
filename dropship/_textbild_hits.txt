@@ -6604,3 +6604,9 @@ gid://shopify/Product/15449150554497	20->0	Croissant-Horn Hoodie für Damen
 gid://shopify/Product/15449168019841	13->0	Trolley-Transportbox für Haustiere
 gid://shopify/Product/15449168937345	27->1	Reisekoffer aus Metall für Sie & Ihn
 gid://shopify/Product/15449175622017	80->1	Kühles Eisseide-Sommerquilt für heisse Tage
+gid://shopify/Product/15449427575169	11->0	WLAN-Videotürklingel mit Nachtvision
+gid://shopify/Product/15449428263297	50->0	2in1 Bildschirmreiniger-Set für Handy/PC
+gid://shopify/Product/15449430196609	61->0	Rutschfester Wasser-Spielmatte für Kinder & Hunde
+gid://shopify/Product/15449432686977	8->0	Haarpflege-Essenz
+gid://shopify/Product/15449440747905	25->0	Herren Kapuzenpullover
+gid://shopify/Product/15449442976129	39->0	Sport-Taille-Tasche
