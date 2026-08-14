@@ -35,7 +35,7 @@
     link.style.cssText = 'color:#fbbf24;font-weight:800;text-decoration:none';
     var x = document.createElement('button');
     x.type = 'button'; x.textContent = '✕'; x.setAttribute('aria-label', msg[2]);
-    x.style.cssText = 'background:none;border:0;color:#cbd5e1;font-size:1.1rem;cursor:pointer;line-height:1;padding:.1rem .4rem';
+    x.style.cssText = 'background:none;border:0;color:#cbd5e1;font-size:1.2rem;cursor:pointer;line-height:1;padding:.6rem .7rem;min-width:38px;min-height:38px;border-radius:8px';
     x.addEventListener('click', function () {
       try { localStorage.setItem(KEY, '1'); } catch (e) {}
       if (bar.parentNode) bar.parentNode.removeChild(bar);
