@@ -26,3 +26,27 @@ gid://shopify/Product/15443496927617	zugeordnet	6	Fitness-Tracker «ActiveBand»
 gid://shopify/Product/15443496960385	zugeordnet	3	Smartwatch «PulseFit» · Fitness & Anrufe
 gid://shopify/Product/15443496993153	zugeordnet	4	Smartwatch «ProWatch» · Fitness & Anrufe
 gid://shopify/Product/15443497025921	zugeordnet	42	Smartwatch «ActiveOne» · Fitness & Anrufe
+gid://shopify/Product/15443497976193	zugeordnet	8	LED-Projektor «Aurora» · Stimmungslicht
+gid://shopify/Product/15443498893697	zugeordnet	3	Kabellose Kopfhörer «AeroPods» · Bluetooth TWS
+gid://shopify/Product/15443498959233	zugeordnet	1	Kabellose Kopfhörer «WavePods» · Bluetooth TWS
+gid://shopify/Product/15443502006657	zugeordnet	2	Smartwatch «FitPro» · Fitness & Anrufe
+gid://shopify/Product/15443502072193	zugeordnet	5	Fitness-Tracker «StepGo» · Herzfrequenz & Schritte
+gid://shopify/Product/15443502104961	zugeordnet	1	Smartwatch «SmartOne» · Fitness & Anrufe
+gid://shopify/Product/15443502137729	zugeordnet	4	Smartwatch «Vital» · Fitness & Anrufe
+gid://shopify/Product/15443531760001	zugeordnet	4	Wireless-Charger «QiFast» · kabellos laden
+gid://shopify/Product/15443532218753	zugeordnet	2	Powerbank «Volt» · Schnellladen
+gid://shopify/Product/15443532251521	zugeordnet	2	Powerbank «MaxPower» · Schnellladen
+gid://shopify/Product/15445268726145	zugeordnet	8	Handgemachte French Nails – Weiss
+gid://shopify/Product/15445269348737	bild-urls-tot
+gid://shopify/Product/15445270233473	zugeordnet	3	Aufbau-Gel für Nägel (25g)
+gid://shopify/Product/15445270921601	zugeordnet	44	3-in-1 Nagellackstift (5er-Set)
+gid://shopify/Product/15445272428929	zugeordnet	2	UV Polish Crystal Gel Starter-Set
+gid://shopify/Product/15445273379201	zugeordnet	20	UV Nagellack Set – Glitzer & Uni-Farben
+gid://shopify/Product/15445274919297	zugeordnet	15	Painless Fast Nail Art Extension Set
+gid://shopify/Product/15445275771265	zugeordnet	2	Nail Art Infiltration Suit Dust Brush
+gid://shopify/Product/15445276197249	zugeordnet	20	3-Farben Ice Jelly Nude Gel Nagellack-Set
+gid://shopify/Product/15445279474049	zugeordnet	2	UV/LED Lichthärtungsgerät für Gelnägel
+gid://shopify/Product/15445798814081	zugeordnet	2	Mattes Make-up Pinselset mit Nylonborsten
+gid://shopify/Product/15445799240065	zugeordnet	2	24-teiliges Make-up Pinselset
+gid://shopify/Product/15445799436673	zugeordnet	1	20-teiliges Make-up Pinselset Champagner
+gid://shopify/Product/15445799469441	zugeordnet	2	13-teiliges Make-up Pinselset mit langem Griff

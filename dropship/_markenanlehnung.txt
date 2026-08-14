@@ -1,0 +1,26 @@
+gid://shopify/Product/15413725102465	descriptionHtml	Cropped Blazer · Damen, mit Pailletten-Detail
+gid://shopify/Product/15448605589889	descriptionHtml	High-Elastic Butt-Lifting Leggings
+gid://shopify/Product/15448659755393	descriptionHtml	Rundhals-Spitzentop
+gid://shopify/Product/15449113166209	descriptionHtml	Herren Übergangsjacke
+gid://shopify/Product/15450013467009	descriptionHtml	Vintage Sandalen mit Blockabsatz
+gid://shopify/Product/15450518651265	descriptionHtml	Rome Bestickte Retro Casual Schuhe
+gid://shopify/Product/15450540704129	descriptionHtml	Warme Retro-Stiefeletten aus Samt für Herren
+gid://shopify/Product/15450693501313	descriptionHtml	Handgenähte Damen-Freizeitschuhe mit weicher Sohle
+gid://shopify/Product/15453671948673	descriptionHtml	Vintageschmuck-Set
+gid://shopify/Product/15455759565185	descriptionHtml	Westenkleid mit Perlenblüten-Brosche
+gid://shopify/Product/15455793906049	descriptionHtml	Damen-Lace-Top Herbst, elegant und luxuriös
+gid://shopify/Product/15455953748353	descriptionHtml	Voll-Diamant Statement Ring japanisch-koreanisch
+gid://shopify/Product/15468686016897	descriptionHtml	Elegantes Strickkleid
+gid://shopify/Product/15470359380353	descriptionHtml	Halskette mit aufklappbarem Medaillon
+gid://shopify/Product/15472217194881	descriptionHtml	Perlenarmband · Damen
+gid://shopify/Product/15479486022017	descriptionHtml	Bequeme geschlossene Sandalen
+gid://shopify/Product/15479634395521	descriptionHtml	Retro Chunky-Soled Elevator Slip-On Casual Outdoor Slippers
+gid://shopify/Product/15484424520065	descriptionHtml	Dekokissen mit Tiermuster oder geometrischem Design
+gid://shopify/Product/15485407691137	descriptionHtml	Damenbluse mit langen Ärmeln · Slim Fit
+gid://shopify/Product/15485690544513	descriptionHtml	Rüschenbluse im französischen Stil
+gid://shopify/Product/15490774696321	descriptionHtml	Flache Damen-Stiefeletten
+gid://shopify/Product/15491415507329	descriptionHtml	Flache Freizeitschuhe für Damen
+gid://shopify/Product/15492127883649	descriptionHtml	Retro Plateau-Sandalen für Damen
+gid://shopify/Product/15493705597313	descriptionHtml	Gepunkteter Mini-Stufenrock mit Schleife
+gid://shopify/Product/15494643188097	descriptionHtml	Figurbetonendes Strickkleid
+gid://shopify/Product/15495116816769	descriptionHtml	Colorblock V-Neck Strickkleid mit Schnürung
