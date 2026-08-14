@@ -11,8 +11,11 @@
  *  B) cjpraefix — 20 Paare (40 Produkte) mit identischer CJ-Varianten-SKU, einmal roh
  *     importiert mit «CJ-»-Präfix, einmal veredelt ohne Präfix. Preise 14.90 gegen
  *     39.90 für dieselbe Ware; alle 40 im Google-Kanal (Duplicate Offer).
- *  C) bild — Produkte mit byte-identischem Hauptbild (gleiche Content-Length UND
- *     gleicher MD5 der heruntergeladenen Datei) und erkennbar derselben Ware.
+ *  C) bild — Produkte mit byte-identischem Hauptbild und erkennbar derselben Ware.
+ *     Ermittelt über alle 31'398 aktiven Produkte: erst Content-Length je Hauptbild
+ *     (HEAD), dann MD5 der ersten 48 KB nur innerhalb der Grössen-Kollisionen.
+ *     Ergebnis: 240 bildgleiche Gruppen / 580 Produkte. Davon sind aber die
+ *     WENIGSTEN Dubletten — siehe Fehltreffer unten. Übrig blieben 51 Paare.
  *
  * Wer gewinnt, wer geht auf DRAFT
  * -------------------------------
@@ -38,6 +41,27 @@
  *  - «Dirndl retro ohne Bluse» 15469974454657 führt Grösse 36 und 38, das
  *    Sammelprodukt erst ab 40. Eine aufgeteilte Grössenreihe, keine Dublette.
  *  Beide bleiben ACTIVE. Allgemein statt Ausnahmeliste: die SKU-Deckungsprüfung.
+ *
+ *  Gruppe C war fast durchweg Fehltreffer — von 240 bildgleichen Gruppen blieben 51:
+ *  - 34 Gruppen sind die POD-Schweiz-Editionen: DASSELBE Motiv auf Sticker, Magnet,
+ *    Tasche, Kissen und Mauspad. Das Hauptbild ist die Design-Datei, nicht das
+ *    Produktfoto. Fünf verschiedene Artikel, ein Bild — wer hier draftet, löscht
+ *    vier verkaufbare Produkte je Motiv. **Ein gleiches Bild beweist keine Dublette,
+ *    wenn das Bild das MOTIV zeigt und nicht den Artikel.**
+ *  - 55 Gruppen sind Farb-, Grössen- oder Modellfamilien, die sich EIN Katalogfoto
+ *    teilen: «ZQ-K26 Rotes» / «ZQ-K26 Blaues», 6× «Yoga-Hose · Modell 3/5/…»,
+ *    13 Leinwandbilder mit demselben Rahmen-Foto, «Damenuhr Bellevue B39 (Ø 35 mm)»
+ *    / «B42-2 (Ø 40 mm)», «18650 Akku» / «18650 Akku 10er-Pack».
+ *  - Ein Set ist keine Dublette seines Einzelteils: «Zirkonia-Kette «Stella»» gegen
+ *    «Kleeblatt-Glücks-Duo · 2-teilig», «Geburtsstein-Armband «Aura»» gegen
+ *    «Geschenkset «Aura» · 3-teilig».
+ *  - Verneinung gelesen: «Induktions-Wok MIT Antihaft» gegen «Induktions-Pfanne
+ *    OHNE Antihaft-Beschichtung» ist ein Gegensatz, keine Umformulierung.
+ *  Die maschinellen Wachen dagegen stehen unten (SET/FARBE/MODELL/EINHEIT/ohne);
+ *  was sie durchliessen, wurde von Hand geprüft — 37 weitere Paare fielen dabei
+ *  heraus, u. a. «Fächer für Rave» gegen «Bolero Rave», «Feuerdrache Diamond
+ *  Painting» gegen «Diamond Painting: Traktor», «Kugelkettchen» gegen
+ *  «Buchstaben-Halskette» und alle Fortura-Paare mit Grösse/Alter im Titel.
  *
  * Bewusst NICHT angefasst
  * -----------------------
