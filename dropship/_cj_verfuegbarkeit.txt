@@ -8847,3 +8847,10 @@ gid://shopify/Product/15454204592513	ok
 gid://shopify/Product/15454204559745	ok
 gid://shopify/Product/15454204526977	ok
 gid://shopify/Product/15454204494209	ok
+gid://shopify/Product/15454204461441	ok
+gid://shopify/Product/15454204428673	ok
+gid://shopify/Product/15454204395905	ok
+gid://shopify/Product/15454204363137	ok
+gid://shopify/Product/15454204330369	ok
+gid://shopify/Product/15454204297601	ok
+gid://shopify/Product/15454204264833	ok
