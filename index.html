@@ -597,7 +597,13 @@
       if(nw&&news.length) nw.innerHTML=news.map(function(n){return '<li style="padding:.45rem 0;border-bottom:1px solid var(--line,#ece6db)"><a href="'+esc(n.url||'#')+'" target="_blank" rel="noopener" style="text-decoration:none;font-weight:600">'+esc(n.title||'')+'</a><div style="color:#5c6773;font-size:.82em;margin-top:.2rem">'+esc(n.source||'')+'</div></li>';}).join('');
       sec.hidden=false;
     }
-    fetch('/data/markets.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(d){
+    /* Die volle markets.json hat ~136 kB — fuer 8 Zeilen + 3 News. Die Mini-Datei
+       (~1.5 kB, von tools/gen_markets_mini.py im Build erzeugt) reicht der Vorschau;
+       fehlt sie, faellt der Code auf die volle Datei zurueck. */
+    fetch('/data/markets-mini.json',{cache:'no-cache'})
+      .then(function(r){if(!r.ok)throw 0;return r.json();})
+      .catch(function(){return fetch('/data/markets.json',{cache:'no-cache'}).then(function(r){return r.json();});})
+      .then(function(d){
       fx=d.fx||{usd:1};
       render(d); // sofort in USD zeigen …
       // … dann Land erkennen und ggf. auf CHF/EUR umstellen
@@ -628,12 +634,9 @@
       <p class="sub">Echte Ausgaben, nach Thema zu In-Depth-Leserouten sortiert — mit ehrlicher Analyse, FAQ und Leseplan. Kostenlos, ohne Anmeldung.</p>
       <div class="cards">
         <a class="card" style="text-decoration:none;color:inherit;display:block" href="/dossier/ki-werkzeugkasten.html"><div class="ico">🧰</div><h3>KI-Werkzeugkasten</h3><p>Ehrliche Tool-Tests, gebündelt zur Leseroute.</p></a>
-        <a class="card" style="text-decoration:none;color:inherit;display:block" href="/dossier/ki-modelle-vergleich.html"><div class="ico b">🤖</div><h3>KI-Modelle im Vergleich</h3><p>Claude, Mistral, Aleph Alpha &amp; Co. — wer was kann.</p></a>
         <a class="card" style="text-decoration:none;color:inherit;display:block" href="/dossier/ki-fuer-selbststaendige.html"><div class="ico p">🚀</div><h3>KI für Selbstständige</h3><p>Konkrete Workflows fürs Ein-Personen-Team.</p></a>
         <a class="card" style="text-decoration:none;color:inherit;display:block" href="/dossier/ki-datenschutz-dach.html"><div class="ico">🔒</div><h3>Datenschutz im DACH-Raum</h3><p>DSGVO &amp; EU AI Act, praxisnah eingeordnet.</p></a>
         <a class="card" style="text-decoration:none;color:inherit;display:block" href="/dossier/ki-prompts-die-funktionieren.html"><div class="ico b">💡</div><h3>Prompts, die funktionieren</h3><p>Erprobt, zum Kopieren und Anpassen.</p></a>
-        <a class="card" style="text-decoration:none;color:inherit;display:block" href="/dossier/tool-duelle-vergleiche.html"><div class="ico b">🥊</div><h3>Tool-Duelle: A gegen B</h3><p>Direkte Vergleiche — welches Tool wirklich gewinnt.</p></a>
-        <a class="card" style="text-decoration:none;color:inherit;display:block" href="/dossier/anti-hype-reality-checks.html"><div class="ico p">🔍</div><h3>Anti-Hype &amp; Reality-Checks</h3><p>Was die Schlagzeile verspricht — und was stimmt.</p></a>
       </div>
       <p style="margin-top:1.4rem"><a class="btn btn--ghost" href="/dossiers.html">Alle Themen-Dossiers ansehen →</a></p>
       <p style="margin-top:.9rem;font-size:.95rem;color:var(--muted)">Lieber selbst loslegen? <a href="/ki-werkzeug.html" style="font-weight:700;color:var(--amber-dk)">Gratis KI-Werkzeug: Texte &amp; Fahrplan in Minuten →</a></p>
@@ -649,18 +652,8 @@
       <div class="cards">
         <a class="card" style="text-decoration:none;color:inherit;display:block" href="/ki-werkzeug.html"><div class="ico">✍️</div><h3>KI-Werkzeug</h3><p>Produkttexte, Social-Posts &amp; ein KI-Fahrplan in Minuten.</p></a>
         <a class="card" style="text-decoration:none;color:inherit;display:block" href="/welche-ki-fuer-was.html"><div class="ico b">🧭</div><h3>Welche KI für was?</h3><p>über 175 Tools ehrlich bewertet — nach Aufgabe, Budget &amp; DSGVO.</p></a>
-        <a class="card" style="text-decoration:none;color:inherit;display:block" href="/ki-readiness-check.html"><div class="ico p">📊</div><h3>KI-Readiness-Check</h3><p>7 Fragen: Wie KI-fit ist dein Betrieb? Score + 3 Schritte.</p></a>
         <a class="card" style="text-decoration:none;color:inherit;display:block" href="/ki-erwaehnungs-check.html"><div class="ico">🔎</div><h3>Wirst du von KI empfohlen?</h3><p>Prüf gratis, ob ChatGPT &amp; Co. deinen Betrieb nennen.</p></a>
-        <a class="card" style="text-decoration:none;color:inherit;display:block" href="/ki-glossar.html"><div class="ico b">📖</div><h3>KI-Glossar</h3><p>33 Begriffe ehrlich erklärt — mit Klartext &amp; Hype-Check.</p></a>
         <a class="card" style="text-decoration:none;color:inherit;display:block" href="/prompt-baukasten.html"><div class="ico">🧱</div><h3>Prompt-Baukasten</h3><p>Aus Stichworten ein starker, strukturierter KI-Prompt.</p></a>
-        <a class="card" style="text-decoration:none;color:inherit;display:block" href="/ki-spar-rechner.html"><div class="ico b">🧮</div><h3>KI-Spar-Rechner</h3><p>Wie viel Zeit &amp; Geld spart dir KI? Ehrlich gerechnet.</p></a>
-        <a class="card" style="text-decoration:none;color:inherit;display:block" href="/ki-dsgvo-check.html"><div class="ico p">🔒</div><h3>DSGVO-Schnellcheck</h3><p>6 Fragen → Ampel + konkrete To-dos für KI-Tools.</p></a>
-        <a class="card" style="text-decoration:none;color:inherit;display:block" href="/ki-hype-detektor.html"><div class="ico">🔥</div><h3>KI-Hype-Detektor</h3><p>Marketing-Text einfügen → Buzzwords markiert, Hype-Score, Klartext.</p></a>
-        <a class="card" style="text-decoration:none;color:inherit;display:block" href="/ki-prompt-checker.html"><div class="ico b">🔧</div><h3>Prompt-Verbesserer</h3><p>Prompt einfügen → Score + was fehlt + besseres Gerüst.</p></a>
-        <a class="card" style="text-decoration:none;color:inherit;display:block" href="/ki-richtlinie.html"><div class="ico p">📋</div><h3>KI-Richtlinie fürs Team</h3><p>In 1 Minute klare Nutzungsregeln — zum Kopieren &amp; Drucken.</p></a>
-        <a class="card" style="text-decoration:none;color:inherit;display:block" href="/ki-bullshit-bingo.html"><div class="ico">🎲</div><h3>KI-Bullshit-Bingo</h3><p>Buzzword-Bingo fürs nächste „KI-Meeting" — spielbar &amp; druckbar.</p></a>
-        <a class="card" style="text-decoration:none;color:inherit;display:block" href="/text-anonymisieren.html"><div class="ico">🔏</div><h3>Text-Anonymisierer</h3><p>Daten maskieren, bevor sie in die KI gehen — lokal.</p></a>
-        <a class="card" style="text-decoration:none;color:inherit;display:block" href="/ki-token-rechner.html"><div class="ico b">🔢</div><h3>KI-Token-Rechner</h3><p>Tokens schätzen + Kosten je Anfrage.</p></a>
         <a class="card" style="text-decoration:none;color:inherit;display:block" href="/branchen.html"><div class="ico b">🏢</div><h3>KI für deine Branche</h3><p>360 Branchen-Guides — von Handwerk bis Praxis, konkret &amp; ehrlich.</p></a>
         <a class="card" style="text-decoration:none;color:inherit;display:block" href="/online-tools.html"><div class="ico p">🛠️</div><h3>Alle Gratis-Tools</h3><p>Rechner, Generatoren &amp; Helfer — ohne Login.</p></a>
       </div>
@@ -677,13 +670,8 @@
         <a class="card" style="text-decoration:none;color:inherit;display:block" href="/geld-und-ki.html"><div class="ico">💶</div><h3>Geld &amp; KI — Übersicht</h3><p>Alle Guides, Rechner &amp; Checks an einem Ort.</p></a>
         <a class="card" style="text-decoration:none;color:inherit;display:block" href="/rechnung-generator.html"><div class="ico b">🧾</div><h3>Rechnung schreiben</h3><p>Gratis-Generator + PDF, mit Pflichtangaben — lokal im Browser.</p></a>
         <a class="card" style="text-decoration:none;color:inherit;display:block" href="/mahnung-schreiben.html"><div class="ico p">✉️</div><h3>Mahnung schreiben</h3><p>3 Stufen + Text-Generator zum Kopieren, wenn Kunden nicht zahlen.</p></a>
-        <a class="card" style="text-decoration:none;color:inherit;display:block" href="/angebot-schreiben.html"><div class="ico">📄</div><h3>Angebot schreiben</h3><p>Vorlage + Generator zum Kopieren — mit oder ohne MwSt.</p></a>
-        <a class="card" style="text-decoration:none;color:inherit;display:block" href="/auftragsbestaetigung-schreiben.html"><div class="ico b">✅</div><h3>Auftragsbestätigung</h3><p>Auftrag bestätigen — Generator zum Kopieren.</p></a>
         <a class="card" style="text-decoration:none;color:inherit;display:block" href="/maerkte.html"><div class="ico b">📈</div><h3>Live-Märkte</h3><p>Aktien &amp; Krypto, Charts, KI-Sentiment je Wert.</p></a>
         <a class="card" style="text-decoration:none;color:inherit;display:block" href="/etf-fuer-einsteiger.html"><div class="ico p">🧺</div><h3>ETF &amp; Sparplan</h3><p>Der ruhige Weg + Kosten- und Zinseszins-Rechner.</p></a>
-        <a class="card" style="text-decoration:none;color:inherit;display:block" href="/krypto-fuer-einsteiger.html"><div class="ico">🪙</div><h3>Krypto für Einsteiger</h3><p>Bitcoin &amp; Co. ehrlich: Kauf, Risiken, Schutz.</p></a>
-        <a class="card" style="text-decoration:none;color:inherit;display:block" href="/ki-betrug-scam-check.html"><div class="ico b">🛡️</div><h3>KI-Betrug &amp; Scams</h3><p>Deepfakes &amp; Fake-Bots erkennen — mit Schnell-Check.</p></a>
-        <a class="card" style="text-decoration:none;color:inherit;display:block" href="/steuer-basics-selbststaendige.html"><div class="ico p">📊</div><h3>Steuer &amp; Vorsorge</h3><p>Für Selbstständige: Rücklage, Fristen, Altersvorsorge.</p></a>
       </div>
       <p style="margin-top:1.4rem"><a class="btn btn--ghost" href="/geld-und-ki.html">Alle Geld-Themen ansehen →</a></p>
     </div>
