@@ -6668,3 +6668,5 @@ gid://shopify/Product/15452721119617	46->0	Mini Elektrischer Ellipsentrainer mit
 gid://shopify/Product/15453464592769	22->1	Weinzubehör-Set Chillour InnovaGoods 7 Stücke
 gid://shopify/Product/15453473636737	20->2	Unisex-Uhr Radiant Rot
 gid://shopify/Product/15453811245441	17->0	Bissfester Corn-Dog für Hunde mit Geräusche
+gid://shopify/Product/15453922361729	15->3	Klassischer Acryl Aquarium
+gid://shopify/Product/15453999628673	149->0	Faltbarer Schuhregal mit mehreren Ebenen
