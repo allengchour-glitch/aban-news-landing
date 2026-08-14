@@ -279,15 +279,22 @@ def main():
                 {"id": f"gid://shopify/Product/{pid}"})["product"]
         html = (d.get("w") or {}).get("value") or ""
         rohdaten = (d.get("d") or {}).get("value") or ""
-        if not html or not rohdaten:
-            print(f"  ⚠️ {name}: Judge.me-Metafelder fehlen — offen, nicht erledigt")
+        if not rohdaten:
+            print(f"\n{name} ({pid})\n  ⚠️ judgeme.review_widget_data fehlt — OFFEN, nicht "
+                  f"erledigt (naechster Lauf versucht es erneut)")
             continue
 
-        vorhanden = set(bilder_im_html(html))
-        treffer = sorted(vorhanden & set(BLOCKIERT))
-        unbekannt -= vorhanden
+        # ⚠️ Gesucht wird in BEIDEN Feldern. Der erste Entwurf sah nur die <a>-Elemente in
+        # `judgeme.widget` und meldete fuer Slim Wallet und Bali «0 gesperrte Bilder» — dabei
+        # ist `widget` bei diesen beiden nur 11 Zeichen lang und die komplette Galerie steckt
+        # in `review_widget_data`. Fuenf Fotos waeren als erledigt durchgegangen.
+        treffer = sorted(b for b in BLOCKIERT if b in html or b in rohdaten)
+        unbekannt -= {b for b in BLOCKIERT if b in html or b in rohdaten}
+        alle = set(bilder_im_html(html)) | set(
+            re.findall(r"aliexpress-media\.com/kf/([A-Za-z0-9]+\.jpg)", rohdaten))
         print(f"\n{name} ({pid})")
-        print(f"  Bewertungsfotos im Widget: {len(vorhanden)} | davon gesperrt: {len(treffer)}")
+        print(f"  widget {len(html)} Zeichen · review_widget_data {len(rohdaten)} Zeichen · "
+              f"{len(alle)} Bewertungsfotos | gesperrt: {len(treffer)}")
         for t in treffer:
             print(f"    − {t}  ({BLOCKIERT[t]})")
         if not treffer:
@@ -300,23 +307,23 @@ def main():
         neu_daten = json.dumps(daten, ensure_ascii=False)
 
         # Kontrollen, bevor irgendetwas geschrieben wird
-        rest_html = set(bilder_im_html(neu_html)) & set(treffer)
         nachher_bewertungen = len(daten.get("reviews") or [])
         fehler = []
-        if rest_html:
-            fehler.append(f"HTML enthaelt noch {rest_html}")
-        if any(t in neu_daten for t in treffer):
-            fehler.append("JSON enthaelt noch gesperrte Adressen")
+        for t in treffer:
+            if t in neu_html:
+                fehler.append(f"widget enthaelt noch {t}")
+            if t in neu_daten:
+                fehler.append(f"review_widget_data enthaelt noch {t}")
         if nachher_bewertungen != vorher_bewertungen:
             fehler.append(f"Bewertungszahl veraendert {vorher_bewertungen}→{nachher_bewertungen}")
         if len(neu_html) > len(html):
-            fehler.append("HTML ist laenger geworden")
+            fehler.append("widget ist laenger geworden")
         if fehler:
             print("  ⛔ NICHT geschrieben: " + "; ".join(fehler))
             continue
 
-        print(f"  → HTML {len(html)}→{len(neu_html)} Zeichen, "
-              f"{len(entfernt)} Bildelemente; JSON {weg} Bildeintraege; "
+        print(f"  → widget {len(html)}→{len(neu_html)} Zeichen ({len(entfernt)} Bildelemente), "
+              f"review_widget_data {len(rohdaten)}→{len(neu_daten)} ({weg} Bildeintraege); "
               f"Bewertungen unveraendert bei {nachher_bewertungen}")
         gesamt_html += len(entfernt)
         gesamt_json += weg
@@ -325,7 +332,8 @@ def main():
             continue
         open(f"{SICHERUNG}/{pid}.widget.html", "w").write(html)
         open(f"{SICHERUNG}/{pid}.data.json", "w").write(rohdaten)
-        metafeld_setzen(pid, "widget", neu_html)
+        if neu_html != html:
+            metafeld_setzen(pid, "widget", neu_html)
         metafeld_setzen(pid, "review_widget_data", neu_daten)
         for t in treffer:
             ledger.write(f"{time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}\t{pid}\t{t}\t"
