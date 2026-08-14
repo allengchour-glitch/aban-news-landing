@@ -540,6 +540,43 @@ SEITEN = {
                    ('Lieferung in der Regel 5–12 Werktage ·',
                     'Lieferung in der Regel 7–14 Werktage ·')],
     699143356801: [('innerhalb von 5–12 Werktagen.', 'innerhalb von 10–20 Werktagen.')],
+    # --- Zweite Fundwelle. Sie kam erst zustande, als ich NICHT nach meinen eigenen
+    # Bausteinen suchte, sondern jede Zeitspanne auf allen 132 veröffentlichten Seiten
+    # ausdruckte und von Hand las. Elf weitere Seiten nannten 7-12 bzw. 7-14 Werktage —
+    # Zahlen, die es im Sortiment gar nicht gibt.
+    699143225729: [('Lieferung innerhalb der Schweiz in 5–12 Werktagen.',
+                    'Lieferung innerhalb der Schweiz in 10–20 Werktagen.')],
+    698019381633: [('✅ Versand 7-12 Werktage (direkt ab Werk)',
+                    '✅ Versand 10–20 Werktage (direkt ab Werk)')],
+    698063389057: [('✅ Versand 7-14 Werktage', '✅ Versand 10–20 Werktage')],
+    698000015745: [('✅ Versand 7-12 Werktage – direkt ab Werk',
+                    '✅ Versand 10–20 Werktage – direkt ab Werk')],
+    698063487361: [('Versand 7-14 Werktage.', 'Versand 10–20 Werktage.')],
+    698059325825: [('Versand 7-14 Tage.', 'Versand 10–20 Werktage.')],
+    698060996993: [('Versand 7-14 Tage.', 'Versand 10–20 Werktage.')],
+    698029965697: [('<p>7-12 Werktage — ehrlich gesagt. Keine Lügen. Versand direkt ab Werk '
+                    'damit dein Preis stimmt.</p>',
+                    '<p>10–20 Werktage im Direktversand ab Herstellerlager, ab Schweizer Lager '
+                    '1–2 Werktage — ehrlich gesagt. Keine Lügen. Die Angabe für den einzelnen '
+                    'Artikel steht auf der Produktseite.</p>'),
+                   ('7-12 Werktage CH', '10–20 Werktage CH')],
+    # ueber-uns nennt bereits die richtige Staffel, nur in «Tage» statt «Werktage».
+    697899549057: [('· 2-7 Tage Lagerartikel · einige Artikel 10-20 Tage ·',
+                    '· 1–2 Werktage ab Schweizer Lager · 2–7 Werktage ab EU-Lager · '
+                    'übrige Artikel 10–20 Werktage ·')],
+    # ⚠️ Diese Weihnachtsseite versprach «Express-Bundles» mit 7-10 Tagen. Eine Express-
+    # Versandart gibt es im Versandprofil überhaupt nicht (nur Standard CHF 7.00 und
+    # Gratisversand ab Schwelle) — die Zusage war doppelt falsch. Die Lieferaussage wird
+    # korrigiert; dass die «Last-Minute am 23. Dezember»-Aufmachung bei 10–20 Werktagen
+    # nicht mehr trägt, ist eine Betreiber-Entscheidung und wird gemeldet, nicht hier
+    # nebenbei umgeschrieben.
+    698005782913: [('<h2>Express-Bundles (Lieferung 7-10 Tage)</h2>',
+                    '<h2>Premium-Bundles (Lieferung 10–20 Werktage)</h2>'),
+                   ('<p>Keine Sorge. Diese Premium-Bundles kommen rechtzeitig — und sehen aus '
+                    'wie 4-Wochen-Planung.</p>',
+                    '<p>Damit das Geschenk sicher rechtzeitig da ist, bestell am besten bis '
+                    'Ende November: der Direktversand ab Herstellerlager braucht 10–20 '
+                    'Werktage. Diese Premium-Bundles sehen aus wie 4-Wochen-Planung.</p>')],
 }
 
 
@@ -547,7 +584,7 @@ def seiten():
     import urllib.request as _u
     basis = "https://au3j0y-hq.myshopify.com/admin/api/2024-10/pages"
     kopf = {"X-Shopify-Access-Token": TOK, "Content-Type": "application/json"}
-    geaendert = fehler = 0
+    geaendert = fehler = schon = 0
     for pid, paare in SEITEN.items():
         try:
             with _u.urlopen(_u.Request(f"{basis}/{pid}.json", headers=kopf), timeout=60) as r:
@@ -557,15 +594,19 @@ def seiten():
             fehler += 1
             continue
         b = seite.get("body_html") or ""
+        # Schon erledigt? Dann ist das KEIN Fehler — der Lauf ist wiederholbar.
+        if all(a not in b and e in b for a, e in paare):
+            schon += 1
+            continue
         neu = b
-        for alt, ersatz in paare:
-            n = neu.count(alt)
+        for a, ersatz in paare:
+            n = neu.count(a)
             if n != 1:
                 sys.stderr.write(f"✗ {seite['handle']}: Vorlage {n}x statt 1x gefunden — "
-                                 f"KEINE Änderung an dieser Seite\n  {alt[:90]}\n")
+                                 f"KEINE Änderung an dieser Seite\n  {a[:90]}\n")
                 neu = None
                 break
-            neu = neu.replace(alt, ersatz)
+            neu = neu.replace(a, ersatz)
         if neu is None:
             fehler += 1
             continue
@@ -573,8 +614,8 @@ def seiten():
             continue
         if DRY:
             print(f"DRY {seite['handle']}: {len(paare)} Stelle(n)")
-            for alt, ersatz in paare:
-                print("   ALT:", re.sub(r'<[^>]+>', '', alt)[:130])
+            for a, ersatz in paare:
+                print("   ALT:", re.sub(r'<[^>]+>', '', a)[:130])
                 print("   NEU:", re.sub(r'<[^>]+>', '', ersatz)[:130])
             geaendert += 1
             continue
@@ -594,13 +635,14 @@ def seiten():
                 jetzt = json.loads(r.read())["page"].get("body_html") or ""
         except Exception:
             jetzt = ""
-        if all(alt not in jetzt for alt, _ in paare):
+        if all(a not in jetzt for a, _ in paare):
             geaendert += 1
             print(f"   ✓ {seite['handle']}")
         else:
             fehler += 1
             sys.stderr.write(f"✗ {seite['handle']}: Änderung nicht angekommen\n")
-    print(f"Seiten geändert: {geaendert}, offen geblieben: {fehler}")
+    print(f"Seiten geändert: {geaendert}, schon erledigt: {schon}, "
+          f"offen geblieben: {fehler}")
 
 
 if __name__ == "__main__":
