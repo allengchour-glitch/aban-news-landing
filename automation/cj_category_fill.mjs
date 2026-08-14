@@ -86,7 +86,7 @@ function parseVar(v){const k=(v.variantKey||'').trim();const i=k.lastIndexOf('-'
    else if(LETTERSIZE.test(a1)&&b1.length>1&&!/^\d/.test(b1)&&!METERKEY.test(k)){size=deSize(a1);color=b1;}
    else color=k;}
  else if(isSize(k))size=deSize(k);else color=k||null;
- return {color:color?deColor(color):null,size:size||null,extra:extra||null,price:v.variantSellPrice||v.variantSellPrice===0?v.variantSellPrice:v.sellPrice,sku:v.variantSku||''};}
+ return {color:color?deColor(color):null,size:size||null,extra:extra||null,price:v.variantSellPrice||v.variantSellPrice===0?v.variantSellPrice:v.sellPrice,sku:v.variantSku||'',img:(v.variantImage||'').trim()};}
 function buildFashion(d){
  const vs=(d.variants||[]).map(parseVar).filter(v=>v.color||v.size); if(!vs.length)return null;
  const colors=[...new Set(vs.map(v=>v.color).filter(Boolean))];
@@ -112,7 +112,7 @@ function buildFashion(d){
  const opts=[]; if(useC)opts.push({name:cName,values:colors.map(cVal)}); if(useS)opts.push({name:'Grösse',values:sizes});
  if(useE)opts.push({name:eName,values:extras});
  if(!opts.length)return null;
- const seen=new Set(),variants=[];
+ const seen=new Set(),variants=[],bilder={};
  for(const v of vs){const ov=[]; if(useC)ov.push({optionName:cName,name:cVal(v.color||colors[0])}); if(useS)ov.push({optionName:'Grösse',name:v.size||sizes[0]}); if(useE)ov.push({optionName:eName,name:v.extra||extras[0]});
   const key=ov.map(x=>x.name).join('|'); if(seen.has(key))continue; seen.add(key);
   // ⚠️ FARBE GEHÖRT AN DIE VARIANTE, sobald es mehr als eine gibt (14.08.2026).
@@ -123,9 +123,19 @@ function buildFashion(d){
   const vmf=[];
   if(useC&&colors.length>1&&farbeSauber(v.color))
     vmf.push({namespace:'mm-google-shopping',key:'color',value:v.color,type:'single_line_text_field'});
-  variants.push({optionValues:ov,price:chf(v.price, v.weight||v.variantWeight),inventoryItem:{sku:('CJ-'+(v.sku||'')).slice(0,70),tracked:false},inventoryPolicy:'CONTINUE',...(vmf.length?{metafields:vmf}:{})});
+  const sku=('CJ-'+(v.sku||'')).slice(0,70);
+  // 🎨 DAS BILD DER VARIANTE MITNEHMEN (14.08.2026). CJ liefert zu jeder Variante ein
+  // `variantImage` — im SELBEN Aufruf, der schon geholt wird, also ohne einen einzigen
+  // zusätzlichen Punkt. Bisher wurde es weggeworfen: die Kundin schaltet auf «Aprikose»
+  // und sieht weiterhin dasselbe Bild (Befund des Betreibers am «Midikleid mit
+  // Zopfmuster»). ⚠️ Und die naheliegende Notlösung — die Farbe aus dem Bild MESSEN und
+  // durchzählen — ist nachweislich falsch: im Probelauf von `variantenbild.py` wurden 2
+  // von 2 Bildern falsch zugeordnet (ein schwarzes Portemonnaie als «Dunkelblau», weil
+  // der unscharfe Hintergrund blau war). Der Lieferant weiss es, wir müssen nicht raten.
+  if(v.img&&/^https/.test(v.img)) bilder[sku]=v.img;
+  variants.push({optionValues:ov,price:chf(v.price, v.weight||v.variantWeight),inventoryItem:{sku,tracked:false},inventoryPolicy:'CONTINUE',...(vmf.length?{metafields:vmf}:{})});
   if(variants.length>=100)break;}
- return {productOptions:opts.map(o=>({name:o.name,values:o.values.map(x=>({name:x}))})),variants};
+ return {productOptions:opts.map(o=>({name:o.name,values:o.values.map(x=>({name:x}))})),variants,bilder};
 }
 
 const GROUPS={
@@ -289,6 +299,28 @@ async function publishVerified(t,pid){
 }
 const SET=`mutation($i:ProductSetInput!){productSet(synchronous:true,input:$i){product{id}userErrors{message}}}`;
 const MED=`mutation($id:ID!,$m:[CreateMediaInput!]!){productCreateMedia(productId:$id,media:$m){mediaUserErrors{message}}}`;
+
+// 🎨 Jede Farbvariante bekommt ihr eigenes Bild — aus der Quelle, nicht geraten.
+// Der Weg über `mediaSrc` ist bewusst gewählt: Shopify legt das Medium an UND hängt es an die
+// Variante, und eine tote CJ-URL lässt genau diese eine Variante ohne Bild, statt das ganze
+// Produkt scheitern zu lassen (bei `productSet` mit `files` wäre das Produkt gar nicht erst
+// entstanden — CJ-Pfade sind nachweislich manchmal 404).
+async function variantenBilder(st,pid,bilder){
+ if(!bilder||!Object.keys(bilder).length)return 0;
+ const q=await sgql(st,`query($id:ID!){product(id:$id){variants(first:100){nodes{id sku}}}}`,{id:pid});
+ const vs=q.data?.product?.variants?.nodes||[];
+ const ein=[];
+ for(const v of vs){const u=bilder[v.sku]; if(u)ein.push({id:v.id,mediaSrc:[u]});}
+ let n=0;
+ for(let i=0;i<ein.length;i+=25){
+  const teil=ein.slice(i,i+25);
+  const r=await sgql(st,`mutation($p:ID!,$v:[ProductVariantsBulkInput!]!){productVariantsBulkUpdate(productId:$p,variants:$v){userErrors{message}}}`,{p:pid,v:teil});
+  const e=r.data?.productVariantsBulkUpdate?.userErrors||[];
+  if(e.length){console.log('  ⚠️ Variantenbild:',JSON.stringify(e[0]).slice(0,90));break;}
+  n+=teil.length;
+ }
+ return n;
+}
 const PUB=`mutation($id:ID!,$p:[PublicationInput!]!){publishablePublish(id:$id,input:$p){userErrors{message}}}`;
 // CJ-Produktvideo via Staged-Upload anhängen (externe URLs nimmt Shopify nicht an) — 2026-07-06
 // Wartet, bis Shopify mindestens ein Bild fertig verarbeitet hat. Gibt false zurück, wenn
@@ -633,6 +665,8 @@ for(const [cat,label] of grp.cats){
    // Erst jetzt stehen die Bildmasse fest (Shopify verarbeitet asynchron) — deshalb hier und
    // nicht vor dem Anlegen: eine Miniatur darf nicht das Hauptbild bleiben.
    await grossbildNachVorn(st,pid);
+   if(fash?.bilder){const nb=await variantenBilder(st,pid,fash.bilder);
+     if(nb)console.log(`  🎨 ${nb} Varianten mit eigenem Bild`);}
    // Ein Medizinprodukt darf in KEINEN Kanal — am wenigsten in «Google & YouTube», den
    // einzigen mit belegten Verkäufen. Nicht publizieren, Fall im Log benennen.
    if(med){ console.log(`  ⚕️ medizinische Zweckbestimmung (${med.grund}) → DRAFT, nicht publiziert: ${title.slice(0,44)}`);

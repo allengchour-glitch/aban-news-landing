@@ -1,4 +1,3 @@
-gid://shopify/Product/15396249502081	zugeordnet	2
 gid://shopify/Product/15396249960833	keine-eindeutige-farbe	0
 gid://shopify/Product/15412751499649	hatte-schon-bilder	0
 gid://shopify/Product/15412825129345	hatte-schon-bilder	0
@@ -32,3 +31,9 @@ gid://shopify/Product/15413041889665	hatte-schon-bilder	0
 gid://shopify/Product/15413079343489	hatte-schon-bilder	0
 gid://shopify/Product/15413083242881	keine-eindeutige-farbe	0
 gid://shopify/Product/15413084062081	keine-eindeutige-farbe	0
+gid://shopify/Product/15413084160385	keine-eindeutige-farbe	0
+gid://shopify/Product/15413245870465	hatte-schon-bilder	0
+gid://shopify/Product/15413245936001	hatte-schon-bilder	0
+gid://shopify/Product/15413724676481	keine-eindeutige-farbe	0
+gid://shopify/Product/15413724873089	keine-eindeutige-farbe	0
+gid://shopify/Product/15413738996097	keine-eindeutige-farbe	0

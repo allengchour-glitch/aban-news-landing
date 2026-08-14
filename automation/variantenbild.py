@@ -28,6 +28,25 @@ etwas anderes bestellt, als sie sieht.
 Was dieser Lauf NICHT kann und auch nicht vorgibt zu können: aus «Pink 1» einen sprechenden
 Namen machen. Welches der beiden Pinks gemeint ist, weiss nur der Lieferant.
 
+⛔⛔ 14.08.2026, NACH DEM ERSTEN SCHARFEN PROBELAUF: DIE METHODE TAUGT NICHT. Von 40 Produkten
+kamen zwei Zuordnungen heraus — und BEIDE waren falsch. Nachgesehen wurde nicht in einer
+Statistik, sondern in den zwei Bildern selbst:
+  • «Slim Wallet» → Dunkelblau bekam ein SCHWARZES Carbon-Portemonnaie. Blau war einzig der
+    unscharfe Lichterhintergrund. Der Zuschnitt auf die mittleren 50 % entfernt einen Hinter-
+    grund nicht, er verkleinert ihn nur.
+  • Dasselbe Produkt → Rot bekam ein BRAUNES Lederportemonnaie. Braun liegt im Farbtonkreis
+    dort, wo Rot und Orange stehen; die Palette kennt kein Braun, also greift Rot zu.
+Der zweite Fehler wäre mit einem Braun-Eintrag zu beheben, der erste nicht: Vordergrund von
+Hintergrund zu trennen kann eine Farbtonmessung grundsätzlich nicht. Und der DRY-Lauf konnte
+das nicht zeigen — er zählt nur; sichtbar wurde es erst beim Ansehen der Bilder.
+
+Der richtige Weg ist der Lieferant selbst: CJ liefert zu jeder Variante ein `variantImage` mit
+dem passenden `variantKey`. Das ist ein Beleg statt einer Schätzung. Am 14.08. war das CJ-
+Punktebudget aufgebraucht (100'310 verbraucht, 0 übrig), deshalb steht es noch aus.
+
+Der scharfe Lauf ist deshalb gesperrt. Wer ihn trotzdem starten will, muss ICH_WEISS_ES=1
+setzen — und vorher die zwei Zeilen oben lesen.
+
 DRY=1 meldet nur.
 """
 import colorsys, io, json, os, subprocess, sys, time, warnings
@@ -118,6 +137,10 @@ def passt(name, grad):
 
 
 def main():
+    if not DRY and os.environ.get("ICH_WEISS_ES") != "1":
+        sys.exit("⛔ Gesperrt: die Farbtonmessung ordnete im Probelauf 2 von 2 Bildern FALSCH zu "
+                 "(schwarzes Portemonnaie als «Dunkelblau», braunes als «Rot»). Siehe Kopf "
+                 "dieser Datei. Der Weg über CJs variantImage ist der richtige.")
     erledigt = set()
     if os.path.exists(LEDGER):
         erledigt = {l.split("\t")[0] for l in open(LEDGER)}
