@@ -265,6 +265,7 @@ def kandidaten():
 # Varianten serverseitig so lange rechnet. Bei ~400 Produkten wären das vier Stunden an
 # reiner Wartezeit, in denen der Container jederzeit stirbt. Darum wenige Produkte
 # nebeneinander; das Ledger ist die einzige gemeinsame Ressource und wird gesperrt.
+# (Die Punktekosten sind kein Engpass — gemessen 6 von 2000 bei vollem Bucket.)
 LOCK = threading.Lock()
 
 
@@ -360,7 +361,7 @@ def main():
 
     offen = [(pid, t) for pid, t in kandidaten() if pid not in fertig]
     zaehl = {"split": 0, "rename": 0, "aus": 0, "fehler": 0}
-    with cf.ThreadPoolExecutor(max_workers=6) as ex:
+    with cf.ThreadPoolExecutor(max_workers=14) as ex:
         auftrag = {ex.submit(verarbeite, pid, t, led): (pid, t) for pid, t in offen}
         for f in cf.as_completed(auftrag):
             pid, t = auftrag[f]
