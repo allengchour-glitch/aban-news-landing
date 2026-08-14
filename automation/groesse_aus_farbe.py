@@ -54,7 +54,8 @@ Aufruf:  python3 automation/groesse_aus_farbe.py            (Probelauf, schreibt
          python3 automation/groesse_aus_farbe.py --scharf   (schreibt)
 Ledger:  dropship/_groesse_aus_farbe.txt  (eine Zeile je Produkt, sofort geflusht)
 """
-import json, os, re, sys, time, urllib.request
+import concurrent.futures as cf
+import json, os, re, sys, threading, time, urllib.request
 
 SHOP = "https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json"
 TOKEN = open("/tmp/cj_shop_token.txt").read().strip()
@@ -259,6 +260,97 @@ def kandidaten():
     return out
 
 
+# Ein Produkt zu bearbeiten dauert bei Shopify rund 35 Sekunden — nicht wegen der Kosten
+# (gemessen: 6 von 2'000 Punkten, Bucket praktisch voll), sondern weil das Umhängen der
+# Varianten serverseitig so lange rechnet. Bei ~400 Produkten wären das vier Stunden an
+# reiner Wartezeit, in denen der Container jederzeit stirbt. Darum wenige Produkte
+# nebeneinander; das Ledger ist die einzige gemeinsame Ressource und wird gesperrt.
+LOCK = threading.Lock()
+
+
+def verarbeite(pid, titel, led):
+    p = gql(Q_PROD, {"id": pid})["product"]
+    if not p or p["status"] != "ACTIVE":
+        return "aus"                                        # live schon geändert
+    # Die zusammengeklebte Option ist die, deren Werte noch dem Muster entsprechen. Sie so zu
+    # SUCHEN statt «genau eine Option» zu verlangen, macht den Lauf wiederaufnehmbar: bricht
+    # der Container zwischen «Option angelegt» und «Varianten umgehängt» ab (passiert hier
+    # ständig), findet der nächste Lauf das halbfertige Produkt wieder statt es zu übergehen.
+    opt = None
+    for o in p["options"]:
+        w = [v["name"] for v in o["optionValues"]]
+        if len(w) < 2:
+            continue
+        # zerlege() ist ein starkes, namensunabhängiges Signal — es greift nie auf einer
+        # sauberen Farb- oder Grössenliste. Das blosse Umbenennen dagegen nur, solange die
+        # Option noch «Farbe» heisst, sonst würde eine fertige «Grösse» erneut angefasst.
+        if zerlege(w)[0] or (o["name"].strip().lower() in ("farbe", "color", "colour")
+                             and ehrlicher_name(w)):
+            opt = o; break
+    if opt is None:
+        return "aus"                                        # live schon repariert
+    werte = [v["name"] for v in opt["optionValues"]]
+    vars_ = p["variants"]["nodes"]
+    if len({v["value"] for x in vars_ for v in x["selectedOptions"]
+            if v["name"] == opt["name"]}) != len(werte):
+        return "aus"                                        # Varianten passen nicht zu den Werten
+
+    plan, mp = zerlege(werte)
+    if plan:
+        print(f"SPLIT   {pid.split('/')[-1]} {titel[:44]:44} "
+              f"{len(werte):3d} Werte -> " + " | ".join(f"{n}({len(v)})" for n, v in plan), flush=True)
+        if not SCHARF:
+            return "split"
+        ids = {o["name"]: o["id"] for o in p["options"]}
+        # 1. fehlende Optionen anlegen (die bestehende Option wird umbenannt/weiterbenutzt);
+        #    bei einem wiederaufgenommenen Produkt sind manche davon schon da.
+        anlegen = [{"name": n, "position": i + 2, "values": [{"name": w} for w in v]}
+                   for i, (n, v) in enumerate(plan[1:]) if n not in ids]
+        if anlegen:
+            r = gql(M_OPTS, {"p": pid, "o": anlegen})["productOptionsCreate"]
+            if r["userErrors"]:
+                raise Fehler(json.dumps(r["userErrors"])[:250])
+            ids = {o["name"]: o["id"] for o in r["product"]["options"]}
+        # 2. bestehende Option auf den ersten Planposten umbenennen
+        if plan[0][0] != opt["name"]:
+            r = gql(M_RENAME, {"p": pid, "o": {"id": opt["id"], "name": plan[0][0]}})["productOptionUpdate"]
+            if r["userErrors"]:
+                raise Fehler(json.dumps(r["userErrors"])[:250])
+            ids = {o["name"]: o["id"] for o in r["product"]["options"]}
+        fehlt = [n for n, _ in plan if n not in ids]
+        if fehlt:
+            raise Fehler(f"Options-ID fehlt: {fehlt}")
+        # 3. Varianten umhängen
+        upd = []
+        for v in vars_:
+            sel = {x["name"]: x["value"] for x in v["selectedOptions"]}
+            a = sel.get(opt["name"])
+            if a not in mp:
+                raise Fehler(f"Variante ohne Planwert: {a}")
+            upd.append({"id": v["id"], "optionValues": [
+                {"optionId": ids[n], "name": w} for (n, _), w in zip(plan, mp[a])]})
+        for i in range(0, len(upd), 100):
+            r = gql(M_VARS, {"p": pid, "v": upd[i:i + 100]})["productVariantsBulkUpdate"]
+            if r["userErrors"]:
+                raise Fehler(json.dumps(r["userErrors"])[:250])
+        with LOCK:
+            led.write(f"{pid}\tsplit\t{'+'.join(n for n,_ in plan)}\t{titel}\n")
+        return "split"
+
+    name = ehrlicher_name(werte)
+    if not name:
+        return "aus"
+    print(f"NAME    {pid.split('/')[-1]} {titel[:44]:44} «{opt['name']}» -> «{name}»", flush=True)
+    if not SCHARF:
+        return "rename"
+    r = gql(M_RENAME, {"p": pid, "o": {"id": opt["id"], "name": name}})["productOptionUpdate"]
+    if r["userErrors"]:
+        raise Fehler(json.dumps(r["userErrors"])[:250])
+    with LOCK:
+        led.write(f"{pid}\trename\t{name}\t{titel}\n")
+    return "rename"
+
+
 def main():
     fertig = set()
     if os.path.exists(LEDGER):
@@ -266,93 +358,17 @@ def main():
             fertig.add(z.split("\t")[0])
     led = open(LEDGER, "a", buffering=1) if SCHARF else None
 
+    offen = [(pid, t) for pid, t in kandidaten() if pid not in fertig]
     zaehl = {"split": 0, "rename": 0, "aus": 0, "fehler": 0}
-    for pid, titel in kandidaten():
-        if pid in fertig:
-            continue
-        try:
-            p = gql(Q_PROD, {"id": pid})["product"]
-        except Fehler as e:
-            print(f"FEHLER  {pid} {titel[:40]} :: {e}"); zaehl["fehler"] += 1; continue
-        if not p or p["status"] != "ACTIVE":
-            zaehl["aus"] += 1; continue                     # live schon geändert
-        # Die zusammengeklebte Option ist die, deren Werte noch dem Muster entsprechen. Sie so zu
-        # SUCHEN statt «genau eine Option» zu verlangen, macht den Lauf wiederaufnehmbar: bricht
-        # der Container zwischen «Option angelegt» und «Varianten umgehängt» ab (passiert hier
-        # ständig), findet der nächste Lauf das halbfertige Produkt wieder statt es zu übergehen.
-        opt = None
-        for o in p["options"]:
-            w = [v["name"] for v in o["optionValues"]]
-            if len(w) >= 2 and (zerlege(w)[0] or ehrlicher_name(w)):
-                opt = o; break
-        if opt is None:
-            zaehl["aus"] += 1; continue                     # live schon repariert
-        werte = [v["name"] for v in opt["optionValues"]]
-        vars_ = p["variants"]["nodes"]
-        if len({v["value"] for x in vars_ for v in x["selectedOptions"]
-                if v["name"] == opt["name"]}) != len(werte):
-            zaehl["aus"] += 1; continue                     # Varianten passen nicht zu den Werten
-
-        plan, mp = zerlege(werte)
-        if plan:
-            neu = [n for n, _ in plan if n != opt["name"]]
-            print(f"SPLIT   {pid.split('/')[-1]} {titel[:44]:44} "
-                  f"{len(werte):3d} Werte -> " + " | ".join(f"{n}({len(v)})" for n, v in plan))
-            if not SCHARF:
-                zaehl["split"] += 1; continue
+    with cf.ThreadPoolExecutor(max_workers=6) as ex:
+        auftrag = {ex.submit(verarbeite, pid, t, led): (pid, t) for pid, t in offen}
+        for f in cf.as_completed(auftrag):
+            pid, t = auftrag[f]
             try:
-                ids = {o["name"]: o["id"] for o in p["options"]}
-                # 1. fehlende Optionen anlegen (die bestehende Option wird umbenannt/weiterbenutzt);
-                #    bei einem wiederaufgenommenen Produkt sind manche davon schon da.
-                anlegen = [{"name": n, "position": i + 2, "values": [{"name": w} for w in v]}
-                           for i, (n, v) in enumerate(plan[1:]) if n not in ids]
-                if anlegen:
-                    r = gql(M_OPTS, {"p": pid, "o": anlegen})["productOptionsCreate"]
-                    if r["userErrors"]:
-                        raise Fehler(json.dumps(r["userErrors"])[:250])
-                    ids = {o["name"]: o["id"] for o in r["product"]["options"]}
-                # 2. bestehende Option auf den ersten Planposten umbenennen
-                if plan[0][0] != opt["name"]:
-                    r = gql(M_RENAME, {"p": pid, "o": {"id": opt["id"], "name": plan[0][0]}})["productOptionUpdate"]
-                    if r["userErrors"]:
-                        raise Fehler(json.dumps(r["userErrors"])[:250])
-                    ids = {o["name"]: o["id"] for o in r["product"]["options"]}
-                fehlt = [n for n, _ in plan if n not in ids]
-                if fehlt:
-                    raise Fehler(f"Options-ID fehlt: {fehlt}")
-                # 3. Varianten umhängen
-                upd = []
-                for v in vars_:
-                    sel = {x["name"]: x["value"] for x in v["selectedOptions"]}
-                    alt = sel.get(opt["name"])
-                    if alt not in mp:
-                        raise Fehler(f"Variante ohne Planwert: {alt}")
-                    upd.append({"id": v["id"], "optionValues": [
-                        {"optionId": ids[n], "name": w} for (n, _), w in zip(plan, mp[alt])]})
-                for i in range(0, len(upd), 100):
-                    r = gql(M_VARS, {"p": pid, "v": upd[i:i + 100]})["productVariantsBulkUpdate"]
-                    if r["userErrors"]:
-                        raise Fehler(json.dumps(r["userErrors"])[:250])
-                led.write(f"{pid}\tsplit\t{'+'.join(n for n,_ in plan)}\t{titel}\n")
-                zaehl["split"] += 1
-            except Fehler as e:
-                print(f"  !! {e}"); zaehl["fehler"] += 1
-            continue
-
-        name = ehrlicher_name(werte)
-        if not name:
-            zaehl["aus"] += 1; continue
-        print(f"NAME    {pid.split('/')[-1]} {titel[:44]:44} «Farbe» -> «{name}»")
-        if not SCHARF:
-            zaehl["rename"] += 1; continue
-        try:
-            r = gql(M_RENAME, {"p": pid, "o": {"id": opt["id"], "name": name}})["productOptionUpdate"]
-            if r["userErrors"]:
-                raise Fehler(json.dumps(r["userErrors"])[:250])
-            led.write(f"{pid}\trename\t{name}\t{titel}\n")
-            zaehl["rename"] += 1
-        except Fehler as e:
-            print(f"  !! {e}"); zaehl["fehler"] += 1
+                zaehl[f.result()] += 1
+            except Exception as e:                           # Regel 6: kein Ledger-Eintrag
+                print(f"  !! {pid.split('/')[-1]} {t[:40]} :: {e}", flush=True)
+                zaehl["fehler"] += 1
 
     print(f"\n{'SCHARF' if SCHARF else 'PROBELAUF'}: "
           f"zerlegt={zaehl['split']} umbenannt={zaehl['rename']} "

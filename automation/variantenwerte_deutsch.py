@@ -38,7 +38,11 @@ WAS DIESES SKRIPT TUT
     C und E zusammen = 248 Produkte; der Befund nannte 216.
 
 PROBELAUF UND FEHLTREFFER (DRY=1, gegen /tmp/export.jsonl vom 12.08.):
- • Klasse A: 254 Produkte, alle mit genau EINEM Wert. Kein Fehltreffer.
+ • Klasse A: 250 Produkte, deren Grössenliste NUR aus «FREE SIZE»/«ONE SIZE» besteht, plus 4
+   gemischte («S, M, L, XL, XXL, 3XL, FREE SIZE») — zusammen genau die 254 des Befunds. Der
+   erste Entwurf verlangte, dass ALLE Werte passen, und liess die 4 gemischten stehen; die
+   Nachprüfung an den 610 angefassten Produkten hat sie gefunden (Schlüssel A2).
+   Kein Fehltreffer.
    NICHT angefasst: 13 Kombiwerte wie «Free Size-Mocha», «Black-S One Size» — dort steckt nicht
    die Sprache, sondern die STRUKTUR falsch (Grösse und Farbe in einem Feld). Das ist ein
    anderer, grösserer Eingriff.
@@ -241,10 +245,17 @@ def de_beschreibung(html):
                 return gr
             p = praefix.strip()
             return (FARBE.get(p.lower(), p)) + " · " + gr
-        v2 = D_YARDS.sub(y, v2)
-        if v2 != v:
+        v3 = D_YARDS.sub(y, v2)
+        # Wurde in DIESER Zeile eine Yards-Angabe ersetzt, steht daneben oft noch «Green-Size 23»
+        # — dieselbe Liste, halb englisch. Nur dann wird auch «Size N» eingedeutscht; ausserhalb
+        # solcher Zeilen bliebe «Size 23» sonst irgendwo im Text stehen und würde mitgerissen.
+        if v3 != v2:
+            v3 = re.sub(r"\s*[-–]?\s*\bSize\s*(\d+)\b", lambda mm: " · Gr. " + mm.group(1), v3,
+                        flags=re.I)
+            v3 = re.sub(r"\s{2,}", " ", v3)
+        if v3 != v:
             treffer[0] = True
-        return m.group(1) + v2
+        return m.group(1) + v3
     s = SPEC.sub(in_werten, html or "")
     return s if treffer[0] else None
 
@@ -330,7 +341,7 @@ def sammeln():
             vals = [v.strip() for v in (o.get("values") or [])]
             if not vals:
                 continue
-            if name in GROESSEOPT and all(EINHEIT.match(v) for v in vals):
+            if name in GROESSEOPT and any(EINHEIT.match(v) for v in vals):
                 a.append((p["id"], p["title"]))
             if any(Y_EINZEL.search(v) for v in vals):
                 b.append((p["id"], p["title"]))
@@ -359,9 +370,12 @@ def plan_fuer(klasse, opt):
     paare = []
 
     if klasse == "A":
-        if name not in GROESSEOPT or not all(EINHEIT.match(v) for v in alt):
+        # A2: nicht nur Listen, die AUSSCHLIESSLICH aus «FREE SIZE» bestehen (250), sondern auch
+        # gemischte wie «S, M, L, XL, XXL, 3XL, FREE SIZE» (4). 250 + 4 = die 254 des Befunds.
+        if name not in GROESSEOPT or not any(EINHEIT.match(v) for v in alt):
             return None, [], []
-        paare = [(werte[i]["id"], alt[i], "Einheitsgrösse") for i in range(len(alt))]
+        paare = [(werte[i]["id"], alt[i], "Einheitsgrösse")
+                 for i in range(len(alt)) if EINHEIT.match(alt[i])]
     elif klasse == "B":
         if not any(Y_EINZEL.search(v) for v in alt):
             return None, [], []
@@ -478,7 +492,9 @@ def main():
         # D2 statt D: die Spec-Regel wurde um die MEHRZAHL erweitert («Grössen:», «Farben:»).
         # Mit dem alten Erledigt-Zeichen würden genau die Produkte übersprungen, bei denen die
         # zweite Zeile noch steht.
-        schluessel = "%s:%s" % ("D2" if klasse == "D" else klasse, gid)
+        # Neue Regel → neuer Schlüssel. A2: auch gemischte Grössenlisten. D3: in einer Spec-Zeile,
+        # in der schon Yards ersetzt wurden, wird auch das englische «Size 23» eingedeutscht.
+        schluessel = "%s:%s" % ({"D": "D3", "A": "A2"}.get(klasse, klasse), gid)
         if schluessel in done:
             continue
         if klasse in ("D", "F"):

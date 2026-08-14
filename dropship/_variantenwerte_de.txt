@@ -996,3 +996,30 @@ F:gid://shopify/Product/15449436291457	beschreibung	Weihnachtliches Plaid-Hoodie
 F:gid://shopify/Product/15449436455297	beschreibung	Damen-Kardigan mit Kunstfell-Kapuze
 F:gid://shopify/Product/15449441108353	beschreibung	Casual Druck-Pullover aus Polyester
 F:gid://shopify/Product/15449442025857	beschreibung	Casual Polyester Pullover
+F:gid://shopify/Product/15449474171265	beschreibung	Schwarzes Sweatshirt mit rotem Pflaumenmuster
+F:gid://shopify/Product/15449476235649	beschreibung	Retro-Kardigan mit Kapuze
+F:gid://shopify/Product/15449497993601	beschreibung	Retro Polo-Pullover
+F:gid://shopify/Product/15449498616193	beschreibung	Damen-Sweatshirt mit Blumenmuster
+F:gid://shopify/Product/15449499074945	beschreibung	Weihnachts-Pullover Damen 3D-Druck
+F:gid://shopify/Product/15449499107713	beschreibung	Weihnachtskatze Pullover
+F:gid://shopify/Product/15450835386753	beschreibung	Fleece-Kapuzenpullover für Hunde mit Früchtedesign
+F:gid://shopify/Product/15454003560833	beschreibung	Sommer-T-Shirt für Herren
+F:gid://shopify/Product/15454015619457	beschreibung	Coton-T-Shirt mit Wachsdruck-Muster
+F:gid://shopify/Product/15454093476225	beschreibung	Stickerei Jeans mit Schmetterling
+F:gid://shopify/Product/15454124540289	beschreibung	Herren-Kurzarm-Shirt mit Digitaldruck
+F:gid://shopify/Product/15454301684097	beschreibung	Damenkleid V-Ausschnitt Plus-Grösse
+A2:gid://shopify/Product/15447942300033	0	Strick-Cape-Schal für Damen
+A2:gid://shopify/Product/15447944429953	0	Winddichte Lei Feng Mütze mit Blättermuster
+A2:gid://shopify/Product/15447947739521	0	Mütze aus weichem Faux-Nerzfell
+A2:gid://shopify/Product/15447947837825	0	Damen Fischerhut mit breiter Krempe
+A2:gid://shopify/Product/15447948755329	0	Besticktes Baseball Cap für Damen
+A2:gid://shopify/Product/15447954030977	1	Reflektierende Partnerlook Windjacke für Mensch & Haustier
+A2:gid://shopify/Product/15447977296257	0	Gehäkeltes Spaghetti-Träger Top mit Quasten
+A2:gid://shopify/Product/15447978115457	0	Perlenbesetztes Neckholder-Minikleid
+A2:gid://shopify/Product/15447988568449	0	Outdoor-Velo- und Laufweste mit Handyfach
+A2:gid://shopify/Product/15447988830593	0	Gefaltete Blumenprint Rüschenbluse mit Bändern
+A2:gid://shopify/Product/15447989780865	0	Blumige Strickweste im Vintage-Stil
+A2:gid://shopify/Product/15447991484801	0	Rundhals Strickweste mit Holzknöpfen
+A2:gid://shopify/Product/15447991943553	0	Retro Strickweste mit Knopfleiste
+A2:gid://shopify/Product/15447994630529	0	V-Neck Strickweste für Damen, Einheitsgrösse
+A2:gid://shopify/Product/15447994925441	0	Gerippte Strickweste für Damen
