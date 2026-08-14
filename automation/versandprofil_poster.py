@@ -24,60 +24,100 @@ MESSUNG VORHER (draftOrderCalculate, Lieferadresse Bahnhofstrasse 1, 8001 Züric
   4x Organizer (ohne Poster) 63.60 -> «Kostenloser Versand» 0.00 + «Standard» 7.00
   4x Organizer + 1x Poster  78.50 -> nur «Versand» CHF 10.23          (Gratis weg)
 
-ZAHL: 10 Produkte / 10 Varianten. Alle ACTIVE, alle CHF 14.90, alle Tag «gelato».
+ZAHL: der Befund nennt 10 Poster. Nachgezählt sind es 166 Varianten — siehe unten.
 
-PROBELAUF UND FEHLTREFFER
--------------------------
-Der Probelauf hat ALLE 20 Versandprofile des Shops auf Zonen abgeklopft, die die
-Schweiz enthalten (nur der CH-Markt ist überhaupt aktiviert — `markets` liefert genau
-einen aktiven Markt «Switzerland», also ist jede andere Zone unerreichbar):
+PROBELAUF: DIE ZAHL 10 WAR DIE STICHPROBE, NICHT DER UMFANG
+-----------------------------------------------------------
+Der Probelauf hat ALLE Versandprofile auf Zonen abgeklopft, die die Schweiz enthalten
+(nur der CH-Markt ist aktiviert — `markets` liefert genau einen aktiven Markt
+«Switzerland», jede andere Zone ist also unerreichbar).
 
-  Zendrop                    53 Var.  [Zendrop — Worldwide Zone]  0.00 -> KEIN Fehltreffer
-  Gelato: Small Posters      10 Var.  EFTA Zone                  10.23 -> der Befund
-  16 weitere Gelato-Profile   0 Var.  EFTA Zone            8.85–58.81 -> leer, aber scharf
+Erster Anlauf mit `deliveryProfiles(first:20)`: 20 Profile, 10 betroffene Varianten —
+das hätte den Befund bestätigt und die Arbeit beendet. Der Shop hat aber **67 Profile**
+(Gelato und Printful legen pro Produktformat eines an). Mit Blättern:
+
+  Zendrop                     [Zendrop — Worldwide Zone]  0.00 -> neutral, KEIN Fehler
+  Gelato: Free shipping       EFTA Zone                   0.00 -> neutral, KEIN Fehler
+  Gelato: Small Posters       EFTA Zone                  10.23 -> 10 Poster (der Befund)
+  ~30 leere Gelato-Profile    EFTA Zone            4.21–58.81 -> leer, aber scharf
+  16 Printful-Profile         FT Flat Rate          6.99–16.09 -> **156 aktive Varianten**
+
+Die 156 sind die komplette «Selbst gestalten»-Reihe (T-Shirts, Hoodies, Tassen,
+iPhone-Hüllen, Rucksäcke, Boardshorts …). Live gegengeprüft, identischer Mechanismus:
+  2x POD-T-Shirt = CHF 55.80 -> nur «FT Flat Rate» 8.13, kein Gratis-Versand
+  CJ 63.60 + POD-T-Shirt 27.90 = CHF 91.50 -> nur «Versand» 8.13
+Ein einziges Profil mehr in der Abfrage, und der Befund ist 16-mal so gross. Die Zahl
+im Bericht war die Stichprobe des Prüfers, nicht der Umfang des Fehlers.
+
+IST DAS EINE PREISENTSCHEIDUNG? NEIN — GEPRÜFT
+----------------------------------------------
+Den Gratis-Versand auf POD-Ware auszudehnen kostet nur dann Geld, wenn die Rohmarge die
+Fracht nicht trägt. Gegen `inventoryItem.unitCost` geprüft:
+  Kiss-Cut Aufkleber   VK 14.90  EK  1.99  Marge 12.91   (Tarif  9.99)
+  Keramik-Tasse        VK 19.90  EK  5.18  Marge 14.72   (Tarif 10.39)
+  Unisex T-Shirt       VK 27.90  EK  9.76  Marge 18.14   (Tarif  9.99)
+  Allover-Rucksack     VK 76.90  EK 30.67  Marge 46.23   (Tarif 16.09 = höchster)
+  Boardshorts          VK 86.90  EK 33.37  Marge 53.53   (Tarif  9.99)
+  Schweiz-Poster       VK 14.90  EK  7.54  Marge  7.36   (Tarif 10.23)
+Jede Marge übersteigt ihren Tarif deutlich, und der Gratis-Versand greift ohnehin erst
+ab CHF 50 — dort liegen mindestens zwei POD-Artikel oder ein teurer im Korb. Damit ist
+das KEINE Preisentscheidung, die dem Betreiber gehört, sondern ein Konfigurationsfehler.
+Beim Poster allein (Marge 7.36 < Tarif 10.23) trägt der Korb: ab CHF 50 sind es vier
+Poster, Marge 29.44 gegen einmal Fracht.
 
 FEHLTREFFER, die ich bewusst NICHT angefasst habe:
- * «Zendrop» (53 Varianten) sieht auf den ersten Blick nach demselben Fehler aus — ein
-   zweites Profil, eigene Zone, eigener Tarif. Sein Tarif ist aber CHF 0.00 ohne
-   Bedingung und addiert deshalb NICHTS. Live gegengeprüft: Organizer 63.60 + Zendrop
-   34.90 = 98.50 -> «Versand 0.00»; Organizer 15.90 + Zendrop 34.90 = 50.80 -> 0.00.
-   Das Versprechen hält dort exakt. Anfassen wäre eine Verschlechterung gewesen.
+ * «Zendrop» (53 Varianten) und «Gelato: Free shipping» sehen auf den ersten Blick nach
+   demselben Fehler aus — ein zweites Profil, eigene Zone, eigener Tarif. Ihr Tarif ist
+   aber CHF 0.00 ohne Bedingung und addiert deshalb NICHTS. Live gegengeprüft:
+   Organizer 63.60 + Zendrop 34.90 = 98.50 -> «Versand 0.00»; Organizer 15.90 + Zendrop
+   34.90 = 50.80 -> 0.00. Das Versprechen hält dort exakt. Anfassen wäre eine
+   Verschlechterung gewesen — und genau dieser Nachweis ist die Grundlage der
+   Quellen-Reparatur unten: ein 0.00-Tarif macht ein Zweitprofil durchsichtig.
  * «Shopify Collective» (4 Varianten): alle vier Produkte sind DRAFT (Parfums
    «Lost Nomade», «Untold Story», «Discovery-Set», «Angel's Love») und damit für
    Kundinnen unerreichbar. Kein Warenkorb kann sie enthalten -> nicht angefasst.
- * Die 15 übrigen Zonen jedes Gelato-Profils (US/DE/GB/JP/…): unerreichbar, weil der
-   Shop nur den Markt Schweiz führt. Nicht angefasst.
+ * DRAFT-Ware in «Gelato: T-Shirts» / «Gelato: Hoodies, Sweatshirts» (Hoodie
+   «Edelweiss», Sweatshirt «Matterhorn», Damen-Tank «Alpsee» …): Profile MIT Produkten,
+   aber jede Variante DRAFT. Das Skript prüft den Produktstatus einzeln und überspringt
+   sie — sonst hätte die Zahl nach Arbeit ausgesehen, die niemand sieht.
+ * Die je 15 übrigen Zonen jedes Profils (US/DE/GB/JP/…): unerreichbar, weil der Shop
+   nur den Markt Schweiz führt. Nicht angefasst.
+ * ~30 leere Gelato-Profile mit scharfem CH-Tarif (bis CHF 58.81): kein Produkt drin,
+   also heute kein Schaden. Nicht angefasst, aber bei jedem Lauf gemeldet — und sobald
+   dort ACTIVE-Ware auftaucht, holt der Sweep sie ins Standardprofil.
 
 ENTSCHEIDUNG
 ------------
-(1) HAUPTREPARATUR: die 10 Poster-Varianten aus «Gelato: Small Posters» lösen. Sie
+(1) HAUPTREPARATUR: alle 166 ACTIVE-Varianten aus den Lieferanten-Profilen lösen. Sie
     fallen damit ins Standardprofil zurück und unterliegen exakt denselben Regeln wie
     die übrigen 31'000 Produkte — CHF 7.00, gratis ab CHF 50. Danach gibt es für einen
     Schweizer Korb nur noch EINE Tarifquelle, also keine Additions-Arithmetik mehr, die
     mit einem einzigen shopweiten Versprechen je wieder auseinanderlaufen kann.
 
-    Verworfene Alternative A: im Gelato-Profil eine eigene «Gratis ab 50»-Regel
-    nachbauen. Das repariert nur den reinen Poster-Korb; im MISCHKORB unter CHF 50
+    Verworfene Alternative A: in jedem Lieferanten-Profil eine eigene «Gratis ab 50»-
+    Regel nachbauen. Das repariert nur den sortenreinen Korb; im MISCHKORB unter CHF 50
     addierte Shopify weiterhin 7.00 + 7.00 = CHF 14.00, also ein NEUER Widerspruch zur
     Zusage «sonst CHF 7.00».
-    Verworfene Alternative B: die Poster auf DRAFT setzen. Ein Konfigurationsfehler
-    rechtfertigt es nicht, 10 einwandfreie Produkte aus dem Verkauf zu nehmen.
+    Verworfene Alternative B: die Ware auf DRAFT setzen. Ein Konfigurationsfehler
+    rechtfertigt es nicht, 166 einwandfreie Varianten aus dem Verkauf zu nehmen — beim
+    POD-Editor wäre es zudem die Abschaltung eines Kernfeatures.
 
 (2) QUELLE (Regel 7 — wer schreibt das Feld beim NÄCHSTEN Produkt?): Die Zuordnung
-    stammt nicht von einem Importer dieses Repos, sondern von der Gelato-App, die jedes
-    neue POD-Produkt automatisch in ihr Grössen-Profil legt. Ein Nachfüllen allein wäre
-    also am nächsten Poster wieder hinfällig. Deshalb wird zusätzlich der CH-erreichbare
-    Tarif in «Gelato: Small Posters» auf CHF 0.00 gesetzt. Ein 0.00-Tarif addiert nichts
-    (empirisch am Zendrop-Profil belegt, s.o.) — ein künftig dort einsortiertes Poster
-    kann das Versprechen damit nicht mehr brechen, sondern erbt still die Regeln des
-    Standardprofils. Die 16 LEEREN Gelato-Profile bleiben unverändert; stattdessen meldet
-    dieses Skript sie bei jedem Lauf als «scharf», und der Sweep unten holt jede aktive
-    Variante, die dort auftaucht, ins Standardprofil zurück. Skript ist idempotent und
-    gehört in den täglichen Keepalive.
+    stammt nicht von einem Importer dieses Repos, sondern von den Apps Gelato und
+    Printful, die jedes neu synchronisierte POD-Produkt automatisch in ihr Format-Profil
+    legen. Ein blosses Umhängen wäre am nächsten Produkt wieder hinfällig. Deshalb wird
+    zusätzlich der CH-erreichbare Tarif in genau den Profilen auf CHF 0.00 gesetzt, die
+    dieser Shop nachweislich benutzt (= aus denen gerade ACTIVE-Ware gelöst wurde). Ein
+    0.00-Tarif addiert nichts (empirisch am Zendrop-Profil belegt, s.o.) — ein künftig
+    dort einsortiertes Produkt kann das Versprechen nicht mehr brechen, sondern erbt
+    still die Regeln des Standardprofils. Die nie benutzten Profile bleiben unverändert;
+    stattdessen meldet dieses Skript sie bei jedem Lauf als «scharf», und der Sweep holt
+    jede ACTIVE-Variante, die dort auftaucht, ins Standardprofil zurück. Das Skript ist
+    idempotent (ein zweiter Lauf findet 0) und gehört in den täglichen Keepalive.
 
     NICHT Aufgabe dieses Skripts: dass ein Poster mit Einstandspreis CHF 7.54 bei
-    CHF 14.90 und CHF 0–7 Versand knapp kalkuliert ist. Das ist eine Preisfrage und
-    gehört zu preisboden.py, nicht ins Versandprofil.
+    CHF 14.90 knapp kalkuliert ist. Das ist eine Preisfrage und gehört zu
+    preisboden.py, nicht ins Versandprofil.
 
 Aufruf:  python3 automation/versandprofil_poster.py            # Probelauf (nur zeigen)
          python3 automation/versandprofil_poster.py --scharf   # schreiben
@@ -231,25 +271,35 @@ def main():
 
     geaendert = 0
     for pid, eintraege in nach_profil.items():
-        vids = [v["id"] for _prod, v in eintraege]
-        d = gql("""mutation($id:ID!,$p:DeliveryProfileInput!){
-                     deliveryProfileUpdate(id:$id, profile:$p){
-                       profile { id name } userErrors { field message } } }""",
-                {"id": pid, "p": {"variantsToDissociate": vids}})
-        fehler = d["deliveryProfileUpdate"]["userErrors"]
-        if fehler:
-            raise RuntimeError("dissociate fehlgeschlagen: %s" % fehler)
-        for prod, v in eintraege:
-            geaendert += 1
-            ledger("varianten-geloest\t%s\t%s\t%s" % (v["id"], prod["id"], prod["title"]))
-        print("gelöst aus %s: %d Varianten -> Standardprofil" % (pid, len(vids)))
+        # In Bloecken zu 50: eine Mutation mit 166 IDs reisst das Kostenlimit.
+        for i in range(0, len(eintraege), 50):
+            block = eintraege[i:i + 50]
+            vids = [v["id"] for _prod, v in block]
+            d = gql("""mutation($id:ID!,$p:DeliveryProfileInput!){
+                         deliveryProfileUpdate(id:$id, profile:$p){
+                           profile { id name } userErrors { field message } } }""",
+                    {"id": pid, "p": {"variantsToDissociate": vids}})
+            fehler = d["deliveryProfileUpdate"]["userErrors"]
+            if fehler:
+                raise RuntimeError("dissociate fehlgeschlagen: %s" % fehler)
+            for prod, v in block:
+                geaendert += 1
+                ledger("varianten-geloest\t%s\t%s\t%s" % (v["id"], prod["id"], prod["title"]))
+        print("gelöst aus %s: %d Varianten -> Standardprofil" % (pid, len(eintraege)))
 
-    # ---- 2) Quelle entschärfen: CH-Tarif der Profile MIT Produkten auf 0.00 --
-    #     Ein 0.00-Tarif addiert nichts; ein künftig von der Gelato-App dort
-    #     einsortiertes Produkt erbt still die Regeln des Standardprofils.
+    # ---- 2) Quelle entschärfen (Regel 7) ------------------------------------
+    #     Die Zuordnung stammt von den Apps Gelato/Printful, nicht von einem Importer
+    #     dieses Repos: jedes neu synchronisierte POD-Produkt landet automatisch wieder
+    #     im Format-Profil. Ein blosses Umhängen wäre am nächsten Produkt hinfällig.
+    #     Deshalb wird der CH-erreichbare Tarif in genau den Profilen, die dieser Shop
+    #     nachweislich benutzt (= aus denen gerade ACTIVE-Ware gelöst wurde), auf
+    #     CHF 0.00 gesetzt. Ein 0.00-Tarif addiert nichts (am Zendrop-Profil empirisch
+    #     belegt) — ein künftig dort einsortiertes Produkt erbt still die Regeln des
+    #     Standardprofils, statt den Gratis-Versand zu kippen.
+    benutzte = set(nach_profil)
     for p, z, m, betrag in scharfe_profile:
-        if p["productVariantsCount"]["count"] == 0:
-            continue  # leere Profile bleiben unverändert, der Sweep oben fängt sie ab
+        if p["id"] not in benutzte:
+            continue  # nie benutzte Profile bleiben unverändert; der Sweep oben fängt sie
         lgid = None
         for lg_id, zone in ch_zonen(p):
             if zone["zone"]["id"] == z["zone"]["id"]:

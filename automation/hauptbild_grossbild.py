@@ -17,12 +17,12 @@ bis Sechzehnfache hochskaliert. Google verlangt zudem mindestens 250×250 (Bekle
 bzw. 100×100 — darunter wird das Angebot abgelehnt, nicht bloss schlechter platziert.
 
 ════════════════════════════════════════════════════════════════════════════════════════════
-DER PROBELAUF — warum die naheliegende Regel FALSCH ist
+DER PROBELAUF — warum «nimm das grösste Bild» den Feed VERSCHLECHTERT hätte
 ════════════════════════════════════════════════════════════════════════════════════════════
 Die erste Fassung nahm schlicht «das früheste Bild ab 800 px». Ein Kontaktbogen über eine
 Zufallsstichprobe von 18 Produkten (altes gegen neues Hauptbild nebeneinander) zeigte, dass
-das bei **8 von 18 = 44 %** eine VERSCHLECHTERUNG gewesen wäre. Das grosse Bild ist bei CJ
-sehr oft kein Produktfoto, sondern eine Werbetafel:
+das bei 8 von 18 = 44 % eine VERSCHLECHTERUNG gewesen wäre. Das grosse Bild ist bei CJ sehr
+oft kein Produktfoto, sondern eine Werbetafel:
 
   • «Ohrreinigung mit Stimmstab»  alt: sauberes Freistellerfoto → neu: Collage «Wide
     Compatibility» mit Klavier, Geige und drei Personen
@@ -30,46 +30,72 @@ sehr oft kein Produktfoto, sondern eine Werbetafel:
   • «Smart Mülltonne mit Sensor»  alt: Tonne auf Weiss → neu: «Drawstring 20L black gold»-Tafel
   • «U-förmige Massagekissen»     alt: Kissen → neu: Schrifttafel «U-SHAPE NECK MASSAGER ST-320»
   • «Spiral-Edelstahl-Armbanduhr» alt: Uhr → neu: Banner «ROTATABLE watch bezel»
-  • «Spiegelndes Lipgloss»        alt: Produktfoto → neu: Lippen-Swatch mit **FENTY BEAUTY**,
-    also einem FREMDEN MARKENNAMEN im Bild — genau das Sperr-Risiko, wegen dem am 12.08. schon
-    zehn Titel bereinigt werden mussten.
+  • «Spiegelndes Lipgloss»        alt: Produktfoto → neu: Lippen-Swatch mit FENTY BEAUTY, also
+    einem FREMDEN MARKENNAMEN im Bild — genau das Sperr-Risiko, wegen dem am 12.08. zehn Titel
+    bereinigt werden mussten.
 
-Werbetext im Produktbild ist bei Google ausserdem selbst ein Verstoss. Ein Aufräumlauf, der
-verpixelte Kacheln gegen Werbetafeln tauscht, hätte den Feed also schlechter gemacht als er
-war — bei 265 Produkten im einzigen Kanal mit belegten Verkäufen.
+Werbetext im Produktbild ist bei Google selbst ein Verstoss. Ein Lauf, der verpixelte Kacheln
+gegen Werbetafeln tauscht, hätte den Feed schlechter gemacht als er war.
+
+════════════════════════════════════════════════════════════════════════════════════════════
+UND WARUM AUCH «IRGENDEIN SAUBERES GROSSES FOTO» NICHT REICHT
+════════════════════════════════════════════════════════════════════════════════════════════
+Zweiter Kontaktbogen, 24 Fälle, bei denen das grosse Bild textfrei, aber ein ANDERES Foto war.
+Von Hand beurteilt: 6 besser, 13 gleichwertig (meist nur eine andere Farbvariante), **5
+schlechter** — darunter zwei, die im Google-Kanal teuer werden können:
+  • «6er Set ätherische Öle»: alt zeigt das Set mit sechs Fläschchen, neu EIN Fläschchen —
+    das ist eine Falschdarstellung des Lieferumfangs, nicht bloss ein hässlicheres Bild.
+  • «Ultraschall-Massagegerät»: neu wären Vorher-Nachher-Bikinifotos das Hauptbild geworden.
+Der Erwartungswert eines pauschalen Motivtauschs ist also nicht null, sondern negativ. Er
+wird deshalb NICHT gemacht; die Fälle stehen am Ende des Laufs als offen im Protokoll.
 
 ════════════════════════════════════════════════════════════════════════════════════════════
 DIE REGEL, DIE STATTDESSEN GILT
 ════════════════════════════════════════════════════════════════════════════════════════════
 1. Kandidaten sind nur Bilder ab 800 px Kantenlänge im Status READY.
-2. Jeder Kandidat wird von `bildtext_pruefen.woerter()` (Tesseract) gelesen. Ab 4 sicher
-   erkannten Wörtern gilt er als Werbetafel und scheidet aus. Die Schwelle ist dort geeicht,
-   nicht hier geraten: eine Massangabe «20cm/7.87in» bleibt darunter, ein Marketingsatz nicht.
-3. Getauscht wird nur gegen DASSELBE MOTIV in gross. Gemessen wird die mittlere Farbabweichung
-   zweier 24×24-Raster (0…255); unter 22 ist es nachweislich dieselbe Aufnahme. Ein
-   Graustufen-Hash reichte dafür nicht: er hielt bei den «Herren Zehensteg-Sandalen» die rote
-   und die blaue Ausführung für dasselbe Bild und beim «Daunenmantel Slim-Fit» die schwarze
-   und die rosa — die Kundin hätte eine andere Farbe gesehen als vorher.
-4. Zeigt kein Grossbild dasselbe Motiv, bleibt das Produkt stehen — ES SEI DENN, das heutige
-   Hauptbild ist kleiner als 250 px und wird von Google ohnehin abgelehnt. Dort ist jedes
-   scharfe, textfreie Produktfoto besser als gar keine Ausspielung.
-5. Findet sich KEIN textfreies Grossbild, bleibt das Produkt unangetastet und wird als offen
-   protokolliert. Ein verpixeltes Produktfoto ist besser als eine scharfe Werbetafel.
+2. Jeder Kandidat wird von `bildtext_pruefen.woerter()` (Tesseract) gelesen; ab 3 sicher
+   erkannten Wörtern gilt er als Werbetafel und scheidet aus (Begründung der Schwelle unten
+   bei WORTGRENZE).
+3. Getauscht wird nur gegen DASSELBE FOTO in gross. Zwei Masse zusammen (Begründung bei
+   `messwerte`): mittlere Abweichung über die Produktfläche < 22 UND Abstand der mittleren
+   Produktfarbe < 10.
+4. Ist das heutige Hauptbild kleiner als 250 px, wird auch gegen ein anderes sauberes Foto
+   getauscht: Google lehnt darunter ab, ein Ersatz kann also nur besser sein.
+5. Sonst bleibt das Produkt stehen und wird als offen protokolliert.
 6. Ein Bild, das nicht geladen oder nicht gelesen werden konnte, gilt als UNBEKANNT, nicht als
-   sauber, und das Produkt wandert in die offene Liste — beim nächsten Lauf wird es erneut
-   versucht. «Keine Antwort» ist nicht «keine Daten».
+   sauber; der Fall bleibt offen und wird beim nächsten Lauf erneut versucht. «Keine Antwort»
+   ist nicht «keine Daten».
 
 Gelöscht wird nichts. `productReorderMedia` verschiebt nur; alle Bilder bleiben am Produkt.
 
 ════════════════════════════════════════════════════════════════════════════════════════════
+ERGEBNIS DES LAUFS VOM 14.08.2026 (alle 267 Kandidaten gemessen)
+════════════════════════════════════════════════════════════════════════════════════════════
+   12  gleiches-bild          → geschrieben (Kontaktbogen von Hand geprüft: 11 klare
+                                Verbesserungen, 1 Farbwechsel rosa→violett bei einem
+                                Paar-Hausschuh, der beide Farben führt)
+   17  ersatz-fuer-winzling   → geschrieben (Hauptbild war 50–248 px)
+  195  nur-anderes-motiv      → BEWUSST STEHENGELASSEN, siehe oben
+   43  kein-textfreies-grossbild → stehengelassen
+Nebenbefund: 11 der 29 alten Hauptbilder trugen aufgedruckten Werbetext («2pcs», «3pcs»,
+«8TB (512GB expansion)», «White», rote Masspfeile). Der Tausch nimmt also zugleich elf
+Werbeaufdrucke aus dem Google-Feed — ein Verstoss, nach dem niemand gesucht hatte.
+
+Nicht behebbar und deshalb offen gemeldet: 15 aktive Produkte haben ÜBERHAUPT kein Bild über
+250 px Breite. Bei den drei CJ-Artikeln, die noch abgefragt werden konnten, liefert auch die
+CJ-API nur 150-px-Bilder — es fehlt an der QUELLE, nicht an der Reihenfolge. Vier weitere
+CJ-Abfragen blieben ohne Antwort («Insufficient API points»); sie gelten als ungeprüft, nicht
+als geklärt.
+
+════════════════════════════════════════════════════════════════════════════════════════════
 DIE QUELLE (ohne sie wäre die Reparatur wertlos)
 ════════════════════════════════════════════════════════════════════════════════════════════
-243 der Betroffenen tragen eine CJ-SKU, 50 wurden im August angelegt, der jüngste am 12.08.
-`automation/cj_category_fill.mjs` übernahm CJs `productImageSet` unverändert in der
-Lieferanten-Reihenfolge (Zeile ~434) und machte `imgs[0]` zum Hauptbild — CJs erster Eintrag
-ist mitunter ein 50×50-Thumbnail. Deshalb ist dort in derselben Session `grossbildNachVorn()`
-eingebaut worden: nach dem Bild-Empfang wird das grösste READY-Bild nach vorn geholt. Ohne das
-legte der Importer täglich neue Fälle an und diese Datei wäre eine Sisyphusarbeit.
+256 der 267 Kandidaten tragen eine CJ-SKU, 50 wurden im August angelegt, der jüngste zwei Tage
+vor dem Fund. `automation/cj_category_fill.mjs` übernahm CJs `productImageSet` unverändert in
+der Lieferanten-Reihenfolge und machte `imgs[0]` zum Hauptbild — CJs erster Eintrag ist
+mitunter ein 50×50-Thumbnail. Dort steht seit dem 14.08. `grossbildNachVorn()`: ist das erste
+Bild kleiner als 250 px, holt der Importer selbst das erste fertige Grossbild nach vorn. Ohne
+das legte er täglich neue Fälle an und diese Datei wäre Sisyphusarbeit.
 
 Aufruf:  python3 automation/hauptbild_grossbild.py            (Probelauf, ändert nichts)
          python3 automation/hauptbild_grossbild.py --scharf   (schreibt)
@@ -97,7 +123,12 @@ CACHE = "/tmp/hauptbild_media.jsonl"          # Ergebnis der Bulk-Abfrage
 MESSUNG = "/tmp/hauptbild_messung.json"       # zwischengespeicherte Bildmessungen
 MINI = 500          # darunter gilt das Hauptbild als Miniatur
 GROSS = 800         # ab hier gilt ein Bild als Grossbild
-WORTGRENZE = 4      # ab so vielen sicher gelesenen Wörtern: Werbetafel
+# `bildtext_pruefen` verwirft ab 4 Wörtern; hier wird bei 3 verworfen. Grund aus dem
+# Probelauf: die Schrifttafel «U-SHAPE NECK MASSAGER · ST-320» kam auf genau drei zählbare
+# Wörter durch — «U-SHAPE» zerfällt an dem Bindestrich, «ST-320» ist keins. Sie wäre als
+# Hauptbild eines Massagekissens im Google-Feed gelandet. Von 30 sonst gewählten Bildern
+# tragen 27 gar keinen Text, zwei genau zwei Wörter; die schärfere Grenze kostet also nichts.
+WORTGRENZE = 3      # ab so vielen sicher gelesenen Wörtern: Werbetafel
 
 
 def gql(query, variables=None):
