@@ -6633,3 +6633,8 @@ gid://shopify/Product/15449583780225	25->0	Kartenhalter & ID-Tasche
 gid://shopify/Product/15449587024257	18->3	Herren Leder Geldbeutel
 gid://shopify/Product/15449587286401	44->3	Minimalistisches AirTag-Geldbörse für Herren
 gid://shopify/Product/15449600229761	20->3	Stillkissen mit Taillenstütze
+gid://shopify/Product/15450068189569	24->0	Wasserdichte Wanderschuhe
+gid://shopify/Product/15450116161921	50->0	Portable Nähmaschine
+gid://shopify/Product/15450169540993	13->0	Fahrzeug-Tracker mit langer Akku-Lebensdauer
+gid://shopify/Product/15450215154049	23->0	Winter-Steuerrad-Abdeckung
+gid://shopify/Product/15450253066625	46->0	Autositzschutz
