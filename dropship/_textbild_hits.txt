@@ -6593,3 +6593,4 @@ gid://shopify/Product/15449067454849	120->0	Vielseitiger Kapuzenpullover für He
 gid://shopify/Product/15449072042369	77->3	Kinderreisegepäck mit integriertem Sitz
 gid://shopify/Product/15449073058177	68->0	Drehbarer Retro-Anhänger mit Hui-Muster
 gid://shopify/Product/15449119818113	10->2	Robuste Sportuhr für Herren
+gid://shopify/Product/15449127747969	9->0	Mond & Sterne Katzenbaum mit 4 Ebenen – Blau
