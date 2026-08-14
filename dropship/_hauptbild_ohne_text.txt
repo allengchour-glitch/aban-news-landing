@@ -20531,3 +20531,10 @@ gid://shopify/Product/15484494741889	schon-sauber	0
 gid://shopify/Product/15484498280833	umgestellt	15
 gid://shopify/Product/15484498379137	schon-sauber	0
 gid://shopify/Product/15484498477441	schon-sauber	0
+gid://shopify/Product/15484498641281	schon-sauber	0
+gid://shopify/Product/15484500181377	schon-sauber	0
+gid://shopify/Product/15484500246913	schon-sauber	0
+gid://shopify/Product/15484500443521	schon-sauber	1
+gid://shopify/Product/15484500509057	schon-sauber	1
+gid://shopify/Product/15484500607361	schon-sauber	0
+gid://shopify/Product/15484500640129	schon-sauber	0
