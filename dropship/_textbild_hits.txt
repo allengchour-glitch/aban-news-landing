@@ -6518,3 +6518,8 @@ gid://shopify/Product/15446273196417	17->1	Kabelloses, fernbedienbares Velo-Rüc
 gid://shopify/Product/15446274834817	12->2	Magnetischer Brillenhalter für Sonnenblende
 gid://shopify/Product/15446279848321	42->1	Portables Roll-Up Piano mit 88 Tasten
 gid://shopify/Product/15447563764097	20->2	Blaues Schaumstoff-Flugzeug mit Elektromotor
+gid://shopify/Product/15447592862081	141->0	Submarine Automatikuhr für Herren
+gid://shopify/Product/15447605313921	16->0	Oxford Langarmhemd für Herren, Baumwolle, bügelfrei
+gid://shopify/Product/15447627137409	9->3	2-in-1 Mini Glätteisen für Pony & kurze Haare
+gid://shopify/Product/15447637197185	11->1	Miao Xianer Katzen-Kletterbaum „Springende Pflanze“
+gid://shopify/Product/15447878762881	21->0	Babyphone mit HD-Kamera und App-Zugriff
