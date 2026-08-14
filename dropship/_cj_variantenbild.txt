@@ -50,3 +50,6 @@ gid://shopify/Product/15445798814081	zugeordnet	2	Mattes Make-up Pinselset mit N
 gid://shopify/Product/15445799240065	zugeordnet	2	24-teiliges Make-up Pinselset
 gid://shopify/Product/15445799436673	zugeordnet	1	20-teiliges Make-up Pinselset Champagner
 gid://shopify/Product/15445799469441	zugeordnet	2	13-teiliges Make-up Pinselset mit langem Griff
+gid://shopify/Product/15445799666049	zugeordnet	8	Make-up Pinselset, 10-teilig
+gid://shopify/Product/15445799698817	zugeordnet	5	Ultra-Soft 8-teiliges Make-up Pinselset
+gid://shopify/Product/15445799862657	zugeordnet	3	Farbiger Tricolor Lidschatten-Stick
