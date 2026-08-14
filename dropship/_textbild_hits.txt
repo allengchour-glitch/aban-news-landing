@@ -6434,3 +6434,52 @@ gid://shopify/Product/15453763568001	11->0	Intelligentes Katzen Spielgerät
 gid://shopify/Product/15453763731841	29->0	Kratzbrett gegen Schuppen
 gid://shopify/Product/15453764125057	37->0	Intelligenter Springball für Hund und Katze
 gid://shopify/Product/15453764157825	23->3	Herren Sommer Streifen Kurzarm Polo-Shirt
+gid://shopify/Product/15453764354433	53->0	Großvolumige Katzenklo-Box mit Hochwänden
+gid://shopify/Product/15453764616577	33->0	Männertasche mit CP-Design
+gid://shopify/Product/15453764649345	13->2	Wasserquelle für Katzen & Futterautomat für Hunde
+gid://shopify/Product/15453764714881	32->0	Intelligenter Futtermanger
+gid://shopify/Product/15453765140865	77->0	Retro Motorradtasche mit Helmfach
+gid://shopify/Product/15453765206401	33->0	Riser-Feeder für alle außer der ersten Generation
+gid://shopify/Product/15453767074177	37->0	Velvet-Matte Lippenstift-Linierer
+gid://shopify/Product/15453767434625	20->1	Holzblumentopf mit getrockneten Blumen
+gid://shopify/Product/15453767696769	25->0	Handgemalte Farbölmalerei
+gid://shopify/Product/15453767762305	33->0	Ölmalerei zum Selbermachen
+gid://shopify/Product/15453767827841	34->0	Sparkling Augen-Schatten
+gid://shopify/Product/15453767926145	196->0	Ölmalerei zum Ausmalen
+gid://shopify/Product/15453768122753	62->1	Ribbiertes Webband mit Blumen- und Pflanzenprint
+gid://shopify/Product/15453768384897	53->1	Schwarze Laufschuhe mit weicher Sohle
+gid://shopify/Product/15453768581505	68->3	Leichte Trend-Sneaker
+gid://shopify/Product/15453768614273	34->0	Raffiniertes Puffrock-Kleid
+gid://shopify/Product/15453768679809	46->0	Leichte Damen-Sneaker mit Mesh
+gid://shopify/Product/15453768778113	101->0	Atmungsaktive Sportschuhe mit Fly-Woven-Mesh
+gid://shopify/Product/15453768909185	45->1	Atmungsaktive Sneaker mit erhöhter Passform
+gid://shopify/Product/15453768974721	30->0	Atmungsaktive Laufschuhe für Herren
+gid://shopify/Product/15453769073025	25->1	Fahrradhelm für sicheres Radfahren
+gid://shopify/Product/15453769138561	25->3	Magnetische falsche Wimpern mit Seifenhalter
+gid://shopify/Product/15453769564545	21->2	Damen-Sportschuhe für Alltag & Sport
+gid://shopify/Product/15453769728385	40->1	Warme Schneestiefel für Herren
+gid://shopify/Product/15453769761153	14->0	Magnetische Camellien-Wimpern
+gid://shopify/Product/15453769826689	55->0	Fünf-Finger-River-Schuhe für Damen
+gid://shopify/Product/15453769859457	61->0	Heizbare Winterhaube für Fahrrad & Ski
+gid://shopify/Product/15453770121601	13->0	Fahrradhelm Polsterung für Pendler
+gid://shopify/Product/15453770154369	92->3	Rüschterock Midi · Damen
+gid://shopify/Product/15453770252673	31->0	Radfahrer Sonnenschutz Gesichtsschutz
+gid://shopify/Product/15453770318209	128->0	Ski-Helm-Set mit Cartoon-Tier Motiv
+gid://shopify/Product/15453770383745	32->1	Yoga-Fitness-Shorts
+gid://shopify/Product/15453770482049	27->2	Ölbild-Druck Rock
+gid://shopify/Product/15453771170177	9->0	Wanderschuhe fürs Wasser
+gid://shopify/Product/15453771432321	51->3	Sand- & wasserdichte Bein-/Fussdecke für Outdoor-Aktivitäten
+gid://shopify/Product/15453771661697	52->0	Öle für Duftdiffuser
+gid://shopify/Product/15453772022145	23->1	Retro-Overalls für Herren
+gid://shopify/Product/15453772153217	37->3	Holziges Raumfeuchtigkeitsgerät
+gid://shopify/Product/15453772284289	170->0	Einheitlicher Jumpsuit für Herren
+gid://shopify/Product/15453772448129	57->0	Feuchtigkeitsspender für kreatives Styling
+gid://shopify/Product/15453772480897	39->0	Katzen-Spielzeug mit Futter-Feeder
+gid://shopify/Product/15453772546433	145->0	Taktischer Rucksack mit Tarnmuster
+gid://shopify/Product/15453772644737	29->0	Kauspielzeug für Hunde, Zahnpflege
+gid://shopify/Product/15453773824385	14->0	Black Tech Power-Mechanik Marathon-Laufschuhe
+gid://shopify/Product/15453773922689	25->0	Kurze, dünne Sommerhose im American-Style
+gid://shopify/Product/15453775331713	77->0	Atmungsaktive Sneaker Damen
+gid://shopify/Product/15453777559937	28->0	Taktischer Gürtel mit Kummerbund
+gid://shopify/Product/15453778444673	83->1	Männer-Geldbörse mit RFID-Schutz
+gid://shopify/Product/15453778510209	9->3	Baby Seitenliege- und Anti-Roll-Kissen
