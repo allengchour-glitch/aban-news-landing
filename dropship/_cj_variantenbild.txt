@@ -65,3 +65,6 @@ gid://shopify/Product/15446016557441	zugeordnet	10	Edelstahl-Bratpfanne mit Wabe
 gid://shopify/Product/15446018326913	bild-urls-tot
 gid://shopify/Product/15446020686209	zugeordnet	2	3er-Set Bambus-Schneidebretter
 gid://shopify/Product/15446064464257	zugeordnet	2	Glitzerndes Highlight Puder für Gesicht & Körper
+gid://shopify/Product/15446065021313	zugeordnet	2	Photon Gesichts- und Augenmassagegerät
+gid://shopify/Product/15446065873281	zugeordnet	4	Sonnenschutz-Gesichtsmaske mit Krempe
+gid://shopify/Product/15446066299265	zugeordnet	12	Maulbeerseiden-Gesichtsmaske für Damen
