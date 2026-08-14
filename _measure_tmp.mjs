@@ -66,6 +66,12 @@ const r = await p.evaluate(() => {
     }
     out.verdeckt = hit + '/' + tot;
     out.treffer = who;
+    var mid = document.elementFromPoint(b0.left + b0.width/2, b0.top + b0.height/2);
+    var chain = []; var e = mid;
+    while (e && chain.length < 6) { chain.push(e.tagName + (e.id ? '#'+e.id : '') + (e.className ? '.'+String(e.className).slice(0,40) : '')); e = e.parentElement; }
+    out.knopf_mitte_kette = chain;
+    out.knopf_mitte_ist_knopf = !!(mid && (mid === btn || btn.contains(mid) || (mid.closest && mid.closest('.sticky-add-to-cart__bar'))));
+    out.knopf_mitte_html = mid ? mid.outerHTML.slice(0,140) : null;
   }
   // Sind die Banner-Knoepfe selbst noch antippbar?
   const btns = banner ? [...banner.querySelectorAll('button')] : [];

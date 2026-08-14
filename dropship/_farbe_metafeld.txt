@@ -146,3 +146,5 @@ gid://shopify/Product/15497444065665	Blau
 gid://shopify/Product/15497444163969	Silber
 gid://shopify/Product/15497444360577	Transparent
 gid://shopify/Product/15497458778497	Transparent
+gid://shopify/Product/15497493086593	Weiss
+gid://shopify/Product/15497493217665	Türkis
