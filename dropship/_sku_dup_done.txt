@@ -576,3 +576,4 @@ gid://shopify/Product/15497434562945	CJ-A01D7A73-97F9-4323-B698-98C1EE28C80A	Bes
 gid://shopify/Product/15497434661249	CJ-8F62A542-D589-4A46-93A0-24E4EDAEACB2	Sofa-Kissenbezug Satin
 gid://shopify/Product/15497434825089	CJ-1777974329062469632	Silikon-Nackenkissen für Shampoobecken
 gid://shopify/Product/15497434890625	CJ-1777355232654139392	Bettkeil Kissen mit Tasche
+gid://shopify/Product/15497494397313	CJ-9C611B19-9C6B-4904-9829-A0B438502826	Wabentuch aus Baumwolle

@@ -29,6 +29,7 @@ await ctx.route('**/*', async (route) => {
   if (!r) return route.abort();
   try { await route.fulfill({ status: 200, contentType: r.ct, body: r.body }); } catch { try { route.abort() } catch {} }
 });
+if (process.env.NOPOP === '1') { await ctx.addInitScript(() => { try { localStorage.setItem('lx_popup_v1', 'dismissed'); } catch (e) {} }); }
 const p = await ctx.newPage();
 const bust = URL + (URL.includes('?') ? '&' : '?') + 'nc=' + Math.floor(Date.now() / 1000);
 try { await p.goto(bust, { waitUntil: 'domcontentloaded', timeout: 90000 }); } catch (e) { console.log('nav:', e.message); }
@@ -80,6 +81,8 @@ const r = await p.evaluate(() => {
     const el = document.elementFromPoint(r0.left + r0.width / 2, r0.top + r0.height / 2);
     return { text: x.textContent.trim().slice(0, 20), erreichbar: !!(el && banner.contains(el)) };
   });
+  const pop = q('#lx-pop');
+  out.emailpopup = pop ? { display: getComputedStyle(pop).display, z: getComputedStyle(pop).zIndex, rect: rect(pop) } : null;
   const sb = q('#luxsb-wrap');
   out.suchleiste = sb ? { rect: rect(sb), display: getComputedStyle(sb).display } : null;
   const links = ['/pages/impressum', '/pages/agb', '/pages/faq', '/pages/widerruf', '/pages/versand-lieferung', '/pages/tracking', '/pages/rueckgabe', '/pages/garantie', '/pages/kontakt-support', '/pages/ueber-uns', '/blogs/magazin', '/pages/datenschutz', '/pages/cookie-richtlinie', '/pages/data-sharing-opt-out'];
