@@ -1,63 +1,74 @@
 {
-  "_": "Muster für heikel_zweck.mjs. Jede Regel trägt ihren Befund. Reihenfolge zählt: sperre vor treffer.",
+  "_": "Muster für heikel_zweck.mjs. Reihenfolge: erst sperre_titel (was das Produkt IST), dann treffer (was es TUT). Jede treffer-Regel ist eine UND-Kette einfacher Ausdrücke — nie ein Ausdruck mit .{0,400} über Satzgrenzen: das ist die Backtracking-Falle aus dem Projektgedächtnis.",
 
-  "sperre": [
-    {"n": "gegenteil-detektor",
-     "re": "Detektor|Detector|Kamera-?Finder|Aufsp[üu]r|Anti-?Spionage|Wanzen-?(?:Detektor|Detector|Melder)|Sp[üu]rger[äa]t",
-     "warum": "Diese Geräte SUCHEN versteckte Kameras und Wanzen. Sie aus dem Kanal zu nehmen hiesse, ausgerechnet das Schutzgerät zu bestrafen. Vier davon standen im Probelauf 14.08. auf der Kandidatenliste: «Wanzen- und Kamera-Detektor», «Spionage- und Wanzen-Detector», «Anti-Spionage-Detektor», «Smart Detector Kamera-Finder»."},
+  "sperre_titel": [
+    {"n": "gegenteil-schutzgeraet",
+     "re": "Detektor|Detector|Kamera-?Finder|Aufsp[üu]r|Anti-?Spionage|Melder|Sp[üu]rger[äa]t",
+     "warum": "Diese Geräte SUCHEN versteckte Kameras und Wanzen. Sie aus dem Kanal zu nehmen hiesse, ausgerechnet das Schutzgerät zu bestrafen. Sechs standen im Probelauf auf der Kandidatenliste: «Wanzen- und Kamera-Detektor», «Spionage- und Wanzen-Detector», «Anti-Spionage-Detektor», «Smart Detector Kamera-Finder», «Kameradetektor», «GPS- und Funksignal-Detektor»."},
 
     {"n": "zubehoer-kein-geraet",
-     "re": "Speicherkarte|TF[- ]?Card|SD[- ]?Karte|Stativ|Selfie[- ]?Stick|Halterung|Helmhalterung|Gimbal|Objektiv|Panzerglas|Schutzh[üu]lle|Kamera-?Organizer|Kamera-?Adapter|Ersatz-?Akku|Ladeger[äa]t f[üu]r|Wasserdichtes Geh[äa]use|Kreuzungsrahmen|Carbon-?Faser",
-     "warum": "Zubehör ist keine Kamera. Der erste Entwurf traf einen FPV-Drohnenrahmen («unterstützt Mini-Kamera»), ein USB-Ladegerät für Digitalkamera-Akkus, eine 32-GB-TF-Karte und einen 5-mm-Sportkamera-Adapter."},
+     "re": "Speicherkarte|TF[- ]?Card|SD[- ]?Karte|Stativ|Selfie[- ]?Stick|Halterung|Gimbal|Objektiv|Panzerglas|Schutzh[üu]lle|Kamera-?Organizer|Metall-?Adapter|Objektfinder|Verlustobjekt|Schl[üu]sselfinder|Ersatz-?Akku|Ladeger[äa]t|Geh[äu]ause|Geh[äa]use f[üu]r|Rahmen|Kabel|Blende|Reiniger",
+     "warum": "Zubehör ist kein Gerät. Ohne diese Sperre traf der Probelauf einen FPV-Drohnenrahmen («unterstützt Mini-Kamera»), ein USB-Ladegerät für Digitalkamera-Akkus, eine 32-GB-TF-Karte, einen 5-mm-Sportkamera-Adapter und ein wasserdichtes Gehäuse für die Insta360."},
 
     {"n": "offene-kamera-bauform",
-     "re": "Dashcam|Fahrzeugrekorder|Fahrzeugrecorder|Fahrzeugaufzeichner|R[üu]ckfahrkamera|Wildkamera|Wildtierkamera|Jagdkamera|Action-?Kamera|Sportkamera|Babyphone|Baby-?(?:Video-?)?Monitor|[ÜU]berwachungskamera f[üu]r (?:den )?(?:Aussen|Outdoor)|T[üu]rspion|Drohne|Helikopter|Vogelhaus|Endoskop",
-     "warum": "Offen sichtbare Kameras mit eigenem Zweck. Eine Dashcam am Fahrzeug, eine Wildkamera am Baum, ein Babyphone im Kinderzimmer und eine Aussenkamera an der Fassade sind keine verdeckte Überwachung."},
+     "re": "Dashcam|Fahrzeugrek|Fahrzeugrec|Fahrzeugaufzeichner|R[üu]ckfahrkamera|Wildkamera|Wildtierkamera|Jagdkamera|Action-?Kamera|Sportkamera|Sport-?&|Babyphone|Baby-?(?:Video-?)?(?:Monitor|[ÜU]berwachungskamera)|T[üu]rspion|Drohne|Helikopter|Vogelhaus|Endoskop|Solar|Outdoor|Aussen|Au[ßs]sen|\\b4G\\b|\\bPTZ\\b|Schwenk-?Neige|Lampenkopf|Pet-?Kamera|Kinder ?Digitalkamera|Teleskop",
+     "warum": "Offen sichtbare Kameras mit eigenem Zweck: Dashcam am Fahrzeug, Wildkamera am Baum, Babyphone im Kinderzimmer, Solar-Aussenkamera an der Fassade. Sie werben zwar auch mit «unauffällig montieren» — eine fest montierte Kamera an der eigenen Fassade ist aber keine verdeckte Überwachung. 16 Mini-Drohnen mit Kamera hingen ebenfalls an dieser Sperre."},
 
     {"n": "mikrofon-fuer-aufnahme",
-     "re": "Ansteckmikrofon|Lavalier|Kragenclip-?Mikrofon|Konferenzmikrofon|Kondensatormikrofon|Helm-?Intercom",
-     "warum": "Ansteck-/Konferenzmikrofone werben zu Recht mit «unauffälliger Befestigung am Kragen» — das ist Kamerazubehör für Video-Aufnahmen, keine Wanze. Ohne diese Sperre hätte der Probelauf 8 einwandfreie Mikrofone erwischt."},
+     "re": "Ansteckmikrofon|Lavalier|Kragenclip|Konferenzmikrofon|Kondensatormikrofon|Intercom|Funk-?Ansteck",
+     "warum": "Ansteck- und Konferenzmikrofone werben zu Recht mit «unauffälliger Befestigung am Kragen» — das ist Videozubehör, keine Wanze. Ohne diese Sperre hätte der Probelauf acht einwandfreie Mikrofone erwischt."},
 
     {"n": "kein-mensch-als-ziel",
-     "re": "Hundehalsband|Antibellhalsband|Anti-?Bell|gegen Bellen|Hunde-?Trainer|Tierabwehr|Hundeabwehr|Katzen|M[üu]cken|Insekten|Fliegen|Ratten|Marder",
-     "warum": "Elektroschock-Halsbänder für Hunde, Ultraschall-Tierabwehr und elektrische Mückenklatschen richten sich nicht gegen Menschen. (Ob Reizstrom-Halsbänder verkauft werden sollen, ist eine Tierschutzfrage — sie gehört nicht in dieses Muster.)"},
+     "re": "Hundehalsband|Antibell|Anti-?Bell|gegen Bellen|Hunde-?Trainer|Hundetrainer|Tierabwehr|Hundeabwehr|Katzen|M[üu]cken|Insekten|Fliegen|Ratten|Marder|Haustier",
+     "warum": "Elektroschock-Halsbänder für Hunde, Ultraschall-Tierabwehr und elektrische Mückenklatschen richten sich nicht gegen Menschen. (Ob Reizstrom am Hund verkauft werden soll, ist eine Tierschutzfrage — sie gehört nicht in dieses Muster; im Probelauf waren es fünf Halsbänder und eine Mückenklatsche.)"},
 
-    {"n": "sport-training-kleidung",
-     "re": "Kampfsport|Boxen|Box-?Target|Trainingsger[äa]t f[üu]r|Stiefel|Schuhe|Weste|Jeans|Hose|Jacke|Handschuh|Kost[üu]m|Verkleidung|Modellauto|Sticker|Figur|Playmobil|Deko",
-     "warum": "Der Probelauf fand 9 Fehltreffer dieser Art: Wanderstiefel und Militärstiefel, deren Beschreibung «Kampfsport, Selbstverteidigung» als Einsatzzweck aufzählt, eine taktische Weste, ein Box-Target, fünf Polizei-Spielfiguren mit «Schlagstock» in der Zubehörliste und die «Washed Machete Jeans» (eine Waschung, keine Machete)."}
+    {"n": "kleidung-deko-spielzeug",
+     "re": "Stiefel|Schuhe|Sneaker|Sandale|Pumps|Weste|Jeans|Hose|Jacke|Handschuh|M[üu]tze|Kost[üu]m|Verkleidung|Modellauto|Sticker|Kissen|Halskette|Armband|Box-?Target|Basketball|Ring-?Set",
+     "warum": "Neun Fehltreffer dieser Art im Probelauf: Militär- und Wanderstiefel und eine taktische Weste, deren Text «Kampfsport, Selbstverteidigung» als Einsatzzweck aufzählt, ein Box-Target, fünf Polizei-Spielfiguren mit «Schlagstock» in der Zubehörliste, ein Modellauto-Set mit «Selbstverteidigungsstreitkräfte Typ 16 Gepanzerter Tank» und die «Washed Machete Jeans» — eine Waschung, keine Machete."}
   ],
 
   "treffer": [
     {"n": "kamera-getarnt-als-alltagsgegenstand",
-     "re": "(?:Design|Geh[äa]use|Form)\\s+(?:ist\\s+)?(?:einer?|einem)\\s+(?:normalen?|gew[öo]hnlichen?|herk[öo]mmlichen?)\\s+(?:Brille|Uhr|Stift|Kugelschreiber|Wecker|Lautsprecher)[^.]{0,60}(?:nachempfunden|nachgebildet)|versteckte\\s+Kamera|Spionage-?[Kk]amera|Spy-?Cam|getarnte\\s+Kamera|Kamera\\s+(?:ist\\s+)?(?:vollst[äa]ndig\\s+)?(?:getarnt|verborgen)",
-     "warum": "Eine Kamera, deren Verkaufsargument ist, dass man sie NICHT als Kamera erkennt. Live gefunden: «Full-HD-Sonnenbrille mit integrierter Kamera» — «Das Design ist einer normalen Brille nachempfunden, was eine diskrete Nutzung ermöglicht.»"},
+     "alle": ["Kamera|\\bCam\\b|Camcorder",
+              "(?:normalen?|gew[öo]hnlichen?|herk[öo]mmlichen?)\\s+(?:Brille|Uhr|Stift|Kugelschreiber|Wecker)[^<]{0,40}nachempfunden|nachempfunden[^<]{0,40}(?:Brille|Uhr|Stift)|versteckte\\s+Kamera|Spionage-?[Kk]amera|Spy-?Cam|getarnt"],
+     "warum": "Eine Kamera, deren Verkaufsargument ist, dass man sie NICHT als Kamera erkennt. Live gefunden: «Full-HD-Sonnenbrille mit integrierter Kamera» — «Das Design ist einer normalen Brille nachempfunden, was eine diskrete Nutzung ermöglicht.» Dazu kommt beim Aufnehmen fremder Personen StGB Art. 179quater."},
 
     {"n": "kamera-zum-diskreten-platzieren",
-     "re": "(?:Kamera|Recorder|Aufnahmeger[äa]t|Camcorder|DV)[^.]{0,400}?(?:diskret|unauff[äa]llig)\\w*\\s+(?:platzier|plazier|einsetz|verstau|anbring|montier|[üu]berall|Platzierung|Nutzung|Einsatz)|(?:diskret|unauff[äa]llig)\\w*\\s+(?:platzier|plazier|[üu]berall\\s+platzier)[^.]{0,200}?(?:Kamera|Aufnahme|Aufzeichnung)",
-     "warum": "Nicht die Grösse ist das Problem, sondern der beworbene Zweck: eine Kamera, die man unbemerkt IRGENDWO hinstellt. Fünf Live-Treffer, alle in derselben 43×35×25-mm- bzw. Würfel-Bauform: A9 Mini-WLAN-Kamera, «Kabellose HD-Kamera mit Fernbedienung», «HD Video Recorder» (30×30×30 mm), «2 Millionen Infrarot-Nachtsichtkamera» («Perfekt für den diskreten Einsatz»), «Mini HD-Überwachungskamera» (34,6 g). ⚠️ Bewusst NICHT im Muster: «diskret in jede Umgebung integrieren» — so beschreibt sich jede fest montierte Innenraumkamera, das wäre die halbe Elektronikabteilung."},
+     "alle": ["Kamera|\\bCam\\b|Camcorder|Recorder|Aufnahmeger[äa]t|\\bDV\\b",
+              "(?:diskret|unauff[äa]llig)\\w*\\s+(?:platzier|plazier|einsetz|verstau|anbring|[üu]berall|Platzierung|Nutzung|Einsatz)"],
+     "warum": "Nicht die Grösse ist das Problem, sondern der beworbene Zweck: eine Kamera, die man unbemerkt IRGENDWO hinstellt. Fünf Live-Treffer, alle in derselben Würfel- bzw. 43×35×25-mm-Bauform: A9 Mini-WLAN-Kamera, «Kabellose HD-Kamera mit Fernbedienung», «HD Video Recorder» (30×30×30 mm), «2 Millionen Infrarot-Nachtsichtkamera» («Perfekt für den diskreten Einsatz»), «Mini HD-Überwachungskamera» (34,6 g). ⚠️ Das Verb «montieren» steht bewusst NICHT in der Liste: «lässt sich unauffällig montieren» sagt jede fest installierte Solar-Aussenkamera. Ebenso wenig «integrieren» («diskret in jede Umgebung integrieren» = Innenraumkamera) — sonst fiele die halbe Elektronikabteilung."},
 
     {"n": "spycam-modellreihe",
-     "re": "\\bSQ\\s?[0-9]{2}\\b[^.]{0,80}(?:Kamera|Cam)|(?:Kamera|Cam)[^.]{0,40}\\bSQ\\s?[0-9]{2}\\b|\\bA9\\b[^.]{0,30}(?:Mini-?)?(?:Kamera|WLAN-?Kamera)",
-     "warum": "SQ11/SQ12/SQ13 und A9 sind die Modellreihen, unter denen die Nano-Spionagekamera weltweit gehandelt wird. Der SQ13 nennt im Text kein einziges Tarnwort — er ist rein technisch beschrieben und rutschte deshalb am 12.08. durch, während seine beiden SQ11-Zwillinge entfernt wurden. Die Modellreihe ist hier die verlässlichere Spur als die Wortwahl des Verkäufers."},
+     "alle": ["\\bSQ\\s?[0-9]{2}\\b|\\bA9\\b", "Kamera|\\bCam\\b"],
+     "warum": "SQ11/SQ12/SQ13 und A9 sind die Modellreihen, unter denen die Nano-Spionagekamera weltweit gehandelt wird. Der SQ13 nennt im ganzen Text kein einziges Tarnwort — er ist rein technisch beschrieben («Bewegungserkennung», «90 Minuten Aufnahme») und rutschte deshalb am 12.08. durch, während seine beiden SQ11-Zwillinge entfernt wurden. Die Modellnummer ist hier die verlässlichere Spur als die Wortwahl des Verkäufers."},
 
     {"n": "wanze-magnetisch-platziert",
-     "re": "(?:Sprachrekorder|Sprachaufzeichnung|Diktierger[äa]t|Audiorekorder|Aufnahmeger[äa]t|Voice\\s?Recorder)[^.]{0,300}?(?:Magnet|magnetisch)[^.]{0,120}?(?:diskret|unauff[äa]llig)|(?:Magnet|magnetisch)[^.]{0,80}(?:diskrete\\s+Platzierung)[^.]{0,200}?(?:Aufnahme|Rekorder|Audio)",
-     "warum": "Ein Diktiergerät ist zulässig; ein Diktiergerät, das man per Magnet an einer fremden Metalloberfläche befestigt und das sprachaktiviert 60 Stunden lang mitschneidet, ist eine Wanze (StGB Art. 179bis/179ter). Live: «Magnetischer Sprachrekorder mit 60h Akku» — «Der eingebaute Magnet ermöglicht eine diskrete Platzierung an Metalloberflächen.» ⚠️ Die Trennlinie ist die PLATZIERUNG, nicht das Wort «diskret»: «besonders diskret, da es über kein Display verfügt» (MP3-Diktiergerät) und «handlich und diskret» (U03 Aufnahme-Stick) beschreiben die Handhabung durch den Besitzer und bleiben deshalb bewusst draussen."},
+     "alle": ["Sprachrekorder|Diktierger[äa]t|Audiorekorder|Voice\\s?Recorder|Sprachaufzeichnung",
+              "Magnet",
+              "diskret|unauff[äa]llig"],
+     "warum": "Ein Diktiergerät ist zulässig; ein sprachaktiviertes Diktiergerät mit 60 Stunden Laufzeit, das per Magnet an einer fremden Metalloberfläche haftet, ist eine Wanze (StGB Art. 179bis/179ter). Live: «Magnetischer Sprachrekorder mit 60h Akku» — «Der eingebaute Magnet ermöglicht eine diskrete Platzierung an Metalloberflächen.» ⚠️ Die Trennlinie ist die PLATZIERUNG, nicht das Wort «diskret»: «besonders diskret, da es über kein Display verfügt» (MP3-Diktiergerät) und «handlich und diskret» (U03 Aufnahme-Stick) beschreiben die Handhabung durch den Besitzer — beide bleiben bewusst im Kanal."},
 
     {"n": "personenortung-mit-mithoeren",
-     "re": "(?:Tracker|Ortungsger[äa]t|Peilsender)[^.]{0,600}?(?:Mith[öo]ren|Ton[üu]berwachung|Sprach[üu]berwachung|Umgebungsger[äa]usche)|Personenortung|(?:orten|verfolgen|[üu]berwachen)\\s+von\\s+Personen",
-     "warum": "Ein Schlüsselfinder ist erlaubt, das heimliche Orten einer Person ist es nicht (StGB Art. 179quater). Der Treffer verlangt zusätzlich die Raumabhör-Funktion oder das Wort Personenortung. ⚠️ Bewusst NICHT erfasst: «GPS-Tracker für Kinder, Senioren und Haustiere» — Familien- und Haustierortung ist eine zulässige Produktgattung; der Satz «lässt sich unauffällig an Objekten oder Personen anbringen» allein macht daraus keine Wanze."},
+     "alle": ["Tracker|Ortungsger[äa]t|Peilsender",
+              "Mith[öo]ren|Ton[üu]berwachung|Sprach[üu]berwachung|Umgebungsger[äa]usche|Personenortung|(?:orten|verfolgen|[üu]berwachen)\\s+von\\s+Personen"],
+     "warum": "Ein Schlüsselfinder ist erlaubt, das heimliche Orten und Abhören einer Person nicht (StGB Art. 179quater). Der Treffer verlangt zusätzlich zur Ortung die Raumabhör-Funktion oder das Wort Personenortung. ⚠️ Bewusst NICHT erfasst: «GPS-Tracker für Kinder, Senioren und Haustiere» — Familien- und Haustierortung ist eine zulässige Produktgattung; der Satz «lässt sich unauffällig an Objekten oder Personen anbringen» allein macht daraus keine Wanze."},
 
     {"n": "waffe-gegen-menschen",
-     "re": "Selbstverteidigungs(?:waffe|werkzeug|ger[äa]t|stock|stab)|\\w*[Aa]bwehrstock|Defense\\s?Stick|(?:zur|zum|f[üu]r die|effektive|Mittel zur|Hilfsmittel zur)\\s+Selbstverteidigung|f[üu]r den pers[öo]nlichen Schutz konzipiert|gegen Angreifer",
-     "warum": "Google verbietet im Shopping-Feed, was primär dem Verletzen von Menschen dient — ein Produkt, das sich selbst «Selbstverteidigungswaffe» nennt, ist der eindeutigste Fall. Der 12.08.-Lauf verlangte ein Klingen-Nomen oder die Wortendung «…waffe»; «…werkzeug», «Abwehrstock» und «Defense Stick» standen in keiner Liste."},
+     "alle": ["Selbstverteidigungs(?:waffe|werkzeug|ger[äa]t|stock|stab)|\\w*[Aa]bwehrstock|Defense\\s?Stick|(?:zur|zum|f[üu]r die|effektive|Mittel zur|Hilfsmittel zur)\\s+Selbstverteidigung|f[üu]r den pers[öo]nlichen Schutz konzipiert|gegen Angreifer"],
+     "warum": "Google verbietet im Shopping-Feed, was primär dem Verletzen von Menschen dient — ein Produkt, das sich selbst «Selbstverteidigungswaffe» nennt, ist der eindeutigste Fall. Der 12.08.-Lauf verlangte ein Klingen-Nomen oder die Wortendung «…waffe»; «…werkzeug», «Abwehrstock» und «Defense Stick» standen in keiner Liste. ⚠️ «für die Selbstverteidigung» braucht den Artikel: die Aufzählung «Wandern, Campen, Selbstverteidigung» in der Beschreibung einer LED-Leuchte ist keine Waffe."},
 
     {"n": "ch-verbotene-waffe",
-     "re": "Nunchak|Tonfa|Schlagring|Wurfstern|Schmetterlings-?(?:messer|schwert)|Butterfly-?Messer|Balisong|Springmesser|Teleskopschlagstock|Totschl[äa]ger|Wurfmesser",
-     "warum": "Art. 4 Abs. 1 Bst. c und d WG nennen diese Gegenstände ausdrücklich; nach Art. 5 ist bereits das ANBIETEN verboten. Die Aufzählung im Gesetz ist nicht abschliessend und erfasst gleichartige Gegenstände mit."},
+     "alle": ["Nunchak|Tonfa|Schlagring|Wurfstern|Schmetterlings-?(?:messer|schwert)|Butterfly-?Messer|Balisong|Springmesser|Teleskopschlagstock|Totschl[äa]ger|Wurfmesser"],
+     "warum": "Art. 4 Abs. 1 Bst. c und d WG nennen diese Gegenstände ausdrücklich, nach Art. 5 ist bereits das ANBIETEN verboten, und die Aufzählung im Gesetz ist nicht abschliessend. ⚠️ Ein Schmetterlingsmesser-Trainer ist nur dann zulässig, wenn die Klinge stumpf, ungeschliffen UND gelocht ist — das Live-Listing bot ausdrücklich auch «spitze Klinge ohne Öffnung» an."},
 
     {"n": "elektroschock-gegen-menschen",
-     "re": "(?:Elektroschock|elektrischer?\\s+Lichtbogen|Lichtbogen|electric\\s+arc|Taser|Stun\\s?Gun)[^.]{0,300}?(?:Selbstverteidig|pers[öo]nliche[nr]?\\s+(?:Schutz|Sicherheit)|Angreifer)|(?:Selbstverteidig|pers[öo]nliche[nr]?\\s+Sicherheit)[^.]{0,300}?(?:Elektroschock|Lichtbogen|electric\\s+arc)",
-     "warum": "Elektroschockgeräte gegen Menschen sind nach Art. 4 Abs. 1 Bst. e WG Waffen und dürfen in der Schweiz nicht angeboten werden. Zwei Live-Fälle, beide unter harmlosem Namen: ein «Selbstverteidigungswerkzeug» (Warengruppe «Aufbewahrung & Organizer», Produktbild wirbt mit «Strong electric arc») und ein «Elektroschock-Spielzeug» in Fingerring-Form."}
+     "alle": ["Elektroschock|Lichtbogen|electric\\s+arc|\\bTaser\\b|Stun\\s?Gun",
+              "Selbstverteidig|pers[öo]nliche[nr]?\\s+(?:Schutz|Sicherheit)|Angreifer"],
+     "warum": "Elektroschockgeräte gegen Menschen sind nach Art. 4 Abs. 1 Bst. e WG Waffen und dürfen in der Schweiz nicht angeboten werden. Live: ein «Selbstverteidigungswerkzeug» in der Warengruppe «Aufbewahrung & Organizer», dessen Produktbild mit «Strong electric arc» und «Legal self-defense product» wirbt."},
+
+    {"n": "elektroschock-als-spielzeug",
+     "alle": ["Elektroschock|Lichtbogen|electric\\s+arc",
+              "Spielzeug|Streich|Scherz|Prank|[ÜU]berraschung"],
+     "warum": "Ein Gerät, das einem anderen Menschen einen Stromschlag versetzt, bleibt eines, wenn der Verkäufer «Spielzeug» darüberschreibt. Live: «Cheetah Piercing Ring Elektroschock-Spielzeug», CHF 15.90, «konzipiert für Jugendliche und junge Erwachsene im Alter von 15 bis 35 Jahren» — die Bilder zeigen ein über zwei Finger getragenes Gerät, das beim Zugreifen entlädt. Der deutsche Text nennt weder Selbstverteidigung noch Angreifer; erkennbar ist der Zweck nur an Bauform und Bild."}
   ]
 }

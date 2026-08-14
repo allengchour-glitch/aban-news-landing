@@ -51,9 +51,14 @@ import { fileURLToPath } from 'url';
 const HIER = path.dirname(fileURLToPath(import.meta.url));
 const M = JSON.parse(fs.readFileSync(path.join(HIER, 'heikel_zweck.json'), 'utf8'));
 
-const bau = (l) => l.map(x => ({ n: x.n, re: new RegExp(x.re, 'i') }));
-const SPERRE = bau(M.sperre);
-const TREFFER = bau(M.treffer);
+// ⚠️ Die Sperren prüfen NUR den TITEL — also das, was das Produkt IST. Der erste Entwurf liess
+// sie über den ganzen Beschreibungstext laufen und meldete daraufhin 0 Kameras: im Lieferumfang
+// der A9-Spionagekamera steht «eine Halterung», und «Halterung» stand in der Zubehör-Sperre.
+// Eine Sperre über den Fliesstext trifft jedes Produkt, das sein Zubehör aufzählt.
+const SPERRE = M.sperre_titel.map(x => ({ n: x.n, re: new RegExp(x.re, 'i') }));
+// Jede Treffer-Regel ist eine UND-Kette aus einfachen Ausdrücken. Kein Ausdruck überbrückt
+// Satzgrenzen — das hält die Prüfung linear (Backtracking-Falle aus dem Projektgedächtnis).
+const TREFFER = M.treffer.map(x => ({ n: x.n, alle: x.alle.map(r => new RegExp(r, 'i')) }));
 
 // Welche Treffer sind zugleich in der Schweiz verbotene Ware? Diese kommen nicht nur aus den
 // Kanälen, sondern werden gar nicht erst aktiv geschaltet.
@@ -62,14 +67,17 @@ const VERBOTEN = new Set(['ch-verbotene-waffe', 'elektroschock-gegen-menschen'])
 // Nimmt HTML oder Klartext. Gibt null zurück oder {gruppe, grund, muster, stelle, verboten}.
 // gruppe: 'ueberwachung' | 'waffe'
 export function heikelZweck(titel, text) {
-  const roh = String(titel || '') + ' || ' + String(text || '');
-  const klar = roh.replace(/<[^>]+>/g, ' ')
+  const t0 = String(titel || '');
+  const klar = (t0 + ' || ' + String(text || ''))
+                  .replace(/<[^>]+>/g, ' ')
                   .replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&')
                   .replace(/\s+/g, ' ');
-  for (const s of SPERRE) if (s.re.test(klar)) return null;
+  for (const s of SPERRE) if (s.re.test(t0)) return null;
   for (const t of TREFFER) {
-    const m = t.re.exec(klar);
-    if (!m) continue;
+    const treffer = t.alle.map(re => re.exec(klar));
+    if (treffer.some(m => !m)) continue;
+    // Der letzte Ausdruck der Kette ist der aussagekräftigste (das Verhalten, nicht das Nomen).
+    const m = treffer[treffer.length - 1];
     const gruppe = /waffe|elektroschock/.test(t.n) ? 'waffe' : 'ueberwachung';
     return { gruppe, grund: t.n, muster: m[0].slice(0, 90),
              verboten: VERBOTEN.has(t.n),
