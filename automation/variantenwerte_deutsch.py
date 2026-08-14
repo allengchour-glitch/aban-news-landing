@@ -1,4 +1,4 @@
-"""Übersetzt drei Klassen unverständlicher Varianten-Auswahlwerte ins Deutsche.
+"""Übersetzt unverständliche Varianten-Auswahlwerte ins Deutsche (14.08.2026).
 
 DER BEFUND (dropship/FEHLERSUCHE-14-08.md, drei Einträge [lieferanten-leak]):
  A) 254 aktive Produkte bieten im Feld «Grösse» nur «FREE SIZE» bzw. «ONE SIZE» an — die
@@ -21,6 +21,11 @@ WAS DIESES SKRIPT TUT
     unangetastet — raten wäre schlimmer als stehen lassen.
  C) Optionsname «Farbe» → «Ausführung» (es ist keine Farbe) und die Codes → «Modell 1 … N»
     in der bestehenden Reihenfolge. Die Reihenfolge entspricht der Bildergalerie des Produkts.
+ D) DIESELBE ANGABE IM ZWEITEN FELD. Nach dem Umbenennen der Optionswerte stand «FREE SIZE»
+    live weiterhin auf der Produktseite — im Block «Produktdetails» der Beschreibung
+    («<strong>Grösse:</strong> FREE SIZE», live geprüft am Strick-Cape-Schal). Die
+    Spezifikationszeile trägt die Aussage ein zweites Mal und wird mitgezogen: 162 Produkte.
+    Fliesstext bleibt unberührt.
 
 PROBELAUF UND FEHLTREFFER (DRY=1, gegen /tmp/export.jsonl vom 12.08.):
  • Klasse A: 254 Produkte, alle mit genau EINEM Wert. Kein Fehltreffer.
@@ -45,6 +50,13 @@ PROBELAUF UND FEHLTREFFER (DRY=1, gegen /tmp/export.jsonl vom 12.08.):
      15447634477441 Katzenmatte «C10M5/C10L5» = Grösse M und L
      15478696739201 Notfall-Luftpumpe «ST9901A…» = Gerätemodell mit eigener Leistung
      15449435603329 Hoodie «DZ248177YJWhite» = enthält die Farbe im Code
+ • Klasse D: der erste Entwurf zerlegte die Werteliste am Komma und setzte sie mit «, » wieder
+   zusammen. Das zerriss 363 einwandfreie Beschreibungen am DEUTSCHEN DEZIMALKOMMA
+   («Grösse: 7,6 × 7,6 cm» → «7, 6 × 7, 6 cm»; «A2 (42×59,4 cm)» → «(42×59, 4 cm)») und meldete
+   499 statt 162 Treffer. Jetzt wird nichts zerlegt, nur der Treffer selbst ersetzt.
+   Zwei Fälle beweisen nebenbei, dass das Yards-Muster richtig eng ist: «Dekoband Titanblatt,
+   doppelseitig Satin» und «Afrikanischer Batik Baumwollstoff» nennen Yards im Fliesstext —
+   das ist METERWARE, dort ist «10 Yards» eine echte Länge. Beide bleiben unangetastet.
 
 WER SCHREIBT DAS FELD BEIM NÄCHSTEN PRODUKT?
  Der CJ-Importer `automation/cj_category_fill.mjs` (buildFashion/parseVar). Er ist im selben
@@ -139,6 +151,20 @@ C_FARBWORT = re.compile(r"(black|white|red|blue|green|yellow|grey|gray|pink|purp
                         r"beige|gold|silver|orange|navy|khaki)", re.I)
 
 
+# ── Klasse E: englische Zählwerte in der Farbauswahl ────────────────────────────
+# «1Style», «Style 1», «No 7», «Color 2», «29 Models», «1Figure» — keine Farbe, kein Deutsch,
+# und die Zahl ist die Entwurfsnummer des Lieferanten. Das ist die zweite Hälfte des Befunds:
+# 132 Produkte tragen einen reinen Artikelcode, 116 weitere ein solches englisches Zählwort.
+E_ZAEHL = re.compile(
+    r"^(?:(?:no\.?|nr\.?|color|colour|style|models?|figure|patterns?|design)\s*[-. ]?\s*(\d{1,3})"
+    r"|(\d{1,3})\s*[-. ]?\s*(?:style|models?|figure|colou?r|patterns?|design))$", re.I)
+E_FARBWORT = re.compile(r"colou?r", re.I)
+
+
+def ist_zaehlwert(v):
+    return bool(E_ZAEHL.match((v or "").strip()))
+
+
 def ist_lieferantencode(v):
     v = v.strip()
     if not C_FORM.match(v):
@@ -146,6 +172,49 @@ def ist_lieferantencode(v):
     if len(re.findall(r"\d", v)) < 2:
         return False
     return not (C_GROESSENENDE.search(v) or C_EINHEIT.search(v) or C_FARBWORT.search(v))
+
+
+# ── Klasse D: dieselbe Angabe im ZWEITEN Feld ───────────────────────────────────
+# Nach dem Umbenennen der Optionswerte stand «FREE SIZE» weiterhin live auf der Produktseite —
+# im Block «Produktdetails» der Beschreibung («<strong>Grösse:</strong> FREE SIZE»). Wer eine
+# Angabe aus einem Feld entfernt, muss prüfen, welches ANDERE Feld sie getragen hat.
+# NUR die Spezifikationszeile wird angefasst (Label + Doppelpunkt + Werte bis zum nächsten Tag).
+# Fliesstext bleibt unberührt: «Wählen Sie zwischen den Grössen S, One Size (M–L) und XL» und
+# «passen sich dank ‹One Size Fits All› an» haben keinen Doppelpunkt hinter dem Label und
+# werden vom Muster nicht erfasst — dort wäre ein Ersetzen ein Eingriff in einen Satz.
+SPEC = re.compile(r"((?:Farbe|Gr(?:ö|oe)sse|Größe)\s*:\s*(?:</strong>)?\s*)([^<\n]{1,300})", re.I)
+D_EINHEIT = re.compile(r"\b(?:FREE|ONE)[\s\-_]*SIZE\b", re.I)
+D_YARDS = re.compile(r"(?:([A-Za-z][A-Za-z ]{0,20}?)\s*[-–]\s*)?"
+                     r"(\d+)(?:\s*(?:to|or)\s*(\d+))?\s*yards?\b", re.I)
+
+
+def de_beschreibung(html):
+    """Nur die Werte einer Spezifikationszeile ersetzen — Gibt None zurück, wenn nichts zu tun ist.
+
+    ⚠️ Der erste Entwurf zerlegte die Werteliste am Komma und fügte sie mit «, » wieder zusammen.
+    Das zerriss im Probelauf 363 einwandfreie Beschreibungen am DEUTSCHEN DEZIMALKOMMA:
+    «Grösse: 7,6 × 7,6 cm» wurde zu «7, 6 × 7, 6 cm», «A2 (42×59,4 cm)» zu «(42×59, 4 cm)».
+    Darum wird jetzt nichts zerlegt, sondern nur der Treffer selbst ersetzt.
+    """
+    treffer = [False]
+
+    def in_werten(m):
+        v = m.group(2)
+        v2 = D_EINHEIT.sub("Einheitsgrösse", v)
+
+        def y(mm):
+            praefix, a, b = mm.group(1), mm.group(2), mm.group(3)
+            gr = "Gr. " + a + ("/" + b if b else "")
+            if not praefix:
+                return gr
+            p = praefix.strip()
+            return (FARBE.get(p.lower(), p)) + " · " + gr
+        v2 = D_YARDS.sub(y, v2)
+        if v2 != v:
+            treffer[0] = True
+        return m.group(1) + v2
+    s = SPEC.sub(in_werten, html or "")
+    return s if treffer[0] else None
 
 
 # ── Shopify ─────────────────────────────────────────────────────────────────────
@@ -174,11 +243,13 @@ Q_PROD = ('query($id:ID!){node(id:$id){... on Product{status title '
 M_OPT = ('mutation($p:ID!,$o:OptionUpdateInput!,$u:[OptionValueUpdateInput!]){'
          'productOptionUpdate(productId:$p,option:$o,optionValuesToUpdate:$u)'
          '{userErrors{field message}}}')
+Q_DESC = 'query($id:ID!){node(id:$id){... on Product{status title descriptionHtml}}}'
+M_DESC = ('mutation($i:ProductInput!){productUpdate(input:$i){userErrors{field message}}}')
 
 
 def sammeln():
     """Kandidaten aus dem Export vorsortieren. Entschieden wird später gegen die LIVE-Daten."""
-    a, b, c = [], [], []
+    a, b, c, d = [], [], [], []
     for zeile in open(EXPORT):
         try:
             p = json.loads(zeile)
@@ -187,6 +258,8 @@ def sammeln():
         if p.get("status") != "ACTIVE":
             continue
         pid = p["id"].split("/")[-1]
+        if de_beschreibung(p.get("descriptionHtml") or ""):
+            d.append((p["id"], p["title"]))
         for o in (p.get("options") or []):
             name = (o.get("name") or "").strip().lower()
             vals = [v.strip() for v in (o.get("values") or [])]
@@ -199,7 +272,7 @@ def sammeln():
             if (name in FARBOPT and len(vals) >= 2 and pid not in AUSNAHMEN
                     and all(ist_lieferantencode(v) for v in vals)):
                 c.append((p["id"], p["title"]))
-    return a, b, c
+    return a, b, c, d
 
 
 def plan_fuer(klasse, opt):
@@ -246,7 +319,7 @@ def plan_fuer(klasse, opt):
 
 
 def main():
-    a, b, c = sammeln()
+    a, b, c, dd = sammeln()
     aufgabe = []
     if "A" in NUR:
         aufgabe += [("A", *x) for x in a]
@@ -254,8 +327,11 @@ def main():
         aufgabe += [("B", *x) for x in b]
     if "C" in NUR:
         aufgabe += [("C", *x) for x in c]
+    if "D" in NUR:
+        aufgabe += [("D", *x) for x in dd]
     print("Kandidaten aus dem Export — A (FREE/ONE SIZE): %d | B (Yards): %d | "
-          "C (Lieferantencode als Farbe): %d" % (len(a), len(b), len(c)), flush=True)
+          "C (Lieferantencode als Farbe): %d | D (Spec-Zeile in der Beschreibung): %d"
+          % (len(a), len(b), len(c), len(dd)), flush=True)
 
     done = set()
     if os.path.exists(LEDGER):
@@ -264,6 +340,23 @@ def main():
     if DRY:
         gezeigt = 0
         for klasse, gid, titel in aufgabe:
+            if klasse == "D":
+                r = gql(Q_DESC, {"id": gid})
+                node = ((r or {}).get("data") or {}).get("node")
+                if not node or node.get("status") != "ACTIVE":
+                    continue
+                neu = de_beschreibung(node["descriptionHtml"])
+                if not neu:
+                    continue
+                gezeigt += 1
+                if gezeigt <= 25:
+                    alt_z = [z for z in re.findall(r"[^<>\n]*(?:FREE SIZE|ONE SIZE|yards?)[^<>\n]*",
+                                                  node["descriptionHtml"], re.I)][:2]
+                    neu_z = [z for z in re.findall(r"[^<>\n]*(?:Einheitsgrösse|Gr\. \d)[^<>\n]*",
+                                                  neu)][:2]
+                    print("[D] %s\n      ALT %s\n      NEU %s"
+                          % (titel[:52], alt_z, neu_z), flush=True)
+                continue
             d = gql(Q_PROD, {"id": gid})
             if d is None:
                 print("  ⚠️ keine Antwort für %s — bleibt offen" % gid, flush=True)
@@ -292,6 +385,34 @@ def main():
     for klasse, gid, titel in aufgabe:
         schluessel = "%s:%s" % (klasse, gid)
         if schluessel in done:
+            continue
+        if klasse == "D":
+            r = gql(Q_DESC, {"id": gid})
+            node = ((r or {}).get("data") or {}).get("node") if r is not None else None
+            if r is None:
+                print("  ⚠️ keine Antwort — %s bleibt offen" % titel[:40], flush=True)
+                continue
+            if not node:
+                f.write("%s\tnicht-gefunden\n" % schluessel); f.flush(); continue
+            if node.get("status") != "ACTIVE":
+                f.write("%s\tnicht-aktiv\n" % schluessel); f.flush(); continue
+            neu = de_beschreibung(node["descriptionHtml"])
+            if not neu:
+                f.write("%s\tnichts-zu-tun\n" % schluessel); f.flush(); continue
+            r2 = gql(M_DESC, {"i": {"id": gid, "descriptionHtml": neu}})
+            if r2 is None:
+                print("  ⚠️ keine Antwort auf die Mutation — %s bleibt offen" % titel[:40],
+                      flush=True)
+                continue
+            e = ((r2.get("data") or {}).get("productUpdate") or {}).get("userErrors") or []
+            if e:
+                fehler += 1
+                print("  ⚠️ %s: %s" % (titel[:36], e[0]["message"][:70]), flush=True)
+                continue
+            n += 1
+            f.write("%s\tbeschreibung\t%s\n" % (schluessel, titel))
+            f.flush()
+            time.sleep(0.25)
             continue
         d = gql(Q_PROD, {"id": gid})
         if d is None:
