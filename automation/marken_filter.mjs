@@ -64,6 +64,27 @@ const REGELN = [
    + `Grau|Silber|Gold|Beige|Night|Blossom))`, ''],
 ].map(([a, b]) => [new RegExp(a, 'gi'), b]);
 
+// 精工 IST KEINE MARKE, SONDERN «PRÄZISIONSFERTIGUNG» (14.08.2026). Seikos japanischer Name
+// benutzt dieselben zwei Schriftzeichen wie das chinesische Allerweltswort für
+// Feinwerktechnik — jede maschinelle Übersetzung macht daraus die Marke. So entstanden fünf
+// Produkte mit erfundenen Bauteilnachweisen: «Seiko-Quarzwerk mit chinesischer Herkunft»
+// (der Satz widerspricht sich selbst), «mit moderner Seiko-Technologie hergestellt» an einem
+// Kupferarmband und «Der Seiko-Qualitätsauslauf mit 5-Loch-Düse» an einem Spülgerät.
+// Das ist keine Stilanlehnung, sondern eine Tatsachenbehauptung über verbaute Teile: UWG
+// Art. 3 Abs. 1 lit. b und bei Google Merchant «Misrepresentation».
+// Seiko gehört deshalb NICHT in die Marken-Liste oben — dort würde der Name gestrichen und
+// «-Quarzwerk» bliebe stehen. Ersetzt wird durch die wörtliche Bedeutung des Originals.
+const SEIKO = [
+  [/(?<![\wäöüßÄÖÜ])Seiko[-\s]?Qualitätsauslauf/gi, 'Präzisions-Auslauf'],
+  [/(?<![\wäöüßÄÖÜ])Seiko[-\s]?Verarbeitungstechnologie/gi, 'Präzisions-Verarbeitung'],
+  [/(?<![\wäöüßÄÖÜ])Seiko[-\s]?Technologie/gi, 'Präzisionstechnik'],
+  [/(?<![\wäöüßÄÖÜ])Seiko[-\s]?Verfahren/gi, 'Präzisionsverfahren'],
+  [/(?<![\wäöüßÄÖÜ])Seiko[-\s]?Quarzwerk/gi, 'Präzisions-Quarzwerk'],
+  [/(?<![\wäöüßÄÖÜ])Seiko[-\s]?inspiriert\w*\s*/gi, ''],
+  [/(?<![\wäöüßÄÖÜ])Seiko-(?=[A-Za-zÄÖÜäöü])/gi, 'Präzisions-'],
+  [/(?<![\wäöüßÄÖÜ])Seiko(?![\wäöüßÄÖÜ])\s*/gi, ''],
+];
+
 const RX_MARKE = new RegExp(`${G}${M}${GR}`, 'i');
 
 /** Entfernt Nachahmungs-Behauptungen. Fällt keine Regel, kommt der Text unverändert zurück. */
@@ -71,6 +92,7 @@ export function markenbezugEntfernen(text) {
   if (!text) return text;
   let n = text;
   for (const [rx, ers] of REGELN) n = n.replace(rx, ers);
+  for (const [rx, ers] of SEIKO) n = n.replace(rx, ers);
   if (n === text) return text;
   n = n.replace(/[ \t]{2,}/g, ' ')
        .replace(/[ \t]+([,.;:!?])/g, '$1')

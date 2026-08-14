@@ -58,3 +58,8 @@ gid://shopify/Product/15445799993729	zugeordnet	9	12-teiliges Make-up Pinselset 
 gid://shopify/Product/15445800288641	zugeordnet	2	20-teiliges Make-up Pinselset
 gid://shopify/Product/15445800354177	zugeordnet	4	4-in-1 Magnetischer Make-up Pinsel
 gid://shopify/Product/15445800386945	zugeordnet	3	Magnetisches Lidschattenpinsel-Set
+gid://shopify/Product/15445800518017	zugeordnet	3	2-in-1 Farbwechsel Foundation Stick & Pinsel
+gid://shopify/Product/15446015148417	zugeordnet	4	Manueller Slow Cooker für Schmorgerichte
+gid://shopify/Product/15446015738241	zugeordnet	2	Schneidebrett aus massivem Teakholz
+gid://shopify/Product/15446016557441	zugeordnet	10	Edelstahl-Bratpfanne mit Wabenstruktur
+gid://shopify/Product/15446018326913	bild-urls-tot
