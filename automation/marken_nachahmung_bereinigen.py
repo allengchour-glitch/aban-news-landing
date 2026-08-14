@@ -172,6 +172,35 @@ TEXT_SONDERFALL = {
                         "Sketch Lines bis hin zu Velvet Lines")],
 }
 
+# ── Nachtrag: das FÜNFTE Feld, das niemand geprüft hat ───────────────────────
+# Die erste Live-Nachkontrolle (curl auf die Produktseite) fand «Chanel» weiter im
+# gerenderten HTML — in den BILD-ALT-TEXTEN. Die werden aus dem Produkttitel erzeugt
+# («<Titel> – Ansicht 3»), also trugen sie den alten, markenhaltigen Titel weiter.
+# 27 Bilder in 5 Produkten. Alt-Texte liest Google Images, und der Merchant-Crawler
+# sieht sie im Quelltext. Genau die Lehre aus CLAUDE.md, eine Feldebene tiefer.
+
+# ── Nachtrag 2: zwei Produkte aus dem Ledger vom 12.08. ──────────────────────
+# _google_kanal_gesaeubert*.txt listet 13 «fremde-marke-im-titel». Bei diesen beiden
+# wurde der Titel gesäubert, Handle und SEO-Felder blieben stehen. Sie stehen NICHT in
+# der allgemeinen Regeltabelle, weil «Mercedes-Benz» dort nicht auftauchen darf: bei der
+# Lenkradblende ist es eine zulässige Kompatibilitätsangabe. Bei einer Ledertasche ist
+# «Mercedes-Benz» dagegen eine Markenanmassung. Deshalb hier namentlich, mit festen Werten.
+ZUSATZ = {
+    "15485009953153": {          # «Mercedes-Benz Echtleder Umhängetasche» → Tasche, kein Autoteil
+        "seoTitle": "Echtleder Umhängetasche für Herren | LuxeStyle CH",
+        "seoDesc": "Echtleder Umhängetasche für Herren – bei LuxeStyle Schweiz. "
+                   "Gratis-Versand ab CHF 50, 30 Tage Rückgabe.",
+        "handle": "echtleder-umhaengetasche-fuer-herren-612500",
+    },
+    "15493476516225": {          # «12 Neon-Nagelpuder im Barbie-Stil Set»
+        "seoDesc": "12 Neon-Nagelpuder Set – bei LuxeStyle Schweiz. "
+                   "Gratis-Versand ab CHF 50, 30 Tage Rückgabe.",
+        "handle": "12-neon-nagelpuder-set-623300",
+    },
+}
+# Alt-Texte dieser beiden zusätzlich gegen ihre eigenen Marken prüfen.
+ALT_ZUSATZ = re.compile(r"(?<![\wäöüß])(Mercedes[- ]?Benz|Barbie)(?![\wäöüß])", re.I)
+
 # Varianten-Optionswerte, die den Markennamen im Kaufblock tragen.
 OPTIONSWERT_NEU = {
     "15455745180033": {"Chanel style": "Tweed-Optik"},
@@ -227,7 +256,31 @@ def marke_drin(text):
 
 Q_HOLEN = """query($ids:[ID!]!){ nodes(ids:$ids){ ... on Product { id title handle status
   descriptionHtml seo{title description} options{id name optionValues{id name}}
-  variants(first:5){nodes{sku}} } } }"""
+  variants(first:5){nodes{sku}} media(first:30){nodes{ id alt }} } } }"""
+
+Q_ALT = """mutation($f:[FileUpdateInput!]!){ fileUpdate(files:$f){
+  userErrors{ field message } } }"""
+
+
+def alt_texte_bereinigen(live, erledigt):
+    """Bild-Alt-Texte tragen den alten Titel weiter — eigener Durchgang, eigenes Ledger."""
+    plan = []
+    for pid, p in sorted(live.items()):
+        if p["status"] != "ACTIVE" or echte_markenware(p) or ("alt:" + pid) in erledigt:
+            continue
+        neu = []
+        for md in p["media"]["nodes"]:
+            a = md.get("alt")
+            if not a:
+                continue
+            n = markenbezug_entfernen(a)
+            n = ALT_ZUSATZ.sub("", n) if pid in ZUSATZ else n
+            n = re.sub(r"[ \t]{2,}", " ", n).strip(" ·–-")
+            if n != a:
+                neu.append((md["id"], a, n))
+        if neu:
+            plan.append((pid, p["title"], neu))
+    return plan
 
 Q_SCHREIBEN = """mutation($in:ProductInput!){ productUpdate(input:$in){
   product{ id title handle seo{title description} } userErrors{ field message } } }"""
@@ -297,6 +350,12 @@ def main():
             suffix = re.search(r"-(\d{3,})$", p["handle"])
             neu_handle = slug(neu["title"]) + (suffix.group(0) if suffix else "")
 
+        for feld, wert in ZUSATZ.get(pid, {}).items():   # namentliche Festwerte
+            if feld == "handle":
+                neu_handle = wert
+            else:
+                neu[feld] = wert
+
         opt = OPTIONSWERT_NEU.get(pid, {})
         aenderungen = {k: (alt[k], neu[k]) for k in alt if alt[k] != neu[k]}
         if neu_handle != p["handle"]:
@@ -326,6 +385,14 @@ def main():
                 + marke_drin(nh.replace("-", " ")))
         if rest:
             print(f"   ⚠️  REST NACH REGELN: {sorted(set(rest))}")
+    altplan = alt_texte_bereinigen(live, erledigt)
+    print(f"\n── Bild-Alt-Texte: {len(altplan)} Produkte · "
+          f"{sum(len(x[2]) for x in altplan)} Bilder " + "─" * 20)
+    for pid, titel, neu in altplan:
+        print(f"   {pid}  {titel[:45]}")
+        for _, a, n in neu[:3]:
+            print(f"      – {a[:95]}\n      + {n[:95]}")
+
     print("\n── bewusst NICHT angefasst " + "─" * 45)
     for pid, t, grund in uebersprungen:
         print(f"   {pid}  {t[:52]:54s} {grund}")
@@ -384,6 +451,32 @@ def main():
         os.fsync(led.fileno())
         ok += 1
         print(f"✓ {pid}  {n['title'][:55]}")
+        time.sleep(0.3)
+
+    # ── Bild-Alt-Texte ────────────────────────────────────────────────────
+    for pid, titel, neu in altplan:
+        r = gql(Q_ALT, {"f": [{"id": mid, "alt": n} for mid, _, n in neu]})
+        ue = (r or {}).get("data", {}).get("fileUpdate", {}).get("userErrors")
+        if not r or ue:
+            print(f"✗ ALT {pid}: {ue if r else 'keine Antwort'}")
+            fehler += 1
+            continue
+        v = gql(Q_HOLEN, {"ids": ["gid://shopify/Product/" + pid]})
+        if not v:
+            print(f"  ⚠️ ALT {pid} ohne Nachkontrolle → nicht quittiert")
+            fehler += 1
+            continue
+        rest = [a for a in (m.get("alt") for m in v["data"]["nodes"][0]["media"]["nodes"])
+                if a and (marke_drin(a) or ALT_ZUSATZ.search(a))]
+        if rest:
+            print(f"  ⚠️ ALT {pid} noch Markenrest: {rest[:2]} → nicht quittiert")
+            fehler += 1
+            continue
+        led.write(f"alt:{pid}\t{len(neu)} Bilder\t{titel}\n")
+        led.flush()
+        os.fsync(led.fileno())
+        ok += 1
+        print(f"✓ ALT {pid}  {len(neu)} Bilder  {titel[:45]}")
         time.sleep(0.3)
     led.close()
     print(f"\nFertig: {ok} bereinigt · {fehler} offen (werden beim nächsten Lauf erneut versucht)")

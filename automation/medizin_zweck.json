@@ -1,54 +1,74 @@
 {
   "_": "Muster für medizinische ZWECKBESTIMMUNG. Eine Datei, zwei Leser: automation/medizin_zweck.mjs (CJ-Importer, prüft VOR dem Anlegen) und automation/medizin_zweck_guard.py (Bestand). Wer hier etwas ändert, ändert es an beiden Stellen gleichzeitig — genau das fehlte am 12.08.: der Bestand wurde geputzt, der Importer legte tags darauf dieselbe Ware wieder an. Alle Muster hängen am ZWECK, nicht am Produktnamen: «Hörverstärker» heisst anders als «Hörgerät» und ist dasselbe Gerät.",
-
   "_probelauf": "Erster Entwurf über 31'398 aktive Produkte: 30 Treffer, davon 22 falsch — und drei ECHTE Fälle blockiert. Deutsche Zusammensetzungen sind die Ursache: «Ab-hörgerät» (Wanzendetektor) enthält «hörgerät», «Stethoskop-Herz-Anhänger» ist Schmuck, ein Luftbefeuchter arbeitet mit einem «Vernebler», ein Erste-Hilfe-Set enthält eine «Beatmungsmaske». Umgekehrt fiel das Temperaturpflaster durch, weil das Wort «Aufbewahrungsbox» in seinem Text stand und pauschal als «Zubehör» galt. Lehre: Sperren gehören an die einzelne REGEL, nicht global über alles.",
-
   "sperre": [
-    {"n": "tier", "re": "\\bHund\\w*|\\bKatze\\w*|Vierbeiner|Haustier|\\bTiere?\\b|Tierarzt|Welpe|Kauspielzeug|Beissspielzeug|Molar Stick|Futternapf|\\bPfote",
-     "warum": "Zahnstein beim HUND ist Hundespielzeug. Vier Kauspielzeuge standen im ersten Probelauf auf der Liste."},
-    {"n": "schmuck-deko", "re": "Anh[äa]nger|Halskette|\\bOhrring|Brosche|Schl[üu]sselanh|Wanddeko|Stickbild",
-     "warum": "«Kupferversilberter Stethoskop-Herz-Anhänger» ist eine Halskette."},
-    {"n": "verneinung", "re": "kein\\w* medizinisch|ersetzt kein\\w*|nicht f[üu]r medizinische|keine medizinische|keine Diagnose",
-     "warum": "«KEIN medizinisches Gerät – dient dem Wohlbefinden» ist der richtige Hinweis, kein Geständnis (Lehre 12.08.)."}
+    {
+      "n": "tier",
+      "re": "\\bHund\\w*|\\bKatze\\w*|Vierbeiner|Haustier|\\bTiere?\\b|Tierarzt|Welpe|Kauspielzeug|Beissspielzeug|Molar Stick|Futternapf|\\bPfote",
+      "warum": "Zahnstein beim HUND ist Hundespielzeug. Vier Kauspielzeuge standen im ersten Probelauf auf der Liste."
+    },
+    {
+      "n": "schmuck-deko",
+      "re": "Anh[äa]nger|Halskette|\\bOhrring|Brosche|Schl[üu]sselanh|Wanddeko|Stickbild",
+      "warum": "«Kupferversilberter Stethoskop-Herz-Anhänger» ist eine Halskette."
+    },
+    {
+      "n": "verneinung",
+      "re": "kein\\w* medizinisch|ersetzt kein\\w*|nicht f[üu]r medizinische|keine medizinische|keine Diagnose",
+      "warum": "«KEIN medizinisches Gerät – dient dem Wohlbefinden» ist der richtige Hinweis, kein Geständnis (Lehre 12.08.)."
+    },
+    {
+      "n": "kostuem",
+      "re": "Fasnacht|Fastnacht|Karneval|Kost[üu]m|Verkleidung|Widmann|Halloween|Rollenspiel",
+      "warum": "«Stethoskop» für CHF 22 mit «Unerlässlich für Dr. Fasnacht!», Marke Widmann, Anlass Fasnacht — ein Kostümrequisit. Ein Muster, das nur den Produktnamen liest, kann das nicht unterscheiden."
+    }
   ],
-
   "treffer": [
-    {"n": "fieberueberwachung",
-     "re": "[ÜU]berwachung der K[öo]rpertemperatur|K[öo]rpertemperatur[^.]{0,80}(?:[üu]berwach|Alarm|Sensor)|Fieberthermometer|Stirnthermometer|Ohrthermometer|klinische[sn]? Thermometer|kontaktlose[sr]? Thermometer|Fieberalarm|elektronische[sn]? Thermometer|(?:38|37[.,]5)\\s*°\\s*C[^.]{0,60}Alarm",
-     "nicht": "Smartwatch|Smart-?Armband|Smart-?Watch|Sportuhr|Fitness(?:armband|tracker|uhr)|Bracelet|Wearable|Armbanduhr|PTC[- ]?Fieber|Heizmethode",
-     "warum": "Ein Gerät, das die Körpertemperatur eines Menschen misst oder überwacht, hat nach MepV eine Messfunktion — auch wenn es «Pflaster» oder «Gadget» heisst. AUSGENOMMEN Smartwatches/Armbänder: dafür läuft eine eigene Reparatur (135 aktive Wearables), und ein gemeinsames Muster drafte­te schlagartig die halbe Uhrenabteilung. Ebenfalls aussen vor: «Heizmethode: PTC-Fieber» einer Glättbürste — chinesisch 发热 (Wärmeerzeugung), maschinell zu «Fieber» übersetzt."},
-
-    {"n": "hirnstimulation",
-     "re": "Cranial Electrotherapy|\\bCES[- ](?:Technologie|Ger[äa]t|Verfahren)|Gehirnwellen|Hirnstimulation|Neurostimul|transkraniell",
-     "warum": "Stromfluss durch den Kopf. Regulierter Bereich, unabhängig vom Preis."},
-
-    {"n": "elektrostimulation",
-     "re": "(?:\\bEMS\\b|\\bTENS\\b|Mikrostrom|Elektrostimulation|Reizstrom|Impulsstrom)[\\s\\S]{0,400}(?:Schlafst[öo]rung|Schlaflosigkeit|Angstzust|Depression|Migr[äa]ne|Nervenschmerz|Muskelstimul|Durchblutungsst[öo]r)|(?:Schlafst[öo]rung|Schlaflosigkeit|Angstzust|Migr[äa]ne|Nervenschmerz)[\\s\\S]{0,400}(?:\\bEMS\\b|\\bTENS\\b|Mikrostrom|Elektrostimulation|Reizstrom|Impulsstrom)",
-     "nicht": "Falten|Anti[- ]?Aging|Hautbild|Gesichtspflege|straffe? Haut|Hautstraffung|Augenpartie|Hautpflege|Kollagen|\\bPoren\\b|Teint",
-     "warum": "Elektrostimulation PLUS eine Indikation (Schlafstörung, Angst, Nervenschmerz) ist die Zweckbestimmung eines Medizinprodukts. Die beiden Wörter stehen fast nie im selben Satz — das Fenster geht deshalb über Satzgrenzen. Elektrostimulation OHNE Krankheit, etwa Mikrostrom im Gesicht gegen Falten, ist Kosmetik und bleibt draussen (4 Beauty-Geräte im Probelauf)."},
-
-    {"n": "endoskop-koerperoeffnung",
-     "re": "(?:Otoskop|Endoskop|Kamera|Sonde)[^.]{0,120}(?:Geh[öo]rgang|Ohrenkanal|Nasenh[öo]hle|Rachen)|Geh[öo]rgang[^.]{0,120}(?:untersuch|inspizier|einsehen|betrachten)",
-     "nicht": "Kopfh[öo]rer|Headset|Ohrh[öo]rer|Earbud|In-?Ear|Ear-?Clip|Geh[öo]rschutz|Ohrst[öo]psel",
-     "warum": "Eine Sonde, die in eine Körperöffnung eingeführt wird, um sie zu untersuchen, ist ein Medizinprodukt — auch als «Ohrenschmalzentferner mit Kamera» verkauft. «ohne den Gehörgang zu verschliessen» ist dagegen ein Kopfhörer-Verkaufsargument."},
-
-    {"n": "eingewachsene-naegel",
-     "re": "eingewachsene[nr]?\\s+(?:Zeh|Fu[sß]|N[äa]gel|Nagel)|Nagelkorrektur|Unguis incarnatus",
-     "warum": "Unguis incarnatus ist ein Krankheitsbild; ein Set, das es «behandelt» und «Beschwerden lindert», hat eine therapeutische Zweckbestimmung."},
-
-    {"n": "zahnsteinentfernung",
-     "re": "Zahnstein[^.]{0,80}(?:entfern|l[öo]sen|abtragen)|(?:entfern|l[öo]s)\\w*[^.]{0,60}Zahnstein|Zahnsteinentferner|Dental[- ]?Scaler|Ultraschall[^.]{0,40}Zahnstein",
-     "nicht": "Zahnspange|Retainer|Prothese|Zahnersatz|Mundsp[üu]lung|Zahnpasta",
-     "warum": "Zahnsteinentfernung ist ein zahnärztlicher Eingriff; Ultraschall-Scaler in Laienhand verletzen Zahnschmelz und Zahnfleisch. Die Sperre «tier» hält die vier Hunde-Kauspielzeuge draussen, «Zahnspange/Retainer» den Ultraschallreiniger, der Apparate ausserhalb des Mundes säubert."},
-
-    {"n": "vitalmessung-medizinisch",
-     "re": "Blutdruckmessger|Blutdruckmessung|Blutzuckermess|Pulsoximeter|\\bOximeter\\b|EKG-(?:Ger[äa]t|Messger)",
-     "nicht": "Smartwatch|Smart-?Armband|Smart-?Watch|Sportuhr|Fitness(?:armband|tracker|uhr)|Bracelet|Wearable|Armbanduhr|Knopfzelle|Batterie|Akku\\b",
-     "warum": "Eigenständige Messgeräte für Blutdruck, Blutzucker oder Sauerstoffsättigung. Smartwatches bleiben bewusst draussen (eigene Reparatur), ebenso die «Silberoxid-Knopfzellen», die Blutzuckermessgeräte nur als Einsatzzweck der BATTERIE nennen — ein im Gedächtnis seit dem 11.08. notierter Fehltreffer."},
-
-    {"n": "geraet-nach-funktion",
-     "re": "\\bH[öo]rger[äa]t|\\bH[öo]rverst[äa]rker|\\bH[öo]rtest|Fetusstethoskop|\\bStethoskop\\b|Atemtrainer|Notfallmaske|Beatmungsger|\\bCPAP\\b|Milchpumpe|Nasensauger|Absaugkatheter|Blutbestrahlung|Lichtwellen[- ]?Therapie|(?:Vernebler|Inhalator)[^.]{0,80}(?:Medikament|Asthma|Atemweg|Bronch)|(?:Medikament|Asthma|Atemweg|Bronch)[^.]{0,80}(?:Vernebler|Inhalator)",
-     "nicht": "Abh[öo]r|Wanzen|Spionage|Detektor|Detector|Erste-Hilfe|Verbandkasten|Luftbefeuchter|Terrarium|Aroma",
-     "warum": "Geräte, die schon der Funktion nach medizinisch sind — die Liste stammt aus medizinprodukte_guard.py und wird hier weitergeführt. Die Sperren kommen alle aus dem Probelauf: «Abhörgerät» enthält «hörgerät» (3 Wanzendetektoren), ein Erste-Hilfe-Set enthält eine Beatmungsmaske und ist als Ganzes zulässig, und ein Luftbefeuchter zerstäubt mit einem «Vernebler». «Vernebler/Inhalator» zählt deshalb nur noch zusammen mit Medikament, Asthma oder Atemweg."}
+    {
+      "n": "fieberueberwachung",
+      "re": "[ÜU]berwachung der K[öo]rpertemperatur|K[öo]rpertemperatur[^.]{0,80}(?:[üu]berwach|Alarm|Sensor)|Fieberthermometer|Stirnthermometer|Ohrthermometer|klinische[sn]? Thermometer|kontaktlose[sr]? Thermometer|Fieberalarm|elektronische[sn]? Thermometer|(?:38|37[.,]5)\\s*°\\s*C[^.]{0,60}Alarm",
+      "nicht": "Smartwatch|Smart-?Armband|Smart-?Watch|Sportuhr|Fitness(?:armband|tracker|uhr)|Bracelet|Wearable|Armbanduhr|PTC[- ]?Fieber|Heizmethode",
+      "warum": "Ein Gerät, das die Körpertemperatur eines Menschen misst oder überwacht, hat nach MepV eine Messfunktion — auch wenn es «Pflaster» oder «Gadget» heisst. AUSGENOMMEN Smartwatches/Armbänder: dafür läuft eine eigene Reparatur (135 aktive Wearables), und ein gemeinsames Muster drafte­te schlagartig die halbe Uhrenabteilung. Ebenfalls aussen vor: «Heizmethode: PTC-Fieber» einer Glättbürste — chinesisch 发热 (Wärmeerzeugung), maschinell zu «Fieber» übersetzt."
+    },
+    {
+      "n": "hirnstimulation",
+      "re": "Cranial Electrotherapy|\\bCES[- ](?:Technologie|Ger[äa]t|Verfahren)|Gehirnwellen|Hirnstimulation|Neurostimul|transkraniell",
+      "warum": "Stromfluss durch den Kopf. Regulierter Bereich, unabhängig vom Preis."
+    },
+    {
+      "n": "elektrostimulation",
+      "re": "(?:\\bEMS\\b|\\bTENS\\b|Mikrostrom|Elektrostimulation|Reizstrom|Impulsstrom)[\\s\\S]{0,400}(?:Schlafst[öo]rung|Schlaflosigkeit|Angstzust|Depression|Migr[äa]ne|Nervenschmerz|Durchblutungsst[öo]r)|(?:Schlafst[öo]rung|Schlaflosigkeit|Angstzust|Migr[äa]ne|Nervenschmerz)[\\s\\S]{0,400}(?:\\bEMS\\b|\\bTENS\\b|Mikrostrom|Elektrostimulation|Reizstrom|Impulsstrom)",
+      "nicht": "Falten|Anti[- ]?Aging|Hautbild|Gesichtspflege|straffe? Haut|Hautstraffung|Augenpartie|Hautpflege|Kollagen|\\bPoren\\b|Teint",
+      "warum": "Elektrostimulation PLUS eine Indikation (Schlafstörung, Angst, Nervenschmerz) ist die Zweckbestimmung eines Medizinprodukts. Die beiden Wörter stehen fast nie im selben Satz — das Fenster geht deshalb über Satzgrenzen. Elektrostimulation OHNE Krankheit, etwa Mikrostrom im Gesicht gegen Falten, ist Kosmetik und bleibt draussen (4 Beauty-Geräte im Probelauf). «Muskelstimulation» wurde aus der Indikationsliste gestrichen: der «EMS-Bauch- und Muskel-Trainer» stimuliert Muskeln zum TRAINIEREN und nennt keine Krankheit — das ist Fitness, nicht Therapie."
+    },
+    {
+      "n": "endoskop-koerperoeffnung",
+      "re": "(?:Otoskop|Endoskop|Kamera|Sonde)[^.]{0,120}(?:Geh[öo]rgang|Ohrenkanal|Nasenh[öo]hle|\\\\bRachen)|Geh[öo]rgang[^.]{0,120}(?:untersuch|inspizier|einsehen|betrachten)",
+      "nicht": "Kopfh[öo]rer|Headset|Ohrh[öo]rer|Earbud|In-?Ear|Ear-?Clip|Geh[öo]rschutz|Ohrst[öo]psel",
+      "warum": "Eine Sonde, die in eine Körperöffnung eingeführt wird, um sie zu untersuchen, ist ein Medizinprodukt — auch als «Ohrenschmalzentferner mit Kamera» verkauft. «ohne den Gehörgang zu verschliessen» ist dagegen ein Kopfhörer-Verkaufsargument. ⚠️ Dritter Probelauf, live: Ein «Lern-Tablet für Kinder» wurde als Endoskop gemeldet — «2 MP Kamera … unterstützt mehrere Sp-RACHEN». «Rachen» steckt in «Sprachen». Seither mit Wortgrenze; ohne sie hätte ein Kindertablet den Tag als Medizinprodukt beendet."
+    },
+    {
+      "n": "eingewachsene-naegel",
+      "re": "eingewachsene[nr]?\\s+(?:Zeh|Fu[sß]|N[äa]gel|Nagel)|Nagelkorrektur|Unguis incarnatus",
+      "warum": "Unguis incarnatus ist ein Krankheitsbild; ein Set, das es «behandelt» und «Beschwerden lindert», hat eine therapeutische Zweckbestimmung."
+    },
+    {
+      "n": "zahnsteinentfernung",
+      "re": "(?:Zahnsteinentferner|Dental[- ]?Scaler|\\bZahnreiniger\\b|Dentalreiniger|Ultraschall[^.]{0,40}Zahn)[\\s\\S]{0,400}Zahnstein|Zahnstein[\\s\\S]{0,400}(?:Zahnsteinentferner|Dental[- ]?Scaler|\\bZahnreiniger\\b|Dentalreiniger|Ultraschall[^.]{0,40}Zahn)",
+      "nicht": "Zahnspange|Retainer|Prothese|Zahnersatz|Mundsp[üu]lung|Zahnpasta",
+      "warum": "Zahnsteinentfernung ist ein zahnärztlicher Eingriff; Ultraschall-Scaler in Laienhand verletzen Zahnschmelz und Zahnfleisch. Die Sperre «tier» hält die vier Hunde-Kauspielzeuge draussen, «Zahnspange/Retainer» den Ultraschallreiniger, der Apparate ausserhalb des Mundes säubert. Verschärft nach dem zweiten Probelauf: Es reicht NICHT, dass irgendwo «Zahnstein entfernen» steht — verlangt wird zusätzlich das Gerät (Zahnsteinentferner, Dentalreiniger, Ultraschall). Sonst hängt die «Elektrische Zahnreinigungsbürste» mit drin, die mit Hochfrequenzvibration arbeitet: eine Bürste mit einem zu grossen Werbeversprechen, kein Scaler."
+    },
+    {
+      "n": "vitalmessung-medizinisch",
+      "re": "Blutdruckmessger|Blutdruckmessung|Blutzuckermess|Pulsoximeter|\\bOximeter\\b|EKG-(?:Ger[äa]t|Messger)",
+      "nicht": "Smartwatch|Smart-?Armband|Smart-?Watch|Sportuhr|Fitness(?:armband|tracker|uhr)|Bracelet|Wearable|Armbanduhr|Knopfzelle|Batterie|Akku\\b",
+      "warum": "Eigenständige Messgeräte für Blutdruck, Blutzucker oder Sauerstoffsättigung. Smartwatches bleiben bewusst draussen (eigene Reparatur), ebenso die «Silberoxid-Knopfzellen», die Blutzuckermessgeräte nur als Einsatzzweck der BATTERIE nennen — ein im Gedächtnis seit dem 11.08. notierter Fehltreffer."
+    },
+    {
+      "n": "geraet-nach-funktion",
+      "re": "\\bH[öo]rger[äa]t|\\bH[öo]rverst[äa]rker|\\bH[öo]rtest|Fetusstethoskop|\\bStethoskop\\b|Atemtrainer|Notfallmaske|Beatmungsger|\\bCPAP\\b|Milchpumpe|Nasensauger|Absaugkatheter|Blutbestrahlung|Lichtwellen[- ]?Therapie|(?:Vernebler|Inhalator)[^.]{0,80}(?:Medikament|Asthma|Atemweg|Bronch)|(?:Medikament|Asthma|Atemweg|Bronch)[^.]{0,80}(?:Vernebler|Inhalator)",
+      "nicht": "Abh[öo]r|Wanzen|Spionage|Detektor|Detector|Erste-Hilfe|Verbandkasten|Luftbefeuchter|Terrarium|Aroma|Ohrh[öo]rer|Kopfh[öo]rer|Earbud|Bluetooth|Reinigungsset|Reinigungsb[üu]rste|Pflegeset f[üu]r|Ersatz(?:filter|polster|d[üu]se)|Aufbewahrungsbox f[üu]r|Yoga|Pilates|Lauftraining|Workout",
+      "warum": "Geräte, die schon der Funktion nach medizinisch sind — die Liste stammt aus medizinprodukte_guard.py und wird hier weitergeführt. Die Sperren kommen alle aus dem Probelauf: «Abhörgerät» enthält «hörgerät» (3 Wanzendetektoren), ein Erste-Hilfe-Set enthält eine Beatmungsmaske und ist als Ganzes zulässig, und ein Luftbefeuchter zerstäubt mit einem «Vernebler». «Vernebler/Inhalator» zählt deshalb nur noch zusammen mit Medikament, Asthma oder Atemweg. Dazu aus dem zweiten Probelauf: Bluetooth-Ohrhörer, die die Maschinenübersetzung als «trendiges Hörgerät» anpreist, und das «Reinigungsset für digitale Hörgeräte» — eine Bürste mit Tuch, die das Wort im Titel trägt und kein Gerät ist. ⚠️ Ebenfalls live gefunden: «Atemtrainer für Yoga und Pilates» — ein Gerät zum Trainieren der Lungenkapazität beim Sport, ohne jede Krankheitsangabe. Das ist Fitness. «Atemtrainer» allein reicht deshalb nicht, wenn Yoga/Pilates/Workout danebensteht; ein Anreizspirometer für die Reha nennt das nicht."
+    }
   ]
 }
