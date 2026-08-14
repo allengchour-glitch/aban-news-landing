@@ -40,9 +40,24 @@
 15494643188097	Figurbetonendes Strickkleid	figurbetonendes-strickkleid-637800
 15495116816769	Colorblock V-Neck Strickkleid mit Schnürung	colorblock-v-neck-strickkleid-mit-schnurung-622300
 15485009953153	Echtleder Umhängetasche für Herren	echtleder-umhaengetasche-fuer-herren-612500
-15493476516225	12 Neon-Nagelpuder Set	12-neon-nagelpuder-set-623300
 alt:15413725102465	1 Bilder	Cropped Blazer · Damen, mit Pailletten-Detail
 alt:15447618978177	8 Bilder	Kissenbezug mit Quasten
 alt:15448659755393	8 Bilder	Rundhals-Spitzentop
 alt:15448704811393	5 Bilder	Warmer Strick-Cardigan
 alt:15449113166209	5 Bilder	Herren Übergangsjacke
+jdgm:15413725102465	Cropped Blazer im Chanel-Stil · Damen, mit Pailletten-Detail	→ Cropped Blazer · Damen, mit Pailletten-Detail
+jdgm:15447618978177	Kissenbezug mit Quasten im Chanel-Stil	→ Kissenbezug mit Quasten
+jdgm:15448659755393	Rundhals-Spitzentop im Chanel-Stil	→ Rundhals-Spitzentop
+jdgm:15448704811393	Warmer Strick-Cardigan im Chanel-Stil	→ Warmer Strick-Cardigan
+jdgm:15449113166209	Herren Übergangsjacke im Chanel-Stil	→ Herren Übergangsjacke
+jdgm:15450013467009	Chanel-inspirierte Vintage Sandalen mit Blockabsatz und quadratischem	→ Vintage Sandalen mit Blockabsatz
+jdgm:15454124966273	Kinder Doc Martens Stiefel	→ Kinder Stiefel
+jdgm:15455759565185	Chanel-Look Perlenblüten-Brosche Westenkleid	→ Westenkleid mit Perlenblüten-Brosche
+jdgm:15458676801921	Chanel-inspirierte Kurzjacke mit Perlenknöpfen	→ Elegante Kurzjacke mit Perlenknöpfen
+jdgm:15468686016897	Chanel-inspirierendes Strickkleid	→ Elegantes Strickkleid
+jdgm:15485009953153	Mercedes-Benz Echtleder Umhängetasche für Herren	→ Echtleder Umhängetasche für Herren
+jdgm:15485407691137	Damenbluse im Chanel-Stil	→ Damenbluse mit langen Ärmeln · Slim Fit
+jdgm:15490774696321	Flache Damen-Stiefeletten im Dr. Martens Stil	→ Flache Damen-Stiefeletten
+jdgm:15493476516225	12 Neon-Nagelpuder im Barbie-Stil Set	→ 12 Neon-Nagelpuder Set
+jdgm:15494643188097	Figurbetonendes Strickkleid im Chanel-Stil	→ Figurbetonendes Strickkleid
+15493476516225	12 Neon-Nagelpuder Set	12-neon-nagelpuder-set-623300

@@ -117,17 +117,47 @@ def gql(q, v):
     return None
 
 
+def quelle():
+    """Liefert (id, titel, datum, beschreibung) je aktivem Produkt.
+
+    ⚠️ Der Voll-Export ist ein SCHNAPPSCHUSS. Beim ersten Lauf am 14.08. war er vom 12.08. —
+    in den zwei Tagen dazwischen hatte der Importer ein «Kabelloses WiFi Otoskop» angelegt, das
+    im Export gar nicht vorkam und live im Google-Kanal stand. Mit `SEIT=JJJJ-MM-TT` liest der
+    Wächter deshalb direkt aus dem Shop statt aus der Datei; das ist der Modus für den
+    täglichen Lauf, der Export nur der für den einmaligen Vollstreifzug.
+    """
+    seit = os.environ.get("SEIT")
+    if not seit:
+        for zeile in open(EXPORT, encoding="utf-8"):
+            p = json.loads(zeile)
+            if p.get("status") == "ACTIVE":
+                yield p["id"], p["title"], p["createdAt"][:10], p.get("descriptionHtml")
+        return
+    q = ("query($c:String,$q:String!){products(first:100,after:$c,query:$q){"
+         "pageInfo{hasNextPage endCursor} nodes{id title createdAt descriptionHtml}}}")
+    cursor = None
+    while True:
+        d = gql(q, {"c": cursor, "q": f"status:active created_at:>={seit}"})
+        if d is None:
+            # Eine gescheiterte Anfrage ist KEIN Ergebnis: lieber abbrechen, als eine
+            # unvollständige Liste für «nichts gefunden» zu halten.
+            sys.exit("⛔ Shopify antwortet nicht — Lauf abgebrochen, nichts geändert.")
+        for p in d["products"]["nodes"]:
+            yield p["id"], p["title"], p["createdAt"][:10], p.get("descriptionHtml")
+        if not d["products"]["pageInfo"]["hasNextPage"]:
+            return
+        cursor = d["products"]["pageInfo"]["endCursor"]
+        time.sleep(0.3)
+
+
 def main():
     kandidaten = []
     aktiv = 0
-    for zeile in open(EXPORT, encoding="utf-8"):
-        p = json.loads(zeile)
-        if p.get("status") != "ACTIVE":
-            continue
+    for gid, titel, dat, html in quelle():
         aktiv += 1
-        t = medizin_zweck(p.get("title"), p.get("descriptionHtml"))
+        t = medizin_zweck(titel, html)
         if t:
-            kandidaten.append((p["id"], p["title"], p["createdAt"][:10], t[0], t[1]))
+            kandidaten.append((gid, titel, dat, t[0], t[1]))
     kandidaten.sort(key=lambda x: x[2])
     print(f"Aktive Produkte geprüft: {aktiv}   → medizinische Zweckbestimmung: {len(kandidaten)}\n",
           flush=True)

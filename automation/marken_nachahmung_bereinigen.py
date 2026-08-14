@@ -80,7 +80,11 @@ MARKEN = (r"Chanel|Gucci|Prada|Dior|Louis\s?Vuitton|Herm[eè]s|Hermes|Rolex|Bale
           r"Versace|Burberry|Fendi|Givenchy|Valentino|Bottega\s?Veneta|Cartier|"
           r"Dr\.?\s?Martens|Doc\s?Martens|Birkenstock|Crocs|Converse|Supreme|Swarovski|"
           r"Bulgari|Bvlgari|Chopard|Louboutin|Jimmy\s?Choo|Michael\s?Kors|Tommy\s?Hilfiger|"
-          r"New\s?Balance|Nike|Adidas|Puma|Timberland|Lululemon|Ray-?Ban|Moncler")
+          r"New\s?Balance|Nike|Adidas|Puma|Timberland|Lululemon|Ray-?Ban|Moncler|"
+          # «Barbie» erst nach der Live-Nachkontrolle ergänzt: die Handkorrektur für das
+          # Nagelpuder-Set fasste nur SEO + URL an, im Fliesstext stand «Box im Barbie-Stil»
+          # weiter. Die rechte Wortgrenze schützt den «Barbier» (Rasierbedarf im Sortiment).
+          r"Barbie")
 M = r"(?:" + MARKEN + r")"
 G = r"(?<![\wäöüßÄÖÜ])"          # linke Wortgrenze, umlautfest
 GR = r"(?![\wäöüßÄÖÜ])"         # rechte Wortgrenze
@@ -262,6 +266,45 @@ Q_ALT = """mutation($f:[FileUpdateInput!]!){ fileUpdate(files:$f){
   userErrors{ field message } } }"""
 
 
+Q_MF = """query($ids:[ID!]!){ nodes(ids:$ids){ ... on Product { id title
+  metafields(first:30){nodes{ id namespace key value type }} } } }"""
+
+Q_MF_SET = """mutation($mf:[MetafieldsSetInput!]!){ metafieldsSet(metafields:$mf){
+  userErrors{ field message } } }"""
+
+
+def judgeme_cache_bereinigen(live, erledigt):
+    """Das SECHSTE Feld: judgeme.review_widget_data.
+
+    Die zweite Live-Nachkontrolle fand «Chanel» weiter im gerenderten HTML — diesmal in
+    einem Metafeld, das die Judge.me-App auf dem Produkt zwischenspeichert und das der
+    Bewertungs-Baustein wörtlich in die Seite schreibt. Judge.mes eigener Datensatz war zu
+    diesem Zeitpunkt schon korrekt (per API geprüft), nur der Zwischenspeicher im Shop war
+    zwei Tage alt — bei «Flache Damen-Stiefeletten im Dr. Martens Stil» sogar seit dem
+    12.08. Nur das Feld product_name wird ersetzt, der Rest des JSON bleibt unangetastet;
+    schreibt Judge.me den Speicher später neu, schreibt es ohnehin den richtigen Titel.
+    """
+    plan = []
+    for pid, p in sorted(live.items()):
+        if p["status"] != "ACTIVE" or echte_markenware(p) or ("jdgm:" + pid) in erledigt:
+            continue
+        for mf in p.get("_mf", []):
+            if mf["namespace"] != "judgeme" or mf["key"] != "review_widget_data":
+                continue
+            try:
+                daten = json.loads(mf["value"])
+            except Exception:
+                continue
+            alt_name = daten.get("product_name") or ""
+            if alt_name == p["title"] or not (marke_drin(alt_name)
+                                              or ALT_ZUSATZ.search(alt_name)):
+                continue
+            daten["product_name"] = p["title"]
+            plan.append((pid, alt_name, p["title"],
+                         json.dumps(daten, ensure_ascii=False), mf["type"]))
+    return plan
+
+
 def alt_texte_bereinigen(live, erledigt):
     """Bild-Alt-Texte tragen den alten Titel weiter — eigener Durchgang, eigenes Ledger."""
     plan = []
@@ -306,6 +349,14 @@ def main():
         for n in d["data"]["nodes"]:
             if n:
                 live[n["id"].split("/")[-1]] = n
+    for i in range(0, len(ids), 10):                      # Metafelder separat (Kostenlimit)
+        d = gql(Q_MF, {"ids": ["gid://shopify/Product/" + x for x in ids[i:i + 10]]})
+        if not d:
+            print("ABBRUCH: Metafelder nicht lesbar — nichts geschrieben.")
+            return 1
+        for n in d["data"]["nodes"]:
+            if n and n["id"].split("/")[-1] in live:
+                live[n["id"].split("/")[-1]]["_mf"] = n["metafields"]["nodes"]
 
     plan, uebersprungen = [], []
     for pid, p in sorted(live.items()):
@@ -393,6 +444,11 @@ def main():
         for _, a, n in neu[:3]:
             print(f"      – {a[:95]}\n      + {n[:95]}")
 
+    jdgmplan = judgeme_cache_bereinigen(live, erledigt)
+    print(f"\n── Judge.me-Zwischenspeicher: {len(jdgmplan)} Produkte " + "─" * 25)
+    for pid, alt_n, neu_n, _, _ in jdgmplan:
+        print(f"   {pid}  – {alt_n[:70]}\n   {'':14s}+ {neu_n[:70]}")
+
     print("\n── bewusst NICHT angefasst " + "─" * 45)
     for pid, t, grund in uebersprungen:
         print(f"   {pid}  {t[:52]:54s} {grund}")
@@ -477,6 +533,35 @@ def main():
         os.fsync(led.fileno())
         ok += 1
         print(f"✓ ALT {pid}  {len(neu)} Bilder  {titel[:45]}")
+        time.sleep(0.3)
+
+    # ── Judge.me-Zwischenspeicher ─────────────────────────────────────────
+    for pid, alt_n, neu_n, wert, typ in jdgmplan:
+        r = gql(Q_MF_SET, {"mf": [{"ownerId": "gid://shopify/Product/" + pid,
+                                   "namespace": "judgeme", "key": "review_widget_data",
+                                   "type": typ or "json", "value": wert}]})
+        ue = (r or {}).get("data", {}).get("metafieldsSet", {}).get("userErrors")
+        if not r or ue:
+            print(f"✗ JDGM {pid}: {ue if r else 'keine Antwort'}")
+            fehler += 1
+            continue
+        v = gql(Q_MF, {"ids": ["gid://shopify/Product/" + pid]})
+        if not v:
+            print(f"  ⚠️ JDGM {pid} ohne Nachkontrolle → nicht quittiert")
+            fehler += 1
+            continue
+        rest = [m["value"] for m in v["data"]["nodes"][0]["metafields"]["nodes"]
+                if m["key"] == "review_widget_data"
+                and (marke_drin(m["value"]) or ALT_ZUSATZ.search(m["value"]))]
+        if rest:
+            print(f"  ⚠️ JDGM {pid} noch Markenrest → nicht quittiert")
+            fehler += 1
+            continue
+        led.write(f"jdgm:{pid}\t{alt_n}\t→ {neu_n}\n")
+        led.flush()
+        os.fsync(led.fileno())
+        ok += 1
+        print(f"✓ JDGM {pid}  {neu_n[:50]}")
         time.sleep(0.3)
     led.close()
     print(f"\nFertig: {ok} bereinigt · {fehler} offen (werden beim nächsten Lauf erneut versucht)")

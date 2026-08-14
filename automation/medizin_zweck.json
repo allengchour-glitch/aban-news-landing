@@ -54,9 +54,9 @@
     },
     {
       "n": "zahnsteinentfernung",
-      "re": "(?:Zahnsteinentferner|Dental[- ]?Scaler|\\bZahnreiniger\\b|Dentalreiniger|Ultraschall[^.]{0,40}Zahn)[\\s\\S]{0,400}Zahnstein|Zahnstein[\\s\\S]{0,400}(?:Zahnsteinentferner|Dental[- ]?Scaler|\\bZahnreiniger\\b|Dentalreiniger|Ultraschall[^.]{0,40}Zahn)",
+      "re": "(?:Zahnsteinentferner|Dental[- ]?Scaler|\\bZahnreiniger\\w*|Dentalreiniger|Ultraschall[^.]{0,40}Zahn)[\\s\\S]{0,400}Zahnstein|Zahnstein[\\s\\S]{0,400}(?:Zahnsteinentferner|Dental[- ]?Scaler|\\bZahnreiniger\\w*|Dentalreiniger|Ultraschall[^.]{0,40}Zahn)",
       "nicht": "Zahnspange|Retainer|Prothese|Zahnersatz|Mundsp[üu]lung|Zahnpasta",
-      "warum": "Zahnsteinentfernung ist ein zahnärztlicher Eingriff; Ultraschall-Scaler in Laienhand verletzen Zahnschmelz und Zahnfleisch. Die Sperre «tier» hält die vier Hunde-Kauspielzeuge draussen, «Zahnspange/Retainer» den Ultraschallreiniger, der Apparate ausserhalb des Mundes säubert. Verschärft nach dem zweiten Probelauf: Es reicht NICHT, dass irgendwo «Zahnstein entfernen» steht — verlangt wird zusätzlich das Gerät (Zahnsteinentferner, Dentalreiniger, Ultraschall). Sonst hängt die «Elektrische Zahnreinigungsbürste» mit drin, die mit Hochfrequenzvibration arbeitet: eine Bürste mit einem zu grossen Werbeversprechen, kein Scaler."
+      "warum": "Zahnsteinentfernung ist ein zahnärztlicher Eingriff; Ultraschall-Scaler in Laienhand verletzen Zahnschmelz und Zahnfleisch. Die Sperre «tier» hält die vier Hunde-Kauspielzeuge draussen, «Zahnspange/Retainer» den Ultraschallreiniger, der Apparate ausserhalb des Mundes säubert. Verschärft nach dem zweiten Probelauf: Es reicht NICHT, dass irgendwo «Zahnstein entfernen» steht — verlangt wird zusätzlich das Gerät (Zahnsteinentferner, Dentalreiniger, Ultraschall). Sonst hängt die «Elektrische Zahnreinigungsbürste» mit drin, die mit Hochfrequenzvibration arbeitet: eine Bürste mit einem zu grossen Werbeversprechen, kein Scaler. ⚠️ Und dann die Gegenprobe nach dem scharfen Lauf: «Elektrisches Zahnpflege-Set gegen Zahnstein» fehlte plötzlich. Der Text sagt «die Funktionen eines Zahnreiniger-S und einer Zahnbürste» — der Genitiv hängt ein s an, und die Wortgrenze \\b passte nicht mehr. Deutsche Beugung frisst jede Wortgrenze am Wortende; jetzt \\w*."
     },
     {
       "n": "vitalmessung-medizinisch",

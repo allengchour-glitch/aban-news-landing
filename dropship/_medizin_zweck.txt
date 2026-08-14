@@ -1,0 +1,11 @@
+gid://shopify/Product/15449177457025	zahnsteinentfernung	2026-07-05	Ultraschall-Zahnreiniger gegen Zahnstein
+gid://shopify/Product/15453809869185	zahnsteinentfernung	2026-07-11	Portabler Dentalreiniger mit Wasserfloss
+gid://shopify/Product/15454270554497	zahnsteinentfernung	2026-07-13	Ultrasonic Zahnreiniger zur Stein-Entfernung & Weißen
+gid://shopify/Product/15481799737729	endoskop-koerperoeffnung	2026-08-01	3-in-1 Ohrenschmalzentferner mit Kamera
+gid://shopify/Product/15483933491585	elektrostimulation	2026-08-03	Einschlafhilfe mit EMS-Mikrostrom · Schlaf-Massagegerät
+gid://shopify/Product/15484629811585	hirnstimulation	2026-08-03	2-in-1 Schlafgerät mit Ohrclip und Handheld
+gid://shopify/Product/15493810356609	fieberueberwachung	2026-08-11	Smartes Temperaturpflaster für Kinder
+gid://shopify/Product/15493828641153	eingewachsene-naegel	2026-08-11	Nagelkorrektur-Pflaster-Set
+gid://shopify/Product/15493848367489	eingewachsene-naegel	2026-08-11	Korrektur-Set für eingewachsene Nägel
+gid://shopify/Product/15493861998977	fieberueberwachung	2026-08-11	Baby-Pflegeset mit elektrischem Nageltrimmer
+gid://shopify/Product/15497360769409	endoskop-koerperoeffnung	2026-08-13	Kabelloses WiFi Otoskop
