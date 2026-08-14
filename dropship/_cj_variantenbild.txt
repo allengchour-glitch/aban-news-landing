@@ -68,3 +68,7 @@ gid://shopify/Product/15446064464257	zugeordnet	2	Glitzerndes Highlight Puder f�
 gid://shopify/Product/15446065021313	zugeordnet	2	Photon Gesichts- und Augenmassagegerät
 gid://shopify/Product/15446065873281	zugeordnet	4	Sonnenschutz-Gesichtsmaske mit Krempe
 gid://shopify/Product/15446066299265	zugeordnet	12	Maulbeerseiden-Gesichtsmaske für Damen
+gid://shopify/Product/15446066626945	zugeordnet	16	Silikon-Vollgesichtsmaske in verschiedenen Farben
+gid://shopify/Product/15446066954625	zugeordnet	5	Nahtlose Gesichtsmaske aus Nylon
+gid://shopify/Product/15446067249537	zugeordnet	2	Sport Gesichtsmaske mit Aktivkohlefilter
+gid://shopify/Product/15446067937665	zugeordnet	4	Samtige Gesichtsmaske – atmungsaktiv & schützend
