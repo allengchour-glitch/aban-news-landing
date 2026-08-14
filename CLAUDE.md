@@ -48,6 +48,35 @@ waren **zu eng gefasst**, und das Muster dahinter wiederholt sich:
    sofortige Merchant-Kontosperre. **Wer eine Angabe aus einem Feld entfernt, muss prüfen, welches
    ANDERE Feld sie getragen hat.**
 
+## ⚕️ Medizinische Zweckbestimmung: nach der FUNKTION suchen, nicht nach dem Namen (2026-08-14)
+12 Geräte standen ACTIVE in allen sechs Kanälen inkl. Google, obwohl sie nach MepV eine
+Konformitätsbewertung brauchen: ein **Temperaturpflaster mit 38-°C-Alarm für kranke Kinder**,
+zwei Elektrostimulations-Schlafgeräte (CES durch den Kopf / EMS «gegen Angstzustände und
+Schlafstörungen»), zwei Gehörgang-Endoskope, zwei Sets gegen eingewachsene Nägel, vier
+Ultraschall-Zahnsteinentferner, ein Baby-Pflegeset (0–6 J.) mit klinischem Thermometer.
+`medizinprodukte_guard.py` sah keinen davon — er sucht **Produktnamen**, und alle heissen nach
+aussen «Gadget», «Beauty», «Haushalt»; ihren Zweck verrät nur der Beschreibungstext.
+→ `automation/medizin_zweck_guard.py` (Bestand) + `automation/medizin_zweck.mjs` (Importer)
+lesen **dieselbe** Musterdatei `automation/medizin_zweck.json`. `cj_category_fill.mjs` und
+`cj_sku_import.mjs` prüfen jetzt VOR dem Anlegen: Treffer → DRAFT + Tag `medizinprodukt-pruefen`,
+**nicht publiziert**. Ledger `dropship/_medizin_zweck.txt`, täglich im `fixer_keepalive.sh`.
+**Deutsche Zusammensetzungen kosteten drei Probeläufe** (30 → 16 → 10 Treffer, 22 Fehltreffer):
+«Ab**hörgerät**» = Wanzendetektor · «Sp**rachen**» traf «Rachen» → ein **Kinder-Lern-Tablet**
+galt als Endoskop · «Stethoskop-Herz-**Anhänger**» ist Schmuck · «Stethoskop» Marke Widmann,
+«Dr. **Fasnacht**» ist ein Kostüm · «Heizmethode: **PTC-Fieber**» einer Glättbürste ist 发热
+(Wärmeerzeugung) · 4 Hunde-Kauspielzeuge «reduziert Zahnstein» · Luftbefeuchter haben einen
+«Vernebler» · ein Erste-Hilfe-Set enthält eine Beatmungsmaske.
+**Und die Beugung frisst die Wortgrenze am Wortende:** nach dem scharfen Lauf fehlte das
+«Elektrische Zahnpflege-Set» — der Text sagt «eines **Zahnreinigers**», der Genitiv hängt ein s
+an, `\bZahnreiniger\b` passte nicht mehr. Wortgrenzen gehören an den ANFANG, am Ende `\w*`.
+**Abgegrenzt statt mitgenommen** (sonst drafte­t ein Lauf halbe Abteilungen): Beauty-Mikrostrom
+(Falten/Augenpartie) ist Kosmetik · EMS-Bauchtrainer ist Fitness, keine Krankheit · «Atemtrainer
+für Yoga und Pilates» trainiert Lungenkapazität, nennt keine Indikation · Smartwatches mit
+Körpertemperatur/EKG/Blutdruck bleiben der eigenen Wearable-Reparatur (135 Stück) vorbehalten.
+**Und: der Voll-Export ist ein Schnappschuss.** Er war vom 12.08.; live lag ein «Kabelloses WiFi
+Otoskop» vom 13.08. im Google-Kanal, das darin gar nicht vorkam. Der Wächter kann deshalb mit
+`SEIT=JJJJ-MM-TT` direkt aus dem Shop lesen — das ist der Modus für den täglichen Lauf.
+
 ## 🛡️ Google-Kanal: 88 sperr-riskante Produkte entfernt (2026-08-12)
 Der Kanal ist der einzige mit belegten Verkäufen (Merchant-Screenshot des Users: **52 Klicks,
 +206 %, 3'170 Impressionen — praktisch alles organisch**). Entsprechend teuer wäre eine Sperre.
