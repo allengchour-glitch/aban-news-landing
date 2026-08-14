@@ -111,6 +111,7 @@ import json
 import os
 import re
 import sys
+import time
 import urllib.request
 
 TOKEN = open('/tmp/cj_shop_token.txt').read().strip()
@@ -123,14 +124,24 @@ FRIST = 'innert 14 Tagen nach Eingang und Prüfung der Rücksendung'
 
 
 def gql(query, variables=None):
-    """Regel 6: eine gescheiterte Anfrage ist kein Ergebnis — sie wirft."""
+    """
+    Regel 6: eine gescheiterte Anfrage ist kein Ergebnis. Bei THROTTLED wird
+    gewartet und erneut gefragt (Shopify drosselt bei vielen Seiten zuverlässig);
+    jeder andere Fehler wirft, damit nichts Halbfertiges ins Ledger gerät.
+    """
     data = json.dumps({'query': query, 'variables': variables or {}}).encode()
-    req = urllib.request.Request(API, data=data, headers={
-        'X-Shopify-Access-Token': TOKEN, 'Content-Type': 'application/json'})
-    out = json.loads(urllib.request.urlopen(req, timeout=90).read())
-    if 'errors' in out:
+    for versuch in range(6):
+        req = urllib.request.Request(API, data=data, headers={
+            'X-Shopify-Access-Token': TOKEN, 'Content-Type': 'application/json'})
+        out = json.loads(urllib.request.urlopen(req, timeout=90).read())
+        if 'errors' not in out:
+            return out['data']
+        codes = [e.get('extensions', {}).get('code') for e in out['errors']]
+        if 'THROTTLED' in codes and versuch < 5:
+            time.sleep(4 * (versuch + 1))
+            continue
         raise RuntimeError(json.dumps(out['errors'])[:500])
-    return out['data']
+    raise RuntimeError('THROTTLED: nach 6 Versuchen keine Antwort')
 
 
 # ---------------------------------------------------------------------------

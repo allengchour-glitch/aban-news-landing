@@ -73,6 +73,7 @@ import json
 import os
 import re
 import sys
+import time
 import urllib.request
 
 TOKEN = open('/tmp/cj_shop_token.txt').read().strip()
@@ -165,21 +166,33 @@ HAND = {
     '698004177281': 'Was «vegan» in der Kosmetik wirklich bedeutet — und sieben Produkte ohne tierische Inhaltsstoffe und ohne Tierversuche.',
     '698005750145': 'Adventskalender 2026 im Vergleich: Was in Drogerie-Kalendern steckt, was Premium-Kalender bieten und wann du bestellen solltest.',
     '698005848449': 'Edelstahlschmuck richtig pflegen: Wann du ihn abnimmst, wie du ihn reinigst und warum er nicht anläuft — in wenigen Regeln.',
-    '698006208897': 'Schweizer Onlineshop oder deutsche Marke? Wo die Unterschiede bei Versand, Rückgabe und Preis wirklich liegen.',
+    # «Preis» stand im ersten Entwurf, kommt auf der Seite aber gar nicht vor —
+    # ersetzt durch das, was dort tatsächlich verglichen wird.
+    '698006208897': 'Schweizer Onlineshop oder deutsche Marke? Wo die Unterschiede bei Qualität, Service und Rückgabe wirklich liegen.',
     '698006307201': 'Welcher Duft im Aroma-Diffuser was bewirkt — plus die richtige Dosierung und wie du das Gerät sauber hältst.',
     '697998573953': 'Eine vollständige Beauty-Routine in zehn Minuten: fünf Minuten morgens, fünf abends — Schritt für Schritt erklärt.',
 }
 
 
 def gql(query, variables=None):
-    """Regel 6: eine gescheiterte Anfrage ist kein Ergebnis — sie wirft."""
+    """
+    Regel 6: eine gescheiterte Anfrage ist kein Ergebnis. Bei THROTTLED wird
+    gewartet und erneut gefragt (Shopify drosselt bei vielen Seiten zuverlässig);
+    jeder andere Fehler wirft, damit nichts Halbfertiges ins Ledger gerät.
+    """
     data = json.dumps({'query': query, 'variables': variables or {}}).encode()
-    req = urllib.request.Request(API, data=data, headers={
-        'X-Shopify-Access-Token': TOKEN, 'Content-Type': 'application/json'})
-    out = json.loads(urllib.request.urlopen(req, timeout=90).read())
-    if 'errors' in out:
+    for versuch in range(6):
+        req = urllib.request.Request(API, data=data, headers={
+            'X-Shopify-Access-Token': TOKEN, 'Content-Type': 'application/json'})
+        out = json.loads(urllib.request.urlopen(req, timeout=90).read())
+        if 'errors' not in out:
+            return out['data']
+        codes = [e.get('extensions', {}).get('code') for e in out['errors']]
+        if 'THROTTLED' in codes and versuch < 5:
+            time.sleep(4 * (versuch + 1))
+            continue
         raise RuntimeError(json.dumps(out['errors'])[:500])
-    return out['data']
+    raise RuntimeError('THROTTLED: nach 6 Versuchen keine Antwort')
 
 
 EMOJI = re.compile(
@@ -300,6 +313,10 @@ def baue_titel(seite):
     reicht, wird an der Wortgrenze gekappt.
     """
     t = saeubere_titel(seite['title'])
+    # Trägt der Titel den Shopnamen schon, wird er nicht ein zweites Mal
+    # angehängt («Influencer & Partner — LuxeStyle CH | LuxeStyle CH»).
+    if 'luxestyle' in t.lower():
+        return kappe(t, MAX_TITEL)
     if len(t) + len(SUFFIX) <= MAX_TITEL:
         return t + SUFFIX
     kopf = re.split(r'\s+[–—-]\s+|(?<=\?)\s+|:\s+', t, maxsplit=1)[0].strip(' ,;:–-')
