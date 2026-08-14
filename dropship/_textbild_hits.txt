@@ -6550,3 +6550,9 @@ gid://shopify/Product/15448829460865	60->1	Elektrisches Nagelfeilen-Set für Man
 gid://shopify/Product/15448833655169	60->1	Tragbares elektrisches Nagelbohrer-Set
 gid://shopify/Product/15448839520641	26->0	Hohlkern-Kuchenform mit Deckel
 gid://shopify/Product/15448848761217	42->2	Retro 8-Bit Mini-Konsole mit 620 Spielen
+gid://shopify/Product/15448861344129	23->0	Over-Ear Bluetooth Kopfhörer mit HD Mikrofon
+gid://shopify/Product/15448877597057	55->0	Smart-Armband mit Schritt- & Schlafüberwachung
+gid://shopify/Product/15448883036545	14->0	Wassermelder Zigbee Smart Home
+gid://shopify/Product/15448884740481	20->3	3-in-1 Kabellose Espresso Maschine
+gid://shopify/Product/15448901845377	38->1	C-förmige Ohrringe mit Strass & Zirkonia
+gid://shopify/Product/15448903647617	10->0	Chinesische Drachen-Skelett-Taschenuhr
