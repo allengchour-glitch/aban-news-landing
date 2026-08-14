@@ -306,6 +306,40 @@ async function hatBild(st,productId){
  }
  return false;
 }
+// 🖼️ MINIATUR ALS HAUPTBILD (14.08.2026). CJs `productImageSet` kommt in der Reihenfolge des
+// Lieferanten, und deren erster Eintrag ist mitunter ein Thumbnail: «Adapter für Hochdruck-
+// reiniger-Schaumlanze» stand mit einem 50×50-Hauptbild live im Shop und im Google-Kanal,
+// zwei Wimpern-Produkte mit 80×80, während im selben Produkt 800- bis 1785-px-Bilder lagen.
+// Weil `imgs[0]` hier zum Hauptbild wird, ist das keine Altlast, sondern entsteht mit jedem
+// Lauf neu — 50 der 265 gefundenen Fälle wurden im August angelegt, der jüngste zwei Tage vor
+// dem Fund. Ein Aufräumlauf allein wäre also Sisyphusarbeit (dieselbe Lehre wie bei
+// `condition` und `google_product_category`).
+//
+// `featuredMedia` ist genau das Bild, das Google als `image_link` bekommt. Unter 250×250 wird
+// ein Bekleidungs- oder Schmuckangebot ABGELEHNT, nicht bloss schlechter platziert.
+//
+// ⚠️ BEWUSST ENG: eingegriffen wird nur, wenn das erste Bild ein echtes Thumbnail ist
+// (< 250 px). Der Probelauf des Bestands-Reinigers zeigte, warum «nimm einfach das grösste»
+// falsch wäre: bei 44 % einer Stichprobe war das grosse Bild keine Aufnahme des Produkts,
+// sondern eine englische Werbetafel («Wide Compatibility», «U-SHAPE NECK MASSAGER ST-320»)
+// oder ein Swatch mit fremdem Markennamen. Die schwierigen Fälle (Hauptbild 250–499 px)
+// entscheidet `automation/hauptbild_grossbild.py` mit Text- und Motivprüfung; hier wird nur
+// der Schaden verhindert, der ohne Bildvergleich sicher zu erkennen ist.
+async function grossbildNachVorn(st,productId){
+ try{
+  const r=await sgql(st,`query($id:ID!){product(id:$id){media(first:25){nodes{
+    id mediaContentType ... on MediaImage{status image{width height}}}}}}`,{id:productId});
+  const nodes=(r?.data?.product?.media?.nodes||[]).filter(n=>n.mediaContentType==='IMAGE');
+  if(nodes.length<2)return;
+  const kante=n=>Math.max(n?.image?.width||0,n?.image?.height||0);
+  if(kante(nodes[0])>=250)return;                       // kein Thumbnail → nichts zu tun
+  const ziel=nodes.find(n=>n.status==='READY'&&kante(n)>=800);
+  if(!ziel||ziel.id===nodes[0].id)return;
+  await sgql(st,`mutation($id:ID!,$m:[MoveInput!]!){productReorderMedia(id:$id,moves:$m){userErrors{message}}}`,
+             {id:productId,m:[{id:ziel.id,newPosition:'0'}]});
+  console.log(`  🖼️ Miniatur (${kante(nodes[0])}px) war Hauptbild → ${kante(ziel)}px nach vorn`);
+ }catch{}
+}
 async function attachVideo(st,productId,vurl,cjpid){
  try{
   const vr=await fetch(vurl,{signal:AbortSignal.timeout(90000)}); if(!vr.ok)return;
@@ -596,6 +630,9 @@ for(const [cat,label] of grp.cats){
     fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid));
     continue;
    }
+   // Erst jetzt stehen die Bildmasse fest (Shopify verarbeitet asynchron) — deshalb hier und
+   // nicht vor dem Anlegen: eine Miniatur darf nicht das Hauptbild bleiben.
+   await grossbildNachVorn(st,pid);
    // Ein Medizinprodukt darf in KEINEN Kanal — am wenigsten in «Google & YouTube», den
    // einzigen mit belegten Verkäufen. Nicht publizieren, Fall im Log benennen.
    if(med){ console.log(`  ⚕️ medizinische Zweckbestimmung (${med.grund}) → DRAFT, nicht publiziert: ${title.slice(0,44)}`);
