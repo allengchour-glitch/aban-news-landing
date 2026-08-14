@@ -188,6 +188,21 @@ while true; do
       echo "$(date -u +%H:%M) medizin_zweck_guard gestartet"
     fi
   fi
+  # DESIGNZWANG der «Selbst gestalten»-Produkte, einmal täglich nachziehen (14.08.2026).
+  # Der Schutz liegt in vier Theme-Dateien (blocks/buy-buttons, sections/product-information,
+  # snippets/quick-add, snippets/cart-summary). Ein Horizon-Update überschreibt genau solche
+  # Dateien und würde den Schutz still entfernen — die Startseite sähe unverändert aus, aber
+  # jedes POD-Produkt wäre wieder ohne Druckdatei kaufbar. Das Skript ist idempotent: es liest
+  # die vier Dateien, findet die Marke LSPOD-DESIGNZWANG und tut nichts. Nur wenn die Marke
+  # fehlt, schreibt es sie zurück. Kostet eine Abfrage pro Tag.
+  PD=/tmp/pod_designzwang.log
+  if [ -f "$REPO/automation/pod_designzwang.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$PD" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid python3 automation/pod_designzwang.py >> "$PD" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) pod_designzwang gestartet"
+    fi
+  fi
   # CJ-Grind-Runner mitlaufen lassen (Turn-Reaping killt sie sonst jede Runde)
   # ⚠️ MIT SPERRE STARTEN (12.08.2026). Der pgrep-Test allein genügt nicht: `engines_up.sh`
   # prüft und startet dieselben Runner, und wer zwischen fremder Prüfung und fremdem Start
