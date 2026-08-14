@@ -6628,3 +6628,4 @@ gid://shopify/Product/15449490522497	14->0	Edler, isolierter Becher aus Edelstah
 gid://shopify/Product/15449491210625	29->1	Tassengarnitur mit Wasser-Trennung
 gid://shopify/Product/15449491734913	14->0	Grosses, tragbares Wasser Glas für Kids
 gid://shopify/Product/15449491865985	14->0	Holzkohle-Ofen für Zuhause
+gid://shopify/Product/15449496879489	41->0	Katzen-Schüssel für gesunde Halswirbelsäule
