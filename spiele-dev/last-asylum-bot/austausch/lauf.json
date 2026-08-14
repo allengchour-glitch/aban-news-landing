@@ -1,48 +1,14 @@
 {
- "zeit": "2026-08-14 22:06:10",
- "zeit_utc": "2026-08-14T22:06:10Z",
- "fassung": "1c7661f8b",
- "schritte": 14,
- "gleiche_ansicht": 13,
+ "zeit": "2026-08-14 23:18:41",
+ "zeit_utc": "2026-08-14T23:18:41Z",
+ "fassung": "ca0eb9156",
+ "schritte": 0,
+ "gleiche_ansicht": 0,
  "unbekannt_am_stueck": 0,
- "zaehler": {
-  "wirkungslos": 16,
-  "drags": 8,
-  "taps": 7,
-  "swipes": 2,
-  "task:kalibrieren": 1,
-  "task:spiel-im-vordergrund": 1,
-  "task:bauen-und-aufwerten": 1,
-  "task:forschung": 1,
-  "task:truppe-1-aufwerten": 1,
-  "task:tagesziele": 1,
-  "task:allianz-geschenke": 1,
-  "task:basis-rundgang": 1
- },
- "vorlagen_offen": 31,
- "vorlagen_veraltet": [
-  {
-   "vorlage": "ui/btn_abholen.png",
-   "gesucht": 84,
-   "bester_wert": 0.0
-  },
-  {
-   "vorlage": "ui/popup_close.png",
-   "gesucht": 39,
-   "bester_wert": 0.0
-  },
-  {
-   "vorlage": "ui/ladebildschirm.png",
-   "gesucht": 26,
-   "bester_wert": 0.0
-  },
-  {
-   "vorlage": "ui/btn_abholen_orange.png",
-   "gesucht": 26,
-   "bester_wert": 0.0
-  }
- ],
+ "zaehler": {},
+ "vorlagen_offen": 0,
+ "vorlagen_veraltet": [],
  "verworfene_vorlagen": [],
  "verdaechtige_regeln": {},
- "bild": null
+ "bild": "austausch/lauf.png"
 }
