@@ -94,6 +94,7 @@ TOKEN = open("/tmp/cj_shop_token.txt").read().strip()
 LEDGER = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                       "..", "dropship", "_hauptbild_grossbild.txt")
 CACHE = "/tmp/hauptbild_media.jsonl"          # Ergebnis der Bulk-Abfrage
+URTEILE = "/tmp/hauptbild_urteile.json"       # zwischengespeicherte Bildurteile
 MINI = 500          # darunter gilt das Hauptbild als Miniatur
 GROSS = 800         # ab hier gilt ein Bild als Grossbild
 WORTGRENZE = 4      # ab so vielen sicher gelesenen Wörtern: Werbetafel
@@ -239,20 +240,26 @@ def waehle(fall):
     with ThreadPoolExecutor(max_workers=6) as pool:
         rohs = list(pool.map(lambda m: hole(m["image"]["url"], 900), fall["ziele"]))
     if any(r is None for r in rohs):
-        return None, "bild-nicht-ladbar"               # unbekannt ≠ sauber
+        return None, "bild-nicht-ladbar", None         # unbekannt ≠ sauber
 
     rang = sorted(((abstand(altbild, motiv(r)), i) for i, r in enumerate(rohs)))
     for d, i in rang:
-        if d >= GLEICHES_BILD and altkante >= WINZIG:
-            return None, f"nur-anderes-motiv(d={rang[0][0]:.0f})"
         try:
             woerter = bildtext_pruefen.woerter(rohs[i])
         except Exception:
-            return None, "ocr-fehlgeschlagen"
+            return None, "ocr-fehlgeschlagen", None
         if len(woerter) < WORTGRENZE:
-            art = "gleiches-bild" if d < GLEICHES_BILD else "ersatz-fuer-winzling"
-            return fall["ziele"][i], f"{art} d={d:.0f}"
-    return None, "kein-textfreies-grossbild"
+            if d < GLEICHES_BILD:
+                art = "gleiches-bild"                  # reine Schärfung
+            elif altkante < WINZIG:
+                art = "ersatz-fuer-winzling"           # heute lehnt Google ohnehin ab
+            else:
+                art = "nur-anderes-motiv"              # Vorschlag, wird NICHT geschrieben
+            return fall["ziele"][i], art, d
+    return None, "kein-textfreies-grossbild", None
+
+
+SCHREIBT = ("gleiches-bild", "ersatz-fuer-winzling")
 
 
 # ────────────────────────────────── Schreiben ──────────────────────────────────
@@ -273,62 +280,83 @@ def main():
     faelle = [f for f in faelle if f["id"] not in erledigt]
     print(f"noch offen: {len(faelle)}")
 
+    # Jede Entscheidung wird zwischengespeichert. Grund: das Lesen aller Kandidatenbilder
+    # dauert gut eine Stunde, und die Schwellen sollen an EINEM Beweis-Durchgang geprüft
+    # werden können, statt bei jeder Justierung erneut den halben Katalog zu laden.
+    urteile = {}
+    if os.path.exists(URTEILE):
+        urteile = json.load(open(URTEILE))
+
     log = open(LEDGER, "a")
-    paare, geaendert, offen = [], 0, []
+    geaendert, gezaehlt = 0, {}
     for i, f in enumerate(faelle, 1):
-        ziel, grund = waehle(f)
         kid = f["id"].split("/")[-1]
-        if ziel is None:
-            offen.append((kid, f["title"], grund))
-            print(f"  [{i}] ⏭️  {grund:<26} {f['title'][:50]}", flush=True)
-            continue
-        a = f["alt"].get("image") or {}
-        z = ziel["image"]
-        print(f"  [{i}] {a.get('width')}x{a.get('height')} → {z['width']}x{z['height']} "
-              f"({grund}) {f['title'][:46]}", flush=True)
-        paare.append((f, ziel))
-        if scharf:
-            r = gql(REORDER, {"id": f["id"], "m": [{"id": ziel["id"], "newPosition": "0"}]})
+        if kid in urteile:
+            u = urteile[kid]
+        else:
+            ziel, art, d = waehle(f)
+            a = f["alt"].get("image") or {}
+            u = {"titel": f["title"], "handle": f["handle"], "art": art,
+                 "d": None if d is None else round(d, 1),
+                 "alt": {"w": a.get("width"), "h": a.get("height"), "url": a.get("url")},
+                 "ziel": None if ziel is None else
+                         {"id": ziel["id"], "w": ziel["image"]["width"],
+                          "h": ziel["image"]["height"], "url": ziel["image"]["url"]}}
+            urteile[kid] = u
+            json.dump(urteile, open(URTEILE, "w"), ensure_ascii=False)
+        gezaehlt[u["art"]] = gezaehlt.get(u["art"], 0) + 1
+        print(f"  [{i}] {u['art']:<24} d={u['d']} "
+              f"{u['alt']['w']}x{u['alt']['h']} → "
+              f"{u['ziel']['w'] if u['ziel'] else '-'}  {u['titel'][:44]}", flush=True)
+        if scharf and u["art"] in SCHREIBT:
+            r = gql(REORDER, {"id": f["id"],
+                              "m": [{"id": u["ziel"]["id"], "newPosition": "0"}]})
             if r is None or r.get("data", {}).get("productReorderMedia", {}).get("userErrors"):
-                offen.append((kid, f["title"], "reorder-fehler"))
+                print("      ⚠️ reorder-fehler, bleibt offen", flush=True)
                 continue
             geaendert += 1
-            log.write(f"{f['id']}\t{ziel['id']}\t{z['width']}x{z['height']}\n")
+            log.write(f"{f['id']}\t{u['ziel']['id']}\t{u['ziel']['w']}x{u['ziel']['h']}\t{u['art']}\n")
             log.flush()                                # Regel 5: nach JEDER Zeile
             os.fsync(log.fileno())
     log.close()
 
     if bogen:
-        kontaktbogen(paare)
-    print(f"\n{'GEÄNDERT' if scharf else 'WÜRDE ÄNDERN'}: {len(paare) if not scharf else geaendert}")
-    print(f"unangetastet: {len(offen)}")
-    for kid, t, g in offen:
-        print(f"   {kid} {g:<26} {t[:52]}")
+        for art in set(u["art"] for u in urteile.values()):
+            paare = [(u["alt"]["url"], u["ziel"]["url"], u["titel"])
+                     for u in urteile.values() if u["art"] == art and u["ziel"]]
+            if paare:
+                kontaktbogen(paare, f"/tmp/bogen_{art}.png")
+    print("\nUrteile:", gezaehlt)
+    print(("GEÄNDERT: %d" % geaendert) if scharf
+          else "WÜRDE ÄNDERN: %d" % sum(gezaehlt.get(a, 0) for a in SCHREIBT))
 
 
-def kontaktbogen(paare, pfad="/tmp/hauptbild_bogen.png"):
+def kontaktbogen(paare, pfad="/tmp/hauptbild_bogen.png", proseite=48):
+    """Altes und neues Hauptbild nebeneinander — die einzige Prüfung, die zählt, ist die mit
+    den eigenen Augen. Ohne diesen Bogen wäre die Werbetafel-Falle nie aufgefallen."""
     from PIL import ImageDraw
     B, H, sp = 200, 232, 6
-    n = len(paare) * 2
-    zeilen = (n + sp - 1) // sp
-    bl = Image.new("RGB", (sp * B, zeilen * H), "white")
-    d = ImageDraw.Draw(bl)
-    k = 0
-    for f, ziel in paare:
-        for url, lab in (((f["alt"].get("image") or {}).get("url"), "ALT"),
-                         (ziel["image"]["url"], "NEU")):
-            try:
-                im = Image.open(io.BytesIO(hole(url, 400))).convert("RGB")
-                im.thumbnail((B - 8, H - 40))
-            except Exception:
-                im = Image.new("RGB", (40, 40), "red")
-            x, y = (k % sp) * B, (k // sp) * H
-            bl.paste(im, (x + 4, y + 20))
-            d.text((x + 4, y + 4), f"{k//2} {lab}", fill="black")
-            d.text((x + 4, y + H - 12), f["title"][:28], fill="#555")
-            k += 1
-    bl.save(pfad)
-    print("Kontaktbogen:", pfad)
+    for teil in range(0, len(paare), proseite):
+        stueck = paare[teil:teil + proseite]
+        zeilen = (len(stueck) * 2 + sp - 1) // sp
+        bl = Image.new("RGB", (sp * B, zeilen * H), "white")
+        d = ImageDraw.Draw(bl)
+        k = 0
+        for alt_url, neu_url, titel in stueck:
+            for url, lab in ((alt_url, "ALT"), (neu_url, "NEU")):
+                try:
+                    im = Image.open(io.BytesIO(hole(url, 400))).convert("RGB")
+                    im.thumbnail((B - 8, H - 40))
+                except Exception:
+                    im = Image.new("RGB", (40, 40), "red")
+                x, y = (k % sp) * B, (k // sp) * H
+                bl.paste(im, (x + 4, y + 20))
+                d.text((x + 4, y + 4), f"{teil + k//2} {lab}", fill="black")
+                d.text((x + 4, y + H - 12), titel[:28], fill="#555")
+                k += 1
+        p = pfad if teil == 0 else pfad.replace(".png", f"_{teil//proseite}.png")
+        bl.save(p)
+        print("Kontaktbogen:", p)
 
 
 if __name__ == "__main__":
