@@ -45,7 +45,7 @@ const r = await p.evaluate(() => {
   const rect = (e) => e ? (({ x, y, width, height }) => ({ x: Math.round(x), y: Math.round(y), w: Math.round(width), h: Math.round(height) }))(e.getBoundingClientRect()) : null;
   const banner = q('#lx-cookie-banner');
   out.body_class = document.body.className;
-  out.marker_neu = document.documentElement.innerHTML.indexOf('lux-fix-20260814-kaufknopf') > -1;
+  out.marker_neu = document.documentElement.innerHTML.indexOf('lux-fix-20260814-suchleiste') > -1;
   out.banner_inline = banner ? banner.getAttribute('style').slice(0,90) : null;
   out.bar_h_jetzt = (function(){var b=document.querySelector('.sticky-add-to-cart__bar');return b?b.getBoundingClientRect().height:'kein bar';})();
   out.banner = banner ? { rect: rect(banner), display: getComputedStyle(banner).display, bottom: getComputedStyle(banner).bottom, z: getComputedStyle(banner).zIndex } : null;
@@ -91,6 +91,7 @@ const r = await p.evaluate(() => {
   const main = q('main#MainContent');
   out.main_rect = rect(main);
   out.main_template = main ? main.dataset.template : null;
+  out.footer_links_gesamt = Object.values(out.footer_links).reduce(function(a,b){return a+b;},0);
   return out;
 });
 console.log(JSON.stringify(r, null, 1));
