@@ -154,3 +154,5 @@ gid://shopify/Product/15497708798337	Mehrfarbig
 gid://shopify/Product/15466887217537	Silber
 gid://shopify/Product/15473059430785	Silber
 gid://shopify/Product/15478713516417	Transparent
+gid://shopify/Product/15498896048513	Silber
+gid://shopify/Product/15498949460353	Mehrfarbig
