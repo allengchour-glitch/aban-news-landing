@@ -266,21 +266,50 @@ REST_RE = re.compile(
 
 
 def produkte():
+    """Sammelt die zu korrigierenden Produkte.
+
+    QUELLE=live liest per Admin-API statt aus dem Export-Schnappschuss. Das ist kein Luxus:
+    Der Export vom 12.08. kennt 31'398 aktive Produkte, live sind es 34'590 — der CJ-Grind
+    legt taeglich neue an. Ein Lauf, der nur den Schnappschuss abarbeitet, laesst die
+    juengsten Produkte mit der falschen Aussage stehen und sieht trotzdem nach «fertig» aus.
+    Nach dem Export-Lauf gehoert deshalb IMMER ein Live-Lauf hinterher.
+    """
     todo = []
+    if os.environ.get("QUELLE") == "live":
+        Q = """query($after:String){ products(first:100, after:$after, query:"status:active"){
+                 pageInfo{ hasNextPage endCursor }
+                 nodes{ id title tags descriptionHtml } } }"""
+        after = None
+        while True:
+            d = gql(Q, {"after": after})
+            if d is None:
+                sys.stderr.write("Seite nicht lesbar — Abbruch statt stiller Luecke.\n")
+                break
+            conn = d["products"]
+            for p in conn["nodes"]:
+                h = p.get("descriptionHtml") or ""
+                w = weg(p.get("tags"))
+                neu_h, n = umschreiben(h, w)
+                if n and neu_h != h:
+                    todo.append((p["id"], p.get("title", ""), w, n, neu_h, h))
+            if not conn["pageInfo"]["hasNextPage"]:
+                break
+            after = conn["pageInfo"]["endCursor"]
+        return todo
     for line in open(EXPORT):
         d = json.loads(line)
         if d.get("status") != "ACTIVE":
             continue
         h = d.get("descriptionHtml") or ""
         w = weg(d.get("tags"))
-        neu, n = umschreiben(h, w)
-        if n and neu != h:
-            todo.append((d["id"], d.get("title", ""), w, n, neu, h))
+        neu_h, n = umschreiben(h, w)
+        if n and neu_h != h:
+            todo.append((d["id"], d.get("title", ""), w, n, neu_h, h))
     return todo
 
 
 def main():
-    if PHASE in ("alle", "produkte"):
+    if True:
         todo = produkte()
         print(f"Produkte mit zu korrigierender Versandaussage: {len(todo)}")
         from collections import Counter
@@ -367,5 +396,75 @@ def schreiben(todo):
     print(f"Produkte geschrieben: {zaehler['ok']}, offen geblieben: {zaehler['fehler']}")
 
 
+
+
+
+# ---------------------------------------------------------------- Metafeld-Phase
+# Das Produkt-Metafeld custom.lieferzeit (json) speicherte {"ch_eu":"10–18","us":"12–22",
+# "tier":"china"} — also die Auslandszusage als DATEN. Sichtbar war sie dort zuletzt nicht
+# (das Theme-Snippet ls-lieferzeit.liquid ist im Live-Theme nicht eingebunden, live geprueft:
+# 0 Vorkommen von «ls-lieferzeit» im ausgelieferten HTML), aber sie war eine gestellte Falle:
+# wer das Snippet je einbindet, zeigt sofort wieder USA-Lieferzeiten an. Deshalb wird der
+# Wert auf {"ch":…, "tier":…, "weg":…} umgestellt.
+# ⚠️ NUR wo das Feld schon existiert und die alte Form traegt. Produkten ohne Feld wird
+# keines angelegt — sonst faende sich der naechste Reiniger vor 31'398 frisch angefassten
+# Produkten und wuesste nicht, warum.
+def metafeld():
+    Q = """query($after:String){ products(first:100, after:$after, query:"status:active"){
+             pageInfo{ hasNextPage endCursor }
+             nodes{ id title tags metafield(namespace:"custom",key:"lieferzeit"){ value } } } }"""
+    MS = ("mutation($mf:[MetafieldsSetInput!]!){ metafieldsSet(metafields:$mf){ "
+          "userErrors{ field message } } }")
+    after = None
+    gelesen = alt_form = geschrieben = fehler = 0
+    stapel = []
+
+    def stapel_schreiben(st):
+        nonlocal geschrieben, fehler
+        if not st:
+            return
+        d = gql(MS, {"mf": st})
+        if d is None or ((d.get("metafieldsSet") or {}).get("userErrors")):
+            fehler += len(st)            # Regel 6: nicht als erledigt werten
+            return
+        geschrieben += len(st)
+
+    while True:
+        d = gql(Q, {"after": after})
+        if d is None:
+            sys.stderr.write("Seite konnte nicht gelesen werden — Abbruch statt Luecke.\n")
+            break
+        conn = d["products"]
+        for p in conn["nodes"]:
+            gelesen += 1
+            mf = p.get("metafield")
+            if not mf or not mf.get("value"):
+                continue
+            if '"ch_eu"' not in mf["value"] and '"us"' not in mf["value"]:
+                continue                  # schon neue Form
+            alt_form += 1
+            w = weg(p.get("tags"))
+            wert = json.dumps({"ch": SPANNE[w], "tier": w, "weg": WEGNAME[w]},
+                              ensure_ascii=False)
+            if DRY:
+                if alt_form <= 5:
+                    print("DRY", p["title"][:45], mf["value"], "→", wert)
+                continue
+            stapel.append({"ownerId": p["id"], "namespace": "custom", "key": "lieferzeit",
+                           "type": "json", "value": wert})
+            if len(stapel) == 25:
+                stapel_schreiben(stapel)
+                stapel = []
+        if not conn["pageInfo"]["hasNextPage"]:
+            break
+        after = conn["pageInfo"]["endCursor"]
+    stapel_schreiben(stapel)
+    print(f"Metafeld: {gelesen} aktive Produkte gelesen, {alt_form} trugen die alte "
+          f"EU/USA-Form, {geschrieben} umgestellt, {fehler} offen geblieben.")
+
+
 if __name__ == "__main__":
-    main()
+    if PHASE in ("alle", "produkte"):
+        main()
+    if PHASE in ("alle", "metafeld"):
+        metafeld()
