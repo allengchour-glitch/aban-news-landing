@@ -301,16 +301,28 @@ const SET=`mutation($i:ProductSetInput!){productSet(synchronous:true,input:$i){p
 const MED=`mutation($id:ID!,$m:[CreateMediaInput!]!){productCreateMedia(productId:$id,media:$m){mediaUserErrors{message}}}`;
 
 // 🎨 Jede Farbvariante bekommt ihr eigenes Bild — aus der Quelle, nicht geraten.
-// Der Weg über `mediaSrc` ist bewusst gewählt: Shopify legt das Medium an UND hängt es an die
-// Variante, und eine tote CJ-URL lässt genau diese eine Variante ohne Bild, statt das ganze
-// Produkt scheitern zu lassen (bei `productSet` mit `files` wäre das Produkt gar nicht erst
-// entstanden — CJ-Pfade sind nachweislich manchmal 404).
+//
+// ⚠️ `mediaSrc` IN `productVariantsBulkUpdate` TUT NICHTS. Das Feld steht im Schema, die
+// Mutation meldet `userErrors: []` — und es entsteht weder ein Medium noch eine Zuordnung
+// (14.08.2026 zweimal live gegengeprüft, einmal mit einer schon vorhandenen und einmal mit
+// einer fremden Bild-URL). Dasselbe stille Nichts wie beim PUT auf die Policies. Der Weg,
+// der WIRKLICH wirkt: `productCreateMedia` liefert die Medien-IDs in der Reihenfolge der
+// Eingabe zurück, danach hängt `mediaId` sie an die Variante — das greift schon im Status
+// UPLOADED, es muss nicht auf READY gewartet werden.
 async function variantenBilder(st,pid,bilder){
  if(!bilder||!Object.keys(bilder).length)return 0;
  const q=await sgql(st,`query($id:ID!){product(id:$id){variants(first:100){nodes{id sku}}}}`,{id:pid});
- const vs=q.data?.product?.variants?.nodes||[];
- const ein=[];
- for(const v of vs){const u=bilder[v.sku]; if(u)ein.push({id:v.id,mediaSrc:[u]});}
+ const vs=(q.data?.product?.variants?.nodes||[]).filter(v=>bilder[v.sku]);
+ if(!vs.length)return 0;
+ // Dieselbe URL kann zu mehreren Varianten gehören (Farbe × Grösse) — dann EIN Medium,
+ // mehrfach angehängt, statt fünf gleicher Bilder in der Galerie.
+ const urls=[...new Set(vs.map(v=>bilder[v.sku]))];
+ const cm=await sgql(st,`mutation($id:ID!,$m:[CreateMediaInput!]!){productCreateMedia(productId:$id,media:$m){media{id} mediaUserErrors{message}}}`,
+                     {id:pid,m:urls.map(u=>({originalSource:u,mediaContentType:'IMAGE'}))});
+ const neu=cm.data?.productCreateMedia?.media||[];
+ if(neu.length!==urls.length)return 0;          // Zuordnung nur über die Reihenfolge — bei
+ const zu={}; urls.forEach((u,i)=>zu[u]=neu[i].id);   // Lücke lieber gar nichts anhängen
+ const ein=vs.map(v=>({id:v.id,mediaId:zu[bilder[v.sku]]}));
  let n=0;
  for(let i=0;i<ein.length;i+=25){
   const teil=ein.slice(i,i+25);
