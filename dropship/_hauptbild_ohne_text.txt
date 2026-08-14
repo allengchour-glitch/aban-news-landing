@@ -24830,3 +24830,15 @@ gid://shopify/Product/15494984499585	schon-sauber	0
 gid://shopify/Product/15494984565121	schon-sauber	0
 gid://shopify/Product/15494984597889	schon-sauber	0
 gid://shopify/Product/15494984630657	schon-sauber	0
+gid://shopify/Product/15495010845057	alle-mit-text	-
+gid://shopify/Product/15495010877825	alle-mit-text	-
+gid://shopify/Product/15495010910593	schon-sauber	1
+gid://shopify/Product/15495012417921	schon-sauber	0
+gid://shopify/Product/15495012548993	schon-sauber	2
+gid://shopify/Product/15495012647297	schon-sauber	0
+gid://shopify/Product/15495012680065	schon-sauber	0
+gid://shopify/Product/15495012712833	schon-sauber	0
+gid://shopify/Product/15495012745601	schon-sauber	0
+gid://shopify/Product/15495013892481	schon-sauber	0
+gid://shopify/Product/15495014515073	schon-sauber	0
+gid://shopify/Product/15495014580609	schon-sauber	0
