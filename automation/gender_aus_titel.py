@@ -111,9 +111,36 @@ def gql(query, variables=None, versuche=5):
     return None
 
 
+def kandidaten_live(seit):
+    """Kandidaten direkt aus dem Shop holen — für Ware, die JÜNGER ist als der
+    Export-Schnappschuss. Genau das war nötig: zwei Tage nach dem Export standen
+    bereits 162 neue Produkte mit falschem gender im Katalog, weil der Importer
+    den Fehler bis zur Reparatur täglich weiter erzeugte."""
+    q = ('query($c:String){products(first:100,after:$c,query:"status:active '
+         'created_at:>=%s"){pageInfo{hasNextPage endCursor}nodes{id title '
+         'm:metafield(namespace:"%s",key:"%s"){value}}}}' % (seit, NS, KEY))
+    ids, c = [], None
+    while True:
+        d = gql(q, {'c': c})
+        if d is None:
+            print('  ! Live-Suche ohne Antwort — Rest bleibt offen')
+            break
+        p = d['products']
+        for n in p['nodes']:
+            soll = geschlecht_aus_titel(n['title'])
+            if soll and (n.get('m') or {}).get('value') != soll:
+                ids.append(n['id'])
+        if not p['pageInfo']['hasNextPage']:
+            break
+        c = p['pageInfo']['endCursor']
+    return ids
+
+
 def kandidaten():
     """IDs aus dem Export vorauswählen — die Wahrheit kommt danach live."""
     ids = []
+    if not os.path.exists(EXPORT):
+        return ids
     for line in open(EXPORT):
         try:
             d = json.loads(line)
@@ -134,8 +161,12 @@ def main():
     erledigt = set()
     if os.path.exists(LEDGER):
         erledigt = set(open(LEDGER).read().split())
-    offen = [i for i in kandidaten() if i not in erledigt]
-    print(f'Kandidaten aus dem Export: {len(offen)} offen ({len(erledigt)} im Ledger)')
+    kand = kandidaten()
+    seit = next((a.split('=', 1)[1] for a in sys.argv if a.startswith('--seit=')), None)
+    if seit:
+        kand += kandidaten_live(seit)
+    offen = [i for i in dict.fromkeys(kand) if i not in erledigt]
+    print(f'Kandidaten: {len(offen)} offen ({len(erledigt)} im Ledger)')
 
     led = None if DRY else open(LEDGER, 'a')
     geaendert = zaehler_stimmt = zaehler_weg = 0
