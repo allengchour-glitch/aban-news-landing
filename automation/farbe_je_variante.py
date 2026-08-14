@@ -69,6 +69,16 @@ FEHLTREFFER, die der Probelauf zeigte und die abgestellt wurden:
 Nicht angefasst: «Handschuh», «Lichterkette», «Straps» — sie sind keine Farbwerte und
 fallen durch das Lexikon, wie es die Hausregel zu deutschen Zusammensetzungen verlangt.
 
+ERGEBNIS DES LAUFS VOM 14.08.2026, gegen einen ZWEITEN frischen Voll-Export geprüft:
+    9'866 Produkte repariert (1 Throttle-Abbruch, im Nachlauf erledigt)
+        0 mehrfarbige Produkte tragen noch ein Produkt-`color` — vorher 9'866
+  172'900 Varianten melden jetzt ihre eigene Farbe
+    3'552 Produkte ohne Variantenfarbe: 1'620 aus dieser Reparatur (kein Wert war eine
+          Farbe) plus 1'932, die nie ein Metafeld hatten und bewusst unberührt blieben
+      162 Produkte melden weiterhin EINE Farbe — dort war die Mehrfarbigkeit nur
+          scheinbar («L-Schwarz», «Schwarz-2XL», «Yellow-0XL» sind eine Farbe in
+          fünf Grössen). Genau diese Produkte melden jetzt «Schwarz» statt «S-Black».
+
 BEDIENUNG
 ---------
     DRY=1 python3 automation/farbe_je_variante.py      # nur zählen und zeigen
