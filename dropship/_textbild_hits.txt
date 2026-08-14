@@ -6523,3 +6523,5 @@ gid://shopify/Product/15447605313921	16->0	Oxford Langarmhemd für Herren, Baumw
 gid://shopify/Product/15447627137409	9->3	2-in-1 Mini Glätteisen für Pony & kurze Haare
 gid://shopify/Product/15447637197185	11->1	Miao Xianer Katzen-Kletterbaum „Springende Pflanze“
 gid://shopify/Product/15447878762881	21->0	Babyphone mit HD-Kamera und App-Zugriff
+gid://shopify/Product/15447955964289	24->0	Kurzarm-Shirt aus reiner Baumwolle
+gid://shopify/Product/15447962091905	91->1	Partnerlook Herbst Sweatshirts für Eltern & Kinder
