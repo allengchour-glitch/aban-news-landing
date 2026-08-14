@@ -734,3 +734,5 @@ gid://shopify/Product/15497449505153	nicht-versendbar	Glossy Yoga-Gewichtsring
 gid://shopify/Product/15497435120001	ok	Bauchtrainer mit automatischem Rückzug
 gid://shopify/Product/15497425355137	ok	DIY Muskel- und Fitnesstrainer für die Wand
 gid://shopify/Product/15497437905281	ok	Smartes Türschloss ohne Bohren
+gid://shopify/Product/15497464119681	nicht-versendbar	Faltbarer Wäschekorb für Schlafzimmer
+gid://shopify/Product/15497464414593	ok	LED Photonengerät zur Hautverjüngung

@@ -6655,3 +6655,8 @@ gid://shopify/Product/15451894940033	9->1	Farbiger Zahnreinigungs- und Kauspielb
 gid://shopify/Product/15451913552257	96->2	6-in-1 Lockenstab & Glätteisen mit LED-Anzeige
 gid://shopify/Product/15451916206465	11->3	Rotlicht Vibrations-Massagekamm für vitales Haar
 gid://shopify/Product/15451917418881	9->0	Katzenbaum mit 4 Ebenen, Mond & Sterne – Lila
+gid://shopify/Product/15452518154625	17->0	Partner-Hoodie «Love» für Paare
+gid://shopify/Product/15452675244417	27->0	Wasserfeste Maniküre
+gid://shopify/Product/15452677636481	30->2	2-in-1 Tierpflegeshampoo
+gid://shopify/Product/15452678717825	91->2	Erhöhtes Futtergeschirr
+gid://shopify/Product/15452678816129	15->0	Hunde-Schnüffelspiel · Futter-Brett
