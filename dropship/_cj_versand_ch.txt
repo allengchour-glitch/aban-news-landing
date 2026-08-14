@@ -728,3 +728,9 @@ gid://shopify/Product/15496704950657	nicht-versendbar	Smart Music Boxing Maschin
 gid://shopify/Product/15497424732545	nicht-versendbar	Ellipsentrainer für Zuhause
 gid://shopify/Product/15497423257985	nicht-versendbar	UV-Desinfektionsschrank für Beauty-Tools
 gid://shopify/Product/15497430794625	ok	Retro Rucksack aus Crazy Horse Leder
+gid://shopify/Product/15497440035201	nicht-versendbar	Schmaler Schubladen-Organizer
+gid://shopify/Product/15497435414913	nicht-versendbar	Heimtrainer Spinning-Fitnessfahrrad
+gid://shopify/Product/15497449505153	nicht-versendbar	Glossy Yoga-Gewichtsring
+gid://shopify/Product/15497435120001	ok	Bauchtrainer mit automatischem Rückzug
+gid://shopify/Product/15497425355137	ok	DIY Muskel- und Fitnesstrainer für die Wand
+gid://shopify/Product/15497437905281	ok	Smartes Türschloss ohne Bohren

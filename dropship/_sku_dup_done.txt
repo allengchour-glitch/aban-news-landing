@@ -567,3 +567,12 @@ gid://shopify/Product/15497150923137	CJ-1709091441500237824	Halsband mit Metalls
 gid://shopify/Product/15497151218049	CJ-1707376982645813248	Halsband mit Nieten für grosse Hunde
 gid://shopify/Product/15497151447425	CJ-1707204325002448896	Smart Bark Stopper
 gid://shopify/Product/15497236185473	CJ-1659900708923121664	Halsband Katze Fragmented Flower
+gid://shopify/Product/15497439281537	CJ-2602100525461616900	Retro Karten- und Zigarettenetui aus Metall
+gid://shopify/Product/15497433907585	CJ-7332112D-19EE-485A-9E9F-F97DE9D0933C	Zabuton Meditationskissen aus Stroh
+gid://shopify/Product/15497434038657	CJ-47F1C951-624E-483E-82AB-731703753F04	Elastischer Sofaüberzug mit Muster
+gid://shopify/Product/15497434300801	CJ-1B04C85B-5CBD-4292-B3E5-AEF7488B0F7E	Sofa Kissen geometrische Abstraktion
+gid://shopify/Product/15497434464641	CJ-9326A7CA-F2AF-468C-A442-2393D95CA6CE	Kissenbezug mit grüner Blattstickerei
+gid://shopify/Product/15497434562945	CJ-A01D7A73-97F9-4323-B698-98C1EE28C80A	Bestickter Kissenbezug Sofa
+gid://shopify/Product/15497434661249	CJ-8F62A542-D589-4A46-93A0-24E4EDAEACB2	Sofa-Kissenbezug Satin
+gid://shopify/Product/15497434825089	CJ-1777974329062469632	Silikon-Nackenkissen für Shampoobecken
+gid://shopify/Product/15497434890625	CJ-1777355232654139392	Bettkeil Kissen mit Tasche
