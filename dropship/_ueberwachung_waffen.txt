@@ -1,0 +1,18 @@
+15448873075073	ueberwachung	wanze-magnetisch-platziert	google-kanal-entfernt,tag:verdeckte-ueberwachung	Magnetischer Sprachrekorder mit 60h Akku
+15450169147777	ueberwachung	personenortung-mit-mithoeren	tag:verdeckte-ueberwachung	Echtzeit-GPS-Tracker
+15450832699777	ueberwachung	personenortung-mit-mithoeren	tag:verdeckte-ueberwachung	Mini GPS Tracker mit Echtzeit-Ortung
+15454473388417	waffe	waffe-gegen-menschen	google-kanal-entfernt,tag:waffengesetz-verboten,draft	Selbstverteidigungswerkzeug
+15463465943425	waffe	waffe-gegen-menschen	google-kanal-entfernt,tag:waffengesetz-verboten,draft	PC Defense Stick Gehstock-Paar
+15463586726273	waffe	waffe-gegen-menschen	google-kanal-entfernt,tag:waffengesetz-verboten,draft	Rutschfester Edelstahl-Übungsstab mit Bambusgelenk
+15477388280193	waffe	ch-verbotene-waffe	google-kanal-entfernt,tag:waffengesetz-verboten,draft	Schmetterlings-Schwert und Bambus-Gelenk Trainingsmesser
+15479450993025	ueberwachung	spycam-modellreihe	google-kanal-entfernt,tag:verdeckte-ueberwachung	SQ13 Wireless Mini-Kamera Full HD
+15480269111681	ueberwachung	kamera-zum-diskreten-platzieren	google-kanal-entfernt,tag:verdeckte-ueberwachung	2 Millionen Infrarot-Nachtsichtkamera
+15480273207681	ueberwachung	kamera-zum-diskreten-platzieren	google-kanal-entfernt,tag:verdeckte-ueberwachung	A9 Mini-WLAN-Kamera
+15480279630209	ueberwachung	kamera-getarnt-als-alltagsgegenstand	google-kanal-entfernt,tag:verdeckte-ueberwachung	Full-HD-Sonnenbrille mit integrierter Kamera
+15480280383873	ueberwachung	spycam-modellreihe	tag:verdeckte-ueberwachung	SQ11 Mini-Kamera mit Full HD und Nachtsicht
+15480282579329	ueberwachung	spycam-modellreihe	tag:verdeckte-ueberwachung	SQ11 Full HD Mini-Kamera mit Nachtsicht
+15480484168065	waffe	elektroschock-als-spielzeug	google-kanal-entfernt,tag:waffe-pruefen	Cheetah Piercing Ring Elektroschock-Spielzeug
+15491395780993	ueberwachung	kamera-zum-diskreten-platzieren	google-kanal-entfernt,tag:verdeckte-ueberwachung	HD Video Recorder mit Weitwinkelkamera
+15493778899329	waffe	waffe-gegen-menschen	tag:waffe-pruefen	Einziehbare Selbstverteidigungswaffe für Frauen
+15495190020481	waffe	waffe-gegen-menschen	google-kanal-entfernt,tag:waffengesetz-verboten,draft	Automatischer Feder-Abwehrstock
+15496498184577	ueberwachung	kamera-zum-diskreten-platzieren	google-kanal-entfernt,tag:verdeckte-ueberwachung	Mini HD-Überwachungskamera mit Nachtsicht

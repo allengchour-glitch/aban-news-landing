@@ -8,6 +8,7 @@ import fs from 'node:fs';
 import {googleKategorie} from './google_kategorie.mjs';
 import { produktSaeubern } from './marken_filter.mjs';
 import { medizinZweck } from './medizin_zweck.mjs';
+import { heikelZweck } from './heikel_zweck.mjs';
 const SHOP='au3j0y-hq.myshopify.com',API='2025-01';
 const CID=process.env.SHOPIFY_CLIENT_ID,CSEC=process.env.SHOPIFY_CLIENT_SECRET;
 const CJT=(process.env.CJ_TOKEN||'').trim();
@@ -380,7 +381,17 @@ for(const [cat,label] of grp.cats){
    // Die Ware wird NICHT verworfen — sie kommt als Entwurf in den Shop und lässt sich mit
    // Konformitätsunterlagen jederzeit freischalten. Muster: automation/medizin_zweck.json.
    const med=medizinZweck(title, g.html);
-   if(DRY){console.log(`  [DRY]${med?' ⚕️DRAFT('+med.grund+')':''} CHF${chf(p.sellPrice)} | ${title}`);got++;total++;continue;}
+   // 🕵️ VERDECKTE ÜBERWACHUNG UND WAFFEN (14.08.2026), derselbe Fehler eine Warengruppe
+   // weiter. Der Säuberungslauf vom 12.08. nahm 88 Produkte aus dem Google-Kanal; zwei Tage
+   // später standen 13 wieder drin, zwei davon frisch importiert. Google führt verdeckte
+   // Überwachung unter «Dishonest behavior» — die Sanktion ist die Sperrung des KONTOS, nicht
+   // die Ablehnung des Artikels, und Google ist der einzige Kanal mit belegten Verkäufen.
+   // Der Reiniger allein reicht deshalb nicht: was der Importer heute publiziert, findet er
+   // morgen wieder vor. Muster: automation/heikel_zweck.json (nach der FUNKTION, nicht nach
+   // der Produktbezeichnung des Verkäufers — «Abwehrstock» statt Teleskopschlagstock,
+   // «lässt sich diskret platzieren» statt «versteckte Kamera»).
+   const heik=heikelZweck(title, g.html);
+   if(DRY){console.log(`  [DRY]${med?' ⚕️DRAFT('+med.grund+')':''}${heik?' 🕵️'+(heik.verboten?'DRAFT':'KEIN-KANAL')+'('+heik.grund+')':''} CHF${chf(p.sellPrice)} | ${title}`);got++;total++;continue;}
    const slug=title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,46)+'-'+String(p.pid).slice(-6);
    const html=`${g.html}\n${TRUST}`;
    const fash=(grp.fashion&&!FAST)?buildFashion(d):null; // FAST: keine Varianten-Details → Standard-Variante
@@ -492,6 +503,18 @@ for(const [cat,label] of grp.cats){
    // einzigen mit belegten Verkäufen. Nicht publizieren, Fall im Log benennen.
    if(med){ console.log(`  ⚕️ medizinische Zweckbestimmung (${med.grund}) → DRAFT, nicht publiziert: ${title.slice(0,44)}`);
             fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid)); got++; total++; continue; }
+   // Nach Schweizer Waffenrecht verbotene Ware (Art. 4 Abs. 1 Bst. c-e WG: Schmetterlings-
+   // messer, Schlagstock/Tonfa/Nunchaku, Elektroschockgeraet) wird gar nicht erst aktiv
+   // geschaltet — bereits das ANBIETEN ist nach Art. 5 verboten. Alles andere Heikle bleibt
+   // im Shop kaufbar, kommt aber in KEINEN Kanal: der Kanal ist das Risiko, nicht das Regal.
+   if(heik){
+    const tag = heik.verboten ? 'waffengesetz-verboten'
+              : (heik.gruppe==='waffe' ? 'waffe-pruefen' : 'verdeckte-ueberwachung');
+    await sgql(st,`mutation($i:ProductInput!){productUpdate(input:$i){userErrors{message}}}`,
+               {i:{id:pid, tags:[...tagsFinal, tag], ...(heik.verboten?{status:'DRAFT'}:{})}});
+    console.log(`  🕵️ ${heik.gruppe} (${heik.grund}) → ${heik.verboten?'DRAFT':'kein Kanal'}, Tag ${tag}: ${title.slice(0,40)}`);
+    fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid)); got++; total++; continue;
+   }
    await publishVerified(st,pid);
  if(d.productVideo&&/^https/.test(d.productVideo))await attachVideo(st,pid,d.productVideo,p.pid);
    fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid));
