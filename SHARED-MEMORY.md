@@ -8,6 +8,21 @@
 
 ---
 
+## 🎨 2026-08-14 — «Selbst gestalten» ist nicht mehr ohne Design kaufbar (Theme!)
+**Wer das anfasst, bitte lesen, bevor er die Kaufknöpfe ändert.** Alle 33 aktiven POD-Produkte
+liessen sich über «In den Warenkorb legen», über «Mit shop kaufen» und über das Schnellkauf-«+»
+auf der Kachel OHNE Druckdatei bestellen (live belegt: /cart/add.js → 200, properties = {}).
+Geschlossen im Theme (`gid://…/187533001089`), gesteuert von EINEM Schnipsel
+**`snippets/lspod-designzwang.liquid`** (Treffer = Beschreibung enthält `lspod-designer` oder
+Tag `wunschdesign`/`selbst-gestalten`). Geändert: `blocks/buy-buttons.liquid` (Kaufknopf,
+Express-Bezahlknopf und Mengenfeld entfallen, dafür Sprungknopf zum Gestalter),
+`sections/product-information.liquid` (klebende Kaufleiste weg), `snippets/quick-add.liquid`
+(Schnellkauf-Taste weg), `snippets/cart-summary.liquid` (Kasse gesperrt, solange eine POD-Zeile
+ohne Design im Warenkorb liegt). **Das `<form>` mit `name="id"` MUSS stehen bleiben** —
+`pod/designer.js` liest daraus die gewählte Variante; ohne das Formular bestellt der Editor
+stumm die erste Grösse. Wiederherstellen nach einem Theme-Update:
+`python3 automation/pod_designzwang.py` (idempotent, läuft täglich über `fixer_keepalive.sh`).
+
 ## 🧹 2026-07-07 (Nacht) — SORTIER-GROSSPUTZ (User: «sortiere unbedingt alles von A bis Z»)
 - **Röcke-Skandal behoben:** sub-roecke filterte per TITLE CONTAINS «Rock» → Gleitmittel «ROCK ME!»,
   Werkzeugkoffer «GT Line ROCK», Solarlampe «ROCKY» etc. lagen zwischen Röcken. Fix: 52 echte Röcke
