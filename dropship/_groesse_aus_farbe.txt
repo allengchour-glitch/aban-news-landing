@@ -1,0 +1,19 @@
+gid://shopify/Product/15447597482369	rename	Farbe & Grösse	Einfarbiges Oversize-Kleid mit One-Shoulder-Schnitt
+gid://shopify/Product/15447635984769	split	Ausführung+Grösse	Sternenhimmel Katzenbett – Geborgenheit für jede Jahreszeit
+gid://shopify/Product/15447923196289	split	Farbe+Grösse	Reithandschuhe aus Leder für Damen
+gid://shopify/Product/15447926931841	split	Farbe+Grösse+Ausführung	Elegante Damen-Handschuhe aus Lammleder
+gid://shopify/Product/15447930503553	rename	Farbe & Grösse	Outdoor Schwimmhandschuhe rutschfest
+gid://shopify/Product/15447942136193	split	Farbe+Grösse	Elegantes Chiffon-Tuch mit Magnetverschluss
+gid://shopify/Product/15447953179009	split	Farbe+Grösse	Kinder-Sweatshirt-Set mit Buchstaben-Print
+gid://shopify/Product/15447953342849	split	Farbe+Grösse	Mutter-Tochter Sweater für Herbst & Winter
+gid://shopify/Product/15447958192513	split	Farbe+Grösse+Ausführung	Langer Daunenmantel für Herren mit Kapuze
+gid://shopify/Product/15447960158593	split	Ausführung+Grösse	Kinder-Outfit im chinesischen Stil
+gid://shopify/Product/15447960682881	split	Farbe+Grösse	Koreanische Familien-Outfits für Eltern und Kinder
+gid://shopify/Product/15447962321281	split	Farbe+Grösse	Baby Mädchen Herbst-Outfit Gestreift & Schriftzug
+gid://shopify/Product/15447962648961	split	Ausführung+Grösse	Kinder Patchwork Rollkragenpullover
+gid://shopify/Product/15447962812801	split	Ausführung+Grösse	Dopamine Seaside Tyndall-Effekt Rock mit Blumenprint
+gid://shopify/Product/15447963500929	split	Farbe+Grösse+Ausführung	Gefütterter Hoodie und Trainerhosen Set im American Style
+gid://shopify/Product/15447965401473	split	Farbe+Grösse	Kurzarm-Shirt & weite Hose Set für Kinder
+gid://shopify/Product/15447967433089	split	Farbe+Grösse	Elastischer Pyjama für Kinder & Erwachsene
+gid://shopify/Product/15447967924609	split	Ausführung+Grösse	Hawaii Familien-Look für 4 Personen
+gid://shopify/Product/15447968547201	rename	Ausführung & Grösse	Pyjama-Set für die ganze Familie

@@ -32,11 +32,18 @@ const chf=(usd,grams)=>{const u=parseFloat((''+usd).split('--')[0])||0;
 const DECOLOR={apricot:'Aprikose',pink:'Pink','light pink':'Rosa','hot pink':'Pink','sky blue':'Himmelblau','light blue':'Hellblau','dark blue':'Dunkelblau','wine red':'Weinrot','rose red':'Rosarot','army green':'Armeegrün','light green':'Hellgrün','dark green':'Dunkelgrün','light grey':'Hellgrau','dark grey':'Dunkelgrau','navy blue':'Marineblau',black:'Schwarz',white:'Weiss',red:'Rot',blue:'Blau',green:'Grün',yellow:'Gelb',grey:'Grau',gray:'Grau',beige:'Beige',brown:'Braun',navy:'Marineblau',khaki:'Khaki',purple:'Lila',violet:'Violett',orange:'Orange',rose:'Rosé',coffee:'Kaffeebraun',silver:'Silber',gold:'Gold',champagne:'Champagner',ivory:'Elfenbein',burgundy:'Bordeaux',camel:'Camel',turquoise:'Türkis',mint:'Mintgrün',lavender:'Lavendel',cream:'Creme',nude:'Nude','dark pink':'Dunkelrosa','deep blue':'Dunkelblau','light yellow':'Hellgelb','fluorescent green':'Neongrün','light purple':'Helllila','dark brown':'Dunkelbraun',multicolor:'Bunt',multi:'Bunt'};
 const SIZESET=new Set(['XS','S','M','L','XL','XXL','XXXL','2XL','3XL','4XL','5XL','6XL','ONE SIZE','ONESIZE','FREE SIZE','FREESIZE','F']);
 const deColor=c=>{const t=(c||'').trim();return DECOLOR[t.toLowerCase()]||t;};
-const isSize=s=>{const u=(s||'').trim().toUpperCase();return SIZESET.has(u)||/^\d{1,2}$/.test(u)||/^(EU|US|UK)?\s?\d{2}$/.test(u);};
+// Reine Buchstabengrösse — strenger als isSize(), weil dieser Test auch auf den VORDEREN
+// Teil eines variantKey angewendet wird («S-Weiss»). «3L» wäre dort 3 Liter (E-Scooter-
+// Falttasche) und «10 M» 10 Meter, deshalb Ziffer-Formen nur mit X (14.08.2026).
+const LETTERSIZE=/^(?:[0-9]X{1,5}[SL]|X{1,5}[SL]|S|M|L)$/i;
+// Körper-/Schuhgrösse in cm («90cm», «73CM») ist bei CJ-Kinderware der Normalfall.
+const CMSIZE=/^(\d{2,3})\s*cm$/i;
+const isSize=s=>{const u=(s||'').trim().toUpperCase();return SIZESET.has(u)||CMSIZE.test(u)||/^\d{1,2}$/.test(u)||/^(EU|US|UK)?\s?\d{2}$/.test(u);;};
 // «FREE SIZE»/«ONE SIZE» ist die Lieferantenformulierung. Im Schweizer Handel heisst das
 // «Einheitsgrösse»; «Free Size» liest sich auf Deutsch sogar wie «Grösse gratis» (14.08.2026).
 const EINHEITSGROESSE=new Set(['ONE SIZE','ONESIZE','FREE SIZE','FREESIZE','F']);
-const deSize=s=>{const u=(s||'').trim().toUpperCase();return EINHEITSGROESSE.has(u)?'Einheitsgrösse':u;};
+const deSize=s=>{const t=(s||'').trim(),u=t.toUpperCase();const cm=t.match(CMSIZE);
+ return EINHEITSGROESSE.has(u)?'Einheitsgrösse':(cm?(+cm[1])+' cm':u);};
 // CJ übersetzt das chinesische 码 (= Grösse) wörtlich mit «yards»: «Gold-17 Yards» ist die
 // Schuhgrösse 17, «Gray-160 Yards» die Körpergrösse 160 cm. Die Ziffern MÜSSEN unmittelbar vor
 // dem Wort stehen — sonst greift das Muster in «Vineyard» und «lanyard» (14.08.2026).
@@ -60,12 +67,26 @@ const SORDER=['XS','S','M','L','XL','XXL','2XL','3XL','4XL','5XL','6XL'];
 const farbeSauber=c=>{const t=(c||'').trim();return !!t&&t.length<=40
   &&!/\d|\bStyle\b|\bPCS?\b|\bpair\b|\bSet\b|\bYards?\b|\bcm\b|\bmm\b|\bml\b|\bInch\b|\btype\b|Picture\s*Color|Random|Assorted/i.test(t)
   &&!/^(?:XXS|XS|S|M|L|XL|XXL)\s*[-–\/]/i.test(t);};
-function parseVar(v){const k=(v.variantKey||'').trim();const i=k.lastIndexOf('-');let color=null,size=null;
+// ⚠️ Der CJ-variantKey trägt die Grösse NICHT immer hinten. Bis 14.08.2026 wurde nur am
+// LETZTEN Bindestrich gespalten und nur der hintere Teil auf eine Grösse geprüft — «S-Weiss»
+// fiel dadurch komplett als «Farbe» durch. Ergebnis: 262 aktive Produkte mit einem einzigen
+// Dropdown «Farbe», in dem die Kundin ihre Grösse suchen musste (beim Yoga-Tanktop 44
+// Einträge statt 4 Grössen × 11 Farben). Jetzt drei Formen: Farbe-Grösse, GRÖSSE-Farbe und
+// Farbe-GRÖSSE-Ausführung («Beige-L-Vest»). «M» mit Ziffer davor bleibt Meter, keine Grösse.
+const METERKEY=/\d\s*[.,x×]?\s*\d*\s*M\b/i;
+function parseVar(v){const k=(v.variantKey||'').trim();const i=k.lastIndexOf('-');let color=null,size=null,extra=null;
  const ym=k.match(YARDS);
+ const p3=k.split('-').map(x=>x.trim());
  if(ym){color=ym[1].trim()||null;size='Gr. '+ym[2]+(ym[3]?'/'+ym[3]:'');}
- else if(i>0){const a=k.slice(0,i).trim(),b=k.slice(i+1).trim();if(isSize(b)){color=a;size=deSize(b);}else color=k;}
+ else if(p3.length===3&&p3.every(Boolean)&&LETTERSIZE.test(p3[1])&&!METERKEY.test(k)){
+   color=p3[0];size=deSize(p3[1]);extra=p3[2];}
+ else if(i>0){const a=k.slice(0,i).trim(),b=k.slice(i+1).trim();
+   const j=k.indexOf('-'),a1=k.slice(0,j).trim(),b1=k.slice(j+1).trim();
+   if(isSize(b)){color=a;size=deSize(b);}
+   else if(LETTERSIZE.test(a1)&&b1.length>1&&!/^\d/.test(b1)&&!METERKEY.test(k)){size=deSize(a1);color=b1;}
+   else color=k;}
  else if(isSize(k))size=deSize(k);else color=k||null;
- return {color:color?deColor(color):null,size:size||null,price:v.variantSellPrice||v.variantSellPrice===0?v.variantSellPrice:v.sellPrice,sku:v.variantSku||''};}
+ return {color:color?deColor(color):null,size:size||null,extra:extra||null,price:v.variantSellPrice||v.variantSellPrice===0?v.variantSellPrice:v.sellPrice,sku:v.variantSku||''};}
 function buildFashion(d){
  const vs=(d.variants||[]).map(parseVar).filter(v=>v.color||v.size); if(!vs.length)return null;
  const colors=[...new Set(vs.map(v=>v.color).filter(Boolean))];
@@ -82,10 +103,17 @@ function buildFashion(d){
  const cMap=(codeOpt||zaehlOpt)
    ?new Map(colors.map((c,i)=>[c,(nurFarbe?'Farbton ':'Modell ')+(i+1)])):null;
  const cVal=c=>cMap?(cMap.get(c)||c):c;
+ // Dreiteilige variantKeys («Beige-L-Vest», «Blue-M-Thin») tragen hinten eine echte Wahl.
+ // Ohne eigene Option würden «…-Thin» und «…-Thick» beim Dedup zu EINER Variante verschmelzen —
+ // die Kundin verlöre die Wahl, statt sie besser zu sehen (14.08.2026).
+ const extras=[...new Set(vs.map(v=>v.extra).filter(Boolean))];
+ const useE=extras.length>1&&useC&&useS;              // Shopify erlaubt höchstens 3 Optionen
+ const eName=cName==='Ausführung'?'Variante':'Ausführung';
  const opts=[]; if(useC)opts.push({name:cName,values:colors.map(cVal)}); if(useS)opts.push({name:'Grösse',values:sizes});
+ if(useE)opts.push({name:eName,values:extras});
  if(!opts.length)return null;
  const seen=new Set(),variants=[];
- for(const v of vs){const ov=[]; if(useC)ov.push({optionName:cName,name:cVal(v.color||colors[0])}); if(useS)ov.push({optionName:'Grösse',name:v.size||sizes[0]});
+ for(const v of vs){const ov=[]; if(useC)ov.push({optionName:cName,name:cVal(v.color||colors[0])}); if(useS)ov.push({optionName:'Grösse',name:v.size||sizes[0]}); if(useE)ov.push({optionName:eName,name:v.extra||extras[0]});
   const key=ov.map(x=>x.name).join('|'); if(seen.has(key))continue; seen.add(key);
   // ⚠️ FARBE GEHÖRT AN DIE VARIANTE, sobald es mehr als eine gibt (14.08.2026).
   // Das Produkt-Metafeld `color` liegt auf PRODUKTebene; im Google-Feed ist aber jede

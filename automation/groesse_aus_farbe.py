@@ -212,6 +212,12 @@ def zerlege(werte):
 
 def ehrlicher_name(werte):
     """T3: Die Option heisst «Farbe», enthält aber auch Grössen. Ehrlich benennen."""
+    # Auch beim blossen Umbenennen gilt der Meter-Vorbehalt: «Beige-1.2 M» und
+    # «1 M-Pink Metal 100W CC» treffen das Grössen-Muster nur, weil M dort METER heisst.
+    # Der Wert mag zufällig trotzdem eine Grösse sein (Sonnensegel 2×3 m) — aber ein Etikett
+    # auf falscher Begründung ist kein Ergebnis. Lieber unangetastet lassen.
+    if any(METER.search(w) for w in werte):
+        return None
     treffer = [SEG.search(w) for w in werte]
     if sum(1 for t in treffer if t) < len(werte) * 0.7:
         return None
@@ -223,6 +229,11 @@ def ehrlicher_name(werte):
         reste.append((w[:a] + " " + w[b:]).strip(" -–"))
         if a <= len(w) / 2:
             vorne += 1
+    # Bleibt nach dem Herausrechnen der Grösse überall DERSELBE Rest («XS Long Ladder»,
+    # «S Long Ladder»), gibt es gar keine zweite Wahl — das Feld ist reine Grössenwahl.
+    # «Grösse & Farbe» würde dort eine Farbwahl behaupten, die es nicht gibt.
+    if len(set(reste)) < 2:
+        return "Grösse"
     ander = "Farbe" if farbig(reste) else "Ausführung"
     return f"Grösse & {ander}" if vorne > len(reste) / 2 else f"{ander} & Grösse"
 
@@ -263,14 +274,23 @@ def main():
             p = gql(Q_PROD, {"id": pid})["product"]
         except Fehler as e:
             print(f"FEHLER  {pid} {titel[:40]} :: {e}"); zaehl["fehler"] += 1; continue
-        if not p or p["status"] != "ACTIVE" or len(p["options"]) != 1:
-            zaehl["aus"] += 1; continue                     # live schon repariert / geändert
-        opt = p["options"][0]
-        if opt["name"].strip().lower() not in ("farbe", "color", "colour"):
-            zaehl["aus"] += 1; continue
+        if not p or p["status"] != "ACTIVE":
+            zaehl["aus"] += 1; continue                     # live schon geändert
+        # Die zusammengeklebte Option ist die, deren Werte noch dem Muster entsprechen. Sie so zu
+        # SUCHEN statt «genau eine Option» zu verlangen, macht den Lauf wiederaufnehmbar: bricht
+        # der Container zwischen «Option angelegt» und «Varianten umgehängt» ab (passiert hier
+        # ständig), findet der nächste Lauf das halbfertige Produkt wieder statt es zu übergehen.
+        opt = None
+        for o in p["options"]:
+            w = [v["name"] for v in o["optionValues"]]
+            if len(w) >= 2 and (zerlege(w)[0] or ehrlicher_name(w)):
+                opt = o; break
+        if opt is None:
+            zaehl["aus"] += 1; continue                     # live schon repariert
         werte = [v["name"] for v in opt["optionValues"]]
         vars_ = p["variants"]["nodes"]
-        if len(vars_) != len(werte):
+        if len({v["value"] for x in vars_ for v in x["selectedOptions"]
+                if v["name"] == opt["name"]}) != len(werte):
             zaehl["aus"] += 1; continue                     # Varianten passen nicht zu den Werten
 
         plan, mp = zerlege(werte)
@@ -281,22 +301,30 @@ def main():
             if not SCHARF:
                 zaehl["split"] += 1; continue
             try:
-                # 1. fehlende Optionen anlegen (die bestehende «Farbe» wird umbenannt/weiterbenutzt)
+                ids = {o["name"]: o["id"] for o in p["options"]}
+                # 1. fehlende Optionen anlegen (die bestehende Option wird umbenannt/weiterbenutzt);
+                #    bei einem wiederaufgenommenen Produkt sind manche davon schon da.
                 anlegen = [{"name": n, "position": i + 2, "values": [{"name": w} for w in v]}
-                           for i, (n, v) in enumerate(plan[1:])]
-                r = gql(M_OPTS, {"p": pid, "o": anlegen})["productOptionsCreate"]
-                if r["userErrors"]:
-                    raise Fehler(json.dumps(r["userErrors"])[:250])
+                           for i, (n, v) in enumerate(plan[1:]) if n not in ids]
+                if anlegen:
+                    r = gql(M_OPTS, {"p": pid, "o": anlegen})["productOptionsCreate"]
+                    if r["userErrors"]:
+                        raise Fehler(json.dumps(r["userErrors"])[:250])
+                    ids = {o["name"]: o["id"] for o in r["product"]["options"]}
                 # 2. bestehende Option auf den ersten Planposten umbenennen
                 if plan[0][0] != opt["name"]:
                     r = gql(M_RENAME, {"p": pid, "o": {"id": opt["id"], "name": plan[0][0]}})["productOptionUpdate"]
                     if r["userErrors"]:
                         raise Fehler(json.dumps(r["userErrors"])[:250])
-                ids = {o["name"]: o["id"] for o in gql(Q_PROD, {"id": pid})["product"]["options"]}
+                    ids = {o["name"]: o["id"] for o in r["product"]["options"]}
+                fehlt = [n for n, _ in plan if n not in ids]
+                if fehlt:
+                    raise Fehler(f"Options-ID fehlt: {fehlt}")
                 # 3. Varianten umhängen
                 upd = []
                 for v in vars_:
-                    alt = v["selectedOptions"][0]["value"]
+                    sel = {x["name"]: x["value"] for x in v["selectedOptions"]}
+                    alt = sel.get(opt["name"])
                     if alt not in mp:
                         raise Fehler(f"Variante ohne Planwert: {alt}")
                     upd.append({"id": v["id"], "optionValues": [

@@ -24,8 +24,11 @@ WAS DIESES SKRIPT TUT
  D) DIESELBE ANGABE IM ZWEITEN FELD. Nach dem Umbenennen der Optionswerte stand «FREE SIZE»
     live weiterhin auf der Produktseite — im Block «Produktdetails» der Beschreibung
     («<strong>Grösse:</strong> FREE SIZE», live geprüft am Strick-Cape-Schal). Die
-    Spezifikationszeile trägt die Aussage ein zweites Mal und wird mitgezogen: 162 Produkte.
+    Spezifikationszeile trägt die Aussage ein zweites Mal und wird mitgezogen: 167 Produkte.
     Fliesstext bleibt unberührt.
+ F) Und dasselbe noch einmal für C/E: die Langarmbluse zeigte im Kaufbereich sauber «Modell 1»,
+    zwei Zeilen tiefer aber weiter «Farben: JM721, JM722 …» (live nachgewiesen). 83 Produkte.
+    Die ALTEN Werte stehen dafür nur noch im Export — live sind sie schon umbenannt.
  E) Die zweite Hälfte des Farb-Befunds: 116 Produkte zeigen statt einer Farbe ein englisches
     ZÄHLWORT — «1Style», «Style 1», «No 7», «29 Models», «1Figure». Das ist keine Farbe, kein
     Deutsch, und die Zahl ist die Entwurfsnummer des Lieferanten. → «Modell 1 … N» unter
@@ -64,6 +67,13 @@ PROBELAUF UND FEHLTREFFER (DRY=1, gegen /tmp/export.jsonl vom 12.08.):
    Zwei Fälle beweisen nebenbei, dass das Yards-Muster richtig eng ist: «Dekoband Titanblatt,
    doppelseitig Satin» und «Afrikanischer Batik Baumwollstoff» nennen Yards im Fliesstext —
    das ist METERWARE, dort ist «10 Yards» eine echte Länge. Beide bleiben unangetastet.
+ • Klasse D/F, zweite Runde: die Spezifikationszeile gibt es auch in der MEHRZAHL («Grössen:»,
+   «Farben:»). Der erste Entwurf kannte nur die Einzahl und liess 75 Zeilen «Grössen: FREE SIZE»
+   sowie sämtliche «Farben:»-Zeilen stehen. Weil die Regel erweitert wurde, schreibt der Lauf
+   jetzt unter dem Schlüssel D2 — mit dem alten Erledigt-Zeichen wären genau die Produkte
+   übersprungen worden, bei denen die zweite Zeile noch steht.
+ • F fasst NUR die Farb-Zeile an. Liefe die Grössen-Zeile mit, machte ein Wert wie «No 1» aus
+   der Ringgrösse ein «Modell 1».
 
 WER SCHREIBT DAS FELD BEIM NÄCHSTEN PRODUKT?
  Der CJ-Importer `automation/cj_category_fill.mjs` (buildFashion/parseVar). Er ist im selben
