@@ -6709,3 +6709,6 @@ gid://shopify/Product/15455761236353	9->0	Smart-Lichtrecorder
 gid://shopify/Product/15455824773505	11->0	Kabellose Lichtsteuerung
 gid://shopify/Product/15455825297793	152->0	Casual-Set mit Ruché-Textur
 gid://shopify/Product/15458625094017	59->0	Elektro-Kopfmasseur
+gid://shopify/Product/15458641117569	70->1	Winterjacke für Haustiere
+gid://shopify/Product/15458646917505	129->2	Goldfolien-Hühnerflügel-Hölzchen (Schimmelresistent)
+gid://shopify/Product/15458722513281	81->3	Tischgeschirr aus Titan
