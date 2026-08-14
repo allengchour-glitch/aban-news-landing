@@ -57,7 +57,10 @@ export async function spielOeffnen(datei, opt = {}) {
   await page.waitForTimeout(2500)
   if (starten) {
     await page.evaluate(() => { const b = document.getElementById('soloBtn'); if (b) b.click() })
-    await page.waitForTimeout(2500)
+    await page.waitForTimeout(600)
+    /* Frisches Profil hat keinen Save -> Modus-Waehler erscheint: Klassisch tippen. */
+    await page.evaluate(() => { const b = document.querySelector('button[data-m="klassisch"]'); if (b) b.click() })
+    await page.waitForTimeout(1900)
     await page.evaluate(() => { const b = document.getElementById('introOk'); if (b) b.click() })
   }
   await page.waitForTimeout(warten)
