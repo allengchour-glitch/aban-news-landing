@@ -6667,3 +6667,4 @@ gid://shopify/Product/15452706144641	12->0	Portabler Kühler für Handys mit Hal
 gid://shopify/Product/15452721119617	46->0	Mini Elektrischer Ellipsentrainer mit Fernbedienung Velora 4
 gid://shopify/Product/15453464592769	22->1	Weinzubehör-Set Chillour InnovaGoods 7 Stücke
 gid://shopify/Product/15453473636737	20->2	Unisex-Uhr Radiant Rot
+gid://shopify/Product/15453811245441	17->0	Bissfester Corn-Dog für Hunde mit Geräusche
