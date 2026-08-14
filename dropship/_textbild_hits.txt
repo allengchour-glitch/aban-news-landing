@@ -6726,3 +6726,4 @@ gid://shopify/Product/15450730889601	62->1	Leichte Anti-Rutsch Hausschuhe für P
 gid://shopify/Product/15450829422977	144->0	Mini-Falt-Drohne mit HD-Kamera
 gid://shopify/Product/15450835222913	37->0	Elefanten-Kuschelkissen mit Decke
 gid://shopify/Product/15452688843137	23->0	Retro Streifen-Langrock mit Polo-Kragen & Seitenschlitz
+gid://shopify/Product/15453770678657	59->1	Skischutzkappe
