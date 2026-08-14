@@ -1,3 +1,8 @@
 gid://shopify/Product/15428286513537	zugeordnet	3	Auto Rücksitz-Organizer: Mehr Stauraum & Ordnung im Nu.
 gid://shopify/Product/15428299260289	zugeordnet	3	Outdoor Gusseisenpfanne – Saftiges Fleisch mit Grillstreifen
 gid://shopify/Product/15428300112257	zugeordnet	2	Akku-Handsauger für Auto & Heim – Mühelose Sauberkeit.
+gid://shopify/Product/15443182813569	zugeordnet	24	Moissanit-Ring «Marquise» 4 ct · 925 Sterling-Silber
+gid://shopify/Product/15443182846337	zugeordnet	3	Moissanit-Halskette «Aurora» 1 ct · 925 Silber Tropfen-Halo
+gid://shopify/Product/15443182944641	zugeordnet	5	Moissanit-Verlobungsring «Solitär» 1 ct · 925 Silber D-VVS1
+gid://shopify/Product/15443219186049	zugeordnet	2	Edelstein-Halskette «Rubin & Smaragd» · 925 Silber Doppel-Ha
+gid://shopify/Product/15443219218817	zugeordnet	2	Edelstein-Anhänger «Rubin & Smaragd» 2 ct · 925 Silber Halo
