@@ -197,17 +197,62 @@ mutation($files: [FileUpdateInput!]!) {
 }
 """
 
-# Die 12 betroffenen Produkte (Ergebnis des Bulk-Scans über alle 34'574 aktiven Produkte)
+# Die 12 betroffenen Produkte des ersten Laufs (Bulk-Scan über alle 34'574 aktiven Produkte).
+# Für den Dauerbetrieb NICHT diese Liste pflegen, sondern `--alle` benutzen (siehe unten).
 PRODUKTE = [
     "15447909695873", "15447909859713", "15448076124545", "15448076321153",
     "15448076386689", "15448531927425", "15448713494913", "15448838472065",
     "15448838504833", "15448847090049", "15448958075265", "15449128894849",
 ]
 
+# --------------------------------------------------------------------------------------
+# --alle : ganzen Katalog prüfen (Regel 7 — der NÄCHSTE Artikel soll auch erfasst sein)
+# --------------------------------------------------------------------------------------
+BULK_START = """
+mutation($q: String!) {
+  bulkOperationRunQuery(query: $q) {
+    bulkOperation { id status } userErrors { field message }
+  }
+}
+"""
+BULK_STAND = "{ currentBulkOperation(type: QUERY) { status url errorCode } }"
+BULK_ABFRAGE = ('{ products(query: "status:active") { edges { node { id title '
+                'media(first: 60) { edges { node { ... on MediaImage { id alt } } } } } } } }')
+
+
+def katalog_scannen():
+    """Sucht im GANZEN Katalog nach verwaisten Codes und liefert die Produkt-IDs."""
+    gql(BULK_START, {"q": BULK_ABFRAGE})
+    url = None
+    for _ in range(60):
+        time.sleep(10)
+        st = gql(BULK_STAND)["data"]["currentBulkOperation"]
+        if st["status"] == "COMPLETED":
+            url = st["url"]; break
+        if st["status"] in ("FAILED", "CANCELED"):
+            raise RuntimeError(f"Bulk fehlgeschlagen: {st}")   # Regel 6: kein Ergebnis = offen
+    if not url:
+        raise RuntimeError("Bulk lief nicht fertig — Fälle bleiben OFFEN")
+    titel, treffer = {}, set()
+    with urllib.request.urlopen(url, timeout=300) as r:
+        for zeile in r.read().decode().splitlines():
+            if not zeile.strip():
+                continue
+            d = json.loads(zeile)
+            if "handle" in d or ("title" in d and "__parentId" not in d):
+                titel[d["id"]] = d.get("title", "")
+            elif d.get("alt") and d.get("__parentId"):
+                if verwaiste_codes(d["alt"], titel.get(d["__parentId"], "")):
+                    treffer.add(d["__parentId"].split("/")[-1])
+    print(f"Katalog-Scan: {len(titel)} Produkte geprüft, {len(treffer)} mit verwaistem Code")
+    return sorted(treffer)
+
 
 def main():
     scharf = "--scharf" in sys.argv
-    print("MODUS:", "SCHARF (schreibt)" if scharf else "DRY (zeigt nur)")
+    alle = "--alle" in sys.argv
+    print("MODUS:", "SCHARF (schreibt)" if scharf else "DRY (zeigt nur)",
+          "| UMFANG:", "ganzer Katalog" if alle else "bekannte Liste")
 
     erledigt = set()
     if os.path.exists(LEDGER):
@@ -216,7 +261,7 @@ def main():
     ledger = open(LEDGER, "a", buffering=1) if scharf else None   # zeilengepuffert
     geaendert = geprueft = 0
 
-    for pid in PRODUKTE:
+    for pid in (katalog_scannen() if alle else PRODUKTE):
         d = gql(Q_PRODUKT, {"id": f"gid://shopify/Product/{pid}"})
         p = d["data"]["product"]
         if not p:

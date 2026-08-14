@@ -6716,3 +6716,6 @@ gid://shopify/Product/15458848014721	28->0	Atmungsaktive Katzenleine mit Fluchts
 gid://shopify/Product/15459598434689	93->2	Cremefarbener Sofakissenbezug mit 3D Stickerei
 gid://shopify/Product/15411564446081	999->0	Mini Bluetooth Speaker Wasserdicht – Dusche, Outdoor & Reise
 gid://shopify/Product/15448609456513	999->0	Taillenhoher Leinenrock mit geradem Schnitt
+gid://shopify/Product/15449133023617	28->0	Premium Faux Mink MK-15 Wimpern
+gid://shopify/Product/15449133187457	91->2	Falsche Nerzwimpern 3D MK-06 (5 Paar)
+gid://shopify/Product/15449158943105	42->0	Damen Sweatshirt mit 3D-Effekt Print

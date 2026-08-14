@@ -79,6 +79,52 @@ def norm(t):
     return re.sub(r'[^a-z0-9]+', '', s)
 
 
+def alt_nachziehen(gid, neuer_titel, code):
+    """
+    Zieht die Bild-Alt-Texte nach, wenn ein Titel gekürzt wurde.
+
+    WARUM ES DAS GIBT (teuer gelernt 2026-08-14):
+    Dieses Skript hat am 11.08. 81 Artikelnummern aus Titeln gestrichen — und NUR aus Titeln.
+    Die Alt-Texte der Bilder waren beim Import aus dem ungereinigten Titel gebaut worden und
+    blieben stehen. Ergebnis: 78 Bilder in 12 Produkten trugen den Lieferantencode weiterhin
+    kundensichtbar («YSM8003 Rahmenlose Sonnenbrille…», «… – Ref. CJ-CJYD294848201AZ»).
+    Der Alt-Text wird von Screenreadern vorgelesen und von Google für die Bildersuche indexiert.
+    Das ist zum dritten Mal dieselbe Fehlerklasse: eine Angabe wird aus EINEM Feld entfernt,
+    ein anderes Feld trägt sie unverändert weiter. Deshalb steht der Nachzug jetzt direkt hier,
+    im selben Lauf wie die Titeländerung — nicht in einem separaten Reiniger, den jemand
+    vergessen kann.
+
+    Der Handle bleibt bewusst unberührt: eine URL-Änderung braucht eine 301-Weiterleitung und
+    ist deshalb eine eigene, bewusst auszulösende Aktion (automation/handle_lieferantencode.py).
+    """
+    q = ('{ product(id:"%s"){ media(first:60){ edges{ node{ ... on MediaImage { id alt } } } } } }'
+         % gid)
+    r = gql(q)
+    p = ((r.get("data") or {}).get("product")) or {}
+    files = []
+    for e in (p.get("media") or {}).get("edges", []):
+        n = e.get("node") or {}
+        a = n.get("alt")
+        if not a or not n.get("id"):
+            continue
+        if code.upper() not in a.upper():
+            continue                       # dieser Alt-Text trägt den Code nicht
+        # Zählsuffix des Hauses erhalten («– Ansicht 3», «– Bild 2 | LuxeStyle»)
+        m = re.search(r"(\s*[–-]\s*(?:Ansicht|Bild)\s*\d+(?:\s*\|\s*LuxeStyle(?:\s*Schweiz)?)?)\s*$", a)
+        neu_alt = f"{neuer_titel} {m.group(1).strip()}".strip() if m else neuer_titel
+        if neu_alt != a:
+            files.append({"id": n["id"], "alt": neu_alt})
+    if not files:
+        return
+    rr = gql('mutation($f:[FileUpdateInput!]!){fileUpdate(files:$f){userErrors{message}}}',
+             {"f": files})
+    err = ((rr.get("data") or {}).get("fileUpdate") or {}).get("userErrors")
+    if err:
+        print(f"  ⚠️ Alt-Text-Nachzug fehlgeschlagen: {err[0]['message']} — bleibt OFFEN", flush=True)
+    else:
+        print(f"  ↳ {len(files)} Alt-Texte nachgezogen", flush=True)
+
+
 def main():
     alle, kandidaten = [], []
     for zeile in open(EXPORT):
@@ -139,6 +185,7 @@ def main():
         n += 1
         f.write(f"{gid}\t{code}\t{neu}\n")
         f.flush()
+        alt_nachziehen(gid, neu, code)      # siehe Kommentar unten
         time.sleep(0.3)
     print(f"FERTIG: {n} Titel gekürzt")
 
