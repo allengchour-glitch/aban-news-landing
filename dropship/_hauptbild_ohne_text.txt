@@ -23053,3 +23053,4 @@ gid://shopify/Product/15493797806465	schon-sauber	0
 gid://shopify/Product/15493797872001	umgestellt	6
 gid://shopify/Product/15493798003073	schon-sauber	0
 gid://shopify/Product/15493798232449	schon-sauber	0
+gid://shopify/Product/15493798297985	schon-sauber	0
