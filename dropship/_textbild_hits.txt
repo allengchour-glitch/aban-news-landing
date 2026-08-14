@@ -6568,3 +6568,20 @@ gid://shopify/Product/15448926486913	10->3	Kühler Sommer Seidenkissenbezug
 gid://shopify/Product/15448929206657	104->3	Reisekissen Flugzeug faltbar Memory Foam
 gid://shopify/Product/15448930517377	38->0	Hair Stick für perfekt gestylte Haare
 gid://shopify/Product/15448931533185	19->2	2-in-1 Warmluft-Haarglätter für nasses & trockenes Haar
+gid://shopify/Product/15448933499265	45->2	Profi Haar- und Bartschneider für Herren
+gid://shopify/Product/15448933630337	13->1	Profi Titanium Glätteisen für Bob-Frisuren
+gid://shopify/Product/15448934351233	65->0	Satin Lockenwickler ohne Hitze
+gid://shopify/Product/15448934973825	48->3	Mikrofaser Haarhandtuch Turban 3er-Set
+gid://shopify/Product/15448937070977	16->0	Ganzjahres Katzenhöhle
+gid://shopify/Product/15448938709377	16->0	Katzenbaum mit Liegeflächen und Höhle
+gid://shopify/Product/15448938774913	87->0	Katzenbaum mit Haus und Sprungplattform
+gid://shopify/Product/15448941494657	135->3	XL Erhöhtes Hundebett, Rot
+gid://shopify/Product/15448944836993	34->0	Wiederaufladbarer Frisbee-Werfer für Katzen und Hunde
+gid://shopify/Product/15448949621121	8->0	Keramik-Doppelnapf für Katzen
+gid://shopify/Product/15448951030145	9->0	Keramik-Futternapf für Hunde und Katzen
+gid://shopify/Product/15448951587201	45->2	Velohelm für Kinder und Erwachsene
+gid://shopify/Product/15448955584897	73->2	Intelligentes Velo-Frontlicht mit Ladefunktion
+gid://shopify/Product/15448955617665	43->3	Farbige LED-Speichenlichter für Mountainbikes
+gid://shopify/Product/15448956109185	24->2	Velo-Frontlicht mit 3400 Lumen
+gid://shopify/Product/15448956928385	52->1	Tragbarer Reifenfüller mit Digitalanzeige
+gid://shopify/Product/15448957747585	105->0	Velo-Frontlicht für Nachtfahrten, 400 Lumen

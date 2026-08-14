@@ -135,3 +135,14 @@ gid://shopify/Product/15496426455425	Türkis
 gid://shopify/Product/15496426815873	Silber
 gid://shopify/Product/15496578597249	Gold
 gid://shopify/Product/15496600420737	Grün
+gid://shopify/Product/15497358770561	Schwarz
+gid://shopify/Product/15497420243329	Weiss
+gid://shopify/Product/15497421160833	Silber
+gid://shopify/Product/15497421291905	Gold
+gid://shopify/Product/15497437086081	Transparent
+gid://shopify/Product/15497443639681	Gelb
+gid://shopify/Product/15497443672449	Rot
+gid://shopify/Product/15497444065665	Blau
+gid://shopify/Product/15497444163969	Silber
+gid://shopify/Product/15497444360577	Transparent
+gid://shopify/Product/15497458778497	Transparent
