@@ -6527,3 +6527,7 @@ gid://shopify/Product/15447955964289	24->0	Kurzarm-Shirt aus reiner Baumwolle
 gid://shopify/Product/15447962091905	91->1	Partnerlook Herbst Sweatshirts für Eltern & Kinder
 gid://shopify/Product/15448076091777	31->0	Casual Damen-Schwimm-Top
 gid://shopify/Product/15448076779905	68->0	Damen-Badeanzug-Set
+gid://shopify/Product/15448600904065	20->3	Ultra-dünne Ice-Silk Leggings für den Sommer
+gid://shopify/Product/15448607523201	8->1	High-Waist Tennis-Minirock mit Falten
+gid://shopify/Product/15448619942273	181->3	Used-Look Jeans mit leicht ausgestelltem Bein
+gid://shopify/Product/15448644026753	39->3	High-Waist Yoga Shorts im Zweiteiler-Look
