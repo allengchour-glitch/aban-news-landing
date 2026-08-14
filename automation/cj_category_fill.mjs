@@ -33,6 +33,22 @@ const DECOLOR={apricot:'Aprikose',pink:'Pink','light pink':'Rosa','hot pink':'Pi
 const SIZESET=new Set(['XS','S','M','L','XL','XXL','XXXL','2XL','3XL','4XL','5XL','6XL','ONE SIZE','ONESIZE','FREE SIZE','FREESIZE','F']);
 const deColor=c=>{const t=(c||'').trim();return DECOLOR[t.toLowerCase()]||t;};
 const isSize=s=>{const u=(s||'').trim().toUpperCase();return SIZESET.has(u)||/^\d{1,2}$/.test(u)||/^(EU|US|UK)?\s?\d{2}$/.test(u);};
+// «FREE SIZE»/«ONE SIZE» ist die Lieferantenformulierung. Im Schweizer Handel heisst das
+// «Einheitsgrösse»; «Free Size» liest sich auf Deutsch sogar wie «Grösse gratis» (14.08.2026).
+const EINHEITSGROESSE=new Set(['ONE SIZE','ONESIZE','FREE SIZE','FREESIZE','F']);
+const deSize=s=>{const u=(s||'').trim().toUpperCase();return EINHEITSGROESSE.has(u)?'Einheitsgrösse':u;};
+// CJ übersetzt das chinesische 码 (= Grösse) wörtlich mit «yards»: «Gold-17 Yards» ist die
+// Schuhgrösse 17, «Gray-160 Yards» die Körpergrösse 160 cm. Die Ziffern MÜSSEN unmittelbar vor
+// dem Wort stehen — sonst greift das Muster in «Vineyard» und «lanyard» (14.08.2026).
+const YARDS=/^(.*?)[\s\-–]*(\d+)(?:\s*(?:to|or)\s*(\d+))?\s*yards?$/i;
+const numOf=s=>{const m=String(s||'').match(/\d+/);return m?+m[0]:null;};
+// Eine Farb-Option, in der JEDER Wert eine reine Lieferanten-Artikelnummer ist («JM721»,
+// «MK1578»), ist keine Farbe. Die Kundin wählt dort blind zwischen fremden Codes.
+const CODE=/^[A-Za-z][A-Za-z0-9]{2,17}$/;
+const istCode=v=>{const t=(v||'').trim();return CODE.test(t)&&(t.match(/\d/g)||[]).length>=2
+  &&!/(xs|s|m|l|xl|xxl|xxxl)$/i.test(t)
+  &&!/(gb|tb|mb|mah|ma|mm|cm|ml|kg|pcs|pc|pack|ports|inch|yards?|frequency|style|model|color|size|no)/i.test(t)
+  &&!/(black|white|red|blue|green|yellow|grey|gray|pink|purple|brown|beige|gold|silver|orange|navy|khaki)/i.test(t);};
 const SORDER=['XS','S','M','L','XL','XXL','2XL','3XL','4XL','5XL','6XL'];
 // Ist der Wert eine brauchbare Farbangabe für Google? Ziffern, Stück-/Stilwörter und
 // Grössen-Präfixe beweisen das Gegenteil («Black-1XL», «Style 1-1 PC», «Picture Color»).
@@ -41,18 +57,27 @@ const farbeSauber=c=>{const t=(c||'').trim();return !!t&&t.length<=40
   &&!/\d|\bStyle\b|\bPCS?\b|\bpair\b|\bSet\b|\bYards?\b|\bcm\b|\bmm\b|\bml\b|\bInch\b|\btype\b|Picture\s*Color|Random|Assorted/i.test(t)
   &&!/^(?:XXS|XS|S|M|L|XL|XXL)\s*[-–\/]/i.test(t);};
 function parseVar(v){const k=(v.variantKey||'').trim();const i=k.lastIndexOf('-');let color=null,size=null;
- if(i>0){const a=k.slice(0,i).trim(),b=k.slice(i+1).trim();if(isSize(b)){color=a;size=b.toUpperCase();}else color=k;}
- else if(isSize(k))size=k.toUpperCase();else color=k||null;
+ const ym=k.match(YARDS);
+ if(ym){color=ym[1].trim()||null;size='Gr. '+ym[2]+(ym[3]?'/'+ym[3]:'');}
+ else if(i>0){const a=k.slice(0,i).trim(),b=k.slice(i+1).trim();if(isSize(b)){color=a;size=deSize(b);}else color=k;}
+ else if(isSize(k))size=deSize(k);else color=k||null;
  return {color:color?deColor(color):null,size:size||null,price:v.variantSellPrice||v.variantSellPrice===0?v.variantSellPrice:v.sellPrice,sku:v.variantSku||''};}
 function buildFashion(d){
  const vs=(d.variants||[]).map(parseVar).filter(v=>v.color||v.size); if(!vs.length)return null;
  const colors=[...new Set(vs.map(v=>v.color).filter(Boolean))];
- const sizes=[...new Set(vs.map(v=>v.size).filter(Boolean))].sort((a,b)=>{const ia=SORDER.indexOf(a),ib=SORDER.indexOf(b);if(ia>=0&&ib>=0)return ia-ib;return (parseInt(a)||99)-(parseInt(b)||99)||a.localeCompare(b);});
+ const sizes=[...new Set(vs.map(v=>v.size).filter(Boolean))].sort((a,b)=>{const ia=SORDER.indexOf(a),ib=SORDER.indexOf(b);if(ia>=0&&ib>=0)return ia-ib;return ((numOf(a)??99)-(numOf(b)??99))||a.localeCompare(b);});
  const useC=colors.length>1||(colors.length===1&&!sizes.length), useS=sizes.length>0;
- const opts=[]; if(useC)opts.push({name:'Farbe',values:colors}); if(useS)opts.push({name:'Grösse',values:sizes});
+ // Reine Lieferanten-Artikelnummern sind keine Farbe: Option «Ausführung», Werte «Modell N»
+ // in der Reihenfolge der Bildergalerie. Sonst steht der fremde Code im Kaufbereich und die
+ // Kundin wählt blind zwischen «JM721» und «JM722» (14.08.2026).
+ const codeOpt=useC&&colors.length>=2&&colors.every(istCode);
+ const cName=codeOpt?'Ausführung':'Farbe';
+ const cMap=codeOpt?new Map(colors.map((c,i)=>[c,'Modell '+(i+1)])):null;
+ const cVal=c=>cMap?(cMap.get(c)||c):c;
+ const opts=[]; if(useC)opts.push({name:cName,values:colors.map(cVal)}); if(useS)opts.push({name:'Grösse',values:sizes});
  if(!opts.length)return null;
  const seen=new Set(),variants=[];
- for(const v of vs){const ov=[]; if(useC)ov.push({optionName:'Farbe',name:v.color||colors[0]}); if(useS)ov.push({optionName:'Grösse',name:v.size||sizes[0]});
+ for(const v of vs){const ov=[]; if(useC)ov.push({optionName:cName,name:cVal(v.color||colors[0])}); if(useS)ov.push({optionName:'Grösse',name:v.size||sizes[0]});
   const key=ov.map(x=>x.name).join('|'); if(seen.has(key))continue; seen.add(key);
   // ⚠️ FARBE GEHÖRT AN DIE VARIANTE, sobald es mehr als eine gibt (14.08.2026).
   // Das Produkt-Metafeld `color` liegt auf PRODUKTebene; im Google-Feed ist aber jede

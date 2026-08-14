@@ -20,3 +20,170 @@ A:gid://shopify/Product/15448013734273	1	Kurzes Stricktop mit Prinzessinnenärme
 A:gid://shopify/Product/15448018223489	1	Vintage-Top mit diagonalem Verschluss
 A:gid://shopify/Product/15448019796353	1	Gestricktes Langarmhemd mit Falten-Optik
 A:gid://shopify/Product/15448021303681	1	Kaftan mit Schmetterlingsrücken
+A:gid://shopify/Product/15448022712705	1	Cardigan mit Lochmuster und Bindedetail
+A:gid://shopify/Product/15448022974849	1	Langes Strickjäckchen mit Lochmuster
+A:gid://shopify/Product/15448023138689	1	Lockerer Strickpullover mit Schmetterlings-Patchwork
+A:gid://shopify/Product/15448023302529	1	Luftiger Strick-Cardigan mit Lochmuster
+A:gid://shopify/Product/15448023466369	1	Kurzes Strick-Top mit langen Ärmeln
+A:gid://shopify/Product/15448025530753	1	Off-Shoulder Langarmshirt mit Schnürung
+A:gid://shopify/Product/15448025891201	1	Sexy Hollow Out Shirt mit Dreiviertelärmeln
+A:gid://shopify/Product/15448026579329	1	Sonnen-Schutzshirt mit breiter Krempe
+A:gid://shopify/Product/15448026743169	1	UV-Schutz Langarmshirt für Outdoor-Aktivitäten
+A:gid://shopify/Product/15448027627905	1	Goldenes Spaghetti-Träger Strandkleid
+A:gid://shopify/Product/15448030183809	1	Off-Shoulder Strandbluse mit Seitenschlitz
+A:gid://shopify/Product/15448030642561	1	Locker fallendes Strandkleid mit Lochmuster
+A:gid://shopify/Product/15448032280961	1	Strick-Cardigan mit Lochmuster und Kordelzug
+A:gid://shopify/Product/15448034673025	1	Langarmshirt mit Rucksack-Schnalle
+A:gid://shopify/Product/15448035688833	1	Retro Besticktes Shirt mit Puffärmeln
+A:gid://shopify/Product/15448038769025	1	Spitzenbesetzte Bluse als Strand-Cardigan
+A:gid://shopify/Product/15448042209665	1	Colorblock Strickpullover mit Prinzessinnenärmeln
+A:gid://shopify/Product/15448042307969	1	Langarm-Top mit Bambusstruktur und UV-Schutz
+A:gid://shopify/Product/15448042570113	1	Elegante Bluse mit Puffärmeln und Raffung
+A:gid://shopify/Product/15448042865025	1	Ärmellose Bluse mit doppelten Rüschen
+A:gid://shopify/Product/15448043585921	1	Retro Plissiertes Camisole
+A:gid://shopify/Product/15448043946369	1	Chiffonbluse mit Rüschensaum
+A:gid://shopify/Product/15448077468033	1	Mehrlagige bunte Perlen-Choker-Körperkette
+A:gid://shopify/Product/15448077500801	1	Body Chain Top mit Perlen – Rosarot
+A:gid://shopify/Product/15448077533569	1	Festival Bustier mit bunten Perlen
+A:gid://shopify/Product/15448077566337	1	Glitzerndes Dekolleté-Kettentop
+A:gid://shopify/Product/15448077599105	1	Bikini-Top mit Pailletten und Halskette
+A:gid://shopify/Product/15448077664641	1	Glitzerndes Bustier mit mehreren Lagen
+A:gid://shopify/Product/15448077697409	1	Perlen-Bodychain Neckholder-Top
+A:gid://shopify/Product/15448077730177	1	Punk Geometric Gemstone Suspender Top
+A:gid://shopify/Product/15448077762945	1	Perlen-BH-Kette im Resort-Stil
+A:gid://shopify/Product/15448077795713	1	Pailletten Body Chain Top
+A:gid://shopify/Product/15448079368577	1	Strand-Kimono mit V-Ausschnitt & Seitenschlitz
+A:gid://shopify/Product/15448080712065	1	Gestreifter Fluffy Woll-Cardigan (Slim-Fit)
+A:gid://shopify/Product/15448081203585	1	Strick-Cardigan mit Lochmuster · Modell 2
+A:gid://shopify/Product/15448092279169	1	Elegante V-Neck Bluse mit Rüschen & Laternenärmeln
+A:gid://shopify/Product/15448092377473	1	Retro V-Neck Besticktes Langarm-Top
+A:gid://shopify/Product/15448092508545	1	Mesh-Cardigan mit Laternenärmeln
+A:gid://shopify/Product/15448092541313	1	Elegantes Spitzen-Top mit langen Ärmeln
+A:gid://shopify/Product/15448093131137	1	Chiffon Halter Top mit Laternenärmeln
+A:gid://shopify/Product/15448101552513	1	Farblich abgestimmtes Hemd mit Revers und Taillengürtel
+A:gid://shopify/Product/15448102764929	1	Damen Bluse mit Rüschen und Puffärmeln
+A:gid://shopify/Product/15448102797697	1	Damen Puffärmel-Top mit Rüschensaum
+A:gid://shopify/Product/15448495260033	1	Eleganter Strick-Pullover mit Zopfmuster
+A:gid://shopify/Product/15448584782209	1	Elegantes, locker geschnittenes Kleid
+A:gid://shopify/Product/15448587731329	1	Reizvolles Neckholder-Kleid mit Perlen
+A:gid://shopify/Product/15448587993473	1	Plissiertes A-Linien Kleid
+A:gid://shopify/Product/15448589173121	1	Künstlerische Schürze aus Baumwolle
+A:gid://shopify/Product/15448590320001	1	Flauschiger Oversized Strick-Cardigan
+A:gid://shopify/Product/15448592646529	1	Slim-Fit Strickpullover mit V-Ausschnitt
+A:gid://shopify/Product/15448593203585	1	Kuscheliger Zopfstrick-Pullover für Damen
+A:gid://shopify/Product/15448593269121	1	Dicker Strickpullover mit Puppenkragen
+A:gid://shopify/Product/15448593858945	1	Strickpullover Rundhals Loose-Fit
+A:gid://shopify/Product/15448593957249	1	Elegantes Langarmshirt mit Reverskragen
+A:gid://shopify/Product/15448595169665	1	Vielseitiger, weicher Damenpullover
+A:gid://shopify/Product/15448595595649	1	Gepolsterter Cardigan im koreanischen Stil
+A:gid://shopify/Product/15448598839681	1	Gestreiftes Zweiteiler-Set mit Cardigan & Hose
+A:gid://shopify/Product/15448602771841	1	Retro Pentagram Jacquard Leggings
+A:gid://shopify/Product/15448605458817	1	Leggings im Denim-Look mit Leopardenmuster
+A:gid://shopify/Product/15448608113025	1	Vintage Stufenrock mit Stickerei und Schleife
+A:gid://shopify/Product/15448608801153	1	Vielseitiger A-Linien-Jupe aus Ramie
+A:gid://shopify/Product/15448609816961	1	Gehäkelter Bikini-Wickelrock mit Perlen
+A:gid://shopify/Product/15448611455361	1	Midi-Rock mit Blumenstickerei und Spitze
+A:gid://shopify/Product/15448614240641	1	Chiffon-Puffrock mit Polka Dots
+A:gid://shopify/Product/15448659198337	1	Retro Mock-Neck Top aus Ramie
+A:gid://shopify/Product/15448660181377	1	Ärmelloser Leinen-Blazer für Damen
+A:gid://shopify/Product/15448661983617	1	Strick-Weste mit Lochmuster
+A:gid://shopify/Product/15448662901121	1	V-Neck Camisole mit Rüschen
+A:gid://shopify/Product/15448665686401	1	Eleganter Rollkragen-Mantel mit Schalkragen
+A:gid://shopify/Product/15448665850241	1	Colorblock Strickjacke im Oversize-Look
+A:gid://shopify/Product/15448668504449	1	Strick-Cardigan, locker geschnitten
+A:gid://shopify/Product/15448703730049	1	Pullover mit Polokragen für Herbst/Winter
+A:gid://shopify/Product/15448704745857	1	Roter Grobstrick-Pullover mit V-Ausschnitt
+A:gid://shopify/Product/15448704778625	1	Kurzer Strickpullover mit Rollkragen und Schlitz
+A:gid://shopify/Product/15448704909697	1	Gestreifter Strickpullover mit weiten Ärmeln
+A:gid://shopify/Product/15448705859969	1	Colorblock Pullover Strickpullover für Damen
+A:gid://shopify/Product/15448711070081	1	Mehrstufiger Tüllrock mit Perlen und Print
+A:gid://shopify/Product/15448712249729	1	Weisser Midirock mit Lochstickerei
+A:gid://shopify/Product/15448755601793	1	Midilanger Tüllrock mit elastischem Bund
+A:gid://shopify/Product/15448756093313	1	Eleganter Mesh-Patchwork-Midirock
+A:gid://shopify/Product/15449056674177	1	Gestreifter Cozy Pullover für Damen
+A:gid://shopify/Product/15449059033473	1	Lässiger Kapuzenpullover für Damen
+A:gid://shopify/Product/15449060868481	1	Jugendlicher Strick-Cardigan im Designer-Stil
+A:gid://shopify/Product/15449061196161	1	Preppy Baumwollpullover mit Rundhalsausschnitt
+A:gid://shopify/Product/15449061392769	1	Cardigan mit Reissverschluss und Reverskragen
+A:gid://shopify/Product/15449061523841	1	V-Neck Baselayer Pullover für Damen
+A:gid://shopify/Product/15449061589377	1	Strick-Cardigan Slim-Fit Kurzarm Damen
+A:gid://shopify/Product/15449061654913	1	V-Ausschnitt Strickpullover mit Farbkontrast
+A:gid://shopify/Product/15449062965633	1	Vielseitiger Cardigan mit Goldknöpfen
+A:gid://shopify/Product/15449104187777	1	Kaschmir-Wollpullover mit Rundhals
+A:gid://shopify/Product/15449104286081	1	Strickpullover mit asymmetrischem Rundhalsausschnitt
+A:gid://shopify/Product/15449104318849	1	Hoodie-Cardigan im Western-Stil
+A:gid://shopify/Product/15449105170817	1	Gestreifter Chenille Strickpullover
+A:gid://shopify/Product/15449105367425	1	V-Ausschnitt Strickweste im Koreanischen Stil
+A:gid://shopify/Product/15449107890561	1	Chiffon-Bluse mit V-Ausschnitt & Rüschen
+A:gid://shopify/Product/15449147343233	1	Luftiges Leinenkleid mit V-Ausschnitt
+A:gid://shopify/Product/15449159532929	1	Damen Colorblock Pullover aus Wollmischung
+A:gid://shopify/Product/15449365741953	1	Elegantes Spitzenkleid in Unifarben
+A:gid://shopify/Product/15449391366529	1	Off-the-Shoulder Bluse
+A:gid://shopify/Product/15449430753665	1	Rückenmassage-Stretcher
+A:gid://shopify/Product/15449475547521	1	Gestreifter Herren-Top mit Stretch
+A:gid://shopify/Product/15449508151681	1	Blauer Halsausschnitt-Rock
+A:gid://shopify/Product/15449510216065	1	Regenbogen-Mohair-Pullover
+A:gid://shopify/Product/15449510379905	1	Farbenfrohes Pullover
+A:gid://shopify/Product/15449510445441	1	Kardigan-Sweater
+A:gid://shopify/Product/15449510478209	1	Farbblock-Pullover
+A:gid://shopify/Product/15449510543745	1	Casual-Langarm-Pullover
+A:gid://shopify/Product/15449569657217	1	Lockerer A-Linie Rock mit Spitzendekor
+A:gid://shopify/Product/15449618022785	1	Vintage Blumenkleid
+A:gid://shopify/Product/15449618481537	1	Elegantes Blusen-Top mit asymmetrischem Design
+A:gid://shopify/Product/15450560594305	1	Outdoor Schnee- und Bergwanderschuhe
+A:gid://shopify/Product/15450830176641	1	Kuschel-Hoodie mit grosser Tasche
+A:gid://shopify/Product/15450839777665	1	XXL Hoodie-Decke mit Taschen für Sie & Ihn
+A:gid://shopify/Product/15450849739137	1	Heisse Sommerkleider & Pareos für Damen
+A:gid://shopify/Product/15453921673601	1	Vintage Rockröcke mit Stickerei
+A:gid://shopify/Product/15454090396033	1	Midi-Rock mit Weitbeinform
+A:gid://shopify/Product/15454090723713	1	Französischer Stil Rock mit Rüschen
+A:gid://shopify/Product/15454301979009	1	Vintage-Pullover-Kleid
+A:gid://shopify/Product/15454894588289	1	Eng anliegendes Strapse-Kleid
+A:gid://shopify/Product/15455081791873	1	Einheitlich gefärbter Cardigan
+A:gid://shopify/Product/15455230787969	1	Retro-Style stark besticktes lässiges Damenkleid
+A:gid://shopify/Product/15455267094913	1	Gestrickte Sheath-High-Waist-Rock
+A:gid://shopify/Product/15455661719937	1	Büschelknopf-Pulli, lässiger Damenpullover in Beige, Lila, Grau & Rosa
+A:gid://shopify/Product/15455730532737	1	Geometrisches Kurzarm-Shirt Damen
+A:gid://shopify/Product/15455795904897	1	Elegante Damenbluse
+A:gid://shopify/Product/15458674246017	1	Taktische Weste für Herren
+A:gid://shopify/Product/15458765832577	1	Retro-Kleid mit Langarm
+A:gid://shopify/Product/15458991505793	1	Asymmetrisches Top mit Bogen-Detail
+A:gid://shopify/Product/15458991964545	1	Lace-Kragen-Pullover
+A:gid://shopify/Product/15459989913985	1	Print-Dress mit Lanternärmeln und Tasseln
+A:gid://shopify/Product/15460522361217	1	Patchwork-Faux-Sweater
+A:gid://shopify/Product/15460522393985	1	Farbblock-Sweater
+A:gid://shopify/Product/15460522426753	1	Korean Style Cardigan
+A:gid://shopify/Product/15460522492289	1	Farbblock-Strickcardigan
+A:gid://shopify/Product/15460522525057	1	Kabelmuster-Pullover
+A:gid://shopify/Product/15462220169601	1	Retro-Cardigan
+A:gid://shopify/Product/15463581385089	1	Sequined Minikleid
+A:gid://shopify/Product/15464375091585	1	Tarnweste Set
+A:gid://shopify/Product/15466024173953	1	Strand-Cover-up, locker geschnitten
+A:gid://shopify/Product/15466041377153	1	High-Waist Minirock mit Spitze
+A:gid://shopify/Product/15466876436865	1	Hoher Rock
+A:gid://shopify/Product/15467017896321	1	Elegantes Freizeitkleid mit Plissees
+A:gid://shopify/Product/15467039687041	1	Vintage Baumwoll-Leinen Langarmshirt Damen
+A:gid://shopify/Product/15467040080257	1	V-Ausschnitt Colorblock Streifen Pullover
+A:gid://shopify/Product/15467040735617	1	Kurzer Cardigan mit 3D-Schleife
+A:gid://shopify/Product/15467045323137	1	Multifunktionaler 3-in-1 Outdoor-Regenmantel
+A:gid://shopify/Product/15467097162113	1	Retro Jeanskleid mit Reverskragen
+A:gid://shopify/Product/15467098440065	1	Langer Tüllrock mit Stufen und Rüschen
+A:gid://shopify/Product/15468336677249	1	Sequins-Shirt
+A:gid://shopify/Product/15468699419009	1	Jacquard Pullover mit Schneeflockenmuster
+A:gid://shopify/Product/15468699943297	1	Asymmetrischer Jupe mit Quasten
+A:gid://shopify/Product/15468733694337	1	Plissierter Strickrock mit hoher Taille
+A:gid://shopify/Product/15468962120065	1	Plissiertes Herbstkleid im Bud-Shape-Stil
+A:gid://shopify/Product/15468962840961	1	Unifarbene Bluse mit Rüschensaum
+A:gid://shopify/Product/15470350664065	1	Weiter Sweater
+A:gid://shopify/Product/15470369145217	1	Gestreiftes Strickkleid mit halbem Rollkragen
+A:gid://shopify/Product/15470659436929	1	Einschnitt-Kleid
+A:gid://shopify/Product/15470945075585	1	Gelbe Bluse mit Ruffles
+A:gid://shopify/Product/15472047522177	1	Strick-Cardigan mit Stehkragen
+A:gid://shopify/Product/15472058696065	1	Kurzes Strickkleid mit Geometrischem Muster
+A:gid://shopify/Product/15472062955905	1	Strickkleid mit Spitze und Blumenmuster
+A:gid://shopify/Product/15473060905345	1	Kontrastfarbener Strickpullover mit Kordelzug
+A:gid://shopify/Product/15473060938113	1	V-Ausschnitt Strickpullover für Damen
+A:gid://shopify/Product/15473076765057	1	Koreanisches Strickoberteil
+A:gid://shopify/Product/15473077551489	1	Lässiger Strickpullover mit Rundhals
+A:gid://shopify/Product/15473077649793	1	Grauer doppelreihiger Wollpullover mit Stehkragen
+A:gid://shopify/Product/15473387569537	1	Elegantes Strickkleid für Damen
