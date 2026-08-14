@@ -127,21 +127,27 @@ AUSNAHMEN = re.compile(r"YSL[-\s]?STK|Off[-\s]?White|Tiffany\s?Blau|\bVans\b|"
 
 
 def markenbezug_entfernen(text):
-    """Wendet die Regeltabelle an und räumt die Ränder auf (nie das Wortinnere, Regel 3)."""
+    """Wendet die Regeltabelle an und räumt NUR die Nahtstelle auf (nie das Wortinnere, Regel 3).
+
+    ⚠️ Fällt keine Regel, wird der Text unverändert zurückgegeben. Der erste Entwurf liess die
+    Glättung über JEDE Beschreibung laufen — damit hätte der Lauf auch 9 Produkte umgeschrieben,
+    an denen gar nichts zu beanstanden war (u. a. den YSL-STK-Controller aus der Ausnahmeliste).
+    """
     if not text:
         return text
     n = text
     for rx, ersatz in REGELN:
         n = rx.sub(ersatz, n)
-    # Nur an den Nahtstellen glätten, die das Löschen selbst erzeugt hat.
+    if n == text:
+        return text
     n = re.sub(r"[ \t]{2,}", " ", n)
-    n = re.sub(r"\s+([,.;:!?])", r"\1", n)
-    n = re.sub(r"([(«„])\s+", r"\1", n)
-    n = re.sub(r">\s+<", "><", n) if "<" in text else n
-    n = re.sub(r"<li>\s+", "<li>", n)
-    n = re.sub(r"\s+</li>", "</li>", n)
-    n = re.sub(r"<p>\s+", "<p>", n)
-    return n.strip() if "<" not in text else n
+    n = re.sub(r"[ \t]+([,.;:!?])", r"\1", n)
+    n = re.sub(r"<(li|p)>[ \t]+", r"<\1>", n)
+    n = re.sub(r"[ \t]+</(li|p)>", r"</\1>", n)
+    # Stand der Markenname am Anfang eines Aufzählungspunktes («Dr. Martens-Stil mit
+    # Schnürung …»), beginnt der Punkt nach dem Schnitt klein. Nur dort gross schreiben.
+    n = re.sub(r"(<li>)([a-zäöü])", lambda m: m.group(1) + m.group(2).upper(), n)
+    return n
 
 
 # ── Handkorrekturen: Titel, die der Lauf vom 12.08. zerschnitten hat ────────
@@ -162,7 +168,7 @@ TITEL_NEU = {
 TEXT_SONDERFALL = {
     # «Die Farben reichen von Zebra-Weiss über Sketch Lines, Velvet Lines bis hin zu
     #  Chanel Style.» — Löschen liesse «bis hin zu .» stehen. Letztes Listenglied entfällt.
-    "15484424520065": [("Velvet Lines bis hin zu Chanel Style",
+    "15484424520065": [("Sketch Lines, Velvet Lines bis hin zu Chanel Style",
                         "Sketch Lines bis hin zu Velvet Lines")],
 }
 
@@ -277,7 +283,7 @@ def main():
                 continue
             m = re.match(muster, wert, re.S)
             if m and marke_drin(m.group(1)):
-                neu[feld] = neu["title"] + m.group(2)
+                neu[feld] = neu["title"] + " " + m.group(2).strip()
             else:
                 neu[feld] = markenbezug_entfernen(wert)
         if alt["seoTitle"]:
