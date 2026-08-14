@@ -6,6 +6,7 @@
  */
 import fs from 'node:fs';
 import {googleKategorie} from './google_kategorie.mjs';
+import {materialKanonisch} from './material_kanonisch.mjs';
 import { produktSaeubern } from './marken_filter.mjs';
 import { medizinZweck } from './medizin_zweck.mjs';
 import { heikelZweck } from './heikel_zweck.mjs';
@@ -496,21 +497,23 @@ for(const [cat,label] of grp.cats){
        //     (siehe buildFashion). Eine falsche Farbe ist schlechter als keine.
        if(farben.length===1&&farbeSauber(farben[0]))
          mf.push({namespace:'mm-google-shopping',key:'color',value:farben[0],type:'single_line_text_field'}); }
-     // Material NUR wenn ein echtes Material-Wort drinsteht (sonst greift der Regex Feldlabels wie «Material Name»)
-     const MATWORDS=/baumwolle|cotton|polyester|leder|leather|metall|metal|silber|silver|gold|edelstahl|stainless|kunststoff|plastic|acryl|nylon|wolle|wool|seide|silk|leinen|linen|keramik|ceramic|holz|wood|glas|glass|zink|legierung|alloy|gummi|silikon|silicone|strick|fleece|denim|jeans|samt|velvet|spitze|lace/i;
-     const mm=(feats||'').match(/\b(?:material|made of|fabric|composition)\b[:\s]+([a-zA-ZäöüÄÖÜ0-9%,\s\/-]{3,40})/i);
+     // Material — Erkennung liegt in material_kanonisch.mjs.
      // ⚠️ NUR DAS MATERIALWORT NEHMEN, nicht den ganzen Fund. Der Ausdruck griff über das
      // Material hinaus in die nächste Tabellenüberschrift und schrieb «Polyester Style»
      // (174×), «Plastic Packing list» (73×), «Alloy Packing list» (27×) in den Feed — Google
      // liest das als Materialangabe. Von 4'924 gesetzten Werten waren 4'566 solcher Müll.
+     // ⚠️ ZWEITE HÄLFTE DESSELBEN FEHLERS (14.08.2026): «nur das Materialwort» nahm aus der
+     // alten MATWORDS-Liste den ERSTEN Treffer — aus «PU leather» also «leather» → «Leather».
+     // Live standen dadurch 176 Produkte mit material="Leather", deren eigene Beschreibung
+     // PU-/Kunstleder nennt (Merchant-Misrepresentation + UWG: «Leder» ist ein geschützter
+     // Begriff), 446 mit dem Nicht-Wort "Stainless" und 16 Schmuckstücke mit "Gold"/"Silver"
+     // für vergoldetes Kupfer. materialKanonisch() prüft spezifisch vor allgemein, kennt
+     // Plattierung und liefert deutsche Namen.
      // Ein falscher Wert ist im Feed schlechter als ein leerer.
-     if(mm){const roh=mm[1].replace(/\s+/g,' ').trim();
-       const treffer=roh.match(MATWORDS);
-       if(treffer && !/^(name|type|typ|color|colour|farbe|size|art)\b/i.test(roh)){
-         const mat=treffer[0];
-         mf.push({namespace:'mm-google-shopping',key:'material',
-                  value:mat.charAt(0).toUpperCase()+mat.slice(1).toLowerCase(),
-                  type:'single_line_text_field'});}}
+     const mm=(feats||'').match(/\b(?:material|made of|fabric|composition)\b[:\s]+([a-zA-ZäöüÄÖÜ0-9%,\s\/-]{3,40})/i);
+     if(mm){const mat=materialKanonisch(mm[1]);
+       if(mat) mf.push({namespace:'mm-google-shopping',key:'material',
+                        value:mat, type:'single_line_text_field'});}
      input.metafields=mf; }
    // Dubletten-Wache: existiert schon ein aktives Produkt mit exakt diesem Titel? (Lieferant listet gleiche Artikel mehrfach)
    const dq=await sgql(st,`query($q:String!){products(first:1,query:$q){edges{node{id}}}}`,{q:`title:"${title.replace(/"/g,'')}" status:active`});

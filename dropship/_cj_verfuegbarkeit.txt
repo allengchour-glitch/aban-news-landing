@@ -8454,3 +8454,5 @@ gid://shopify/Product/15454473224577	ok
 gid://shopify/Product/15454473159041	ok
 gid://shopify/Product/15454473093505	ok
 gid://shopify/Product/15454473060737	ok
+gid://shopify/Product/15454473027969	ok
+gid://shopify/Product/15454472995201	ok
