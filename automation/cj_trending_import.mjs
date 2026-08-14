@@ -168,7 +168,8 @@ Gib NUR gültiges JSON zurück: {"title":"...","html":"<p>…</p><h3>Das zeichne
 
 // Fallback: Groq (OpenAI-kompatibel), falls Gemini-Quota erschöpft (2026-07-05).
 const GROQ_KEYS=[(process.env.GROQ_API_KEY||''),(process.env.GROQ_API_KEY2||'')].map(s=>s.trim()).filter(Boolean);
-const GROQ_MODELS=['llama-3.3-70b-versatile','qwen/qwen3-32b','meta-llama/llama-4-scout-17b-16e-instruct'];
+// Siehe cj_category_fill.mjs: 3.3-70b wird am 16.08.2026 abgeschaltet, qwen3-32b ist schon weg.
+const GROQ_MODELS=['openai/gpt-oss-120b','meta-llama/llama-4-scout-17b-16e-instruct','llama-3.1-8b-instant'];
 async function groq(prompt){
  for(const model of GROQ_MODELS)for(const key of GROQ_KEYS){
   try{

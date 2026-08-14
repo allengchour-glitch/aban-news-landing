@@ -427,7 +427,14 @@ Gib NUR gültiges JSON zurück: {"title":"...","html":"<p>…</p><h3>Das zeichne
 
 // Fallback: Groq (OpenAI-kompatibel), falls Gemini-Quota erschöpft (2026-07-05).
 const GROQ_KEYS=[(process.env.GROQ_API_KEY||''),(process.env.GROQ_API_KEY2||'')].map(s=>s.trim()).filter(Boolean);
-const GROQ_MODELS=['llama-3.3-70b-versatile','qwen/qwen3-32b','meta-llama/llama-4-scout-17b-16e-instruct'];
+// ⚠️ ZWEI DER DREI MODELLE WAREN TOT ODER STERBEN (14.08.2026, aus der Groq-Mail + dem
+// eigenen Fehler-Zwischenspeicher /tmp/ai_groq.json): «llama-3.3-70b-versatile» wird am
+// 16.08. abgeschaltet, «qwen/qwen3-32b» antwortet schon jetzt mit «does not exist or you do
+// not have access to it». Übrig geblieben wäre EIN Modell — und fällt das auch, bekommt jedes
+// neue Produkt einen englischen Lieferantentitel. Reihenfolge jetzt: von Groq empfohlener
+// Ersatz zuerst, hinten als Auffangnetz das Modell, dessen Antwort hier nachweislich
+// funktioniert hat (llama-3.1-8b-instant, letzter belegter Erfolg am 04.08.).
+const GROQ_MODELS=['openai/gpt-oss-120b','meta-llama/llama-4-scout-17b-16e-instruct','llama-3.1-8b-instant'];
 async function groq(prompt){
  for(const model of GROQ_MODELS)for(const key of GROQ_KEYS){
   try{

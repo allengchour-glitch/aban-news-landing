@@ -22,3 +22,7 @@ gid://shopify/Product/15443496108417	zugeordnet	4	Kabellose Kopfhörer «AirBeat
 gid://shopify/Product/15443496141185	zugeordnet	2	Kabellose Kopfhörer «SoundPods» · Bluetooth TWS
 gid://shopify/Product/15443496206721	zugeordnet	4	Kabellose Kopfhörer «FlowPods» · Bluetooth TWS
 gid://shopify/Product/15443496239489	zugeordnet	4	Kabellose Kopfhörer «EchoBuds» · Bluetooth TWS
+gid://shopify/Product/15443496927617	zugeordnet	6	Fitness-Tracker «ActiveBand» · Herzfrequenz & Schritte
+gid://shopify/Product/15443496960385	zugeordnet	3	Smartwatch «PulseFit» · Fitness & Anrufe
+gid://shopify/Product/15443496993153	zugeordnet	4	Smartwatch «ProWatch» · Fitness & Anrufe
+gid://shopify/Product/15443497025921	zugeordnet	42	Smartwatch «ActiveOne» · Fitness & Anrufe

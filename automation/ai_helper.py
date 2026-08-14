@@ -66,7 +66,7 @@ def ask_groq(prompt):
     if not key:
         return None
     return _openai_style("https://api.groq.com/openai/v1/chat/completions", key,
-                         "llama-3.3-70b-versatile", prompt)
+                         "openai/gpt-oss-120b", prompt)
 
 
 def ask_any(prompt):

@@ -46,7 +46,8 @@ async function shTok() {
 async function sgql(t, q, v) { const r = await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': t }, body: JSON.stringify({ query: q, variables: v }) }); return r.json(); }
 
 const GROQ_KEYS = [(process.env.GROQ_API_KEY || ''), (process.env.GROQ_API_KEY2 || '')].filter(Boolean);
-const GROQ_MODELS = ['llama-3.3-70b-versatile', 'llama-3.1-8b-instant', 'openai/gpt-oss-120b'];
+// 'llama-3.3-70b-versatile' wird am 16.08.2026 abgeschaltet — aus der Reihe genommen.
+const GROQ_MODELS = ['openai/gpt-oss-120b', 'llama-3.1-8b-instant'];
 async function groq(nameEn, feats) {
   const prompt = `Du textest für einen Schweizer Online-Shop. Aus dem englischen Produktnamen (und Features) mache:
 1) einen KURZEN deutschen Produkttitel (max 60 Zeichen, keine Marke erfinden, KORREKTE Umlaute ä/ö/ü PFLICHT — nie ae/oe/ue, keine englischen Wörter)
