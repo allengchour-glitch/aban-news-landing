@@ -6531,3 +6531,7 @@ gid://shopify/Product/15448600904065	20->3	Ultra-dünne Ice-Silk Leggings für d
 gid://shopify/Product/15448607523201	8->1	High-Waist Tennis-Minirock mit Falten
 gid://shopify/Product/15448619942273	181->3	Used-Look Jeans mit leicht ausgestelltem Bein
 gid://shopify/Product/15448644026753	39->3	High-Waist Yoga Shorts im Zweiteiler-Look
+gid://shopify/Product/15448651628929	8->0	Fitness- und Yogahose für Damen
+gid://shopify/Product/15448652513665	8->1	Weite Gothic-Hose mit Elastikbund
+gid://shopify/Product/15448659558785	179->3	V-Ausschnitt Pullover mit Woll-Optik
+gid://shopify/Product/15448673747329	33->0	Gepolsterte Baumwolljacke mit Blumenmuster
