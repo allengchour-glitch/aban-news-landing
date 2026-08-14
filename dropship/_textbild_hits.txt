@@ -6693,3 +6693,8 @@ gid://shopify/Product/15454894293377	21->3	Fahrradlicht für Nachtfahrten
 gid://shopify/Product/15454894719361	9->1	Kopfmontierte LED-Lampe mit Aufladefunktion
 gid://shopify/Product/15454916116865	11->0	Studenten-Becher mit Sprühfunktion, 580 ml
 gid://shopify/Product/15455004688769	37->0	Faltbare HD-Drohne mit Hinderniserkennung
+gid://shopify/Product/15455161581953	140->2	Nordisch-Stil Glas Fruchtschale fürs Wohnzimmer
+gid://shopify/Product/15455226364289	56->2	Keramik-Tässchen-Set für Afternoon Tea
+gid://shopify/Product/15455268241793	8->0	Herren elastische Weiß Langarmhemd
+gid://shopify/Product/15455513411969	24->1	Kettlebell-Handle
+gid://shopify/Product/15455531270529	49->0	IPL-Hautverjüngungsinstrument für Zuhause
