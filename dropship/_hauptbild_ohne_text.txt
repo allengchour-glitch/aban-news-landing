@@ -4216,3 +4216,11 @@ gid://shopify/Product/15448847155585	schon-sauber	0
 gid://shopify/Product/15448847221121	schon-sauber	0
 gid://shopify/Product/15448847253889	schon-sauber	0
 gid://shopify/Product/15448847319425	umgestellt	6
+gid://shopify/Product/15448847417729	umgestellt	26
+gid://shopify/Product/15448847483265	umgestellt	5
+gid://shopify/Product/15448847548801	schon-sauber	0
+gid://shopify/Product/15448847581569	schon-sauber	3
+gid://shopify/Product/15448847712641	schon-sauber	0
+gid://shopify/Product/15448847745409	schon-sauber	0
+gid://shopify/Product/15448847778177	umgestellt	7
+gid://shopify/Product/15448847876481	schon-sauber	0
