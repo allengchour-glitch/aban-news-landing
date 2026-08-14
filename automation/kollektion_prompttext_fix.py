@@ -37,12 +37,16 @@ ENTSCHEIDUNG (was hier bewusst NICHT passiert):
 3. Der Text beschreibt, was WIRKLICH drin liegt, nicht was der Kollektionsname verspricht:
    ft-kostuem-hut ist Fasnachts-/Party-Kopfbedeckung (Zylinder, Cowboy-, Hexenhüte, Helme), nicht
    «warme Mütze für kühle Tage in den Schweizer Bergen», wie der abgebrochene Alttext behauptete.
-4. premium-marken-lager bekommt KEINE Sortiments- oder Auswahl-Aussage. Grund: von 7'497
-   Produkten ist live genau EINES sichtbar (products.json → 1), der Rest ist DRAFT aus der
-   BigBuy-Sperre vom 10.07. Ein Text, der «grosse Auswahl» verspricht, wäre die nächste
-   Falschaussage. Auch «Lieferung aus EU-Lager» aus dem Alttext fällt weg — für 7'497 Artikel
-   nicht nachprüfbar. Dass diese Seite mit einem Produkt veröffentlicht ist, ist ein eigener
-   Befund und gehört dem Betreiber gemeldet, nicht hier stillschweigend geheilt.
+4. premium-marken-lager bekommt KEINE Sortiments- oder Auswahl-Aussage. Grund: die 7'496
+   Produkte der Kollektion sind live durchgezählt 7'452 DRAFT und 44 ARCHIVED — AKTIV ist
+   keines. Es ist der BigBuy-Bestand, der am 10.07. gesperrt wurde («active ≠ lagernd»,
+   78 % ausverkauft). Ein Text, der «grosse Auswahl» verspricht, wäre die nächste
+   Falschaussage; auch «Lieferung aus EU-Lager» aus dem Alttext fällt weg — für 7'496 Artikel
+   nicht nachprüfbar. Die Fehlersuche zählte hier «7'496 Produkte»: das ist die Admin-Zahl
+   INKLUSIVE Entwürfe, die bekannte Falle aus CLAUDE.md. Dass eine leere Kategorieseite
+   veröffentlicht ist und in Google steht, ist ein eigener Befund für den Betreiber
+   (depublizieren ODER Ware reaktivieren) — hier wird er gemeldet, nicht stillschweigend
+   geheilt, weil beides eine Sortimentsentscheidung ist.
 5. Der SEO-TITEL bleibt bei allen drei leer (Shopify-Vorgabe «Kollektionstitel – LuxeStyle»).
    CLAUDE.md: ein selbstgebauter Titel ist meist schlechter, und er war hier nicht kaputt.
 6. Nichts wird gelöscht, nichts depubliziert.
