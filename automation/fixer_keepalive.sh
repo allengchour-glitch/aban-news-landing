@@ -203,6 +203,21 @@ while true; do
       echo "$(date -u +%H:%M) pod_designzwang gestartet"
     fi
   fi
+  # VERSANDPROFILE einmal täglich prüfen (14.08.2026). Gelato und Printful legen jedes neu
+  # synchronisierte POD-Produkt automatisch in ihr Format-Profil. Steht dort ein CH-Tarif
+  # über 0.00, addiert Shopify ihn zum Tarif des Standardprofils — ein einziger solcher
+  # Artikel im Korb kippt dann den «Gratis-Versand ab CHF 50», den Ankündigungsleiste,
+  # Produktseite und Warenkorb-Balken versprechen. Genau so waren 166 Varianten betroffen.
+  # Das Skript holt jede ACTIVE-Variante aus solchen Profilen ins Standardprofil zurück und
+  # ist idempotent: ist nichts Neues dazugekommen, findet es 0 und schreibt nichts.
+  VP=/tmp/versandprofil_poster.log
+  if [ -f "$REPO/automation/versandprofil_poster.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$VP" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid python3 automation/versandprofil_poster.py --scharf >> "$VP" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) versandprofil_poster gestartet"
+    fi
+  fi
   # CJ-Grind-Runner mitlaufen lassen (Turn-Reaping killt sie sonst jede Runde)
   # ⚠️ MIT SPERRE STARTEN (12.08.2026). Der pgrep-Test allein genügt nicht: `engines_up.sh`
   # prüft und startet dieselben Runner, und wer zwischen fremder Prüfung und fremdem Start
