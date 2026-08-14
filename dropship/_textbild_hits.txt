@@ -6592,3 +6592,4 @@ gid://shopify/Product/15449005490561	43->3	12-Zoll 13-Ton Lotus Heart Steel Tong
 gid://shopify/Product/15449067454849	120->0	Vielseitiger Kapuzenpullover für Herren
 gid://shopify/Product/15449072042369	77->3	Kinderreisegepäck mit integriertem Sitz
 gid://shopify/Product/15449073058177	68->0	Drehbarer Retro-Anhänger mit Hui-Muster
+gid://shopify/Product/15449119818113	10->2	Robuste Sportuhr für Herren
