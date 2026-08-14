@@ -6540,3 +6540,13 @@ gid://shopify/Product/15448794956161	12->0	Lockere Jeansjacke im Korea-Stil
 gid://shopify/Product/15448799674753	28->2	Farbangepasste Foundation für mittlere Hauttöne
 gid://shopify/Product/15448804557185	17->0	Farbveränderndes Lip Oil mit Glitzer
 gid://shopify/Product/15448811143553	27->3	Farbwechsel-Sturmhaube für Outdoor-Cycling
+gid://shopify/Product/15448822907265	21->0	SouthMoon Mugwort Bein-Patches
+gid://shopify/Product/15448826413441	10->0	Rizinusöl-Wickel-Set mit Bio-Öl
+gid://shopify/Product/15448826872193	51->3	Blumig-fruchtiges Eau de Parfum (50ml)
+gid://shopify/Product/15448827494785	16->1	Süssholz-Gesichtsserum mit Vitamin C & Retinol
+gid://shopify/Product/15448827593089	16->1	Lakritz-Wurzel Anti-Aging Serum LSF 50
+gid://shopify/Product/15448827756929	24->0	Tunmate Marokkanisches Arganöl
+gid://shopify/Product/15448829460865	60->1	Elektrisches Nagelfeilen-Set für Maniküre
+gid://shopify/Product/15448833655169	60->1	Tragbares elektrisches Nagelbohrer-Set
+gid://shopify/Product/15448839520641	26->0	Hohlkern-Kuchenform mit Deckel
+gid://shopify/Product/15448848761217	42->2	Retro 8-Bit Mini-Konsole mit 620 Spielen
