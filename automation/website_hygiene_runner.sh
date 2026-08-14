@@ -15,5 +15,13 @@ source /tmp/secrets_env.sh 2>/dev/null
 while true; do
   echo "$(date -u +%H:%M) strip_supplier_leaks start"
   /opt/node22/bin/node automation/strip_supplier_leaks.mjs 2>&1 | tail -20
+
+  # Prompt-Wache (14.08.2026): Drei veröffentlichte Kollektionen trugen monatelang den
+  # englischen KI-Arbeitsauftrag als Kundentext — bei allen dreien in der Meta-Description,
+  # also im Google-Snippet. Der Generator lag nur in /tmp und ist weg; bleibend ist deshalb
+  # nur die Kontrolle. Der Lauf schreibt nichts, er meldet nur (Exit 1 = Fund).
+  echo "$(date -u +%H:%M) kollektion_prompttext --pruefen"
+  python3 automation/kollektion_prompttext_fix.py --pruefen 2>&1 | tail -12 || true
+
   sleep 7200
 done
