@@ -6641,3 +6641,6 @@ gid://shopify/Product/15450253066625	46->0	Autositzschutz
 gid://shopify/Product/15450253328769	48->0	Leder-Sitzauflage atmungsaktiv
 gid://shopify/Product/15450253361537	22->0	Dickschale Memory-Foam Sitze
 gid://shopify/Product/15450527105409	8->0	Atmungsaktive Mesh-Sneaker für Damen
+gid://shopify/Product/15450829357441	28->2	5-in-1 Magnetisches Wireless Ladegerät mit Nachtlicht
+gid://shopify/Product/15450830438785	42->1	Kabellose Leuchtmaus mit leisem Klick
+gid://shopify/Product/15450831487361	9->0	Duschkopf mit Turbo-Düse & Wassersparfunktion
