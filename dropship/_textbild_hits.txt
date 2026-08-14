@@ -6556,3 +6556,5 @@ gid://shopify/Product/15448883036545	14->0	Wassermelder Zigbee Smart Home
 gid://shopify/Product/15448884740481	20->3	3-in-1 Kabellose Espresso Maschine
 gid://shopify/Product/15448901845377	38->1	C-förmige Ohrringe mit Strass & Zirkonia
 gid://shopify/Product/15448903647617	10->0	Chinesische Drachen-Skelett-Taschenuhr
+gid://shopify/Product/15448911511937	25->1	Retro-Sportuhr für Herren, wasserdicht, leuchtend
+gid://shopify/Product/15448914264449	14->3	Faltbarer Wanderrucksack 20-35L
