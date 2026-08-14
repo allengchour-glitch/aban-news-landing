@@ -3867,3 +3867,4 @@ gid://shopify/Product/15448799609217	schon-sauber	0
 gid://shopify/Product/15448799674753	umgestellt	5
 gid://shopify/Product/15448799773057	schon-sauber	2
 gid://shopify/Product/15448799838593	schon-sauber	3
+gid://shopify/Product/15448799936897	alle-mit-text	-
