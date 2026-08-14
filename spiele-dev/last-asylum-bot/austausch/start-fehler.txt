@@ -1,8 +1,0 @@
-﻿# Der Start ist abgebrochen. Diese Datei sagt wo.
-zeit:   2026-08-14 02:05:48
-rechner: MSI
-grund:  Weder Handy noch Emulator erreichbar
-hinweis: Handy:      USB-Debugging an, Kabel steckt, 'Diesem Computer vertrauen?' bestaetigt.
-hinweis: BlueStacks: Einstellungen -> Erweitert -> 'Android Debug Bridge (ADB)' einschalten,
-hinweis:             dann BlueStacks neu starten und dieses Skript nochmal ausfuehren.
-hinweis: Manuell:    C:\platform-tools\adb.exe connect 127.0.0.1:<port aus den BlueStacks-Einstellungen>
