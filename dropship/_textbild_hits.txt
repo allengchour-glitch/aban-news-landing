@@ -6644,3 +6644,8 @@ gid://shopify/Product/15450527105409	8->0	Atmungsaktive Mesh-Sneaker für Damen
 gid://shopify/Product/15450829357441	28->2	5-in-1 Magnetisches Wireless Ladegerät mit Nachtlicht
 gid://shopify/Product/15450830438785	42->1	Kabellose Leuchtmaus mit leisem Klick
 gid://shopify/Product/15450831487361	9->0	Duschkopf mit Turbo-Düse & Wassersparfunktion
+gid://shopify/Product/15450834370945	12->2	Glowing Gaming Maus
+gid://shopify/Product/15450835878273	8->1	Digitaler Wasserhahn mit Ausziehbrause
+gid://shopify/Product/15450836402561	11->0	Avocado-Bürste zur Fellpflege
+gid://shopify/Product/15450838040961	16->0	LED WC-Nachtlicht mit Bewegungssensor
+gid://shopify/Product/15450850525569	86->0	Elektrische Entwirrbürste mit Kopfmassage
