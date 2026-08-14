@@ -11,3 +11,6 @@ gid://shopify/Product/15443241075073	zugeordnet	2	Edelstein-Halskette «Rubin & 
 gid://shopify/Product/15443241140609	zugeordnet	2	Edelstein-Kreuz-Anhänger «Rubin» · 925 Silber
 gid://shopify/Product/15443241173377	zugeordnet	3	Edelstein-Anhänger «Blüten-Halo» · 925 Silber
 gid://shopify/Product/15443241206145	zugeordnet	4	Edelstein-Kleeblatt «Rubin & Saphir» · 925 Silber
+gid://shopify/Product/15443241238913	zugeordnet	3	Schmetterling-Ohrstecker «Marquise» · 925 Silber
+gid://shopify/Product/15443243663745	zugeordnet	12	Süsswasserperlen-Halskette «Perla» · elegantes Set
+gid://shopify/Product/15443243696513	zugeordnet	4	Schmuck-Set «Trio» · 925 Silber (Kette · Ohrringe · Armband)
