@@ -137,6 +137,19 @@ if(process.env.GROUPS_FILE && fs.existsSync(process.env.GROUPS_FILE)){
  const ext=JSON.parse(fs.readFileSync(process.env.GROUPS_FILE,'utf8'));
  for(const k in ext){const g=ext[k]; if(typeof g.ban==='string')g.ban=new RegExp(g.ban,'i'); GROUPS[k]=g;}
 }
+// ⛔ GRUPPENÜBERGREIFENDE GESETZESWACHE — Laserpointer (V-NISSG, SR 814.711)
+// Die Schweiz verbietet seit 1.6.2021 Anbieten/Abgabe/Besitz aller Laserpointer
+// ausser Klasse 1. Die Gruppen-`ban`-Muster kannten das nicht: `cjhaustier` verbot
+// nur /wholesale|human|for people/, deshalb kamen zwischen dem 12. und 14.08.2026
+// neun weitere Katzenlaser herein, nachdem der Bestand schon einmal geprüft war.
+// Darum hier global statt je Gruppe. Bestandsreparatur: automation/laserpointer_guard.py
+// LASER_OK schützt die erlaubten Laser-Wörter, die im Probelauf zu Fehltreffern
+// führten: Messtechnik (level/rangefinder/distance), Lasergravur, Haarentfernung,
+// Projektoren, Schneid-/Schweissgeräte.
+const LASER_VERBOTEN=/\blaser\s*(pointer|pen)\b|\b(cat|kitten|dog|puppy|pet)\b[^,.;]{0,25}\blaser\b|\blaser\b[^,.;]{0,25}\b(cat|kitten|dog|puppy|pet)\b|\blaser\s*(collar|teaser)\b/i;
+const LASER_OK=/engrav|gravur|\blevel|rangefinder|distance|measur|thermometer|hair\s*remov|epilat|\bipl\b|projector|welding|cutt?er|printer/i;
+const laserVerboten=(nm)=>LASER_VERBOTEN.test(nm)&&!LASER_OK.test(nm);
+
 const GSLEEP=Number(process.env.GSLEEP||4200), CJSLEEP=Number(process.env.CJSLEEP||950);
 const MAXPAGE=Number(process.env.MAXPAGE||5), PERCAT=Number(process.env.PERCAT||0); // tiefere Paginierung fürs „voll"-Füllen
 
@@ -328,6 +341,7 @@ for(const [cat,label] of grp.cats){
   for(const p of list){
    if(total>=CAP)break;
    const nm=p.productNameEn||''; if(!nm||done.has(String(p.pid))||(grp.ban&&grp.ban.test(nm)))continue;
+   if(laserVerboten(nm)){console.log(`  ⛔ Laserpointer (V-NISSG) übersprungen: ${nm.slice(0,60)}`);continue;}
    const pr=parseFloat((''+p.sellPrice).split('--')[0])||0; if(pr<grp.minP||pr>grp.maxP)continue;
    // MOQ-Wache (auch FAST): nur ORDINARY/DIY = einzeln bestellbar (list liefert productType mit)
    const pt=p.productType||''; if(pt&&pt!=='ORDINARY_PRODUCT'&&pt!=='DIY_PRODUCT')continue;
