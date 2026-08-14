@@ -218,6 +218,22 @@ while true; do
       echo "$(date -u +%H:%M) versandprofil_poster gestartet"
     fi
   fi
+  # VERSANDSCHWELLE gegen RABATTE prüfen, einmal täglich (14.08.2026). Shopify misst die
+  # Bedingung «Gratis-Versand ab …» am Betrag NACH Abzug der Rabatte. Der Automatik-Rabatt
+  # «2+ Artikel -10%» drückte deshalb Körbe mit CHF 50.00–55.55 Warenwert unter die Schwelle:
+  # die Leiste versprach Gratis-Versand, die Kasse verlangte CHF 7.00. Behoben, indem die
+  # Bedingung auf 45.00 = 50.00 × 0.9 steht. Sie bricht wieder, sobald jemand einen
+  # AUTOMATIK-Rabatt über 10 % anlegt. Deshalb NUR PRÜFEN, nicht selbst nachziehen — ein
+  # Skript, das die Schwelle einem 30-%-Rabatt hinterherzieht, verschenkt still den Versand.
+  VR=/tmp/versandschwelle_rabatt.log
+  if [ -f "$REPO/automation/versandschwelle_rabatt.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$VR" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && python3 automation/versandschwelle_rabatt.py --pruefen >> "$VR" 2>&1 \
+        || echo "$(date -u +%F\ %H:%M) ⚠️ Versandschwelle passt nicht mehr zum höchsten Automatik-Rabatt" >> "$VR" )
+      echo "$(date -u +%H:%M) versandschwelle_rabatt geprüft"
+    fi
+  fi
   # CJ-Grind-Runner mitlaufen lassen (Turn-Reaping killt sie sonst jede Runde)
   # ⚠️ MIT SPERRE STARTEN (12.08.2026). Der pgrep-Test allein genügt nicht: `engines_up.sh`
   # prüft und startet dieselben Runner, und wer zwischen fremder Prüfung und fremdem Start

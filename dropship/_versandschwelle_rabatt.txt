@@ -1,1 +1,2 @@
+tarif 50.00 -> 45.00 (von Hand gesetzt, danach im Skript nachgezogen)
 leiste total_price -> items_subtotal_price
