@@ -173,6 +173,21 @@ while true; do
       echo "$(date -u +%H:%M) merchant_sperre_durchsetzen gestartet"
     fi
   fi
+  # MEDIZINISCHE ZWECKBESTIMMUNG, einmal täglich über die Neuimporte der letzten 3 Tage.
+  # Seit dem 14.08. prüfen `cj_category_fill.mjs` und `cj_sku_import.mjs` schon beim Anlegen
+  # (automation/medizin_zweck.mjs) — dieser Lauf ist die zweite Reihe für den Importer, den
+  # wir noch nicht kennen, und für Ware, deren Text nachträglich geändert wurde. Er liest
+  # bewusst LIVE (SEIT=…) statt aus dem Voll-Export: der Export vom 12.08. kannte das
+  # «Kabellose WiFi Otoskop» vom 13.08. nicht, das live im Google-Kanal stand.
+  MZ=/tmp/medizin_zweck_guard.log
+  if [ -f "$REPO/automation/medizin_zweck_guard.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$MZ" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && SEIT=$(date -u -d '3 days ago' +%F) setsid python3 \
+          automation/medizin_zweck_guard.py >> "$MZ" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) medizin_zweck_guard gestartet"
+    fi
+  fi
   # CJ-Grind-Runner mitlaufen lassen (Turn-Reaping killt sie sonst jede Runde)
   # ⚠️ MIT SPERRE STARTEN (12.08.2026). Der pgrep-Test allein genügt nicht: `engines_up.sh`
   # prüft und startet dieselben Runner, und wer zwischen fremder Prüfung und fremdem Start

@@ -187,10 +187,25 @@ def pruefen(p):
     return None
 
 
+# Ein Titel, der nach dem Schnitt auf einer Präposition endet, ist eine Satzruine.
+# ⚠️ TEUER GELERNT (Nachkontrolle 14.08.2026): Genau sechs solcher Ruinen standen tagelang
+# kundensichtbar im Shop und im Google-Kanal — «Kissenbezug mit Quasten im -Stil»,
+# «Rundhals-Spitzentop im -Stil», «Lenkradblende für -Benz», «TPU Silikon Schlüsselhülle
+# für». Bei den beiden Autoteilen war damit die KOMPATIBILITÄTSANGABE weg: die Kundin
+# konnte nicht mehr erkennen, für welches Fahrzeug das Teil passt.
+RUINE = re.compile(r'(?:\b(?:f[üu]r|mit|von|im|in|aus|und|zu|passend)\s*$)|'
+                   r'(?:\bim\s+[-–]\s*Stil\b)|(?:\s[-–]\s*$)|(?:\bf[üu]r\s+[-–])', re.I)
+
+
 def titel_ohne_marke(t):
     neu = FIGUR_MARKE.sub("", t)
     neu = re.sub(r'\bim\s+[- ]?Stil\b', '', neu, flags=re.I)
     neu = re.sub(r'\s{2,}', ' ', neu).strip(" ·-–,")
+    # Lieber den alten Titel behalten und den Fall melden, als eine Ruine zu veröffentlichen.
+    if RUINE.search(neu) or len(neu) < 6:
+        print(f"  ⚠️ Titel-Schnitt ergäbe eine Ruine, Titel unverändert gelassen: "
+              f"«{t}» → «{neu}» — von Hand nachziehen", flush=True)
+        return t
     return neu
 
 

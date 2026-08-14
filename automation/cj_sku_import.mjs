@@ -7,6 +7,8 @@
  */
 import fs from 'node:fs';
 import { catTags } from './cat_tags.mjs';
+import { produktSaeubern } from './marken_filter.mjs';
+import { medizinZweck } from './medizin_zweck.mjs';
 const SHOP = 'au3j0y-hq.myshopify.com', API = '2025-01';
 const CID = process.env.SHOPIFY_CLIENT_ID, CSEC = process.env.SHOPIFY_CLIENT_SECRET;
 let CJT = (process.env.CJ_TOKEN || '').trim();
@@ -124,6 +126,10 @@ for (const item of ITEMS) {
   const feats = (d.description || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
   const g = await groq(d.productNameEn || val, feats);
   if (!g) { console.log('✗ keine Texte:', item); continue; }
+  // Marken-Filter (14.08.2026), siehe automation/marken_filter.mjs
+  const ms = produktSaeubern(g.title, g.html);
+  if (ms.verdacht) { console.log('✗ Markenbezug, übersprungen:', item); continue; }
+  g.title = ms.title; g.html = ms.html;
   const title = g.title.slice(0, 70);
   // Titel-Wache inkl. Umlaut-Normalisierung (Geraet==Gerät-Falle 2026-07-08) + Bild-Wache (GEHIRN 2)
   const norm = x => x.toLowerCase().replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue').replace(/ß/g,'ss').replace(/[^a-z0-9]+/g,' ').trim();
@@ -139,9 +145,15 @@ for (const item of ITEMS) {
   const MAXCHF = parseFloat(process.env.MAXCHF || '200');
   if (priceChf > MAXCHF) { console.log(`✗ zu teuer (CHF ${priceChf}) — non-fit:`, title.slice(0,40)); fs.appendFileSync(LEDGER, 'cj:' + pid + '\n'); continue; }
   if (/schminktisch|schrank|\bregal\b|kommode|\bbett\b|\bsofa\b|couch|\btisch\b|\bstuhl\b|matratze|kleiderständer|garderobe|sideboard|vitrine|werkbank|möbel/i.test(title)) { console.log('✗ sperriges möbel — skip:', title.slice(0,40)); fs.appendFileSync(LEDGER, 'cj:' + pid + '\n'); continue; }
+  // ⚕️ Medizinische Zweckbestimmung — gleiche Prüfung wie in cj_category_fill.mjs, gleiche
+  // Musterdatei (automation/medizin_zweck.json). Dieser Importer läuft über
+  // cj_queue_runner.sh und legt Ware genauso ACTIVE + in allen Kanälen an; ohne die Wache
+  // hier wäre die Lücke nur verschoben statt geschlossen (Befund 14.08.2026).
+  const med = medizinZweck(title, g.html);
   const slug = title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 46) + '-' + String(pid).slice(-6);
-  const input = { title, handle: slug, productType: 'Trend-Produkt', vendor: 'LuxeStyle', status: 'ACTIVE',
-    tags: [...new Set(['trend', 'viral', 'video-hit', 'cj-real', 'dropship', 'neu',
+  const input = { title, handle: slug, productType: 'Trend-Produkt', vendor: 'LuxeStyle',
+    status: med ? 'DRAFT' : 'ACTIVE',
+    tags: [...new Set([...(med ? ['medizinprodukt-pruefen', 'medizin-zweck-' + med.grund] : ['trend', 'viral', 'video-hit']), 'cj-real', 'dropship', 'neu',
       ...((process.env.WH || '').trim() ? ['schnell-versand', 'eu-lager'] : []),
       ...catTags(`${title} ${d.productNameEn || ''} ${val || ''}`)])],
     descriptionHtml: g.html + '\n<p>🚚 Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · 🇨🇭 LuxeStyle</p>',
@@ -154,6 +166,9 @@ for (const item of ITEMS) {
   if (!spid) { console.log('✗', title, JSON.stringify(r.data?.productSet?.userErrors || r).slice(0, 120)); continue; }
   const media = imgs.slice(1).map(u => ({ originalSource: u, mediaContentType: 'IMAGE' }));
   if (media.length) await sgql(t, `mutation($id:ID!,$m:[CreateMediaInput!]!){ productCreateMedia(productId:$id,media:$m){userErrors{message}} }`, { id: spid, m: media });
+  // Ein Medizinprodukt geht in KEINEN Kanal — am wenigsten in «Google & YouTube».
+  if (med) { console.log(`⚕️ medizinische Zweckbestimmung (${med.grund}) → DRAFT, nicht publiziert: ${title.slice(0,44)}`);
+            fs.appendFileSync(LEDGER, 'cj:' + pid + '\n'); continue; }
   await sgql(t, `mutation($id:ID!,$p:[PublicationInput!]!){ publishablePublish(id:$id,input:$p){userErrors{message}} }`, { id: spid, p: PUBS });
   if (d.productVideo && /^https/.test(d.productVideo)) await attachVideo(t, spid, d.productVideo, String(pid).slice(-6));
   fs.appendFileSync(LEDGER, 'cj:' + pid + '\n');

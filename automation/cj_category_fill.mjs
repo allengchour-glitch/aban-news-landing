@@ -6,6 +6,8 @@
  */
 import fs from 'node:fs';
 import {googleKategorie} from './google_kategorie.mjs';
+import { produktSaeubern } from './marken_filter.mjs';
+import { medizinZweck } from './medizin_zweck.mjs';
 const SHOP='au3j0y-hq.myshopify.com',API='2025-01';
 const CID=process.env.SHOPIFY_CLIENT_ID,CSEC=process.env.SHOPIFY_CLIENT_SECRET;
 const CJT=(process.env.CJ_TOKEN||'').trim();
@@ -358,8 +360,27 @@ for(const [cat,label] of grp.cats){
    const feats=(d.description||'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
    const g=await gemini(nm,feats,grp.kat); await sleep(GSLEEP);
    if(!g){console.log('  skip(gemini)',nm.slice(0,30));continue;}
+   // Marken-Filter (14.08.2026): CJ-Listings schreiben «Chanel style» in Name/Features, die
+   // Übersetzung übernimmt es wörtlich. Ohne diesen Schnitt entstehen mit jedem Lauf neue
+   // «im Chanel-Stil»-Produkte — 42 mussten am 14.08. nachträglich bereinigt werden.
+   const ms=produktSaeubern(g.title, g.html);
+   if(ms.verdacht){console.log('  skip(marke)',nm.slice(0,40));continue;}
+   g.title=ms.title; g.html=ms.html;
    const title=g.title.slice(0,70);
-   if(DRY){console.log(`  [DRY] CHF${chf(p.sellPrice)} | ${title}`);got++;total++;continue;}
+   // ⚕️ MEDIZINISCHE ZWECKBESTIMMUNG (14.08.2026). Acht im August angelegte Geräte standen
+   // aktiv im Google-Kanal, obwohl sie nach MepV eine Konformitätsbewertung brauchen — ein
+   // Temperaturpflaster mit 38-°C-Alarm für kranke Kinder, zwei Elektrostimulations-
+   // Schlafgeräte, ein Gehörgang-Endoskop, zwei Sets gegen eingewachsene Nägel, ein
+   // Zahnsteinentferner, ein Baby-Set mit klinischem Thermometer. Der Bestandswächter
+   // `medizinprodukte_guard.py` sah keinen davon: er sucht PRODUKTNAMEN, und alle acht
+   // heissen nach aussen «Gadget», «Beauty» oder «Haushalt» — den Zweck verrät erst der
+   // Beschreibungstext, den Gemini gerade erzeugt hat. Deshalb wird HIER geprüft und nicht
+   // erst im nächsten Aufräumlauf: sonst legt der Importer täglich die nächsten an, und der
+   // Wächter räumt hinterher (dieselbe Falle wie bei `condition` und `google_product_category`).
+   // Die Ware wird NICHT verworfen — sie kommt als Entwurf in den Shop und lässt sich mit
+   // Konformitätsunterlagen jederzeit freischalten. Muster: automation/medizin_zweck.json.
+   const med=medizinZweck(title, g.html);
+   if(DRY){console.log(`  [DRY]${med?' ⚕️DRAFT('+med.grund+')':''} CHF${chf(p.sellPrice)} | ${title}`);got++;total++;continue;}
    const slug=title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,46)+'-'+String(p.pid).slice(-6);
    const html=`${g.html}\n${TRUST}`;
    const fash=(grp.fashion&&!FAST)?buildFashion(d):null; // FAST: keine Varianten-Details → Standard-Variante
@@ -380,7 +401,10 @@ for(const [cat,label] of grp.cats){
      tagsFinal=tagsFinal.filter(t=>!['gaming','ps4','ps5','xbox','konsole','gadgets','elektronik','tech'].includes(t)).concat(['garten']);
      typeFinal=/bew[äa]sserung/i.test(title)?'Garten & Pflanzen':'Gartenwerkzeug';
    }
-   const input={title,handle:slug,productType:typeFinal,vendor:'LuxeStyle',status:'ACTIVE',tags:tagsFinal,descriptionHtml:html,
+   const input={title,handle:slug,productType:typeFinal,vendor:'LuxeStyle',
+    status:med?'DRAFT':'ACTIVE',
+    tags:med?[...tagsFinal,'medizinprodukt-pruefen','medizin-zweck-'+med.grund]:tagsFinal,
+    descriptionHtml:html,
     seo:{title:(title+' | LuxeStyle CH').slice(0,70),description:(`${title} – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.`).slice(0,320)},
     productOptions, variants,
     files:[{originalSource:imgs[0],contentType:'IMAGE'}]};
@@ -464,6 +488,10 @@ for(const [cat,label] of grp.cats){
     fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid));
     continue;
    }
+   // Ein Medizinprodukt darf in KEINEN Kanal — am wenigsten in «Google & YouTube», den
+   // einzigen mit belegten Verkäufen. Nicht publizieren, Fall im Log benennen.
+   if(med){ console.log(`  ⚕️ medizinische Zweckbestimmung (${med.grund}) → DRAFT, nicht publiziert: ${title.slice(0,44)}`);
+            fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid)); got++; total++; continue; }
    await publishVerified(st,pid);
  if(d.productVideo&&/^https/.test(d.productVideo))await attachVideo(st,pid,d.productVideo,p.pid);
    fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid));

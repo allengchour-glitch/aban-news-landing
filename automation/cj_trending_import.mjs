@@ -5,6 +5,7 @@
  * ENV: CJ_TOKEN · SHOPIFY_CLIENT_ID/SECRET · GEMINI(/tmp/gemini_key) · GRP=nagel · CAP=40 · DRY=1
  */
 import fs from 'node:fs';
+import { produktSaeubern } from './marken_filter.mjs';
 const SHOP='au3j0y-hq.myshopify.com',API='2025-01';
 const CID=process.env.SHOPIFY_CLIENT_ID,CSEC=process.env.SHOPIFY_CLIENT_SECRET;
 const CJT=(process.env.CJ_TOKEN||'').trim();
@@ -247,6 +248,10 @@ for(const p of cand){
  if(VIDEO_ONLY&&!(d.productVideo&&/^https/.test(d.productVideo))){continue;} // ohne Video überspringen
  const g=await gemini(nm,feats,'Trend-Produkt (viral)'); await sleep(GSLEEP);
  if(!g){console.log('  skip(copy)',nm.slice(0,30));continue;}
+ // Marken-Filter (14.08.2026), siehe automation/marken_filter.mjs
+ const ms=produktSaeubern(g.title, g.html);
+ if(ms.verdacht){console.log('  skip(marke)',nm.slice(0,40));continue;}
+ g.title=ms.title; g.html=ms.html;
  const title=g.title.slice(0,70);
  if(DRY){console.log(`  [DRY] CHF${chf(p.sellPrice)} | ${title} | listed ${p.listedNum}`);total++;continue;}
  const slug=title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,46)+'-'+String(p.pid).slice(-6);
