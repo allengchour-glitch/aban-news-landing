@@ -124,8 +124,14 @@ while true; do
     # deshalb die ARGUMENTE: erstes Feld python3, zweites der Skriptpfad.
     ps -eo args --no-headers | awk -v s="automation/$L.py" \
       '$1 ~ /python3$/ && $2 == s {n++} END {exit(n?0:1)}' && continue
+    # ⚠️ DIE BILDPRÜFUNG BRAUCHT FRISCHE DATEN. Ihr Vorgabe-Export ist der Schnappschuss
+    # vom 12.08.; die 5'481 seither importierten Produkte kämen darin gar nicht vor und
+    # blieben für immer ungeprüft — genau die, die Google jetzt als «Promotional overlay on
+    # image» meldet. /tmp/ocr_export_keep.jsonl wird aus einem Bulk-Export gebaut.
+    EXP=""; [ "$L" = hauptbild_ohne_text ] && [ -f /tmp/ocr_export_keep.jsonl ] \
+      && EXP="EXPORT=/tmp/ocr_export_keep.jsonl"
     ( cd "$REPO" && setsid bash -c \
-        "exec 9>/tmp/lock_$L.lock; flock -n 9 || exit 0; exec python3 automation/$L.py" \
+        "exec 9>/tmp/lock_$L.lock; flock -n 9 || exit 0; $EXP exec python3 automation/$L.py" \
         >> "/tmp/$L.log" 2>&1 9>&- & )
     echo "$(date -u +%H:%M) restart $L"
     sleep 5
