@@ -6638,3 +6638,6 @@ gid://shopify/Product/15450116161921	50->0	Portable Nähmaschine
 gid://shopify/Product/15450169540993	13->0	Fahrzeug-Tracker mit langer Akku-Lebensdauer
 gid://shopify/Product/15450215154049	23->0	Winter-Steuerrad-Abdeckung
 gid://shopify/Product/15450253066625	46->0	Autositzschutz
+gid://shopify/Product/15450253328769	48->0	Leder-Sitzauflage atmungsaktiv
+gid://shopify/Product/15450253361537	22->0	Dickschale Memory-Foam Sitze
+gid://shopify/Product/15450527105409	8->0	Atmungsaktive Mesh-Sneaker für Damen
