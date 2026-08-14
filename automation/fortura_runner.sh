@@ -26,6 +26,15 @@ while true; do
     echo "### FORTURA-RUNDE $(date -u +%H:%M) — Feed frisch ziehen"
     bash automation/fortura_fetch_feed.sh /tmp/fortura_feed.csv || { echo "Feed-Download-Fehler, 30min Pause"; sleep 1800; continue; }
   else echo "### FORTURA-RUNDE $(date -u +%H:%M) — nutze vorhandenen Feed (Shard-Modus)"; fi
+
+  # ⚠️ BESTAND ZUERST, DANN NEUIMPORT (Fehlersuche 2026-08-14 [bestand]): Der Importer schreibt die
+  # Menge NUR beim Anlegen und überspringt danach alles, was im Ledger steht — ohne diesen Aufruf
+  # friert der CH-Lagerbestand am Importtag ein (er stand 21 Tage still). Der Abgleich läuft nur im
+  # Voll-Lauf, nicht in den Shards, damit sich nicht mehrere Prozesse dieselbe Menge streitig machen.
+  if [ -z "${FT_SHARD:-}" ]; then
+    echo "### BESTANDS-ABGLEICH Feed→Shop  $(date -u +%H:%M)"
+    $NODE automation/fortura_bestand_sync.mjs 2>&1 | tail -8
+  fi
   for B in "${BATCHES[@]}"; do
     FLT="${B%%::*}"; REST="${B#*::}"; TAGS="${REST%%::*}"; BVK="${REST##*::}"
     [ "$BVK" = "$REST" ] && BVK="$MIN_VK"   # kein 3. Feld → globaler MIN_VK

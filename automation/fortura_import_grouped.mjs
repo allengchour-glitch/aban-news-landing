@@ -1,6 +1,12 @@
 /* fortura_import_grouped.mjs — wie fortura_import.mjs, aber GRUPPIERT nach Set-Nummer:
  * gleiche Set-Nr = 1 Produkt mit Grössen-Variante (Dropdown) statt N Einzel-Listings.
  * Grösse wandert in die Variante (nicht mehr in den Titel). Ledger: dropship/_fortura_grp_done.txt (Set-Nr).
+ *
+ * ⚠️ DIESES SKRIPT LEGT NUR AN. inventoryQuantities wird ausschliesslich im productSet unten geschrieben,
+ * und das Ledger überspringt jedes bestehende Produkt — der Bestand eines EINMAL angelegten Artikels
+ * wird hier nie wieder angefasst (2026-08-14: dadurch 21 Tage eingefroren). Das Nachführen macht
+ * automation/fortura_bestand_sync.mjs, eingehängt in fortura_runner.sh. Wer hier etwas ändert, muss
+ * dort mitdenken — und umgekehrt.
  * ENV: SHOPIFY_CLIENT_ID/SECRET, FORTURA_CSV, [LIMIT], [DRY=1], [MIN_VK], [FT_FILTER], [FT_TAGS], [FT_SHARD].
  */
 import fs from 'node:fs';

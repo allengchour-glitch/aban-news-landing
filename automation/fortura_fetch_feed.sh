@@ -9,6 +9,14 @@
 # Creds NUR aus /tmp/fortura_env.sh (600, NICHT im Repo — Lieferantendaten). Legt Feed nach
 # /tmp/fortura_feed.csv. Danach: /opt/node22/bin/node automation/fortura_import.mjs
 set -euo pipefail
+# /tmp überlebt einen Container-Wipe NICHT (2026-08-14 genau so passiert: Creds weg, Feed seit dem
+# 23.07. nicht mehr geladen, Bestand eingefroren). Klartext-Meldung statt kryptischem bash-Fehler.
+if [ ! -f /tmp/fortura_env.sh ]; then
+  echo "OFFEN: /tmp/fortura_env.sh fehlt (Container-Wipe). Ohne FORTURA_FTP_USER/FORTURA_FTP_PW" >&2
+  echo "       (Kundennr 544341) ist der Feed nicht abrufbar — es wird NICHTS geraten." >&2
+  echo "       Dauerlösung: beide Werte als Umgebungsvariablen in den Claude-Einstellungen hinterlegen." >&2
+  exit 1
+fi
 source /tmp/fortura_env.sh
 B="https://webtransfer.fortura.ch"
 OUT="${1:-/tmp/fortura_feed.csv}"

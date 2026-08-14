@@ -1,9 +1,13 @@
 /* fortura_import.mjs — importiert lagernde CH-Ware vom Schweizer Dropship-Lieferanten FORTURA AG
  * (Vertrag 2026-07-22, Kundennr 544341). Quelle: täglicher CSV-Feed via FTP (Anlage 1 des Vertrags).
  *
- * WARUM FORTURA ghost-sale-SICHER by design: der Feed liefert TÄGLICH echten CH-Lagerbestand
- * (Lagerbestand Total) → wir setzen tracked:true + DENY + echte Menge. Bei 0 wird das Produkt
- * automatisch unkaufbar. Kein Ghost-Sale wie bei BigBuy. CH-Versand DPD CHF 9.50, 1–2 Tage.
+ * Der Feed liefert täglich echten CH-Lagerbestand (Lagerbestand Total) → beim ANLEGEN setzen wir
+ * tracked:true + DENY + echte Menge. CH-Versand DPD CHF 9.50, 1–2 Tage.
+ * ⚠️ KORREKTUR 2026-08-14: Hier stand «ghost-sale-SICHER by design». Das war falsch und hat den
+ * Fehler drei Wochen gedeckt. Der FEED ist täglich frisch, der SHOP war es nicht: dieses Skript
+ * schreibt die Menge nur beim Anlegen, danach nie wieder — 4'179 aktive Varianten standen 21 Tage
+ * auf dem Wert vom 23./24.07. DENY schützt nur davor, unter die eingefrorene Zahl zu verkaufen,
+ * nicht davor, dass die Zahl falsch ist. Nachgeführt wird jetzt von automation/fortura_bestand_sync.mjs.
  *
  * ⚠️ STATUS: Grundgerüst gegen die VERTRAGS-Spec (Anlage 1). Die EXAKTEN CSV-Spaltenüberschriften
  *    ergeben sich erst aus dem echten Feed (Vertrag: "Aktuelle Spaltenüberschriften ergeben sich

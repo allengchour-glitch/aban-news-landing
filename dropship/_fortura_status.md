@@ -33,6 +33,23 @@ Neustart-Rezept: `setsid bash automation/fortura_runner.sh >/tmp/fortura_runner.
 - 11 Swiss/1.-August-Artikel live (Edelweisshemd 58.-, Schwingerhose, Fahne Schweiz…) → `erste-august`-Collection.
 - BRUDER-Spielzeug-Batch läuft (601 Artikel: Case IH, JCB, John Deere, MAN — Bestand bis 443).
 
+## 🔴 BESTAND WAR EINGEFROREN (2026-08-14) — Abgleich gebaut, Lauf blockiert
+Der Bestand von 4'179 aktiven Fortura-Varianten (2'524 Produkte) stand live noch auf dem Wert vom
+**23./24.07.** (3'927 + 164 Varianten; nur 88 wurden am 05./06.08. von anderer Hand berührt). Kein
+einziger Artikel stand auf 0 — nach drei Wochen bei einem Party-Grosshändler unmöglich. Ursache:
+`fortura_import_grouped.mjs` schreibt `inventoryQuantities` nur im `productSet` beim Anlegen und
+überspringt danach jedes Produkt im Ledger; ein Aktualisierungspfad existierte nirgends.
+**Neu: `automation/fortura_bestand_sync.mjs`** (Feed→Shop über SKU `fortura-<ArtNr>`, tracked+DENY,
+`inventorySetQuantities` mit `compareQuantity`, Plausibilitätsbremse, Journal mit Flush je Zeile),
+fest eingehängt in `fortura_runner.sh` direkt nach dem Feed-Download.
+**⛔ Konnte nicht scharf laufen: `/tmp/fortura_env.sh` ist beim Container-Wipe verloren gegangen**
+(FTP-User/Passwort, Kundennr 544341). `webtransfer.fortura.ch` antwortet (HTTP 200), nur der Login
+fehlt. Ohne Feed wird NICHTS geschrieben und NICHTS geschätzt — das Skript endet mit Code 2.
+**Der Betreiber muss FORTURA_FTP_USER + FORTURA_FTP_PW einmal als Umgebungsvariablen in den
+Claude-Einstellungen hinterlegen** (überlebt Neustarts, `/tmp` nicht — das ist bereits der dritte
+Verlust dieser Art). Danach genügt: `bash automation/fortura_fetch_feed.sh && /opt/node22/bin/node
+automation/fortura_bestand_sync.mjs`.
+
 ## OFFEN
 - [ ] XML-Bestell-Anbindung (Opacc.ORDERS nach `/home/ORDERS`, DESADV-Rücklauf aus `/home/DESADV`)
       für Auto-Fulfillment. Bis dahin: bei Fortura-Verkauf manuell im Fortura-Portal bestellen.
