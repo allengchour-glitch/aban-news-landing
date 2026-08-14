@@ -116,7 +116,7 @@ if (!TOK) TOK = await newToken();
 if (!TOK) { console.error('OFFEN: kein Shopify-Token (weder ' + TOKFILE + ' noch SHOPIFY_CLIENT_ID/SECRET). Nichts geschrieben.'); process.exit(2); }
 
 async function gql(query, variables) {
-  for (let a = 0; a < 12; a++) {
+  for (let a = 0; a < 20; a++) {
     let j;
     try {
       const r = await fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': TOK }, body: JSON.stringify({ query, variables }) });
@@ -124,7 +124,7 @@ async function gql(query, variables) {
       j = JSON.parse(await r.text());
     } catch { await sleep(2000 * (a + 1)); continue; }
     if (j.data) return j;
-    if (JSON.stringify(j.errors || '').includes('Throttled')) { await sleep(1500 + 500 * a); continue; }
+    if (JSON.stringify(j.errors || '').includes('Throttled')) { await sleep(2000 + 800 * a); continue; }
     await sleep(2000);
   }
   return null; // gescheiterte Anfrage ist KEIN Ergebnis — Aufrufer behandelt das als offen
