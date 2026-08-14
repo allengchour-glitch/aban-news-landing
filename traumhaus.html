@@ -339,6 +339,17 @@ renderer.shadowMap.type=THREE.PCFSoftShadowMap;
 renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=0.78;
 renderer.outputEncoding=THREE.sRGBEncoding;
 document.getElementById("wrap").appendChild(renderer.domElement);
+/* 🎬 Filmlook (UE5-Gefuehl ohne Post-Processing-Pass): dezente Saettigung/Kontrast
+   auf dem Canvas + eine Vignette als reines Composite-Overlay. Beides kostet auf
+   dem Handy praktisch nichts (kein zusaetzlicher Render-Target-Pass wie bei Bloom).
+   Abschalten ohne UI: localStorage.th_filmlook="0". */
+if(localStorage.getItem("th_filmlook")!=="0"){
+  renderer.domElement.style.filter="saturate(1.07) contrast(1.03)";
+  var _vig=document.createElement("div");
+  _vig.style.cssText="position:fixed;inset:0;pointer-events:none;z-index:1;"+
+    "background:radial-gradient(ellipse 118% 96% at 50% 44%,transparent 62%,rgba(10,14,26,.16) 86%,rgba(6,9,18,.34) 100%)";
+  document.getElementById("wrap").appendChild(_vig);
+}
 var scene=new THREE.Scene();scene.background=new THREE.Color(0x9fd0ea);scene.fog=new THREE.Fog(0x9fd0ea,130,340);
 var camera=new THREE.PerspectiveCamera(46,W/H,0.1,600);
 // Echtes Himmelslicht
@@ -3508,8 +3519,16 @@ setTimeout(function baueTiere(){
 // ---- Echte Gebaeude (Kenney/CC0 bd_*.glb aus der Repo-Bibliothek) ----
 setTimeout(function baueGebaeude(){
   if(!GL)return;
+  function _ladeFertigEins(){
+    if(--window._ladeOffen>0)return;
+    clearTimeout(window._ladeFinalT);
+    window._ladeFinalT=setTimeout(function(){
+      if(window._freiRaeumen){try{window._freiRaeumen();window._entwirren();}catch(e){}}
+    },2500);
+  }
   function bau(file,zielH,x,y,z,rotY,center,cb,ohneSchutz){
     if(!ohneSchutz){var _q=wegVonStrasse(x,z);x=_q[0];z=_q[1];}
+    window._ladeOffen=(window._ladeOffen||0)+1;
     GL.load("/models/"+file,function(g){var root=g.scene;
     var bb=new THREE.Box3().setFromObject(root),sz=new THREE.Vector3();bb.getSize(sz);
     root.scale.setScalar(zielH/(sz.y||1));
@@ -3518,7 +3537,8 @@ setTimeout(function baueGebaeude(){
     root.traverse(function(n){if(n.isMesh){n.castShadow=true;n.receiveShadow=true;if(n.material)n.material.envMapIntensity=0.3;}});
     var w=new THREE.Group();w.add(root);w.position.set(x,y,z);w.rotation.y=rotY;scene.add(w);
     w.userData.datei=file;   /* fuer Zaehlungen/Debug: welches Modell steckt in dieser Gruppe */
-    if(!window._gebaeude)window._gebaeude=[];window._gebaeude.push(w);if(cb)cb(w,root);},undefined,function(){});}
+    if(!window._gebaeude)window._gebaeude=[];window._gebaeude.push(w);if(cb)cb(w,root);
+    _ladeFertigEins();},undefined,function(){_ladeFertigEins();});}
 
   /* ═══════════════ 🏗️ QUARTIER-GENERATOR ═══════════════════════════════════════════
      Innerhalb der Ringstrasse ist kein Platz mehr — der Freiflaechen-Solver findet dort
@@ -4661,6 +4681,11 @@ setTimeout(function baueGebaeude(){
        haengt das Messergebnis davon ab, WANN man misst — mit 557 geladenen
        Modellen sah man 16 Strassenkonflikte, mit allen 640 dann 0. */
     setTimeout(function(){freiRaeumen();entwirren();},50000);
+    /* Und einmal LADE-GEKOPPELT statt nach Uhr: bau() zaehlt offene GLB-Ladungen;
+       2,5 s nach der letzten laeuft dieser Schlusslauf. Die festen Zeiten oben
+       decken schnelle Geraete ab — auf langsamen (Software-Renderer im Test!)
+       kamen die letzten Modelle NACH dem 50-s-Lauf und standen im Korridor. */
+    window._freiRaeumen=freiRaeumen;window._entwirren=entwirren;
   },260);
   /* Die alte Stadt-Scheune ist raus: eine Scheune zwischen Ringstrasse und Hochhaeusern
      ergibt kein stimmiges Bild. Der Hof steht jetzt draussen auf dem Feld. */
