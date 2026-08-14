@@ -1,0 +1,222 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "footer_m9NzUG": {
+      "type": "footer",
+      "blocks": {
+        "group_H6VpwJ": {
+          "type": "group",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 6,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "text_LWt8Pz": {
+              "type": "text",
+              "settings": {
+                "text": "<h2>Bleib auf dem Laufenden</h2>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_f9CFLH": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Exklusive Angebote, –10% mit WELCOME10 & früher Zugang zu neuen Produkten.</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_LWt8Pz",
+            "text_f9CFLH"
+          ]
+        },
+        "email_signup_crihX7": {
+          "type": "email-signup",
+          "settings": {
+            "width": "fill",
+            "custom_width": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "heading": "",
+            "heading_preset": "h3",
+            "border_style": "all",
+            "border_width": 1,
+            "border_radius": 100,
+            "input_type_preset": "paragraph",
+            "style_class": "button-unstyled",
+            "display_type": "arrow",
+            "label": "Sign up",
+            "integrated_button": true,
+            "button_type_preset": "paragraph",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "group_H6VpwJ",
+        "email_signup_crihX7"
+      ],
+      "name": "t:names.footer",
+      "settings": {
+        "section_width": "page-width",
+        "gap": 20,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 30,
+        "padding-block-end": 30
+      }
+    },
+    "footer_utilities_jLGE8U": {
+      "type": "footer-utilities",
+      "blocks": {
+        "footer_copyright_jweRK8": {
+          "type": "footer-copyright",
+          "settings": {
+            "show_powered_by": true,
+            "font_size": "0.75rem",
+            "case": "none"
+          },
+          "blocks": {}
+        },
+        "footer_policy_list_VCdnpa": {
+          "type": "footer-policy-list",
+          "settings": {
+            "font_size": "0.75rem",
+            "case": "none"
+          },
+          "blocks": {}
+        },
+        "social_links_Ew63Kq": {
+          "type": "social-links",
+          "settings": {
+            "facebook_url": "https://www.facebook.com/1049840534888592",
+            "instagram_url": "https://www.instagram.com/luxestyle.ch",
+            "youtube_url": "",
+            "tiktok_url": "https://www.tiktok.com/@luxestyle.ch",
+            "twitter_url": "",
+            "threads_url": "https://www.threads.net/@luxestyle.ch",
+            "linkedin_url": "",
+            "bluesky_url": "",
+            "snapchat_url": "",
+            "pinterest_url": "",
+            "tumblr_url": "",
+            "vimeo_url": "",
+            "custom_url": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "footer_copyright_jweRK8",
+        "footer_policy_list_VCdnpa",
+        "social_links_Ew63Kq"
+      ],
+      "name": "t:names.utilities",
+      "settings": {
+        "section_width": "page-width",
+        "gap": 24,
+        "divider_thickness": 0,
+        "color_scheme": "",
+        "padding-block-start": 20,
+        "padding-block-end": 48
+      }
+    },
+    "custom_liquid_lxpopup": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{%- comment -%}\n  LuxeStyle E-Mail-Capture-Popup  ·  schliesst den Signup-Leak (Capture).\n  Schreibt Anmeldungen direkt nach Klaviyo (Client Abonnieren API) -> Liste \"E-Mail-Adresse List\"\n  (Double-Opt-in, DSGVO-konform) -> triggert den Welcome-Flow + zeigt WELCOME10.\n\n  EINBAU (eine Variante):\n    A) Theme-Editor -> Footer -> Block \"Custom Liquid\" hinzufuegen -> diesen Code einfuegen.\n    B) In layout/theme.liquid vor </body>:  {% render 'luxe-email-popup' %}\n\n  Konfig: Klaviyo Public Key + Listen-ID sind unten gesetzt. Erscheint nach 7 s ODER bei\n  Exit-Intent, max. 1x pro Besucher (localStorage). Markenfarben Taupe/Cream.\n{%- endcomment -%}\n\n<div id=\"lx-pop\" style=\"display:none;position:fixed;inset:0;z-index:99998;align-items:center;justify-content:center;background:rgba(44,44,44,.55);padding:16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif\">\n  <div style=\"position:relative;max-width:420px;width:100%;background:#faf7f2;color:#2c2c2c;border-radius:14px;box-shadow:0 20px 60px rgba(44,44,44,.35);padding:28px 24px;text-align:center\">\n    <button id=\"lx-pop-x\" aria-label=\"Schliessen\" style=\"position:absolute;top:10px;right:12px;background:none;border:none;font-size:24px;line-height:1;color:#8b7355;cursor:pointer\">&times;</button>\n    <div id=\"lx-pop-form\">\n      <div style=\"font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8b7355;margin-bottom:8px\">LuxeStyle &middot; Schweiz</div>\n      <h2 style=\"font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;font-size:28px;line-height:1.15;margin:0 0 8px\">10% auf deine erste Bestellung</h2>\n      <p style=\"font-size:14px;color:#2c2c2ccf;margin:0 0 16px\">Trag dich ein und erhalte den Code <b>WELCOME10</b> &mdash; plus exklusive Drops &amp; Angebote.</p>\n      <form id=\"lx-pop-f\" novalidate>\n        <input id=\"lx-pop-email\" type=\"email\" required placeholder=\"Deine E-Mail-Adresse\" autocomplete=\"email\"\n          style=\"width:100%;padding:13px 14px;border:1px solid #d4b896;border-radius:8px;font-size:15px;background:#fff;color:#2c2c2c;margin-bottom:10px\">\n        <button type=\"submit\" id=\"lx-pop-go\"\n          style=\"width:100%;padding:14px;border:none;border-radius:8px;background:#2c2c2c;color:#faf7f2;font-size:15px;font-weight:600;cursor:pointer\">Code sichern</button>\n      </form>\n      <p id=\"lx-pop-err\" style=\"display:none;color:#d85a30;font-size:12px;margin:8px 0 0\"></p>\n      <p style=\"font-size:11px;color:#2c2c2c8c;margin:12px 0 0;line-height:1.45\">Mit der Anmeldung stimmst du zu, E-Mails von LuxeStyle zu erhalten. Abmeldung jederzeit. Siehe <a href=\"/policies/privacy-policy\" style=\"color:#8b7355\">Datenschutz</a>.</p>\n    </div>\n    <div id=\"lx-pop-done\" style=\"display:none\">\n      <div style=\"font-size:40px;line-height:1;margin-bottom:8px\">&#127881;</div>\n      <h2 style=\"font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;font-size:26px;margin:0 0 6px\">Willkommen!</h2>\n      <p style=\"font-size:14px;color:#2c2c2ccf;margin:0 0 14px\">Dein 10%-Code &mdash; beim Checkout einlösen:</p>\n      <div style=\"display:flex;gap:8px;justify-content:center;align-items:center;margin-bottom:6px\">\n        <span id=\"lx-pop-code\" style=\"font-size:20px;font-weight:700;letter-spacing:2px;background:#fff;border:1px dashed #8b7355;border-radius:8px;padding:10px 18px\">WELCOME10</span>\n        <button id=\"lx-pop-copy\" style=\"background:#8b7355;border:none;color:#fff;padding:11px 14px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600\">Kopieren</button>\n      </div>\n      <p style=\"font-size:12px;color:#2c2c2c8c;margin:10px 0 0\">Bitte bestätige noch kurz die E-Mail in deinem Postfach.</p>\n    </div>\n  </div>\n</div>\n\n<script>\n(function(){\n  var KEY=\"lx_popup_v1\";\n  var PUBLIC_KEY=\"XWqMAD\";       // Klaviyo Public API Key (Site-ID)\n  var LIST_ID=\"SfdmHY\";          // Klaviyo \"E-Mail-Adresse List\" (Double-Opt-in)\n  if(localStorage.getItem(KEY)) return;\n  var pop=document.getElementById(\"lx-pop\");\n  if(!pop) return;\n  var shown=false;\n  function show(){ if(shown)return; shown=true; pop.style.display=\"flex\"; }\n  function close(){ pop.style.display=\"none\"; if(!localStorage.getItem(KEY)) localStorage.setItem(KEY,\"dismissed\"); }\n  function done(){ localStorage.setItem(KEY,\"subscribed\"); document.getElementById(\"lx-pop-form\").style.display=\"none\"; document.getElementById(\"lx-pop-done\").style.display=\"block\"; }\n\n  setTimeout(show,7000);\n  document.addEventListener(\"mouseout\",function(e){ if(e.clientY<=0) show(); });\n  document.getElementById(\"lx-pop-x\").onclick=close;\n  pop.addEventListener(\"click\",function(e){ if(e.target===pop) close(); });\n\n  document.getElementById(\"lx-pop-f\").addEventListener(\"submit\",function(e){\n    e.preventDefault();\n    var email=(document.getElementById(\"lx-pop-email\").value||\"\").trim();\n    var err=document.getElementById(\"lx-pop-err\");\n    if(!/^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$/.test(email)){ err.textContent=\"Bitte eine gültige E-Mail eingeben.\"; err.style.display=\"block\"; return; }\n    var btn=document.getElementById(\"lx-pop-go\"); btn.disabled=true; btn.textContent=\"…\";\n    fetch(\"https://a.klaviyo.com/client/subscriptions/?company_id=\"+PUBLIC_KEY,{\n      method:\"POST\",\n      headers:{\"Content-Type\":\"application/json\",\"revision\":\"2024-10-15\"},\n      body:JSON.stringify({data:{type:\"subscription\",attributes:{custom_source:\"Onsite Popup\",profile:{data:{type:\"profile\",attributes:{email:email}}}},relationships:{list:{data:{type:\"list\",id:LIST_ID}}}}})\n    }).then(function(r){\n      if(r.status===202||r.ok){ done(); }\n      else { err.textContent=\"Hat nicht geklappt — bitte später erneut.\"; err.style.display=\"block\"; btn.disabled=false; btn.textContent=\"Code sichern\"; }\n    }).catch(function(){ err.textContent=\"Netzwerkfehler — bitte erneut.\"; err.style.display=\"block\"; btn.disabled=false; btn.textContent=\"Code sichern\"; });\n  });\n\n  document.getElementById(\"lx-pop-copy\").onclick=function(){\n    var t=document.createElement(\"textarea\"); t.value=\"WELCOME10\"; document.body.appendChild(t); t.select();\n    try{document.execCommand(\"copy\");}catch(e){} document.body.removeChild(t);\n    this.textContent=\"Kopiert ✓\"; var b=this; setTimeout(function(){b.textContent=\"Kopieren\";},1500);\n  };\n})();\n</script>\n",
+        "color_scheme": "scheme-1",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    }
+  },
+  "order": [
+    "footer_m9NzUG",
+    "footer_utilities_jLGE8U",
+    "custom_liquid_lxpopup"
+  ]
+}
