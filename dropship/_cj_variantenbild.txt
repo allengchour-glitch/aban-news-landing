@@ -63,3 +63,5 @@ gid://shopify/Product/15446015148417	zugeordnet	4	Manueller Slow Cooker für Sch
 gid://shopify/Product/15446015738241	zugeordnet	2	Schneidebrett aus massivem Teakholz
 gid://shopify/Product/15446016557441	zugeordnet	10	Edelstahl-Bratpfanne mit Wabenstruktur
 gid://shopify/Product/15446018326913	bild-urls-tot
+gid://shopify/Product/15446020686209	zugeordnet	2	3er-Set Bambus-Schneidebretter
+gid://shopify/Product/15446064464257	zugeordnet	2	Glitzerndes Highlight Puder für Gesicht & Körper
