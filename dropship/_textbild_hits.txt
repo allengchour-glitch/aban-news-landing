@@ -6708,3 +6708,4 @@ gid://shopify/Product/15455730565505	32->2	Dreieckskissenkissen mit Kegelförmig
 gid://shopify/Product/15455761236353	9->0	Smart-Lichtrecorder
 gid://shopify/Product/15455824773505	11->0	Kabellose Lichtsteuerung
 gid://shopify/Product/15455825297793	152->0	Casual-Set mit Ruché-Textur
+gid://shopify/Product/15458625094017	59->0	Elektro-Kopfmasseur
