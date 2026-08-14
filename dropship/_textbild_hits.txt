@@ -6670,3 +6670,7 @@ gid://shopify/Product/15453473636737	20->2	Unisex-Uhr Radiant Rot
 gid://shopify/Product/15453811245441	17->0	Bissfester Corn-Dog für Hunde mit Geräusche
 gid://shopify/Product/15453922361729	15->3	Klassischer Acryl Aquarium
 gid://shopify/Product/15453999628673	149->0	Faltbarer Schuhregal mit mehreren Ebenen
+gid://shopify/Product/15454014898561	28->0	21700-Lithium-Akku-Ladegerät
+gid://shopify/Product/15454037901697	27->1	Atmungsaktive Sneaker
+gid://shopify/Product/15454057431425	115->0	Liebesbaum Landschaftsölgemälde
+gid://shopify/Product/15454067589505	14->3	Universal-IR-Fernbedienung mit Sprachsteuerung
