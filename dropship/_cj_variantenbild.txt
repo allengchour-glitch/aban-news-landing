@@ -6,3 +6,8 @@ gid://shopify/Product/15443182846337	zugeordnet	3	Moissanit-Halskette «Aurora»
 gid://shopify/Product/15443182944641	zugeordnet	5	Moissanit-Verlobungsring «Solitär» 1 ct · 925 Silber D-VVS1
 gid://shopify/Product/15443219186049	zugeordnet	2	Edelstein-Halskette «Rubin & Smaragd» · 925 Silber Doppel-Ha
 gid://shopify/Product/15443219218817	zugeordnet	2	Edelstein-Anhänger «Rubin & Smaragd» 2 ct · 925 Silber Halo
+gid://shopify/Product/15443240944001	zugeordnet	2	Moissanit-Ohrstecker «Duo» 0,5 & 2 ct · 925 Silber
+gid://shopify/Product/15443241075073	zugeordnet	2	Edelstein-Halskette «Rubin & Saphir» · 925 Silber
+gid://shopify/Product/15443241140609	zugeordnet	2	Edelstein-Kreuz-Anhänger «Rubin» · 925 Silber
+gid://shopify/Product/15443241173377	zugeordnet	3	Edelstein-Anhänger «Blüten-Halo» · 925 Silber
+gid://shopify/Product/15443241206145	zugeordnet	4	Edelstein-Kleeblatt «Rubin & Saphir» · 925 Silber
