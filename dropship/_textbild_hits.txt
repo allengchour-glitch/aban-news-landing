@@ -6505,3 +6505,5 @@ gid://shopify/Product/15453794500993	121->0	Tier Sofa mit abnehmbarer und waschb
 gid://shopify/Product/15453794992513	58->0	Hundebett mit entfernbarer, waschbarer wasserdichter Randumr
 gid://shopify/Product/15412361593217	144->3	3D-Druck Nachttischlampe – warmes Nachtlicht & Deko-Objekt f
 gid://shopify/Product/15412432175489	13->0	Kühlende Sommerdecke – Cool-Feel, atmungsaktiv & waschbar
+gid://shopify/Product/15443532218753	8->1	Powerbank «Volt» · Schnellladen
+gid://shopify/Product/15445271609729	24->0	UV Transparentes Soft Epoxy Gel, vergilbungsresistent
