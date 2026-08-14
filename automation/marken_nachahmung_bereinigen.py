@@ -18,7 +18,22 @@ ZAHLEN AUS DEM PROBELAUF (live gegen den Shop, nicht gegen den Export)
 ---------------------------------------------------------------------
 Rohsuche nach 80 Markennamen über alle 31'500 aktiven Produkte:  407 Treffer
 Nach Wortgrenzen + Ausnahmeliste:                                 48 Treffer
-Davon tatsächlich zu ändern:                                      38 Produkte
+Aus dem Ledger _google_kanal_gesaeubert*.txt nachgezogen:         + 2 Produkte
+Tatsächlich geändert:                                             43 Produkte
+  · 43× Text/Titel/SEO/URL   · 27 Bild-Alt-Texte in 5 Produkten
+  ·  3 Varianten-Optionswerte ·  15 Judge.me-Zwischenspeicher
+Davon im Google-Kanal: 37.
+
+DIE AUSSAGE LAG IN ACHT FELDERN, NICHT IN EINEM
+-----------------------------------------------
+Erst die Live-Nachkontrolle mit curl auf die echte Produktseite hat gezeigt, wie weit die
+Behauptung gestreut war. Nach jedem «fertig» stand «Chanel» weiter im gerenderten HTML:
+  1. Titel            2. Beschreibung      3. SEO-Titel        4. SEO-Beschreibung
+  5. Handle (URL)     6. Varianten-Optionswert
+  7. Bild-Alt-Text (aus dem alten Titel erzeugt, 27 Bilder)
+  8. Metafeld judgeme.review_widget_data (Zwischenspeicher der Bewertungs-App)
+Wer nur prüft, was er selbst geändert hat, hält 1–4 für die ganze Arbeit. Erst die Suche
+nach dem, was die KUNDIN SIEHT, findet 5–8.
 
 FEHLTREFFER, die der erste Entwurf erwischt hätte (alle NICHT angefasst)
 -----------------------------------------------------------------------
