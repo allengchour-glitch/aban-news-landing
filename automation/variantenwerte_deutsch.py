@@ -78,6 +78,10 @@ PROBELAUF UND FEHLTREFFER (DRY=1, gegen /tmp/export.jsonl vom 12.08.):
    übersprungen worden, bei denen die zweite Zeile noch steht.
  • F fasst NUR die Farb-Zeile an. Liefe die Grössen-Zeile mit, machte ein Wert wie «No 1» aus
    der Ringgrösse ein «Modell 1».
+ • D3: in einer Spec-Zeile, in der schon Yards ersetzt wurden, steht daneben oft «Green-Size 23»
+   — dieselbe Liste, halb englisch. Nur DORT wird auch «Size N» eingedeutscht. Eine Zeile
+   «Grösse: Size 23» ohne Yards bleibt unangetastet: ausserhalb dieser Mischlisten ist «Size»
+   eine gewöhnliche Angabe, und ein globales Ersetzen würde sie mitreissen.
 
 WER SCHREIBT DAS FELD BEIM NÄCHSTEN PRODUKT?
  Der CJ-Importer `automation/cj_category_fill.mjs` (buildFashion/parseVar). Er ist im selben

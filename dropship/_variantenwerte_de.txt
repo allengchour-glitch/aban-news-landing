@@ -1023,3 +1023,24 @@ A2:gid://shopify/Product/15447991484801	0	Rundhals Strickweste mit Holzknöpfen
 A2:gid://shopify/Product/15447991943553	0	Retro Strickweste mit Knopfleiste
 A2:gid://shopify/Product/15447994630529	0	V-Neck Strickweste für Damen, Einheitsgrösse
 A2:gid://shopify/Product/15447994925441	0	Gerippte Strickweste für Damen
+A2:gid://shopify/Product/15447995056513	0	3D-Strick-Slip-Weste
+A2:gid://shopify/Product/15447997251969	0	Knit-Weste im koreanischen Casual-Stil
+A2:gid://shopify/Product/15448002331009	0	Legeres Strick-Gilet für Damen
+A2:gid://shopify/Product/15448010097025	0	Gehäkeltes Bikini Cover-Up mit Quasten
+A2:gid://shopify/Product/15448013734273	0	Kurzes Stricktop mit Prinzessinnenärmeln
+A2:gid://shopify/Product/15448018223489	0	Vintage-Top mit diagonalem Verschluss
+A2:gid://shopify/Product/15448019796353	0	Gestricktes Langarmhemd mit Falten-Optik
+A2:gid://shopify/Product/15448021303681	0	Kaftan mit Schmetterlingsrücken
+A2:gid://shopify/Product/15448022712705	0	Cardigan mit Lochmuster und Bindedetail
+A2:gid://shopify/Product/15448022974849	0	Langes Strickjäckchen mit Lochmuster
+A2:gid://shopify/Product/15448023138689	0	Lockerer Strickpullover mit Schmetterlings-Patchwork
+A2:gid://shopify/Product/15448023302529	0	Luftiger Strick-Cardigan mit Lochmuster
+A2:gid://shopify/Product/15448023466369	0	Kurzes Strick-Top mit langen Ärmeln
+A2:gid://shopify/Product/15448025530753	0	Off-Shoulder Langarmshirt mit Schnürung
+A2:gid://shopify/Product/15448025891201	0	Sexy Hollow Out Shirt mit Dreiviertelärmeln
+A2:gid://shopify/Product/15448026579329	0	Sonnen-Schutzshirt mit breiter Krempe
+A2:gid://shopify/Product/15448026743169	0	UV-Schutz Langarmshirt für Outdoor-Aktivitäten
+A2:gid://shopify/Product/15448027627905	0	Goldenes Spaghetti-Träger Strandkleid
+A2:gid://shopify/Product/15448030183809	0	Off-Shoulder Strandbluse mit Seitenschlitz
+A2:gid://shopify/Product/15448030642561	0	Locker fallendes Strandkleid mit Lochmuster
+A2:gid://shopify/Product/15448032280961	0	Strick-Cardigan mit Lochmuster und Kordelzug
