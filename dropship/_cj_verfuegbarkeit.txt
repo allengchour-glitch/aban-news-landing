@@ -8345,3 +8345,15 @@ gid://shopify/Product/15454578835841	ok
 gid://shopify/Product/15454578803073	ok
 gid://shopify/Product/15454578737537	ok
 gid://shopify/Product/15454578704769	ok
+gid://shopify/Product/15454578639233	ok
+gid://shopify/Product/15454578540929	ok
+gid://shopify/Product/15454578409857	ok
+gid://shopify/Product/15454578344321	ok
+gid://shopify/Product/15454578311553	ok
+gid://shopify/Product/15454578278785	ok
+gid://shopify/Product/15454578147713	ok
+gid://shopify/Product/15454578016641	ok
+gid://shopify/Product/15454577918337	ok
+gid://shopify/Product/15454577885569	ok
+gid://shopify/Product/15454577787265	ok
+gid://shopify/Product/15454577754497	ok

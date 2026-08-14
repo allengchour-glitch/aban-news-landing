@@ -18762,3 +18762,6 @@ gid://shopify/Product/15479467147649	umgestellt	34
 gid://shopify/Product/15479467245953	schon-sauber	0
 gid://shopify/Product/15479467278721	schon-sauber	0
 gid://shopify/Product/15479467377025	schon-sauber	0
+gid://shopify/Product/15479467409793	alle-mit-text	-
+gid://shopify/Product/15479467442561	schon-sauber	0
+gid://shopify/Product/15479467475329	schon-sauber	0
