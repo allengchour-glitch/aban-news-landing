@@ -8521,3 +8521,17 @@ gid://shopify/Product/15454413619585	ok
 gid://shopify/Product/15454413586817	ok
 gid://shopify/Product/15454413554049	ok
 gid://shopify/Product/15454413488513	ok
+gid://shopify/Product/15454413455745	ok
+gid://shopify/Product/15454413095297	ok
+gid://shopify/Product/15454412898689	ok
+gid://shopify/Product/15454412669313	ok
+gid://shopify/Product/15454412177793	ok
+gid://shopify/Product/15454411882881	ok
+gid://shopify/Product/15454386160001	ok
+gid://shopify/Product/15454386061697	ok
+gid://shopify/Product/15454386028929	ok
+gid://shopify/Product/15454385996161	ok
+gid://shopify/Product/15454385963393	ok
+gid://shopify/Product/15454385897857	ok
+gid://shopify/Product/15454385865089	ok
+gid://shopify/Product/15454385832321	ok
