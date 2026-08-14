@@ -22,8 +22,11 @@ a{color:var(--amber-dk);text-decoration:none}button{font-family:inherit}
 .top .in{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:10px 16px}
 .brand{font-weight:900;color:var(--amber-dk);font-size:19px}
 .top .links{margin-left:auto;display:flex;gap:8px}
-.top .links a{font-size:.82rem;font-weight:700;color:var(--ink2);padding:7px 12px;border:1px solid var(--line);border-radius:20px}
+.top .links a{font-size:.88rem;font-weight:700;color:var(--ink2);padding:9px 13px;border:1px solid var(--line);border-radius:20px}
 .top .links a:hover{background:var(--cream);color:var(--amber-dk);border-color:var(--cream)}
+/* Unter ~520px passten die 4 Pillen nicht neben das Logo — die ganze Suchseite
+   bekam horizontales Scrollen. Klein: nur der Inserieren-CTA bleibt. */
+@media(max-width:520px){.top .links a:not(.cta){display:none}}
 .top .links a.cta{background:var(--amber-dk);color:#fff;border-color:var(--amber-dk)}
 .hero{background:radial-gradient(120% 130% at 12% 10%,#2a221a 0%,#161310 55%,#0f0d0b 100%);color:#f6efe2;position:relative;overflow:hidden}
 .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 20%,rgba(251,191,36,.25),transparent 45%),radial-gradient(circle at 10% 90%,rgba(217,119,6,.22),transparent 40%);pointer-events:none}
@@ -39,7 +42,7 @@ a{color:var(--amber-dk);text-decoration:none}button{font-family:inherit}
 .searchbox button.go{background:#161310;color:#fff;border:0;border-radius:11px;padding:13px 28px;font-weight:800;font-size:15px;cursor:pointer;white-space:nowrap;transition:.15s}
 .searchbox button.go:hover{background:#b9842f}
 .hero .quick{margin-top:13px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center;font-size:.84rem}
-.hero .quick a{color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:16px;padding:4px 12px;font-weight:600}
+.hero .quick a{color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:16px;padding:9px 14px;font-weight:600;display:inline-block}
 .hero .quick a:hover{background:rgba(255,255,255,.28)}
 .wrap{max-width:1100px;margin:22px auto;padding:0 16px}
 .sect{margin-bottom:26px}

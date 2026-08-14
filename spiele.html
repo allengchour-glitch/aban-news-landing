@@ -28,10 +28,10 @@
 <style>
 :root{--cyan:#5ef2ff;--purple:#b98bff;--pink:#ff6ec7;--amber:#ffcf6e;--green:#6affab}
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{overflow-x:clip;scroll-behavior:smooth}
 body{background:#06070f;color:#eaf0ff;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.55;overflow-x:hidden;position:relative;min-height:100vh}
 /* ---- Synthwave-Hintergrund (reines CSS, self-contained) ---- */
-.bg{position:fixed;inset:0;z-index:-2;background:linear-gradient(180deg,#02030a 0%,#0a0620 42%,#1a0a2e 60%,#2a1140 74%,#0a0618 100%)}
+.bg{position:fixed;inset:0;z-index:-2;overflow:hidden;background:linear-gradient(180deg,#02030a 0%,#0a0620 42%,#1a0a2e 60%,#2a1140 74%,#0a0618 100%)}
 .bg .sun{position:absolute;left:50%;top:32%;width:300px;height:300px;transform:translate(-50%,-50%);border-radius:50%;
   background:linear-gradient(180deg,#ffe14d 0%,#ff9a3d 42%,#ff2d6f 100%);filter:blur(1px);
   box-shadow:0 0 120px 30px rgba(255,90,140,.35);
