@@ -577,3 +577,5 @@ gid://shopify/Product/15497434661249	CJ-8F62A542-D589-4A46-93A0-24E4EDAEACB2	Sof
 gid://shopify/Product/15497434825089	CJ-1777974329062469632	Silikon-Nackenkissen für Shampoobecken
 gid://shopify/Product/15497434890625	CJ-1777355232654139392	Bettkeil Kissen mit Tasche
 gid://shopify/Product/15497494397313	CJ-9C611B19-9C6B-4904-9829-A0B438502826	Wabentuch aus Baumwolle
+gid://shopify/Product/15497580118401	CJ-1569245866710544384	Business Rucksack für Laptop (20-35L)
+gid://shopify/Product/15497580315009	CJ-1568538295615893504	Grosser Rucksack mit USB-Anschluss

@@ -45,6 +45,10 @@ const numOf=s=>{const m=String(s||'').match(/\d+/);return m?+m[0]:null;};
 // Eine Farb-Option, in der JEDER Wert eine reine Lieferanten-Artikelnummer ist («JM721»,
 // «MK1578»), ist keine Farbe. Die Kundin wählt dort blind zwischen fremden Codes.
 const CODE=/^[A-Za-z][A-Za-z0-9]{2,17}$/;
+// «1Style», «Style 1», «No 7», «Color 2», «29 Models» — kein Deutsch, keine Farbe; die Zahl ist
+// die Entwurfsnummer des Lieferanten. Wortweise «Modell N» bzw. «Farbton N» (14.08.2026).
+const ZAEHL=/^(?:(?:no\.?|nr\.?|colou?r|style|models?|figure|patterns?|design)\s*[-. ]?\s*(\d{1,3})|(\d{1,3})\s*[-. ]?\s*(?:style|models?|figure|colou?r|patterns?|design))$/i;
+const istZaehl=v=>ZAEHL.test((v||'').trim());
 const istCode=v=>{const t=(v||'').trim();return CODE.test(t)&&(t.match(/\d/g)||[]).length>=2
   &&!/(xs|s|m|l|xl|xxl|xxxl)$/i.test(t)
   &&!/(gb|tb|mb|mah|ma|mm|cm|ml|kg|pcs|pc|pack|ports|inch|yards?|frequency|style|model|color|size|no)/i.test(t)
@@ -71,8 +75,12 @@ function buildFashion(d){
  // in der Reihenfolge der Bildergalerie. Sonst steht der fremde Code im Kaufbereich und die
  // Kundin wählt blind zwischen «JM721» und «JM722» (14.08.2026).
  const codeOpt=useC&&colors.length>=2&&colors.every(istCode);
- const cName=codeOpt?'Ausführung':'Farbe';
- const cMap=codeOpt?new Map(colors.map((c,i)=>[c,'Modell '+(i+1)])):null;
+ const zaehlOpt=useC&&!codeOpt&&colors.length>=2&&colors.every(istZaehl);
+ // Steht in JEDEM Wert «Color», ist es doch eine Farbwahl — nur unbenannt: «Farbton N».
+ const nurFarbe=zaehlOpt&&colors.every(c=>/colou?r/i.test(c));
+ const cName=(codeOpt||(zaehlOpt&&!nurFarbe))?'Ausführung':'Farbe';
+ const cMap=(codeOpt||zaehlOpt)
+   ?new Map(colors.map((c,i)=>[c,(nurFarbe?'Farbton ':'Modell ')+(i+1)])):null;
  const cVal=c=>cMap?(cMap.get(c)||c):c;
  const opts=[]; if(useC)opts.push({name:cName,values:colors.map(cVal)}); if(useS)opts.push({name:'Grösse',values:sizes});
  if(!opts.length)return null;

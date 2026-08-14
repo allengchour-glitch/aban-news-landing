@@ -26,6 +26,13 @@ WAS DIESES SKRIPT TUT
     («<strong>Grösse:</strong> FREE SIZE», live geprüft am Strick-Cape-Schal). Die
     Spezifikationszeile trägt die Aussage ein zweites Mal und wird mitgezogen: 162 Produkte.
     Fliesstext bleibt unberührt.
+ E) Die zweite Hälfte des Farb-Befunds: 116 Produkte zeigen statt einer Farbe ein englisches
+    ZÄHLWORT — «1Style», «Style 1», «No 7», «29 Models», «1Figure». Das ist keine Farbe, kein
+    Deutsch, und die Zahl ist die Entwurfsnummer des Lieferanten. → «Modell 1 … N» unter
+    «Ausführung». Steht in JEDEM Wert das Wort «Color» («1 Color», «52COLOR»), ist es sehr wohl
+    eine Farbwahl, nur unbenannt — dann bleibt die Option «Farbe» und die Werte werden
+    «Farbton 1 … N» (bei der Foundation-Creme sind das tatsächlich Farbtöne).
+    C und E zusammen = 248 Produkte; der Befund nannte 216.
 
 PROBELAUF UND FEHLTREFFER (DRY=1, gegen /tmp/export.jsonl vom 12.08.):
  • Klasse A: 254 Produkte, alle mit genau EINEM Wert. Kein Fehltreffer.
@@ -60,10 +67,17 @@ PROBELAUF UND FEHLTREFFER (DRY=1, gegen /tmp/export.jsonl vom 12.08.):
 
 WER SCHREIBT DAS FELD BEIM NÄCHSTEN PRODUKT?
  Der CJ-Importer `automation/cj_category_fill.mjs` (buildFashion/parseVar). Er ist im selben
- Zug mitrepariert: `isSize` kennt FREE/ONE SIZE und `deSize` macht «Einheitsgrösse» daraus,
- `deColor` rechnet Yards in «Gr. N» um, und eine Farb-Option aus lauter Lieferantencodes wird
- schon beim Anlegen zu «Ausführung» + «Modell N». Ohne diesen Teil wäre die Reparatur beim
- nächsten Import-Lauf wieder aufgefressen.
+ Zug mitrepariert und im Trockenlauf geprüft:
+   «Black-FREE SIZE»      → Farbe «Schwarz» + Grösse «Einheitsgrösse»   (deSize)
+   «Gold-17 Yards»        → Farbe «Gold»    + Grösse «Gr. 17»           (YARDS in parseVar —
+                            das trennt Farbe und Grösse gleich beim Anlegen, statt beides in
+                            einem Feld zu lassen; «Vineyard Children-80cm» bleibt unberührt)
+   «JM721/JM722»          → Option «Ausführung» mit «Modell 1/2»        (istCode)
+   «1Style/2Style»        → Option «Ausführung» mit «Modell 1/2»        (istZaehl)
+   «1 Color/2 Color»      → Option «Farbe» mit «Farbton 1/2»
+   «Black-S/Red-M»        → unverändert Farbe «Schwarz/Rot» + Grösse «S/M»
+ Ohne diesen Teil wäre die Reparatur beim nächsten Import-Lauf wieder aufgefressen — genau der
+ Fehler, der bei `condition` und `google_product_category` schon zweimal Geld gekostet hat.
 
 ⚠️ «Option value already exists» → Wert wird ÜBERSPRUNGEN, nie erzwungen. Sonst verschmilzt
    Shopify zwei Varianten zu einer und der Bestand der zweiten ist weg.
@@ -71,14 +85,14 @@ WER SCHREIBT DAS FELD BEIM NÄCHSTEN PRODUKT?
    (`CJ-CJYD…`), und `cj_order_engine.vid_fuer` löst darüber exakt auf — nicht über den
    Variantentitel. Der Titel-Abgleich greift nur bei SKUs der Form `CJ-<pid>`.
 
-DRY=1 meldet nur. NUR=A|B|C beschränkt auf eine Klasse.
+DRY=1 meldet nur. NUR=A|B|C|D|E beschränkt auf einzelne Klassen (Standard: alle).
 """
 import json, os, re, subprocess, sys, time
 
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
 API = "https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json"
 DRY = os.environ.get("DRY") == "1"
-NUR = os.environ.get("NUR", "ABC").upper()
+NUR = os.environ.get("NUR", "ABCDE").upper()
 EXPORT = os.environ.get("EXPORT", "/tmp/export.jsonl")
 LEDGER = "dropship/_variantenwerte_de.txt"
 
@@ -249,7 +263,7 @@ M_DESC = ('mutation($i:ProductInput!){productUpdate(input:$i){userErrors{field m
 
 def sammeln():
     """Kandidaten aus dem Export vorsortieren. Entschieden wird später gegen die LIVE-Daten."""
-    a, b, c, d = [], [], [], []
+    a, b, c, d, e = [], [], [], [], []
     for zeile in open(EXPORT):
         try:
             p = json.loads(zeile)
@@ -272,7 +286,10 @@ def sammeln():
             if (name in FARBOPT and len(vals) >= 2 and pid not in AUSNAHMEN
                     and all(ist_lieferantencode(v) for v in vals)):
                 c.append((p["id"], p["title"]))
-    return a, b, c, d
+            if (name in FARBOPT and len(vals) >= 2 and pid not in AUSNAHMEN
+                    and all(ist_zaehlwert(v) for v in vals)):
+                e.append((p["id"], p["title"]))
+    return a, b, c, d, e
 
 
 def plan_fuer(klasse, opt):
@@ -297,11 +314,22 @@ def plan_fuer(klasse, opt):
                 paare.append((werte[i]["id"], v, n))
         if not paare:
             return None, [], []
-    else:
+    elif klasse == "C":
         if name not in FARBOPT or len(alt) < 2 or not all(ist_lieferantencode(v) for v in alt):
             return None, [], []
         neuer_optname = "Ausführung"
         paare = [(werte[i]["id"], alt[i], "Modell %d" % (i + 1)) for i in range(len(alt))]
+    else:
+        if name not in FARBOPT or len(alt) < 2 or not all(ist_zaehlwert(v) for v in alt):
+            return None, [], []
+        # Steht in JEDEM Wert das Wort «Color», ist es tatsächlich eine Farbwahl — nur
+        # unbenannt. Dann bleibt die Option «Farbe» und die Werte werden «Farbton N».
+        # Sonst ist es eine Modellwahl: Option «Ausführung», Werte «Modell N».
+        if all(E_FARBWORT.search(v) for v in alt):
+            paare = [(werte[i]["id"], alt[i], "Farbton %d" % (i + 1)) for i in range(len(alt))]
+        else:
+            neuer_optname = "Ausführung"
+            paare = [(werte[i]["id"], alt[i], "Modell %d" % (i + 1)) for i in range(len(alt))]
 
     # Kollisionen: ein Wert, den es in derselben Option schon gibt, würde zwei Varianten
     # verschmelzen. Solche Werte werden ausgelassen, nicht erzwungen.
@@ -319,7 +347,7 @@ def plan_fuer(klasse, opt):
 
 
 def main():
-    a, b, c, dd = sammeln()
+    a, b, c, dd, ee = sammeln()
     aufgabe = []
     if "A" in NUR:
         aufgabe += [("A", *x) for x in a]
@@ -329,9 +357,12 @@ def main():
         aufgabe += [("C", *x) for x in c]
     if "D" in NUR:
         aufgabe += [("D", *x) for x in dd]
+    if "E" in NUR:
+        aufgabe += [("E", *x) for x in ee]
     print("Kandidaten aus dem Export — A (FREE/ONE SIZE): %d | B (Yards): %d | "
-          "C (Lieferantencode als Farbe): %d | D (Spec-Zeile in der Beschreibung): %d"
-          % (len(a), len(b), len(c), len(dd)), flush=True)
+          "C (Lieferantencode als Farbe): %d | D (Spec-Zeile in der Beschreibung): %d | "
+          "E (englische Zählwerte): %d"
+          % (len(a), len(b), len(c), len(dd), len(ee)), flush=True)
 
     done = set()
     if os.path.exists(LEDGER):

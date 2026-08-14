@@ -148,3 +148,6 @@ gid://shopify/Product/15497444360577	Transparent
 gid://shopify/Product/15497458778497	Transparent
 gid://shopify/Product/15497493086593	Weiss
 gid://shopify/Product/15497493217665	Türkis
+gid://shopify/Product/15497645162881	Silber
+gid://shopify/Product/15497647784321	Silber
+gid://shopify/Product/15497708798337	Mehrfarbig
