@@ -18,7 +18,9 @@ ZAHLEN aus dem frischen Voll-Export vom 14.08. (Bulk, 341'604 Objekte, 34'654 ak
 Produkte — der 12.08.-Schnappschuss war bereits um 3'256 Produkte veraltet):
     11'798 Produkte haben mehr als eine Farbe unter den Varianten
      9'866 davon tragen zusätzlich das Produkt-Metafeld `color`  ← der Schaden
-   220'526 Varianten hängen daran, davon melden 210'660 die falsche Farbe
+   220'526 Varianten hängen daran, davon melden 176'476 (80 %) eine FALSCHE Farbe
+             — die übrigen 20 % sind die Varianten der jeweils ersten Farbe, für die
+               der geerbte Wert zufällig stimmt
 
 DIE ENTSCHEIDUNG
 ----------------
