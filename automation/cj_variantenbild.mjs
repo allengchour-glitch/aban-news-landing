@@ -37,6 +37,7 @@
  * ENV: CJ_TOKEN · CAP=300 (Produkte pro Lauf, je ~10 CJ-Punkte) · DRY=1
  */
 import fs from 'node:fs';
+import { spawnSync } from 'node:child_process';
 
 const SHOP = 'au3j0y-hq.myshopify.com', API = '2024-10';
 const CJT = (process.env.CJ_TOKEN || (fs.existsSync('/tmp/cj_token.json')
@@ -95,6 +96,30 @@ async function lebt(url) {
   try {
     const r = await fetch(url, { method: 'HEAD', signal: AbortSignal.timeout(20000) });
     return r.ok;
+  } catch { return false; }
+}
+
+// ⚠️ DIE LIEFERANTENBILDER SIND OFT WERBEPLAKATE. Beim ersten scharfen Lauf holte dieses
+// Skript für einen «LED-Projektor» sechs Variantenbilder herein, auf denen «MAGCUBIC
+// PROJECTOR» stand, dazu die Logos von Netflix, YouTube, Disney+, Prime Video und Hulu,
+// der Satz «Usage Area: Hong Kong China + Taiwan China …» und ein Angebot über ein
+// «99 yuan value gift package». Fremde Marken im Produktbild sind bei Google ein
+// Sperrgrund, und der Kundin sagt so ein Plakat nichts über die Variante.
+//
+// ⚠️ DIE GRENZE LIEGT HIER HÖHER ALS BEIM HAUPTBILD (10 statt 4 Wörter), und zwar nach
+// Ansicht der Grenzfälle, nicht nach Gefühl. Bei 4 Wörtern standen in der Ecke Angaben wie
+// «With Metallic Belt Boxes» / «With Chain Without Box» (Perlenset) und «Audio cable /
+// Charging cable» (Kopfhörer) — genau die Auskunft, die die Kundin beim Umschalten sucht,
+// auf einem ansonsten sauberen Produktfoto. Ein weisser und ein schwarzer Kopfhörer, richtig
+// zugeordnet, sind mehr wert als die Reinheit von vier Wörtern; ohne das Bild sieht sie
+// wieder gar nichts. Ab zehn Wörtern kippt es: dort standen Plakate mit 14, 23 und 35
+// Wörtern samt fremden Logos. Ein unlesbares Bild (-1) gilt NICHT als sauber.
+function textFrei(url) {
+  try {
+    const r = spawnSync('python3', ['automation/bildtext_pruefen.py', '--url', url],
+                        { encoding: 'utf8', timeout: 120000 });
+    const n = parseInt(String(r.stdout || '').trim().split('\n').pop(), 10);
+    return Number.isFinite(n) && n >= 0 && n < 10;
   } catch { return false; }
 }
 
@@ -169,7 +194,7 @@ async function main() {
 
     const urls = [...new Set(paare.map(v => cjv[v.sku]))];
     const gut = [];
-    for (const u of urls) if (await lebt(u)) gut.push(u);
+    for (const u of urls) if (await lebt(u) && textFrei(u)) gut.push(u);
     if (!gut.length) {
       ohne++; fs.appendFileSync(LEDGER, `${k.id}\tbild-urls-tot\n`); await sleep(2000); continue;
     }
@@ -199,7 +224,13 @@ async function main() {
     } else { offen++; fs.appendFileSync(LEDGER, `${k.id}\tanhaengen-fehlgeschlagen\n`); }
     await sleep(1500);
   }
-  console.log(`FERTIG: ${ok} Produkte, ${varianten} Varianten zeigen jetzt ihr eigenes Bild. `
+  // ⚠️ «FERTIG» NUR SCHREIBEN, WENN ES AUCH FERTIG IST. Der Aufseher überspringt jeden Lauf,
+  // dessen Log mit «FERTIG» beginnt — steht das Wort nach einem Abbruch wegen leerem
+  // CJ-Punktebudget da, startet der Lauf NIE wieder, und die restlichen ~2'700 Produkte
+  // blieben für immer ohne Variantenbilder. Genau so wäre der erste Lauf (25 Produkte,
+  // dann Budget leer) als erledigt vom Tisch gewesen.
+  const kopf = punkteWeg ? 'PAUSE (CJ-Punkte leer, morgen weiter)' : 'FERTIG';
+  console.log(`${kopf}: ${ok} Produkte, ${varianten} Varianten zeigen jetzt ihr eigenes Bild. `
             + `${ohne} ohne passende Lieferantendaten, ${offen} offen (bleiben für den nächsten Lauf).`);
 }
 

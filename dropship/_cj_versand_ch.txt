@@ -738,3 +738,4 @@ gid://shopify/Product/15497464119681	nicht-versendbar	Faltbarer Wäschekorb für
 gid://shopify/Product/15497464414593	ok	LED Photonengerät zur Hautverjüngung
 gid://shopify/Product/15497591128449	nicht-versendbar	Resin Aroma Diffuser
 gid://shopify/Product/15498839392641	ok	Kapsel-Füllbrett mit 400 Löchern
+gid://shopify/Product/15499448680833	ok	Hot Wheels Drift Board Skateboard

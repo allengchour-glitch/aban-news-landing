@@ -179,7 +179,9 @@ async function main() {
     if (r === 'ok') { ok++; console.log(`  🎬 ${k.titel.slice(0, 52)}`); } else fehler++;
     await sleep(2500);
   }
-  console.log(`FERTIG: ${ok} Produkte haben jetzt ihr Lieferantenvideo, ${ohne} haben beim `
+  // Siehe cj_variantenbild.mjs: «FERTIG» sperrt den Neustart durch den Aufseher — nach einem
+  // Abbruch wegen leerem Punktebudget wäre der Lauf damit endgültig erledigt.
+  console.log(`${punkteWeg ? 'PAUSE (CJ-Punkte leer, morgen weiter)' : 'FERTIG'}: ${ok} Produkte haben jetzt ihr Lieferantenvideo, ${ohne} haben beim `
             + `Lieferanten keines, ${fehler} nicht abschliessend geklärt (bleiben offen).`);
 }
 
