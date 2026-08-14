@@ -78,6 +78,8 @@ Eine gescheiterte Anfrage kommt NICHT ins Ledger (Regel 6) und wird beim naechst
 erneut versucht.
 """
 import json, os, re, sys, time, urllib.request, html as _html
+import threading
+from concurrent.futures import ThreadPoolExecutor
 
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
 SHOP = "https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json"
@@ -85,6 +87,7 @@ DRY = os.environ.get("DRY") == "1"
 PHASE = os.environ.get("PHASE", "alle")
 EXPORT = os.environ.get("EXPORT", "/tmp/export.jsonl")
 LEDGER = "dropship/_versandaussagen_wahrheit.txt"
+LIMIT = int(os.environ.get("LIMIT", "0"))  # 0 = alle; >0 nur fuer den Probelauf
 
 # ---------------------------------------------------------------- Wahrheit
 # ⚠️ DIE ZAHLEN SIND NICHT VON MIR. Sie stehen bereits als entschiedene Wahrheit im Shop —
@@ -289,6 +292,9 @@ def main():
         for t in rest[:10]:
             m = REST_RE.search(t[4])
             print("   REST", t[0].split("/")[-1], "|", m.group(0)[:100])
+        if LIMIT:
+            todo = todo[:LIMIT]
+            print(f"LIMIT={LIMIT} → nur die ersten {len(todo)} werden geschrieben")
         if DRY:
             print("\n--- 6 Beispiele vorher/nachher ---")
             gezeigt = set()
@@ -313,34 +319,52 @@ def main():
 
 
 def schreiben(todo):
+    """Schreibt parallel, quittiert aber streng seriell.
+
+    Shopify erlaubt 2'000 Punkte mit 100 Punkten/s Nachfuellung; ein productUpdate kostet
+    rund 10 Punkte, also sind ~10 Schreibvorgaenge pro Sekunde tragbar. Einzeln gemessen
+    dauerte ein Schreibvorgang 1,08 s — 28'000 Produkte waeren 8,5 Stunden gewesen. Mit
+    8 Arbeitern liegt die Rate bei etwa 8/s und damit knapp unter dem Limit; gql() faengt
+    eine Drosselung ohnehin mit Wartezeit ab.
+    Das Ledger schreibt nur EIN Thread-Lock-geschuetzter Pfad, Zeile fuer Zeile mit flush
+    und fsync (Regel 5) — der Prozess darf jederzeit sterben, ohne Quittungen zu verlieren.
+    """
     fertig = set()
     if os.path.exists(LEDGER):
         fertig = {l.split("\t")[0] for l in open(LEDGER) if l.strip()}
+    offen = [t for t in todo if t[0] not in fertig]
+    print(f"Schon quittiert: {len(fertig)} · noch zu schreiben: {len(offen)}")
     M = ("mutation($p:ProductInput!){ productUpdate(input:$p){ product{ id } "
          "userErrors{ field message } } }")
     led = open(LEDGER, "a")
-    ok = 0
-    fehler = 0
-    for i, (pid, tit, w, n, neu, alt) in enumerate(todo, 1):
-        if pid in fertig:
-            continue
-        d = gql(M, {"p": {"id": pid, "descriptionHtml": neu}})
-        if d is None:
-            fehler += 1                      # Regel 6: KEIN Ledger-Eintrag
-            continue
+    sperre = threading.Lock()
+    zaehler = {"ok": 0, "fehler": 0}
+
+    def einer(t):
+        pid, tit, w, n, neu_html, alt_html = t
+        d = gql(M, {"p": {"id": pid, "descriptionHtml": neu_html}})
+        if d is None:                        # Regel 6: keine Antwort ist kein Ergebnis
+            with sperre:
+                zaehler["fehler"] += 1
+            return
         ue = (d.get("productUpdate") or {}).get("userErrors") or []
         if ue:
-            fehler += 1
-            sys.stderr.write(f"✗ {pid}: {json.dumps(ue)[:160]}\n")
-            continue
-        led.write(f"{pid}\t{w}\t{n}\t{tit[:70]}\n")
-        led.flush()                          # Regel 5: Zeile fuer Zeile
-        os.fsync(led.fileno())
-        ok += 1
-        if ok % 250 == 0:
-            print(f"   … {ok} geschrieben ({fehler} offen)")
+            with sperre:
+                zaehler["fehler"] += 1
+                sys.stderr.write(f"✗ {pid}: {json.dumps(ue)[:160]}\n")
+            return
+        with sperre:
+            led.write(f"{pid}\t{w}\t{n}\t{tit[:70]}\n")
+            led.flush()
+            os.fsync(led.fileno())
+            zaehler["ok"] += 1
+            if zaehler["ok"] % 500 == 0:
+                print(f"   … {zaehler['ok']} geschrieben ({zaehler['fehler']} offen)", flush=True)
+
+    with ThreadPoolExecutor(max_workers=8) as ex:
+        list(ex.map(einer, offen))
     led.close()
-    print(f"Produkte geschrieben: {ok}, offen geblieben: {fehler}")
+    print(f"Produkte geschrieben: {zaehler['ok']}, offen geblieben: {zaehler['fehler']}")
 
 
 if __name__ == "__main__":

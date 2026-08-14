@@ -24,9 +24,16 @@ CAT = {
 }
 
 def clean(desc:str)->str:
-    # Vorspann "...Werktage, inkl. Produktion " abschneiden, falls vorhanden
+    # Den Lieferzeit-Vorspann abschneiden — er gilt fuer den eigenen Shop, nicht fuer Ricardo.
+    # ⚠️ 14.08.2026: Der alte Schnitt suchte nur nach "Werktage, inkl. Produktion". Genau
+    # diese Formulierung gibt es seit der Versandaussagen-Korrektur nicht mehr (die Bloecke
+    # nannten EU und USA als Lieferziel, obwohl der Shop nur in die Schweiz liefert). Ohne
+    # das zweite Muster waere der Shop-Baustein ungeschnitten in die Ricardo-Anzeige
+    # gewandert. Beide Formen werden jetzt erkannt.
     m = re.split(r"Werktage, inkl\.\s*Produktion\s*", desc, maxsplit=1)
     txt = m[1] if len(m) == 2 else desc
+    txt = re.sub(r"^\s*📦\s*Lieferzeit Schweiz:\s*\d{1,2}\s*[–-]\s*\d{1,2}\s*Werktage"
+                 r"[^A-ZÄÖÜ]*(?:·[^A-ZÄÖÜ]*)*", "", txt)
     return re.sub(r"\s+", " ", txt).strip()
 
 # (title, productType, price_chf, url, [bild-urls], beschreibung_roh)
