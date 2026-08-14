@@ -6674,3 +6674,8 @@ gid://shopify/Product/15454014898561	28->0	21700-Lithium-Akku-Ladegerät
 gid://shopify/Product/15454037901697	27->1	Atmungsaktive Sneaker
 gid://shopify/Product/15454057431425	115->0	Liebesbaum Landschaftsölgemälde
 gid://shopify/Product/15454067589505	14->3	Universal-IR-Fernbedienung mit Sprachsteuerung
+gid://shopify/Product/15454079779201	40->0	Elektrisches Schwein Katzen-Spielzeug mit Sound
+gid://shopify/Product/15454108844417	15->0	Kühldecke mit modernem Design
+gid://shopify/Product/15454109139329	13->0	Weiches, saugstarkes Handtuch
+gid://shopify/Product/15454109598081	51->0	Leuchthalsband für Hunde
+gid://shopify/Product/15454115103105	49->2	Faserhaar-Gradienten-Bürsten-Set 16er
