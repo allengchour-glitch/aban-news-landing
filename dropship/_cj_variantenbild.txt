@@ -17,3 +17,8 @@ gid://shopify/Product/15443243696513	zugeordnet	4	Schmuck-Set «Trio» · 925 Si
 gid://shopify/Product/15443243762049	zugeordnet	3	Malachit-Armband «Vintage» · grüner Naturstein
 gid://shopify/Product/15443245662593	zugeordnet	3	Magnetische Wimpern «Natural» mit Clip
 gid://shopify/Product/15443245760897	zugeordnet	3	Magnetische Wimpern «Set» · natürlich
+gid://shopify/Product/15443495846273	zugeordnet	8	LED-Projektor «Ambiente» · Stimmungslicht
+gid://shopify/Product/15443496108417	zugeordnet	4	Kabellose Kopfhörer «AirBeat» · Bluetooth TWS
+gid://shopify/Product/15443496141185	zugeordnet	2	Kabellose Kopfhörer «SoundPods» · Bluetooth TWS
+gid://shopify/Product/15443496206721	zugeordnet	4	Kabellose Kopfhörer «FlowPods» · Bluetooth TWS
+gid://shopify/Product/15443496239489	zugeordnet	4	Kabellose Kopfhörer «EchoBuds» · Bluetooth TWS
