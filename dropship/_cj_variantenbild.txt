@@ -56,3 +56,5 @@ gid://shopify/Product/15445799862657	zugeordnet	3	Farbiger Tricolor Lidschatten-
 gid://shopify/Product/15445799960961	zugeordnet	3	Contouring & Abdeck-Stick mit natürlichem Finish
 gid://shopify/Product/15445799993729	zugeordnet	9	12-teiliges Make-up Pinselset mit Tasche
 gid://shopify/Product/15445800288641	zugeordnet	2	20-teiliges Make-up Pinselset
+gid://shopify/Product/15445800354177	zugeordnet	4	4-in-1 Magnetischer Make-up Pinsel
+gid://shopify/Product/15445800386945	zugeordnet	3	Magnetisches Lidschattenpinsel-Set
