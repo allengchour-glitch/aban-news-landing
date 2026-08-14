@@ -94,7 +94,7 @@ TOKEN = open("/tmp/cj_shop_token.txt").read().strip()
 LEDGER = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                       "..", "dropship", "_hauptbild_grossbild.txt")
 CACHE = "/tmp/hauptbild_media.jsonl"          # Ergebnis der Bulk-Abfrage
-URTEILE = "/tmp/hauptbild_urteile.json"       # zwischengespeicherte Bildurteile
+MESSUNG = "/tmp/hauptbild_messung.json"       # zwischengespeicherte Bildmessungen
 MINI = 500          # darunter gilt das Hauptbild als Miniatur
 GROSS = 800         # ab hier gilt ein Bild als Grossbild
 WORTGRENZE = 4      # ab so vielen sicher gelesenen Wörtern: Werbetafel
@@ -205,58 +205,80 @@ def motiv(rohbytes, n=24):
     return np.asarray(q.resize((n, n), Image.LANCZOS), dtype=float)
 
 
-def abstand(a, b):
-    """Mittlere Farbabweichung 0…255. Unter ~22 ist es nachweislich dasselbe Foto in gross."""
+def messwerte(a, b):
+    """Zwei Zahlen, mit denen sich «dasselbe Foto in gross» von «ein anderes Foto» trennen lässt.
+
+    `mae`  – mittlere Farbabweichung, aber NUR über die Bildpunkte, die in einem der beiden
+             Bilder nicht Hintergrund sind. Über das ganze Bild gemittelt versagte das Mass:
+             bei einem Freisteller ist vier Fünftel der Fläche weiss, und die Übereinstimmung
+             des Weiss übertönte den Unterschied zwischen einem VIOLETTEN und einem
+             ROSÉGOLDENEN Lockenstab (4,5 über alles, 36,6 über das Produkt).
+    `farb` – Abstand der mittleren PRODUKTFARBE. Er fängt, was die mittlere Abweichung nicht
+             fängt: dasselbe Foto in einer anderen Ausführung (Kupferarmband silbern/kupfern,
+             Messerschärfer grün/grau, Rasierer blau/weiss).
+    """
     if a is None or b is None:
-        return 999.0
-    return float(np.abs(a - b).mean())
+        return 999.0, 999.0
+    maske = (a.min(axis=2) < 225) | (b.min(axis=2) < 225)
+    if maske.sum() < 20:                                # praktisch reines Weiss
+        maske = np.ones(a.shape[:2], bool)
+    mae = float(np.abs(a - b)[maske].mean())
+    farb = float(np.abs(a[maske].mean(axis=0) - b[maske].mean(axis=0)).mean())
+    return mae, farb
 
 
-GLEICHES_BILD = 22.0   # an einer Stichprobe von 18 Produkten geeicht, siehe Kopfkommentar
+# An 22 Produkten geeicht, die von Hand auf einem Kontaktbogen beurteilt wurden (siehe
+# Kopfkommentar). Beide Schwellen zusammen: 11 Treffer, 1 Fehltreffer (rosa statt violetter
+# Hausschuh). Nur `mae` allein liess 6 Farbwechsel durch, nur `farb` allein liess ein anderes
+# Poster-Motiv durch.
+GLEICH_MAE = 22.0
+GLEICH_FARB = 10.0
 WINZIG = 250           # darunter lehnt Google das Angebot ab, nicht nur schlechter platziert
 
 
-def waehle(fall):
-    """Gibt (ziel_media, grund) oder (None, grund) zurück. Nie raten: unlesbar → None.
-
-    Zwei Stufen, weil «gross» allein nicht «besser» heisst:
-      A) Dasselbe Motiv liegt gross vor (Abstand < GLEICHES_BILD) und trägt keinen Werbetext →
-         reine Schärfung, für die Kundin ändert sich nichts ausser der Auflösung. Immer machen.
-      B) Es liegt nur ein ANDERES Foto gross vor. Dann wird nur getauscht, wenn das heutige
-         Hauptbild ohnehin unbrauchbar ist (< 250 px, Google lehnt ab) — dort ist jedes scharfe
-         Produktfoto besser. Ist das heutige Bild 250–499 px, bleibt es stehen: ein leicht
-         unscharfes Foto DES PRODUKTS schlägt ein scharfes Foto einer anderen Farbe oder einer
-         Wohnzimmerszene.
-    """
+def messen(fall):
+    """Misst JEDEN Grossbild-Kandidaten (Abstand + Werbetext) und gibt die Rohwerte zurück.
+    Bewusst getrennt vom Urteil: das Lesen des halben Katalogs dauert eine Stunde, die
+    Schwellen sollen danach ohne neuen Ladelauf nachjustierbar sein."""
     altbild = None
     au = (fall["alt"].get("image") or {}).get("url")
     if au:
         ab = hole(au, 400)
         if ab:
             altbild = motiv(ab)
-    ai = fall["alt"].get("image") or {}
-    altkante = max(ai.get("width") or 0, ai.get("height") or 0)
 
-    with ThreadPoolExecutor(max_workers=6) as pool:
+    with ThreadPoolExecutor(max_workers=8) as pool:
         rohs = list(pool.map(lambda m: hole(m["image"]["url"], 900), fall["ziele"]))
     if any(r is None for r in rohs):
-        return None, "bild-nicht-ladbar", None         # unbekannt ≠ sauber
+        return None                                    # unbekannt ≠ sauber (Regel 6)
 
-    rang = sorted(((abstand(altbild, motiv(r)), i) for i, r in enumerate(rohs)))
-    for d, i in rang:
+    aus = []
+    for m, roh in zip(fall["ziele"], rohs):
         try:
-            woerter = bildtext_pruefen.woerter(rohs[i])
+            w = len(bildtext_pruefen.woerter(roh))
         except Exception:
-            return None, "ocr-fehlgeschlagen", None
-        if len(woerter) < WORTGRENZE:
-            if d < GLEICHES_BILD:
-                art = "gleiches-bild"                  # reine Schärfung
-            elif altkante < WINZIG:
-                art = "ersatz-fuer-winzling"           # heute lehnt Google ohnehin ab
-            else:
-                art = "nur-anderes-motiv"              # Vorschlag, wird NICHT geschrieben
-            return fall["ziele"][i], art, d
-    return None, "kein-textfreies-grossbild", None
+            return None
+        mae, farb = messwerte(altbild, motiv(roh))
+        aus.append({"id": m["id"], "w": m["image"]["width"], "h": m["image"]["height"],
+                    "url": m["image"]["url"], "mae": round(mae, 1),
+                    "farb": round(farb, 1), "woerter": w})
+    return aus
+
+
+def urteil(messung, altkante):
+    """Wendet die Schwellen auf die Messwerte an. Ändert nichts, misst nichts — nur Politik."""
+    if messung is None:
+        return None, "nicht-messbar"
+    sauber = [k for k in messung if k["woerter"] < WORTGRENZE]
+    if not sauber:
+        return None, "kein-textfreies-grossbild"
+    sauber.sort(key=lambda k: (k["mae"], k["farb"]))
+    bester = sauber[0]
+    if bester["mae"] < GLEICH_MAE and bester["farb"] < GLEICH_FARB:
+        return bester, "gleiches-bild"                 # reine Schärfung
+    if altkante < WINZIG:
+        return bester, "ersatz-fuer-winzling"          # heute lehnt Google ohnehin ab
+    return bester, "nur-anderes-motiv"                 # Vorschlag, wird NICHT geschrieben
 
 
 SCHREIBT = ("gleiches-bild", "ersatz-fuer-winzling")
@@ -280,55 +302,54 @@ def main():
     faelle = [f for f in faelle if f["id"] not in erledigt]
     print(f"noch offen: {len(faelle)}")
 
-    # Jede Entscheidung wird zwischengespeichert. Grund: das Lesen aller Kandidatenbilder
-    # dauert gut eine Stunde, und die Schwellen sollen an EINEM Beweis-Durchgang geprüft
-    # werden können, statt bei jeder Justierung erneut den halben Katalog zu laden.
-    urteile = {}
-    if os.path.exists(URTEILE):
-        urteile = json.load(open(URTEILE))
-
+    messungen = json.load(open(MESSUNG)) if os.path.exists(MESSUNG) else {}
     log = open(LEDGER, "a")
-    geaendert, gezaehlt = 0, {}
+    geaendert, gezaehlt, tabelle = 0, {}, []
     for i, f in enumerate(faelle, 1):
         kid = f["id"].split("/")[-1]
-        if kid in urteile:
-            u = urteile[kid]
-        else:
-            ziel, art, d = waehle(f)
+        if kid not in messungen:
+            m = messen(f)
             a = f["alt"].get("image") or {}
-            u = {"titel": f["title"], "handle": f["handle"], "art": art,
-                 "d": None if d is None else round(d, 1),
-                 "alt": {"w": a.get("width"), "h": a.get("height"), "url": a.get("url")},
-                 "ziel": None if ziel is None else
-                         {"id": ziel["id"], "w": ziel["image"]["width"],
-                          "h": ziel["image"]["height"], "url": ziel["image"]["url"]}}
-            urteile[kid] = u
-            json.dump(urteile, open(URTEILE, "w"), ensure_ascii=False)
-        gezaehlt[u["art"]] = gezaehlt.get(u["art"], 0) + 1
-        print(f"  [{i}] {u['art']:<24} d={u['d']} "
-              f"{u['alt']['w']}x{u['alt']['h']} → "
-              f"{u['ziel']['w'] if u['ziel'] else '-'}  {u['titel'][:44]}", flush=True)
-        if scharf and u["art"] in SCHREIBT:
-            r = gql(REORDER, {"id": f["id"],
-                              "m": [{"id": u["ziel"]["id"], "newPosition": "0"}]})
-            if r is None or r.get("data", {}).get("productReorderMedia", {}).get("userErrors"):
-                print("      ⚠️ reorder-fehler, bleibt offen", flush=True)
+            messungen[kid] = {"titel": f["title"], "handle": f["handle"],
+                              "alt": {"w": a.get("width"), "h": a.get("height"),
+                                      "url": a.get("url")},
+                              "kandidaten": m}
+            json.dump(messungen, open(MESSUNG, "w"), ensure_ascii=False)
+        e = messungen[kid]
+        altkante = max(e["alt"]["w"] or 0, e["alt"]["h"] or 0)
+        ziel, art = urteil(e["kandidaten"], altkante)
+        gezaehlt[art] = gezaehlt.get(art, 0) + 1
+        tabelle.append((kid, e, ziel, art))
+        print(f"  [{i}] {art:<24} "
+              f"{e['alt']['w']}x{e['alt']['h']} → "
+              f"{(str(ziel['w']) + ' mae=' + str(ziel['mae']) + ' farb=' + str(ziel['farb'])) if ziel else '-':<28}"
+              f" {e['titel'][:42]}", flush=True)
+        if scharf and art in SCHREIBT:
+            r = gql(REORDER, {"id": f["id"], "m": [{"id": ziel["id"], "newPosition": "0"}]})
+            fehler = None if r is None else r.get("data", {}).get(
+                "productReorderMedia", {}).get("userErrors")
+            if r is None or fehler:
+                print(f"      ⚠️ nicht geschrieben ({fehler}) — bleibt offen", flush=True)
                 continue
             geaendert += 1
-            log.write(f"{f['id']}\t{u['ziel']['id']}\t{u['ziel']['w']}x{u['ziel']['h']}\t{u['art']}\n")
+            log.write(f"{f['id']}\t{ziel['id']}\t{ziel['w']}x{ziel['h']}\t{art}\n")
             log.flush()                                # Regel 5: nach JEDER Zeile
             os.fsync(log.fileno())
     log.close()
 
     if bogen:
-        for art in set(u["art"] for u in urteile.values()):
-            paare = [(u["alt"]["url"], u["ziel"]["url"], u["titel"])
-                     for u in urteile.values() if u["art"] == art and u["ziel"]]
+        for art in set(a for *_, a in tabelle):
+            paare = [(e["alt"]["url"], z["url"],
+                      f"mae{z['mae']:.0f}/f{z['farb']:.0f} {e['titel']}")
+                     for _, e, z, a2 in tabelle if a2 == art and z]
             if paare:
                 kontaktbogen(paare, f"/tmp/bogen_{art}.png")
     print("\nUrteile:", gezaehlt)
     print(("GEÄNDERT: %d" % geaendert) if scharf
           else "WÜRDE ÄNDERN: %d" % sum(gezaehlt.get(a, 0) for a in SCHREIBT))
+    for kid, e, z, art in tabelle:
+        if art not in SCHREIBT:
+            print(f"   offen {kid} {art:<26} {e['titel'][:50]}")
 
 
 def kontaktbogen(paare, pfad="/tmp/hauptbild_bogen.png", proseite=48):
