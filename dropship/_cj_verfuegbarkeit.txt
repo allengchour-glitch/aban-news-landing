@@ -8248,3 +8248,11 @@ gid://shopify/Product/15454743331201	ok
 gid://shopify/Product/15454718919041	ok
 gid://shopify/Product/15454718656897	ok
 gid://shopify/Product/15454718755201	ok
+gid://shopify/Product/15454718460289	ok
+gid://shopify/Product/15454718329217	ok
+gid://shopify/Product/15454718165377	ok
+gid://shopify/Product/15454718001537	ok
+gid://shopify/Product/15454717837697	ok
+gid://shopify/Product/15454717739393	ok
+gid://shopify/Product/15454717510017	ok
+gid://shopify/Product/15454680613249	ok
