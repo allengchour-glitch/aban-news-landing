@@ -30,9 +30,11 @@ Namen machen. Welches der beiden Pinks gemeint ist, weiss nur der Lieferant.
 
 DRY=1 meldet nur.
 """
-import colorsys, io, json, os, subprocess, sys, time
+import colorsys, io, json, os, subprocess, sys, time, warnings
 
 from PIL import Image
+
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
 DRY = os.environ.get("DRY") == "1"
@@ -133,8 +135,19 @@ def main():
         mc = mc.get("count", 0) if isinstance(mc, dict) else (mc or 0)
         if mc < 2:
             continue
+        # ⚠️ VORFILTER, OHNE DEN DER LAUF 73 STUNDEN BRAUCHT. Ein Produkt, dessen Farbnamen
+        # allesamt keinen messbaren Farbton haben («Schwarz, Weiss, Grau, Beige, Gold», und
+        # erst recht «Color» oder «Pink 1»), kann diese Methode nie zuordnen — für das
+        # Wissen müssen aber sonst erst zwölf Bilder heruntergeladen werden. Von 11'027
+        # Kandidaten fallen so 6'380 weg, bevor eine einzige Anfrage rausgeht.
+        if not any(TON.get(w.strip().lower()) for w in (fo[0].get("values") or [])):
+            continue
         kandidaten.append(p["id"])
-    print(f"Produkte mit mehreren Farben und mehreren Bildern: {len(kandidaten)}", flush=True)
+    schritt = int(os.environ.get("SCHRITTE", "1"))
+    versatz = int(os.environ.get("VERSATZ", "0"))
+    if schritt > 1:
+        kandidaten = kandidaten[versatz::schritt]
+    print(f"Produkte mit messbarem Farbnamen und mehreren Bildern: {len(kandidaten)}", flush=True)
     if DRY and not os.environ.get("PROBE"):
         return
 
@@ -158,6 +171,12 @@ def main():
         if not farben or len(medien) < 2:
             continue
         werte = farben[0]["values"]
+        # Zweiter Halt, jetzt gegen die LIVE-Farbliste: der Export ist vom 12.08., die Optionen
+        # können sich seither geändert haben.
+        if not any(TON.get(w.strip().lower()) for w in werte):
+            if f:
+                f.write(f"{gid}\tkein-messbarer-farbname\t0\n"); f.flush()
+            continue
 
         # Farbton je Bild EINMAL messen.
         toene = [(m, bildton(m["image"]["url"])) for m in medien[:12]]
