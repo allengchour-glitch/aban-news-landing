@@ -6361,3 +6361,31 @@ gid://shopify/Product/15469984317825	27->0	Perücke Djamilla Bob blond
 gid://shopify/Product/15469984416129	37->2	Perücke Amara, grau-schwarz
 gid://shopify/Product/15469984743809	34->0	Perücke Stalker orange, lange
 gid://shopify/Product/15448960991617	68->0	Urne für Haustier-Asche mit Fotorahmen
+gid://shopify/Product/15453724213633	24->2	Liebesring · Damen
+gid://shopify/Product/15453724344705	19->0	Camellien-Stein-Offenring
+gid://shopify/Product/15453724377473	46->0	Mode-Schmetterling-Offener Ring
+gid://shopify/Product/15453724606849	144->0	Personalisierter Edelstahlring
+gid://shopify/Product/15453724934529	97->0	Olivformiger Pferdeaugen-Zirkon-Halsreif aus Titanstahl
+gid://shopify/Product/15453725065601	112->0	Perlen Splitter · Damen
+gid://shopify/Product/15453725229441	15->0	Natürlich Elegante Feinsilber-Ohrstecker mit Olivzweig
+gid://shopify/Product/15453725294977	14->0	Luxuriöse Perlen-Ohrhänger für den Sommer
+gid://shopify/Product/15453725852033	92->0	Leopard-Print Straps Gaze Kleid
+gid://shopify/Product/15453726540161	119->0	Damen Langarmkleid mit Gespitzter Silhouette
+gid://shopify/Product/15453726638465	9->0	Damen-Langarmkleid mit Taille
+gid://shopify/Product/15453726736769	38->1	Einseitig Schulter Gepflastertes Gerafftes Damenkleid
+gid://shopify/Product/15453726769537	138->0	Blumenprint-Midi mit Volantsärmeln und A-Silhouette
+gid://shopify/Product/15453728309633	12->3	Retro-Muster Kreuzanhänger
+gid://shopify/Product/15453728571777	39->0	Herzförmiger Silberchoker
+gid://shopify/Product/15453728604545	19->0	Vintage Rosen Ohrstecker
+gid://shopify/Product/15453728866689	50->3	Langes Vintage-Kleid
+gid://shopify/Product/15453728899457	11->0	Boho-Plakat mit geometrischen Linien
+gid://shopify/Product/15453728997761	133->0	V-Ausschnitt Kleid mit Puffärmeln
+gid://shopify/Product/15453729227137	77->0	Maxi-Kleid mit Halter-Ausschnitt
+gid://shopify/Product/15453729325441	153->0	Strapless-Dress mit Blumenstickerei
+gid://shopify/Product/15453729423745	59->3	Ich bin Gottes Geschenk – Künstlerischer Leinwandrahmen
+gid://shopify/Product/15453729489281	26->0	Diamant-Malerei Uhr mit Pfau-Motiv
+gid://shopify/Product/15453729620353	27->3	Elegantes V-Ausschnitt-Kleid
+gid://shopify/Product/15453729653121	89->0	Schlankheits-Dress mit modischen Prints
+gid://shopify/Product/15453729718657	37->3	König & Königin Leinwandbild
+gid://shopify/Product/15453729784193	73->3	Nordische Porch-Malerei auf Leinwand
+gid://shopify/Product/15453730013569	21->3	Boho-Chic Kleid mit Halter-Top
