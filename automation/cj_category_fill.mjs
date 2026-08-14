@@ -421,7 +421,24 @@ for(const [cat,label] of grp.cats){
     files:[{originalSource:imgs[0],contentType:'IMAGE'}]};
    // Google-Merchant-Attribute für ALLE Produkte (2026-07-11 «google merchant sachen auch»): gender + age_group
    // + material (aus CJ-Beschreibung extrahiert). Farbe/Grösse kommen aus Varianten. Google liest mm-google-shopping.
-   { const gender=grp.tags.includes('damen')?'female':grp.tags.includes('herren')?'male':'unisex';
+   // 🚻 gender kam bis 14.08.2026 NUR aus den Tags — der Titel wurde nie gelesen. Zwei Folgen,
+   // beide am 14.08. an 729 aktiven Produkten nachgewiesen und dort repariert
+   // (automation/gender_aus_titel.py): (1) Ware, die per cat_tags nur 'schuhe'/'sneaker'/'mode'
+   // bekommt, landete zwangsläufig auf 'unisex' — 656 Produkte wie «Herren Combat Boots» fielen
+   // damit aus jeder geschlechtsgefilterten Google-Suche heraus, also genau aus den Suchen mit
+   // Kaufabsicht. (2) 'damen' wurde VOR 'herren' geprüft, also gewann ein falsch gesetzter
+   // Tag 'damen' an einem Herrenartikel: «Herren High-top Ankle Boots» meldete female, und ein
+   // falsches Geschlecht ist schlimmer als ein fehlendes, weil Google das Produkt aktiv der
+   // falschen Zielgruppe ausspielt. Der TITEL ist die verlässlichere Quelle und sticht deshalb
+   // jetzt die Tags; die Tags bleiben das Auffangnetz. Fallen (Regel: deutsche Zusammensetzungen):
+   // «herrenlos» heisst OHNE BESITZER und ist kein Herrenartikel; steht «Damen» UND «Herren» im
+   // Titel, ist der Artikel unisex. Der Substring 'mens' wird bewusst NICHT gesucht — er steckt
+   // in «Da-MENS-onnenbrille» (dieselbe Falle wie «IPL» in «L-IPL-iner»).
+   { const gt=(g.title||'').replace(/herrenlos/ig,' ');
+     const gH=/herren/i.test(gt), gD=/damen/i.test(gt);
+     const gender=(gH&&gD)||/\bunisex\b/i.test(gt) ? 'unisex'
+                : gH ? 'male' : gD ? 'female'
+                : grp.tags.includes('herren')?'male':grp.tags.includes('damen')?'female':'unisex';
      const age=(grp.tags.includes('kinder')||grp.tags.includes('baby-kids'))?'kids':'adult';
      const mf=[{namespace:'mm-google-shopping',key:'gender',value:gender,type:'single_line_text_field'},
                {namespace:'mm-google-shopping',key:'age_group',value:age,type:'single_line_text_field'},

@@ -170,19 +170,25 @@ def main():
                 print(f'  [DRY] {pid.split("/")[-1]} {ist} -> {soll} | {t[:64]}')
             geaendert += len(schreiben)
             continue
-        r = gql('mutation($m:[MetafieldsSetInput!]!){metafieldsSet(metafields:$m)'
-                '{metafields{id} userErrors{field message}}}', {'m': schreiben})
-        if r is None:
-            print('  ! Schreiben ohne Antwort — Gruppe bleibt offen')
-            continue
-        fehler = r['metafieldsSet']['userErrors']
-        if fehler:
-            print('  ! userErrors:', fehler[:3])
-            continue
-        for pid, ist, soll, t in protokoll:
-            led.write(pid + '\n')
-            led.flush()                                   # Regel 5
-            geaendert += 1
+        # metafieldsSet nimmt HÖCHSTENS 25 Felder pro Aufruf. Grössere Pakete
+        # scheitern mit «Exceeded the maximum metafields input limit of 25»;
+        # der erste scharfe Lauf verlor so 18 Gruppen (sie blieben dank
+        # Regel 6 korrekt offen und wurden im zweiten Lauf nachgeholt).
+        for j in range(0, len(schreiben), 25):
+            teil, prot = schreiben[j:j + 25], protokoll[j:j + 25]
+            r = gql('mutation($m:[MetafieldsSetInput!]!){metafieldsSet(metafields:$m)'
+                    '{metafields{id} userErrors{field message}}}', {'m': teil})
+            if r is None:
+                print('  ! Schreiben ohne Antwort — Paket bleibt offen')
+                continue
+            fehler = r['metafieldsSet']['userErrors']
+            if fehler:
+                print('  ! userErrors:', fehler[:3])
+                continue
+            for pid, ist, soll, t in prot:
+                led.write(pid + '\n')
+                led.flush()                               # Regel 5
+                geaendert += 1
         print(f'  {geaendert} geschrieben … zuletzt {protokoll[-1][3][:50]}')
     if led:
         led.close()

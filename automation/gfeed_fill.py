@@ -3,7 +3,7 @@
 # Google liest mm-google-shopping-Metafelder, NICHT den Text. Ohne gender/age_group matcht der Apparel-Feed
 # schlecht = weniger Gratis-Shopping-Traffic. Ableitung: gender aus Tags, age_group=adult (kids wenn Baby/Kinder).
 # Resümierbar via Ledger. Quelle: /tmp/gaps2.json + /tmp/tags2.json + /tmp/titles2.json.
-import json,urllib.request,os,time
+import json,urllib.request,os,time,re
 SHOP="au3j0y-hq.myshopify.com"; URL=f"https://{SHOP}/admin/api/2025-01/graphql.json"
 LED="/tmp/gfeed_done.txt"
 def refresh():
@@ -19,8 +19,23 @@ need_g=set(gaps['no_gender']); need_a=set(gaps['no_age'])
 allids=[i for i in (need_g|need_a) if i not in done]
 print(f"gfeed-Fill: {len(allids)} offen ({len(done)} erledigt)")
 def gender_of(pid):
-    ts=' '.join(tags.get(pid,[])).lower()+' '+titles.get(pid,'').lower()
-    if any(w in ts for w in ['herren','männer','manner','herr ','für ihn','mens','herrenuhr','herrenring']): return 'male'
+    # 🚻 KORRIGIERT 14.08.2026. Zwei Fehler steckten hier:
+    # (1) 'mens' OHNE Wortgrenze — «Da-MENS-onnenbrille» und «Damenperlen My I-MENS-o»
+    #     enthalten es, und weil die Herren-Prüfung ZUERST lief, meldeten 7 Damenartikel
+    #     `male`. Dieselbe Falle wie «IPL» in «L-IPL-iner». 'mens' ist ersatzlos raus.
+    # (2) Titel und Tags wurden in einen Topf geworfen. Ein falscher Tag `damen` an einem
+    #     Herrenartikel schlug den eindeutigen Titel. Jetzt entscheidet der TITEL zuerst,
+    #     die Tags sind nur noch das Auffangnetz.
+    # Weitere Falle: «herrenlos» heisst OHNE BESITZER («Herrenlose, gerade geschnittene
+    # Lange Hose» ist eine Damenhose) — wird vorher herausgeschnitten. Steht «Damen» UND
+    # «Herren» im Titel, ist der Artikel unisex.
+    ti=re.sub(r'herrenlos',' ',(titles.get(pid,'') or '').lower())
+    h,d=('herren' in ti),('damen' in ti)
+    if (h and d) or re.search(r'\bunisex\b',ti): return 'unisex'
+    if h: return 'male'
+    if d: return 'female'
+    ts=' '.join(tags.get(pid,[])).lower()+' '+ti
+    if any(w in ts for w in ['herren','männer','manner','herr ','für ihn','herrenuhr','herrenring']): return 'male'
     if any(w in ts for w in ['damen','frauen','women','für sie','ladies','damenuhr','damenring','damentasche']): return 'female'
     return 'unisex'
 def age_of(pid):
