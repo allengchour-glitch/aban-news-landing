@@ -6679,3 +6679,5 @@ gid://shopify/Product/15454108844417	15->0	Kühldecke mit modernem Design
 gid://shopify/Product/15454109139329	13->0	Weiches, saugstarkes Handtuch
 gid://shopify/Product/15454109598081	51->0	Leuchthalsband für Hunde
 gid://shopify/Product/15454115103105	49->2	Faserhaar-Gradienten-Bürsten-Set 16er
+gid://shopify/Product/15454118019457	9->1	Grosses Leder-Taschen für unterwegs
+gid://shopify/Product/15454162387329	32->0	Wärmende Kunstleder-Sneaker
