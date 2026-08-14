@@ -24,7 +24,7 @@ fs.mkdirSync(DIR, { recursive: true });
 const esc = s => String(s || '').replace(/[<>&"]/g, m => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;' }[m]));
 const today = new Date().toISOString().slice(0, 10);
 const title = 'Sommer-Favoriten 2026 — die meistgewählten Stücke bei LuxeStyle';
-const intro = 'Eine kuratierte Auswahl unserer beliebtesten Sommer-Teile — Schweizer Online-Shop, faire Preise, Gratis-Versand ab CHF 65. Mit Code WELCOME10 gibt es 10 % auf die erste Bestellung.';
+const intro = 'Eine kuratierte Auswahl unserer beliebtesten Sommer-Teile — Schweizer Online-Shop, faire Preise, Gratis-Versand ab CHF 50. Mit Code WELCOME10 gibt es 10 % auf die erste Bestellung.';
 
 const list = products.map((p, i) => {
   const url = `${STORE}/products/${p.handle}`;

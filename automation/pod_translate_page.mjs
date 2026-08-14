@@ -46,7 +46,7 @@ ${STYLE}
   <h2>Your Design. Your Piece.</h2>
   <p class="sub">Pick a product, upload your artwork – we print &amp; ship. No minimum order.</p>
   <div class="lspod-ideas"><span>📷 Photo</span><span>✍️ Slogan</span><span>🎨 Artwork</span><span>🏷️ Logo</span><span>👕 Team design</span><span>🎁 Gift</span></div>
-  <div class="lspod-trust"><span>🇨🇭 Free shipping over CHF 65</span><span>⚡ On-demand</span><span>📦 5–10 days</span><span>↩️ 30-day returns</span></div>
+  <div class="lspod-trust"><span>🇨🇭 Free shipping over CHF 50</span><span>⚡ On-demand</span><span>📦 5–10 days</span><span>↩️ 30-day returns</span></div>
   <a class="lspod-cta" href="#produkte">Choose your product ↓</a>
 </section>
 <section id="produkte" class="lspod-section" style="padding-top:8px;">
@@ -102,7 +102,7 @@ ${STYLE}
     <details open><summary>How do I upload my design?</summary><p>Pick a product, open the designer and upload your image, photo or logo. You'll see a live preview and can adjust size &amp; position.</p></details>
     <details><summary>What does personalisation cost?</summary><p>The shown price (from CHF X) includes a one-sided print. Extra options and the final price are shown transparently in the designer – no hidden costs.</p></details>
     <details><summary>Is there a minimum order?</summary><p>No. You can order from a single piece – each item is produced on demand for you.</p></details>
-    <details><summary>How long is delivery?</summary><p>Production &amp; shipping together take about 5–10 business days. Free shipping over CHF 65.</p></details>
+    <details><summary>How long is delivery?</summary><p>Production &amp; shipping together take about 5–10 business days. Free shipping over CHF 50.</p></details>
     <details><summary>Which files work best?</summary><p>High-resolution PNG or JPG (min. 1500 px). For logos/artwork we recommend transparent PNGs.</p></details>
     <details><summary>Can I return it?</summary><p>For print defects or flaws we replace free of charge. Our 30-day return policy applies.</p></details>
   </div>

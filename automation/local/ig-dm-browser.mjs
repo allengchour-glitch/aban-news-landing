@@ -30,7 +30,7 @@ const log = (...a) => console.log(new Date().toISOString().slice(11, 19), ...a);
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 const rnd = (a, b) => a + Math.floor(Math.random() * (b - a));
 
-// Themen-Erkennung — identisch zur API-Version (automation/ig-dm-reply.mjs). Ehrlich: gratis ab CHF 65,
+// Themen-Erkennung — identisch zur API-Version (automation/ig-dm-reply.mjs). Ehrlich: gratis ab CHF 50,
 // 30 Tage Rückgabe, weltweiter Versand 8–14 Tage.
 const TOPIC = [
   ['retoure', /rückgabe|ruckgabe|retoure|umtausch|zurückschick|garantie|reklamation|defekt|kaputt/i],
@@ -45,7 +45,7 @@ const TOPIC = [
 const REPLIES = {
   retoure: 'Kein Stress 🤍 Du hast 30 Tage Rückgaberecht. Schreib uns einfach deine Bestellnummer, wir helfen dir sofort weiter ✨',
   bestellung: 'Hey! 📦 Gib uns kurz deine Bestellnummer durch, dann checken wir den Status. Versand weltweit dauert i. d. R. 8–14 Tage 🤍',
-  versand: 'Hey! 🤍 Versand weltweit, gratis ab CHF 65 (Schweiz) — Lieferzeit meist 8–14 Tage. Alle Infos auf luxestyle.ch ✨',
+  versand: 'Hey! 🤍 Versand weltweit, gratis ab CHF 50 (Schweiz) — Lieferzeit meist 8–14 Tage. Alle Infos auf luxestyle.ch ✨',
   groesse: 'Hi! 👗 Die genaue Grössentabelle (in cm) steht direkt beim Produkt auf luxestyle.ch — sag uns sonst gern, welches Teil! 🤍',
   design: 'So cool, dass dich «Selbst gestalten» interessiert 🎨 Auf luxestyle.ch machst du dein eigenes Design auf Shirt, Hoodie, Täsche oder Tasse — ohne Mindestmenge ✨',
   preis: 'Hey! 💛 Mit Code WELCOME10 gibt’s –10% auf alles auf luxestyle.ch. Bezahlen bequem per Karte, TWINT & mehr ✨',

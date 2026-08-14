@@ -33,7 +33,7 @@ const FALLBACK = {
     vo_de: 'Das ist LuxeStyle, dein Schweizer Online-Shop. Premium-Mode, Designer-Looks zu fairen Preisen. Kleider, Taschen und Accessoires fuer deinen Sommer. Gratis Versand ab fuenfundsechzig Franken. Jetzt shoppen, auf luxestyle punkt c h.',
     vo_en: 'This is LuxeStyle, your Swiss online shop. Premium fashion, designer looks at fair prices. Dresses, bags and accessories for your summer. Free shipping over sixty-five francs. Shop now, at luxestyle dot c h.',
     steps_de: ['Schweizer Shop', 'Gratis-Versand ab CHF 50', '-10% mit WELCOME10'],
-    steps_en: ['Swiss shop', 'Free shipping over CHF 65', '-10% with WELCOME10'],
+    steps_en: ['Swiss shop', 'Free shipping over CHF 50', '-10% with WELCOME10'],
   },
 };
 const fb = FALLBACK[CONCEPT] || FALLBACK.print;

@@ -34,6 +34,19 @@ TOK = open("/tmp/cj_shop_token.txt").read().strip()
 DRY = os.environ.get("DRY") == "1"
 LEDGER = "dropship/_versandschwelle_ueberall.txt"
 
+# ⛔ DEFEKT, nachgewiesen 14.08.2026 — «FERTIG: 45» dieses Skripts war KEINE Erledigung.
+# Beide Muster enden auf `(?![0-9.,])`. Gemeint war «CHF 653»/«CHF 65.90» auslassen; die
+# Zeichenklasse verbietet aber auch den SATZPUNKT und das KOMMA — und fast jede Fundstelle
+# lautet «... ab CHF 65.» oder «... ab CHF 65, 30 Tage Rückgabe». Nachgemessen an den am
+# 14.08. noch offenen Stellen: 0 von 100 hätte dieses Muster gefunden. Getroffen wurden nur
+# die Fälle mit Leerzeichen hinter der Zahl. Zweiter Defekt: hinter «Gratis» wird ein
+# «Versand» verlangt, die Marken-Kollektionen schreiben aber «🇨🇭 Gratis ab CHF 65 ·».
+# Die 100 offenen Stellen in Blogartikeln und Kollektionen hat
+# automation/versandschwelle_blog_kollektion.py erledigt (dort steht die richtige Fassung:
+# `(?![0-9])(?![.,][0-9])` — verbietet die Ziffer, nicht das Satzzeichen).
+# Dieses Skript wurde ABSICHTLICH NICHT nachgeschärft: es fasst zusätzlich Seiten, Produkte,
+# die Schwelle 49 und die Rückgabefrist an; ein weiter gefasstes Muster würde dort Änderungen
+# auslösen, die niemand im Probelauf gesehen hat. Wer es reaktiviert, prüft vorher mit DRY=1.
 SCHWELLE = re.compile(r'((?:Gratis[- ]?[Vv]ersand|[Vv]ersandkostenfrei|gratis|GRATIS)'
                       r'[^<.]{0,40}?(?:ab|über)\s*(?:einem\s+Bestellwert\s+von\s*)?CHF\s*)'
                       r'(65|49)(?![0-9.,])')
