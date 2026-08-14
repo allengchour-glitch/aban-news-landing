@@ -6483,3 +6483,23 @@ gid://shopify/Product/15453775331713	77->0	Atmungsaktive Sneaker Damen
 gid://shopify/Product/15453777559937	28->0	Taktischer Gürtel mit Kummerbund
 gid://shopify/Product/15453778444673	83->1	Männer-Geldbörse mit RFID-Schutz
 gid://shopify/Product/15453778510209	9->3	Baby Seitenliege- und Anti-Roll-Kissen
+gid://shopify/Product/15453779820929	37->0	Abnehmbares und waschbares Seitenschlaf-Babybauchkissen
+gid://shopify/Product/15453781229953	20->0	Graphen-Heizdecke mit konstanter Temperatur
+gid://shopify/Product/15453781262721	47->0	Luxus-Schubladen-Organizer
+gid://shopify/Product/15453784375681	108->0	Weihnachtlicher Sisal-Katzturm
+gid://shopify/Product/15453784408449	61->0	Gusseisen Teppanyaki-Platte
+gid://shopify/Product/15453784768897	68->0	Eier-Fritürepfanne aus Edelstahl
+gid://shopify/Product/15453785522561	105->0	Anti-Haft Backform für Outdoor
+gid://shopify/Product/15453790306689	9->0	Süsses Schwein Kissen
+gid://shopify/Product/15453790536065	35->0	Gänse-Jagd-Spielzeug für Katzen
+gid://shopify/Product/15453790568833	87->2	Reflektierende Hundeleine
+gid://shopify/Product/15453791322497	10->1	Akita-Plüschhund
+gid://shopify/Product/15453791715713	53->0	Badehandtuch für Zuhause
+gid://shopify/Product/15453791748481	78->0	Interaktives Kauknochen-Spielzeug
+gid://shopify/Product/15453792108929	111->0	Wasserdichte Kinderschuhe aus Leder
+gid://shopify/Product/15453792207233	12->1	Leder-Laufschuhe für Kinder
+gid://shopify/Product/15453792240001	20->1	Yoga Stretch-Strap Set
+gid://shopify/Product/15453792698753	20->2	Mädchen-Lauflernschuhe, nude
+gid://shopify/Product/15453794468225	125->0	Hühnchenbrust Snacks für Katzen
+gid://shopify/Product/15453794500993	121->0	Tier Sofa mit abnehmbarer und waschbarer Hülle
+gid://shopify/Product/15453794992513	58->0	Hundebett mit entfernbarer, waschbarer wasserdichter Randumr
