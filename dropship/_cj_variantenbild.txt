@@ -14,3 +14,6 @@ gid://shopify/Product/15443241206145	zugeordnet	4	Edelstein-Kleeblatt «Rubin & 
 gid://shopify/Product/15443241238913	zugeordnet	3	Schmetterling-Ohrstecker «Marquise» · 925 Silber
 gid://shopify/Product/15443243663745	zugeordnet	12	Süsswasserperlen-Halskette «Perla» · elegantes Set
 gid://shopify/Product/15443243696513	zugeordnet	4	Schmuck-Set «Trio» · 925 Silber (Kette · Ohrringe · Armband)
+gid://shopify/Product/15443243762049	zugeordnet	3	Malachit-Armband «Vintage» · grüner Naturstein
+gid://shopify/Product/15443245662593	zugeordnet	3	Magnetische Wimpern «Natural» mit Clip
+gid://shopify/Product/15443245760897	zugeordnet	3	Magnetische Wimpern «Set» · natürlich
