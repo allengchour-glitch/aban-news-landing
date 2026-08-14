@@ -21922,3 +21922,13 @@ gid://shopify/Product/15492091347329	schon-sauber	0
 gid://shopify/Product/15492091937153	schon-sauber	0
 gid://shopify/Product/15492092232065	alle-mit-text	-
 gid://shopify/Product/15492092494209	umgestellt	4
+gid://shopify/Product/15492095771009	schon-sauber	3
+gid://shopify/Product/15492096033153	umgestellt	4
+gid://shopify/Product/15492096295297	alle-mit-text	-
+gid://shopify/Product/15492096590209	schon-sauber	0
+gid://shopify/Product/15492096852353	umgestellt	17
+gid://shopify/Product/15492097147265	schon-sauber	1
+gid://shopify/Product/15492097409409	umgestellt	15
+gid://shopify/Product/15492097900929	schon-sauber	3
+gid://shopify/Product/15492097933697	schon-sauber	0
+gid://shopify/Product/15492098392449	umgestellt	10
