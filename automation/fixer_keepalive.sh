@@ -56,9 +56,21 @@ while true; do
   # geben, weil die Regel für alle Beteiligten dieselbe Antwort liefert.
   aeltere=$(ps -eo pid,args --no-headers \
     | awk -v me=$$ '$2=="bash" && $3 ~ /fixer_keepalive\.sh$/ && $1 < me {n++} END{print n+0}')
+  # ⚠️ NICHT SOFORT ABTRETEN. Die erste Fassung dieser Regel beendete den jüngeren
+  # Supervisor auf der Stelle — und wenn der ältere Sekunden später starb, lief GAR KEINER
+  # mehr. Genau das geschah am 14.08. um 01:22. Deshalb wird nach einer Pause noch einmal
+  # nachgesehen: nur wer dann immer noch einen älteren findet, tritt ab. Seit der geerbte
+  # Deskriptor geschlossen wird (9>&-), trägt ohnehin wieder die flock-Sperre; diese Regel
+  # ist nur noch das Netz darunter und darf deshalb nie zur Ursache eines Ausfalls werden.
   if [ "$aeltere" -gt 0 ]; then
-    echo "$(date -u +%H:%M) älterer Supervisor läuft (PID $$ tritt ab)"
-    exit 0
+    sleep 5
+    aeltere=$(ps -eo pid,args --no-headers \
+      | awk -v me=$$ '$2=="bash" && $3 ~ /fixer_keepalive\.sh$/ && $1 < me {n++} END{print n+0}')
+    if [ "$aeltere" -gt 0 ]; then
+      echo "$(date -u +%H:%M) älterer Supervisor läuft weiterhin (PID $$ tritt ab)"
+      exit 0
+    fi
+    echo "$(date -u +%H:%M) älterer Supervisor ist inzwischen weg — PID $$ übernimmt"
   fi
   # ZUERST das Shopify-Token frisch halten. Es ist nur ~24 h gültig; läuft es ab, scheitern ALLE
   # Reiniger lautlos («keine Daten») und der Supervisor startet sie endlos ins Leere.
