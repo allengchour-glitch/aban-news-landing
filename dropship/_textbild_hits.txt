@@ -6629,3 +6629,7 @@ gid://shopify/Product/15449491210625	29->1	Tassengarnitur mit Wasser-Trennung
 gid://shopify/Product/15449491734913	14->0	Grosses, tragbares Wasser Glas für Kids
 gid://shopify/Product/15449491865985	14->0	Holzkohle-Ofen für Zuhause
 gid://shopify/Product/15449496879489	41->0	Katzen-Schüssel für gesunde Halswirbelsäule
+gid://shopify/Product/15449583780225	25->0	Kartenhalter & ID-Tasche
+gid://shopify/Product/15449587024257	18->3	Herren Leder Geldbeutel
+gid://shopify/Product/15449587286401	44->3	Minimalistisches AirTag-Geldbörse für Herren
+gid://shopify/Product/15449600229761	20->3	Stillkissen mit Taillenstütze
