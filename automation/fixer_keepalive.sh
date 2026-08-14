@@ -144,6 +144,20 @@ while true; do
     echo "$(date -u +%H:%M) restart $N"
     sleep 5
   done
+  # 🎬 LIEFERANTENVIDEOS NACHHOLEN — bewusst in kleinen Schlucken. Von 34'824 aktiven
+  # Produkten zeigen nur 144 ein Video, und CJ hat für die allermeisten auch keines: von 15
+  # geprüften Kandidaten kam bei allen 15 `productVideo: null` zurück. Ein Lauf über den
+  # ganzen Katalog kostete darum ~31'000 CJ-Punkte für vielleicht hundert Videos und nähme
+  # dem Grind das Tagesbudget weg (das am 14.08. um 19:19 Uhr bereits erschöpft war). 60
+  # Anfragen pro Tag sind neben 100'000 nichts und sammeln über die Wochen ein, was da ist.
+  if [ ! -f /tmp/videos_$(date -u +%F) ]; then
+    touch "/tmp/videos_$(date -u +%F)"
+    ( cd "$REPO" && setsid bash -c \
+        "exec 9>/tmp/lock_cj_video_backfill.lock; flock -n 9 || exit 0;
+         CAP=60 exec /opt/node22/bin/node automation/cj_video_backfill.mjs" \
+        >> /tmp/cj_video_backfill.log 2>&1 9>&- & )
+    echo "$(date -u +%H:%M) start cj_video_backfill (60/Tag)"
+  fi
   # HYPE-REIHE DER STARTSEITE, einmal täglich (Auftrag des Betreibers 12.08.2026: «wenn hype
   # vorbei produkt ändern»). Der Lauf nimmt abgelaufene Artikel aus der Reihe und füllt aus den
   # hinterlegten Themen nach — das ist der Teil, der ohne Zutun laufen muss, damit die Reihe
