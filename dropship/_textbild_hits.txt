@@ -6525,3 +6525,5 @@ gid://shopify/Product/15447637197185	11->1	Miao Xianer Katzen-Kletterbaum „Spr
 gid://shopify/Product/15447878762881	21->0	Babyphone mit HD-Kamera und App-Zugriff
 gid://shopify/Product/15447955964289	24->0	Kurzarm-Shirt aus reiner Baumwolle
 gid://shopify/Product/15447962091905	91->1	Partnerlook Herbst Sweatshirts für Eltern & Kinder
+gid://shopify/Product/15448076091777	31->0	Casual Damen-Schwimm-Top
+gid://shopify/Product/15448076779905	68->0	Damen-Badeanzug-Set
