@@ -8433,3 +8433,11 @@ gid://shopify/Product/15450140868993	schon-sauber	0
 gid://shopify/Product/15450141065601	schon-sauber	0
 gid://shopify/Product/15450141426049	schon-sauber	0
 gid://shopify/Product/15450141589889	schon-sauber	0
+gid://shopify/Product/15450141786497	umgestellt	5
+gid://shopify/Product/15450142212481	schon-sauber	0
+gid://shopify/Product/15450142441857	schon-sauber	0
+gid://shopify/Product/15450143031681	schon-sauber	0
+gid://shopify/Product/15450143392129	schon-sauber	0
+gid://shopify/Product/15450144047489	schon-sauber	0
+gid://shopify/Product/15450144211329	schon-sauber	0
+gid://shopify/Product/15450144702849	umgestellt	13
