@@ -1,0 +1,13 @@
+15447909695873	B-SKU	ysm8003-rahmenlose-sonnenbrille-mit-polygonale-609700	rahmenlose-sonnenbrille-mit-polygonalem-schliff-609700	301ok
+15447909859713	B-SKU	ysm8004-randlose-sonnenbrille-unisex-639600	randlose-sonnenbrille-unisex-639600	301ok
+15448076124545	B-SKU	casual-bademode-ka-p402-01-945089	casual-bademode-damen-945089	301ok
+15448076321153	B-SKU	casual-swimwear-ka-p412-01-990914	lassiger-badeanzug-sportlich-geschnitten-990914	301ok
+15448076386689	B-SKU	casual-swimwear-ka-p670-09-920642	lassiger-badeanzug-klassisch-920642	301ok
+15448838472065	B-SKU	titan-schneidebrett-as-cj41x27t-973058	titan-schneidebrett-41x27-cm-973058	301ok
+15448838504833	B-SKU	titan-schneidebrett-as-cj45x28t-184001	titan-schneidebrett-45x28-cm-184001	301ok
+15448847090049	B-SKU	sf3500-handheld-konsole-hd-dual-player-630400	handheld-konsole-hd-dual-player-630400	301ok
+15448958075265	B-SKU	mars-1000-velo-frontlicht-mit-1000-lumen-808704	velo-frontlicht-mit-1000-lumen-808704	301ok
+15449128894849	B-SKU	36mp-hd-infrarot-wildkamera-pr2000-620900	36mp-hd-infrarot-wildkamera-620900	301ok
+15495109902721	A-MARKE	seiko-inspiriertes-python-armband-636200	python-armband-636200	301ok
+15497045541249	A-MARKE	damen-pumps-im-chanel-stil-mit-chunky-absatz-626600	damen-pumps-mit-chunky-absatz-626600	301ok
+15497445736833	A-MARKE	tragerloses-top-mit-spitze-im-chanel-stil-618100	tragerloses-top-mit-spitze-618100	301ok
