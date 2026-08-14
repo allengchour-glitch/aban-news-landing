@@ -31,7 +31,7 @@ await ctx.route('**/*', async (route) => {
 });
 if (process.env.NOPOP === '1') { await ctx.addInitScript(() => { try { localStorage.setItem('lx_popup_v1', 'dismissed'); } catch (e) {} }); }
 const p = await ctx.newPage();
-const bust = URL + (URL.includes('?') ? '&' : '?') + 'nc=' + Math.floor(Date.now() / 1000);
+const bust = URL;
 try { await p.goto(bust, { waitUntil: 'domcontentloaded', timeout: 90000 }); } catch (e) { console.log('nav:', e.message); }
 await p.waitForTimeout(4000);
 await p.evaluate(() => window.scrollTo(0, 2200));
