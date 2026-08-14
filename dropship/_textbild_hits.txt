@@ -6627,3 +6627,4 @@ gid://shopify/Product/15449487638913	25->0	Elektrische Reinigungsbürste
 gid://shopify/Product/15449490522497	14->0	Edler, isolierter Becher aus Edelstahl
 gid://shopify/Product/15449491210625	29->1	Tassengarnitur mit Wasser-Trennung
 gid://shopify/Product/15449491734913	14->0	Grosses, tragbares Wasser Glas für Kids
+gid://shopify/Product/15449491865985	14->0	Holzkohle-Ofen für Zuhause
