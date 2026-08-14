@@ -105,8 +105,19 @@ THEME = "gid://shopify/OnlineStoreTheme/187533001089"
 PROFIL = "gid://shopify/DeliveryProfile/132124180865"
 STANDORTGRUPPE = "gid://shopify/DeliveryLocationGroup/134126436737"
 ZONE_CH = "gid://shopify/DeliveryZone/608365379969"
-METHODE_GRATIS = "gid://shopify/DeliveryMethodDefinition/1129764618625"
-BEDINGUNG_GRATIS = "gid://shopify/DeliveryCondition/321311572353"
+NAME_GRATIS = "Kostenloser Versand"
+
+# ⚠️ WEG ZUM SETZEN — zwei Sackgassen, damit sie niemand nochmal sucht:
+#  (a) deliveryProfileUpdate(... conditionsToUpdate:[{id, criteria}]) meldet KEINEN Fehler,
+#      legt die Bedingung sogar unter neuer ID an — schreibt den neuen Betrag aber NICHT.
+#      Mit und ohne field/operator, mit Float und Integer geprueft: bleibt bei 50.00.
+#      Eine Mutation ohne userErrors ist hier also KEIN Beleg (Hausregel 6) — immer
+#      danach live nachlesen.
+#  (b) Die Bedingung loeschen und neu anlegen scheitert an
+#      «Method definition cannot save conditions with the same operator»; ausserdem
+#      loeschen wir nichts (Hausregel 2).
+#  Gangbar ist: eine ZWEITE Versandart mit der richtigen Schwelle anlegen und die alte
+#  auf active=false setzen. Sie bleibt im Profil stehen und ist mit einem Klick zurueckholbar.
 
 BEWORBEN = 50.00          # das, was in Leiste, Produkt-, Kollektions- und Blogtexten steht
 LEDGER = "dropship/_versandschwelle_rabatt.txt"
@@ -170,18 +181,24 @@ def hoechster_automatik_rabatt():
     return prozent, betrag
 
 
-def gratis_bedingung():
+def gratis_versandart():
+    """Die AKTIVE Gratis-Versandart der CH-Zone (ueber Preis 0 gesucht, nicht ueber eine
+    fest notierte ID — die ID wechselt bei jedem Setzen)."""
     d = gql(Q_TARIFE)
     for lg in d["deliveryProfile"]["profileLocationGroups"]:
         for z in lg["locationGroupZones"]["nodes"]:
             if z["zone"]["id"] != ZONE_CH:
                 continue
             for m in z["methodDefinitions"]["nodes"]:
-                if m["id"] == METHODE_GRATIS:
-                    for c in m["methodConditions"]:
-                        if c["field"] == "TOTAL_PRICE":
-                            return float(c["conditionCriteria"]["amount"])
-    raise RuntimeError("Gratis-Versand-Bedingung in Zone Domestic nicht gefunden")
+                if not m["active"] or m["name"] != NAME_GRATIS:
+                    continue
+                preis = float((m.get("rateProvider") or {}).get("price", {}).get("amount", "-1"))
+                if preis != 0.0:
+                    continue
+                for c in m["methodConditions"]:
+                    if c["field"] == "TOTAL_PRICE":
+                        return m["id"], float(c["conditionCriteria"]["amount"])
+    raise RuntimeError("Aktive Gratis-Versandart in Zone Domestic nicht gefunden")
 
 
 # ------------------------------------------------------------------ Schreiben
@@ -191,19 +208,21 @@ M_TARIF = """mutation($id:ID!,$p:DeliveryProfileInput!){
     profile{id} userErrors{field message} } }"""
 
 
-def setze_bedingung(neu):
+def setze_schwelle(alte_methode, neu):
+    """Neue Gratis-Versandart mit der richtigen Schwelle anlegen und die alte in EINER
+    Mutation stilllegen. Schlaegt etwas fehl, bleibt alles wie es war."""
     p = {"locationGroupsToUpdate": [{
         "id": STANDORTGRUPPE,
         "zonesToUpdate": [{
             "id": ZONE_CH,
-            "methodDefinitionsToUpdate": [{
-                "id": METHODE_GRATIS,
-                "conditionsToUpdate": [{
-                    "id": BEDINGUNG_GRATIS,
-                    "field": "TOTAL_PRICE",
-                    "operator": "GREATER_THAN_OR_EQUAL_TO",
-                    "criteria": neu,
-                }],
+            "methodDefinitionsToUpdate": [{"id": alte_methode, "active": False}],
+            "methodDefinitionsToCreate": [{
+                "name": NAME_GRATIS,
+                "active": True,
+                "rateDefinition": {"price": {"amount": "0.0", "currencyCode": "CHF"}},
+                "priceConditionsToCreate": [{
+                    "criteria": {"amount": "%.2f" % neu, "currencyCode": "CHF"},
+                    "operator": "GREATER_THAN_OR_EQUAL_TO"}],
             }],
         }],
     }]}
@@ -252,7 +271,7 @@ def main():
     nur_wache = "--pruefen" in sys.argv
 
     prozent, betrags_rabatte = hoechster_automatik_rabatt()
-    ist = gratis_bedingung()
+    methode, ist = gratis_versandart()
     soll = round(BEWORBEN * (1 - prozent) + 1e-9, 2)
 
     print("Beworbene Schwelle .............. CHF %.2f" % BEWORBEN)
@@ -284,8 +303,8 @@ def main():
         return 0
 
     if abs(ist - soll) >= 0.005:
-        setze_bedingung(soll)
-        nachher = gratis_bedingung()
+        setze_schwelle(methode, soll)
+        _, nachher = gratis_versandart()
         if abs(nachher - soll) >= 0.005:
             raise RuntimeError("Tarif nicht uebernommen: %.2f" % nachher)
         notiere("tarif %.2f -> %.2f" % (ist, soll))
