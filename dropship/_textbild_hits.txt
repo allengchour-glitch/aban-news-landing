@@ -6687,3 +6687,9 @@ gid://shopify/Product/15454247944577	9->2	Einfacher Stadt-Rucksack
 gid://shopify/Product/15454384324993	26->0	LCD-Haarglätteisen mit 10-stufiger Temperaturregelung
 gid://shopify/Product/15454472667521	24->0	Reinigungsdusche mit Aminosäure-Filter
 gid://shopify/Product/15454473257345	9->0	Seidenfächer mit Goldsprenkel
+gid://shopify/Product/15454502879617	65->0	Leichte Golf-Bekleidung für Herren
+gid://shopify/Product/15454507270529	8->1	Hundetransporttasche Cartoon-Muster
+gid://shopify/Product/15454894293377	21->3	Fahrradlicht für Nachtfahrten
+gid://shopify/Product/15454894719361	9->1	Kopfmontierte LED-Lampe mit Aufladefunktion
+gid://shopify/Product/15454916116865	11->0	Studenten-Becher mit Sprühfunktion, 580 ml
+gid://shopify/Product/15455004688769	37->0	Faltbare HD-Drohne mit Hinderniserkennung
