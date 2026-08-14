@@ -196,7 +196,15 @@ def ist_lieferantencode(v):
 # Fliesstext bleibt unberührt: «Wählen Sie zwischen den Grössen S, One Size (M–L) und XL» und
 # «passen sich dank ‹One Size Fits All› an» haben keinen Doppelpunkt hinter dem Label und
 # werden vom Muster nicht erfasst — dort wäre ein Ersetzen ein Eingriff in einen Satz.
-SPEC = re.compile(r"((?:Farbe|Gr(?:ö|oe)sse|Größe)\s*:\s*(?:</strong>)?\s*)([^<\n]{1,300})", re.I)
+# ⚠️ Die Spezifikationszeile gibt es in EINZAHL und MEHRZAHL: «Farbe:» und «Farben:»,
+# «Grösse:» und «Grössen:». Der erste Entwurf kannte nur die Einzahl und liess 75 Zeilen
+# «Grössen: FREE SIZE» und alle «Farben:»-Zeilen stehen — live nachgewiesen an der
+# Langarmbluse, die nach der Umbenennung im Kaufbereich «Modell 1» zeigte und zwei Zeilen
+# tiefer weiterhin «Farben: JM721, JM722 …». Deshalb der neue Ledger-Schlüssel D2/F:
+# eine erweiterte Regel macht das alte Erledigt-Zeichen wertlos.
+SPEC = re.compile(r"((?:Farben?|Gr(?:ö|oe)ssen?|Größen?)\s*:\s*(?:</strong>)?\s*)([^<\n]{1,600})",
+                  re.I)
+SPEC_FARBE = re.compile(r"((?:Farben?)\s*:\s*(?:</strong>)?\s*)([^<\n]{1,600})", re.I)
 D_EINHEIT = re.compile(r"\b(?:FREE|ONE)[\s\-_]*SIZE\b", re.I)
 D_YARDS = re.compile(r"(?:([A-Za-z][A-Za-z ]{0,20}?)\s*[-–]\s*)?"
                      r"(\d+)(?:\s*(?:to|or)\s*(\d+))?\s*yards?\b", re.I)
@@ -228,6 +236,39 @@ def de_beschreibung(html):
             treffer[0] = True
         return m.group(1) + v2
     s = SPEC.sub(in_werten, html or "")
+    return s if treffer[0] else None
+
+
+def neue_namen(alt):
+    """Alte Optionswerte → neue Namen, nach derselben Regel wie Klasse C/E."""
+    if all(ist_lieferantencode(v) for v in alt):
+        return ["Modell %d" % (i + 1) for i in range(len(alt))]
+    if all(ist_zaehlwert(v) for v in alt):
+        if all(E_FARBWORT.search(v) for v in alt):
+            return ["Farbton %d" % (i + 1) for i in range(len(alt))]
+        return ["Modell %d" % (i + 1) for i in range(len(alt))]
+    return None
+
+
+def de_beschreibung_codes(html, alt, neu):
+    """Klasse F: dieselben Lieferantencodes stehen ein zweites Mal in der Spezifikationszeile
+    der Beschreibung («Farben: JM721, JM722 …»). Ersetzt sie durch die neuen Namen — aber NUR
+    innerhalb der Spezifikationszeile, nie im Fliesstext.
+    Lange Werte zuerst, und die Wortgrenze verhindert, dass «JM721» in «JM7210» trifft."""
+    # Nur die FARB-Zeile. Würde auch «Grösse:» mitlaufen, träfe ein Wert wie «No 1» dort die
+    # Ringgrösse und machte «Modell 1» daraus.
+    paare = sorted(zip(alt, neu), key=lambda p: -len(p[0]))
+    treffer = [False]
+
+    def in_werten(m):
+        v = m.group(2)
+        for a, n in paare:
+            v2 = re.sub(r"(?<![A-Za-z0-9])" + re.escape(a) + r"(?![A-Za-z0-9])", n, v)
+            if v2 != v:
+                treffer[0] = True
+                v = v2
+        return m.group(1) + v
+    s = SPEC_FARBE.sub(in_werten, html or "")
     return s if treffer[0] else None
 
 
@@ -263,7 +304,7 @@ M_DESC = ('mutation($i:ProductInput!){productUpdate(input:$i){userErrors{field m
 
 def sammeln():
     """Kandidaten aus dem Export vorsortieren. Entschieden wird später gegen die LIVE-Daten."""
-    a, b, c, d, e = [], [], [], [], []
+    a, b, c, d, e, f = [], [], [], [], [], []
     for zeile in open(EXPORT):
         try:
             p = json.loads(zeile)
@@ -289,7 +330,13 @@ def sammeln():
             if (name in FARBOPT and len(vals) >= 2 and pid not in AUSNAHMEN
                     and all(ist_zaehlwert(v) for v in vals)):
                 e.append((p["id"], p["title"]))
-    return a, b, c, d, e
+            # Klasse F: dieselben Codes/Zählwerte noch einmal in der Beschreibung.
+            # Die ALTEN Werte stehen nur noch im Export — live sind sie schon umbenannt.
+            if name in FARBOPT and len(vals) >= 2 and pid not in AUSNAHMEN:
+                nn = neue_namen(vals)
+                if nn and de_beschreibung_codes(p.get("descriptionHtml") or "", vals, nn):
+                    f.append((p["id"], p["title"], vals, nn))
+    return a, b, c, d, e, f
 
 
 def plan_fuer(klasse, opt):
@@ -347,7 +394,7 @@ def plan_fuer(klasse, opt):
 
 
 def main():
-    a, b, c, dd, ee = sammeln()
+    a, b, c, dd, ee, ff = sammeln()
     aufgabe = []
     if "A" in NUR:
         aufgabe += [("A", *x) for x in a]
@@ -359,10 +406,12 @@ def main():
         aufgabe += [("D", *x) for x in dd]
     if "E" in NUR:
         aufgabe += [("E", *x) for x in ee]
+    if "F" in NUR:
+        aufgabe += [("F", x[0], x[1], x[2], x[3]) for x in ff]
     print("Kandidaten aus dem Export — A (FREE/ONE SIZE): %d | B (Yards): %d | "
           "C (Lieferantencode als Farbe): %d | D (Spec-Zeile in der Beschreibung): %d | "
-          "E (englische Zählwerte): %d"
-          % (len(a), len(b), len(c), len(dd), len(ee)), flush=True)
+          "E (englische Zählwerte): %d | F (Codes in der Beschreibung): %d"
+          % (len(a), len(b), len(c), len(dd), len(ee), len(ff)), flush=True)
 
     done = set()
     if os.path.exists(LEDGER):
@@ -370,23 +419,24 @@ def main():
 
     if DRY:
         gezeigt = 0
-        for klasse, gid, titel in aufgabe:
-            if klasse == "D":
+        for eintrag in aufgabe:
+            klasse, gid, titel = eintrag[0], eintrag[1], eintrag[2]
+            if klasse in ("D", "F"):
                 r = gql(Q_DESC, {"id": gid})
                 node = ((r or {}).get("data") or {}).get("node")
                 if not node or node.get("status") != "ACTIVE":
                     continue
-                neu = de_beschreibung(node["descriptionHtml"])
+                neu = (de_beschreibung(node["descriptionHtml"]) if klasse == "D"
+                       else de_beschreibung_codes(node["descriptionHtml"], eintrag[3], eintrag[4]))
                 if not neu:
                     continue
                 gezeigt += 1
                 if gezeigt <= 25:
-                    alt_z = [z for z in re.findall(r"[^<>\n]*(?:FREE SIZE|ONE SIZE|yards?)[^<>\n]*",
-                                                  node["descriptionHtml"], re.I)][:2]
-                    neu_z = [z for z in re.findall(r"[^<>\n]*(?:Einheitsgrösse|Gr\. \d)[^<>\n]*",
-                                                  neu)][:2]
-                    print("[D] %s\n      ALT %s\n      NEU %s"
-                          % (titel[:52], alt_z, neu_z), flush=True)
+                    alt_z = re.findall(r"(?:Farben?|Gr(?:ö|oe)ssen?)\s*:[^<\n]{0,90}",
+                                       node["descriptionHtml"], re.I)[:2]
+                    neu_z = re.findall(r"(?:Farben?|Gr(?:ö|oe)ssen?)\s*:[^<\n]{0,90}", neu, re.I)[:2]
+                    print("[%s] %s\n      ALT %s\n      NEU %s"
+                          % (klasse, titel[:52], alt_z, neu_z), flush=True)
                 continue
             d = gql(Q_PROD, {"id": gid})
             if d is None:
@@ -413,11 +463,15 @@ def main():
 
     f = open(LEDGER, "a")
     n = fehler = koll_ges = 0
-    for klasse, gid, titel in aufgabe:
-        schluessel = "%s:%s" % (klasse, gid)
+    for eintrag in aufgabe:
+        klasse, gid, titel = eintrag[0], eintrag[1], eintrag[2]
+        # D2 statt D: die Spec-Regel wurde um die MEHRZAHL erweitert («Grössen:», «Farben:»).
+        # Mit dem alten Erledigt-Zeichen würden genau die Produkte übersprungen, bei denen die
+        # zweite Zeile noch steht.
+        schluessel = "%s:%s" % ("D2" if klasse == "D" else klasse, gid)
         if schluessel in done:
             continue
-        if klasse == "D":
+        if klasse in ("D", "F"):
             r = gql(Q_DESC, {"id": gid})
             node = ((r or {}).get("data") or {}).get("node") if r is not None else None
             if r is None:
@@ -427,7 +481,8 @@ def main():
                 f.write("%s\tnicht-gefunden\n" % schluessel); f.flush(); continue
             if node.get("status") != "ACTIVE":
                 f.write("%s\tnicht-aktiv\n" % schluessel); f.flush(); continue
-            neu = de_beschreibung(node["descriptionHtml"])
+            neu = (de_beschreibung(node["descriptionHtml"]) if klasse == "D"
+                   else de_beschreibung_codes(node["descriptionHtml"], eintrag[3], eintrag[4]))
             if not neu:
                 f.write("%s\tnichts-zu-tun\n" % schluessel); f.flush(); continue
             r2 = gql(M_DESC, {"i": {"id": gid, "descriptionHtml": neu}})
