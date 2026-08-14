@@ -145,37 +145,37 @@ KOLL_PUBLIZIEREN = ['socken-strumpfe', 'haustier-tech']
 # Nur wo der Produkt-TYP sicher uebereinstimmt, wird auf ein Produkt gezogen.
 PRODUKT = {
  'retro-sonnenbrille-polarisiert-uv400-unisex-vintage':'/products/sonnenbrillen-set-retro-polarized',
- 'resistance-bands-set-5-teilig-fitnessbaender-heim-training':'/products/resistance-bands-set-5-teilig-fitnessbander-he',
- 'silikon-baby-laetzchen-5er-set-bpa-frei-spuelmaschinenfest':'/products/silikon-baby-latzchen-5er-set-bpa-frei-spulmas',
+ 'resistance-bands-set-5-teilig-fitnessbaender-heim-training':'/products/resistance-bands-set-5-teilig-fitnessbander-heim-training',
+ 'silikon-baby-laetzchen-5er-set-bpa-frei-spuelmaschinenfest':'/products/silikon-baby-latzchen-5er-set-bpa-frei-spulmaschinenfest',
  'premium-slim-wallet-rfid-schutz-echtleder':'/products/premium-leder-geldborse-slim',
  'unisex-slim-wallet-rfid-7-farben-echtleder-fur-sie-und-ihn':'/products/premium-leder-geldborse-slim',
  'slim-kartenetui-rfid-echtleder-aluminium-bis-8-karten':'/products/premium-leder-geldborse-slim',
- 'damen-portemonnaie-xl-echtleder-12-kartenfacher-rfid':'/products/damen-portemonnaie-aus-echtleder-mit-vielen-ka',
- 'leder-damen-portemonnaie-rose-12-kartenfaecher-rfid':'/products/damen-portemonnaie-aus-echtleder-mit-vielen-ka',
- 'leder-portemonnaie-damen-rose':'/products/damen-portemonnaie-aus-echtleder-mit-vielen-ka',
- 'seiden-kissenbezug-100-maulbeerseide-anti-aging-haarpflege':'/products/seidenkissenbezug-aus-100-maulbeerseide',
- 'silk-pillowcase-set-premium-anti-aging-haarpflege':'/products/seidenkissenbezug-aus-100-maulbeerseide',
- 'slow-feeder-anti-schling-napf-fuer-hunde-katzen':'/products/anti-rutsch-slow-feeder-napf-fur-hunde',
- 'magnetischer-messerblock-bambus-schlitzfrei-modern':'/products/magnetischer-messerhalter-aus-kunstharz',
- 'manschettenknopfe-edelstahl-klassisches-design-fur-anzug-hemd':'/products/manschettenknopfe-aus-edelstahl-mit-alphabet',
- 'smartwatch-pro-amoled-herzfrequenz-100-sportmodi-7-tage-akku':'/products/smartwatch-pro-1-78-amoled-herzfrequenz-fitness',
- '3-in-1-wireless-charger-iphone-airpods-apple-watch-15w':'/products/3-in-1-kabelloses-ladegerat-fur-iphone-watch-und',
- 'french-press-doppelwand-glas-premium-coffee-tea-pot-borosilikat-350-650-1000ml':'/products/french-press-kaffeebereiter-aus-borosilikatglas',
- 'herren-gurtel-echtleder-edelstahl-schliesse-kurzbar':'/products/elastischer-herren-gurtel-mit-automatikschliesse',
- 'herren-halskette-edelstahl-minimalistisch-hypoallergen':'/products/herren-halskette-fenrir-edelstahl-weizenkette',
- 'reise-toilettentasche-premium-hangend-wasserabweisend-4-facher':'/products/reise-toilettentasche',
- 'galaxy-aurora-led-projektor-360-sternenhimmel':'/products/sternenhimmel-projektor-galaxy-led-nachtlicht',
- 'anti-aging-serum-hyaluron-vitamin-c-vegan-made-in-eu':'/products/24k-anti-aging-serum',
+ 'damen-portemonnaie-xl-echtleder-12-kartenfacher-rfid':'/products/damen-portemonnaie-aus-echtleder-mit-vielen-ka-622100',
+ 'leder-damen-portemonnaie-rose-12-kartenfaecher-rfid':'/products/damen-portemonnaie-aus-echtleder-mit-vielen-ka-622100',
+ 'leder-portemonnaie-damen-rose':'/products/damen-portemonnaie-aus-echtleder-mit-vielen-ka-622100',
+ 'seiden-kissenbezug-100-maulbeerseide-anti-aging-haarpflege':'/products/seidenkissenbezug-aus-100-maulbeerseide-128704',
+ 'silk-pillowcase-set-premium-anti-aging-haarpflege':'/products/seidenkissenbezug-aus-100-maulbeerseide-128704',
+ 'slow-feeder-anti-schling-napf-fuer-hunde-katzen':'/products/anti-rutsch-slow-feeder-napf-fur-hunde-610600',
+ 'magnetischer-messerblock-bambus-schlitzfrei-modern':'/products/magnetischer-messerhalter-aus-kunstharz-636600',
+ 'manschettenknopfe-edelstahl-klassisches-design-fur-anzug-hemd':'/products/manschettenknopfe-aus-edelstahl-mit-alphabet-607917',
+ 'smartwatch-pro-amoled-herzfrequenz-100-sportmodi-7-tage-akku':'/products/smartwatch-pro-1-78-amoled-herzfrequenz-fitness-tracker-bluetooth',
+ '3-in-1-wireless-charger-iphone-airpods-apple-watch-15w':'/products/3-in-1-kabelloses-ladegerat-fur-apple-gerate-ecf92d',
+ 'french-press-doppelwand-glas-premium-coffee-tea-pot-borosilikat-350-650-1000ml':'/products/french-press-kaffeebereiter-aus-borosilikatgla-600200',
+ 'herren-gurtel-echtleder-edelstahl-schliesse-kurzbar':'/products/elastischer-herren-gurtel-mit-automatikschlies-611300',
+ 'herren-halskette-edelstahl-minimalistisch-hypoallergen':'/products/herren-halskette-fenrir-edelstahl-weizenkette-wasserfest',
+ 'reise-toilettentasche-premium-hangend-wasserabweisend-4-facher':'/products/reise-toilettentasche-608600',
+ 'galaxy-aurora-led-projektor-360-sternenhimmel':'/products/sternenhimmel-projektor-galaxy-led-nachtlicht-527681',
+ 'anti-aging-serum-hyaluron-vitamin-c-vegan-made-in-eu':'/products/24k-anti-aging-serum-710722',
  'crossbody-bag-vegan-sommer-tasche-mit-smartphone-fach':'/products/crossbody-tasche-nuit-elegant-im-vintage-look',
- 'premium-kuhlbox-25l-72h-kalt-usb-anschluss':'/products/25l-auto-kuhlbox-fur-unterwegs',
- 'schmuckbox-premium-mit-spiegel-portable-mit-kettenhalter-ohrring-display':'/products/kompakte-schmuckbox-mit-spiegel',
- 'jade-roller-gua-sha-set-rosenquarz-premium':'/products/rosenquarz-und-jade-roller-mit-3d-metall',
- 'premium-schlusselanhanger-leder-personalisierbar-mit-gravur':'/products/leder-schlusselanhanger',
- 'klassische-herrenuhren-edelstahl-saphirglas-50m-wasserdicht':'/products/herren-business-quarzuhr-mit-stahlarmband',
- 'minimalist-canvas-rucksack-25l-laptop-schule':'/products/urbaner-rucksack-fur-herren',
- 'xl-strandtuch-bio-baumwolle-180x100cm-sandfrei-mit-tragetasche':'/products/extra-dickes-baumwoll-badetuch-saugstark',
- 'laptop-sleeve-echtleder-13-15-macbook-universal':'/products/3-in-1-laptop-sleeve-mit-wireless-charger',
- 'wm-trikot-selbst-gestalten':'/products/fussball-trikot-fur-herren',
+ 'premium-kuhlbox-25l-72h-kalt-usb-anschluss':'/products/25l-auto-kuhlbox-fur-unterwegs-631200',
+ 'schmuckbox-premium-mit-spiegel-portable-mit-kettenhalter-ohrring-display':'/products/kompakte-schmuckbox-mit-spiegel-602500',
+ 'jade-roller-gua-sha-set-rosenquarz-premium':'/products/rosenquarz-und-jade-roller-mit-3d-metall-609500',
+ 'premium-schlusselanhanger-leder-personalisierbar-mit-gravur':'/products/leder-schlusselanhanger-782ed7',
+ 'klassische-herrenuhren-edelstahl-saphirglas-50m-wasserdicht':'/products/herren-business-quarzuhr-mit-stahlarmband-620300',
+ 'minimalist-canvas-rucksack-25l-laptop-schule':'/products/urbaner-rucksack-fur-herren-624100',
+ 'xl-strandtuch-bio-baumwolle-180x100cm-sandfrei-mit-tragetasche':'/products/extra-dickes-baumwoll-badetuch-saugstark-613700',
+ 'laptop-sleeve-echtleder-13-15-macbook-universal':'/products/3-in-1-laptop-sleeve-mit-wireless-charger-654900',
+ 'wm-trikot-selbst-gestalten':'/products/fussball-trikot-fur-herren-600800',
 }
 # Alles Uebrige: auf die passende KATEGORIE statt auf ein falsches Produkt.
 KATEGORIE = {
@@ -366,7 +366,7 @@ def main():
         if not ue: ledger_schreiben(f"kollektion-publiziert\t{h}\t{c['id']}")
 
     # C/D) Artikel-Bodies schreiben
-    M = """mutation($id:ID!,$b:String!){articleUpdate(id:$id,article:{body:$b}){
+    M = """mutation($id:ID!,$b:HTML!){articleUpdate(id:$id,article:{body:$b}){
            userErrors{field message} article{id}}}"""
     ok = 0
     for a, neu, aend in plan:
