@@ -6723,3 +6723,5 @@ gid://shopify/Product/15449426821505	999->0	Make-up-Spiegel mit Musik und Licht
 gid://shopify/Product/15449488884097	54->0	Diamant-Augenwimpern
 gid://shopify/Product/15449571361153	28->1	Damen Cuff Washed Wide-Leg Crop-Jeans
 gid://shopify/Product/15450730889601	62->1	Leichte Anti-Rutsch Hausschuhe für Paare
+gid://shopify/Product/15450829422977	144->0	Mini-Falt-Drohne mit HD-Kamera
+gid://shopify/Product/15450835222913	37->0	Elefanten-Kuschelkissen mit Decke
