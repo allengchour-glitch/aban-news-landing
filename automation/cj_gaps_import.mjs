@@ -255,7 +255,7 @@ const COLL_CREATE = `mutation($input:CollectionInput!){ collectionCreate(input:$
       if (!colors.length) colors = ['Standard'];
       const tags = [cfg.coll.tag, ...cfg.extraTags, 'cj-real'];
       const desc = `<p><strong>${title}</strong></p><ul>${cfg.bullets.map(b => `<li>${b}</li>`).join('')}</ul>`
-        + `<p>📦 Lieferung CH/EU 6–12 Tage · Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · 🇨🇭 LuxeStyle</p>`;
+        + `<p>📦 Lieferung Schweiz 10–20 Werktage · Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · 🇨🇭 LuxeStyle</p>`;
       const input = { title, handle, productType: cfg.type, vendor: 'LuxeStyle', status: 'ACTIVE', tags,
         descriptionHtml: desc, seo: { title: `${title} | LuxeStyle`, description: `${title} – Premium-Qualität, Gratis-Versand ab CHF 50.` },
         productOptions: [{ name: 'Farbe', values: colors.map(c => ({ name: c })) }],

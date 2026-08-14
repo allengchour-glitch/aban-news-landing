@@ -87,10 +87,19 @@ EXPORT = os.environ.get("EXPORT", "/tmp/export.jsonl")
 LEDGER = "dropship/_versandaussagen_wahrheit.txt"
 
 # ---------------------------------------------------------------- Wahrheit
-# ch = 1–2: NICHT neu gesetzt, sondern die bereits im Shop stehende, wahre Aussage der
-# 2'593 CH-Lager-Seiten («🇨🇭 Versand aus der Schweiz – Lieferung in nur 1–2 Werktagen (DPD)»).
-# Diese Seiten werden deshalb NICHT angefasst; Richtlinie und Startseite ziehen zu ihnen hin.
-SPANNE = {"ch": "1–2", "eu": "5–10", "pod": "7–14", "direkt": "10–18"}
+# ⚠️ DIE ZAHLEN SIND NICHT VON MIR. Sie stehen bereits als entschiedene Wahrheit im Shop —
+# ein anderer Reiniger (automation/seiten_versandtext.py) hat die Shop-Seiten am 12.08. genau
+# darauf vereinheitlicht, und die Startseite trägt dieselbe Aussage. Wer hier eine EIGENE
+# Zahl erfindet, erzeugt die fünfte widersprechende Zusage statt die vier aufzulösen.
+#   /pages/versand-lieferung (live):  «🇨🇭 Blitzversand-Artikel ab CH-Lager: 1–2 Werktage ·
+#     übrige Lagerartikel: 2-7 Werktage · 📦 Bestell- / Print-on-Demand- & Übersee-Artikel:
+#     10-20 Werktage (Maximum-Zeiten)»
+#   2'593 CH-Lager-Produktseiten (live): «Versand aus der Schweiz – Lieferung in nur 1–2
+#     Werktagen (DPD)» — deshalb wird an diesen Seiten NICHTS geändert, sie sind schon wahr.
+# pod = 7–14 liegt innerhalb der auf der Seite genannten Maximal-Spanne 10–20 für Bestell-/
+# POD-Ware und entspricht der bereits im Shop stehenden Stufe «eu-druck» — eine präzisere
+# Angabe unter demselben Dach ist kein Widerspruch.
+SPANNE = {"ch": "1–2", "eu": "2–7", "pod": "7–14", "direkt": "10–20"}
 WEGNAME = {
     "ch": "ab Schweizer Lager",
     "eu": "ab EU-Lager",

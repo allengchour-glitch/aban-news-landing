@@ -1,32 +1,26 @@
 {%- comment -%}
   LuxeStyle — ls-lieferzeit.liquid
-  Zeigt die Lieferzeit fürs Land des Kunden (Phase 2). Liest Produkt-Metafeld custom.lieferzeit (json: {ch_eu, us, tier}),
-  das delivery_block.mjs setzt. Sprache & Land kommen aus localization → einsprachige, landesabhängige Anzeige.
-  Self-contained (4 Sprachen inline) — robust ohne Locale-Keys. Einbindung: {% render 'ls-lieferzeit', product: product %}
+  Zeigt die Lieferzeit aus dem Produkt-Metafeld custom.lieferzeit (json: {ch, tier, weg}),
+  das automation/delivery_block.mjs setzt.
+  ⚠️ KORRIGIERT 14.08.2026: Die alte Fassung hatte einen Zweig für Übersee-Länder
+  (US,CA,AU,NZ,JP,SG,AE,BR,MX) und zeigte dort eine USA-Lieferzeit an. Der Shop hat genau
+  EINEN aktiven Markt («Switzerland», Regionen ['CH']) und liefert laut Versandrichtlinie
+  ausschliesslich in die Schweiz und nach Liechtenstein — der Zweig konnte nur eine Zusage
+  anzeigen, die der Shop nicht erfüllen kann. Er ist entfernt; es gibt nur noch die
+  Schweizer Angabe.
+  Einbindung: {% render 'ls-lieferzeit', product: product %}
 {%- endcomment -%}
 {%- assign lz = product.metafields.custom.lieferzeit.value -%}
-{%- if lz -%}
-  {%- assign ch_eu = lz.ch_eu -%}
-  {%- assign us = lz.us -%}
+{%- if lz and lz.ch != blank -%}
   {%- assign lang = localization.language.iso_code | slice: 0, 2 | downcase -%}
-  {%- assign cc = localization.country.iso_code | upcase -%}
-  {%- comment -%} Label je Sprache {%- endcomment -%}
   {%- case lang -%}
-    {%- when 'fr' -%}{%- assign lbl = 'Délai de livraison' -%}{%- assign dys = 'jours ouvrés' -%}
-    {%- when 'it' -%}{%- assign lbl = 'Tempi di consegna' -%}{%- assign dys = 'giorni lavorativi' -%}
-    {%- when 'en' -%}{%- assign lbl = 'Delivery time' -%}{%- assign dys = 'business days' -%}
-    {%- else -%}{%- assign lbl = 'Lieferzeit' -%}{%- assign dys = 'Werktage' -%}
+    {%- when 'fr' -%}{%- assign lbl = 'Délai de livraison en Suisse' -%}{%- assign dys = 'jours ouvrés' -%}
+    {%- when 'it' -%}{%- assign lbl = 'Tempi di consegna in Svizzera' -%}{%- assign dys = 'giorni lavorativi' -%}
+    {%- when 'en' -%}{%- assign lbl = 'Delivery time within Switzerland' -%}{%- assign dys = 'business days' -%}
+    {%- else -%}{%- assign lbl = 'Lieferzeit Schweiz' -%}{%- assign dys = 'Werktage' -%}
   {%- endcase -%}
-  {%- comment -%} Land → passende Spanne wählen {%- endcomment -%}
-  {%- assign overseas = 'US,CA,AU,NZ,JP,SG,AE,BR,MX' | split: ',' -%}
-  {%- assign show_us = false -%}
-  {%- if us != blank and overseas contains cc -%}{%- assign show_us = true -%}{%- endif -%}
   <p class="ls-lieferzeit" style="background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:14px 0;">
-    📦 <strong>{{ lbl }}:</strong>
-    {%- if show_us -%}
-      {{ us }} {{ dys }}
-    {%- else -%}
-      {{ ch_eu }} {{ dys }}
-    {%- endif -%}
+    📦 <strong>{{ lbl }}:</strong> {{ lz.ch }} {{ dys }}
+    {%- if lz.weg != blank %} <span style="opacity:.7;">· {{ lz.weg }}</span>{% endif -%}
   </p>
 {%- endif -%}

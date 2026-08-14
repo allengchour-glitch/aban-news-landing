@@ -2,10 +2,19 @@
 /* LuxeStyle — delivery_block.mjs
  * Lieferzeit-Anzeige je nach Bestellort (Phase 1): schreibt pro Produkt einen Regions-Block in die Beschreibung
  * UND ein Metafeld custom.lieferzeit (json) — Herkunft aus den Lieferanten-Tags abgeleitet:
- *   • EU-Druck (printful/prodigi_personalized_product) → CH/EU 3–7 T · USA 5–9 T
- *   • EU-Lager  (eu-lager)                             → CH/EU 5–10 T
- *   • China-Lager (cj-real, Default)                   → CH/EU 8–14 T · USA 10–20 T
- *   • sonst Fallback generisch.
+ * ⚠️ KORRIGIERT 14.08.2026: Dieses Skript schrieb «🇨🇭 CH / 🇪🇺 EU … · 🇺🇸 USA …» in die
+ * Beschreibung von 1'037 aktiven Produkten. Der Shop liefert aber ausschliesslich in die
+ * Schweiz und nach Liechtenstein — es gibt genau EINEN aktiven Shopify-Markt («Switzerland»,
+ * Regionen ['CH']), niemand ausserhalb der Schweiz kann überhaupt auschecken, und die
+ * Versandrichtlinie schliesst EU und USA ausdrücklich aus. Die Zeilen bewarben also eine
+ * Leistung, die der Shop nicht erbringen kann (UWG Art. 3; im Merchant Center der
+ * Standard-Ablehnungsgrund «Angebotene Lieferung stimmt nicht mit dem Angebot überein»).
+ * Es gibt jetzt nur noch eine Schweizer Angabe. Die Spannen sind die im Shop bereits
+ * entschiedenen (siehe /pages/versand-lieferung und automation/seiten_versandtext.py):
+ *   • CH-Lager (ch-lager/fortura/schweiz-versand)      → 1–2 Werktage
+ *   • EU-Lager (eu-lager)                              → 2–7 Werktage
+ *   • Druck auf Bestellung (printful/prodigi/pod-…)    → 7–14 Werktage
+ *   • Direktversand ab Herstellerlager (Default)       → 10–20 Werktage
  * Idempotent (Marker class="ls-liefer" → kein Doppeln; Update ersetzt alten Block). No-op ohne Creds. DRY_RUN=1.
  * Das Metafeld custom.lieferzeit nutzt Phase 2 (Theme-Snippet) für die landesabhängige, einsprachige Anzeige.
  * ENV: SHOPIFY_SHOP + SHOPIFY_CLIENT_ID/SECRET (oder _ADMIN_TOKEN) · [LIMIT=5000] · [DRY_RUN=1]
@@ -23,13 +32,13 @@ async function token(){ if(ADMIN_TOKEN&&await works(ADMIN_TOKEN))return ADMIN_TO
 
 // Herkunfts-Tier → Lieferzeit-Regionen (Tage-Range als String)
 function tier(tags){ const t=tags.map(x=>String(x).toLowerCase());
-  if(t.includes('printful_personalized_product')||t.includes('prodigi_personalized_product')) return {key:'eu-druck', ch_eu:'3–7', us:'5–9'};
-  if(t.includes('eu-lager')) return {key:'eu-lager', ch_eu:'5–10', us:null};
-  if(t.includes('cj-real')) return {key:'china', ch_eu:'8–14', us:'10–20'};
-  return {key:'standard', ch_eu:'6–12', us:'9–16'};
+  if(t.includes('ch-lager')||t.includes('fortura')||t.includes('schweiz-versand')) return {key:'ch-lager', ch:'1–2', weg:'ab Schweizer Lager'};
+  if(t.includes('printful_personalized_product')||t.includes('prodigi_personalized_product')||t.includes('selbst-gestalten')||t.some(x=>x.startsWith('pod-')||x.startsWith('fertig-'))) return {key:'pod', ch:'7–14', weg:'Druck auf Bestellung'};
+  if(t.includes('eu-lager')) return {key:'eu-lager', ch:'2–7', weg:'ab EU-Lager'};
+  return {key:'direkt', ch:'10–20', weg:'Direktversand ab Herstellerlager'};
 }
-function blockHtml(z){ const parts=[`🇨🇭 CH / 🇪🇺 EU: <strong>${z.ch_eu} Tage</strong>`]; if(z.us) parts.push(`🇺🇸 USA: <strong>${z.us} Tage</strong>`);
-  return `<p class="ls-liefer" data-tier="${z.key}" style="background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;">📦 <strong>Lieferzeit</strong> (je nach Land): ${parts.join(' · ')} <span style="opacity:.7;">· Werktage, inkl. Produktion</span></p>`;
+function blockHtml(z){
+  return `<p class="ls-liefer" data-tier="${z.key}" style="background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;">📦 <strong>Lieferzeit</strong> Schweiz: <strong>${z.ch} Werktage</strong> <span style="opacity:.7;">· ${z.weg} · Versand nur in die Schweiz und nach Liechtenstein</span></p>`;
 }
 function stripBlock(html){ return (html||'').replace(/<p class="ls-liefer"[\s\S]*?<\/p>\s*/g,''); }
 
@@ -49,9 +58,10 @@ while(true){
     const want=blockHtml(z);
     const cleaned=stripBlock(desc);
     const newDesc=want+'\n'+cleaned;
-    const mfVal=JSON.stringify({ch_eu:z.ch_eu, us:z.us||'', tier:z.key});
+    // Metafeld ohne us/EU-Feld — sonst lebt die Auslandszusage im Theme-Snippet weiter.
+    const mfVal=JSON.stringify({ch:z.ch, tier:z.key, weg:z.weg});
     if(desc.includes(want)){ same++; continue; } // schon exakt so
-    if(DRY){ console.log(`DRY ${p.title} [${z.key}]: CH/EU ${z.ch_eu}${z.us?` · US ${z.us}`:''}`); changed++; continue; }
+    if(DRY){ console.log(`DRY ${p.title} [${z.key}]: CH ${z.ch} Werktage`); changed++; continue; }
     const ur=await gql(tok,M,{p:{id:p.id,descriptionHtml:newDesc}}); const ue=ur?.data?.productUpdate?.userErrors||[];
     if(ue.length){ fails.push(`${p.title}: ${JSON.stringify(ue).slice(0,120)}`); continue; }
     await gql(tok,MF,{mf:[{ownerId:p.id,namespace:'custom',key:'lieferzeit',type:'json',value:mfVal}]});
