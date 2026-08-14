@@ -5588,7 +5588,64 @@ var WOHNSTUFEN=[
  ["👑 Palast",         50000, 6, 12, 7000]
 ];
 var wohnstufe=0, naechsteAbnahme=4;
-function stufenBonus(){return 1+wohnstufe*0.12;}      /* +12 % Einnahmen je Stufe */
+/* ═══════════ 🎮 SPIELMODI + 🎯 TAGES-MISSIONEN (User: „viele mods und missionen") ═══
+   MODI — gewaehlt beim ersten Solo-Start (Bestands-Saves bleiben Klassisch):
+     klassisch  wie bisher
+     sprint     Wettlauf: Traumvilla (Stufe 3) bis Tag 20 — danach freundlich weiter
+     sandbox    99'999 $ Start, alle Moebel sofort frei — bauen ohne Sorgen
+     hardcore   800 $ Start, Abnahme alle 3 Tage, Einnahmen x0.75
+   TAGES-MISSIONEN — 3 pro Tag aus dem Pool, deterministisch aus der Tagesnummer
+   gewuerfelt (gleiche Missionen nach Neuladen), Fortschritt als Delta zur Basis. */
+var MODUS="klassisch",sprintFertig=false;
+function abnahmeTakt(){return MODUS==="hardcore"?3:4;}
+function modusFaktor(){return MODUS==="hardcore"?0.75:1;}
+var missHeute=null;
+var MISS_POOL=[
+ ["🎣","Fange {n} Fische",2,function(){return stats.fische||0;}],
+ ["🍳","Koche 1 perfektes Menü",1,function(){return stats.kochPerfekt||0;}],
+ ["💃","Lege 1 perfekte Tanz-Session hin",1,function(){return stats.tanzPerfekt||0;}],
+ ["📦","Erledige {n} Blitz-Lieferungen",2,function(){return stats.lieferungen||0;}],
+ ["🛹","Lande {n} Airtime-Sprünge",3,function(){return stats.stunts||0;}],
+ ["🥕","Fahre {n} Ernten ein",2,function(){return stats.ernten||0;}],
+ ["🪑","Stelle {n} Möbel auf",3,function(){return stats.moebelGekauft||0;}],
+ ["🎸","Spiele 1 perfekte Strassenmusik-Show",1,function(){return stats.buskPerfekt||0;}],
+ ["😮","Mache {n} Emotes",4,function(){return window._emoteCount||0;}],
+ ["🏅","Bestehe 1 Bauabnahme",1,function(){return stats.abnahmen||0;}]
+];
+function missNeu(){
+  if(MPs&&!mpHost)return;
+  var s=tag*7919+3,rnd=function(){s=(s*1103515245+12345)&0x7fffffff;return s/0x7fffffff;};
+  var idx=[];while(idx.length<3){var k=(rnd()*MISS_POOL.length)|0;if(idx.indexOf(k)<0)idx.push(k);}
+  missHeute={tag:tag,bonus:false,liste:idx.map(function(k){var p=MISS_POOL[k];
+    return {i:k,e:p[0],tx:p[1].replace("{n}",p[2]),ziel:p[2],basis:p[3](),done:false};})};
+  if(MPs&&mpHost)netSend({t:"tmiss",m:missHeute});
+}
+function missCheck(){
+  if(!missHeute)return;
+  var alle=true,neu=false;
+  missHeute.liste.forEach(function(m){
+    if(m.done)return;
+    if(MISS_POOL[m.i][3]()-m.basis>=m.ziel){m.done=true;neu=true;
+      geld+=180;geldSend();hint("🎯 Mission geschafft: "+m.e+" "+m.tx+"  +180 $");
+      if(typeof launchFirework==="function"&&sims&&sims[0])launchFirework(sims[0].x,sims[0].z);
+      beep(700,.1,"triangle",.05);}
+    if(!m.done)alle=false;});
+  if(alle&&!missHeute.bonus){missHeute.bonus=true;neu=true;
+    geld+=250;geldSend();hint("🏆 Alle Tages-Missionen geschafft! Bonus +250 $");feier(3);}
+  if(neu&&MPs&&mpHost)netSend({t:"tmiss",m:missHeute});
+}
+function missTxt(){
+  if(!missHeute)return "";
+  return "🎯 <b>Tages-Missionen:</b> "+missHeute.liste.map(function(m){
+    return (m.done?"✅":"▫️")+m.e+" "+m.tx;}).join(" · ")+(missHeute.bonus?" 🏆":"");
+}
+/* 🎉 feier(n): kleines Fest am Spieler — Raketen + Herzen. Fuer Abnahme/Missionen. */
+function feier(n){
+  if(sims&&sims[0]){for(var i=0;i<(n||2);i++)
+    if(typeof launchFirework==="function")launchFirework(sims[0].x+(Math.random()-0.5)*6,sims[0].z+(Math.random()-0.5)*6);
+    if(typeof hearts==="function")hearts(sims[0].x,sims[0].z);}
+}
+function stufenBonus(){return (1+wohnstufe*0.12)*modusFaktor();}      /* +12 % Einnahmen je Stufe */
 /* Wie viele KATEGORIEN sind moebliert? Belohnt ein vollstaendiges Haus statt
    zwanzig Kopien desselben Stuecks. */
 function katVielfalt(){
@@ -5625,7 +5682,7 @@ function stufeHudUpd(){
 /* Die Abnahme selbst: ein Ereignis mit klarer Ansage, kein stiller Zahlensprung. */
 function bauabnahme(){
   var l=stufenLuecke();
-  if(!l){naechsteAbnahme=tag+4;return;}
+  if(!l){naechsteAbnahme=tag+abnahmeTakt();return;}
   var z=l.ziel;
   function zeile(ok,txt){return (ok?"✅ ":"❌ ")+txt;}
   var meldung;
@@ -5640,6 +5697,7 @@ function bauabnahme(){
     beep(660,.12,"triangle",.06);setTimeout(function(){beep(880,.16,"triangle",.06);},150);
     if(typeof hearts==="function")hearts(0,0);
     stats.abnahmen=(stats.abnahmen||0)+1;
+    feier(3);
   }else{
     meldung="📋 Bauabnahme: noch nicht "+z[0]+" — "
       +zeile(l.fehltWert===0,"Wert "+l.wert+"/"+z[1]+" $")+"  "
@@ -5648,7 +5706,7 @@ function bauabnahme(){
     hint(meldung);
     beep(240,.18,"sawtooth",.05);
   }
-  naechsteAbnahme=tag+4;
+  naechsteAbnahme=tag+abnahmeTakt();
   /* 🤝 Der Tageswechsel (und damit diese Funktion) laeuft NUR beim Host. Ohne
      diese Nachricht sah der Gast weder Abnahme noch Aufstieg, und sein
      stufenBonus() blieb dauerhaft bei 1.0 — die Einnahmen der beiden Peers
@@ -5843,7 +5901,7 @@ function applyFurn(id,gx,gy,rot,fid){
     if(def.korr){m.scale.multiplyScalar(def.korr);
       var bbk=new THREE.Box3().setFromObject(m);m.position.y=-bbk.min.y+0.012;}
     // Blender Z-hoch -> three Y-hoch übernimmt der Exporter; Größe passt (1 Einheit = 1m, Zelle 2m)
-    scene.add(m);rec.mesh=m;
+    scene.add(m);rec.mesh=m;plopFx(m,cx(gx),cz(gy));
     if(rec.lv>1){var cv7=document.createElement("canvas");cv7.width=128;cv7.height=64;var c7=cv7.getContext("2d");
       c7.font="44px sans-serif";c7.textAlign="center";c7.fillText(rec.lv>2?"⭐⭐":"⭐",64,48);
       var sp7=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv7),transparent:true,depthWrite:false}));
@@ -5981,7 +6039,7 @@ document.getElementById("edSell").onclick=function(){
 document.getElementById("edX").onclick=editHide;
 function snapshot(){return {gw:GW,gh:GH,floors:floors,walls:Object.keys(walls).reduce(function(a,k){a[k]=walls[k].co?{t:walls[k].type,c:walls[k].co}:walls[k].type;return a;},{}),
   furn:furn.map(function(f){return {id:f.id,x:f.gx,y:f.gy,r:f.rot,fid:f.fid,lv:f.lv||1,w:f.wachs||0,g:f.gratis?1:0};}),
-  gb:window._gratisBau||null, /* 🩹 Schwarm-4: Gratis-Flags der Villa-Vorlage mitspeichern — sonst zahlte der Abriss nach jedem Neuladen wieder aus (Geld-Duplikation) */au:window.autoRec?{id:window.autoRec.id,x:window.autoRec.gx,y:window.autoRec.gy}:null,hu:haustier?{x:haustier.gx||10,y:haustier.gy||10}:null,qb:questBusy,we:wetter,tq:teamIdx,tb:teamBase,tbg:teamBasis,im:immo,geld:geld,tag:tag,uhr:uhrzeit,rom:romantik,li:liebe,ve:verlobt,he:verheiratet,sk:skills,st:stats,ac:achDone,qi:questIdx,ki:kinder.map(function(k){return {n:k.name,a:k.alter,b:k.baby};}),
+  gb:window._gratisBau||null, /* 🩹 Schwarm-4: Gratis-Flags der Villa-Vorlage mitspeichern — sonst zahlte der Abriss nach jedem Neuladen wieder aus (Geld-Duplikation) */au:window.autoRec?{id:window.autoRec.id,x:window.autoRec.gx,y:window.autoRec.gy}:null,hu:haustier?{x:haustier.gx||10,y:haustier.gy||10}:null,qb:questBusy,we:wetter,mo:MODUS,tm:missHeute,spf:sprintFertig,tq:teamIdx,tb:teamBase,tbg:teamBasis,im:immo,geld:geld,tag:tag,uhr:uhrzeit,rom:romantik,li:liebe,ve:verlobt,he:verheiratet,sk:skills,st:stats,ac:achDone,qi:questIdx,ki:kinder.map(function(k){return {n:k.name,a:k.alter,b:k.baby};}),
   /* 🐛 Schwarm-Befunde: Diese Werte lagen nur in Laufzeit-Variablen und fehlten im
      Spielstand. Folgen: der Fortschritt der Endlos-Auftraege fiel bei jedem Neuladen
      auf 0 zurueck (die Basislinie wurde neu am aktuellen Stand verankert, das Ziel lief
@@ -6030,7 +6088,7 @@ function loadSnapshot(sn){
   immo=(sn.im||[]).slice();
   setTimeout(function(){immo.forEach(function(i){var hs=window._immo&&window._immo[i];if(hs&&!hs.flagge)immoFlagge(hs);});},400);
   if(sn.geld!==undefined){geld=sn.geld;geldLast=geld;}if(sn.tag)tag=sn.tag;if(sn.uhr!==undefined)uhrzeit=sn.uhr;
-  if(sn.rom!==undefined)romantik=sn.rom;if(sn.li!==undefined)liebe=sn.li;verlobt=!!sn.ve;verheiratet=!!sn.he;if(sn.sk)skills=sn.sk;if(sn.st)stats=sn.st;if(sn.ac)achDone=sn.ac;if(sn.qi!==undefined)questIdx=sn.qi;
+  if(sn.rom!==undefined)romantik=sn.rom;if(sn.li!==undefined)liebe=sn.li;verlobt=!!sn.ve;verheiratet=!!sn.he;if(sn.sk)skills=sn.sk;if(sn.st)stats=sn.st;if(sn.ac)achDone=sn.ac;if(sn.qi!==undefined)questIdx=sn.qi;if(sn.mo)MODUS=sn.mo;if(sn.tm)missHeute=sn.tm;sprintFertig=!!sn.spf;
   /* Basislinie und Tageslimits zurueckholen, sonst faengt der Endlos-Auftrag von vorne an
      und alle Limits sind wieder frei (Schwarm-Befunde). */
   if(sn.pqb){window._pqBasis={idx:sn.qi,b:sn.pqb};window._pq=null;}
@@ -6100,6 +6158,7 @@ function onNetMsg(m){
   else if(m.t==="moebelStat"&&mpHost){stats.moebelGekauft=(stats.moebelGekauft||0)+1;} /* 🩹 Schwarm-P2: Gast-Moebel zaehlen fuer Team-Quest */ /* 🩹 Gast-Fang zählt beim Host für Quests/Team-Quests */
   else if(m.t==="tanzBoost"&&mpHost){if(m.s>=0.999)stats.tanzPerfekt=(stats.tanzPerfekt||0)+1;tanzApply(m.s);}
   else if(m.t==="quest"&&!mpHost)questIdx=m.i;
+  else if(m.t==="tmiss"&&!mpHost)missHeute=m.m;
   else if(m.t==="stufe"&&!mpHost){wohnstufe=m.ws|0;naechsteAbnahme=m.na||tag+4;
     if(m.txt)hint(m.txt);if(buildMode)renderPalette();stufeHudUpd();updHUD();}
   else if(m.t==="teamq"&&!mpHost){teamIdx=m.i;}
@@ -6896,6 +6955,27 @@ function hearts(x,z){
     sp.position.set(x+(Math.random()-0.5)*1.4,1.2+Math.random(),z+(Math.random()-0.5)*1.4);
     sp.scale.setScalar(0.5+Math.random()*0.3);scene.add(sp);
     heartSprites.push({s:sp,v:0.8+Math.random()*0.7,life:2.2});}}
+/* ✨ Plop beim Moebelstellen: Mesh federt von klein auf voll (easeOutBack) + Funkel.
+   Gate window._running: der Spielstand-Load beim Boot soll NICHT ploppen. */
+var plopps=[];
+function plopFx(m,x,z){
+  if(!window._running||!m)return;
+  plopps.push({m:m,t:0,b:m.scale.x||1});
+  for(var i=0;i<5;i++){var cv=document.createElement("canvas");cv.width=cv.height=40;var c=cv.getContext("2d");
+    c.font="26px sans-serif";c.textAlign="center";c.textBaseline="middle";c.fillText("✨",20,22);
+    var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false}));
+    sp.position.set(x+(Math.random()-0.5)*1.2,0.5+Math.random()*0.8,z+(Math.random()-0.5)*1.2);
+    sp.scale.setScalar(0.35+Math.random()*0.25);scene.add(sp);
+    heartSprites.push({s:sp,v:1.1+Math.random()*0.9,life:0.9});}
+}
+function updPlopps(dt){
+  for(var i=plopps.length-1;i>=0;i--){var p=plopps[i];
+    if(!p.m.parent){plopps.splice(i,1);continue;}
+    p.t+=dt;var u=Math.min(1,p.t/0.38);
+    var k=1+2.2*Math.pow(u-1,3)+1.2*Math.pow(u-1,2); /* easeOutBack-artig: 0.3 -> ~1.1 -> 1 */
+    p.m.scale.setScalar(p.b*(0.3+0.7*k+0.12*Math.sin(u*Math.PI)));
+    if(u>=1){p.m.scale.setScalar(p.b);plopps.splice(i,1);}}
+}
 function updHearts(dt){for(var i=heartSprites.length-1;i>=0;i--){var h=heartSprites[i];
   h.s.position.y+=h.v*dt;h.life-=dt;h.s.material.opacity=Math.min(1,h.life);
   if(h.life<=0){scene.remove(h.s);heartSprites.splice(i,1);}}}
@@ -7817,7 +7897,7 @@ function tapAt(px,py){
     if(fEd)editShow(fEd);else editHide();
     return;}
   var def=defOf(curItem);
-  if(def.stufe&&def.stufe>wohnstufe){hint("🔒 Erst ab Wohnstufe "+WOHNSTUFEN[def.stufe][0]);return;}
+  if(def.stufe&&def.stufe>wohnstufe&&MODUS!=="sandbox"){hint("🔒 Erst ab Wohnstufe "+WOHNSTUFEN[def.stufe][0]);return;}
   if(geld<def.cost){hint("💰 Zu wenig Geld!");return;}
   if(curItem.indexOf("boden")===0){
     /* 🐛 Schwarm-Befund: mousedown malt bereits (paintFloorAt) und bucht ab; dieser Tap-Zweig
@@ -8103,7 +8183,7 @@ document.getElementById("achBtn").onclick=function(){
     d3.style.cssText="display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:10px;background:"+(ok3?"#f0f8e8":"#f5f2ea")+";opacity:"+(ok3?"1":"0.55");
     d3.innerHTML="<span style='font-size:1.4rem'>"+(ok3?a3[1]:"🔒")+"</span><span><b>"+a3[2]+"</b><br><small style='color:#8a7a5a'>"+a3[3]+"</small></span>"+(ok3?"<span style='margin-left:auto;color:#5ab86a;font-weight:800'>✓</span>":"");
     lst.appendChild(d3);});
-  document.getElementById("questTxt").innerHTML=(MPs?"🤝 <b>Koop-Team-Aufgabe:</b> "+teamTxt()+"<br>":"")+"📜 <b>Stadt-Auftrag:</b> "+questTxt();
+  document.getElementById("questTxt").innerHTML=(MPs?"🤝 <b>Koop-Team-Aufgabe:</b> "+teamTxt()+"<br>":"")+"📜 <b>Stadt-Auftrag:</b> "+questTxt()+(missHeute?"<br>"+missTxt():"");
   var w2=hausWert();
   document.getElementById("hausWertTxt").textContent=prestigeName(w2)+" · "+w2+" $ · "+done+"/"+ACH.length;
   document.getElementById("achPanel").style.display="flex";};
@@ -8232,7 +8312,8 @@ var MUS=new Audio("/audio/premium.mp3");MUS.loop=true;MUS.volume=0.22;MUS.preloa
 var SAVE="th_save1";
 function saveGame(){if(MPs&&!mpHost)return;try{localStorage.setItem(MPs?"th_save_coop":SAVE,JSON.stringify(snapshot()));}catch(e){}} /* 🩹 Schwarm-P1: Host sichert Koop-Haus unter eigenem Slot — vorher zerstörte EIN Reload alles */
 function startGame(){
-  running=true;
+  running=true;window._running=true;
+  if((!MPs||mpHost)&&(!missHeute||missHeute.tag!==tag))missNeu();
   document.getElementById("start").classList.add("hide");
   document.getElementById("hud").classList.remove("hide");
   document.getElementById("modeBtn").style.display="block";document.getElementById("achBtn").style.display="block";
@@ -8264,11 +8345,36 @@ document.getElementById("soloBtn").onclick=function(){
     MPs=null;mpHost=false;
     var _nb=document.getElementById("netBadge");if(_nb)_nb.style.display="none";
     var _lb=document.getElementById("mpLobby");if(_lb)_lb.style.display="none";}
-  try{var sv=localStorage.getItem(SAVE);
-    if(sv){try{localStorage.setItem(SAVE+"_bak",sv);}catch(_){} /* 🩹 Schwarm-P1: rollendes Backup — kaputter Save wurde sonst still vom 6s-Autosave überschrieben */
-      try{loadSnapshot(JSON.parse(sv));}catch(e2){alert("⚠️ Spielstand beschädigt — starte frisch. Backup liegt unter th_save1_bak.");}}}catch(e){}
-  applySaison();rollWetter();
-  startGame();};
+  var sv=null;try{sv=localStorage.getItem(SAVE);}catch(e){}
+  if(sv){try{localStorage.setItem(SAVE+"_bak",sv);}catch(_){} /* 🩹 Schwarm-P1: rollendes Backup — kaputter Save wurde sonst still vom 6s-Autosave überschrieben */
+    try{loadSnapshot(JSON.parse(sv));}catch(e2){alert("⚠️ Spielstand beschädigt — starte frisch. Backup liegt unter th_save1_bak.");}
+    applySaison();rollWetter();startGame();return;}
+  /* Frisches Spiel: erst den Modus waehlen (User: „viele mods"). Overlay wird
+     per JS gebaut, damit kein HTML-Umbau noetig ist. */
+  var mw=document.createElement("div");
+  mw.style.cssText="position:fixed;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;background:rgba(20,25,35,.78);padding:18px";
+  function kn(emoji,titel,sub,modus,farbe){
+    return "<button data-m='"+modus+"' style=\"display:block;width:100%;margin:7px 0;border:0;border-radius:14px;padding:13px 15px;text-align:left;cursor:pointer;background:"+farbe+";min-height:52px\">"+
+      "<span style='font-size:1.05rem;font-weight:900'>"+emoji+" "+titel+"</span><br><span style='font-size:.85rem;color:#4a5a6a'>"+sub+"</span></button>";}
+  mw.innerHTML="<div style='background:#fffdf7;border-radius:20px;max-width:420px;width:94vw;padding:20px;box-shadow:0 20px 60px rgba(20,30,50,.5)'>"+
+    "<div style='font-size:1.3rem;font-weight:900;color:#e8722a;text-align:center;margin-bottom:8px'>🎮 Wie willst du spielen?</div>"+
+    kn("🏡","Klassisch","Das volle Spiel — bauen, Familie, Karriere, Bauabnahmen.","klassisch","#eef6ff")+
+    kn("🏁","Sprint","Schaffst du die Traumvilla bis Tag 20? Danach entspannt weiter.","sprint","#fff4dc")+
+    kn("🏖️","Sandbox","99'999 $, alle Möbel sofort frei — bauen ohne Sorgen.","sandbox","#eaffef")+
+    kn("💀","Hardcore","800 $ Start, Abnahme alle 3 Tage, 25 % weniger Einnahmen.","hardcore","#ffecec")+
+    "</div>";
+  document.body.appendChild(mw);
+  mw.addEventListener("click",function(ev){
+    var b=ev.target.closest("button[data-m]");if(!b)return;
+    MODUS=b.getAttribute("data-m");
+    if(MODUS==="sandbox")geld=99999;else if(MODUS==="hardcore")geld=800;
+    document.body.removeChild(mw);
+    applySaison();rollWetter();startGame();
+    if(MODUS!=="klassisch")setTimeout(function(){hint(
+      MODUS==="sprint"?"🏁 Sprint gestartet: Traumvilla (Stufe 3) bis Tag 20!":
+      MODUS==="sandbox"?"🏖️ Sandbox: 99'999 $ und alle Möbel frei — bau dein Traumhaus!":
+      "💀 Hardcore: 800 $, Abnahme alle 3 Tage, knappe Einnahmen. Viel Glück!");},2200);
+  });};
 function mpLobbyFehler(msg){
   var st=document.getElementById("mpStatus");if(st){st.textContent="⚠️ "+msg;st.style.color="#c0442a";}
   var b=document.getElementById("mpBackBtn");if(b)b.style.display="inline-block";
@@ -8477,7 +8583,15 @@ function loop(now){
          und prueft erst dann. Faellt der Spawn einen ganzen Tag lang aus
          (NPC-Limit), wird direkt abgenommen — der Termin darf nie verhungern. */
       if(tag>naechsteAbnahme){inspektorPending=false;setTimeout(bauabnahme,1400);}
-      else if(tag>=naechsteAbnahme)inspektorPending=true;rollWetter();applySaison();hint(SAISON[calcSaison()][0]+(wetter==="regen"?" · 🌧️ Regen":wetter==="schnee"?" · 🌨️ Schnee":""));}}
+      else if(tag>=naechsteAbnahme)inspektorPending=true;
+      if(!MPs||mpHost){missNeu();
+        if(MODUS==="sprint"&&!sprintFertig){
+          if(wohnstufe>=3){sprintFertig=true;feier(4);
+            hint("🏁 SPRINT GEWONNEN — Traumvilla an Tag "+tag+"! Du spielst entspannt weiter.");}
+          else if(tag>20){sprintFertig=true;MODUS="klassisch";
+            hint("🏁 Sprint vorbei — die Villa kam nicht bis Tag 20. Weiter im Klassisch-Modus!");}
+          else hint("🏁 Sprint: Tag "+tag+"/20 — Ziel Traumvilla (Stufe 3)");}}
+      rollWetter();applySaison();hint(SAISON[calcSaison()][0]+(wetter==="regen"?" · 🌧️ Regen":wetter==="schnee"?" · 🌨️ Schnee":""));}}
     // Tag/Nacht
     var hh=uhrzeit/60,dayA=Math.max(0,Math.sin((hh-5.75)/14*Math.PI)); // Sonne 5:45-19:45 — Abend hat echtes Restlicht
     var wDim=wetter==="sonne"?1:0.62;
@@ -8528,7 +8642,7 @@ function loop(now){
     updHund(dt,now);
     if(fahren){autoFahr(dt);}
     updGrow(dt);updBeete(dt);if(!fahren)updWork(dt);updAuto(dt);updCrime(dt);updNpcs(dt,now);updPolizei(dt,now);if(!arbeiten&&!crime.on)updLove(dt);
-    updHearts(dt);updWetter(dt);updVerkehr(dt);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);updVerstecken(dt);updFest(dt,now);updImmo(dt);
+    updHearts(dt);updPlopps(dt);updWetter(dt);updVerkehr(dt);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);updVerstecken(dt);updFest(dt,now);updImmo(dt);
     document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("minimap").style.display=(running&&!buildMode)?"block":"none";
     layoutLinkeSpalte();
@@ -8552,7 +8666,7 @@ function loop(now){
         if(act9||steerWasActive){netFast({t:"steer",x:act9?steer.x:0,z:act9?steer.z:0});steerWasActive=act9;}}
       window._thHbT=(window._thHbT||0)-dt; /* 🩹 Schwarm-P1: Keepalive alle 2s — der 6s-Watchdog in mp.js trennte idle Gäste */
       if(window._thHbT<=0){window._thHbT=2;netSend({t:"hb"});}}
-    simTick+=dt;if(simTick>0.35){simTick=0;updHUD();if(!MPs||mpHost){checkAch();checkQuest();checkTeamQ();}
+    simTick+=dt;if(simTick>0.35){simTick=0;updHUD();if(!MPs||mpHost){checkAch();checkQuest();checkTeamQ();missCheck();}
       if(MPs&&mpHost)netFast({t:"sims",ca:(fahren&&driveCar?{x:driveCar.mesh.position.x,z:driveCar.mesh.position.z,r:carRot,vi:verkehr.indexOf(driveCar)}:null),a:sims.map(function(s){return {x:s.x,z:s.z,r:s.rot,p:s.pose,nd:s.needs,v:s.mesh.visible};}),k:kinder.map(function(k){return {x:k.x,z:k.z,r:k.rot,b:k.baby,n:k.name};}),np:npcs.map(function(n){return {t:n.typ,x:n.x,z:n.z,r:n.rot};})});
       if(MPs&&mpHost){netTick++;if(netTick%8===0){netSend({t:"uhr",u:uhrzeit,d:tag});
         netSend({t:"love",v:liebe,ve:verlobt,he:verheiratet,sk:skills,ar:arbeiten,st:stats,ac:achDone});
@@ -8816,6 +8930,11 @@ window.__ZEIT=function(u){uhrzeit=u;};
    von aussen weder an Szene noch Renderer: three.js legt `render` als INSTANZ-
    Eigenschaft an, ein Prototyp-Hook greift also nicht. */
 window.__th={
+  missionen:function(){return missHeute;},
+  missNeu:function(){missNeu();return missHeute;},
+  missCheck:function(){missCheck();return missHeute;},
+  modus:function(m){if(m)MODUS=m;return MODUS;},
+  plopps:function(){return plopps.length;},
   scene:function(){return scene;}, renderer:function(){return renderer;},
   camera:function(){return camera;},
   last:function(){var r=renderer.info;return {zeichenaufrufe:r.render.calls,
