@@ -33,7 +33,7 @@ Dutzend Reiniger dasselbe tut, erschöpft Shopifys Abfragebudget.
 
 DRY=1 meldet nur.
 """
-import json, os, re, subprocess, time
+import json, os, re, subprocess, sys, time
 from collections import Counter
 
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
@@ -42,11 +42,22 @@ EXPORT = os.environ.get("EXPORT", "/tmp/export.jsonl")
 LEDGER = "dropship/_gmf_nachtragen.txt"
 NS = "mm-google-shopping"
 
+# ⚠️ WORTGRENZEN SIND PFLICHT (14.08.2026): ohne \b fand «gold» das Wort «ver-gold-et» und
+# «silber» das Wort «ver-silber-t». Aus dem korrigierten Wert «Kupfer, vergoldet» wäre wieder
+# «Gold» geworden — dieser Reiniger hätte die Edelmetall-Korrektur beim nächsten Lauf
+# zurückgedreht und die Falschangabe neu erzeugt.
 MATERIALWORT = re.compile(
-    r'baumwolle|cotton|polyester|leder|leather|metall|metal|silber|silver|gold|edelstahl|'
+    r'\b(?:baumwolle|cotton|polyester|leder|leather|metall|metal|silber|silver|gold|edelstahl|'
     r'stainless|kunststoff|plastic|acryl|nylon|wolle|wool|seide|silk|leinen|linen|keramik|'
     r'ceramic|holz|wood|glas|glass|zink|legierung|alloy|gummi|silikon|silicone|strick|fleece|'
-    r'denim|jeans|samt|velvet|spitze|lace|bambus|bamboo|viskose|viscose|elasthan|spandex', re.I)
+    r'denim|jeans|samt|velvet|spitze|lace|bambus|bamboo|viskose|viscose|elasthan|spandex)\b', re.I)
+
+# Gemeinsamer Müll-Test mit automation/material_metafeld_korrigieren.py — EIN Urteil darüber,
+# was ein kaputter Materialwert ist. Zwei Reiniger mit eigener Meinung über dieselbe Stelle
+# schreiben sich gegenseitig um; je nachdem, wer zuletzt lief, steht im Shop mal das eine,
+# mal das andere (dieselbe Falle wie damals bei der Versandschwelle CHF 50 gegen 65).
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from material_metafeld_korrigieren import muellklasse as _muellklasse
 
 
 def gql(q, v=None):
@@ -112,7 +123,11 @@ def main():
             else:
                 statistik["color bleibt leer (keine Farb-Option)"] += 1
         mat = vorhanden.get("material")
-        if mat and len(mat.split()) > 1:
+        if mat and len(mat.split()) > 1 and _muellklasse(mat)[0] is None:
+            # Mehrteilig, aber in Ordnung: «Kupfer, vergoldet», «Polyester, Viskose, Elastan».
+            # Kürzen würde hier Information vernichten oder die Plattierung verschweigen.
+            statistik["material mehrteilig, aber sauber (unberührt)"] += 1
+        elif mat and len(mat.split()) > 1:
             t = MATERIALWORT.search(mat)
             if t:
                 gekuerzt = t.group(0).capitalize()

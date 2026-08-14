@@ -25,15 +25,20 @@ def gql(q,v=None):
         if any('Throttled' in str(e) for e in d.get('errors',[])): time.sleep(4); continue
         refresh(); time.sleep(2)
     return {}
+# ⚠️ DIESER EXTRAKTOR WAR DIE QUELLE DES MÜLLS (nachgewiesen 14.08.2026):
+# er nahm bis zu 60 Zeichen HINTER dem Wort «Material» — also den halben Fliesstext.
+# Live standen dadurch Werte wie «sorgt für ein angenehmes Tragegefühl und hält zuverlässig wa»
+# und «Single Piece Dress Length» im Google-Feed. Er füllt zwar nur LEERE Felder, aber jeder
+# neue Lauf hätte neue Fragmente angelegt. Jetzt entscheidet dieselbe Erkennung wie in
+# automation/material_metafeld_korrigieren.py — und wenn sie nichts Belegbares findet, bleibt
+# das Feld leer. Ein leerer Wert ist im Feed besser als ein falscher.
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+from material_metafeld_korrigieren import aus_beschreibung as _aus_beschreibung
+
 def parse_material(html):
     if not html: return None
-    m=re.search(r'Material[:\s<]*(?:</strong>)?[:\s]*([^<\n]{2,60})', html, re.I)
-    if not m: return None
-    val=re.sub(r'\s+',' ',m.group(1)).strip()
-    val=re.sub(r'^/?strong>','',val,flags=re.I).strip(' :,.')
-    # sanity: not a whole sentence, not empty
-    if not val or len(val)>60 or val.lower() in ('n/a','unbekannt'): return None
-    return val
+    treffer = _aus_beschreibung(html)
+    return ', '.join(treffer[:3]) if treffer else None
 pids=[p for p in open('/tmp/csv_pids.txt').read().split() if p not in done][:LIM]
 set_ct=skip=0
 for pid in pids:
