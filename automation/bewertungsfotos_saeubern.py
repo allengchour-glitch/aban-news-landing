@@ -223,6 +223,10 @@ def html_saeubern(html, gesperrt):
         # ein führendes Komma darf nicht direkt hinter der öffnenden Klammer stehen bleiben
         html = html.replace("pictures_urls&quot;:[,", "pictures_urls&quot;:[")
         if n or m:
+            # n = entfernte <a>-Elemente, m = entfernte Eintraege im escapten Galerie-JSON.
+            # Beide werden getrennt gezaehlt: ein gesperrtes Bild steckt oft NUR in der
+            # Galerie-Liste und gar nicht als sichtbares Element — wer nur die Dateien zaehlt,
+            # meldet mehr entfernte Bildelemente, als es je gab.
             entfernt.append((datei, n, m))
     return html, entfernt
 
@@ -322,10 +326,12 @@ def main():
             print("  ⛔ NICHT geschrieben: " + "; ".join(fehler))
             continue
 
-        print(f"  → widget {len(html)}→{len(neu_html)} Zeichen ({len(entfernt)} Bildelemente), "
-              f"review_widget_data {len(rohdaten)}→{len(neu_daten)} ({weg} Bildeintraege); "
-              f"Bewertungen unveraendert bei {nachher_bewertungen}")
-        gesamt_html += len(entfernt)
+        a_weg = sum(n for _, n, _ in entfernt)
+        gal_weg = sum(m for _, _, m in entfernt)
+        print(f"  → widget {len(html)}→{len(neu_html)} Zeichen ({a_weg} sichtbare Bildelemente, "
+              f"{gal_weg} Galerie-Eintraege), review_widget_data {len(rohdaten)}→{len(neu_daten)} "
+              f"({weg} Bildeintraege); Bewertungen unveraendert bei {nachher_bewertungen}")
+        gesamt_html += a_weg
         gesamt_json += weg
 
         if not scharf:
@@ -344,7 +350,8 @@ def main():
         print(f"\n⚠️ {len(unbekannt)} gesperrte Adressen kamen in keinem Widget vor "
               f"(bereits entfernt oder Tippfehler): {sorted(unbekannt)}")
     print(f"\n{'GESCHRIEBEN' if scharf else 'PROBELAUF'}: "
-          f"{gesamt_html} Bildelemente im HTML, {gesamt_json} Eintraege im JSON.")
+          f"{gesamt_html} sichtbare Bildelemente im widget-HTML, "
+          f"{gesamt_json} Bildeintraege im review_widget_data-JSON.")
     if not scharf:
         print("Zum Schreiben: --scharf")
 
