@@ -725,3 +725,6 @@ gid://shopify/Product/15496704229761	nicht-versendbar	Rhythm Machine Vibrationsp
 gid://shopify/Product/15496704557441	nicht-versendbar	Elektrischer Mute Stepper für Zuhause
 gid://shopify/Product/15496703967617	nicht-versendbar	Mini-Stepper für zu Hause – Leise & Kompakt
 gid://shopify/Product/15496704950657	nicht-versendbar	Smart Music Boxing Maschine
+gid://shopify/Product/15497424732545	nicht-versendbar	Ellipsentrainer für Zuhause
+gid://shopify/Product/15497423257985	nicht-versendbar	UV-Desinfektionsschrank für Beauty-Tools
+gid://shopify/Product/15497430794625	ok	Retro Rucksack aus Crazy Horse Leder
