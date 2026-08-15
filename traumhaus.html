@@ -5662,7 +5662,9 @@ setTimeout(function baueGebaeude(){
        im Bildtakt hin und her (updHafen). */
     bau("th45_hafenkran.glb",14.37,KX+6.0,0,20,Math.PI/2,false,function(w){
       w.userData.fest=true; window._hafenkran=w;},true);
-    for(var c=0;c<3;c++) fest("th45_container.glb",7.83,KX+13.5,0,4+c*7,Math.PI/2);
+    /* ⚠️ GEMESSEN: bei KX+13,5 endete die Containerbox auf x -118,2 — 1 m im
+       Ring-W-Band (ab -119,2). KX+12 haelt die Ostkante auf -119,7. */
+    for(var c=0;c<3;c++) fest("th45_container.glb",7.83,KX+12,0,4+c*7,Math.PI/2);
     /* Boote im Wasser, um den Tiefgang gesenkt */
     /* ⚠️ Boote und Leuchtturm bekommen `nieAusblenden` + `_bewegt`: `bau()` traegt
        jedes Modell in den Sichtbarkeits-Index ein, und der wird EINMAL aus den
@@ -6335,6 +6337,26 @@ function missTxt(){
   return "🎯 <b>Tages-Missionen:</b> "+missHeute.liste.map(function(m){
     return (m.done?"✅":"▫️")+m.e+" "+m.tx;}).join(" · ")
     +(missHeute.bonus?" 🏆":"")+(missSerie+(missHeute.bonus?1:0)>=2?" 🔥"+(missSerie+(missHeute.bonus?1:0))+" Tage":"");
+}
+/* 🌅 Tagesabschluss: kompakte Karte beim Tageswechsel — Geldbilanz von gestern,
+   Missionsstand, Serie, Abnahme-Countdown. Tap oder 7 s blendet sie aus. */
+function tagesReport(){
+  if(!window._running)return;
+  var gd=geld-(window._tagesGeldStart!==undefined?window._tagesGeldStart:geld);
+  var md=missHeute?missHeute.liste.filter(function(m){return m.done;}).length:0;
+  var st=missSerie+((missHeute&&missHeute.bonus)?1:0);
+  var at=Math.max(0,naechsteAbnahme-tag);
+  var el=document.createElement("div");
+  el.style.cssText="position:fixed;top:64px;left:50%;transform:translateX(-50%);z-index:66;"+
+    "background:#fffdf6;border:3px solid #e8b04a;border-radius:16px;padding:11px 17px;"+
+    "box-shadow:0 12px 36px rgba(40,30,10,.35);font-size:.95rem;color:#5a4a30;max-width:92vw;text-align:center;cursor:pointer";
+  el.innerHTML="<b style='color:#e8722a'>🌅 Tag "+tag+"</b> · gestern: 💰 "+(gd>=0?"+":"")+Math.round(gd)+" $ · 🎯 "+md+"/3 Missionen"
+    +(st>=2?" · 🔥"+st+" Tage":"")
+    +(at===0?" · 🏅 heute Abnahme!":" · 🏅 Abnahme in "+at+"T");
+  document.body.appendChild(el);
+  var weg=function(){if(el.parentNode)el.parentNode.removeChild(el);};
+  el.onclick=weg;setTimeout(weg,7000);
+  window._tagesGeldStart=geld;
 }
 /* 🎉 feier(n): kleines Fest am Spieler — Raketen + Herzen. Fuer Abnahme/Missionen. */
 function feier(n){
@@ -9009,7 +9031,7 @@ var MUS=new Audio("/audio/premium.mp3");MUS.loop=true;MUS.volume=0.22;MUS.preloa
 var SAVE="th_save1";
 function saveGame(){if(MPs&&!mpHost)return;try{localStorage.setItem(MPs?"th_save_coop":SAVE,JSON.stringify(snapshot()));}catch(e){}} /* 🩹 Schwarm-P1: Host sichert Koop-Haus unter eigenem Slot — vorher zerstörte EIN Reload alles */
 function startGame(){
-  running=true;window._running=true;
+  running=true;window._running=true;window._tagesGeldStart=geld;
   if((!MPs||mpHost)&&(!missHeute||missHeute.tag!==tag))missNeu();
   document.getElementById("start").classList.add("hide");
   document.getElementById("hud").classList.remove("hide");
@@ -9281,7 +9303,7 @@ function loop(now){
          (NPC-Limit), wird direkt abgenommen — der Termin darf nie verhungern. */
       if(tag>naechsteAbnahme){inspektorPending=false;setTimeout(bauabnahme,1400);}
       else if(tag>=naechsteAbnahme)inspektorPending=true;
-      if(!MPs||mpHost){missNeu();
+      if(!MPs||mpHost){tagesReport();missNeu();
         if(missHeute)setTimeout(function(){hint("🎯 Neue Tages-Missionen: "+missHeute.liste.map(function(m){return m.e;}).join(" ")+" — Details unter 🏆");},3500);
         if(MODUS==="sprint"&&!sprintFertig){
           if(wohnstufe>=3){sprintFertig=true;feier(4);
@@ -9634,6 +9656,7 @@ window.__th={
   modus:function(m){if(m)MODUS=m;return MODUS;},
   plopps:function(){return plopps.length;},
   serie:function(v){if(v!==undefined)missSerie=v;return missSerie;},
+  tagesReport:function(){tagesReport();return true;},
   scene:function(){return scene;}, renderer:function(){return renderer;},
   camera:function(){return camera;},
   last:function(){var r=renderer.info;return {zeichenaufrufe:r.render.calls,
