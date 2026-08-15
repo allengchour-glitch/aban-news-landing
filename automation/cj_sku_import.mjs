@@ -92,7 +92,11 @@ const SET = `mutation($i:ProductSetInput!){ productSet(synchronous:true,input:$i
 for (const item of ITEMS) {
   const [kind, ...rest] = item.split(':'); const val = rest.join(':');
   let pid = null;
-  if (kind === 'sku') {
+  if (kind === 'pid') {
+    // Direkte Produkt-ID (15.08.2026, Schulstart-Import): die Kandidaten sind schon
+    // recherchiert, eine erneute Textsuche würde nur Punkte kosten und anders treffen.
+    pid = val.trim();
+  } else if (kind === 'sku') {
     const j = await cj(`/product/query?productSku=${encodeURIComponent(val)}`); await sleep(1300);
     pid = j.data?.pid;
   } else {

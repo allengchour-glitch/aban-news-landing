@@ -151,6 +151,12 @@ while true; do
     echo "$(date -u +%H:%M) restart $N"
     sleep 5
   done
+  # 🎒 SCHULSTART-IMPORT (Betreiber 15.08.2026). Läuft, bis die zwei recherchierten
+  # Rucksäcke importiert sind — der Wrapper drosselt sich selbst auf einen Versuch je 30 Min
+  # und meldet SCHULSTART FERTIG, sobald das Ledger beide trägt.
+  if ! grep -q "^SCHULSTART FERTIG" /tmp/schulstart_lauf.log 2>/dev/null; then
+    ps -eo args --no-headers | grep -v grep | grep -q "automation/schulstart_lauf.sh" ||       ( cd "$REPO" && setsid bash -c           "exec 9>/tmp/lock_schulstart.lock; flock -n 9 || exit 0; exec bash automation/schulstart_lauf.sh"           >> /tmp/schulstart_lauf.log 2>&1 9>&- & )
+  fi
   # 🎬 LIEFERANTENVIDEOS NACHHOLEN — bewusst in kleinen Schlucken. Von 34'824 aktiven
   # Produkten zeigen nur 144 ein Video, und CJ hat für die allermeisten auch keines: von 15
   # geprüften Kandidaten kam bei allen 15 `productVideo: null` zurück. Ein Lauf über den
