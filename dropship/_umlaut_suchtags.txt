@@ -2673,3 +2673,16 @@ gid://shopify/Product/15450835583361	daemonenauge	Dämonenauge-Halskette aus 925
 gid://shopify/Product/15450835845505	kopfhoerer	Kabellose Hasenohren-Kopfhörer mit Lichteffekt
 gid://shopify/Product/15450835976577	pluesch	Quietsche-Ente aus Plüsch für Hunde
 gid://shopify/Product/15450836369793	faechern	Harajuku Canvas Rucksack mit vielen Fächern
+gid://shopify/Product/15450836402561	buerste	Avocado-Bürste zur Fellpflege
+gid://shopify/Product/15450836468097	maedchen	Baby Sommer Set – T-Shirt & Shorts für Mädchen & Jungen
+gid://shopify/Product/15450836500865	kuechenbuerste	Küchenbürste mit Seifenspender
+gid://shopify/Product/15450836992385	gefuetterte	Gefütterte Kapuzenjacke für Herren
+gid://shopify/Product/15450837057921	huelle,staender	CD Pattern MagSafe Hülle mit Ständer
+gid://shopify/Product/15450837090689	staubblaeser	Turbo Jet Fan – Kabelloser Staubbläser
+gid://shopify/Product/15450837156225	handyhuelle	Panda Magnetring Handyhülle
+gid://shopify/Product/15450837188993	gemueseschneider	Multifunktionaler runder Gemüseschneider
+gid://shopify/Product/15450837254529	ruehrende	Selbst-rührende Tasse für Kaffee & mehr
+gid://shopify/Product/15450837287297	geraete	4-in-1 Ladestation für alle Geräte
+gid://shopify/Product/15450837582209	schutzhuelle	Handy Schutzhülle mit Kartenfach
+gid://shopify/Product/15450837614977	massagegeraet,rueckenschmerzen	Lendenwirbel-Massagegerät gegen Rückenschmerzen
+gid://shopify/Product/15450837746049	ladegeraet	USB-Ladegerät mit 4 Ports und Quick Charge 3.0
