@@ -240,19 +240,24 @@ def _b_prellbock():
     ⚠️ Er sitzt AUF dem Gleis: die Rahmenschenkel stehen auf Spurweite 1,435 m."""
     m = _mats()
     SP = 1.435
+    # ⚠️ Zweiter Anlauf. Beim ersten blieben die Grundschienen 2,50 lang und
+    # liefen rechts ins Leere — zwei Stangen, die aus einem Gestaenge ragen.
+    # Ein Prellbock liest sich als geschlossenes DREIECK: Untergurt, Schraege,
+    # Endpfosten. Was ueber die Ecken hinaussteht, macht daraus ein Geruest.
     for s in (-1, 1):
         y = s*SP/2
-        box(0.05, y, 0.13, 2.50, 0.12, 0.26, m["rost"])                 # Grundschiene
-        sr = box(0.18, y, 0.60, 1.70, 0.13, 0.17, m["rost"])            # Schraege
-        sr.rotation_euler[1] = -0.52
-        box(-0.62, y, 0.62, 0.15, 0.13, 0.86, m["rost"])                # Pfosten
-        box(-0.20, y, 0.34, 0.90, 0.11, 0.12, m["rost"])                # Zugband
+        box(-0.10, y, 0.13, 1.90, 0.13, 0.26, m["rost"])                # Untergurt
+        sr = box(-0.08, y, 0.60, 1.52, 0.14, 0.18, m["rost"])           # Schraege
+        sr.rotation_euler[1] = -0.60
+        box(0.78, y, 0.30, 0.16, 0.13, 0.60, m["rost"])                 # Endpfosten
+        box(-0.62, y, 0.64, 0.16, 0.13, 0.90, m["rost"])                # Kopfpfosten
+        box(0.10, y, 0.66, 0.14, 0.11, 0.14, m["rost"])                 # Knotenblech
     box(-0.74, 0, 1.02, 0.24, SP + 0.50, 0.44, m["rost"])               # Prellbalken
     box(-0.88, 0, 1.02, 0.10, SP + 0.50, 0.48, m["dunkel"])             # Puffergummi
     for k in range(5):                                                  # Warnfeld
         box(-0.93, -SP/2 - 0.16 + k*(SP + 0.32)/4, 1.02, 0.05, 0.24, 0.46,
             m["rot"] if k % 2 else m["stein"])
-    box(-0.74, 0, 0.28, 0.20, SP + 0.10, 0.16, m["rost"])               # Querverband
+    box(-0.62, 0, 0.28, 0.18, SP + 0.10, 0.16, m["rost"])               # Querverband
     for s in (-1, 1):                                                   # Pufferteller
         flach(zyl(-1.00, s*0.30, 1.02, 0.15, 0.14, m["stein"], 14, (0, math.pi/2, 0)))
 
