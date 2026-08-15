@@ -4754,3 +4754,24 @@ gid://shopify/Product/15468700041601	traegerkleid	Elegantes Chiffon-Trägerkleid
 gid://shopify/Product/15468700172673	suesses	Süsses Polka-Dot Neckholder-Kleid mit Schleife
 gid://shopify/Product/15468700336513	laessiges,aermeln	Lässiges Jeanskleid mit langen Ärmeln
 gid://shopify/Product/15468732842369	praegung	Retro Herrenuhr mit Prägung und Krallendesign
+gid://shopify/Product/15468734349697	umhaengetasche	Grosse Umhängetasche mit Karomuster
+gid://shopify/Product/15468734873985	oeffnen	Halskette Geschenkbox mit Schleife, zum Öffnen
+gid://shopify/Product/15468735365505	schwertpflegeoel	Yoland Schwertpflegeöl – Rostschutz für Klingen
+gid://shopify/Product/15468735562113	kapazitaet	Faltbare Reisetasche mit grosser Kapazität
+gid://shopify/Product/15468735660417	faechern	Faltbarer Organizer mit 32 Fächern
+gid://shopify/Product/15468735693185	suess	Kupfer-Halskette mit Farberhaltung, frisch & süss
+gid://shopify/Product/15468758499713	guertel	Elegantes V-Neck Langarm-Kleid mit Gürtel
+gid://shopify/Product/15468758663553	traegerkleid	Elegantes, langes Trägerkleid mit Spitze
+gid://shopify/Product/15468758761857	traegerloses	Elegantes trägerloses Etuikleid mit Strass
+gid://shopify/Product/15468759122305	anhaenger	Stern-Anhänger Halskette
+gid://shopify/Product/15468759286145	gemuetliche	Halskette "Gemütliche Geschenkbox" mit Schleife
+gid://shopify/Product/15468956516737	aermelloses	Gestreiftes ärmelloses Mini-Kleid im Retro-Stil
+gid://shopify/Product/15468956811649	aermellos	Midi-Kleid V-Ausschnitt ärmellos
+gid://shopify/Product/15468957106561	aermeln	Spitzen Bodycon-Kleid mit langen Ärmeln
+gid://shopify/Product/15468959400321	aermelloses	Gemustertes ärmelloses Maxikleid mit Rundhals
+gid://shopify/Product/15468960547201	aermeln	Gestreiftes A-Linien Midikleid mit Cap-Ärmeln
+gid://shopify/Product/15468962840961	rueschensaum	Unifarbene Bluse mit Rüschensaum
+gid://shopify/Product/15468963299713	tueren	Trolley für Türen
+gid://shopify/Product/15469436240257	gefuetterte	Gefütterte Fleece-Hose mit hohem Bund
+gid://shopify/Product/15469437321601	dunkelgruene	Dunkelgrüne High Waist Skinny Jeans
+gid://shopify/Product/15469437485441	elastizitaet	Thermo-Leggings für Schwangerschaft, hohe Elastizität
