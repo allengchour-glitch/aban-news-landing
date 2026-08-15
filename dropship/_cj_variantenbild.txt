@@ -115,3 +115,4 @@ gid://shopify/Product/15446271721857	zugeordnet	4	Ersatzfedern für Katzenangel
 gid://shopify/Product/15446271951233	zugeordnet	2	Interaktiver Katzenball mit Federanhängern
 gid://shopify/Product/15446271984001	zugeordnet	5	Cartoon Plüsch-Hundespielzeug mit Quietscher
 gid://shopify/Product/15446272016769	zugeordnet	7	Schnüffel- und Quietsch-Plüschtier für Hunde
+gid://shopify/Product/15446272311681	zugeordnet	15	Scooter Baby Can Sit
