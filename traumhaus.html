@@ -2852,20 +2852,13 @@ var dorfFenster=[];
       /* Der prozedurale Korb ist raus — th42_basketballkorb steht unten. */
       g.position.set(-56,0,100);scene.add(g);
     })();
-    // ---- FEUERWACHE mit 2 Toren ----
+    /* ---- FEUERWACHE mit 2 Toren ----
+       ⚠️ Der Baukoerper war prozedural: Sockel, Kiste, Dachplatte, Tore als
+       Bretter auf der Wand, Schlauchturm aus einem Quader mit Kegel darauf. Er
+       steht jetzt als `th43_feuerwache.glb` weiter unten; hier bleibt nur der
+       Vorplatz, auf den die Fahrzeuge ausruecken. */
     (function feuerwache(){
       var g=new THREE.Group();
-      var fm=stdMat(0xc04a3a,0.8);(window._wandMats=window._wandMats||[]).push(fm);
-      var sok=new THREE.Mesh(new THREE.BoxGeometry(17,0.45,12),betMat(0xc2bcae,0.9));sok.position.y=0.22;sok.receiveShadow=true;g.add(sok);
-      var kp=new THREE.Mesh(new THREE.BoxGeometry(15.5,6.2,10.5),fm);kp.position.y=3.3;kp.castShadow=true;kp.receiveShadow=true;g.add(kp);
-      var dch=new THREE.Mesh(new THREE.BoxGeometry(16.4,0.5,11.4),stdMat(0x4a4a52,0.75));dch.position.y=6.65;dch.castShadow=true;g.add(dch);
-      [-3.9,3.9].forEach(function(tx){ // 2 Tore
-        var tor=new THREE.Mesh(new THREE.BoxGeometry(5.2,4.2,0.14),stdMat(0xe8e4d8,0.55));tor.position.set(tx,2.1,5.32);g.add(tor);
-        for(var r7=0;r7<4;r7++){var ril=new THREE.Mesh(new THREE.BoxGeometry(5.2,0.07,0.05),stdMat(0xbab4a8,0.6));
-          ril.position.set(tx,0.9+r7*0.95,5.4);g.add(ril);}});
-      var sld=new THREE.Mesh(new THREE.BoxGeometry(6.0,0.9,0.1),stdMat(0xf0e8d8,0.6));sld.position.set(0,5.4,5.32);g.add(sld);
-      var trm=new THREE.Mesh(new THREE.BoxGeometry(2.2,9.5,2.2),fm);trm.position.set(-6.6,4.75,-3);trm.castShadow=true;g.add(trm); // Schlauchturm
-      var trd=new THREE.Mesh(new THREE.ConeGeometry(1.9,1.8,4),stdMat(0x4a4a52,0.7));trd.position.set(-6.6,10.3,-3);trd.rotation.y=Math.PI/4;g.add(trd);
       var vor=new THREE.Mesh(new THREE.PlaneGeometry(17,9),betMat(0xb8b2a4,0.9));
       vor.rotation.x=-Math.PI/2;vor.position.set(0,0.014,10.5);vor.receiveShadow=true;g.add(vor);
       g.position.set(56,0,100);scene.add(g);
@@ -2875,28 +2868,14 @@ var dorfFenster=[];
       var g=new THREE.Group();
       var pad=new THREE.Mesh(new THREE.PlaneGeometry(16,12),betMat(0xbdb7a9,0.9));
       pad.rotation.x=-Math.PI/2;pad.position.y=0.014;pad.receiveShadow=true;g.add(pad);
-      var kio=new THREE.Mesh(new THREE.BoxGeometry(6,3.4,4.5),stdMat(0xf0ece0,0.8));kio.position.set(-4.5,1.7,-3);kio.castShadow=true;g.add(kio);
-      var kd=new THREE.Mesh(new THREE.BoxGeometry(6.6,0.3,5.1),stdMat(0x3a7a8a,0.7));kd.position.set(-4.5,3.55,-3);g.add(kd);
-      var kf=new THREE.Mesh(new THREE.BoxGeometry(4.4,1.6,0.07),
-        new THREE.MeshStandardMaterial({color:0xa8c8dc,emissive:0xffe0a0,emissiveIntensity:0,roughness:0.15}));
-      kf.position.set(-4.5,2.0,-0.72);g.add(kf);dorfFenster.push(kf.material);
-      // Vordach auf 4 Stuetzen + 2 Zapfsaeulen
-      [[-2.5,2.5],[5.5,2.5],[-2.5,-2.5],[5.5,-2.5]].forEach(function(sp){
-        var st=new THREE.Mesh(new THREE.CylinderGeometry(0.18,0.2,4.4,8),stdMat(0xd8d4c8,0.5));st.position.set(sp[0],2.2,sp[1]);g.add(st);});
-      var vd=new THREE.Mesh(new THREE.BoxGeometry(10,0.5,7.5),stdMat(0xe8e4d8,0.6));vd.position.set(1.5,4.65,0);vd.castShadow=true;g.add(vd);
-      var band=new THREE.Mesh(new THREE.BoxGeometry(10.2,0.5,0.12),stdMat(0x3a7a8a,0.6));band.position.set(1.5,4.65,3.81);g.add(band);
-      [[0,1.4],[3,-1.4]].forEach(function(zp){
-        var zs=new THREE.Mesh(new THREE.BoxGeometry(0.7,1.5,1.1),stdMat(0xe85a3a,0.6));zs.position.set(zp[0],0.75,zp[1]);zs.castShadow=true;g.add(zs);
-        var di=new THREE.Mesh(new THREE.BoxGeometry(0.5,0.4,0.06),
-          new THREE.MeshStandardMaterial({color:0x203038,emissive:0x4affc0,emissiveIntensity:0.5,roughness:0.2}));
-        di.position.set(zp[0],1.2,zp[1]+0.58);g.add(di);
-        var sc=new THREE.Mesh(new THREE.BoxGeometry(0.12,0.5,0.12),stdMat(0x2a2a30,0.5));sc.position.set(zp[0]+0.42,1.05,zp[1]);g.add(sc);});
+      /* ⚠️ Kiosk, Vordach und die drei Boxen, die Zapfsaeulen sein sollten, sind
+         raus — sie stehen als th43_* weiter unten. Der Belag bleibt hier. */
       g.position.set(92,0,-74);scene.add(g);   /* 🛣️ war z=-62: der 16x12-Vorplatz ragte 7 m in die
          Hauptstrasse (Band -63..-53), das Vordach stand ueber der Fahrbahn (User-Screenshot). */
       /* 🐛 Schwarm-Befund: der Kollider sass auf dem Gruppen-Ursprung, der Kiosk steht aber
          4.5 m links und 3 m dahinter — die unsichtbare Wand lag zwischen den Zapfsaeulen
          statt am Gebaeude. */
-      addSolid(87.5,-77,7,5,{a:"z",at:-74.4,c:87.5,w:3.0});   /* 🧱 Kiosk der Tankstelle solide */
+      /* Der Kiosk-Kollider zieht mit dem Modell um (siehe tankAusbau unten). */
     })();
     // ---- BAUSTELLE mit Kran (die Stadt waechst) ----
     (function baustelle(){
@@ -5547,6 +5526,40 @@ setTimeout(function baueGebaeude(){
   [-96,-60,-24,24,60,96].forEach(function(mx){
     bau("th17_oberleitungsmast.glb",7.5,mx,0,108.5,0,false,null,true);});
   bau("th17_tramhaltestelle.glb",3.0,-20,0,108,Math.PI,false,null,true);
+  /* ── 🚒⛽ Charge 43: Feuerwache und Tankstelle ───────────────────────────────
+     Die beiden letzten prozeduralen Quaderbauten sind ersetzt. Beide Modelle
+     haben ihre Schauseite auf Blender +y, in three.js also -z; die alten Bauten
+     zeigten mit Toren bzw. Verkaufsseite nach +z, darum rotY = pi.
+
+     ⚠️ Die Ausfahrtsmarkierung wird HIER gezeichnet, nicht im Modell: sie gehoert
+     zum Grundstueck, und im Gebaeude machte sie es 20,97 statt 13,5 tief. */
+  (function wacheUndTanke(){
+    function fest(datei,hoehe,x,z,ry){
+      bau(datei,hoehe,x,0,z,ry,false,function(w){w.userData.fest=true;},true);
+    }
+    /* Feuerwache bei (56|100), Tore nach +z auf den Vorplatz. Zielhoehe 11,5
+       statt 13,81: der alte Bau war samt Turm rund 10,3 hoch. */
+    fest("th43_feuerwache.glb",11.5,56,100,Math.PI);
+    addSolid(56,100,15.6,12.8);
+    for(var t=0;t<2;t++){
+      var tx=56+(t?3.9:-3.9)*0.83;
+      fest("th43_loeschfahrzeug.glb",3.24,tx,110.5,-Math.PI/2);
+      [-1,1].forEach(function(sd){                        // Ausfahrtsbahn
+        var lin=new THREE.Mesh(new THREE.PlaneGeometry(0.16,7.0),
+          new THREE.MeshStandardMaterial({color:0xd8b42a,roughness:0.8}));
+        lin.rotation.x=-Math.PI/2;lin.position.set(tx+sd*2.1,0.02,109.5);scene.add(lin);});
+    }
+    fest("th43_hydrant.glb",0.93,46,0,106.5,0);
+    /* Tankstelle bei (92|-74). rotY = pi spiegelt das Modell: der Kiosk sitzt im
+       Modell bei Blender (-3,25|-1,70), landet also bei (92+3,25 | -74-1,70). */
+    fest("th43_tankstelle.glb",5.06,92,-74,Math.PI);
+    addSolid(95.25,-75.7,7.6,5.2,{a:"z",at:-73.0,c:95.25,w:3.0});
+    for(var z9=0;z9<2;z9++)
+      fest("th43_zapfsaeule.glb",2.03,88.6+z9*3.4,-72.4,Math.PI);
+    fest("th43_preistafel.glb",5.20,84.5,-69.5,Math.PI);
+    fest("th43_luftstation.glb",1.80,86.0,-79.5,0);
+    fest("th43_waschbox.glb",3.93,99.5,-79.0,Math.PI);
+  })();
   /* ── 🏫 Charge 42: Schulhaus, Turnhalle und Pausenhof-Ausstattung ────────────
      Das prozedurale Kastenhaus oben ist raus. `th42_schule` hat seine Schauseite
      auf Blender +y, in three.js also -z — der alte Eingang zeigte nach +z, also
