@@ -6778,3 +6778,6 @@ gid://shopify/Product/15448802165121	81->0	PHOFAY Lidschattenstift
 gid://shopify/Product/15448875925889	10->0	Lederarmband für Apple Watch
 gid://shopify/Product/15448877400449	26->0	T-förmiges Lederarmband für Smartwatch
 gid://shopify/Product/15448882250113	36->0	Infrarot-Fernbedienung für Smartphones
+gid://shopify/Product/15448929698177	34->3	Bounce Curl Styling-Kamm für Locken
+gid://shopify/Product/15448933761409	41->0	Automatischer Lockenstab für grosse Wellen
+gid://shopify/Product/15448934941057	52->2	Seiden-Satin Schlafhaube für alle Haartypen
