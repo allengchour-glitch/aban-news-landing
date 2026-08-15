@@ -4026,6 +4026,17 @@ setTimeout(function baueGebaeude(){
           }
           return null;
         }
+        /* ⚠️ Strassenmoeblierung gehoert NAH an die Strasse — und genau deshalb
+           schiebt `freiRaeumen()` sie nach dem Laden weg: dieser Durchgang haelt
+           die Fahrkorridore frei und kennt den Unterschied zwischen "steht im
+           Weg" und "gehoert dorthin" nicht. Er respektiert aber `userData.fest`.
+           Ohne die Marke wanderte das Wartehaeuschen so weit nach aussen, dass
+           der Landbus gemessene 13 m daneben hielt statt 4,8. */
+        function stell(datei,hoehe,p,ry,cb){
+          if(!p)return;
+          bau(datei,hoehe,p[0],0,p[1],ry,false,function(w){
+            w.userData.fest=true; if(cb)cb(w);},true);
+        }
         /* Schilder aus Charge 39.
            ⚠️ Die Schildflaeche zeigt bei rotY = 0 nach -z, ihre Normale ist also
            (-sin rotY, -cos rotY). Sie muss dem Ankommenden ENTGEGENschauen:
@@ -4035,17 +4046,17 @@ setTimeout(function baueGebaeude(){
         ZUB.forEach(function(gr,gi){
           var A=achse(gr), hin=Math.PI/2-A.aa, her=hin+Math.PI;
           var a1=frei(A,191,-(HB+1.7)), a2=frei(A,191,HB+1.7);
-          if(a1)bau("th39_vorfahrt.glb",2.30,a1[0],0,a1[1],hin,false,null,true);
-          if(a2)bau("th39_vorfahrt.glb",2.30,a2[0],0,a2[1],her,false,null,true);
+          stell("th39_vorfahrt.glb",2.30,a1,hin);
+          stell("th39_vorfahrt.glb",2.30,a2,her);
           var o1=frei(A,125,-(HB+2.0));                 // Ortstafel am Stadtrand
-          if(o1)bau("th39_ortstafel.glb",2.50,o1[0],0,o1[1],her,false,null,true);
+          stell("th39_ortstafel.glb",2.50,o1,her);
           if(gi%2===0){                                  // Wegweiser an jeder zweiten
             /* ⚠️ r = 197 stand MITTEN auf der Ringlandstrasse: die laeuft bei
                r 200 mit Halbbreite 4,2, also von 195,8 bis 204,2. Ein seitlicher
                Versatz hilft dagegen nichts — der Ring ist ein Kreis, der Radius
                des Punktes bleibt ~197. Nur ein kleinerer Radius kommt frei. */
             var w1=frei(A,186,HB+2.6);
-            if(w1)bau("th39_wegweiser.glb",3.05,w1[0],0,w1[1],hin,false,null,true);
+            stell("th39_wegweiser.glb",3.05,w1,hin);
           }
         });
         /* Wartehaeuschen an zwei Zubringern, offene Seite zur Fahrbahn.
@@ -4063,8 +4074,8 @@ setTimeout(function baueGebaeude(){
         [60,240].forEach(function(gr){
           var A=achse(gr), p=frei(A,132,HB+3.2);
           if(!p)return;
-          bau("th39_bushalt.glb",2.84,p[0],0,p[1],-A.aa,false,function(w){
-            window._bushalte.push({gr:gr, w:w});},true);
+          stell("th39_bushalt.glb",2.84,p,-A.aa,function(w){
+            window._bushalte.push({gr:gr, w:w});});
         });
         /* Leitplanke am Hang. Modul 3,94 lang auf r 205,2: dTheta = 3,94/205,2.
 
@@ -4080,16 +4091,16 @@ setTimeout(function baueGebaeude(){
           var lx=Math.cos(ag)*RL, lz=Math.sin(ag)*RL;
           /* Laengsachse des Moduls ist x; bei rotY = t zeigt sie auf
              (cos t, -sin t) und muss tangential (-sin ag, cos ag) sein. */
-          bau("th39_leitplanke.glb",0.92,lx,0,lz,Math.PI/2-ag+Math.PI,false,null,true);
+          stell("th39_leitplanke.glb",0.92,[lx,lz],Math.PI/2-ag+Math.PI);
         }
         /* Eine kleine Baustelle auf dem 30-Grad-Zubringer — Absperrbake quer,
            Leitkegel davor. Ohne sie ist die Strasse ueberall gleich perfekt. */
         (function baustelle(){
           var A=achse(30), b=P(A,168,HB-1.2);
-          bau("th39_bake.glb",1.06,b[0],0,b[1],Math.PI/2-A.aa,false,null,true);
+          stell("th39_bake.glb",1.06,b,Math.PI/2-A.aa);
           for(var k=0;k<4;k++){
             var p=P(A,163-k*2.4,HB-1.2-k*0.5);
-            bau("th39_pylon.glb",0.76,p[0],0,p[1],0,false,null,true);
+            stell("th39_pylon.glb",0.76,p,0);
           }
         })();
         /* 🚌 LANDBUS. Charge 39 hat zwei Wartehaeuschen an die Zubringer 60 und
@@ -4099,9 +4110,8 @@ setTimeout(function baueGebaeude(){
            Bildtakt haengt und nicht an einem Timer. */
         window._landbus=[];
         [60,240].forEach(function(gr,i){
-          bau("th40_bus.glb",3.69,0,0,0,0,false,function(w){
-            window._landbus.push({w:w,gr:gr,pos:RAD_R0+18+i*26,rdir:1,wartet:0});
-          },true);
+          stell("th40_bus.glb",3.69,[0,0],0,function(w){
+            window._landbus.push({w:w,gr:gr,pos:RAD_R0+18+i*26,rdir:1,wartet:0});});
         });
         },0);
       })();
