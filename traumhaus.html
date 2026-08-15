@@ -4290,6 +4290,10 @@ setTimeout(function baueGebaeude(){
       var SUED=-211, NORD=-181;                       // beidseits der Viertelstrasse (z=-196)
       /* Wirtschaftsgebaeude suedlich der Strasse, Schauseite nach +z zur Fahrbahn.
          Ein Modell zeigt bei rotY = 0 nach -z, die Strasse liegt hier bei groesserem z. */
+      /* Hofplatz vor den drei Bauten: ohne befestigte Vorflaeche stehen sie auf der
+         Wiese wie abgestellt. Die Nordkante stoesst an das Strassenband (z = -200,5). */
+      var hp=new THREE.Mesh(new THREE.PlaneGeometry(46,10),betMat(0x9c9384,0.98));
+      hp.rotation.x=-Math.PI/2;hp.position.set(11,0.002,-205);hp.receiveShadow=true;scene.add(hp);
       bau("th38_scheune.glb",     9.60, -4,0,SUED, Math.PI,false,null,true);
       bau("th38_silo.glb",       11.20, 12,0,SUED, 0,      false,null,true);
       bau("th38_huehnerstall.glb",2.23, 26,0,SUED, Math.PI,false,null,true);
