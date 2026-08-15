@@ -3949,7 +3949,11 @@ setTimeout(function baueGebaeude(){
           var o1=P(A,125,-(HB+2.0));                    // Ortstafel am Stadtrand
           bau("th39_ortstafel.glb",2.50,o1[0],0,o1[1],her,false,null,true);
           if(gi%2===0){                                  // Wegweiser an jeder zweiten
-            var w1=P(A,197,HB+2.6);
+            /* ⚠️ r = 197 stand MITTEN auf der Ringlandstrasse: die laeuft bei
+               r 200 mit Halbbreite 4,2, also von 195,8 bis 204,2. Ein seitlicher
+               Versatz hilft dagegen nichts — der Ring ist ein Kreis, der Radius
+               des Punktes bleibt ~197. Nur ein kleinerer Radius kommt frei. */
+            var w1=P(A,186,HB+2.6);
             bau("th39_wegweiser.glb",3.05,w1[0],0,w1[1],hin,false,null,true);
           }
         });
