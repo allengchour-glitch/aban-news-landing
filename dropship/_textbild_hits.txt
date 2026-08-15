@@ -6785,3 +6785,6 @@ gid://shopify/Product/15448949195137	45->0	Smarter Futterautomat mit Timer
 gid://shopify/Product/15448955584897	13->2	Intelligentes Velo-Frontlicht mit Ladefunktion
 gid://shopify/Product/15448955683201	15->0	Velo-Scheinwerfer mit Digitalanzeige & Powerbank
 gid://shopify/Product/15449102352769	58->0	Lässiger Hoodie mit überschnittenen Ärmeln · Modell 7
+gid://shopify/Product/15449464865153	46->3	Drehbare Gewürzregal
+gid://shopify/Product/15449468371329	26->0	Keramik-Schüssel für Katzen
+gid://shopify/Product/15449468928385	10->0	Interaktiver Futternapf
