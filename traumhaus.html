@@ -2835,28 +2835,17 @@ var dorfFenster=[];
         [-0.9,0.9].forEach(function(bf2){var bein=new THREE.Mesh(new THREE.BoxGeometry(0.12,0.7,0.5),stdMat(0x4a4a52,0.6));bein.position.set(bxx+bf2,0.5,-7.4);g.add(bein);});});
       g.position.set(0,0,102);g.rotation.y=Math.PI;scene.add(g); // Empfangsseite zur Stadt, Bahnsteig ans Gleis (z=112)
     })();
-    // ---- SCHULE mit Pausenhof ----
+    /* ---- SCHULE mit Pausenhof ----
+       ⚠️ Das Schulhaus war hier prozedural aus Quadern gebaut: Sockel, Korpus,
+       flache Dachplatte, Fenster als aufgeklebte Rechtecke, Glockenturm aus zwei
+       Boxen. Es steht jetzt als `th42_schule.glb` weiter unten beim
+       Schulhof-Ausbau; hier bleibt nur der Pausenhof als Belag. */
     (function schule(){
       var g=new THREE.Group();
-      var sm=stdMat(0xe8d8c0,0.85);(window._wandMats=window._wandMats||[]).push(sm);
-      var sok=new THREE.Mesh(new THREE.BoxGeometry(22,0.45,12),betMat(0xc2bcae,0.9));sok.position.y=0.22;sok.receiveShadow=true;g.add(sok);
-      var kp=new THREE.Mesh(new THREE.BoxGeometry(20.5,7.6,10.5),sm);kp.position.y=4.0;kp.castShadow=true;kp.receiveShadow=true;g.add(kp);
-      var dch=new THREE.Mesh(new THREE.BoxGeometry(21.4,0.55,11.4),stdMat(0x7a5a4a,0.75));dch.position.y=8.05;dch.castShadow=true;g.add(dch);
-      for(var e7=0;e7<2;e7++)for(var f7=0;f7<7;f7++){
-        var px7=-8.4+f7*2.8;
-        var ra=new THREE.Mesh(new THREE.BoxGeometry(1.9,1.8,0.06),stdMat(0x6a6258,0.7));ra.position.set(px7,2.6+e7*3.2,5.29);g.add(ra);
-        var fe=new THREE.Mesh(new THREE.BoxGeometry(1.65,1.55,0.06),
-          new THREE.MeshStandardMaterial({color:0xa8c8dc,emissive:0xffd890,emissiveIntensity:0,roughness:0.25}));
-        fe.position.set(px7,2.6+e7*3.2,5.32);g.add(fe);if((e7+f7)%2===0)dorfFenster.push(fe.material);}
-      var tur=new THREE.Mesh(new THREE.BoxGeometry(2.6,3.0,0.12),stdMat(0x3a5a8a,0.5));tur.position.set(0,1.5,5.32);g.add(tur);
-      var glo=new THREE.Mesh(new THREE.BoxGeometry(1.6,1.8,1.6),stdMat(0xe0d0b8,0.8));glo.position.set(-7,9.0,0);g.add(glo);
-      var gsp=new THREE.Mesh(new THREE.ConeGeometry(1.2,1.4,4),stdMat(0x8a4a3a,0.7));gsp.position.set(-7,10.6,0);gsp.rotation.y=Math.PI/4;g.add(gsp);
       // Pausenhof mit Basketballkorb
       var hof=new THREE.Mesh(new THREE.PlaneGeometry(20,12),betMat(0xc8c2b4,0.9));
       hof.rotation.x=-Math.PI/2;hof.position.set(0,0.014,-11);hof.receiveShadow=true;g.add(hof);
-      var kst=new THREE.Mesh(new THREE.CylinderGeometry(0.1,0.12,3.6,8),stdMat(0x4a4a52,0.5));kst.position.set(7,1.8,-15);g.add(kst);
-      var brt=new THREE.Mesh(new THREE.BoxGeometry(1.5,1.0,0.08),stdMat(0xf0ece0,0.6));brt.position.set(7,3.5,-15.3);g.add(brt);
-      var rng=new THREE.Mesh(new THREE.TorusGeometry(0.3,0.04,6,12),stdMat(0xe86a2a,0.5));rng.rotation.x=Math.PI/2;rng.position.set(7,3.1,-14.9);g.add(rng);
+      /* Der prozedurale Korb ist raus — th42_basketballkorb steht unten. */
       g.position.set(-56,0,100);scene.add(g);
     })();
     // ---- FEUERWACHE mit 2 Toren ----
@@ -5554,6 +5543,40 @@ setTimeout(function baueGebaeude(){
   [-96,-60,-24,24,60,96].forEach(function(mx){
     bau("th17_oberleitungsmast.glb",7.5,mx,0,108.5,0,false,null,true);});
   bau("th17_tramhaltestelle.glb",3.0,-20,0,108,Math.PI,false,null,true);
+  /* ── 🏫 Charge 42: Schulhaus, Turnhalle und Pausenhof-Ausstattung ────────────
+     Das prozedurale Kastenhaus oben ist raus. `th42_schule` hat seine Schauseite
+     auf Blender +y, in three.js also -z — der alte Eingang zeigte nach +z, also
+     rotY = pi.
+
+     ⚠️ Zielhoehe 14,0 statt der vollen 17,42: `bau()` skaliert ueber die Hoehe,
+     und mit 17,42 waere das Haus fast anderthalb Mal so hoch wie das alte (11 m
+     samt Turm) — beim Bahnhof in Charge 41 war genau das der Befund im Spiel.
+
+     ⚠️ Alles bekommt `userData.fest`. Pausenhof-Geraete stehen absichtlich dicht
+     beieinander, und `freiRaeumen()` kennt den Unterschied zwischen "steht im
+     Weg" und "gehoert dorthin" nicht. */
+  (function schulhofAusbau(){
+    var SX=-56, SZ=100;                       /* Lage der alten Schule */
+    function fest(datei,hoehe,x,z,ry){
+      bau(datei,hoehe,x,0,z,ry,false,function(w){w.userData.fest=true;},true);
+    }
+    fest("th42_schule.glb",14.0,SX,SZ+1,Math.PI);
+    addSolid(SX,SZ+1,18.6,12.6);
+    fest("th42_turnhalle.glb",8.32,SX-26,SZ-4,Math.PI);
+    addSolid(SX-26,SZ-4,26.9,16.9);
+    /* Pausenhof: der Belag liegt bei z = SZ-11, 20 x 12 um x = SX. */
+    var HZ=SZ-11;
+    fest("th42_basketballkorb.glb",3.76,SX+8.5,HZ-4.5,0);
+    fest("th42_basketballkorb.glb",3.76,SX-8.5,HZ-4.5,Math.PI);
+    fest("th42_pausenhofdach.glb",3.48,SX-13.5,HZ+2.0,Math.PI);
+    fest("th42_klettergeruest.glb",2.61,SX+13.0,HZ+2.5,0);
+    fest("th42_tischtennis.glb",0.92,SX-2.5,HZ+1.0,0);
+    fest("th42_tischtennis.glb",0.92,SX+2.5,HZ+1.0,0);
+    fest("th42_schulbank.glb",2.79,SX-6.0,HZ+5.2,Math.PI);
+    fest("th42_schulbank.glb",2.79,SX+6.0,HZ+5.2,Math.PI);
+    for(var k=0;k<4;k++)
+      fest("th42_fahrradstaender.glb",2.44,SX+11.0+k*3.2,SZ-6.0,Math.PI);
+  })();
   /* ── 🚉 Bahnsteig-Ausbau (User: „eisenbahn station viel schoener") ─────────────
      Drei th17_bahnsteigdach-Module ersetzen das alte Blechdach, dazu Sicherheits-
      linie an der Kante, Fahrplantafel, wartende Fahrgaeste (th30 — lagen ungenutzt
