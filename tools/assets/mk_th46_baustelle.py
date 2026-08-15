@@ -277,20 +277,21 @@ def _b_bagger():
         for k in range(5):                                          # Laufrollen
             flach(zyl(-1.30 + k*0.65, y, 0.26, 0.20, KB + 0.06, m["dunkel"], 10,
                       (math.pi/2, 0, 0)))
-        for k in range(22):                                         # Kettenglieder
-            # ⚠️ Radius 0,60 um Mitte 0,52 heisst Unterkante 0,52-0,60-0,06 =
-            # -0,14 — die Kette lief unter dem Boden durch. Die Kette umschlingt
-            # die Rollen, ihre Unterkante ist also 0: Mitte 0,60, Radius 0,54,
-            # halbe Gliedstaerke 0,06.
-            a = TAU*k/22
-            cx = math.cos(a)*(KL/2 - 0.45); cz = 0.60 + math.sin(a)*0.54
-            # ⚠️ `rotation_euler[1] = -a` legte die lange Gliedachse RADIAL statt
-            # tangential: unten am Umlauf stand das Glied hochkant und ragte 0,17
-            # statt 0,06 nach unten. Ein um y mit ry gedrehter Quader legt seine
-            # lange Achse auf (cos ry, -sin ry); tangential heisst (-sin a, cos a),
-            # also ry = -(a + pi/2). Dieselbe Formel wie beim Radlauf in Charge 37.
-            gl = box(cx, y, cz, 0.34, KB + 0.10, 0.12, m["dunkel"])
-            gl.rotation_euler[1] = -(a + math.pi/2)
+        # ⚠️ Die Glieder lagen auf einem KREIS — im Kontaktbogen sah das Laufwerk
+        # aus wie ein grosses Zahnrad. Eine Raupenkette ist ein OVAL: zwei gerade
+        # Truemer zwischen den Umlenkrollen, an den Enden je ein Halbkreis. Genau
+        # die geraden Truemer machen die Form aus, die man erkennt.
+        RS, ZM = 0.54, 0.60                                          # Kettenradius, Mitte
+        XS = KL/2 - 0.45                                             # Rollenabstand
+        for q in (-1, 1):                                            # Truemer oben/unten
+            for k in range(9):
+                box(-XS + k*(2*XS)/8, y, ZM + q*RS, 0.36, KB + 0.10, 0.12, m["dunkel"])
+        for q in (-1, 1):                                            # Umlenkbogen
+            for k in range(7):
+                a = math.pi*k/6 - math.pi/2 + (0 if q > 0 else math.pi)
+                gl = box(q*XS + math.cos(a)*RS, y, ZM + math.sin(a)*RS,
+                         0.34, KB + 0.10, 0.12, m["dunkel"])
+                gl.rotation_euler[1] = -(a + math.pi/2)
     box(0, 0, 1.20, 3.40, 2.20, 0.34, m["gelb2"])                   # Drehbuehne
     flach(zyl(0, 0, 1.44, 0.70, 0.22, m["stahl2"], 16))
     box(-0.30, 0, 1.95, 2.80, 2.10, 1.00, m["gelb"])                # Oberwagen
@@ -403,13 +404,16 @@ def _b_mischer():
     Klein, aber er fehlt auf keiner Baustelle — und die schraeg stehende Trommel
     ist seine Silhouette."""
     m = _mats()
-    tr = flach(dreh([(0.00, 0.00), (0.30, 0.10), (0.42, 0.34), (0.40, 0.62),
-                     (0.26, 0.80), (0.16, 0.86), (0.00, 0.88)],
+    # ⚠️ Mit Radius 0,42 auf einem Gestell von 0,90 war die Trommel eine Kugel,
+    # die das Geraet verschluckte. Ein Freifallmischer hat eine schlanke,
+    # kegelige Trommel — sie ist laenger als dick.
+    tr = flach(dreh([(0.00, 0.00), (0.22, 0.08), (0.30, 0.28), (0.29, 0.54),
+                     (0.19, 0.70), (0.11, 0.76), (0.00, 0.78)],
                     m["gelb"], 18, z=0.0, name="Trommel"))
     tr.location = (0.10, 0.0, 0.62)
     tr.rotation_euler[1] = 0.62
     for k in range(3):                                              # Reifen
-        flach(zyl(0.10, 0, 0.62, 0.44 - k*0.02, 0.05, m["gelb2"], 18,
+        flach(zyl(0.10, 0, 0.62, 0.31 - k*0.02, 0.05, m["gelb2"], 18,
                   (0, 0.62, 0)))
     for s in (-1, 1):                                               # Gestell
         strebe((-0.36, s*0.34, 0.06), (0.16, s*0.34, 0.88), 0.07, m["stahl2"])
