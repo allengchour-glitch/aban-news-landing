@@ -123,3 +123,21 @@ gid://shopify/Product/15446272737665	zugeordnet	2	LED-Velo-Blinklicht mit smarte
 gid://shopify/Product/15446272803201	bild-urls-tot
 gid://shopify/Product/15446272934273	bild-urls-tot
 gid://shopify/Product/15446273098113	zugeordnet	7	USB-Fahrradlicht für Nachtfahrten
+gid://shopify/Product/15446273884545	zugeordnet	2	Pilates Bar Set mit 6 Widerstandsbändern
+gid://shopify/Product/15446273917313	zugeordnet	2	Rechteckiger Pool für Outdoor & Wildnis
+gid://shopify/Product/15446273950081	zugeordnet	6	Bluetooth Grip Ring Handtrainer
+gid://shopify/Product/15446274638209	zugeordnet	6	Garderobenständer «Baum» – Metall, minimalistisch
+gid://shopify/Product/15446274670977	zugeordnet	4	Handliche Isoliertasche für unterwegs
+gid://shopify/Product/15446274834817	bild-urls-tot
+gid://shopify/Product/15446274867585	zugeordnet	9	Urne für Haustiere
+gid://shopify/Product/15446274900353	zugeordnet	9	Urne für Tierasche – Feuchtigkeitsdicht
+gid://shopify/Product/15446274933121	zugeordnet	9	Keramikurne für Haustierasche
+gid://shopify/Product/15446275031425	zugeordnet	4	Biologisch abbaubare Tierurne für Asche
+gid://shopify/Product/15446275064193	bild-urls-tot
+gid://shopify/Product/15446275096961	zugeordnet	3	Farb- und Pigmentstifthalter
+gid://shopify/Product/15446275195265	zugeordnet	4	Samt-Armband-Aufbewahrungsbeutel
+gid://shopify/Product/15446275293569	zugeordnet	1	Schachbrett-Schneidebrett aus Kautschuk- und Ebenholz
+gid://shopify/Product/15446275359105	zugeordnet	2	Edelstahl-Fritteuse mit Sichtfenster
+gid://shopify/Product/15446275457409	zugeordnet	2	Koreanischer Grill für 3-5 Personen
+gid://shopify/Product/15446275522945	zugeordnet	18	L-förmige Coral Fleece Küchenmatte
+gid://shopify/Product/15446275555713	zugeordnet	5	Matcha Schale mit Deckel
