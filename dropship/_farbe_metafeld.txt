@@ -158,3 +158,13 @@ gid://shopify/Product/15498896048513	Silber
 gid://shopify/Product/15498949460353	Mehrfarbig
 gid://shopify/Product/15499450843521	Schwarz
 gid://shopify/Product/15499782816129	Schwarz
+gid://shopify/Product/15499948884353	Schwarz
+gid://shopify/Product/15499987157377	Schwarz
+gid://shopify/Product/15499989418369	Schwarz
+gid://shopify/Product/15499993678209	Schwarz
+gid://shopify/Product/15500154962305	Schwarz
+gid://shopify/Product/15500155093377	Gold
+gid://shopify/Product/15500160205185	Schwarz
+gid://shopify/Product/15500192514433	Schwarz
+gid://shopify/Product/15500195496321	Schwarz
+gid://shopify/Product/15500196512129	Gold

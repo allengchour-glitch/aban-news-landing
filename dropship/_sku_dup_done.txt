@@ -606,3 +606,6 @@ gid://shopify/Product/15500254609793	CJ-EF8C4714-21CC-4154-BDD6-7F063C548146	Han
 gid://shopify/Product/15500252676481	CJ-1784390336417112064	Locken- und Glätteisen
 gid://shopify/Product/15500342690177	CJ-1489483978443460608	Edelstahl-Spülbrille
 gid://shopify/Product/15500342198657	CJ-1558045916123377664	Leder-Schultertasche für Männer
+gid://shopify/Product/15500367430017	CJ-CJDS283076001AZ	Farbkombinations-Hemd
+gid://shopify/Product/15500367102337	CJ-1461227854921601024	Multifunktionale automatische Mini-Pfannkuchenpfanne
+gid://shopify/Product/15500401967489	CJ-1771451788365926400	Kompakte Nachttischlampe mit integrierter 5‑Loch‑Steckdose und Type‑C
