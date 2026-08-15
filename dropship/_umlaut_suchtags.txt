@@ -5691,3 +5691,31 @@ gid://shopify/Product/15469992706433	huefttasche	Hüfttasche Holo gold
 gid://shopify/Product/15469993034113	umhaengetasche	Umhängetasche Hippie
 gid://shopify/Product/15469993099649	pluesch	Halbmaske Tiger aus Plüsch
 gid://shopify/Product/15469993197953	pluesch	Plüsch Maske Schwein rosa
+gid://shopify/Product/15469993230721	engelsfluegel	Engelsflügel pink
+gid://shopify/Product/15469993263489	muetze	Mütze rosa mit Strass
+gid://shopify/Product/15469993296257	pluesch	Halbmaske Plüsch Husky
+gid://shopify/Product/15469993394561	engelsfluegel	Engelsflügel Glam rosa
+gid://shopify/Product/15469993591169	seekoenigin	Krone Seekönigin
+gid://shopify/Product/15469993656705	hoernern	Gothic Haarreif mit Hörnern
+gid://shopify/Product/15469993787777	baseballschlaeger	Baseballschläger
+gid://shopify/Product/15469993951617	peruecke	Perücke Pink sweety
+gid://shopify/Product/15469994017153	peruecke	Perücke One Piece Nami
+gid://shopify/Product/15469994049921	peruecke	Perücke Hardrocker
+gid://shopify/Product/15469994115457	peruecke,zoepfe	Perücke Wednesday Zöpfe
+gid://shopify/Product/15469994148225	peruecke	Perücke Jenny, blond
+gid://shopify/Product/15469994213761	peruecke	Perücke Gomez Wednesday
+gid://shopify/Product/15469994246529	peruecke	Perücke Djamilla Bob rot-braun
+gid://shopify/Product/15469994377601	peruecke	Perücke Flapper schwarz
+gid://shopify/Product/15469994475905	peruecke	Perücke Hexe Iona schwar
+gid://shopify/Product/15469994574209	peruecke	Perücke Emily Rasta
+gid://shopify/Product/15469994672513	peruecke	Perücke Levi Rasta
+gid://shopify/Product/15469994901889	schaedel	Maske Latex Ram Schädel
+gid://shopify/Product/15469995065729	schiebermuetze	Schiebermütze Kariert 20er Jahre
+gid://shopify/Product/15469995164033	einhornmuetze	Einhornmütze
+gid://shopify/Product/15469995229569	schlaeger	Horror Schläger mit Blut 80 cm
+gid://shopify/Product/15469995295105	gruen	Maske Hexer Latex grün
+gid://shopify/Product/15469995360641	peruecke	Perücke Piraten Tochter
+gid://shopify/Product/15469995458945	peruecke,kaefer	Perücke Lola Käfer
+gid://shopify/Product/15469995524481	hexengruen	Eulenspiegel Aqua-Schminke hexengrün
+gid://shopify/Product/15469995590017	hoerner	Hörner mit Fell Haarreif
+gid://shopify/Product/15469995884929	peruecke	Perücke Crazy Clown
