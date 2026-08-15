@@ -1,0 +1,19 @@
+gid://shopify/Product/15469477200257	draft	bleibt:gid://shopify/Product/15469942276481	Kostüm Geist mit Maske · Gr. 164cm
+gid://shopify/Product/15469482475905	draft	bleibt:gid://shopify/Product/15469945553281	Kostüm Steampunkerin Grösse XL
+gid://shopify/Product/15469482606977	draft	bleibt:gid://shopify/Product/15469945651585	Kostüm kleine Hexe 140 cm · Gr. 140cm
+gid://shopify/Product/15469490110849	draft	bleibt:gid://shopify/Product/15469942505857	Kostüm Cowboy
+gid://shopify/Product/15469659292033	draft	bleibt:gid://shopify/Product/15469951353217	Kostüm Sträfling Grösse XXXL
+gid://shopify/Product/15469741015425	draft	bleibt:gid://shopify/Product/15469950697857	Kostüm S.W.A.T. Agent 164 cm · Gr. 164cm
+gid://shopify/Product/15469879361921	draft	bleibt:gid://shopify/Product/15469970588033	Dirndlbluse weiss Spitze · Gr. 54
+gid://shopify/Product/15469882376577	draft	bleibt:gid://shopify/Product/15469973897601	Trachtenweste Jaquard-Muster
+gid://shopify/Product/15469882737025	draft	bleibt:gid://shopify/Product/15469971177857	Trachtenshorts Grösse 56
+gid://shopify/Product/15469882835329	draft	bleibt:gid://shopify/Product/15469971177857	Trachtenshorts Grösse 58
+gid://shopify/Product/15469882900865	draft	bleibt:gid://shopify/Product/15469971177857	Trachtenshorts Grösse 54
+gid://shopify/Product/15469883031937	draft	bleibt:gid://shopify/Product/15469971177857	Trachtenshorts Grösse 60
+gid://shopify/Product/15469883457921	draft	bleibt:gid://shopify/Product/15469971571073	Dirndl · Gr. 48
+gid://shopify/Product/15469883720065	draft	bleibt:gid://shopify/Product/15469974323585	Dirndl antikblau
+gid://shopify/Product/15469884440961	draft	bleibt:gid://shopify/Product/15469974454657	Dirndl retro aus Jacquard
+gid://shopify/Product/15469889126785	draft	bleibt:gid://shopify/Product/15469975044481	Lederhose kurz sandbraun · Gr. 58
+gid://shopify/Product/15469860389249	unklar-mit:gid://shopify/Product/15469961937281	gemeinsame:1
+gid://shopify/Product/15469877854593	unklar-mit:gid://shopify/Product/15469970391425	gemeinsame:2
+gid://shopify/Product/15469877854593	unklar-mit:gid://shopify/Product/15469973340545	gemeinsame:2
