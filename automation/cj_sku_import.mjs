@@ -165,6 +165,16 @@ for (const item of ITEMS) {
     seo: { title: (title + ' | LuxeStyle CH').slice(0, 70), description: `${title} – der Trend-Hit bei LuxeStyle Schweiz.`.slice(0, 320) },
     productOptions: [{ name: 'Variante', values: [{ name: 'Standard' }] }],
     variants: [{ optionValues: [{ optionName: 'Variante', name: 'Standard' }], price: chf(d.sellPrice, d.variants?.[0]?.variantWeight), inventoryItem: { sku: ('CJ-' + pid).slice(0, 70), tracked: false }, inventoryPolicy: 'CONTINUE' }],
+    // ⚠️ GOOGLE-FELDER GEHÖREN IN DEN IMPORTER, nicht in einen Backfill (15.08.2026: die 30
+    // neuesten Produkte hatten genau 3 ohne condition/custom_product — alle drei aus DIESEM
+    // Skript. cj_category_fill schreibt sie seit dem 11.08., hier fehlten sie: die Abdeckung
+    // wäre mit jedem Queue-Import wieder gesunken, exakt das condition-Muster vom 11.08.).
+    // Kategorie bewusst NICHT geraten — die setzt google_kategorie.mjs aus Titel/Tags.
+    metafields: [
+      { namespace: 'mm-google-shopping', key: 'condition', value: 'new', type: 'single_line_text_field' },
+      { namespace: 'mm-google-shopping', key: 'custom_product', value: 'true', type: 'boolean' },
+      { namespace: 'mm-google-shopping', key: 'age_group', value: 'adult', type: 'single_line_text_field' },
+    ],
     files: [{ originalSource: imgs[0], contentType: 'IMAGE' }] };
   const r = await sgql(t, SET, { i: input });
   const spid = r.data?.productSet?.product?.id;
