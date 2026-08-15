@@ -5325,3 +5325,7 @@ gid://shopify/Product/15469968130433	kostuem	Kostüm Gefangener gelb
 gid://shopify/Product/15469968195969	schuerze	Dirndl schwarz mit Schürze mit Blumenmuster
 gid://shopify/Product/15469968228737	kostuem,jaeger	Kostüm Double Face Jäger/Tiger
 gid://shopify/Product/15469968359809	kostuem,groesse	Kostüm Stier Grösse M/L
+gid://shopify/Product/15469968458113	kostuem	Kostüm Hello Kitty
+gid://shopify/Product/15469968490881	kostuem	Kostüm Spinnen Held 3-4 Jahre
+gid://shopify/Product/15469968556417	kostuem	Kostüm Hai
+gid://shopify/Product/15469968589185	kostuem	Kostüm Forscher Safari
