@@ -3915,18 +3915,42 @@ setTimeout(function baueGebaeude(){
          Landstrasse. Die Winkel meiden Meer (142…218 Grad) und die vorhandenen
          Stichstrassen bei 0, 90 und 180 Grad. */
       var ZUB=[30,60,120,240,300,330];
+      var ZR0=118, ZR1=R+HB;
+      /* 🛣️ TROMPETE AN DER EINMUENDUNG. Der Zubringer stiess bisher als Band
+         konstanter Breite stumpf auf die Landstrasse — ein Abzweig, den man auf
+         dem Papier zeichnet und in Wirklichkeit nirgends findet. Eine echte
+         Einmuendung weitet sich auf den letzten Metern auf, damit ein
+         abbiegender Wagen die Kurve ueberhaupt fahren kann.
+
+         Quadratisch statt linear: am Anfang der Aufweitung ist sie unmerklich
+         und wird zum Ende hin deutlich. Linear ergaebe einen sichtbaren Knick
+         genau dort, wo der Blick beim Abbiegen hinfaellt. */
+      window._zubBreite=function(rr){
+        var t=(rr-(ZR1-26))/26;
+        return t<=0 ? HB : HB + 5.6*t*t;
+      };
       ZUB.forEach(function(gr9){
         var aa=gr9*Math.PI/180, ca=Math.cos(aa), sa=Math.sin(aa);
         var qx=-sa, qz=ca;                       // quer zur Fahrtrichtung
-        var r0=118, r1=R+HB;
+        var r0=ZR0, r1=ZR1, hb=window._zubBreite;
         function pkt(rr9,q9,hh9){return [ca*rr9+qx*q9, hh9, sa*rr9+qz*q9];}
-        quadOben(pos,idx, pkt(r0,-HB,0.012),pkt(r0,HB,0.012),
-                          pkt(r1,HB,0.012), pkt(r1,-HB,0.012));
+        /* In Abschnitten, sonst kann die Breite unterwegs gar nicht wachsen. */
+        var N9=16;
+        for(var s9=0;s9<N9;s9++){
+          var ra=r0+(r1-r0)*s9/N9, rb=r0+(r1-r0)*(s9+1)/N9;
+          quadOben(pos,idx, pkt(ra,-hb(ra),0.012), pkt(ra,hb(ra),0.012),
+                            pkt(rb, hb(rb),0.012), pkt(rb,-hb(rb),0.012));
+        }
         for(var t9=0.08;t9<0.95;t9+=0.10){       // Mittelstreifen
           var rm=r0+(r1-r0)*t9, rl=(r1-r0)*0.035;
           quadOben(dpos,didx, pkt(rm-rl,-0.18,0.022),pkt(rm-rl,0.18,0.022),
                               pkt(rm+rl,0.18,0.022), pkt(rm+rl,-0.18,0.022));
         }
+        /* Haltelinie quer ueber die Zufahrt, dort wo das Vorfahrtsschild steht.
+           Ohne sie regelt das Schild etwas, wovon die Fahrbahn nichts weiss. */
+        var rh=191.4, bh=hb(rh);
+        quadOben(dpos,didx, pkt(rh-0.22,-bh+0.3,0.023), pkt(rh-0.22,bh-0.3,0.023),
+                            pkt(rh+0.22, bh-0.3,0.023), pkt(rh+0.22,-bh+0.3,0.023));
       });
       window._zubringer=ZUB;
       mesh(pos,idx,betMat(0x4a4a53,0.92));
@@ -3975,13 +3999,20 @@ setTimeout(function baueGebaeude(){
         function P(A,rr,q){return [A.ca*rr+A.qx*q, A.sa*rr+A.qz*q];}
         /* Bankett beidseits. quadOben rechnet die Wickelrichtung selbst aus —
            genau dafuer gibt es den Helfer, siehe seinen Kommentar oben. */
-        var zp=[],zi=[];
+        /* ⚠️ Das Bankett muss der TROMPETE folgen. Als Streifen konstanter Breite
+           liefe es an der Einmuendung quer ueber den aufgeweiteten Belag —
+           Kies mitten auf der Fahrbahn. Darum dieselbe Breitenfunktion und
+           dieselbe Unterteilung wie beim Belag. */
+        var zp=[],zi=[],hbz=window._zubBreite;
         ZUB.forEach(function(gr){
           var A=achse(gr);
           function pk(rr,q){return [A.ca*rr+A.qx*q, 0.008, A.sa*rr+A.qz*q];}
-          [-1,1].forEach(function(sd){
-            quadOben(zp,zi, pk(r0,sd*HB), pk(r0,sd*(HB+1.5)),
-                            pk(r1,sd*(HB+1.5)), pk(r1,sd*HB));});
+          for(var s8=0;s8<16;s8++){
+            var ra=r0+(r1-r0)*s8/16, rb=r0+(r1-r0)*(s8+1)/16;
+            [-1,1].forEach(function(sd){
+              quadOben(zp,zi, pk(ra,sd*hbz(ra)), pk(ra,sd*(hbz(ra)+1.5)),
+                              pk(rb,sd*(hbz(rb)+1.5)), pk(rb,sd*hbz(rb)));});
+          }
         });
         mesh(zp,zi,betMat(0x9a9384,0.98));
         /* Leitpfosten entlang der Zubringer, als EINE InstancedMesh.
@@ -4000,7 +4031,7 @@ setTimeout(function baueGebaeude(){
           for(var k=1;k<=pro;k++){
             var rr=r0+k*(r1-r0)/(pro+1);
             [-1,1].forEach(function(sd){
-              var p=P(A,rr,sd*(HB+1.1));
+              var p=P(A,rr,sd*(hbz(rr)+1.1));   // folgt der Trompete wie das Bankett
               P4.set(p[0],0.5,p[1]);
               im.setMatrixAt(n4++,M4.compose(P4,Q4,S4));});
           }
@@ -4045,7 +4076,11 @@ setTimeout(function baueGebaeude(){
            Schild geworden, das dem Fahrer den Ruecken zeigt. */
         ZUB.forEach(function(gr,gi){
           var A=achse(gr), hin=Math.PI/2-A.aa, her=hin+Math.PI;
-          var a1=frei(A,191,-(HB+1.7)), a2=frei(A,191,HB+1.7);
+          /* ⚠️ Seitlicher Abstand ab der TROMPETE, nicht ab der Regelbreite:
+             bei r 191 ist die Fahrbahn schon 5,56 statt 4,2 halbbreit, ein
+             Schild auf HB + 1,7 = 5,9 stuende damit fast auf dem Belag. */
+          var hb9=window._zubBreite(191)+1.7;
+          var a1=frei(A,191,-hb9), a2=frei(A,191,hb9);
           stell("th39_vorfahrt.glb",2.30,a1,hin);
           stell("th39_vorfahrt.glb",2.30,a2,her);
           var o1=frei(A,125,-(HB+2.0));                 // Ortstafel am Stadtrand
@@ -4055,7 +4090,7 @@ setTimeout(function baueGebaeude(){
                r 200 mit Halbbreite 4,2, also von 195,8 bis 204,2. Ein seitlicher
                Versatz hilft dagegen nichts — der Ring ist ein Kreis, der Radius
                des Punktes bleibt ~197. Nur ein kleinerer Radius kommt frei. */
-            var w1=frei(A,186,HB+2.6);
+            var w1=frei(A,186,window._zubBreite(186)+2.6);
             stell("th39_wegweiser.glb",3.05,w1,hin);
           }
         });
