@@ -761,3 +761,4 @@ gid://shopify/Product/15500344361345	ok	Vintage Reise-Sporttasche Leder faltbar
 gid://shopify/Product/15500487000449	nicht-versendbar	Schuhbox mit Touch-Funktion
 gid://shopify/Product/15500459475329	ok	Wüsten-Rennwagen
 gid://shopify/Product/15500492013953	ok	Schmuck-Organizer mit 6 Schubladen
+gid://shopify/Product/15500673286529	ok	Herren-Mechanical-Uhr
