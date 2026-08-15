@@ -6781,3 +6781,6 @@ gid://shopify/Product/15448882250113	36->0	Infrarot-Fernbedienung für Smartphon
 gid://shopify/Product/15448929698177	34->3	Bounce Curl Styling-Kamm für Locken
 gid://shopify/Product/15448933761409	41->0	Automatischer Lockenstab für grosse Wellen
 gid://shopify/Product/15448934941057	52->2	Seiden-Satin Schlafhaube für alle Haartypen
+gid://shopify/Product/15448949195137	45->0	Smarter Futterautomat mit Timer
+gid://shopify/Product/15448955584897	13->2	Intelligentes Velo-Frontlicht mit Ladefunktion
+gid://shopify/Product/15448955683201	15->0	Velo-Scheinwerfer mit Digitalanzeige & Powerbank
