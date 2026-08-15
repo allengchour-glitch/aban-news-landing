@@ -6751,3 +6751,5 @@ gid://shopify/Product/15449432850817	37->2	Faltbarer Wärmekuschel-Platz für Hu
 gid://shopify/Product/15449433309569	89->0	3D-Lichtmalpad mit 8 Effekten
 gid://shopify/Product/15449433538945	10->0	Portabler Outdoor-Hundewassernapf
 gid://shopify/Product/15449434521985	51->0	Retro-Hoodie mit 3D-Muster
+gid://shopify/Product/15412899676545	18->0	Edelstahl-Trinkflasche «Hydro» 570 ml
+gid://shopify/Product/15412902855041	36->1	Mondstein-Blütenring «Fleur» – zarter Statement-Ring
