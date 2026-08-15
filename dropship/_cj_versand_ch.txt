@@ -753,3 +753,7 @@ gid://shopify/Product/15500194513281	ok	Hohl-Edelstahl-Armbanduhr
 gid://shopify/Product/15500257984897	ok	Kurzlocken-Styling-Kit
 gid://shopify/Product/15500345934209	ok	Ceramik-Teller-Set
 gid://shopify/Product/15500404195713	nicht-versendbar	Kraftbündel-Regal
+gid://shopify/Product/15500404261249	nicht-versendbar	Bauchformungsmaschine
+gid://shopify/Product/15500403540353	nicht-versendbar	Mini-Ski-Gerät
+gid://shopify/Product/15500404425089	nicht-versendbar	Beinspreizer für Hüft- und Beintraining
+gid://shopify/Product/15500409012609	ok	Infrarot Sensor Nagellampe, kabellos
