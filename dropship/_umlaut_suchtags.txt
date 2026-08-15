@@ -1916,3 +1916,24 @@ gid://shopify/Product/15449167692161	frontoeffnung	Multifunktionaler Reisekoffer
 gid://shopify/Product/15449168085377	faecher	Kofferraum-Organizer, 3 Fächer, Schwarz
 gid://shopify/Product/15449168183681	kleidersaecke,haengende	5er-Set Kleidersäcke für hängende Kleidung
 gid://shopify/Product/15449168216449	praege	Retro Präge-Design Handtasche für Herren
+gid://shopify/Product/15449168314753	seitenoeffnung	Dreiteiliger erweiterbarer Koffer mit Seitenöffnung
+gid://shopify/Product/15449168413057	gepaeck,frontoeffnung	ABS Business-Gepäck mit Frontöffnung
+gid://shopify/Product/15449168707969	kapazitaet	Universal Rollkoffer mit grosser Kapazität
+gid://shopify/Product/15449168740737	handgepaeck	20-Zoll Handgepäck-Trolley
+gid://shopify/Product/15449168806273	handgepaeck,frontoeffnung	20-Zoll Handgepäck-Trolley mit Frontöffnung
+gid://shopify/Product/15449168839041	universalraedern	Reisetrolley mit viel Stauraum und Universalrädern
+gid://shopify/Product/15449169133953	frontoeffnung	Multifunktionaler Trolley mit Frontöffnung
+gid://shopify/Product/15449169592705	anhaenger	Reise-Charm-Anhänger (Flugzeug, Koffer, Kamera)
+gid://shopify/Product/15449169658241	anhaenger	Kupferversilberter Stethoskop-Herz-Anhänger
+gid://shopify/Product/15449170084225	anhaenger	Doppel-Halo Anhänger mit Smaragd-Zirkonia
+gid://shopify/Product/15449173492097	verdunkelungsvorhaenge,oesen	Verdunkelungsvorhänge mit Ösen (2er-Set)
+gid://shopify/Product/15449173688705	verdunklungsvorhaenge,oesen	Thermo-Verdunklungsvorhänge mit Ösen, 2er-Set
+gid://shopify/Product/15449174147457	streifenvorhaenge	Vorhangschiene für Streifenvorhänge, 1 m, Silber
+gid://shopify/Product/15449174212993	stueck	Vorhang-Set Samt Silber (2 Stück)
+gid://shopify/Product/15449174311297	vorhaenge	Samt Blackout Vorhänge mit Drapierung, 2 Stk.
+gid://shopify/Product/15449174344065	verdunkelungsvorhaenge	Verdunkelungsvorhänge aus Polyester
+gid://shopify/Product/15449174540673	verdunkelungsvorhaenge	Verdunkelungsvorhänge mit Haken, Leinen-Optik, 2 Stk.
+gid://shopify/Product/15449174704513	tuerfolie	Selbstklebende Türfolie, 2 Stk., Weiss
+gid://shopify/Product/15449174835585	vorhaengen	Fensterstore mit Vorhängen, Silber
+gid://shopify/Product/15449175032193	verdunkelungsvorhaenge,oesen,stueck	Verdunkelungsvorhänge mit Ösen, 2 Stück
+gid://shopify/Product/15449175097729	bettwaesche,kissenbezuegen	Bettwäsche-Set mit Fixleintuch und Kissenbezügen
