@@ -5575,7 +5575,11 @@ setTimeout(function baueGebaeude(){
     function fest(datei,hoehe,x,z,ry){
       bau(datei,hoehe,x,0,z,ry,false,function(w){w.userData.fest=true;},true);
     }
-    fest("th41_bahnhof.glb",12.25,0,102.0,0);
+    /* ⚠️ Erst 12,25 hoch auf z = 102: das Gebaeude ragte 1,3 m in die
+       Bahnsteigdaecher (z 107,3…111,9) und ueberragte den ganzen Bahnsteig.
+       `bau()` skaliert ueber die HOEHE — 10,4 macht daraus 11,15 Tiefe, und
+       auf z = 99 bleiben 2,6 m Luft bis zum ersten Dach. */
+    fest("th41_bahnhof.glb",10.4,0,99.0,0);
     /* Bahnsteigkante im Raster 6,00 laengs des Gleises. Der Kantenstein liegt im
        Modell auf Blender -y, in three.js also +z: Modulmitte auf 110,3 setzt ihn
        auf 112,0 — genau an die Schiene. */
