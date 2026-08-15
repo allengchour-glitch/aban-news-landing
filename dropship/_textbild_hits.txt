@@ -6766,3 +6766,4 @@ gid://shopify/Product/15447923818881	13->0	3M Thinsulate Winterhandschuhe für D
 gid://shopify/Product/15447952884097	15->0	Retro Hip-Hop Hoodie für Teenager
 gid://shopify/Product/15447976345985	81->0	Mädchen Jazz Dance Outfit Langarm & Hose
 gid://shopify/Product/15448027070849	17->0	UV-Schutz-Cape für Damen, lockerer Schnitt
+gid://shopify/Product/15448076779905	68->0	Damen-Badeanzug-Set
