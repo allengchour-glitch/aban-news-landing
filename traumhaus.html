@@ -3890,6 +3890,98 @@ setTimeout(function baueGebaeude(){
       }
       lp.count=nlp; lp.instanceMatrix.needsUpdate=true;
       lp.frustumCulled=false; lp.userData.nieAusblenden=1; scene.add(lp);
+      /* 🚧 ZUBRINGER-AUSBAU (Charge 39). Die Ringlandstrasse hat Bankett und
+         Leitpfosten, ihre sechs Zubringer hatten bisher nur Belag und
+         Mittelstreifen: kein Bankett, keine Leitpfosten, und an der Einmuendung
+         keinerlei Regelung. Das sind genau die drei Dinge, die aus einer
+         Asphaltbahn eine fertige Strasse machen — und der Punkt, der seit der
+         Bergwelt-Ladung offen stand. */
+      (function zubringerAusbau(){
+        var r0=118, r1=R+HB;
+        function achse(gr){var aa=gr*Math.PI/180;
+          return {aa:aa,ca:Math.cos(aa),sa:Math.sin(aa),qx:-Math.sin(aa),qz:Math.cos(aa)};}
+        function P(A,rr,q){return [A.ca*rr+A.qx*q, A.sa*rr+A.qz*q];}
+        /* Bankett beidseits. quadOben rechnet die Wickelrichtung selbst aus —
+           genau dafuer gibt es den Helfer, siehe seinen Kommentar oben. */
+        var zp=[],zi=[];
+        ZUB.forEach(function(gr){
+          var A=achse(gr);
+          function pk(rr,q){return [A.ca*rr+A.qx*q, 0.008, A.sa*rr+A.qz*q];}
+          [-1,1].forEach(function(sd){
+            quadOben(zp,zi, pk(r0,sd*HB), pk(r0,sd*(HB+1.5)),
+                            pk(r1,sd*(HB+1.5)), pk(r1,sd*HB));});
+        });
+        mesh(zp,zi,betMat(0x9a9384,0.98));
+        /* Leitpfosten entlang der Zubringer, als EINE InstancedMesh.
+           ⚠️ InstancedMesh prueft die Sichtbarkeit gegen die Bounding-Sphere
+           EINER Geometrie am Objektursprung. Bei ueber die halbe Karte
+           verteilten Instanzen verschwinden damit alle auf einmal, sobald der
+           Ursprung aus dem Bild faellt — darum frustumCulled = false. */
+        var zg=new THREE.CylinderGeometry(0.06,0.07,1.0,5),
+            zm=new THREE.MeshStandardMaterial({color:0xf0efe8,roughness:0.7});
+        var pro=Math.max(2,Math.floor((r1-r0)/14));
+        var im=new THREE.InstancedMesh(zg,zm,ZUB.length*pro*2);
+        var M4=new THREE.Matrix4(),Q4=new THREE.Quaternion(),
+            P4=new THREE.Vector3(),S4=new THREE.Vector3(1,1,1),n4=0;
+        ZUB.forEach(function(gr){
+          var A=achse(gr);
+          for(var k=1;k<=pro;k++){
+            var rr=r0+k*(r1-r0)/(pro+1);
+            [-1,1].forEach(function(sd){
+              var p=P(A,rr,sd*(HB+1.1));
+              P4.set(p[0],0.5,p[1]);
+              im.setMatrixAt(n4++,M4.compose(P4,Q4,S4));});
+          }
+        });
+        im.count=n4; im.instanceMatrix.needsUpdate=true;
+        im.frustumCulled=false; im.userData.nieAusblenden=1; scene.add(im);
+        /* Schilder aus Charge 39.
+           ⚠️ Die Schildflaeche zeigt bei rotY = 0 nach -z, ihre Normale ist also
+           (-sin rotY, -cos rotY). Sie muss dem Ankommenden ENTGEGENschauen:
+           fuer den Hinausfahrenden nach -r, das ergibt rotY = pi/2 - aa; fuer
+           die Gegenrichtung dasselbe + pi. Geraten waere hier fast sicher ein
+           Schild geworden, das dem Fahrer den Ruecken zeigt. */
+        ZUB.forEach(function(gr,gi){
+          var A=achse(gr), hin=Math.PI/2-A.aa, her=hin+Math.PI;
+          var a1=P(A,191,-(HB+1.7)), a2=P(A,191,HB+1.7);
+          bau("th39_vorfahrt.glb",2.30,a1[0],0,a1[1],hin,false,null,true);
+          bau("th39_vorfahrt.glb",2.30,a2[0],0,a2[1],her,false,null,true);
+          var o1=P(A,125,-(HB+2.0));                    // Ortstafel am Stadtrand
+          bau("th39_ortstafel.glb",2.50,o1[0],0,o1[1],her,false,null,true);
+          if(gi%2===0){                                  // Wegweiser an jeder zweiten
+            var w1=P(A,197,HB+2.6);
+            bau("th39_wegweiser.glb",3.05,w1[0],0,w1[1],hin,false,null,true);
+          }
+        });
+        /* Wartehaeuschen an zwei Zubringern, offene Seite zur Fahrbahn.
+           Die offene Seite liegt auf Blender +y, in three.js also -z bei
+           rotY = 0; steht das Haeuschen auf der +q-Seite, zeigt die Strasse
+           nach -q, und aus (-sin,-cos) = (sa,-ca) folgt rotY = -aa. */
+        [60,240].forEach(function(gr){
+          var A=achse(gr), p=P(A,132,HB+3.2);
+          bau("th39_bushalt.glb",2.84,p[0],0,p[1],-A.aa,false,null,true);
+        });
+        /* Leitplanke auf der Bergseite des Rings (der grosse Berg liegt bei
+           Winkel 278 Grad). Modul 3,94 lang auf r 205,2: dTheta = 3,94/205,2. */
+        var RL=R+HB+1.0, dT=3.94/RL;
+        for(var q1=0;q1<12;q1++){
+          var ag=(268+q1*dT*180/Math.PI)*Math.PI/180;
+          var lx=Math.cos(ag)*RL, lz=Math.sin(ag)*RL;
+          /* Laengsachse des Moduls ist x; bei rotY = t zeigt sie auf
+             (cos t, -sin t) und muss tangential (-sin ag, cos ag) sein. */
+          bau("th39_leitplanke.glb",0.92,lx,0,lz,Math.PI/2-ag+Math.PI,false,null,true);
+        }
+        /* Eine kleine Baustelle auf dem 30-Grad-Zubringer — Absperrbake quer,
+           Leitkegel davor. Ohne sie ist die Strasse ueberall gleich perfekt. */
+        (function baustelle(){
+          var A=achse(30), b=P(A,168,HB-1.2);
+          bau("th39_bake.glb",1.06,b[0],0,b[1],Math.PI/2-A.aa,false,null,true);
+          for(var k=0;k<4;k++){
+            var p=P(A,163-k*2.4,HB-1.2-k*0.5);
+            bau("th39_pylon.glb",0.76,p[0],0,p[1],0,false,null,true);
+          }
+        })();
+      })();
       window._landstrasse=R;
     })();
     /* 🌾 FELDER. Nach Bergen und Wald ist die WIESE die groesste einfarbige
