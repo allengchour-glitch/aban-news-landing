@@ -6014,7 +6014,7 @@ function stufeHudUpd(){
      vorn — auf dem Handy schnitt die Kopfzeile dann ausgerechnet den Fehlbetrag ab,
      also genau die Information, wegen der die Anzeige existiert. Jetzt kommt immer
      zuerst, was zu tun ist, dann der Termin; der Titel nur, wenn Platz bleibt. */
-  el.textContent="🏅 "+kurz+" · "+tage+"T"
+  el.textContent=(MODUS==="sprint"&&!sprintFertig?"🏁 T"+tag+"/20 · ":"")+"🏅 "+kurz+" · "+tage+"T"
     +(innerWidth>=1000?"  ("+l.ziel[0]+")":"");
   el.style.background=l.erfuellt?"rgba(180,240,190,.92)":"";}
 /* Die Abnahme selbst: ein Ereignis mit klarer Ansage, kein stiller Zahlensprung. */
@@ -8923,6 +8923,7 @@ function loop(now){
       if(tag>naechsteAbnahme){inspektorPending=false;setTimeout(bauabnahme,1400);}
       else if(tag>=naechsteAbnahme)inspektorPending=true;
       if(!MPs||mpHost){missNeu();
+        if(missHeute)setTimeout(function(){hint("🎯 Neue Tages-Missionen: "+missHeute.liste.map(function(m){return m.e;}).join(" ")+" — Details unter 🏆");},3500);
         if(MODUS==="sprint"&&!sprintFertig){
           if(wohnstufe>=3){sprintFertig=true;feier(4);
             hint("🏁 SPRINT GEWONNEN — Traumvilla an Tag "+tag+"! Du spielst entspannt weiter.");}
