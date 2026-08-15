@@ -70,16 +70,25 @@ def _b_vorfahrt():
     """Vorfahrt-achten-Schild, auf der Spitze stehendes Dreieck, 2,55 m hoch.
 
     ⚠️ Das Dreieck ist ein Kegel mit DREI Ecken und gleichem Ober-/Unterradius —
-    also ein dreikantiges Prisma. Um es aufzustellen, kippt es um x (nicht um y):
-    die Prismenachse liegt auf z und muss auf y zeigen, damit die Flaeche zur
-    Strasse schaut."""
+    also ein dreikantiges Prisma. Um es aufzustellen, kippt es um x: die
+    Prismenachse liegt auf z und muss auf y zeigen, damit die Flaeche zur
+    Strasse schaut.
+
+    ⚠️ Und dann muss die Spitze nach UNTEN — sonst ist es kein Vorfahrt-achten-
+    Schild. Der erste Versuch drehte dafuer um z, und genau das ist falsch:
+    Blender wendet einen XYZ-Euler in der Reihenfolge x, y, z an, das z kommt
+    also ZULETZT und dreht die schon gekippte Tafel um die WELT-Hochachse — sie
+    schaut danach nach hinten, die Spitze bleibt oben. Nachgemessen mit einem
+    Probeprisma:  x90        -> zmax +0,500 bei x 0  (Spitze oben)
+                  x90 z180   -> zmax +0,500 bei x 0  (Spitze oben, nur gedreht)
+                  x90 y180   -> zmin -0,500 bei x 0  (Spitze unten)
+    Nach dem Kippen liegt die Tafelebene auf x-z, und in dieser Ebene dreht y."""
     M = _mats()
     _mast(2.30, M)
     R = 0.52
     for r_, d_, mm in ((R, 0.05, M["rot"]), (R*0.74, 0.055, M["weiss"])):
-        p = kegel(0, 0, 2.02, r_, r_, d_, mm, 3, rot=(math.pi/2, 0, 0))
-        # Spitze nach UNTEN: das Prisma steht sonst auf der Kante.
-        p.rotation_euler = (math.pi/2, 0, math.pi)
+        p = kegel(0, 0, 2.02, r_, r_, d_, mm, 3)
+        p.rotation_euler = (math.pi/2, math.pi, 0)
         flach(p)
     flach(zyl(0, 0.05, 1.58, 0.05, 0.02, M["reflw"], 10, (math.pi/2, 0, 0)))
 
@@ -92,14 +101,17 @@ def _b_ortstafel():
     Die dunkle Leiste in der Tafel steht fuer die Beschriftung: eine leere weisse
     Flaeche liest sich als vergessenes Blech, ein Balken darin als Ortsname."""
     M = _mats()
+    # ⚠️ Erste Fassung: Tafel 1,80 breit auf 2,18 Gesamthoehe — das liest sich als
+    # Plakatwand, nicht als Ortstafel. Ein Strassenschild steht hoch ueber dem
+    # Bankett; die Hoehe des Mastes ist der halbe Wiedererkennungswert.
     for s in (-1, 1):
-        flach(zyl(s*0.62, 0, 0.90, 0.032, 1.80, M["pfost"], 10))
-        flach(zyl(s*0.62, 0, 0.016, 0.075, 0.032, M["stahl"], 12))
-    _platte(1.86, 1.80, 0.58, 0.045, M["weiss"])
-    _platte(1.86, 1.86, 0.64, 0.030, M["schwarz"])                      # Rand hinter der Tafel
-    _platte(1.86, 1.10, 0.16, 0.055, M["schwarz"])                      # Schriftbalken
+        flach(zyl(s*0.56, 0, 1.14, 0.032, 2.28, M["pfost"], 10))
+        flach(zyl(s*0.56, 0, 0.016, 0.075, 0.032, M["stahl"], 12))
+    _platte(2.22, 1.52, 0.50, 0.045, M["weiss"])
+    _platte(2.22, 1.58, 0.56, 0.030, M["schwarz"])                      # Rand hinter der Tafel
+    _platte(2.22, 0.94, 0.14, 0.055, M["schwarz"])                      # Schriftbalken
     for s in (-1, 1):                                                   # Klemmschienen hinten
-        box(0, -0.055, 1.86 + s*0.20, 1.60, 0.05, 0.06, M["stahl"])
+        box(0, -0.055, 2.22 + s*0.17, 1.34, 0.05, 0.06, M["stahl"])
 
 def ortstafel(): _modul("th39_ortstafel", _b_ortstafel)
 
@@ -116,9 +128,11 @@ def _b_wegweiser():
         L, H = 1.30, 0.34
         box(s*(0.05 + L/2), 0, z0, L, 0.05, H, M["blau"])
         box(s*(0.05 + L/2), 0, z0, L*0.98, 0.062, H*0.62, M["blau"])
-        sp = kegel(s*(0.05 + L + 0.10), 0, z0, H*0.72, H*0.72, 0.05, M["blau"], 3,
-                   rot=(math.pi/2, 0, 0))
-        sp.rotation_euler = (math.pi/2, 0, -s*math.pi/2)                # Spitze nach aussen
+        # Spitze nach aussen — dieselbe Euler-Falle wie beim Vorfahrtsschild:
+        # y dreht IN der Tafelebene, z dreht die Tafel aus ihr heraus. Gemessen:
+        # x90 y+90 -> Ecke bei x +0,500;  x90 y-90 -> Ecke bei x -0,500.
+        sp = kegel(s*(0.05 + L + 0.10), 0, z0, H*0.72, H*0.72, 0.05, M["blau"], 3)
+        sp.rotation_euler = (math.pi/2, s*math.pi/2, 0)
         flach(sp)
         box(s*(0.05 + L/2), 0.033, z0 + 0.02, L*0.78, 0.012, 0.055, M["weiss"])
         flach(zyl(0, 0, z0, 0.055, 0.40, M["stahl"], 10, (math.pi/2, 0, 0)))  # Schelle
@@ -149,18 +163,22 @@ def _b_leitplanke():
     ergeben die Doppelwelle, die man von der Autobahn kennt."""
     M = _mats()
     BR = 4.00
+    # ⚠️ Der Holm sass erst auf 0,73 und ragte mit seinem oberen Band bis 1,00 —
+    # also UEBER die 0,74 hohen Pfosten hinaus. Eine Leitplanke, die oben ueber
+    # ihre eigenen Pfosten steht, schwebt. Holmmitte jetzt 0,60, Pfosten 0,92.
+    HM = 0.60
     for s in (-1, 1):                                                   # Sigma-Pfosten
         x = s*(BR/2 - 0.20)
-        box(x, 0, 0.37, 0.12, 0.10, 0.74, M["pfost"])
-        box(x, 0.055, 0.37, 0.16, 0.02, 0.74, M["pfost"])
-        box(x, 0.09, 0.68, 0.14, 0.09, 0.16, M["stahl"])                # Distanzstueck
-    for dz, dy in ((0.20, 0.155), (0.0, 0.115), (-0.20, 0.155)):        # Holm im W-Profil
-        box(0, dy, 0.73 + dz, BR - 0.06, 0.04, 0.14, M["stahl"])
-    for dz in (0.115, -0.115):                                          # Schraege dazwischen
-        b = box(0, 0.135, 0.73 + dz, BR - 0.06, 0.045, 0.11, M["stahl"])
+        box(x, 0, 0.46, 0.12, 0.10, 0.92, M["pfost"])
+        box(x, 0.055, 0.46, 0.16, 0.02, 0.92, M["pfost"])
+        box(x, 0.09, HM, 0.14, 0.09, 0.16, M["stahl"])                  # Distanzstueck
+    for dz, dy in ((0.155, 0.155), (0.0, 0.115), (-0.155, 0.155)):      # Holm im W-Profil
+        box(0, dy, HM + dz, BR - 0.06, 0.04, 0.12, M["stahl"])
+    for dz in (0.088, -0.088):                                          # Schraege dazwischen
+        b = box(0, 0.135, HM + dz, BR - 0.06, 0.045, 0.10, M["stahl"])
         b.rotation_euler[0] = (0.62 if dz > 0 else -0.62)
     for k in range(5):                                                  # Stossbolzen
-        flach(zyl(-BR/2 + 0.30 + k*(BR - 0.60)/4, 0.185, 0.73, 0.022, 0.03,
+        flach(zyl(-BR/2 + 0.30 + k*(BR - 0.60)/4, 0.185, HM, 0.022, 0.03,
                   M["stahl"], 8, (math.pi/2, 0, 0)))
 
 def leitplanke(): _modul("th39_leitplanke", _b_leitplanke, 0.006)
@@ -221,9 +239,13 @@ def _b_bake():
     soll auch als STL ohne Bild erkennbar bleiben."""
     M = _mats()
     BR = 1.55
+    # ⚠️ Die Streifen waren 0,40 hoch und um 0,62 rad gekippt: senkrechte
+    # Ausdehnung 0,40*cos + 0,20*sin = 0,44 auf einem Brett von 0,28 — sie
+    # standen oben und unten 8 cm ueber. Ein gekippter Quader braucht
+    # h*cos + b*sin <= Bretthoehe, nicht h <= Bretthoehe.
     box(0, 0, 0.86, BR, 0.045, 0.28, M["weiss"])
     for k in range(4):                                                  # Schraegstreifen
-        st = box(-BR/2 + 0.24 + k*(BR - 0.48)/3, 0.030, 0.86, 0.20, 0.012, 0.40, M["rot"])
+        st = box(-BR/2 + 0.24 + k*(BR - 0.48)/3, 0.030, 0.86, 0.16, 0.012, 0.26, M["rot"])
         st.rotation_euler[1] = 0.62
     for s in (-1, 1):                                                   # Klappbock
         x = s*(BR/2 - 0.16)
