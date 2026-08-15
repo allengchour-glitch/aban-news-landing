@@ -5564,8 +5564,13 @@ setTimeout(function baueGebaeude(){
         new THREE.MeshStandardMaterial({color:0xeceae2,roughness:0.85}));
       li.rotation.x=-Math.PI/2;li.position.set(x,0.035,z);scene.add(li);
     }
+    /* ⚠️ 0x2f6a30 mit envMapIntensity im Standardwert renderte als blasses Mint —
+       heller als die Wiese ringsum, obwohl der Zahlenwert dunkler ist. Die
+       Umgebungsbeleuchtung hebt grosse flache Flaechen stark an; die anderen
+       Bodenflaechen der Karte fahren darum ebenfalls eine gedaempfte
+       envMapIntensity. */
     var ras=new THREE.Mesh(new THREE.PlaneGeometry(FB+4,FT+4),
-      new THREE.MeshStandardMaterial({color:0x2f6a30,roughness:0.96}));
+      new THREE.MeshStandardMaterial({color:0x24551d,roughness:0.97,envMapIntensity:0.14}));
     ras.rotation.x=-Math.PI/2;ras.position.set(CX,0.028,CZ);ras.receiveShadow=true;scene.add(ras);
     strich(CX,CZ-FT/2,FB,0.14); strich(CX,CZ+FT/2,FB,0.14);      // Seitenlinien
     strich(CX-FB/2,CZ,0.14,FT); strich(CX+FB/2,CZ,0.14,FT);      // Torlinien
