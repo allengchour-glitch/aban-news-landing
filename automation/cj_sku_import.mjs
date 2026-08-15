@@ -135,7 +135,8 @@ for (const item of ITEMS) {
   const ms = produktSaeubern(g.title, g.html);
   if (ms.verdacht) { console.log('✗ Markenbezug, übersprungen:', item); continue; }
   g.title = ms.title; g.html = ms.html;
-  const title = g.title.slice(0, 70);
+  // ß→ss (15.08.2026): CH-Schreibung, Quelle-Fix wie in cj_category_fill
+  const title = g.title.slice(0, 70).replace(/ß/g, 'ss').replace(/ẞ/g, 'SS');
   // Titel-Wache inkl. Umlaut-Normalisierung (Geraet==Gerät-Falle 2026-07-08) + Bild-Wache (GEHIRN 2)
   const norm = x => x.toLowerCase().replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue').replace(/ß/g,'ss').replace(/[^a-z0-9]+/g,' ').trim();
   const dq = await sgql(t, `query($q:String!){products(first:10,query:$q){edges{node{id title}}}}`, { q: `title:"${title.replace(/"/g, '').split(' ').slice(0,3).join(' ')}*" status:active` });
@@ -162,7 +163,7 @@ for (const item of ITEMS) {
   const input = { title, handle: slug, productType: 'Trend-Produkt', vendor: 'LuxeStyle',
     status: med ? 'DRAFT' : 'ACTIVE',
     tags: tagsFinal,
-    descriptionHtml: g.html + '\n<p>🚚 Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · 🇨🇭 LuxeStyle</p>',
+    descriptionHtml: (g.html + '\n<p>🚚 Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · 🇨🇭 LuxeStyle</p>').replace(/ß/g, 'ss').replace(/ẞ/g, 'SS'),
     seo: { title: (title + ' | LuxeStyle CH').slice(0, 70), description: `${title} – der Trend-Hit bei LuxeStyle Schweiz.`.slice(0, 320) },
     productOptions: [{ name: 'Variante', values: [{ name: 'Standard' }] }],
     variants: [{ optionValues: [{ optionName: 'Variante', name: 'Standard' }], price: chf(d.sellPrice, d.variants?.[0]?.variantWeight), inventoryItem: { sku: ('CJ-' + pid).slice(0, 70), tracked: false }, inventoryPolicy: 'CONTINUE' }],

@@ -528,7 +528,9 @@ for(const [cat,label] of grp.cats){
    const ms=produktSaeubern(g.title, g.html);
    if(ms.verdacht){console.log('  skip(marke)',nm.slice(0,40));continue;}
    g.title=ms.title; g.html=ms.html;
-   const title=g.title.slice(0,70);
+   // ß→ss (15.08.2026): Übersetzer liefern bundesdeutsches ß, ein CH-Shop schreibt ss.
+   // Quelle hier; Backfill für den Altbestand: automation/ss_statt_scharf_s.py
+   const title=g.title.slice(0,70).replace(/ß/g,'ss').replace(/ẞ/g,'SS');
    // ⚕️ MEDIZINISCHE ZWECKBESTIMMUNG (14.08.2026). Acht im August angelegte Geräte standen
    // aktiv im Google-Kanal, obwohl sie nach MepV eine Konformitätsbewertung brauchen — ein
    // Temperaturpflaster mit 38-°C-Alarm für kranke Kinder, zwei Elektrostimulations-
@@ -554,7 +556,7 @@ for(const [cat,label] of grp.cats){
    const heik=heikelZweck(title, g.html);
    if(DRY){console.log(`  [DRY]${med?' ⚕️DRAFT('+med.grund+')':''}${heik?' 🕵️'+(heik.verboten?'DRAFT':'KEIN-KANAL')+'('+heik.grund+')':''} CHF${chf(p.sellPrice)} | ${title}`);got++;total++;continue;}
    const slug=title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,46)+'-'+String(p.pid).slice(-6);
-   const html=`${g.html}\n${TRUST}`;
+   const html=`${g.html}\n${TRUST}`.replace(/ß/g,'ss').replace(/ẞ/g,'SS');
    const fash=(grp.fashion&&!FAST)?buildFashion(d):null; // FAST: keine Varianten-Details → Standard-Variante
    const productOptions=fash?fash.productOptions:[{name:'Variante',values:[{name:'Standard'}]}];
    const variants=fash?fash.variants:[{optionValues:[{optionName:'Variante',name:'Standard'}],price:chf(p.sellPrice, p.productWeight||p.variantWeight),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false},inventoryPolicy:'CONTINUE'}];

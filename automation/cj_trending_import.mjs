@@ -254,10 +254,11 @@ for(const p of cand){
  const ms=produktSaeubern(g.title, g.html);
  if(ms.verdacht){console.log('  skip(marke)',nm.slice(0,40));continue;}
  g.title=ms.title; g.html=ms.html;
- const title=g.title.slice(0,70);
+ // ß→ss (15.08.2026): CH-Schreibung, Quelle-Fix wie in cj_category_fill
+ const title=g.title.slice(0,70).replace(/ß/g,'ss').replace(/ẞ/g,'SS');
  if(DRY){console.log(`  [DRY] CHF${chf(p.sellPrice)} | ${title} | listed ${p.listedNum}`);total++;continue;}
  const slug=title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,46)+'-'+String(p.pid).slice(-6);
- const html=`${g.html}\n${TRUST}`;
+ const html=`${g.html}\n${TRUST}`.replace(/ß/g,'ss').replace(/ẞ/g,'SS');
  const looksFashion=(d.variants||[]).some(v=>{const pv=parseVar(v);return pv.size||pv.color;});
  const fash=looksFashion?buildFashion(d):null;
  const productOptions=fash?fash.productOptions:[{name:'Variante',values:[{name:'Standard'}]}];

@@ -6830,3 +6830,6 @@ gid://shopify/Product/15450858488193	30->0	Automatischer Trinkbrunnen für Haust
 gid://shopify/Product/15450859110785	20->0	Hotel Haartrockner
 gid://shopify/Product/15451641414017	37->3	Metall-Schutzhülle für Golf Auto Schlüssel
 gid://shopify/Product/15451926626689	37->0	Off-Shoulder Bodycon Minikleid mit Fledermausärmeln
+gid://shopify/Product/15452601057665	8->1	Nagelfräser · Portables Poliergerät mit Schleifaufsätzen
+gid://shopify/Product/15452602728833	9->3	Retro Sonnenbrille
+gid://shopify/Product/15452675506561	35->0	Formende Nagelhose
