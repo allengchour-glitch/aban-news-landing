@@ -129,7 +129,9 @@ def _b_feuerwache():
         flach(zyl(s*3.9, T/2 + 0.16, 5.78, 0.19, 0.07, m["dunkel"], 12))
     _satteldach(B, T, 2.90, H + 1.26, m)
     # Schlauchturm: Lamellen statt glatter Wand, Pyramidendach mit Grat
-    TX, TY = -B/2 + 1.30, -T/2 - 1.20
+    # ⚠️ Der Turm zog die Boxmitte auf -0,46. `bau()` setzt ueber den Ursprung:
+    # naeher an den Baukoerper geruecht, dann deckt sich beides wieder.
+    TX, TY = -B/2 + 2.10, -T/2 - 0.60
     box(TX, TY, 5.40, 2.60, 2.60, 10.80, m["rot"])
     for s in (-1, 1):
         box(TX + s*1.24, TY, 5.60, 0.22, 2.72, 10.20, m["stein"])
@@ -143,10 +145,10 @@ def _b_feuerwache():
     flach(kegel(TX, TY, 12.10, 2.10, 0.0, 2.05, m["dach2"], 4, rot=(0, 0, math.pi/4)))
     flach(zyl(TX, TY, 13.35, 0.05, 0.55, m["stahl"], 8))
     flach(kugel(TX, TY, 13.68, 0.13, m["stahl"], 8))
-    # Vorplatz-Markierung: zwei Ausfahrtsbahnen
-    for tx in (-3.9, 3.9):
-        for s in (-1, 1):
-            box(tx + s*2.55, T/2 + 3.20, 0.012, 0.16, 5.60, 0.024, m["gelb"])
+    # ⚠️ Hier lagen zwei gelbe Ausfahrtsbahnen auf dem Vorplatz. Sie machten das
+    # Gebaeudemodell 20,97 tief statt 13,5 und hingen im Kontaktbogen als
+    # freischwebende Striche neben dem Haus. Eine Fahrbahnmarkierung gehoert an
+    # den ORT, nicht in das Gebaeude — im Spiel wird sie dort gezeichnet.
 
 def feuerwache(): _modul("th43_feuerwache", _b_feuerwache)
 
@@ -174,13 +176,19 @@ def _b_loeschfahrzeug():
             for r9 in range(6):
                 box(xx, s*(B/2 + 0.012), 0.74 + r9*0.22, 1.26, 0.05, 0.16, m["stahl"])
             flach(zyl(xx, s*(B/2 + 0.03), 0.70, 0.04, 0.30, m["chrom"], 8, (0, math.pi/2, 0)))
-    box(0, 0, 2.72, L - 1.4, B - 0.30, 0.10, m["stahl"])                # Dachgalerie
-    for s in (-1, 1):                                                   # Leiter auf dem Dach
-        flach(zyl(-0.40, s*0.42, 2.88, 0.05, 5.20, m["stahl"], 8, (0, math.pi/2, 0)))
-    for k in range(11):
-        flach(zyl(-2.90 + k*0.52, 0, 2.88, 0.035, 0.84, m["stahl"], 6, (math.pi/2, 0, 0)))
-    box(L/2 - 1.05, 0, 2.96, 1.30, B - 0.42, 0.16, m["blau"])           # Blaulichtbalken
-    box(L/2 - 1.05, 0, 3.06, 1.36, B - 0.36, 0.09, m["dunkel"])
+    # ⚠️ Galerie, Leiter und Blaulichtbalken sassen auf z 2,72…3,06 — der Aufbau
+    # reicht aber bis 0,34 + 2,60 = 2,94. Alles darunter steckte IM Dach: im
+    # Kontaktbogen war von der Leiter nichts zu sehen. Dieselbe Rechnung wie beim
+    # Glas in Charge 40, nur senkrecht: Bauteilkante gegen Koerperkante pruefen.
+    DACH = 0.34 + H                                                     # 2,94
+    box(0, 0, DACH + 0.06, L - 1.4, B - 0.30, 0.10, m["stahl"])         # Dachgalerie
+    for s in (-1, 1):                                                   # Leiterholme
+        flach(zyl(-0.40, s*0.42, DACH + 0.24, 0.05, 5.20, m["stahl"], 8, (0, math.pi/2, 0)))
+    for k in range(11):                                                 # Sprossen
+        flach(zyl(-2.90 + k*0.52, 0, DACH + 0.24, 0.035, 0.84, m["stahl"], 6,
+                  (math.pi/2, 0, 0)))
+    box(L/2 - 1.05, 0, DACH + 0.14, 1.30, B - 0.42, 0.16, m["blau"])    # Blaulichtbalken
+    box(L/2 - 1.05, 0, DACH + 0.25, 1.36, B - 0.36, 0.09, m["dunkel"])
     for s in (-1, 1):
         flach(zyl(L/2 + 0.01, s*0.72, 0.90, 0.14, 0.05, m["licht"], 14, (0, math.pi/2, 0)))
         box(-L/2 - 0.01, s*0.72, 0.96, 0.05, 0.22, 0.30, m["rueck"])
@@ -219,30 +227,33 @@ def _b_tankstelle():
     ⚠️ Das Vordach traegt sich auf VIER Stuetzen, und die stehen im Belag, nicht
     auf ihm: ohne Fundamentteller sieht ein Vordach aus, als schwebe es."""
     m = _mats()
+    # ⚠️ Kiosk links, Vordach rechts — die Boxmitte lag dadurch auf +0,85.
+    # VER schiebt die ganze Gruppe zurueck auf den Ursprung.
     K_B, K_T, K_H = 7.20, 4.80, 3.40
-    box(-2.40, -1.70, K_H/2 + 0.16, K_B, K_T, K_H, m["stein"])          # Kiosk
-    box(-2.40, -1.70, 0.10, K_B + 0.4, K_T + 0.4, 0.20, m["sockel"])
-    box(-2.40, -1.70, K_H + 0.44, K_B + 0.7, K_T + 0.7, 0.34, m["gruen"])
-    box(-2.40, -1.70 + K_T/2 + 0.02, K_H + 0.44, K_B + 0.5, 0.10, 0.24, m["weiss"])
+    VER = -0.85
+    box(VER-2.40, -1.70, K_H/2 + 0.16, K_B, K_T, K_H, m["stein"])          # Kiosk
+    box(VER-2.40, -1.70, 0.10, K_B + 0.4, K_T + 0.4, 0.20, m["sockel"])
+    box(VER-2.40, -1.70, K_H + 0.44, K_B + 0.7, K_T + 0.7, 0.34, m["gruen"])
+    box(VER-2.40, -1.70 + K_T/2 + 0.02, K_H + 0.44, K_B + 0.5, 0.10, 0.24, m["weiss"])
     for k in range(3):                                                  # Schaufenster
-        xx = -4.60 + k*2.20
+        xx = VER-4.60 + k*2.20
         box(xx, -1.70 + K_T/2 + 0.02, 1.95, 1.90, 0.06, 2.10, m["glas"])
         _rahmen(xx, -1.70 + K_T/2 + 0.05, 1.95, 2.06, 2.26, 0.12, m)
-    box(0.44, -1.70 + K_T/2 + 0.02, 1.60, 1.10, 0.06, 2.40, m["glas"])  # Tuer
-    _rahmen(0.44, -1.70 + K_T/2 + 0.06, 1.60, 1.24, 2.54, 0.13, m)
+    box(VER+0.44, -1.70 + K_T/2 + 0.02, 1.60, 1.10, 0.06, 2.40, m["glas"])  # Tuer
+    _rahmen(VER+0.44, -1.70 + K_T/2 + 0.06, 1.60, 1.24, 2.54, 0.13, m)
     for s in (-1, 1):                                                   # Vordach-Stuetzen
         for q in (-1, 1):
-            sx, sy = 1.60 + (s + 1)*2.30, q*2.55
+            sx, sy = VER + 1.60 + (s + 1)*2.30, q*2.55
             box(sx, sy, 0.09, 0.70, 0.70, 0.18, m["beton"])
             flach(zyl(sx, sy, 2.30, 0.16, 4.30, m["stein"], 12))
-    box(3.90, 0, 4.62, 8.20, 6.60, 0.34, m["stein"])                    # Vordach
-    box(3.90, 0, 4.92, 8.00, 6.40, 0.28, m["gruen"])
+    box(VER+3.90, 0, 4.62, 8.20, 6.60, 0.34, m["stein"])                    # Vordach
+    box(VER+3.90, 0, 4.92, 8.00, 6.40, 0.28, m["gruen"])
     for s in (-1, 1):                                                   # Blende
-        box(3.90, s*3.30, 4.62, 8.30, 0.14, 0.46, m["gruen"])
-        box(3.90, s*3.37, 4.62, 7.20, 0.08, 0.24, m["weiss"])
-    box(-0.20, 0, 4.62, 0.14, 6.70, 0.46, m["gruen"])
+        box(VER+3.90, s*3.30, 4.62, 8.30, 0.14, 0.46, m["gruen"])
+        box(VER+3.90, s*3.37, 4.62, 7.20, 0.08, 0.24, m["weiss"])
+    box(VER-0.20, 0, 4.62, 0.14, 6.70, 0.46, m["gruen"])
     for k in range(5):                                                  # Deckenleuchten
-        flach(zyl(1.20 + k*1.35, 0, 4.42, 0.34, 0.08, m["licht"], 14))
+        flach(zyl(VER + 1.20 + k*1.35, 0, 4.42, 0.34, 0.08, m["licht"], 14))
 
 def tankstelle(): _modul("th43_tankstelle", _b_tankstelle)
 
