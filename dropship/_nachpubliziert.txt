@@ -103,3 +103,6 @@ gid://shopify/Product/15500163645825	haarreparatur-maske-612300	Haarreparatur-Ma
 gid://shopify/Product/15500163711361	schwarze-armbanduhr-023296	Schwarze Armbanduhr
 gid://shopify/Product/15500203983233	handgemalte-wandtapete-548146	Handgemalte Wandtapete
 gid://shopify/Product/15500204048769	doppelfunktionales-haarschneider-112064	Doppelfunktionales Haarschneider
+gid://shopify/Product/15500262998401	grosser-outdoor-rucksack-fur-damen-und-herren-862016	Grosser Outdoor-Rucksack für Damen und Herren
+gid://shopify/Product/15500285706625	stainless-steel-duschkopf-460608	Stainless Steel Duschkopf
+gid://shopify/Product/15500285739393	ledertasche-fur-manner-377664	Ledertasche für Männer
