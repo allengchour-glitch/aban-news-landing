@@ -82,3 +82,5 @@ gid://shopify/Product/15446266806657	zugeordnet	1	Lay'sda P5 Wireless Game Contr
 gid://shopify/Product/15446266839425	zugeordnet	6	Metall-Thumbsticks für PS4 Controller
 gid://shopify/Product/15446266904961	zugeordnet	4	Programmierbarer Bluetooth Game Controller
 gid://shopify/Product/15446266937729	zugeordnet	3	Rocker Iron Head für Gamecontroller
+gid://shopify/Product/15446267068801	zugeordnet	5	X3 Game Controller mit Kühlfunktion
+gid://shopify/Product/15446267134337	zugeordnet	1	Kabellose Gamecontroller-Ladestation
