@@ -98,3 +98,4 @@ gid://shopify/Product/15499956945281	landschaftsbild-in-ol-213760	Landschaftsbil
 gid://shopify/Product/15499957010817	checkered-hundeleine-953216	Checkered Hundeleine
 gid://shopify/Product/15500002492801	fritur-fur-frische-pommes-625664	Fritür für frische Pommes
 gid://shopify/Product/15500002591105	corduroy-hemd-604600	Corduroy-Hemd
+gid://shopify/Product/15500113641857	gold-schmuckring-635600	Gold-Schmuckring
