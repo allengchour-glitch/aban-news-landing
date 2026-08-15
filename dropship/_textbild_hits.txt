@@ -6788,3 +6788,7 @@ gid://shopify/Product/15449102352769	58->0	Lässiger Hoodie mit überschnittenen
 gid://shopify/Product/15449464865153	46->3	Drehbare Gewürzregal
 gid://shopify/Product/15449468371329	26->0	Keramik-Schüssel für Katzen
 gid://shopify/Product/15449468928385	10->0	Interaktiver Futternapf
+gid://shopify/Product/15449481216385	13->0	Reise-Zahnbürste
+gid://shopify/Product/15449481249153	24->0	Blackhead-Entferner mit Saugfunktion
+gid://shopify/Product/15449483510145	10->3	Automatische Einhandleine für Kleintiere
+gid://shopify/Product/15449488884097	54->0	Diamant-Augenwimpern
