@@ -2985,3 +2985,13 @@ gid://shopify/Product/15452684550529	waschduese	Hochdruck-Waschdüse für Auto &
 gid://shopify/Product/15452684583297	zitrusduefte	2er Set Multifunktions-Schaumreiniger 100ml Zitrusdüfte Auto
 gid://shopify/Product/15452684943745	sofahuelle	3D-Jacquard-Sofahülle geometrisches Muster minimalistisch
 gid://shopify/Product/15452684976513	aehnliche,gruen	Instagram-ähnliche Couchabdeckung Gelb-Rosa-Grün, katzenklau
+gid://shopify/Product/15452685107585	couchhuelle	Kuschel-Couchhülle aus Baumwollflanell
+gid://shopify/Product/15452685205889	einheitssofaueberwurf	Katzenfestes Einheitssofaüberwurf
+gid://shopify/Product/15452685304193	kuschelsofahuelle	Kuschelsofahülle mit niedlichen Tieren
+gid://shopify/Product/15452685402497	baenkchenkissen	Individuell verpacktes Outdoor-Bänkchenkissen, wasserdicht &
+gid://shopify/Product/15452685468033	pluescho	Winter-Plüscho-Sofakissen Nordisch
+gid://shopify/Product/15452685566337	groessen	Chenille-Bolsterkissen extra lang, verschiedene Grössen
+gid://shopify/Product/15452685795713	gefuellte	Extra gefüllte gequiltete Doppelkissen mit festem Support
+gid://shopify/Product/15452685828481	kuehlung	Sommerdecke mit Kühlung
+gid://shopify/Product/15452686975361	hoehe	Drehbarer Katerliegeplatz mit verstellbarer Höhe
+gid://shopify/Product/15452687008129	mittelgrosse	Gestreifter Camping-Bett für mittelgroße bis grosse Hunde

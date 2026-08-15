@@ -113,3 +113,5 @@ gid://shopify/Product/15500405440897	apricot-sandalen-mit-klettverschluss-611200
 gid://shopify/Product/15500439945601	kanvas-sneaker-618400	Kanvas-Sneaker
 gid://shopify/Product/15500461703553	warme-gurtel-631700	Wärme-Gürtel
 gid://shopify/Product/15500495192449	sommerliches-petite-tragerkleid-630200	Sommerliches Petite Trägerkleid
+gid://shopify/Product/15500511478145	gestreiftes-jacquard-freizeithemd-fur-herren-617300	Gestreiftes Jacquard-Freizeithemd für Herren
+gid://shopify/Product/15500511543681	fensterbank-spielzeug-mit-saugnapfen-fur-katze-7b202c	Fensterbank-Spielzeug mit Saugnäpfen für Katzen
