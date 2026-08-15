@@ -9584,3 +9584,16 @@ gid://shopify/Product/15454089773441	ok
 gid://shopify/Product/15454089707905	ok
 gid://shopify/Product/15454089675137	ok
 gid://shopify/Product/15454089642369	ok
+gid://shopify/Product/15454080303489	ok
+gid://shopify/Product/15454080270721	ok
+gid://shopify/Product/15454080237953	ok
+gid://shopify/Product/15454080205185	ok
+gid://shopify/Product/15454080172417	ok
+gid://shopify/Product/15454080139649	ok
+gid://shopify/Product/15454080106881	ok
+gid://shopify/Product/15454080074113	ok
+gid://shopify/Product/15454080041345	ok
+gid://shopify/Product/15454080008577	ok
+gid://shopify/Product/15454079943041	ok
+gid://shopify/Product/15454079910273	ok
+gid://shopify/Product/15454079877505	ok
