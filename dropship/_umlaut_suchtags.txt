@@ -3915,3 +3915,15 @@ gid://shopify/Product/15454204330369	duennschneider	Fransen- und Dünnschneider 
 gid://shopify/Product/15454204395905	glaetteisen	Elektrisches Glätteisen mit Temperaturregelung
 gid://shopify/Product/15454204461441	glaette	Locken- und Glätte-Styler
 gid://shopify/Product/15454204559745	haarglaetter	Nano-Titanium-Haarglätter
+gid://shopify/Product/15454204625281	foermige	Ei-förmige Armbanduhr für Damen
+gid://shopify/Product/15454204658049	haarglaetter	Infrarot-Haarglätter mit LCD-Display
+gid://shopify/Product/15454218289537	gruen	Elegantes Abendkleid in Grün
+gid://shopify/Product/15454218649985	maennliche	Männliche Casual-Sneaker
+gid://shopify/Product/15454218715521	glaette	Infrarot-Dampfstyler für Locken und Glätte
+gid://shopify/Product/15454218781057	haarglaetter,buerste	Haarglätter Bürste
+gid://shopify/Product/15454218977665	glaetteisen	Kleines Locken- und Glätteisen
+gid://shopify/Product/15454219010433	stoss	Leichte Sicherheitsschuhe mit Anti-Stoß & Anti-Stechschutz
+gid://shopify/Product/15454219075969	haarglaetter,grosse	Automatischer Doppelwirkungs-Haarglätter für große Wellen
+gid://shopify/Product/15454219141505	maedchen	Einheits-Loafer für Mädchen
+gid://shopify/Product/15454219174273	haarglaetter	Herren-Haarglätter mit Langzeit-Styling
+gid://shopify/Product/15454219207041	maedchen	Perlensandalen für Mädchen
