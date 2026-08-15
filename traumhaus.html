@@ -3370,6 +3370,29 @@ function updHeli(dt,now){var h=window._heli;if(!h)return;
   h.mesh.position.set(Math.cos(h.ang)*r,32,Math.sin(h.ang)*r);
   h.mesh.rotation.y=-h.ang-Math.PI/2; // Nase voran
   h.rotor.rotation.y+=dt*30;h.heckrotor.rotation.x+=dt*40;}
+/* 🚌 Der Landbus pendelt auf einem Zubringer und haelt am Wartehaeuschen.
+
+   Er haelt NUR stadtwaerts: das Haeuschen steht auf der +q-Seite des Strahls,
+   und weil die Spur als „rechts der Fahrtrichtung" gerechnet wird, faehrt der
+   Bus genau dann dort, wenn er nach innen unterwegs ist. Auf dem Hinweg liegt
+   er auf der Gegenspur — dort waere ein Halt am Haeuschen falsch herum. */
+function updLandbus(dt){
+  var LB=window._landbus; if(!LB||!LB.length)return;
+  for(var i=0;i<LB.length;i++){
+    var b=LB[i];
+    if(b.wartet>0){b.wartet-=dt;}
+    else{
+      var vor=b.pos;
+      b.pos+=b.rdir*9.0*dt;
+      if(b.pos>RAD_R1){b.pos=RAD_R1;b.rdir=-1;}
+      if(b.pos<RAD_R0){b.pos=RAD_R0;b.rdir= 1;}
+      if(b.rdir<0&&vor>=132&&b.pos<132){b.pos=132;b.wartet=6;}
+    }
+    var aa=b.gr*Math.PI/180, ca=Math.cos(aa), sa=Math.sin(aa), off=-b.rdir*2.6;
+    b.w.position.set(ca*b.pos+(-sa)*off, 0, sa*b.pos+ca*off);
+    b.w.rotation.y=Math.atan2(-sa*b.rdir, ca*b.rdir);
+  }
+}
 function updVerkehr(dt){
   var nn=window._dorfNacht?1:0; // Nacht -> Fahrlicht an
   verkehr.forEach(function(v){
@@ -4052,6 +4075,17 @@ setTimeout(function baueGebaeude(){
             bau("th39_pylon.glb",0.76,p[0],0,p[1],0,false,null,true);
           }
         })();
+        /* 🚌 LANDBUS. Charge 39 hat zwei Wartehaeuschen an die Zubringer 60 und
+           240 gestellt — und es hielt nichts daran. Jetzt pendelt je ein Bus
+           aus Charge 40 auf diesen beiden Zubringern und haelt auf dem Rueckweg
+           am Haeuschen. Die Fahrt selbst laeuft in updLandbus(), damit sie im
+           Bildtakt haengt und nicht an einem Timer. */
+        window._landbus=[];
+        [60,240].forEach(function(gr,i){
+          bau("th40_bus.glb",3.69,0,0,0,0,false,function(w){
+            window._landbus.push({w:w,gr:gr,pos:RAD_R0+18+i*26,rdir:1,wartet:0});
+          },true);
+        });
         },0);
       })();
       window._landstrasse=R;
@@ -8875,7 +8909,7 @@ function loop(now){
     updHund(dt,now);
     if(fahren){autoFahr(dt);}
     updGrow(dt);updBeete(dt);if(!fahren)updWork(dt);updAuto(dt);updCrime(dt);updNpcs(dt,now);updPolizei(dt,now);if(!arbeiten&&!crime.on)updLove(dt);
-    updHearts(dt);updPlopps(dt);updWetter(dt);updVerkehr(dt);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);updVerstecken(dt);updFest(dt,now);updImmo(dt);
+    updHearts(dt);updPlopps(dt);updWetter(dt);updVerkehr(dt);updLandbus(dt);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);updVerstecken(dt);updFest(dt,now);updImmo(dt);
     document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("minimap").style.display=(running&&!buildMode)?"block":"none";
     layoutLinkeSpalte();
