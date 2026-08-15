@@ -99,3 +99,7 @@ gid://shopify/Product/15499957010817	checkered-hundeleine-953216	Checkered Hunde
 gid://shopify/Product/15500002492801	fritur-fur-frische-pommes-625664	Fritür für frische Pommes
 gid://shopify/Product/15500002591105	corduroy-hemd-604600	Corduroy-Hemd
 gid://shopify/Product/15500113641857	gold-schmuckring-635600	Gold-Schmuckring
+gid://shopify/Product/15500163645825	haarreparatur-maske-612300	Haarreparatur-Maske
+gid://shopify/Product/15500163711361	schwarze-armbanduhr-023296	Schwarze Armbanduhr
+gid://shopify/Product/15500203983233	handgemalte-wandtapete-548146	Handgemalte Wandtapete
+gid://shopify/Product/15500204048769	doppelfunktionales-haarschneider-112064	Doppelfunktionales Haarschneider

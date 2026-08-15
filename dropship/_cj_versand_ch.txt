@@ -748,3 +748,5 @@ gid://shopify/Product/15500107776385	ok	Cement Grau Rennwagen Baukasten
 gid://shopify/Product/15499951636865	nicht-versendbar	Regenschirmablage
 gid://shopify/Product/15499900780929	ok	Reitpeitschenhose
 gid://shopify/Product/15500196675969	nicht-versendbar	Holz-Schneidebrett
+gid://shopify/Product/15500163711361	ok	Schwarze Armbanduhr
+gid://shopify/Product/15500194513281	ok	Hohl-Edelstahl-Armbanduhr
