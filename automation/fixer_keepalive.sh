@@ -261,6 +261,22 @@ while true; do
       echo "$(date -u +%H:%M) versandschwelle_rabatt geprüft"
     fi
   fi
+  # 🎯 PRIORITÄTSFENSTER 16:00–17:00 UTC (15.08.2026, teuer gelernt): Das CJ-Punktebudget
+  # resetted um 16:00 UTC, und die vier Grind-Runner frassen es binnen Minuten weg — die
+  # Prio-Jobs (Schulstart-Import, Variantenbilder) standen dadurch TAGELANG auf PAUSE, obwohl
+  # sie jeden Durchlauf brav neu starteten. Im Fenster: Runner-Wrapper beenden (laufende
+  # Node-Kinder klingen aus, das kostet nur einen Batch) und NICHT neu starten; der N-Block
+  # oben startet die Prio-Jobs im 2-Min-Takt, die dann konkurrenzlos ziehen. Ab 17:00 läuft
+  # der Grind normal weiter. Fenster entfällt, sobald beide Prio-Logs FERTIG melden.
+  PRIO_OFFEN=0
+  grep -q "^FERTIG" /tmp/schulstart_import.log 2>/dev/null || PRIO_OFFEN=1
+  grep -q "^FERTIG" /tmp/cj_variantenbild.log 2>/dev/null || PRIO_OFFEN=1
+  if [ "$(date -u +%H)" = "16" ] && [ "$PRIO_OFFEN" = "1" ]; then
+    touch /tmp/cj_prio_fenster
+    pkill -f "cj_runner_template.sh" 2>/dev/null
+    echo "$(date -u +%H:%M) Prio-Fenster: Grind-Runner pausiert (Punkte den Prio-Jobs)"
+  else
+  rm -f /tmp/cj_prio_fenster
   # CJ-Grind-Runner mitlaufen lassen (Turn-Reaping killt sie sonst jede Runde)
   # ⚠️ MIT SPERRE STARTEN (12.08.2026). Der pgrep-Test allein genügt nicht: `engines_up.sh`
   # prüft und startet dieselben Runner, und wer zwischen fremder Prüfung und fremdem Start
@@ -274,5 +290,6 @@ while true; do
                     exec bash /tmp/$R.sh" >> /tmp/$R.log 2>&1 9>&- &
     echo "$(date -u +%H:%M) restart $R"; sleep 3
   done
+  fi
   sleep 120
 done

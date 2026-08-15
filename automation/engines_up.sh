@@ -54,10 +54,14 @@ start() {    # $1 = Skriptpfad (wie er in ps steht), $2 = Argument, $3 = abweich
   sleep 3
 }
 
+# Prio-Fenster (16:00–17:00 UTC, gesetzt vom Aufseher): Grind-Runner NICHT starten,
+# solange die Flagge liegt — sonst frässen sie den Prio-Jobs das frische Punktebudget weg.
+if [ ! -f /tmp/cj_prio_fenster ]; then
 for R in cj_runner2 cj_runner3 cj_runner4 cj_runner5; do
   # Erkannt wird die Vorlage samt Argument, gestartet der Wrapper — siehe Erklärung in start().
   start /tmp/cj_runner_template.sh "$R" "/tmp/$R.sh"
 done
+fi
 start automation/cj_queue_runner.sh
 start /tmp/autocommit.sh
 start automation/reel_engine_runner.sh

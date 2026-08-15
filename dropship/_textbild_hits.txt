@@ -6799,3 +6799,4 @@ gid://shopify/Product/15450018087297	34->0	Schwarze Leder-Pumps mit Blockabsatz
 gid://shopify/Product/15450018283905	41->0	Rote Hochzeitsschuhe mit Blockabsatz
 gid://shopify/Product/15450061767041	184->0	Atmungsaktive Kletterschuhe
 gid://shopify/Product/15450068189569	24->0	Wasserdichte Wanderschuhe
+gid://shopify/Product/15450258997633	36->0	Ultraleichter Lenkradbezug rutschfest atmungsaktiv abriebfes
