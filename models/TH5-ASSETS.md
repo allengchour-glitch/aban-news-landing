@@ -1484,6 +1484,44 @@ Dieselbe Klasse von Fehler steckte im Tor: der unterste waagrechte Netzstrang la
 `z = 0` und ragte mit seinem Radius darunter — bei Rückwand und Seitennetzen gleichermaßen.
 
 ---
+## 2e. Charge 45 — HAFEN UND STRAND (`models/th45_*.glb`)
+
+Im Westen liegt seit langem ein Meer (200 × 340 bei x = −232), ein Sandstreifen bei
+x = −128, eine Eisenbahnbrücke und ein Wendeplatz — aber nichts, was eine Küste ausmacht:
+keine Kaimauer, kein Boot, kein Leuchtturm, kein Strandkorb. **340 m Ufer ohne einen
+einzigen Gegenstand.**
+
+| Datei | Maße (B×T×H) | Dreiecke | Inhalt |
+|---|---|---|---|
+| `th45_kaimauer.glb` | 8,00 × 3,53 × 2,62 | 2 504 | Kranzstein, Reibhölzer, Reifenfender, zwei Poller, Steigleiter, **Raster x += 8,00** |
+| `th45_hafenkran.glb` | 8,00 × 9,91 × 14,37 | 4 892 | Portal auf Schienen, Kranbrücke, Ausleger, Maschinenhaus, Gegengewicht, Haken |
+| `th45_fischerboot.glb` | 9,00 × 3,14 × 5,20 | 3 104 | Rumpf aus `keil_y`, Ruderhaus, Mast, Netztrommel, Fender · **Tiefgang 0,55** |
+| `th45_segelboot.glb` | 6,40 × 2,05 × 8,29 | 1 824 | Rumpf, Mast, Großsegel und Fock, Wanten · **Tiefgang 0,40** |
+| `th45_leuchtturm.glb` | 6,00 × 6,00 × 19,44 | 5 964 | Drehkörper-Schaft mit roten Bändern, Galerie, Laternenhaus, Kuppel |
+| `th45_container.glb` | 6,25 × 2,52 × 7,83 | 16 368 | drei Container versetzt gestapelt, Sicken, Eckbeschläge |
+| `th45_strandkorb.glb` | 3,50 × 2,28 × 2,61 | 2 584 | Haube aus `keil_y`, Sonnenschirm, Handtuch |
+| `th45_rettungsturm.glb` | 3,32 × 2,61 × 4,09 | 4 612 | Stelzen, Kanzel zur Wasserseite offen, Leiter, Rettungsring |
+| `th45_hafen.glb` | 60,00 × 43,00 × 19,99 | 70 764 | **Maßstabs-Test**, nur aus den Teilen oben |
+
+Generator: `tools/assets/mk_th45_hafen.py` · Werkzeug: `tools/assets/th_werkzeug.py`.
+Alle neun: zmin = 0,000.
+
+> ⚓ **TIEFGANG — die einzige Zahl dieser Ladung, die man beim Einbau braucht.**
+> Die Boote stehen konventionsgemäß mit `zmin = 0` auf dem Boden, und `bau()` rechnet
+> damit. Beim Platzieren müssen sie um ihren Tiefgang **gesenkt** werden, sonst schwimmen
+> sie obenauf: Fischerboot **0,55**, Segelboot **0,40**. Die Zahl steht im Dateikopf, im
+> Docstring des Bauteils und hier.
+>
+> Im Ensemble ist es andersherum gelöst: dort liegt nicht das Boot tiefer, sondern **alles
+> andere um 0,55 höher**. Sieht gleich aus, hält `zmin = 0` ein.
+
+> ⚠️ **Gekippte Körper brauchen Aufschlag — zum dritten Mal.** Die Stelzen des
+> Rettungsturms sind um 0,06 nach zwei Achsen geneigt; ihre senkrechte Ausdehnung wächst
+> dadurch von 2,50 auf 2,51 und die Unterkante landete bei −0,105. Dieselbe Rechnung wie
+> bei den Bakenstreifen in Charge 39 und den Tischtennisfüßen in Charge 42:
+> `h·cos a + b·sin a`, und dann von der Mitte aus prüfen.
+
+---
 
 ---
 ## 🎡 Freizeitpark-Quartier in `traumhaus.html` — fertiger Einbau
