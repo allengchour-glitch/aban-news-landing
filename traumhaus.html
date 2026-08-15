@@ -942,6 +942,12 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
      Mittelpunkt liegt 424 m vom Zentrum, damit innerhalb der Kamera-Fernebene
      (600); weiter weg waere er aus der Stadt gar nicht zu sehen. */
   window.GBERG={x:60,z:-420,rad:200,hoch:170,exp:1.5,grat:0.7};
+  /* ⚽ Der Sportplatz (Charge 44) liegt bei r 143…186 — also MITTEN im
+     Waldguertel (r 150…278). Beim ersten Einbau stand ein Fichtenwald auf dem
+     Spielfeld. Baeume und Felder haben keine Kollider, eine Freiflaechenkarte
+     aus `inSolid` sieht sie also nicht; die Flaeche muss denselben Weg gehen wie
+     die Zubringer und sich vorher ANMELDEN. */
+  window.SPORTFELD={x:53,z:155,w:56,d:42};
   window.gelaendeH=function(x,z){
     /* ⚠️ Erste Fassung war H = hoch*(1-r/rad)^exp — also rotationssymmetrisch,
        und damit exakt das, was als „Kegel" bemaengelt wurde. Die Form muss aus
@@ -4175,6 +4181,8 @@ setTimeout(function baueGebaeude(){
            Im Spiel sah das aus, als fuehre der Wagen auf einer Markierung
            mitten durch die Wiese. Gefunden, weil ich nach dem Einbau des
            Zubringer-Verkehrs hingeschaut habe; die Masse zeigen so etwas nie. */
+        var SF2=window.SPORTFELD;                                 // nicht auf den Sportplatz
+        if(SF2&&Math.abs(x-SF2.x)<SF2.w/2+rad2&&Math.abs(z-SF2.z)<SF2.d/2+rad2)return false;
         var ZB=window._zubringer||[];
         for(var zq=0;zq<ZB.length;zq++){
           var za=ZB[zq]*Math.PI/180, zc=Math.cos(za), zs=Math.sin(za);
@@ -4246,6 +4254,8 @@ setTimeout(function baueGebaeude(){
            Spiel wuchsen Fichten mitten auf der Fahrbahn. Ein Baum ueberdeckt
            die Strasse nicht wie ein Feld, er steht einfach darauf; auffallen
            tut es genauso. */
+        var SF=window.SPORTFELD;                                // nicht auf den Sportplatz
+        if(SF&&Math.abs(wx-SF.x)<SF.w/2&&Math.abs(wz-SF.z)<SF.d/2)continue;
         var ZB2=window._zubringer||[], aufZub=false;
         for(var zq2=0;zq2<ZB2.length;zq2++){
           var za2=ZB2[zq2]*Math.PI/180, zc2=Math.cos(za2), zs2=Math.sin(za2);
