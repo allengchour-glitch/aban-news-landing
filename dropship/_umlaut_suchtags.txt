@@ -2596,3 +2596,36 @@ gid://shopify/Product/15450763788673	waermekissen	Kirschkerne für Wärmekissen
 gid://shopify/Product/15450764870017	aermellose	Elegante ärmellose V-Neck Bluse
 gid://shopify/Product/15450772570497	katzenhoehle	Katzenhöhle mit Luxus-Bett aus Seegras
 gid://shopify/Product/15450774307201	moebel	Katzenklo-Möbel aus Holzwerkstoff 42x
+gid://shopify/Product/15450774569345	sisalsaeulen	Katzenkratzbaum mit Sisalsäulen, 65 cm
+gid://shopify/Product/15450776994177	stroemungspumpe	Strömungspumpe 12000L/H für Aquarien
+gid://shopify/Product/15450777551233	zahnbuerste	Elektrische Zahnbürste
+gid://shopify/Product/15450777846145	zaehne	Water Flosser für saubere Zähne
+gid://shopify/Product/15450778304897	koerper	WUWUVISTA Waxing Kit für Gesicht und Körper
+gid://shopify/Product/15450780041601	brauenfaerbe	Wimpern- & Brauenfärbe- und Lifting-Kit
+gid://shopify/Product/15450780762497	notfaelle	391-teiliges Erste-Hilfe-Set für Notfälle
+gid://shopify/Product/15450781680001	zahnbuerste	Elektrische Zahnbürste für Kinder
+gid://shopify/Product/15450781843841	handtuchstaender	Handtuchständer Aluminium 47x280 cm
+gid://shopify/Product/15450782400897	schlankheitsgeraet	Elektrisches Schlankheitsgerät mit Lichttherapie
+gid://shopify/Product/15450782892417	fahrradstaender	Fahrradständer für 2 Velos, freistehend, Stahl
+gid://shopify/Product/15450783089025	rutenstaender	Rutenständer für 16 Angelruten, Schwarz
+gid://shopify/Product/15450783351169	baelle	Tischfussball Bälle 10 Stk. 32 mm ABS
+gid://shopify/Product/15450783744385	stueck	Mausefallen-Set, 4 Stück
+gid://shopify/Product/15450828636545	geraete	3-in-1 Wireless Ladestation für mehrere Geräte
+gid://shopify/Product/15450828767617	hundebuerste	Katzen- und Hundebürste mit Massagefunktion
+gid://shopify/Product/15450828800385	huelle	E-Ink Smartphone Hülle mit personalisierbarem Screen
+gid://shopify/Product/15450829062529	traegerrock	Gestreiftes Langarm-Top & Trägerrock-Set
+gid://shopify/Product/15450829095297	schluesselanhaenger	Fidget Spinner Schlüsselanhänger – der Stresskiller
+gid://shopify/Product/15450829226369	staender	Magnetisches Leder Kartenetui mit Ständer
+gid://shopify/Product/15450829259137	katzenbuerste	Selbstreinigende Katzenbürste aus Stahl
+gid://shopify/Product/15450829291905	pluesch	Baby Plüsch-Overall mit Kapuze
+gid://shopify/Product/15450829357441	ladegeraet	5-in-1 Magnetisches Wireless Ladegerät mit Nachtlicht
+gid://shopify/Product/15450829488513	glaeserreiniger,kueche	Tassen- und Gläserreiniger für die Küche
+gid://shopify/Product/15450829521281	fruechte,gemuese	Kabelloser Mini-Entsafter für Früchte & Gemüse
+gid://shopify/Product/15450829586817	oelregulierend	Mattierendes Concealer Make-up, ölregulierend
+gid://shopify/Product/15450829685121	ruecken,schluesselbein	Haltungs-Korrektor für Rücken und Schlüsselbein
+gid://shopify/Product/15450829881729	kuehlende	Kühlende Liegematte für Haustiere
+gid://shopify/Product/15450829914497	glaettbuerste	Kabellose 2-in-1 Glättbürste für schnelles Styling
+gid://shopify/Product/15450830406017	kopfhoerer	Kopfhörer mit Mikrofon
+gid://shopify/Product/15450830537089	saeulenlautsprecher	Bluetooth-Säulenlautsprecher mit LED-Licht
+gid://shopify/Product/15450830635393	anhaenger	Brief-Halskette mit Umschlag-Anhänger
+gid://shopify/Product/15450830668161	foehn,buerste	NEX 2-in-1 Fellpfleger: Föhn & Bürste für Haustiere
