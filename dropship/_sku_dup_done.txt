@@ -609,3 +609,20 @@ gid://shopify/Product/15500342198657	CJ-1558045916123377664	Leder-Schultertasche
 gid://shopify/Product/15500367430017	CJ-CJDS283076001AZ	Farbkombinations-Hemd
 gid://shopify/Product/15500367102337	CJ-1461227854921601024	Multifunktionale automatische Mini-Pfannkuchenpfanne
 gid://shopify/Product/15500401967489	CJ-1771451788365926400	Kompakte Nachttischlampe mit integrierter 5‑Loch‑Steckdose und Type‑C
+gid://shopify/Product/15500491620737	CJ-1552526803028422656	Multifunktionaler Damen Rucksack
+gid://shopify/Product/15500491751809	CJ-1552526803028422656	Multifunktionaler leichter Rucksack für Damen
+gid://shopify/Product/15500455182721	CJ-CJNS241266501AZ	Low-Top Canvas Sneaker
+gid://shopify/Product/15500484542849	CJ-1440142361563893760	Medium Hundeleine für Golden Retriever, 1,5 m
+gid://shopify/Product/15500491555201	CJ-1554358443836977152	Schultertasche mit USB-Ladung
+gid://shopify/Product/15500492046721	CJ-1552224054147559424	Harajuku Rucksack mit grosser Kapazität
+gid://shopify/Product/15500492243329	CJ-1551198369622798336	Wasserdichter Damen-Rucksack für den Alltag
+gid://shopify/Product/15500492767617	CJ-1549674765433188352	Japanischer Freizeit-Rucksack für Herren
+gid://shopify/Product/15500492931457	CJ-1549587513126432768	Dinosaurier Rucksack mit Mäppchen
+gid://shopify/Product/15500493095297	CJ-1548512387639291904	Business Rucksack für Herren, schlank
+gid://shopify/Product/15500493685121	CJ-1547135445732175872	Outing Travel Outdoor Mountaineering Bag USB Charging
+gid://shopify/Product/15500493881729	CJ-1546833643463782400	Schlanke Umhängetasche für Herren
+gid://shopify/Product/15500494897537	CJ-1458008634582765568	Elektrischer Multifunktions-Eierschüttler
+gid://shopify/Product/15500506694017	CJ-CJLY296266601AZ	Leichter Sommerkleid
+gid://shopify/Product/15500506759553	CJ-1456932616858112000	Großer Edelstahl-Kochtopf
+gid://shopify/Product/15500506857857	CJ-1456502573585534976	Japanischer Tee-Einmachtopf
+gid://shopify/Product/15500507021697	CJ-1454981533952774144	Kleine Druckkochanlage
