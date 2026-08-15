@@ -6795,3 +6795,5 @@ gid://shopify/Product/15449488884097	54->0	Diamant-Augenwimpern
 gid://shopify/Product/15449569460609	62->0	Blumen-Kardigan für Damen
 gid://shopify/Product/15449571361153	28->1	Damen Cuff Washed Wide-Leg Crop-Jeans
 gid://shopify/Product/15449596985729	23->0	Personalisierte Magnetkugel-Uhr
+gid://shopify/Product/15450018087297	34->0	Schwarze Leder-Pumps mit Blockabsatz
+gid://shopify/Product/15450018283905	41->0	Rote Hochzeitsschuhe mit Blockabsatz
