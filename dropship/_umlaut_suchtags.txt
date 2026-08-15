@@ -1937,3 +1937,16 @@ gid://shopify/Product/15449174704513	tuerfolie	Selbstklebende Türfolie, 2 Stk.,
 gid://shopify/Product/15449174835585	vorhaengen	Fensterstore mit Vorhängen, Silber
 gid://shopify/Product/15449175032193	verdunkelungsvorhaenge,oesen,stueck	Verdunkelungsvorhänge mit Ösen, 2 Stück
 gid://shopify/Product/15449175097729	bettwaesche,kissenbezuegen	Bettwäsche-Set mit Fixleintuch und Kissenbezügen
+gid://shopify/Product/15449175130497	kuehlgel	Memory Foam Kühlgel Matratzenauflage
+gid://shopify/Product/15449175163265	kuehlende	Kühlende Memory Foam Matratzenauflage
+gid://shopify/Product/15449175523713	bettwaesche	Blumen-Bettwäsche-Set aus Baumwolle, 4-teilig
+gid://shopify/Product/15449175622017	kuehles	Kühles Eisseide-Sommerquilt für heisse Tage
+gid://shopify/Product/15449175687553	foehn	3-in-1 Gradient Föhn
+gid://shopify/Product/15449175916929	geraet	Faltbares IPL-Gerät für strahlende Haut
+gid://shopify/Product/15449175949697	haarglaetter	Platinum 3-in-1 Haarglätter
+gid://shopify/Product/15449176015233	gesichtsreinigungsbuerste	Elektrische Gesichtsreinigungsbürste aus Silikon
+gid://shopify/Product/15449176277377	gesichtsreinigungsbuerste,waerme	Silikon-Gesichtsreinigungsbürste mit Vibration & Wärme
+gid://shopify/Product/15449176310145	gesichtsreinigungsbuerste	Warm Sensation Gesichtsreinigungsbürste
+gid://shopify/Product/15449176342913	gesichtsreinigungsbuerste	Elektrische Silikon-Gesichtsreinigungsbürste
+gid://shopify/Product/15449176408449	reinigungsgeraet	Handliches Haar-Reinigungsgerät
+gid://shopify/Product/15449176572289	praezision,oelfrisuren	Retro Haarschneider – Präzision für Ölfrisuren & Gravuren
