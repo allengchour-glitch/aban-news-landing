@@ -6834,3 +6834,4 @@ gid://shopify/Product/15452601057665	8->1	Nagelfräser · Portables Poliergerät
 gid://shopify/Product/15452602728833	9->3	Retro Sonnenbrille
 gid://shopify/Product/15452675506561	35->0	Formende Nagelhose
 gid://shopify/Product/15452683239809	17->0	Sicherheitsgurt Schulterpolster Schutz
+gid://shopify/Product/15452688843137	15->0	Retro Streifen-Langrock mit Polo-Kragen & Seitenschlitz
