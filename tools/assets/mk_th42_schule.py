@@ -232,34 +232,39 @@ def fahrradstaender(): _modul("th42_fahrradstaender", _b_fahrradstaender, 0.006)
 # ================================================================ 4) Basketballkorb
 def _b_basketballkorb():
     """Basketballanlage, 1,90 x 1,55 x 3,90 m — Ausleger, Brett, Ring, Netz.
+    Brettseite auf +y.
 
     ⚠️ Der Mast steht 1,20 m HINTER dem Brett und traegt es ueber einen Ausleger.
     Ein Brett direkt am Mast heisst: wer von vorn zum Korb geht, laeuft in den
-    Mast. Genau daran erkennt man einen echten Korb von einem gebastelten."""
+    Mast. Genau daran erkennt man einen echten Korb von einem gebastelten.
+
+    ⚠️ ZWEI Ausrichtungsfehler steckten hier drin, und beide zeigte erst das Bild:
+    (1) Brett und Ring lagen auf -y, also auf der ABGEWANDTEN Seite — die Datei
+        schreibt oben selbst „Schauseite auf +y", und auf dem Kontaktbogen sah
+        man nur die Rueckwand des Bretts.
+    (2) Der Ring stand SENKRECHT. `zyl(rot=(pi/2,0,0))` kippt die Zylinderachse
+        von z auf y — richtig fuer ein Rad, falsch fuer einen Korbring: der
+        haengt waagrecht, seine Achse bleibt auf z. Und ein Ring ist ein ROHR im
+        Kreis, keine Scheibe, sonst ist es ein Deckel."""
     m = _mats()
-    flach(zyl(0, 0.60, 1.70, 0.085, 3.40, m["stahl"], 12))
-    flach(zyl(0, 0.60, 0.08, 0.34, 0.16, m["beton"], 14))
-    strebe((0, 0.56, 3.30), (0, -0.34, 3.36), 0.07, m["stahl"])         # Ausleger
-    strebe((0, 0.56, 2.60), (0, -0.28, 3.24), 0.055, m["stahl"])        # Schraegzug
-    box(0, -0.40, 3.20, 1.80, 0.07, 1.05, m["stein"])                   # Brett
-    _rahmen(0, -0.44, 3.20, 1.86, 1.11, 0.07, m, "stahl")
-    box(0, -0.45, 3.08, 0.62, 0.05, 0.44, m["rot"])                     # Zielfeld
-    box(0, -0.46, 3.08, 0.52, 0.05, 0.34, m["stein"])
-    # ⚠️ Der Ring stand SENKRECHT. `zyl(rot=(pi/2,0,0))` kippt die Zylinderachse
-    # von z auf y — richtig fuer ein Rad, falsch fuer einen Korbring: der haengt
-    # waagrecht, seine Achse bleibt auf z. Als senkrechte Scheibe vor dem Brett
-    # war er im Render gar nicht zu erkennen. Und ein Ring ist ein ROHR im Kreis,
-    # keine Scheibe — sonst ist es ein Deckel.
-    _rp = [(math.cos(TAU*k/12)*0.225, -0.72 + math.sin(TAU*k/12)*0.225, 2.92)
+    flach(zyl(0, -0.60, 1.70, 0.085, 3.40, m["stahl"], 12))
+    flach(zyl(0, -0.60, 0.08, 0.34, 0.16, m["beton"], 14))
+    strebe((0, -0.56, 3.30), (0, 0.34, 3.36), 0.07, m["stahl"])         # Ausleger
+    strebe((0, -0.56, 2.60), (0, 0.28, 3.24), 0.055, m["stahl"])        # Schraegzug
+    box(0, 0.40, 3.20, 1.80, 0.07, 1.05, m["stein"])                    # Brett
+    _rahmen(0, 0.44, 3.20, 1.86, 1.11, 0.07, m, "stahl")
+    box(0, 0.45, 3.08, 0.62, 0.05, 0.44, m["rot"])                      # Zielfeld
+    box(0, 0.46, 3.08, 0.52, 0.05, 0.34, m["stein"])
+    _rp = [(math.cos(TAU*k/12)*0.225, 0.72 + math.sin(TAU*k/12)*0.225, 2.92)
            for k in range(13)]
     rohr(_rp, 0.019, m["rot"], 6, True, "Korbring")
-    box(0, -0.52, 2.92, 0.14, 0.30, 0.05, m["rot"])                     # Ringtraeger
+    box(0, 0.52, 2.92, 0.14, 0.30, 0.05, m["rot"])                      # Ringtraeger
     for k in range(10):                                                 # Netz
         a = TAU*k/10
-        nz = rohr([(math.cos(a)*0.235, -0.72 + math.sin(a)*0.235, 2.90),
-                   (math.cos(a)*0.175, -0.72 + math.sin(a)*0.175, 2.62),
-                   (math.cos(a)*0.130, -0.72 + math.sin(a)*0.130, 2.45)],
-                  0.012, m["stein"], 5, True, "Netz")
+        rohr([(math.cos(a)*0.225, 0.72 + math.sin(a)*0.225, 2.90),
+              (math.cos(a)*0.170, 0.72 + math.sin(a)*0.170, 2.62),
+              (math.cos(a)*0.125, 0.72 + math.sin(a)*0.125, 2.45)],
+             0.012, m["stein"], 5, True, "Netz")
 
 def basketballkorb(): _modul("th42_basketballkorb", _b_basketballkorb, 0.005)
 
