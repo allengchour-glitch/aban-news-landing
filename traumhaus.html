@@ -3268,8 +3268,24 @@ function updHafen(dt,now){
   if(B) for(var i=0;i<B.length;i++){
     var b=B[i], t=now*0.001;
     b.w.position.y=b.y0+Math.sin(t*b.per+b.ph)*0.07;
-    b.w.rotation.z=Math.sin(t*b.per*0.7+b.ph)*0.018;      /* Rollen */
     b.w.rotation.x=Math.cos(t*b.per*0.5+b.ph)*0.012;      /* Stampfen */
+    if(!b.kurs){                                          /* liegt fest */
+      b.w.rotation.z=Math.sin(t*b.per*0.7+b.ph)*0.018;
+      continue;
+    }
+    /* ⚠️ Der Bug liegt auf +x. Fuer Fahrt nach +z folgt aus der Regel
+       „Front (cos ry, -sin ry)" gerade ry = -pi/2, fuer -z entsprechend +pi/2.
+       Am Ende wird gewendet, nicht umgeblendet — beide Enden liegen im Bild. */
+    b.pos+=b.dir*b.kurs.sp*dt;
+    if(b.pos>b.kurs.bis){b.pos=b.kurs.bis;b.dir=-1;}
+    if(b.pos<b.kurs.von){b.pos=b.kurs.von;b.dir= 1;}
+    b.w.position.z=b.pos;
+    b.w.rotation.y=b.dir>0?-Math.PI/2:Math.PI/2;
+    /* Krengung: das Boot legt sich in den Wind, und beim Wenden wechselt die
+       Seite mit. Ohne sie sieht ein Segler aus wie ein Brett auf Schienen. */
+    var soll=b.dir*0.11;
+    b.krg=(b.krg===undefined?soll:b.krg+(soll-b.krg)*Math.min(1,dt*0.8));
+    b.w.rotation.z=b.krg+Math.sin(t*b.per*0.7+b.ph)*0.012;
   }
   var K=window._hafenkran;
   if(K&&K.userData.katze===undefined){
@@ -5654,11 +5670,16 @@ setTimeout(function baueGebaeude(){
        deshalb unsichtbar, obwohl jede Messung ihn korrekt meldete. Alles, was
        sich spaeter bewegt, gehoert nie in diesen Index. */
     window._boote=[];
-    [["th45_fischerboot.glb",5.20,KX-7.5,-0.59,12,0.9,0.55],
-     ["th45_segelboot.glb", 8.29,KX-7.0,-0.44,34,1.3,0.85]].forEach(function(b9,i9){
+    /* Das Fischerboot liegt am Kai fest, das Segelboot KREUZT vor der Kueste.
+       Ein Boot, das sich nur wiegt, faehrt nicht — und ein Hafen, in dem sich
+       nichts fortbewegt, ist ein Standbild mit Wellengang. */
+    [["th45_fischerboot.glb",5.20,KX-7.5,-0.59,12,0.9,null],
+     ["th45_segelboot.glb", 8.29,KX-18.0,-0.44,10,1.3,{von:-70,bis:78,sp:3.4}]
+    ].forEach(function(b9,i9){
       bau(b9[0],b9[1],b9[2],b9[3],b9[4],Math.PI/2,false,function(w){
         w.userData.fest=true; w.userData.nieAusblenden=true; w._bewegt=true;
-        window._boote.push({w:w,y0:b9[3],per:b9[5],amp:b9[6],ph:i9*2.1});},true);
+        window._boote.push({w:w,y0:b9[3],x0:b9[2],per:b9[5],ph:i9*2.1,
+                            kurs:b9[6],pos:b9[4],dir:1});},true);
     });
     bau("th45_leuchtturm.glb",19.44,KX+2.5,0,58,0,false,function(w){
       w.userData.fest=true; window._leuchtturm=w;},true);
