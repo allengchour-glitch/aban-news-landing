@@ -115,7 +115,7 @@ while true; do
   # Alle drei sind resumable (eigenes Ledger je Skript), ein Neustart setzt also fort statt
   # von vorn zu beginnen. Die Sperre verhindert, dass zwei Kopien dasselbe Ledger schreiben.
   # ⚠️ Ohne `setsid` sterben sie mit dem Turn — genau daran sind sie heute gescheitert.
-  for L in produktdetails_vereinen preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text; do
+  for L in produktdetails_vereinen preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags; do
     fehlt "$REPO/automation/$L.py" && continue
     grep -q "^FERTIG" "/tmp/$L.log" 2>/dev/null && continue      # durchgelaufen
     # ⚠️ NICHT `pgrep -f`. Steht das Suchmuster in der eigenen Kommandozeile, findet pgrep
@@ -130,6 +130,7 @@ while true; do
     # image» meldet. /tmp/ocr_export_keep.jsonl wird aus einem Bulk-Export gebaut.
     EXP=""; [ "$L" = hauptbild_ohne_text ] && [ -f /tmp/ocr_export_keep.jsonl ] \
       && EXP="EXPORT=/tmp/ocr_export_keep.jsonl"
+    [ "$L" = umlaut_suchtags ] && [ -f /tmp/opts_keep.jsonl ] && EXP="QUELLE=/tmp/opts_keep.jsonl"
     ( cd "$REPO" && setsid bash -c \
         "exec 9>/tmp/lock_$L.lock; flock -n 9 || exit 0; $EXP exec python3 automation/$L.py" \
         >> "/tmp/$L.log" 2>&1 9>&- & )

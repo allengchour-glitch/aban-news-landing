@@ -1,0 +1,35 @@
+gid://shopify/Product/15396404855169	fitnessbaender	Resistance Bands Set 5-teilig · Fitnessbänder Heim-Training
+gid://shopify/Product/15397218320769	laetzchen,spuelmaschinenfest	Silikon Baby-Lätzchen 5er-Set · BPA-frei, Spülmaschinenfest
+gid://shopify/Product/15406765801857	kopfhoerer	Tech Hero Geschenkbox – Smartwatch Pro + ANC-Kopfhörer + 3-i
+gid://shopify/Product/15408458563969	aetherische	Premium Home Wellness Bundle · Diffuser + 6 ätherische Öle +
+gid://shopify/Product/15411565429121	gemueseschneider	Elektrischer Gemüseschneider Multifunktional – Schneiden, Re
+gid://shopify/Product/15412299661697	kuehlmatte,selbstkuehlend	Kühlmatte für Hunde & Katzen – Ice-Silk, selbstkühlend (wasc
+gid://shopify/Product/15412301922689	suesser,staender	Panda Handyhalter – süsser Schreibtisch-Ständer für Smartpho
+gid://shopify/Product/15412302414209	faecher	Reise-Rucksack mit Kettengriff – kompakt, vegan-Leder, mehre
+gid://shopify/Product/15412302512513	freihaendig	Regenschirm mit Handy-Halterung – freihändig, 8 Streben, UV-
+gid://shopify/Product/15412304707969	uebersetzer,kopfhoerer	Übersetzer-Kopfhörer – 144 Sprachen, Echtzeit, Bluetooth 5.3
+gid://shopify/Product/15412304773505	messerschaerfer,praezisions,kuechenmesser	Profi Messerschärfer – Präzisions-Schleifer für scharfe Küch
+gid://shopify/Product/15412304806273	umhaengetasche	Elegante Umhängetasche in Lack-Optik – Crossbody, kompakt (3
+gid://shopify/Product/15412306215297	augenmassagegeraet,waerme,muede	Augenmassagegerät mit Wärme & Musik – Bluetooth, faltbar, ge
+gid://shopify/Product/15412306608513	gemueseschneider,wuerfler	16-in-1 Gemüseschneider – Multi-Hobel, Würfler & Slicer mit 
+gid://shopify/Product/15412306772353	schallzahnbuerste	Reise-Schallzahnbürste – 4 Modi, Magnetschwebe-Motor, antiba
+gid://shopify/Product/15412307165569	natuerlicher	Selbstklebende 3D-Wimpern – wiederverwendbar, ohne Kleber, n
+gid://shopify/Product/15412307657089	vergroesserung	XXL Leselupe mit LED-Licht – 5× & 10× Vergrösserung, 2 Helli
+gid://shopify/Product/15412307689857	raeume	4L Luftbefeuchter – Cool-Mist für grosse Räume, leise, lang 
+gid://shopify/Product/15412307853697	hitzebestaendig,spuelbecken	Silikon-Abtropfmatte XL – rutschfest & hitzebeständig fürs S
+gid://shopify/Product/15412432175489	kuehlende	Kühlende Sommerdecke – Cool-Feel, atmungsaktiv & waschbar
+gid://shopify/Product/15412433256833	massagegeraet	Handliches Massagegerät – Vibrations-Massage mit mehreren St
+gid://shopify/Product/15412447543681	schnellladegeraet	Auto-Schnellladegerät PD – ausziehbares Kabel, für Apple & A
+gid://shopify/Product/15412476445057	floetenkessel	Flötenkessel 2L – Edelstahl-Wasserkessel mit Pfeife, für all
+gid://shopify/Product/15412659978625	schluesselbund	Mini USB-Taschenlampe – Edelstahl, wiederaufladbar, für Schl
+gid://shopify/Product/15412678328705	kraeuter	Smart-Anzuchtset mit LED-Pflanzenlampe – 12 Zellen für Setzl
+gid://shopify/Product/15412751860097	rueschen	Strand-Rock A-Linie mit Rüschen – doppellagig, fliessend (Da
+gid://shopify/Product/15412752155009	kuehlend	Herren Business-Poloshirt – gestrickte Ice-Silk, kühlend (M–
+gid://shopify/Product/15412828733825	rueschen	2-teiliges Sommer-Set – Zip-Top & Rüschen-Shorts (Damen)
+gid://shopify/Product/15412830634369	ueberwurf	Strand-Cardigan «Riviera» – Leichter UV-Schutz-Überwurf
+gid://shopify/Product/15412831256961	traegertop	Spitzen-Trägertop «Lacey» – feminines Sommer-Basic
+gid://shopify/Product/15412899643777	haenge	Reise-Kulturbeutel «Voyage» – XL Hänge-Organizer
+gid://shopify/Product/15412902855041	bluetenring	Mondstein-Blütenring «Fleur» – zarter Statement-Ring
+gid://shopify/Product/15412911079809	kirschblueten	Kirschblüten-Halskette «Sakura» – zarte Klavikula-Kette
+gid://shopify/Product/15412919566721	schnuerkleid	Schnürkleid «Noir» – Schleifen-Detail
+gid://shopify/Product/15412919763329	aermellos	Off-Shoulder-Kleid «Brise» – locker & ärmellos
