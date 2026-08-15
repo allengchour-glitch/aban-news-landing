@@ -5526,6 +5526,53 @@ setTimeout(function baueGebaeude(){
   [-96,-60,-24,24,60,96].forEach(function(mx){
     bau("th17_oberleitungsmast.glb",7.5,mx,0,108.5,0,false,null,true);});
   bau("th17_tramhaltestelle.glb",3.0,-20,0,108,Math.PI,false,null,true);
+  /* ── ⚽ Charge 44: Sportplatz im Ostteil des Sportparks ──────────────────────
+     Der Sportpark hatte fuenf Hallen und einen Basketballplatz, aber kein
+     Spielfeld. Ein volles 96x66-Feld passt nirgends hin: eine Belegungskarte
+     (Raster 4 m, `__th.frei`) zeigt, dass die Ringlandstrasse bei r = 200 jede
+     grosse Flaeche in diesem Sektor schneidet. Frei ist der Ostteil des
+     Viertels selbst — dort steht jetzt ein Trainingsfeld 46 x 30.
+
+     ⚠️ Die Feldmarkierung wird HIER gezeichnet, nicht im Bauteil (Charge 43),
+     und alles bekommt `userData.fest` (Charge 40). */
+  (function sportplatz(){
+    var CX=66, CZ=240, FB=46, FT=30;
+    function fest(datei,hoehe,x,z,ry){
+      bau(datei,hoehe,x,0,z,ry,false,function(w){w.userData.fest=true;},true);
+    }
+    function strich(x,z,bx,bz){
+      var li=new THREE.Mesh(new THREE.PlaneGeometry(bx,bz),
+        new THREE.MeshStandardMaterial({color:0xeceae2,roughness:0.85}));
+      li.rotation.x=-Math.PI/2;li.position.set(x,0.035,z);scene.add(li);
+    }
+    var ras=new THREE.Mesh(new THREE.PlaneGeometry(FB+4,FT+4),
+      new THREE.MeshStandardMaterial({color:0x2f6a30,roughness:0.96}));
+    ras.rotation.x=-Math.PI/2;ras.position.set(CX,0.028,CZ);ras.receiveShadow=true;scene.add(ras);
+    strich(CX,CZ-FT/2,FB,0.14); strich(CX,CZ+FT/2,FB,0.14);      // Seitenlinien
+    strich(CX-FB/2,CZ,0.14,FT); strich(CX+FB/2,CZ,0.14,FT);      // Torlinien
+    strich(CX,CZ,0.14,FT);                                        // Mittellinie
+    for(var k=0;k<32;k++){                                        // Mittelkreis
+      var a=k/32*6.283;
+      strich(CX+Math.cos(a)*6.0,CZ+Math.sin(a)*6.0,0.30,0.30);
+    }
+    /* Tore: die Oeffnung liegt auf +y, in three.js also -z. Fuer Blick nach +x
+       folgt aus der Normalen (-sin rotY, -cos rotY) = (1,0) gerade rotY = -pi/2. */
+    fest("th44_tor.glb",2.50,CX-FB/2+0.5,CZ,-Math.PI/2);
+    fest("th44_tor.glb",2.50,CX+FB/2-0.5,CZ, Math.PI/2);
+    /* Tribuenen an der Nordseite, Sitzreihen zum Feld (rotY = 0). */
+    for(var t=0;t<2;t++) fest("th44_tribuene.glb",8.06,CX-6+t*12,CZ+FT/2+3.5,0);
+    for(var q=0;q<4;q++){                                         // Flutlicht an den Ecken
+      var fx=CX+(q%2?1:-1)*(FB/2+2.5), fz=CZ+(q<2?-1:1)*(FT/2+2.5);
+      fest("th44_flutlichtmast.glb",17.63,fx,fz,Math.atan2(CZ-fz,CX-fx));
+    }
+    for(var b=0;b<2;b++)                                          // Ersatzbaenke
+      fest("th44_ersatzbank.glb",1.86,CX-7+b*14,CZ-FT/2-2.6,Math.PI);
+    fest("th44_spielstand.glb",5.60,CX,CZ+FT/2+9.5,0);
+    for(var f=0;f<5;f++)                                          // Ballfangzaun im Osten
+      fest("th44_ballfangzaun.glb",4.90,CX+FB/2+3.0,CZ-8+f*4,Math.PI/2);
+    fest("th44_kasse.glb",3.09,CX-FB/2-3.0,CZ-FT/2-3.0,0);
+    fest("th44_sprunganlage.glb",0.18,CX-2,CZ+FT/2+16.0,0);
+  })();
   /* ── 🚒⛽ Charge 43: Feuerwache und Tankstelle ───────────────────────────────
      Die beiden letzten prozeduralen Quaderbauten sind ersetzt. Beide Modelle
      haben ihre Schauseite auf Blender +y, in three.js also -z; die alten Bauten
