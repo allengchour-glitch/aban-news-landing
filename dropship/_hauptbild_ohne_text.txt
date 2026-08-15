@@ -27694,3 +27694,14 @@ gid://shopify/Product/15496329265537	umgestellt	27
 gid://shopify/Product/15496329298305	schon-sauber	0
 gid://shopify/Product/15496329331073	schon-sauber	0
 gid://shopify/Product/15496329363841	alle-mit-text	-
+gid://shopify/Product/15496329396609	schon-sauber	0
+gid://shopify/Product/15496329429377	schon-sauber	0
+gid://shopify/Product/15496329462145	umgestellt	13
+gid://shopify/Product/15496329494913	schon-sauber	0
+gid://shopify/Product/15496329527681	schon-sauber	0
+gid://shopify/Product/15496329560449	alle-mit-text	-
+gid://shopify/Product/15496329593217	schon-sauber	0
+gid://shopify/Product/15496329625985	schon-sauber	0
+gid://shopify/Product/15496329658753	umgestellt	31
+gid://shopify/Product/15496329691521	schon-sauber	0
+gid://shopify/Product/15496329724289	schon-sauber	0

@@ -9033,3 +9033,9 @@ gid://shopify/Product/15454180311425	ok
 gid://shopify/Product/15454180278657	ok
 gid://shopify/Product/15454180245889	ok
 gid://shopify/Product/15454180213121	ok
+gid://shopify/Product/15454180180353	ok
+gid://shopify/Product/15454180147585	ok
+gid://shopify/Product/15454180114817	ok
+gid://shopify/Product/15454180082049	ok
+gid://shopify/Product/15454180049281	ok
+gid://shopify/Product/15454180016513	ok
