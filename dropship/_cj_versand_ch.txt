@@ -741,3 +741,8 @@ gid://shopify/Product/15498839392641	ok	Kapsel-Füllbrett mit 400 Löchern
 gid://shopify/Product/15499448680833	ok	Hot Wheels Drift Board Skateboard
 gid://shopify/Product/15499448156545	ok	Smart Bluetooth Brille
 gid://shopify/Product/15499871322497	ok	Schwierige Puzzle-Steine
+gid://shopify/Product/15500106269057	nicht-versendbar	Elliptische Laufmaschine
+gid://shopify/Product/15499999936897	ok	Universal-Docking-Station
+gid://shopify/Product/15500069536129	nicht-versendbar	Multifunktionale Heissluftfritteuse 4.5L
+gid://shopify/Product/15500107776385	ok	Cement Grau Rennwagen Baukasten
+gid://shopify/Product/15499951636865	nicht-versendbar	Regenschirmablage
