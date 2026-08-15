@@ -2817,36 +2817,14 @@ var dorfFenster=[];
     pl.rotation.x=-Math.PI/2;pl.position.set(40,0.016,72);pl.receiveShadow=true;scene.add(pl);})();
   // ================= NEUES STADTVIERTEL SUED: Bahnhof, Schule, Feuerwache, Tankstelle, Baustelle =========
   (function stadtviertel(){
-    // ---- BAHNHOF am Gleis (z=112) ----
+    /* ---- BAHNHOF am Gleis (z=112) ----
+       ⚠️ Das Empfangsgebaeude war hier prozedural aus Quadern gebaut: Sockel,
+       Kasten, flache Dachplatte, Fenster als aufgeklebte Rechtecke. Genau der
+       Zustand, in dem die Stadthaeuser vor Charge 37 waren. Es steht jetzt als
+       `th41_bahnhof.glb` weiter unten (Bahnsteig-Ausbau) — hier bleiben nur
+       Bahnsteig und Baenke, die zum Gleis gehoeren und nicht zum Haus. */
     (function bahnhof(){
       var g=new THREE.Group();
-      var bm=stdMat(0xe0d4c0,0.85);(window._wandMats=window._wandMats||[]).push(bm);
-      var sok=new THREE.Mesh(new THREE.BoxGeometry(26,0.5,11),betMat(0xc0bab0,0.9));sok.position.y=0.25;sok.receiveShadow=true;g.add(sok);
-      var hal=new THREE.Mesh(new THREE.BoxGeometry(24,6.5,9.5),bm);hal.position.y=3.5;hal.castShadow=true;hal.receiveShadow=true;g.add(hal);
-      var dch=new THREE.Mesh(new THREE.BoxGeometry(25.4,0.6,10.6),stdMat(0x6a5a52,0.75));dch.position.y=7.0;dch.castShadow=true;
-      if(window._schindelTex)dch.material.map=window._schindelTex;g.add(dch);
-      /* 🩹 Ziergiebel entfernt: der flache 3-seitige Kegel sass quer in der Dachmitte und sah aus wie ein
-         weisses Render-Artefakt (Screenshot-Befund). An der Stirnseite wirkte er ebenso fehlerhaft —
-         das Walmdach sieht ohne ihn sauber aus. Nicht erneut hinzufuegen. */
-      // Bogenfenster + Portal
-      for(var bf=0;bf<5;bf++){var bx8=-9+bf*4.5;
-        var ra=new THREE.Mesh(new THREE.BoxGeometry(2.4,3.2,0.07),stdMat(0x6a6258,0.7));ra.position.set(bx8,3.5,4.79);g.add(ra);
-        var fe=new THREE.Mesh(new THREE.BoxGeometry(2.1,2.9,0.07),
-          new THREE.MeshStandardMaterial({color:0xa8c8dc,emissive:0xffd890,emissiveIntensity:0,roughness:0.25}));
-        fe.position.set(bx8,3.5,4.83);g.add(fe);dorfFenster.push(fe.material);}
-      var por=new THREE.Mesh(new THREE.BoxGeometry(3.2,4.2,0.14),stdMat(0x4a3a2c,0.5));por.position.set(0,2.1,4.86);g.add(por);
-      // Bahnhofsuhr
-      var ucv=document.createElement("canvas");ucv.width=ucv.height=64;var uc=ucv.getContext("2d");
-      uc.fillStyle="#f8f4e8";uc.beginPath();uc.arc(32,32,30,0,6.283);uc.fill();
-      uc.strokeStyle="#2a2a2a";uc.lineWidth=4;uc.stroke();
-      for(var t8=0;t8<12;t8++){var ta=t8/12*6.283;uc.beginPath();
-        uc.moveTo(32+Math.cos(ta)*24,32+Math.sin(ta)*24);uc.lineTo(32+Math.cos(ta)*29,32+Math.sin(ta)*29);uc.stroke();}
-      uc.lineWidth=4;uc.beginPath();uc.moveTo(32,32);uc.lineTo(32+15,32-4);uc.stroke();
-      uc.lineWidth=3;uc.beginPath();uc.moveTo(32,32);uc.lineTo(32-8,32-19);uc.stroke();
-      var utx=new THREE.CanvasTexture(ucv);
-      var uhr=new THREE.Mesh(new THREE.CircleGeometry(1.15,20),
-        new THREE.MeshStandardMaterial({map:utx,emissiveMap:utx,emissive:new THREE.Color(0xfff0c8),emissiveIntensity:0,roughness:0.4}));
-      uhr.position.set(0,6.2,4.83);g.add(uhr);dorfFenster.push(uhr.material);
       // Bahnsteig zum Gleis + Perrondach + Baenke
       var stg=new THREE.Mesh(new THREE.BoxGeometry(34,0.42,5),betMat(0xcac4b6,0.9));stg.position.set(0,0.21,-8.5);stg.receiveShadow=true;g.add(stg);
       /* Das alte Blech-Perrondach (Box + 5 Rohrstuetzen) ist raus — an seiner Stelle
@@ -5584,6 +5562,47 @@ setTimeout(function baueGebaeude(){
      Schiene und ueberdeckte den haltenden Zug (Screenshot). */
   [-11,0,11].forEach(function(dx){
     bau("th17_bahnsteigdach.glb",3.6,dx,0.42,109.6,Math.PI,false,null,true);});
+  /* ── 🚉 Charge 41: das Empfangsgebaeude und die Bahnsteig-Ausstattung ────────
+     Das prozedurale Kastengebaeude oben ist raus. `th41_bahnhof` hat seine
+     Schauseite auf Blender +y, in three.js also -z — bei rotY = 0 schaut es
+     damit zur Stadt, der Bahnsteig liegt auf der anderen Seite am Gleis.
+
+     ⚠️ Alles hier bekommt `userData.fest`. Diese Teile gehoeren absichtlich
+     dicht an Gleis und Bahnsteigkante, und `freiRaeumen()` haelt Korridore frei,
+     ohne den Unterschied zwischen "steht im Weg" und "gehoert dorthin" zu
+     kennen — beim Wartehaeuschen der Zubringer hat es genau das verschoben. */
+  (function bahnAusbau(){
+    function fest(datei,hoehe,x,z,ry){
+      bau(datei,hoehe,x,0,z,ry,false,function(w){w.userData.fest=true;},true);
+    }
+    /* ⚠️ Erst 12,25 hoch auf z = 102: das Gebaeude ragte 1,3 m in die
+       Bahnsteigdaecher (z 107,3…111,9) und ueberragte den ganzen Bahnsteig.
+       `bau()` skaliert ueber die HOEHE — 10,4 macht daraus 11,15 Tiefe, und
+       auf z = 99 bleiben 2,6 m Luft bis zum ersten Dach. */
+    fest("th41_bahnhof.glb",10.4,0,99.0,0);
+    /* Bahnsteigkante im Raster 6,00 laengs des Gleises. Der Kantenstein liegt im
+       Modell auf Blender -y, in three.js also +z: Modulmitte auf 110,3 setzt ihn
+       auf 112,0 — genau an die Schiene. */
+    for(var k=-3;k<=3;k++) fest("th41_bahnsteigkante.glb",0.58,k*6.0,110.3,0);
+    /* Fahrleitungsmasten: der Ausleger zeigt im Modell auf +x ueber das Gleis,
+       also muessen sie mit rotY = -pi/2 quer dazu stehen. */
+    [-24,-8,8,24].forEach(function(mx){
+      fest("th41_fahrleitungsmast.glb",7.20,mx,113.9,-Math.PI/2);});
+    fest("th41_signal.glb",5.49,29,113.6,Math.PI/2);
+    fest("th41_signal.glb",5.49,-29,113.6,-Math.PI/2);
+    /* ⚠️ Hier stand ein Prellbock bei x = 44 auf dem Gleis. Das Gleis bei
+       z = 112 ist aber eine DURCHGEHENDE Strecke — es laeuft ueber einen Damm
+       in ein Tunnelportal. Ein Prellbock quer darauf haette bedeutet: der Zug
+       faehrt jede Runde durch sein eigenes Streckenende. Das Teil bleibt in
+       der Ladung, aber es gehoert an ein Stumpfgleis, und eins gibt es hier
+       nicht. Lieber kein Prellbock als einer an der falschen Stelle. */
+    /* Stattdessen: ein zweites Signal am Ostkopf, wo die Strecke weiterfuehrt. */
+    fest("th41_signal.glb",5.49,44,113.6,Math.PI/2);
+    fest("th41_anzeigetafel.glb",3.11,-15,109.9,0);
+    fest("th41_gepaeckkarre.glb",1.35,6.5,109.2,0.4);
+    [-6,17].forEach(function(bx){
+      fest("th41_bahnsteigbank.glb",3.51,bx,108.9,0);});
+  })();
   (function(){var lin=new THREE.Mesh(new THREE.PlaneGeometry(32,0.28),
       new THREE.MeshStandardMaterial({color:0xe8e4da,roughness:0.8}));
     lin.rotation.x=-Math.PI/2;lin.position.set(0,0.435,112.15);scene.add(lin);

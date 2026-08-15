@@ -33,6 +33,7 @@ def _mats():
       "stein": mat("BnStein",  (0.95,0.94,0.91), 0.84),
       "sockel":mat("BnSockel", (0.52,0.47,0.40), 0.90),
       "dach":  mat("BnDach",   (0.38,0.20,0.16), 0.76),
+      "dach2": mat("BnDach2",  (0.29,0.15,0.12), 0.78),
       "holz":  mat("BnHolz",   (0.40,0.26,0.16), 0.86),
       "stahl": mat("BnStahl",  (0.60,0.62,0.66), 0.42, 0.62),
       "dunkel":mat("BnDunkel", (0.14,0.15,0.17), 0.65),
@@ -167,7 +168,10 @@ def _b_bahnhof():
         yy = TD*(1 - k/9.4)
         for s in (-1, 1):
             box(0, s*yy, zz, B + 1.5, 0.10, 0.07, m["putz2"])
-    box(0, 0, H + 1.44 + HH, B + 0.4, 0.42, 0.22, m["stein"])           # Firstziegel
+    # ⚠️ Der Firstziegel war in Werkstein (0,95) und lag als weisser Strich auf
+    # dem roten Dach. Ein Firstziegel ist derselbe Ton wie die Deckung, nur
+    # etwas dunkler — er schliesst das Dach ab, er teilt es nicht.
+    box(0, 0, H + 1.44 + HH, B + 0.4, 0.42, 0.22, m["dach2"])          # Firstziegel
     # Rinne und Fallrohre — ein Dach ohne Entwaesserung endet als Kante in der Luft
     for s in (-1, 1):
         flach(zyl(0, s*(TD + 0.09), H + 1.50, 0.10, B + 1.6, m["stahl"], 10,
