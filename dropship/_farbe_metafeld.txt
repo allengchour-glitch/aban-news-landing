@@ -189,3 +189,4 @@ gid://shopify/Product/15500652577153	Blau
 gid://shopify/Product/15500656705921	Mehrfarbig
 gid://shopify/Product/15500656902529	Gold
 gid://shopify/Product/15500658737537	Gold
+gid://shopify/Product/15500686688641	Weiss
