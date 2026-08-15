@@ -121,3 +121,5 @@ gid://shopify/Product/15446272639361	zugeordnet	15	LED Laser Offroad-Scheinwerfe
 gid://shopify/Product/15446272672129	zugeordnet	2	LED-Fahrradtasche mit Fernbedienung
 gid://shopify/Product/15446272737665	zugeordnet	2	LED-Velo-Blinklicht mit smarter Richtungsanzeige
 gid://shopify/Product/15446272803201	bild-urls-tot
+gid://shopify/Product/15446272934273	bild-urls-tot
+gid://shopify/Product/15446273098113	zugeordnet	7	USB-Fahrradlicht für Nachtfahrten
