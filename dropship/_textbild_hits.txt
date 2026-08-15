@@ -6769,3 +6769,5 @@ gid://shopify/Product/15448027070849	17->0	UV-Schutz-Cape für Damen, lockerer S
 gid://shopify/Product/15448076779905	68->0	Damen-Badeanzug-Set
 gid://shopify/Product/15448504304001	136->3	Hoodie mit Print und langen Ärmeln
 gid://shopify/Product/15448076091777	31->0	Casual Damen-Schwimm-Top
+gid://shopify/Product/15448653988225	50->0	Bestickte Retro Samthosen mit weitem Bein
+gid://shopify/Product/15448655724929	11->0	Smoke Grey Washed Denim Jeans Straight Tube
