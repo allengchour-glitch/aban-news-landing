@@ -3386,7 +3386,8 @@ function updLandbus(dt){
       b.pos+=b.rdir*9.0*dt;
       if(b.pos>RAD_R1){b.pos=RAD_R1;b.rdir=-1;}
       if(b.pos<RAD_R0){b.pos=RAD_R0;b.rdir= 1;}
-      if(b.rdir<0&&vor>=132&&b.pos<132){b.pos=132;b.wartet=6;}
+      var HP=b.halt||132;
+      if(b.rdir<0&&vor>=HP&&b.pos<HP){b.pos=HP;b.wartet=6;}
     }
     var aa=b.gr*Math.PI/180, ca=Math.cos(aa), sa=Math.sin(aa), off=-b.rdir*2.6;
     b.w.position.set(ca*b.pos+(-sa)*off, 0, sa*b.pos+ca*off);
@@ -4045,9 +4046,18 @@ setTimeout(function baueGebaeude(){
            Die offene Seite liegt auf Blender +y, in three.js also -z bei
            rotY = 0; steht das Haeuschen auf der +q-Seite, zeigt die Strasse
            nach -q, und aus (-sin,-cos) = (sa,-ca) folgt rotY = -aa. */
+        /* ⚠️ Der Radius wird GEMERKT, nicht angenommen. `frei()` weicht Kollidern
+           radial aus, und beim 60-Grad-Zubringer tat es das auch: der Landbus
+           hielt dort bei fest verdrahteten r 132 volle 13 m vom Haeuschen
+           entfernt, waehrend er am 240-Grad-Zubringer korrekt 4,8 m daneben
+           stand. Wer eine Haltestelle ausweichen laesst, muss ihre
+           tatsaechliche Lage weitergeben. */
+        window._bushalte=[];
         [60,240].forEach(function(gr){
           var A=achse(gr), p=frei(A,132,HB+3.2);
-          if(p)bau("th39_bushalt.glb",2.84,p[0],0,p[1],-A.aa,false,null,true);
+          if(!p)return;
+          bau("th39_bushalt.glb",2.84,p[0],0,p[1],-A.aa,false,null,true);
+          window._bushalte.push({gr:gr, r:A.ca*p[0]+A.sa*p[1]});
         });
         /* Leitplanke am Hang. Modul 3,94 lang auf r 205,2: dTheta = 3,94/205,2.
 
@@ -4082,8 +4092,10 @@ setTimeout(function baueGebaeude(){
            Bildtakt haengt und nicht an einem Timer. */
         window._landbus=[];
         [60,240].forEach(function(gr,i){
+          var hs=(window._bushalte||[]).filter(function(h){return h.gr===gr;})[0];
           bau("th40_bus.glb",3.69,0,0,0,0,false,function(w){
-            window._landbus.push({w:w,gr:gr,pos:RAD_R0+18+i*26,rdir:1,wartet:0});
+            window._landbus.push({w:w,gr:gr,pos:RAD_R0+18+i*26,rdir:1,wartet:0,
+                                  halt:hs?hs.r:132});
           },true);
         });
         },0);
