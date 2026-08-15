@@ -2843,8 +2843,12 @@ var dorfFenster=[];
     (function schule(){
       var g=new THREE.Group();
       // Pausenhof mit Basketballkorb
-      var hof=new THREE.Mesh(new THREE.PlaneGeometry(20,12),betMat(0xc8c2b4,0.9));
-      hof.rotation.x=-Math.PI/2;hof.position.set(0,0.014,-11);hof.receiveShadow=true;g.add(hof);
+      /* ⚠️ 20 x 12 auf y = 0,014 war zu klein und lag zu tief: im Render stand ein
+         Teil der Hofausstattung auf dem Kopfsteinpflaster der Nachbarblocks
+         statt auf dem Schulhof. 24 x 14 auf y = 0,03 legt eine zusammenhaengende
+         Flaeche unter alles, was dort steht. */
+      var hof=new THREE.Mesh(new THREE.PlaneGeometry(24,14),betMat(0xc8c2b4,0.9));
+      hof.rotation.x=-Math.PI/2;hof.position.set(0,0.030,-11);hof.receiveShadow=true;g.add(hof);
       /* Der prozedurale Korb ist raus — th42_basketballkorb steht unten. */
       g.position.set(-56,0,100);scene.add(g);
     })();
