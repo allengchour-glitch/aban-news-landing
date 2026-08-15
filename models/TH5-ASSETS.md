@@ -1400,6 +1400,40 @@ Alle neun: zmin = 0,000. `th42_klettergeruest` hat Boxmitte +0,58 — die Rutsch
   Klettergerüst 6,40 breit.
 
 ---
+## 2c. Charge 43 — FEUERWACHE UND TANKSTELLE (`models/th43_*.glb`)
+
+Die letzten beiden prozeduralen Quaderbauten der Stadt: die Feuerwache bei (56 | 100) —
+Sockel, Korpus, Dachplatte, Tore als Bretter auf der Wand, Schlauchturm aus einem Quader —
+und die Tankstelle bei (92 | −74), deren Zapfsäulen drei Boxen sind. **Damit ist die Reihe
+abgearbeitet, die mit den Stadthäusern in Charge 37 begann.**
+
+| Datei | Maße (B×T×H) | Dreiecke | Inhalt |
+|---|---|---|---|
+| `th43_feuerwache.glb` | 18,22 × 15,07 × 13,81 | 12 666 | zwei Rolltore in echten Öffnungen, Ecklisenen, Gesims, Satteldach, Wachschild, Blaulichter, Schlauchturm mit Lüftungslamellen und Pyramidendach |
+| `th43_loeschfahrzeug.glb` | 7,67 × 3,02 × 3,24 | 16 796 | Rollladenkästen, Dachleiter, Blaulichtbalken, Haspel, Front auf **+x** |
+| `th43_hydrant.glb` | 0,44 × 0,60 × 0,93 | 784 | Drehkörper mit zwei Abgängen |
+| `th43_tankstelle.glb` | 14,40 × 7,86 × 5,06 | 4 216 | Kiosk mit Schaufenstern, Vordach auf vier Stützen mit Fundamenttellern, Deckenleuchten |
+| `th43_zapfsaeule.glb` | 1,14 × 0,70 × 2,03 | 1 880 | Drehkörper, zwei Anzeigen, zwei Zapfventile mit durchhängendem Schlauch |
+| `th43_preistafel.glb` | 1,94 × 0,62 × 5,20 | 1 492 | Totem mit Markenfeld und drei Preiszeilen |
+| `th43_luftstation.glb` | 1,45 × 0,88 × 1,80 | 1 120 | Säule, Schlauchtrommel, Wassereimer |
+| `th43_waschbox.glb` | 5,40 × 6,99 × 3,93 | 3 488 | drei Wandscheiben, Pultdach, Schwenkarm mit Lanze, Münzautomat |
+| `th43_wachhof.glb` | 46,00 × 32,00 × 13,81 | 61 130 | **Maßstabs-Test**, nur aus den Teilen oben |
+
+Generator: `tools/assets/mk_th43_wache.py` · Werkzeug: `tools/assets/th_werkzeug.py`.
+Alle neun: zmin = 0,000, alle Boxmitten auf dem Ursprung.
+
+> ⚠️ **Die Glasregel gilt auch senkrecht.** Galerie, Leiter und Blaulichtbalken des
+> Löschfahrzeugs saßen auf z 2,72…3,06 — der Aufbau reicht aber bis `0,34 + 2,60 = 2,94`.
+> Alles darunter steckte **im Dach**, von der Leiter war im Kontaktbogen nichts zu sehen.
+> Das ist derselbe Fehler wie das versenkte Glas in Charge 40, nur um 90° gedreht:
+> **Bauteilkante gegen Körperkante rechnen**, waagrecht wie senkrecht.
+
+> ⚠️ **Eine Fahrbahnmarkierung gehört an den Ort, nicht ins Gebäude.** Zwei gelbe
+> Ausfahrtsbahnen lagen im Feuerwachen-Modell. Sie machten es 20,97 tief statt 13,5 und
+> hingen im Kontaktbogen als freischwebende Striche neben dem Haus. Was zum Grundstück
+> gehört, wird beim Einbau gezeichnet — sonst schleppt jedes Exemplar den Vorplatz mit.
+
+---
 
 ---
 ## 🎡 Freizeitpark-Quartier in `traumhaus.html` — fertiger Einbau
