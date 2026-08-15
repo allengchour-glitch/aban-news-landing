@@ -750,3 +750,4 @@ gid://shopify/Product/15499900780929	ok	Reitpeitschenhose
 gid://shopify/Product/15500196675969	nicht-versendbar	Holz-Schneidebrett
 gid://shopify/Product/15500163711361	ok	Schwarze Armbanduhr
 gid://shopify/Product/15500194513281	ok	Hohl-Edelstahl-Armbanduhr
+gid://shopify/Product/15500257984897	ok	Kurzlocken-Styling-Kit
