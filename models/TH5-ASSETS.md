@@ -1290,6 +1290,62 @@ Charge 38.
   teurer als es aussieht.
 
 ---
+## 2a. Charge 41 — BAHNANLAGEN (`models/th41_*.glb`)
+
+Am Gleis bei z = 112 steht seit langem ein Bahnhof — aber als Quaderkiste: Sockel,
+Kasten, flache Dachplatte, Fenster als aufgeklebte Rechtecke, Bänke aus drei Boxen.
+Genau der Zustand, in dem die Stadthäuser vor Charge 37 waren. Dazu fehlte dem
+Bahnsteig alles, was einen Bahnsteig ausmacht.
+
+| Datei | Maße (B×T×H) | Dreiecke | Inhalt |
+|---|---|---|---|
+| `th41_bahnhof.glb` | 24,60 × 13,14 × 12,25 | 35 424 | Sockel, Eckquaderung, Gesims, Satteldach mit Ziegelreihen, Rinne + 4 Fallrohre, Rundbogenfenster, Portal mit Vordach und Freitreppe, Bahnhofsuhr, Namensschild, 2 Kamine |
+| `th41_bahnsteigkante.glb` | 6,00 × 3,60 × 0,58 | 3 240 | Kantenstein, Sicherheitsstreifen, Taststreifen, **Raster x += 6,00** |
+| `th41_signal.glb` | 0,67 × 0,72 × 5,49 | 2 352 | Mast mit Steigleiter, drei Lichter mit Schirmen |
+| `th41_prellbock.glb` | 1,93 × 2,00 × 1,26 | 2 048 | Untergurt, Schräge, Endpfosten, Prellbalken mit Warnfeld |
+| `th41_fahrleitungsmast.glb` | 2,90 × 0,62 × 7,20 | 8 128 | Gittermast, Ausleger auf +x, Isolatoren |
+| `th41_anzeigetafel.glb` | 2,66 × 0,32 × 3,11 | 1 564 | Abfahrtstafel auf zwei Masten, vier Zeilen, Gleisnummer |
+| `th41_gepaeckkarre.glb` | 2,43 × 1,18 × 1,35 | 8 444 | Karre mit Rungen, Deichsel, drei Koffern |
+| `th41_bahnsteigbank.glb` | 3,22 × 0,73 × 3,51 | 2 852 | Bank mit Lehne, Laterne daneben |
+| `th41_bahnsteig.glb` | 44,00 × 30,00 × 12,25 | 102 224 | **Maßstabs-Test**, nur aus den Teilen oben |
+
+Generator: `tools/assets/mk_th41_bahn.py` · Werkzeug: `tools/assets/th_werkzeug.py`.
+Alle neun: zmin = 0,000.
+
+> 🛤️ **Gleisgebundene Teile richten sich nach der GLEISACHSE x, nicht nach +y.**
+> `th41_bahnsteigkante` läuft auf `x += 6,00`, der Ausleger von `th41_fahrleitungsmast`
+> zeigt auf +x über das Gleis, und der Prellbalken von `th41_prellbock` zeigt auf −x
+> (Gleisende). Nur die Teile mit einer echten Schauseite — Gebäude, Signal, Anzeigetafel,
+> Bank — halten die übliche Regel „Schauseite auf +y". Das ist keine Ausnahme aus
+> Bequemlichkeit: ein Bahnsteig ist entlang des Gleises gerastert, und ein Raster, das
+> quer zur Verlegerichtung steht, ist keins.
+
+> ⚠️ **Ein Dach ist ein KÖRPER, keine Sammlung von Platten.** Der erste Walm bestand aus
+> vier geneigten Boxen. Die beiden Stirnplatten waren 10,1 × 11,8 m groß und standen im
+> Render als schräge Bretter waagrecht aus dem Haus heraus — gemessene Gesamthöhe 12,77
+> statt der geplanten 12,0. `keil_y` zieht den Giebelquerschnitt zu genau diesem Körper
+> aus, **inklusive geschlossener Giebelflächen**. Der First soll auf x laufen, das Profil
+> liegt aber in x-z: also einmal um z drehen, danach zeigt die Extrusionsachse auf x.
+> Damit ist auch die Euler-Falle aus Charge 39 hier gar nicht erst im Spiel — eine
+> Drehung um z lässt „oben" oben.
+
+### 🔍 Was der Kontaktbogen gezeigt hat
+
+* **Der Prellbock war zweimal ein Haufen Kanthölzer.** Erst mit `strebe()`-Schrägen und
+  Querbalken darüber; dann mit 2,50 m langen Grundschienen, die rechts ins Leere liefen.
+  Ein Prellbock liest sich als **geschlossenes Dreieck**: Untergurt, Schräge, Endpfosten.
+  Was über die Ecken hinaussteht, macht daraus ein Gerüst.
+* **Die Bahnsteigbank hatte den Laternenmast mitten in der Sitzfläche** — und die
+  Wangenvolute schlug 2,30 m tief aus (als Bautiefe gemessen). Eine Bank erkennt man an
+  Sitz und Lehne, nicht am Schnörkel.
+* **Zwei Teile hatten keinen Kontrast.** Die Bahnsteigkante blieb eine glatte weiße Platte,
+  weil Kantenstein und Sicherheitsstreifen (0,95) nur 0,4 heller waren als der Körper
+  (0,55). Und der Prellbock blieb auch nach der Formkorrektur unleserlich, weil **alles
+  daran denselben Braunton hatte**. Körper jetzt 0,40, Stahl 0,26. Das ist wörtlich die
+  Lehre aus Charge 37 („vier weiße Kisten"): es liegt nie an der Textur, sondern daran,
+  dass Grund und Zierglied gleich hell sind.
+
+---
 
 ---
 ## 🎡 Freizeitpark-Quartier in `traumhaus.html` — fertiger Einbau
