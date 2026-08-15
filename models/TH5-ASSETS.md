@@ -1434,6 +1434,56 @@ Alle neun: zmin = 0,000, alle Boxmitten auf dem Ursprung.
 > gehört, wird beim Einbau gezeichnet — sonst schleppt jedes Exemplar den Vorplatz mit.
 
 ---
+## 2d. Charge 44 — STADION UND SPORTPLATZ (`models/th44_*.glb`)
+
+Der Sportpark bei (0 | 216) hat Schwimmbad, Tennishalle, Fitnessstudio, Eishalle,
+Kletterhalle und einen Basketballplatz — aber keinen Sportplatz: kein Spielfeld, keine
+Tribüne, kein Flutlicht, kein Tor. Dieselbe Lücke wie die Wartehäuschen ohne Bus in
+Charge 39.
+
+| Datei | Maße (B×T×H) | Dreiecke | Inhalt |
+|---|---|---|---|
+| `th44_tribuene.glb` | 13,54 × 7,90 × 8,06 | 23 428 | 8 Reihen Sitzschalen, Wangen, offenes Geländer, geneigtes Dach, seitlicher Aufgang, **Raster x += 12,00** |
+| `th44_flutlichtmast.glb` | 3,40 × 1,58 × 17,63 | 15 412 | Gittermast, Steigleiter, Traverse mit acht Strahlern |
+| `th44_tor.glb` | 7,44 × 2,00 × 2,50 | 1 608 | Pfosten, Latte, Netzbügel, Netz aus Maschen |
+| `th44_ballfangzaun.glb` | 4,24 × 0,42 × 4,90 | 1 044 | Pfosten, drei Riegel, Netzfläche, **Raster x += 4,00** |
+| `th44_spielstand.glb` | 5,30 × 0,62 × 5,60 | 1 728 | zwei Masten, Ziffernfelder, Spielzeit |
+| `th44_ersatzbank.glb` | 6,23 × 1,87 × 1,86 | 2 832 | Tonnendach, Glas-Stirnwände, Sitzbank |
+| `th44_sprunganlage.glb` | 14,23 × 3,34 × 0,18 | 1 728 | Anlaufbahn, Absprungbalken, Sandgrube mit Randsteinen |
+| `th44_kasse.glb` | 3,70 × 3,31 × 3,09 | 2 852 | Schalterfenster mit Ablage, Schild, Vordach |
+| `th44_stadion.glb` | 96,00 × 66,67 × 17,84 | 158 256 | **Maßstabs-Test**, nur aus den Teilen oben |
+
+Generator: `tools/assets/mk_th44_stadion.py` · Werkzeug: `tools/assets/th_werkzeug.py`.
+Alle neun: zmin = 0,000. Die Feldmarkierung liegt im Ensemble, nicht in den Bauteilen
+(Lehre aus Charge 43).
+
+> 🪜 **Der Querschnitt einer Tribüne IST eine Treppe.** `keil_y` zieht ihn zu einem Körper
+> aus und liefert Auflager, Stirnseiten und Stufen in einem Zug. Aus gestapelten Quadern
+> hätte jede Reihe eine eigene Silhouette und die Stirnseite wäre offen — derselbe Fehler
+> wie das Plattendach in Charge 41. Dasselbe Werkzeug macht das Tonnendach der Ersatzbank:
+> Profil als Bogen, extrudiert, einmal um z gedreht.
+
+> ⚠️ **Ein Geländer ist DURCHSICHTIG.** Auf der Tribüne stand eine geschlossene Platte
+> 12,00 × 1,10 als „Geländer", und weil sie oben auf der Sitzseite sitzt, verdeckte sie im
+> Kontaktbogen die ganze Tribüne: zu sehen war eine Wand mit Dach, von den acht Reihen ein
+> farbiger Strich. Pfosten und zwei Riegel — sonst ist es eine Brüstungsmauer.
+
+### 📐 Und zweimal dieselbe Zahl, weil ich die erste Vermutung nicht nachgerechnet habe
+
+Die Messung meldete an der Tribüne `zmin −0,21`. Ich habe die nächstliegende Stelle
+geändert (die Wangen saßen tatsächlich auf halber Treppenhöhe statt auf ihrer eigenen) —
+und danach meldete die Messung **denselben Wert**. Die Ursache war die unterste
+Aufgangsstufe: `k·ST − ST/2 + 0,07 = −0,14`, minus halbe Dicke `= −0,21`.
+
+Beide Stellen waren falsch, aber nur eine erklärte die Zahl. **Wer eine gemessene Zahl
+korrigieren will, muss sie vorher aus der Vermutung ausrechnen können** — sonst repariert
+man den nächstbesten Kandidaten und hält das Ergebnis für bestätigt, wenn die Zahl
+zufällig verschwindet. Hier ist sie nicht verschwunden, und das war das Glück.
+
+Dieselbe Klasse von Fehler steckte im Tor: der unterste waagrechte Netzstrang lag exakt auf
+`z = 0` und ragte mit seinem Radius darunter — bei Rückwand und Seitennetzen gleichermaßen.
+
+---
 
 ---
 ## 🎡 Freizeitpark-Quartier in `traumhaus.html` — fertiger Einbau
