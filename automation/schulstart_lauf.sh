@@ -14,9 +14,12 @@ REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 LEDGER="$REPO/dropship/cj_niche_done.txt"
 MARKE=/tmp/schulstart_last
 
+# FERTIG erst, wenn (1) beide Rucksäcke importiert, (2) ihre Farbvarianten nachgezogen,
+# (3) die Such-Posten (Lunchtasche, Laptophülle, Organizer) einmal ganz durchgelaufen sind.
 if grep -q "cj:2608140735271620000" "$LEDGER" 2>/dev/null \
-   && grep -q "cj:2608140254241610000" "$LEDGER" 2>/dev/null; then
-  echo "SCHULSTART FERTIG — beide Rucksäcke im Ledger"
+   && grep -q "cj:2608140254241610000" "$LEDGER" 2>/dev/null \
+   && [ -f /tmp/schulstart_varianten_done ] && [ -f /tmp/schulstart_items_done ]; then
+  echo "SCHULSTART FERTIG — Rucksäcke, Varianten und Such-Posten erledigt"
   exit 0
 fi
 if [ -f "$MARKE" ]; then
@@ -29,5 +32,10 @@ cd "$REPO" || exit 1
 # Importer sofort an «shTok: kein Token».
 source /tmp/secrets_env.sh 2>/dev/null
 source /tmp/cj_creds.env 2>/dev/null
-ITEMS="pid:2608140735271620000,pid:2608140254241610000,search:insulated lunch bag,search:laptop sleeve with stand,search:electronics organizer bag" \
-  exec /opt/node22/bin/node automation/cj_sku_import.mjs
+# Schritt 1: Farbvarianten der zwei Rucksäcke (braucht CJ-Punkte; Exit 3 = leer)
+[ -f /tmp/schulstart_varianten_done ] || /opt/node22/bin/node automation/schulstart_varianten.mjs
+# Schritt 2: die Such-Posten. Exit 0 = ganz durchgelaufen → Marker.
+if [ ! -f /tmp/schulstart_items_done ]; then
+  ITEMS="pid:2608140735271620000,pid:2608140254241610000,search:insulated lunch bag,search:laptop sleeve with stand,search:electronics organizer bag" \
+    /opt/node22/bin/node automation/cj_sku_import.mjs && : > /tmp/schulstart_items_done
+fi
