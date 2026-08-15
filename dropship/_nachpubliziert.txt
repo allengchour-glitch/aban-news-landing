@@ -110,3 +110,5 @@ gid://shopify/Product/15500353175937	farbenblock-trainingshemd-638500	Farbenbloc
 gid://shopify/Product/15500353307009	kleine-pfannen-fur-pfannkuchen-601024	Kleine Pfannen für Pfannkuchen
 gid://shopify/Product/15500373885313	nachtlicht-furs-bett-926400	Nachtlicht fürs Bett
 gid://shopify/Product/15500405440897	apricot-sandalen-mit-klettverschluss-611200	Apricot-Sandalen mit Klettverschluss
+gid://shopify/Product/15500439945601	kanvas-sneaker-618400	Kanvas-Sneaker
+gid://shopify/Product/15500461703553	warme-gurtel-631700	Wärme-Gürtel

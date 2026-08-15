@@ -1444,3 +1444,109 @@ gid://shopify/Product/15448928911745	buchweizenfuellung	Nackenkissen mit Buchwei
 gid://shopify/Product/15448928977281	nackenstuetzkissen	Nackenstützkissen aus Bambusfaser & Memory Foam
 gid://shopify/Product/15448929239425	kissenbezuege	Jacquard Baumwoll-Kissenbezüge (2er-Set)
 gid://shopify/Product/15448929403265	haarglaettungsbuerste	Mini Haarglättungsbürste kabellos
+gid://shopify/Product/15448929436033	glaett	Kabelloser USB-Glätt- und Lockenkamm
+gid://shopify/Product/15448929468801	glaetteisen	Glätteisen mit Kaltluftfunktion
+gid://shopify/Product/15448929567105	glaettbuerste	Kabellose Ionen-Glättbürste mit LCD-Anzeige
+gid://shopify/Product/15448929796481	warmluftbuerste	2-in-1 Warmluftbürste & Lockenstab
+gid://shopify/Product/15448929829249	glaett	Kabelloser Glätt- und Lockenstab mit Anionen
+gid://shopify/Product/15448929862017	glaettbuerste	Ionen-Glättbürste mit LCD-Anzeige
+gid://shopify/Product/15448929960321	haarglaetter	Haarglätter mit LCD-Anzeige & Temperaturkontrolle
+gid://shopify/Product/15448930058625	haarglaetter	Kabelloser Mini-Haarglätter für Pony & Kurzhaar
+gid://shopify/Product/15448930091393	haarglaetter,glaetten	Mini Dampf-Haarglätter für Locken & Glätten
+gid://shopify/Product/15448930124161	glaettbuerste	Kabelloser Ionen-Glättbürste
+gid://shopify/Product/15448930189697	haarglaetter	Kabelloser Anionen-Haarglätter
+gid://shopify/Product/15448930255233	glaettkamm	Kabelloser Anionen-Glättkamm mit Akku
+gid://shopify/Product/15448930353537	haarglaetter	Kabelloser Haarglätter mit USB-Ladefunktion
+gid://shopify/Product/15448930386305	glaettkamm	Kabelloser Anionen-Glättkamm
+gid://shopify/Product/15448930451841	glaette	Anion-Haarstyler für Glätte und Locken
+gid://shopify/Product/15448930550145	temporaeres	Temporäres Haarfarbspray 30ml
+gid://shopify/Product/15448930615681	glaettungs	Kabelloser Glättungs-Kamm mit Kaltluft-Funktion
+gid://shopify/Product/15448930681217	glaetteisen	Kabelloses 2-in-1 Glätteisen & Lockenstab mit LCD
+gid://shopify/Product/15448930746753	glaetteisen	Mobiles 2-in-1 Glätteisen & Lockenstab
+gid://shopify/Product/15448930877825	glaett	Kabelloser 2-in-1 Glätt- und Stylingkamm
+gid://shopify/Product/15448930976129	glaetteisen	2-in-1 Haartrockner & Glätteisen
+gid://shopify/Product/15448931041665	haarglaetter	Profi-Haarglätter mit Touchscreen
+gid://shopify/Product/15448931074433	glaettkamm	Kabelloser Glättkamm mit Anionen-Haarpflege
+gid://shopify/Product/15448931139969	dampfglaettbuerste	Golden Rice Dampfglättbürste für hydratisiertes Haar
+gid://shopify/Product/15448931271041	glaettbuerste	Kabellose 2-in-1 Glättbürste mit USB-Ladefunktion
+gid://shopify/Product/15448931303809	haarglaetter	2-in-1 Haarglätter mit Ionen-Technologie
+gid://shopify/Product/15448931369345	glaetteisen	Kabelloses 2-in-1 Glätteisen & Lockenstab
+gid://shopify/Product/15448931467649	warmluftbuerste	Elektrische rotierende Warmluftbürste
+gid://shopify/Product/15448931533185	haarglaetter	2-in-1 Warmluft-Haarglätter für nasses & trockenes Haar
+gid://shopify/Product/15448931598721	warmluftbuerste	3-in-1 Warmluftbürste für vielseitiges Styling
+gid://shopify/Product/15448931729793	glaetteisen	Glätteisen mit Lockenfunktion und Kaltluft
+gid://shopify/Product/15448931795329	glaetteisen	Kabelloses, portables Glätteisen
+gid://shopify/Product/15448931828097	glaettkamm	Kabelloser Glättkamm mit Schnellheizfunktion
+gid://shopify/Product/15448931893633	glaettbuerste	Glättbürste & Lockenstab 2-in-1
+gid://shopify/Product/15448931926401	glaett	Kabelloser 2-in-1 Glätt- und Lockenstab
+gid://shopify/Product/15448932286849	haarglaettungsbuerste	Elektrische Haarglättungsbürste für Haar & Bart
+gid://shopify/Product/15448932319617	glaetteisen	Profi Dampf-Glätteisen mit Keramik & Turmalin
+gid://shopify/Product/15448932385153	verbruehschutz	Automatischer Lockenstab mit Verbrühschutz
+gid://shopify/Product/15448932548993	haarglaetter	Kabelloser 2-in-1 Haarglätter und Lockenstab mit Ionen
+gid://shopify/Product/15448932614529	haarglaetter,spruehfunktion	Kabelloser Negative-Ionen Haarglätter mit Sprühfunktion
+gid://shopify/Product/15448932843905	glaetteisen	Glätteisen & Lockenstab für Long Bob
+gid://shopify/Product/15448932942209	rundbuerste	Thermo-Rundbürste 1.5 Zoll mit LCD-Display
+gid://shopify/Product/15448933237121	haarglaetter	Kabelloser Haarglätter für Volumen & Glanz
+gid://shopify/Product/15448933368193	glaetteisen	Katzen-Glätteisen & Lockenstab 3-in-1 Set
+gid://shopify/Product/15448933630337	glaetteisen	Profi Titanium Glätteisen für Bob-Frisuren
+gid://shopify/Product/15448933663105	heissluftbuerste	Heissluftbürste 1.5 Zoll mit Volumenfunktion
+gid://shopify/Product/15448933925249	glaetteisen	Kabelloser Mini Glätteisen & Lockenstab
+gid://shopify/Product/15448934023553	warmluftbuerste,glaetten	Warmluftbürste für Locken und Glätten
+gid://shopify/Product/15448934056321	gesichtsreinigungsbuerste,aufsaetzen	Wasserdichte Gesichtsreinigungsbürste mit 5 Aufsätzen
+gid://shopify/Product/15448934220161	glaettbuerste	Kabellose Ionen-Glättbürste mit 12 Heizstufen
+gid://shopify/Product/15448934318465	maenner	Elektrischer Folienrasierer für Männer
+gid://shopify/Product/15448935367041	hautverjuengung	Photonen-Gesichtsmaske für Hautverjüngung
+gid://shopify/Product/15448936022401	geraet	Automatisches Sprudelbad-Gerät
+gid://shopify/Product/15448936415617	infusionsgeraet	Sauerstoff-Infusionsgerät für Zuhause
+gid://shopify/Product/15448937070977	katzenhoehle	Ganzjahres Katzenhöhle
+gid://shopify/Product/15448937267585	foermiger	Kompakter U-förmiger Kratzbaum mit Sisal
+gid://shopify/Product/15448937398657	katzenhoehle	Kratzbaum Kaktus mit Katzenhöhle
+gid://shopify/Product/15448937496961	klettergeruest	Kokosnussbaum Katzenbett mit Klettergerüst
+gid://shopify/Product/15448937824641	liegeflaeche	Sisal-Kratzbaum mit Liegefläche für Katzen
+gid://shopify/Product/15448938250625	doppelstoeckige	Doppelstöckige Katzenvilla mit Kratzbaum
+gid://shopify/Product/15448938283393	klettergeruest	Grosser Katzenbaum mit Klettergerüst und Katzenhaus
+gid://shopify/Product/15448938348929	klettergeruest	Katzen-Klettergerüst mit Liegemulde
+gid://shopify/Product/15448938447233	aeltere	Katzenhaus Baumhaus für kleine und ältere Katzen
+gid://shopify/Product/15448938676609	liegeflaechen	Kratzbaum mit robusten Liegeflächen
+gid://shopify/Product/15448938709377	liegeflaechen,hoehle	Katzenbaum mit Liegeflächen und Höhle
+gid://shopify/Product/15448939168129	katzenhoehle	Kratzbrett und Katzenhöhle – TV-Design
+gid://shopify/Product/15448939299201	haengematte	Katzenbaum mit Kratzbaum und Hängematte
+gid://shopify/Product/15448939364737	liegeflaechen	Deckenhoher Katzenbaum mit Wolken-Liegeflächen
+gid://shopify/Product/15448939823489	doppelstoeckiger	Doppelstöckiger Katzenbaum aus Massivholz
+gid://shopify/Product/15448940249473	ganzjaehrig	Snackbox Katzenbett – Ganzjährig & Multifunktional
+gid://shopify/Product/15448940577153	doppelstoeckiges	Doppelstöckiges Katzenhaus mit Kratzbrett
+gid://shopify/Product/15448940642689	doppelstoeckiges	Doppelstöckiges Katzenhaus mit Kratzbaum
+gid://shopify/Product/15448940708225	stoeckiger,waeschestaender	3-Stöckiger Wäscheständer mit 24 Clips und 32 Stangen
+gid://shopify/Product/15448940872065	pluesch	Gestreiftes Katzensofa – Plüsch & Rutschfest
+gid://shopify/Product/15448940970369	glueckskatzenbett	Glückskatzenbett – Atmungsaktiv und Warm
+gid://shopify/Product/15448941035905	foermiges	L-förmiges Sisal-Katzenkratzbrett
+gid://shopify/Product/15448941134209	haengematte	Boho Hängematte für Katzen
+gid://shopify/Product/15448941330817	erhoehtes	Erhöhtes, atmungsaktives Haustierbett
+gid://shopify/Product/15448941494657	erhoehtes	XL Erhöhtes Hundebett, Rot
+gid://shopify/Product/15448941560193	erhoehtes	Erhöhtes Hundebett für grosse Hunde, Beige
+gid://shopify/Product/15448941658497	erhoehtes	Erhöhtes Hundebett für grosse Hunde, Grau
+gid://shopify/Product/15448941691265	erhoehtes	Erhöhtes Hundebett mit Blachen-Dach
+gid://shopify/Product/15448941986177	waermefunktion	Haustier-Sofabett mit Wärmefunktion
+gid://shopify/Product/15448942117249	erhoehtes	Erhöhtes Hundebett mit Sonnendach
+gid://shopify/Product/15448942248321	erhoeht	Hundebett mit Sonnendach, erhöht, 122x91cm, Rot
+gid://shopify/Product/15448942707073	plueschtier	Quietsche-Ente für aggressive Kauer – Plüschtier
+gid://shopify/Product/15448942838145	plueschtier,loewe	Quietschendes Plüschtier für Hunde, Löwe
+gid://shopify/Product/15448942903681	plueschtiere	5er-Pack Quietsch-Plüschtiere für Hunde
+gid://shopify/Product/15448943034753	unzerstoerbares	Unzerstörbares Hunde-Kauspielzeug Bär, 25 cm
+gid://shopify/Product/15448943198593	plueschtier	Tier-Plüschtier «Warm Companionship»
+gid://shopify/Product/15448943427969	plueschtier	Luchs Plüschtier naturgetreu
+gid://shopify/Product/15448943460737	geraeumig	Katzenklo E24 Grau, Robust und Geräumig
+gid://shopify/Product/15448943755649	erhoehtes	Erhöhtes, auslaufsicheres Katzenklo
+gid://shopify/Product/15448943821185	doppeltuer	Katzentoilette mit Doppeltür
+gid://shopify/Product/15448944247169	geraeumig	Klassische Katzentoilette – Offen & Geräumig
+gid://shopify/Product/15448944705921	huepfball	Ferngesteuerter Hüpfball für Hunde
+gid://shopify/Product/15448944804225	plueschtier	Plüschtier mit Quietscher für Hunde
+gid://shopify/Product/15448945361281	kaubestaendig	Golden Retriever Spielball-Set, kaubeständig
+gid://shopify/Product/15448945688961	huerden	Hunde Agility-Set mit verstellbaren Hürden
+gid://shopify/Product/15448945983873	plueschball	Interaktiver Plüschball für Hunde
+gid://shopify/Product/15448946016641	kaesehaus	3-in-1 Käsehaus Smart Katzenspielzeug
+gid://shopify/Product/15448946966913	plueschtier,zaehneputzen	Plüschtier mit Sound zum Kauen & Zähneputzen
+gid://shopify/Product/15448946999681	plueschhund	Quietschender Plüschhund für verspielte Vierbeiner
+gid://shopify/Product/15448947097985	schnueffelspielzeuge	Quietschende Schnüffelspielzeuge für kleine Hunde
+gid://shopify/Product/15448947130753	plueschtier	Quietschende Plüschtier-Spielzeuge für Hunde
+gid://shopify/Product/15448947294593	pluesch	Plüsch Ball mit Sound für Hunde
