@@ -43,6 +43,11 @@ def umstellen(s):
 
 
 def main():
+    if not os.path.exists(EXPORT):
+        # /tmp-Wipe: Kandidatenquelle weg. PAUSE statt Crash-Loop — der nächste Voll-Export
+        # (oder ein Lauf mit EXPORT=…) macht weiter. KEIN FERTIG: es ist nichts erledigt.
+        print(f"PAUSE (Kandidatenquelle {EXPORT} fehlt — nach dem nächsten Voll-Export weiter)")
+        return
     kandidaten = []
     for zeile in open(EXPORT):
         p = json.loads(zeile)

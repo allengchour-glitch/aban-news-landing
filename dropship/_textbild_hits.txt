@@ -6833,3 +6833,4 @@ gid://shopify/Product/15451926626689	37->0	Off-Shoulder Bodycon Minikleid mit Fl
 gid://shopify/Product/15452601057665	8->1	Nagelfräser · Portables Poliergerät mit Schleifaufsätzen
 gid://shopify/Product/15452602728833	9->3	Retro Sonnenbrille
 gid://shopify/Product/15452675506561	35->0	Formende Nagelhose
+gid://shopify/Product/15452683239809	17->0	Sicherheitsgurt Schulterpolster Schutz
