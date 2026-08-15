@@ -10,14 +10,6 @@
 2026-08-12	Shapewear	gid://shopify/Product/15492325900673	Figurformender Minikleid
 2026-08-12	Ladestation 3-in-1	gid://shopify/Product/15450828636545	3-in-1 Wireless Ladestation für mehrere Geräte
 2026-08-12	Ladestation 3-in-1	gid://shopify/Product/15452599091585	3-in-1 Magnet-Ladestation
-2026-08-12	Beauty-Gerät	gid://shopify/Product/15449124798849	Ultraschall-Gesichtsreinigungsbürste aus Silikon
-2026-08-12	Hautpflege-Serum	gid://shopify/Product/15446061547905	OUHOE Schneckencreme – Sanfte Gesichtspflege
-2026-08-12	Mini-Beamer	gid://shopify/Product/15481680953729	Mini-Projektor für Smartphone (kabelgebunden)
-2026-08-12	Mini-Beamer	gid://shopify/Product/15481691898241	4K Smart Mini Beamer mit WLAN
-2026-08-12	Ordnung & Aesthetic	gid://shopify/Product/15454000546177	Breiter Haushalts-Organizer mit 35 Fächern
-2026-08-12	Ordnung & Aesthetic	gid://shopify/Product/15454094721409	Aufbewahrungsbox aus Suede
-2026-08-12	Shapewear	gid://shopify/Product/15450853704065	Shapewear Kleid Jumpsuit mit Brustpolster
-2026-08-12	Ladestation 3-in-1	gid://shopify/Product/15452599091585	3-in-1 Magnet-Ladestation
 2026-08-13	Beauty-Gerät	gid://shopify/Product/15449176310145	Warm Sensation Gesichtsreinigungsbürste
 2026-08-13	Beauty-Gerät	gid://shopify/Product/15449177325953	Gesichtsreinigungsbürste mit Rotation
 2026-08-13	Hautpflege-Serum	gid://shopify/Product/15448826773889	Selbstbräunungstropfen mit Hyaluronsäure
@@ -54,3 +46,4 @@
 2026-08-15	Shapewear	gid://shopify/Product/15447900750209	Sportlicher Taillenformer mit Reissverschluss
 2026-08-15	Ladestation 3-in-1	gid://shopify/Product/15493848203649	4-in-1 Wireless Ladestation mit Schnellladefunktion
 2026-08-15	Ladestation 3-in-1	gid://shopify/Product/15495082377601	Magnetische 3-in-1 Wireless Powerbank
+2026-08-15	Blush & Lippen-Balm	gid://shopify/Product/15445834793345	High Gloss Rouge Stick

@@ -36,7 +36,7 @@ TAG = "hype-jetzt"
 HANDLE = "hype-jetzt"
 LEDGER = "dropship/_hype_verlauf.txt"
 
-QUELLE = "Web-Recherche 12.08.2026 (TikTok-/Dropshipping-Trendberichte August 2026)"
+QUELLE = "Web-Recherche 15.08.2026 (Trendtrack/CJ/EPROLO August-Berichte: Beauty-Geräte, Snail-Serum, Shapewear, Aesthetic-Ordnung bestätigt; neu Blush-Balms; Back-to-School läuft über die Schulstart-Reihe)"
 THEMEN = {
     # ⚠️ «IPL» ohne Wortgrenze steckt in «L-IPL-iner»: der erste Lauf setzte einen
     # «Peel-Off Lipliner» als Beauty-GERÄT auf die Startseite. Dieselbe Falle wie «rock» in
@@ -52,6 +52,11 @@ THEMEN = {
     "Shapewear": re.compile(r'Shapewear|Body Shaper|Figurformend|Taillenformer', re.I),
     "Ladestation 3-in-1": re.compile(r'\d-in-\d[- ]?(?:Wireless )?Ladestation|MagSafe|'
                                      r'Magnet-Ladestation|Wireless Powerbank', re.I),
+    # Neu 15.08.: Blush-Balms/Cream-Blush sind laut August-Trendberichten die
+    # meistgehypte Makeup-Kategorie auf TikTok (günstig, breite Zielgruppe).
+    "Blush & Lippen-Balm": re.compile(
+        r'Blush[- ]?(?:Balm|Stick)|Cream[- ]?Blush|Rouge[- ]?Stick|Wangenr[öo]te|'
+        r'Lip[- ]?(?:Balm|Tint)|Lippenbalsam.*(?:T[öo]nung|Farbe)', re.I),
 }
 # Warengruppen, die schon einmal aus der Startreihe genommen wurden.
 RAUS_TYP = {"Spielzeug & Spiele", "Partydeko & Ballone", "Kostüme & Verkleidung"}
@@ -273,8 +278,17 @@ def main():
         # die man eben wegen ihres Bildes aussortiert hat.
         d = gql('query($id:ID!){node(id:$id){... on Product{tags status}}}', {"id": gid})
         knoten = (d.get("data") or {}).get("node") or {}
-        if AUSGEMUSTERT in (knoten.get("tags") or []) or knoten.get("status") != "ACTIVE":
+        live_tags = knoten.get("tags") or []
+        if AUSGEMUSTERT in live_tags or knoten.get("status") != "ACTIVE":
             print(f"   übersprungen (live): {t[:48]}", flush=True)
+            continue
+        # ⚠️ AUCH DEN TAG SELBST LIVE PRÜFEN (teuer gelernt 15.08.): Der Export ist älter als
+        # die Reihe, also fehlt `hype-jetzt` dort bei allem, was nach dem Export aufgenommen
+        # wurde. Ohne diese Zeile stempelte der Tageslauf dieselben Produkte jeden Tag mit
+        # einem frischen hype-seit-Datum — und die 21-Tage-Ablauflogik lief NIE ab (die
+        # Ladestation trug nach drei Tagen drei Datums-Tags).
+        if TAG in live_tags:
+            print(f"   übersprungen (live, schon in der Reihe): {t[:48]}", flush=True)
             continue
         r = gql('mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}',
                 {"id": gid, "t": [TAG, "hype-seit-" + HEUTE]})
