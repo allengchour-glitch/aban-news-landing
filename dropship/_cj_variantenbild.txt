@@ -119,3 +119,5 @@ gid://shopify/Product/15446272311681	zugeordnet	15	Scooter Baby Can Sit
 gid://shopify/Product/15446272606593	bild-urls-tot
 gid://shopify/Product/15446272639361	zugeordnet	15	LED Laser Offroad-Scheinwerfer
 gid://shopify/Product/15446272672129	zugeordnet	2	LED-Fahrradtasche mit Fernbedienung
+gid://shopify/Product/15446272737665	zugeordnet	2	LED-Velo-Blinklicht mit smarter Richtungsanzeige
+gid://shopify/Product/15446272803201	bild-urls-tot
