@@ -127,9 +127,14 @@ def _b_tribuene():
         dr = box(-BR/2 - 0.2 + k*(BR + 0.4)/8, 0.35, R*ST + 4.05,
                  0.10, R*AU + 1.6, 0.05, m["stahl"])
         dr.rotation_euler[0] = -0.16
+    # ⚠️ ZWEITER Anlauf: die -0,21 kamen gar nicht von den Wangen, sondern von
+    # hier. Die unterste Aufgangsstufe stand auf k*ST - ST/2 + 0,07 = -0,14 und
+    # reichte mit ihrer halben Dicke bis -0,21. Ich hatte die erste Vermutung
+    # nicht nachgerechnet, sondern die naechstliegende Stelle geaendert — und die
+    # Messung meldete danach denselben Wert. Erst die Rechnung fand es.
     for s in (-1, 1):                                   # Aufgang seitlich
         for k in range(R):
-            box(s*(BR/2 + 0.42), -R*AU/2 + k*AU + AU/2, k*ST - ST/2 + 0.07,
+            box(s*(BR/2 + 0.42), -R*AU/2 + k*AU + AU/2, 0.07 + k*ST,
                 0.70, AU, 0.14, m["beton2"])
 
 def tribuene(): _modul("th44_tribuene", _b_tribuene)
@@ -190,7 +195,9 @@ def _b_tor():
              0.045, m["stein"], 6, True, "Buegel")
         flach(zyl(s*B/2, -T/2, 0.05, 0.045, T, m["stein"], 8, (math.pi/2, 0, 0)))
     flach(zyl(0, -T, 0.10, 0.045, B, m["stein"], 8, (0, math.pi/2, 0)))
-    _netzflaeche(0, -T + 0.02, H/2, B, H, m, "xz", 0.34)             # Rueckwand
+    # ⚠️ Auf H/2 lag der unterste waagrechte Strang auf z = 0 und ragte mit seinem
+    # Radius darunter — dieselbe Ursache wie bei den Seitennetzen.
+    _netzflaeche(0, -T + 0.02, H/2 + 0.02, B, H, m, "xz", 0.34)      # Rueckwand
     for s in (-1, 1):                                                # Seitennetze
         # ⚠️ Auf H/2 - 0,15 lag der unterste waagrechte Strang genau auf z = 0 und
         # ragte mit seinem Radius darunter. Zwei Zentimeter hoeher genuegt.
