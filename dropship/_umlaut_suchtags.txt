@@ -1550,3 +1550,27 @@ gid://shopify/Product/15448946999681	plueschhund	Quietschender Plüschhund für 
 gid://shopify/Product/15448947097985	schnueffelspielzeuge	Quietschende Schnüffelspielzeuge für kleine Hunde
 gid://shopify/Product/15448947130753	plueschtier	Quietschende Plüschtier-Spielzeuge für Hunde
 gid://shopify/Product/15448947294593	pluesch	Plüsch Ball mit Sound für Hunde
+gid://shopify/Product/15448947360129	glacestaengeli	Glacestängeli – Spielzeug für Hunde & Katzen
+gid://shopify/Product/15448947425665	trainingsgeraet	Mini Ultraschall-Tierabwehr & Trainingsgerät
+gid://shopify/Product/15448947458433	plueschtier	Elektrisches Plüschtier mit Sound für Katzen
+gid://shopify/Product/15448947491201	geraet	Ultraschall Anti-Bell-Gerät, tragbar
+gid://shopify/Product/15448947589505	plueschtier	Plüschtier Schnabeltier mit Sound für Hunde
+gid://shopify/Product/15448947622273	pluesch	Hundespielball Plüsch mit Sound
+gid://shopify/Product/15448947917185	plueschmaus	Sprechende Plüschmaus für Hunde
+gid://shopify/Product/15448947949953	hoehlenbett	Haustier Zelt- und Höhlenbett
+gid://shopify/Product/15448948015489	eichhoernchen	Quietschendes Eichhörnchen-Hundespielzeug
+gid://shopify/Product/15448948146561	katzenbuerste	Interaktive Katzenbürste mit Kratzfunktion
+gid://shopify/Product/15448948179329	plueschtier	Quietschendes Plüschtier für Hunde
+gid://shopify/Product/15448948212097	hundezaehne	Quietsche-Ente aus Latex für gesunde Hundezähne
+gid://shopify/Product/15448948375937	plueschtier	Weihnachts-Plüschtier mit Sound für Hunde & Katzen
+gid://shopify/Product/15448950112641	verdauungschueechli	Probiotische Verdauungschüechli für Hunde
+gid://shopify/Product/15448950276481	gefluegel	Futterport für Geflügel – 6er-Set
+gid://shopify/Product/15448950407553	futterbehaelter	Futterbehälter luftdicht mit Messbecher
+gid://shopify/Product/15448950505857	loeffel	Churu Löffel für Katzenleckerlis
+gid://shopify/Product/15448951193985	erhoehter	Erhöhter Keramiknapf für Katzen & Hunde
+gid://shopify/Product/15448951980417	ueberzug	Skihelm-Überzug mit integriertem Visier
+gid://shopify/Product/15448953291137	aktivitaeten	Helm für Hip-Hop, Rollsport & Outdoor-Aktivitäten
+gid://shopify/Product/15448953520513	hoehlen	Kletter-, Höhlen- und Bergsporthelm
+gid://shopify/Product/15448954110337	motorraeder	Retro-Halbschalenhelm für E-Motorräder
+gid://shopify/Product/15448954896769	aktivitaeten	Reithelm-Visier für Outdoor-Aktivitäten
+gid://shopify/Product/15448955715969	stueck	LED Tagfahrlicht für Autos (2 Stück)
