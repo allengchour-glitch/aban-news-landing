@@ -53,7 +53,10 @@ def _gras(x, y, m, halme=5, hoch=0.20):
     for k in range(halme):
         a = TAU*k/halme + 0.35*(k % 2)
         h = hoch*(0.60 + 0.40*((k*7) % 5)/4.0)
-        kl = kegel(x + math.cos(a)*0.035, y + math.sin(a)*0.035, h/2*0.94,
+        # ⚠️ Der Halm ist geneigt, also faellt seine Grundflaeche auf einer Seite ab:
+        # bei z = h/2 stand die Unterkante 1 cm unter Null (zmin-Warnung). Der
+        # Aufschlag von 1 cm faengt genau diese Neigung ab.
+        kl = kegel(x + math.cos(a)*0.035, y + math.sin(a)*0.035, h/2 + 0.010,
                    0.024, 0.0, h, m, 5)
         kl.rotation_euler = (math.sin(a)*0.30, -math.cos(a)*0.30, 0.0)
         flach(kl)
