@@ -664,6 +664,18 @@ for(const [cat,label] of grp.cats){
    // Dubletten-Wache: existiert schon ein aktives Produkt mit exakt diesem Titel? (Lieferant listet gleiche Artikel mehrfach)
    const dq=await sgql(st,`query($q:String!){products(first:1,query:$q){edges{node{id}}}}`,{q:`title:"${title.replace(/"/g,'')}" status:active`});
    if(dq.data?.products?.edges?.length){console.log('  skip(dup-titel)',title.slice(0,40));continue;}
+   // ⚠️ SKU-WACHE (15.08.2026). Die Titel-Wache greift nicht, wenn zwei Runner dasselbe
+   // CJ-Produkt unter VERSCHIEDENEN erzeugten Titeln anlegen — genau so entstanden heute
+   // «Apricot-Sandalen mit Klettverschluss» und «Schmale Wedges»: 40 identische Varianten-
+   // SKUs, zwei aktive Produkte, beide vom selben Tag. Die Varianten-SKU des Lieferanten
+   // ist eindeutig; steht sie schon an einem aktiven Produkt, ist die Ware schon im Shop.
+   const ersteSku=(variants[0]?.inventoryItem?.sku||'').replace(/"/g,'');
+   if(ersteSku.length>8){
+     const sq=await sgql(st,`query($q:String!){products(first:1,query:$q){edges{node{id}}}}`,
+                         {q:`sku:"${ersteSku}" status:active`});
+     if(sq.data?.products?.edges?.length){console.log('  skip(dup-sku)',ersteSku.slice(0,30));
+       fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid)); continue;}
+   }
    const r=await sgql(st,SET,{i:input}); const e=r.data?.productSet?.userErrors||[]; const pid=r.data?.productSet?.product?.id;
    if(e.length||!pid){console.log('  ✗',title.slice(0,30),JSON.stringify(e).slice(0,80));continue;}
    const media=imgs.slice(1).map(u=>({originalSource:u,mediaContentType:'IMAGE'}));
