@@ -203,7 +203,13 @@ def waehle_versand(opts, ware_usd, vk_chf):
 
     beides = [o for o in opts if rentabel(o) and schnell(o)]
     if beides:
-        return min(beides, key=lambda o: max_tage(o.get("logisticAging"))), []
+        # ⚠️ GÜNSTIGSTE, NICHT SCHNELLSTE (15.08.2026, Bestellung #1014). «Schnellste
+        # rentable» wählte DHL für $37.19 — Marge CHF 3.77 —, obwohl CJPacket dasselbe
+        # Lieferversprechen (10–20 Werktage laut Produktseite) für einen Bruchteil hält.
+        # Schnelligkeit ÜBER dem Versprechen ist kein Kundenwert, den der Shop bezahlt
+        # bekommt; sie war hier nur ein Geschenk an den Frachtführer. Bei Preisgleichheit
+        # entscheidet die Laufzeit.
+        return min(beides, key=lambda o: (o["logisticPrice"], max_tage(o.get("logisticAging")))), []
     nur_rentabel = [o for o in opts if rentabel(o)]
     if nur_rentabel:
         # lieber rentabel und langsam als Verlust — aber deutlich melden
@@ -290,11 +296,25 @@ def main():
         tel = (sa.get("phone") or cust.get("phone")
                or ((cust.get("defaultAddress") or {}).get("phone")) or "")
         if not re.fullmatch(r'[\d +\-()]{6,32}', tel or ""):
+            # ⚠️ HÄNDLER-NUMMER ALS RÜCKFALL (15.08.2026, Bestellung #1014). Die Kundin hatte
+            # keine Nummer hinterlegt und CJ lehnt Bestellungen ohne ab — der Lauf stand.
+            # Für die Zustellung in die Schweiz ruft ohnehin niemand an; als Kontakt gehört
+            # dann der HÄNDLER hinein, nicht eine erfundene Nummer. Die Nummer des Betreibers
+            # stammt aus seinen eigenen Bestellungen (#1010/#1013).
+            tel = os.environ.get("FALLBACK_TEL", "+41795382814")
+            print(f"  {o['name']}: ℹ️ keine Kunden-Telefonnummer — Händler-Nummer als Kontakt", flush=True)
+        if not re.fullmatch(r'[\d +\-()]{6,32}', tel or ""):
             print(f"  {o['name']}: ⚠️ keine brauchbare Telefonnummer — CJ lehnt das ab, User fragen", flush=True)
             continue
 
         alle = o["lineItems"]["nodes"]
-        items = [li for li in alle if (li.get("sku") or "").upper().startswith("CJ-")]
+        # ⚠️ Es gibt CJ-SKUs OHNE das «CJ-»-Präfix im Katalog («CJLS291603531EV», Bestellung
+        # #1014) — die nackte CJ-Varianten-SKU. Der Präfix-Test allein liess den Lauf sie als
+        # «anderer Lieferant» überspringen, obwohl vid_fuer() genau diese Form (b) längst kann.
+        def ist_cj(sku):
+            u = (sku or "").upper()
+            return u.startswith("CJ-") or bool(re.match(r'^CJ[A-Z]{2}\d{6,}', u))
+        items = [li for li in alle if ist_cj(li.get("sku"))]
         if not items:
             print(f"  {o['name']}: keine CJ-Artikel (anderer Lieferant)", flush=True)
             continue
