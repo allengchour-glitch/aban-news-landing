@@ -233,3 +233,12 @@ gid://shopify/Article/1001935896961	titelbild	halskette-richtig-wahlen-lange-mat
 gid://shopify/Article/1001935929729	titelbild	sneaker-guide-2026-der-richtige-schuh-fur-jeden-an
 gid://shopify/Article/1001935962497	titelbild	wohnaccessoires-deko-so-schaffst-du-ein-gemutliche
 gid://shopify/Article/1001935995265	titelbild	geschenkideen-2026-die-passende-idee-fur-jeden-anl
+gid://shopify/Article/1001936028033	titelbild	rucksack-fur-alltag-uni-reise-der-grosse-rucksack-
+gid://shopify/Article/1001936060801	titelbild	ohrringe-guide-stecker-creolen-hanger-fur-jeden-ty
+gid://shopify/Article/1001936093569	titelbild	winter-warme-zuhause-heizdecke-kuscheldecke-co-ric
+gid://shopify/Article/1001936126337	titelbild	gaming-setup-fur-einsteiger-die-richtige-grundauss
+gid://shopify/Article/1001936159105	titelbild	herrenuhr-guide-welcher-uhrentyp-passt-zu-deinem-s
+gid://shopify/Article/1002257744257	titelbild	die-besten-mini-ventilatoren-fur-unterwegs-2026-ra
+gid://shopify/Article/1002257777025	titelbild	sonnenbrillen-trends-2026-der-schweizer-sommer-gui
+gid://shopify/Article/1002258104705	titelbild	edelstahl-schmuck-fur-herren-2026-der-guide-fur-hy
+gid://shopify/Article/1002258137473	kein-passendes-bild	beauty-routine-2026-die-5-essentials-fur-strahlend

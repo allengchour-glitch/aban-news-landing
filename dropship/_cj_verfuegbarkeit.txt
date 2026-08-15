@@ -9988,3 +9988,12 @@ gid://shopify/Product/15454017192321	ok
 gid://shopify/Product/15454017126785	ok
 gid://shopify/Product/15454017061249	ok
 gid://shopify/Product/15454017028481	ok
+gid://shopify/Product/15454016864641	ok
+gid://shopify/Product/15454016700801	ok
+gid://shopify/Product/15454016602497	ok
+gid://shopify/Product/15454016569729	ok
+gid://shopify/Product/15454016471425	ok
+gid://shopify/Product/15454016438657	ok
+gid://shopify/Product/15454016340353	ok
+gid://shopify/Product/15454016307585	ok
+gid://shopify/Product/15454016242049	ok

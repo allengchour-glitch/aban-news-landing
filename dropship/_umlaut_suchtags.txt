@@ -969,3 +969,140 @@ gid://shopify/Product/15448609423745	rueschen	High Waist Mini-Jeansrock mit Rüs
 gid://shopify/Product/15448609784193	rueschen	High-Waist Cake Skirt mit Rüschen
 gid://shopify/Product/15448609816961	gehaekelter	Gehäkelter Bikini-Wickelrock mit Perlen
 gid://shopify/Product/15448613945729	groessen	A-Linien Midirock für grosse Grössen
+gid://shopify/Product/15448620564865	fruehling	Vielseitige Jeans für Frühling und Herbst
+gid://shopify/Product/15448625512833	knoechellang	Mid-Stretch Skinny Jeans – Knöchellang
+gid://shopify/Product/15448637538689	bauchstuetze	Umstandsjeans Weiss mit Bauchstütze
+gid://shopify/Product/15448639242625	goldknoepfen	High-Waist Flare Jeans mit Goldknöpfen
+gid://shopify/Product/15448640848257	tragegefuehl	High-Waist Yoga Shorts – Nahtloses Tragegefühl
+gid://shopify/Product/15448641470849	rueschen	High Waist Shorts mit weitem Bein und Rüschen
+gid://shopify/Product/15448642781569	gerueschte	Gerüschte Yoga- und Fitness-Shorts für Damen
+gid://shopify/Product/15448643076481	duenne,seidenstruempfe	Nahtlose Ultra-dünne Damen Seidenstrümpfe
+gid://shopify/Product/15448643666305	gehaekelte	Gehäkelte Strand-Shorts mit Kordelzug
+gid://shopify/Product/15448644256129	uebergroessen	Gestreifte High-Waist Denim Shorts in Übergrössen
+gid://shopify/Product/15448645960065	laessige,maedchen	Lässige Denim Shorts für Mädchen
+gid://shopify/Product/15448646254977	schnuerung	Sportliche Shorts mit Schnürung
+gid://shopify/Product/15448647172481	hueftstraffend	High Waist Yoga Pants – Hüftstraffend & Schnelltrocknend
+gid://shopify/Product/15448649040257	europaeischen	High-Waist Yoga-Pants im europäischen Stil
+gid://shopify/Product/15448649564545	gefuettert	PU-Lederhose High-Waist, gefüttert, Cropped
+gid://shopify/Product/15448650416513	buendchen	Vielseitige Caprihose mit Bündchen
+gid://shopify/Product/15448650809729	gefuetterte,europaeischen	Gefütterte Schlaghose im europäischen Stil
+gid://shopify/Product/15448650875265	hueft	Bootcut Fitnesshose mit Hüft-Push-up
+gid://shopify/Product/15448651071873	traegern	Damen Veloshorts mit Trägern
+gid://shopify/Product/15448651891073	schnuerung	Gepunktete Cropped Hose mit Schnürung
+gid://shopify/Product/15448652775809	schleifenguertel	Gestreifte Hose mit weitem Bein und Schleifengürtel
+gid://shopify/Product/15448653169025	reissverschluessen	Patchwork Wide-Leg Hose mit Reissverschlüssen
+gid://shopify/Product/15448655036801	ueberkreuztem	Weite Hose mit überkreuztem Bund
+gid://shopify/Product/15448656609665	groessen	Weite Hose mit hohem Bund für kleine Grössen
+gid://shopify/Product/15448657002881	kostuem	Tarnmuster Special Agent Captain Kostüm
+gid://shopify/Product/15448657527169	knoepfen,uebergroessen	Damen Langarm-Top mit Knöpfen in Übergrössen
+gid://shopify/Product/15448657625473	laternenaermeln	Elegante Bluse mit Laternenärmeln und Blumenmuster
+gid://shopify/Product/15448657691009	aermellose,taillenguertel	Lange ärmellose Weste mit Taillengürtel
+gid://shopify/Product/15448658018689	aermeln	Damen Freizeit-Top mit langen Ärmeln und Paneel-Design
+gid://shopify/Product/15448658084225	traegern	Gestreiftes Strick-Top mit Holzperlen-Trägern
+gid://shopify/Product/15448658116993	rueschen,aermeln	Damen V-Neck Top mit Rüschen und ausgestellten Ärmeln
+gid://shopify/Product/15448658477441	aermelloses	Ärmelloses Tanktop für Damen
+gid://shopify/Product/15448658772353	aermeln	Kurzer Blazer mit Dreiviertel-Ärmeln für Damen
+gid://shopify/Product/15448659001729	aermeln	Damen Freizeit-Top mit Rundhals und 7/8-Ärmeln
+gid://shopify/Product/15448659034497	haekel	Vielseitiger Häkel-Cardigan für Damen
+gid://shopify/Product/15448659460481	tupfenaermeln	Damen Mesh-Top mit Tupfenärmeln
+gid://shopify/Product/15448659591553	europaeischen	Eleganter Damenblazer im europäischen Stil
+gid://shopify/Product/15448659624321	borduere	Body mit Spitze und Wimpern-Bordüre
+gid://shopify/Product/15448659853697	rueschen,aermeln	Chiffon Bluse mit Rüschen und ausgestellten Ärmeln
+gid://shopify/Product/15448659886465	schraeger	Kurzarm-Top mit Jacquard-Print und schräger Schulter
+gid://shopify/Product/15448659919233	rueschen	Damen Halterneck Top mit Spitze und Rüschen
+gid://shopify/Product/15448660181377	aermelloser	Ärmelloser Leinen-Blazer für Damen
+gid://shopify/Product/15448660279681	aermeln	Plissiertes Langarm-Shirt mit Bubi-Ärmeln
+gid://shopify/Product/15448660377985	aermelloses,haekel	Ärmelloses Sommer-Tanktop mit Häkel-Detail
+gid://shopify/Product/15448660541825	knoepfen	Leinen-Top mit V-Ausschnitt und Knöpfen
+gid://shopify/Product/15448660738433	knoepfen	V-Neck T-Shirt mit Spitze und Knöpfen
+gid://shopify/Product/15448660869505	aermeln	T-Shirt mit Cartoon-Print und kurzen Ärmeln
+gid://shopify/Product/15448661000577	traegerloses	Trägerloses Top mit Resort-Print
+gid://shopify/Product/15448661787009	rueschen	Kurzarm-Shirt mit V-Ausschnitt und Rüschen
+gid://shopify/Product/15448662901121	rueschen	V-Neck Camisole mit Rüschen
+gid://shopify/Product/15448662999425	aermellose,schnuerung	Ärmellose Bluse mit V-Ausschnitt und Schnürung
+gid://shopify/Product/15448663163265	raffaermeln	Damen Top mit Rundhals und Raffärmeln
+gid://shopify/Product/15448663949697	aermellose,knoepfen	Ärmellose Blazer-Weste mit drei Knöpfen
+gid://shopify/Product/15448664441217	aermelloses	Ärmelloses Off-Shoulder Top mit Lochmuster
+gid://shopify/Product/15448665424257	guertel	Midilanger Wollmantel mit Gürtel
+gid://shopify/Product/15448666276225	taillenguertel	Wollmantel mit Revers und Taillengürtel
+gid://shopify/Product/15448666341761	knoepfen	Eleganter Wollmantel mit Revers und Knöpfen
+gid://shopify/Product/15448666407297	bindeguertel	Eleganter Wollmantel mit Revers und Bindegürtel
+gid://shopify/Product/15448666734977	pluesch	Damen Plüsch-Jacke mit Reissverschluss
+gid://shopify/Product/15448666866049	schnuerdetails	Eleganter Strick-Cardigan mit Schnürdetails
+gid://shopify/Product/15448668045697	ausfuehrung	Doppelgesichtiger Wollmantel – Lange Ausführung
+gid://shopify/Product/15448668242305	guertel	Damen Wollmantel mit Gürtel und Stehkragen
+gid://shopify/Product/15448668438913	knoepfen	Damen Wollmantel mit Knöpfen
+gid://shopify/Product/15448668832129	laessiger	Lässiger Oversize-Mantel aus Lammfellimitat
+gid://shopify/Product/15448669880705	aermelloser	Eleganter ärmelloser Mantel für Damen
+gid://shopify/Product/15448670536065	knoepfen	Retro Rollkragen Wollmantel mit Knöpfen
+gid://shopify/Product/15448671125889	gefuetterter	Gefütterter Mid-Length Mantel für Damen
+gid://shopify/Product/15448671158657	gefuetterter	Gefütterter Patchwork-Wintermantel mit Kapuze
+gid://shopify/Product/15448671224193	gefuetterte	Gefütterte Winddichte Polar Fleece Jacke
+gid://shopify/Product/15448671322497	aermeln	Kurze Daunenjacke mit Patchwork-Ärmeln für Damen
+gid://shopify/Product/15448671355265	gefuetterte	Karierte Fleece-gefütterte Kapuzenjacke für Damen
+gid://shopify/Product/15448671453569	gefuetterter	Gefütterter Baumwollmantel mit Blumenprint
+gid://shopify/Product/15448671584641	gefuetterte	Gefütterte Ski-Pufferjacke mit Kapuze
+gid://shopify/Product/15448671814017	knoepfen	Damen Freizeit-Baumwolljacke mit Knöpfen
+gid://shopify/Product/15448672043393	gefuetterte	Gefütterte Damen-Pufferjacke mit Kapuze
+gid://shopify/Product/15448672174465	gefuetterter,prinzessinnenaermeln	Gefütterter Baumwollmantel mit Prinzessinnenärmeln
+gid://shopify/Product/15448672305537	gefuetterter	Gefütterter Kapuzen-Cardigan, mittellang
+gid://shopify/Product/15448672469377	gefuetterter	Gefütterter Damen-Mantel im Slim-Fit
+gid://shopify/Product/15448672534913	gefuetterter	Gefütterter Wintermantel für Damen
+gid://shopify/Product/15448672665985	gefuetterter	Gefütterter Damen-Mantel mit grossem Kunstfellkragen
+gid://shopify/Product/15448672797057	gefuetterte	Gefütterte Damenjacke mit Blumenmuster
+gid://shopify/Product/15448672862593	gefuetterte	Gefütterte Herrenjacke mit Stehkragen
+gid://shopify/Product/15448672895361	fuellung	Kurze Kapuzenjacke mit Polyester-Füllung
+gid://shopify/Product/15448673026433	gefuetterte	Gefütterte Jeansjacke mit Fleece-Futter
+gid://shopify/Product/15448673059201	gefuetterte,aermeln	Gefütterte Damen-Freizeitjacke mit langen Ärmeln
+gid://shopify/Product/15448673288577	gefuetterter	Gefütterter Coral Fleece Loungewear-Hoodie
+gid://shopify/Product/15448673649025	gefuetterter	Gefütterter Kapuzenmantel – schlicht & vielseitig
+gid://shopify/Product/15448673681793	gefuetterte	Gefütterte Baumwolljacke für Damen
+gid://shopify/Product/15448673812865	gefuetterter	Gefütterter Daunenmantel mit Kapuze
+gid://shopify/Product/15448674173313	gefuetterte	Gefütterte Daunenjacke mit V-Ausschnitt
+gid://shopify/Product/15448674238849	gefuetterte	Gefütterte Kapuzenjacke für Damen
+gid://shopify/Product/15448674304385	gefuetterter	Gefütterter Damen-Baumwollmantel mit Kragen
+gid://shopify/Product/15448674337153	gefuetterte	Leichte, gefütterte Baumwolljacke für Damen
+gid://shopify/Product/15448676008321	gefuetterter	Gefütterter Damen-Mantel im Casual-Look
+gid://shopify/Product/15448676303233	gefuetterte	Gefütterte Daunenjacke für Damen
+gid://shopify/Product/15448676663681	gefuetterte	Gefütterte kurze Kapuzenjacke im Loose Fit
+gid://shopify/Product/15448677220737	gefuetterte	Gefütterte Jacke mit Kunstfellkragen
+gid://shopify/Product/15448701403521	aermeln	Langarm-Top mit ausgestellten Ärmeln
+gid://shopify/Product/15448702615937	aermeln	Street-Style Hoodie mit langen Ärmeln
+gid://shopify/Product/15448702910849	plueschbaumwolle	Trendiger Loose Fit Hoodie aus Plüschbaumwolle
+gid://shopify/Product/15448703467905	goldknoepfen	Rundhals-Cardigan mit Goldknöpfen
+gid://shopify/Product/15448703664513	ballonaermeln	V-Ausschnitt Strickpullover mit Ballonärmeln
+gid://shopify/Product/15448703959425	aermeln	Strickpullover mit langen Ärmeln
+gid://shopify/Product/15448704614785	aushoehlungen	Strick-Weste mit Aushöhlungen
+gid://shopify/Product/15448704680321	schnuerung	Strick-Cardigan mit Lochmuster und Schnürung
+gid://shopify/Product/15448704909697	aermeln	Gestreifter Strickpullover mit weiten Ärmeln
+gid://shopify/Product/15448705040769	laessiger,aermeln	Lässiger Pullover mit extra-langen Ärmeln
+gid://shopify/Product/15448705728897	aermeln	Damen Strickpullover mit Rundhals und langen Ärmeln
+gid://shopify/Product/15448707760513	gehaekelter,farbbloecken	Gehäkelter Floral-Pullover mit Farbblöcken
+gid://shopify/Product/15448707858817	duenner,bischofsaermeln	Dünner Strick-Cardigan mit Bischofsärmeln
+gid://shopify/Product/15448710578561	olivgruen	Pailletten-Quasten-Rock in Olivgrün
+gid://shopify/Product/15448710676865	rueschen	Asymmetrischer Midi-Rock mit Rüschen
+gid://shopify/Product/15448711004545	rueschen	Maxirock mit Rüschen und Print
+gid://shopify/Product/15448711070081	tuellrock	Mehrstufiger Tüllrock mit Perlen und Print
+gid://shopify/Product/15448712741249	uebergangsjacke	Freizeit-Übergangsjacke für Herren
+gid://shopify/Product/15448712774017	fruehling	Freizeitjacke für Frühling und Herbst
+gid://shopify/Product/15448714314113	haekel	Herren Strickpullover im Häkel-Look
+gid://shopify/Product/15448715723137	laessig	Leinenhemd Langarm – Lässig & Bequem
+gid://shopify/Product/15448715755905	aermeln	Loose-fit Camouflage Pullover mit langen Ärmeln
+gid://shopify/Product/15448716509569	knoepfen	Polo-Shirt für Herren mit Textur und Knöpfen
+gid://shopify/Product/15448716935553	gefuetterte	Gefütterte Winterjacke mit Umlegekragen
+gid://shopify/Product/15448717394305	uebergangsjacke	Herren-Übergangsjacke mit Revers und Taschen
+gid://shopify/Product/15448717492609	uebergangsjacke	Legere Herren-Übergangsjacke mit Revers
+gid://shopify/Product/15448717853057	uebergangsjacke	Herren Übergangsjacke mit Revers und Blumenprint
+gid://shopify/Product/15448718049665	uebergangs	Herren Übergangs-Trenchcoat im Retro-Stil
+gid://shopify/Product/15448718672257	uebergangsjacke	Stylische Slim-Fit Übergangsjacke für Herren
+gid://shopify/Product/15448718737793	gefuetterte	Gefütterte Baumwolljacke für Herren
+gid://shopify/Product/15448719032705	ultraduenn,laessig	Herren Sakko „Ananas“ – ultradünn & lässig
+gid://shopify/Product/15448719425921	laessig	Wintermantel für Herren – Braun, lässig & warm
+gid://shopify/Product/15448719655297	maenner	Business-Casual Anzug Colorblock für junge Männer
+gid://shopify/Product/15448720540033	uebergangsjacke	Herren Retro Übergangsjacke mit Revers
+gid://shopify/Product/15448747475329	gebluemtes	Geblümtes 3/4-Arm Top mit Fransen
+gid://shopify/Product/15448747671937	laessiges	Lässiges Polo-Sweatshirt mit Umlegekragen
+gid://shopify/Product/15448751899009	rueschen	Retro Utility-Kleid mit Rüschen
+gid://shopify/Product/15448755601793	tuellrock	Midilanger Tüllrock mit elastischem Bund
+gid://shopify/Product/15448755732865	rueschensaum	Eleganter Midirock mit Rüschensaum
+gid://shopify/Product/15448756453761	gebluemter	Geblümter Midirock mit Print
