@@ -80,3 +80,4 @@ gid://shopify/Product/15446072295809	zugeordnet	6	XIMONTH Kräuter-Pflegestift m
 gid://shopify/Product/15446266446209	zugeordnet	2	Mechanische Hand Skulptur Controller-Halter
 gid://shopify/Product/15446266806657	zugeordnet	1	Lay'sda P5 Wireless Game Controller
 gid://shopify/Product/15446266839425	zugeordnet	6	Metall-Thumbsticks für PS4 Controller
+gid://shopify/Product/15446266904961	zugeordnet	4	Programmierbarer Bluetooth Game Controller
