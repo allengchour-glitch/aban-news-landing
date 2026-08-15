@@ -73,3 +73,10 @@ gid://shopify/Product/15446066954625	zugeordnet	5	Nahtlose Gesichtsmaske aus Nyl
 gid://shopify/Product/15446067249537	zugeordnet	2	Sport Gesichtsmaske mit Aktivkohlefilter
 gid://shopify/Product/15446067937665	zugeordnet	4	Samtige Gesichtsmaske – atmungsaktiv & schützend
 gid://shopify/Product/15448587075969	zugeordnet	40	Midikleid mit Zopfmuster und Blumenprint
+gid://shopify/Product/15446069936513	zugeordnet	2	Schlafmaske gegen müde Augen
+gid://shopify/Product/15446070526337	zugeordnet	7	Augenmassagegerät mit Wärmekompresse
+gid://shopify/Product/15446070886785	zugeordnet	8	Multifunktionale Gesichtsmaske für Sport & Freizeit
+gid://shopify/Product/15446072295809	zugeordnet	6	XIMONTH Kräuter-Pflegestift mit Pfefferminze
+gid://shopify/Product/15446266446209	zugeordnet	2	Mechanische Hand Skulptur Controller-Halter
+gid://shopify/Product/15446266806657	zugeordnet	1	Lay'sda P5 Wireless Game Controller
+gid://shopify/Product/15446266839425	zugeordnet	6	Metall-Thumbsticks für PS4 Controller

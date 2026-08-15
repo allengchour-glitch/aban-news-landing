@@ -157,7 +157,12 @@ async function main() {
         pageInfo{hasNextPage endCursor}
         nodes{id title options{name values}
               variants(first:100){nodes{id sku image{url}}}}}}`, { c: cursor });
-    const p = r.data?.products; if (!p) break;
+    const p = r.data?.products;
+    // ⚠️ EIN NULL VON SHOPIFY IST KEIN «FERTIG» (15.08.2026): Als das Admin-Token gerade
+    // ablief, lieferte die erste Seite null → 0 Kandidaten → «FERTIG» im Log → der Aufseher
+    // hätte den Lauf NIE wieder gestartet, mit ~2'700 offenen Produkten. Ein Fehlschlag
+    // beim Sammeln ist eine Pause, kein Abschluss.
+    if (!p) { console.log('PAUSE (Shopify antwortet nicht — Kandidatensuche abgebrochen)'); return; }
     for (const n of p.nodes) {
       if (erledigt.has(n.id)) continue;
       const fo = n.options.find(o => FARBE.has(o.name.toLowerCase()));
