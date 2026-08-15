@@ -3047,6 +3047,10 @@ function _glowTex(core,edge){var cv=document.createElement("canvas");cv.width=cv
 function mkLicht(kind){if(!_lichtTexW){_lichtTexW=_glowTex("#fff6d0","rgba(255,246,208,0)");_lichtTexR=_glowTex("#ff2a1a","rgba(255,42,26,0)");}
   var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:kind==="r"?_lichtTexR:_lichtTexW,transparent:true,depthWrite:false,opacity:0,blending:THREE.AdditiveBlending}));
   var sc=kind==="r"?0.75:1.0;sp.scale.set(sc,sc,1);scene.add(sp);return sp;}
+/* Wendepunkte der Zubringer-Routen: knapp HINTER dem Stadtring (118) und knapp
+   VOR der Ringlandstrasse (200 +- 4,2) — sonst wendet der Wagen auf der
+   Vorfahrtsstrasse statt davor. */
+var RAD_R0=123, RAD_R1=193;
 setTimeout(function baueVerkehr(){
   var SZ=GH*CS/2;
   /* 🚗 Mehr Verkehr (User): Die Hauptstrassen sind jetzt 16 m breit und tragen je Richtung
@@ -3062,11 +3066,24 @@ setTimeout(function baueVerkehr(){
     {axis:"z",x:-109.5,dir:1,speed:7.0},{axis:"z",x:114.5,dir:-1,speed:7.2},
     /* 🛣️ Landstrasse: `pos` ist hier die BOGENLAENGE, nicht x oder z. */
     {axis:"ring",r:197.5,dir:1,speed:8.4},{axis:"ring",r:202.5,dir:-1,speed:8.0},
-    {axis:"ring",r:197.5,dir:1,speed:7.2},{axis:"ring",r:202.5,dir:-1,speed:9.0}];
+    {axis:"ring",r:197.5,dir:1,speed:7.2},{axis:"ring",r:202.5,dir:-1,speed:9.0},
+    /* 🛣️ ZUBRINGER. Sie waren die einzigen Strassen der Karte ganz ohne Verkehr —
+       gebaut, beschildert, mit Bankett, und niemand fuhr darauf. Genau daran
+       sieht man aber, dass ein Netz zusammenhaengt: ein Wagen, der die Stadt
+       verlaesst und draussen auf die Landstrasse einbiegt.
+
+       `pos` ist hier der RADIUS, nicht x, z oder Bogenlaenge. Am Ende wird nicht
+       umgeblendet, sondern gewendet (`rdir`): beide Enden liegen an echten
+       Kreuzungen und damit im Bild — ein Sprung faellt dort sofort auf. */
+    {axis:"radial",gr: 30,dir: 1,speed:6.6},{axis:"radial",gr: 60,dir:-1,speed:7.4},
+    {axis:"radial",gr:120,dir: 1,speed:6.9},{axis:"radial",gr:240,dir:-1,speed:7.1},
+    {axis:"radial",gr:300,dir: 1,speed:7.8},{axis:"radial",gr:330,dir:-1,speed:6.3}];
   var TINT=[0xffffff,0xd84a3a,0x3a6ad8,0x4aa05a,0xe8c43a,0x8a5ac8];
     /* 📱 Jedes Auto ist ein GLB-Klon mit ~8k Dreiecken — 34 Stueck sind ~270k. Auf dem Handy
      darum 20 statt 34; die Strassen wirken trotzdem belebt. */
-  var _AN=(typeof _mobil!=="undefined"&&_mobil)?20:34;
+  /* 40 statt 34: mit den sechs Zubringer-Routen sind es jetzt 24 Routen, und
+     bei 34 Wagen waere auf jeder zweiten Strecke keiner unterwegs gewesen. */
+  var _AN=(typeof _mobil!=="undefined"&&_mobil)?24:40;
   /* 🚗 VIER MODELLE STATT EINEM. Vorher fuhren alle 34 Wagen als derselbe
      `auto_kombi`, nur in sechs Farbtoenen — aus jeder Perspektive dieselbe
      Silhouette (User: „autos sind gar nicht schoen"). Die vier Wagen aus
@@ -3098,6 +3115,8 @@ setTimeout(function baueVerkehr(){
       var _pr=Math.floor(i/ROUTEN.length),_np=Math.ceil(_AN/ROUTEN.length);
       var _start=(r.axis==="ring")
         ? ((_pr+0.5)/_np)*6.283185*r.r + ((i*53)%97)          // ueber den Umfang verteilen
+        :(r.axis==="radial")
+        ? RAD_R0+((_pr+0.5)/_np)*(RAD_R1-RAD_R0)              // ueber die Laenge verteilen
         : -150+((_pr+0.5)/_np)*300+((i*37)%17)-8;
       var rec={mesh:m,route:r,pos:_start,homeY:-b2.min.y+0.01,speed:r.speed*(0.82+((i*13)%9)*0.045)};
       rec.kopf=[mkLicht("w"),mkLicht("w")];rec.heck=[mkLicht("r"),mkLicht("r")];
@@ -3356,10 +3375,17 @@ function updVerkehr(dt){
   verkehr.forEach(function(v){
     if(v===driveCar){if(v.kopf){v.kopf[0].material.opacity=v.kopf[1].material.opacity=0;v.heck[0].material.opacity=v.heck[1].material.opacity=0;}return;}
     var _pv=v.pos;
-    v.pos+=v.route.dir*(v.speed||v.route.speed)*dt;
+    /* Auf dem Zubringer gilt nicht die feste Routenrichtung, sondern die
+       aktuelle Fahrtrichtung des Wagens — er wendet an beiden Enden. */
+    if(v.route.axis==="radial"&&v.rdir===undefined)v.rdir=v.route.dir;
+    var rd=(v.route.axis==="radial")?v.rdir:v.route.dir;
+    v.pos+=rd*(v.speed||v.route.speed)*dt;
     if(v.route.axis==="ring"){                 // Ring: Bogenlaenge umlaufend
       var U=6.283185*v.route.r;
       if(v.pos>U)v.pos-=U; if(v.pos<0)v.pos+=U;
+    }else if(v.route.axis==="radial"){         // Zubringer: an den Enden wenden
+      if(v.pos>RAD_R1){v.pos=RAD_R1;v.rdir=-1;rd=-1;}
+      if(v.pos<RAD_R0){v.pos=RAD_R0;v.rdir= 1;rd= 1;}
     }else{
       var lim=(v.route.axis==="x"?GW*CS/2:GH*CS/2)+80; // weit außerhalb der Sicht umkehren
       if(v.pos>lim)v.pos=-lim;if(v.pos<-lim)v.pos=lim;
@@ -3379,8 +3405,12 @@ function updVerkehr(dt){
       else{if(_pv>=hl&&v.pos<hl)v.pos=hl;}}
     for(var vi=0;vi<verkehr.length;vi++){        // Sicherheitsabstand auf derselben Spur
       var o=verkehr[vi];if(o===v||o===driveCar||o.route!==v.route)continue;
-      var gap=(o.pos-v.pos)*v.route.dir;
-      if(gap>0&&gap<7.5){v.pos=o.pos-v.route.dir*7.5;break;}}
+      /* ⚠️ Auf dem Zubringer nur gegen Wagen abstandhalten, die in DIESELBE
+         Richtung fahren — der Gegenverkehr liegt auf der anderen Spur und
+         wuerde den Wagen sonst grundlos ausbremsen. */
+      if(v.route.axis==="radial"&&o.rdir!==v.rdir)continue;
+      var gap=(o.pos-v.pos)*rd;
+      if(gap>0&&gap<7.5){v.pos=o.pos-rd*7.5;break;}}
     var px,pz,fx=0,fz=0;
     // Modell-Vorderachse ist +x -> Rotation entsprechend (vorher 90° verdreht = seitwaerts)
     if(v.route.axis==="ring"){
@@ -3389,6 +3419,18 @@ function updVerkehr(dt){
       var an9=v.pos/v.route.r;
       px=Math.cos(an9)*v.route.r; pz=Math.sin(an9)*v.route.r;
       fx=-Math.sin(an9)*v.route.dir; fz=Math.cos(an9)*v.route.dir;
+      v.mesh.position.set(px,v.homeY,pz);
+      v.mesh.rotation.y=Math.atan2(-fz,fx);
+    }
+    else if(v.route.axis==="radial"){
+      /* Strahlrichtung (ca,sa); die Fahrspur liegt RECHTS davon. Mit y als
+         Hochachse ist rechts = f x up = (fz, -fx), also bei Fahrt nach aussen
+         -(qx,qz) mit q = (-sa, ca). Beim Wenden wechselt der Wagen dadurch von
+         selbst auf die Gegenspur — genau wie er es auf einer Strasse taete. */
+      var aa9=v.route.gr*Math.PI/180, ca9=Math.cos(aa9), sa9=Math.sin(aa9);
+      var off9=-rd*2.6;
+      px=ca9*v.pos+(-sa9)*off9; pz=sa9*v.pos+ca9*off9;
+      fx=ca9*rd; fz=sa9*rd;
       v.mesh.position.set(px,v.homeY,pz);
       v.mesh.rotation.y=Math.atan2(-fz,fx);
     }
