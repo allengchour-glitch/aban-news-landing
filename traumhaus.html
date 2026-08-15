@@ -5914,7 +5914,8 @@ var ACH=[
     sonst ist der Aufstieg nach der Meldung wieder unsichtbar. */
  ["abnahme1","📋","Abgenommen","Die erste Bauabnahme bestanden",function(){return wohnstufe>=1;}],
  ["abnahme3","🏰","Traumvilla","Wohnstufe Traumvilla erreicht",function(){return wohnstufe>=3;}],
- ["abnahme5","👑","Palastherr","Hoechste Wohnstufe erreicht",function(){return wohnstufe>=5;}]
+ ["abnahme5","👑","Palastherr","Hoechste Wohnstufe erreicht",function(){return wohnstufe>=5;}],
+ ["missmeister","🔥","Serien-Meister","3 Tage in Folge alle Tages-Missionen",function(){return missSerie+(missHeute&&missHeute.bonus?1:0)>=3;}]
 ];
 function hausWert(){var w=0;
   furn.forEach(function(f9){w+=Math.round(f9.def.cost*(1+0.6*((f9.lv||1)-1)));});
@@ -5963,7 +5964,7 @@ var wohnstufe=0, naechsteAbnahme=4;
 var MODUS="klassisch",sprintFertig=false;
 function abnahmeTakt(){return MODUS==="hardcore"?3:4;}
 function modusFaktor(){return MODUS==="hardcore"?0.75:1;}
-var missHeute=null;
+var missHeute=null,missSerie=0; /* Tage in Folge mit allen 3 Missionen */
 var MISS_POOL=[
  ["🎣","Fange {n} Fische",2,function(){return stats.fische||0;}],
  ["🍳","Koche 1 perfektes Menü",1,function(){return stats.kochPerfekt||0;}],
@@ -5978,11 +5979,13 @@ var MISS_POOL=[
 ];
 function missNeu(){
   if(MPs&&!mpHost)return;
+  /* Serie fortschreiben: gestern alle geschafft -> +1, sonst Neustart bei 0 */
+  if(missHeute)missSerie=missHeute.bonus?missSerie+1:0;
   var s=tag*7919+3,rnd=function(){s=(s*1103515245+12345)&0x7fffffff;return s/0x7fffffff;};
   var idx=[];while(idx.length<3){var k=(rnd()*MISS_POOL.length)|0;if(idx.indexOf(k)<0)idx.push(k);}
   missHeute={tag:tag,bonus:false,liste:idx.map(function(k){var p=MISS_POOL[k];
     return {i:k,e:p[0],tx:p[1].replace("{n}",p[2]),ziel:p[2],basis:p[3](),done:false};})};
-  if(MPs&&mpHost)netSend({t:"tmiss",m:missHeute});
+  if(MPs&&mpHost)netSend({t:"tmiss",m:missHeute,ser:missSerie});
 }
 function missCheck(){
   if(!missHeute)return;
@@ -5995,13 +5998,17 @@ function missCheck(){
       beep(700,.1,"triangle",.05);}
     if(!m.done)alle=false;});
   if(alle&&!missHeute.bonus){missHeute.bonus=true;neu=true;
-    geld+=250;geldSend();hint("🏆 Alle Tages-Missionen geschafft! Bonus +250 $");feier(3);}
-  if(neu&&MPs&&mpHost)netSend({t:"tmiss",m:missHeute});
+    var bs=250+Math.min(500,missSerie*50);
+    geld+=bs;geldSend();
+    hint("🏆 Alle Tages-Missionen geschafft! Bonus +"+bs+" $"+(missSerie>0?" · 🔥 "+(missSerie+1)+". Tag in Folge!":""));
+    feier(3);}
+  if(neu&&MPs&&mpHost)netSend({t:"tmiss",m:missHeute,ser:missSerie});
 }
 function missTxt(){
   if(!missHeute)return "";
   return "🎯 <b>Tages-Missionen:</b> "+missHeute.liste.map(function(m){
-    return (m.done?"✅":"▫️")+m.e+" "+m.tx;}).join(" · ")+(missHeute.bonus?" 🏆":"");
+    return (m.done?"✅":"▫️")+m.e+" "+m.tx;}).join(" · ")
+    +(missHeute.bonus?" 🏆":"")+(missSerie+(missHeute.bonus?1:0)>=2?" 🔥"+(missSerie+(missHeute.bonus?1:0))+" Tage":"");
 }
 /* 🎉 feier(n): kleines Fest am Spieler — Raketen + Herzen. Fuer Abnahme/Missionen. */
 function feier(n){
@@ -6403,7 +6410,7 @@ document.getElementById("edSell").onclick=function(){
 document.getElementById("edX").onclick=editHide;
 function snapshot(){return {gw:GW,gh:GH,floors:floors,walls:Object.keys(walls).reduce(function(a,k){a[k]=walls[k].co?{t:walls[k].type,c:walls[k].co}:walls[k].type;return a;},{}),
   furn:furn.map(function(f){return {id:f.id,x:f.gx,y:f.gy,r:f.rot,fid:f.fid,lv:f.lv||1,w:f.wachs||0,g:f.gratis?1:0};}),
-  gb:window._gratisBau||null, /* 🩹 Schwarm-4: Gratis-Flags der Villa-Vorlage mitspeichern — sonst zahlte der Abriss nach jedem Neuladen wieder aus (Geld-Duplikation) */au:window.autoRec?{id:window.autoRec.id,x:window.autoRec.gx,y:window.autoRec.gy}:null,hu:haustier?{x:haustier.gx||10,y:haustier.gy||10}:null,qb:questBusy,we:wetter,mo:MODUS,tm:missHeute,spf:sprintFertig,tq:teamIdx,tb:teamBase,tbg:teamBasis,im:immo,geld:geld,tag:tag,uhr:uhrzeit,rom:romantik,li:liebe,ve:verlobt,he:verheiratet,sk:skills,st:stats,ac:achDone,qi:questIdx,ki:kinder.map(function(k){return {n:k.name,a:k.alter,b:k.baby};}),
+  gb:window._gratisBau||null, /* 🩹 Schwarm-4: Gratis-Flags der Villa-Vorlage mitspeichern — sonst zahlte der Abriss nach jedem Neuladen wieder aus (Geld-Duplikation) */au:window.autoRec?{id:window.autoRec.id,x:window.autoRec.gx,y:window.autoRec.gy}:null,hu:haustier?{x:haustier.gx||10,y:haustier.gy||10}:null,qb:questBusy,we:wetter,mo:MODUS,tm:missHeute,sms:missSerie,spf:sprintFertig,tq:teamIdx,tb:teamBase,tbg:teamBasis,im:immo,geld:geld,tag:tag,uhr:uhrzeit,rom:romantik,li:liebe,ve:verlobt,he:verheiratet,sk:skills,st:stats,ac:achDone,qi:questIdx,ki:kinder.map(function(k){return {n:k.name,a:k.alter,b:k.baby};}),
   /* 🐛 Schwarm-Befunde: Diese Werte lagen nur in Laufzeit-Variablen und fehlten im
      Spielstand. Folgen: der Fortschritt der Endlos-Auftraege fiel bei jedem Neuladen
      auf 0 zurueck (die Basislinie wurde neu am aktuellen Stand verankert, das Ziel lief
@@ -6452,7 +6459,7 @@ function loadSnapshot(sn){
   immo=(sn.im||[]).slice();
   setTimeout(function(){immo.forEach(function(i){var hs=window._immo&&window._immo[i];if(hs&&!hs.flagge)immoFlagge(hs);});},400);
   if(sn.geld!==undefined){geld=sn.geld;geldLast=geld;}if(sn.tag)tag=sn.tag;if(sn.uhr!==undefined)uhrzeit=sn.uhr;
-  if(sn.rom!==undefined)romantik=sn.rom;if(sn.li!==undefined)liebe=sn.li;verlobt=!!sn.ve;verheiratet=!!sn.he;if(sn.sk)skills=sn.sk;if(sn.st)stats=sn.st;if(sn.ac)achDone=sn.ac;if(sn.qi!==undefined)questIdx=sn.qi;if(sn.mo)MODUS=sn.mo;if(sn.tm)missHeute=sn.tm;sprintFertig=!!sn.spf;
+  if(sn.rom!==undefined)romantik=sn.rom;if(sn.li!==undefined)liebe=sn.li;verlobt=!!sn.ve;verheiratet=!!sn.he;if(sn.sk)skills=sn.sk;if(sn.st)stats=sn.st;if(sn.ac)achDone=sn.ac;if(sn.qi!==undefined)questIdx=sn.qi;if(sn.mo)MODUS=sn.mo;if(sn.tm)missHeute=sn.tm;missSerie=sn.sms|0;sprintFertig=!!sn.spf;
   /* Basislinie und Tageslimits zurueckholen, sonst faengt der Endlos-Auftrag von vorne an
      und alle Limits sind wieder frei (Schwarm-Befunde). */
   if(sn.pqb){window._pqBasis={idx:sn.qi,b:sn.pqb};window._pq=null;}
@@ -6522,7 +6529,7 @@ function onNetMsg(m){
   else if(m.t==="moebelStat"&&mpHost){stats.moebelGekauft=(stats.moebelGekauft||0)+1;} /* 🩹 Schwarm-P2: Gast-Moebel zaehlen fuer Team-Quest */ /* 🩹 Gast-Fang zählt beim Host für Quests/Team-Quests */
   else if(m.t==="tanzBoost"&&mpHost){if(m.s>=0.999)stats.tanzPerfekt=(stats.tanzPerfekt||0)+1;tanzApply(m.s);}
   else if(m.t==="quest"&&!mpHost)questIdx=m.i;
-  else if(m.t==="tmiss"&&!mpHost)missHeute=m.m;
+  else if(m.t==="tmiss"&&!mpHost){missHeute=m.m;if(m.ser!==undefined)missSerie=m.ser;}
   else if(m.t==="stufe"&&!mpHost){wohnstufe=m.ws|0;naechsteAbnahme=m.na||tag+4;
     if(m.txt)hint(m.txt);if(buildMode)renderPalette();stufeHudUpd();updHUD();}
   else if(m.t==="teamq"&&!mpHost){teamIdx=m.i;}
@@ -9300,6 +9307,7 @@ window.__th={
   missCheck:function(){missCheck();return missHeute;},
   modus:function(m){if(m)MODUS=m;return MODUS;},
   plopps:function(){return plopps.length;},
+  serie:function(v){if(v!==undefined)missSerie=v;return missSerie;},
   scene:function(){return scene;}, renderer:function(){return renderer;},
   camera:function(){return camera;},
   last:function(){var r=renderer.info;return {zeichenaufrufe:r.render.calls,
