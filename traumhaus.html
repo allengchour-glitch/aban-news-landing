@@ -5553,6 +5553,23 @@ setTimeout(function baueGebaeude(){
   [-96,-60,-24,24,60,96].forEach(function(mx){
     bau("th17_oberleitungsmast.glb",7.5,mx,0,108.5,0,false,null,true);});
   bau("th17_tramhaltestelle.glb",3.0,-20,0,108,Math.PI,false,null,true);
+  /* 🎟️ Kassenhaeuschen am Freizeitpark-Eingang. Das Tor `th32_parkeingang` steht
+     seit Charge 32 da, aber niemand verkauft dort etwas — dieselbe Luecke wie die
+     Wartehaeuschen ohne Bus (39) und der Sportpark ohne Sportplatz (44). Die
+     Kasse aus Charge 44 passt hier ohne neues Modell.
+
+     ⚠️ Das Viertel setzt seine Bauten prozedural und `entzerren()` rueckt sie
+     danach noch. Der Eingang ist der ERSTE Bau der Liste und landet damit auf
+     der -z-Seite der Viertelstrasse bei (Viertelmitte - Laenge/2 + Rand + Breite/2
+     | z - abstand) = (60 - 165 + 20 + 14 | 330 - 18). Wer sich darauf verlaesst,
+     sollte die Zahl aus dem Generator ableiten und nicht abmessen. */
+  (function parkkasse(){
+    var EX=60-165+20+14, EZ=330-18;
+    [-1,1].forEach(function(sd){
+      bau("th44_kasse.glb",3.09,EX+sd*9.5,0,EZ+6.0,0,false,
+          function(w){w.userData.fest=true;},true);
+    });
+  })();
   /* ── ⚽ Charge 44: Sportplatz im Ostteil des Sportparks ──────────────────────
      Der Sportpark hatte fuenf Hallen und einen Basketballplatz, aber kein
      Spielfeld. Ein volles 96x66-Feld passt nirgends hin: eine Belegungskarte
