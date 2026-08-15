@@ -3965,11 +3965,17 @@ setTimeout(function baueGebaeude(){
           var A=achse(gr), p=P(A,132,HB+3.2);
           bau("th39_bushalt.glb",2.84,p[0],0,p[1],-A.aa,false,null,true);
         });
-        /* Leitplanke auf der Bergseite des Rings (der grosse Berg liegt bei
-           Winkel 278 Grad). Modul 3,94 lang auf r 205,2: dTheta = 3,94/205,2. */
+        /* Leitplanke am Hang. Modul 3,94 lang auf r 205,2: dTheta = 3,94/205,2.
+
+           ⚠️ Erster Versuch: 268…281 Grad, weil der grosse Berg bei 278 Grad
+           liegt. Genau dort liegt aber auch das Bauernhof-Viertel (x -125…45,
+           z -241…-151) — die zwoelf Module liefen im Render quer ueber den
+           Hofplatz und am Huehnerstall vorbei. Der Ring quert mehrere Viertel;
+           frei ist er bei 305…318 Grad (x 118…152, z -168…-137): jenseits des
+           Bauernhofs und suedlich von Gewerbe Ost (z -75…75). */
         var RL=R+HB+1.0, dT=3.94/RL;
         for(var q1=0;q1<12;q1++){
-          var ag=(268+q1*dT*180/Math.PI)*Math.PI/180;
+          var ag=(305+q1*dT*180/Math.PI)*Math.PI/180;
           var lx=Math.cos(ag)*RL, lz=Math.sin(ag)*RL;
           /* Laengsachse des Moduls ist x; bei rotY = t zeigt sie auf
              (cos t, -sin t) und muss tangential (-sin ag, cos ag) sein. */
