@@ -4088,6 +4088,18 @@ setTimeout(function baueGebaeude(){
         if(x<-118&&Math.abs(z)<184)return false;                  // Meer + Strand
         var LR=window._landstrasse||0;                            // nicht auf die Landstrasse
         if(LR&&Math.abs(Math.hypot(x,z)-LR)<10+rad2)return false;
+        /* ⚠️ Die ZUBRINGER fehlten hier. Ein Feld liegt auf y = 0,02, der
+           Zubringer-Belag auf 0,012 — das Feld deckt die Fahrbahn also zu, und
+           weil die Mittelstreifen auf 0,022 liegen, bleiben nur SIE sichtbar.
+           Im Spiel sah das aus, als fuehre der Wagen auf einer Markierung
+           mitten durch die Wiese. Gefunden, weil ich nach dem Einbau des
+           Zubringer-Verkehrs hingeschaut habe; die Masse zeigen so etwas nie. */
+        var ZB=window._zubringer||[];
+        for(var zq=0;zq<ZB.length;zq++){
+          var za=ZB[zq]*Math.PI/180, zc=Math.cos(za), zs=Math.sin(za);
+          var laengs=x*zc+z*zs, quer=Math.abs(-x*zs+z*zc);
+          if(laengs>104&&laengs<216&&quer<12+rad2)return false;
+        }
         var BB=window._berge||[];
         for(var m=0;m<BB.length;m++)
           if(Math.hypot(x-BB[m].x,z-BB[m].z)<BB[m].r*0.80+rad2)return false;
@@ -9150,6 +9162,9 @@ window.__th={
     dreiecke:r.render.triangles, texturen:r.memory.textures, geometrien:r.memory.geometries,
     schatten:renderer.shadowMap.enabled};},
   solids:function(){return WORLD_SOLIDS.length;},
+  /* Fahrzeugliste zum Nachmessen: faehrt jede Route wirklich, und bleibt der
+     Wagen dabei auf seiner Spur? Aus den Positionen allein nicht ablesbar. */
+  verkehr:function(){return verkehr;},
   /* Was die Spielfigur GERADE unter den Fuessen hat — zum Nachmessen des
      begehbaren Gelaendes, statt im Szenenbaum nach ihrem Mesh zu suchen. */
   simInfo:function(){var m=sims[0];return m?{x:+m.x.toFixed(1),z:+m.z.toFixed(1),
