@@ -37,9 +37,17 @@ def _mats():
       "stahl": mat("BnStahl",  (0.60,0.62,0.66), 0.42, 0.62),
       "dunkel":mat("BnDunkel", (0.14,0.15,0.17), 0.65),
       "beton": mat("BnBeton",  (0.72,0.71,0.67), 0.92),
-      "grau":  mat("BnGrau",   (0.55,0.55,0.53), 0.94),
+      # ⚠️ Erst 0,55 — und die Bahnsteigkante blieb im Render eine glatte weisse
+      # Platte: Kantenstein und Sicherheitsstreifen (0,95) waren nur 0,4 heller.
+      # Dieselbe Lehre wie bei den vier weissen Haeusern in Charge 37: es liegt
+      # nie an der Textur, sondern daran, dass Grund und Zierglied gleich hell
+      # sind. Jetzt 0,40 — der weisse Streifen liest sich sofort.
+      "grau":  mat("BnGrau",   (0.40,0.40,0.39), 0.94),
       "gelb":  mat("BnGelb",   (0.86,0.68,0.14), 0.70),
-      "rost":  mat("BnRost",   (0.42,0.24,0.14), 0.88),
+      # ⚠️ Ebenso beim Prellbock: 0,42 Braun sah unter Licht wie helles Holz aus,
+      # und weil ALLES daran denselben Ton hatte, blieb er ein Haufen Kanthoelzer.
+      # Dunkler Stahl unter weiss-rotem Warnfeld — der Kontrast ist die Form.
+      "rost":  mat("BnRost",   (0.26,0.15,0.10), 0.86),
       # ⚠️ Glas DUNKLER als die Wand — heller liest es sich als aufgeklebtes
       # weisses Rechteck statt als Oeffnung (Befund aus Charge 37).
       "glas":  mat("BnGlas",   (0.20,0.28,0.34), 0.14, 0.20),
