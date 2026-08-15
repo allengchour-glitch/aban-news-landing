@@ -1346,6 +1346,60 @@ Alle neun: zmin = 0,000.
   dass Grund und Zierglied gleich hell sind.
 
 ---
+## 2b. Charge 42 — SCHULE UND PAUSENHOF (`models/th42_*.glb`)
+
+Die Schule bei (−56 | 100) war eine Kiste: Sockel, Korpus, flache Dachplatte, Fenster als
+aufgeklebte Rechtecke, ein Glockenturm aus zwei Quadern, und ein Pausenhof mit genau einem
+Basketballkorb. Dieselbe Ausgangslage wie beim Bahnhof vor Charge 41.
+
+| Datei | Maße (B×T×H) | Dreiecke | Inhalt |
+|---|---|---|---|
+| `th42_schule.glb` | 22,20 × 14,91 × 17,42 | 34 470 | Lisenen, Gurt- und Hauptgesims, Satteldach, Eingangsrisalit mit Freitreppe und Vordach, Schulschild, Dachreiter mit Glocke |
+| `th42_turnhalle.glb` | 25,90 × 15,90 × 8,32 | 9 972 | Oberlichtband, Wandpfeiler, Lichtkuppeln, Tor, Sprossenwand außen |
+| `th42_fahrradstaender.glb` | 3,36 × 1,23 × 2,44 | 3 048 | drei Anlehnbügel, Pultdach, **Raster x += 3,20** |
+| `th42_basketballkorb.glb` | 1,86 × 1,90 × 3,76 | 4 248 | Ausleger, Brett mit Zielfeld, Ring, Netz |
+| `th42_pausenhofdach.glb` | 8,40 × 5,47 × 3,48 | 3 348 | vier Stützen, Pultdach, Umlaufbank, Anschlagtafel |
+| `th42_klettergeruest.glb` | 5,97 × 4,80 × 2,61 | 3 408 | Rahmen, Sprossen, Kletternetz, Rutsche, Fallschutzfläche |
+| `th42_tischtennis.glb` | 2,74 × 1,81 × 0,92 | 2 268 | Betonplatte im Normmaß, Metallnetz |
+| `th42_schulbank.glb` | 4,45 × 1,40 × 2,79 | 3 576 | Bank, Abfallbehälter, Baum mit Baumscheibe |
+| `th42_schulhof.glb` | 52,00 × 44,00 × 17,42 | 87 162 | **Maßstabs-Test**, nur aus den Teilen oben |
+
+Generator: `tools/assets/mk_th42_schule.py` · Werkzeug: `tools/assets/th_werkzeug.py`.
+Alle neun: zmin = 0,000. `th42_klettergeruest` hat Boxmitte +0,58 — die Rutsche liegt auf
++x, das ist gewollt.
+
+> ✅ **Was diesmal vorher richtig war.** Die vier teuersten Lehren der letzten Ladungen sind
+> hier von vornherein eingebaut, und keine davon ist erneut aufgetreten: Dach als **Körper**
+> (`keil_y`, um z gedreht — Charge 41), Glas **5 cm vor** der Wand (Charge 40), Rahmen aus
+> **vier Balken** (Charge 35/37/38), und Wand (0,66) gegen Zierglied (0,95) mit **0,29
+> Hellwertabstand** statt der 0,04, die in Charge 41 die Bahnsteigkante unsichtbar machten.
+> Der Aufwand dafür ist ein Kommentar und eine Zahl; er hat vier Fehlerrunden gespart.
+
+### 🔍 Was der Kontaktbogen trotzdem noch fand
+
+* **Der Korbring stand senkrecht.** `zyl(rot=(π/2,0,0))` kippt die Zylinderachse von z auf y —
+  richtig für ein Rad, falsch für einen Korbring: der hängt waagrecht, seine Achse bleibt auf
+  z. Als senkrechte Scheibe vor dem Brett war er im Bild gar nicht zu erkennen. Und ein Ring
+  ist ein **Rohr im Kreis**, keine Scheibe, sonst ist es ein Deckel.
+* **Brett und Ring lagen auf −y**, also auf der abgewandten Seite — während der Dateikopf
+  „Schauseite auf +y" vorschreibt. Eine Konvention, an die man sich in derselben Datei nicht
+  hält, ist keine.
+* **Das Dach des Fahrradständers war eine Pergola** — 1,50 tief auf 2,44 Höhe über drei
+  Bügeln von 0,86. Ein Radunterstand deckt die Räder, nicht den Hof.
+
+### 📐 Vier Maßbefunde, die die Messung fand
+
+* **Ein Rahmen wird von der MITTE gerechnet.** Der Torrahmen der Turnhalle saß auf z = 1,90
+  bei 3,90 Höhe — Unterkante damit −0,05. `z − h/2`, nicht `z`.
+* **Gekippte Körper brauchen Aufschlag.** Die um 0,10 gekippten Füße der Tischtennisplatte
+  messen `0,68·cos + 0,16·sin = 0,693` und endeten bei −0,007.
+* **`bau()` setzt über den Ursprung, nicht über die Boxmitte.** Pausenhofdach (−0,73) und
+  Schulbank (+0,54) hatten ihren Schwerpunkt weit daneben und wären im Spiel versetzt
+  gelandet. Wer mehrere Dinge in ein Modul packt, muss sie um den Ursprung verteilen.
+* **Die Fallschutzfläche war größer als das Gerät darauf** — r = 3,20 machte das
+  Klettergerüst 6,40 breit.
+
+---
 
 ---
 ## 🎡 Freizeitpark-Quartier in `traumhaus.html` — fertiger Einbau
