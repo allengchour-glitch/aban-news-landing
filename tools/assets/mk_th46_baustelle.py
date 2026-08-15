@@ -256,7 +256,12 @@ def bauzaun(): _modul("th46_bauzaun", _b_bauzaun, 0.005)
 
 # ================================================================ 5) Bagger
 def _b_bagger():
-    """Kettenbagger, 7,20 x 2,90 x 3,40 m. Front (Ausleger) auf +x.
+    """Kettenbagger, 6,65 x 2,82 x 3,84 m. Front (Ausleger) auf +x.
+
+    Die Boxmitte liegt bei x +1,27: der Ausleger reicht nach vorn, und der
+    Ursprung gehoert an die MASCHINE, nicht in die Mitte ihrer Bounding-Box —
+    `bau()` setzt darueber, und ein Bagger soll dort stehen, wo man ihn hinstellt.
+    Dieselbe Ausnahme wie beim Fahrleitungsmast in Charge 41.
 
     ⚠️ Die Kette ist ein Laufwerk, kein Balken: Umlenkrollen vorn und hinten,
     Laufrollen unten, Kettenglieder aussen herum. Ein glatter Quader liest sich
@@ -279,8 +284,13 @@ def _b_bagger():
             # halbe Gliedstaerke 0,06.
             a = TAU*k/22
             cx = math.cos(a)*(KL/2 - 0.45); cz = 0.60 + math.sin(a)*0.54
+            # ⚠️ `rotation_euler[1] = -a` legte die lange Gliedachse RADIAL statt
+            # tangential: unten am Umlauf stand das Glied hochkant und ragte 0,17
+            # statt 0,06 nach unten. Ein um y mit ry gedrehter Quader legt seine
+            # lange Achse auf (cos ry, -sin ry); tangential heisst (-sin a, cos a),
+            # also ry = -(a + pi/2). Dieselbe Formel wie beim Radlauf in Charge 37.
             gl = box(cx, y, cz, 0.34, KB + 0.10, 0.12, m["dunkel"])
-            gl.rotation_euler[1] = -a
+            gl.rotation_euler[1] = -(a + math.pi/2)
     box(0, 0, 1.20, 3.40, 2.20, 0.34, m["gelb2"])                   # Drehbuehne
     flach(zyl(0, 0, 1.44, 0.70, 0.22, m["stahl2"], 16))
     box(-0.30, 0, 1.95, 2.80, 2.10, 1.00, m["gelb"])                # Oberwagen
