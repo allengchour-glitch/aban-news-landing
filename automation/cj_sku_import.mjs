@@ -156,11 +156,12 @@ for (const item of ITEMS) {
   // hier wäre die Lücke nur verschoben statt geschlossen (Befund 14.08.2026).
   const med = medizinZweck(title, g.html);
   const slug = title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 46) + '-' + String(pid).slice(-6);
+  const tagsFinal = [...new Set([...(med ? ['medizinprodukt-pruefen', 'medizin-zweck-' + med.grund] : ['trend', 'viral', 'video-hit']), 'cj-real', 'dropship', 'neu',
+      ...((process.env.WH || '').trim() ? ['schnell-versand', 'eu-lager'] : []),
+      ...catTags(`${title} ${d.productNameEn || ''} ${val || ''}`)])];
   const input = { title, handle: slug, productType: 'Trend-Produkt', vendor: 'LuxeStyle',
     status: med ? 'DRAFT' : 'ACTIVE',
-    tags: [...new Set([...(med ? ['medizinprodukt-pruefen', 'medizin-zweck-' + med.grund] : ['trend', 'viral', 'video-hit']), 'cj-real', 'dropship', 'neu',
-      ...((process.env.WH || '').trim() ? ['schnell-versand', 'eu-lager'] : []),
-      ...catTags(`${title} ${d.productNameEn || ''} ${val || ''}`)])],
+    tags: tagsFinal,
     descriptionHtml: g.html + '\n<p>🚚 Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · 🇨🇭 LuxeStyle</p>',
     seo: { title: (title + ' | LuxeStyle CH').slice(0, 70), description: `${title} – der Trend-Hit bei LuxeStyle Schweiz.`.slice(0, 320) },
     productOptions: [{ name: 'Variante', values: [{ name: 'Standard' }] }],
@@ -171,6 +172,10 @@ for (const item of ITEMS) {
     // wäre mit jedem Queue-Import wieder gesunken, exakt das condition-Muster vom 11.08.).
     // Kategorie bewusst NICHT geraten — die setzt google_kategorie.mjs aus Titel/Tags.
     metafields: [
+      // google_product_category gleich mit — dieselbe Funktion wie im Kategorie-Grind;
+      // ohne sie fiele die 87-%-Abdeckung mit jedem Queue-Import zurück (Muster 11./12.08.).
+      ...(function(){const g=googleKategorie(title,tagsFinal,'Trend-Produkt');
+        return g?[{namespace:'mm-google-shopping',key:'google_product_category',value:g,type:'single_line_text_field'}]:[];})(),
       { namespace: 'mm-google-shopping', key: 'condition', value: 'new', type: 'single_line_text_field' },
       { namespace: 'mm-google-shopping', key: 'custom_product', value: 'true', type: 'boolean' },
       { namespace: 'mm-google-shopping', key: 'age_group', value: 'adult', type: 'single_line_text_field' },

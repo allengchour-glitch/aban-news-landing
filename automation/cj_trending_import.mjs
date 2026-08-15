@@ -6,6 +6,7 @@
  */
 import fs from 'node:fs';
 import { produktSaeubern } from './marken_filter.mjs';
+import { googleKategorie } from './google_kategorie.mjs';
 const SHOP='au3j0y-hq.myshopify.com',API='2025-01';
 const CID=process.env.SHOPIFY_CLIENT_ID,CSEC=process.env.SHOPIFY_CLIENT_SECRET;
 const CJT=(process.env.CJ_TOKEN||'').trim();
@@ -268,6 +269,8 @@ for(const p of cand){
   // cj_sku_import hatte dieselbe Lücke — jeder Import ohne diese Felder senkt die
   // Feed-Abdeckung, die ein Backfill zuvor teuer gehoben hat.
   metafields:[
+   ...(function(){const g=googleKategorie(title,['trend','viral','video-hit','cj-real'],'Trend-Gadget');
+     return g?[{namespace:'mm-google-shopping',key:'google_product_category',value:g,type:'single_line_text_field'}]:[];})(),
    {namespace:'mm-google-shopping',key:'condition',value:'new',type:'single_line_text_field'},
    {namespace:'mm-google-shopping',key:'custom_product',value:'true',type:'boolean'},
    {namespace:'mm-google-shopping',key:'age_group',value:'adult',type:'single_line_text_field'},
