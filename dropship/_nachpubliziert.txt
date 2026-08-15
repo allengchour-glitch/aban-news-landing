@@ -93,3 +93,8 @@ gid://shopify/Product/15496706261377	gamepad-tablet-mit-huhnchen-griff-1ed939	Ga
 gid://shopify/Product/15497453142401	wasserdichter-reise-rucksack-fur-herren-422272	Wasserdichter Reise-Rucksack für Herren
 gid://shopify/Product/15499874926977	rennrad-sneaker-559bc0	Rennrad-Sneaker
 gid://shopify/Product/15499875090817	unregelma-iges-backblech-983744	Unregelmäßiges Backblech
+gid://shopify/Product/15499956846977	roter-polka-dot-rock-602000	Roter Polka-Dot Rock
+gid://shopify/Product/15499956945281	landschaftsbild-in-ol-213760	Landschaftsbild in Öl
+gid://shopify/Product/15499957010817	checkered-hundeleine-953216	Checkered Hundeleine
+gid://shopify/Product/15500002492801	fritur-fur-frische-pommes-625664	Fritür für frische Pommes
+gid://shopify/Product/15500002591105	corduroy-hemd-604600	Corduroy-Hemd
