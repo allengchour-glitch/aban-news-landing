@@ -4159,6 +4159,18 @@ setTimeout(function baueGebaeude(){
            Jetzt weiter innen und explizit gegen die gemeldeten Fuesse geprueft. */
         var LR2=window._landstrasse||0;
         if(LR2&&Math.abs(Math.hypot(wx,wz)-LR2)<9)continue;     // nicht auf die Landstrasse
+        /* ⚠️ Und nicht auf die ZUBRINGER. Der Guertel mied Meer, Landstrasse,
+           Felder, Bergfuesse, Viertel und die Zufahrtsschneisen der Viertel —
+           die sechs radialen Zubringer standen in dieser Liste nicht, und im
+           Spiel wuchsen Fichten mitten auf der Fahrbahn. Ein Baum ueberdeckt
+           die Strasse nicht wie ein Feld, er steht einfach darauf; auffallen
+           tut es genauso. */
+        var ZB2=window._zubringer||[], aufZub=false;
+        for(var zq2=0;zq2<ZB2.length;zq2++){
+          var za2=ZB2[zq2]*Math.PI/180, zc2=Math.cos(za2), zs2=Math.sin(za2);
+          var lng2=wx*zc2+wz*zs2, qur2=Math.abs(-wx*zs2+wz*zc2);
+          if(lng2>104&&lng2<216&&qur2<9){aufZub=true;break;}}
+        if(aufZub)continue;
         var FE=window._felder||[];                             // nicht in die Felder
         var imFeld=false;
         for(var f9=0;f9<FE.length;f9++)
