@@ -37,6 +37,7 @@ def _mats():
       "stahl": mat("BnStahl",  (0.60,0.62,0.66), 0.42, 0.62),
       "dunkel":mat("BnDunkel", (0.14,0.15,0.17), 0.65),
       "beton": mat("BnBeton",  (0.72,0.71,0.67), 0.92),
+      "grau":  mat("BnGrau",   (0.55,0.55,0.53), 0.94),
       "gelb":  mat("BnGelb",   (0.86,0.68,0.14), 0.70),
       "rost":  mat("BnRost",   (0.42,0.24,0.14), 0.88),
       # ⚠️ Glas DUNKLER als die Wand — heller liest es sich als aufgeklebtes
@@ -119,6 +120,12 @@ def _b_bahnhof():
         box(s*0.72, T/2 + 0.12, 3.30, 1.06, 0.06, 1.60, m["glas"])
     _rahmen(0, T/2 + 0.14, 2.35, 3.34, 4.14, 0.20, m)
     rohr(bogen_pkt(-1.60, 1.60, 4.34, 0.70, 9), 0.10, m["stein"], 8, True, "Portalbogen")
+    for k in range(3):                                                  # Freitreppe
+        box(0, T/2 + 0.62 + k*0.34, 0.60 - k*0.20, 4.20 - k*0.30, 0.36, 0.20, m["sockel"])
+    box(0, T/2 + 0.20, 5.55, 6.40, 0.16, 0.62, m["stein"])              # Bahnhofsschild
+    box(0, T/2 + 0.28, 5.55, 6.00, 0.06, 0.42, m["dunkel"])
+    for k in range(9):                                                  # Schriftbalken
+        box(-2.40 + k*0.60, T/2 + 0.32, 5.55, 0.34, 0.05, 0.22, m["stein"])
     vd = box(0, T/2 + 0.85, 4.95, 5.20, 1.90, 0.16, m["stahl"])         # Vordach
     vd.rotation_euler[0] = -0.16
     for s in (-1, 1):
@@ -134,13 +141,35 @@ def _b_bahnhof():
         zg = box(math.cos(aw)*lg/2, T/2 + 0.23, 6.35 + math.sin(aw)*lg/2,
                  lg, 0.04, 0.06, m["dunkel"])
         zg.rotation_euler[1] = -aw
-    # Walmdach aus vier Flaechen — kein Giebeldreieck, keine Eulerfalle
-    NEI = 0.62
+    # ⚠️ Erster Versuch: Walmdach aus vier geneigten PLATTEN. Die beiden
+    # Stirnplatten waren 10,1 x 11,8 gross und standen im Render als schraege
+    # Bretter waagrecht aus dem Haus heraus (Gesamthoehe 12,77 statt 12,0).
+    # Ein Dach ist ein KOERPER, keine Sammlung von Platten. `keil_y` zieht den
+    # Giebelquerschnitt zu genau diesem Koerper aus — inklusive geschlossener
+    # Giebelflaechen. Der First soll auf x laufen, das Profil liegt aber in x-z:
+    # also einmal um z drehen, danach zeigt die Extrusionsachse auf x.
+    TD, HH = T/2 + 0.75, 3.30
+    dachk = keil_y([(-TD, 0.0), (TD, 0.0), (TD, 0.30), (0.0, HH), (-TD, 0.30)],
+                   0.0, B + 1.5, m["dach"], cz=H + 1.44, name="Satteldach")
+    dachk.rotation_euler[2] = math.pi/2
+    for s in (-1, 1):                                                   # Traufbrett
+        box(0, s*(TD - 0.06), H + 1.62, B + 1.6, 0.14, 0.34, m["stein"])
+    for k in range(9):                                                  # Ziegelreihen
+        zz = H + 1.66 + k*(HH - 0.40)/9
+        yy = TD*(1 - k/9.4)
+        for s in (-1, 1):
+            box(0, s*yy, zz, B + 1.5, 0.10, 0.07, m["putz2"])
+    box(0, 0, H + 1.44 + HH, B + 0.4, 0.42, 0.22, m["stein"])           # Firstziegel
+    # Rinne und Fallrohre — ein Dach ohne Entwaesserung endet als Kante in der Luft
     for s in (-1, 1):
-        _dachhaelfte(0, s*(T/4 + 0.10), H + 2.35, B + 1.4, T/2 + 1.5, -s*NEI, m)
-        dq = box(s*(B/4 + 2.60), 0, H + 2.35, B/2 - 1.4, T + 1.4, 0.22, m["dach"])
-        dq.rotation_euler[1] = s*NEI
-    box(0, 0, H + 3.28, B*0.52, 0.55, 0.30, m["dach"])                  # First
+        flach(zyl(0, s*(TD + 0.09), H + 1.50, 0.10, B + 1.6, m["stahl"], 10,
+                  (0, math.pi/2, 0)))
+        for q in (-1, 1):
+            flach(zyl(q*(B/2 - 0.35), s*(T/2 + 0.14), (H + 1.50)/2, 0.075, H + 1.50,
+                      m["stahl"], 10))
+            for k in range(4):
+                flach(zyl(q*(B/2 - 0.35), s*(T/2 + 0.14), 1.4 + k*1.9, 0.095, 0.14,
+                          m["stahl"], 10))
     for k in range(2):                                                  # Kamine
         cx = -6.5 + k*13.0
         box(cx, 0, H + 3.05, 1.10, 1.10, 2.10, m["putz2"])
@@ -159,13 +188,16 @@ def _b_bahnsteigkante():
     das, woran man eine Bahnsteigkante erkennt — ohne sie ist es eine Stufe."""
     m = _mats()
     BR = 6.00
-    box(0, 0, 0.275, BR, 3.60, 0.55, m["beton"])                        # Plattenkoerper
+    # ⚠️ Koerper GRAU, Streifen weiss. Beton auf Werkstein war im Render
+    # weiss auf weiss — Kantenstein und Sicherheitsstreifen verschwanden,
+    # uebrig blieb eine glatte Platte.
+    box(0, 0, 0.275, BR, 3.60, 0.55, m["grau"])                         # Plattenkoerper
     box(0, -1.72, 0.28, BR, 0.16, 0.56, m["stein"])                     # Kantenstein
     box(0, -1.40, 0.556, BR, 0.46, 0.02, m["stein"])                    # Sicherheitsstreifen
     for k in range(24):                                                 # Taststreifen
         box(-BR/2 + 0.12 + k*(BR - 0.24)/23, -0.98, 0.565, 0.06, 0.34, 0.03, m["gelb"])
     for k in range(3):                                                  # Plattenfugen
-        box(-BR/2 + (k + 1)*BR/4, 0, 0.556, 0.04, 3.60, 0.012, m["putz2"])
+        box(-BR/2 + (k + 1)*BR/4, 0, 0.556, 0.05, 3.60, 0.014, m["dunkel"])
 
 def bahnsteigkante(): _modul("th41_bahnsteigkante", _b_bahnsteigkante, 0.006)
 
@@ -197,25 +229,32 @@ def signal(): _modul("th41_signal", _b_signal, 0.006)
 
 # ================================================================ 4) Prellbock
 def _b_prellbock():
-    """Prellbock, 2,80 x 1,60 x 1,25 m — Schienenrahmen, Prellbalken, Rotstreifen.
+    """Prellbock, 2,70 x 1,95 x 1,32 m — Schienenrahmen, Prellbalken, Warnfeld.
 
-    ⚠️ Er sitzt auf dem Gleis, nicht daneben: die Rahmenschenkel stehen auf
-    Spurweite 1,435 m."""
+    ⚠️ Der erste Versuch benutzte `strebe()` fuer die Schraegen und legte
+    zusaetzliche Balken quer darueber. Im Render war das ein Haufen Kanthoelzer,
+    in dem kein Prellbock mehr zu erkennen war. Jetzt eine klare Kette: zwei
+    Grundschienen auf Spurweite, je eine Schraege nach oben, ein Pfosten, ein
+    durchgehender Prellbalken quer davor. Fuenf Teile je Seite, kein Gewirr.
+
+    ⚠️ Er sitzt AUF dem Gleis: die Rahmenschenkel stehen auf Spurweite 1,435 m."""
     m = _mats()
     SP = 1.435
-    for s in (-1, 1):                                                   # Schienenschenkel
+    for s in (-1, 1):
         y = s*SP/2
-        box(0, y, 0.12, 2.60, 0.11, 0.24, m["rost"])
-        strebe((0.95, y, 0.24), (-0.55, y, 0.98), 0.13, m["rost"])
-        box(-0.90, y, 0.62, 0.70, 0.11, 0.20, m["rost"])
-    box(-1.02, 0, 1.02, 0.30, SP + 0.42, 0.42, m["rost"])               # Prellbalken
-    box(-1.16, 0, 1.02, 0.10, SP + 0.42, 0.46, m["dunkel"])             # Puffergummi
-    for k in range(5):                                                  # Warnanstrich
-        st = box(-1.20, -SP/2 - 0.12 + k*(SP + 0.24)/4, 1.02, 0.05, 0.16, 0.44,
-                 m["rot"] if k % 2 else m["stein"])
-    for s in (-1, 1):                                                   # Querverbaende
-        box(s*0.40, 0, 0.24, 0.14, SP - 0.10, 0.14, m["rost"])
-    flach(zyl(-1.32, 0, 1.02, 0.09, 0.10, m["stein"], 12, (0, math.pi/2, 0)))
+        box(0.05, y, 0.13, 2.50, 0.12, 0.26, m["rost"])                 # Grundschiene
+        sr = box(0.18, y, 0.60, 1.70, 0.13, 0.17, m["rost"])            # Schraege
+        sr.rotation_euler[1] = -0.52
+        box(-0.62, y, 0.62, 0.15, 0.13, 0.86, m["rost"])                # Pfosten
+        box(-0.20, y, 0.34, 0.90, 0.11, 0.12, m["rost"])                # Zugband
+    box(-0.74, 0, 1.02, 0.24, SP + 0.50, 0.44, m["rost"])               # Prellbalken
+    box(-0.88, 0, 1.02, 0.10, SP + 0.50, 0.48, m["dunkel"])             # Puffergummi
+    for k in range(5):                                                  # Warnfeld
+        box(-0.93, -SP/2 - 0.16 + k*(SP + 0.32)/4, 1.02, 0.05, 0.24, 0.46,
+            m["rot"] if k % 2 else m["stein"])
+    box(-0.74, 0, 0.28, 0.20, SP + 0.10, 0.16, m["rost"])               # Querverband
+    for s in (-1, 1):                                                   # Pufferteller
+        flach(zyl(-1.00, s*0.30, 1.02, 0.15, 0.14, m["stein"], 14, (0, math.pi/2, 0)))
 
 def prellbock(): _modul("th41_prellbock", _b_prellbock, 0.008)
 
@@ -302,28 +341,37 @@ def gepaeckkarre(): _modul("th41_gepaeckkarre", _b_gepaeckkarre, 0.008)
 
 # ================================================================ 8) Bahnsteigbank
 def _b_bahnsteigbank():
-    """Bahnsteigbank mit Laterne, 2,20 x 0,80 x 3,40 m.
+    """Bahnsteigbank mit Laterne daneben, 3,05 x 0,86 x 3,42 m.
 
-    Bank und Laterne in EINEM Modul: auf einem Bahnsteig stehen sie ohnehin
-    zusammen, und ein Teil statt zwei spart im Spiel einen Ladevorgang."""
+    ⚠️ Erster Versuch: der Laternenmast stand MITTEN in der Sitzflaeche, und die
+    Wangen bekamen eine Volute in der y-z-Ebene, die 2,30 m tief ausschlug
+    (gemessen als Bautiefe). Auf dem Kontaktbogen war das ein flaches
+    Lattenraster mit einem Mast hindurch. Jetzt steht die Laterne NEBEN der
+    Bank, und die Wangen sind einfache Winkel — eine Bank erkennt man an Sitz
+    und Lehne, nicht am Schnoerkel."""
     m = _mats()
+    BX = -0.62
     for s in (-1, 1):                                                   # Wangen
-        box(s*0.92, 0, 0.22, 0.10, 0.62, 0.44, m["rost"])
-        box(s*0.92, -0.22, 0.62, 0.10, 0.16, 0.52, m["rost"])
-        vol = volute_pkt(s*0.92, 0.10, 0.46, 0.20, 7, ebene="yz")
-        rohr(vol, 0.03, m["rost"], 6, True, "Volute")
+        box(BX + s*0.86, 0.10, 0.22, 0.10, 0.58, 0.44, m["rost"])
+        box(BX + s*0.86, -0.20, 0.74, 0.10, 0.14, 0.76, m["rost"])
+        box(BX + s*0.86, 0.02, 0.47, 0.12, 0.72, 0.09, m["rost"])       # Sitztraeger
+        for q in (-1, 1):                                               # Fussplatten
+            box(BX + s*0.86, q*0.24, 0.03, 0.20, 0.16, 0.06, m["rost"])
     for k in range(4):                                                  # Sitzlatten
-        box(0, -0.24 + k*0.16, 0.46, 1.94, 0.13, 0.05, m["holz"])
+        box(BX, -0.20 + k*0.17, 0.52, 1.82, 0.14, 0.055, m["holz"])
     for k in range(3):                                                  # Lehnenlatten
-        box(0, -0.26, 0.66 + k*0.17, 1.94, 0.13, 0.05, m["holz"])
-    flach(zyl(0, 0.30, 1.55, 0.055, 3.10, m["rost"], 10))               # Laternenmast
-    flach(zyl(0, 0.30, 0.05, 0.15, 0.10, m["rost"], 12))
-    flach(dreh([(0.00, 0.00), (0.26, 0.06), (0.30, 0.16), (0.22, 0.20), (0.00, 0.22)],
-               m["rost"], 14, x=0.0, y=0.30, z=3.14, name="Laternendach"))
-    box(0, 0.30, 2.92, 0.34, 0.34, 0.40, m["licht"])
+        box(BX, -0.26, 0.76 + k*0.18, 1.82, 0.075, 0.14, m["holz"])
+    LX = 1.32
+    flach(zyl(LX, 0, 1.58, 0.055, 3.10, m["rost"], 10))                 # Laternenmast
+    flach(zyl(LX, 0, 0.05, 0.16, 0.10, m["rost"], 12))
+    flach(zyl(LX, 0, 0.62, 0.09, 0.12, m["rost"], 10))
+    box(LX, 0, 2.94, 0.34, 0.34, 0.42, m["licht"])
     for q in range(4):                                                  # Laternenkanten
         a = TAU*q/4 + 0.785
-        box(math.cos(a)*0.18, 0.30 + math.sin(a)*0.18, 2.92, 0.04, 0.04, 0.44, m["rost"])
+        box(LX + math.cos(a)*0.18, math.sin(a)*0.18, 2.94, 0.05, 0.05, 0.46, m["rost"])
+    flach(dreh([(0.00, 0.00), (0.28, 0.07), (0.32, 0.17), (0.22, 0.22), (0.00, 0.24)],
+               m["rost"], 14, x=LX, y=0.0, z=3.16, name="Laternendach"))
+    flach(kugel(LX, 0, 3.44, 0.07, m["rost"], 8))
 
 def bahnsteigbank(): _modul("th41_bahnsteigbank", _b_bahnsteigbank, 0.008)
 
