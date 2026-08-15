@@ -230,3 +230,6 @@ gid://shopify/Article/1001935798657	titelbild	katzen-glucklich-halten-zubehor-sp
 gid://shopify/Article/1001935831425	kein-passendes-bild	beauty-gerate-fur-zuhause-ipl-gua-sha-gesichtsroll
 gid://shopify/Article/1001935864193	titelbild	ringgrosse-bestimmen-den-perfekten-ring-finden
 gid://shopify/Article/1001935896961	titelbild	halskette-richtig-wahlen-lange-material-stil-kombi
+gid://shopify/Article/1001935929729	titelbild	sneaker-guide-2026-der-richtige-schuh-fur-jeden-an
+gid://shopify/Article/1001935962497	titelbild	wohnaccessoires-deko-so-schaffst-du-ein-gemutliche
+gid://shopify/Article/1001935995265	titelbild	geschenkideen-2026-die-passende-idee-fur-jeden-anl

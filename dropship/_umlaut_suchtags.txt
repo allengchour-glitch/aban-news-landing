@@ -954,3 +954,18 @@ gid://shopify/Product/15448603361665	duenne	Dünne High-Waist Yoga Leggings mit 
 gid://shopify/Product/15448603427201	glaenzende	Glänzende Leggings in Leder-Optik
 gid://shopify/Product/15448603492737	maedchen	Leggings für Mädchen aus Baumwolle
 gid://shopify/Product/15448604868993	praegemuster	Leggings mit 3D-Prägemuster
+gid://shopify/Product/15448605065601	gefuetterte,maedchen	Gefütterte Leggings mit Schleife für Mädchen
+gid://shopify/Product/15448605131137	bindebuendchen	High-Waist Haremshose mit Schlitz und Bindebündchen
+gid://shopify/Product/15448605229441	daunenfuellung	Leggings mit Spitzenbund und Daunenfüllung
+gid://shopify/Product/15448605884801	fruehling	Damen Leggings mit Tier-Print für Frühling & Herbst
+gid://shopify/Product/15448606671233	gefuetterte,bauchstuetze	Gefütterte Leggings mit Bauchstütze
+gid://shopify/Product/15448606769537	bauchstuetze	Schwangerschafts-Leggings mit Bauchstütze
+gid://shopify/Product/15448607326593	bindeguertel	Maxirock A-Linie mit Bindegürtel
+gid://shopify/Product/15448607621505	guertel	Damen Midi-Rock mit Print und Gürtel
+gid://shopify/Product/15448607850881	rueschensaum	Samtrock mit Rüschensaum und Seitenschlitz
+gid://shopify/Product/15448608407937	groessen	Yoga-Rockhose-Set für grosse Grössen
+gid://shopify/Product/15448609063297	tuell	Maxirock aus Tüll mit 3D-Blumenstickerei
+gid://shopify/Product/15448609423745	rueschen	High Waist Mini-Jeansrock mit Rüschen
+gid://shopify/Product/15448609784193	rueschen	High-Waist Cake Skirt mit Rüschen
+gid://shopify/Product/15448609816961	gehaekelter	Gehäkelter Bikini-Wickelrock mit Perlen
+gid://shopify/Product/15448613945729	groessen	A-Linien Midirock für grosse Grössen
