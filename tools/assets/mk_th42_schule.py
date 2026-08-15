@@ -216,13 +216,15 @@ def _b_fahrradstaender():
         rohr([(xx, -0.35, 0.02), (xx, -0.35, 0.72), (xx, 0.0, 0.86),
               (xx, 0.35, 0.72), (xx, 0.35, 0.02)], 0.045, m["stahl"], 8, True, "Buegel")
         box(xx, 0, 0.78, 0.09, 0.72, 0.06, m["stahl"])
+    # ⚠️ Das Dach war 1,50 tief auf 2,44 Hoehe und ueberragte die drei Buegel wie
+    # eine Pergola. Ein Radunterstand deckt die Raeder, nicht den Hof.
     for s in (-1, 1):                                                   # Dachstuetzen
-        box(s*(BR/2 - 0.20), -0.62, 1.15, 0.10, 0.10, 2.30, m["stahl"])
-        strebe((s*(BR/2 - 0.20), -0.62, 2.10), (s*(BR/2 - 0.20), 0.30, 2.34), 0.06, m["stahl"])
-    dk = box(0, -0.10, 2.44, BR + 0.20, 1.50, 0.10, m["stahl"])         # Pultdach
+        box(s*(BR/2 - 0.20), -0.58, 1.06, 0.10, 0.10, 2.12, m["stahl"])
+        strebe((s*(BR/2 - 0.20), -0.58, 1.94), (s*(BR/2 - 0.20), 0.26, 2.18), 0.06, m["stahl"])
+    dk = box(0, -0.16, 2.26, BR + 0.16, 1.22, 0.10, m["stahl"])         # Pultdach
     dk.rotation_euler[0] = 0.16
     for k in range(6):
-        dr = box(-BR/2 + 0.30 + k*(BR - 0.6)/5, -0.10, 2.50, 0.08, 1.50, 0.045, m["stahl"])
+        dr = box(-BR/2 + 0.30 + k*(BR - 0.6)/5, -0.16, 2.32, 0.08, 1.22, 0.045, m["stahl"])
         dr.rotation_euler[0] = 0.16
 
 def fahrradstaender(): _modul("th42_fahrradstaender", _b_fahrradstaender, 0.006)
@@ -243,8 +245,15 @@ def _b_basketballkorb():
     _rahmen(0, -0.44, 3.20, 1.86, 1.11, 0.07, m, "stahl")
     box(0, -0.45, 3.08, 0.62, 0.05, 0.44, m["rot"])                     # Zielfeld
     box(0, -0.46, 3.08, 0.52, 0.05, 0.34, m["stein"])
-    flach(zyl(0, -0.72, 2.92, 0.235, 0.035, m["rot"], 18, (math.pi/2, 0, 0)))  # Ring
-    box(0, -0.50, 2.92, 0.16, 0.16, 0.05, m["rot"])
+    # ⚠️ Der Ring stand SENKRECHT. `zyl(rot=(pi/2,0,0))` kippt die Zylinderachse
+    # von z auf y — richtig fuer ein Rad, falsch fuer einen Korbring: der haengt
+    # waagrecht, seine Achse bleibt auf z. Als senkrechte Scheibe vor dem Brett
+    # war er im Render gar nicht zu erkennen. Und ein Ring ist ein ROHR im Kreis,
+    # keine Scheibe — sonst ist es ein Deckel.
+    _rp = [(math.cos(TAU*k/12)*0.225, -0.72 + math.sin(TAU*k/12)*0.225, 2.92)
+           for k in range(13)]
+    rohr(_rp, 0.019, m["rot"], 6, True, "Korbring")
+    box(0, -0.52, 2.92, 0.14, 0.30, 0.05, m["rot"])                     # Ringtraeger
     for k in range(10):                                                 # Netz
         a = TAU*k/10
         nz = rohr([(math.cos(a)*0.235, -0.72 + math.sin(a)*0.235, 2.90),
