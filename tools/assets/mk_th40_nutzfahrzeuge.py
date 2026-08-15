@@ -62,40 +62,52 @@ def _leuchten(M, xv, xh, br, zv, zh):
         box(xh - 0.01, s*br*0.42, zh - 0.24, 0.05, 0.13, 0.10, M["blink"])
 
 def _spiegel(M, x, br, z):
+    """⚠️ Erster Wurf ragte 0,41 m je Seite heraus: der Bus mass damit 3,38 statt
+    2,55 in der Breite, und die Spiegel bestimmten die Bounding-Box. Ein echter
+    Busspiegel steht rund 0,25 m ab."""
     for s in (-1, 1):
-        strebe((x, s*(br/2), z), (x + 0.10, s*(br/2 + 0.30), z + 0.10), 0.045, M["zier"])
-        sp = box(x + 0.12, s*(br/2 + 0.34), z + 0.14, 0.06, 0.14, 0.30, M["zier"])
+        strebe((x, s*(br/2), z), (x + 0.09, s*(br/2 + 0.15), z + 0.09), 0.042, M["zier"])
+        sp = box(x + 0.11, s*(br/2 + 0.19), z + 0.13, 0.06, 0.12, 0.28, M["zier"])
         sp.rotation_euler[2] = -s*0.18
 
 def _fensterband(M, x0, x1, br, z, ho, felder):
     """Seitliches Fensterband als VERTIEFUNG mit Pfosten dazwischen.
 
-    ⚠️ Nicht als eine dunkle Platte AUF die Flanke legen — das liest sich als
-    Aufkleber. Das Glas liegt 3 cm innerhalb der Flanke, die Pfosten stehen in
-    Lackfarbe wieder buendig davor; erst dieser Versatz macht Fenster daraus."""
+    ⚠️ ZUM FUENFTEN MAL derselbe Fehler in anderer Gestalt (Gaube 35, Fenster 37,
+    Ladenschild 37, Klappe 38): was man SEHEN soll, muss VOR dem stehen, was es
+    umgibt. Erster Wurf hier: Glas auf br/2 - 0,03 mit 5 cm Tiefe, also von
+    br/2 - 0,055 bis br/2 - 0,005 — komplett INNERHALB der Flanke. Die Pfosten
+    standen mit br/2 + 0,02 davor. Im Render hatte kein einziger Wagen Scheiben,
+    nur eine dunkle Fuge. Jetzt ragt das Glas 1 cm aus der Flanke, die Pfosten
+    stehen 0,5 cm weiter vor und lesen sich dadurch als Sprossen darauf."""
     for s in (-1, 1):
-        box((x0 + x1)/2, s*(br/2 - 0.03), z, x1 - x0, 0.05, ho, M["glas"])
+        box((x0 + x1)/2, s*(br/2 - 0.02), z, x1 - x0, 0.06, ho, M["glas"])
         for k in range(felder + 1):
             xx = x0 + (x1 - x0)*k/felder
-            box(xx, s*(br/2 - 0.005), z, 0.09, 0.05, ho + 0.02, M["lack"])
-        box((x0 + x1)/2, s*(br/2 - 0.008), z + ho/2 + 0.03, x1 - x0, 0.05, 0.07, M["lack2"])
-        box((x0 + x1)/2, s*(br/2 - 0.008), z - ho/2 - 0.03, x1 - x0, 0.05, 0.07, M["lack2"])
+            box(xx, s*(br/2 - 0.018), z, 0.09, 0.065, ho + 0.02, M["lack"])
+        box((x0 + x1)/2, s*(br/2 - 0.018), z + ho/2 + 0.035, x1 - x0, 0.065, 0.07, M["lack2"])
+        box((x0 + x1)/2, s*(br/2 - 0.018), z - ho/2 - 0.035, x1 - x0, 0.065, 0.07, M["lack2"])
 
 def _tuer(M, x, br, z, hoch, breit):
-    """Doppelfaltuer: zwei Fluegel mit Fuge, Glas oben, Griffleiste."""
+    """Doppelfaltuer: zwei Fluegel mit Fuge, Glas oben, Griffleiste.
+
+    ⚠️ Auch hier lag das Glas HINTER dem Tuerblatt und war unsichtbar. Das Blatt
+    sitzt jetzt zurueck, das Glas ragt darueber hinaus."""
     for s in (-1, 1):
         for f in (-1, 1):
-            box(x + f*breit/4, s*(br/2 - 0.01), z, breit/2 - 0.02, 0.05, hoch, M["lack2"])
-            box(x + f*breit/4, s*(br/2 - 0.035), z + hoch*0.16,
+            box(x + f*breit/4, s*(br/2 - 0.028), z, breit/2 - 0.02, 0.05, hoch, M["lack2"])
+            box(x + f*breit/4, s*(br/2 - 0.008), z + hoch*0.16,
                 breit/2 - 0.14, 0.05, hoch*0.54, M["glas"])
-        box(x, s*(br/2 - 0.002), z, 0.035, 0.05, hoch, M["zier"])       # Mittelfuge
+        box(x, s*(br/2 - 0.004), z, 0.035, 0.055, hoch, M["zier"])      # Mittelfuge
 
 def _dachaufbau(M, x0, x1, br, zd):
     """Klimakasten, Luken und Antenne — ein Busdach ist nie glatt."""
     box((x0 + x1)/2, 0, zd + 0.10, (x1 - x0)*0.44, br*0.62, 0.20, M["weiss"])
     for k in range(3):
         box(x0 + (x1 - x0)*(0.16 + k*0.30), 0, zd + 0.045, 0.62, br*0.44, 0.09, M["weiss"])
-    flach(zyl(x0 + 0.30, br*0.28, zd + 0.30, 0.02, 0.60, M["zier"], 6))
+    # ⚠️ Die Antenne war 0,60 hoch und schob die Gesamthoehe des Busses auf 3,88 —
+    # sie allein bestimmte damit den Massstab, den `bau()` aus der Hoehe ableitet.
+    flach(zyl(x0 + 0.30, br*0.28, zd + 0.24, 0.02, 0.34, M["zier"], 6))
 
 # ================================================================ 1) Stadtbus
 def _b_bus():
@@ -203,7 +215,8 @@ def _b_muellwagen():
     fh = [(2.30, 0.52), (L/2 - 0.10, 0.52), (L/2, 0.80), (L/2, 1.72),
           (L/2 - 0.36, 2.44), (2.30, 2.44)]
     keil_y(fh, 0.0, B, M["lack"], cz=0.30, name="Fahrerhaus")
-    box(3.30, 0, 2.16, 1.30, B - 0.24, 0.72, M["glas"])                 # Seitenscheiben
+    # ⚠️ B - 0,24 ist SCHMALER als der Wagen: die Scheibe lag ganz im Blech.
+    box(3.30, 0, 2.16, 1.30, B + 0.02, 0.72, M["glas"])                 # Seitenscheiben
     box(L/2 - 0.22, 0, 2.10, 0.34, B - 0.28, 0.70, M["glas"])           # Windschutz
     box(0.10, 0, 1.86, 4.30, B, 2.60, M["lack2"])                       # Pressaufbau
     for k in range(5):                                                  # Sicken
@@ -235,7 +248,7 @@ def _b_pritsche():
     fh = [(0.70, 0.44), (L/2 - 0.12, 0.44), (L/2, 0.72), (L/2, 1.50),
           (L/2 - 0.42, 2.16), (0.70, 2.16)]
     keil_y(fh, 0.0, B, M["lack"], cz=0.26, name="Fahrerhaus")
-    box(1.42, 0, 1.86, 1.00, B - 0.22, 0.64, M["glas"])
+    box(1.42, 0, 1.86, 1.00, B + 0.02, 0.64, M["glas"])                 # Seitenscheiben
     box(L/2 - 0.26, 0, 1.82, 0.36, B - 0.26, 0.62, M["glas"])
     box(-0.85, 0, 0.86, 3.60, B, 0.16, M["holz"])                       # Ladeflaeche
     for s in (-1, 1):                                                   # Seiten-Bordwaende
@@ -300,15 +313,16 @@ def _b_wohnmobil():
             (L/2 - 0.10, 1.16), (L/2 - 0.28, 1.72), (L/2, 1.86), (L/2, H - 0.30),
             (L/2 - 0.28, H), (-L/2 + 0.22, H), (-L/2, H - 0.28), (-L/2, 0.66)]
     keil_y(prof, 0.0, B, M["lack"], cz=0.24, name="Aufbau")
-    box(L/2 - 0.55, 0, 1.62, 0.62, B - 0.28, 0.56, M["glas"])           # Windschutz
+    box(L/2 - 0.58, 0, 1.62, 0.70, B - 0.28, 0.56, M["glas"])           # Windschutz
     box(L/2 - 0.06, 0, 2.42, 0.08, B - 0.44, 0.52, M["glas"])           # Alkovenfenster
     for s in (-1, 1):                                                   # Wohnraumfenster
-        box(-0.30, s*(B/2 - 0.03), 2.02, 1.50, 0.05, 0.68, M["glas"])
-        box(-0.30, s*(B/2 - 0.005), 2.02, 1.58, 0.05, 0.76, M["lack2"])
-        box(-2.20, s*(B/2 - 0.03), 2.02, 0.72, 0.05, 0.62, M["glas"])
-        box(-2.20, s*(B/2 - 0.005), 2.02, 0.80, 0.05, 0.70, M["lack2"])
-    box(1.30, B/2 - 0.02, 1.44, 0.86, 0.06, 1.86, M["lack2"])           # Aufbautuer
-    box(1.30, B/2 - 0.05, 1.86, 0.60, 0.06, 0.56, M["glas"])
+        # Rahmen ZURUECK, Glas davor — sonst deckt der Rahmen die Scheibe zu.
+        box(-0.30, s*(B/2 - 0.030), 2.02, 1.58, 0.05, 0.76, M["lack2"])
+        box(-0.30, s*(B/2 - 0.015), 2.02, 1.50, 0.06, 0.68, M["glas"])
+        box(-2.20, s*(B/2 - 0.030), 2.02, 0.80, 0.05, 0.70, M["lack2"])
+        box(-2.20, s*(B/2 - 0.015), 2.02, 0.72, 0.06, 0.62, M["glas"])
+    box(1.30, B/2 - 0.035, 1.44, 0.86, 0.06, 1.86, M["lack2"])          # Aufbautuer
+    box(1.30, B/2 - 0.012, 1.86, 0.60, 0.06, 0.56, M["glas"])
     flach(zyl(0.92, B/2 + 0.03, 1.36, 0.04, 0.24, M["chrom"], 8, (math.pi/2, 0, 0)))
     m9 = box(-1.10, 0, H + 0.34, 2.40, B*0.52, 0.10, M["weiss"])        # Markise + Dachluke
     m9.rotation_euler[1] = 0.0
