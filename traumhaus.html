@@ -4835,7 +4835,14 @@ setTimeout(function baueGebaeude(){
       K.push(["Quer W","z",-RX,-SZr-34,SZr+34,8.0]);
       K.push(["Quer O","z", RX,-SZr-34,SZr+34,8.0]);
       K.push(["Ring N","x",-100,-112,112,7.2]);
-      K.push(["Ring S","x", 118,-112,112,7.2]);
+      /* ⚠️ Ring S laeuft am BAHNHOF vorbei (Gleis z 112, Bahnsteig bis 111,8,
+         Masten bis 114,8): das 7,2er-Band ab z 110,8 erklaerte die halbe
+         Bahn-Infrastruktur zu Strassenbelegern. Im Bahnhofssegment (x -32…32)
+         gilt das Band nur fuer die gemessene Fahrbahn (Mitte 119,2, halb 4,2 =
+         z 115…123,4); links und rechts davon die volle Sperrbreite. */
+      K.push(["Ring S w","x", 118,-112,-32,7.2]);
+      K.push(["Ring S Bhf","x", 119.2,-32,32,4.2]);
+      K.push(["Ring S o","x", 118,32,112,7.2]);
       K.push(["Ring W","z",-112,-100,118,7.2]);
       K.push(["Ring O","z", 112,-100,118,7.2]);
       K.push(["Zubringer W","z",-RX,-100,118,7.2]);
@@ -5258,7 +5265,11 @@ setTimeout(function baueGebaeude(){
       /* Nordzeile: Haeuser bei z=-77, Gehwegkante bei rund -67 -> Streifen dazwischen */
       zeile(-66,60,-69.5,-71.2,-1);
       /* Suedzeile: gespiegelt */
-      zeile(-54,66, 69.5, 71.2, 1);
+      /* ⚠️ z 69,5 stammt aus der Quader-Haus-Zeit (Fronten bei ~77). Die neuen
+         GLB-Stadthaeuser sind tiefer (Box ab 69,7) — die Baeume standen in den
+         Vorgaerten und der Entzerrer schob sie ganz ins Haus (7,9-m-Paar).
+         68,2 stellt die Staemme an die Gehwegkante; Kronenstreifen bleibt. */
+      zeile(-54,66, 68.2, 71.2, 1);
     })();
 
     /* ⛪ KIRCHHOF: Friedhof suedlich der Kathedrale, Zaun um das ganze Geviert.
@@ -5474,7 +5485,10 @@ setTimeout(function baueGebaeude(){
   bau("th4_tanne.glb",6,-90,0,-70,0,false);bau("th4_tanne.glb",5.2,-98,0,-58,0.7,false);bau("th4_tanne.glb",6.6,-80,0,-84,1.5,false);bau("th4_tanne.glb",5.6,30,0,-84,2.4,false);
   // Herbst-Ahorne + große Eichen als Landmarks
   bau("th4_ahorn.glb",5.1,58,0,76,0.5,false);bau("th4_ahorn.glb",5.4,-34,0,-80,1.8,false);
-  bau("th4_eiche.glb",7.4,0,0,-82,0.9,false);bau("th4_eiche.glb",7,-44,0,74,2.6,false);
+  bau("th4_eiche.glb",7.4,0,0,-82,0.9,false);/* ⚠️ Hier stand eine Einzel-Eiche (z 74): KOMPLETT im Stadthaus (-46|80,
+     Box z 70…90). Ausweichen unmoeglich — zwischen Haupt-S-Band (bis z 68,8)
+     und den neuen, tieferen Hausboxen (ab 69,7) liegen 0,9 m. Wie beim
+     Prellbock: lieber kein Baum als einer im Wohnzimmer. */
   // Blüten-Büsche an Park + Marktzeile
   bau("th4_busch_blueten.glb",1.15,90,0,-30,0,false);bau("th4_busch_blueten.glb",1.1,10,0,65,1,false);
   // Verkehrsschilder auf den Trottoirs
@@ -5617,7 +5631,10 @@ setTimeout(function baueGebaeude(){
     addSolid(56,100,15.6,12.8);
     for(var t=0;t<2;t++){
       var tx=56+(t?3.9:-3.9)*0.83;
-      fest("th43_loeschfahrzeug.glb",3.24,tx,110.5,-Math.PI/2);
+      /* ⚠️ Bei z 110,5 stand die Fahrzeugnase (Box bis 114,3) 3,5 m in der
+         Ring-Fahrbahn. z 106,9 parkt das Heck in der offenen Halle (Tor-Seite),
+         die Nase endet bei 110,7 — knapp vor dem Band (110,8). */
+      fest("th43_loeschfahrzeug.glb",3.24,tx,106.9,-Math.PI/2);
       [-1,1].forEach(function(sd){                        // Ausfahrtsbahn
         var lin=new THREE.Mesh(new THREE.PlaneGeometry(0.16,7.0),
           new THREE.MeshStandardMaterial({color:0xd8b42a,roughness:0.8}));
@@ -5626,13 +5643,20 @@ setTimeout(function baueGebaeude(){
     fest("th43_hydrant.glb",0.93,46,0,106.5,0);
     /* Tankstelle bei (92|-74). rotY = pi spiegelt das Modell: der Kiosk sitzt im
        Modell bei Blender (-3,25|-1,70), landet also bei (92+3,25 | -74-1,70). */
-    fest("th43_tankstelle.glb",5.06,92,-74,Math.PI);
-    addSolid(95.25,-75.7,7.6,5.2,{a:"z",at:-73.0,c:95.25,w:3.0});
+    /* ⚠️ GEMESSEN nach dem Merge: bei (92|-74) sass das Ensemble im Quer-O-Band
+       (x 70…86) und im Lagerhallen-Hof (x 87…105, z -90…-77,5). Die freie
+       Tasche dazwischen ist exakt x 86…104, z -69…-77 (Haupt-N-Band endet bei
+       -68,8, Ring-O-Band beginnt bei 104,8) — die Station passt hinein, die
+       Waschbox NICHT mehr: sie steht jetzt gegenueber, westlich der Querstrasse.
+       Erster Korrekturversuch (+6 in z) landete selbst im Haupt-N-Band — die
+       Bandgrenzen stehen jetzt oben, damit das niemand nochmal ausprobiert. */
+    fest("th43_tankstelle.glb",5.06,95.5,-73.6,Math.PI);
+    addSolid(98.75,-75.3,7.6,5.2,{a:"z",at:-72.6,c:98.75,w:3.0});
     for(var z9=0;z9<2;z9++)
-      fest("th43_zapfsaeule.glb",2.03,88.6+z9*3.4,-72.4,Math.PI);
-    fest("th43_preistafel.glb",5.20,84.5,-69.5,Math.PI);
-    fest("th43_luftstation.glb",1.80,86.0,-79.5,0);
-    fest("th43_waschbox.glb",3.93,99.5,-79.0,Math.PI);
+      fest("th43_zapfsaeule.glb",2.03,92.1+z9*3.4,-72.0,Math.PI);
+    fest("th43_preistafel.glb",5.20,88.0,-69.6,Math.PI);
+    fest("th43_luftstation.glb",1.80,89.5,-76.9,0);
+    fest("th43_waschbox.glb",3.93,66.5,-75.5,0);
   })();
   /* ── 🏫 Charge 42: Schulhaus, Turnhalle und Pausenhof-Ausstattung ────────────
      Das prozedurale Kastenhaus oben ist raus. `th42_schule` hat seine Schauseite
@@ -5653,8 +5677,13 @@ setTimeout(function baueGebaeude(){
     }
     fest("th42_schule.glb",14.0,SX,SZ+1,Math.PI);
     addSolid(SX,SZ+1,18.6,12.6);
-    fest("th42_turnhalle.glb",8.32,SX-26,SZ-4,Math.PI);
-    addSolid(SX-26,SZ-4,26.9,16.9);
+    /* ⚠️ ZWEI Anlaeufe gemessen: die 26,9 m breite Halle ueberspannte laengs
+       IMMER eine Strasse — erst das Quer-W-Ende (z bis 92), nach dem z-Ruecken
+       den Zubringer W (Band x -85…-71, laeuft bis z 118). Die Luecke zwischen
+       Zubringer-W- und Ring-W-Band ist nur 19,6 m breit: LAENGS passt die Halle
+       nie, QUER (gedreht, 16,9 m breit) mit Luft. Anker (-95|101). */
+    fest("th42_turnhalle.glb",8.32,-95,97.2,Math.PI/2);   /* Suedkante 110,7 — 0,1 vor dem Ring-S-Band */
+    addSolid(-95,97.2,16.9,26.9);
     /* ⚠️ Der Pausenhof ist 20 x 12 gross und liegt bei (SX | SZ-11), reicht also
        von x SX-10 bis SX+10 und von z SZ-17 bis SZ-5. Beim ersten Wurf standen
        Klettergeruest und alle vier Fahrradstaender AUSSERHALB davon auf dem
@@ -5707,8 +5736,13 @@ setTimeout(function baueGebaeude(){
     for(var k=-3;k<=3;k++) fest("th41_bahnsteigkante.glb",0.58,k*6.0,110.3,0);
     /* Fahrleitungsmasten: der Ausleger zeigt im Modell auf +x ueber das Gleis,
        also muessen sie mit rotY = -pi/2 quer dazu stehen. */
+    /* ⚠️ GEMESSEN: die Mastbox ist asymmetrisch — Fuss bei Anker-z, der Ausleger
+       ragt +2,6 nach Sueden. Bei z 113,3 endete er auf 115,9 in der Fahrbahn
+       (Band ab 115). Loesung: Masten auf die BAHNSTEIGSEITE (z 110,9) — der
+       Ausleger endet auf 113,5 ueber dem Gleis (z 112), wie bei echten
+       Seitenbahnsteigen. Daecher enden bei z 110,1, es klemmt nichts. */
     [-24,-8,8,24].forEach(function(mx){
-      fest("th41_fahrleitungsmast.glb",7.20,mx,113.9,-Math.PI/2);});
+      fest("th41_fahrleitungsmast.glb",7.20,mx,110.9,-Math.PI/2);});
     fest("th41_signal.glb",5.49,29,113.6,Math.PI/2);
     fest("th41_signal.glb",5.49,-29,113.6,-Math.PI/2);
     /* ⚠️ Hier stand ein Prellbock bei x = 44 auf dem Gleis. Das Gleis bei
@@ -5718,7 +5752,7 @@ setTimeout(function baueGebaeude(){
        der Ladung, aber es gehoert an ein Stumpfgleis, und eins gibt es hier
        nicht. Lieber kein Prellbock als einer an der falschen Stelle. */
     /* Stattdessen: ein zweites Signal am Ostkopf, wo die Strecke weiterfuehrt. */
-    fest("th41_signal.glb",5.49,44,113.6,Math.PI/2);
+    fest("th41_signal.glb",5.49,44,110.4, /* Nordseite: oestlich vom Bahnhofssegment gilt das volle Ring-Band ab z 110,8 */ Math.PI/2);
     fest("th41_anzeigetafel.glb",3.11,-15,109.9,0);
     fest("th41_gepaeckkarre.glb",1.35,6.5,109.2,0.4);
     [-6,17].forEach(function(bx){
