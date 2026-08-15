@@ -1238,6 +1238,58 @@ nicht mit dem 2,50er Raster des Weidezauns aus Charge 38 mischbar.
   Wiedererkennungswert.
 
 ---
+## 1z9. Charge 40 — NUTZFAHRZEUGE UND ÖV (`models/th40_*.glb`)
+
+Seit Charge 39 stehen zwei Wartehäuschen an den Zubringern — und es hält nichts daran.
+Der einzige Bus im Spiel ist prozedural aus acht Quadern gebaut und fährt nur die
+Südstraße.
+
+| Datei | Maße (B×T×H) | Dreiecke | Inhalt |
+|---|---|---|---|
+| `th40_bus.glb` | 11,07 × 3,06 × 3,69 | 16 632 | Stadtbus, Fensterband mit Sprossen, zwei Falttüren, Zielanzeige, Klimakasten |
+| `th40_postauto.glb` | 8,67 × 2,96 × 3,11 | 12 048 | Postbus, Gepäckklappen, Dreiklanghorn |
+| `th40_kleinbus.glb` | 5,85 × 2,59 × 2,63 | 10 316 | Minibus, Schiebetürfuge, Dachreling |
+| `th40_muellwagen.glb` | 8,46 × 3,01 × 3,16 | 12 464 | Fahrerhaus + Pressaufbau + Schüttung, Rundumleuchten |
+| `th40_pritsche.glb` | 6,51 × 2,79 × 2,42 | 8 720 | Pritsche mit vier Bordwandklappen, Kistenladung |
+| `th40_anhaenger.glb` | 5,08 × 2,28 × 1,79 | 5 532 | Kipp-Anhänger, Deichsel + Zugöse auf 0,92 — passt an `th38_traktor` |
+| `th40_wohnmobil.glb` | 6,94 × 2,89 × 3,25 | 8 748 | Alkoven, Wohnraumfenster, Aufbautür, Dachluke |
+| `th40_busbahnhof.glb` | 34,00 × 22,00 × 3,69 | 74 472 | **Maßstabs-Test**, nur aus den Teilen oben |
+
+Generator: `tools/assets/mk_th40_nutzfahrzeuge.py` · Werkzeug: `tools/assets/th_werkzeug.py`.
+Alle acht: zmin = 0,000, **Front auf +x** wie die Wagen aus Charge 37 und der Traktor aus
+Charge 38.
+
+> 🛠️ **`keil_y` und `rad` stehen jetzt in `th_werkzeug.py`.** Beide standen seit Charge 37
+> lokal in `mk_th37_stadt.py`. Ladung 40 sind wieder Fahrzeuge — statt zu kopieren sind sie
+> ins gemeinsame Werkzeug gehoben. `mk_th37` führt seine eigenen Fassungen weiter (sie stehen
+> nicht in seiner Importliste), damit an den fertigen Wagen aus Charge 37 nichts nachträglich
+> anders wird.
+
+> ⚠️ **ZUM FÜNFTEN MAL derselbe Fehler — und diesmal umgekehrt herum.** Bisher lautete die
+> Lehre „ein Rahmen sind vier Balken, keine Platte davor" (Gaube 35, Fenster 37, Ladenschild
+> 37, Klappe 38). Hier war es dasselbe Prinzip aus der anderen Richtung: **was man sehen soll,
+> muss VOR dem stehen, was es umgibt.**
+>
+> Das Fensterband lag auf `br/2 − 0,03` mit 5 cm Tiefe, also von `br/2 − 0,055` bis
+> `br/2 − 0,005` — **komplett innerhalb der Flanke**, während die Pfosten mit `br/2 + 0,02`
+> davor standen. Im Render hatte **kein einziger der sechs Wagen Scheiben**, nur eine dunkle
+> Fuge. Dasselbe beim Türglas hinter dem Türblatt, beim Wohnmobilfenster hinter dem Rahmen —
+> und die Seitenscheiben der Fahrerhäuser waren mit `B − 0,24` schmaler als der Wagen und
+> damit ganz im Blech versenkt.
+>
+> Merksatz für die nächste Ladung: bei jedem Glas die **Außenkante** ausrechnen und mit der
+> Flanke vergleichen. `Mitte ± Tiefe/2` gegen `Breite/2` — zwei Zahlen, und der Fehler ist weg.
+
+### 🔍 Zwei Maßfehler, die die Bounding-Box verraten hat
+
+* **Die Spiegel bestimmten die Wagenbreite.** 0,41 m Überstand je Seite: der Bus maß damit
+  3,38 statt 2,55. Ein echter Busspiegel steht rund 0,25 m ab.
+* **Die Dachantenne legte den Maßstab fest.** 0,60 m hoch schob sie den Bus auf 3,88 m —
+  und `bau()` skaliert im Spiel über die **Höhe**. Ein 60-cm-Stab hätte damit den ganzen Bus
+  um 5 % geschrumpft. Alles, was oben dünn heraussteht, ist bei diesem Skalierverfahren
+  teurer als es aussieht.
+
+---
 
 ---
 ## 🎡 Freizeitpark-Quartier in `traumhaus.html` — fertiger Einbau
