@@ -284,3 +284,61 @@ def export(name, bevel=0.014, seg=2):
     except Exception: bpy.ops.export_mesh.stl(filepath=p2)
     print("  ->", name, os.path.getsize(p1), "B")
 
+
+# ============================================================ Fahrzeug-Werkzeug
+# Beides stand seit Charge 37 lokal in mk_th37_stadt.py. Ladung 40 sind wieder
+# Fahrzeuge — statt es zu kopieren, steht es ab jetzt hier. mk_th37 fuehrt seine
+# eigenen Fassungen weiter (sie stehen nicht in seiner Importliste), damit an
+# den fertigen Wagen aus Charge 37 nichts nachtraeglich anders wird.
+
+def keil_y(prof, cy, breite, m=None, cx=0.0, cz=0.0, name="Profil"):
+    """Extrudiert ein Profil aus der x-z-Ebene entlang y.
+
+    Das Werkzeug fuer Fahrzeuge: man zeichnet die SEITENANSICHT und zieht sie auf
+    Wagenbreite. Aus Kisten gestapelt bekommt man nie eine Windschutzscheiben-
+    neigung hin.
+
+    ⚠️ Die Deckflaechen werden TRIANGULIERT, nicht als N-Gon geschlossen. Ein
+    Fahrzeug-Seitenriss ist nicht konvex (die Fensterlinie springt zurueck), und
+    ein N-Gon darueber faltet sich."""
+    n = len(prof)
+    bm = bmesh.new()
+    v0 = [bm.verts.new((p[0] + cx, cy - breite/2.0, p[1] + cz)) for p in prof]
+    v1 = [bm.verts.new((p[0] + cx, cy + breite/2.0, p[1] + cz)) for p in prof]
+    f0 = bm.faces.new(v0)
+    f1 = bm.faces.new(list(reversed(v1)))
+    for i in range(n):
+        j = (i + 1) % n
+        bm.faces.new((v0[i], v0[j], v1[j], v1[i]))
+    bmesh.ops.triangulate(bm, faces=[f0, f1])
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
+    me = bpy.data.meshes.new(name); bm.to_mesh(me); bm.free(); me.update()
+    o = bpy.data.objects.new(name, me); bpy.context.collection.objects.link(o)
+    if m: me.materials.append(m)
+    bpy.context.view_layer.objects.active = o
+    uvl = me.uv_layers.new(name="UVMap")
+    for poly in me.polygons:
+        for li in poly.loop_indices:
+            p = me.vertices[me.loops[li].vertex_index].co
+            uvl.data[li].uv = (p.x if abs(poly.normal.y) < 0.5 else p.y, p.z)
+    return o
+
+def rad(x, y, z, r, br, felge, reifen, chrom=None, speichen=5):
+    """Ein Rad: Reifen, Felgenschuessel, Speichen, Nabe.
+
+    ⚠️ Die Zylinderachse muss auf y liegen — `rot=(pi/2,0,0)` legt sie dorthin.
+    Mit (0,pi/2,0) laege sie auf x und das Rad stuende quer zur Fahrtrichtung.
+
+    Die Speichen sind der Unterschied zwischen „Rad" und „schwarze Scheibe":
+    eine glatte Felge liest sich aus jeder Entfernung als Loch."""
+    flach(zyl(x, y, z, r, br, reifen, 20, (math.pi/2, 0, 0)))
+    for s9 in (-1, 1):
+        ya = y + s9*(br/2 + 0.006)
+        flach(zyl(x, ya, z, r*0.62, 0.03, felge, 16, (math.pi/2, 0, 0)))
+        for k in range(speichen):
+            a = TAU*k/speichen + 0.3
+            sp = box(x + math.cos(a)*r*0.34, ya + s9*0.012, z + math.sin(a)*r*0.34,
+                     r*0.44, 0.02, r*0.16, felge)
+            sp.rotation_euler[1] = -a
+        flach(zyl(x, ya + s9*0.02, z, r*0.17, 0.03, chrom or felge, 12, (math.pi/2, 0, 0)))
+    flach(zyl(x, y, z, r*0.16, br + 0.04, felge, 10, (math.pi/2, 0, 0)))
