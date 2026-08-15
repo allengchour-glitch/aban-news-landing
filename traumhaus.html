@@ -4111,6 +4111,15 @@ setTimeout(function baueGebaeude(){
         window._landbus=[];
         [60,240].forEach(function(gr,i){
           stell("th40_bus.glb",3.69,[0,0],0,function(w){
+            /* ⚠️ NIE IN DEN LOD-INDEX. `bau()` traegt jedes Modell in `_gebaeude`
+               ein, und der Sichtbarkeits-Index wird EINMAL aus diesen Positionen
+               gebaut (`gridNeu()`). Der Bus stand dabei noch im Ursprung und
+               blieb dadurch unsichtbar — obwohl die Sonde ihn korrekt gesetzt,
+               sichtbar, in voller Groesse und mitten im Bild meldete: 176 von
+               176 Meshes visible, Projektion auf Bildpunkt 641|333. Dieselbe
+               Marke steht schon bei den wandernden Tieren, mit demselben
+               Kommentar — sie gilt fuer alles, was sich bewegt. */
+            w.userData.nieAusblenden=true; w._bewegt=true;
             window._landbus.push({w:w,gr:gr,pos:RAD_R0+18+i*26,rdir:1,wartet:0});});
         });
         },0);
