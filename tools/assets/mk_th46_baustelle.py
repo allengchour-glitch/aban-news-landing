@@ -266,15 +266,19 @@ def _b_bagger():
     for s in (-1, 1):
         y = s*(1.05)
         for q in (-1, 1):                                           # Umlenkrollen
-            flach(zyl(q*(KL/2 - 0.45), y, 0.52, 0.52, KB, m["stahl2"], 14,
+            flach(zyl(q*(KL/2 - 0.45), y, 0.60, 0.48, KB, m["stahl2"], 14,
                       (math.pi/2, 0, 0)))
-        box(0, y, 0.52, KL - 0.90, KB, 1.04, m["stahl2"])
+        box(0, y, 0.60, KL - 0.90, KB, 0.96, m["stahl2"])
         for k in range(5):                                          # Laufrollen
-            flach(zyl(-1.30 + k*0.65, y, 0.22, 0.20, KB + 0.06, m["dunkel"], 10,
+            flach(zyl(-1.30 + k*0.65, y, 0.26, 0.20, KB + 0.06, m["dunkel"], 10,
                       (math.pi/2, 0, 0)))
         for k in range(22):                                         # Kettenglieder
+            # ⚠️ Radius 0,60 um Mitte 0,52 heisst Unterkante 0,52-0,60-0,06 =
+            # -0,14 — die Kette lief unter dem Boden durch. Die Kette umschlingt
+            # die Rollen, ihre Unterkante ist also 0: Mitte 0,60, Radius 0,54,
+            # halbe Gliedstaerke 0,06.
             a = TAU*k/22
-            cx = math.cos(a)*(KL/2 - 0.45); cz = 0.52 + math.sin(a)*0.60
+            cx = math.cos(a)*(KL/2 - 0.45); cz = 0.60 + math.sin(a)*0.54
             gl = box(cx, y, cz, 0.34, KB + 0.10, 0.12, m["dunkel"])
             gl.rotation_euler[1] = -a
     box(0, 0, 1.20, 3.40, 2.20, 0.34, m["gelb2"])                   # Drehbuehne
@@ -287,16 +291,19 @@ def _b_bagger():
         _rahmen(0.70, -0.55 + s*0.55, 2.45, 1.42, 1.42, 0.10, m, "stahl2")
     box(1.44, -0.55, 2.45, 0.06, 0.90, 1.30, m["glas"])
     # Ausleger, Stiel, Loeffel
-    al = box(2.30, 0.55, 2.55, 3.00, 0.42, 0.55, m["gelb"])
-    al.rotation_euler[1] = -0.42
-    st = box(4.05, 0.55, 1.85, 2.30, 0.36, 0.44, m["gelb"])
-    st.rotation_euler[1] = 0.62
-    strebe((1.30, 0.55, 2.20), (3.20, 0.55, 3.30), 0.13, m["stahl2"])
-    strebe((3.40, 0.55, 3.20), (4.60, 0.55, 2.30), 0.11, m["stahl2"])
+    # ⚠️ Ausgestreckt zog der Ausleger die Boxmitte auf +1,85. Ein Bagger auf
+    # einer Baustelle steht meist ANGEWINKELT — das ist nicht nur naeher am
+    # Ursprung, es sieht auch nach Pause aus statt nach Standbild im Aushub.
+    al = box(1.85, 0.55, 2.75, 2.60, 0.42, 0.55, m["gelb"])
+    al.rotation_euler[1] = -0.62
+    st = box(3.10, 0.55, 2.05, 2.00, 0.36, 0.44, m["gelb"])
+    st.rotation_euler[1] = 0.95
+    strebe((1.20, 0.55, 2.30), (2.60, 0.55, 3.45), 0.13, m["stahl2"])
+    strebe((2.80, 0.55, 3.35), (3.55, 0.55, 2.40), 0.11, m["stahl2"])
     lf = keil_y([(0.00, 0.00), (0.90, 0.10), (1.05, 0.70), (0.10, 0.85)],
-                0.55, 0.90, m["stahl2"], cx=4.60, cz=0.55, name="Loeffel")
+                0.55, 0.90, m["stahl2"], cx=3.45, cz=0.90, name="Loeffel")
     for k in range(5):                                              # Zaehne
-        flach(kegel(5.62, 0.20 + k*0.22, 0.62, 0.07, 0.0, 0.26, m["stahl2"], 5,
+        flach(kegel(4.47, 0.20 + k*0.22, 0.97, 0.07, 0.0, 0.26, m["stahl2"], 5,
                     rot=(0, math.pi/2, 0)))
     flach(zyl(-0.30, 0, 2.52, 0.10, 0.34, m["warn"], 10))           # Rundumleuchte
 
@@ -363,8 +370,10 @@ def _b_materiallager():
         flach(zyl(xx, -0.70, zz, 0.16, 2.20, m["stahl"], 12, (math.pi/2, 0, 0)))
     for s in (-1, 1):
         box(0.90 + 0.36, -0.70 + s*1.14, 0.28, 1.20, 0.10, 0.56, m["holz"])
-    flach(kegel(2.55, 0.75, 0.0, 1.05, 0.16, 0.90, m["sand"], 18))  # Sandhaufen
-    flach(kegel(2.60, 0.80, 0.0, 0.70, 0.10, 0.62, m["sand"], 16))
+    # ⚠️ `kegel()` setzt die MITTE auf z, nicht den Fuss: mit z = 0 und Hoehe 0,90
+    # lag der Sandhaufen von -0,45 bis +0,45. Ein Schuettkegel gehoert auf h/2.
+    flach(kegel(2.55, 0.75, 0.45, 1.05, 0.16, 0.90, m["sand"], 18))  # Sandhaufen
+    flach(kegel(2.60, 0.80, 0.31, 0.70, 0.10, 0.62, m["sand"], 16))
     # Schubkarre
     SX, SY = -2.80, -1.10
     kf = keil_y([(0.00, 0.10), (0.90, 0.00), (1.00, 0.42), (-0.10, 0.46)],
