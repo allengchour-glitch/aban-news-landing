@@ -5553,6 +5553,38 @@ setTimeout(function baueGebaeude(){
   [-96,-60,-24,24,60,96].forEach(function(mx){
     bau("th17_oberleitungsmast.glb",7.5,mx,0,108.5,0,false,null,true);});
   bau("th17_tramhaltestelle.glb",3.0,-20,0,108,Math.PI,false,null,true);
+  /* ── ⚓ Charge 45: Hafen und Strand ─────────────────────────────────────────
+     340 m Ufer standen ohne einen einzigen Gegenstand da. Der Sandstreifen liegt
+     bei x = -128 (14 breit, also -135…-121), das Wasser westlich davon, der
+     Wendeplatz bei (-132|-30).
+
+     ⚠️ TIEFGANG: die Boote haben wie alles andere zmin = 0. Wer sie auf y = 0
+     setzt, laesst sie auf dem Wasser STEHEN — sie muessen um ihren Tiefgang
+     tiefer: Fischerboot 0,55, Segelboot 0,40. Der Wasserspiegel liegt bei
+     y = -0,04, also y = -0,04 - Tiefgang.
+
+     ⚠️ Die Kaimauer zeigt ihre Wasserseite auf Blender +y, in three.js also -z.
+     Der Kai laeuft hier laengs der Kueste (also in z), das Wasser liegt im
+     Westen (-x): die Wasserseite muss auf -x zeigen, und aus der Normalen
+     (-sin rotY, -cos rotY) = (-1, 0) folgt rotY = +pi/2. */
+  (function hafen(){
+    var KX=-134;                       /* Kaikante, knapp westlich des Sandes */
+    function fest(datei,hoehe,x,y,z,ry){
+      bau(datei,hoehe,x,y,z,ry,false,function(w){w.userData.fest=true;},true);
+    }
+    /* Kai noerdlich der Strandzufahrt (die quert bei z = -30) */
+    for(var k=0;k<7;k++) fest("th45_kaimauer.glb",2.62,KX,0,-8+k*8,Math.PI/2);
+    fest("th45_hafenkran.glb",14.37,KX-4.5,0,20,Math.PI/2);
+    for(var c=0;c<3;c++) fest("th45_container.glb",7.83,KX+7,0,4+c*7,Math.PI/2);
+    /* Boote im Wasser, um den Tiefgang gesenkt */
+    fest("th45_fischerboot.glb",5.20,KX-7.5,-0.59,10,Math.PI/2);
+    fest("th45_segelboot.glb", 8.29,KX-7.0,-0.44,34,Math.PI/2);
+    fest("th45_leuchtturm.glb",19.44,KX-2,0,54,0);
+    /* Strand suedlich der Zufahrt */
+    for(var b=0;b<4;b++)
+      fest("th45_strandkorb.glb",2.61,-127,0,-46-b*7,-Math.PI/2);
+    fest("th45_rettungsturm.glb",4.09,-129,0,-72,-Math.PI/2);
+  })();
   /* 🎟️ Kassenhaeuschen am Freizeitpark-Eingang. Das Tor `th32_parkeingang` steht
      seit Charge 32 da, aber niemand verkauft dort etwas — dieselbe Luecke wie die
      Wartehaeuschen ohne Bus (39) und der Sportpark ohne Sportplatz (44). Die
