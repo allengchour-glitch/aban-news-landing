@@ -97,3 +97,11 @@ gid://shopify/Article/1001922429313	titelbild	katzen-erstausstattung-alles-fur-d
 gid://shopify/Article/1001922462081	titelbild	hundezubehor-leine-halsband-bett-spielzeug-richtig
 gid://shopify/Article/1001922494849	titelbild	geschenkideen-fur-manner-treffer-statt-fehlkauf
 gid://shopify/Article/1001922527617	titelbild	geschenkideen-fur-frauen-von-klein-bis-besonders
+gid://shopify/Article/1001922560385	titelbild	reise-gadgets-packliste-clever-unterwegs
+gid://shopify/Article/1001922593153	titelbild	camping-ausrustung-fur-einsteiger-die-basics
+gid://shopify/Article/1001922625921	titelbild	ventilator-oder-klimagerat-cool-durch-den-sommer
+gid://shopify/Article/1001922658689	titelbild	luftreiniger-ratgeber-bessere-raumluft-fur-allergi
+gid://shopify/Article/1001922691457	titelbild	drohnen-ratgeber-kameradrohne-fur-einsteiger-wahle
+gid://shopify/Article/1001922724225	titelbild	beamer-furs-heimkino-auflosung-helligkeit-anschlus
+gid://shopify/Article/1001922756993	titelbild	led-stimmungslicht-das-richtige-licht-fur-dein-zuh
+gid://shopify/Article/1001922789761	titelbild	rucksack-guide-der-passende-rucksack-fur-alltag-re
