@@ -18,6 +18,10 @@
 
 // Titelmuster stechen die Tags: der Tag `uhren` klebt auch auf Smartwatches.
 const VORRANG = [
+  // Schulrucksäcke (15.08.2026, Schulstart-Serie): «rucksack» hat sonst keine Regel und die
+  // Tags sagen «taschen» — Handtaschen wären falsch. Gegen die Quelldatei geprüft:
+  // Zeile 4089 «100 - Luggage & Bags > Backpacks».
+  [/rucksack|backpack|schulranzen/i, 'Luggage & Bags > Backpacks'],
   [/smart\s*-?\s*watch|smartuhr/i, 'Apparel & Accessories > Jewelry > Watches'],
   [/fitness\s*-?\s*(tracker|armband)|activity\s*tracker/i,
    'Apparel & Accessories > Jewelry > Watches'],
