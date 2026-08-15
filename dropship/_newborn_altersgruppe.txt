@@ -1,0 +1,15 @@
+gid://shopify/Product/15447962321281	kids	Baby Mädchen Herbst-Outfit Gestreift & Schriftzug
+gid://shopify/Product/15447976018305	kids	Baby Cordhose mit Spitzenbesatz
+gid://shopify/Product/15448574591361	toddler	Baby-Jumpsuit mit Herzprint und Spitze
+gid://shopify/Product/15449430688129	toddler	Baby-Overall mit Rüschen
+gid://shopify/Product/15449432490369	toddler	Neugeborenensäuglingsanzug Reisvelvet Winter/Herbs
+gid://shopify/Product/15450829291905	toddler	Baby Plüsch-Overall mit Kapuze
+gid://shopify/Product/15450830340481	toddler	Baby Strampler aus Baumwolle
+gid://shopify/Product/15450836468097	toddler	Baby Sommer Set – T-Shirt & Shorts für Mädchen & J
+gid://shopify/Product/15450837680513	kids	Baby Zweiteiler "Kleiner Duft"
+gid://shopify/Product/15450839843201	toddler	Baby Strampler aus Baumwolle mit langen Ärmeln
+gid://shopify/Product/15450850197889	toddler	Baby Strampler – Niedlicher Overall für Krabbelkin
+gid://shopify/Product/15450850951553	toddler	Tutu-Kleid für Baby Girls – Langarm mit Spitze
+gid://shopify/Product/15450852098433	toddler	Baby Bright Komfortabler Strampler
+gid://shopify/Product/15450855211393	toddler	Baby-Overall Weinrot für Jungen
+gid://shopify/Product/15469939556737	toddler	Babykostüm Ninja Turtles

@@ -758,3 +758,4 @@ gid://shopify/Product/15500403540353	nicht-versendbar	Mini-Ski-Gerät
 gid://shopify/Product/15500404425089	nicht-versendbar	Beinspreizer für Hüft- und Beintraining
 gid://shopify/Product/15500409012609	ok	Infrarot Sensor Nagellampe, kabellos
 gid://shopify/Product/15500344361345	ok	Vintage Reise-Sporttasche Leder faltbar
+gid://shopify/Product/15500487000449	nicht-versendbar	Schuhbox mit Touch-Funktion
