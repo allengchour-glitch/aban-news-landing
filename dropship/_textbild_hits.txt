@@ -6737,3 +6737,13 @@ gid://shopify/Product/15449133187457	91->2	Falsche Nerzwimpern 3D MK-06 (5 Paar)
 gid://shopify/Product/15449157632385	12->0	Lässiger Hoodie mit überschnittenen Ärmeln · Modell 8
 gid://shopify/Product/15449158943105	109->0	Damen Sweatshirt mit 3D-Effekt Print
 gid://shopify/Product/15449165955457	22->0	Herren Kapuzenpullover Sweatshirt
+gid://shopify/Product/15449425150337	75->0	8-in-1 Gemüseschneider
+gid://shopify/Product/15449425346945	21->0	Automatisches Futtergerät für Haustiere
+gid://shopify/Product/15449425805697	161->1	Cellulite-Reduzierende Leggings
+gid://shopify/Product/15449425969537	26->1	Kabelloser Automatik-Haarglätter mit LCD-Bildschirm
+gid://shopify/Product/15449427050881	60->0	Smart Mülltonne mit Sensor
+gid://shopify/Product/15449427181953	8->0	LED-Campinglampe mit Touchsteuerung und Kugeldesign
+gid://shopify/Product/15449427640705	18->0	2-in-1 Katzen- & Hunde-Bett
+gid://shopify/Product/15449429737857	69->1	Sommerkleid ohne Ärmel und Rückenteil – für Party & Abend
+gid://shopify/Product/15449431540097	82->0	Kühlendes Pet-Bett für Sommer
+gid://shopify/Product/15449432686977	14->0	Haarpflege-Essenz
