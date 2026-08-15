@@ -942,6 +942,15 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
      Mittelpunkt liegt 424 m vom Zentrum, damit innerhalb der Kamera-Fernebene
      (600); weiter weg waere er aus der Stadt gar nicht zu sehen. */
   window.GBERG={x:60,z:-420,rad:200,hoch:170,exp:1.5,grat:0.7};
+  /* ⚽ Der Sportplatz (Charge 44) liegt bei r 143…186 — also MITTEN im
+     Waldguertel (r 150…278). Beim ersten Einbau stand ein Fichtenwald auf dem
+     Spielfeld. Baeume und Felder haben keine Kollider, eine Freiflaechenkarte
+     aus `inSolid` sieht sie also nicht; die Flaeche muss denselben Weg gehen wie
+     die Zubringer und sich vorher ANMELDEN. */
+  /* ⚠️ Erst w 56 / d 42: einzelne Fichten standen danach noch auf der Torauslinie.
+     Die Sperre muss die Anlage samt Tribuenen und Auslauf umfassen, nicht nur
+     die Rasenflaeche. */
+  window.SPORTFELD={x:53,z:155,w:70,d:56};
   window.gelaendeH=function(x,z){
     /* ⚠️ Erste Fassung war H = hoch*(1-r/rad)^exp — also rotationssymmetrisch,
        und damit exakt das, was als „Kegel" bemaengelt wurde. Die Form muss aus
@@ -4175,6 +4184,8 @@ setTimeout(function baueGebaeude(){
            Im Spiel sah das aus, als fuehre der Wagen auf einer Markierung
            mitten durch die Wiese. Gefunden, weil ich nach dem Einbau des
            Zubringer-Verkehrs hingeschaut habe; die Masse zeigen so etwas nie. */
+        var SF2=window.SPORTFELD;                                 // nicht auf den Sportplatz
+        if(SF2&&Math.abs(x-SF2.x)<SF2.w/2+rad2&&Math.abs(z-SF2.z)<SF2.d/2+rad2)return false;
         var ZB=window._zubringer||[];
         for(var zq=0;zq<ZB.length;zq++){
           var za=ZB[zq]*Math.PI/180, zc=Math.cos(za), zs=Math.sin(za);
@@ -4246,6 +4257,8 @@ setTimeout(function baueGebaeude(){
            Spiel wuchsen Fichten mitten auf der Fahrbahn. Ein Baum ueberdeckt
            die Strasse nicht wie ein Feld, er steht einfach darauf; auffallen
            tut es genauso. */
+        var SF=window.SPORTFELD;                                // nicht auf den Sportplatz
+        if(SF&&Math.abs(wx-SF.x)<SF.w/2&&Math.abs(wz-SF.z)<SF.d/2)continue;
         var ZB2=window._zubringer||[], aufZub=false;
         for(var zq2=0;zq2<ZB2.length;zq2++){
           var za2=ZB2[zq2]*Math.PI/180, zc2=Math.cos(za2), zs2=Math.sin(za2);
@@ -5526,6 +5539,67 @@ setTimeout(function baueGebaeude(){
   [-96,-60,-24,24,60,96].forEach(function(mx){
     bau("th17_oberleitungsmast.glb",7.5,mx,0,108.5,0,false,null,true);});
   bau("th17_tramhaltestelle.glb",3.0,-20,0,108,Math.PI,false,null,true);
+  /* ── ⚽ Charge 44: Sportplatz im Ostteil des Sportparks ──────────────────────
+     Der Sportpark hatte fuenf Hallen und einen Basketballplatz, aber kein
+     Spielfeld. Ein volles 96x66-Feld passt nirgends hin: eine Belegungskarte
+     (Raster 4 m, `__th.frei`) zeigt, dass die Ringlandstrasse bei r = 200 jede
+     grosse Flaeche in diesem Sektor schneidet. Frei ist der Ostteil des
+     Viertels selbst — dort steht jetzt ein Trainingsfeld 46 x 30.
+
+     ⚠️ Die Feldmarkierung wird HIER gezeichnet, nicht im Bauteil (Charge 43),
+     und alles bekommt `userData.fest` (Charge 40). */
+  (function sportplatz(){
+    /* ⚠️ ERST (66|240) — mitten im Viertel. Die Belegungskarte zeigte dort nur
+       Punkte, aber `__th.frei()` prueft KOLLIDER, nicht Strassen: die
+       Erschliessungsstrasse des Viertels und die Zugangswege zu den Hallen haben
+       keine, und im Spiel lief ein Asphaltband quer ueber das Spielfeld. Eine
+       Freiflaechenkarte aus Kollidern beantwortet die Frage "steht dort etwas",
+       nicht "gehoert die Flaeche schon jemandem".
+       Jetzt SUEDLICH des Viertels (das beginnt bei z = 174), oestlich der
+       Zufahrt bei x = 0, und mit allen Ecken zwischen Stadtring (r 118) und
+       Ringlandstrasse (r 196): (30|140) hat r 143, (76|170) hat r 186. */
+    var CX=53, CZ=155, FB=46, FT=30;
+    function fest(datei,hoehe,x,z,ry){
+      bau(datei,hoehe,x,0,z,ry,false,function(w){w.userData.fest=true;},true);
+    }
+    function strich(x,z,bx,bz){
+      var li=new THREE.Mesh(new THREE.PlaneGeometry(bx,bz),
+        new THREE.MeshStandardMaterial({color:0xeceae2,roughness:0.85}));
+      li.rotation.x=-Math.PI/2;li.position.set(x,0.035,z);scene.add(li);
+    }
+    /* ⚠️ 0x2f6a30 mit envMapIntensity im Standardwert renderte als blasses Mint —
+       heller als die Wiese ringsum, obwohl der Zahlenwert dunkler ist. Die
+       Umgebungsbeleuchtung hebt grosse flache Flaechen stark an; die anderen
+       Bodenflaechen der Karte fahren darum ebenfalls eine gedaempfte
+       envMapIntensity. */
+    var ras=new THREE.Mesh(new THREE.PlaneGeometry(FB+4,FT+4),
+      new THREE.MeshStandardMaterial({color:0x24551d,roughness:0.97,envMapIntensity:0.14}));
+    ras.rotation.x=-Math.PI/2;ras.position.set(CX,0.028,CZ);ras.receiveShadow=true;scene.add(ras);
+    strich(CX,CZ-FT/2,FB,0.14); strich(CX,CZ+FT/2,FB,0.14);      // Seitenlinien
+    strich(CX-FB/2,CZ,0.14,FT); strich(CX+FB/2,CZ,0.14,FT);      // Torlinien
+    strich(CX,CZ,0.14,FT);                                        // Mittellinie
+    for(var k=0;k<32;k++){                                        // Mittelkreis
+      var a=k/32*6.283;
+      strich(CX+Math.cos(a)*6.0,CZ+Math.sin(a)*6.0,0.30,0.30);
+    }
+    /* Tore: die Oeffnung liegt auf +y, in three.js also -z. Fuer Blick nach +x
+       folgt aus der Normalen (-sin rotY, -cos rotY) = (1,0) gerade rotY = -pi/2. */
+    fest("th44_tor.glb",2.50,CX-FB/2+0.5,CZ,-Math.PI/2);
+    fest("th44_tor.glb",2.50,CX+FB/2-0.5,CZ, Math.PI/2);
+    /* Tribuenen an der Nordseite, Sitzreihen zum Feld (rotY = 0). */
+    for(var t=0;t<2;t++) fest("th44_tribuene.glb",8.06,CX-6+t*12,CZ+FT/2+3.5,0);
+    for(var q=0;q<4;q++){                                         // Flutlicht an den Ecken
+      var fx=CX+(q%2?1:-1)*(FB/2+2.5), fz=CZ+(q<2?-1:1)*(FT/2+2.5);
+      fest("th44_flutlichtmast.glb",17.63,fx,fz,Math.atan2(CZ-fz,CX-fx));
+    }
+    for(var b=0;b<2;b++)                                          // Ersatzbaenke
+      fest("th44_ersatzbank.glb",1.86,CX-7+b*14,CZ-FT/2-2.6,Math.PI);
+    fest("th44_spielstand.glb",5.60,CX,CZ+FT/2+9.5,0);
+    for(var f=0;f<5;f++)                                          // Ballfangzaun im Osten
+      fest("th44_ballfangzaun.glb",4.90,CX+FB/2+3.0,CZ-8+f*4,Math.PI/2);
+    fest("th44_kasse.glb",3.09,CX-FB/2-3.0,CZ-FT/2-3.0,0);
+    fest("th44_sprunganlage.glb",0.18,CX-2,CZ+FT/2+16.0,0);
+  })();
   /* ── 🚒⛽ Charge 43: Feuerwache und Tankstelle ───────────────────────────────
      Die beiden letzten prozeduralen Quaderbauten sind ersetzt. Beide Modelle
      haben ihre Schauseite auf Blender +y, in three.js also -z; die alten Bauten
