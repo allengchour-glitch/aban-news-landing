@@ -184,12 +184,16 @@ def _b_turnhalle():
     for k in range(7):                                                  # Lichtkuppeln
         flach(kugel(-9.0 + k*3.0, 0, H + 1.30, 0.62, m["glas"], 9))
     # Tor: zwei Fluegel in einer OEFFNUNG
-    box(0, T/2 + 0.06, 1.90, 4.20, 0.30, 3.60, m["dunkel"])
+    # ⚠️ Erst auf z = 1,90 mit 3,90 Rahmenhoehe: der untere Rahmenbalken sass
+    # damit auf 1,90 - 1,95 + 0,11 = 0,06 und reichte mit seiner halben Hoehe bis
+    # -0,05. Ein Rahmen wird von der MITTE aus gerechnet — seine Unterkante ist
+    # z - h/2, nicht z.
+    box(0, T/2 + 0.06, 2.02, 4.20, 0.30, 3.60, m["dunkel"])
     for s in (-1, 1):
-        box(s*1.00, T/2 + 0.22, 1.90, 1.90, 0.10, 3.40, m["stahl"])
+        box(s*1.00, T/2 + 0.22, 2.02, 1.90, 0.10, 3.40, m["stahl"])
         for k in range(4):
-            box(s*1.00, T/2 + 0.28, 0.70 + k*0.80, 1.72, 0.05, 0.10, m["dunkel"])
-    _rahmen(0, T/2 + 0.30, 1.90, 4.50, 3.90, 0.22, m)
+            box(s*1.00, T/2 + 0.28, 0.82 + k*0.80, 1.72, 0.05, 0.10, m["dunkel"])
+    _rahmen(0, T/2 + 0.30, 2.02, 4.50, 3.86, 0.22, m)
     for s in (-1, 1):                                                   # Sprossenwand aussen
         for k in range(9):
             flach(zyl(s*9.6, -T/2 - 0.14, 1.00 + k*0.44, 0.045, 1.60, m["holz"], 8,
@@ -272,8 +276,11 @@ def _b_pausenhofdach():
         box(0, s*(T/2 - 0.42), 0.44, B - 1.0, 0.42, 0.06, m["holz"])
         for q in (-1, 1):
             box(q*(B/2 - 0.90), s*(T/2 - 0.42), 0.22, 0.12, 0.42, 0.38, m["stahl"])
-    box(-B/2 + 0.30, 0, 1.65, 0.12, T - 1.0, 1.40, m["gruen"])          # Anschlagtafel
-    _rahmen(-B/2 + 0.24, 0, 1.65, T - 0.8, 1.56, 0.10, m)
+    # ⚠️ Die Tafel hing am -x-Kopf und zog die Boxmitte auf -0,73. `bau()` setzt
+    # ueber den Ursprung, nicht ueber die Boxmitte — ein Teil, dessen Schwerpunkt
+    # weit daneben liegt, landet im Spiel verschoben. Jetzt an der Rueckwand.
+    box(0, T/2 - 0.10, 1.65, B - 1.2, 0.12, 1.40, m["gruen"])           # Anschlagtafel
+    _rahmen(0, T/2 - 0.16, 1.65, B - 1.0, 1.56, 0.10, m)
 
 def pausenhofdach(): _modul("th42_pausenhofdach", _b_pausenhofdach, 0.008)
 
@@ -285,7 +292,10 @@ def _b_klettergeruest():
     sonst steht das Geruest auf dem blanken Hof."""
     m = _mats()
     B, T, H = 3.60, 2.60, 2.55
-    flach(zyl(0, 0, 0.012, 3.20, 0.024, m["gelb"], 28))                 # Fallschutz
+    # ⚠️ Erst r = 3,20: die Fallschutzflaeche allein machte das Teil 6,40 breit
+    # und damit groesser als das Geraet darauf. r = 2,40 deckt den Sturzraum
+    # und laesst die Silhouette beim Geruest.
+    flach(zyl(0, 0, 0.012, 2.40, 0.024, m["gelb"], 28))                 # Fallschutz
     for sx in (-1, 1):
         for sy in (-1, 1):
             box(sx*B/2, sy*T/2, H/2, 0.13, 0.13, H, m["rot"])
@@ -324,7 +334,9 @@ def _b_tischtennis():
         box(s*1.35, 0, 0.755, 0.04, 1.50, 0.012, m["stein"])            # Randlinien
     box(0, 0, 0.755, 2.70, 1.48, 0.006, m["gruen"])
     for s in (-1, 1):                                                   # Fuesse
-        fs = box(s*1.00, 0, 0.34, 0.16, 1.20, 0.68, m["beton"])
+        # ⚠️ Um 0,10 gekippt misst der Fuss 0,68*cos + 0,16*sin = 0,693 hoch —
+        # auf Mitte 0,34 endet er bei -0,007. Gekippte Koerper brauchen Aufschlag.
+        fs = box(s*1.00, 0, 0.355, 0.16, 1.20, 0.68, m["beton"])
         fs.rotation_euler[1] = -s*0.10
     box(0, 0, 0.80, 0.05, 1.72, 0.16, m["stahl"])                       # Netz
     for k in range(11):
@@ -338,7 +350,7 @@ def tischtennis(): _modul("th42_tischtennis", _b_tischtennis, 0.006)
 def _b_schulbank():
     """Bank mit Abfallbehaelter und Baumscheibe, 3,40 x 1,10 x 2,60 m."""
     m = _mats()
-    BX = -0.75
+    BX = -1.30                                                          # Bank links
     for s in (-1, 1):                                                   # Wangen
         box(BX + s*0.80, 0.08, 0.23, 0.12, 0.60, 0.46, m["beton"])
         box(BX + s*0.80, -0.22, 0.74, 0.12, 0.16, 0.72, m["beton"])
@@ -346,13 +358,16 @@ def _b_schulbank():
         box(BX, -0.18 + k*0.16, 0.52, 1.72, 0.13, 0.055, m["holz"])
     for k in range(3):
         box(BX, -0.25, 0.76 + k*0.17, 1.72, 0.07, 0.13, m["holz"])
-    KX = 0.85                                                           # Abfallbehaelter
+    KX = 0.30                                                           # Abfallbehaelter
     flach(dreh([(0.00, 0.00), (0.14, 0.00), (0.16, 0.08), (0.24, 0.30),
                 (0.26, 0.86), (0.24, 0.92), (0.00, 0.94)],
                m["stahl"], 16, x=KX, y=0.0, z=0.0, name="Behaelter"))
     flach(zyl(KX, 0, 0.99, 0.30, 0.08, m["dunkel"], 16))
     flach(zyl(KX, 0, 1.05, 0.10, 0.06, m["stahl"], 10))
-    BM = 1.75                                                           # Baumscheibe
+    # ⚠️ Bank, Behaelter und Baum standen alle rechts der Mitte (Boxmitte
+    # 0,54). Wer drei Dinge in ein Modul packt, muss sie um den Ursprung
+    # verteilen — sonst setzt `bau()` sie im Spiel daneben.
+    BM = 1.35                                                           # Baumscheibe
     flach(zyl(BM, 0, 0.05, 0.62, 0.10, m["sockel"], 18))
     for k in range(12):
         a = TAU*k/12
