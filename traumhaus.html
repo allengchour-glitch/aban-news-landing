@@ -5590,7 +5590,14 @@ setTimeout(function baueGebaeude(){
       fest("th41_fahrleitungsmast.glb",7.20,mx,113.9,-Math.PI/2);});
     fest("th41_signal.glb",5.49,29,113.6,Math.PI/2);
     fest("th41_signal.glb",5.49,-29,113.6,-Math.PI/2);
-    fest("th41_prellbock.glb",1.26,44,112.0,Math.PI);      /* Gleisende Ost */
+    /* ⚠️ Hier stand ein Prellbock bei x = 44 auf dem Gleis. Das Gleis bei
+       z = 112 ist aber eine DURCHGEHENDE Strecke — es laeuft ueber einen Damm
+       in ein Tunnelportal. Ein Prellbock quer darauf haette bedeutet: der Zug
+       faehrt jede Runde durch sein eigenes Streckenende. Das Teil bleibt in
+       der Ladung, aber es gehoert an ein Stumpfgleis, und eins gibt es hier
+       nicht. Lieber kein Prellbock als einer an der falschen Stelle. */
+    /* Stattdessen: ein zweites Signal am Ostkopf, wo die Strecke weiterfuehrt. */
+    fest("th41_signal.glb",5.49,44,113.6,Math.PI/2);
     fest("th41_anzeigetafel.glb",3.11,-15,109.9,0);
     fest("th41_gepaeckkarre.glb",1.35,6.5,109.2,0.4);
     [-6,17].forEach(function(bx){
