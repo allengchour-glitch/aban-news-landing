@@ -86,3 +86,7 @@ gid://shopify/Product/15446267068801	zugeordnet	5	X3 Game Controller mit Kühlfu
 gid://shopify/Product/15446267134337	zugeordnet	1	Kabellose Gamecontroller-Ladestation
 gid://shopify/Product/15446267199873	zugeordnet	2	Date Night Drinking Creative Brettspiel
 gid://shopify/Product/15446267265409	zugeordnet	3	Wiederaufladbares Retro-Game-Set mit 2 Controllern
+gid://shopify/Product/15446267298177	zugeordnet	2	Vertikaler Gaming-Pistolengriff mit Trigger
+gid://shopify/Product/15446267363713	zugeordnet	3	RGP01 Multi-Plattform Wireless Gamepad
+gid://shopify/Product/15446267396481	zugeordnet	3	X2 Blue 4K Wireless Gaming Konsole
+gid://shopify/Product/15446267462017	zugeordnet	6	Vibrations-Gamepad mit 6-Achsen-Bewegungssensor
