@@ -106,3 +106,6 @@ gid://shopify/Product/15500204048769	doppelfunktionales-haarschneider-112064	Dop
 gid://shopify/Product/15500262998401	grosser-outdoor-rucksack-fur-damen-und-herren-862016	Grosser Outdoor-Rucksack für Damen und Herren
 gid://shopify/Product/15500285706625	stainless-steel-duschkopf-460608	Stainless Steel Duschkopf
 gid://shopify/Product/15500285739393	ledertasche-fur-manner-377664	Ledertasche für Männer
+gid://shopify/Product/15500353175937	farbenblock-trainingshemd-638500	Farbenblock-Trainingshemd
+gid://shopify/Product/15500353307009	kleine-pfannen-fur-pfannkuchen-601024	Kleine Pfannen für Pfannkuchen
+gid://shopify/Product/15500373885313	nachtlicht-furs-bett-926400	Nachtlicht fürs Bett

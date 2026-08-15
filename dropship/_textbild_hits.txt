@@ -6763,3 +6763,4 @@ gid://shopify/Product/15447630872961	34->0	Automatischer Lockenstab mit Ionen-Fu
 gid://shopify/Product/15447866311041	22->1	30W GaN Schnellladegerät mit einziehbaren Steckern
 gid://shopify/Product/15447874371969	46->1	Akku für Fernsteuerung TX16, TX12 & Boxer
 gid://shopify/Product/15447923818881	13->0	3M Thinsulate Winterhandschuhe für Damen & Herren
+gid://shopify/Product/15447952884097	15->0	Retro Hip-Hop Hoodie für Teenager
