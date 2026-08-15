@@ -338,7 +338,11 @@ def _b_rettungsturm():
     ZB = 2.30                                                       # Kanzelboden
     for sx in (-1, 1):                                              # Stelzen
         for sy in (-1, 1):
-            st = box(sx*1.05, sy*1.05, ZB/2, 0.16, 0.16, ZB + 0.20, m["holz"])
+            # ⚠️ Die Stelze ist um 0,06 nach zwei Achsen gekippt: ihre senkrechte
+            # Ausdehnung waechst dadurch um 0,16*(sin+sin) auf 2,51, und auf
+            # Mitte ZB/2 = 1,15 endet sie bei -0,105. Gekippte Koerper brauchen
+            # Aufschlag — zum dritten Mal in dieser Reihe (Charge 38, 42, hier).
+            st = box(sx*1.05, sy*1.05, ZB/2 + 0.11, 0.16, 0.16, ZB + 0.20, m["holz"])
             st.rotation_euler[0] = -sy*0.06
             st.rotation_euler[1] = sx*0.06
     for zz in (0.55, 1.60):                                         # Querriegel
@@ -391,18 +395,23 @@ def _b_hafen():
     Die Wasserflaeche liegt HIER, nicht in den Bauteilen (Lehre aus Charge 43),
     und die Boote sind um ihren Tiefgang gesenkt."""
     m = _mats()
-    flach(box(0, -10.0, 0.004, 60.0, 24.0, 0.008, m["beton"]))      # Kaiflaeche
-    flach(box(0, 11.0, 0.002, 60.0, 20.0, 0.004, m["rumpf"]))       # Wasser
+    # ⚠️ Die Boote muessen um ihren Tiefgang tiefer liegen als das Ufer — aber das
+    # Ensemble haelt trotzdem zmin = 0. Also nicht die Boote senken, sondern
+    # ALLES ANDERE um den groessten Tiefgang (0,55) anheben. Das Ergebnis sieht
+    # gleich aus und verletzt die Konvention nicht.
+    WS = 0.55                                                       # Wasserspiegel
+    flach(box(0, -10.0, WS + 0.004, 60.0, 24.0, 0.008, m["beton"]))  # Kaiflaeche
+    flach(box(0, 11.0, WS + 0.002, 60.0, 20.0, 0.004, m["rumpf"]))   # Wasser
     for k in range(6):
-        _teil(_b_kaimauer, -20.0 + k*8.0, 0.4)
-    _teil(_b_hafenkran, -14.0, -6.0)
-    _teil(_b_fischerboot, -6.0, 6.5, 0.0, -0.55)
-    _teil(_b_segelboot,    8.0, 6.0, 0.0, -0.40)
-    _teil(_b_leuchtturm,  24.0, -3.0)
+        _teil(_b_kaimauer, -20.0 + k*8.0, 0.4, 0.0, WS)
+    _teil(_b_hafenkran, -14.0, -6.0, 0.0, WS)
+    _teil(_b_fischerboot, -6.0, 6.5, 0.0, WS - 0.55)
+    _teil(_b_segelboot,    8.0, 6.0, 0.0, WS - 0.40)
+    _teil(_b_leuchtturm,  24.0, -3.0, 0.0, WS)
     for k in range(2):
-        _teil(_b_container, 6.0 + k*7.0, -12.0)
-    _teil(_b_strandkorb, -22.0, -17.0, math.pi)
-    _teil(_b_rettungsturm, -12.0, -17.0)
+        _teil(_b_container, 6.0 + k*7.0, -12.0, 0.0, WS)
+    _teil(_b_strandkorb, -22.0, -17.0, math.pi, WS)
+    _teil(_b_rettungsturm, -12.0, -17.0, 0.0, WS)
     export("th45_hafen", 0.012, 2)
 
 def hafen(): neu(); _b_hafen()
