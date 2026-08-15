@@ -42,3 +42,15 @@
 2026-08-14	Shapewear	gid://shopify/Product/15447900750209	Sportlicher Taillenformer mit Reissverschluss
 2026-08-14	Ladestation 3-in-1	gid://shopify/Product/15493848203649	4-in-1 Wireless Ladestation mit Schnellladefunktion
 2026-08-14	Ladestation 3-in-1	gid://shopify/Product/15495082377601	Magnetische 3-in-1 Wireless Powerbank
+2026-08-15	Beauty-Gerät	gid://shopify/Product/15449176310145	Warm Sensation Gesichtsreinigungsbürste
+2026-08-15	Beauty-Gerät	gid://shopify/Product/15449177325953	Gesichtsreinigungsbürste mit Rotation
+2026-08-15	Hautpflege-Serum	gid://shopify/Product/15448826773889	Selbstbräunungstropfen mit Hyaluronsäure
+2026-08-15	Hautpflege-Serum	gid://shopify/Product/15485541515649	Rosen Feuchtigkeitsserum für das Gesicht
+2026-08-15	Mini-Beamer	gid://shopify/Product/15481692193153	HD Smart Mini-Projektor für Home Office
+2026-08-15	Mini-Beamer	gid://shopify/Product/15481680691585	P330 Mini Beamer – Heimkino für unterwegs
+2026-08-15	Ordnung & Aesthetic	gid://shopify/Product/15455765922177	Geflochtener Aufbewahrungskorb
+2026-08-15	Ordnung & Aesthetic	gid://shopify/Product/15453533864321	Aufbewahrungskorb aus Baumwolle
+2026-08-15	Shapewear	gid://shopify/Product/15488389742977	Figurformender Kleid
+2026-08-15	Shapewear	gid://shopify/Product/15447900750209	Sportlicher Taillenformer mit Reissverschluss
+2026-08-15	Ladestation 3-in-1	gid://shopify/Product/15493848203649	4-in-1 Wireless Ladestation mit Schnellladefunktion
+2026-08-15	Ladestation 3-in-1	gid://shopify/Product/15495082377601	Magnetische 3-in-1 Wireless Powerbank
