@@ -6775,3 +6775,6 @@ gid://shopify/Product/15448671486337	29->1	Daunenmantel Slim-Fit
 gid://shopify/Product/15448719360385	27->0	Freizeit-Sakko mit Digitaldruck
 gid://shopify/Product/15448747475329	123->0	Geblümtes 3/4-Arm Top mit Fransen
 gid://shopify/Product/15448802165121	81->0	PHOFAY Lidschattenstift
+gid://shopify/Product/15448875925889	10->0	Lederarmband für Apple Watch
+gid://shopify/Product/15448877400449	26->0	T-förmiges Lederarmband für Smartwatch
+gid://shopify/Product/15448882250113	36->0	Infrarot-Fernbedienung für Smartphones
