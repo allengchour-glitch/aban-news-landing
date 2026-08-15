@@ -5536,7 +5536,16 @@ setTimeout(function baueGebaeude(){
      ⚠️ Die Feldmarkierung wird HIER gezeichnet, nicht im Bauteil (Charge 43),
      und alles bekommt `userData.fest` (Charge 40). */
   (function sportplatz(){
-    var CX=66, CZ=240, FB=46, FT=30;
+    /* ⚠️ ERST (66|240) — mitten im Viertel. Die Belegungskarte zeigte dort nur
+       Punkte, aber `__th.frei()` prueft KOLLIDER, nicht Strassen: die
+       Erschliessungsstrasse des Viertels und die Zugangswege zu den Hallen haben
+       keine, und im Spiel lief ein Asphaltband quer ueber das Spielfeld. Eine
+       Freiflaechenkarte aus Kollidern beantwortet die Frage "steht dort etwas",
+       nicht "gehoert die Flaeche schon jemandem".
+       Jetzt SUEDLICH des Viertels (das beginnt bei z = 174), oestlich der
+       Zufahrt bei x = 0, und mit allen Ecken zwischen Stadtring (r 118) und
+       Ringlandstrasse (r 196): (30|140) hat r 143, (76|170) hat r 186. */
+    var CX=53, CZ=155, FB=46, FT=30;
     function fest(datei,hoehe,x,z,ry){
       bau(datei,hoehe,x,0,z,ry,false,function(w){w.userData.fest=true;},true);
     }
