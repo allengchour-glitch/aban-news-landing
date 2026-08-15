@@ -110,12 +110,16 @@ def _b_tribuene():
     # anderem. Derselbe Fehler wie der Turnhallen-Torrahmen in Charge 42.
     for s in (-1, 1):                                   # Wangen
         box(s*(BR/2 - 0.12), 0, (R*ST + 0.4)/2, 0.24, R*AU + 1.1, R*ST + 0.4, m["beton2"])
-    for k in range(R + 1):                              # Gelaender hinten
-        pass
-    box(0, R*AU/2 + 0.30, R*ST + 0.55, BR, 0.12, 1.10, m["stahl"])
-    for q in range(9):
-        flach(zyl(-BR/2 + 0.7 + q*(BR - 1.4)/8, R*AU/2 + 0.30, R*ST + 0.55,
-                  0.045, 1.10, m["stahl"], 8))
+    # ⚠️ Hier stand eine geschlossene Platte 12,00 x 1,10 als "Gelaender" — und
+    # weil sie auf der Sitzseite oben steht, verdeckte sie im Kontaktbogen die
+    # ganze Tribuene: zu sehen war eine Wand mit Dach, von den acht Reihen ein
+    # farbiger Strich. Ein Gelaender ist DURCHSICHTIG; es besteht aus Pfosten und
+    # zwei Riegeln, sonst ist es eine Bruestungsmauer.
+    for zz in (R*ST + 0.98, R*ST + 0.55):               # Riegel
+        flach(zyl(0, R*AU/2 + 0.30, zz, 0.05, BR, m["stahl"], 8, (0, math.pi/2, 0)))
+    for q in range(11):                                 # Gelaenderpfosten
+        flach(zyl(-BR/2 + 0.55 + q*(BR - 1.1)/10, R*AU/2 + 0.30, R*ST + 0.53,
+                  0.045, 1.06, m["stahl"], 8))
     # Dach auf vier Stuetzen, nach vorn geneigt
     for s in (-1, 1):
         for q in (-1, 1):
