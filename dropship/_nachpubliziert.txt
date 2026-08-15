@@ -112,3 +112,4 @@ gid://shopify/Product/15500373885313	nachtlicht-furs-bett-926400	Nachtlicht für
 gid://shopify/Product/15500405440897	apricot-sandalen-mit-klettverschluss-611200	Apricot-Sandalen mit Klettverschluss
 gid://shopify/Product/15500439945601	kanvas-sneaker-618400	Kanvas-Sneaker
 gid://shopify/Product/15500461703553	warme-gurtel-631700	Wärme-Gürtel
+gid://shopify/Product/15500495192449	sommerliches-petite-tragerkleid-630200	Sommerliches Petite Trägerkleid
