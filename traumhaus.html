@@ -9622,6 +9622,11 @@ window.__th={
   /* Fahrzeugliste zum Nachmessen: faehrt jede Route wirklich, und bleibt der
      Wagen dabei auf seiner Spur? Aus den Positionen allein nicht ablesbar. */
   verkehr:function(){return verkehr;},
+  /* Uhrzeit setzen (Minuten seit Mitternacht). Alles, was nur nachts passiert —
+     Fensterlicht, Laternen, das Leuchtfeuer im Hafen — ist sonst nicht pruefbar,
+     ohne einen halben Spieltag zu warten. `_dorfNacht` direkt zu setzen hilft
+     nicht: der Tageslauf rechnet es jeden Frame aus `uhrzeit` neu. */
+  zeit:function(min){if(min!==undefined)uhrzeit=min;return uhrzeit;},
   /* Was die Spielfigur GERADE unter den Fuessen hat — zum Nachmessen des
      begehbaren Gelaendes, statt im Szenenbaum nach ihrem Mesh zu suchen. */
   simInfo:function(){var m=sims[0];return m?{x:+m.x.toFixed(1),z:+m.z.toFixed(1),
