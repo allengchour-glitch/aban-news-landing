@@ -3386,6 +3386,7 @@ function updLandbus(dt){
     var HP=132, hs=(window._bushalte||[]);
     for(var h=0;h<hs.length;h++) if(hs[h].gr===b.gr)
       HP=ca*hs[h].w.position.x+sa*hs[h].w.position.z;
+    b._hp=HP;                                   // zum Nachmessen von aussen
     if(b.wartet>0){b.wartet-=dt;}
     else{
       var vor=b.pos;
