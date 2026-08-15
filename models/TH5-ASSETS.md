@@ -1129,6 +1129,62 @@ die **jede** Session trifft, die Figuren vervielfältigen will:
 > Für Statisten, die man ohnehin nicht animiert, ist das die richtige Lösung — und billiger.
 
 ---
+## 1z7. Charge 38 — BAUERNHOF (`models/th38_*.glb`)
+
+Im Spiel steht seit langem ein Bauernhof-Wegweiser bei (−40 | −196), aber dort gibt es
+nur ein einzelnes Gebäude. Diese Ladung macht daraus einen Hof.
+
+| Datei | Maße (B×T×H) | Dreiecke | Inhalt |
+|---|---|---|---|
+| `th38_scheune.glb` | 14,60 × 9,73 × 9,60 | 5 784 | rotes Blech, Satteldach, Schiebetor mit Andreaskreuz, Heuluke im Giebel |
+| `th38_silo.glb` | 4,56 × 4,40 × 11,20 | 3 760 | Drehkörper mit Ringsicken, Kuppel, Leiter, Auslaufklappe |
+| `th38_traktor.glb` | 3,42 × 1,96 × 2,49 | 4 284 | Stollenreifen, Überrollbügel, Auspuff, Front auf **+x** |
+| `th38_heuballen.glb` | 3,62 × 1,31 × 2,26 | 3 420 | Rundballen-Stapel 3 + 2, Wickelbänder |
+| `th38_weidezaun.glb` | 2,73 × 0,30 × 1,26 | 952 | Rundpfosten, drei Querlatten, Strebe, **Raster x += 2,50** |
+| `th38_huehnerstall.glb` | 2,80 × 2,85 × 2,23 | 5 770 | Stelzen, Rampe, Einflugklappe, Legenester, Wellblechdach, Wetterhahn |
+| `th38_futtertrog.glb` | 2,20 × 0,68 × 0,72 | 3 000 | Keilform auf Böcken, Heu im Trog |
+| `th38_hoftor.glb` | 4,78 × 0,88 × 3,04 | 6 220 | zwei Steinpfeiler, Rundbogen aus `rohr()`, zwei Torflügel, Hofschild |
+| `th38_hof.glb` | 30,00 × 30,00 × 11,20 | 38 940 | **Maßstabs-Test**, nur aus den Teilen oben |
+
+Generator: `tools/assets/mk_th38_bauernhof.py` · Werkzeug: `tools/assets/th_werkzeug.py`.
+Alle neun: zmin = 0,000. Der Traktor zeigt wie die Wagen aus Charge 37 mit der **Front
+auf +x**. `th38_weidezaun` läuft auf demselben Raster von 2,50 m wie eine Steinmauer und
+ist damit am selben Koppelrand mischbar.
+
+> ⚠️ **Ein liegender Zylinder gehört auf z = r — und seine Bänder auf dieselbe Achse.**
+> Beim Rundballen liefen die sechs Wickelbänder erst entlang **x**, also quer zur
+> Ballenachse. Sie standen seitlich heraus und machten den Stapel **4,66 statt 3,60 m**
+> breit. Und weil die Bänder Radius `R + 0,012` haben, tauchten sie unter den Boden,
+> solange der Ballen auf `z = R` lag: die Auflage bestimmt der **größte** Radius, nicht
+> der des Grundkörpers.
+
+### 🔍 Vier Befunde, die nur der Kontaktbogen gezeigt hat
+
+Die Messung meldete `AUFFAELLIG: 0`, bevor irgendetwas davon behoben war. Rendern und
+Hinschauen ist die Abnahme, nicht die Maßliste — zum wiederholten Mal.
+
+* **Gras waren Kugeln.** Je eine grüne Kugel r = 0,09 am Pfostenfuß von Weidezaun und
+  Hoftor. Das liest sich als **Murmel**, nicht als Grasbüschel. Gras ist dünn und
+  aufrecht — eine Kugel ist beides nicht. Jetzt fünf geneigte Kegelhalme (`_gras`).
+* **Der Hahn war ein Ball.** Auf dem First des Hühnerstalls lag eine rote Kugel mit
+  einem Kegelchen daneben, 1,2 cm über dem Wellblech **schwebend**. Ein Hahn braucht
+  Silhouette: Beine, länglicher Rumpf, Hals, Kamm, Kehllappen, aufgestellter Schwanz
+  (`_hahn`, rund 36 cm hoch). Erst damit erkennt man aus zwanzig Metern, was da steht.
+* **Scheinwerfer über der Motorhaube.** Sie saßen auf z = 1,52 mit r = 0,13, die Haube
+  endet aber bei 1,55 — Oberkante 1,65, also 10 cm darüber, dazu Leuchtstärke 2,4. Auf
+  dem Bogen las sich das als zwei weiße Klötze, die vorne in der Luft hängen. Jetzt
+  tiefer in die Haubenfläche, Chromtopf dahinter, Glas knapp davor, Stärke 1,4.
+* **Fünf Eier im Futtertrog.** Fünf Kugeln r = 0,13 auf exakt gleicher Höhe sehen aus
+  wie ein Gelege. Heu ist flach und struppig: gedrückte Haufen (Kugel auf z-Skala 0,44)
+  plus einzelne Halme, die schräg über den Rand stehen.
+
+> ⚠️ **Ein geneigter Kegel fällt unter seine Mitte.** Die neuen Grashalme sind um 0,30 rad
+> gekippt; damit sinkt eine Kante der Grundfläche um `r·sin(0,30)` plus den Kosinusverlust
+> der halben Höhe — gemessen zmin −0,01 bei Weidezaun, Hoftor und Hof. Der Aufschlag von
+> 1 cm auf die Mittenhöhe fängt genau das ab. Alles, was gedreht wird, braucht diese
+> Reserve: die Bounding-Box kennt die Rotation, das Bauchgefühl nicht.
+
+---
 ## 🎡 Freizeitpark-Quartier in `traumhaus.html` — fertiger Einbau
 
 **Das Quartier gibt es schon** (`viertel({name:"Freizeitpark", x:-190, z:158, w:170, d:92 …})`,
