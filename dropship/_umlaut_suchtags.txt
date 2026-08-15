@@ -5099,3 +5099,18 @@ gid://shopify/Product/15469955154305	kostuem	Kostüm Polizistin
 gid://shopify/Product/15469955252609	kostuem,marienkaefer,pluesch	Kostüm Marienkäfer aus Plüsch
 gid://shopify/Product/15469955285377	kostuem	Kostüm Hexe Kleid und Hut
 gid://shopify/Product/15469955383681	kostuem,haeftling	Kostüm Häftling Overall rot
+gid://shopify/Product/15469955416449	skelettkostuem	Skelettkostüm Nachtleuchtend
+gid://shopify/Product/15469955449217	kostuem	Kostüm Jester Fatale
+gid://shopify/Product/15469955481985	kostuem	Kostüm Kampfjet Overall
+gid://shopify/Product/15469955547521	kostuem	Kostüm Jester Fatale
+gid://shopify/Product/15469955580289	kostuem	Kostüm Malefizia
+gid://shopify/Product/15469955645825	kuerbis,kostuem	Kürbis Kostüm
+gid://shopify/Product/15469955744129	kostuem	Kostüm Schneeprinzessin
+gid://shopify/Product/15469955875201	verfuehrerisches,vampirinkostuem	Verführerisches Vampirinkostüm
+gid://shopify/Product/15469955907969	kostuem	Kostüm Meerjungfrau
+gid://shopify/Product/15469955940737	kostuem	Kostüm Anzug gold
+gid://shopify/Product/15469955973505	kostuem	Kostüm Schmutzli
+gid://shopify/Product/15469956006273	kostuem	Kostüm Blumen Willow Mann
+gid://shopify/Product/15469956039041	kostuem	Kostüm Sensemann
+gid://shopify/Product/15469956071809	kostuem	Kostüm Pilot
+gid://shopify/Product/15469956104577	kostuem	Kostüm SWAT Offizier Gr. 54/56
