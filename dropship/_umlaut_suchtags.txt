@@ -264,3 +264,161 @@ gid://shopify/Product/15447560749441	ladegeraet	Universal-Ladegerät für 60V E-
 gid://shopify/Product/15447561535873	zubehoer	220V auf 12V 15A Stromwandler für Auto-Zubehör
 gid://shopify/Product/15447561765249	ladegeraet	Multifunktionales 3-in-1 Wireless Ladegerät mit Licht
 gid://shopify/Product/15447561929089	schnellladegeraet,stueck	USB C Schnellladegerät-Set für Android (2 Stück)
+gid://shopify/Product/15447562158465	ladegeraet	65W PD GaN Ladegerät für Smartphones & Laptops
+gid://shopify/Product/15447562289537	ladegeraet	USB-C Ladegerät, 120W, Multi-Port, Schnellladefunktion
+gid://shopify/Product/15447562617217	geraet	ZQ-K26 Rotes Doppeltes Elektrisches Gerät
+gid://shopify/Product/15447562715521	wandladegeraet	AC Wandladegerät für Stirnlampen und Taschenlampen
+gid://shopify/Product/15447563010433	schnellladegeraet	Doppel-Schnellladegerät für Makita 18V Akkus
+gid://shopify/Product/15447563174273	ladegeraet	Multi-Ladegerät für Milwaukee M18 Li-ion Akkus
+gid://shopify/Product/15447563272577	zahnbuerste	MINI Blue – Elektrische Zahnbürste
+gid://shopify/Product/15447563403649	ladegeraet	20W Reise-Ladegerät mit USB-A & USB-C
+gid://shopify/Product/15447563633025	schnellladegeraet	7-in-1 Kabelloses Schnellladegerät
+gid://shopify/Product/15447563895169	ladegeraet	Universal 320W GaN Hochleistungs-Ladegerät
+gid://shopify/Product/15447564222849	ladegeraet	USB-Ladegerät für 18650 Li-ion Akkus
+gid://shopify/Product/15447564321153	doppelelektrogeraet	ZQ-K26 Blaues Doppelelektrogerät
+gid://shopify/Product/15447564452225	ladegeraet	Wiederaufladbare CR123A Li-ion Akkus mit USB-Ladegerät
+gid://shopify/Product/15447564976513	ladegeraet	4er-Pack CR123A Li-Ion Akkus mit USB-Ladegerät
+gid://shopify/Product/15447565205889	ladegeraet	4er-Pack 16340 Li-Ion Akkus mit USB-Ladegerät
+gid://shopify/Product/15447565664641	fluggeraet	Ferngesteuertes Fluggerät mit Hindernisvermeidung
+gid://shopify/Product/15447566320001	ladegeraet	USB Li-ion Ladegerät für 3.7V Akkus
+gid://shopify/Product/15447567040897	ladegeraet	Li-ion Akku & Ladegerät Set 3000mAh
+gid://shopify/Product/15447567303041	ladegeraet	Li-ion Akku & USB-Ladegerät Set 3000mAh
+gid://shopify/Product/15447567466881	ladegeraet	Akku-Ladegerät mit 2 Li-Ion Akkus 3.7V 3000mAh
+gid://shopify/Product/15447569465729	empfaenger	ELRS 3-in-1 Flugsteuerung mit Empfänger
+gid://shopify/Product/15447570186625	koerperanalysewaage	Körperanalysewaage mit Bluetooth
+gid://shopify/Product/15447574872449	carbonfaserverstaerkt	ASA-CF Filament, Carbonfaserverstärkt
+gid://shopify/Product/15447575331201	carbonfaserverstaerkt	PETG-CF Filament, Carbonfaserverstärkt
+gid://shopify/Product/15447575986561	gepraegtem	Notizbuch aus geprägtem Kunstleder, extra dick
+gid://shopify/Product/15447576183169	heisspraegefolie	Heissprägefolie für Leder & Kunststoff
+gid://shopify/Product/15447579066753	suesswasserperle	Geburtsstein-Armband mit Süsswasserperle
+gid://shopify/Product/15447579525505	gebuersteter	Magnetarmband aus gebürsteter Bronze
+gid://shopify/Product/15447581098369	phoenix	Magnetisches Kupferarmband mit Drachen-Phönix-Motiv
+gid://shopify/Product/15447582736769	gebuerstetes	Gebürstetes Edelstahl-Armband für Damen
+gid://shopify/Product/15447582900609	anhaenger	Edelstahl-Anhänger: Sternzeichen und Monate
+gid://shopify/Product/15447585685889	luxurioeser	Luxuriöser Diamantring aus S925 Sterlingsilber
+gid://shopify/Product/15447586374017	anhaengern	Halskette mit runden Diamant-Anhängern
+gid://shopify/Product/15447592632705	roemischen	Mechanische Taschenuhr mit römischen Ziffern
+gid://shopify/Product/15447594467713	schnuerung	Elegantes Bodycon Halterneck-Kleid mit Schnürung
+gid://shopify/Product/15447594697089	rueckenausschnitt	Minikleid mit Cut-Out und Rückenausschnitt
+gid://shopify/Product/15447594893697	fledermausaermeln	Boho Maxi-Kleid mit V-Ausschnitt und Fledermausärmeln
+gid://shopify/Product/15447595090305	aermelloses,spaghettitraegern	Enges ärmelloses Minikleid mit Spaghettiträgern
+gid://shopify/Product/15447595254145	rueschensaum	Damen Langarm-Rollkragenkleid mit Rüschensaum
+gid://shopify/Product/15447595417985	aermeln,taillenguertel	Denim-Kleid mit kurzen Ärmeln und Taillengürtel
+gid://shopify/Product/15447595811201	aermeln	Elegantes Spitzenkleid mit langen Ärmeln
+gid://shopify/Product/15447596106113	aermelloses,franzoesischen	Ärmelloses Sommerkleid im französischen Stil
+gid://shopify/Product/15447596302721	glaenzendes	Glänzendes Mini-Kleid mit Raffung
+gid://shopify/Product/15447596499329	rueschen	Abendkleid mit Perlen & Rüschen
+gid://shopify/Product/15447596663169	rueschen	Chiffonkleid mit Blumenprint und Rüschen
+gid://shopify/Product/15447597089153	ballonaermeln	Florales Etuikleid mit Ballonärmeln
+gid://shopify/Product/15447597252993	glaenzendes	Glänzendes Twill Patchwork Maxikleid
+gid://shopify/Product/15447598268801	puffaermeln,taillenguertel	Damen Kleid mit Puffärmeln und Taillengürtel
+gid://shopify/Product/15447598498177	aermelloses	Ärmelloses Casual-Kleid im Vintage-Stil
+gid://shopify/Product/15447598825857	baendern	Polka-Dot Halterneck-Kleid mit fliessenden Bändern
+gid://shopify/Product/15447599350145	traegerloses	Elegantes trägerloses A-Linien-Kleid
+gid://shopify/Product/15447599808897	rueckenfreies	Rückenfreies Satin-Maxikleid
+gid://shopify/Product/15447599972737	voluminoeses,puffaermeln	Voluminöses Mini-Kleid mit Puffärmeln
+gid://shopify/Product/15447600365953	aermeln	Loose-Fit Tunic mit kurzen Ärmeln
+gid://shopify/Product/15447601021313	puffaermel,schnuerung	Puffärmel-Kleid mit Schnürung
+gid://shopify/Product/15447605313921	buegelfrei	Oxford Langarmhemd für Herren, Baumwolle, bügelfrei
+gid://shopify/Product/15447605510529	langaermlig	Leinenhemd langärmlig für Herren
+gid://shopify/Product/15447605739905	aermelloses	Herren ärmelloses V-Neck Tanktop
+gid://shopify/Product/15447611310465	umhaengetasche	Multifunktionale, wasserdichte Umhängetasche
+gid://shopify/Product/15447612653953	umhaengetasche	Plaid Umhängetasche, Crossbody und Bauchtasche
+gid://shopify/Product/15447612883329	umhaengetasche	Sportliche Umhängetasche für Alltag und Freizeit
+gid://shopify/Product/15447614783873	kapazitaet	Business-Rucksack mit grosser Kapazität
+gid://shopify/Product/15447615406465	umhaengetasche	Casual Commuter Umhängetasche
+gid://shopify/Product/15447616061825	umhaengetasche	Freizeit-Umhängetasche
+gid://shopify/Product/15447616618881	umhaengetasche	Schulter- und Umhängetasche
+gid://shopify/Product/15447616881025	umhaengetasche	Einfache Umhängetasche
+gid://shopify/Product/15447617012097	umhaengetasche	Ma Deng Workwear M16 Umhängetasche
+gid://shopify/Product/15447617470849	fuellung	Samt-Lendenkissenbezug ohne Füllung (6er-Set)
+gid://shopify/Product/15447617700225	lendenkissenhuelle	Samt-Lendenkissenhülle, 4er-Set
+gid://shopify/Product/15447618060673	buero	Ergonomisches Lendenkissen für Büro & unterwegs
+gid://shopify/Product/15447618716033	pluesch	Geister Kissenbezug-Set aus Plüsch
+gid://shopify/Product/15447619273089	groessen	Chenille Kissenbezug – verschiedene Farben und Grössen
+gid://shopify/Product/15447619928449	kissenhuelle	Kissenhülle mit floraler Stickerei
+gid://shopify/Product/15447620616577	franzoesischen	Kissenbezug mit Blumenmuster im französischen Stil
+gid://shopify/Product/15447622320513	stuehle	Elastischer Sitzkissenbezug für Stühle und Sofas
+gid://shopify/Product/15447622484353	franzoesischen	Vintage Sofakissen im französischen Stil
+gid://shopify/Product/15447625630081	rueschenmuster	Samt-Kissenbezug mit Rüschenmuster
+gid://shopify/Product/15447625793921	kissenbezuege	Kissenbezüge aus gewaschener Baumwolle (2er-Set)
+gid://shopify/Product/15447626219905	haarbuersten	4-teiliges professionelles Haarbürsten-Set
+gid://shopify/Product/15447626678657	haarglaetter	Keramik-Haarglätter mit LCD & Ionen-Kontrolle
+gid://shopify/Product/15447626875265	glaettbuerste	Glättbürste mit Digitalanzeige
+gid://shopify/Product/15447627137409	glaetteisen	2-in-1 Mini Glätteisen für Pony & kurze Haare
+gid://shopify/Product/15447628251521	haarglaetter	Kabelloser Mini-Haarglätter und Lockenstab für Herren
+gid://shopify/Product/15447628480897	glaettender	Glättender Haarkamm
+gid://shopify/Product/15447628710273	foehn,buerste	Föhn-Bürste mit Konstanttemperatur
+gid://shopify/Product/15447628874113	glaetteisen	Glätteisen & Lockenstab 3-in-1 Keramik
+gid://shopify/Product/15447629332865	haarfaerbekamm	Haarfärbekamm Einweg 10-Farben
+gid://shopify/Product/15447629529473	glaetteisen	Glätteisen & Lockenstab 2-in-1
+gid://shopify/Product/15447630348673	glaettkamm	Kabelloser Glättkamm für Zuhause
+gid://shopify/Product/15447630512513	glaettkamm	Kabelloser Keramik-Glättkamm mit LCD
+gid://shopify/Product/15447630741889	haarglaetter,buerste	Ionen Haarglätter-Bürste für Bart & Haar
+gid://shopify/Product/15447631298945	haarglaetter	Haarglätter mit Kalt- & Heissluft
+gid://shopify/Product/15447631987073	glaett	Kabelloser Glätt- & Lockenstab mit Kaltluft
+gid://shopify/Product/15447632150913	glaetteisen	3-in-1 Lockenstab & Glätteisen
+gid://shopify/Product/15447632347521	koerperanalysewaage	Smarte Körperanalysewaage mit App-Synchronisierung
+gid://shopify/Product/15447632576897	glaetteisen	Kabelloser Glätteisen & Lockenstab
+gid://shopify/Product/15447632740737	haarglaetter	Profi-Haarglätter mit Negativ-Ionen-Pflege
+gid://shopify/Product/15447632937345	massagegeraet	Hals- und Gesichts-Massagegerät mit 3 Modi
+gid://shopify/Product/15447633068417	gesichtsmassagegeraet	3-in-1 Hals- & Gesichtsmassagegerät mit Vibration
+gid://shopify/Product/15447634248065	klettergeruest	TOOCAT Klettergerüst Butter Bär
+gid://shopify/Product/15447634477441	kuehlende	Kühlende Rattan-Matte für Katzen
+gid://shopify/Product/15447635329409	foermiger,liegeflaeche	Wolken-Kratzbaum mit U-förmiger Liegefläche
+gid://shopify/Product/15447635591553	liegeflaeche	Platzsparender Kratzbaum mit Liegefläche
+gid://shopify/Product/15447635788161	liegeflaechen	Green Song Kratzbaum mit Liegeflächen
+gid://shopify/Product/15447636607361	klettergeruest	Zeze 4-Jahreszeiten Katzenvilla mit Klettergerüst
+gid://shopify/Product/15447637000577	doppelstoeckiges	Doppelstöckiges Katzenhaus aus Massivholz
+gid://shopify/Product/15447637950849	erhoehtes	Erhöhtes Haustierbett mit atmungsaktivem Netz
+gid://shopify/Product/15447639097729	waermekissen	Winter Outdoor Katzenhaus mit Wärmekissen
+gid://shopify/Product/15447639916929	erhoehtes	Erhöhtes Hundebett XL für grosse Hunde, Grau
+gid://shopify/Product/15447640113537	erhoehtes	Erhöhtes Hundebett für grosse Hunde, XL, Grau
+gid://shopify/Product/15447640670593	erhoehtes	Erhöhtes Hundebett mit UV-Schutz-Dach
+gid://shopify/Product/15447864934785	ladegeraet	Kabelloses Magsafe Auto-Ladegerät
+gid://shopify/Product/15447865098625	ladegeraet	Lithium-Akku-Ladegerät
+gid://shopify/Product/15447865295233	ladegeraet,mobilgeraete	200W GaN Ladegerät für Mobilgeräte & Laptops
+gid://shopify/Product/15447865491841	schnellladegeraet	Xingrui Digital-Schnellladegerät Schwarz
+gid://shopify/Product/15447865622913	ladegeraet	Li-ion Akku & USB-Ladegerät für Taschenlampen
+gid://shopify/Product/15447865819521	ladegeraet	65W GaN Ladegerät mit US-Stecker
+gid://shopify/Product/15447866311041	schnellladegeraet	30W GaN Schnellladegerät mit einziehbaren Steckern
+gid://shopify/Product/15447866507649	ladegeraet	Tragbares magnetisches Wireless-Ladegerät mit Kabel
+gid://shopify/Product/15447866704257	ladegeraet	4-in-1 Auto-Ladegerät mit ausziehbaren Kabeln
+gid://shopify/Product/15447866900865	ladegeraet	Drohnen-Akku-Ladegerät mit USB-Adapter
+gid://shopify/Product/15447867163009	ladegeraet,staender	Magnetisches kabelloses Desktop-Ladegerät mit Ständer
+gid://shopify/Product/15447867359617	staender	Elektrischer Lift-Ständer mit Wireless Charging
+gid://shopify/Product/15447867687297	ladestaender	3-in-1 faltbarer Ladeständer mit MagSafe
+gid://shopify/Product/15447868309889	ladegeraet	10-Port Multi-USB Ladegerät, 60W
+gid://shopify/Product/15447868440961	ladegeraet,luefter	50W Multi-Port Ladegerät mit Lüfter
+gid://shopify/Product/15447868670337	ladegeraet	Universal USB-Ladegerät für Mobiltelefone
+gid://shopify/Product/15447869587841	guertel	Tragbarer Akku-Gürtel mit USB-Display
+gid://shopify/Product/15447870112129	schnellladegeraet	66W Schnellladegerät Typ B
+gid://shopify/Product/15447872438657	stueck	CR1225 Lithium-Knopfzellen 3V, 5 Stück
+gid://shopify/Product/15447876174209	schrittzaehler	Fitness Smart Armband mit Schrittzähler und LED
+gid://shopify/Product/15447876370817	schrittzaehler	Multifunktionaler Unisex Schrittzähler
+gid://shopify/Product/15447880335745	gefuehl	Retro-Schal mit Kaschmir-Gefühl
+gid://shopify/Product/15447882432897	waerme	Damen-Cape mit Ethno-Muster und Wärme-Funktion
+gid://shopify/Product/15447882596737	halswaermer	Multifunktionaler Halswärmer für jede Jahreszeit
+gid://shopify/Product/15447882695041	gefuehl	Kaschmir-Gefühl Cape-Schal mit Pferdemotiv
+gid://shopify/Product/15447883514241	raeume	Multifunktionaler Halsschal für klimatisierte Räume
+gid://shopify/Product/15447883710849	kaschmiraehnlicher	Kaschmirähnlicher Schal mit Totem-Muster
+gid://shopify/Product/15447883841921	bindebaendern	Vielseitiger Dreiecksschal mit Bindebändern
+gid://shopify/Product/15447886004609	gehaekelter	Gehäkelter Dreiecksschal im Ethno-Stil
+gid://shopify/Product/15447888265601	haekel	Top Perspective Häkel-Schultertuch
+gid://shopify/Product/15447895736705	gefuetterte	Gefütterte Thermo-Gesichtsmaske für kalte Tage
+gid://shopify/Product/15447898259841	fruehling	Motorrad-Gesichtsmaske für Frühling & Herbst
+gid://shopify/Product/15447898718593	guertel	Damen-Gürtel mit Stern-Schnalle
+gid://shopify/Product/15447899079041	guertel	Gedoppelter Vollnarbenleder-Gürtel mit Kreuzmuster
+gid://shopify/Product/15447899242881	rueckbildung	Latex Taillentrainer für Rückbildung & Sport
+gid://shopify/Product/15447899406721	guertel	Funktionaler Utility-Gürtel für Herren
+gid://shopify/Product/15447899603329	lederguertel	Damen Ledergürtel für Jeans und Hosen
+gid://shopify/Product/15447899734401	guertel	Vintage Vollnarbenleder-Gürtel
+gid://shopify/Product/15447899931009	fischgraet,staebchen,verschluessen	Korsett mit Fischgrät-Stäbchen und 3 Verschlüssen
+gid://shopify/Product/15447900094849	taillenguertel	Taillengürtel aus Baumwolle
+gid://shopify/Product/15447900258689	taillenguertel,fischgraet	Atmungsaktiver Taillengürtel mit Fischgrät-Shapewear
+gid://shopify/Product/15447900881281	guertel	Multifunktionaler Gürtel mit Automatik-Schnalle
+gid://shopify/Product/15447901045121	rueckenstuetzgurt	Selbstheizender Rückenstützgurt mit Stahlplatte
+gid://shopify/Product/15447901208961	stuetzgurt	Lendenwirbel-Stützgurt für Personen mit Behinderung
+gid://shopify/Product/15447901340033	guertel	Damen Gürtel im Mittelalter-Stil
+gid://shopify/Product/15447901700481	guertel	Boho-Stil Canvas-Gürtel mit Ethno-Muster
+gid://shopify/Product/15447901831553	lederguertel	Klassischer Ledergürtel mit runder Schnalle

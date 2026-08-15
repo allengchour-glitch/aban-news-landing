@@ -59,6 +59,34 @@ def woerter(url):
         return -1
 
 
+def bild_von_kollektion(handle):
+    """Bestes Produktbild aus einer verlinkten Kollektion.
+
+    ⚠️ NÖTIG GEWORDEN durch die eigene Blog-Reparatur vom 14.08.: sie ersetzte 88 tote
+    Produktlinks durch Kollektions-Links. Der erste Lauf dieses Skripts suchte nur nach
+    /products/-Links und meldete deshalb bei 231 von 244 Artikeln «kein passendes Bild» —
+    nicht weil es keines gäbe, sondern weil die Artikel seit der Reparatur Kategorien
+    verlinken. Die Kollektion ist als Quelle genauso thementreu: sie ist das, was der
+    Artikel jetzt empfiehlt.
+    """
+    d = gql('query($h:String!){collectionByHandle(handle:$h){products(first:8,sortKey:BEST_SELLING)'
+            '{nodes{status media(first:5){nodes{mediaContentType ... on MediaImage{status '
+            'image{url width height}}}}}}}}', {"h": handle})
+    c = (d.get("data") or {}).get("collectionByHandle")
+    for p in ((c or {}).get("products") or {}).get("nodes", []):
+        if p.get("status") != "ACTIVE":
+            continue
+        for m in p["media"]["nodes"]:
+            if (m.get("mediaContentType") == "IMAGE" and m.get("status") == "READY"
+                    and (m.get("image") or {}).get("width", 0) >= 500
+                    and (m.get("image") or {}).get("height", 0) >= 500):
+                n = woerter(m["image"]["url"])
+                if 0 <= n < 10:
+                    return m["image"]["url"]
+                break                      # je Produkt nur das erste grosse Bild prüfen
+    return None
+
+
 def bild_von_produkt(handle):
     d = gql('query($h:String!){productByHandle(handle:$h){status media(first:10){nodes{'
             'mediaContentType ... on MediaImage{status image{url width height}}}}}}', {"h": handle})
@@ -101,12 +129,18 @@ def main():
     for art in ohne[:CAP]:
         # ⚠️ Reihenfolge im Text = Reihenfolge der Wichtigkeit. Das erste verlinkte Produkt
         # ist das, um das es im Artikel geht; spätere sind Randempfehlungen.
-        handles = re.findall(r'/products/([a-z0-9\-]+)', art.get("body") or "")
+        body = art.get("body") or ""
+        handles = re.findall(r'/products/([a-z0-9\-]+)', body)
         url = None
         for h in list(dict.fromkeys(handles))[:6]:
             url = bild_von_produkt(h)
             if url:
                 break
+        if not url:
+            for h in list(dict.fromkeys(re.findall(r'/collections/([a-z0-9\-]+)', body)))[:4]:
+                url = bild_von_kollektion(h)
+                if url:
+                    break
         if not url:
             leer += 1
             if f:
