@@ -233,3 +233,34 @@ gid://shopify/Product/15446271656321	tennisbaelle	Farbige Tennisbälle für Hund
 gid://shopify/Product/15446271820161	huepfball	Interaktiver Hüpfball für Hunde
 gid://shopify/Product/15446271951233	federanhaengern	Interaktiver Katzenball mit Federanhängern
 gid://shopify/Product/15446271984001	pluesch	Cartoon Plüsch-Hundespielzeug mit Quietscher
+gid://shopify/Product/15446272016769	schnueffel,plueschtier	Schnüffel- und Quietsch-Plüschtier für Hunde
+gid://shopify/Product/15446272115073	schnueffelspielzeug	Futterspendendes Schnüffelspielzeug mit Sound
+gid://shopify/Product/15446272770433	aktivitaeten	LED-Sportweste für Outdoor-Aktivitäten
+gid://shopify/Product/15446272803201	ruecklicht	Velo-Rücklicht mit langer Akkulaufzeit
+gid://shopify/Product/15446272835969	ruecklicht	Gebogenes, lichtempfindliches Rücklicht
+gid://shopify/Product/15446273065345	ruecklicht	Velo-Rücklicht mit Bewegungssensor
+gid://shopify/Product/15446273196417	ruecklicht	Kabelloses, fernbedienbares Velo-Rücklicht
+gid://shopify/Product/15446273229185	huefttrainer	Beckenboden- und Hüfttrainer
+gid://shopify/Product/15446273393025	haende,fuesse	Verstellbarer Mini-Stepper für Hände und Füsse
+gid://shopify/Product/15446273622401	ellenbogenstuetze	Ab-Roller mit Ellenbogenstütze & Rebound
+gid://shopify/Product/15446273884545	widerstandsbaendern	Pilates Bar Set mit 6 Widerstandsbändern
+gid://shopify/Product/15446274638209	garderobenstaender	Garderobenständer «Baum» – Metall, minimalistisch
+gid://shopify/Product/15446274703745	waesche	Baumwollkorb 58L für Wäsche & Aufbewahrung
+gid://shopify/Product/15446275260801	zahnbuerstenhalter	Zahnbürstenhalter aus Edelstahl, Gold
+gid://shopify/Product/15446275522945	foermige,kuechenmatte	L-förmige Coral Fleece Küchenmatte
+gid://shopify/Product/15446275621249	reinigungstuecher	Boden-Reinigungstücher mit Frischeduft (12 Stk.)
+gid://shopify/Product/15446276407681	grillbuerste	Faltbare elektrische Grillbürste
+gid://shopify/Product/15446276800897	gaerkorb,zubehoer	Gärkorb-Set mit Zubehör für Sauerteigbrot
+gid://shopify/Product/15446276997505	gaerkoerbchen	Gärkörbchen-Set für Sauerteigbrot, rund, 9 Zoll
+gid://shopify/Product/15446277325185	kueche	Grosses Einzelbecken für die Küche
+gid://shopify/Product/15446277489025	saugnaepfen	Schmetterling Badewannenkissen mit Saugnäpfen
+gid://shopify/Product/15446277587329	stueck	5 Core Plektren-Set, 12 Stück
+gid://shopify/Product/15446277718401	schulterstuetze	Violin-Schulterstütze, schwarz
+gid://shopify/Product/15446277783937	gitarrenstaender	Gitarrenständer, 3-fach, faltbar, für bis zu 5 Gitarren
+gid://shopify/Product/15446279061889	violinbruecke	Ahorn Violinbrücke 4/4
+gid://shopify/Product/15446279782785	gitarrenstaender	Gitarrenständer für 5 Instrumente
+gid://shopify/Product/15447560520065	ladegeraet	Ladegerät Typ-C (EU-Standard)
+gid://shopify/Product/15447560749441	ladegeraet	Universal-Ladegerät für 60V E-Scooter/Bike
+gid://shopify/Product/15447561535873	zubehoer	220V auf 12V 15A Stromwandler für Auto-Zubehör
+gid://shopify/Product/15447561765249	ladegeraet	Multifunktionales 3-in-1 Wireless Ladegerät mit Licht
+gid://shopify/Product/15447561929089	schnellladegeraet,stueck	USB C Schnellladegerät-Set für Android (2 Stück)
