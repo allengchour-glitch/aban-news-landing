@@ -6760,3 +6760,6 @@ gid://shopify/Product/15445799666049	37->0	Make-up Pinselset, 10-teilig
 gid://shopify/Product/15447610458497	32->0	Corduroy Rucksack im Preppy-Stil
 gid://shopify/Product/15447629758849	11->0	Lockenstab für Damen, Gradient Purple oder Champagne Gold
 gid://shopify/Product/15447630872961	34->0	Automatischer Lockenstab mit Ionen-Funktion
+gid://shopify/Product/15447866311041	22->1	30W GaN Schnellladegerät mit einziehbaren Steckern
+gid://shopify/Product/15447874371969	46->1	Akku für Fernsteuerung TX16, TX12 & Boxer
+gid://shopify/Product/15447923818881	13->0	3M Thinsulate Winterhandschuhe für Damen & Herren
