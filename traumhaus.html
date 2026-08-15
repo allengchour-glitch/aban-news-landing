@@ -3935,6 +3935,25 @@ setTimeout(function baueGebaeude(){
         });
         im.count=n4; im.instanceMatrix.needsUpdate=true;
         im.frustumCulled=false; im.userData.nieAusblenden=1; scene.add(im);
+        /* ⚠️ Die Modelle setzen wir einen Tick SPAETER. Die Viertel werden im
+           selben synchronen Block angelegt, aber teils erst NACH dieser Stelle
+           (der Bauernhof z. B. rund 450 Zeilen weiter unten) — zur Bauzeit
+           kennt `inSolid` deren Kollider also noch nicht. Genau das ist im
+           Render aufgefallen: ein Vorfahrtsschild stand bei (-90|-168) im
+           Bauernhof-Gebaeude. Ein `setTimeout(…,0)` laeuft nach dem ganzen
+           Block, dann sind alle Kollider da und die Pruefung greift. */
+        setTimeout(function(){
+        /* Radial ausweichen, bis der Platz frei ist — lieber ein Schild zehn
+           Meter frueher als eines in einer Wand. Findet sich gar nichts, wird
+           nicht gesetzt: ein fehlendes Schild faellt weniger auf als eines,
+           das aus einem Dach ragt. */
+        function frei(A,rr,q){
+          for(var t=0;t<7;t++){
+            var d=[0,-6,6,-12,12,-18,18][t], p=P(A,rr+d,q);
+            if(!inSolid(p[0],p[1]))return p;
+          }
+          return null;
+        }
         /* Schilder aus Charge 39.
            ⚠️ Die Schildflaeche zeigt bei rotY = 0 nach -z, ihre Normale ist also
            (-sin rotY, -cos rotY). Sie muss dem Ankommenden ENTGEGENschauen:
@@ -3943,18 +3962,18 @@ setTimeout(function baueGebaeude(){
            Schild geworden, das dem Fahrer den Ruecken zeigt. */
         ZUB.forEach(function(gr,gi){
           var A=achse(gr), hin=Math.PI/2-A.aa, her=hin+Math.PI;
-          var a1=P(A,191,-(HB+1.7)), a2=P(A,191,HB+1.7);
-          bau("th39_vorfahrt.glb",2.30,a1[0],0,a1[1],hin,false,null,true);
-          bau("th39_vorfahrt.glb",2.30,a2[0],0,a2[1],her,false,null,true);
-          var o1=P(A,125,-(HB+2.0));                    // Ortstafel am Stadtrand
-          bau("th39_ortstafel.glb",2.50,o1[0],0,o1[1],her,false,null,true);
+          var a1=frei(A,191,-(HB+1.7)), a2=frei(A,191,HB+1.7);
+          if(a1)bau("th39_vorfahrt.glb",2.30,a1[0],0,a1[1],hin,false,null,true);
+          if(a2)bau("th39_vorfahrt.glb",2.30,a2[0],0,a2[1],her,false,null,true);
+          var o1=frei(A,125,-(HB+2.0));                 // Ortstafel am Stadtrand
+          if(o1)bau("th39_ortstafel.glb",2.50,o1[0],0,o1[1],her,false,null,true);
           if(gi%2===0){                                  // Wegweiser an jeder zweiten
             /* ⚠️ r = 197 stand MITTEN auf der Ringlandstrasse: die laeuft bei
                r 200 mit Halbbreite 4,2, also von 195,8 bis 204,2. Ein seitlicher
                Versatz hilft dagegen nichts — der Ring ist ein Kreis, der Radius
                des Punktes bleibt ~197. Nur ein kleinerer Radius kommt frei. */
-            var w1=P(A,186,HB+2.6);
-            bau("th39_wegweiser.glb",3.05,w1[0],0,w1[1],hin,false,null,true);
+            var w1=frei(A,186,HB+2.6);
+            if(w1)bau("th39_wegweiser.glb",3.05,w1[0],0,w1[1],hin,false,null,true);
           }
         });
         /* Wartehaeuschen an zwei Zubringern, offene Seite zur Fahrbahn.
@@ -3962,8 +3981,8 @@ setTimeout(function baueGebaeude(){
            rotY = 0; steht das Haeuschen auf der +q-Seite, zeigt die Strasse
            nach -q, und aus (-sin,-cos) = (sa,-ca) folgt rotY = -aa. */
         [60,240].forEach(function(gr){
-          var A=achse(gr), p=P(A,132,HB+3.2);
-          bau("th39_bushalt.glb",2.84,p[0],0,p[1],-A.aa,false,null,true);
+          var A=achse(gr), p=frei(A,132,HB+3.2);
+          if(p)bau("th39_bushalt.glb",2.84,p[0],0,p[1],-A.aa,false,null,true);
         });
         /* Leitplanke am Hang. Modul 3,94 lang auf r 205,2: dTheta = 3,94/205,2.
 
@@ -3991,6 +4010,7 @@ setTimeout(function baueGebaeude(){
             bau("th39_pylon.glb",0.76,p[0],0,p[1],0,false,null,true);
           }
         })();
+        },0);
       })();
       window._landstrasse=R;
     })();
