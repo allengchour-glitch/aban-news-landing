@@ -104,8 +104,12 @@ def _b_tribuene():
             le = box(xx, yy - 0.20, k*ST + 0.44, 0.46, 0.09, 0.30,
                      m["blau"] if (k + q) % 3 else m["rot"])
             le.rotation_euler[0] = -0.18
+    # ⚠️ Die Wange ist 0,4 hoeher als die Treppe, sass aber auf deren halber Hoehe
+    # (R*ST/2 = 1,68) — Unterkante damit -0,20. Von der MITTE rechnen: die Mitte
+    # eines Koerpers der Hoehe h liegt auf h/2, nicht auf der Hoehe von etwas
+    # anderem. Derselbe Fehler wie der Turnhallen-Torrahmen in Charge 42.
     for s in (-1, 1):                                   # Wangen
-        box(s*(BR/2 - 0.12), 0, R*ST/2, 0.24, R*AU + 1.1, R*ST + 0.4, m["beton2"])
+        box(s*(BR/2 - 0.12), 0, (R*ST + 0.4)/2, 0.24, R*AU + 1.1, R*ST + 0.4, m["beton2"])
     for k in range(R + 1):                              # Gelaender hinten
         pass
     box(0, R*AU/2 + 0.30, R*ST + 0.55, BR, 0.12, 1.10, m["stahl"])
@@ -188,7 +192,9 @@ def _b_tor():
     flach(zyl(0, -T, 0.10, 0.045, B, m["stein"], 8, (0, math.pi/2, 0)))
     _netzflaeche(0, -T + 0.02, H/2, B, H, m, "xz", 0.34)             # Rueckwand
     for s in (-1, 1):                                                # Seitennetze
-        _netzflaeche(s*B/2 - s*0.02, -T/2, H/2 - 0.15, T, H - 0.3, m, "yz", 0.34)
+        # ⚠️ Auf H/2 - 0,15 lag der unterste waagrechte Strang genau auf z = 0 und
+        # ragte mit seinem Radius darunter. Zwei Zentimeter hoeher genuegt.
+        _netzflaeche(s*B/2 - s*0.02, -T/2, H/2 - 0.13, T, H - 0.3, m, "yz", 0.34)
     for k in range(int(B/0.34) + 1):                                 # Dachnetz
         xx = -B/2 + k*0.34
         flach(zyl(xx, -T/2, H - 0.16, 0.014, T, m["netz"], 4, (math.pi/2, 0, 0)))
@@ -254,8 +260,18 @@ def _b_ersatzbank():
     dk = keil_y(pkt, 0.0, B, m["stahl2"], name="Tonnendach")
     dk.rotation_euler[2] = math.pi/2
     for s in (-1, 1):                                   # Stirnwaende
+        # ⚠️ Hier stand `_rahmen(...)`, und der baut seine Balken in der x-z-Ebene:
+        # die Breite 1,74 lief also in x statt in y. Der Rahmen ragte dadurch
+        # 0,87 m seitlich heraus und machte die Bank 7,90 statt 6,40 breit. Eine
+        # Stirnwand braucht einen Rahmen in der y-z-Ebene — vier Balken, aber um
+        # 90 Grad gedreht gedacht.
         box(s*(B/2 - 0.05), -0.10, 0.90, 0.10, T - 0.10, 1.60, m["glas"])
-        _rahmen(s*(B/2 - 0.02), -0.10, 0.90, T - 0.06, 1.66, 0.12, m, "stahl2")
+        xx = s*(B/2 - 0.02)
+        box(xx, -0.10, 0.90 + 0.83 - 0.06, 0.07, T - 0.06, 0.12, m["stahl2"])
+        box(xx, -0.10, 0.90 - 0.83 + 0.06, 0.07, T - 0.06, 0.12, m["stahl2"])
+        for q in (-1, 1):
+            box(xx, -0.10 + q*((T - 0.06)/2 - 0.06), 0.90, 0.07, 0.12, 1.66 - 0.24,
+                m["stahl2"])
     box(0, -T/2 + 0.09, 0.85, B, 0.18, 1.50, m["stahl2"])   # Rueckwand
     for k in range(4):                                  # Sitzbank
         box(0, -0.18 + k*0.16, 0.50, B - 0.60, 0.13, 0.06, m["holz"])
