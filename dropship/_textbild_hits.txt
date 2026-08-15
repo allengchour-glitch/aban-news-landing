@@ -6747,3 +6747,7 @@ gid://shopify/Product/15449427640705	18->0	2-in-1 Katzen- & Hunde-Bett
 gid://shopify/Product/15449429737857	69->1	Sommerkleid ohne Ärmel und Rückenteil – für Party & Abend
 gid://shopify/Product/15449431540097	82->0	Kühlendes Pet-Bett für Sommer
 gid://shopify/Product/15449432686977	14->0	Haarpflege-Essenz
+gid://shopify/Product/15449432850817	37->2	Faltbarer Wärmekuschel-Platz für Hunde & Katzen
+gid://shopify/Product/15449433309569	89->0	3D-Lichtmalpad mit 8 Effekten
+gid://shopify/Product/15449433538945	10->0	Portabler Outdoor-Hundewassernapf
+gid://shopify/Product/15449434521985	51->0	Retro-Hoodie mit 3D-Muster
