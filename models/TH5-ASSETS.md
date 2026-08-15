@@ -1185,6 +1185,61 @@ Hinschauen ist die Abnahme, nicht die Maßliste — zum wiederholten Mal.
 > Reserve: die Bounding-Box kennt die Rotation, das Bauchgefühl nicht.
 
 ---
+## 1z8. Charge 39 — STRASSENAUSSTATTUNG (`models/th39_*.glb`)
+
+Die Landstraße und ihre sechs Zubringer sind befahrbar, aber nackt: kein Vorfahrtsschild
+an den Einmündungen, keine Leitpfosten am Bankett, keine Leitplanke am Hang, keine
+Haltestelle. Genau das fehlt einer Straße, damit sie nicht als Asphaltband im Gras liest.
+
+| Datei | Maße (B×T×H) | Dreiecke | Inhalt |
+|---|---|---|---|
+| `th39_vorfahrt.glb` | 0,90 × 0,18 × 2,30 | 220 | Dreieck auf der Spitze, roter Rand, Mast mit Fußplatte |
+| `th39_ortstafel.glb` | 1,58 × 0,16 × 2,50 | 700 | Tafel auf zwei Masten, Schriftbalken, Klemmschienen |
+| `th39_wegweiser.glb` | 3,39 × 0,40 × 3,05 | 904 | zwei Pfeilarme in Gegenrichtung, Schellen |
+| `th39_leitpfosten.glb` | 0,20 × 0,16 × 1,00 | 380 | Flachprofil, Kopfband, Reflektor rot/weiß, Fußstein |
+| `th39_leitplanke.glb` | 3,94 × 0,25 × 0,92 | 1 328 | W-Profil-Holm, Sigma-Pfosten, **Raster x += 4,00** |
+| `th39_bushalt.glb` | 4,20 × 1,80 × 2,84 | 4 012 | Wartehäuschen, Glas in Vierbalken-Rahmen, Bank, Fahrplan, Haltemast |
+| `th39_bake.glb` | 1,55 × 0,50 × 1,06 | 1 656 | rot-weißes Schrägstreifenbrett auf zwei Klappböcken |
+| `th39_pylon.glb` | 0,35 × 0,35 × 0,76 | 612 | Drehkörper mit Sockel und zwei Reflexbändern |
+| `th39_kreuzung.glb` | 24,00 × 24,00 × 3,05 | 16 082 | **Maßstabs-Test**, nur aus den Teilen oben |
+
+Generator: `tools/assets/mk_th39_strasse.py` · Werkzeug: `tools/assets/th_werkzeug.py`.
+Alle neun: zmin = 0,000. `th39_leitplanke` läuft auf Raster 4,00 m — für sich geschlossen,
+nicht mit dem 2,50er Raster des Weidezauns aus Charge 38 mischbar.
+
+> ⚠️ **Ein XYZ-Euler dreht zuletzt um z — und das ist fast nie die Achse, die man meint.**
+> Das Vorfahrtsschild ist ein dreikantiges Prisma, mit `rot=(π/2,0,0)` aufgestellt. Um die
+> Spitze nach unten zu bekommen, stand dort erst `rz = π`. Blender wendet einen XYZ-Euler
+> in der Reihenfolge x, y, z an, das z kommt also **nach** dem Kippen und dreht die Tafel
+> um die **Welt**-Hochachse: sie schaut danach nach hinten, die Spitze bleibt oben. Nach
+> dem Kippen liegt die Tafelebene auf x-z, und in dieser Ebene dreht **y**. Mit einem
+> Probeprisma nachgemessen statt weiter geraten:
+>
+> | Euler | höchster Punkt | tiefster Punkt | Lesart |
+> |---|---|---|---|
+> | `x90` | z +0,500 bei x 0 | z −0,250 | Spitze **oben** |
+> | `x90 z180` | z +0,500 bei x 0 | z −0,250 | Spitze **oben** (nur weggedreht) |
+> | `x90 y180` | z +0,250 | z −0,500 bei x 0 | Spitze **unten** ✔ |
+> | `x90 y+90` | — | — | Spitze bei **x +0,500** (Pfeil nach +x) |
+>
+> Dieselbe Falle traf den Wegweiser: ein Pfeilkopf stand quer statt nach außen.
+
+### 🔍 Weitere Befunde aus dem Kontaktbogen
+
+* **Die Leitplanke schwebte über ihren eigenen Pfosten.** Der Holm saß auf 0,73 und reichte
+  mit dem oberen Band bis 1,00 — die Pfosten waren 0,74 hoch. Ein Bauteil, das oben über
+  seine Tragkonstruktion hinausragt, liest sich sofort als falsch. Holm auf 0,60, Pfosten
+  auf 0,92.
+* **Die Schrägstreifen der Bake standen 8 cm über das Brett hinaus.** Ein um `a` gekippter
+  Quader braucht `h·cos a + b·sin a ≤ Bretthöhe` — nicht `h ≤ Bretthöhe`. Bei 0,40 hoch,
+  0,20 breit und 0,62 rad sind das 0,44 auf einem Brett von 0,28.
+* **Die Ortstafel las sich als Plakatwand.** 1,80 breit auf 2,18 Gesamthöhe ist ein Plakat;
+  ein Straßenschild steht hoch über dem Bankett. Die Masthöhe ist der halbe
+  Wiedererkennungswert.
+
+---
+
+---
 ## 🎡 Freizeitpark-Quartier in `traumhaus.html` — fertiger Einbau
 
 **Das Quartier gibt es schon** (`viertel({name:"Freizeitpark", x:-190, z:158, w:170, d:92 …})`,
