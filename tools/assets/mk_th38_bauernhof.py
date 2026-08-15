@@ -44,6 +44,47 @@ def _mats():
 def _modul(name, bauer, bevel=0.012):
     neu(); bauer(); export(name, bevel, 2)
 
+def _gras(x, y, m, halme=5, hoch=0.20):
+    """Grasbueschel aus schmalen, nach aussen geneigten Halmen.
+
+    ⚠️ Vorher stand hier je eine Kugel r=0,09. Im Kontaktbogen las sich das nicht
+    als Gras, sondern als gruene Murmel am Pfostenfuss. Gras ist duenn und
+    aufrecht — eine Kugel ist beides nicht. Halme statt Ball."""
+    for k in range(halme):
+        a = TAU*k/halme + 0.35*(k % 2)
+        h = hoch*(0.60 + 0.40*((k*7) % 5)/4.0)
+        kl = kegel(x + math.cos(a)*0.035, y + math.sin(a)*0.035, h/2*0.94,
+                   0.024, 0.0, h, m, 5)
+        kl.rotation_euler = (math.sin(a)*0.30, -math.cos(a)*0.30, 0.0)
+        flach(kl)
+
+def _hahn(x, y, z0, M):
+    """Wetterhahn auf dem First, rund 36 cm hoch, Blickrichtung +x.
+
+    ⚠️ Vorher: eine rote Kugel r=0,09 plus ein Kegelchen. Auf dem Kontaktbogen sah
+    der Stall damit aus, als laege ein roter Ball auf dem Dach. Ein Hahn braucht
+    Silhouette — Beine, laenglicher Rumpf, Hals, Kamm, aufgestellter Schwanz."""
+    for s in (-1, 1):                                                   # Staender
+        flach(zyl(x - 0.01, y + s*0.030, z0 + 0.066, 0.011, 0.13, M["stroh"], 6))
+    rumpf = flach(kugel(x, y, z0 + 0.175, 0.085, M["rahm"], 8))
+    rumpf.scale = (1.35, 0.62, 1.05)
+    hals = flach(kugel(x + 0.082, y, z0 + 0.262, 0.048, M["rahm"], 8))
+    hals.scale = (0.90, 0.62, 1.25)
+    kopf = flach(kugel(x + 0.104, y, z0 + 0.322, 0.040, M["rahm"], 8))
+    kopf.scale = (1.00, 0.60, 1.00)
+    for k in range(3):                                                  # Kamm
+        flach(kugel(x + 0.086 + k*0.019, y, z0 + 0.360 - 0.004*k*k,
+                    0.020 - k*0.003, M["rot"], 6))
+    flach(kugel(x + 0.106, y, z0 + 0.278, 0.016, M["rot"], 6))          # Kehllappen
+    flach(kegel(x + 0.148, y, z0 + 0.314, 0.017, 0.0, 0.055, M["stroh"], 6,
+                rot=(0, math.pi/2, 0)))                                 # Schnabel
+    for k in range(4):                                                  # Schwanzfedern
+        f = kegel(x - 0.112 - k*0.011, y, z0 + 0.215 + k*0.028,
+                  0.020, 0.0, 0.18 + k*0.028, M["rahm"], 5)
+        f.rotation_euler = (0.0, -(1.05 + k*0.16), 0.0)
+        f.scale = (1.0, 0.45, 1.0)
+        flach(f)
+
 def _rahmen(x, yf, z, b, h, st, M, mat_="rahm"):
     """⚠️ Ein Rahmen sind VIER Balken. Eine Platte in Fenstergroesse davor deckt die
     Scheibe zu — genau der Fehler, der in Charge 35 (Gaube), 37 (Fenster) und 37
@@ -142,7 +183,7 @@ def silo(): _modul("th38_silo", _b_silo, 0.010)
 
 # ================================================================ 3) Traktor
 def _b_traktor():
-    """Traktor, 3,90 x 1,95 x 2,55 m. Front auf +x wie die Fahrzeuge aus Charge 37.
+    """Traktor, 3,37 x 1,96 x 2,49 m. Front auf +x wie die Fahrzeuge aus Charge 37.
 
     ⚠️ Raeder: `zyl(rot=(pi/2,0,0))` legt die Achse auf y — das ist hier richtig.
     Mit (0,pi/2,0) laege sie auf x und die Raeder stuenden quer zur Fahrtrichtung."""
@@ -153,9 +194,14 @@ def _b_traktor():
     box(1.62, 0, 1.20, 0.16, 0.72, 0.46, M["blech"])                   # Kuehlergrill
     for k in range(4):
         box(1.66, 0, 1.02 + k*0.12, 0.06, 0.66, 0.045, M["chrom"])
+    # ⚠️ Die Scheinwerfer sassen auf z = 1,52 mit r = 0,13 — Oberkante 1,65, die
+    # Motorhaube endet aber bei 1,55. Sie ragten also darueber hinaus und lasen sich
+    # auf dem Kontaktbogen als weisse Kloetze, die vorne in der Luft haengen.
+    # Jetzt: tiefer in die Haubenflaeche, Chromtopf dahinter, Glas knapp davor.
     for s in (-1, 1):
-        flach(zyl(1.60, s*0.30, 1.52, 0.13, 0.10, leucht("BhLicht", (1.0,0.94,0.76), 2.4),
-                  12, (0, math.pi/2, 0)))
+        flach(zyl(1.665, s*0.30, 1.34, 0.115, 0.13, M["chrom"], 12, (0, math.pi/2, 0)))
+        flach(zyl(1.736, s*0.30, 1.34, 0.095, 0.03,
+                  leucht("BhLicht", (1.0, 0.94, 0.76), 1.4), 12, (0, math.pi/2, 0)))
     box(-0.62, 0, 1.34, 1.05, 0.94, 0.34, M["gruen"])                  # Sitzkonsole
     box(-0.62, 0, 1.66, 0.52, 0.52, 0.14, M["holzD"])                  # Sitz
     box(-0.86, 0, 1.92, 0.14, 0.50, 0.42, M["holzD"])                  # Lehne
@@ -182,7 +228,7 @@ def traktor(): _modul("th38_traktor", _b_traktor, 0.010)
 
 # ================================================================ 4) Heuballen
 def _b_heuballen():
-    """Rundballen-Stapel, 2,60 x 1,40 x 2,30 m — drei unten, zwei oben.
+    """Rundballen-Stapel, 3,62 x 1,31 x 2,27 m — drei unten, zwei oben.
 
     ⚠️ Ein liegender Zylinder mit Radius r gehoert auf z = r, sonst schwebt oder
     versinkt er. Die obere Lage liegt in der Kehle der unteren, nicht mittig
@@ -194,10 +240,16 @@ def _b_heuballen():
         for s in (-1, 1):                                               # Stirnseiten
             flach(zyl(x, s*(L/2 + 0.005), z, R*0.97, 0.02, M["stroh"], 20, (math.pi/2, 0, 0)))
         for k in range(6):                                              # Wickelbaender
-            flach(zyl(x - L/2 + 0.12 + k*(L - 0.24)/5, 0, z, R + 0.012, 0.05,
+            # ⚠️ Die Baender liefen erst entlang X — also QUER zur Ballenachse.
+            # Sie standen dadurch seitlich heraus und machten den Stapel 4,66 statt
+            # 3,60 breit (gemessen). Die Achse des Ballens liegt auf y, also
+            # gehoeren die Baender auch dorthin gestaffelt.
+            flach(zyl(x, -L/2 + 0.12 + k*(L - 0.24)/5, z, R + 0.012, 0.05,
                       M["holzD"], 20, (math.pi/2, 0, 0)))
-    for i in range(3): ballen(-R*2 + i*R*2, R)
-    for i in range(2): ballen(-R + i*R*2, R + R*1.72)
+    # ⚠️ z = R + 0,014 statt R: die Wickelbaender haben Radius R + 0,012 und tauchten
+    # sonst unter den Boden (gemessen zmin -0,01).
+    for i in range(3): ballen(-R*2 + i*R*2, R + 0.014)
+    for i in range(2): ballen(-R + i*R*2, R + 0.014 + R*1.72)
 
 def heuballen(): _modul("th38_heuballen", _b_heuballen, 0.008)
 
@@ -215,8 +267,8 @@ def _b_weidezaun():
     strebe((-BR/2 + 0.20, 0, 0.16), (BR/2 - 0.30, 0, 1.02), 0.075, M["holzD"])
     for s in (-1, 1):                                                   # Grasbueschel am Fuss
         for k in range(3):
-            flach(kugel(s*(BR/2 - 0.09) + (k - 1)*0.11, (k % 2 - 0.5)*0.10, 0.09,
-                        0.09, M["gruen"], 7))
+            _gras(s*(BR/2 - 0.09) + (k - 1)*0.13, (k % 2 - 0.5)*0.14, M["gruen"],
+                  5, 0.20 + 0.05*(k % 2))
 
 def weidezaun(): _modul("th38_weidezaun", _b_weidezaun, 0.007)
 
@@ -245,8 +297,7 @@ def _b_huehnerstall():
     _fenster(-0.62, 1.12, 0.44, 0.34, M, T/2)
     for s in (-1, 1):                                                   # Legenester aussen
         box(s*(B/2 + 0.10), -0.30, 0.98, 0.20, 0.60, 0.44, M["holz"])
-    flach(kugel(0.95, 0.10, 1.98, 0.09, M["rot"], 8))                   # Hahn auf dem First
-    kegel(1.02, 0.10, 1.98, 0.05, 0.0, 0.10, M["stroh"], 6, rot=(0, math.pi/2, 0))
+    _hahn(0.92, 0.10, 1.85, M)                                          # Hahn auf dem First
 
 def huehnerstall(): _modul("th38_huehnerstall", _b_huehnerstall, 0.008)
 
@@ -268,8 +319,17 @@ def _b_futtertrog():
                    0.075, M["holzD"])
             box(s*(L/2 - 0.28), q*0.28, 0.19, 0.09, 0.09, 0.38, M["holzD"])
     box(0, 0, 0.20, L - 0.30, 0.07, 0.07, M["holzD"])                   # Querzug
-    for k in range(5):                                                  # Heu im Trog
-        flach(kugel(-0.80 + k*0.40, 0.0, 0.60, 0.13, M["stroh"], 8))
+    # ⚠️ Das Heu waren fuenf Kugeln r=0,13 auf gleicher Hoehe — auf dem Kontaktbogen
+    # sah der Trog aus, als laegen fuenf Eier darin. Heu ist flach und struppig:
+    # gedrueckte Haufen plus einzelne Halme, die ueber den Rand stehen.
+    for k in range(6):                                                  # Heu im Trog
+        h = flach(kugel(-0.86 + k*0.345, 0.0, 0.545, 0.145, M["stroh"], 8))
+        h.scale = (1.0, 0.90, 0.44)
+    for k in range(9):                                                  # einzelne Halme
+        a = 0.5 + k*0.7
+        hm = flach(zyl(-0.82 + k*0.205, math.sin(a)*0.09, 0.60, 0.011, 0.24,
+                       M["stroh"], 5))
+        hm.rotation_euler = (math.sin(a)*0.85, math.cos(a)*0.65, 0.0)
 
 def futtertrog(): _modul("th38_futtertrog", _b_futtertrog, 0.007)
 
@@ -299,7 +359,7 @@ def _b_hoftor():
         flach(zyl(x1 - s*0.10, 0.06, 0.98, 0.05, 0.10, M["chrom"], 10, (math.pi/2, 0, 0)))
     for s in (-1, 1):                                                   # Grasnarbe am Pfeiler
         for k in range(4):
-            flach(kugel(s*PB + (k - 1.5)*0.16, 0.16, 0.08, 0.08, M["gruen"], 7))
+            _gras(s*PB + (k - 1.5)*0.18, 0.20, M["gruen"], 5, 0.17 + 0.05*(k % 2))
 
 def hoftor(): _modul("th38_hoftor", _b_hoftor, 0.008)
 
