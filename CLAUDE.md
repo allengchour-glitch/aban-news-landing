@@ -19,6 +19,22 @@ das Skript laufen lassen. Aufbau:
   Beauty-Gerät gewählt); ein «Intim-Pflegeserum» wäre auf der Startseite gelandet → `NICHT_STARTSEITE`.
   Bedingungen für die Reihe: ≥2 Bilder, ab CHF 19, im Google-Kanal, kein Kostüm/Spielzeug/Partydeko.
 
+## 🧟 Ein Massen-Schreiber macht alte Fixes rückgängig (2026-08-15)
+`versandaussagen_wahrheit.py` (14.08.) hat bei **149 Produkten den doppelten Produktdetails-Block
+wiederbelebt**, den der Dedup-Lauf vom 11.08. entfernt hatte — und bei 1 Produkt den Lieferanten-
+Farbcode («RM47-Plaid»). Mechanik: Der Schreiber sammelt Kandidaten samt Beschreibungstext zu
+Beginn, schreibt aber erst Stunden später (Queue) — wer dazwischen (oder davor, aus älterer
+Quelle) repariert wurde, wird mit der alten Basis überschrieben. Doppelt gefährlich: **das Ledger
+des früheren Reinigers blockiert dann die Zweitreparatur** (der Cardigan stand als «erledigt» im
+Farbcode-Ledger und blieb kaputt; die 149 fehlten im v2-Ledger nur zufällig, weil v2 andere Fälle
+abarbeitete). Erkannt über Korrelation: alle 149 in Dedup-v1-Ledger UND in Versand-Ledger, 0 in v2.
+**Regeln:** (1) Nach jedem Massen-Beschreibungs-Schreiber die nachgelagerten Text-Reiniger gegen
+LIVE neu laufen lassen — deren «FERTIG» ist ab da wertlos. (2) Reiniger-Wiederholung braucht
+frische Mini-Exports (LIVE holen, `status` mitschreiben) statt des alten Exports. (3) ⚠️ Shopifys
+Bulk-JSONL escaped `/` als `\/` — ein Roh-Zeilenfilter auf `gid://` matcht NIE; erst json.loads,
+dann filtern (zwei Prüfskripte meldeten dadurch fälschlich 0). Blutzucker-/Heilversprechen-Fixes
+gegengeprüft: halten.
+
 ## 🚚 Versandaussagen auf EINE Wahrheit gebracht (2026-08-14)
 1'037 aktive Produkte bewarben «🇨🇭 CH / 🇪🇺 EU: 10–18 Tage · 🇺🇸 USA: 12–22 Tage», und für dieselbe
 Ware standen VIER Lieferzeiten nebeneinander (Richtlinie 5–12 Werktage · Startseite 2–14 Tage ·

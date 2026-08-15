@@ -40,3 +40,4 @@ gid://shopify/Product/15493084217729	bereinigt	Multifunktions-Klappzange aus Ede
 gid://shopify/Product/15493258543489	bereinigt	Universal Connection Protokoll Kommunikations-Check
 gid://shopify/Product/15493577310593	bereinigt	S925 Silber Planet Spacer Bead Anhänger
 gid://shopify/Product/15493848531329	bereinigt	4-Port USB QC3.0 Schnellladegerät
+gid://shopify/Product/15500542935425	bereinigt	Rennwagen-Baukasten
