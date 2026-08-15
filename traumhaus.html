@@ -947,7 +947,10 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
      Spielfeld. Baeume und Felder haben keine Kollider, eine Freiflaechenkarte
      aus `inSolid` sieht sie also nicht; die Flaeche muss denselben Weg gehen wie
      die Zubringer und sich vorher ANMELDEN. */
-  window.SPORTFELD={x:53,z:155,w:56,d:42};
+  /* ⚠️ Erst w 56 / d 42: einzelne Fichten standen danach noch auf der Torauslinie.
+     Die Sperre muss die Anlage samt Tribuenen und Auslauf umfassen, nicht nur
+     die Rasenflaeche. */
+  window.SPORTFELD={x:53,z:155,w:70,d:56};
   window.gelaendeH=function(x,z){
     /* ⚠️ Erste Fassung war H = hoch*(1-r/rad)^exp — also rotationssymmetrisch,
        und damit exakt das, was als „Kegel" bemaengelt wurde. Die Form muss aus
