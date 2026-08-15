@@ -130,6 +130,28 @@ async function main() {
 
   const kand = [];
   let cursor = null;
+  // ⭐ PRIORITÄTEN ZUERST (15.08.2026): Das «Midikleid mit Zopfmuster» — der Befund, mit dem
+  // die Betreiberin diese ganze Arbeit angestossen hat — wäre in Katalogreihenfolge erst nach
+  // Tausenden anderen drangekommen. Produkte in dropship/_cj_variantenbild_prio.txt werden
+  // vor der Pagination geprüft (eine GID je Zeile; das Ledger dedupt wie üblich).
+  const PRIO='dropship/_cj_variantenbild_prio.txt';
+  if (fs.existsSync(PRIO)) {
+    for (const zeile of fs.readFileSync(PRIO,'utf8').split('\n')) {
+      const gid=zeile.trim();
+      if (!gid || erledigt.has(gid)) continue;
+      const r=await sgql(`query($id:ID!){product(id:$id){id title status options{name values}
+          variants(first:100){nodes{id sku image{url}}}}}`,{id:gid});
+      const n=r.data?.product;
+      if (!n || n.status!=='ACTIVE') continue;
+      const fo=n.options.find(o=>FARBE.has(o.name.toLowerCase()));
+      if (!fo || (fo.values||[]).length<2) continue;
+      const vs=n.variants.nodes;
+      if (vs.some(v=>v.image)) continue;
+      const s2=cjSchluessel(vs[0]?.sku||'');
+      if (s2.length) kand.push({id:n.id,titel:n.title,s:s2,vs});
+    }
+    if (kand.length) console.log(`Prioritäten vorangestellt: ${kand.length}`);
+  }
   for (let seite = 0; seite < 500; seite++) {
     const r = await sgql(`query($c:String){products(first:40,after:$c,query:"status:active tag:cj-real"){
         pageInfo{hasNextPage endCursor}

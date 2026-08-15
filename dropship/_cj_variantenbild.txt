@@ -72,3 +72,4 @@ gid://shopify/Product/15446066626945	zugeordnet	16	Silikon-Vollgesichtsmaske in 
 gid://shopify/Product/15446066954625	zugeordnet	5	Nahtlose Gesichtsmaske aus Nylon
 gid://shopify/Product/15446067249537	zugeordnet	2	Sport Gesichtsmaske mit Aktivkohlefilter
 gid://shopify/Product/15446067937665	zugeordnet	4	Samtige Gesichtsmaske – atmungsaktiv & schützend
+gid://shopify/Product/15448587075969	zugeordnet	40	Midikleid mit Zopfmuster und Blumenprint
