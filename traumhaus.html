@@ -2894,7 +2894,9 @@ var dorfFenster=[];
        mehr Platz brauchen. */
     (function baustelle(){
       var g=new THREE.Group();
-      var gr=new THREE.Mesh(new THREE.PlaneGeometry(36,28),
+      /* 30 x 22 statt 36 x 28: die groessere Flaeche griff im Spiel auf die
+         Nachbargrundstuecke ueber (Screenshot). */
+      var gr=new THREE.Mesh(new THREE.PlaneGeometry(30,22),
         new THREE.MeshStandardMaterial({color:0x6b5c44,roughness:1,envMapIntensity:0.14}));
       gr.rotation.x=-Math.PI/2;gr.position.y=0.014;gr.receiveShadow=true;g.add(gr);
       g.position.set(-30,0,102);scene.add(g);
@@ -5637,7 +5639,13 @@ setTimeout(function baueGebaeude(){
        der wird einmal aus den Ladepositionen gebaut (Lehre aus Charge 40). */
     fest("th46_baukran.glb",26.52,BX+9,BZ+3,0,function(w){
       w.userData.nieAusblenden=true; w._bewegt=true; window._baukran=w;});
-    for(var k=0;k<4;k++) fest("th46_geruest.glb",7.34,BX-10.5+k*2.5,BZ+5.4,0);
+    /* ⚠️ Erst standen die vier Geruestfelder auf BZ+5,4 — das ist 1,7 m NORDLICH
+       der Rohbaukante (Tiefe 9,4 um BZ-1), sie klebten also an nichts, und eines
+       lag ausserdem im Kollider des Nachbargebaeudes. Ein Fassadengeruest steht
+       an der Fassade: jetzt an der Westwand, Wandseite zum Rohbau.
+       Die Wandseite liegt auf Blender -y, in three.js also +z; aus der Normalen
+       (sin rotY, cos rotY) = (1,0) folgt rotY = +pi/2. */
+    for(var k=0;k<4;k++) fest("th46_geruest.glb",7.34,BX-12.1,BZ-4.6+k*2.5,Math.PI/2);
     fest("th46_bagger.glb",3.73,BX+2,BZ-9,-0.5);
     fest("th46_baucontainer.glb",2.90,BX+11,BZ-8,Math.PI/2);
     fest("th46_materiallager.glb",1.20,BX-9,BZ-9,0);
