@@ -181,3 +181,13 @@ gid://shopify/Product/15447574872449	zugeordnet	2	ASA-CF Filament, Carbonfaserve
 gid://shopify/Product/15447575069057	zugeordnet	2	Seiden-PLA Filament 1.75mm, 1.1kg, Glanz-Finish
 gid://shopify/Product/15447575331201	zugeordnet	2	PETG-CF Filament, Carbonfaserverstärkt
 gid://shopify/Product/15447575986561	zugeordnet	2	Notizbuch aus geprägtem Kunstleder, extra dick
+gid://shopify/Product/15447576183169	zugeordnet	23	Heissprägefolie für Leder & Kunststoff
+gid://shopify/Product/15447578018177	zugeordnet	8	E3DV6 J-Head Remote Extruder-Kit
+gid://shopify/Product/15447579066753	zugeordnet	36	Geburtsstein-Armband mit Süsswasserperle
+gid://shopify/Product/15447579263361	zugeordnet	2	Retro-Magnetarmband für Paare
+gid://shopify/Product/15447579754881	zugeordnet	4	Kupfer Magnetarmband für Damen
+gid://shopify/Product/15447580541313	zugeordnet	2	Kupfer-Fusskettchen, unisex, verstellbar
+gid://shopify/Product/15447581098369	zugeordnet	2	Magnetisches Kupferarmband mit Drachen-Phönix-Motiv
+gid://shopify/Product/15447581557121	zugeordnet	11	Magnetisches Kupferarmband im Antik-Stil
+gid://shopify/Product/15447581917569	zugeordnet	3	Dreilagiges Magnetarmband aus Rotkupfer
+gid://shopify/Product/15447582114177	zugeordnet	4	Kupfer Armreif & Ring Set mit Magneten
