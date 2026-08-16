@@ -43,7 +43,11 @@ def _mats(wand=(0.72,0.66,0.54), dachf=(0.34,0.20,0.17)):
       "gruen": mat("VlGruen",  (0.18,0.40,0.20), 0.94),
       "gruen2":mat("VlGruen2", (0.24,0.48,0.24), 0.94),
       "kies":  mat("VlKies",   (0.66,0.62,0.54), 0.96),
-      "wasser":mat("VlWasser", (0.16,0.44,0.58), 0.14, 0.20),
+      # ⚠️ Erst (0,16|0,44|0,58) mit Rauheit 0,14: eine so glatte Flaeche blaest
+      # unter dem Umgebungslicht weiss aus — das Becken war im Render eine
+      # helle Platte. Wasser in dieser Groesse liest sich nur ueber die FARBE,
+      # nicht ueber Spiegelung: dunkler und deutlich rauer.
+      "wasser":mat("VlWasser", (0.07,0.30,0.44), 0.42, 0.0),
       "glas":  mat("VlGlas",   (0.18,0.26,0.32), 0.14, 0.20),
       "licht": leucht("VlLicht", (1.00,0.93,0.74), 1.2),
     }
@@ -341,15 +345,16 @@ def _b_hecke():
     BR, T, H = 3.00, 0.90, 1.30
     box(0, 0, 0.16, BR, T + 0.30, 0.32, m["stein"])                 # Sockelmauer
     box(0, 0, H/2 + 0.32, BR, T, H, m["gruen"])
-    for k in range(9):                                              # Laubkoerper
-        xx = -BR/2 + 0.18 + k*(BR - 0.36)/8
-        flach(kugel(xx, ((k % 2) - 0.5)*0.22, H + 0.30 + ((k % 3) - 1)*0.05,
-                    0.30, m["gruen2"], 7))
-    for k in range(6):
-        xx = -BR/2 + 0.26 + k*(BR - 0.52)/5
-        for s in (-1, 1):
-            flach(kugel(xx, s*(T/2 - 0.05), 0.32 + 0.30 + (k % 2)*0.28,
-                        0.24, m["gruen2"], 6))
+    # ⚠️ Die Laubkugeln sassen auch auf den FLANKEN, auf halber Hoehe — das sah
+    # aus wie eine gruene Kiste mit Warzen. Eine geschnittene Hecke ist an den
+    # Seiten glatt; ihre Unregelmaessigkeit sitzt OBEN, wo der Trieb ausschlaegt.
+    for k in range(13):                                             # Laubkoerper oben
+        xx = -BR/2 + 0.14 + k*(BR - 0.28)/12
+        flach(kugel(xx, ((k % 3) - 1)*0.20, H + 0.28 + ((k % 4) - 1.5)*0.06,
+                    0.28 + (k % 3)*0.03, m["gruen2"], 7))
+    for k in range(5):                                              # zweite Reihe
+        xx = -BR/2 + 0.42 + k*(BR - 0.84)/4
+        flach(kugel(xx, ((k % 2) - 0.5)*0.34, H + 0.40, 0.24, m["gruen2"], 6))
 
 def hecke(): _modul("th47_hecke", _b_hecke, 0.006)
 
@@ -409,13 +414,14 @@ def _b_gartenlaube():
                  math.hypot(x1 - x0, y1 - y0)*0.80, 0.38, 0.06, m["holz2"])
         bk.rotation_euler[2] = math.atan2(y1 - y0, x1 - x0)
     flach(zyl(0, 0, H + 0.30, R + 0.24, 0.12, m["holz"], 12))       # Traufkranz
+    # ⚠️ Hier lagen sechs Gratstaebe mit `rotation_euler = (0, -theta, a)`. Ein
+    # XYZ-Euler dreht erst um y, dann um z — der Stab kippte damit in die falsche
+    # Ebene und stand im Kontaktbogen waagrecht aus dem Dach heraus. Ein Sechs-
+    # kant-Kegel zeigt seine Grate ohnehin als Kanten; die Staebe waren Zierrat
+    # mit Risiko. Statt sie neu auszurechnen: weglassen, Knauf behalten.
     flach(kegel(0, 0, H + 0.36 + 0.55, R + 0.42, 0.0, 1.10, m["dach"], 6))
-    for k in range(6):                                              # Grate
-        a = TAU*k/6
-        gr = box(math.cos(a)*(R + 0.21)/2, math.sin(a)*(R + 0.21)/2, H + 0.66,
-                 math.hypot(R + 0.42, 1.10)*0.5, 0.07, 0.07, m["dach2"])
-        gr.rotation_euler = (0, -math.atan2(1.10, R + 0.42), a)
-    flach(kugel(0, 0, H + 1.02, 0.14, m["dach2"], 8))
+    flach(zyl(0, 0, H + 1.02, 0.07, 0.30, m["dach2"], 8))
+    flach(kugel(0, 0, H + 1.22, 0.15, m["dach2"], 8))
 
 def gartenlaube(): _modul("th47_gartenlaube", _b_gartenlaube, 0.008)
 
