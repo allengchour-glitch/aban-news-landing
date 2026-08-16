@@ -5636,7 +5636,13 @@ setTimeout(function baueGebaeude(){
      +y, in three.js also -z. Die Nordreihe bekommt darum rotY = pi, die
      Suedreihe rotY = 0. */
   (function marktAusbau(){
-    var MX=22, MZ=66;
+    /* ⚠️ GEMESSEN: bei (22|66) lag der halbe Markt AUF der Haupt-S-Fahrbahn
+       (Asphalt z 50…66, Sperrband bis 68,8) — der Brunnen stand bei z 58…62
+       mitten auf der Strasse. Zwischen Band (68,8) und der Suedzeile (Hausboxen
+       ab 69,7) ist kein 26-m-Platz. Neuer Ort: die Wiese vor dem Ost-Tor
+       (x 122…162, z 7…33 — frei von Haupt-, Ring- und Diagonal-Baendern),
+       als Wochenmarkt an der Ausfallstrasse. */
+    var MX=142, MZ=20;
     function fest(datei,hoehe,x,z,ry){
       bau(datei,hoehe,x,0,z,ry,false,function(w){w.userData.fest=true;},true);
     }
@@ -5666,7 +5672,9 @@ setTimeout(function baueGebaeude(){
      ihre Schauseite auf Blender +y, in three.js also -z. Zu jeder alten
      Drehung kommt darum pi. */
   (function villenAusbau(){
-    var PARZ=[[ 96,-22,-Math.PI/2,0],[ 96,-44,-Math.PI/2,1],
+    /* ⚠️ Die Suedparzelle stand mit z -44 (Villenbox bis -50) 2,3 m im
+       Haupt-N-Band (ab -47,2) — auf -40,5 bleibt 0,7 m Luft. */
+    var PARZ=[[ 96,-22,-Math.PI/2,0],[ 96,-40.5,-Math.PI/2,1],
               [-96,  8, Math.PI/2,1],[-96, 28, Math.PI/2,0]];
     function fest(datei,hoehe,x,z,ry){
       bau(datei,hoehe,x,0,z,ry,false,function(w){w.userData.fest=true;},true);
@@ -5680,23 +5688,29 @@ setTimeout(function baueGebaeude(){
       fest(typ ? "th47_villa_giebel.glb" : "th47_villa_walm.glb",
            typ ? 10.44 : 10.69, px, pz, ry);
       addSolid(px,pz,12.0,11.0);
-      fest("th47_garage.glb",3.68, px+qx*9.5+nx*2.0, pz+qz*9.5+nz*2.0, ry);
-      fest("th47_gartentor.glb",2.69, px+nx*11.5, pz+nz*11.5, ry);
+      /* ⚠️ GEMESSEN: die Parzellen liegen zwischen Quer-Band (bis |x| 86) und
+         Ring-Band (ab 104,8) — 18,8 m Tiefe. Villa (12) + Garage seitlich
+         (ragte 7,7 m ins Haupt-Band) + Pool hinterm Haus (6,8 m im Ring-Band)
+         passen dort NIE. Wie beim Prellbock: Garage und Gartenstueck entfallen
+         auf diesen vier Parzellen — Villa, Tor und Heckenzug bleiben. */
+      /* ⚠️ 11,5 vor der Hausmitte = |x| 84,5: Tor und Heckenzug standen im
+         Querstrassen-Band (bis 86). 9,0 stellt die Linie auf |x| 87 — 3 m
+         Vorgarten bleiben (Hauswand bei 89,95). */
+      fest("th47_gartentor.glb",2.69, px+nx*9.0, pz+nz*9.0, ry);
       for(var k=0;k<3;k++){                         // Heckenzug beidseits des Tors
         [-1,1].forEach(function(sd){
-          fest("th47_hecke.glb",2.01,
-               px+nx*11.5+qx*sd*(3.6+k*3.0), pz+nz*11.5+qz*sd*(3.6+k*3.0), ry);
+          var hx=px+nx*9.0+qx*sd*(3.6+k*3.0), hz=pz+nz*9.0+qz*sd*(3.6+k*3.0);
+          /* ⚠️ Die Suedvilla (z -44) schob ihre Ecken-Hecken bei z -47,6…-53,6
+             in das Haupt-N-Band (ab |z| 47,2) — Module dort auslassen. */
+          if(Math.abs(hz)>46.5)return;
+          fest("th47_hecke.glb",2.01,hx,hz,ry);
         });
       }
       /* Garten hinter dem Haus: abwechselnd Pool, Laube und Gartenhaus. */
       /* ⚠️ Erst 9,5 hinter der Hausmitte: die Villa ist 12,1 tief (halb 6,05) und
          der Pool 6,8 (halb 3,4) — beide Kanten trafen sich damit bei 9,45, der
          Pool lag praktisch an der Wand. 13,0 laesst 3,5 m Rasen dazwischen. */
-      var gx=px-nx*13.0, gz=pz-nz*13.0;
-      if(i===0)      fest("th47_pool.glb",2.54,gx,gz,ry);
-      else if(i===1) fest("th47_gartenlaube.glb",3.76,gx,gz,ry);
-      else if(i===2) fest("th47_gartenhaus.glb",3.51,gx,gz,ry+Math.PI);
-      else           fest("th47_pool.glb",2.54,gx,gz,ry);
+      /* (Gartenstueck entfaellt — siehe Messkommentar oben.) */
     });
   })();
   /* ── 🏗️ Charge 46: Baustelle ────────────────────────────────────────────────
@@ -5726,7 +5740,7 @@ setTimeout(function baueGebaeude(){
     fest("th46_materiallager.glb",1.20,BX-9,BZ-9,0);
     fest("th46_mischer.glb",1.36,BX-2,BZ-7,0.7);
     for(var z9=0;z9<9;z9++) fest("th46_bauzaun.glb",2.16,BX-14+z9*3.5,BZ-12.5,0);
-    for(var q9=0;q9<6;q9++) fest("th46_bauzaun.glb",2.16,BX-15.8,BZ-10+q9*3.5,Math.PI/2);
+    for(var q9=0;q9<6;q9++) fest("th46_bauzaun.glb",2.16,BX-15.8,BZ-11.5+q9*3.5,Math.PI/2); /* ⚠️ Reihe endete bei z 111,4 — 0,6 m im Ring-Band (ab 110,8) */
   })();
   /* ── ⚓ Charge 45: Hafen und Strand ─────────────────────────────────────────
      340 m Ufer standen ohne einen einzigen Gegenstand da. Der Sandstreifen liegt

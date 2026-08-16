@@ -39,6 +39,10 @@ const SONDE = `function(){
     return null;}
   var G=window._gebaeude||[],bb=[],auf=[];
   G.forEach(function(w){
+    /* Bewegte Objekte (Kran schwenkt, Boote/Zug/Bus fahren) haben KEINE feste
+       Box — ihr Augenblickswert ist weder Platzierungsfehler noch Blocker
+       (Kranausleger in 20 m Hoehe, Bus faehrt legitim AUF der Strasse). */
+    if(w.userData&&(w.userData._bewegt||w._bewegt||w.userData.nieAusblenden))return;
     var b=new THREE.Box3().setFromObject(w);
     if(!isFinite(b.min.x)||b.max.y-b.min.y<0.45)return;   /* flache Deko darf am Rand liegen */
     bb.push({b:b,x:+w.position.x.toFixed(0),z:+w.position.z.toFixed(0)});
