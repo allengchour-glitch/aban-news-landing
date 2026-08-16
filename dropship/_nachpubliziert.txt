@@ -115,3 +115,11 @@ gid://shopify/Product/15500461703553	warme-gurtel-631700	Wärme-Gürtel
 gid://shopify/Product/15500495192449	sommerliches-petite-tragerkleid-630200	Sommerliches Petite Trägerkleid
 gid://shopify/Product/15500511478145	gestreiftes-jacquard-freizeithemd-fur-herren-617300	Gestreiftes Jacquard-Freizeithemd für Herren
 gid://shopify/Product/15500511543681	fensterbank-spielzeug-mit-saugnapfen-fur-katze-7b202c	Fensterbank-Spielzeug mit Saugnäpfen für Katzen
+gid://shopify/Product/15500902007169	kamouflage-schuhe-fur-kinder-9e62af	Kamouflage Schuhe für Kinder
+gid://shopify/Product/15500906824065	trump-szene-bausteine-garage-605500	Trump Szene Bausteine Garage
+gid://shopify/Product/15500910133633	3-in-1-glatteisen-lockenstab-fur-trockenes-nas-053632	3-in-1 Glätteisen & Lockenstab für trockenes/nasses Haar
+gid://shopify/Product/15500913836417	weihnachtliche-kissenhullen-im-cartoon-stil-570624	Weihnachtliche Kissenhüllen im Cartoon-Stil
+gid://shopify/Product/15500927304065	rosegold-armbanduhr-716544	Rosegold-Armbanduhr
+gid://shopify/Product/15500930711937	kissen-im-nordeuropaischen-stil-558848	Kissen im nordeuropäischen Stil
+gid://shopify/Product/15500948406657	naturehike-leye-titan-clip-821056	Naturehike Leye Titan-Clip
+gid://shopify/Product/15500948439425	usb-a-stecker-mit-schwarzer-kunststoffabdeckun-907392	USB-A Stecker mit schwarzer Kunststoffabdeckung
