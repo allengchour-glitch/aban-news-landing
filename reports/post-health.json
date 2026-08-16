@@ -1,66 +1,19 @@
 {
-  "ts": "2026-08-15T23:28:06.547Z",
+  "ts": "2026-08-16T05:28:10.349Z",
   "platforms": {
     "tiktok": {
       "result": "SOUND_DIAG",
       "reason": "Sound-Panel-Screenshots erstellt",
       "file": "mw-statement-ohrringe-onyx-geom.mp4",
-      "vor_min": 73579
+      "vor_min": 73940
     },
     "campaign": {
       "result": "WIZARD_DIAG",
-      "vor_min": 72420
+      "vor_min": 72780
     },
     "meta": {
-      "index": 10,
-      "item": "Äuä ds schönschte Teil grad itz 👀 Plateau-Sneaker «Cloud»",
-      "ig": {
-        "error": "IG publish",
-        "detail": {
-          "error": {
-            "message": "Media ID is not available",
-            "type": "OAuthException",
-            "code": 9007,
-            "error_subcode": 2207027,
-            "is_transient": false,
-            "error_user_title": "Kann nicht veröffentlicht werden",
-            "error_user_msg": "Die Medien können noch nicht veröffentlicht werden. Bitte warte noch einen Moment.",
-            "fbtrace_id": "AWjZCewtuFJ-P7Kh2yQX8kb"
-          }
-        }
-      },
-      "fb": {
-        "ok": "122130316287350792"
-      },
-      "tt": {
-        "skipped": "kein Video"
-      },
-      "insights": {
-        "ts": "2026-08-15T23:28",
-        "ig": {
-          "posts": 12,
-          "eng": 15,
-          "avg": 1,
-          "top": {
-            "eng": 3,
-            "cap": "Dis eigete Täschli 🐱 — Motiv ufladä, fe"
-          }
-        },
-        "fb": {
-          "posts": 12,
-          "eng": 0,
-          "avg": 0,
-          "top": {
-            "eng": 0,
-            "cap": "Äuä ds schönschte Teil grad itz 👀 Plate"
-          }
-        }
-      },
-      "replies": {
-        "ig": 0,
-        "fb": 0,
-        "skipped": 1
-      }
+      "result": "WORKER_NICHT_ERREICHBAR",
+      "detail": "TimeoutError: The operation was aborted due to timeout"
     }
   },
   "duplicates": [],
