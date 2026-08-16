@@ -9808,6 +9808,9 @@ window.__th={
   rohSolids:function(){return WORLD_SOLIDS;},
   achsen:function(){return {SZr:GH*CS/2+12,RX:RX,RL:RL};},
   frei:function(x,z){return !inSolid(x,z);},
+  /* Fussgaengerliste zum Nachmessen: steht der Verkaeufer hinter SEINER Theke,
+     und bewegen sich die Bummler wirklich? */
+  fussg:function(){return fussg;},
   tp:function(x,z){var m=sims[0];if(m){m.x=x;m.z=z;m.mesh.position.set(x,m.mesh.position.y,z);}
     camTx=x;camTz=z;updCam();},
   ego:function(an){egoMode=!!an;},
