@@ -369,3 +369,10 @@ gid://shopify/Product/15447865098625	zugeordnet	3	Lithium-Akku-Ladegerät
 gid://shopify/Product/15447865295233	zugeordnet	4	200W GaN Ladegerät für Mobilgeräte & Laptops
 gid://shopify/Product/15447865622913	zugeordnet	2	Li-ion Akku & USB-Ladegerät für Taschenlampen
 gid://shopify/Product/15447865819521	zugeordnet	10	65W GaN Ladegerät mit US-Stecker
+gid://shopify/Product/15447866081665	zugeordnet	4	PD 20W Universal Reiseadapter
+gid://shopify/Product/15447866311041	zugeordnet	6	30W GaN Schnellladegerät mit einziehbaren Steckern
+gid://shopify/Product/15447866507649	zugeordnet	2	Tragbares magnetisches Wireless-Ladegerät mit Kabel
+gid://shopify/Product/15447866704257	zugeordnet	1	4-in-1 Auto-Ladegerät mit ausziehbaren Kabeln
+gid://shopify/Product/15447867163009	zugeordnet	2	Magnetisches kabelloses Desktop-Ladegerät mit Ständer
+gid://shopify/Product/15447867359617	zugeordnet	2	Elektrischer Lift-Ständer mit Wireless Charging
+gid://shopify/Product/15447867588993	zugeordnet	3	3-in-1 Faltbarer Magnetischer Wireless Charger
