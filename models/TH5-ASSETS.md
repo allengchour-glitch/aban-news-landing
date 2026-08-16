@@ -1570,6 +1570,57 @@ gehört an die **Maschine**, nicht in die Mitte ihrer Bounding-Box — `bau()` s
 Dieselbe Ausnahme wie beim Fahrleitungsmast in Charge 41.
 
 ---
+## 2g. Charge 47 — VILLEN UND GÄRTEN (`models/th47_*.glb`)
+
+Die vier Villen in „Villen Ost" (96 | −33) und „Villen West" (−96 | 18) waren prozedurale
+Kisten: Korpus, Kegeldach mit vier Seiten, Fenster als aufgeklebte Rechtecke. Und die
+Grundstücke hatten außer Hecke und Zaun nichts.
+
+| Datei | Maße (B×T×H) | Dreiecke | Inhalt |
+|---|---|---|---|
+| `th47_villa_walm.glb` | 12,10 × 12,27 × 10,69 | 32 296 | Mansarddach, Erker über zwei Geschosse, Veranda mit Säulen, Fensterläden, Gaube, Kamin |
+| `th47_villa_giebel.glb` | 11,10 × 10,32 × 10,44 | 25 704 | Satteldach, Balkon auf Konsolen, Fachwerkfeld im Giebel, Freitreppe |
+| `th47_garage.glb` | 7,70 × 6,84 × 3,68 | 3 824 | zwei Sektionaltore, Pultdach, Nebentür |
+| `th47_gartenhaus.glb` | 4,67 × 3,50 × 3,51 | 5 484 | Bretterwände, Seitenfenster, Regentonne |
+| `th47_pool.glb` | 9,60 × 6,80 × 2,54 | 5 604 | Holzterrasse, Becken mit Randrahmen, zwei Liegen, Sonnenschirm |
+| `th47_hecke.glb` | 3,25 × 1,20 × 2,01 | 3 000 | Sockelmauer, geschnittener Körper, Triebe oben, **Raster x += 3,00** |
+| `th47_gartentor.glb` | 4,42 × 0,90 × 2,69 | 2 404 | zwei Mauerpfeiler mit Kugeln, zwei Torflügel mit Spitzen |
+| `th47_gartenlaube.glb` | 4,00 × 4,24 × 3,76 | 2 482 | sechseckig, Brüstung, Bänke, Zeltdach |
+| `th47_grundstueck.glb` | 34,00 × 30,00 × 10,69 | 108 362 | **Maßstabs-Test**, nur aus den Teilen oben |
+
+Generator: `tools/assets/mk_th47_villen.py` · Werkzeug: `tools/assets/th_werkzeug.py`.
+Alle neun: zmin = 0,000.
+
+> ⚠️ **Ein gedrehter, skalierter Vierkant-Kegel ergibt IMMER ein Quadrat.** Das Walmdach der
+> ersten Villa war genau das — und kann so nicht funktionieren. Blender wendet erst die
+> **Skalierung in lokalen Achsen** an und dann die Drehung: die vier Ecken liegen lokal auf
+> den Achsen, nach 45° landen sie alle auf den Diagonalen, und die Bounding-Box wird damit
+> zwangsläufig quadratisch. Die Villa maß **22,00 × 22,00** statt 12,4 × 10,4.
+>
+> Ein rechteckiges Walmdach ist mit den vorhandenen Werkzeugen nicht zu bekommen. Ein
+> **Mansarddach** ist dagegen extrudierbar, also wieder ein Fall für `keil_y` — und es
+> unterscheidet die Villa zugleich sichtbar von der mit dem einfachen Satteldach.
+
+> ⚠️ **„Ein Rahmen sind vier Balken" gilt auch WAAGRECHT.** Der Beckenrand des Pools war eine
+> volle Platte 5,90 × 3,70 über dem ganzen Becken; im Kontaktbogen war der Pool eine weiße
+> Fläche, und eine Materialkorrektur am Wasser blieb wirkungslos, weil das Wasser gar nicht
+> zu sehen war. Die Regel heißt ab jetzt allgemein: **was eine Öffnung umgibt, besteht aus
+> vier Teilen — in welcher Ebene auch immer.**
+
+### 🔍 Zwei weitere Renderbefunde
+
+* **Wasser mit Rauheit 0,14 bläst weiß aus.** Eine so glatte Fläche nimmt unter dem
+  Umgebungslicht mehr auf, als ihre Farbe hergibt. Wasser in dieser Größe liest sich über die
+  **Farbe**, nicht über Spiegelung: dunkler und deutlich rauer.
+* **Die Hecke war eine Kiste mit Warzen.** Die Laubkugeln saßen auch auf den Flanken, auf
+  halber Höhe. Eine geschnittene Hecke ist an den Seiten glatt; ihre Unregelmäßigkeit sitzt
+  oben, wo der Trieb ausschlägt.
+* **Der Gartenlaube standen sechs Gratstäbe waagrecht aus dem Dach** — `rotation_euler =
+  (0, −θ, a)` dreht erst um y, dann um z, der Stab kippte in die falsche Ebene. Ein
+  Sechskant-Kegel zeigt seine Grate ohnehin als Kanten: die Stäbe waren Zierrat mit Risiko
+  und sind weg.
+
+---
 
 ---
 ## 🎡 Freizeitpark-Quartier in `traumhaus.html` — fertiger Einbau
