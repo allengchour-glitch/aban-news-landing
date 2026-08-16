@@ -407,11 +407,25 @@ def _b_mischer():
     # ⚠️ Mit Radius 0,42 auf einem Gestell von 0,90 war die Trommel eine Kugel,
     # die das Geraet verschluckte. Ein Freifallmischer hat eine schlanke,
     # kegelige Trommel — sie ist laenger als dick.
-    tr = flach(dreh([(0.00, 0.00), (0.22, 0.08), (0.30, 0.28), (0.29, 0.54),
-                     (0.19, 0.70), (0.11, 0.76), (0.00, 0.78)],
-                    m["gelb"], 18, z=0.0, name="Trommel"))
+    # ⚠️ ZWEITER Anlauf. Auch schlanker blieb die Trommel ein Ei: ihr fehlte die
+    # OEFFNUNG. Ein Freifallmischer ist ein Kegelstumpf mit weitem Maul — das
+    # dunkle Loch am oberen Ende ist das Merkmal, an dem man ihn erkennt, nicht
+    # die Rundung. Profil deshalb konisch statt bauchig, dazu Kragen und Innenraum.
+    tr = flach(dreh([(0.00, 0.00), (0.20, 0.06), (0.28, 0.22), (0.28, 0.44),
+                     (0.24, 0.62), (0.25, 0.68)],
+                    m["gelb"], 18, z=0.0, zu_unten=False, name="Trommel"))
     tr.location = (0.10, 0.0, 0.62)
     tr.rotation_euler[1] = 0.62
+    # Maul: Kragen aussen, dunkler Innenraum dahinter
+    mo = flach(zyl(0, 0, 0, 0.255, 0.05, m["gelb2"], 18))
+    mo.location = (0.10 + math.sin(0.62)*0.70, 0.0, 0.62 + math.cos(0.62)*0.70)
+    mo.rotation_euler[1] = 0.62
+    mi = flach(zyl(0, 0, 0, 0.215, 0.24, m["dunkel"], 18))
+    mi.location = (0.10 + math.sin(0.62)*0.60, 0.0, 0.62 + math.cos(0.62)*0.60)
+    mi.rotation_euler[1] = 0.62
+    bo = flach(zyl(0, 0, 0, 0.20, 0.04, m["dunkel"], 18))
+    bo.location = (0.10 + math.sin(0.62)*0.10, 0.0, 0.62 + math.cos(0.62)*0.10)
+    bo.rotation_euler[1] = 0.62
     for k in range(3):                                              # Reifen
         flach(zyl(0.10, 0, 0.62, 0.31 - k*0.02, 0.05, m["gelb2"], 18,
                   (0, 0.62, 0)))
