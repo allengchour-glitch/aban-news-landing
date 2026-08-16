@@ -1621,6 +1621,38 @@ Alle neun: zmin = 0,000.
   und sind weg.
 
 ---
+## 2h. Charge 48 — MARKTPLATZ (`models/th48_*.glb`)
+
+Der „Marktplatz" bei (26 | 67) war ein Kartenpunkt mit zwei Ahornbäumen — kein Stand, keine
+Halle, kein Brunnen. Das Rathaus daneben zeigte seinen Portikus auf einen leeren Platz.
+
+| Datei | Maße (B×T×H) | Dreiecke | Inhalt |
+|---|---|---|---|
+| `th48_markthalle.glb` | 22,50 × 14,42 × 14,38 | 25 306 | Rundbogenarkaden auf Pfeilern, Innenstände, Satteldach, Dachreiter mit Uhr |
+| `th48_marktstand.glb` | 4,00 × 2,17 × 2,43 | 4 144 | Gestell, Ladentisch, Kisten, gestreifte Plane mit Volant, **Raster x += 4,00** |
+| `th48_obststand.glb` | 3,84 × 2,46 × 2,46 | 5 952 | Schrägauslage mit Steigen, Preisschilder, Säcke, **Raster x += 4,00** |
+| `th48_brunnen.glb` | 3,96 × 3,96 × 3,14 | 2 380 | achteckiges Becken, Säule, Wasserschale, vier Speier |
+| `th48_litfass.glb` | 1,48 × 1,48 × 3,67 | 2 408 | Plakatflächen, Zierdach, Sockel |
+| `th48_marktwaage.glb` | 4,53 × 4,53 × 4,74 | 2 278 | offener Pavillon, Zeltdach, Waagebalken mit zwei Schalen |
+| `th48_handkarren.glb` | 2,37 × 1,34 × 1,26 | 7 424 | Speichenräder, Bordwände, Kisten, Deichsel |
+| `th48_baumscheibe.glb` | 3,75 × 3,46 × 6,35 | 5 668 | Baum, Gitterrost, sechsteilige Rundbank |
+| `th48_marktplatz.glb` | 44,00 × 34,00 × 14,38 | 102 152 | **Maßstabs-Test**, nur aus den Teilen oben |
+
+Generator: `tools/assets/mk_th48_markt.py` · Werkzeug: `tools/assets/th_werkzeug.py`.
+Alle neun: zmin = 0,000.
+
+> ✅ **Wo der gedrehte Vierkant-Kegel doch richtig ist.** Charge 47 hat gelernt, dass er
+> zwangsläufig eine quadratische Bounding-Box erzeugt. Beim Waagehäuschen ist genau das
+> gewollt: der Pavillon ist 3,50 × 3,50, und dann fällt die quadratische Box mit dem
+> gewünschten Grundriss zusammen. Die Regel lautet also nicht „nie", sondern **„nur über
+> quadratischem Grundriss"**.
+
+> ⚠️ **Eine Marktplane LIEGT auf ihren Riegeln.** Sie war 3,90 × 2,30 auf z 2,34 bei 0,24
+> Neigung — über einem Gestell von 3,36 × 1,60, dessen Riegel auf 2,16 liegen. Die Plane
+> schwebte sichtbar darüber, und das Rückbrett stand als freier Balken in der Luft. Flacher
+> geneigt, knapper geschnitten, Kante dort wo der Riegel ist.
+
+---
 
 ---
 ## 🎡 Freizeitpark-Quartier in `traumhaus.html` — fertiger Einbau
