@@ -125,3 +125,6 @@ gid://shopify/Product/15500948406657	naturehike-leye-titan-clip-821056	Naturehik
 gid://shopify/Product/15500948439425	usb-a-stecker-mit-schwarzer-kunststoffabdeckun-907392	USB-A Stecker mit schwarzer Kunststoffabdeckung
 gid://shopify/Product/15500957974913	gestepptes-baumwoll-homewear-shirt-mit-koi-pri-605200	Gestepptes Baumwoll-Homewear-Shirt mit Koi-Print
 gid://shopify/Product/15500975309185	retro-t-riemen-sandalen-mit-runder-kappe-609900	Retro T-Riemen Sandalen mit runder Kappe
+gid://shopify/Product/15500985041281	unisex-badeschuhe-610200	Unisex Badeschuhe
+gid://shopify/Product/15500990710145	cat-s-eye-nails-abnehmbare-sticker-in-mint-602500	Cat's Eye Nails: Abnehmbare Sticker in Mint
+gid://shopify/Product/15500990742913	pgg-nackenmassagegerat-der-2-generation-db7a0e	PGG Nackenmassagegerät der 2. Generation
