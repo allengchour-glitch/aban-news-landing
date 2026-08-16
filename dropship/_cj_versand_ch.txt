@@ -765,3 +765,7 @@ gid://shopify/Product/15500673286529	ok	Herren-Mechanical-Uhr
 gid://shopify/Product/15500915638657	nicht-versendbar	Haushalts-Vorfilter für Wasserreiniger
 gid://shopify/Product/15501003391361	ok	Apple Watch Reparatur-Pinselwerkzeug
 gid://shopify/Product/15500891980161	ok	RF-Welle-Visage-Straffung-Instrument
+gid://shopify/Product/15500973834625	nicht-versendbar	Alu-Klapptisch mit IGT-System
+gid://shopify/Product/15500929696129	nicht-versendbar	Tragbares Fitnessgerät für Zuhause
+gid://shopify/Product/15500972818817	nicht-versendbar	Dumbbell-Set für Frauen, 2 x 2.27 kg
+gid://shopify/Product/15500969017729	nicht-versendbar	Multifunktionales Fitness-Rückenbrett

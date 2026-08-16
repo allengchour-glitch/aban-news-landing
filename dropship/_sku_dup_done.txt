@@ -626,3 +626,12 @@ gid://shopify/Product/15500506694017	CJ-CJLY296266601AZ	Leichter Sommerkleid
 gid://shopify/Product/15500506759553	CJ-1456932616858112000	Großer Edelstahl-Kochtopf
 gid://shopify/Product/15500506857857	CJ-1456502573585534976	Japanischer Tee-Einmachtopf
 gid://shopify/Product/15500507021697	CJ-1454981533952774144	Kleine Druckkochanlage
+gid://shopify/Product/15500974719361	CJ-1387218186910437376	Hundehalsband P-Kette Titanstahl 19mm mit Diamanten
+gid://shopify/Product/15500974850433	CJ-1386902840605282304	Rindsleder-Halsband mit Strass-Punkten
+gid://shopify/Product/15500975112577	CJ-1385120721327493120	Hundehalsband Original (Bubble)
+gid://shopify/Product/15500983304577	CJ-1379272704447877120	Haustier-Halstuch mit grosser Schleife
+gid://shopify/Product/15500983468417	CJ-1379245524896583680	GPS-Tracker für Haustiere, Senioren und Kinder
+gid://shopify/Product/15500983599489	CJ-1379239950083559424	Retro-Halstuch mit Glöckchen für Haustiere
+gid://shopify/Product/15500983959937	CJ-1378619421400109056	Halsband Kleine Duftperlen
+gid://shopify/Product/15500984189313	CJ-1642839298447773696	Hund- und Katzenkleid mit Geschirr im Hahnentritt-Muster
+gid://shopify/Product/15500984254849	CJ-1641692199849037824	Reissfestes Geschirr für Katzen und Hunde
