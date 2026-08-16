@@ -265,3 +265,8 @@ gid://shopify/Product/15447603216769	zugeordnet	18	Y2K Loose Fit Kurzarm-Top fü
 gid://shopify/Product/15447603413377	zugeordnet	60	Leinenhemd Kurzarm Loose-Fit für Herren
 gid://shopify/Product/15447603609985	bild-urls-tot
 gid://shopify/Product/15447603806593	zugeordnet	56	Casual Loose-fit T-Shirt mit zwei Taschen
+gid://shopify/Product/15447603937665	zugeordnet	54	Herren Jacquard Polo-Shirt mit Reissverschluss
+gid://shopify/Product/15447604101505	zugeordnet	15	Legeres Hemd mit Streifen
+gid://shopify/Product/15447604265345	zugeordnet	48	Leinenhemd für Herren
+gid://shopify/Product/15447604461953	zugeordnet	15	Gestreiftes Kurzarmhemd für Herren · Modell 2
+gid://shopify/Product/15447604658561	zugeordnet	28	Polo-Shirt Kurzarm Slim-Fit Piqué-Baumwolle
