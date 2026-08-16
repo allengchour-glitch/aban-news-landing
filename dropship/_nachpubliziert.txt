@@ -123,3 +123,5 @@ gid://shopify/Product/15500927304065	rosegold-armbanduhr-716544	Rosegold-Armband
 gid://shopify/Product/15500930711937	kissen-im-nordeuropaischen-stil-558848	Kissen im nordeuropäischen Stil
 gid://shopify/Product/15500948406657	naturehike-leye-titan-clip-821056	Naturehike Leye Titan-Clip
 gid://shopify/Product/15500948439425	usb-a-stecker-mit-schwarzer-kunststoffabdeckun-907392	USB-A Stecker mit schwarzer Kunststoffabdeckung
+gid://shopify/Product/15500957974913	gestepptes-baumwoll-homewear-shirt-mit-koi-pri-605200	Gestepptes Baumwoll-Homewear-Shirt mit Koi-Print
+gid://shopify/Product/15500975309185	retro-t-riemen-sandalen-mit-runder-kappe-609900	Retro T-Riemen Sandalen mit runder Kappe
