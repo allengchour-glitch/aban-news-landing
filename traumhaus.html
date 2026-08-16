@@ -2684,8 +2684,10 @@ var dorfFenster=[];
       g.position.set(x,0,z);g.rotation.y=rotY;scene.add(g);}
     /* 🧱 KEIN Auto-Kollider: die 4 Villen sind begehbar und bekommen unten
        eigene Kollider MIT Tueroeffnung — eine geschlossene Box wuerde sie zusperren. */
-    villa(96,-22,-Math.PI/2,0x8a5a48);villa(96,-44,-Math.PI/2,0x5a6a78); // Ost-Parzellen
-    villa(-96,8,Math.PI/2,0x6a7a58);villa(-96,28,Math.PI/2,0x8a5a48);   // West-Parzellen
+    /* ⚠️ Die vier prozeduralen Villen sind raus — Korpus, Vierkant-Kegeldach und
+       aufgeklebte Fensterrechtecke. Sie stehen jetzt als `th47_villa_*` weiter
+       unten (Villen-Ausbau); hier bleiben Hecke, Zaun und Einfahrt des
+       Viertels. */
   })();
   // ---- Rathaus am Marktplatz: repraesentative Landmark mit Portikus + Uhrturm ----
   (function rathaus(){
@@ -5624,6 +5626,45 @@ setTimeout(function baueGebaeude(){
   [-96,-60,-24,24,60,96].forEach(function(mx){
     bau("th17_oberleitungsmast.glb",7.5,mx,0,108.5,0,false,null,true);});
   bau("th17_tramhaltestelle.glb",3.0,-20,0,108,Math.PI,false,null,true);
+  /* ── 🏰 Charge 47: Villen und Gaerten ───────────────────────────────────────
+     Die vier Parzellen hatten prozedurale Kisten und ausser Hecke und Zaun
+     nichts. Jetzt: zwei Villentypen im Wechsel, dazu Garage, Gartentor,
+     Heckenzug und je ein Gartenstueck — Pool, Laube oder Gartenhaus.
+
+     ⚠️ Die alten Villen zeigten ihren Eingang auf lokales +z; die Modelle haben
+     ihre Schauseite auf Blender +y, in three.js also -z. Zu jeder alten
+     Drehung kommt darum pi. */
+  (function villenAusbau(){
+    var PARZ=[[ 96,-22,-Math.PI/2,0],[ 96,-44,-Math.PI/2,1],
+              [-96,  8, Math.PI/2,1],[-96, 28, Math.PI/2,0]];
+    function fest(datei,hoehe,x,z,ry){
+      bau(datei,hoehe,x,0,z,ry,false,function(w){w.userData.fest=true;},true);
+    }
+    PARZ.forEach(function(P,i){
+      var px=P[0], pz=P[1], ry=P[2]+Math.PI, typ=P[3];
+      /* Blickrichtung des Hauses in der x-z-Ebene: die Schauseitennormale ist
+         (-sin ry, -cos ry). Garage, Tor und Garten liegen relativ dazu. */
+      var nx=-Math.sin(ry), nz=-Math.cos(ry);      // nach vorn (zur Strasse)
+      var qx=-nz, qz=nx;                            // seitlich
+      fest(typ ? "th47_villa_giebel.glb" : "th47_villa_walm.glb",
+           typ ? 10.44 : 10.69, px, pz, ry);
+      addSolid(px,pz,12.0,11.0);
+      fest("th47_garage.glb",3.68, px+qx*9.5+nx*2.0, pz+qz*9.5+nz*2.0, ry);
+      fest("th47_gartentor.glb",2.69, px+nx*11.5, pz+nz*11.5, ry);
+      for(var k=0;k<3;k++){                         // Heckenzug beidseits des Tors
+        [-1,1].forEach(function(sd){
+          fest("th47_hecke.glb",2.01,
+               px+nx*11.5+qx*sd*(3.6+k*3.0), pz+nz*11.5+qz*sd*(3.6+k*3.0), ry);
+        });
+      }
+      /* Garten hinter dem Haus: abwechselnd Pool, Laube und Gartenhaus. */
+      var gx=px-nx*9.5, gz=pz-nz*9.5;
+      if(i===0)      fest("th47_pool.glb",2.54,gx,gz,ry);
+      else if(i===1) fest("th47_gartenlaube.glb",3.76,gx,gz,ry);
+      else if(i===2) fest("th47_gartenhaus.glb",3.51,gx,gz,ry+Math.PI);
+      else           fest("th47_pool.glb",2.54,gx,gz,ry);
+    });
+  })();
   /* ── 🏗️ Charge 46: Baustelle ────────────────────────────────────────────────
      Der Turmdrehkran SCHWENKT: sein Ausleger liegt im Modell mittig ueber der
      Mastachse, damit genau das geht (siehe Dateikopf von mk_th46_baustelle.py).
