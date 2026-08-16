@@ -772,3 +772,16 @@ gid://shopify/Product/15500969017729	nicht-versendbar	Multifunktionales Fitness-
 gid://shopify/Product/15501053755777	ok	Holzschmuckkasten
 gid://shopify/Product/15501000671617	ok	Pommes-Frites- und Gemüseschneider
 gid://shopify/Product/15500908495233	ok	Business-Aktentasche aus Leder
+gid://shopify/Product/15501000737153	nicht-versendbar	Faltbarer Einkaufstrolley mit Rollen
+gid://shopify/Product/15500972491137	nicht-versendbar	Smarter 2-in-1 Futter- und Wasserspender für Haustiere
+gid://shopify/Product/15500954632577	ok	3-Lagen Dampfgarer aus Edelstahl
+gid://shopify/Product/15501000147329	ok	TWS NB2 Bluetooth Headset mit ANC
+gid://shopify/Product/15500933955969	ok	Modellbausatz Mont Saint-Michel (1392 Teile)
+gid://shopify/Product/15500892307841	ok	Romantische Atmosphäre
+gid://shopify/Product/15501006700929	ok	Elektrisches Fussmassagegerät für Akupressur
+gid://shopify/Product/15500915114369	nicht-versendbar	Multifunktionaler, dreistöckiger Kleiderständer
+gid://shopify/Product/15500948013441	ok	Faltbare Haustiertasche mit Rollen
+gid://shopify/Product/15500908167553	ok	Business Rucksack aus Leder
+gid://shopify/Product/15500899615105	nicht-versendbar	Weihnachtsspielzeug-Box
+gid://shopify/Product/15500954173825	ok	Business Rucksack aus echtem Rindsleder
+gid://shopify/Product/15501001818497	nicht-versendbar	Grosser Multifunktions-Heissluftfritteuse

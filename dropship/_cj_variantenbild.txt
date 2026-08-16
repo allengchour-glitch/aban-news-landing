@@ -191,3 +191,77 @@ gid://shopify/Product/15447581098369	zugeordnet	2	Magnetisches Kupferarmband mit
 gid://shopify/Product/15447581557121	zugeordnet	11	Magnetisches Kupferarmband im Antik-Stil
 gid://shopify/Product/15447581917569	zugeordnet	3	Dreilagiges Magnetarmband aus Rotkupfer
 gid://shopify/Product/15447582114177	zugeordnet	4	Kupfer Armreif & Ring Set mit Magneten
+gid://shopify/Product/15447582900609	zugeordnet	47	Edelstahl-Anhänger: Sternzeichen und Monate
+gid://shopify/Product/15447583064449	zugeordnet	2	Geflochtenes Kupferarmband mit Seil-Muster
+gid://shopify/Product/15447583949185	zugeordnet	9	Eleganter Zirkonring im Old Money Stil
+gid://shopify/Product/15447584506241	zugeordnet	3	Vintage Oval Ring mit Zirkonia
+gid://shopify/Product/15447584833921	zugeordnet	5	Mehrreihiger Zirkonia-Ring
+gid://shopify/Product/15447585194369	zugeordnet	50	Multifunktionaler Smart-Ring
+gid://shopify/Product/15447585685889	zugeordnet	4	Luxuriöser Diamantring aus S925 Sterlingsilber
+gid://shopify/Product/15447585882497	zugeordnet	3	Eleganter Metallring mit Diamantbesatz
+gid://shopify/Product/15447586144641	zugeordnet	3	Edelstahlring mit Buchstaben
+gid://shopify/Product/15447586603393	zugeordnet	2	Minimalistische Halskette aus reinem Kupfer
+gid://shopify/Product/15447586931073	zugeordnet	6	Taktische Sportuhr mit vielen Funktionen
+gid://shopify/Product/15447587160449	zugeordnet	9	Business Herrenuhr, Lederarmband, Multifunktion
+gid://shopify/Product/15447587357057	zugeordnet	2	Tonneau Skelett Quarz Armbanduhr
+gid://shopify/Product/15447587815809	zugeordnet	6	Quarzuhr mit Edelstahlarmband und Datumsanzeige
+gid://shopify/Product/15447588077953	zugeordnet	3	Herren-Quarzuhr mit Kalender und Edelstahlarmband
+gid://shopify/Product/15447588274561	zugeordnet	6	Minimalistische Herrenuhr
+gid://shopify/Product/15447588438401	zugeordnet	10	Elegante Quarzuhr mit Diamanten für Herren
+gid://shopify/Product/15447589486977	zugeordnet	6	Minimalistische Armbanduhr im Koreanischen Stil
+gid://shopify/Product/15447589650817	zugeordnet	6	Hollowed-out Casual Chic Minimalist Unisex Watch
+gid://shopify/Product/15447589814657	zugeordnet	6	Herren Business Quarzuhr
+gid://shopify/Product/15447590011265	zugeordnet	6	Quarz-Kalenderuhr für Damen und Herren
+gid://shopify/Product/15447590371713	zugeordnet	2	Herrenuhr mit Strasssteinen und Quarzwerk
+gid://shopify/Product/15447590732161	zugeordnet	4	Damen-Quarzuhr – schlankes Design mit Metallband
+gid://shopify/Product/15447590961537	zugeordnet	6	Retro-Herrenuhr mit Leuchtfunktion
+gid://shopify/Product/15447591223681	zugeordnet	3	Herren Business Uhr – Multifunktional
+gid://shopify/Product/15447591420289	zugeordnet	5	Wasserdichte Quarzuhr für Erwachsene
+gid://shopify/Product/15447591649665	zugeordnet	4	Retro-Uhr mit Kalender für Herren
+gid://shopify/Product/15447591911809	zugeordnet	3	Sportliche Herrenuhr mit Silikonarmband
+gid://shopify/Product/15447592108417	zugeordnet	2	Mondphasen-Sonnenuhr-Taschenuhr mit Klappdeckel
+gid://shopify/Product/15447592272257	zugeordnet	4	Quadratische Mechanikuhr im Antik-Stil
+gid://shopify/Product/15447592468865	zugeordnet	3	RuiGe Herren-Armbanduhr im Outdoor-Stil
+gid://shopify/Product/15447592632705	zugeordnet	2	Mechanische Taschenuhr mit römischen Ziffern
+gid://shopify/Product/15447592862081	zugeordnet	2	Submarine Automatikuhr für Herren
+gid://shopify/Product/15447593058689	zugeordnet	12	Mechanische Herrenuhr im Skelett-Design
+gid://shopify/Product/15447593353601	zugeordnet	6	Antike Taschenuhr mit Quarz-Uhrwerk
+gid://shopify/Product/15447593550209	zugeordnet	2	Camellia Taschenuhr, Old Shanghai Stil
+gid://shopify/Product/15447593779585	zugeordnet	4	Antike Automatik-Taschenuhr mit Lupe
+gid://shopify/Product/15447593976193	zugeordnet	4	Mechanische Taschenuhr mit Automatikwerk
+gid://shopify/Product/15447594172801	zugeordnet	25	Elegantes Strickkleid mit Stehkragen
+gid://shopify/Product/15447594697089	zugeordnet	12	Minikleid mit Cut-Out und Rückenausschnitt
+gid://shopify/Product/15447595549057	zugeordnet	4	Figurbetontes schulterfreies Kleid mit Rosenmuster
+gid://shopify/Product/15447595975041	zugeordnet	10	Elegantes A-Linien Plisseekleid mit hoher Taille
+gid://shopify/Product/15447596106113	zugeordnet	9	Ärmelloses Sommerkleid im französischen Stil
+gid://shopify/Product/15447596302721	zugeordnet	20	Glänzendes Mini-Kleid mit Raffung
+gid://shopify/Product/15447596499329	zugeordnet	18	Abendkleid mit Perlen & Rüschen
+gid://shopify/Product/15447596663169	zugeordnet	8	Chiffonkleid mit Blumenprint und Rüschen
+gid://shopify/Product/15447597089153	zugeordnet	49	Florales Etuikleid mit Ballonärmeln
+gid://shopify/Product/15447597711745	zugeordnet	7	Asymmetrisches Maxi-Kleid mit figurbetontem Schnitt
+gid://shopify/Product/15447598072193	zugeordnet	36	Gestreiftes Langarm-Hemdblusenkleid
+gid://shopify/Product/15447598268801	zugeordnet	36	Damen Kleid mit Puffärmeln und Taillengürtel
+gid://shopify/Product/15447598498177	zugeordnet	12	Ärmelloses Casual-Kleid im Vintage-Stil
+gid://shopify/Product/15447598825857	zugeordnet	9	Polka-Dot Halterneck-Kleid mit fliessenden Bändern
+gid://shopify/Product/15447599153537	zugeordnet	18	Gestreiftes Langarm-Kleid mit Reverskragen
+gid://shopify/Product/15447599350145	zugeordnet	35	Elegantes trägerloses A-Linien-Kleid
+gid://shopify/Product/15447599546753	zugeordnet	21	Patchwork Off-Shoulder Maxi-Kleid aus Baumwolle
+gid://shopify/Product/15447599972737	zugeordnet	6	Voluminöses Mini-Kleid mit Puffärmeln
+gid://shopify/Product/15447600103809	zugeordnet	9	Sommerliches Neckholder-Kleid mit tiefem V-Ausschnitt
+gid://shopify/Product/15447600365953	zugeordnet	20	Loose-Fit Tunic mit kurzen Ärmeln
+gid://shopify/Product/15447600791937	zugeordnet	24	Elegantes Samt-Top mit Stehkragen für Damen
+gid://shopify/Product/15447601021313	zugeordnet	24	Puffärmel-Kleid mit Schnürung
+gid://shopify/Product/15447601217921	zugeordnet	14	Einfarbiger Sommer-Cardigan mit UV-Schutz
+gid://shopify/Product/15447601381761	zugeordnet	48	Sportliches Halb-Zip Polo-Shirt mit U-Boot-Ausschnitt
+gid://shopify/Product/15447601611137	zugeordnet	30	Herren Langarm Freizeit Hemd
+gid://shopify/Product/15447601774977	zugeordnet	6	Herren Langarmhemd mit Farbblock-Muster
+gid://shopify/Product/15447601971585	zugeordnet	35	Herren Hemd Langarm "Nouveau Riche" Stil
+gid://shopify/Product/15447602168193	zugeordnet	14	Gestreiftes Kurzarmhemd aus Eisseide für Herren
+gid://shopify/Product/15447602364801	zugeordnet	60	Herren Leinenhemd Langarm
+gid://shopify/Product/15447602561409	zugeordnet	60	Hawaiihemd für Herren – Atmungsaktiv & Stylisch
+gid://shopify/Product/15447602758017	zugeordnet	30	Herren Hemd Kurzarm mit Reverskragen
+gid://shopify/Product/15447603020161	zugeordnet	9	Herren Kurzarmhemd im Plaid-Muster
+gid://shopify/Product/15447603216769	zugeordnet	18	Y2K Loose Fit Kurzarm-Top für Herren
+gid://shopify/Product/15447603413377	zugeordnet	60	Leinenhemd Kurzarm Loose-Fit für Herren
+gid://shopify/Product/15447603609985	bild-urls-tot
+gid://shopify/Product/15447603806593	zugeordnet	56	Casual Loose-fit T-Shirt mit zwei Taschen
