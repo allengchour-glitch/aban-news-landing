@@ -200,6 +200,13 @@ eine Zubehör-«Farbe» wie «Memory card-8G» die billigste Variante war).
 > Repo + Shop; dort steht, wer was „besitzt" + der Live-Stand. CJ-Import/Katalog/Social = NUR diese Session.
 
 ## 🩺 Fünf Lehren vom 2026-08-11 (Fehlersuche)
+0b. **Lehre 1 verschärft (16.08.2026, 8h toter Aufseher):** Der Bracket-Trick (`pgrep -f "[f]ixer…"`)
+   schützt NICHT, wenn im SELBEN Compound die Restart-Anweisung den Klartext-Pfad enthält —
+   `pgrep -f "[f]ixer_keepalive.sh" || setsid bash …/fixer_keepalive.sh` matcht den eigenen
+   Restart-Pfad und meldet 8 Stunden lang «SUP:ok» für einen toten Aufseher. Prozessprüfung in
+   Keepalives deshalb IMMER argv-basiert:
+   `ps -eo args --no-headers | awk '$1=="bash" && $2 ~ /fixer_keepalive\.sh$/'` — die eigene
+   `bash -c`-Hülle hat argv2=«-c» und kann nie matchen.
 1. **`pgrep -f <name>` findet die EIGENE Kommandozeile.** Ein `pgrep -f social_autopilot && echo läuft`
    meldete «läuft» für ein Skript, das gar nicht mehr existierte — das Suchmuster stand im eigenen
    Bash-Aufruf. Prozessprüfungen deshalb mit `ps -eo args | grep …`, oder das Muster nicht im Aufruf
