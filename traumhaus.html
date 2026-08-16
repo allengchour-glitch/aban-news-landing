@@ -5734,7 +5734,14 @@ setTimeout(function baueGebaeude(){
      Mastachse, damit genau das geht (siehe Dateikopf von mk_th46_baustelle.py).
      Ein Baukran, der stillsteht, ist ein Mast mit Querbalken. */
   (function baustelleAusbau(){
-    var BX=-30, BZ=102;
+    /* ⚠️ GEMESSEN, nicht geschaetzt: bei BX = -30 lag der Rohbau (x -41,2…-28,8)
+       um 3,6 m ueber der offenen Markthalle th8 (x -32,4…-19,6), und der Bagger
+       (x -30,6…-23,4 | z 90,7…95,3) stand MITTEN DARIN. Die Ueberschneidung
+       Markthalle x Baukran war mit 7,2 m die groesste der ganzen Karte.
+       BX = -36 raeumt den Rohbau frei; der Bagger zieht auf die Westseite des
+       Platzes. Was vom Kran ueber der Halle bleibt, ist der Ausleger auf 21 m —
+       der gehoert dorthin, ein Kran arbeitet ueber Nachbardaecher hinweg. */
+    var BX=-36, BZ=102;
     function fest(datei,hoehe,x,z,ry,cb){
       bau(datei,hoehe,x,0,z,ry,false,function(w){w.userData.fest=true;if(cb)cb(w);},true);
     }
@@ -5751,7 +5758,7 @@ setTimeout(function baueGebaeude(){
        Die Wandseite liegt auf Blender -y, in three.js also +z; aus der Normalen
        (sin rotY, cos rotY) = (1,0) folgt rotY = +pi/2. */
     for(var k=0;k<4;k++) fest("th46_geruest.glb",7.34,BX-12.1,BZ-4.6+k*2.5,Math.PI/2);
-    fest("th46_bagger.glb",3.73,BX+2,BZ-9,-0.5);
+    fest("th46_bagger.glb",3.73,BX-8,BZ-9,-0.5);
     fest("th46_baucontainer.glb",2.90,BX+11,BZ-8,Math.PI/2);
     fest("th46_materiallager.glb",1.20,BX-9,BZ-9,0);
     fest("th46_mischer.glb",1.36,BX-2,BZ-7,0.7);
