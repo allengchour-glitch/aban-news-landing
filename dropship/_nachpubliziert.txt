@@ -128,3 +128,7 @@ gid://shopify/Product/15500975309185	retro-t-riemen-sandalen-mit-runder-kappe-60
 gid://shopify/Product/15500985041281	unisex-badeschuhe-610200	Unisex Badeschuhe
 gid://shopify/Product/15500990710145	cat-s-eye-nails-abnehmbare-sticker-in-mint-602500	Cat's Eye Nails: Abnehmbare Sticker in Mint
 gid://shopify/Product/15500990742913	pgg-nackenmassagegerat-der-2-generation-db7a0e	PGG Nackenmassagegerät der 2. Generation
+gid://shopify/Product/15501054902657	bedrucktes-mini-kleid-mit-v-ausschnitt-und-spi-615200	Bedrucktes Mini-Kleid mit V-Ausschnitt und Spitze
+gid://shopify/Product/15501054935425	kissenbezug-loop-getuftet-219648	Kissenbezug Loop getuftet
+gid://shopify/Product/15501061980545	stabmixer-aufsatz-fur-kuchenmaschine-535808	Stabmixer-Aufsatz für Küchenmaschine
+gid://shopify/Product/15501062013313	halskette-fur-hunde-edelstahl-14mm-528896	Halskette für Hunde, Edelstahl, 14mm
