@@ -17,7 +17,7 @@
    CJ-Nummer ✓, unbezahlt ✓. «Müll»-Reiter = Rückweg.
 3. **TikTok-Kampagnen-Budget** für die Schulstart-/Trend-Produkte freigeben — der Funnel konvertiert
    nachweislich (4/4 bezahlte Bestellungen im August), es fehlt nur Traffic.
-4. **IG-Bio-Link** auf luxestyle.ch setzen (API kann Bio nicht ändern).
+4. **✅ WAR SCHON ERLEDIGT: IG-Bio-Link** — luxestyle.ch steht in der Bio (Profil-Screenshot 16.08.).
 5. **Google Merchant: Ziel-Land nur Schweiz** (falls noch nicht umgestellt — alter #1-Hebel).
 6. **Judge.me:** 12 Bild-Reviews ausblenden + veraltete Produkt-Titel aktualisieren (nur Browser-UI).
 7. **Fortura-FTP-Zugangsdaten** neu liefern (Bild-2–5-Backfill-Quelle versiegt sonst).
