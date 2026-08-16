@@ -3551,9 +3551,25 @@ setTimeout(function baueFussg(){
   /* Querstrassen sind 10 m breit, Gehwegmitte bei RX∓6.1 */
   for(var q=0;q<6;q++)fg(q+3,(q%2?1:-1)*(RX+6.1),-40+q*16,"z",q%2?1:-1,-46,46);
   for(var q2=0;q2<4;q2++)fg(q2+1,(q2%2?1:-1)*(RX-6.1),-30+q2*22,"z",q2%2?1:-1,-46,46);
-  // Marktplatz: 3 Verkaeufer hinter den Staenden + 4 Bummler auf dem Pflaster
-  [[54,87.4],[62,87.4],[74,87.4]].forEach(function(vp,vi){fg(vi+1,vp[0],vp[1],"x",1,0,0,true,Math.PI);}); // 1.4m hinter den Theken
-  for(var b=0;b<4;b++)fg(b+5,58+b*6,90.5+((b%2)*1.6),"x",b%2?1:-1,54,82);
+  /* ⚠️ Hier standen drei Verkaeufer bei (54…74 | 87,4) „hinter den Staenden" —
+     nur stehen dort gar keine. Die Staende des Marktplatzes liegen bei (142|20)
+     in zwei Reihen auf z 24 und 29,5 mit einer Gasse dazwischen. Verkaeufer
+     gehoeren hinter ihre eigene Theke, nicht auf einen Platz, auf dem einmal
+     einer geplant war.
+     ⚠️ Und die Zahlen sind aus dem EINBAU abgeleitet (MX 142, MZ 20, Raster
+     4,00), nicht abgemessen: der Markt ist schon einmal umgezogen. */
+  for(var v=0;v<3;v++)fg(v+1,136+v*8,22.7,"x",1,0,0,true,Math.PI);  // Nordreihe
+  for(var v2=0;v2<2;v2++)fg(v2+4,140+v2*8,30.8,"x",1,0,0,true,0);   // Suedreihe
+  for(var b=0;b<5;b++)fg(b+2,134+b*5,26.9+((b%2)*0.9),"x",b%2?1:-1,133,153); // Gasse
+  for(var b2=0;b2<3;b2++)fg(b2+6,130+b2*11,14.5,"x",b2%2?1:-1,126,158);      // Platzrand
+  /* 🚶 Leben an den neuen Orten (Charge 41…48). Bisher lief nur in der Innenstadt
+     jemand herum; Bahnsteig, Kai, Schulhof und Sportplatz waren menschenleer. */
+  for(var g1=0;g1<4;g1++)fg(g1,-14+g1*9,108.8,"x",g1%2?1:-1,-22,22);       // Bahnsteig
+  for(var g2=0;g2<3;g2++)fg(g2+3,-126,4+g2*16,"z",g2%2?1:-1,-4,52);        // Hafenkai
+  for(var g3=0;g3<3;g3++)fg(g3+5,-62+g3*7,90.5,"x",g3%2?1:-1,-65,-47);     // Schulhof
+  /* ⚠️ z = 137, nicht 168: das Spielfeld liegt bei (53|155) und ist 30 tief —
+     die Torauslinie laeuft auf 140 und 170. Auf 168 waeren die Leute IM Feld. */
+  for(var g4=0;g4<2;g4++)fg(g4+1,40+g4*16,137.0,"x",g4%2?1:-1,32,74);      // Sportplatz
 },0);
 function updFussg(dt,now){
   var panik=(typeof wanted!=="undefined"&&wanted>0);
@@ -9792,6 +9808,9 @@ window.__th={
   rohSolids:function(){return WORLD_SOLIDS;},
   achsen:function(){return {SZr:GH*CS/2+12,RX:RX,RL:RL};},
   frei:function(x,z){return !inSolid(x,z);},
+  /* Fussgaengerliste zum Nachmessen: steht der Verkaeufer hinter SEINER Theke,
+     und bewegen sich die Bummler wirklich? */
+  fussg:function(){return fussg;},
   tp:function(x,z){var m=sims[0];if(m){m.x=x;m.z=z;m.mesh.position.set(x,m.mesh.position.y,z);}
     camTx=x;camTz=z;updCam();},
   ego:function(an){egoMode=!!an;},
