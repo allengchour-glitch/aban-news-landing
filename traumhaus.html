@@ -5626,6 +5626,37 @@ setTimeout(function baueGebaeude(){
   [-96,-60,-24,24,60,96].forEach(function(mx){
     bau("th17_oberleitungsmast.glb",7.5,mx,0,108.5,0,false,null,true);});
   bau("th17_tramhaltestelle.glb",3.0,-20,0,108,Math.PI,false,null,true);
+  /* ── 🏪 Charge 48: Marktplatz ───────────────────────────────────────────────
+     Der Platz bei (26|67) war ein Kartenpunkt mit zwei Ahornbaeumen. Das Rathaus
+     steht bei (40|84) und zeigt seinen Portikus nach Sueden auf diesen Platz —
+     jetzt gibt es dort auch etwas zu sehen.
+
+     ⚠️ Die Standreihen laufen im Raster 4,00 und zeigen ihre Verkaufsseite
+     einander zu, damit dazwischen eine Gasse entsteht: Schauseite auf Blender
+     +y, in three.js also -z. Die Nordreihe bekommt darum rotY = pi, die
+     Suedreihe rotY = 0. */
+  (function marktAusbau(){
+    var MX=22, MZ=66;
+    function fest(datei,hoehe,x,z,ry){
+      bau(datei,hoehe,x,0,z,ry,false,function(w){w.userData.fest=true;},true);
+    }
+    var pfl=new THREE.Mesh(new THREE.PlaneGeometry(40,26),
+      new THREE.MeshStandardMaterial({color:0x55534f,roughness:0.95,envMapIntensity:0.16}));
+    pfl.rotation.x=-Math.PI/2;pfl.position.set(MX,0.026,MZ);pfl.receiveShadow=true;scene.add(pfl);
+    fest("th48_markthalle.glb",14.38,MX-11,MZ-4,0);
+    addSolid(MX-11,MZ-4,23.0,15.0);
+    fest("th48_brunnen.glb",3.14,MX+13,MZ-6,0);
+    fest("th48_marktwaage.glb",4.74,MX+16,MZ+7,Math.PI);
+    fest("th48_litfass.glb",3.67,MX-17,MZ+9,0);
+    fest("th48_handkarren.glb",1.26,MX+3,MZ+10,0.6);
+    fest("th48_baumscheibe.glb",6.35,MX+17,MZ+1,0);
+    /* Zwei Standreihen mit Gasse dazwischen */
+    for(var k=0;k<5;k++){
+      fest("th48_marktstand.glb",2.43,MX-6+k*4.0,MZ+4.0,Math.PI);
+      fest(k%2 ? "th48_obststand.glb" : "th48_marktstand.glb",
+           k%2 ? 2.46 : 2.43, MX-6+k*4.0, MZ+9.5, 0);
+    }
+  })();
   /* ── 🏰 Charge 47: Villen und Gaerten ───────────────────────────────────────
      Die vier Parzellen hatten prozedurale Kisten und ausser Hecke und Zaun
      nichts. Jetzt: zwei Villentypen im Wechsel, dazu Garage, Gartentor,
