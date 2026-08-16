@@ -310,11 +310,20 @@ def _b_pool():
     flach(box(0, 0, 0.03, 9.20, 6.40, 0.06, m["holz2"]))            # Terrasse
     for k in range(23):                                             # Dielenfugen
         box(-4.50 + k*0.41, 0, 0.065, 0.04, 6.40, 0.012, m["holz"])
-    box(0, 0, 0.16, PB + 0.50, PT + 0.50, 0.20, m["stein"])         # Beckenrand
-    box(0, 0, 0.12, PB, PT, 0.24, m["beton"])                       # Beckenwanne
-    box(0, 0, 0.19, PB - 0.14, PT - 0.14, 0.10, m["wasser"])        # Wasserspiegel
+    # ⚠️ Der Beckenrand war eine VOLLE Platte 5,90 x 3,70 ueber dem ganzen Becken —
+    # sie deckte das Wasser zu, und im Kontaktbogen war der Pool eine weisse
+    # Flaeche. Ein Beckenrand ist ein RAHMEN aus vier Balken um die Oeffnung,
+    # genau wie ein Fensterrahmen (Charge 35/37/38/42) — nur waagrecht.
+    for s in (-1, 1):
+        box(0, s*(PT/2 + 0.16), 0.16, PB + 0.64, 0.32, 0.20, m["stein"])
+        box(s*(PB/2 + 0.16), 0, 0.16, 0.32, PT + 0.64, 0.20, m["stein"])
+    for s in (-1, 1):                                               # Beckenwaende
+        box(0, s*(PT/2 - 0.07), 0.12, PB, 0.14, 0.24, m["beton"])
+        box(s*(PB/2 - 0.07), 0, 0.12, 0.14, PT, 0.24, m["beton"])
+    box(0, 0, 0.02, PB, PT, 0.04, m["beton"])                       # Beckenboden
+    box(0, 0, 0.15, PB - 0.20, PT - 0.20, 0.16, m["wasser"])        # Wasserspiegel
     for k in range(3):                                              # Bahnenmarkierung
-        box(0, -PT/2 + PT*(k + 1)/4, 0.20, PB - 0.30, 0.07, 0.012, m["stein"])
+        box(0, -PT/2 + PT*(k + 1)/4, 0.235, PB - 0.40, 0.07, 0.012, m["stein"])
     for s in (-1, 1):                                               # Einstiegsleiter
         rohr([(PB/2 - 0.40, s*0.60, 0.60), (PB/2 - 0.30, s*0.60, 0.30),
               (PB/2 - 0.55, s*0.60, 0.12)], 0.035, m["stahl"], 6, True, "Holm")
