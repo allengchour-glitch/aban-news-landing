@@ -11,8 +11,10 @@
    bigbuy_abschied.py draftet die Produkte am Stichtag automatisch) (89 €/Periode, 1 Verkauf seit Juni und der mit Verlust —
    Empfehlung: aufs Periodenende kündigen). Danach mir Bescheid geben → ich drafte die ~235
    verbliebenen BigBuy-Produkte automatisch (ohne API keine Bestandswahrheit = Geisterverkäufe).
-2. **CJ-Konsole: Schatten-Bestellungen löschen** («#1012»/«#1013»/«#1014» von der CJ-Shopify-App —
-   NIE bezahlen, die echten heissen LX1012–LX1014 und sind bezahlt).
+2. **✅ ERLEDIGT 16.08.: Schatten-Bestellungen #1012–#1014 gelöscht** (Einzelprüfung + Massenlöschung,
+   LX-Aufträge unberührt, nichts bezahlt). Rest-Aufgabe bei Gelegenheit: 9 weitere #-Zeilen in
+   «Ungültige Bestellungen» (inkl. #1011) nach demselben Muster löschen — #-Präfix ✓, keine
+   CJ-Nummer ✓, unbezahlt ✓. «Müll»-Reiter = Rückweg.
 3. **TikTok-Kampagnen-Budget** für die Schulstart-/Trend-Produkte freigeben — der Funnel konvertiert
    nachweislich (4/4 bezahlte Bestellungen im August), es fehlt nur Traffic.
 4. **IG-Bio-Link** auf luxestyle.ch setzen (API kann Bio nicht ändern).
