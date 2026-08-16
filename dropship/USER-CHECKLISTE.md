@@ -25,6 +25,12 @@
 9. **GitHub-Token «gitlab»** läuft ~22.08. ab — erneuern, sonst reissen Pushes ab.
 10. **Meta-Token** nur falls Social wieder aktiviert werden soll (⛔ Social-Stopp bleibt bis dahin).
 
+### 📌 Vereinbarte Regel (User 16.08.2026):
+**Ab CHF 2'000 kumuliertem Gewinn überweist der User CJ-Guthaben per Bank** → Order-Engine zahlt
+dann automatisch aus dem Wallet (kein Karten-Link mehr pro Bestellung, schnellere Verarbeitung).
+Stand-Tracking: kumulierter Gewinn seit August 2026 ≈ CHF 32 (Stand 16.08.). Ich melde mich,
+sobald die Schwelle in Reichweite ist. (CJ-Banküberweisung braucht 1–3 Werktage bis Gutschrift.)
+
 ### 🤖 Läuft automatisch (nichts zu tun, nur zur Info):
 - Ab 16:00 UTC Prioritätsfenster: Schulstart-Restimporte (Lunchtasche, Laptop-Hülle mit Ständer,
   Tech-Organizer) + Variantenbilder-Backlog (~2'700 Produkte, mehrtägig) + Video-Backfill 60/Tag.
