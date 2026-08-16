@@ -286,3 +286,38 @@ gid://shopify/Product/15447607968129	zugeordnet	60	UV-Schutz Shirt für Outdoor-
 gid://shopify/Product/15447608066433	zugeordnet	12	Cord-Mantel für Herren · wattiert, Casual
 gid://shopify/Product/15447608263041	zugeordnet	35	Herren Kunstfelljacke, British Style
 gid://shopify/Product/15447608590721	zugeordnet	19	Herren Plus-Size Fleece-Jacke mit Revers
+gid://shopify/Product/15447608885633	zugeordnet	4	Multifunktionale Sporttasche mit Nass-/Trockenfach
+gid://shopify/Product/15447609246081	zugeordnet	3	Outdoor Wander- und Kletterrucksack
+gid://shopify/Product/15447609966977	zugeordnet	2	Retro Canvas Rucksack (Gross/Klein)
+gid://shopify/Product/15447610229121	zugeordnet	2	Vertikale Oxford Crossbody Bag
+gid://shopify/Product/15447610458497	zugeordnet	6	Corduroy Rucksack im Preppy-Stil
+gid://shopify/Product/15447611310465	zugeordnet	5	Multifunktionale, wasserdichte Umhängetasche
+gid://shopify/Product/15447612260737	zugeordnet	4	Grosser Campus Rucksack mit Laptopfach
+gid://shopify/Product/15447612522881	zugeordnet	2	Outdoor Canvas Rucksack – wasserdicht
+gid://shopify/Product/15447612653953	zugeordnet	2	Plaid Umhängetasche, Crossbody und Bauchtasche
+gid://shopify/Product/15447612883329	zugeordnet	4	Sportliche Umhängetasche für Alltag und Freizeit
+gid://shopify/Product/15447613768065	zugeordnet	3	Taktischer 511 Outdoor Rucksack 45L
+gid://shopify/Product/15447614161281	zugeordnet	3	Wasserabweisende Herren Tote Bag
+gid://shopify/Product/15447614390657	zugeordnet	3	Grosser Outdoor-Rucksack für Herren mit USB
+gid://shopify/Product/15447614554497	zugeordnet	3	Tier-Print Rucksack mit viel Stauraum
+gid://shopify/Product/15447615046017	zugeordnet	4	Minimalistische Crossbody Bag für Herren
+gid://shopify/Product/15447615406465	bild-urls-tot
+gid://shopify/Product/15447615865217	zugeordnet	4	Faltbare, wasserdichte Sport-Brusttasche
+gid://shopify/Product/15447616061825	zugeordnet	5	Freizeit-Umhängetasche
+gid://shopify/Product/15447616323969	zugeordnet	3	Punk Motorrad-Seiten-Taschen
+gid://shopify/Product/15447616618881	zugeordnet	5	Schulter- und Umhängetasche
+gid://shopify/Product/15447616881025	zugeordnet	5	Einfache Umhängetasche
+gid://shopify/Product/15447617208705	zugeordnet	4	Blauer Kissenbezug mit Zierquaste
+gid://shopify/Product/15447617470849	zugeordnet	60	Samt-Lendenkissenbezug ohne Füllung (6er-Set)
+gid://shopify/Product/15447617700225	zugeordnet	60	Samt-Lendenkissenhülle, 4er-Set
+gid://shopify/Product/15447618060673	zugeordnet	1	Ergonomisches Lendenkissen für Büro & unterwegs
+gid://shopify/Product/15447618453889	zugeordnet	18	Sofa Kissenbezug «Quiet Years»
+gid://shopify/Product/15447618978177	zugeordnet	18	Kissenbezug mit Quasten
+gid://shopify/Product/15447619273089	zugeordnet	39	Chenille Kissenbezug – verschiedene Farben und Grössen
+gid://shopify/Product/15447619600769	zugeordnet	4	Elastischer Antirutsch-Sofabezug mit Streifenmuster
+gid://shopify/Product/15447619928449	zugeordnet	8	Kissenhülle mit floraler Stickerei
+gid://shopify/Product/15447620288897	zugeordnet	8	Vielseitiges Jacquard Zierkissen mit Geometrie-Muster
+gid://shopify/Product/15447620616577	zugeordnet	8	Kissenbezug mit Blumenmuster im französischen Stil
+gid://shopify/Product/15447621009793	zugeordnet	6	Jacquard Zierkissen mit Blumenmuster
+gid://shopify/Product/15447621337473	zugeordnet	10	Minimalistischer Jacquard Kissenbezug, nordischer Stil
+gid://shopify/Product/15447621665153	zugeordnet	8	Chenille Zierkissen, einfarbig
