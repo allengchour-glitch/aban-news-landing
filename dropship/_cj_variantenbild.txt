@@ -270,3 +270,18 @@ gid://shopify/Product/15447604101505	zugeordnet	15	Legeres Hemd mit Streifen
 gid://shopify/Product/15447604265345	zugeordnet	48	Leinenhemd für Herren
 gid://shopify/Product/15447604461953	zugeordnet	15	Gestreiftes Kurzarmhemd für Herren · Modell 2
 gid://shopify/Product/15447604658561	zugeordnet	28	Polo-Shirt Kurzarm Slim-Fit Piqué-Baumwolle
+gid://shopify/Product/15447604855169	zugeordnet	20	Herren Windbreaker Laufjacke mit Stehkragen
+gid://shopify/Product/15447605313921	zugeordnet	60	Oxford Langarmhemd für Herren, Baumwolle, bügelfrei
+gid://shopify/Product/15447605510529	zugeordnet	12	Leinenhemd langärmlig für Herren
+gid://shopify/Product/15447605739905	zugeordnet	15	Herren ärmelloses V-Neck Tanktop
+gid://shopify/Product/15447606002049	zugeordnet	30	Herren Hemd Leinen-Optik Langarm Loose Fit
+gid://shopify/Product/15447606198657	zugeordnet	30	Jacquard Polo-Shirt mit Reverskragen
+gid://shopify/Product/15447606428033	zugeordnet	36	Herren Langarmhemd mit Revers
+gid://shopify/Product/15447606657409	zugeordnet	42	Leinenhemd Kurzarm für Herren
+gid://shopify/Product/15447606821249	zugeordnet	12	Lederjacke mit abnehmbarem Futter
+gid://shopify/Product/15447607148929	zugeordnet	10	Outdoor Shell Jacke für Herren
+gid://shopify/Product/15447607443841	zugeordnet	24	Leichte Leinenjacke für Herren
+gid://shopify/Product/15447607673217	zugeordnet	51	Outdoor Sportshirt mit UV-Schutz
+gid://shopify/Product/15447607968129	zugeordnet	60	UV-Schutz Shirt für Outdoor-Sport
+gid://shopify/Product/15447608066433	zugeordnet	12	Cord-Mantel für Herren · wattiert, Casual
+gid://shopify/Product/15447608263041	zugeordnet	35	Herren Kunstfelljacke, British Style
