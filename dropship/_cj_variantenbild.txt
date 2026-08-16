@@ -141,3 +141,6 @@ gid://shopify/Product/15446275359105	zugeordnet	2	Edelstahl-Fritteuse mit Sichtf
 gid://shopify/Product/15446275457409	zugeordnet	2	Koreanischer Grill für 3-5 Personen
 gid://shopify/Product/15446275522945	zugeordnet	18	L-förmige Coral Fleece Küchenmatte
 gid://shopify/Product/15446275555713	zugeordnet	5	Matcha Schale mit Deckel
+gid://shopify/Product/15446275588481	zugeordnet	16	Keramik Teedose luftdicht
+gid://shopify/Product/15446275817857	zugeordnet	18	Zisha Keramik Gongfu Teetasse – Tenmoku Glasur
+gid://shopify/Product/15446276571521	zugeordnet	2	Panda Handtuch
