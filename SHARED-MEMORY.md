@@ -1,6 +1,43 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
 
+## 🧱 SPIELE-STAND — ASSET-SESSION (Chargen 38–49, Stand 2026-08-16)
+> Diese Session baut **STL/GLB-Chargen + deren Einbau** in `traumhaus.html`. Sie fasst
+> Terrain, Strassennetz und Spielschleife NICHT an. Volle Doku: **`models/TH5-ASSETS.md`**
+> (Abschnitte 1z7–2h), Generatoren: `tools/assets/mk_th38…48_*.py`, Werkzeug:
+> `tools/assets/th_werkzeug.py`.
+
+- **Gebaut (98 Teile, je GLB + STL, alle zmin = 0,000):** th38 Bauernhof · th39
+  Strassenausstattung · th40 Nutzfahrzeuge/OeV · th41 Bahnanlagen · th42 Schule/Pausenhof ·
+  th43 Feuerwache/Tankstelle · th44 Stadion/Sportplatz · th45 Hafen/Strand · th46 Baustelle ·
+  th47 Villen/Gaerten · th48 Marktplatz.
+- **Eingebaut:** Bauernhof-Viertel, Bahnsteig (z 110), Schulhof (-56|89), Feuerwache (56|100),
+  Tankstelle (92|-74), Sportplatz (53|155), Hafen (Kai x -133), Baustelle (-30|102), beide
+  Villenparzellen, Marktplatz, Freizeitpark-Kasse. **Kein prozeduraler Quaderbau mehr in der
+  Stadt** — die Reihe seit th37 ist abgearbeitet.
+- **Bewegt sich neu:** Zubringer-Verkehr (`axis:"radial"`), Landbus mit Halt am Wartehaeuschen,
+  Hafen (Boote wiegen sich, Segelboot kreuzt, Laufkatze, Leuchtfeuer nur nachts),
+  schwenkender Baukran, Fussgaenger an den neuen Orten.
+- **Neue Sonden in `window.__th`:** `verkehr()`, `zeit(min)`, `fussg()`. `zeit()` ist noetig,
+  weil `_dorfNacht` jeden Frame aus `uhrzeit` neu gerechnet wird — direkt setzen wirkt nicht.
+- **Flaechen melden sich an:** `window.SPORTFELD` wird in `waldsaum()` und der
+  Felder-Freiflaechenpruefung ausgespart. **Wer eine Flaeche belegt, muss sie anmelden** —
+  Baeume und Felder haben keine Kollider, `inSolid` sieht sie nicht.
+
+> ⚠️ **STALE-REF-FALLE (16.08. passiert, fast ein Datenverlust).** `git fetch origin main` hat
+> in einer frisch angelegten Arbeitskopie den Ref NICHT aktualisiert: `origin/main` zeigte auf
+> einen Monate alten Commit. Ein darauf gebauter Branch haette die Integration #2248 der
+> anderen Session ueberschrieben. **Vor jedem neuen Branch:**
+> `git fetch origin +refs/heads/main:refs/remotes/origin/main --force` und `git log -1 origin/main`
+> gegen GitHub pruefen. Aufgefallen ist es nur, weil eigene Debug-Sonden fehlten.
+
+> ✅ Nach jeder Charge laeuft `spiele-dev/tools/th-pruef.mjs` (Stand 16.08.: BESTANDEN — 847
+> Modelle, 0 im Strassenkorridor, 0 fehlende Modelle, 0 JS-Fehler, groesste Ueberschneidung
+> 6,4 m). ⚠️ Das Werkzeug hat `REPO` fest auf `/home/user/aban-news-landing`; wer aus einem
+> Worktree arbeitet, kopiert die Tools und patcht die Konstante, statt die Datei im Repo zu aendern.
+
+---
+
 ## 🎮 SPIELE-STAND (Traumhaus-Session, 2026-08-12)
 > Fuer die Modell-/Terrain-Session: **`spiele-dev/RUNBOOK-TRAUMHAUS.md` zuerst lesen.**
 - **Spielschleife steht:** Bauabnahme alle 4 Tage (Inspektor kommt zu Fuss), 6 Wohnstufen
