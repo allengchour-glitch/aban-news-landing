@@ -677,6 +677,13 @@ for(const [cat,label] of grp.cats){
        console.log('  skip(kapazitaet-unglaubwuerdig)', tbM[0], 'CHF'+preisNum, title.slice(0,40));
        fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid)); continue;
      }
+     // Dasselbe für Powerbank-mAh: ab 50'000 mAh zum Gadget-Preis ist die Zahl erfunden
+     // (echte 50-Ah-Geräte sind Power-Stations). 4 Stück standen am 16.08. ACTIVE.
+     const mahM=title.match(/\b(\d{4,6})\s*m[aA]h\b/);
+     if(mahM && parseInt(mahM[1],10)>=50000){
+       console.log('  skip(mah-unglaubwuerdig)', mahM[0], title.slice(0,40));
+       fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid)); continue;
+     }
    }
    // Dubletten-Wache: existiert schon ein aktives Produkt mit exakt diesem Titel? (Lieferant listet gleiche Artikel mehrfach)
    const dq=await sgql(st,`query($q:String!){products(first:1,query:$q){edges{node{id}}}}`,{q:`title:"${title.replace(/"/g,'')}" status:active`});
