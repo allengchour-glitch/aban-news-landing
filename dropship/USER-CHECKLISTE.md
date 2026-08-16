@@ -26,10 +26,12 @@
 10. **Meta-Token** nur falls Social wieder aktiviert werden soll (⛔ Social-Stopp bleibt bis dahin).
 
 ### 📌 Vereinbarte Regel (User 16.08.2026):
-**Ab CHF 2'000 kumuliertem Gewinn überweist der User CJ-Guthaben per Bank** → Order-Engine zahlt
-dann automatisch aus dem Wallet (kein Karten-Link mehr pro Bestellung, schnellere Verarbeitung).
-Stand-Tracking: kumulierter Gewinn seit August 2026 ≈ CHF 32 (Stand 16.08.). Ich melde mich,
-sobald die Schwelle in Reichweite ist. (CJ-Banküberweisung braucht 1–3 Werktage bis Gutschrift.)
+**CJ-Banküberweisung hat CHF/USD 2'000 MINDESTBETRAG** (CJ-Vorgabe). Plan des Users: sobald der
+kumulierte Gewinn ~CHF 2'000 erreicht, diesen Betrag als Wallet-Guthaben überweisen → Order-Engine
+zahlt dann automatisch aus dem Wallet (kein Karten-Link mehr pro Bestellung, schnellere
+Verarbeitung; Gutschrift dauert 1–3 Werktage). Bis dahin: weiter Karten-Links pro Bestellung.
+Stand-Tracking: kumulierter Gewinn seit August 2026 ≈ CHF 32 (Stand 16.08.) — ich melde mich,
+sobald die Schwelle in Reichweite ist.
 
 ### 🤖 Läuft automatisch (nichts zu tun, nur zur Info):
 - Ab 16:00 UTC Prioritätsfenster: Schulstart-Restimporte (Lunchtasche, Laptop-Hülle mit Ständer,
