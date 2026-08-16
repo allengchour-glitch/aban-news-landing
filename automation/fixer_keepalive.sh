@@ -140,7 +140,7 @@ while true; do
   # Dasselbe für die langen NODE-Läufe. Eigener Block, weil der Prozesstest auf das erste
   # argv-Feld schaut und dort `node` statt `python3` steht — ein gemeinsamer Test hätte den
   # Lauf für tot gehalten und ihn im Zwei-Minuten-Takt ein zweites Mal gestartet.
-  for N in cj_bild_backfill cj_variantenbild schulstart_import alt_text_backfill; do
+  for N in cj_bild_backfill cj_variantenbild schulstart_import alt_text_backfill frosch_maske_import; do
     fehlt "$REPO/automation/$N.mjs" && continue
     grep -q "^FERTIG" "/tmp/$N.log" 2>/dev/null && continue
     ps -eo args --no-headers | awk -v s="automation/$N.mjs" \

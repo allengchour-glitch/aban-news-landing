@@ -769,3 +769,6 @@ gid://shopify/Product/15500973834625	nicht-versendbar	Alu-Klapptisch mit IGT-Sys
 gid://shopify/Product/15500929696129	nicht-versendbar	Tragbares Fitnessgerät für Zuhause
 gid://shopify/Product/15500972818817	nicht-versendbar	Dumbbell-Set für Frauen, 2 x 2.27 kg
 gid://shopify/Product/15500969017729	nicht-versendbar	Multifunktionales Fitness-Rückenbrett
+gid://shopify/Product/15501053755777	ok	Holzschmuckkasten
+gid://shopify/Product/15501000671617	ok	Pommes-Frites- und Gemüseschneider
+gid://shopify/Product/15500908495233	ok	Business-Aktentasche aus Leder
