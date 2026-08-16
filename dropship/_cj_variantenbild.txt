@@ -321,3 +321,4 @@ gid://shopify/Product/15447620616577	zugeordnet	8	Kissenbezug mit Blumenmuster i
 gid://shopify/Product/15447621009793	zugeordnet	6	Jacquard Zierkissen mit Blumenmuster
 gid://shopify/Product/15447621337473	zugeordnet	10	Minimalistischer Jacquard Kissenbezug, nordischer Stil
 gid://shopify/Product/15447621665153	zugeordnet	8	Chenille Zierkissen, einfarbig
+gid://shopify/Product/15447622058369	zugeordnet	18	Sternen Jacquard Kissenbezug
