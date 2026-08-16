@@ -663,6 +663,21 @@ for(const [cat,label] of grp.cats){
        if(mat) mf.push({namespace:'mm-google-shopping',key:'material',
                         value:mat, type:'single_line_text_field'});}
      input.metafields=mf; }
+   // 💾 KAPAZITÄTS-WACHE (16.08.2026): CJ listet Datenträger mit erfundener Kapazität —
+   // «256 TB SSD» für CHF 15.90, elf Stück standen ACTIVE im Google-Kanal. Es gibt keine
+   // 60/128/256-TB-Consumer-Datenträger, und echte 2-TB-Ware kostet ein Mehrfaches.
+   // Regel: TB-Behauptung im Titel/Text + Verkaufspreis unter CHF 60 → gar nicht anlegen.
+   // (Gehäuse/Docks sagen «bis X TB» über FREMDE Platten — die Wache greift nur, wenn kein
+   // Gehäuse-Wort dabei ist.)
+   {
+     const tbM=(title+' '+html.slice(0,600)).match(/\b(\d{1,3})\s*TB\b/i);
+     const istGehaeuse=/geh[äa]use|enclosure|dock|adapter|kabel|h[üu]lle|case\b/i.test(title);
+     const preisNum=parseFloat(variants[0]?.price||'0');
+     if(tbM && !istGehaeuse && (parseInt(tbM[1],10)>=32 || preisNum<60)){
+       console.log('  skip(kapazitaet-unglaubwuerdig)', tbM[0], 'CHF'+preisNum, title.slice(0,40));
+       fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid)); continue;
+     }
+   }
    // Dubletten-Wache: existiert schon ein aktives Produkt mit exakt diesem Titel? (Lieferant listet gleiche Artikel mehrfach)
    const dq=await sgql(st,`query($q:String!){products(first:1,query:$q){edges{node{id}}}}`,{q:`title:"${title.replace(/"/g,'')}" status:active`});
    if(dq.data?.products?.edges?.length){console.log('  skip(dup-titel)',title.slice(0,40));continue;}
