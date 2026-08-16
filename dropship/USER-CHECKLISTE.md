@@ -1,5 +1,30 @@
 # ✅ USER-CHECKLISTE — LuxeStyle Social-Maschine aktivieren
 
+## 📋 TODO-Liste (Stand 2026-08-16, aktuellste zuerst — «todo list später»)
+
+### 🔴 Nur du kannst das (Konto/Zahlung/Browser):
+1. **BigBuy «Pack Ecommerce» kündigen** (89 €/Periode, 1 Verkauf seit Juni und der mit Verlust —
+   Empfehlung: aufs Periodenende kündigen). Danach mir Bescheid geben → ich drafte die ~235
+   verbliebenen BigBuy-Produkte automatisch (ohne API keine Bestandswahrheit = Geisterverkäufe).
+2. **CJ-Konsole: Schatten-Bestellungen löschen** («#1012»/«#1013»/«#1014» von der CJ-Shopify-App —
+   NIE bezahlen, die echten heissen LX1012–LX1014 und sind bezahlt).
+3. **TikTok-Kampagnen-Budget** für die Schulstart-/Trend-Produkte freigeben — der Funnel konvertiert
+   nachweislich (4/4 bezahlte Bestellungen im August), es fehlt nur Traffic.
+4. **IG-Bio-Link** auf luxestyle.ch setzen (API kann Bio nicht ändern).
+5. **Google Merchant: Ziel-Land nur Schweiz** (falls noch nicht umgestellt — alter #1-Hebel).
+6. **Judge.me:** 12 Bild-Reviews ausblenden + veraltete Produkt-Titel aktualisieren (nur Browser-UI).
+7. **Fortura-FTP-Zugangsdaten** neu liefern (Bild-2–5-Backfill-Quelle versiegt sonst).
+8. **E-Mail-Popup** verdeckt mobil den Kaufknopf (Shopify Forms → Trigger/Position anpassen; Marketing-Entscheid).
+9. **GitHub-Token «gitlab»** läuft ~22.08. ab — erneuern, sonst reissen Pushes ab.
+10. **Meta-Token** nur falls Social wieder aktiviert werden soll (⛔ Social-Stopp bleibt bis dahin).
+
+### 🤖 Läuft automatisch (nichts zu tun, nur zur Info):
+- Ab 16:00 UTC Prioritätsfenster: Schulstart-Restimporte (Lunchtasche, Laptop-Hülle mit Ständer,
+  Tech-Organizer) + Variantenbilder-Backlog (~2'700 Produkte, mehrtägig) + Video-Backfill 60/Tag.
+- ß→ss-Backfill Rest (~1'300 Produkte).
+- LX1013/LX1014: Shopify-Fulfillment sobald CJ auf SHIPPED geht (Runner überwacht).
+- Hype-Reihe kuratiert sich täglich selbst (Ablauf 21 Tage, Bildprüfung).
+
 ## 🔴 OFFEN (todo morgen, Stand 2026-06-09) — nach Gemini-Verifikation (Note 4→6/10, Hero jetzt Stärke)
 **Hero ist fertig & live** (heller Text + goldener Button + Premium-Bild, Schema 3 gesetzt). Verbleibende Gemini-Punkte —
 alle NICHT autonom machbar (Gründe dahinter):
