@@ -5896,6 +5896,12 @@ setTimeout(function baueGebaeude(){
     for(var t=0;t<2;t++) fest("th44_tribuene.glb",8.06,CX-6+t*12,CZ+FT/2+3.5,0);
     for(var q=0;q<4;q++){                                         // Flutlicht an den Ecken
       var fx=CX+(q%2?1:-1)*(FB/2+2.5), fz=CZ+(q<2?-1:1)*(FT/2+2.5);
+      /* ⚠️ Die Nordwest-Ecke faellt auf (27,5|172,5) — dort liegt seit langem der
+         Grillplatz th16 (x 23,8…32,2 | z 167,8…176,2), gemessen 2,6 m
+         Ueberschneidung: ein Flutlichtmast in einer Feuerstelle. Statt das ganze
+         Feld zu verschieben (das haenge an SPORTFELD, Tribuenen, Toren und Zaun)
+         rueckt nur dieser eine Mast 6 m nach Westen aus dem Grillplatz heraus. */
+      if(q===2) fx-=6.0;
       fest("th44_flutlichtmast.glb",17.63,fx,fz,Math.atan2(CZ-fz,CX-fx));
     }
     for(var b=0;b<2;b++)                                          // Ersatzbaenke
