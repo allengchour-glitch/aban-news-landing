@@ -41,8 +41,16 @@ async function suche(q, muss, seiten = 4, categoryId = '') {
     const u = categoryId
       ? `/product/list?pageNum=${s}&pageSize=50&categoryId=${categoryId}`
       : `/product/list?pageNum=${s}&pageSize=50&productNameEn=${encodeURIComponent(q)}`;
-    const j = await cj(u);
-    if (Number(j.code) === 16900500) return null;          // Punkte weg → nächster Versuch morgen
+    let j = await cj(u);
+    // 16900500 heisst seit ~16.08. oft NICHT «Tagesbudget leer», sondern eskaliertes
+    // QPS-Throttling (CJ antwortet unter Last mit dem Punkte-Code, obwohl Punkte da sind —
+    // dieselbe Falle wie im Juli-Runbook). Deshalb: 45 s abkühlen und zweimal nachfassen;
+    // erst wenn es dann noch 16900500 gibt, ist das Budget wirklich weg.
+    for (let w = 0; w < 2 && Number(j.code) === 16900500; w++) {
+      await sleep(45000);
+      j = await cj(u);
+    }
+    if (Number(j.code) === 16900500) return null;          // Punkte wirklich weg → morgen
     for (const p of (j.data || {}).list || [])
       if (muss.test(p.productNameEn || '') && parseFloat(String(p.sellPrice).split('-')[0]) >= 3)
         tref.push(p);

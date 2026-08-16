@@ -144,3 +144,20 @@ gid://shopify/Product/15446275555713	zugeordnet	5	Matcha Schale mit Deckel
 gid://shopify/Product/15446275588481	zugeordnet	16	Keramik Teedose luftdicht
 gid://shopify/Product/15446275817857	zugeordnet	18	Zisha Keramik Gongfu Teetasse – Tenmoku Glasur
 gid://shopify/Product/15446276571521	zugeordnet	2	Panda Handtuch
+gid://shopify/Product/15446277325185	bild-urls-tot
+gid://shopify/Product/15446277489025	zugeordnet	2	Schmetterling Badewannenkissen mit Saugnäpfen
+gid://shopify/Product/15446277521793	bild-urls-tot
+gid://shopify/Product/15446277587329	zugeordnet	3	5 Core Plektren-Set, 12 Stück
+gid://shopify/Product/15447560520065	zugeordnet	6	Ladegerät Typ-C (EU-Standard)
+gid://shopify/Product/15447560978817	zugeordnet	2	3-in-1 Magnetische Ladestation
+gid://shopify/Product/15447562158465	zugeordnet	6	65W PD GaN Ladegerät für Smartphones & Laptops
+gid://shopify/Product/15447563403649	bild-urls-tot
+gid://shopify/Product/15447563895169	zugeordnet	12	Universal 320W GaN Hochleistungs-Ladegerät
+gid://shopify/Product/15447564222849	zugeordnet	2	USB-Ladegerät für 18650 Li-ion Akkus
+gid://shopify/Product/15447564452225	zugeordnet	2	Wiederaufladbare CR123A Li-ion Akkus mit USB-Ladegerät
+gid://shopify/Product/15447564976513	zugeordnet	2	4er-Pack CR123A Li-Ion Akkus mit USB-Ladegerät
+gid://shopify/Product/15447565205889	zugeordnet	2	4er-Pack 16340 Li-Ion Akkus mit USB-Ladegerät
+gid://shopify/Product/15447565304193	bild-urls-tot
+gid://shopify/Product/15447565664641	bild-urls-tot
+gid://shopify/Product/15447565861249	bild-urls-tot
+gid://shopify/Product/15447566320001	zugeordnet	2	USB Li-ion Ladegerät für 3.7V Akkus
