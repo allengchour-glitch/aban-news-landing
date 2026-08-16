@@ -87,18 +87,28 @@ def _satteldach(B, T, HH, zbasis, m, ueber=0.70, mat_="dach"):
     box(0, 0, zbasis + HH, B + 0.3, 0.34, 0.18, m["dach2"])
     return d
 
-def _walmdach(B, T, HH, zbasis, m, ueber=0.70):
-    """Walmdach als PYRAMIDE mit gestrecktem Grundriss.
+def _mansarddach(B, T, HH, zbasis, m, ueber=0.70, mat_="dach"):
+    """Mansarddach als KOERPER: unten steil, oben flach, First auf x.
 
-    ⚠️ `kegel()` setzt die MITTE auf z: der Fuss liegt bei z - h/2, die Spitze
-    bei z + h/2. Fuer eine Dachhaut auf `zbasis` gehoert die Mitte also auf
-    zbasis + HH/2 (Lehre aus dem Sandhaufen in Charge 46)."""
-    d = flach(kegel(0, 0, zbasis + HH/2, 1.0, 0.0, HH, m["dach"], 4,
-                    rot=(0, 0, math.pi/4)))
-    d.scale = ((B/2 + ueber)/0.7071, (T/2 + ueber)/0.7071, 1.0)
+    ⚠️ HIER STAND EIN WALMDACH aus einem gedrehten, skalierten Vierkant-Kegel —
+    und das kann gar nicht funktionieren. Blender wendet erst die SKALIERUNG in
+    lokalen Achsen an und dann die Drehung: die vier Ecken liegen lokal auf den
+    Achsen, nach 45 Grad landen sie alle auf den Diagonalen, und die Bounding-Box
+    wird damit ZWANGSLAEUFIG quadratisch. Die Villa mass 22,00 x 22,00 statt
+    12,4 x 10,4 — ein rechteckiges Walmdach ist so nicht zu bekommen.
+
+    Ein Mansarddach ist dagegen extrudierbar, also ein Fall fuer `keil_y` wie
+    Sattel- und Tonnendach seit Charge 41 — und es unterscheidet die Villa
+    zugleich sichtbar von der mit dem einfachen Satteldach."""
+    TD = T/2 + ueber
+    d = keil_y([(-TD, 0.0), (TD, 0.0), (TD, 0.24), (TD*0.62, HH*0.60),
+                (TD*0.30, HH), (-TD*0.30, HH), (-TD*0.62, HH*0.60), (-TD, 0.24)],
+               0.0, B + 2*ueber, m[mat_], cz=zbasis, name="Mansarddach")
+    d.rotation_euler[2] = math.pi/2
     for s in (-1, 1):
-        box(0, s*(T/2 + ueber - 0.06), zbasis + 0.14, B + 2*ueber, 0.12, 0.28, m["stein"])
-        box(s*(B/2 + ueber - 0.06), 0, zbasis + 0.14, 0.12, T + 2*ueber, 0.28, m["stein"])
+        box(0, s*(TD - 0.05), zbasis + 0.14, B + 2*ueber + 0.1, 0.12, 0.28, m["stein"])
+        box(0, s*(TD*0.62), zbasis + HH*0.60, B + 2*ueber, 0.10, 0.10, m["dach2"])
+    box(0, 0, zbasis + HH, B + 0.3, TD*0.68, 0.14, m["dach2"])
     return d
 
 def _kamin(x, y, z0, m, h=2.10):
@@ -110,7 +120,7 @@ def _kamin(x, y, z0, m, h=2.10):
 
 # ================================================================ 1) Villa mit Walmdach
 def _b_villa_walm():
-    """Villa mit Walmdach, 12,4 x 10,4 x 10,3 m. Eingang auf +y.
+    """Villa mit Mansarddach, 12,4 x 10,4 x 10,7 m. Eingang auf +y.
 
     Sockel mit Absatz, Ecklisenen, Gurtgesims, Erker ueber zwei Geschosse,
     Veranda mit Saeulen, Fensterlaeden, Gaube und Kamin."""
@@ -165,14 +175,15 @@ def _b_villa_walm():
     flach(zyl(2.60, T/2 + 0.98, 2.80, 0.14, 0.16, m["licht"], 12))
     for k in range(3):                                              # Freitreppe
         box(2.60, T/2 + 2.10 + k*0.34, 0.42 - k*0.14, 2.20, 0.36, 0.14, m["beton"])
-    _walmdach(B, T, 2.90, H + 1.12, m)
+    _mansarddach(B, T, 3.10, H + 1.12, m)
     # Gaube auf +y
     box(1.20, T/2 - 1.10, H + 2.05, 1.80, 1.40, 1.30, m["wand"])
     box(1.20, T/2 - 1.72, H + 2.10, 1.20, 0.06, 0.90, m["glas"])
     _rahmen(1.20, T/2 - 1.76, H + 2.10, 1.32, 1.02, 0.10, m)
-    gd = flach(kegel(1.20, T/2 - 1.10, H + 3.02, 1.44, 0.0, 0.90, m["dach"], 4,
-                     rot=(0, 0, math.pi/4)))
-    gd.scale = (1.0, 0.78, 1.0)
+    gd = keil_y([(-0.95, 0.0), (0.95, 0.0), (0.0, 0.72)], 0.0, 2.10, m["dach"],
+                cz=H + 2.70, name="Gaubendach")
+    gd.rotation_euler[2] = math.pi/2
+    gd.location = (1.20, T/2 - 1.10, 0.0)
     _kamin(-3.20, -1.60, H + 1.12, m)
 
 def villa_walm(): _modul("th47_villa_walm", _b_villa_walm)
