@@ -5759,7 +5759,9 @@ setTimeout(function baueGebaeude(){
        (sin rotY, cos rotY) = (1,0) folgt rotY = +pi/2. */
     for(var k=0;k<4;k++) fest("th46_geruest.glb",7.34,BX-12.1,BZ-4.6+k*2.5,Math.PI/2);
     fest("th46_bagger.glb",3.73,BX-8,BZ-9,-0.5);
-    fest("th46_baucontainer.glb",2.90,BX+11,BZ-8,Math.PI/2);
+    /* ⚠️ Auf BX+11 stand der Container weiter in der Markthalle (3,6 m). Die
+       Ostseite des Bauplatzes gehoert der Halle — alles Bewegliche nach Westen. */
+    fest("th46_baucontainer.glb",2.90,BX-12,BZ-8,Math.PI/2);
     fest("th46_materiallager.glb",1.20,BX-9,BZ-9,0);
     fest("th46_mischer.glb",1.36,BX-2,BZ-7,0.7);
     for(var z9=0;z9<9;z9++) fest("th46_bauzaun.glb",2.16,BX-14+z9*3.5,BZ-12.5,0);
@@ -5901,7 +5903,11 @@ setTimeout(function baueGebaeude(){
     fest("th44_spielstand.glb",5.60,CX,CZ+FT/2+9.5,0);
     for(var f=0;f<5;f++)                                          // Ballfangzaun im Osten
       fest("th44_ballfangzaun.glb",4.90,CX+FB/2+3.0,CZ-8+f*4,Math.PI/2);
-    fest("th44_kasse.glb",3.09,CX-FB/2-3.0,CZ-FT/2-3.0,0);
+    /* ⚠️ Die Kasse stand auf (27|137) — genau dort steht auch der Flutlichtmast
+       der Suedwest-Ecke (CX-FB/2-2,5 | CZ-FT/2-2,5). Beide aus derselben Formel,
+       beide auf denselben Punkt. Wer zwei Dinge aus der Feldgeometrie ableitet,
+       muss pruefen, ob die Ableitungen zusammenfallen. */
+    fest("th44_kasse.glb",3.09,CX-FB/2-3.0,CZ-FT/2+7.0,0);
     fest("th44_sprunganlage.glb",0.18,CX-2,CZ+FT/2+16.0,0);
   })();
   /* ── 🚒⛽ Charge 43: Feuerwache und Tankstelle ───────────────────────────────
