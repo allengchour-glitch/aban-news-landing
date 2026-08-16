@@ -376,3 +376,34 @@ gid://shopify/Product/15447866704257	zugeordnet	1	4-in-1 Auto-Ladegerät mit aus
 gid://shopify/Product/15447867163009	zugeordnet	2	Magnetisches kabelloses Desktop-Ladegerät mit Ständer
 gid://shopify/Product/15447867359617	zugeordnet	2	Elektrischer Lift-Ständer mit Wireless Charging
 gid://shopify/Product/15447867588993	zugeordnet	3	3-in-1 Faltbarer Magnetischer Wireless Charger
+gid://shopify/Product/15447867687297	zugeordnet	2	3-in-1 faltbarer Ladeständer mit MagSafe
+gid://shopify/Product/15447868146049	zugeordnet	2	Organizer mit Wireless Charger
+gid://shopify/Product/15447868440961	bild-urls-tot
+gid://shopify/Product/15447868670337	zugeordnet	4	Universal USB-Ladegerät für Mobiltelefone
+gid://shopify/Product/15447869587841	zugeordnet	2	Tragbarer Akku-Gürtel mit USB-Display
+gid://shopify/Product/15447871422849	zugeordnet	6	Kleine Powerbank mit Schnellladefunktion
+gid://shopify/Product/15447872209281	zugeordnet	5	9V Multimeter Li-ion Akku, wiederaufladbar
+gid://shopify/Product/15447873028481	zugeordnet	4	CR2032 Lithium Knopfzelle 3V
+gid://shopify/Product/15447873356161	zugeordnet	2	Hochleistungs-Lithium-Ionen-Akku für Staubsauger
+gid://shopify/Product/15447873552769	zugeordnet	1	AA Lithium-Akku, 1.5V, USB-C, 3800mWh
+gid://shopify/Product/15447873945985	zugeordnet	3	Ersatz-Akku für Elektrowerkzeuge (Nickel)
+gid://shopify/Product/15447874208129	zugeordnet	8	FPV-Softbag-Lithium-Akku für Crossing Machine
+gid://shopify/Product/15447874371969	zugeordnet	3	Akku für Fernsteuerung TX16, TX12 & Boxer
+gid://shopify/Product/15447874797953	zugeordnet	2	Hochleistungs-Akku für Modellflugzeuge (850mAh, 4S)
+gid://shopify/Product/15447874961793	zugeordnet	2	GNB 650mAh 3S 11.1V 80C LiPo Akku
+gid://shopify/Product/15447875715457	zugeordnet	3	Wireless Screen Device 5G
+gid://shopify/Product/15447875912065	zugeordnet	2	Wasserhahnfilter aus Edelstahl
+gid://shopify/Product/15447876174209	zugeordnet	6	Fitness Smart Armband mit Schrittzähler und LED
+gid://shopify/Product/15447876370817	zugeordnet	6	Multifunktionaler Unisex Schrittzähler
+gid://shopify/Product/15447876567425	zugeordnet	21	Smart Ring mit Fitness- und Gesundheits-Tracking
+gid://shopify/Product/15447876862337	zugeordnet	3	G69 Armband für Herzfrequenz & Blutsauerstoff
+gid://shopify/Product/15447877091713	zugeordnet	8	Smartwatch mit Bluetooth-Telefonie & Gesundheits-Tracking
+gid://shopify/Product/15447877583233	bild-urls-tot
+gid://shopify/Product/15447877747073	zugeordnet	3	GPS Anti-Verlust Tracker für Auto & Handy
+gid://shopify/Product/15447878041985	zugeordnet	7	Smarter Vorhang-Controller
+gid://shopify/Product/15447878271361	zugeordnet	2	Roboterarm-Drohnen-Halterung
+gid://shopify/Product/15447878500737	zugeordnet	2	Wandhalterung für Game-Konsolen aus Aluminium
+gid://shopify/Product/15447878762881	zugeordnet	4	Babyphone mit HD-Kamera und App-Zugriff
+gid://shopify/Product/15447881974145	zugeordnet	6	Dreieckiger Strickschal mit Lochmuster
+gid://shopify/Product/15447882137985	zugeordnet	8	Baumwoll-Leinen Gestreifter Jacquard Schal
+gid://shopify/Product/15447882301825	zugeordnet	39	Quadratisches Baumwoll-Seidentuch mit Blumenmuster
