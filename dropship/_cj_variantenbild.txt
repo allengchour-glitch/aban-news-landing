@@ -178,3 +178,6 @@ gid://shopify/Product/15447572218241	zugeordnet	4	BLTouch Auto-Leveling Sensor U
 gid://shopify/Product/15447572513153	zugeordnet	2	Prusa Mini Magnetisches Heizbett mit PEI-Platte
 gid://shopify/Product/15447572775297	zugeordnet	2	Prusa Mini Magnet-Heizbett mit PEI-Platte
 gid://shopify/Product/15447574872449	zugeordnet	2	ASA-CF Filament, Carbonfaserverstärkt
+gid://shopify/Product/15447575069057	zugeordnet	2	Seiden-PLA Filament 1.75mm, 1.1kg, Glanz-Finish
+gid://shopify/Product/15447575331201	zugeordnet	2	PETG-CF Filament, Carbonfaserverstärkt
+gid://shopify/Product/15447575986561	zugeordnet	2	Notizbuch aus geprägtem Kunstleder, extra dick
