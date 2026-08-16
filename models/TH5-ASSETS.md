@@ -1522,6 +1522,54 @@ Alle neun: zmin = 0,000.
 > `h·cos a + b·sin a`, und dann von der Mitte aus prüfen.
 
 ---
+## 2f. Charge 46 — BAUSTELLE (`models/th46_*.glb`)
+
+Die Baustelle bei (−30 | 102) war der letzte Ort, an dem noch Quader Bauteile darstellten:
+der Turmdrehkran ein Balken auf einem Balken, der Rohbau eine Kiste mit drei Platten darin,
+der Bauzaun sieben durchscheinende Bretter.
+
+| Datei | Maße (B×T×H) | Dreiecke | Inhalt |
+|---|---|---|---|
+| `th46_baukran.glb` | 4,10 × 24,77 × 26,52 | 25 440 | Gittermast, Drehkranz, Ausleger mit Fachwerk, Gegenausleger mit Ballast, Maschinenhaus, Kabine |
+| `th46_rohbau.glb` | 12,41 × 9,40 × 11,44 | 9 512 | drei Geschossdecken, Stützen, Absturzsicherung, Bewehrung, Schalungstafeln, Treppenläufe |
+| `th46_geruest.glb` | 2,58 × 1,64 × 7,34 | 2 888 | drei Lagen, Bohlen mit Fugen, Diagonalen, Bordbretter, **Raster x += 2,50** |
+| `th46_bauzaun.glb` | 3,74 × 0,32 × 2,16 | 1 276 | Gitter aus Stäben in Rohrrahmen, Betonfüße, **Raster x += 3,50** |
+| `th46_bagger.glb` | 6,75 × 2,82 × 3,73 | 9 992 | Raupenlaufwerk als Oval, Drehbühne, Kabine, angewinkelter Ausleger mit Löffel |
+| `th46_baucontainer.glb` | 6,20 × 3,58 × 2,90 | 7 588 | Sicken, Fenster, Tür mit Außentreppe, auf Kanthölzern |
+| `th46_materiallager.glb` | 6,80 × 3,69 × 1,20 | 6 872 | Ziegelpaletten, Rohrbündel, Sandhaufen, Schubkarre |
+| `th46_mischer.glb` | 1,47 × 0,89 × 1,36 | 1 476 | Freifallmischer mit offenem Maul auf Gestell |
+| `th46_baustelle.glb` | 42,00 × 32,00 × 26,52 | 93 060 | **Maßstabs-Test**, nur aus den Teilen oben |
+
+Generator: `tools/assets/mk_th46_baustelle.py` · Werkzeug: `tools/assets/th_werkzeug.py`.
+Alle neun: zmin = 0,000.
+
+> 🏗️ **Der Ausleger liegt mittig über der Mastachse.** Der Kran ist so gebaut, dass das Spiel
+> seinen Oberteil um `x = 0, y = 0` drehen kann: Ausleger auf +y, Gegenausleger auf −y.
+> Ausmittig aufgehängt eierte er beim Schwenken.
+
+> ⚠️ **Eine Raupenkette ist ein OVAL, kein Kreis.** Die Glieder lagen auf einem Kreis, und im
+> Kontaktbogen sah das Laufwerk aus wie ein großes Zahnrad. Eine Kette hat zwei **gerade
+> Trümmer** zwischen den Umlenkrollen und an den Enden je einen Halbkreis — genau die geraden
+> Trümmer machen die Form aus, die man erkennt.
+>
+> Und die Glieder standen zunächst **radial**: `rotation_euler[1] = −a` legt die lange Achse
+> nach außen, unten am Umlauf stand das Glied hochkant und ragte 0,17 statt 0,06 unter den
+> Boden. Tangential heißt `ry = −(a + π/2)` — dieselbe Formel wie beim Radlauf in Charge 37,
+> wo sie schon im Kommentar stand.
+
+> ⚠️ **Der Mischertrommel fehlte die Öffnung.** Erst war sie mit r = 0,42 eine Kugel, die das
+> Gerät verschluckte; schlanker blieb sie ein Ei. Ein Freifallmischer ist ein **Kegelstumpf
+> mit weitem Maul**, und das dunkle Loch am oberen Ende ist das Merkmal, an dem man ihn
+> erkennt — nicht die Rundung.
+
+> ⚠️ **`kegel()` setzt die MITTE auf z, nicht den Fuß.** Der Sandhaufen lag mit `z = 0` und
+> Höhe 0,90 von −0,45 bis +0,45. Ein Schüttkegel gehört auf `h/2`.
+
+Die Boxmitte des Baggers liegt bei x +1,27: der Ausleger reicht nach vorn, und der Ursprung
+gehört an die **Maschine**, nicht in die Mitte ihrer Bounding-Box — `bau()` setzt darüber.
+Dieselbe Ausnahme wie beim Fahrleitungsmast in Charge 41.
+
+---
 
 ---
 ## 🎡 Freizeitpark-Quartier in `traumhaus.html` — fertiger Einbau
