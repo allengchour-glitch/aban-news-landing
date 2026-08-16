@@ -357,3 +357,15 @@ gid://shopify/Product/15447634477441	zugeordnet	2	Kühlende Rattan-Matte für Ka
 gid://shopify/Product/15447634903425	zugeordnet	5	Doppellagiges Katzenbett aus Rattan
 gid://shopify/Product/15447635100033	zugeordnet	4	All-in-one Katzenbaum und Katzenbett
 gid://shopify/Product/15447635329409	zugeordnet	3	Wolken-Kratzbaum mit U-förmiger Liegefläche
+gid://shopify/Product/15447635788161	zugeordnet	12	Green Song Kratzbaum mit Liegeflächen
+gid://shopify/Product/15447635984769	bild-urls-tot
+gid://shopify/Product/15447636377985	bild-urls-tot
+gid://shopify/Product/15447637000577	zugeordnet	6	Doppelstöckiges Katzenhaus aus Massivholz
+gid://shopify/Product/15447637557633	zugeordnet	4	Kratzbaum-Katzenbett mit Schublade
+gid://shopify/Product/15447637787009	zugeordnet	3	Kuscheliges Katzenzelt «Norwegian Cottage»
+gid://shopify/Product/15447638868353	zugeordnet	8	Kuscheliges Katzensofa mit Cord-Fleece
+gid://shopify/Product/15447864508801	zugeordnet	2	3-in-1 Ladestation mit Uhr & Wireless Charging
+gid://shopify/Product/15447865098625	zugeordnet	3	Lithium-Akku-Ladegerät
+gid://shopify/Product/15447865295233	zugeordnet	4	200W GaN Ladegerät für Mobilgeräte & Laptops
+gid://shopify/Product/15447865622913	zugeordnet	2	Li-ion Akku & USB-Ladegerät für Taschenlampen
+gid://shopify/Product/15447865819521	zugeordnet	10	65W GaN Ladegerät mit US-Stecker
