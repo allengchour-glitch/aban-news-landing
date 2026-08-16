@@ -176,11 +176,16 @@ def _b_marktstand():
     box(0, -0.10 - (T - 0.30)/2 - 0.03, 0.62, BR - 0.20, 0.06, 0.56, m["holz"])
     for k in range(4):                                              # Kisten unter dem Tisch
         box(-1.20 + k*0.80, -0.10, 0.24, 0.62, 0.48, 0.44, m["holz2"])
-    _plane(0, 0.10, 2.34, BR + 0.30, T + 0.50, m, "rot", "weiss", 7, 0.24)
-    for k in range(9):                                              # Volant
-        box(-BR/2 - 0.10 + k*(BR + 0.20)/8, 0.10 + (T + 0.50)/2 - 0.02, 2.05,
-            (BR + 0.20)/8*0.52, 0.05, 0.30, m["rot"] if k % 2 else m["weiss"])
-    box(0, 0.10 - (T + 0.50)/2, 2.58, BR + 0.30, 0.06, 0.26, m["holz"])
+    # ⚠️ Die Plane war 3,90 x 2,30 auf z 2,34 bei 0,24 Neigung — ueber einem
+    # Gestell von 3,36 x 1,60, dessen Riegel auf 2,16 liegen. Sie schwebte damit
+    # sichtbar darueber, und das Rueckbrett stand als freier Balken in der Luft.
+    # Eine Marktplane LIEGT auf ihren Riegeln: flacher geneigt, knapper
+    # geschnitten, und die Kante dort, wo der Riegel ist.
+    _plane(0, 0.05, 2.22, BR + 0.24, T + 0.36, m, "rot", "weiss", 7, 0.14)
+    for k in range(9):                                              # Volant vorn
+        box(-BR/2 - 0.08 + k*(BR + 0.16)/8, 0.05 + (T + 0.36)/2 - 0.02, 2.10,
+            (BR + 0.16)/8*0.52, 0.05, 0.28, m["rot"] if k % 2 else m["weiss"])
+    box(0, 0.05 - (T + 0.36)/2 + 0.02, 2.31, BR + 0.24, 0.06, 0.22, m["holz"])
     for k in range(3):                                              # Waren auf dem Tisch
         flach(kugel(-1.00 + k*1.00, -0.10, 1.06, 0.16, m["orange"], 7))
         flach(kugel(-1.00 + k*1.00 + 0.34, -0.28, 1.04, 0.13, m["gruen"], 7))
@@ -218,7 +223,7 @@ def _b_obststand():
             fx = xx - 0.24 + (q % 3)*0.24
             fy = -0.36 + (q//3)*0.34
             flach(kugel(fx, fy, kz + 0.16 + (q//3)*0.13, 0.11, farbe, 6))
-    _plane(0, 0.14, 2.36, BR + 0.30, T + 0.50, m, "gruen", "weiss", 7, 0.26)
+    _plane(0, 0.06, 2.24, BR + 0.24, T + 0.34, m, "gruen", "weiss", 7, 0.14)
     for k in range(4):                                              # Preisschilder
         box(-1.28 + k*0.86, -0.72, 1.02, 0.30, 0.04, 0.20, m["weiss"])
         box(-1.28 + k*0.86, -0.74, 1.02, 0.24, 0.03, 0.13, m["dunkel"])
