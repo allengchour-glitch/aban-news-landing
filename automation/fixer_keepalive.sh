@@ -182,8 +182,10 @@ while true; do
   if [ -f "$REPO/automation/hype_kuratieren.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$HY" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
-      ( cd "$REPO" && setsid python3 automation/hype_kuratieren.py >> "$HY" 2>&1 9>&- & )
-      echo "$(date -u +%H:%M) hype_kuratieren gestartet"
+      # NUR_RAEUMEN: unbeaufsichtigt nur Abgelaufenes abräumen — Neuaufnahme braucht den
+      # Kontaktbogen-Blick einer betreuten Runde (15.08.: 5 untaugliche Bilder auf Position 1).
+      ( cd "$REPO" && setsid env NUR_RAEUMEN=1 python3 automation/hype_kuratieren.py >> "$HY" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) hype_kuratieren gestartet (nur abräumen)"
     fi
   fi
   # GOOGLE-SPERREN DURCHSETZEN, einmal täglich. Am 14.08.2026 standen ALLE 16 Produkte, die

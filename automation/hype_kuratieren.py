@@ -228,6 +228,15 @@ def main():
         return
     print(f"Quelle der Themen: {QUELLE}\n", flush=True)
     abgelaufene_raeumen()
+    # ⚠️ NUR_RAEUMEN=1 (16.08.2026): Der tägliche Aufseher-Lauf räumt NUR Abgelaufenes ab und
+    # nimmt NICHTS Neues auf. Grund, teuer gelernt am 15.08.: Die Zahlenprüfung ersetzt keinen
+    # Blick — fünf Produkte mit untauglichen Bildern (Lieferanten-Collage, englische Infografik,
+    # Negligé-Optik) standen drei Tage auf der Startseite, weil der unbeaufsichtigte Lauf sie
+    # aufgenommen hatte. Neuaufnahme passiert nur noch in betreuten Runden (Kontaktbogen ansehen,
+    # Ausschuss -> hype-bild-schwach, dann Lauf ohne NUR_RAEUMEN).
+    if os.environ.get("NUR_RAEUMEN") == "1":
+        print("NUR_RAEUMEN aktiv — keine Neuaufnahme in diesem Lauf.", flush=True)
+        return
 
     kandidaten = {k: [] for k in THEMEN}
     for zeile in open(EXPORT):

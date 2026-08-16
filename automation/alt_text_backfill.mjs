@@ -19,7 +19,7 @@ async function shTok() {
     try { const t = fs.readFileSync('/tmp/cj_shop_token.txt', 'utf8').trim(); if (t) return t; } catch {}
   }
   const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, { method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json' }, signal: AbortSignal.timeout(30000),
     body: JSON.stringify({ client_id: CID, client_secret: CSEC, grant_type: 'client_credentials' }) });
   return (await r.json()).access_token;
 }
@@ -27,7 +27,7 @@ async function gql(t, query, variables) {
   for (let a = 0; a < 5; a++) {
     const r = await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`, { method: 'POST',
       headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': t },
-      body: JSON.stringify({ query, variables }) });
+      body: JSON.stringify({ query, variables }), signal: AbortSignal.timeout(45000) });
     const j = await r.json().catch(() => ({}));
     if (j.errors && JSON.stringify(j.errors).includes('THROTTLED')) { await sleep(3500); continue; }
     return j.data;
