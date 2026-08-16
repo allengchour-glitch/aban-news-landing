@@ -581,7 +581,7 @@ for(const [cat,label] of grp.cats){
     descriptionHtml:html,
     seo:{title:(title+' | LuxeStyle CH').slice(0,70),description:(`${title} – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.`).slice(0,320)},
     productOptions, variants,
-    files:[{originalSource:imgs[0],contentType:'IMAGE'}]};
+    files:[{originalSource:imgs[0],contentType:'IMAGE',alt:(title+' | LuxeStyle').slice(0,120)}]};
    // Google-Merchant-Attribute für ALLE Produkte (2026-07-11 «google merchant sachen auch»): gender + age_group
    // + material (aus CJ-Beschreibung extrahiert). Farbe/Grösse kommen aus Varianten. Google liest mm-google-shopping.
    // 🚻 gender kam bis 14.08.2026 NUR aus den Tags — der Titel wurde nie gelesen. Zwei Folgen,

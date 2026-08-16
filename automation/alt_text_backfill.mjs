@@ -13,6 +13,11 @@ const CURSOR_F = 'dropship/_alt_backfill_cursor.txt';
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 async function shTok() {
+  // Fallback (16.08.2026): Die Session hat keine Client-Secrets im Env — die Runner pflegen
+  // aber ein frisches Admin-Token in /tmp/cj_shop_token.txt. Damit läuft der Backfill autonom.
+  if (!CID || !CSEC) {
+    try { const t = fs.readFileSync('/tmp/cj_shop_token.txt', 'utf8').trim(); if (t) return t; } catch {}
+  }
   const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, { method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ client_id: CID, client_secret: CSEC, grant_type: 'client_credentials' }) });
@@ -56,6 +61,12 @@ while (prods < LIMIT) {
   }
   cursor = page.pageInfo.endCursor;
   fs.writeFileSync(CURSOR_F, cursor || '');
-  if (!page.pageInfo.hasNextPage) { fs.writeFileSync(CURSOR_F, ''); console.log('Katalog-Ende erreicht — Cursor zurückgesetzt.'); break; }
+  if (!page.pageInfo.hasNextPage) {
+    fs.writeFileSync(CURSOR_F, '');
+    // Nur HIER ist wirklich Schluss — der Aufseher stoppt bei ^FERTIG dauerhaft.
+    console.log(`FERTIG: Katalog-Ende erreicht (${prods} Produkte, ${imgs} Alt-Texte in diesem Lauf).`);
+    process.exit(0);
+  }
 }
-console.log(`FERTIG: ${prods} Produkte geprüft, ${imgs} Alt-Texte gesetzt.`);
+// Batch fertig, Katalog noch nicht: PAUSE, damit der Aufseher den nächsten Batch startet.
+console.log(`PAUSE (Cursor gespeichert): ${prods} Produkte geprüft, ${imgs} Alt-Texte gesetzt — nächster Batch folgt.`);

@@ -276,13 +276,13 @@ for(const p of cand){
    {namespace:'mm-google-shopping',key:'custom_product',value:'true',type:'boolean'},
    {namespace:'mm-google-shopping',key:'age_group',value:'adult',type:'single_line_text_field'},
   ],
-  productOptions,variants,files:[{originalSource:imgs[0],contentType:'IMAGE'}]};
+  productOptions,variants,files:[{originalSource:imgs[0],contentType:'IMAGE',alt:(title+' | LuxeStyle').slice(0,120)}]};
  // Dubletten-Wache: gleicher Titel schon aktiv? → überspringen (Lieferant listet gleiche Artikel mehrfach)
  const dq=await sgql(st,`query($q:String!){products(first:1,query:$q){edges{node{id}}}}`,{q:`title:"${title.replace(/"/g,'')}" status:active`});
  if(dq.data?.products?.edges?.length){console.log('  skip(dup-titel)',title.slice(0,40));continue;}
  const r=await sgql(st,SET,{i:input}); const e=r.data?.productSet?.userErrors||[]; const pid=r.data?.productSet?.product?.id;
  if(e.length||!pid){console.log('  ✗',title.slice(0,30),JSON.stringify(e).slice(0,80));continue;}
- const media=imgs.slice(1).map(u=>({originalSource:u,mediaContentType:'IMAGE'}));
+ const media=imgs.slice(1).map((u,i)=>({originalSource:u,mediaContentType:'IMAGE',alt:(title+' – Bild '+(i+2)+' | LuxeStyle').slice(0,120)}));
  if(media.length)await sgql(st,MED,{id:pid,m:media});
  await sgql(st,PUB,{id:pid,p:PUBS});
  if(d.productVideo&&/^https/.test(d.productVideo))await attachVideo(st,pid,d.productVideo,p.pid);

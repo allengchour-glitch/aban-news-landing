@@ -181,11 +181,11 @@ for (const item of ITEMS) {
       { namespace: 'mm-google-shopping', key: 'custom_product', value: 'true', type: 'boolean' },
       { namespace: 'mm-google-shopping', key: 'age_group', value: 'adult', type: 'single_line_text_field' },
     ],
-    files: [{ originalSource: imgs[0], contentType: 'IMAGE' }] };
+    files: [{ originalSource: imgs[0], contentType: 'IMAGE', alt: (title + ' | LuxeStyle').slice(0, 120) }] };
   const r = await sgql(t, SET, { i: input });
   const spid = r.data?.productSet?.product?.id;
   if (!spid) { console.log('✗', title, JSON.stringify(r.data?.productSet?.userErrors || r).slice(0, 120)); continue; }
-  const media = imgs.slice(1).map(u => ({ originalSource: u, mediaContentType: 'IMAGE' }));
+  const media = imgs.slice(1).map((u, i) => ({ originalSource: u, mediaContentType: 'IMAGE', alt: (title + ' – Bild ' + (i + 2) + ' | LuxeStyle').slice(0, 120) }));
   if (media.length) await sgql(t, `mutation($id:ID!,$m:[CreateMediaInput!]!){ productCreateMedia(productId:$id,media:$m){userErrors{message}} }`, { id: spid, m: media });
   // Ein Medizinprodukt geht in KEINEN Kanal — am wenigsten in «Google & YouTube».
   if (med) { console.log(`⚕️ medizinische Zweckbestimmung (${med.grund}) → DRAFT, nicht publiziert: ${title.slice(0,44)}`);
