@@ -322,3 +322,38 @@ gid://shopify/Product/15447621009793	zugeordnet	6	Jacquard Zierkissen mit Blumen
 gid://shopify/Product/15447621337473	zugeordnet	10	Minimalistischer Jacquard Kissenbezug, nordischer Stil
 gid://shopify/Product/15447621665153	zugeordnet	8	Chenille Zierkissen, einfarbig
 gid://shopify/Product/15447622058369	zugeordnet	18	Sternen Jacquard Kissenbezug
+gid://shopify/Product/15447622484353	zugeordnet	14	Vintage Sofakissen im französischen Stil
+gid://shopify/Product/15447622648193	zugeordnet	8	Kissenbezug Modern Minimalistisch
+gid://shopify/Product/15447622877569	zugeordnet	8	Mittelalterlicher Zierkissenbezug
+gid://shopify/Product/15447623139713	zugeordnet	25	Naicai Kissenbezug aus Lammwolle
+gid://shopify/Product/15447623696769	zugeordnet	4	Sofa Kissenbezug mit Hund-Motiv
+gid://shopify/Product/15447623958913	zugeordnet	7	Kugeliges Zierkissen im nordischen Stil
+gid://shopify/Product/15447624188289	zugeordnet	16	Minimalistisches Kissen aus Samt
+gid://shopify/Product/15447624417665	zugeordnet	5	Kissenbezug mit maritimen Stickereien, 45x45 cm
+gid://shopify/Product/15447624810881	zugeordnet	3	Cloud Bread Nackenkissen
+gid://shopify/Product/15447625007489	zugeordnet	60	Samt Kissenbezug für Lendenkissen (2er-Set)
+gid://shopify/Product/15447625204097	zugeordnet	5	Kissenbezug mit Ethno-Muster
+gid://shopify/Product/15447625433473	zugeordnet	3	Hohlweb-Kissen im Bambus-Look
+gid://shopify/Product/15447626875265	bild-urls-tot
+gid://shopify/Product/15447627137409	zugeordnet	2	2-in-1 Mini Glätteisen für Pony & kurze Haare
+gid://shopify/Product/15447627334017	zugeordnet	9	Vollautomatischer 32mm Lockenstab mit Negativ-Ionen
+gid://shopify/Product/15447627760001	zugeordnet	2	Kabelloser Spliss-Trimmer für langes Haar
+gid://shopify/Product/15447628251521	bild-urls-tot
+gid://shopify/Product/15447628480897	zugeordnet	1	Glättender Haarkamm
+gid://shopify/Product/15447628710273	zugeordnet	3	Föhn-Bürste mit Konstanttemperatur
+gid://shopify/Product/15447629529473	zugeordnet	2	Glätteisen & Lockenstab 2-in-1
+gid://shopify/Product/15447629758849	zugeordnet	3	Lockenstab für Damen, Gradient Purple oder Champagne Gold
+gid://shopify/Product/15447629955457	zugeordnet	15	5-in-1 Warmluftstyler & Lockenstab
+gid://shopify/Product/15447630512513	zugeordnet	3	Kabelloser Keramik-Glättkamm mit LCD
+gid://shopify/Product/15447630872961	zugeordnet	2	Automatischer Lockenstab mit Ionen-Funktion
+gid://shopify/Product/15447631724929	zugeordnet	4	Rotierender Keramik-Lockenstab
+gid://shopify/Product/15447631987073	zugeordnet	6	Kabelloser Glätt- & Lockenstab mit Kaltluft
+gid://shopify/Product/15447632150913	zugeordnet	3	3-in-1 Lockenstab & Glätteisen
+gid://shopify/Product/15447632740737	zugeordnet	10	Profi-Haarglätter mit Negativ-Ionen-Pflege
+gid://shopify/Product/15447633494401	zugeordnet	2	Grosser Katzenbaum All-in-One Hochhaus-Design
+gid://shopify/Product/15447633691009	zugeordnet	2	Filz-Katzenbaum mit Kratz-, Schlaf- & Spielturm
+gid://shopify/Product/15447633822081	zugeordnet	7	Kratzbaum und Bett für Katzen aus Karton
+gid://shopify/Product/15447634477441	zugeordnet	2	Kühlende Rattan-Matte für Katzen
+gid://shopify/Product/15447634903425	zugeordnet	5	Doppellagiges Katzenbett aus Rattan
+gid://shopify/Product/15447635100033	zugeordnet	4	All-in-one Katzenbaum und Katzenbett
+gid://shopify/Product/15447635329409	zugeordnet	3	Wolken-Kratzbaum mit U-förmiger Liegefläche
