@@ -2886,28 +2886,17 @@ var dorfFenster=[];
          statt am Gebaeude. */
       /* Der Kiosk-Kollider zieht mit dem Modell um (siehe tankAusbau unten). */
     })();
-    // ---- BAUSTELLE mit Kran (die Stadt waechst) ----
+    /* ---- BAUSTELLE mit Kran (die Stadt waechst) ----
+       ⚠️ Hier war alles prozedural: der Turmdrehkran ein Balken auf einem Balken,
+       der Rohbau eine Kiste mit drei Platten darin, der Bauzaun sieben
+       durchscheinende Bretter. Die Teile stehen jetzt als `th46_*` weiter unten;
+       hier bleibt nur die Erdflaeche — und die groesser, weil die neuen Bauteile
+       mehr Platz brauchen. */
     (function baustelle(){
       var g=new THREE.Group();
-      var gr=new THREE.Mesh(new THREE.PlaneGeometry(18,14),new THREE.MeshStandardMaterial({color:0x8a7a5c,roughness:1}));
-      gr.rotation.x=-Math.PI/2;gr.position.y=0.012;gr.receiveShadow=true;g.add(gr);
-      var roh=new THREE.Mesh(new THREE.BoxGeometry(9,4.5,7),betMat(0xb0aa9c,0.95));roh.position.set(-2,2.25,0);roh.castShadow=true;g.add(roh);
-      for(var et=0;et<3;et++){var pl8=new THREE.Mesh(new THREE.BoxGeometry(9.4,0.25,7.4),betMat(0xa8a294,0.95));
-        pl8.position.set(-2,1.5+et*1.5,0);g.add(pl8);}
-      // Kran: Mast, Ausleger, Gegengewicht, Haken
-      var km=new THREE.Mesh(new THREE.BoxGeometry(0.8,16,0.8),stdMat(0xf0c030,0.5));km.position.set(6,8,4);km.castShadow=true;g.add(km);
-      var ka=new THREE.Mesh(new THREE.BoxGeometry(20,0.55,0.55),stdMat(0xf0c030,0.5));ka.position.set(0,16.2,4);ka.castShadow=true;g.add(ka);
-      var kg=new THREE.Mesh(new THREE.BoxGeometry(2.2,1.2,1.4),stdMat(0x4a4a52,0.6));kg.position.set(13.5,16.2,4);g.add(kg);
-      var kk=new THREE.Mesh(new THREE.BoxGeometry(1.2,1.2,1.2),stdMat(0xe8e4d8,0.5));kk.position.set(6,15.2,4);g.add(kk);
-      var seil=new THREE.Mesh(new THREE.CylinderGeometry(0.05,0.05,6,5),stdMat(0x3a3a42,0.5));seil.position.set(-3,13,4);g.add(seil);
-      var hak=new THREE.Mesh(new THREE.BoxGeometry(0.4,0.6,0.4),stdMat(0x6a6a72,0.4));hak.position.set(-3,9.7,4);g.add(hak);
-      // Bauzaun + Materialstapel
-      for(var bz=0;bz<7;bz++){var zn=new THREE.Mesh(new THREE.BoxGeometry(2.4,1.8,0.08),
-        new THREE.MeshStandardMaterial({color:0xd8d4c8,roughness:0.8,transparent:true,opacity:0.85}));
-        zn.position.set(-8.6+bz*2.6,0.9,7);g.add(zn);}
-      [[5,-4],[7,-5.4]].forEach(function(mp,mi){
-        for(var st9=0;st9<3;st9++){var br=new THREE.Mesh(new THREE.BoxGeometry(1.6,0.28,0.9),stdMat(mi?0x9a7a5a:0xc08a5a,0.9));
-          br.position.set(mp[0],0.14+st9*0.3,mp[1]);br.rotation.y=mi*0.3;g.add(br);}});
+      var gr=new THREE.Mesh(new THREE.PlaneGeometry(36,28),
+        new THREE.MeshStandardMaterial({color:0x6b5c44,roughness:1,envMapIntensity:0.14}));
+      gr.rotation.x=-Math.PI/2;gr.position.y=0.014;gr.receiveShadow=true;g.add(gr);
       g.position.set(-30,0,102);scene.add(g);
     })();
   })();
@@ -3287,6 +3276,10 @@ function updHafen(dt,now){
     b.krg=(b.krg===undefined?soll:b.krg+(soll-b.krg)*Math.min(1,dt*0.8));
     b.w.rotation.z=b.krg+Math.sin(t*b.per*0.7+b.ph)*0.012;
   }
+  /* Turmdrehkran der Baustelle: langsamer Schwenk hin und her. Ein voller
+     Dauerumlauf wirkt maschinell; ein Kran arbeitet einen Ausschnitt ab. */
+  var BK=window._baukran;
+  if(BK)BK.rotation.y=Math.sin(now*0.00013)*1.15;
   var K=window._hafenkran;
   if(K&&K.userData.katze===undefined){
     /* Laufkatze suchen: das Modell hat sie als Haken-Traverse eingebaut, aber
@@ -5629,6 +5622,29 @@ setTimeout(function baueGebaeude(){
   [-96,-60,-24,24,60,96].forEach(function(mx){
     bau("th17_oberleitungsmast.glb",7.5,mx,0,108.5,0,false,null,true);});
   bau("th17_tramhaltestelle.glb",3.0,-20,0,108,Math.PI,false,null,true);
+  /* ── 🏗️ Charge 46: Baustelle ────────────────────────────────────────────────
+     Der Turmdrehkran SCHWENKT: sein Ausleger liegt im Modell mittig ueber der
+     Mastachse, damit genau das geht (siehe Dateikopf von mk_th46_baustelle.py).
+     Ein Baukran, der stillsteht, ist ein Mast mit Querbalken. */
+  (function baustelleAusbau(){
+    var BX=-30, BZ=102;
+    function fest(datei,hoehe,x,z,ry,cb){
+      bau(datei,hoehe,x,0,z,ry,false,function(w){w.userData.fest=true;if(cb)cb(w);},true);
+    }
+    fest("th46_rohbau.glb",11.44,BX-5,BZ-1,Math.PI);
+    addSolid(BX-5,BZ-1,13.0,10.0);
+    /* ⚠️ Der Kran bewegt sich, gehoert also NIE in den Sichtbarkeits-Index:
+       der wird einmal aus den Ladepositionen gebaut (Lehre aus Charge 40). */
+    fest("th46_baukran.glb",26.52,BX+9,BZ+3,0,function(w){
+      w.userData.nieAusblenden=true; w._bewegt=true; window._baukran=w;});
+    for(var k=0;k<4;k++) fest("th46_geruest.glb",7.34,BX-10.5+k*2.5,BZ+5.4,0);
+    fest("th46_bagger.glb",3.73,BX+2,BZ-9,-0.5);
+    fest("th46_baucontainer.glb",2.90,BX+11,BZ-8,Math.PI/2);
+    fest("th46_materiallager.glb",1.20,BX-9,BZ-9,0);
+    fest("th46_mischer.glb",1.36,BX-2,BZ-7,0.7);
+    for(var z9=0;z9<9;z9++) fest("th46_bauzaun.glb",2.16,BX-14+z9*3.5,BZ-12.5,0);
+    for(var q9=0;q9<6;q9++) fest("th46_bauzaun.glb",2.16,BX-15.8,BZ-10+q9*3.5,Math.PI/2);
+  })();
   /* ── ⚓ Charge 45: Hafen und Strand ─────────────────────────────────────────
      340 m Ufer standen ohne einen einzigen Gegenstand da. Der Sandstreifen liegt
      bei x = -128 (14 breit, also -135…-121), das Wasser westlich davon, der
