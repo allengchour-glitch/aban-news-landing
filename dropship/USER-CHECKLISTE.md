@@ -3,7 +3,12 @@
 ## 📋 TODO-Liste (Stand 2026-08-16, aktuellste zuerst — «todo list später»)
 
 ### 🔴 Nur du kannst das (Konto/Zahlung/Browser):
-1. **BigBuy «Pack Ecommerce» kündigen** (89 €/Periode, 1 Verkauf seit Juni und der mit Verlust —
+0. **💶 BigBuy-Geldbörse: 1'000 € VOR dem 15.09. abheben** (Konsole → Geldbörse → Auszahlung;
+   Kundennr. 966388). Offene Transaktion 18138523 («Fällige Zahlungen», 1'000 €, Banküberweisung)
+   **stornieren, NICHT bezahlen** (wäre eine weitere Einzahlung). ⚠️ Nie den offenen
+   Marketplace-Checkout (1'190 €/Jahr) abschicken. Erinnerungen gesetzt: 20.08. + 08.09.
+1. **✅ ERLEDIGT 16.08.: BigBuy «Pack Ecommerce» gekündigt** (aktiv bis 15.09.2026;
+   bigbuy_abschied.py draftet die Produkte am Stichtag automatisch) (89 €/Periode, 1 Verkauf seit Juni und der mit Verlust —
    Empfehlung: aufs Periodenende kündigen). Danach mir Bescheid geben → ich drafte die ~235
    verbliebenen BigBuy-Produkte automatisch (ohne API keine Bestandswahrheit = Geisterverkäufe).
 2. **CJ-Konsole: Schatten-Bestellungen löschen** («#1012»/«#1013»/«#1014» von der CJ-Shopify-App —
