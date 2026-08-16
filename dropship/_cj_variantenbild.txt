@@ -285,3 +285,4 @@ gid://shopify/Product/15447607673217	zugeordnet	51	Outdoor Sportshirt mit UV-Sch
 gid://shopify/Product/15447607968129	zugeordnet	60	UV-Schutz Shirt für Outdoor-Sport
 gid://shopify/Product/15447608066433	zugeordnet	12	Cord-Mantel für Herren · wattiert, Casual
 gid://shopify/Product/15447608263041	zugeordnet	35	Herren Kunstfelljacke, British Style
+gid://shopify/Product/15447608590721	zugeordnet	19	Herren Plus-Size Fleece-Jacke mit Revers
