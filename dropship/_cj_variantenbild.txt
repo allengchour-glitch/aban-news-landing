@@ -493,3 +493,5 @@ gid://shopify/Product/15447900750209	zugeordnet	21	Sportlicher Taillenformer mit
 gid://shopify/Product/15447900881281	zugeordnet	8	Multifunktionaler Gürtel mit Automatik-Schnalle
 gid://shopify/Product/15447901536641	zugeordnet	5	Florale Magnetbrosche
 gid://shopify/Product/15447901700481	zugeordnet	4	Boho-Stil Canvas-Gürtel mit Ethno-Muster
+gid://shopify/Product/15447901831553	zugeordnet	20	Klassischer Ledergürtel mit runder Schnalle
+gid://shopify/Product/15447902126465	zugeordnet	6	Schmaler Echtleder-Gürtel für Damen
