@@ -813,3 +813,5 @@ gid://shopify/Product/15502558134657	nicht-versendbar	Boxsack-Dynamometer für S
 gid://shopify/Product/15501745881473	ok	Doppelseitiger Zeltbau
 gid://shopify/Product/15501865910657	ok	Mercedes Benz Kettentrieb Werkzeugset
 gid://shopify/Product/15502600241537	ok	Elektrischer Handtuchhalter mit Temperaturkontrolle
+gid://shopify/Product/15502959903105	ok	Industrieller Abseil- und Rettungsschutz
+gid://shopify/Product/15502960558465	ok	Tiefenmessschraube 0-100 mm
