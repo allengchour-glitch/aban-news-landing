@@ -447,3 +447,5 @@ gid://shopify/Product/15447890821505	zugeordnet	15	Leichter Schal mit Wasserwell
 gid://shopify/Product/15447891050881	zugeordnet	18	Kapuzen-Schal mit Kordelzug für Damen
 gid://shopify/Product/15447891542401	zugeordnet	19	Crinkled Satin Schal – Seidig Glatt
 gid://shopify/Product/15447891673473	zugeordnet	10	Cashew-Jacquard-Schal mit Quasten
+gid://shopify/Product/15447891771777	zugeordnet	60	Kopftuch im Ethno-Stil
+gid://shopify/Product/15447891902849	zugeordnet	13	Jacquard Schal mit Cashew-Muster und Quasten

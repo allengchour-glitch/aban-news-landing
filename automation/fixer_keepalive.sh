@@ -188,6 +188,18 @@ while true; do
       echo "$(date -u +%H:%M) hype_kuratieren gestartet (nur abräumen)"
     fi
   fi
+  # ADS-KURATION NACHZUG, einmal täglich gegen LIVE: der Export-Lauf deckt nur den
+  # Schnappschuss ab, der CJ-Grind legt täglich neue 1-Bild-/Billig-Produkte an — ohne
+  # Nachzug wüchse «Over capacity» einfach nach (Backfill-Regel vom 12.08.).
+  AK=/tmp/ads_kuration_live.log
+  if [ -f "$REPO/automation/google_ads_kuration.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$AK" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid env QUELLE=live SEIT=$(date -u -d '2 days ago' +%F) \
+          python3 automation/google_ads_kuration.py >> "$AK" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) ads_kuration Live-Nachzug gestartet"
+    fi
+  fi
   # GOOGLE-SPERREN DURCHSETZEN, einmal täglich. Am 14.08.2026 standen ALLE 16 Produkte, die
   # wegen von Google selbst gemeldeter Richtlinienverstösse aus dem Kanal genommen worden
   # waren, wieder drin — zurückgeholt von `gfeed_restore.py` (14) und
