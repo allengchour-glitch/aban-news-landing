@@ -144,3 +144,5 @@ gid://shopify/Product/15502133166465	box-zielpolster-fur-kinder-2er-set-614400	B
 gid://shopify/Product/15502134215041	automatischer-feder-abwehrstock-623700	Automatischer Feder-Abwehrstock
 gid://shopify/Product/15502192247169	fashion-personality-plateau-sandalen-627900	Fashion Personality Plateau-Sandalen
 gid://shopify/Product/15502192443777	quadratische-damenuhr-mit-diamanten-333440	Quadratische Damenuhr mit Diamanten
+gid://shopify/Product/15502261682561	boho-marokkanischer-kissenbezug-mit-fransen-223872	Boho Marokkanischer Kissenbezug mit Fransen
+gid://shopify/Product/15502261715329	longquan-fischgraten-und-geflugelschere-668480	Longquan Fischgräten- und Geflügelschere
