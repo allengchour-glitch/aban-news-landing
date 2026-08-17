@@ -1,5 +1,5 @@
 ﻿# Der Start ist abgebrochen. Diese Datei sagt wo.
-zeit:   2026-08-17 18:10:59
+zeit:   2026-08-17 18:12:25
 rechner: MSI
 grund:  Weder Handy noch Emulator erreichbar
 hinweis: Handy:      USB-Debugging an, Kabel steckt, 'Diesem Computer vertrauen?' bestaetigt.
