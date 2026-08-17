@@ -485,3 +485,8 @@ gid://shopify/Product/15447899242881	zugeordnet	10	Latex Taillentrainer für Rü
 gid://shopify/Product/15447899406721	zugeordnet	15	Funktionaler Utility-Gürtel für Herren
 gid://shopify/Product/15447899603329	zugeordnet	8	Damen Ledergürtel für Jeans und Hosen
 gid://shopify/Product/15447899734401	zugeordnet	3	Vintage Vollnarbenleder-Gürtel
+gid://shopify/Product/15447899931009	zugeordnet	59	Korsett mit Fischgrät-Stäbchen und 3 Verschlüssen
+gid://shopify/Product/15447900258689	zugeordnet	5	Atmungsaktiver Taillengürtel mit Fischgrät-Shapewear
+gid://shopify/Product/15447900422529	zugeordnet	5	Bauchformer mit doppelter Kompression
+gid://shopify/Product/15447900619137	zugeordnet	9	Fitness Taillenformer für Damen
+gid://shopify/Product/15447900750209	zugeordnet	21	Sportlicher Taillenformer mit Reissverschluss
