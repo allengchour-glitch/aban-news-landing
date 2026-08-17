@@ -452,3 +452,5 @@ gid://shopify/Product/15447891902849	zugeordnet	13	Jacquard Schal mit Cashew-Mus
 gid://shopify/Product/15447892099457	zugeordnet	21	Paisley Jacquard Schal mit Quasten
 gid://shopify/Product/15447892230529	zugeordnet	4	Eleganter vielseitiger quadratischer Schal
 gid://shopify/Product/15447892361601	zugeordnet	4	Retro Colorblock Blumen-Schal
+gid://shopify/Product/15447892656513	zugeordnet	4	Gebets-Schal mit Ethno-Muster
+gid://shopify/Product/15447892787585	zugeordnet	6	Bohemian Herbstschal aus Jacquard, Kaschmir-Optik
