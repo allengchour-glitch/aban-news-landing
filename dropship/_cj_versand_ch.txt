@@ -792,3 +792,4 @@ gid://shopify/Product/15501682213249	ok	Dual-Channel-Ladegerät
 gid://shopify/Product/15501743653249	ok	Leder-Tasche mit Computerfach
 gid://shopify/Product/15501946880385	nicht-versendbar	Kleiner Campingwagen
 gid://shopify/Product/15501847724417	ok	Automatischer Staubsauger
+gid://shopify/Product/15502040334721	ok	Dunkelbraune Lederhandtasche
