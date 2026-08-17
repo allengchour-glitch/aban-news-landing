@@ -149,3 +149,5 @@ gid://shopify/Product/15502261715329	longquan-fischgraten-und-geflugelschere-668
 gid://shopify/Product/15502308016513	gestreiftes-kurzarmhemd-mit-reverskragen-614300	Gestreiftes Kurzarmhemd mit Reverskragen
 gid://shopify/Product/15502308049281	atmungsaktive-mesh-sportschuhe-fur-herren-112896	Atmungsaktive Mesh Sportschuhe für Herren
 gid://shopify/Product/15502393672065	keramik-und-wolframstahl-nagelfraser-set-213e7f	Keramik- und Wolframstahl-Nagelfräser-Set
+gid://shopify/Product/15502488699265	retro-lederarmband-fur-herren-mit-kreuz-613000	Retro-Lederarmband für Herren mit Kreuz
+gid://shopify/Product/15502528381313	herren-kurzarmhemd-dunkelzelle-uni-farben-621500	Herren Kurzarmhemd Dunkelzelle Uni-Farben
