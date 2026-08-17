@@ -1654,6 +1654,52 @@ Alle neun: zmin = 0,000.
 
 ---
 
+## 2i. Überschneidungen prüfen — **mit Höhe** (`spiele-dev/tools/th-3d.mjs`)
+
+Ein ganzer Durchgang ging dafür drauf, zwei Platzierungen zu „reparieren", die in Ordnung
+waren, während zwei echte Fehler unbemerkt daneben standen. Ursache in beiden Richtungen:
+**alle Paarlisten vergleichen Bounding-Boxen nur in x und z.**
+
+**Falsch-positiv — das Vordach.** `th43_tankstelle × th7_lkw` meldet 2,64 m. In 3D zieht das
+Vordach (y 4,38…5,06) aber 0,68…1,08 m **über** dem 3,70 m hohen Fahrzeug durch. Von 305
+Mesh-Paaren im Grundriss berührt sich **genau eines**: eine Stütze von 0,30 × 0,30. Die
+gemeldete Zahl war die Vordachbreite, nicht der Fehler. Dasselbe gilt für Kranausleger,
+Baumkronen, Brücken und Bahnsteigdächer.
+
+**Falsch-negativ — die eigene Behauptung.** Im Code stand als Kommentar, über der Markthalle
+bleibe „nur der Ausleger auf 21 m, der gehört dorthin". Nachgemessen standen auch die beiden
+**Mastbeine** (y 0,60…20,00) und die **Fußplatte** (y 0,00…0,60) in einem Hallenbauteil, das
+von 0,00 bis 4,88 reicht — 12 Meshes steckten fest. Wer „das schwebt drüber" schreibt, muss
+die y-Werte danebenlegen; x/z sagen darüber nichts.
+
+**Falsch-positiv — das grobe Rechteck.** Die Sportanlage gegen ein 60 × 46-Rechteck geprüft
+meldet den Grillplatz als Treffer. Die Anlage ist aber Tore, Tribünen, Masten und Zaun mit
+viel Luft dazwischen; Teil für Teil gemessen sind es 0,4 m Abstand. Beinahe hätte ich das
+Feld deswegen 9 m verschoben — und den Flutlichtmast damit erst recht in den Grillplatz
+gesetzt. **Ein Ensemble ist kein Block.**
+
+**Falsch-positiv — der Nullpunkt.** Die Frame-Kette hängt in `loop()` hinter `if(running){…}`,
+und `running` wird erst beim Spielstart wahr. Eine Sonde drückt nie auf Start, also steht
+alles, was erst `updVerkehr`/`updLandbus`/`updZug` platziert, während der Messung auf (0|0) —
+zwei `th40_bus` mit 1458 gemeinsamen Mesh-Paaren übereinander. Messartefakt, kein Fehler.
+
+**Und die Straße fehlt in jeder Kollider-Karte.** `__th.frei()` und jede Paarliste kennen nur
+Modelle. Die Fahrbahnen stehen in `STRASSENBAND` (aus `GW 72, GH 46, CS 2` → `RX 78`,
+`RL 204`, `SZr 58`). Ein erster Korrekturversuch hätte die Tankstelle 2,7 m auf die
+Ringfahrbahn gesetzt und wäre in jeder Modellprüfung als „frei" durchgegangen.
+
+Daraus: `node spiele-dev/tools/th-3d.mjs` prüft alle 2D-Funde in 3D nach und trennt **ECHT**
+von **LUFT**; `node spiele-dev/tools/th-3d.mjs <a> <b>` zeigt ein Paar Mesh für Mesh mit
+y-Bereichen. Schwelle 0,50 m, weil Leitplanken-, Gerüst- und Zaunmodule sich planmäßig ihre
+Kanten teilen. Ergebnis des Durchgangs: von 176 2D-Funden sind **69 reine Luft**.
+
+> 🔑 **Die Regel.** Erst die Zahl aus der Hypothese ableiten, dann messen, dann ändern —
+> und zwischen „Boxen überlappen" und „Geometrie steckt ineinander" nie stillschweigend
+> wechseln. Zwei Änderungen dieses Durchgangs wurden vor dem Commit wieder verworfen, weil
+> die Messung die Vermutung widerlegt hat; das ist der Normalfall, nicht die Ausnahme.
+
+---
+
 ---
 ## 🎡 Freizeitpark-Quartier in `traumhaus.html` — fertiger Einbau
 

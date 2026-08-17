@@ -5766,7 +5766,14 @@ setTimeout(function baueGebaeude(){
        Markthalle x Baukran war mit 7,2 m die groesste der ganzen Karte.
        BX = -36 raeumt den Rohbau frei; der Bagger zieht auf die Westseite des
        Platzes. Was vom Kran ueber der Halle bleibt, ist der Ausleger auf 21 m —
-       der gehoert dorthin, ein Kran arbeitet ueber Nachbardaecher hinweg. */
+       der gehoert dorthin, ein Kran arbeitet ueber Nachbardaecher hinweg.
+       ⚠️ NACHTRAG: Der letzte Satz war eine BEHAUPTUNG, keine Messung — und er
+       war falsch. Mesh fuer Mesh nachgeprueft (spiele-dev/tools/th-3d.mjs) standen
+       auch die beiden MASTBEINE (Cylinder001/003, y 0,60…20,00) und die
+       Fussplatte (Cube108, y 0,00…0,60) in einem Hallenbauteil, das von y 0,00
+       bis 4,88 reicht: 12 Meshes steckten fest, nicht nur der Ausleger.
+       Wer schreibt "was bleibt, ist nur das Dach drueber", muss die y-Werte
+       daneben legen — eine Ueberschneidung in x/z sagt darueber nichts. */
     var BX=-36, BZ=102;
     function fest(datei,hoehe,x,z,ry,cb){
       bau(datei,hoehe,x,0,z,ry,false,function(w){w.userData.fest=true;if(cb)cb(w);},true);
@@ -5775,7 +5782,12 @@ setTimeout(function baueGebaeude(){
     addSolid(BX-5,BZ-1,13.0,10.0);
     /* ⚠️ Der Kran bewegt sich, gehoert also NIE in den Sichtbarkeits-Index:
        der wird einmal aus den Ladepositionen gebaut (Lehre aus Charge 40). */
-    fest("th46_baukran.glb",26.52,BX+9,BZ+3,0,function(w){
+    /* BX+8|BZ+5 statt BX+9|BZ+3: gemessen der naechste Stand, auf dem KEIN Bauteil
+       unterhalb 6 m mehr klemmt (49 Meshes geprueft, vorher 12 fest, jetzt 0).
+       Der Ausleger darf weiter ueber die Halle schwenken — nur der Turm muss
+       neben ihr stehen. Nach Norden bleiben bis zum Ring-Band (ab z 110,8)
+       1,9 m Luft: Kranfuss reicht dann bis z 108,9. */
+    fest("th46_baukran.glb",26.52,BX+8,BZ+5,0,function(w){
       w.userData.nieAusblenden=true; w._bewegt=true; window._baukran=w;});
     /* ⚠️ Erst standen die vier Geruestfelder auf BZ+5,4 — das ist 1,7 m NORDLICH
        der Rohbaukante (Tiefe 9,4 um BZ-1), sie klebten also an nichts, und eines
@@ -5784,7 +5796,13 @@ setTimeout(function baueGebaeude(){
        Die Wandseite liegt auf Blender -y, in three.js also +z; aus der Normalen
        (sin rotY, cos rotY) = (1,0) folgt rotY = +pi/2. */
     for(var k=0;k<4;k++) fest("th46_geruest.glb",7.34,BX-12.1,BZ-4.6+k*2.5,Math.PI/2);
-    fest("th46_bagger.glb",3.73,BX-8,BZ-9,-0.5);
+    /* ⚠️ BX-8|BZ-9 und das Materiallager auf BX-9|BZ-9 lagen EINEN Meter
+       auseinander — der Bagger stand mittendrin, 39 seiner Meshes steckten in
+       fremder Geometrie. Zwei Dinge aus derselben Zeile abzuleiten und nur die
+       x-Zahl zu variieren, reicht nicht; die Kisten sind 7,2 bzw. 6,8 m breit.
+       BX-2|BZ-10 ist der naechste gemessen freie Stand: suedlich des Rohbau-
+       Kolliders (z 96…106) und oestlich am Lager vorbei (dessen Kante x -41,4). */
+    fest("th46_bagger.glb",3.73,BX-2,BZ-10,-0.5);
     /* ⚠️ Auf BX+11 stand der Container weiter in der Markthalle (3,6 m). Die
        Ostseite des Bauplatzes gehoert der Halle — alles Bewegliche nach Westen. */
     fest("th46_baucontainer.glb",2.90,BX-12,BZ-8,Math.PI/2);
@@ -5929,7 +5947,15 @@ setTimeout(function baueGebaeude(){
          Grillplatz th16 (x 23,8…32,2 | z 167,8…176,2), gemessen 2,6 m
          Ueberschneidung: ein Flutlichtmast in einer Feuerstelle. Statt das ganze
          Feld zu verschieben (das haenge an SPORTFELD, Tribuenen, Toren und Zaun)
-         rueckt nur dieser eine Mast 6 m nach Westen aus dem Grillplatz heraus. */
+         rueckt nur dieser eine Mast 6 m nach Westen aus dem Grillplatz heraus.
+         ✅ NACHGEMESSEN: der Mast steht damit auf x 20,2…23,4, der Grillplatz
+         beginnt bei 23,8 — 0,4 m frei, KEIN th44-Teil beruehrt ihn noch.
+         ⚠️ Wer die Anlage mit einem groben Rechteck (60 x 46 um CX|CZ) prueft,
+         bekommt den Grillplatz trotzdem als Treffer gemeldet: das Rechteck
+         verschluckt ihn, die Anlage besteht aber aus Toren, Tribuenen, Masten
+         und Zaun mit viel Luft dazwischen. Genau darauf bin ich hereingefallen
+         und wollte CX auf 62 schieben — das haette den Mast wieder MITTEN in
+         den Grillplatz gesetzt (30,5 statt 21,5). CX bleibt 53. */
       if(q===2) fx-=6.0;
       fest("th44_flutlichtmast.glb",17.63,fx,fz,Math.atan2(CZ-fz,CX-fx));
     }
@@ -5981,6 +6007,19 @@ setTimeout(function baueGebaeude(){
        Waschbox NICHT mehr: sie steht jetzt gegenueber, westlich der Querstrasse.
        Erster Korrekturversuch (+6 in z) landete selbst im Haupt-N-Band — die
        Bandgrenzen stehen jetzt oben, damit das niemand nochmal ausprobiert. */
+    /* ⚠️ Bekannter Rest, BEWUSST nicht verschoben: eine Vordachstuetze
+       (Cylinder002, y 0,15…4,45, 0,30 x 0,30) steht im geparkten th7_lkw.
+       Die 2D-Paarliste meldet dafuer 2,64 m — das ist die Vordachbreite, nicht
+       der Fehler; das Dach selbst zieht 0,68…1,08 m UEBER dem 3,70 m hohen
+       Fahrzeug durch. Von 305 Mesh-Paaren im Grundriss beruehrt sich GENAU EINES.
+       Verschieben geht nicht: die Tasche zwischen dem Band bei x 78 (endet 86)
+       und dem Ring-Band bei x 112 (beginnt 105) ist 19 m breit, die Station
+       14,4 — ihre Mitte kann nur zwischen 93,2 und 97,8 liegen, und in einem
+       Raster von +-8 m gibt es KEINEN freien Stand. Ein erster Versuch mit +5
+       haette sie 2,7 m auf die Ringfahrbahn gesetzt.
+       Der LKW selbst steckt zugleich mit 170 Mesh-Paaren in th7_lagerhalle —
+       seine Position gehoert der Nachbar-Session, dort liegt auch die Ursache.
+       Pruefen mit: node spiele-dev/tools/th-3d.mjs th43_tankstelle th7_lkw */
     fest("th43_tankstelle.glb",5.06,95.5,-73.6,Math.PI);
     addSolid(98.75,-75.3,7.6,5.2,{a:"z",at:-72.6,c:98.75,w:3.0});
     for(var z9=0;z9<2;z9++)
