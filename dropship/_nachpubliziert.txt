@@ -140,3 +140,7 @@ gid://shopify/Product/15501884522881	ladegerat-fur-drei-gerate-628000	Ladegerät
 gid://shopify/Product/15501884588417	edelstahl-armbanduhr-553536	Edelstahl-Armbanduhr
 gid://shopify/Product/15501903102337	idle-rhinestone-hollow-loafers-113856	Idle Rhinestone Hollow Loafers
 gid://shopify/Product/15502071267713	federgriff-schlackenhammer-aus-karbonstahl-479232	Federgriff-Schlackenhammer aus Karbonstahl
+gid://shopify/Product/15502133166465	box-zielpolster-fur-kinder-2er-set-614400	Box-Zielpolster für Kinder (2er-Set)
+gid://shopify/Product/15502134215041	automatischer-feder-abwehrstock-623700	Automatischer Feder-Abwehrstock
+gid://shopify/Product/15502192247169	fashion-personality-plateau-sandalen-627900	Fashion Personality Plateau-Sandalen
+gid://shopify/Product/15502192443777	quadratische-damenuhr-mit-diamanten-333440	Quadratische Damenuhr mit Diamanten
