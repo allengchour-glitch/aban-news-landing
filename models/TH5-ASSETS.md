@@ -1693,10 +1693,28 @@ von **LUFT**; `node spiele-dev/tools/th-3d.mjs <a> <b>` zeigt ein Paar Mesh für
 y-Bereichen. Schwelle 0,50 m, weil Leitplanken-, Gerüst- und Zaunmodule sich planmäßig ihre
 Kanten teilen. Ergebnis des Durchgangs: von 176 2D-Funden sind **69 reine Luft**.
 
+### Der Entzerrer ist die Lösung, nicht das Problem — er braucht nur ein Ziel
+
+Größter echter Fund danach: eine Eiche stand mit 6,38 m **im Wirtshaus** (`bd_inn × th4_eiche`).
+Verlockend wäre gewesen, die ganze Baumreihe zu verschieben oder sie mit `userData.fest`
+festzunageln. Beides falsch. Alle 33 Stücke der Südzeile nachgemessen: **genau drei** steckten
+in einem Haus, und alle drei in derselben Lücke — vor der einen Front, die tiefer ist als der
+Rest der Zeile (`bd_inn` beginnt bei z 69,5 und frisst den Begrünungsstreifen). Die z-Werte der
+Zeile stimmen also; nur dort ist kein Platz.
+
+`fest` wäre erst recht falsch gewesen: die Bäume haben 6,9 m Krone in einem Streifen von keinen
+3 m. Dass `entwirren()` sie in die Vorgärten schiebt, **ist** die Lösung — nur vor dem Wirtshaus
+gibt es keinen Vorgarten, in den er ausweichen könnte, also schob er sie in die Wand. Behoben
+mit einer Lücke pro Zeile (`zeile(…, leer)`), nicht mit einer neuen Regel für alle. Die Lücke
+gilt bewusst nur für die Südzeile — pauschal angewandt hätte sie der Nordzeile bei x −30 einen
+tadellosen Baum weggenommen.
+
 > 🔑 **Die Regel.** Erst die Zahl aus der Hypothese ableiten, dann messen, dann ändern —
 > und zwischen „Boxen überlappen" und „Geometrie steckt ineinander" nie stillschweigend
 > wechseln. Zwei Änderungen dieses Durchgangs wurden vor dem Commit wieder verworfen, weil
 > die Messung die Vermutung widerlegt hat; das ist der Normalfall, nicht die Ausnahme.
+> Und wer einen Automatismus „repariert", der etwas Falsches tut, prüft zuerst, ob der
+> Automatismus recht hat und ihm nur der Platz fehlt.
 
 ---
 
