@@ -19,6 +19,22 @@ das Skript laufen lassen. Aufbau:
   Beauty-Gerät gewählt); ein «Intim-Pflegeserum» wäre auf der Startseite gelandet → `NICHT_STARTSEITE`.
   Bedingungen für die Reihe: ≥2 Bilder, ab CHF 19, im Google-Kanal, kein Kostüm/Spielzeug/Partydeko.
 
+## 🤖 46+23-Agenten-Doppel-Audit mit Reparatur-Flotte (2026-08-16)
+Zwei Workflow-Runden («100 agent go»): 25 Finder-Dimensionen auf frischem 214-MB-Export, adversariale
+Live-Verifikation, dann REPARATUR-Agenten mit Schreibauftrag. Ergebnis: 72 Produkte repariert
+(45 Texte rechtssicher umgeschrieben — Heilversprechen→Erscheinungsbild, Marken aus Titeln;
+5 gedraftet: Tierpräparate, Hanföl, Antifungal, 9-Mio-mAh-Powerbank; 18 Kanal/Tags). Vorher als
+Sofortmassnahme: Teleskopschlagstock, Elektroschocker («Spielzeug» mit KINDER-Tags!), 2 Schock-
+Halsbänder (TSchV 76), 3 MepV-Geräte, Wurfdolche/Machete → DRAFT; 12 Klingen + 4 Rauchzubehör
+(als «Werkzeug/Küche» getarnt!) aus Google. Abnahme 5/5 live bestätigt.
+**Lehren:** (1) Der CJ-Grind legt die 12.08.-Fehlerklassen TÄGLICH neu an — Wächter brauchen
+SEIT-Modus gegen LIVE, Einmal-Ledger veralten. (2) Rauchzubehör/Klingen per FUNKTION suchen
+(Zigarre/Hygrometer/Klinge), nicht per Tag — eigene Klassifizierung prüft nur bekannte Fehler.
+(3) Fashion ohne Grössentabelle = 4'974 Produkte Retourenrisiko — ERST Importer-Snippet bauen
+(wer schreibt es beim nächsten Produkt?), DANN Backfill. (4) Workflow-Muster funktioniert:
+Finder auf lokalem Export (API-schonend) → Skeptiker gegen LIVE → Schreiber mit harten Regeln
+(minimal-invasiv, nie löschen, 1 req/s) → Abnahme-Stichprobe.
+
 ## 🧟 Ein Massen-Schreiber macht alte Fixes rückgängig (2026-08-15)
 `versandaussagen_wahrheit.py` (14.08.) hat bei **149 Produkten den doppelten Produktdetails-Block
 wiederbelebt**, den der Dedup-Lauf vom 11.08. entfernt hatte — und bei 1 Produkt den Lieferanten-
