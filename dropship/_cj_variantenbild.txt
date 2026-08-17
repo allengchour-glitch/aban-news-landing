@@ -454,3 +454,13 @@ gid://shopify/Product/15447892230529	zugeordnet	4	Eleganter vielseitiger quadrat
 gid://shopify/Product/15447892361601	zugeordnet	4	Retro Colorblock Blumen-Schal
 gid://shopify/Product/15447892656513	zugeordnet	4	Gebets-Schal mit Ethno-Muster
 gid://shopify/Product/15447892787585	zugeordnet	6	Bohemian Herbstschal aus Jacquard, Kaschmir-Optik
+gid://shopify/Product/15447892885889	zugeordnet	10	Warmer Jacquard-Poncho mit Quasten
+gid://shopify/Product/15447893049729	zugeordnet	15	Retro-Schal mit Quasten, vielseitig tragbar
+gid://shopify/Product/15447893180801	zugeordnet	6	Geometrischer Jacquard Schal mit Quasten
+gid://shopify/Product/15447893311873	zugeordnet	6	Bestickter Quasten-Schal für Damen
+gid://shopify/Product/15447894098305	zugeordnet	2	Bestickter Schal im koreanischen Stil
+gid://shopify/Product/15447894294913	zugeordnet	21	Seidenmaske mit Halsbedeckung für Damen
+gid://shopify/Product/15447894458753	zugeordnet	5	Seidene UV-Schutzmaske mit Katzenohren
+gid://shopify/Product/15447894688129	zugeordnet	4	UV-Schutz Gesichtsmaske
+gid://shopify/Product/15447894819201	zugeordnet	6	Ice Silk Gesichtsmaske mit UV-Schutz
+gid://shopify/Product/15447894983041	zugeordnet	2	UV-Schutz Gesichtsmaske aus Maulbeerseide
