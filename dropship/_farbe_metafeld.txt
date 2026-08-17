@@ -221,3 +221,6 @@ gid://shopify/Product/15501943898497	Beige
 gid://shopify/Product/15501947732353	Schwarz
 gid://shopify/Product/15502145388929	Schwarz
 gid://shopify/Product/15502179336577	Grün
+gid://shopify/Product/15502526677377	Mehrfarbig
+gid://shopify/Product/15502528741761	Mehrfarbig
+gid://shopify/Product/15502529724801	Mehrfarbig
