@@ -6837,3 +6837,4 @@ gid://shopify/Product/15452683239809	17->0	Sicherheitsgurt Schulterpolster Schut
 gid://shopify/Product/15452688843137	15->0	Retro Streifen-Langrock mit Polo-Kragen & Seitenschlitz
 gid://shopify/Product/15453728899457	11->0	Boho-Plakat mit geometrischen Linien
 gid://shopify/Product/15413077115265	999->0	Wide-Leg-Hose «Largo» – gerades Bein, elegant
+gid://shopify/Product/15448937005441	18->0	LED-Photonenmaske mit Hals- und Hautpflege
