@@ -464,3 +464,11 @@ gid://shopify/Product/15447894458753	zugeordnet	5	Seidene UV-Schutzmaske mit Kat
 gid://shopify/Product/15447894688129	zugeordnet	4	UV-Schutz Gesichtsmaske
 gid://shopify/Product/15447894819201	zugeordnet	6	Ice Silk Gesichtsmaske mit UV-Schutz
 gid://shopify/Product/15447894983041	zugeordnet	2	UV-Schutz Gesichtsmaske aus Maulbeerseide
+gid://shopify/Product/15447895114113	zugeordnet	29	UV-Schutz Gesichtsmaske mit Ohrenschlaufen
+gid://shopify/Product/15447895310721	zugeordnet	5	UV-Schutz Facekini mit breiter Krempe
+gid://shopify/Product/15447895736705	zugeordnet	5	Gefütterte Thermo-Gesichtsmaske für kalte Tage
+gid://shopify/Product/15447895933313	zugeordnet	6	Taktische Halbgesichtsmaske «Scorpion»
+gid://shopify/Product/15447896195457	zugeordnet	14	Multifunktionaler Jacquard Schal
+gid://shopify/Product/15447896326529	zugeordnet	13	Bedruckte, atmungsaktive Sommer-Sonnenschutzmaske
+gid://shopify/Product/15447896490369	zugeordnet	5	Seidenmaske mit UV-Schutz und Staubfilter
+gid://shopify/Product/15447896654209	zugeordnet	2	Rock Field CS Spike Unisex Punk Rope Leder Maske
