@@ -407,3 +407,10 @@ gid://shopify/Product/15447878762881	zugeordnet	4	Babyphone mit HD-Kamera und Ap
 gid://shopify/Product/15447881974145	zugeordnet	6	Dreieckiger Strickschal mit Lochmuster
 gid://shopify/Product/15447882137985	zugeordnet	8	Baumwoll-Leinen Gestreifter Jacquard Schal
 gid://shopify/Product/15447882301825	zugeordnet	39	Quadratisches Baumwoll-Seidentuch mit Blumenmuster
+gid://shopify/Product/15447882432897	zugeordnet	56	Damen-Cape mit Ethno-Muster und Wärme-Funktion
+gid://shopify/Product/15447882596737	zugeordnet	16	Multifunktionaler Halswärmer für jede Jahreszeit
+gid://shopify/Product/15447882891649	zugeordnet	6	Gestreifter Strick-Schal für Damen
+gid://shopify/Product/15447883022721	zugeordnet	5	Vielseitiger Schal mit abnehmbarem Kragen
+gid://shopify/Product/15447883153793	zugeordnet	4	Vintage Ombre Schal in Seiden-Optik
+gid://shopify/Product/15447883317633	zugeordnet	4	Dreieckstuch mit Cutout und Quasten
+gid://shopify/Product/15447883383169	zugeordnet	3	Gedruckter Baumwoll-Leinen Schal für Herbst/Winter
