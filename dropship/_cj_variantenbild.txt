@@ -417,3 +417,6 @@ gid://shopify/Product/15447883383169	zugeordnet	3	Gedruckter Baumwoll-Leinen Sch
 gid://shopify/Product/15447883645313	zugeordnet	29	Schal in Seiden-Optik mit UV-Schutz für Strand & Freizeit
 gid://shopify/Product/15447883710849	zugeordnet	14	Kaschmirähnlicher Schal mit Totem-Muster
 gid://shopify/Product/15447883841921	zugeordnet	7	Vielseitiger Dreiecksschal mit Bindebändern
+gid://shopify/Product/15447883972993	zugeordnet	5	Leichter Strick-Schal aus Eisseide
+gid://shopify/Product/15447884104065	zugeordnet	6	Gestreifter Plissee-Schal aus Baumwoll-Leinen
+gid://shopify/Product/15447884267905	zugeordnet	19	Quadratisches Halstuch mit UV-Schutz
