@@ -490,3 +490,6 @@ gid://shopify/Product/15447900258689	zugeordnet	5	Atmungsaktiver Taillengürtel 
 gid://shopify/Product/15447900422529	zugeordnet	5	Bauchformer mit doppelter Kompression
 gid://shopify/Product/15447900619137	zugeordnet	9	Fitness Taillenformer für Damen
 gid://shopify/Product/15447900750209	zugeordnet	21	Sportlicher Taillenformer mit Reissverschluss
+gid://shopify/Product/15447900881281	zugeordnet	8	Multifunktionaler Gürtel mit Automatik-Schnalle
+gid://shopify/Product/15447901536641	zugeordnet	5	Florale Magnetbrosche
+gid://shopify/Product/15447901700481	zugeordnet	4	Boho-Stil Canvas-Gürtel mit Ethno-Muster
