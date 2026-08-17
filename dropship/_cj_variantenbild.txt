@@ -414,3 +414,6 @@ gid://shopify/Product/15447883022721	zugeordnet	5	Vielseitiger Schal mit abnehmb
 gid://shopify/Product/15447883153793	zugeordnet	4	Vintage Ombre Schal in Seiden-Optik
 gid://shopify/Product/15447883317633	zugeordnet	4	Dreieckstuch mit Cutout und Quasten
 gid://shopify/Product/15447883383169	zugeordnet	3	Gedruckter Baumwoll-Leinen Schal für Herbst/Winter
+gid://shopify/Product/15447883645313	zugeordnet	29	Schal in Seiden-Optik mit UV-Schutz für Strand & Freizeit
+gid://shopify/Product/15447883710849	zugeordnet	14	Kaschmirähnlicher Schal mit Totem-Muster
+gid://shopify/Product/15447883841921	zugeordnet	7	Vielseitiger Dreiecksschal mit Bindebändern
