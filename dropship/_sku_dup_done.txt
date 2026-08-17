@@ -635,3 +635,8 @@ gid://shopify/Product/15500983599489	CJ-1379239950083559424	Retro-Halstuch mit G
 gid://shopify/Product/15500983959937	CJ-1378619421400109056	Halsband Kleine Duftperlen
 gid://shopify/Product/15500984189313	CJ-1642839298447773696	Hund- und Katzenkleid mit Geschirr im Hahnentritt-Muster
 gid://shopify/Product/15500984254849	CJ-1641692199849037824	Reissfestes Geschirr für Katzen und Hunde
+gid://shopify/Product/15501054214529	CJ-1399951068267417600	Thick Tatami Sitzkissen für Stühle & Tische
+gid://shopify/Product/15501054378369	CJ-1398167790246039552	Ovale Baumwoll-Jute-Matte für jeden Raum
+gid://shopify/Product/15501059490177	CJ-1390643880264863744	Dreieckiges Kissen, abnehm- und waschbar
+gid://shopify/Product/15501059654017	CJ-1390581794994262016	Weiches Bodenkissen im japanischen Stil
+gid://shopify/Product/15502383120769	CJ-1455128081592356864	Outdoor Rucksack Tarnmuster
