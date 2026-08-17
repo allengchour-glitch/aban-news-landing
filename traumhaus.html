@@ -5760,7 +5760,14 @@ setTimeout(function baueGebaeude(){
      Mastachse, damit genau das geht (siehe Dateikopf von mk_th46_baustelle.py).
      Ein Baukran, der stillsteht, ist ein Mast mit Querbalken. */
   (function baustelleAusbau(){
-    var BX=-30, BZ=102;
+    /* ⚠️ GEMESSEN, nicht geschaetzt: bei BX = -30 lag der Rohbau (x -41,2…-28,8)
+       um 3,6 m ueber der offenen Markthalle th8 (x -32,4…-19,6), und der Bagger
+       (x -30,6…-23,4 | z 90,7…95,3) stand MITTEN DARIN. Die Ueberschneidung
+       Markthalle x Baukran war mit 7,2 m die groesste der ganzen Karte.
+       BX = -36 raeumt den Rohbau frei; der Bagger zieht auf die Westseite des
+       Platzes. Was vom Kran ueber der Halle bleibt, ist der Ausleger auf 21 m —
+       der gehoert dorthin, ein Kran arbeitet ueber Nachbardaecher hinweg. */
+    var BX=-36, BZ=102;
     function fest(datei,hoehe,x,z,ry,cb){
       bau(datei,hoehe,x,0,z,ry,false,function(w){w.userData.fest=true;if(cb)cb(w);},true);
     }
@@ -5777,8 +5784,10 @@ setTimeout(function baueGebaeude(){
        Die Wandseite liegt auf Blender -y, in three.js also +z; aus der Normalen
        (sin rotY, cos rotY) = (1,0) folgt rotY = +pi/2. */
     for(var k=0;k<4;k++) fest("th46_geruest.glb",7.34,BX-12.1,BZ-4.6+k*2.5,Math.PI/2);
-    fest("th46_bagger.glb",3.73,BX+2,BZ-9,-0.5);
-    fest("th46_baucontainer.glb",2.90,BX+11,BZ-8,Math.PI/2);
+    fest("th46_bagger.glb",3.73,BX-8,BZ-9,-0.5);
+    /* ⚠️ Auf BX+11 stand der Container weiter in der Markthalle (3,6 m). Die
+       Ostseite des Bauplatzes gehoert der Halle — alles Bewegliche nach Westen. */
+    fest("th46_baucontainer.glb",2.90,BX-12,BZ-8,Math.PI/2);
     fest("th46_materiallager.glb",1.20,BX-9,BZ-9,0);
     fest("th46_mischer.glb",1.36,BX-2,BZ-7,0.7);
     for(var z9=0;z9<9;z9++) fest("th46_bauzaun.glb",2.16,BX-14+z9*3.5,BZ-12.5,0);
@@ -5916,6 +5925,12 @@ setTimeout(function baueGebaeude(){
     for(var t9=0;t9<2;t9++) addSolid(CX-6+t9*12,CZ+FT/2+3.5,10,3); /* 🩹 Schwarm-7: Tribuenen ohne Kollider */
     for(var q=0;q<4;q++){                                         // Flutlicht an den Ecken
       var fx=CX+(q%2?1:-1)*(FB/2+2.5), fz=CZ+(q<2?-1:1)*(FT/2+2.5);
+      /* ⚠️ Die Nordwest-Ecke faellt auf (27,5|172,5) — dort liegt seit langem der
+         Grillplatz th16 (x 23,8…32,2 | z 167,8…176,2), gemessen 2,6 m
+         Ueberschneidung: ein Flutlichtmast in einer Feuerstelle. Statt das ganze
+         Feld zu verschieben (das haenge an SPORTFELD, Tribuenen, Toren und Zaun)
+         rueckt nur dieser eine Mast 6 m nach Westen aus dem Grillplatz heraus. */
+      if(q===2) fx-=6.0;
       fest("th44_flutlichtmast.glb",17.63,fx,fz,Math.atan2(CZ-fz,CX-fx));
     }
     for(var b=0;b<2;b++)                                          // Ersatzbaenke
@@ -5923,7 +5938,11 @@ setTimeout(function baueGebaeude(){
     fest("th44_spielstand.glb",5.60,CX,CZ+FT/2+9.5,0);
     for(var f=0;f<5;f++)                                          // Ballfangzaun im Osten
       fest("th44_ballfangzaun.glb",4.90,CX+FB/2+3.0,CZ-8+f*4,Math.PI/2);
-    fest("th44_kasse.glb",3.09,CX-FB/2-3.0,CZ-FT/2-3.0,0);
+    /* ⚠️ Die Kasse stand auf (27|137) — genau dort steht auch der Flutlichtmast
+       der Suedwest-Ecke (CX-FB/2-2,5 | CZ-FT/2-2,5). Beide aus derselben Formel,
+       beide auf denselben Punkt. Wer zwei Dinge aus der Feldgeometrie ableitet,
+       muss pruefen, ob die Ableitungen zusammenfallen. */
+    fest("th44_kasse.glb",3.09,CX-FB/2-3.0,CZ-FT/2+7.0,0);
     fest("th44_sprunganlage.glb",0.18,CX-2,CZ+FT/2+16.0,0);
   })();
   /* ── 🚒⛽ Charge 43: Feuerwache und Tankstelle ───────────────────────────────
