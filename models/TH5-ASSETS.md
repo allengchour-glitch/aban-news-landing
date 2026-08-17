@@ -1654,6 +1654,88 @@ Alle neun: zmin = 0,000.
 
 ---
 
+## 2j. Charge 49 — KLINIK UND RETTUNGSDIENST (`models/th49_*.glb`)
+
+Die Stadt hatte eine Feuerwache (th43) und einen ganzen Polizeiapparat, aber **kein
+Krankenhaus**. Im Spielcode nach `krankenhaus|klinik|hotel|kino|museum` gesucht: alles 0. Der
+dritte Rettungsdienst fehlte komplett — das war die größte verbliebene Funktionslücke.
+
+| Datei | Maße (B×T×H) | Dreiecke | Inhalt |
+|---|---|---|---|
+| `th49_klinik.glb` | 26,60 × 18,80 × 13,67 | 34 768 | 3 Geschosse, Fensterbänder auf allen Seiten, Glasfront, Vordach auf Stützen, H-Tafel, Attika, Technikaufbau, Treppenhauskopf |
+| `th49_notaufnahme.glb` | 16,50 × 18,15 × 5,98 | 8 524 | Anfahrt unter dem Vordach (**4,40 m lichte Höhe**), zwei Schiebetore, Leuchtband, Rammschutz, Zufahrtsmarkierung |
+| `th49_rettungswagen.glb` | 6,68 × 2,35 × 2,68 | 12 668 | Kastenaufbau per `keil_y`, Blaulichtbalken, Leuchtstreifen, Flügeltüren, gerahmte Fenster |
+| `th49_helilandeplatz.glb` | 16,79 × 20,56 × 4,82 | 3 316 | Achteckdeck, flaches H, tangentiale Randmarkierung, 8 Randfeuer, Windsack, Löschmittelschränke |
+| `th49_arztpraxis.glb` | 12,00 × 11,69 × 8,58 | 10 380 | Satteldach als Körper, Erker mit Eingang, Praxisschild, Schornstein |
+| `th49_apotheke.glb` | 10,60 × 9,96 × 6,72 | 9 544 | Schaufensterfront, Markise, **grünes Kreuz auf Ausleger** |
+| `th49_wartebank.glb` | 1,80 × 0,62 × 0,86 | 1 728 | 3 Sitzschalen auf Stahlträger, Armlehnen mit Pfosten, **Raster x += 1,90** |
+| `th49_rollstuhl.glb` | 0,96 × 0,84 × 0,95 | 10 504 | Greifreifen als Ring, Lenkrollen, Fußstützen, Schiebegriffe |
+| `th49_klinikgelaende.glb` | 48,00 × 40,41 × 13,67 | 107 568 | **Maßstabs-Test**, nur aus den Teilen oben |
+
+Generator: `tools/assets/mk_th49_klinik.py` · Werkzeug: `tools/assets/th_werkzeug.py`.
+Alle neun: zmin = 0,000.
+
+> ⚠️ **Kein rotes Kreuz.** Das Emblem ist nach den Genfer Abkommen geschützt und gehört nicht
+> auf ein Spielobjekt. Verwendet werden die Zeichen, die ohnehin die richtigen sind: **weißes H
+> auf Blau** für Klinik und Landeplatz (europäische Wegweisung), **grünes Kreuz** für die
+> Apotheke (CH/FR-Konvention). Korrekter *und* sauberer.
+
+> ⚠️ **Ein Zeichen auf dem Boden hat keine Höhe, es hat eine Länge.** Das H des Landeplatzes
+> entstand mit derselben Funktion wie die H-Tafeln an der Wand — und stand dadurch 4,60 m
+> **hochkant mitten im Deck**, gemessen zmin −1,92. Erst der Schalter `eben=True` legt es flach.
+> Dieselbe Verwechslung wie der senkrechte Basketballring (42), nur um die andere Achse.
+
+> ⚠️ **Tangential heißt `+a`, nicht `−a`.** Die acht Randstriche des Landeplatzes standen wie
+> ein Stern nach außen. Die Längsachse +y geht bei Drehung um `a` auf `(−sin a, cos a)` — genau
+> die Tangente. Und der Radius muss *innerhalb* des Achtecks liegen: die Seitenmitten sitzen auf
+> `R·cos 22,5° = 6,47`, bei 6,70 hingen die Striche in der Luft. **Im Render sofort zu sehen, in
+> den Maßen nie.**
+
+> ⚠️ **Ein Greifreifen ist ein Ring.** Als `zyl` war er eine volle **Scheibe** und deckte das
+> ganze Rad zu — ein weißer Deckel über den Speichen. Dieselbe Familie wie „ein Rahmen sind vier
+> Balken". Ebenso das blaue Band des Notaufnahme-Vordachs: als volle Platte oben aufgelegt war
+> das ganze Dach blau statt weiß mit blauer Kante. **Ein Rand ist kein Deckel.**
+
+> ⚠️ **Ein Schild gehört dahin, wo man es sieht.** Das H der Notaufnahme saß an der Wand hinter
+> einem 6,60 m tiefen Vordach — von der Zufahrt aus unsichtbar. An die Blende gehört es. Beim
+> ersten Korrekturversuch lag es dann flach auf der Dachoberkante und las sich als schwarzes Loch.
+
+> ⚠️ **Der Maßstabs-Test ist ein Schaubild, kein Bebauungsplan.** Er stellt die Teile eng
+> zusammen, damit sie aufs Bild passen. Diese Abstände in die Karte übernommen ergaben **18
+> Kollisionen im eigenen Areal**. Für den Einbau zählen die gemessenen Kästen, nicht das Poster.
+
+### Einbau: `_gebaeude` ist nicht die Welt
+
+Der Ort wurde **zweimal** gesucht, beim ersten Mal falsch. Die Suche lief gegen
+`window._gebaeude` und meldete (0|−128) als frei. Im Spiel standen dort **fünf Hochhäuser von 19
+bis 39 m**: die Quartiere bauen ihre Türme prozedural, sie sind keine geladenen Modelle und
+stehen in keiner Modell-Liste. Aufgefallen ist es erst am Screenshot aus dem laufenden Spiel —
+die Messung hatte „frei" gesagt.
+
+Das ist dieselbe Klasse Fehler wie „Fahrbahnen sind keine Kollider", nur eine Ebene höher.
+**Wer eine Fläche sucht, muss die ganze Szene traversieren**, nicht eine Modell-Liste:
+
+```js
+let wurzel = (window._gebaeude||[])[0]      // `scene` ist Closure-lokal
+while (wurzel && wurzel.parent) wurzel = wurzel.parent
+wurzel.traverse(o => { /* alle Meshes über 2 m, Grundriss unter 70 m */ })
+```
+
+Die zweite Suche über **alle 3 191 Meshes** plus Bänder, Zubringer, Ring-Landstraße (r 200),
+acht Bergfüße, Sportfeld, Seepark: für 48 × 38 gibt es auf der ganzen Karte **keinen Platz mehr**.
+Was es gibt, ist ein Streifen **46 × 24** — davon 94 Stück. Also kein Campus, sondern eine Zeile
+an der Straße bei (0|−136); Apotheke, Praxis und Landeplatz stehen auf eigenen Taschen.
+
+> ⚠️ **Und das zweite Ding gegen den Stand mit dem ersten prüfen.** Landeplatz und Praxis waren
+> beide *einzeln* frei gesucht — gegeneinander nicht, und dann überschnitten sie sich um 3,2 m.
+
+> ✅ **Nicht jede gemeldete Kollision ist eine.** Die Prüfung meldet vier Treffer Rettungswagen ×
+> Notaufnahme. Nachgesehen sind es die **Reifen** (y 0,00…0,84) gegen den Asphaltvorplatz
+> (0,00…0,04) und die Fahrbahnmarkierung: ein Fahrzeug, das auf dem Hof *steht*. Nachsehen,
+> nicht wegschieben.
+
+---
+
 ## 2i. Überschneidungen prüfen — **mit Höhe** (`spiele-dev/tools/th-3d.mjs`)
 
 Ein ganzer Durchgang ging dafür drauf, zwei Platzierungen zu „reparieren", die in Ordnung
