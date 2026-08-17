@@ -421,3 +421,8 @@ gid://shopify/Product/15447883972993	zugeordnet	5	Leichter Strick-Schal aus Eiss
 gid://shopify/Product/15447884104065	zugeordnet	6	Gestreifter Plissee-Schal aus Baumwoll-Leinen
 gid://shopify/Product/15447884267905	zugeordnet	19	Quadratisches Halstuch mit UV-Schutz
 gid://shopify/Product/15447884398977	zugeordnet	10	Plissierter Schal in Seiden-Optik mit Rautenmuster
+gid://shopify/Product/15447884530049	zugeordnet	13	Wollschal einfarbig für Damen
+gid://shopify/Product/15447884792193	zugeordnet	3	Eleganter Faux-Kaschmir Schal für jede Jahreszeit
+gid://shopify/Product/15447884890497	zugeordnet	15	Vielseitiger Chiffon-Schal mit Blumenmuster
+gid://shopify/Product/15447885185409	zugeordnet	8	Organza Schal mit Quasten
+gid://shopify/Product/15447885316481	zugeordnet	9	Retro Karo-Halstuch mit Sonnenschutz

@@ -800,3 +800,6 @@ gid://shopify/Product/15502265549185	nicht-versendbar	Multifunktionales Abtropfg
 gid://shopify/Product/15502132609409	ok	Butterfly Fancy Show Titanium Trainingsmesser
 gid://shopify/Product/15502131298689	nicht-versendbar	Multifunktionales Bauchtrainer-Rad
 gid://shopify/Product/15502307230081	ok	Brain-Link-Stirnband für mentale Fitness
+gid://shopify/Product/15502468940161	nicht-versendbar	Metall-Standregal für Kleider & Accessoires
+gid://shopify/Product/15502473855361	ok	Weinregal aus Massivholz zur Selbstmontage
+gid://shopify/Product/15502558364033	ok	Armkraft-Trainingsstab
