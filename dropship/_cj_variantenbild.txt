@@ -442,3 +442,8 @@ gid://shopify/Product/15447889084801	zugeordnet	8	Kurzer Cardigan aus Chiffon mi
 gid://shopify/Product/15447889478017	zugeordnet	9	Farbverlauf Satin Crinkle Schal
 gid://shopify/Product/15447889740161	zugeordnet	16	Sonnen-Cape im Retro-Stil
 gid://shopify/Product/15447889969537	zugeordnet	9	Warmer Schal aus Fuchsfell und Rexkaninchenfell
+gid://shopify/Product/15447890264449	zugeordnet	7	Kaschmir-Schal für Damen
+gid://shopify/Product/15447890821505	zugeordnet	15	Leichter Schal mit Wasserwellenmuster
+gid://shopify/Product/15447891050881	zugeordnet	18	Kapuzen-Schal mit Kordelzug für Damen
+gid://shopify/Product/15447891542401	zugeordnet	19	Crinkled Satin Schal – Seidig Glatt
+gid://shopify/Product/15447891673473	zugeordnet	10	Cashew-Jacquard-Schal mit Quasten
