@@ -200,6 +200,20 @@ while true; do
       echo "$(date -u +%H:%M) ads_kuration Live-Nachzug gestartet"
     fi
   fi
+  # VERSANDAUSSAGEN-LIVE-KONTROLLE alle 3 Tage: Am 17.08. standen 4'356 Produkte WIEDER mit
+  # dem alten EU/USA-Block da, obwohl sie im Ledger als erledigt geführt waren (Zombie-
+  # Muster vom 15.08., Verursacher unbekannt). Der Live-Modus prüft nach INHALT, nicht nach
+  # Ledger — er findet also jede Wiederauferstehung und tilgt sie.
+  VL=/tmp/versand_live.log
+  if [ -f "$REPO/automation/versandaussagen_wahrheit.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$VL" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 259200 ]; then
+      ( cd "$REPO" && setsid bash -c \
+          "exec 9>/tmp/lock_versand_live.lock; flock -n 9 || exit 0; QUELLE=live exec python3 automation/versandaussagen_wahrheit.py" \
+          >> "$VL" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) versandaussagen Live-Kontrolle gestartet"
+    fi
+  fi
   # GOOGLE-SPERREN DURCHSETZEN, einmal täglich. Am 14.08.2026 standen ALLE 16 Produkte, die
   # wegen von Google selbst gemeldeter Richtlinienverstösse aus dem Kanal genommen worden
   # waren, wieder drin — zurückgeholt von `gfeed_restore.py` (14) und
