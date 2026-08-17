@@ -793,3 +793,9 @@ gid://shopify/Product/15501743653249	ok	Leder-Tasche mit Computerfach
 gid://shopify/Product/15501946880385	nicht-versendbar	Kleiner Campingwagen
 gid://shopify/Product/15501847724417	ok	Automatischer Staubsauger
 gid://shopify/Product/15502040334721	ok	Dunkelbraune Lederhandtasche
+gid://shopify/Product/15502266925441	nicht-versendbar	Friseur Rollwagen mit 6 Etagen
+gid://shopify/Product/15502136148353	nicht-versendbar	Hydraulischer Mini-Stepper für Zuhause
+gid://shopify/Product/15502137360769	ok	Multifunktionales Supine Board für zuhause
+gid://shopify/Product/15502265549185	nicht-versendbar	Multifunktionales Abtropfgestell für die Spüle
+gid://shopify/Product/15502132609409	ok	Butterfly Fancy Show Titanium Trainingsmesser
+gid://shopify/Product/15502131298689	nicht-versendbar	Multifunktionales Bauchtrainer-Rad
