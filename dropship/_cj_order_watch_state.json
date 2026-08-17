@@ -1,0 +1,22 @@
+{
+ "LX1011": {
+  "status": "TRASH",
+  "tracking": ""
+ },
+ "LX1011B": {
+  "status": "SHIPPED",
+  "tracking": "EQKPT8612321546YQ"
+ },
+ "LX1012": {
+  "status": "SHIPPED",
+  "tracking": "YT2622100705040170"
+ },
+ "LX1013": {
+  "status": "UNSHIPPED",
+  "tracking": "06086397526270"
+ },
+ "LX1014": {
+  "status": "UNSHIPPED",
+  "tracking": "EQKPT8612454928YQ"
+ }
+}
