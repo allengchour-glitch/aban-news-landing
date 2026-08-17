@@ -50,11 +50,17 @@ canvas{display:block}
   #modeBtn:not(.building){bottom:calc(126px + env(safe-area-inset-bottom)) !important;left:calc(12px + env(safe-area-inset-left)) !important;padding:7px 12px !important;font-size:.8rem !important;min-height:38px !important}
   #geld{max-width:40vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   #minimap{width:118px !important;height:118px !important}
+}
+@media (max-height:380px){
+  /* 🩹 Schwarm-6: bei Viewports unter ~365px Hoehe schnitt das Radar (top 120,
+     118px) in den Joystick (unten, 112px) und frass dessen Eingaben. */
+  #minimap{width:86px !important;height:86px !important;top:104px !important}
   #needsBox{max-height:60vh;overflow-y:auto;font-size:.58rem;min-width:88px;max-width:150px}
   .needs .nbar{height:5px}
   #geld{font-size:1rem;padding:6px 11px}
   #uhr{font-size:.85rem;padding:6px 10px;max-width:44vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   #tools{left:calc(10px + env(safe-area-inset-left));right:auto;top:120px;bottom:auto} /* 🩹 Schwarm-4: 70px lag unter dem Pokal-Knopf (y 64..112, z-index 14) — „Drehen" oeffnete die Erfolge */
+  #villaBtn{left:calc(66px + env(safe-area-inset-left)) !important} /* 🩹 Schwarm-6: lag bei left:10 unter der Werkzeugspalte — Tap auf 🔄/🧨 kaufte die Villa */
   /* 🩹 Schwarm-4: piBar lag quer ueber dem Joystick (z-index 14 vs 13) — Steuern loeste Winken/Geschenk aus */
   #piBar{left:auto !important;right:calc(80px + env(safe-area-inset-right)) !important;bottom:calc(12px + env(safe-area-inset-bottom)) !important}
 }
@@ -88,7 +94,7 @@ canvas{display:block}
 #chatMsgs b{color:#c05a2a}
 #chatRow{display:flex;border-top:1px solid #eee}
 #chatIn{flex:1;border:0;padding:10px;font-size:16px;background:transparent}
-#emoteToggle{position:fixed;right:10px;bottom:calc(124px + env(safe-area-inset-bottom));z-index:22;width:52px;height:52px;border-radius:50%;border:0;background:rgba(255,253,246,.97);box-shadow:0 6px 18px rgba(60,40,10,.28);font-size:1.5rem;cursor:pointer;display:none}
+#emoteToggle{position:fixed;right:10px;bottom:calc(184px + env(safe-area-inset-bottom));/* 🩹 Schwarm-6: bei 124px lag er fast deckungsgleich UEBER dem Ego-Knopf (zoomBtns bis ~170px) */z-index:22;width:52px;height:52px;border-radius:50%;border:0;background:rgba(255,253,246,.97);box-shadow:0 6px 18px rgba(60,40,10,.28);font-size:1.5rem;cursor:pointer;display:none}
 #micBtn{position:fixed;right:196px;bottom:calc(124px + env(safe-area-inset-bottom));z-index:22;width:52px;height:52px;border-radius:50%;border:0;background:rgba(255,253,246,.97);box-shadow:0 6px 18px rgba(60,40,10,.28);font-size:1.4rem;cursor:pointer;display:none}
 #micBtn.on{background:#e05a4a;color:#fff;animation:micp 1.2s infinite}
 #micBtn.muted{background:#8a8a92;color:#fff}
@@ -3425,7 +3431,10 @@ function updLandbus(dt){
       b.pos+=b.rdir*9.0*dt;
       if(b.pos>RAD_R1){b.pos=RAD_R1;b.rdir=-1;}
       if(b.pos<RAD_R0){b.pos=RAD_R0;b.rdir= 1;}
-      if(b.rdir<0&&vor>=HP&&b.pos<HP){b.pos=HP;b.wartet=6;}
+      /* 🩹 Schwarm-6: vor>=HP war nach dem Halt SOFORT wieder wahr (der Bus
+         steht exakt auf HP) — er snappte endlos zurueck und fror fest. Strikt
+         vor>HP: beim Anfahren aus dem Halt (vor===HP) faehrt er durch. */
+      if(b.rdir<0&&vor>HP&&b.pos<HP){b.pos=HP;b.wartet=6;}
     }
     var off=-b.rdir*2.6;
     b.w.position.set(ca*b.pos+(-sa)*off, 0, sa*b.pos+ca*off);
@@ -6115,16 +6124,25 @@ function fwExplode(x,y,z,col){
   var pts=new THREE.Points(g,new THREE.PointsMaterial({color:col,size:0.55,transparent:true,opacity:1,depthWrite:false,blending:THREE.AdditiveBlending}));
   scene.add(pts);window._fw.bursts.push({pts:pts,vel:vel,t:1.7});
   beep(180+Math.random()*120,.12,"sawtooth",.04);}
+/* 🩹 Schwarm-6: scene.remove() gibt in r128 KEINE GPU-Ressourcen frei — jede
+   Rakete (Geometry+Material), jeder Burst (BufferGeometry+PointsMaterial) und
+   jede CanvasTexture (Herzen, Funkel, Emojis) blieb im WebGL-Speicher. Auf dem
+   Handy summiert sich das ueber eine lange Session zu echtem Speicherdruck. */
+function entsorge3d(o){
+  if(!o)return;
+  var m=o.material;if(m){if(m.map)m.map.dispose();m.dispose();}
+  if(o.geometry)o.geometry.dispose();
+}
 function updFireworks(dt,now){var F=window._fw;if(!F)return;
   if(window._dorfNacht&&(F.rockets.length+F.bursts.length)<4&&Math.random()<dt*0.7){
     launchFirework((Math.random()-0.5)*120,(Math.random()-0.5)*120);}
   for(var r=F.rockets.length-1;r>=0;r--){var rk=F.rockets[r];rk.y+=rk.vy*dt;rk.vy-=8*dt;rk.mesh.position.y=rk.y;
-    if(rk.y>=rk.apex||rk.vy<=0){fwExplode(rk.x,rk.y,rk.z,rk.col);scene.remove(rk.mesh);F.rockets.splice(r,1);}}
+    if(rk.y>=rk.apex||rk.vy<=0){fwExplode(rk.x,rk.y,rk.z,rk.col);scene.remove(rk.mesh);entsorge3d(rk.mesh);F.rockets.splice(r,1);}}
   for(var b=F.bursts.length-1;b>=0;b--){var bs=F.bursts[b];bs.t-=dt;
     var arr=bs.pts.geometry.attributes.position.array;
     for(var i=0;i<bs.vel.length;i++){var v=bs.vel[i];arr[i*3]+=v[0]*dt;arr[i*3+1]+=v[1]*dt;arr[i*3+2]+=v[2]*dt;v[1]-=9*dt;v[0]*=0.98;v[2]*=0.98;}
     bs.pts.geometry.attributes.position.needsUpdate=true;bs.pts.material.opacity=Math.max(0,bs.t/1.7);
-    if(bs.t<=0){scene.remove(bs.pts);F.bursts.splice(b,1);}}}
+    if(bs.t<=0){scene.remove(bs.pts);entsorge3d(bs.pts);F.bursts.splice(b,1);}}}
 // ---- Abend-Stadtfest am See (19:30–22:30): Lampions, Extra-Feuerwerk, Spass fuer Besucher ----
 setTimeout(function baueFest(){
   var g=new THREE.Group();var LF=[0xff5a6a,0xffd23a,0x3ad0ff,0x8aff6a,0xff9a2a,0xd06aff];
@@ -6895,7 +6913,7 @@ function snapshot(){return {gw:GW,gh:GH,floors:floors,walls:Object.keys(walls).r
      einem Neuladen wieder frei. */
   pqb:(window._pq&&window._pq.basis)||null,
   em:window._emoteCount||0, /* 🩹 Schwarm-4: Basiswert der Emote-Team-Aufgabe (tb) wird gespeichert, der Zaehler fehlte — nach Host-Reload zaehlte die Aufgabe zu wenig */
-  cpT:window._coupTag,cpH:window._coupHeute,ws:wohnstufe,na:naechsteAbnahme,
+  cpT:window._coupTag,cpH:window._coupHeute,lfT:window._liefTag,lfH:window._liefHeute,ws:wohnstufe,na:naechsteAbnahme,
   bkT:window._buskTag,bkH:window._buskHeute,
   anC:window._angelCd};}
 function loadSnapshot(sn){
@@ -6936,7 +6954,7 @@ function loadSnapshot(sn){
   immo=(sn.im||[]).slice();
   setTimeout(function(){immo.forEach(function(i){var hs=window._immo&&window._immo[i];if(hs&&!hs.flagge)immoFlagge(hs);});},400);
   if(sn.geld!==undefined){geld=sn.geld;geldLast=geld;}if(sn.tag)tag=sn.tag;if(sn.uhr!==undefined)uhrzeit=sn.uhr;
-  if(sn.rom!==undefined)romantik=sn.rom;if(sn.li!==undefined)liebe=sn.li;verlobt=!!sn.ve;verheiratet=!!sn.he;if(sn.sk)skills=sn.sk;if(sn.st)stats=sn.st;if(sn.ac)achDone=sn.ac;if(sn.qi!==undefined)questIdx=sn.qi;if(sn.mo)MODUS=sn.mo;if(sn.tm)missHeute=sn.tm;missSerie=sn.sms|0;sprintFertig=!!sn.spf;
+  if(sn.rom!==undefined)romantik=sn.rom;if(sn.li!==undefined)liebe=sn.li;verlobt=!!sn.ve;verheiratet=!!sn.he;if(sn.sk)skills=sn.sk;if(sn.st)stats=sn.st;if(sn.ac)achDone=sn.ac;if(sn.qi!==undefined)questIdx=sn.qi;if(sn.mo)MODUS=sn.mo;if(sn.tm)missHeute=sn.tm;missSerie=sn.sms|0;if(sn.lfT!==undefined){window._liefTag=sn.lfT;window._liefHeute=sn.lfH;}sprintFertig=!!sn.spf;
   /* Basislinie und Tageslimits zurueckholen, sonst faengt der Endlos-Auftrag von vorne an
      und alle Limits sind wieder frei (Schwarm-Befunde). */
   if(sn.pqb){window._pqBasis={idx:sn.qi,b:sn.pqb};window._pq=null;}
@@ -7271,7 +7289,7 @@ function updPartnerMark(dt,now){
       c9.lineWidth=5;c9.strokeStyle="rgba(15,35,55,.9)";c9.strokeText(d9+" m",64,20);
       c9.fillStyle="#eaffff";c9.fillText(d9+" m",64,20);_pdTex.needsUpdate=true;}}}
 function simEmoji(s,txt){
-  if(s.emoji){s.mesh.remove(s.emoji);s.emoji=null;}
+  if(s.emoji){s.mesh.remove(s.emoji);entsorge3d(s.emoji);s.emoji=null;}
   var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");
   c.font="46px sans-serif";c.textAlign="center";c.textBaseline="middle";c.fillText(txt,32,36);
   var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false}));
@@ -7742,7 +7760,7 @@ function updWork(dt){
     geldSend();
     updHUD();}
 }
-function simEmojiSafe(s2){if(s2.emoji){s2.mesh.remove(s2.emoji);s2.emoji=null;}}
+function simEmojiSafe(s2){if(s2.emoji){s2.mesh.remove(s2.emoji);entsorge3d(s2.emoji);s2.emoji=null;}}
 function updLove(dt){
   if(MPs&&!mpHost)return;
   var a=sims[0],b=sims[1];if(!a||!b)return;
@@ -7826,7 +7844,7 @@ function updPlopps(dt){
 }
 function updHearts(dt){for(var i=heartSprites.length-1;i>=0;i--){var h=heartSprites[i];
   h.s.position.y+=h.v*dt;h.life-=dt;h.s.material.opacity=Math.min(1,h.life);
-  if(h.life<=0){scene.remove(h.s);heartSprites.splice(i,1);}}}
+  if(h.life<=0){scene.remove(h.s);entsorge3d(h.s);heartSprites.splice(i,1);}}}
 function updKind(k,dt,now){
   if(MPs&&!mpHost){if(k.net){k.x+=(k.net.x-k.x)*Math.min(1,dt*8);k.z+=(k.net.z-k.z)*Math.min(1,dt*8);k.rot=k.net.r;}}
   else{
@@ -7846,10 +7864,10 @@ function updKind(k,dt,now){
   var ud=m.userData;
   if(k.walkT&&ud){var sw=Math.sin(k.walkT);ud.ll.rotation.x=sw*0.6;ud.rl.rotation.x=-sw*0.6;ud.la.rotation.x=-sw*0.4;ud.ra.rotation.x=sw*0.4;k.walkT*=1;}
   if(k.baby)m.position.y=0; // krabbelt am Boden (klein)
-  if(k.emoji){k.emoT-=dt;if(k.emoT<=0){m.remove(k.emoji);k.emoji=null;}}
+  if(k.emoji){k.emoT-=dt;if(k.emoT<=0){m.remove(k.emoji);entsorge3d(k.emoji);k.emoji=null;}}
 }
 function simEmojiK(k,txt){
-  if(k.emoji){k.mesh.remove(k.emoji);k.emoji=null;}
+  if(k.emoji){k.mesh.remove(k.emoji);entsorge3d(k.emoji);k.emoji=null;}
   var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");
   c.font="40px sans-serif";c.textAlign="center";c.textBaseline="middle";c.fillText(txt,32,36);
   var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false}));
@@ -7879,7 +7897,7 @@ var QUESTS=[
 var PQ_TPL=[
  function(n,b){var t=3+n*2;return {e:"🎣",tx:"Fang "+t+" Fische fürs Dorffest",rw:300+n*120,ok:function(){return (stats.fische||0)-b.fische>=t;}};},
  function(n,b){var t=2+n;return {e:"🪑",tx:"Stelle "+t+" neue Möbelstücke auf",rw:280+n*110,ok:function(){return furn.length-b.furn>=t;}};},
- function(n,b){var t=2+n;return {e:"🥕",tx:"Verkaufe "+t+" Ernten am Markt",rw:320+n*130,ok:function(){return (stats.growSold||0)-b.grow>=t;}};},
+ function(n,b){var t=2+n;return {e:"🥕",tx:"Verkaufe "+t+" Ernten am Markt",rw:320+n*130,ok:function(){return ((stats.growSold||0)+(stats.marktVerkauft||0))-((b.grow||0)+(b.mv||0))>=t;}};},
  /* 🩹 Schwarm-4: Ziel aus der PERSISTIERTEN Basislinie (b.verm) statt aus dem Live-Vermoegen —
     sonst lief das Ziel nach jedem Neuladen dem Spieler davon und war nie erreichbar. */
  function(n,b){var t=Math.round(((b.verm!==undefined?b.verm:hausWert()+geld)+n*1500+2500)/500)*500;return {e:"💎",tx:"Steigere dein Vermögen auf "+t+" $",rw:400+n*160,ok:function(){return hausWert()+geld>=t;}};},
@@ -7893,7 +7911,7 @@ function ensurePQ(){
      nach jedem Neuladen. Wer 4 von 5 Fischen hatte, stand danach wieder bei 0 und brauchte
      erneut 5. Sie wird jetzt einmal je Auftrag gebildet und im Spielstand mitgefuehrt. */
   var b=(window._pqBasis&&window._pqBasis.idx===questIdx)?window._pqBasis.b
-       :{fische:stats.fische||0,furn:furn.length,grow:stats.growSold||0,stunts:stats.stunts||0,liefer:stats.lieferungen||0,verm:hausWert()+geld}; /* 🩹 Schwarm-4: Vermoegens-Basislinie mit persistieren */
+       :{fische:stats.fische||0,furn:furn.length,grow:stats.growSold||0,mv:stats.marktVerkauft||0,stunts:stats.stunts||0,liefer:stats.lieferungen||0,verm:hausWert()+geld}; /* 🩹 Schwarm-4: Vermoegens-Basislinie mit persistieren */
   window._pqBasis={idx:questIdx,b:b};
   var tpl=PQ_TPL[((n%PQ_TPL.length)+PQ_TPL.length)%PQ_TPL.length](n,b);
   window._pq={idx:questIdx,e:tpl.e,tx:tpl.tx,rw:tpl.rw,ok:tpl.ok,basis:b};
@@ -8111,7 +8129,7 @@ function updSim(s,si,dt,now){
     // sanftes Atmen
     ud.torso.scale.y=1+Math.sin(now*0.002+si)*0.03;
   }
-  if(s.emoji){s.emoT-=dt;if(s.emoT<=0){m.remove(s.emoji);s.emoji=null;}}
+  if(s.emoji){s.emoT-=dt;if(s.emoT<=0){m.remove(s.emoji);entsorge3d(s.emoji);s.emoji=null;}}
 }
 
 // ===================== Kamera (Orbit) =====================
@@ -8800,7 +8818,13 @@ document.getElementById("markthalleBtn").onclick=function(){ /* 🥕 Markthalle:
      (Erfolg „Grüner Daumen", Team-Aufgabe „6 Ernten") und wurde hier faelschlich genullt. */
   var e9=stats.ernteLager||0;if(e9<=0){hint("🌱 Erst ernten — dann verkaufen!");return;}
   var erloes=Math.round(e9*45*(1+skills.arbeit.lv*0.15));
-  erloes=Math.round(erloes*stufenBonus());geld+=erloes;stats.ernteLager=0;geldSend();
+  erloes=Math.round(erloes*stufenBonus());geld+=erloes;
+  /* 🩹 Schwarm-6: der Endlos-Auftrag "Verkaufe X Ernten am Markt" prueft einen
+     Zaehler, der hier nie stieg (growSold zaehlt nur den DISKRETEN Nachtdeal
+     und speist den Gauner-Erfolg — Marktverkaeufe duerfen den nicht ausloesen).
+     Eigener Zaehler marktVerkauft; der Auftrag unten prueft beide. */
+  stats.marktVerkauft=(stats.marktVerkauft||0)+e9;
+  stats.ernteLager=0;geldSend();
   hint("🥕 "+e9+" Ernten verkauft: +"+erloes+" $ (Marktpreis!)");
   sims.forEach(function(s8){simEmoji(s8,"🤑");});
   beep(700,.09,"triangle",.05);setTimeout(function(){beep(950,.12,"triangle",.06);},120);updHUD();};
@@ -9059,7 +9083,7 @@ function renderPalette(){
   var it=document.getElementById("palItems");it.innerHTML="";
   var liste=curCat==="alle"?Object.keys(KATALOG).reduce(function(a,k){return a.concat(KATALOG[k]);},[]):KATALOG[curCat];
   liste.forEach(function(d){var b=document.createElement("button");b.className="pitem"+(d.id===curItem?" on":"");
-    var gesperrt=d.stufe&&d.stufe>wohnstufe;
+    var gesperrt=d.stufe&&d.stufe>wohnstufe&&MODUS!=="sandbox"; /* 🩹 Schwarm-6: Sandbox schaltet auch die Palette frei */
     if(gesperrt){
       b.style.opacity="0.55";
       b.innerHTML="<div class='pe'>🔒</div><div class='pn'>"+d.n+"</div><div class='pp'>ab "+WOHNSTUFEN[d.stufe][0]+"</div>";
@@ -9158,9 +9182,13 @@ var MUS=new Audio("/audio/premium.mp3");MUS.loop=true;MUS.volume=0.22;MUS.preloa
 
 // ===================== Start / Netz-Lobby =====================
 var SAVE="th_save1";
-function saveGame(){if(MPs&&!mpHost)return;try{localStorage.setItem(MPs?"th_save_coop":SAVE,JSON.stringify(snapshot()));}catch(e){}} /* 🩹 Schwarm-P1: Host sichert Koop-Haus unter eigenem Slot — vorher zerstörte EIN Reload alles */
+/* 🩹 Schwarm-6: Der Slot hing am LIVE-Wert von MPs. Verliess der Partner das
+   Spiel (MPs=null bei running), schrieb der 6-s-Autosave den KOOP-Stand in den
+   SOLO-Slot und zerstoerte den Solo-Spielstand. Slot wird jetzt beim Start
+   eingefroren (window._saveSlot in startGame). */
+function saveGame(){if(MPs&&!mpHost)return;try{localStorage.setItem(window._saveSlot||(MPs?"th_save_coop":SAVE),JSON.stringify(snapshot()));}catch(e){}} /* 🩹 Schwarm-P1: Host sichert Koop-Haus unter eigenem Slot — vorher zerstörte EIN Reload alles */
 function startGame(){
-  running=true;window._running=true;window._tagesGeldStart=geld;
+  running=true;window._running=true;window._tagesGeldStart=geld;window._saveSlot=MPs?"th_save_coop":SAVE;
   if((!MPs||mpHost)&&(!missHeute||missHeute.tag!==tag))missNeu();
   document.getElementById("start").classList.add("hide");
   document.getElementById("hud").classList.remove("hide");
@@ -9494,7 +9522,10 @@ function loop(now){
     updHearts(dt);updPlopps(dt);updWetter(dt);updVerkehr(dt);updLandbus(dt);updHafen(dt,now);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);updVerstecken(dt);updFest(dt,now);updImmo(dt);
     document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("minimap").style.display=(running&&!buildMode)?"block":"none";
-    layoutLinkeSpalte();
+    /* 🩹 Schwarm-6: lief JEDEN Frame mit getComputedStyle/getBoundingClientRect
+       + style-Writes = Layout-Thrashing. 2x pro Sekunde reicht voellig. */
+    window._llsT=(window._llsT||0)+dt;
+    if(window._llsT>0.5){window._llsT=0;layoutLinkeSpalte();}
     /* 🗺️ Einmal-Tipp: sonst findet niemand die grosse Karte hinter dem Radar */
     /* 🩹 Der Einmal-Tipp feuerte, waehrend die Intro-Karte noch offen war — der
        Hinweis lief unsichtbar dahinter ab und das localStorage-Flag war trotzdem
@@ -9509,6 +9540,7 @@ function loop(now){
     document.getElementById("micBtn").style.display=(running&&!buildMode&&!fahren&&MPs)?"block":"none";
     document.getElementById("pingBtn").style.display=(running&&!buildMode&&!fahren&&MPs)?"block":"none";
     document.getElementById("villaBtn").style.display=(running&&buildMode&&!delMode)?"block":"none"; /* 🏰 nur im Bau-Modus */
+    document.getElementById("zoomBtns").style.display=(running&&!buildMode)?"flex":"none"; /* 🩹 Schwarm-6: lagen sonst (z14) ueber der Bau-Palette (z12) — wie beim crimeBtn */
     document.getElementById("hideBtn").style.display=(running&&!buildMode&&!fahren&&MPs&&mpHost)?"block":"none"; // nur im Koop (Solo-Verstecken war "doof")
     if(MPs&&!mpHost){steerNetT-=dt;
       if(steerNetT<=0){steerNetT=0.09;var act9=steerActive();
