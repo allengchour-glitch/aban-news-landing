@@ -420,3 +420,4 @@ gid://shopify/Product/15447883841921	zugeordnet	7	Vielseitiger Dreiecksschal mit
 gid://shopify/Product/15447883972993	zugeordnet	5	Leichter Strick-Schal aus Eisseide
 gid://shopify/Product/15447884104065	zugeordnet	6	Gestreifter Plissee-Schal aus Baumwoll-Leinen
 gid://shopify/Product/15447884267905	zugeordnet	19	Quadratisches Halstuch mit UV-Schutz
+gid://shopify/Product/15447884398977	zugeordnet	10	Plissierter Schal in Seiden-Optik mit Rautenmuster
