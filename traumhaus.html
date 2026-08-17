@@ -1199,6 +1199,10 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     if(x<-116)return false;                                                    // Meer + Strand (Baeume standen im Wasser)
     if(x>118&&x<166&&z>3&&z<37)return false;                                   // 🩹 Schwarm-7: Wochenmarkt (142|20)
     if(x>26&&x<80&&z>136&&z<176)return false;                                  // 🩩 Schwarm-7: Sportplatz (53|155)
+    /* Klinikareal (0|-128), Charge 49. Hier als Rechteck und nicht ueber
+       `window.KLINIK`: freiPlatz wird von der Allee schon gerufen, bevor der
+       Klinik-Abschnitt weiter unten den Globalwert ueberhaupt setzt. */
+    if(x>-27-pad&&x<29+pad&&z>-170-pad&&z<-111+pad)return false;
     if(Math.abs(x)<GW*CS/2+4+pad&&Math.abs(z)<GH*CS/2+6+pad)return false;      // Baugrundstueck
     if(Math.hypot(x,z-146)<24+pad)return false;                                // Seepark + Promenade
     /* 8 -> 11: freiPlatz prueft nur den ANKERPUNKT. Ein Baum mit 7 m Krone stand
@@ -4300,6 +4304,8 @@ setTimeout(function baueGebaeude(){
            Zubringer-Verkehrs hingeschaut habe; die Masse zeigen so etwas nie. */
         var SF2=window.SPORTFELD;                                 // nicht auf den Sportplatz
         if(SF2&&Math.abs(x-SF2.x)<SF2.w/2+rad2&&Math.abs(z-SF2.z)<SF2.d/2+rad2)return false;
+        var KL2=window.KLINIK;                                    // nicht auf das Klinikareal
+        if(KL2&&Math.abs(x-KL2.x)<KL2.w/2+rad2&&Math.abs(z-KL2.z)<KL2.d/2+rad2)return false;
         var ZB=window._zubringer||[];
         for(var zq=0;zq<ZB.length;zq++){
           var za=ZB[zq]*Math.PI/180, zc=Math.cos(za), zs=Math.sin(za);
@@ -4373,6 +4379,8 @@ setTimeout(function baueGebaeude(){
            tut es genauso. */
         var SF=window.SPORTFELD;                                // nicht auf den Sportplatz
         if(SF&&Math.abs(wx-SF.x)<SF.w/2&&Math.abs(wz-SF.z)<SF.d/2)continue;
+        var KL=window.KLINIK;                                   // nicht auf das Klinikareal
+        if(KL&&Math.abs(wx-KL.x)<KL.w/2&&Math.abs(wz-KL.z)<KL.d/2)continue;
         var ZB2=window._zubringer||[], aufZub=false;
         for(var zq2=0;zq2<ZB2.length;zq2++){
           var za2=ZB2[zq2]*Math.PI/180, zc2=Math.cos(za2), zs2=Math.sin(za2);
@@ -5836,6 +5844,93 @@ setTimeout(function baueGebaeude(){
     fest("th46_mischer.glb",1.36,BX-2,BZ-7,0.7);
     for(var z9=0;z9<9;z9++) fest("th46_bauzaun.glb",2.16,BX-14+z9*3.5,BZ-12.5,0);
     for(var q9=0;q9<6;q9++) fest("th46_bauzaun.glb",2.16,BX-15.8,BZ-11.5+q9*3.5,Math.PI/2); /* ⚠️ Reihe endete bei z 111,4 — 0,6 m im Ring-Band (ab 110,8) */
+  })();
+  /* ── 🏥 Charge 49: Klinik und Rettungsdienst ────────────────────────────────
+     Die Stadt hatte Feuerwache und Polizei, aber kein Krankenhaus — im Code nach
+     `krankenhaus|klinik|hotel|kino|museum` gesucht: alles 0. Das Areal liegt
+     suedlich der Ringstrasse, wo ein Spital auch in Wirklichkeit steht: an der
+     Ausfallstrasse, nicht in der Altstadtgasse.
+
+     ⚠️ ORT GEMESSEN, nicht gewaehlt. Ein Raster ueber die ganze Karte hat fuer
+     50 x 40 m 366 freie Stellen gefunden — geprueft gegen 849 Modelle, die acht
+     Fahrbahnbaender aus STRASSENBAND, die sechs Zubringer, die Ring-Landstrasse
+     (r 200), acht Bergfuesse, Sportfeld, Seepark, Meer und Baugrundstueck.
+     (0|-128) ist davon die zum Zentrum naechste. Das aeussere Ring-Band endet
+     bei z -107, das Areal beginnt bei -108.
+
+     ⚠️ Die Schauseite der Modelle liegt auf Blender +y = three.js -z. Die Stadt
+     liegt aber NOERDLICH (Richtung +z), also zeigen alle Haeuser mit rotY = pi
+     zur Ringstrasse. Ohne das stuenden sie mit dem Ruecken zur Zufahrt. */
+  (function klinikAusbau(){
+    /* ⚠️ ORT ZWEIMAL GEMESSEN — beim ersten Mal falsch. Die Suche lief gegen
+       `window._gebaeude` und meldete (0|-128) als frei. Im Spiel standen dort
+       FUENF Hochhaeuser von 19 bis 39 m. Grund: die Quartiere bauen ihre
+       Tuerme prozedural, sie sind keine geladenen Modelle und stehen in keiner
+       Modell-Liste. Dieselbe Klasse Fehler wie "Fahrbahnen sind keine Kollider",
+       nur eine Ebene hoeher: `_gebaeude` ist nicht die Welt.
+       Die zweite Suche lief ueber ALLE Meshes der Szene ueber 2 m Hoehe (3 191
+       Kaesten) plus Baender, Zubringer, Landstrasse, Berge, Sportfeld, Seepark.
+       Ergebnis: fuer 48 x 38 gibt es auf der ganzen Karte KEINEN Platz mehr.
+       Was es gibt, ist ein Streifen 46 x 24 — davon 94 Stueck, der naechste bei
+       (0|-136). Also keine Campus-Anlage, sondern eine ZEILE an der Strasse.
+       Apotheke und Praxis stehen ohnehin besser in der Stadt als auf einem
+       Klinikgelaende; sie sind weiter unten einzeln gesetzt. */
+    var KX=0, KZ=-136;
+    /* Baeume und Felder halten sich vom GANZEN Ensemble fern, nicht nur vom
+       Streifen: Landeplatz (bis z -167) und Apotheke (bis -114) liegen ausserhalb. */
+    window.KLINIK={x:1,z:-140,w:54,d:58};
+    function fest(datei,hoehe,x,z,ry,cb){
+      bau(datei,hoehe,x,0,z,ry,false,function(w){w.userData.fest=true;if(cb)cb(w);},true);
+    }
+    var hof=new THREE.Mesh(new THREE.PlaneGeometry(46,24),
+      new THREE.MeshStandardMaterial({color:0x3b3d40,roughness:0.95,envMapIntensity:0.14}));
+    hof.rotation.x=-Math.PI/2;hof.position.set(KX,0.012,KZ);hof.receiveShadow=true;scene.add(hof);
+    /* Streifen x -23…23, z -148…-124. Die Kaesten sind gemessen, nicht aus dem
+       Massstabs-Test uebernommen — der stellt die Teile eng zusammen, damit sie
+       aufs Bild passen, und ergab beim ersten Versuch 18 Kollisionen im eigenen
+       Areal. Klinik 26,6 x 18,8 (Vordach auf +z) · Notaufnahme 16,5 x 18,2.
+       ⚠️ Der Kollider ist der BAUKOERPER 26 x 15, nicht die 18,8 m Bounding-Box:
+       die letzten 3,4 m sind das Vordach auf 3,3 m Hoehe, darunter laeuft man
+       durch. Wer die Box nimmt, mauert den Eingang zu. */
+    fest("th49_klinik.glb",13.67,KX-9,KZ-1,Math.PI);
+    addSolid(KX-9,KZ-1,26.0,15.0);
+    fest("th49_notaufnahme.glb",5.98,KX+14.5,KZ-2,Math.PI);
+    addSolid(KX+14.5,KZ-2,16.0,11.0);
+    /* Die beiden Rettungswagen stehen UNTER dem Vordach der Notaufnahme — dafuer
+       ist es gebaut (lichte Hoehe 4,40 gegen 2,68 Fahrzeughoehe, im Generator
+       gegeneinander gerechnet). Front auf +x; quer geparkt heisst rotY = -pi/2,
+       dann zeigt die Front nach +z zur Ausfahrt. */
+    /* ⚠️ Die 3D-Pruefung meldet hier vier "Kollisionen" Rettungswagen x
+       Notaufnahme. Nachgesehen (th-3d.mjs Paarmodus) sind es die REIFEN
+       (y 0,00…0,84) gegen den Asphaltvorplatz (y 0,00…0,04) und die
+       Fahrbahnmarkierung (0,04…0,06): ein Fahrzeug, das auf dem Hof STEHT.
+       Kein Fehler — dieselbe Falschmeldung wie das Vordach ueber dem LKW an
+       der Tankstelle. Nicht "wegschieben", sondern nachsehen. */
+    for(var w9=0;w9<2;w9++)
+      fest("th49_rettungswagen.glb",2.68,KX+11.5+w9*6.0,KZ+8,-Math.PI/2);
+    /* Wartebaenke vor dem Klinikeingang (Vordachkante liegt auf z -126,0).
+       Raster 1,90 wie im Generator vermerkt. */
+    for(var b9=0;b9<3;b9++)
+      fest("th49_wartebank.glb",0.86,KX-13+b9*1.90,KZ+10.7,Math.PI);
+    fest("th49_rollstuhl.glb",0.95,KX-6.6,KZ+10.5,0.7);
+    /* Die drei uebrigen Bauten passen NICHT mehr in den Streifen — jeder steht
+       auf einer eigenen gemessenen Tasche, gesucht gegen den Stand MIT der
+       schon gesetzten Klinik (sonst meldet die Suche den eigenen Bauplatz frei;
+       genau das ist mir einen Durchgang lang passiert).
+         Landeplatz 16,8 x 20,6 -> Tasche 20 x 23 bei (16|-156), suedlich dahinter
+         Apotheke   10,6 x 10,0 -> Tasche 13 x 12 bei (-2|-120), zur Stadt hin
+         Praxis     12,0 x 11,7 -> Tasche 14 x 13, gesetzt auf (-6|-152)
+       ⚠️ Die Praxis stand zuerst auf (4|-152). Beide Taschen waren EINZELN frei
+       gesucht — gegeneinander nicht, und dann ueberschnitten sich Landeplatz und
+       Praxis um 3,2 m. Wer zwei Dinge nacheinander platziert, muss das zweite
+       gegen den Stand MIT dem ersten pruefen.
+       Landeplatz: keine Schauseite, aber der Anflugpfeil liegt auf Blender -y,
+       im Spiel also +z — mit rotY = 0 weist er zur Klinik. */
+    fest("th49_helilandeplatz.glb",4.82,16,-156,0);
+    fest("th49_apotheke.glb",6.72,-2,-120,Math.PI);
+    addSolid(-2,-120,10.0,8.0);
+    fest("th49_arztpraxis.glb",8.58,-6,-152,Math.PI);
+    addSolid(-6,-152,11.0,9.0);
   })();
   /* ── ⚓ Charge 45: Hafen und Strand ─────────────────────────────────────────
      340 m Ufer standen ohne einen einzigen Gegenstand da. Der Sandstreifen liegt
