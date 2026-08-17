@@ -190,7 +190,10 @@ for (const item of ITEMS) {
   // Ein Medizinprodukt geht in KEINEN Kanal — am wenigsten in «Google & YouTube».
   if (med) { console.log(`⚕️ medizinische Zweckbestimmung (${med.grund}) → DRAFT, nicht publiziert: ${title.slice(0,44)}`);
             fs.appendFileSync(LEDGER, 'cj:' + pid + '\n'); continue; }
-  await sgql(t, `mutation($id:ID!,$p:[PublicationInput!]!){ publishablePublish(id:$id,input:$p){userErrors{message}} }`, { id: spid, p: PUBS });
+  // Hausregel 12.08.: Klingen (auch Küchenmesser) nie in den Google-Kanal.
+  const klinge = /\b(messer|klinge\w*|dolch|machete|axt|beil|schwert|katana)/i.test(title)
+    && !/jeans|kleid|hose|shirt|hoodie|wasch|deko|figur|anhänger|halskette|ohrring|spielzeug|plüsch|kostüm/i.test(title);
+  await sgql(t, `mutation($id:ID!,$p:[PublicationInput!]!){ publishablePublish(id:$id,input:$p){userErrors{message}} }`, { id: spid, p: klinge ? PUBS.filter(x => !x.publicationId.endsWith('302872297857')) : PUBS });
   if (d.productVideo && /^https/.test(d.productVideo)) await attachVideo(t, spid, d.productVideo, String(pid).slice(-6));
   fs.appendFileSync(LEDGER, 'cj:' + pid + '\n');
   console.log(`✅ ${title} → ${spid.split('/').pop()} (CHF ${chf(d.sellPrice, d.variants?.[0]?.variantWeight)})`);

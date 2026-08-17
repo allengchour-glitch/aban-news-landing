@@ -286,10 +286,19 @@ async function sgql(t,q,v){
  }
  return {};
 }
+// Hausregel 12.08.: Klingen (auch Küchenmesser) NIE in den Google-Kanal — kein Richtlinien-
+// verstoss, aber Sperr-Risiko. Fashion-/Deko-Fehltreffer (Machete-Jeans, Katana-Figur) bleiben drin.
+const KLINGE=/\b(messer|klinge\w*|dolch|machete|axt|beil|schwert|katana)/i;
+const KLINGE_AUSN=/jeans|kleid|hose|shirt|hoodie|wasch|deko|figur|anhänger|halskette|ohrring|spielzeug|plüsch|kostüm/i;
+function pubsFuer(title){
+ if(KLINGE.test(title||'')&&!KLINGE_AUSN.test(title||''))
+  return PUBS.filter(p=>!p.publicationId.endsWith('302872297857'));
+ return PUBS;
+}
 // Publizieren MIT Quittung: erst wenn Shopify keine Fehler meldet, gilt es als erledigt.
-async function publishVerified(t,pid){
+async function publishVerified(t,pid,title){
  for(let i=0;i<3;i++){
-  const r=await sgql(t,PUB,{id:pid,p:PUBS});
+  const r=await sgql(t,PUB,{id:pid,p:pubsFuer(title)});
   const errs=r?.data?.publishablePublish?.userErrors;
   if(Array.isArray(errs)&&errs.length===0)return true;
   await sleep(2000*(i+1));
@@ -738,7 +747,7 @@ for(const [cat,label] of grp.cats){
     console.log(`  🕵️ ${heik.gruppe} (${heik.grund}) → ${heik.verboten?'DRAFT':'kein Kanal'}, Tag ${tag}: ${title.slice(0,40)}`);
     fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid)); got++; total++; continue;
    }
-   await publishVerified(st,pid);
+   await publishVerified(st,pid,title);
  if(d.productVideo&&/^https/.test(d.productVideo))await attachVideo(st,pid,d.productVideo,p.pid);
    fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid));
    got++;total++; console.log(`✅ ${title} → ${pid.split('/').pop()}`);

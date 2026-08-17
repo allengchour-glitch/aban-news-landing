@@ -284,7 +284,10 @@ for(const p of cand){
  if(e.length||!pid){console.log('  ✗',title.slice(0,30),JSON.stringify(e).slice(0,80));continue;}
  const media=imgs.slice(1).map((u,i)=>({originalSource:u,mediaContentType:'IMAGE',alt:(title+' – Bild '+(i+2)+' | LuxeStyle').slice(0,120)}));
  if(media.length)await sgql(st,MED,{id:pid,m:media});
- await sgql(st,PUB,{id:pid,p:PUBS});
+ // Hausregel 12.08.: Klingen (auch Küchenmesser) nie in den Google-Kanal.
+ const klinge=/\b(messer|klinge\w*|dolch|machete|axt|beil|schwert|katana)/i.test(title)
+   &&!/jeans|kleid|hose|shirt|hoodie|wasch|deko|figur|anhänger|halskette|ohrring|spielzeug|plüsch|kostüm/i.test(title);
+ await sgql(st,PUB,{id:pid,p:klinge?PUBS.filter(x=>!x.publicationId.endsWith('302872297857')):PUBS});
  if(d.productVideo&&/^https/.test(d.productVideo))await attachVideo(st,pid,d.productVideo,p.pid);
  fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid));
  total++; console.log(`✅ [${p.listedNum}] ${title} → ${pid.split('/').pop()}`);

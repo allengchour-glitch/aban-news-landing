@@ -86,3 +86,6 @@ gid://shopify/Product/15495105872257	waffe	A5 Outdoor-Messer mit Multifunktionsw
 gid://shopify/Product/15495213941121	waffe	Taktisches Outdoormesser – hohe Härte
 gid://shopify/Product/15495230685569	waffe	Outdoor-Messer-Set aus Edelstahl
 gid://shopify/Product/15495395344769	rauchzubehoer	Kabelloses Dual-Laser-Feuerzeug
+gid://shopify/Product/15500926189953 | Damaskus-Küchenmesser-Set | aus Google (Hausregel Klinge, kein Verstoss)
+gid://shopify/Product/15492997022081 | Camping-Axt | aus Google (Hausregel Klinge)
+# 17.08. geprüft-ok: 15492138041729 Schutzhülle für Beil/Axt = Zubehör, keine Klinge → bleibt
