@@ -188,6 +188,16 @@ while true; do
       echo "$(date -u +%H:%M) hype_kuratieren gestartet (nur abräumen)"
     fi
   fi
+  # HYPE-REVIEWS, einmal täglich: echte CJ-Reviews (≥4★) für die Trend-Reihe zu Judge.me —
+  # Social Proof genau dort, wo die Startseite hinzeigt. Bricht bei leeren CJ-Punkten sauber ab.
+  HR=/tmp/reviews_hype.log
+  if [ -f "$REPO/automation/reviews_hype_lauf.sh" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$HR" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid bash automation/reviews_hype_lauf.sh >> "$HR" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) hype-reviews Lauf gestartet"
+    fi
+  fi
   # ADS-KURATION NACHZUG, einmal täglich gegen LIVE: der Export-Lauf deckt nur den
   # Schnappschuss ab, der CJ-Grind legt täglich neue 1-Bild-/Billig-Produkte an — ohne
   # Nachzug wüchse «Over capacity» einfach nach (Backfill-Regel vom 12.08.).
