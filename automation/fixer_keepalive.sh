@@ -206,12 +206,20 @@ while true; do
   # Ledger — er findet also jede Wiederauferstehung und tilgt sie.
   VL=/tmp/versand_live.log
   if [ -f "$REPO/automation/versandaussagen_wahrheit.py" ]; then
-    ALTER=$(( $(date +%s) - $(stat -c %Y "$VL" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 259200 ]; then
-      ( cd "$REPO" && setsid bash -c \
-          "exec 9>/tmp/lock_versand_live.lock; flock -n 9 || exit 0; QUELLE=live exec python3 automation/versandaussagen_wahrheit.py" \
-          >> "$VL" 2>&1 9>&- & )
-      echo "$(date -u +%H:%M) versandaussagen Live-Kontrolle gestartet"
+    if ! ps -eo args --no-headers | awk '$1 ~ /python3$/ && $2=="automation/versandaussagen_wahrheit.py"{n++} END{exit(n?0:1)}'; then
+      # ⚠️ 17.08.: Ein reiner Alterscheck liess einen GEKILLTEN Lauf 3 Tage liegen (Log war
+      # frisch, Prozess tot, 2'356 Produkte blieben falsch). Abgeschlossen ist ein Lauf nur,
+      # wenn die Schlusszeile «Produkte geschrieben:» im Log steht — sonst sofort fortsetzen.
+      ALTER=$(( $(date +%s) - $(stat -c %Y "$VL" 2>/dev/null || echo 0) ))
+      START=0
+      if ! grep -q "Produkte geschrieben:" "$VL" 2>/dev/null; then START=1
+      elif [ "$ALTER" -gt 259200 ]; then mv "$VL" "$VL.alt" 2>/dev/null; START=1; fi
+      if [ "$START" = 1 ]; then
+        ( cd "$REPO" && setsid bash -c \
+            "exec 9>/tmp/lock_versand_live.lock; flock -n 9 || exit 0; QUELLE=live exec python3 automation/versandaussagen_wahrheit.py" \
+            >> "$VL" 2>&1 9>&- & )
+        echo "$(date -u +%H:%M) versandaussagen Live-Kontrolle gestartet"
+      fi
     fi
   fi
   # GOOGLE-SPERREN DURCHSETZEN, einmal täglich. Am 14.08.2026 standen ALLE 16 Produkte, die
