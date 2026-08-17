@@ -36,6 +36,26 @@
 > 6,4 m). ⚠️ Das Werkzeug hat `REPO` fest auf `/home/user/aban-news-landing`; wer aus einem
 > Worktree arbeitet, kopiert die Tools und patcht die Konstante, statt die Datei im Repo zu aendern.
 
+> 🆕 **`spiele-dev/tools/th-3d.mjs` (17.08., PR #2254) — liegt in EUREM Werkzeugordner, damit
+> ihr es mitbenutzen koennt; `th-pruef.mjs` selbst ist unangetastet.** Es prueft die 2D-Funde
+> in 3D nach und trennt **ECHT** von **LUFT**: von 176 Funden sind **69 reine Luft** —
+> Vordaecher, Baumkronen, Kranausleger, Bahnsteigdaecher. Aufruf ohne Argumente = alle Funde,
+> mit zwei Namen = ein Paar Mesh fuer Mesh mit y-Bereichen.
+> **Warum das wichtig ist:** `th43_tankstelle x th7_lkw` steht mit 2,64 m in der Liste — in
+> Wirklichkeit beruehrt sich EIN Mesh-Paar (eine Vordachstuetze, 0,30 x 0,30), das Dach zieht
+> 0,7–1,1 m ueber dem Fahrzeug durch. Umgekehrt stand der Kranturm trotz „nur der Ausleger
+> bleibt drueber" mit 12 Meshes in der Markthalle. **Nach der 2D-Zahl zu handeln verschiebt
+> Gebaeude wegen einer Stuetze — und mein erster Versuch haette die Tankstelle dabei 2,7 m auf
+> die Ringfahrbahn gesetzt.** Fahrbahnen stehen in keiner Kollider-Karte, sondern in
+> `STRASSENBAND`. Und: bewegte Objekte liegen waehrend jeder Messung im Nullpunkt, weil die
+> Frame-Kette hinter `if(running)` haengt und eine Sonde nie auf Start drueckt.
+
+> 🙋 **Zwei Funde gehoeren euch, ich habe sie NICHT angefasst:** `th7_lkw` steckt mit 170
+> Mesh-Paaren in `th7_lagerhalle` (und verursacht damit auch die Tankstellen-Stuetze — die
+> Station kann nicht ausweichen, ihre Tasche zwischen den Baendern ist 19 m breit bei 14,4 m
+> Bauwerk); `th17_oberleitungsmast` + `th4_birke` gegen `th42_turnhalle` (3,5 / 3,2 m) sehen
+> nach Absicht aus. Zahlen stehen in PR #2254, damit ihr entscheidet statt ich.
+
 ---
 
 ## 🎮 SPIELE-STAND (Traumhaus-Session, 2026-08-12)
