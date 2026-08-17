@@ -132,3 +132,10 @@ gid://shopify/Product/15501054902657	bedrucktes-mini-kleid-mit-v-ausschnitt-und-
 gid://shopify/Product/15501054935425	kissenbezug-loop-getuftet-219648	Kissenbezug Loop getuftet
 gid://shopify/Product/15501061980545	stabmixer-aufsatz-fur-kuchenmaschine-535808	Stabmixer-Aufsatz für Küchenmaschine
 gid://shopify/Product/15501062013313	halskette-fur-hunde-edelstahl-14mm-528896	Halskette für Hunde, Edelstahl, 14mm
+gid://shopify/Product/15501751157121	kuchenspulradregal-266432	Küchenspülradregal
+gid://shopify/Product/15501879116161	cotton-kleinkinderstiefel-966938	Cotton-Kleinkinderstiefel
+gid://shopify/Product/15501879148929	zitronenarmband-633300	Zitronenarmband
+gid://shopify/Product/15501884457345	schwimmsandalen-fur-kinder-e52c38	Schwimmsandalen für Kinder
+gid://shopify/Product/15501884522881	ladegerat-fur-drei-gerate-628000	Ladegerät für drei Geräte
+gid://shopify/Product/15501884588417	edelstahl-armbanduhr-553536	Edelstahl-Armbanduhr
+gid://shopify/Product/15501903102337	idle-rhinestone-hollow-loafers-113856	Idle Rhinestone Hollow Loafers
