@@ -148,3 +148,4 @@ gid://shopify/Product/15502261682561	boho-marokkanischer-kissenbezug-mit-fransen
 gid://shopify/Product/15502261715329	longquan-fischgraten-und-geflugelschere-668480	Longquan Fischgräten- und Geflügelschere
 gid://shopify/Product/15502308016513	gestreiftes-kurzarmhemd-mit-reverskragen-614300	Gestreiftes Kurzarmhemd mit Reverskragen
 gid://shopify/Product/15502308049281	atmungsaktive-mesh-sportschuhe-fur-herren-112896	Atmungsaktive Mesh Sportschuhe für Herren
+gid://shopify/Product/15502393672065	keramik-und-wolframstahl-nagelfraser-set-213e7f	Keramik- und Wolframstahl-Nagelfräser-Set
