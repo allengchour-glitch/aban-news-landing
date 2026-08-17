@@ -426,3 +426,19 @@ gid://shopify/Product/15447884792193	zugeordnet	3	Eleganter Faux-Kaschmir Schal 
 gid://shopify/Product/15447884890497	zugeordnet	15	Vielseitiger Chiffon-Schal mit Blumenmuster
 gid://shopify/Product/15447885185409	zugeordnet	8	Organza Schal mit Quasten
 gid://shopify/Product/15447885316481	zugeordnet	9	Retro Karo-Halstuch mit Sonnenschutz
+gid://shopify/Product/15447885480321	zugeordnet	16	Vielseitiger Vintage-Halsschal
+gid://shopify/Product/15447885742465	zugeordnet	10	Ethno Strick-Poncho mit Quasten
+gid://shopify/Product/15447886004609	zugeordnet	3	Gehäkelter Dreiecksschal im Ethno-Stil
+gid://shopify/Product/15447886266753	zugeordnet	8	Geknitterter Baumwoll-Leinen Schal im Distressed-Look
+gid://shopify/Product/15447886561665	zugeordnet	3	Cape-Schal mit Perlen und Quasten
+gid://shopify/Product/15447886987649	zugeordnet	6	Schal in Seiden-Optik mit Magnetverschluss
+gid://shopify/Product/15447887282561	zugeordnet	6	Schal mit Katzenmuster im Koreanischen Stil
+gid://shopify/Product/15447887675777	zugeordnet	12	Minimalistischer Taschenschal
+gid://shopify/Product/15447887970689	zugeordnet	5	Hut, Handschuhe & Schal 3-in-1 Set
+gid://shopify/Product/15447888265601	zugeordnet	3	Top Perspective Häkel-Schultertuch
+gid://shopify/Product/15447888593281	zugeordnet	15	Vielseitiger warmer Schal aus Faux-Kaschmir
+gid://shopify/Product/15447888855425	zugeordnet	3	Warmer Faux-Kaschmir Schal
+gid://shopify/Product/15447889084801	zugeordnet	8	Kurzer Cardigan aus Chiffon mit UV-Schutz
+gid://shopify/Product/15447889478017	zugeordnet	9	Farbverlauf Satin Crinkle Schal
+gid://shopify/Product/15447889740161	zugeordnet	16	Sonnen-Cape im Retro-Stil
+gid://shopify/Product/15447889969537	zugeordnet	9	Warmer Schal aus Fuchsfell und Rexkaninchenfell

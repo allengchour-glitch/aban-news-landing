@@ -803,3 +803,12 @@ gid://shopify/Product/15502307230081	ok	Brain-Link-Stirnband für mentale Fitnes
 gid://shopify/Product/15502468940161	nicht-versendbar	Metall-Standregal für Kleider & Accessoires
 gid://shopify/Product/15502473855361	ok	Weinregal aus Massivholz zur Selbstmontage
 gid://shopify/Product/15502558364033	ok	Armkraft-Trainingsstab
+gid://shopify/Product/15502469300609	nicht-versendbar	LED U-förmige Salonleuchte für Nagel- & Beauty-Anwendungen
+gid://shopify/Product/15502258045313	ok	ET432 Handheld LCR Digitalmessbrücke
+gid://shopify/Product/15501950321025	nicht-versendbar	Reise-Organizer
+gid://shopify/Product/15502253195649	ok	Herrenuhr aus feinem Stahl, Quarz, multifunktional
+gid://shopify/Product/15502586478977	ok	LED Gesichts- & Halsmaske 7-Farben
+gid://shopify/Product/15502039613825	ok	Cowhide-Tasche
+gid://shopify/Product/15502558134657	nicht-versendbar	Boxsack-Dynamometer für Smartes Boxtraining
+gid://shopify/Product/15501745881473	ok	Doppelseitiger Zeltbau
+gid://shopify/Product/15501865910657	ok	Mercedes Benz Kettentrieb Werkzeugset
