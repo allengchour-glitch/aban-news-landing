@@ -449,3 +449,6 @@ gid://shopify/Product/15447891542401	zugeordnet	19	Crinkled Satin Schal – Seid
 gid://shopify/Product/15447891673473	zugeordnet	10	Cashew-Jacquard-Schal mit Quasten
 gid://shopify/Product/15447891771777	zugeordnet	60	Kopftuch im Ethno-Stil
 gid://shopify/Product/15447891902849	zugeordnet	13	Jacquard Schal mit Cashew-Muster und Quasten
+gid://shopify/Product/15447892099457	zugeordnet	21	Paisley Jacquard Schal mit Quasten
+gid://shopify/Product/15447892230529	zugeordnet	4	Eleganter vielseitiger quadratischer Schal
+gid://shopify/Product/15447892361601	zugeordnet	4	Retro Colorblock Blumen-Schal
