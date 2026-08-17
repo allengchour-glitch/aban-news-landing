@@ -812,3 +812,4 @@ gid://shopify/Product/15502039613825	ok	Cowhide-Tasche
 gid://shopify/Product/15502558134657	nicht-versendbar	Boxsack-Dynamometer für Smartes Boxtraining
 gid://shopify/Product/15501745881473	ok	Doppelseitiger Zeltbau
 gid://shopify/Product/15501865910657	ok	Mercedes Benz Kettentrieb Werkzeugset
+gid://shopify/Product/15502600241537	ok	Elektrischer Handtuchhalter mit Temperaturkontrolle
