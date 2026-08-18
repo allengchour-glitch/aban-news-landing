@@ -498,3 +498,15 @@ gid://shopify/Product/15447902126465	zugeordnet	6	Schmaler Echtleder-Gürtel fü
 gid://shopify/Product/15447902880129	zugeordnet	9	Rhinestone-Gürtel aus Vollnarbenleder
 gid://shopify/Product/15447902978433	zugeordnet	2	Retro Metall Diamond Taillenkette
 gid://shopify/Product/15447903109505	zugeordnet	2	Retro-Ledergürtel mit Nieten
+gid://shopify/Product/15447903404417	zugeordnet	60	Satin-Korsett mit fünf Knöpfen
+gid://shopify/Product/15447903502721	zugeordnet	14	Ledergürtel mit Straussenmuster und Automatikschliesse
+gid://shopify/Product/15447903764865	zugeordnet	16	Echtleder-Gürtel mit Dornschliesse
+gid://shopify/Product/15447903928705	zugeordnet	7	Zweifarbiger Nylon-Gürtel mit Automatikschliesse
+gid://shopify/Product/15447904059777	zugeordnet	5	Breiter Ledergürtel für Mäntel
+gid://shopify/Product/15447904354689	zugeordnet	21	Atmungsaktives Korsett zur Haltungskorrektur
+gid://shopify/Product/15447904616833	zugeordnet	18	Vielseitiger PU-Gürtel mit Dornschliesse
+gid://shopify/Product/15447904911745	zugeordnet	16	Gothic-Korsett mit Stickereien
+gid://shopify/Product/15447905173889	zugeordnet	4	Damen-Gürtel mit Leoparden-Print
+gid://shopify/Product/15447905272193	zugeordnet	2	Revival Gürtel im Mittelalter- und Wikinger-Stil
+gid://shopify/Product/15447905436033	zugeordnet	20	Dekorativer geometrischer Ketten-Gürtel
+gid://shopify/Product/15447905567105	zugeordnet	12	Gothic-Ledergürtel mit Herzschnalle
