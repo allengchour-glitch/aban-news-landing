@@ -681,3 +681,6 @@ gid://shopify/Product/15447945871745	zugeordnet	28	Unisex Baseball Cap – Atmun
 gid://shopify/Product/15447946035585	zugeordnet	2	Kinder Strohhut mit Schleife
 gid://shopify/Product/15447946199425	zugeordnet	3	PU-Leder Schirmmütze im Retro-Stil
 gid://shopify/Product/15447946527105	zugeordnet	3	PU-Leder Newsboy-Mütze mit Ketten-Details
+gid://shopify/Product/15447946822017	zugeordnet	3	Japanischer Sonnenhut mit breiter Krempe
+gid://shopify/Product/15447946953089	zugeordnet	4	Distressed NYC Patchwork Baseball Cap
+gid://shopify/Product/15447947116929	zugeordnet	9	Verstellbarer Fischerhut mit breiter Krempe
