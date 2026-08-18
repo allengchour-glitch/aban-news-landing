@@ -1823,6 +1823,29 @@ nächsten Parzellen-Umzug wieder falsch. Die Schleife merkt sich jetzt die geset
 Ergebnis: **101 → 90 echte Funde.** Übrig bleibt am Gerüst nur der Kontakt zum Rohbau selbst —
 2 Meshes, und genau so steht ein Fassadengerüst.
 
+### Nochmal dieselbe Sortierung, nochmal drei Fehler
+
+Von 91 verbliebenen Funden standen wieder echte Defekte weit unten in der 2D-Rangfolge:
+
+| Fund | Mesh-Paare | 2D | war |
+|---|---|---|---|
+| `th43_feuerwache × th43_loeschfahrzeug` | **322** | 2,02 m | beide Löschfahrzeuge standen durch **geschlossene Sektionaltore** |
+| `th48_handkarren × th48_marktstand` | 84 | 1,53 m | Handkarren im Marktstand |
+| `th44_tribuene × th44_tribuene` | 41 | 1,54 m | die beiden Tribünen ineinander |
+
+**Der Kommentar im Code war die Falle.** Bei der Feuerwache stand „z 106,9 parkt das Heck in der
+offenen Halle" — nachgemessen waren die getroffenen Bauteile `Cube001/023/024/025/026`, ein
+Stapel waagrechter Paneele im Abstand 0,33 m. Das ist kein offenes Tor, das sind **Torblätter**.
+Ein Test über den seitlichen Versatz bestätigte es: die Trefferzahl blieb über ±3 m konstant bei
+128, das Tor geht über die ganze Front. Nase voraus passt auch nicht davor — der Vorplatz ist
+4,3 m tief, das Fahrzeug 7,6 m lang. Jetzt stehen sie **längs** zur Front, wie vor jeder Wache.
+
+> 🔑 **Ein Raster in der Doku ist nicht die Modellbreite.** Zur Tribüne stand „Raster x += 12,00"
+> — das gilt für die Sitzreihen, nicht für den Gesamtkasten mit Wangen und Aufgang (13,54).
+> 12,0 Abstand ergab 1,54 m Überdeckung. Wer ein Raster übernimmt, misst die Box dazu.
+
+Ergebnis: **91 → 87 echte Funde.**
+
 > 🔑 **Die Regel.** Erst die Zahl aus der Hypothese ableiten, dann messen, dann ändern —
 > und zwischen „Boxen überlappen" und „Geometrie steckt ineinander" nie stillschweigend
 > wechseln. Zwei Änderungen dieses Durchgangs wurden vor dem Commit wieder verworfen, weil

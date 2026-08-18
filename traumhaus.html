@@ -5740,7 +5740,11 @@ setTimeout(function baueGebaeude(){
     fest("th48_brunnen.glb",3.14,MX+13,MZ-6,0);
     fest("th48_marktwaage.glb",4.74,MX+16,MZ+7,Math.PI);
     fest("th48_litfass.glb",3.67,MX-17,MZ+9,0);
-    fest("th48_handkarren.glb",1.26,MX+3,MZ+10,0.6);
+    /* ⚠️ MZ+10 lag mitten in der noerdlichen Standreihe (MZ+9,5): der Karren
+       steckte im Marktstand bei MX+2, 84 Mesh-Paare ab y 0,02. MZ+11,5 ist
+       der naechste gemessen freie Stand — hinter der Reihe, wo ein
+       Handkarren auch abgestellt wird. */
+    fest("th48_handkarren.glb",1.26,MX+3,MZ+11.5,0.6);
     fest("th48_baumscheibe.glb",6.35,MX+17,MZ+1,0);
     /* Zwei Standreihen mit Gasse dazwischen */
     addSolid(MX+2,MZ+4.0,20,2.6);addSolid(MX+2,MZ+9.5,20,2.6); /* 🩹 Schwarm-7: Staende waren durchlaufbar (Gasse bleibt frei) */
@@ -6099,7 +6103,12 @@ setTimeout(function baueGebaeude(){
     fest("th44_tor.glb",2.50,CX-FB/2+0.5,CZ,-Math.PI/2);
     fest("th44_tor.glb",2.50,CX+FB/2-0.5,CZ, Math.PI/2);
     /* Tribuenen an der Nordseite, Sitzreihen zum Feld (rotY = 0). */
-    for(var t=0;t<2;t++) fest("th44_tribuene.glb",8.06,CX-6+t*12,CZ+FT/2+3.5,0);
+    /* ⚠️ Raster 12,0 bei 13,54 m Modellbreite = 1,54 m Ueberdeckung, 41
+       Mesh-Paare ab y 0: die beiden Tribuenen standen ineinander. Die
+       Doku nannte "Raster x += 12,00" — das stimmt fuer die Sitzreihen,
+       nicht fuer den Gesamtkasten mit Wangen und Aufgang. 14,0 laesst
+       0,46 m Fuge; beide bleiben mit +-7 innerhalb der Feldlaenge. */
+    for(var t=0;t<2;t++) fest("th44_tribuene.glb",8.06,CX-7+t*14,CZ+FT/2+3.5,0);
     for(var t9=0;t9<2;t9++) addSolid(CX-6+t9*12,CZ+FT/2+3.5,10,3); /* 🩹 Schwarm-7: Tribuenen ohne Kollider */
     for(var q=0;q<4;q++){                                         // Flutlicht an den Ecken
       var fx=CX+(q%2?1:-1)*(FB/2+2.5), fz=CZ+(q<2?-1:1)*(FT/2+2.5);
@@ -6147,11 +6156,19 @@ setTimeout(function baueGebaeude(){
     fest("th43_feuerwache.glb",11.5,56,100,Math.PI);
     addSolid(56,100,15.6,12.8);
     for(var t=0;t<2;t++){
-      var tx=56+(t?3.9:-3.9)*0.83;
-      /* ⚠️ Bei z 110,5 stand die Fahrzeugnase (Box bis 114,3) 3,5 m in der
-         Ring-Fahrbahn. z 106,9 parkt das Heck in der offenen Halle (Tor-Seite),
-         die Nase endet bei 110,7 — knapp vor dem Band (110,8). */
-      fest("th43_loeschfahrzeug.glb",3.24,tx,106.9,-Math.PI/2);
+      var tx=56+(t?3.9:-3.9)*0.83;             // Torachse — dafuer die Ausfahrtsbahn
+      /* ⚠️ ZWEITE KORREKTUR, gemessen. "Das Heck parkt in der offenen Halle"
+         stimmte nicht: getroffen wurden Cube001/023/024/025/026, ein Stapel
+         waagrechter Paneele im Abstand 0,33 m — die Blaetter des geschlossenen
+         SEKTIONALTORS. Die Fahrzeuge standen also durch zwei zugezogene Tore
+         hindurch, 322 Mesh-Paare. Seitliches Ausrichten half nicht: die
+         Trefferzahl blieb ueber +-3 m konstant bei 128, das Tor geht ueber die
+         ganze Front.
+         Nase voraus passt auch nicht davor — der Vorplatz ist 4,3 m tief
+         (Hallenfront z 105,1, Ring-Band ab 110,8), das Fahrzeug 7,6 m lang.
+         Also LAENGS zur Front geparkt: 3,0 m Breite passen auf den Vorplatz,
+         und so stehen Loeschfahrzeuge vor einer Wache ohnehin. */
+      fest("th43_loeschfahrzeug.glb",3.24,56+(t?4.3:-4.3),108.0,0);
       [-1,1].forEach(function(sd){                        // Ausfahrtsbahn
         var lin=new THREE.Mesh(new THREE.PlaneGeometry(0.16,7.0),
           new THREE.MeshStandardMaterial({color:0xd8b42a,roughness:0.8}));
