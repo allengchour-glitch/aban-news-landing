@@ -1791,6 +1791,38 @@ mit einer Lücke pro Zeile (`zeile(…, leer)`), nicht mit einer neuen Regel fü
 gilt bewusst nur für die Südzeile — pauschal angewandt hätte sie der Nordzeile bei x −30 einen
 tadellosen Baum weggenommen.
 
+### Die ganze Liste durchgehen, nicht nur die Spitze
+
+Nach den ersten Runden standen noch 101 echte Funde. Ich hatte immer nur die obersten zwölf
+angesehen — nach 2D-Größe sortiert. Das ist die falsche Sortierung: **die Größe der
+Bounding-Box sagt nichts über die Schwere.** Gruppiert man stattdessen nach Paartyp und zählt
+die Mesh-Paare, springen die echten Fehler heraus:
+
+| Fund | Mesh-Paare | 2D | war |
+|---|---|---|---|
+| `th46_geruest × th42_schule` | **352** | nur 1,64 m | vier Gerüstfelder komplett in der Schulwand |
+| `th47_hecke × th47_hecke` | **320** | nur 1,20 m | Heckenzüge zweier Villen ineinander |
+| `th46_baucontainer × th42_klettergeruest` | 77 | 1,66 m | Bürocontainer im Pausenhof-Klettergerüst |
+| `th3_sandkasten × th47_villa_walm` | 5 | 2,26 m | Sandkasten im Haus |
+
+Alle vier lagen **unterhalb** der zwölf, die ich mir angesehen hatte. Nach 2D-Größe war der
+größte davon Platz 18. Sortiere nach Mesh-Paaren und tiefstem y, nicht nach Boxbreite.
+
+**Warum das Gerüst nicht an die Westwand konnte:** Schule (Ostwand x −47,1) und Rohbau
+(Westwand x −47,2) stehen Rücken an Rücken — dazwischen sind 10 cm. Der Kommentar im Code
+stimmte („ein Fassadengerüst steht an der Fassade"), nur war die Fassade die falsche. Ein
+Platzlöser über Modelle **und** Fahrbahnbänder fand genau zwei freie Stellen, beide an der
+Ostwand. Ohne die Bänder im Löser wäre die erste Antwort `dz +10` gewesen — mitten ins
+Ring-Band ab z 110,8.
+
+**Und die Hecke nicht mit einer Zahl:** je Villa drei Module bis 11,2 m vom Tor, bei 18,5 m
+Parzellenabstand also 22,4 m Hecke auf 18,5 m Lücke. Eine angepasste Konstante wäre beim
+nächsten Parzellen-Umzug wieder falsch. Die Schleife merkt sich jetzt die gesetzten Mitten und
+überspringt Dubletten (Schwelle 2,9 < Raster 3,0, damit die regulären Nachbarn stehen bleiben).
+
+Ergebnis: **101 → 90 echte Funde.** Übrig bleibt am Gerüst nur der Kontakt zum Rohbau selbst —
+2 Meshes, und genau so steht ein Fassadengerüst.
+
 > 🔑 **Die Regel.** Erst die Zahl aus der Hypothese ableiten, dann messen, dann ändern —
 > und zwischen „Boxen überlappen" und „Geometrie steckt ineinander" nie stillschweigend
 > wechseln. Zwei Änderungen dieses Durchgangs wurden vor dem Commit wieder verworfen, weil

@@ -5176,7 +5176,12 @@ setTimeout(function baueGebaeude(){
     sm.rotation.x=-Math.PI/2;sm.position.set(98,0.004,-30);sm.receiveShadow=true;scene.add(sm);})();
   bau("th3_rutsche.glb",2.6,92,0,-32,Math.PI/2,false);
   bau("th3_schaukel.glb",2.3,102,0,-30,0,false);
-  bau("th3_sandkasten.glb",0.55,97,0,-25,0,false);
+  /* ⚠️ z -29 statt -25: die Villenparzelle (96|-22) reicht seit Charge 47 mit
+     dem Modell (12 x 11, also z -27,5…-16,5) weiter nach Sueden als die alte
+     prozedurale Kiste — der Sandkasten lag danach IM Haus (5 Mesh-Paare ab
+     y 0). Vier Meter nach Sueden ist der naechste gemessen freie Stand, und
+     die Sandflaeche (z -39…-21) traegt ihn dort genauso. */
+  bau("th3_sandkasten.glb",0.55,97,0,-29,0,false);
   bau("th3_wippe.glb",1.25,91,0,-26,Math.PI/2,false);
   bau("th3_karussell.glb",1.3,103,0,-23,0,false);
   // Markt-Platz (Suedzeile)
@@ -5229,7 +5234,13 @@ setTimeout(function baueGebaeude(){
       /* Baeume + Baenke saeumen den Platz */
       [[-16,70],[-16,102],[-50,70],[-50,102]].forEach(function(P8,i8){
         bau("th5_baum_ahorn.glb",4.4,P8[0],0,P8[1],i8*0.9,false);});
-      bau("th5_parkbank.glb",0.9,-33,0,72,0,false);bau("th5_parkbank.glb",0.9,-33,0,100,Math.PI,false);
+      bau("th5_parkbank.glb",0.9,-33,0,72,0,false);
+    /* ⚠️ -31,5 statt -33: seit die Baustelle ihr Fassadengeruest an der
+       OSTwand des Rohbaus hat (x -34,8), reicht es bis -33,1 in die
+       Altstadtgasse. Zwischen Wand und Bank blieb kein Meter — eine
+       Geruestbohle lief durch die Sitzlatten. Die Bank rueckt auf die
+       andere Gassenseite; ihre Laterne bei (-33|102) bleibt. */
+    bau("th5_parkbank.glb",0.9,-31.5,0,100,Math.PI,false);
       bau("th5_laterne_altstadt.glb",4.5,-16,0,86,0,false);bau("th5_laterne_altstadt.glb",4.5,-50,0,86,0,false);
       bau("th6_papierkorb.glb",0.9,-29,0,74,0,false);
     })();
@@ -5755,6 +5766,20 @@ setTimeout(function baueGebaeude(){
     function fest(datei,hoehe,x,z,ry){
       bau(datei,hoehe,x,0,z,ry,false,function(w){w.userData.fest=true;},true);
     }
+    /* ⚠️ GEMESSEN: die Heckenzuege zweier Nachbarvillen laufen INEINANDER. Jede
+       Villa setzt je Seite drei Module bis 11,2 m vom Tor — bei 18,5 m Abstand
+       der Parzellen (96|-22) und (96|-40,5) sind das 22,4 m Hecke auf 18,5 m
+       Luecke. Ergebnis waren Modulpaare mit 2,5 m Ueberdeckung, 320 Mesh-Paare
+       insgesamt. Statt eine Zahl zu justieren (die beim naechsten Parzellen-
+       Umzug wieder falsch waere) merkt sich die Schleife die gesetzten Mitten
+       und ueberspringt Dubletten. Schwelle 2,9 < Raster 3,0, damit die REGULAER
+       benachbarten Module derselben Villa stehen bleiben. */
+    var HECKEN=[];
+    function heckeFrei(hx,hz){
+      for(var h=0;h<HECKEN.length;h++)
+        if(Math.hypot(hx-HECKEN[h][0],hz-HECKEN[h][1])<2.9)return false;
+      HECKEN.push([hx,hz]); return true;
+    }
     PARZ.forEach(function(P,i){
       var px=P[0], pz=P[1], ry=P[2]+Math.PI, typ=P[3];
       /* Blickrichtung des Hauses in der x-z-Ebene: die Schauseitennormale ist
@@ -5779,6 +5804,7 @@ setTimeout(function baueGebaeude(){
           /* ⚠️ Die Suedvilla (z -44) schob ihre Ecken-Hecken bei z -47,6…-53,6
              in das Haupt-N-Band (ab |z| 47,2) — Module dort auslassen. */
           if(Math.abs(hz)>46.5)return;
+          if(!heckeFrei(hx,hz))return;
           fest("th47_hecke.glb",2.01,hx,hz,ry);
         });
       }
@@ -5829,7 +5855,15 @@ setTimeout(function baueGebaeude(){
        an der Fassade: jetzt an der Westwand, Wandseite zum Rohbau.
        Die Wandseite liegt auf Blender -y, in three.js also +z; aus der Normalen
        (sin rotY, cos rotY) = (1,0) folgt rotY = +pi/2. */
-    for(var k=0;k<4;k++) fest("th46_geruest.glb",7.34,BX-12.1,BZ-4.6+k*2.5,Math.PI/2);
+    /* ⚠️ ZWEITE KORREKTUR, gemessen. Die Westwand geht NICHT: Schule (Ostwand
+       x -47,1) und Rohbau (Westwand x -47,2) stehen Ruecken an Ruecken, dazwischen
+       sind 10 cm. Das 1,7 m tiefe Geruest stand damit komplett IN der Schule —
+       352 Mesh-Paare, 5,70 m gemeinsame Hoehe. Der Kommentar darueber stimmte
+       ("Geruest gehoert an die Fassade"), die Fassade war nur die falsche.
+       Ein Platzloeser ueber Modelle UND Fahrbahnbaender findet genau zwei freie
+       Stellen; beide liegen an der OSTWAND (x -34,8). Die Wandseite muss dann
+       nach -x zeigen: Normale (sin rotY, cos rotY) = (-1,0) -> rotY = -pi/2. */
+    for(var k=0;k<4;k++) fest("th46_geruest.glb",7.34,BX+1.9,BZ-6.6+k*2.5,-Math.PI/2);
     /* ⚠️ BX-8|BZ-9 und das Materiallager auf BX-9|BZ-9 lagen EINEN Meter
        auseinander — der Bagger stand mittendrin, 39 seiner Meshes steckten in
        fremder Geometrie. Zwei Dinge aus derselben Zeile abzuleiten und nur die
@@ -5837,9 +5871,14 @@ setTimeout(function baueGebaeude(){
        BX-2|BZ-10 ist der naechste gemessen freie Stand: suedlich des Rohbau-
        Kolliders (z 96…106) und oestlich am Lager vorbei (dessen Kante x -41,4). */
     fest("th46_bagger.glb",3.73,BX-2,BZ-10,-0.5);
-    /* ⚠️ Auf BX+11 stand der Container weiter in der Markthalle (3,6 m). Die
-       Ostseite des Bauplatzes gehoert der Halle — alles Bewegliche nach Westen. */
-    fest("th46_baucontainer.glb",2.90,BX-12,BZ-8,Math.PI/2);
+    /* ⚠️ Auf BX+11 stand der Container in der Markthalle (3,6 m), danach auf
+       BX-12 im KLETTERGERUEST des Pausenhofs (x -54,6…-48,6): 77 Mesh-Paare.
+       "Alles Bewegliche nach Westen" war zu einfach — im Westen liegt die Schule.
+       Gemessen gibt es INNERHALB des Bauzauns keinen freien Stand mehr fuer
+       6,2 x 3,6 m; die naechste freie Flaeche liegt quer gedreht suedlich davon.
+       Dort steht er jetzt, direkt an der Einfahrt — wie ein Buerocontainer, den
+       man ans Tor stellt, weil der Platz drinnen voll ist. */
+    fest("th46_baucontainer.glb",2.90,BX-3.5,BZ-14.5,0);
     fest("th46_materiallager.glb",1.20,BX-9,BZ-9,0);
     fest("th46_mischer.glb",1.36,BX-2,BZ-7,0.7);
     for(var z9=0;z9<9;z9++) fest("th46_bauzaun.glb",2.16,BX-14+z9*3.5,BZ-12.5,0);
