@@ -606,3 +606,10 @@ gid://shopify/Product/15447926636929	zugeordnet	24	Damen-Handschuhe aus Schafsle
 gid://shopify/Product/15447926931841	zugeordnet	30	Elegante Damen-Handschuhe aus Lammleder
 gid://shopify/Product/15447927390593	zugeordnet	3	Winddichte Fleece-Handschuhe für Touchscreens
 gid://shopify/Product/15447927521665	zugeordnet	5	Eisseide-Sonnenschutzhandschuhe Touchscreen UV-Schutz
+gid://shopify/Product/15447928340865	zugeordnet	9	Bunte Tierpfoten-Cosplay-Handschuhe
+gid://shopify/Product/15447928406401	zugeordnet	1	Warme, weiche Handschuhe für Damen
+gid://shopify/Product/15447928832385	zugeordnet	7	Warme Plüsch-Handschuhe für Damen
+gid://shopify/Product/15447929028993	zugeordnet	3	Damen Strickhandschuhe aus weichem Polyester
+gid://shopify/Product/15447929192833	zugeordnet	4	Wärme-Kompressionshandschuhe mit Ferninfrarot
+gid://shopify/Product/15447929356673	zugeordnet	6	Einweghandschuhe einzeln verpackt
+gid://shopify/Product/15447929389441	zugeordnet	54	Elegante Damenbluse mit Rüschen und Knopfleiste
