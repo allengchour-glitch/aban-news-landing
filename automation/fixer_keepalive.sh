@@ -226,7 +226,7 @@ while true; do
       elif [ "$ALTER" -gt 259200 ]; then mv "$VL" "$VL.alt" 2>/dev/null; START=1; fi
       if [ "$START" = 1 ]; then
         ( cd "$REPO" && setsid bash -c \
-            "exec 9>/tmp/lock_versand_live.lock; flock -n 9 || exit 0; QUELLE=live exec python3 automation/versandaussagen_wahrheit.py" \
+            "exec 9>/tmp/lock_versand_live.lock; flock -n 9 || exit 0; QUELLE=live IGNORIERE_LEDGER=1 exec python3 automation/versandaussagen_wahrheit.py" \
             >> "$VL" 2>&1 9>&- & )
         echo "$(date -u +%H:%M) versandaussagen Live-Kontrolle gestartet"
       fi

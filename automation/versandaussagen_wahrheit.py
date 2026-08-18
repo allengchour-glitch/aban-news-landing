@@ -359,7 +359,10 @@ def schreiben(todo):
     und fsync (Regel 5) — der Prozess darf jederzeit sterben, ohne Quittungen zu verlieren.
     """
     fertig = set()
-    if os.path.exists(LEDGER):
+    # IGNORIERE_LEDGER=1: fuer die Zombie-Kontrolle (17.08.). Ein Massen-Schreiber hatte
+    # 4'356 bereits quittierte Produkte mit alter Basis ueberschrieben — die Kandidaten
+    # kommen ohnehin per INHALTS-Match, eine alte Quittung darf sie dann nicht schuetzen.
+    if os.path.exists(LEDGER) and not os.environ.get("IGNORIERE_LEDGER"):
         fertig = {l.split("\t")[0] for l in open(LEDGER) if l.strip()}
     offen = [t for t in todo if t[0] not in fertig]
     print(f"Schon quittiert: {len(fertig)} · noch zu schreiben: {len(offen)}")

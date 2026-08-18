@@ -824,3 +824,7 @@ gid://shopify/Product/15503086748033	nicht-versendbar	Nordische Deckenlampe für
 gid://shopify/Product/15503127249281	ok	Tigerkopf-Bausteine & Wasserhahn-Modell
 gid://shopify/Product/15503126167937	ok	Gusseisenpfanne mit Deckel, 26 cm
 gid://shopify/Product/15503147303297	ok	Rutschfester Sofabezug für alle Jahreszeiten
+gid://shopify/Product/15503133081985	ok	Multifunktionale Quarzuhr mit Kalender
+gid://shopify/Product/15503133016449	nicht-versendbar	Tisch-Zugsäge für Metall und Jade
+gid://shopify/Product/15503128363393	ok	Wasserdichte Herren Quarzuhr mit grossem Zifferblatt
+gid://shopify/Product/15503131902337	ok	Kupferfarbene Quarzuhr im Gothic-Stil
