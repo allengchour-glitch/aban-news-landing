@@ -578,3 +578,4 @@ gid://shopify/Product/15447921361281	zugeordnet	5	Ärmelschutz mit Spitzenmansch
 gid://shopify/Product/15447921525121	zugeordnet	1	Taktische Halbfinger-Lederhandschuhe
 gid://shopify/Product/15447921656193	bild-urls-tot
 gid://shopify/Product/15447921754497	zugeordnet	5	Warme Touchscreen-Handschuhe mit Fleecefutter
+gid://shopify/Product/15447922082177	zugeordnet	5	Warme Fleece-gefütterte Handschuhe mit Schleife
