@@ -224,3 +224,14 @@ gid://shopify/Product/15502179336577	Grün
 gid://shopify/Product/15502526677377	Mehrfarbig
 gid://shopify/Product/15502528741761	Mehrfarbig
 gid://shopify/Product/15502529724801	Mehrfarbig
+gid://shopify/Product/15503027077505	Mehrfarbig
+gid://shopify/Product/15503125905793	Blau
+gid://shopify/Product/15503126004097	Weiss
+gid://shopify/Product/15503126069633	Weiss
+gid://shopify/Product/15503127511425	Silber
+gid://shopify/Product/15503131771265	Transparent
+gid://shopify/Product/15503281389953	Silber
+gid://shopify/Product/15503281684865	Silber
+gid://shopify/Product/15503281848705	Silber
+gid://shopify/Product/15503282372993	Silber
+gid://shopify/Product/15503282700673	Silber
