@@ -625,3 +625,20 @@ gid://shopify/Product/15447932207489	zugeordnet	6	Vintage Mid-Calf Socken im Mag
 gid://shopify/Product/15447932338561	zugeordnet	2	Zwei Paar Socken: Spitze & Boot
 gid://shopify/Product/15447932436865	zugeordnet	5	Pilates Anti-Rutsch Socken für Damen
 gid://shopify/Product/15447932567937	zugeordnet	3	Kompressionssocken aus Bambusfaser
+gid://shopify/Product/15447932764545	zugeordnet	3	Kompressions-Beinstulpen (6 Paar)
+gid://shopify/Product/15447932928385	zugeordnet	2	Seidenstrumpf-Schlafsack, extra lang & blickdicht
+gid://shopify/Product/15447933059457	zugeordnet	17	Mid-Calf Yoga Socken für Damen
+gid://shopify/Product/15447933157761	zugeordnet	30	Kaschmir-Socken für Kinder, einfarbig
+gid://shopify/Product/15447933354369	zugeordnet	2	10 Paar unsichtbare Socken für Damen
+gid://shopify/Product/15447933550977	zugeordnet	2	10 Paar Damen Füsslinge Seidig Glatt
+gid://shopify/Product/15447934140801	zugeordnet	7	Nahtlose, hauchdünne Feinstrumpfhose
+gid://shopify/Product/15447934304641	zugeordnet	9	Reflektierende Outdoor Velo-Socken
+gid://shopify/Product/15447934468481	zugeordnet	3	Retro Patchwork Socken für Damen
+gid://shopify/Product/15447934632321	zugeordnet	1	Personalisierbare Jacquard Socken
+gid://shopify/Product/15447934828929	zugeordnet	9	Overknee-Strümpfe in Leder-Optik
+gid://shopify/Product/15447935058305	zugeordnet	6	3er-Pack Ultra-Soft Sheer Tights
+gid://shopify/Product/15447935222145	zugeordnet	6	3er-Pack Sheer Tights 40D mit T-Crotch
+gid://shopify/Product/15447935385985	zugeordnet	8	3 Paar 20D Ultra-Sheer Strumpfhosen mit Shaping-Top
+gid://shopify/Product/15447935517057	zugeordnet	8	6 Paar 20D Ultra Sheer Tights mit Shaping-Höschenteil
+gid://shopify/Product/15447935648129	zugeordnet	10	6 Paar Plus Size Strumpfhosen für Damen
+gid://shopify/Product/15447935779201	zugeordnet	9	3 Paar Shiny Strumpfhosen für Damen (Plus Size)
