@@ -159,3 +159,4 @@ gid://shopify/Product/15503085502849	zebra-jacquard-kissenhulle-462400	Zebra Jac
 gid://shopify/Product/15503087403393	nagel-reparatur-kleber-diy-set-fur-zuhause-624500	Nagel Reparatur Kleber – DIY Set für Zuhause
 gid://shopify/Product/15503118369153	vierloch-bratpfanne-aus-aluminiumlegierung-970944	Vierloch-Bratpfanne aus Aluminiumlegierung
 gid://shopify/Product/15503123087745	gps-tracker-a29-fur-kinder-senioren-haustiere-124550	GPS Tracker A29 für Kinder, Senioren & Haustiere
+gid://shopify/Product/15503134261633	vintage-halsband-fur-haustiere-mit-metallschna-466217	Vintage Halsband für Haustiere mit Metallschnalle

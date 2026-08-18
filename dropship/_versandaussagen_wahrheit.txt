@@ -31588,3 +31588,22 @@ gid://shopify/Product/15498840179073	direkt	1	Profi-Zangenset (3-teilig)
 gid://shopify/Product/15498840506753	direkt	1	Mülleimer-Clip, rutschfest
 gid://shopify/Product/15500671811969	direkt	1	Schulrucksack für Kinder · leicht & rückenschonend
 gid://shopify/Product/15500672008577	direkt	1	Schulrucksack mit grossem Stauraum · Teens & Studenten
+gid://shopify/Product/15396250321281	direkt	1	Retro Sonnenbrille Polarisiert UV400 · Unisex Vintage
+gid://shopify/Product/15396404855169	direkt	1	Resistance Bands Set 5-teilig · Fitnessbänder Heim-Training
+gid://shopify/Product/15397247484289	direkt	1	Sternenhimmel Projektor · Baby Nachtlicht mit Musik
+gid://shopify/Product/15396249502081	direkt	1	Slim Wallet Echtleder · RFID-Schutz, Vollnarbenleder
+gid://shopify/Product/15396249960833	direkt	1	Klassische Herrenuhr Edelstahl · Saphirglas, 50m wasserdicht
+gid://shopify/Product/15396404789633	direkt	1	LED Schreibtischlampe Dimmbar · Augenschutz, USB-C
+gid://shopify/Product/15406765801857	direkt	1	Tech Hero Geschenkbox – Smartwatch Pro + ANC-Kopfhörer + 3-in-1 Wirele
+gid://shopify/Product/15408457941377	direkt	1	Rosenquarz Gua Sha Set
+gid://shopify/Product/15408457744769	direkt	1	Premium Bambus Aroma Diffuser 300ml
+gid://shopify/Product/15408457974145	direkt	1	Jade Roller Premium Doppelseitig
+gid://shopify/Product/15408458006913	direkt	1	Kristall-Set 3-teilig
+gid://shopify/Product/15408458072449	direkt	1	Cellulite Massage Roller
+gid://shopify/Product/15408458236289	direkt	1	Bambus Kosmetik-Organizer Premium
+gid://shopify/Product/15408458170753	direkt	1	Bambus Aufbewahrungssystem Modular
+gid://shopify/Product/15411554320769	direkt	1	Aroma Diffuser Holzoptik 400ml – Ultraschall Luftbefeuchter mit 7 LED-
+gid://shopify/Product/15408458563969	direkt	1	Premium Home Wellness Bundle · Diffuser + 6 ätherische Öle + Salzlampe
+gid://shopify/Product/15411554910593	direkt	1	Aromadiffusor Holzmaserung
+gid://shopify/Product/15411555533185	direkt	1	Smartwatch Pro 1.78″ AMOLED – Herzfrequenz, Fitness-Tracker & Bluetoot
+gid://shopify/Product/15411563823489	direkt	1	Outdoor Bluetooth Speaker Solar – RGB-Licht, Wasserdicht & Tragbar

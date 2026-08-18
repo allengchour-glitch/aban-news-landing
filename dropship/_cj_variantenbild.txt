@@ -558,3 +558,18 @@ gid://shopify/Product/15447917920641	zugeordnet	7	Randlose Sonnenbrille mit Leop
 gid://shopify/Product/15447918051713	zugeordnet	6	Trendige Sonnenbrille mit UV400 Schutz
 gid://shopify/Product/15447918313857	zugeordnet	7	Kinder Schwimmbrille
 gid://shopify/Product/15447918477697	zugeordnet	8	Kinder Schwimmbrille HD, wasserdicht, Antibeschlag
+gid://shopify/Product/15447918739841	zugeordnet	11	Kinder Schwimmbrille Wasserdicht, Anti-Beschlag
+gid://shopify/Product/15447918903681	zugeordnet	13	Kinder Schwimmbrille – grosser Rahmen, wasserdicht
+gid://shopify/Product/15447919001985	zugeordnet	2	Kinder Schwimmbrille wasserdicht, HD & Antifog
+gid://shopify/Product/15447919133057	zugeordnet	12	Schwimmbrille für Kinder mit Nasenschutz
+gid://shopify/Product/15447919264129	zugeordnet	5	Transparente Bicolor-Brille im Vintage-Stil
+gid://shopify/Product/15447919559041	zugeordnet	18	Tauchmaske, wasserdicht & beschlagfrei
+gid://shopify/Product/15447919722881	zugeordnet	60	Magnetische Lesebrille zum Umhängen
+gid://shopify/Product/15447919919489	zugeordnet	2	Steampunk Retro Metall-Goggles
+gid://shopify/Product/15447920116097	zugeordnet	16	Vintage Sonnenbrille mit quadratischem Rahmen
+gid://shopify/Product/15447920411009	zugeordnet	3	Tattered Punk Unisex Fingerlose Strickhandschuhe
+gid://shopify/Product/15447920542081	zugeordnet	6	UV-Schutzhandschuhe mit Zwei-Finger-Schnitt
+gid://shopify/Product/15447920673153	zugeordnet	4	Plüschige Tierpfoten-Handschuhe
+gid://shopify/Product/15447920836993	zugeordnet	20	Glänzende, ellenbogenlange Kostümhandschuhe
+gid://shopify/Product/15447920902529	zugeordnet	6	Leichte, atmungsaktive Halbfinger-Handschuhe
+gid://shopify/Product/15447921066369	zugeordnet	3	Warme Winterhandschuhe mit Fuchsfell-Manschette
