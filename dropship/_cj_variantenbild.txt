@@ -642,3 +642,7 @@ gid://shopify/Product/15447935385985	zugeordnet	8	3 Paar 20D Ultra-Sheer Strumpf
 gid://shopify/Product/15447935517057	zugeordnet	8	6 Paar 20D Ultra Sheer Tights mit Shaping-Höschenteil
 gid://shopify/Product/15447935648129	zugeordnet	10	6 Paar Plus Size Strumpfhosen für Damen
 gid://shopify/Product/15447935779201	zugeordnet	9	3 Paar Shiny Strumpfhosen für Damen (Plus Size)
+gid://shopify/Product/15447935910273	zugeordnet	6	2 Paar 20D Ultra Toeless Sheer Tights
+gid://shopify/Product/15447936041345	zugeordnet	21	Grobe Strickstrümpfe für Herbst/Winter
+gid://shopify/Product/15447936205185	zugeordnet	5	Beinwärmer mit Stern- und Knochen-Elementen
+gid://shopify/Product/15447936598401	zugeordnet	2	Overknee-Socken mit doppelseitigem Print
