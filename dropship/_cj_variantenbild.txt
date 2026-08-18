@@ -548,3 +548,11 @@ gid://shopify/Product/15447916347777	zugeordnet	11	ND Sonnenbrille für Reise un
 gid://shopify/Product/15447916511617	zugeordnet	6	Randlose Unisex Sonnenbrille mit UV-Schutz
 gid://shopify/Product/15447916609921	zugeordnet	9	Clip-On Sonnenbrille im europäischen und amerikanischen Stil
 gid://shopify/Product/15447916839297	zugeordnet	2	Strass-Brillenrahmen-Verzierung
+gid://shopify/Product/15447917068673	zugeordnet	21	Blaulichtfilter Lesebrille mit Nasenclip
+gid://shopify/Product/15447917199745	zugeordnet	9	Simple Blaulichtfilter-Brille
+gid://shopify/Product/15447917330817	zugeordnet	24	Ultradünne, tragbare Lesebrille aus TR90
+gid://shopify/Product/15447917494657	zugeordnet	4	Retro-Polygon-Brille für Damen
+gid://shopify/Product/15447917625729	zugeordnet	6	Retro-Ovale Sonnenbrille mit Doppelsteg
+gid://shopify/Product/15447917822337	zugeordnet	6	Retro-Sonnenbrille mit runden Gläsern
+gid://shopify/Product/15447917920641	zugeordnet	7	Randlose Sonnenbrille mit Leopardenkopf
+gid://shopify/Product/15447918051713	zugeordnet	6	Trendige Sonnenbrille mit UV400 Schutz

@@ -821,3 +821,5 @@ gid://shopify/Product/15503112798593	nicht-versendbar	Koffer- und Mini-Box Reise
 gid://shopify/Product/15503121809793	ok	Le Creuset Herztopf aus Gusseisen
 gid://shopify/Product/15503087370625	nicht-versendbar	Moderner Deckenventilator mit Lampe
 gid://shopify/Product/15503086748033	nicht-versendbar	Nordische Deckenlampe für Kinderzimmer mit Ventilator
+gid://shopify/Product/15503127249281	ok	Tigerkopf-Bausteine & Wasserhahn-Modell
+gid://shopify/Product/15503126167937	ok	Gusseisenpfanne mit Deckel, 26 cm
