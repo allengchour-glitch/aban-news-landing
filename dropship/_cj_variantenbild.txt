@@ -573,3 +573,8 @@ gid://shopify/Product/15447920673153	zugeordnet	4	Plüschige Tierpfoten-Handschu
 gid://shopify/Product/15447920836993	zugeordnet	20	Glänzende, ellenbogenlange Kostümhandschuhe
 gid://shopify/Product/15447920902529	zugeordnet	6	Leichte, atmungsaktive Halbfinger-Handschuhe
 gid://shopify/Product/15447921066369	zugeordnet	3	Warme Winterhandschuhe mit Fuchsfell-Manschette
+gid://shopify/Product/15447921230209	zugeordnet	8	Lederhandschuhe mit Fleecefutter
+gid://shopify/Product/15447921361281	zugeordnet	5	Ärmelschutz mit Spitzenmanschette
+gid://shopify/Product/15447921525121	zugeordnet	1	Taktische Halbfinger-Lederhandschuhe
+gid://shopify/Product/15447921656193	bild-urls-tot
+gid://shopify/Product/15447921754497	zugeordnet	5	Warme Touchscreen-Handschuhe mit Fleecefutter

@@ -13123,3 +13123,5 @@ gid://shopify/Product/15450829685121	ok
 gid://shopify/Product/15450829619585	ok
 gid://shopify/Product/15450829521281	ok
 gid://shopify/Product/15450829488513	ok
+gid://shopify/Product/15450829586817	ok
+gid://shopify/Product/15450829390209	ok
