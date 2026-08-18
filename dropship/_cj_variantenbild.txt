@@ -673,3 +673,9 @@ gid://shopify/Product/15447944561025	zugeordnet	4	Baseball Cap mit Spitze & Schm
 gid://shopify/Product/15447944692097	zugeordnet	3	Retro Colorblock Jazz Hut
 gid://shopify/Product/15447944823169	zugeordnet	5	Kariertes Kopftuch mit Spitze und Bindeband
 gid://shopify/Product/15447944954241	zugeordnet	2	Luftige Häkelmütze für Damen
+gid://shopify/Product/15447945118081	zugeordnet	5	Retro Kopftuch-Mütze mit Kaschmir-Print
+gid://shopify/Product/15447945412993	zugeordnet	3	Japanisches Retro Beret mit Kette
+gid://shopify/Product/15447945544065	zugeordnet	6	Baseball Cap mit Stern-Stickerei
+gid://shopify/Product/15447945740673	zugeordnet	6	Quilted Leopard Print Baseball Cap
+gid://shopify/Product/15447945871745	zugeordnet	28	Unisex Baseball Cap – Atmungsaktiv & Leicht
+gid://shopify/Product/15447946035585	zugeordnet	2	Kinder Strohhut mit Schleife
