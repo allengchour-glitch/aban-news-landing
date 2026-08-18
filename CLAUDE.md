@@ -1,5 +1,25 @@
 # CLAUDE.md — Projekt-Gedächtnis
 
+## 🎵 TikTok-Stand + Browser-Bedienung (2026-08-18)
+**API-Weg (in Arbeit):** App **«luxe»** (developers.tiktok.com/app/7648584035840903189) ist die richtige
+von 3 Apps — «LuxeStyle Poster» ist das KURZDRAMA-Portal (/portal/drama/, Unternehmensverifizierung),
+NICHT nutzen. Produktions-Client-Key `awhvghmn5q2oh91i`; App seit 18.08. **in Review** (Login Kit +
+Content Posting API, Scopes user.info.basic/video.upload/video.publish, Redirect Desktop
+`http://localhost:8723/callback`). Bis zur Freigabe gibt der Login `unauthorized_client` — NICHT
+weiter probieren, auf die Mail warten (send_later-Check 21.08. gesetzt). ⚠️ `/tmp/tt_creds.env`
+trägt noch den SANDBOX-Key (`sbawgg40…`) = Sackgasse: Sandbox darf nur auf PRIVATE Konten posten,
+@luxestyle.ch ist öffentlich (Fehler `unaudited_client_can_only_post_to_private_accounts`).
+**Nach Freigabe:** User führt lokal `tiktok-oauth.mjs` aus (liegt bei ihm; PKCE `code_challenge`
+S256-hex ist PFLICHT, Fehler 10007 ohne) → TT_REFRESH_TOKEN → /tmp/tt_creds.env auf Produktions-Keys
+umstellen → `tiktok_reel_post.mjs` in Rotation. ⚠️ Client-Secret stand im Chat → nach Setup im
+Portal ROTIEREN lassen und neues Secret erfragen.
+**Browser-Weg (funktioniert SOFORT):** TikTok lässt sich ohne API über den PC-Browser-Claude des
+Users bedienen (Brave, eingeloggt als @luxestyle.ch): Upload über **tiktok.com/tiktokstudio/upload**
+— Video-Datei liefern (CDN-URL aus reels_seed.csv herunterladen), Caption mitgeben, Trend-Sound
+in der App wählen lassen. Für Einzel-Posts der Standard-Weg, bis die API frei ist.
+**Content-Nachschub:** cj_video_reel_engine baut Reels aus CJ-Produktvideos — praktisch unendlich,
+Ledger verhindern jede Wiederholung (plattformübergreifend). 29 ready in reels_seed.csv.
+
 ## 🔥 DAUERAUFTRAG: Hype-Produkte recherchieren und die Startseite frisch halten
 **User 2026-08-12, wörtlich:** «informiere dich immer über neuste hype produkte und so und mache
 auch in startseite ganz gross irgendwo paar coolen produkten, aber wen hype vorbei produkt ändern.»
