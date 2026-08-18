@@ -160,3 +160,4 @@ gid://shopify/Product/15503087403393	nagel-reparatur-kleber-diy-set-fur-zuhause-
 gid://shopify/Product/15503118369153	vierloch-bratpfanne-aus-aluminiumlegierung-970944	Vierloch-Bratpfanne aus Aluminiumlegierung
 gid://shopify/Product/15503123087745	gps-tracker-a29-fur-kinder-senioren-haustiere-124550	GPS Tracker A29 für Kinder, Senioren & Haustiere
 gid://shopify/Product/15503134261633	vintage-halsband-fur-haustiere-mit-metallschna-466217	Vintage Halsband für Haustiere mit Metallschnalle
+gid://shopify/Product/15503165227393	rhombus-hard-shell-business-rucksack-498560	Rhombus Hard Shell Business Rucksack
