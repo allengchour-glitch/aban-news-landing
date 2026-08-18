@@ -514,3 +514,15 @@ gid://shopify/Product/15447905698177	zugeordnet	5	Elastischer Herren-Gürtel mit
 gid://shopify/Product/15447905862017	zugeordnet	10	Unisex Ledergürtel mit Dornschliesse und Nieten
 gid://shopify/Product/15447906091393	zugeordnet	14	Atmungsaktiver Taillengürtel für Damen
 gid://shopify/Product/15447906189697	bild-urls-tot
+gid://shopify/Product/15447906910593	zugeordnet	5	Eleganter Ledergürtel mit Metallschnalle A
+gid://shopify/Product/15447907041665	zugeordnet	19	Latex Sport Shapewear Weste für definierte Mitte
+gid://shopify/Product/15447907369345	zugeordnet	6	Vielseitiger Damen-Gürtel aus Rindsleder
+gid://shopify/Product/15447907500417	zugeordnet	10	Stylischer Jeans-Gürtel für Damen
+gid://shopify/Product/15447907664257	bild-urls-tot
+gid://shopify/Product/15447908581761	zugeordnet	6	Taillengürtel mit Dornschliesse
+gid://shopify/Product/15447909204353	zugeordnet	14	HD-Schwimmbrille für Kinder mit Nasenschutz
+gid://shopify/Product/15447909400961	zugeordnet	11	UV-Schutz Sonnenbrille mit Doppelsteg
+gid://shopify/Product/15447909695873	zugeordnet	6	Rahmenlose Sonnenbrille mit polygonalem Schliff
+gid://shopify/Product/15447909859713	zugeordnet	6	Randlose Sonnenbrille Unisex
+gid://shopify/Product/15447910023553	zugeordnet	6	Trendige quadratische Sonnenbrille mit breiten Bügeln
+gid://shopify/Product/15447910187393	zugeordnet	5	Randlose Sonnenbrille mit Metall-Details
