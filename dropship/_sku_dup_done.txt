@@ -642,3 +642,9 @@ gid://shopify/Product/15501059654017	CJ-1390581794994262016	Weiches Bodenkissen 
 gid://shopify/Product/15502383120769	CJ-1455128081592356864	Outdoor Rucksack Tarnmuster
 gid://shopify/Product/15503303147905	CJ-2D37FB74-803C-4019-8CAC-AD5FCE4AC495	Hundehalsband mit Fliege & Leine – Weihnachten
 gid://shopify/Product/15503303999873	CJ-A886A8C9-F8C1-4263-AAE0-189E8CE02B75	Drahtloses elektronisches Haustier-Zaunsystem
+gid://shopify/Product/15503304163713	CJ-24CD0254-2998-4D7D-899E-B2156D550954	GPS-Haustierhalsband mit Echtzeit-Ortung
+gid://shopify/Product/15503304491393	CJ-5C23807E-BA02-439D-8A26-37A184930B3E	Hundehalsband Nieten Gross
+gid://shopify/Product/15503304589697	CJ-CD5B00FD-672E-4151-9250-9B20FE57AF21	Massgeschneidertes Nylon-Hundehalsband
+gid://shopify/Product/15503304819073	CJ-8E7EA65C-070C-44A9-929E-9598B28AC682	Halsband aus robustem Nylon für Hunde
+gid://shopify/Product/15503304950145	CJ-8B711E63-3CA7-4253-A6E3-B0C9B4437D3F	Drahtloser Hundezaun
+gid://shopify/Product/15503305113985	CJ-AA6DB5FA-2EC4-4E9D-9F32-8273C411A8AF	Fluoreszierendes Hunde-Halsband mit Solar
