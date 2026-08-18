@@ -590,3 +590,4 @@ gid://shopify/Product/15447923818881	zugeordnet	3	3M Thinsulate Winterhandschuhe
 gid://shopify/Product/15447923917185	zugeordnet	2	Intelligente USB-Heizhandschuhe für den Winter
 gid://shopify/Product/15447924048257	zugeordnet	9	Atmungsaktive Anti-Rutsch Velo-Handschuhe (Halbfinger)
 gid://shopify/Product/15447924179329	zugeordnet	4	Dicke, warme Winterhandschuhe für Damen
+gid://shopify/Product/15447924375937	zugeordnet	8	Vielseitige Strickstulpen für Damen
