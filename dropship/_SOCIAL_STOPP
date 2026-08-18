@@ -1,0 +1,15 @@
+STOPP für alle Social-Poster (Instagram, Facebook).
+
+Gesetzt am 13.08.2026 auf ausdrückliche Anweisung des Betreibers:
+«hör auf insta gleiche sachen zu posten».
+
+Solange diese Datei existiert, postet NICHTS. Weder der Autopilot noch der Reel-Motor
+noch ein einzelner Aufruf von Hand. Der Supervisor startet die Poster gar nicht erst.
+
+Das ist bereits die sechste Schicht gegen Doppelposts (Lock, Claim, Inhalts-Sperre,
+Live-IG-Abgleich, gemeinsamer Lock) — und die einzige, die nicht davon abhängt, dass
+eine Wache richtig funktioniert. Sie hält einfach alles an.
+
+WIEDER EINSCHALTEN darf diese Datei nur der Betreiber selbst löschen lassen. Vorher
+muss belegt sein, WELCHER Poster doppelt gepostet hat und warum die fünf bestehenden
+Wachen nicht gegriffen haben.

@@ -16605,3 +16605,4 @@ gid://shopify/Product/15503773041025	bereinigt
 gid://shopify/Product/15503773204865	bereinigt
 gid://shopify/Product/15503792734593	bereinigt
 gid://shopify/Product/15503792996737	bereinigt
+gid://shopify/Product/15503810068865	bereinigt
