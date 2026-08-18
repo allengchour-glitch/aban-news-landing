@@ -32185,3 +32185,19 @@ gid://shopify/Product/15427280109953	pod	1	Tasse «Eidgenoss»
 gid://shopify/Product/15427280208257	pod	1	T-Shirt «Es Git Nu Eis Zueri»
 gid://shopify/Product/15427280273793	pod	1	Tasse «Fasnacht Mask»
 gid://shopify/Product/15427280306561	pod	1	T-Shirt «Fasnacht Mask»
+gid://shopify/Product/15427280339329	pod	1	T-Shirt «Feierabig»
+gid://shopify/Product/15427280535937	pod	1	Tasse «Gopfertami»
+gid://shopify/Product/15427280503169	pod	1	Tasse «Gaell»
+gid://shopify/Product/15427280601473	pod	1	Tasse «Gruezi»
+gid://shopify/Product/15427280634241	pod	1	T-Shirt «Gruezi»
+gid://shopify/Product/15427280732545	pod	1	T-Shirt «Haeee»
+gid://shopify/Product/15427280798081	pod	1	Tasse «Haerzlech»
+gid://shopify/Product/15427280765313	pod	1	T-Shirt «Haerzlech»
+gid://shopify/Product/15427280863617	pod	1	Tasse «Heidi»
+gid://shopify/Product/15427280830849	pod	1	T-Shirt «Heidi»
+gid://shopify/Product/15427280896385	pod	1	Tasse «Hoi»
+gid://shopify/Product/15427280929153	pod	1	T-Shirt «Hoi»
+gid://shopify/Product/15427280961921	pod	1	T-Shirt «Matterhorn»
+gid://shopify/Product/15427280994689	pod	1	Tasse «Matterhorn»
+gid://shopify/Product/15427281027457	pod	1	T-Shirt «Merci»
+gid://shopify/Product/15427281060225	pod	1	Tasse «Merci»
