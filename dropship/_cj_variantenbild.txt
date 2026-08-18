@@ -620,3 +620,8 @@ gid://shopify/Product/15447930306945	zugeordnet	60	Warme Touchscreen-Handschuhe 
 gid://shopify/Product/15447930732929	zugeordnet	10	Lange PU-Lederhandschuhe für Damen
 gid://shopify/Product/15447930831233	zugeordnet	14	Kinder-Handschuhe Cartoon – Winddicht & Warm
 gid://shopify/Product/15447931060609	zugeordnet	7	Fleece-gefütterte Kinder-Handschuhe
+gid://shopify/Product/15447931617665	zugeordnet	4	Strickhandschuhe mit Strass und Touchscreen-Funktion
+gid://shopify/Product/15447932207489	zugeordnet	6	Vintage Mid-Calf Socken im Magazin-Stil
+gid://shopify/Product/15447932338561	zugeordnet	2	Zwei Paar Socken: Spitze & Boot
+gid://shopify/Product/15447932436865	zugeordnet	5	Pilates Anti-Rutsch Socken für Damen
+gid://shopify/Product/15447932567937	zugeordnet	3	Kompressionssocken aus Bambusfaser
