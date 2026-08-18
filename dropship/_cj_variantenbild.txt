@@ -614,3 +614,9 @@ gid://shopify/Product/15447929192833	zugeordnet	4	Wärme-Kompressionshandschuhe 
 gid://shopify/Product/15447929356673	zugeordnet	6	Einweghandschuhe einzeln verpackt
 gid://shopify/Product/15447929389441	zugeordnet	54	Elegante Damenbluse mit Rüschen und Knopfleiste
 gid://shopify/Product/15447929651585	zugeordnet	32	Kurze Velo-Handschuhe für Damen
+gid://shopify/Product/15447929815425	zugeordnet	18	Warme, wasserdichte Kinder-Winterhandschuhe
+gid://shopify/Product/15447930143105	zugeordnet	2	Wasserdichte Thermo-Skihandschuhe
+gid://shopify/Product/15447930306945	zugeordnet	60	Warme Touchscreen-Handschuhe aus Rindsleder
+gid://shopify/Product/15447930732929	zugeordnet	10	Lange PU-Lederhandschuhe für Damen
+gid://shopify/Product/15447930831233	zugeordnet	14	Kinder-Handschuhe Cartoon – Winddicht & Warm
+gid://shopify/Product/15447931060609	zugeordnet	7	Fleece-gefütterte Kinder-Handschuhe
