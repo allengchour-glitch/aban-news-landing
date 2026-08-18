@@ -646,3 +646,10 @@ gid://shopify/Product/15447935910273	zugeordnet	6	2 Paar 20D Ultra Toeless Sheer
 gid://shopify/Product/15447936041345	zugeordnet	21	Grobe Strickstrümpfe für Herbst/Winter
 gid://shopify/Product/15447936205185	zugeordnet	5	Beinwärmer mit Stern- und Knochen-Elementen
 gid://shopify/Product/15447936598401	zugeordnet	2	Overknee-Socken mit doppelseitigem Print
+gid://shopify/Product/15447936762241	zugeordnet	6	Kuschelige Bären-Socken für Damen
+gid://shopify/Product/15447936893313	zugeordnet	26	Aurora Nahtlose Ultra-Dünne Strumpfhose
+gid://shopify/Product/15447937057153	zugeordnet	4	Overknee-Spitzenstrümpfe
+gid://shopify/Product/15447937188225	zugeordnet	2	Japanische JK-Style Strumpfhose mit Muster
+gid://shopify/Product/15447939318145	zugeordnet	28	Vintage Jacquard-Schal mit Knopfverschluss
+gid://shopify/Product/15447940268417	zugeordnet	28	Leichter Seiden-Baumwollschal
+gid://shopify/Product/15447940825473	zugeordnet	13	Eleganter Schal mit Schmetterlingsdruck und UV-Schutz

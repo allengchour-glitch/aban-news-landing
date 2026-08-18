@@ -188,6 +188,17 @@ while true; do
       echo "$(date -u +%H:%M) hype_kuratieren gestartet (nur abräumen)"
     fi
   fi
+  # IG-DUPLIKAT-WACHE, einmal täglich (User 18.08.: «poste nie mehr das gleiche»): ein
+  # externer Planer re-postet die alte Queue ~alle 12 Tage; bis die Quelle gefunden ist,
+  # löscht die Wache jeden neuen Doppelpost (ältester bleibt, nie >10 Likes).
+  IW=/tmp/ig_dup_wache.log
+  if [ -f "$REPO/automation/ig_dup_wache.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$IW" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid python3 automation/ig_dup_wache.py >> "$IW" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) ig_dup_wache gestartet"
+    fi
+  fi
   # HYPE-REVIEWS, einmal täglich: echte CJ-Reviews (≥4★) für die Trend-Reihe zu Judge.me —
   # Social Proof genau dort, wo die Startseite hinzeigt. Bricht bei leeren CJ-Punkten sauber ab.
   HR=/tmp/reviews_hype.log
