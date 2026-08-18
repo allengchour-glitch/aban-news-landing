@@ -817,3 +817,4 @@ gid://shopify/Product/15502959903105	ok	Industrieller Abseil- und Rettungsschutz
 gid://shopify/Product/15502960558465	ok	Tiefenmessschraube 0-100 mm
 gid://shopify/Product/15502959870337	ok	TRAXION P53 Rücklaufsperre- & Rettungsrolle
 gid://shopify/Product/15503089697153	nicht-versendbar	Retro Ventilatorlampe im Industrial Style
+gid://shopify/Product/15503112798593	nicht-versendbar	Koffer- und Mini-Box Reise-Set

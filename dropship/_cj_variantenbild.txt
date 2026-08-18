@@ -510,3 +510,7 @@ gid://shopify/Product/15447905173889	zugeordnet	4	Damen-Gürtel mit Leoparden-Pr
 gid://shopify/Product/15447905272193	zugeordnet	2	Revival Gürtel im Mittelalter- und Wikinger-Stil
 gid://shopify/Product/15447905436033	zugeordnet	20	Dekorativer geometrischer Ketten-Gürtel
 gid://shopify/Product/15447905567105	zugeordnet	12	Gothic-Ledergürtel mit Herzschnalle
+gid://shopify/Product/15447905698177	zugeordnet	5	Elastischer Herren-Gürtel mit Automatikschliesse
+gid://shopify/Product/15447905862017	zugeordnet	10	Unisex Ledergürtel mit Dornschliesse und Nieten
+gid://shopify/Product/15447906091393	zugeordnet	14	Atmungsaktiver Taillengürtel für Damen
+gid://shopify/Product/15447906189697	bild-urls-tot
