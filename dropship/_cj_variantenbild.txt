@@ -668,3 +668,8 @@ gid://shopify/Product/15447943840129	zugeordnet	2	Vielseitiger Sonnenhut aus Str
 gid://shopify/Product/15447943971201	zugeordnet	3	Fischerhut mit gewellter Krempe
 gid://shopify/Product/15447944135041	zugeordnet	4	Breitkrempiger Sonnenhut aus Baumwolle
 gid://shopify/Product/15447944298881	zugeordnet	2	Breitkrempiger Sonnenhut im Korea-Stil
+gid://shopify/Product/15447944429953	zugeordnet	3	Winddichte Lei Feng Mütze mit Blättermuster
+gid://shopify/Product/15447944561025	zugeordnet	4	Baseball Cap mit Spitze & Schmetterling
+gid://shopify/Product/15447944692097	zugeordnet	3	Retro Colorblock Jazz Hut
+gid://shopify/Product/15447944823169	zugeordnet	5	Kariertes Kopftuch mit Spitze und Bindeband
+gid://shopify/Product/15447944954241	zugeordnet	2	Luftige Häkelmütze für Damen
