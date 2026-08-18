@@ -591,3 +591,9 @@ gid://shopify/Product/15447923917185	zugeordnet	2	Intelligente USB-Heizhandschuh
 gid://shopify/Product/15447924048257	zugeordnet	9	Atmungsaktive Anti-Rutsch Velo-Handschuhe (Halbfinger)
 gid://shopify/Product/15447924179329	zugeordnet	4	Dicke, warme Winterhandschuhe für Damen
 gid://shopify/Product/15447924375937	zugeordnet	8	Vielseitige Strickstulpen für Damen
+gid://shopify/Product/15447924507009	zugeordnet	10	Warme, wasserdichte Outdoor-Handschuhe
+gid://shopify/Product/15447924638081	bild-urls-tot
+gid://shopify/Product/15447924867457	zugeordnet	6	Gefütterte Strickhandschuhe mit Touchscreen-Funktion
+gid://shopify/Product/15447925064065	zugeordnet	5	Kaschmir-Handschuhe mit halben Fingern und Blumenmuster
+gid://shopify/Product/15447925227905	zugeordnet	2	USB-beheizbare, wasserdichte Wildleder-Fingerhandschuhe
+gid://shopify/Product/15447925358977	zugeordnet	6	Winter Handschuhe in Kaschmir-Optik für Damen
