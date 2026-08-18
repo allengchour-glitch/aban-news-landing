@@ -495,3 +495,6 @@ gid://shopify/Product/15447901536641	zugeordnet	5	Florale Magnetbrosche
 gid://shopify/Product/15447901700481	zugeordnet	4	Boho-Stil Canvas-Gürtel mit Ethno-Muster
 gid://shopify/Product/15447901831553	zugeordnet	20	Klassischer Ledergürtel mit runder Schnalle
 gid://shopify/Product/15447902126465	zugeordnet	6	Schmaler Echtleder-Gürtel für Damen
+gid://shopify/Product/15447902880129	zugeordnet	9	Rhinestone-Gürtel aus Vollnarbenleder
+gid://shopify/Product/15447902978433	zugeordnet	2	Retro Metall Diamond Taillenkette
+gid://shopify/Product/15447903109505	zugeordnet	2	Retro-Ledergürtel mit Nieten
