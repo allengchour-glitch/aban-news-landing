@@ -656,3 +656,4 @@ gid://shopify/Product/15447940825473	zugeordnet	13	Eleganter Schal mit Schmetter
 gid://shopify/Product/15447941054849	zugeordnet	30	Atmungsaktiver Baumwoll-Schal
 gid://shopify/Product/15447941251457	zugeordnet	14	Kaschmir Baby Halswärmer
 gid://shopify/Product/15447941316993	zugeordnet	6	Geraffter Pullover-Schal für Damen
+gid://shopify/Product/15447941480833	zugeordnet	54	Kreativ bedruckter Schal und Kopftuch für Damen
