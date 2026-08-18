@@ -601,3 +601,8 @@ gid://shopify/Product/15447925522817	zugeordnet	6	Winter Fleece-gefütterte Ski-
 gid://shopify/Product/15447925916033	zugeordnet	20	Warme Touchscreen-Handschuhe für Ski und Velo
 gid://shopify/Product/15447926079873	zugeordnet	3	USB Beheizbare Halbfinger-Handschuhe
 gid://shopify/Product/15447926243713	zugeordnet	4	Warme, winddichte Kaschmir-Fäustlinge
+gid://shopify/Product/15447926342017	zugeordnet	8	Katzenpfoten-Handschuhe Plüsch
+gid://shopify/Product/15447926636929	zugeordnet	24	Damen-Handschuhe aus Schafsleder, Touchscreen
+gid://shopify/Product/15447926931841	zugeordnet	30	Elegante Damen-Handschuhe aus Lammleder
+gid://shopify/Product/15447927390593	zugeordnet	3	Winddichte Fleece-Handschuhe für Touchscreens
+gid://shopify/Product/15447927521665	zugeordnet	5	Eisseide-Sonnenschutzhandschuhe Touchscreen UV-Schutz
