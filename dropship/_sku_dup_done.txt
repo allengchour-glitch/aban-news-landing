@@ -640,3 +640,5 @@ gid://shopify/Product/15501054378369	CJ-1398167790246039552	Ovale Baumwoll-Jute-
 gid://shopify/Product/15501059490177	CJ-1390643880264863744	Dreieckiges Kissen, abnehm- und waschbar
 gid://shopify/Product/15501059654017	CJ-1390581794994262016	Weiches Bodenkissen im japanischen Stil
 gid://shopify/Product/15502383120769	CJ-1455128081592356864	Outdoor Rucksack Tarnmuster
+gid://shopify/Product/15503303147905	CJ-2D37FB74-803C-4019-8CAC-AD5FCE4AC495	Hundehalsband mit Fliege & Leine – Weihnachten
+gid://shopify/Product/15503303999873	CJ-A886A8C9-F8C1-4263-AAE0-189E8CE02B75	Drahtloses elektronisches Haustier-Zaunsystem
