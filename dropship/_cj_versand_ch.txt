@@ -828,3 +828,7 @@ gid://shopify/Product/15503133081985	ok	Multifunktionale Quarzuhr mit Kalender
 gid://shopify/Product/15503133016449	nicht-versendbar	Tisch-Zugsäge für Metall und Jade
 gid://shopify/Product/15503128363393	ok	Wasserdichte Herren Quarzuhr mit grossem Zifferblatt
 gid://shopify/Product/15503131902337	ok	Kupferfarbene Quarzuhr im Gothic-Stil
+gid://shopify/Product/15503282962817	ok	Elektrisches Tranchiermesser für Grillfleisch
+gid://shopify/Product/15503258911105	ok	Portabler HD-Heimprojektor
+gid://shopify/Product/15503166669185	nicht-versendbar	DIY Miniatur-Cottage mit Staubschutz
+gid://shopify/Product/15503286632833	nicht-versendbar	Leinen-Baumwollstoff mit Blumenmuster, 10m
