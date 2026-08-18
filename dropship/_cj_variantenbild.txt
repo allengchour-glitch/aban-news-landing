@@ -684,3 +684,7 @@ gid://shopify/Product/15447946527105	zugeordnet	3	PU-Leder Newsboy-Mütze mit Ke
 gid://shopify/Product/15447946822017	zugeordnet	3	Japanischer Sonnenhut mit breiter Krempe
 gid://shopify/Product/15447946953089	zugeordnet	4	Distressed NYC Patchwork Baseball Cap
 gid://shopify/Product/15447947116929	zugeordnet	9	Verstellbarer Fischerhut mit breiter Krempe
+gid://shopify/Product/15447947313537	zugeordnet	2	Lolita-Stirnband mit Hexenhut und Rosen
+gid://shopify/Product/15447947444609	zugeordnet	7	Glitzer-Beanie für Damen
+gid://shopify/Product/15447947575681	zugeordnet	5	Unisex-Baseballcap mit Leopardenmuster
+gid://shopify/Product/15447947739521	zugeordnet	6	Mütze aus weichem Faux-Nerzfell
