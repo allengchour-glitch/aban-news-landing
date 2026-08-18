@@ -653,3 +653,5 @@ gid://shopify/Product/15447937188225	zugeordnet	2	Japanische JK-Style Strumpfhos
 gid://shopify/Product/15447939318145	zugeordnet	28	Vintage Jacquard-Schal mit Knopfverschluss
 gid://shopify/Product/15447940268417	zugeordnet	28	Leichter Seiden-Baumwollschal
 gid://shopify/Product/15447940825473	zugeordnet	13	Eleganter Schal mit Schmetterlingsdruck und UV-Schutz
+gid://shopify/Product/15447941054849	zugeordnet	30	Atmungsaktiver Baumwoll-Schal
+gid://shopify/Product/15447941251457	zugeordnet	14	Kaschmir Baby Halswärmer
