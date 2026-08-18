@@ -556,3 +556,5 @@ gid://shopify/Product/15447917625729	zugeordnet	6	Retro-Ovale Sonnenbrille mit D
 gid://shopify/Product/15447917822337	zugeordnet	6	Retro-Sonnenbrille mit runden Gläsern
 gid://shopify/Product/15447917920641	zugeordnet	7	Randlose Sonnenbrille mit Leopardenkopf
 gid://shopify/Product/15447918051713	zugeordnet	6	Trendige Sonnenbrille mit UV400 Schutz
+gid://shopify/Product/15447918313857	zugeordnet	7	Kinder Schwimmbrille
+gid://shopify/Product/15447918477697	zugeordnet	8	Kinder Schwimmbrille HD, wasserdicht, Antibeschlag
