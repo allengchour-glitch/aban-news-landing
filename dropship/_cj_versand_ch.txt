@@ -823,3 +823,4 @@ gid://shopify/Product/15503087370625	nicht-versendbar	Moderner Deckenventilator 
 gid://shopify/Product/15503086748033	nicht-versendbar	Nordische Deckenlampe für Kinderzimmer mit Ventilator
 gid://shopify/Product/15503127249281	ok	Tigerkopf-Bausteine & Wasserhahn-Modell
 gid://shopify/Product/15503126167937	ok	Gusseisenpfanne mit Deckel, 26 cm
+gid://shopify/Product/15503147303297	ok	Rutschfester Sofabezug für alle Jahreszeiten
