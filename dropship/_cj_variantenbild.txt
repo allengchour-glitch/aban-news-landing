@@ -526,3 +526,8 @@ gid://shopify/Product/15447909695873	zugeordnet	6	Rahmenlose Sonnenbrille mit po
 gid://shopify/Product/15447909859713	zugeordnet	6	Randlose Sonnenbrille Unisex
 gid://shopify/Product/15447910023553	zugeordnet	6	Trendige quadratische Sonnenbrille mit breiten Bügeln
 gid://shopify/Product/15447910187393	zugeordnet	5	Randlose Sonnenbrille mit Metall-Details
+gid://shopify/Product/15447910384001	zugeordnet	22	Doppelschichtige Anti-Beschlag Ski- und Bergbrille
+gid://shopify/Product/15447911203201	zugeordnet	6	Retro-Sonnenbrille mit polygonalem Rahmen
+gid://shopify/Product/15447911465345	zugeordnet	6	Retro Polarisierte Sonnenbrille
+gid://shopify/Product/15447911760257	zugeordnet	7	AR Anti-Reflex Brille
+gid://shopify/Product/15447911956865	zugeordnet	6	AR Blaulichtfilter-Brille

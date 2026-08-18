@@ -819,3 +819,5 @@ gid://shopify/Product/15502959870337	ok	TRAXION P53 Rücklaufsperre- & Rettungsr
 gid://shopify/Product/15503089697153	nicht-versendbar	Retro Ventilatorlampe im Industrial Style
 gid://shopify/Product/15503112798593	nicht-versendbar	Koffer- und Mini-Box Reise-Set
 gid://shopify/Product/15503121809793	ok	Le Creuset Herztopf aus Gusseisen
+gid://shopify/Product/15503087370625	nicht-versendbar	Moderner Deckenventilator mit Lampe
+gid://shopify/Product/15503086748033	nicht-versendbar	Nordische Deckenlampe für Kinderzimmer mit Ventilator
