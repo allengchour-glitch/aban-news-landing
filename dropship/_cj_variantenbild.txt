@@ -579,3 +579,14 @@ gid://shopify/Product/15447921525121	zugeordnet	1	Taktische Halbfinger-Lederhand
 gid://shopify/Product/15447921656193	bild-urls-tot
 gid://shopify/Product/15447921754497	zugeordnet	5	Warme Touchscreen-Handschuhe mit Fleecefutter
 gid://shopify/Product/15447922082177	zugeordnet	5	Warme Fleece-gefütterte Handschuhe mit Schleife
+gid://shopify/Product/15447922213249	zugeordnet	8	Dicke Thermo-Daunen- und Baumwollhandschuhe
+gid://shopify/Product/15447922344321	zugeordnet	2	UV-Schutz Handschuhe, dünn & lang
+gid://shopify/Product/15447922540929	zugeordnet	10	Dual-Use Colorblock Strickhandschuhe im Maillard-Stil
+gid://shopify/Product/15447922803073	zugeordnet	30	Warme Lederhandschuhe mit Fleecefutter
+gid://shopify/Product/15447923294593	zugeordnet	8	Warme Strickhandschuhe mit Touchscreen-Funktion
+gid://shopify/Product/15447923491201	zugeordnet	4	Wollmischung Fingerlose Strickhandschuhe
+gid://shopify/Product/15447923622273	zugeordnet	4	3-teiliges Winterset: Handschuhe, Mütze, Schal
+gid://shopify/Product/15447923818881	zugeordnet	3	3M Thinsulate Winterhandschuhe für Damen & Herren
+gid://shopify/Product/15447923917185	zugeordnet	2	Intelligente USB-Heizhandschuhe für den Winter
+gid://shopify/Product/15447924048257	zugeordnet	9	Atmungsaktive Anti-Rutsch Velo-Handschuhe (Halbfinger)
+gid://shopify/Product/15447924179329	zugeordnet	4	Dicke, warme Winterhandschuhe für Damen
