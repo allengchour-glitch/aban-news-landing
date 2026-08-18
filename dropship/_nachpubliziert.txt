@@ -161,3 +161,5 @@ gid://shopify/Product/15503118369153	vierloch-bratpfanne-aus-aluminiumlegierung-
 gid://shopify/Product/15503123087745	gps-tracker-a29-fur-kinder-senioren-haustiere-124550	GPS Tracker A29 für Kinder, Senioren & Haustiere
 gid://shopify/Product/15503134261633	vintage-halsband-fur-haustiere-mit-metallschna-466217	Vintage Halsband für Haustiere mit Metallschnalle
 gid://shopify/Product/15503165227393	rhombus-hard-shell-business-rucksack-498560	Rhombus Hard Shell Business Rucksack
+gid://shopify/Product/15503259992449	fast-drainage-outdoor-fitnessschuhe-605500	Fast Drainage Outdoor-Fitnessschuhe
+gid://shopify/Product/15503260025217	solar-strassenleuchte-mit-farbwarnlicht-576512	Solar-Strassenleuchte mit Farbwarnlicht
