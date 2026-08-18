@@ -163,3 +163,4 @@ gid://shopify/Product/15503134261633	vintage-halsband-fur-haustiere-mit-metallsc
 gid://shopify/Product/15503165227393	rhombus-hard-shell-business-rucksack-498560	Rhombus Hard Shell Business Rucksack
 gid://shopify/Product/15503259992449	fast-drainage-outdoor-fitnessschuhe-605500	Fast Drainage Outdoor-Fitnessschuhe
 gid://shopify/Product/15503260025217	solar-strassenleuchte-mit-farbwarnlicht-576512	Solar-Strassenleuchte mit Farbwarnlicht
+gid://shopify/Product/15503292793217	in-ear-gaming-kopfhorer-mit-mikrofon-d8fcbc	In-Ear Gaming-Kopfhörer mit Mikrofon
