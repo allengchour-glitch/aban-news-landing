@@ -531,3 +531,20 @@ gid://shopify/Product/15447911203201	zugeordnet	6	Retro-Sonnenbrille mit polygon
 gid://shopify/Product/15447911465345	zugeordnet	6	Retro Polarisierte Sonnenbrille
 gid://shopify/Product/15447911760257	zugeordnet	7	AR Anti-Reflex Brille
 gid://shopify/Product/15447911956865	zugeordnet	6	AR Blaulichtfilter-Brille
+gid://shopify/Product/15447908909441	zugeordnet	12	Vintage Wildleder-Gürtel mit Dornschliesse
+gid://shopify/Product/15447912415617	zugeordnet	11	Quadratische Premium-Sonnenbrille für Damen
+gid://shopify/Product/15447912644993	zugeordnet	6	Ultraleichte TR90 Randlose Sonnenbrille
+gid://shopify/Product/15447912907137	zugeordnet	5	UV-Schutz Sportbrille für Outdoor & Velo
+gid://shopify/Product/15447913234817	zugeordnet	4	UV-Schutz rahmenlose Sonnenbrille
+gid://shopify/Product/15447913464193	zugeordnet	7	HD Polarisierte Sonnenbrille für Damen
+gid://shopify/Product/15447913890177	zugeordnet	5	Smart-Brille mit 8MP Kamera
+gid://shopify/Product/15447914152321	zugeordnet	4	Gürtel-Brillenetui aus Mikrofaser
+gid://shopify/Product/15447914381697	zugeordnet	4	Sonnenbrille mit UV-Schutz · TR1002
+gid://shopify/Product/15447914643841	zugeordnet	3	Smart-Brille mit 8 MP Kamera und Übersetzung
+gid://shopify/Product/15447915790721	zugeordnet	21	Multifokale Photochrome Blaulichtfilter-Brille
+gid://shopify/Product/15447915987329	zugeordnet	6	Luxuriöse polygonale Sonnenbrille mit Farbverlauf
+gid://shopify/Product/15447916183937	zugeordnet	15	Polarisierte Sport-Sonnenbrille mit UV380
+gid://shopify/Product/15447916347777	zugeordnet	11	ND Sonnenbrille für Reise und Outdoor
+gid://shopify/Product/15447916511617	zugeordnet	6	Randlose Unisex Sonnenbrille mit UV-Schutz
+gid://shopify/Product/15447916609921	zugeordnet	9	Clip-On Sonnenbrille im europäischen und amerikanischen Stil
+gid://shopify/Product/15447916839297	zugeordnet	2	Strass-Brillenrahmen-Verzierung
