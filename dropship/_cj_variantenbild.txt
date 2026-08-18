@@ -613,3 +613,4 @@ gid://shopify/Product/15447929028993	zugeordnet	3	Damen Strickhandschuhe aus wei
 gid://shopify/Product/15447929192833	zugeordnet	4	Wärme-Kompressionshandschuhe mit Ferninfrarot
 gid://shopify/Product/15447929356673	zugeordnet	6	Einweghandschuhe einzeln verpackt
 gid://shopify/Product/15447929389441	zugeordnet	54	Elegante Damenbluse mit Rüschen und Knopfleiste
+gid://shopify/Product/15447929651585	zugeordnet	32	Kurze Velo-Handschuhe für Damen
