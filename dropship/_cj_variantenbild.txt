@@ -657,3 +657,12 @@ gid://shopify/Product/15447941054849	zugeordnet	30	Atmungsaktiver Baumwoll-Schal
 gid://shopify/Product/15447941251457	zugeordnet	14	Kaschmir Baby Halswärmer
 gid://shopify/Product/15447941316993	zugeordnet	6	Geraffter Pullover-Schal für Damen
 gid://shopify/Product/15447941480833	zugeordnet	54	Kreativ bedruckter Schal und Kopftuch für Damen
+gid://shopify/Product/15447941677441	zugeordnet	99	Ethno-Strandtuch mit vielseitigem Design
+gid://shopify/Product/15447941972353	zugeordnet	3	Eleganter Schal aus Arctic Velvet
+gid://shopify/Product/15447942136193	zugeordnet	17	Elegantes Chiffon-Tuch mit Magnetverschluss
+gid://shopify/Product/15447942300033	zugeordnet	5	Strick-Cape-Schal für Damen
+gid://shopify/Product/15447942594945	zugeordnet	7	Ofenhandschuh & Topfuntersetzer-Set mit Mops-Print
+gid://shopify/Product/15447943020929	zugeordnet	4	Blumen-Snapback-Cap im Vintage-Stil
+gid://shopify/Product/15447943381377	zugeordnet	5	Retro Wollmütze im britischen Stil
+gid://shopify/Product/15447943840129	zugeordnet	2	Vielseitiger Sonnenhut aus Stroh
+gid://shopify/Product/15447943971201	zugeordnet	3	Fischerhut mit gewellter Krempe
