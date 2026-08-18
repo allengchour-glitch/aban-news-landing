@@ -597,3 +597,7 @@ gid://shopify/Product/15447924867457	zugeordnet	6	Gefütterte Strickhandschuhe m
 gid://shopify/Product/15447925064065	zugeordnet	5	Kaschmir-Handschuhe mit halben Fingern und Blumenmuster
 gid://shopify/Product/15447925227905	zugeordnet	2	USB-beheizbare, wasserdichte Wildleder-Fingerhandschuhe
 gid://shopify/Product/15447925358977	zugeordnet	6	Winter Handschuhe in Kaschmir-Optik für Damen
+gid://shopify/Product/15447925522817	zugeordnet	6	Winter Fleece-gefütterte Ski-Handschuhe
+gid://shopify/Product/15447925916033	zugeordnet	20	Warme Touchscreen-Handschuhe für Ski und Velo
+gid://shopify/Product/15447926079873	zugeordnet	3	USB Beheizbare Halbfinger-Handschuhe
+gid://shopify/Product/15447926243713	zugeordnet	4	Warme, winddichte Kaschmir-Fäustlinge
