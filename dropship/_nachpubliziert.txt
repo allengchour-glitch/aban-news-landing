@@ -155,3 +155,5 @@ gid://shopify/Product/15502537130369	mengxilan-whitening-anti-wrinkle-maske-5-st
 gid://shopify/Product/15502559216001	fotorahmen-blumenstrauss-bausteine-600800	Fotorahmen Blumenstrauss Bausteine
 gid://shopify/Product/15502613709185	madchen-lauflernschuhe-little-princess-264128	Mädchen Lauflernschuhe «Little Princess»
 gid://shopify/Product/15502914355585	ratschen-teleskop-schraubendreher-magnetisch-975488	Ratschen-Teleskop-Schraubendreher magnetisch
+gid://shopify/Product/15503085502849	zebra-jacquard-kissenhulle-462400	Zebra Jacquard Kissenhülle
+gid://shopify/Product/15503087403393	nagel-reparatur-kleber-diy-set-fur-zuhause-624500	Nagel Reparatur Kleber – DIY Set für Zuhause
