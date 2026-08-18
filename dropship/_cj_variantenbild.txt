@@ -666,3 +666,5 @@ gid://shopify/Product/15447943020929	zugeordnet	4	Blumen-Snapback-Cap im Vintage
 gid://shopify/Product/15447943381377	zugeordnet	5	Retro Wollmütze im britischen Stil
 gid://shopify/Product/15447943840129	zugeordnet	2	Vielseitiger Sonnenhut aus Stroh
 gid://shopify/Product/15447943971201	zugeordnet	3	Fischerhut mit gewellter Krempe
+gid://shopify/Product/15447944135041	zugeordnet	4	Breitkrempiger Sonnenhut aus Baumwolle
+gid://shopify/Product/15447944298881	zugeordnet	2	Breitkrempiger Sonnenhut im Korea-Stil
