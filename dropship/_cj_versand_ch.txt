@@ -840,3 +840,4 @@ gid://shopify/Product/15504088695169	nicht-versendbar	Robuster Rollkoffer mit Re
 gid://shopify/Product/15504112976257	nicht-versendbar	Muskeltrainer für Zuhause
 gid://shopify/Product/15504117629313	nicht-versendbar	Ultra-leichte Glas-Vorratsbehälter für Reis (7er-Set)
 gid://shopify/Product/15504157639041	ok	Retro Canvas Rucksack mit Lederdetails
+gid://shopify/Product/15504174743937	nicht-versendbar	Kinder-Trolley mit Fronttasche

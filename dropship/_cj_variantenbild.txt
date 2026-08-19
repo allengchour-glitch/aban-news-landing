@@ -766,3 +766,6 @@ gid://shopify/Product/15447963271553	zugeordnet	10	Baumwoll-Unterwäsche-Set fü
 gid://shopify/Product/15447963500929	zugeordnet	47	Gefütterter Hoodie und Trainerhosen Set im American Style
 gid://shopify/Product/15447963828609	zugeordnet	32	Weihnachts-Partnerlook für die ganze Familie
 gid://shopify/Product/15447964025217	zugeordnet	5	Baby Hoodie-Set mit Bären-Print
+gid://shopify/Product/15447964254593	zugeordnet	78	Slim-Fit Hoodie Set Urban Casual
+gid://shopify/Product/15447964516737	zugeordnet	13	Hoodie & Jogginghose Set im Partnerlook
+gid://shopify/Product/15447964746113	zugeordnet	31	Dinosaurier Pyjama Partnerlook für die ganze Familie
