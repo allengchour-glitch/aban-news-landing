@@ -648,3 +648,18 @@ gid://shopify/Product/15503304589697	CJ-CD5B00FD-672E-4151-9250-9B20FE57AF21	Mas
 gid://shopify/Product/15503304819073	CJ-8E7EA65C-070C-44A9-929E-9598B28AC682	Halsband aus robustem Nylon für Hunde
 gid://shopify/Product/15503304950145	CJ-8B711E63-3CA7-4253-A6E3-B0C9B4437D3F	Drahtloser Hundezaun
 gid://shopify/Product/15503305113985	CJ-AA6DB5FA-2EC4-4E9D-9F32-8273C411A8AF	Fluoreszierendes Hunde-Halsband mit Solar
+gid://shopify/Product/15504091251073	CJ-CJLY295032401AZ	Resortkleid mit asymmetrischem Saum
+gid://shopify/Product/15504091611521	CJ-CJLY295030101AZ	Eleganter Samt-Midi-Rock für Damen
+gid://shopify/Product/15504097182081	CJ-CJLY295036101AZ	Leinenkleid ohne Ärmel mit Taillengürtel
+gid://shopify/Product/15504097411457	CJ-CJNT295035401AZ	Figurbetontes Freizeitkleid mit Reissverschluss
+gid://shopify/Product/15504097640833	CJ-CJLY295035301AZ	Plissiertes Mesh-Trägerkleid mit V-Ausschnitt
+gid://shopify/Product/15504097870209	CJ-CJYD295032501AZ	Sommerliches Midi-Kleid mit Blumenmuster
+gid://shopify/Product/15504098230657	CJ-CJYD295028701AZ	Besticktes Boho-Kleid im Ethno-Stil
+gid://shopify/Product/15504098361729	CJ-CJLY295028401AZ	Geblümtes Off-Shoulder A-Linien Maxikleid
+gid://shopify/Product/15504098460033	CJ-CJLY295026701AZ	Blumiges A-Linien Minikleid im Cape-Stil
+gid://shopify/Product/15504099180929	CJ-CJYD281777301AZ	Langarm-Stehkragenhemd im Loose-Fit
+gid://shopify/Product/15504172450177	CJ-1399983667983552512	Reise- und Business Rucksack für Herren
+gid://shopify/Product/15504173171073	CJ-1398841743520174080	Fashion Travel Rucksack
+gid://shopify/Product/15504173334913	CJ-1398489166404259840	Retro Crazy Horse Leder Rucksack für Herren
+gid://shopify/Product/15504173465985	CJ-1398488623166394368	Nylon-Rucksack für Reisen und Business
+gid://shopify/Product/15504173695361	CJ-1398229036072833024	Hunde- und Katzenrucksack mit Luftpolstergurt
