@@ -188,3 +188,6 @@ gid://shopify/Product/15504153248129	armelloses-hemdkragenkleid-637200	Ärmellos
 gid://shopify/Product/15504175038849	baren-messer-set-mit-schneidebrett-5-teilig-955136	Bären-Messer-Set mit Schneidebrett, 5-teilig
 gid://shopify/Product/15504178610561	elegante-oversize-bluse-aus-baumwoll-leinen-mi-617400	Elegante Oversize Bluse aus Baumwoll-Leinen-Mix
 gid://shopify/Product/15504178643329	anti-schling-napf-fur-hunde-633088	Anti-Schling Napf für Hunde
+gid://shopify/Product/15504189849985	offenes-perlenarmband-aus-edelstahl-638400	Offenes Perlenarmband aus Edelstahl
+gid://shopify/Product/15504199549313	langarm-polo-shirt-mit-knopfleiste-606100	Langarm Polo-Shirt mit Knopfleiste
+gid://shopify/Product/15504199582081	r5-pro-smartwatch-mit-herzfrequenz-messung-20d902	R5 PRO Smartwatch mit Herzfrequenz-Messung
