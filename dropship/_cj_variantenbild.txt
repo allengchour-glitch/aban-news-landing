@@ -691,3 +691,5 @@ gid://shopify/Product/15447947739521	zugeordnet	6	Mütze aus weichem Faux-Nerzfe
 gid://shopify/Product/15447947837825	zugeordnet	4	Damen Fischerhut mit breiter Krempe
 gid://shopify/Product/15447948099969	zugeordnet	5	Unisex Baseball Cap mit Lüftungslöchern
 gid://shopify/Product/15447948198273	zugeordnet	2	Baskenmütze im Leo-Look mit Nieten und Gürtel
+gid://shopify/Product/15447948329345	zugeordnet	7	Baseball Cap mit Stickerei und Distressed-Look
+gid://shopify/Product/15447948525953	zugeordnet	3	Octagonal Newsboy Mütze im Korean-Japanese Style
