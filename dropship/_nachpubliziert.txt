@@ -169,3 +169,5 @@ gid://shopify/Product/15503948775809	leichte-canvas-schuhe-fur-herren-614000	Lei
 gid://shopify/Product/15503948808577	puppenhaus-sofa-fur-kinder-592512	Puppenhaus Sofa für Kinder
 gid://shopify/Product/15503959327105	verstellbarer-messingring-mit-ovalem-edelstein-609200	Verstellbarer Messingring mit ovalem Edelstein
 gid://shopify/Product/15504074998145	luftbefeuchter-in-holzoptik-7b8624	Luftbefeuchter in Holzoptik
+gid://shopify/Product/15504084173185	jeans-hundehalsband-mit-knochen-stickerei-d7d882	Jeans-Hundehalsband mit Knochen-Stickerei
+gid://shopify/Product/15504091644289	luftiges-a-linien-blumenkleid-mit-langen-armel-618100	Luftiges A-Linien Blumenkleid mit langen Ärmeln
