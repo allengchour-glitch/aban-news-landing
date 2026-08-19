@@ -563,16 +563,6 @@ for(const [cat,label] of grp.cats){
    // der Produktbezeichnung des Verkäufers — «Abwehrstock» statt Teleskopschlagstock,
    // «lässt sich diskret platzieren» statt «versteckte Kamera»).
    const heik=heikelZweck(title, g.html);
-   // TSchV Art. 76: Halsbänder, die Stromstösse abgeben, sind in der Schweiz verboten. Die
-   // heikel-Wache klammert Tiergeräte bewusst aus (kein-mensch-als-ziel) — darum eigene Wache.
-   // 19.08.: 3 Tage nach dem Audit legte der Grind schon wieder ein Schockhalsband an.
-   const tschv=/halsband|collar/i.test(title)
-     && /schock|shock|stromst[oö]ss|static|reizstrom|elektro.?impuls/i.test(title+' '+(g.html||''))
-     && !/vibration.{0,30}und ton(?!.{0,60}schock)/i.test(g.html||'');
-   if(tschv && !DRY){
-    await sgql(st,`mutation($i:ProductInput!){productUpdate(input:$i){userErrors{message}}}`,
-               {i:{id:undefined}}).catch(()=>{});
-   }
    if(DRY){console.log(`  [DRY]${med?' ⚕️DRAFT('+med.grund+')':''}${heik?' 🕵️'+(heik.verboten?'DRAFT':'KEIN-KANAL')+'('+heik.grund+')':''} CHF${chf(p.sellPrice)} | ${title}`);got++;total++;continue;}
    const slug=title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,46)+'-'+String(p.pid).slice(-6);
    const html=`${g.html}\n${TRUST}`.replace(/ß/g,'ss').replace(/ẞ/g,'SS');
@@ -701,6 +691,15 @@ for(const [cat,label] of grp.cats){
      const mahM=title.match(/\b(\d{4,6})\s*m[aA]h\b/);
      if(mahM && parseInt(mahM[1],10)>=50000){
        console.log('  skip(mah-unglaubwuerdig)', mahM[0], title.slice(0,40));
+       fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid)); continue;
+     }
+     // TSchV Art. 76: Halsbänder mit Stromstoss-Funktion sind in der Schweiz verboten —
+     // gar nicht erst anlegen. Die heikel-Wache klammert Tiergeräte bewusst aus
+     // (kein-mensch-als-ziel); 19.08.: 3 Tage nach dem Audit importierte der Grind
+     // schon wieder ein «Hundetrainingshalsband» mit Schock-Modus 1–99 in alle 6 Kanäle.
+     if(/halsband|collar/i.test(title)
+        && /schock|shock|stromst[oö]ss|static\s*(modus|mode)|reizstrom|elektro.?impuls/i.test(title+' '+html.slice(0,1200))){
+       console.log('  skip(tschv-schockhalsband)', title.slice(0,40));
        fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid)); continue;
      }
    }

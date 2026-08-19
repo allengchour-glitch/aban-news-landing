@@ -190,6 +190,11 @@ for (const item of ITEMS) {
   // Ein Medizinprodukt geht in KEINEN Kanal — am wenigsten in «Google & YouTube».
   if (med) { console.log(`⚕️ medizinische Zweckbestimmung (${med.grund}) → DRAFT, nicht publiziert: ${title.slice(0,44)}`);
             fs.appendFileSync(LEDGER, 'cj:' + pid + '\n'); continue; }
+  // TSchV Art. 76: Schockhalsbänder sind in der Schweiz verboten — DRAFT, kein Kanal.
+  const tschv = /halsband|collar/i.test(title) && /schock|shock|stromst[oö]ss|reizstrom|elektro.?impuls/i.test(title + ' ' + (g.html || '').slice(0, 1200));
+  if (tschv) { await sgql(t, `mutation($i:ProductInput!){ productUpdate(input:$i){userErrors{message}} }`, { i: { id: spid, status: 'DRAFT', tags: ['tschv-verboten', 'schockhalsband', 'cj-real', 'dropship'] } });
+            console.log(`🐕 TSchV-Schockhalsband → DRAFT: ${title.slice(0,44)}`);
+            fs.appendFileSync(LEDGER, 'cj:' + pid + '\n'); continue; }
   // Hausregel 12.08.: Klingen (auch Küchenmesser) nie in den Google-Kanal.
   const klinge = /\b(messer|klinge\w*|dolch|machete|axt|beil|schwert|katana)/i.test(title)
     && !/jeans|kleid|hose|shirt|hoodie|wasch|deko|figur|anhänger|halskette|ohrring|spielzeug|plüsch|kostüm/i.test(title);
