@@ -131,3 +131,4 @@ gid://shopify/Product/15452675506561 | Formende Nagelhose | Sperr-Tag nicht-bewe
 gid://shopify/Product/15453922886017 | Wilder Leopard-Druck Jumpsuit | Sperr-Tag nicht-bewerben durchgesetzt 17.08.
 gid://shopify/Product/15454235361665 | Braune Leggings mit hoher Elastizität | Sperr-Tag nicht-bewerben durchgesetzt 17.08.
 gid://shopify/Product/15468699844993 | Abendkleid mit Schlitz und Hot-Stone-Details | Sperr-Tag nicht-bewerben durchgesetzt 17.08.
+gid://shopify/Product/15503084650881 | Hundetrainingshalsband 800M | DRAFT: Schock-Modus = TSchV Art.76 verboten, 19.08.
