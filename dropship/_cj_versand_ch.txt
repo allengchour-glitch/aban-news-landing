@@ -838,3 +838,4 @@ gid://shopify/Product/15504081912193	ok	Bluetooth Couchtisch mit Wireless Chargi
 gid://shopify/Product/15504088990081	nicht-versendbar	Uhrenbeweger mit Schmuckaufbewahrung
 gid://shopify/Product/15504088695169	nicht-versendbar	Robuster Rollkoffer mit Reissverschluss
 gid://shopify/Product/15504112976257	nicht-versendbar	Muskeltrainer für Zuhause
+gid://shopify/Product/15504117629313	nicht-versendbar	Ultra-leichte Glas-Vorratsbehälter für Reis (7er-Set)
