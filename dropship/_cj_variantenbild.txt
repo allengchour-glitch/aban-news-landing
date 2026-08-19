@@ -727,3 +727,7 @@ gid://shopify/Product/15447954981249	zugeordnet	15	Loose-fit T-Shirt für Paare 
 gid://shopify/Product/15447955177857	zugeordnet	7	Loose-fit T-Shirt mit Cartoon-Print
 gid://shopify/Product/15447955505537	zugeordnet	28	Polo-Shirt aus merzerisierter Baumwolle
 gid://shopify/Product/15447955636609	zugeordnet	25	Kurzarm-Shirt mit trendigem Katzenprint
+gid://shopify/Product/15447955800449	zugeordnet	97	Personalisierbare Baumwoll-T-Shirts für Damen
+gid://shopify/Product/15447955964289	zugeordnet	12	Kurzarm-Shirt aus reiner Baumwolle
+gid://shopify/Product/15447956128129	zugeordnet	84	Merry Christmas T-Shirt für Damen
+gid://shopify/Product/15447956324737	zugeordnet	84	Herren Basic T-Shirt Kurzarm
