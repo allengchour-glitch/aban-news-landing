@@ -191,3 +191,5 @@ gid://shopify/Product/15504178643329	anti-schling-napf-fur-hunde-633088	Anti-Sch
 gid://shopify/Product/15504189849985	offenes-perlenarmband-aus-edelstahl-638400	Offenes Perlenarmband aus Edelstahl
 gid://shopify/Product/15504199549313	langarm-polo-shirt-mit-knopfleiste-606100	Langarm Polo-Shirt mit Knopfleiste
 gid://shopify/Product/15504199582081	r5-pro-smartwatch-mit-herzfrequenz-messung-20d902	R5 PRO Smartwatch mit Herzfrequenz-Messung
+gid://shopify/Product/15504229958017	herren-kapuzen-windbreaker-wasserdicht-630500	Herren Kapuzen-Windbreaker wasserdicht
+gid://shopify/Product/15504230056321	schmetterlingsschnallen-armband-fur-apple-watc-417664	Schmetterlingsschnallen-Armband für Apple Watch
