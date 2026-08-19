@@ -771,3 +771,6 @@ gid://shopify/Product/15447964516737	zugeordnet	13	Hoodie & Jogginghose Set im P
 gid://shopify/Product/15447964746113	zugeordnet	31	Dinosaurier Pyjama Partnerlook für die ganze Familie
 gid://shopify/Product/15447964975489	zugeordnet	28	Sport-T-Shirt Kurzarm – Schnelltrocknend
 gid://shopify/Product/15447965172097	zugeordnet	13	Leopard Print Langarm Bademode für Mutter & Kind
+gid://shopify/Product/15447965401473	zugeordnet	12	Kurzarm-Shirt & weite Hose Set für Kinder
+gid://shopify/Product/15447965663617	zugeordnet	21	Bambus-Baumwoll-Pyjama für Eltern & Kind
+gid://shopify/Product/15447965860225	zugeordnet	21	Weihnachts-Hausanzug für die ganze Familie
