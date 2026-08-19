@@ -10,3 +10,4 @@ gid://shopify/Product/15493848367489	eingewachsene-naegel	2026-08-11	Korrektur-S
 gid://shopify/Product/15493861998977	fieberueberwachung	2026-08-11	Baby-Pflegeset mit elektrischem Nageltrimmer
 gid://shopify/Product/15497360769409	endoskop-koerperoeffnung	2026-08-13	Kabelloses WiFi Otoskop
 gid://shopify/Product/15493851971969	zahnsteinentfernung	2026-08-11	Elektrisches Zahnpflege-Set gegen Zahnstein
+gid://shopify/Product/15504149217665	vitalmessung-medizinisch	2026-08-19	Blasenfreies Tiermonitor-Manschette
