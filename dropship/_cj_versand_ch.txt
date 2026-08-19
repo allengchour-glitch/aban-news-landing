@@ -833,3 +833,4 @@ gid://shopify/Product/15503258911105	ok	Portabler HD-Heimprojektor
 gid://shopify/Product/15503166669185	nicht-versendbar	DIY Miniatur-Cottage mit Staubschutz
 gid://shopify/Product/15503286632833	nicht-versendbar	Leinen-Baumwollstoff mit Blumenmuster, 10m
 gid://shopify/Product/15503876292993	ok	Multifunktionaler 4-Fach Elektro-Kochtopf
+gid://shopify/Product/15503947137409	ok	Elektrische Nudelmaschine mit 13 Formen
