@@ -184,3 +184,4 @@ gid://shopify/Product/15504139452801	elektrisches-heiz-schropf-massagegerat-6213
 gid://shopify/Product/15504142532993	prinzessinnen-schuhe-mit-glitzer-fur-madchen-958144	Prinzessinnen-Schuhe mit Glitzer für Mädchen
 gid://shopify/Product/15504142598529	hundeleine-aus-edelstahl-948160	Hundeleine aus Edelstahl
 gid://shopify/Product/15504142664065	smart-armband-fur-damen-0370be	Smart-Armband für Damen
+gid://shopify/Product/15504153248129	armelloses-hemdkragenkleid-637200	Ärmelloses Hemdkragenkleid
