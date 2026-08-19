@@ -774,3 +774,7 @@ gid://shopify/Product/15447965172097	zugeordnet	13	Leopard Print Langarm Bademod
 gid://shopify/Product/15447965401473	zugeordnet	12	Kurzarm-Shirt & weite Hose Set für Kinder
 gid://shopify/Product/15447965663617	zugeordnet	21	Bambus-Baumwoll-Pyjama für Eltern & Kind
 gid://shopify/Product/15447965860225	zugeordnet	21	Weihnachts-Hausanzug für die ganze Familie
+gid://shopify/Product/15447966056833	zugeordnet	31	Kariertes Pyjama-Set für die ganze Familie
+gid://shopify/Product/15447966351745	zugeordnet	50	Weihnachts-Homewear für die ganze Familie
+gid://shopify/Product/15447966515585	zugeordnet	50	Weihnachts-Pyjama-Set für die ganze Familie
+gid://shopify/Product/15447966679425	zugeordnet	21	Kariertes Familien-Pyjama-Set mit Hirschgeweih
