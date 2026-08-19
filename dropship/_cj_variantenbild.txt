@@ -784,3 +784,7 @@ gid://shopify/Product/15447967170945	zugeordnet	24	Partnerlook Hausanzug für di
 gid://shopify/Product/15447967302017	zugeordnet	21	Blumen-Partnerlook für die ganze Familie
 gid://shopify/Product/15447967433089	zugeordnet	96	Elastischer Pyjama für Kinder & Erwachsene
 gid://shopify/Product/15447967596929	zugeordnet	17	Elch-Pyjama für die ganze Familie
+gid://shopify/Product/15447967793537	zugeordnet	27	Weihnachtliches Familien-Outfit im Hirsch-Design
+gid://shopify/Product/15447968219521	zugeordnet	84	Weihnachts-Homewear im Partnerlook
+gid://shopify/Product/15447968383361	zugeordnet	17	Partnerlook Pyjama-Set mit Augen-Print
+gid://shopify/Product/15447968842113	zugeordnet	72	Weihnachtsbaum-Print Hausanzug
