@@ -185,3 +185,6 @@ gid://shopify/Product/15504142532993	prinzessinnen-schuhe-mit-glitzer-fur-madche
 gid://shopify/Product/15504142598529	hundeleine-aus-edelstahl-948160	Hundeleine aus Edelstahl
 gid://shopify/Product/15504142664065	smart-armband-fur-damen-0370be	Smart-Armband für Damen
 gid://shopify/Product/15504153248129	armelloses-hemdkragenkleid-637200	Ärmelloses Hemdkragenkleid
+gid://shopify/Product/15504175038849	baren-messer-set-mit-schneidebrett-5-teilig-955136	Bären-Messer-Set mit Schneidebrett, 5-teilig
+gid://shopify/Product/15504178610561	elegante-oversize-bluse-aus-baumwoll-leinen-mi-617400	Elegante Oversize Bluse aus Baumwoll-Leinen-Mix
+gid://shopify/Product/15504178643329	anti-schling-napf-fur-hunde-633088	Anti-Schling Napf für Hunde
