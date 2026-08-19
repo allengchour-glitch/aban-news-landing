@@ -769,3 +769,5 @@ gid://shopify/Product/15447964025217	zugeordnet	5	Baby Hoodie-Set mit Bären-Pri
 gid://shopify/Product/15447964254593	zugeordnet	78	Slim-Fit Hoodie Set Urban Casual
 gid://shopify/Product/15447964516737	zugeordnet	13	Hoodie & Jogginghose Set im Partnerlook
 gid://shopify/Product/15447964746113	zugeordnet	31	Dinosaurier Pyjama Partnerlook für die ganze Familie
+gid://shopify/Product/15447964975489	zugeordnet	28	Sport-T-Shirt Kurzarm – Schnelltrocknend
+gid://shopify/Product/15447965172097	zugeordnet	13	Leopard Print Langarm Bademode für Mutter & Kind
