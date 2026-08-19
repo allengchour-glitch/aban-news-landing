@@ -782,3 +782,5 @@ gid://shopify/Product/15447966908801	zugeordnet	30	Weihnachts-Pyjama für Mutter
 gid://shopify/Product/15447967072641	zugeordnet	31	Weihnachts-Partnerlook Blau-Weiss Gestreift
 gid://shopify/Product/15447967170945	zugeordnet	24	Partnerlook Hausanzug für die ganze Familie
 gid://shopify/Product/15447967302017	zugeordnet	21	Blumen-Partnerlook für die ganze Familie
+gid://shopify/Product/15447967433089	zugeordnet	96	Elastischer Pyjama für Kinder & Erwachsene
+gid://shopify/Product/15447967596929	zugeordnet	17	Elch-Pyjama für die ganze Familie

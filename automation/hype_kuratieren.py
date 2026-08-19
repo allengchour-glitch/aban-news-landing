@@ -36,7 +36,7 @@ TAG = "hype-jetzt"
 HANDLE = "hype-jetzt"
 LEDGER = "dropship/_hype_verlauf.txt"
 
-QUELLE = "Web-Recherche 15.08.2026 (Trendtrack/CJ/EPROLO August-Berichte: Beauty-Geräte, Snail-Serum, Shapewear, Aesthetic-Ordnung bestätigt; neu Blush-Balms; Back-to-School läuft über die Schulstart-Reihe)"
+QUELLE = "Web-Recherche 19.08.2026 (August-Trendberichte: Blush-Balms/Snail/Shapewear/Ordnung weiter bestätigt; neu: Invisible Lifting Tape, Haarglätter/Multistyler, Hals-Ventilator für Spätsommer)"
 THEMEN = {
     # ⚠️ «IPL» ohne Wortgrenze steckt in «L-IPL-iner»: der erste Lauf setzte einen
     # «Peel-Off Lipliner» als Beauty-GERÄT auf die Startseite. Dieselbe Falle wie «rock» in
@@ -57,6 +57,16 @@ THEMEN = {
     "Blush & Lippen-Balm": re.compile(
         r'Blush[- ]?(?:Balm|Stick)|Cream[- ]?Blush|Rouge[- ]?Stick|Wangenr[öo]te|'
         r'Lip[- ]?(?:Balm|Tint)|Lippenbalsam.*(?:T[öo]nung|Farbe)', re.I),
+    # Neu 19.08.: Face-/Lifting-Tapes («Invisible Lifting Tape») und Haarglätter/Multistyler
+    # tauchen in mehreren August-Trendlisten auf; Hals-Ventilatoren tragen den Spätsommer.
+    # «Tape» allein wäre eine Falle (Klebeband/Washi-Tape) → Lifting/Face als Pflicht-Anker.
+    "Lifting-Tape": re.compile(
+        r'(?:Lifting|Face|Gesichts?)[- ]?Tape|Gesichtsstraffungs|V-?Face[- ]?(?:Band|Tape)', re.I),
+    "Haarglätter & Styler": re.compile(
+        r'Haargl[äa]tter|Gl[äa]tteisen|Multi-?styler|Warmluftb[üu]rste|Airstyler|'
+        r'Lockenstab|Gl[äa]ttb[üu]rste', re.I),
+    "Hals-Ventilator": re.compile(
+        r'(?:Hals|Nacken|Neck)[- ]?(?:Ventilator|Fan|K[üu]hler)|Tragbarer Mini-?Ventilator', re.I),
 }
 # Warengruppen, die schon einmal aus der Startreihe genommen wurden.
 RAUS_TYP = {"Spielzeug & Spiele", "Partydeko & Ballone", "Kostüme & Verkleidung"}

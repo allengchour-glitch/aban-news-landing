@@ -47,3 +47,5 @@
 2026-08-15	Ladestation 3-in-1	gid://shopify/Product/15493848203649	4-in-1 Wireless Ladestation mit Schnellladefunktion
 2026-08-15	Ladestation 3-in-1	gid://shopify/Product/15495082377601	Magnetische 3-in-1 Wireless Powerbank
 2026-08-15	Blush & Lippen-Balm	gid://shopify/Product/15445834793345	High Gloss Rouge Stick
+2026-08-19	Haarglätter & Styler	gid://shopify/Product/15495239958913	Automatischer Lockenstab für grosse Wellen (25mm)
+2026-08-19	Haarglätter & Styler	gid://shopify/Product/15495399604609	5-in-1 Warmluftbürste mit automatischem Lockenwickler
