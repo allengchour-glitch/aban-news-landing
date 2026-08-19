@@ -731,3 +731,7 @@ gid://shopify/Product/15447955800449	zugeordnet	97	Personalisierbare Baumwoll-T-
 gid://shopify/Product/15447955964289	zugeordnet	12	Kurzarm-Shirt aus reiner Baumwolle
 gid://shopify/Product/15447956128129	zugeordnet	84	Merry Christmas T-Shirt für Damen
 gid://shopify/Product/15447956324737	zugeordnet	84	Herren Basic T-Shirt Kurzarm
+gid://shopify/Product/15447957012865	zugeordnet	8	Kurzarmshirt mit Plüsch-Welpen Stickerei
+gid://shopify/Product/15447957143937	zugeordnet	36	Leuchtendes Hai-T-Shirt für Kinder
+gid://shopify/Product/15447957340545	zugeordnet	12	Partnerlook T-Shirt "Just A Dad Who Loves His Girl"
+gid://shopify/Product/15447957504385	zugeordnet	92	Partnerlook Langarmkleid mit Print

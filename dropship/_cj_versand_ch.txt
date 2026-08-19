@@ -837,3 +837,4 @@ gid://shopify/Product/15503947137409	ok	Elektrische Nudelmaschine mit 13 Formen
 gid://shopify/Product/15504081912193	ok	Bluetooth Couchtisch mit Wireless Charging
 gid://shopify/Product/15504088990081	nicht-versendbar	Uhrenbeweger mit Schmuckaufbewahrung
 gid://shopify/Product/15504088695169	nicht-versendbar	Robuster Rollkoffer mit Reissverschluss
+gid://shopify/Product/15504112976257	nicht-versendbar	Muskeltrainer für Zuhause
