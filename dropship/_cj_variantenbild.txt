@@ -735,3 +735,13 @@ gid://shopify/Product/15447957012865	zugeordnet	8	Kurzarmshirt mit Plüsch-Welpe
 gid://shopify/Product/15447957143937	zugeordnet	36	Leuchtendes Hai-T-Shirt für Kinder
 gid://shopify/Product/15447957340545	zugeordnet	12	Partnerlook T-Shirt "Just A Dad Who Loves His Girl"
 gid://shopify/Product/15447957504385	zugeordnet	92	Partnerlook Langarmkleid mit Print
+gid://shopify/Product/15447957733761	zugeordnet	34	Color Matching Pocket Family Suit Parent-child Short Sleeve 
+gid://shopify/Product/15447957864833	zugeordnet	24	Partnerlook T-Shirt für die ganze Familie
+gid://shopify/Product/15447957963137	zugeordnet	36	Cartoon Mutter-Tochter T-Shirt
+gid://shopify/Product/15447958192513	zugeordnet	28	Langer Daunenmantel für Herren mit Kapuze
+gid://shopify/Product/15447958323585	zugeordnet	35	Wind- & wasserdichte Outdoor-Jacke, Herren
+gid://shopify/Product/15447958487425	zugeordnet	16	Smarte Heizjacke mit konstanter Temperatur
+gid://shopify/Product/15447958716801	zugeordnet	22	Familien-Outfits für Eltern und Kinder
+gid://shopify/Product/15447958880641	zugeordnet	30	Partnerlook-Outfits für die ganze Familie
+gid://shopify/Product/15447959077249	zugeordnet	31	Ferien-Look Partner-Hemd mit Blättermuster
+gid://shopify/Product/15447959241089	zugeordnet	54	Baumwoll-Sweatshirt mit Rundhals und langen Ärmeln
