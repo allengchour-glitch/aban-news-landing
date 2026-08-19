@@ -168,3 +168,4 @@ gid://shopify/Product/15503697871233	armelloses-elegantes-strickkleid-fur-damen-
 gid://shopify/Product/15503948775809	leichte-canvas-schuhe-fur-herren-614000	Leichte Canvas-Schuhe für Herren
 gid://shopify/Product/15503948808577	puppenhaus-sofa-fur-kinder-592512	Puppenhaus Sofa für Kinder
 gid://shopify/Product/15503959327105	verstellbarer-messingring-mit-ovalem-edelstein-609200	Verstellbarer Messingring mit ovalem Edelstein
+gid://shopify/Product/15504074998145	luftbefeuchter-in-holzoptik-7b8624	Luftbefeuchter in Holzoptik
