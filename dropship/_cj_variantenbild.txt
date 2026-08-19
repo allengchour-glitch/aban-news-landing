@@ -704,3 +704,10 @@ gid://shopify/Product/15447949836673	zugeordnet	5	Gestrickte Baseballkappe mit O
 gid://shopify/Product/15447950262657	zugeordnet	4	Baseball Cap im Retro-Graffiti-Look
 gid://shopify/Product/15447951507841	zugeordnet	98	Retro Zip-Up Hoodie mit 3D-Digitalprint
 gid://shopify/Product/15447951606145	zugeordnet	17	Tie-Dye Hoodie für Haustiere & Besitzer
+gid://shopify/Product/15447951835521	zugeordnet	46	Weihnachts-Hoodie für die ganze Familie
+gid://shopify/Product/15447951999361	zugeordnet	60	Partnerlook Sweatshirts für Familien
+gid://shopify/Product/15447952195969	zugeordnet	19	Kürbisfarbener Kapuzenpullover für Eltern & Kind
+gid://shopify/Product/15447952327041	zugeordnet	19	Colorblock Raglan Hoodie für Eltern und Kinder
+gid://shopify/Product/15447952425345	zugeordnet	24	Premium Half-Zip Hoodie für Damen
+gid://shopify/Product/15447952556417	zugeordnet	48	Familien-Sweatshirts und Baby-Onesies
+gid://shopify/Product/15447952753025	zugeordnet	25	Lässiges Damen Sweatshirt mit Tiermotiv
