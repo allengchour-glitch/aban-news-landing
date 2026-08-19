@@ -178,3 +178,9 @@ gid://shopify/Product/15504106684801	halsband-leine-fliege-lila-tupfen-182976	Ha
 gid://shopify/Product/15504118350209	pinselset-fur-feine-linien-698624	Pinselset für feine Linien
 gid://shopify/Product/15504118382977	golfball-magazin-fur-driving-range-600200	Golfball-Magazin für Driving Range
 gid://shopify/Product/15504121102721	funf-farben-lidschatten-palette-matt-689408	Fünf-Farben-Lidschatten-Palette Matt
+gid://shopify/Product/15504139387265	lauflernschuhe-fur-babys-0d604c	Lauflernschuhe für Babys
+gid://shopify/Product/15504139420033	smartwatch-armband-aus-silikon-22mm-242688	Smartwatch-Armband aus Silikon (22mm)
+gid://shopify/Product/15504139452801	elektrisches-heiz-schropf-massagegerat-621300	Elektrisches Heiz-Schröpf-Massagegerät
+gid://shopify/Product/15504142532993	prinzessinnen-schuhe-mit-glitzer-fur-madchen-958144	Prinzessinnen-Schuhe mit Glitzer für Mädchen
+gid://shopify/Product/15504142598529	hundeleine-aus-edelstahl-948160	Hundeleine aus Edelstahl
+gid://shopify/Product/15504142664065	smart-armband-fur-damen-0370be	Smart-Armband für Damen
