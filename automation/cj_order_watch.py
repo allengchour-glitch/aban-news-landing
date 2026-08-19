@@ -20,6 +20,10 @@ for o in d.get("data", {}).get("list", []):
     if not n.startswith("LX"):
         continue  # Schatten-Einträge (#-Form) nie anfassen/melden
     jetzt = {"status": o.get("orderStatus"), "tracking": o.get("trackNumber") or ""}
+    # 19.08.: CJ kann Aufträge SPLITTEN (LX1013 → 2 Pakete mit eigenem Tracking) —
+    # darum je Auftrag+Tracking ein Eintrag, sonst überschreibt das Dict die Pakete.
+    if n in neu and neu[n]["tracking"] != jetzt["tracking"]:
+        n = f"{n}#{jetzt['tracking'][-4:]}"
     neu[n] = jetzt
     vorher = alt.get(n)
     if vorher and vorher != jetzt:
