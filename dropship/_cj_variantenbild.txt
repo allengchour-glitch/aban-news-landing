@@ -745,3 +745,11 @@ gid://shopify/Product/15447958716801	zugeordnet	22	Familien-Outfits für Eltern 
 gid://shopify/Product/15447958880641	zugeordnet	30	Partnerlook-Outfits für die ganze Familie
 gid://shopify/Product/15447959077249	zugeordnet	31	Ferien-Look Partner-Hemd mit Blättermuster
 gid://shopify/Product/15447959241089	zugeordnet	54	Baumwoll-Sweatshirt mit Rundhals und langen Ärmeln
+gid://shopify/Product/15447959568769	zugeordnet	22	Partnerlook Bikini blau-weiss gestreift
+gid://shopify/Product/15447959699841	zugeordnet	30	Weihnachts-Pullover für Damen
+gid://shopify/Product/15447959863681	zugeordnet	60	Freizeit-Hoodie-Set für Damen
+gid://shopify/Product/15447960158593	zugeordnet	72	Kinder-Outfit im chinesischen Stil
+gid://shopify/Product/15447960355201	zugeordnet	20	Sportlicher Patchwork-Trainingsanzug für Damen
+gid://shopify/Product/15447960486273	zugeordnet	23	Weihnachts-Familienoutfits mit Prints
+gid://shopify/Product/15447960682881	zugeordnet	63	Koreanische Familien-Outfits für Eltern und Kinder
+gid://shopify/Product/15447960846721	bild-urls-tot
