@@ -778,3 +778,7 @@ gid://shopify/Product/15447966056833	zugeordnet	31	Kariertes Pyjama-Set für die
 gid://shopify/Product/15447966351745	zugeordnet	50	Weihnachts-Homewear für die ganze Familie
 gid://shopify/Product/15447966515585	zugeordnet	50	Weihnachts-Pyjama-Set für die ganze Familie
 gid://shopify/Product/15447966679425	zugeordnet	21	Kariertes Familien-Pyjama-Set mit Hirschgeweih
+gid://shopify/Product/15447966908801	zugeordnet	30	Weihnachts-Pyjama für Mutter & Tochter
+gid://shopify/Product/15447967072641	zugeordnet	31	Weihnachts-Partnerlook Blau-Weiss Gestreift
+gid://shopify/Product/15447967170945	zugeordnet	24	Partnerlook Hausanzug für die ganze Familie
+gid://shopify/Product/15447967302017	zugeordnet	21	Blumen-Partnerlook für die ganze Familie
