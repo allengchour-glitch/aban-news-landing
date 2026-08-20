@@ -6943,3 +6943,5 @@ gid://shopify/Product/15473077125505	14->0	Doppel-Port Luftkompressor
 gid://shopify/Product/15473077158273	12->1	EVA Soft-Board Schaukel für Kinder
 gid://shopify/Product/15473084563841	145->3	Gestreiftes Midikleid für Damen
 gid://shopify/Product/15473085317505	9->0	Flying Squirrel Backlit 24GBT Bluetooth Set-Top Box
+gid://shopify/Product/15473433543041	70->0	3-teiliges Blumen-Patchwork-Set
+gid://shopify/Product/15474479989121	9->0	USB-Expander

@@ -360,6 +360,15 @@ async function publishVerified(t,pid,title){
  console.log('  ⚠️ Publizieren fehlgeschlagen',pid);
  return false;
 }
+// ⚠️ 20.08.2026: Der Slug-Stamm wird an EINER Stelle gebildet. Die Handle-Wache muss exakt
+// so kürzen wie der Handle-Bau — sonst sucht sie nach einem Stamm, den es im Shop nie gibt.
+const slugStamm=t=>t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+  .replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,46);
+// Slugs, die DIESER Lauf schon vergeben hat. Shopifys `query:`-Suche liest den Suchindex,
+// der Sekunden bis Minuten nachhinkt: die beiden «DIY Digital-Ölgemälde nach Zahlen …» vom
+// 20.08. entstanden 47 Sekunden auseinander im selben Lauf — die zweite Prüfung sah die
+// erste noch nicht. Der lokale Merker kennt sie sofort.
+const laufSlugs=new Set();
 const SET=`mutation($i:ProductSetInput!){productSet(synchronous:true,input:$i){product{id}userErrors{message}}}`;
 const MED=`mutation($id:ID!,$m:[CreateMediaInput!]!){productCreateMedia(productId:$id,media:$m){mediaUserErrors{message}}}`;
 
@@ -631,7 +640,7 @@ for(const [cat,label] of grp.cats){
    // «lässt sich diskret platzieren» statt «versteckte Kamera»).
    const heik=heikelZweck(title, g.html);
    if(DRY){console.log(`  [DRY]${med?' ⚕️DRAFT('+med.grund+')':''}${heik?' 🕵️'+(heik.verboten?'DRAFT':'KEIN-KANAL')+'('+heik.grund+')':''} CHF${chf(p.sellPrice)} | ${title}`);got++;total++;continue;}
-   const slug=title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,46)+'-'+String(p.pid).slice(-6);
+   const slug=slugStamm(title)+'-'+String(p.pid).slice(-6);
    const html=`${g.html}\n${TRUST}`.replace(/ß/g,'ss').replace(/ẞ/g,'SS');
    const fash=(grp.fashion&&!FAST)?buildFashion(d):null; // FAST: keine Varianten-Details → Standard-Variante
    const productOptions=fash?fash.productOptions:[{name:'Variante',values:[{name:'Standard'}]}];
@@ -783,9 +792,15 @@ for(const [cat,label] of grp.cats){
    // Satzzeichen unterscheiden, ergeben denselben Slug — `handle:<slug>*` findet sie beide.
    // Nur `^slug-<Ziffern>$` gilt als Dublette; ein längerer Slug («…-erhohte-position») ist
    // ein anderes Produkt, sonst würde «Kissen» auch «Kissenbezug» erschlagen.
-   const dupSlug = title.toLowerCase()
-       .replace(/ä/g,'a').replace(/ö/g,'o').replace(/ü/g,'u').replace(/ß/g,'ss')
-       .replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+   // ⚠️ DRITTER AKT (20.08.2026): Die Wache kürzte den Stamm NICHT, der Handle-Bau schon (46).
+   // Gesucht wurde «…-blumen-landschaft», im Shop steht «…-blumen-lands-166720» → die Abfrage
+   // kam leer zurück, beide «DIY Digital-Ölgemälde nach Zahlen …» wurden angelegt. Eine Wache,
+   // die anders normalisiert als der Erzeuger, prüft eine Zeichenkette, die es nie gibt.
+   const dupSlug = slugStamm(title);
+   if(dupSlug.length>8 && laufSlugs.has(dupSlug)){
+     console.log('  skip(dup-handle-lauf)',title.slice(0,40));
+     fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid)); continue;
+   }
    if(dupSlug.length>8){
      const hq=await sgql(st,`query($q:String!){products(first:25,query:$q){edges{node{handle title}}}}`,
                          {q:`handle:${dupSlug}* status:active`});
@@ -809,6 +824,7 @@ for(const [cat,label] of grp.cats){
    }
    const r=await sgql(st,SET,{i:input}); const e=r.data?.productSet?.userErrors||[]; const pid=r.data?.productSet?.product?.id;
    if(e.length||!pid){console.log('  ✗',title.slice(0,30),JSON.stringify(e).slice(0,80));continue;}
+   laufSlugs.add(slugStamm(title));
    const media=imgs.slice(1).map(u=>({originalSource:u,mediaContentType:'IMAGE'}));
  if(media.length)await sgql(st,MED,{id:pid,m:media});
    // ⚠️ BILD-QUITTUNG VOR DEM VERÖFFENTLICHEN (11.08.2026). Shopify lädt Bilder asynchron

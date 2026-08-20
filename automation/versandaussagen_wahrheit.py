@@ -169,9 +169,14 @@ def regeln(w):
     r.append((re.compile(r'🚚 Lieferung ca\.\s*10\s*[–-]\s*20\s*Tage'),
               f'🚚 Lieferung {s} Werktage'))
     # 2) Produktdetails-Zeile «Versand: 🇨🇭 CH/EU ca. 10–20 Tage · inkl. Produktion»
-    r.append((re.compile(r'Versand:\s*🇨🇭\s*CH/EU\s*ca\.\s*\d{1,2}\s*[–-]\s*\d{1,2}\s*Tage'
+    # ⚠️ 20.08.2026: «Versand:» und der Rest sind durch ein </strong> GETRENNT
+    # («<strong>Versand:</strong> 🇨🇭 CH/EU ca. 10–20 Tage»). Ohne das optionale Tag
+    # traf diese Regel KEINES der 176 betroffenen Produkte — sie standen trotzdem als
+    # erledigt im Ledger. Ein «0 Treffer» aus einem zu engen Muster sieht aus wie Erfolg.
+    r.append((re.compile(r'Versand:\s*(?:</strong>)?\s*🇨🇭\s*CH/EU\s*ca\.\s*'
+                         r'\d{1,2}\s*[–-]\s*\d{1,2}\s*Tage'
                          r'(\s*·\s*inkl\.\s*Produktion)?'),
-              f'Versand: 🇨🇭 Schweiz · Lieferung {s} Werktage'))
+              f'Versand:</strong> 🇨🇭 Schweiz · Lieferung {s} Werktage'))
     # 3) «📦 Lieferzeit: 🇨🇭 CH/EU ca. 10–20 Tage (inkl. Prüfung & Versand)»
     r.append((re.compile(r'Lieferzeit:\s*🇨🇭\s*CH/EU\s*ca\.\s*\d{1,2}\s*[–-]\s*\d{1,2}\s*Tage'),
               f'Lieferzeit Schweiz: {s} Werktage'))
@@ -196,8 +201,24 @@ def regeln(w):
     # 8) «Versand: aus EU-Lager · 3–7 Tage · gratis ab CHF 50» (9x, BigBuy-Markenware mit EAN:
     #    Swatch, Folli Follie, Thomas Sabo, Bombata — das EU-Lager ist belegt, nur die
     #    Zeitspanne war zu optimistisch). Spanne aus dem Satz (EU-Lager), nicht aus den Tags.
-    r.append((re.compile(r'Versand:\s*aus EU-Lager\s*·\s*\d{1,2}\s*[–-]\s*\d{1,2}\s*Tage'),
-              f'Versand: ab EU-Lager · Lieferung {SPANNE["eu"]} Werktage'))
+    # ⚠️ Auch hier trennt ein </strong> die beiden Wortteile (6 BigBuy-Produkte blieben
+    # deshalb 6 Tage lang stehen). Die Spanne kommt aus dem TAG-Bezugsweg, nicht pauschal
+    # aus «EU-Lager»: bei BigBuy-Ware mit Tag `nicht-verifiziert-lieferbar` ist der
+    # EU-Bestand gerade NICHT belegt, und die längere Zusage ist der günstigere Fehler.
+    r.append((re.compile(r'Versand:\s*(?:</strong>)?\s*aus EU-Lager\s*·\s*'
+                         r'\d{1,2}\s*[–-]\s*\d{1,2}\s*Tage'),
+              f'Versand:</strong> ab EU-Lager · Lieferung {s} Werktage'))
+    # 11) POD-Zeile «<strong>Versand:</strong> on-demand in Europa · 3–7 Tage».
+    #     «in Europa» ist der PRODUKTIONSORT und bleibt stehen (vgl. Regel 7).
+    r.append((re.compile(r'Versand:\s*(?:</strong>)?\s*on-demand in Europa\s*·\s*'
+                         r'\d{1,2}\s*[–-]\s*\d{1,2}\s*Tage'),
+              f'Versand:</strong> on-demand in Europa · Lieferung {s} Werktage'))
+    # 12) Hand-kuratierte Alt-Produkte: «<small>Versand aus Belp · 7–12 Werktage ·
+    #     Tracking inklusive</small>». NUR die Zahl wird gezogen — «aus Belp» ist eine
+    #     Standort-/Herkunftsaussage, ihre Richtigkeit ist eine Betreiber-Frage.
+    r.append((re.compile(r'(<small>Versand(?: aus Belp)?\s*·\s*)\d{1,2}\s*[–-]\s*\d{1,2}'
+                         r'(\s*Werktage\s*·\s*Tracking inklusive</small>)'),
+              lambda m, _s=s: f'{m.group(1)}{_s}{m.group(2)}'))
     # 9) «🚚 EU-Lager – Lieferung ca. 3–7 Tage»
     r.append((re.compile(r'🚚 EU-Lager\s*–\s*Lieferung ca\.\s*\d{1,2}\s*[–-]\s*\d{1,2}\s*Tage'),
               f'🚚 Lieferung {SPANNE["eu"]} Werktage'))
