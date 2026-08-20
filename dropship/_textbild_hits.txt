@@ -6873,3 +6873,4 @@ gid://shopify/Product/15454193058177	15->0	Haarständer
 gid://shopify/Product/15454204002689	67->0	Reise-Tasche für Herren
 gid://shopify/Product/15454218781057	74->1	Haarglätter Bürste
 gid://shopify/Product/15454218846593	41->0	Fernbediente Blinkleuchte mit Warnhorn und wasserdicht
+gid://shopify/Product/15454248468865	112->0	Urbaner Rucksack für Outdoor
