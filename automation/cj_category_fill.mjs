@@ -51,9 +51,33 @@ const kosten=(usd,grams)=>{const u=parseFloat((''+usd).split('--')[0])||0;
  return (u*0.9+freight).toFixed(2);};
 
 // ── Fashion-Modus (Zalando-Stil): CJ-Varianten "Farbe-Grösse" → Shopify Farbe+Grösse-Optionen ──
-const DECOLOR={apricot:'Aprikose',pink:'Pink','light pink':'Rosa','hot pink':'Pink','sky blue':'Himmelblau','light blue':'Hellblau','dark blue':'Dunkelblau','wine red':'Weinrot','rose red':'Rosarot','army green':'Armeegrün','light green':'Hellgrün','dark green':'Dunkelgrün','light grey':'Hellgrau','dark grey':'Dunkelgrau','navy blue':'Marineblau',black:'Schwarz',white:'Weiss',red:'Rot',blue:'Blau',green:'Grün',yellow:'Gelb',grey:'Grau',gray:'Grau',beige:'Beige',brown:'Braun',navy:'Marineblau',khaki:'Khaki',purple:'Lila',violet:'Violett',orange:'Orange',rose:'Rosé',coffee:'Kaffeebraun',silver:'Silber',gold:'Gold',champagne:'Champagner',ivory:'Elfenbein',burgundy:'Bordeaux',camel:'Camel',turquoise:'Türkis',mint:'Mintgrün',lavender:'Lavendel',cream:'Creme',nude:'Nude','dark pink':'Dunkelrosa','deep blue':'Dunkelblau','light yellow':'Hellgelb','fluorescent green':'Neongrün','light purple':'Helllila','dark brown':'Dunkelbraun',multicolor:'Bunt',multi:'Bunt'};
+const DECOLOR={apricot:'Aprikose',pink:'Pink','light pink':'Rosa','hot pink':'Pink','sky blue':'Himmelblau','light blue':'Hellblau','dark blue':'Dunkelblau','wine red':'Weinrot','rose red':'Rosarot','army green':'Armeegrün','light green':'Hellgrün','dark green':'Dunkelgrün','light grey':'Hellgrau','dark grey':'Dunkelgrau','light gray':'Hellgrau','dark gray':'Dunkelgrau','black and white':'Schwarz-Weiss','navy blue':'Marineblau',black:'Schwarz',white:'Weiss',red:'Rot',blue:'Blau',green:'Grün',yellow:'Gelb',grey:'Grau',gray:'Grau',beige:'Beige',brown:'Braun',navy:'Marineblau',khaki:'Khaki',purple:'Lila',violet:'Violett',orange:'Orange',rose:'Rosé',coffee:'Kaffeebraun',silver:'Silber',gold:'Gold',champagne:'Champagner',ivory:'Elfenbein',burgundy:'Bordeaux',camel:'Camel',turquoise:'Türkis',mint:'Mintgrün',lavender:'Lavendel',cream:'Creme',nude:'Nude','dark pink':'Dunkelrosa','deep blue':'Dunkelblau','light yellow':'Hellgelb','fluorescent green':'Neongrün','light purple':'Helllila','dark brown':'Dunkelbraun',multicolor:'Bunt',multi:'Bunt'};
 const SIZESET=new Set(['XS','S','M','L','XL','XXL','XXXL','2XL','3XL','4XL','5XL','6XL','ONE SIZE','ONESIZE','FREE SIZE','FREESIZE','F']);
+// ⚠️ CJ stellt der Farbe oft seinen Artikelcode voran: «A039 Black», «E7916 White»,
+// «Ts3018 Pink» — und der stand danach im Farb-Dropdown, wo die Kundin ihn anklicken MUSS
+// (2026-08-20, 151 aktive Produkte betroffen). `istCode` fing das nicht ab, weil es nur
+// Werte prüft, die GANZ aus einem Code bestehen. Deshalb hier: Code-Token am Anfang oder
+// Ende abschneiden, dann erst übersetzen.
+// ⚠️ Kein Bindestrich im Token — «Beige-110v» (Spannung), «Yellow Bunny-100» (Grösse) und
+// «Black-240D» sind Angaben, keine Artikelnummern. Kein Kleinbuchstaben-Start («tube24v»),
+// keine Masseinheit hinter der Zahl, und der Buchstabenteil darf kein Farbwort sein.
+const CODETOKEN=/^[A-Z][A-Za-z]{0,9}\d{2,7}[A-Za-z]?$/;
+const CODEEINHEIT=/\d+(?:v|w|ml|cm|mm|kg|g|db|hz|mah|a|k)$/i;
+const istCodeToken=t=>CODETOKEN.test(t)&&!CODEEINHEIT.test(t)
+  &&!/^(?:UV\d{3}|TR\d{2}|RF\d{3}|SR\d{3,4}|IP\d{2}|CR\d{4}|LR\d{2,4}|AG\d{1,2}|20\d{2})$/i.test(t)
+  &&!DECOLOR[(t.match(/^[A-Za-z]+/)||[''])[0].toLowerCase()];
+const ohneCode=c=>{const p=(c||'').trim().split(/\s+/); if(p.length<2)return (c||'').trim();
+  if(istCodeToken(p[0]))return p.slice(1).join(' ');
+  if(istCodeToken(p[p.length-1]))return p.slice(0,-1).join(' ');
+  return (c||'').trim();};
 const deColor=c=>{const t=(c||'').trim();return DECOLOR[t.toLowerCase()]||t;};
+// Die Code-Entfernung darf nur greifen, wenn danach ALLE Farben verschieden bleiben:
+// «A63 Black» und «A65 Black» würden sonst beide zu «Schwarz» — der Varianten-Dedup unten
+// wirft eine der beiden weg, und ein kaufbarer Artikel verschwindet. Lieber der Code als
+// eine verlorene Variante (dieselbe Regel wie im Bestandsreiniger: Kollision → gar nichts).
+const codeMap=colors=>{const neu=colors.map(c=>deColor(ohneCode(c)));
+  if(neu.some(x=>!x)||new Set(neu).size!==colors.length)return null;
+  return neu.every((x,i)=>x===colors[i])?null:new Map(colors.map((c,i)=>[c,neu[i]]));};
 // Reine Buchstabengrösse — strenger als isSize(), weil dieser Test auch auf den VORDEREN
 // Teil eines variantKey angewendet wird («S-Weiss»). «3L» wäre dort 3 Liter (E-Scooter-
 // Falttasche) und «10 M» 10 Meter, deshalb Ziffer-Formen nur mit X (14.08.2026).
@@ -78,7 +102,11 @@ const CODE=/^[A-Za-z][A-Za-z0-9]{2,17}$/;
 // die Entwurfsnummer des Lieferanten. Wortweise «Modell N» bzw. «Farbton N» (14.08.2026).
 const ZAEHL=/^(?:(?:no\.?|nr\.?|colou?r|style|models?|figure|patterns?|design)\s*[-. ]?\s*(\d{1,3})|(\d{1,3})\s*[-. ]?\s*(?:style|models?|figure|colou?r|patterns?|design))$/i;
 const istZaehl=v=>ZAEHL.test((v||'').trim());
-const istCode=v=>{const t=(v||'').trim();return CODE.test(t)&&(t.match(/\d/g)||[]).length>=2
+// ⚠️ CJ hängt an den Code oft noch ein Grössenkürzel: «HQ24799-XXS» neben «HQ24799».
+// Ohne diese Form fiel das «Karierte Hemd» durch die Code-Erkennung und stand mit 14
+// Lieferantencodes im Farb-Dropdown (2026-08-20).
+const CODEGR=/^([A-Za-z][A-Za-z0-9]{2,17})-(?:XXS|XS|S|M|L|XL|XXL|XXXL|[2-6]XL)$/i;
+const istCode=v=>{const t0=(v||'').trim(),mg=t0.match(CODEGR),t=mg?mg[1]:t0;return CODE.test(t)&&(t.match(/\d/g)||[]).length>=2
   &&!/(xs|s|m|l|xl|xxl|xxxl)$/i.test(t)
   &&!/(gb|tb|mb|mah|ma|mm|cm|ml|kg|pcs|pc|pack|ports|inch|yards?|frequency|style|model|color|size|no)/i.test(t)
   &&!/(black|white|red|blue|green|yellow|grey|gray|pink|purple|brown|beige|gold|silver|orange|navy|khaki)/i.test(t);};
@@ -117,13 +145,16 @@ function buildFashion(d){
  // Reine Lieferanten-Artikelnummern sind keine Farbe: Option «Ausführung», Werte «Modell N»
  // in der Reihenfolge der Bildergalerie. Sonst steht der fremde Code im Kaufbereich und die
  // Kundin wählt blind zwischen «JM721» und «JM722» (14.08.2026).
- const codeOpt=useC&&colors.length>=2&&colors.every(istCode);
- const zaehlOpt=useC&&!codeOpt&&colors.length>=2&&colors.every(istZaehl);
+ const sMap=useC?codeMap(colors):null;                 // «A039 Black» → «Schwarz»
+ const eff=colors.map(c=>sMap?sMap.get(c):c);          // was die Kundin am Ende sähe
+ const codeOpt=useC&&eff.filter(istCode).length>=2
+   &&eff.every(c=>istCode(c)||LETTERSIZE.test(c));
+ const zaehlOpt=useC&&!codeOpt&&eff.length>=2&&eff.every(istZaehl);
  // Steht in JEDEM Wert «Color», ist es doch eine Farbwahl — nur unbenannt: «Farbton N».
- const nurFarbe=zaehlOpt&&colors.every(c=>/colou?r/i.test(c));
+ const nurFarbe=zaehlOpt&&eff.every(c=>/colou?r/i.test(c));
  const cName=(codeOpt||(zaehlOpt&&!nurFarbe))?'Ausführung':'Farbe';
  const cMap=(codeOpt||zaehlOpt)
-   ?new Map(colors.map((c,i)=>[c,(nurFarbe?'Farbton ':'Modell ')+(i+1)])):null;
+   ?new Map(colors.map((c,i)=>[c,(nurFarbe?'Farbton ':'Modell ')+(i+1)])):sMap;
  const cVal=c=>cMap?(cMap.get(c)||c):c;
  // Dreiteilige variantKeys («Beige-L-Vest», «Blue-M-Thin») tragen hinten eine echte Wahl.
  // Ohne eigene Option würden «…-Thin» und «…-Thick» beim Dedup zu EINER Variante verschmelzen —
@@ -143,8 +174,9 @@ function buildFashion(d){
   // ihre 220'526 Varianten alle in der Farbe der ERSTEN — der rote Hoodie stand als
   // «Schwarz» im Feed und tauchte im Farbfilter «Rot» nie auf.
   const vmf=[];
-  if(useC&&colors.length>1&&farbeSauber(v.color))
-    vmf.push({namespace:'mm-google-shopping',key:'color',value:v.color,type:'single_line_text_field'});
+  const gFarbe=(!codeOpt&&!zaehlOpt&&sMap)?(sMap.get(v.color)||v.color):v.color;
+  if(useC&&colors.length>1&&farbeSauber(gFarbe))
+    vmf.push({namespace:'mm-google-shopping',key:'color',value:gFarbe,type:'single_line_text_field'});
   const sku=('CJ-'+(v.sku||'')).slice(0,70);
   // 🎨 DAS BILD DER VARIANTE MITNEHMEN (14.08.2026). CJ liefert zu jeder Variante ein
   // `variantImage` — im SELBEN Aufruf, der schon geholt wird, also ohne einen einzigen

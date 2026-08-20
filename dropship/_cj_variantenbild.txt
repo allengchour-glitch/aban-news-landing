@@ -865,3 +865,23 @@ gid://shopify/Product/15447988830593	zugeordnet	3	Gefaltete Blumenprint Rüschen
 gid://shopify/Product/15447989059969	zugeordnet	18	Elegante Blazer-Weste für Damen
 gid://shopify/Product/15447989191041	zugeordnet	6	Elegante V-Neck Leinen-Weste
 gid://shopify/Product/15447989322113	zugeordnet	35	Geripptes High-Neck Tanktop für Damen
+gid://shopify/Product/15447989780865	zugeordnet	6	Blumige Strickweste im Vintage-Stil
+gid://shopify/Product/15447990632833	zugeordnet	9	Preppy Strickweste für Damen
+gid://shopify/Product/15447990763905	zugeordnet	25	Sommerliches Slimming-Top mit Halbkragen
+gid://shopify/Product/15447990960513	zugeordnet	42	Ärmelloses Schnür-Top für Damen
+gid://shopify/Product/15447991026049	zugeordnet	18	Leichte Luxus-Weste im italienischen Stil
+gid://shopify/Product/15447991189889	zugeordnet	12	Kurzes Plissée-Top mit Rundhals
+gid://shopify/Product/15447991320961	zugeordnet	42	Softshell-Weste mit Stehkragen
+gid://shopify/Product/15447991484801	zugeordnet	4	Rundhals Strickweste mit Holzknöpfen
+gid://shopify/Product/15447991779713	zugeordnet	24	Ärmellose Strickweste für Damen
+gid://shopify/Product/15447991943553	zugeordnet	3	Retro Strickweste mit Knopfleiste
+gid://shopify/Product/15447992074625	zugeordnet	20	Elegantes ärmelloses Top mit Lochstickerei
+gid://shopify/Product/15447992304001	zugeordnet	40	Denim-Weste für Frühling und Sommer
+gid://shopify/Product/15447992467841	zugeordnet	35	Modische Strickweste mit V-Ausschnitt
+gid://shopify/Product/15447992598913	zugeordnet	36	V-Ausschnitt Strickpullover aus Wolle
+gid://shopify/Product/15447992729985	zugeordnet	9	Fleece Cardigan Weste für Damen
+gid://shopify/Product/15447992828289	zugeordnet	6	Retro PU-Weste für Damen
+gid://shopify/Product/15447993090433	zugeordnet	16	Merino Woll-Cardigan Weste
+gid://shopify/Product/15447993254273	zugeordnet	30	Asymmetrisches ärmelloses Top mit eckigem Ausschnitt
+gid://shopify/Product/15447993418113	zugeordnet	20	Sommerliches Floral-Print Tanktop
+gid://shopify/Product/15447993876865	zugeordnet	20	Retro Polka-Dot Tanktop mit eckigem Ausschnitt

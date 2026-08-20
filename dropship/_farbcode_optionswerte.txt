@@ -3,3 +3,120 @@ gid://shopify/Product/15493807145345	2	L985 Black → Schwarz | L985 Dark Brown 
 gid://shopify/Product/15491391586689	5	E7916 White → Weiss | E7916 Black → Schwarz | E7916 Light Gray → Hellgrau | E7916 Dark Gray → Dunkelgrau | E7916 Apricot → Aprikose	Herren Heavy Cotton Pullover für den Herbst
 gid://shopify/Product/15495094829441	2	Y851 Brown → Braun | Y851 Black → Schwarz	Trendige Chunky Low-Top Sneaker
 gid://shopify/Product/15495104397697	4	Ts3018 Pink → Pink | TS3018 Orange → Orange | Ts3018 Black → Schwarz | Ts3018 Yellow → Gelb	Warme Kindergarten-Finken für Kleinkinder
+gid://shopify/Product/15443496239489	4	P30i Black → Schwarz | P30i White → Weiss | P30i Lotus Root Color → Lotus Root Color | P30i Green → Grün	Kabellose Kopfhörer «EchoBuds» · Bluetooth TWS
+gid://shopify/Product/15447593353601	6	Black P742 → Schwarz | Silver Roman Literal P743 → Silver Roman Literal | Gold P674 → Gold | Silver Arabic Numeral P673 → Silver Arabic Numeral | Mechanical Watch Pm126 → Mechanical Watch | Silver Mechanical PM178 → Silver Mechanical	Antike Taschenuhr mit Quarz-Uhrwerk
+gid://shopify/Product/15447919264129	3	C47 Olive Green → Olivgrün | C48 Transparent Blue → Transparent Blue | C49 Dark Red → Dunkelrot	Transparente Bicolor-Brille im Vintage-Stil
+gid://shopify/Product/15447933059457	17	Y127 Pink → Pink | Y127 Black → Schwarz | Y127 Yellow → Gelb | Y127 Blue → Blau | Y127 Green → Grün | Y127 White → Weiss | Y127 Deep Blue → Dunkelblau | Y127 Sky Blue → Himmelblau | Y127 Purple → Lila | Y151 Mint Green → Mintgrün | Y151 Goose Yellow → Goose Yellow | Y151 Lake Blue → Seeblau | Y151 Khaki Color → Khaki Color | Y151 Ink Gray → Ink Gray | Y151 Milk Coffee Color → Milk Coffee Color | Y151 Lotus Root Pink → Lotus Root Pink | Y151 Dark Coffee Color → Dark Coffee Color	Mid-Calf Yoga Socken für Damen
+gid://shopify/Product/15448552178049	4	White MT048244 → Weiss | Orange MT110911 → Orange | Yellow MT371332 → Gelb | Brown MT389399 → Braun	Damen Off-Shoulder Puffärmel Midikleid
+gid://shopify/Product/15448575476097	3	C6778 Black → Schwarz | C6778 Green → Grün | C6778 Red → Rot	Eleganter Pailletten-Jumpsuit mit One-Shoulder
+gid://shopify/Product/15448586617217	2	G585 Wine Red → Weinrot | G585 Pink → Pink	Halterneck-Patchwork-Kleid Floral
+gid://shopify/Product/15448662999425	6	Brown D10420 → Braun | Purple D10420 → Lila | Rose D10420 → Rosé | Blue D10420 → Blau | Pink D10420 → Pink | Apricot D10420 → Aprikose	Ärmellose Bluse mit V-Ausschnitt und Schnürung
+gid://shopify/Product/15449067454849	1	Black Y22 → Schwarz	Vielseitiger Kapuzenpullover für Herren
+gid://shopify/Product/15449425871233	2	T20 BLACK → Schwarz | T20 BLACK with mouse → BLACK with mouse	RGB-Gaming-Tastatur mit schwebenden Tasten
+gid://shopify/Product/15449582043521	1	K010 Blue → Blau	Vintage Jeans für Herren
+gid://shopify/Product/15449841860993	2	G819 Champagne → Champagner | G819 Yellow → Gelb	Sommerneuheit: Plattform-Sneaker mit atm
+gid://shopify/Product/15449850937729	3	Black WL828 → Schwarz | Beige WL828 → Beige | Dark Brown WL828 → Dunkelbraun	Hohe Stiefel mit dicken Sohlen
+gid://shopify/Product/15450045251969	3	K391 Wheat Yellow → Wheat Yellow | K391 Coffee Color → Coffee Color | K391 Black → Schwarz	Herren-Stiefel
+gid://shopify/Product/15450059473281	3	K902 Black → Schwarz | K902 Gray → Grau | K902 Yellow → Gelb	Wasserdichte Fleece-Stiefel
+gid://shopify/Product/15450067108225	5	L2026 Black → Schwarz | L2026 Gray → Grau | L2026 Blue → Blau | L2026 Army Green → Armeegrün | L2026 Brown → Braun	Leichte Wanderschuhe
+gid://shopify/Product/15450067534209	5	D025 Black → Schwarz | D025 Sapphire Blue → Saphirblau | D025 Light Gray → Hellgrau | D025 White → Weiss | D025 Orange → Orange	Fünf-Finger-Trekking-Schuhe
+gid://shopify/Product/15450069336449	5	K06 Professional Nail White → Professional Nail White | K06 White And Blue → White And Blue | K06 Professional Nail Black → Professional Nail Black | K06 Black And White → Schwarz-Weiss | K06 Professional Nail Brown → Professional Nail Brown	Golfschuh mit beweglichem Stift, grosse Grössen
+gid://shopify/Product/15450544439681	2	L960 Khaki → Khaki | L960 Black → Schwarz	Atmungsaktive Vintage-Work Boots
+gid://shopify/Product/15450556694913	2	H109 Black And White → Schwarz-Weiss | H109 Brown Green → Brown Green	Klassische Low-Top Skaterschuhe für Paare
+gid://shopify/Product/15450740326785	2	Black Xc2652 → Schwarz | Khaki Xc2652 → Khaki	Zehen-Sandalen aus echtem Leder
+gid://shopify/Product/15450741899649	4	G836 Gray → Grau | G836 Dark Blue → Dunkelblau | G836 Black And White → Schwarz-Weiss | G836 All Black → All Black	Mesh Low-Top Sneaker für Herren
+gid://shopify/Product/15450830799233	1	JM12 Purple → Lila	Elektrische Reinigungsbürste 4-in-1
+gid://shopify/Product/15451924431233	9	EU873 Silver Green → Silver Green | EU873 Silver Blue → Silver Blue | EU873 Silver Red → Silver Red | EU873 Silver Black → Silver Black | EU873 Black → Schwarz | EU873 Gold Blue → Gold Blue | EU873 Golden Green → Golden Green | EU873 Middle Gold Blue → Middle Gold Blue | EU873 Gold And Black → Gold And Black	Herren Quarzuhr mit Leuchtzeigern und Stahlband
+gid://shopify/Product/15452709781889	1	T68911 black → Schwarz	Unisex-Atmungsaktive Sportschuhe mit Stossdämpfung
+gid://shopify/Product/15453762027905	2	J830 Copper → Copper | J831 Silver → Silber	Kupfer-Löwe Dekoration
+gid://shopify/Product/15453809836417	2	A006 Black → Schwarz | A006 Blue → Blau	Gerade geschnittene, loose Jeans
+gid://shopify/Product/15454000906625	3	T08 Gray → Grau | T08 Pink → Pink | T08 Black → Schwarz	Wasserdichte Kinderschuhe
+gid://shopify/Product/15454038065537	5	T618 Black → Schwarz | T618 Gray → Grau | T61 August Color → August Color | T618 Pink → Pink | T618 Blue → Blau	Kinder-Wasserschuhe
+gid://shopify/Product/15454068900225	3	G188 Black → Schwarz | G188 Blue → Blau | G188 Black Grey → Black Grey	Leichte Arbeitsschuhe mit Schutz
+gid://shopify/Product/15454069031297	5	Y313 Black → Schwarz | Y313 Blue → Blau | Y313 Yellow → Gelb | Y313 Rose Red → Rosarot | Y313 Pink Purple → Pink Purple	Unisex-Schnelltrocknende Outdoor-Badeschuhe
+gid://shopify/Product/15454350279041	6	T807F Gold Surface → Gold Surface | T807F Gold Black Surface → Gold Black Surface | T807F Gold White Surface → Gold White Surface | T807F Gold Noodles → Gold Noodles | T807F Black → Schwarz | T807F Blue → Blau	Automatik Armbanduhr
+gid://shopify/Product/15454350377345	5	T820F Gold → Gold | T820F Black → Schwarz | T820F Blue → Blau | T820F White → Weiss | T820F All Black → All Black	Mechanische Herrenuhr «Sternenhimmel» mit Leuchtzeigern
+gid://shopify/Product/15454414635393	6	T867 Rose Black → Rose Black | T867 Black → Schwarz | T867 White → Weiss | T867 Rose Black Leather → Rose Black Leather | T867 Black Leather → Black Leather | T867 White Leather → White Leather	Mechanische Armbanduhr mit Tourbillon
+gid://shopify/Product/15454499078529	2	C104 White → Weiss | C104 Black → Schwarz	Crayon-Graffiti Hemd
+gid://shopify/Product/15454781866369	3	T84 Black → Schwarz | T84 Khaki → Khaki | T84 Gray → Grau	Retro Herren-Pullover
+gid://shopify/Product/15455661752705	2	A8006 White → Weiss | A8006 Black → Schwarz	Weiche Anti-Rutsch-Baby-Schuhe aus Kunstleder
+gid://shopify/Product/15455760286081	3	B03 Dark Khaki → Dark Khaki | B03 Light Khaki → Light Khaki | B03 Dark Blue → Dunkelblau	Herren Winterjacke mit Stehkragen
+gid://shopify/Product/15459846881665	8	White XY8970004 → Weiss | Tender Green XY8970004 → Tender Green | Pink XY8970004 → Pink | Light Gray XY8970004 → Hellgrau | Purple XY8970004 → Lila | Dark Gray XY8970004 → Dunkelgrau | Royal Blue XY8970004 → Royal Blue | Black XY897004 → Schwarz	Mercerisierte Baumwolle dünn Unisex-Top
+gid://shopify/Product/15461729796481	1	Q2210 Apricot Color → Apricot Color	Kardigan-Kleid · Damen
+gid://shopify/Product/15478713680257	6	T2301 Black → Schwarz | T2302 Blue → Blau | T2303 Green → Grün | T2304 Gray → Grau | T2305 Red → Rot | T2306 Khaki → Khaki	Multifunktionale Herrenuhr im Studenten-Stil
+gid://shopify/Product/15478713778561	5	E102 Silver Blue → Silver Blue | E102 Silver Black → Silver Black | E102 Rose Gold Blue → Rose Gold Blue | E102 Gold Black → Gold Black | E102 Gold → Gold	Herren Multifunktions-Uhr mit Leuchtanzeige
+gid://shopify/Product/15479399580033	2	A9905 Black → Schwarz | A9905 Brown → Braun	Leichte offene Outdoor-Sandalen für Herren
+gid://shopify/Product/15479400661377	3	Khaki T1402 → Khaki | Black T1402 → Schwarz | Gray T1042 → Grau	Trendige weiche Slip-on Freizeit-Sneaker
+gid://shopify/Product/15479514104193	3	Black Ws173 → Schwarz | Apricot Ws173 → Aprikose | Walnut Ws173 → Walnut	Atmungsaktive Slide-Sandalen für Herren
+gid://shopify/Product/15485348184449	2	W38 Beige → Beige | W38 Black → Schwarz	Slip-On Pumps mit flachem Absatz
+gid://shopify/Product/15485348512129	3	M018 Red → Rot | M018 White → Weiss | M018 Black And Green → Black And Green	Kreative bedruckte All-Match Flach-Sneaker
+gid://shopify/Product/15485395042689	4	A903 Black → Schwarz | A903 Brown → Braun | A903 Khaki → Khaki | A903 Gray → Grau	Outdoor- und Wasserschuhe für Herren
+gid://shopify/Product/15486568726913	2	W195 Gray → Grau | W195 Black → Schwarz	Herren Hoodie mit Stehkragen und Reissverschluss
+gid://shopify/Product/15489701216641	4	A806 Black → Schwarz | A806 Pink → Pink | A806 Moon → Moon | A806 Yellow → Gelb	Outdoor-Schuhe
+gid://shopify/Product/15489830355329	3	D27 Black → Schwarz | D27 Gray → Grau | D27 White → Weiss	Sommer-Sneaker · Herren
+gid://shopify/Product/15491415507329	6	A806 Dark Brown → Dunkelbraun | A806 White → Weiss | A806 Black → Schwarz | A806 Yellow → Gelb | A806 Wine Red → Weinrot | A806 Green → Grün	Flache Freizeitschuhe für Damen
+gid://shopify/Product/15492933779841	5	ACS280 Gray → Grau | ACS280 Pink → Pink | ACS280 Yellow → Gelb | ACS280 Blue → Blau | ACS280 White → Weiss	Gestreiftes Hemd · Herren
+gid://shopify/Product/15493250548097	2	E22 Brown → Braun | E22 Black → Schwarz	Winter Low-Top Retro Work Boots Herren
+gid://shopify/Product/15493855904129	2	CS9803 Black → Schwarz | CS9803 Brown → Braun	Herren-Sandalen aus Vollnarbenleder
+gid://shopify/Product/15493857509761	1	D888 Blue → Blau	Business Casual Schnürschuhe für Herren
+gid://shopify/Product/15493919900033	1	K02 pants → pants	Hoodie-Set mit geradem Bein im Preppy-Stil
+gid://shopify/Product/15495127826817	5	DF06 White → Weiss | DF06 Black White → Black White | DF06 White Pink → White Pink | DF06 Black → Schwarz | DF06 Pink → Pink	Fashionable Minimalist Roller Skates
+gid://shopify/Product/15495233044865	3	B16 Black → Schwarz | B16 Brown → Braun | B16 Gray → Grau	Herren Casual Sportschuhe Stylisch & Vielseitig
+gid://shopify/Product/15495236911489	5	Blue Green XC662 → Blue Green | Dark Blue XC662 → Dunkelblau | Black XC662 → Schwarz | Purple XC662 → Lila | Pink XC662 → Pink	Leichte Slip-On Kinderschuhe mit weicher Sohle
+gid://shopify/Product/15496130265473	2	F8009 Green → Grün | F8009 Apple Green → Apple Green	Herren Low-Top Casual Schuhe
+gid://shopify/Product/15496229781889	4	H13 Black → Schwarz | H13 Brown → Braun | H13 Black Brown → Black Brown | H13 White → Weiss	Wasserdichte, atmungsaktive Herren Freizeitschuhe
+gid://shopify/Product/15496264548737	3	X816 Black White → Black White | X816 Black Red → Black Red | X816 Dark Grey → Dunkelgrau	Herren Sportschuhe mit weicher Sohle
+gid://shopify/Product/15496333787521	5	T706 Black → Schwarz | T706 Light Gray → Hellgrau | T706 Dark Gray → Dunkelgrau | T706 Yellow → Gelb | T706 White → Weiss	ML Barefoot Indoor Trainingsschuhe
+gid://shopify/Product/15496334213505	4	W689 PURPLE → Lila | W689 Black → Schwarz | W689 Military Green → Military Green | W689 KHAKI → Khaki	Outdoor Fly-knit Sportschuhe Unisex
+gid://shopify/Product/15496334967169	3	F2805 Black And Gray → Schwarz-Grau | F2805 Black And Blue → Black And Blue | F2805 Black And Green → Black And Green	Kinder Basketballschuhe mit Drehverschluss
+gid://shopify/Product/15496335688065	4	A01 Black → Schwarz | A01 Red → Rot | A01 Yellow → Gelb | A01 White → Weiss	Kinder Canvas-Schuhe im Candy-Look
+gid://shopify/Product/15496710881665	1	Kht2509 Pink → Pink	Leichte Sandalen im Römer-Stil
+gid://shopify/Product/15497437446529	1	X06062 Silver → Silber	High Heels mit spitzem Zeh und Strass
+gid://shopify/Product/15497471623553	6	G577 Green → Grün | G577 Blue → Blau | G577 Pink → Pink | G577 Gold → Gold | G577 Light Purple → Helllila | G577 Deep Purple → Deep Purple	Ärmelloses Satin Maxikleid mit Paneelen
+gid://shopify/Product/15497475391873	3	T20623 Black → Schwarz | T20623 Gray → Grau | T20623 Khaki → Khaki	Low-Top Freizeitschuhe
+gid://shopify/Product/15497525985665	1	Black M65 → Schwarz	Spitze Wellingtons mit Innenabsatz
+gid://shopify/Product/15499060412801	3	M018 Retro Black → Retro Black | M018 White → Weiss | M018 Black And Green → Black And Green	Destroy Aesthetic Freizeit-Plateau-Schuhe
+gid://shopify/Product/15499122639233	2	JC8761 Black → Schwarz | JC8761 Brown → Braun	Atmungsaktive Herren Freizeitschuhe
+gid://shopify/Product/15499444420993	3	H13 Black → Schwarz | H13 Gray → Grau | H13 Brown → Braun	Schuh für Alltags
+gid://shopify/Product/15499445830017	3	H37 White → Weiss | H37 Black → Schwarz | H37 Gray → Grau	Hohe Plattform-Sneaker
+gid://shopify/Product/15499783766401	3	Khaki MS73 → Khaki | Gray MS73 → Grau | Black MS73 → Schwarz	Khakischuhe mit Non-Slip-Sohle
+gid://shopify/Product/15499786813825	4	SJ013 Black → Schwarz | SJ013 grey → Grau | SJ013 blue → Blau | SJ013 Beige → Beige	Lederlose Sneaker
+gid://shopify/Product/15499805688193	3	H08 Light Gray → Hellgrau | H08 White Powder → White Powder | H08 White Beige → White Beige	Anti-Statik-Sneaker
+gid://shopify/Product/15499810505089	2	D852 Black → Schwarz | D852 Beige → Beige	Schlichte Slip-On-Sneaker
+gid://shopify/Product/15500160598401	3	G718 Black → Schwarz | G718 White → Weiss | G718 Gray → Grau	Casual Laufschuhe
+gid://shopify/Product/15500439093633	2	XW321 Black → Schwarz | XW321 Brown → Braun	Vielseitige Sneaker im Korean-Style für Herren
+gid://shopify/Product/15500571509121	9	CS10 Bright Red → Leuchtendrot | CS10 Coffee Color → Coffee Color | CS10 Dark Khaki → Dark Khaki | CS10 Grape Purple → Grape Purple | CS10 Light Blue → Hellblau | CS10 Light Green → Hellgrün | CS10 Orange → Orange | CS10 Sapphire Blue → Saphirblau | CS10 Sky Blue → Himmelblau	Weisser Stretch-Hemd für Herren
+gid://shopify/Product/15500572164481	2	C220 Black → Schwarz | C220 White → Weiss	Floral-Print-Hemd
+gid://shopify/Product/15500607357313	13	ACS11 White → Weiss | ACS11 Navy Blue → Marineblau | ACS11 Grass Green → Grass Green | ACS11 Pink → Pink | ACS11 Black → Schwarz | ACS11 Yellow → Gelb | ACS11 Gray → Grau | ACS11 Wine Red → Weinrot | ACS11 Army Green → Armeegrün | ACS11 Blue → Blau | ACS11 Green → Grün | ACS11 Sky Blue → Himmelblau | ACS11 Brown → Braun	Weisser Stretch-Hemd
+gid://shopify/Product/15500900499841	3	FZ462 Gray → Grau | FZ469 Black → Schwarz | FZ514 Beige → Beige	Schutzschuhe
+gid://shopify/Product/15500957745537	12	D2706 White Button → White Button | D2706 white → Weiss | D2707 pink → Pink | D2708 light blue → Hellblau | D2709 light purple → Helllila | D2711 wine red → Weinrot | D2719 rose red → Rosarot | D2720 black → Schwarz | D2721 Deep Blue → Dunkelblau | D2722 Deep Purple → Deep Purple | D2724 navy blue → Marineblau | D2728 gray → Grau	Unifarbener Stretch-Cardigan für Herren
+gid://shopify/Product/15500999229825	3	B9312 Black And Gray → Schwarz-Grau | B9312 Black And Red → Black And Red | B9312 Black And Blue → Black And Blue	Flyknit Mesh Atmungsaktive Freizeitsneaker Herren
+gid://shopify/Product/15501844971905	3	M0088 Black → Schwarz | M0088 Brown → Braun | M0088 Apricot → Aprikose	Retro One‑Strap Sandalen mit geschlossener Zehenkappe
+gid://shopify/Product/15502067663233	3	Y90 Retro Blue → Retro Blue | Y90 Light Blue → Hellblau | Y90 Blue → Blau	Vintage-Streifenhemd mit Langarm
+gid://shopify/Product/15502266761601	7	W8007 Brown → Braun | W8007 Black → Schwarz | W8007 Green → Grün | W8007 Khaki → Khaki | W8007 Gray → Grau | W8007 Dark Blue → Dunkelblau | W8007 Red → Rot	High-top Octopus Martin Boots
+gid://shopify/Product/15502476018049	6	PSL8518 White → Weiss | PSL8518 Denim Blue → Jeansblau | PSL8518 Light Blue → Hellblau | PSL8518 Bright Yellow → Bright Yellow | PSL8518 Black → Schwarz | PSL8518 Bright Red → Leuchtendrot	Polo-Shirt aus merzerisierter Piqué-Baumwolle
+gid://shopify/Product/15502595785089	5	A83 White → Weiss | A83 Gray → Grau | A83 Pink → Pink | A83 Purple → Lila | A83 Black → Schwarz	Sport-Kletterschuhe für Paare
+gid://shopify/Product/15502601978241	8	C9888 Apricot → Aprikose | C9888 Gray → Grau | C9888 Lake Blue → Seeblau | C9888 Dark Blue → Dunkelblau | F9888 Pink → Pink | F9888 Yellow → Gelb | F9888 White → Weiss | F9888 Green → Grün	Herren Martin Boots Mid-Top
+gid://shopify/Product/15502602666369	3	AC188 White And Yellow → White And Yellow | AC188 White And Black → White And Black | AC188 Beige → Beige	Herren Sneaker «All-Match»
+gid://shopify/Product/15503039103361	3	L010 blue → Blau | L010 black → Schwarz | L010 orange → Orange	Atmungsaktive Mesh Badminton- & Tennisschuhe
+gid://shopify/Product/15503090385281	2	C7743 Black → Schwarz | C7743 White → Weiss	Gepunktetes Schlitz-Kleid
+gid://shopify/Product/15503125348737	5	A826 Black → Schwarz | A826 Dark Blue → Dunkelblau | A826 Gray → Grau | A826 Beige → Beige | A826 White Powder → White Powder	Personalisierte Beach Running Schuhe
+gid://shopify/Product/15503258583425	6	JK682 Cotton Black → Cotton Black | JK682 Cotton Yellow → Cotton Yellow | JK682 Cotton Grey → Cotton Grey | JK682 Black → Schwarz | JK682 Yellow → Gelb | JK682 Grey → Grau	Leichte Arbeitsschuhe mit Durchtrittschutz
+gid://shopify/Product/15503281586561	2	LQ89122 Sand Color → Sand Color | LQ89122 Gray → Grau	Herren Low-Top Hiking Boots mit Schnürung
+gid://shopify/Product/15503948710273	4	K200 Black → Schwarz | K200 Black And Red → Black And Red | K200 Gray Green → Graugrün | K200 Black Rose Red → Black Rose Red	Multifunktions-Sneaker für Outdoor und Alltag
+gid://shopify/Product/15503957131649	8	C9888 Apricot → Aprikose | C9888 Gray → Grau | C9888 Lake Blue → Seeblau | C9888 Dark Blue → Dunkelblau | F9888 Pink → Pink | F9888 Yellow → Gelb | F9888 White → Weiss | F9888 Green → Grün	Martin Boots für Herren, Mid-Top
+gid://shopify/Product/15504104391041	2	M339 Beige → Beige | M339 Navy Blue → Marineblau	Herren Strick-Cardigan für Herbst & Winter
+gid://shopify/Product/15504119693697	5	Q8009 All Green → All Green | Q8009 Full Pink → Full Pink | Q8009 All White → All White | Q8009 All Blue → All Blue | F8009 Brown → Braun	Freizeit Martin Octopus Schnürschuhe
+gid://shopify/Product/15504120054145	2	F610 Black → Schwarz | F610 White → Weiss	Leichte Loafers mit weicher Sohle
+gid://shopify/Product/15504121037185	3	M019 White → Weiss | M019 Black → Schwarz | M019 Graphite Green → Graphite Green	Plateau Board-Schuhe mit Schnürung
+gid://shopify/Product/15504137912705	1	Z2002 Black And White → Schwarz-Weiss	Leichte Canvas Low-Top Herrenschuhe
+gid://shopify/Product/15504138240385	3	U113 Camel → Camel | U113 Brown → Braun | U113 Black → Schwarz	Herren Loafer aus Wildleder
+gid://shopify/Product/15504141582721	4	T06 Green → Grün | T06 Black → Schwarz | T06 Purple → Lila | T06 Beige → Beige	Warme Kinder-Stiefeletten mit glänzenden Akzenten
+gid://shopify/Product/15504155181441	4	W32 Black Grey → Black Grey | W32 Black Rose Red → Black Rose Red | W32 Dark Grey → Dunkelgrau | W32 Black → Schwarz	Multifunktionale Outdoor-Schuhe
+gid://shopify/Product/15504198631809	24	C3101 White-XXS → White-XXS | C3101 White → Weiss | C3102 Black-XXS → Black-XXS | C3102 Black → Schwarz | C3103 Blue-XXS → Blue-XXS | C3103 Blue → Blau | C3108 Wine Red-XXS → Wine Red-XXS | C3108 Wine Red → Weinrot | C3109 Peacock Blue-XXS → Peacock Blue-XXS | C3109 Peacock Blue → Pfauenblau | C3110 Deep Purple-XXS → Deep Purple-XXS | C3110 Deep Purple → Deep Purple | C3111 Navy Blue-XXS → Navy Blue-XXS | C3111 Navy Blue → Marineblau | C3112 Gray-XXS → Gray-XXS | C3112 Gray → Grau | C3114 Golden Yellow-XXS → Golden Yellow-XXS | C3114 Golden Yellow → Golden Yellow | C3115 Green-XXS → Green-XXS | C3115 Green → Grün | C3116 Apricot-XXS → Apricot-XXS | C3116 Apricot → Aprikose | C3117 Khaki-XXS → Khaki-XXS | C3117 Khaki → Khaki	Elastisches Herrenhemd – bügelfrei & knitterarm
+gid://shopify/Product/15506165268865	8	White M86 → Weiss | Light Blue M86 → Hellblau | Light Green M86 → Hellgrün | Khaki M86 → Khaki | Grass Green M86 → Grass Green | Navy Blue M86 → Marineblau | Gray M86 → Grau | Optic Linen M86 → Optic Linen	Kurzarm Leinenhemd für Herren
+gid://shopify/Product/15506258690433	4	F8921 Black → Schwarz | F8921 Brown → Braun | F8921 Khaki → Khaki | F8921 Green → Grün	Outdoor Driving Shoes für Herren
+gid://shopify/Product/15506417746305	3	FSK552 Black → Schwarz | FSK552 Black And Red → Black And Red | FSK552 Black And Blue → Black And Blue	Dämpfende Laufschuhe für Herren
+gid://shopify/Product/15507723321729	3	GZ25663 Red → Rot | GZ25663 Black → Schwarz | GZ25663 Beige → Beige	Modische Freizeitschuhe für Herren
+gid://shopify/Product/15507724009857	2	Black X8989 → Schwarz | Yellow X8989 → Gelb	Herren-Snowboots mit Fleecefutter
+gid://shopify/Product/15507730432385	6	J020 Pink Blue → Pink Blue | J020 White Blue → White Blue | J01 September Purple → September Purple | J019 Light Moon Pink → Light Moon Pink | J018 Light Blue → Hellblau | J018 Blue → Blau	Unisex Laufschuhe für Leichtathletik
