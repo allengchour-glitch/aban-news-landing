@@ -55,6 +55,26 @@ SEIT-Modus gegen LIVE, Einmal-Ledger veralten. (2) Rauchzubehör/Klingen per FUN
 Finder auf lokalem Export (API-schonend) → Skeptiker gegen LIVE → Schreiber mit harten Regeln
 (minimal-invasiv, nie löschen, 1 req/s) → Abnahme-Stichprobe.
 
+## 👯 Gleicher Titel ≠ Dublette — und `productUpdate(tags:)` LÖSCHT alle Tags (2026-08-20)
+Der Grind legte «Keramik Futternapf für Katzen, erhöht» UND «Keramik-**Futternapf**…» an — ein
+Bindestrich Unterschied, beide aktiv. Drei Lehren aus der Reparatur:
+1. **Shopifys `title:"…"` tokenisiert Bindestriche nicht.** Auch eine Wortsuche («Futternapf Katzen»)
+   findet die Bindestrich-Variante NICHT — ein normalisierter Titelvergleich nützt also nichts, wenn
+   die Kandidatenliste schon leer zurückkommt. **Verlässlich ist der HANDLE**: Shopify slugifiziert
+   den Titel, unser Importer hängt eine Zufallszahl an → zwei Titel, die sich nur in Satzzeichen
+   unterscheiden, ergeben denselben Slug. `handle:<slug>*` findet beide. Als Dublette gilt nur
+   `^slug-<Ziffern>$` — ein längerer Slug ist ein anderes Produkt, sonst erschlägt «Kissen» auch
+   «Kissenbezug». Eingebaut in `cj_category_fill.mjs` («skip(dup-handle)»).
+2. **Identischer Titel heisst NICHT identische Ware.** Die beiden Näpfe hatten verschiedene CJ-SKUs,
+   Preise (17.90/21.90) und Bilder — dazu ein dritter «…erhöhte Position» für 19.90. Drei echte
+   Artikel, die zufällig gleich hiessen. **Vor jedem Draften SKU + Preis + Bild vergleichen**; sind
+   sie verschieden, ist die Reparatur ein UNTERSCHEIDBARER Titel, kein Draft (dieselbe Logik wie bei
+   den Y110S-Jeansjacken). Jetzt: «· geriffelter Fuss, 12,5 cm» / «· Pastell, erhöht» / «· Sprenkel-Optik, 300 ml».
+3. **⚠️ `productUpdate(input:{tags:[…]})` ERSETZT die komplette Tag-Liste.** Mein Draft-Aufruf mit
+   `tags:["duplikat-auto-draft"]` hat cj-real/dropship/haustier/hund/katze/pet gelöscht — das Produkt
+   wäre aus allen Kollektionen gefallen. **Für einzelne Tags IMMER `tagsAdd`/`tagsRemove`**, `tags:`
+   nur, wenn die vollständige Liste bewusst neu gesetzt wird.
+
 ## 🧟 Ein Massen-Schreiber macht alte Fixes rückgängig (2026-08-15)
 `versandaussagen_wahrheit.py` (14.08.) hat bei **149 Produkten den doppelten Produktdetails-Block
 wiederbelebt**, den der Dedup-Lauf vom 11.08. entfernt hatte — und bei 1 Produkt den Lieferanten-

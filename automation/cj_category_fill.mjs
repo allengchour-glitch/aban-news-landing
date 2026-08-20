@@ -706,6 +706,28 @@ for(const [cat,label] of grp.cats){
    // Dubletten-Wache: existiert schon ein aktives Produkt mit exakt diesem Titel? (Lieferant listet gleiche Artikel mehrfach)
    const dq=await sgql(st,`query($q:String!){products(first:1,query:$q){edges{node{id}}}}`,{q:`title:"${title.replace(/"/g,'')}" status:active`});
    if(dq.data?.products?.edges?.length){console.log('  skip(dup-titel)',title.slice(0,40));continue;}
+   // ⚠️ ZWEITE STUFE (20.08.2026): Shopifys `title:"…"` ist eine WORT-Suche und tokenisiert
+   // Bindestriche NICHT — «Keramik Futternapf für Katzen, erhöht» und «Keramik-Futternapf für
+   // Katzen, erhöht» standen beide aktiv im Shop. Auch eine Suche nach «Futternapf Katzen» findet
+   // die Bindestrich-Variante nicht, ein normalisierter Titelvergleich hilft also nichts, wenn
+   // die Kandidatenliste schon leer zurückkommt.
+   // Verlässlich ist der HANDLE: Shopify slugifiziert den Titel (Satzzeichen → «-», Umlaute
+   // aufgelöst), unser Importer hängt eine Zufallszahl an. Zwei Titel, die sich nur in
+   // Satzzeichen unterscheiden, ergeben denselben Slug — `handle:<slug>*` findet sie beide.
+   // Nur `^slug-<Ziffern>$` gilt als Dublette; ein längerer Slug («…-erhohte-position») ist
+   // ein anderes Produkt, sonst würde «Kissen» auch «Kissenbezug» erschlagen.
+   const dupSlug = title.toLowerCase()
+       .replace(/ä/g,'a').replace(/ö/g,'o').replace(/ü/g,'u').replace(/ß/g,'ss')
+       .replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+   if(dupSlug.length>8){
+     const hq=await sgql(st,`query($q:String!){products(first:25,query:$q){edges{node{handle title}}}}`,
+                         {q:`handle:${dupSlug}* status:active`});
+     const treffer=(hq.data?.products?.edges||[]).find(e=>new RegExp('^'+dupSlug+'-\\d+$').test(e.node.handle));
+     if(treffer){
+       console.log('  skip(dup-handle)',title.slice(0,40),'≈',treffer.node.title.slice(0,40));
+       fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid)); continue;
+     }
+   }
    // ⚠️ SKU-WACHE (15.08.2026). Die Titel-Wache greift nicht, wenn zwei Runner dasselbe
    // CJ-Produkt unter VERSCHIEDENEN erzeugten Titeln anlegen — genau so entstanden heute
    // «Apricot-Sandalen mit Klettverschluss» und «Schmale Wedges»: 40 identische Varianten-
