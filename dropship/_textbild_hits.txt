@@ -6949,3 +6949,6 @@ gid://shopify/Product/15475057525121	39->0	Nachtlicht mit Sternenhimmel-Projekti
 gid://shopify/Product/15475905888641	43->2	4L Trinkbrunnen für Haustiere
 gid://shopify/Product/15476000227713	71->2	Reinigungsschwamm für Gemüseschneider
 gid://shopify/Product/15476000489857	26->0	Enganliegender Minirock für Damen
+gid://shopify/Product/15476113736065	15->0	U-förmige Massagekissen
+gid://shopify/Product/15476114030977	12->0	Loose Fit T-Shirt mit Print und Stickerei
+gid://shopify/Product/15476127367553	80->2	Herren Hoodie mit 3D Digitaldruck
