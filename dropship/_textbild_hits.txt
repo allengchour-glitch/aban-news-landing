@@ -6964,3 +6964,6 @@ gid://shopify/Product/15478696739201	104->2	Kabellose Notfall-Luftpumpe mit Digi
 gid://shopify/Product/15479339188609	18->2	3-in-1 Nagelstudio-Gerät
 gid://shopify/Product/15479339909505	49->0	M8 TV Mini HD Wireless Arcade Joystick
 gid://shopify/Product/15479375593857	44->1	Smartwatch für Kinder mit GPS und Kamera
+gid://shopify/Product/15479400694145	9->0	Bluetooth Headset für Motorradhelme
+gid://shopify/Product/15479402561921	97->2	Performance Drum- und Perkussionsmikrofon
+gid://shopify/Product/15479417700737	54->0	Adapter für Hochdruckreiniger-Schaumlanze

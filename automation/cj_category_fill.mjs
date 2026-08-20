@@ -9,6 +9,7 @@ import {googleKategorie} from './google_kategorie.mjs';
 import {materialKanonisch} from './material_kanonisch.mjs';
 import { produktSaeubern } from './marken_filter.mjs';
 import { medizinZweck } from './medizin_zweck.mjs';
+import { tierschutzGeraet } from './tierschutz_geraet.mjs';
 import { heikelZweck } from './heikel_zweck.mjs';
 const SHOP='au3j0y-hq.myshopify.com',API='2025-01';
 const CID=process.env.SHOPIFY_CLIENT_ID,CSEC=process.env.SHOPIFY_CLIENT_SECRET;
@@ -638,6 +639,14 @@ for(const [cat,label] of grp.cats){
    // Die Ware wird NICHT verworfen — sie kommt als Entwurf in den Shop und lässt sich mit
    // Konformitätsunterlagen jederzeit freischalten. Muster: automation/medizin_zweck.json.
    const med=medizinZweck(title, g.html);
+   // 🐾 TIERSCHUTZ, TSchV Art. 76 (20.08.2026). Am 16.08. wurden zwei Schock-Halsbänder als
+   // Sofortmassnahme gedraftet; vier Tage später standen VIERZEHN solche Geräte aktiv in allen
+   // sechs Kanälen, zwölf davon nach dem 13.08. hier neu angelegt. Der Bestand zu putzen hilft
+   // also nichts — diese Zeile ist die eigentliche Reparatur. Die Lieferanten nennen den Schock
+   // selten Schock: «statischer Impuls» (99 Stufen), «elektrostatische Stimulation»,
+   // «Puls-proportionale Stimulation». Das Muster hängt deshalb an der WIRKMECHANIK.
+   // Muster: automation/tierschutz_geraet.json (derselbe Text liest auch tierschutz_guard.py).
+   const tsch=tierschutzGeraet(title, g.html);
    // 🕵️ VERDECKTE ÜBERWACHUNG UND WAFFEN (14.08.2026), derselbe Fehler eine Warengruppe
    // weiter. Der Säuberungslauf vom 12.08. nahm 88 Produkte aus dem Google-Kanal; zwei Tage
    // später standen 13 wieder drin, zwei davon frisch importiert. Google führt verdeckte
@@ -648,7 +657,7 @@ for(const [cat,label] of grp.cats){
    // der Produktbezeichnung des Verkäufers — «Abwehrstock» statt Teleskopschlagstock,
    // «lässt sich diskret platzieren» statt «versteckte Kamera»).
    const heik=heikelZweck(title, g.html);
-   if(DRY){console.log(`  [DRY]${med?' ⚕️DRAFT('+med.grund+')':''}${heik?' 🕵️'+(heik.verboten?'DRAFT':'KEIN-KANAL')+'('+heik.grund+')':''} CHF${chf(p.sellPrice)} | ${title}`);got++;total++;continue;}
+   if(DRY){console.log(`  [DRY]${med?' ⚕️DRAFT('+med.grund+')':''}${tsch?' 🐾DRAFT('+tsch.grund+')':''}${heik?' 🕵️'+(heik.verboten?'DRAFT':'KEIN-KANAL')+'('+heik.grund+')':''} CHF${chf(p.sellPrice)} | ${title}`);got++;total++;continue;}
    const slug=slugStamm(title)+'-'+String(p.pid).slice(-6);
    const html=`${g.html}\n${TRUST}`.replace(/ß/g,'ss').replace(/ẞ/g,'SS');
    const fash=(grp.fashion&&!FAST)?buildFashion(d):null; // FAST: keine Varianten-Details → Standard-Variante
@@ -670,8 +679,10 @@ for(const [cat,label] of grp.cats){
      typeFinal=/bew[äa]sserung/i.test(title)?'Garten & Pflanzen':'Gartenwerkzeug';
    }
    const input={title,handle:slug,productType:typeFinal,vendor:'LuxeStyle',
-    status:med?'DRAFT':'ACTIVE',
-    tags:med?[...tagsFinal,'medizinprodukt-pruefen','medizin-zweck-'+med.grund]:tagsFinal,
+    status:(med||tsch)?'DRAFT':'ACTIVE',
+    tags:[...tagsFinal,
+          ...(med?['medizinprodukt-pruefen','medizin-zweck-'+med.grund]:[]),
+          ...(tsch?['tierschutz-tschv76','tierschutz-'+tsch.grund]:[])],
     descriptionHtml:html,
     seo:{title:(title+' | LuxeStyle CH').slice(0,70),description:(`${title} – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.`).slice(0,320)},
     productOptions, variants,
@@ -857,6 +868,10 @@ for(const [cat,label] of grp.cats){
    // Ein Medizinprodukt darf in KEINEN Kanal — am wenigsten in «Google & YouTube», den
    // einzigen mit belegten Verkäufen. Nicht publizieren, Fall im Log benennen.
    if(med){ console.log(`  ⚕️ medizinische Zweckbestimmung (${med.grund}) → DRAFT, nicht publiziert: ${title.slice(0,44)}`);
+            fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid)); got++; total++; continue; }
+   // Ein nach TSchV Art. 76 unzulässiges Erziehungsgerät ebenso: in KEINEN Kanal, am wenigsten
+   // in «Google & YouTube». Nicht löschen — als Entwurf nachvollziehbar und freischaltbar.
+   if(tsch){ console.log(`  🐾 Tierschutz TSchV 76 (${tsch.grund}, «${tsch.muster}») → DRAFT, nicht publiziert: ${title.slice(0,44)}`);
             fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid)); got++; total++; continue; }
    // Nach Schweizer Waffenrecht verbotene Ware (Art. 4 Abs. 1 Bst. c-e WG: Schmetterlings-
    // messer, Schlagstock/Tonfa/Nunchaku, Elektroschockgeraet) wird gar nicht erst aktiv
