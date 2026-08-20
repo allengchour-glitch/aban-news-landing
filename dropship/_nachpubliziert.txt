@@ -209,3 +209,4 @@ gid://shopify/Product/15506419351937	figurbetontes-spaghettitrager-kleid-mit-tot
 gid://shopify/Product/15506541773185	gestreifter-kissenbezug-aus-baumwoll-leinen-676224	Gestreifter Kissenbezug aus Baumwoll-Leinen
 gid://shopify/Product/15506669142401	elegantes-neckholder-kleid-mit-schlitz-617800	Elegantes Neckholder-Kleid mit Schlitz
 gid://shopify/Product/15506708595073	opal-halskette-aus-925er-silber-oval-blau-weis-622400	Opal-Halskette aus 925er Silber, oval, blau-weiss
+gid://shopify/Product/15506894356865	memory-foam-herz-bein-kissen-124480	Memory Foam Herz-Bein-Kissen
