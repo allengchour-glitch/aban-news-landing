@@ -6915,3 +6915,4 @@ gid://shopify/Product/15465885630849	30->0	V-Neck Strickpullover mit Buchstaben-
 gid://shopify/Product/15466070802817	82->0	Messer- und Scheren-Set aus Edelstahl
 gid://shopify/Product/15466071228801	70->1	Wachsschmelzer mit Heizplatte und Rührlöffel
 gid://shopify/Product/15466876207489	40->1	Sportbeutel
+gid://shopify/Product/15467017765249	16->3	Rosa ärmelloses Mini-Kleid
