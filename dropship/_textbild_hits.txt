@@ -6976,3 +6976,9 @@ gid://shopify/Product/15479514071425	30->2	Magnetische Wireless Powerbank aus Al
 gid://shopify/Product/15479514235265	9->0	Powerbank 20'000 mAh, ultraschlank
 gid://shopify/Product/15479636951425	13->2	Multifunktionale 12V USB Power Batterieabdeckung
 gid://shopify/Product/15479812489601	10->0	Herren Zehensteg-Sandalen
+gid://shopify/Product/15480162648449	76->1	Samurai-Baustein-Set für Fortgeschrittene
+gid://shopify/Product/15480167858561	55->2	Smartwatch mit AMOLED-Display & NFC
+gid://shopify/Product/15480276124033	26->0	HD Nachtsicht Smart Überwachungskamera
+gid://shopify/Product/15480340021633	40->2	Faltbarer Handyhalter mit vielseitiger Befestigung
+gid://shopify/Product/15480410505601	20->0	Magnetischer 2-in-1 Bluetooth Lautsprecher
+gid://shopify/Product/15480411914625	84->2	Auto-Sitzkissen Winter
