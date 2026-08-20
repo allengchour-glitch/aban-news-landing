@@ -387,6 +387,21 @@ eine Zubehör-«Farbe» wie «Memory card-8G» die billigste Variante war).
    Beide Routinen tragen ihn jetzt als ERSTEN Punkt. Bei jeder neuen Engine dieselbe Frage stellen:
    *wer startet DICH neu?* — und: liegt sie im Repo statt in /tmp, prüft sie keine /tmp-Schleife.
 
+0d. **Lehre 1 vierter Akt (20.08.2026): `exec` löscht den Namen, nach dem die Wächter suchen.**
+   Beide Stunden-Routinen prüften `index($0,"cj_runner2.sh")` — der Wrapper `/tmp/cj_runner2.sh`
+   endet aber auf `exec bash /tmp/cj_runner_template.sh cj_runner2`, und `exec` ersetzt den
+   Prozess: in der Prozessliste steht **`cj_runner2` ohne `.sh`**. Die Prüfung fand deshalb NIE
+   einen laufenden Runner und startete **stündlich vier neue** — gefunden wurden **12 Runner in
+   drei Generationen**, die sich CJs Limit von 1 Anfrage/Sekunde teilten und sich gegenseitig
+   drosselten. Der Grind lief also langsamer, je zuverlässiger die Wächter feuerten.
+   ⚠️ Mir selbst ist derselbe Fehler in derselben Minute passiert: Ich prüfte mit
+   `grep "cj_runner[0-9].sh"`, sah 0, und startete vier weitere dazu.
+   **Regel: Eine Prozessprüfung wird gegen die ECHTE Kommandozeile geschrieben — erst
+   `ps -eo args` ansehen, dann das Muster wählen. Nie gegen den Dateinamen, den man gestartet
+   hat.** Zweite Regel: Die Startliste gehört an EINE Stelle im Repo, nicht in zwei
+   Routine-Prompts, die auseinanderlaufen → `automation/engine_keepalive.sh` (idempotent,
+   räumt Doppelstarts ab, beide Routinen rufen nur noch dieses Skript).
+
 1. **`pgrep -f <name>` findet die EIGENE Kommandozeile.** Ein `pgrep -f social_autopilot && echo läuft`
    meldete «läuft» für ein Skript, das gar nicht mehr existierte — das Suchmuster stand im eigenen
    Bash-Aufruf. Prozessprüfungen deshalb mit `ps -eo args | grep …`, oder das Muster nicht im Aufruf
