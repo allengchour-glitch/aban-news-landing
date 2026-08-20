@@ -40,47 +40,69 @@ from farbwerte_uebersetzen import FARBE  # eine Farbtabelle für den ganzen Shop
 # Werte, die wie ein Artikelcode aussehen, aber eine Aussage sind.
 SCHUTZ = re.compile(
     r"^(uv\d{3}|tr\d{2}|rf\d{3}|sr\d{3,4}[a-z]{0,2}|ip\d{2}|cr\d{4}|lr\d{2,4}|ag\d{1,2}|"
-    r"a[34]|20\d{2}|usb\d?|type\d?|led\d*|rgb\d*)$", re.I)
-# Lieferanten-Artikelcode: Buchstaben+Zahlen, optional mit Bindestrich, ohne Leerzeichen.
-CODE = re.compile(r"^[a-z]{1,8}-?\d{2,6}[a-z]?$", re.I)
-GROESSE = re.compile(r"^(xx?s|[sml]|xx?x?l|[2-9]xl|\d{2})$", re.I)
+    r"a[34]|20\d{2}|usb\d?|type\d?|led\d*|rgb\d*|no\d+)$", re.I)
+
+# Lieferanten-Artikelcode: beginnt mit GROSSbuchstabe, dann Buchstaben, dann mindestens zwei
+# Ziffern, höchstens ein Buchstabe hinten dran. KEIN Bindestrich — «Beige-110v», «Bunny-100»,
+# «Black-240D» sind Farbe+Grösse bzw. Farbe+Spannung, kein Artikelcode.
+CODE = re.compile(r"^[A-Z][A-Za-z]{0,9}\d{2,7}[A-Za-z]?$")
+# Masseinheit hinter der Zahl → keine Artikelnummer, sondern eine technische Angabe.
+EINHEIT = re.compile(r"\d+(v|w|ml|cm|mm|kg|g|db|hz|mah|a|k)$", re.I)
+GROESSE = re.compile(r"^(xx?s|[sml]|xx?x?l|[2-9]xl|\d{2,3}[a-z]?)$", re.I)
+
+# Nur Buchstaben, Leerzeichen, Bindestrich – höchstens drei Wörter.
+WORT = re.compile(r"^[a-zäöüéèàA-ZÄÖÜ]+(?:[ -][a-zäöüéèàA-ZÄÖÜ]+){0,2}$")
+
+DEUTSCH = {v.lower() for v in FARBE.values()}
+
+
+def ist_code(tok):
+    if not CODE.match(tok) or EINHEIT.search(tok) or SCHUTZ.match(tok) or GROESSE.match(tok):
+        return False
+    # «Black240» wäre Farbe + Zahl, kein Code.
+    buchstaben = re.match(r"^[A-Za-z]+", tok).group(0).lower()
+    return buchstaben not in FARBE and buchstaben not in DEUTSCH
+
+
+def norm(t):
+    return " ".join(t.split()).strip(" -·/")
 
 
 def farbe_von(rest):
     """Gibt den deutschen Farbnamen zurück – oder None, wenn der Rest keine bekannte Farbe ist."""
-    r = " ".join(rest.split()).strip(" -·/")
-    if not r:
-        return None
-    return FARBE.get(r.lower())
+    r = norm(rest)
+    return FARBE.get(r.lower()) if r else None
 
 
-# Nur Buchstaben, Leerzeichen, Bindestrich – höchstens drei Wörter. Ein solcher Rest ist ein
-# Farbwort (oder ein Farb-Marketingname wie «Moonlight»), keine Artikelnummer.
-WORT = re.compile(r"^[a-zäöüéèàA-ZÄÖÜ]+(?:[ -][a-zäöüéèàA-ZÄÖÜ]+){0,2}$")
-
-
-def rest_ok(rest):
-    """Der Rest nach dem Code – darf er als Farbwert stehen bleiben?"""
-    r = " ".join(rest.split()).strip(" -·/")
-    if not r or not WORT.match(r) or GROESSE.match(r) or SCHUTZ.match(r):
-        return None
-    return r
-
-
-def neuer_wert(wert):
-    """«A039 Light Gray» → «Hellgrau», «A03 Moonlight» → «Moonlight». None = nicht anfassen."""
+def ohne_code(wert):
+    """Gibt den Wert ohne führenden/nachgestellten Artikelcode zurück (unverändert, wenn keiner)."""
     teile = wert.split()
     if len(teile) < 2:
+        return wert
+    if ist_code(teile[0]):
+        return norm(" ".join(teile[1:]))
+    if ist_code(teile[-1]):
+        return norm(" ".join(teile[:-1]))
+    return wert
+
+
+def ist_farbe(wert):
+    r = norm(ohne_code(wert)).lower()
+    return r in FARBE or r in DEUTSCH
+
+
+def neuer_wert(wert, farbliste=True):
+    """«A039 Light Gray» → «Hellgrau», «A03 Moonlight» → «Moonlight». None = nicht anfassen."""
+    rest = ohne_code(wert)
+    if rest == wert or not rest:
         return None
-    for rest in (teile[1:] if CODE.match(teile[0]) and not SCHUTZ.match(teile[0])
-                 and not GROESSE.match(teile[0]) else None,
-                 teile[:-1] if CODE.match(teile[-1]) and not SCHUTZ.match(teile[-1])
-                 and not GROESSE.match(teile[-1]) else None):
-        if rest is None:
-            continue
-        text = " ".join(rest)
-        # 1. Wahl: bekannte Farbe → deutscher Name. 2. Wahl: Code abschneiden, Rest belassen.
-        return farbe_von(text) or rest_ok(text)
+    deutsch = farbe_von(rest)
+    if deutsch:
+        return deutsch
+    # Rest ist kein Wort aus der Tabelle: nur dann stehen lassen, wenn die Option überhaupt
+    # eine Farbliste ist (sonst ist «X11 MAX» → «MAX» eine Verschlechterung).
+    if farbliste and WORT.match(rest) and not GROESSE.match(rest) and not SCHUTZ.match(rest):
+        return rest
     return None
 
 
@@ -118,7 +140,9 @@ def main():
             for o in p.get("options") or []:
                 if (o.get("name") or "").strip().lower() not in ("farbe", "color", "colour"):
                     continue
-                if any(neuer_wert(v["name"]) for v in o.get("optionValues") or []):
+                werte = [v["name"] for v in o.get("optionValues") or []]
+                fl = any(ist_farbe(w) for w in werte)
+                if any(neuer_wert(w, fl) for w in werte):
                     kandidaten.append((p["id"], p.get("title", "")))
                 break
     print(f"Kandidaten: {len(kandidaten)}", flush=True)
@@ -139,20 +163,26 @@ def main():
                     if (o.get("name") or "").strip().lower() in ("farbe", "color", "colour")), None)
         if not opt:
             continue
-        vorhanden = {v["name"].strip().lower() for v in opt["optionValues"]}
-        upd, protokoll, kollision = [], [], []
+        werte = [v["name"] for v in opt["optionValues"]]
+        fl = any(ist_farbe(w) for w in werte)
+        # Zielnamen erst vollständig bilden – kollidiert auch nur EINER, bleibt die GANZE
+        # Option unangetastet. Eine halb umbenannte Liste («Kid03 children» neben «children»)
+        # ist schlimmer als die unveränderte, und Shopify würde Varianten verschmelzen.
+        ziel, upd, protokoll = [], [], []
         for v in opt["optionValues"]:
-            neu = neuer_wert(v["name"])
-            if not neu or neu == v["name"]:
-                continue
-            if neu.lower() in vorhanden:
-                kollision.append(f"{v['name']} → {neu}")
-                continue
-            vorhanden.add(neu.lower())
-            upd.append({"id": v["id"], "name": neu})
-            protokoll.append(f"{v['name']} → {neu}")
-        if kollision:
-            print(f"  ⏭️  {p['title'][:44]}: Kollision, übersprungen: {'; '.join(kollision)}", flush=True)
+            neu = neuer_wert(v["name"], fl)
+            ziel.append((v, neu or v["name"]))
+        namen = [z[1].strip().lower() for z in ziel]
+        if len(set(namen)) != len(namen):
+            doppelt = [f"{v['name']} → {n}" for v, n in ziel if namen.count(n.strip().lower()) > 1]
+            print(f"  ⏭️  {p['title'][:44]}: Kollision, GANZE Option übersprungen: "
+                  f"{'; '.join(doppelt[:6])}", flush=True)
+            uebersprungen += 1
+            continue
+        for v, n in ziel:
+            if n != v["name"]:
+                upd.append({"id": v["id"], "name": n})
+                protokoll.append(f"{v['name']} → {n}")
         if not upd:
             uebersprungen += 1
             continue

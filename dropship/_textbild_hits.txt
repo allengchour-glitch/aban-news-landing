@@ -6923,3 +6923,5 @@ gid://shopify/Product/15468961890689	93->0	Boho Umstandskleid für Fotoshootings
 gid://shopify/Product/15469939294593	18->0	Kinderkostüm Peppa Fairy Dress
 gid://shopify/Product/15469944209793	12->0	Neon Tutu
 gid://shopify/Product/15469950894465	75->0	Roter Kardinal
+gid://shopify/Product/15469970653569	31->0	Tutu Regenbogen
+gid://shopify/Product/15469974749569	23->1	Kostüm Hexe Schülerin pink
