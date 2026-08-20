@@ -243,6 +243,16 @@ eine Zubehör-«Farbe» wie «Memory card-8G» die billigste Variante war).
    Keepalives deshalb IMMER argv-basiert:
    `ps -eo args --no-headers | awk '$1=="bash" && $2 ~ /fixer_keepalive\.sh$/'` — die eigene
    `bash -c`-Hülle hat argv2=«-c» und kann nie matchen.
+0c. **Lehre 1 dritter Akt (19.08.2026): Der Aufseher stand in KEINER Neustart-Routine.**
+   Beide Stunden-Routinen starteten brav cj_runner2-5, autocommit, reel/social/fortura/hygiene neu —
+   aber `fixer_keepalive.sh` selbst stand in keiner Liste. Er liegt im REPO (`automation/`), nicht in
+   /tmp, und fiel deshalb durch jedes Raster. Ergebnis: Nach seinem Tod um 19:11 standen ALLE täglichen
+   Wächter still (Medizinprodukte, Ads-Kuration, Versandaussagen, Hype-Reihe, Preisboden, Alt-Texte,
+   Video-Backfill) — und keine der stündlich feuernden Routinen meldete etwas, weil jede nur ihre
+   eigene Liste prüfte und die war «grün». **Ein Wächter, der nicht selbst bewacht wird, ist keiner.**
+   Beide Routinen tragen ihn jetzt als ERSTEN Punkt. Bei jeder neuen Engine dieselbe Frage stellen:
+   *wer startet DICH neu?* — und: liegt sie im Repo statt in /tmp, prüft sie keine /tmp-Schleife.
+
 1. **`pgrep -f <name>` findet die EIGENE Kommandozeile.** Ein `pgrep -f social_autopilot && echo läuft`
    meldete «läuft» für ein Skript, das gar nicht mehr existierte — das Suchmuster stand im eigenen
    Bash-Aufruf. Prozessprüfungen deshalb mit `ps -eo args | grep …`, oder das Muster nicht im Aufruf
