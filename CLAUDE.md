@@ -149,6 +149,33 @@ kann neue tote Links erzeugen.
 - ⚠️ `/collections/all` meldet der Prüfer als «fehlt» — das ist Shopifys eingebaute Route und
   funktioniert. Kein Fehler, nicht anfassen.
 
+## 💰 Ohne Einkaufspreis weiss niemand, ob ein Verkauf Gewinn bringt (2026-08-20)
+Anlass war die Frage, ob sich Shopifys «Smart Pricing»-App lohnt. Die Messung sagte nein — und
+deckte einen grösseren Mangel auf: **Von 300 aktiven Produkten hatten nur 43 einen Einkaufspreis**
+hinterlegt, und es gibt insgesamt **6 bezahlte Bestellungen**. Eine Preis-KI hätte auf 86 % des
+Katalogs keine Marge berechnen können und aus 6 Verkäufen nichts ableiten können. (Ihr Hauptvorschlag
+— Preise langsam verkaufter Artikel senken — ist ausserdem genau die Richtung, die hier schon einmal
+2'355 Produkte unter den Preisboden gedrückt hat.)
+**Die Kosten waren nie unbekannt, sie wurden weggeworfen.** `chf()` in `cj_category_fill.mjs` rechnet
+sie beim Import aus (`landed = USD·0.9 + Frachtlücke`) und gibt nur den Verkaufspreis zurück.
+- Importer schreibt jetzt `inventoryItem.cost` mit (Funktion `kosten()`).
+- `automation/cj_kosten_backfill.mjs` trägt sie für den Bestand nach (täglich im Aufseher).
+- **Kostendefinition: Warenkosten + VOLLE Fracht.** Die CHF 7 Versand des Kunden sind ERLÖS und
+  stehen in der Bestellung — sie gehören nicht in die Stückkosten, sonst rechnet sich die Marge
+  schön. ⚠️ Bei Mehrfach-Bestellungen zählt die Fracht dadurch mehrfach; der Wert ist bewusst
+  KONSERVATIV. Fünf der ersten sechs Bestellungen enthielten genau einen Artikel.
+- ⚠️ **Die CJ-SKU hat VIER Formen**, ein Muster reicht nicht: `CJ-<zahlen>`, `CJ-<UUID>`,
+  `CJ-CJYD…` und blank `CJYD…`. Der erste Probelauf suchte nur `CJ-\d{10,}` und fand 0 von 50.
+  Zahlen-/UUID-pid → `product/query?pid=`, Varianten-SKU → `product/variant/query?variantSku=`
+  (Letztere liefert eine LISTE, nicht ein Objekt).
+- ⚠️ Falsch quittierte Ledger-Zeilen des Probelaufs mussten gelöscht werden — sonst hätte der
+  Fehlgriff 50 Produkte für immer übersprungen. Nach einer Regel-Änderung ist das alte Erledigt-
+  Zeichen wertlos (dieselbe Lehre wie beim Produktdetails-Lauf).
+**Die erste Rechnung ist ernüchternd:** Bei Verkaufspreis CHF 15.90 liegen die Stückkosten bei rund
+CHF 17.70 — das Geschäft trägt sich dort NUR über den Versanderlös von CHF 7. Wer die Gratis-Schwelle
+mit lauter billiger Ware erreicht, kann den Shop Geld kosten. Das gehört geprüft, sobald die
+Kostendaten flächig da sind.
+
 ## 🖼️ «Image too small» — der Nachfüller war die Ursache (2026-08-20)
 Google Merchant meldete **6'392 Varianten aus 668 Produkten** als «Image too small for upcoming
 enforcement». Wichtig für die Einordnung: alle standen auf **«No impact»** und betrafen **nur

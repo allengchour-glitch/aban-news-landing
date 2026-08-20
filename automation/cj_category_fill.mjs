@@ -28,6 +28,18 @@ const chf=(usd,grams)=>{const u=parseFloat((''+usd).split('--')[0])||0;
  let p=Math.max(landed*1.4, landed+5, 14.90);   // Marge, min CHF 5 Deckung, Boden 14.90
  return (Math.floor(p)+0.90).toFixed(2);};
 
+// ⚠️ KOSTEN MITSCHREIBEN (20.08.2026). Die Rechnung oben KENNT den Einkaufspreis — sie hat ihn
+// bisher nur weggeworfen. Folge: Shopifys «Kosten pro Artikel» war bei 86 % der Produkte leer,
+// und damit konnte NIEMAND sagen, ob eine Bestellung Gewinn bringt. Bei Order #1011 (Hängematte
+// CHF 14.90 + CHF 7 Versand) ist das keine akademische Frage.
+// Definition: Warenkosten + VOLLE Fracht. Die CHF 7, die der Kunde für den Versand zahlt, sind
+// Erlös und stehen in der Bestellung — sie gehören nicht in die Stückkosten, sonst rechnet sich
+// die Marge künstlich schön (genau das täte der `landed`-Wert oben, der nur die Fracht-LÜCKE trägt).
+const kosten=(usd,grams)=>{const u=parseFloat((''+usd).split('--')[0])||0;
+ const kg=(parseFloat(grams)||0)/1000;
+ const freight=Math.max(15, 3.4+16.3*kg);
+ return (u*0.9+freight).toFixed(2);};
+
 // ── Fashion-Modus (Zalando-Stil): CJ-Varianten "Farbe-Grösse" → Shopify Farbe+Grösse-Optionen ──
 const DECOLOR={apricot:'Aprikose',pink:'Pink','light pink':'Rosa','hot pink':'Pink','sky blue':'Himmelblau','light blue':'Hellblau','dark blue':'Dunkelblau','wine red':'Weinrot','rose red':'Rosarot','army green':'Armeegrün','light green':'Hellgrün','dark green':'Dunkelgrün','light grey':'Hellgrau','dark grey':'Dunkelgrau','navy blue':'Marineblau',black:'Schwarz',white:'Weiss',red:'Rot',blue:'Blau',green:'Grün',yellow:'Gelb',grey:'Grau',gray:'Grau',beige:'Beige',brown:'Braun',navy:'Marineblau',khaki:'Khaki',purple:'Lila',violet:'Violett',orange:'Orange',rose:'Rosé',coffee:'Kaffeebraun',silver:'Silber',gold:'Gold',champagne:'Champagner',ivory:'Elfenbein',burgundy:'Bordeaux',camel:'Camel',turquoise:'Türkis',mint:'Mintgrün',lavender:'Lavendel',cream:'Creme',nude:'Nude','dark pink':'Dunkelrosa','deep blue':'Dunkelblau','light yellow':'Hellgelb','fluorescent green':'Neongrün','light purple':'Helllila','dark brown':'Dunkelbraun',multicolor:'Bunt',multi:'Bunt'};
 const SIZESET=new Set(['XS','S','M','L','XL','XXL','XXXL','2XL','3XL','4XL','5XL','6XL','ONE SIZE','ONESIZE','FREE SIZE','FREESIZE','F']);
@@ -133,7 +145,7 @@ function buildFashion(d){
   // von 2 Bildern falsch zugeordnet (ein schwarzes Portemonnaie als «Dunkelblau», weil
   // der unscharfe Hintergrund blau war). Der Lieferant weiss es, wir müssen nicht raten.
   if(v.img&&/^https/.test(v.img)) bilder[sku]=v.img;
-  variants.push({optionValues:ov,price:chf(v.price, v.weight||v.variantWeight),inventoryItem:{sku,tracked:false},inventoryPolicy:'CONTINUE',...(vmf.length?{metafields:vmf}:{})});
+  variants.push({optionValues:ov,price:chf(v.price, v.weight||v.variantWeight),inventoryItem:{sku,tracked:false,cost:kosten(v.price, v.weight||v.variantWeight)},inventoryPolicy:'CONTINUE',...(vmf.length?{metafields:vmf}:{})});
   if(variants.length>=100)break;}
  return {productOptions:opts.map(o=>({name:o.name,values:o.values.map(x=>({name:x}))})),variants,bilder};
 }
@@ -568,7 +580,7 @@ for(const [cat,label] of grp.cats){
    const html=`${g.html}\n${TRUST}`.replace(/ß/g,'ss').replace(/ẞ/g,'SS');
    const fash=(grp.fashion&&!FAST)?buildFashion(d):null; // FAST: keine Varianten-Details → Standard-Variante
    const productOptions=fash?fash.productOptions:[{name:'Variante',values:[{name:'Standard'}]}];
-   const variants=fash?fash.variants:[{optionValues:[{optionName:'Variante',name:'Standard'}],price:chf(p.sellPrice, p.productWeight||p.variantWeight),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false},inventoryPolicy:'CONTINUE'}];
+   const variants=fash?fash.variants:[{optionValues:[{optionName:'Variante',name:'Standard'}],price:chf(p.sellPrice, p.productWeight||p.variantWeight),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false,cost:kosten(p.sellPrice, p.productWeight||p.variantWeight)},inventoryPolicy:'CONTINUE'}];
    const katTag=(LABELTAG.find(([re])=>re.test(label||''))||[])[1];
    let tagsFinal=[...(process.env.WAREHOUSE?[...grp.tags,'eu-lager','schnelle-lieferung']:grp.tags),...(katTag?[katTag]:[])];
    // Titel-Wache: Haustier-/Plüsch-Artikel aus CJ-Elektronik/Gadget-Kategorien nicht als Elektronik taggen (Hundehalsband-Falle 2026-08-04)

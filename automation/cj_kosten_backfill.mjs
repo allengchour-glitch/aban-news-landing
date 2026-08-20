@@ -1,0 +1,118 @@
+/* cj_kosten_backfill.mjs — trägt «Kosten pro Artikel» für bestehende CJ-Produkte nach.
+ *
+ * DER BEFUND (20.08.2026): Von 300 geprüften aktiven Produkten hatten nur 43 einen
+ * Einkaufspreis hinterlegt. Ohne ihn zeigt Shopify keinen Gewinn je Bestellung an — und
+ * niemand kann sagen, ob ein Verkauf etwas einbringt. Bei Order #1011 (Hängematte CHF 14.90
+ * plus CHF 7 Versand) ist das keine akademische Frage: Die Stückkosten liegen dort bei rund
+ * CHF 17.70, das Geschäft trägt sich nur über den Versanderlös.
+ *
+ * KOSTENDEFINITION: Warenkosten (CJ-Preis in USD × 0.9) + VOLLE Fracht (max(15, 3.4+16.3·kg)).
+ * Die CHF 7 Versand, die der Kunde zahlt, sind Erlös und stehen in der Bestellung — sie
+ * gehören NICHT in die Stückkosten, sonst rechnet sich die Marge künstlich schön.
+ * ⚠️ Bei Mehrfach-Bestellungen wird die Fracht so mehrfach gezählt, weil CJ mehrere Artikel
+ * zusammen versendet. Der Wert ist also KONSERVATIV — er beschönigt nie, er untertreibt eher.
+ * Fünf der ersten sechs Bestellungen enthielten genau einen Artikel; für diesen Fall stimmt er.
+ *
+ * Braucht CJ-Punkte (product/query je pid). Bricht bei leerem Budget sauber mit PAUSE ab,
+ * der Ledger bleibt gültig und der nächste Lauf macht weiter.
+ */
+import fs from 'node:fs';
+
+const SHOP = 'au3j0y-hq.myshopify.com';
+const TOK = (fs.existsSync('/tmp/cj_shop_token.txt') ? fs.readFileSync('/tmp/cj_shop_token.txt', 'utf8') : '').trim();
+const CJT = (() => { try { return JSON.parse(fs.readFileSync('/tmp/cj_token.json', 'utf8')).accessToken; } catch { return ''; } })();
+const LEDGER = 'dropship/_cj_kosten_done.txt';
+const LIMIT = parseInt(process.env.LIMIT || '400', 10);
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+const kosten = (usd, grams) => {
+  const u = parseFloat(('' + usd).split('--')[0]) || 0;
+  const kg = (parseFloat(grams) || 0) / 1000;
+  const freight = Math.max(15, 3.4 + 16.3 * kg);
+  return (u * 0.9 + freight).toFixed(2);
+};
+
+async function sgql(q, v) {
+  for (let i = 0; i < 4; i++) {
+    try {
+      const r = await fetch(`https://${SHOP}/admin/api/2024-10/graphql.json`, {
+        method: 'POST',
+        headers: { 'X-Shopify-Access-Token': TOK, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query: q, variables: v || {} }),
+        signal: AbortSignal.timeout(60000),
+      });
+      const j = await r.json();
+      if (j.data) return j;
+    } catch {}
+    await sleep(2500);
+  }
+  return {};
+}
+
+async function cj(pfad) {
+  const r = await fetch('https://developers.cjdropshipping.com/api2.0/v1/' + pfad,
+    { headers: { 'CJ-Access-Token': CJT }, signal: AbortSignal.timeout(45000) });
+  const t = await r.text();
+  try { return JSON.parse(t); } catch { return { result: false, message: t.slice(0, 120) }; }
+}
+
+async function main() {
+  if (!TOK || !CJT) { console.log('PAUSE (Token fehlt)'); return; }
+  const erledigt = new Set(fs.existsSync(LEDGER)
+    ? fs.readFileSync(LEDGER, 'utf8').split('\n').map(l => l.split('\t')[0]).filter(Boolean) : []);
+  let cursor = null, geprueft = 0, gesetzt = 0, ohne = 0;
+  while (gesetzt + ohne < LIMIT) {
+    const q = await sgql(`query($c:String){products(first:50,after:$c,query:"status:active"){pageInfo{hasNextPage endCursor}
+      nodes{id title variants(first:100){nodes{id sku inventoryItem{id unitCost{amount}}}}}}}`, { c: cursor });
+    const pr = q.data?.products;
+    if (!pr) { console.log('PAUSE (Shopify antwortet nicht)'); break; }
+    for (const p of pr.nodes) {
+      geprueft++;
+      if (erledigt.has(p.id)) continue;
+      const vs = p.variants.nodes;
+      if (vs.some(v => v.inventoryItem?.unitCost)) { erledigt.add(p.id); continue; }   // hat schon Kosten
+      // ⚠️ DIE SKU HAT VIER FORMEN (live gezählt 20.08.2026), ein Muster reicht nicht:
+      //   CJ-2501090747091600500          → Zahlen-pid       → product/query?pid=
+      //   CJ-EC52E079-9BEF-4475-...       → UUID-pid         → product/query?pid=
+      //   CJ-CJYD243817501AZ / CJYD…      → VARIANTEN-SKU    → product/variant/query?variantSku=
+      // Ein Muster nur auf \d{10,} fand im ersten Probelauf 0 von 50 Produkten.
+      const sku = (vs[0]?.sku || '');
+      let j = null;
+      const mPid = sku.match(/^CJ-(\d{10,}|[0-9A-F]{8}-[0-9A-F-]{20,})$/i);
+      const mVar = sku.match(/^(?:CJ-)?(CJ[A-Z]{2}[0-9A-Z]{6,})$/i);
+      if (mPid)      j = await cj(`product/query?pid=${mPid[1]}`);
+      else if (mVar) j = await cj(`product/variant/query?variantSku=${mVar[1]}`);
+      else { ohne++; fs.appendFileSync(LEDGER, `${p.id}\tkeine-cj-referenz\n`); continue; }
+      if (!j.result) {
+        if (/point|credit|1690050/i.test(JSON.stringify(j))) { console.log('PAUSE (CJ-Punkte leer, morgen weiter)'); return; }
+        ohne++; fs.appendFileSync(LEDGER, `${p.id}\tcj-ohne-antwort\n`); await sleep(1200); continue;
+      }
+      // Die Variantenabfrage liefert eine LISTE, die Produktabfrage ein Objekt.
+      const d = Array.isArray(j.data) ? (j.data[0] || {}) : (j.data || {});
+      const preis = d.sellPrice ?? d.variantSellPrice ?? d.variantSugSellPrice;
+      const gew   = d.productWeight ?? d.variantWeight;
+      if (preis == null) { ohne++; fs.appendFileSync(LEDGER, `${p.id}\tcj-ohne-preis\n`); await sleep(1200); continue; }
+      const c = kosten(preis, gew);
+      const ein = vs.map(v => ({ id: v.id, inventoryItem: { cost: c } }));
+      let n = 0;
+      for (let i = 0; i < ein.length; i += 25) {
+        const r = await sgql(`mutation($p:ID!,$v:[ProductVariantsBulkInput!]!){productVariantsBulkUpdate(productId:$p,variants:$v){userErrors{message}}}`,
+          { p: p.id, v: ein.slice(i, i + 25) });
+        const e = r.data?.productVariantsBulkUpdate?.userErrors || [];
+        if (e.length) { console.log('  ⚠️', JSON.stringify(e[0]).slice(0, 90)); break; }
+        n += ein.slice(i, i + 25).length;
+      }
+      if (n) {
+        gesetzt++;
+        fs.appendFileSync(LEDGER, `${p.id}\tCHF ${c}\t${n} Varianten\t${p.title.slice(0, 50)}\n`);
+        if (gesetzt % 20 === 0) console.log(`   ${gesetzt} Produkte mit Einkaufspreis`);
+      }
+      await sleep(1200);
+      if (gesetzt + ohne >= LIMIT) break;
+    }
+    if (!pr.pageInfo.hasNextPage) { console.log(`FERTIG: ${gesetzt} Produkte bekamen Kosten, ${ohne} ohne CJ-Referenz.`); return; }
+    cursor = pr.pageInfo.endCursor;
+  }
+  console.log(`PAUSE (Tagesmenge erreicht): ${gesetzt} Produkte mit Einkaufspreis, ${ohne} ohne CJ-Referenz, ${geprueft} geprüft.`);
+}
+main();
