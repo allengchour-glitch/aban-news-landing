@@ -852,3 +852,5 @@ gid://shopify/Product/15506223038849	nicht-versendbar	Trampolin für Kinder und 
 gid://shopify/Product/15506067292545	ok	Retro-Aktentasche aus Rindsleder
 gid://shopify/Product/15505682104705	nicht-versendbar	Hochleistungs-Standmixer 2L
 gid://shopify/Product/15506198987137	ok	Explosive Datejust Automatikuhr für Herren
+gid://shopify/Product/15506295325057	nicht-versendbar	Kompaktes, faltbares Gehband für Zuhause
+gid://shopify/Product/15506295488897	nicht-versendbar	Aufblasbares Paddleboard für Einsteiger
