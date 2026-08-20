@@ -6916,3 +6916,6 @@ gid://shopify/Product/15466070802817	82->0	Messer- und Scheren-Set aus Edelstahl
 gid://shopify/Product/15466071228801	70->1	Wachsschmelzer mit Heizplatte und Rührlöffel
 gid://shopify/Product/15466876207489	40->1	Sportbeutel
 gid://shopify/Product/15467017765249	16->3	Rosa ärmelloses Mini-Kleid
+gid://shopify/Product/15468316918145	11->0	Reise-Trolley
+gid://shopify/Product/15468698993025	30->0	Teleskop-Reinigungsschlauch für Klimaanlagen
+gid://shopify/Product/15468699091329	9->0	Keramik Zahnbürstenhalter
