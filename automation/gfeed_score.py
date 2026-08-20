@@ -35,7 +35,7 @@ while True:
         elif any(CODE.search(v or "") for o in p["options"] for v in o["values"][:25]): bad="code-in-variante"
         elif imgs<3: bad="unter-3-bildern"
         elif price<15: bad="preis-unter-15"
-        elif not sku.startswith(("CJ-","bb-","fortura-")): bad="keine-lieferanten-sku"
+        elif not lieferantenref(sku): bad="keine-lieferanten-sku"
         if bad: rows.append((p["id"],-1,bad)); continue
         s = min(imgs,10)*2 + (10 if 20<=price<=120 else 4) + (6 if "neuheit" in p["tags"] else 0) + (4 if "ch-lager" in p["tags"] else 0)
         rows.append((p["id"],s,"ok"))
@@ -45,5 +45,8 @@ while True:
 json.dump(rows,open("/tmp/gfeed_scores.json","w"))
 ok=[r for r in rows if r[1]>0]; ok.sort(key=lambda r:-r[1])
 from collections import Counter
+# Eine Prüfung, eine Wahrheit: dieselbe Formprüfung wie gfeed_restore (Präfix ist tippbar,
+# die Form nicht) — sonst hält der eine Lauf draussen, was der andere hereinlässt.
+from gfeed_restore import lieferantenref
 print("FERTIG gescannt:",tot,"| im Feed:",len(rows),"| qualifiziert:",len(ok))
 print(Counter(r[2] for r in rows).most_common())

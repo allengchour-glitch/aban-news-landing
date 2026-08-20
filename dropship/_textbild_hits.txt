@@ -6982,3 +6982,11 @@ gid://shopify/Product/15480276124033	26->0	HD Nachtsicht Smart Überwachungskame
 gid://shopify/Product/15480340021633	40->2	Faltbarer Handyhalter mit vielseitiger Befestigung
 gid://shopify/Product/15480410505601	20->0	Magnetischer 2-in-1 Bluetooth Lautsprecher
 gid://shopify/Product/15480411914625	84->2	Auto-Sitzkissen Winter
+gid://shopify/Product/15480460149121	77->0	4G Kinder Smartwatch mit GPS & Videoanruf
+gid://shopify/Product/15480460837249	88->0	Anti-Rutsch-Sitzkissen aus Seide
+gid://shopify/Product/15480485020033	10->0	SD zu PCMCIA Adapterkarte 32GB HC High Speed Class
+gid://shopify/Product/15480564089217	25->0	High-Power Powerbank mit Farbdisplay
+gid://shopify/Product/15480564154753	40->2	Bluetooth Speaker mit Dual-Mikrofon
+gid://shopify/Product/15480571724161	47->0	MP3-Player mit Diktiergerät und USB-Speicher
+gid://shopify/Product/15480630116737	10->1	Metal-Mikrofon
+gid://shopify/Product/15480631525761	44->0	Barocke Fake Nails mit Glitzersteinen

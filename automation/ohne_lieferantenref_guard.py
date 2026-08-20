@@ -32,6 +32,43 @@ LEDGER = "dropship/_ohne_lieferantenref.txt"
 TAG = "keine-lieferanten-ref"
 POD = re.compile(r'printful|^fertig-|^pod-|selbstgestalten', re.I)
 
+# ⚠️ 20.08.2026: Eine SKU zu HABEN ist nicht dasselbe wie eine QUELLE zu haben.
+# Der Juni-Import legte 65 Produkte mit frei getippten Slugs an, die sich als Referenz
+# tarnen: «CJ-ANTIGRAV-HUMID», «cj-bag-capri», «cool-turtle», «FENRIR-BLK». Das Präfix
+# «CJ-» kann jeder tippen; bei CJ existiert dahinter nichts (API: 1602001 Product not
+# found). Deshalb wird hier die FORM geprüft, nicht der Anfangsbuchstabe.
+_KERN = [
+    re.compile(r'^CJ[A-Z]{2}[0-9A-Z]{6,}', re.I),          # CJ-Varianten-SKU: CJYD…/CJBQ…/CJSL…
+    re.compile(r'^\d{9,}'),                                # CJ-pid (lange Zahl)
+    re.compile(r'^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-', re.I),   # UUID (CJ + Gelato-POD)
+]
+
+
+def gueltige_ref(sku):
+    """True, wenn die SKU die FORM einer echten Lieferantenreferenz hat.
+
+    Bewusst grosszügig: lieber eine erfundene SKU durchlassen als ein bestellbares
+    Produkt draften. Bekannte Formen (Stand 20.08.2026, gegen den Live-Katalog geprüft):
+      CJ-2606160740461633600 · cj-CJBQ2934265 · CJ-CJYD292641701AZ-Black · CJYD291508502BY
+      bb-S3414715 · BB-V0100921 · fortura-… · LX-… · 5599797_4012 (Printful)
+      aee8d787-63c4-41a9-… (Gelato-POD)
+    """
+    s = (sku or "").strip()
+    if not s:
+        return False
+    low = s.lower()
+    if low.startswith(("bb-", "fortura-", "lx-")):
+        return True
+    if re.match(r'^\d{6,}_\d+$', s):                       # Printful <sync>_<variant>
+        return True
+    kern = re.sub(r'^cj-', '', s, flags=re.I)               # Präfix abziehen, Kern prüfen
+    return any(k.match(kern) for k in _KERN)
+
+
+def hat_quelle(p):
+    """Produkt gilt als bestellbar, wenn IRGENDEINE Variante eine formgültige Referenz trägt."""
+    return any(gueltige_ref(v["sku"]) for v in p["variants"]["nodes"])
+
 
 def gql(q, v=None):
     with open("/tmp/_or.json", "w") as f:
@@ -62,8 +99,8 @@ def wiederbeleben():
         if not pg:
             break
         for p in pg["nodes"]:
-            if not any((v["sku"] or "").strip() for v in p["variants"]["nodes"]):
-                continue          # immer noch keine Quelle -> bleibt draussen
+            if not hat_quelle(p):
+                continue          # immer noch keine (formgültige) Quelle -> bleibt draussen
             n += 1
             print(f"  ♻️ zurück: {p['title'][:56]}", flush=True)
             if DRY:
@@ -83,6 +120,7 @@ def main():
     if REVIVE:
         return wiederbeleben()
     cur, treffer, geprueft, pod = None, [], 0, 0
+    schein = []   # SKU sieht aus wie eine Referenz, ist aber keine
     while True:
         d = gql('query($c:String){products(first:100,after:$c,query:"status:ACTIVE"){'
                 'pageInfo{hasNextPage endCursor} nodes{id title tags '
@@ -93,6 +131,13 @@ def main():
         for p in pg["nodes"]:
             geprueft += 1
             if any((v["sku"] or "").strip() for v in p["variants"]["nodes"]):
+                # SKU vorhanden — aber trägt sie die FORM einer echten Referenz?
+                # Diese Klasse wird NUR GEMELDET, nicht gedraftet: ein zu strenges
+                # Formmuster über 41'000 Produkte würde gültige Ware aus dem Verkauf
+                # nehmen. Erst mit DRY-Ausgabe gegenprüfen, dann von Hand entscheiden.
+                if not hat_quelle(p) and not any(POD.search(t) for t in p["tags"]):
+                    schein.append((p["id"], p["title"],
+                                   [v["sku"] for v in p["variants"]["nodes"] if v["sku"]][:1]))
                 continue
             if any(POD.search(t) for t in p["tags"]):
                 pod += 1                       # Printful liefert — Quelle ist dort hinterlegt
@@ -107,6 +152,12 @@ def main():
 
     print(f"{geprueft} aktive Produkte | ohne jede Lieferanten-SKU: {len(treffer)} "
           f"| POD ausgenommen: {pod}", flush=True)
+    if schein:
+        print(f"⚠️ {len(schein)} Produkte tragen eine SKU OHNE gültige Referenzform "
+              f"(getarnte Slugs wie 'CJ-ANTIGRAV-HUMID' / 'cool-turtle') — nur gemeldet:",
+              flush=True)
+        for gid, titel, sku in schein[:15]:
+            print(f"  ❓ {gid.split('/')[-1]} {sku} {titel[:52]}", flush=True)
     f = open(LEDGER, "a")
     n = 0
     for gid, titel in treffer:

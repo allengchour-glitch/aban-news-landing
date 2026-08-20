@@ -89,8 +89,18 @@ def lieferantenref(sku):
         return False
     if "_" in s and s.split("_")[0].isdigit():
         return True                                   # Printful: <produkt>_<variante>
-    if re.match(r'^CJ', s, re.I):
-        return True                                   # CJ-…  /  CJYD…  /  CJLY…
+    # ⚠️ 20.08.2026: `^CJ` war zu grosszügig — das Präfix ist frei tippbar. Der Juni-Import
+    # legte Slugs wie «CJ-ANTIGRAV-HUMID» und «cj-bag-capri» an, die diese Prüfung bestanden
+    # und dadurch im Google-Kanal landeten; bei CJ existiert dahinter nichts (1602001).
+    # Geprüft wird deshalb die FORM hinter dem Präfix, nicht das Präfix selbst.
+    # Gegen 1'003 aktive Produkte / 6'052 SKUs gegengeprüft: verwirft keine gültige Referenz.
+    kern = re.sub(r'^cj-', '', s, flags=re.I)
+    if re.match(r'^CJ[A-Z]{2}[0-9A-Z]{6,}', kern, re.I):
+        return True                                   # CJ-Varianten-SKU: CJYD…/CJLY…/CJBQ…
+    if re.match(r'^\d{9,}', kern):
+        return True                                   # CJ-pid (lange Zahl)
+    if re.match(r'^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-', kern, re.I):
+        return True                                   # UUID (CJ und Gelato-POD)
     if re.match(r'^bb[-_]?[SV0-9]', s, re.I):
         return True                                   # BigBuy, gross wie klein
     if re.match(r'^fortura', s, re.I):
