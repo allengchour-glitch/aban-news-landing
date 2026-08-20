@@ -6883,3 +6883,7 @@ gid://shopify/Product/15454578016641	29->0	Hochtaillierte Leisure Yogahose Damen
 gid://shopify/Product/15454649483649	65->0	Automatikuhr mit Goldgehäuse
 gid://shopify/Product/15454852350337	10->0	Smarte Bremslicht fürs Fahrrad
 gid://shopify/Product/15454894883201	12->0	Leichte Rücklichter für Fahrrad
+gid://shopify/Product/15454915821953	32->2	LED-Abdeckung für Brille mit Sichtschutz
+gid://shopify/Product/15455268209025	18->0	Bootförmiger Holz-Obstteller im Landhausstil
+gid://shopify/Product/15455300714881	23->0	Wasserdichter Radtouren-Rucksack
+gid://shopify/Product/15455301009793	12->0	Kompakter Aromadiffusor mit Nachtlicht
