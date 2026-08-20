@@ -1,0 +1,5 @@
+gid://shopify/Product/15493845221761	6	A039 Black → Schwarz | A039 Black And White → Schwarz-Weiss | A039 White → Weiss | A039 Light Gray → Hellgrau | A039 Blue → Blau | A03 Moonlight → Moonlight	Barfussschuhe für Herren mit breiter Zehenbox
+gid://shopify/Product/15493807145345	2	L985 Black → Schwarz | L985 Dark Brown → Dunkelbraun	Retro Britische Martin Boots für Herren
+gid://shopify/Product/15491391586689	5	E7916 White → Weiss | E7916 Black → Schwarz | E7916 Light Gray → Hellgrau | E7916 Dark Gray → Dunkelgrau | E7916 Apricot → Aprikose	Herren Heavy Cotton Pullover für den Herbst
+gid://shopify/Product/15495094829441	2	Y851 Brown → Braun | Y851 Black → Schwarz	Trendige Chunky Low-Top Sneaker
+gid://shopify/Product/15495104397697	4	Ts3018 Pink → Pink | TS3018 Orange → Orange | Ts3018 Black → Schwarz | Ts3018 Yellow → Gelb	Warme Kindergarten-Finken für Kleinkinder
