@@ -6861,3 +6861,7 @@ gid://shopify/Product/15454000710017	119->0	Herren-Cargo-Hosen mit Stretch
 gid://shopify/Product/15454003069313	144->2	Retro-Lederportemonnaie Herren
 gid://shopify/Product/15454038524289	10->0	Mini Pyrografie-Maschine
 gid://shopify/Product/15454078796161	76->0	Mini-Makeup-Pinsel-Set
+gid://shopify/Product/15454092132737	8->0	6-Taschen Jogginghose für Training & Sport
+gid://shopify/Product/15454092427649	11->2	Avocado Katzenpfefferball
+gid://shopify/Product/15454093148545	29->1	Interaktive Katzen-Spielkugel
+gid://shopify/Product/15454106321281	11->0	Schutzhelm aus Polycarbonat
