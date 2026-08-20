@@ -109,11 +109,97 @@ const SPEZIFISCHER_TYP = new Set([
   'Basteln & DIY', 'Gartenwerkzeug', 'Garten & Pflanzen',
 ]);
 
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ZWEI VORRANG-UMKEHRUNGEN, live nachgewiesen am 20.08.2026
+//
+// (1) «Aufbewahrung & Organizer» ist beim CJ-Import ein SAMMELKORB, kein Zweck. 2'333 aktive
+//     Produkte trugen die Warengruppe; in einer Stichprobe hatten 56 % nicht ein einziges
+//     Aufbewahrungswort im Titel — Bratpfannen, Rasentrimmer, Lichterketten, Duschköpfe standen
+//     als Aufbewahrungsware im Feed. Der Pfad war gültig, deshalb schlug keine Syntaxprüfung an.
+//     Neu: in dieser Gruppe entscheidet ZUERST der Titel; Storage bleibt nur, wenn der Titel
+//     wirklich Box/Korb/Regal/Organizer sagt. Sagt er nichts Erkennbares, gibt es KEINEN Wert —
+//     dieselbe Regel wie bei «Trend-Gadget»: ein falscher Wert ist im Feed schlechter als keiner.
+//
+// (2) `kategorie-tasche` stach die Warengruppe. Weil der Importer den Tag aus dem CJ-Kategorie-
+//     namen «Storage Bags & Cases & Boxes» ableitete, landeten 642 Regale und Organizer unter
+//     «Handbags». Neu: liegt ein Aufbewahrungs-Signal vor, wird der Taschen-Tag ignoriert.
+//
+// (3) `Spielzeug & Spiele` stach den Tag `haustier`: 17 Hundespielzeuge standen als KINDER-
+//     spielzeug im Feed (Alters-/Sicherheitserwartungen nach EN 71, die ein beissfestes
+//     Hundespielzeug nicht erfüllt). Neu: Haustier sticht Spielzeug.
+// ─────────────────────────────────────────────────────────────────────────────
+const PET_TAGS = ['haustier', 'hund', 'katze', 'pet'];
+const PET_TITEL = /f[üu]r\s+(hunde|katzen|haustiere)\b|hundespielzeug|katzenspielzeug|\bhunde\w*|\bkatzen\w*|\bhaustier\w*/i;
+const HUND_T = /\bhund\w*|welpen/i;
+const KATZE_T = /\bkatze\w*|kitten/i;
+
+// Titel-Tabelle für die Sammelkorb-Warengruppe. Reihenfolge ist Bedeutung.
+const AUFB_TITEL = [
+  [/\bhunde\w*|\bkatzen\w*|\bhaustier\w*|futternapf|tier-?toilette|tierasche/i, 'Animals & Pet Supplies > Pet Supplies'],
+  [/kinderwagen|\bbaby\w*|windel|kinderzimmer/i, 'Baby & Toddler'],
+  [/\bauto-|kofferraum|armaturenbrett|lenkrad|autositz|\bkfz\b|r[üu]cksitz/i, 'Vehicles & Parts > Vehicle Parts & Accessories'],
+  [/wandregal|h[äa]ngeregal|ablageregal|wandboard/i, 'Furniture > Shelving > Wall Shelves & Ledges'],
+  [/\w*regal\b|\bregal\w*|\bshelf\b/i, 'Furniture > Shelving'],
+  [/rasentrimmer|rasenm[äa]her|gartenschere|gie[sß]{1,2}kanne|blumentopf|pflanzk[üu]bel|pflanztopf|gartenschlauch|heckenschere|gartenrechen|bonsai\w*/i, 'Home & Garden > Lawn & Garden'],
+  [/\w*pfanne\w*|\bwok\b|kochtopf|\btopf\b|br[äa]ter\b|auflaufform|backform|backblech|schnellkochtopf|tarteform/i, 'Home & Garden > Kitchen & Dining > Cookware & Bakeware'],
+  [/nudelmaschine|sandwichmaker|wasserkocher|\bmixer\b|toaster|kaffeemaschine|frittee?use|k[üu]chenmaschine|entsafter|zerkleinerer|reiskocher|kaffeem[üu]hle|lunchbox/i, 'Home & Garden > Kitchen & Dining > Kitchen Appliances'],
+  [/schneid(e)?brett|zitruspresse|knoblauchpresse|teigroller|dosen[öo]ffner|gew[üu]rzm[üu]hle|pfefferm[üu]hle|messbecher|pfannenwender|\bsieb\b|salatschleuder|abtropfgestell|herdabdeck\w*/i, 'Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils'],
+  [/vorratsdose|butterdose|frischhalte\w*|teedose|brotdose|brotkasten/i, 'Home & Garden > Kitchen & Dining > Food Storage'],
+  [/servierplatte|obstschale|\bteller\b|\btasse\b|teekanne|besteck|\bsch[üu]ssel\w*|karaffe|etagere/i, 'Home & Garden > Kitchen & Dining > Tableware'],
+  [/\w*lampe\b|\w*leuchte\b|lichterkette|nachtlicht|\blaterne\w*|strahler|scheinwerfer|led-?streifen|\bbeleuchtung\w*/i, 'Home & Garden > Lighting'],
+  [/badematte|badevorleger|badteppich/i, 'Home & Garden > Bathroom Accessories > Bath Mats & Rugs'],
+  [/duschkopf|duschschlauch|handtuchhalter|wc-?sitz|toiletten\w*|seifenspender|zahnb[üu]rstenhalter|duschvorhang|wasserhahn|lotionspender/i, 'Home & Garden > Bathroom Accessories'],
+  [/bodenwischer|wischmopp|\bmopp\w*|kehrschaufel|m[üu]llbeutel|\bschwamm\w*|fusselentferner|reinigungsb[üu]rste|\bputz\w*|fleckenentferner/i, 'Home & Garden > Household Supplies > Household Cleaning Supplies'],
+  [/\brasierer\b|epilierer|haartrimmer|haarschneider|massageger[äa]t|gua\s?sha|nagelknipser|zahnb[üu]rste\b|fussmassage|zahncreme|mundsp[üu]lung/i, 'Health & Beauty > Personal Care'],
+  [/\bwlan\b|\bwifi\b|steckdose\w*|\bventilator\w*|\bkamera\b|powerbank|ladeger[äa]t|ladestation|bluetooth|kopfh[öo]rer|\busb\b|projektor|\blautsprecher\b|entfeuchter/i, 'Electronics'],
+  [/werkzeugtasche|werkzeugbox|werkzeugbeutel|werkzeugkoffer/i, 'Hardware > Hardware Accessories > Tool Storage & Organization'],
+  [/\bbohrer\b|schraubendreher|\bzange\b|\bhammer\b|werkzeug\w*|\bs[äa]ge\b|cuttermesser|akkuschrauber/i, 'Hardware > Tools'],
+  [/tischdecke|bettw[äa]sche|kissenbezug|\bvorhang\w*|picknickdecke|tischl[äa]ufer|duvet/i, 'Home & Garden > Linens & Bedding'],
+  [/\bvase\b|wanddeko|wandverkleidung|bilderrahmen|kunstblume|kerzenhalter|\bteppich\w*|skulptur/i, 'Home & Garden > Decor'],
+  [/weihnachts\w*|adventskalender|christbaum\w*|oster\w*/i, 'Home & Garden > Decor > Seasonal & Holiday Decorations'],
+  [/kulturbeutel|toilettentasche|make-?up-?tasche|kosmetiktasche|schminktasche/i, 'Luggage & Bags > Cosmetic & Toiletry Bags'],
+  [/handtasche|umh[äa]ngetasche|crossbody|schultertasche|\bclutch\b|g[üu]rteltasche|bauchtasche/i, 'Apparel & Accessories > Handbags, Wallets & Cases > Handbags'],
+  [/rucksack|backpack|schulranzen/i, 'Luggage & Bags > Backpacks'],
+];
+// Erst wenn nichts davon greift, darf «Aufbewahrung» die Antwort sein — und nur, wenn der
+// Titel das auch sagt.
+const AUFB_STORAGE = /aufbewahrungs?\w*|\baufbewahrung\b|organizer|organisator|kleiderb[üu]gel|schuhbox|schuhschrank|w[äa]schekorb|kleidersack|schmucktablett|\w*box(en)?\b|\w*k[öo]rb(e)?\b|\w*kist(e|en)\b|beh[äa]lter|\bschublade\w*|\w*etui\b|\w*haken\b|hakenleiste|\bhalter\b|\w*st[äa]nder\b|\bhalterung\b|\w*spender\b|\bf[äa]cher\b|\btray\b|\w*ablage\b|garderobe|b[üu]cherst[üu]tze|schl[üu]sselbrett|\w*kasten\b|k[äa]stchen|\w*dose\b|\w*tablett\b|\bsafe\b|\btresor\b|abfalleimer|m[üu]lleimer|kassette|\w*h[üu]lle\b/i;
+// Zuletzt: irgendeine Tasche. «Luggage & Bags» ist der grobe RICHTIGE Vorfahr,
+// «Handbags» wäre der genaue FALSCHE (Kühltasche, Instrumententasche, Reisetasche).
+const AUFB_BAG = /\w*tasche\w*|\w*beutel\b|\w*koffer\b|hardcase|trolley/i;
+const AUFB_TYP = 'Aufbewahrung & Organizer';
+
 export function googleKategorie(title, tags, productType) {
-  for (const [muster, pfad] of VORRANG) if (muster.test(title || '')) return pfad;
-  if (SPEZIFISCHER_TYP.has(productType) && NACH_TYP[productType]) return NACH_TYP[productType];
+  const ti = title || '';
   const t = new Set((tags || []).map(x => String(x).toLowerCase()));
-  for (const [tag, pfad] of NACH_TAG) if (t.has(tag)) return pfad;
+
+  // (3) Haustier sticht Spielzeug — ein Hundespielzeug ist kein Kinderspielzeug.
+  const istPet = PET_TAGS.some(x => t.has(x)) || PET_TITEL.test(ti);
+  if (productType === 'Spielzeug & Spiele' && istPet) {
+    if (HUND_T.test(ti))  return 'Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Toys';
+    if (KATZE_T.test(ti)) return 'Animals & Pet Supplies > Pet Supplies > Cat Supplies > Cat Toys';
+    return 'Animals & Pet Supplies > Pet Supplies';
+  }
+
+  for (const [muster, pfad] of VORRANG) if (muster.test(ti)) return pfad;
+
+  // (1) Sammelkorb «Aufbewahrung & Organizer»: der Titel entscheidet, nicht die Warengruppe.
+  const istAufb = productType === AUFB_TYP || t.has('aufbewahrung') || t.has('organizer');
+  if (istAufb) {
+    for (const [muster, pfad] of AUFB_TITEL) if (muster.test(ti)) return pfad;
+    if (AUFB_STORAGE.test(ti)) return 'Home & Garden > Household Supplies > Storage & Organization';
+    if (AUFB_BAG.test(ti))     return 'Luggage & Bags';
+  }
+
+  if (SPEZIFISCHER_TYP.has(productType) && NACH_TYP[productType]) return NACH_TYP[productType];
+  for (const [tag, pfad] of NACH_TAG) {
+    if (!t.has(tag)) continue;
+    // (2) Ein Regal ist keine Handtasche: bei Aufbewahrungs-Signal zählt der Taschen-Tag nicht.
+    if (istAufb && (tag === 'kategorie-tasche' || tag === 'damen-taschen' || tag === 'aufbewahrung')) continue;
+    return pfad;
+  }
   if (SAMMELKORB.has(productType)) return null;
+  if (productType === AUFB_TYP) return null;   // kein Auffangnetz mehr — leer schlägt falsch
   return NACH_TYP[productType] || null;
 }

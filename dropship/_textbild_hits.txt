@@ -6958,3 +6958,9 @@ gid://shopify/Product/15477387723137	39->2	Wasserdichte Fahrradtasche
 gid://shopify/Product/15477467971969	11->0	Faltbares Outdoor-Zelt für 1-4 Personen
 gid://shopify/Product/15478470279553	61->0	Lederarmband mit Faltschliesse und Doppelknopf
 gid://shopify/Product/15478568092033	37->3	Schnellheiz-Curling-Wand
+gid://shopify/Product/15478613344641	18->0	Fitness Knie-Kompressionsbandage
+gid://shopify/Product/15478618227073	37->0	V-Ausschnitt Kleid mit Bastgürtel
+gid://shopify/Product/15478696739201	104->2	Kabellose Notfall-Luftpumpe mit Digitalanzeige
+gid://shopify/Product/15479339188609	18->2	3-in-1 Nagelstudio-Gerät
+gid://shopify/Product/15479339909505	49->0	M8 TV Mini HD Wireless Arcade Joystick
+gid://shopify/Product/15479375593857	44->1	Smartwatch für Kinder mit GPS und Kamera

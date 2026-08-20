@@ -172,7 +172,7 @@ NACH_TYP = {
     "Damenmode":             "Apparel & Accessories > Clothing",
     "Herrenmode":            "Apparel & Accessories > Clothing",
     "Haustierbedarf":        "Animals & Pet Supplies > Pet Supplies",
-    "Aufbewahrung & Organizer": "Home & Garden > Household Supplies > Storage & Organization",
+    # «Aufbewahrung & Organizer» steht bewusst NICHT mehr hier — siehe AUFB_TITEL unten.
     "Elektronik":            "Electronics",
     "Schmuck":               "Apparel & Accessories > Jewelry",
 }
@@ -183,20 +183,117 @@ KLEIDUNG = re.compile(r'\b\w*(jacke|m[üu]tze|hose|pullover|pulli|schal|handschu
                       r'shirt|kleid|mantel|weste|hemd|hoodie|str[üu]mpfe|stiefel|sandalen)\b', re.I)
 
 
+
+# ─────────────────────────────────────────────────────────────────────────────
+# DREI VORRANG-UMKEHRUNGEN, live nachgewiesen am 20.08.2026 (identisch in
+# automation/google_kategorie.mjs, damit Importer und Backfill dasselbe sagen):
+#
+# (1) «Aufbewahrung & Organizer» ist beim CJ-Import ein SAMMELKORB, kein Zweck. 2'333 aktive
+#     Produkte trugen die Warengruppe; 56 % hatten kein einziges Aufbewahrungswort im Titel —
+#     Bratpfannen, Rasentrimmer, Lichterketten standen als Aufbewahrungsware im Feed. Der Pfad
+#     war gültig, deshalb schlug keine Syntaxprüfung an. Neu: der Titel entscheidet zuerst;
+#     erkennt er nichts, gibt es KEINEN Wert (dieselbe Regel wie bei «Trend-Gadget»).
+# (2) `kategorie-tasche` stach die Warengruppe → 642 Regale und Organizer standen unter
+#     «Handbags». Bei Aufbewahrungs-Signal wird der Taschen-Tag jetzt ignoriert.
+# (3) `Spielzeug & Spiele` stach `haustier` → 17 Hundespielzeuge standen als KINDERspielzeug
+#     im Feed. Haustier sticht jetzt Spielzeug.
+# ─────────────────────────────────────────────────────────────────────────────
+PET_TAGS = ("haustier", "hund", "katze", "pet")
+PET_TITEL = re.compile(r'f[üu]r\s+(hunde|katzen|haustiere)\b|hundespielzeug|katzenspielzeug|'
+                       r'\bhunde\w*|\bkatzen\w*|\bhaustier\w*', re.I)
+HUND_T = re.compile(r'\bhund\w*|welpen', re.I)
+KATZE_T = re.compile(r'\bkatze\w*|kitten', re.I)
+AUFB_TYP = "Aufbewahrung & Organizer"
+
+AUFB_TITEL = [
+    (r'\bhunde\w*|\bkatzen\w*|\bhaustier\w*|futternapf|tier-?toilette|tierasche', "Animals & Pet Supplies > Pet Supplies"),
+    (r'kinderwagen|\bbaby\w*|windel|kinderzimmer', "Baby & Toddler"),
+    (r'\bauto-|kofferraum|armaturenbrett|lenkrad|autositz|\bkfz\b|r[üu]cksitz', "Vehicles & Parts > Vehicle Parts & Accessories"),
+    (r'wandregal|h[äa]ngeregal|ablageregal|wandboard', "Furniture > Shelving > Wall Shelves & Ledges"),
+    (r'\w*regal\b|\bregal\w*|\bshelf\b', "Furniture > Shelving"),
+    (r'rasentrimmer|rasenm[äa]her|gartenschere|gie[sß]{1,2}kanne|blumentopf|pflanzk[üu]bel|pflanztopf|'
+     r'gartenschlauch|heckenschere|gartenrechen|bonsai\w*', "Home & Garden > Lawn & Garden"),
+    (r'\w*pfanne\w*|\bwok\b|kochtopf|\btopf\b|br[äa]ter\b|auflaufform|backform|backblech|schnellkochtopf|tarteform',
+     "Home & Garden > Kitchen & Dining > Cookware & Bakeware"),
+    (r'nudelmaschine|sandwichmaker|wasserkocher|\bmixer\b|toaster|kaffeemaschine|frittee?use|'
+     r'k[üu]chenmaschine|entsafter|zerkleinerer|reiskocher|kaffeem[üu]hle|lunchbox',
+     "Home & Garden > Kitchen & Dining > Kitchen Appliances"),
+    (r'schneid(e)?brett|zitruspresse|knoblauchpresse|teigroller|dosen[öo]ffner|gew[üu]rzm[üu]hle|'
+     r'pfefferm[üu]hle|messbecher|pfannenwender|\bsieb\b|salatschleuder|abtropfgestell|herdabdeck\w*',
+     "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils"),
+    (r'vorratsdose|butterdose|frischhalte\w*|teedose|brotdose|brotkasten', "Home & Garden > Kitchen & Dining > Food Storage"),
+    (r'servierplatte|obstschale|\bteller\b|\btasse\b|teekanne|besteck|\bsch[üu]ssel\w*|karaffe|etagere',
+     "Home & Garden > Kitchen & Dining > Tableware"),
+    (r'\w*lampe\b|\w*leuchte\b|lichterkette|nachtlicht|\blaterne\w*|strahler|scheinwerfer|led-?streifen|\bbeleuchtung\w*',
+     "Home & Garden > Lighting"),
+    (r'badematte|badevorleger|badteppich', "Home & Garden > Bathroom Accessories > Bath Mats & Rugs"),
+    (r'duschkopf|duschschlauch|handtuchhalter|wc-?sitz|toiletten\w*|seifenspender|zahnb[üu]rstenhalter|'
+     r'duschvorhang|wasserhahn|lotionspender', "Home & Garden > Bathroom Accessories"),
+    (r'bodenwischer|wischmopp|\bmopp\w*|kehrschaufel|m[üu]llbeutel|\bschwamm\w*|fusselentferner|'
+     r'reinigungsb[üu]rste|\bputz\w*|fleckenentferner', "Home & Garden > Household Supplies > Household Cleaning Supplies"),
+    (r'\brasierer\b|epilierer|haartrimmer|haarschneider|massageger[äa]t|gua\s?sha|nagelknipser|'
+     r'zahnb[üu]rste\b|fussmassage|zahncreme|mundsp[üu]lung', "Health & Beauty > Personal Care"),
+    (r'\bwlan\b|\bwifi\b|steckdose\w*|\bventilator\w*|\bkamera\b|powerbank|ladeger[äa]t|ladestation|'
+     r'bluetooth|kopfh[öo]rer|\busb\b|projektor|\blautsprecher\b|entfeuchter', "Electronics"),
+    (r'werkzeugtasche|werkzeugbox|werkzeugbeutel|werkzeugkoffer', "Hardware > Hardware Accessories > Tool Storage & Organization"),
+    (r'\bbohrer\b|schraubendreher|\bzange\b|\bhammer\b|werkzeug\w*|\bs[äa]ge\b|cuttermesser|akkuschrauber', "Hardware > Tools"),
+    (r'tischdecke|bettw[äa]sche|kissenbezug|\bvorhang\w*|picknickdecke|tischl[äa]ufer|duvet', "Home & Garden > Linens & Bedding"),
+    (r'\bvase\b|wanddeko|wandverkleidung|bilderrahmen|kunstblume|kerzenhalter|\bteppich\w*|skulptur', "Home & Garden > Decor"),
+    (r'weihnachts\w*|adventskalender|christbaum\w*|oster\w*', "Home & Garden > Decor > Seasonal & Holiday Decorations"),
+    (r'kulturbeutel|toilettentasche|make-?up-?tasche|kosmetiktasche|schminktasche', "Luggage & Bags > Cosmetic & Toiletry Bags"),
+    (r'handtasche|umh[äa]ngetasche|crossbody|schultertasche|\bclutch\b|g[üu]rteltasche|bauchtasche',
+     "Apparel & Accessories > Handbags, Wallets & Cases > Handbags"),
+    (r'rucksack|backpack|schulranzen', "Luggage & Bags > Backpacks"),
+]
+AUFB_TITEL = [(re.compile(r, re.I), z) for r, z in AUFB_TITEL]
+AUFB_STORAGE = re.compile(
+    r'aufbewahrungs?\w*|\baufbewahrung\b|organizer|organisator|kleiderb[üu]gel|schuhbox|schuhschrank|'
+    r'w[äa]schekorb|kleidersack|schmucktablett|\w*box(en)?\b|\w*k[öo]rb(e)?\b|\w*kist(e|en)\b|beh[äa]lter|'
+    r'\bschublade\w*|\w*etui\b|\w*haken\b|hakenleiste|\bhalter\b|\w*st[äa]nder\b|\bhalterung\b|\w*spender\b|'
+    r'\bf[äa]cher\b|\btray\b|\w*ablage\b|garderobe|b[üu]cherst[üu]tze|schl[üu]sselbrett|\w*kasten\b|'
+    r'k[äa]stchen|\w*dose\b|\w*tablett\b|\bsafe\b|\btresor\b|abfalleimer|m[üu]lleimer|kassette|\w*h[üu]lle\b', re.I)
+# Zuletzt: irgendeine Tasche. «Luggage & Bags» ist der grobe RICHTIGE Vorfahr, «Handbags»
+# wäre der genaue FALSCHE (Kühltasche, Instrumententasche, Reisetasche).
+AUFB_BAG = re.compile(r'\w*tasche\w*|\w*beutel\b|\w*koffer\b|hardcase|trolley', re.I)
+
 def kategorie(titel, tags, typ=None):
     titel = titel or ""
+    t = {x.lower() for x in tags}
+    typ = (typ or "").strip()
+
+    # (3) Haustier sticht Spielzeug — ein Hundespielzeug ist kein Kinderspielzeug.
+    if typ == "Spielzeug & Spiele" and (any(x in t for x in PET_TAGS) or PET_TITEL.search(titel)):
+        if HUND_T.search(titel):
+            return "Animals & Pet Supplies > Pet Supplies > Dog Supplies > Dog Toys"
+        if KATZE_T.search(titel):
+            return "Animals & Pet Supplies > Pet Supplies > Cat Supplies > Cat Toys"
+        return "Animals & Pet Supplies > Pet Supplies"
+
     for muster, pfad in VORRANG:
         if muster.search(titel):
             return pfad
-    t = {x.lower() for x in tags}
+
+    # (1) Sammelkorb «Aufbewahrung & Organizer»: der Titel entscheidet, nicht die Warengruppe.
+    ist_aufb = typ == AUFB_TYP or "aufbewahrung" in t or "organizer" in t
+    if ist_aufb:
+        for muster, pfad in AUFB_TITEL:
+            if muster.search(titel):
+                return pfad
+        if AUFB_STORAGE.search(titel):
+            return "Home & Garden > Household Supplies > Storage & Organization"
+        if AUFB_BAG.search(titel):
+            return "Luggage & Bags"
+
     for tag, pfad in REGELN:
         if tag not in t:
+            continue
+        # (2) Ein Regal ist keine Handtasche.
+        if ist_aufb and tag in ("kategorie-tasche", "damen-taschen", "aufbewahrung"):
             continue
         sperre = AUSNAHMEN.get(tag)
         if sperre and sperre.search(titel):
             continue
         return pfad
-    typ = (typ or "").strip()
     # ⚠️ Auch die Warengruppe irrt. Unter «Spielzeug & Spiele» stehen acht Kleidungsstücke —
     # «Plüschjacke», «Plüschmütze Panda», «Baby-Schuhe mit Plüschfutter». Das Wort «Plüsch»
     # hat sie dorthin sortiert, nicht ihr Zweck. Eine Jacke als «Toys» anzubieten, spielt sie
@@ -206,6 +303,8 @@ def kategorie(titel, tags, typ=None):
             return "Apparel & Accessories > Shoes"
         if KLEIDUNG.search(titel):
             return "Apparel & Accessories > Clothing"
+    if typ == AUFB_TYP:
+        return None          # kein Auffangnetz mehr — leer schlägt falsch
     return NACH_TYP.get(typ)
 
 

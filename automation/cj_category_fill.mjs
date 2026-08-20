@@ -540,8 +540,17 @@ async function deepseek(prompt){
  return null;
 }
 
+// ⚠️ LABELTAG liest den CJ-KATEGORIENAMEN, nicht den Produkttitel. Deshalb hat
+// `/bag/i` bis 20.08.2026 auch die Kategorie «Storage Bags & Cases & Boxes» getroffen —
+// JEDES Produkt der Storage-Gruppe bekam den Tag `kategorie-tasche`. Folge: 642 aktive
+// Regale, Ablagen und Organizer standen im Google-Feed unter «Handbags» und in der
+// Kollektion «Taschen & Rucksäcke». Ein Wandregal ist keine Handtasche.
+// Regel: der Tasche-Anker darf nur greifen, wenn der Kategoriename nicht von Aufbewahrung
+// spricht (Wortgrenzen + Negativliste, wie 9b es für jede Massen-Tag-Regel verlangt).
+const LABEL_KEINE_TASCHE=/storage|organiz|wardrobe|kitchen|bathroom|home office/i;
 const LABELTAG=[[/dress/i,'kategorie-kleid'],[/skirt/i,'kategorie-rock'],[/necklace|pendant/i,'kategorie-halskette'],
- [/bracelet|bangle/i,'kategorie-armband'],[/watch/i,'kategorie-uhr'],[/bag|backpack|handbag|tote/i,'kategorie-tasche']];
+ [/bracelet|bangle/i,'kategorie-armband'],[/watch/i,'kategorie-uhr'],
+ [/\bbags?\b|backpack|handbag|tote/i,'kategorie-tasche',LABEL_KEINE_TASCHE]];
 const grp=GROUPS[process.env.GRP||'nagel']; if(!grp){console.error('unknown GRP');process.exit(1);}
 const done=new Set(fs.existsSync(LEDGER)?fs.readFileSync(LEDGER,'utf8').split('\n').map(s=>s.replace('cj:','').trim()).filter(Boolean):[]);
 const st=DRY?null:await shTok();
@@ -645,7 +654,7 @@ for(const [cat,label] of grp.cats){
    const fash=(grp.fashion&&!FAST)?buildFashion(d):null; // FAST: keine Varianten-Details → Standard-Variante
    const productOptions=fash?fash.productOptions:[{name:'Variante',values:[{name:'Standard'}]}];
    const variants=fash?fash.variants:[{optionValues:[{optionName:'Variante',name:'Standard'}],price:chf(p.sellPrice, p.productWeight||p.variantWeight),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false,cost:kosten(p.sellPrice, p.productWeight||p.variantWeight)},inventoryPolicy:'CONTINUE'}];
-   const katTag=(LABELTAG.find(([re])=>re.test(label||''))||[])[1];
+   const katTag=(LABELTAG.find(([re,,verbot])=>re.test(label||'')&&!(verbot&&verbot.test(label||'')))||[])[1];
    let tagsFinal=[...(process.env.WAREHOUSE?[...grp.tags,'eu-lager','schnelle-lieferung']:grp.tags),...(katTag?[katTag]:[])];
    // Titel-Wache: Haustier-/Plüsch-Artikel aus CJ-Elektronik/Gadget-Kategorien nicht als Elektronik taggen (Hundehalsband-Falle 2026-08-04)
    let typeFinal=grp.type;
