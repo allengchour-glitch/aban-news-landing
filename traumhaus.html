@@ -689,6 +689,10 @@ rasen.rotation.x=-Math.PI/2;rasen.position.y=-0.05;rasen.receiveShadow=true;scen
     new THREE.MeshStandardMaterial({map:tex,transparent:true,roughness:1,depthWrite:false}));
     m.rotation.x=-Math.PI/2;m.position.y=y;scene.add(m);return m;}
   overlay(GW*CS+60,GH*CS+60,-0.035,blotchTex(46,0.3)); // nahe Wiese — traegt jetzt die grossflaechige Variation
+  /* ⚠️ Zwischen der nahen Wiese (204x152) und der Fern-Ebene (600x600 mit nur
+     40 Blotches) lag ein breiter Ring, den praktisch keine Variation erreichte —
+     genau der Bereich, den man beim Herauszoomen sieht. Drittes Overlay dafuer. */
+  overlay(460,460,-0.05,blotchTex(88,0.26));            // Umland-Ring
   overlay(600,600,-0.06,blotchTex(40,0.2));             // Fern-Ebene
 })();
 // Kaminrauch aus mehreren Häusern (leichte aufsteigende Partikel)
@@ -1436,6 +1440,49 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
        aber es sind hunderte Draw-Calls weniger. */
     var _sf=(typeof _mobil!=="undefined"&&_mobil)?0.62:1;
     function _n(v){return Math.round(v*_sf);}
+    /* 🌾 KULTURLANDSCHAFT (User: "schoenere map allgemein").
+       Das Umland war ein einziger gruener Teppich: gleiche Farbe von der
+       Stadtgrenze bis zum Gebirge, nur mit Baeumen bestreut. Aecker in
+       gepfluegter Erde, Rapsfelder und ein paar Feldwege geben der Landschaft
+       Struktur — flache Geometrie, also kein Kollider und kein Hindernis.
+       Die Lagen werden gegen `freiPlatz()` geprueft, nicht geraten. */
+    (function kulturLandschaft(){
+      var ERDE=0x8a7350, RAPS=0xd8c24a, KORN=0xc7a95c;
+      var FELD=[[-172, 66,46,34, 0.32,ERDE],[ 158,-146,52,36,-0.18,KORN],
+                [-152,-152,44,32, 0.55,RAPS],[ 172, 118,48,32,-0.42,ERDE],
+                [ -46, 196,54,34, 0.08,KORN],[  70,-196,46,32, 0.26,RAPS],
+                [ 196, -60,40,30,-0.60,ERDE],[-196,  10,42,30, 0.12,KORN]];
+      var furchen=[];
+      FELD.forEach(function(F){
+        if(!freiPlatz(F[0],F[1],14))return;
+        var m=new THREE.Mesh(new THREE.PlaneGeometry(F[2],F[3]),
+          new THREE.MeshStandardMaterial({color:F[5],roughness:1,envMapIntensity:0.14}));
+        m.rotation.set(-Math.PI/2,0,F[4]);m.position.set(F[0],0.004,F[1]);
+        m.receiveShadow=true;scene.add(m);
+        /* Furchen laengs — sie machen aus der Farbflaeche erst einen Acker */
+        var n=Math.floor(F[3]/2.6), ca=Math.cos(F[4]), sa=Math.sin(F[4]);
+        for(var i=0;i<n;i++){
+          var q=-F[3]/2+1.3+i*2.6;
+          furchen.push([F[0]-sa*q, F[1]+ca*q, F[4], F[2]-1.6]);}
+      });
+      if(furchen.length){
+        var fM=new THREE.MeshStandardMaterial({color:0x6a563a,roughness:1,transparent:true,opacity:0.45});
+        var fG=new THREE.PlaneGeometry(1,0.55), dmy=new THREE.Object3D();
+        var fI=new THREE.InstancedMesh(fG,fM,furchen.length);
+        furchen.forEach(function(f,i){
+          dmy.position.set(f[0],0.0055,f[1]);dmy.rotation.set(-Math.PI/2,0,f[2]);
+          dmy.scale.set(f[3],1,1);dmy.updateMatrix();fI.setMatrixAt(i,dmy.matrix);});
+        fI.receiveShadow=true;scene.add(fI);
+      }
+      /* Feldwege: helle Bahnen, die von der Stadt ins Land laufen */
+      var WEGE=[[-150,120,60,0.72],[150,150,64,-0.68],[-140,-120,58,-0.75],[140,-100,62,0.7]];
+      WEGE.forEach(function(W){
+        if(!freiPlatz(W[0],W[1],10))return;
+        var w=new THREE.Mesh(new THREE.PlaneGeometry(W[2],3.2),
+          new THREE.MeshStandardMaterial({color:0xbdae90,roughness:1,envMapIntensity:0.12}));
+        w.rotation.set(-Math.PI/2,0,W[3]);w.position.set(W[0],0.0045,W[1]);
+        w.receiveShadow=true;scene.add(w);});
+    })();
     streu(_n(130),GW*CS/2+8,GW*CS/2+120,function(x,z){baum2(x,z,0.7+Math.random()*1.1);},1);
     streu(_n(150),GW*CS/2+8,GW*CS/2+70,blumenfeld,0);
     streu(_n(95),GW*CS/2+6,GW*CS/2+130,busch,0);
@@ -8620,6 +8667,15 @@ function updSim(s,si,dt,now){
 var camA=0.8,camB=0.78,camR=44,camRT=44,camTx=0,camTz=0,followSim=null;var camAT=null; // camRT = Ziel-Zoom (weiches Easing)
 var egoMode=false; /* 👁️ User: „Egoperspektive … man kann immer wechseln wie GTA" */
 function updCam(){
+  /* 🌫️ Der Nebel stand fest auf 130…340 m. Beim Herauszoomen (der Zoom geht bis
+     weit ueber 300) verschwand damit die ganze Stadt in blauer Suppe — genau in
+     dem Moment, in dem man die Karte ueberblicken will. Er haengt jetzt am Zoom:
+     nah bleibt die Stimmung erhalten, weit draussen wird die Sicht frei. */
+  if(scene.fog){
+    var _fn=Math.max(120,camR*2.6), _ff=Math.max(340,camR*9.5);
+    scene.fog.near+= (_fn-scene.fog.near)*0.25;
+    scene.fog.far += (_ff-scene.fog.far )*0.25;
+  }
   if(egoMode&&!buildMode){
     var _ex,_ez,_ey,_yaw;
     if(fahren&&(driveCar||window.autoRec)){var _a9=(driveCar||window.autoRec).mesh; /* 🚗 Cockpit */
