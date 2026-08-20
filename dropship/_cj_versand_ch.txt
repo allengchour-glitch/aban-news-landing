@@ -860,3 +860,5 @@ gid://shopify/Product/15506296078721	nicht-versendbar	Rückenlagebrett für Sit-
 gid://shopify/Product/15506295816577	nicht-versendbar	Bauchtrainer-Bank klappbar
 gid://shopify/Product/15507581534593	nicht-versendbar	Intelligente und schnell verstellbare Hantel
 gid://shopify/Product/15506809127297	ok	Ski Board Bag mit Rollen – Grosses Fassungsvermögen
+gid://shopify/Product/15506314494337	ok	Boya BY-PM500 USB-Mikrofon mit Soundkarte
+gid://shopify/Product/15506530271617	ok	Multifunktionale V20 Smartwatch mit Dual-Kamera
