@@ -1,0 +1,623 @@
+{
+ "gesichert": "2026-08-20T23:24:18.954925Z",
+ "grund": "17 Varianten der Farboption \"Grey B Thin\" waren seit Produktanlage (2026-06-01) durchgehend inventoryQuantity 0, tracked=true, inventoryPolicy DENY, availableForSale=false. Die Farbe stand trotzdem im Kunden-Waehler und fuehrte jeden Klick auf \"Ausverkauft\". Geloescht per productVariantsBulkDelete, damit der Optionswert verschwindet. Diese Datei erlaubt die vollstaendige Wiederherstellung (SKU, Preis, Optionswerte).",
+ "produkt": {
+  "id": "gid://shopify/Product/15413245968769",
+  "title": "Herren Business-Anzughose · elegant, Stretch-Komfort (Frühling–Winter)",
+  "handle": "herren-business-anzughose-elegant-stretch-komfort-fruehling"
+ },
+ "varianten": [
+  {
+   "id": "gid://shopify/ProductVariant/55749278335361",
+   "title": "Grey B Thin / 54",
+   "sku": "14:1254#Grey B Thin;5:100010489",
+   "price": "34.90",
+   "compareAtPrice": null,
+   "inventoryQuantity": 0,
+   "inventoryPolicy": "DENY",
+   "availableForSale": false,
+   "barcode": null,
+   "taxable": false,
+   "selectedOptions": [
+    {
+     "name": "Farbe",
+     "value": "Grey B Thin"
+    },
+    {
+     "name": "Grösse",
+     "value": "54"
+    }
+   ],
+   "inventoryItem": {
+    "id": "gid://shopify/InventoryItem/55097459376513",
+    "tracked": true,
+    "unitCost": {
+     "amount": "34.33",
+     "currencyCode": "CHF"
+    },
+    "measurement": {
+     "weight": {
+      "value": 0.75,
+      "unit": "KILOGRAMS"
+     }
+    }
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55749278368129",
+   "title": "Grey B Thin / 56",
+   "sku": "14:1254#Grey B Thin;5:3117",
+   "price": "34.90",
+   "compareAtPrice": null,
+   "inventoryQuantity": 0,
+   "inventoryPolicy": "DENY",
+   "availableForSale": false,
+   "barcode": null,
+   "taxable": false,
+   "selectedOptions": [
+    {
+     "name": "Farbe",
+     "value": "Grey B Thin"
+    },
+    {
+     "name": "Grösse",
+     "value": "56"
+    }
+   ],
+   "inventoryItem": {
+    "id": "gid://shopify/InventoryItem/55097459409281",
+    "tracked": true,
+    "unitCost": {
+     "amount": "34.33",
+     "currencyCode": "CHF"
+    },
+    "measurement": {
+     "weight": {
+      "value": 0.75,
+      "unit": "KILOGRAMS"
+     }
+    }
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55749278400897",
+   "title": "Grey B Thin / 50",
+   "sku": "14:1254#Grey B Thin;5:200000901",
+   "price": "34.90",
+   "compareAtPrice": null,
+   "inventoryQuantity": 0,
+   "inventoryPolicy": "DENY",
+   "availableForSale": false,
+   "barcode": null,
+   "taxable": false,
+   "selectedOptions": [
+    {
+     "name": "Farbe",
+     "value": "Grey B Thin"
+    },
+    {
+     "name": "Grösse",
+     "value": "50"
+    }
+   ],
+   "inventoryItem": {
+    "id": "gid://shopify/InventoryItem/55097459442049",
+    "tracked": true,
+    "unitCost": {
+     "amount": "34.33",
+     "currencyCode": "CHF"
+    },
+    "measurement": {
+     "weight": {
+      "value": 0.75,
+      "unit": "KILOGRAMS"
+     }
+    }
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55749278433665",
+   "title": "Grey B Thin / 52",
+   "sku": "14:1254#Grey B Thin;5:200000902",
+   "price": "34.90",
+   "compareAtPrice": null,
+   "inventoryQuantity": 0,
+   "inventoryPolicy": "DENY",
+   "availableForSale": false,
+   "barcode": null,
+   "taxable": false,
+   "selectedOptions": [
+    {
+     "name": "Farbe",
+     "value": "Grey B Thin"
+    },
+    {
+     "name": "Grösse",
+     "value": "52"
+    }
+   ],
+   "inventoryItem": {
+    "id": "gid://shopify/InventoryItem/55097459474817",
+    "tracked": true,
+    "unitCost": {
+     "amount": "34.33",
+     "currencyCode": "CHF"
+    },
+    "measurement": {
+     "weight": {
+      "value": 0.75,
+      "unit": "KILOGRAMS"
+     }
+    }
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55749279777153",
+   "title": "Grey B Thin / 32",
+   "sku": "14:1254#Grey B Thin;5:200000331",
+   "price": "34.90",
+   "compareAtPrice": null,
+   "inventoryQuantity": 0,
+   "inventoryPolicy": "DENY",
+   "availableForSale": false,
+   "barcode": null,
+   "taxable": false,
+   "selectedOptions": [
+    {
+     "name": "Farbe",
+     "value": "Grey B Thin"
+    },
+    {
+     "name": "Grösse",
+     "value": "32"
+    }
+   ],
+   "inventoryItem": {
+    "id": "gid://shopify/InventoryItem/55097460818305",
+    "tracked": true,
+    "unitCost": {
+     "amount": "34.33",
+     "currencyCode": "CHF"
+    },
+    "measurement": {
+     "weight": {
+      "value": 0.75,
+      "unit": "KILOGRAMS"
+     }
+    }
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55749279809921",
+   "title": "Grey B Thin / 33",
+   "sku": "14:1254#Grey B Thin;5:200000332",
+   "price": "34.90",
+   "compareAtPrice": null,
+   "inventoryQuantity": 0,
+   "inventoryPolicy": "DENY",
+   "availableForSale": false,
+   "barcode": null,
+   "taxable": false,
+   "selectedOptions": [
+    {
+     "name": "Farbe",
+     "value": "Grey B Thin"
+    },
+    {
+     "name": "Grösse",
+     "value": "33"
+    }
+   ],
+   "inventoryItem": {
+    "id": "gid://shopify/InventoryItem/55097460851073",
+    "tracked": true,
+    "unitCost": {
+     "amount": "34.33",
+     "currencyCode": "CHF"
+    },
+    "measurement": {
+     "weight": {
+      "value": 0.75,
+      "unit": "KILOGRAMS"
+     }
+    }
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55749279842689",
+   "title": "Grey B Thin / 30",
+   "sku": "14:1254#Grey B Thin;5:3115",
+   "price": "32.90",
+   "compareAtPrice": null,
+   "inventoryQuantity": 0,
+   "inventoryPolicy": "DENY",
+   "availableForSale": false,
+   "barcode": null,
+   "taxable": false,
+   "selectedOptions": [
+    {
+     "name": "Farbe",
+     "value": "Grey B Thin"
+    },
+    {
+     "name": "Grösse",
+     "value": "30"
+    }
+   ],
+   "inventoryItem": {
+    "id": "gid://shopify/InventoryItem/55097460883841",
+    "tracked": true,
+    "unitCost": {
+     "amount": "32.33",
+     "currencyCode": "CHF"
+    },
+    "measurement": {
+     "weight": {
+      "value": 0.75,
+      "unit": "KILOGRAMS"
+     }
+    }
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55749279875457",
+   "title": "Grey B Thin / 31",
+   "sku": "14:1254#Grey B Thin;5:200001014",
+   "price": "34.90",
+   "compareAtPrice": null,
+   "inventoryQuantity": 0,
+   "inventoryPolicy": "DENY",
+   "availableForSale": false,
+   "barcode": null,
+   "taxable": false,
+   "selectedOptions": [
+    {
+     "name": "Farbe",
+     "value": "Grey B Thin"
+    },
+    {
+     "name": "Grösse",
+     "value": "31"
+    }
+   ],
+   "inventoryItem": {
+    "id": "gid://shopify/InventoryItem/55097460916609",
+    "tracked": true,
+    "unitCost": {
+     "amount": "34.33",
+     "currencyCode": "CHF"
+    },
+    "measurement": {
+     "weight": {
+      "value": 0.75,
+      "unit": "KILOGRAMS"
+     }
+    }
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55749279940993",
+   "title": "Grey B Thin / 29",
+   "sku": "14:1254#Grey B Thin;5:100010486",
+   "price": "30.90",
+   "compareAtPrice": null,
+   "inventoryQuantity": 0,
+   "inventoryPolicy": "DENY",
+   "availableForSale": false,
+   "barcode": null,
+   "taxable": false,
+   "selectedOptions": [
+    {
+     "name": "Farbe",
+     "value": "Grey B Thin"
+    },
+    {
+     "name": "Grösse",
+     "value": "29"
+    }
+   ],
+   "inventoryItem": {
+    "id": "gid://shopify/InventoryItem/55097460982145",
+    "tracked": true,
+    "unitCost": {
+     "amount": "30.33",
+     "currencyCode": "CHF"
+    },
+    "measurement": {
+     "weight": {
+      "value": 0.75,
+      "unit": "KILOGRAMS"
+     }
+    }
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55749280039297",
+   "title": "Grey B Thin / 46",
+   "sku": "14:1254#Grey B Thin;5:200000899",
+   "price": "34.90",
+   "compareAtPrice": null,
+   "inventoryQuantity": 0,
+   "inventoryPolicy": "DENY",
+   "availableForSale": false,
+   "barcode": null,
+   "taxable": false,
+   "selectedOptions": [
+    {
+     "name": "Farbe",
+     "value": "Grey B Thin"
+    },
+    {
+     "name": "Grösse",
+     "value": "46"
+    }
+   ],
+   "inventoryItem": {
+    "id": "gid://shopify/InventoryItem/55097461080449",
+    "tracked": true,
+    "unitCost": {
+     "amount": "34.33",
+     "currencyCode": "CHF"
+    },
+    "measurement": {
+     "weight": {
+      "value": 0.75,
+      "unit": "KILOGRAMS"
+     }
+    }
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55749280072065",
+   "title": "Grey B Thin / 48",
+   "sku": "14:1254#Grey B Thin;5:200000900",
+   "price": "34.90",
+   "compareAtPrice": null,
+   "inventoryQuantity": 0,
+   "inventoryPolicy": "DENY",
+   "availableForSale": false,
+   "barcode": null,
+   "taxable": false,
+   "selectedOptions": [
+    {
+     "name": "Farbe",
+     "value": "Grey B Thin"
+    },
+    {
+     "name": "Grösse",
+     "value": "48"
+    }
+   ],
+   "inventoryItem": {
+    "id": "gid://shopify/InventoryItem/55097461113217",
+    "tracked": true,
+    "unitCost": {
+     "amount": "34.33",
+     "currencyCode": "CHF"
+    },
+    "measurement": {
+     "weight": {
+      "value": 0.75,
+      "unit": "KILOGRAMS"
+     }
+    }
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55749280104833",
+   "title": "Grey B Thin / 42",
+   "sku": "14:1254#Grey B Thin;5:200000337",
+   "price": "34.90",
+   "compareAtPrice": null,
+   "inventoryQuantity": 0,
+   "inventoryPolicy": "DENY",
+   "availableForSale": false,
+   "barcode": null,
+   "taxable": false,
+   "selectedOptions": [
+    {
+     "name": "Farbe",
+     "value": "Grey B Thin"
+    },
+    {
+     "name": "Grösse",
+     "value": "42"
+    }
+   ],
+   "inventoryItem": {
+    "id": "gid://shopify/InventoryItem/55097461145985",
+    "tracked": true,
+    "unitCost": {
+     "amount": "34.33",
+     "currencyCode": "CHF"
+    },
+    "measurement": {
+     "weight": {
+      "value": 0.75,
+      "unit": "KILOGRAMS"
+     }
+    }
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55749280137601",
+   "title": "Grey B Thin / 44",
+   "sku": "14:1254#Grey B Thin;5:100010487",
+   "price": "34.90",
+   "compareAtPrice": null,
+   "inventoryQuantity": 0,
+   "inventoryPolicy": "DENY",
+   "availableForSale": false,
+   "barcode": null,
+   "taxable": false,
+   "selectedOptions": [
+    {
+     "name": "Farbe",
+     "value": "Grey B Thin"
+    },
+    {
+     "name": "Grösse",
+     "value": "44"
+    }
+   ],
+   "inventoryItem": {
+    "id": "gid://shopify/InventoryItem/55097461178753",
+    "tracked": true,
+    "unitCost": {
+     "amount": "34.33",
+     "currencyCode": "CHF"
+    },
+    "measurement": {
+     "weight": {
+      "value": 0.75,
+      "unit": "KILOGRAMS"
+     }
+    }
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55749280170369",
+   "title": "Grey B Thin / 38",
+   "sku": "14:1254#Grey B Thin;5:200000898",
+   "price": "34.90",
+   "compareAtPrice": null,
+   "inventoryQuantity": 0,
+   "inventoryPolicy": "DENY",
+   "availableForSale": false,
+   "barcode": null,
+   "taxable": false,
+   "selectedOptions": [
+    {
+     "name": "Farbe",
+     "value": "Grey B Thin"
+    },
+    {
+     "name": "Grösse",
+     "value": "38"
+    }
+   ],
+   "inventoryItem": {
+    "id": "gid://shopify/InventoryItem/55097461211521",
+    "tracked": true,
+    "unitCost": {
+     "amount": "34.33",
+     "currencyCode": "CHF"
+    },
+    "measurement": {
+     "weight": {
+      "value": 0.75,
+      "unit": "KILOGRAMS"
+     }
+    }
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55749280203137",
+   "title": "Grey B Thin / 40",
+   "sku": "14:1254#Grey B Thin;5:100013888",
+   "price": "34.90",
+   "compareAtPrice": null,
+   "inventoryQuantity": 0,
+   "inventoryPolicy": "DENY",
+   "availableForSale": false,
+   "barcode": null,
+   "taxable": false,
+   "selectedOptions": [
+    {
+     "name": "Farbe",
+     "value": "Grey B Thin"
+    },
+    {
+     "name": "Grösse",
+     "value": "40"
+    }
+   ],
+   "inventoryItem": {
+    "id": "gid://shopify/InventoryItem/55097461244289",
+    "tracked": true,
+    "unitCost": {
+     "amount": "34.33",
+     "currencyCode": "CHF"
+    },
+    "measurement": {
+     "weight": {
+      "value": 0.75,
+      "unit": "KILOGRAMS"
+     }
+    }
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55749280235905",
+   "title": "Grey B Thin / 34",
+   "sku": "14:1254#Grey B Thin;5:100010481",
+   "price": "34.90",
+   "compareAtPrice": null,
+   "inventoryQuantity": 0,
+   "inventoryPolicy": "DENY",
+   "availableForSale": false,
+   "barcode": null,
+   "taxable": false,
+   "selectedOptions": [
+    {
+     "name": "Farbe",
+     "value": "Grey B Thin"
+    },
+    {
+     "name": "Grösse",
+     "value": "34"
+    }
+   ],
+   "inventoryItem": {
+    "id": "gid://shopify/InventoryItem/55097461277057",
+    "tracked": true,
+    "unitCost": {
+     "amount": "34.33",
+     "currencyCode": "CHF"
+    },
+    "measurement": {
+     "weight": {
+      "value": 0.75,
+      "unit": "KILOGRAMS"
+     }
+    }
+   }
+  },
+  {
+   "id": "gid://shopify/ProductVariant/55749280268673",
+   "title": "Grey B Thin / 36",
+   "sku": "14:1254#Grey B Thin;5:200000334",
+   "price": "34.90",
+   "compareAtPrice": null,
+   "inventoryQuantity": 0,
+   "inventoryPolicy": "DENY",
+   "availableForSale": false,
+   "barcode": null,
+   "taxable": false,
+   "selectedOptions": [
+    {
+     "name": "Farbe",
+     "value": "Grey B Thin"
+    },
+    {
+     "name": "Grösse",
+     "value": "36"
+    }
+   ],
+   "inventoryItem": {
+    "id": "gid://shopify/InventoryItem/55097461309825",
+    "tracked": true,
+    "unitCost": {
+     "amount": "34.33",
+     "currencyCode": "CHF"
+    },
+    "measurement": {
+     "weight": {
+      "value": 0.75,
+      "unit": "KILOGRAMS"
+     }
+    }
+   }
+  }
+ ]
+}
