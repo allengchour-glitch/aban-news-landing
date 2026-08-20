@@ -712,18 +712,26 @@ for(const [cat,label] of grp.cats){
    // Hundeleine, ein 10-kg-Reisbehälter, ein Nintendo-Switch-Etui und ein USB-Stick.
    // Der Blanko-Tag war zugleich der Grund, warum die vier Schusswaffen-Nachbildungen
    // überhaupt als Kinderware galten.
-   // Regel: Der Tag muss VERDIENT werden — ein Kinder-Signal im Titel oder Text. Ein
-   // Negativ-Signal (Haustier, Büro, Küche, Werkzeug, Garten, Auto, Netzstrom) sticht das
-   // Kinder-Signal, weil «Spielzeug» auch in «Katzenspielzeug» und «Hunde-Spielzeug» steht.
-   // Der Artikel bleibt im Shop und in seinen Sachkollektionen — nur die Kinderreihen
-   // verliert er. Google bekommt damit auch nicht mehr age_group=kids für Gartengeräte.
+   // Regel: Der Tag muss VERDIENT werden — ein Kinder-Signal im Titel oder Text. Fehlt es
+   // ganz, fällt der Tag weg; nennt der TITEL eine klar kinderfremde Warenart (Hundeleine,
+   // Ventilator, USB-Stick), fällt er auch dann weg, wenn im Fliesstext beiläufig ein
+   // Kinderwort steht. Der Artikel bleibt im Shop und in seinen Sachkollektionen — nur die
+   // Kinderreihen verliert er, und Google bekommt kein age_group=kids für Gartengeräte mehr.
    if(tagsFinal.includes('kinder')||tagsFinal.includes('spielzeug')){
-     const kt=(title+' '+String(g.html||'').replace(/<[^>]+>/g,' ')).toLowerCase();
-     const KIND=/\bkinder|\bkind\b|\bkids\b|\bbaby|kleinkind|\bjungen\b|\bm[äa]dchen\b|jugendliche|ab \d{1,2} jahren|\d{1,2}\s*[-–]\s*\d{1,2}\s*jahren|spielspass|spielspa[sß]|pl[üu]sch|kuscheltier|puzzle|bauklotz|baustein|malbuch|lernspiel|rassel|schulkind|kinderzimmer/i;
-     const NICHT_KIND=/haustier|\bhund\b|hunde|\bkatze|katzen|\bpet\b|welpe|b[üu]ro|\bk[üu]che|werkzeug|\bgarten|rasenm|\bauto\b|\bkfz\b|fahrzeug|steckdose|2[23]0\s?v|netzteil|festplatte|usb-?stick|speicherkarte|laptop|drucker|rasier|schnurrhaar/i;
-     if(!KIND.test(kt)||NICHT_KIND.test(kt)){
+     const ktext=(title+' '+String(g.html||'').replace(/<[^>]+>/g,' '));
+     // Kinder-Signal = eine Aussage über die Zielgruppe oder ein echtes Spielzeug-Nomen.
+     const KIND=/\bkinder|\bkind(?:es|er)?\b|\bkids\b|\bbaby|kleinkind|\bjungen\b|\bm[äa]dchen\b|jugendliche|ab \d{1,2}\s*jahren|\d{1,2}\s*[-–]\s*\d{1,2}\s*jahren|spielspa[sß]s?|spielzeug|pl[üu]sch|kuscheltier|puzzle|baukl[öo]tz\w*|baukasten|baustein|malbuch|lernspiel|rassel|schulkind|kinderzimmer/i;
+     // Nicht-Spielzeug wird NUR am TITEL erkannt — an dem, was das Produkt IST. Der erste
+     // Entwurf prüfte den Fliesstext und war dadurch unbrauchbar: «im Büro» stand in einem
+     // Magnet-Bausteine-Set FÜR KINDER, «Gartentieren» in einem Kinder-Bastelset, «farb-
+     // wechselnder Hund» in einem Kinder-Roboter — der Probelauf hätte 293 statt 11 Produkte
+     // angefasst und dabei echte Kinderspielzeuge aus den Kinderreihen geworfen. Und ein
+     // Kinder-Signal im TITEL sticht immer: «RC Bagger Spielzeug für Kinder» bleibt Kinderware,
+     // auch wenn «Fahrzeug» darin vorkommt (die Rock/Schleife-Lehre aus dem Projektgedächtnis).
+     const NICHT_SPIELZEUG_TITEL=/haustier|\bhunde?(?:halsband|leine|geschirr|napf|bett|marke)|katzen?(?:klo|baum|napf|bett|toilette)|futternapf|kratzbaum|tierabwehr|vogelabwehr|sch[äa]dling|\blocator\b|luftreiniger|luftbefeuchter|ventilator|reisbeh[äa]lter|vorratsbeh[äa]lter|schutzh[üu]lle|\busb\b|festplatte|speicherkarte|kartenleser|ladeger[äa]t|netzteil|powerbank|tastatur|mauspad|rasierer|epilier|zahnb[üu]rste|schraubendreher|rasenm[äa]her|staubsauger|dashcam|[üu]berwachungskamera/i;
+     const kTitel=KIND.test(title);
+     if((!KIND.test(ktext)) || (NICHT_SPIELZEUG_TITEL.test(title)&&!kTitel)){
        tagsFinal=tagsFinal.filter(t=>t!=='kinder'&&t!=='spielzeug');
-       if(typeFinal==='Spass-Elektronik'&&NICHT_KIND.test(kt))typeFinal='Gadget';
      }
    }
    const input={title,handle:slug,productType:typeFinal,vendor:'LuxeStyle',
@@ -755,7 +763,13 @@ for(const [cat,label] of grp.cats){
      const gender=(gH&&gD)||/\bunisex\b/i.test(gt) ? 'unisex'
                 : gH ? 'male' : gD ? 'female'
                 : grp.tags.includes('herren')?'male':grp.tags.includes('damen')?'female':'unisex';
-     const age=(grp.tags.includes('kinder')||grp.tags.includes('baby-kids'))?'kids':'adult';
+     // ⚠️ age_group las bis 20.08.2026 `grp.tags` — die STATISCHEN Gruppen-Vorgaben — statt
+     // `tagsFinal`, also das, was am Produkt wirklich landet. Folge: jedes Produkt der Gruppe
+     // cjspielelektronik meldete Google age_group=kids, auch der Reisbehälter, die Hundeleine,
+     // der USB-Stick und die Solar-Tierabwehr. Selbst nachdem der Kinder-Tag oben entfernt
+     // wurde, hätte das Metafeld die Falschaussage weitergetragen: dieselbe Lehre wie beim
+     // Refurb-Zusatz, der aus dem Titel verschwand und im Feld `condition` stehen blieb.
+     const age=(tagsFinal.includes('kinder')||tagsFinal.includes('baby-kids'))?'kids':'adult';
      const mf=[{namespace:'mm-google-shopping',key:'gender',value:gender,type:'single_line_text_field'},
                {namespace:'mm-google-shopping',key:'age_group',value:age,type:'single_line_text_field'},
                // `condition` fehlte hier — und damit bei JEDEM neu importierten Produkt. Am
