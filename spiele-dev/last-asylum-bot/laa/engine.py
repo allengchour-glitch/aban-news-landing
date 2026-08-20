@@ -522,6 +522,7 @@ class Engine:
     # Stueck. Ohne Unterbrechung kaeme der Bot regelmaessig zu spaet - und
     # gerade das Beitreten ist die ergiebigste Art zu kaempfen.
     DRINGEND_AB = 200
+    VERLAUF_HALTBARKEIT = 90.0  # so lange gilt ein "hat nichts bewirkt"
     ZWISCHENPRUEFUNG_AB = 0.8   # erst ab dieser Wartezeit lohnt das Nachsehen
 
     def _do_sleep(self, value: Any) -> None:
@@ -1754,13 +1755,16 @@ class Engine:
                 self.bump("tabu-blockiert")
                 return
         self.dev.tap(x, y)
-        if screen is not None and "/" in str(why) and str(why).endswith(".png"):
-            # Beim naechsten Bild nachsehen, ob dieser Tipp etwas bewirkt hat.
-            # Eine Vorlage, die zwar trifft aber nie etwas ausloest, zeigt auf
-            # das falsche Ding - das faellt sonst niemandem auf.
-            self._offene_pruefung = (str(why), self._ansicht_finger(screen))
         if screen is not None:
-            self._tipp_verlauf.append((x, y, self._umgebung(screen, x, y)))
+            finger = self._ansicht_finger(screen)
+            if "/" in str(why) and str(why).endswith(".png"):
+                # Beim naechsten Bild nachsehen, ob dieser Tipp etwas bewirkt
+                # hat. Eine Vorlage, die zwar trifft aber nie etwas ausloest,
+                # zeigt auf das falsche Ding - das faellt sonst niemandem auf.
+                self._offene_pruefung = (str(why), finger)
+            self._tipp_verlauf.append(
+                (x, y, self._umgebung(screen, x, y), finger, self._clock())
+            )
             del self._tipp_verlauf[:-12]  # nur die letzten paar merken
         self.bump("taps")
         self.log.debug("Tipp", x=x, y=y, grund=why)
@@ -1777,16 +1781,37 @@ class Engine:
         Es werden die letzten zwoelf Stellen geprueft, nicht nur die vorige:
         Aufgaben tippen reihum mehrere Ziele an, da ist der unmittelbar
         vorherige Tipp nie derselbe Punkt.
+
+        Zwei Einschraenkungen, ohne die die Bremse den Bot lahmlegt - genau das
+        ist live passiert (271 gebremste gegen 3 ausgefuehrte Tipps):
+
+        1. Die meisten Knoepfe veraendern sich selbst gar nicht. Die Lupe, das
+           Welt-Symbol, der Suchen-Knopf sehen nach dem Druecken aus wie vorher
+           - was sich aendert, ist der Bildschirm daneben. Wer nur die Umgebung
+           des Fingers ansieht, haelt jeden dieser Knoepfe fuer tot und ruehrt
+           ihn nie wieder an. Darum zaehlt ein Tipp nur dann als wirkungslos,
+           wenn sich auch die ganze Ansicht nicht geruehrt hat.
+        2. Der Verlauf wird nur nach Anzahl gekuerzt, und gebremste Tipps
+           kommen nicht hinein. Steht dort erst einmal ein toter Punkt, bleibt
+           er ewig stehen. Nach VERLAUF_HALTBARKEIT Sekunden ist der Befund
+           verjaehrt - das Spiel laeuft ja weiter.
         """
         if screen is None or not self._tipp_verlauf:
             return False
+        jetzt_finger: Optional[bytes] = None
         # Nur den juengsten Tipp an dieser Stelle vergleichen: kehrt der
         # Bildschirm spaeter in einen frueheren Zustand zurueck - etwa weil nach
         # dem Abholen die naechste, gleich aussehende Zeile nachrueckt -, soll
         # wieder getippt werden duerfen.
-        for lx, ly, alt in reversed(self._tipp_verlauf):
+        for lx, ly, alt, alt_finger, wann in reversed(self._tipp_verlauf):
             if abs(lx - x) > 25 or abs(ly - y) > 25:
                 continue
+            if self._clock() - wann > self.VERLAUF_HALTBARKEIT:
+                return False  # zu lange her, das Spiel ist weitergelaufen
+            if jetzt_finger is None:
+                jetzt_finger = self._ansicht_finger(screen)
+            if jetzt_finger != alt_finger:
+                return False  # anderer Bildschirm - der alte Befund gilt nicht
             jetzt = self._umgebung(screen, lx, ly)
             unterschiede = sum(1 for a, b in zip(alt, jetzt) if abs(a - b) > 12)
             return unterschiede <= 2  # an dieser Stelle hat sich nichts getan

@@ -36,6 +36,7 @@ def paste(dst: Image, src: Image, x: int, y: int) -> None:
         d = ((y + j) * dst.width + x) * 3
         dst.data[d : d + src.width * 3] = src.data[s : s + src.width * 3]
     dst._gray = None
+    dst._skalen = None
 
 
 def motor(bildpfad, cfg=None):
@@ -2836,6 +2837,83 @@ class TestFluchtwegWirdNichtGebremst(unittest.TestCase):
         eng._tap_abs(100, 150, "Punkt")
         self.assertEqual(dev.taps, [], "die Tabu-Zone darf die Flucht nicht aushebeln")
 
+
+
+class TestBremseSperrtKeineKnoepfe(unittest.TestCase):
+    """Die Wirkungslos-Bremse hat den Bot live komplett stillgelegt.
+
+    Im Protokoll des laufenden Bots standen 271 gebremste gegen 3 ausgefuehrte
+    Tipps. Grund: die Bremse sah nur den Fleck unter dem Finger an. Lupe,
+    Welt-Symbol und Suchen-Knopf sehen nach dem Druecken aber genauso aus wie
+    vorher - sie oeffnen etwas woanders. Nach dem ersten Druck galten sie als
+    tot, und weil gebremste Tipps nicht in den Verlauf kommen, blieb dieser
+    Befund fuer immer stehen.
+    """
+
+    @staticmethod
+    def _kopie(bild):
+        return Image(bild.width, bild.height, bild.mode, bytearray(bild.data))
+
+    def _aufbau(self, seed):
+        cfg = Config.from_dict({"package": "x", "rules": [], "tasks": []})
+        a = noise(200, 300, seed)
+        dev = FakeDevice([a], loop=True)
+        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=4)
+        return cfg, a, dev, eng
+
+    def test_knopf_der_sich_nicht_veraendert_bleibt_druckbar(self):
+        _, a, dev, eng = self._aufbau(60)
+        # Zweites Bild: unter dem Finger identisch, oben ein heller Balken -
+        # so verhaelt sich jeder Knopf, der ein Fenster daneben aufmacht.
+        b = self._kopie(a)
+        paste(b, Image(200, 60, "RGB", bytearray([250] * 200 * 60 * 3)), 0, 0)
+        eng.screen = a
+        eng._tap_abs(100, 150, "nav/lupe.png")
+        eng.screen = b
+        eng._tap_abs(100, 150, "nav/lupe.png")
+        self.assertEqual(
+            len(dev.taps), 2,
+            "der Knopf hat etwas bewirkt (anderer Bildschirm) - er muss wieder "
+            f"gedrueckt werden duerfen, getippt wurde: {dev.taps}")
+
+    def test_knopf_wird_nicht_zu_unrecht_verdaechtigt(self):
+        """Ein gebremster Tipp zaehlt gegen die Vorlage - darum nur zu Recht."""
+        _, a, dev, eng = self._aufbau(61)
+        b = self._kopie(a)
+        paste(b, Image(200, 60, "RGB", bytearray([250] * 200 * 60 * 3)), 0, 0)
+        eng.screen = a
+        eng._tap_abs(100, 150, "nav/lupe.png")
+        eng.screen = b
+        eng._tap_abs(100, 150, "nav/lupe.png")
+        self.assertEqual(eng._folgenlos.get("nav/lupe.png", 0), 0,
+                         "eine Vorlage, die etwas bewirkt, darf nicht in "
+                         "Verdacht geraten")
+
+    def test_toter_fleck_bleibt_gebremst(self):
+        """Aendert sich nirgends etwas, bleibt die Bremse scharf."""
+        _, a, dev, eng = self._aufbau(62)
+        eng.screen = a
+        for _ in range(5):
+            eng._tap_abs(100, 150, "Punkt")
+        self.assertEqual(len(dev.taps), 1,
+                         f"auf totem Grund darf nur der erste Tipp durch: {dev.taps}")
+
+    def test_alter_befund_verjaehrt(self):
+        """Sonst steht ein einmal toter Punkt fuer immer im Verlauf."""
+        cfg = Config.from_dict({"package": "x", "rules": [], "tasks": []})
+        a = noise(200, 300, 63)
+        dev = FakeDevice([a], loop=True)
+        uhr = [1000.0]
+        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=4,
+                     clock=lambda: uhr[0])
+        eng.screen = a
+        eng._tap_abs(100, 150, "Punkt")
+        eng._tap_abs(100, 150, "Punkt")
+        self.assertEqual(len(dev.taps), 1, "sofort danach bleibt gebremst")
+        uhr[0] += Engine.VERLAUF_HALTBARKEIT + 1
+        eng._tap_abs(100, 150, "Punkt")
+        self.assertEqual(len(dev.taps), 2,
+                         "nach der Haltbarkeit muss der Punkt wieder frei sein")
 
 
 class TestTaktAnpassungMisstNurNeues(unittest.TestCase):
