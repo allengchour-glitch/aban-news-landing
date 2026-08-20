@@ -294,6 +294,28 @@ const LASER_VERBOTEN=/\blaser\s*(pointer|pen)\b|\b(cat|kitten|dog|puppy|pet)\b[^
 const LASER_OK=/engrav|gravur|\blevel|rangefinder|distance|measur|thermometer|hair\s*remov|epilat|\bipl\b|projector|welding|cutt?er|printer/i;
 const laserVerboten=(nm)=>LASER_VERBOTEN.test(nm)&&!LASER_OK.test(nm);
 
+// ⛔ GRUPPENÜBERGREIFENDE WACHE — Nachbildungen echter Schusswaffen (20.08.2026)
+// Vier Klemmbaustein-Nachbildungen standen aktiv in ALLEN sechs Kanälen inklusive
+// «Google & YouTube», dem einzigen Kanal mit belegten Verkäufen: «AK-47 Baukasten»
+// (Text: «unterhaltsames Spielzeug für Jungen … 7-14 Jahren»), «Sniper-Baukasten»
+// («für Fans von Schiessspielen»), «Nachtjagd-Block» (Bauteilfarbe «MP5-dunkles
+// Nachtfeld») und «Bausteine Schiessgewehr Patriotic Barrett» («junge Scharf-
+// schützenherzen»). Alle vier trugen kinder+spielzeug und liefen durch sämtliche
+// Kinder-Kollektionen.
+// WARUM DIE GRUPPEN-`ban` SIE NICHT HIELT: cjspielelektronik verbietet /gun|weapon/,
+// aber CJ nennt die Ware «Building Blocks Firearms-Sniper Rifle» — darin steht weder
+// «gun» noch «weapon». Deshalb hier global und nach der MODELLBEZEICHNUNG, und
+// deshalb prüft zusätzlich heikel_zweck.json den fertigen DEUTSCHEN Text (der
+// englische Lieferantenname ist nur die erste von zwei Sperren).
+// WAFFE_OK schützt die Compound-Falle, die im Prüflauf gemeldet wurde: «Pistole»/
+// «gun» ist im Werkzeug- und Beauty-Bereich ein Griff-Formfaktor (Heissklebepistole,
+// Nagelspray-, Sprüh-, Waschpistole, Gaming-Pistolengriff, Massage-«gun»).
+// NICHT erfasst und bewusst so: Panzer-, Kampfjet- und Militärfahrzeug-Modelle sind
+// Modellbau, keine tragbare Schusswaffe.
+const WAFFE_NACHBILDUNG=/\bak-?47\b|\bak-?74\b|kalashnikov|kalaschnikow|\bm4a1\b|\bmp-?5\b|\bmp-?7\b|\buzi\b|\bglock\b|\bar-?15\b|barrett|\bsniper\b|assault\s?rifle|\brifle\b|\bshotgun\b|\bhandgun\b|\bfirearm|sturmgewehr|maschinenpistole|maschinengewehr|scharfsch[üu]tzengewehr|schie[sß]gewehr|schrotflinte|pump-?gun|airsoft|softair/i;
+const WAFFE_OK=/glue\s?gun|hot\s?melt|nail\s?gun|spray\s?gun|paint\s?gun|water\s?gun|heat\s?gun|caulk|foam\s?gun|wash\s?gun|pistol\s?grip|massage\s?gun|fascia\s?gun|klebepistole|nagelpistole|spr[üu]hpistole|waschpistole|massagepistole|pistolengriff|hochdruck/i;
+const waffenNachbildung=(nm)=>WAFFE_NACHBILDUNG.test(nm)&&!WAFFE_OK.test(nm);
+
 const GSLEEP=Number(process.env.GSLEEP||4200), CJSLEEP=Number(process.env.CJSLEEP||950);
 const MAXPAGE=Number(process.env.MAXPAGE||5), PERCAT=Number(process.env.PERCAT||0); // tiefere Paginierung fürs „voll"-Füllen
 
@@ -588,6 +610,7 @@ for(const [cat,label] of grp.cats){
    if(total>=CAP)break;
    const nm=p.productNameEn||''; if(!nm||done.has(String(p.pid))||(grp.ban&&grp.ban.test(nm)))continue;
    if(laserVerboten(nm)){console.log(`  ⛔ Laserpointer (V-NISSG) übersprungen: ${nm.slice(0,60)}`);continue;}
+   if(waffenNachbildung(nm)){console.log(`  ⛔ Schusswaffen-Nachbildung übersprungen: ${nm.slice(0,60)}`);continue;}
    const pr=parseFloat((''+p.sellPrice).split('--')[0])||0; if(pr<grp.minP||pr>grp.maxP)continue;
    // MOQ-Wache (auch FAST): nur ORDINARY/DIY = einzeln bestellbar (list liefert productType mit)
    const pt=p.productType||''; if(pt&&pt!=='ORDINARY_PRODUCT'&&pt!=='DIY_PRODUCT')continue;
@@ -677,6 +700,31 @@ for(const [cat,label] of grp.cats){
      // CJ listet Hydraulik-"Joystick"-Ventile unter Gaming/Joysticks (Garten-Filter-Falle 2026-08-05)
      tagsFinal=tagsFinal.filter(t=>!['gaming','ps4','ps5','xbox','konsole','gadgets','elektronik','tech'].includes(t)).concat(['garten']);
      typeFinal=/bew[äa]sserung/i.test(title)?'Garten & Pflanzen':'Gartenwerkzeug';
+   }
+   // 👶 KINDER-/SPIELZEUG-TAG NUR BEI ECHTEM KINDER-SIGNAL (20.08.2026)
+   // Die CJ-Gruppe cjspielelektronik hängt `kinder`+`spielzeug` BLANKO an jedes Produkt,
+   // das aus ihren vier Kategorien kommt (Electronic Pets, RC Helicopters, Blocks,
+   // Handheld Game Players). Am 20.08. trugen dadurch 775 von 776 aktiven Produkten der
+   // Warengruppe «Spass-Elektronik» den Tag `kinder` und 766 den Tag `spielzeug` — und
+   // fielen damit in sämtliche Kinder-Kollektionen (Spielzeug & Plüsch, Kinderspielzeug,
+   // Geschenke für Kinder, Baby & Kleinkind). In den Kinderreihen standen deshalb unter
+   // anderem eine Solar-Ultraschall-Tierabwehr (5 V Gartengerät), ein Hundehalsband, eine
+   // Hundeleine, ein 10-kg-Reisbehälter, ein Nintendo-Switch-Etui und ein USB-Stick.
+   // Der Blanko-Tag war zugleich der Grund, warum die vier Schusswaffen-Nachbildungen
+   // überhaupt als Kinderware galten.
+   // Regel: Der Tag muss VERDIENT werden — ein Kinder-Signal im Titel oder Text. Ein
+   // Negativ-Signal (Haustier, Büro, Küche, Werkzeug, Garten, Auto, Netzstrom) sticht das
+   // Kinder-Signal, weil «Spielzeug» auch in «Katzenspielzeug» und «Hunde-Spielzeug» steht.
+   // Der Artikel bleibt im Shop und in seinen Sachkollektionen — nur die Kinderreihen
+   // verliert er. Google bekommt damit auch nicht mehr age_group=kids für Gartengeräte.
+   if(tagsFinal.includes('kinder')||tagsFinal.includes('spielzeug')){
+     const kt=(title+' '+String(g.html||'').replace(/<[^>]+>/g,' ')).toLowerCase();
+     const KIND=/\bkinder|\bkind\b|\bkids\b|\bbaby|kleinkind|\bjungen\b|\bm[äa]dchen\b|jugendliche|ab \d{1,2} jahren|\d{1,2}\s*[-–]\s*\d{1,2}\s*jahren|spielspass|spielspa[sß]|pl[üu]sch|kuscheltier|puzzle|bauklotz|baustein|malbuch|lernspiel|rassel|schulkind|kinderzimmer/i;
+     const NICHT_KIND=/haustier|\bhund\b|hunde|\bkatze|katzen|\bpet\b|welpe|b[üu]ro|\bk[üu]che|werkzeug|\bgarten|rasenm|\bauto\b|\bkfz\b|fahrzeug|steckdose|2[23]0\s?v|netzteil|festplatte|usb-?stick|speicherkarte|laptop|drucker|rasier|schnurrhaar/i;
+     if(!KIND.test(kt)||NICHT_KIND.test(kt)){
+       tagsFinal=tagsFinal.filter(t=>t!=='kinder'&&t!=='spielzeug');
+       if(typeFinal==='Spass-Elektronik'&&NICHT_KIND.test(kt))typeFinal='Gadget';
+     }
    }
    const input={title,handle:slug,productType:typeFinal,vendor:'LuxeStyle',
     status:(med||tsch)?'DRAFT':'ACTIVE',

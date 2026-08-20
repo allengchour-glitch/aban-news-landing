@@ -6972,3 +6972,7 @@ gid://shopify/Product/15479452270977	23->0	Damen-Sandalen aus Wildlederimitat
 gid://shopify/Product/15479467508097	19->0	Velo-Handyhalterung mit mechanischem Schloss
 gid://shopify/Product/15479484481921	32->0	Gulikit NS07 Audio-Empfänger für Gaming
 gid://shopify/Product/15479484547457	12->1	Atmungsaktive offene Sommer-Pantoletten für Herren
+gid://shopify/Product/15479514071425	30->2	Magnetische Wireless Powerbank aus Aluminium
+gid://shopify/Product/15479514235265	9->0	Powerbank 20'000 mAh, ultraschlank
+gid://shopify/Product/15479636951425	13->2	Multifunktionale 12V USB Power Batterieabdeckung
+gid://shopify/Product/15479812489601	10->0	Herren Zehensteg-Sandalen

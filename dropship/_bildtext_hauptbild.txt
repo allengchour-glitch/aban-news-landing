@@ -1,0 +1,4 @@
+# Hauptbild mit eingebranntem Fremdtext -> sauberes Bild an Position 1 (Datum: Produkt-ID: alt -> neu)
+2026-08-20:15497424568705:70523111080321(1688.com-Wasserzeichen, GELOESCHT)->70523111244161
+2026-08-20:15497377907073:70522009977217(engl. Verkaufs-Infografik)->70522010665345
+2026-08-20:15497378070913:70522029900161(engl. Wirkungsaussagen-Panel)->70522030358913

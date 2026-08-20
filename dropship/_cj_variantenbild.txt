@@ -885,3 +885,14 @@ gid://shopify/Product/15447993090433	zugeordnet	16	Merino Woll-Cardigan Weste
 gid://shopify/Product/15447993254273	zugeordnet	30	Asymmetrisches ärmelloses Top mit eckigem Ausschnitt
 gid://shopify/Product/15447993418113	zugeordnet	20	Sommerliches Floral-Print Tanktop
 gid://shopify/Product/15447993876865	zugeordnet	20	Retro Polka-Dot Tanktop mit eckigem Ausschnitt
+gid://shopify/Product/15447994171777	zugeordnet	36	Elegantes V-Neck Tanktop für den Sommer
+gid://shopify/Product/15447994335617	zugeordnet	15	Kurze Anzugweste für Damen
+gid://shopify/Product/15447994466689	zugeordnet	18	Elegante Slim-Fit Weste mit Split-Panel
+gid://shopify/Product/15447994630529	zugeordnet	5	V-Neck Strickweste für Damen, Einheitsgrösse
+gid://shopify/Product/15447994794369	zugeordnet	44	Yoga Tanktop mit Kreuzträgern
+gid://shopify/Product/15447994925441	zugeordnet	3	Gerippte Strickweste für Damen
+gid://shopify/Product/15447995056513	zugeordnet	5	3D-Strick-Slip-Weste
+gid://shopify/Product/15447995154817	zugeordnet	15	Elegante Kaschmir-Weste für Damen
+gid://shopify/Product/15447995679105	zugeordnet	35	Ärmelloses Casual Top für Damen
+gid://shopify/Product/15447996694913	zugeordnet	24	Elegante Weste mit Rüschensaum
+gid://shopify/Product/15447997251969	zugeordnet	4	Knit-Weste im koreanischen Casual-Stil
