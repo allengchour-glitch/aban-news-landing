@@ -6854,3 +6854,5 @@ gid://shopify/Product/15453824975233	23->0	Lippenöl für pralle Lippen
 gid://shopify/Product/15453897916801	51->0	Stoff- Aufbewahrungsbox
 gid://shopify/Product/15453918691713	125->0	Wasser-Flosser
 gid://shopify/Product/15453942776193	100->0	Schlankes Röckchen im reinen und verführerischen Stil
+gid://shopify/Product/15453956211073	13->0	Bambus-Aufbewahrungsbox mit Clipmesser
+gid://shopify/Product/15453956964737	8->0	Bunte Stretch-Hosen
