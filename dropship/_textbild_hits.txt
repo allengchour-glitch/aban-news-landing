@@ -6938,3 +6938,8 @@ gid://shopify/Product/15470352138625	101->1	Wasserdichte Möbelabdeckung
 gid://shopify/Product/15470369046913	87->1	Smartes Ohrenschmalz-Entfernungsset P3
 gid://shopify/Product/15470741848449	149->0	Leichtes Hundegeschirr mit Leine
 gid://shopify/Product/15472257663361	8->1	Elektrischer Dosenöffner für die Küche
+gid://shopify/Product/15472378249601	10->1	Kupfer Wasserkessel 1200 ml
+gid://shopify/Product/15473077125505	14->0	Doppel-Port Luftkompressor
+gid://shopify/Product/15473077158273	12->1	EVA Soft-Board Schaukel für Kinder
+gid://shopify/Product/15473084563841	145->3	Gestreiftes Midikleid für Damen
+gid://shopify/Product/15473085317505	9->0	Flying Squirrel Backlit 24GBT Bluetooth Set-Top Box
