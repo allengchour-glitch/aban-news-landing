@@ -6877,3 +6877,6 @@ gid://shopify/Product/15454248468865	112->0	Urbaner Rucksack für Outdoor
 gid://shopify/Product/15454333141377	189->0	GBA-Adapterkabel
 gid://shopify/Product/15454384521601	9->2	Elegante Damen T-back Strumpfanzug
 gid://shopify/Product/15454385570177	23->0	Farblicht-Gerät für zu Hause
+gid://shopify/Product/15454502715777	43->2	Wanderschuhe für Damen und Herren
+gid://shopify/Product/15454504845697	93->0	Herren-Polo mit 3D-Druck-Muster
+gid://shopify/Product/15454578016641	29->0	Hochtaillierte Leisure Yogahose Damen
