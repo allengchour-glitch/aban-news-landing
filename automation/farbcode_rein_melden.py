@@ -33,8 +33,7 @@ FARBWORT = re.compile(r"(black|white|red|blue|green|yellow|grey|gray|pink|purple
 SACHWORT = re.compile(r"(gb|tb|mb|mah|mm|cm|ml|kg|pcs|pack|inch|yards?|style|model|color|size|no)", re.I)
 
 
-def art(wert):
-    t = wert.strip()
+def _token(t):
     if GROESSE.match(t):
         return "groesse"
     if not CODE.match(t) or len(re.findall(r"\d", t)) < 2:
@@ -42,6 +41,16 @@ def art(wert):
     if FARBWORT.search(t) or SACHWORT.search(t):
         return None
     return "code"
+
+
+def art(wert):
+    """Auch mehrteilige Werte zählen als Code, wenn JEDES Wort ein Code ist:
+    «XXL276 XL7500» (Damenbluse) enthält kein einziges Farbwort."""
+    teile = wert.strip().split()
+    arten = [_token(t) for t in teile]
+    if not teile or not all(arten):
+        return None
+    return "code" if "code" in arten else "groesse"
 
 
 def nur_codes(optionen):

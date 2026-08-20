@@ -6930,3 +6930,5 @@ gid://shopify/Product/15469979074945	59->0	Zylinder schwarz
 gid://shopify/Product/15469996179841	18->0	Finger Dauber Schwamm 5 Stk.
 gid://shopify/Product/15470010696065	47->1	Halskette mit Totenköpfen
 gid://shopify/Product/15470013743489	16->0	Wurfbeutel / Konfettitasche
+gid://shopify/Product/15470016299393	17->0	Schaumstoffpinsel 4 Stk.
+gid://shopify/Product/15470018888065	86->0	Tischdecke Boneshine Fever

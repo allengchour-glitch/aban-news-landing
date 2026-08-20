@@ -34,7 +34,12 @@ EXPORT = os.environ.get("EXPORT", "/tmp/export.jsonl")
 # und genau die sind es, bei denen der dritte Block (`gmc-details`) jetzt noch zusammenzuführen
 # ist. Mit dem alten Ledger würde der Lauf ausgerechnet die Betroffenen überspringen und
 # «nichts zu tun» melden. Wird die REGEL erweitert, ist das alte Erledigt-Zeichen wertlos.
-LEDGER = "dropship/_produktdetails_vereint2.txt"
+LEDGER = os.environ.get("LEDGER", "dropship/_produktdetails_vereint2.txt")
+# ⚠️ 20.08.2026 — DRITTER DURCHGANG NÖTIG. `versandaussagen_wahrheit.py` (14.08.) hat bei
+# 150 aktiven Produkten den entfernten Zweitblock aus einer STUNDEN ALTEN Textbasis wieder
+# zurückgeschrieben. Alle 150 stehen in _produktdetails_vereint.txt UND ...2.txt als
+# «vereint» — ein Neustart würde sie überspringen und Vollzug melden. Deshalb LEDGER per
+# Env auf _produktdetails_vereint3.txt setzen und EXPORT aus LIVE-Daten speisen.
 
 # ⚠️ NACHTRAG 12.08.2026 — ES WAREN DREI BLÖCKE, NICHT ZWEI.
 # Der erste Lauf kannte `ls-feed-details` und `ls-produktdetails` und meldete danach «0 aktive
@@ -66,6 +71,31 @@ FARBE = {
     "dark green": "Dunkelgrün", "light brown": "Hellbraun", "dark brown": "Dunkelbraun",
     "rose red": "Rosarot", "hot pink": "Pink", "light pink": "Rosa",
 }
+# ⚠️ 20.08.2026: Die alte Regel «längerer Wert gewinnt» hat bei 10 von 150 Produkten die
+# ENGLISCHE Farbliste gewählt, obwohl der andere Block die deutsche trug («Orange Red,
+# Emerald Green» statt «Orangerot, Smaragdgrün»). Blockweises Löschen wäre hier die falsche
+# Reparatur gewesen: der eine Block trägt das bessere Material, der andere die besseren Farben.
+# Deshalb wird die Farbe FELDWEISE gewählt — Wort für Wort gewinnt die nicht-englische Form.
+ENGLISCH = re.compile(
+    r'\b(black|white|red|blue|green|grey|gray|yellow|purple|brown|navy|khaki|ivory|coffee|'
+    r'apricot|burgundy|emerald|sapphire|brick|denim|camel|light|dark|deep|army|wine|sky|rose|'
+    r'thin|thick|silver|golden|multi|clear|nude|color|and)\b', re.I)
+
+
+def farbe_waehlen(a, b):
+    """Aus zwei Farblisten die deutschere bauen (Reihenfolge bleibt erhalten)."""
+    ta = [t.strip() for t in a.split(",") if t.strip()]
+    tb = [t.strip() for t in b.split(",") if t.strip()]
+    if len(ta) == len(tb):
+        out = []
+        for x, y in zip(ta, tb):
+            ex, ey = bool(ENGLISCH.search(x)), bool(ENGLISCH.search(y))
+            out.append(y if (ex and not ey) else x)
+        return ", ".join(out)
+    # Ungleich lang: die Liste mit weniger englischen Resten gewinnt.
+    return a if len(ENGLISCH.findall(a)) <= len(ENGLISCH.findall(b)) else b
+
+
 MATERIALWORT = re.compile(
     r'baumwolle|cotton|polyester|viskose|viscose|leder|leather|metall|silber|gold|edelstahl|'
     r'kunststoff|plastic|acryl|nylon|wolle|seide|silk|leinen|linen|keramik|holz|glas|'
@@ -129,6 +159,8 @@ def vereinen(html):
                 # Konkreteres Material gewinnt: «Polyester, Viskose» schlägt «elastischer Stoff».
                 if MATERIALWORT.search(wert) and not MATERIALWORT.search(vorhanden):
                     felder[label] = wert
+            elif label.lower().startswith("farbe"):
+                felder[label] = farbe_waehlen(vorhanden, wert)
             elif len(wert) > len(vorhanden):
                 felder[label] = wert
     if not felder:
