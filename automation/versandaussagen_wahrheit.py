@@ -372,8 +372,30 @@ def schreiben(todo):
     sperre = threading.Lock()
     zaehler = {"ok": 0, "fehler": 0}
 
+    # ⚠️ URSACHE DES ZOMBIE-MUSTERS, geschlossen 20.08.2026.
+    # produkte() sammelt Kandidaten SAMT fertig gerechnetem neu_html; geschrieben wird erst
+    # Stunden spaeter aus 8 Arbeitern. Wer in diesem Fenster (oder davor, aus einer aelteren
+    # Quelle) repariert wurde, bekam die ALTE Basis zurueckgeschrieben — so hat dieser Lauf am
+    # 14.08. bei 150 Produkten den vom Dedup-Lauf entfernten zweiten «Produktdetails»-Block
+    # wiederbelebt. Deshalb wird der Text UNMITTELBAR vor dem Schreiben frisch geholt und die
+    # Regel auf dem frischen Text neu angewandt. Hat sich in der Zwischenzeit nichts mehr zu
+    # korrigieren gefunden, wird NICHT geschrieben.
+    FRISCH = "query($id:ID!){ product(id:$id){ descriptionHtml } }"
+
     def einer(t):
         pid, tit, w, n, neu_html, alt_html = t
+        f = gql(FRISCH, {"id": pid})
+        if f is None:                        # Regel 6: keine Antwort ist kein Ergebnis
+            with sperre:
+                zaehler["fehler"] += 1
+            return
+        jetzt = ((f.get("product") or {}).get("descriptionHtml")) or ""
+        if jetzt != alt_html:
+            neu_html, n2 = umschreiben(jetzt, w)
+            if not n2 or neu_html == jetzt:
+                with sperre:                 # inzwischen von anderer Hand repariert
+                    zaehler["uebersprungen"] = zaehler.get("uebersprungen", 0) + 1
+                return
         d = gql(M, {"p": {"id": pid, "descriptionHtml": neu_html}})
         if d is None:                        # Regel 6: keine Antwort ist kein Ergebnis
             with sperre:
@@ -396,7 +418,8 @@ def schreiben(todo):
     with ThreadPoolExecutor(max_workers=8) as ex:
         list(ex.map(einer, offen))
     led.close()
-    print(f"Produkte geschrieben: {zaehler['ok']}, offen geblieben: {zaehler['fehler']}")
+    print(f"Produkte geschrieben: {zaehler['ok']}, offen geblieben: {zaehler['fehler']}, "
+          f"inzwischen anderweitig repariert: {zaehler.get('uebersprungen', 0)}")
 
 
 

@@ -234,7 +234,7 @@ def main():
         if n % 200 == 0:
             f.flush()
             print(f"  … {n}/{len(aufgaben)}", flush=True)
-        time.sleep(0.25)
+        time.sleep(0.5)   # max 2 Anfragen/s
     f.flush()
     print(f"FERTIG: {n} Beschreibungen vereint")
 
