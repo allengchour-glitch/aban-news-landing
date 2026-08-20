@@ -6874,3 +6874,6 @@ gid://shopify/Product/15454204002689	67->0	Reise-Tasche für Herren
 gid://shopify/Product/15454218781057	74->1	Haarglätter Bürste
 gid://shopify/Product/15454218846593	41->0	Fernbediente Blinkleuchte mit Warnhorn und wasserdicht
 gid://shopify/Product/15454248468865	112->0	Urbaner Rucksack für Outdoor
+gid://shopify/Product/15454333141377	189->0	GBA-Adapterkabel
+gid://shopify/Product/15454384521601	9->2	Elegante Damen T-back Strumpfanzug
+gid://shopify/Product/15454385570177	23->0	Farblicht-Gerät für zu Hause

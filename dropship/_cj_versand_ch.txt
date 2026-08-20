@@ -864,3 +864,4 @@ gid://shopify/Product/15506314494337	ok	Boya BY-PM500 USB-Mikrofon mit Soundkart
 gid://shopify/Product/15506530271617	ok	Multifunktionale V20 Smartwatch mit Dual-Kamera
 gid://shopify/Product/15506296570241	nicht-versendbar	Vierfach faltbares Sicherheitspolster für Poledance
 gid://shopify/Product/15506294964609	ok	24-Stunden Kalender Quarz-Herrenuhr
+gid://shopify/Product/15507779682689	ok	Leder-Reise-Rucksack für 17-Zoll-Laptop
