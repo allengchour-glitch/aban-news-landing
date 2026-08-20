@@ -316,6 +316,22 @@ while true; do
       echo "$(date -u +%H:%M) merchant_sperre_durchsetzen gestartet"
     fi
   fi
+  # BIGBUY-VERSANDFALLE DURCHSETZEN, einmal täglich gegen LIVE (20.08.2026). BigBuy liefert
+  # in die CH nur über SEUR ab ~EUR 27.94 Fracht — ein Artikel für CHF 12.90 kostet bei jedem
+  # Verkauf rund CHF 20 mehr, als er einbringt. Der Bereinigungslauf vom 10.07. hat ~2'100
+  # solcher Artikel gedraftet, ZWEI standen am 20.08. wieder ACTIVE im Google-Kanal — beide
+  # im Ledger `_bb_cleanup_done.txt` als erledigt vermerkt und danach von `gfeed_restore.py`
+  # bzw. `google_kanal_nachziehen.py` zurückgeholt. Genau die Falle aus §46+23-Audit: ein
+  # Einmal-Lauf gegen einen Export plus Erledigt-Ledger schützt NICHT gegen den Publizierer,
+  # der danach kommt. Dieser Lauf fragt den LIVE-Stand und kennt kein Ledger.
+  BB=/tmp/bb_unrentabel_guard.log
+  if [ -f "$REPO/automation/bb_unrentabel_guard.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$BB" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid python3 automation/bb_unrentabel_guard.py >> "$BB" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) bb_unrentabel_guard gestartet"
+    fi
+  fi
   # MEDIZINISCHE ZWECKBESTIMMUNG, einmal täglich über die Neuimporte der letzten 3 Tage.
   # Seit dem 14.08. prüfen `cj_category_fill.mjs` und `cj_sku_import.mjs` schon beim Anlegen
   # (automation/medizin_zweck.mjs) — dieser Lauf ist die zweite Reihe für den Importer, den
