@@ -55,18 +55,54 @@ MANUELL = re.compile(r'manuell|selbst\s+(?:erfass|eintrag|eingeb)|Eingabe', re.I
 # auf beiden Seiten; auf 31'000 Beschreibungen lief das in katastrophales Backtracking und
 # stand nach zwei Minuten immer noch. Suchen ist linear, Satzgrenzen finden auch.
 KRANKHEIT = re.compile(
-    r'\b(?:Ischias|Spinalstenose|Hernien?|Bandscheibenvorfall|Rosacea|Purpura|'
+    r'\b(?:Ischias\w*|Spinalstenose|Hernien?|Bandscheibenvorfall|Rosacea|Purpura|'
     r'Krampfadern|Besenreiser|Spider-?Venen|Nagelpilz|Myopie\w*|Kurzsichtigkeit|'
     r'Arthrose|Rheuma|Neurodermitis|Schuppenflechte|Psoriasis|H[äa]morrhoiden|'
-    r'Tinnitus|Spinalkanal)\b', re.I)
+    r'Tinnitus|Spinalkanal|'
+    # 20.08.2026 nachgetragen — alle drei aus echten Fundstellen, keine erfundene Liste:
+    #  • Migräne: eine Baumwoll-Augenmaske «lindert Kopfschmerzen, Migräne» (15454201119105)
+    #  • Dekubitus: ein Schaumstoff-Sitzkissen «unterstützt die Behandlung von … Dekubitus»
+    #    (15503281979777) — Druckgeschwüre sind wundpflegebedürftig, nicht sitzkissen-behandelbar
+    #  • ADHS/Autismus/Angstzustände: ein Fidget-Schlüsselanhänger «hilft bei Angstzuständen,
+    #    ADHS und Autismus» (15450829095297)
+    # ⚠️ «Ischias» steht jetzt mit \w*, weil der Text «Ischiasbeschwerden» schrieb — die
+    # deutsche Zusammensetzung frisst die Wortgrenze am Wortende (gleiche Lehre wie
+    # «Zahnreinigers» im Medizin-Zweck-Guard).
+    r'Migr[äa]ne|Dekubitus|Druckgeschw[üu]r\w*|Wundliegen|'
+    r'ADHS|ADHD|Autismus|autistisch\w*|Aufmerksamkeitsst[öo]rung\w*|'
+    r'Angstzust[äa]nd\w*|Angstst[öo]rung\w*|Karpaltunnel\w*|Skoliose|Osteoporose)\b',
+    re.I)
 # Ein Krankheitsname allein ist keine Heilaussage — es braucht ein Wirkversprechen dazu.
 WIRKWORT = re.compile(r'\b(?:heilt|kuriert|therapiert|lindert|bek[äa]mpft|beseitigt|'
                       r'wirksam\s+gegen|hilfe|hilft\s+(?:bei|gegen)|Ergebnisse\s+bei|'
-                      r'Abhilfe|behandelt|Linderung)\b', re.I)
+                      r'Abhilfe|behandelt|Linderung|'
+                      # 20.08.2026: «unterstützt die BEHANDLUNG von … Dekubitus» rutschte
+                      # durch, weil nur das Verb «behandelt» auf der Liste stand, nicht das
+                      # Hauptwort. Und «Aufmerksamkeitsstörungen ENTGEGENWIRKT» hatte gar
+                      # kein bekanntes Wirkwort. «Behandlung» ist ungefährlich: es feuert
+                      # nur zusammen mit einem Krankheitsnamen im selben Satz, und die
+                      # Wortgrenze schützt vor «Oberflächenbehandlung».
+                      r'Behandlung|entgegenwirk\w*|erleichtert|'
+                      # «Ob bei Angstzuständen, ADHS oder einfach zur Entspannung» hat gar
+                      # kein Verb — die Krankheit steht als Anwendungsfall da. Eine
+                      # Indikationsformel IST ein Wirkversprechen; sie feuert nur zusammen
+                      # mit einem Krankheitsnamen im selben Satz.
+                      r'Ob\s+bei|ideal\s+bei|perfekt\s+bei|speziell\s+bei|Einsatz\s+bei|'
+                      r'Anwendung\s+bei|empfohlen\s+bei)\b'
+                      # ⚠️ Die Wortgrenze am ANFANG frisst geklebte Wirkwörter: der
+                      # CJ-Text schrieb «Schlafkissenmasken|lindert» ohne Leerzeichen,
+                      # und \blindert\b greift mitten im Wort nicht mehr. Spiegelbild
+                      # der Genitiv-Falle («Zahnreinigers») am Wortende.
+                      r'|\w*lindert\b|\w*heilt\b', re.I)
 # Diese stehen für sich allein — dafür braucht es keinen Krankheitsnamen.
 STARK = re.compile(r'\b(?:medizinisch\s+(?:bewiesen|nachgewiesen)|klinisch\s+(?:bewiesen|getestet)|'
                    r'empfohlen\s+von\s+(?:Chiropraktikern|[ÄA]rzten|Physiotherapeuten)|'
-                   r'von\s+[ÄA]rzten\s+empfohlen|heilt\s+\w)', re.I)
+                   r'von\s+[ÄA]rzten\s+empfohlen|heilt\s+\w|'
+                   # «Ideal zur Myopiehilfe» hatte KEIN zweites Wirkwort im Satz: das
+                   # Kompositum trägt es selbst («…hilfe»), und \bhilfe\b greift nicht
+                   # mitten im Wort. Solche Krankheit+Wirkwort-Komposita müssen deshalb
+                   # für sich allein stehen.
+                   r'Myopiehilfe|Sehhilfe\s+gegen|ADHS-?(?:Hilfe|Therapie))', re.I)
 # ⚠️ VIER SATZARTEN, die im ersten Probelauf fälschlich entfernt worden wären:
 #  • «Nicht kompatibel mit Myopie-Linsen» und «Option für Myopie verfügbar» — das ist eine
 #    Passform-Angabe für Brillenträger, keine Behandlung. Wer sie streicht, nimmt der Kundin
@@ -76,9 +112,18 @@ STARK = re.compile(r'\b(?:medizinisch\s+(?:bewiesen|nachgewiesen)|klinisch\s+(?:
 #    und zulässig; Karies und Parodontitis stehen deshalb gar nicht erst auf der Liste.
 #  • «um das ERSCHEINUNGSBILD von Besenreisern zu verbessern» — genau die Formulierung, die
 #    ein Kosmetikum verwenden MUSS. Sie zu löschen hiesse, die korrekte Fassung zu bestrafen.
+#  • ⚠️ FÜNFTE Art, aufgefallen erst beim Erweitern der Liste am 20.08.2026: «lindert
+#    Angstzustände» steht in drei HAUSTIER-Artikeln (Seilspielzeug für Hunde 15446270574977,
+#    Vogel-Sound-Spielzeug 15448947786113, Beruhigungsweste für Katzen 15454894391681).
+#    Angst beim Hund ist keine Humanmedizin — wer diese Sätze streicht, nimmt der Kundin die
+#    Kaufinformation und repariert eine wahre Aussage kaputt. Die Sperre steht bewusst hier,
+#    also SATZWEISE, und nicht in HEIL_AUSNAHME (die prüft den Titel und würde das ganze
+#    Produkt überspringen — dann bliebe eine echte Humanaussage im selben Text stehen).
 KEIN_HEILVERSPRECHEN = re.compile(r'kompatib|geeignet\s+f[üu]r|Option\s+f[üu]r|verf[üu]gbar|'
                                   r'Erscheinungsbild|Aussehen\s+von|passend\s+f[üu]r|'
-                                  r'nicht\s+geeignet|Brillentr[äa]ger', re.I)
+                                  r'nicht\s+geeignet|Brillentr[äa]ger|'
+                                  r'\bHund\w*|\bH[üu]ndin|\bKatze\w*|\bK[äa]tzchen|Haustier\w*|'
+                                  r'Vierbeiner|\bWelpe\w*|\bTierarzt|\bTiere\b', re.I)
 
 
 def ist_heilaussage(satz):
