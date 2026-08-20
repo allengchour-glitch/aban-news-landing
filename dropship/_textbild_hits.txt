@@ -6901,3 +6901,4 @@ gid://shopify/Product/15458846081409	13->0	Multifunktionaler Halsriemen mit Brus
 gid://shopify/Product/15458991604097	21->0	Weiche Babyschuhe Innen Non-Slip
 gid://shopify/Product/15459837444481	20->0	Toiletten-Griff mit Saugscheibe
 gid://shopify/Product/15460189471105	64->0	Ohrreinigung mit 8 Stimmstäben & Zubehör
+gid://shopify/Product/15460761305473	118->3	Faltbarer Outdoor-Stuhl mit Netzrückenlehne
