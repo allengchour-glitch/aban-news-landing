@@ -55,6 +55,18 @@ class Config:
     base_width: int = 1080
     default_threshold: float = 0.85
     loop_delay: List[float] = field(default_factory=lambda: [1.0, 2.0])
+    # EIN Regler fuer das Tempo. Die Konfiguration hat 186 Wartepunkte mit
+    # zusammen rund 347 Sekunden - das ist der groesste Zeitfresser, groesser
+    # als die gesamte Bilderkennung. Statt 186 Zahlen einzeln zu aendern (und
+    # dabei die Verhaeltnisse zu zerstoeren) werden hier alle mit demselben
+    # Faktor gestreckt oder gestaucht.
+    #   1.0  = wie geschrieben
+    #   0.5  = doppelt so schnell
+    # Die Untergrenze verhindert, dass Wartezeiten, die eine Animation
+    # abdecken sollen, auf null zusammenfallen - dann tippt der Bot, bevor der
+    # Bildschirm ueberhaupt umgeschaltet hat.
+    tempo: float = 1.0
+    tempo_untergrenze: float = 0.35   # Sekunden, unter die keine echte Wartezeit faellt
     stuck_seconds: float = 240.0
     festgefahren_schritte: int = 15  # so viele Schritte gleiche Ansicht = Ausweg suchen
     regel_wirkungslos_grenze: int = 3   # so oft darf eine Regel folgenlos greifen
@@ -106,6 +118,8 @@ class Config:
         if isinstance(delay, (int, float)):
             delay = [float(delay), float(delay)]
         cfg.loop_delay = [float(delay[0]), float(delay[-1])]
+        cfg.tempo = max(0.1, min(3.0, float(raw.get("tempo", 1.0))))
+        cfg.tempo_untergrenze = float(raw.get("tempo_untergrenze", 0.35))
         cfg.stuck_seconds = float(raw.get("stuck_seconds", 240))
         cfg.festgefahren_schritte = int(raw.get("festgefahren_schritte", 15))
         cfg.regel_wirkungslos_grenze = int(raw.get("regel_wirkungslos_grenze", 3))

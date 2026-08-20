@@ -522,16 +522,29 @@ class Engine:
     # Stueck. Ohne Unterbrechung kaeme der Bot regelmaessig zu spaet - und
     # gerade das Beitreten ist die ergiebigste Art zu kaempfen.
     DRINGEND_AB = 200
-    ZWISCHENPRUEFUNG_AB = 1.5   # erst ab dieser Wartezeit lohnt das Nachsehen
+    ZWISCHENPRUEFUNG_AB = 0.8   # erst ab dieser Wartezeit lohnt das Nachsehen
 
     def _do_sleep(self, value: Any) -> None:
         if isinstance(value, (list, tuple)) and len(value) >= 2:
             dauer = self.rng.uniform(float(value[0]), float(value[1]))
         else:
             dauer = float(value)
+        # Ein Regler fuer alle 186 Wartepunkte. Die Untergrenze gilt nur fuer
+        # Wartezeiten, die ueberhaupt eine waren - eine bewusste Null bleibt
+        # null, sonst wuerde jeder Schritt kuenstlich gebremst.
+        tempo = float(getattr(self.cfg, "tempo", 1.0) or 1.0)
+        if tempo != 1.0 and dauer > 0:
+            unten = float(getattr(self.cfg, "tempo_untergrenze", 0.35))
+            dauer = max(min(dauer, unten), dauer * tempo)
         # Lange Wartezeiten aufteilen und dazwischen nach dringenden Regeln
         # sehen. Sonst verschlaeft der Bot alles, was waehrend einer Aufgabe
         # passiert.
+        #
+        # ACHTUNG, Wechselwirkung: die Schranke greift auf die BEREITS
+        # gestauchte Dauer. Mit tempo 0.55 faellt eine 2.5-Sekunden-Wartezeit
+        # auf 1.4 - waere die Schranke bei 1.5 geblieben, haette ausgerechnet
+        # das schnellere Tempo die Versammlungs-Reaktion abgeschaltet. Darum
+        # 0.8: schneller heisst oefter nachsehen, nicht seltener.
         if dauer < self.ZWISCHENPRUEFUNG_AB or self._in_zwischenpruefung:
             self._sleep(dauer)
             return

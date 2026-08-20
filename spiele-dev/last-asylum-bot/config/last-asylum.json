@@ -5,9 +5,12 @@
   "base_width": 1440,
   "default_threshold": 0.88,
   "loop_delay": [
-    1.2,
-    2.4
+    0.6,
+    1.2
   ],
+  "tempo": 0.55,
+  "tempo_untergrenze": 0.35,
+  "_tempo": "EIN Regler fuer alle 186 Wartepunkte der Datei (zusammen rund 347 s - der groesste Zeitfresser, groesser als die gesamte Bilderkennung). 0.55 heisst: knapp doppelt so schnell. Die Untergrenze von 0.35 s verhindert, dass eine Wartezeit, die eine Animation abdecken soll, auf null zusammenfaellt - dann tippt der Bot, bevor der Bildschirm umgeschaltet hat, und der Tipp geht ins Leere. Wird der Bot ungenau oder tippt er daneben, ist dieser Wert das Erste, was man wieder hochsetzt (0.7, dann 1.0).",
   "stuck_seconds": 120,
   "templates_dir": "../templates",
   "input_method": "input",

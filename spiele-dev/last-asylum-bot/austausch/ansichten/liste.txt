@@ -1,0 +1,2 @@
+01-04070305.png	2026-08-14 22:06:56	Schritt 17	bekannt	{'wirkungslos': 17, 'taps': 10, 'drags': 8}
+01-04070305.png	2026-08-14 23:18:41	Schritt 0	bekannt	{}

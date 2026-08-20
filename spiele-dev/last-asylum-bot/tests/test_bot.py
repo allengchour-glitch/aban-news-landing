@@ -3683,6 +3683,45 @@ class TestDringendesUnterbrichtDieAufgabe(unittest.TestCase):
         self.assertLessEqual(eng.stats.get("rule:dringend", 0), 1,
                              "die Zwischenpruefung darf sich nicht selbst aufrufen")
 
+
+    def test_schnelles_tempo_schaltet_die_unterbrechung_nicht_ab(self):
+        """Wechselwirkung: tempo staucht die Wartezeit VOR der Schranke.
+
+        Mit tempo 0.55 faellt eine 2.5-Sekunden-Wartezeit auf 1.4 - bei einer
+        Schranke von 1.5 haette ausgerechnet das schnellere Tempo die
+        Versammlungs-Reaktion abgeschaltet.
+        """
+        eng = self.bau()
+        eng.cfg.tempo = 0.55
+        eng._do_sleep([2.5, 2.5])
+        self.assertGreater(eng.stats.get("rule:dringend", 0), 0,
+                           "auch bei schnellem Tempo muss zwischendurch nachgesehen werden")
+
+    def test_tempo_staucht_die_wartezeit_wirklich(self):
+        gewartet = []
+        tpl = noise(40, 40, 93)
+        screen = noise(400, 600, 94)
+        cfg = Config.from_dict({"package": "x", "rules": [], "tasks": [], "tempo": 0.5})
+        eng = Engine(cfg, FakeDevice([screen], loop=True), logger=quiet(),
+                     sleep=lambda s: gewartet.append(s), seed=1)
+        eng._in_zwischenpruefung = True      # Teilung ausschalten, nur die Dauer messen
+        eng._do_sleep([4.0, 4.0])
+        self.assertAlmostEqual(sum(gewartet), 2.0, places=2)
+
+    def test_untergrenze_haelt_animationen_aus(self):
+        """Eine Wartezeit darf nicht auf null zusammenfallen."""
+        gewartet = []
+        cfg = Config.from_dict({"package": "x", "rules": [], "tasks": [],
+                                "tempo": 0.1, "tempo_untergrenze": 0.35})
+        eng = Engine(cfg, FakeDevice([noise(40, 60, 4)], loop=True), logger=quiet(),
+                     sleep=lambda s: gewartet.append(s), seed=1)
+        eng._in_zwischenpruefung = True
+        eng._do_sleep([1.0, 1.0])
+        self.assertGreaterEqual(sum(gewartet), 0.35)
+        gewartet.clear()
+        eng._do_sleep(0)                     # eine bewusste Null bleibt null
+        self.assertEqual(sum(gewartet), 0)
+
     def test_versammlungsregel_liegt_ueber_der_unterbrechungsgrenze(self):
         cfg = Config.load(os.path.join(ROOT, "config", "last-asylum.json"))
         regel = next(r for r in cfg.rules if r.name == "versammlung-sofort-beitreten")
@@ -3826,6 +3865,62 @@ class TestMatcherVorfilter(unittest.TestCase):
         quelle = inspect.getsource(matcher.find_all)
         self.assertIn("SICHER_GENUG", quelle,
                       "ein nahezu perfekter Treffer macht weitere Kandidaten ueberfluessig")
+
+
+
+class TestZiffernAmEchtenSpiel(unittest.TestCase):
+    """Zahlen lesen, gegen echte Spielschrift gemessen - nicht gegen Testbilder.
+
+    austausch/stadt.png enthaelt zwei Zahlen in VERSCHIEDENEN Schriften:
+    "2,109,940/2,200,000" im Fortschrittsbalken (weiss auf gruen) und
+    "23:58:18" als Timer (gruen auf dunkel). Beide Saetze sind daraus
+    geschnitten - und sie sind NICHT austauschbar.
+    """
+
+    BILD = os.path.join(ROOT, "austausch", "stadt.png")
+    BALKEN = [430 / 1440, 580 / 2560, 690 / 1440, 645 / 2560]
+    TIMER = [78 / 1440, 1285 / 2560, 315 / 1440, 1335 / 2560]
+
+    def setUp(self):
+        if not os.path.exists(self.BILD):
+            self.skipTest("stadt.png liegt nicht vor")
+        self.screen = Image.load(self.BILD)
+
+    def satz(self, ordner):
+        from laa import zahlen
+        pfad = os.path.join(ROOT, "templates", ordner)
+        geladen = zahlen.lade_ziffern(pfad)
+        if not geladen:
+            self.skipTest(f"{ordner} ist leer")
+        return geladen
+
+    def test_fortschrittsbalken_wird_gelesen(self):
+        from laa import zahlen
+        gelesen = zahlen.lies_zahl(self.screen, self.satz("ziffern"),
+                                   region=self.BALKEN, threshold=0.85, hoechstens=12)
+        self.assertEqual(gelesen, 2109940,
+                         "Kommas muessen uebersprungen, Ziffern der Reihe nach "
+                         f"zusammengesetzt werden - gelesen wurde {gelesen}")
+
+    def test_timer_wird_gelesen(self):
+        from laa import zahlen
+        gelesen = zahlen.lies_zahl(self.screen, self.satz("ziffern-timer"),
+                                   region=self.TIMER, threshold=0.85, hoechstens=8)
+        self.assertEqual(gelesen, 235818, f"23:58:18 erwartet, gelesen {gelesen}")
+
+    def test_ziffernsaetze_sind_nicht_austauschbar(self):
+        """Der Beleg dafuer, dass jede Schrift ihren eigenen Satz braucht.
+
+        Gemessen liegt die Aehnlichkeit zwischen denselben Ziffern der beiden
+        Schriften bei 0.37 bis 0.49. Wer einen Satz ueberall benutzt, liest
+        entweder nichts oder etwas Falsches - und mit einer falsch gelesenen
+        Zahl wird danach gerechnet.
+        """
+        from laa import zahlen
+        falsch = zahlen.lies_zahl(self.screen, self.satz("ziffern"),
+                                  region=self.TIMER, threshold=0.85, hoechstens=8)
+        self.assertIsNone(falsch,
+                          f"der Balken-Satz darf den Timer nicht lesen, gab aber {falsch}")
 
 
 
