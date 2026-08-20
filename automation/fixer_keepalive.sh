@@ -226,6 +226,20 @@ while true; do
       echo "$(date -u +%H:%M) hype-reviews Lauf gestartet"
     fi
   fi
+  # TOTE RABATTCODES, einmal täglich: abgelaufene Aktionscodes überleben in zeitlosen
+  # Ratgeber-Texten weiter. Am 20.08.2026 bewarben SECHS veröffentlichte Seiten Codes, die
+  # seit Juni tot waren (PAPA25, LAUNCH30, GENTLEMAN30, PARENTBUNDLE) — darunter drei
+  # SEO-Ratgeber, die über Google dauerhaft Besucher bringen. Wer so einen Code an der Kasse
+  # eintippt, bekommt eine Fehlermeldung und bricht ab. Der Wächter meldet nur; welcher Code
+  # ersetzt wird, ist eine Entscheidung.
+  TR=/tmp/tote_rabattcodes.log
+  if [ -f "$REPO/automation/tote_rabattcodes.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$TR" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid python3 automation/tote_rabattcodes.py >> "$TR" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) tote-rabattcodes geprüft"
+    fi
+  fi
   # ADS-KURATION NACHZUG, einmal täglich gegen LIVE: der Export-Lauf deckt nur den
   # Schnappschuss ab, der CJ-Grind legt täglich neue 1-Bild-/Billig-Produkte an — ohne
   # Nachzug wüchse «Over capacity» einfach nach (Backfill-Regel vom 12.08.).

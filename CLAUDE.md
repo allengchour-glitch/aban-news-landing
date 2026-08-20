@@ -130,6 +130,26 @@ live belegt an 15411554910593). `automation/versandaussagen_wahrheit.py`, Ledger
   Rechtstexte gehen nur per GraphQL `shopPolicyUpdate` — und dessen Input nimmt `type`
   (`SHIPPING_POLICY`), **nicht** `id`. Ohne Live-Gegenprobe hätte der Lauf als erledigt gegolten.
 
+## 🎟️ Eine Aktion endet nicht mit dem Code, sondern mit dem letzten Text (2026-08-20)
+Der Vatertags-Code **PAPA25** lief am 8. Juni ab. Zweieinhalb Monate später bewarben ihn noch
+**fünf veröffentlichte Seiten** — und die Suche nach weiteren toten Codes fand **sechs weitere
+Fundstellen** (LAUNCH30, GENTLEMAN30, PARENTBUNDLE). Betroffen waren ausgerechnet die zeitlosen
+SEO-Ratgeber («Saphirglas vs. Mineralglas», «Echtleder vs. Kunstleder», «Geschenk-Guide»), die
+über Google dauerhaft Besucher bringen: Wer den Code an der Kasse eintippt, bekommt eine
+Fehlermeldung — ein Kaufabbruch, den keine Statistik je als solchen ausweist.
+**Lehre: Beim Beenden einer Aktion reicht es nicht, den Rabattcode auslaufen zu lassen.**
+Danach gehören Seiten UND Blogartikel durchsucht — Kampagnenseiten fallen auf, Ratgeber nicht.
+- Wächter `automation/tote_rabattcodes.py` (täglich im `fixer_keepalive.sh`): vergleicht alle
+  EXPIRED-Codes gegen den Text jeder veröffentlichten Seite/jedes Artikels. Meldet nur.
+- Ersetzt wurde jeweils durch **WELCOME10** (10%, gültig bis Ende 2027, derselbe Code wie im
+  Ankündigungsbalken) — und **ohne konkrete Rabattpreise**, denn «nur CHF 97» veraltet wieder.
+- Zwei reine Ankündigungsseiten (`/pages/launch`, `/pages/presse-launch`, «Heute gehen wir LIVE!»
+  vom Mai mit drei toten Codes) wurden unveröffentlicht statt geflickt — das Ereignis ist vorbei.
+- Nebenbei gefunden: zwei Blogartikel versprachen «Versand 7-12 Werktage» — eine SIEBTE Lieferzeit,
+  die der Theme-Durchgang nicht erreicht hatte. Blogtexte gehören in jede Versandaussagen-Prüfung.
+⚠️ Der Wächter prüft nur ABGELAUFENE Codes. Erfundene Codes fallen ihm nicht auf: In einem Artikel
+stand «WELCOME15», den es nie gab — solche Treffer findet nur ein Abgleich gegen die Code-Liste.
+
 ## 💸 «Gratis ab CHF 50» stimmt — die 45 im Versandprofil ist Absicht (2026-08-20)
 Beim Nachrechnen sah es aus wie eine verschenkte Kaufschwelle: Im Versandprofil ist die Gratis-Stufe
 bei **CHF 45.00** aktiv (die 50er ist deaktiviert), beworben wird überall **ab CHF 50**. Ich war
