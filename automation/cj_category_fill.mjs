@@ -25,7 +25,17 @@ const chf=(usd,grams)=>{const u=parseFloat((''+usd).split('--')[0])||0;
  const freight=Math.max(15, 3.4+16.3*kg);       // reale Fracht CHF
  const gap=Math.max(0, freight-7);              // vom Preis zu deckende Fracht-Lücke (~CHF 8 leicht)
  const landed=u*0.9+gap;                        // Kosten die der Produktpreis tragen muss
- let p=Math.max(landed*1.4, landed+5, 14.90);   // Marge, min CHF 5 Deckung, Boden 14.90
+ // ⚠️ 20.08.2026 — DIE ALTE MARGE WAR SYSTEMATISCH ZU KNAPP: `landed+5`.
+ // `landed` trägt nur die Fracht-LÜCKE (freight−7), die VOLLEN Stückkosten sind `landed+7`.
+ // Der Aufschlag von 5 lag also 2 Franken UNTER den Kosten, sobald der Kunde keine
+ // Versandpauschale zahlt. Genau das passiert ab CHF 50 Warenwert (Gratis-Versand) — und
+ // der automatische «2+ Artikel −10 %» trifft dieselben Warenkörbe ein zweites Mal.
+ // Durchgerechnet an echten Kostendaten (665 Varianten, erstmals vorhanden am 20.08.):
+ //   EK $3 / 0,3 kg → Preis 15.90, Kosten 17.70 → mit Versandbeitrag +5.20,
+ //   bei Gratis-Versand −1.80, mit Rabatt −3.39. Von 665 Varianten standen 200 unter Einstand.
+ // Der Aufschlag deckt jetzt die vollen Kosten UND hält dem 10-%-Rabatt stand:
+ // gefordert ist p·0,9 ≥ Kosten·1,05, also p ≥ (landed+7)·1,167.
+ let p=Math.max(landed*1.4, landed*1.167+8.2, 16.90);
  return (Math.floor(p)+0.90).toFixed(2);};
 
 // ⚠️ KOSTEN MITSCHREIBEN (20.08.2026). Die Rechnung oben KENNT den Einkaufspreis — sie hat ihn

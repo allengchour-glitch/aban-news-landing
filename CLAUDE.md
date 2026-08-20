@@ -822,6 +822,37 @@ Backfills zurückgesetzt, sonst verlöre er das halbe Fenster an eine Absage von
 **Regel für jede neue CJ-Engine: erst fragen, WEM sie das Budget wegnimmt.** «Läuft nachts mit»
 ist keine Antwort, wenn ein anderer Prozess dieselbe Sekunde braucht.
 
+## 📉 Die Preisformel lag 2 Franken unter den Kosten — sichtbar erst mit Kostendaten (2026-08-20)
+Seit gestern schreibt der Importer Einkaufspreise mit; heute lagen für **665 Varianten** echte
+Zahlen vor. Ergebnis: **200 davon (30 %) stehen unter Einstand.** Die Ursache ist nicht der
+Preisboden (nur 7 der 200 stehen auf CHF 14.90), sondern die Formel selbst:
+`p = max(landed·1,4, landed+5, 14.90)` — wobei `landed` bewusst nur die **Fracht-LÜCKE**
+(freight − 7) trägt, weil der Kunde CHF 7 Versand zahlt. Die **vollen** Stückkosten sind
+`landed + 7`. Ein Aufschlag von 5 liegt damit strukturell **2 Franken unter den Kosten**,
+sobald keine Versandpauschale anfällt.
+**Und genau die Warenkörbe, die der Shop belohnt, sind die verlustbringenden:**
+| EK $ / kg | Preis | Kosten | mit CHF 7 Versand | Gratis-Versand ab 50 | dazu «2+ −10 %» |
+|---|---|---|---|---|---|
+| 3 / 0,3 | 15.90 | 17.70 | **+5.20** | −1.80 | **−3.39** |
+| 5 / 0,4 | 17.90 | 19.50 | +5.40 | −1.60 | −3.39 |
+| 12 / 0,6 | 26.90 | 25.80 | +8.10 | +1.10 | −1.59 |
+Einzelbestellungen tragen sich also gut; erst Gratis-Versand **und** der automatische
+Mengenrabatt kippen die Rechnung — und je billiger die Ware, desto tiefer.
+⚠️ **Eine höhere Gratis-Schwelle hilft NICHT**, sondern verschlimmert es: Die Fracht fällt je
+ARTIKEL an, ein grösserer Korb aus billiger Ware häuft also mehr Fracht an. Das Problem ist
+nicht die Schwelle, sondern billige Ware im Mehrfachkorb.
+- **Importer korrigiert** (`cj_category_fill.mjs`): `max(landed·1,4, landed·1,167+8,2, 16.90)` —
+  hält auch dem 10-%-Rabatt stand (Bedingung p·0,9 ≥ Kosten·1,05). Neue Ware wird ~15–25 %
+  teurer; das ist der Preis dafür, nicht unter Einstand zu verkaufen.
+- ⚠️ **Der Bestand ist NICHT angefasst.** 200 Varianten neu zu bepreisen ist eine
+  Geschäftsentscheidung des Betreibers, keine technische Korrektur — sie trifft beworbene Ware.
+- ⚠️ **Offene Prüfung:** Ob CJ bei Mehrartikel-Bestellungen die Fracht wirklich mehrfach
+  berechnet, ist unbelegt (die Kostendefinition ist bewusst konservativ). LX1013 enthielt zwei
+  Artikel — dort liesse sich die echte Fracht ablesen, sobald CJ-Punkte frei sind.
+- Die CHF 15 Mindestfracht sind **gemessen**, nicht geschätzt (Order #1011: $15.77, 03.08.).
+  Das ältere «China-Fracht ~3–6 CHF» im BigBuy-Vergleich ist überholt — ich hätte auf dieser
+  Grundlage beinahe die Kostendaten für falsch erklärt.
+
 ## 🤖 Kimi-Nutzung — HARTE REGEL (teuer gelernt 2026-07-25)
 Kimi **k3** geht bei STRUKTURIERTEN/mehrfeldigen Prompts (JSON, "DESC:/SEO:"-Format, Artikel) in **Reasoning-Modus**
 → `content` bleibt leer, Helper fällt auf `reasoning_content` zurück = **englischer Denk-Text statt Copy**
