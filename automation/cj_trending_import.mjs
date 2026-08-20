@@ -6,6 +6,7 @@
  */
 import fs from 'node:fs';
 import { produktSaeubern } from './marken_filter.mjs';
+import { echoVomLieferanten } from './titel_sprache.mjs';
 import { googleKategorie } from './google_kategorie.mjs';
 const SHOP='au3j0y-hq.myshopify.com',API='2025-01';
 const CID=process.env.SHOPIFY_CLIENT_ID,CSEC=process.env.SHOPIFY_CLIENT_SECRET;
@@ -280,6 +281,15 @@ for(const p of cand){
  const ms=produktSaeubern(g.title, g.html);
  if(ms.verdacht){console.log('  skip(marke)',nm.slice(0,40));continue;}
  g.title=ms.title; g.html=ms.html;
+ // 🇩🇪 Titel-Sprachwache (20.08.2026), Begründung + Testfälle: automation/titel_sprache.mjs.
+ if(echoVomLieferanten(g.title,nm)){
+  const g2=await gemini(nm,feats,'Trend-Produkt (viral)'); await sleep(GSLEEP);
+  if(g2&&g2.title&&g2.html&&!echoVomLieferanten(g2.title,nm)){
+   const m2=produktSaeubern(g2.title,g2.html);
+   if(!m2.verdacht){ g.title=m2.title; g.html=m2.html; }
+  }
+  if(echoVomLieferanten(g.title,nm)){console.log('  skip(titel-nicht-uebersetzt)',String(g.title).slice(0,50));continue;}
+ }
  // ß→ss (15.08.2026): CH-Schreibung, Quelle-Fix wie in cj_category_fill
  const title=g.title.slice(0,70).replace(/ß/g,'ss').replace(/ẞ/g,'SS');
  if(DRY){console.log(`  [DRY] CHF${chf(p.sellPrice)} | ${title} | listed ${p.listedNum}`);total++;continue;}

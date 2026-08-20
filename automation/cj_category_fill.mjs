@@ -591,40 +591,11 @@ for(const [cat,label] of grp.cats){
    const ms=produktSaeubern(g.title, g.html);
    if(ms.verdacht){console.log('  skip(marke)',nm.slice(0,40));continue;}
    g.title=ms.title; g.html=ms.html;
-   // 🇩🇪 TITEL-SPRACHWACHE (20.08.2026). Der Übersetzer liefert die BESCHREIBUNG zuverlässig
-   // deutsch, den TITEL aber manchmal roh aus dem CJ-Listing — sechs so angelegte Produkte
-   // standen am 20.08. ACTIVE im Google-Kanal: «Yoga Bag Sports Travel Bag Large Capacity Yoga
-   // Mat Back» (sogar mitten im Wort abgeschnitten), «Daddy Shoes All-match Casual White Sports
-   // Women's Shoes», «Korean Style All-match Large-capacity Backpack», «Mini Summer Butter Lip
-   // Balm Suit» («Suit» ist die wörtliche Fehlübersetzung von 套装 = Set), «Smear-proof Makeup
-   // Natural Freckle Liquid», «Hot and Cold Compress Eye Mask for Relaxation and Sleep».
-   // Ein englischer Titel konkurriert im Feed nicht um deutschsprachige Suchen, und die Kundin
-   // liest ihn zuerst. Nachfüllen allein reicht nicht (CLAUDE.md: «wer schreibt das Feld beim
-   // NÄCHSTEN Produkt?») — deshalb HIER, vor dem Anlegen, statt im nächsten Aufräumlauf.
-   //
-   // ⚠️ Die naheliegende Prüfung «enthält englische Funktionswörter (for/with/and/of)» ist die
-   // FALSCHE: von den sechs Fundstücken erwischt sie nur zwei (die anderen sind reine
-   // Nomenketten ohne Funktionswort), und sie schlägt bei Motiv-/Modellnamen fehl an
-   // («Rubik's Cube Diamond Painting Stickerei», «Dragon's Descendant Knochenbeil»).
-   // Der tragfähige Test fragt nicht «ist das Englisch?», sondern «wurde überhaupt übersetzt?»:
-   // Stehen praktisch ALLE Titelwörter schon im englischen CJ-Lieferantennamen, hat das Modell
-   // die Quelle abgeschrieben statt übersetzt. Ein echt deutscher Titel schafft das nie —
-   // deutsche Wörter kommen im englischen Quelltext nicht vor. Substring-Vergleich, damit auch
-   // der abgeschnittene Fall greift («back» steckt in «backpack»).
-   // Zusätzlich VETO bei jedem deutschen Marker im Titel: das schützt Technik-Titel, deren
-   // Wörter in beiden Sprachen gleich heissen («Centechia 1-zu-3 RJ45 Ethernet Splitter»).
-   // Anglizismen wie «High Waist», «Slim Fit», «Oversized», «3-in-1» bleiben unangetastet.
+   // 🇩🇪 Titel-Sprachwache (20.08.2026): der Übersetzer liefert die Beschreibung deutsch, den
+   // TITEL aber manchmal roh aus dem CJ-Listing — sechs Fälle standen am 20.08. aktiv im
+   // Google-Kanal. Begründung, Fehlalarm-Abgrenzung und Testfälle: automation/titel_sprache.mjs.
    // Erst ein zweiter Übersetzungsversuch, dann übersprungen — KEIN Ledger-Eintrag, das Produkt
    // kommt in einer späteren Runde erneut dran (gleiches Verhalten wie skip(gemini)).
-   const DEMARK=/[äöüÄÖÜß]|\b(und|für|mit|aus|der|die|das|den|dem|des|ein|eine|einen|einem|im|in|zu|zum|zur|von|bei|auf|ohne|nach|vor|oder|als|wie|ist|sind|zwei|drei|vier|fünf)\b/i;
-   const echoVomLieferanten=(t,src)=>{
-    if(!t||DEMARK.test(t))return false;
-    const q=String(src||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'');
-    if(q.length<8)return false;
-    const w=String(t).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').split(/[^a-z0-9]+/).filter(x=>x.length>=3);
-    if(w.length<3)return false;
-    return w.filter(x=>q.includes(x)).length/w.length>=0.9;
-   };
    if(echoVomLieferanten(g.title,nm)){
     const g2=await gemini(nm,feats,grp.kat); await sleep(GSLEEP);
     if(g2&&g2.title&&g2.html&&!echoVomLieferanten(g2.title,nm)){

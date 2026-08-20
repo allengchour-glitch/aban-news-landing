@@ -8,6 +8,7 @@
 import fs from 'node:fs';
 import { catTags } from './cat_tags.mjs';
 import { produktSaeubern } from './marken_filter.mjs';
+import { echoVomLieferanten } from './titel_sprache.mjs';
 import { medizinZweck } from './medizin_zweck.mjs';
 const SHOP = 'au3j0y-hq.myshopify.com', API = '2025-01';
 const CID = process.env.SHOPIFY_CLIENT_ID, CSEC = process.env.SHOPIFY_CLIENT_SECRET;
@@ -135,6 +136,20 @@ for (const item of ITEMS) {
   const ms = produktSaeubern(g.title, g.html);
   if (ms.verdacht) { console.log('✗ Markenbezug, übersprungen:', item); continue; }
   g.title = ms.title; g.html = ms.html;
+  // 🇩🇪 Titel-Sprachwache (20.08.2026): der Übersetzer liefert die Beschreibung deutsch, den
+  // Titel aber manchmal roh aus dem CJ-Listing. Begründung + Testfälle: automation/titel_sprache.mjs.
+  // Erst ein zweiter Versuch, dann überspringen (kein Ledger-Eintrag → kommt später erneut dran).
+  {
+   const quelle = d.productNameEn || val;
+   if (echoVomLieferanten(g.title, quelle)) {
+    const g2 = await groq(quelle, feats);
+    if (g2 && g2.title && g2.html && !echoVomLieferanten(g2.title, quelle)) {
+     const m2 = produktSaeubern(g2.title, g2.html);
+     if (!m2.verdacht) { g.title = m2.title; g.html = m2.html; }
+    }
+    if (echoVomLieferanten(g.title, quelle)) { console.log('✗ Titel nicht uebersetzt, uebersprungen:', String(g.title).slice(0,50)); continue; }
+   }
+  }
   // ß→ss (15.08.2026): CH-Schreibung, Quelle-Fix wie in cj_category_fill
   const title = g.title.slice(0, 70).replace(/ß/g, 'ss').replace(/ẞ/g, 'SS');
   // Titel-Wache inkl. Umlaut-Normalisierung (Geraet==Gerät-Falle 2026-07-08) + Bild-Wache (GEHIRN 2)
