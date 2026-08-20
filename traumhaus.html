@@ -1159,6 +1159,33 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     sg.setIndex(sIdx);sg.computeVertexNormals();
     var sand=new THREE.Mesh(sg,new THREE.MeshStandardMaterial({color:0x8f7a52,roughness:1,envMapIntensity:0.2}));
     sand.rotation.x=-Math.PI/2;sand.position.set(x,-0.015,z);sand.receiveShadow=true;scene.add(sand);
+    /* 🌾 Schilfguertel am Ufer (User: "schoenere map"). Der See endete bisher
+       hart: Wasser, Sandring, Gras. Ein paar Halmbueschel in den Uferbuchten
+       machen daraus ein Ufer — als EIN InstancedMesh, also ein Zeichenaufruf.
+       Die Bueschel folgen derselben Uferkurve seeR(), damit keins im Wasser
+       oder im Weg steht; die Promenade (Nordseite) bleibt frei. */
+    (function schilf(){
+      var halme=[],dmy=new THREE.Object3D(),sd=13;
+      function rnd(){sd=(sd*16807)%2147483647;return sd/2147483647;}
+      for(var b=0;b<74;b++){
+        var ab=rnd()*Math.PI*2;
+        if(Math.sin(ab)<-0.45)continue;                /* Promenadenseite aussparen */
+        var rb=seeR(ab)+0.35+rnd()*0.7;
+        var bx=x+Math.cos(ab)*rb, bz=z+Math.sin(ab)*rb;
+        for(var h=0;h<5;h++){
+          halme.push([bx+(rnd()-0.5)*1.5, bz+(rnd()-0.5)*1.5,
+                      1.5+rnd()*1.3, (rnd()-0.5)*0.3, rnd()*3.14]);}
+      }
+      if(!halme.length)return;
+      var hG=new THREE.BoxGeometry(0.16,1,0.16);hG.translate(0,0.5,0);  /* 0.07 war aus Spielsicht unsichtbar */
+      var hM=new THREE.MeshStandardMaterial({color:0x6f8a3e,roughness:0.95});
+      var hI=new THREE.InstancedMesh(hG,hM,halme.length);
+      halme.forEach(function(q,i){
+        dmy.position.set(q[0],0,q[1]);
+        dmy.rotation.set(q[3],q[4],q[3]*0.6);
+        dmy.scale.set(1,q[2],1);dmy.updateMatrix();hI.setMatrixAt(i,dmy.matrix);});
+      hI.castShadow=true;scene.add(hI);
+    })();
   })(0,146); /* 🛣️ Der See lag bei (-90,80) und ragte mit ~15 m Radius in die West-Zufahrt
      (Band -82.5..-73.5) — daher „See auf Strasse" und der abgerissene Gehweg. Zwischen
      Zufahrt und Ringstrasse sind nur 25 m Platz, ein See dieser Groesse passt dort nicht.
