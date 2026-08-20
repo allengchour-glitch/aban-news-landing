@@ -60,3 +60,6 @@ gid://shopify/Product/15412677607809	ersetzt
 gid://shopify/Product/15412678328705	ersetzt
 gid://shopify/Product/15412751499649	ersetzt
 gid://shopify/Product/15412751860097	ersetzt
+gid://shopify/Product/15412752155009	ersetzt
+gid://shopify/Product/15412825063809	ersetzt
+gid://shopify/Product/15412825129345	ersetzt
