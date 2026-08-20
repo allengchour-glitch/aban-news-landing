@@ -99,6 +99,41 @@ async function lebt(url) {
   } catch { return false; }
 }
 
+// ⚠️ GROSS GENUG? (20.08.2026) Google Merchant meldete 6'392 Varianten als «Image too small
+// for upcoming enforcement» — 668 Produkte. Die Ursache war DIESES Skript: CJ liefert zu
+// vielen Varianten nur eine Miniatur (250–499 px), und die wurde ungeprüft hochgeladen und
+// zugeordnet. Dadurch bekam Google für die Variante ein KLEINERES Bild als das Hauptbild
+// des Produkts, das oft 750–1600 px hat. Google verlangt künftig 500 px Kantenlänge.
+// Ein zu kleines Variantenbild ist doppelt schlecht: schlechter für Google UND schlechter
+// für die Kundin als das grosse Hauptbild, das es verdrängt. Lieber gar kein Variantenbild.
+const MINKANTE = 500;
+async function grossGenug(url) {
+  try {
+    // Nur den Anfang laden — Bildmasse stehen im Kopf der Datei.
+    const r = await fetch(url, { headers: { Range: 'bytes=0-65535' }, signal: AbortSignal.timeout(25000) });
+    if (!r.ok && r.status !== 206) return false;
+    const buf = Buffer.from(await r.arrayBuffer());
+    let w = 0, h = 0;
+    if (buf[0] === 0xFF && buf[1] === 0xD8) {                 // JPEG
+      let i = 2;
+      while (i < buf.length - 9) {
+        if (buf[i] !== 0xFF) { i++; continue; }
+        const m = buf[i + 1];
+        if (m >= 0xC0 && m <= 0xCF && m !== 0xC4 && m !== 0xC8 && m !== 0xCC) {
+          h = buf.readUInt16BE(i + 5); w = buf.readUInt16BE(i + 7); break;
+        }
+        i += 2 + buf.readUInt16BE(i + 2);
+      }
+    } else if (buf.slice(0, 8).toString('hex') === '89504e470d0a1a0a') {   // PNG
+      w = buf.readUInt32BE(16); h = buf.readUInt32BE(20);
+    } else if (buf.slice(0, 4).toString() === 'RIFF' && buf.slice(8, 12).toString() === 'WEBP') {
+      return true;      // WebP-Masse sind aufwendiger zu lesen — nicht blockieren
+    }
+    if (!w || !h) return true;          // unlesbar → nicht blockieren, nur nicht behaupten
+    return Math.min(w, h) >= MINKANTE;
+  } catch { return true; }              // Netzfehler darf kein Bild verwerfen
+}
+
 // ⚠️ DIE LIEFERANTENBILDER SIND OFT WERBEPLAKATE. Beim ersten scharfen Lauf holte dieses
 // Skript für einen «LED-Projektor» sechs Variantenbilder herein, auf denen «MAGCUBIC
 // PROJECTOR» stand, dazu die Logos von Netflix, YouTube, Disney+, Prime Video und Hulu,
@@ -221,7 +256,7 @@ async function main() {
 
     const urls = [...new Set(paare.map(v => cjv[v.sku]))];
     const gut = [];
-    for (const u of urls) if (await lebt(u) && textFrei(u)) gut.push(u);
+    for (const u of urls) if (await lebt(u) && await grossGenug(u) && textFrei(u)) gut.push(u);
     if (!gut.length) {
       ohne++; fs.appendFileSync(LEDGER, `${k.id}\tbild-urls-tot\n`); await sleep(2000); continue;
     }

@@ -149,6 +149,26 @@ kann neue tote Links erzeugen.
 - ⚠️ `/collections/all` meldet der Prüfer als «fehlt» — das ist Shopifys eingebaute Route und
   funktioniert. Kein Fehler, nicht anfassen.
 
+## 🖼️ «Image too small» — der Nachfüller war die Ursache (2026-08-20)
+Google Merchant meldete **6'392 Varianten aus 668 Produkten** als «Image too small for upcoming
+enforcement». Wichtig für die Einordnung: alle standen auf **«No impact»** und betrafen **nur
+Shopping ads**, nicht die Gratis-Einträge (aus denen die Verkäufe kommen). Kein Ausfall, eine Vorwarnung.
+**Die Ursache war unser eigener `cj_variantenbild.mjs`.** Er prüfte Lieferantenbilder auf «lebt» und
+«textfrei», aber NICHT auf Grösse. CJ liefert zu vielen Varianten nur eine Miniatur (250–499 px) —
+die wurde hochgeladen und der Variante zugeordnet und **verdrängte damit das grosse Hauptbild**
+(oft 750–1600 px). Google bekam für die Variante das kleinere Bild; die Kundin auch.
+Stichprobe: 5 von 25 gemeldeten Varianten hatten ein eigenes Bild mit 310–454 px, während das
+Hauptbild 613–1320 px hatte. Die übrigen 20 hatten gar kein Variantenbild — dort ist das Hauptbild
+selbst zu klein, das lässt sich nur über grössere Quellbilder von CJ heilen (braucht CJ-Punkte).
+- Eingebaut: `grossGenug(url)` liest die Bildmasse aus dem Dateikopf (JPEG-SOF/PNG-IHDR, nur die
+  ersten 64 KB laden) und verwirft alles unter **500 px Kantenlänge**. Netzfehler oder unlesbare
+  Masse verwerfen NICHT — ein Ausfall darf kein Bild kosten.
+- **Lieber gar kein Variantenbild als ein zu kleines**: Ein 310-px-Variantenbild ist doppelt
+  schlecht — schlechter für Google UND schlechter als das grosse Hauptbild, das es ersetzt.
+⚠️ Bestehende zu kleine Zuordnungen sind damit NICHT geheilt, nur der Nachschub gestoppt. Die
+Reparatur braucht grössere CJ-Quellbilder (Tagesbudget) — und die Frage, ob man ein Variantenbild
+entfernt (Google besser, Farbwahl schlechter) gehört dem Betreiber.
+
 ## 🎟️ Eine Aktion endet nicht mit dem Code, sondern mit dem letzten Text (2026-08-20)
 Der Vatertags-Code **PAPA25** lief am 8. Juni ab. Zweieinhalb Monate später bewarben ihn noch
 **fünf veröffentlichte Seiten** — und die Suche nach weiteren toten Codes fand **sechs weitere
