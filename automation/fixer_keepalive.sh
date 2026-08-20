@@ -275,6 +275,23 @@ while true; do
       echo "$(date -u +%H:%M) tote-links geprüft"
     fi
   fi
+  # FARBCODES IN DER VARIANTEN-AUSWAHL, einmal täglich gegen LIVE: Am 20.08.2026 stand bei
+  # 151 aktiven Produkten der CJ-Artikelcode im Dropdown «Farbe» — «A039 Black», «E7916 White».
+  # Titel und Beschreibung waren sauber; die beiden alten Reiniger (farbcode_bereinigen.py,
+  # titelcode_entfernen.py) fassen die OPTIONSWERTE nämlich nie an, dabei ist der Code dort für
+  # die Kundin unausweichlich — sie MUSS ihn anklicken. Der Importer schreibt sie nicht mehr
+  # (cj_category_fill.mjs), aber ältere Läufe und andere Wege legen weiter welche an.
+  FO=/tmp/farbcode_optionswerte.log
+  if [ -f "$REPO/automation/farbcode_optionswerte.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$FO" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid env QUELLE=live SEIT=$(date -u -d '3 days ago' +%F) \
+          python3 automation/farbcode_optionswerte.py >> "$FO" 2>&1 9>&- & )
+      ( cd "$REPO" && setsid env QUELLE=live SEIT=$(date -u -d '3 days ago' +%F) \
+          python3 automation/farbcode_rein_melden.py >> "$FO" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) farbcode-optionswerte Live-Nachzug gestartet"
+    fi
+  fi
   # ADS-KURATION NACHZUG, einmal täglich gegen LIVE: der Export-Lauf deckt nur den
   # Schnappschuss ab, der CJ-Grind legt täglich neue 1-Bild-/Billig-Produkte an — ohne
   # Nachzug wüchse «Over capacity» einfach nach (Backfill-Regel vom 12.08.).

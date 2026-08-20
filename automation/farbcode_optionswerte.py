@@ -127,14 +127,44 @@ def optionen(gid):
     return (d.get("node") or {})
 
 
+
+def live_produkte(seit):
+    """Frisch aus dem Shop statt aus dem Schnappschuss – der CJ-Grind legt täglich nach,
+    ein Export von gestern kennt genau die neuen Produkte nicht (Lehre vom 14.08.2026)."""
+    q = ("query($c:String,$q:String!){products(first:100,after:$c,query:$q){"
+         "pageInfo{hasNextPage endCursor} nodes{id title status "
+         "options{id name optionValues{id name}}}}}")
+    cursor = None
+    while True:
+        d = (gql(q, {"c": cursor, "q": f"status:active created_at:>{seit}"}) or {}).get("products")
+        if not d:
+            return
+        for n in d["nodes"]:
+            yield n
+        if not d["pageInfo"]["hasNextPage"]:
+            return
+        cursor = d["pageInfo"]["endCursor"]
+        time.sleep(0.5)
+
+
+def quelle():
+    """Liefert Produkt-Dicts (id/title/options) – aus dem Export oder live."""
+    if QUELLE == "live":
+        seit = os.environ.get("SEIT") or (
+            __import__("datetime").date.today() - __import__("datetime").timedelta(days=3)).isoformat()
+        print(f"Quelle: LIVE, angelegt nach {seit}", flush=True)
+        yield from live_produkte(seit)
+    else:
+        for zeile in open(EXPORT):
+            yield json.loads(zeile)
+
 def main():
     if QUELLE == "ids":
         ids = [i.strip() for i in os.environ["IDS"].split(",") if i.strip()]
         kandidaten = [(i if i.startswith("gid:") else "gid://shopify/Product/" + i, "") for i in ids]
     else:
         kandidaten = []
-        for zeile in open(EXPORT):
-            p = json.loads(zeile)
+        for p in quelle():
             if "options" not in p:
                 continue
             for o in p.get("options") or []:

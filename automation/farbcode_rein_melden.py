@@ -22,6 +22,7 @@ import json, os, re, time, urllib.request
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
 URL = "https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json"
 DRY = os.environ.get("DRY") == "1"
+QUELLE = os.environ.get("QUELLE", "export")
 EXPORT = os.environ.get("EXPORT", "/tmp/optvals_raw.jsonl")
 LEDGER = "dropship/_farbcode_rein.txt"
 TAG = "farbcode-optionswert-pruefen"
@@ -80,10 +81,40 @@ def gql(q, v=None):
     return {}
 
 
+
+def live_produkte(seit):
+    """Frisch aus dem Shop statt aus dem Schnappschuss – der CJ-Grind legt täglich nach,
+    ein Export von gestern kennt genau die neuen Produkte nicht (Lehre vom 14.08.2026)."""
+    q = ("query($c:String,$q:String!){products(first:100,after:$c,query:$q){"
+         "pageInfo{hasNextPage endCursor} nodes{id title status "
+         "options{id name optionValues{id name}}}}}")
+    cursor = None
+    while True:
+        d = (gql(q, {"c": cursor, "q": f"status:active created_at:>{seit}"}) or {}).get("products")
+        if not d:
+            return
+        for n in d["nodes"]:
+            yield n
+        if not d["pageInfo"]["hasNextPage"]:
+            return
+        cursor = d["pageInfo"]["endCursor"]
+        time.sleep(0.5)
+
+
+def quelle():
+    """Liefert Produkt-Dicts (id/title/options) – aus dem Export oder live."""
+    if QUELLE == "live":
+        seit = os.environ.get("SEIT") or (
+            __import__("datetime").date.today() - __import__("datetime").timedelta(days=3)).isoformat()
+        print(f"Quelle: LIVE, angelegt nach {seit}", flush=True)
+        yield from live_produkte(seit)
+    else:
+        for zeile in open(EXPORT):
+            yield json.loads(zeile)
+
 def main():
     kandidaten = []
-    for zeile in open(EXPORT):
-        p = json.loads(zeile)
+    for p in quelle():
         if nur_codes(p.get("options") or []):
             kandidaten.append(p["id"])
     print(f"Farb-Optionen, die nur aus Lieferantencodes bestehen: {len(kandidaten)}", flush=True)
