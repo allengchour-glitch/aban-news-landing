@@ -206,3 +206,4 @@ gid://shopify/Product/15506299748737	vibrations-heizkissen-fur-buro-und-zuhause-
 gid://shopify/Product/15506314461569	fashion-platform-pantoletten-614200	Fashion Platform Pantoletten
 gid://shopify/Product/15506314494337	boya-by-pm500-usb-mikrofon-mit-soundkarte-439936	Boya BY-PM500 USB-Mikrofon mit Soundkarte
 gid://shopify/Product/15506419351937	figurbetontes-spaghettitrager-kleid-mit-totenk-619800	Figurbetontes Spaghettiträger-Kleid mit Totenkopf
+gid://shopify/Product/15506541773185	gestreifter-kissenbezug-aus-baumwoll-leinen-676224	Gestreifter Kissenbezug aus Baumwoll-Leinen
