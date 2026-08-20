@@ -5354,7 +5354,13 @@ setTimeout(function baueGebaeude(){
       [-9,9].forEach(function(px){
         bau("th35_laterne_schmiede.glb",4.2,DX+px,0,DZ+12,0,false,null,true);});
       bau("th36_obelisk.glb",4.2,DX,0,DZ+12,0,false,null,true);
-      [-11,11].forEach(function(bx){bau("th35_bank_zier.glb",1.0,DX+bx,0,DZ+14,0,false,null,true);});
+      /* ⚠️ Die Westbank (DX-11) stand gemessen NICHT auf DZ+14, sondern 6,3 m
+         weiter suedlich auf z -69,8 — mitten in bd_house_b (x -69,4…-65,6,
+         z -75,0…-69,2), 24 Mesh-Paare. Nicht die Platzierung war schuld,
+         sondern der Entzerrer: die Baenke liefen ohne `fest` mit. Auf dem
+         Vorplatz gehoeren sie an ihren Platz, also werden sie festgenagelt. */
+      [-11,11].forEach(function(bx){bau("th35_bank_zier.glb",1.0,DX+bx,0,DZ+14,0,false,
+        function(w){w.userData.fest=true;},true);});
       bau("th35_pflanzschale.glb",0.9,DX-5,0,DZ+10,0,false,null,true);
       bau("th35_pflanzschale.glb",0.9,DX+5,0,DZ+10,0,false,null,true);
     })();
@@ -5575,12 +5581,18 @@ setTimeout(function baueGebaeude(){
          Jetzt: durchgehendes helles Gehwegband in der Gasse, die Portalachse und
          die Gasse bleiben MOEBELFREI; das Portal wird nur von zwei Laternen und
          zwei Pflanzschalen flankiert, der Rest steht auf der freien Ostflaeche. */
+      /* ⚠️ GEMESSEN: z 95,9 stammt aus der Zeit des prozeduralen Kastenbahnhofs.
+         `th41_bahnhof` (Charge 41) reicht von z 93,1 bis 104,2 — die beiden
+         Laternen und die beiden Pflanzschalen standen damit IM Gebaeude
+         (260 + 86 Mesh-Paare gegen Sockel und Stufe). Das Portal wird immer noch
+         flankiert, nur eben VOR der Fassade: 91,8 laesst 1,3 m Luft, und das
+         Gehwegband endet mit 93,1 genau an der Hauswand. */
       var pf=new THREE.Mesh(new THREE.PlaneGeometry(28,2.6),betMat(0xd6cfc0,0.9));
-      pf.rotation.x=-Math.PI/2;pf.position.set(0,-0.001,95.9);pf.receiveShadow=true;scene.add(pf);
-      bau("th35_laterne_schmiede.glb",4.2,-5.5,0,95.9,0,false,null,true);
-      bau("th35_laterne_schmiede.glb",4.2,5.5,0,95.9,0,false,null,true);
-      bau("th35_pflanzschale.glb",0.8,-3.3,0,95.7,0,false,null,true);
-      bau("th35_pflanzschale.glb",0.8,3.3,0,95.7,0,false,null,true);
+      pf.rotation.x=-Math.PI/2;pf.position.set(0,-0.001,91.8);pf.receiveShadow=true;scene.add(pf);
+      bau("th35_laterne_schmiede.glb",4.2,-5.5,0,91.8,0,false,null,true);
+      bau("th35_laterne_schmiede.glb",4.2,5.5,0,91.8,0,false,null,true);
+      bau("th35_pflanzschale.glb",0.8,-3.3,0,91.6,0,false,null,true);
+      bau("th35_pflanzschale.glb",0.8,3.3,0,91.6,0,false,null,true);
       /* Ostflaeche neben dem Bahnhof: kleiner Warteplatz mit Brunnen und Bank */
       var op=new THREE.Mesh(new THREE.PlaneGeometry(8,7),betMat(0xd6cfc0,0.9));
       op.rotation.x=-Math.PI/2;op.position.set(17.5,-0.001,98);op.receiveShadow=true;scene.add(op);
@@ -6245,8 +6257,11 @@ setTimeout(function baueGebaeude(){
     fest("th42_klettergeruest.glb",2.61,SX+5.0,HZ1-2.6,Math.PI);
     fest("th42_tischtennis.glb",0.92,SX-2.6,HZ-2.6,0);
     fest("th42_tischtennis.glb",0.92,SX+2.6,HZ-2.6,0);
-    fest("th42_schulbank.glb",2.79,SX-7.0,HZ0+1.4,0);
-    fest("th42_schulbank.glb",2.79,SX+6.0,HZ0+1.4,0);
+    /* ⚠️ HZ0+1,4 stellte die westliche Schulbank mit ihrer Krone (Sphere,
+       y 1,53…2,57) in das Stadthaus daneben — 26 Meshes fest. HZ0+4,4 ist
+       der naechste gemessen freie Stand. */
+    fest("th42_schulbank.glb",2.79,SX-7.0,HZ0+4.4,0);
+    fest("th42_schulbank.glb",2.79,SX+6.0,HZ0+4.4,0);
     /* Fahrradstaender an der Hofkante zur Schule, Raster 3,20. */
     for(var k=0;k<4;k++)
       fest("th42_fahrradstaender.glb",2.44,HX0+1.6+k*3.2,HZ1-0.8,Math.PI);

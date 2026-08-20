@@ -1846,6 +1846,31 @@ Ein Test über den seitlichen Versatz bestätigte es: die Trefferzahl blieb übe
 
 Ergebnis: **91 → 87 echte Funde.**
 
+### Dritte Runde: wenn ein Modell ein größeres ersetzt, bleibt die Möblierung stehen
+
+Von 88 Funden wieder vier echte, und zwei davon hatten dieselbe Ursache:
+
+| Fund | Mesh-Paare | war |
+|---|---|---|
+| `th35_pflanzschale × th41_bahnhof` | **260** | zwei Pflanzschalen im Bahnhofssockel |
+| `th35_laterne_schmiede × th41_bahnhof` | 86 | zwei Schmiedelaternen ebenda |
+| `th35_bank_zier × bd_house_b` | 55 | Zierbank in einer Hauswand |
+| `th42_schulbank × th8_stadthaus_offen` | 50 | Baumkrone der Schulbank im Stadthaus |
+
+**Bahnhof:** die vier Möbel standen auf z 95,7…96,3 — ein Wert aus der Zeit des prozeduralen
+Kastenbahnhofs. `th41_bahnhof` reicht von z 93,1 bis 104,2, also standen sie *im Gebäude*. Der
+Kommentar („das Portal wird von zwei Laternen und zwei Pflanzschalen flankiert") beschrieb
+weiter die richtige Absicht — nur war die Fassade inzwischen 2,6 m weiter vorn. **Wenn ein
+Modell einen kleineren Vorgänger ersetzt, wandert die Möblierung nicht automatisch mit.**
+
+**Zierbank:** hier war die Platzierung korrekt und der **Entzerrer** der Täter. Die Bank lief
+ohne `userData.fest` mit und wurde 6,3 m nach Süden in ein Haus geschoben. Auf einem gestalteten
+Vorplatz gehören Möbel an ihren Platz — also festnageln, nicht verschieben. (Bei den Straßen-
+bäumen war es genau umgekehrt: dort *ist* das Verschieben die Lösung, weil die Krone nirgends
+sonst hinpasst. Der Unterschied ist, ob die Position gestaltet oder nur gestreut ist.)
+
+Ergebnis: **88 → 83 echte Funde.**
+
 > 🔑 **Die Regel.** Erst die Zahl aus der Hypothese ableiten, dann messen, dann ändern —
 > und zwischen „Boxen überlappen" und „Geometrie steckt ineinander" nie stillschweigend
 > wechseln. Zwei Änderungen dieses Durchgangs wurden vor dem Commit wieder verworfen, weil
