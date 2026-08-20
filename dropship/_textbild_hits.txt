@@ -6839,3 +6839,4 @@ gid://shopify/Product/15453728899457	11->0	Boho-Plakat mit geometrischen Linien
 gid://shopify/Product/15413077115265	999->0	Wide-Leg-Hose «Largo» – gerades Bein, elegant
 gid://shopify/Product/15448937005441	18->0	LED-Photonenmaske mit Hals- und Hautpflege
 gid://shopify/Product/15449478726017	999->0	Perlenshalskette mit Muschelarmband
+gid://shopify/Product/15450214695297	999->0	Premium-Sojawachskerze mit Rotwein-, Leder- & Espresso-Duft
