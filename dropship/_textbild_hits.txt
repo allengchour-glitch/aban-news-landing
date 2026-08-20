@@ -6865,3 +6865,5 @@ gid://shopify/Product/15454092132737	8->0	6-Taschen Jogginghose für Training & 
 gid://shopify/Product/15454092427649	11->2	Avocado Katzenpfefferball
 gid://shopify/Product/15454093148545	29->1	Interaktive Katzen-Spielkugel
 gid://shopify/Product/15454106321281	11->0	Schutzhelm aus Polycarbonat
+gid://shopify/Product/15454115561857	9->0	DIY Ölmalerei Herz Bild Geschenk für Paare
+gid://shopify/Product/15454116938113	14->0	Nordic Tischlampe mit weichem Licht
