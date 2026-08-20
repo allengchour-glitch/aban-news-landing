@@ -201,3 +201,7 @@ gid://shopify/Product/15506226184577	elegante-chunky-heel-sandalen-mit-eckiger-z
 gid://shopify/Product/15506243912065	leder-loafer-mit-weicher-sohle-616600	Leder-Loafer mit weicher Sohle
 gid://shopify/Product/15506243944833	polarbar-mini-luftbefeuchter-865b96	Polarbär Mini-Luftbefeuchter
 gid://shopify/Product/15506263310721	brusttasche-oxford-stoff-wasserdicht-490432	Brusttasche Oxford-Stoff wasserdicht
+gid://shopify/Product/15506299683201	retro-tischuhr-mit-pendel-428480	Retro Tischuhr mit Pendel
+gid://shopify/Product/15506299748737	vibrations-heizkissen-fur-buro-und-zuhause-176960	Vibrations-Heizkissen für Büro und Zuhause
+gid://shopify/Product/15506314461569	fashion-platform-pantoletten-614200	Fashion Platform Pantoletten
+gid://shopify/Product/15506314494337	boya-by-pm500-usb-mikrofon-mit-soundkarte-439936	Boya BY-PM500 USB-Mikrofon mit Soundkarte
