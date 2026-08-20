@@ -371,6 +371,21 @@ while true; do
       echo "$(date -u +%H:%M) medizin_zweck_guard gestartet"
     fi
   fi
+  # TIERSCHUTZ TSchV Art. 76, einmal täglich über die Neuimporte der letzten 3 Tage.
+  # Am 16.08. wurden zwei Schock-Halsbänder als Sofortmassnahme gedraftet; am 20.08. standen
+  # VIERZEHN solche Geräte aktiv in allen sechs Kanälen — zwölf davon in den sieben Tagen davor
+  # neu angelegt, drei am Tag, nachdem eine engere Wache in den Importer geschrieben worden war.
+  # Ein Einmal-Ledger meldet bei dieser Klasse «fertig», während der Shop wieder voll davon ist.
+  # Meldet nur; Reparatur bewusst mit FIX=1 von Hand, damit niemand blind draftet.
+  TS=/tmp/tierschutz_guard.log
+  if [ -f "$REPO/automation/tierschutz_guard.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$TS" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && SEIT=$(date -u -d '3 days ago' +%F) setsid python3 \
+          automation/tierschutz_guard.py >> "$TS" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) tierschutz_guard gestartet"
+    fi
+  fi
   # DESIGNZWANG der «Selbst gestalten»-Produkte, einmal täglich nachziehen (14.08.2026).
   # Der Schutz liegt in vier Theme-Dateien (blocks/buy-buttons, sections/product-information,
   # snippets/quick-add, snippets/cart-summary). Ein Horizon-Update überschreibt genau solche

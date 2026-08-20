@@ -10,6 +10,7 @@ import { catTags } from './cat_tags.mjs';
 import { produktSaeubern } from './marken_filter.mjs';
 import { echoVomLieferanten } from './titel_sprache.mjs';
 import { medizinZweck } from './medizin_zweck.mjs';
+import { tierschutzGeraet } from './tierschutz_geraet.mjs';
 const SHOP = 'au3j0y-hq.myshopify.com', API = '2025-01';
 const CID = process.env.SHOPIFY_CLIENT_ID, CSEC = process.env.SHOPIFY_CLIENT_SECRET;
 let CJT = (process.env.CJ_TOKEN || '').trim();
@@ -171,12 +172,19 @@ for (const item of ITEMS) {
   // cj_queue_runner.sh und legt Ware genauso ACTIVE + in allen Kanälen an; ohne die Wache
   // hier wäre die Lücke nur verschoben statt geschlossen (Befund 14.08.2026).
   const med = medizinZweck(title, g.html);
+  // 🐾 Tierschutz TSchV Art. 76 — gleiche Prüfung wie in cj_category_fill.mjs, gleiche
+  // Musterdatei (automation/tierschutz_geraet.json). Siehe die Begründung dort: am 20.08.2026
+  // standen 14 Schock-/Sprüh-Geräte aktiv in allen sechs Kanälen, zwölf davon in den sieben
+  // Tagen davor neu importiert.
+  const tsch = tierschutzGeraet(title, g.html);
   const slug = title.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 46) + '-' + String(pid).slice(-6);
-  const tagsFinal = [...new Set([...(med ? ['medizinprodukt-pruefen', 'medizin-zweck-' + med.grund] : ['trend', 'viral', 'video-hit']), 'cj-real', 'dropship', 'neu',
+  const tagsFinal = [...new Set([...(med ? ['medizinprodukt-pruefen', 'medizin-zweck-' + med.grund] : []),
+      ...(tsch ? ['tierschutz-tschv76', 'tierschutz-' + tsch.grund] : []),
+      ...((med || tsch) ? [] : ['trend', 'viral', 'video-hit']), 'cj-real', 'dropship', 'neu',
       ...((process.env.WH || '').trim() ? ['schnell-versand', 'eu-lager'] : []),
       ...catTags(`${title} ${d.productNameEn || ''} ${val || ''}`)])];
   const input = { title, handle: slug, productType: 'Trend-Produkt', vendor: 'LuxeStyle',
-    status: med ? 'DRAFT' : 'ACTIVE',
+    status: (med || tsch) ? 'DRAFT' : 'ACTIVE',
     tags: tagsFinal,
     descriptionHtml: (g.html + '\n<p>🚚 Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · 🇨🇭 LuxeStyle</p>').replace(/ß/g, 'ss').replace(/ẞ/g, 'SS'),
     seo: { title: (title + ' | LuxeStyle CH').slice(0, 70), description: `${title} – der Trend-Hit bei LuxeStyle Schweiz.`.slice(0, 320) },
@@ -205,10 +213,16 @@ for (const item of ITEMS) {
   // Ein Medizinprodukt geht in KEINEN Kanal — am wenigsten in «Google & YouTube».
   if (med) { console.log(`⚕️ medizinische Zweckbestimmung (${med.grund}) → DRAFT, nicht publiziert: ${title.slice(0,44)}`);
             fs.appendFileSync(LEDGER, 'cj:' + pid + '\n'); continue; }
-  // TSchV Art. 76: Schockhalsbänder sind in der Schweiz verboten — DRAFT, kein Kanal.
-  const tschv = /halsband|collar/i.test(title) && /schock|shock|stromst[oö]ss|reizstrom|elektro.?impuls/i.test(title + ' ' + (g.html || '').slice(0, 1200));
-  if (tschv) { await sgql(t, `mutation($i:ProductInput!){ productUpdate(input:$i){userErrors{message}} }`, { i: { id: spid, status: 'DRAFT', tags: ['tschv-verboten', 'schockhalsband', 'cj-real', 'dropship'] } });
-            console.log(`🐕 TSchV-Schockhalsband → DRAFT: ${title.slice(0,44)}`);
+  // TSchV Art. 76: Erziehungsgeräte mit Schock-, Impuls- oder Reizstoffwirkung → DRAFT, kein Kanal.
+  // ⚠️ ZWEI FEHLER STANDEN BIS 20.08.2026 IN DIESEN DREI ZEILEN:
+  // (1) Das Muster verlangte «Halsband»/«Collar» im TITEL und kannte «statischer Impuls»,
+  //     «elektrostatische Stimulation», «elektrischem Impuls» nicht — an den 14 live gefundenen
+  //     Geräten gemessen wären neun durchgerutscht. Jetzt prüft die gemeinsame Musterdatei.
+  // (2) `tags:` ERSETZT die komplette Tag-Liste (Gedächtnis-Regel vom 20.08.): der Aufruf hat
+  //     alles ausser vier Tags gelöscht — die Ware wäre aus jeder Kollektion gefallen. Der
+  //     Status steht ohnehin schon oben auf DRAFT und die Tags stehen in tagsFinal; hier wird
+  //     nichts mehr überschrieben.
+  if (tsch) { console.log(`🐾 Tierschutz TSchV 76 (${tsch.grund}, «${tsch.muster}») → DRAFT, nicht publiziert: ${title.slice(0,44)}`);
             fs.appendFileSync(LEDGER, 'cj:' + pid + '\n'); continue; }
   // Hausregel 12.08.: Klingen (auch Küchenmesser) nie in den Google-Kanal.
   const klinge = /\b(messer|klinge\w*|dolch|machete|axt|beil|schwert|katana)/i.test(title)

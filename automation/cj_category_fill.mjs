@@ -789,13 +789,21 @@ for(const [cat,label] of grp.cats){
        console.log('  skip(mah-unglaubwuerdig)', mahM[0], title.slice(0,40));
        fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid)); continue;
      }
-     // TSchV Art. 76: Halsbänder mit Stromstoss-Funktion sind in der Schweiz verboten —
-     // gar nicht erst anlegen. Die heikel-Wache klammert Tiergeräte bewusst aus
-     // (kein-mensch-als-ziel); 19.08.: 3 Tage nach dem Audit importierte der Grind
-     // schon wieder ein «Hundetrainingshalsband» mit Schock-Modus 1–99 in alle 6 Kanäle.
-     if(/halsband|collar/i.test(title)
-        && /schock|shock|stromst[oö]ss|static\s*(modus|mode)|reizstrom|elektro.?impuls/i.test(title+' '+html.slice(0,1200))){
-       console.log('  skip(tschv-schockhalsband)', title.slice(0,40));
+     // TSchV Art. 76: Erziehungsgeräte mit Schock-, Impuls- oder Reizstoffwirkung sind in der
+     // Schweiz nicht frei verkäuflich — gar nicht erst anlegen. Die heikel-Wache klammert
+     // Tiergeräte bewusst aus (kein-mensch-als-ziel).
+     // ⚠️ HIER STAND BIS ZUM 20.08.2026 EIN EIGENES, ZU ENGES MUSTER, und es ist genau die
+     // Falle, vor der das Gedächtnis an drei anderen Stellen warnt: es verlangte «Halsband»
+     // oder «Collar» IM TITEL und kannte als Wirkung nur «Schock/Stromstoss/elektro-impuls».
+     // Gegenprobe an den 14 Geräten, die am 20.08. live standen: NEUN wären durchgerutscht —
+     // «Drahtloser Hundezaun», «Hundebellen», «Elektronisches Hunde-Trainingsgerät» tragen kein
+     // Halsband im Titel, und «statischer Impuls», «elektrostatische Stimulation»,
+     // «elektrischem Impuls», «Puls-proportionale Stimulation» sind die Tarnwörter, unter denen
+     // der Lieferant den Schock verkauft. Drei der neun hat dieses Muster am 19.08. selbst
+     // durchgelassen, am Tag, an dem es geschrieben wurde. Es prüft jetzt nach der WIRKMECHANIK
+     // und liest den GANZEN Text — ein Muster, eine Datei, zwei Leser (tierschutz_guard.py).
+     if(tsch){
+       console.log(`  skip(tschv76/${tsch.grund})`, `«${tsch.muster}»`, title.slice(0,40));
        fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid)); continue;
      }
    }
