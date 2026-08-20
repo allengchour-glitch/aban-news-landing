@@ -240,6 +240,19 @@ while true; do
       echo "$(date -u +%H:%M) tote-rabattcodes geprüft"
     fi
   fi
+  # TOTE LINKS, einmal täglich: Ratgeber-Seiten verlinken Produkte, die inzwischen gelöscht
+  # oder gedraftet sind. Am 20.08.2026 waren es 61 Links auf 25 veröffentlichten Seiten — jeder
+  # Google-Besucher, der auf eine Empfehlung klickte, landete auf 404. Neue tote Links entstehen
+  # bei JEDEM Draft-Lauf (keine-lieferanten-ref, Dubletten, Sperr-Tags), ohne dass die Texte
+  # davon erfahren. Meldet nur; das Umhängen braucht eine Entscheidung.
+  TL=/tmp/tote_links.log
+  if [ -f "$REPO/automation/tote_links.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$TL" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid python3 automation/tote_links.py >> "$TL" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) tote-links geprüft"
+    fi
+  fi
   # ADS-KURATION NACHZUG, einmal täglich gegen LIVE: der Export-Lauf deckt nur den
   # Schnappschuss ab, der CJ-Grind legt täglich neue 1-Bild-/Billig-Produkte an — ohne
   # Nachzug wüchse «Over capacity» einfach nach (Backfill-Regel vom 12.08.).

@@ -130,6 +130,25 @@ live belegt an 15411554910593). `automation/versandaussagen_wahrheit.py`, Ledger
   Rechtstexte gehen nur per GraphQL `shopPolicyUpdate` — und dessen Input nimmt `type`
   (`SHIPPING_POLICY`), **nicht** `id`. Ohne Live-Gegenprobe hätte der Lauf als erledigt gegolten.
 
+## 🔗 61 tote Links in den SEO-Ratgebern — der teuerste stille Verlust (2026-08-20)
+Die veröffentlichten Ratgeber sind gebaut, um Google-Besucher anzuziehen — und genau dort führten
+**61 Links auf 25 Seiten** ins Nichts: auf gelöschte Produkte oder auf DRAFTs (für Besucherinnen
+dasselbe: 404). Betroffen waren «Echtleder vs. Kunstleder», «RFID-Schutz erklärt», «Wanderziele
+Schweiz», «Beauty-Routine in 10 Minuten» und 21 weitere. Der Besucher liest, klickt auf die
+empfohlene Ware — und ist weg. **Kein Bericht weist das je als Kaufabbruch aus.**
+**Die Ursache wiederholt sich zwangsläufig:** Der Viability-Guard draftet Ware ohne Lieferanten-SKU
+(`keine-lieferanten-ref` — alle 14 gefundenen DRAFTs), der Dubletten-Fix draftet Doppelgänger,
+Altbestand verschwindet. Die TEXTE, die darauf zeigen, erfahren davon nichts. Jeder Draft-Lauf
+kann neue tote Links erzeugen.
+- Wächter `automation/tote_links.py` (täglich im `fixer_keepalive.sh`): prüft jeden
+  `/products/…`-Link in veröffentlichten Seiten/Artikeln gegen den Live-Status. Meldet nur.
+- Repariert wurde mit Vorrang: **passender Ersatzartikel** (14 Fälle, über Wort-Überschneidung im
+  Titel gefunden), sonst die **passende Kategorie** — eine Kollektion kann nie 404 werden.
+- ⚠️ DRAFT-Produkte NICHT einfach veröffentlichen, um den Link zu retten: `keine-lieferanten-ref`
+  heisst, die Ware ist nicht bestellbar. Ein 404 ist ärgerlich, eine unlieferbare Bestellung teuer.
+- ⚠️ `/collections/all` meldet der Prüfer als «fehlt» — das ist Shopifys eingebaute Route und
+  funktioniert. Kein Fehler, nicht anfassen.
+
 ## 🎟️ Eine Aktion endet nicht mit dem Code, sondern mit dem letzten Text (2026-08-20)
 Der Vatertags-Code **PAPA25** lief am 8. Juni ab. Zweieinhalb Monate später bewarben ihn noch
 **fünf veröffentlichte Seiten** — und die Suche nach weiteren toten Codes fand **sechs weitere
