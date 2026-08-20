@@ -20,10 +20,11 @@ _PNG_SIG = b"\x89PNG\r\n\x1a\n"
 class Image:
     """Minimales Bild: mode 'RGB' (3 Byte/Pixel) oder 'L' (1 Byte/Pixel)."""
 
-    __slots__ = ("width", "height", "mode", "data", "_gray")
+    __slots__ = ("width", "height", "mode", "data", "_gray", "_skalen")
 
     def __init__(self, width: int, height: int, mode: str, data: bytearray):
         self._gray = None
+        self._skalen = None
         step = 3 if mode == "RGB" else 1
         if len(data) != width * height * step:
             raise ValueError(
@@ -174,6 +175,26 @@ class Image:
         return Image(width, height, self.mode, out)
 
     def box_scaled_by(self, factor: float) -> "Image":
+        """Verkleinern, Ergebnis je Faktor gemerkt.
+
+        GEMESSEN am 04.08.: ein Verkleinern des Bildschirms auf 1/8 kostet
+        0.203 s - mehr als die eigentliche Suche (0.122 s). Da jede Regel
+        dieselbe Verkleinerung erneut anforderte, ging der groesste Teil der
+        Rechenzeit fuer immer dasselbe Ergebnis drauf.
+        """
+        schluessel = round(float(factor), 4)
+        if self._skalen is None:
+            self._skalen = {}
+        fertig = self._skalen.get(schluessel)
+        if fertig is not None:
+            return fertig
+        fertig = self._box_scaled_by_roh(factor)
+        if len(self._skalen) > 8:    # nicht unbegrenzt wachsen lassen
+            self._skalen.clear()
+        self._skalen[schluessel] = fertig
+        return fertig
+
+    def _box_scaled_by_roh(self, factor: float) -> "Image":
         return self.box_scale(int(self.width * factor), int(self.height * factor))
 
     def draw_grid(self, step: int = 100, bold_every: int = 5) -> "Image":

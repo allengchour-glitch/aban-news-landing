@@ -92,7 +92,16 @@ def find_all(
     sub_l, sub_t = l, t
     sub_r = min(gray.width, r + tpl.width - 1)
     sub_b = min(gray.height, b + tpl.height - 1)
-    sub = gray.crop(sub_l, sub_t, sub_r - sub_l, sub_b - sub_t)
+    # Deckt der Ausschnitt ohnehin das ganze Bild ab, KEINE Kopie anlegen.
+    # crop() liefert sonst bei jeder Regel ein frisches Objekt - und damit ist
+    # der Verkleinerungs-Puffer am Bild wertlos, weil er an einem Objekt haengt,
+    # das gleich wieder weggeworfen wird. Gemessen kostet das Verkleinern des
+    # Bildschirms 0.2 s; bei 29 Regeln also fast sechs Sekunden fuer immer
+    # dasselbe Ergebnis.
+    if sub_l == 0 and sub_t == 0 and sub_r == gray.width and sub_b == gray.height:
+        sub = gray
+    else:
+        sub = gray.crop(sub_l, sub_t, sub_r - sub_l, sub_b - sub_t)
     if tpl.width > sub.width or tpl.height > sub.height:
         return []
 
@@ -169,6 +178,13 @@ def _coarse_candidates(sub: Image, tpl: Image, limit: int = 1,
     # taucht in der Kandidatenliste gar nicht erst auf.
     factor = max(factor, 14.0 / max(4, min(tpl.width, tpl.height)))
     factor = min(1.0, factor)
+    # KEINE Leiter fuer den Verkleinerungs-Faktor - ausprobiert und verworfen.
+    # Die Idee war, die 20 verschiedenen Faktoren auf eine Handvoll Stufen
+    # einzurasten, damit der Verkleinerungs-Puffer am Bild greift. Gemessen
+    # brachte das nichts (6.70 s statt 6.58 s) UND es riss ein Loch: eine
+    # Vorlage rastete von 0.70 auf 1.00 - damit greift der Zweig "gar nicht
+    # verkleinern", und der Feinlauf durchsucht das VOLLE Bild. Ein Durchlauf
+    # dauerte danach 124 Sekunden statt fuenf.
     if factor >= 0.95:
         leer = [(0, 0, max(sub.width, sub.height))]
         return (leer, 1.0) if mit_wert else leer
