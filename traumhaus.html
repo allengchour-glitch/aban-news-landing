@@ -1199,6 +1199,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     if(x<-116)return false;                                                    // Meer + Strand (Baeume standen im Wasser)
     if(x>118&&x<166&&z>3&&z<37)return false;                                   // 🩹 Schwarm-7: Wochenmarkt (142|20)
     if(x>26&&x<80&&z>136&&z<176)return false;                                  // 🩩 Schwarm-7: Sportplatz (53|155)
+    if(x>122&&x<170&&z>-54&&z<4)return false;                                  // Kirchhof am Ost-Tor (146|-22): Zaun + Freiraum ringsum
     /* Klinikareal (0|-128), Charge 49. Hier als Rechteck und nicht ueber
        `window.KLINIK`: freiPlatz wird von der Allee schon gerufen, bevor der
        Klinik-Abschnitt weiter unten den Globalwert ueberhaupt setzt. */
@@ -1386,6 +1387,47 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       var gruen=new THREE.Mesh(new THREE.PlaneGeometry(PW-4,1.6),new THREE.MeshStandardMaterial({color:0x5f9a52,roughness:0.95}));
       gruen.rotation.x=-Math.PI/2;gruen.position.set(PX,0.006,PZ-PD/2-1.6);gruen.receiveShadow=true;scene.add(gruen);
       for(var tb=0;tb<4;tb++)baum2(PX-13.5+tb*9,PZ-PD/2-1.7,0.62);
+      /* 🅿️ Ausstattung wie auf einem echten Parkplatz (User: "parkplaetze schoener"):
+         Richtungspfeile in der Einbahn-Fahrgasse, ein markierter Behindertenplatz,
+         Beleuchtung und ein Kassenautomat an der Einfahrt. */
+      var gasseP=new THREE.Shape();
+      gasseP.moveTo(-0.28,-1.5);gasseP.lineTo(0.28,-1.5);gasseP.lineTo(0.28,0.45);
+      gasseP.lineTo(0.8,0.45);gasseP.lineTo(0,1.5);gasseP.lineTo(-0.8,0.45);
+      gasseP.lineTo(-0.28,0.45);gasseP.closePath();
+      var gG=new THREE.ShapeGeometry(gasseP);
+      [14,20,26,32].forEach(function(ax9){                /* Einbahn: Einfahrt 11 → Ausfahrt 25 */
+        var pf9=new THREE.Mesh(gG,mM);
+        pf9.rotation.x=-Math.PI/2;pf9.rotation.z=-Math.PI/2;   /* Spitze nach +x */
+        pf9.scale.setScalar(0.72);                             /* in voller Groesse dominierten sie den Platz */
+        pf9.position.set(ax9,0.006,PZ);scene.add(pf9);});
+      /* Behindertenstellplatz: blaue Flaeche mit weissem Zeichen, erster Platz */
+      var bhF=new THREE.Mesh(new THREE.PlaneGeometry(RB-0.3,RT-0.3),
+        new THREE.MeshStandardMaterial({color:0x2f5fae,roughness:0.9}));
+      bhF.rotation.x=-Math.PI/2;bhF.position.set(R0+RB/2,0.005,PZ-(PD/2-RT/2));scene.add(bhF);
+      var bcv=document.createElement("canvas");bcv.width=bcv.height=64;
+      var bcx=bcv.getContext("2d");bcx.fillStyle="#ffffff";bcx.font="52px sans-serif";
+      bcx.textAlign="center";bcx.textBaseline="middle";bcx.fillText("♿",32,34);
+      var bhZ=new THREE.Mesh(new THREE.PlaneGeometry(1.8,1.8),
+        new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(bcv),transparent:true}));
+      bhZ.rotation.x=-Math.PI/2;bhZ.position.set(R0+RB/2,0.0065,PZ-(PD/2-RT/2));scene.add(bhZ);
+      /* Beleuchtung + Kassenautomat — prozedural: `bau()` ist in diesem Abschnitt
+         noch nicht definiert (es entsteht erst weiter unten mit den Haeusern). */
+      [PX-12,PX+12].forEach(function(lx9){
+        var mast=new THREE.Mesh(new THREE.CylinderGeometry(0.12,0.16,5.2,8),stdMat(0x4a4f55,0.5));
+        mast.position.set(lx9,2.6,PZ);mast.castShadow=true;scene.add(mast);
+        var kopf=new THREE.Mesh(new THREE.BoxGeometry(1.1,0.22,0.5),stdMat(0x3a3f45,0.5));
+        kopf.position.set(lx9,5.2,PZ);scene.add(kopf);
+        var lamp=new THREE.Mesh(new THREE.BoxGeometry(0.9,0.08,0.36),
+          new THREE.MeshStandardMaterial({color:0xf4ecd0,emissive:0xffe8b0,emissiveIntensity:0,roughness:0.4}));
+        lamp.position.set(lx9,5.06,PZ);scene.add(lamp);
+        /* dorfFenster entsteht erst weiter unten — deshalb erst pruefen, dann eintragen. */
+        if(typeof dorfFenster!=="undefined"&&dorfFenster)dorfFenster.push(lamp.material);
+        else (window._nachtLampenSpaet=window._nachtLampenSpaet||[]).push(lamp.material);});
+      var aut=new THREE.Mesh(new THREE.BoxGeometry(0.55,1.45,0.42),stdMat(0x6a7078,0.6));
+      aut.position.set(EIN-4.2,0.73,PZ+PD/2-1.4);aut.castShadow=true;scene.add(aut);
+      var autF=new THREE.Mesh(new THREE.PlaneGeometry(0.4,0.5),
+        new THREE.MeshStandardMaterial({color:0x22262c,roughness:0.3}));
+      autF.position.set(EIN-4.2,1.05,PZ+PD/2-1.185);scene.add(autF);
       /* Keine Voll-Kollider: nur die beiden Stellreihen, die Fahrgasse bleibt frei. */
       addSolid(PX,PZ-(PD/2-RT/2),N*RB+0.6,RT*0.9);
       addSolid(PX,PZ+(PD/2-RT/2),N*RB+0.6,RT*0.9);
@@ -1944,6 +1986,8 @@ if(THREE.GLTFLoader){["lp_tree.glb"].forEach(function(){
 
 // ---- Dorf rundherum: Strassen, Nachbarhaeuser, Baeume, Laternen ----
 var dorfFenster=[];
+/* 🩹 Lampen, die VOR dieser Zeile entstanden sind (Parkplatz), nachtragen. */
+if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLampenSpaet);window._nachtLampenSpaet=null;}
 (function baueDorf(){
   var SZ=GH*CS/2; // 14
   // Nordstrasse + zwei Querstrassen (Block-Layout)
@@ -2105,29 +2149,74 @@ var dorfFenster=[];
         if(seg[1]-seg[0]<2)return;
         var l=new THREE.Mesh(new THREE.PlaneGeometry(seg[1]-seg[0],0.16),lM);
         l.rotation.x=-Math.PI/2;l.position.set((seg[0]+seg[1])/2,0.0056,zc+o);scene.add(l);});});});
-    /* ── Richtungspfeile vor den vier Hauptkreuzungen ── */
-    var pfeilForm=new THREE.Shape();
-    pfeilForm.moveTo(-0.34,-2.2);pfeilForm.lineTo(0.34,-2.2);pfeilForm.lineTo(0.34,0.7);
-    pfeilForm.lineTo(1.05,0.7);pfeilForm.lineTo(0,2.2);pfeilForm.lineTo(-1.05,0.7);
-    pfeilForm.lineTo(-0.34,0.7);pfeilForm.closePath();
-    var pfeilG=new THREE.ShapeGeometry(pfeilForm);
-    var pP=[];
+    /* ── Richtungspfeile auf den ZUFAHRTEN der vier Hauptkreuzungen ──
+       ⚠️ Vorher lagen sie auf der ABFAHRT: der Pfeil westlich der Kreuzung sass
+       auf der Westwaerts-Spur und zeigte von der Kreuzung weg. Wer auf die
+       Kreuzung zufuhr, sah auf seiner Spur nie einen Pfeil — dafuer auf der
+       Gegenfahrbahn einen, der ihm entgegenzeigte. Genau das wirkt "verkehrt".
+       Jetzt: pro Zufahrt ein Pfeil je Fahrspur, Spitze zur Kreuzung.
+       Spurlagen aus ROUTEN abgeleitet (Hauptstrasse ±2/±5 um die Mitte,
+       Querstrasse ±2.5), damit Pfeil und Fahrzeug dieselbe Spur benutzen. */
+    /* ⚠️ EIN geschlossener Umriss statt zweier zusammengefuegter Formen:
+       THREE.BufferGeometryUtils ist im r128-Minibuild nicht enthalten, ein
+       merge waere still auf den geraden Pfeil zurueckgefallen. */
+    function pfeilShape(abbieger){
+      var f=new THREE.Shape();
+      f.moveTo(-0.34,-2.2);f.lineTo(0.34,-2.2);
+      if(abbieger){                       /* Rechts-Ast wie auf echten Fahrbahnen */
+        /* Ast bewusst kurz und schmal: mit voller Laenge las sich der Pfeil
+           im Spiel wie ein Doppelpfeil in zwei Richtungen. */
+        f.lineTo(0.34,-1.62);f.lineTo(1.12,-1.62);f.lineTo(1.12,-1.95);
+        f.lineTo(1.78,-1.34);f.lineTo(1.12,-0.73);f.lineTo(1.12,-1.06);
+        f.lineTo(0.34,-1.06);
+      }
+      f.lineTo(0.34,0.7);f.lineTo(1.05,0.7);f.lineTo(0,2.2);
+      f.lineTo(-1.05,0.7);f.lineTo(-0.34,0.7);f.closePath();
+      return new THREE.ShapeGeometry(f);
+    }
+    var pfeilG=pfeilShape(false), pfeilRG=pfeilShape(true);
+    var pP=[],pR=[];
     [[RX,SZd],[RX,-SZd],[-RX,SZd],[-RX,-SZd]].forEach(function(K){
-      /* je Anfahrt zwei Pfeile, 12 und 17 m vor der Kreuzungsmitte */
-      [[-1,0],[1,0],[0,-1],[0,1]].forEach(function(d){
-        for(var n=0;n<2;n++){
-          var ab=24+n*6;   /* hinter Zebra (16 m) und Haltelinie (19.5 m) */
-          var px=K[0]+d[0]*ab, pz=K[1]+d[1]*ab;
-          var spur=d[0]?3.6:2.4;
-          px+= d[0]? 0 : (d[1]>0? spur:-spur);
-          pz+= d[1]? 0 : (d[0]>0? spur:-spur);
-          var rot=d[0]? (d[0]>0?-Math.PI/2:Math.PI/2) : (d[1]>0?Math.PI:0);
-          pP.push([px,pz,rot]);}});});
-    var pInst=new THREE.InstancedMesh(pfeilG,lM,pP.length);
-    pP.forEach(function(p,i){
-      dm.position.set(p[0],0.0058,p[1]);dm.rotation.set(-Math.PI/2,0,p[2]);dm.scale.set(1,1,1);
-      dm.updateMatrix();pInst.setMatrixAt(i,dm.matrix);});
-    pInst.receiveShadow=true;scene.add(pInst);
+      /* Hauptstrasse (laengs x): zwei Spuren je Richtung, innen geradeaus,
+         aussen geradeaus + rechts. Zufahrt aus Westen faehrt nach +x usw. */
+      [[1,-1],[-1,1]].forEach(function(R){
+        var vor=R[0],  /* Fahrtrichtung in x */ seite=R[1];
+        [2,5].forEach(function(off,li){
+          var px=K[0]-vor*22-vor*li*7;          /* 22 m und 29 m vor der Kreuzung */
+          var pz=K[1]+vor*off;                   /* rechts der Mitte in Fahrtrichtung */
+          var rot=vor>0?-Math.PI/2:Math.PI/2;    /* Spitze zeigt zur Kreuzung */
+          (li?pR:pP).push([px,pz,rot]);
+        });
+      });
+      /* Querstrasse (laengs z): eine Spur je Richtung. */
+      [1,-1].forEach(function(vor){
+        var pz=K[1]-vor*22, px=K[0]-vor*2.5;
+        pP.push([px,pz,vor>0?Math.PI:0]);
+      });
+    });
+    function pfeilReihe(geo,liste){
+      if(!liste.length)return;
+      var inst=new THREE.InstancedMesh(geo,lM,liste.length);
+      liste.forEach(function(p,i){
+        dm.position.set(p[0],0.0058,p[1]);dm.rotation.set(-Math.PI/2,0,p[2]);dm.scale.set(1,1,1);
+        dm.updateMatrix();inst.setMatrixAt(i,dm.matrix);});
+      inst.receiveShadow=true;scene.add(inst);
+    }
+    pfeilReihe(pfeilG,pP);pfeilReihe(pfeilRG,pR);
+    /* ── Gestrichelte Spurtrennung zwischen den gleichgerichteten Spuren ──
+       Ein InstancedMesh: als Einzel-Meshes waeren das ~160 Zeichenaufrufe
+       fuer weisse Striche — genau die Sorte Ballast, die das Handy bremst.
+       Raster 3 m Strich / 6 m Luecke wie bei einer echten Leitlinie. */
+    var strichP=[];
+    [-SZd,SZd].forEach(function(zc){[-4,4].forEach(function(off){
+      for(var d9=-RL/2+4;d9<RL/2-4;d9+=9){
+        if(Math.abs(Math.abs(d9)-RX)<11)continue;      /* Kreuzungsbereich frei lassen */
+        strichP.push([d9+1.5,zc+off]);}});});
+    var strichI=new THREE.InstancedMesh(new THREE.PlaneGeometry(3,0.15),lM,strichP.length);
+    strichP.forEach(function(p,i){
+      dm.position.set(p[0],0.0056,p[1]);dm.rotation.set(-Math.PI/2,0,0);dm.scale.set(1,1,1);
+      dm.updateMatrix();strichI.setMatrixAt(i,dm.matrix);});
+    strichI.receiveShadow=true;scene.add(strichI);
     dm.rotation.set(0,0,0);
     /* ⚠️ Asphaltflicken wieder entfernt: ohne Textur rendert eine flache Flaeche
        HELLER als die texturierte Fahrbahn — im Screenshot lasen sich die Flicken
@@ -2135,9 +2224,10 @@ var dorfFenster=[];
        Strassentextur mitgeben, nicht nur eine Farbe. */
   })();
   var _qMat=stdMat(0xd8d8cc,0.75);_qMat.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(_qMat);
-  var _NM2=Math.round(RL/10);for(var ms2=0;ms2<_NM2;ms2++){var _dx2=-RL/2+5+ms2*10;if(!_dashFrei(_dx2))continue;
-    var st2=new THREE.Mesh(new THREE.PlaneGeometry(3,0.3),_qMat);
-    st2.rotation.x=-Math.PI/2;st2.position.set(_dx2,0.005,-SZ-12);scene.add(st2);}
+  /* ⚠️ Hier lag eine gestrichelte Mittellinie auf z=-58 — genau unter der
+     doppelten Sperrlinie der Nordstrasse (SZd=58). Zwei Markierungen an
+     derselben Stelle: auf echten Strassen gibt es entweder Sperrlinie ODER
+     Leitlinie. Die Sperrlinie bleibt, der Strich entfaellt. */
   var _NZ=Math.round((2*SZ+38)/7);for(var ms3=0;ms3<_NZ;ms3++){[-RX,RX].forEach(function(sx){
     var _dz=-(SZ+13)+ms3*7;
     if(Math.abs(Math.abs(_dz)-(SZ+12))<9.2)return; // nicht in Kreuzung/Zebra (Zebras bei ±6.1)
@@ -3034,8 +3124,13 @@ setTimeout(function baueVerkehr(){
   var ROUTEN=[
     {axis:"x",z:SZ+14,dir:1,speed:5.2},{axis:"x",z:SZ+17,dir:1,speed:6.4},
     {axis:"x",z:SZ+10,dir:-1,speed:4.6},{axis:"x",z:SZ+7,dir:-1,speed:5.8},
-    {axis:"x",z:-SZ-14,dir:1,speed:5.5},{axis:"x",z:-SZ-17,dir:1,speed:6.6},
-    {axis:"x",z:-SZ-10,dir:-1,speed:4.8},{axis:"x",z:-SZ-7,dir:-1,speed:6.0},
+    /* ⚠️ GEMESSEN: Die Nordstrasse fuhr spiegelverkehrt. Rechtsverkehr heisst:
+       wer nach OSTEN faehrt, gehoert suedlich der Mittellinie (groesseres z) —
+       auf der Suedstrasse stimmte das (60/63 bei Mitte 58), auf der Nordstrasse
+       fuhren die Ostfahrer bei -60/-63, also NOERDLICH der Mitte -58. Zwei
+       Fahrzeugreihen kamen sich dort entgegen wie in England. */
+    {axis:"x",z:-SZ-14,dir:-1,speed:5.5},{axis:"x",z:-SZ-17,dir:-1,speed:6.6},
+    {axis:"x",z:-SZ-10,dir:1,speed:4.8},{axis:"x",z:-SZ-7,dir:1,speed:6.0},
     {axis:"z",x:-(RX+2.5),dir:1,speed:4.5},{axis:"z",x:-(RX-2.5),dir:-1,speed:5.1},
     {axis:"z",x:RX+2.5,dir:-1,speed:5},{axis:"z",x:RX-2.5,dir:1,speed:4.4},
     {axis:"z",x:-109.5,dir:1,speed:7.0},{axis:"z",x:114.5,dir:-1,speed:7.2},
@@ -4566,8 +4661,24 @@ setTimeout(function baueGebaeude(){
       bau("th6_stromkasten.glb",1.5,WX+6,0,-16,0,false,null);
       [-22,-14,-6,2,10,18].forEach(function(pz,i){        // Hecke als Platzkante
         bau("th6_hecke_modul.glb",1.3,WX+9,0,pz,0,false,null);});
+      /* 🅿️ Hier standen drei Autos im Gras — ohne Belag, Markierung oder Kante.
+         Jetzt ein kleiner Quartiers-Parkplatz: Asphalt, Stellplatzstriche quer
+         zur Zufahrt, Bordstein zur Platzseite. */
+      (function westParkplatz(){
+        var QX=WX-4, QZ=-2, QW=9, QD=30;
+        var be=new THREE.Mesh(new THREE.PlaneGeometry(QW,QD),betMat(0x55534f,0.95));
+        be.rotation.x=-Math.PI/2;be.position.set(QX,-0.003,QZ);be.receiveShadow=true;scene.add(be);
+        var sM=new THREE.MeshStandardMaterial({color:0xd8d8cc,roughness:0.85});
+        sM.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(sM);
+        for(var q=0;q<=10;q++){
+          var st=new THREE.Mesh(new THREE.PlaneGeometry(QW-2.2,0.18),sM);
+          st.rotation.x=-Math.PI/2;st.position.set(QX-1.1,0.004,QZ-QD/2+q*(QD/10));scene.add(st);}
+        var kb=new THREE.Mesh(new THREE.BoxGeometry(0.5,0.18,QD),betMat(0xd0cdc4,0.9));
+        kb.position.set(QX+QW/2+0.25,0.09,QZ);kb.receiveShadow=true;scene.add(kb);
+        addSolid(QX-2.6,QZ,3.6,QD*0.92);          /* Stellreihe solide, Fahrgasse frei */
+      })();
       [["th_auto_kombi.glb",-18],["th7_taxi.glb",-10],["th_auto_van.glb",14]].forEach(function(a){
-        bau(a[0],1.6,WX-3,0,a[1],Math.PI/2,false,null);});
+        bau(a[0],1.6,WX-6.5,0,a[1],Math.PI/2,false,null);});
       bau("th4_laterne_modern.glb",5.2,WX,0,20,0,false,null);
       bau("th4_laterne_modern.glb",5.2,WX,0,-20,0,false,null);
     })();
@@ -5249,7 +5360,7 @@ setTimeout(function baueGebaeude(){
     addSolid(-46,80,12.8,10.8,{a:"z",at:85.4,c:-46,w:3.0}); /* Stadthaus: Tuer +z (rot=PI) */
     addSolid(-24,74,8.6,9.6,{a:"x",at:-19.7,c:74,w:3.0});   /* Laden: Tuer +x (rot=-PI/2) */
     addSolid(-6,88,14.8,12.8,{a:"z",at:94.4,c:-6,w:4.5});   /* Werkstatt: Tor +z (rot=PI) */
-    addSolid(-56,-77.5,21,18,{a:"z",at:-68.5,c:-56,w:4.5}); /* Kathedrale: Portal nach Sueden zum Vorplatz */
+    addSolid(DOM_X,DOM_Z+0.95,17.6,20.7,{a:"z",at:DOM_SW-0.5,c:DOM_X,w:4.5}); /* Kathedrale: gemessene Box, Portal nach Sueden */
     /* 🧱 Runde 2: restliche feste Gebaeude solide machen (User "polish alles") */
     addSolid(64,-79,7.4,11.4,{a:"z",at:-73.3,c:64,w:2.2});   /* Dorf-Kirche (RX-14,-SZ-33), Tuer Sued */
     [[-8,0],[-1,0],[6,0]].forEach(function(_s){addSolid(_s[0],78,6.8,5.4,{a:"z",at:75.3,c:_s[0]+2.35,w:2.0});}); /* Ladenzeile (SZ+32): Eingang rechts vorn */
@@ -5346,23 +5457,46 @@ setTimeout(function baueGebaeude(){
        am richtigen Ort.
        Darum: Hoehe 21 -> 13, damit 20.4 x 17.3. Bei (-56, -77.5) bleibt zur
        Querstrasse 3.8 m und zur Nordstrasse 8.6 m Luft, das Wasser ist 1 m weg. */
-    bau("th8_kirche_offen.glb",13,-56,0,-77.5,Math.PI,false,null,true);
+    /* ⛪ GEMESSEN: Die Kathedrale (Box x -65…-47, z -90…-70) stand mit ihrer
+       Portalseite 1,2 m vor dem Sperrband der Nordstrasse (ab z -68,8). Ihr
+       "Vorplatz" samt Baenken lag deshalb AUF der Fahrbahn. 7,5 m nach Norden
+       schaffen 9,5 m echten Kirchplatz zwischen Portal und Zaun; nach Norden ist
+       bis z -108 (Hochhaus, ausserdem x -94…-86) alles frei. */
+    /* ⚠️ GEMESSEN am Modell: die Box liegt NICHT symmetrisch um den Anker —
+       sie reicht 11,2 m nach Sueden (Portal) und 9,3 m nach Norden (Chor).
+       Und der Aufraeum-Durchgang schob den Bau um 2,2 m, waehrend die
+       angebaute Deko stehen blieb: Kirche und Strebepfeiler trennten sich.
+       UND: der alte Standort ist schlicht zu klein. Zwischen dem Sperrband der
+       Nordstrasse (bis z -68,8) und dem der Ringstrasse (ab -92,8) liegen 24,8 m —
+       die Kirche allein ist 20,7 tief. Vorplatz und Friedhof passten dort nie;
+       genau deshalb lag der "Vorplatz" auf der Fahrbahn.
+       Eine Rastersuche ueber die ganze Karte (34x42 frei von Korridoren, Bauten
+       und Wasser) ergab 128 Plaetze; der naechstgelegene liegt an der
+       Ost-Ausfallstrasse, 42 m noerdlich des Wochenmarkts — Markt und Dom bilden
+       dort ein Ensemble mit freier Sicht ueber die Felder. */
+    var DOM_X=146, DOM_Z=-22, DOM_SW=DOM_Z+11.2, DOM_NW=DOM_Z-9.3, DOM_WX=8.7;
+    window._DOM=[DOM_X,DOM_Z];   /* die Trau-Zone haengt daran (weiter unten) */
+    bau("th8_kirche_offen.glb",13,DOM_X,0,DOM_Z,Math.PI,false,
+        function(w){w.userData.fest=true;},true);
     (function domVorplatz(){
-      var DX=-56, DZ=-77.5;
+      /* ⚠️ Alles war auf DZ+12 gerechnet — mit der gemessenen Portalwand bei
+         Anker+11,2 haette das Pflaster IN der Kirche gelegen. Jetzt relativ zur
+         Fassade: Platte 0,5…7,5 m davor, Obelisk und Laternen am Platzrand. */
+      var DX=DOM_X, DZ=DOM_Z, SW=DOM_SW;
       var pl=new THREE.Mesh(new THREE.PlaneGeometry(24,7),betMat(0xd2cbbc,0.9));
-      pl.rotation.x=-Math.PI/2;pl.position.set(DX,-0.002,DZ+12);pl.receiveShadow=true;scene.add(pl);
+      pl.rotation.x=-Math.PI/2;pl.position.set(DX,-0.002,SW+4);pl.receiveShadow=true;scene.add(pl);
       [-9,9].forEach(function(px){
-        bau("th35_laterne_schmiede.glb",4.2,DX+px,0,DZ+12,0,false,null,true);});
-      bau("th36_obelisk.glb",4.2,DX,0,DZ+12,0,false,null,true);
+        bau("th35_laterne_schmiede.glb",4.2,DX+px,0,SW+6.6,0,false,null,true);});
+      bau("th36_obelisk.glb",4.2,DX,0,SW+6.6,0,false,null,true);
       /* ⚠️ Die Westbank (DX-11) stand gemessen NICHT auf DZ+14, sondern 6,3 m
          weiter suedlich auf z -69,8 — mitten in bd_house_b (x -69,4…-65,6,
          z -75,0…-69,2), 24 Mesh-Paare. Nicht die Platzierung war schuld,
          sondern der Entzerrer: die Baenke liefen ohne `fest` mit. Auf dem
          Vorplatz gehoeren sie an ihren Platz, also werden sie festgenagelt. */
-      [-11,11].forEach(function(bx){bau("th35_bank_zier.glb",1.0,DX+bx,0,DZ+14,0,false,
+      [-11,11].forEach(function(bx){bau("th35_bank_zier.glb",1.0,DX+bx,0,SW+5.4,0,false,
         function(w){w.userData.fest=true;},true);});
-      bau("th35_pflanzschale.glb",0.9,DX-5,0,DZ+10,0,false,null,true);
-      bau("th35_pflanzschale.glb",0.9,DX+5,0,DZ+10,0,false,null,true);
+      bau("th35_pflanzschale.glb",0.9,DX-5,0,SW+1.4,0,false,null,true);
+      bau("th35_pflanzschale.glb",0.9,DX+5,0,SW+1.4,0,false,null,true);
     })();
     (function glockenturm(){ /* ⛪ Die Kathedrale sah von aussen wie ein schmuckloser Klotz aus — Turm gibt ihr die Silhouette */
       var g=new THREE.Group(),tm=betMat(0xe4ddcc,0.9),dm=stdMat(0x5a6470,0.65);
@@ -5377,7 +5511,7 @@ setTimeout(function baueGebaeude(){
         sf.position.set(o[0],21,o[1]);g.add(sf);});
       var zb=new THREE.Mesh(new THREE.CircleGeometry(1.5,20),new THREE.MeshStandardMaterial({color:0xf4ecd8,emissive:0xffe8a8,emissiveIntensity:0,roughness:0.4}));
       zb.position.set(0,15.5,2.63);g.add(zb);dorfFenster.push(zb.material);
-      g.position.set(-68.5,0,-84);scene.add(g);
+      g.position.set(DOM_X-12.5,0,DOM_Z-6.5);scene.add(g);  /* Campanile westlich neben dem Chor */
       addSolid(-68.5,-84,5.2,5.2,null); /* 🛣️ war -70.5 → ragte in die West-Laengsstrasse (-83..-73) */
     })();
     /* 🌳 WOHNSTRASSEN-BEGRUENUNG. Die Haeuser haben Vorgaerten mit Zaun und Hecke,
@@ -5444,7 +5578,9 @@ setTimeout(function baueGebaeude(){
          ((-64,-116) h=37, (-50,-110) h=27). Der erste Entwurf legte den Friedhof
          genau ueber diesen Turm. Er sitzt jetzt in der gemessenen Luecke
          x = -58 … -44, z = -98 … -88; der Zaun endet im Sueden bei z = -100. */
-      var W=-73,O=-45,N=-68,S=-100;
+      /* Geviert am neuen Standort: 30 x 42, symmetrisch um die Kirche.
+         N ist hier die SUEDseite (Tor, groesseres z), S die Nordseite. */
+      var W=DOM_X-15,O=DOM_X+15,N=DOM_SW+9,S=DOM_NW-13;
       function zaunReihe(x0,z0,n,achse,luecke){
         for(var i=0;i<n;i++){
           if(luecke&&luecke.indexOf(i)>=0)continue;
@@ -5454,17 +5590,17 @@ setTimeout(function baueGebaeude(){
       }
       zaunReihe(W,N,7,"x",[3]);        /* Nordseite, Haupttor in der Mitte */
       zaunReihe(W,S,7,"x",null);       /* Suedseite */
-      zaunReihe(W,S,8,"z",[5]);        /* Westseite, Nebentor */
-      zaunReihe(O,S,8,"z",null);       /* Ostseite */
+      zaunReihe(W,S,11,"z",[5]);       /* Westseite, Nebentor */
+      zaunReihe(O,S,11,"z",null);      /* Ostseite */
       /* Torpfeiler am Haupttor */
-      [-61.5,-56.5].forEach(function(px){
+      [W+11.5,W+16.5].forEach(function(px){   /* Tor liegt bei W+14 (Modul-Luecke 3) */
         var pf=new THREE.Mesh(new THREE.BoxGeometry(1.0,3.2,1.0),betMat(0xcfc7b6,0.9));
         pf.position.set(px,1.6,N);pf.castShadow=true;scene.add(pf);
         var kn=new THREE.Mesh(new THREE.ConeGeometry(0.62,1.0,6),stdMat(0xc8a84a,0.35));
         kn.position.set(px,3.7,N);scene.add(kn);});
 
       /* Rasenflaeche des Friedhofs — auf dem Pflaster liegt sonst ein Steinfriedhof */
-      var FX=-51,FZ=-93;                 /* Mitte der gemessenen Luecke */
+      var FX=DOM_X,FZ=DOM_NW-7.2;        /* Friedhof hinter dem Chor */
       var rasen=new THREE.Mesh(new THREE.PlaneGeometry(14,10),
         new THREE.MeshStandardMaterial({color:0x5f8a4a,roughness:1}));
       rasen.rotation.x=-Math.PI/2;rasen.position.set(FX,0.004,FZ);
@@ -5499,63 +5635,77 @@ setTimeout(function baueGebaeude(){
       [[FX-2.6,FZ+1.2,Math.PI/2],[FX+2.6,FZ+1.2,-Math.PI/2]].forEach(function(b){
         bau("th5_parkbank.glb",0.9,b[0],0,b[1],b[2],false,null,true);});
     })();
-    (function kircheDetails(){ /* ⛪ User: "mehr details katedrahle" */
+    (function kircheDetails(){
+      /* ⛪ NEUBAU (gemessen). Vorher gehoerten diese Teile zu einer FRUEHEREN Lage
+         der Kathedrale, als ihr Portal noch auf der -x-Seite lag: die Fenster
+         sassen auf z -70,4 und -45,6 (die Nordwand steht bei -97,5), fuenf
+         13-m-Strebepfeiler standen frei in der Wiese, Rosette und Freitreppe
+         schwebten 16 m westlich neben dem Gebaeude. Im Bild sah das aus wie ein
+         vergessenes Baugeruest — genau der Grund fuer "schoener machen".
+         Alles haengt jetzt an der GEMESSENEN Box: x DOM_X±9, z DOM_Z-12,5…+7,5. */
       var stM=betMat(0xd8d0be,0.88),goM=stdMat(0xc8a84a,0.35);
-      /* Vorplatz + Freitreppe vor dem Portal (-x-Seite) */
-      /* 🏛️ User: „ringsherum frei und mit details wie echte sachen, fenster und vorplatz".
-         Der Vorplatz war 16x26 und endete direkt an der Fassade. Jetzt ein richtiger
-         Kirchplatz, der das ganze Gebaeude umfasst — so steht sie frei statt im Gras. */
-      var vp=new THREE.Mesh(new THREE.PlaneGeometry(34,46),betMat(0xcfc7b6,0.9));
-      vp.rotation.x=-Math.PI/2;vp.position.set(-72,-0.011,-78);vp.receiveShadow=true;scene.add(vp);
-      /* Pflaster-Ring in anderem Ton als Fassung des Platzes */
-      var ring=new THREE.Mesh(new THREE.PlaneGeometry(42,54),betMat(0xbdb5a4,0.93));
-      ring.rotation.x=-Math.PI/2;ring.position.set(-72,-0.0125,-78);ring.receiveShadow=true;scene.add(ring);
-      /* Hohe Spitzbogenfenster an beiden Laengsseiten — die Wand war fensterlos */
+      var WX=DOM_WX,          /* halbe Breite (gemessen 8,7) */
+          SW=DOM_SW,          /* Schauseite/Portal (Sueden), gemessen Anker+11,2 */
+          NW=DOM_NW;          /* Chorwand (Norden), gemessen Anker-9,3 */
+      /* Kirchplatz: Belag ueber das ganze Geviert, Fassung in zweitem Ton */
+      var ring=new THREE.Mesh(new THREE.PlaneGeometry(30,44),betMat(0xbdb5a4,0.93));
+      ring.rotation.x=-Math.PI/2;ring.position.set(DOM_X,-0.0125,DOM_Z-1);ring.receiveShadow=true;scene.add(ring);
+      var vp=new THREE.Mesh(new THREE.PlaneGeometry(24,10),betMat(0xcfc7b6,0.9));
+      vp.rotation.x=-Math.PI/2;vp.position.set(DOM_X,-0.011,SW+5.0);vp.receiveShadow=true;scene.add(vp);
+      /* Spitzbogenfenster an den LAENGSwaenden (x-Seiten), Scheibe quer dazu */
       (function fenster(){
         var rahmM=stdMat(0x8a8274,0.7);
         var glasM=new THREE.MeshStandardMaterial({color:0x6a8fb8,emissive:0x2a4a7a,
           emissiveIntensity:0.25,roughness:0.2,metalness:0.1});
-        [-70.4,-45.6].forEach(function(zw,si){          /* Nord- und Suedwand der Kathedrale */
+        [-1,1].forEach(function(seite){
           for(var i=0;i<5;i++){
-            var fx=-68+i*5.2;
+            var fz=NW+3.6+i*3.4;
             var g=new THREE.Group();
             var gl=new THREE.Mesh(new THREE.BoxGeometry(1.5,5.2,0.12),glasM);
             gl.position.y=5.6;g.add(gl);
             var sp=new THREE.Mesh(new THREE.CylinderGeometry(0.01,0.85,1.5,3,1),glasM);
             sp.position.y=8.9;sp.rotation.y=Math.PI/2;sp.scale.z=0.14;g.add(sp);
-            [-0.9,0.9].forEach(function(ox){             /* Rahmen seitlich */
+            [-0.9,0.9].forEach(function(ox){
               var r=new THREE.Mesh(new THREE.BoxGeometry(0.28,7.4,0.3),rahmM);
               r.position.set(ox,6.2,0);g.add(r);});
-            var sims=new THREE.Mesh(new THREE.BoxGeometry(2.4,0.22,0.4),rahmM);
-            sims.position.y=2.7;g.add(sims);
-            g.position.set(fx,0,zw);
+            var si=new THREE.Mesh(new THREE.BoxGeometry(2.4,0.22,0.4),rahmM);
+            si.position.y=2.7;g.add(si);
+            g.position.set(DOM_X+seite*WX,0,fz);
+            g.rotation.y=Math.PI/2;            /* Scheibe in die x-Wand drehen */
             g.traverse(function(n){if(n.isMesh)n.castShadow=true;});
             scene.add(g);}});
       })();
-      for(var st=0;st<3;st++){var s9=new THREE.Mesh(new THREE.BoxGeometry(1.0,0.22,9),stM);
-        s9.position.set(-72.4-st*1.0,0.11+st*0.22,-78);s9.receiveShadow=true;scene.add(s9);}
-      /* Strebepfeiler an beiden Laengsseiten */
-      for(var b9=0;b9<5;b9++){var bx=-69+b9*5.5;
-        [-70.9,-85.1].forEach(function(bz){ /* an der Fassade statt freistehend */
-          var pf=new THREE.Mesh(new THREE.BoxGeometry(1.1,13,1.8),stM);pf.position.set(bx,6.5,bz);pf.castShadow=true;scene.add(pf);
-          var sp2=new THREE.Mesh(new THREE.ConeGeometry(0.85,2.2,4),stdMat(0x5a6470,0.65));sp2.rotation.y=Math.PI/4;sp2.position.set(bx,14.1,bz);sp2.castShadow=true;scene.add(sp2);});}
-      /* Rosettenfenster ueber dem Portal (leuchtet nachts) */
+      /* Strebepfeiler AN den Laengswaenden — Tiefe laengs z, Breite quer */
+      for(var b9=0;b9<4;b9++){var bz=NW+4.5+b9*4.4;
+        [-1,1].forEach(function(seite){
+          var bx=DOM_X+seite*(WX+0.4);
+          var pf=new THREE.Mesh(new THREE.BoxGeometry(1.8,9.2,1.1),stM);pf.position.set(bx,4.6,bz);pf.castShadow=true;scene.add(pf); /* 9,2 statt 13: sie ueberragten das Dach */
+          var sp2=new THREE.Mesh(new THREE.ConeGeometry(0.85,2.2,4),stdMat(0x5a6470,0.65));
+          sp2.rotation.y=Math.PI/4;sp2.position.set(bx,10.3,bz);sp2.castShadow=true;scene.add(sp2);});}
+      /* Rosettenfenster ueber dem Portal (Suedwand, leuchtet nachts) */
       var ro=new THREE.Mesh(new THREE.CircleGeometry(2.6,24),new THREE.MeshStandardMaterial({color:0x9ac4e8,emissive:0x3a6ab0,emissiveIntensity:0,roughness:0.3,side:THREE.DoubleSide}));
-      ro.rotation.y=-Math.PI/2;ro.position.set(-71.7,13,-78);scene.add(ro);dorfFenster.push(ro.material);
+      ro.position.set(DOM_X,9.4,SW+0.16);scene.add(ro);dorfFenster.push(ro.material);
       for(var rs=0;rs<8;rs++){var ra=rs/8*6.283;
         var sp3=new THREE.Mesh(new THREE.BoxGeometry(0.1,2.4,0.16),stM);
-        sp3.position.set(-71.6,13+Math.sin(ra)*1.3,-78+Math.cos(ra)*1.3);sp3.rotation.x=ra;scene.add(sp3);}
-      /* 2 Heiligenstatuen + Weihwasser-Saeulen flankieren die Treppe */
-      [-74.5,-81.5].forEach(function(sz){[-74.6].forEach(function(sx){
-        var so=new THREE.Mesh(new THREE.BoxGeometry(1.3,1.1,1.3),stM);so.position.set(sx,0.55,sz);so.castShadow=true;scene.add(so);
-        var fi=new THREE.Mesh(new THREE.CylinderGeometry(0.32,0.42,2.2,8),stM);fi.position.set(sx,2.2,sz);fi.castShadow=true;scene.add(fi);
-        var ko=new THREE.Mesh(new THREE.SphereGeometry(0.3,10,8),stM);ko.position.set(sx,3.5,sz);scene.add(ko);
-        var au=new THREE.Mesh(new THREE.TorusGeometry(0.34,0.05,6,14),goM);au.rotation.x=Math.PI/2;au.position.set(sx,3.95,sz);scene.add(au);});});
-      /* Laternen + Kirchgarten-Hecken */
-      bau("th5_laterne_altstadt.glb",4.5,-84,0,-71,0,false);bau("th5_laterne_altstadt.glb",4.5,-84,0,-85,0,false);
-      [-73,-77,-81,-85].forEach(function(hz){bau("th6_hecke_modul.glb",1.1,-88,0,hz,Math.PI/2,false);});
-      bau("th5_baum_pappel.glb",7.0,-46,0,-70,0.3,false);bau("th5_baum_pappel.glb",7.0,-46,0,-86,1.2,false);
-      bau("th5_parkbank.glb",0.9,-80,0,-72.5,Math.PI/2,false);bau("th5_parkbank.glb",0.9,-80,0,-83.5,-Math.PI/2,false);
+        sp3.position.set(DOM_X+Math.sin(ra)*1.3,9.4+Math.cos(ra)*1.3,SW+0.2);sp3.rotation.z=-ra;scene.add(sp3);}
+      /* Freitreppe vor dem Portal, aufsteigend zur Fassade */
+      for(var st=0;st<3;st++){var s9=new THREE.Mesh(new THREE.BoxGeometry(9,0.22,1.0),stM);
+        s9.position.set(DOM_X,0.11+st*0.22,SW+2.6-st*1.0);s9.receiveShadow=true;scene.add(s9);}
+      /* Heiligenstatuen flankieren das Portal */
+      [-5.2,5.2].forEach(function(sx){
+        var sz=SW+3.4, x9=DOM_X+sx;
+        var so=new THREE.Mesh(new THREE.BoxGeometry(1.3,1.1,1.3),stM);so.position.set(x9,0.55,sz);so.castShadow=true;scene.add(so);
+        var fi=new THREE.Mesh(new THREE.CylinderGeometry(0.32,0.42,2.2,8),stM);fi.position.set(x9,2.2,sz);fi.castShadow=true;scene.add(fi);
+        var ko=new THREE.Mesh(new THREE.SphereGeometry(0.3,10,8),stM);ko.position.set(x9,3.5,sz);scene.add(ko);
+        var au=new THREE.Mesh(new THREE.TorusGeometry(0.34,0.05,6,14),goM);au.rotation.x=Math.PI/2;au.position.set(x9,3.95,sz);scene.add(au);});
+      /* Laternen, Obelisk und Baenke stehen im Vorplatz-Block (domVorplatz) —
+         hier nur die gruene Fassung, sonst steht alles doppelt am selben Fleck. */
+      [-13,13].forEach(function(bx2){
+        bau("th5_baum_pappel.glb",7.0,DOM_X+bx2,0,NW+4,0.4,false,null,true);
+        bau("th5_baum_pappel.glb",7.0,DOM_X+bx2,0,NW+13,1.1,false,null,true);});
+      /* Hecken als Fassung an der Westflanke */
+      [NW+5,NW+9,NW+13,NW+17].forEach(function(hz){
+        bau("th6_hecke_modul.glb",1.1,DOM_X-14,0,hz,Math.PI/2,false,null,true);});
     })();
     bau("th6_muellcontainer.glb",1.4,-54,0,48,0.4,false);
     bau("th6_stromkasten.glb",1.3,-38,0,54,0,false);
@@ -7784,10 +7934,13 @@ function updCrime(dt){
     if(inMarkt&&!(stats.ernteLager||0))_tipp("markt","🥕 Erst im Garten ernten — dann kauft die Markthalle dir die Ware ab.");
     var inWerk=an&&Math.abs(p9.x+6)<6.8&&Math.abs(p9.z-88)<5.8;
     if(inWerk&&!fahren)_tipp("werk","🔧 Die Werkstatt lackiert nur Autos — komm mit dem Wagen vorbei.");
-    var inKirche=an&&!fahren&&Math.abs(p9.x+58)<13&&Math.abs(p9.z+78)<7;
+    /* 🩹 Die Trau-Zone stand hart auf (-58|-78) — nach dem Umzug der Kathedrale
+       haette man auf freiem Feld geheiratet. Sie haengt jetzt am Bau selbst. */
+    var _dm=window._DOM||[-56,-88];
+    var inKirche=an&&!fahren&&Math.abs(p9.x-_dm[0])<11&&Math.abs(p9.z-(_dm[1]+2))<10;
     if(inKirche&&!verlobt)_tipp("kirche","💒 Erst verloben — dann traut euch die Kathedrale.");
     var k9=document.getElementById("kircheBtn"); /* Kathedrale (-58,-62): kirchlich heiraten */
-    if(k9)k9.style.display=(an&&!fahren&&Math.abs(p9.x+58)<13&&Math.abs(p9.z+78)<7&&verlobt&&!verheiratet&&(!MPs||mpHost))?"block":"none";})();
+    if(k9)k9.style.display=(inKirche&&verlobt&&!verheiratet&&(!MPs||mpHost))?"block":"none";})();
   if(!crime.on)return;
   crime.t-=dt;
   if(crime.t<=0)finishCrime();}
