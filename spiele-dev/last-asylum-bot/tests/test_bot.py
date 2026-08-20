@@ -8,6 +8,7 @@ import json
 import random
 import sys
 import time
+import tempfile
 import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -2839,6 +2840,84 @@ class TestFluchtwegWirdNichtGebremst(unittest.TestCase):
 
 
 
+class TestAusschnittInVollerAufloesung(unittest.TestCase):
+    """Gesammelte Ansichten liegen halbiert im Repository - zu grob fuer Ziffern.
+
+    Eine halbierte 8 ist von einer halbierten 9 kaum zu unterscheiden, und eine
+    falsch gelesene Zahl ist schlimmer als gar keine. Genau daran haengt die
+    Energie-Schranke ("Versammlung ab 20 Energie").
+    """
+
+    def _lauf(self, ordner, screen, **mehr):
+        cfg = Config.from_dict({"package": "x", "rules": [], "tasks": []})
+        dev = FakeDevice([screen], loop=True)
+        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=1)
+        spec = {"datei": "austausch/hud-oben.png", "region": [0.0, 0.0, 1.0, 0.25],
+                "hochladen": False, "mindestabstand": 0, "verzeichnis": ordner}
+        spec.update(mehr)
+        eng.run_actions([{"ausschnitt": spec}], "test")
+        return os.path.join(ordner, "austausch", "hud-oben.png")
+
+    def test_ausschnitt_behaelt_die_originalgroesse(self):
+        with tempfile.TemporaryDirectory() as ordner:
+            ziel = self._lauf(ordner, noise(400, 800, 21))
+            self.assertTrue(os.path.exists(ziel), "der Ausschnitt muss abgelegt werden")
+            bild = Image.load(ziel)
+            self.assertEqual((bild.width, bild.height), (400, 200),
+                             "Ausschnitt darf nicht verkleinert werden")
+
+    def test_schwarzer_bildschirm_wird_nicht_abgelegt(self):
+        with tempfile.TemporaryDirectory() as ordner:
+            ziel = self._lauf(ordner, Image(40, 60, "RGB", bytearray(40 * 60 * 3)))
+            self.assertFalse(os.path.exists(ziel),
+                             "aus einem leeren Bildschirm gibt es nichts zu holen")
+
+    def test_mindestabstand_verhindert_commit_flut(self):
+        with tempfile.TemporaryDirectory() as ordner:
+            ziel = self._lauf(ordner, noise(400, 800, 22))
+            vorher = open(ziel, "rb").read()
+            self._lauf(ordner, noise(400, 800, 23), mindestabstand=3600)
+            self.assertEqual(open(ziel, "rb").read(), vorher,
+                             "innerhalb des Mindestabstands bleibt die Datei stehen")
+
+
+class TestLebenszeichenSagtWasLosIst(unittest.TestCase):
+    """Zahlen ohne Deutung schicken einen an das falsche Ende.
+
+    Das Lebenszeichen vom 15.08. meldete Schritt 0 und 271 gebremste gegen 3
+    ausgefuehrte Tipps. Der eigentliche Grund - der Bildschirm kam vollstaendig
+    schwarz an - stand nur im Bild daneben.
+    """
+
+    def _engine(self):
+        cfg = Config.from_dict({"package": "x", "rules": [], "tasks": []})
+        dev = FakeDevice([noise(40, 60, 9)], loop=True)
+        return Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=1)
+
+    def test_schwarzer_bildschirm_steht_im_bericht(self):
+        eng = self._engine()
+        eng.screen = Image(40, 60, "RGB", bytearray(40 * 60 * 3))
+        text = " ".join(eng._hinweise())
+        self.assertIn("einfarbig", text)
+        self.assertIn("BlueStacks", text,
+                      "der Hinweis muss auch sagen, was zu tun ist")
+
+    def test_lahmgelegte_bremse_steht_im_bericht(self):
+        eng = self._engine()
+        eng.screen = noise(40, 60, 10)
+        eng.stats["wirkungslos"] = 271
+        eng.stats["taps"] = 3
+        self.assertIn("Bremse", " ".join(eng._hinweise()))
+
+    def test_gesunder_lauf_meldet_nichts(self):
+        eng = self._engine()
+        eng.screen = noise(40, 60, 11)
+        eng.stats["wirkungslos"] = 4
+        eng.stats["taps"] = 40
+        self.assertEqual(eng._hinweise(), [],
+                         "ohne Befund darf der Bericht nicht schwatzen")
+
+
 class TestBremseSperrtKeineKnoepfe(unittest.TestCase):
     """Die Wirkungslos-Bremse hat den Bot live komplett stillgelegt.
 
@@ -3820,9 +3899,9 @@ class TestKalibrierungIstSchnellUndTrotzdemRichtig(unittest.TestCase):
     """
 
     def test_verkleinert_findet_denselben_faktor(self):
-        bild = os.path.join(ROOT, "austausch", "stadt.png")
+        bild = os.path.join(ROOT, "austausch", "allianz-geschenk.png")
         if not os.path.exists(bild):
-            self.skipTest("stadt.png liegt nicht vor")
+            self.skipTest("allianz-geschenk.png liegt nicht vor")
         cfg = Config.load(os.path.join(ROOT, "config", "last-asylum.json"))
         cfg.validate()
         screen = Image.load(bild)
@@ -3922,9 +4001,9 @@ class TestMatcherVorfilter(unittest.TestCase):
                          "der Vorfilter ist bewusst wieder draussen")
 
     def test_echte_treffer_ueberleben_den_vorfilter(self):
-        faelle = [("stadt.png", "ui/btn_abholen.png"),
-                  ("stadt.png", "allianz/geschenke.png"),
-                  ("stadt.png", "ui/back_arrow.png"),
+        faelle = [("allianz-geschenk.png", "ui/btn_abholen.png"),
+                  ("allianz-geschenk.png", "allianz/geschenke.png"),
+                  ("allianz-geschenk.png", "ui/back_arrow.png"),
                   ("schild.png", "ui/btn_bestaetigen.png")]
         geprueft = 0
         for bild, vorlage in faelle:
@@ -3949,19 +4028,19 @@ class TestMatcherVorfilter(unittest.TestCase):
 class TestZiffernAmEchtenSpiel(unittest.TestCase):
     """Zahlen lesen, gegen echte Spielschrift gemessen - nicht gegen Testbilder.
 
-    austausch/stadt.png enthaelt zwei Zahlen in VERSCHIEDENEN Schriften:
+    austausch/allianz-geschenk.png enthaelt zwei Zahlen in VERSCHIEDENEN Schriften:
     "2,109,940/2,200,000" im Fortschrittsbalken (weiss auf gruen) und
     "23:58:18" als Timer (gruen auf dunkel). Beide Saetze sind daraus
     geschnitten - und sie sind NICHT austauschbar.
     """
 
-    BILD = os.path.join(ROOT, "austausch", "stadt.png")
+    BILD = os.path.join(ROOT, "austausch", "allianz-geschenk.png")
     BALKEN = [430 / 1440, 580 / 2560, 690 / 1440, 645 / 2560]
     TIMER = [78 / 1440, 1285 / 2560, 315 / 1440, 1335 / 2560]
 
     def setUp(self):
         if not os.path.exists(self.BILD):
-            self.skipTest("stadt.png liegt nicht vor")
+            self.skipTest("allianz-geschenk.png liegt nicht vor")
         self.screen = Image.load(self.BILD)
 
     def satz(self, ordner):

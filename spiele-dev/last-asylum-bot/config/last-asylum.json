@@ -3682,7 +3682,7 @@
       "every": 1800,
       "at_start": true,
       "priority": 118,
-      "_zweck": "Der Bot sieht immer nur den aktuellen Bildschirmausschnitt. Der Rundgang schiebt die Stadtansicht - gedrueckt halten und ziehen, ein kurzer Wisch bewegt die Kamera nicht - und erntet nach jedem Schritt die sichtbar gewordenen Ertrags-Blasen ab.",
+      "_zweck": "Der Bot sieht immer nur den aktuellen Bildschirmausschnitt. Der Rundgang schiebt die Stadtansicht - gedrueckt halten und ziehen, ein kurzer Wisch bewegt die Kamera nicht - und erntet nach jedem Schritt die sichtbar gewordenen Ertrags-Blasen ab. Ganz zu Beginn - wenn die Stadtansicht sicher offen ist - legt er ausserdem den Zahlenstreifen am oberen Rand in voller Aufloesung nach austausch/hud-oben.png. Aus dem gesammelten Halbbild lassen sich Ziffern nicht schneiden, und ohne Ziffern gibt es keine Energie-Schranke.",
       "do": [
         {
           "log": "Rundgang durch die Basis - Kamera schwenken und alles abernten"
@@ -3737,6 +3737,18 @@
                 0.44
               ]
             ]
+          }
+        },
+        {
+          "ausschnitt": {
+            "datei": "austausch/hud-oben.png",
+            "region": [
+              0.0,
+              0.0,
+              1.0,
+              0.13
+            ],
+            "mindestabstand": 21600
           }
         },
         {
@@ -6174,7 +6186,7 @@
     },
     {
       "name": "ansichten-sammeln",
-      "_zweck": "Legt jede noch nie gesehene Ansicht einmal in austausch/ansichten/ ab. 32 Vorlagen fehlen, und jede blockiert Aufgaben - Versammlung beitreten, Allianz-Forschung, Falkenturm. Vorlagen schneiden kann nur, wer den Bildschirm sieht; der Bot laeuft ohnehin durch all diese Bildschirme. Halbe Kantenlaenge reicht zum Erkennen, was drauf ist; wo es auf Millimeter ankommt, holt 'teilen' das Bild in voller Aufloesung nach. Nach 40 Ansichten ist Schluss, hochgeladen wird in Fuenferstapeln - sonst laeuft das Repository voll. Der kurze Takt ist Absicht: je mehr verschiedene Bildschirme, desto besser.",
+      "_zweck": "Legt jede noch nie gesehene Ansicht einmal in austausch/ansichten/ ab. 32 Vorlagen fehlen, und jede blockiert Aufgaben - Versammlung beitreten, Allianz-Forschung, Falkenturm. Vorlagen schneiden kann nur, wer den Bildschirm sieht; der Bot laeuft ohnehin durch all diese Bildschirme. Halbe Kantenlaenge reicht zum Erkennen, was drauf ist; wo es auf Millimeter ankommt, holt die Aktion 'ausschnitt' den Streifen in voller Aufloesung nach. Nach 40 Ansichten ist Schluss, hochgeladen wird in Fuenferstapeln - sonst laeuft das Repository voll. Der kurze Takt ist Absicht: je mehr verschiedene Bildschirme, desto besser.",
       "every": 30,
       "at_start": false,
       "priority": 30,

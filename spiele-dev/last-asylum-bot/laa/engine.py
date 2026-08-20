@@ -508,6 +508,8 @@ class Engine:
             self._selbst_aktualisieren(value if isinstance(value, dict) else {})
         elif key == "ansicht_sammeln":
             self._ansicht_sammeln(value if isinstance(value, dict) else {})
+        elif key == "ausschnitt":
+            self._ausschnitt(value if isinstance(value, dict) else {})
         elif key == "lebenszeichen":
             self._lebenszeichen(value if isinstance(value, dict) else {})
         elif key == "stop":
@@ -717,7 +719,7 @@ class Engine:
                 continue
             # Auf einem VERKLEINERTEN Bild suchen. Die Kalibrierung braucht nur
             # das Groessen-VERHAELTNIS, nicht die Position - und das bleibt beim
-            # Verkleinern erhalten. Gemessen an austausch/stadt.png: 31.5 s bei
+            # Verkleinern erhalten. Gemessen an austausch/allianz-geschenk.png: 31.5 s bei
             # voller Groesse, 9.3 s bei halber, gefundener Faktor in beiden
             # Faellen 1.00 (Score 1.000 gegen 0.996). Sehr kleine Vorlagen
             # bleiben aussen vor, von denen bliebe sonst nichts uebrig.
@@ -1168,7 +1170,7 @@ class Engine:
         Also sammelt er sie selbst ein: neue Ansicht (nach dem groben
         Fingerabdruck, der auch Haenger erkennt) -> einmal ablegen, nie wieder.
         Halbe Kantenlaenge reicht zum Erkennen, was drauf ist; wo es dann um
-        Millimeter geht, holt 'teilen' das Bild in voller Aufloesung nach.
+        Millimeter geht, holt 'ausschnitt' den Streifen in voller Aufloesung nach.
         """
         import subprocess
 
@@ -1236,6 +1238,73 @@ class Engine:
         except Exception as exc:  # pragma: no cover - Netz/Umgebung
             self.log.warn("Ansichten nicht hochgeladen", grund=str(exc)[:120])
 
+    def _ausschnitt(self, spec: Dict[str, Any]) -> None:
+        """Einen Bildausschnitt in voller Aufloesung ablegen und hochladen.
+
+        Die gesammelten Ansichten liegen halbiert im Repository - gut genug, um
+        zu sehen, WAS auf dem Bildschirm ist, aber zu grob, um Vorlagen daraus
+        zu schneiden. Fuer Ziffern reicht das nicht: eine halbierte 8 ist von
+        einer halbierten 9 kaum zu unterscheiden, und eine falsch gelesene Zahl
+        ist schlimmer als gar keine.
+
+        Genau daran haengt die Energie-Schranke ("Versammlung ab 20 Energie"):
+        dafuer braucht es den Zahlenstreifen am oberen Rand in Originalgroesse.
+        Der Bot laeuft ohnehin staendig an ihm vorbei - also holt er ihn selbst.
+        """
+        import subprocess
+
+        # Frisch aufnehmen: das zuletzt gesehene Bild stammt oft vom Tipp
+        # davor und zeigt darum noch den vorigen Bildschirm.
+        screen = self.capture() if spec.get("frisch", True) else self.screen
+        if screen is None or screen.ist_einfarbig():
+            return
+        ziel_rel = str(spec.get("datei") or "austausch/ausschnitt.png")
+        wurzel = self._projekt_wurzel(spec)
+        ziel = os.path.join(wurzel, *ziel_rel.split("/"))
+
+        # Ohne Mindestabstand schriebe der Bot denselben Streifen bei jedem
+        # Durchgang neu und lieferte einen Commit pro Minute.
+        abstand = float(spec.get("mindestabstand", 3600))
+        if abstand > 0 and os.path.exists(ziel):
+            try:
+                if time.time() - os.path.getmtime(ziel) < abstand:
+                    return
+            except OSError:
+                pass
+
+        l, t, r, b = matcher.resolve_region(
+            spec.get("region") or [0.0, 0.0, 1.0, 1.0], screen.width, screen.height)
+        if r - l < 2 or b - t < 2:
+            self.log.warn("Ausschnitt waere leer", region=spec.get("region"))
+            return
+        try:
+            os.makedirs(os.path.dirname(ziel) or ".", exist_ok=True)
+            screen.crop(l, t, r - l, b - t).save(ziel)
+        except (OSError, ValueError) as exc:
+            self.log.debug("Ausschnitt liess sich nicht ablegen", grund=str(exc)[:120])
+            return
+        self.bump("ausschnitt")
+        self.log.info("Ausschnitt abgelegt", datei=ziel_rel)
+
+        if not spec.get("hochladen", True):
+            return
+
+        def git(*rest):
+            return subprocess.run(["git", "-C", wurzel, *rest], capture_output=True,
+                                  timeout=180, env=self._git_umgebung())
+        try:
+            git("add", "--", os.path.join(*ziel_rel.split("/")))
+            eingetragen = git("commit", "-m", f"Ausschnitt {ziel_rel}")
+            if eingetragen.returncode != 0:
+                return
+            if git("push").returncode != 0:
+                # Wie beim Lebenszeichen: ein liegengebliebener Commit blockiert
+                # jedes spaetere 'pull --ff-only'.
+                git("reset", "--soft", "HEAD~1")
+                self.log.warn("Ausschnitt nicht hochgeladen - Commit zurueckgenommen")
+        except Exception as exc:  # pragma: no cover - Netz/Umgebung
+            self.log.warn("Ausschnitt nicht hochgeladen", grund=str(exc)[:120])
+
     def _ansichten_laden(self) -> Dict[str, str]:
         if not self._ansichten_datei or not os.path.exists(self._ansichten_datei):
             return {}
@@ -1294,6 +1363,34 @@ class Engine:
         umgebung["GCM_INTERACTIVE"] = "never"
         return umgebung
 
+    def _hinweise(self) -> List[str]:
+        """Was die Zahlen im Lebenszeichen entwertet - in Klartext.
+
+        Das Lebenszeichen vom 15.08. meldete Schritt 0 und 271 zu 3 Tipps. Was
+        wirklich los war, stand nur im Bild: der Bildschirm kam vollstaendig
+        schwarz an. Wer nur die Zahlen liest, sucht danach am falschen Ende.
+        Solche Befunde gehoeren darum in den Bericht, nicht ins Bild.
+        """
+        hinweise: List[str] = []
+        if self.screen is not None and self.screen.ist_einfarbig():
+            hinweise.append(
+                "Der Bildschirm kommt einfarbig an - der Bot sieht nichts. "
+                "BlueStacks: Einstellungen -> Grafik -> Renderer auf DirectX "
+                "bzw. OpenGL umstellen, 'Erweiterter Grafikmodus' aus, dann "
+                "neu starten.")
+        gebremst = int(self.stats.get("wirkungslos", 0))
+        durch = int(self.stats.get("taps", 0))
+        if gebremst >= 20 and gebremst > 3 * max(durch, 1):
+            hinweise.append(
+                f"Die Bremse hat {gebremst} Tipps gesperrt und nur {durch} "
+                "durchgelassen - so kommt der Bot nicht zum Handeln.")
+        blockiert = int(self.stats.get("tabu-blockiert", 0))
+        if blockiert:
+            hinweise.append(
+                f"{blockiert} Tipps lagen in einer Tabu-Zone (Shop/Echtgeld) "
+                "und wurden blockiert.")
+        return hinweise
+
     def _lebenszeichen(self, spec: Dict[str, Any]) -> None:
         """Kurz ins Repository schreiben, dass der Bot lebt - und was er tut.
 
@@ -1332,7 +1429,7 @@ class Engine:
 
         # Ein Bild dazu, sonst weiss man zwar DASS er laeuft, aber nicht WO er
         # steht. Halbe Groesse reicht zum Wiedererkennen und kostet ein Drittel;
-        # fuer einen Ausschnitt in voller Aufloesung gibt es 'teilen'. Eigener,
+        # fuer volle Aufloesung gibt es die Aktion 'ausschnitt'. Eigener,
         # laengerer Abstand - ein Bild wiegt hundertmal so viel wie die Zahlen.
         dateien = [os.path.join("austausch", "lauf.json")]
         bild_name = None
@@ -1373,6 +1470,7 @@ class Engine:
         bericht = {
             "zeit": time.strftime("%Y-%m-%d %H:%M:%S"),
             "zeit_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+            "hinweise": self._hinweise(),
             "fassung": kopf,
             "schritte": self.steps,
             "gleiche_ansicht": self.gleiche_ansicht,
