@@ -854,3 +854,7 @@ gid://shopify/Product/15505682104705	nicht-versendbar	Hochleistungs-Standmixer 2
 gid://shopify/Product/15506198987137	ok	Explosive Datejust Automatikuhr für Herren
 gid://shopify/Product/15506295325057	nicht-versendbar	Kompaktes, faltbares Gehband für Zuhause
 gid://shopify/Product/15506295488897	nicht-versendbar	Aufblasbares Paddleboard für Einsteiger
+gid://shopify/Product/15506297323905	nicht-versendbar	Bewegliche Einzel-Parallelbarren für das Training
+gid://shopify/Product/15506294997377	nicht-versendbar	Heimtrainer mit elektrischer Widerstandsanpassung
+gid://shopify/Product/15506296078721	nicht-versendbar	Rückenlagebrett für Sit-ups
+gid://shopify/Product/15506295816577	nicht-versendbar	Bauchtrainer-Bank klappbar
