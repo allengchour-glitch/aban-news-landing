@@ -788,3 +788,6 @@ gid://shopify/Product/15447967793537	zugeordnet	27	Weihnachtliches Familien-Outf
 gid://shopify/Product/15447968219521	zugeordnet	84	Weihnachts-Homewear im Partnerlook
 gid://shopify/Product/15447968383361	zugeordnet	17	Partnerlook Pyjama-Set mit Augen-Print
 gid://shopify/Product/15447968842113	zugeordnet	72	Weihnachtsbaum-Print Hausanzug
+gid://shopify/Product/15447969005953	zugeordnet	29	Weihnachts Pyjama-Set mit Elch-Muster für die Familie
+gid://shopify/Product/15447969235329	zugeordnet	9	Camo Tie-Dye Pullover für Mutter & Kind
+gid://shopify/Product/15447969399169	zugeordnet	31	Dino-Weihnachtsbaum-Pyjama für die ganze Familie
