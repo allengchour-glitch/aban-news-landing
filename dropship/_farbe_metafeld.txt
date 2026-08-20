@@ -242,3 +242,14 @@ gid://shopify/Product/15504099606913	Schwarz
 gid://shopify/Product/15504117793153	Mehrfarbig
 gid://shopify/Product/15504196895105	Mehrfarbig
 gid://shopify/Product/15504199156097	Silber
+gid://shopify/Product/15505974886785	Schwarz
+gid://shopify/Product/15506038882689	Silber
+gid://shopify/Product/15506164908417	Mehrfarbig
+gid://shopify/Product/15506165465473	Rot
+gid://shopify/Product/15506187256193	Transparent
+gid://shopify/Product/15506199314817	Transparent
+gid://shopify/Product/15506289099137	Mehrfarbig
+gid://shopify/Product/15506290737537	Gold
+gid://shopify/Product/15506531516801	Transparent
+gid://shopify/Product/15506700140929	Rot
+gid://shopify/Product/15506813518209	Silber
