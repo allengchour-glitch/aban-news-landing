@@ -145,7 +145,7 @@ while true; do
   # Alle drei sind resumable (eigenes Ledger je Skript), ein Neustart setzt also fort statt
   # von vorn zu beginnen. Die Sperre verhindert, dass zwei Kopien dasselbe Ledger schreiben.
   # ⚠️ Ohne `setsid` sterben sie mit dem Turn — genau daran sind sie heute gescheitert.
-  for L in produktdetails_vereinen preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland; do
+  for L in produktdetails_vereinen preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland fremdzeichen_guard; do
     fehlt "$REPO/automation/$L.py" && continue
     grep -q "^FERTIG" "/tmp/$L.log" 2>/dev/null && continue      # durchgelaufen
     pause_kuehlt "$L" && continue                                # hat sich mit PAUSE verabschiedet
@@ -165,7 +165,7 @@ while true; do
     # versand_jenachland braucht seine Kandidatenliste; ohne sie fände es nichts und
     # meldete stillschweigend Erfolg. Fehlt die Datei (Container gewiped), wird der Lauf
     # übersprungen statt ins Leere zu laufen — ein neuer Export ist dann fällig.
-    if [ "$L" = versand_jenachland ]; then
+    if [ "$L" = versand_jenachland ] || [ "$L" = fremdzeichen_guard ]; then
       [ -f /tmp/versand_quelle.jsonl ] || continue
       EXP="QUELLE=/tmp/versand_quelle.jsonl"
     fi

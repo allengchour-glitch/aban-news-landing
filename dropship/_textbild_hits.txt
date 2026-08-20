@@ -6945,3 +6945,5 @@ gid://shopify/Product/15473084563841	145->3	Gestreiftes Midikleid für Damen
 gid://shopify/Product/15473085317505	9->0	Flying Squirrel Backlit 24GBT Bluetooth Set-Top Box
 gid://shopify/Product/15473433543041	70->0	3-teiliges Blumen-Patchwork-Set
 gid://shopify/Product/15474479989121	9->0	USB-Expander
+gid://shopify/Product/15475057525121	39->0	Nachtlicht mit Sternenhimmel-Projektion
+gid://shopify/Product/15475905888641	43->2	4L Trinkbrunnen für Haustiere
