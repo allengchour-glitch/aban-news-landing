@@ -253,3 +253,8 @@ gid://shopify/Product/15506290737537	Gold
 gid://shopify/Product/15506531516801	Transparent
 gid://shopify/Product/15506700140929	Rot
 gid://shopify/Product/15506813518209	Silber
+gid://shopify/Product/15507826344321	Silber
+gid://shopify/Product/15507831554433	Violett
+gid://shopify/Product/15507835322753	Gold
+gid://shopify/Product/15507836830081	Silber
+gid://shopify/Product/15507836993921	Gold

@@ -1,0 +1,26 @@
+gid://shopify/Product/15448793678209	Farbe[Y109S · Y109M · Y109L · Y109XL · Y109XXL · Y109XXXL] → Grösse[S · M · L · XL · XXL · XXXL]	Lockere Jeansjacke im Korea-Stil für Herren
+gid://shopify/Product/15448793776513	Farbe[Y107S · Y107M · Y107L · Y107XL · Y107XXL · Y107XXXL] → Grösse[S · M · L · XL · XXL · XXXL]	Taillierte Jeansjacke für Herren
+gid://shopify/Product/15448793907585	Farbe[Y110S · Y110M · Y110L · Y110XL · Y110XXL · Y110XXXL] → Grösse[S · M · L · XL · XXL · XXXL]	Taillierte Jeansjacke für Herren – Y110S
+gid://shopify/Product/15448794497409	Farbe[Y098S · Y098M · Y098L · Y098XL · Y098XXL · Y098XXXL] → Grösse[S · M · L · XL · XXL · XXXL]	Taillierte Jeansjacke für Herren – Y098S
+gid://shopify/Product/15448794595713	Farbe[Y101S · Y101M · Y101L · Y101XL · Y101XXL · Y101XXXL] → Grösse[S · M · L · XL · XXL · XXXL]	Taillierte Jeansjacke für Herren – Y101S
+gid://shopify/Product/15448794726785	Farbe[Y039S · Y039M · Y039L · Y039XL · Y039XXL · Y039XXXL] → Grösse[S · M · L · XL · XXL · XXXL]	Schlanke Jeansjacke
+gid://shopify/Product/15448795120001	Farbe[Y100S · Y100M · Y100L · Y100XL · Y100XXL · Y100XXXL] → Grösse[S · M · L · XL · XXL · XXXL]	Taillierte Jeansjacke für Herren – Y100S
+gid://shopify/Product/15448795283841	Farbe[Y040S · Y040M · Y040L · Y040XL · Y040XXL · Y040XXXL] → Grösse[S · M · L · XL · XXL · XXXL]	Schlanke Jeansjacke für Herren
+gid://shopify/Product/15448796234113	Farbe[Y031S · Y031M · Y031L · Y031XL · Y031XXL · Y031XXXL] → Grösse[S · M · L · XL · XXL · XXXL]	Gut sitzende Jeansjacke für Herren – Y031S
+gid://shopify/Product/15448796397953	Farbe[Y030S · Y030M · Y030L · Y030XL · Y030XXL] → Grösse[S · M · L · XL · XXL]	Lockere Jeansjacke im Korea-Stil – Y030S
+gid://shopify/Product/15449064636801	Farbe[Y029S · Y029M · Y029L · Y029XL · Y029XXL · Y029XXXL] → Grösse[S · M · L · XL · XXL · XXXL]	Gut sitzende Jeansjacke für Herren · Modell 2
+gid://shopify/Product/15449064702337	Farbe[Y037S · Y037M · Y037L · Y037XL · Y037XXL] → Grösse[S · M · L · XL · XXL]	Lockere Jeansjacke im Korea-Stil · Modell 2
+gid://shopify/Product/15449064898945	Farbe[Y038S · Y038M · Y038L · Y038XL · Y038XXL] → Grösse[S · M · L · XL · XXL]	Lockere Jeansjacke im Korea-Stil · Modell 3
+gid://shopify/Product/15449511330177	Farbe[H310S · H310M · H310L · H310XL · H310XXL · H310XXXL] → Grösse[S · M · L · XL · XXL · XXXL]	Stretch-Hose · Herren
+gid://shopify/Product/15449511362945	Farbe[H321S · H321M · H321L · H321XL · H321XXL · H321XXXL] → Grösse[S · M · L · XL · XXL · XXXL]	Schmale Stretch-Hosen
+gid://shopify/Product/15449582272897	Farbe[H328S · H328M · H328L · H328XL · H328XXL · H328XXXL] → Grösse[S · M · L · XL · XXL · XXXL]	Elastische Herren-Boxershorts
+gid://shopify/Product/15449582305665	Farbe[H330S · H330M · H330L · H330XL · H330XXL · H330XXXL] → Grösse[S · M · L · XL · XXL · XXXL]	Elastische Herrenunterwäsche
+gid://shopify/Product/15449582403969	Farbe[H389S · H389M · H389L · H389XL · H389XXL · H389XXXL] → Grösse[S · M · L · XL · XXL · XXXL]	Stretch-Hosen für Herren, schmal geschnitten · Modell 2
+gid://shopify/Product/15449582535041	Farbe[H329S · H329M · H329L · H329XL · H329XXL · H329XXXL] → Grösse[S · M · L · XL · XXL · XXXL]	D2 Mikro-Briefs ohne Elastik
+gid://shopify/Product/15449582633345	Farbe[H318S · H318M · H318L · H318XL · H318XXL · H318XXXL] → Grösse[S · M · L · XL · XXL · XXXL]	Stretch-Hosen Slim Straight
+gid://shopify/Product/15449582928257	Farbe[H388S · H388M · H388L · H388XL · H388XXL · H388XXXL] → Grösse[S · M · L · XL · XXL · XXXL]	Stretch-Hosen für Herren, schmal geschnitten · Modell 5
+gid://shopify/Product/15449582993793	Farbe[H317S · H317M · H317L · H317XL · H317XXL · H317XXXL] → Grösse[S · M · L · XL · XXL · XXXL]	Stretch-Hosen für Herren, schmal geschnitten · Modell 6
+gid://shopify/Product/15449583092097	Farbe[H311S · H311M · H311L · H311XL · H311XXL · H311XXXL] → Grösse[S · M · L · XL · XXL · XXXL]	Stretch-Hosen für Herren, schmal geschnitten · Modell 7
+gid://shopify/Product/15449583157633	Farbe[H331S · H331M · H331L · H331XL · H331XXL · H331XXXL] → Grösse[S · M · L · XL · XXL · XXXL]	Gerade Herren-Hosen ohne Stretch
+gid://shopify/Product/15449583419777	Farbe[H280S · H280M · H280L · H280XL · H280XXL · H280XXXL] → Grösse[S · M · L · XL · XXL · XXXL]	Gerade Herren-Hosen
+gid://shopify/Product/15449583485313	Farbe[H287S · H287M · H287L · H287XL · H287XXL · H287XXXL] → Grösse[S · M · L · XL · XXL · XXXL]	Gerade geschnittene Herren-Hose · Modell 2
