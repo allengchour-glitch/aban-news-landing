@@ -455,7 +455,12 @@ API-total → es wurden 0 NEUE gefunden, alle schon im Ledger. **Ursache: DEPTH-
 nach 19k Importen erschöpft → 0 neu. **Fix: Basis-Tiefe hoch** (15+ROUND*3 statt 5+ROUND*2), damit Runde 1 schon
 tief (Seite ~18) greift. ⚠️ **Zweite tote Spur: `countryCode=DE/CZ/PL/…` (EU-Lager-Filter) gibt CJ-weit `total 0`**
 — CJs product/list-Warehouse-Filter liefert für EU nur noch 0, nur CN/US haben Bestand. WAREHOUSE-Env darum leer
-lassen (CN-Fracht 3–6 CHF ist ok). /tmp-Runner-Scripts überleben keinen Wipe → Fix bei Neuaufsetzen mit einbauen.
+lassen (CN-Fracht 3–6 CHF ist ok). ⚠️ **Präzisiert 20.08.2026: das gilt für den FILTER, nicht für die
+Wirklichkeit.** Stichprobe aus der Startseiten-Reihe «EU-Lager — Schnell geliefert»:
+`product/stock/queryByVid` meldet für beide geprüften Artikel **Germany Warehouse mit echtem Bestand**
+(88 bzw. 46 Stück) — die Zusage «2–7 Werktage» ist dort also gedeckt. Wer EU-Ware sucht, fragt den
+Bestand je vid ab, nicht den Katalogfilter; und wer die EU-Aussage «korrigieren» will, prüft ERST den
+Bestand, sonst repariert er eine wahre Aussage kaputt. /tmp-Runner-Scripts überleben keinen Wipe → Fix bei Neuaufsetzen mit einbauen.
 **⚠️ Dritte Falle: 30-Min-Strafschlaf (2026-07-29).** Runner deuten JEDEN `RC≠0` als „Punkte weg? Pause 30min" —
 aber der echte Grund ist meist **Gleichzeitigkeit beim Restart** (alle 5 Runner treffen Shopify-OAuth `shTok()` +
 CJ-`getAccessToken` (1×/300s-Limit!) zugleich → transiente Drossel → `exit 1`). Ein einzelner cj_category_fill-Lauf
