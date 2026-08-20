@@ -130,6 +130,22 @@ live belegt an 15411554910593). `automation/versandaussagen_wahrheit.py`, Ledger
   Rechtstexte gehen nur per GraphQL `shopPolicyUpdate` — und dessen Input nimmt `type`
   (`SHIPPING_POLICY`), **nicht** `id`. Ohne Live-Gegenprobe hätte der Lauf als erledigt gegolten.
 
+## 🚚 Die fünfte und sechste Lieferzeit sassen im THEME (2026-08-20)
+Der Versandaussagen-Lauf vom 14.08. hat 1'037 Produkt-TEXTE auf eine Wahrheit gebracht — die
+widersprüchlichen Zahlen standen danach aber weiterhin auf jeder Seite, nur eben im Theme:
+- **Jede Produktseite** trug einen Ausklapp-Text «Die Lieferung in die ganze Schweiz dauert in der
+  Regel **7–14 Tage**» (Block `text_mGpGAj` in `templates/product.json`). Auf demselben Bildschirm
+  sagte die Trustzeile des Produkts «10–20 Werktage» und die Datumsanzeige «3.–17. Sept.».
+- **Jede Kollektionsseite** trug eine FAQ «in der Regel **5–10 Werktage**» (`templates/collection.json`).
+Beide nennen jetzt die Stufen statt einer Zahl (1–2 / 2–7 / 10–20, POD 7–14) — dieselbe Aussage wie
+im Hero («Die Lieferzeit steht auf jeder Produktseite»).
+**Lehre: Ein Textlauf über Produktbeschreibungen erreicht das Theme NIE.** Wer Aussagen vereinheitlicht,
+muss beide Welten prüfen — Produkttexte UND `templates/*.json` + `sections/*` + `snippets/*`.
+Suchmuster für den nächsten Durchgang (alle Theme-Dateien paginiert holen, `first:250` reicht NICHT,
+es sind 425): `\d+\s*[–-]\s*\d+\s*(?:Werk)?[Tt]age|ab CHF\s*\d+`.
+⚠️ Fehlalarm dabei: In `snippets/meta-tags.liquid` stehen «7–14»/«8–16» nur in KOMMENTAREN, die einen
+früheren Bug erklären — nicht anfassen.
+
 ## 🔁 Nachkontrolle vom 2026-08-12 — was der erste Aufräumtag ÜBERSEHEN hat
 Ein zweiter Fan-out prüfte, ob die Reparaturen vom 11.08. halten. Sie halten — aber vier davon
 waren **zu eng gefasst**, und das Muster dahinter wiederholt sich:
