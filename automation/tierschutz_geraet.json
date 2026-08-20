@@ -1,0 +1,30 @@
+{
+  "_": "Muster für Hunde-Erziehungsgeräte, die nach TSchV Art. 76 in der Schweiz nicht frei verkäuflich sind. Eine Datei, zwei Leser: automation/tierschutz_geraet.mjs (CJ-Importer, prüft VOR dem Anlegen) und automation/tierschutz_guard.py (Bestand, SEIT-Modus gegen LIVE). Wer hier etwas ändert, ändert es an beiden Stellen gleichzeitig.",
+  "_warum": "Am 16.08.2026 wurden zwei Schock-Halsbänder als Sofortmassnahme gedraftet. Am 20.08. standen wieder ELF solche Geräte aktiv im Shop, neun davon am/nach dem 13.08. neu angelegt — der CJ-Grind legt die Fehlerklasse laufend nach. Ein Einmal-Ledger greift hier nicht; die Prüfung muss im Importer sitzen.",
+  "_tarnwoerter": "Die Lieferanten verkaufen den Schock selten als Schock. Gefunden wurden: «statischer Impuls» (99 Stufen), «elektrostatische Stimulation», «elektrischer Impuls», «Puls-proportionale Stimulation». Ein Muster, das nur auf «Schock» hört, übersieht die Mehrheit. Deshalb hängen die Regeln an der WIRKMECHANIK, nicht an der Produktbezeichnung.",
+  "_verneinung": "Selbstbeschreibungen wie «humaner Schutzmodus», «sanft», «harmlos», «ohne dem Tier zu schaden» stehen in fast jedem dieser Texte und sind KEIN Entlastungsbeweis — dieselbe Lehre wie beim Massagegerät («KEIN medizinisches Gerät»). Es gibt deshalb bewusst KEINE Sperre auf Verneinungen. Preis dafür: Ein reines Vibrationshalsband, das mit «ohne Elektroschock» wirbt, wird mitgenommen. Das kostet einen Entwurf, den ein Mensch mit einem Klick freigibt — die Gegenrichtung kostet einen Tierschutz-Verstoss im einzigen Kanal mit belegten Verkäufen.",
+  "sperre": [
+    { "n": "stachelbeere-tier-pflanze", "re": "stachelbeer|stachelschwein|katzenstachel|stachelrochen" },
+    { "n": "elektrozaun-nutztier-weide", "re": "weidezaun|k[üu]hen?\\b|rinder|pferdekoppel" }
+  ],
+  "treffer": [
+    {
+      "n": "elektro-erziehungsgeraet",
+      "tier": "hund|dog|welpe|vierbeiner|haustier|\\bpet\\b|bell(en|t|st)\\b|gebell",
+      "geraet": "halsband|halsb[äa]nder|collar|hundezaun|zaunsystem|fencing|unsichtbare[rn]? zaun|trainer|training|erziehung|dressur|antibell|anti-?bell",
+      "wirkung": "elektroschock|elektro-schock|schockstufe|schock-?modus|schockfunktion|statisch\\w* schock|schock\\w*\\b|\\bshock\\b|stromstoss|stromschlag|reizstrom|elektrostatisch\\w*|elektrisch\\w* impuls|statisch\\w* impuls|puls-?proportional|impuls-?proportional|elektrische[rnms]? reiz"
+    },
+    {
+      "n": "spruehhalsband-reizstoff",
+      "tier": "hund|dog|welpe|vierbeiner|haustier|\\bpet\\b|bell(en|t|st)\\b|gebell",
+      "geraet": "halsband|halsb[äa]nder|collar",
+      "wirkung": "spr[üu]h\\w*|spray\\w*|zitronell\\w*|citronella|reizstoff"
+    },
+    {
+      "n": "stachel-wuerge-halsband",
+      "tier": "hund|dog|welpe|vierbeiner|haustier|\\bpet\\b",
+      "geraet": "halsband|halsb[äa]nder|collar",
+      "wirkung": "stachelhalsband|stachel-halsband|prong collar|w[üu]rgehalsband|w[üu]rge-halsband|metallspitzen|dornen\\w* halsband"
+    }
+  ]
+}
