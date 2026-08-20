@@ -6967,3 +6967,8 @@ gid://shopify/Product/15479375593857	44->1	Smartwatch für Kinder mit GPS und Ka
 gid://shopify/Product/15479400694145	9->0	Bluetooth Headset für Motorradhelme
 gid://shopify/Product/15479402561921	97->2	Performance Drum- und Perkussionsmikrofon
 gid://shopify/Product/15479417700737	54->0	Adapter für Hochdruckreiniger-Schaumlanze
+gid://shopify/Product/15479437885825	21->0	Rotlichttherapie-Schuhe mit Infrarot für Knöchel
+gid://shopify/Product/15479452270977	23->0	Damen-Sandalen aus Wildlederimitat
+gid://shopify/Product/15479467508097	19->0	Velo-Handyhalterung mit mechanischem Schloss
+gid://shopify/Product/15479484481921	32->0	Gulikit NS07 Audio-Empfänger für Gaming
+gid://shopify/Product/15479484547457	12->1	Atmungsaktive offene Sommer-Pantoletten für Herren
