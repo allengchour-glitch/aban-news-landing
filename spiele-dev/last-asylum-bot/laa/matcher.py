@@ -142,6 +142,17 @@ def find_all(
         # weiterhin alles nachgerechnet.
         if len(gefunden) >= limit and score >= SICHER_GENUG:
             break
+    # KEIN Buendeln der Kandidaten - ausprobiert und verworfen.
+    # Der grobe Durchlauf unterdrueckt keine Nachbarn: bei einem eindeutigen
+    # Treffer sind alle sechs Kandidaten Nachbarn desselben Gipfels (gemessen
+    # an austausch/allianz-geschenk.png lagen sie fuer allianz/geschenke.png
+    # innerhalb von sechs Pixeln). Sie zu einem Fenster zusammenzufassen sieht
+    # nach fuenf gesparten Feinlaeufen aus - der Fruehausstieg oben spart sie
+    # aber schon, und zwar besser: er bricht nach EINEM kleinen Fenster ab,
+    # waehrend das gebuendelte Fenster groesser ist als jedes einzelne.
+    # Gemessen ueber die 22 Regel-Vorlagen: 6.79 s gebuendelt gegen 6.31 s
+    # ohne. Auch bei reinen Fehlschlaegen, wo der Fruehausstieg nie greift,
+    # blieb es gleich (1.44 s gegen 1.40 s).
 
     gefunden.sort(key=lambda m: -m.score)
     results: List[Match] = []
