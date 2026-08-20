@@ -22,6 +22,21 @@ REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 # Ein fehlender Dienst darf nicht LAUTLOS übersprungen werden — genau das hat den Fehler oben
 # einen Tag lang verdeckt. Wer nichts sagt, sieht aus wie «alles in Ordnung». Gemeldet wird
 # einmal je Datei, damit das Log nicht alle zwei Minuten dasselbe wiederholt.
+# ⚠️ NEUSTART-STURM (20.08.2026): Der Aufseher übersprang nur Läufe mit «FERTIG» im Log.
+# Ein Lauf, der sich planmässig mit «PAUSE …» beendet (nichts zu tun, CJ-Punkte leer, Shopify
+# antwortet nicht), galt dagegen als tot und wurde im ZWEI-MINUTEN-Takt neu gestartet — mit je
+# einem Shopify-Token-Holen und einer CJ-Anmeldung. bigbuy_abschied lief so ~700-mal am Tag ins
+# «PAUSE (Paket läuft bis 15.09.)», cj_variantenbild hämmerte Shopify so lange, bis es gar nicht
+# mehr antwortete (die Meldung «Shopify antwortet nicht» war die FOLGE, nicht die Ursache).
+# Wer sich mit PAUSE verabschiedet, hat nichts zu tun — eine Stunde Ruhe kostet nichts.
+pause_kuehlt() {
+  local log="/tmp/$1.log"
+  [ -f "$log" ] || return 1
+  tail -1 "$log" 2>/dev/null | grep -q "^PAUSE" || return 1
+  local alter=$(( $(date +%s) - $(stat -c %Y "$log" 2>/dev/null || echo 0) ))
+  [ "$alter" -lt 3600 ]
+}
+
 fehlt() {
   [ -f "$1" ] && return 1
   local marke="/tmp/_fehlt_$(basename "$1").marke"
@@ -118,6 +133,7 @@ while true; do
   for L in produktdetails_vereinen preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration; do
     fehlt "$REPO/automation/$L.py" && continue
     grep -q "^FERTIG" "/tmp/$L.log" 2>/dev/null && continue      # durchgelaufen
+    pause_kuehlt "$L" && continue                                # hat sich mit PAUSE verabschiedet
     # ⚠️ NICHT `pgrep -f`. Steht das Suchmuster in der eigenen Kommandozeile, findet pgrep
     # sich selbst und meldet «läuft» für einen toten Lauf — heute stand `suchwort_tags` so
     # eine Viertelstunde still, während jede Prüfung Vollzug meldete. Verglichen werden
@@ -143,6 +159,7 @@ while true; do
   for N in cj_bild_backfill cj_variantenbild schulstart_import alt_text_backfill frosch_maske_import; do
     fehlt "$REPO/automation/$N.mjs" && continue
     grep -q "^FERTIG" "/tmp/$N.log" 2>/dev/null && continue
+    pause_kuehlt "$N" && continue
     ps -eo args --no-headers | awk -v s="automation/$N.mjs" \
       '$1 ~ /node$/ && $2 == s {n++} END {exit(n?0:1)}' && continue
     ( cd "$REPO" && setsid bash -c \

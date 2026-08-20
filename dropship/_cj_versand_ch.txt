@@ -843,3 +843,12 @@ gid://shopify/Product/15504157639041	ok	Retro Canvas Rucksack mit Lederdetails
 gid://shopify/Product/15504174743937	nicht-versendbar	Kinder-Trolley mit Fronttasche
 gid://shopify/Product/15504224420225	ok	Herren- Quarzuhr mit Chronograph
 gid://shopify/Product/15504174055809	ok	PortaPack H1 für HackRF One SDR Receiver
+gid://shopify/Product/15506225660289	nicht-versendbar	Deluxe Inversionstisch gegen Rückenschmerzen
+gid://shopify/Product/15506145902977	nicht-versendbar	Kaktus Katzenbaum mit Kratzbrett
+gid://shopify/Product/15506199380353	nicht-versendbar	Rollbarer Salon-Servierwagen, 4 oder 5 Etagen
+gid://shopify/Product/15506223235457	nicht-versendbar	Hexagonales Trampolin mit Armlehne
+gid://shopify/Product/15506273173889	ok	Wasserkühlmatte – Einzel oder Doppel
+gid://shopify/Product/15506223038849	nicht-versendbar	Trampolin für Kinder und Erwachsene
+gid://shopify/Product/15506067292545	ok	Retro-Aktentasche aus Rindsleder
+gid://shopify/Product/15505682104705	nicht-versendbar	Hochleistungs-Standmixer 2L
+gid://shopify/Product/15506198987137	ok	Explosive Datejust Automatikuhr für Herren
