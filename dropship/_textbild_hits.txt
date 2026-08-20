@@ -6869,3 +6869,4 @@ gid://shopify/Product/15454115561857	9->0	DIY Ölmalerei Herz Bild Geschenk für
 gid://shopify/Product/15454116938113	14->0	Nordic Tischlampe mit weichem Licht
 gid://shopify/Product/15454162649473	18->1	Leichte Freizeit-Overalls für Herren
 gid://shopify/Product/15454192894337	30->3	Leichte, hochgeschnittene Jeans
+gid://shopify/Product/15454193058177	15->0	Haarständer
