@@ -6853,3 +6853,4 @@ gid://shopify/Product/15453791748481	78->0	Interaktives Kauknochen-Spielzeug
 gid://shopify/Product/15453824975233	23->0	Lippenöl für pralle Lippen
 gid://shopify/Product/15453897916801	51->0	Stoff- Aufbewahrungsbox
 gid://shopify/Product/15453918691713	125->0	Wasser-Flosser
+gid://shopify/Product/15453942776193	100->0	Schlankes Röckchen im reinen und verführerischen Stil

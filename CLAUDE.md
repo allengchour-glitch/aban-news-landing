@@ -791,6 +791,19 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
    `reprice_to_benchmark.py` senkt CJ/Eigenware auf Benchmark, BigBuy nur bis Kosten-Boden (nie unter EK+Versand).
 
 
+## ⚖️ Ein Punktetopf, zwei Aufgaben — der Grind hat Vorrang genommen (2026-08-20)
+CJs Tagesbudget ist EIN Topf für alle Prozesse. Am 20.08. war es um 20:24 erschöpft: restlos
+aufgebraucht dafür, Produkt **Nr. 41'150** anzulegen — während für **41'133 bestehende Produkte
+der Einkaufspreis fehlte** und damit unbekannt war, ob sie überhaupt Gewinn bringen. Die
+Stichprobe von gestern: CHF 15.90 Verkaufspreis gegen CHF 17.70 Stückkosten. Bei rund zehn
+Bestellungen insgesamt bringt das 41'150-ste Produkt nachweislich nichts; die Kostenwahrheit
+entscheidet über jede einzelne Marge. **Der Grind pausiert deshalb im Fenster 16:00–17:30 UTC**
+(direkt nach dem Punkte-Reset), damit `cj_kosten_backfill` ungestört arbeitet — 1,5 von 24
+Stunden. Eingebaut in `automation/engine_keepalive.sh`; dort wird auch die Pause-Kühlung des
+Backfills zurückgesetzt, sonst verlöre er das halbe Fenster an eine Absage von kurz vor 16:00.
+**Regel für jede neue CJ-Engine: erst fragen, WEM sie das Budget wegnimmt.** «Läuft nachts mit»
+ist keine Antwort, wenn ein anderer Prozess dieselbe Sekunde braucht.
+
 ## 🤖 Kimi-Nutzung — HARTE REGEL (teuer gelernt 2026-07-25)
 Kimi **k3** geht bei STRUKTURIERTEN/mehrfeldigen Prompts (JSON, "DESC:/SEO:"-Format, Artikel) in **Reasoning-Modus**
 → `content` bleibt leer, Helper fällt auf `reasoning_content` zurück = **englischer Denk-Text statt Copy**

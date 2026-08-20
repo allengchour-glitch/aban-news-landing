@@ -37,7 +37,30 @@ else
   echo "AUFSEHER laeuft"
 fi
 
-# ── 2. CJ-Grind. Prüfmuster ist der argv2-Name OHNE .sh (siehe Kopf).
+# ── 2. CJ-Grind — aber NICHT im Vorrang-Fenster.
+#
+# CJs Punktebudget ist EIN Topf für alle Prozesse und reicht nicht für beide Aufgaben.
+# Am 20.08.2026 war es um 20:24 erschöpft: vollständig aufgebraucht dafür, Produkt
+# Nr. 41'150 anzulegen — während für 41'133 bestehende Produkte der EINKAUFSPREIS fehlte
+# und damit unbekannt war, ob sie überhaupt Gewinn bringen (Stichprobe: CHF 15.90
+# Verkaufspreis gegen CHF 17.70 Kosten). Bei rund zehn Bestellungen insgesamt bringt das
+# 41'150-ste Produkt nachweislich nichts; die Kostenwahrheit entscheidet über jede Marge.
+# Deshalb bekommt der Kosten-Backfill die erste Stunde nach dem Punkte-Reset (~16:00 UTC)
+# allein — das kostet den Grind 1,5 von 24 Stunden.
+VORRANG=0
+STD=$(date -u +%H); MIN=$(date -u +%M)
+if [ "$STD" = "16" ] || { [ "$STD" = "17" ] && [ "$MIN" -lt 30 ]; }; then VORRANG=1; fi
+
+if [ "$VORRANG" = "1" ]; then
+  echo "VORRANG-FENSTER (16:00-17:30 UTC): CJ-Punkte gehoeren dem Kosten-Backfill"
+  # Der Aufseher überspringt einen Lauf, dessen Log seit weniger als einer Stunde auf PAUSE
+  # steht. Hat der Backfill kurz vor 16:00 wegen leerer Punkte pausiert, verlöre er dadurch
+  # das halbe Vorrang-Fenster — also die Kühlung hier gezielt ablaufen lassen.
+  [ -f /tmp/cj_kosten_backfill.log ] && touch -d '2 hours ago' /tmp/cj_kosten_backfill.log
+  ps -eo pid,args --no-headers | grep "[c]j_runner_template" | awk '{print $1}' | xargs -r kill 2>/dev/null
+else
+
+# Prüfmuster ist der argv2-Name OHNE .sh (siehe Kopf).
 for R in cj_runner2 cj_runner3 cj_runner4 cj_runner5; do
   [ -f "/tmp/$R.sh" ] || { echo "$R FEHLT (/tmp gewiped?)"; continue; }
   n=$(zaehle "$R")
@@ -52,6 +75,7 @@ for R in cj_runner2 cj_runner3 cj_runner4 cj_runner5; do
       | sort -k2 -n | head -n -1 | awk '{print $1}' | xargs -r kill 2>/dev/null
   fi
 done
+fi
 
 # ── 3. Übrige /tmp-Dauerläufer. Hier ist der Dateiname AUCH der Prozessname (kein exec).
 for S in cj_queue_runner autocommit reel_engine_runner social_autopilot \
