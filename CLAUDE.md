@@ -130,6 +130,18 @@ live belegt an 15411554910593). `automation/versandaussagen_wahrheit.py`, Ledger
   Rechtstexte gehen nur per GraphQL `shopPolicyUpdate` — und dessen Input nimmt `type`
   (`SHIPPING_POLICY`), **nicht** `id`. Ohne Live-Gegenprobe hätte der Lauf als erledigt gegolten.
 
+## 💸 «Gratis ab CHF 50» stimmt — die 45 im Versandprofil ist Absicht (2026-08-20)
+Beim Nachrechnen sah es aus wie eine verschenkte Kaufschwelle: Im Versandprofil ist die Gratis-Stufe
+bei **CHF 45.00** aktiv (die 50er ist deaktiviert), beworben wird überall **ab CHF 50**. Ich war
+zweimal davor, alle Texte auf 45 zu ziehen — falsch gewesen. Der Kommentar in `layout/theme.liquid`
+erklärt es: **45.00 = 50.00 × 0.9.** Shopify prüft die Regel gegen den Betrag NACH Rabatt; mit dem
+automatischen «2+ Artikel −10 %» (und WELCOME10) käme ein Warenkorb mit CHF 50 Warenwert bei 45 an
+und hätte den Gratis-Versand sonst verloren. Der Balken im Warenkorb rechnet passend dazu gegen den
+**Warenwert VOR Rabatt** (`items_subtotal_price`, SCHWELLE=5000).
+**Regel: An 45/50/65 NICHTS ändern, ohne diese Kette zu verstehen** — Zusage (50) ≠ Regelwert (45)
+≠ Altstufe (65). Wer die Texte auf 45 zieht, verschenkt echten Versand; wer die 45er Stufe abschaltet,
+nimmt rabattierten 50er-Körben den Gratis-Versand weg.
+
 ## 🚚 Die fünfte und sechste Lieferzeit sassen im THEME (2026-08-20)
 Der Versandaussagen-Lauf vom 14.08. hat 1'037 Produkt-TEXTE auf eine Wahrheit gebracht — die
 widersprüchlichen Zahlen standen danach aber weiterhin auf jeder Seite, nur eben im Theme:
