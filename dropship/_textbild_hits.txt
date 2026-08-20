@@ -6919,3 +6919,6 @@ gid://shopify/Product/15467017765249	16->3	Rosa ärmelloses Mini-Kleid
 gid://shopify/Product/15468316918145	11->0	Reise-Trolley
 gid://shopify/Product/15468698993025	30->0	Teleskop-Reinigungsschlauch für Klimaanlagen
 gid://shopify/Product/15468699091329	9->0	Keramik Zahnbürstenhalter
+gid://shopify/Product/15468961890689	93->0	Boho Umstandskleid für Fotoshootings
+gid://shopify/Product/15469939294593	18->0	Kinderkostüm Peppa Fairy Dress
+gid://shopify/Product/15469944209793	12->0	Neon Tutu
