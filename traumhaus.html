@@ -5710,8 +5710,38 @@ setTimeout(function baueGebaeude(){
     bau("th6_muellcontainer.glb",1.4,-54,0,48,0.4,false);
     bau("th6_stromkasten.glb",1.3,-38,0,54,0,false);
     /* ── th7: Downtown-Plus (modularer Turm, Parkhaus, Lagerhalle, Fahrzeuge, Denkmal) ── */
+    /* 🔭 AUSSICHTSTURM (User: "ein paar grosse gebaeude … mit guter sicht").
+       Das hoechste Haus der Stadt war ein reiner Kulissenstapel: 27 m, kein
+       Zugang, kein Grund hinzugehen. Es bekommt eine Dachterrasse mit Gelaender
+       und Antenne — und einen Panorama-Aufzug, der oben eine Runde dreht. */
     for(var _tw=0;_tw<4;_tw++)bau("th7_hochhaus_modul.glb",6.0,-90,_tw*6,-112,0,false);
-    bau("th7_hochhaus_dach.glb",3.6,-90,24,-112,0,false);
+    bau("th7_hochhaus_dach.glb",3.6,-90,24,-112,0,false,function(w9){
+      window._turm={x:w9.position.x,z:w9.position.z,y:27.6};
+      FAHRTEN.push({typ:"panorama",w:w9,name:"aussichtsturm"});});
+    (function dachterrasse(){
+      var TX=-90,TZ=-112,TY=27.2;
+      var bo=new THREE.Mesh(new THREE.BoxGeometry(11,0.3,11),betMat(0xcfc9bc,0.9));
+      bo.position.set(TX,TY,TZ);bo.receiveShadow=true;scene.add(bo);
+      var gM=stdMat(0x6a7078,0.45);
+      [[0,-5.4,11,0.16],[0,5.4,11,0.16],[-5.4,0,0.16,11],[5.4,0,0.16,11]].forEach(function(g9){
+        var re=new THREE.Mesh(new THREE.BoxGeometry(g9[2],1.05,g9[3]),gM);
+        re.position.set(TX+g9[0],TY+0.68,TZ+g9[1]);scene.add(re);});
+      for(var p9=0;p9<12;p9++){                      /* Gelaenderpfosten rundum */
+        var a9=p9/12*6.283;
+        var po=new THREE.Mesh(new THREE.CylinderGeometry(0.07,0.07,1.1,6),gM);
+        po.position.set(TX+Math.cos(a9)*5.3,TY+0.7,TZ+Math.sin(a9)*5.3);scene.add(po);}
+      var ma=new THREE.Mesh(new THREE.CylinderGeometry(0.13,0.2,9,8),stdMat(0x9aa0a8,0.5));
+      ma.position.set(TX+3.4,TY+4.6,TZ+3.4);ma.castShadow=true;scene.add(ma);
+      var bl=new THREE.Mesh(new THREE.SphereGeometry(0.34,10,8),
+        new THREE.MeshStandardMaterial({color:0xd8402a,emissive:0xff3020,emissiveIntensity:0.5,roughness:0.4}));
+      bl.position.set(TX+3.4,TY+9.3,TZ+3.4);scene.add(bl);
+      window._turmBlink=bl;
+      /* Fernrohr auf der Terrasse — macht aus der Plattform einen Ort */
+      var fr=new THREE.Mesh(new THREE.CylinderGeometry(0.16,0.22,1.5,10),stdMat(0x3a4048,0.4));
+      fr.rotation.z=Math.PI/2.6;fr.position.set(TX-3.2,TY+1.5,TZ-3.2);scene.add(fr);
+      var fs=new THREE.Mesh(new THREE.CylinderGeometry(0.1,0.1,1.4,8),stdMat(0x3a4048,0.4));
+      fs.position.set(TX-3.2,TY+0.7,TZ-3.2);scene.add(fs);
+    })();
     bau("th7_parkhaus.glb",9.8,96,0,-118,0,false);
     /* Zwischen Ost-Querstrasse (Sperrband bis x=86) und Ost-Ring (ab 104.8) liegen
      18.8 m. Die Halle war auf 9 m Hoehe skaliert 21 m BREIT und passte in keiner
@@ -8745,6 +8775,16 @@ var FAHRT_ART={
   geisterbahn:{dauer:24, nah:13, text:"👻 Geisterbahn fahren",
     bahn:function(t,o){var a=t*Math.PI*2;
       return {x:o.x+Math.cos(a)*6.4+Math.sin(a*3)*1.8, z:o.z+Math.sin(a)*5.2, y:1.5};}},
+  /* 🔭 Panorama-Aufzug: 6 s hoch an der Fassade, oben 22 s eine ruhige Runde
+     ueber der Stadt, dann wieder herunter. Die Hoehe kommt aus dem gemessenen
+     Turm (window._turm), nicht aus einer geratenen Zahl. */
+  panorama:{dauer:36, nah:13, text:"🔭 Auf den Aussichtsturm",
+    bahn:function(t,o){
+      var T=window._turm||{x:o.x,z:o.z,y:27.6};
+      if(t<0.17)  return {x:T.x, z:T.z+6.2, y:1.6+(t/0.17)*(T.y-1.6)};
+      if(t>0.83)  return {x:T.x, z:T.z+6.2, y:T.y-((t-0.83)/0.17)*(T.y-1.6)};
+      var a=(t-0.17)/0.66*Math.PI*2;
+      return {x:T.x+Math.cos(a)*4.2, z:T.z+Math.sin(a)*4.2, y:T.y+1.5};}},
   /* 🚡 Seilbahn: Rundfahrt Tal -> Berg -> Tal. Die Bergspur liegt seitlich versetzt,
      deshalb wechselt bei t=0.5 die Spur — wie bei einer echten Pendelbahn. */
   seilbahn:{dauer:46, nah:11, text:"🚡 Seilbahn auf den Berg",
