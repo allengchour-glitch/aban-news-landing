@@ -6856,3 +6856,6 @@ gid://shopify/Product/15453918691713	125->0	Wasser-Flosser
 gid://shopify/Product/15453942776193	100->0	Schlankes Röckchen im reinen und verführerischen Stil
 gid://shopify/Product/15453956211073	13->0	Bambus-Aufbewahrungsbox mit Clipmesser
 gid://shopify/Product/15453956964737	8->0	Bunte Stretch-Hosen
+gid://shopify/Product/15453998907777	26->3	Wasserschutzbeutel für Kinderschuhe
+gid://shopify/Product/15454000710017	119->0	Herren-Cargo-Hosen mit Stretch
+gid://shopify/Product/15454003069313	144->2	Retro-Lederportemonnaie Herren
