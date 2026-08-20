@@ -6911,3 +6911,7 @@ gid://shopify/Product/15465843589505	42->3	Abstrakte Cape-Jacke für Herren
 gid://shopify/Product/15465843949953	64->1	Kapuzen-Cardigan mit 3D Digitalprint für Herren
 gid://shopify/Product/15465857614209	18->0	Elektrischer, portabler Dental-Irrigator
 gid://shopify/Product/15465858859393	59->0	Doppel-Baton Performance Stick
+gid://shopify/Product/15465885630849	30->0	V-Neck Strickpullover mit Buchstaben-Design
+gid://shopify/Product/15466070802817	82->0	Messer- und Scheren-Set aus Edelstahl
+gid://shopify/Product/15466071228801	70->1	Wachsschmelzer mit Heizplatte und Rührlöffel
+gid://shopify/Product/15466876207489	40->1	Sportbeutel
