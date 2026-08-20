@@ -6894,3 +6894,4 @@ gid://shopify/Product/15455760646529	194->3	Streetstyle Kurzarm-Shirt Herren · 
 gid://shopify/Product/15455953355137	46->0	Prinzessin Kleiner Diamant Eleganter Ring
 gid://shopify/Product/15455957713281	19->0	Kompakte Aquarium für den Schreibtisch
 gid://shopify/Product/15458625487233	53->0	Titan-Schneidebrett mit Rille
+gid://shopify/Product/15458641117569	70->1	Winterjacke für Haustiere
