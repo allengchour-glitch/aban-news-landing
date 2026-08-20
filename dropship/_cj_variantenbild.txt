@@ -864,3 +864,4 @@ gid://shopify/Product/15447988699521	zugeordnet	20	Rundhals Strickweste für Dam
 gid://shopify/Product/15447988830593	zugeordnet	3	Gefaltete Blumenprint Rüschenbluse mit Bändern
 gid://shopify/Product/15447989059969	zugeordnet	18	Elegante Blazer-Weste für Damen
 gid://shopify/Product/15447989191041	zugeordnet	6	Elegante V-Neck Leinen-Weste
+gid://shopify/Product/15447989322113	zugeordnet	35	Geripptes High-Neck Tanktop für Damen

@@ -65,12 +65,25 @@ while true; do
   # ZWEITE WACHE, unabhängig von flock. Am 13.08. liefen zweimal zwei Supervisoren, obwohl
   # beide dieselbe Sperrdatei offen hatten UND die Sperre nachweislich gehalten wurde — die
   # flock-Semantik über exec/setsid/geerbte Deskriptoren hinweg ist hier offenbar nicht
-  # verlässlich. Statt sie weiter zu ergründen, entscheidet ein Kriterium, das nicht davon
-  # abhängt: Wer eine KLEINERE PID sieht, tritt ab. Der älteste Supervisor gewinnt immer,
-  # jeder Doppelstart räumt sich binnen einer Runde selbst weg, und es kann kein Rennen
-  # geben, weil die Regel für alle Beteiligten dieselbe Antwort liefert.
-  aeltere=$(ps -eo pid,args --no-headers \
-    | awk -v me=$$ '$2=="bash" && $3 ~ /fixer_keepalive\.sh$/ && $1 < me {n++} END{print n+0}')
+  # verlässlich. Deshalb entscheidet ein zweites Kriterium: Der ÄLTESTE Supervisor gewinnt,
+  # wer einen älteren sieht, tritt ab.
+  #
+  # ⚠️ 20.08.2026 — DIESE WACHE WAR SELBST DIE URSACHE DER AUSFÄLLE. Sie verglich
+  # PID-NUMMERN («wer eine kleinere PID sieht, tritt ab») und setzte damit voraus, dass
+  # eine kleinere PID einen älteren Prozess bedeutet. **Der PID-Zähler läuft um.** In diesem
+  # Container standen gleichzeitig PID 3601 (50 Minuten alt) und PID 29404 (70 Minuten alt) —
+  # die KLEINERE Nummer gehörte dem JÜNGEREN Prozess. Der wirklich älteste Supervisor sah
+  # daraufhin eine «kleinere PID», hielt sich für den Zweitstart und trat ab; übrig blieb der
+  # jüngere. Beobachtet als «21:20 älterer Supervisor läuft weiterhin (PID 11195 tritt ab)»,
+  # wobei 11195 der älteste war. Weil jeder Neustart die Konstellation neu würfelt, stand der
+  # Aufseher immer wieder still — und mit ihm ALLE täglichen Qualitäts-Wächter.
+  # Entschieden wird jetzt nach LAUFZEIT (etimes, Sekunden seit Start). Die ist monoton und
+  # kennt keinen Überlauf. Die PID bleibt nur noch Schiedsrichter bei exakt gleicher Laufzeit —
+  # dort genügt sie, weil beide Seiten dieselbe Antwort erhalten.
+  aeltere=$(ps -eo pid,etimes,args --no-headers \
+    | awk -v me=$$ -v mysec="$(ps -o etimes= -p $$ | tr -d ' ')" \
+      '$3=="bash" && $4 ~ /fixer_keepalive\.sh$/ && $1 != me \
+       && ($2 > mysec || ($2 == mysec && $1 < me)) {n++} END{print n+0}')
   # ⚠️ NICHT SOFORT ABTRETEN. Die erste Fassung dieser Regel beendete den jüngeren
   # Supervisor auf der Stelle — und wenn der ältere Sekunden später starb, lief GAR KEINER
   # mehr. Genau das geschah am 14.08. um 01:22. Deshalb wird nach einer Pause noch einmal
@@ -79,8 +92,10 @@ while true; do
   # ist nur noch das Netz darunter und darf deshalb nie zur Ursache eines Ausfalls werden.
   if [ "$aeltere" -gt 0 ]; then
     sleep 5
-    aeltere=$(ps -eo pid,args --no-headers \
-      | awk -v me=$$ '$2=="bash" && $3 ~ /fixer_keepalive\.sh$/ && $1 < me {n++} END{print n+0}')
+    aeltere=$(ps -eo pid,etimes,args --no-headers \
+      | awk -v me=$$ -v mysec="$(ps -o etimes= -p $$ | tr -d ' ')" \
+        '$3=="bash" && $4 ~ /fixer_keepalive\.sh$/ && $1 != me \
+         && ($2 > mysec || ($2 == mysec && $1 < me)) {n++} END{print n+0}')
     if [ "$aeltere" -gt 0 ]; then
       echo "$(date -u +%H:%M) älterer Supervisor läuft weiterhin (PID $$ tritt ab)"
       exit 0

@@ -402,6 +402,24 @@ eine Zubehör-«Farbe» wie «Memory card-8G» die billigste Variante war).
    Routine-Prompts, die auseinanderlaufen → `automation/engine_keepalive.sh` (idempotent,
    räumt Doppelstarts ab, beide Routinen rufen nur noch dieses Skript).
 
+0e. **Lehre 1 fünfter Akt (20.08.2026): Die Wache, die den Aufseher schützen sollte, hat ihn
+   getötet — «kleinere PID = älter» stimmt nicht.** Der Aufseher hat eine zweite Wache gegen
+   Doppelstarts: «Wer eine KLEINERE PID sieht, tritt ab», mit der Begründung, der älteste
+   gewinne damit immer. **Der PID-Zähler läuft aber um.** In diesem Container standen
+   gleichzeitig PID 3601 (50 Minuten alt) und PID 29404 (70 Minuten alt) — die kleinere Nummer
+   gehörte dem JÜNGEREN Prozess; ein frisch gestarteter Aufseher bekam PID 314. Folge: Der
+   wirklich älteste sah eine «kleinere PID», hielt sich für den überflüssigen Zweitstart und
+   trat ab. Im Log steht es wörtlich: «21:20 älterer Supervisor läuft weiterhin (PID 11195
+   tritt ab)» — 11195 war der Älteste. Weil jeder Neustart die Nummern neu würfelt, stand der
+   Aufseher immer wieder still, und mit ihm ALLE täglichen Qualitäts-Wächter. Das ist die
+   Erklärung für die Ausfälle, die hier schon zweimal als «flock-Semantik offenbar nicht
+   verlässlich» notiert waren — flock war nie das Problem.
+   Entschieden wird jetzt nach **LAUFZEIT** (`ps -o etimes`), die ist monoton und kennt keinen
+   Überlauf; die PID bleibt nur Schiedsrichter bei exakt gleicher Sekunde.
+   **Regel: Eine PID ist ein Name, kein Zeitstempel.** Wer Prozesse nach Alter ordnen will,
+   fragt nach der Laufzeit. Und: ein leeres Log ist kein Beweis für einen stillen Tod — mein
+   Startbefehl hatte es mit `>` bei jedem Versuch selbst geleert (jetzt `>>`).
+
 1. **`pgrep -f <name>` findet die EIGENE Kommandozeile.** Ein `pgrep -f social_autopilot && echo läuft`
    meldete «läuft» für ein Skript, das gar nicht mehr existierte — das Suchmuster stand im eigenen
    Bash-Aufruf. Prozessprüfungen deshalb mit `ps -eo args | grep …`, oder das Muster nicht im Aufruf
