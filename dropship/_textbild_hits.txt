@@ -6952,3 +6952,7 @@ gid://shopify/Product/15476000489857	26->0	Enganliegender Minirock für Damen
 gid://shopify/Product/15476113736065	15->0	U-förmige Massagekissen
 gid://shopify/Product/15476114030977	12->0	Loose Fit T-Shirt mit Print und Stickerei
 gid://shopify/Product/15476127367553	80->2	Herren Hoodie mit 3D Digitaldruck
+gid://shopify/Product/15476177600897	8->3	Minimalistischer Schubladen-Organizer aus Bambus
+gid://shopify/Product/15477130985857	108->0	Multifunktionaler Freihand-Reinigungshelfer
+gid://shopify/Product/15477387723137	39->2	Wasserdichte Fahrradtasche
+gid://shopify/Product/15477467971969	11->0	Faltbares Outdoor-Zelt für 1-4 Personen
