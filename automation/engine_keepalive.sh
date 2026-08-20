@@ -23,8 +23,13 @@ cd /home/user/aban-news-landing || exit 1
 zaehle() { ps -eo args --no-headers | awk -v s="$1" '$1=="bash" && index($0,s)' | wc -l; }
 
 starte() {  # starte <logname> <befehl…>
+  # ⚠️ ANHÄNGEN, nicht überschreiben. Mit `>` löschte jeder Neustart die Begründung des
+  # vorigen Todes — der Aufseher stand am 20.08. mehrfach still, und das Log war jedes Mal
+  # leer, weil der Start es gerade geleert hatte. Ein Wächter, dessen Log der Neustart
+  # zerstört, kann seinen eigenen Ausfall nicht erklären.
   local log="/tmp/$1.log"; shift
-  setsid "$@" >"$log" 2>&1 </dev/null &
+  echo "=== $(date -u +%F\ %H:%M:%S) Start durch engine_keepalive ===" >>"$log"
+  setsid "$@" >>"$log" 2>&1 </dev/null &
   sleep 3          # gestaffelt: alle gleichzeitig reissen Shopify-OAuth + CJ-Token-Limit
 }
 
