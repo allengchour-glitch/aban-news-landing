@@ -6850,3 +6850,4 @@ gid://shopify/Product/15453770252673	31->0	Radfahrer Sonnenschutz Gesichtsschutz
 gid://shopify/Product/15453771432321	29->3	Sand- & wasserdichte Bein-/Fussdecke für Outdoor-Aktivitäten
 gid://shopify/Product/15453775331713	44->0	Atmungsaktive Sneaker Damen
 gid://shopify/Product/15453791748481	78->0	Interaktives Kauknochen-Spielzeug
+gid://shopify/Product/15453824975233	23->0	Lippenöl für pralle Lippen
