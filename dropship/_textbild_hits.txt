@@ -7398,3 +7398,8 @@ gid://shopify/Product/15493909086593	54->1	Geweebter Kissenbezug mit Tufting-Mus
 gid://shopify/Product/15493909184897	25->0	Vielseitiger Mesh-Sneaker für Herren
 gid://shopify/Product/15493909381505	13->0	Nordische Wandteppich-Deko aus Baumwolle
 gid://shopify/Product/15493909414273	85->0	New Nordic Kissenbezug mit Quasten
+gid://shopify/Product/15493909840257	16->0	New Nordic Kissenhülle mit Stickerei
+gid://shopify/Product/15493910266241	68->0	High-Gloss Trimming Plate Matte Nose Shadow
+gid://shopify/Product/15493910462849	20->0	Sleeker Leder-Sneaker im Color-Blocking-Design
+gid://shopify/Product/15493910888833	81->0	Herren High-top Sportschuh
+gid://shopify/Product/15493911380353	11->0	Gemütliche Freizeitschuhe mit dicker Sohle
