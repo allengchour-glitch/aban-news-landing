@@ -7481,3 +7481,5 @@ gid://shopify/Product/15494253314433	25->0	Outdoor Rucksack 50L – Wandern, Cam
 gid://shopify/Product/15494254395777	10->0	Pai Thinking Pet Plüsch-Vibrationsspielzeug mit Katzenminze
 gid://shopify/Product/15494254461313	44->0	Reflektierender Rucksack mit Thermo-Isolation
 gid://shopify/Product/15494255935873	32->0	360° Rollende Maus mit Feder für Katzen
+gid://shopify/Product/15494256427393	16->2	Retro Lederrucksack für Herren
+gid://shopify/Product/15494256591233	12->0	Atmungsaktive Crossbody-Haustiertasche
