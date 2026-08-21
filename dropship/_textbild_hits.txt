@@ -7654,3 +7654,5 @@ gid://shopify/Product/15495110001025	67->3	Mini Wireless CarPlay Adapter
 gid://shopify/Product/15495110033793	8->0	Dreifach-Ring mit Zirkonia-Pflasterung
 gid://shopify/Product/15495110164865	16->0	Moissanite Ring mit 2 Karat Smaragd und 925er Silber
 gid://shopify/Product/15495111377281	37->1	Bluetooth Gamepad für iOS – Metall-Buttons
+gid://shopify/Product/15495111606657	80->0	Ärmelloses Off-Shoulder Maxi-Kleid
+gid://shopify/Product/15495111803265	71->1	Multifunktions-Sportuhr für Herren
