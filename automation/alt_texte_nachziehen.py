@@ -25,7 +25,11 @@ import json, os, sys, time, urllib.request
 
 SHOP = 'au3j0y-hq.myshopify.com'
 API  = '2025-01'
-SEIT   = os.environ.get('SEIT', '2026-08-17')
+import datetime as _dt
+# Ohne SEIT: die letzten 4 Tage. Der tägliche Lauf im Aufseher deckt sich damit
+# vierfach selbst ab — fällt er ein paar Tage aus, holt der nächste Lauf die Lücke
+# trotzdem ein. Für eine grössere Nachreparatur SEIT von Hand weiter zurücksetzen.
+SEIT   = os.environ.get('SEIT') or (_dt.date.today() - _dt.timedelta(days=4)).isoformat()
 LIMIT  = int(os.environ.get('LIMIT', '99999'))
 DRY    = os.environ.get('DRY') == '1'
 STATUS = os.environ.get('STATUS', 'active')
