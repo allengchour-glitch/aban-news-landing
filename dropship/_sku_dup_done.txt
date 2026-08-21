@@ -680,3 +680,5 @@ gid://shopify/Product/15508418822529	CJ-CJLY294678701AZ	Damen Neckholder Slim-Fi
 gid://shopify/Product/15508419051905	CJ-CJLY294666601AZ	Gestreiftes Sommerkleid mit Rückenausschnitt
 gid://shopify/Product/15508419150209	CJ-CJLY294664701AZ	Elegantes gestreiftes Etui-Kleid
 gid://shopify/Product/15508419248513	CJ-CJLY294660201AZ	Französisches A-Linien Minikleid mit Off-Shoulder
+gid://shopify/Product/15508462272897	CJ-1412334422736375808	Kissenhülle Baumwolle Gestreift
+gid://shopify/Product/15508462403969	CJ-1411224280494116864	Niedliches Kissen mit Decke, Dual-Use
