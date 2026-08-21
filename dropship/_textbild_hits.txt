@@ -7951,3 +7951,6 @@ gid://shopify/Product/15495400554881	84->2	USB Multifunktionsrucksack für Herre
 gid://shopify/Product/15495401832833	45->0	Infrarot Dampf Keramik Glätteisen
 gid://shopify/Product/15495402652033	97->2	Ärmelloses Maxi-Kleid mit 3D-Stickerei
 gid://shopify/Product/15495403340161	85->0	Grosse Bodenmatten für jeden Raum
+gid://shopify/Product/15495587791233	26->0	Bohemian Regenbogen Decke & Wandteppich
+gid://shopify/Product/15495589822849	23->1	Baumwoll-Badetuch mit Stickerei, Geschenkbox
+gid://shopify/Product/15495591297409	17->0	Boho-Kissenbezug aus Lederimitat und Baumwolle
