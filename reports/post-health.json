@@ -1,66 +1,19 @@
 {
-  "ts": "2026-08-21T11:28:03.427Z",
+  "ts": "2026-08-21T17:28:03.779Z",
   "platforms": {
     "tiktok": {
       "result": "SOUND_DIAG",
       "reason": "Sound-Panel-Screenshots erstellt",
       "file": "mw-statement-ohrringe-onyx-geom.mp4",
-      "vor_min": 81499
+      "vor_min": 81859
     },
     "campaign": {
       "result": "WIZARD_DIAG",
-      "vor_min": 80340
+      "vor_min": 80700
     },
     "meta": {
-      "index": 26,
-      "item": "Hesch das scho gseh? 🇨🇭 Stiletto-Sandalette «Gala»",
-      "ig": {
-        "error": "IG container",
-        "detail": {
-          "error": {
-            "message": "Only photo or video can be accepted as media type.",
-            "type": "OAuthException",
-            "code": 9004,
-            "error_subcode": 2207052,
-            "is_transient": false,
-            "error_user_title": "Medien-Download fehlgeschlagen. Die Medien-URI entspricht nicht unseren Anforderungen.",
-            "error_user_msg": "Die Mediendatei konnte nicht von dieser URI abgerufen werden: https://cdn.shopify.com/s/files/1/0943/6856/3585/files/stiletto-sandalette-gala-violett-knochelriemen-portrait_b545b2c5-ed8b-44a0-96be-ab12f51507d3.jpg?v=1781721622.Weitere Informationen findest du im Abschnitt „Einschränkungen“ in unserer Entwicklerdokumentation: https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media#creating",
-            "fbtrace_id": "AxuxpdF23IllGplaSzpdnu5"
-          }
-        }
-      },
-      "fb": {
-        "ok": "122131720869350792"
-      },
-      "tt": {
-        "skipped": "kein Video"
-      },
-      "insights": {
-        "ts": "2026-08-21T11:28",
-        "ig": {
-          "posts": 12,
-          "eng": 9,
-          "avg": 1,
-          "top": {
-            "eng": 1,
-            "cap": "Lueg mau das aa 😍 Statement-Ohrringe «O"
-          }
-        },
-        "fb": {
-          "posts": 12,
-          "eng": 0,
-          "avg": 0,
-          "top": {
-            "eng": 0,
-            "cap": "Hesch das scho gseh? 🇨🇭 Stiletto-Sanda"
-          }
-        }
-      },
-      "replies": {
-        "ig": 0,
-        "fb": 0,
-        "skipped": 0
-      }
+      "result": "WORKER_NICHT_ERREICHBAR",
+      "detail": "TimeoutError: The operation was aborted due to timeout"
     }
   },
   "duplicates": [],
