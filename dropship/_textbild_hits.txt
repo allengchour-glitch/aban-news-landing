@@ -8333,3 +8333,10 @@ gid://shopify/Product/15496433435009	37->0	Graffiti Quadcopter mit Fernsteuerung
 gid://shopify/Product/15496433467777	19->0	Wasserdichte Herren Quarzuhr
 gid://shopify/Product/15496435630465	63->0	Flugzeug-Modellbausatz zum Stecken
 gid://shopify/Product/15496435728769	29->3	Freizeit-Hemd mit langen Ärmeln und Tasche
+gid://shopify/Product/15496435859841	48->0	Herren Strickpullover mit Häkelmuster
+gid://shopify/Product/15496435892609	76->0	3-in-1 RC-Fahrzeug für Land, Wasser und Luft
+gid://shopify/Product/15496436449665	44->0	Federglöckchen Tumbler – Katzenspielzeug
+gid://shopify/Product/15496437072257	85->0	Taucheruhr Klassik Leuchtend Saphir Stahl Mechanisch
+gid://shopify/Product/15496439595393	65->2	Hundehalsband P-Kette für Spaziergänge
+gid://shopify/Product/15496439759233	12->0	Hunde-Blindenring, verstellbar
+gid://shopify/Product/15496440906113	28->3	Velo-Nachtlicht mit Helmhalterung
