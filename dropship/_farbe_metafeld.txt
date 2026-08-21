@@ -258,3 +258,6 @@ gid://shopify/Product/15507831554433	Violett
 gid://shopify/Product/15507835322753	Gold
 gid://shopify/Product/15507836830081	Silber
 gid://shopify/Product/15507836993921	Gold
+gid://shopify/Product/15508404765057	Schwarz
+gid://shopify/Product/15508405322113	Mehrfarbig
+gid://shopify/Product/15508406927745	Transparent

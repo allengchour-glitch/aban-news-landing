@@ -7218,3 +7218,38 @@ gid://shopify/Product/15493847417217	139->0	Wandbehang aus Baumwollfaden, handge
 gid://shopify/Product/15493847613825	9->0	Lederrucksack mit Doppelreissverschluss
 gid://shopify/Product/15493847941505	12->0	Faltbares 10W Solar-Ladegerät
 gid://shopify/Product/15493848007041	29->0	Kabelloses Ladegerät für das Auto
+gid://shopify/Product/15493848236417	76->0	Nail Art Marker Set
+gid://shopify/Product/15493848301953	82->0	Multifunktionaler Grillclip mit Klappgriff
+gid://shopify/Product/15493848400257	50->0	Wild Sports Freizeit-Sneaker
+gid://shopify/Product/15493848662401	9->1	Atmungsaktive Freizeitschuhe mit Gummisohle
+gid://shopify/Product/15493848760705	24->0	Tragbares Mini-Ladegerät mit Magnetkabel
+gid://shopify/Product/15493848793473	11->3	Koreanische Freizeit-Sneaker für Herren
+gid://shopify/Product/15493849022849	95->0	Caba Survival-Messer BK18/
+gid://shopify/Product/15493849088385	38->0	Atmungsaktive Herren Freizeit-Sneaker
+gid://shopify/Product/15493849973121	31->0	Multifunktionaler Handyhalter aus Leder
+gid://shopify/Product/15493850104193	13->2	Rostfreier Eckspachtel aus Edelstahl
+gid://shopify/Product/15493850169729	22->0	Multifunktionaler Smart Wecker mit Sprachdialog
+gid://shopify/Product/15493850300801	53->0	Cream Bomb Öffner
+gid://shopify/Product/15493850497409	22->1	Reisetasche aus pflanzlich gegerbtem Leder
+gid://shopify/Product/15493850530177	12->2	Kompakter Luftreiniger für Büro & Schlafzimmer
+gid://shopify/Product/15493850595713	38->0	Grosser Puderpinsel
+gid://shopify/Product/15493850759553	24->0	Leichter, wasserdichter 20L Sportrucksack
+gid://shopify/Product/15493850890625	24->3	Motorrad-Satteltasche 20L
+gid://shopify/Product/15493851021697	29->0	Smarter Wischroboter für dein Zuhause
+gid://shopify/Product/15493851087233	16->3	Klebebandabroller mit Gummiboden
+gid://shopify/Product/15493851251073	63->0	Wasserdichter Rucksack, grosses Fassungsvermögen
+gid://shopify/Product/15493851283841	12->0	GPS-Diebstahlschutz mit Langzeit-Standby
+gid://shopify/Product/15493851382145	66->0	Live Soundkarte für Streaming & Homerecording
+gid://shopify/Product/15493851513217	34->0	Elegantes V-Neck Maxikleid mit Knopfleiste
+gid://shopify/Product/15493851545985	40->0	Schmuck-Set mit Schleifen-Motiv
+gid://shopify/Product/15493852037505	54->0	Vielseitiges Langarm-Kleid für Damen
+gid://shopify/Product/15493852266881	14->0	Elegantes V-Neck Langarm-Kleid mit Schnürung
+gid://shopify/Product/15493852365185	23->0	LED Zähler Ring
+gid://shopify/Product/15493852594561	30->3	Keramik-Lotion-Spender im China-Stil
+gid://shopify/Product/15493852725633	27->0	Hängekorb Space Aluminium (doppellagig)
+gid://shopify/Product/15493852856705	113->1	Wasserabsorbierende Anti-Rutsch Badematte
+gid://shopify/Product/15493853118849	52->3	Magnetische Stahlkugel-Uhr
+gid://shopify/Product/15493853184385	56->0	Retro-Quarzuhr für Studierende
+gid://shopify/Product/15493853282689	9->2	Nordisches Kissen Schwarz-Weiss mit Herzmuster
+gid://shopify/Product/15493853348225	9->0	Herren Business Quarzuhr mit Stahlarmband
+gid://shopify/Product/15493853413761	39->0	Hintergrundtuch für DIY-Projekte
