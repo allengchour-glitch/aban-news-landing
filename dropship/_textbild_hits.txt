@@ -8198,3 +8198,14 @@ gid://shopify/Product/15496378876289	41->3	Herzförmige Halskette & Armband
 gid://shopify/Product/15496379040129	24->0	Futter- und Trinkbrunnen für Katzen, gross
 gid://shopify/Product/15496379367809	21->0	Doppellagiges S925 Silber Armband mit Sternen
 gid://shopify/Product/15496379433345	117->0	Midi-Bluse mit Reverskragen und Langarm
+gid://shopify/Product/15496379629953	16->2	Elegantes Oversize-Hemd mit Revers
+gid://shopify/Product/15496379761025	19->0	Claude Monet «Seerosen» – Malen nach Zahlen
+gid://shopify/Product/15496380449153	34->0	Diamant Painting Set: Katze und Schuh
+gid://shopify/Product/15496380580225	104->0	DIY Digital Painting „Schräge Landschaft“
+gid://shopify/Product/15496380744065	63->0	Malen nach Zahlen Set
+gid://shopify/Product/15496380842369	35->1	Baumwoll-Leinen Businesshemd mit Zweifarben-Webung
+gid://shopify/Product/15496380875137	88->0	Malen nach Zahlen Set – Alaska Berglandschaft
+gid://shopify/Product/15496381038977	48->0	DIY Digital Painting nach Mass
+gid://shopify/Product/15496381104513	72->3	Quarz-Armbanduhr mit Silikon-Zifferblatt
+gid://shopify/Product/15496381792641	31->0	Hundehalsband mit Legierungsschnalle
+gid://shopify/Product/15496382120321	11->0	Marokkanisches Kissen für Sofa und Wohnbereich
