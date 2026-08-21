@@ -7612,3 +7612,7 @@ gid://shopify/Product/15495087882625	14->0	Multifunktionaler Haarschneider
 gid://shopify/Product/15495087980929	12->0	Mini-Haarglätter
 gid://shopify/Product/15495088210305	14->0	60 L Tarn-Rucksack für Reisen und Camping
 gid://shopify/Product/15495090864513	15->0	Polar Fleece Stretch-Sofabezug
+gid://shopify/Product/15495091159425	57->2	Faltbarer Quadrocopter mit GPS und Kamera
+gid://shopify/Product/15495091257729	14->0	JJRC H49 SOL Selfie-Drohne mit 720P Kamera
+gid://shopify/Product/15495091290497	95->1	Wasserdichte Oxford Picknickdecke
+gid://shopify/Product/15495091356033	9->1	Leichte Schnürschuhe für Herren
