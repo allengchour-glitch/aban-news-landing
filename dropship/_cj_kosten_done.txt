@@ -122,3 +122,9 @@ gid://shopify/Product/15413023342977	cj-ohne-antwort
 gid://shopify/Product/15413024915841	cj-ohne-antwort
 gid://shopify/Product/15413025014145	cj-ohne-antwort
 gid://shopify/Product/15413025145217	cj-ohne-antwort
+gid://shopify/Product/15413041168769	cj-ohne-antwort
+gid://shopify/Product/15413041889665	cj-ohne-antwort
+gid://shopify/Product/15413042479489	cj-ohne-antwort
+gid://shopify/Product/15413043200385	cj-ohne-antwort
+gid://shopify/Product/15413060829569	cj-ohne-antwort
+gid://shopify/Product/15413061484929	cj-ohne-antwort

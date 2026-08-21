@@ -8858,3 +8858,4 @@ gid://shopify/Product/15498835853697	48->0	Mini Multifunktionaler Klauenhammer
 gid://shopify/Product/15498838671745	24->0	Ohrdruck-Regulator
 gid://shopify/Product/15498887397761	34->0	Kompakter Zigarrenkasten
 gid://shopify/Product/15498887692673	65->0	Faltbarer Aufbewahrungsbox
+gid://shopify/Product/15498943168897	83->0	Make-up Pinsel Set für Einsteiger
