@@ -7006,3 +7006,11 @@ gid://shopify/Product/15481775489409	22->0	Magnetische Wireless Powerbank mit Sc
 gid://shopify/Product/15481800098177	70->0	Smart Bluetooth Ring für iPhone und Android
 gid://shopify/Product/15481819005313	57->3	Ferngesteuerter Amphibien-Kipper
 gid://shopify/Product/15481842729345	64->0	Tiger Power FPV Racing Drohne
+gid://shopify/Product/15483876540801	65->1	Ei-Ablagebox
+gid://shopify/Product/15483890303361	31->0	Kompakte Wickelmatte
+gid://shopify/Product/15483890598273	13->1	Dual-Kamera-Dashcam
+gid://shopify/Product/15483933065601	19->0	Halsstretchgerät
+gid://shopify/Product/15483934671233	19->0	Elegante Damen-Oberteile
+gid://shopify/Product/15483934966145	27->0	Aroma Diffuser
+gid://shopify/Product/15483934998913	53->0	Kuh-Kostüm
+gid://shopify/Product/15483935621505	25->0	Hitzebeständige Pfannenunterlage

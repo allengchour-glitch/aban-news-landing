@@ -516,6 +516,36 @@ async function grossbildNachVorn(st,productId){
   console.log(`  🖼️ Miniatur (${kante(nodes[0])}px) war Hauptbild → ${kante(ziel)}px nach vorn`);
  }catch{}
 }
+// 🏷️ ALT-TEXTE FÜR ALLE BILDER — erst hier, wenn die Medienliste endgültig steht.
+// Bis 20.08.2026 trug nur EIN Bild je Produkt einen Alt-Text: `productSet` legte oben
+// `files:[imgs[0]]` MIT Alt an, `productCreateMedia` hängte `imgs.slice(1)` OHNE Alt daran.
+// Bei 5'739 Produkten ab dem 17.08. blieben so 6–8 Bilder je Produkt stumm.
+// Schlimmer noch: `grossbildNachVorn` schiebt danach ein grosses Bild auf Position 0 — und
+// das ist eines der Bilder OHNE Alt. Bei rund 9 % der Produkte stand der einzige Alt-Text
+// dadurch auf einer 120-px-Miniatur an Position 2, während ausgerechnet das HAUPTBILD leer
+// blieb: genau das Bild, das in der Kollektionskachel, im Warenkorb, in der Google-Bildersuche
+// und im Merchant-Feed erscheint. Dieselbe Lehre wie beim Refurb-Zusatz, der aus dem Titel
+// verschwand und im Feld `condition` stehen blieb: wer eine Angabe verschiebt, muss prüfen,
+// welches Feld sie danach trägt. Deshalb läuft dieser Schritt NACH grossbildNachVorn UND
+// nach variantenBilder — sonst bleiben die zuletzt angehängten Bilder wieder stumm.
+// Vorhandene Alt-Texte werden NIE überschrieben.
+async function altTexte(st,productId,title){
+ try{
+  const r=await sgql(st,`query($id:ID!){product(id:$id){media(first:25){nodes{
+    id mediaContentType ... on MediaImage{alt}}}}}`,{id:productId});
+  const nodes=(r?.data?.product?.media?.nodes||[]).filter(n=>n.mediaContentType==='IMAGE');
+  const t=String(title||'').slice(0,90);
+  if(!t||!nodes.length)return 0;
+  const files=nodes.map((n,i)=>({node:n,alt:`${t} – Bild ${i+1} | LuxeStyle`}))
+                   .filter(x=>!String(x.node.alt||'').trim())
+                   .map(x=>({id:x.node.id,alt:x.alt}));
+  if(!files.length)return 0;
+  const u=await sgql(st,`mutation($files:[FileUpdateInput!]!){fileUpdate(files:$files){userErrors{message}}}`,{files});
+  const e=u?.data?.fileUpdate?.userErrors||[];
+  if(e.length){console.log('  ⚠️ Alt-Text:',JSON.stringify(e[0]).slice(0,90));return 0;}
+  return files.length;
+ }catch{return 0;}
+}
 async function attachVideo(st,productId,vurl,cjpid){
  try{
   const vr=await fetch(vurl,{signal:AbortSignal.timeout(90000)}); if(!vr.ok)return;
@@ -973,6 +1003,9 @@ for(const [cat,label] of grp.cats){
    await grossbildNachVorn(st,pid);
    if(fash?.bilder){const nb=await variantenBilder(st,pid,fash.bilder);
      if(nb)console.log(`  🎨 ${nb} Varianten mit eigenem Bild`);}
+   // Alt-Texte ganz zum Schluss: jetzt steht fest, welches Bild das Hauptbild ist und
+   // welche Variantenbilder dazugekommen sind.
+   { const na=await altTexte(st,pid,title); if(na)console.log(`  🏷️ ${na} Alt-Texte gesetzt`); }
    // Ein Medizinprodukt darf in KEINEN Kanal — am wenigsten in «Google & YouTube», den
    // einzigen mit belegten Verkäufen. Nicht publizieren, Fall im Log benennen.
    if(med){ console.log(`  ⚕️ medizinische Zweckbestimmung (${med.grund}) → DRAFT, nicht publiziert: ${title.slice(0,44)}`);
