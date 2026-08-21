@@ -8643,3 +8643,4 @@ gid://shopify/Product/15497438658945	55->0	Freizeitrucksack für Laptop bis 14 Z
 gid://shopify/Product/15497438691713	57->0	Warme Outdoor Snow Boots für Damen & Herren
 gid://shopify/Product/15497438855553	20->0	Business Rucksack für Herren, 16 Zoll
 gid://shopify/Product/15497439117697	24->1	AirTag-Halsband für Hunde
+gid://shopify/Product/15497440166273	9->2	Faltbarer Wäschekorb für Schmutzwäsche
