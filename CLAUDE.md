@@ -883,6 +883,42 @@ Hype-Reihe steht — ich bin trotzdem hineingelaufen, weil ich sie für ein Pyth
   sah plausibel aus; erst der Blick auf die Titel zeigte den Gaming-Controller zwischen den
   Beauty-Geräten. Gefunden hat ihn WebFetch auf der Live-Seite, nicht meine eigene Zählung.
 
+## ⌚ Der Titel war sauber, die URL nicht — 33 Adressen warben mit Blutzucker (2026-08-21)
+Frühere Sessions haben «Blutzucker» aus 11 Armband-TITELN gestrichen (11.08.) und der Audit
+weitere Wearables entschärft. Der Handle blieb jedes Mal stehen. Am 21.08. hiess ein Produkt
+«F600 Fitness-Smartwatch mit Aktivitäts-Tracking» — und wohnte weiter unter
+`/products/f600-smartwatch-mit-blutzucker-**tracking**-606700`. **34 aktive Produkte** trugen
+Blutzucker, Blutdruck oder EKG in der Adresse. Die URL steht im Browser, in Googles Index und
+im Merchant-Feed.
+**Regel: Wer eine Aussage aus einem Feld entfernt, muss ALLE Felder prüfen, die sie tragen** —
+Titel, Beschreibung, SEO-Titel, SEO-Text, Handle. Der Handle ist dabei der unauffälligste und
+überlebt jede Textreparatur (dieselbe Beobachtung wie bei der Refurb-Prüfung des Audits:
+`damenuhr-chronotech-restauriert-a-296438` verrät die Ware, deren Titel längst gesäubert ist).
+- `automation/handle_messversprechen.py` (täglich im Aufseher): baut den Handle aus dem
+  AKTUELLEN Titel neu, behält die Eindeutigkeitsnummer und legt **immer eine 301** an — ein
+  Handle-Wechsel erzeugt in Shopify KEINE Weiterleitung, ohne sie wird jeder Link zum 404.
+- `automation/wearable_messversprechen.py` streicht die Aussagen aus Titel und Text.
+  **Die Unterscheidung ist der ganze Punkt:** Blutdruck, EKG und Blutzucker kann ein optischer
+  Sensor am Handgelenk nicht messen → raus. **Blutsauerstoff/SpO2 bleibt** (bei Consumer-
+  Wearables seit Jahren Standard, auch bei Apple und Garmin), Herzfrequenz sowieso.
+  «Körpertemperatur» wird zu «Hauttemperatur» **präzisiert statt gestrichen** — gemessen wird
+  die Haut. Von 164 Wearables mit Mess-Aussagen blieben so 31 zu reparieren statt 164.
+- ⚠️ **Regex-Textchirurgie hinterlässt Satzreste.** Der erste Entwurf schnitt nur die Wörter
+  heraus: «Es misst präzise **Ihr die** Herzfrequenz» und ein Satz, der mit Kleinbuchstaben
+  begann. Jetzt wird SATZWEISE gearbeitet — ein Satz, der nach der Streichung nicht mehr trägt,
+  fällt ganz weg. Ein halber Satz ist schlimmer als ein fehlender.
+- ⚠️ **Für den TITEL gilt die Satzregel nicht**: Shopify lehnt einen leeren Titel ab
+  («Title can't be blank»), und genau das passierte bei «Smart-Armband mit Blutdruck- und
+  Herzfrequenzmessung». Titel werden nur beschnitten, nie verworfen; bleibt zu wenig übrig,
+  gewinnt der alte Titel.
+- **Fehltreffer, die stehen bleiben müssen:** «Smartwatch Schutzhülle» erklärt nur, wie man die
+  EKG-Funktion der eigenen Uhr nutzt · «Smart Ring … können Sie **manuell** Blutdruck erfassen»
+  ist eine Tagebuch-Funktion, keine Messung · «Mountain **EKG** Kurzarm-Shirt» ist ein
+  Herzschlag-Muster auf Stoff.
+- ⚠️ Nicht angefasst: das Metafeld `judgeme.review_widget_data`. Es trägt bei 15 Produkten den
+  ALTEN Namen («F600 Smartwatch mit Blutzucker-Tracking»), ist aber fremder App-Cache, der sich
+  beim nächsten Sync selbst erneuert. Daran zu schreiben riskiert ein kaputtes Bewertungs-Widget.
+
 ## 🤖 Kimi-Nutzung — HARTE REGEL (teuer gelernt 2026-07-25)
 Kimi **k3** geht bei STRUKTURIERTEN/mehrfeldigen Prompts (JSON, "DESC:/SEO:"-Format, Artikel) in **Reasoning-Modus**
 → `content` bleibt leer, Helper fällt auf `reasoning_content` zurück = **englischer Denk-Text statt Copy**

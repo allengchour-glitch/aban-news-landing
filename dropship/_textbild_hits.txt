@@ -7369,3 +7369,30 @@ gid://shopify/Product/15493873074561	46->0	Zauberer Robe Modell Bausteine
 gid://shopify/Product/15493873140097	11->0	Kabelbinder-Halterung für Wandmontage
 gid://shopify/Product/15493873369473	9->0	Automatischer Seifenspender mit Sensor
 gid://shopify/Product/15493873598849	35->3	Multifunktionale elektrische Mühle
+gid://shopify/Product/15493873795457	17->0	Sippy Cup mit Skala, hitzebeständig
+gid://shopify/Product/15493873860993	40->0	Multifunktionale wasserdichte Steckdose für Wohnmobile
+gid://shopify/Product/15493874090369	50->0	USB Tischventilator mit Schüttelkopf
+gid://shopify/Product/15493874155905	56->0	Doppelwandiger Öler aus farbigem Glas
+gid://shopify/Product/15493874188673	86->0	36er Stricknadel-Set aus karbonisiertem Bambus
+gid://shopify/Product/15493874221441	16->0	4K-Game-Capture-Box für Streaming
+gid://shopify/Product/15493874319745	46->1	Japanisches Matcha Tee-Set
+gid://shopify/Product/15493874745729	14->0	Mobiler UV-Luftbefeuchter & Aroma-Diffusor
+gid://shopify/Product/15493884445057	12->0	L-förmige Katzenhängematte Plüsch
+gid://shopify/Product/15493889556865	12->1	Winterwarmes Katzen- und Hundebett
+gid://shopify/Product/15493890048385	10->0	Minimalistisches Armreif mit Tapered-Design
+gid://shopify/Product/15493892931969	25->0	Katzenhöhle Winterwarm (S, M, L)
+gid://shopify/Product/15493894209921	11->2	Wandregal mit Zahnpastaspender, bohrfrei
+gid://shopify/Product/15493894799745	104->0	Ripped Denim Shorts
+gid://shopify/Product/15493896634753	14->0	Korallfleece Badetuch für Damen
+gid://shopify/Product/15493897486721	13->2	Quadratische Quarzuhr mit Lederimitatarmband
+gid://shopify/Product/15493902926209	55->1	Hartwachs-Versiegelung für langanhaltenden Schutz
+gid://shopify/Product/15493908038017	150->0	Riemchen-Sandalen in Übergrössen
+gid://shopify/Product/15493908103553	155->0	Digitales Malset: Leinwand zum Ausmalen
+gid://shopify/Product/15493908431233	17->0	Digitales Malen nach Zahlen: Eigenes Motiv
+gid://shopify/Product/15493908529537	43->0	Sandalen mit Riemchen und hohem Absatz
+gid://shopify/Product/15493908595073	24->0	Elegante High Heels mit offenem Rücken
+gid://shopify/Product/15493908627841	25->0	Retro-Chic Pumps mit Chunky-Absatz
+gid://shopify/Product/15493909021057	109->2	Quilling Papier Malerei DIY-Set
+gid://shopify/Product/15493909053825	20->1	Leichte, trendige Herren-Sneakers mit Dämpfung
+gid://shopify/Product/15493909086593	54->1	Geweebter Kissenbezug mit Tufting-Muster
+gid://shopify/Product/15493909184897	25->0	Vielseitiger Mesh-Sneaker für Herren
