@@ -7031,3 +7031,5 @@ gid://shopify/Product/15490725151105	16->0	Digitales Malen nach Zahlen: Individu
 gid://shopify/Product/15490725249409	17->0	Digitales Ölbild zum Ausmalen
 gid://shopify/Product/15490725478785	17->0	Digitales Malset: Persönliches Ölgemälde
 gid://shopify/Product/15490775646593	62->0	Armband mit unregelmässigen schwarzen Achatperlen
+gid://shopify/Product/15491160703361	90->1	Casual Schuhe · Herren
+gid://shopify/Product/15491413410177	26->3	Wasserdichtes Farbdisplay Pedometer Armband
