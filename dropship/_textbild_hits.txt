@@ -6999,3 +6999,10 @@ gid://shopify/Product/15481384599937	16->0	Grossmembran-Kondensatormikrofon für
 gid://shopify/Product/15481681838465	15->3	Kabelloses Ansteckmikrofon für Mobilgeräte
 gid://shopify/Product/15481691701633	9->2	Sternenlicht-Projektor «Häschen»
 gid://shopify/Product/15481701040513	99->0	Bluetooth 5.3 Kopfhörer mit Stereo-Sound
+gid://shopify/Product/15481712673153	31->0	Powerbank 10000 mAh mit integriertem Kabel
+gid://shopify/Product/15481765233025	45->2	Rhythmuslicht-Modul mit Scrolling-Display
+gid://shopify/Product/15481774506369	94->0	Bluetooth Schlaf-Stirnband mit Musik
+gid://shopify/Product/15481775489409	22->0	Magnetische Wireless Powerbank mit Schnellladung
+gid://shopify/Product/15481800098177	70->0	Smart Bluetooth Ring für iPhone und Android
+gid://shopify/Product/15481819005313	57->3	Ferngesteuerter Amphibien-Kipper
+gid://shopify/Product/15481842729345	64->0	Tiger Power FPV Racing Drohne
