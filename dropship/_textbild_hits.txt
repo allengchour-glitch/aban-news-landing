@@ -8209,3 +8209,9 @@ gid://shopify/Product/15496381038977	48->0	DIY Digital Painting nach Mass
 gid://shopify/Product/15496381104513	72->3	Quarz-Armbanduhr mit Silikon-Zifferblatt
 gid://shopify/Product/15496381792641	31->0	Hundehalsband mit Legierungsschnalle
 gid://shopify/Product/15496382120321	11->0	Marokkanisches Kissen für Sofa und Wohnbereich
+gid://shopify/Product/15496382316929	29->0	Velo-Lenkerendkappen mit Blinklicht
+gid://shopify/Product/15496382480769	24->0	Gasfeder für Bürostühle, selbstverriegelnd
+gid://shopify/Product/15496382873985	10->0	Schnellladegerät 10000mAh
+gid://shopify/Product/15496382906753	154->3	Geometrisch bestickter Kissenbezug aus Baumwollleinen
+gid://shopify/Product/15496383103361	29->3	USB-Ladegerät für Mobiltelefone (EU-Stecker)
+gid://shopify/Product/15496383234433	72->0	Fromi Dual Port USB-Ladegerät EU
