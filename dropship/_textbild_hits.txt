@@ -7739,3 +7739,5 @@ gid://shopify/Product/15495133823361	40->0	BANGE Brusttasche – Grosses Hauptfa
 gid://shopify/Product/15495133954433	13->3	Doppelseitiges Schneidebrett aus Rosenholz
 gid://shopify/Product/15495134314881	124->3	Hip Hop Niche Quarz-Uhr
 gid://shopify/Product/15495134413185	23->0	Brusttasche Korean Casual
+gid://shopify/Product/15495134839169	26->0	BANGE Umhängetasche für Herren
+gid://shopify/Product/15495134970241	22->2	Umhängetasche für Herren
