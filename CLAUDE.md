@@ -919,6 +919,29 @@ Titel, Beschreibung, SEO-Titel, SEO-Text, Handle. Der Handle ist dabei der unauf
   ALTEN Namen («F600 Smartwatch mit Blutzucker-Tracking»), ist aber fremder App-Cache, der sich
   beim nächsten Sync selbst erneuert. Daran zu schreiben riskiert ein kaputtes Bewertungs-Widget.
 
+## 🖼️ Fremdtext in Produktbildern — das Werkzeug ist HINSEHEN, kein Algorithmus (2026-08-21)
+Der Katalog-Audit nannte als offene Lücke, dass es keine Prüfung für **eingebrannten Fremdtext
+in Hauptbildern** gibt (englische Verkaufs-Infografiken, Werbe-Siegel, Verpackungs-Collagen) —
+Texterkennung scheitert daran, sie kennt nur Englisch und meldet Gramm-Angaben als Treffer.
+Die Schätzung lautete «25–35 % der Neuimporte».
+**Gemessen sind es deutlich weniger: 4 von 67 (6 %)** in den Startseiten-Reihen. Die Schätzung
+war zu hoch — geprüft wurde per Kontaktbogen (`automation/bild_kontaktbogen.py`): 60 Bilder auf
+EIN Blatt, dann mit dem Read-Werkzeug ansehen. Fremdtext, Collagen und Kartonverpackungen fallen
+in Sekunden auf, und es kostet keine CJ-Punkte.
+- Gefunden: «Luminous backpack» als Schriftzug auf einem LED-Rucksack · zwei Halsketten, die
+  ihre Verkaufsverpackung zeigten statt des Schmucks · ein rotes Siegel «S925 REAL STERLING
+  SILVER» quer über dem Produktfoto.
+- **Repariert ohne neues Bildmaterial:** Fast jedes CJ-Produkt hat 3–8 Bilder, darunter meist
+  ein sauberes → `productReorderMedia` holt es nach vorn.
+- ⚠️ **Ein Markenlogo ist kein Fehler.** «Julystar PROFESSIONAL MAKE-UP» auf einem Rouge-Stick
+  steht auf der Verpackung des Produkts selbst. Die Trennlinie: Text AUF DER WARE gehört dazu,
+  ins Bild MONTIERTER Text (Schriftzüge, Preisbadges, Pfeile, Panels) gehört weg.
+- ⚠️ **Und die eigene Stichprobe gegen die Wirklichkeit prüfen:** Mein erster Kontaktbogen zog
+  `blitzversand-schweiz` und zeigte 12 Fasnachtskostüme — ich hielt das für einen Startseiten-
+  Befund. Die Startseite zeigt aber `blitzversand-**highlights**` (BEST_SELLING, kuratiert, 0
+  Kostüme). Welche Kollektion eine Reihe WIRKLICH speist, steht in `templates/index.json`;
+  ein ähnlicher Handle ist kein Beleg.
+
 ## 🤖 Kimi-Nutzung — HARTE REGEL (teuer gelernt 2026-07-25)
 Kimi **k3** geht bei STRUKTURIERTEN/mehrfeldigen Prompts (JSON, "DESC:/SEO:"-Format, Artikel) in **Reasoning-Modus**
 → `content` bleibt leer, Helper fällt auf `reasoning_content` zurück = **englischer Denk-Text statt Copy**

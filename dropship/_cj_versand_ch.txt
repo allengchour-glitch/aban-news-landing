@@ -871,3 +871,4 @@ gid://shopify/Product/15508396736897	ok	Bluetooth Beistelltisch mit Wireless Cha
 gid://shopify/Product/15508417249665	ok	Sportwagen Kleinpartikel Bausteine
 gid://shopify/Product/15508406665601	ok	Multifunktions-Chronograph für Herren
 gid://shopify/Product/15508406763905	ok	Herren Quarz Chronograph – Wasserdicht
+gid://shopify/Product/15508423672193	ok	Berjani Quartz Chronograph Herrenuhr
