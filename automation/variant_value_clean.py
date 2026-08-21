@@ -20,14 +20,28 @@ TOK=open("/tmp/cj_shop_token.txt").read().strip()
 DRY=os.environ.get("DRY")=="1"
 LEDGER="dropship/_variant_value_clean.txt"
 def gql(q,v=None):
+    """Fragt Shopify. Gibt {} NUR zurueck, wenn es wirklich nicht geht.
+
+    ⚠️ Der Ausgangs-Proxy antwortet sporadisch mit HTTP 502 «policy context unavailable»
+    (21.08.2026 gemessen: 2 von 3 Versuchen, Sekunden spaeter wieder 200). Mit vier
+    Versuchen a 3 s lief das Werkzeug in diese Luecke, gab {} zurueck — und die Schleife
+    unten deutete das als Katalog-Ende und meldete FERTIG nach 56 Produkten.
+    Eine Drosselung oder ein Netzfehler ist nie ein Grund aufzuhoeren; er sagt nur, wie
+    lange zu warten ist (dieselbe Lehre wie beim Kosten-Backfill).
+    """
     p=json.dumps({"query":q,"variables":v or {}})
-    for _ in range(4):
+    for versuch in range(8):
         r=subprocess.run(["curl","-s","--max-time","60","https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json","-H","X-Shopify-Access-Token: "+TOK,"-H","Content-Type: application/json","-d",p],capture_output=True,text=True)
         try:
             d=json.loads(r.stdout)
-            if "data" in d: return d
-        except Exception: pass
-        time.sleep(3)
+        except Exception:
+            time.sleep(min(30, 2 ** versuch)); continue
+        if d.get("errors") and "THROTTLED" in json.dumps(d["errors"]):
+            st=((d.get("extensions") or {}).get("cost") or {}).get("throttleStatus") or {}
+            fehlt=max(0,(d["extensions"]["cost"].get("requestedQueryCost") or 100)-(st.get("currentlyAvailable") or 0))
+            time.sleep(min(20, 1+fehlt/(st.get("restoreRate") or 100))); continue
+        if "data" in d: return d
+        time.sleep(min(30, 2 ** versuch))
     return {}
 M='''mutation($pid:ID!,$o:OptionUpdateInput!,$u:[OptionValueUpdateInput!]){
  productOptionUpdate(productId:$pid, option:$o, optionValuesToUpdate:$u, variantStrategy:LEAVE_AS_IS){ userErrors{message} }}'''
@@ -91,7 +105,13 @@ BAD=re.compile(r'^[A-Z]{2,}\d{2,}|^[A-Z0-9]{7,}$|US Size|\bYards\b|Generation \d
 while True:
     d=gql('query($c:String){products(first:60,after:$c,query:"status:ACTIVE"){pageInfo{hasNextPage endCursor} nodes{id options{id name optionValues{id name}}}}}',{"c":cur})
     pg=(d.get("data") or {}).get("products")
-    if not pg: break
+    if not pg:
+        # ⚠️ KEIN FERTIG. Eine ausgefallene Abfrage ist kein Katalog-Ende. Meldete das
+        # Werkzeug hier FERTIG, traegt der Aufseher es als erledigt ab und startet es NIE
+        # wieder — der Rest des Katalogs bliebe fuer immer ungeprueft. Mit PAUSE laeuft es
+        # in einer Stunde weiter, der Cursor steht ja.
+        print(f"PAUSE (Shopify antwortet nicht — bei {sc} Produkten, Cursor bleibt)",flush=True)
+        raise SystemExit(0)
     for p in pg["nodes"]:
         sc+=1
         for o in p["options"]:

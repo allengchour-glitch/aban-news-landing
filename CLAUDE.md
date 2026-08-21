@@ -1015,6 +1015,44 @@ allein an die Zahl der ÄNDERUNGEN.
 - Der einzige echte Befund ist behoben: «Optische Fluss**定位**» → «Optische Flusspositionierung»
   (定位 = Positionierung, im Satz durch «Optische Fluss» eindeutig — keine Rate-Übersetzung).
 
+## 🎚️ Das Auswahlfeld ist das Letzte vor dem Kauf — und stand voller Lieferantencodes (2026-08-21)
+Drei Funde an einer Stelle, die keine Prüfung je ansah: die Varianten-Auswahl.
+1. **Eine Tabelle, viermal im Repo.** `DECOLOR` (54 Einträge) in `cj_category_fill.mjs` und
+   `cj_trending_import.mjs`, `FARBE_DE` (27) in `cj_variant_backfill.mjs`, `FARBE` (78) in
+   `farbwerte_uebersetzen.py`. Der Importer legte «Schwarz · Blau · Braun» an; der
+   Varianten-Nachrüster hängte später **«Dark Gray»** daneben — seine kleine Tabelle kannte
+   `dark gray`, `light gray`, `black and white`, `light brown` nicht. 203 Produkte betroffen,
+   199 repariert (4 tragen beide Schreibweisen nebeneinander → «Option value already exists»,
+   Umbenennen würde Varianten verschmelzen). Jetzt **eine** Quelle: `automation/farben_de.json`
+   — als JSON, weil eine `.mjs`-Tabelle das Python-Werkzeug nicht mitbenutzen könnte und genau
+   daraus wieder zwei Stände entstünden. **Neue Farben NUR dort.**
+   ⚠️ Falsche Fährte dabei: «Pink», «Khaki», «Beige», «Orange», «Gold» sahen wie 4'352
+   unübersetzte Werte aus — es sind normale deutsche Farbwörter. Echt waren 51.
+2. **⚠️ Der vorhandene Varianten-Reiniger hätte GRÖSSEN GELÖSCHT.** `variant_value_clean.py`
+   verwarf jedes Token, das auf `^[A-Z]{0,6}\d[\w.-]*$` passt — also **jedes Token mit einer
+   Ziffer**. Der Probelauf zeigte: «110 cm»→«cm», «Girl 2Y»→«Girl», «Dad 3XL»→«Dad»,
+   «45x45cm»/«180x70»/«1L»/«48pc»/«2XL»/«XXXXL» weg, und bei einer Lesebrille
+   «100 degrees-…»→«degrees …» (die Dioptrienzahl). Über 351 Produkte gelaufen wäre der
+   Lieferantencode das kleinere Übel gewesen. Es löscht jetzt nichts mehr auf Verdacht:
+   «Default Item» weg, vorangestellter Schlüssel weg (zwei Buchstaben + **drei** Ziffern —
+   das schliesst «2XL»/«2Y» sicher aus), Leerzeichen glätten. **Farben übersetzt es NICHT** —
+   zwei Werkzeuge auf demselben Text sind eine eigene Fehlerklasse (Lehre 11.08.).
+   Dazu eine **Kollisions-Wache**: Lauten zwei Werte danach gleich, bleibt die GANZE Option
+   unberührt — halb bereinigt ist schlimmer als roh.
+3. **Es stand in KEINEM Keepalive** und lief nur von Hand, Fortschritt unter /tmp. Jetzt
+   registriert, Ledger im Repo. («Wer startet DICH neu?», Lehre 19.08.)
+**Und die Lehre, die über diesen Fall hinausgeht: eine ausgefallene Abfrage ist KEIN
+Katalog-Ende.** Der Ausgangs-Proxy antwortet sporadisch mit HTTP 502 «policy context
+unavailable» (gemessen: 2 von 3 Versuchen, Sekunden später wieder 200). Das `gql` gab nach
+vier Versuchen `{}` zurück, die Schleife deutete das als Ende und meldete **FERTIG nach 56
+Produkten** — womit der Aufseher es für erledigt hält und **nie wieder startet**. Jetzt: 8
+Versuche mit Backoff, Drosselung wird ausgesessen, und bei Ausfall **PAUSE statt FERTIG**.
+⚠️ Geprüft, ob andere Wächter dieselbe Form haben: **nein** — die übrigen lesen aus einem
+lokalen Export, nur dieser paginiert live gegen Shopify.
+**Was sauber ist und nicht erneut geprüft werden muss:** Optionsnamen (25 verschiedene, alle
+deutsch; «Title» ist Shopifys unsichtbarer Standard für Ein-Varianten-Produkte) und
+Grössenwerte («iPhone 14» in einem Grössen-Feld ist eine Handyhülle, kein Fehler).
+
 ## 🤖 Kimi-Nutzung — HARTE REGEL (teuer gelernt 2026-07-25)
 Kimi **k3** geht bei STRUKTURIERTEN/mehrfeldigen Prompts (JSON, "DESC:/SEO:"-Format, Artikel) in **Reasoning-Modus**
 → `content` bleibt leer, Helper fällt auf `reasoning_content` zurück = **englischer Denk-Text statt Copy**

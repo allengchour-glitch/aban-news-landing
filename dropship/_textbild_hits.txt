@@ -8786,3 +8786,27 @@ gid://shopify/Product/15497493479809	12->1	Personalisierter Damen Geburtssteinri
 gid://shopify/Product/15497493774721	33->0	Herren Automatikuhr mit feinem Stahlarmband
 gid://shopify/Product/15497493807489	11->0	Stahlarmbanduhr mit Kalender und grossem Zifferblatt
 gid://shopify/Product/15497493938561	33->0	Elegante Damenuhr mit quadratischem Zifferblatt
+gid://shopify/Product/15497494167937	35->1	Outside The Watch Business Quarzuhr
+gid://shopify/Product/15497496330625	29->1	Freizeit-Sportschuh für Herren
+gid://shopify/Product/15497496363393	63->0	Nordisches Samt-Sofakissen
+gid://shopify/Product/15497496494465	56->0	Leder-Freizeitschuhe mit Plateau
+gid://shopify/Product/15497526083969	999->0	Leder Martin Boots mit spitzer Zehenkappe
+gid://shopify/Product/15497526149505	68->1	Britische Business-Schuhe aus echtem Leder
+gid://shopify/Product/15497533686145	23->1	Sicherheits-Schuhe
+gid://shopify/Product/15497533718913	23->3	Futter- und Wassernapf für Katzen, Glas
+gid://shopify/Product/15497533915521	65->2	Aufblasbares Sofa mit transparenten Pailletten
+gid://shopify/Product/15497534079361	12->1	Robuste Outdoor Dad-Sneaker
+gid://shopify/Product/15497534177665	69->1	Sofa-Kissen aus Baumwoll-Jacquard
+gid://shopify/Product/15497534341505	31->0	Japanischer Suppenteller mit hohem Rand
+gid://shopify/Product/15497534472577	147->1	Wander- und Kletterschuhe Unisex
+gid://shopify/Product/15497534505345	49->0	Kuchenplatte Akazienholz mit Glasglocke
+gid://shopify/Product/15497534570881	79->0	Herren Sneaker mit integrierter Erhöhung
+gid://shopify/Product/15497534669185	44->0	Bedruckte Gummifussmatte nach Mass
+gid://shopify/Product/15497534734721	19->0	Herren Platform Running Sneakers
+gid://shopify/Product/15497534800257	10->1	Naturehike aufblasbares U-Kissen
+gid://shopify/Product/15497534833025	43->1	Moka Kaffeekocher-Set mit Elektroherd
+gid://shopify/Product/15497566847361	32->0	RC Segelflugzeug FX-820 (Jäger-Serie)
+gid://shopify/Product/15497580020097	56->0	Halsband aus Baumwolle mit Metallschnalle
+gid://shopify/Product/15497580183937	22->0	Halsband und Leine Set Matcha Grün Samt
+gid://shopify/Product/15497590538625	31->0	USB Lade Wecker mit LED Anzeige
+gid://shopify/Product/15497590669697	33->0	Handlicher Vernebler für unterwegs
