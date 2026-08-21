@@ -45,6 +45,12 @@ BIS   = os.environ.get('BIS', '')
 # jeder gesparte Aufruf ist eine ganze Netz-Rundreise weniger — bei ~40'000 Bildern der
 # Unterschied zwischen zwei Stunden und zwanzig Minuten.
 BATCH = int(os.environ.get('BATCH', '100'))
+# OHNE_LEDGER=1 prüft JEDES Produkt des Fensters neu, auch die schon quittierten.
+# Nötig nach jedem Abbruch und nach jeder Regel-Änderung: ein Erledigt-Zeichen ist nur so
+# viel wert wie der Lauf, der es gesetzt hat — wurde der mittendrin abgeschossen, überspringt
+# der nächste Lauf ausgerechnet die Produkte, die noch kaputt sind. Weil ausschliesslich
+# LEERE Alt-Texte gefüllt werden, kostet ein solcher Kontrolllauf nur Lesezugriffe.
+OHNE_LEDGER = os.environ.get('OHNE_LEDGER') == '1'
 LEDGER_SUFFIX = os.environ.get('LEDGER_SUFFIX', '')
 LEDGER = 'dropship/_alt_texte_fenster.txt'
 
@@ -89,7 +95,7 @@ Q = Q.replace('reverse:REV', 'reverse:true' if REVERSE else 'reverse:false')
 MUT = 'mutation($files:[FileUpdateInput!]!){ fileUpdate(files:$files){ files{ id } userErrors{ field message } } }'
 
 done = set()
-if os.path.exists(LEDGER):
+if os.path.exists(LEDGER) and not OHNE_LEDGER:
     done = {l.strip() for l in open(LEDGER) if l.strip()}
 
 buf, wartend, cursor = [], [], None
