@@ -990,6 +990,31 @@ Nach dem Fix: 40 Produkte in einem Lauf, danach sauberer Halt bei 17 Restpunkten
 **Regel: Bevor ein Skript «Budget leer» meldet, muss es die Zahl gelesen haben.** Und eine
 Drosselung ist nie ein Grund aufzuhören — sie sagt nur, wie lange zu warten ist.
 
+## ♾️ Ein Wächter, der nur MELDET, wird nie fertig — 131 Vollscans für einen Befund (2026-08-21)
+Der Aufseher startet jeden Katalog-Lauf neu, solange dessen Log keine `FERTIG`-Zeile trägt.
+`fremdzeichen_guard.py` ersetzt Fullwidth-Zeichen, MELDET aber CJK-Ideogramme nur (eine geratene
+Übersetzung wäre schlimmer als ein sichtbarer Rest) — und sein FERTIG hing an
+`ersetzt == 0 and gemeldet == 0`. Die zweite Bedingung kann bei einem Melde-Wächter **nie**
+eintreten. Folge: alle zwei Minuten ein Vollscan über einen 74-MB-Export plus Shopify-Abfragen,
+131-mal, für EINEN Befund, der auf eine Menschenentscheidung wartete.
+**Regel: `FERTIG` bedeutet «nichts mehr zu TUN», nicht «nichts mehr zu SEHEN».** Gemeldetes ist
+ein Rückstand im Bericht, keine offene Arbeit. Wer einen Melde-Wächter baut, knüpft sein FERTIG
+allein an die Zahl der ÄNDERUNGEN.
+- **Auch der Melde-Zweig muss gegen LIVE prüfen.** Der Ersetzungs-Zweig tat das längst, der
+  Melde-Zweig schrieb weiter aus dem Schnappschuss — ein von Hand behobenes Produkt hätte
+  unverändert im Bericht gestanden. Ein Rückstand, der Erledigtes auflistet, wird nicht gelesen.
+  Und ohne Befund gehört der Bericht GELÖSCHT, nicht stehen gelassen.
+- ⚠️ Beim Einbau der Live-Prüfung kein `continue` benutzen: Ein Produkt kann beide Zeichenklassen
+  tragen, und der Sprung hätte die Fullwidth-Ersetzung still übergangen.
+- **Kurzschluss-Wächter im Aufseher** (`dreht_sich_im_kreis`): Wer fünfmal hintereinander binnen
+  60 s ohne FERTIG endet, wird eine Stunde ausgesetzt. Unterschieden wird nach **LAUFZEIT**, nicht
+  nach Logtext — ein langer Katalog-Lauf, den das Turn-Reaping mitten in der Arbeit killt, hat
+  minutenlang gearbeitet und braucht den schnellen Neustart weiterhin; ein Lauf, der in Sekunden
+  endet, ist fertig geworden und dreht sich im Kreis. Dieselbe Denkweise wie bei `ps -o etimes`
+  gegen den PID-Überlauf: nach der Laufzeit fragen, nicht nach einem Namen.
+- Der einzige echte Befund ist behoben: «Optische Fluss**定位**» → «Optische Flusspositionierung»
+  (定位 = Positionierung, im Satz durch «Optische Fluss» eindeutig — keine Rate-Übersetzung).
+
 ## 🤖 Kimi-Nutzung — HARTE REGEL (teuer gelernt 2026-07-25)
 Kimi **k3** geht bei STRUKTURIERTEN/mehrfeldigen Prompts (JSON, "DESC:/SEO:"-Format, Artikel) in **Reasoning-Modus**
 → `content` bleibt leer, Helper fällt auf `reasoning_content` zurück = **englischer Denk-Text statt Copy**
