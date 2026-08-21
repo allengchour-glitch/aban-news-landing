@@ -1015,6 +1015,41 @@ allein an die Zahl der ÄNDERUNGEN.
 - Der einzige echte Befund ist behoben: «Optische Fluss**定位**» → «Optische Flusspositionierung»
   (定位 = Positionierung, im Satz durch «Optische Fluss» eindeutig — keine Rate-Übersetzung).
 
+## 📧 Klaviyo-Mails führen auf die AUFGEGEBENE Domain — jeder Klick ist verloren (2026-08-21)
+Der Betreiber zeigte einen Screenshot: `luxestyle.com.co/?_kx=0ADxRwIHXgywi…` →
+**ERR_CONNECTION_CLOSED**. Der Parameter `_kx` wird von **Klaviyo** an jeden Link gehängt —
+es ist also eine Klaviyo-Mail, die auf die alte Domain zeigt. Wer die Mail öffnet und klickt,
+landet auf einer toten Seite. **Keine Statistik weist das je als Kaufabbruch aus** (dieselbe
+Klasse wie die 61 toten Ratgeber-Links und die abgelaufenen Rabattcodes).
+**Live geprüft am 21.08.2026:**
+- `luxestyle.com.co` löst auf `2620:127:f00f:b::` auf — **nicht** Shopifys `23.227.38.x` —
+  und liefert nichts (503 über einen fremden Ausgang, ERR_CONNECTION_CLOSED im Browser
+  des Betreibers). Die Domain zeigt also NICHT mehr auf den Shop.
+- `account.luxestyle.com.co` löst **gar nicht mehr auf** (NXDOMAIN).
+- ⚠️ **Der CLAUDE.md-Eintrag vom 11.06. ist damit überholt.** Dort steht, `luxestyle.ch/account`
+  leite auf `account.luxestyle.com.co` und das dürfe man NICHT anfassen. Shopify hat das
+  Kundenkonto inzwischen verlegt: `/account` antwortet mit **302 auf
+  `shopify.com/94368563585/account`**. Der Login ist in Ordnung — die alte Warnung schützt
+  eine Adresse, die es nicht mehr gibt.
+**Der Shop selbst ist sauber** (vollständig nachgezählt, nicht gestichprobt):
+132 veröffentlichte Seiten → 0 Treffer (die 18 verbliebenen sind **unveröffentlichte**
+interne Baudokumente), 316 Artikel → 0, **alle 425 Theme-Dateien → 0**. Der Lauf
+`rueckgabe_vereinheitlichen.py` vom 14.08. hat die kundensichtbaren Seiten erledigt.
+**Die tote Domain lebt also nur noch in Klaviyo weiter** — vermutlich, weil die Flows im Mai
+gebaut wurden, als `com.co` die Shop-Domain war (die internen Seiten «📧 Klaviyo Email-Flows»
+tragen sie bis heute).
+⚠️ **NUR DER BETREIBER kann das beheben** — der Klaviyo-Konnektor verlangt eine Anmeldung,
+die in einer nicht-interaktiven Session nicht möglich ist. Zwei Wege:
+1. In Klaviyo jede Flow-/Kampagnen-Vorlage auf `luxestyle.ch` umstellen (behebt neue Mails,
+   nicht die bereits verschickten).
+2. **Wirksamer, falls die Domain noch dem Betreiber gehört:** `luxestyle.com.co` per DNS auf
+   Shopify zeigen und in Shopify als Weiterleitungs-Domain eintragen. Das rettet mit EINER
+   Änderung ALLE alten Links auf einmal — auch schon verschickte Mails und alte Social-Posts.
+**Lehre: Ein Domainwechsel endet nicht mit der neuen Domain.** Nach dem Umzug gehören ALLE
+Absender durchsucht, die eigene Adressen ausspielen — Shop-Seiten, Theme, Blog UND die
+externen Systeme (Klaviyo, Social-Bios, Rechnungen). Der Shop war seit dem 14.08. sauber,
+und trotzdem verschickte ein Fremdsystem weiter tote Links.
+
 ## 🎚️ Das Auswahlfeld ist das Letzte vor dem Kauf — und stand voller Lieferantencodes (2026-08-21)
 Drei Funde an einer Stelle, die keine Prüfung je ansah: die Varianten-Auswahl.
 1. **Eine Tabelle, viermal im Repo.** `DECOLOR` (54 Einträge) in `cj_category_fill.mjs` und
