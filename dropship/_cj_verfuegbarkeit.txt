@@ -15005,3 +15005,5 @@ gid://shopify/Product/15449482068353	ok
 gid://shopify/Product/15449482002817	ok
 gid://shopify/Product/15449481937281	ok
 gid://shopify/Product/15449481773441	ok
+gid://shopify/Product/15449481740673	ok
+gid://shopify/Product/15449481707905	ok
