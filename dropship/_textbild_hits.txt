@@ -8635,3 +8635,11 @@ gid://shopify/Product/15497437184385	18->0	Einfarbige One-Strap Sandalen für Ou
 gid://shopify/Product/15497437348225	20->2	Interaktives 9-Loch Versteckspiel für Katzen
 gid://shopify/Product/15497437544833	87->0	Sonnenhut für Hunde und Katzen
 gid://shopify/Product/15497437938049	19->2	Weisses Langarmshirt im Casual-Stil
+gid://shopify/Product/15497438396801	12->3	Doppler Fetal-Herzmonitor für Schwangere
+gid://shopify/Product/15497438495105	47->3	Vintage Brusttasche aus Rindsleder
+gid://shopify/Product/15497438593409	18->3	Rucksack Fashion Travel Bag Laptop Bag Casual
+gid://shopify/Product/15497438626177	26->0	Wildleder-Freizeitschuh mit weicher Sohle
+gid://shopify/Product/15497438658945	55->0	Freizeitrucksack für Laptop bis 14 Zoll
+gid://shopify/Product/15497438691713	57->0	Warme Outdoor Snow Boots für Damen & Herren
+gid://shopify/Product/15497438855553	20->0	Business Rucksack für Herren, 16 Zoll
+gid://shopify/Product/15497439117697	24->1	AirTag-Halsband für Hunde
