@@ -7396,3 +7396,5 @@ gid://shopify/Product/15493909021057	109->2	Quilling Papier Malerei DIY-Set
 gid://shopify/Product/15493909053825	20->1	Leichte, trendige Herren-Sneakers mit Dämpfung
 gid://shopify/Product/15493909086593	54->1	Geweebter Kissenbezug mit Tufting-Muster
 gid://shopify/Product/15493909184897	25->0	Vielseitiger Mesh-Sneaker für Herren
+gid://shopify/Product/15493909381505	13->0	Nordische Wandteppich-Deko aus Baumwolle
+gid://shopify/Product/15493909414273	85->0	New Nordic Kissenbezug mit Quasten
