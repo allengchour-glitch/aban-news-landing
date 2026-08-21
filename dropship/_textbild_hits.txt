@@ -7033,3 +7033,4 @@ gid://shopify/Product/15490725478785	17->0	Digitales Malset: Persönliches Ölge
 gid://shopify/Product/15490775646593	62->0	Armband mit unregelmässigen schwarzen Achatperlen
 gid://shopify/Product/15491160703361	90->1	Casual Schuhe · Herren
 gid://shopify/Product/15491413410177	26->3	Wasserdichtes Farbdisplay Pedometer Armband
+gid://shopify/Product/15491507683713	26->1	Halskette mit Buchstaben-Anhänger, vergoldet
