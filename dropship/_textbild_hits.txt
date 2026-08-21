@@ -8075,3 +8075,28 @@ gid://shopify/Product/15496302461313	65->0	Intelligente Velo-Rückleuchte mit Bl
 gid://shopify/Product/15496302494081	67->0	Spot 7 Make-up Pinsel-Set mit Spiralgriff
 gid://shopify/Product/15496302952833	95->0	11 Meerjungfrauen Make-up Pinsel Set
 gid://shopify/Product/15496303083905	117->2	Dazzle Knight Velo-Drahtlampe
+gid://shopify/Product/15496303116673	9->0	Gamepad-Tastatur
+gid://shopify/Product/15496303247745	44->0	Wasserdichtes Anti-Rutsch Haustier Sofa Kissen
+gid://shopify/Product/15496303346049	107->0	Beauty and the Beast Makeup Pinselset
+gid://shopify/Product/15496303673729	8->0	X3 Bluetooth Gamecontroller für Smartphones
+gid://shopify/Product/15496303739265	16->2	Dicke Tatami Balkonkissen
+gid://shopify/Product/15496303870337	13->3	USB Controller für Xbox One & PC
+gid://shopify/Product/15496303935873	52->2	Samt-Kissenbezug im skandinavischen Stil
+gid://shopify/Product/15496304099713	24->0	Fixierpuder für ölregulierendes Make-up
+gid://shopify/Product/15496304165249	25->0	Tischtennis-Schläger für Training (Anfänger)
+gid://shopify/Product/15496307376513	28->1	Seidenkissenbezug mit Kuvertverschluss
+gid://shopify/Product/15496307442049	99->0	Kabelloses Android Gamepad
+gid://shopify/Product/15496307605889	32->1	Runder Teppich für Stuhl und Boden
+gid://shopify/Product/15496308523393	9->1	Elastischer L-Sofa Bezug, einfarbig
+gid://shopify/Product/15496308687233	44->1	Modernes geometrisches Kissen «Hug»
+gid://shopify/Product/15496319467905	57->1	Luxus Kissen
+gid://shopify/Product/15496319533441	60->0	Ladbarer Gamepad
+gid://shopify/Product/15496319598977	108->0	Plüsch-Bodenmatte «Lazy Mat»
+gid://shopify/Product/15496319631745	24->0	Xbox360 Kabelgebundener Game Controller
+gid://shopify/Product/15496319730049	90->0	Kissenbezug Satin Uni
+gid://shopify/Product/15496319762817	59->0	Feuchtigkeitsspendendes mattes Creme-Rouge
+gid://shopify/Product/15496319828353	37->0	MOCUTE-050 Bluetooth Gamepad für Mobilgeräte
+gid://shopify/Product/15496319926657	108->1	Leinen Kissenbezug einfarbig
+gid://shopify/Product/15496320057729	20->0	Bluetooth Game Controller
+gid://shopify/Product/15496320319873	35->0	Kontur-Stick für präzises Contouring
+gid://shopify/Product/15496320418177	38->1	Curling Mascara
