@@ -7982,3 +7982,4 @@ gid://shopify/Product/15495747436929	11->0	Hundespielzeug-Set
 gid://shopify/Product/15495747993985	70->3	Boho-Kissenbezug mit Füllung
 gid://shopify/Product/15495748223361	14->0	Plüschtier Avocado
 gid://shopify/Product/15495748321665	92->0	Goldenes Plüschkissen mit Quasten
+gid://shopify/Product/15495748452737	21->2	Samt-Kissenhülle mit Geometrischem Muster
