@@ -7475,3 +7475,9 @@ gid://shopify/Product/15494223069569	35->0	Handtasche Rindsleder Vintage
 gid://shopify/Product/15494223266177	151->1	Brusttasche Retro Leder
 gid://shopify/Product/15494223528321	17->3	Robuster Zahnreinigungs-Trainingsball
 gid://shopify/Product/15494224150913	49->0	Hohlball Spielzeug für Hund & Katze
+gid://shopify/Product/15494224445825	19->0	Elektrischer Spielball für Haustiere
+gid://shopify/Product/15494224511361	11->3	Rucksack mit geschwungener Kante
+gid://shopify/Product/15494253314433	25->0	Outdoor Rucksack 50L – Wandern, Camping, Reisen
+gid://shopify/Product/15494254395777	10->0	Pai Thinking Pet Plüsch-Vibrationsspielzeug mit Katzenminze
+gid://shopify/Product/15494254461313	44->0	Reflektierender Rucksack mit Thermo-Isolation
+gid://shopify/Product/15494255935873	32->0	360° Rollende Maus mit Feder für Katzen
