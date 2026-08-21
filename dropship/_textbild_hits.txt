@@ -7679,3 +7679,19 @@ gid://shopify/Product/15495115374977	23->3	Smartes Velo-Frontlicht-Set mit Senso
 gid://shopify/Product/15495115407745	31->0	Kleine Möwe LED-Nachtlicht
 gid://shopify/Product/15495115440513	42->0	USB-Velo-Rücklicht mit 6 Modi
 gid://shopify/Product/15495115604353	9->0	Luftreiniger mit Mückenlampe und CO2-Sensor
+gid://shopify/Product/15495115768193	21->0	Add Water Luftbefeuchter 3L mit Aroma-Funktion
+gid://shopify/Product/15495115899265	21->3	F3 USB Velo-Scheinwerfer mit 3 T6 LEDs
+gid://shopify/Product/15495115964801	21->3	Handgemachte Goldpuder-Nägel mit Tulpenmuster
+gid://shopify/Product/15495116030337	25->2	Wasserdichte Velo-Lichter mit Powerbank
+gid://shopify/Product/15495116226945	8->0	WEST BIKING Front-Fahrradlicht
+gid://shopify/Product/15495116358017	12->0	Automatischer Kartenmischer
+gid://shopify/Product/15495116489089	26->2	Elektrischer Drehteller für Produktpräsentationen
+gid://shopify/Product/15495116587393	114->0	Elegantes A-Linien Kleid mit Schnürung
+gid://shopify/Product/15495116620161	32->0	Yunmi Kühlschrank Geruchsfilter Kräuter
+gid://shopify/Product/15495116718465	22->0	Tailliertes Strickkleid mit Schlitz
+gid://shopify/Product/15495116816769	95->0	Colorblock V-Neck Strickkleid mit Schnürung
+gid://shopify/Product/15495117832577	25->0	Lovewood Serviertablett Vintage
+gid://shopify/Product/15495117865345	18->0	Elegantes Spitzen-Patchwork Kleid mit Rundhals
+gid://shopify/Product/15495117963649	12->0	Strand-Sandalen mit Cut-Outs
+gid://shopify/Product/15495118127489	141->0	High-Heel Sandalen mit Riemchen
+gid://shopify/Product/15495118258561	69->1	Modische Sandalen für den Sommer
