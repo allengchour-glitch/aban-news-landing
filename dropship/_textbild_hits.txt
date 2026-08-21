@@ -9009,3 +9009,14 @@ gid://shopify/Product/15499901141377	41->0	Hundeleine PVC
 gid://shopify/Product/15499901305217	12->2	Wirelos Kamera
 gid://shopify/Product/15499901567361	12->0	Studenten-Rucksack
 gid://shopify/Product/15499949474177	55->0	Silberne Plus-Size-Langenrock
+gid://shopify/Product/15499949703553	53->0	Selfie-Clip für Haustiere
+gid://shopify/Product/15499949965697	57->0	Polka-Dot-Strickkleid
+gid://shopify/Product/15499950162305	23->0	Rucksack aus Rindsleder mit Zugband
+gid://shopify/Product/15499950784897	25->0	Farbblock-Dress mit Rüschenbesatz
+gid://shopify/Product/15499950883201	25->1	Grosse Make-up Tasche mit Reissverschluss
+gid://shopify/Product/15499951112577	59->0	Geflochtener Herren Rucksack
+gid://shopify/Product/15499952423297	67->0	Doppelfunktionales Heisshalten-Box-Set
+gid://shopify/Product/15499952783745	60->0	Erdkeramik-Teller
+gid://shopify/Product/15499953439105	28->0	Floral-Print-Rock
+gid://shopify/Product/15499953766785	13->0	Floral-Strap-Dress
+gid://shopify/Product/15499954094465	39->1	Grüne Strickjacke
