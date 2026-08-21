@@ -60,8 +60,18 @@ function parseCSV(text) {
   const rows = []; let row = [], f = '', q = false;
   for (let i = 0; i < text.length; i++) {
     const c = text[i];
+    // ⚠️ 21.08.2026 — EIN ZOLLZEICHEN HAT EIN DRITTEL DES FEEDS VERSCHLUCKT.
+    // Die Datei ist Pipe-getrennt; ein `"` darin ist Text («Kostüm "Sternenprinzessin"»,
+    // «Orbz "Happy Birthday"», «Badefizzer DINOPARK ADVENTURE"»), kein Feldbegrenzer. Der
+    // Parser schaltete bei JEDEM `"` in den Quote-Modus und fraß alles bis zum nächsten —
+    // über Zeilengrenzen hinweg. Drei Zeilen mit ungerader Anzahl `"` genügten: gelesen
+    // wurden 12'705 von 19'954 Zeilen, 12'085 statt 18'578 Artikelnummern. Die fehlenden
+    // ~6'500 galten dem Abgleich als «nicht mehr im Feed» und wären auf Menge 0 gesetzt
+    // worden — Ware, die im CH-Lager liegt, wäre im Shop unverkäuflich geworden.
+    // Ein `"` zählt jetzt nur als Feldbegrenzer, wenn es am FELDANFANG steht. Das ist die
+    // CSV-Regel und macht ein Zollzeichen mitten im Text wieder zu dem, was es ist.
     if (q) { if (c === '"') { if (text[i + 1] === '"') { f += '"'; i++; } else q = false; } else f += c; }
-    else if (c === '"') q = true;
+    else if (c === '"' && f === '') q = true;
     else if (c === '|') { row.push(f); f = ''; }
     else if (c === '\n') { row.push(f); rows.push(row); row = []; f = ''; }
     else if (c !== '\r') f += c;
@@ -192,11 +202,24 @@ if (DRY) { console.log('\n[DRY] nichts geschrieben.'); process.exit(0); }
 
 /* ---------- Schreiben ---------- */
 // Journal-Wiederaufnahme: was in DIESER Feed-Generation schon gesetzt wurde, wird übersprungen.
+// ⚠️ 21.08.2026 — DIESER SCHLÜSSEL WAR DIE SKU, UND DAS WAR FALSCH.
+// Im Shop hängen 3'746 von 4'426 Fortura-SKU an MEHREREN Varianten: Zu fast jedem gruppierten
+// Produkt («Edelweisshemd langarm geknöpft», ACTIVE, alle Grössen als Varianten) existiert noch
+// das alte Einzelgrössen-Produkt («… · Gr. L», DRAFT) mit derselben SKU — 3'489 SKU in genau
+// dieser Mischung. Wurde die DRAFT-Variante zuerst geschrieben, galt die SKU als erledigt und
+// die AKTIVE, kaufbare Variante wurde übersprungen. Welche zuerst kam, entschied allein die
+// Reihenfolge der Shopify-Antwort. Folge: 2'146 von 8'416 Varianten wichen vom Feed ab, und
+// zwar bevorzugt die verkäuflichen — Ware lag im CH-Lager und war im Shop nicht bestellbar.
+// Der Schlüssel ist jetzt die InventoryItem-ID; die identifiziert genau eine Variante.
 const schonGesetzt = new Set();
 if (fs.existsSync(JOURNAL)) for (const z of fs.readFileSync(JOURNAL, 'utf8').split('\n')) {
-  const f = z.split('\t'); if (f[1] === feedHash && f[5] === 'ok') schonGesetzt.add(f[2]);
+  const f = z.split('\t');
+  if (f[1] === feedHash && f[5] === 'ok' && f[8]) schonGesetzt.add(f[8]);
 }
-const offen = plan.filter(p => !schonGesetzt.has(p.sku));
+// AKTIVE Produkte zuerst: Bricht der Lauf ab, ist die kaufbare Ware bereits richtig; die
+// Entwürfe holt der nächste Durchgang. Vorher war die Reihenfolge dem Zufall überlassen.
+plan.sort((a, b) => (a.status === 'ACTIVE' ? 0 : 1) - (b.status === 'ACTIVE' ? 0 : 1));
+const offen = plan.filter(p => !schonGesetzt.has(p.ii));
 if (schonGesetzt.size) console.log(`Wiederaufnahme: ${plan.length - offen.length} bereits in diesem Feed-Lauf gesetzt.`);
 
 const SET = `mutation($input:InventorySetQuantitiesInput!){inventorySetQuantities(input:$input){
@@ -218,12 +241,12 @@ for (let i = 0; i < offen.length; i += 100) {
       const r = await gql(SET, { input: { name: 'available', reason: 'correction', ignoreCompareQuantity: false, quantities: [{ inventoryItemId: p.ii, locationId: LOC, quantity: p.soll, compareQuantity: p.ist }] } });
       const e = r?.data?.inventorySetQuantities?.userErrors || [];
       const gut = r && !e.length;
-      fs.appendFileSync(JOURNAL, [new Date().toISOString(), feedHash, p.sku, p.ist, p.soll, gut ? 'ok' : 'offen', p.grund, (e[0]?.message || (r ? '' : 'keine Antwort')).slice(0, 80)].join('\t') + '\n');
+      fs.appendFileSync(JOURNAL, [new Date().toISOString(), feedHash, p.sku, p.ist, p.soll, gut ? 'ok' : 'offen', p.grund, (e[0]?.message || (r ? '' : 'keine Antwort')).slice(0, 80), p.ii, p.status].join('\t') + '\n');
       if (gut) ok++; else fehler++;
       await sleep(150);
     }
   } else {
-    for (const p of batch) { fs.appendFileSync(JOURNAL, [new Date().toISOString(), feedHash, p.sku, p.ist, p.soll, 'ok', p.grund, ''].join('\t') + '\n'); ok++; }
+    for (const p of batch) { fs.appendFileSync(JOURNAL, [new Date().toISOString(), feedHash, p.sku, p.ist, p.soll, 'ok', p.grund, '', p.ii, p.status].join('\t') + '\n'); ok++; }
   }
   console.log(`… ${Math.min(i + 100, offen.length)}/${offen.length} (ok ${ok}, offen ${fehler})`);
   await sleep(400);

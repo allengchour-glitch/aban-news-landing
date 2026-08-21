@@ -869,3 +869,5 @@ gid://shopify/Product/15507783844225	nicht-versendbar	8-teiliges Drechselwerkzeu
 gid://shopify/Product/15508352434561	nicht-versendbar	Manueller Handentsafter aus Gusseisen und Edelstahl
 gid://shopify/Product/15508396736897	ok	Bluetooth Beistelltisch mit Wireless Charging
 gid://shopify/Product/15508417249665	ok	Sportwagen Kleinpartikel Bausteine
+gid://shopify/Product/15508406665601	ok	Multifunktions-Chronograph für Herren
+gid://shopify/Product/15508406763905	ok	Herren Quarz Chronograph – Wasserdicht
