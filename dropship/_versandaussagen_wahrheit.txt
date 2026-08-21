@@ -33548,3 +33548,22 @@ gid://shopify/Product/15443241009537	direkt	1	Moissanit-Ohrstecker «Trilogie» 
 gid://shopify/Product/15443241042305	direkt	1	Moissanit-Ohrstecker «Bogen» 0,5 ct · 925 Silber
 gid://shopify/Product/15443241075073	direkt	1	Edelstein-Halskette «Rubin & Saphir» · 925 Silber
 gid://shopify/Product/15443241107841	direkt	1	Moissanit-Ohrhänger «Halo» 1 ct · 925 Silber
+gid://shopify/Product/15443243696513	direkt	1	Schmuck-Set «Trio» · 925 Silber (Kette · Ohrringe · Armband)
+gid://shopify/Product/15443243729281	direkt	1	Zirkonia-Ohrringe «Fächer» Grün · Gold-Optik
+gid://shopify/Product/15443245531521	direkt	1	Nail-Art-Set «Übungshand» + 300 Tips
+gid://shopify/Product/15443245597057	direkt	1	Cluster-Wimpern «Volumen» 30D/40D
+gid://shopify/Product/15443245498753	direkt	1	Polygel-Nagelset «Komplett» 6-tlg + UV-Lampe
+gid://shopify/Product/15443245662593	direkt	1	Magnetische Wimpern «Natural» mit Clip
+gid://shopify/Product/15443245760897	direkt	1	Magnetische Wimpern «Set» · natürlich
+gid://shopify/Product/15443245728129	direkt	1	Selbstklebende 3D-Wimpern · wiederverwendbar
+gid://shopify/Product/15443245629825	direkt	1	Cluster-Wimpern «Glue-Free» 80 Stück
+gid://shopify/Product/15443495846273	direkt	1	LED-Projektor «Ambiente» · Stimmungslicht
+gid://shopify/Product/15443495879041	direkt	1	Sonnenuntergang-Projektor «Sunset» · Stimmungslicht
+gid://shopify/Product/15443496141185	direkt	1	Kabellose Kopfhörer «SoundPods» · Bluetooth TWS
+gid://shopify/Product/15443496108417	direkt	1	Kabellose Kopfhörer «AirBeat» · Bluetooth TWS
+gid://shopify/Product/15443243762049	direkt	1	Malachit-Armband «Vintage» · grüner Naturstein
+gid://shopify/Product/15443496173953	direkt	1	Kabellose Kopfhörer «BassBuds» · Bluetooth TWS
+gid://shopify/Product/15443496206721	direkt	1	Kabellose Kopfhörer «FlowPods» · Bluetooth TWS
+gid://shopify/Product/15443245465985	direkt	1	Press-on-Nails «French» · zum Aufkleben
+gid://shopify/Product/15443496239489	direkt	1	Kabellose Kopfhörer «EchoBuds» · Bluetooth TWS
+gid://shopify/Product/15443245433217	direkt	1	Press-on-Nails «Handmade» · wiederverwendbar
