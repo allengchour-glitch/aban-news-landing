@@ -58,7 +58,10 @@ const kosten=(usd,grams)=>{const u=parseFloat((''+usd).split('--')[0])||0;
  return (u*0.9+freight).toFixed(2);};
 
 // ── Fashion-Modus (Zalando-Stil): CJ-Varianten "Farbe-Grösse" → Shopify Farbe+Grösse-Optionen ──
-const DECOLOR={apricot:'Aprikose',pink:'Pink','light pink':'Rosa','hot pink':'Pink','sky blue':'Himmelblau','light blue':'Hellblau','dark blue':'Dunkelblau','wine red':'Weinrot','rose red':'Rosarot','army green':'Armeegrün','light green':'Hellgrün','dark green':'Dunkelgrün','light grey':'Hellgrau','dark grey':'Dunkelgrau','light gray':'Hellgrau','dark gray':'Dunkelgrau','black and white':'Schwarz-Weiss','navy blue':'Marineblau',black:'Schwarz',white:'Weiss',red:'Rot',blue:'Blau',green:'Grün',yellow:'Gelb',grey:'Grau',gray:'Grau',beige:'Beige',brown:'Braun',navy:'Marineblau',khaki:'Khaki',purple:'Lila',violet:'Violett',orange:'Orange',rose:'Rosé',coffee:'Kaffeebraun',silver:'Silber',gold:'Gold',champagne:'Champagner',ivory:'Elfenbein',burgundy:'Bordeaux',camel:'Camel',turquoise:'Türkis',mint:'Mintgrün',lavender:'Lavendel',cream:'Creme',nude:'Nude','dark pink':'Dunkelrosa','deep blue':'Dunkelblau','light yellow':'Hellgelb','fluorescent green':'Neongrün','light purple':'Helllila','dark brown':'Dunkelbraun',multicolor:'Bunt',multi:'Bunt'};
+// Farbtabelle liegt seit 21.08.2026 in automation/farben_de.mjs — es gab drei
+// Kopien, und die kleinste kannte «dark gray» nicht (51 Produkte mit «Dark Gray»
+// im Farbwaehler). Neue Farben NUR dort nachtragen.
+import { FARBEN as DECOLOR, deColor } from './farben_de.mjs';
 const SIZESET=new Set(['XS','S','M','L','XL','XXL','XXXL','2XL','3XL','4XL','5XL','6XL','ONE SIZE','ONESIZE','FREE SIZE','FREESIZE','F']);
 // ⚠️ CJ stellt der Farbe oft seinen Artikelcode voran: «A039 Black», «E7916 White»,
 // «Ts3018 Pink» — und der stand danach im Farb-Dropdown, wo die Kundin ihn anklicken MUSS
@@ -77,7 +80,6 @@ const ohneCode=c=>{const p=(c||'').trim().split(/\s+/); if(p.length<2)return (c|
   if(istCodeToken(p[0]))return p.slice(1).join(' ');
   if(istCodeToken(p[p.length-1]))return p.slice(0,-1).join(' ');
   return (c||'').trim();};
-const deColor=c=>{const t=(c||'').trim();return DECOLOR[t.toLowerCase()]||t;};
 // Die Code-Entfernung darf nur greifen, wenn danach ALLE Farben verschieden bleiben:
 // «A63 Black» und «A65 Black» würden sonst beide zu «Schwarz» — der Varianten-Dedup unten
 // wirft eine der beiden weg, und ein kaufbarer Artikel verschwindet. Lieber der Code als

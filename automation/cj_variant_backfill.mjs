@@ -21,12 +21,11 @@ const ONLY = (process.env.ONLY || '').trim();
 const CJ_SLEEP = parseInt(process.env.CJ_SLEEP || '900', 10);
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-const FARBE_DE = { red:'Rot', blue:'Blau', black:'Schwarz', white:'Weiss', green:'Grün', yellow:'Gelb',
-  orange:'Orange', pink:'Pink', purple:'Violett', grey:'Grau', gray:'Grau', brown:'Braun', gold:'Gold',
-  silver:'Silber', beige:'Beige', navy:'Navy', khaki:'Khaki', rose:'Rosé', 'rose gold':'Roségold',
-  'sky blue':'Hellblau', 'dark blue':'Dunkelblau', 'light blue':'Hellblau', 'wine red':'Weinrot',
-  coffee:'Kaffeebraun', champagne:'Champagner', multicolor:'Mehrfarbig', transparent:'Transparent' };
-const deColor = c => { const k=(c||'').toLowerCase().trim(); return FARBE_DE[k] || c; };
+// ⚠️ Diese Datei hatte eine EIGENE, kleinere Farbtabelle (27 statt 54 Eintraege). Sie kannte
+// «dark gray»/«light gray»/«black and white»/«light brown» nicht — der Importer legte saubere
+// deutsche Farben an, dieser Nachruester haengte «Dark Gray» daneben. Seit 21.08.2026 teilen
+// sich alle CJ-Werkzeuge automation/farben_de.mjs.
+import { deColor } from './farben_de.mjs';
 
 const MAT_DE = { plastic:'Kunststoff', metal:'Metall', glass:'Glas', 'stainless steel':'Edelstahl',
   cotton:'Baumwolle', polyester:'Polyester', wood:'Holz', ceramic:'Keramik', silicone:'Silikon',

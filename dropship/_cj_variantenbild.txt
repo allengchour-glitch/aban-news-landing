@@ -896,3 +896,25 @@ gid://shopify/Product/15447995154817	zugeordnet	15	Elegante Kaschmir-Weste für 
 gid://shopify/Product/15447995679105	zugeordnet	35	Ärmelloses Casual Top für Damen
 gid://shopify/Product/15447996694913	zugeordnet	24	Elegante Weste mit Rüschensaum
 gid://shopify/Product/15447997251969	zugeordnet	4	Knit-Weste im koreanischen Casual-Stil
+gid://shopify/Product/15447998726529	zugeordnet	12	Elegante Damen-Anzugweste
+gid://shopify/Product/15447998988673	zugeordnet	10	Ärmellose Chiffon-Weste im Korea-Stil
+gid://shopify/Product/15447999316353	bild-urls-tot
+gid://shopify/Product/15448000135553	zugeordnet	40	Damen-Plüschweste, doppelseitig tragbar
+gid://shopify/Product/15448000397697	zugeordnet	12	V-Neck Weste aus Baumwoll-Leinen-Mix
+gid://shopify/Product/15448000921985	zugeordnet	21	Elegante Anzugweste im koreanischen Stil
+gid://shopify/Product/15448001216897	zugeordnet	24	Künstlerische Weste aus Baumwoll-Leinen-Mix
+gid://shopify/Product/15448001773953	zugeordnet	10	Taillierte Weste für Anzüge
+gid://shopify/Product/15448002068865	zugeordnet	12	Baumwoll-Leinen Weste im Retro-Stil
+gid://shopify/Product/15448002331009	zugeordnet	4	Legeres Strick-Gilet für Damen
+gid://shopify/Product/15448002593153	zugeordnet	24	Eleganter Damen-Cardigan ohne Ärmel
+gid://shopify/Product/15448002822529	zugeordnet	8	Fransige Weste ohne Knöpfe
+gid://shopify/Product/15448003084673	zugeordnet	16	Ärmelloses V-Neck Top mit Knopfleiste
+gid://shopify/Product/15448003477889	zugeordnet	12	Kurze Leinen-Weste für Damen
+gid://shopify/Product/15448003608961	zugeordnet	20	Damen Sport-Tanktop mit integrierten BH-Pads
+gid://shopify/Product/15448003805569	zugeordnet	29	Sport-BH mit Polsterung und schönem Rückendesign
+gid://shopify/Product/15448003936641	zugeordnet	44	Retro Colorblock Strickweste für Damen
+gid://shopify/Product/15448004067713	zugeordnet	20	Elegante Damenweste mit Blumenmuster
+gid://shopify/Product/15448004559233	zugeordnet	24	Corduroy-Weste für Herren mit Patchwork
+gid://shopify/Product/15448004690305	zugeordnet	30	Rundhals T-Shirt aus Eisseide
+gid://shopify/Product/15448004821377	bild-urls-tot
+gid://shopify/Product/15448004919681	zugeordnet	8	Seiden-Top mit Schleifendetail für Damen
