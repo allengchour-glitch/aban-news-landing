@@ -275,6 +275,22 @@ while true; do
       echo "$(date -u +%H:%M) tote-links geprüft"
     fi
   fi
+  # LEERE KOLLEKTIONEN, einmal täglich: Am 21.08.2026 waren 14 im Onlineshop veröffentlichte
+  # Kollektionen für Besucherinnen komplett leer (0 kaufbare Produkte) und 3 weitere hatten
+  # genau eines — darunter die Kampagnenseite `tiktok-viral` und `picknick-strand` mitten in
+  # der Saison. Alle lieferten 200 mit Werbetext und darunter «Keine Produkte gefunden.».
+  # ⚠️ `productsCount` ZÄHLT DRAFTS MIT — nach dieser Zahl wären nur 3 von 17 aufgefallen;
+  # der Wächter zählt deshalb einzeln mit `status`. Neue Löcher entstehen bei JEDEM Draft-Lauf
+  # (keine-lieferanten-ref, Dubletten, Sperr-Tags). Meldet nur — Füllen oder Unveröffentlichen
+  # (dann IMMER erst 301-Weiterleitung!) braucht eine Entscheidung.
+  KL=/tmp/kollektion_leer.log
+  if [ -f "$REPO/automation/kollektion_leer.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$KL" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid python3 automation/kollektion_leer.py >> "$KL" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) leere-kollektionen geprüft"
+    fi
+  fi
   # FARBCODES IN DER VARIANTEN-AUSWAHL, einmal täglich gegen LIVE: Am 20.08.2026 stand bei
   # 151 aktiven Produkten der CJ-Artikelcode im Dropdown «Farbe» — «A039 Black», «E7916 White».
   # Titel und Beschreibung waren sauber; die beiden alten Reiniger (farbcode_bereinigen.py,

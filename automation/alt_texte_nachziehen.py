@@ -38,6 +38,13 @@ STATUS = os.environ.get('STATUS', 'active')
 # der Lauf nur LEERE Alt-Texte füllt: trifft der zweite Lauf ein schon repariertes Produkt,
 # findet er nichts mehr zu tun. Doppelt gelesen wird, doppelt geschrieben nie.
 REVERSE = os.environ.get('REVERSE') == '1'
+# BIS grenzt das Fenster nach oben ab (created_at:<BIS). Damit lässt sich eine grosse
+# Nachreparatur tageweise auf mehrere Läufe aufteilen, die sich NICHT überlappen.
+BIS   = os.environ.get('BIS', '')
+# Wie viele Dateien pro fileUpdate. 25 ist konservativ; Shopify nimmt deutlich mehr, und
+# jeder gesparte Aufruf ist eine ganze Netz-Rundreise weniger — bei ~40'000 Bildern der
+# Unterschied zwischen zwei Stunden und zwanzig Minuten.
+BATCH = int(os.environ.get('BATCH', '100'))
 LEDGER_SUFFIX = os.environ.get('LEDGER_SUFFIX', '')
 LEDGER = 'dropship/_alt_texte_fenster.txt'
 
@@ -114,7 +121,7 @@ def flush():
         quittieren()
     buf.clear(); time.sleep(0.15)
 
-query = f'status:{STATUS} created_at:>={SEIT}'
+query = f'status:{STATUS} created_at:>={SEIT}' + (f' created_at:<{BIS}' if BIS else '')
 print(f'Fenster: {query} · {"RUECKWAERTS" if REVERSE else "vorwaerts"} · DRY={DRY} · Ledger {LEDGER} ({len(done)} erledigt)', flush=True)
 
 while prods < LIMIT:
@@ -139,7 +146,7 @@ while prods < LIMIT:
         if offen:
             seen += 1
             buf.extend(offen); wartend.append(n['id'])
-            if len(buf) >= 25:
+            if len(buf) >= BATCH:
                 flush()
         elif not DRY:            # nichts zu tun → sofort quittieren (ein Probelauf NIE:
             lf.write(n['id'] + '\n'); lf.flush()   # sonst überspringt der echte Lauf ihn)

@@ -9,9 +9,17 @@ lieferten HTTP 200 mit vollem SEO-Titel und Werbetext — und darunter «Keine P
 gefunden.». Verlinkt waren sie aus der Seite `marken-kategorien` und aus fünf veröffentlichten
 SEO-Ratgebern; der Klick verpuffte, ohne je in einer Statistik aufzutauchen.
 
-⚠️ DER ENTSCHEIDENDE PUNKT: `productsCount` ZÄHLT DRAFTS MIT. Nach dieser Zahl wären nur drei
-der 17 aufgefallen. Eine Kollektion mit 12 Produkten kann für die Kundin völlig leer sein —
-deshalb zählt dieser Wächter die Produkte einzeln mit `status` und NIE nur productsCount.
+⚠️ ZWEI ZÄHLFALLEN, beide teuer:
+1. `productsCount` ZÄHLT DRAFTS MIT. Nach dieser Zahl wären nur 3 der 17 aufgefallen — eine
+   Kollektion mit 12 Produkten kann für die Kundin völlig leer sein.
+2. Eine STICHPROBE der ersten n Produkte einer Kollektion lügt: Shopify liefert sie in der
+   Sortierung der Kollektion, und dort stehen die DRAFTs oft vorn. Der erste Entwurf dieses
+   Wächters meldete deshalb `hype-2026` als leer — die Kollektion hat 108 aktive Produkte,
+   nur eben nicht unter den ersten 250. Ein falscher Alarm auf einer gesunden Kollektion ist
+   schlimmer als kein Alarm: er kostet Vertrauen in den Wächter.
+Richtig ist die EXAKTE Zählung über die Suchsyntax:
+`productsCount(query:"status:active AND collection_id:<zahl>")` — eine Anfrage je Kollektion,
+kein Blättern, keine Stichprobe.
 
 Die Ursache ist strukturell und wiederholt sich: Der Viability-Guard draftet Ware ohne
 Lieferanten-SKU (`keine-lieferanten-ref`), der Dubletten-Fix draftet Doppelgänger, der
@@ -32,9 +40,6 @@ import json, os, subprocess, sys
 SHOP = "au3j0y-hq.myshopify.com"
 TOK = os.environ.get("SHOPIFY_ADMIN_TOKEN") or open("/tmp/cj_shop_token.txt").read().strip()
 MINDEST = int(os.environ.get("MINDEST", "3"))   # ab wie vielen aktiven Produkten gilt sie als gesund
-# Kollektionen mit vielen Produkten einzeln durchzuzählen kostet Anfragen; oberhalb dieser
-# Grenze ist eine Stichprobe der ersten 250 aussagekräftig genug (findet jedes 0-aktiv-Loch).
-TIEF_BIS = int(os.environ.get("TIEF_BIS", "250"))
 
 
 def gql(q, v=None):
@@ -60,25 +65,15 @@ Q_COLLS = """query($c:String){ collections(first:250, after:$c){
   nodes{ id handle title productsCount{count}
     resourcePublicationsV2(first:15){nodes{publication{name} isPublished}} } } }"""
 
-Q_PROD = """query($id:ID!,$c:String){ collection(id:$id){ products(first:250, after:$c){
-  pageInfo{hasNextPage endCursor} nodes{status} } } }"""
+Q_AKTIV = """query($q:String!){ productsCount(query:$q){count} }"""
 
 
-def aktive(cid, deckel):
-    """Zählt ACTIVE-Produkte. Gibt (anzahl, vollstaendig) zurueck."""
-    cur, akt, ges = None, 0, 0
-    while True:
-        d = gql(Q_PROD, {"id": cid, "c": cur}).get("collection") or {}
-        p = d.get("products") or {"nodes": [], "pageInfo": {"hasNextPage": False}}
-        for n in p["nodes"]:
-            ges += 1
-            if n["status"] == "ACTIVE":
-                akt += 1
-        if akt >= MINDEST:            # gesund — nicht weiterzählen, spart Anfragen
-            return akt, False
-        if not p["pageInfo"]["hasNextPage"] or ges >= deckel:
-            return akt, not p["pageInfo"]["hasNextPage"]
-        cur = p["pageInfo"]["endCursor"]
+def aktive(cid):
+    """Exakte Zahl der ACTIVE-Produkte einer Kollektion — eine Anfrage, keine Stichprobe."""
+    zahl = cid.rsplit("/", 1)[-1]
+    d = gql(Q_AKTIV, {"q": "status:active AND collection_id:%s" % zahl})
+    pc = d.get("productsCount")
+    return pc["count"] if pc else None
 
 
 def main():
@@ -98,25 +93,29 @@ def main():
             break
         cur = d["pageInfo"]["endCursor"]
 
-    leer, duenn = [], []
+    leer, duenn, unklar = [], [], []
     for n in kandidaten:
-        akt, voll = aktive(n["id"], TIEF_BIS)
-        if akt == 0:
-            leer.append((n, akt, voll))
+        akt = aktive(n["id"])
+        if akt is None:            # Leseausfall zaehlt NIE als leer
+            unklar.append(n)
+        elif akt == 0:
+            leer.append((n, akt))
         elif akt < MINDEST:
-            duenn.append((n, akt, voll))
+            duenn.append((n, akt))
 
     print("Kollektionen gesamt %d · im Onlineshop veröffentlicht %d · MINDEST=%d"
           % (gesamt, len(kandidaten), MINDEST))
     print("LEER (0 kaufbare Produkte): %d" % len(leer))
-    for n, a, voll in leer:
-        print("  %-38s %-42s productsCount=%-5s aktiv=0%s"
-              % (n["handle"], n["title"][:42], n["productsCount"]["count"],
-                 "" if voll else "  (Stichprobe)"))
+    for n, a in leer:
+        print("  %-38s %-42s productsCount=%-5s aktiv=0"
+              % (n["handle"], n["title"][:42], n["productsCount"]["count"]))
     print("DÜNN (1-%d kaufbare Produkte): %d" % (MINDEST - 1, len(duenn)))
-    for n, a, voll in duenn:
+    for n, a in duenn:
         print("  %-38s %-42s productsCount=%-5s aktiv=%d"
               % (n["handle"], n["title"][:42], n["productsCount"]["count"], a))
+    if unklar:
+        print("NICHT LESBAR (kein Befund, nur Ausfall): %d — %s"
+              % (len(unklar), ", ".join(x["handle"] for x in unklar[:20])))
     if leer:
         print("\nHinweis: erst 301-Weiterleitung auf eine GEFÜLLTE Nachbar-Kollektion anlegen,")
         print("dann unveröffentlichen — oder die Smart-Regel auf aktive Ware umbiegen.")
