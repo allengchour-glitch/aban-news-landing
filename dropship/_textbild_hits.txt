@@ -7983,3 +7983,29 @@ gid://shopify/Product/15495747993985	70->3	Boho-Kissenbezug mit Füllung
 gid://shopify/Product/15495748223361	14->0	Plüschtier Avocado
 gid://shopify/Product/15495748321665	92->0	Goldenes Plüschkissen mit Quasten
 gid://shopify/Product/15495748452737	21->2	Samt-Kissenhülle mit Geometrischem Muster
+gid://shopify/Product/15495771750785	79->0	Sommer-Polo-Shirt
+gid://shopify/Product/15495771783553	37->0	Bestickter Kissenbezug mit Fransen
+gid://shopify/Product/15495771816321	24->0	3-teiliges WC-Set mit Anti-Rutsch-Matte
+gid://shopify/Product/15495784038785	92->0	Katzenklettergerüst
+gid://shopify/Product/15495894401409	14->1	Kratzbaum mit Spielzeug und Liegefläche
+gid://shopify/Product/15495895155073	136->1	Herren Corduroy Hemd im Retro-Streifen-Look
+gid://shopify/Product/15495895581057	12->0	Katzen Kratzbaum mit Emoji-Design
+gid://shopify/Product/15495896007041	128->0	3-teiliges Badematten-Set, einfarbig
+gid://shopify/Product/15495897284993	21->0	Luxuriöser Katzen-Kletterbaum aus Massivholz
+gid://shopify/Product/15495897383297	24->0	Herren Cardigan mit Revers, Baumwollmischung
+gid://shopify/Product/15496014233985	19->2	Musikalischer Hüpfball für Hunde
+gid://shopify/Product/15496014561665	16->0	Blütenblatt-Kissen für Sofa und Haustier
+gid://shopify/Product/15496015479169	64->0	Plüsch-Schwein für ruhige Hunde-Nächte
+gid://shopify/Product/15496016134529	42->0	Blumen-WC-Vorleger, rutschfest & saugfähig
+gid://shopify/Product/15496018690433	11->0	Meditationskissen aus Rattan für Boden & Sofa
+gid://shopify/Product/15496077279617	26->1	Silikon-Küchenhelfer-Set mit Holzgriff (12-teilig)
+gid://shopify/Product/15496077312385	14->0	Süsses A-Linien Minikleid mit Schleife
+gid://shopify/Product/15496077443457	17->0	Afrikanisches Maxikleid aus Baumwoll-Mix
+gid://shopify/Product/15496120467841	21->0	Beissfester Hanf-Beissstab für Hunde, 30cm
+gid://shopify/Product/15496120566145	27->0	Elegante Strass-Sandalen für Damen
+gid://shopify/Product/15496120729985	19->0	Sandalen mit klobigem Absatz und offener Spitze
+gid://shopify/Product/15496123613569	32->0	Elegante Satin-Sandalen mit spitzer Zehe
+gid://shopify/Product/15496129741185	146->0	Hakenleiste für Schranktüren und Wände
+gid://shopify/Product/15496129905025	25->0	Minimalistische Derby Schuhe
+gid://shopify/Product/15496130003329	53->0	Laufschuhe mit weichem Boden
+gid://shopify/Product/15496130101633	24->0	Universal Kaffeepress-Basis aus Buchenholz
