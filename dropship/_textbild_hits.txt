@@ -8547,3 +8547,8 @@ gid://shopify/Product/15497422242177	22->0	Gepolsterter Kissenbezug aus Baumwoll
 gid://shopify/Product/15497425387905	15->0	Automatischer Ballwerfer für Hunde
 gid://shopify/Product/15497425617281	10->0	Schienbein- und Waden-Trainer
 gid://shopify/Product/15497425650049	39->0	Lustige Katzenbox Fünfstern
+gid://shopify/Product/15497425846657	8->0	Hohles Bissfestes Futterspielzeug für Haustiere
+gid://shopify/Product/15497426043265	13->1	Kreatives Massivholz Sisal Katzen-Spielzeug
+gid://shopify/Product/15497426076033	33->2	Retro-Sandalen aus weichem PU-Leder
+gid://shopify/Product/15497426469249	15->0	Keilsandalen mit Strass-Buchstaben
+gid://shopify/Product/15497426502017	29->0	Fussball-Kauspielzeug für Hunde
