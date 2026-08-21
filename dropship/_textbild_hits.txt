@@ -7575,3 +7575,5 @@ gid://shopify/Product/15495027392897	41->0	Tragbares 48W Kfz-Netzteil
 gid://shopify/Product/15495064846721	97->0	Polster für Stühle
 gid://shopify/Product/15495065043329	29->1	Farbgel «Frosted Sealing Layer» 15 ml
 gid://shopify/Product/15495065076097	109->0	Memory Foam Gel Lendenkissen für Bürostuhl
+gid://shopify/Product/15495066943873	65->0	Glasklares Epoxyharz für Nagel- und Schmuckdesign
+gid://shopify/Product/15495067238785	56->0	Patella-Schutzband für Kinder
