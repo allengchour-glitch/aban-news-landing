@@ -223,3 +223,4 @@ gid://shopify/Product/15508453425537	wlan-infrarot-bewegungsmelder-1ba331	WLAN I
 gid://shopify/Product/15508453491073	multifunktionales-kissen-fur-auto-und-buro-796224	Multifunktionales Kissen für Auto und Büro
 gid://shopify/Product/15508514537857	herren-rucksack-crazy-horse-leder-3455d4	Herren Rucksack Crazy Horse Leder
 gid://shopify/Product/15508767801729	langarmhemd-slim-fit-diverse-farben-633800	Langarmhemd Slim Fit – diverse Farben
+gid://shopify/Product/15509137654145	herren-langarmshirt-aus-reiner-baumwolle-607500	Herren Langarmshirt aus reiner Baumwolle

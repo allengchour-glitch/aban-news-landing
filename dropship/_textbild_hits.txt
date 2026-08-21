@@ -8486,3 +8486,7 @@ gid://shopify/Product/15496711307649	40->0	Atmungsaktive Mesh-Sandalen mit niedr
 gid://shopify/Product/15496711373185	46->0	Keilabsatz-Sandalen mit Strohgeflecht
 gid://shopify/Product/15496847753601	9->2	Elegante Pumps mit V-Ausschnitt und Blockabsatz
 gid://shopify/Product/15496848474497	13->0	Beach Sandalen
+gid://shopify/Product/15496981807489	12->0	G4 Bluetooth Mobile Game Controller
+gid://shopify/Product/15496981873025	42->0	Bequeme Outdoor-Sandalen mit T-Riemen
+gid://shopify/Product/15496981938561	170->0	Kabelloses Gamepad für Xbox One
+gid://shopify/Product/15496982200705	71->0	Joy-Con Handgelenkschlaufen (2er-Pack)
