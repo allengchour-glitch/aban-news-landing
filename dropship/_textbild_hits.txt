@@ -7911,3 +7911,6 @@ gid://shopify/Product/15495235076481	11->0	Leder Geschenkbox Rund
 gid://shopify/Product/15495235273089	9->0	Kinder-Badesandalen mit Schleife
 gid://shopify/Product/15495236288897	18->0	Nano-Hydration Sauerstoff-Injektor
 gid://shopify/Product/15495236616577	67->0	Kinder Schwimmschuhe Cartoon
+gid://shopify/Product/15495236845953	13->0	Herz-Armband aus Edelstahl
+gid://shopify/Product/15495237075329	53->0	S925 Silberring mit Krappenfassung
+gid://shopify/Product/15495237140865	12->0	Niedliche Cartoon-Baumwollhausschuhe für Kinder
