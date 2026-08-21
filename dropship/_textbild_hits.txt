@@ -7568,3 +7568,10 @@ gid://shopify/Product/15495019266433	82->0	Herren-Quarzuhr aus Edelstahl mit Dop
 gid://shopify/Product/15495019463041	47->2	Herren Business Quarzuhr mit Chronograph
 gid://shopify/Product/15495024804225	52->0	Kinderhelm für Rollsport und Velo
 gid://shopify/Product/15495025131905	71->0	Taekwondo-Helm mit integriertem Kopfschutz
+gid://shopify/Product/15495025459585	60->0	Skihelm für Erwachsene
+gid://shopify/Product/15495025754497	21->0	Velohelm für Strasse und Mountainbike
+gid://shopify/Product/15495025951105	66->0	Quarz-Herrenuhr aus Edelstahl, ultraflach
+gid://shopify/Product/15495027392897	41->0	Tragbares 48W Kfz-Netzteil
+gid://shopify/Product/15495064846721	97->0	Polster für Stühle
+gid://shopify/Product/15495065043329	29->1	Farbgel «Frosted Sealing Layer» 15 ml
+gid://shopify/Product/15495065076097	109->0	Memory Foam Gel Lendenkissen für Bürostuhl
