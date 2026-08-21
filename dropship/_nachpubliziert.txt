@@ -215,3 +215,4 @@ gid://shopify/Product/15508310819201	fire-maple-mobile-kitchen-bratpfanne-522624
 gid://shopify/Product/15508365836673	led-gesichtsmaske-mit-7-farben-2b0bf3	LED-Gesichtsmaske mit 7 Farben
 gid://shopify/Product/15508402831745	plusch-kissen-karotte-halb-umrundend-881664	Plüsch-Kissen "Karotte" halb umrundend
 gid://shopify/Product/15508407091585	wasserdichte-gt2pro-smartwatch-403456	Wasserdichte GT2PRO Smartwatch
+gid://shopify/Product/15508410204545	teetier-affenkonig-aus-keramik-4fe147	Teetier Affenkönig aus Keramik
