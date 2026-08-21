@@ -7890,3 +7890,4 @@ gid://shopify/Product/15495229702529	18->0	Transparentes Puzzle-Konzeptauto
 gid://shopify/Product/15495229931905	12->3	Flache Sandalen aus echtem Leder
 gid://shopify/Product/15495230161281	30->0	Chunky-Heel Plateau Mary Jane Lackleder Schuhe
 gid://shopify/Product/15495230325121	56->0	Gel-Nagelverlängerungs-Set
+gid://shopify/Product/15495230521729	12->2	Bequeme Leder-Sandalen mit Klettverschluss
