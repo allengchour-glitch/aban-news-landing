@@ -11,6 +11,12 @@ import { produktSaeubern } from './marken_filter.mjs';
 import { medizinZweck } from './medizin_zweck.mjs';
 import { tierschutzGeraet } from './tierschutz_geraet.mjs';
 import { heikelZweck } from './heikel_zweck.mjs';
+// ⚠️ 21.08.2026: Diese Zeile FEHLTE, während `echoVomLieferanten` an drei Stellen (708/710/714)
+// schon aufgerufen wurde. Folge: `ReferenceError: echoVomLieferanten is not defined` beim
+// Start — der Importer starb VOR dem Anlegen, also legte der CJ-Grind gar nichts mehr an,
+// und die Runner deuteten den RC≠0 wie immer als Punktemangel und schliefen. Die Funktion
+// war korrekt exportiert und gegen 8'629 Titel geprüft; nur der Import wurde vergessen.
+import { echoVomLieferanten } from './titel_sprache.mjs';
 const SHOP='au3j0y-hq.myshopify.com',API='2025-01';
 const CID=process.env.SHOPIFY_CLIENT_ID,CSEC=process.env.SHOPIFY_CLIENT_SECRET;
 const CJT=(process.env.CJ_TOKEN||'').trim();
