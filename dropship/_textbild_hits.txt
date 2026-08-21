@@ -7779,3 +7779,7 @@ gid://shopify/Product/15495140606337	81->0	Drahtlose Multifunktions-Lenkradfernb
 gid://shopify/Product/15495140639105	76->0	Etuikleid mit Gürtel für Pendlerinnen
 gid://shopify/Product/15495140868481	29->1	Intelligentes USB-Rücklicht mit Alarm
 gid://shopify/Product/15495141622145	25->0	Slide-on Outdoor-Sandale mit Weichsohle
+gid://shopify/Product/15495141818753	70->0	Outdoor Taktik Aufbewahrungstasche
+gid://shopify/Product/15495141851521	39->0	Quick Extending Nail Bottom Sealing Nail Lamp
+gid://shopify/Product/15495141884289	81->0	Holz Stickrahmen für Kreuzstich
+gid://shopify/Product/15495141949825	28->1	BANGE Herren Rucksack – Business & Reisen
