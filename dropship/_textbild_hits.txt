@@ -8644,3 +8644,4 @@ gid://shopify/Product/15497438691713	57->0	Warme Outdoor Snow Boots für Damen &
 gid://shopify/Product/15497438855553	20->0	Business Rucksack für Herren, 16 Zoll
 gid://shopify/Product/15497439117697	24->1	AirTag-Halsband für Hunde
 gid://shopify/Product/15497440166273	9->2	Faltbarer Wäschekorb für Schmutzwäsche
+gid://shopify/Product/15497440625025	9->0	Kinder Ölgemälde Digital-Set
