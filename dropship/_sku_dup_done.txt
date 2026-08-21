@@ -675,3 +675,8 @@ gid://shopify/Product/15506281300353	CJ-1377923862196523008	Elektrische Fritteus
 gid://shopify/Product/15506281988481	CJ-1377886947560787968	Multifunktionaler Knoblauchzerkleinerer
 gid://shopify/Product/15506282217857	CJ-1377864597603749888	6-teiliges Kochlöffel-Set aus schwarzem Nussbaumholz
 gid://shopify/Product/15506282611073	CJ-1501756765325766656	Japanisches Damast-Kochmesser, 67 Lagen
+gid://shopify/Product/15508418625921	CJ-CJLY294698401AZ	Langes Baumwoll-Leinenkleid mit Reissverschluss
+gid://shopify/Product/15508418822529	CJ-CJLY294678701AZ	Damen Neckholder Slim-Fit Midikleid
+gid://shopify/Product/15508419051905	CJ-CJLY294666601AZ	Gestreiftes Sommerkleid mit Rückenausschnitt
+gid://shopify/Product/15508419150209	CJ-CJLY294664701AZ	Elegantes gestreiftes Etui-Kleid
+gid://shopify/Product/15508419248513	CJ-CJLY294660201AZ	Französisches A-Linien Minikleid mit Off-Shoulder
