@@ -7914,3 +7914,14 @@ gid://shopify/Product/15495236616577	67->0	Kinder Schwimmschuhe Cartoon
 gid://shopify/Product/15495236845953	13->0	Herz-Armband aus Edelstahl
 gid://shopify/Product/15495237075329	53->0	S925 Silberring mit Krappenfassung
 gid://shopify/Product/15495237140865	12->0	Niedliche Cartoon-Baumwollhausschuhe für Kinder
+gid://shopify/Product/15495237239169	38->3	Muttertags-Ring mit Rohstein
+gid://shopify/Product/15495237697921	21->0	Digitales Ölgemälde: Landschaft, Tier oder Blume
+gid://shopify/Product/15495237796225	8->3	Horizontaler Ring mit Gravur
+gid://shopify/Product/15495237828993	100->0	Diamond Painting Wandbild – Volldekoration
+gid://shopify/Product/15495237960065	13->0	Damen Plateau-Sneakers mit Pailletten
+gid://shopify/Product/15495238353281	12->0	Elegante Armbanduhr für Damen
+gid://shopify/Product/15495238484353	101->1	3-in-1 Warmluftbürste für Glätten & Locken
+gid://shopify/Product/15495238615425	77->0	Kabel-Organizer für Kreuzstich-Stickerei
+gid://shopify/Product/15495238812033	56->0	Kabelloses USB-Glätteisen für unterwegs
+gid://shopify/Product/15495239336321	53->0	Mini Akku-Haarglätter
+gid://shopify/Product/15495239401857	117->0	Herren Quarzuhr mit Datum, Edelstahl
