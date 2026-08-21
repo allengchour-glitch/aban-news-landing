@@ -7362,3 +7362,9 @@ gid://shopify/Product/15493872058753	16->1	Kinder Geschirr-Set aus Bambusfaser
 gid://shopify/Product/15493872091521	28->0	Elektrisches Wandkletterauto für Kinder
 gid://shopify/Product/15493872320897	15->0	E61 bodenloser Siebträger aus Edelstahl
 gid://shopify/Product/15493872517505	40->0	Manuelle Espresso-Kaffeemaschine
+gid://shopify/Product/15493872746881	45->0	Kinder-Buchweizenkissen aus Baumwolle
+gid://shopify/Product/15493872845185	12->0	Memory Foam Sitzkissen für Home Office
+gid://shopify/Product/15493873009025	9->3	Klassisches Langarmshirt mit Streifen
+gid://shopify/Product/15493873074561	46->0	Zauberer Robe Modell Bausteine
+gid://shopify/Product/15493873140097	11->0	Kabelbinder-Halterung für Wandmontage
+gid://shopify/Product/15493873369473	9->0	Automatischer Seifenspender mit Sensor
