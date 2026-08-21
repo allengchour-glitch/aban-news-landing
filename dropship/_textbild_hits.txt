@@ -7044,3 +7044,7 @@ gid://shopify/Product/15493084807553	10->3	Japanischer Bonsai-Topf aus Yixing-To
 gid://shopify/Product/15493088117121	21->3	Kreativer Bonsai-Bausatz «Begrüssungs-Föhre»
 gid://shopify/Product/15493243404673	11->3	Wandteppich mit Print-Design
 gid://shopify/Product/15493498864001	8->1	Grosser Schulrucksack für Kinder
+gid://shopify/Product/15493498929537	63->2	Verstellbarer Retro-Ring mit Achat-Kristall
+gid://shopify/Product/15493499158913	82->3	Bunte Pentagramm-Glitzer-Pailletten für Nägel
+gid://shopify/Product/15493499945345	25->0	Kabelloses Qi-Ladegerät, vertikal
+gid://shopify/Product/15493499978113	115->0	MOY Retro Bad-Girl Halskette
