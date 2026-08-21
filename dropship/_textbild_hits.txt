@@ -8331,3 +8331,5 @@ gid://shopify/Product/15496430682497	28->2	H8 Mini RC Helikopter
 gid://shopify/Product/15496432320897	59->0	RC Flugzeug für Outdoor-Spass
 gid://shopify/Product/15496433435009	37->0	Graffiti Quadcopter mit Fernsteuerung
 gid://shopify/Product/15496433467777	19->0	Wasserdichte Herren Quarzuhr
+gid://shopify/Product/15496435630465	63->0	Flugzeug-Modellbausatz zum Stecken
+gid://shopify/Product/15496435728769	29->3	Freizeit-Hemd mit langen Ärmeln und Tasche
