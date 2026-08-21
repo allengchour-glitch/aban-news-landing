@@ -59,7 +59,18 @@ def main():
                 {"c": cur})
         pg = (d.get("data") or {}).get("products")
         if not pg:
-            print("keine Daten", flush=True); break
+            # ⚠️ KEIN break-nach-unten (21.08.2026). Der Abbruch fiel bis hierher durch zu
+            # `os.remove(st)` UND zur FERTIG-Zeile: Eine ausgefallene Abfrage — der
+            # Ausgangs-Proxy antwortet sporadisch mit HTTP 502 «policy context unavailable»
+            # — loeschte also den Cursor und meldete Vollzug. Im Log stehen 201 FERTIG-Zeilen
+            # bei 5 solchen Abbruechen, darunter «FERTIG: 2039 geprueft» und
+            # «FERTIG: 10694 geprueft» statt der vollen 44'769. Jedes Mal begann der
+            # Folgelauf wieder bei Produkt 1 und verbrannte einen ganzen Katalog-Durchgang
+            # an Shopify-Kontingent, das sich alle Engines teilen.
+            # Cursor BLEIBT stehen, damit der naechste Lauf dort weitermacht.
+            print(f"PAUSE (Shopify antwortet nicht — bei {n} Produkten, Cursor bleibt)",
+                  flush=True)
+            return
         for p in pg["nodes"]:
             n += 1
             if p["id"] in done:
