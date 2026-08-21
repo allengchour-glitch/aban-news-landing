@@ -7030,3 +7030,4 @@ gid://shopify/Product/15490725020033	54->0	Ölgemälde
 gid://shopify/Product/15490725151105	16->0	Digitales Malen nach Zahlen: Individuelles Porträt
 gid://shopify/Product/15490725249409	17->0	Digitales Ölbild zum Ausmalen
 gid://shopify/Product/15490725478785	17->0	Digitales Malset: Persönliches Ölgemälde
+gid://shopify/Product/15490775646593	62->0	Armband mit unregelmässigen schwarzen Achatperlen
