@@ -8534,3 +8534,13 @@ gid://shopify/Product/15497378595201	32->0	6-Achsen Roboterarm Lernplattform
 gid://shopify/Product/15497378726273	86->3	Feuchtigkeitsspray für geschmeidiges Haar
 gid://shopify/Product/15497378759041	20->0	Leder Brustbeutel
 gid://shopify/Product/15497378857345	36->2	Multifunktionaler Rucksack mit USB-Anschluss
+gid://shopify/Product/15497378988417	57->0	Kamera Rucksack Professional
+gid://shopify/Product/15497379053953	13->0	Retro Lederrucksack "Crazy Horse"
+gid://shopify/Product/15497420407169	39->0	Mini Lockenstab mit USB-Ladefunktion
+gid://shopify/Product/15497420439937	31->3	Natural Spirit Diamant-Chip Armband
+gid://shopify/Product/15497420538241	28->1	Deko-Stein für Snacks & Display
+gid://shopify/Product/15497420603777	16->0	Balancierendes Energie-Armband Obsidian & Aquamarin
+gid://shopify/Product/15497420702081	66->0	Mehrreihiges Minimalist-Armband-Set
+gid://shopify/Product/15497421291905	36->1	Verstellbarer U-förmiger Ring in Gold
+gid://shopify/Product/15497421554049	96->1	Asymmetrischer Midi-Strickrock
+gid://shopify/Product/15497422242177	22->0	Gepolsterter Kissenbezug aus Baumwollleinen
