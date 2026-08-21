@@ -420,6 +420,17 @@ eine Zubehör-«Farbe» wie «Memory card-8G» die billigste Variante war).
    fragt nach der Laufzeit. Und: ein leeres Log ist kein Beweis für einen stillen Tod — mein
    Startbefehl hatte es mit `>` bei jedem Versuch selbst geleert (jetzt `>>`).
 
+0f. **Lehre 1 sechster Akt (21.08.2026): Eine Wache kann sich nicht auf sich selbst verlassen.**
+   Der Aufseher hat gleich ZWEI eigene Sperren (flock plus Laufzeit-Vergleich, siehe 0e) — und
+   trotzdem liefen zwei Instanzen zwölf Minuten nebeneinander. Der Grund ist strukturell: Der
+   zweite hing in `do_wait` auf ein Kind. **Ein Prozess, der irgendwo wartet, erreicht seine
+   eigene Wache nicht mehr** — die Prüfung steht am Schleifenanfang, und dorthin kommt er nie
+   zurück. Egal wie gut die Selbstprüfung ist, sie läuft nur, solange der Prozess läuft.
+   Deshalb räumt `engine_keepalive.sh` Doppel-Aufseher jetzt **von aussen** ab (ältester
+   bleibt) — genau wie bei den Runnern. **Regel: Selbstprüfung ist die erste Verteidigung,
+   nie die einzige. Wer garantieren muss, dass es einen Prozess nur einmal gibt, prüft das
+   von einer Stelle aus, die nicht derselbe Prozess ist.**
+
 1. **`pgrep -f <name>` findet die EIGENE Kommandozeile.** Ein `pgrep -f social_autopilot && echo läuft`
    meldete «läuft» für ein Skript, das gar nicht mehr existierte — das Suchmuster stand im eigenen
    Bash-Aufruf. Prozessprüfungen deshalb mit `ps -eo args | grep …`, oder das Muster nicht im Aufruf

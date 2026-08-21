@@ -35,9 +35,21 @@ starte() {  # starte <logname> <befehl…>
 
 # ── 1. Der Aufseher zuerst. Er startet ALLE täglichen Qualitäts-Wächter; steht er still,
 #       stehen sie alle still, und keine andere Routine merkt es (Lehre 0c).
-if [ "$(zaehle 'fixer_keepalive.sh')" -eq 0 ]; then
+A=$(zaehle 'fixer_keepalive.sh')
+if [ "$A" -eq 0 ]; then
   echo "AUFSEHER neu gestartet"
   starte fixer_keepalive bash automation/fixer_keepalive.sh
+elif [ "$A" -gt 1 ]; then
+  # ⚠️ 21.08.2026: Der Aufseher hat eine EIGENE Wache gegen Doppelstarts (flock plus
+  # Laufzeit-Vergleich) — sie hat trotzdem zwei Instanzen 12 Minuten nebeneinander laufen
+  # lassen, eine davon in do_wait auf ein Kind festgehängt. Ein Prozess, der irgendwo
+  # wartet, erreicht seine eigene Wache nicht mehr; sie kann sich also grundsätzlich nicht
+  # auf sich selbst verlassen. Zwei Aufseher bedeuten doppelte Wächter-Starts und doppelte
+  # Shopify-Last. Hier wird von AUSSEN aufgeräumt — der älteste bleibt.
+  echo "AUFSEHER: $A Instanzen → $((A-1)) beendet (aelteste bleibt)"
+  ps -eo pid,etimes,args --no-headers \
+    | awk '$3=="bash" && $4 ~ /fixer_keepalive\.sh$/ {print $2, $1}' \
+    | sort -n | head -n -1 | awk '{print $2}' | xargs -r kill 2>/dev/null
 else
   echo "AUFSEHER laeuft"
 fi
