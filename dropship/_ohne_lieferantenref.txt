@@ -264,3 +264,78 @@ gid://shopify/Product/15430179357057	draft-ohne-quelle	Perlen-Ohrhänger «Éven
 gid://shopify/Product/15430179422593	draft-ohne-quelle	Mesh-Armband «Maille» · S925 Silber, federleicht
 gid://shopify/Product/15430179455361	draft-ohne-quelle	Aufblasbare Sonnenliege «Solara» mit Sonnendach
 gid://shopify/Product/15430179520897	draft-ohne-quelle	Camping-Stuhl «Sunshade» · faltbar mit Sonnendach & Getränkehalter
+gid://shopify/Product/15429957517697	draft-getarnte-sku	2026-08-20	cool-cable	Kabel-Organizer «Clean Desk» · Schreibtisch-Halter für Kabel
+gid://shopify/Product/15429957845377	draft-getarnte-sku	2026-08-20	cool-sharp	Elektrischer Messerschärfer «SharpPro» · 3 Stufen, blitzschnell scharf
+gid://shopify/Product/15429958238593	draft-getarnte-sku	2026-08-20	cool-foam	Keramik-Seifenspender «Foam» · edle Schaum-Pumpe fürs Bad
+gid://shopify/Product/15429958304129	draft-getarnte-sku	2026-08-20	cool-rattan	Boho Kerzenhalter «Rattan» · stehendes Windlicht für Garten & Wohnen
+gid://shopify/Product/15429958336897	draft-getarnte-sku	2026-08-20	cool-turtle	Hunde-Schnüffel-Feeder «Turtle» · Anti-Schling Futter-Spielzeug
+gid://shopify/Product/15429958369665	draft-getarnte-sku	2026-08-20	cool-ballrack	Ball-Aufbewahrung «Sportstand» · Regal für Basketball, Fussball & Co.
+gid://shopify/Product/15429955944833	draft-getarnte-sku	2026-08-20	veg-bambshirt-S|veg-bambshirt-M	Herren-Langarmshirt «Bamboo» · Bambus-Viskose, atmungsaktiv (vegan)
+gid://shopify/Product/15429955977601	draft-getarnte-sku	2026-08-20	veg-kork-40|veg-kork-41	Herren Kork-Slipper «Lisbon» · leicht & vegan (Sommer)
+gid://shopify/Product/15429956010369	draft-getarnte-sku	2026-08-20	veg-bambpull-S|veg-bambpull-M	Strick-Pullover «Bamboo» · Rundhals Vintage, Bambusfaser (vegan)
+gid://shopify/Product/15429956075905	draft-getarnte-sku	2026-08-20	veg-bambtee-S|veg-bambtee-M	V-Neck T-Shirt «Bamboo» · Bambus-Baumwolle, weich (vegan)
+gid://shopify/Product/15429956141441	draft-getarnte-sku	2026-08-20	veg-jute-36|veg-jute-37	Damen Jute-Espadrilles «Riviera» · geflochten, vegan
+gid://shopify/Product/15429956206977	draft-getarnte-sku	2026-08-20	veg-lashlift	Vegan Lash-Lift Kit · pflanzlich, Wimpernwelle für zuhause
+gid://shopify/Product/15430230704513	draft-getarnte-sku	2026-08-20	CJ-ANTIGRAV-HUMID	Schwebetropfen-Luftbefeuchter «AquaG» · Anti-Gravity mit RGB-Licht
+gid://shopify/Product/15430690865537	draft-getarnte-sku	2026-08-20	cj-lotus-earrings	Ohrringe «Lotus» · 999 Silber, Emaille (asymmetrisch)
+gid://shopify/Product/15430690898305	draft-getarnte-sku	2026-08-20	cj-ring-provence	Ring «Provence» · Vintage-Stein, verstellbar
+gid://shopify/Product/15430691029377	draft-getarnte-sku	2026-08-20	cj-onda-creolen	Ohrringe «Onda» · unregelmässige Creolen, Gold & Silber
+gid://shopify/Product/15430691062145	draft-getarnte-sku	2026-08-20	cj-papillon-armkette	Armkette «Papillon» · Schmetterling, Roségold & Perlmutt
+gid://shopify/Product/15430691094913	draft-getarnte-sku	2026-08-20	cj-duetto-ring	Ring «Duetto» · zarter Geburtsstein-Ring, Gold
+gid://shopify/Product/15430691160449	draft-getarnte-sku	2026-08-20	cj-nomine-armreif	Armreif «Nominé» · personalisierbarer Namens-Armreif, Gold
+gid://shopify/Product/15430691193217	draft-getarnte-sku	2026-08-20	cj-arcobaleno-ring	Ring «Arcobaleno» · Geburtsstein-Ring mit Farbsteinen, S925
+gid://shopify/Product/15430691225985	draft-getarnte-sku	2026-08-20	cj-eternita-ringset	Ring-Set «Eternità» · stapelbares Tropfen-Ring-Set, Silber
+gid://shopify/Product/15430691586433	draft-getarnte-sku	2026-08-20	cj-souvenir-ring	Ring «Souvenir» · gravierbarer Signet-Ring mit Zirkonia, Gold
+gid://shopify/Product/15430691684737	draft-getarnte-sku	2026-08-20	cj-cap-marais	Schiebermütze «Marais» · Retro Baker-Boy Cap
+gid://shopify/Product/15430691783041	draft-getarnte-sku	2026-08-20	cj-cap-tweed	Schiebermütze «Tweed» · Herringbone Cap
+gid://shopify/Product/15430692110721	draft-getarnte-sku	2026-08-20	cj-schal-lyon	Seidenschal «Lyon» · Eleganter Halstuch-Schal
+gid://shopify/Product/15430692143489	draft-getarnte-sku	2026-08-20	cj-cap-brest	Docker-Mütze «Brest» · Washed Denim Cap
+gid://shopify/Product/15430692176257	draft-getarnte-sku	2026-08-20	cj-beret-etoile	Pailletten-Baskenmütze «Étoile» · Glitzer-Beret
+gid://shopify/Product/15430692209025	draft-getarnte-sku	2026-08-20	cj-cap-savane	Leoparden-Mütze «Savane» · Baker-Boy Cap mit Nieten
+gid://shopify/Product/15430692241793	draft-getarnte-sku	2026-08-20	cj-schal-soiree	Chiffon-Stola «Soirée» · Eleganter Abend-Schal
+gid://shopify/Product/15430692274561	draft-getarnte-sku	2026-08-20	cj-hut-montana	Filzhut «Montana» · Breitkrempiger Wollfilz-Fedora
+gid://shopify/Product/15430692307329	draft-getarnte-sku	2026-08-20	cj-3droller	3D Lifting Gesichtsroller · Gold
+gid://shopify/Product/15430692340097	draft-getarnte-sku	2026-08-20	cj-yroller	Y-Roller 3D Gesichtsmassage
+gid://shopify/Product/15430692372865	draft-getarnte-sku	2026-08-20	cj-warmcool	Gesichts-Beauty-Gerät · Warm & Kalt
+gid://shopify/Product/15430692405633	draft-getarnte-sku	2026-08-20	cj-cosmebag	Kosmetik-Tasche Set · Reise
+gid://shopify/Product/15430692438401	draft-getarnte-sku	2026-08-20	cj-rfled	RF & LED Beauty-Instrument
+gid://shopify/Product/15430694404481	draft-getarnte-sku	2026-08-20	cj-scrunch-charlotte	Haargummi-Set «Charlotte» · Karo-Scrunchies mit Spitzenschleife
+gid://shopify/Product/15430694437249	draft-getarnte-sku	2026-08-20	cj-scrunch-nuvola	Plüsch-Haargummi «Nuvola» · Flauschiges Scrunchie-Set
+gid://shopify/Product/15430694470017	draft-getarnte-sku	2026-08-20	cj-sun-riviera	Sonnenbrille «Riviera» · Oversize Square mit Gold-Detail
+gid://shopify/Product/15430694502785	draft-getarnte-sku	2026-08-20	cj-bag-capri	Stroh-Shopper «Capri» · Geflochtene Schultertasche
+gid://shopify/Product/15430694797697	draft-getarnte-sku	2026-08-20	cj-bag-lido	Crossbody-Tasche «Lido» · Gewebte Colorblock Bag
+gid://shopify/Product/15430695190913	draft-getarnte-sku	2026-08-20	cj-hair-mocha	Haarklammern-Set «Mocha» · Matte Mini-Clips
+gid://shopify/Product/15430695223681	draft-getarnte-sku	2026-08-20	cj-bag-perla	Mini-Handtasche «Perla» · Perlen-Rivet Bag
+gid://shopify/Product/15430695256449	draft-getarnte-sku	2026-08-20	cj-bag-onda	Handtasche «Onda» · Top-Handle mit Wellen-Struktur
+gid://shopify/Product/15430856376705	draft-getarnte-sku	2026-08-20	cj-riva	Strick-Clutch «Riva» – Streifen, weicher Griff
+gid://shopify/Product/15430856442241	draft-getarnte-sku	2026-08-20	cj-fiore	Leder-Portemonnaie «Fiore» – geprägte Blüten, Zip
+gid://shopify/Product/15430856573313	draft-getarnte-sku	2026-08-20	cj-farfalla	Abendtasche «Farfalla» – Schmetterling, Strass
+gid://shopify/Product/15430856606081	draft-getarnte-sku	2026-08-20	cj-carmen	Mini-Rucksack «Carmen» – Karo-Design, rot
+gid://shopify/Product/15430856638849	draft-getarnte-sku	2026-08-20	cj-bella	Taschen-Set «Bella» 4-teilig – PU-Leder, blau
+gid://shopify/Product/15430856737153	draft-getarnte-sku	2026-08-20	cj-treccia	Hobo-Tasche «Treccia» – geflochtener Henkel, Karo
+gid://shopify/Product/15430857097601	draft-getarnte-sku	2026-08-20	cj-nuvola	Puffer-Tote «Nuvola» – gesteppt, pink
+gid://shopify/Product/15430857130369	draft-getarnte-sku	2026-08-20	cj-ombra	Schultertasche «Ombra» – weiches Leder, schwarz
+gid://shopify/Product/15430857425281	draft-getarnte-sku	2026-08-20	cj-fiore-warmer	Kerzenwärmer-Lampe «Fiore» · Tulpen-Glasschirm
+gid://shopify/Product/15430857523585	draft-getarnte-sku	2026-08-20	cj-saluna-lantern	Rattan-Windlicht «Saluna» · 3er-Set Laternen
+gid://shopify/Product/15430857621889	draft-getarnte-sku	2026-08-20	cj-fleur-bowl	Keramik-Schale «Fleur» · Vintage Blümchen-Dekor
+gid://shopify/Product/15430857654657	draft-getarnte-sku	2026-08-20	cj-mandarina-burner	Keramik-Räucherofen «Mandarina» · Frucht-Design
+gid://shopify/Product/15430857687425	draft-getarnte-sku	2026-08-20	cj-cristallo-diffuser	Reed-Diffuser «Cristallo» · Duftöl mit Achat-Stein
+gid://shopify/Product/15430857851265	draft-getarnte-sku	2026-08-20	cj-rose-candle	Rosen-Duftkerzen «Rosé» · Deko-Kerzen Set
+gid://shopify/Product/15430857884033	draft-getarnte-sku	2026-08-20	cj-amore-taper	Stabkerzen «Amore» · Herz-Print 4er-Set
+gid://shopify/Product/15431979860353	draft-getarnte-sku	2026-08-20	FENRIR-BLK|FENRIR-GLD	Herren-Halskette «Fenrir» · Edelstahl-Weizenkette (wasserfest)
+gid://shopify/Product/15431997325697	draft-getarnte-sku	2026-08-20	AURELIA-GLD	Statement-Ohrring-Set «Aurelia» · Creolen & Stecker, Gold
+gid://shopify/Product/15431997391233	draft-getarnte-sku	2026-08-20	LAGUNE-GLD	Boho-Halskette «Lagune» · Türkis-Crescent, Gold
+gid://shopify/Product/15432002797953	draft-getarnte-sku	2026-08-20	SAMSARA-7C	Boho-Choker «Samsara» · 7-Chakra Heishi-Perlen, Naturstein
+gid://shopify/Product/15432006992257	draft-getarnte-sku	2026-08-20	OLIVIA-ANK	Boho-Fusskette «Olivia» · Blatt-Anhänger, Gold
+gid://shopify/Product/15435203871105	draft-getarnte-sku	2026-08-20	CJ-PERLA-NECK	Edelstahl-Halskette «Perla» — Barock-Perlen-Anhänger, wasserfest
+gid://shopify/Product/15435203903873	draft-getarnte-sku	2026-08-20	CJ-TRIO-NECK	Halskette «Trio» — Birthstone-Kristalle, silberfarben
+gid://shopify/Product/15413245542785	draft-getarnte-sku	2026-08-20	14:29#Pink 2pcs|14:350850#Green 2pcs	Gua Sha & Gesichtsroller Set (2-tlg) · Kühl-Massage für Gesicht, Hals & Augen
+gid://shopify/Product/15413245608321	draft-getarnte-sku	2026-08-20	14:200006153#3|14:200006151#1	Elektrische Wasserpistole mit LED · Hochdruck, Dauer-Sprühstrahl (Sommer 2026)
+gid://shopify/Product/15413245641089	draft-getarnte-sku	2026-08-20	14:193#1;5:361385|14:193#1;5:100014065	Herren Jogginghose · sportlich-bequem, ganzjährig (Sport & Freizeit)
+gid://shopify/Product/15413245673857	draft-getarnte-sku	2026-08-20	14:193;5:100014064|14:193;5:361386	Herren Stoffhose plissiert · High-Waist, leicht (Frühling/Sommer)
+gid://shopify/Product/15413245706625	draft-getarnte-sku	2026-08-20	14:193;5:4182#2XL|14:691;5:4182#2XL	Herren Cordhose Retro · weites Bein, japanischer Stil (Freizeit)
+gid://shopify/Product/15413245804929	draft-getarnte-sku	2026-08-20	14:29;5:100014065|14:29;5:361385	Herren Hemd · schlicht & elegant, koreanischer Stil (Casual & Business)
+gid://shopify/Product/15413245870465	draft-getarnte-sku	2026-08-20	14:193;5:361386|14:193;5:361385	Herren Outdoor-Jacke · winddicht & atmungsaktiv, vielseitig (Radsport & Freizeit)
+gid://shopify/Product/15413245903233	draft-getarnte-sku	2026-08-20	14:350850#6;5:4183|14:1254#4;5:4183	Herren T-Shirt Retro-Washed · Denim-Look, Baumwolle (Trend 2026)
+gid://shopify/Product/15413245936001	draft-getarnte-sku	2026-08-20	14:691;5:100014065|14:691;5:4182	Herren Jogging-Set 2-tlg · sportlich-lässig, urbaner Streetwear-Look
+gid://shopify/Product/15413245968769	draft-getarnte-sku	2026-08-20	14:691#Light Grey;5:200000899|14:691#Light Grey;5:200000900	Herren Business-Anzughose · elegant, Stretch-Komfort (Frühling–Winter)
