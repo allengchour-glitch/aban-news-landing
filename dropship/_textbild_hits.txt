@@ -7099,3 +7099,8 @@ gid://shopify/Product/15493750423937	63->1	Boho Kissenhülle mit geometrischem T
 gid://shopify/Product/15493750456705	8->0	Herren Jeans Schwarz im Straight Fit
 gid://shopify/Product/15493750489473	82->3	Elektrische Mückenklatsche mit UV-Licht
 gid://shopify/Product/15493750686081	37->2	Loose Fit Jeans für Herren
+gid://shopify/Product/15493777719681	106->0	Loose Fit Straight Jeans im Korean Style
+gid://shopify/Product/15493778407809	19->0	Washed Machete Jeans für Herren
+gid://shopify/Product/15493778768257	102->3	Holzfliege aus schwarzem Nussbaum mit Einstecktuch
+gid://shopify/Product/15493779227009	21->0	V-Ausschnitt Patchwork Midikleid für Herbst/Winter
+gid://shopify/Product/15493795053953	23->1	Thermobox Edelstahl – Mikrowellengeeignet
