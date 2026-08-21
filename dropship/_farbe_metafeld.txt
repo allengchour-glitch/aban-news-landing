@@ -264,3 +264,4 @@ gid://shopify/Product/15508406927745	Transparent
 gid://shopify/Product/15508424032641	Blau
 gid://shopify/Product/15508424327553	Transparent
 gid://shopify/Product/15508424917377	Türkis
+gid://shopify/Product/15508643873153	Khaki

@@ -7976,3 +7976,9 @@ gid://shopify/Product/15495731544449	74->0	Mini-Drohne im Koffer-Design
 gid://shopify/Product/15495732625793	106->0	Geometrischer Jacquard Kissenbezug mit Quasten
 gid://shopify/Product/15495733019009	15->2	RC Helikopter mit Einzelpropeller
 gid://shopify/Product/15495733182849	56->2	Faltbarer Quadcopter mit 2-Achsen-Gimbal
+gid://shopify/Product/15495733412225	92->0	Elegantes Satin-Abendkleid mit V-Ausschnitt
+gid://shopify/Product/15495733707137	9->0	Bestickte Tischdecke und Kissenhülle im Landhausstil
+gid://shopify/Product/15495747436929	11->0	Hundespielzeug-Set
+gid://shopify/Product/15495747993985	70->3	Boho-Kissenbezug mit Füllung
+gid://shopify/Product/15495748223361	14->0	Plüschtier Avocado
+gid://shopify/Product/15495748321665	92->0	Goldenes Plüschkissen mit Quasten
