@@ -868,3 +868,4 @@ gid://shopify/Product/15507779682689	ok	Leder-Reise-Rucksack für 17-Zoll-Laptop
 gid://shopify/Product/15507783844225	nicht-versendbar	8-teiliges Drechselwerkzeug-Set im Holzkasten
 gid://shopify/Product/15508352434561	nicht-versendbar	Manueller Handentsafter aus Gusseisen und Edelstahl
 gid://shopify/Product/15508396736897	ok	Bluetooth Beistelltisch mit Wireless Charging
+gid://shopify/Product/15508417249665	ok	Sportwagen Kleinpartikel Bausteine
