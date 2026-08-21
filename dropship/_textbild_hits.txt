@@ -8976,3 +8976,36 @@ gid://shopify/Product/15499786289537	48->2	Schuh aus Leder mit atmungsaktiver So
 gid://shopify/Product/15499805786497	39->0	Winterkissen
 gid://shopify/Product/15499806605697	10->0	Wassernebel-Sprüher
 gid://shopify/Product/15499806769537	19->0	Laptop-Stromadapter Schwarz
+gid://shopify/Product/15499808375169	35->0	Dunkelblaues Schonbezug für Schreibaufsatz
+gid://shopify/Product/15499808571777	11->0	Aroma Diffuser und Luftbefeuchter
+gid://shopify/Product/15499808702849	25->0	Frosted Herrenschuhe Outdoor Casual Bergsteigen
+gid://shopify/Product/15499808801153	23->0	Weiches Sofa-Überwurf
+gid://shopify/Product/15499809980801	26->0	Ersatzbatterie für Scooter
+gid://shopify/Product/15499810275713	15->2	Holzoptik-Diffusor
+gid://shopify/Product/15499810439553	71->0	Schwelle in Grau
+gid://shopify/Product/15499810800001	53->0	Lithium-Ionen-Laptopbatterie
+gid://shopify/Product/15499810996609	45->0	Low-Top Wanderstiefel
+gid://shopify/Product/15499865588097	63->0	Erste Schritte
+gid://shopify/Product/15499865883009	47->2	Beachbag-Überwurf
+gid://shopify/Product/15499866767745	53->0	Schulterstütze
+gid://shopify/Product/15499868963201	43->0	Drachen-U-Boot-Baukasten
+gid://shopify/Product/15499869127041	20->1	Knüpfervollkörperkissen
+gid://shopify/Product/15499870536065	38->3	Formel 1 Rennwagen Baukasten
+gid://shopify/Product/15499872567681	10->0	Rose-Eiswürfelform
+gid://shopify/Product/15499896717697	63->1	Mehrfachnutziger Fleischwolf
+gid://shopify/Product/15499896816001	60->0	Wild Running Sneaker
+gid://shopify/Product/15499897012609	14->0	Musik-Player
+gid://shopify/Product/15499897504129	11->0	WLAN-Wiederholer
+gid://shopify/Product/15499897635201	47->0	Traditionelle Küchenmesser
+gid://shopify/Product/15499897962881	14->0	UV Desinfektionsbox für Gadgets & Textilien
+gid://shopify/Product/15499898159489	47->1	Tomaten-Schnüffelspielzeug für Hunde
+gid://shopify/Product/15499898421633	34->2	Stahlbesteck-Set
+gid://shopify/Product/15499899568513	26->1	Küchen-Roller
+gid://shopify/Product/15499900158337	35->0	Hautleder Halsband für Hunde
+gid://shopify/Product/15499900617089	11->0	Heller Ohrstäbchen
+gid://shopify/Product/15499900780929	100->1	Reitpeitschenhose
+gid://shopify/Product/15499900944769	15->0	Formaldehyd-Sensor
+gid://shopify/Product/15499901141377	41->0	Hundeleine PVC
+gid://shopify/Product/15499901305217	12->2	Wirelos Kamera
+gid://shopify/Product/15499901567361	12->0	Studenten-Rucksack
+gid://shopify/Product/15499949474177	55->0	Silberne Plus-Size-Langenrock
