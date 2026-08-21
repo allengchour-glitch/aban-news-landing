@@ -8156,3 +8156,5 @@ gid://shopify/Product/15496357937537	38->3	Wanderhalbschuhe für Sie und Ihn
 gid://shopify/Product/15496358166913	26->0	Plüschiges Katzenpfoten-Kissen
 gid://shopify/Product/15496358265217	38->0	HSP Unlimited 1:16 Rally Reifen
 gid://shopify/Product/15496358887809	9->3	Herren Rucksack aus Crazy Horse Leder
+gid://shopify/Product/15496359248257	82->0	Canvas Rucksack mit Totenkopf-Print
+gid://shopify/Product/15496359641473	30->1	Plüsch Kissenbezug für Sofa und Wohnzimmer
