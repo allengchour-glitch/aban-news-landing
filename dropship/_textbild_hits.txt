@@ -7849,3 +7849,32 @@ gid://shopify/Product/15495194509697	9->0	Elegantes Damen Herbst-/Winterkleid
 gid://shopify/Product/15495194542465	57->0	Nordische Strickdecke mit Quasten
 gid://shopify/Product/15495194608001	10->0	Etagere „Minimalist Elegance“
 gid://shopify/Product/15495194837377	13->1	Multifunktionales Baumwoll-Kissen für Kinder
+gid://shopify/Product/15495195033985	32->1	Ärmelloses, hochtailliertes Kleid mit Print
+gid://shopify/Product/15495195132289	34->3	Elastischer Sofaüberzug – Modern & Minimalistisch
+gid://shopify/Product/15495195230593	67->0	Edelstahl-Eiswürfel-Set in Holzbox
+gid://shopify/Product/15495212237185	42->0	Sofaüberwurf mit Tiermuster
+gid://shopify/Product/15495212269953	25->3	Kaffeebohnen-Vorratsdose
+gid://shopify/Product/15495212564865	30->0	Silikon Küchenhelfer-Set, 6-teilig
+gid://shopify/Product/15495212663169	11->3	Midikleid aus koreanischem Samt
+gid://shopify/Product/15495212761473	95->0	Moderner Marokkanischer Geometrischer Teppich
+gid://shopify/Product/15495212859777	36->1	Bambus Schubladen-Organizer für Küchenutensilien
+gid://shopify/Product/15495212990849	42->2	Besticktes Midikleid mit Rundhalsausschnitt
+gid://shopify/Product/15495213023617	171->0	Diamond Painting mit Harz-Diamanten
+gid://shopify/Product/15495213351297	42->0	Tierisches Stickkissen aus Baumwoll-Canvas
+gid://shopify/Product/15495213515137	63->0	Samt-Stickkissen für festliche Akzente
+gid://shopify/Product/15495214367105	41->0	Blumentopf Katzen-Kratzbaum mit Sisal
+gid://shopify/Product/15495214432641	18->0	Katzenjagdversteck
+gid://shopify/Product/15495214498177	24->2	3-in-1 Magnetisches Wireless Ladegerät mit LED
+gid://shopify/Product/15495214858625	33->0	USB-Ladegerät für Digitalkamera-Akkus
+gid://shopify/Product/15495215055233	25->1	Kleiner Kratzbaum mit Sisal und Holzkugeln
+gid://shopify/Product/15495215088001	25->1	Futterball Labyrinth mit Soundeffekt
+gid://shopify/Product/15495215120769	28->0	Eleganter Off-Shoulder Hemd für Herren
+gid://shopify/Product/15495215448449	80->1	Multifunktionale kabellose Ladestation
+gid://shopify/Product/15495215841665	8->1	Katzen-Kratzbrett aus Wellpappe
+gid://shopify/Product/15495215972737	46->0	Mecha Powerbank 10000mAh
+gid://shopify/Product/15495217217921	22->0	Herren Freizeitjacke mit Kapuze
+gid://shopify/Product/15495223312769	17->1	N1 Wireless Controller für Xbox One
+gid://shopify/Product/15495223411073	13->0	USB-Fahrradlicht-Set mit 350 Lumen
+gid://shopify/Product/15495223476609	129->0	Rückenfreies Halterneck-Kleid mit asymmetrischem Saum
+gid://shopify/Product/15495224820097	33->0	Switch Grip Handle
+gid://shopify/Product/15495224983937	10->0	Elegantes A-Linien Kleid mit weiter Saum
