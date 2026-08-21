@@ -933,6 +933,13 @@ in Sekunden auf, und es kostet keine CJ-Punkte.
   SILVER» quer über dem Produktfoto.
 - **Repariert ohne neues Bildmaterial:** Fast jedes CJ-Produkt hat 3–8 Bilder, darunter meist
   ein sauberes → `productReorderMedia` holt es nach vorn.
+- ⚠️ **NIE blind «Bild [1] nach vorn» — erst den GANZEN Bildsatz ansehen.** Genau das habe ich
+  am 21.08. bei drei Aufbewahrungs-Sets getan und es damit VERSCHLIMMERT: aus «3PCS» wurde
+  «Two opening methods», aus «6pcs» wurde «ULTIMATE ORGANIZATION TOOL». Bei diesen Produkten
+  trägt JEDES der acht Bilder Text; eines davon war bereits das beste. Der zweite Anlauf mit
+  dem vollständigen Bogen fand für jedes das produktzeigendste Bild — bei einem war das
+  Original die richtige Wahl. Ein Kontaktbogen kostet zwei Minuten, ein blinder Griff macht
+  die Produktseite schlechter.
 - ⚠️ **Ein Markenlogo ist kein Fehler.** «Julystar PROFESSIONAL MAKE-UP» auf einem Rouge-Stick
   steht auf der Verpackung des Produkts selbst. Die Trennlinie: Text AUF DER WARE gehört dazu,
   ins Bild MONTIERTER Text (Schriftzüge, Preisbadges, Pfeile, Panels) gehört weg.
