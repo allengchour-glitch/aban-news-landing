@@ -8009,3 +8009,6 @@ gid://shopify/Product/15496129741185	146->0	Hakenleiste für Schranktüren und W
 gid://shopify/Product/15496129905025	25->0	Minimalistische Derby Schuhe
 gid://shopify/Product/15496130003329	53->0	Laufschuhe mit weichem Boden
 gid://shopify/Product/15496130101633	24->0	Universal Kaffeepress-Basis aus Buchenholz
+gid://shopify/Product/15496130363777	8->3	Flügel-Halsband für Haustiere mit Glöckchen
+gid://shopify/Product/15496130396545	24->0	Kochmesser Edelstahl, gehämmert
+gid://shopify/Product/15496130494849	41->0	Carbon-Racing-Sneaker für Jungen
