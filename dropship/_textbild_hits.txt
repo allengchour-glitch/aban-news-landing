@@ -7352,3 +7352,5 @@ gid://shopify/Product/15493870748033	25->0	Smarter Zählring mit OLED-Display
 gid://shopify/Product/15493870813569	9->1	Grosse Umhängetasche im koreanischen Stil
 gid://shopify/Product/15493871174017	19->0	Massage-Kamm mit Lichttherapie & Vibration
 gid://shopify/Product/15493871239553	55->0	2-in-1 Bluetooth Smartwatch mit Herzfrequenz
+gid://shopify/Product/15493871370625	102->0	Smartwatch & Herzfrequenz
+gid://shopify/Product/15493871403393	63->0	Retro Haarschneidemaschine – Präzision für Ölfrisuren
