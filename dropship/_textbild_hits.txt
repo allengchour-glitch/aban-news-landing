@@ -9059,3 +9059,14 @@ gid://shopify/Product/15500072452481	47->0	Stahlkaffee-Filter
 gid://shopify/Product/15500072583553	110->0	Lockerer Strickpullover mit Rissen
 gid://shopify/Product/15500072812929	25->0	Keramik-Teetasse mit Katze
 gid://shopify/Product/15500074910081	44->0	Weisses Schutzgeflecht
+gid://shopify/Product/15500075008385	8->0	Sonnenblumen-Muster
+gid://shopify/Product/15500075762049	11->2	Schwarze Feuerzange
+gid://shopify/Product/15500075860353	18->0	Nagelstift mit Butterfly-Muster
+gid://shopify/Product/15500102926721	19->0	Kupferdraht-Rollen-Handfach
+gid://shopify/Product/15500103876993	33->0	Schnürkurs-Kit
+gid://shopify/Product/15500104696193	30->0	Rad-Sicherheitslampe
+gid://shopify/Product/15500104794497	85->0	Chinesische Schmetterlings-Maniküre
+gid://shopify/Product/15500107055489	80->0	Bambus-Schnürsenkelschleuder
+gid://shopify/Product/15500107252097	32->0	Eckpinsel für präzise Kanten
+gid://shopify/Product/15500107350401	20->0	Geometrische Formen Lernspielzeug
+gid://shopify/Product/15500107940225	28->0	Stehhilfe für Senioren
