@@ -7048,3 +7048,8 @@ gid://shopify/Product/15493498929537	63->2	Verstellbarer Retro-Ring mit Achat-Kr
 gid://shopify/Product/15493499158913	82->3	Bunte Pentagramm-Glitzer-Pailletten für Nägel
 gid://shopify/Product/15493499945345	25->0	Kabelloses Qi-Ladegerät, vertikal
 gid://shopify/Product/15493499978113	115->0	MOY Retro Bad-Girl Halskette
+gid://shopify/Product/15493500273025	46->0	Ovale Titan-Stahl Halskette
+gid://shopify/Product/15493500305793	45->0	Magnetisches 15W Wireless Ladegerät für iPhone
+gid://shopify/Product/15493575180673	43->2	3-in-1 Blumenkrone Ring
+gid://shopify/Product/15493575213441	8->0	Grosser Rucksack
+gid://shopify/Product/15493575541121	18->0	Kabelloses Ladegerät für Mobiltelefone

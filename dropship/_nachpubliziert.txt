@@ -213,3 +213,5 @@ gid://shopify/Product/15506894356865	memory-foam-herz-bein-kissen-124480	Memory 
 gid://shopify/Product/15508310557057	polohemd-mit-paisley-muster-und-farbkontrast-619600	Polohemd mit Paisley-Muster und Farbkontrast
 gid://shopify/Product/15508310819201	fire-maple-mobile-kitchen-bratpfanne-522624	Fire Maple Mobile Kitchen Bratpfanne
 gid://shopify/Product/15508365836673	led-gesichtsmaske-mit-7-farben-2b0bf3	LED-Gesichtsmaske mit 7 Farben
+gid://shopify/Product/15508402831745	plusch-kissen-karotte-halb-umrundend-881664	Plüsch-Kissen "Karotte" halb umrundend
+gid://shopify/Product/15508407091585	wasserdichte-gt2pro-smartwatch-403456	Wasserdichte GT2PRO Smartwatch
