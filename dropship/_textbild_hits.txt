@@ -8544,3 +8544,6 @@ gid://shopify/Product/15497420702081	66->0	Mehrreihiges Minimalist-Armband-Set
 gid://shopify/Product/15497421291905	36->1	Verstellbarer U-förmiger Ring in Gold
 gid://shopify/Product/15497421554049	96->1	Asymmetrischer Midi-Strickrock
 gid://shopify/Product/15497422242177	22->0	Gepolsterter Kissenbezug aus Baumwollleinen
+gid://shopify/Product/15497425387905	15->0	Automatischer Ballwerfer für Hunde
+gid://shopify/Product/15497425617281	10->0	Schienbein- und Waden-Trainer
+gid://shopify/Product/15497425650049	39->0	Lustige Katzenbox Fünfstern
