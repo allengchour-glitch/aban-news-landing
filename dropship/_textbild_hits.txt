@@ -7014,3 +7014,5 @@ gid://shopify/Product/15483934671233	19->0	Elegante Damen-Oberteile
 gid://shopify/Product/15483934966145	27->0	Aroma Diffuser
 gid://shopify/Product/15483934998913	53->0	Kuh-Kostüm
 gid://shopify/Product/15483935621505	25->0	Hitzebeständige Pfannenunterlage
+gid://shopify/Product/15484697969025	116->1	Ultrafeine Reinigungstücher
+gid://shopify/Product/15484711108993	31->1	USB Stick Ice Cream (32GB / 64GB)

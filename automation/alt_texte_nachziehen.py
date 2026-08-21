@@ -33,6 +33,12 @@ SEIT   = os.environ.get('SEIT') or (_dt.date.today() - _dt.timedelta(days=4)).is
 LIMIT  = int(os.environ.get('LIMIT', '99999'))
 DRY    = os.environ.get('DRY') == '1'
 STATUS = os.environ.get('STATUS', 'active')
+# REVERSE=1 arbeitet dasselbe Fenster von der NEUESTEN Seite her ab. Zwei Läufe (vorwärts +
+# rückwärts) treffen sich in der Mitte und halbieren die Laufzeit. Das ist gefahrlos, weil
+# der Lauf nur LEERE Alt-Texte füllt: trifft der zweite Lauf ein schon repariertes Produkt,
+# findet er nichts mehr zu tun. Doppelt gelesen wird, doppelt geschrieben nie.
+REVERSE = os.environ.get('REVERSE') == '1'
+LEDGER_SUFFIX = os.environ.get('LEDGER_SUFFIX', '')
 LEDGER = 'dropship/_alt_texte_fenster.txt'
 
 def token():
@@ -68,10 +74,11 @@ def gql(q, v=None, tries=5):
         time.sleep(3 + 2*a)
     return None
 
-Q = '''query($c:String,$q:String){ products(first:40, after:$c, query:$q, sortKey:CREATED_AT){
+Q = '''query($c:String,$q:String){ products(first:40, after:$c, query:$q, sortKey:CREATED_AT, reverse:REV){
   pageInfo{ hasNextPage endCursor }
   nodes{ id title featuredMedia{ id }
          media(first:25){ nodes{ ... on MediaImage { id alt } } } } } }'''
+Q = Q.replace('reverse:REV', 'reverse:true' if REVERSE else 'reverse:false')
 MUT = 'mutation($files:[FileUpdateInput!]!){ fileUpdate(files:$files){ files{ id } userErrors{ field message } } }'
 
 done = set()
@@ -108,7 +115,7 @@ def flush():
     buf.clear(); time.sleep(0.15)
 
 query = f'status:{STATUS} created_at:>={SEIT}'
-print(f'Fenster: {query} · DRY={DRY} · Ledger {LEDGER} ({len(done)} erledigt)', flush=True)
+print(f'Fenster: {query} · {"RUECKWAERTS" if REVERSE else "vorwaerts"} · DRY={DRY} · Ledger {LEDGER} ({len(done)} erledigt)', flush=True)
 
 while prods < LIMIT:
     d = gql(Q, {'c': cursor, 'q': query})
