@@ -8812,3 +8812,7 @@ gid://shopify/Product/15497590538625	31->0	USB Lade Wecker mit LED Anzeige
 gid://shopify/Product/15497590669697	33->0	Handlicher Vernebler für unterwegs
 gid://shopify/Product/15497590768001	12->0	Kabellose HD-Überwachungskamera
 gid://shopify/Product/15497590997377	27->0	Mini-Ventilator mit Treibsand-Katze
+gid://shopify/Product/15497591357825	70->0	Old Time Keramik-Becher – handbemalt, 410 ml
+gid://shopify/Product/15497608790401	22->2	Purple Phantom Zircon Strass-Nagelsticker
+gid://shopify/Product/15497612231041	77->0	Herren Kapuzen-Cardigan aus Baumwoll-Mix
+gid://shopify/Product/15497641722241	17->2	Leder-Schmuckkasten
