@@ -32847,3 +32847,234 @@ gid://shopify/Product/15427152970113	direkt	1	Schweiz-Poster «Chalet» · Winte
 gid://shopify/Product/15427166568833	direkt	1	Schweiz-Poster «Edelweiss & Enzian» · Art-Nouveau-Druck
 gid://shopify/Product/15427167355265	direkt	1	Schweiz-Poster «Alpenkuh» · Kunstdruck mit Blumenkranz
 gid://shopify/Product/15427167945089	direkt	1	Schweiz-Poster «Alpsee» · See-Spiegelung-Kunstdruck
+gid://shopify/Product/15427229974913	pod	1	Schweiz-Sticker «Edelwyss»
+gid://shopify/Product/15427217326465	pod	1	Schweiz-Magnet «Schweizer Herz»
+gid://shopify/Product/15427230040449	pod	1	Schweiz-Sticker «Schwiizer Härz»
+gid://shopify/Product/15427217392001	pod	1	Schweiz-Magnet «Fondue»
+gid://shopify/Product/15427217293697	pod	1	Schweiz-Magnet «Merci vilmal»
+gid://shopify/Product/15427229942145	pod	1	Schweiz-Sticker «Matterhorn»
+gid://shopify/Product/15427217359233	pod	1	Schweiz-Magnet «Kuhglocke»
+gid://shopify/Product/15427230007681	pod	1	Schweiz-Sticker «Schwiizerchrüz»
+gid://shopify/Product/15427230073217	pod	1	Schweiz-Sticker «Fondue»
+gid://shopify/Product/15427230105985	pod	1	Schweiz-Sticker «Raclette»
+gid://shopify/Product/15427230138753	pod	1	Schweiz-Sticker «Alphorn»
+gid://shopify/Product/15427230171521	pod	1	Schweiz-Sticker «Grüezi mitenand»
+gid://shopify/Product/15427230237057	pod	1	Schweiz-Sticker «Hoi zäme»
+gid://shopify/Product/15427230269825	pod	1	Schweiz-Sticker «Steinbock»
+gid://shopify/Product/15427230204289	pod	1	Schweiz-Sticker «Merci vilmal»
+gid://shopify/Product/15427230302593	pod	1	Schweiz-Sticker «Murmeli»
+gid://shopify/Product/15427230368129	pod	1	Schweiz-Poster «Matterhorn»
+gid://shopify/Product/15427230400897	pod	1	Schweiz-Poster «Alpen-Panorama»
+gid://shopify/Product/15427230433665	pod	1	Schweiz-Poster «Chalet»
+gid://shopify/Product/15427230466433	pod	1	Schweiz-Poster «Schweizer Kuh»
+gid://shopify/Product/15427230531969	pod	1	Schweiz-Poster «Edelweiss-Muster»
+gid://shopify/Product/15427230597505	pod	1	Schweiz-Poster «Gondelbahn»
+gid://shopify/Product/15427230630273	pod	1	Schweiz-Poster «Grüezi»
+gid://shopify/Product/15427230663041	pod	1	Schweiz-Poster «Bergsee»
+gid://shopify/Product/15427235938689	pod	1	Sticker «Alpaca»
+gid://shopify/Product/15427235971457	pod	1	Sticker «Anime Cat Wink»
+gid://shopify/Product/15427236036993	pod	1	Sticker «Anime Eyes»
+gid://shopify/Product/15427236069761	pod	1	Sticker «Art Cow Save»
+gid://shopify/Product/15427236102529	pod	1	Sticker «Art Mountains»
+gid://shopify/Product/15427236168065	pod	1	Sticker «Axolotl»
+gid://shopify/Product/15427236135297	pod	1	Sticker «Art Veggies»
+gid://shopify/Product/15427236200833	pod	1	Sticker «Camera»
+gid://shopify/Product/15427236266369	pod	1	Sticker «Explorer»
+gid://shopify/Product/15427236233601	pod	1	Sticker «Coffee»
+gid://shopify/Product/15427230499201	pod	1	Schweiz-Poster «Edelweiss»
+gid://shopify/Product/15427230564737	pod	1	Schweiz-Poster «Fondue»
+gid://shopify/Product/15427236299137	pod	1	Sticker «Festival»
+gid://shopify/Product/15427236331905	pod	1	Sticker «Music»
+gid://shopify/Product/15427236364673	pod	1	Sticker «Skate»
+gid://shopify/Product/15427236495745	pod	1	Sticker «Surf»
+gid://shopify/Product/15427236626817	pod	1	Sticker «Baseball»
+gid://shopify/Product/15427236659585	pod	1	Sticker «Basketball»
+gid://shopify/Product/15427235905921	pod	1	Sticker «Alien Green»
+gid://shopify/Product/15427236594049	pod	1	Sticker «Bagel»
+gid://shopify/Product/15427236725121	pod	1	Sticker «Bicycle»
+gid://shopify/Product/15427236692353	pod	1	Sticker «Bat»
+gid://shopify/Product/15427236757889	pod	1	Sticker «Book Stack»
+gid://shopify/Product/15427236823425	pod	1	Sticker «Boombox»
+gid://shopify/Product/15427236888961	pod	1	Sticker «Boxing Glove»
+gid://shopify/Product/15427237020033	pod	1	Sticker «Capybara»
+gid://shopify/Product/15427236921729	pod	1	Sticker «Burger»
+gid://shopify/Product/15427236987265	pod	1	Sticker «Cactus Sunset»
+gid://shopify/Product/15427237052801	pod	1	Sticker «Cassette Tape»
+gid://shopify/Product/15427237216641	pod	1	Sticker «Cat Astronaut»
+gid://shopify/Product/15427237314945	pod	1	Sticker «Ch 1 August»
+gid://shopify/Product/15427237347713	pod	1	Sticker «Ch Alpaufzug»
+gid://shopify/Product/15427237380481	pod	1	Sticker «Ch Apero Time»
+gid://shopify/Product/15427237446017	pod	1	Sticker «Ch Baern»
+gid://shopify/Product/15427237478785	pod	1	Sticker «Ch Basel»
+gid://shopify/Product/15427237413249	pod	1	Sticker «Ch Baehnli»
+gid://shopify/Product/15427237511553	pod	1	Sticker «Ch Bernese Dog»
+gid://shopify/Product/15427237609857	pod	1	Sticker «Ch Braunvieh»
+gid://shopify/Product/15427237544321	pod	1	Sticker «Ch Bernhardiner»
+gid://shopify/Product/15427237642625	pod	1	Sticker «Ch Buenzli»
+gid://shopify/Product/15427237740929	pod	1	Sticker «Ch Chuchichaeschtli»
+gid://shopify/Product/15427237708161	pod	1	Sticker «Ch Chalet»
+gid://shopify/Product/15427237937537	pod	1	Sticker «Ch Eidgenoss»
+gid://shopify/Product/15427237675393	pod	1	Sticker «Ch Cervelat»
+gid://shopify/Product/15427237970305	pod	1	Sticker «Ch Enzian»
+gid://shopify/Product/15427238003073	pod	1	Sticker «Ch Es Git Nu Eis Zueri»
+gid://shopify/Product/15427238035841	pod	1	Sticker «Ch Fasnacht Mask»
+gid://shopify/Product/15427238068609	pod	1	Sticker «Ch Feierabig»
+gid://shopify/Product/15427238101377	pod	1	Sticker «Ch Fondue Caquelon»
+gid://shopify/Product/15427238134145	pod	1	Sticker «Ch Gaell»
+gid://shopify/Product/15427238166913	pod	1	Sticker «Ch Gopfertami»
+gid://shopify/Product/15427238232449	pod	1	Sticker «Ch Haerzlech»
+gid://shopify/Product/15427238199681	pod	1	Sticker «Ch Haeee»
+gid://shopify/Product/15427238297985	pod	1	Sticker «Ch Matterhorn»
+gid://shopify/Product/15427238265217	pod	1	Sticker «Ch Heidi»
+gid://shopify/Product/15427238363521	pod	1	Sticker «Ch Postauto Horn»
+gid://shopify/Product/15427238396289	pod	1	Sticker «Ch Prosit»
+gid://shopify/Product/15427238429057	pod	1	Sticker «Ch Sali Zaeme»
+gid://shopify/Product/15427238461825	pod	1	Sticker «Ch Schoggi Bar»
+gid://shopify/Product/15427238494593	direkt	1	Sticker «Ch Swiss Army Knife»
+gid://shopify/Product/15427238625665	pod	1	Sticker «Chameleon»
+gid://shopify/Product/15427238527361	pod	1	Sticker «Ch Znueni»
+gid://shopify/Product/15427238658433	pod	1	Sticker «Checker Heart»
+gid://shopify/Product/15427238691201	pod	1	Sticker «Cheese»
+gid://shopify/Product/15427238756737	pod	1	Sticker «Chick»
+gid://shopify/Product/15427238723969	pod	1	Sticker «Cherry Pie»
+gid://shopify/Product/15427238855041	pod	1	Sticker «Cocktail»
+gid://shopify/Product/15427238822273	pod	1	Sticker «Christmas Tree»
+gid://shopify/Product/15427238920577	pod	1	Sticker «Coconut»
+gid://shopify/Product/15427238953345	pod	1	Sticker «Comet»
+gid://shopify/Product/15427238986113	pod	1	Sticker «Constellation»
+gid://shopify/Product/15427239117185	pod	1	Sticker «Cookie»
+gid://shopify/Product/15427239149953	pod	1	Sticker «Croc»
+gid://shopify/Product/15427239182721	pod	1	Sticker «Croissant»
+gid://shopify/Product/15427239248257	pod	1	Sticker «Deer»
+gid://shopify/Product/15427239215489	pod	1	Sticker «Cupcake2»
+gid://shopify/Product/15427239281025	pod	1	Sticker «Dice D20»
+gid://shopify/Product/15427239379329	pod	1	Sticker «Duck»
+gid://shopify/Product/15427239412097	pod	1	Sticker «Dumbbell»
+gid://shopify/Product/15427239346561	pod	1	Sticker «Dolphin»
+gid://shopify/Product/15427239444865	pod	1	Sticker «Electric Guitar»
+gid://shopify/Product/15427239477633	pod	1	Sticker «Elephant»
+gid://shopify/Product/15427239543169	pod	1	Sticker «Flamingo»
+gid://shopify/Product/15427239575937	pod	1	Sticker «Floral»
+gid://shopify/Product/15427239510401	pod	1	Sticker «Flame»
+gid://shopify/Product/15427239641473	pod	1	Sticker «Flower Cherry Blossom»
+gid://shopify/Product/15427239674241	pod	1	Sticker «Flower Daffodil»
+gid://shopify/Product/15427239707009	pod	1	Sticker «Flower Dandelion»
+gid://shopify/Product/15427239739777	pod	1	Sticker «Flower Hibiscus»
+gid://shopify/Product/15427239772545	pod	1	Sticker «Flower Lavender»
+gid://shopify/Product/15427239870849	pod	1	Sticker «Flower Peony»
+gid://shopify/Product/15427239805313	pod	1	Sticker «Flower Lily»
+gid://shopify/Product/15427239936385	pod	1	Sticker «Flower Tulip»
+gid://shopify/Product/15427239969153	pod	1	Sticker «Fries»
+gid://shopify/Product/15427240001921	pod	1	Sticker «Frog2»
+gid://shopify/Product/15427240067457	pod	1	Sticker «Game Controller»
+gid://shopify/Product/15427240034689	pod	1	Sticker «Galaxy Heart»
+gid://shopify/Product/15427240132993	pod	1	Sticker «Gecko»
+gid://shopify/Product/15427240100225	pod	1	Sticker «Gamer Headset»
+gid://shopify/Product/15427240165761	pod	1	Sticker «Ghost»
+gid://shopify/Product/15427240198529	pod	1	Sticker «Gift Box»
+gid://shopify/Product/15427240231297	pod	1	Sticker «Giraffe»
+gid://shopify/Product/15427240264065	pod	1	Sticker «Goat»
+gid://shopify/Product/15427240329601	pod	1	Sticker «Grapes»
+gid://shopify/Product/15427240296833	pod	1	Sticker «Golf»
+gid://shopify/Product/15427240362369	pod	1	Sticker «Hamster»
+gid://shopify/Product/15427239838081	pod	1	Sticker «Flower Orchid»
+gid://shopify/Product/15427240395137	pod	1	Sticker «Headphones»
+gid://shopify/Product/15427239903617	pod	1	Sticker «Flower Poppy»
+gid://shopify/Product/15427240427905	pod	1	Sticker «Hedgehog»
+gid://shopify/Product/15427240493441	pod	1	Sticker «Hippo»
+gid://shopify/Product/15427240526209	pod	1	Sticker «Horse»
+gid://shopify/Product/15427240558977	pod	1	Sticker «Hotdog»
+gid://shopify/Product/15427240624513	pod	1	Sticker «Hummingbird»
+gid://shopify/Product/15427240657281	pod	1	Sticker «Ice Hockey»
+gid://shopify/Product/15427240722817	pod	1	Sticker «Kangaroo»
+gid://shopify/Product/15427240690049	pod	1	Sticker «Jellyfish»
+gid://shopify/Product/15427240755585	pod	1	Sticker «Kawaii Cloud»
+gid://shopify/Product/15427240788353	pod	1	Sticker «Kiwi»
+gid://shopify/Product/15427240821121	pod	1	Sticker «Koala»
+gid://shopify/Product/15427240853889	pod	1	Sticker «Ladybug2»
+gid://shopify/Product/15427240886657	pod	1	Sticker «Lightning»
+gid://shopify/Product/15427240919425	pod	1	Sticker «Lion»
+gid://shopify/Product/15427240952193	pod	1	Sticker «Llama»
+gid://shopify/Product/15427240984961	pod	1	Sticker «Wave»
+gid://shopify/Product/15427241017729	pod	1	Sticker «Lollipop»
+gid://shopify/Product/15427241083265	pod	1	Sticker «Macaron»
+gid://shopify/Product/15427241050497	pod	1	Sticker «Lotus Zen»
+gid://shopify/Product/15427241116033	pod	1	Sticker «Magical Wand»
+gid://shopify/Product/15427241148801	pod	1	Sticker «Matcha»
+gid://shopify/Product/15427241181569	pod	1	Sticker «Microphone»
+gid://shopify/Product/15427241214337	pod	1	Sticker «Milky Way»
+gid://shopify/Product/15427241247105	pod	1	Sticker «Monkey»
+gid://shopify/Product/15427241279873	pod	1	Sticker «Moon»
+gid://shopify/Product/15427241312641	pod	1	Sticker «Moon Phases»
+gid://shopify/Product/15427241345409	pod	1	Sticker «Mouse»
+gid://shopify/Product/15427241378177	pod	1	Sticker «Narwhal»
+gid://shopify/Product/15427241443713	pod	1	Sticker «Nebula Swirl»
+gid://shopify/Product/15427241476481	pod	1	Sticker «Ocean Wave»
+gid://shopify/Product/15427241574785	pod	1	Sticker «Otter»
+gid://shopify/Product/15427241607553	pod	1	Sticker «Owl»
+gid://shopify/Product/15427241542017	pod	1	Sticker «Octopus»
+gid://shopify/Product/15427241640321	pod	1	Sticker «Paint Palette»
+gid://shopify/Product/15427241705857	pod	1	Sticker «Pancakes»
+gid://shopify/Product/15427241673089	pod	1	Sticker «Palm Island»
+gid://shopify/Product/15427241738625	pod	1	Sticker «Parrot»
+gid://shopify/Product/15427241771393	pod	1	Sticker «Pastel Mushroom»
+gid://shopify/Product/15427241804161	pod	1	Sticker «Peace Groovy»
+gid://shopify/Product/15427241869697	pod	1	Sticker «Peacock»
+gid://shopify/Product/15427241836929	pod	1	Sticker «Peach»
+gid://shopify/Product/15427241902465	pod	1	Sticker «Pig»
+gid://shopify/Product/15427241935233	pod	1	Sticker «Pine Forest»
+gid://shopify/Product/15427242000769	pod	1	Sticker «Ping Pong»
+gid://shopify/Product/15427242033537	pod	1	Sticker «Pixel Heart»
+gid://shopify/Product/15427242066305	direkt	1	Sticker «Pixel Mushroom»
+gid://shopify/Product/15427242197377	pod	1	Sticker «Plant Pot»
+gid://shopify/Product/15427242164609	pod	1	Sticker «Planet Mars»
+gid://shopify/Product/15427242230145	pod	1	Sticker «Popcorn»
+gid://shopify/Product/15427242262913	pod	1	Sticker «Pretzel»
+gid://shopify/Product/15427242099073	pod	1	Sticker «Planet Earth»
+gid://shopify/Product/15427242295681	pod	1	Sticker «Pumpkin»
+gid://shopify/Product/15427242361217	pod	1	Sticker «Rabbit2»
+gid://shopify/Product/15427242426753	pod	1	Sticker «Rainbow Cloud»
+gid://shopify/Product/15427242393985	pod	1	Sticker «Raccoon»
+gid://shopify/Product/15427242459521	pod	1	Sticker «Ramen Bowl»
+gid://shopify/Product/15427242492289	pod	1	Sticker «Red Panda»
+gid://shopify/Product/15427242525057	pod	1	Sticker «Retro Arcade»
+gid://shopify/Product/15427242557825	pod	1	Sticker «Retro Sunset»
+gid://shopify/Product/15427242590593	pod	1	Sticker «Rocket»
+gid://shopify/Product/15427242623361	pod	1	Sticker «Rocket2»
+gid://shopify/Product/15427242688897	pod	1	Sticker «Santa»
+gid://shopify/Product/15427242656129	pod	1	Sticker «Running Shoe»
+gid://shopify/Product/15427242721665	pod	1	Sticker «Satellite»
+gid://shopify/Product/15427242754433	pod	1	Sticker «Saturn»
+gid://shopify/Product/15427242819969	pod	1	Sticker «Seashell»
+gid://shopify/Product/15427242852737	pod	1	Sticker «Shark»
+gid://shopify/Product/15427242885505	pod	1	Sticker «Sheep»
+gid://shopify/Product/15427242918273	pod	1	Sticker «Shooting Star»
+gid://shopify/Product/15427242787201	pod	1	Sticker «Seal»
+gid://shopify/Product/15427242951041	pod	1	Sticker «Skateboard»
+gid://shopify/Product/15427242983809	pod	1	Sticker «Ski»
+gid://shopify/Product/15427243049345	pod	1	Sticker «Smiley Melt»
+gid://shopify/Product/15427243016577	pod	1	Sticker «Sloth»
+gid://shopify/Product/15427243114881	pod	1	Sticker «Smoothie»
+gid://shopify/Product/15427243082113	pod	1	Sticker «Smiley Star»
+gid://shopify/Product/15427243213185	pod	1	Sticker «Snowman»
+gid://shopify/Product/15427243278721	pod	1	Sticker «Sparkle Cluster»
+gid://shopify/Product/15427243147649	pod	1	Sticker «Snail»
+gid://shopify/Product/15427243377025	pod	1	Sticker «Squirrel»
+gid://shopify/Product/15427243311489	pod	1	Sticker «Spray Can»
+gid://shopify/Product/15427243409793	pod	1	Sticker «Star Burst»
+gid://shopify/Product/15427243442561	pod	1	Sticker «Star Cluster»
+gid://shopify/Product/15427243475329	pod	1	Sticker «Succulent»
+gid://shopify/Product/15427243508097	pod	1	Sticker «Surfboard»
+gid://shopify/Product/15427243540865	pod	1	Sticker «Swan»
+gid://shopify/Product/15427243573633	pod	1	Sticker «Swiss Chocolate»
+gid://shopify/Product/15427243606401	pod	1	Sticker «Swiss Cowbell»
+gid://shopify/Product/15427243639169	pod	1	Sticker «Taco»
+gid://shopify/Product/15427243671937	pod	1	Sticker «Anchor»
+gid://shopify/Product/15427243704705	pod	1	Sticker «Dagger»
+gid://shopify/Product/15427243737473	pod	1	Sticker «Moth»
+gid://shopify/Product/15427243770241	pod	1	Sticker «Rose»
+gid://shopify/Product/15427243803009	pod	1	Sticker «Skull Rose»
+gid://shopify/Product/15427243868545	pod	1	Sticker «Swallow»
+gid://shopify/Product/15427243901313	pod	1	Sticker «Telescope»
+gid://shopify/Product/15427243180417	pod	1	Sticker «Snake»
+gid://shopify/Product/15427243934081	pod	1	Sticker «Tennis Ball»
