@@ -8888,3 +8888,8 @@ gid://shopify/Product/15499054285185	8->2	Herren Automatikuhr aus Edelstahl
 gid://shopify/Product/15499055497601	10->0	Atmungsaktive Mesh Casual Schuhe für Herren
 gid://shopify/Product/15499055595905	44->0	Universal-Ladegerät für E-Scooter 42V 2A
 gid://shopify/Product/15499055858049	9->0	Glättende und aufhellende Augenpads
+gid://shopify/Product/15499059495297	12->0	Kabelloses Ladegerät fürs Smartphone
+gid://shopify/Product/15499060543873	13->0	Halsstraffende Roller Cream
+gid://shopify/Product/15499060871553	17->3	Low Top Mesh Sneaker mit Farbverlauf
+gid://shopify/Product/15499061592449	8->2	Lithium-Polymer AAA Akku-Set
+gid://shopify/Product/15499080139137	45->0	Sprachgestützter Rückfahrwarner
