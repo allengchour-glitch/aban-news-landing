@@ -7042,3 +7042,5 @@ gid://shopify/Product/15492129816961	35->0	Matter, feuchtigkeitsspendender Lippe
 gid://shopify/Product/15493075075457	48->0	Magnetische Handyhalterung für Velo
 gid://shopify/Product/15493084807553	10->3	Japanischer Bonsai-Topf aus Yixing-Ton
 gid://shopify/Product/15493088117121	21->3	Kreativer Bonsai-Bausatz «Begrüssungs-Föhre»
+gid://shopify/Product/15493243404673	11->3	Wandteppich mit Print-Design
+gid://shopify/Product/15493498864001	8->1	Grosser Schulrucksack für Kinder
