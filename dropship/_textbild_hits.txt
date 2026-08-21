@@ -7053,3 +7053,7 @@ gid://shopify/Product/15493500305793	45->0	Magnetisches 15W Wireless Ladegerät 
 gid://shopify/Product/15493575180673	43->2	3-in-1 Blumenkrone Ring
 gid://shopify/Product/15493575213441	8->0	Grosser Rucksack
 gid://shopify/Product/15493575541121	18->0	Kabelloses Ladegerät für Mobiltelefone
+gid://shopify/Product/15493575737729	14->1	Ladegerät für Dyson V6, V7, V8 Staubsauger
+gid://shopify/Product/15493575770497	11->0	Dunkelrote Cat-Eye Nägel zum Aufkleben
+gid://shopify/Product/15493575836033	18->0	Studenten Rucksack mit Kordelzug, 16 Zoll
+gid://shopify/Product/15493575934337	93->0	4-in-1 Kabelloses Ladegerät
