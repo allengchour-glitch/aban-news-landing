@@ -7019,3 +7019,5 @@ gid://shopify/Product/15484711108993	31->1	USB Stick Ice Cream (32GB / 64GB)
 gid://shopify/Product/15485321412993	53->0	Herren Hemd Kurzarm Sommer Casual
 gid://shopify/Product/15485538763137	80->3	Mini-Gaskocher für Outdoor & Camping
 gid://shopify/Product/15485579428225	11->1	Handgemachte Cat's Eye Nägel zum Aufkleben
+gid://shopify/Product/15486323229057	18->0	Elektrisches Pediküre-Gerät für glatte Füsse
+gid://shopify/Product/15486576230785	29->0	Business Laptop Rucksack – wasserdicht
