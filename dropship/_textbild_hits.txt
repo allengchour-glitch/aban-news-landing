@@ -8482,3 +8482,7 @@ gid://shopify/Product/15496705900929	27->0	Halsband aus Echtleder für Hunde
 gid://shopify/Product/15496706195841	67->1	Mobiler Gaming Controller für Smartphone
 gid://shopify/Product/15496710881665	105->0	Leichte Sandalen im Römer-Stil
 gid://shopify/Product/15496711078273	12->0	Sandalen mit Peep Toe und Reissverschluss
+gid://shopify/Product/15496711307649	40->0	Atmungsaktive Mesh-Sandalen mit niedrigem Absatz
+gid://shopify/Product/15496711373185	46->0	Keilabsatz-Sandalen mit Strohgeflecht
+gid://shopify/Product/15496847753601	9->2	Elegante Pumps mit V-Ausschnitt und Blockabsatz
+gid://shopify/Product/15496848474497	13->0	Beach Sandalen
