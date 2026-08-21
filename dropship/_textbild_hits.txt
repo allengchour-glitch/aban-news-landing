@@ -8974,3 +8974,5 @@ gid://shopify/Product/15499784257921	56->0	Leichte, rutschfeste Upstream-Sneaker
 gid://shopify/Product/15499785896321	35->1	Komfortable Slip-on Schuhe
 gid://shopify/Product/15499786289537	48->2	Schuh aus Leder mit atmungsaktiver Sohle
 gid://shopify/Product/15499805786497	39->0	Winterkissen
+gid://shopify/Product/15499806605697	10->0	Wassernebel-Sprüher
+gid://shopify/Product/15499806769537	19->0	Laptop-Stromadapter Schwarz
