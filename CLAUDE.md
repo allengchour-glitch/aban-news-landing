@@ -972,6 +972,24 @@ EINZELN geprüft habe — eine Weiterleitung auf die nächste leere Kollektion v
   **`Shaker`** trifft Protein-Shaker und einen Tattoo-Mixer, **`Cocktail`** ein Kleid und
   einen Sticker. Wo kein sauberes Wort existiert, ist die Weiterleitung die ehrlichere Lösung.
 
+## 🔢 «point» steckt in JEDER CJ-Antwort — der Kosten-Backfill lief nie (2026-08-21)
+Seit dem 20.08. sollte `cj_kosten_backfill.mjs` die Einkaufspreise nachtragen; dafür bekam er
+sogar ein eigenes Vorrang-Fenster (16:00–17:30 UTC, der Grind pausiert). Nach einem ganzen Tag
+standen **17 Produkte** im Ledger. Zwei Fehler, beide von der Art «eine Warteanweisung als
+Abbruchgrund gelesen»:
+1. **Der Punktetest suchte nach dem WORT.** `/point|credit|1690050/i.test(JSON.stringify(j))`
+   — CJ hängt aber an **jede** Antwort den Block
+   `"pointsInfo":{"total":61171,"usedToday":101960,"remaining":455}`. Das Wort «point» steht
+   also immer drin, und der Lauf hielt jede Antwort für ein leeres Budget und brach beim
+   ERSTEN Aufruf ab. Gelesen wird jetzt die ZAHL `pointsInfo.remaining` (Grenze 20).
+2. **Shopify-Drosselung galt als «antwortet nicht».** `{"errors":[{"message":"Throttled"}]}`
+   führte zum Abbruch des ganzen Laufs. Die Abfrage kostet 149 Punkte, verfügbar waren 46 —
+   die übrigen Engines teilen sich dasselbe Kontingent. Shopify füllt mit 100 Punkten/Sekunde
+   auf; `sgql` wartet jetzt die Differenz ab (`extensions.cost.throttleStatus`) statt aufzugeben.
+Nach dem Fix: 40 Produkte in einem Lauf, danach sauberer Halt bei 17 Restpunkten.
+**Regel: Bevor ein Skript «Budget leer» meldet, muss es die Zahl gelesen haben.** Und eine
+Drosselung ist nie ein Grund aufzuhören — sie sagt nur, wie lange zu warten ist.
+
 ## 🤖 Kimi-Nutzung — HARTE REGEL (teuer gelernt 2026-07-25)
 Kimi **k3** geht bei STRUKTURIERTEN/mehrfeldigen Prompts (JSON, "DESC:/SEO:"-Format, Artikel) in **Reasoning-Modus**
 → `content` bleibt leer, Helper fällt auf `reasoning_content` zurück = **englischer Denk-Text statt Copy**

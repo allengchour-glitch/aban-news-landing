@@ -33,7 +33,14 @@ const kosten = (usd, grams) => {
 };
 
 async function sgql(q, v) {
-  for (let i = 0; i < 4; i++) {
+  // ⚠️ 21.08.2026: DROSSELUNG IST KEIN FEHLER, SONDERN EINE WARTEANWEISUNG.
+  // Der Aufrufer deutete eine leere Antwort als «Shopify antwortet nicht» und brach den
+  // ganzen Lauf ab. In Wahrheit kam `{"errors":[{"message":"Throttled"}]}` — die Abfrage
+  // kostet 149 Punkte, verfügbar waren 46, weil die übrigen Engines dasselbe Kontingent
+  // teilen. Ergebnis: Der Backfill kam an einem ganzen Tag über 17 Produkte nicht hinaus,
+  // und das eigens reservierte Vorrang-Fenster (16:00–17:30) verpuffte.
+  // Shopify füllt mit 100 Punkten/Sekunde auf; wer wartet, kommt durch.
+  for (let i = 0; i < 8; i++) {
     try {
       const r = await fetch(`https://${SHOP}/admin/api/2024-10/graphql.json`, {
         method: 'POST',
@@ -43,6 +50,15 @@ async function sgql(q, v) {
       });
       const j = await r.json();
       if (j.data) return j;
+      const gedrosselt = JSON.stringify(j.errors || '').includes('THROTTLED');
+      if (gedrosselt) {
+        // Fehlende Punkte durch die Auffüllrate teilen — plus Sicherheitszuschlag.
+        const st = j.extensions?.cost?.throttleStatus;
+        const fehlt = st ? Math.max(0, (j.extensions.cost.requestedQueryCost || 100) - st.currentlyAvailable) : 100;
+        const wartenMs = Math.min(20000, 1000 + (fehlt / (st?.restoreRate || 100)) * 1000);
+        await sleep(wartenMs);
+        continue;
+      }
     } catch {}
     await sleep(2500);
   }
@@ -83,8 +99,18 @@ async function main() {
       if (mPid)      j = await cj(`product/query?pid=${mPid[1]}`);
       else if (mVar) j = await cj(`product/variant/query?variantSku=${mVar[1]}`);
       else { ohne++; fs.appendFileSync(LEDGER, `${p.id}\tkeine-cj-referenz\n`); continue; }
+      // ⚠️ 21.08.2026 — DIESE PRÜFUNG WAR DER GRUND, WARUM DER BACKFILL NIE LIEF.
+      // Sie suchte im Antworttext nach «point». CJ hängt aber an JEDE Antwort den Block
+      //   "pointsInfo":{"total":61171,"usedToday":101960,"remaining":455}
+      // — das Wort steht also immer drin. Der Lauf hielt jede Antwort für ein leeres
+      // Budget und brach beim ERSTEN CJ-Aufruf ab; nach einem ganzen Tag standen 17
+      // Produkte im Ledger. Gelesen wird jetzt die ZAHL, nicht das Wort.
+      const rest = j?.pointsInfo?.remaining;
+      if (typeof rest === 'number' && rest < 20) {
+        console.log(`PAUSE (CJ-Punkte fast leer: ${rest}, morgen weiter)`); return;
+      }
       if (!j.result) {
-        if (/point|credit|1690050/i.test(JSON.stringify(j))) { console.log('PAUSE (CJ-Punkte leer, morgen weiter)'); return; }
+        if (/1690050/.test(JSON.stringify(j))) { console.log('PAUSE (CJ meldet leeres Budget)'); return; }
         ohne++; fs.appendFileSync(LEDGER, `${p.id}\tcj-ohne-antwort\n`); await sleep(1200); continue;
       }
       // Die Variantenabfrage liefert eine LISTE, die Produktabfrage ein Objekt.
