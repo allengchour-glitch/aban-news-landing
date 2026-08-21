@@ -942,6 +942,29 @@ in Sekunden auf, und es kostet keine CJ-Punkte.
   Kostüme). Welche Kollektion eine Reihe WIRKLICH speist, steht in `templates/index.json`;
   ein ähnlicher Handle ist kein Beleg.
 
+## 🗂️ 34 veröffentlichte Kollektionen ohne Ware — und wie man sie richtig füllt (2026-08-21)
+Der Wächter `kollektion_leer.py` fand **12 Kollektionen mit NULL kaufbaren Produkten und 22 mit
+ein bis zwei**. Ursache in fast allen Fällen: Die Smart-Regel hängt an einem Tag, den nur
+BigBuy-Ware trug (`TAG=Bar`, `TAG=Audio`, `VENDOR=Clinique`) — und die ist seit der
+BigBuy-Stilllegung vollständig gedraftet. Sieben waren aus veröffentlichten Ratgebern verlinkt.
+**14 liessen sich mit aktiver Ware FÜLLEN statt zurückziehen** — die bessere Antwort, weil eine
+Kategorie mehr wert ist als eine Weiterleitung:
+`beauty-geraete` 0→100 · `ordnung-aufbewahrung` 2→411 · `lederwaren` 1→355 · `yoga` 2→244 ·
+`drohnen-kameras` 2→202 · `audio-sub` 2→125 · `recovery` 1→75 · `spielzeug-pluesch` 1→59 ·
+`auto-handy` 2→54 · `pool` 0→48 · `loungewear` 1→41 · `kuschel-heizdecken` 1→17.
+**20 zurückgezogen**, jede mit 301 auf eine Kollektion, deren kaufbaren Bestand ich vorher
+EINZELN geprüft habe — eine Weiterleitung auf die nächste leere Kollektion verschöbe das Problem.
+- ⚠️ **Shopify lehnt eine Weiterleitung auf eine Weiterleitung ab** («Target can't redirect to
+  another redirect»). `/collections/spielzeug` und `/collections/gadgets` sind selbst schon
+  umgeleitet → das ENDZIEL nehmen (`kinderspielzeug`, `trends-gadgets`). Erst über
+  `urlRedirects(query:"path:…")` nachsehen, dann setzen.
+- **Welche Wörter taugen als TITLE-Regel** (Probelauf ist Pflicht, siehe IPL-Eintrag oben):
+  gut sind `Kopfhörer`, `Drohne`, `Organizer`, `Aufbewahrung`, `Yoga`, `Leder`, `Plüschtier`.
+  Untauglich: **`Figur`** trifft fast nur «figurbetont»/«Figurschmeichelnd» (Damenmode),
+  **`Plüsch`** allein trifft Handschuhe, Kissenbezüge und ein Shirt mit Stickerei,
+  **`Shaker`** trifft Protein-Shaker und einen Tattoo-Mixer, **`Cocktail`** ein Kleid und
+  einen Sticker. Wo kein sauberes Wort existiert, ist die Weiterleitung die ehrlichere Lösung.
+
 ## 🤖 Kimi-Nutzung — HARTE REGEL (teuer gelernt 2026-07-25)
 Kimi **k3** geht bei STRUKTURIERTEN/mehrfeldigen Prompts (JSON, "DESC:/SEO:"-Format, Artikel) in **Reasoning-Modus**
 → `content` bleibt leer, Helper fällt auf `reasoning_content` zurück = **englischer Denk-Text statt Copy**
