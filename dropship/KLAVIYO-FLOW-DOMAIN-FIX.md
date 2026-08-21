@@ -4,8 +4,36 @@ Stand 2026-05-31. Die **eigenständigen Vorlagen** sind bereits per API auf `lux
 umgestellt (alle 9). Die **LIVE-Flows** haben aber eine eigene, eingefrorene Kopie des
 Inhalts, die per API NICHT editierbar ist → diese 2 Klick-Schritte musst du selbst machen.
 
-> Nicht dringend: beide Domains (luxestyle.ch UND luxestyle.com.co) funktionieren inkl. SSL.
-> Es geht rein um Konsistenz auf die Hauptdomain .ch.
+> ## ⚠️ 2026-08-21: DIESE EINSCHÄTZUNG IST ÜBERHOLT — es ist jetzt DRINGEND.
+> Der Satz darunter stand hier seit dem 31.05. und stimmt nicht mehr:
+>
+> > ~~Nicht dringend: beide Domains (luxestyle.ch UND luxestyle.com.co) funktionieren inkl.
+> > SSL. Es geht rein um Konsistenz auf die Hauptdomain .ch.~~
+>
+> **`luxestyle.com.co` ist TOT.** Der Betreiber klickte am 21.08. in einer Klaviyo-Mail auf
+> `luxestyle.com.co/?_kx=…` und bekam **ERR_CONNECTION_CLOSED**. Live nachgeprüft:
+> die Domain löst auf `2620:127:f00f:b::` auf — **nicht** Shopifys `23.227.38.x` — und
+> liefert nichts (503 über einen fremden Ausgang). `account.luxestyle.com.co` löst gar
+> nicht mehr auf.
+>
+> Aus «reine Konsistenz» ist damit ein **Kaufabbruch bei jedem Klick** geworden: Wer die
+> Willkommens- oder Warenkorb-Mail öffnet und klickt, landet auf einer toten Seite. Keine
+> Statistik weist das je als Abbruch aus (dieselbe Klasse wie die 61 toten Ratgeber-Links
+> und die abgelaufenen Rabattcodes).
+>
+> **Der Shop selbst ist sauber** (21.08. vollständig nachgezählt, nicht gestichprobt):
+> 132 veröffentlichte Seiten → 0, 316 Artikel → 0, alle 425 Theme-Dateien → 0. Die tote
+> Domain lebt NUR noch in den eingefrorenen Flow-Kopien in Klaviyo.
+>
+> **Wirksamer als jede Vorlagen-Korrektur — falls die Domain noch dem Betreiber gehört:**
+> `luxestyle.com.co` per DNS auf Shopify zeigen und in Shopify als Weiterleitungs-Domain
+> eintragen. Das rettet mit EINER Änderung ALLE alten Links auf einmal — auch die **bereits
+> verschickten** Mails, die keine Vorlagen-Korrektur mehr erreicht, sowie alte Social-Posts.
+> Die Schritte unten bleiben trotzdem richtig für künftige Sendungen.
+>
+> ⚠️ Klaviyo ist aus der Session NICHT erreichbar: kein API-Schlüssel im Container, und der
+> Konnektor verlangt eine Anmeldung, die eine nicht-interaktive Session nicht leisten kann.
+> Das sind Betreiber-Klicks.
 
 ## Schnellster Weg (pro Flow-Mail gleich)
 1. Mail-Schritt im Flow anklicken → **„Edit"** (Inhalt öffnen).
