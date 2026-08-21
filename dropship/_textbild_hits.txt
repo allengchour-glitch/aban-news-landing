@@ -7289,3 +7289,4 @@ gid://shopify/Product/15493857968513	126->1	Grosser Sportrucksack
 gid://shopify/Product/15493858099585	38->0	Eisklarer blauer Katzenaugen-Nagelsticker
 gid://shopify/Product/15493858132353	13->0	Einfarbige Lauflernschuhe für Baby-Mädchen
 gid://shopify/Product/15493858230657	65->1	30-teiliges Nagelpflege-Set für Zuhause
+gid://shopify/Product/15493858427265	14->0	Ozon-Desinfektionsgerät für Haushalt & Fahrzeug
