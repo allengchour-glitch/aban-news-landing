@@ -7534,3 +7534,4 @@ gid://shopify/Product/15494690472321	23->3	Transparenter Organizer für Schublad
 gid://shopify/Product/15494690767233	17->0	Ärmelloses A-Linien Kleid mit Schnürung
 gid://shopify/Product/15494691258753	26->0	Desktop Aufbewahrungsbox mit Deckel
 gid://shopify/Product/15494691881345	29->0	Ärmelloses Strickkleid mit Hemdkragen
+gid://shopify/Product/15494693585281	54->0	Magisches Katzenkratzbrett mit Orgel-Design
