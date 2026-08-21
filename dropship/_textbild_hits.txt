@@ -7253,3 +7253,8 @@ gid://shopify/Product/15493853184385	56->0	Retro-Quarzuhr für Studierende
 gid://shopify/Product/15493853282689	9->2	Nordisches Kissen Schwarz-Weiss mit Herzmuster
 gid://shopify/Product/15493853348225	9->0	Herren Business Quarzuhr mit Stahlarmband
 gid://shopify/Product/15493853413761	39->0	Hintergrundtuch für DIY-Projekte
+gid://shopify/Product/15493853643137	69->3	Freizeit-Pullover aus Baumwolle mit Print
+gid://shopify/Product/15493853741441	14->0	Manschettenknöpfe aus Edelstahl mit Alphabet
+gid://shopify/Product/15493853839745	106->0	Engel-Krone Aufnäher zum Sticken
+gid://shopify/Product/15493853872513	18->2	Wasserdichte Herrenuhr aus Edelstahl
+gid://shopify/Product/15493853905281	33->1	Elastischer Sofaüberzug aus Flanell
