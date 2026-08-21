@@ -8340,3 +8340,24 @@ gid://shopify/Product/15496437072257	85->0	Taucheruhr Klassik Leuchtend Saphir S
 gid://shopify/Product/15496439595393	65->2	Hundehalsband P-Kette für Spaziergänge
 gid://shopify/Product/15496439759233	12->0	Hunde-Blindenring, verstellbar
 gid://shopify/Product/15496440906113	28->3	Velo-Nachtlicht mit Helmhalterung
+gid://shopify/Product/15496442118529	59->0	Lern-Tablet für Kinder und Studenten
+gid://shopify/Product/15496497267073	37->2	Sattelkissen
+gid://shopify/Product/15496497561985	15->0	Nackenkissen für Ihr Auto, 1 Paar
+gid://shopify/Product/15496497693057	33->0	Cross-Border HD 4K Dual-Kamera Drohne
+gid://shopify/Product/15496497758593	20->0	Anti-Kratz- und Leckschutz für Katzen
+gid://shopify/Product/15496497856897	16->0	LED-Nachtwarnlicht für Velos
+gid://shopify/Product/15496497889665	55->0	Kabelloser Mini-Bluetooth-Lautsprecher TWS
+gid://shopify/Product/15496497922433	9->2	Rutschfester Sofaüberzug aus Polyester
+gid://shopify/Product/15496498053505	21->3	Semi-kontrolliertes P-Kettenhalsband aus Rindsleder
+gid://shopify/Product/15496498708865	18->0	Faltbarer LED-Scheinwerfer für E-Scooter & Bikes
+gid://shopify/Product/15496498971009	53->0	Kühl- und Wärmebox fürs Auto
+gid://shopify/Product/15496499069313	63->0	Smarte 1080P WLAN Video-Türklingel
+gid://shopify/Product/15496499200385	29->0	Luftbefeuchter mit Ventilator & Fernbedienung
+gid://shopify/Product/15496504869249	28->0	LED Leuchthalsband für Hunde, wasserdicht
+gid://shopify/Product/15496506737025	8->0	Schlangenprint Peep-Toe Sandalen mit hohem Blockabsatz
+gid://shopify/Product/15496506900865	15->0	Leichte Plateau-Sandalen für Damen
+gid://shopify/Product/15496507883905	52->1	Riemchensandalen mit Super-High-Heel
+gid://shopify/Product/15496508113281	83->2	Kinder-Reisekoffer zum Draufsitzen
+gid://shopify/Product/15496508309889	45->3	Schlüsselschale aus Leder
+gid://shopify/Product/15496508375425	10->1	Leichte Pantoletten mit dicker Sohle
+gid://shopify/Product/15496508670337	30->0	Auto-Reinigungsset für Bohrmaschine (20-teilig)
