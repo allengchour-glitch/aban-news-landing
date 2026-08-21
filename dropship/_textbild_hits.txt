@@ -7925,3 +7925,29 @@ gid://shopify/Product/15495238615425	77->0	Kabel-Organizer für Kreuzstich-Stick
 gid://shopify/Product/15495238812033	56->0	Kabelloses USB-Glätteisen für unterwegs
 gid://shopify/Product/15495239336321	53->0	Mini Akku-Haarglätter
 gid://shopify/Product/15495239401857	117->0	Herren Quarzuhr mit Datum, Edelstahl
+gid://shopify/Product/15495239926145	81->0	Exquisite Herren Quarzuhr
+gid://shopify/Product/15495240778113	82->0	Wasserdichte Quarzuhr für Paare
+gid://shopify/Product/15495240974721	88->0	Faltbares 4-in-1 Wireless-Ladegerät, 18W
+gid://shopify/Product/15495319257473	43->0	Multifunktionaler Desktop-Ständer mit Wireless Charging
+gid://shopify/Product/15495319421313	93->0	Retro-Armbanduhr aus feinem Stahl und Leder
+gid://shopify/Product/15495320142209	113->3	130L Outdoor Rucksack
+gid://shopify/Product/15495320273281	143->2	Taktischer Outdoor Rucksack, wasserdicht
+gid://shopify/Product/15495321026945	32->0	5-in-1 Keramik Lockenstab-Set
+gid://shopify/Product/15495321158017	8->0	Kabelloses 18W Spiegel-Ladegerät mit Magnet
+gid://shopify/Product/15495321584001	34->0	Smart Travel Charger mit Schnellladefunktion
+gid://shopify/Product/15495394099585	46->1	D9 Kabelloser Bluetooth Lautsprecher mit Ladefunktion
+gid://shopify/Product/15495394427265	88->0	PU Leder Rucksack für Herren
+gid://shopify/Product/15495394656641	22->0	2-in-1 Kabelloses Auto-Lade-Dock
+gid://shopify/Product/15495395344769	9->0	Kabelloses Dual-Laser-Feuerzeug
+gid://shopify/Product/15495396786561	56->1	Rindsleder-Rucksack für Herren im Retro-Stil
+gid://shopify/Product/15495396917633	106->0	Herren-Armbanduhr im Casual-Look
+gid://shopify/Product/15495396983169	23->0	Glätteisen & Lockenstab mit LCD-Display
+gid://shopify/Product/15495398162817	74->1	PD QC3.0 Mini Super Fast Auto-Ladegerät 30W
+gid://shopify/Product/15495398556033	87->0	Canvas Schulrucksack mit Reissverschluss
+gid://shopify/Product/15495398785409	28->0	Wasserdichte Leucht-Quarzuhr für Herren
+gid://shopify/Product/15495398916481	42->0	Kabelloser Keramik-Lockenstab für unterwegs
+gid://shopify/Product/15495399145857	67->0	Grosser Rucksack für Schule und Freizeit
+gid://shopify/Product/15495400554881	84->2	USB Multifunktionsrucksack für Herren
+gid://shopify/Product/15495401832833	45->0	Infrarot Dampf Keramik Glätteisen
+gid://shopify/Product/15495402652033	97->2	Ärmelloses Maxi-Kleid mit 3D-Stickerei
+gid://shopify/Product/15495403340161	85->0	Grosse Bodenmatten für jeden Raum
