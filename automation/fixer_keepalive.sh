@@ -37,6 +37,36 @@ pause_kuehlt() {
   [ "$alter" -lt 3600 ]
 }
 
+# 🔁 KURZSCHLUSS-WÄCHTER (21.08.2026, teuer gelernt). Der Aufseher startet einen Lauf neu,
+# solange dessen Log keine FERTIG-Zeile trägt. Ein Wächter, der seine Befunde nur MELDET,
+# erreicht sein FERTIG aber nie — `fremdzeichen_guard` lief so 131-mal im Zwei-Minuten-Takt
+# über einen 74-MB-Export, für EINEN Befund, der auf eine Menschenentscheidung wartet.
+# Unterschieden wird nach LAUFZEIT, nicht nach Logtext: Ein Lauf, der binnen 60 s endet, ist
+# fertig geworden (oder sofort abgestürzt) — er wurde nicht mitten in der Arbeit vom
+# Turn-Reaping erwischt. Wer fünfmal hintereinander so schnell endet, dreht sich im Kreis und
+# wird für eine Stunde ausgesetzt; ein Lauf, der echte Arbeit leistet, setzt den Zähler
+# zurück. Das schützt die langen Katalog-Läufe, die den schnellen Neustart wirklich brauchen.
+dreht_sich_im_kreis() {
+  local n="$1" start="/tmp/_start_$1" zaehler="/tmp/_schnellende_$1" gemeckert="/tmp/_kreis_gemeldet_$1"
+  if [ -f "$start" ]; then
+    local dauer=$(( $(date +%s) - $(cat "$start" 2>/dev/null || echo 0) ))
+    rm -f "$start"
+    if [ "$dauer" -lt 60 ]; then
+      echo $(( $(cat "$zaehler" 2>/dev/null || echo 0) + 1 )) > "$zaehler"
+    else
+      : > "$zaehler"   # hat echte Arbeit geleistet
+    fi
+  fi
+  [ "$(cat "$zaehler" 2>/dev/null || echo 0)" -ge 5 ] || return 1
+  # Ausgesetzt — aber nur eine Stunde, danach neuer Versuch (der Befund kann behoben sein).
+  if [ -f "$gemeckert" ] && [ $(( $(date +%s) - $(stat -c %Y "$gemeckert") )) -gt 3600 ]; then
+    rm -f "$gemeckert" "$zaehler"; return 1
+  fi
+  [ -f "$gemeckert" ] || { : > "$gemeckert"
+    echo "$(date -u +%H:%M) ⚠️ $n endet immer wieder binnen Sekunden ohne FERTIG — 1 h ausgesetzt (Endlos-Neustart)"; }
+  return 0
+}
+
 fehlt() {
   [ -f "$1" ] && return 1
   local marke="/tmp/_fehlt_$(basename "$1").marke"
@@ -149,6 +179,7 @@ while true; do
     fehlt "$REPO/automation/$L.py" && continue
     grep -q "^FERTIG" "/tmp/$L.log" 2>/dev/null && continue      # durchgelaufen
     pause_kuehlt "$L" && continue                                # hat sich mit PAUSE verabschiedet
+    dreht_sich_im_kreis "$L" && continue                         # endet immer sofort ohne FERTIG
     # ⚠️ NICHT `pgrep -f`. Steht das Suchmuster in der eigenen Kommandozeile, findet pgrep
     # sich selbst und meldet «läuft» für einen toten Lauf — heute stand `suchwort_tags` so
     # eine Viertelstunde still, während jede Prüfung Vollzug meldete. Verglichen werden
@@ -169,6 +200,7 @@ while true; do
       [ -f /tmp/versand_quelle.jsonl ] || continue
       EXP="QUELLE=/tmp/versand_quelle.jsonl"
     fi
+    date +%s > "/tmp/_start_$L"
     ( cd "$REPO" && setsid bash -c \
         "exec 9>/tmp/lock_$L.lock; flock -n 9 || exit 0; $EXP exec python3 automation/$L.py" \
         >> "/tmp/$L.log" 2>&1 9>&- & )
@@ -182,8 +214,10 @@ while true; do
     fehlt "$REPO/automation/$N.mjs" && continue
     grep -q "^FERTIG" "/tmp/$N.log" 2>/dev/null && continue
     pause_kuehlt "$N" && continue
+    dreht_sich_im_kreis "$N" && continue
     ps -eo args --no-headers | awk -v s="automation/$N.mjs" \
       '$1 ~ /node$/ && $2 == s {n++} END {exit(n?0:1)}' && continue
+    date +%s > "/tmp/_start_$N"
     ( cd "$REPO" && setsid bash -c \
         "exec 9>/tmp/lock_$N.lock; flock -n 9 || exit 0; CAP=900 exec /opt/node22/bin/node automation/$N.mjs" \
         >> "/tmp/$N.log" 2>&1 9>&- & )

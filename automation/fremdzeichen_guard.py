@@ -71,11 +71,26 @@ def main():
         if not (hat_fw or hat_bed): continue
 
         if hat_bed:
-            m = BEDEUTUNG.search(text)
-            stelle = re.sub(r'\s+', ' ', text[max(0, m.start()-70):m.end()+70]).strip()
-            melden.append((pid, o.get('title', '')[:60],
-                           ''.join(sorted(set(BEDEUTUNG.findall(text))))[:20], stelle))
-            gemeldet += 1
+            # ⚠️ AUCH DER BERICHT MUSS GEGEN LIVE PRUEFEN (21.08.2026). Der Ersetzungs-Zweig
+            # unten holt laengst live, der Melde-Zweig tat es nicht — er schrieb weiter aus
+            # dem Schnappschuss. Folge: Ein von Hand uebersetztes Produkt stand nach der
+            # Reparatur unveraendert im Bericht und waere dem Betreiber ein zweites Mal
+            # vorgelegt worden. Ein Rueckstand, der Erledigtes auffuehrt, wird nicht gelesen.
+            r = gql('query($id:ID!){product(id:$id){title descriptionHtml}}', {'id': pid})
+            p_live = (r.get('data') or {}).get('product')
+            # ⚠️ KEIN `continue` in diesem Zweig: ein Produkt kann BEIDE Klassen tragen, und
+            # ein Sprung hier uebersaehe die Fullwidth-Ersetzung weiter unten still.
+            if p_live:
+                text_live = re.sub(r'<[^>]+>', ' ', p_live['descriptionHtml'] or '')
+                m = BEDEUTUNG.search(text_live)
+                if m:   # sonst inzwischen behoben — kein Befund mehr
+                    stelle = re.sub(r'\s+', ' ',
+                                    text_live[max(0, m.start()-70):m.end()+70]).strip()
+                    melden.append((pid, (p_live.get('title') or '')[:60],
+                                   ''.join(sorted(set(BEDEUTUNG.findall(text_live))))[:20],
+                                   stelle))
+                    gemeldet += 1
+                time.sleep(0.5)
 
         if hat_fw:
             # LIVE holen — der Export ist ein Schnappschuss, und zwischen Sammeln und
@@ -100,6 +115,11 @@ def main():
             ersetzt += 1
             time.sleep(1.0)
 
+    # Kein Befund mehr → alten Bericht wegraeumen. Bliebe er stehen, listete er auf ewig
+    # Produkte, die laengst uebersetzt sind.
+    if not melden and os.path.exists(BERICHT):
+        os.remove(BERICHT)
+        print(f"  Bericht {BERICHT} entfernt (keine offenen Zeichen mehr)")
     if melden:
         with open(BERICHT, 'w', encoding='utf-8') as f:
             f.write("# Unübersetzte fernöstliche Zeichen in Produkttexten\n\n")
@@ -111,7 +131,16 @@ def main():
                 f.write(f"  > …{stelle}…\n\n")
 
     print(f"{'DRY ' if DRY else ''}Fullwidth ersetzt: {ersetzt} · zu uebersetzen gemeldet: {gemeldet}")
-    if ersetzt == 0 and gemeldet == 0:
+    # ⚠️ FERTIG haengt NUR an `ersetzt` (21.08.2026, teuer gelernt). Der erste Entwurf
+    # verlangte zusaetzlich `gemeldet == 0` — aber gemeldete CJK-Zeichen werden ABSICHTLICH
+    # nie automatisch uebersetzt, die Zahl kann also gar nie auf 0 fallen. Der Aufseher
+    # sieht ohne FERTIG-Zeile «noch Arbeit offen» und startete den Lauf im ZWEI-MINUTEN-Takt
+    # neu: 131 Vollscans ueber einen 74-MB-Export plus Shopify-Abfragen fuer EINEN einzigen
+    # Befund, der auf eine Menschenentscheidung wartet. Gemeldetes ist ein Rueckstand im
+    # Bericht, KEINE offene Arbeit — nur was noch zu ERSETZEN waere, ist offene Arbeit.
+    if ersetzt == 0:
+        if gemeldet:
+            print(f"({gemeldet} Zeichen liegen zur Handuebersetzung in {BERICHT})")
         print("FERTIG")
 
 main()
