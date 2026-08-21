@@ -217,3 +217,5 @@ gid://shopify/Product/15508402831745	plusch-kissen-karotte-halb-umrundend-881664
 gid://shopify/Product/15508407091585	wasserdichte-gt2pro-smartwatch-403456	Wasserdichte GT2PRO Smartwatch
 gid://shopify/Product/15508410204545	teetier-affenkonig-aus-keramik-4fe147	Teetier Affenkönig aus Keramik
 gid://shopify/Product/15508412957057	kinder-strandschuhe-korean-style-mit-klettvers-350912	Kinder-Strandschuhe Korean Style mit Klettverschluss
+gid://shopify/Product/15508425408897	brogue-leder-business-schuhe-fur-herren-622400	Brogue Leder Business-Schuhe für Herren
+gid://shopify/Product/15508425474433	wasserdichte-herrenuhr-mit-kalender-und-siliko-968960	Wasserdichte Herrenuhr mit Kalender und Silikonband
