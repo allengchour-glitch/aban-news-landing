@@ -1871,6 +1871,38 @@ sonst hinpasst. Der Unterschied ist, ob die Position gestaltet oder nur gestreut
 
 Ergebnis: **88 → 83 echte Funde.**
 
+### Der Bahnsteig ist ein Fußboden — Regel 6, nur draußen
+
+`th41_bahnsteigkante` heißt „Kante", ist aber die ganze **Bahnsteigplatte**: 6,0 × 3,6 und
+**0,55 hoch**. Alles, was darauf gehört, stand auf y = 0 und war damit 55 cm eingesunken:
+
+| Fund | Mesh-Paare |
+|---|---|
+| `th41_gepaeckkarre` | 70 |
+| `th41_fahrleitungsmast` (die beiden inneren) | 34 |
+| `th41_bahnsteigbank` | 33 |
+
+Das ist **Regel 6** aus dem Fallstrick-Abschnitt („Möbel gehören auf die Fußboden-Oberkante,
+nicht auf z = 0") — hier auf einem Bahnsteig statt in einem Zimmer, und darum jahrelang nicht
+als dieselbe Sache erkannt. Der Name des Modells hat mitgeholfen: eine „Kante" klingt nach
+einem Randstein, auf den man nichts stellt.
+
+Das Dach wusste es **halb**: es stand schon auf 0,42 — jemand hatte die Höhe bemerkt, aber die
+falsche Zahl genommen. Jetzt rechnet alles mit einer Konstante `BSH = 0.55`.
+
+> ⚠️ **0,55, nicht 0,58.** Die Bounding-Box der Platte endet auf 0,58 — die letzten 3 cm sind
+> der Taststreifen an der Gleiskante (`Cube002`). Wer die Boxhöhe nimmt, stellt alles 3 cm zu
+> hoch. Die begehbare Fläche ist das große Mesh (`Cube`, 21,6 m²) und endet auf **0,55**.
+
+> ⚠️ **Nicht pauschal anheben.** Die Platte reicht nur von x −21 bis 21 (7 Module à 6,0). Die
+> Fahrleitungsmasten bei ±24 stehen daneben auf dem Boden, die bei ±8 auf der Platte. Alle vier
+> anzuheben hätte zwei davon schweben lassen.
+
+> ✅ **Was danach bleibt, ist kein Fehler.** `th17_bahnsteigdach × th41_bahnsteigkante` meldet
+> weiter Treffer, jetzt „ab y 0,55" — die Stützenfüße überlappen die 3 cm hohen Markierungs-
+> und Taststreifen um exakt 0,03 m. Ein Pfosten, der auf dem Bahnsteig **steht**. Dieselbe
+> Klasse wie die Reifen auf den Hofmarkierungen.
+
 > 🔑 **Die Regel.** Erst die Zahl aus der Hypothese ableiten, dann messen, dann ändern —
 > und zwischen „Boxen überlappen" und „Geometrie steckt ineinander" nie stillschweigend
 > wechseln. Zwei Änderungen dieses Durchgangs wurden vor dem Commit wieder verworfen, weil
