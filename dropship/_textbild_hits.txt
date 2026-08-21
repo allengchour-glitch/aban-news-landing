@@ -8065,3 +8065,13 @@ gid://shopify/Product/15496289255809	26->0	USB-Fahrradlicht Set
 gid://shopify/Product/15496289386881	14->0	ENFITNIX Xlite100 Velo-Rücklicht
 gid://shopify/Product/15496289550721	70->0	Professionelles Make-up Pinselset (32-teilig)
 gid://shopify/Product/15496289583489	12->0	Hagibis Mauspad aus Naturkork
+gid://shopify/Product/15496302166401	30->0	Rundes Futonkissen für Meditation & Wohnen
+gid://shopify/Product/15496302199169	115->0	Rhombus 7er Make-up Pinsel Set
+gid://shopify/Product/15496302264705	40->0	AK66 Gamepad für Sechs-Finger-Bedienung
+gid://shopify/Product/15496302297473	23->0	Baumwoll-Sofakissen für alle Jahreszeiten
+gid://shopify/Product/15496302330241	19->0	Intelligentes LED-Fahrrad-Rücklicht mit Blinker
+gid://shopify/Product/15496302363009	94->0	Make-up Pinselset mit Bambusgriffen
+gid://shopify/Product/15496302461313	65->0	Intelligente Velo-Rückleuchte mit Blinker
+gid://shopify/Product/15496302494081	67->0	Spot 7 Make-up Pinsel-Set mit Spiralgriff
+gid://shopify/Product/15496302952833	95->0	11 Meerjungfrauen Make-up Pinsel Set
+gid://shopify/Product/15496303083905	117->2	Dazzle Knight Velo-Drahtlampe
