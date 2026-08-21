@@ -8327,3 +8327,7 @@ gid://shopify/Product/15496428159361	40->0	Elektrischer Schaumstoff-Flieger
 gid://shopify/Product/15496428388737	133->0	Unisex Langarmhemd aus Baumwoll-Leinen
 gid://shopify/Product/15496429437313	10->0	Wasserdichte Quarzuhr mit Kalenderfunktion
 gid://shopify/Product/15496429535617	36->2	Quarz-Herrenuhr mit Kalenderfunktion
+gid://shopify/Product/15496430682497	28->2	H8 Mini RC Helikopter
+gid://shopify/Product/15496432320897	59->0	RC Flugzeug für Outdoor-Spass
+gid://shopify/Product/15496433435009	37->0	Graffiti Quadcopter mit Fernsteuerung
+gid://shopify/Product/15496433467777	19->0	Wasserdichte Herren Quarzuhr
