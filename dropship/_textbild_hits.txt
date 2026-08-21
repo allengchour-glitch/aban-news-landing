@@ -8443,3 +8443,42 @@ gid://shopify/Product/15496580661633	46->2	Multifunktionaler Wasserkocher für 1
 gid://shopify/Product/15496580694401	112->0	Malset "Gefallener Blumenkorb" nach Zahlen
 gid://shopify/Product/15496581022081	19->1	Locker geschnittenes Langarmhemd für Herren
 gid://shopify/Product/15496581087617	185->1	DIY Digital Painting Kit "Dancing In The Tropics"
+gid://shopify/Product/15496581611905	83->0	Herzli-Waffeleisen für de schnälle Zmorge
+gid://shopify/Product/15496581775745	14->3	Küchenmaschine mit Knet- und Rührfunktion
+gid://shopify/Product/15496593932673	79->1	5D Diamond Painting: Blauer Truck
+gid://shopify/Product/15496595669377	33->0	Calm Tide – DIY Digital Malset
+gid://shopify/Product/15496596947329	160->0	DIY Digital Painting Kit "Italian Cafe"
+gid://shopify/Product/15496597864833	26->0	Color-Block Strickhemd für Business und Freizeit
+gid://shopify/Product/15496598552961	39->0	Keramik Ölflasche mit Deckel
+gid://shopify/Product/15496598847873	27->0	Kurzes Polo-Shirt mit Falten
+gid://shopify/Product/15496598913409	49->0	Malen nach Zahlen: Bridge Of Faith
+gid://shopify/Product/15496599503233	11->2	Quarz-Herrenuhr für Business
+gid://shopify/Product/15496600584577	133->0	DIY Malset "Boating Festival"
+gid://shopify/Product/15496601371009	15->0	DIY Ölmalerei Neonlandschaft
+gid://shopify/Product/15496601764225	32->0	Elektrischer Protein-Shaker mit 700ml Kapazität
+gid://shopify/Product/15496601829761	17->3	Gestreiftes Kurzarmhemd mit Halstuch
+gid://shopify/Product/15496602550657	91->0	Gusseisen Brotbackform mit Holztablett
+gid://shopify/Product/15496603599233	25->0	Organza Blazer mit UV-Schutz
+gid://shopify/Product/15496605106561	63->2	Schneidebrett aus Holz, beidseitig nutzbar
+gid://shopify/Product/15496605401473	59->0	Herren Strick-Sportweste Loose-Fit
+gid://shopify/Product/15496607236481	11->0	Kabelloses Ladegerät Thin Disc Leder Optik
+gid://shopify/Product/15496608842113	11->1	Kabelloses Einbau-Ladegerät für Smartphones
+gid://shopify/Product/15496610480513	61->0	Voice Rugby Spielzeug für Hunde
+gid://shopify/Product/15496610972033	29->1	Velo-Scheinwerfer mit 16 T6-LEDs
+gid://shopify/Product/15496611168641	10->1	Handy- und Uhrenhalter aus Holz
+gid://shopify/Product/15496611758465	28->0	Handgewobener Baumwoll-Kissenbezug
+gid://shopify/Product/15496611889537	10->0	Velo-LED-Licht
+gid://shopify/Product/15496613364097	41->0	Kabelloses Qi Lade-Mauspad aus PU-Leder
+gid://shopify/Product/15496613593473	62->1	Niedliches Cartoon Kinder-Sofa (2-in-1)
+gid://shopify/Product/15496613888385	22->1	Automatischer Plüschball für Haustiere
+gid://shopify/Product/15496613953921	14->0	LED-Fahrradrücklicht
+gid://shopify/Product/15496614216065	118->0	Multifunktionales Tatami-Kissen mit Rundkissen
+gid://shopify/Product/15496702689665	50->0	Robustes Quietsch-Rugby für Hunde
+gid://shopify/Product/15496703082881	23->0	Elastischer Stuhlhussen-Bezug, halbe Sitzfläche
+gid://shopify/Product/15496703410561	23->1	Xlite100 Intelligentes Velo-Rücklicht
+gid://shopify/Product/15496704524673	19->1	Verstellbarer Futternapf-Halter
+gid://shopify/Product/15496704688513	14->0	Multifunktionales Split-Bauchtrainer
+gid://shopify/Product/15496705900929	27->0	Halsband aus Echtleder für Hunde
+gid://shopify/Product/15496706195841	67->1	Mobiler Gaming Controller für Smartphone
+gid://shopify/Product/15496710881665	105->0	Leichte Sandalen im Römer-Stil
+gid://shopify/Product/15496711078273	12->0	Sandalen mit Peep Toe und Reissverschluss
