@@ -8496,3 +8496,7 @@ gid://shopify/Product/15496991932801	35->0	Ninja Gamepad für Android, Apple & P
 gid://shopify/Product/15497043902849	16->1	Reversibles Gamepad
 gid://shopify/Product/15497044427137	44->0	Halsband-Kamera für Haustiere
 gid://shopify/Product/15497045541249	17->0	Damen Pumps mit Chunky-Absatz · Slip-on, runde Zehenform
+gid://shopify/Product/15497149088129	23->1	Flache Leder-Sandalen
+gid://shopify/Product/15497149907329	39->0	S5 Plus Mobile Gaming Konsole
+gid://shopify/Product/15497150267777	88->0	Wii Gamepad
+gid://shopify/Product/15497150628225	17->0	Hunde Anti-Kollisionsring für Halsbänder
