@@ -8404,3 +8404,10 @@ gid://shopify/Product/15496529150337	14->0	Freizeitschuhe High-Top Sportschuhe f
 gid://shopify/Product/15496529346945	33->0	Antihaft-Küchenhelfer-Set aus Silikon
 gid://shopify/Product/15496529510785	24->0	Mädchen Sportschuhe mit Jelly-Sohle
 gid://shopify/Product/15496529805697	17->0	XKY KY101 RC Drohne mit HD-Kamera
+gid://shopify/Product/15496530592129	24->0	6er-Set Nylonhaarbürsten für Skizzen & Malerei
+gid://shopify/Product/15496530624897	57->0	Haarglättungsstab
+gid://shopify/Product/15496530788737	109->1	Haustier Rucksack "Cat Bag" mit Sichtfenster
+gid://shopify/Product/15496530854273	134->0	5-teiliges Dentalhygiene-Set aus Edelstahl
+gid://shopify/Product/15496530887041	48->0	Dinosaurier Rucksack für Damen und Herren
+gid://shopify/Product/15496530919809	39->2	Dampf-Haarstyler für glattes Haar
+gid://shopify/Product/15496531083649	32->3	Business-Rucksack für Reisen & Freizeit
