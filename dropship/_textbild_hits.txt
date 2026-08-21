@@ -8713,3 +8713,4 @@ gid://shopify/Product/15497451438465	26->2	Gusseisen Camping Kochset
 gid://shopify/Product/15497451471233	24->0	Elegante Satin-Sandalen mit hohem Absatz
 gid://shopify/Product/15497451536769	21->0	Mini Cartoon Toast Ausstechformen für Kinder
 gid://shopify/Product/15497451700609	21->0	Malen nach Zahlen: Gelbe Blume, Blauer Vogel
+gid://shopify/Product/15497452093825	31->1	Digitales Acrylbild auf Leinwand
