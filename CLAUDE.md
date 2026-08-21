@@ -864,6 +864,25 @@ nicht die Schwelle, sondern billige Ware im Mehrfachkorb.
   Das ältere «China-Fracht ~3–6 CHF» im BigBuy-Vergleich ist überholt — ich hätte auf dieser
   Grundlage beinahe die Kostendaten für falsch erklärt.
 
+## 🧴 Smart-Collection-Regeln können «IPL» nicht fangen — Bindestriche helfen NICHT (2026-08-21)
+Die Kollektion `beauty-geraete` stand mit 58 Produkten da, alle DRAFT (BigBuy-Leichen), und war
+aus einem veröffentlichten Ratgeber verlinkt. Statt sie zurückzuziehen liess sie sich mit aktiver
+CJ-Ware füllen — der erste Versuch nahm `TITLE CONTAINS "IPL"` auf und holte damit **10 Lipliner,
+2 Gamepads («Mult-IPL-attform»), einen Folienspender («Tr-IPL-eRoll») und eine Gummiplatte**
+(«Gumm-IPL-atte») in die Beauty-Reihe. Exakt die Falle, die hier seit dem 12.08. unter der
+Hype-Reihe steht — ich bin trotzdem hineingelaufen, weil ich sie für ein Python-Regex-Problem hielt.
+- ⚠️ **`\b` gibt es in Shopifys CONTAINS nicht**, und der naheliegende Ausweg funktioniert auch
+  nicht: **`"IPL-"` verhält sich wie `"IPL"`**, weil Shopify Bindestriche beim Vergleich ignoriert
+  (dieselbe Tokenisierung wie bei `title:"…"` und beim Handle). Der zweite Versuch machte es
+  schlimmer: 99 statt 65 Produkte, die Lipliner alle noch drin.
+- **Die Lösung ist nicht ein besseres Muster, sondern ein anderes Wort.** Die echten Geräte tragen
+  ohnehin ein eindeutiges zweites Wort: `Haarentfernung`, `Hautverjüngung`, `Photon`, `Mikrostrom`,
+  `Gesichtsreinigungsbürste`, `LED-Maske`, `Lichttherapie`, `Ultraschall-Gesicht` → 100 Produkte,
+  **0 Fehltreffer**. Kurze Abkürzungen (IPL, EMS, LED, RF) taugen NIE als alleinige CONTAINS-Regel.
+- **Und: die Regel nach dem Setzen gegen die Produktliste prüfen, nicht nur zählen.** Die Zahl 65
+  sah plausibel aus; erst der Blick auf die Titel zeigte den Gaming-Controller zwischen den
+  Beauty-Geräten. Gefunden hat ihn WebFetch auf der Live-Seite, nicht meine eigene Zählung.
+
 ## 🤖 Kimi-Nutzung — HARTE REGEL (teuer gelernt 2026-07-25)
 Kimi **k3** geht bei STRUKTURIERTEN/mehrfeldigen Prompts (JSON, "DESC:/SEO:"-Format, Artikel) in **Reasoning-Modus**
 → `content` bleibt leer, Helper fällt auf `reasoning_content` zurück = **englischer Denk-Text statt Copy**
