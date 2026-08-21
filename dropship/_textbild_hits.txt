@@ -7121,3 +7121,5 @@ gid://shopify/Product/15493798789505	30->0	Elastische Stiefeletten mit Chunky-He
 gid://shopify/Product/15493799739777	11->0	Chunky-Heel High-Top Boots mit dicker Sohle
 gid://shopify/Product/15493799838081	21->0	Handdampfbügler für Haushalt und Reisen
 gid://shopify/Product/15493799903617	15->0	Kurze Ledergeldbörse für Sie & Ihn
+gid://shopify/Product/15493799969153	11->3	Robuste Casual Sneaker mit Keilabsatz für Herren
+gid://shopify/Product/15493800100225	63->0	Kartenetui aus Krokodilleder
