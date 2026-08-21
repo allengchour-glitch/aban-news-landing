@@ -866,3 +866,4 @@ gid://shopify/Product/15506296570241	nicht-versendbar	Vierfach faltbares Sicherh
 gid://shopify/Product/15506294964609	ok	24-Stunden Kalender Quarz-Herrenuhr
 gid://shopify/Product/15507779682689	ok	Leder-Reise-Rucksack für 17-Zoll-Laptop
 gid://shopify/Product/15507783844225	nicht-versendbar	8-teiliges Drechselwerkzeug-Set im Holzkasten
+gid://shopify/Product/15508352434561	nicht-versendbar	Manueller Handentsafter aus Gusseisen und Edelstahl
