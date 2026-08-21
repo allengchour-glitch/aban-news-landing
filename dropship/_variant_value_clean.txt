@@ -27,3 +27,6 @@ gid://shopify/Product/15448554504577	Farbe	10
 gid://shopify/Product/15448597299585	Farbe	6
 gid://shopify/Product/15448644157825	Farbe	1
 gid://shopify/Product/15448701927809	Farbe	1
+gid://shopify/Product/15448794202497	Farbe	1
+gid://shopify/Product/15448831426945	Farbe	5
+gid://shopify/Product/15448848302465	Farbe	3

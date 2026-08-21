@@ -8810,3 +8810,5 @@ gid://shopify/Product/15497580020097	56->0	Halsband aus Baumwolle mit Metallschn
 gid://shopify/Product/15497580183937	22->0	Halsband und Leine Set Matcha Grün Samt
 gid://shopify/Product/15497590538625	31->0	USB Lade Wecker mit LED Anzeige
 gid://shopify/Product/15497590669697	33->0	Handlicher Vernebler für unterwegs
+gid://shopify/Product/15497590768001	12->0	Kabellose HD-Überwachungskamera
+gid://shopify/Product/15497590997377	27->0	Mini-Ventilator mit Treibsand-Katze
