@@ -27,36 +27,12 @@ DRY = os.environ.get("DRY") == "1"
 EXPORT = os.environ.get("EXPORT", "/tmp/export.jsonl")
 LEDGER = "dropship/_farbwerte_de.txt"
 
-FARBE = {
-    # Grundfarben
-    "black": "Schwarz", "white": "Weiss", "red": "Rot", "blue": "Blau", "green": "Grün",
-    "yellow": "Gelb", "grey": "Grau", "gray": "Grau", "pink": "Pink", "purple": "Lila",
-    "brown": "Braun", "beige": "Beige", "gold": "Gold", "silver": "Silber", "orange": "Orange",
-    "navy": "Marineblau", "khaki": "Khaki", "violet": "Violett", "ivory": "Elfenbein",
-    "coffee": "Kaffeebraun", "cream": "Creme", "nude": "Nude", "camel": "Camel",
-    "turquoise": "Türkis", "burgundy": "Bordeaux", "apricot": "Aprikose",
-    "champagne": "Champagner", "lavender": "Lavendel", "rose": "Rosé",
-    "multicolor": "Bunt", "multicolour": "Bunt", "multi": "Bunt", "clear": "Transparent",
-    "transparent": "Transparent",
-    # Zusammensetzungen
-    "dark gray": "Dunkelgrau", "dark grey": "Dunkelgrau",
-    "light gray": "Hellgrau", "light grey": "Hellgrau",
-    "dark blue": "Dunkelblau", "light blue": "Hellblau", "sky blue": "Himmelblau",
-    "deep blue": "Dunkelblau", "navy blue": "Marineblau", "sapphire blue": "Saphirblau",
-    "lake blue": "Seeblau", "peacock blue": "Pfauenblau", "denim blue": "Jeansblau",
-    "dark green": "Dunkelgrün", "light green": "Hellgrün", "army green": "Armeegrün",
-    "olive green": "Olivgrün", "mint green": "Mintgrün", "gray green": "Graugrün",
-    "grey green": "Graugrün", "fluorescent green": "Neongrün",
-    "dark red": "Dunkelrot", "wine red": "Weinrot", "rose red": "Rosarot",
-    "bright red": "Leuchtendrot", "purplish red": "Purpurrot", "orange red": "Orangerot",
-    "dark pink": "Dunkelrosa", "light pink": "Rosa", "hot pink": "Pink",
-    "dark brown": "Dunkelbraun", "light brown": "Hellbraun",
-    "dark purple": "Dunkellila", "light purple": "Helllila",
-    "light yellow": "Hellgelb", "milky white": "Milchweiss", "ivory white": "Elfenbeinweiss",
-    "off white": "Cremeweiss", "black and white": "Schwarz-Weiss",
-    "black and gray": "Schwarz-Grau", "black and grey": "Schwarz-Grau",
-    "rose gold": "Roségold", "gun black": "Gunmetal", "matte black": "Mattschwarz",
-}
+# ⚠️ Diese Tabelle lag bis 21.08.2026 VIERMAL im Repo (hier 78 Eintraege, in
+# cj_variant_backfill.mjs nur 27 — der kannte «dark gray» nicht und haengte «Dark Gray»
+# in den Farbwaehler von 51 Produkten, die der Importer sauber deutsch angelegt hatte).
+# Node UND Python lesen jetzt dieselbe Datei. Neue Farben NUR in farben_de.json.
+FARBE = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                    "farben_de.json"), encoding="utf-8"))
 
 
 def gql(q, v=None):
@@ -80,14 +56,25 @@ def gql(q, v=None):
 
 def main():
     kandidaten, statistik = [], Counter()
-    for zeile in open(EXPORT):
-        p = json.loads(zeile)
-        if p["status"] != "ACTIVE":
+    for zeile in open(EXPORT, encoding="utf-8"):
+        try:
+            p = json.loads(zeile)
+        except Exception:
+            continue
+        if not str(p.get("id", "")).startswith("gid://shopify/Product/"):
+            continue
+        # ⚠️ Fehlt `status`, wird NICHT gefiltert. Neuere Exporte fuehren das Feld nicht mehr
+        # mit; ein `p["status"]` warf dort einen KeyError und der Lauf brach in Zeile 1 ab.
+        # Ein DRAFT mitzuuebersetzen schadet nichts — ein Abbruch schon.
+        if p.get("status") not in (None, "ACTIVE"):
             continue
         for o in (p.get("options") or []):
             if (o.get("name") or "").strip().lower() not in ("farbe", "color", "colour"):
                 continue
-            treffer = [v for v in (o.get("values") or [])
+            # Beide Export-Formen: alte Liste aus Zeichenketten ODER neue aus {name:…}.
+            werte = [(v.get("name") if isinstance(v, dict) else v) or ""
+                     for v in (o.get("optionValues") or o.get("values") or [])]
+            treffer = [v for v in werte
                        if v.strip().lower() in FARBE and FARBE[v.strip().lower()] != v.strip()]
             if treffer:
                 kandidaten.append((p["id"], p["title"]))
