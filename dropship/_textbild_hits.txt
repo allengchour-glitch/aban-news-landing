@@ -8490,3 +8490,9 @@ gid://shopify/Product/15496981807489	12->0	G4 Bluetooth Mobile Game Controller
 gid://shopify/Product/15496981873025	42->0	Bequeme Outdoor-Sandalen mit T-Riemen
 gid://shopify/Product/15496981938561	170->0	Kabelloses Gamepad für Xbox One
 gid://shopify/Product/15496982200705	71->0	Joy-Con Handgelenkschlaufen (2er-Pack)
+gid://shopify/Product/15496982397313	60->0	4K HDMI Videospielkonsole
+gid://shopify/Product/15496982593921	130->0	Halsband mit Schleife im Britischen Weihnachts-Stil
+gid://shopify/Product/15496991932801	35->0	Ninja Gamepad für Android, Apple & PC
+gid://shopify/Product/15497043902849	16->1	Reversibles Gamepad
+gid://shopify/Product/15497044427137	44->0	Halsband-Kamera für Haustiere
+gid://shopify/Product/15497045541249	17->0	Damen Pumps mit Chunky-Absatz · Slip-on, runde Zehenform
