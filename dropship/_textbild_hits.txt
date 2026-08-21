@@ -7695,3 +7695,5 @@ gid://shopify/Product/15495117865345	18->0	Elegantes Spitzen-Patchwork Kleid mit
 gid://shopify/Product/15495117963649	12->0	Strand-Sandalen mit Cut-Outs
 gid://shopify/Product/15495118127489	141->0	High-Heel Sandalen mit Riemchen
 gid://shopify/Product/15495118258561	69->1	Modische Sandalen für den Sommer
+gid://shopify/Product/15495118881153	22->3	LED Sport-Brusttasche für Herren
+gid://shopify/Product/15495118979457	51->0	Wandmontiertes Badezimmerregal
