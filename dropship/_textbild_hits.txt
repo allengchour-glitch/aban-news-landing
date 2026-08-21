@@ -7290,3 +7290,12 @@ gid://shopify/Product/15493858099585	38->0	Eisklarer blauer Katzenaugen-Nagelsti
 gid://shopify/Product/15493858132353	13->0	Einfarbige Lauflernschuhe für Baby-Mädchen
 gid://shopify/Product/15493858230657	65->1	30-teiliges Nagelpflege-Set für Zuhause
 gid://shopify/Product/15493858427265	14->0	Ozon-Desinfektionsgerät für Haushalt & Fahrzeug
+gid://shopify/Product/15493858591105	118->0	Solar-Rucksack mit Ladefunktion
+gid://shopify/Product/15493858722177	109->0	Zhuoerya 9er Make-up Pinselset
+gid://shopify/Product/15493858820481	26->0	Multifunktionaler Handmixer für Babynahrung
+gid://shopify/Product/15493858951553	36->0	Wandmontierter 3-Fach Seifenspender
+gid://shopify/Product/15493859017089	22->0	Feuchtigkeitsspendende Seife
+gid://shopify/Product/15493859082625	42->0	Multifunktionaler Induktionsherd
+gid://shopify/Product/15493859148161	28->3	Freckle Pen Repair Blush Two-in-one
+gid://shopify/Product/15493859312001	49->1	19-teiliges Silikon-Küchenhelfer-Set
+gid://shopify/Product/15493859606913	16->0	Faltbarer Outdoor Spirituskocher aus Edelstahl
