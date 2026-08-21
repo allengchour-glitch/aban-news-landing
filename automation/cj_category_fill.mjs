@@ -983,7 +983,12 @@ for(const [cat,label] of grp.cats){
    const r=await sgql(st,SET,{i:input}); const e=r.data?.productSet?.userErrors||[]; const pid=r.data?.productSet?.product?.id;
    if(e.length||!pid){console.log('  ✗',title.slice(0,30),JSON.stringify(e).slice(0,80));continue;}
    laufSlugs.add(slugStamm(title));
-   const media=imgs.slice(1).map(u=>({originalSource:u,mediaContentType:'IMAGE'}));
+   // Alt gleich beim Anhängen mitgeben — genauso wie es cj_sku_import.mjs und
+   // cj_trending_import.mjs seit jeher tun. NUR HIER fehlte es, und genau dieser Importer
+   // ist der CJ-Grind mit ~2'000 Produkten am Tag. Zweite Reihe ist `altTexte()` weiter
+   // unten, die nach dem Umsortieren des Hauptbildes prüft, ob wirklich jedes Bild eines hat.
+   const media=imgs.slice(1).map((u,i)=>({originalSource:u,mediaContentType:'IMAGE',
+     alt:(title+' – Bild '+(i+2)+' | LuxeStyle').slice(0,120)}));
  if(media.length)await sgql(st,MED,{id:pid,m:media});
    // ⚠️ BILD-QUITTUNG VOR DEM VERÖFFENTLICHEN (11.08.2026). Shopify lädt Bilder asynchron
    // nach; scheitern ALLE, bleibt `mediaCount` auf 7 stehen, aber `featuredMedia` ist null.

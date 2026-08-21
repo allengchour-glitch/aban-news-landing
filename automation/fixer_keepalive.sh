@@ -386,6 +386,29 @@ while true; do
       echo "$(date -u +%H:%M) tierschutz_guard gestartet"
     fi
   fi
+  # 🏷️ BILD-ALT-TEXTE der Neuimporte, einmal täglich über die letzten Tage (20.08.2026).
+  # Warum zusätzlich zu `alt_text_backfill.mjs` weiter unten: der sortiert CREATED_AT
+  # ABSTEIGEND und merkt sich einen Cursor. Neue Produkte entstehen aber genau VORNE in
+  # dieser Sortierung — also hinter dem Cursor, der dort längst vorbeigelaufen ist. Ein
+  # Neuestes-zuerst-Sweep mit Cursor kann deshalb NIE etwas sehen, was nach seinem Start
+  # angelegt wurde. Am 18.08. um 23:41 schrieb er zudem «FERTIG» ins Log, und der
+  # ^FERTIG-Test im Node-Block startet einen so quittierten Lauf nie wieder. Ab da lief kein
+  # Alt-Text-Nachfüller mehr, während der CJ-Grind täglich rund 2'000 Produkte nachlegte:
+  # 5'739 aktive Produkte ab dem 17.08. trugen je genau EINEN Alt-Text statt sechs bis acht,
+  # und bei rund 9 % von ihnen war ausgerechnet das HAUPTBILD das leere — das Bild der
+  # Kollektionskachel, des Warenkorbs, der Google-Bildersuche und des Merchant-Feeds.
+  # Dieser Lauf arbeitet deshalb über ein ZEITFENSTER gegen LIVE statt über einen Cursor
+  # (dieselbe Bauart wie medizin_zweck_guard) und kennt kein dauerhaftes Erledigt-Zeichen.
+  AT=/tmp/alt_texte_nachziehen.log
+  if [ -f "$REPO/automation/alt_texte_nachziehen.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$AT" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid bash -c \
+          "exec 9>/tmp/lock_alt_fenster.lock; flock -n 9 || exit 0; exec python3 automation/alt_texte_nachziehen.py" \
+          >> "$AT" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) alt_texte_nachziehen gestartet"
+    fi
+  fi
   # DESIGNZWANG der «Selbst gestalten»-Produkte, einmal täglich nachziehen (14.08.2026).
   # Der Schutz liegt in vier Theme-Dateien (blocks/buy-buttons, sections/product-information,
   # snippets/quick-add, snippets/cart-summary). Ein Horizon-Update überschreibt genau solche

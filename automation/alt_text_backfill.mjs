@@ -3,6 +3,23 @@
  * Alt = "<Produkttitel> – Bild N | LuxeStyle". Nur Bilder OHNE Alt werden angefasst (idempotent).
  * ENV: SHOPIFY_CLIENT_ID/SECRET · [LIMIT=1500 Produkte/Lauf] · [DRY=1]
  * Resumierbar via Cursor-Datei dropship/_alt_backfill_cursor.txt.
+ *
+ * ⚠️ DIESER LAUF ERREICHT NEUE PRODUKTE NIE (erkannt 20.08.2026). Er sortiert CREATED_AT
+ * ABSTEIGEND und hält einen Cursor fest. Neu angelegte Ware entsteht aber genau VORNE in
+ * dieser Sortierung — also hinter dem Cursor, der dort längst vorbeigelaufen ist. Ein
+ * Neuestes-zuerst-Sweep mit Cursor ist damit blind für alles, was nach seinem Start
+ * entsteht. Am 18.08. um 23:41 hat er ausserdem «FERTIG: Katalog-Ende erreicht» ins Log
+ * geschrieben; `fixer_keepalive.sh` überspringt jeden Node-Lauf, dessen Log mit ^FERTIG
+ * beginnt — dauerhaft. Beides zusammen hiess: ab dem 18.08. füllte niemand mehr Alt-Texte,
+ * obwohl der CJ-Grind täglich ~2'000 Produkte nachlegte. Ergebnis waren 5'739 aktive
+ * Produkte mit je EINEM Alt-Text statt sechs bis acht.
+ * Für den historischen Katalog ist dieser Lauf richtig und tatsächlich durch. Die laufende
+ * Abdeckung NEUER Ware macht `automation/alt_texte_nachziehen.py` (Zeitfenster gegen LIVE,
+ * täglich im Aufseher) — und seit dem 20.08. setzt `cj_category_fill.mjs` die Alt-Texte
+ * schon beim Anlegen, für ALLE Bilder und erst, nachdem das Hauptbild feststeht.
+ * Wer hier das ^FERTIG aus /tmp/alt_text_backfill.log löscht, startet einen vollen
+ * 41'000-Produkte-Sweep neu — das ist nur nach einer REGEL-Änderung sinnvoll (neues Schema,
+ * neue Felder), denn dann ist das alte Erledigt-Zeichen ohnehin wertlos.
  */
 import fs from 'node:fs';
 const SHOP = 'au3j0y-hq.myshopify.com', API = '2025-01';
