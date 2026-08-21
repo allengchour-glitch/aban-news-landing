@@ -7037,3 +7037,5 @@ gid://shopify/Product/15491507683713	26->1	Halskette mit Buchstaben-Anhänger, v
 gid://shopify/Product/15491976561025	22->0	Hundehalsbänder
 gid://shopify/Product/15491983540609	126->0	Kurznagel-Art
 gid://shopify/Product/15491983606145	90->0	French Black Armour Wearable Nails
+gid://shopify/Product/15492092494209	8->3	PGM Golfschläger (Holz) für Damen und Herren
+gid://shopify/Product/15492129816961	35->0	Matter, feuchtigkeitsspendender Lippenstift
