@@ -7644,3 +7644,12 @@ gid://shopify/Product/15495106986369	101->0	Futterspender-Kreisel für Katze
 gid://shopify/Product/15495107182977	20->0	Elektrische Spielzeugmaus für Katzen
 gid://shopify/Product/15495107412353	36->0	Hipster Mini Crossbody Bag
 gid://shopify/Product/15495108592001	12->0	Geburtsstein-Perlenarmband
+gid://shopify/Product/15495108854145	44->0	Interaktives Latex-Molarspielzeug
+gid://shopify/Product/15495109050753	30->0	Quietschender Beiss-Stick für Hunde
+gid://shopify/Product/15495109673345	8->0	4-in-1 Ladestation für Switch Joy-Cons
+gid://shopify/Product/15495109804417	152->3	Vintage Canvas Rucksack für Alltag & Reise
+gid://shopify/Product/15495109869953	31->1	Kompakte 10000 mAh Powerbank mit Wireless Charging
+gid://shopify/Product/15495109902721	95->2	Python-Armband
+gid://shopify/Product/15495110001025	67->3	Mini Wireless CarPlay Adapter
+gid://shopify/Product/15495110033793	8->0	Dreifach-Ring mit Zirkonia-Pflasterung
+gid://shopify/Product/15495110164865	16->0	Moissanite Ring mit 2 Karat Smaragd und 925er Silber
