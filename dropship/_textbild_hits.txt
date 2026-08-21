@@ -8685,3 +8685,8 @@ gid://shopify/Product/15497446785409	32->0	Thermo-Hygrometer für Innen- und Aus
 gid://shopify/Product/15497447047553	79->0	Milchtee Tassenunterlage
 gid://shopify/Product/15497447080321	8->0	Ultraschall-Luftbefeuchter, Einzelstrahl
 gid://shopify/Product/15497447178625	25->0	Lockenstab für Pony und feines Haar
+gid://shopify/Product/15497447670145	121->1	Loose Herren Kurzarmhemd mit Blumenprint
+gid://shopify/Product/15497447768449	48->3	Kurzarmhemd aus Eisseide mit Allover-Print
+gid://shopify/Product/15497447801217	32->2	Glätteisen mit Warmluft und Lockenfunktion
+gid://shopify/Product/15497448194433	99->0	Reflektierendes P-Kettenhalsband für Hunde
+gid://shopify/Product/15497448391041	13->0	Anti-Biss Halskrause für Hunde und Katzen
