@@ -72,6 +72,9 @@ def clean(v):
     if rest: toks = rest
     n = ' '.join(toks)
     n = re.sub(r'\s{2,}', ' ', n)          # «Army  Green» → «Army Green»
+    # Ein Tabulator hinter dem Trennstrich («Green-\tWomen S») wurde sonst zu «Green- Women S».
+    # Die Geschwisterwerte heissen «Green-Men S» — also den Strich direkt anschliessen.
+    n = re.sub(r'(\w)-\s+(\w)', r'\1-\2', n)
     n = re.sub(r'\s*-\s*-+\s*', ' - ', n)
     n = n.strip(' -,;/\t')
     if not n or len(n) < 2: return None     # nichts Brauchbares uebrig → unveraendert lassen
