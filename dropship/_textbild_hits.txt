@@ -7368,3 +7368,4 @@ gid://shopify/Product/15493873009025	9->3	Klassisches Langarmshirt mit Streifen
 gid://shopify/Product/15493873074561	46->0	Zauberer Robe Modell Bausteine
 gid://shopify/Product/15493873140097	11->0	Kabelbinder-Halterung für Wandmontage
 gid://shopify/Product/15493873369473	9->0	Automatischer Seifenspender mit Sensor
+gid://shopify/Product/15493873598849	35->3	Multifunktionale elektrische Mühle
