@@ -8968,3 +8968,9 @@ gid://shopify/Product/15499782521217	31->0	Universal Ladegerät für MacBook
 gid://shopify/Product/15499782619521	125->0	Chinesisches Sofa-Kissen
 gid://shopify/Product/15499782816129	8->0	Schwarze Sportschuhe
 gid://shopify/Product/15499783209345	45->0	Rutschfeste atmungsaktive Wanderschuhe für Herren
+gid://shopify/Product/15499783405953	110->2	Sommermorgen-Teppichüberzug
+gid://shopify/Product/15499783766401	56->0	Khakischuhe mit Non-Slip-Sohle
+gid://shopify/Product/15499784257921	56->0	Leichte, rutschfeste Upstream-Sneaker
+gid://shopify/Product/15499785896321	35->1	Komfortable Slip-on Schuhe
+gid://shopify/Product/15499786289537	48->2	Schuh aus Leder mit atmungsaktiver Sohle
+gid://shopify/Product/15499805786497	39->0	Winterkissen
