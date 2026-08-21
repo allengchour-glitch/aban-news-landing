@@ -7656,3 +7656,26 @@ gid://shopify/Product/15495110164865	16->0	Moissanite Ring mit 2 Karat Smaragd u
 gid://shopify/Product/15495111377281	37->1	Bluetooth Gamepad für iOS – Metall-Buttons
 gid://shopify/Product/15495111606657	80->0	Ärmelloses Off-Shoulder Maxi-Kleid
 gid://shopify/Product/15495111803265	71->1	Multifunktions-Sportuhr für Herren
+gid://shopify/Product/15495112163713	9->0	Elegantes Etuikleid mit Reverskragen und Gürtel
+gid://shopify/Product/15495112196481	11->0	Bluetooth Gamepad mit Ein-Tasten-Funktion
+gid://shopify/Product/15495112294785	9->0	Hundebett-Set "Simple Bear"
+gid://shopify/Product/15495112327553	14->0	Elegantes Hemdblusenkleid mit Rüschensaum
+gid://shopify/Product/15495112425857	18->0	Haustierbett aus Holz für Katzen und kleine Hunde
+gid://shopify/Product/15495112655233	55->0	Resort-Kleid mit V-Ausschnitt
+gid://shopify/Product/15495112786305	18->0	Vierjahreszeiten Katzen- und Hundebett
+gid://shopify/Product/15495112982913	23->3	Kissenhülle aus Baumwollleinen, nordischer Stil
+gid://shopify/Product/15495113245057	9->0	Rundes Baumwoll-Kissen aus Canvas
+gid://shopify/Product/15495113343361	121->0	Kurzarmhemd mit Feinkaro und Destroyed-Saum
+gid://shopify/Product/15495113605505	127->1	Samt Kissenhülle mit Geometrischem Muster
+gid://shopify/Product/15495114097025	22->0	Herren Mantel Wasserfest & Wattiert
+gid://shopify/Product/15495114555777	56->2	Aquarellfarben-Set mit 12 Glitzerfarben
+gid://shopify/Product/15495114752385	10->0	Interaktiver Plüschvogel für Katzen
+gid://shopify/Product/15495114850689	25->1	Oktopus Plüsch-Hundespielzeug
+gid://shopify/Product/15495115014529	34->3	Nail Basic Gel-Set
+gid://shopify/Product/15495115047297	36->0	Plüsch-Elefant Handyhüllen-Hundespielzeug
+gid://shopify/Product/15495115276673	39->1	Nagelmodellage-Gel
+gid://shopify/Product/15495115342209	102->2	Multifunktionaler Frühstücks-Automat
+gid://shopify/Product/15495115374977	23->3	Smartes Velo-Frontlicht-Set mit Sensor
+gid://shopify/Product/15495115407745	31->0	Kleine Möwe LED-Nachtlicht
+gid://shopify/Product/15495115440513	42->0	USB-Velo-Rücklicht mit 6 Modi
+gid://shopify/Product/15495115604353	9->0	Luftreiniger mit Mückenlampe und CO2-Sensor

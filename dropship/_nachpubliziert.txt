@@ -221,3 +221,4 @@ gid://shopify/Product/15508425408897	brogue-leder-business-schuhe-fur-herren-622
 gid://shopify/Product/15508425474433	wasserdichte-herrenuhr-mit-kalender-und-siliko-968960	Wasserdichte Herrenuhr mit Kalender und Silikonband
 gid://shopify/Product/15508453425537	wlan-infrarot-bewegungsmelder-1ba331	WLAN Infrarot Bewegungsmelder
 gid://shopify/Product/15508453491073	multifunktionales-kissen-fur-auto-und-buro-796224	Multifunktionales Kissen für Auto und Büro
+gid://shopify/Product/15508514537857	herren-rucksack-crazy-horse-leder-3455d4	Herren Rucksack Crazy Horse Leder
