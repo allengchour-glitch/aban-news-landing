@@ -111,3 +111,4 @@ gid://shopify/Product/15412969406849	cj-ohne-antwort
 gid://shopify/Product/15412976681345	cj-ohne-antwort
 gid://shopify/Product/15412976714113	cj-ohne-antwort
 gid://shopify/Product/15412976746881	cj-ohne-antwort
+gid://shopify/Product/15412976845185	cj-ohne-antwort

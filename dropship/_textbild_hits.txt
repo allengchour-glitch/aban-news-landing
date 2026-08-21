@@ -8604,3 +8604,6 @@ gid://shopify/Product/15497432269185	87->0	Jeans-Trägerkleid für Damen
 gid://shopify/Product/15497432334721	19->0	Profi Keramik Glätteisen 2-in-1
 gid://shopify/Product/15497432498561	11->0	Klassische, wasserdichte Quarzuhr mit Datumsanzeige
 gid://shopify/Product/15497432629633	87->0	Digitales Leinen-Malset: Dein eigenes Ölbild
+gid://shopify/Product/15497432727937	101->0	Digitales Malen nach Zahlen mit Leinwand
+gid://shopify/Product/15497432859009	10->0	Edle Quarzuhr für Sie & Ihn
+gid://shopify/Product/15497432957313	85->0	Digitales Malen nach Zahlen: Eigenes Ölgemälde
