@@ -7604,3 +7604,9 @@ gid://shopify/Product/15495086539137	32->0	Hemdblusenkleid mit Taillengürtel
 gid://shopify/Product/15495086571905	41->0	V4 Drohne mit 4K Kamera
 gid://shopify/Product/15495086637441	73->0	Elegantes Hemdblusenkleid mit Taillengürtel
 gid://shopify/Product/15495086670209	8->3	RC Vogel Drohne – Ferngesteuerter Flugspass
+gid://shopify/Product/15495087260033	13->0	Elektrischer Haarschneider
+gid://shopify/Product/15495087554945	26->0	Damen Langarmshirt mit Plissée-Saum
+gid://shopify/Product/15495087718785	51->0	Bartpflege-Set mit Wachs, Öl und Bürste
+gid://shopify/Product/15495087817089	30->1	Automatischer Haarstyler mit Keramik-Heizelement
+gid://shopify/Product/15495087882625	14->0	Multifunktionaler Haarschneider
+gid://shopify/Product/15495087980929	12->0	Mini-Haarglätter
