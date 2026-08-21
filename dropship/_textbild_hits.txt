@@ -8043,3 +8043,5 @@ gid://shopify/Product/15496264384897	43->0	Multifunktionale Ladestation für Nin
 gid://shopify/Product/15496264450433	28->2	Damen Plateau-Sneaker mit Kreuzriemen
 gid://shopify/Product/15496264810881	53->1	Ladegerät für Xiaomi M365 E-Scooter
 gid://shopify/Product/15496269595009	21->1	Beleuchtetes Gaming Tastatur-Maus-Set
+gid://shopify/Product/15496270184833	73->3	Grosser, wasserdichter Canvas Rucksack
+gid://shopify/Product/15496270283137	41->1	15-teiliges Make-up Pinselset Marmor-Optik
