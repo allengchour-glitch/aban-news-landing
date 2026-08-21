@@ -7034,3 +7034,6 @@ gid://shopify/Product/15490775646593	62->0	Armband mit unregelmässigen schwarze
 gid://shopify/Product/15491160703361	90->1	Casual Schuhe · Herren
 gid://shopify/Product/15491413410177	26->3	Wasserdichtes Farbdisplay Pedometer Armband
 gid://shopify/Product/15491507683713	26->1	Halskette mit Buchstaben-Anhänger, vergoldet
+gid://shopify/Product/15491976561025	22->0	Hundehalsbänder
+gid://shopify/Product/15491983540609	126->0	Kurznagel-Art
+gid://shopify/Product/15491983606145	90->0	French Black Armour Wearable Nails
