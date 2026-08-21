@@ -8607,3 +8607,31 @@ gid://shopify/Product/15497432629633	87->0	Digitales Leinen-Malset: Dein eigenes
 gid://shopify/Product/15497432727937	101->0	Digitales Malen nach Zahlen mit Leinwand
 gid://shopify/Product/15497432859009	10->0	Edle Quarzuhr für Sie & Ihn
 gid://shopify/Product/15497432957313	85->0	Digitales Malen nach Zahlen: Eigenes Ölgemälde
+gid://shopify/Product/15497433219457	13->1	Kabelloser Automatischer Lockenstab mit USB-Ladefunktion
+gid://shopify/Product/15497433416065	47->0	Kabellose Powerbank mit hoher Kapazität
+gid://shopify/Product/15497433448833	35->2	Kabelloser Mini-Haartrockner mit 800W
+gid://shopify/Product/15497434497409	27->0	Kabellose Ladeuhr mit Wecker
+gid://shopify/Product/15497434726785	17->0	Niedliches Wolken-Regenbogen-Kissen
+gid://shopify/Product/15497435316609	27->0	Vintage Dessertteller, Keramik
+gid://shopify/Product/15497435382145	56->0	Anti-Leck Halskrause für Katzen
+gid://shopify/Product/15497435513217	36->0	Halsband Cartoon-Farben für Hunde
+gid://shopify/Product/15497435578753	21->0	Tischtennisschläger für Einsteiger (Kinder)
+gid://shopify/Product/15497435611521	38->3	Kabelloser Kapsel-Reiniger für Obst & Gemüse
+gid://shopify/Product/15497435709825	42->1	Silikon-Gewichtsarmband für Yoga & Fitness
+gid://shopify/Product/15497435873665	117->0	Halsband aus Tauchschaum, reflektierend
+gid://shopify/Product/15497435971969	13->3	Yoga Pilates Set
+gid://shopify/Product/15497436037505	32->2	RC-Flugzeug mit Kamera für Kinder
+gid://shopify/Product/15497436135809	16->0	LED Leuchtanhänger für Hunde
+gid://shopify/Product/15497436332417	10->0	Tragbarer Mini-Entsafter
+gid://shopify/Product/15497436397953	104->0	Verstellbares Trainingshalsband für Hunde
+gid://shopify/Product/15497436660097	15->0	Street View Bausteine Desktop Modell
+gid://shopify/Product/15497436692865	10->0	Retro Chunky Heel Slingback Sandalen
+gid://shopify/Product/15497436725633	25->1	Doppel-Gaskocher für Camping und Outdoor
+gid://shopify/Product/15497436758401	23->0	Vielseitige Mesh-Sandalen mit eckiger Zehenpartie
+gid://shopify/Product/15497436922241	17->2	Damen Plateau-Sandalen mit Hohlmuster
+gid://shopify/Product/15497436987777	57->0	Rhinestone Bow High Heel Sandalen
+gid://shopify/Product/15497437151617	19->0	Elektrisches Schmetterling Katzen-Puzzle
+gid://shopify/Product/15497437184385	18->0	Einfarbige One-Strap Sandalen für Outdoor
+gid://shopify/Product/15497437348225	20->2	Interaktives 9-Loch Versteckspiel für Katzen
+gid://shopify/Product/15497437544833	87->0	Sonnenhut für Hunde und Katzen
+gid://shopify/Product/15497437938049	19->2	Weisses Langarmshirt im Casual-Stil
