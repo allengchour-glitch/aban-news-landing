@@ -7299,3 +7299,56 @@ gid://shopify/Product/15493859082625	42->0	Multifunktionaler Induktionsherd
 gid://shopify/Product/15493859148161	28->3	Freckle Pen Repair Blush Two-in-one
 gid://shopify/Product/15493859312001	49->1	19-teiliges Silikon-Küchenhelfer-Set
 gid://shopify/Product/15493859606913	16->0	Faltbarer Outdoor Spirituskocher aus Edelstahl
+gid://shopify/Product/15493859803521	72->0	Wäschekorb für Schrank & Regal, Himmelblau
+gid://shopify/Product/15493859836289	13->2	Samtkleid mit V-Ausschnitt und Reissverschluss
+gid://shopify/Product/15493860196737	47->0	Gestreiftes Langarm-Shirt
+gid://shopify/Product/15493860950401	136->3	Kreuzstich-Set: Landschaft mit Hütte (40x85cm)
+gid://shopify/Product/15493861147009	52->0	Silikon-Dichtstoff für Tür- und Fensterrahmen
+gid://shopify/Product/15493861212545	78->0	Damen Body mit Spitze und Cut-Outs
+gid://shopify/Product/15493861310849	148->0	Elegantes Etuikleid mit Volantsaum
+gid://shopify/Product/15493861441921	85->0	Digitales Ölgemälde nach Zahlen – personalisierbar
+gid://shopify/Product/15493861572993	110->0	Digitales Malen nach Zahlen
+gid://shopify/Product/15493861704065	150->0	Digitales Leinwandbild zum Ausmalen
+gid://shopify/Product/15493861933441	94->1	DIY Digital Painting Set
+gid://shopify/Product/15493861966209	15->1	Glätteisen & Lockenstab 2-in-1 mit Keramikplatten
+gid://shopify/Product/15493862293889	153->0	Damen Hoodie mit Ahornblatt-Camouflage-Print
+gid://shopify/Product/15493862556033	100->0	5-in-1 Warmluftstyler für vielseitiges Haarstyling
+gid://shopify/Product/15493862785409	16->0	Universal All-in-one Reiseadapter
+gid://shopify/Product/15493862850945	59->0	Edelstahl-Armreifen für Paare
+gid://shopify/Product/15493863014785	9->0	Gestreiftes Baumwollkissen, mehrfarbig
+gid://shopify/Product/15493863145857	9->3	Tatami-Rückenkissen für Senioren
+gid://shopify/Product/15493863244161	166->0	Vergoldetes Edelstahlarmband
+gid://shopify/Product/15493863375233	26->1	Gestreifter Metallring, Kupfer vergoldet
+gid://shopify/Product/15493863408001	50->0	Plüsch-Sitzkissen mit Karomuster
+gid://shopify/Product/15493863440769	50->0	Henley Langarm-Hoodie mit Reissverschluss
+gid://shopify/Product/15493863506305	151->1	Diamant-Würfelzucker Ring für Damen
+gid://shopify/Product/15493863539073	12->1	Krabbelmatte im Nordic Style
+gid://shopify/Product/15493863997825	8->1	Herren-Hoodie mit Fleecefutter
+gid://shopify/Product/15493864292737	15->1	Life Tree Lederarmband für Apple Watch
+gid://shopify/Product/15493865046401	24->0	Wasserdichtes Schwimm-Armband mit Herzfrequenz- und Schlaf-T
+gid://shopify/Product/15493865111937	50->3	Hochwertige Keramik-Box für Papiertücher
+gid://shopify/Product/15493865243009	178->0	Herren Fleece-Pullover mit Stehkragen
+gid://shopify/Product/15493865603457	24->2	Quarz-Armbanduhr mit Kalenderfunktion
+gid://shopify/Product/15493865636225	16->1	Elektrische Kaffeemühle, tragbar
+gid://shopify/Product/15493865963905	122->2	Lammfell-Sofaüberwurf, einfarbig, rutschfest
+gid://shopify/Product/15493866029441	50->0	Sofakissen bestickt, einfarbig
+gid://shopify/Product/15493866062209	25->0	Donut-Sitzkissen für Kinderzimmer
+gid://shopify/Product/15493869502849	28->1	Bestickter Kissenbezug mit Blumenmuster
+gid://shopify/Product/15493869568385	132->3	Zoreya 10 Make-up Pinselset «Silver Foxtail»
+gid://shopify/Product/15493869633921	36->0	Herren Umhängetasche im Retro-Stil
+gid://shopify/Product/15493869764993	91->0	Multifunktionale Reise- und Gepäcktasche
+gid://shopify/Product/15493869896065	84->0	Denim Schultertasche mit grosser Kapazität
+gid://shopify/Product/15493870059905	57->0	Rundgriff-Massagekamm aus grünem Sandelholz
+gid://shopify/Product/15493870158209	35->0	Grosse Umhängetasche für Alltag und Freizeit
+gid://shopify/Product/15493870223745	42->0	Multifunktionales 2-in-1 Smart Armband mit Anruffunktion
+gid://shopify/Product/15493870420353	11->0	Bart- und Haarstyling-Kamm mit Lockenfunktion
+gid://shopify/Product/15493870518657	55->2	Wasserdichte Reisetasche für Outdoor & Sport
+gid://shopify/Product/15493870551425	10->0	Ladestation für Haarschneidemaschinen
+gid://shopify/Product/15493870584193	21->0	Leichte Umhängetasche für Alltag und Reisen
+gid://shopify/Product/15493870616961	77->0	Lederarmband mit Schleifenschnalle für Apple Watch
+gid://shopify/Product/15493870649729	9->3	Retro Leder Rucksack für Freizeit & Reisen
+gid://shopify/Product/15493870682497	91->1	LED Display Anion Glättbürste
+gid://shopify/Product/15493870748033	25->0	Smarter Zählring mit OLED-Display
+gid://shopify/Product/15493870813569	9->1	Grosse Umhängetasche im koreanischen Stil
+gid://shopify/Product/15493871174017	19->0	Massage-Kamm mit Lichttherapie & Vibration
+gid://shopify/Product/15493871239553	55->0	2-in-1 Bluetooth Smartwatch mit Herzfrequenz
