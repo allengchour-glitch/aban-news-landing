@@ -7844,3 +7844,8 @@ gid://shopify/Product/15495192674689	42->1	Baumwoll-Kissenbezug, getuftet und be
 gid://shopify/Product/15495194018177	40->0	Herzförmige Glas Etagere für Kuchen & Desserts
 gid://shopify/Product/15495194083713	19->0	Anti-Rutsch Yoga-Matte Wildlederoptik
 gid://shopify/Product/15495194214785	9->3	Glasobstschale
+gid://shopify/Product/15495194345857	131->0	Wolldecke mit Hahnentrittmuster und Quasten
+gid://shopify/Product/15495194509697	9->0	Elegantes Damen Herbst-/Winterkleid
+gid://shopify/Product/15495194542465	57->0	Nordische Strickdecke mit Quasten
+gid://shopify/Product/15495194608001	10->0	Etagere „Minimalist Elegance“
+gid://shopify/Product/15495194837377	13->1	Multifunktionales Baumwoll-Kissen für Kinder
