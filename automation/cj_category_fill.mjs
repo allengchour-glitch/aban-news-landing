@@ -190,7 +190,44 @@ function buildFashion(d){
   if(v.img&&/^https/.test(v.img)) bilder[sku]=v.img;
   variants.push({optionValues:ov,price:chf(v.price, v.weight||v.variantWeight),inventoryItem:{sku,tracked:false,cost:kosten(v.price, v.weight||v.variantWeight)},inventoryPolicy:'CONTINUE',...(vmf.length?{metafields:vmf}:{})});
   if(variants.length>=100)break;}
- return {productOptions:opts.map(o=>({name:o.name,values:o.values.map(x=>({name:x}))})),variants,bilder};
+
+ // 💥 PREIS-AUSREISSER-WACHE (21.08.2026 — teuer gefunden an der «Sommer Fashion
+ // Strand-Sandale» 15503948120449). CJ liefert je Variante einen eigenen Preis, und der
+ // wurde bisher UNGEFILTERT übernommen. Ergebnis live: dieselbe Sandale, dieselbe Farbe,
+ // kostete in Grösse 37 **CHF 1'332.90** und in Grösse 36/39/40/41 CHF 65.90 — das
+ // Zwanzigfache, ACTIVE und in ALLEN sechs Kanälen inkl. Google & YouTube publiziert.
+ // Die Kollektionsseite meldete daraufhin «Der höchste Preis ist CHF 1,332.90» und
+ // verzerrte den Preisfilter der ganzen Sandalen-Kollektion. Der Fehler ist NICHT
+ // einmalig: das Produkt entstand am 19.08. aus dem laufenden Grind, dieselbe Bauart
+ // fand sich am «Seiden-Bettwäsche-Set» (66.90 vs. 500.90 für eine Bettbreite mehr).
+ //
+ // ⚠️ «Teurer als der Median» ALLEIN ist als Regel FALSCH — im Probelauf hätte sie den
+ // «V1SPro Programmer» (15480571494785) zerstört: dort ist das Hauptgerät CHF 361.90 und
+ // die Erweiterungsmodule kosten ab CHF 18.90. Der Median liegt bei 28.90, das Hauptgerät
+ // wäre auf 28.90 heruntergezogen worden — aus einer Wache wäre ein Millionengrab
+ // geworden. Zubehör-Varianten sind ECHTE andere Artikel, kein Datenfehler.
+ //
+ // Der Unterschied ist die LÜCKE, nicht der Abstand zum Median: Ein Datenfehler springt
+ // aus dem Nichts (147.90 → 1'332.90 = 9,0×; 66.90 → 500.90 = 7,5×), eine echte
+ // Zubehör-Staffel steigt in Stufen (93.90 → 146.90 → 342.90 → 361.90, grösster Sprung
+ // 2,3×). Darum gilt beides zugleich: mehr als 3× Median UND mehr als 4× der
+ // nächstkleinere vorkommende Preis. Getroffen wird dann auf den Median gezogen, und das
+ // Produkt trägt `preis-ausreisser-korrigiert`, damit die Korrektur auffindbar bleibt.
+ let preisFix=0;
+ if(variants.length>2){
+   const zahl=variants.map(v=>parseFloat(v.price)).filter(x=>x>0).sort((a,b)=>a-b);
+   const med=zahl[Math.floor(zahl.length/2)];
+   const distinct=[...new Set(zahl)].sort((a,b)=>a-b);
+   for(const v of variants){
+     const pr=parseFloat(v.price);
+     if(!(med>0&&pr>med*3)) continue;
+     const drunter=distinct.filter(x=>x<pr).pop();       // nächstkleinerer vorkommender Preis
+     if(!(drunter>0&&pr>drunter*4)) continue;            // stufenweise Staffel → echtes Zubehör, NICHT anfassen
+     console.log(`  ⚠️ Preis-Ausreisser: ${v.inventoryItem?.sku||''} CHF ${v.price} (Median ${med.toFixed(2)}, darunter ${drunter.toFixed(2)}) → ${med.toFixed(2)}`);
+     v.price=med.toFixed(2); preisFix++;
+   }
+ }
+ return {productOptions:opts.map(o=>({name:o.name,values:o.values.map(x=>({name:x}))})),variants,bilder,preisFix};
 }
 
 const GROUPS={
@@ -688,6 +725,7 @@ for(const [cat,label] of grp.cats){
    const variants=fash?fash.variants:[{optionValues:[{optionName:'Variante',name:'Standard'}],price:chf(p.sellPrice, p.productWeight||p.variantWeight),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false,cost:kosten(p.sellPrice, p.productWeight||p.variantWeight)},inventoryPolicy:'CONTINUE'}];
    const katTag=(LABELTAG.find(([re,,verbot])=>re.test(label||'')&&!(verbot&&verbot.test(label||'')))||[])[1];
    let tagsFinal=[...(process.env.WAREHOUSE?[...grp.tags,'eu-lager','schnelle-lieferung']:grp.tags),...(katTag?[katTag]:[])];
+   if(fash?.preisFix) tagsFinal=[...tagsFinal,'preis-ausreisser-korrigiert'];
    // Titel-Wache: Haustier-/Plüsch-Artikel aus CJ-Elektronik/Gadget-Kategorien nicht als Elektronik taggen (Hundehalsband-Falle 2026-08-04)
    let typeFinal=grp.type;
    if(/hundehalsband|\bhalsband\b|hundeleine|hundegeschirr|katzenspielzeug|kratzbaum|katzenklo|futternapf|hundebett|katzenbett/i.test(title)&&!/smart|gps|led|leucht/i.test(title)){
