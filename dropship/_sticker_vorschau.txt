@@ -257,3 +257,8 @@ gid://shopify/Product/15427245375873	14,0 × 13,9 cm	Sticker «Zodiac Leo» · 1
 gid://shopify/Product/15427245408641	14,0 × 13,8 cm	Sticker «Zodiac Libra» · 1 Stück
 gid://shopify/Product/15427245441409	14,0 × 14,0 cm	Sticker «Zodiac Pisces» · 1 Stück
 gid://shopify/Product/15427245474177	12,5 × 14,0 cm	Sticker «Zodiac Sagittarius» · 1 Stück
+gid://shopify/Product/15427245506945	13,3 × 14,0 cm	Sticker «Zodiac Scorpio» · 1 Stück
+gid://shopify/Product/15427245539713	14,0 × 14,0 cm	Sticker «Zodiac Taurus» · 1 Stück
+gid://shopify/Product/15427245572481	14,0 × 14,0 cm	Sticker «Zodiac Virgo» · 1 Stück
+gid://shopify/Product/15427229942145	14,0 × 7,0 cm	Schweiz-Sticker «Matterhorn» · 1 Stück
+gid://shopify/Product/15427240853889	12,1 × 14,0 cm	Sticker «Ladybug2» · 1 Stück
