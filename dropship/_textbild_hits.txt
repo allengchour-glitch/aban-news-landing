@@ -10027,3 +10027,8 @@ gid://shopify/Product/15427243311489	40->2	Sticker «Spray Can» · 1 Stück
 gid://shopify/Product/15427243377025	14->3	Sticker «Squirrel» · 1 Stück
 gid://shopify/Product/15427244097921	18->2	Sticker «Duschaffst» · 1 Stück
 gid://shopify/Product/15449425478017	999->0	Automatischer Kaffeebecher
+gid://shopify/Product/15453771989377	58->0	Kauresistenter Hundespielball
+gid://shopify/Product/15453773005185	37->1	Kau-Spielball für Hunde
+gid://shopify/Product/15453773791617	29->0	Grosser Ultraschall-Luftbefeuchter
+gid://shopify/Product/15453774971265	29->0	Cargohosen für Herren
+gid://shopify/Product/15453775561089	20->0	3D Schriftzug-Print Herren T-Shirt
