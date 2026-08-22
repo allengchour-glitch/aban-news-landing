@@ -4,6 +4,28 @@
 > ~600 kB in einer einzigen IIFE; ohne diese Karte sucht man lange und tritt in
 > Fallen, die hier schon einmal Stunden gekostet haben.
 
+## 🏫🚒 Fremdkoerper aus Gebaeuden geraeumt (2026-08-22)
+- Grep-Anker: `function schulhofAusbau`, `function bahnFest`, `th46_baucontainer`, `th49_rettungswagen`, `th43_loeschfahrzeug`
+- **Der Befund:** 26 Ueberschneidungen, davon zehn Objekte KOMPLETT in einem Gebaeude —
+  Turnhalle ueber der Bahnstrecke, halber Schulhof im Stadthaus, Buerocontainer ebenda,
+  zwei Rettungswagen in der Notaufnahme, ein LKW in der Lagerhalle. Danach 14, und jede
+  verbliebene ist gewollt (Seilbahn), natuerlich (Baumkronen) oder ein Kasten-Artefakt.
+- **`userData.fest` fuer alles an der Strecke** (`bahnFest`): ohne das schob `entwirren()`
+  einen Oberleitungsmast 11 m von seinem Gleis weg — MITTEN IN DEN BAHNHOF. Eine Mastreihe
+  ist vermessene Infrastruktur, kein Deko-Baum.
+- **Festnageln deckt alte Setzfehler auf.** Die Bahnsignale standen seit jeher 0,5 m im
+  Zubringer-Band; `entwirren()` hatte sie jedes Mal stillschweigend herausgeschoben. Wer
+  etwas `fest` macht, muss danach den Korridor-Test neu lesen.
+- **Der Aufraeumer ist kein Ersatz fuer Messen.** `entwirren` meldete `ohnePlatz: 50` — es
+  gab die Ueberschneidungen also auf. Nach dem Umbau: 15. Diese Zahl ist der ehrlichste
+  Indikator dafuer, wie ueberfuellt ein Viertel ist.
+- **Belag und Fussgaengerrouten muessen mitziehen.** Der Hof wurde verlegt, sein
+  Pflaster (`function schule`, PlaneGeometry) und die `fg(...)`-Route lagen danach noch
+  am alten Ort — die Route lief 9 m durch eine Hauswand.
+- **Ein Kasten-Ueberlapp ist nicht immer ein Fehler:** der Oberleitungs-Ausleger ist auf
+  7,5 m Hoehe 11,2 m breit und haengt ueber Bahnsteig und Loeschfahrzeug. Mastfuss frei,
+  Metall 6 m darueber — nicht "aufraeumen".
+
 ## 🛣️⛪🔭 Stadtumbau (2026-08-20)
 - Grep-Anker: `Richtungspfeile auf den ZUFAHRTEN`, `var DOM_X=`, `function kircheDetails`, `dachterrasse`, `panorama:{dauer:36`
 - **Pfeil-Regel:** Pfeile gehoeren auf die ZUFAHRT (Spitze zur Kreuzung), Spurlage aus `ROUTEN` ableiten — nie raten.
@@ -126,6 +148,14 @@ mit künstlichem dt treiben. Genau dafür sind sie exponiert.
   der Fahrbahn. Wer eine Straße verbreitert, muss alles Abhängige mitziehen.
 * **Die Platzsuche kennt kein Wasser.** Ein Haus landete mitten im Seepark-See.
   Wasserflächen selbst ausschließen (Seemitte 0/146 r≈27, Fluss-Band z −94…−87, Meer x<−112).
+* **Grosse Blockersetzungen fressen Nachbarn.** Ein per Python ersetzter Funktionsblock
+  (`schulhofAusbau`) verschluckte die Turnhalle mit, die zwei Edits vorher im selben Lauf
+  geaendert worden war — im Spiel stand danach eine leere Wiese, und die Pruefung merkte
+  nichts (ein FEHLENDES Gebaeude ueberschneidet sich mit nichts). Nach jedem Umbau die
+  Modellzahl vergleichen UND hinschauen.
+* **`bau()` skaliert nur ueber die Hoehe.** Passt ein Gebaeude nicht aufs Grundstueck, ist
+  die Zielhoehe der Hebel: die Turnhalle war auf 8,32 m 26,9 m tief und stand damit auf der
+  Bahnstrecke; auf 6,72 m misst sie 21 m und passt zwischen Ufer und Mastreihe.
 * **Kollisionsfrei ≠ frei.** Eine Standortsuche nur gegen Boxen stellte die Kathedrale
   zwischen die Downtown-Türme. Wer „ringsherum frei" will, braucht einen Freiraum-Radius —
   und muss dabei `scene.children` prüfen, nicht nur `window._gebaeude` (die Türme sind
