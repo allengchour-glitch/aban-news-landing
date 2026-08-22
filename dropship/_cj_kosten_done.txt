@@ -205,3 +205,9 @@ gid://shopify/Product/15421502554497	CHF 55.12	1 Varianten	Kerzenwärmer-Lampe �
 gid://shopify/Product/15421513630081	CHF 20.22	20 Varianten	Sommerkleid «Sole» · Casual Midi, Raglan-Ärmel
 gid://shopify/Product/15421516218753	CHF 21.71	55 Varianten	Blazer «Roma» · Tailliert mit Bindegürtel & Revers
 gid://shopify/Product/15421517889921	CHF 19.92	36 Varianten	Herren-Henley «Waffle» · Waffelstrick, Langarm
+gid://shopify/Product/15421530603905	CHF 19.92	43 Varianten	Strick-Cardigan «Bohème» · Pointelle, Leicht & Off
+gid://shopify/Product/15421564912001	CHF 16.39	8 Varianten	Samt-Cap «Velours» · Retro Baseball-Mütze, verstel
+gid://shopify/Product/15421594501505	CHF 20.80	36 Varianten	Strandkleid «Maré» · Boho-Midi mit Volants & Quast
+gid://shopify/Product/15421604299137	CHF 19.53	25 Varianten	Herren-Sommerhemd «Lido» · Stehkragen, Kurzarm Lei
+gid://shopify/Product/15421606953345	CHF 24.74	60 Varianten	Strand-Sandalen «Dorée» · Metallic-Riemchen, Flach
+gid://shopify/Product/15421615473025	CHF 19.14	4 Varianten	Boho-Jacke «Fiore» · Blüten-Stickerei, Bindeband
