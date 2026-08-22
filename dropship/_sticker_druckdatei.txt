@@ -136,3 +136,5 @@ gid://shopify/Product/15427240984961	https://cdn.shopify.com/s/files/1/0943/6856
 gid://shopify/Product/15427241017729	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lollipop.png?v=1787420912	Sticker «Lollipop» · 1 Stück
 gid://shopify/Product/15427241050497	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lotus-zen.png?v=1787420919	Sticker «Lotus Zen» · 1 Stück
 gid://shopify/Product/15427241083265	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/macaron.png?v=1787420926	Sticker «Macaron» · 1 Stück
+gid://shopify/Product/15427241116033	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/magical-wand.png?v=1787420935	Sticker «Magical Wand» · 1 Stück
+gid://shopify/Product/15427241148801	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/matcha-cute.png?v=1787420942	Sticker «Matcha» · 1 Stück
