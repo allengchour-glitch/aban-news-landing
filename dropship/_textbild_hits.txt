@@ -9378,3 +9378,13 @@ gid://shopify/Product/15500899287425	85->0	Minimaleimer aus Metall
 gid://shopify/Product/15500899418497	74->0	Luftdurchlässige Sneaker
 gid://shopify/Product/15500899484033	45->0	Wasserfestes Halsband
 gid://shopify/Product/15500899713409	66->0	Leichte Sneaker mit Mesh Oberfläche
+gid://shopify/Product/15500900008321	32->1	Outdoor-Hiking-Stiefel
+gid://shopify/Product/15500900204929	80->0	Silikon-Ofenhandschuhe
+gid://shopify/Product/15500900237697	10->0	Früchtiges Halsband
+gid://shopify/Product/15500900499841	25->0	Schutzschuhe
+gid://shopify/Product/15500900532609	100->2	Marine Hundehalsband
+gid://shopify/Product/15500900565377	11->1	Stellensky-Effect-Puder
+gid://shopify/Product/15500900630913	14->0	Japanische Nagelsticker
+gid://shopify/Product/15500900991361	30->0	Nagelsticker
+gid://shopify/Product/15500904137089	25->1	Auto-Ladegerät für schnelle drahtlose Aufladung
+gid://shopify/Product/15500904202625	35->3	Auto-Ladestation
