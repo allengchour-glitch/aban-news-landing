@@ -9710,3 +9710,10 @@ gid://shopify/Product/15501007356289	30->0	Spiral-Lockenstab & Glätteisen 2-in-
 gid://shopify/Product/15501007913345	34->1	Elegante Quarzuhr mit Kalenderfunktion
 gid://shopify/Product/15501007978881	89->0	6-in-1 Lockenstab-Set mit Keramikaufsätzen
 gid://shopify/Product/15501021839745	32->0	Silikon-Luminous-Uhr
+gid://shopify/Product/15501021872513	21->1	Kurzlocken-Perms
+gid://shopify/Product/15501021905281	85->0	Schwarzes Stadt-Taschenmädel
+gid://shopify/Product/15501021970817	8->0	Ion-Kurzsträhner und Lockenstab
+gid://shopify/Product/15501022364033	17->0	USB Lade Rucksack für Laptops
+gid://shopify/Product/15501023019393	61->0	Outdoor-Rucksack
+gid://shopify/Product/15501023084929	99->0	Automatischer Lockenstab mit Temperaturregelung
+gid://shopify/Product/15501023412609	29->2	Outdoor Running Trinkrucksack 5L
