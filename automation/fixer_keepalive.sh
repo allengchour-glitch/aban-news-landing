@@ -175,7 +175,15 @@ while true; do
   # Alle drei sind resumable (eigenes Ledger je Skript), ein Neustart setzt also fort statt
   # von vorn zu beginnen. Die Sperre verhindert, dass zwei Kopien dasselbe Ledger schreiben.
   # ⚠️ Ohne `setsid` sterben sie mit dem Turn — genau daran sind sie heute gescheitert.
-  for L in produktdetails_vereinen preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links google_kanal_luecke; do
+  # ⚠️ 22.08.2026 — ohne_lieferantenref_guard AUFGENOMMEN. Er stand in KEINER Startliste
+  # (dieselbe Lücke wie beim Aufseher selbst, Lehre 19.08.: «wer startet DICH neu?»).
+  # Folge: acht Altprodukte aus den ersten Sessions standen weiter ACTIVE und verkäuflich —
+  # WALLET-BLK, WATCH-001, JADE-SET-001, LED-001, BAND-001, SUNGLASS-BLK, BABY-BIB-001,
+  # PROJ-PANDA-001 — alle mit frei getippter SKU, hinter der KEIN Lieferant steht, alle auf
+  # `CONTINUE` mit erfundenem Bestand (35 bis 100 Stück). Genau das Muster von Bestellung
+  # #1008: bezahlt, nie lieferbar. Der Wächter erkennt sie längst (er prüft seit dem 20.08.
+  # die FORM der SKU, nicht das Präfix) — er lief nur nie.
+  for L in produktdetails_vereinen preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links google_kanal_luecke ohne_lieferantenref_guard; do
     fehlt "$REPO/automation/$L.py" && continue
     grep -q "^FERTIG" "/tmp/$L.log" 2>/dev/null && continue      # durchgelaufen
     pause_kuehlt "$L" && continue                                # hat sich mit PAUSE verabschiedet
