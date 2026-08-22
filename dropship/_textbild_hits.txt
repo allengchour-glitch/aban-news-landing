@@ -9630,3 +9630,10 @@ gid://shopify/Product/15500972360065	23->0	Smarter 2L Futterautomat für Haustie
 gid://shopify/Product/15500972458369	32->0	Hexagonale Kurzhanteln für Zuhause
 gid://shopify/Product/15500973343105	17->0	Wasserdichter Leucht-Kartenkompass mit Spiegel
 gid://shopify/Product/15500974522753	66->1	Atmungsaktive Zehenkappen-Sandalen mit flachem Absatz
+gid://shopify/Product/15500983239041	129->0	DIY Ölgemälde "Schöne Tiere" (40x50cm)
+gid://shopify/Product/15500983370113	125->0	DIY Malen nach Zahlen: Waldfluss-Landschaft
+gid://shopify/Product/15500983566721	110->1	Retro Halstuch mit Glocke für Haustiere
+gid://shopify/Product/15500983632257	50->0	Sommer-Plattform-Sandalen mit Klettverschluss
+gid://shopify/Product/15500983796097	37->1	Keilabsatz-Slipper mit Klettverschluss
+gid://shopify/Product/15500983828865	15->1	Festliches Halsband mit Schleife für Haustiere
+gid://shopify/Product/15500983861633	60->0	Halsband Kleine Duftperle
