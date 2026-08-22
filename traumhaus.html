@@ -689,6 +689,22 @@ rasen.rotation.x=-Math.PI/2;rasen.position.y=-0.05;rasen.receiveShadow=true;scen
     new THREE.MeshStandardMaterial({map:tex,transparent:true,roughness:1,depthWrite:false}));
     m.rotation.x=-Math.PI/2;m.position.y=y;scene.add(m);return m;}
   overlay(GW*CS+60,GH*CS+60,-0.035,blotchTex(46,0.3)); // nahe Wiese — traegt jetzt die grossflaechige Variation
+  /* 🌱 MAEHSTREIFEN auf dem Baugrundstueck. Es ist die groesste zusammenhaengende
+     Flaeche der Karte und das Erste, was man beim Start sieht — und es war ein
+     einziges gleichmaessiges Gruen. Streifen wie nach dem Rasenmaeher geben ihm
+     Struktur, ohne etwas zu verstellen: flaches Overlay, kein Kollider, das
+     Bauraster bleibt frei. */
+  (function maehstreifen(){
+    var cv=document.createElement("canvas");cv.width=64;cv.height=8;
+    var c=cv.getContext("2d");
+    c.fillStyle="rgba(255,255,255,0.065)";c.fillRect(0,0,32,8);
+    c.fillStyle="rgba(24,62,24,0.05)";c.fillRect(32,0,32,8);
+    var t=new THREE.CanvasTexture(cv);t.wrapS=t.wrapT=THREE.RepeatWrapping;
+    t.repeat.set(16,1);
+    var m=new THREE.Mesh(new THREE.PlaneGeometry(GW*CS+6,GH*CS+6),
+      new THREE.MeshStandardMaterial({map:t,transparent:true,roughness:1,depthWrite:false}));
+    m.rotation.x=-Math.PI/2;m.position.y=-0.02;m.receiveShadow=true;scene.add(m);
+  })();
   /* ⚠️ Zwischen der nahen Wiese (204x152) und der Fern-Ebene (600x600 mit nur
      40 Blotches) lag ein breiter Ring, den praktisch keine Variation erreichte —
      genau der Bereich, den man beim Herauszoomen sieht. Drittes Overlay dafuer. */
