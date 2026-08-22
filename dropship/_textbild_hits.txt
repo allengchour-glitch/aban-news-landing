@@ -9126,3 +9126,4 @@ gid://shopify/Product/15500253626753	10->0	Leichtes Leder-Modell
 gid://shopify/Product/15500254019969	53->2	Glattstahler mit Edelsteinen
 gid://shopify/Product/15500254937473	52->0	Koreanische Tier-Taschen
 gid://shopify/Product/15500255297921	84->0	Hundefreundliche Krawatten
+gid://shopify/Product/15500256313729	52->0	Leinen-Kanvas-Rolle
