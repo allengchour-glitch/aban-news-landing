@@ -3159,12 +3159,15 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
     (function schule(){
       var g=new THREE.Group();
       // Pausenhof mit Basketballkorb
-      /* ⚠️ 20 x 12 auf y = 0,014 war zu klein und lag zu tief: im Render stand ein
-         Teil der Hofausstattung auf dem Kopfsteinpflaster der Nachbarblocks
-         statt auf dem Schulhof. 24 x 14 auf y = 0,03 legt eine zusammenhaengende
-         Flaeche unter alles, was dort steht. */
-      var hof=new THREE.Mesh(new THREE.PlaneGeometry(24,14),betMat(0xc8c2b4,0.9));
-      hof.rotation.x=-Math.PI/2;hof.position.set(0,0.030,-11);hof.receiveShadow=true;g.add(hof);
+      /* ⚠️ Der Belag musste dem Hof folgen. 24 x 14 um (-56|89) reichte von
+         x -68 bis -44 — die halbe Flaeche lag also UNTER dem Stadthaus
+         (x -56,3…-35,7), was man dem gepflasterten Streifen an dessen Wand auch
+         ansah. Der Hof steht jetzt im gemessen freien Streifen westlich davon;
+         der Belag deckt genau diesen: x -70…-56,5, z 73,5…92 — nach Osten vor
+         der Hauswand, nach Norden vor der Schulfassade zu Ende, damit keine
+         Platte unter einem Gebaeudeboden (y 0,01) hervorschaut. */
+      var hof=new THREE.Mesh(new THREE.PlaneGeometry(13.5,18.5),betMat(0xc8c2b4,0.9));
+      hof.rotation.x=-Math.PI/2;hof.position.set(-7.25,0.030,-17.25);hof.receiveShadow=true;g.add(hof);
       /* Der prozedurale Korb ist raus — th42_basketballkorb steht unten. */
       g.position.set(-56,0,100);scene.add(g);
     })();
@@ -3882,7 +3885,10 @@ setTimeout(function baueFussg(){
      jemand herum; Bahnsteig, Kai, Schulhof und Sportplatz waren menschenleer. */
   for(var g1=0;g1<4;g1++)fg(g1,-14+g1*9,108.8,"x",g1%2?1:-1,-22,22);       // Bahnsteig
   for(var g2=0;g2<3;g2++)fg(g2+3,-126,4+g2*16,"z",g2%2?1:-1,-4,52);        // Hafenkai
-  for(var g3=0;g3<3;g3++)fg(g3+5,-62+g3*7,90.5,"x",g3%2?1:-1,-65,-47);     // Schulhof
+  /* ⚠️ Die Route lief bis x -47 und damit 9 m WEIT DURCH das Stadthaus. Sie
+     folgt jetzt dem verlegten Hof: der freie Gang zwischen Pausenhofdach
+     (Nordkante z 91,2) und Schulfassade (z 92,6). */
+  for(var g3=0;g3<3;g3++)fg(g3+5,-68+g3*4,92.0,"x",g3%2?1:-1,-69,-58);     // Schulhof
   /* ⚠️ z = 137, nicht 168: das Spielfeld liegt bei (53|155) und ist 30 tief —
      die Torauslinie laeuft auf 140 und 170. Auf 168 waeren die Leute IM Feld. */
   for(var g4=0;g4<2;g4++)fg(g4+1,40+g4*16,137.0,"x",g4%2?1:-1,32,74);      // Sportplatz
@@ -6004,7 +6010,12 @@ setTimeout(function baueGebaeude(){
     })();
     bau("th7_taxi.glb",1.7,11,0,91.4,Math.PI/2,false,null,true);
     bau("th7_lieferwagen.glb",2.5,12,0,55,Math.PI/2,false);
-    bau("th7_lkw.glb",3.7,90,0,-78,0,false);          /* war -74: stand im Nordstrassen-Band */
+    /* ⚠️ (90|-78) steckte mit 5,2 m in der Lagerhalle (Kasten z -91,4…-78,5)
+       UND im Vordach der Tankstelle aus Charge 43. Die Tasche zwischen beiden
+       ist 0,5 m breit, der LKW 2,6 — hier gibt es keinen Stand mehr, seit die
+       Tankstelle den Hallenhof bekommen hat. Er faehrt jetzt zur Baustelle im
+       Norden, wo im gemessen freien Nordstreifen (z 106,9…109,5) Platz ist. */
+    bau("th7_lkw.glb",3.7,-34,0,109.0,Math.PI/2,false);
     bau("th7_denkmal.glb",5.3,68,0,92,Math.PI,false);
     /* ➕ "mehr sachen": Reserven verbaut */
     bau("th5_bushaltestelle.glb",2.5,30,0,-55.8,0,false);          /* 2. Haltestelle an der Nordstrasse */
@@ -6045,7 +6056,7 @@ setTimeout(function baueGebaeude(){
   bau("th3_picknick.glb",0.85,90,0,-16,-0.5,false);
   // ---- Welle 2 (th4_*): echte Baum-Sorten, Schilder, Brücke, Schwan & Co. ----
   // Birken-Hain am See
-  bau("th4_birke.glb",5.2,-70,0,64,0.3,false);bau("th4_birke.glb",4.8,-110,0,62,1.1,false);bau("th4_birke.glb",5.5,-100,0,98,2.2,false);
+  bau("th4_birke.glb",5.2,-70,0,64,0.3,false);bau("th4_birke.glb",4.8,-110,0,62,1.1,false);bau("th4_birke.glb",5.5,-68,0,70,2.2,false);   /* war (-100|98) — das ist seit Charge 42 die Turnhalle */
   // Tannen-Gruppe Nordwesten + Norden
   bau("th4_tanne.glb",6,-90,0,-70,0,false);bau("th4_tanne.glb",5.2,-98,0,-58,0.7,false);bau("th4_tanne.glb",6.6,-80,0,-84,1.5,false);bau("th4_tanne.glb",5.6,30,0,-84,2.4,false);
   // Herbst-Ahorne + große Eichen als Landmarks
@@ -6106,17 +6117,33 @@ setTimeout(function baueGebaeude(){
   })();
   /* 🚂 Bahnuebergang: die Gleise bei z=112 kreuzten die Zubringer bei x=±78 ohne alles —
      jetzt Signalmasten beidseits, dazu Oberleitung und eine Tramhaltestelle am Bahnhof. */
+  /* ⚠️ ALLES an der Strecke bekommt userData.fest. Ohne das schiebt entwirren()
+     die Masten weg, sobald daneben etwas eng wird — gemessen stand ein
+     Oberleitungsmast danach 11 m von seinem Gleis entfernt MITTEN IM BAHNHOF
+     (Kasten x -20…-8,8 statt -29,6…-18,4). Eine Mastreihe ist vermessene
+     Infrastruktur, kein Deko-Baum: sie darf nicht wandern. */
+  function bahnFest(w){w.userData.fest=true;}
   [78,-78].forEach(function(gx){
-    bau("th17_signal.glb",3.2,gx-6.5,0,108.5,0,false,null,true);
-    bau("th17_signal.glb",3.2,gx+6.5,0,107.5,Math.PI,false,null,true);});
+    /* ⚠️ +-6,5 setzte beide Signale 0,5 m IN das Zubringer-Band (x 70,8…85,2).
+       Aufgefallen ist das erst mit userData.fest — vorher hat entwirren() sie
+       jedes Mal stillschweigend herausgeschoben. +-8,2 haelt 0,75 m Abstand. */
+    bau("th17_signal.glb",3.2,gx-8.2,0,108.5,0,false,bahnFest,true);
+    bau("th17_signal.glb",3.2,gx+8.2,0,107.5,Math.PI,false,bahnFest,true);});
   /* Gleis z=112, Ringstrasse z=118 (Band 113.5..122.5) — Masten auf die Suedseite,
      sonst stehen sie in der Fahrbahn. */
   /* ⚠️ Der Mast ist auf 7.5 m Hoehe skaliert 11.2 m BREIT (Ausleger ueber das Gleis).
      Bei -108+om*36 landeten fuenf von sieben in einem Strassenkorridor: x=±108 im
      Ring, x=±72 in den Zubringern, x=0 in der Seepark-Stichstrasse. Jetzt nur noch
      Positionen mit >=9 m Abstand zu jeder Querachse. */
+  /* ⚠️ BEKANNTER REST, bewusst so: der Ausleger ist auf 7,5 m Hoehe 11,2 m breit
+     und laeuft LAENGS ueber Gleis und Bahnsteig. Sein Kasten schneidet darum die
+     Bahnsteigkante und das vor der Feuerwache geparkte Loeschfahrzeug — der
+     MASTFUSS steht bei beiden frei (>= 0,75 m), das Metall haengt 6 m darueber.
+     Wer das "aufraeumt", indem er den Mast verschiebt, macht es kaputt. */
   [-96,-60,-24,24,60,96].forEach(function(mx){
-    bau("th17_oberleitungsmast.glb",7.5,mx,0,108.5,0,false,null,true);});
+    bau("th17_oberleitungsmast.glb",7.5,mx,0,108.5,0,false,bahnFest,true);});
+  /* Die Haltestelle bleibt bewusst OHNE fest: sie ist Strassenmoebel und darf
+     ausweichen — festgenagelt stand sie auf dem Mastfuss bei x -24. */
   bau("th17_tramhaltestelle.glb",3.0,-20,0,108,Math.PI,false,null,true);
   /* ── 🏪 Charge 48: Marktplatz ───────────────────────────────────────────────
      Der Platz bei (26|67) war ein Kartenpunkt mit zwei Ahornbaeumen. Das Rathaus
@@ -6280,7 +6307,11 @@ setTimeout(function baueGebaeude(){
        x-Zahl zu variieren, reicht nicht; die Kisten sind 7,2 bzw. 6,8 m breit.
        BX-2|BZ-10 ist der naechste gemessen freie Stand: suedlich des Rohbau-
        Kolliders (z 96…106) und oestlich am Lager vorbei (dessen Kante x -41,4). */
-    fest("th46_bagger.glb",3.73,BX-2,BZ-10,-0.5);
+    /* ⚠️ Nachgezogen, als die Schule 2,6 m nach Sueden rueckte: ihre Ostwand
+       liegt jetzt auf x -47,1 und beruehrte das Materiallager. Lager und Bagger
+       ruecken zusammen nach Osten — gemessen bleiben 0,6 m zur Schulwand,
+       1,0 m zwischen Lager und Bagger. */
+    fest("th46_bagger.glb",3.73,BX-0.1,BZ-10,-0.5);
     /* ⚠️ Auf BX+11 stand der Container in der Markthalle (3,6 m), danach auf
        BX-12 im KLETTERGERUEST des Pausenhofs (x -54,6…-48,6): 77 Mesh-Paare.
        "Alles Bewegliche nach Westen" war zu einfach — im Westen liegt die Schule.
@@ -6288,11 +6319,23 @@ setTimeout(function baueGebaeude(){
        6,2 x 3,6 m; die naechste freie Flaeche liegt quer gedreht suedlich davon.
        Dort steht er jetzt, direkt an der Einfahrt — wie ein Buerocontainer, den
        man ans Tor stellt, weil der Platz drinnen voll ist. */
-    fest("th46_baucontainer.glb",2.90,BX-3.5,BZ-14.5,0);
-    fest("th46_materiallager.glb",1.20,BX-9,BZ-9,0);
+    /* ⚠️ DRITTE Korrektur, gemessen. "Suedlich vom Bauzaun, an der Einfahrt"
+       war (-39,5|87,5) — und damit MITTEN IM STADTHAUS (Kasten x -56,3…-35,7 /
+       z 69,7…90,3), das dort seit jeher steht. Suedlich des Zauns gibt es fuer
+       6,2 x 3,6 m keinen freien Stand: westlich die Schule, oestlich beginnt
+       nach 3,3 m die Markthalle.
+       Frei ist der Nordstreifen der Baustelle: zwischen der Rohbau-Nordkante
+       (z 105,7) und dem Ring-S-Band (ab z 110,8) liegen 5,1 m ueber die ganze
+       Breite. Dort stehen jetzt Container UND der Baustellen-LKW. */
+    fest("th46_baucontainer.glb",2.90,BX-9,BZ+6.3,0);
+    fest("th46_materiallager.glb",1.20,BX-7.3,BZ-9,0);
     fest("th46_mischer.glb",1.36,BX-2,BZ-7,0.7);
     for(var z9=0;z9<9;z9++) fest("th46_bauzaun.glb",2.16,BX-14+z9*3.5,BZ-12.5,0);
-    for(var q9=0;q9<6;q9++) fest("th46_bauzaun.glb",2.16,BX-15.8,BZ-11.5+q9*3.5,Math.PI/2); /* ⚠️ Reihe endete bei z 111,4 — 0,6 m im Ring-Band (ab 110,8) */
+    /* ⚠️ KEIN Westzaun mehr. Er lief auf x -51,8 — und die Schule reicht bis
+       x -47,1: sechs Zaunfelder standen also 4,5 m tief IN der Schulhauswand.
+       Zwischen Schule (-47,1) und Rohbau (-47,2) sind 10 cm, dort passt kein
+       Zaun hin. Die Schulhauswand IST die Westgrenze der Baustelle — so wird an
+       einer Brandwand auch in Wirklichkeit gebaut. */
   })();
   /* ── 🏥 Charge 49: Klinik und Rettungsdienst ────────────────────────────────
      Die Stadt hatte Feuerwache und Polizei, aber kein Krankenhaus — im Code nach
@@ -6356,7 +6399,10 @@ setTimeout(function baueGebaeude(){
        Kein Fehler — dieselbe Falschmeldung wie das Vordach ueber dem LKW an
        der Tankstelle. Nicht "wegschieben", sondern nachsehen. */
     for(var w9=0;w9<2;w9++)
-      fest("th49_rettungswagen.glb",2.68,KX+11.5+w9*6.0,KZ+8,-Math.PI/2);
+      /* ⚠️ KZ+8 setzte beide Wagen mit 6 m IN die Notaufnahme (Kasten
+         z -143,7…-125,6). KZ+15 stellt sie davor auf den Vorfahrtsplatz —
+         1,6 m vor der Fassade, wie an einer echten Rettungszufahrt. */
+      fest("th49_rettungswagen.glb",2.68,KX+11.5+w9*6.0,KZ+15,-Math.PI/2);
     /* Wartebaenke vor dem Klinikeingang (Vordachkante liegt auf z -126,0).
        Raster 1,90 wie im Generator vermerkt. */
     for(var b9=0;b9<3;b9++)
@@ -6574,13 +6620,17 @@ setTimeout(function baueGebaeude(){
          (Hallenfront z 105,1, Ring-Band ab 110,8), das Fahrzeug 7,6 m lang.
          Also LAENGS zur Front geparkt: 3,0 m Breite passen auf den Vorplatz,
          und so stehen Loeschfahrzeuge vor einer Wache ohnehin. */
-      fest("th43_loeschfahrzeug.glb",3.24,56+(t?4.3:-4.3),108.0,0);
+      /* ⚠️ Das oestliche Fahrzeug stand auf x 60,3 — genau dort, wo der
+         Oberleitungsmast steht (Reihe bei z 108,5, Positionen …,-24,24,60,96).
+         Beide Wagen ruecken nach Westen, damit der Mastfuss frei bleibt:
+         Kaesten 42,6…50,3 und 51,6…59,3, Mast bei x 60 mit 0,75 m Luft. */
+      fest("th43_loeschfahrzeug.glb",3.24,56+(t?-0.6:-9.6),108.0,0);
       [-1,1].forEach(function(sd){                        // Ausfahrtsbahn
         var lin=new THREE.Mesh(new THREE.PlaneGeometry(0.16,7.0),
           new THREE.MeshStandardMaterial({color:0xd8b42a,roughness:0.8}));
         lin.rotation.x=-Math.PI/2;lin.position.set(tx+sd*2.1,0.02,109.5);scene.add(lin);});
     }
-    fest("th43_hydrant.glb",0.93,46,0,106.5,0);
+    fest("th43_hydrant.glb",0.93,44,0,103.0,0);   /* war (46|106,5) — dort parkt jetzt das westliche Loeschfahrzeug */
     /* Tankstelle bei (92|-74). rotY = pi spiegelt das Modell: der Kiosk sitzt im
        Modell bei Blender (-3,25|-1,70), landet also bei (92+3,25 | -74-1,70). */
     /* ⚠️ GEMESSEN nach dem Merge: bei (92|-74) sass das Ensemble im Quer-O-Band
@@ -6624,41 +6674,56 @@ setTimeout(function baueGebaeude(){
      beieinander, und `freiRaeumen()` kennt den Unterschied zwischen "steht im
      Weg" und "gehoert dorthin" nicht. */
   (function schulhofAusbau(){
-    var SX=-56, SZ=100;                       /* Lage der alten Schule */
+    /* ⚠️ GEMESSEN nachgezogen (2026-08). Der Hof war als SX+-10 definiert und
+       reichte damit von x -66 bis -46 — seine OSTHAELFTE lag im Stadthaus
+       nebenan (th8_stadthaus_offen, Kasten x -56,3…-35,7 / z 69,7…90,3). Darin
+       standen Korb, Schulbank und (aus Charge 46) der Buerocontainer.
+       Der wirklich freie Streifen ist schmaler: zwischen dem Zubringer-W-Band
+       (endet x -70,8) und der Stadthauswand (x -56,3) sind 14,5 m, nach Sueden
+       ist bis z 78 frei (davor stehen die Strassenbaeume), nach Norden begrenzt
+       die Schule. Alle Standorte unten sind ABSOLUT notiert und gegen die
+       gemessenen Kaesten geprueft — keiner naeher als 0,5 m am Nachbarn.
+       ⚠️ EIN Korb statt zwei: fuer ein Vollfeld mit Koerben an beiden Enden ist
+       der Streifen zu schmal. Ein Halbfeld ist auf einem Schulhof der Normalfall.
+       ⚠️ Und die Schule selbst stand mit ihrer Nordkante auf z 107,8 — also IM
+       Oberleitungsmast bei x -60 (Kasten z 105,6…109). SZ 96,8 statt 100 zieht
+       sie 2,6 m nach Sueden: Nordkante 104,6, ein Meter Luft zum Mast. */
+    var SX=-56, SZ=96.8;
     function fest(datei,hoehe,x,z,ry){
       bau(datei,hoehe,x,0,z,ry,false,function(w){w.userData.fest=true;},true);
     }
     fest("th42_schule.glb",14.0,SX,SZ+1,Math.PI);
     addSolid(SX,SZ+1,18.6,12.6);
-    /* ⚠️ ZWEI Anlaeufe gemessen: die 26,9 m breite Halle ueberspannte laengs
-       IMMER eine Strasse — erst das Quer-W-Ende (z bis 92), nach dem z-Ruecken
-       den Zubringer W (Band x -85…-71, laeuft bis z 118). Die Luecke zwischen
-       Zubringer-W- und Ring-W-Band ist nur 19,6 m breit: LAENGS passt die Halle
-       nie, QUER (gedreht, 16,9 m breit) mit Luft. Anker (-95|101). */
-    fest("th42_turnhalle.glb",8.32,-95,97.2,Math.PI/2);   /* Suedkante 110,7 — 0,1 vor dem Ring-S-Band */
-    addSolid(-95,97.2,16.9,26.9);
-    /* ⚠️ Der Pausenhof ist 20 x 12 gross und liegt bei (SX | SZ-11), reicht also
-       von x SX-10 bis SX+10 und von z SZ-17 bis SZ-5. Beim ersten Wurf standen
-       Klettergeruest und alle vier Fahrradstaender AUSSERHALB davon auf dem
-       Kopfsteinpflaster daneben — ich hatte die Geraete um die Schule herum
-       verteilt, statt die Flaeche auszurechnen, auf die sie gehoeren. */
-    var HZ=SZ-11, HX0=SX-10, HX1=SX+10, HZ0=HZ-6, HZ1=HZ+6;
-    /* Koerbe an den Schmalseiten, Brett jeweils INS Feld. Die Brettnormale ist
-       (-sin rotY, -cos rotY): fuer Blick nach +x also rotY = -pi/2. */
-    fest("th42_basketballkorb.glb",3.76,HX0+1.0,HZ,-Math.PI/2);
-    fest("th42_basketballkorb.glb",3.76,HX1-1.0,HZ, Math.PI/2);
-    fest("th42_pausenhofdach.glb",3.48,SX-6.0,HZ1-1.8,0);
-    fest("th42_klettergeruest.glb",2.61,SX+5.0,HZ1-2.6,Math.PI);
-    fest("th42_tischtennis.glb",0.92,SX-2.6,HZ-2.6,0);
-    fest("th42_tischtennis.glb",0.92,SX+2.6,HZ-2.6,0);
-    /* ⚠️ HZ0+1,4 stellte die westliche Schulbank mit ihrer Krone (Sphere,
-       y 1,53…2,57) in das Stadthaus daneben — 26 Meshes fest. HZ0+4,4 ist
-       der naechste gemessen freie Stand. */
-    fest("th42_schulbank.glb",2.79,SX-7.0,HZ0+4.4,0);
-    fest("th42_schulbank.glb",2.79,SX+6.0,HZ0+4.4,0);
-    /* Fahrradstaender an der Hofkante zur Schule, Raster 3,20. */
-    for(var k=0;k<4;k++)
-      fest("th42_fahrradstaender.glb",2.44,HX0+1.6+k*3.2,HZ1-0.8,Math.PI);
+    /* ⚠️ DRITTER Anlauf fuer die Turnhalle, gemessen. Quer gedreht passte sie
+       zwar zwischen die beiden z-Baender, war mit 26,9 m Tiefe aber laenger als
+       das Grundstueck: ihr Kasten reichte von z 84,2 bis 110,2 — der
+       Oberleitungsmast bei x -96 (Kasten z 105,6…109) stand damit 12 m WEIT IN
+       der Halle, samt einer Birke bei (-100|98). Die Halle stand auf der
+       Bahnstrecke. Zwischen Ruderboot-Ufer (z 81,5) und Mastreihe (z 105,6)
+       sind 24 m; auf 6,72 m Zielhoehe misst die Halle 12,8 x 21,0 und steht mit
+       1,5 m Luft nach Sueden und 1,6 m nach Norden dazwischen. Eine 21 x 12,8 m
+       grosse Einfachturnhalle ist auch in Wirklichkeit das uebliche Mass. */
+    fest("th42_turnhalle.glb",6.72,-95,93.5,Math.PI/2);
+    addSolid(-95,93.5,12.8,21.0);
+    /* Pausenhofdach laengs an die Westkante gedreht (rotY pi/2 -> 5,5 x 8,4),
+       darunter zwei Fahrradstaender — ein Unterstand mit Raedern darin ist die
+       EINZIGE gewollte Ueberschneidung auf dem Hof. */
+    fest("th42_pausenhofdach.glb",3.48,-67.2,87.0,Math.PI/2);
+    fest("th42_fahrradstaender.glb",2.44,-67.2,84.3,Math.PI);
+    fest("th42_fahrradstaender.glb",2.44,-67.2,89.5,Math.PI);
+    /* Zwei weitere Staender an der Westwand der Schule (laengs, rotY pi/2). */
+    fest("th42_fahrradstaender.glb",2.44,-68.0,96.0,Math.PI/2);
+    fest("th42_fahrradstaender.glb",2.44,-68.0,100.0,Math.PI/2);
+    /* Halbfeld: Korb am Nordende, Brett nach -x ins Feld (Normale
+       (-sin rotY, -cos rotY) -> rotY = pi/2). */
+    fest("th42_basketballkorb.glb",3.76,-61.0,90.0,Math.PI/2);
+    fest("th42_klettergeruest.glb",2.61,-60.5,84.0,Math.PI);
+    /* Tischtennis in die Suedwestecke, quer (rotY pi/2 -> 1,8 x 2,8). */
+    fest("th42_tischtennis.glb",0.92,-67.5,80.0,Math.PI/2);
+    fest("th42_tischtennis.glb",0.92,-67.5,76.5,Math.PI/2);
+    /* Schulbaenke an die Suedkante unter die Strassenbaeume. */
+    fest("th42_schulbank.glb",2.79,-62.0,78.5,0);
+    fest("th42_schulbank.glb",2.79,-62.0,75.0,0);
   })();
   /* ── 🚉 Bahnsteig-Ausbau (User: „eisenbahn station viel schoener") ─────────────
      Drei th17_bahnsteigdach-Module ersetzen das alte Blechdach, dazu Sicherheits-
