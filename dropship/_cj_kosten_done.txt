@@ -851,3 +851,5 @@ gid://shopify/Product/15433460777345	cj-ohne-antwort
 gid://shopify/Product/15433460810113	cj-ohne-antwort
 gid://shopify/Product/15433460842881	cj-ohne-antwort
 gid://shopify/Product/15433460875649	cj-ohne-antwort
+gid://shopify/Product/15433460973953	cj-ohne-antwort
+gid://shopify/Product/15433461006721	cj-ohne-antwort
