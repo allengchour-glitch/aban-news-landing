@@ -71,6 +71,7 @@ const kosten=(usd,grams)=>{const u=parseFloat((''+usd).split('--')[0])||0;
 // Kopien, und die kleinste kannte «dark gray» nicht (51 Produkte mit «Dark Gray»
 // im Farbwaehler). Neue Farben NUR dort nachtragen.
 import { FARBEN as DECOLOR, deColor } from './farben_de.mjs';
+import { titelMitMenge } from './stueckzahl.mjs';
 const SIZESET=new Set(['XS','S','M','L','XL','XXL','XXXL','2XL','3XL','4XL','5XL','6XL','ONE SIZE','ONESIZE','FREE SIZE','FREESIZE','F']);
 // ⚠️ CJ stellt der Farbe oft seinen Artikelcode voran: «A039 Black», «E7916 White»,
 // «Ts3018 Pink» — und der stand danach im Farb-Dropdown, wo die Kundin ihn anklicken MUSS
@@ -732,7 +733,13 @@ for(const [cat,label] of grp.cats){
    }
    // ß→ss (15.08.2026): Übersetzer liefern bundesdeutsches ß, ein CH-Shop schreibt ss.
    // Quelle hier; Backfill für den Altbestand: automation/ss_statt_scharf_s.py
-   const title=g.title.slice(0,70).replace(/ß/g,'ss').replace(/ẞ/g,'SS');
+   // 📦 STÜCKZAHL AUS DEM LIEFERANTENNAMEN (22.08.2026). CJ schreibt die Menge in den
+   // englischen Namen («24-piece», «2 Rolls», «Set Of 5»); der Übersetzer baut daraus einen
+   // schönen deutschen Titel und lässt die Zahl weg. Ein Multipack sieht dann aus wie ein
+   // Einzelstück und der Preis wirkt absurd — genau die Beschwerde vom 26.07.2026
+   // («sonst fragen leute zu teuer für ballon»). Damals wurden 15 Ballon-Produkte von HAND
+   // korrigiert; der Importer legte am nächsten Tag neue an. Jetzt an der Quelle.
+   const title=titelMitMenge(g.title.replace(/ß/g,'ss').replace(/ẞ/g,'SS'), nm, 70);
    // ⚕️ MEDIZINISCHE ZWECKBESTIMMUNG (14.08.2026). Acht im August angelegte Geräte standen
    // aktiv im Google-Kanal, obwohl sie nach MepV eine Konformitätsbewertung brauchen — ein
    // Temperaturpflaster mit 38-°C-Alarm für kranke Kinder, zwei Elektrostimulations-

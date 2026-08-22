@@ -38,6 +38,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 // die in cj_category_fill.mjs trug die Korrektur vom 20.08. (dieselbe Geschwister-Lehre wie
 // bei der viermal kopierten Farbtabelle und bei publishVerified()).
 import { chf, kosten, gewicht } from './cj_preis.mjs';
+import { titelMitMenge } from './stueckzahl.mjs';
 
 async function cj(path) {
   for (let a = 0; a < 6; a++) {
@@ -168,7 +169,10 @@ for (const item of ITEMS) {
    }
   }
   // ß→ss (15.08.2026): CH-Schreibung, Quelle-Fix wie in cj_category_fill
-  const title = g.title.slice(0, 70).replace(/ß/g, 'ss').replace(/ẞ/g, 'SS');
+  // 📦 Stückzahl aus dem englischen Lieferantennamen mitnehmen — sonst sieht ein
+  // Multipack aus wie ein Einzelstück (Regel vom 26.07.2026). Eine Quelle:
+  // automation/stueckzahl.mjs.
+  const title = titelMitMenge(g.title.replace(/ß/g,'ss').replace(/ẞ/g,'SS'), d.productNameEn, 70);
   // Titel-Wache inkl. Umlaut-Normalisierung (Geraet==Gerät-Falle 2026-07-08) + Bild-Wache (GEHIRN 2)
   const norm = x => x.toLowerCase().replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue').replace(/ß/g,'ss').replace(/[^a-z0-9]+/g,' ').trim();
   const dq = await sgql(t, `query($q:String!){products(first:10,query:$q){edges{node{id title}}}}`, { q: `title:"${title.replace(/"/g, '').split(' ').slice(0,3).join(' ')}*" status:active` });

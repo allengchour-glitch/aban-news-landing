@@ -40,6 +40,7 @@ import { chf, kosten, gewicht } from './cj_preis.mjs';
 // Kopien, und die kleinste kannte «dark gray» nicht (51 Produkte mit «Dark Gray»
 // im Farbwaehler). Neue Farben NUR dort nachtragen.
 import { FARBEN as DECOLOR, deColor } from './farben_de.mjs';
+import { titelMitMenge } from './stueckzahl.mjs';
 const SIZESET=new Set(['XS','S','M','L','XL','XXL','XXXL','2XL','3XL','4XL','5XL','6XL','ONE SIZE','ONESIZE','FREE SIZE','FREESIZE','F']);
 // ⚠️ CJ stellt der Farbe oft seinen Artikelcode voran: «A039 Black», «E7916 White»,
 // «Ts3018 Pink» — und der stand danach im Farb-Dropdown, wo die Kundin ihn anklicken MUSS
@@ -307,7 +308,10 @@ for(const p of cand){
   if(echoVomLieferanten(g.title,nm)){console.log('  skip(titel-nicht-uebersetzt)',String(g.title).slice(0,50));continue;}
  }
  // ß→ss (15.08.2026): CH-Schreibung, Quelle-Fix wie in cj_category_fill
- const title=g.title.slice(0,70).replace(/ß/g,'ss').replace(/ẞ/g,'SS');
+  // 📦 Stückzahl aus dem englischen Lieferantennamen mitnehmen — sonst sieht ein
+  // Multipack aus wie ein Einzelstück (Regel vom 26.07.2026). Eine Quelle:
+  // automation/stueckzahl.mjs.
+ const title= titelMitMenge(g.title.replace(/ß/g,'ss').replace(/ẞ/g,'SS'), p.productNameEn, 70);
  if(DRY){console.log(`  [DRY] CHF${chf(p.sellPrice, p.productWeight||p.variantWeight)} | ${title} | listed ${p.listedNum}`);total++;continue;}
  const slug=title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,46)+'-'+String(p.pid).slice(-6);
  const html=`${g.html}\n${TRUST}`.replace(/ß/g,'ss').replace(/ẞ/g,'SS');
