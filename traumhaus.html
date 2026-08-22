@@ -6716,9 +6716,19 @@ setTimeout(function baueGebaeude(){
        Ausleger endet auf 113,5 ueber dem Gleis (z 112), wie bei echten
        Seitenbahnsteigen. Daecher enden bei z 110,1, es klemmt nichts. */
     /* ⚠️ Die Platte reicht nur von x -21 bis 21 (7 Module a 6,0). Die Masten bei
-       -24 und 24 stehen daneben auf dem BODEN, die bei -8 und 8 auf der Platte.
-       Pauschal alle vier anzuheben haette zwei davon schweben lassen. */
-    [-24,-8,8,24].forEach(function(mx){
+       -24 und 24 stehen daneben auf dem BODEN, die inneren auf der Platte.
+       Pauschal alle vier anzuheben haette zwei davon schweben lassen.
+       ⚠️ -8/8 -> -5,5/5,5, gemessen. Bei x -8 lief das Mastgitter mit 0,40 m
+       durch den Dachbalken des Moduls bei x -11 (18 Mesh-Paare). Der Kommentar
+       am Dachblock behauptete "Daecher enden bei z 110,1, es klemmt nichts" —
+       gemessen enden sie bei 111,9, der Mast beginnt bei 110,6.
+       Die Dachmodule liegen auf -16…-6, -5…5 und 6…16; frei sind genau die
+       Fugen dazwischen, also +-5,5. Dort steht ein Fahrleitungsmast auch in
+       Wirklichkeit: ZWISCHEN den Daechern, nicht darunter.
+       (Der Sweep meldete zuerst "kein freies x" — er zaehlte die Mastfuesse auf
+       den 3-cm-Streifen der Platte als Treffer mit. Aufstandsflaechen gehoeren
+       in solchen Suchen ausgenommen, sonst ist ueberall besetzt.) */
+    [-24,-5.5,5.5,24].forEach(function(mx){
       fest("th41_fahrleitungsmast.glb",7.20,mx,110.9,-Math.PI/2,
            Math.abs(mx)<=21 ? BSH : 0);});
     fest("th41_signal.glb",5.49,29,113.6,Math.PI/2);

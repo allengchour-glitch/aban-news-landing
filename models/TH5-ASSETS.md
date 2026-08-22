@@ -1935,6 +1935,28 @@ Vierergruppe gelöst — 26 Meshes fest, bei dz +1,5 null.
 
 Ergebnis: **70 → 65 echte Funde.**
 
+### Der Fahrleitungsmast lief durch den Bahnsteigdach-Balken
+
+Am Dachblock stand als Kommentar: „Daecher enden bei z 110,1, es klemmt nichts." Gemessen enden
+sie bei **111,9**, und der Mast beginnt bei 110,6 — sein Gitter lief mit 0,40 m durch den
+Dachbalken (`Cube022`, y 3,72…4,12), 18 Mesh-Paare. Wieder eine Behauptung im Code statt einer
+Messung, und wieder um knapp zwei Meter daneben.
+
+Die Dachmodule liegen auf x −16…−6, −5…5 und 6…16. Frei sind genau die **Fugen dazwischen**,
+also ±5,5 — dort steht ein Fahrleitungsmast auch in Wirklichkeit: *zwischen* den Dächern, nicht
+darunter.
+
+> ⚠️ **Aufstandsflächen aus dem Platzlöser ausnehmen.** Mein erster Sweep meldete „kein freies x"
+> über 28 m Suchbreite. Grund: er zählte die **Mastfüße auf den 3-cm-Streifen der Bahnsteigplatte**
+> als Treffer — und die gibt es an jeder Position. Erst mit `th41_bahnsteigkante` als erlaubtem
+> Partner (wie die Halle beim Löschfahrzeug) kamen die drei echten Lücken heraus. Ein Löser, der
+> den Boden mitzählt, auf dem das Objekt steht, findet nie einen Platz.
+
+Ergebnis: **65 → 63 echte Funde.** Was oben bleibt, ist inzwischen durchweg klassifiziert:
+Seilbahn-Gondeln an den Stützen (bewegte Objekte im Nullpunkt), `th7_lkw` in der Lagerhalle
+(Nachbar-Session), Dach- und Bankfüße auf den Bahnsteigstreifen (Aufstandsfall) und
+Baumkronen an Hauswänden — das, was Kronen tun.
+
 > 🔑 **Die Regel.** Erst die Zahl aus der Hypothese ableiten, dann messen, dann ändern —
 > und zwischen „Boxen überlappen" und „Geometrie steckt ineinander" nie stillschweigend
 > wechseln. Zwei Änderungen dieses Durchgangs wurden vor dem Commit wieder verworfen, weil
