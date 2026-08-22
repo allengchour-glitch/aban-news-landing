@@ -7,19 +7,24 @@ Von 4'779 seit dem 19.08. neu angelegten aktiven Produkten stehen 100 % im Onlin
 99,9 % in TikTok/Facebook/Pinterest — aber nur 98,1 % bei Google. 85 Produkte fehlen dort,
 und NUR dort.
 
-⚠️ DIE URSACHE IST UNBEKANNT. Nachgeprüft und ausgeschlossen:
-  · kein Sperr-Tag (nicht-bewerben, raucher, 18plus, erotik, medizinprodukt-pruefen …)
-  · in KEINEM Säuberungs-Ledger vermerkt (_google_kanal_gesaeubert*.txt)
-  · kein Bildmangel — alle hatten 5 bis 21 Bilder, die Publish-Wache greift also nicht
-  · die Klingen-Regel der Importer erklärt nur ~1 von 15
-  · `google_ads_kuration.py` setzt nur ein Shopping-Ads-Metafeld und entfernt nichts
-Solange die Ursache offen ist, macht dieser Wächter den Schwund wenigstens SICHTBAR:
-Ein Produkt, das in fünf Kanälen steht und im sechsten fehlt, ist eine Auffälligkeit —
-egal, wer sie erzeugt hat.
+✅ DIE URSACHE IST GEFUNDEN (22.08.2026, über die Shopify-Ereignisliste eines Einzelfalls).
+Beim Polohemd 15508310557057 steht lückenlos: «included on Online Store» 02:11:21 ·
+«Shop» 02:11:21 · «TikTok» 02:11:22 · «Facebook & Instagram» 02:11:23 · «Pinterest» 02:11:24
+— Google & YouTube fehlt, und es gibt auch KEIN «removed». Das Produkt wurde also nie
+publiziert, nicht später entfernt. `cj_sku_import.mjs` und `cj_trending_import.mjs` riefen
+`publishablePublish` auf, ohne die Antwort je zu lesen; fiel eine einzelne Publikation aus,
+landete das Produkt in fünf von sechs Kanälen und niemand merkte es. `cj_category_fill.mjs`
+hatte dafür längst `publishVerified()` — die beiden Geschwister blieben ungepatcht. Beide
+haben die geprüfte Fassung jetzt, der NACHSCHUB ist damit gestoppt.
+
+Dieser Wächter bleibt trotzdem: Er ist der Beweis, dass die Reparatur hält, und er fängt
+jede künftige Publish-Lücke — egal, welcher Schreiber sie erzeugt.
 
 ⚠️ ER PUBLIZIERT NICHTS. Ein Teil der Ausschlüsse IST gewollt (Kostüm, Erotik, Refurb,
 Klingen), und ein Fehlgriff im Google-Kanal riskiert die Merchant-Sperre — also genau den
-Kanal, der verkauft. Was aufgenommen wird, entscheidet der Betreiber.
+Kanal, der verkauft. Das Nachpublizieren macht `google_kanal_luecke_schliessen.py`, und
+zwar nur für Ware, die dieselben Regeln wie `google_kanal_nachziehen.py` besteht — LIVE
+geprüft, mit Quittung, und mit `DRY=1` erst zum Lesen.
 
 ENV: SEIT=JJJJ-MM-TT (Default: die letzten 7 Tage)
 """
