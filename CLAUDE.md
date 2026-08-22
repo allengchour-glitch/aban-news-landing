@@ -864,6 +864,32 @@ nicht die Schwelle, sondern billige Ware im Mehrfachkorb.
   Das ältere «China-Fracht ~3–6 CHF» im BigBuy-Vergleich ist überholt — ich hätte auf dieser
   Grundlage beinahe die Kostendaten für falsch erklärt.
 
+## 🧾 Die Preisformel an einer ECHTEN Bestellung gegengeprüft (2026-08-22, LX1015)
+Der Betreiber hat selbst bestellt (#1015) und den CJ-Zahlschein gezeigt. Damit liegen zum
+ersten Mal ALLE Zahlen einer Bestellung nebeneinander — und sie bestätigen das am 20.08.
+aufgestellte Kostenmodell fast auf den Franken:
+
+| | |
+|---|---|
+| Verkauf Ware | CHF 15.90 |
+| Versand vom Kunden bezahlt | CHF 7.00 |
+| **Kundentotal** | **CHF 22.90** |
+| CJ Warenkosten | $ 2.81 |
+| CJ **Fracht** | **$ 19.35** |
+| **CJ zahlbar** | **$ 22.16** (≈ CHF 17.51–19.94) |
+| **Marge** | **+ CHF 2.96 bis 5.39** |
+
+Die Tabelle im Eintrag «Die Preisformel lag 2 Franken unter den Kosten» sagte für genau
+diesen Fall (EK 3 $, 0,3 kg): Preis 15.90, Kosten 17.70, mit CHF 7 Versand **+5.20**.
+Gemessen: +5.39. **Das Modell stimmt.**
+- ⚠️ **Die Fracht ist 87 % der Kosten** ($19.35 von $22.16) — bei einem 906-g-Artikel.
+  Die Ware selbst kostet $2.81. Wer über Fracht nachdenkt, denkt über das ganze Geschäft nach.
+- ⚠️ **Diese Bestellung trägt sich NUR über den Versanderlös.** Dieselbe Ware im
+  Gratis-Versand-Korb (ab CHF 50) wäre nach derselben Tabelle −1.80, mit dem automatischen
+  «2+ Artikel −10 %» −3.39. Der Befund von damals ist damit nicht mehr theoretisch.
+- Der konservative Umrechnungsfaktor 0.9 des Repos liegt näher an der Realität als der
+  Tageskurs 0.79 — er rechnet die Marge klein, nicht schön. So gehört es.
+
 ## 🧴 Smart-Collection-Regeln können «IPL» nicht fangen — Bindestriche helfen NICHT (2026-08-21)
 Die Kollektion `beauty-geraete` stand mit 58 Produkten da, alle DRAFT (BigBuy-Leichen), und war
 aus einem veröffentlichten Ratgeber verlinkt. Statt sie zurückzuziehen liess sie sich mit aktiver
