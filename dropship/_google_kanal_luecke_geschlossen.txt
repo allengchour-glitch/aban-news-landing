@@ -21,3 +21,8 @@ gid://shopify/Product/15509380923777	publiziert	PINKAH Isolier-Lunchbox 970ml
 gid://shopify/Product/15509386559873	publiziert	Kurzarmhemd für junge Männer
 gid://shopify/Product/15509402157441	publiziert	Elektrischer Porenreiniger mit 3 Bürstenköpfen
 gid://shopify/Product/15509402190209	publiziert	Erweiterbarer Laptop-Rucksack
+gid://shopify/Product/15503948775809	publiziert	Leichte Canvas-Schuhe für Herren
+gid://shopify/Product/15503948808577	publiziert	Puppenhaus Sofa für Kinder
+gid://shopify/Product/15503959327105	publiziert	Verstellbarer Messingring mit ovalem Edelstein
+gid://shopify/Product/15504074998145	publiziert	Luftbefeuchter in Holzoptik
+gid://shopify/Product/15504084173185	publiziert	Jeans-Hundehalsband mit Knochen-Stickerei
