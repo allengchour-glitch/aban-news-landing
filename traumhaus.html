@@ -5321,6 +5321,16 @@ setTimeout(function baueGebaeude(){
         var b=new THREE.Box3().setFromObject(w);
         if(!isFinite(b.min.x)||b.max.y-b.min.y<0.45)return;   /* flache Deko darf am Rand liegen */
         E.push({w:w,b:b,fest:!!(w.userData&&w.userData.fest)});});
+      /* Gleiche Begruendung wie in entwirren(): E entsteht aus der zufaelligen
+         Ladereihenfolge. Heute verschiebt dieser Durchgang nichts mehr (gemessen
+         "verschoben 0"), aber sobald er es wieder tut, waere die Karte ohne
+         diese Zeile erneut nicht reproduzierbar. */
+      E.sort(function(a,b){
+        var da=(a.w.userData&&a.w.userData.datei)||a.w.name||"";
+        var db=(b.w.userData&&b.w.userData.datei)||b.w.name||"";
+        if(da!==db)return da<db?-1:1;
+        if(a.w.position.x!==b.w.position.x)return a.w.position.x-b.w.position.x;
+        return a.w.position.z-b.w.position.z;});
       for(var runde=0;runde<2;runde++)
         for(var i=0;i<E.length;i++){
           var e=E[i];if(e.fest)continue;
@@ -5379,6 +5389,26 @@ setTimeout(function baueGebaeude(){
         E.push({w:w,b:b,fest:!!(w.userData&&w.userData.fest),
                 kein:KEIN_GEHAEUSE.test((w.userData&&w.userData.datei)||w.name||""),
                 v:(b.max.x-b.min.x)*(b.max.z-b.min.z)});});
+      /* ⚠️ GEMESSEN: ohne diese Sortierung ist die KARTE NICHT REPRODUZIERBAR.
+         `_gebaeude` fuellt sich in der Reihenfolge, in der die GLB-Ladevorgaenge
+         fertig werden — und die ist zwischen zwei Aufrufen verschieden. Da
+         `paare()` genau diese Reihenfolge durchlaeuft und bei jedem Paar das
+         zuerst gefundene Objekt ausweicht, kommt bei identischem Code ein
+         anderer Grundriss heraus. Zweimal hintereinander gemessen, gleicher
+         Commit, 850 Modelle: das Karussell stand einmal auf z 76,00 und einmal
+         auf 74,00, ein Bahnsteigdach einmal auf (-9,60|108,20) und einmal auf
+         (-11,00|109,60); die 3D-Pruefung meldete 52 bzw. 53 echte Funde, mit
+         einem Fund, den es nur in einem der beiden Laeufe gab.
+         Das macht jede Abnahme wertlos: ein Befund kann beim Nachmessen
+         verschwinden, ohne dass etwas repariert wurde. Der Schluessel darf
+         darum NICHT von der Ladereihenfolge abhaengen — Dateiname, dann x,
+         dann z. */
+      E.sort(function(a,b){
+        var da=(a.w.userData&&a.w.userData.datei)||a.w.name||"";
+        var db=(b.w.userData&&b.w.userData.datei)||b.w.name||"";
+        if(da!==db)return da<db?-1:1;
+        if(a.w.position.x!==b.w.position.x)return a.w.position.x-b.w.position.x;
+        return a.w.position.z-b.w.position.z;});
       function schneidet(a,b){
         return Math.min(a.max.x,b.max.x)-Math.max(a.min.x,b.min.x)>1.2&&
                Math.min(a.max.z,b.max.z)-Math.max(a.min.z,b.min.z)>1.2&&
