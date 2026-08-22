@@ -98,7 +98,20 @@
     function startWd() {
       lastRecv = Date.now();
       if (wd) clearInterval(wd);
+      /* ⚠️ STILLE IST NICHT GLEICH ABRISS. Der Wachhund schlaegt nach 6 s ohne
+         Nachricht an — er misst aber auch die Zeit, in der die SEITE SELBST
+         blockiert war. Genau das passiert beim Spielstart: waehrend die Welt
+         gebaut wird, steht der Hauptthread sekundenlang, es geht nichts raus
+         und nichts rein — und beide Seiten erklaeren die Verbindung fuer tot,
+         obwohl sie steht. Im Zwei-Seiten-Test starb die Sitzung reproduzierbar
+         genau beim Start; auf einem langsamen Handy ist das der Normalfall.
+         Der eigene Takt verraet die Blockade: kommt der 2-s-Intervall stark
+         verspaetet, war die Seite eingefroren — diese Zeit zaehlt nicht als
+         Funkstille. */
+      var takt = Date.now();
       wd = setInterval(function () {
+        var jetzt = Date.now(), spaet = jetzt - takt - 2000; takt = jetzt;
+        if (spaet > 800) lastRecv += spaet;
         if (S.status === "closed") { clearInterval(wd); return; }
         if (S.status === "connected" && Date.now() - lastRecv > 6000) { clearInterval(wd); wd = null; lost(); return; }
         /* 🩹 Schwarm4: eigener Transport-Keepalive — in der Lobby sendet das Spiel oft
@@ -283,18 +296,23 @@
     var bc = new BroadcastChannel("aban-mp-" + gameId + "-" + S.code);
     var pc = new RTCPeerConnection({ iceServers: [] }); // Loopback braucht kein STUN
     var main = null, fast = null, me = isHost ? "h" : "j", pend = [], lastRecv = 0, wd = null;
-    function gone() { if (S.status === "closed") return; S._setStatus("lost"); S._setStatus("closed"); }
+    /* 🔎 Warum die Sitzung endete — ohne das ist ein fehlgeschlagener Beitritt
+       nicht zu unterscheiden von "Raum gibt es nicht". Kostet ein Feld. */
+    function gone(grund) { if (S.status === "closed") return; S._why = grund || ("pc:" + pc.connectionState + "/" + pc.iceConnectionState); S._setStatus("lost"); S._setStatus("closed"); }
     function startWd() {
       lastRecv = Date.now();
       if (wd) clearInterval(wd);
+      var takt = Date.now();   /* Blockade der eigenen Seite zaehlt nicht als Funkstille — siehe Engine A */
       wd = setInterval(function () {
+        var jetzt = Date.now(), spaet = jetzt - takt - 2000; takt = jetzt;
+        if (spaet > 800) lastRecv += spaet;
         if (S.status === "closed") { clearInterval(wd); return; }
-        if (S.status === "connected" && Date.now() - lastRecv > 6000) { clearInterval(wd); gone(); }
+        if (S.status === "connected" && Date.now() - lastRecv > 6000) { clearInterval(wd); gone("stille"); }
       }, 2000);
     }
     pc.onconnectionstatechange = function () {
       var st = pc.connectionState;
-      if (st === "failed" || st === "closed" || st === "disconnected") gone();
+      if (st === "failed" || st === "closed" || st === "disconnected") gone("pcstate:" + st);
     };
     function post(t, d) { bc.postMessage({ t: t, from: me, d: d }); }
     function addIce(d) {
@@ -304,10 +322,32 @@
     }
     function flushIce() { pend.forEach(function (c) { pc.addIceCandidate(c).catch(function () {}); }); pend = []; }
     pc.onicecandidate = function (e) { if (e.candidate) post("ice", JSON.stringify(e.candidate)); };
+    /* ⚠️ NICHT NUR AUF `onopen` VERLASSEN. Gemessen im Zwei-Seiten-Test: der
+       Hauptkanal des Gasts stand nachweislich auf readyState "open" (Sonde
+       `_diag`), das `open`-EREIGNIS kam aber nie an — die Sitzung wartete
+       weiter und lief nach 9 s in den Beitritts-Timeout, obwohl die Verbindung
+       stand. Ein Zustand ist verlaesslicher als ein Ereignis: `oeffnen()` ist
+       idempotent und wird ausserdem kurz gepollt. */
+    var offen = false;
+    function oeffnen() {
+      if (offen || S.status === "closed") return;
+      offen = true;
+      if (pollT) { clearInterval(pollT); pollT = null; }
+      S._setStatus("connected"); startWd(); S._res(S);
+    }
+    var pollT = null;
+    function pollOffen() {
+      if (pollT) return;
+      pollT = setInterval(function () {
+        if (S.status === "closed" || offen) { clearInterval(pollT); pollT = null; return; }
+        if (main && main.readyState === "open") oeffnen();
+      }, 150);
+    }
     function wired(c, isFast) {
       c.onmessage = function (ev) { lastRecv = Date.now(); try { S._emit(JSON.parse(ev.data)); } catch (e) {} };
-      c.onopen = function () { if (!isFast) { S._setStatus("connected"); startWd(); S._res(S); } };
-      c.onclose = function () { if (!isFast) gone(); };
+      c.onopen = function () { if (!isFast) oeffnen(); };
+      c.onclose = function () { if (!isFast) gone("kanal-zu"); };
+      if (!isFast) { if (c.readyState === "open") oeffnen(); else pollOffen(); }
     }
     if (isHost) {
       S._setStatus("waiting");
@@ -335,12 +375,17 @@
       pc.createOffer().then(function (o) { return pc.setLocalDescription(o); })
         .then(function () { post("offer", JSON.stringify(pc.localDescription)); });
       setTimeout(function () {
-        if (S.status !== "connected") { S._setStatus("closed"); S._rej(new Error("Raum " + S.code + " nicht gefunden (lokaler Test-Modus).")); }
+        if (S.status !== "connected") { S._why = S._why || "timeout"; S._setStatus("closed"); S._rej(new Error("Raum " + S.code + " nicht gefunden (lokaler Test-Modus, Grund: " + S._why + ").")); }
       }, JOIN_TIMEOUT);
     }
+    /* 🔎 Zustand der Testverbindung von aussen lesbar — sonst ist ein
+       fehlgeschlagener Beitritt im lokalen Modus nicht zu diagnostizieren. */
+    S._diag = function () { return { conn: pc.connectionState, ice: pc.iceConnectionState,
+      sig: pc.signalingState, gather: pc.iceGatheringState,
+      main: main && main.readyState, fast: fast && fast.readyState }; };
     S.send = function (o) { try { if (main && main.readyState === "open") main.send(JSON.stringify(o)); } catch (e) {} };
     S.sendFast = function (o) { try { if (fast && fast.readyState === "open") fast.send(JSON.stringify(o)); else S.send(o); } catch (e) {} };
-    S.close = function () { if (wd) clearInterval(wd); S._setStatus("closed"); try { pc.close(); } catch (e) {} try { bc.close(); } catch (e) {} };
+    S.close = function () { if (wd) clearInterval(wd); if (pollT) clearInterval(pollT); S._setStatus("closed"); try { pc.close(); } catch (e) {} try { bc.close(); } catch (e) {} };
   }
 
   var FORCE_LOCAL = /[?&]mp=local\b/.test(location.search);

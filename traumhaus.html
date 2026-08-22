@@ -7868,7 +7868,7 @@ function onNetMsg(m){
   else if(m.t==="stufe"&&!mpHost){wohnstufe=m.ws|0;naechsteAbnahme=m.na||tag+4;
     if(m.txt)hint(m.txt);if(buildMode)renderPalette();stufeHudUpd();updHUD();}
   else if(m.t==="teamq"&&!mpHost){teamIdx=m.i;}
-  else if(m.t==="steer"&&mpHost){if(sims[1])sims[1].netSteer={x:m.x,z:m.z,t:performance.now()};}
+  else if(m.t==="steer"&&mpHost){if(sims[1])sims[1].netSteer={x:m.x,z:m.z,s:!!m.s,t:performance.now()};}
   else if(m.t==="wachs"&&!mpHost){m.a.forEach(function(e9){
     for(var i9=0;i9<furn.length;i9++){var f9=furn[i9];
       if(f9.fid===e9.fid){f9.wachs=e9.w;
@@ -8934,8 +8934,33 @@ function updNpcs(dt,now){
       ud2.ll.rotation.x=sw2*0.6;ud2.rl.rotation.x=-sw2*0.6;ud2.la.rotation.x=-sw2*0.4;ud2.ra.rotation.x=sw2*0.4;}
   }}
 function updSim(s,si,dt,now){
-  if(MPs&&!mpHost){ // Gast: Host-Positionen weich übernehmen
-    if(s.net){s._netMoved=Math.hypot(s.net.x-s.x,s.net.z-s.z)>0.05;s.x+=(s.net.x-s.x)*Math.min(1,dt*8);s.z+=(s.net.z-s.z)*Math.min(1,dt*8);
+  if(MPs&&!mpHost){ // Gast
+    var _mein=(si===meinSi()),_sv=_mein?steerVec(si):null;
+    if(_mein&&_sv){
+      /* ── VORHERSAGE der eigenen Figur ──────────────────────────────────────
+         Genau dieselbe Bewegung, die auch der Host rechnet — inklusive
+         Wandkollision, denn `steerMove` prueft WORLD_SOLIDS selbst. Die Figur
+         geht damit im selben Bild los, in dem die Taste kommt. */
+      s.state="steer";s.pose="stand";s._manualT=performance.now();
+      var _vor={x:s.x,z:s.z};
+      steerMove(s,_sv,dt,shiftHeld||joyEdge);
+      s._netMoved=Math.hypot(s.x-_vor.x,s.z-_vor.z)>0.001;
+      if(!followSim&&!buildMode)followSim=s;
+      /* ── AUSGLEICH ────────────────────────────────────────────────────────
+         Der Host bleibt die Instanz, die entscheidet. Kleine Abweichungen
+         werden weich herausgezogen (man sieht kein Zurueckrucken), grosse —
+         Auto, Teleport, eine Wand, die der Gast nicht kannte — hart gesetzt.
+         Die 6 m sind der Abstand, den 350 ms Paketabstand bei Sprinttempo
+         (6,6 m/s) niemals erreichen: darunter ist es Drift, darueber ein
+         echter Sprung. */
+      if(s.net){var _fx=s.net.x-s.x,_fz=s.net.z-s.z,_f=Math.hypot(_fx,_fz);
+        if(_f>6){s.x=s.net.x;s.z=s.net.z;}
+        else if(_f>0.15){var _k=Math.min(1,dt*1.6);s.x+=_fx*_k;s.z+=_fz*_k;}
+        if(s.net.nd)s.needs=s.net.nd;
+        if(s.net.v!==undefined)s.mesh.visible=s.net.v;
+        if(s.net.e&&s.net.e!==s._lastE){simEmoji(s,s.net.e);s._lastE=s.net.e;}}}
+    else if(s.net){ // fremde Figur (und die eigene, solange niemand steuert)
+      s._netMoved=Math.hypot(s.net.x-s.x,s.net.z-s.z)>0.05;s.x+=(s.net.x-s.x)*Math.min(1,dt*8);s.z+=(s.net.z-s.z)*Math.min(1,dt*8);
       s.rot=s.net.r;s.pose=s.net.p;if(s.net.nd)s.needs=s.net.nd;if(s.net.v!==undefined)s.mesh.visible=s.net.v;if(s.net.e&&s.net.e!==s._lastE){simEmoji(s,s.net.e);s._lastE=s.net.e;}}}
   else{
     if(s.state==="work")return;
@@ -8946,7 +8971,11 @@ function updSim(s,si,dt,now){
       if(s.state==="use"&&s.target){s.target.busy=false;s.target=null;}
       else if(s.state==="walk"&&s.target){s.target.busy=false;s.target=null;s.path=null;}
       s.state="steer";s.pose="stand";s._manualT=performance.now(); /* 🕹️ merken: Spieler steuert */
-      var sprint9=(si===0)?(shiftHeld||joyEdge):(Math.hypot(sv9.x,sv9.z)>0.92);
+      /* Beim Gast (si 1) zaehlt sein gemeldetes Sprint-Flag; nur wenn ein alter
+         Client es nicht schickt, bleibt der alte Stick-Ausschlag als Ersatz. */
+      var _ns9=(si===1&&sims[1])?sims[1].netSteer:null;
+      var sprint9=(si===0)?(shiftHeld||joyEdge)
+                 :(_ns9&&_ns9.s!==undefined?_ns9.s:(Math.hypot(sv9.x,sv9.z)>0.92));
       steerMove(s,sv9,dt,sprint9);
       if(si===0&&!followSim&&!buildMode)followSim=s;}
     else if(s.state==="steer")s.state="idle";
@@ -9381,8 +9410,15 @@ document.addEventListener("visibilitychange",function(){
   joy.addEventListener("pointerup",joyEnd);joy.addEventListener("pointercancel",joyEnd);
 })();
 function steerVec(si){
-  if(MPs&&!mpHost)return null; // Gast: Host rechnet
-  if(si===(MPs?0:0)&&steerActive())return {x:steer.x,z:steer.z};
+  /* ⚠️ Frueher: „Gast: Host rechnet" -> null. Das hiess, die eigene Figur des
+     Gasts bewegte sich AUSSCHLIESSLICH auf Host-Schnappschuesse hin, die
+     alle 350 ms eintreffen. Vom Tastendruck bis zur ersten Bewegung lag damit
+     eine volle Runde durchs Netz plus Glaettung — und danach lief die Figur in
+     Schueben statt zu gehen. Der Gast rechnet seine eigene Figur jetzt SOFORT
+     mit (Vorhersage) und wird in updSim() sanft auf die Wahrheit des Hosts
+     zurueckgezogen. Der Host bleibt die Instanz, die entscheidet. */
+  if(MPs&&!mpHost)return (si===1&&steerActive())?{x:steer.x,z:steer.z}:null;
+  if(si===0&&steerActive())return {x:steer.x,z:steer.z};
   if(MPs&&mpHost&&si===1){var ns=sims[1]&&sims[1].netSteer;
     if(ns&&performance.now()-ns.t<700&&(Math.abs(ns.x)>0.12||Math.abs(ns.z)>0.12))return {x:ns.x,z:ns.z};}
   return null;}
@@ -10442,7 +10478,11 @@ function loop(now){
     document.getElementById("hideBtn").style.display=(running&&!buildMode&&!fahren&&MPs&&mpHost)?"block":"none"; // nur im Koop (Solo-Verstecken war "doof")
     if(MPs&&!mpHost){steerNetT-=dt;
       if(steerNetT<=0){steerNetT=0.09;var act9=steerActive();
-        if(act9||steerWasActive){netFast({t:"steer",x:act9?steer.x:0,z:act9?steer.z:0});steerWasActive=act9;}}
+        /* ⚠️ Sprint MUSS mitgeschickt werden. Der Gast sagt lokal 1,65-fache
+           Geschwindigkeit voraus, der Host kannte nur den Richtungsvektor und
+           lief einfach — die Vorhersage waere dem Host dauerhaft davongelaufen
+           und der Ausgleich haette die Figur staendig zurueckgerissen. */
+        if(act9||steerWasActive){netFast({t:"steer",x:act9?steer.x:0,z:act9?steer.z:0,s:(act9&&(shiftHeld||joyEdge))?1:0});steerWasActive=act9;}}
       window._thHbT=(window._thHbT||0)-dt; /* 🩹 Schwarm-P1: Keepalive alle 2s — der 6s-Watchdog in mp.js trennte idle Gäste */
       if(window._thHbT<=0){window._thHbT=2;netSend({t:"hb"});}}
     simTick+=dt;if(simTick>0.35){simTick=0;updHUD();if(!MPs||mpHost){checkAch();checkQuest();checkTeamQ();missCheck();}

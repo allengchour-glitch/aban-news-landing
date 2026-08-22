@@ -4,6 +4,36 @@
 > ~600 kB in einer einzigen IIFE; ohne diese Karte sucht man lange und tritt in
 > Fallen, die hier schon einmal Stunden gekostet haben.
 
+## 🌐 Online-Koop: echt zu zweit testen (2026-08-22)
+- Werkzeug: `node spiele-dev/tools/th-koop.mjs` — zwei Seiten in EINEM Browser ueber
+  `?mp=local` (rohes WebRTC + BroadcastChannel), also echte DataChannels.
+- **Vier Umgebungsfallen, alle behoben — nicht neu entdecken:**
+  1. `python3 -m http.server` ist EINFAEDIG. Waehrend Seite 1 ihre ~800 GLB zieht,
+     verhungert die HTML-Anfrage von Seite 2. → `ThreadingHTTPServer` (Port 8901).
+  2. Zwei volle 3D-Szenen legen den Container lahm — Playwright kam nicht einmal durch
+     die Sichtbarkeitspruefung eines Eingabefelds. → `.glb`-Anfragen abweisen; fuers
+     Netz ist die Deko ohne Belang.
+  3. Chromium versteckt lokale IPs hinter `.local`-mDNS-Namen → ICE findet kein Paar.
+     → `--disable-features=WebRtcHideLocalIpsWithMdns`.
+  4. Nur EINE Seite ist im Vordergrund; in der anderen haelt Chromium
+     `requestAnimationFrame` an — die Spielschleife des Hosts stand still.
+     → `--disable-background-timer-throttling --disable-backgrounding-occluded-windows
+     --disable-renderer-backgrounding`.
+- **⚠️ ANTWORTZEITEN sind hier NICHT messbar.** Beide Seiten laufen bei rund einem Bild
+  pro Sekunde (zeitweise deutlich weniger) — jede Millisekundenzahl waere die Bildrate.
+  Ein `setInterval(50)` IN der Seite lief genau einmal. Der Test prueft darum das
+  RISIKO der Vorhersage: laeuft die Figur des Gasts der Wahrheit des Hosts davon?
+- **⚠️ `dispatchEvent(new KeyboardEvent(...))` erreicht den Spiel-Handler NICHT** — die
+  Figur blieb ueber alle Proben exakt stehen. `page.keyboard.down()` + `bringToFront()`.
+- **Der Beitritt ueber Loopback klappt nicht jedes Mal** (mal 1,6 s, mal Timeout) — das
+  Werkzeug versucht es bis zu sechsmal. Das ist die Umgebung, kein Spielfehler.
+- **Diagnose in `js/mp.js`:** `MPs._why` sagt, WARUM eine Sitzung endete
+  (`stille` / `kanal-zu` / `pcstate:…` / `timeout`), `MPs._diag()` gibt den WebRTC-Zustand.
+  Ohne die beiden ist „Raum nicht gefunden" nicht von „Verbindung stand, wir haben nur
+  auf ein Ereignis gewartet" zu unterscheiden.
+- **⚠️ `tools/mp_unit.cjs` hat 3 ALTE FAILs** (A2 Status/destroy, B1 quick endet closed) —
+  identisch auf der Fassung von HEAD, also nicht durch Koop-Aenderungen verursacht.
+
 ## 🧱 „Steckt drin" — die Luecke, durch die Moebel in Waenden landeten (2026-08-22)
 - Grep-Anker: `function steckt1`, `KEIN_GEHAEUSE`, `STECKT DRIN` (in `th-pruef.mjs`)
 - **Die Ursache, ueber Jahre wirksam:** `entwirren()` prueft Ueberschneidungen mit
