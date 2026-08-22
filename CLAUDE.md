@@ -992,6 +992,46 @@ und #1014 stehen in Shopify längst als FULFILLED — die Sendungsnummern kamen 
 `SHIPPED` — eine Versandmail für ein Paket, das noch im Lager liegt, ist schlimmer als
 eine späte.
 
+## 🧾 Der Wächter gegen unlieferbare Ware stand in KEINER Startliste (2026-08-22)
+`ohne_lieferantenref_guard.py` schützt gegen die Klasse von Bestellung **#1008** (bezahlt,
+nie lieferbar). Er ist inhaltlich in Ordnung — er prüft seit dem 20.08. die **FORM** der SKU
+statt des Präfixes und erkennt frei getippte Slugs. Er lief nur nie: **in keiner Startliste**,
+dieselbe Lücke wie beim Aufseher selbst (Lehre 19.08., «wer startet DICH neu?»). Jetzt im
+`fixer_keepalive.sh` registriert.
+**Vollscan über 45'833 aktive Produkte: 0 ohne jede Lieferanten-SKU** — die #1008-Klasse ist
+sauber. **16 tragen eine getarnte SKU** (der Wächter MELDET sie nur, er draftet sie nicht):
+- **8 handkuratierte Altprodukte** aus den ersten Sessions — `WALLET-BLK`, `WATCH-001`,
+  `SUNGLASS-BLK`, `LED-001`, `BAND-001`, `BABY-BIB-001`, `JADE-SET-001`, `PROJ-PANDA-001`.
+  Alle ACTIVE, alle auf `CONTINUE` mit **erfundenem Bestand** (35 bis 100 Stück), hinter der
+  SKU steht kein Lieferant. Darunter die Bewertungssieger (Slim Wallet 5,0★, Herrenuhr 5,0★,
+  Jade Roller 5,0★) — genau deshalb ist pauschales Draften teuer und bleibt Betreiber-Sache.
+- 5 sind **eigene Bündel** (`SET-AURA-3`, `SET-BADI-3`, `SET-KLEE-2`, `LXSCH-GIFT-TECH-HERO`)
+  und 1 ist POD (`TRANSFER-A5`) — dort ist «keine Lieferantenreferenz» richtig, kein Befund.
+- ⚠️ `CJ-CJY 104172601AZ` (Haustier-Trolley) hat ein **Leerzeichen mitten in der SKU**. Weder
+  `CJY104172601AZ` noch `CJY1041726` kennt CJ. Das fehlende Zeichen zu RATEN wäre schlimmer
+  als die Meldung stehen zu lassen — CJ-SKUs sind `CJ`+2 Buchstaben, das sind 26 Versuche.
+⚠️ Und die eigene Einordnung ehrlich: Ich hielt den Wächter erst für einen, der diese 8
+draftet. Er meldet sie nur. Die Registrierung im Aufseher ändert also nichts am Verkauf —
+sie macht den Befund täglich sichtbar. Das ist weniger, als es zuerst klang.
+
+## 💸 3'622 Produkte auf CHF 14.90 — unter der gemessenen Frachtuntergrenze (2026-08-22)
+Live gezählt: **3'622 aktive `cj-real` stehen auf genau CHF 14.90**, dem Boden der alten
+Formel aus einer Zeit ohne Fracht im Preis. Die Fracht China→CH hat eine **gemessene**
+Untergrenze von rund CHF 15 (#1011 $15.77 · LX1013 $6.34+$9.49 · LX1015 $19.35). Damit gilt
+`Stückkosten ≥ 0 + 15.00` — ein Produkt für CHF 14.90 liegt **unter den Kosten, selbst wenn
+die Ware gratis wäre**. Das ist keine Schätzung über Einzelartikel, sondern eine Untergrenze
+für alle. Einzelbestellung +6.90 · Gratis-Versand −0.10 · mit «2+ −10 %» −1.59.
+- **Korrektur an meiner eigenen Darstellung:** Ich hatte den CHF-4.90-Boden in
+  `cj_sku_import.mjs` so dargestellt, als stünde solche Ware live im Shop. Nachgezählt:
+  **0 CJ-Produkte unter CHF 14.90** — `preisboden.py` hat sie täglich hochgezogen. Die
+  Quellreparatur bleibt richtig, verkauft wurde zu 4.90 aber nichts.
+- ⚠️ **Shopifys Suchfilter schweigen bei falscher Syntax.** `variant_price:<5` und
+  `variants.price:<5` filtern NICHT (Ergebnis: 49.90, 129.90, 39.90) — nur `price:<5`
+  wirkt. Und `productsCount` deckelt bei **10'000**; wer eine grosse Menge zählen will,
+  muss sie in Bänder zerlegen, sonst meldet jede Abfrage dieselbe Zahl.
+- Entscheid mit drei durchgerechneten Wegen: `dropship/PREIS-ALTBESTAND-ENTSCHEID.md`.
+  ⚠️ Was NICHT hilft: die Gratis-Schwelle anheben — die Fracht fällt je ARTIKEL an.
+
 ## 🧮 Vier Importer, vier Preisformeln — nur eine war die korrigierte (2026-08-22)
 Der Fix vom 20.08. («der Aufschlag lag 2 Franken unter den Kosten») landete nur in
 `cj_category_fill.mjs`. Nachgezählt hatte **jeder** Importer seine eigene Rechnung:

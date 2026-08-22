@@ -61,3 +61,22 @@ gid://shopify/Product/15412677607809	CHF 21.40	1 Varianten	Elektrischer Krallens
 gid://shopify/Product/15412678328705	CHF 20.97	1 Varianten	Smart-Anzuchtset mit LED-Pflanzenlampe – 12 Zellen
 gid://shopify/Product/15412751499649	CHF 32.25	15 Varianten	Elegantes Sommerkleid A-Linie – Hemdkragen, fliess
 gid://shopify/Product/15412751860097	CHF 20.25	20 Varianten	Strand-Rock A-Linie mit Rüschen – doppellagig, fli
+gid://shopify/Product/15412752155009	CHF 22.32	10 Varianten	Herren Business-Poloshirt – gestrickte Ice-Silk, k
+gid://shopify/Product/15412825063809	CHF 21.27	18 Varianten	Bikini-Set Damen – einteilig, schmeichelhaft (S–3X
+gid://shopify/Product/15412825129345	CHF 19.51	40 Varianten	Leinenhose Damen – Baumwoll-Leinen, locker & atmun
+gid://shopify/Product/15412825194881	CHF 23.66	4 Varianten	Neckholder-Sommerkleid mit Blumen-Print – V-Aussch
+gid://shopify/Product/15412828733825	CHF 22.16	30 Varianten	2-teiliges Sommer-Set – Zip-Top & Rüschen-Shorts (
+gid://shopify/Product/15412830634369	CHF 18.77	24 Varianten	Strand-Cardigan «Riviera» – Leichter UV-Schutz-Übe
+gid://shopify/Product/15412830896513	CHF 18.32	48 Varianten	Relaxed-Fit Hoodie «Cosy» – mit Fell-Panel & Korde
+gid://shopify/Product/15412831256961	CHF 18.17	30 Varianten	Spitzen-Trägertop «Lacey» – feminines Sommer-Basic
+gid://shopify/Product/15412899643777	CHF 30.75	4 Varianten	Reise-Kulturbeutel «Voyage» – XL Hänge-Organizer
+gid://shopify/Product/15412899676545	CHF 26.20	3 Varianten	Edelstahl-Trinkflasche «Hydro» 570 ml
+gid://shopify/Product/15412902756737	CHF 30.23	1 Varianten	S925 Silber-Halskette «Éclat» – 1 Karat Moissanite
+gid://shopify/Product/15412902789505	CHF 15.64	1 Varianten	Ohrstecker «Lumière» – elegante High-End Studs
+gid://shopify/Product/15412902855041	CHF 15.46	2 Varianten	Mondstein-Blütenring «Fleur» – zarter Statement-Ri
+gid://shopify/Product/15412902953345	CHF 22.09	10 Varianten	2-teilige Mesh-Bluse «Résille» – Langarm mit Hollo
+gid://shopify/Product/15412911079809	CHF 15.72	1 Varianten	Kirschblüten-Halskette «Sakura» – zarte Klavikula-
+gid://shopify/Product/15412911178113	CHF 17.30	1 Varianten	7-Chakra Wickelarmband «Harmony» – Naturstein
+gid://shopify/Product/15412911964545	CHF 23.80	36 Varianten	2-teiliges Leinen-Set «Provence» – Hemd & Wide-Leg
+gid://shopify/Product/15412915110273	CHF 26.65	8 Varianten	Abendkleid «Sirène» – High-Slit Meerjungfrau mit S
+gid://shopify/Product/15412915339649	CHF 20.67	12 Varianten	Strand-Maxikleid «Bali» – luftiges Stufenkleid
