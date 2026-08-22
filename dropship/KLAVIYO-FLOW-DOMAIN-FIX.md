@@ -35,6 +35,52 @@ Inhalts, die per API NICHT editierbar ist → diese 2 Klick-Schritte musst du se
 > Konnektor verlangt eine Anmeldung, die eine nicht-interaktive Session nicht leisten kann.
 > Das sind Betreiber-Klicks.
 
+## 🔎 GENAU NACHGEMESSEN am 2026-08-22 (Konnektor war endlich freigeschaltet)
+
+Nicht mehr geraten — jede Live-Flow-Mail einzeln gelesen. Das Bild ist **enger als
+befuerchtet**, dafuer eindeutig:
+
+**KAPUTT (tote Domain fest im Button verdrahtet) — Flow «E-Mail Welcome-Serie» `UKjAsV`, live:**
+| Mail | Vorlage | Button | Ziel |
+|---|---|---|---|
+| Willkommens-E-Mail (ohne Gutschein) | `W45q7B` | «Jetzt entdecken» | `https://luxestyle.com.co` ❌ |
+| Welcome T+3d Discovery | `RS76Ay` | «Bestseller ansehen» | `https://luxestyle.com.co` ❌ |
+
+Das ist in beiden Mails der EINZIGE Call-to-Action. Wer klickt, landet im Nichts.
+
+**SAUBER — Flow «Abandoned Checkout» `Vse76a`, live:**
+Beide aktiven Mails (`URW5gX`, `VGu8HP`) verlinken auf `{{ event.extra.checkout_url }}`,
+also die dynamische Shopify-Kasse. Die brauchen KEINE Reparatur.
+Die dritte Mail («Email #3», Betreff woertlich «Email #3 Subject») ist **status=draft** und
+geht nicht raus — sieht schlimm aus, schadet aber nicht.
+
+**⚠️ DIE WURZEL, nur im Klaviyo-UI aenderbar:** In den Kontoeinstellungen steht
+`website_url: https://luxestyle.com.co`. Die Klaviyo-API hat KEINEN Endpunkt fuer
+Kontoeinstellungen → https://www.klaviyo.com/settings/account von Hand auf
+`https://luxestyle.ch` stellen. (Der `public_api_key` des Kontos ist `XWqMAD` — genau die
+Zeichenfolge am Ende des `_kx`-Parameters im toten Link des Betreibers.)
+
+**Schon erledigt:** Die korrigierte Vorlage liegt bereit als **`URDTkz`**
+(«LuxeStyle · Willkommen 1 (Domain-Fix luxestyle.ch, 2026-08-22)») — inhaltlich identisch
+mit `W45q7B`, nur der Button zeigt auf `luxestyle.ch`.
+
+⚠️ **Das Umhaengen des Live-Flows auf diese Vorlage hat der Sicherheits-Classifier der
+Session blockiert** (Aenderung an einem laufenden Kundenmail-Flow). Zwei Wege:
+1. Im Klaviyo-UI die Mail oeffnen → Vorlage `URDTkz` waehlen → «Update Live».
+2. Oder direkt im Code-Editor der Flow-Mail `luxestyle.com.co` → `luxestyle.ch` ersetzen.
+
+**Nebenbefunde (keine toten Links, aber schief):**
+- Welcome-Mail 1 hat `from_label: "Aban"` — alle anderen Mails senden als «LuxeStyle CH».
+- Abandoned-Checkout-Mails haben `reply_to_email: allengchour@gmail.com`, also eine private
+  Gmail-Adresse als Antwortziel eines Firmenshops (Absender ist korrekt info@luxestyle.ch).
+- Konto-Waehrung steht auf **USD**, der Shop rechnet in CHF → Klaviyos Umsatzzahlen sind
+  dadurch nicht mit Shopify vergleichbar.
+- **Drei Welcome-Flows sind gleichzeitig live** (`UKjAsV` deutsch, `VbLQj6`, `X4kYd7` EN/US),
+  alle mit Ausloeser «Added to List». Haengen sie an derselben Liste, bekommt ein neuer
+  Abonnent drei Willkommensmails. Ungeprueft — gehoert nachgesehen.
+- Der Shop liefert nur in die Schweiz (genau EIN aktiver Markt). Die EN/US-Flows bewerben
+  also Ware bei Leuten, die gar nicht auschecken koennen.
+
 ## Schnellster Weg (pro Flow-Mail gleich)
 1. Mail-Schritt im Flow anklicken → **„Edit"** (Inhalt öffnen).
 2. Oben rechts **„⋯" → „View/Edit Code"** (HTML-Quelltext).
