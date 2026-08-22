@@ -9691,3 +9691,22 @@ gid://shopify/Product/15501003948417	24->0	Titanstahl-Armband mit Kristallen ode
 gid://shopify/Product/15501003981185	29->1	IMIEUX Aroma-Massageöl (10 ml)
 gid://shopify/Product/15501005029761	9->1	Gold-Edelsteinarmband
 gid://shopify/Product/15501005128065	8->0	Retro Jogging-Sneaker mit dicker Sohle
+gid://shopify/Product/15501005324673	19->1	Lederarmband mit Verschluss, Unisex
+gid://shopify/Product/15501005390209	83->0	V580 Tragbarer Elektrischer Wasser-Zahnstocher
+gid://shopify/Product/15501005455745	69->0	Unisex Drachen-Armband
+gid://shopify/Product/15501005521281	26->0	Beheizbare Handgelenkbandage mit Massage
+gid://shopify/Product/15501005554049	26->1	Plateau-Stiefel aus Rindsleder
+gid://shopify/Product/15501005586817	8->0	Automatischer Sensor-Abfalleimer 11L
+gid://shopify/Product/15501005652353	13->0	Elektrischer Massagekamm
+gid://shopify/Product/15501005980033	11->0	Feuchttuchwärmer mit Nachtlicht
+gid://shopify/Product/15501006012801	41->1	Outdoor-Sport-Kniebandage mit Silikonfeder
+gid://shopify/Product/15501006176641	15->0	Automatischer Duftspender für Wandmontage
+gid://shopify/Product/15501006471553	13->0	Armband aus Gold Obsidian und weissem Kristall
+gid://shopify/Product/15501006700929	61->0	Elektrisches Fussmassagegerät für Akupressur
+gid://shopify/Product/15501006930305	149->0	Leichte Mesh-Sneaker für Damen
+gid://shopify/Product/15501006963073	31->0	Fünffach-Wellen-Curler für Egg-Roll-Frisuren
+gid://shopify/Product/15501007094145	17->0	Flache Sneaker mit leichter Erhöhung
+gid://shopify/Product/15501007356289	30->0	Spiral-Lockenstab & Glätteisen 2-in-1
+gid://shopify/Product/15501007913345	34->1	Elegante Quarzuhr mit Kalenderfunktion
+gid://shopify/Product/15501007978881	89->0	6-in-1 Lockenstab-Set mit Keramikaufsätzen
+gid://shopify/Product/15501021839745	32->0	Silikon-Luminous-Uhr
