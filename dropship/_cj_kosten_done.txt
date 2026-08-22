@@ -90,3 +90,23 @@ gid://shopify/Product/15412919566721	CHF 21.42	5 Varianten	Schnürkleid «Noir»
 gid://shopify/Product/15412919763329	CHF 23.95	5 Varianten	Off-Shoulder-Kleid «Brise» – locker & ärmellos
 gid://shopify/Product/15412945191297	CHF 19.35	6 Varianten	Herrenuhr «Executive» – Business Quarz
 gid://shopify/Product/15412945224065	CHF 19.53	8 Varianten	Herrenuhr «Carré» – Minimalist Square
+gid://shopify/Product/15412945289601	CHF 19.37	6 Varianten	Armbanduhr «Rettangolo» – Rechteckig, Unisex
+gid://shopify/Product/15412945355137	CHF 21.42	4 Varianten	Herrenuhr-Set «Magnate» – Quarz + Armband
+gid://shopify/Product/15412949451137	CHF 17.65	3 Varianten	Reed-Diffuser «Aroma» – Duftstäbchen ohne Flamme
+gid://shopify/Product/15412949483905	CHF 24.45	1 Varianten	Spülbecken-Organizer – Schwamm- & Seifenhalter mit
+gid://shopify/Product/15412959773057	CHF 16.22	6 Varianten	Aroma-Diffuser «Mist» – Ultraschall mit LED
+gid://shopify/Product/15412959805825	CHF 32.87	1 Varianten	Quallen-Diffuser «Medusa» – mit Musik & LED
+gid://shopify/Product/15412959871361	CHF 30.05	1 Varianten	S925 Silber-Halskette «Eternal» – Herz-Anhänger
+gid://shopify/Product/15412960002433	CHF 28.40	1 Varianten	S925 Silber-Halskette «Camélia» – Blüten-Anhänger
+gid://shopify/Product/15412960067969	CHF 31.92	1 Varianten	999 Silber-Anhänger «Fortuna» – Glücksmünze filigr
+gid://shopify/Product/15412960133505	CHF 15.98	4 Varianten	Halskette & Armband «Planet» – minimalistischer An
+gid://shopify/Product/15412960592257	CHF 16.66	13 Varianten	Satin-Seidenkissenbezug 2er-Set – sanft zu Haut & 
+gid://shopify/Product/15412964458881	CHF 15.62	8 Varianten	Pusteblumen-Ring «Dandelion» – filigran graviert
+gid://shopify/Product/15412964557185	CHF 16.72	7 Varianten	Herren-Ring «Vintage» – Edelstahl Retro
+gid://shopify/Product/15412964655489	CHF 15.93	4 Varianten	Tigerauge-Armband «Savana» – Naturstein doppelreih
+gid://shopify/Product/15412964688257	CHF 17.38	1 Varianten	Ohrringe «Barque» – geprägtes Design
+gid://shopify/Product/15412964786561	CHF 20.39	2 Varianten	Ear-Cuffs «Papillon» – blauer Schmetterling
+gid://shopify/Product/15412964852097	CHF 40.92	1 Varianten	999 Silber-Armband «Trèfle» – Kleeblatt mit Zirkon
+gid://shopify/Product/15412969144705	CHF 20.67	15 Varianten	Sommerkleid «Dos Nu» – locker mit Rücken-Cut-out
+gid://shopify/Product/15412969406849	CHF 20.67	30 Varianten	T-Shirt-Kleid «Casa» – locker mit Print
+gid://shopify/Product/15412976681345	CHF 20.67	4 Varianten	Schultertasche «Milano» – PU-Leder, grosse Kapazit
