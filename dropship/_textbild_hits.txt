@@ -9867,3 +9867,5 @@ gid://shopify/Product/15501882425729	42->1	Edelstahl-Kette
 gid://shopify/Product/15501882458497	89->0	Wasserboot
 gid://shopify/Product/15501882687873	50->0	Warme Kinder-Schneestiefel
 gid://shopify/Product/15501883015553	8->0	Titan-Stahlarmband
+gid://shopify/Product/15501884195201	27->0	V-Face Gerät
+gid://shopify/Product/15501898973569	35->1	Babyweiche Sohlenschuhe Unisex
