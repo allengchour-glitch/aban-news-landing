@@ -172,7 +172,14 @@ def main():
             # ⚠️ Shopify-CDN-URLs tragen ein `?v=…` am Ende — `basename()` nimmt es mit
             # und der Dateiname stimmt dann nie («matterhorn.png?v=178…»). Erst die
             # Abfrage abschneiden, dann den Namen nehmen.
-            datei = os.path.join(DESIGNS, os.path.basename(v.split("?")[0]))
+            # ⚠️ Shopify haengt bei Namenskollision eine UUID an («matterhorn_bfdfd891-…png»).
+            # Das passiert, sobald dieselbe Datei zweimal hochgeladen wird — hier durch
+            # meinen eigenen Probelauf. Die CDN-Datei ist in Ordnung, nur der LOKALE Name
+            # stimmt dann nicht mehr; das Suffix wird deshalb abgeschnitten.
+            name = os.path.basename(v.split("?")[0])
+            name = re.sub(r"_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?=\.)",
+                          "", name)
+            datei = os.path.join(DESIGNS, name)
             if not os.path.exists(datei):
                 ohne.append(p["title"]); continue
             offen.append((p["id"], p["title"], datei))
