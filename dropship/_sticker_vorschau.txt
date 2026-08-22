@@ -229,3 +229,5 @@ gid://shopify/Product/15427244392833	14,0 × 14,0 cm	Sticker «Kaffee» · 1 St�
 gid://shopify/Product/15427244425601	14,0 × 4,1 cm	Sticker «Machdeinding» · 1 Stück
 gid://shopify/Product/15427244458369	14,0 × 6,2 cm	Sticker «Merci» · 1 Stück
 gid://shopify/Product/15427244491137	14,0 × 6,9 cm	Sticker «Musiclife» · 1 Stück
+gid://shopify/Product/15427244523905	14,0 × 6,3 cm	Sticker «Nopain» · 1 Stück
+gid://shopify/Product/15427244556673	14,0 × 14,0 cm	Sticker «Nostress» · 1 Stück
