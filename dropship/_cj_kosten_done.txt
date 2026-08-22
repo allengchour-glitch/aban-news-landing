@@ -24,3 +24,16 @@ gid://shopify/Product/15411563823489	CHF 38.88	1 Varianten	Outdoor Bluetooth Spe
 gid://shopify/Product/15411564446081	CHF 24.67	1 Varianten	Mini Bluetooth Speaker Wasserdicht – Dusche, Outdo
 gid://shopify/Product/15411565035905	CHF 22.42	1 Varianten	LED Schreibtischlampe Akku – 3 Helligkeitsstufen, 
 gid://shopify/Product/15411565429121	CHF 40.49	1 Varianten	Elektrischer Gemüseschneider Multifunktional – Sch
+gid://shopify/Product/15412297007489	CHF 20.17	1 Varianten	LED Solar-Lichterkette XL – 8 Leuchtmodi, wetterfe
+gid://shopify/Product/15412297073025	CHF 25.99	1 Varianten	Solar Camping-Laterne im Vintage-Look – wiederaufl
+gid://shopify/Product/15412297138561	CHF 40.77	1 Varianten	Aufblasbarer Palmen-Wassersprinkler XXL – Garten-W
+gid://shopify/Product/15412299661697	CHF 15.68	1 Varianten	Kühlmatte für Hunde & Katzen – Ice-Silk, selbstküh
+gid://shopify/Product/15412299760001	CHF 16.31	1 Varianten	Vintage Sonnenbrille Oval – Metallrahmen, UV-Schut
+gid://shopify/Product/15412301922689	CHF 17.11	1 Varianten	Panda Handyhalter – süsser Schreibtisch-Ständer fü
+gid://shopify/Product/15412302020993	CHF 16.66	1 Varianten	Vintage Baseball-Cap mit Strass-Schneeflocke – ver
+gid://shopify/Product/15412302414209	CHF 19.23	1 Varianten	Reise-Rucksack mit Kettengriff – kompakt, vegan-Le
+gid://shopify/Product/15412302446977	CHF 27.24	1 Varianten	Hunde-Snackball Intelligenzspielzeug – verstellbar
+gid://shopify/Product/15412302512513	CHF 15.81	1 Varianten	Regenschirm mit Handy-Halterung – freihändig, 8 St
+gid://shopify/Product/15412304707969	cj-ohne-antwort
+gid://shopify/Product/15412304773505	CHF 21.71	1 Varianten	Profi Messerschärfer – Präzisions-Schleifer für sc
+gid://shopify/Product/15412304806273	CHF 18.79	1 Varianten	Elegante Umhängetasche in Lack-Optik – Crossbody, 
