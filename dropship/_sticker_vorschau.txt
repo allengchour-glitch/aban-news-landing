@@ -231,3 +231,29 @@ gid://shopify/Product/15427244458369	14,0 × 6,2 cm	Sticker «Merci» · 1 Stüc
 gid://shopify/Product/15427244491137	14,0 × 6,9 cm	Sticker «Musiclife» · 1 Stück
 gid://shopify/Product/15427244523905	14,0 × 6,3 cm	Sticker «Nopain» · 1 Stück
 gid://shopify/Product/15427244556673	14,0 × 14,0 cm	Sticker «Nostress» · 1 Stück
+gid://shopify/Product/15427244589441	14,0 × 6,2 cm	Sticker «Plantpowered» · 1 Stück
+gid://shopify/Product/15427244622209	14,0 × 14,0 cm	Sticker «Selfcare» · 1 Stück
+gid://shopify/Product/15427244654977	14,0 × 2,2 cm	Sticker «Staywild» · 1 Stück
+gid://shopify/Product/15427244720513	14,0 × 3,8 cm	Sticker «Sunshine» · 1 Stück
+gid://shopify/Product/15427244753281	14,0 × 10,2 cm	Sticker «Traumschoen» · 1 Stück
+gid://shopify/Product/15427244786049	14,0 × 4,5 cm	Sticker «Vegan» · 1 Stück
+gid://shopify/Product/15427244818817	14,0 × 8,9 cm	Sticker «Wildfree» · 1 Stück
+gid://shopify/Product/15427244851585	14,0 × 14,0 cm	Sticker «Youmatter» · 1 Stück
+gid://shopify/Product/15427244884353	14,0 × 10,9 cm	Sticker «Tiger» · 1 Stück
+gid://shopify/Product/15427244917121	14,0 × 11,8 cm	Sticker «Toucan» · 1 Stück
+gid://shopify/Product/15427244949889	11,1 × 14,0 cm	Sticker «Ufo» · 1 Stück
+gid://shopify/Product/15427244982657	14,0 × 14,0 cm	Sticker «Vinyl Record» · 1 Stück
+gid://shopify/Product/15427245015425	14,0 × 14,0 cm	Sticker «Volleyball» · 1 Stück
+gid://shopify/Product/15427245048193	14,0 × 13,8 cm	Sticker «Wolf» · 1 Stück
+gid://shopify/Product/15427245080961	14,0 × 12,0 cm	Sticker «Y2k Butterfly» · 1 Stück
+gid://shopify/Product/15427245113729	14,0 × 14,0 cm	Sticker «Yoga Pose» · 1 Stück
+gid://shopify/Product/15427245146497	14,0 × 12,6 cm	Sticker «Zebra» · 1 Stück
+gid://shopify/Product/15427245179265	14,0 × 12,5 cm	Sticker «Zodiac Aquarius» · 1 Stück
+gid://shopify/Product/15427245212033	14,0 × 12,3 cm	Sticker «Zodiac Aries» · 1 Stück
+gid://shopify/Product/15427245244801	14,0 × 11,7 cm	Sticker «Zodiac Cancer» · 1 Stück
+gid://shopify/Product/15427245277569	13,9 × 14,0 cm	Sticker «Zodiac Capricorn» · 1 Stück
+gid://shopify/Product/15427245343105	13,6 × 14,0 cm	Sticker «Zodiac Gemini» · 1 Stück
+gid://shopify/Product/15427245375873	14,0 × 13,9 cm	Sticker «Zodiac Leo» · 1 Stück
+gid://shopify/Product/15427245408641	14,0 × 13,8 cm	Sticker «Zodiac Libra» · 1 Stück
+gid://shopify/Product/15427245441409	14,0 × 14,0 cm	Sticker «Zodiac Pisces» · 1 Stück
+gid://shopify/Product/15427245474177	12,5 × 14,0 cm	Sticker «Zodiac Sagittarius» · 1 Stück
