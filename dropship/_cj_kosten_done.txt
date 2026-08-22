@@ -186,3 +186,22 @@ gid://shopify/Product/15421167042945	CHF 16.57	2 Varianten	Perlen-Anhänger «Co
 gid://shopify/Product/15421167075713	CHF 16.98	4 Varianten	Baskenmütze «Riviera» · Denim mit Farbstreifen (Un
 gid://shopify/Product/15421167108481	CHF 19.43	18 Varianten	Geburtsstein-Armband «Pois» · zarte Kette mit Stei
 gid://shopify/Product/15421167436161	CHF 59.01	2 Varianten	Moissanite-Ohrstecker «Éclat» · S925 Silber (0,5 /
+gid://shopify/Product/15421167468929	CHF 39.14	4 Varianten	Deko-Vase «Antique» · Schmiedeeisen Vintage-Look (
+gid://shopify/Product/15421171859841	CHF 21.29	1 Varianten	Statement-Ohrringe «Doré» · gebürstetes Gold, quad
+gid://shopify/Product/15421171892609	CHF 15.90	5 Varianten	Sommer-Armband «Évil» · Schmetterling & Nazar-Auge
+gid://shopify/Product/15421226746241	CHF 15.49	1 Varianten	Glücks-Halskette «Fortune» · Hufeisen & Kreuz mit 
+gid://shopify/Product/15421328359809	CHF 30.88	4 Varianten	Doppel-Ring «Duo» · S925 Silber mit Zirkonia & Top
+gid://shopify/Product/15421328425345	cj-ohne-antwort
+gid://shopify/Product/15421364896129	CHF 30.20	2 Varianten	Boho-Jeansjacke «Dentelle» · Denim mit Spitzen-Pan
+gid://shopify/Product/15421364928897	CHF 20.22	25 Varianten	Fransen-Minirock «Santa Fe» · Wildleder-Optik, 2-l
+gid://shopify/Product/15421414113665	CHF 17.75	14 Varianten	Zehensteg-Sandalen «Riva» · flach, mit Metall-Deta
+gid://shopify/Product/15421414211969	CHF 54.51	3 Varianten	Moissanite-Herzkette «Coeur» · S925 Silber, Infini
+gid://shopify/Product/15421414277505	CHF 20.39	1 Varianten	Acryl-Ohrringe «Ambre» · Karamell-Ton, Statement
+gid://shopify/Product/15421442228609	CHF 24.90	1 Varianten	Silber-Armreif «Serpent» · S925, Schlangenschuppen
+gid://shopify/Product/15421442261377	CHF 19.27	40 Varianten	Sommerkleid «Fleur Noir» · Blumen-Print, Midi mit 
+gid://shopify/Product/15421501211009	CHF 20.53	5 Varianten	Jeans-Shorts «Cristal» · Strass-Besatz, Mid-Rise S
+gid://shopify/Product/15421502030209	CHF 17.21	5 Varianten	Make-up-Tasche «Mirror» · Kosmetiketui mit integri
+gid://shopify/Product/15421502554497	CHF 55.12	1 Varianten	Kerzenwärmer-Lampe «Lueur» · mit Timer & Dimmer
+gid://shopify/Product/15421513630081	CHF 20.22	20 Varianten	Sommerkleid «Sole» · Casual Midi, Raglan-Ärmel
+gid://shopify/Product/15421516218753	CHF 21.71	55 Varianten	Blazer «Roma» · Tailliert mit Bindegürtel & Revers
+gid://shopify/Product/15421517889921	CHF 19.92	36 Varianten	Herren-Henley «Waffle» · Waffelstrick, Langarm
