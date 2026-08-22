@@ -10032,3 +10032,7 @@ gid://shopify/Product/15453773005185	37->1	Kau-Spielball für Hunde
 gid://shopify/Product/15453773791617	29->0	Grosser Ultraschall-Luftbefeuchter
 gid://shopify/Product/15453774971265	29->0	Cargohosen für Herren
 gid://shopify/Product/15453775561089	20->0	3D Schriftzug-Print Herren T-Shirt
+gid://shopify/Product/15453777625473	89->0	Premium Leder Portemonnaie für Herren
+gid://shopify/Product/15453778182529	67->2	Anti-Diebstahl Karten- und Ausweishalter Leder
+gid://shopify/Product/15453778313601	23->1	Wasserdichter Hüftbeutel
+gid://shopify/Product/15453779591553	11->0	Mini Taktik Reit Cross-Body Tasche
