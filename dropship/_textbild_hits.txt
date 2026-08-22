@@ -9264,3 +9264,18 @@ gid://shopify/Product/15500485886337	27->2	10er-Pack verstellbare PU-Hundehalsb�
 gid://shopify/Product/15500485919105	59->0	Ohrkanal-Trockner und -Reiniger
 gid://shopify/Product/15500486050177	31->3	M채nner-Hautcreme
 gid://shopify/Product/15500486115713	8->3	Halskettenring
+gid://shopify/Product/15500486246785	28->0	Anti-Biss Kopfschutz f체r Haustiere
+gid://shopify/Product/15500486476161	17->0	Warme Schuhe f체r Kinder
+gid://shopify/Product/15500486705537	118->0	Gelbe A-Linie-Mini-Rock
+gid://shopify/Product/15500486967681	16->1	Haarroller und Haarschneider
+gid://shopify/Product/15500487065985	100->0	Schmale H체ftronnen-Rock mit Blumenprint
+gid://shopify/Product/15500487098753	34->0	Haarpflege-Kit
+gid://shopify/Product/15500487197057	26->0	Polka-Dot-Strap-Rock
+gid://shopify/Product/15500487655809	136->1	Grossr채umiger Business-Rucksack
+gid://shopify/Product/15500487688577	11->0	Haar-Strassierer
+gid://shopify/Product/15500487721345	61->0	Farbkarierte Schlabberkleid
+gid://shopify/Product/15500487917953	15->0	Tortillahalter
+gid://shopify/Product/15500487950721	8->0	Korean-Style Plaid Rucksack
+gid://shopify/Product/15500488081793	95->0	Luxus-Beistellkoffer
+gid://shopify/Product/15500492112257	81->2	Transparenter Motorrad-Rucksack im Hong Kong Stil
+gid://shopify/Product/15500492407169	86->0	Pocket Pet Jugend-Rucksack mit Schulterpolster
