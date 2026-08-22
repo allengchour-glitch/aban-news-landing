@@ -40,3 +40,8 @@ gid://shopify/Product/15427237052801	https://cdn.shopify.com/s/files/1/0943/6856
 gid://shopify/Product/15427237216641	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cat-astronaut.png?v=1787420224	Sticker «Cat Astronaut» · 1 Stück
 gid://shopify/Product/15427237314945	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ch-1-august.png?v=1787420231	Sticker «Ch 1 August» · 1 Stück
 gid://shopify/Product/15427237347713	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ch-alpaufzug.png?v=1787420238	Sticker «Ch Alpaufzug» · 1 Stück
+gid://shopify/Product/15427237380481	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ch-apero-time.png?v=1787420245	Sticker «Ch Apero Time» · 1 Stück
+gid://shopify/Product/15427237413249	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ch-baehnli.png?v=1787420252	Sticker «Ch Baehnli» · 1 Stück
+gid://shopify/Product/15427237446017	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ch-baern.png?v=1787420259	Sticker «Ch Baern» · 1 Stück
+gid://shopify/Product/15427237478785	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ch-basel.png?v=1787420266	Sticker «Ch Basel» · 1 Stück
+gid://shopify/Product/15427237511553	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ch-bernese-dog.png?v=1787420273	Sticker «Ch Bernese Dog» · 1 Stück
