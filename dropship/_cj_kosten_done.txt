@@ -80,3 +80,13 @@ gid://shopify/Product/15412911178113	CHF 17.30	1 Varianten	7-Chakra Wickelarmban
 gid://shopify/Product/15412911964545	CHF 23.80	36 Varianten	2-teiliges Leinen-Set «Provence» – Hemd & Wide-Leg
 gid://shopify/Product/15412915110273	CHF 26.65	8 Varianten	Abendkleid «Sirène» – High-Slit Meerjungfrau mit S
 gid://shopify/Product/15412915339649	CHF 20.67	12 Varianten	Strand-Maxikleid «Bali» – luftiges Stufenkleid
+gid://shopify/Product/15412915470721	CHF 20.67	16 Varianten	Polka-Dot Retro-Kleid «Daisy» – Vintage mit Schlei
+gid://shopify/Product/15412916060545	CHF 23.36	30 Varianten	Sommerkleid «Savanna» – Western-Style Midi
+gid://shopify/Product/15412918190465	CHF 18.90	45 Varianten	Blumen-Maxikleid «Fleurette» – Neckholder mit Fish
+gid://shopify/Product/15412919304577	CHF 29.63	15 Varianten	Herren-Sommerhemd «Monsieur» – French Court Style,
+gid://shopify/Product/15412919402881	CHF 19.78	24 Varianten	Etuikleid «Lumea» – Cut-Out Sheath
+gid://shopify/Product/15412919533953	CHF 18.73	12 Varianten	Midikleid «Bluette» – Fake-2-Teiler mit V-Ausschni
+gid://shopify/Product/15412919566721	CHF 21.42	5 Varianten	Schnürkleid «Noir» – Schleifen-Detail
+gid://shopify/Product/15412919763329	CHF 23.95	5 Varianten	Off-Shoulder-Kleid «Brise» – locker & ärmellos
+gid://shopify/Product/15412945191297	CHF 19.35	6 Varianten	Herrenuhr «Executive» – Business Quarz
+gid://shopify/Product/15412945224065	CHF 19.53	8 Varianten	Herrenuhr «Carré» – Minimalist Square
