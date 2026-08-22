@@ -9127,3 +9127,6 @@ gid://shopify/Product/15500254019969	53->2	Glattstahler mit Edelsteinen
 gid://shopify/Product/15500254937473	52->0	Koreanische Tier-Taschen
 gid://shopify/Product/15500255297921	84->0	Hundefreundliche Krawatten
 gid://shopify/Product/15500256313729	52->0	Leinen-Kanvas-Rolle
+gid://shopify/Product/15500257100161	26->0	Lichter Laufschuh
+gid://shopify/Product/15500257657217	30->0	3-in-1 Warmluftbürste zum Stylen
+gid://shopify/Product/15500258312577	8->0	Nachtlicht-Ladestation
