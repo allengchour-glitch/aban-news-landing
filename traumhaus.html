@@ -710,6 +710,31 @@ rasen.rotation.x=-Math.PI/2;rasen.position.y=-0.05;rasen.receiveShadow=true;scen
      genau der Bereich, den man beim Herauszoomen sieht. Drittes Overlay dafuer. */
   overlay(460,460,-0.05,blotchTex(88,0.26));            // Umland-Ring
   overlay(600,600,-0.06,blotchTex(40,0.2));             // Fern-Ebene
+  /* ☁️ WOLKENSCHATTEN. Die Landschaft war bei Tag voellig gleichmaessig
+     ausgeleuchtet — nichts bewegte sich ausser Fahrzeugen. Eine grosse, weiche
+     Schattentextur zieht jetzt langsam ueber den Boden, wie Wolken an einem
+     Sommertag. Ein Zeichenaufruf, liegt flach auf dem Grund (y 0,02) und damit
+     unter allem, was hoeher als ein Bordstein ist. */
+  (function wolkenschatten(){
+    var cv=document.createElement("canvas");cv.width=cv.height=256;
+    var c=cv.getContext("2d");
+    var sd=5;function rnd(){sd=(sd*16807)%2147483647;return sd/2147483647;}
+    for(var i=0;i<22;i++){
+      var x=rnd()*256,y=rnd()*256,r=28+rnd()*54;
+      var g=c.createRadialGradient(x,y,2,x,y,r);
+      g.addColorStop(0,"rgba(28,42,64,"+(0.26+rnd()*0.22).toFixed(2)+")");
+      g.addColorStop(1,"rgba(30,44,66,0)");
+      c.fillStyle=g;c.beginPath();c.arc(x,y,r,0,6.283);c.fill();}
+    var t=new THREE.CanvasTexture(cv);
+    t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(4.5,4.5);  /* ~170 m je Kachel: bei 345 m sah man im Bildausschnitt gar keine Struktur */
+    var m=new THREE.Mesh(new THREE.PlaneGeometry(760,760),
+      new THREE.MeshBasicMaterial({map:t,transparent:true,opacity:0.55,depthWrite:false}));
+    /* ⚠️ y 0,008 und nicht 0,02: gebaute Boeden liegen auf 0,01 — sonst zoege
+       der Wolkenschatten durchs Wohnzimmer. Ueber den Strassenmarkierungen
+       (0,005…0,006) liegt er weiterhin, dort gehoert er auch hin. */
+    m.rotation.x=-Math.PI/2;m.position.y=0.008;m.frustumCulled=false;scene.add(m);
+    window._wolkenSchatten=m;
+  })();
 })();
 // Kaminrauch aus mehreren Häusern (leichte aufsteigende Partikel)
 var rauchPunkte=[[-38.9,-30,7.9],[10,-30,7.6],[46,-33,8.5],[-40,30,8],[8,32,8.8]];
@@ -10213,6 +10238,14 @@ function loop(now){
     updHund(dt,now);
     if(fahren){autoFahr(dt);}
     updGrow(dt);updBeete(dt);if(!fahren)updWork(dt);updAuto(dt);updCrime(dt);updNpcs(dt,now);updPolizei(dt,now);if(!arbeiten&&!crime.on)updLove(dt);
+    /* Wolkenschatten ziehen lassen — nachts unsichtbar, bei Regen dichter. */
+    if(window._wolkenSchatten){
+      var _ws=window._wolkenSchatten, _wt=_ws.material.map;
+      if(_wt){_wt.offset.x+=dt*0.0045;_wt.offset.y+=dt*0.0022;}
+      var _zielO=(typeof dayA!=="undefined"?dayA:1)*(wetter==="regen"?0.95:0.72);
+      _ws.material.opacity+=(_zielO-_ws.material.opacity)*Math.min(1,dt*0.8);
+      _ws.visible=_ws.material.opacity>0.02;
+    }
     updHearts(dt);updPlopps(dt);updWetter(dt);updVerkehr(dt);updLandbus(dt);updHafen(dt,now);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);updVerstecken(dt);updFest(dt,now);updImmo(dt);
     document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("minimap").style.display=(running&&!buildMode)?"block":"none";
