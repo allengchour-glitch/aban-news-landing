@@ -28,10 +28,12 @@ async function publishVerified(st, pid, klinge){
 }
 const PUBS=['301970915713','301971014017','302032716161','302566834561','302872297857','302994456961'].map(id=>({publicationId:`gid://shopify/Publication/${id}`}));
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-const chf=usd=>{const u=parseFloat((''+usd).split('--')[0])||0;
- // 2026-08-03: Kunde zahlt CHF7 Versand → Fracht-Lücke ~CHF8 in Preis (Fracht 15 - 7)
- const landed=u*0.9+8; const p=Math.max(landed*1.4, landed+5, 14.90);
- return (Math.floor(p)+0.90).toFixed(2);};
+// ⚠️ 22.08.2026 — DIESER IMPORTER IGNORIERTE DAS GEWICHT und rechnete mit einer pauschalen
+// Fracht-Lücke von CHF 8, also der Fracht eines LEICHTEN Artikels. Gemessen sind $6.34 ·
+// $9.49 · $15.77 · $19.35 (Orders #1011, LX1013, LX1015) — die Fracht hängt am Gewicht.
+// Dazu trug er noch den Aufschlag `landed+5`, der am 20.08. als 2 Franken UNTER den Kosten
+// nachgewiesen wurde. Beides kommt jetzt aus cj_preis.mjs.
+import { chf, kosten, gewicht } from './cj_preis.mjs';
 
 // ── Fashion-Modus (Zalando-Stil): CJ-Varianten "Farbe-Grösse" → Shopify Farbe+Grösse-Optionen ──
 // Farbtabelle liegt seit 21.08.2026 in automation/farben_de.mjs — es gab drei
@@ -81,7 +83,7 @@ function buildFashion(d){
  const seen=new Set(),variants=[];
  for(const v of vs){const ov=[]; if(useC)ov.push({optionName:'Farbe',name:cVal(v.color||colors[0])}); if(useS)ov.push({optionName:'Grösse',name:v.size||sizes[0]});
   const key=ov.map(x=>x.name).join('|'); if(seen.has(key))continue; seen.add(key);
-  variants.push({optionValues:ov,price:chf(v.price),inventoryItem:{sku:('CJ-'+(v.sku||'')).slice(0,70),tracked:false},inventoryPolicy:'CONTINUE'});
+  variants.push({optionValues:ov,price:chf(v.price, v.weight||v.variantWeight),inventoryItem:{sku:('CJ-'+(v.sku||'')).slice(0,70),tracked:false,cost:kosten(v.price, v.weight||v.variantWeight),...gewicht(v.weight||v.variantWeight)},inventoryPolicy:'CONTINUE'});
   if(variants.length>=100)break;}
  return {productOptions:opts.map(o=>({name:o.name,values:o.values.map(x=>({name:x}))})),variants};
 }
@@ -306,13 +308,13 @@ for(const p of cand){
  }
  // ß→ss (15.08.2026): CH-Schreibung, Quelle-Fix wie in cj_category_fill
  const title=g.title.slice(0,70).replace(/ß/g,'ss').replace(/ẞ/g,'SS');
- if(DRY){console.log(`  [DRY] CHF${chf(p.sellPrice)} | ${title} | listed ${p.listedNum}`);total++;continue;}
+ if(DRY){console.log(`  [DRY] CHF${chf(p.sellPrice, p.productWeight||p.variantWeight)} | ${title} | listed ${p.listedNum}`);total++;continue;}
  const slug=title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,46)+'-'+String(p.pid).slice(-6);
  const html=`${g.html}\n${TRUST}`.replace(/ß/g,'ss').replace(/ẞ/g,'SS');
  const looksFashion=(d.variants||[]).some(v=>{const pv=parseVar(v);return pv.size||pv.color;});
  const fash=looksFashion?buildFashion(d):null;
  const productOptions=fash?fash.productOptions:[{name:'Variante',values:[{name:'Standard'}]}];
- const variants=fash?fash.variants:[{optionValues:[{optionName:'Variante',name:'Standard'}],price:chf(p.sellPrice),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false},inventoryPolicy:'CONTINUE'}];
+ const variants=fash?fash.variants:[{optionValues:[{optionName:'Variante',name:'Standard'}],price:chf(p.sellPrice, p.productWeight||p.variantWeight),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false,cost:kosten(p.sellPrice, p.productWeight||p.variantWeight),...gewicht(p.productWeight||p.variantWeight)},inventoryPolicy:'CONTINUE'}];
  const input={title,handle:slug,productType:'Trend-Gadget',vendor:'LuxeStyle',status:'ACTIVE',
   tags:VIDEO_ONLY?['trend','viral','video-hit','cj-video','cj-real','dropship','neu']:['trend','viral','video-hit','cj-real','dropship','neu'],descriptionHtml:html,
   seo:{title:(title+' | LuxeStyle CH').slice(0,70),description:(`${title} – der Trend-Hit bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.`).slice(0,320)},

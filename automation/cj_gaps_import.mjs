@@ -10,6 +10,7 @@
  *      [CATS=grill,auto] · [PER=4] (pro Kategorie) · [MARGIN=3.2] · [DRY_RUN=1]
  */
 import fs from 'node:fs';
+import { chf as preisBasis, kosten, gewicht } from './cj_preis.mjs';
 
 const CJ_EMAIL = (process.env.CJ_EMAIL || '').trim();
 const CJ_API_KEY = (process.env.CJ_API_KEY || '').trim();
@@ -169,7 +170,18 @@ async function titlesDE(names) {
 }
 
 const SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL', '2XL', '3XL'];
-const chf = (usd) => { let p = Math.max(9.9, usd * USD_CHF * MARGIN); return (Math.ceil(p) - 0.1).toFixed(2); };
+// ⚠️ 22.08.2026 — DIESER IMPORTER RECHNETE GAR KEINE FRACHT EIN und hatte einen Boden von
+// CHF 9.90. Bei gemessenen $6.34–$19.35 Fracht je Artikel (Orders #1011, LX1013, LX1015)
+// ist ein Multiplikator auf den Warenwert allein keine Kalkulation: bei $3 Einkauf ergab
+// MARGIN=3.2 einen Preis von CHF 9.80 gegen Kosten von CHF 17.70.
+// Er laeuft derzeit in keinem Runner — genau deshalb faellt so etwas nie auf, bis ihn
+// jemand wieder startet. Die Rechnung kommt jetzt aus cj_preis.mjs wie bei allen anderen.
+// MARGIN wird nur noch als OBERgrenzen-Aufschlag beruecksichtigt, wenn er hoeher liegt.
+const chf = (usd, grams) => {
+  const basis = parseFloat(preisBasis(usd, grams));
+  const alt = Math.max(9.9, (parseFloat(usd) || 0) * USD_CHF * MARGIN);
+  return Math.max(basis, alt).toFixed(2);
+};
 const numId = (gid) => String(gid).split('/').pop();
 
 if (!CJ_EMAIL || !CJ_API_KEY) { console.log('Keine CJ-Creds → No-op.'); process.exit(0); }

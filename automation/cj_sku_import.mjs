@@ -31,10 +31,13 @@ async function publishVerified(t, pid, klinge) {
 }
 const PUBS = ['301970915713', '301971014017', '302032716161', '302566834561', '302872297857', '302994456961'].map(id => ({ publicationId: `gid://shopify/Publication/${id}` }));
 const sleep = ms => new Promise(r => setTimeout(r, ms));
-const chf = (usd, grams) => { const u = parseFloat(('' + usd).split('--')[0]) || 0; let m = u < 8 ? 2.4 : u < 20 ? 2.2 : u < 50 ? 2.0 : 1.85; let p = Math.max(u * m, 4.90);
-  const kg = (parseFloat(grams) || 0) / 1000; // Gewichts-Boden (2026-07-09): Fracht CH ≈ 3.4+16.3*kg CHF, Pauschale deckt 6.3
-  if (kg > 0.4) p = Math.max(p, u * 0.92 + (3.4 + 16.3 * kg) - 6.3 + 4);
-  return (Math.floor(p) + 0.90).toFixed(2); };
+// ⚠️ 22.08.2026 — DIESER IMPORTER HATTE EINEN PREISBODEN VON CHF 4.90 und rechnete die
+// Fracht erst ab 0,4 kg ein. Er steht in vier Runner-Aufrufen, legte also täglich Ware an,
+// die der Preisboden-Lauf vom 12.08. bei 2'355 Produkten schon einmal von Hand anheben
+// musste. Die Rechnung liegt jetzt EINMAL in cj_preis.mjs — es gab vier Fassungen, und nur
+// die in cj_category_fill.mjs trug die Korrektur vom 20.08. (dieselbe Geschwister-Lehre wie
+// bei der viermal kopierten Farbtabelle und bei publishVerified()).
+import { chf, kosten, gewicht } from './cj_preis.mjs';
 
 async function cj(path) {
   for (let a = 0; a < 6; a++) {
@@ -202,7 +205,7 @@ for (const item of ITEMS) {
     descriptionHtml: (g.html + '\n<p>🚚 Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · 🇨🇭 LuxeStyle</p>').replace(/ß/g, 'ss').replace(/ẞ/g, 'SS'),
     seo: { title: (title + ' | LuxeStyle CH').slice(0, 70), description: `${title} – der Trend-Hit bei LuxeStyle Schweiz.`.slice(0, 320) },
     productOptions: [{ name: 'Variante', values: [{ name: 'Standard' }] }],
-    variants: [{ optionValues: [{ optionName: 'Variante', name: 'Standard' }], price: chf(d.sellPrice, d.variants?.[0]?.variantWeight), inventoryItem: { sku: ('CJ-' + pid).slice(0, 70), tracked: false }, inventoryPolicy: 'CONTINUE' }],
+    variants: [{ optionValues: [{ optionName: 'Variante', name: 'Standard' }], price: chf(d.sellPrice, d.variants?.[0]?.variantWeight), inventoryItem: { sku: ('CJ-' + pid).slice(0, 70), tracked: false, cost: kosten(d.sellPrice, d.variants?.[0]?.variantWeight), ...gewicht(d.variants?.[0]?.variantWeight) }, inventoryPolicy: 'CONTINUE' }],
     // ⚠️ GOOGLE-FELDER GEHÖREN IN DEN IMPORTER, nicht in einen Backfill (15.08.2026: die 30
     // neuesten Produkte hatten genau 3 ohne condition/custom_product — alle drei aus DIESEM
     // Skript. cj_category_fill schreibt sie seit dem 11.08., hier fehlten sie: die Abdeckung

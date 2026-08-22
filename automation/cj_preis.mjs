@@ -42,3 +42,14 @@ export const chf = (usd, grams) => {
   const p = Math.max(landed * 1.4, landed * 1.167 + 8.2, 16.90);
   return (Math.floor(p) + 0.90).toFixed(2);
 };
+
+// Gewicht für Shopify. Leeres Objekt, wenn CJ nichts liefert — ein `weight: 0` waere ein
+// ungueltiger Input, und ein geratenes Gewicht waere schlimmer als gar keines.
+// ⚠️ Das Gewicht war IMMER bekannt (die Frachtrechnung oben liest es) und wurde bis zum
+// 22.08.2026 in allen Importern weggeworfen: von 45'741 aktiven Produkten trugen 45'700
+// gar kein Gewicht. Ohne Gewicht ist keine gewichtsbasierte Versandregel moeglich — und
+// die Frage, welche Ware im Mehrfachkorb Geld kostet, ist nicht beantwortbar.
+export const gewicht = grams => {
+  const g = parseFloat(grams) || 0;
+  return g > 0 ? { measurement: { weight: { value: g, unit: 'GRAMS' } } } : {};
+};
