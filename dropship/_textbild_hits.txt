@@ -9197,3 +9197,6 @@ gid://shopify/Product/15500369396097	41->0	Farbiges Katzenspiel mit LED-Licht
 gid://shopify/Product/15500370641281	17->0	UV-Desinfektionsbox
 gid://shopify/Product/15500371198337	40->0	Portugiesisches Steakmesser-Set aus Edelstahl
 gid://shopify/Product/15500403114369	15->1	Luftqualitäts-Überwacher
+gid://shopify/Product/15500403343745	8->3	Gestricktes Hundehalstuch im Weihnachtslook
+gid://shopify/Product/15500403376513	19->2	Uhrenkiste
+gid://shopify/Product/15500403605889	61->0	Sockenhilfe für Senioren
