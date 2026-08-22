@@ -138,3 +138,8 @@ gid://shopify/Product/15427241050497	https://cdn.shopify.com/s/files/1/0943/6856
 gid://shopify/Product/15427241083265	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/macaron.png?v=1787420926	Sticker «Macaron» · 1 Stück
 gid://shopify/Product/15427241116033	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/magical-wand.png?v=1787420935	Sticker «Magical Wand» · 1 Stück
 gid://shopify/Product/15427241148801	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/matcha-cute.png?v=1787420942	Sticker «Matcha» · 1 Stück
+gid://shopify/Product/15427241181569	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/microphone-vtg.png?v=1787420951	Sticker «Microphone» · 1 Stück
+gid://shopify/Product/15427241214337	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/milky-way.png?v=1787420958	Sticker «Milky Way» · 1 Stück
+gid://shopify/Product/15427241247105	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/monkey-cute.png?v=1787420965	Sticker «Monkey» · 1 Stück
+gid://shopify/Product/15427241279873	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/moon-face.png?v=1787420972	Sticker «Moon» · 1 Stück
+gid://shopify/Product/15427241312641	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/moon-phases.png?v=1787420979	Sticker «Moon Phases» · 1 Stück
