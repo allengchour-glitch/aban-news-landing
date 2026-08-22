@@ -1957,6 +1957,32 @@ Seilbahn-Gondeln an den Stützen (bewegte Objekte im Nullpunkt), `th7_lkw` in de
 (Nachbar-Session), Dach- und Bankfüße auf den Bahnsteigstreifen (Aufstandsfall) und
 Baumkronen an Hauswänden — das, was Kronen tun.
 
+### Keiner der sechs Oberleitungsmasten stand, wo er gesetzt war
+
+`th17_oberleitungsmast × th43_feuerwache`, 16 Mesh-Paare ab y 5,21: der Ausleger steckte in der
+Wand der Feuerwache; dazu 31 Mesh-Paare gegen `th42_turnhalle`. Nachgemessen stand **kein
+einziger** der sechs Masten auf seinem z 108,5 — alle sechs lagen auf **107,3**, weil
+`freiRaeumen()` sie aus dem Ringkorridor drückte, und zwei wanderten dabei auch in x
+(−24 → −36, 60 → 61,4). Der bei 61,4 landete in der Wache.
+
+> 🔑 **Die Ursache war die Verschiebung, nicht die Position.** Ich hatte angefangen, die Masten
+> auf gemessen freie x-Werte umzusetzen und die Reihe nach Norden zu schieben — also das Symptom
+> zu behandeln. Die Traumhaus-Session hat parallel das Richtige getan (#2270): die Masten mit
+> `bahnFest` festgenagelt, damit sie auf ihrem z 108,5 **bleiben**. Damit ist die Feuerwache
+> 3,4 m entfernt und der ganze Befund verschwindet — inklusive Turnhalle. Ihre Fassung steht im
+> Code, meine wurde verworfen; sie kommt auf 56 echte Funde, meine auf 60.
+
+> ⚠️ **Ein Schablonen-Sweep ist kein Beweis.** Meine x-Suche meldete −60 als frei; nach dem
+> Einbau fand die Gesamtprüfung dort 7 Mesh-Paare gegen `th42_schule` (die bis z 107,8 reicht,
+> der Mast begann bei 106,8). Der Sweep verschiebt eine *Kopie* der Kästen, die Gesamtprüfung
+> misst das *eingebaute* Modell. Wo beide sich widersprechen, gilt die Gesamtprüfung. Der Sweep
+> ist zum **Eingrenzen** da, nicht zum Abnehmen.
+
+> ⚠️ **Und was dort bewusst stehen bleibt:** der Ausleger ist auf 7,5 m Höhe 11,2 m breit und
+> läuft längs über Gleis und Bahnsteig. Sein Kasten schneidet darum Bahnsteigkante und
+> Löschfahrzeug — der Mastfuß steht bei beiden frei, das Metall hängt 6 m darüber. In der
+> 3D-Prüfung erscheinen sie korrekt als **LUFT**. Wer das „aufräumt", macht es kaputt.
+
 > 🔑 **Die Regel.** Erst die Zahl aus der Hypothese ableiten, dann messen, dann ändern —
 > und zwischen „Boxen überlappen" und „Geometrie steckt ineinander" nie stillschweigend
 > wechseln. Zwei Änderungen dieses Durchgangs wurden vor dem Commit wieder verworfen, weil
