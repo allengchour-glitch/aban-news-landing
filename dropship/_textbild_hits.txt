@@ -9717,3 +9717,34 @@ gid://shopify/Product/15501022364033	17->0	USB Lade Rucksack für Laptops
 gid://shopify/Product/15501023019393	61->0	Outdoor-Rucksack
 gid://shopify/Product/15501023084929	99->0	Automatischer Lockenstab mit Temperaturregelung
 gid://shopify/Product/15501023412609	29->2	Outdoor Running Trinkrucksack 5L
+gid://shopify/Product/15501023543681	30->0	Automatischer Lockenstab für zuhause
+gid://shopify/Product/15501023576449	13->0	Wasserdichte Hard Shell Bauchtasche für Herren
+gid://shopify/Product/15501023773057	40->1	Keramik-Kurlockenbürste
+gid://shopify/Product/15501026296193	20->0	Rosegold-Keramik-Uhr
+gid://shopify/Product/15501026492801	14->2	Wasserdichter Laptop-Rucksack für Alltag & Reise
+gid://shopify/Product/15501026525569	12->0	Wasserdichte Leuchtuhr mit römischem Zifferblatt
+gid://shopify/Product/15501032948097	10->0	Diamant-Armbanduhr
+gid://shopify/Product/15501033013633	41->3	Kaffeebraune Leder-Rucksack
+gid://shopify/Product/15501033177473	19->0	Lockenstab & Glätteisen 2-in-1, Keramik
+gid://shopify/Product/15501033537921	27->2	Kurzlocken-Styling-Set
+gid://shopify/Product/15501033570689	23->1	Lauf-Trainings-Rucksack
+gid://shopify/Product/15501033603457	26->1	Wasserdichter Quartz-Uhr
+gid://shopify/Product/15501033767297	8->0	Hochhacken-Verlängerer
+gid://shopify/Product/15501033996673	34->0	Kabelloser Kaktus Luftbefeuchter, wiederaufladbar
+gid://shopify/Product/15501034062209	117->0	Wasserdichter Anti-Diebstahl Digital-Rucksack
+gid://shopify/Product/15501034127745	19->0	Gesichtsdampfer für die Heimanwendung
+gid://shopify/Product/15501034160513	176->0	Business-Rucksack für Laptops bis 15.6 Zoll
+gid://shopify/Product/15501053329793	70->0	Intelligenter Müllbehälter
+gid://shopify/Product/15501053559169	83->3	Holz-Tray mit Glas-Abdeckung
+gid://shopify/Product/15501053690241	29->0	Schmuckbox aus Massivholz mit viel Platz
+gid://shopify/Product/15501053886849	8->0	Purpurroter Orchideentopf aus Sandstein
+gid://shopify/Product/15501054181761	16->0	Thick Tatami Sitzkissen für Stühle
+gid://shopify/Product/15501054345601	63->1	Beugekissen
+gid://shopify/Product/15501054640513	23->0	Retro Geometrisches Bettvorleger
+gid://shopify/Product/15501054738817	23->0	Kissenbezug Nordischer Stil Geometrisch
+gid://shopify/Product/15501054771585	20->0	Damen Sommer Tube-Top Kleid
+gid://shopify/Product/15501059293569	90->3	Multifunktionaler Aufbewahrungs-Organizer
+gid://shopify/Product/15501059391873	59->0	Elegantes Vintage Midi-Kleid mit langen Ärmeln
+gid://shopify/Product/15501059785089	31->0	Plaid-Wollekissenbezug – Luxuriöser Stil
+gid://shopify/Product/15501059883393	9->0	Robuster Haustier-Sofabezug (einzeln)
+gid://shopify/Product/15501060112769	22->0	Schulterkissen

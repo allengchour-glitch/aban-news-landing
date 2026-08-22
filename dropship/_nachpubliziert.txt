@@ -233,3 +233,5 @@ gid://shopify/Product/15509367226753	kork-kautschuk-yoga-matte-047936	Kork-Kauts
 gid://shopify/Product/15509372240257	etuikleid-mit-hohem-bund-und-cut-outs-619800	Etuikleid mit hohem Bund und Cut-Outs
 gid://shopify/Product/15509380923777	pinkah-isolier-lunchbox-970ml-e67ff3	PINKAH Isolier-Lunchbox 970ml
 gid://shopify/Product/15509386559873	kurzarmhemd-fur-junge-manner-603500	Kurzarmhemd für junge Männer
+gid://shopify/Product/15509402157441	elektrischer-porenreiniger-mit-3-burstenkopfen-3f9086	Elektrischer Porenreiniger mit 3 Bürstenköpfen
+gid://shopify/Product/15509402190209	erweiterbarer-laptop-rucksack-681ca9	Erweiterbarer Laptop-Rucksack
