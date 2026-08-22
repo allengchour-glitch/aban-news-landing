@@ -10026,3 +10026,4 @@ gid://shopify/Product/15427243082113	16->2	Sticker «Smiley Star» · 1 Stück
 gid://shopify/Product/15427243311489	40->2	Sticker «Spray Can» · 1 Stück
 gid://shopify/Product/15427243377025	14->3	Sticker «Squirrel» · 1 Stück
 gid://shopify/Product/15427244097921	18->2	Sticker «Duschaffst» · 1 Stück
+gid://shopify/Product/15449425478017	999->0	Automatischer Kaffeebecher
