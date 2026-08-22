@@ -9637,3 +9637,8 @@ gid://shopify/Product/15500983632257	50->0	Sommer-Plattform-Sandalen mit Klettve
 gid://shopify/Product/15500983796097	37->1	Keilabsatz-Slipper mit Klettverschluss
 gid://shopify/Product/15500983828865	15->1	Festliches Halsband mit Schleife für Haustiere
 gid://shopify/Product/15500983861633	60->0	Halsband Kleine Duftperle
+gid://shopify/Product/15500984025473	69->2	Hunde-Geschirr mit Leine, bequem & wasserdicht
+gid://shopify/Product/15500984222081	31->2	Reissfestes Zuggeschirr für Haustiere
+gid://shopify/Product/15500984779137	18->3	Atmungsaktive Stoffschuhe für Herren
+gid://shopify/Product/15500984877441	13->0	Leder Sneaker Atmungsaktiv Bequem
+gid://shopify/Product/15500984975745	142->0	3-in-1 Wireless Powerbank 10000 mAh
