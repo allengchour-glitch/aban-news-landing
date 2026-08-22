@@ -52,6 +52,15 @@ const chf=(usd,grams)=>{const u=parseFloat((''+usd).split('--')[0])||0;
 // Definition: Warenkosten + VOLLE Fracht. Die CHF 7, die der Kunde für den Versand zahlt, sind
 // Erlös und stehen in der Bestellung — sie gehören nicht in die Stückkosten, sonst rechnet sich
 // die Marge künstlich schön (genau das täte der `landed`-Wert oben, der nur die Fracht-LÜCKE trägt).
+// ⚠️ DAS GEWICHT WURDE BISHER WEGGEWORFEN (22.08.2026). chf() und kosten() lesen es von CJ
+// und rechnen die Fracht daraus — geschrieben wurde es nie. Ergebnis: 45'700 von 45'741
+// aktiven Produkten stehen in Shopify auf Gewicht 0. Damit ist weder eine gewichtsbasierte
+// Versandregel moeglich noch die Frage «welche Ware ist schwer?» beantwortbar — und genau
+// das Gewicht entscheidet ueber Gewinn oder Verlust (Fracht gemessen: $6.34 · $9.49 · $19.35).
+// Exakt dasselbe Muster wie beim Einkaufspreis vor dem 20.08.: bekannt, benutzt, verworfen.
+const gewicht=(grams)=>{const g=parseFloat(grams)||0;
+  return g>0?{measurement:{weight:{value:g,unit:'GRAMS'}}}:{};};
+
 const kosten=(usd,grams)=>{const u=parseFloat((''+usd).split('--')[0])||0;
  const kg=(parseFloat(grams)||0)/1000;
  const freight=Math.max(15, 3.4+16.3*kg);
@@ -196,7 +205,7 @@ function buildFashion(d){
   // von 2 Bildern falsch zugeordnet (ein schwarzes Portemonnaie als «Dunkelblau», weil
   // der unscharfe Hintergrund blau war). Der Lieferant weiss es, wir müssen nicht raten.
   if(v.img&&/^https/.test(v.img)) bilder[sku]=v.img;
-  variants.push({optionValues:ov,price:chf(v.price, v.weight||v.variantWeight),inventoryItem:{sku,tracked:false,cost:kosten(v.price, v.weight||v.variantWeight)},inventoryPolicy:'CONTINUE',...(vmf.length?{metafields:vmf}:{})});
+  variants.push({optionValues:ov,price:chf(v.price, v.weight||v.variantWeight),inventoryItem:{sku,tracked:false,cost:kosten(v.price, v.weight||v.variantWeight),...gewicht(v.weight||v.variantWeight)},inventoryPolicy:'CONTINUE',...(vmf.length?{metafields:vmf}:{})});
   if(variants.length>=100)break;}
 
  // 💥 PREIS-AUSREISSER-WACHE (21.08.2026 — teuer gefunden an der «Sommer Fashion
@@ -760,7 +769,7 @@ for(const [cat,label] of grp.cats){
    const html=`${g.html}\n${TRUST}`.replace(/ß/g,'ss').replace(/ẞ/g,'SS');
    const fash=(grp.fashion&&!FAST)?buildFashion(d):null; // FAST: keine Varianten-Details → Standard-Variante
    const productOptions=fash?fash.productOptions:[{name:'Variante',values:[{name:'Standard'}]}];
-   const variants=fash?fash.variants:[{optionValues:[{optionName:'Variante',name:'Standard'}],price:chf(p.sellPrice, p.productWeight||p.variantWeight),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false,cost:kosten(p.sellPrice, p.productWeight||p.variantWeight)},inventoryPolicy:'CONTINUE'}];
+   const variants=fash?fash.variants:[{optionValues:[{optionName:'Variante',name:'Standard'}],price:chf(p.sellPrice, p.productWeight||p.variantWeight),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false,cost:kosten(p.sellPrice, p.productWeight||p.variantWeight),...gewicht(p.productWeight||p.variantWeight)},inventoryPolicy:'CONTINUE'}];
    const katTag=(LABELTAG.find(([re,,verbot])=>re.test(label||'')&&!(verbot&&verbot.test(label||'')))||[])[1];
    let tagsFinal=[...(process.env.WAREHOUSE?[...grp.tags,'eu-lager','schnelle-lieferung']:grp.tags),...(katTag?[katTag]:[])];
    if(fash?.preisFix) tagsFinal=[...tagsFinal,'preis-ausreisser-korrigiert'];

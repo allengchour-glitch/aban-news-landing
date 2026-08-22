@@ -871,6 +871,26 @@ nicht die Schwelle, sondern billige Ware im Mehrfachkorb.
   Das ältere «China-Fracht ~3–6 CHF» im BigBuy-Vergleich ist überholt — ich hätte auf dieser
   Grundlage beinahe die Kostendaten für falsch erklärt.
 
+## ⚖️ Das Gewicht war bekannt, benutzt — und weggeworfen (2026-08-22)
+Auf die Frage «welche Produkte wiegen über 800 g?» liefert Shopify **keine Antwort**: Von
+**45'741 aktiven Produkten haben 45'700 gar kein Gewicht** (99,9 %). Bis 800 g: 39, darüber: 2
+— und diese zwei sind ein POD-Hoodie und ein Bundle, keine CJ-Ware.
+**Die Ursache ist dieselbe wie beim Einkaufspreis vor dem 20.08.:** `chf()` und `kosten()` in
+`cj_category_fill.mjs` LESEN das Gewicht von CJ (`v.weight||v.variantWeight`) und rechnen die
+Fracht daraus — geschrieben wurde es nie. Bekannt, benutzt, verworfen.
+Behoben: Helfer `gewicht()` schreibt `inventoryItem.measurement.weight` mit (nur wenn > 0,
+sonst leeres Objekt — Produkte ohne CJ-Angabe erzeugen so keinen ungültigen Input).
+**Was daran hängt:** Ohne Gewicht ist keine gewichtsbasierte Versandregel möglich, und die
+Frage, welche Ware im Mehrfachkorb Geld kostet, ist nicht beantwortbar — obwohl genau das
+Gewicht über Gewinn oder Verlust entscheidet (gemessene Fracht: $6.34 · $9.49 · $19.35).
+⚠️ **Die Preisformel selbst ist in Ordnung** — das war meine erste Vermutung und sie war
+falsch. `freight = max(15, 3.4 + 16.3·kg)` ergibt für 906 g **CHF 18.17**; gemessen wurden
+CHF 15.5–17.4. Die Schätzung trifft also. Der Gemüseschneider steht nur deshalb auf CHF 15.90,
+weil er VOR dem 03.08. importiert wurde — damals steckte die Fracht noch gar nicht im Preis.
+Nach der heutigen Formel käme er auf **CHF 24.19**.
+⚠️ Der Altbestand bekommt das Gewicht dadurch NICHT. Ein Backfill müsste je Produkt CJ
+fragen (Tagesbudget) — lohnt sich erst, wenn eine gewichtsbasierte Versandregel ansteht.
+
 ## 🚦 CJs Drosselung ist GÜLTIGES JSON — die Fulfill-Engine war blind (2026-08-22)
 `cj_fulfill_engine.py` meldete bei LX1013 und LX1015 hartnäckig «Detailabruf bei CJ
 fehlgeschlagen», während derselbe Abruf von Hand sofort klappte. Ursache: Sein `cj()`
