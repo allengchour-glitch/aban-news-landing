@@ -119,3 +119,6 @@ gid://shopify/Product/15412978483585	CHF 16.39	6 Varianten	Cat-Eye-Sonnenbrille 
 gid://shopify/Product/15412978516353	CHF 15.43	16 Varianten	Sport-Sonnenbrille «Velo» – Outdoor & Radsport
 gid://shopify/Product/15413023015297	CHF 20.37	18 Varianten	Herren-Sommershirt «Breeze» – leicht & atmungsakti
 gid://shopify/Product/15413023113601	CHF 20.22	56 Varianten	Herren-Strickshirt «Riviera» – Cord-Kurzarm
+gid://shopify/Product/15413023342977	CHF 18.62	48 Varianten	Herren-Leinenhose «Lino» – locker & atmungsaktiv
+gid://shopify/Product/15413024915841	CHF 19.08	4 Varianten	Slip-Kleid «Nuit» – V-Ausschnitt, Langarm, elegant
+gid://shopify/Product/15413025014145	CHF 21.12	30 Varianten	Strandkleid «Playa» – Halter mit Schnür-Detail
