@@ -9196,3 +9196,4 @@ gid://shopify/Product/15500369133953	10->0	Vierfach UV-Desinfektionskiste
 gid://shopify/Product/15500369396097	41->0	Farbiges Katzenspiel mit LED-Licht
 gid://shopify/Product/15500370641281	17->0	UV-Desinfektionsbox
 gid://shopify/Product/15500371198337	40->0	Portugiesisches Steakmesser-Set aus Edelstahl
+gid://shopify/Product/15500403114369	15->1	Luftqualitäts-Überwacher

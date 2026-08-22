@@ -927,3 +927,6 @@ gid://shopify/Product/15448006885761	zugeordnet	10	Figurbetontes Mesh-Shirt mit 
 gid://shopify/Product/15448007147905	zugeordnet	20	Halter-Neck V-Shirt für Damen
 gid://shopify/Product/15448007278977	zugeordnet	20	Kurze Bluse mit Knopf-Taschen
 gid://shopify/Product/15448007410049	zugeordnet	9	U-Boot-Neck Camisole mit Kontrastträgern
+gid://shopify/Product/15448007573889	zugeordnet	72	Damen Print-Top mit 3D-Effekt
+gid://shopify/Product/15448007803265	zugeordnet	48	Gestreiftes Kurzarmshirt im Casual-Look
+gid://shopify/Product/15448007999873	zugeordnet	8	Bikini-Set mit Print-Trägern
