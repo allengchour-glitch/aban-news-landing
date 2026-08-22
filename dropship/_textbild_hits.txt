@@ -10008,3 +10008,9 @@ gid://shopify/Product/15502256243073	94->3	Art Nordic Multifunktionsdecke
 gid://shopify/Product/15502256275841	21->0	Elektrischer Fusselrasierer für Kleidung
 gid://shopify/Product/15502256439681	21->0	Polygon Leuchtende Kalenderuhr aus Edelstahl
 gid://shopify/Product/15502256996737	14->1	Damen Quarz-Armbanduhr, wasserdicht
+gid://shopify/Product/15427229974913	14->2	Schweiz-Sticker «Edelwyss» · 1 Stück
+gid://shopify/Product/15427236626817	13->2	Sticker «Baseball» · 1 Stück
+gid://shopify/Product/15427236692353	19->2	Sticker «Bat» · 1 Stück
+gid://shopify/Product/15427236757889	23->2	Sticker «Book Stack» · 1 Stück
+gid://shopify/Product/15427236888961	21->3	Sticker «Boxing Glove» · 1 Stück
+gid://shopify/Product/15427238461825	20->3	Sticker «Ch Schoggi Bar» · 1 Stück
