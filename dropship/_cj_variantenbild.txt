@@ -918,3 +918,12 @@ gid://shopify/Product/15448004559233	zugeordnet	24	Corduroy-Weste für Herren mi
 gid://shopify/Product/15448004690305	zugeordnet	30	Rundhals T-Shirt aus Eisseide
 gid://shopify/Product/15448004821377	bild-urls-tot
 gid://shopify/Product/15448004919681	zugeordnet	8	Seiden-Top mit Schleifendetail für Damen
+gid://shopify/Product/15448005083521	zugeordnet	8	Ärmellose Strickweste mit V-Ausschnitt
+gid://shopify/Product/15448005247361	zugeordnet	30	Ärmelloses V-Neck Top in Unifarben
+gid://shopify/Product/15448006394241	zugeordnet	25	Ärmelloses Top mit Spitze und Falten
+gid://shopify/Product/15448006525313	zugeordnet	50	Off-Shoulder Batwing-Top mit Taillenschnürung
+gid://shopify/Product/15448006689153	zugeordnet	12	Kurzarm-Stricktop mit überschnittenen Schultern
+gid://shopify/Product/15448006885761	zugeordnet	10	Figurbetontes Mesh-Shirt mit kurzen Ärmeln
+gid://shopify/Product/15448007147905	zugeordnet	20	Halter-Neck V-Shirt für Damen
+gid://shopify/Product/15448007278977	zugeordnet	20	Kurze Bluse mit Knopf-Taschen
+gid://shopify/Product/15448007410049	zugeordnet	9	U-Boot-Neck Camisole mit Kontrastträgern
