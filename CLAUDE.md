@@ -857,9 +857,16 @@ nicht die Schwelle, sondern billige Ware im Mehrfachkorb.
   teurer; das ist der Preis dafür, nicht unter Einstand zu verkaufen.
 - ⚠️ **Der Bestand ist NICHT angefasst.** 200 Varianten neu zu bepreisen ist eine
   Geschäftsentscheidung des Betreibers, keine technische Korrektur — sie trifft beworbene Ware.
-- ⚠️ **Offene Prüfung:** Ob CJ bei Mehrartikel-Bestellungen die Fracht wirklich mehrfach
-  berechnet, ist unbelegt (die Kostendefinition ist bewusst konservativ). LX1013 enthielt zwei
-  Artikel — dort liesse sich die echte Fracht ablesen, sobald CJ-Punkte frei sind.
+- ✅ **BEANTWORTET am 22.08.2026: JA, die Fracht faellt je Artikel an.** CJ hat LX1013
+  (2 Artikel) in ZWEI Sendungen zerlegt und beide separat berechnet: Teil A Ware $6.15 +
+  Fracht $9.49, Teil B Ware $5.97 + Fracht $6.34. Zwei Artikel = zwei Frachten. Bündeln
+  spart also nichts, es VERVIELFACHT. Die konservative Kostendefinition war richtig.
+- ⚠️ **Und die Fracht haengt am GEWICHT, nicht am Preis:** gemessen $6.34 · $9.49 · $19.35
+  (Letzteres LX1015, 906 g). Damit entscheidet das Gewicht ueber Gewinn oder Verlust:
+  leichte Ware traegt jeden Warenkorb (+12 bis +17 CHF), schwere Ware nur die
+  EINZELbestellung (+2.96) — ab 2 Artikeln −4.27, bei 4 Artikeln mit Gratis-Versand −22.54.
+  Der Shop belohnt mit «Gratis ab 50» und «2+ −10 %» also ausgerechnet die Koerbe, die bei
+  schwerer Ware Geld kosten. **Nicht der Preis ist der Hebel, sondern das Gewicht.**
 - Die CHF 15 Mindestfracht sind **gemessen**, nicht geschätzt (Order #1011: $15.77, 03.08.).
   Das ältere «China-Fracht ~3–6 CHF» im BigBuy-Vergleich ist überholt — ich hätte auf dieser
   Grundlage beinahe die Kostendaten für falsch erklärt.
