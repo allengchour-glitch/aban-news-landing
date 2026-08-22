@@ -4,6 +4,31 @@
 > ~600 kB in einer einzigen IIFE; ohne diese Karte sucht man lange und tritt in
 > Fallen, die hier schon einmal Stunden gekostet haben.
 
+## 🧱 „Steckt drin" — die Luecke, durch die Moebel in Waenden landeten (2026-08-22)
+- Grep-Anker: `function steckt1`, `KEIN_GEHAEUSE`, `STECKT DRIN` (in `th-pruef.mjs`)
+- **Die Ursache, ueber Jahre wirksam:** `entwirren()` prueft Ueberschneidungen mit
+  `schneidet()` — **>1,2 m in JEDER Achse**. Fuer einen 0,60 m breiten Papierkorb ist
+  diese Schranke unerreichbar. Folge: (a) `paare()` hat so einen Fall NIE als Problem
+  gemeldet, und (b) beim Ausweichen sah **jeder** Platz frei aus, auch mitten im
+  Gasthaus. Der Aufraeumer hat Strassenmoebel also aktiv in Gebaeude gestellt.
+- **Beide Werkzeuge waren genauso blind:** `th-pruef` siebt bei 1,00 m, `th-3d` bei
+  0,50 m. Ein 0,40 m duennes Bauzaunfeld konnte komplett in einem Haus stehen, ohne
+  dass irgendetwas etwas gemeldet haette — sieben von neun taten das auch.
+- **Die Regel, die fehlte:** nicht „wie tief", sondern **„wie viel davon"**. Mittelpunkt
+  im Grundriss des anderen + >60 % der Grundflaeche darin + >0,5 m gemeinsame Hoehe.
+  Steht jetzt in `entwirren()` (`steckt1`) UND als Kandidatenliste in `th-pruef`.
+- **⚠️ Ein Baum ist kein Gehaeuse.** Ohne `KEIN_GEHAEUSE` (Baeume, Hecken, Daecher,
+  Gerueste, Kraene, Masten, Zaeune, Tankstellenvordach) faellt jede Laterne unter jeder
+  Eiche in die Liste — und der Entwirrer findet fuer Moebel unter Baeumen nie mehr
+  einen Platz.
+- **⚠️ Kastenlogik beweist nichts.** Von 23 Kandidaten waren nur 11 mesh-genau echt; die
+  anderen 12 standen VOR einer Fassade, deren Kasten ueberhaengt. Darum ist „Steckt
+  drin" in `th-pruef` **kein Abbruchkriterium**, sondern eine Kandidatenliste — jeder
+  Eintrag gehoert mit `th-3d.mjs <a> <b>` bestaetigt, bevor jemand etwas verschiebt.
+- **Wirkung:** mesh-bestaetigte Fremdkoerper 11 → 1, `ohnePlatz` 15 → 10.
+- **⚠️ Nicht zwei Chromium-Laeufe parallel.** `game_smoke` und `th-blick` gleichzeitig
+  ergaben einen HARNESS-Fehler und einen Node-Absturz; einzeln laufen beide durch.
+
 ## 🏫🚒 Fremdkoerper aus Gebaeuden geraeumt (2026-08-22)
 - Grep-Anker: `function schulhofAusbau`, `function bahnFest`, `th46_baucontainer`, `th49_rettungswagen`, `th43_loeschfahrzeug`
 - **Der Befund:** 26 Ueberschneidungen, davon zehn Objekte KOMPLETT in einem Gebaeude —
