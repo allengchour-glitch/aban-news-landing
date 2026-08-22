@@ -9934,3 +9934,8 @@ gid://shopify/Product/15502033944961	33->0	Personalisierbares French-Nagel-Set
 gid://shopify/Product/15502036369793	21->0	Elektrisches USB-Nagelpiercing-Gerät
 gid://shopify/Product/15502037090689	14->0	Haarbürsten-Tasche
 gid://shopify/Product/15502037483905	20->0	Bälle-Handpflaster
+gid://shopify/Product/15502040138113	15->1	Nagellampe
+gid://shopify/Product/15502040531329	78->1	Pink-Polsterter Lunchbeutel
+gid://shopify/Product/15502041153921	59->3	Pixel-Brusttasche für Velo-Fahrer
+gid://shopify/Product/15502042038657	17->0	Sport-Tasche
+gid://shopify/Product/15502042956161	11->0	Geklebte French Nails – 24er Set
