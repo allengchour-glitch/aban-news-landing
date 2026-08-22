@@ -9869,3 +9869,11 @@ gid://shopify/Product/15501882687873	50->0	Warme Kinder-Schneestiefel
 gid://shopify/Product/15501883015553	8->0	Titan-Stahlarmband
 gid://shopify/Product/15501884195201	27->0	V-Face Gerät
 gid://shopify/Product/15501898973569	35->1	Babyweiche Sohlenschuhe Unisex
+gid://shopify/Product/15501899366785	9->0	Runder Rattan-Teppich aus Wassergras
+gid://shopify/Product/15501899628929	10->0	Baby-Leder-Sandalen
+gid://shopify/Product/15501899727233	17->0	Magnetischer Uhrenhalter
+gid://shopify/Product/15501900185985	14->0	Powerbank mit 4 USB-Ausgängen, 20000 mAh
+gid://shopify/Product/15501900317057	17->0	Kinder-Lauflernschuh mit weicher Sohle
+gid://shopify/Product/15501900349825	20->0	Flanell-Kissenbezug
+gid://shopify/Product/15501900415361	70->0	Sportuhr mit Licht
+gid://shopify/Product/15501900579201	13->0	Lichter Kinderschuhe
