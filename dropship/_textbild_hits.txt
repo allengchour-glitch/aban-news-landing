@@ -9812,3 +9812,8 @@ gid://shopify/Product/15501745127809	25->0	Wasserdichter Fahrradrucksack
 gid://shopify/Product/15501745652097	15->0	Blauer Hundebogenshirt
 gid://shopify/Product/15501746143617	19->1	Schutz-Kollektion für Hunde und Katzen
 gid://shopify/Product/15501746995585	70->0	Leichter Schutzring für Hunde und Katzen
+gid://shopify/Product/15501747585409	50->0	Elektrischer Mini-Zerkleinerer für Knoblauch & Co.
+gid://shopify/Product/15501748044161	10->3	Durchlauferhitzer Wasserhahn mit LED-Anzeige
+gid://shopify/Product/15501748470145	35->0	Drei-Stück-Kochset aus Aluminium
+gid://shopify/Product/15501749059969	56->3	Hochhackige Satinsandalen
+gid://shopify/Product/15501749584257	25->0	Dreiteilige Kuchenpräsentation
