@@ -8,3 +8,7 @@ gid://shopify/Product/15427230171521	14,0 × 11,0 cm	Schweiz-Sticker «Grüezi m
 gid://shopify/Product/15427230204289	14,0 × 9,9 cm	Schweiz-Sticker «Merci vilmal» · 1 Stück
 gid://shopify/Product/15427230237057	14,0 × 14,0 cm	Schweiz-Sticker «Hoi zäme» · 1 Stück
 gid://shopify/Product/15427230269825	14,0 × 14,0 cm	Schweiz-Sticker «Steinbock» · 1 Stück
+gid://shopify/Product/15427230302593	10,1 × 14,0 cm	Schweiz-Sticker «Murmeli» · 1 Stück
+gid://shopify/Product/15427235905921	9,2 × 14,0 cm	Sticker «Alien Green» · 1 Stück
+gid://shopify/Product/15427235938689	10,4 × 14,0 cm	Sticker «Alpaca» · 1 Stück
+gid://shopify/Product/15427235971457	14,0 × 10,5 cm	Sticker «Anime Cat Wink» · 1 Stück
