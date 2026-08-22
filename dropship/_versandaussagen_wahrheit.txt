@@ -30694,3 +30694,9 @@ gid://shopify/Product/15427238199681	pod	1	Sticker «Ch Haeee»
 gid://shopify/Product/15427241050497	pod	1	Sticker «Lotus Zen»
 gid://shopify/Product/15427243475329	pod	1	Sticker «Succulent»
 gid://shopify/Product/15427245506945	pod	1	Sticker «Zodiac Scorpio»
+gid://shopify/Product/15396404789633	direkt	2	LED Schreibtischlampe Dimmbar · Augenschutz, USB-C
+gid://shopify/Product/15396250321281	direkt	2	Retro Sonnenbrille Polarisiert UV400 · Unisex Vintage
+gid://shopify/Product/15396404855169	direkt	1	Resistance Bands Set 5-teilig · Fitnessbänder Heim-Training
+gid://shopify/Product/15397218320769	direkt	2	Silikon Baby-Lätzchen 5er-Set · BPA-frei, Spülmaschinenfest
+gid://shopify/Product/15396249502081	direkt	2	Slim Wallet Echtleder · RFID-Schutz, Vollnarbenleder
+gid://shopify/Product/15396249960833	direkt	2	Klassische Herrenuhr Edelstahl · Saphirglas, 50m wasserdicht
