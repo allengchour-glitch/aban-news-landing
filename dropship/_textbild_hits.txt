@@ -10014,3 +10014,15 @@ gid://shopify/Product/15427236692353	19->2	Sticker «Bat» · 1 Stück
 gid://shopify/Product/15427236757889	23->2	Sticker «Book Stack» · 1 Stück
 gid://shopify/Product/15427236888961	21->3	Sticker «Boxing Glove» · 1 Stück
 gid://shopify/Product/15427238461825	20->3	Sticker «Ch Schoggi Bar» · 1 Stück
+gid://shopify/Product/15427239379329	12->3	Sticker «Duck» · 1 Stück
+gid://shopify/Product/15427239575937	26->2	Sticker «Floral» · 1 Stück
+gid://shopify/Product/15427239936385	13->2	Sticker «Flower Tulip» · 1 Stück
+gid://shopify/Product/15427240624513	25->2	Sticker «Hummingbird» · 1 Stück
+gid://shopify/Product/15427241116033	55->2	Sticker «Magical Wand» · 1 Stück
+gid://shopify/Product/15427241574785	10->2	Sticker «Otter» · 1 Stück
+gid://shopify/Product/15427241640321	30->2	Sticker «Paint Palette» · 1 Stück
+gid://shopify/Product/15427242164609	20->3	Sticker «Planet Mars» · 1 Stück
+gid://shopify/Product/15427243082113	16->2	Sticker «Smiley Star» · 1 Stück
+gid://shopify/Product/15427243311489	40->2	Sticker «Spray Can» · 1 Stück
+gid://shopify/Product/15427243377025	14->3	Sticker «Squirrel» · 1 Stück
+gid://shopify/Product/15427244097921	18->2	Sticker «Duschaffst» · 1 Stück
