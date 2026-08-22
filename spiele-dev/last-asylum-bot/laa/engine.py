@@ -1431,6 +1431,16 @@ class Engine:
         # steht. Halbe Groesse reicht zum Wiedererkennen und kostet ein Drittel;
         # fuer volle Aufloesung gibt es die Aktion 'ausschnitt'. Eigener,
         # laengerer Abstand - ein Bild wiegt hundertmal so viel wie die Zahlen.
+        # Wie beim Selbstbericht: offene_templates fuellt sich erst bei
+        # validate(). Lief das nicht, meldete der Bericht beruhigend "0 offen"
+        # - genau die Zahl, an der man ablesen will, ob eine Aufgabe ueberhaupt
+        # laufen KANN.
+        if not self.cfg.offene_templates:
+            try:
+                self.cfg.validate()
+            except Exception as exc:  # pragma: no cover - Konfigurationsfehler
+                self.log.debug("Lebenszeichen: validate ging nicht", grund=str(exc)[:120])
+
         dateien = [os.path.join("austausch", "lauf.json")]
         bild_name = None
         bild_abstand = float(spec.get("bild_abstand", 3600))
@@ -1498,6 +1508,15 @@ class Engine:
             return
         try:
             git("add", "--", *dateien)
+            # Vorlagen, die am PC geschnitten wurden, liegen sonst NUR dort.
+            # Die Selbstbericht-Zahl "0 offen" bei 31 im Repository fehlenden
+            # Vorlagen kam genau daher: der Bot hatte sie, das Repository nicht.
+            # Geht die Windows-Kopie verloren, ist die Handarbeit weg - und von
+            # hier aus laesst sich keine Schwelle nachpruefen, die man nicht
+            # sieht. templates/entdeckt und templates/gelernt sind ohnehin
+            # per .gitignore aussen vor.
+            if spec.get("vorlagen_sichern", True):
+                git("add", "--", "templates")
             eingetragen = git("commit", "-m",
                               f"Lebenszeichen {bericht['zeit']} - Schritt {self.steps}")
             if eingetragen.returncode != 0:

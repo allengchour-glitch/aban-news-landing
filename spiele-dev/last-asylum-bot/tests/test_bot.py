@@ -15,7 +15,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from laa import matcher  # noqa: E402
 from laa.adb import FakeDevice, ascii_fallback, decode_screencap  # noqa: E402
-from laa.config import Config, ConfigError  # noqa: E402
+from laa.config import Config, ConfigError, Rule  # noqa: E402
 from laa.engine import Engine, StopRun  # noqa: E402
 from laa.image import Image  # noqa: E402
 from laa.log import Logger  # noqa: E402
@@ -2462,6 +2462,45 @@ class TestLebenszeichen(unittest.TestCase):
             self.assertEqual(d["zaehler"]["tap"], 7)
             self.assertTrue(d["zeit"] and d["fassung"])
 
+    def test_zahl_der_offenen_vorlagen_ist_ehrlich(self):
+        """"0 offen" ist die Zahl, an der man ablesen will, ob etwas laufen kann.
+
+        Sie fuellt sich erst bei validate(). Lief das nicht, meldete der
+        Bericht beruhigend 0 - auch wenn keine einzige Vorlage da war.
+        """
+        with tempfile.TemporaryDirectory() as ordner:
+            eng = self.bau(ordner)
+            eng.cfg.rules = [Rule(
+                name="test", match={"template": "gibtsnicht.png", "optional": True},
+                do=[{"log": "x"}])]
+            eng.cfg.offene_templates = []
+            eng.run_actions([{"lebenszeichen": {"hochladen": False}}], "test")
+            d = json.load(open(os.path.join(ordner, "austausch", "lauf.json"),
+                               encoding="utf-8"))
+            self.assertEqual(d["vorlagen_offen"], 1,
+                             "der Bericht muss selbst nachsehen, statt 0 zu melden")
+
+    def test_selbst_geschnittene_vorlagen_werden_mitgesichert(self):
+        """Am PC geschnittene Vorlagen lagen bisher NUR dort.
+
+        Genau daher kam die Luecke: der Bot meldete "0 offen", waehrend im
+        Repository 31 Vorlagen fehlten. Geht die Windows-Kopie verloren, ist
+        die Handarbeit weg.
+        """
+        import subprocess
+        with tempfile.TemporaryDirectory() as ordner:
+            eng = self.bau(ordner)
+            os.makedirs(os.path.join(ordner, "templates", "allianz"), exist_ok=True)
+            noise(20, 20, 3).save(os.path.join(ordner, "templates", "allianz", "neu.png"))
+            eng.run_actions([{"lebenszeichen": {}}], "test")   # hochladen an
+            # Ohne Gegenstelle scheitert der Push und der Commit wird
+            # zurueckgenommen - vorgemerkt bleibt die Datei trotzdem.
+            vorgemerkt = subprocess.run(
+                ["git", "-C", ordner, "diff", "--cached", "--name-only"],
+                capture_output=True).stdout.decode()
+            self.assertIn("templates/allianz/neu.png", vorgemerkt,
+                          f"die Vorlage muss mitgesichert werden, vorgemerkt: {vorgemerkt!r}")
+
     def test_absturzschleife_erzeugt_keine_commit_flut(self):
         """Ein Bot, der jede Minute neu startet, darf nicht jede Minute schreiben."""
         import tempfile
@@ -2838,6 +2877,37 @@ class TestFluchtwegWirdNichtGebremst(unittest.TestCase):
         eng._tap_abs(100, 150, "Punkt")
         self.assertEqual(dev.taps, [], "die Tabu-Zone darf die Flucht nicht aushebeln")
 
+
+
+class TestOffeneListeStimmt(unittest.TestCase):
+    """Die Tabelle im README muss sagen, was wirklich fehlt.
+
+    Sie stand ueber Wochen falsch: sieben laengst geschnittene Vorlagen waren
+    noch aufgefuehrt, elf fehlende fehlten - darunter allianz/beitreten.png,
+    von dem die zeitkritischste Regel ueberhaupt abhaengt. Wer die Liste
+    abarbeitet, schneidet sonst das Falsche.
+    """
+
+    def test_readme_nennt_genau_die_fehlenden_vorlagen(self):
+        import re
+        cfg = Config.load(os.path.join(ROOT, "config", "last-asylum.json"))
+        cfg.validate()
+        offen = set(cfg.offene_templates)
+        txt = open(os.path.join(ROOT, "README.md"), encoding="utf-8").read()
+        try:
+            start = txt.index("### Die offene Liste")
+            ende = txt.index("### \u26a0 Die Schild-Aufgabe")
+        except ValueError:
+            self.skipTest("Abschnitt 'Die offene Liste' gibt es nicht mehr")
+        tabelle = set(re.findall(r"`([a-z_]+/[a-z0-9_]+\.png)`", txt[start:ende]))
+        self.assertEqual(
+            tabelle - offen, set(),
+            "diese Vorlagen gibt es laengst - raus aus der Tabelle: "
+            f"{sorted(tabelle - offen)}")
+        self.assertEqual(
+            offen - tabelle, set(),
+            "diese Vorlagen fehlen wirklich, stehen aber nicht in der Tabelle: "
+            f"{sorted(offen - tabelle)}")
 
 
 class TestAusschnittInVollerAufloesung(unittest.TestCase):

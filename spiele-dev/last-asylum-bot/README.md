@@ -192,23 +192,28 @@ python3 bot.py find templates/ui/btn_abholen.png --image shots/menue.png --thres
 
 ### Die offene Liste
 
-Diese Vorlagen fehlen noch; die zugehörigen Schritte ruhen still, bis sie da sind:
+Diese Vorlagen fehlen **im Repository**; die zugehörigen Schritte ruhen still, bis sie da sind.
+Achtung: am PC können welche liegen, die hier nie ankamen — der Bot sichert `templates/`
+inzwischen bei jedem Lebenszeichen mit, damit genau das nicht mehr passiert. Was der laufende
+Bot wirklich vermisst, steht als `vorlagen_offen` in `austausch/lauf.json`.
 
 | Priorität | Template | Wo abschneiden |
 |---|---|---|
+| ★★★ | `allianz/beitreten.png` | der blaue **Beitreten**-Knopf einer offenen Versammlung. Wichtigste Lücke überhaupt: eine Versammlung steht nur etwa eine Minute offen, und ohne diese Vorlage greift die Sofort-Regel nie |
+| ★★★ | `allianz/versammlung_liste.png`, `allianz/versammlung_offen.png` | Allianz → Versammlung: die Liste selbst und der Eintrag einer offenen Versammlung |
 | ★★★ | `hud/schild_aktiv.png` | Schild-Symbol im HUD, **während ein Schutzschild läuft** — erst danach darf die Schild-Aufgabe an (siehe unten) |
-| ★★☆ | `ui/btn_bestaetigen.png`, `ui/btn_benutzen.png` | Bestätigungs-Dialoge („Benutzen" beim Beschleuniger, „Bestätigen" beim Upgrade) |
-| ★★☆ | `held/team1.png` | Helden-Menü, Auswahl von Team 1 |
 | ★★★ | `ui/btn_alles_abholen.png` | der orange `Alles abholen` im Beute-Fenster — räumt eine ganze Kiste auf einmal ab |
-| ★★☆ | `tasche/truhe.png` | die Kiste im Reiter `Spezial` der Tasche |
-| ★★★ | `kaserne/gebaeude.png`, `kaserne/stufe_t8.png`, `kaserne/btn_ausbilden.png`, `ui/btn_max.png` | Kaserne → Ausbilden → **T8** wählen → Menge auf Maximum. Achtung: der Bot kann Ziffern nicht lesen — schneide wirklich die T8-Kachel, sonst trainiert er irgendeine Stufe |
+| ★★★ | `kaserne/gebaeude.png`, `kaserne/ausbilden_menue.png`, `kaserne/stufe_t8.png`, `kaserne/btn_ausbilden.png`, `ui/btn_max.png` | Kaserne → Ausbilden → **T8** wählen → Menge auf Maximum. Schneide wirklich die T8-Kachel, sonst trainiert er irgendeine Stufe |
 | ★★☆ | `sammeln/reiter_monster.png`, `sammeln/angreifen.png` | Weltkarte → Lupe → Reiter `Ressourcen-Monster` und der Angriffs-Knopf |
-| ★★☆ | `chat/teilen_marker.png`, `sammeln/ausgraben.png` | geteilte Schatz-Koordinaten im Allianz-Chat: die `Teilen`-Zeile mit der grünen Ortsmarke, und der Ausgraben-Knopf auf der Karte |
-| ★★☆ | `allianz/forschung.png`, `allianz/spenden_ressourcen.png` | Allianz → Allianz-Forschung → Technologie: der **blaue** Spenden-Knopf (aktiv, nicht ausgegraut) |
-| ★☆☆ | `nav/wachturm.png`, `nav/zuflucht.png` | Einstiege, die der Bot noch nicht selbst findet |
+| ★★☆ | `kampf/kiste_fremd.png`, `kampf/wagen_fremd.png` | Kiste und Wagen auf **gegnerischen** Servern — nur dort wird geplündert |
+| ★★☆ | `held/team1.png` | Helden-Menü, Auswahl von Team 1 |
+| ★★☆ | `chat/oeffnen.png`, `chat/teilen_marker.png`, `sammeln/ausgraben.png` | geteilte Schatz-Koordinaten im Allianz-Chat: der Chat-Einstieg, die `Teilen`-Zeile mit der grünen Ortsmarke, und der Ausgraben-Knopf auf der Karte |
+| ★★☆ | `allianz/forschung.png`, `allianz/tech_empfehlung.png`, `allianz/spenden_ressourcen.png`, `allianz/spenden_diamant.png` | Allianz → Allianz-Forschung → Technologie: der **blaue** Spenden-Knopf (aktiv, nicht ausgegraut), die Empfehlung und der Diamant-Spenden-Knopf |
+| ★☆☆ | `nav/chat.png`, `nav/zuflucht.png` | Einstiege, die der Bot noch nicht selbst findet |
+| ★☆☆ | `falkenturm/schnelle_ausfuehrung.png` | Falkenturm, Knopf `Schnelle Ausführung` |
 | ★☆☆ | `forschung/empfehlung.png`, `ui/btn_forschen.png` | Forschungszentrum |
 | ★☆☆ | `ui/ad_close.png`, `ui/reconnect.png`, `hud/bau_fertig.png` | Werbe-✖, Verbindungsabbruch, fertige Produktion |
-| ★☆☆ | `ui/btn_heilen.png`, `allianz/geschenke.png` | Lazarett und Allianz-Geschenkliste |
+| ★☆☆ | `ui/btn_heilen.png` | Lazarett |
 
 ### ⚠ Die Schild-Aufgabe ist absichtlich AUS
 
@@ -286,7 +291,7 @@ Abholen an gleicher Position bleibt erlaubt — dort ändert sich ja jedes Mal e
 
 ### Neustarts wiederholen nicht alles
 
-Dreizehn Aufgaben sind auf Sofortstart gestellt. Ohne Gedächtnis würde nach jedem Absturz erneut
+Neunzehn Aufgaben sind auf Sofortstart gestellt. Ohne Gedächtnis würde nach jedem Absturz erneut
 gespendet, aufgewertet und marschiert — die Neustart-Schleife des Autostarts macht das zum
 Dauerzustand. Deshalb merkt sich der Bot in `zustand.json`, wann welche Aufgabe zuletzt lief, und
 nimmt den Zeitplan nach einem Neustart dort wieder auf. Ein Test hält das fest.

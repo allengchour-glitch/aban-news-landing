@@ -26,6 +26,7 @@ COARSE_WIDTH = 180  # Zielbreite des Grob-Durchlaufs
 MAX_SAMPLES = 64  # Stichproben-Pixel im Grob-Durchlauf (nur ohne numpy)
 CANDIDATES = 6  # so viele Grob-Treffer werden fein nachgerechnet
 SICHER_GENUG = 0.97  # ab hier lohnt kein weiterer Kandidat mehr
+REFINE_PIXEL = 20000  # ab so vielen Pixeln vergleicht der Feinlauf nur Stichproben
 
 
 class Match(NamedTuple):
@@ -358,19 +359,40 @@ def _refine(sub: Image, tpl: Image, cx: int, cy: int, radius: int):
 def _refine_numpy(sub: Image, tpl: Image, x0, x1, y0, y1):  # pragma: no cover - nur mit numpy
     a = _np.frombuffer(bytes(sub.data), dtype=_np.uint8).reshape(sub.height, sub.width)
     t = _np.frombuffer(bytes(tpl.data), dtype=_np.uint8).reshape(tpl.height, tpl.width)
+    th, tw = tpl.height, tpl.width
+    # Grosse Vorlagen nur an jedem s-ten Pixel vergleichen. Der Feinlauf ist
+    # der teuerste Schritt im Bot, und seine Kosten wachsen linear mit der
+    # Pixelzahl der Vorlage: ein 550x135-Knopf kostet neunmal so viel wie ein
+    # 292x96-Knopf. Ein Spielgrafik-Knopf ist aber grossflaechig - jeder
+    # zweite Pixel traegt dieselbe Aussage.
+    #
+    # Gemessen an austausch/allianz-geschenk.png ueber alle 22 Regel-Vorlagen:
+    # 6.73 s ohne, 5.62 s mit dieser Schranke. Die Werte verschoben sich um
+    # hoechstens 0.016, echte Treffer sogar leicht nach OBEN (btn_abholen
+    # 0.973 -> 0.979). Kleinere Vorlagen bleiben unangetastet (s = 1) und
+    # werden weiterhin exakt gerechnet.
+    #
+    # 10000 statt 20000 waere mit 4.19 s nochmal deutlich schneller, verschob
+    # die Werte aber schon um bis zu 0.036 - zu viel neben Schwellen wie 0.86,
+    # und belegt ist das nur an EINEM echten Bildschirm.
+    schritt = 1
+    if th * tw > REFINE_PIXEL:
+        schritt = int(math.ceil(math.sqrt(th * tw / float(REFINE_PIXEL))))
+        t = t[::schritt, ::schritt]
     tf = t.astype(_np.float32).ravel()
     tstd = float(tf.std())
     if tstd < 1e-6:
         return None
     tnorm = (tf - tf.mean()) / tstd
-    th, tw = tpl.height, tpl.width
     best = None
     for y in range(y0, y1 + 1):  # zeilenweise – begrenzt den Speicherbedarf
         strip = a[y : y + th, x0 : x1 + tw]
         if strip.shape[0] < th:
             continue
         win = _np.lib.stride_tricks.sliding_window_view(strip, (th, tw))[0]
-        flat = win.reshape(win.shape[0], -1).astype(_np.float32)
+        if schritt > 1:
+            win = win[:, ::schritt, ::schritt]
+        flat = win.astype(_np.float32).reshape(win.shape[0], -1)
         mean = flat.mean(axis=1, keepdims=True)
         std = flat.std(axis=1)
         num = ((flat - mean) * tnorm).sum(axis=1)
