@@ -29,12 +29,24 @@ def cj(path, body=None):
     if body is not None:
         a += ["-X", "POST", "-H", "Content-Type: application/json", "-d", json.dumps(body)]
     a.append("https://developers.cjdropshipping.com" + path)
-    for att in range(4):
+    # ⚠️ CJs Drosselung ist GUELTIGES JSON (22.08.2026, teuer gelernt). Die alte Schleife
+    # wiederholte nur, wenn die Antwort kein JSON war — {"code":1600200,"message":"Too Many
+    # Requests, QPS limit is 1 time/1second"} parst aber sauber, wurde also sofort
+    # zurueckgegeben, hatte kein "data" und galt als «Detailabruf fehlgeschlagen».
+    # CJ zaehlt 1 Anfrage/Sekunde ueber ALLE Prozesse gemeinsam; mit vier laufenden
+    # Grind-Runnern verliert diese Engine dieses Rennen fast immer. Folge: Die
+    # Sendungsnummer erreichte Shopify NIE, und keine Kundin bekam eine
+    # Versandbenachrichtigung. Eine Drosselung ist kein Fehler, sie sagt nur, wie lange
+    # zu warten ist (dieselbe Lehre wie bei cj_category_fill und variant_value_clean).
+    for att in range(8):
         out = subprocess.run(a, capture_output=True, text=True).stdout
         try:
-            return json.loads(out)
+            j = json.loads(out)
         except Exception:
-            time.sleep(4)
+            time.sleep(min(20, 2 ** att)); continue
+        if "1600200" in str(j.get("code")) or "Too Many Requests" in str(j.get("message") or ""):
+            time.sleep(1.5 + att); continue
+        return j
     return {}
 
 

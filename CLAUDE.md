@@ -871,6 +871,28 @@ nicht die Schwelle, sondern billige Ware im Mehrfachkorb.
   Das ältere «China-Fracht ~3–6 CHF» im BigBuy-Vergleich ist überholt — ich hätte auf dieser
   Grundlage beinahe die Kostendaten für falsch erklärt.
 
+## 🚦 CJs Drosselung ist GÜLTIGES JSON — die Fulfill-Engine war blind (2026-08-22)
+`cj_fulfill_engine.py` meldete bei LX1013 und LX1015 hartnäckig «Detailabruf bei CJ
+fehlgeschlagen», während derselbe Abruf von Hand sofort klappte. Ursache: Sein `cj()`
+wiederholte **nur, wenn die Antwort kein JSON war**. CJs Drosselung
+(`{"code":1600200,"message":"Too Many Requests, QPS limit is 1 time/1second"}`) parst aber
+sauber — sie wurde also zurückgegeben, hatte kein `data`, und galt als Ausfall.
+CJ zählt 1 Anfrage/Sekunde über ALLE Prozesse gemeinsam; mit vier laufenden Grind-Runnern
+verliert diese Engine das Rennen fast immer. Sie konnte damit **keinen Auftragsstatus mehr
+lesen** — weder um zu bezahlen noch um Sendungsnummern nach Shopify zurückzuschreiben.
+Jetzt: 8 Versuche, Drosselung wird ausgesessen (Code 1600200 UND Meldungstext geprüft).
+⚠️ Für `cj_category_fill.mjs` war genau das schon am 11.08. behoben worden — die
+Fulfill-Engine hatte dieselbe Funktion, blieb aber ungepatcht. **Wer eine Hilfsfunktion an
+einer Stelle repariert, muss ihre Geschwister suchen** (dieselbe Lehre wie bei der
+viermal kopierten Farbtabelle).
+⚠️ Und die Einordnung ehrlich: Der Schaden war KLEINER, als er zuerst aussah. #1012, #1013
+und #1014 stehen in Shopify längst als FULFILLED — die Sendungsnummern kamen also an
+(vermutlich über die CJ-Shopify-App). Die Engine war blind, nicht der Kunde.
+**Dass `#1015` nach der Zahlung noch UNFULFILLED ist, ist KEIN Fehler:** CJ steht auf
+`UNSHIPPED`, das Paket ist nicht übergeben. Die Engine benachrichtigt bewusst erst bei
+`SHIPPED` — eine Versandmail für ein Paket, das noch im Lager liegt, ist schlimmer als
+eine späte.
+
 ## 🧾 Die Preisformel an einer ECHTEN Bestellung gegengeprüft (2026-08-22, LX1015)
 Der Betreiber hat selbst bestellt (#1015) und den CJ-Zahlschein gezeigt. Damit liegen zum
 ersten Mal ALLE Zahlen einer Bestellung nebeneinander — und sie bestätigen das am 20.08.
