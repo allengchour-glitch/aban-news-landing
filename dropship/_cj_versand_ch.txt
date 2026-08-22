@@ -873,3 +873,4 @@ gid://shopify/Product/15508406665601	ok	Multifunktions-Chronograph für Herren
 gid://shopify/Product/15508406763905	ok	Herren Quarz Chronograph – Wasserdicht
 gid://shopify/Product/15508423672193	ok	Berjani Quartz Chronograph Herrenuhr
 gid://shopify/Product/15509339832705	ok	Kürbis-Gusseisentopf mit Emaille, 24cm
+gid://shopify/Product/15509346353537	ok	Herrenuhr mit ewigem Kalender und Mondphase
