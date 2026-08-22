@@ -226,3 +226,7 @@ gid://shopify/Product/15508767801729	langarmhemd-slim-fit-diverse-farben-633800	
 gid://shopify/Product/15509137654145	herren-langarmshirt-aus-reiner-baumwolle-607500	Herren Langarmshirt aus reiner Baumwolle
 gid://shopify/Product/15509356020097	midikleid-mit-knopfleiste-und-stufenrock-620200	Midikleid mit Knopfleiste und Stufenrock
 gid://shopify/Product/15509356052865	verstellbares-schmuckset-fur-damen-625800	Verstellbares Schmuckset für Damen
+gid://shopify/Product/15509364408705	florales-retro-western-hemd-fur-herren-616800	Florales Retro Western Hemd für Herren
+gid://shopify/Product/15509364441473	herren-quarzuhr-mit-kalender-und-chronograph-606208	Herren-Quarzuhr mit Kalender und Chronograph
+gid://shopify/Product/15509367193985	wabi-ji-cashmere-kissen-mit-kontrast-958720	Wabi Ji Cashmere Kissen mit Kontrast
+gid://shopify/Product/15509367226753	kork-kautschuk-yoga-matte-047936	Kork-Kautschuk Yoga-Matte
