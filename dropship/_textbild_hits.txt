@@ -9074,3 +9074,8 @@ gid://shopify/Product/15500110627201	71->0	Braune Sandalen mit Futter und Mid-He
 gid://shopify/Product/15500110725505	30->0	Make-up-Set-Beutel
 gid://shopify/Product/15500111315329	29->0	Augenbrauenstift
 gid://shopify/Product/15500112200065	32->2	Farben-Füller-Set
+gid://shopify/Product/15500112626049	54->1	Wasserfestes Lippenstift-Linier
+gid://shopify/Product/15500112855425	13->0	High Heel Sandalen
+gid://shopify/Product/15500113346945	46->3	Schwebfliegen-Abwehr-System
+gid://shopify/Product/15500113478017	11->0	Dreifarbiges Shading Puder in Teenuancen
+gid://shopify/Product/15500113641857	41->0	Gold-Schmuckring
