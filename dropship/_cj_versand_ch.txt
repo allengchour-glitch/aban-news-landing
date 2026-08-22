@@ -886,3 +886,4 @@ gid://shopify/Product/15509382693249	ok	Intelligenter Saugroboter F1s
 gid://shopify/Product/15509384921473	nicht-versendbar	Faltbarer Wäschekorb mit Rollen und Deckel
 gid://shopify/Product/15509393932673	nicht-versendbar	Motorrad-Bausatz mit kleinen Partikeln
 gid://shopify/Product/15509393179009	ok	Baumwollsatin Prinzessinnen Bettwäsche-Set
+gid://shopify/Product/15509565112705	nicht-versendbar	Keramik-Vorratsdose im Hofstil

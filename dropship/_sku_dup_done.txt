@@ -686,3 +686,4 @@ gid://shopify/Product/15509382267265	CJ-2EC739E2-D20C-4562-8C8D-1D501AAAB82B	Man
 gid://shopify/Product/15509382365569	CJ-6C39FE34-128F-478F-869B-B2E1BE3A6439	Küchenhelfer-Set, 7-teilig, Edelstahl 304
 gid://shopify/Product/15509382562177	CJ-4ACCB7BD-EF9C-4969-A86A-F7F072E5BD60	Back- und Dekorationsset für Torten
 gid://shopify/Product/15509382660481	CJ-EE0DA616-EC0D-4774-889A-BD7F9933F1FB	Kaffeekapsel-Drehständer (24 Kapseln)
+gid://shopify/Product/15509383512449	CJ-1416335068099645440	Elektrischer Weinöffner mit USB-Ladekabel
