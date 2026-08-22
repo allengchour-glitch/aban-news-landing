@@ -224,3 +224,5 @@ gid://shopify/Product/15508453491073	multifunktionales-kissen-fur-auto-und-buro-
 gid://shopify/Product/15508514537857	herren-rucksack-crazy-horse-leder-3455d4	Herren Rucksack Crazy Horse Leder
 gid://shopify/Product/15508767801729	langarmhemd-slim-fit-diverse-farben-633800	Langarmhemd Slim Fit – diverse Farben
 gid://shopify/Product/15509137654145	herren-langarmshirt-aus-reiner-baumwolle-607500	Herren Langarmshirt aus reiner Baumwolle
+gid://shopify/Product/15509356020097	midikleid-mit-knopfleiste-und-stufenrock-620200	Midikleid mit Knopfleiste und Stufenrock
+gid://shopify/Product/15509356052865	verstellbares-schmuckset-fur-damen-625800	Verstellbares Schmuckset für Damen

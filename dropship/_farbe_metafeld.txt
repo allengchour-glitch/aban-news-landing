@@ -265,3 +265,6 @@ gid://shopify/Product/15508424032641	Blau
 gid://shopify/Product/15508424327553	Transparent
 gid://shopify/Product/15508424917377	Türkis
 gid://shopify/Product/15508643873153	Khaki
+gid://shopify/Product/15509355725185	Silber
+gid://shopify/Product/15509357986177	Gold
+gid://shopify/Product/15509360968065	Silber
