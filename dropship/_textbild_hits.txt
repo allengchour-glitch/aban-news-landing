@@ -9355,3 +9355,17 @@ gid://shopify/Product/15500743639425	8->0	Sommer-Sitzkissen
 gid://shopify/Product/15500743868801	50->0	5-Fach-Rasierer
 gid://shopify/Product/15500780470657	86->0	Schwarze Stiletto-Sandalen
 gid://shopify/Product/15500797280641	14->1	Einfarbiger Samtkissenbezug – Pastoral, 45×45 cm
+gid://shopify/Product/15500836471169	11->3	Auto-Heizung mit 180-Grad-Drehfunktion
+gid://shopify/Product/15500836602241	66->3	Cashmere-Decke Grün
+gid://shopify/Product/15500891226497	109->0	Goldene Sandalen mit dickem Absatz
+gid://shopify/Product/15500891259265	132->0	American Stoffsofaüberzug
+gid://shopify/Product/15500891292033	12->0	Halswirbelsäulen-Massager
+gid://shopify/Product/15500891357569	46->3	Luxus-Kissen
+gid://shopify/Product/15500891390337	20->0	Schwarze Pumps mit Silberbesatz
+gid://shopify/Product/15500891455873	49->2	Weihnachtsbaum-Stuhlüberzug
+gid://shopify/Product/15500891619713	34->0	Warmes Mauspad für die Hand
+gid://shopify/Product/15500891685249	12->0	Automobilpoliermaschine
+gid://shopify/Product/15500891783553	24->0	Infrarot Fernbedienung
+gid://shopify/Product/15500892012929	11->0	Lange Beine Brikett Plüschfigur
+gid://shopify/Product/15500892242305	14->0	Sensor für Luft-Kraftstoff-Gemisch
+gid://shopify/Product/15500892307841	23->2	Romantische Atmosphäre
