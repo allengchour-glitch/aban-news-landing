@@ -44,3 +44,17 @@ gid://shopify/Product/15412306608513	CHF 28.10	1 Varianten	16-in-1 Gemüseschnei
 gid://shopify/Product/15412306772353	CHF 24.60	1 Varianten	Reise-Schallzahnbürste – 4 Modi, Magnetschwebe-Mot
 gid://shopify/Product/15412307100033	CHF 28.95	1 Varianten	LED-Fahrradrucksack mit Blinker – Funk-Fernbedienu
 gid://shopify/Product/15412307165569	cj-ohne-antwort
+gid://shopify/Product/15412307657089	CHF 19.53	1 Varianten	XXL Leselupe mit LED-Licht – 5× & 10× Vergrösserun
+gid://shopify/Product/15412307689857	cj-ohne-antwort
+gid://shopify/Product/15412307853697	CHF 30.29	1 Varianten	Silikon-Abtropfmatte XL – rutschfest & hitzebestän
+gid://shopify/Product/15412361593217	CHF 18.32	1 Varianten	3D-Druck Nachttischlampe – warmes Nachtlicht & Dek
+gid://shopify/Product/15412405272961	CHF 41.11	1 Varianten	All-in-One Elektro-Kochtopf – Keramik-Beschichtung
+gid://shopify/Product/15412408615297	CHF 24.41	1 Varianten	Monitor-Lichtleiste mit Bewegungssensor – blendfre
+gid://shopify/Product/15412432175489	CHF 21.80	1 Varianten	Kühlende Sommerdecke – Cool-Feel, atmungsaktiv & w
+gid://shopify/Product/15412433256833	CHF 29.18	1 Varianten	Handliches Massagegerät – Vibrations-Massage mit m
+gid://shopify/Product/15412447543681	CHF 21.27	1 Varianten	Auto-Schnellladegerät PD – ausziehbares Kabel, für
+gid://shopify/Product/15412463108481	CHF 16.66	1 Varianten	Polarisierte Sonnenbrille – blendfrei, UV-Schutz, 
+gid://shopify/Product/15412476445057	CHF 37.67	1 Varianten	Flötenkessel 2L – Edelstahl-Wasserkessel mit Pfeif
+gid://shopify/Product/15412658667905	cj-ohne-antwort
+gid://shopify/Product/15412659978625	CHF 16.49	1 Varianten	Mini USB-Taschenlampe – Edelstahl, wiederaufladbar
+gid://shopify/Product/15412677607809	CHF 21.40	1 Varianten	Elektrischer Krallenschleifer für Hund & Katze – l
