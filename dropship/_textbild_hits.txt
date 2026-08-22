@@ -9817,3 +9817,8 @@ gid://shopify/Product/15501748044161	10->3	Durchlauferhitzer Wasserhahn mit LED-
 gid://shopify/Product/15501748470145	35->0	Drei-Stück-Kochset aus Aluminium
 gid://shopify/Product/15501749059969	56->3	Hochhackige Satinsandalen
 gid://shopify/Product/15501749584257	25->0	Dreiteilige Kuchenpräsentation
+gid://shopify/Product/15501845070209	14->0	Marble-Rollenbrett
+gid://shopify/Product/15501846020481	52->1	Romantische Hausschuhe
+gid://shopify/Product/15501846184321	50->0	Medikamentenfüller
+gid://shopify/Product/15501846315393	30->1	Stainless Steel Cocktail-Set
+gid://shopify/Product/15501846741377	19->0	Schwarzer Überwachungskamera
