@@ -211,3 +211,7 @@ gid://shopify/Product/15421594501505	CHF 20.80	36 Varianten	Strandkleid «Maré�
 gid://shopify/Product/15421604299137	CHF 19.53	25 Varianten	Herren-Sommerhemd «Lido» · Stehkragen, Kurzarm Lei
 gid://shopify/Product/15421606953345	CHF 24.74	60 Varianten	Strand-Sandalen «Dorée» · Metallic-Riemchen, Flach
 gid://shopify/Product/15421615473025	CHF 19.14	4 Varianten	Boho-Jacke «Fiore» · Blüten-Stickerei, Bindeband
+gid://shopify/Product/15421617537409	CHF 22.16	30 Varianten	Boho-Kleid «Indigo» · Ärmellos mit Knopfleiste & V
+gid://shopify/Product/15421620257153	CHF 20.50	40 Varianten	Keil-Sandalen «Capri» · Geflochten, Espadrille-Loo
+gid://shopify/Product/15422037361025	CHF 16.48	5 Varianten	Sonnenbrille «Mirage» · Cat-Eye, verspiegelt
+gid://shopify/Product/15422040277377	CHF 23.66	36 Varianten	Maxi-Kleid «Aria» · Langarm, tailliert mit Gürtel
