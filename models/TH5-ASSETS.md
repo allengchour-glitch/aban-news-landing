@@ -1983,6 +1983,43 @@ einziger** der sechs Masten auf seinem z 108,5 — alle sechs lagen auf **107,3*
 > Löschfahrzeug — der Mastfuß steht bei beiden frei, das Metall hängt 6 m darüber. In der
 > 3D-Prüfung erscheinen sie korrekt als **LUFT**. Wer das „aufräumt", macht es kaputt.
 
+### Die Karte war nicht reproduzierbar
+
+Ein Fund (`th16_karussell_klein × th16_blumenbeet`, 93 Mesh-Paare) stand in der Gesamtliste — und
+der Paarmodus meldete für dasselbe Paar auf demselben Commit **0**. Das war kein Werkzeugfehler,
+sondern der Hinweis auf etwas Größeres.
+
+Zweimal geladen, gleicher Commit, 850 Modelle:
+
+| | Lauf 1 | Lauf 2 |
+|---|---|---|
+| `th16_karussell_klein` | 89,95 \| **76,00** | 89,95 \| **74,00** |
+| `th17_bahnsteigdach` | −9,60 \| 108,20 | **−11,00 \| 109,60** |
+| echte Funde | 52 | 53 |
+
+**Ursache:** `entwirren()` baut seine Liste `E` aus `window._gebaeude` — und das füllt sich in der
+Reihenfolge, in der die **GLB-Ladevorgänge fertig werden**. Die ist zwischen zwei Aufrufen
+verschieden. `paare()` läuft genau diese Reihenfolge durch, und bei jedem Paar weicht das zuerst
+gefundene Objekt aus. Gleicher Code, anderer Grundriss.
+
+Das macht jede Abnahme wertlos: ein Befund kann beim Nachmessen verschwinden, ohne dass etwas
+repariert wurde — und umgekehrt kann ein „sauber" gemessener Stand beim nächsten Laden wieder
+schmutzig sein. Ein guter Teil des Hin und Her in den letzten Runden ging darauf zurück.
+
+**Behoben** mit einem Sortierschlüssel, der nicht von der Ladereihenfolge abhängt (Dateiname,
+dann x, dann z), in `entwirren()` und vorsorglich in `freiRaeumen()`. Drei Läufe danach: Positionen
+identisch, und die Menge der echten Funde **byte-identisch**.
+
+> ⚠️ **Der Schlüssel bestimmt das Ergebnis mit.** Eine Variante „große Objekte zuerst"
+> (`b.v - a.v`) war *nicht* deterministisch — offenbar sind die Flächenwerte nicht bitgenau
+> stabil — und brachte auch keinen besseren Wert. Wer hier etwas ändert, misst mehrere Läufe.
+
+> ⚠️ **Ehrlich bleiben beim Preis:** die feste Reihenfolge kommt auf **55** echte Funde, die
+> zufälligen Läufe zeigten 52–53. Die Reproduzierbarkeit kostet also zwei bis drei Funde — sie
+> ist es wert, weil man ohne sie gar nicht erst verlässlich reparieren kann. Die Zahl der reinen
+> 2D-Meldungen schwankt weiterhin um ±1; das sind Paare mit **bewegten** Objekten (die Gondeln
+> werden beim Laden aufs Seil gesetzt), nicht die entwirrten Platzierungen.
+
 > 🔑 **Die Regel.** Erst die Zahl aus der Hypothese ableiten, dann messen, dann ändern —
 > und zwischen „Boxen überlappen" und „Geometrie steckt ineinander" nie stillschweigend
 > wechseln. Zwei Änderungen dieses Durchgangs wurden vor dem Commit wieder verworfen, weil
