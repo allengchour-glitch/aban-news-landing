@@ -871,6 +871,34 @@ nicht die Schwelle, sondern billige Ware im Mehrfachkorb.
   Das ältere «China-Fracht ~3–6 CHF» im BigBuy-Vergleich ist überholt — ich hätte auf dieser
   Grundlage beinahe die Kostendaten für falsch erklärt.
 
+## 🎟️ Zwei Mengenrabatte und ein DRITTER Gratis-Versand — live nachgezählt (2026-08-22)
+Beim Prüfen der Startseite fiel auf, dass sie «–10% ab 3 Artikeln» bewirbt, während ich den
+ganzen Tag mit «2+ −10 %» gerechnet hatte. Live abgefragt sind **beide aktiv**:
+
+| Automatischer Rabatt | Status | Bedingung | Wert |
+|---|---|---|---|
+| `Bundle: 2+ Artikel -10%` | **ACTIVE** | ab 2 Artikeln | 10 % |
+| `Mengenrabatt — 10% ab 3 Artikeln` | **ACTIVE** | ab 3 Artikeln | 10 % |
+| `Gratis-Versand ab CHF 65` | EXPIRED | ab 65 | — |
+| `Gratis-Versand ab CHF 49` | **ACTIVE** | ab 49 CHF | — |
+
+Daraus drei Dinge:
+1. **Die Marge-Rechnung mit «2 Artikel −10 %» war richtig** — die 2er-Regel ist scharf.
+2. **Die 3er-Regel ist wirkungslos.** Shopify wendet je Bestellung nur EINEN automatischen
+   Rabatt an, und die 2er-Regel gibt bei gleichem Prozentsatz früher denselben Nachlass.
+   Sie kann also nie etwas bewirken, was die 2er nicht schon tut.
+3. **Die Startseite bewirbt die SCHLECHTERE Bedingung.** Dort steht «ab 3 Artikeln», live
+   genügen 2. Kundinnen wird ein höherer Mindestkauf genannt, als tatsächlich nötig ist.
+**⚠️ Und es gibt einen DRITTEN Gratis-Versand-Weg**, den der Eintrag «Gratis ab CHF 50»
+nicht kennt: einen automatischen Rabatt ab **CHF 49**. Damit stehen drei Zahlen nebeneinander
+— Versandprofil (45, laut Eintrag vom 20.08.), Automatik-Rabatt (49) und beworbene Zusage (50).
+⚠️ Die genauen Schwellen der PROFIL-Tarife konnte ich nicht auslesen (`methodConditions`
+wird vom Schema abgelehnt); bestätigt ist nur, dass im Zone «Domestic» zwei
+«Kostenloser Versand»-Tarife liegen, einer aktiv und einer aus — passend zur 45/50-Kette.
+**Warum das jetzt zählt:** Genau diese Rabatte verwandeln nach der heutigen Messung Körbe mit
+schwerer Ware in Verluste. Wer daran etwas ändert, muss wissen, dass es DREI Stellschrauben
+sind und nicht eine.
+
 ## ⚖️ Das Gewicht war bekannt, benutzt — und weggeworfen (2026-08-22)
 Auf die Frage «welche Produkte wiegen über 800 g?» liefert Shopify **keine Antwort**: Von
 **45'741 aktiven Produkten haben 45'700 gar kein Gewicht** (99,9 %). Bis 800 g: 39, darüber: 2
