@@ -9768,3 +9768,10 @@ gid://shopify/Product/15501097304449	8->0	Titanium-Halsband
 gid://shopify/Product/15501382189441	40->0	Elektrischer Heisslöffel
 gid://shopify/Product/15501382222209	135->0	Plaid-Krawattenhemd
 gid://shopify/Product/15501382484353	15->0	Holz-Tisch für zwei
+gid://shopify/Product/15501382582657	59->0	Hundekragen-Tuch
+gid://shopify/Product/15501382844801	12->0	Essenslöffel-Sets
+gid://shopify/Product/15501382877569	27->1	Herren Langarmhemd mit Brusttasche
+gid://shopify/Product/15501382943105	21->0	Fahrrad-Halsband
+gid://shopify/Product/15501382975873	19->0	Wine Corkscrew Set
+gid://shopify/Product/15501383106945	40->0	Glaskuchenabdeckung
+gid://shopify/Product/15501383172481	79->0	Digitalgemälde
