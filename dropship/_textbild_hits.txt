@@ -9482,3 +9482,55 @@ gid://shopify/Product/15500928680321	45->0	Smarter Katzenfutterautomat mit Beweg
 gid://shopify/Product/15500928713089	34->0	Kabelloses Ladegerät mit Nachtlicht & Handyhalter
 gid://shopify/Product/15500928778625	35->0	Ovale, rutschfeste Yogamatte für Indoor-Fitness
 gid://shopify/Product/15500928811393	18->0	Keramik-Futternapf für Katzen – Kippsicher & Halswirbelsäule
+gid://shopify/Product/15500929073537	81->0	Nickel-Batterie zu Kabelausgang Adapter
+gid://shopify/Product/15500929368449	44->1	Powerbank 10000 mAh oder 6000 mAh
+gid://shopify/Product/15500929401217	156->1	Vielseitige Quarzuhr für Herren
+gid://shopify/Product/15500929433985	46->1	Massageball für Kalt- und Warmkompressen
+gid://shopify/Product/15500929466753	9->0	Rutschfeste Silikon-Futterschüssel für Haustiere
+gid://shopify/Product/15500929532289	23->1	Transparente, multifunktionale Leuchtuhr
+gid://shopify/Product/15500929565057	22->0	Boxinghandschuhe
+gid://shopify/Product/15500929597825	31->0	Hölzerner Napfständer für Hunde und Katzen
+gid://shopify/Product/15500929630593	26->0	Mini Powerbank mit Spiegel
+gid://shopify/Product/15500929728897	13->0	Fressnapf Metall Hochbeinig Schräg
+gid://shopify/Product/15500929761665	24->2	USB AA/AAA Lithium-Akku, 1.5V
+gid://shopify/Product/15500929827201	86->0	Anti-Rutsch Duschmatte aus Silikon
+gid://shopify/Product/15500929991041	51->0	Plateau-Sandalen im Römer-Stil
+gid://shopify/Product/15500930056577	28->3	Sandalen mit Nieten und Schnalle
+gid://shopify/Product/15500930122113	11->0	Seiden-Nackenkissen in U-Form
+gid://shopify/Product/15500930154881	40->1	Halsband mit Gänseblümchen-Muster für Haustiere
+gid://shopify/Product/15500930318721	30->0	Tragbares Nackenkissen für erholsamen Schlaf
+gid://shopify/Product/15500933169537	26->1	Schwarze High-Heels mit Metall-Verstärkung
+gid://shopify/Product/15500933202305	36->0	Blauer Kissenbezug
+gid://shopify/Product/15500933300609	89->0	Gelbes Kissenbezug
+gid://shopify/Product/15500933366145	9->3	Hundestraining-Kollektiv
+gid://shopify/Product/15500933431681	88->0	Retro-Sandalen mit T-Buckle
+gid://shopify/Product/15500933464449	84->1	Halsstütze für Wohnzimmer
+gid://shopify/Product/15500933726593	44->3	Plüsch-Sitzkissen für den Winter
+gid://shopify/Product/15500933890433	27->3	Hundehalsband mit Leine, Gentleman Grau
+gid://shopify/Product/15500934185345	13->1	Anti-Leck- und Beisskragen für Katzen
+gid://shopify/Product/15500934218113	14->0	Wohnwagen T1 Klemmbaustein-Set
+gid://shopify/Product/15500934349185	12->1	Bausatz Sportwagen RS7 für Kinder
+gid://shopify/Product/15500934644097	110->1	Plüsch-Kissen "Häschen" für Sofa und Deko
+gid://shopify/Product/15500934840705	8->0	Kissen mit englischem Buchstaben-Design
+gid://shopify/Product/15500935004545	167->0	Bequeme Freizeitschuhe aus Leder für Herren
+gid://shopify/Product/15500935299457	19->0	iScan Tragbarer A4-Handscanner
+gid://shopify/Product/15500935364993	25->0	Multifunktionaler Anti-Ess-Maulkorb für Hunde
+gid://shopify/Product/15500935397761	41->0	Wanzen- & Kamera-Detektor
+gid://shopify/Product/15500935496065	11->0	Leuchthalsband für Hunde mit USB-Ladefunktion
+gid://shopify/Product/15500935758209	38->2	Karaffenlederstiefel
+gid://shopify/Product/15500935823745	10->0	Winterstiefel aus Leder
+gid://shopify/Product/15500935889281	94->1	Leather-Hochschuhe
+gid://shopify/Product/15500935954817	19->2	Hundehalsband mit Gravur und Zugfunktion
+gid://shopify/Product/15500935987585	91->3	Ankle Boots mit Seitenreissverschluss
+gid://shopify/Product/15500936020353	17->1	USB-Kamm-Aromatherapie-Ofen
+gid://shopify/Product/15500936151425	41->1	Halsband mit Blumenmuster und Metallverschluss
+gid://shopify/Product/15500936184193	55->0	USB-C Audio-Adapter 2-in-1
+gid://shopify/Product/15500936380801	44->2	Tierkrawatte
+gid://shopify/Product/15500936446337	34->2	Dimmer für zweifarbige LED Lichtleisten
+gid://shopify/Product/15500936511873	16->0	Wasserdichte, gefütterte Winter-Sneaker
+gid://shopify/Product/15500936544641	13->0	RGB Kühlbasis für Xbox Series X/S
+gid://shopify/Product/15500936610177	48->0	Farbige Leuchtmaus für Gaming & Office
+gid://shopify/Product/15500936642945	11->1	Hunde Autosicherheitsgurt, elastisch
+gid://shopify/Product/15500936675713	20->1	Worker Boot im British Style
+gid://shopify/Product/15500936806785	79->1	Dream Magic Color Rod Nagelpinsel-Set
+gid://shopify/Product/15500937068929	20->0	Nagel-Diamant-Set mit Liebesmotiv
