@@ -871,6 +871,35 @@ nicht die Schwelle, sondern billige Ware im Mehrfachkorb.
   Das ältere «China-Fracht ~3–6 CHF» im BigBuy-Vergleich ist überholt — ich hätte auf dieser
   Grundlage beinahe die Kostendaten für falsch erklärt.
 
+## 📉 1,8 % der Neuware erreicht den Google-Kanal nicht — Grund OFFEN (2026-08-22)
+Google ist der einzige Kanal mit belegten Verkäufen. Über die 4'761 seit dem 19.08. neu
+angelegten aktiven Produkte gezählt:
+
+| Kanal | veröffentlicht | Anteil |
+|---|---:|---:|
+| Online Store · Shop | 4'761 | 100 % |
+| TikTok · Facebook/Instagram · Pinterest | 4'758 | 99,9 % |
+| **Google & YouTube** | **4'672** | **98,1 %** |
+
+**89 Produkte fehlen bei Google — und nur bei Google.** Die anderen Werbekanäle vermissen
+je 3. Das schliesst einen allgemeinen Publizier-Fehler aus und deutet auf einen
+Google-spezifischen Wächter (`gfeed_score.py` / `google_kanal_saeubern.py`).
+Von den 89 sind **4 nachweislich zu Recht draussen**: drei Rauchartikel (`18plus`,
+`raucher`, `nur-onlineshop`) und ein Outdoor-Klappmesser (`google-kanal-klinge-outdoor`).
+**Die übrigen 85 tragen KEIN Sperr-Tag** und sehen harmlos aus: Canvas-Herrenschuhe,
+Flanellhemd, A-Linien-Blumenkleid, Keramik-Futternapf, Pinselset, Rucksack.
+⚠️ **OFFEN — nicht als Fehler gewertet:** Ob diese 85 von einem Wächter bewusst entfernt
+wurden (dann steht ein Grund in dessen Ledger) oder beim Import nie in den Kanal kamen,
+konnte ich NICHT klären: Das Shopify-Punktebudget war erschöpft (24 verfügbar, Abfrage
+kostet 86 — Bulk-Export und laufende Engines teilen sich dasselbe Kontingent). Der
+Abgleich gegen `_google_kanal_gesaeubert.txt` steht aus.
+**Nächster Schritt bei freiem Budget:** die 85 gegen die Säuberungs-Ledger halten. Sind sie
+dort nicht vermerkt, fehlen dem umsatzstärksten Kanal täglich ~1,8 % der Neuware — bei
+~100 Neuprodukten am Tag knapp zwei Artikel, die nie jemand über Google findet.
+⚠️ NICHT blind `google_kanal_nachziehen.py` darüberlaufen lassen: Ein Teil der Ausschlüsse
+IST gewollt (Kostüm/Erotik/Refurb/Klingen), und ein Fehlgriff dort riskiert die
+Merchant-Sperre — der einzige Kanal, der verkauft.
+
 ## 🎟️ Zwei Mengenrabatte und ein DRITTER Gratis-Versand — live nachgezählt (2026-08-22)
 Beim Prüfen der Startseite fiel auf, dass sie «–10% ab 3 Artikeln» bewirbt, während ich den
 ganzen Tag mit «2+ −10 %» gerechnet hatte. Live abgefragt sind **beide aktiv**:
