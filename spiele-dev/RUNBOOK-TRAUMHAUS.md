@@ -4,6 +4,31 @@
 > ~600 kB in einer einzigen IIFE; ohne diese Karte sucht man lange und tritt in
 > Fallen, die hier schon einmal Stunden gekostet haben.
 
+## 🌐 Koop Teil 2: Keepalive, fluessige Partner, gruene Tests (2026-08-22)
+- **Engine B hatte KEINEN Keepalive.** Engine A (PeerJS, Produktion) sendet alle 2 s ein
+  `__ka`; die lokale Test-Engine hat nur GELAUSCHT. Damit starb jede Sitzung, sobald das
+  Spiel selbst 6 s nichts schickte — reproduzierbar GENAU beim Spielstart, wenn die
+  Gegenseite ihre Welt baut. Beweis: `lost:stille` auf BEIDEN Seiten, 2 s nach dem Start.
+  Ohne diesen Fix misst der Zwei-Seiten-Test nur sich selbst.
+- **⚠️ Den Abbruchgrund am ENTSTEHUNGSORT abgreifen.** Das Spiel setzt `MPs = null` im
+  selben Zug, in dem die Sitzung schliesst — wer danach pollt, sieht ein leeres Feld und
+  raet. Die Sonde `koopWatch` haengt sich in `onStatus` und haelt die Sitzung in einem
+  Abschluss fest. Erst damit kam `lost:stille` ueberhaupt ans Licht.
+- **Vorhersage des Gasts ist jetzt END-TO-END belegt** (mit Keepalive lief der Test durch):
+  2,78 m gelaufen, Abstand zur Hostwahrheit im Mittel 0,35 m / hoechstens 0,51 m, und
+  **0,02 m nach dem Loslassen** — der Ausgleich laeuft also sauber zusammen.
+- **Fremde Figuren pulsierten.** Pakete kommen alle 350 ms; `x += (ziel-x)*dt*8` zieht
+  direkt danach an und steht kurz darauf fast still. `netAnnehmen`/`netZiel` leiten aus
+  zwei Paketen die Geschwindigkeit ab und schieben das ZIEL dazwischen weiter — kein
+  einziges zusaetzliches Byte. Gemessen an der ausgelieferten Funktion (Sonde, 200 Bilder):
+  Ruckeln 0,93 → 0,52 · Kriech-Bilder 46 → 26 von 200 · Rueckstand 1,19 m → 0,44 m.
+  Vorausrechnung ist auf 0,6 s gedeckelt, sonst laeuft eine Figur bei Paketausfall davon.
+- **Die 3 alten `mp_unit`-FAILs waren STALE TESTS, kein Bibliotheksfehler.** Der Peer-Stub
+  schliesst neue Reconnect-Kanaele nicht von selbst; wer genau EINEN toetet und 50 ms
+  spaeter prueft, sieht "lost" — korrektes Verhalten, die Sitzung wartet auf den naechsten
+  Versuch. Der Helfer `bisAufgabe()` modelliert jetzt "Host endgueltig weg" (jeder Versuch
+  stirbt) und erreicht den erwarteten Endzustand in rund einer Sekunde. **13/13 PASS.**
+
 ## 🌐 Online-Koop: echt zu zweit testen (2026-08-22)
 - Werkzeug: `node spiele-dev/tools/th-koop.mjs` — zwei Seiten in EINEM Browser ueber
   `?mp=local` (rohes WebRTC + BroadcastChannel), also echte DataChannels.

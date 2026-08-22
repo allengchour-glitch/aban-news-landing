@@ -308,6 +308,13 @@
         if (spaet > 800) lastRecv += spaet;
         if (S.status === "closed") { clearInterval(wd); return; }
         if (S.status === "connected" && Date.now() - lastRecv > 6000) { clearInterval(wd); gone("stille"); }
+        /* ⚠️ DER KEEPALIVE HAT HIER GEFEHLT. Engine A sendet alle 2 s ein
+           `__ka`; Engine B hat nur GELAUSCHT. Damit starb jede Testsitzung,
+           sobald das Spiel selbst 6 s nichts schickte — reproduzierbar GENAU
+           beim Spielstart, wenn die Gegenseite ihre Welt baut und dabei nichts
+           senden kann. Gemessen auf beiden Seiten: `lost:stille` nach 2 s.
+           Ohne den Keepalive misst der Zwei-Seiten-Test nur sich selbst. */
+        try { if (S.status === "connected" && main && main.readyState === "open") main.send(JSON.stringify({ t: "__ka" })); } catch (e) {}
       }, 2000);
     }
     pc.onconnectionstatechange = function () {
@@ -344,7 +351,8 @@
       }, 150);
     }
     function wired(c, isFast) {
-      c.onmessage = function (ev) { lastRecv = Date.now(); try { S._emit(JSON.parse(ev.data)); } catch (e) {} };
+      c.onmessage = function (ev) { lastRecv = Date.now();
+        try { var d = JSON.parse(ev.data); if (d && d.t === "__ka") return; /* Transport-Keepalive geht NICHT ans Spiel */ S._emit(d); } catch (e) {} };
       c.onopen = function () { if (!isFast) oeffnen(); };
       c.onclose = function () { if (!isFast) gone("kanal-zu"); };
       if (!isFast) { if (c.readyState === "open") oeffnen(); else pollOffen(); }
