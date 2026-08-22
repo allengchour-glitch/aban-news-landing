@@ -132,13 +132,53 @@ function Abbruch {
 # spaeter nach einem Problem, das laengst behoben ist.
 function Abbruch-Vermerk-Loeschen {
     try {
-        $datei = Join-Path $PSScriptRoot "austausch\start-fehler.txt"
-        if (-not (Test-Path $datei)) { return }
-        Remove-Item $datei -Force
-        [void](Git-MitZeitlimit @("add", "--", "austausch/start-fehler.txt") 30)
+        # Auch der Ende-Vermerk muss weg: ein alter "Lauf beendet" waere sonst
+        # der letzte Stand im Repository, waehrend der Bot laengst wieder laeuft.
+        $wegdamit = @("austausch/start-fehler.txt", "austausch/lauf-ende.txt")
+        $gab_es = $false
+        foreach ($rel in $wegdamit) {
+            $datei = Join-Path $PSScriptRoot ($rel -replace "/", "\")
+            if (Test-Path $datei) { Remove-Item $datei -Force; $gab_es = $true }
+        }
+        if (-not $gab_es) { return }
+        [void](Git-MitZeitlimit (@("add", "--") + $wegdamit) 30)
         [void](Git-MitZeitlimit @("commit", "-m", "Start laeuft wieder") 30)
         [void](Git-MitZeitlimit @("push") 60)
     } catch { }
+}
+
+# Haelt der Bot an, sah das von aussen bisher aus wie "laeuft noch": die letzte
+# Meldung im Repository blieb einfach stehen. Am 22.08. war der letzte Eintrag
+# vier Stunden alt, und es war von hier aus nicht zu entscheiden, ob der Bot
+# arbeitet oder tot ist. Diese Datei beantwortet genau das.
+function Ende-Vermerken {
+    param([int]$Code, [string]$Protokoll)
+    try {
+        $ordner = Join-Path $PSScriptRoot "austausch"
+        if (-not (Test-Path $ordner)) { New-Item -ItemType Directory -Path $ordner | Out-Null }
+        $datei = Join-Path $ordner "lauf-ende.txt"
+        $zeilen = @(
+            "# Der Bot-Lauf ist beendet. Steht hier ein frischer Zeitpunkt,",
+            "# laeuft der Bot NICHT mehr.",
+            "zeit:      $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')",
+            "rechner:   $env:COMPUTERNAME",
+            "rueckgabe: $Code"
+        )
+        if ($Protokoll -and (Test-Path $Protokoll)) {
+            $zeilen += "", "# letzte Protokollzeilen:"
+            $zeilen += (Get-Content $Protokoll -Tail 25 -ErrorAction SilentlyContinue)
+        }
+        Set-Content -Path $datei -Value $zeilen -Encoding UTF8
+        [void](Git-MitZeitlimit @("add", "--", "austausch/lauf-ende.txt") 30)
+        [void](Git-MitZeitlimit @("commit", "-m", "Bot-Lauf beendet (Rueckgabe $Code)") 30)
+        if ((Git-MitZeitlimit @("push") 60) -eq "ok") {
+            Warnung "Ende in austausch/lauf-ende.txt vermerkt und hochgeladen."
+        } else {
+            Warnung "Ende in austausch/lauf-ende.txt vermerkt - Hochladen ging nicht."
+        }
+    } catch {
+        Warnung "Das Ende liess sich nicht vermerken: $($_.Exception.Message)"
+    }
 }
 
 # ------------------------------------------------------------- Neuen Stand holen
@@ -461,6 +501,9 @@ if ($Scharf -and $Dauerlauf) {
     Write-Host "  Sieht das Protokoll sinnvoll aus, dann:  .\start-windows.ps1 -Scharf" -ForegroundColor Yellow
     & $python bot.py --adb "$Adb" @geraet run --dry-run --minutes $Minuten --log-level debug --jsonl $protokoll
 }
+
+$rueckgabe = $LASTEXITCODE
+Ende-Vermerken $rueckgabe $protokoll
 
 Schritt "Fertig"
 Write-Host "  Protokoll: $protokoll"

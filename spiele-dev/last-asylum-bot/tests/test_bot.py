@@ -2879,6 +2879,76 @@ class TestFluchtwegWirdNichtGebremst(unittest.TestCase):
 
 
 
+class TestZiffernSatzMussVollstaendigSein(unittest.TestCase):
+    """Ein halber Ziffern-Satz ist gefaehrlicher als gar keiner.
+
+    Fehlt die 0, liest der Bot aus "20" eine "2" - und rechnet dann mit 2
+    weiter. Eine Regel wie "Versammlung ab 20 Energie" ginge damit zur voellig
+    falschen Zeit los. Genau so lagen die Vorlagen im Repository: fuenf von
+    zehn in templates/ziffern, fuenf andere in templates/ziffern-timer.
+    """
+
+    def _engine(self, ordner):
+        cfg = Config.from_dict({"package": "x", "rules": [], "tasks": []},
+                               path=os.path.join(ordner, "cfg.json"))
+        dev = FakeDevice([noise(200, 100, 31)], loop=True)
+        eng = Engine(cfg, dev, logger=quiet(), sleep=lambda s: None, seed=1)
+        eng.screen = noise(200, 100, 31)
+        return eng
+
+    def _lege_ziffern(self, ordner, zeichen):
+        ziel = os.path.join(ordner, "templates", "ziffern")
+        os.makedirs(ziel, exist_ok=True)
+        for i, z in enumerate(zeichen):
+            noise(12, 18, 40 + i).save(os.path.join(ziel, f"{z}.png"))
+
+    def test_unvollstaendiger_satz_liest_nichts(self):
+        """Mit nur der 2 im Ordner las der alte Code aus "20" eine glatte 2."""
+        with tempfile.TemporaryDirectory() as ordner:
+            zwei, null = noise(14, 20, 71), noise(14, 20, 72)
+            ziel = os.path.join(ordner, "templates", "ziffern")
+            os.makedirs(ziel, exist_ok=True)
+            zwei.save(os.path.join(ziel, "2.png"))       # NUR die 2 - Satz unvollstaendig
+            schirm = noise(200, 100, 73)
+            paste(schirm, zwei, 40, 40)
+            paste(schirm, null, 56, 40)                  # daneben steht die 0
+            eng = self._engine(ordner)
+            eng.screen = schirm
+            self.assertIsNone(
+                eng.lies_zahl({}),
+                "mit halbem Satz darf keine Zahl herauskommen - sonst wird aus 20 eine 2")
+
+    def test_vollstaendiger_satz_liest_die_zahl(self):
+        """Die Gegenprobe: mit allen zehn Vorlagen kommt die richtige Zahl."""
+        with tempfile.TemporaryDirectory() as ordner:
+            ziffern = {z: noise(14, 20, 80 + i) for i, z in enumerate("0123456789")}
+            ziel = os.path.join(ordner, "templates", "ziffern")
+            os.makedirs(ziel, exist_ok=True)
+            for z, bild in ziffern.items():
+                bild.save(os.path.join(ziel, f"{z}.png"))
+            schirm = noise(200, 100, 90)
+            paste(schirm, ziffern["2"], 40, 40)
+            paste(schirm, ziffern["0"], 56, 40)
+            eng = self._engine(ordner)
+            eng.screen = schirm
+            self.assertEqual(eng.lies_zahl({"hoechstens": 2}), 20)
+
+    def test_vollstaendiger_satz_wird_benutzt(self):
+        with tempfile.TemporaryDirectory() as ordner:
+            self._lege_ziffern(ordner, "0123456789")
+            eng = self._engine(ordner)
+            self.assertEqual(len(eng._ziffern("ziffern")), 10)
+
+    def test_zweiter_ordner_bekommt_nicht_den_ersten_satz(self):
+        """Die Schriften unterscheiden sich - ein Satz passt nicht auf den anderen."""
+        with tempfile.TemporaryDirectory() as ordner:
+            self._lege_ziffern(ordner, "0123456789")
+            eng = self._engine(ordner)
+            eng._ziffern("ziffern")
+            self.assertEqual(eng._ziffern("gibtsnicht"), {},
+                             "ein leerer Ordner darf nicht den gemerkten Satz liefern")
+
+
 class TestOffeneListeStimmt(unittest.TestCase):
     """Die Tabelle im README muss sagen, was wirklich fehlt.
 
@@ -3635,6 +3705,29 @@ class TestStartskriptWirdBewacht(unittest.TestCase):
         self.assertEqual(verdaechtig, [],
                          "git nur ueber Git-Text/Git-MitZeitlimit aufrufen: "
                          + "; ".join(verdaechtig))
+
+    def test_ende_des_laufs_wird_vermerkt(self):
+        """Ein angehaltener Bot sah von aussen aus wie ein laufender.
+
+        Am 22.08. war der letzte Eintrag im Repository vier Stunden alt, und es
+        war nicht zu entscheiden, ob der Bot arbeitet oder tot ist. Nach dem
+        Lauf muss darum eine Datei mit Zeitpunkt und Rueckgabewert entstehen.
+        """
+        text = "\n".join(self.skript())
+        self.assertIn("function Ende-Vermerken", text,
+                      "es braucht einen Ende-Vermerk")
+        self.assertIn("lauf-ende.txt", text)
+        nach_lauf = text.split("bot.py --adb")[-1]
+        self.assertIn("Ende-Vermerken", nach_lauf,
+                      "der Vermerk muss NACH dem Lauf gesetzt werden")
+
+    def test_alter_ende_vermerk_wird_beim_start_geloescht(self):
+        """Sonst ist ein laengst ueberholtes 'Lauf beendet' der letzte Stand."""
+        text = "\n".join(self.skript())
+        anfang = text.index("function Abbruch-Vermerk-Loeschen")
+        ende = text.index("function ", anfang + 10)
+        self.assertIn("lauf-ende.txt", text[anfang:ende],
+                      "beim erfolgreichen Start muss auch der Ende-Vermerk weg")
 
     def test_keine_grossen_hex_zahlen(self):
         """0x80000000 liest PowerShell als negatives Int32 - als Dezimalzahl schreiben."""

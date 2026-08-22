@@ -172,7 +172,7 @@ class Engine:
         self._knapp: Dict[str, int] = {}          # Vorlage -> Fehlgriffe am Stueck
         # Vorlage -> (gesucht, getroffen, bester je erreichter Wert)
         self._vorlagen_zaehler: Dict[str, tuple] = {}
-        self._ziffern_cache: Optional[Dict[str, Image]] = None
+        self._ziffern_cache: Optional[Dict[str, Dict[str, Image]]] = None
         self._nachjustiert: Dict[str, int] = {}   # Vorlage -> wie oft schon vermessen
 
         # Standardmaessig aus: Tests und Replays sollen sich nichts merken.
@@ -1026,13 +1026,22 @@ class Engine:
         return raus
 
     def _ziffern(self, ordner: str = "ziffern") -> Dict[str, Image]:
-        """Die Ziffern-Vorlagen, einmal geladen und gemerkt."""
+        """Die Ziffern-Vorlagen eines Ordners, einmal geladen und gemerkt.
+
+        Nach ORDNER gemerkt, nicht global: die Zahlen im Spiel stehen in
+        verschiedenen Schriften (HUD, Timer, Fenstertitel), und ein Satz passt
+        nicht auf den anderen. Ein gemeinsamer Puffer haette beim zweiten
+        Ordner stillschweigend den ersten Satz zurueckgegeben.
+        """
         if getattr(self, "_ziffern_cache", None) is None:
+            self._ziffern_cache = {}
+        if ordner not in self._ziffern_cache:
             pfad = os.path.join(self.cfg.root, self.cfg.templates_dir, ordner)
-            self._ziffern_cache = zahlen.lade_ziffern(pfad)
-            if self._ziffern_cache:
-                self.log.debug("Ziffern geladen", anzahl=len(self._ziffern_cache))
-        return self._ziffern_cache
+            self._ziffern_cache[ordner] = zahlen.lade_ziffern(pfad)
+            if self._ziffern_cache[ordner]:
+                self.log.debug("Ziffern geladen", ordner=ordner,
+                               anzahl=len(self._ziffern_cache[ordner]))
+        return self._ziffern_cache[ordner]
 
     def lies_zahl(self, spec: Dict[str, Any]) -> Optional[int]:
         """Eine Zahl vom Bildschirm lesen - Energie, Stufe, Staerke.
@@ -1043,13 +1052,20 @@ class Engine:
         daran.
         """
         screen = self.screen or self.capture()
-        ziffern = self._ziffern(spec.get("ordner", "ziffern"))
-        if not ziffern:
-            if "ziffern" not in self._gemeldet_fehlend:
-                self._gemeldet_fehlend.add("ziffern")
+        ordner = spec.get("ordner", "ziffern")
+        ziffern = self._ziffern(ordner)
+        # Ein UNVOLLSTAENDIGER Satz ist gefaehrlicher als gar keiner: fehlt die
+        # 0, liest der Bot aus "20" eine "2" - und rechnet dann mit 2 weiter.
+        # Eine Regel wie "Versammlung ab 20 Energie" ginge damit zur voellig
+        # falschen Zeit los. Lieber nichts wissen als etwas Falsches glauben.
+        fehlend = [z for z in "0123456789" if z not in ziffern]
+        if fehlend:
+            if ordner not in self._gemeldet_fehlend:
+                self._gemeldet_fehlend.add(ordner)
                 self.log.info(
-                    "Zahlen lesen geht noch nicht - es fehlen die Ziffern-Vorlagen",
-                    hilfe="templates/ziffern/0.png bis 9.png aus einem Screenshot schneiden",
+                    "Zahlen lesen geht noch nicht - der Ziffern-Satz ist unvollstaendig",
+                    ordner=ordner, fehlt="".join(fehlend),
+                    hilfe=f"templates/{ordner}/0.png bis 9.png aus einem Screenshot schneiden",
                 )
             return None
         skala = self._scale if self._scale is not None else 1.0

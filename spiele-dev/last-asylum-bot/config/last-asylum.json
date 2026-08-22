@@ -3682,7 +3682,7 @@
       "every": 1800,
       "at_start": true,
       "priority": 118,
-      "_zweck": "Der Bot sieht immer nur den aktuellen Bildschirmausschnitt. Der Rundgang schiebt die Stadtansicht - gedrueckt halten und ziehen, ein kurzer Wisch bewegt die Kamera nicht - und erntet nach jedem Schritt die sichtbar gewordenen Ertrags-Blasen ab. Ganz zu Beginn - wenn die Stadtansicht sicher offen ist - legt er ausserdem den Zahlenstreifen am oberen Rand in voller Aufloesung nach austausch/hud-oben.png. Aus dem gesammelten Halbbild lassen sich Ziffern nicht schneiden, und ohne Ziffern gibt es keine Energie-Schranke.",
+      "_zweck": "Der Bot sieht immer nur den aktuellen Bildschirmausschnitt. Der Rundgang schiebt die Stadtansicht - gedrueckt halten und ziehen, ein kurzer Wisch bewegt die Kamera nicht - und erntet nach jedem Schritt die sichtbar gewordenen Ertrags-Blasen ab. Ganz zu Beginn legt er ausserdem den Zahlenstreifen am oberen Rand in voller Aufloesung nach austausch/hud-oben.png - aber NUR, wenn der Welt-Knopf unten rechts sichtbar ist, also die Stadtansicht wirklich offen steht. Ohne diese Bedingung erwischte der erste Lauf 'Taegliche Aufgaben' statt der Stadt. Aus dem halbierten Sammelbild lassen sich keine Ziffern schneiden, und ohne Ziffern gibt es keine Energie-Schranke.",
       "do": [
         {
           "log": "Rundgang durch die Basis - Kamera schwenken und alles abernten"
@@ -3740,15 +3740,32 @@
           }
         },
         {
-          "ausschnitt": {
-            "datei": "austausch/hud-oben.png",
-            "region": [
-              0.0,
-              0.0,
-              1.0,
-              0.13
-            ],
-            "mindestabstand": 21600
+          "wenn": {
+            "match": {
+              "template": "nav/welt.png",
+              "threshold": 0.86,
+              "region": [
+                0.7,
+                0.85,
+                1.0,
+                1.0
+              ],
+              "optional": true
+            },
+            "dann": [
+              {
+                "ausschnitt": {
+                  "datei": "austausch/hud-oben.png",
+                  "region": [
+                    0.0,
+                    0.0,
+                    1.0,
+                    0.13
+                  ],
+                  "mindestabstand": 1800
+                }
+              }
+            ]
           }
         },
         {
