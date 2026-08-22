@@ -122,3 +122,16 @@ gid://shopify/Product/15413023113601	CHF 20.22	56 Varianten	Herren-Strickshirt �
 gid://shopify/Product/15413023342977	CHF 18.62	48 Varianten	Herren-Leinenhose «Lino» – locker & atmungsaktiv
 gid://shopify/Product/15413024915841	CHF 19.08	4 Varianten	Slip-Kleid «Nuit» – V-Ausschnitt, Langarm, elegant
 gid://shopify/Product/15413025014145	CHF 21.12	30 Varianten	Strandkleid «Playa» – Halter mit Schnür-Detail
+gid://shopify/Product/15413025145217	CHF 20.67	30 Varianten	Boho-Kleid «Ibiza» – Baumwoll-Leinen, locker
+gid://shopify/Product/15413041168769	CHF 16.76	6 Varianten	Vintage-Cap «Heritage» – Washed, bestickt (Unisex)
+gid://shopify/Product/15413041889665	CHF 16.85	6 Varianten	Vintage-Cap «Blessed» – Washed, bestickt (Unisex)
+gid://shopify/Product/15413042479489	CHF 16.26	2 Varianten	Bucket-Hat «Leo» – Leoparden-Print, Sonnenschutz
+gid://shopify/Product/15413043200385	CHF 16.07	4 Varianten	Denim-Tasche «Jeans» – Colorblock, Herringbone
+gid://shopify/Product/15413060829569	CHF 26.52	1 Varianten	Bausteine-Set «Retro Racer» – 196 Teile, Sportwage
+gid://shopify/Product/15413061484929	CHF 28.50	1 Varianten	Bausteine-Set «Police Racer» – 318 Teile
+gid://shopify/Product/15413061779841	CHF 27.60	1 Varianten	Bausteine-Set «Widebody Racer» – 321 Teile
+gid://shopify/Product/15413074985345	CHF 20.67	16 Varianten	Sommer-Top «Sole» – V-Neck mit Knopfleiste
+gid://shopify/Product/15413076853121	CHF 19.78	28 Varianten	Langarm-Top «Dentelle» – Spitzen-Panel, Colorblock
+gid://shopify/Product/15413077115265	CHF 20.22	5 Varianten	Wide-Leg-Hose «Largo» – gerades Bein, elegant
+gid://shopify/Product/15413077279105	CHF 16.13	2 Varianten	Blütenring «Fleur Rose» – rosa Zirkonia, verstellb
+gid://shopify/Product/15413077410177	CHF 15.51	1 Varianten	Halskette «Coquille» – Muschel-Anhänger mit Tassel
