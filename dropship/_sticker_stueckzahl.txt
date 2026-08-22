@@ -204,3 +204,62 @@ gid://shopify/Product/15427243442561	1 Stück	Sticker «Star Cluster» · 1 Stü
 gid://shopify/Product/15427243475329	1 Stück	Sticker «Succulent» · 1 Stück
 gid://shopify/Product/15427243508097	1 Stück	Sticker «Surfboard» · 1 Stück
 gid://shopify/Product/15427243540865	1 Stück	Sticker «Swan» · 1 Stück
+gid://shopify/Product/15427243573633	1 Stück	Sticker «Swiss Chocolate» · 1 Stück
+gid://shopify/Product/15427243606401	1 Stück	Sticker «Swiss Cowbell» · 1 Stück
+gid://shopify/Product/15427243639169	1 Stück	Sticker «Taco» · 1 Stück
+gid://shopify/Product/15427243671937	1 Stück	Sticker «Anchor» · 1 Stück
+gid://shopify/Product/15427243704705	1 Stück	Sticker «Dagger» · 1 Stück
+gid://shopify/Product/15427243737473	1 Stück	Sticker «Moth» · 1 Stück
+gid://shopify/Product/15427243770241	1 Stück	Sticker «Rose» · 1 Stück
+gid://shopify/Product/15427243803009	1 Stück	Sticker «Skull Rose» · 1 Stück
+gid://shopify/Product/15427243868545	1 Stück	Sticker «Swallow» · 1 Stück
+gid://shopify/Product/15427243901313	1 Stück	Sticker «Telescope» · 1 Stück
+gid://shopify/Product/15427243934081	1 Stück	Sticker «Tennis Ball» · 1 Stück
+gid://shopify/Product/15427243966849	1 Stück	Sticker «Alleswirdgut» · 1 Stück
+gid://shopify/Product/15427243999617	1 Stück	Sticker «Bekind» · 1 Stück
+gid://shopify/Product/15427244032385	1 Stück	Sticker «Bleibdselbst» · 1 Stück
+gid://shopify/Product/15427244065153	1 Stück	Sticker «Breathe» · 1 Stück
+gid://shopify/Product/15427244097921	1 Stück	Sticker «Duschaffst» · 1 Stück
+gid://shopify/Product/15427244130689	1 Stück	Sticker «Einfachmachen» · 1 Stück
+gid://shopify/Product/15427244163457	1 Stück	Sticker «Gameover» · 1 Stück
+gid://shopify/Product/15427244196225	1 Stück	Sticker «Goodday» · 1 Stück
+gid://shopify/Product/15427244228993	1 Stück	Sticker «Good Vibes Only» · 1 Stück
+gid://shopify/Product/15427244261761	1 Stück	Sticker «Grüezi» · 1 Stück
+gid://shopify/Product/15427244294529	1 Stück	Sticker «Hallo» · 1 Stück
+gid://shopify/Product/15427244327297	1 Stück	Sticker «Hoi» · 1 Stück
+gid://shopify/Product/15427244392833	1 Stück	Sticker «Kaffee» · 1 Stück
+gid://shopify/Product/15427244425601	1 Stück	Sticker «Machdeinding» · 1 Stück
+gid://shopify/Product/15427244458369	1 Stück	Sticker «Merci» · 1 Stück
+gid://shopify/Product/15427244491137	1 Stück	Sticker «Musiclife» · 1 Stück
+gid://shopify/Product/15427244523905	1 Stück	Sticker «Nopain» · 1 Stück
+gid://shopify/Product/15427244556673	1 Stück	Sticker «Nostress» · 1 Stück
+gid://shopify/Product/15427244589441	1 Stück	Sticker «Plantpowered» · 1 Stück
+gid://shopify/Product/15427244622209	1 Stück	Sticker «Selfcare» · 1 Stück
+gid://shopify/Product/15427244654977	1 Stück	Sticker «Staywild» · 1 Stück
+gid://shopify/Product/15427244720513	1 Stück	Sticker «Sunshine» · 1 Stück
+gid://shopify/Product/15427244753281	1 Stück	Sticker «Traumschoen» · 1 Stück
+gid://shopify/Product/15427244786049	1 Stück	Sticker «Vegan» · 1 Stück
+gid://shopify/Product/15427244818817	1 Stück	Sticker «Wildfree» · 1 Stück
+gid://shopify/Product/15427244851585	1 Stück	Sticker «Youmatter» · 1 Stück
+gid://shopify/Product/15427244884353	1 Stück	Sticker «Tiger» · 1 Stück
+gid://shopify/Product/15427244917121	1 Stück	Sticker «Toucan» · 1 Stück
+gid://shopify/Product/15427244949889	1 Stück	Sticker «Ufo» · 1 Stück
+gid://shopify/Product/15427244982657	1 Stück	Sticker «Vinyl Record» · 1 Stück
+gid://shopify/Product/15427245015425	1 Stück	Sticker «Volleyball» · 1 Stück
+gid://shopify/Product/15427245048193	1 Stück	Sticker «Wolf» · 1 Stück
+gid://shopify/Product/15427245080961	1 Stück	Sticker «Y2k Butterfly» · 1 Stück
+gid://shopify/Product/15427245113729	1 Stück	Sticker «Yoga Pose» · 1 Stück
+gid://shopify/Product/15427245146497	1 Stück	Sticker «Zebra» · 1 Stück
+gid://shopify/Product/15427245179265	1 Stück	Sticker «Zodiac Aquarius» · 1 Stück
+gid://shopify/Product/15427245212033	1 Stück	Sticker «Zodiac Aries» · 1 Stück
+gid://shopify/Product/15427245244801	1 Stück	Sticker «Zodiac Cancer» · 1 Stück
+gid://shopify/Product/15427245277569	1 Stück	Sticker «Zodiac Capricorn» · 1 Stück
+gid://shopify/Product/15427245343105	1 Stück	Sticker «Zodiac Gemini» · 1 Stück
+gid://shopify/Product/15427245375873	1 Stück	Sticker «Zodiac Leo» · 1 Stück
+gid://shopify/Product/15427245408641	1 Stück	Sticker «Zodiac Libra» · 1 Stück
+gid://shopify/Product/15427245441409	1 Stück	Sticker «Zodiac Pisces» · 1 Stück
+gid://shopify/Product/15427245474177	1 Stück	Sticker «Zodiac Sagittarius» · 1 Stück
+gid://shopify/Product/15427245506945	1 Stück	Sticker «Zodiac Scorpio» · 1 Stück
+gid://shopify/Product/15427245539713	1 Stück	Sticker «Zodiac Taurus» · 1 Stück
+gid://shopify/Product/15427245572481	1 Stück	Sticker «Zodiac Virgo» · 1 Stück
+gid://shopify/Product/15500412092801	10 Stück	Blumen-Nagel-Sticker · 10 Stück
