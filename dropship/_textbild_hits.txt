@@ -9319,3 +9319,10 @@ gid://shopify/Product/15500543689089	35->0	Bausteine Schwarze Rose Simulation Bo
 gid://shopify/Product/15500543754625	10->1	Rosafarbene Bauklötze
 gid://shopify/Product/15500571541889	9->0	Rollende LED-Kugel
 gid://shopify/Product/15500571607425	24->0	Sterling-Silber-Handschmuck
+gid://shopify/Product/15500571935105	61->0	Hündchenkugel
+gid://shopify/Product/15500572000641	12->2	Herzkettchen-Bracelet
+gid://shopify/Product/15500572361089	131->0	Linen-Jacquard-Hemd
+gid://shopify/Product/15500577112449	26->0	Warme Pulloverjacke
+gid://shopify/Product/15500600476033	13->0	Glücksbringer-Armband
+gid://shopify/Product/15500601622913	8->0	Luxus-Butterfly-Armreif
+gid://shopify/Product/15500602179969	24->1	Goldene Rundarmreife
