@@ -65,11 +65,34 @@ async function sgql(q, v) {
   return {};
 }
 
+// ⚠️ CJs DROSSELUNG IST GUELTIGES JSON (22.08.2026, vierter Fall dieser Fehlerklasse).
+// Diese Funktion machte EINEN Versuch ohne Wiederholung. CJ antwortet unter Last mit
+// {"code":1600200,"message":"Too Many Requests, QPS limit is 1 time/1second"} — das parst
+// sauber, hat kein `result`, und der Aufrufer schrieb das Produkt als «cj-ohne-antwort»
+// INS LEDGER. Damit war es fuer immer uebersprungen (dieselbe Falle wie bei den falsch
+// quittierten Ledger-Zeilen des Probelaufs vom 20.08.).
+// Ergebnis nach Tagen Laufzeit: 346 Produkte faelschlich abgehakt, 1 einziger echter
+// Einkaufspreis gesetzt. CJ zaehlt 1 Anfrage/Sekunde ueber ALLE Prozesse gemeinsam; mit
+// vier Grind-Runnern verliert dieser Lauf das Rennen fast immer.
 async function cj(pfad) {
-  const r = await fetch('https://developers.cjdropshipping.com/api2.0/v1/' + pfad,
-    { headers: { 'CJ-Access-Token': CJT }, signal: AbortSignal.timeout(45000) });
-  const t = await r.text();
-  try { return JSON.parse(t); } catch { return { result: false, message: t.slice(0, 120) }; }
+  for (let versuch = 0; versuch < 8; versuch++) {
+    let t;
+    try {
+      const r = await fetch('https://developers.cjdropshipping.com/api2.0/v1/' + pfad,
+        { headers: { 'CJ-Access-Token': CJT }, signal: AbortSignal.timeout(45000) });
+      t = await r.text();
+    } catch { await sleep(Math.min(20000, 1500 * (versuch + 1))); continue; }
+    let j;
+    try { j = JSON.parse(t); }
+    catch { await sleep(Math.min(20000, 1500 * (versuch + 1))); continue; }
+    // Drosselung aussitzen statt als Ausfall quittieren.
+    if (String(j.code) === '1600200' || /Too Many Requests/i.test(String(j.message || ''))) {
+      await sleep(1500 + versuch * 700); continue;
+    }
+    return j;
+  }
+  // Nach acht Versuchen: als UNKLAR melden, damit der Aufrufer NICHT quittiert.
+  return { result: false, gedrosselt: true, message: 'CJ nach 8 Versuchen ohne verwertbare Antwort' };
 }
 
 async function main() {
@@ -95,9 +118,16 @@ async function main() {
       const sku = (vs[0]?.sku || '');
       let j = null;
       const mPid = sku.match(/^CJ-(\d{10,}|[0-9A-F]{8}-[0-9A-F-]{20,})$/i);
-      const mVar = sku.match(/^(?:CJ-)?(CJ[A-Z]{2}[0-9A-Z]{6,})$/i);
+      // ⚠️ Der Variantenzusatz fehlte im Muster (22.08.2026): «CJ-CJJJCFCF00364-Green»
+      // passte NICHT, weil das Muster am Kern endete. Solche SKUs landeten als
+      // «keine-cj-referenz» — obwohl CJ sie kennt. Der Zusatz ist jetzt optional.
+      const mVar = sku.match(/^(?:CJ-)?(CJ[A-Z]{2}[0-9A-Z]{4,}?)(?:-.*)?$/i);
       if (mPid)      j = await cj(`product/query?pid=${mPid[1]}`);
-      else if (mVar) j = await cj(`product/variant/query?variantSku=${mVar[1]}`);
+      // ⚠️ DER PARAMETER HIESS FALSCH (22.08.2026). Der Code fragte `variantSku=`; CJ
+      // antwortet darauf «pid or productSku must be not empty» — result:false, also
+      // quittierte der Lauf JEDES dieser Produkte als «cj-ohne-antwort». Richtig ist
+      // `productSku=`; damit liefert CJ result:true samt variantSellPrice UND variantWeight.
+      else if (mVar) j = await cj(`product/variant/query?productSku=${mVar[1]}`);
       else { ohne++; fs.appendFileSync(LEDGER, `${p.id}\tkeine-cj-referenz\n`); continue; }
       // ⚠️ 21.08.2026 — DIESE PRÜFUNG WAR DER GRUND, WARUM DER BACKFILL NIE LIEF.
       // Sie suchte im Antworttext nach «point». CJ hängt aber an JEDE Antwort den Block
@@ -111,6 +141,9 @@ async function main() {
       }
       if (!j.result) {
         if (/1690050/.test(JSON.stringify(j))) { console.log('PAUSE (CJ meldet leeres Budget)'); return; }
+        // ⚠️ NICHT quittieren, wenn CJ nur gedrosselt hat — sonst ist das Produkt fuer
+        // immer abgehakt, ohne je gefragt worden zu sein.
+        if (j.gedrosselt) { ohne++; await sleep(2000); continue; }
         ohne++; fs.appendFileSync(LEDGER, `${p.id}\tcj-ohne-antwort\n`); await sleep(1200); continue;
       }
       // Die Variantenabfrage liefert eine LISTE, die Produktabfrage ein Objekt.
@@ -119,7 +152,13 @@ async function main() {
       const gew   = d.productWeight ?? d.variantWeight;
       if (preis == null) { ohne++; fs.appendFileSync(LEDGER, `${p.id}\tcj-ohne-preis\n`); await sleep(1200); continue; }
       const c = kosten(preis, gew);
-      const ein = vs.map(v => ({ id: v.id, inventoryItem: { cost: c } }));
+      // ⚠️ Das Gewicht wurde hier schon gelesen (fuer die Frachtrechnung) und dann
+      // weggeworfen — dasselbe Muster wie im Importer. Es wird jetzt mitgeschrieben:
+      // damit beantwortet dieser Lauf nebenbei die Frage «welche Ware ist schwer?»
+      // fuer den ALTBESTAND, ohne eine einzige zusaetzliche CJ-Abfrage.
+      const gGramm = Number(gew) || 0;
+      const messung = gGramm > 0 ? { measurement: { weight: { value: gGramm, unit: 'GRAMS' } } } : {};
+      const ein = vs.map(v => ({ id: v.id, inventoryItem: { cost: c, ...messung } }));
       let n = 0;
       for (let i = 0; i < ein.length; i += 25) {
         const r = await sgql(`mutation($p:ID!,$v:[ProductVariantsBulkInput!]!){productVariantsBulkUpdate(productId:$p,variants:$v){userErrors{message}}}`,
