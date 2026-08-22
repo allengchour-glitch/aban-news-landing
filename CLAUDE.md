@@ -992,6 +992,70 @@ und #1014 stehen in Shopify längst als FULFILLED — die Sendungsnummern kamen 
 `SHIPPED` — eine Versandmail für ein Paket, das noch im Lager liegt, ist schlimmer als
 eine späte.
 
+## 🧮 Vier Importer, vier Preisformeln — nur eine war die korrigierte (2026-08-22)
+Der Fix vom 20.08. («der Aufschlag lag 2 Franken unter den Kosten») landete nur in
+`cj_category_fill.mjs`. Nachgezählt hatte **jeder** Importer seine eigene Rechnung:
+| Importer | Formel | Fehler |
+|---|---|---|
+| `cj_category_fill.mjs` | `max(landed·1,4, landed·1,167+8,2, 16.90)` | ✅ korrigiert |
+| **`cj_sku_import.mjs`** | `max(u·m, 4.90)`, Fracht erst ab 0,4 kg | **Boden CHF 4.90** |
+| `cj_trending_import.mjs` | `landed = u·0,9 + 8` pauschal, `landed+5` | Gewicht ignoriert |
+| `cj_gaps_import.mjs` | `max(9.90, usd·kurs·marge)` | gar keine Fracht |
+`cj_sku_import.mjs` steht in **vier** Runner-Aufrufen, legte die Ware also täglich neu an:
+| EK $ / g | Kosten | sku_ALT | trend_ALT | gaps_ALT | NEU |
+|---|---:|---:|---:|---:|---:|
+| 1.50 / 150 g | 16.35 | **4.90** | 14.90 | 9.90 | 19.90 |
+| 3.00 / 300 g | 17.70 | **7.90** | 15.90 | 9.90 | 20.90 |
+| 5.00 / 1620 g | 34.31 | 32.90 | **17.90** | **14.40** | 40.90 |
+Ein Artikel für CHF 4.90 bei Kosten von CHF 16.35 verliert **auch mit dem Versanderlös**
+noch CHF 4.45 — genau die Ware, die `preisboden.py` am 12.08. bei 2'355 Produkten von Hand
+anheben musste. Die Rechnung liegt jetzt EINMAL in **`automation/cj_preis.mjs`**
+(`chf` · `kosten` · `fracht` · `gewicht`), alle vier lesen sie. **Neue Preisregeln NUR dort.**
+- Nebenbei mitrepariert, weil an derselben Stelle weggeworfen: `cj_sku_import` und
+  `cj_trending_import` schreiben jetzt **Einkaufspreis UND Gewicht** mit.
+- ⚠️ `cj_gaps_import.mjs` läuft derzeit in KEINEM Runner — **genau deshalb fällt so etwas
+  nie auf**, bis ihn jemand wieder startet. Ein schlafendes Skript ist keine harmlose Leiche.
+**Regel (dritte Wiederholung nach Farbtabelle und `publishVerified()`): Wer eine
+Hilfsfunktion repariert, sucht ihre Geschwister — und macht daraus EINE Datei.**
+
+## 🔢 Die fünfte SKU-Form — «productSku» heisst wörtlich PRODUKT-SKU (2026-08-22)
+Der Kosten-Backfill quittierte **126 Produkte als «cj-ohne-antwort»**, obwohl CJ sie alle
+kennt. Direkt nachgestellt:
+| Abfrage | Antwort |
+|---|---|
+| `productSku=CJBQ291505701AZ` (Varianten-SKU) | `1602001 Product not found` |
+| `productSku=CJBQ2915057` (Produkt-SKU) | **`code 200`** |
+Der Parameter meint die PRODUKT-SKU; eine Variantennummer kennt er nicht. Der **Modemodus**
+des Importers schreibt aber genau die (`v.variantSku`, Zeile 157 `cj_category_fill.mjs`).
+Der Lauf schneidet die Variantennummer jetzt ab, wenn CJ «nicht gefunden» meldet — Muster
+eng gefasst (**zwei Ziffern + zwei Grossbuchstaben am Ende**), damit echte Produkt-SKUs wie
+`CJJJJTJT35117` und `CJJJCFCF00364` unangetastet bleiben.
+- **Die Antwort enthält ALLE Varianten** mit je eigenem Preis und Gewicht. Wo sich die
+  Shopify-Variante über ihre SKU wiederfindet, bekommt sie IHRE Zahl statt der des ersten
+  Eintrags — bei der Rugged Smartwatch CHF 59.63 statt 41.27. Kostet keine Extra-Abfrage.
+- Die 126 alten Quittungen wurden gelöscht: **nach einer Regel-Änderung ist das alte
+  Erledigt-Zeichen wertlos** (dieselbe Lehre wie beim Produktdetails-Lauf).
+- Erster belegter Gewichtsfall: **Gemüseschneider 1620 g, VK 39.90, Kosten 41.00** — er
+  trägt sich NUR über den Versanderlös (+5.90); im Gratis-Versand-Korb −1.10, mit «2+ −10 %»
+  rund −5.10. Keine Schätzung mehr, seine eigene Zahl.
+
+## ✅ Google-Kanal: 65 Produkte nachpubliziert — mit Quittung (2026-08-22)
+Die Ursache des Schwunds war gefunden (Importer publizierten ohne Antwortprüfung), der
+Altbestand blieb aber draussen. `automation/google_kanal_luecke_schliessen.py` schliesst ihn:
+Es fasst **nur** an, was der Wächter als unerklärte Lücke meldet, prüft jedes Produkt LIVE
+gegen dieselben Regeln wie `google_kanal_nachziehen.py` (heikle Ware, Code im Titel,
+Lieferanten-SKU, Bild, Preis) plus Sperr-Tags und Klingen-Hausregel — und **liest die Antwort
+der Mutation**, denn genau deren Fehlen hat die Lücke erzeugt.
+- Zusätzlich aufgenommen: **Mess- und Heilaussagen im Titel**. Die Liste in
+  `google_kanal_nachziehen.py` zielt auf WARENGRUPPEN, nicht auf AUSSAGEN; «Blutzucker» oder
+  «EKG» im Titel ist bei Google ein eigener Sperrgrund.
+- 65 publiziert (23 + 42), **4 blieben draussen mit nachgelesenem Grund**: LED-Gesichtsmaske
+  und Elektrotherapie-Stab (beide «Therapie» im Text), ein Gerätecode im Titel.
+- ⚠️ **Ein Wortfund ist noch kein Grund.** Beim Luftbefeuchter stand «Aroma**therapie**» —
+  die Duftfunktion eines Diffusors, kein Heilversprechen. Nachgelesen, nicht geraten.
+- ⚠️ Es läuft **NICHT** im Aufseher. Ein Teil der Ausschlüsse ist gewollt, und ein Fehlgriff
+  im Google-Kanal riskiert die Merchant-Sperre. `DRY=1` zeigt das Urteil je Produkt zum Lesen.
+
 ## 🧾 Die Preisformel an einer ECHTEN Bestellung gegengeprüft (2026-08-22, LX1015)
 Der Betreiber hat selbst bestellt (#1015) und den CJ-Zahlschein gezeigt. Damit liegen zum
 ersten Mal ALLE Zahlen einer Bestellung nebeneinander — und sie bestätigen das am 20.08.

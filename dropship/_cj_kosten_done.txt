@@ -37,3 +37,10 @@ gid://shopify/Product/15412302512513	CHF 15.81	1 Varianten	Regenschirm mit Handy
 gid://shopify/Product/15412304707969	cj-ohne-antwort
 gid://shopify/Product/15412304773505	CHF 21.71	1 Varianten	Profi Messerschärfer – Präzisions-Schleifer für sc
 gid://shopify/Product/15412304806273	CHF 18.79	1 Varianten	Elegante Umhängetasche in Lack-Optik – Crossbody, 
+gid://shopify/Product/15412304871809	CHF 27.55	1 Varianten	Komfort-Fahrradsattel XXL – extrabreit, gefedert, 
+gid://shopify/Product/15412305527169	CHF 36.50	1 Varianten	Full-HD Dashcam 1080P – Auto-Kamera, 90° Weitwinke
+gid://shopify/Product/15412306215297	CHF 28.47	1 Varianten	Augenmassagegerät mit Wärme & Musik – Bluetooth, f
+gid://shopify/Product/15412306608513	CHF 28.10	1 Varianten	16-in-1 Gemüseschneider – Multi-Hobel, Würfler & S
+gid://shopify/Product/15412306772353	CHF 24.60	1 Varianten	Reise-Schallzahnbürste – 4 Modi, Magnetschwebe-Mot
+gid://shopify/Product/15412307100033	CHF 28.95	1 Varianten	LED-Fahrradrucksack mit Blinker – Funk-Fernbedienu
+gid://shopify/Product/15412307165569	cj-ohne-antwort
