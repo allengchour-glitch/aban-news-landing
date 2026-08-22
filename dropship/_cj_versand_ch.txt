@@ -881,3 +881,4 @@ gid://shopify/Product/15509369487745	nicht-versendbar	Aluminium Babybett, fahrba
 gid://shopify/Product/15509379318145	ok	Mittelalterliches Baumhaus Bausteine
 gid://shopify/Product/15509379744129	ok	Sportwagen Modellbausatz "Liegender T5019"
 gid://shopify/Product/15509378072961	ok	Outdoor Smartwatch mit Höhenmesser & Kompass
+gid://shopify/Product/15509380727169	ok	Elektrische Nudelmaschine
