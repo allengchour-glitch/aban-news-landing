@@ -5503,10 +5503,27 @@ setTimeout(function baueGebaeude(){
     bau("th4_busch_blueten.glb",1.1,50,0,88,0,false);bau("th4_busch_blueten.glb",1.15,87,0,89,1,false);
     /* ── th5: Park-/Strassen-Moblierung (Asset-Session) ── */
     bau("th5_parkbrunnen.glb",2.2,74,0,74,0,false);
-    bau("th5_parkbank.glb",0.9,56,0,79,Math.PI,false);bau("th5_parkbank.glb",0.9,80,0,79,Math.PI,false);
-    bau("th5_parkbank.glb",0.9,54,0,88,-Math.PI/2,false);bau("th5_parkbank.glb",0.9,84,0,88,Math.PI/2,false);
-    bau("th5_laterne_altstadt.glb",4.5,52,0,79,0,false);bau("th5_laterne_altstadt.glb",4.5,84,0,79,0,false);
-    bau("th5_laterne_altstadt.glb",4.5,52,0,93,0,false);bau("th5_laterne_altstadt.glb",4.5,84,0,93,0,false);
+    /* ⚠️ GEMESSEN: die OESTLICHE Reihe stand im Spiel nirgends dort, wo sie hier
+       steht. Alles mit x 80 oder 84 landete auf x 88,5 — und damit im
+       th16_spielturm bei (89,7|76,3): Bank 21 Mesh-Paare, Laterne 18.
+       Ursache ist NICHT der Entwirrer, sondern `bau()` selbst: Zeile
+       "if(!ohneSchutz){var _q=wegVonStrasse(x,z);...}". x 80 und 84 liegen im
+       Querstrassen-Band (x 70…86), also schiebt der Bauaufruf sie beim Anlegen
+       heraus — auf die erste freie Stelle dahinter, mitten in den Spielturm.
+       `userData.fest` half nichts: das schuetzt vor freiRaeumen/entwirren, die
+       SPAETER laufen, nicht vor der Verschiebung beim Bauen.
+       Die Sollplaetze waren also von Anfang an Fahrbahn. Jetzt stehen die vier
+       Stuecke mit gemessenen Koordinaten AUSSERHALB des Bands (x >= 87), damit
+       `bau()` sie gar nicht erst anfassen muss; Bank und Laterne sind in z
+       getrennt, weil sie sonst uebereinander stuenden. */
+    bau("th5_parkbank.glb",0.9,56,0,79,Math.PI,false);
+    bau("th5_parkbank.glb",0.9,88.5,0,80.5,Math.PI,false,function(w){w.userData.fest=true;},true);
+    bau("th5_parkbank.glb",0.9,54,0,88,-Math.PI/2,false);
+    bau("th5_parkbank.glb",0.9,87,0,88,Math.PI/2,false,function(w){w.userData.fest=true;},true);
+    bau("th5_laterne_altstadt.glb",4.5,52,0,79,0,false);
+    bau("th5_laterne_altstadt.glb",4.5,88.5,0,83.5,0,false,function(w){w.userData.fest=true;},true);
+    bau("th5_laterne_altstadt.glb",4.5,52,0,93,0,false);
+    bau("th5_laterne_altstadt.glb",4.5,88.5,0,91.5,0,false,function(w){w.userData.fest=true;},true);
     bau("th5_baum_pappel.glb",7.0,63,0,60,0,false);bau("th5_baum_pappel.glb",7.0,73,0,60,0.5,false);
     bau("th5_baum_pappel.glb",7.0,63,0,68,1.1,false);bau("th5_baum_pappel.glb",7.0,73,0,68,1.7,false);
     bau("th5_baum_ahorn.glb",4.7,48,0,78,0.4,false);bau("th5_baum_ahorn.glb",4.7,88,0,78,1.3,false);
@@ -5961,10 +5978,15 @@ setTimeout(function baueGebaeude(){
          Gehwegband endet mit 93,1 genau an der Hauswand. */
       var pf=new THREE.Mesh(new THREE.PlaneGeometry(28,2.6),betMat(0xd6cfc0,0.9));
       pf.rotation.x=-Math.PI/2;pf.position.set(0,-0.001,91.8);pf.receiveShadow=true;scene.add(pf);
-      bau("th35_laterne_schmiede.glb",4.2,-5.5,0,91.8,0,false,null,true);
-      bau("th35_laterne_schmiede.glb",4.2,5.5,0,91.8,0,false,null,true);
-      bau("th35_pflanzschale.glb",0.8,-3.3,0,91.6,0,false,null,true);
-      bau("th35_pflanzschale.glb",0.8,3.3,0,91.6,0,false,null,true);
+      /* ⚠️ +1,5 in z, gemessen. Die vier Vorplatz-Teile lagen mit z 91,6/91,8 im
+         Grundriss der Werkstatt th8_werkstatt_offen (-5,2|86,0, also z 79,6…92,4):
+         die Schalen steckten mit 22 Mesh-Paaren im Hallenboden. Das war KEIN
+         Entwirrer-Effekt — 91,6 stand so im Code, die Werkstatt kam spaeter
+         darueber. Als Gruppe geloest: 26 Meshes fest, bei dz +1,5 null. */
+      bau("th35_laterne_schmiede.glb",4.2,-5.5,0,93.3,0,false,null,true);
+      bau("th35_laterne_schmiede.glb",4.2,5.5,0,93.3,0,false,null,true);
+      bau("th35_pflanzschale.glb",0.8,-3.3,0,93.1,0,false,null,true);
+      bau("th35_pflanzschale.glb",0.8,3.3,0,93.1,0,false,null,true);
       /* Ostflaeche neben dem Bahnhof: kleiner Warteplatz mit Brunnen und Bank */
       var op=new THREE.Mesh(new THREE.PlaneGeometry(8,7),betMat(0xd6cfc0,0.9));
       op.rotation.x=-Math.PI/2;op.position.set(17.5,-0.001,98);op.receiveShadow=true;scene.add(op);

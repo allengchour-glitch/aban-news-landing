@@ -1903,6 +1903,38 @@ falsche Zahl genommen. Jetzt rechnet alles mit einer Konstante `BSH = 0.55`.
 > und Taststreifen um exakt 0,03 m. Ein Pfosten, der auf dem Bahnsteig **steht**. Dieselbe
 > Klasse wie die Reifen auf den Hofmarkierungen.
 
+### `bau()` verschiebt selbst — bevor irgendein Entwirrer läuft
+
+Vier Funde am Ostrand des Parks (Bank 21 Mesh-Paare und Laterne 18 im
+`th16_spielturm`, Bank 24 im Busch, Pflanzschale 22 in der Werkstatt) sahen nach dem bekannten
+Entwirrer-Muster aus. Sie waren es nicht. In `bau()` steht gleich in der ersten Zeile:
+
+```js
+function bau(file,zielH,x,y,z,rotY,center,cb,ohneSchutz){
+  if(!ohneSchutz){var _q=wegVonStrasse(x,z);x=_q[0];z=_q[1];}
+```
+
+Alles mit x 80 oder 84 liegt im **Querstraßen-Band (x 70…86)** und wird schon **beim Anlegen**
+herausgeschoben — auf die erste freie Stelle dahinter, x 88,5, und damit mitten in den
+Spielturm bei (89,7 | 76,3). Die Sollplätze im Quelltext waren von Anfang an Fahrbahn; im Spiel
+hat dort nie etwas gestanden.
+
+> ⚠️ **`userData.fest` hilft hier nicht.** Es schützt vor `freiRaeumen()` und `entwirren()`, die
+> *später* laufen — nicht vor der Verschiebung beim Bauen. Ich habe die drei Stücke erst
+> festgenagelt und gemessen: sie standen unverändert auf 88,5. Erst der Blick in `bau()` hat es
+> erklärt. Die Lösung sind explizite Koordinaten **außerhalb** des Bands (x ≥ 87), dann muss
+> `bau()` gar nicht erst eingreifen.
+
+> ⚠️ **Und meine Sollplatz-Prüfung war zu kurz.** Sie meldete (80|79) und (84|79) als „FREI" —
+> weil sie nur Modelle vergleicht. Dieselbe Falle wie beim Platzlöser: **wer einen Ort prüft,
+> muss die Fahrbahnbänder mitprüfen**, sonst ist „frei" die Straße.
+
+Die Pflanzschalen am Bahnhofsvorplatz waren dagegen ein echter Sollplatz-Fehler: z 91,6 steht so
+im Code, aber die Werkstatt `th8_werkstatt_offen` (z 79,6…92,4) kam später darüber. Als
+Vierergruppe gelöst — 26 Meshes fest, bei dz +1,5 null.
+
+Ergebnis: **70 → 65 echte Funde.**
+
 > 🔑 **Die Regel.** Erst die Zahl aus der Hypothese ableiten, dann messen, dann ändern —
 > und zwischen „Boxen überlappen" und „Geometrie steckt ineinander" nie stillschweigend
 > wechseln. Zwei Änderungen dieses Durchgangs wurden vor dem Commit wieder verworfen, weil
