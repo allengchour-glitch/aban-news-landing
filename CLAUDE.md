@@ -898,9 +898,20 @@ Von den 85 sind **0 in einem Säuberungs-Ledger** vermerkt, **0 ohne Bild** (all
 21 Bilder, die Publish-Wache greift also nicht), und die Klingen-Hausregel der Importer
 erklärt nur **1 von 15** Stichproben. `google_ads_kuration.py` scheidet ebenfalls aus — es
 setzt nur ein Shopping-Ads-Metafeld und lässt die Gratis-Listings unangetastet.
-⚠️ **Die Ursache bleibt damit UNBEKANNT.** Alle drei Importer publizieren mit derselben
-Logik in dieselben sechs Kanäle; ein Totalausfall des Publizierens würde das Produkt in
-KEINEM Kanal zeigen — diese stehen aber in fünf von sechs.
+**✅ URSACHE GEFUNDEN am 22.08. über die Shopify-Ereignisliste eines Einzelfalls.** Beim
+Polohemd `15508310557057` steht lückenlos: «included on **Online Store**» 02:11:21,
+«**Shop**» 02:11:21, «**TikTok**» 02:11:22, «**Facebook & Instagram**» 02:11:23,
+«**Pinterest**» 02:11:24 — **Google & YouTube fehlt, und es gibt auch kein «removed»**.
+Das Produkt wurde also nie publiziert, nicht später entfernt.
+**Der Grund: `cj_sku_import.mjs` und `cj_trending_import.mjs` publizierten OHNE Quittung.**
+Beide riefen `publishablePublish` auf, fragten `userErrors` in der Mutation ab — und lasen
+die Antwort **nie**. Fällt eine einzelne Publikation aus, landet das Produkt in fünf von
+sechs Kanälen, und niemand merkt es. `cj_category_fill.mjs` hatte dafür längst
+`publishVerified()` mit Wiederholung; die beiden anderen Importer blieben ungepatcht —
+**dieselbe Geschwister-Lehre wie bei der Fulfill-Engine und der viermal kopierten
+Farbtabelle.** Beide haben die geprüfte Fassung jetzt.
+⚠️ Der Altbestand wird dadurch NICHT geheilt — die 85 bleiben draussen, bis jemand sie
+einzeln ansieht.
 **Sichtbar gemacht statt geraten:** `automation/google_kanal_luecke.py` (täglich im Aufseher)
 meldet jedes aktive Produkt, das im Online Store steht, bei Google fehlt und **keinen**
 erklärenden Grund trägt (Sperr-Tag, `google-kanal-*`-Tag, Klingen-Regel). Erster Lauf:

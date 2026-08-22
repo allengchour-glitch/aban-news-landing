@@ -16,6 +16,19 @@ const CID = process.env.SHOPIFY_CLIENT_ID, CSEC = process.env.SHOPIFY_CLIENT_SEC
 let CJT = (process.env.CJ_TOKEN || '').trim();
 if (!CJT && fs.existsSync('/tmp/cj_token.json')) CJT = JSON.parse(fs.readFileSync('/tmp/cj_token.json', 'utf8')).accessToken;
 const LEDGER = 'dropship/cj_niche_done.txt';
+// Publiziert und PRUEFT die Quittung: erst wenn Shopify keine userErrors meldet, gilt es.
+async function publishVerified(t, pid, klinge) {
+  const ziel = klinge ? PUBS.filter(x => !x.publicationId.endsWith('302872297857')) : PUBS;
+  const Q = `mutation($id:ID!,$p:[PublicationInput!]!){ publishablePublish(id:$id,input:$p){userErrors{message}} }`;
+  for (let i = 0; i < 3; i++) {
+    const r = await sgql(t, Q, { id: pid, p: ziel });
+    const errs = r?.data?.publishablePublish?.userErrors;
+    if (Array.isArray(errs) && errs.length === 0) return true;
+    await new Promise(s => setTimeout(s, 2000 * (i + 1)));
+  }
+  console.log('  ⚠️ Publizieren fehlgeschlagen', pid);
+  return false;
+}
 const PUBS = ['301970915713', '301971014017', '302032716161', '302566834561', '302872297857', '302994456961'].map(id => ({ publicationId: `gid://shopify/Publication/${id}` }));
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const chf = (usd, grams) => { const u = parseFloat(('' + usd).split('--')[0]) || 0; let m = u < 8 ? 2.4 : u < 20 ? 2.2 : u < 50 ? 2.0 : 1.85; let p = Math.max(u * m, 4.90);
@@ -227,7 +240,15 @@ for (const item of ITEMS) {
   // Hausregel 12.08.: Klingen (auch Küchenmesser) nie in den Google-Kanal.
   const klinge = /\b(messer|klinge\w*|dolch|machete|axt|beil|schwert|katana)/i.test(title)
     && !/jeans|kleid|hose|shirt|hoodie|wasch|deko|figur|anhänger|halskette|ohrring|spielzeug|plüsch|kostüm/i.test(title);
-  await sgql(t, `mutation($id:ID!,$p:[PublicationInput!]!){ publishablePublish(id:$id,input:$p){userErrors{message}} }`, { id: spid, p: klinge ? PUBS.filter(x => !x.publicationId.endsWith('302872297857')) : PUBS });
+  // ⚠️ PUBLIZIEREN MIT QUITTUNG (22.08.2026, Ursache nachgewiesen). Frueher stand hier ein
+  // reines `await sgql(...)`: Die Mutation fragte userErrors ab, aber niemand LAS die
+  // Antwort. Faellt eine einzelne Publikation aus, landet das Produkt in fuenf von sechs
+  // Kanaelen — und keiner merkt es. Nachgewiesen am Polohemd 15508310557057: Die
+  // Shopify-Ereignisliste zeigt «included on» fuer Online Store, Shop, TikTok, Facebook und
+  // Pinterest — Google & YouTube fehlt, und es gibt auch kein «removed». Es wurde also nie
+  // publiziert, nicht spaeter entfernt. Google ist der EINZIGE Kanal mit belegten
+  // Verkaeufen; 85 Neuprodukte in drei Tagen fehlten dort.
+  await publishVerified(t, spid, klinge);
   if (d.productVideo && /^https/.test(d.productVideo)) await attachVideo(t, spid, d.productVideo, String(pid).slice(-6));
   fs.appendFileSync(LEDGER, 'cj:' + pid + '\n');
   console.log(`✅ ${title} → ${spid.split('/').pop()} (CHF ${chf(d.sellPrice, d.variants?.[0]?.variantWeight)})`);

@@ -14,6 +14,18 @@ const CJT=(process.env.CJ_TOKEN||'').trim();
 const GK=(fs.existsSync('/tmp/gemini_key')?fs.readFileSync('/tmp/gemini_key','utf8'):process.env.GEMINI_API_KEY||'').trim();
 const DRY=process.env.DRY==='1', CAP=parseInt(process.env.CAP||'40',10);
 const LEDGER='dropship/cj_niche_done.txt';
+// Publiziert und PRUEFT die Quittung: erst wenn Shopify keine userErrors meldet, gilt es.
+async function publishVerified(st, pid, klinge){
+ const ziel = klinge?PUBS.filter(x=>!x.publicationId.endsWith('302872297857')):PUBS;
+ for(let i=0;i<3;i++){
+  const r=await sgql(st,PUB,{id:pid,p:ziel});
+  const errs=r?.data?.publishablePublish?.userErrors;
+  if(Array.isArray(errs)&&errs.length===0) return true;
+  await new Promise(s=>setTimeout(s,2000*(i+1)));
+ }
+ console.log('  ⚠️ Publizieren fehlgeschlagen',pid);
+ return false;
+}
 const PUBS=['301970915713','301971014017','302032716161','302566834561','302872297857','302994456961'].map(id=>({publicationId:`gid://shopify/Publication/${id}`}));
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 const chf=usd=>{const u=parseFloat((''+usd).split('--')[0])||0;
@@ -325,7 +337,10 @@ for(const p of cand){
  // Hausregel 12.08.: Klingen (auch Küchenmesser) nie in den Google-Kanal.
  const klinge=/\b(messer|klinge\w*|dolch|machete|axt|beil|schwert|katana)/i.test(title)
    &&!/jeans|kleid|hose|shirt|hoodie|wasch|deko|figur|anhänger|halskette|ohrring|spielzeug|plüsch|kostüm/i.test(title);
- await sgql(st,PUB,{id:pid,p:klinge?PUBS.filter(x=>!x.publicationId.endsWith('302872297857')):PUBS});
+ // ⚠️ MIT QUITTUNG (22.08.2026): Frueher wurde die Antwort nie gelesen — faellt eine
+ // einzelne Publikation aus, fehlt das Produkt still in genau diesem Kanal. Belegt am
+ // Polohemd 15508310557057: fuenf «included on»-Ereignisse, Google fehlt, kein «removed».
+ await publishVerified(st, pid, klinge);
  if(d.productVideo&&/^https/.test(d.productVideo))await attachVideo(st,pid,d.productVideo,p.pid);
  fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid));
  total++; console.log(`✅ [${p.listedNum}] ${title} → ${pid.split('/').pop()}`);
