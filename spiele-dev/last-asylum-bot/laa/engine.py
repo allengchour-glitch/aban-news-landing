@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import calendar
 import json
 import os
 import random
@@ -1379,6 +1380,28 @@ class Engine:
         umgebung["GCM_INTERACTIVE"] = "never"
         return umgebung
 
+    @staticmethod
+    def _alter_des_berichts(ziel: str) -> float:
+        """Wie alt ist das Lebenszeichen wirklich - in Sekunden.
+
+        NICHT nach der Dateizeit: das Startskript zieht vor jedem Lauf einen
+        neuen Stand, und git schreibt dabei geaenderte Dateien neu. Die
+        Dateizeit ist danach die des Checkouts, nicht die des Berichts - ein
+        stundenalter Bericht sieht taufrisch aus, und der Bot schweigt weiter.
+        Im Bericht selbst steht die richtige Zeit.
+        """
+        try:
+            with open(ziel, "r", encoding="utf-8") as fh:
+                gemeldet = json.load(fh).get("zeit_utc")
+            wann = time.strptime(str(gemeldet), "%Y-%m-%dT%H:%M:%SZ")
+            return max(0.0, time.time() - calendar.timegm(wann))
+        except Exception:
+            pass
+        try:
+            return time.time() - os.path.getmtime(ziel)
+        except OSError:
+            return 1e9
+
     def _hinweise(self) -> List[str]:
         """Was die Zahlen im Lebenszeichen entwertet - in Klartext.
 
@@ -1430,12 +1453,9 @@ class Engine:
         # etwas davon hat. Also ein Mindestabstand, unabhaengig vom Takt.
         abstand = float(spec.get("mindestabstand", 600))
         if abstand > 0 and os.path.exists(ziel):
-            try:
-                if time.time() - os.path.getmtime(ziel) < abstand:
-                    self.log.debug("Lebenszeichen noch frisch - nichts zu tun")
-                    return
-            except OSError:
-                pass
+            if self._alter_des_berichts(ziel) < abstand:
+                self.log.debug("Lebenszeichen noch frisch - nichts zu tun")
+                return
 
         try:
             kopf = git("rev-parse", "--short", "HEAD").stdout.decode().strip()

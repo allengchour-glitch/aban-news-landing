@@ -6203,15 +6203,15 @@
     },
     {
       "name": "ansichten-sammeln",
-      "_zweck": "Legt jede noch nie gesehene Ansicht einmal in austausch/ansichten/ ab. 32 Vorlagen fehlen, und jede blockiert Aufgaben - Versammlung beitreten, Allianz-Forschung, Falkenturm. Vorlagen schneiden kann nur, wer den Bildschirm sieht; der Bot laeuft ohnehin durch all diese Bildschirme. Halbe Kantenlaenge reicht zum Erkennen, was drauf ist; wo es auf Millimeter ankommt, holt die Aktion 'ausschnitt' den Streifen in voller Aufloesung nach. Nach 40 Ansichten ist Schluss, hochgeladen wird in Fuenferstapeln - sonst laeuft das Repository voll. Der kurze Takt ist Absicht: je mehr verschiedene Bildschirme, desto besser.",
+      "_zweck": "Legt jede noch nie gesehene Ansicht einmal in austausch/ansichten/ ab. 32 Vorlagen fehlen, und jede blockiert Aufgaben - Versammlung beitreten, Allianz-Forschung, Falkenturm. Vorlagen schneiden kann nur, wer den Bildschirm sieht; der Bot laeuft ohnehin durch all diese Bildschirme. Halbe Kantenlaenge reicht zum Erkennen, was drauf ist; wo es auf Millimeter ankommt, holt die Aktion 'ausschnitt' den Streifen in voller Aufloesung nach. Nach 40 Ansichten ist Schluss, hochgeladen wird in Fuenferstapeln - sonst laeuft das Repository voll. Der kurze Takt ist Absicht: je mehr verschiedene Bildschirme, desto besser. Prioritaet 235 aus demselben Grund wie beim Lebenszeichen: mit 30 kam die Aufgabe hinter allen Sofortstart-Rundgaengen und sammelte stundenlang nichts. Sie kostet nur einen Fingerabdruck des Bildschirms.",
       "every": 30,
       "at_start": false,
-      "priority": 30,
+      "priority": 235,
       "do": [
         {
           "ansicht_sammeln": {
             "hoechstens": 60,
-            "stapel": 5,
+            "stapel": 2,
             "bild_faktor": 0.5
           }
         }
@@ -6219,10 +6219,10 @@
     },
     {
       "name": "lebenszeichen",
-      "_zweck": "Schreibt austausch/lauf.json plus austausch/lauf.png und laedt beides hoch. Von aussen sah ein abgestuerzter Bot bisher genauso aus wie ein zufriedener: gar nichts. Steht der Zeitstempel still, ist der Bot stehengeblieben - und das Bild zeigt, vor welchem Bildschirm. Zahlen alle 10 Minuten, Bild hoechstens stuendlich (ein Bild wiegt hundertmal so viel). at_start sorgt dafuer, dass gleich nach dem Start ein Bild da ist; der Mindestabstand verhindert, dass eine Absturzschleife im Minutentakt Commits erzeugt.",
+      "_zweck": "Schreibt austausch/lauf.json plus austausch/lauf.png und laedt beides hoch. Von aussen sah ein abgestuerzter Bot bisher genauso aus wie ein zufriedener: gar nichts. Steht der Zeitstempel still, ist der Bot stehengeblieben - und das Bild zeigt, vor welchem Bildschirm. Zahlen alle 10 Minuten, Bild hoechstens stuendlich (ein Bild wiegt hundertmal so viel). at_start sorgt dafuer, dass gleich nach dem Start ein Bild da ist; der Mindestabstand verhindert, dass eine Absturzschleife im Minutentakt Commits erzeugt. ACHTUNG PRIORITAET: Am 22.08. lief der Bot 48 Minuten, ohne ein einziges Lebenszeichen zu schreiben - von aussen sah das aus wie tot. Grund war nicht das Hochladen, sondern die Reihenfolge: 16 Aufgaben stehen auf Sofortstart, jeder Schritt fuehrt genau EINE davon aus, und zwar die mit der hoechsten Prioritaet. Mit 95 stand das Lebenszeichen an 22. Stelle - hinter jedem langen Rundgang durch das Spiel. Die Aufgabe kostet Sekundenbruchteile und ihr ganzer Wert ist Rechtzeitigkeit; sie gehoert darum nach vorn.",
       "every": 900,
       "at_start": true,
-      "priority": 95,
+      "priority": 240,
       "do": [
         {
           "lebenszeichen": {

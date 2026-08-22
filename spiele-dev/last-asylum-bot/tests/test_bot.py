@@ -2501,6 +2501,23 @@ class TestLebenszeichen(unittest.TestCase):
             self.assertIn("templates/allianz/neu.png", vorgemerkt,
                           f"die Vorlage muss mitgesichert werden, vorgemerkt: {vorgemerkt!r}")
 
+    def test_alter_zaehlt_nach_dem_bericht_nicht_nach_der_datei(self):
+        """git schreibt beim Pull Dateien neu - die Dateizeit luegt danach.
+
+        Vor jedem Lauf zieht das Startskript einen neuen Stand. Waere die
+        Dateizeit massgeblich, saehe ein stundenalter Bericht taufrisch aus,
+        und der Bot schwiege weiter.
+        """
+        with tempfile.TemporaryDirectory() as ordner:
+            ziel = os.path.join(ordner, "lauf.json")
+            alt = time.strftime("%Y-%m-%dT%H:%M:%SZ",
+                                time.gmtime(time.time() - 7200))
+            with open(ziel, "w", encoding="utf-8") as fh:
+                json.dump({"zeit_utc": alt}, fh)      # Datei frisch, Bericht alt
+            self.assertGreater(
+                Engine._alter_des_berichts(ziel), 7000,
+                "das Alter muss aus dem Bericht kommen, nicht aus der Dateizeit")
+
     def test_absturzschleife_erzeugt_keine_commit_flut(self):
         """Ein Bot, der jede Minute neu startet, darf nicht jede Minute schreiben."""
         import tempfile
@@ -2877,6 +2894,40 @@ class TestFluchtwegWirdNichtGebremst(unittest.TestCase):
         eng._tap_abs(100, 150, "Punkt")
         self.assertEqual(dev.taps, [], "die Tabu-Zone darf die Flucht nicht aushebeln")
 
+
+
+class TestBerichtsAufgabenStehenVorn(unittest.TestCase):
+    """Am 22.08. lief der Bot 48 Minuten ohne ein einziges Lebenszeichen.
+
+    Nicht das Hochladen war schuld, sondern die Reihenfolge: sechzehn Aufgaben
+    stehen auf Sofortstart, jeder Schritt fuehrt genau EINE aus - die mit der
+    hoechsten Prioritaet. Mit 95 stand das Lebenszeichen an 22. Stelle, hinter
+    jedem langen Rundgang durchs Spiel. Von aussen sah das aus wie ein toter
+    Bot, und genau das soll es ja unterscheiden.
+    """
+
+    def aufgaben(self):
+        with open(os.path.join(ROOT, "config", "last-asylum.json"), encoding="utf-8") as fh:
+            return {t["name"]: t for t in json.load(fh)["tasks"]}
+
+    def test_lebenszeichen_kommt_vor_den_langen_rundgaengen(self):
+        aufg = self.aufgaben()
+        melder = aufg["lebenszeichen"]["priority"]
+        lang = [(t["name"], t.get("priority", 50)) for t in aufg.values()
+                if t.get("at_start") and (t.get("every") or 0) >= 1800
+                and t["name"] not in ("lebenszeichen", "kalibrieren")]
+        zu_hoch = [(n, p) for n, p in lang if p >= melder]
+        self.assertEqual(
+            zu_hoch, [],
+            f"das Lebenszeichen (Prioritaet {melder}) darf nicht hinter langen "
+            f"Sofortstart-Aufgaben stehen: {zu_hoch}")
+
+    def test_ansichten_sammeln_verhungert_nicht(self):
+        """Die Vorlagen-Sammlung kostet einen Fingerabdruck - sie darf nicht warten."""
+        aufg = self.aufgaben()
+        self.assertGreaterEqual(
+            aufg["ansichten-sammeln"]["priority"], 200,
+            "mit niedriger Prioritaet sammelt sie stundenlang gar nichts")
 
 
 class TestZiffernSatzMussVollstaendigSein(unittest.TestCase):
