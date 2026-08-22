@@ -151,3 +151,38 @@ gid://shopify/Product/15413724873089	CHF 21.71	9 Varianten	Wide-Leg-Hose · Dame
 gid://shopify/Product/15413725102465	CHF 22.09	4 Varianten	Cropped Blazer · Damen, mit Pailletten-Detail
 gid://shopify/Product/15413726282113	CHF 22.09	8 Varianten	Jumpsuit mit Blazer-Kragen · Damen, chic & uni (So
 gid://shopify/Product/15413736931713	CHF 17.21	10 Varianten	Smaragd-Zirkon Schmuck-Set «Vintage» · Ohrringe, R
+gid://shopify/Product/15413738996097	CHF 17.87	30 Varianten	Bandeau-Top uni · Damen, schulterfrei & elastisch 
+gid://shopify/Product/15413739684225	CHF 20.93	4 Varianten	Sommerkleid ärmellos · Damen, tailliert & elegant 
+gid://shopify/Product/15413955887489	keine-cj-referenz
+gid://shopify/Product/15413955985793	keine-cj-referenz
+gid://shopify/Product/15413956051329	keine-cj-referenz
+gid://shopify/Product/15413961130369	keine-cj-referenz
+gid://shopify/Product/15413961195905	keine-cj-referenz
+gid://shopify/Product/15414147383681	keine-cj-referenz
+gid://shopify/Product/15414270558593	CHF 16.29	1 Varianten	Herz-Mond-Halskette · zarte Schlüsselbein-Kette (S
+gid://shopify/Product/15414270624129	CHF 15.89	3 Varianten	Herz-Muschel-Anhänger · Titanstahl, wasserfest (St
+gid://shopify/Product/15414270689665	CHF 16.00	4 Varianten	Offenes Armband «Metallic» · verstellbarer Cuff (4
+gid://shopify/Product/15414270755201	CHF 21.21	1 Varianten	Ohrringe «Duo» · 2-fach tragbar, Zirkonia in Silbe
+gid://shopify/Product/15414270820737	CHF 17.83	4 Varianten	Geflochtenes Herz-Armband · 925-versilbert, grüner
+gid://shopify/Product/15414271836545	CHF 20.39	1 Varianten	Statement-Ohrringe «Retro» · geometrisch & oversiz
+gid://shopify/Product/15414271902081	CHF 17.45	3 Varianten	Halskette mit Ring-Halter-Anhänger · minimalistisc
+gid://shopify/Product/15414490399105	CHF 15.45	3 Varianten	Oversized-Sonnenbrille «Street» · getönt, Square-S
+gid://shopify/Product/15416026235265	CHF 19.78	45 Varianten	Floral-Sommerkleid «Marguerite» – Rüschen-Träger, 
+gid://shopify/Product/15416342675841	CHF 23.06	12 Varianten	Off-Shoulder-Plisseekleid «Aurélie» · schulterfrei
+gid://shopify/Product/15416343757185	CHF 20.67	36 Varianten	Etuikleid «Bureau» · Rüschenärmel & hohe Taille (D
+gid://shopify/Product/15416343986561	CHF 19.23	20 Varianten	Floral-Sommerkleid «Capucine» · Puffärmel, leicht 
+gid://shopify/Product/15416470208897	CHF 49.55	9 Varianten	Boston-Henkeltasche «Lussa» · Echtleder im Bowling
+gid://shopify/Product/15416491704705	CHF 19.37	25 Varianten	High-Waist-Hose «Lina» · Wide-Leg & fliessend (Dam
+gid://shopify/Product/15416493506945	CHF 21.57	20 Varianten	Tunika-Mini-Kleid «Riva» · V-Ausschnitt, Strand-St
+gid://shopify/Product/15421165339009	CHF 22.46	6 Varianten	Long-Weste «Resort» · ärmellos, Colorblock mit Sch
+gid://shopify/Product/15421165404545	CHF 27.78	12 Varianten	Workout-Set «Active» · 2-teilig, geripptes Tank (D
+gid://shopify/Product/15421165502849	CHF 19.92	25 Varianten	Sommer-Set «Riviera» · 2-teilig, lässig (Damen)
+gid://shopify/Product/15421165601153	CHF 23.06	30 Varianten	Herren-Set «Resort» · Kurzarm-Hemd + Hose
+gid://shopify/Product/15421165666689	CHF 19.92	40 Varianten	Long-Blazer «Milano» · uni, ohne Knöpfe (Damen)
+gid://shopify/Product/15421165764993	CHF 21.27	50 Varianten	Kapuzen-Cardigan «Cosy» · uni, mit Knöpfen (Damen)
+gid://shopify/Product/15421166059905	CHF 19.92	4 Varianten	Henkeltasche «Lune» · Top-Handle mit Gold-Clip, Cr
+gid://shopify/Product/15421166092673	CHF 18.57	3 Varianten	Crossbody-Tasche «Nuit» · elegant im Vintage-Look
+gid://shopify/Product/15421167042945	CHF 16.57	2 Varianten	Perlen-Anhänger «Coquille» · Muschel-Form, vergold
+gid://shopify/Product/15421167075713	CHF 16.98	4 Varianten	Baskenmütze «Riviera» · Denim mit Farbstreifen (Un
+gid://shopify/Product/15421167108481	CHF 19.43	18 Varianten	Geburtsstein-Armband «Pois» · zarte Kette mit Stei
+gid://shopify/Product/15421167436161	CHF 59.01	2 Varianten	Moissanite-Ohrstecker «Éclat» · S925 Silber (0,5 /
