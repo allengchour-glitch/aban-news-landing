@@ -268,3 +268,11 @@ gid://shopify/Product/15508643873153	Khaki
 gid://shopify/Product/15509355725185	Silber
 gid://shopify/Product/15509357986177	Gold
 gid://shopify/Product/15509360968065	Silber
+gid://shopify/Product/15509385904513	Silber
+gid://shopify/Product/15509386264961	Weiss
+gid://shopify/Product/15509386363265	Schwarz
+gid://shopify/Product/15509387542913	Mehrfarbig
+gid://shopify/Product/15509388099969	Silber
+gid://shopify/Product/15509388788097	Silber
+gid://shopify/Product/15509388886401	Silber
+gid://shopify/Product/15509392032129	Transparent
