@@ -25,3 +25,5 @@ gid://shopify/Product/15427236331905	14,0 × 14,0 cm	Sticker «Music» · 1 Stü
 gid://shopify/Product/15427236364673	13,8 × 14,0 cm	Sticker «Skate» · 1 Stück
 gid://shopify/Product/15427236495745	14,0 × 14,0 cm	Sticker «Surf» · 1 Stück
 gid://shopify/Product/15427236594049	14,0 × 13,6 cm	Sticker «Bagel» · 1 Stück
+gid://shopify/Product/15427236626817	14,0 × 14,0 cm	Sticker «Baseball» · 1 Stück
+gid://shopify/Product/15427236659585	14,0 × 11,8 cm	Sticker «Basketball» · 1 Stück
