@@ -58,3 +58,6 @@ gid://shopify/Product/15412476445057	CHF 37.67	1 Varianten	Flötenkessel 2L – 
 gid://shopify/Product/15412658667905	cj-ohne-antwort
 gid://shopify/Product/15412659978625	CHF 16.49	1 Varianten	Mini USB-Taschenlampe – Edelstahl, wiederaufladbar
 gid://shopify/Product/15412677607809	CHF 21.40	1 Varianten	Elektrischer Krallenschleifer für Hund & Katze – l
+gid://shopify/Product/15412678328705	CHF 20.97	1 Varianten	Smart-Anzuchtset mit LED-Pflanzenlampe – 12 Zellen
+gid://shopify/Product/15412751499649	CHF 32.25	15 Varianten	Elegantes Sommerkleid A-Linie – Hemdkragen, fliess
+gid://shopify/Product/15412751860097	CHF 20.25	20 Varianten	Strand-Rock A-Linie mit Rüschen – doppellagig, fli

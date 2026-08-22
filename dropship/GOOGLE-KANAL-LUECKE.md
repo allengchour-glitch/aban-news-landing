@@ -1,53 +1,86 @@
 # Ware, die NUR im Google-Kanal fehlt
 
-Stand 2026-08-22 · geprüft seit 2026-08-19 · 4815 aktive Produkte
+Stand 2026-08-22 · geprüft seit 2026-08-15 · 11101 aktive Produkte
 
 Google & YouTube ist der einzige Kanal mit belegten Verkäufen. Diese Produkte stehen im Online Store, tragen **kein** Sperr-Tag, sind in keinem Säuberungs-Ledger vermerkt und fallen nicht unter die Klingen-Hausregel — trotzdem fehlen sie bei Google.
 
 ⚠️ Vor dem Nachpublizieren einzeln ansehen: Ein Fehlgriff im Google-Kanal riskiert die Merchant-Sperre.
 
-- `15503948775809` — Leichte Canvas-Schuhe für Herren
-- `15503948808577` — Puppenhaus Sofa für Kinder
-- `15503959327105` — Verstellbarer Messingring mit ovalem Edelstein
-- `15504074998145` — Luftbefeuchter in Holzoptik
-- `15504084173185` — Jeans-Hundehalsband mit Knochen-Stickerei
-- `15504091644289` — Luftiges A-Linien Blumenkleid mit langen Ärmeln
-- `15504099770753` — Kariertes Flanellhemd für Herren
-- `15504099803521` — Fashion Cool 3D Rucksack
-- `15504099836289` — Keramik Futternapf für Katzen & Hunde
-- `15504106684801` — Halsband, Leine & Fliege – Lila Tupfen
-- `15504118350209` — Pinselset für feine Linien
-- `15504118382977` — Golfball-Magazin für Driving Range
-- `15504121102721` — Fünf-Farben-Lidschatten-Palette Matt
-- `15504139387265` — Lauflernschuhe für Babys
-- `15504139420033` — Smartwatch-Armband aus Silikon (22mm)
-- `15504139452801` — Elektrisches Heiz-Schröpf-Massagegerät
-- `15504142532993` — Prinzessinnen-Schuhe mit Glitzer für Mädchen
-- `15504142598529` — Hundeleine aus Edelstahl
-- `15504142664065` — Smart-Armband für Damen
-- `15504153248129` — Ärmelloses Hemdkragenkleid
-- `15504178610561` — Elegante Oversize Bluse aus Baumwoll-Leinen-Mix
-- `15504178643329` — Anti-Schling Napf für Hunde
-- `15504189849985` — Offenes Perlenarmband aus Edelstahl
-- `15504199549313` — Langarm Polo-Shirt mit Knopfleiste
-- `15504199582081` — R5 PRO Smartwatch mit Herzfrequenz-Messung
-- `15504229958017` — Herren Kapuzen-Windbreaker wasserdicht
-- `15504230056321` — Schmetterlingsschnallen-Armband für Apple Watch
-- `15506147049857` — Rindsleder-Doppelhaken-Leine für zwei Hunde
-- `15506165924225` — Herren Langarmhemd, bügelfrei, elastisch
+- `15499867554177` — City Container Lastwagen Bausteine
+- `15499874926977` — Rennrad-Sneaker
+- `15499875090817` — Unregelmässiges Backblech
+- `15499956846977` — Roter Polka-Dot Rock
+- `15499956945281` — Landschaftsbild in Öl
+- `15499957010817` — Checkered Hundeleine
+- `15500002492801` — Fritür für frische Pommes
+- `15500002591105` — Corduroy-Hemd
+- `15500113641857` — Gold-Schmuckring
+- `15500163645825` — Haarreparatur-Maske
+- `15500163711361` — Schwarze Armbanduhr
+- `15500203983233` — Handgemalte Wandtapete
+- `15500204048769` — Doppelfunktionales Haarschneider
+- `15500285706625` — Stainless Steel Duschkopf
+- `15500285739393` — Ledertasche für Männer
+- `15500353175937` — Farbenblock-Trainingshemd
+- `15500353307009` — Kleine Pfannen für Pfannkuchen
+- `15500373885313` — Nachtlicht fürs Bett
+- `15500439945601` — Kanvas-Sneaker
+- `15500461703553` — Wärme-Gürtel
+- `15500495192449` — Sommerliches Petite Trägerkleid
+- `15500508135809` — Outdoor Survivalmesser aus Chromstahl
+- `15500511478145` — Gestreiftes Jacquard-Freizeithemd für Herren
+- `15500511543681` — Fensterbank-Spielzeug mit Saugnäpfen für Katzen
+- `15500902007169` — Kamouflage Schuhe für Kinder
+- `15500906824065` — Trump Szene Bausteine Garage
+- `15500910133633` — 3-in-1 Glätteisen & Lockenstab für trockenes/nasses Haar
+- `15500913836417` — Weihnachtliche Kissenhüllen im Cartoon-Stil
+- `15500927304065` — Rosegold-Armbanduhr
+- `15500930711937` — Kissen im nordeuropäischen Stil
+- `15500948406657` — Naturehike Leye Titan-Clip
+- `15500948439425` — USB-A Stecker mit schwarzer Kunststoffabdeckung
+- `15500954993025` — Damast Survivalmesser mit Kamelknochengriff
+- `15500957974913` — Gestepptes Baumwoll-Homewear-Shirt mit Koi-Print
+- `15500975309185` — Retro T-Riemen Sandalen mit runder Kappe
+- `15500985041281` — Unisex Badeschuhe
+- `15500990710145` — Cat's Eye Nails: Abnehmbare Sticker in Mint
+- `15500990742913` — PGG Nackenmassagegerät der 2. Generation
+- `15501054902657` — Bedrucktes Mini-Kleid mit V-Ausschnitt und Spitze
+- `15501054935425` — Kissenbezug Loop getuftet
+- `15501061980545` — Stabmixer-Aufsatz für Küchenmaschine
+- `15501062013313` — Halskette für Hunde, Edelstahl, 14mm
+- `15501751157121` — Küchenspülradregal
+- `15501879116161` — Cotton-Kleinkinderstiefel
+- `15501879148929` — Zitronenarmband
+- `15501884457345` — Schwimmsandalen für Kinder
+- `15501884522881` — Ladegerät für drei Geräte
+- `15501884588417` — Edelstahl-Armbanduhr
+- `15501903102337` — Idle Rhinestone Hollow Loafers
+- `15501926826369` — Elektronischer Würfel-Box
+- `15501926924673` — Goldene Halsband-Halsicherung
+- `15502071267713` — Federgriff-Schlackenhammer aus Karbonstahl
+- `15502133166465` — Box-Zielpolster für Kinder (2er-Set)
+- `15502134215041` — Automatischer Feder-Abwehrstock
+- `15502192247169` — Fashion Personality Plateau-Sandalen
+- `15502192443777` — Quadratische Damenuhr mit Diamanten
+- `15502261682561` — Boho Marokkanischer Kissenbezug mit Fransen
+- `15502261715329` — Longquan Fischgräten- und Geflügelschere
+- `15502308016513` — Gestreiftes Kurzarmhemd mit Reverskragen
+- `15502308049281` — Atmungsaktive Mesh Sportschuhe für Herren
+- `15502393672065` — Keramik- und Wolframstahl-Nagelfräser-Set
+- `15502488699265` — Retro-Lederarmband für Herren mit Kreuz
+- `15502537130369` — Mengxilan Whitening Anti-Wrinkle Maske (5 Stück)
+- `15502559216001` — Fotorahmen Blumenstrauss Bausteine
+- `15502613709185` — Mädchen Lauflernschuhe «Little Princess»
+- `15502914355585` — Ratschen-Teleskop-Schraubendreher magnetisch
+- `15503085502849` — Zebra Jacquard Kissenhülle
+- `15503087403393` — Nagel Reparatur Kleber – DIY Set für Zuhause
+- `15503118369153` — Vierloch-Bratpfanne aus Aluminiumlegierung
+- `15503123087745` — GPS Tracker A29 für Kinder, Senioren & Haustiere
+- `15503134261633` — Vintage Halsband für Haustiere mit Metallschnalle
+- `15503165227393` — Rhombus Hard Shell Business Rucksack
+- `15503259992449` — Fast Drainage Outdoor-Fitnessschuhe
+- `15503260025217` — Solar-Strassenleuchte mit Farbwarnlicht
+- `15503292793217` — In-Ear Gaming-Kopfhörer mit Mikrofon
 - `15506188829057` — Hochfrequenz-Elektrotherapie-Stab
-- `15506188861825` — Handgefertigte, abnehmbare Nägel im Kühlen Weiss
-- `15506226184577` — Elegante Chunky-Heel Sandalen mit eckiger Zehenpartie
-- `15506243912065` — Leder-Loafer mit weicher Sohle
-- `15506243944833` — Polarbär Mini-Luftbefeuchter
-- `15506263310721` — Brusttasche Oxford-Stoff wasserdicht
-- `15506299683201` — Retro Tischuhr mit Pendel
-- `15506299748737` — Vibrations-Heizkissen für Büro und Zuhause
-- `15506314461569` — Fashion Platform Pantoletten
 - `15506314494337` — Boya BY-PM500 USB-Mikrofon mit Soundkarte
-- `15506419351937` — Figurbetontes Spaghettiträger-Kleid mit Totenkopf
-- `15506541773185` — Gestreifter Kissenbezug aus Baumwoll-Leinen
-- `15506669142401` — Elegantes Neckholder-Kleid mit Schlitz
-- `15506708595073` — Opal-Halskette aus 925er Silber, oval, blau-weiss
-- `15506894356865` — Memory Foam Herz-Bein-Kissen
 - `15508365836673` — LED-Gesichtsmaske mit 7 Farben
