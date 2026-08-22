@@ -9369,3 +9369,12 @@ gid://shopify/Product/15500891783553	24->0	Infrarot Fernbedienung
 gid://shopify/Product/15500892012929	11->0	Lange Beine Brikett Plüschfigur
 gid://shopify/Product/15500892242305	14->0	Sensor für Luft-Kraftstoff-Gemisch
 gid://shopify/Product/15500892307841	23->2	Romantische Atmosphäre
+gid://shopify/Product/15500897616257	47->2	Marine-Halsband
+gid://shopify/Product/15500897649025	93->3	Leichtes Mikrofaserturnschuh
+gid://shopify/Product/15500898042241	39->0	Badezimmertresen
+gid://shopify/Product/15500898140545	30->0	Silikon-Box für Brillen
+gid://shopify/Product/15500899254657	70->1	Korean Slip-on Schuh
+gid://shopify/Product/15500899287425	85->0	Minimaleimer aus Metall
+gid://shopify/Product/15500899418497	74->0	Luftdurchlässige Sneaker
+gid://shopify/Product/15500899484033	45->0	Wasserfestes Halsband
+gid://shopify/Product/15500899713409	66->0	Leichte Sneaker mit Mesh Oberfläche

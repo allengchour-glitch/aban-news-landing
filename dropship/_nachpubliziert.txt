@@ -231,3 +231,4 @@ gid://shopify/Product/15509364441473	herren-quarzuhr-mit-kalender-und-chronograp
 gid://shopify/Product/15509367193985	wabi-ji-cashmere-kissen-mit-kontrast-958720	Wabi Ji Cashmere Kissen mit Kontrast
 gid://shopify/Product/15509367226753	kork-kautschuk-yoga-matte-047936	Kork-Kautschuk Yoga-Matte
 gid://shopify/Product/15509372240257	etuikleid-mit-hohem-bund-und-cut-outs-619800	Etuikleid mit hohem Bund und Cut-Outs
+gid://shopify/Product/15509380923777	pinkah-isolier-lunchbox-970ml-e67ff3	PINKAH Isolier-Lunchbox 970ml
