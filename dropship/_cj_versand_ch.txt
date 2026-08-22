@@ -882,3 +882,5 @@ gid://shopify/Product/15509379318145	ok	Mittelalterliches Baumhaus Bausteine
 gid://shopify/Product/15509379744129	ok	Sportwagen Modellbausatz "Liegender T5019"
 gid://shopify/Product/15509378072961	ok	Outdoor Smartwatch mit Höhenmesser & Kompass
 gid://shopify/Product/15509380727169	ok	Elektrische Nudelmaschine
+gid://shopify/Product/15509382693249	ok	Intelligenter Saugroboter F1s
+gid://shopify/Product/15509384921473	nicht-versendbar	Faltbarer Wäschekorb mit Rollen und Deckel

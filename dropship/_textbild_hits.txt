@@ -9443,3 +9443,9 @@ gid://shopify/Product/15500912230785	27->0	Antihaft-Bratpfanne für Kuchen & Geb
 gid://shopify/Product/15500912296321	60->0	Business Laptop Rucksack – schlicht & trendig
 gid://shopify/Product/15500912361857	12->0	Gaodi Outdoor Camping Bratpfanne S
 gid://shopify/Product/15500912460161	23->0	Digitaler Luftqualitätsmonitor PM2.5
+gid://shopify/Product/15500912525697	36->0	Automatischer Lockenstab mit dünnem Rohr
+gid://shopify/Product/15500912755073	14->1	Ultraschall-Aroma-Diffusor mit Nachtlicht
+gid://shopify/Product/15500913213825	32->0	Tragbares Schleifgerät Universal
+gid://shopify/Product/15500913377665	42->0	Trägerloses Mesh-Maxikleid mit Drapierung
+gid://shopify/Product/15500913443201	52->0	Multifunktionaler Schneidebrett-Halter
+gid://shopify/Product/15500914491777	16->0	Klappbare 2‑Stufen Treppenleiter aus Eisen, 44 cm, 150 kg
