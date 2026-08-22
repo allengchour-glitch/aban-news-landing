@@ -127,7 +127,23 @@ async function main() {
       // antwortet darauf «pid or productSku must be not empty» — result:false, also
       // quittierte der Lauf JEDES dieser Produkte als «cj-ohne-antwort». Richtig ist
       // `productSku=`; damit liefert CJ result:true samt variantSellPrice UND variantWeight.
-      else if (mVar) j = await cj(`product/variant/query?productSku=${mVar[1]}`);
+      else if (mVar) {
+        j = await cj(`product/variant/query?productSku=${mVar[1]}`);
+        // ⚠️ FÜNFTE SKU-FORM (22.08.2026). `productSku=` heisst wörtlich PRODUKT-SKU —
+        // eine VARIANTEN-SKU kennt CJ unter diesem Parameter NICHT. Der Modemodus des
+        // Importers schreibt aber genau die (Zeile 157 cj_category_fill.mjs: `v.variantSku`),
+        // und die trägt hinten die Variantennummer:
+        //   CJBQ291505701AZ  (Variante)  →  CJBQ2915057  (Produkt)  →  code 200
+        // Ohne diesen zweiten Versuch quittierte der Lauf 126 Produkte als
+        // «cj-ohne-antwort», obwohl CJ sie alle kennt. Das Muster ist eng gefasst
+        // (zwei Ziffern + zwei Grossbuchstaben am Ende), damit «CJJJJTJT35117» und
+        // «CJJJCFCF00364» — beides ECHTE Produkt-SKUs — unangetastet bleiben.
+        const stamm = mVar[1].match(/^(.*[0-9])\d{2}[A-Z]{2}$/i);
+        if (!j.result && !j.gedrosselt && stamm) {
+          await sleep(1200);
+          j = await cj(`product/variant/query?productSku=${stamm[1]}`);
+        }
+      }
       else { ohne++; fs.appendFileSync(LEDGER, `${p.id}\tkeine-cj-referenz\n`); continue; }
       // ⚠️ 21.08.2026 — DIESE PRÜFUNG WAR DER GRUND, WARUM DER BACKFILL NIE LIEF.
       // Sie suchte im Antworttext nach «point». CJ hängt aber an JEDE Antwort den Block
@@ -158,7 +174,24 @@ async function main() {
       // fuer den ALTBESTAND, ohne eine einzige zusaetzliche CJ-Abfrage.
       const gGramm = Number(gew) || 0;
       const messung = gGramm > 0 ? { measurement: { weight: { value: gGramm, unit: 'GRAMS' } } } : {};
-      const ein = vs.map(v => ({ id: v.id, inventoryItem: { cost: c, ...messung } }));
+      // Die Abfrage liefert ALLE Varianten des Produkts mit je eigenem Preis und Gewicht.
+      // Wo sich die Shopify-Variante ueber ihre SKU wiederfinden laesst, bekommt sie IHRE
+      // Zahl statt der des ersten Eintrags — bei Groessen-/Farbstaffeln ist das der
+      // Unterschied zwischen einer geschaetzten und einer echten Marge. Kostet nichts:
+      // dieselbe Antwort, nur genauer gelesen.
+      const proSku = new Map();
+      if (Array.isArray(j.data)) for (const v of j.data) {
+        if (v?.variantSku) proSku.set(String(v.variantSku).toUpperCase(), v);
+      }
+      const ein = vs.map(v => {
+        const kern = (v.sku || '').replace(/^cj-/i, '').split('-')[0].toUpperCase();
+        const e = proSku.get(kern);
+        const vp = e ? (e.variantSellPrice ?? e.variantSugSellPrice) : null;
+        const vg = e ? Number(e.variantWeight) || 0 : 0;
+        const vc = vp != null ? kosten(vp, vg || gGramm) : c;
+        const vm = vg > 0 ? { measurement: { weight: { value: vg, unit: 'GRAMS' } } } : messung;
+        return { id: v.id, inventoryItem: { cost: vc, ...vm } };
+      });
       let n = 0;
       for (let i = 0; i < ein.length; i += 25) {
         const r = await sgql(`mutation($p:ID!,$v:[ProductVariantsBulkInput!]!){productVariantsBulkUpdate(productId:$p,variants:$v){userErrors{message}}}`,
