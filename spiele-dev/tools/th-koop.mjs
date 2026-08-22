@@ -42,12 +42,22 @@ function koopServer() {
   execSync('sleep 1.5')
 }
 
+/* ⚠️ DEN GRUND AM ENTSTEHUNGSORT ABGREIFEN. Das Spiel setzt `MPs = null` noch
+   im selben Zug, in dem die Sitzung auf "closed" geht — wer danach pollt, sieht
+   nur noch ein leeres Feld. Diese Sonde haengt sich EINMAL in onStatus ein und
+   haelt die Sitzung in einem Abschluss fest, damit `_why` erhalten bleibt. */
+const WATCH = `function(){
+  var S=MPs; if(!S) return false;
+  if(!S._beobachtet){S._beobachtet=1;
+    S.onStatus(function(st){(window._koopSpur=window._koopSpur||[]).push(st+":"+(S._why||"-"));});}
+  return true;}`
+
 const SONDE = `function(){
   return {run:!!window._running, mp:!!MPs, host:!!mpHost, si:meinSi(),
           why:(MPs&&MPs._why)||"", st:MPs?MPs.status:"-",
           s:(sims||[]).map(function(q){return {x:+q.x.toFixed(3),z:+q.z.toFixed(3)};})};}`
 
-mitSonden(datei, { koop: SONDE }, tmp)
+mitSonden(datei, { koop: SONDE, koopWatch: WATCH }, tmp)
 koopServer()
 
 const browser = await chromium.launch({ executablePath: CHROMIUM,
@@ -112,11 +122,28 @@ if (!verbunden) {
 }
 
 await host.click('#mpStartBtn')
-for (const [p, t] of [[host, 'Host'], [gast, 'Gast']]) {
-  await p.waitForFunction(() => { try { return window.__th.koop().run } catch (e) { return false } },
-    null, { timeout: 90000 }).catch(() => console.log(`  ⚠️ ${t} startete nicht`))
+/* ⚠️ DEN START MITSCHREIBEN. Genau hier stirbt die Sitzung, wenn sie stirbt:
+   waehrend die Welt gebaut wird, steht der Hauptthread. `MPs` wird vom Spiel
+   auf null gesetzt, sobald es solo weiterlaeuft — der Grund waere danach weg.
+   Also engmaschig abfragen und den letzten belegten Grund merken. */
+for (const p of [host, gast]) await p.evaluate(() => { try { return window.__th.koopWatch() } catch (e) { return false } })
+const lauf = { Host: '', Gast: '' }, grund = { Host: '', Gast: '' }, spur = []
+for (let i = 0; i < 120; i++) {
+  await host.waitForTimeout(500)
+  for (const [t, p] of [['Host', host], ['Gast', gast]]) {
+    const k = await p.evaluate(() => { try { return window.__th.koop() } catch (e) { return null } })
+    if (!k) continue
+    if (k.why) grund[t] = k.why
+    const z = `${k.run ? 'laeuft' : 'menue'}/${k.st}`
+    if (z !== lauf[t]) { spur.push(`  ${(i * 0.5).toFixed(1)}s ${t}: ${z}`); lauf[t] = z }
+  }
+  if (lauf.Host.startsWith('laeuft') && lauf.Gast.startsWith('laeuft') && i > 16) break
 }
-await host.waitForTimeout(5000)
+console.log('Startverlauf:'); spur.forEach((x) => console.log(x))
+for (const [t, p] of [['Host', host], ['Gast', gast]]) {
+  const sp = await p.evaluate(() => window._koopSpur || [])
+  if (sp.length) console.log(`  Statuswechsel ${t}: ${sp.join('  ')}`)
+}
 const vor = await gast.evaluate(() => window.__th.koop())
 console.log(`Gast: verbunden=${vor.mp} host=${vor.host} eigene Figur=sims[${vor.si}]`)
 if (!vor.mp) { console.log('  ⚠️ Sitzung beim Start abgerissen — Messung waere wertlos.'); await browser.close(); aufraeumen(tmp); process.exit(1) }

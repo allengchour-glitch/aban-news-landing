@@ -7636,6 +7636,31 @@ function footprintFree(def,gx,gy,rot,ignore){ /* 🩹 Schwarm-P2: ALLE Zellen pr
 function cellFree(gx,gy){for(var i=0;i<furn.length;i++){var cells=furnCells(furn[i]);
   for(var c=0;c<cells.length;c++)if(cells[c][0]===gx&&cells[c][1]===gy)return false;}return true;}
 
+/* ═══════ Fremde Figuren fluessig bewegen ══════════════════════════════════
+   Der Host schickt Positionen alle 350 ms; dazwischen kam bisher nichts nach.
+   `x += (ziel-x)*dt*8` zieht deshalb direkt nach dem Paket kraeftig an und
+   steht kurz darauf fast still — die Figur des Partners LAEUFT nicht, sie
+   pulsiert. Sichtbar wird das an der Streuung der Schrittweiten pro Bild.
+   Abhilfe ohne ein einziges zusaetzliches Byte: aus zwei aufeinanderfolgenden
+   Paketen die Geschwindigkeit ableiten und das ZIEL zwischen den Paketen damit
+   weiterschieben. Die Glaettung bleibt, sie zieht jetzt nur einem wandernden
+   statt einem stehenden Punkt hinterher.
+   ⚠️ Die Vorausrechnung ist auf 0,6 s gedeckelt. Ohne Deckel laeuft eine Figur,
+   deren Pakete ausbleiben (Funkloch, Host haengt), endlos in die letzte
+   bekannte Richtung weiter — und steht danach im Nirgendwo. */
+function netAnnehmen(o,sd,jetzt){
+  var alt=o.net,dt=alt&&o.netT?(jetzt-o.netT)/1000:0;
+  if(alt&&dt>0.05&&dt<1.2){
+    var vx=(sd.x-alt.x)/dt,vz=(sd.z-alt.z)/dt,v=Math.hypot(vx,vz);
+    if(v<12){o.netV={x:vx,z:vz};}else o.netV=null;   /* Sprung (Auto/Teleport) nicht fortschreiben */
+  }else o.netV=null;
+  o.net=sd;o.netT=jetzt;}
+function netZiel(o,jetzt){
+  var n=o.net;if(!n)return null;
+  if(!o.netV||!o.netT)return n;
+  var a=Math.min((jetzt-o.netT)/1000,0.6);
+  return {x:n.x+o.netV.x*a,z:n.z+o.netV.z*a};}
+
 // ===================== Netz (Koop über js/mp.js) =====================
 var MPs=null,mpHost=false,myName="Bauherr:in";
 function netSend(o){if(MPs)try{MPs.send(o);}catch(e){}}
@@ -7838,7 +7863,8 @@ function onNetMsg(m){
   else if(m.t==="lobby"&&!mpHost){LOBBY.spieler=m.s||[];lobbyNamenUpd();}
   else if(m.t==="los"&&!mpHost){LOBBY.gestartet=true;if(!running)startGame();}
   else if(m.t==="state"&&!mpHost){loadSnapshot(m.sn);if(LOBBY.gestartet&&!running)startGame();}  /* Start wartet auf {t:"los"} vom Host */
-  else if(m.t==="sims"&&!mpHost){m.a.forEach(function(sd,i){if(sims[i])sims[i].net=sd;});
+  else if(m.t==="sims"&&!mpHost){var _jt=performance.now();
+    m.a.forEach(function(sd,i){if(sims[i])netAnnehmen(sims[i],sd,_jt);});
     var cm9=m.ca?((m.ca.vi>=0&&verkehr[m.ca.vi])?verkehr[m.ca.vi]:window.autoRec):null;
     if(cm9&&cm9.mesh){cm9.mesh.visible=true;cm9.mesh.position.x=m.ca.x;cm9.mesh.position.z=m.ca.z;cm9.mesh.rotation.y=m.ca.r;}
     if(!arbeiten&&sims[0]&&sims[0].mesh)sims[0].mesh.visible=!m.ca;
@@ -7847,9 +7873,9 @@ function onNetMsg(m){
         try{loadTH("hund",function(){});}catch(e){} /* 🩹 Schwarm-7: Modell nachladen — sonst scheiterte die Katze fuer immer */
         break;}}
       while(npcs.length>m.np.length){var rem=npcs.pop();scene.remove(rem.mesh);}
-      m.np.forEach(function(nd,i){if(npcs[i])npcs[i].net=nd;});}
+      m.np.forEach(function(nd,i){if(npcs[i])netAnnehmen(npcs[i],nd,_jt);});}
     if(m.k){while(kinder.length<m.k.length){var nk=spawnKind(m.k[kinder.length].b);if(nk)nk.name=m.k[kinder.length].n;}
-      m.k.forEach(function(kd,i){if(kinder[i]){kinder[i].net=kd;if(kinder[i].baby!==kd.b){kinder[i].baby=kd.b;scene.remove(kinder[i].mesh);var nm2=mkKind(kd.b);nm2.position.set(kinder[i].x,0,kinder[i].z);scene.add(nm2);kinder[i].mesh=nm2;}}});}}
+      m.k.forEach(function(kd,i){if(kinder[i]){netAnnehmen(kinder[i],kd,_jt);if(kinder[i].baby!==kd.b){kinder[i].baby=kd.b;scene.remove(kinder[i].mesh);var nm2=mkKind(kd.b);nm2.position.set(kinder[i].x,0,kinder[i].z);scene.add(nm2);kinder[i].mesh=nm2;}}});}}
   else if(m.t==="uhr"&&!mpHost){uhrzeit=m.u;if(tag!==m.d){tag=m.d;applySaison();}}
   else if(m.t==="wetter"&&!mpHost)setWetter(m.w);
   else if(m.t==="kochBoost"&&mpHost){if(m.s>=0.999)stats.kochPerfekt=(stats.kochPerfekt||0)+1;kochApply(m.s);}
@@ -8711,7 +8737,8 @@ function updHearts(dt){for(var i=heartSprites.length-1;i>=0;i--){var h=heartSpri
   h.s.position.y+=h.v*dt;h.life-=dt;h.s.material.opacity=Math.min(1,h.life);
   if(h.life<=0){scene.remove(h.s);entsorge3d(h.s);heartSprites.splice(i,1);}}}
 function updKind(k,dt,now){
-  if(MPs&&!mpHost){if(k.net){k.x+=(k.net.x-k.x)*Math.min(1,dt*8);k.z+=(k.net.z-k.z)*Math.min(1,dt*8);k.rot=k.net.r;}}
+  if(MPs&&!mpHost){var _kz=netZiel(k,performance.now());
+    if(_kz){k.x+=(_kz.x-k.x)*Math.min(1,dt*8);k.z+=(_kz.z-k.z)*Math.min(1,dt*8);k.rot=k.net.r;}}
   else{
     // Altern: 1 Spieltag ~ +1; Baby (0-3) -> Kind (>=3)
     k.alter+=dt*0.006;
@@ -8895,7 +8922,7 @@ function npcEmoji(n,txt){
 window._updNpcs=updNpcs; /* Testzugang — Spiellogik unabhaengig vom rAF-Takt treibbar */
 function updNpcs(dt,now){
   if(MPs&&!mpHost){ // Gast rendert nur
-    npcs.forEach(function(n){if(n.net){n.x+=(n.net.x-n.x)*Math.min(1,dt*8);n.z+=(n.net.z-n.z)*Math.min(1,dt*8);n.rot=n.net.r;
+    npcs.forEach(function(n){var _nz=netZiel(n,performance.now());if(_nz){n.x+=(_nz.x-n.x)*Math.min(1,dt*8);n.z+=(_nz.z-n.z)*Math.min(1,dt*8);n.rot=n.net.r;
       n.mesh.position.set(n.x,0,n.z);n.mesh.rotation.y=n.rot;}});
     return;}
   /* 🏛️ Ein anstehender Amtsbesuch (Polizist/Buergermeister/Inspektor) wartet nicht
@@ -8960,7 +8987,8 @@ function updSim(s,si,dt,now){
         if(s.net.v!==undefined)s.mesh.visible=s.net.v;
         if(s.net.e&&s.net.e!==s._lastE){simEmoji(s,s.net.e);s._lastE=s.net.e;}}}
     else if(s.net){ // fremde Figur (und die eigene, solange niemand steuert)
-      s._netMoved=Math.hypot(s.net.x-s.x,s.net.z-s.z)>0.05;s.x+=(s.net.x-s.x)*Math.min(1,dt*8);s.z+=(s.net.z-s.z)*Math.min(1,dt*8);
+      var _sz=netZiel(s,performance.now());
+      s._netMoved=Math.hypot(_sz.x-s.x,_sz.z-s.z)>0.05;s.x+=(_sz.x-s.x)*Math.min(1,dt*8);s.z+=(_sz.z-s.z)*Math.min(1,dt*8);
       s.rot=s.net.r;s.pose=s.net.p;if(s.net.nd)s.needs=s.net.nd;if(s.net.v!==undefined)s.mesh.visible=s.net.v;if(s.net.e&&s.net.e!==s._lastE){simEmoji(s,s.net.e);s._lastE=s.net.e;}}}
   else{
     if(s.state==="work")return;

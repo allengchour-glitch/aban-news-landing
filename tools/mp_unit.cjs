@@ -64,6 +64,26 @@ function check(name, cond, detail) { results.push({ name, ok: !!cond, detail });
     check("A1 stale close ignoriert (Status bleibt connected)", S.status === "connected", "ist: " + S.status);
   }
 
+  /* ⚠️ WARUM ES DIESEN HELFER BRAUCHT (drei FAILs lang uebersehen).
+     Der Peer-Stub schliesst neu erzeugte Kanaele NICHT von selbst. Wer genau
+     EINEN Reconnect-Kanal toetet und danach 50 ms spaeter prueft, sieht immer
+     "lost" — und das ist voellig korrektes Verhalten: die Sitzung wartet in dem
+     Moment brav auf ihren naechsten Versuch. Geprueft werden sollte aber das
+     Szenario "Host ist ENDGUELTIG weg", und das heisst: JEDER Versuch stirbt.
+     Genau das macht dieser Helfer. Mit ihm erreichen A2 und B1 den erwarteten
+     Endzustand in rund einer Sekunde — die Bibliothek war nie fehlerhaft, der
+     Test hat nur zu frueh hingesehen. */
+  async function bisAufgabe(S, peer, sekunden = 20) {
+    const getoetet = new Set();
+    for (let i = 0; i < sekunden * 2 && S.status !== "closed"; i++) {
+      await sleep(500);
+      const ms = peer.conns.filter(c => c.label === "main");
+      const letzte = ms[ms.length - 1];
+      if (letzte && !getoetet.has(letzte)) { getoetet.add(letzte); letzte.emit("close"); }
+    }
+    return S.status;
+  }
+
   // ---- A2: Give-up-Pfade müssen den Peer zerstören (sonst vergifteter Public-Raum) ----
   {
     const { MP, created, StubConn } = freshMP();
@@ -76,8 +96,8 @@ function check(name, cond, detail) { results.push({ name, ok: !!cond, detail });
     await sleep(1000);
     const main2 = mainConns()[1];
     check("A2.reconnect erzeugt", !!main2);
-    if (main2) main2.emit("close");       // Reconnect-Kanal stirbt ungeöffnet → retried-Pfad → endgültig closed
-    await sleep(50);
+    if (main2) main2.emit("close");       // Reconnect-Kanal stirbt ungeöffnet
+    await bisAufgabe(S, peer);            // ... und jeder weitere ebenso -> Budget erschöpft
     check("A2 Status closed", S.status === "closed", "ist: " + S.status);
     check("A2 peer.destroy() gerufen (kein Zombie im Raum)", peer.destroyed === true);
   }
@@ -130,7 +150,7 @@ function check(name, cond, detail) { results.push({ name, ok: !!cond, detail });
     if (mains[1]) mains[1].emit("close"); else await sleep(1000);
     const m2 = peer.conns.filter(c => c.label === "main")[1];
     if (m2 && !m2.closeCalled && m2._h.close) m2.emit("close");
-    await sleep(1300);                    // Retry-Fenster verstreichen lassen
+    await bisAufgabe(q, peer);            // jeder Reconnect stirbt -> Budget erschöpft
     check("B1 kein Re-Match nach everConnected (keine neuen Peers)", created.length === before,
       "Peers vorher " + before + " nachher " + created.length);
     check("B1 quick endet closed", q.status === "closed", "ist: " + q.status);
