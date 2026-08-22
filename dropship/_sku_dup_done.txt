@@ -682,3 +682,7 @@ gid://shopify/Product/15508419150209	CJ-CJLY294664701AZ	Elegantes gestreiftes Et
 gid://shopify/Product/15508419248513	CJ-CJLY294660201AZ	Französisches A-Linien Minikleid mit Off-Shoulder
 gid://shopify/Product/15508462272897	CJ-1412334422736375808	Kissenhülle Baumwolle Gestreift
 gid://shopify/Product/15508462403969	CJ-1411224280494116864	Niedliches Kissen mit Decke, Dual-Use
+gid://shopify/Product/15509382267265	CJ-2EC739E2-D20C-4562-8C8D-1D501AAAB82B	Manueller Gemüseschneider
+gid://shopify/Product/15509382365569	CJ-6C39FE34-128F-478F-869B-B2E1BE3A6439	Küchenhelfer-Set, 7-teilig, Edelstahl 304
+gid://shopify/Product/15509382562177	CJ-4ACCB7BD-EF9C-4969-A86A-F7F072E5BD60	Back- und Dekorationsset für Torten
+gid://shopify/Product/15509382660481	CJ-EE0DA616-EC0D-4774-889A-BD7F9933F1FB	Kaffeekapsel-Drehständer (24 Kapseln)
