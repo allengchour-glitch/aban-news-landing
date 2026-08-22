@@ -81,6 +81,49 @@ Session blockiert** (Aenderung an einem laufenden Kundenmail-Flow). Zwei Wege:
 - Der Shop liefert nur in die Schweiz (genau EIN aktiver Markt). Die EN/US-Flows bewerben
   also Ware bei Leuten, die gar nicht auschecken koennen.
 
+## 🕳️ 2026-08-22, der eigentliche Befund: DIE LISTE IST LEER
+
+Beim Nachprüfen der Welcome-Flows kam etwas heraus, das die ganze Einordnung dreht.
+
+**Alle DREI Welcome-Flows hängen am selben Auslöser** — Liste `T2VHfu` «Newsletter
+Subscribers» — und **keiner** hat einen Profilfilter (`profile_filter: null`):
+
+| Flow | Status | Live-Mails |
+|---|---|---|
+| `UKjAsV` E-Mail Welcome-Serie (deutsch) | live | 2 |
+| `VbLQj6` Welcome Series | live | 1 |
+| `X4kYd7` Welcome Series · EN/US | live | 2 |
+
+Wer sich einträgt, bekommt also **fünf Willkommensmails in zwei Sprachen**.
+
+**ABER: `T2VHfu` hat `profile_count: 0`.** Die Liste ist leer. Es gibt niemanden, der sie
+bekäme. Der Fünffach-Versand ist eine *scharfe Falle*, kein laufender Schaden — und die
+toten Links in den zwei deutschen Welcome-Mails kosten **heute praktisch nichts**, weil die
+Mails an niemanden gehen.
+
+⚠️ **Damit korrigiert sich meine eigene Einschätzung von vorhin:** Ich hatte geschrieben,
+der Welcome-Flow koste laufend Kunden. Das stimmt nicht, solange die Liste leer ist.
+
+**Was dahinter steckt, ist teurer als der tote Link:**
+
+| Liste | Profile | Opt-in | Flows, die darauf hören |
+|---|---|---|---|
+| `T2VHfu` Newsletter Subscribers | **0** | single | **3** |
+| `SfdmHY` Email List | **2** | double | **0** |
+
+Die Adressen, die es überhaupt gibt (2 Stück), liegen auf einer Liste, auf die **kein
+einziger Flow hört**. Und 2 Profile in drei Monaten heißt: **die E-Mail-Erfassung des Shops
+kommt in Klaviyo nicht an.** Der WELCOME10-Anmeldedialog existiert im Shop (Shopify Forms,
+seit 01.06.) — seine Eintragungen landen offenbar nicht in `T2VHfu`.
+
+**Reihenfolge, in der das etwas bringt** (die ersten beiden sind Betreiber-Klicks):
+1. **Erfassung reparieren** — prüfen, wohin der Shop-Anmeldedialog schreibt, und ihn auf
+   `T2VHfu` zeigen lassen. Ohne das ist jede Mail-Reparatur folgenlos.
+2. **Zwei der drei Welcome-Flows abschalten**, bevor die Erfassung läuft. Sonst ist die erste
+   Wirkung der Reparatur, dass jeder Neuabonnent fünf Mails bekommt — der schnellste Weg,
+   die Absender-Domain als Spam markieren zu lassen.
+3. Erst danach die toten Links (Vorlage `URDTkz` liegt bereit) und `website_url`.
+
 ## Schnellster Weg (pro Flow-Mail gleich)
 1. Mail-Schritt im Flow anklicken → **„Edit"** (Inhalt öffnen).
 2. Oben rechts **„⋯" → „View/Edit Code"** (HTML-Quelltext).
