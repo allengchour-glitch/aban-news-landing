@@ -992,6 +992,41 @@ und #1014 stehen in Shopify längst als FULFILLED — die Sendungsnummern kamen 
 `SHIPPED` — eine Versandmail für ein Paket, das noch im Lager liegt, ist schlimmer als
 eine späte.
 
+## 🗺️ 338 Kategorien waren da — das Menü zeigte 80 (2026-08-22)
+Betreiber-Auftrag: «werbung auf webseite das man alles finden kann». Nachgezählt:
+**348 Kollektionen mit Ware sind im Onlineshop veröffentlicht**, das Hauptmenü führt
+**93 Punkte** und damit rund 80 davon. Über 260 Kategorien waren nur über die Suche oder
+Zufall erreichbar — und für Google unsichtbar, weil auf sie **kein einziger interner Link**
+zeigte. Neu: **`/pages/alle-kategorien`** (`automation/kategorien_verzeichnis.py`), aus
+Hauptmenü («🔎 Alle Kategorien», vor der Merkliste) und Footer verlinkt.
+- ⚠️ **OHNE STÜCKZAHLEN, und das ist der Punkt.** `productsCount` einer Kollektion zählt
+  **Entwürfe mit**: «Geschenke unter CHF 100» meldet 64'661, der ganze aktive Katalog hat
+  45'833. Jede Zahl auf der Seite wäre eine Falschaussage gewesen. Sie dient nur intern
+  zum Sortieren. (Dieselbe Falle wie bei `products(first:n)` auf einer Kollektion.)
+- **Doppelgänger zusammengelegt** (8): «Camping»/«Camping & Outdoor» (beide 233),
+  «Garten»/«Garten & Balkon» (beide 286) — dieselbe Ware unter zwei Namen. Als Dublette
+  gilt nur **gleiche Produktzahl UND ein Titel ist Präfix des anderen**; eng gefasst, sonst
+  verschwinden echte Unterkategorien.
+- ⚠️ **`menuUpdate` ERSETZT den ganzen Baum.** Vor dem Schreiben den vollständigen Baum
+  (3 Ebenen) lesen, mit `id` je Punkt zurückschicken und danach **nachzählen**: 93 → 94.
+  Ohne Gegenprobe hätte ein unvollständiger Lesevorgang 80 Menülinks gelöscht.
+- ⚠️ **`pageByHandle` gibt es in 2024-10 nicht mehr** («Field doesn't exist on QueryRoot») →
+  `pages(first:5, query:"handle:…")`.
+**Fünf Fehlgriffe im Probelauf, alle vor dem Veröffentlichen gefunden** — drei aus der
+REIHENFOLGE der Regeln (Herren-Strick landete unter Damenmode, weil `strick` dort steht;
+Garten-**Pflege** unter Beauty; Tier-**geschirre** unter Wohnen) und zwei alte Bekannte:
+**`led` steckt in «Leder», `ski` in «Skincare», `auto` in «Automatik»** — dritte, vierte und
+fünfte Substring-Falle nach «IPL» in «L-IPL-iner». Dazu der **Umlaut-Plural**: «Armbänder»
+passt NICHT auf `armband`, «Rucksäcke» nicht auf `rucksack`.
+**Bei kurzen Wörtern ist die Wortgrenze die Regel, nicht die Ausnahme — und bei deutschen
+Mehrzahlformen gehört die Umlaut-Variante ins Muster.**
+- Die Seite wird von `tote_kollektionslinks.py` mitgeprüft (es liest veröffentlichte Seiten):
+  verschwindet eine Kollektion, fällt der tote Link auf.
+- ⚠️ **Der Auto-Committer greift inzwischen weiter als `dropship/`.** Er hat dieses Werkzeug
+  in eine «CJ-Ledger auto»-Sammelmeldung gezogen, bevor ich es selbst committen konnte —
+  die Begründung wäre verloren gewesen. Wer etwas Erklärungsbedürftiges baut, schreibt den
+  Grund in die Datei UND hierher, nicht nur in die Commit-Meldung.
+
 ## 🧾 Der Wächter gegen unlieferbare Ware stand in KEINER Startliste (2026-08-22)
 `ohne_lieferantenref_guard.py` schützt gegen die Klasse von Bestellung **#1008** (bezahlt,
 nie lieferbar). Er ist inhaltlich in Ordnung — er prüft seit dem 20.08. die **FORM** der SKU
