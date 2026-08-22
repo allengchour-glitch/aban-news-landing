@@ -893,9 +893,20 @@ wurden (dann steht ein Grund in dessen Ledger) oder beim Import nie in den Kanal
 konnte ich NICHT klären: Das Shopify-Punktebudget war erschöpft (24 verfügbar, Abfrage
 kostet 86 — Bulk-Export und laufende Engines teilen sich dasselbe Kontingent). Der
 Abgleich gegen `_google_kanal_gesaeubert.txt` steht aus.
-**Nächster Schritt bei freiem Budget:** die 85 gegen die Säuberungs-Ledger halten. Sind sie
-dort nicht vermerkt, fehlen dem umsatzstärksten Kanal täglich ~1,8 % der Neuware — bei
-~100 Neuprodukten am Tag knapp zwei Artikel, die nie jemand über Google findet.
+**NACHGEPRÜFT am 22.08. mit freiem Budget — es ist KEIN bewusster Ausschluss:**
+Von den 85 sind **0 in einem Säuberungs-Ledger** vermerkt, **0 ohne Bild** (alle tragen 5 bis
+21 Bilder, die Publish-Wache greift also nicht), und die Klingen-Hausregel der Importer
+erklärt nur **1 von 15** Stichproben. `google_ads_kuration.py` scheidet ebenfalls aus — es
+setzt nur ein Shopping-Ads-Metafeld und lässt die Gratis-Listings unangetastet.
+⚠️ **Die Ursache bleibt damit UNBEKANNT.** Alle drei Importer publizieren mit derselben
+Logik in dieselben sechs Kanäle; ein Totalausfall des Publizierens würde das Produkt in
+KEINEM Kanal zeigen — diese stehen aber in fünf von sechs.
+**Sichtbar gemacht statt geraten:** `automation/google_kanal_luecke.py` (täglich im Aufseher)
+meldet jedes aktive Produkt, das im Online Store steht, bei Google fehlt und **keinen**
+erklärenden Grund trägt (Sperr-Tag, `google-kanal-*`-Tag, Klingen-Regel). Erster Lauf:
+**24 Treffer allein seit dem 21.08.** — der Schwund läuft also weiter.
+⚠️ Der Wächter publiziert NICHTS. Ein Teil der Ausschlüsse ist gewollt, und ein Fehlgriff im
+Google-Kanal riskiert die Merchant-Sperre — also genau den Kanal, der verkauft.
 ⚠️ NICHT blind `google_kanal_nachziehen.py` darüberlaufen lassen: Ein Teil der Ausschlüsse
 IST gewollt (Kostüm/Erotik/Refurb/Klingen), und ein Fehlgriff dort riskiert die
 Merchant-Sperre — der einzige Kanal, der verkauft.
