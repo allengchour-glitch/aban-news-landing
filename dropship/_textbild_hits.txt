@@ -9804,3 +9804,11 @@ gid://shopify/Product/15501684212097	50->2	Eisenkugelbarbell-Beutel
 gid://shopify/Product/15501684277633	9->0	Hundebrett
 gid://shopify/Product/15501685260673	109->0	Schulrucksack
 gid://shopify/Product/15501741261185	123->0	Gaming-Tasche
+gid://shopify/Product/15501743325569	97->0	Krafttraining-Set
+gid://shopify/Product/15501743948161	78->0	Taktisches Nylon-Hundehalsband
+gid://shopify/Product/15501744046465	33->3	Holz-Blumenhaus
+gid://shopify/Product/15501744701825	25->0	Japanisches Halsband für kleine Hunde
+gid://shopify/Product/15501745127809	25->0	Wasserdichter Fahrradrucksack
+gid://shopify/Product/15501745652097	15->0	Blauer Hundebogenshirt
+gid://shopify/Product/15501746143617	19->1	Schutz-Kollektion für Hunde und Katzen
+gid://shopify/Product/15501746995585	70->0	Leichter Schutzring für Hunde und Katzen
