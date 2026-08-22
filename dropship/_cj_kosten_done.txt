@@ -110,3 +110,12 @@ gid://shopify/Product/15412964852097	CHF 40.92	1 Varianten	999 Silber-Armband «
 gid://shopify/Product/15412969144705	CHF 20.67	15 Varianten	Sommerkleid «Dos Nu» – locker mit Rücken-Cut-out
 gid://shopify/Product/15412969406849	CHF 20.67	30 Varianten	T-Shirt-Kleid «Casa» – locker mit Print
 gid://shopify/Product/15412976681345	CHF 20.67	4 Varianten	Schultertasche «Milano» – PU-Leder, grosse Kapazit
+gid://shopify/Product/15412976714113	CHF 17.02	2 Varianten	Sonnenhut «Riviera» – UV-Schutz, breite Krempe
+gid://shopify/Product/15412976746881	CHF 16.85	6 Varianten	Baseball-Cap «Navy» – Washed Cotton
+gid://shopify/Product/15412976845185	CHF 17.53	8 Varianten	Baseball-Cap «Washed» – Vintage Damen
+gid://shopify/Product/15412977926529	CHF 17.25	9 Varianten	Sonnenbrille «Chrome» – polarisiert, Color-Changin
+gid://shopify/Product/15412978352513	CHF 18.01	5 Varianten	Sonnenbrille «Photo» – selbsttönend, polarisiert
+gid://shopify/Product/15412978483585	CHF 16.39	6 Varianten	Cat-Eye-Sonnenbrille «Felina» – polarisiert
+gid://shopify/Product/15412978516353	CHF 15.43	16 Varianten	Sport-Sonnenbrille «Velo» – Outdoor & Radsport
+gid://shopify/Product/15413023015297	CHF 20.37	18 Varianten	Herren-Sommershirt «Breeze» – leicht & atmungsakti
+gid://shopify/Product/15413023113601	CHF 20.22	56 Varianten	Herren-Strickshirt «Riviera» – Cord-Kurzarm
