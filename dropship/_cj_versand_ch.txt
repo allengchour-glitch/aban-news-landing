@@ -877,3 +877,4 @@ gid://shopify/Product/15509346353537	ok	Herrenuhr mit ewigem Kalender und Mondph
 gid://shopify/Product/15509359493505	ok	Explosives Auto Modell zum Zusammenbauen
 gid://shopify/Product/15509368570241	nicht-versendbar	Heimtrainer Indoor Silent mit 4kg Schwungrad
 gid://shopify/Product/15509367947649	ok	Uhrenbox aus Karbonfaser-Leder für 12 Uhren
+gid://shopify/Product/15509369487745	nicht-versendbar	Aluminium Babybett, fahrbar & faltbar
