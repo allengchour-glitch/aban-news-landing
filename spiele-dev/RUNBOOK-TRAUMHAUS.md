@@ -23,6 +23,24 @@
 - Geprueft: 844x390, 915x412, 740x360, 667x375, 812x375, 640x360, 1024x600, 896x414,
   720x320 — jeweils 0 Ueberschneidungen, 0 ueber den Rand.
 
+## 🌳 Die Hecke war keine Hecke — und der billigere Weg war der dichtere (2026-08-23)
+- Grep-Anker: `heckenStellen`, `window._heckeZahl`
+- **Befund auf Augenhoehe:** die Hecke am Grundstueck war eine Reihe einzelner Bloecke.
+  Gemessen: Modul **2,31 m breit**, Raster **4,0 m** — 1,69 m Luft zwischen je zwei.
+  Von oben faellt das nicht auf.
+- **⚠️ Einfach dichter setzen war KEINE Option.** Jedes Modul bringt **sechs Meshes** mit,
+  63 stehen allein am Grundstueck. Raster 2,25 haette 49 Module und bis zu **+294
+  Zeichenaufrufe** auf 781 gekostet — ein Plus von 38 % auf dem Handy.
+- **Instanzieren loest beides.** Das Modell wird EINMAL ueber `bau()` geladen, in der
+  Rueckmeldung werden seine Meshes aus der Vorlage herausgerechnet (Gruppen-Matrix
+  invertieren, damit Skalierung und Boden-Versatz erhalten bleiben), als InstancedMesh
+  neu gesetzt und die Vorlage entfernt — auch aus `_gebaeude`.
+  **98 Module statt 63, in 6 Zeichenaufrufen: 781 → 655.**
+- **Muster zum Wiederverwenden:** jedes `bau()`-Objekt, das oft und gleich vorkommt
+  (Zaunfelder, Poller, Hecken, Baenke), laesst sich so instanzieren. Die Dreieckszahl
+  steigt, die Zeichenaufrufe fallen — und in dieser Datei sind die Zeichenaufrufe der
+  Engpass, nicht die Dreiecke.
+
 ## 👁️ Auf AUGENHOEHE pruefen, nicht aus der Vogelperspektive (2026-08-23)
 - **Werkzeug: `node spiele-dev/tools/th-augen.mjs <x> <z> [rot] [ziel.png]`** — setzt die
   Figur an den Ort und schaltet die Ego-Kamera ein. `th-blick` mit kleinem Radius landet
