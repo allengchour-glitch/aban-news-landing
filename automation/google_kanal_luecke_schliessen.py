@@ -177,6 +177,16 @@ def main():
         print("FERTIG")
         return
 
+    # Auch das NEIN gehoert ins Ledger. Ein Produkt, das hier begruendet draussen bleibt,
+    # traegt keinen Tag — steht der Grund nur im Terminal, meldet der Waechter es morgen
+    # erneut als unerklaerte Luecke. (Dieselbe Klasse wie der /tmp-Cursor in
+    # google_feed_cull.py: eine bewusste Entscheidung, die nirgends nachlesbar ist.)
+    for pid, titel, g in blockiert:
+        if pid.split("/")[-1] in erledigt or pid in erledigt:
+            continue
+        with open(LEDGER, "a") as f:
+            f.write(f"{pid}\tbleibt-draussen:{g}\t{titel[:60]}\n")
+
     gesetzt = 0
     for pid, titel, _ in frei:
         # ⚠️ MIT QUITTUNG. Genau das Fehlen einer Antwortprüfung hat diese Lücke erzeugt —

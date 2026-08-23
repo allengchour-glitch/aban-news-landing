@@ -20,7 +20,16 @@ Q='''query($c:String){products(first:100,after:$c){pageInfo{hasNextPage endCurso
  g:publishedOnPublication(publicationId:"%s")
  mediaCount{count} options{name values}
  priceRangeV2{minVariantPrice{amount}} }}}'''%GOOG
+# ⚠️ 23.08.2026 — DIESER LAUF HINTERLIESS KEINE SPUR IM REPO, und das hat einen anderen
+# Waechter zu Falschmeldungen gebracht. `google_kanal_luecke.py` meldet jedes Produkt, das
+# im Online Store steht, bei Google fehlt und KEINEN erklaerenden Grund traegt. Ein hier
+# bewusst entfernter Artikel traegt aber keinen Tag — sein Grund stand nur in /tmp. Folge:
+# der Katalog-Audit vom 22.08. hat 27 Produkte faelschlich als "unerklaerte Luecke"
+# angeklagt, und jede kuenftige Analyse haette dieselben erneut gemeldet.
+# «Was nur in /tmp lebt, ist verloren» — zum dritten Mal in diesem Projekt.
+# Das Ledger liegt jetzt im Repo und nennt den GRUND je Produkt.
 state="/tmp/gfeed_cursor.txt"
+LEDGER="dropship/_google_feed_cull.txt"
 cur=(open(state).read().strip() or None) if (os.path.exists(state) and not DRY) else None
 tot=infeed=drop=0
 reasons={}
@@ -43,6 +52,8 @@ while True:
             reasons[why]=reasons.get(why,0)+1; drop+=1
             if not DRY:
                 gql('mutation($id:ID!,$p:[PublicationInput!]!){publishableUnpublish(id:$id,input:$p){userErrors{message}}}',{"id":p["id"],"p":[{"publicationId":GOOG}]})
+                with open(LEDGER,"a") as fh:
+                    fh.write(f"{p['id']}\t{why}\t{t[:70]}\n")
                 time.sleep(0.16)
     if not pg["pageInfo"]["hasNextPage"]: break
     cur=pg["pageInfo"]["endCursor"]

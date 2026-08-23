@@ -44,6 +44,37 @@ KLINGE = re.compile(r"\b(messer|klinge\w*|dolch|machete|axt|beil|schwert|katana)
 KLINGE_AUSN = re.compile(r"jeans|kleid|hose|shirt|hoodie|wasch|deko|figur|anhänger|"
                          r"halskette|ohrring|spielzeug|plüsch|kostüm", re.I)
 
+# Ledger der Wächter, die bewusst aus dem Google-Kanal ENTFERNEN. Ein so entfernter
+# Artikel traegt keinen Tag — sein Grund steht nur hier. Ohne diese Pruefung meldet der
+# Waechter jede bewusste Kuration als Fehler (der Katalog-Audit vom 22.08. hat genau so
+# 27 Produkte falsch angeklagt).
+# Jede Zeile: Produkt-Gid, Grund, Titel. Beim Ledger des Schliessers zaehlt NUR das
+# begruendete Nein («bleibt-draussen:…») als Erklaerung — «publiziert» ist das Gegenteil
+# und darf eine spaetere Entfernung nicht verdecken.
+LEDGER = [("dropship/_google_kanal_gesaeubert.txt", None),
+          ("dropship/_google_kanal_gesaeubert2.txt", None),
+          ("dropship/_google_feed_cull.txt", None),
+          ("dropship/_google_kanal_luecke_geschlossen.txt", "bleibt-draussen")]
+
+
+def gesaeubert():
+    """Produkt-ID -> Grund, aus allen Saeuberungs-Ledgern."""
+    raus = {}
+    for pfad, nur in LEDGER:
+        if not os.path.exists(pfad):
+            continue
+        for zeile in open(pfad, encoding="utf-8", errors="replace"):
+            teile = zeile.rstrip("\n").split("\t")
+            if not teile or not teile[0].strip():
+                continue
+            grund = teile[1] if len(teile) > 1 else "gesaeubert"
+            if nur and not grund.startswith(nur):
+                continue
+            pid = teile[0].strip().split("/")[-1]
+            if pid.isdigit():
+                raus.setdefault(pid, grund)
+    return raus
+
 
 def gql(q, v=None):
     p = json.dumps({"query": q, "variables": v or {}})
@@ -69,6 +100,8 @@ def gql(q, v=None):
 
 
 def main():
+    raus = gesaeubert()
+    print(f"Saeuberungs-Ledger: {len(raus)} bewusst entfernte Produkte bekannt", flush=True)
     cur, ges, treffer = None, 0, []
     while True:
         d = gql('query($c:String){ products(first:30, after:$c, '
@@ -92,6 +125,8 @@ def main():
                 continue
             if not pubs.get("Online Store"):
                 continue                       # gar nicht im Shop -> anderes Thema
+            if p["id"].split("/")[-1] in raus:
+                continue                       # bewusst gesaeubert (Grund im Ledger)
             tg = {t.lower() for t in p["tags"]}
             if tg & SPERR or any(t.startswith("google-kanal-") for t in tg):
                 continue                       # Ausschluss ist erklaert

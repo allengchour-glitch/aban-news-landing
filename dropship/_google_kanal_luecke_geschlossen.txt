@@ -63,3 +63,9 @@ gid://shopify/Product/15506541773185	publiziert	Gestreifter Kissenbezug aus Baum
 gid://shopify/Product/15506669142401	publiziert	Elegantes Neckholder-Kleid mit Schlitz
 gid://shopify/Product/15506708595073	publiziert	Opal-Halskette aus 925er Silber, oval, blau-weiss
 gid://shopify/Product/15506894356865	publiziert	Memory Foam Herz-Bein-Kissen
+gid://shopify/Product/15508365836673	bleibt-draussen:heikle Ware	LED-Gesichtsmaske mit 7 Farben
+gid://shopify/Product/15510324150657	publiziert	Figurbetontes Plisseekleid mit Schlitz
+gid://shopify/Product/15510326608257	publiziert	Leichter Outdoor Mini-Rucksack
+gid://shopify/Product/15510329295233	publiziert	Tie-Dye Kurzarmhemd für Herren
+gid://shopify/Product/15510329328001	publiziert	Mochi Keramik Futternapf für Katzen
+gid://shopify/Product/15510334046593	publiziert	Graceful Square Toe Sandalen mit Absatz
