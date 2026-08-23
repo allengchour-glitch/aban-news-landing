@@ -23,6 +23,28 @@
 - Geprueft: 844x390, 915x412, 740x360, 667x375, 812x375, 640x360, 1024x600, 896x414,
   720x320 — jeweils 0 Ueberschneidungen, 0 ueber den Rand.
 
+## 🦆 Ambiente-Paket: Enten, Fahnen, Falter, Nachthimmel (2026-08-23)
+- Grep-Anker: `var ENTEN=`, `var FAHNEN=`, `var FALTER=`, `var NACHT=`, `m.t==="enten"`
+- **Enten** (5, auf 3 InstancedMesh): kreisen auf dem Seepark-See; wer ans Ufer tritt
+  (Distanz 12…17 zur Seemitte), lockt sie an — exakt das Brunnen-Muster (Host
+  entscheidet, `netSend({t:"enten"})` an den Gast). Zaehlt `stats.enten` fuer
+  Tages-Mission und Erfolg.
+- **⚠️ MISS_POOL/ACH NUR HINTEN ANFUEGEN:** Missionen speichern den Pool-INDEX im
+  Spielstand — wer mittendrin einfuegt, verdreht die Missionen aller alten Saves.
+- **Fahnen** mit Vertex-Sinus-Wellen, Wind haengt am Wetter. Standorte OHNE Bodenabdruck
+  (Turmspitze via `window._turm`, Dach des Spielstands) — kein freiPlatz-Risiko. Der
+  Turm laedt spaet: Fahne wird im Update-Takt gebaut, sobald `_turm` existiert.
+- **Falter** tags (1 InstancedMesh, 22 Stueck, Fluegelschlag = X-Skalierung der
+  Instanzmatrix), **Gluehwuermchen + Sternschnuppen** nachts. Nur die Sternschnuppe
+  bewegt ihr OBJEKT und braucht `_bewegt`; alles andere animiert Instanzmatrizen oder
+  Vertices bei stehender Objektmatrix — das darf `_einfrieren()` gefahrlos einfrieren.
+- **⚠️ HARNESS-FALLE: die Spielschleife deckelt `dt` auf 0,05 s** (Zeile ~11000). Im
+  Software-Renderer bei ~1 Bild/s laeuft die SPIELZEIT damit rund 20x langsamer als die
+  Wanduhr. Ein Cooldown von 6 s braucht im Test 2 Minuten — mein erster Probe-Durchlauf
+  meldete das Fuettern faelschlich als kaputt. Fuer Tests: Cooldowns per Sonde nullen
+  und die Figur mit `_hide` festnageln (sonst laeuft die KI sie aus dem Trigger-Ring).
+- Kosten des ganzen Pakets: ~8 Zeichenaufrufe (647 gesamt, vorher 632).
+
 ## 🧱 `bauViele()` — wiederholte Kleinteile instanzieren (2026-08-23)
 - Grep-Anker: `function bauViele`, `window._instGruppen`, `window._instanzen`
 - **Gemessen, nicht geraten:** die teuersten Posten sind nicht die grossen Gebaeude,
