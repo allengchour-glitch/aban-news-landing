@@ -90,7 +90,7 @@ def main():
 
     cur, offen, ok, fehlt = None, [], 0, []
     while True:
-        d = gql('query($c:String){products(first:60,after:$c,query:"status:active"){pageInfo{hasNextPage endCursor} nodes{id title '
+        d = gql('query($c:String){products(first:150,after:$c,query:"status:active"){pageInfo{hasNextPage endCursor} nodes{id title '
                 'metafield(namespace:"custom",key:"print_file"){value}}}}', {"c": cur})
         if d is None:
             print("PAUSE (Shopify antwortet nicht) — nichts geändert")
