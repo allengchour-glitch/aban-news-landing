@@ -51,7 +51,22 @@ elif [ "$A" -gt 1 ]; then
     | awk '$3=="bash" && $4 ~ /fixer_keepalive\.sh$/ {print $2, $1}' \
     | sort -n | head -n -1 | awk '{print $2}' | xargs -r kill 2>/dev/null
 else
-  echo "AUFSEHER laeuft"
+  # ⚠️ «Er laeuft» ist nicht «er arbeitet». Der Aufseher schreibt in jeder Runde (alle 120 s)
+  # /tmp/_fixer_herzschlag. Ist der aelter als 10 Minuten, haengt er — am 23.08.2026 stand er
+  # so 72 Minuten still, waehrend beide Stunden-Routinen brav «AUFSEHER laeuft» meldeten und
+  # kein einziger Qualitaets-Waechter mehr lief. Fehlt die Datei ganz, ist es eine alte
+  # Fassung ohne Herzschlag — dann NICHT toeten, sonst killt dieses Skript einen gesunden
+  # Aufseher bei jedem Lauf.
+  HB=/tmp/_fixer_herzschlag
+  if [ -f "$HB" ] && [ $(( $(date +%s) - $(cat "$HB" 2>/dev/null || echo 0) )) -gt 600 ]; then
+    echo "AUFSEHER haengt (Herzschlag kalt) → neu gestartet"
+    ps -eo pid,args --no-headers \
+      | awk '$2=="bash" && $3 ~ /fixer_keepalive\.sh$/ {print $1}' | xargs -r kill 2>/dev/null
+    sleep 2
+    starte fixer_keepalive bash automation/fixer_keepalive.sh
+  else
+    echo "AUFSEHER laeuft"
+  fi
 fi
 
 # ── 2. CJ-Grind — aber NICHT im Vorrang-Fenster.

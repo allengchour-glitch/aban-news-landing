@@ -52,12 +52,20 @@ dreht_sich_im_kreis() {
     local dauer=$(( $(date +%s) - $(cat "$start" 2>/dev/null || echo 0) ))
     rm -f "$start"
     if [ "$dauer" -lt 60 ]; then
-      echo $(( $(cat "$zaehler" 2>/dev/null || echo 0) + 1 )) > "$zaehler"
+      local vor; vor=$(cat "$zaehler" 2>/dev/null)
+      case "$vor" in (''|*[!0-9]*) vor=0 ;; esac
+      echo $(( vor + 1 )) > "$zaehler"
     else
       : > "$zaehler"   # hat echte Arbeit geleistet
     fi
   fi
-  [ "$(cat "$zaehler" 2>/dev/null || echo 0)" -ge 5 ] || return 1
+  # ⚠️ `: > datei` hinterlaesst eine LEERE Datei, keine 0 — `cat` gelingt dann und liefert
+  # "", das `|| echo 0` feuert nie, und `[ "" -ge 5 ]` bricht mit «integer expression
+  # expected» ab. Stand seit dem Einbau am 21.08. in jedem Logdurchlauf. Deshalb wird der
+  # Wert erst gelesen, dann auf eine Zahl geprueft.
+  local stand; stand=$(cat "$zaehler" 2>/dev/null)
+  case "$stand" in (''|*[!0-9]*) stand=0 ;; esac
+  [ "$stand" -ge 5 ] || return 1
   # Ausgesetzt — aber nur eine Stunde, danach neuer Versuch (der Befund kann behoben sein).
   if [ -f "$gemeckert" ] && [ $(( $(date +%s) - $(stat -c %Y "$gemeckert") )) -gt 3600 ]; then
     rm -f "$gemeckert" "$zaehler"; return 1
@@ -551,5 +559,12 @@ while true; do
     echo "$(date -u +%H:%M) restart $R"; sleep 3
   done
   fi
+  # ⚠️ 23.08.2026 — HERZSCHLAG. Von aussen war bisher nur «0 Instanzen» und «>1
+  # Instanzen» erkennbar. Ein Aufseher, der LEBT aber haengt (z. B. in do_wait auf
+  # ein Kind, siehe Lehre 0f), besteht jede Prozesspruefung und startet trotzdem
+  # keinen Waechter mehr. Heute stand er so von 07:36 bis 08:48 still, waehrend
+  # beide Stunden-Routinen «AUFSEHER laeuft» meldeten. Diese Datei wird in JEDER
+  # Runde angefasst; engine_keepalive.sh raeumt einen kalten Aufseher ab.
+  date +%s > /tmp/_fixer_herzschlag
   sleep 120
 done
