@@ -72,7 +72,8 @@ const kosten=(usd,grams)=>{const u=parseFloat((''+usd).split('--')[0])||0;
 // im Farbwaehler). Neue Farben NUR dort nachtragen.
 import { FARBEN as DECOLOR, deColor } from './farben_de.mjs';
 import { titelMitMenge } from './stueckzahl.mjs';
-const SIZESET=new Set(['XS','S','M','L','XL','XXL','XXXL','2XL','3XL','4XL','5XL','6XL','ONE SIZE','ONESIZE','FREE SIZE','FREESIZE','F']);
+import { SIZESET, SORDER } from './cj_groessen.mjs';
+// Grössen kommen aus automation/cj_groessen.mjs — dort und NUR dort ergänzen.
 // ⚠️ CJ stellt der Farbe oft seinen Artikelcode voran: «A039 Black», «E7916 White»,
 // «Ts3018 Pink» — und der stand danach im Farb-Dropdown, wo die Kundin ihn anklicken MUSS
 // (2026-08-20, 151 aktive Produkte betroffen). `istCode` fing das nicht ab, weil es nur
@@ -129,7 +130,7 @@ const istCode=v=>{const t0=(v||'').trim(),mg=t0.match(CODEGR),t=mg?mg[1]:t0;retu
   &&!/(xs|s|m|l|xl|xxl|xxxl)$/i.test(t)
   &&!/(gb|tb|mb|mah|ma|mm|cm|ml|kg|pcs|pc|pack|ports|inch|yards?|frequency|style|model|color|size|no)/i.test(t)
   &&!/(black|white|red|blue|green|yellow|grey|gray|pink|purple|brown|beige|gold|silver|orange|navy|khaki)/i.test(t);};
-const SORDER=['XS','S','M','L','XL','XXL','2XL','3XL','4XL','5XL','6XL'];
+
 // Ist der Wert eine brauchbare Farbangabe für Google? Ziffern, Stück-/Stilwörter und
 // Grössen-Präfixe beweisen das Gegenteil («Black-1XL», «Style 1-1 PC», «Picture Color»).
 // Ein leeres Farbfeld kostet im Feed nichts, ein falsches macht die Ware unauffindbar.

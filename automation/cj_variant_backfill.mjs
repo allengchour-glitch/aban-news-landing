@@ -26,6 +26,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 // deutsche Farben an, dieser Nachruester haengte «Dark Gray» daneben. Seit 21.08.2026 teilen
 // sich alle CJ-Werkzeuge automation/farben_de.mjs.
 import { deColor } from './farben_de.mjs';
+import { SORDER } from './cj_groessen.mjs';
 
 const MAT_DE = { plastic:'Kunststoff', metal:'Metall', glass:'Glas', 'stainless steel':'Edelstahl',
   cotton:'Baumwolle', polyester:'Polyester', wood:'Holz', ceramic:'Keramik', silicone:'Silikon',
@@ -81,7 +82,7 @@ function parseVar(v){ const k=(v.variantKey||'').trim(); const i=k.lastIndexOf('
   else if(k){ if(SZ.test(k)) size=k; else color=k; }
   return { color, size, price:Number(v.variantSellPrice)||0, weight:Number(v.variantWeight)||0, sku:v.variantSku||'' }; }
 
-const SORDER=['XXS','XS','S','M','L','XL','XXL','3XL','4XL','5XL'];
+// SORDER kommt aus automation/cj_groessen.mjs — dort und NUR dort ergänzen.
 function chf(usd, weightG){ const landed = usd*0.9 + Math.max(0,( (weightG>500?12:7) )-7);
   let p = Math.max(landed*1.4, landed+5, 14.90); return Math.floor(p)+0.90; }
 

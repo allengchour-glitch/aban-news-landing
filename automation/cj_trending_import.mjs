@@ -41,7 +41,8 @@ import { chf, kosten, gewicht } from './cj_preis.mjs';
 // im Farbwaehler). Neue Farben NUR dort nachtragen.
 import { FARBEN as DECOLOR, deColor } from './farben_de.mjs';
 import { titelMitMenge } from './stueckzahl.mjs';
-const SIZESET=new Set(['XS','S','M','L','XL','XXL','XXXL','2XL','3XL','4XL','5XL','6XL','ONE SIZE','ONESIZE','FREE SIZE','FREESIZE','F']);
+import { SIZESET, SORDER } from './cj_groessen.mjs';
+// Grössen kommen aus automation/cj_groessen.mjs — dort und NUR dort ergänzen.
 // ⚠️ CJ stellt der Farbe oft seinen Artikelcode voran: «A039 Black», «E7916 White»,
 // «Ts3018 Pink» — und der stand danach im Farb-Dropdown, wo die Kundin ihn anklicken MUSS
 // (2026-08-20, 151 aktive Produkte betroffen). `istCode` fing das nicht ab, weil es nur
@@ -67,7 +68,7 @@ const codeMap=colors=>{const neu=colors.map(c=>deColor(ohneCode(c)));
   if(neu.some(x=>!x)||new Set(neu).size!==colors.length)return null;
   return neu.every((x,i)=>x===colors[i])?null:new Map(colors.map((c,i)=>[c,neu[i]]));};
 const isSize=s=>{const u=(s||'').trim().toUpperCase();return SIZESET.has(u)||/^\d{1,2}$/.test(u)||/^(EU|US|UK)?\s?\d{2}$/.test(u);};
-const SORDER=['XS','S','M','L','XL','XXL','2XL','3XL','4XL','5XL','6XL'];
+
 function parseVar(v){const k=(v.variantKey||'').trim();const i=k.lastIndexOf('-');let color=null,size=null;
  if(i>0){const a=k.slice(0,i).trim(),b=k.slice(i+1).trim();if(isSize(b)){color=a;size=b.toUpperCase();}else color=k;}
  else if(isSize(k))size=k.toUpperCase();else color=k||null;
