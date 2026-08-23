@@ -935,3 +935,10 @@ gid://shopify/Product/15448008327553	zugeordnet	20	Elegante Off-Shoulder Chiffon
 gid://shopify/Product/15448008491393	zugeordnet	15	Retro-Shirt mit Rüschen und lockerer Passform
 gid://shopify/Product/15448008655233	zugeordnet	24	Bedrucktes Kurzarm-T-Shirt mit Rundhals
 gid://shopify/Product/15448008786305	zugeordnet	30	Elegantes Kurzarm-Top mit V-Ausschnitt und Spitze
+gid://shopify/Product/15448009048449	zugeordnet	25	Fransen T-Shirt mit Rundhals und Halbarm
+gid://shopify/Product/15448009834881	zugeordnet	12	Satin-Top im China-Stil mit Mandarinkragen
+gid://shopify/Product/15448010097025	zugeordnet	4	Gehäkeltes Bikini Cover-Up mit Quasten
+gid://shopify/Product/15448010260865	zugeordnet	25	Minimalistisches Leinen-Shirt mit Rundhals
+gid://shopify/Product/15448010391937	zugeordnet	25	Gestreiftes Kurzarmshirt mit Rundhals
+gid://shopify/Product/15448010555777	zugeordnet	25	Ärmelloses bedrucktes Rollkragen-Top
+gid://shopify/Product/15448010719617	zugeordnet	24	Elegantes V-Neck Top mit Schnallendetail
