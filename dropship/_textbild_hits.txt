@@ -10191,3 +10191,5 @@ gid://shopify/Product/15500914590081	33->0	Schwarzes Satin-Kleid
 gid://shopify/Product/15500914622849	191->3	Spice-Schublade für den Essplatz
 gid://shopify/Product/15500914655617	47->0	9-teiliges Ohrenschmalz-Entfernungsset aus Stahl
 gid://shopify/Product/15500915147137	21->0	Ärmelloses Polka-Dot Kleid im French-Stil
+gid://shopify/Product/15500915212673	10->0	Katzenbauch-Kissen aus Memory-Schaum
+gid://shopify/Product/15500915343745	118->1	Gemüse-Kissen für Sofa und Deko
