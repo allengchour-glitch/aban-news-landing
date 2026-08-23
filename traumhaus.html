@@ -7829,6 +7829,25 @@ function loadSnapshot(sn){
   (sn.ki||[]).forEach(function(kd){var nk=spawnKind(kd.b);if(nk){nk.name=kd.n;nk.alter=kd.a;}});
   updHUD();}
 function onNetMsg(m){
+  /* ⚠️ DER HOST IST DIE REIHENFOLGE. Gemessen im Zwei-Seiten-Test: greifen beide
+     im selben Moment dieselbe Zelle an, wendet jede Seite erst ihre eigene und
+     dann die fremde Bauaktion an — und endet mit dem Wert des ANDEREN. Aus
+     "Host baut Wand, Gast baut Fenster" wurde Host=Fenster / Gast=Wand, aus
+     Boden 0 gegen Boden 2 wurde Host=2 / Gast=0. Ein sauberer Tausch, den
+     danach nichts mehr korrigiert: die beiden sehen dauerhaft verschiedene
+     Haeuser, ueber jeden Spielstand hinweg.
+     Behoben, ohne den Gast auf eine Netzrunde warten zu lassen: der Gast baut
+     weiterhin sofort (optimistisch), aber der HOST schickt jede Bauaktion, die
+     bei ihm ankommt, als verbindliche Fassung zurueck. Damit gibt genau eine
+     Reihenfolge den Ton an — seine. Der Gast wendet die Rueckmeldung stumm an
+     (`silent`), es entsteht also keine Schleife.
+     ⚠️ Das Echo steht VOR der Kette und NICHT darin. Zwischen zwei `else if`
+     geschoben waere es zwar gueltiges JavaScript — aber es haette alle
+     folgenden Zweige (geld, chat, emote, ping …) an seine eigene Bedingung
+     gehaengt. Eine Zeile, die still die halbe Nachrichtenbehandlung umhaengt,
+     findet beim naechsten Mal niemand. Der Inhalt ist in beiden Faellen
+     derselbe: diese Nachrichten sind aus sich heraus vollstaendig. */
+  if(mpHost&&MPs&&(m.t==="wall"||m.t==="paint"||m.t==="floor"||m.t==="furn"||m.t==="furnG"||m.t==="del"))netSend(m);
   if(m.t==="wall")doPlaceWall(m.x,m.y,m.d,m.ty,true);
   else if(m.t==="paint")doPaint(m.x,m.y,m.d,m.c,true);
   else if(m.t==="floor")doPlaceFloor(m.x,m.y,m.i,true);

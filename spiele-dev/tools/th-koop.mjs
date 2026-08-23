@@ -57,7 +57,23 @@ const SONDE = `function(){
           why:(MPs&&MPs._why)||"", st:MPs?MPs.status:"-",
           s:(sims||[]).map(function(q){return {x:+q.x.toFixed(3),z:+q.z.toFixed(3)};})};}`
 
-mitSonden(datei, { koop: SONDE, koopWatch: WATCH }, tmp)
+/* Zweite Stufe: was EINE Seite tut, muss auf der anderen ankommen. Genau das
+   ist die Klasse von Fehlern, die man solo nie sieht. */
+const ZUSTAND = `function(){
+  return {b:Object.keys(floors).length, w:Object.keys(walls).length, f:furn.length,
+          geld:geld, uhr:+(+uhrzeit).toFixed(2)};}`
+const ZELLE = `function(x,y,d){
+  var fb=floors[x+","+y], ww=walls[x+","+y+","+d];
+  return {b:(fb===undefined?null:fb), w:(ww?ww.type:null)};}`
+const TUN = `function(was,a,b,c){
+  if(was==="boden")doPlaceFloor(a,b,0);
+  else if(was==="wand")doPlaceWall(a,b,c,"wand");
+  else if(was==="geld"){geld+=a;geldSend();}
+  else if(was==="bodenI")doPlaceFloor(a,b,c);
+  else if(was==="wandT")doPlaceWall(a,b,c===0?0:1,arguments[4]);
+  return true;}`
+
+mitSonden(datei, { koop: SONDE, koopWatch: WATCH, zustand: ZUSTAND, tun: TUN, zelle: ZELLE }, tmp)
 koopServer()
 
 const browser = await chromium.launch({ executablePath: CHROMIUM,
@@ -176,6 +192,50 @@ console.log(`  Abstand Gast ↔ Host      Mittel ${(abst.reduce((a, b) => a + b,
 console.log(`  Nach dem Loslassen       ${Math.hypot(gE.x - hE.x, gE.z - hE.z).toFixed(2)} m   (soll gegen 0 gehen)`)
 console.log(`  Verlauf: ${abst.join(' ')}`)
 console.log(`\n  JS-Fehler: ${fehler.length}${fehler.length ? '\n   ' + fehler.slice(0, 4).join('\n   ') : ''}`)
+
+/* ── Abgleich: kommt an, was die andere Seite tut? ───────────────────────── */
+const z = async (p) => await p.evaluate(() => window.__th.zustand())
+const tun = async (p, ...a) => await p.evaluate((x) => window.__th.tun.apply(null, x), a)
+const pruef = []
+async function probe(titel, wer, aktion, feld, erwartet) {
+  const vorher = await z(wer === gast ? host : gast)
+  await aktion()
+  let jetzt = vorher, ok = false
+  for (let i = 0; i < 20 && !ok; i++) {
+    await gast.waitForTimeout(400); await host.evaluate(() => 1)
+    jetzt = await z(wer === gast ? host : gast)
+    ok = erwartet(vorher[feld], jetzt[feld])
+  }
+  pruef.push({ titel, ok, vorher: vorher[feld], jetzt: jetzt[feld] })
+}
+await probe('Gast baut Boden -> Host', gast, () => tun(gast, 'boden', 5, 5), 'b', (v, n) => n > v)
+await probe('Gast baut Wand  -> Host', gast, () => tun(gast, 'wand', 5, 5, 0), 'w', (v, n) => n > v)
+await probe('Host baut Boden -> Gast', host, () => tun(host, 'boden', 7, 7), 'b', (v, n) => n > v)
+await probe('Host +500 Geld  -> Gast', host, () => tun(host, 'geld', 500), 'geld', (v, n) => n >= v + 500)
+await probe('Host-Uhr        -> Gast', host, async () => {}, 'uhr', (v, n) => n !== v)
+
+/* ── Streitfall: BEIDE greifen im selben Moment dieselbe Zelle an ──────────
+   Hier leben die echten Koop-Fehler. Enden die Seiten mit verschiedenen
+   Werten, sehen die Spieler dauerhaft verschiedene Haeuser — und nichts
+   korrigiert das je wieder. */
+const zelle = async (p, x, y, d) => await p.evaluate((a) => window.__th.zelle(a[0], a[1], a[2]), [x, y, d])
+await Promise.all([
+  host.evaluate(() => window.__th.tun('bodenI', 9, 9, 0)),
+  gast.evaluate(() => window.__th.tun('bodenI', 9, 9, 2))
+])
+await Promise.all([
+  host.evaluate(() => window.__th.tun('wandT', 9, 9, 0, 'wand')),
+  gast.evaluate(() => window.__th.tun('wandT', 9, 9, 0, 'fenster'))
+])
+for (let i = 0; i < 12; i++) { await gast.waitForTimeout(400); await host.evaluate(() => 1) }
+const zh = await zelle(host, 9, 9, 0), zg = await zelle(gast, 9, 9, 0)
+pruef.push({ titel: 'Streit Boden (9|9)', ok: zh.b === zg.b, vorher: 'Host ' + zh.b, jetzt: 'Gast ' + zg.b })
+pruef.push({ titel: 'Streit Wand (9|9)', ok: zh.w === zg.w, vorher: 'Host ' + zh.w, jetzt: 'Gast ' + zg.w })
+
+console.log(`\n── Abgleich Host <-> Gast ──`)
+pruef.forEach((r) => console.log(`  ${r.ok ? '\x1b[32m✔\x1b[0m' : '\x1b[31m✘\x1b[0m'} ${r.titel.padEnd(26)} ${r.vorher} -> ${r.jetzt}`))
+const schlecht = pruef.filter((r) => !r.ok).length
+console.log(`\n  ${schlecht ? '\x1b[31m' + schlecht + ' von ' + pruef.length + ' kommen NICHT an\x1b[0m' : '\x1b[32malle ' + pruef.length + ' kommen an\x1b[0m'}`)
 
 await browser.close()
 aufraeumen(tmp)
