@@ -104,3 +104,14 @@
 15483933294977	getrennt:Inhalt:6	Wasserdichte Tarnmuster-Tasche
 15483933360513	getrennt:Grösse:4	Hundematte mit Motiv
 15447623958913	einheitlich:30X30cm	Kugeliges Zierkissen im nordischen Stil
+15447882137985	einheitlich:190x65cm	Baumwoll-Leinen Gestreifter Jacquard Schal
+15447882432897	einheitlich:130X150cm	Damen-Cape mit Ethno-Muster und Wärme-Funktion
+15447882596737	einheitlich:105X43cm	Multifunktionaler Halswärmer für jede Jahreszeit
+15447882891649	einheitlich:100x41cm	Gestreifter Strick-Schal für Damen
+15447883022721	einheitlich:110x43cm	Vielseitiger Schal mit abnehmbarem Kragen
+15447883153793	einheitlich:170x10cm	Vintage Ombre Schal in Seiden-Optik
+15447883317633	einheitlich:90x35cm	Dreieckstuch mit Cutout und Quasten
+15447883383169	einheitlich:190x80cm	Gedruckter Baumwoll-Leinen Schal für Herbst/Winter
+15447883645313	einheitlich:185x85cm	Schal in Seiden-Optik mit UV-Schutz für Strand & Freizeit
+15447883710849	einheitlich:65x180cm	Kaschmirähnlicher Schal mit Totem-Muster
+15447883841921	einheitlich:100x40cm	Vielseitiger Dreiecksschal mit Bindebändern
