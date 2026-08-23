@@ -777,3 +777,8 @@ gid://shopify/Product/15445800059265	CHF 30.75	1 Varianten	10-in-1 Diamant-Make-
 gid://shopify/Product/15445800157569	CHF 24.36	1 Varianten	4-in-1 Reise-Make-up Pinselset
 gid://shopify/Product/15445800255873	CHF 30.75	1 Varianten	10er Luxus Make-up Pinselset mit Kristallgriff
 gid://shopify/Product/15445800288641	CHF 17.49	2 Varianten	20-teiliges Make-up Pinselset
+gid://shopify/Product/15445800354177	CHF 17.40	4 Varianten	4-in-1 Magnetischer Make-up Pinsel
+gid://shopify/Product/15445800386945	CHF 17.79	3 Varianten	Magnetisches Lidschattenpinsel-Set
+gid://shopify/Product/15445800452481	CHF 24.37	1 Varianten	Mischschale für Gesichtsmasken
+gid://shopify/Product/15445800518017	CHF 17.32	3 Varianten	2-in-1 Farbwechsel Foundation Stick & Pinsel
+gid://shopify/Product/15445800550785	CHF 26.34	1 Varianten	Gesichtsmassagegerät
