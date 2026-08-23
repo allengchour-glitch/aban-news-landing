@@ -49,3 +49,20 @@
 2026-08-15	Blush & Lippen-Balm	gid://shopify/Product/15445834793345	High Gloss Rouge Stick
 2026-08-19	Haarglätter & Styler	gid://shopify/Product/15495239958913	Automatischer Lockenstab für grosse Wellen (25mm)
 2026-08-19	Haarglätter & Styler	gid://shopify/Product/15495399604609	5-in-1 Warmluftbürste mit automatischem Lockenwickler
+2026-08-23	Beauty-Gerät	gid://shopify/Product/15502557741441	EMS Mikrostrom Massagegerät
+2026-08-23	Beauty-Gerät	gid://shopify/Product/15510323528065	Silikon-Gesichtsreinigungsbürste
+2026-08-23	Hautpflege-Serum	gid://shopify/Product/15509395145089	Tranexamsäure Serum gegen Pigmentflecken (50ml)
+2026-08-23	Hautpflege-Serum	gid://shopify/Product/15505406001537	Hyaluronsäure Hautpflege-Set
+2026-08-23	Mini-Beamer	gid://shopify/Product/15481692258689	HD Mini-Projektor für Zuhause
+2026-08-23	Mini-Beamer	gid://shopify/Product/15481681019265	Tragbarer 4K WiFi HD Mini-Projektor
+2026-08-23	Ordnung & Aesthetic	gid://shopify/Product/15510150971777	Tassen-Organizer aus Massivholz
+2026-08-23	Ordnung & Aesthetic	gid://shopify/Product/15508463780225	Transparente Kühlschrank-Aufbewahrungsbox
+2026-08-23	Shapewear	gid://shopify/Product/15510297837953	Figurformendes ärmelloses Kleid
+2026-08-23	Shapewear	gid://shopify/Product/15509385281921	Figurformendes Slim-Fit Kleid mit Cape
+2026-08-23	Ladestation 3-in-1	gid://shopify/Product/15479513678209	3-in-1 MagSafe Power Bank für Smartwatches
+2026-08-23	Ladestation 3-in-1	gid://shopify/Product/15450864451969	Magnetische Wireless Powerbank 10.000 mAh
+2026-08-23	Haarglätter & Styler	gid://shopify/Product/15500909379969	Lockenstab für einfache Stylings
+2026-08-23	Haarglätter & Styler	gid://shopify/Product/15447627334017	Vollautomatischer 32mm Lockenstab mit Negativ-Ionen
+2026-08-23	Kerzenwärmer & Duft	gid://shopify/Product/15450834469249	New Flame Aroma Diffuser mit Flammeneffekt
+2026-08-23	Kerzenwärmer & Duft	gid://shopify/Product/15450853245313	Flammen Aroma Diffusor für Zuhause
+2026-08-23	Beutelverschliesser	gid://shopify/Product/15428429611393	Vakuumierer kabellos · Lebensmittel frisch halten
