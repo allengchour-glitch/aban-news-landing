@@ -7,3 +7,73 @@
 15447989322113	zusammengelegt:4	Geripptes High-Neck Tanktop für Damen
 15448008786305	zusammengelegt:6	Elegantes Kurzarm-Top mit V-Ausschnitt und Spitze
 15448030839169	zusammengelegt:3	Corduroy V-Neck Langarmshirt mit Knöpfen
+15448035230081	zusammengelegt:4	Elegante Langarm-Strickjacke für Damen
+15448077140353	zusammengelegt:6	V-Neck Camisole mit Wellenkante
+15448077205889	zusammengelegt:4	Besticktes, asymmetrisches Rüschen-Top für Damen
+15448080810369	zusammengelegt:2	Langarm-Shirt mit Rundhalsausschnitt
+15448104370561	zusammengelegt:8	Elegantes Langarm-Sweatshirt für Damen
+15448104960385	zusammengelegt:6	Kapuzenjacke mit Reissverschluss
+15448116265345	zusammengelegt:1	Damen Jumpsuit mit Print und Spaghettiträgern
+15448534122881	zusammengelegt:2	Grosser Einteiler mit Karomuster
+15448539922817	zusammengelegt:4	Eleganter Casual Jumpsuit mit weitem Bein
+15448582422913	zusammengelegt:3	Jumpsuit mit Blumenprint und weitem Bein
+15448582521217	zusammengelegt:2	Damen Jumpsuit mit weitem Bein – Blue-0XL
+15448587829633	zusammengelegt:2	Elegantes Vintage Maxikleid mit eckigem Ausschnitt
+15448588583297	zusammengelegt:1	Elegantes V-Neck Langarm-Top mit Spitze
+15448590549377	zusammengelegt:18	Lockerer Strick-Pullover mit V-Ausschnitt
+15448590549377	zusammengelegt:18	Lockerer Strick-Pullover mit V-Ausschnitt
+15448591008129	zusammengelegt:5	V-Ausschnitt Strickjacke mit Streifen
+15448591139201	zusammengelegt:1	Oversized Strick-Shirt mit V-Ausschnitt
+15448591270273	zusammengelegt:1	Boho Strick-Cardigan für den Sommer
+15448601297281	zusammengelegt:4	High Waist Skirted Leggings 2-in-1
+15448602083713	zusammengelegt:1	Leggings mit Kokosnuss-Knöpfen im Asia-Stil
+15448611586433	zusammengelegt:4	Blumenmuster High Waist Skort mit Shorts
+15448611881345	zusammengelegt:2	Leichter Skort mit Taschen
+15448611881345	zusammengelegt:2	Leichter Skort mit Taschen
+15448631542145	zusammengelegt:2	Vielseitige Cropped Jeans mit hohem Stretch
+15448631542145	zusammengelegt:2	Vielseitige Cropped Jeans mit hohem Stretch
+15448642191745	zusammengelegt:5	High-Waist Yoga Leggings mit Taschen
+15448650482049	zusammengelegt:2	Gestreifte Rippenhose mit hohem Bund
+15448651530625	zusammengelegt:1	Schwarze Slim-Fit Leggings für Damen
+15448657527169	zusammengelegt:18	Damen Langarm-Top mit Knöpfen in Übergrössen
+15448657920385	zusammengelegt:4	Eleganter Strickpullover mit Farbblock
+15448659001729	zusammengelegt:1	Damen Freizeit-Top mit Rundhals und 7/8-Ärmeln
+15448659460481	zusammengelegt:2	Damen Mesh-Top mit Tupfenärmeln
+15448660312449	zusammengelegt:1	Elegante Langarm-Bluse mit Blumenmuster
+15448663163265	zusammengelegt:2	Damen Top mit Rundhals und Raffärmeln
+15448720540033	zusammengelegt:2	Herren Retro Übergangsjacke mit Revers
+15448756519297	zusammengelegt:2	Gestreifter A-Linien Maxi-Rock
+15448756814209	zusammengelegt:2	High Waist Minirock mit Rüschen und Innenfutter
+15448757502337	zusammengelegt:1	High Waist Vintage Maxi Jupe
+15449065718145	zusammengelegt:3	Corduroy Weste im Preppy-Stil für Herren
+15449105203585	zusammengelegt:14	Cardigan mit Lochmuster und Rüschen
+15449109561729	zusammengelegt:6	Gestreiftes Kurzarm-Shirt mit Schleife
+15449151603073	zusammengelegt:2	Damen Hoodie mit 3D Digital-Print
+15449163956609	zusammengelegt:4	Herren Mantel im Retro-Stil mit Reverskragen
+15449163989377	zusammengelegt:10	Baggy Freizeitjacke für Herren
+15449165037953	zusammengelegt:4	Retro Jeansjacke für Herren
+15449473614209	zusammengelegt:9	Ethnischer Vintage-Pullover
+15449474138497	zusammengelegt:12	Kapuzen-Pullover für Herren
+15449568805249	zusammengelegt:3	Sommerbluse mit Knopfleiste
+15449569198465	zusammengelegt:1	Boho Plus-Grösse Langarm Strickcardigan mit Laternenärmeln
+15449569427841	zusammengelegt:4	Damen-Cardigan mit Kapuze und Lantern-Arm
+15449569460609	zusammengelegt:6	Blumen-Kardigan für Damen
+15449571361153	zusammengelegt:2	Damen Cuff Washed Wide-Leg Crop-Jeans
+15449576145281	zusammengelegt:2	Damenhose, gerade, einfarbig
+15449576145281	zusammengelegt:2	Damenhose, gerade, einfarbig
+15449618121089	zusammengelegt:1	Lange, lässige Sundress
+15449618121089	zusammengelegt:1	Lange, lässige Sundress
+15449618416001	zusammengelegt:6	Damen-Top mit Stehbund und 3/4-Armeln
+15449618416001	zusammengelegt:6	Damen-Top mit Stehbund und 3/4-Armeln
+15449665175937	zusammengelegt:14	Sleeveless Bluse · Damen
+15449665175937	zusammengelegt:14	Sleeveless Bluse · Damen
+15450036601217	uebersprungen:Black -> Schwarz kollidiert	Retro-High-Top-Schuhe für Herren
+15450036601217	uebersprungen:Black -> Schwarz kollidiert	Retro-High-Top-Schuhe für Herren
+15450830176641	uebersprungen:Dark gray -> Dunkelgrau kollidiert	Kuschel-Hoodie mit grosser Tasche
+15450830176641	uebersprungen:Dark gray -> Dunkelgrau kollidiert	Kuschel-Hoodie mit grosser Tasche
+15451926757761	zusammengelegt:1	Leoparden-Kleid mit V-Ausschnitt
+15452689006977	zusammengelegt:2	Weit geschnittener Damenrock für Plus-Grössen
+15452689301889	zusammengelegt:6	Elegantes Langarm-Maxikleid
+15453921018241	zusammengelegt:1	Damen-Button-Up-Shirt, V-Ausschnitt, 3/4-Arm, Plus-Size, Kha
+15454047306113	zusammengelegt:1	Gelbe One-Shoulder-Kleider mit Rüschen
+15454047994241	zusammengelegt:5	V-Ausschnitt Kleid, Taille betonend, slim-fit, weite Maxi-Ro
