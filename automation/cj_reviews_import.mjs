@@ -11,7 +11,7 @@
  * No-op-safe: ohne CJ-/Judge.me-/Shopify-Creds passiert nichts (Exit 0). Idempotent über Ledger.
  * ENV: CJ_EMAIL, CJ_API_KEY · JUDGEME_PRIVATE_TOKEN [, JUDGEME_SHOP_DOMAIN] · SHOPIFY_CLIENT_ID/SECRET (o. ADMIN_TOKEN), SHOPIFY_SHOP
  *      [GEMINI_API_KEY → DE-Übersetzung] · [QUERY="tag:cj-real"] · [ONLY=handle,handle] · [LIMIT=25] · [PER=6]
- *      [MIN_SCORE=4] · [DRY_RUN=1]
+ *      [MIN_SCORE=1] · [DRY_RUN=1]
  */
 import fs from 'node:fs';
 
@@ -31,7 +31,15 @@ const ONLY = (process.env.ONLY || '').split(',').map(s => s.trim()).filter(Boole
 const LIMIT = Math.max(1, parseInt(process.env.LIMIT || '25', 10) || 25);
 const CJ_SLEEP = Math.max(200, parseInt(process.env.CJ_SLEEP || '1100', 10) || 1100);
 const PER = Math.max(1, parseInt(process.env.PER || '6', 10) || 6);
-const MIN_SCORE = Math.max(1, Math.min(5, parseInt(process.env.MIN_SCORE || '4', 10) || 4));
+// ⚠️ 23.08.2026 — VORGABE VON 4 AUF 1 GESENKT. Der Filter «nur ≥4★» hat aus echten
+// Kommentaren eine ROSINENAUSWAHL gemacht: 199 bewertete Produkte, davon 127 mit
+// glatten 5,0 und exakt EINES unter 4 Sternen. Ein solches Bild entsteht nicht durch
+// zufriedene Kundschaft, sondern durch die Vorauswahl — und die «Über uns»-Seite
+// behauptete daneben «alle Reviews sind echte Kunden». Echt waren sie; vollständig
+// nicht. Nach Schweizer UWG (Art. 3) ist das selektive Zeigen nur guter Bewertungen
+// eine irrefuehrende Angabe, auch wenn jede einzelne stimmt.
+// Kommentare unter 1 Stern gibt es nicht; 1 heisst also: ALLE nehmen.
+const MIN_SCORE = Math.max(1, Math.min(5, parseInt(process.env.MIN_SCORE || '1', 10) || 1));
 const DRY = process.env.DRY_RUN === '1';
 
 const CJ_BASE = 'https://developers.cjdropshipping.com/api2.0/v1';
