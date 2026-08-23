@@ -1125,3 +1125,6 @@
 15448638980481	material-floskel-entfernt	Camo Cargo Hose für Damen
 15448639242625	farbe-floskel-entfernt	High-Waist Flare Jeans mit Goldknöpfen
 15448639897985	material-floskel-entfernt	High-Waist Yoga Shorts für Damen
+15448640192897	material-floskel-entfernt	High-Waist Yoga Shorts mit Bauchkontrolle
+15448640520577	material-floskel-entfernt	High-Waist Yoga Shorts «Peach Butt»
+15448640848257	material-floskel-entfernt	High-Waist Yoga Shorts – Nahtloses Tragegefühl
