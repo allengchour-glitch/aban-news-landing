@@ -34,12 +34,39 @@ while true; do
 done
 echo "### QUEUE LEER → Kategorie-Fill-ROTATION (voll gas, divers statt Nagel-Default)"
 GRPDONE=/tmp/cj_grp_done.txt; touch $GRPDONE
-for G in kueche storage pet sport musik cjelektronik cjgadgets cjauto cjhome cjhaustier cjtaschen cjschmuck cjdamen cjherren makeup skincare gaming cjbasteln cjspielelektronik cjbeautytools cjuhren cjsneaker cjschuhekids; do
+GRPS="kueche storage pet sport musik cjelektronik cjgadgets cjauto cjhome cjhaustier cjtaschen cjschmuck cjdamen cjherren makeup skincare gaming cjbasteln cjspielelektronik cjbeautytools cjuhren cjsneaker cjschuhekids"
+# ⚠️ 23.08.2026 (zweiter Akt derselben Lehre): Sind ALLE Gruppen im Ledger, uebersprang die
+# Schleife jede einzelne und meldete sofort «CJ-Runner fertig» — der Aufseher startete das
+# Skript alle 25 Minuten, es lief, und tat NICHTS. Im Log stand eine Startzeile und eine
+# Fertigzeile; genau so sieht auch ein erfolgreicher Lauf aus. «Laeuft» ist nicht «arbeitet»,
+# und «fertig» ist nicht «hat gearbeitet» — die ZAHL der bearbeiteten Gruppen muss gezaehlt werden.
+# Deshalb: Ledger leeren und eine neue RUNDE starten, mit tieferer Paginierung (DEPTH-Lehre
+# 29.07.: flache Top-Seiten sind laengst erschoepft, eine neue Runde auf Seite 5 findet 0 Neue).
+OFFEN=0; for G in $GRPS; do grep -qx "$G" $GRPDONE || OFFEN=$((OFFEN+1)); done
+if [ "$OFFEN" -eq 0 ]; then
+  R=$(cat /tmp/cj_queue_round 2>/dev/null); [ -z "$R" ] && R=0
+  R=$((R+1)); [ "$R" -gt 12 ] && R=1
+  echo "$R" > /tmp/cj_queue_round
+  : > $GRPDONE
+  echo "### ALLE GRUPPEN ERLEDIGT → Runde $R, Ledger geleert"
+fi
+R=$(cat /tmp/cj_queue_round 2>/dev/null); [ -z "$R" ] && R=1
+TIEFE=$((5 + R*3)); [ "$TIEFE" -gt 40 ] && TIEFE=40
+echo "### RUNDE $R · MAXPAGE=$TIEFE"
+for G in $GRPS; do
   grep -qx "$G" $GRPDONE && continue
   echo "### GRP $G $(date -u +%H:%M)"
-  GRP=$G CAP=25 MAXPAGE=5 /opt/node22/bin/node automation/cj_category_fill.mjs
-  RC=$?
+  GRP=$G CAP=25 MAXPAGE=$TIEFE /opt/node22/bin/node automation/cj_category_fill.mjs 2>&1 | tee /tmp/cj_queue_grp.out
+  RC=${PIPESTATUS[0]}
   [ $RC -ne 0 ] && { echo "GRP $G RC=$RC — Punkte weg? Stop."; break; }
+  # ⚠️ Ein erschoepftes Tagesbudget (Code 16900500) beendet den Lauf mit «FERTIG: 0» und
+  # Exit 0 — die Gruppe waere also als erledigt quittiert worden, obwohl NICHTS geholt wurde,
+  # und die naechste Runde haette sie uebersprungen. Ein leeres Budget ist keine erledigte
+  # Arbeit: Gruppe NICHT quittieren, Runde nicht weiterdrehen, abbrechen.
+  if grep -q '16900500\|Insufficient API points' /tmp/cj_queue_grp.out; then
+    echo "### CJ-Tagesbudget erschoepft bei GRP $G — Gruppe bleibt offen, Stop."
+    break
+  fi
   echo "$G" >> $GRPDONE
   sleep 45
 done
