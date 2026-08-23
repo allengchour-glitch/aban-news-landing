@@ -4,10 +4,40 @@
 > ~600 kB in einer einzigen IIFE; ohne diese Karte sucht man lange und tritt in
 > Fallen, die hier schon einmal Stunden gekostet haben.
 
+## 📱 HUD: Bedienelemente paarweise auf Ueberschneidung pruefen (2026-08-23)
+- Messung: alle HUD-Ids bei mehreren Handy-Querformaten holen, PAARWEISE schneiden und
+  melden, wenn beide `pointer-events` haben. Genau so faellt auf, was im Bild niemand
+  sieht: bei **740x360 und 667x375** ueberlappten Pokal-Knopf und Minikarte um **48 x 8 px**,
+  beide klickbar, beide z-index 14 — der Tipp dort ist mehrdeutig.
+- **Ursache:** die `@media (max-height:380px)`-Regel zog die Karte auf `top:104`, waehrend
+  `#achBtn` bis y 112 reicht. Nach unten war kein Platz: „Bauen" sitzt auf `bottom:126`,
+  bei 360 px Hoehe also ab y 196 — zwischen Pokal (112) und Bauen bleiben **84 px** fuer
+  eine 86-px-Karte. Darum 76 px und `top:116`.
+- **⚠️ Messung und Bild im selben Moment nehmen.** Mein erster Durchgang hat erst gemessen
+  und dann fotografiert; dazwischen wechselte der Hinweistext und `#modeBtn` seinen
+  Zustand, und die Zahlen passten nicht mehr zum Bild. Fast haette ich daraus einen
+  zweiten „Befund" gebaut.
+- **⚠️ Nicht jede Zahl unter 44 px ist ein Fehler.** `#modeBtn` ist mit 38 px ABSICHTLICH
+  so klein (dokumentiert: zwischen Radar und Joystick bleiben ~50 px). Wer das auf 44
+  hebt, holt sich die Ueberschneidung zurueck, die drei Runden gekostet hat.
+- Geprueft: 844x390, 915x412, 740x360, 667x375, 812x375, 640x360, 1024x600, 896x414,
+  720x320 — jeweils 0 Ueberschneidungen, 0 ueber den Rand.
+
 ## 👁️ Auf AUGENHOEHE pruefen, nicht aus der Vogelperspektive (2026-08-23)
-- Werkzeug: `__th.ego(true)` (Haken ist schon da) + eine Sonde, die `sims[0]` an den
-  gewuenschten Ort setzt. `th-blick` mit kleinem Radius landet zu leicht unter einem
-  Portikus — die dokumentierte „Kamera in der Wand"-Falle.
+- **Werkzeug: `node spiele-dev/tools/th-augen.mjs <x> <z> [rot] [ziel.png]`** — setzt die
+  Figur an den Ort und schaltet die Ego-Kamera ein. `th-blick` mit kleinem Radius landet
+  zu leicht unter einem Portikus (die „Kamera in der Wand"-Falle).
+- **⚠️ `freiPlatz` BEWEIST KEINE GUTE KAMERAPOSITION.** Bei (0|96) meldete es „frei", die
+  Kamera steckte trotzdem in der Bahnhofswand — `freiPlatz` kennt eingetragene
+  Grundrisse, nicht jedes Dach und jede Kante. Das Werkzeug MISST darum zusaetzlich mit
+  einem Strahl aus der Kamera und warnt, wenn der erste Treffer naeher als 1,5 m liegt.
+  Ohne diese Anzeige haette ich zweimal ein Wandbild als Grafikfehler gedeutet.
+- **⚠️ Raycast nicht rekursiv ueber `scene.children`** — dabei stiess er auf ein Objekt
+  ohne Elternkette und starb mit `Cannot read properties of null (reading 'matrixWorld')`.
+  Erst eine eigene Liste sichtbarer Meshes sammeln, dann flach schneiden.
+- **Was der erste Blick von unten fand:** eine Ersatzbank am Sportplatz klebte mit 0,2 m
+  Ueberschneidung an einer Hauswand. Von oben unsichtbar, unter der 1-m-Schwelle der
+  Pruefung — auf Augenhoehe sofort zu sehen.
 - **Was von oben nie auffaellt:** aus der Ego-Sicht fuellt der HIMMEL rund 40 % des
   Bildes. Er war das flachste Element der Szene — und das haben alle bisherigen
   Vogelperspektiv-Runden uebersehen.

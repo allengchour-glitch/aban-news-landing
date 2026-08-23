@@ -57,7 +57,15 @@ canvas{display:block}
 @media (max-height:380px){
   /* 🩹 Schwarm-6: bei Viewports unter ~365px Hoehe schnitt das Radar (top 120,
      118px) in den Joystick (unten, 112px) und frass dessen Eingaben. */
-  #minimap{width:86px !important;height:86px !important;top:104px !important}
+  /* ⚠️ `top:104` kollidierte mit dem Pokal-Knopf (y 64…112): gemessen 48 x 8 px
+     Ueberschneidung bei 740x360 und 667x375 — BEIDE klickbar, beide z-index 14.
+     Ein Tipp in diesem Streifen ist damit mehrdeutig; je nach DOM-Reihenfolge
+     oeffnet er die Erfolge statt die grosse Karte. Genau diese Fehlerklasse
+     (Bedienelemente uebereinander) ist in dieser Datei schon dreimal aufgetreten.
+     Nach unten ist kein Platz: „Bauen" sitzt bei bottom 126, bei 360 px Hoehe
+     also ab y 196 — zwischen Pokal-Unterkante (112) und Bauen bleiben 84 px.
+     Darum 76 statt 86 px und top 116: 4 px Luft nach oben, 4 nach unten. */
+  #minimap{width:76px !important;height:76px !important;top:116px !important}
   #needsBox{max-height:60vh;overflow-y:auto;font-size:.58rem;min-width:88px;max-width:150px}
   .needs .nbar{height:5px}
   #geld{font-size:1rem;padding:6px 11px}
@@ -6804,8 +6812,14 @@ setTimeout(function baueGebaeude(){
       if(q===2) fx-=6.0;
       fest("th44_flutlichtmast.glb",17.63,fx,fz,Math.atan2(CZ-fz,CX-fx));
     }
+    /* ⚠️ CZ-FT/2-2,6 = z 137,4 stellte die Baenke mit dem Ruecken an das
+       Wohnhaus suedlich des Platzes (prozedural, Kasten z 131,8…136,6) — 0,2 m
+       Ueberschneidung. Zu wenig fuer die 1-m-Schwelle der Pruefung und von oben
+       nicht zu sehen; auf AUGENHOEHE klebt die Bank sichtbar an der Hauswand.
+       1,8 m statt 2,6 m Abstand zur Seitenlinie ruecken sie an den Rasen, wo
+       Ersatzbaenke ohnehin stehen — 0,6 m Luft zum Haus. */
     for(var b=0;b<2;b++)                                          // Ersatzbaenke
-      fest("th44_ersatzbank.glb",1.86,CX-7+b*14,CZ-FT/2-2.6,Math.PI);
+      fest("th44_ersatzbank.glb",1.86,CX-7+b*14,CZ-FT/2-1.8,Math.PI);
     fest("th44_spielstand.glb",5.60,CX,CZ+FT/2+9.5,0);
     for(var f=0;f<5;f++)                                          // Ballfangzaun im Osten
       fest("th44_ballfangzaun.glb",4.90,CX+FB/2+3.0,CZ-8+f*4,Math.PI/2);
