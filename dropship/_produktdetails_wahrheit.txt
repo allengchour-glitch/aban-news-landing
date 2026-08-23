@@ -520,3 +520,26 @@
 15448033689985	farbe-floskel-entfernt,material-floskel-entfernt	Elegantes Langarmshirt mit Lochstickerei
 15448033886593	material-floskel-entfernt	Gerüschtes V-Neck Cropped Top für Frühling/Sommer
 15448034181505	material-floskel-entfernt	Elegantes Langarmshirt mit Schnürung
+15448034935169	material-floskel-entfernt	Langarm-Shirt mit geradem Schnitt
+15448035459457	farbe-floskel-entfernt,material-floskel-entfernt	Crop-Bluse mit Spitzkragen und Herz-Cutout
+15448035688833	material-floskel-entfernt	Retro Besticktes Shirt mit Puffärmeln
+15448036442497	material-floskel-entfernt	Langarmshirt mit Herz-Stickerei und Streifenmuster
+15448036704641	material-floskel-entfernt	Lässige bedruckte Patchwork-Bluse für Damen
+15448036802945	material-floskel-entfernt	Rundhals-Bluse mit Rüschen und kurzen Ärmeln
+15448037130625	material-floskel-entfernt	V-Neck Bluse mit Rüschen und Puffärmeln
+15448037622145	material-floskel-entfernt	Atmungsaktive Bluse mit Falten-Textur
+15448037753217	material-floskel-entfernt	Taillierte Langarm-Bluse für Damen
+15448037917057	material-floskel-entfernt	Lässiges V-Neck Langarmshirt für Damen
+15448038080897	material-floskel-entfernt	Langarmshirt mit Rundhals und Saumschlitz
+15448038605185	material-floskel-entfernt	Kurzarm-Top, einfarbig, locker geschnitten
+15448039129473	material-floskel-entfernt	Vielseitige Langarm-Bluse für Frühling & Sommer
+15448039489921	material-floskel-entfernt	Langarm-Bluse einfarbig Regular-Fit
+15448039719297	material-floskel-entfernt	V-Neck Langarmshirt mit asymmetrischem Saum
+15448039915905	material-floskel-entfernt	Langarm-Shirt mit Rundhals und Knopfleiste
+15448040046977	material-floskel-entfernt	Locker sitzendes Langarm-Top für Damen
+15448040407425	farbe-floskel-entfernt,material-floskel-entfernt	Gepunktetes Slim-Fit Top mit Schleife und Spaghettiträgern
+15448040571265	farbe-floskel-entfernt,material-floskel-entfernt	Langarmbluse mit Rundhals und 3D-Print
+15448040735105	farbe-floskel-entfernt,material-floskel-entfernt	Kurz geschnittene Langarmbluse im Retro-Karo
+15448040898945	groesse-ohne-deckung-entfernt	Chiffon-Bluse mit 3D-Blumen und Perlen
+15448041062785	farbe-floskel-entfernt,material-floskel-entfernt	Sommerliches Langarmshirt mit 3D-Print
+15448041193857	farbe-floskel-entfernt	Elegantes Kurzarm-Strickshirt mit Rundhals
