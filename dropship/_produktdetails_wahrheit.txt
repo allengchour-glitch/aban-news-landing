@@ -17,3 +17,36 @@
 15412919402881	material-floskel-entfernt	Etuikleid «Lumea» – Cut-Out Sheath
 15412919533953	material-floskel-entfernt	Midikleid «Bluette» – Fake-2-Teiler mit V-Ausschnitt
 15412919566721	material-floskel-entfernt	Schnürkleid «Noir» – Schleifen-Detail
+15412919763329	material-floskel-entfernt	Off-Shoulder-Kleid «Brise» – locker & ärmellos
+15412969144705	material-floskel-entfernt	Sommerkleid «Dos Nu» – locker mit Rücken-Cut-out
+15412969406849	material-floskel-entfernt	T-Shirt-Kleid «Casa» – locker mit Print
+15413023015297	material-floskel-entfernt	Herren-Sommershirt «Breeze» – leicht & atmungsaktiv
+15413024915841	material-floskel-entfernt	Slip-Kleid «Nuit» – V-Ausschnitt, Langarm, elegant
+15413025014145	material-floskel-entfernt	Strandkleid «Playa» – Halter mit Schnür-Detail
+15413060829569	farbe-floskel-entfernt,groesse-ohne-deckung-entfernt,material-floskel-entfernt	Bausteine-Set «Retro Racer» – 196 Teile, Sportwagen
+15413061484929	farbe-floskel-entfernt,groesse-ohne-deckung-entfernt,material-floskel-entfernt	Bausteine-Set «Police Racer» – 318 Teile
+15413061779841	farbe-floskel-entfernt,groesse-ohne-deckung-entfernt,material-floskel-entfernt	Bausteine-Set «Widebody Racer» – 321 Teile
+15413074985345	material-floskel-entfernt	Sommer-Top «Sole» – V-Neck mit Knopfleiste
+15413077115265	farbe-floskel-entfernt,groesse-ohne-deckung-entfernt,material-floskel-entfernt	Wide-Leg-Hose «Largo» – gerades Bein, elegant
+15413083242881	material-floskel-entfernt	Boho Resort-Set · 2-teilig, Sommer-Kollektion 2026 (Top & Ho
+15413083832705	material-floskel-entfernt	Plateau-Sandalen · Damen, Retro-Style mit Komfort-Sohle (Som
+15413084062081	material-floskel-entfernt	Slingback-Pumps · Damen, mit Absatz, wasserfest beschichtet 
+15413084160385	material-floskel-entfernt	Loafer · Damen, Rundkappe flach, vielseitig (Basic 2026)
+15413724873089	material-floskel-entfernt	Wide-Leg-Hose · Damen, fliessend & locker (Elegant 2026)
+15413725102465	material-floskel-entfernt	Cropped Blazer · Damen, mit Pailletten-Detail
+15413726282113	material-floskel-entfernt	Jumpsuit mit Blazer-Kragen · Damen, chic & uni (Sommer 2026)
+15413738996097	live-schon-sauber	Bandeau-Top uni · Damen, schulterfrei & elastisch (Sommer 20
+15413739684225	material-floskel-entfernt	Sommerkleid ärmellos · Damen, tailliert & elegant (Schwarz)
+15413956051329	groesse-ohne-deckung-entfernt,material-floskel-entfernt	Handy-Makeover-Set · Charms, Grip & MagSafe-Halter
+15416026235265	material-floskel-entfernt	Floral-Sommerkleid «Marguerite» – Rüschen-Träger, figurbeton
+15416343757185	material-floskel-entfernt	Etuikleid «Bureau» · Rüschenärmel & hohe Taille (Damen, S–3X
+15416343986561	material-floskel-entfernt	Floral-Sommerkleid «Capucine» · Puffärmel, leicht & luftig (
+15416491704705	material-floskel-entfernt	High-Waist-Hose «Lina» · Wide-Leg & fliessend (Damen, S–2XL)
+15416493506945	material-floskel-entfernt	Tunika-Mini-Kleid «Riva» · V-Ausschnitt, Strand-Stil (Damen)
+15421165339009	material-floskel-entfernt	Long-Weste «Resort» · ärmellos, Colorblock mit Schleife
+15421165404545	material-floskel-entfernt	Workout-Set «Active» · 2-teilig, geripptes Tank (Damen)
+15421165502849	material-floskel-entfernt	Sommer-Set «Riviera» · 2-teilig, lässig (Damen)
+15421165601153	material-floskel-entfernt	Herren-Set «Resort» · Kurzarm-Hemd + Hose
+15421165666689	material-floskel-entfernt	Long-Blazer «Milano» · uni, ohne Knöpfe (Damen)
+15421165764993	material-floskel-entfernt	Kapuzen-Cardigan «Cosy» · uni, mit Knöpfen (Damen)
+15421414113665	material-floskel-entfernt	Zehensteg-Sandalen «Riva» · flach, mit Metall-Detail
