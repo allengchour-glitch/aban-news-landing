@@ -10145,3 +10145,7 @@ gid://shopify/Product/15500108398977	14->0	Kissen für Yoga
 gid://shopify/Product/15500109742465	15->0	Goldkette für Frauen
 gid://shopify/Product/15500110365057	90->0	Kosmetik-Stiftsatz
 gid://shopify/Product/15500110463361	40->0	Luxus-Halskette mit Tiermotiven
+gid://shopify/Product/15500402000257	63->0	Reflektierender Westen
+gid://shopify/Product/15500402295169	9->0	Hündchen-Perlenkette
+gid://shopify/Product/15500409078145	10->1	Retro Lederarmband für Männer
+gid://shopify/Product/15500409241985	45->0	Digitaler Gemälde-Rahmen
