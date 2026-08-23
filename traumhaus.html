@@ -5329,8 +5329,14 @@ setTimeout(function baueGebaeude(){
         var da=(a.w.userData&&a.w.userData.datei)||a.w.name||"";
         var db=(b.w.userData&&b.w.userData.datei)||b.w.name||"";
         if(da!==db)return da<db?-1:1;
-        if(a.w.position.x!==b.w.position.x)return a.w.position.x-b.w.position.x;
-        return a.w.position.z-b.w.position.z;});
+        /* ⚠️ NICHT w.position: viele Modelle haengen ihre Geometrie an Kindknoten
+           und lassen die Wurzel auf (0|0) stehen (die Busse zum Beispiel). Fuer die
+           waere der Schluessel gleich, und ein stabiler sort() behaelt dann die
+           Ladereihenfolge bei — genau das, was hier weg soll. Die WELTBOX ist fuer
+           jedes Objekt aussagekraeftig. */
+        if(a.b.min.x!==b.b.min.x)return a.b.min.x-b.b.min.x;
+        if(a.b.min.z!==b.b.min.z)return a.b.min.z-b.b.min.z;
+        return a.b.min.y-b.b.min.y;});
       for(var runde=0;runde<2;runde++)
         for(var i=0;i<E.length;i++){
           var e=E[i];if(e.fest)continue;
@@ -5407,8 +5413,14 @@ setTimeout(function baueGebaeude(){
         var da=(a.w.userData&&a.w.userData.datei)||a.w.name||"";
         var db=(b.w.userData&&b.w.userData.datei)||b.w.name||"";
         if(da!==db)return da<db?-1:1;
-        if(a.w.position.x!==b.w.position.x)return a.w.position.x-b.w.position.x;
-        return a.w.position.z-b.w.position.z;});
+        /* ⚠️ NICHT w.position: viele Modelle haengen ihre Geometrie an Kindknoten
+           und lassen die Wurzel auf (0|0) stehen (die Busse zum Beispiel). Fuer die
+           waere der Schluessel gleich, und ein stabiler sort() behaelt dann die
+           Ladereihenfolge bei — genau das, was hier weg soll. Die WELTBOX ist fuer
+           jedes Objekt aussagekraeftig. */
+        if(a.b.min.x!==b.b.min.x)return a.b.min.x-b.b.min.x;
+        if(a.b.min.z!==b.b.min.z)return a.b.min.z-b.b.min.z;
+        return a.b.min.y-b.b.min.y;});
       function schneidet(a,b){
         return Math.min(a.max.x,b.max.x)-Math.max(a.min.x,b.min.x)>1.2&&
                Math.min(a.max.z,b.max.z)-Math.max(a.min.z,b.min.z)>1.2&&

@@ -2020,6 +2020,34 @@ identisch, und die Menge der echten Funde **byte-identisch**.
 > 2D-Meldungen schwankt weiterhin um ±1; das sind Paare mit **bewegten** Objekten (die Gondeln
 > werden beim Laden aufs Seil gesetzt), nicht die entwirrten Platzierungen.
 
+### Nachtrag zur Reproduzierbarkeit: der Schlüssel war nur die halbe Miete
+
+Der Sortierschlüssel aus #2273 nahm `w.position`. **Falsch für einen Teil der Modelle:** viele
+hängen ihre Geometrie an Kindknoten und lassen die Wurzel auf (0|0) stehen (die Busse zum
+Beispiel). Für die ist der Schlüssel identisch, und ein stabiler `sort()` behält dann genau die
+Ladereihenfolge bei, die weg sollte. Jetzt entscheidet die **Weltbox** (`b.min.x/z/y`).
+
+Damit melden zwei Läufe dieselben echten Funde (56, gleiche Beteiligte). **Aber die Positionen
+driften weiter** — die Tramhaltestelle landete über drei Läufe auf x −15,2 / −13,2 / −15,2.
+
+**Die tiefere Ursache, gemessen:** `entwirren()` läuft nicht nur nach dem Laden, sondern auch
+per `setTimeout` bei **15,5 / 32 / 50 s**. Das Laden aller Modelle dauert in dieser Umgebung
+**111 s**. Alle drei Timer-Durchgänge räumen also über eine **halb geladene Welt** auf, und wie
+viel gerade da ist, schwankt von Lauf zu Lauf.
+
+> ⚠️ **Nicht einfach abschalten.** Ich habe die Timer testweise auf „warten bis geladen"
+> umgestellt: Positionen wurden reproduzierbar (Haltestelle 3× auf ihrer Sollposition), aber die
+> Aufräumqualität fiel messbar ab — `ohnePlatz` stieg von **5 auf 15**, echte Funde von 56 auf
+> **58**. Grund: die Durchgänge während des Ladens räumen **inkrementell** auf, und das ist
+> wirksamer als ein Durchgang am Ende. Der Handel „Reproduzierbarkeit gegen Aufräumqualität"
+> ist real und gehört nicht einseitig entschieden — die Zahlen stehen hier, die Entscheidung
+> steht offen.
+
+> 📎 **Messumgebung im Blick behalten.** Die 111 s Ladezeit gelten für SwiftShader ohne GPU. In
+> einem echten Browser ist der Bestand lange vor 15,5 s vollständig, und dann laufen alle drei
+> Timer ohnehin über die ganze Welt. Der Effekt ist also im Messstand viel stärker als beim
+> Spieler — ein Grund mehr, ihn nicht durch eine Verhaltensänderung „wegzuoptimieren".
+
 > 🔑 **Die Regel.** Erst die Zahl aus der Hypothese ableiten, dann messen, dann ändern —
 > und zwischen „Boxen überlappen" und „Geometrie steckt ineinander" nie stillschweigend
 > wechseln. Zwei Änderungen dieses Durchgangs wurden vor dem Commit wieder verworfen, weil
