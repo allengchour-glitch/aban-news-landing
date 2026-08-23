@@ -215,3 +215,12 @@ gid://shopify/Product/15421617537409	CHF 22.16	30 Varianten	Boho-Kleid «Indigo�
 gid://shopify/Product/15421620257153	CHF 20.50	40 Varianten	Keil-Sandalen «Capri» · Geflochten, Espadrille-Loo
 gid://shopify/Product/15422037361025	CHF 16.48	5 Varianten	Sonnenbrille «Mirage» · Cat-Eye, verspiegelt
 gid://shopify/Product/15422040277377	CHF 23.66	36 Varianten	Maxi-Kleid «Aria» · Langarm, tailliert mit Gürtel
+gid://shopify/Product/15422401479041	CHF 17.73	5 Varianten	Sommer-Playsuit «Marigold» · Blüten-Print, Träger
+gid://shopify/Product/15422403051905	CHF 21.76	16 Varianten	Plateau-Pumps «Wild» · Leoparden-Print, Knöchelrie
+gid://shopify/Product/15422786535809	CHF 18.49	12 Varianten	Plateau-Sneaker «Cloud» · Spitzen-Mesh, geschnürt
+gid://shopify/Product/15422787453313	CHF 19.61	14 Varianten	Mary-Jane-Ballerina «Dolce» · Lack, mit Riemchen
+gid://shopify/Product/15422788272513	CHF 18.97	12 Varianten	Mule-Sandalette «Nodo» · Drapiert, Spitze Form
+gid://shopify/Product/15422795088257	CHF 29.24	14 Varianten	Herren-Sneaker «Marco» · Leder-Optik, Retro-Traine
+gid://shopify/Product/15422912332161	CHF 22.32	15 Varianten	Herren-Strickhemd «Amalfi» · Ajour-Knit, Camp-Krag
+gid://shopify/Product/15422915445121	CHF 26.80	40 Varianten	Herren-Slip-on «Sail» · Canvas, leichte Sohle
+gid://shopify/Product/15422931927425	CHF 24.11	22 Varianten	Herren-Slides «Porto» · Cross-Strap, Wildleder-Opt
