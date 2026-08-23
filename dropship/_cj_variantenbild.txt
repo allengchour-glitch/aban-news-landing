@@ -965,3 +965,5 @@ gid://shopify/Product/15448015274369	zugeordnet	6	Rundhals-Shirt mit Raffung
 gid://shopify/Product/15448015569281	zugeordnet	8	Figurbetonendes Satin-Top mit Spitzenkragen
 gid://shopify/Product/15448015864193	zugeordnet	25	Kurzes ärmelloses Yoga-Top für Damen
 gid://shopify/Product/15448015995265	zugeordnet	9	Strandshirt mit Kordelzug
+gid://shopify/Product/15448016126337	zugeordnet	35	Sportlicher Padded Bra für junge Frauen
+gid://shopify/Product/15448016224641	zugeordnet	5	Halterneck Yoga-Top Kurzarm für Damen
