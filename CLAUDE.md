@@ -1185,6 +1185,34 @@ Gemessen: +5.39. **Das Modell stimmt.**
 - Der konservative Umrechnungsfaktor 0.9 des Repos liegt näher an der Realität als der
   Tageskurs 0.79 — er rechnet die Marge klein, nicht schön. So gehört es.
 
+## 📏 Die Grösse stand im Farbwert — weil die Grössenliste dreimal existierte (2026-08-23)
+350 aktive Produkte führten Farbwerte wie **«Aprikose-2XL», «Red-7XL», «Gray-0XL»**, während
+der Grössen-Slot einen Füllwert trug — bei 1'700 von 1'700 Varianten exakt die KLEINSTE
+Grösse des Produkts. Die Grössenleiter riss dadurch auf: «Florales Etuikleid» führte live
+S · M · L · 3XL · 4XL, das 2XL steckte im Farbfeld.
+**Die Ursache lag in einer Menge, nicht im Parser.** `parseVar` in `cj_category_fill.mjs`
+trennt Farbe und Grösse korrekt — aber `isSize` fragt `SIZESET`, und dort fehlten genau die
+Randgrössen: **0XL, 1XL, 7XL–11XL und XXS**. `LETTERSIZE` (`[0-9]X{1,5}[SL]`) kannte diese
+Formen die ganze Zeit; nur die Menge nicht. Und die Menge stand **dreimal im Repo mit drei
+verschiedenen Inhalten** (`cj_category_fill` ohne XXS, `cj_variant_backfill` ohne 2XL,
+`cj_trending_import` ohne beides). Jetzt: **`automation/cj_groessen.mjs`, neue Grössen NUR
+dort** — vierte Wiederholung nach Farbtabelle, Preisformel und `publishVerified()`.
+- Bestand repariert mit `automation/groesse_im_farbwert.py`: **349 Produkte, 1'634 Varianten**,
+  0 Kollisionen. Gegenprobe: Farbliste 10 → 6 Werte, Variantenzahl unverändert (25 → 25).
+- ⚠️ **Die Reihenfolge ist die ganze Reparatur.** «Aprikose-2XL» → «Aprikose» umzubenennen
+  kollidiert mit dem vorhandenen Wert und VERSCHMILZT zwei Varianten mit verschiedenen
+  CJ-SKUs. Richtig ist: die **Variante** ans Ziel (Farbe, Grösse) umhängen, vorher prüfen ob
+  das Ziel belegt ist, und bei Kollision das **ganze Produkt** unberührt lassen. Shopify
+  räumt den leeren Farbwert danach selbst weg.
+- ⚠️ Der Farbname wird nur um den Anhang gekürzt, **nie geraten**: «Himmelblau-2XL» wird
+  «Himmelblau», auch wenn das Produkt schon «Hellblau» führt. Beides könnte dieselbe CJ-Farbe
+  sein — aber das ist eine Vermutung.
+- **Sichtbare Folge, die man einplanen muss:** Nach der Reparatur steht «Blau» neben «Blue»
+  in derselben Liste (vorher versteckt in «Blue-0XL»). Dafür gibt es jetzt
+  `automation/farbwert_dubletten.py` — dieselbe Umhäng-Mechanik, 209 Kandidaten.
+  `farbwerte_uebersetzen.py` scheitert an diesen Fällen zu Recht mit «Option value already
+  exists»; **dieser Fehler ist eine Schutzfunktion, kein Defekt.**
+
 ## 🎨 «XK76» IST CJs Farbname — es gibt keine Ebene darunter (2026-08-23)
 24 aktive Produkte zeigen im Farbfeld reine Codes: `XK76 · XK222`, `CDCS1001 … CDCS10012`,
 `WVWY 010`. Der Katalog-Audit schrieb dazu die naheliegende Reparatur vor: «keine geratenen

@@ -82,13 +82,42 @@ def hochladen(datei, karte):
     return url
 
 
+GEPRUEFT = "/tmp/pod_druckdatei_lebt.json"
+
+
+def lebt(url, _cache={}):
+    """HEAD-Prüfung mit Gedaechtnis. Ein Netzfehler gilt NICHT als tot — sonst meldet ein
+    Ausfall des Ausgangs-Proxys (hier belegt: sporadisch HTTP 502) den halben POD-Katalog
+    als kaputt."""
+    if not _cache and os.path.exists(GEPRUEFT):
+        try:
+            _cache.update(json.load(open(GEPRUEFT)))
+        except Exception:
+            pass
+    if url in _cache:
+        return _cache[url]
+    r = subprocess.run(["curl", "-s", "-o", "/dev/null", "-w", "%{http_code}",
+                        "--max-time", "25", "-I", url], capture_output=True, text=True)
+    code = (r.stdout or "").strip()
+    if not code.isdigit():
+        return True                            # kein Urteil moeglich -> nicht anklagen
+    gut = code.startswith("2") or code.startswith("3")
+    if gut:
+        _cache[url] = True                     # nur das JA merken; ein NEIN nochmal pruefen
+        try:
+            json.dump(_cache, open(GEPRUEFT, "w"))
+        except Exception:
+            pass
+    return gut
+
+
 def main():
     karte = json.load(open(CDN_KARTE)) if os.path.exists(CDN_KARTE) else {}
     erledigt = set()
     if os.path.exists(LEDGER):
         erledigt = {l.split("\t")[0] for l in open(LEDGER)}
 
-    cur, offen, ok, fehlt = None, [], 0, []
+    cur, offen, ok, fehlt, tot = None, [], 0, [], []
     while True:
         d = gql('query($c:String){products(first:150,after:$c,query:"status:active"){pageInfo{hasNextPage endCursor} nodes{id title '
                 'metafield(namespace:"custom",key:"print_file"){value}}}}', {"c": cur})
@@ -101,7 +130,15 @@ def main():
             if not v:
                 continue                      # Editor-Produkt: Motiv liefert die Kundin
             if v.startswith("https://cdn.shopify.com/"):
-                ok += 1
+                # ⚠️ «Liegt auf der CDN» ist noch keine Quittung. Genau diese Annahme —
+                # die Adresse SIEHT richtig aus, also stimmt sie — hat die 454 toten
+                # abannews.com-Druckdateien monatelang unsichtbar gehalten. Jede Datei
+                # wird deshalb einmal wirklich angefragt; das Ergebnis wird gemerkt,
+                # damit der taegliche Lauf nicht jedes Mal 454 Anfragen stellt.
+                if not lebt(v):
+                    tot.append((p["title"], v))
+                else:
+                    ok += 1
                 continue
             if p["id"] in erledigt:
                 continue
@@ -121,7 +158,10 @@ def main():
         cur = pg["pageInfo"]["endCursor"]
         time.sleep(0.5)
 
-    print(f"schon auf der CDN: {ok} · zu reparieren: {len(offen)} · ohne Quelldatei: {len(fehlt)}")
+    print(f"schon auf der CDN: {ok} · zu reparieren: {len(offen)} · "
+          f"ohne Quelldatei: {len(fehlt)} · CDN-Adresse antwortet nicht: {len(tot)}")
+    for t, u in tot[:10]:
+        print(f"   ⛔ {t[:52]:52} — {u[-46:]} antwortet nicht")
     for t, f in fehlt[:10]:
         print(f"   ⚠️ {t[:52]:52} — {f} lokal nicht gefunden")
     if DRY:
