@@ -743,3 +743,37 @@ gid://shopify/Product/15445273379201	CHF 17.79	20 Varianten	UV Nagellack Set –
 gid://shopify/Product/15445274263937	CHF 16.90	1 Varianten	AS Nail Art Eternal Classic Farbgel-Nagellack
 gid://shopify/Product/15445274919297	CHF 16.93	15 Varianten	Painless Fast Nail Art Extension Set
 gid://shopify/Product/15445275771265	CHF 18.55	2 Varianten	Nail Art Infiltration Suit Dust Brush
+gid://shopify/Product/15445276197249	CHF 17.71	49 Varianten	3-Farben Ice Jelly Nude Gel Nagellack-Set
+gid://shopify/Product/15445277016449	CHF 17.37	1 Varianten	Magic Color Cat Eye Gel Nagellack-Set
+gid://shopify/Product/15445277933953	CHF 28.41	1 Varianten	280W UV/LED Nagellampe für Gel- und Acrylnägel
+gid://shopify/Product/15445279474049	CHF 21.38	2 Varianten	UV/LED Lichthärtungsgerät für Gelnägel
+gid://shopify/Product/15445281046913	CHF 25.08	1 Varianten	LED Licht Nagelpflegegerät
+gid://shopify/Product/15445281833345	CHF 44.83	1 Varianten	LED Halbmondleuchte für den Nageltisch
+gid://shopify/Product/15445282750849	cj-ohne-antwort
+gid://shopify/Product/15445283602817	cj-ohne-antwort
+gid://shopify/Product/15445285863809	cj-ohne-antwort
+gid://shopify/Product/15445297136001	CHF 18.78	1 Varianten	Nail Art Pen World Cup
+gid://shopify/Product/15445298774401	CHF 17.05	1 Varianten	Nagelpflege-Stift-Set
+gid://shopify/Product/15445299364225	CHF 19.63	1 Varianten	Gel Nagellack Stifte Set
+gid://shopify/Product/15445299954049	CHF 20.40	1 Varianten	Maniküre- und Pediküre-Set (19-teilig)
+gid://shopify/Product/15445300674945	CHF 18.12	3 Varianten	Handgemachte Press-on Nägel mit 3D Blumen
+gid://shopify/Product/15445301428609	CHF 18.91	3 Varianten	3D Gradient Nageldesign mit Meeresmotiven
+gid://shopify/Product/15445798814081	CHF 21.39	2 Varianten	Mattes Make-up Pinselset mit Nylonborsten
+gid://shopify/Product/15445798879617	CHF 24.18	1 Varianten	Lidschatten-Pinsel mit zwei Enden
+gid://shopify/Product/15445799076225	CHF 24.09	1 Varianten	Wimpern- & Brauenbürste mit Doppelkopf
+gid://shopify/Product/15445799108993	CHF 24.00	1 Varianten	Lidschatten- & Augenbrauenpinsel-Kombination
+gid://shopify/Product/15445799174529	CHF 24.36	1 Varianten	Doppelendiger Rougepinsel
+gid://shopify/Product/15445799240065	CHF 19.01	2 Varianten	24-teiliges Make-up Pinselset
+gid://shopify/Product/15445799338369	CHF 17.61	1 Varianten	Dazzling Star Glitter Spray
+gid://shopify/Product/15445799436673	CHF 18.47	6 Varianten	20-teiliges Make-up Pinselset Champagner
+gid://shopify/Product/15445799469441	CHF 18.29	2 Varianten	13-teiliges Make-up Pinselset mit langem Griff
+gid://shopify/Product/15445799534977	CHF 39.62	1 Varianten	7-teiliges Make-up Pinselset
+gid://shopify/Product/15445799666049	CHF 18.17	8 Varianten	Make-up Pinselset, 10-teilig
+gid://shopify/Product/15445799698817	CHF 24.25	5 Varianten	Ultra-Soft 8-teiliges Make-up Pinselset
+gid://shopify/Product/15445799862657	CHF 17.05	3 Varianten	Farbiger Tricolor Lidschatten-Stick
+gid://shopify/Product/15445799960961	CHF 17.37	3 Varianten	Contouring & Abdeck-Stick mit natürlichem Finish
+gid://shopify/Product/15445799993729	CHF 17.68	9 Varianten	12-teiliges Make-up Pinselset mit Tasche
+gid://shopify/Product/15445800059265	CHF 30.75	1 Varianten	10-in-1 Diamant-Make-up-Pinselset mit Tasche
+gid://shopify/Product/15445800157569	CHF 24.36	1 Varianten	4-in-1 Reise-Make-up Pinselset
+gid://shopify/Product/15445800255873	CHF 30.75	1 Varianten	10er Luxus Make-up Pinselset mit Kristallgriff
+gid://shopify/Product/15445800288641	CHF 17.49	2 Varianten	20-teiliges Make-up Pinselset
