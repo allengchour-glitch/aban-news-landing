@@ -4,6 +4,27 @@
 > ~600 kB in einer einzigen IIFE; ohne diese Karte sucht man lange und tritt in
 > Fallen, die hier schon einmal Stunden gekostet haben.
 
+## 🔢 `_gebaeude` IST KEIN INVENTAR — dreimal dieselbe Falle (2026-08-23)
+Diese Blindstelle hat in dieser Datei jetzt dreimal zugeschlagen. Sie steht darum hier
+oben, nicht als Fussnote:
+
+| Fall | was `_gebaeude` zeigte | was wirklich da war |
+|---|---|---|
+| Felder, Hecken, Alleebaeume | nichts (InstancedMesh) | 45 Baeume, 102 Hecken, 76 Alleebaeume |
+| Bauzaun in der Markthalle | nichts (0,4 m duenn) | 7 Felder in zwei Gebaeuden |
+| **Strassenlaternen** | **48** | **138** (90 prozedurale in `window._lampPos`) |
+
+Beim letzten Fall habe ich aus den 48 einen Befund gemacht — „57 % der Strassen ohne
+Laterne" — und angefangen, Laternen nachzupflanzen. Der eingebaute Doppel-Schutz hat
+dann **0** gesetzt, weil in Wahrheit **0 %** der Strassen dunkel sind. Die Arbeit war
+umsonst, der Befund frei erfunden.
+
+**Regel: vor jeder Aussage der Form „es gibt zu wenig X" das Inventar aus ALLEN Quellen
+zusammensetzen** — `_gebaeude` (GLB-Modelle), die prozeduralen Register (`_lampPos`,
+`dorfFenster`, `_alleeStellen`, `_wasser` …) und `scene.children` fuer alles, was
+prozedural gebaut und nirgends registriert ist. Wer nur eine Quelle zaehlt, misst seine
+eigene Suchfunktion, nicht die Stadt.
+
 ## 🪟 Modell-Gebaeude bekommen nachts Licht (2026-08-23)
 - Grep-Anker: `_glasMats`, `dorfFenster`
 - **Der Befund:** `dorfFenster` fasst nur die PROZEDURAL gebauten Haeuser — gemessen 337
