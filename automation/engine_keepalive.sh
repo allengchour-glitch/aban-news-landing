@@ -18,6 +18,7 @@
 # Nutzung: bash automation/engine_keepalive.sh   (idempotent, startet nur was fehlt)
 
 cd /home/user/aban-news-landing || exit 1
+REPO_AUTO=/home/user/aban-news-landing/automation
 
 # zaehle <muster> — argv-basiert. Die eigene bash -c-Hülle hat argv1="-c" und matcht nie.
 zaehle() { ps -eo args --no-headers | awk -v s="$1" '$1=="bash" && index($0,s)' | wc -l; }
@@ -117,11 +118,16 @@ fi
 # ── 3. Übrige /tmp-Dauerläufer. Hier ist der Dateiname AUCH der Prozessname (kein exec).
 for S in cj_queue_runner autocommit reel_engine_runner social_autopilot \
          fortura_img_runner website_hygiene_runner; do
-  [ -f "/tmp/$S.sh" ] || continue
+  # ⚠️ Die Repo-Fassung hat Vorrang. autocommit.sh lag bis zum 23.08. NUR unter /tmp —
+  # dieselbe Klasse, die dieses Projekt schon zweimal verloren hat. Wer eine Engine ins
+  # Repo holt, muss auch die Startliste umhaengen, sonst laeuft weiter die /tmp-Kopie.
+  QUELL="/tmp/$S.sh"
+  [ -f "$REPO_AUTO/$S.sh" ] && QUELL="$REPO_AUTO/$S.sh"
+  [ -f "$QUELL" ] || continue
   n=$(zaehle "$S.sh")
   if [ "$n" -eq 0 ]; then
     echo "$S neu gestartet"
-    starte "$S" bash "/tmp/$S.sh"
+    starte "$S" bash "$QUELL"
   elif [ "$n" -gt 1 ]; then
     echo "$S: $n Instanzen → $((n-1)) beendet"
     ps -eo pid,etimes,args --no-headers | awk -v s="$S.sh" 'index($0,s) && $3=="bash"' \
