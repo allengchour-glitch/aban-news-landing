@@ -1389,17 +1389,102 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
         var st=new THREE.Mesh(new THREE.DodecahedronGeometry(k,0),new THREE.MeshStandardMaterial({color:i%2?0x6a6558:0x565043,roughness:1}));
         st.position.set(ux,k*0.4,uz2);st.rotation.set(Math.random()*3,Math.random()*6,Math.random()*3);st.castShadow=true;scene.add(st);}
     })();
-    (function allee(){ /* gleichmaessige Baumreihen an den Hauptstrassen = Stadtbild */
-      var SZa=GH*CS/2;
-      function reihe(fixed,achse,von,bis,schritt){
-        for(var v=von;v<=bis;v+=schritt){
-          var px=achse==="x"?v:fixed,pz=achse==="x"?fixed:v;
-          if(!freiPlatz(px,pz,0))continue;
-          baum2(px,pz,0.85+((Math.abs(v)|0)%3)*0.12);}}
-      /* 🐛 8.6 vom Strassenmittel liegt MITTEN AUF DEM TROTTOIR (Fahrbahn bis 8, Gehweg bis 10.2).
-         Die Allee stand also auf dem Gehweg. Jetzt 13 — dahinter, auf dem Gruenstreifen. */
-      [-(SZa+12+13),SZa+12+13].forEach(function(zf){reihe(zf,"x",-RL/2+14,RL/2-14,13);});
-      [-(RX+10),RX+10].forEach(function(xf){reihe(xf,"z",-(SZa+34),SZa+34,13);});   // Querstrasse: Fahrbahn 5, Gehweg 7.4
+    (function allee(){
+      /* 🌳 ALLEE AUS DER ECHTEN STRASSENGEOMETRIE.
+         Vorher standen hier vier handgetippte Reihen: zwei Hauptstrassen ueber
+         `SZa+12+13` und zwei Querstrassen ueber `RX+10`. Beides sind Zahlen aus
+         der Zeit, als die Karte aus vier Strassen bestand — Ring, Zubringer und
+         die Bahnhofsachse kamen spaeter dazu und blieben kahl. Und die Abstaende
+         veralten still: genau dieser Fehler steht schon einmal im Runbook (die
+         Allee stand nach einer Verbreiterung auf dem Trottoir).
+         `_KORRIDORE` kennt fuer JEDE Strasse Achse, Mitte, Laenge und halbe
+         Sperrbreite. Die Reihen werden daraus gerechnet: 2,8 m hinter der
+         gemessenen Bandkante. Wird eine Strasse verbreitert, wandert die Allee
+         von selbst mit.
+
+         ⚠️ INSTANZIERT, und zwar zwingend. `baum2` haengt pro Baum vier Meshes
+         in die Szene (Stamm + drei Kronen). Der Sichtbarkeits-Index wird EINMAL
+         bei 4 s gebaut — die Streu-Objekte entstehen erst nach dem load-Event
+         und stehen deshalb gar nicht darin; ausserdem sind Kronen groesser als
+         die 2,2-m-Schranke und waeren ohnehin immer sichtbar. Rund 300 Baeume
+         haetten die Zeichenaufrufe damit VERDOPPELT. Als InstancedMesh kosten
+         alle zusammen vier. */
+      var stellen=[],SEE={x:0,z:146,r:29};
+      /* ⚠️ `wegVonStrasse` prueft nur den ANKERPUNKT — ein Baum ist aber 1,1 m
+         breit. Gemessen ragte damit eine Krone 1,7 m in die Strandzufahrt. Die
+         Baender werden darum gegen den KREIS des Baumes geprueft, nicht gegen
+         seinen Mittelpunkt. */
+      function bandFrei(x,z,r){
+        var K=window._KORRIDORE||[];
+        for(var i=0;i<K.length;i++){
+          var k=K[i],laengs=k[1]==="x";
+          var a=laengs?x:z, q=laengs?z:x;
+          if(a<k[3]-1||a>k[4]+1)continue;
+          if(Math.min(q+r,k[2]+k[5])-Math.max(q-r,k[2]-k[5])>0)return false;
+        }
+        return true;
+      }
+      function passt(x,z){
+        if(!bandFrei(x,z,1.2))return false;
+        if(Math.hypot(x-SEE.x,z-SEE.z)<SEE.r)return false;          // Seepark-See
+        if(z>-97&&z<-84&&x<82)return false;                          // Fluss-Band
+        if(x<-112)return false;                                      // Meer
+        if(Math.hypot(x,z)>196)return false;                         // jenseits der Landstrasse
+        return freiPlatz(x,z,0);
+      }
+      (window._KORRIDORE||[]).forEach(function(k){
+        var achse=k[1],mitte=k[2],von=k[3],bis=k[4],halb=k[5];
+        [-1,1].forEach(function(seite){
+          for(var v=von+9;v<=bis-9;v+=14){
+            /* ⚠️ ZWEI ABSTAENDE PROBIEREN. Nur mit dem vorderen Grünstreifen
+               kamen 66 Baeume zusammen — auf rund 2 km Strasse eine sehr
+               lueckige Reihe: entlang der Hauptachsen ist der Streifen direkt
+               hinter dem Trottoir oft schon von Laternen, Schildern und
+               Vorgaerten belegt. Ist er besetzt, wird 2,4 m weiter hinten
+               nachgesehen, statt die Luecke stehen zu lassen. */
+            var gesetzt=false;
+            [2.8,5.2].forEach(function(ab){
+              if(gesetzt)return;
+              var fest=mitte+seite*(halb+ab);
+              var px=achse==="x"?v:fest, pz=achse==="x"?fest:v;
+              var q=wegVonStrasse(px,pz);                            // Sicherheitsnetz
+              if(Math.hypot(q[0]-px,q[1]-pz)>0.01)return;            // laege im Band -> weg
+              if(!passt(px,pz))return;
+              stellen.push([px,pz,0.85+((Math.abs(v)|0)%3)*0.12]);
+              gesetzt=true;
+            });
+          }
+        });
+      });
+      if(!stellen.length)return;
+      /* Ein Satz Instanzen je Teilgeometrie — Stamm und die drei Kronen. Die
+         lokale Lage der Krone aus `baum2` steckt in der Instanzmatrix. */
+      var teile=[{g:_stammG,m:_stammM,o:[0,0.9,0]}];
+      for(var c=0;c<3;c++)teile.push({g:_kronG[c],m:_kronM[c%2],o:[(c-1)*0.4,2.1+c*0.6,(c%2-0.5)*0.35]});
+      var M=new THREE.Matrix4(),T=new THREE.Matrix4(),L=new THREE.Matrix4();
+      teile.forEach(function(t,ti){
+        var im=new THREE.InstancedMesh(t.g,t.m,stellen.length);
+        for(var i=0;i<stellen.length;i++){
+          var st=stellen[i],k=st[2],dreh=((i*2654435761)%6283)/1000;
+          M.makeRotationY(dreh);
+          M.scale(new THREE.Vector3(k,k,k));
+          L.makeTranslation(t.o[0],t.o[1],t.o[2]);
+          M.multiply(L);
+          T.makeTranslation(st[0],0,st[1]);
+          M.premultiply(T);
+          im.setMatrixAt(i,M);
+        }
+        im.instanceMatrix.needsUpdate=true;
+        if(ti>0)im.castShadow=true;
+        im.receiveShadow=false;
+        im.userData.nieAusblenden=true;   /* eine Instanz-Gruppe, kein LOD-Kandidat */
+        scene.add(im);
+      });
+      /* ⚠️ Instanzen landen NIE in `_gebaeude` — th-pruef ist fuer sie blind
+         (dieselbe Falle wie bei den Feldern und Hecken). Die Standorte bleiben
+         darum abrufbar, damit ein Werkzeug sie gegen die Strassenbaender
+         nachrechnen kann. */
+      window._alleeZahl=stellen.length;window._alleeStellen=stellen;
     })();
     (function parkplatz(){
       /* 🅿️ User: „parkplatz viel groesser, man sollte platz haben zum fahren hinten

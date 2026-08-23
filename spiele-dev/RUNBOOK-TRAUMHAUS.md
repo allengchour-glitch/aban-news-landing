@@ -4,6 +4,26 @@
 > ~600 kB in einer einzigen IIFE; ohne diese Karte sucht man lange und tritt in
 > Fallen, die hier schon einmal Stunden gekostet haben.
 
+## 🌳 Allee aus der echten Strassengeometrie (2026-08-23)
+- Grep-Anker: `function allee`, `bandFrei`, `window._alleeStellen`
+- **Vorher vier handgetippte Reihen** (`SZa+12+13`, `RX+10`) aus der Zeit, als die Karte
+  vier Strassen hatte. Ring, Zubringer und die Bahnhofsachse blieben kahl, und die
+  Abstaende veralten still — genau der Fehler, der oben schon einmal steht (die Allee
+  stand nach einer Verbreiterung auf dem Trottoir). Jetzt aus `_KORRIDORE` gerechnet:
+  2,8 m hinter der gemessenen Bandkante, bei Bedarf 5,2 m. Wird eine Strasse breiter,
+  wandert die Allee mit.
+- **⚠️ INSTANZIEREN IST HIER PFLICHT, nicht Kuer.** `baum2` haengt pro Baum VIER Meshes in
+  die Szene. Der Sichtbarkeits-Index wird EINMAL bei 4 s gebaut — Streu-Objekte entstehen
+  erst nach dem load-Event und stehen gar nicht darin; Kronen liegen ausserdem ueber der
+  2,2-m-Schranke und waeren ohnehin immer sichtbar. Rund 300 Baeume haetten die
+  Zeichenaufrufe VERDOPPELT. Als InstancedMesh kosten 76 Baeume **drei**.
+- **⚠️ `wegVonStrasse` prueft nur den ANKERPUNKT.** Ein Baum ist 1,1 m breit: gemessen ragte
+  eine Krone 1,7 m in die Strandzufahrt, obwohl der Mittelpunkt frei lag. `bandFrei(x,z,r)`
+  prueft jetzt den KREIS gegen alle Baender. Danach 0 Treffer.
+- **⚠️ Und wieder: Instanzen landen NIE in `_gebaeude`.** th-pruef kann Alleebaeume nicht
+  sehen. `window._alleeStellen` haelt die Standorte abrufbar, damit ein Werkzeug sie
+  gegen die Baender nachrechnen kann — ohne das waere die Pruefung hier blind.
+
 ## 🌐 Koop Teil 3: Wiedereinstieg + Grenzen der Test-Engine (2026-08-23)
 - `th-koop.mjs` prueft jetzt acht Dinge: Bewegung, fuenf Abgleiche, zwei Streitfaelle
   (gleichzeitig dieselbe Zelle) und den **Wiedereinstieg mitten im Spiel**.
