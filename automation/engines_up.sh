@@ -63,7 +63,12 @@ for R in cj_runner2 cj_runner3 cj_runner4 cj_runner5; do
 done
 fi
 start automation/cj_queue_runner.sh
-start /tmp/autocommit.sh
+# ⚠️ 23.08.2026: autocommit liegt jetzt im REPO, nicht mehr nur unter /tmp. Die
+# /tmp-Fassung macht `git add -A` und hat damit am 22.08. ein frisch gebautes Werkzeug
+# in eine Sammelmeldung «CJ-Ledger auto» gezogen, bevor der Grund dafuer geschrieben
+# war. Die Repo-Fassung addiert nur `dropship/`. Wer eine Engine ins Repo holt, muss
+# JEDE Startliste umhaengen — engine_keepalive.sh wurde umgestellt, diese hier nicht.
+start automation/autocommit.sh
 start automation/reel_engine_runner.sh
 start automation/social_autopilot.sh
 start automation/website_hygiene_runner.sh
