@@ -4,6 +4,24 @@
 > ~600 kB in einer einzigen IIFE; ohne diese Karte sucht man lange und tritt in
 > Fallen, die hier schon einmal Stunden gekostet haben.
 
+## 🪟 Modell-Gebaeude bekommen nachts Licht (2026-08-23)
+- Grep-Anker: `_glasMats`, `dorfFenster`
+- **Der Befund:** `dorfFenster` fasst nur die PROZEDURAL gebauten Haeuser — gemessen 337
+  Materialien, die nachts alle korrekt leuchten. Die rund 850 GLB-Gebaeude waren nie
+  erfasst und blieben dunkle Kisten. Deshalb wirkte die Nacht leblos.
+- **Die Modelle benennen ihr Glas einheitlich** — gemessen ueber 873 Materialnamen:
+  `VlGlas` 134x, `KlGlas` 109x, `TurmGlas` 96x, `Glas` 84x, `Fensterglas` 84x,
+  `HalleGlas`, `PlGlas`, `SuGlas`, `Scheibe`. Regel: `/glas|scheibe/i`.
+- **⚠️ Zwei Ausschluesse, ohne die es falsch aussieht:** `Fensterrahmen` (240x!) ist KEIN
+  Glas, und `Kabinenglas` sitzt in Fahrzeugkanzeln — sonst leuchten Rahmen und geparkte
+  Kranfuehrerhaeuser.
+- **⚠️ Nicht alles anschalten.** Materialien sind geteilt: ein Material = ein ganzer
+  Gebaeudetyp. Jedes dritte bleibt dunkel, sonst sieht die Stadt aus wie ein Schaltbrett.
+  184 von rund 276 Kandidaten leuchten.
+- Eingesammelt wird im selben Daemmerungs-Durchlauf wie `_envMats` (fruehestens 20 s,
+  damit die spaet geladenen Modelle drin sind); umgeschaltet nur bei Wechsel Tag/Nacht,
+  Tagwerte werden exakt zurueckgesetzt.
+
 ## 🌙 Die Nacht war taghell — eine Zeile fuer die falsche three-Version (2026-08-23)
 - Grep-Anker: `_envMats`, `environmentIntensity`
 - **Der Befund:** um 22:10 war `dayA` 0, die Sonne auf 0,20 heruntergeregelt und der Himmel

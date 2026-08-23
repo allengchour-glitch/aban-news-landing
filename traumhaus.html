@@ -10604,6 +10604,42 @@ function loop(now){
     furn.forEach(function(f){if(f.plight)f.plight.intensity=dayA<0.3?(f.def&&f.def.light===2?2.2:1.1):0;}); /* 💡 Kandelaber heller als Garten-Laterne */
     var nacht9=dayA<0.3?1:0;
     if(window._dorfNacht!==nacht9){window._dorfNacht=nacht9;
+      /* 🪟 AUCH DIE MODELL-GEBAEUDE BEKOMMEN LICHT. `dorfFenster` fasst nur die
+         PROZEDURAL gebauten Haeuser — gemessen 337 Materialien, die nachts alle
+         leuchten. Die rund 850 GLB-Gebaeude waren davon nie erfasst und blieben
+         dunkle Kisten; genau deshalb sah die Nacht leblos aus.
+         Die Modelle benennen ihr Glas zum Glueck einheitlich: VlGlas, KlGlas,
+         TurmGlas, Fensterglas, HalleGlas, PlGlas, SuGlas, Scheibe.
+         ⚠️ `Fensterrahmen` (240x) ist KEIN Glas, und `Kabinenglas` sitzt in
+         Fahrzeugkanzeln — beides bleibt draussen, sonst leuchten Rahmen und
+         geparkte Kranfuehrerhaeuser.
+         ⚠️ Nicht alles anschalten: Materialien sind geteilt, also leuchtet mit
+         einem Material immer ein ganzer Gebaeudetyp. Jedes dritte bleibt dunkel,
+         damit die Stadt nachts nicht wie ein Schaltbrett aussieht.
+         Eingesammelt wird in der Daemmerung und fruehestens nach 20 s — vorher
+         sind die spaet geladenen Modelle noch gar nicht da. */
+      if(!window._glasMats&&dayA<0.35&&performance.now()>20000){
+        var gseen=new Set(),gl=[],gi=0;
+        scene.traverse(function(n){
+          if(!n.material)return;
+          var gm=Array.isArray(n.material)?n.material:[n.material];
+          for(var q=0;q<gm.length;q++){var m=gm[q];
+            if(!m||gseen.has(m)||!m.emissive)continue;
+            gseen.add(m);
+            var nm=m.name||"";
+            if(!/glas|scheibe/i.test(nm))continue;
+            if(/rahmen|kabinen/i.test(nm))continue;
+            if((gi++)%3===2)continue;                 /* jedes dritte bleibt dunkel */
+            gl.push({m:m,e:m.emissive.getHex(),i:m.emissiveIntensity||0});}});
+        window._glasMats=gl;window._glasNacht=-1;
+      }
+      if(window._glasMats&&window._glasNacht!==nacht9){
+        window._glasNacht=nacht9;
+        for(var gk=0;gk<window._glasMats.length;gk++){
+          var ge=window._glasMats[gk];
+          if(nacht9){ge.m.emissive.setHex(0xffcf80);ge.m.emissiveIntensity=1.4;}
+          else{ge.m.emissive.setHex(ge.e);ge.m.emissiveIntensity=ge.i;}}
+      }
       dorfFenster.forEach(function(fm){fm.emissiveIntensity=nacht9?2.2:0;if(nacht9&&fm.emissive)fm.emissive.setHex(0xffcf80);if(fm.transparent&&fm.opacity<=0.5)fm.opacity=nacht9?0.5:0;});
       nachtLampen.forEach(function(L){L._ti=nacht9?(L._max?L._max*7:9):(L._max?L._max*1.6:0);}); /* 💡 Innenlichter brennen auch tagsueber schwach (Raeume ohne Fenster) */ /* 💡 Ziel — weiches Faden im Frame-Loop (schwacher Rand via decay 2 bleibt physisch) */
       if(window._lampKopf)window._lampKopf.emissiveIntensity=nacht9?2.6:0;
