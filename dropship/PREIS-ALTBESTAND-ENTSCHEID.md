@@ -1,4 +1,47 @@
-# 3'622 Produkte stehen auf CHF 14.90 — unter jeder möglichen Kostenlage
+# 3'622 Produkte auf CHF 14.90 — unter der gemessenen Frachtuntergrenze
+
+> ## ⚠️ DIESER BERICHT WAR IN SEINER KERNAUSSAGE FALSCH — korrigiert am 23.08.2026
+>
+> Die zentrale Behauptung unten lautet: «Die Fracht hat eine gemessene Untergrenze von rund
+> CHF 15, ein Produkt für CHF 14.90 liegt also unter den Kosten, selbst wenn die Ware gratis
+> wäre.» **Das stimmt nicht.**
+>
+> Der Katalog-Audit vom 22.08. hat es widerlegt, und ich habe die Widerlegung selbst
+> nachgeprüft, indem ich CJ direkt nach Frachtquoten gefragt habe (CN→CH, je 1 Stück):
+>
+> | Gewicht | gemessene Fracht | was ich behauptet hatte |
+> |---:|---:|---:|
+> | 20 g | **CHF 4.34** | «mindestens 15» |
+> | 270 g | **CHF 8.17** | «mindestens 15» |
+> | 840 g | CHF 16.38 | 17.09 |
+> | 1250 g | CHF 25.22 | 23.77 |
+>
+> Für leichte Ware überschätzt die «Untergrenze» die Fracht um bis zum **3,5-fachen**. Zwei
+> der vier Bestellmessungen, auf die ich mich berufen hatte, liegen selbst darunter: LX1013
+> bestand aus zwei Sendungen zu **$6.34** und **$9.49**.
+>
+> **Der Denkfehler war ein Zirkelschluss.** Ich las die «Untergrenze» aus den Kostendaten des
+> Katalogs ab — aber `cj_kosten_backfill.mjs` berechnet jede `unitCost` selbst mit
+> `u·0.9 + max(15, …)`. Jede Kostenzahl war also per Konstruktion ≥ 15, und ich habe sie dann
+> als Beleg für genau diese 15 verwendet. Eine Zahl, die aus der eigenen Annahme stammt,
+> beweist die Annahme nicht.
+>
+> **Was daraus folgt:**
+> * Die 3'622 Produkte auf CHF 14.90 sind **nicht pauschal Verlustware**. Bei leichter Ware
+>   (Schmuck, Sticker, Kleinteile) trägt der Preis, und zwar auch im Gratis-Versand-Korb.
+> * Das echte Problem ist **schwere Ware**. Die Kippgrenze liegt bei rund **600–750 g**.
+>   Belegt: Fahrradsattel 1250 g, Ware $4.19, CJ-Frachtquote **$28.02** — der verliert
+>   bei jeder Einzelbestellung Geld, egal welcher Warenkorb.
+> * Eine pauschale Preiserhöhung auf CHF 16.90 hätte rund **2'200 Artikel verteuert, die in
+>   jedem Warenkorb Gewinn bringen** (Schmuck +8 bis +10 CHF). Gut, dass sie nicht gelaufen ist.
+> * Der Boden in `automation/cj_preis.mjs` steht seit dem 23.08. auf **CHF 5** statt 15.
+>
+> **Ohne Gewichtsdaten bleibt die Frage offen.** 45'700 von 45'741 aktiven Produkten tragen
+> gar kein Gewicht — welche der 3'622 wirklich zu schwer sind, ist erst nach einem
+> Gewichts-Backfill beantwortbar. Der Rest dieses Berichts steht unverändert da, damit die
+> Fehlüberlegung nachvollziehbar bleibt; seine Zahlen sind mit dieser Korrektur zu lesen.
+
+---
 
 Stand 2026-08-22 · live gezählt, nicht aus einem Export
 

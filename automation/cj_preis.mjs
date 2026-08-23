@@ -18,9 +18,27 @@
 //   zwei Frachten. Die Fracht hängt am GEWICHT, nicht am Preis.
 //   Umrechnung 0.9 statt Tageskurs 0.79: rechnet die Marge klein, nicht schön.
 
+// ⚠️ 23.08.2026 — DER BODEN VON CHF 15 WAR FALSCH, und er verfälschte JEDE Margenrechnung
+// im ganzen Katalog nach unten. Er stand auf einem Zirkelschluss: `cj_kosten_backfill.mjs`
+// berechnet `unitCost` selbst mit genau dieser Formel, also war jede Kostenzahl per
+// Konstruktion ≥ 15 — und diente dann als «Beleg» für den Boden.
+//
+// CJ live nach Frachtquoten gefragt (CN→CH, je 1 Stück) und gegen die Formel gerechnet:
+//     20 g  gemessen  4.34 CHF | alter Boden 15.00  (Faktor 3,5 zu hoch)
+//    270 g  gemessen  8.17 CHF | alter Boden 15.00
+//    840 g  gemessen 16.38 CHF | Formel      17.09
+//   1250 g  gemessen 25.22 CHF | Formel      23.77
+// Die Regression über sechs Messpunkte ergibt `3.84 + 16.42·kg` (CHF) — der LINEARE Teil
+// der Formel war also die ganze Zeit richtig, nur der Boden nicht. Zwei der vier eigenen
+// Bestellmessungen liegen ebenfalls darunter (LX1013: $6.34 und $9.49 für zwei Sendungen).
+//
+// Neuer Boden CHF 5.00: knapp über dem gemessenen Minimum von 4.34, als Sicherheitsmarge.
+// ⚠️ Am schweren Ende UNTERschätzt die Formel (23.77 gegen gemessene 25.22) — dort ist die
+// konservative Rundung an anderer Stelle das Gegengewicht, und dort sitzt auch das echte
+// Margenproblem, nicht bei der leichten Ware.
 export const fracht = grams => {
   const kg = (parseFloat(grams) || 0) / 1000;
-  return Math.max(15, 3.4 + 16.3 * kg);
+  return Math.max(5, 3.4 + 16.3 * kg);
 };
 
 // VOLLE Stückkosten: Ware + ganze Fracht. Die CHF 7, die der Kunde für den Versand zahlt,

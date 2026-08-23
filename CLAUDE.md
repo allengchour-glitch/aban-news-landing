@@ -1049,6 +1049,34 @@ sauber. **16 tragen eine getarnte SKU** (der Wächter MELDET sie nur, er draftet
 draftet. Er meldet sie nur. Die Registrierung im Aufseher ändert also nichts am Verkauf —
 sie macht den Befund täglich sichtbar. Das ist weniger, als es zuerst klang.
 
+## ⛔ KORREKTUR: «Fracht mindestens CHF 15» war ein Zirkelschluss (2026-08-23)
+**Der Eintrag direkt darunter ist in seiner Kernaussage FALSCH** und bleibt nur stehen, damit
+der Denkfehler nachvollziehbar ist. CJ live nach Frachtquoten gefragt (CN→CH, je 1 Stück):
+
+| Gewicht | gemessen | behauptete «Untergrenze» |
+|---:|---:|---:|
+| 20 g | **CHF 4.34** | 15.00 |
+| 270 g | **CHF 8.17** | 15.00 |
+| 840 g | 16.38 | 17.09 |
+| 1250 g | 25.22 | 23.77 |
+
+**Der Denkfehler:** Ich las die Untergrenze aus den Kostendaten des Katalogs ab — aber
+`cj_kosten_backfill.mjs` berechnet jede `unitCost` selbst mit `u·0.9 + max(15, …)`. Jede
+Kostenzahl war per Konstruktion ≥ 15, und diente dann als «Beleg» für genau diese 15.
+**Eine Zahl, die aus der eigenen Annahme stammt, beweist die Annahme nicht.** Zwei der vier
+Bestellmessungen, auf die ich mich berief, liegen selbst darunter (LX1013: $6.34 und $9.49).
+- Regression über sechs Livequoten: **`3.84 + 16.42·kg` CHF**. Der LINEARE Teil der Formel
+  war die ganze Zeit richtig — nur der Boden nicht. `cj_preis.mjs` steht jetzt auf **max(5, …)**.
+- **Die 3'622 Produkte auf CHF 14.90 sind NICHT pauschal Verlustware.** Bei leichter Ware
+  trägt der Preis auch im Gratis-Versand-Korb. Eine pauschale Anhebung hätte ~2'200 Artikel
+  verteuert, die in jedem Korb Gewinn bringen (Schmuck +8 bis +10 CHF).
+- **Das echte Problem ist SCHWERE Ware**, Kippgrenze rund **600–750 g**. Belegt: Fahrradsattel
+  1250 g, Ware $4.19, CJ-Quote **$28.02** — verliert bei jeder Einzelbestellung Geld.
+- ⚠️ Am schweren Ende UNTERschätzt die Formel (23.77 gegen 25.22 gemessen).
+- ⚠️ **Ohne Gewichtsdaten bleibt offen, welche der 3'622 betroffen sind** — 45'700 von 45'741
+  aktiven Produkten tragen gar kein Gewicht. `preisboden.py` zieht sie täglich auf 14.90; der
+  Boden gehört gewichtsabhängig, das braucht zuerst den Backfill.
+
 ## 💸 3'622 Produkte auf CHF 14.90 — unter der gemessenen Frachtuntergrenze (2026-08-22)
 Live gezählt: **3'622 aktive `cj-real` stehen auf genau CHF 14.90**, dem Boden der alten
 Formel aus einer Zeit ohne Fracht im Preis. Die Fracht China→CH hat eine **gemessene**
