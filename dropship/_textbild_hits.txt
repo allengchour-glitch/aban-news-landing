@@ -10103,3 +10103,11 @@ gid://shopify/Product/15496130134401	83->0	Atmungsaktive Herren-Sneaker mit Webs
 gid://shopify/Product/15496329724289	39->0	Plateau-Sandalen mit dicker Sohle
 gid://shopify/Product/15496329986433	16->0	Keilabsatz-Sandalen mit spitzer Zehenpartie
 gid://shopify/Product/15496330150273	15->0	Atemschutzmasken-Set mit Filtern
+gid://shopify/Product/15496849490305	12->0	Kabelloses PS4 Gamepad mit Touch & Vibration
+gid://shopify/Product/15496850276737	68->0	Plateau-Clogs mit Schnalle
+gid://shopify/Product/15496850309505	8->0	GAMO Einhand-Gamepad
+gid://shopify/Product/15496862957953	30->1	Feizhi Hornets 2 Gamepad
+gid://shopify/Product/15496863023489	28->0	Günstiges Switch-Controller-Ladegerät
+gid://shopify/Product/15496863154561	33->0	Gaming-Tastatur mit USB-Kabel und Beleuchtung
+gid://shopify/Product/15496892547457	63->0	Gaming-Griff für Smartphones
+gid://shopify/Product/15496936456577	9->0	Thousand Magic Mirror Bluetooth Gamepad
