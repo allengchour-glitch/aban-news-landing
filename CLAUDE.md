@@ -1185,6 +1185,36 @@ Gemessen: +5.39. **Das Modell stimmt.**
 - Der konservative Umrechnungsfaktor 0.9 des Repos liegt näher an der Realität als der
   Tageskurs 0.79 — er rechnet die Marge klein, nicht schön. So gehört es.
 
+## 🧩 Der Farbwert trug DREI fremde Angaben — und `CREATE` hätte Ware erfunden (2026-08-23)
+Nach der Grössen-Reparatur fielen zwei weitere Klassen im selben Feld auf:
+1. **Dieselbe Farbe zweimal, deutsch und englisch** («Blau» neben «Blue»). Vorher versteckt
+   in «Blue-0XL», nach der Grössen-Reparatur nebeneinander sichtbar. `farbwerte_uebersetzen.py`
+   scheitert daran zu Recht mit «Option value already exists» — **dieser Fehler ist eine
+   Schutzfunktion**, ein Umbenennen würde zwei Varianten mit verschiedenen CJ-SKUs
+   verschmelzen. `automation/farbwert_dubletten.py` hängt stattdessen die VARIANTEN um:
+   **130 Produkte, 453 Varianten**, 10 wegen Kollision unberührt gelassen.
+2. **Ringgrösse, Speicher und Kissenmass im Farbwert** — bei **222 Produkten ist «Farbe» die
+   EINZIGE Option** und trägt beides: «Black Gold-5 … Silver-9», «Silver-64GB»,
+   «Amber-30X50cm». Die Kundin sieht neun Einträge im Farb-Dropdown und kann nicht ahnen,
+   dass sich vier davon nur in der Ringgrösse unterscheiden. `automation/mass_im_farbwert.py`
+   legt eine ZWEITE Option an («Grösse» · «Speicher» · «Inhalt») — es löscht nichts, jede
+   Variante behält ihre Angabe in zwei Feldern statt in einem.
+- ⚠️ **`productOptionsCreate(variantStrategy: CREATE)` legt das KARTESISCHE PRODUKT an.**
+  Bei einem Kissenbezug mit 21 Farben × 4 Massen wären aus 21 echten Varianten **84**
+  geworden — erfundene Ware, die es beim Lieferanten nicht gibt, mit leeren SKUs und
+  Preisen. Richtig ist **`LEAVE_AS_IS`** plus ein eigener `productVariantsBulkUpdate`.
+  (`MANAGE` gibt es in 2024-10 nicht; die Enum kennt nur diese zwei Werte.)
+- ⚠️ **Eine blosse Zahl hinter dem Bindestrich ist keine Grösse.** Der «Bluetooth Grip Ring
+  Handtrainer» führt «001-1 · 001-2 · 001-3» — eine Modellnummer. Die Regel greift bei
+  blossen Zahlen deshalb nur, wenn der vordere Teil als Farbe erkennbar ist
+  (`farben_de.json`). Fünfte Substring-Falle in derselben Familie wie «IPL» in «L-IPL-iner».
+- Farbtabelle in einem Zug **280 → 414 Einträge**, aus der Häufigkeitsliste des frischen
+  Exports. **NICHT aufgenommen**: Werte mit Mass- oder Bauteilangabe («Black Increased 6CM»,
+  «Black Thin Shoes») — dort ist die Struktur falsch, nicht die Sprache; und Marken-/
+  Pinyin-Namen («Xingyao Black», «Weilai Gray»), deren Bedeutung ich nicht belegen kann.
+  ⚠️ «Olive», «Sand», «Indigo», «Golden», «Khaki», «Beige» sind schon deutsch — sie sahen in
+  der Trefferliste nach 4'352 unübersetzten Werten aus.
+
 ## 📏 Die Grösse stand im Farbwert — weil die Grössenliste dreimal existierte (2026-08-23)
 350 aktive Produkte führten Farbwerte wie **«Aprikose-2XL», «Red-7XL», «Gray-0XL»**, während
 der Grössen-Slot einen Füllwert trug — bei 1'700 von 1'700 Varianten exakt die KLEINSTE
