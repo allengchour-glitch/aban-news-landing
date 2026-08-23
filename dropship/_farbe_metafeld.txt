@@ -287,3 +287,4 @@ gid://shopify/Product/15510333948289	Schwarz
 gid://shopify/Product/15510336012673	Silber
 gid://shopify/Product/15510336143745	Türkis
 gid://shopify/Product/15510336766337	Silber
+gid://shopify/Product/15496604582273	Schwarz
