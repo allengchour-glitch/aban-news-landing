@@ -892,3 +892,6 @@ gid://shopify/Product/15446267134337	CHF 43.21	4 Varianten	Kabellose Gamecontrol
 gid://shopify/Product/15446267167105	CHF 40.23	1 Varianten	Dual-Mode Gaming Controller für Mobil & PC
 gid://shopify/Product/15446267199873	CHF 17.72	3 Varianten	Date Night Drinking Creative Brettspiel
 gid://shopify/Product/15446267265409	CHF 32.76	3 Varianten	Wiederaufladbares Retro-Game-Set mit 2 Controllern
+gid://shopify/Product/15446267298177	CHF 52.13	2 Varianten	Vertikaler Gaming-Pistolengriff mit Trigger
+gid://shopify/Product/15446267363713	CHF 28.13	3 Varianten	RGP01 Multi-Plattform Wireless Gamepad
+gid://shopify/Product/15446267396481	CHF 34.11	3 Varianten	X2 Blue 4K Wireless Gaming Konsole

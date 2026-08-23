@@ -10205,3 +10205,4 @@ gid://shopify/Product/15449158943105	109->0	Damen Sweatshirt mit 3D-Effekt Print
 gid://shopify/Product/15449571361153	28->1	Damen Cuff Washed Wide-Leg Crop-Jeans
 gid://shopify/Product/15450061767041	184->0	Atmungsaktive Kletterschuhe
 gid://shopify/Product/15450068189569	24->0	Wasserdichte Wanderschuhe
+gid://shopify/Product/15452688843137	15->0	Retro Streifen-Langrock mit Polo-Kragen & Seitenschlitz
