@@ -905,3 +905,5 @@ gid://shopify/Product/15510326083969	ok	Leder Umhängetasche A4
 gid://shopify/Product/15510327394689	ok	Lederrucksack Herren – Vintage-Look
 gid://shopify/Product/15510326149505	ok	Baukasten für kleine Partikel
 gid://shopify/Product/15510326182273	ok	Magisches Rennauto Baustein-Modell
+gid://shopify/Product/15510330868097	ok	Kupfer Küchenarmatur mit Ausziehbrause
+gid://shopify/Product/15510327820673	ok	Grosse Vintage-Herrenhandtasche aus Leder
