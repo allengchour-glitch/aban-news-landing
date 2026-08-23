@@ -854,3 +854,6 @@ gid://shopify/Product/15446063612289	CHF 17.72	1 Varianten	Haftcreme für Zahnpr
 gid://shopify/Product/15446063907201	CHF 35.70	1 Varianten	Golden Peptide Collagen Augenmaske
 gid://shopify/Product/15446064202113	CHF 25.35	1 Varianten	Glitzer Spray für Haar und Körper
 gid://shopify/Product/15446064464257	CHF 24.63	2 Varianten	Glitzerndes Highlight Puder für Gesicht & Körper
+gid://shopify/Product/15446064726401	CHF 24.72	1 Varianten	Kurkuma & Kojisäure Reinigungspads
+gid://shopify/Product/15446065021313	CHF 23.95	2 Varianten	Photon Gesichts- und Augenmassagegerät
+gid://shopify/Product/15446065611137	CHF 24.25	1 Varianten	Augenpflege-Schlafmaske mit Wärme & Massage
