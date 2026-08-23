@@ -1209,8 +1209,11 @@ Nach der Grössen-Reparatur fielen zwei weitere Klassen im selben Feld auf:
    Projekt schon Geld verloren hat. Diese 6 bleiben unberührt: hässlich, aber wahr.
 
 **DIE GEGENPROBE, die diesen ganzen Tag absichert** — frischer Bulk-Export vorher/nachher:
-vorher 45'860 Produkte / 386'600 Varianten · nachher 46'724 / 395'479 ·
-**Produkte mit WENIGER Varianten: 0**. Damit ist belegt, dass keines der drei Werkzeuge
+vorher 45'860 Produkte / 386'600 Varianten · nachher 46'727 / 395'482 ·
+**Produkte mit WENIGER Varianten: 0**. 16 Produkte fehlen ganz — alle aus den
+Risikoklassen, die die täglichen Wächter draften (Butterfly-Messer, Feder-Abwehrstock,
+Fetal-Doppler, Vernebler, Hörgerät, Anti-Reflux-Babykissen, verdeckte GPS-Tracker);
+**keines davon stand in einem meiner Ledger**. Damit ist belegt, dass keines der drei Werkzeuge
 irgendwo Varianten verschmolzen hat — genau das Risiko, gegen das die Kollisionswachen
 gebaut sind. Vorher hatte ich nur Stichproben, und eine Stichprobe beweist bei 45'000
 Produkten nichts. **Wer massenhaft an Optionswerten schreibt, zählt hinterher die
