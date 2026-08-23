@@ -47,7 +47,9 @@ TOKEN  = os.environ.get('SHOPIFY_ADMIN_TOKEN') or open('/tmp/cj_shop_token.txt')
 DRY    = os.environ.get('DRY') == '1'
 CAP    = int(os.environ.get('CAP', '200'))
 QUELLE = os.environ.get('QUELLE', '/tmp/hc_prods.jsonl')
-LEDGER = 'dropship/_produktdetails_wahrheit.txt'
+MODUS  = os.environ.get('MODUS', 'floskel')   # floskel | spiegel
+LEDGER = ('dropship/_produktdetails_wahrheit.txt' if MODUS == 'floskel'
+          else 'dropship/_produktdetails_spiegel.txt')
 
 FLOSKEL_MAT   = 'hochwertiges material'
 FLOSKEL_FARBE = 'verschiedene farben'
@@ -123,7 +125,38 @@ def reparieren(html, options):
             was.append('groesse-ohne-deckung-entfernt'); return ''
         return m.group(0)
 
-    neu = LI.sub(ersetze, html)
+    def spiegeln(m):
+        """Zweiter Modus: Der Textblock muss die ECHTEN Optionswerte nennen.
+
+        Die Kandidaten aus dem Audit («Farbe: Black-38-With velvet, …» ·
+        «Beige-2XL-Men's, …» · «JJF106230color-Dad 2XL») sind der rohe
+        CJ-Variantenschluessel, wie er beim Import im Text festgeschrieben
+        wurde. Live sind die Optionen laengst sauber — beim Strick-Cardigan
+        15448591892865 steht in der Option «Dunkelgrau, Schwarz, Weiss …»,
+        im Text «Dark Gray-XXS, Dunkelgrau, Black-XXS, …».
+        Der Text ist also nicht falsch geraten, sondern STEHENGEBLIEBEN.
+        Deshalb braucht es keine Wortliste: Die Option ist die Wahrheit,
+        der Text hat sie zu spiegeln. Wo es die Option nicht gibt, wird
+        NICHTS angefasst — «Farbe: Schwarz» bei einem einfarbigen Artikel
+        ohne Farbwahl ist eine richtige Aussage."""
+        label, wert = m.group(1).strip(), m.group(2).strip()
+        ll = label.lower()
+        if ll.startswith(('farbe', 'color')):
+            echt = liste(farben)
+        elif ll.startswith(('grösse', 'groesse', 'größe', 'size')):
+            echt = liste(groesse)
+        else:
+            return m.group(0)
+        if not echt:
+            return m.group(0)
+        def norm(x):
+            return re.sub(r'[\s,]+', ' ', x.strip().lower())
+        if norm(echt) == norm(wert):
+            return m.group(0)
+        was.append(('farbe' if ll.startswith(('farbe', 'color')) else 'groesse') + '-gespiegelt')
+        return '<li>\n<strong>%s:</strong> %s</li>' % (label, echt)
+
+    neu = LI.sub(spiegeln if MODUS == 'spiegel' else ersetze, html)
     if not was:
         return html, []
     # Leergeraeumte Bloecke ganz entfernen statt als nackte Ueberschrift stehen lassen
@@ -140,7 +173,10 @@ def kandidaten():
         except Exception: continue
         d = o.get('d') or ''
         if str(o['id']) in hat: continue
-        if (FLOSKEL_MAT in d.lower() or FLOSKEL_FARBE in d.lower()
+        if MODUS == 'spiegel':
+            if re.search(r'(?:Farbe|Grösse):\s*\S', d):
+                out.append(str(o['id']))
+        elif (FLOSKEL_MAT in d.lower() or FLOSKEL_FARBE in d.lower()
                 or re.search(r'Grösse:\s*XS, S, M, L, XL(?![,0-9])', d)):
             out.append(str(o['id']))
     return out
