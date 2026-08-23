@@ -115,6 +115,42 @@
   Gast verliert Host → „Alleine weiterspielen". Disconnect im Spiel wirft nicht mehr
   sofort raus, sondern meldet Abwesenheit. `saveGame` sichert jetzt auch Online-Spiele.
 
+## 🌐 Lebenspfad Koop: drei Beitritts-/Verbindungsfehler (2026-08-23)
+
+Alle drei stammen aus der Befundliste `SCHWARM-BEFUNDE-2026-07-28.md` und waren dort verortet,
+aber nicht behoben. Ein vierter Eintrag (Robo entfernen ohne Reindizierung) **war** inzwischen
+gefixt — Backlog-Einträge vor dem Anfassen gegen den Code prüfen.
+
+**1. Zwei Spieler auf Sitz 0** (`netLaunch`). `NET.conns` füllt sich schon beim
+`"connection"`-Event, `c._idx` entsteht aber erst mit der `"hallo"`-Nachricht. `netLaunch`
+schickte an *alle* Verbindungen `you:c._idx` — bei einer noch unbekannten ist das `undefined`,
+`JSON.stringify` lässt das Feld weg, und `beginNet` machte daraus `NET.my = init.you|0` = **0**.
+Der Gast hielt sich für den Host: Zugfolge, Präsenz und Chat-Zuordnung kaputt. Auslöser: jemand
+tippt den Einladungslink genau in dem Moment, in dem der Host startet.
+→ Unidentifizierte Verbindungen bekommen `{t:"spaet"}` und werden geschlossen; der Gast sieht
+„Runde ist gerade gestartet — nochmal beitreten". Dazu ein Sicherheitsnetz in `beginNet`:
+fehlt `you`, wird **gar nicht** gestartet statt still auf Sitz 0.
+
+**2. Reconnect ließ tote Kanäle offen** (`netTryReconnect`). Lief ein Versuch ins Leere, rief der
+Timer einfach den nächsten auf — der alte `c` blieb am Leben und hing in ICE/TURN. Öffnete oder
+schloss er später doch noch, feuerten seine Handler und überschrieben den funktionierenden Kanal.
+Der Join-Pfad macht das korrekt, hier fehlte das `c.close()`.
+
+**3. Nach 8 Versuchen war Schluss.** Wer im Zug oder Aufzug kurz offline war, kam nie zurück,
+obwohl der Host noch da war. Jetzt schaltet der Backoff nach 8 Versuchen auf einen ruhigen Puls
+(15 s) und versucht weiter, solange die Seite offen ist; das Solo-Overlay wird trotzdem angeboten.
+
+> ⚠️ **PeerJS ist aus dem Messstand nicht erreichbar** („🔁 Server nicht erreichbar" — die
+> Signalserver sind geblockt). Ein Live-Test zu zweit geht hier **nicht**. Geprüft wurde deshalb
+> mesh-genau am Code: gefälschte Verbindungen in `NET.conns` (mit/ohne `_idx`) gegen `netLaunch`,
+> `beginNet` ohne `you`, und ein `NET.peer`-Stub, dessen Kanal nie aufmacht. Ergebnis:
+> `init:you=1` nur an die identifizierte, `spaet` an die unbekannte; `my` bleibt −1 und das Spiel
+> startet nicht; der tote Kanal wird geschlossen und ein Folgeversuch läuft.
+
+> 🔑 **Das Skript ist eine IIFE** (`})();` am Dateiende) — `NET`/`G`/Funktionen sind von außen
+> unsichtbar. Für Tests eine Kopie `_lpdbg.html` mit einem `window.__LP={…}`-Hook **vor** dem
+> schließenden `})();` bauen und **nie committen**.
+
 ## Spiel-Besonderheiten
 - `lebenspfad.html`: OPT (music/sfx/tempo/motion) aus localStorage; updater-Kette in der
   Hauptschleife (`updClouds`, `updButterflies`, `updDekoCoins` …); Kapitel-Farben CHAPTERS[];

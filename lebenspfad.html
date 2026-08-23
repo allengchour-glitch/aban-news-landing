@@ -3229,6 +3229,11 @@ function netOnMsg(m,from){
 function netApply(m){
   if(m.t==="chat"){chatAdd(m.n,m.x,m.i);return;} // Blase über Absender-Index (nicht Name)
   if(m.t==="emo"){showEmoteB(m.i|0,m.k|0);return;} // 😊 Smiley-Fast-Chat
+  if(m.t==="spaet"){ /* Host hat gestartet, bevor unser "hallo" ankam — sauber absagen statt kaputt beitreten */
+    netStatus("⏱️ Die Runde ist gerade gestartet — tippe nochmal auf Beitreten.","#e0a13a");
+    try{if(NET.peer)NET.peer.destroy();}catch(e){}NET.peer=null;NET.conns=[];NET.on=false;NET.started=false;
+    var jb=document.getElementById("netJoinBtn");if(jb)jb.disabled=false;
+    return;}
   if(m.t==="init"){beginNet(m);return;}
   if(m.t==="rematch"){beginNet(m);return;} // 🔁 neue Runde, gleiche Spieler
   if(m.t==="welcome"){NET.my=m.idx|0;netUnlockAfterWelcome();
@@ -3540,8 +3545,14 @@ function netTryReconnect(){ // Gast: mit Backoff neu zum Host verbinden und Snap
   if(NET.host||!NET.on||!NET.peer||NET.peer.destroyed)return;
   if(NET.conns[0]&&NET.conns[0].open)return; // schon (wieder) verbunden
   NET._reTries=(NET._reTries||0)+1;
-  if(NET._reTries>8){netCheckPause();return;} // aufgeben -> Solo-Overlay übernimmt
-  var delay=Math.min(8000,Math.round(600*Math.pow(1.7,NET._reTries-1)));
+  /* ⚠️ NICHT aufgeben. Bisher war nach 8 Versuchen Schluss — wer im Zug oder im
+     Aufzug kurz offline war, kam nie mehr zurueck, obwohl der Host noch da war.
+     Ab jetzt schaltet der Backoff nach 8 Versuchen auf einen ruhigen Puls (15 s)
+     und versucht es weiter, solange die Seite offen ist. Das Solo-Overlay wird
+     trotzdem angeboten — wer nicht warten will, spielt allein weiter. */
+  var langsam=NET._reTries>8;
+  if(langsam){NET._reTries=8;netCheckPause();}   // Zaehler einfrieren = konstanter Puls
+  var delay=langsam?15000:Math.min(8000,Math.round(600*Math.pow(1.7,NET._reTries-1)));
   clearTimeout(NET._reTO);
   NET._reTO=setTimeout(function(){
     if(NET.host||!NET.on||!NET.peer||NET.peer.destroyed)return;
@@ -3555,7 +3566,15 @@ function netTryReconnect(){ // Gast: mit Backoff neu zum Host verbinden und Snap
       c.on("data",function(d){try{var m=JSON.parse(d);}catch(e){return;}netApply(m);});
       c.on("close",function(){NET.conns=[];if(NET._hb)clearInterval(NET._hb);netConnInfo();
         if(NET.on){renderNetHud();netCheckPause();netTryReconnect();}});
-      setTimeout(function(){if(!settled&&NET.on&&!(c&&c.open))netTryReconnect();},Math.min(6000,delay+3000)); // Versuch lief ins Leere -> nächster Backoff
+      /* ⚠️ Den toten Kanal SCHLIESSEN, bevor der naechste Versuch startet. Ohne
+         das blieb c am Leben: er haengt in ICE/TURN, der naechste Versuch setzt
+         NET.conns=[c2], und wenn c1 spaeter doch noch aufmacht oder zumacht,
+         feuern seine Handler weiter und ueberschreiben den funktionierenden
+         Kanal. Der Join-Pfad macht das korrekt, hier fehlte es. */
+      setTimeout(function(){if(!settled&&NET.on&&!(c&&c.open)){
+        try{c.close();}catch(e){}
+        if(NET.conns[0]===c)NET.conns=[];
+        netTryReconnect();}},Math.min(6000,delay+3000));
     }catch(e){netTryReconnect();}
   },delay);}
 function netHostReset(){try{voiceStop();}catch(e){}NET.host=false;NET.pubWanted=false;NET.pubCode=null;NET._brkAuto=false;NET._autoShare=false; /* 🩹 Schwarm-P2/P3: Auto-Failover-Budget + Share-Flag freigeben — sonst nur 1 Failover pro Seiten-Load / verspätetes Share-Sheet */try{if(NET.peer)NET.peer.destroy();}catch(e){}NET.peer=null;NET.conns=[];NET.names=[];NET.cfgs=[];NET.ready=[];
@@ -3886,10 +3905,25 @@ function netLaunch(){ // Host: Runde starten / neue Runde — Init an alle + sel
   var adult=document.getElementById("adultChk")&&document.getElementById("adultChk").checked;
   var kurz=document.getElementById("kurzChk")&&document.getElementById("kurzChk").checked; // Host bestimmt den Modus
   NET.started=true;
-  NET.conns.forEach(function(c){try{c.send(JSON.stringify({t:"init",seed:seed,names:NET.names,adult:!!adult,you:c._idx,mode:kurz?"kurz":"voll",cfgs:NET.cfgs,bots:NET.bots||[],vids:netVidList()}));}catch(e){}});
+  /* ⚠️ NUR an identifizierte Verbindungen. `NET.conns` fuellt sich schon beim
+     "connection"-Event, `c._idx` entsteht aber erst mit der "hallo"-Nachricht.
+     Wer genau dazwischen liegt, bekam bisher `you:undefined` — JSON.stringify
+     laesst das Feld weg, und beginNet machte daraus `NET.my = init.you|0` = 0.
+     Der Gast hielt sich dann fuer den HOST: zwei Clients auf Sitz 0, Zugfolge,
+     Praesenz und Chat-Zuordnung kaputt. Passiert genau dann, wenn jemand den
+     Einladungslink in dem Moment tippt, in dem der Host startet.
+     Solche Verbindungen bekommen jetzt eine klare Absage statt eines kaputten
+     Sitzes — der Gast kann danach sauber neu beitreten. */
+  NET.conns.forEach(function(c){
+    if(c._idx==null){try{c.send(JSON.stringify({t:"spaet"}));}catch(e){}
+      setTimeout(function(){try{c.close();}catch(e){}},250);return;}
+    try{c.send(JSON.stringify({t:"init",seed:seed,names:NET.names,adult:!!adult,you:c._idx,mode:kurz?"kurz":"voll",cfgs:NET.cfgs,bots:NET.bots||[],vids:netVidList()}));}catch(e){}});
   beginNet({seed:seed,names:NET.names,adult:!!adult,you:0,mode:kurz?"kurz":"voll",cfgs:NET.cfgs,bots:NET.bots||[]});}
 document.getElementById("netStartBtn").onclick=netLaunch;
 function beginNet(init){
+  /* ⚠️ Sicherheitsnetz zum Fix in netLaunch: ein fehlendes `you` darf NIE
+     stillschweigend Sitz 0 werden. Lieber sichtbar nicht starten. */
+  if(typeof init.you!=="number"){netStatus("⚠️ Beitritt kam zu spaet — bitte neu beitreten.","#e05a5a");return;}
   NET.on=true;NET.started=true;NET.seed=init.seed>>>0;NET.my=init.you|0;NET.names=init.names;NET.q=[];
   if(init.vids)NET.vids=init.vids; /* 🎙️ Peer-IDs fuer Voice-Vollvernetzung */
   NET.cfgs=(init.cfgs&&init.cfgs.length)?init.cfgs:[]; // gesyncte Picker-Looks aller Spieler
