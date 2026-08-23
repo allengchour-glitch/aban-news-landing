@@ -105,6 +105,39 @@ eigene Suchfunktion, nicht die Stadt.
   sehen. `window._alleeStellen` haelt die Standorte abrufbar, damit ein Werkzeug sie
   gegen die Baender nachrechnen kann — ohne das waere die Pruefung hier blind.
 
+## 🏦 Die Bank stand nirgends — Gebäude, Personal, Überfall (2026-08-23)
+
+**Der Koop-Überfall lief gegen ein leeres Feld.** `coupZone()` gibt `window._bankPos` zurück,
+mit Fallback (172|−20). Gemessen: `_bankPos` ist **undefined**, und in der ganzen Welt sind
+**null** th23-Bauten geladen. Das Modell `th23_bank.glb` gibt es seit Charge 23 — mit
+Kassenhalle, vier Schaltern, drei Beratungskabinen hinter Glas, Geldautomaten-Nische und
+Tresortür —, aber es gehört zum Viertel **„Gewerbe Ost"** (172|0), und das wird nicht gebaut.
+
+> ⚠️ **Damit fehlen auch Parkgarage, Post, Polizeiwache und Apotheke** (`th20_parkgarage`,
+> `th23_post`, `th23_polizeiwache`, `th23_apotheke`) — im ganzen Spiel sind nur **3** Bauten aus
+> th20/22/23/37 geladen. Warum `viertel({name:"Gewerbe Ost"})` nichts absetzt, ist **nicht**
+> untersucht; das gehört der Quartiers-Mechanik und ist hier nur als Befund notiert.
+
+**Jetzt:** die Bank steht explizit bei (−66|−137), neben der Klinik — zusammen ein kleines
+Behördenviertel. Gemessen 21,5 × 16,9 × 5,70 (Maßstab 1,0 bei `bau(...,5.7,...)`; die Doku-Maße
+33,0 × 25,9 × 7,2 in TH5-ASSETS.md stimmen **nicht**). Kollider mit Türlücke auf der Nordseite,
+sonst wäre das ganze Innenleben zugemauert.
+
+> ⚠️ **Die Stadt ist voll.** Für 34 × 27 m liegt der nächste freie Platz **158 m** außerhalb;
+> selbst 22 × 18 findet erst 139 m draußen etwas. Innerhalb des Rings und außerhalb des
+> Baugrundstücks: **null** Plätze. Wer hier noch etwas Großes unterbringen will, muss in die
+> Peripherie oder kleiner skalieren.
+
+**Personal.** Drei Angestellte hinter den Schaltern, Posten **gemessen** (Tresen auf z −142,6 bei
+x −71,5 / −67,8 / −64,2, Innenboden y 0,20) statt aus lokalen Blender-Koordinaten über Skalierung
+und `rotY` zurückgerechnet — dieser Weg hat drei Vorzeichen zum Irren. `mkBewohner` hängt sich
+selbst in die Szene und liefert die Gliedmaßen in `userData` (`la`/`ra` = Arme).
+
+**Überfall.** Bei `COUP.phase>0` gehen die Hände hoch (`rotation.x = −2.4`, wie in der
+Panik-Animation der Passanten), alle drehen sich zur Tür und zittern; danach zurück in den
+Leerlauf (Blick wandert, Atmen). Geprüft über eine Sonde: Ruhe −0,07 → Überfall −2,46 → danach
+−0,10, Blick 3,14.
+
 ## 🤝 Koop-Mission „Sperrgut zu zweit tragen" (2026-08-23)
 
 Es gab bisher **eine** echte Koop-Mission, den Bank-Coup. Der prüft ZONEN: beide an der Bank,

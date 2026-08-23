@@ -6628,6 +6628,29 @@ setTimeout(function baueGebaeude(){
     fest("th49_arztpraxis.glb",8.58,-6,-152,Math.PI);
     addSolid(-6,-152,11.0,9.0);
   })();
+  /* ── 🏦 Charge 50: Bank mit Innenleben, Personal und Ueberfall ───────────────
+     ⚠️ GEMESSEN: die Bank stand bisher NIRGENDS in der Welt. `th23_bank.glb` gibt
+     es seit Charge 23 (Kassenhalle mit vier Schaltern, drei Beratungskabinen
+     hinter Glas, Geldautomaten-Nische, Tresortuer, Marmorboden) — sie gehoert
+     zum Viertel "Gewerbe Ost", und das wird nicht gebaut: im Spiel sind NULL
+     th23-Bauten geladen und `window._bankPos` ist undefined. Der Koop-Coup lief
+     damit gegen seine Fallback-Koordinate (172|-20), wo nichts steht: ein
+     Bankueberfall auf freiem Feld.
+     Die Stadt ist fuer 34 x 27 m voll — der naechste freie Platz liegt 158 m
+     ausserhalb. Darum steht die Bank neben der Klinik im Suedbezirk; zusammen
+     ergibt das ein kleines Behoerdenviertel.
+     Die Tuer liegt im Modell auf Blender +y, in three.js also -z; rotY = pi
+     dreht sie nach Norden, zur Stadt hin. */
+  (function bankAusbau(){
+    var BX=-66, BZ=-137, BH=5.7;
+    bau("th23_bank.glb",BH,BX,0,BZ,Math.PI,false,function(w){
+      w.userData.fest=true; window._bankObj=w;
+      window._bankPos={x:BX,z:BZ}; bankPersonal();},true);
+    /* Kollider mit Tuerluecke auf der Nordseite — sonst ist die Halle zugemauert
+       und das ganze Innenleben unerreichbar (Lehre aus dem Klinik-Vordach). */
+    addSolid(BX,BZ,26.0,21.0,{a:"z",at:BZ+10.5,c:BX,w:3.4});
+  })();
+
   /* ── ⚓ Charge 45: Hafen und Strand ─────────────────────────────────────────
      340 m Ufer standen ohne einen einzigen Gegenstand da. Der Sandstreifen liegt
      bei x = -128 (14 breit, also -135…-121), das Wasser westlich davon, der
@@ -9576,6 +9599,63 @@ addEventListener("orientationchange",function(){setTimeout(layoutLinkeSpalte,260
                   Bahnhofs-Parkplatz zu kommen — beide, nicht nur einer.
      3 BEUTE    — geteilt, aber deutlich mehr als jeder Coup allein bringt.
    Solo ist er absichtlich nicht spielbar; der Knopf sagt das auch. */
+/* ---- Bankpersonal: drei Angestellte hinter den Schaltern ----
+   ⚠️ Die Posten sind GEMESSEN, nicht aus dem Generator gerechnet: die vier
+   Schaltertresen der geladenen Bank liegen auf z -142,6 bei x -71,5 / -67,8 /
+   -64,2 / -60,5, der Innenboden auf y 0,20. Wer die lokalen Blender-Koordinaten
+   ueber Skalierung und rotY zurueckrechnet, hat drei Vorzeichen zum Irren —
+   die Meshes direkt zu messen ist kuerzer und stimmt.
+   `mkBewohner` haengt sich selbst in die Szene und liefert die Gliedmassen in
+   userData (la/ra = Arme) — beim Ueberfall gehen die Haende hoch, genau wie in
+   der Panik-Animation der Passanten (rotation.x = -2.4). */
+var BANK_LEUTE=[];
+var BANK_POSTEN=[[-71.5,-143.6],[-67.8,-143.6],[-64.2,-143.6]];
+function bankPersonal(){
+  if(BANK_LEUTE.length)return;
+  var F=[{skin:0xf0c090,hair:0x2a2a34,top:0x2a3a6e,bottom:0x1a2340,dress:false,longHair:false},
+         {skin:0xffd9b8,hair:0x8a5a2a,top:0x7a3a5a,bottom:0x2a2a38,dress:true, longHair:true },
+         {skin:0xd9a06a,hair:0x1a1a24,top:0x3a5a4a,bottom:0x2a2a38,dress:false,longHair:false}];
+  BANK_POSTEN.forEach(function(p,i){
+    var m=mkBewohner(F[i]);
+    m.position.set(p[0],0.20,p[1]);
+    m.rotation.y=Math.PI;                 /* Blick nach +z: zu den Kunden und zur Tuer */
+    m.userData.nieAusblenden=true;        /* im Haus, aber nie wegblenden */
+    BANK_LEUTE.push({mesh:m,x:p[0],z:p[1],t:i*2.1,alarm:false});});
+}
+function updBankLeute(dt){
+  if(!BANK_LEUTE.length)return;
+  var alarm=(COUP.phase>0);
+  for(var i=0;i<BANK_LEUTE.length;i++){
+    var a=BANK_LEUTE[i],ud=a.mesh.userData;a.t+=dt;
+    if(alarm!==a.alarm){
+      a.alarm=alarm;
+      if(alarm){simEmojiRoh(a.mesh,"🙌");}
+      else if(ud&&ud.la){ud.la.rotation.x=0;ud.ra.rotation.x=0;}
+    }
+    if(alarm){
+      if(ud&&ud.la){ud.la.rotation.x=-2.4+Math.sin(a.t*3)*0.12;ud.ra.rotation.x=-2.4-Math.sin(a.t*3)*0.12;}
+      a.mesh.rotation.y=Math.PI;                                  /* alle zur Tuer */
+      a.mesh.position.y=0.20+Math.abs(Math.sin(a.t*7))*0.02;      /* Zittern */
+    }else{
+      a.mesh.rotation.y=Math.PI+Math.sin(a.t*0.45+i)*0.32;        /* Blick wandert */
+      a.mesh.position.y=0.20+Math.sin(a.t*1.4+i)*0.012;           /* Atmen */
+      if(ud&&ud.la){var sw=Math.sin(a.t*1.1+i)*0.10;ud.la.rotation.x=sw;ud.ra.rotation.x=-sw;}
+    }
+  }
+}
+/* Emoji ueber einer beliebigen Figur — simEmoji/npcEmoji brauchen ein Sim- bzw.
+   NPC-Objekt, das Bankpersonal ist keins von beiden. */
+function simEmojiRoh(mesh,txt){
+  try{
+    var cv=document.createElement("canvas");cv.width=cv.height=64;
+    var c2=cv.getContext("2d");c2.font="48px serif";c2.textAlign="center";c2.textBaseline="middle";
+    c2.fillText(txt,32,36);
+    var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthTest:false}));
+    sp.scale.set(0.9,0.9,1);sp.position.set(0,2.5,0);sp.renderOrder=998;mesh.add(sp);
+    setTimeout(function(){try{mesh.remove(sp);}catch(e){}},2600);
+  }catch(e){}
+}
+
 var COUP={phase:0,t:0,beute:0};
 function coupZone(){return window._bankPos||{x:172,z:-20};}
 function coupFluchtZone(){return {x:25,z:97};}                  /* Bahnhofs-Parkplatz (vergroessert) */
@@ -10788,7 +10868,7 @@ function loop(now){
       _ws.material.opacity+=(_zielO-_ws.material.opacity)*Math.min(1,dt*0.8);
       _ws.visible=_ws.material.opacity>0.02;
     }
-    updHearts(dt);updPlopps(dt);updWetter(dt);updVerkehr(dt);updLandbus(dt);updHafen(dt,now);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);updVerstecken(dt);updTrag(dt);updFest(dt,now);updImmo(dt);
+    updHearts(dt);updPlopps(dt);updWetter(dt);updVerkehr(dt);updLandbus(dt);updHafen(dt,now);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);updVerstecken(dt);updTrag(dt);updBankLeute(dt);updFest(dt,now);updImmo(dt);
     document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("minimap").style.display=(running&&!buildMode)?"block":"none";
     /* 🩹 Schwarm-6: lief JEDEN Frame mit getComputedStyle/getBoundingClientRect
