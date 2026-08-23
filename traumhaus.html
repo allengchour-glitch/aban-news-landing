@@ -4903,13 +4903,48 @@ setTimeout(function baueGebaeude(){
       [[2.4,2*BH,-BW,0],[2.4,2*BH,BW,0]].forEach(function(p){
         var m=new THREE.Mesh(new THREE.BoxGeometry(p[0],0.08,p[1]),wegM);
         m.position.set(p[2],0.04,p[3]);m.receiveShadow=true;scene.add(m);});
-      /* Hecke aussen am Weg, mit Toren zur Zufahrt (x = 0 nach Norden, sonst Ecken frei) */
-      for(var hx=-BW+4;hx<=BW-4;hx+=4){
-        if(Math.abs(hx)>5)bau("th6_hecke_modul.glb",1.3,hx,0,BH+2.4,0,false,null);
-        bau("th6_hecke_modul.glb",1.3,hx,0,-BH-2.4,0,false,null);}
-      for(var hz=-BH+4;hz<=BH-4;hz+=4){
-        bau("th6_hecke_modul.glb",1.3,-BW-2.4,0,hz,Math.PI/2,false,null);
-        bau("th6_hecke_modul.glb",1.3,BW+2.4,0,hz,Math.PI/2,false,null);}
+      /* 🌳 HECKE AM GRUNDSTUECK — INSTANZIERT, und das aus zwei gemessenen Gruenden.
+         1. SIE WAR KEINE HECKE, sondern eine Reihe einzelner Bloecke: das Modul ist
+            2,31 m breit, das Raster stand auf 4,0 — zwischen je zwei Modulen klafften
+            1,69 m. Von oben faellt das nicht auf, auf Augenhoehe sofort.
+         2. Einfach dichter setzen war KEINE Option: jedes Modul bringt SECHS Meshes
+            mit, 63 Stueck stehen allein am Grundstueck. Das Raster auf 2,25 zu
+            verdichten haette 49 Module und damit bis zu 294 zusaetzliche
+            Zeichenaufrufe gekostet — auf 781 ein Plus von 38 %.
+         Als Instanzen kostet die GANZE Hecke sechs Zeichenaufrufe, und das dichtere
+         Raster ist gratis. Das Modell wird EINMAL geladen, seine Meshes werden aus der
+         Vorlage herausgerechnet (Gruppen-Matrix invertiert, damit Skalierung und
+         Boden-Versatz erhalten bleiben), danach verschwindet die Vorlage wieder. */
+      var heckenStellen=[];
+      for(var hx=-BW+4;hx<=BW-4;hx+=2.3){
+        if(Math.abs(hx)>5)heckenStellen.push([hx,BH+2.4,0]);
+        heckenStellen.push([hx,-BH-2.4,0]);}
+      for(var hz=-BH+4;hz<=BH-4;hz+=2.3){
+        heckenStellen.push([-BW-2.4,hz,Math.PI/2]);
+        heckenStellen.push([BW+2.4,hz,Math.PI/2]);}
+      bau("th6_hecke_modul.glb",1.3,heckenStellen[0][0],0,heckenStellen[0][1],heckenStellen[0][2],false,
+        function(w){
+          w.updateMatrixWorld(true);
+          var inv=new THREE.Matrix4().copy(w.matrixWorld).invert(),teile=[];
+          w.traverse(function(m){if(m.isMesh&&m.geometry)
+            teile.push({g:m.geometry,mat:m.material,
+                        l:new THREE.Matrix4().multiplyMatrices(inv,m.matrixWorld)});});
+          var M=new THREE.Matrix4(),T=new THREE.Matrix4(),R=new THREE.Matrix4();
+          teile.forEach(function(t){
+            var im=new THREE.InstancedMesh(t.g,t.mat,heckenStellen.length);
+            for(var i=0;i<heckenStellen.length;i++){
+              var st=heckenStellen[i];
+              R.makeRotationY(st[2]);T.makeTranslation(st[0],0,st[1]);
+              M.multiplyMatrices(T,R);M.multiply(t.l);
+              im.setMatrixAt(i,M);}
+            im.instanceMatrix.needsUpdate=true;
+            im.castShadow=true;im.receiveShadow=true;
+            im.userData.nieAusblenden=true;   /* eine Gruppe — nie als Ganzes ausblenden */
+            scene.add(im);});
+          scene.remove(w);
+          var ix=(window._gebaeude||[]).indexOf(w);if(ix>=0)window._gebaeude.splice(ix,1);
+          window._heckeZahl=heckenStellen.length;window._heckeTeile=teile.length;
+        },true);
       /* Ecken markieren + Zufahrt beschildern */
       [[-BW,-BH],[BW,-BH],[-BW,BH],[BW,BH]].forEach(function(e){
         bau("th5_poller.glb",1.0,e[0],0,e[1],0,false,null);});
