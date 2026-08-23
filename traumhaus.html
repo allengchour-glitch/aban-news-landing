@@ -10557,7 +10557,40 @@ function loop(now){
     sun.target.updateMatrixWorld();
     sun.position.set(camTx+Math.cos((hh-5.75)/14*Math.PI)*34,4+dayA*36,camTz+18); // tiefer bei Daemmerung -> lange Schatten
     renderer.toneMappingExposure=(0.62+dayA*0.36)*wDim; // 0.34 war zu dunkel zum Spielen
+    /* 🌙 DIE NACHT WAR TAGHELL — und diese eine Zeile war der Grund.
+       `scene.environmentIntensity` gibt es erst ab three.js r163; geladen ist
+       r128. Die `undefined`-Abfrage hat die Abdunklung darum still uebersprungen,
+       und die Umgebungskarte (eine TAGES-HDR) beleuchtete die Stadt die ganze
+       Nacht mit voller Staerke. Gemessen bei 22:10: dayA 0, Sonne auf 0,20
+       heruntergeregelt, Himmel auf #131c30 — und die Wiese trotzdem in vollem
+       Mittagsgruen.
+       In r128 sitzt die Staerke pro Material (`envMapIntensity`). Die Materialien
+       sind geteilt und darum wenige; sie werden EINMAL eingesammelt (erst in der
+       Daemmerung und fruehestens nach 20 s, damit auch die Streu-Objekte drin
+       sind) und danach nur noch skaliert, wenn sich der Faktor spuerbar aendert.
+       ⚠️ NICHT dunkler machen als noetig: der hohe Nacht-Sockel oben ist eine
+       ausdrueckliche Nutzerentscheidung („man sieht nichts"), 0,34 Belichtung war
+       damals zu dunkel zum Spielen. Hier wird nur das nachgeholt, was die Zeile
+       ohnehin wollte. */
     if(scene.environmentIntensity!==undefined)scene.environmentIntensity=0.26+dayA*0.74;
+    else{
+      var envF=0.30+dayA*0.70;
+      if(!window._envMats&&dayA<0.35&&performance.now()>20000){
+        var gesehen=new Set(),liste=[];
+        scene.traverse(function(n){
+          if(!n.material)return;
+          var mm=Array.isArray(n.material)?n.material:[n.material];
+          for(var i=0;i<mm.length;i++){var m=mm[i];
+            if(!m||gesehen.has(m)||m.envMapIntensity===undefined)continue;
+            gesehen.add(m);liste.push({m:m,b:m.envMapIntensity});}});
+        window._envMats=liste;window._envFLast=-1;
+      }
+      if(window._envMats&&Math.abs(envF-window._envFLast)>0.03){
+        window._envFLast=envF;
+        for(var ei=0;ei<window._envMats.length;ei++){
+          var e=window._envMats[ei];e.m.envMapIntensity=e.b*envF;}
+      }
+    }
     var skyC=new THREE.Color(0x9fd0ea).lerp(new THREE.Color(0x141c30),1-Math.min(1,dayA*1.4));
     if(dayA>0.02&&dayA<0.55)skyC.lerp(new THREE.Color(0xff9a52).setHex(0xff9a52),(0.55-dayA)/0.55*0.5); // Abend-/Morgenrot
     scene.background.copy(skyC);scene.fog.color.copy(skyC);

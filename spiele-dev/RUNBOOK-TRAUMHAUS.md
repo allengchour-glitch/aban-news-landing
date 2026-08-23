@@ -4,6 +4,30 @@
 > ~600 kB in einer einzigen IIFE; ohne diese Karte sucht man lange und tritt in
 > Fallen, die hier schon einmal Stunden gekostet haben.
 
+## 🌙 Die Nacht war taghell — eine Zeile fuer die falsche three-Version (2026-08-23)
+- Grep-Anker: `_envMats`, `environmentIntensity`
+- **Der Befund:** um 22:10 war `dayA` 0, die Sonne auf 0,20 heruntergeregelt und der Himmel
+  auf `#131c30` — und die Wiese trotzdem in vollem Mittagsgruen. Nur Laternenkegel und
+  Autoscheinwerfer schalteten um.
+- **Die Ursache:** `if(scene.environmentIntensity!==undefined) …` — die Eigenschaft gibt es
+  erst ab **three.js r163**, geladen ist **r128**. Die Abfrage hat die Abdunklung still
+  uebersprungen, und die Umgebungskarte (eine TAGES-HDR) beleuchtete die Stadt die ganze
+  Nacht mit voller Staerke. Eine Zeile, die aussieht wie eine Vorsichtsmassnahme und in
+  Wahrheit ein ganzes Feature abschaltet.
+- **In r128 sitzt die Staerke pro Material** (`envMapIntensity`). Die Materialien werden
+  EINMAL eingesammelt — erst in der Daemmerung und fruehestens nach 20 s, damit die
+  Streu-Objekte drin sind — und danach nur skaliert, wenn sich der Faktor um mehr als 0,03
+  aendert. Gemessen: 8521 geteilte Materialien, Beispiel 0,30 statt Basis 1,0.
+- **⚠️ Tag bleibt unangetastet:** bei `dayA=1` ist der Faktor exakt 1,0.
+- **⚠️ NICHT weiter abdunkeln ohne Rueckfrage.** Der hohe Nacht-Sockel (`hemi` 0,48,
+  Belichtung 0,62) ist eine ausdrueckliche Nutzerentscheidung — „man sieht nichts", und
+  0,34 Belichtung war damals zu dunkel zum Spielen. Die Nacht ist jetzt spuerbar dunkler,
+  aber bewusst noch hell.
+- **⚠️ Uhrzeit im Test:** `uhrzeit` setzen reicht nicht fuer ein Nachtbild. Himmel und Sonne
+  werden pro Bild auf ihr Ziel gelerpt, und die Seite laeuft im Software-Renderer bei rund
+  einem Bild pro Sekunde — nach 4 s stand die Blende noch fast auf Tag. Mehrfach setzen und
+  ueber 30 s warten.
+
 ## 🌳 Allee aus der echten Strassengeometrie (2026-08-23)
 - Grep-Anker: `function allee`, `bandFrei`, `window._alleeStellen`
 - **Vorher vier handgetippte Reihen** (`SZa+12+13`, `RX+10`) aus der Zeit, als die Karte
