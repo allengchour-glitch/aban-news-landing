@@ -2,6 +2,14 @@
 # CJ-Queue-Runner: arbeitet automation/cj_search_queue.txt in 4er-Batches ab,
 # danach Kategorie-Fill (Default-Gruppen). Idempotent: erledigte Zeilen -> "#done ".
 cd /home/user/aban-news-landing || exit 1
+# ⚠️ 23.08.2026: Die Zugangsdaten stehen in /tmp/secrets_env.sh — genau wie bei den vier
+# Grind-Runnern (cj_runner_template.sh Zeile 20). Dieses Skript hat sie NICHT geladen und
+# starb deshalb in Zeile 5 mit «SHOPIFY_CLIENT_ID: fehlt», sobald der Aufseher es startete
+# (alle 25 Minuten, drei Stunden lang, immer sofort). Vorher fiel es nicht auf, weil es
+# gar nicht erst gestartet wurde: engine_keepalive suchte nur unter /tmp, und dort gibt es
+# diese Datei nicht. Ein Dauerlaeufer, der sofort stirbt, sieht im Log aus wie einer, der
+# laeuft — man sieht nur Startzeilen.
+source /tmp/secrets_env.sh 2>/dev/null
 : "${SHOPIFY_CLIENT_ID:?fehlt}"
 : "${SHOPIFY_CLIENT_SECRET:?fehlt}"
 export SHOPIFY_CLIENT_ID SHOPIFY_CLIENT_SECRET
