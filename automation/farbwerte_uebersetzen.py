@@ -89,14 +89,20 @@ def main():
     if DRY or not kandidaten:
         return
 
-    done = set()
-    if os.path.exists(LEDGER):
-        done = {l.split("\t")[0] for l in open(LEDGER)}
+    # ⚠️ KEIN Erledigt-Gatter mehr (23.08.2026). Das Ledger hat den Lauf von heute halbiert:
+    # 569 Kandidaten aus einem frischen Export, aber nur 159 bearbeitet — der Rest stand aus
+    # frueheren Laeufen als «fertig» drin. Sie waren es nicht: `farben_de.json` ist heute von
+    # 280 auf 414 Eintraege gewachsen, und was gestern unuebersetzbar war, ist es heute nicht
+    # mehr. Nach einer Regel-Aenderung ist das alte Erledigt-Zeichen wertlos (Lehre 12.08.,
+    # dritte Wiederholung).
+    #
+    # Ein Gatter braucht es hier auch gar nicht: Die Kandidatenliste kommt aus dem Export und
+    # nennt nur Produkte, die NOCH englische Werte tragen — und vor jedem Schreiben werden die
+    # Optionswerte ohnehin LIVE nachgelesen. Ein veralteter Export kostet damit einen Lesezugriff,
+    # aber nie eine falsche Schreiboperation. Das Ledger bleibt als Protokoll.
     f = open(LEDGER, "a")
     n = fehler = 0
     for gid, titel in kandidaten:
-        if gid in done:
-            continue
         d = gql('query($id:ID!){node(id:$id){... on Product{options{id name '
                 'optionValues{id name}}}}}', {"id": gid})
         opts = ((d.get("data") or {}).get("node") or {}).get("options") or []
