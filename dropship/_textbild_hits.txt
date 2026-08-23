@@ -10082,3 +10082,5 @@ gid://shopify/Product/15495117504897	75->2	Plaid-High-Heel-Sandalen mit spitzer 
 gid://shopify/Product/15495117537665	40->0	Diamond Make-up Pinselset (20 Stk.)
 gid://shopify/Product/15495117603201	12->0	Chunky-Heel T-Strap Mary Jane Slipper
 gid://shopify/Product/15495117668737	39->0	10er-Set professionelle Neon Make-up Pinsel
+gid://shopify/Product/15495141163393	113->0	Wintersee Landschaft Diamond Painting
+gid://shopify/Product/15495141228929	32->3	Velo-Lenkerlicht mit Blinkfunktion

@@ -784,3 +784,9 @@ gid://shopify/Product/15445800518017	CHF 17.32	3 Varianten	2-in-1 Farbwechsel Fo
 gid://shopify/Product/15445800550785	CHF 26.34	1 Varianten	Gesichtsmassagegerät
 gid://shopify/Product/15445804941697	CHF 25.66	1 Varianten	Make-up Pinsel 0622
 gid://shopify/Product/15445816476033	CHF 22.11	1 Varianten	Fruchtiges Apfelparfum für Sie & Ihn
+gid://shopify/Product/15445827223937	CHF 22.11	1 Varianten	Sandelholz Parfum für Herren
+gid://shopify/Product/15445831057793	CHF 17.72	1 Varianten	Star Glitter Make-up Stick 15g
+gid://shopify/Product/15445833449857	cj-ohne-antwort
+gid://shopify/Product/15445833613697	cj-ohne-antwort
+gid://shopify/Product/15445833646465	CHF 22.20	1 Varianten	Xipu Floral Damenparfum (100ml)
+gid://shopify/Product/15445833744769	cj-ohne-antwort
