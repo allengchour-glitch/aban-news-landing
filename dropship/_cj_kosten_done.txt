@@ -832,3 +832,17 @@ gid://shopify/Product/15446023963009	CHF 27.15	1 Varianten	Zitruspresse aus Meta
 gid://shopify/Product/15446023995777	CHF 24.99	1 Varianten	Geruchsneutrale Fliegenfalle für Innen & Aussen
 gid://shopify/Product/15446024094081	CHF 28.05	1 Varianten	16-in-1 Gemüseschneider und Salatschneider
 gid://shopify/Product/15446024290689	CHF 24.45	1 Varianten	Zitruspresse für Zitrone und Limette
+gid://shopify/Product/15446024323457	CHF 31.45	1 Varianten	Beheizter Eisportionierer, USB-aufladbar
+gid://shopify/Product/15446024356225	CHF 28.10	1 Varianten	Gemüseschneider 15-in-1 mit Schäler und Hobel
+gid://shopify/Product/15446024388993	CHF 17.75	1 Varianten	Silikon-Eierpochierer Gondel
+gid://shopify/Product/15446024487297	CHF 30.80	1 Varianten	15-in-1 Gemüseschneider
+gid://shopify/Product/15446024683905	CHF 21.30	1 Varianten	Salz- und Pfefferstreuer-Set, 2-teilig
+gid://shopify/Product/15446059319681	CHF 18.35	1 Varianten	DR Reismilch Gesichtscreme 50g
+gid://shopify/Product/15446059680129	CHF 18.20	1 Varianten	DR Reismilch Gesichtsreiniger
+gid://shopify/Product/15446060007809	CHF 18.34	1 Varianten	DR Snail Collagen Cream 50g
+gid://shopify/Product/15446060269953	CHF 18.35	1 Varianten	DR Reis Milch Gesichtswasser
+gid://shopify/Product/15446060597633	CHF 17.76	1 Varianten	Repair Cream Ultimative Feuchtigkeitspflege
+gid://shopify/Product/15446060859777	CHF 17.76	1 Varianten	Azelaic Acid & Niacinamide Serum
+gid://shopify/Product/15446061220225	CHF 19.31	1 Varianten	4-in-1 Farbwechselnde Foundation
+gid://shopify/Product/15446061547905	CHF 22.40	1 Varianten	OUHOE Schneckencreme – Sanfte Gesichtspflege
+gid://shopify/Product/15446061941121	CHF 18.19	1 Varianten	Retinol Nachtcreme für glatte Haut
