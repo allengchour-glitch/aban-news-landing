@@ -10053,3 +10053,9 @@ gid://shopify/Product/15453792993665	25->0	Gewichtete Handgelenkbänder für Yog
 gid://shopify/Product/15475905888641	43->2	4L Trinkbrunnen für Haustiere
 gid://shopify/Product/15453760684417	999->0	Diamant-Anhänger Kette
 gid://shopify/Product/15493076255105	39->0	Wasserdichter, isolierter Lötverbinder mit Schrumpfring · 50
+gid://shopify/Product/15493750817153	120->0	Herren Slim Fit Stretch Jeans
+gid://shopify/Product/15493751046529	139->0	Elektrische Reifenpumpe
+gid://shopify/Product/15493751112065	41->1	Business Stretch Freizeithose für Herren
+gid://shopify/Product/15493751472513	16->0	Elektrisches Bian-Stein Massagegerät für Gesicht
+gid://shopify/Product/15493777555841	86->0	Automatischer, portabler Milchwärmer
+gid://shopify/Product/15493798232449	17->1	Gestreiftes Damen-Shirt im Cardigan-Stil
