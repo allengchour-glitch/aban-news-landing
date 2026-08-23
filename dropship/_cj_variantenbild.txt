@@ -1078,3 +1078,6 @@ gid://shopify/Product/15448042701185	bild-urls-tot
 gid://shopify/Product/15448042865025	bild-urls-tot
 gid://shopify/Product/15448043028865	bild-urls-tot
 gid://shopify/Product/15448043061633	bild-urls-tot
+gid://shopify/Product/15448110530945	zugeordnet	30	3D-Print Latzhose mit weitem Bein
+gid://shopify/Product/15448668111233	zugeordnet	41	Cape-Jacke mit abstraktem 3D-Weihnachtsdruck
+gid://shopify/Product/15449150620033	zugeordnet	72	Kapuzenpullover mit Reissverschluss & Print
