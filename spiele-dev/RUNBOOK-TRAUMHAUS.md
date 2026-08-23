@@ -24,9 +24,20 @@
   720x320 — jeweils 0 Ueberschneidungen, 0 ueber den Rand.
 
 ## 👁️ Auf AUGENHOEHE pruefen, nicht aus der Vogelperspektive (2026-08-23)
-- Werkzeug: `__th.ego(true)` (Haken ist schon da) + eine Sonde, die `sims[0]` an den
-  gewuenschten Ort setzt. `th-blick` mit kleinem Radius landet zu leicht unter einem
-  Portikus — die dokumentierte „Kamera in der Wand"-Falle.
+- **Werkzeug: `node spiele-dev/tools/th-augen.mjs <x> <z> [rot] [ziel.png]`** — setzt die
+  Figur an den Ort und schaltet die Ego-Kamera ein. `th-blick` mit kleinem Radius landet
+  zu leicht unter einem Portikus (die „Kamera in der Wand"-Falle).
+- **⚠️ `freiPlatz` BEWEIST KEINE GUTE KAMERAPOSITION.** Bei (0|96) meldete es „frei", die
+  Kamera steckte trotzdem in der Bahnhofswand — `freiPlatz` kennt eingetragene
+  Grundrisse, nicht jedes Dach und jede Kante. Das Werkzeug MISST darum zusaetzlich mit
+  einem Strahl aus der Kamera und warnt, wenn der erste Treffer naeher als 1,5 m liegt.
+  Ohne diese Anzeige haette ich zweimal ein Wandbild als Grafikfehler gedeutet.
+- **⚠️ Raycast nicht rekursiv ueber `scene.children`** — dabei stiess er auf ein Objekt
+  ohne Elternkette und starb mit `Cannot read properties of null (reading 'matrixWorld')`.
+  Erst eine eigene Liste sichtbarer Meshes sammeln, dann flach schneiden.
+- **Was der erste Blick von unten fand:** eine Ersatzbank am Sportplatz klebte mit 0,2 m
+  Ueberschneidung an einer Hauswand. Von oben unsichtbar, unter der 1-m-Schwelle der
+  Pruefung — auf Augenhoehe sofort zu sehen.
 - **Was von oben nie auffaellt:** aus der Ego-Sicht fuellt der HIMMEL rund 40 % des
   Bildes. Er war das flachste Element der Szene — und das haben alle bisherigen
   Vogelperspektiv-Runden uebersehen.
