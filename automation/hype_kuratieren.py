@@ -36,7 +36,7 @@ TAG = "hype-jetzt"
 HANDLE = "hype-jetzt"
 LEDGER = "dropship/_hype_verlauf.txt"
 
-QUELLE = "Web-Recherche 19.08.2026 (August-Trendberichte: Blush-Balms/Snail/Shapewear/Ordnung weiter bestätigt; neu: Invisible Lifting Tape, Haarglätter/Multistyler, Hals-Ventilator für Spätsommer)"
+QUELLE = "Web-Recherche 23.08.2026 (Trendtrack/CJ/eprolo August-Listen: Beauty-Geräte weiterhin stärkstes Signal, Snail/Serum und Blush-Balms bestätigt, «aesthetic living»/Ordnung bestätigt, Shapewear bestätigt; NEU für den Herbstanfang: Kerzenwärmer & Aroma-Diffusoren, Haustier-Fellpflege, Mini-Beutelverschliesser)"
 THEMEN = {
     # ⚠️ «IPL» ohne Wortgrenze steckt in «L-IPL-iner»: der erste Lauf setzte einen
     # «Peel-Off Lipliner» als Beauty-GERÄT auf die Startseite. Dieselbe Falle wie «rock» in
@@ -65,6 +65,23 @@ THEMEN = {
     "Haarglätter & Styler": re.compile(
         r'Haargl[äa]tter|Gl[äa]tteisen|Multi-?styler|Warmluftb[üu]rste|Airstyler|'
         r'Lockenstab|Gl[äa]ttb[üu]rste', re.I),
+    # Neu 23.08.: Die August-Listen nennen durchgehend Kerzenwärmer, Aroma-Diffusoren und
+    # kleine Küchen-/Ordnungshelfer («home and kitchen gadgets», «aesthetic living»). Für die
+    # Schweiz passt das zum Herbstanfang — der Hals-Ventilator läuft dafür aus (er verliert
+    # den Tag nach HYPE_TAGE von selbst, es muss ihn niemand entfernen).
+    # ⚠️ «Aroma» allein wäre eine Falle (Aroma-Öl in der Küche, «Aroma» in Lebensmitteln) →
+    # Diffusor/Wärmer/Duftlampe ist Pflicht-Anker. Dieselbe Regel wie bei «IPL» und «Tape».
+    "Kerzenwärmer & Duft": re.compile(
+        r'Kerzenw[äa]rmer|Candle[- ]?Warmer|Aroma[- ]?Diffus|Duftdiffus|Duftlampe|'
+        r'Aromatherapie[- ]?(?:Diffusor|Lampe)|[ÖO]l[- ]?Diffusor', re.I),
+    # ⚠️ «Bürste» allein trifft Haarbürsten, «Trimmer» trifft Bartschneider → Tier-Anker Pflicht.
+    "Haustier-Fellpflege": re.compile(
+        r'(?:Haustier|Hunde|Katzen|Tierhaar|Fell)[- ]?(?:b[üu]rste|k[äa]mm|Trimmer|'
+        r'Schermaschine|Pflegehandschuh)|Fellpflege|Entfilzungs', re.I),
+    # ⚠️ «Sealer» allein trifft Fugen-/Lacksiegel → Beutel/Folie als Anker.
+    "Beutelverschliesser": re.compile(
+        r'Beutelverschlie|Beutelversiegel|Folienschwei[sß]|Bag[- ]?Sealer|'
+        r'T[üu]tenverschlie|Vakuumierer', re.I),
     "Hals-Ventilator": re.compile(
         r'(?:Hals|Nacken|Neck)[- ]?(?:Ventilator|Fan|K[üu]hler)|Tragbarer Mini-?Ventilator', re.I),
 }
