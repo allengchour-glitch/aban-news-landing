@@ -10111,3 +10111,12 @@ gid://shopify/Product/15496863023489	28->0	Günstiges Switch-Controller-Ladeger�
 gid://shopify/Product/15496863154561	33->0	Gaming-Tastatur mit USB-Kabel und Beleuchtung
 gid://shopify/Product/15496892547457	63->0	Gaming-Griff für Smartphones
 gid://shopify/Product/15496936456577	9->0	Thousand Magic Mirror Bluetooth Gamepad
+gid://shopify/Product/15497422274945	16->3	Retro Strickjacke für Herren
+gid://shopify/Product/15497422307713	72->0	Nordisch-marokkanischer Kissenbezug mit Quasten
+gid://shopify/Product/15497422340481	9->0	Vielseitiges Hemd für Business und Freizeit
+gid://shopify/Product/15497422930305	8->2	Panda Heissluftfritteuse (4.5L oder 6L)
+gid://shopify/Product/15497422995841	130->0	Color-Block Strickhemd mit Revers
+gid://shopify/Product/15497423192449	17->0	Waffelpiqué Langarmhemd mit Reverskragen
+gid://shopify/Product/15497423323521	9->0	Ersatz-Vorheizrohr für Öl-/Gas-Kocher
+gid://shopify/Product/15497424273793	16->2	Multifunktionales Bauchmuskelrad mit Rebound
+gid://shopify/Product/15497424896385	42->2	Weihnachtliche Keramikplatte, rechteckig
