@@ -234,7 +234,19 @@ while true; do
   # Dasselbe für die langen NODE-Läufe. Eigener Block, weil der Prozesstest auf das erste
   # argv-Feld schaut und dort `node` statt `python3` steht — ein gemeinsamer Test hätte den
   # Lauf für tot gehalten und ihn im Zwei-Minuten-Takt ein zweites Mal gestartet.
+  # ⚠️ 23.08.2026 — DAS VORRANG-FENSTER GALT NUR FUER DEN GRIND. `engine_keepalive.sh`
+  # stoppt zwischen 16:00 und 17:30 UTC die vier Grind-Runner, damit der Kosten-Backfill
+  # CJs Punkte bekommt — aber die uebrigen CJ-Verbraucher liefen weiter. Gemessen im
+  # Fenster: der Punkte-Eimer fiel in 25 Sekunden von 447 auf 287, obwohl kein Runner
+  # lief. `cj_variantenbild` und `cj_bild_backfill` sind nicht dringend und warten.
+  # NICHT pausiert wird `cj_fulfill_runner` — der bearbeitet echte Kundenbestellungen.
+  VSTD=$(date -u +%H); VMIN=$(date -u +%M | sed 's/^0//')
+  VORRANGZEIT=0
+  if [ "$VSTD" = "16" ] || { [ "$VSTD" = "17" ] && [ "${VMIN:-0}" -lt 30 ]; }; then VORRANGZEIT=1; fi
   for N in cj_bild_backfill cj_variantenbild cj_kosten_backfill schulstart_import alt_text_backfill frosch_maske_import; do
+    if [ "$VORRANGZEIT" = "1" ] && [ "$N" != "cj_kosten_backfill" ]; then
+      case "$N" in cj_bild_backfill|cj_variantenbild) continue ;; esac
+    fi
     fehlt "$REPO/automation/$N.mjs" && continue
     grep -q "^FERTIG" "/tmp/$N.log" 2>/dev/null && continue
     pause_kuehlt "$N" && continue

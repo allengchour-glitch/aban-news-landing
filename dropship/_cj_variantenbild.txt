@@ -1098,3 +1098,17 @@ gid://shopify/Product/15496279294337	zugeordnet	30	Herren Sommerhemd mit Print
 gid://shopify/Product/15496380547457	zugeordnet	90	Herren Hemd Blau-Weiss Gestreift
 gid://shopify/Product/15496428093825	zugeordnet	96	Herren Hemd mit 3D Digitaldruck und Revers
 gid://shopify/Product/15496428388737	zugeordnet	42	Unisex Langarmhemd aus Baumwoll-Leinen
+gid://shopify/Product/15496432124289	zugeordnet	81	Figurbetonendes Slim-Fit Langarmshirt für Herren
+gid://shopify/Product/15496435564929	zugeordnet	48	Gestreiftes Langarm-Polohemd für Herren
+gid://shopify/Product/15496579449217	bild-urls-tot
+gid://shopify/Product/15496581579137	zugeordnet	40	Herren Langarmshirt mit geometrischem Farbblock-Design
+gid://shopify/Product/15497433710977	zugeordnet	54	Retro Kurzarmhemd für Herren
+gid://shopify/Product/15497437839745	zugeordnet	64	Wickel-Minirock mit Schlitz und Kurzarm-Top
+gid://shopify/Product/15497447670145	zugeordnet	96	Loose Herren Kurzarmhemd mit Blumenprint
+gid://shopify/Product/15497465463169	zugeordnet	91	Gestreiftes Baumwollhemd mit Reverskragen
+gid://shopify/Product/15497614131585	zugeordnet	60	Herren Hemd-Cardigan mit 3D Ethno-Muster
+gid://shopify/Product/15503303901569	zugeordnet	96	Trendiges Camouflage Cardigan-Shirt mit 3D-Print
+gid://shopify/Product/15503565193601	zugeordnet	24	Herren Jazz Hemd
+gid://shopify/Product/15448589173121	zugeordnet	3	Künstlerische Schürze aus Baumwolle
+gid://shopify/Product/15448826806657	zugeordnet	2	Dreamy Eau de Parfum Floral 30ml
+gid://shopify/Product/15448844730753	zugeordnet	3	Wandregal aus Paulowniaholz
