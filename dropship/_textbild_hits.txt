@@ -10052,3 +10052,4 @@ gid://shopify/Product/15453792567681	19->0	Softe Kinderschuhe mit Schleife
 gid://shopify/Product/15453792993665	25->0	Gewichtete Handgelenkbänder für Yoga und Bodybuilding
 gid://shopify/Product/15475905888641	43->2	4L Trinkbrunnen für Haustiere
 gid://shopify/Product/15453760684417	999->0	Diamant-Anhänger Kette
+gid://shopify/Product/15493076255105	39->0	Wasserdichter, isolierter Lötverbinder mit Schrumpfring · 50
