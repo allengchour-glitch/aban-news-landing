@@ -829,3 +829,6 @@ gid://shopify/Product/15446023635329	CHF 22.65	1 Varianten	Zitruspresse aus Meta
 gid://shopify/Product/15446023668097	CHF 35.15	1 Varianten	Damast Kochmesser mit Hammerschlag-Finish
 gid://shopify/Product/15446023897473	CHF 25.35	1 Varianten	Fleischzartmacher aus Edelstahl
 gid://shopify/Product/15446023963009	CHF 27.15	1 Varianten	Zitruspresse aus Metall mit Doppelform
+gid://shopify/Product/15446023995777	CHF 24.99	1 Varianten	Geruchsneutrale Fliegenfalle für Innen & Aussen
+gid://shopify/Product/15446024094081	CHF 28.05	1 Varianten	16-in-1 Gemüseschneider und Salatschneider
+gid://shopify/Product/15446024290689	CHF 24.45	1 Varianten	Zitruspresse für Zitrone und Limette
