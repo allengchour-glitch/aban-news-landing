@@ -66,3 +66,19 @@
 2026-08-23	Kerzenwärmer & Duft	gid://shopify/Product/15450834469249	New Flame Aroma Diffuser mit Flammeneffekt
 2026-08-23	Kerzenwärmer & Duft	gid://shopify/Product/15450853245313	Flammen Aroma Diffusor für Zuhause
 2026-08-23	Beutelverschliesser	gid://shopify/Product/15428429611393	Vakuumierer kabellos · Lebensmittel frisch halten
+2026-08-23	Beauty-Gerät	gid://shopify/Product/15506536300929	Ultraschall-Gesichtsreinigungsbürste
+2026-08-23	Beauty-Gerät	gid://shopify/Product/15510323233153	Multifunktionale Gesichtsreinigungsbürste
+2026-08-23	Hautpflege-Serum	gid://shopify/Product/15509394129281	Wimpernwachstumsserum Transparent
+2026-08-23	Hautpflege-Serum	gid://shopify/Product/15500460687745	Hyaluronsäure-Gesichtscreme
+2026-08-23	Mini-Beamer	gid://shopify/Product/15479340663169	Full-HD Mini-Beamer mit Autofokus
+2026-08-23	Mini-Beamer	gid://shopify/Product/15479805411713	Mini Beamer für Home Office & Heimkino
+2026-08-23	Ordnung & Aesthetic	gid://shopify/Product/15509968781697	Mehrzweck-Organizer fürs Pult
+2026-08-23	Ordnung & Aesthetic	gid://shopify/Product/15503112962433	8-teiliges Reise-Organizer-Set
+2026-08-23	Shapewear	gid://shopify/Product/15448108335489	Nahtloser Body Shaper mit Bauchkontrolle
+2026-08-23	Shapewear	gid://shopify/Product/15448108368257	High Waist Body Shaper Shorts
+2026-08-23	Ladestation 3-in-1	gid://shopify/Product/15483935162753	4-in-1 Ladestation
+2026-08-23	Ladestation 3-in-1	gid://shopify/Product/15447864508801	3-in-1 Ladestation mit Uhr & Wireless Charging
+2026-08-23	Haarglätter & Styler	gid://shopify/Product/15500912001409	Wasserwellen-Lockenstab für nasse und trockene Haare
+2026-08-23	Haarglätter & Styler	gid://shopify/Product/15451915518337	Kabelloser Diamant Haarglätter
+2026-08-23	Kerzenwärmer & Duft	gid://shopify/Product/15508399620481	Aromatherapie-Diffusor Holzoptik mit Fernbedienung
+2026-08-23	Kerzenwärmer & Duft	gid://shopify/Product/15496534786433	Hollow Aroma Diffuser Ultraschall-Luftbefeuchter
