@@ -880,3 +880,5 @@ gid://shopify/Product/15446266446209	CHF 31.73	2 Varianten	Mechanische Hand Skul
 gid://shopify/Product/15446266675585	CHF 18.92	1 Varianten	Bluetooth Gamecontroller für Android-Smartphones
 gid://shopify/Product/15446266773889	CHF 35.15	1 Varianten	Bluetooth Wireless Gaming Controller
 gid://shopify/Product/15446266806657	CHF 31.42	3 Varianten	Lay'sda P5 Wireless Game Controller
+gid://shopify/Product/15446266839425	CHF 17.84	6 Varianten	Metall-Thumbsticks für PS4 Controller
+gid://shopify/Product/15446266872193	CHF 32.61	1 Varianten	Kabelloser Bluetooth Game Controller
