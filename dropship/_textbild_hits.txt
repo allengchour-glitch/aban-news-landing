@@ -10120,3 +10120,6 @@ gid://shopify/Product/15497423192449	17->0	Waffelpiqué Langarmhemd mit Reverskr
 gid://shopify/Product/15497423323521	9->0	Ersatz-Vorheizrohr für Öl-/Gas-Kocher
 gid://shopify/Product/15497424273793	16->2	Multifunktionales Bauchmuskelrad mit Rebound
 gid://shopify/Product/15497424896385	42->2	Weihnachtliche Keramikplatte, rechteckig
+gid://shopify/Product/15497439641985	38->0	Halsband und Leine für Hunde, dick, bissfest
+gid://shopify/Product/15497439740289	21->0	Gefütterte, wasserdichte Winterstiefel für Kinder
+gid://shopify/Product/15497439838593	45->1	LED-Rollschuhe für Kinder, aufladbar
