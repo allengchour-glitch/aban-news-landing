@@ -1232,6 +1232,65 @@ eingerichteten Vorrang-Fenster, in dem der ganze Grind pausiert.
 4. ⚠️ Ein `[ "$stand" -ge 5 ]` bricht mit «integer expression expected» ab, wenn die Datei
    LEER ist: `: > datei` hinterlässt keine 0, `cat` gelingt, und `|| echo 0` feuert nie.
 
+## 🧱 «Fertig» ist nicht «hat gearbeitet» — der Queue-Runner lief leer (2026-08-23)
+Zweiter Akt derselben Lehre am selben Tag. Morgens fehlten `cj_queue_runner.sh` die
+Zugangsdaten, es starb in Zeile 5; ich habe sie ergänzt, den Start gesehen, ins Log geschaut —
+und dort standen Start- und **Fertigzeile**. Genau so sieht auch ein erfolgreicher Lauf aus.
+Tatsächlich standen **alle 23 Gruppen im Ledger** `/tmp/cj_grp_done.txt`, die Schleife übersprang
+jede einzelne und war in unter einer Sekunde durch. Der Aufseher startete das Ganze alle 25
+Minuten, es lief, und tat nichts.
+- **Regel: Nicht das Ende eines Laufs prüfen, sondern die ZAHL der bearbeiteten Einheiten.**
+  Ein Ledger, das voll ist, sieht von aussen aus wie Arbeit, die getan wurde.
+- Sind alle Gruppen erledigt, wird das Ledger jetzt geleert und eine neue **Runde** begonnen;
+  die Paginierungstiefe wächst mit der Runde (`MAXPAGE=5+R*3`, max 40) — eine neue Runde auf den
+  flachen Top-Seiten fände 0 Neue (DEPTH-Lehre 29.07.).
+- ⚠️ **Ein erschöpftes CJ-Tagesbudget quittiert die Gruppe NICHT mehr.** `cj_category_fill.mjs`
+  endet bei Code **16900500** mit «FERTIG: 0» und **Exit 0** — die Gruppe hätte als erledigt
+  gegolten, obwohl nichts geholt wurde, und die nächste Runde hätte sie übersprungen. Eine so
+  falsch quittierte Zeile musste gelöscht werden. **Ein leeres Budget ist keine erledigte Arbeit.**
+
+## 🧾 Eine Pflanzenlampe wurde in fünf Kleidergrössen angeboten (2026-08-23)
+Der Faktenblock «Produktdetails» trug bei **3'742 aktiven Produkten** Angaben, die nichts sagen
+oder falsch sind: «Material: hochwertiges Material» (2'573), «Farbe: verschiedene Farben» (1'406),
+«Grösse: XS, S, M, L, XL» (841). Die ersten beiden sind Werbefloskeln in einem Faktenfeld; die
+dritte ist die teure Klasse. Das **Smart-Anzuchtset mit LED-Pflanzenlampe** (15412678328705) hat
+live **genau eine Variante** («Default Title») und bewarb trotzdem fünf Kleidergrössen — ebenso
+ein Silikon-Lätzchen-Set, eine Schreibtischlampe, eine SKY-Fernbedienung und ein Sushi-Teller-Set.
+Der Baustein wurde beim Import über jedes Produkt gelegt, unabhängig davon, was es ist.
+- **Die Wahrheit kommt aus dem Produkt selbst**, nicht aus einer Vermutung: `automation/
+  produktdetails_wahrheit.py` liest LIVE die Optionen. Gibt es eine Grössen-Option, stehen deren
+  echte Werte im Block; gibt es keine, fällt die Zeile weg. Dasselbe bei Farbe. «hochwertiges
+  Material» wird ersatzlos entfernt — ein leeres Feld ist besser als eine Floskel (dieselbe Regel
+  wie beim Metafeld `material` und bei `google_product_category`).
+- **Zweiter Modus `MODUS=spiegel`** für die Audit-Klasse «roher CJ-Variantenschlüssel als Farbe»
+  (1'055 Produkte): Beim Strick-Cardigan 15448591892865 steht in der Option sauber «Dunkelgrau,
+  Schwarz, Weiss», im Text «Dark Gray-XXS, Dunkelgrau, Black-XXS, Schwarz». Der Text ist nicht
+  falsch geraten, sondern **stehengeblieben** — heute wurden 558 Farbwerte übersetzt und 349
+  Grössen aus dem Farbwert geholt, alles an der OPTION. **Der Modus braucht keine Wortliste: die
+  Option ist die Wahrheit, der Text hat sie zu spiegeln.** Läuft NACH dem Floskel-Lauf, nie
+  parallel — zwei Schreiber auf demselben Feld sind die Fehlerklasse vom 15.08.
+- Die **Quelle ist versiegt**: von den 30 zuletzt angelegten aktiven Produkten trägt keines eine
+  der drei Floskeln. Altbestand, kein nachwachsender Fehler.
+
+## 🇬🇧 Englische Titel: der Finder scheiterte an deutschen Zusammensetzungen (2026-08-23)
+95 Produkttitel waren laut Audit vollständig englisch. Der erste Finder meldete 179 — **59 davon
+Fehltreffer, alle derselben Ursache**: Deutsche Zusammensetzungen stehen in KEINER Wortliste.
+«Autoscheinwerfer», «Hundebett», «Damenuhr», «Kindersonnenbrille», «Freizeitschuh», «Batteriebox»
+galten als englisch. Jetzt wird jedes Wort probeweise in zwei deutsche Wörter zerlegt; dazu sind
+Titel mit «…» ausgeschlossen (T-Shirt «Bernese Dog» ist unsere eigene Motivbenennung).
+- ⚠️ **Und die Wache, die den Rest rettete:** Von 59 kuratierten Kandidaten trugen **neun live
+  längst einen deutschen Titel**, den ein anderer Lauf gesetzt hatte — bei zweien wäre meine
+  Übersetzung SCHLECHTER gewesen (live «Bein-Make-up, wasserfest» → ich hätte «Foundation»
+  geschrieben; live «Glättkamm mit LCD-Anzeige» → ich «Wellen-Styler»). Derselbe Fehler wie am
+  Mittag, als ich 22 bereits reparierte Markentitel aus altem Export überschrieb.
+  **Geschrieben wird nur, wenn der LIVE-Titel noch exakt der englische ist**, auf den sich die
+  Übersetzung bezieht. 51 gesetzt.
+- Jede Übersetzung ist von Hand gesetzt und an der deutschen Beschreibung geprüft. Wo die
+  Bedeutung unklar blieb, bleibt das Produkt englisch: «Tearing Lip Liner Pen Set», «3D Fiber Eye
+  Black», «Smart Remote Key Card», «Bell Pet GPS Tracker» (Marke oder Bauteil?).
+  **Ein falscher deutscher Titel ist schlimmer als ein englischer.**
+- Die Quelle ist dicht: alle drei CJ-Importer prüfen seit dem 20.08. mit `echoVomLieferanten()`.
+
 ## 🛒 Die Produktseite sagte «versandbereit» über einem Liefertermin in 14 Tagen (2026-08-23)
 Als Kundin gelesen behauptet die Seite eines CJ-Kleids zwei Dinge gleichzeitig:
 «🟢 Auf Lager · versandbereit» und darunter «Lieferung voraussichtlich 6.–20. Sept.».
