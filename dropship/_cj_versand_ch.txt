@@ -897,3 +897,7 @@ gid://shopify/Product/15510332375425	nicht-versendbar	Verstellbare Hanteln mit S
 gid://shopify/Product/15510332277121	ok	Multifunktionale Türreckstange für Zuhause
 gid://shopify/Product/15510320611713	ok	Wellenförmige Glas-Obstschale
 gid://shopify/Product/15510333456769	nicht-versendbar	Hula Hoop für Indoor-Training, 4.5 kg
+gid://shopify/Product/15510320710017	ok	Blaue glasierte Fruchtschale
+gid://shopify/Product/15510326378881	ok	Retro Lederrucksack mit grosser Kapazität
+gid://shopify/Product/15510326346113	ok	GTR Racing Sportwagen Bausteine
+gid://shopify/Product/15510330114433	nicht-versendbar	Multifunktionaler 18-Zoll Trolley-Koffer

@@ -40,27 +40,45 @@ export function mengeAusName(nameEn) {
   return werte.length === 1 ? werte[0] : null;
 }
 
+// Kürzt einen Titel auf maxLen — an einer WORTGRENZE, nie mitten im Wort.
+//
+// ⚠️ 23.08.2026, gefunden vom Katalog-Audit in Code, der einen Tag alt war: Diese Datei
+// machte es im «· N Stück»-Zweig längst richtig und im HAUPTPFAD roh (`t.slice(0,70)`).
+// Beide Fassungen standen in derselben Datei. Ergebnis live: 51 Titel enden mitten im
+// Wort — «…mit 3D-Digitaldru», «…grossem Fassungsvermög», «…Vorne/Hinten/L». Die
+// Längenverteilung belegt die harte Kappe unabhängig: 69 Zeichen → 25 Produkte,
+// 70 → 82, 71 → 11. Der Titel ist die Zeile in Google Shopping, in der Kollektions-
+// Kachel und im Warenkorb — genau dort, wo die Kaufentscheidung fällt.
+//
+// Das ist zum VIERTEN Mal dieselbe Fehlerklasse nach Farbtabelle, publishVerified() und
+// Preisformel: wer eine Hilfsfunktion an einer Stelle repariert, muss ihre Geschwister
+// suchen — hier standen sie 15 Zeilen auseinander.
+export function kuerzen(text, maxLen = 70) {
+  const t = String(text || '').trim();
+  if (t.length <= maxLen) return t;
+  let basis = t.slice(0, maxLen);
+  const luecke = basis.lastIndexOf(' ');
+  // Bleibt nach dem Rückschnitt zu wenig übrig, ist der harte Schnitt das kleinere Übel
+  // (ein Titel aus zwei Wörtern sagt weniger als ein leicht angeschnittener).
+  if (luecke > maxLen * 0.55) basis = basis.slice(0, luecke);
+  return basis.replace(/[\s·,–-]+$/, '')
+              .replace(/\s+(?:und|oder|mit|für|im|in|aus|der|die|das|den|zum|zur|&|·)$/i, '')
+              .replace(/[\s·,–-]+$/, '');
+}
+
 // Hängt «· N Stück» an, wenn der Titel noch keine Stückzahl nennt.
 // ⚠️ Reicht der Platz nicht, wird der TITEL gekürzt, nicht die Stückzahl weggelassen —
-// sie ist die Angabe, ohne die der Preis missverstanden wird. Gekürzt wird an einer
-// Wortgrenze; bleibt zu wenig übrig, gewinnt der ungekürzte Titel (dieselbe Regel wie
-// bei den Wearable-Titeln: Shopify lehnt einen leeren Titel ab).
+// sie ist die Angabe, ohne die der Preis missverstanden wird. Bleibt zu wenig übrig,
+// gewinnt der ungekürzte Titel (dieselbe Regel wie bei den Wearable-Titeln: Shopify
+// lehnt einen leeren Titel ab).
 export function titelMitMenge(titel, nameEn, maxLen = 70) {
   const t = String(titel || '').trim();
-  if (/·\s*\d+\s*(?:St[üu]ck|Stk|Blatt|Paar)\b/i.test(t)) return t.slice(0, maxLen);
+  if (/·\s*\d+\s*(?:St[üu]ck|Stk|Blatt|Paar)\b/i.test(t)) return kuerzen(t, maxLen);
   const n = mengeAusName(nameEn);
-  if (!n) return t.slice(0, maxLen);
+  if (!n) return kuerzen(t, maxLen);
   const zusatz = ` · ${n} Stück`;
   if (t.length + zusatz.length <= maxLen) return t + zusatz;
   const platz = maxLen - zusatz.length;
-  if (platz < 24) return t.slice(0, maxLen);
-  let basis = t.slice(0, platz);
-  const luecke = basis.lastIndexOf(' ');
-  if (luecke > 20) basis = basis.slice(0, luecke);
-  // Ein abgeschnittener Titel darf nicht auf einem Binde- oder Füllwort enden
-  // («… für Notizbuch, Laptop und · 24 Stück» liest sich wie ein Fehler).
-  basis = basis.replace(/[\s·,–-]+$/, '')
-               .replace(/\s+(?:und|oder|mit|für|im|in|aus|der|die|das|den|zum|zur|&|·)$/i, '')
-               .replace(/[\s·,–-]+$/, '');
-  return basis + zusatz;
+  if (platz < 24) return kuerzen(t, maxLen);
+  return kuerzen(t, platz) + zusatz;
 }
