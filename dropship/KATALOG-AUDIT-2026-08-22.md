@@ -114,6 +114,16 @@ Alle 83 Kandidaten wurden live nachgeladen: 83/83 noch ACTIVE, keine Reparatur-E
 
 **Reparatur in zwei getrennten Läufen**, und für die 53 **keine geratenen Farbnamen**: CJ kennt zu jedem Varianten-SKU die echte Farbe, die muss abgefragt werden. Ein Lauf, der «XK76» auf Verdacht in «Schwarz» übersetzt, wäre schlimmer als der Code.
 
+> ⛔ **KORREKTUR 23.08.2026 — der vorgeschlagene Weg gibt es nicht.** «CJ kennt die echte Farbe» ist eine Annahme, die ich live geprüft habe, und sie ist falsch. `product/variant/query?productSku=CJDS2863313` liefert für alle 96 Varianten des Blumenprint-Hemds:
+> `variantKey: "XK76-XS"`, `variantNameEn: "Floral Loose Men's … Shirt XK76 XS"`, `variantName: null`.
+> **Der Code IST CJs Farbbezeichnung.** Es gibt keine Ebene darunter, die man abfragen könnte — der Lieferant selbst nennt das Muster «XK76».
+>
+> Was tatsächlich hilft, steht in derselben Antwort: **`variantImage` ist je Farbcode verschieden** (16 verschiedene Bilder auf 96 Varianten). Ein Variantenbild ersetzt den Namen durch das, was die Kundin ohnehin sehen will — das Muster. Es rät nichts und ist bei einem Blumenprint sogar aussagekräftiger als jedes Farbwort.
+>
+> Umgesetzt: Die betroffenen Produkte stehen in `dropship/_cj_variantenbild_prio.txt`, das `cj_variantenbild.mjs` vorrangig abarbeitet (mit der 500-px-Wache vom 20.08.).
+>
+> ⚠️ **Und die Zahl 53 hält der Nachzählung nicht stand.** Ein eigener Vollscan über alle aktiven Produkte findet **24** mit durchgängig codierten Optionswerten — nach Abzug zweier Fehlerklassen, die im Erstbefund noch mitzählten: **Grössensysteme** («EU 52 · EU 54» Ringgrösse, «US 10 · US 12» Schuhgrösse, «EU38–EU45») und **Massangaben** («2000ML · 2600ML · 3300ML» ist das Fassungsvermögen eines Keramiktopfs). Beides sind korrekte Werte, keine Lieferantencodes.
+
 **Wächter:** `variant_value_clean.py` — mit der harten Auflage, dass es weiterhin **nichts auf Verdacht löscht** (es hätte am 21.08. «110 cm»→«cm» und «Dad 3XL»→«Dad» geschrieben).
 
 ---

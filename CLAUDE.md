@@ -1185,6 +1185,25 @@ Gemessen: +5.39. **Das Modell stimmt.**
 - Der konservative Umrechnungsfaktor 0.9 des Repos liegt näher an der Realität als der
   Tageskurs 0.79 — er rechnet die Marge klein, nicht schön. So gehört es.
 
+## 🎨 «XK76» IST CJs Farbname — es gibt keine Ebene darunter (2026-08-23)
+24 aktive Produkte zeigen im Farbfeld reine Codes: `XK76 · XK222`, `CDCS1001 … CDCS10012`,
+`WVWY 010`. Der Katalog-Audit schrieb dazu die naheliegende Reparatur vor: «keine geratenen
+Farbnamen — CJ kennt zu jedem Varianten-SKU die echte Farbe, die muss abgefragt werden.»
+**Live geprüft, und die Annahme ist falsch.** `product/variant/query?productSku=CJDS2863313`
+liefert für alle 96 Varianten `variantKey: "XK76-XS"`, `variantNameEn: "… Shirt XK76 XS"`,
+`variantName: null`. Der Lieferant selbst nennt das Muster «XK76».
+**Was tatsächlich hilft, steht in derselben Antwort:** `variantImage` ist je Code
+verschieden (16 Bilder auf 96 Varianten). Ein Variantenbild ersetzt den Namen durch das,
+was die Kundin ohnehin sehen will — bei einem Blumenprint aussagekräftiger als jedes
+Farbwort. Die Produkte stehen jetzt in `dropship/_cj_variantenbild_prio.txt`.
+**Lehre: Bevor man eine Reparatur plant, die eine fremde Quelle voraussetzt, fragt man die
+Quelle EINMAL.** Ein ganzer Reparaturlauf wäre gegen eine Datenebene gebaut worden, die es
+nicht gibt.
+⚠️ Und zwei Fehlerklassen im eigenen Suchmuster, beide alte Bekannte in neuer Form:
+**Grössensysteme** («EU 52 · EU 54» ist eine Ringgrösse, «US 10» eine Schuhgrösse,
+«EU38–EU45») und **Massangaben** («2000ML · 2600ML · 3300ML» ist das Fassungsvermögen).
+Ein Buchstabenpräfix vor Ziffern ist kein Code — erst die Bedeutung entscheidet.
+
 ## 🧴 Smart-Collection-Regeln können «IPL» nicht fangen — Bindestriche helfen NICHT (2026-08-21)
 Die Kollektion `beauty-geraete` stand mit 58 Produkten da, alle DRAFT (BigBuy-Leichen), und war
 aus einem veröffentlichten Ratgeber verlinkt. Statt sie zurückzuziehen liess sie sich mit aktiver
