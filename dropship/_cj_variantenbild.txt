@@ -987,3 +987,5 @@ gid://shopify/Product/15448019370369	zugeordnet	25	Samt Langarmshirt mit Knopfle
 gid://shopify/Product/15448019665281	zugeordnet	32	Zweiteiliger Hoodie & Jogginghosen Trainingsanzug
 gid://shopify/Product/15448019796353	zugeordnet	2	Gestricktes Langarmhemd mit Falten-Optik
 gid://shopify/Product/15448019927425	zugeordnet	30	Samt-Langarmbluse mit V-Ausschnitt
+gid://shopify/Product/15448020091265	zugeordnet	12	Muschel-Muster Strand-Cover-up mit Fransenärmeln
+gid://shopify/Product/15448020255105	zugeordnet	25	Samt Off-Shoulder Langarmshirt
