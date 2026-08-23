@@ -741,3 +741,5 @@ gid://shopify/Product/15445271609729	CHF 18.47	1 Varianten	UV Transparentes Soft
 gid://shopify/Product/15445272428929	CHF 21.42	2 Varianten	UV Polish Crystal Gel Starter-Set
 gid://shopify/Product/15445273379201	CHF 17.79	20 Varianten	UV Nagellack Set – Glitzer & Uni-Farben
 gid://shopify/Product/15445274263937	CHF 16.90	1 Varianten	AS Nail Art Eternal Classic Farbgel-Nagellack
+gid://shopify/Product/15445274919297	CHF 16.93	15 Varianten	Painless Fast Nail Art Extension Set
+gid://shopify/Product/15445275771265	CHF 18.55	2 Varianten	Nail Art Infiltration Suit Dust Brush

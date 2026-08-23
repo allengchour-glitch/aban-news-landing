@@ -151,12 +151,30 @@ async function main() {
       // — das Wort steht also immer drin. Der Lauf hielt jede Antwort für ein leeres
       // Budget und brach beim ERSTEN CJ-Aufruf ab; nach einem ganzen Tag standen 17
       // Produkte im Ledger. Gelesen wird jetzt die ZAHL, nicht das Wort.
+      // ⚠️ 23.08.2026 — ZWEITER AKT DERSELBEN FEHLDEUTUNG. Die Zahl zu lesen war richtig,
+      // die SCHLUSSFOLGERUNG war falsch: `pointsInfo.remaining` ist KEIN Tagesbudget,
+      // sondern ein Eimer, der sich staendig wieder fuellt. Live gemessen im
+      // Vorrang-Fenster, sechs Abfragen in 25 Sekunden:
+      //   16:08:00 → 419 · 16:10:34 → 447 · 16:10:43 → 387 · :47 → 357 · :52 → 317 · :57 → 287
+      // Er STEIGT zwischendurch. Und `remaining` ist nicht `total - usedToday`
+      // (63'387 − 105'620 waere negativ) — es ist ein eigener, nachfliessender Zaehler.
+      // Der Lauf hat deshalb seit dem 21.08. bei jedem Tief unter 20 «morgen weiter»
+      // gemeldet und blieb bei ~700 Produkten stehen, obwohl Sekunden spaeter wieder
+      // Hunderte Punkte da waren.
+      // Dieselbe Lehre wie bei Shopifys Drosselung: Eine Warteanweisung ist kein
+      // Abbruchgrund — sie sagt nur, wie lange zu warten ist.
+      // Das ECHTE Tagesende meldet CJ mit Fehlercode 16900500 und dem Klartext
+      // «Insufficient API points ... Remaining: 0» — das wird unten abgefangen.
       const rest = j?.pointsInfo?.remaining;
       if (typeof rest === 'number' && rest < 20) {
-        console.log(`PAUSE (CJ-Punkte fast leer: ${rest}, morgen weiter)`); return;
+        console.log(`  Eimer leer (${rest}) — 45 s warten`);
+        await sleep(45000);
       }
       if (!j.result) {
-        if (/1690050/.test(JSON.stringify(j))) { console.log('PAUSE (CJ meldet leeres Budget)'); return; }
+        // ⚠️ Nur DAS ist das echte Tagesende: Code 16900500 mit «Insufficient API points».
+        if (/16900500|Insufficient API points/i.test(JSON.stringify(j))) {
+          console.log('PAUSE (CJ-Tagesbudget erschoepft — morgen weiter)'); return;
+        }
         // ⚠️ NICHT quittieren, wenn CJ nur gedrosselt hat — sonst ist das Produkt fuer
         // immer abgehakt, ohne je gefragt worden zu sein.
         if (j.gedrosselt) { ohne++; await sleep(2000); continue; }
