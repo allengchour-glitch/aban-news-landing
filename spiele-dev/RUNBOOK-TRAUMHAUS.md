@@ -87,6 +87,41 @@ eigene Suchfunktion, nicht die Stadt.
   sehen. `window._alleeStellen` haelt die Standorte abrufbar, damit ein Werkzeug sie
   gegen die Baender nachrechnen kann — ohne das waere die Pruefung hier blind.
 
+## 🤝 Koop-Mission „Sperrgut zu zweit tragen" (2026-08-23)
+
+Es gab bisher **eine** echte Koop-Mission, den Bank-Coup. Der prüft ZONEN: beide an der Bank,
+später beide am Fluchtwagen — dazwischen kann jeder machen, was er will. Die neue Mission prüft
+den **Weg**: die Kiste rührt sich nur, solange **beide** in Reichweite sind (5 m). Wer stehen
+bleibt, hält den anderen auf.
+
+- Knopf 📦 (nur sichtbar in einer Koop-Runde), HUD `#tragHud` mit Restmeter und Namen dessen,
+  der zu weit weg ist. Host armiert; der Gast schickt `{t:"tragReq"}` statt selbst zu starten.
+- Netz: `{t:"trag",on:1,x,z}` / `{t:"tragP",x,z}` alle 0,2 s / `{t:"trag",on:0,ok}`.
+  **Nur der Host rechnet** — dieselbe Lehre wie bei der Coup-Beute, die früher beide Peers
+  eigenständig würfelten (doppeltes Geld).
+- Die **Team-Aufgaben** (`TEAMQ`) sind übrigens *keine* Koop-Missionen: alle acht sind
+  „macht zusammen N×X" auf einer gemeinsamen Statistik — einer allein erfüllt jede davon.
+
+> ⚠️ **Erster Entwurf verworfen: die Kiste sollte auf gerader Linie zum Ziel gleiten.** Dafür
+> gibt es in dieser Stadt keinen Platz — die Suche nach einem freien 30-m-Korridor ergab
+> **null** Treffer. Jetzt folgt die Kiste dem Mittelpunkt zwischen beiden Trägern; den Weg
+> suchen sich die Spieler selbst, und Bäume oder Zäune dazwischen sind egal.
+
+> ⚠️ **Beim Messen freier Punkte MUSS die Himmelskuppel raus.** Sie ist ein Mesh von
+> **1040 × 1040 × 1040** um den Ursprung und überdeckt sonst *jeden* Punkt der Karte — die
+> erste Kiste landete deshalb auf einem Dach, und ein Freiflächen-Sweep meldete „überall
+> besetzt". Die Grenze liegt bei **300 m, nicht bei 70**: ein zusammengefasstes
+> Häuserzeilen-Mesh ist breiter als 70 und muss als Hindernis zählen. Beide Filter waren
+> nacheinander falsch — erst zu grob (Dach), dann zu streng (nichts frei).
+
+> ⚠️ **Was NICHT live geprüft ist.** `th-koop.mjs` läuft grundsätzlich (7/7 grün), war für
+> diesen Test aber zu wackelig: der Gast verband sich in mehreren Anläufen nicht
+> („Raum nicht gefunden, Grund: timeout"), ein Lauf brach nach 10 Minuten ab. Geprüft wurde
+> deshalb über Sonden im Spielscope: Missionslogik (solo gesperrt · einer weg → Kiste steht ·
+> beide → angekommen nach 31 m Fußweg · +450 $) und **alle Gast-Netzpfade einzeln**
+> (`onNetMsg` mit `trag`/`tragP`/`trag off`: Kiste erscheint in der Szene, folgt, verschwindet;
+> Knopf sendet nur `tragReq`). Eine echte Sitzung zu zweit steht aus.
+
 ## 🌐 Koop Teil 3: Wiedereinstieg + Grenzen der Test-Engine (2026-08-23)
 - `th-koop.mjs` prueft jetzt acht Dinge: Bewegung, fuenf Abgleiche, zwei Streitfaelle
   (gleichzeitig dieselbe Zelle) und den **Wiedereinstieg mitten im Spiel**.
