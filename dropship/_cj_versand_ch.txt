@@ -887,3 +887,5 @@ gid://shopify/Product/15509384921473	nicht-versendbar	Faltbarer Wäschekorb mit 
 gid://shopify/Product/15509393932673	nicht-versendbar	Motorrad-Bausatz mit kleinen Partikeln
 gid://shopify/Product/15509393179009	ok	Baumwollsatin Prinzessinnen Bettwäsche-Set
 gid://shopify/Product/15509565112705	nicht-versendbar	Keramik-Vorratsdose im Hofstil
+gid://shopify/Product/15510300295553	nicht-versendbar	Multifunktionaler Stepper für Zuhause
+gid://shopify/Product/15510300033409	nicht-versendbar	Hydraulischer Mini Stepper für Zuhause
