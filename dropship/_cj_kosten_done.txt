@@ -701,3 +701,11 @@ gid://shopify/Product/15443496173953	CHF 20.94	1 Varianten	Kabellose Kopfhörer 
 gid://shopify/Product/15443496206721	CHF 20.94	4 Varianten	Kabellose Kopfhörer «FlowPods» · Bluetooth TWS
 gid://shopify/Product/15443496239489	CHF 40.07	4 Varianten	Kabellose Kopfhörer «EchoBuds» · Bluetooth TWS
 gid://shopify/Product/15443496731009	CHF 31.02	1 Varianten	Aroma-Diffuser «Mist» · Luftbefeuchter mit LED
+gid://shopify/Product/15443496763777	CHF 31.02	1 Varianten	Aroma-Diffuser «Zen» · Luftbefeuchter mit LED
+gid://shopify/Product/15443496796545	cj-ohne-antwort
+gid://shopify/Product/15443496829313	CHF 43.92	1 Varianten	Mini-Drohne «AeroX» · mit HD-Kamera
+gid://shopify/Product/15443496894849	CHF 40.16	1 Varianten	Powerbank «ChargeGo» · Schnellladen
+gid://shopify/Product/15443496927617	CHF 27.69	6 Varianten	Fitness-Tracker «ActiveBand» · Herzfrequenz & Schr
+gid://shopify/Product/15443496960385	CHF 34.40	3 Varianten	Smartwatch «PulseFit» · Fitness & Anrufe
+gid://shopify/Product/15443496993153	CHF 35.15	4 Varianten	Smartwatch «ProWatch» · Fitness & Anrufe
+gid://shopify/Product/15443497025921	CHF 18.89	42 Varianten	Smartwatch «ActiveOne» · Fitness & Anrufe
