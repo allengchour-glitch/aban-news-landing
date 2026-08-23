@@ -782,3 +782,5 @@ gid://shopify/Product/15445800386945	CHF 17.79	3 Varianten	Magnetisches Lidschat
 gid://shopify/Product/15445800452481	CHF 24.37	1 Varianten	Mischschale für Gesichtsmasken
 gid://shopify/Product/15445800518017	CHF 17.32	3 Varianten	2-in-1 Farbwechsel Foundation Stick & Pinsel
 gid://shopify/Product/15445800550785	CHF 26.34	1 Varianten	Gesichtsmassagegerät
+gid://shopify/Product/15445804941697	CHF 25.66	1 Varianten	Make-up Pinsel 0622
+gid://shopify/Product/15445816476033	CHF 22.11	1 Varianten	Fruchtiges Apfelparfum für Sie & Ihn
