@@ -889,3 +889,5 @@ gid://shopify/Product/15509393179009	ok	Baumwollsatin Prinzessinnen Bettwäsche-
 gid://shopify/Product/15509565112705	nicht-versendbar	Keramik-Vorratsdose im Hofstil
 gid://shopify/Product/15510300295553	nicht-versendbar	Multifunktionaler Stepper für Zuhause
 gid://shopify/Product/15510300033409	nicht-versendbar	Hydraulischer Mini Stepper für Zuhause
+gid://shopify/Product/15510310322561	ok	Smarter Saugroboter für eine einfache Reinigung
+gid://shopify/Product/15510310125953	ok	Faltbarer, blattloser Ventilator

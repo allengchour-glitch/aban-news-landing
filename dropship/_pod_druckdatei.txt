@@ -1,0 +1,13 @@
+gid://shopify/Product/15427217228161	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/matterhorn_bfdfd891-fa28-4062-9554-6d4d1d8da185.png?v=1787419947	Schweiz-Magnet «Matterhorn»
+gid://shopify/Product/15427217260929	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ch-gruezi-mitenand.png?v=1787419997	Schweiz-Magnet «Grüezi mitenand»
+gid://shopify/Product/15427217293697	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ch-merci-vilmal.png?v=1787420004	Schweiz-Magnet «Merci vilmal»
+gid://shopify/Product/15427217326465	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/swiss-flag-heart.png?v=1787419968	Schweiz-Magnet «Schweizer Herz»
+gid://shopify/Product/15427217359233	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/swiss-cowbell.png?v=1787421431	Schweiz-Magnet «Kuhglocke»
+gid://shopify/Product/15427217392001	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fondue.png?v=1787419976	Schweiz-Magnet «Fondue»
+gid://shopify/Product/15427230368129	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ch-poster-matterhorn-hoch_78e542d9-8e8d-4558-9fbe-85ce973d85af.jpg?v=1787449507	Schweiz-Poster «Matterhorn»
+gid://shopify/Product/15427230400897	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ch-poster-alps-panorama-hoch_231056a7-5ae9-446c-ab38-307206e2ca67.jpg?v=1787449515	Schweiz-Poster «Alpen-Panorama»
+gid://shopify/Product/15427230433665	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ch-poster-chalet-hoch_2227df6e-dfa0-4bf5-851d-9c96ec5b1a15.jpg?v=1787449522	Schweiz-Poster «Chalet»
+gid://shopify/Product/15427230466433	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ch-poster-cow-hoch_ccff7c2f-7357-433c-8af8-7bc396cd3e4c.jpg?v=1787449529	Schweiz-Poster «Schweizer Kuh»
+gid://shopify/Product/15427230499201	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ch-poster-edelweiss-hoch_015235e3-7b10-4d4e-a460-a0138285145f.jpg?v=1787449535	Schweiz-Poster «Edelweiss»
+gid://shopify/Product/15427230531969	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ch-poster-edelweiss-pattern-hoch_5ab3804b-e892-4feb-99f2-ce4b5f1d4d30.jpg?v=1787449547	Schweiz-Poster «Edelweiss-Muster»
+gid://shopify/Product/15427230564737	https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ch-poster-fondue-hoch_cf53ba9e-c0ad-4246-bcc6-1e29f157e7ab.jpg?v=1787449554	Schweiz-Poster «Fondue»
