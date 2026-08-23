@@ -191,7 +191,7 @@ while true; do
   # `CONTINUE` mit erfundenem Bestand (35 bis 100 Stück). Genau das Muster von Bestellung
   # #1008: bezahlt, nie lieferbar. Der Wächter erkennt sie längst (er prüft seit dem 20.08.
   # die FORM der SKU, nicht das Präfix) — er lief nur nie.
-  for L in produktdetails_vereinen preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links google_kanal_luecke ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten; do
+  for L in produktdetails_vereinen preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links google_kanal_luecke ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert; do
     fehlt "$REPO/automation/$L.py" && continue
     grep -q "^FERTIG" "/tmp/$L.log" 2>/dev/null && continue      # durchgelaufen
     pause_kuehlt "$L" && continue                                # hat sich mit PAUSE verabschiedet
@@ -220,7 +220,7 @@ while true; do
     # meldet es PAUSE statt ins Leere zu laufen — hier gar nicht erst starten.
     [ "$L" = groesse_im_farbwert ] && [ ! -f /tmp/groesse_im_farbwert.json ] && continue
     # farbwert_dubletten braucht einen Options-Export; ohne ihn meldet es PAUSE.
-    if [ "$L" = farbwert_dubletten ]; then
+    if [ "$L" = farbwert_dubletten ] || [ "$L" = mass_im_farbwert ]; then
       [ -f /tmp/opts_frisch.jsonl ] || continue
       EXP="QUELLE=/tmp/opts_frisch.jsonl"
     fi
