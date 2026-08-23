@@ -2311,3 +2311,16 @@
 15450431062401	material-floskel-entfernt	Western Ankle Boots mit Fransen
 15450431160705	material-floskel-entfernt	Mesh-Sandalen-Stiefeletten mit Chunky-Heel
 15450431226241	farbe-floskel-entfernt,material-floskel-entfernt	Martin Boots mit Nieten und klobigem Absatz
+15450431586689	farbe-floskel-entfernt	Overknee Peep Toe Stiletto-Stiefel aus Denim
+15450431684993	farbe-floskel-entfernt,material-floskel-entfernt	Chunky Mid-Calf Boots mit Plateau
+15450431750529	material-floskel-entfernt	Warme Mid-Calf Winterstiefel für Damen
+15450431816065	farbe-floskel-entfernt,material-floskel-entfernt	Plateau All-Match Stiefeletten
+15450431848833	material-floskel-entfernt	Vintage Chunky-Heel Platform Stiefeletten
+15450518258049	farbe-floskel-entfernt,material-floskel-entfernt	Weinrote Sandalen mit Kreuzriemen
+15450518651265	material-floskel-entfernt	Rome Bestickte Retro Casual Schuhe
+15450519503233	groesse-ohne-deckung-entfernt,material-floskel-entfernt	Elegante Business Mid-Heel Pumps
+15450522419585	material-floskel-entfernt	Retro Espadrille Sandalen für Damen
+15450523337089	farbe-floskel-entfernt	Retro-Sneaker aus Wildleder
+15450523632001	material-floskel-entfernt	Vintage Mary Jane Sandalen
+15450525335937	material-floskel-entfernt	Elegante Mary Jane Sandalen mit eckiger Zehenpartie
+15450526220673	material-floskel-entfernt	Retro Star Damen Sneaker
