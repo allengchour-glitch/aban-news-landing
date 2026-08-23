@@ -1128,3 +1128,24 @@
 15448640192897	material-floskel-entfernt	High-Waist Yoga Shorts mit Bauchkontrolle
 15448640520577	material-floskel-entfernt	High-Waist Yoga Shorts «Peach Butt»
 15448640848257	material-floskel-entfernt	High-Waist Yoga Shorts – Nahtloses Tragegefühl
+15448641012097	material-floskel-entfernt	High-Waist Capri Yoga-Hose mit Bauchkontrolle
+15448641208705	groesse-aus-varianten,material-floskel-entfernt	High-Waist Yoga Shorts mit Farbblock
+15448641470849	material-floskel-entfernt	High Waist Shorts mit weitem Bein und Rüschen
+15448641864065	material-floskel-entfernt	Nahtlose High-Waist Tie-Dye Yoga Shorts
+15448642781569	farbe-floskel-entfernt,material-floskel-entfernt	Gerüschte Yoga- und Fitness-Shorts für Damen
+15448642912641	material-floskel-entfernt	Eng anliegende Yoga-Shorts für Damen
+15448642945409	groesse-aus-varianten,material-floskel-entfernt	High-Waist Workout Shorts mit Po-Lifting-Effekt
+15448643010945	material-floskel-entfernt	Loose-fit Yoga & Fitness Shorts für Damen
+15448643043713	farbe-floskel-entfernt	Sexy Low-Rise Denim Shorts mit Ripped-Details
+15448643174785	material-floskel-entfernt	High-Waist Yoga Leggings Capri
+15448643240321	material-floskel-entfernt	High-Waist Weite-Bein Shorts
+15448643371393	material-floskel-entfernt	Blumige Patchwork Low-Rise Shorts für Damen
+15448643600769	farbe-floskel-entfernt	Polyester Damen-Shorts
+15448643666305	material-floskel-entfernt	Gehäkelte Strand-Shorts mit Kordelzug
+15448643699073	material-floskel-entfernt	Weite High-Waist Shorts für zierliche Figuren
+15448643731841	material-floskel-entfernt	High-Waisted Cargo Shorts für Damen
+15448643764609	material-floskel-entfernt	Retro Sportshorts im American Style
+15448643928449	groesse-aus-varianten,material-floskel-entfernt	Sportliche Viertellange Shorts für Damen
+15448644026753	material-floskel-entfernt	High-Waist Yoga Shorts im Zweiteiler-Look
+15448644092289	groesse-aus-varianten,material-floskel-entfernt	Leopard-Print Yoga Shorts
+15448644157825	groesse-aus-varianten,material-floskel-entfernt	Nahtlose High-Waist Yoga-Hose für Damen
