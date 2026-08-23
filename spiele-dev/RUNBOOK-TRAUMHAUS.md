@@ -4,6 +4,25 @@
 > ~600 kB in einer einzigen IIFE; ohne diese Karte sucht man lange und tritt in
 > Fallen, die hier schon einmal Stunden gekostet haben.
 
+## 📱 HUD: Bedienelemente paarweise auf Ueberschneidung pruefen (2026-08-23)
+- Messung: alle HUD-Ids bei mehreren Handy-Querformaten holen, PAARWEISE schneiden und
+  melden, wenn beide `pointer-events` haben. Genau so faellt auf, was im Bild niemand
+  sieht: bei **740x360 und 667x375** ueberlappten Pokal-Knopf und Minikarte um **48 x 8 px**,
+  beide klickbar, beide z-index 14 — der Tipp dort ist mehrdeutig.
+- **Ursache:** die `@media (max-height:380px)`-Regel zog die Karte auf `top:104`, waehrend
+  `#achBtn` bis y 112 reicht. Nach unten war kein Platz: „Bauen" sitzt auf `bottom:126`,
+  bei 360 px Hoehe also ab y 196 — zwischen Pokal (112) und Bauen bleiben **84 px** fuer
+  eine 86-px-Karte. Darum 76 px und `top:116`.
+- **⚠️ Messung und Bild im selben Moment nehmen.** Mein erster Durchgang hat erst gemessen
+  und dann fotografiert; dazwischen wechselte der Hinweistext und `#modeBtn` seinen
+  Zustand, und die Zahlen passten nicht mehr zum Bild. Fast haette ich daraus einen
+  zweiten „Befund" gebaut.
+- **⚠️ Nicht jede Zahl unter 44 px ist ein Fehler.** `#modeBtn` ist mit 38 px ABSICHTLICH
+  so klein (dokumentiert: zwischen Radar und Joystick bleiben ~50 px). Wer das auf 44
+  hebt, holt sich die Ueberschneidung zurueck, die drei Runden gekostet hat.
+- Geprueft: 844x390, 915x412, 740x360, 667x375, 812x375, 640x360, 1024x600, 896x414,
+  720x320 — jeweils 0 Ueberschneidungen, 0 ueber den Rand.
+
 ## 👁️ Auf AUGENHOEHE pruefen, nicht aus der Vogelperspektive (2026-08-23)
 - Werkzeug: `__th.ego(true)` (Haken ist schon da) + eine Sonde, die `sims[0]` an den
   gewuenschten Ort setzt. `th-blick` mit kleinem Radius landet zu leicht unter einem

@@ -57,7 +57,15 @@ canvas{display:block}
 @media (max-height:380px){
   /* 🩹 Schwarm-6: bei Viewports unter ~365px Hoehe schnitt das Radar (top 120,
      118px) in den Joystick (unten, 112px) und frass dessen Eingaben. */
-  #minimap{width:86px !important;height:86px !important;top:104px !important}
+  /* ⚠️ `top:104` kollidierte mit dem Pokal-Knopf (y 64…112): gemessen 48 x 8 px
+     Ueberschneidung bei 740x360 und 667x375 — BEIDE klickbar, beide z-index 14.
+     Ein Tipp in diesem Streifen ist damit mehrdeutig; je nach DOM-Reihenfolge
+     oeffnet er die Erfolge statt die grosse Karte. Genau diese Fehlerklasse
+     (Bedienelemente uebereinander) ist in dieser Datei schon dreimal aufgetreten.
+     Nach unten ist kein Platz: „Bauen" sitzt bei bottom 126, bei 360 px Hoehe
+     also ab y 196 — zwischen Pokal-Unterkante (112) und Bauen bleiben 84 px.
+     Darum 76 statt 86 px und top 116: 4 px Luft nach oben, 4 nach unten. */
+  #minimap{width:76px !important;height:76px !important;top:116px !important}
   #needsBox{max-height:60vh;overflow-y:auto;font-size:.58rem;min-width:88px;max-width:150px}
   .needs .nbar{height:5px}
   #geld{font-size:1rem;padding:6px 11px}
