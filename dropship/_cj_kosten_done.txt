@@ -709,3 +709,35 @@ gid://shopify/Product/15443496927617	CHF 27.69	6 Varianten	Fitness-Tracker «Act
 gid://shopify/Product/15443496960385	CHF 34.40	3 Varianten	Smartwatch «PulseFit» · Fitness & Anrufe
 gid://shopify/Product/15443496993153	CHF 35.15	4 Varianten	Smartwatch «ProWatch» · Fitness & Anrufe
 gid://shopify/Product/15443497025921	CHF 18.89	42 Varianten	Smartwatch «ActiveOne» · Fitness & Anrufe
+gid://shopify/Product/15443497648513	CHF 30.68	1 Varianten	Sternenhimmel-Projektor «Galaxy» · LED-Nachtlicht
+gid://shopify/Product/15443497681281	CHF 34.28	1 Varianten	Sternenhimmel-Projektor «Nova» · LED-Nachtlicht
+gid://shopify/Product/15443497714049	CHF 26.70	1 Varianten	Sternenhimmel-Projektor «Cosmos» · LED-Nachtlicht
+gid://shopify/Product/15443497976193	CHF 37.38	8 Varianten	LED-Projektor «Aurora» · Stimmungslicht
+gid://shopify/Product/15443498336641	CHF 36.39	1 Varianten	Wireless-Charger «PowerPad» · kabellos laden
+gid://shopify/Product/15443498893697	CHF 23.36	3 Varianten	Kabellose Kopfhörer «AeroPods» · Bluetooth TWS
+gid://shopify/Product/15443498959233	CHF 23.95	2 Varianten	Kabellose Kopfhörer «WavePods» · Bluetooth TWS
+gid://shopify/Product/15443499647361	CHF 46.99	1 Varianten	LED-Projektor «GlowCast» · Stimmungslicht
+gid://shopify/Product/15443500302721	CHF 37.10	1 Varianten	Mini-Drohne «SkyCam» · faltbar
+gid://shopify/Product/15443500368257	CHF 36.20	1 Varianten	Mini-Drohne «AeroX» · faltbar
+gid://shopify/Product/15443500466561	CHF 44.93	1 Varianten	Mini-Drohne «Nimbus» · mit HD-Kamera
+gid://shopify/Product/15443500597633	CHF 34.80	1 Varianten	Mini-Drohne «FalconEye» · faltbar
+gid://shopify/Product/15443500695937	cj-ohne-antwort
+gid://shopify/Product/15443501580673	cj-ohne-antwort
+gid://shopify/Product/15443502006657	CHF 46.35	2 Varianten	Smartwatch «FitPro» · Fitness & Anrufe
+gid://shopify/Product/15443502072193	CHF 38.73	5 Varianten	Fitness-Tracker «StepGo» · Herzfrequenz & Schritte
+gid://shopify/Product/15443502104961	CHF 47.04	2 Varianten	Smartwatch «SmartOne» · Fitness & Anrufe
+gid://shopify/Product/15443502137729	CHF 32.16	4 Varianten	Smartwatch «Vital» · Fitness & Anrufe
+gid://shopify/Product/15443531760001	CHF 53.89	4 Varianten	Wireless-Charger «QiFast» · kabellos laden
+gid://shopify/Product/15443531792769	CHF 27.54	1 Varianten	Wireless-Charger «ChargeSpot» · kabellos laden
+gid://shopify/Product/15443532218753	CHF 28.70	2 Varianten	Powerbank «Volt» · Schnellladen
+gid://shopify/Product/15443532251521	CHF 28.97	2 Varianten	Powerbank «MaxPower» · Schnellladen
+gid://shopify/Product/15445266923905	CHF 20.40	1 Varianten	Abziehbarer Nagellack mit Aprikosenduft (10ml)
+gid://shopify/Product/15445267808641	CHF 25.44	1 Varianten	Professionelle UV/LED Nageltrocknerlampe
+gid://shopify/Product/15445268726145	CHF 20.96	8 Varianten	Handgemachte French Nails – Weiss
+gid://shopify/Product/15445269348737	CHF 22.70	4 Varianten	Ingwer Nagelpflege-Fluid
+gid://shopify/Product/15445270233473	CHF 16.93	10 Varianten	Aufbau-Gel für Nägel (25g)
+gid://shopify/Product/15445270921601	CHF 17.92	44 Varianten	3-in-1 Nagellackstift (5er-Set)
+gid://shopify/Product/15445271609729	CHF 18.47	1 Varianten	UV Transparentes Soft Epoxy Gel, vergilbungsresist
+gid://shopify/Product/15445272428929	CHF 21.42	2 Varianten	UV Polish Crystal Gel Starter-Set
+gid://shopify/Product/15445273379201	CHF 17.79	20 Varianten	UV Nagellack Set – Glitzer & Uni-Farben
+gid://shopify/Product/15445274263937	CHF 16.90	1 Varianten	AS Nail Art Eternal Classic Farbgel-Nagellack
