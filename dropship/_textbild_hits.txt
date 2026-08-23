@@ -10123,3 +10123,10 @@ gid://shopify/Product/15497424896385	42->2	Weihnachtliche Keramikplatte, rechtec
 gid://shopify/Product/15497439641985	38->0	Halsband und Leine für Hunde, dick, bissfest
 gid://shopify/Product/15497439740289	21->0	Gefütterte, wasserdichte Winterstiefel für Kinder
 gid://shopify/Product/15497439838593	45->1	LED-Rollschuhe für Kinder, aufladbar
+gid://shopify/Product/15497452552577	44->0	Sportlicher Rucksack für Schule & Reisen
+gid://shopify/Product/15497453044097	22->0	Atmungsaktive Mesh-Plattformschuhe für Herren
+gid://shopify/Product/15497453109633	92->1	Tofu-Katzenstreu mit Milchduft
+gid://shopify/Product/15497453142401	54->1	Wasserdichter Reise-Rucksack für Herren
+gid://shopify/Product/15497453207937	122->2	Retro Business Casual Lederschuhe
+gid://shopify/Product/15497453535617	10->0	Universelles Laptop-Netzteil
+gid://shopify/Product/15497453633921	16->0	Atmungsaktiver Mesh Freizeitschuh
