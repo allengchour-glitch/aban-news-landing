@@ -4,6 +4,23 @@
 > ~600 kB in einer einzigen IIFE; ohne diese Karte sucht man lange und tritt in
 > Fallen, die hier schon einmal Stunden gekostet haben.
 
+## 🌐 Koop Teil 3: Wiedereinstieg + Grenzen der Test-Engine (2026-08-23)
+- `th-koop.mjs` prueft jetzt acht Dinge: Bewegung, fuenf Abgleiche, zwei Streitfaelle
+  (gleichzeitig dieselbe Zelle) und den **Wiedereinstieg mitten im Spiel**.
+- **⚠️ Engine B gibt den Gast-Platz NICHT wieder frei.** Stirbt der Kanal des Gasts, geht
+  die HOST-Sitzung auf `closed` und kommt nicht nach `waiting` zurueck. Engine A (PeerJS,
+  Produktion) macht genau das (`main = null`, `peer.on("connection")` nimmt den naechsten).
+  Der Wiedereinstieg ist damit im lokalen Test **nicht pruefbar** — das Werkzeug meldet
+  ihn als offen (gelber Strich), NICHT als Fehler. Wer den roten Haken ungeprueft
+  weitergibt, meldet einen Fehler, den das Spiel auf echten Geraeten vermutlich nicht hat.
+- **⚠️ Beim Beitritts-Neuversuch MUSS der Host mit.** Ein leichter Neuversuch (nur der Gast
+  ueber „Abbrechen" zurueck) ist schlechter: er verbindet sich gegen einen toten Raum, und
+  der Start stirbt sofort mit `stille`. Messbar an `0.0s Host: laeuft/closed` bei
+  scheinbar verbundenem Gast. Also beide Seiten neu und frischer Raum.
+- **⚠️ `node_modules` ueberlebt eine Wiederherstellung aus dem Klon NICHT** (es ist
+  gitignored). Nach so einer Reparatur `npm install` — sonst scheitern alle
+  Playwright-Werkzeuge mit `Cannot find package 'playwright'`.
+
 ## 🌐 Koop Teil 2: Keepalive, fluessige Partner, gruene Tests (2026-08-22)
 - **Engine B hatte KEINEN Keepalive.** Engine A (PeerJS, Produktion) sendet alle 2 s ein
   `__ka`; die lokale Test-Engine hat nur GELAUSCHT. Damit starb jede Sitzung, sobald das

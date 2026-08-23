@@ -125,8 +125,16 @@ async function beitreten(code) {
 let code = await raumAuf()
 console.log(`Raum-Code: ${code}`)
 let verbunden = await beitreten(code)
-for (let v = 2; v <= 6 && !verbunden; v++) {
-  console.log(`  Beitritt-Versuch ${v - 1} fehlgeschlagen — neu`)
+/* ⚠️ BEIM WIEDERHOLEN MUSS DER HOST MIT. Ein leichter Neuversuch (nur der Gast
+   geht ueber "Abbrechen" zurueck) klingt sparsamer, war aber schlechter:
+   sobald ein Gast am Host angedockt und gestorben ist, geht dessen Sitzung in
+   der lokalen Test-Engine auf `closed` und kommt NICHT nach `waiting` zurueck
+   — anders als in Engine A, die den Platz wieder freigibt. Der Gast verbindet
+   sich dann gegen einen toten Raum, und der Start stirbt sofort mit `stille`.
+   Gemessen: `0.0s Host: laeuft/closed` bei scheinbar verbundenem Gast.
+   Also beide Seiten neu und einen frischen Raum. */
+for (let v = 2; v <= 5 && !verbunden; v++) {
+  console.log(`  Beitritt-Versuch ${v - 1} fehlgeschlagen — beide Seiten neu`)
   for (const p of [gast, host]) { await p.reload({ waitUntil: 'domcontentloaded' }); await p.waitForTimeout(2500) }
   code = await raumAuf()
   verbunden = await beitreten(code)
@@ -232,10 +240,49 @@ const zh = await zelle(host, 9, 9, 0), zg = await zelle(gast, 9, 9, 0)
 pruef.push({ titel: 'Streit Boden (9|9)', ok: zh.b === zg.b, vorher: 'Host ' + zh.b, jetzt: 'Gast ' + zg.b })
 pruef.push({ titel: 'Streit Wand (9|9)', ok: zh.w === zg.w, vorher: 'Host ' + zh.w, jetzt: 'Gast ' + zg.w })
 
+/* ── Wiedereinstieg: Gast faellt raus und kommt MITTEN im Spiel zurueck ────
+   Der haeufigste echte Koop-Fall (Handy sperrt, Tab weg, Funkloch) — und der,
+   bei dem eine Sitzung am ehesten mit halber Welt weiterlaeuft. Der Host soll
+   `{t:"state"}` mit dem vollen Schnappschuss schicken. */
+const vorEin = await z(host)
+await gast.reload({ waitUntil: 'domcontentloaded' })
+await gast.waitForTimeout(2500)
+await gast.waitForSelector('#mpName', { state: 'visible' })
+await gast.fill('#mpName', 'Gast')
+await gast.fill('#mpCode', code)
+await gast.click('#joinBtn')
+let zurueck = false
+for (let i = 0; i < 40 && !zurueck; i++) {
+  await gast.waitForTimeout(600)
+  await host.evaluate(() => 1)
+  zurueck = await gast.evaluate(() => { try { return !!window.__th.koop().run } catch (e) { return false } })
+}
+let nachEin = null
+if (zurueck) { await gast.waitForTimeout(3000); nachEin = await z(gast) }
+/* ⚠️ EIN FEHLSCHLAG HIER IST NICHT AUTOMATISCH EIN SPIELFEHLER. Engine B gibt
+   den Gast-Platz nicht wieder frei: stirbt der Kanal des Gasts, geht die
+   HOST-Sitzung auf `closed` und kommt nicht nach `waiting` zurueck. Engine A
+   (PeerJS, Produktion) macht genau das — `main = null`, und
+   `peer.on("connection")` nimmt den naechsten Gast an. Wer den roten Haken hier
+   ungeprueft als Befund weitergibt, meldet einen Fehler, den das Spiel auf
+   echten Geraeten vermutlich gar nicht hat. Darum: erst den Host befragen. */
+const hostLebt = await host.evaluate(() => { try { const k = window.__th.koop(); return k.mp && k.st !== 'closed' } catch (e) { return false } })
+if (!zurueck && !hostLebt) {
+  pruef.push({ titel: 'Wiedereinstieg', ok: null, vorher: 'nicht pruefbar', jetzt: 'Engine B gibt den Platz nicht frei' })
+} else {
+  pruef.push({ titel: 'Wiedereinstieg: kommt an', ok: zurueck, vorher: '-', jetzt: zurueck ? 'ja' : 'nein' })
+}
+if (nachEin) {
+  pruef.push({ titel: 'Wiedereinstieg: Boeden', ok: nachEin.b === vorEin.b, vorher: 'Host ' + vorEin.b, jetzt: 'Gast ' + nachEin.b })
+  pruef.push({ titel: 'Wiedereinstieg: Waende', ok: nachEin.w === vorEin.w, vorher: 'Host ' + vorEin.w, jetzt: 'Gast ' + nachEin.w })
+  pruef.push({ titel: 'Wiedereinstieg: Geld', ok: nachEin.geld === vorEin.geld, vorher: 'Host ' + vorEin.geld, jetzt: 'Gast ' + nachEin.geld })
+}
+
 console.log(`\n── Abgleich Host <-> Gast ──`)
-pruef.forEach((r) => console.log(`  ${r.ok ? '\x1b[32m✔\x1b[0m' : '\x1b[31m✘\x1b[0m'} ${r.titel.padEnd(26)} ${r.vorher} -> ${r.jetzt}`))
-const schlecht = pruef.filter((r) => !r.ok).length
-console.log(`\n  ${schlecht ? '\x1b[31m' + schlecht + ' von ' + pruef.length + ' kommen NICHT an\x1b[0m' : '\x1b[32malle ' + pruef.length + ' kommen an\x1b[0m'}`)
+pruef.forEach((r) => console.log(`  ${r.ok === null ? '\x1b[33m–\x1b[0m' : r.ok ? '\x1b[32m✔\x1b[0m' : '\x1b[31m✘\x1b[0m'} ${r.titel.padEnd(26)} ${r.vorher} -> ${r.jetzt}`))
+const schlecht = pruef.filter((r) => r.ok === false).length
+const offen = pruef.filter((r) => r.ok === null).length
+console.log(`\n  ${schlecht ? '\x1b[31m' + schlecht + ' von ' + pruef.length + ' kommen NICHT an\x1b[0m' : '\x1b[32malle ' + (pruef.length - offen) + ' geprueften kommen an\x1b[0m'}${offen ? ' · ' + offen + ' nicht pruefbar' : ''}`)
 
 await browser.close()
 aufraeumen(tmp)
