@@ -1185,6 +1185,69 @@ Gemessen: +5.39. **Das Modell stimmt.**
 - Der konservative Umrechnungsfaktor 0.9 des Repos liegt näher an der Realität als der
   Tageskurs 0.79 — er rechnet die Marge klein, nicht schön. So gehört es.
 
+## 🪣 CJs «remaining» ist ein EIMER, kein Tagesbudget — 3 Tage Stillstand (2026-08-23)
+Der Kosten-Backfill stand seit dem 21.08. bei **~700 von 46'000 Produkten**. Damals war die
+Diagnose, dass er nach dem WORT «point» suchte und deshalb jede Antwort für ein leeres
+Budget hielt; die Zahl statt des Wortes zu lesen war richtig — **die Schlussfolgerung nicht**.
+`pointsInfo.remaining` fliesst ständig nach. Live gemessen, sechs Abfragen in 25 Sekunden:
+`419 · 447 · 387 · 357 · 317 · 287` — er STEIGT zwischendurch. Und er ist **nicht**
+`total − usedToday` (63'387 − 105'620 wäre negativ), sondern ein eigener Zähler.
+Der Lauf meldete deshalb bei jedem Tief unter 20 «morgen weiter» — auch im eigens für ihn
+eingerichteten Vorrang-Fenster, in dem der ganze Grind pausiert.
+- **Leerer Eimer → 45 s warten.** Das echte Tagesende meldet CJ mit Code **16900500** und
+  dem Klartext «Insufficient API points»; NUR das beendet den Lauf. Beide Zweige sind
+  belegt: erst «Eimer leer (11) — 45 s warten», später «CJ-Tagesbudget erschöpft».
+- **Dritte Wiederholung derselben Lehre** nach Shopifys `Throttled` und CJs QPS-Meldung
+  1600200: **Eine Warteanweisung ist kein Abbruchgrund. Sie sagt nur, wie lange zu warten ist.**
+- ⚠️ **Das Vorrang-Fenster galt nur für den GRIND.** `engine_keepalive.sh` stoppte die vier
+  Runner, die übrigen CJ-Verbraucher liefen weiter — und `cj_variantenbild` allein zog rund
+  50 Punkte alle fünf Sekunden. Messung im Fenster: **mit** Bildmotor 447→287 in 25 s,
+  **ohne** 407→397→431 (hält sich). Ohne diesen Fund wäre die Eimer-Korrektur wirkungslos
+  geblieben: 45 s warten, um in einen Eimer zu greifen, den ein anderer gerade leert.
+  `cj_variantenbild` und `cj_bild_backfill` ruhen im Fenster jetzt mit.
+  **NICHT pausiert wird `cj_fulfill_runner`** — der bearbeitet echte Kundenbestellungen.
+
+## 🫀 «Läuft» ist nicht «arbeitet» — drei Motoren-Lehren an einem Tag (2026-08-23)
+1. **Der Aufseher stand 72 Minuten still, während beide Stunden-Routinen «AUFSEHER laeuft»
+   meldeten.** Er lebte, arbeitete aber nicht. Von aussen war bisher nur «0 Instanzen» und
+   «>1 Instanzen» erkennbar — die Lücke, die Lehre 0f offengelassen hat. Er schreibt jetzt
+   in JEDER Runde `/tmp/_fixer_herzschlag`; `engine_keepalive.sh` tötet und startet neu,
+   wenn der älter als 10 Minuten ist. ⚠️ Fehlt die Datei ganz, wird NICHT getötet — sonst
+   killt das Skript bei jedem Lauf einen gesunden Aufseher alter Fassung. Und beim Abräumen
+   von Doppelstarts wird die Herzschlag-Uhr **zurückgesetzt**: Der Überlebende ist der
+   ÄLTESTE, und genau der kann der hängende sein.
+2. **Ein Dauerläufer, der SOFORT stirbt, sieht im Log aus wie einer, der läuft** — man sieht
+   nur Startzeilen. `cj_queue_runner.sh` starb drei Stunden lang bei jedem Start in Zeile 5
+   («SHOPIFY_CLIENT_ID: fehlt»), weil es `/tmp/secrets_env.sh` nicht lud wie die vier
+   Grind-Runner. Aufgefallen ist es nur daran, dass dieselbe Startmeldung dreimal
+   hintereinander in der Keepalive-Ausgabe stand. **Wer eine Engine neu in eine Startliste
+   aufnimmt, liest danach ihr LOG, nicht ihre Startmeldung.**
+3. **Der Auto-Committer lief seit Wochen nur als `/tmp/autocommit.sh`** — die Klasse, die
+   dieses Projekt schon zweimal verloren hat. Jetzt `automation/autocommit.sh`, und
+   `engine_keepalive.sh` bevorzugt generell die Repo-Fassung einer /tmp-Engine.
+   ⚠️ Er addiert nur noch **`dropship/`**: Mit `git add -A` hat er am 22.08. ein frisch
+   gebautes Werkzeug in eine Sammelmeldung «CJ-Ledger auto» gezogen, bevor der Grund dafür
+   geschrieben war. Ledger sind Rauschen und gehören gebündelt; Code und Gedächtnis
+   brauchen eine Begründung und bleiben liegen, bis sie jemand bewusst committet.
+4. ⚠️ Ein `[ "$stand" -ge 5 ]` bricht mit «integer expression expected» ab, wenn die Datei
+   LEER ist: `: > datei` hinterlässt keine 0, `cat` gelingt, und `|| echo 0` feuert nie.
+
+## 🛒 Die Produktseite sagte «versandbereit» über einem Liefertermin in 14 Tagen (2026-08-23)
+Als Kundin gelesen behauptet die Seite eines CJ-Kleids zwei Dinge gleichzeitig:
+«🟢 Auf Lager · versandbereit» und darunter «Lieferung voraussichtlich 6.–20. Sept.».
+Das Abzeichen hing allein an `product.available` und kannte den Versandweg nicht —
+**obwohl der direkt darunter berechnet wird**. Der Versandaussagen-Lauf vom 14.08. hat
+1'037 Produkttexte auf eine Wahrheit gebracht; dieses Abzeichen hat er nie gesehen.
+Jetzt sagt es je Weg die Wahrheit (CH-Lager «versandbereit» · EU-Lager · «Wird für dich
+gedruckt» · «Verfügbar · Versand direkt ab Werk»), und die Zeile darunter erklärt die
+lange Frist statt sie zu beschönigen: «Direktversand ab Werk — deshalb die längere Lieferzeit».
+**Dazu die Mass-Tabellen auf die Produktseite geholt.** 15'099 aktive Fashion-Produkte,
+**0 mit einer Grössentabelle** im Text — die Grösse war nur über einen Link erreichbar, der
+von der Seite WEGFÜHRT. Jetzt aufklappbar direkt dort, plus der wichtigste Satz offen:
+«Diese Ware ist asiatisch konfektioniert und fällt eher kleiner aus.»
+⚠️ Die Zahlen wurden NICHT ins Theme kopiert — der Block liest `pages['groessentabelle'].content`.
+Eine Quelle, die nicht auseinanderlaufen kann; ist die Seite weg, greift der alte Link.
+
 ## 🧩 Der Farbwert trug DREI fremde Angaben — und `CREATE` hätte Ware erfunden (2026-08-23)
 Nach der Grössen-Reparatur fielen zwei weitere Klassen im selben Feld auf:
 1. **Dieselbe Farbe zweimal, deutsch und englisch** («Blau» neben «Blue»). Vorher versteckt
