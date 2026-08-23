@@ -282,3 +282,8 @@ gid://shopify/Product/15510281486721	Silber
 gid://shopify/Product/15510317171073	Silber
 gid://shopify/Product/15510318186881	Silber
 gid://shopify/Product/15510318481793	Silber
+gid://shopify/Product/15510333653377	Silber
+gid://shopify/Product/15510333948289	Schwarz
+gid://shopify/Product/15510336012673	Silber
+gid://shopify/Product/15510336143745	Türkis
+gid://shopify/Product/15510336766337	Silber
