@@ -148,6 +148,8 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 <button id="pingBtn" title="Treffpunkt setzen">📍</button>
 <button id="hideBtn" title="Verstecken spielen">🙈</button>
 <div id="hideHud" style="position:fixed;top:calc(100px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:16;display:none;background:rgba(40,30,10,.86);color:#fff;border:2px solid #ffc850;border-radius:12px;padding:6px 16px;font-weight:800;font-size:1.05rem"></div>
+<button id="tragBtn" title="Sperrgut zu zweit tragen" style="display:none">📦</button>
+<div id="tragHud" style="position:fixed;top:calc(140px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:16;display:none;background:rgba(20,35,55,.88);color:#fff;border:2px solid #6ab8ff;border-radius:12px;padding:6px 16px;font-weight:800;font-size:1.02rem"></div>
 <button id="micBtn" title="Voice-Chat">🎙️</button>
 <button id="nitroBtn" style="position:fixed;right:12px;bottom:calc(160px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:50%;width:64px;height:64px;font-size:1.5rem;color:#fff;background:linear-gradient(135deg,#ff9a3a,#ff4a2a);box-shadow:0 6px 20px rgba(255,90,40,.5);cursor:pointer">🚀</button>
 <button id="lieferBtn" style="position:fixed;right:12px;bottom:calc(308px + env(safe-area-inset-bottom));z-index:16;display:none;border:0;border-radius:50%;width:64px;height:64px;font-size:1.5rem;background:linear-gradient(135deg,#4ab04a,#2a8a3a);box-shadow:0 6px 20px rgba(40,140,60,.5);cursor:pointer">📦</button>
@@ -7955,6 +7957,11 @@ function onNetMsg(m){
   else if(m.t==="chat")chatAdd(m.n,m.x);
   else if(m.t==="emote")onEmote(m.si,m.k);
   else if(m.t==="ping")onPing(m.x,m.z);
+  else if(m.t==="tragReq"&&mpHost){if(!TRAGM)startTrag();}          /* Gast bittet, Host armiert */
+  else if(m.t==="trag"){if(m.on){if(!mpHost)tragArm(m.x,m.z);}else{if(TRAGM){scene.remove(TRAGM.g);scene.remove(TRAGM.ring);TRAGM=null;
+    var th=document.getElementById("tragHud");if(th)th.style.display="none";}
+    if(m.ok)hint("📦 Geschafft! Das Sperrgut steht.");}}
+  else if(m.t==="tragP"&&!mpHost&&TRAGM){TRAGM.x=m.x;TRAGM.z=m.z;}
   else if(m.t==="hide"&&mpHost&&!m.on){if(hideSpiel)endeVerstecken(!!m.found);} /* 🩩 Schwarm-7: Gast-Abbruch wurde verworfen — Host hing in der Runde */
   else if(m.t==="fahndung"&&mpHost){wantedPlus(m.n|0);polizeiPending=true;npcTimer=Math.min(npcTimer,5);} /* 🩩 Schwarm-7: Gast-Verbrechen zaehlen jetzt */
   else if(m.t==="hide"&&!mpHost){if(m.on){hideSpiel={phase:"gast",t:0};
@@ -8139,6 +8146,93 @@ function updVerstecken(dt){
   var d=Math.hypot(mp9.x-mia.x,mp9.z-mia.z);
   hud.textContent=d<6?"🔥🔥🔥 GANZ HEISS!":d<14?"🔥 heiß":d<30?"🌡️ warm":d<55?"❄️ kalt":"❄️❄️ eiskalt";
   if((!MPs||mpHost)&&d<3)endeVerstecken(true);}
+// ---- Koop-Mission: Sperrgut zu zweit tragen ----
+/* ⚠️ Warum eine ZWEITE Koop-Mission neben dem Bank-Coup? Der Coup prueft ZONEN:
+   beide an der Bank, spaeter beide am Fluchtwagen — dazwischen kann jeder machen,
+   was er will. Hier zaehlt der WEG: die Kiste ruehrt sich nur, solange BEIDE in
+   Reichweite sind. Wer stehen bleibt, haelt den anderen auf; man laeuft die
+   Strecke zwangslaeufig gemeinsam.
+   ⚠️ ERSTER ENTWURF VERWORFEN: die Kiste sollte auf gerader Linie zum Ziel
+   gleiten. Dafuer gibt es in dieser Stadt keinen Platz — die Suche nach einem
+   freien 30-m-Korridor ergab NULL Treffer. Jetzt FOLGT die Kiste dem Mittelpunkt
+   zwischen beiden Traegern; den Weg suchen sich die Spieler selbst, und Baeume
+   oder Zaeune dazwischen sind egal.
+   Start (-48|68) und Ziel (-56|36) sind gemessen frei (Radius 3,5), 33 m
+   auseinander: von der Strasse aufs eigene Grundstueck.
+   ⚠️ Beim Messen der freien Punkte MUSS die Himmelskuppel raus — sie ist ein
+   Mesh von 1040 x 1040 x 1040 um den Ursprung und ueberdeckt sonst jeden Punkt
+   der Karte (erst dadurch landete die Kiste im ersten Versuch auf einem Dach).
+   Die Grenze liegt bei 300 m, NICHT bei 70: ein zusammengefasstes
+   Haeuserzeilen-Mesh ist breiter als 70 und muss als Hindernis zaehlen. */
+var TRAGM=null;
+var TRAG_VON=[-48,68],TRAG_ZU=[-56,36],TRAG_NAH=5.0,TRAG_ZIEL_R=3.0,TRAG_LOHN=450;
+function tragBauen(){
+  var g=new THREE.Group();
+  var k=new THREE.Mesh(new THREE.BoxGeometry(1.7,1.15,1.05),
+    new THREE.MeshStandardMaterial({color:0xa8763c,roughness:.86}));
+  k.position.y=.58;k.castShadow=true;g.add(k);
+  [-.5,.5].forEach(function(dx){                       /* Spanngurte */
+    var b=new THREE.Mesh(new THREE.BoxGeometry(.12,1.2,1.11),
+      new THREE.MeshStandardMaterial({color:0x35281a,roughness:.9}));
+    b.position.set(dx,.58,0);g.add(b);});
+  var d=new THREE.Mesh(new THREE.BoxGeometry(1.76,.08,1.11),
+    new THREE.MeshStandardMaterial({color:0x8a5f30,roughness:.88}));
+  d.position.y=1.16;g.add(d);
+  return g;}
+function tragRing(){
+  var m=new THREE.Mesh(new THREE.RingGeometry(1.6,2.2,28),
+    new THREE.MeshBasicMaterial({color:0x6ab8ff,transparent:true,opacity:.55,side:THREE.DoubleSide}));
+  m.rotation.x=-Math.PI/2;m.position.set(TRAG_ZU[0],0.06,TRAG_ZU[1]);return m;}
+function tragArm(x,z){                                  /* auf beiden Seiten identisch aufbauen */
+  if(TRAGM)return;
+  TRAGM={x:x,z:z,g:tragBauen(),ring:tragRing(),_s:0};
+  TRAGM.g.position.set(x,0,z);scene.add(TRAGM.g);scene.add(TRAGM.ring);
+  document.getElementById("tragHud").style.display="block";}
+function startTrag(){
+  if(TRAGM){tragEnde(false);return;}                    /* Knopf = Abbruch */
+  if(!MPs){hint("🤝 Sperrgut geht nur zu zweit — lade jemanden in deine Runde ein.");return;}
+  if(!mpHost){netSend({t:"tragReq"});hint("📦 Anfrage an den Gastgeber …");return;}
+  tragArm(TRAG_VON[0],TRAG_VON[1]);
+  netSend({t:"trag",on:1,x:TRAG_VON[0],z:TRAG_VON[1]});
+  hint("📦 Sperrgut geliefert! Tragt es GEMEINSAM aufs Grundstueck — es bewegt sich nur, wenn ihr BEIDE dabei seid.");
+  beep(520,.12,"triangle",.06);}
+function tragEnde(ok){
+  if(!TRAGM)return;
+  scene.remove(TRAGM.g);scene.remove(TRAGM.ring);TRAGM=null;
+  var h=document.getElementById("tragHud");if(h)h.style.display="none";
+  if(ok){
+    geld+=TRAG_LOHN;geldSend();stats.sperrgut=(stats.sperrgut||0)+1;
+    sims.forEach(function(s){s.needs.spass=Math.min(100,s.needs.spass+12);});
+    hint("📦 Geschafft! Das Sperrgut steht — +"+TRAG_LOHN+" $.");
+    beep(760,.1,"triangle",.06);setTimeout(function(){beep(1040,.15,"triangle",.07);},130);
+    if(MPs&&mpHost)netSend({t:"trag",on:0,ok:1});}
+  else{hint("📦 Transport abgebrochen.");if(MPs&&mpHost)netSend({t:"trag",on:0,ok:0});}}
+function updTrag(dt){
+  if(!TRAGM)return;
+  var a=sims[0],b=sims[1];if(!a||!b)return;
+  var da=Math.hypot(a.x-TRAGM.x,a.z-TRAGM.z),db=Math.hypot(b.x-TRAGM.x,b.z-TRAGM.z);
+  var beide=da<TRAG_NAH&&db<TRAG_NAH;
+  var rest=Math.hypot(TRAG_ZU[0]-TRAGM.x,TRAG_ZU[1]-TRAGM.z);
+  /* ⚠️ Nur der Host rechnet die Kiste weiter und schickt die Position. Rechneten
+     beide Seiten mit, drifteten sie auseinander (dieselbe Lehre wie bei der
+     Coup-Beute, die frueher beide Peers eigenstaendig wuerfelten). */
+  if(beide&&(!MPs||mpHost)){
+    var mx=(a.x+b.x)/2,mz=(a.z+b.z)/2;          /* die Kiste haengt zwischen beiden */
+    var k=Math.min(1,dt*3.5);
+    TRAGM.x+=(mx-TRAGM.x)*k;TRAGM.z+=(mz-TRAGM.z)*k;
+    TRAGM._s+=dt;
+    if(MPs&&TRAGM._s>0.2){TRAGM._s=0;netSend({t:"tragP",x:TRAGM.x,z:TRAGM.z});}}
+  TRAGM.g.position.set(TRAGM.x,0,TRAGM.z);
+  TRAGM.g.rotation.y=Math.atan2(TRAG_ZU[0]-TRAGM.x,TRAG_ZU[1]-TRAGM.z);
+  var hud=document.getElementById("tragHud");
+  if(hud)hud.textContent=beide?("📦 Zusammen tragen — noch "+Math.max(0,Math.round(rest))+" m")
+    :("⚠️ "+(da>=TRAG_NAH?(a.name||"Max"):(b.name||"Mia"))+" ist zu weit weg — die Kiste steht");
+  if(rest<TRAG_ZIEL_R&&(!MPs||mpHost))tragEnde(true);}
+function tragBtnUpd(){
+  var b=document.getElementById("tragBtn");if(!b)return;
+  b.style.display=(MPs&&running&&!buildMode)?"block":"none";
+  b.style.filter=TRAGM?"brightness(1.5)":"";}
+
 // ---- Collectibles: Muenzen & Geschenke ueber die Map einsammeln ----
 var pickups=[];
 var PICKPOS=[[30,20],[-35,25],[40,-30],[-40,-28],[88,10],[-88,-6],[16,-70],[-22,70],[88,-70],[-88,70],[54,-50],[-54,50]]; // keine Pickup-Boxen auf Fahrbahnen
@@ -8171,7 +8265,7 @@ function updPickups(dt,now){
       for(var q=0;q<sims.length;q++){var sq=sims[q];if(sq.mesh.visible&&Math.hypot(sq.x-pk.x,sq.z-pk.z)<2.6){got=true;break;}}
       if(!got&&fahren&&driveCar&&Math.hypot(driveCar.mesh.position.x-pk.x,driveCar.mesh.position.z-pk.z)<3.4)got=true;
       if(got)collectPickup(i);}}}
-(function(){var pb=document.getElementById("pingBtn");if(pb)pb.onclick=doPing;var hb=document.getElementById("hideBtn");if(hb)hb.onclick=startVerstecken;})();
+(function(){var pb=document.getElementById("pingBtn");if(pb)pb.onclick=doPing;var hb=document.getElementById("hideBtn");if(hb)hb.onclick=startVerstecken;var tb=document.getElementById("tragBtn");if(tb)tb.onclick=startTrag;})();
 function chatAdd(n,x){var box=document.getElementById("chatMsgs");
   var d=document.createElement("div");d.innerHTML="<b>"+String(n).slice(0,12).replace(/[<>&]/g,"")+":</b> "+String(x).slice(0,140).replace(/[<>&]/g,"");
   box.appendChild(d);box.scrollTop=box.scrollHeight;
@@ -10652,7 +10746,7 @@ function loop(now){
     if(Math.abs(camRT-camR)>0.02){camR+=(camRT-camR)*Math.min(1,dt*8);
       if(Math.abs(camRT-camR)<=0.02)camR=camRT;updCam();}
     updFollow(dt);updMinimap(dt);updLampPool(dt);updCoaster(dt,now);coasterBtnUpd();
-    updFahrt(dt);updSeilbahn(dt);fahrtBtnUpd();npcBtnUpd();updCoup(dt);coupBtnUpd();
+    updFahrt(dt);updSeilbahn(dt);fahrtBtnUpd();npcBtnUpd();updCoup(dt);coupBtnUpd();tragBtnUpd();
     sims.forEach(function(s,si){updSim(s,si,dt,now);});
     for(var ki=0;ki<kinder.length;ki++)updKind(kinder[ki],dt,now);
     updHund(dt,now);
@@ -10666,7 +10760,7 @@ function loop(now){
       _ws.material.opacity+=(_zielO-_ws.material.opacity)*Math.min(1,dt*0.8);
       _ws.visible=_ws.material.opacity>0.02;
     }
-    updHearts(dt);updPlopps(dt);updWetter(dt);updVerkehr(dt);updLandbus(dt);updHafen(dt,now);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);updVerstecken(dt);updFest(dt,now);updImmo(dt);
+    updHearts(dt);updPlopps(dt);updWetter(dt);updVerkehr(dt);updLandbus(dt);updHafen(dt,now);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);updVerstecken(dt);updTrag(dt);updFest(dt,now);updImmo(dt);
     document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("minimap").style.display=(running&&!buildMode)?"block":"none";
     /* 🩹 Schwarm-6: lief JEDEN Frame mit getComputedStyle/getBoundingClientRect
