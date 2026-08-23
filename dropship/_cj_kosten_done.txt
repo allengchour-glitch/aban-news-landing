@@ -895,3 +895,4 @@ gid://shopify/Product/15446267265409	CHF 32.76	3 Varianten	Wiederaufladbares Ret
 gid://shopify/Product/15446267298177	CHF 52.13	2 Varianten	Vertikaler Gaming-Pistolengriff mit Trigger
 gid://shopify/Product/15446267363713	CHF 28.13	3 Varianten	RGP01 Multi-Plattform Wireless Gamepad
 gid://shopify/Product/15446267396481	CHF 34.11	3 Varianten	X2 Blue 4K Wireless Gaming Konsole
+gid://shopify/Product/15446267462017	CHF 22.16	6 Varianten	Vibrations-Gamepad mit 6-Achsen-Bewegungssensor
