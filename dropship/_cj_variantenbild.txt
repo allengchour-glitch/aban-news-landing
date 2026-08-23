@@ -1093,3 +1093,5 @@ gid://shopify/Product/15478570058113	zugeordnet	35	Retro Jeans mit Flügel-Stick
 gid://shopify/Product/15478585524609	zugeordnet	25	Regenbogen 3D-Hoodie für Damen
 gid://shopify/Product/15493919113601	zugeordnet	27	Modisches Crew-Neck Sweatshirt mit Print
 gid://shopify/Product/15495730266497	zugeordnet	96	Ärmelloses Midikleid mit 3D-Print
+gid://shopify/Product/15496273592705	zugeordnet	24	Ärmelloses Strandkleid mit V-Ausschnitt und Schlitz
+gid://shopify/Product/15496279294337	zugeordnet	30	Herren Sommerhemd mit Print
