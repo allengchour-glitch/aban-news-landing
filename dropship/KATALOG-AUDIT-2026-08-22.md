@@ -6,6 +6,25 @@ Eine Vorbemerkung zur Einordnung: Der Shop hat rund fünfzehn Bestellungen insge
 
 ---
 
+## ✅ Stand der Abarbeitung — 23.08.2026
+
+| Befund | Stand |
+|---|---|
+| 1.1 POD-Druckdateien tot | **erledigt** — 454 Produkte (264 Sticker + 190 uebrige) auf die Shopify-CDN gehoben; `pod_druckdatei.py` fragt seit heute jede CDN-Adresse auch wirklich an, statt sie fuer gesund zu halten |
+| 1.2 Grösse im Farbwert | **erledigt** — 349 Produkte, 1'634 Varianten umgehängt (`groesse_im_farbwert.py`); Quelle behoben: `automation/cj_groessen.mjs` |
+| 1.3 Multipack ohne Stückzahl | **erledigt** — 70 Titel (`multipack_titel.py`, drei neue Klassen, vier neue Wachen) |
+| 1.4 Preis unter Einstand | **offen — Betreiberentscheid.** Die Rechnung selbst ist korrigiert (§2.3), die Neubepreisung des Bestands trifft beworbene Ware |
+| 1.5 Farbfeld = Lieferantencode | **anders gelöst** — CJ hat keine Farbnamen (Korrekturkasten unten); Produkte stehen in der Variantenbild-Vorrangliste |
+| 1.6 Titel bei 70 Zeichen gekappt | **erledigt** — 53 Titel (`titel_kappe70.py`), Quelle in `stueckzahl.mjs` behoben |
+| 1.7 Englische Optionswerte | **teilweise** — Farbtabelle 280 → 399 Einträge, Übersetzungslauf über 964 Produkte; die Kollisionsfälle («Blue» neben «Blau») nimmt `farbwert_dubletten.py`, 209 Kandidaten |
+| 1.8 Kleinere Titel-Lücken | **erledigt** (Set-Teilezahl, «Dose à», «N Sets») bzw. **bewusst nicht** (kleine Mehrfachpackung, 84 % Fehlerquote) |
+| 2.1–2.3 Quellen | **erledigt** — 70-Zeichen-Schnitt, Optionswerte, Frachtboden `max(5,…)` |
+| 2.4 Gewicht + Kosten | **offen** — braucht CJ-Punkte; Tagesbudget am 23.08. um 07:36 erschöpft |
+| 2.5 `google_feed_cull.py` ohne Ledger | **erledigt** — Ledger im Repo, Wächter liest es; Lücke 24 → 6, davon 5 nachpubliziert |
+| 2.6 POD-Geschwister | **erledigt** — `pod_druckdatei.py` gilt für alle POD-Produkte, im Aufseher registriert |
+
+---
+
 ## 1. Was sofort Geld kostet
 
 ### 1.1 POD-Druckdateien zeigen ins Leere — bezahlt, aber nicht druckbar
