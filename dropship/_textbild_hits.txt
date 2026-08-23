@@ -10140,3 +10140,4 @@ gid://shopify/Product/15497526051201	104->0	Tragbarer Reisekocher 400ml
 gid://shopify/Product/15498888085889	9->3	Kosmetikbeutel
 gid://shopify/Product/15498896736641	27->0	Herrenarmband aus Titanstahl mit Kreuz-Anhänger
 gid://shopify/Product/15498897162625	17->0	Sternenklare Zirkon-Armband für Redmi Watch
+gid://shopify/Product/15499784814977	108->0	Sportliche Sneaker
