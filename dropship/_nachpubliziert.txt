@@ -236,3 +236,4 @@ gid://shopify/Product/15509386559873	kurzarmhemd-fur-junge-manner-603500	Kurzarm
 gid://shopify/Product/15509402157441	elektrischer-porenreiniger-mit-3-burstenkopfen-3f9086	Elektrischer Porenreiniger mit 3 Bürstenköpfen
 gid://shopify/Product/15509402190209	erweiterbarer-laptop-rucksack-681ca9	Erweiterbarer Laptop-Rucksack
 gid://shopify/Product/15510324150657	figurbetontes-plisseekleid-mit-schlitz-614400	Figurbetontes Plisseekleid mit Schlitz
+gid://shopify/Product/15510326608257	leichter-outdoor-mini-rucksack-618000	Leichter Outdoor Mini-Rucksack
