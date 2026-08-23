@@ -961,3 +961,7 @@ gid://shopify/Product/15448014291329	zugeordnet	20	Einfarbiges Rundhals T-Shirt 
 gid://shopify/Product/15448014520705	zugeordnet	6	Elegantes T-Shirt mit Blumenprint und Spitze
 gid://shopify/Product/15448014684545	zugeordnet	24	Enganliegendes Sport-Shirt Damen
 gid://shopify/Product/15448015176065	zugeordnet	12	Kurzarm-Hemd mit Stehkragen im Retro-Karodesign
+gid://shopify/Product/15448015274369	zugeordnet	6	Rundhals-Shirt mit Raffung
+gid://shopify/Product/15448015569281	zugeordnet	8	Figurbetonendes Satin-Top mit Spitzenkragen
+gid://shopify/Product/15448015864193	zugeordnet	25	Kurzes ärmelloses Yoga-Top für Damen
+gid://shopify/Product/15448015995265	zugeordnet	9	Strandshirt mit Kordelzug
