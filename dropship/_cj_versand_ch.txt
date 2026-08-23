@@ -907,3 +907,4 @@ gid://shopify/Product/15510326149505	ok	Baukasten für kleine Partikel
 gid://shopify/Product/15510326182273	ok	Magisches Rennauto Baustein-Modell
 gid://shopify/Product/15510330868097	ok	Kupfer Küchenarmatur mit Ausziehbrause
 gid://shopify/Product/15510327820673	ok	Grosse Vintage-Herrenhandtasche aus Leder
+gid://shopify/Product/15510785491329	nicht-versendbar	K18MAX Faltbare GPS-Drohne mit Fernbedienung
