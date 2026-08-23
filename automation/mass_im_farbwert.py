@@ -50,6 +50,14 @@ SPEICHER = re.compile(r'^(.*\S)[-–]\s*(\d{1,4}\s?[GT]B)$', re.I)
 INHALT = re.compile(r'^(.*\S)[-–]\s*(\d{1,5}\s?(?:ML|L))$', re.I)
 MASSE = re.compile(r'^(.*\S)[-–]\s*(\d{1,4}\s?[xX×]\s?\d{1,4}\s?(?:cm|mm)?)$')
 ZAHL = re.compile(r'^(.*\S)[-–]\s*(\d{1,2})$')
+# ⚠️ 23.08.2026 — 36 Produkte tragen eine Option, deren NAME den Fehler zugibt:
+# «Farbe & Grösse», «Ausführung & Grösse». Die Werte lauten «Black And Blue-S M»,
+# «Matte Black-L 58to61cm», «Black grey-38mm S». Der Kopf ist die Farbe, der Schwanz eine
+# Konfektionsgrösse mit allem, was der Lieferant noch dranhaengt.
+KONFEKTION = re.compile(
+    r'^(.*\S)[-–]\s*((?:\d{1,2}XL|XXS|XS|XXL|XXXL|[SML]|XL)\b.*)$')
+KOMBINAME = ("farbe & grösse", "grösse & farbe", "ausführung & grösse",
+             "grösse & ausführung")
 
 
 def gql(q, v=None):
@@ -90,6 +98,7 @@ def zerlegen(werte):
     for muster, name, braucht_farbe in ((SPEICHER, "Speicher", False),
                                         (INHALT, "Inhalt", False),
                                         (MASSE, "Grösse", False),
+                                        (KONFEKTION, "Grösse", False),
                                         (ZAHL, "Grösse", True)):
         teile = {}
         for w in werte:
@@ -97,7 +106,22 @@ def zerlegen(werte):
             if not m:
                 teile = None
                 break
-            teile[w] = (m.group(1).strip(), m.group(2).strip().replace(" ", ""))
+            schwanz = m.group(2).strip()
+            if muster is KONFEKTION:
+                # ⚠️ Leerzeichen NICHT entfernen. Der Probelauf machte aus «S M» ein «SM»
+                # und aus «L 58to61cm» ein «L58to61cm» — unlesbar. Die Zusammenziehung ist
+                # nur fuer Masse gedacht («30 X 50cm» → «30X50cm»).
+                # «Code» ist CJs woertliche Uebersetzung von 码 = Groesse (dieselbe Quelle
+                # wie das dokumentierte «yards»); als Anhang traegt es keine Information.
+                schwanz = re.sub(r'\s*\bcode\b\s*$', '', schwanz, flags=re.I).strip()
+                # Zwei mechanische Uebersetzungen, beide eindeutig: CJ schreibt Bereiche
+                # als «58to61cm» und die Innensohle als «Inner Length».
+                schwanz = re.sub(r'(\d+)\s*to\s*(\d+)\s*(cm|mm)', r'\1–\2 \3',
+                                 schwanz, flags=re.I)
+                schwanz = re.sub(r'\bInner\s+Length\b', 'Innenlänge', schwanz, flags=re.I)
+            else:
+                schwanz = schwanz.replace(" ", "")
+            teile[w] = (m.group(1).strip(), schwanz)
         if teile is None:
             continue
         if braucht_farbe and not all(istFarbe(f) for f, _ in teile.values()):
@@ -130,7 +154,7 @@ def main():
             opts = p.get("options") or []
             if len(opts) != 1:
                 continue                       # zweite Option da → anderes Thema
-            if (opts[0].get("name") or "").strip().lower() not in FARBFELD:
+            if (opts[0].get("name") or "").strip().lower() not in FARBFELD + KOMBINAME:
                 continue
             werte = [(v.get("name") if isinstance(v, dict) else v) or ""
                      for v in (opts[0].get("optionValues") or opts[0].get("values") or [])]
@@ -163,7 +187,7 @@ def main():
         if not p or p["status"] != "ACTIVE" or len(p["options"]) != 1:
             continue
         fopt = p["options"][0]
-        if (fopt["name"] or "").strip().lower() not in FARBFELD:
+        if (fopt["name"] or "").strip().lower() not in FARBFELD + KOMBINAME:
             continue
         name, teile = zerlegen([v["name"] for v in fopt["optionValues"]])
         if not name:
@@ -184,7 +208,8 @@ def main():
             # Vermutung, an der dieses Projekt schon mehrfach Geld verloren hat. Solche
             # Produkte bleiben unberuehrt; die Angabe steht dann weiter im Farbwert, was
             # haesslich, aber wahr ist.
-            if not re.search(r'(?:cm|mm|GB|TB|ML|L)$', mass, re.I):
+            if not re.search(r'(?:cm|mm|GB|TB|ML|L)$', mass, re.I) \
+                    and not re.match(r'^(?:\d{1,2}XL|XXS|XS|XXL|XXXL|XL|[SML])\b', mass):
                 uebersprungen += 1
                 print(f"  ⛔ {p['title'][:50]:50} — Mass «{mass}» ohne Einheit, "
                       f"nicht geraten", flush=True)
@@ -193,6 +218,9 @@ def main():
             schoen = re.sub(r'^(\d+)\s*[xX×]\s*(\d+)\s*(cm|mm)$',
                             r'\1 × \2 \3', mass)
             schoen = re.sub(r'^(\d+)\s*(GB|TB|ML|L)$', r'\1 \2', schoen, flags=re.I)
+            # Bei einer Konfektionsgroesse sagt die blosse Angabe nicht, was sie ist.
+            if re.match(r'^(?:\d{1,2}XL|XXS|XS|XXL|XXXL|XL|[SML])\b', schoen):
+                schoen = "Grösse " + schoen
             titel = p["title"]
             # Die Angabe darf nur verschwinden, wenn sie woanders sichtbar bleibt.
             zahlen = re.findall(r'\d+', mass)
@@ -280,6 +308,12 @@ def main():
             print(f"       ⚠️ Varianten nicht umgehaengt: "
                   f"{json.dumps(fe)[:140] if fe else 'keine Antwort'}")
             uebersprungen += 1; time.sleep(1); continue
+        # Heisst die Option «Farbe & Grösse», stimmt der Name nach dem Trennen nicht mehr.
+        if "&" in fopt["name"]:
+            kurz = fopt["name"].split("&")[0].strip()
+            gql('mutation($p:ID!,$o:OptionUpdateInput!){'
+                'productOptionUpdate(productId:$p,option:$o){userErrors{message}}}',
+                {"p": p["id"], "o": {"id": fopt["id"], "name": kurz}})
         ok += 1
         with open(LEDGER, "a") as f:
             f.write(f"{pid}\tgetrennt:{name}:{len(masse)}\t{p['title'][:60]}\n")
