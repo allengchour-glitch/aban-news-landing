@@ -10203,3 +10203,5 @@ gid://shopify/Product/15449133023617	28->0	Premium Faux Mink MK-15 Wimpern
 gid://shopify/Product/15449133187457	91->2	Falsche Nerzwimpern 3D MK-06 (5 Paar)
 gid://shopify/Product/15449158943105	109->0	Damen Sweatshirt mit 3D-Effekt Print
 gid://shopify/Product/15449571361153	28->1	Damen Cuff Washed Wide-Leg Crop-Jeans
+gid://shopify/Product/15450061767041	184->0	Atmungsaktive Kletterschuhe
+gid://shopify/Product/15450068189569	24->0	Wasserdichte Wanderschuhe
