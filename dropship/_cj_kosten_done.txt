@@ -882,3 +882,7 @@ gid://shopify/Product/15446266773889	CHF 35.15	1 Varianten	Bluetooth Wireless Ga
 gid://shopify/Product/15446266806657	CHF 31.42	3 Varianten	Lay'sda P5 Wireless Game Controller
 gid://shopify/Product/15446266839425	CHF 17.84	6 Varianten	Metall-Thumbsticks für PS4 Controller
 gid://shopify/Product/15446266872193	CHF 32.61	1 Varianten	Kabelloser Bluetooth Game Controller
+gid://shopify/Product/15446266904961	CHF 28.13	4 Varianten	Programmierbarer Bluetooth Game Controller
+gid://shopify/Product/15446266937729	CHF 24.70	3 Varianten	Rocker Iron Head für Gamecontroller
+gid://shopify/Product/15446266970497	CHF 20.25	1 Varianten	Wireless Controller Ladestation mit LED-Anzeige
+gid://shopify/Product/15446267036033	cj-ohne-antwort
