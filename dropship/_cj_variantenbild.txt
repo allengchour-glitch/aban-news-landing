@@ -1095,3 +1095,6 @@ gid://shopify/Product/15493919113601	zugeordnet	27	Modisches Crew-Neck Sweatshir
 gid://shopify/Product/15495730266497	zugeordnet	96	Ärmelloses Midikleid mit 3D-Print
 gid://shopify/Product/15496273592705	zugeordnet	24	Ärmelloses Strandkleid mit V-Ausschnitt und Schlitz
 gid://shopify/Product/15496279294337	zugeordnet	30	Herren Sommerhemd mit Print
+gid://shopify/Product/15496380547457	zugeordnet	90	Herren Hemd Blau-Weiss Gestreift
+gid://shopify/Product/15496428093825	zugeordnet	96	Herren Hemd mit 3D Digitaldruck und Revers
+gid://shopify/Product/15496428388737	zugeordnet	42	Unisex Langarmhemd aus Baumwoll-Leinen
