@@ -142,7 +142,12 @@ def main():
 
     erledigt = set()
     if os.path.exists(LEDGER):
-        erledigt = {l.split("\t")[0] for l in open(LEDGER)}
+        # ⚠️ Ein «uebersprungen» ist KEIN Erledigt-Zeichen. Der Grund kann morgen weg sein:
+        # eine Kollision loest sich auf, sobald ein anderer Lauf den doppelten Wert
+        # bereinigt hat. Wer die Zeile als erledigt liest, sperrt das Produkt fuer immer
+        # aus — dieselbe Falle wie beim Produktdetails-Ledger (Lehre 12.08.).
+        erledigt = {z.split("\t")[0] for z in open(LEDGER)
+                    if not z.split("\t")[1:2] or not z.split("\t")[1].startswith("uebersprungen")}
     offen = [i for i in liste if i not in erledigt]
     if MAX:
         offen = offen[:MAX]
