@@ -4,6 +4,24 @@
 > ~600 kB in einer einzigen IIFE; ohne diese Karte sucht man lange und tritt in
 > Fallen, die hier schon einmal Stunden gekostet haben.
 
+## 👁️ Auf AUGENHOEHE pruefen, nicht aus der Vogelperspektive (2026-08-23)
+- Werkzeug: `__th.ego(true)` (Haken ist schon da) + eine Sonde, die `sims[0]` an den
+  gewuenschten Ort setzt. `th-blick` mit kleinem Radius landet zu leicht unter einem
+  Portikus — die dokumentierte „Kamera in der Wand"-Falle.
+- **Was von oben nie auffaellt:** aus der Ego-Sicht fuellt der HIMMEL rund 40 % des
+  Bildes. Er war das flachste Element der Szene — und das haben alle bisherigen
+  Vogelperspektiv-Runden uebersehen.
+- **Der Verlauf war 64 Zeilen hoch**, ueber eine Kuppel mit Radius 520 gezogen: klar
+  sichtbare Streifen. Jetzt 256 Zeilen, fuenf Stuetzstellen und ein Hauch Dither
+  (+-3/255). Ohne das Rauschen bleiben Streifen auch bei 256 Zeilen — eine 8-Bit-Rampe
+  ueber so eine Flaeche hat zu wenige Stufen.
+- **Die Wolken sassen alle auf 95…165 m** — von oben reichlich, von der Strasse aus
+  liegt fast alles davon ueber dem Bildrand. Jetzt 22 statt 15 Ballen, jeder dritte
+  tiefer und naeher. Kostet keinen Zeichenaufruf: dieselbe InstancedMesh.
+- **⚠️ DAS WETTER WUERFELT PRO LAUF** (`rollWetter`). Zwei Bodenbilder unterscheiden sich
+  in der Helligkeit dann durch das Wetter, nicht durch die Aenderung. Wer das nicht
+  merkt, schreibt sich eine Verbesserung gut, die der Zufall gemacht hat.
+
 ## 🔢 `_gebaeude` IST KEIN INVENTAR — dreimal dieselbe Falle (2026-08-23)
 Diese Blindstelle hat in dieser Datei jetzt dreimal zugeschlagen. Sie steht darum hier
 oben, nicht als Fussnote:

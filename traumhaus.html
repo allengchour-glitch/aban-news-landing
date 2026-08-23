@@ -3578,12 +3578,28 @@ setTimeout(function baueVerkehr(){
         langsam dreht — damit zieht der ganze Himmel, ohne dass pro Bild 90
         Matrizen neu gerechnet werden. */
   (function himmel(){
-    var cv=document.createElement("canvas");cv.width=2;cv.height=64;
-    var cx2=cv.getContext("2d"),gr=cx2.createLinearGradient(0,0,0,64);
-    gr.addColorStop(0.00,"#8e8e8e");      // Zenit: dunkler
-    gr.addColorStop(0.55,"#d2d2d2");
+    /* ⚠️ 64 PIXEL WAREN ZU WENIG. Auf Augenhoehe fuellt der Himmel rund 40 % des
+       Bildes; eine 64 Zeilen hohe Verlaufstextur, ueber eine Kuppel mit Radius
+       520 gezogen, zeigt dort deutlich sichtbare Streifen — im Bodenbild klar
+       zu erkennen. 256 Zeilen und fuenf statt drei Stuetzstellen machen den
+       Verlauf weich; ein Hauch Rauschen (+-3/255) bricht die letzten Kanten.
+       Ohne das Rauschen bleiben Streifen auch bei 256 Zeilen sichtbar: eine
+       8-Bit-Rampe ueber eine so grosse Flaeche hat schlicht zu wenige Stufen. */
+    var cv=document.createElement("canvas");cv.width=4;cv.height=256;
+    var cx2=cv.getContext("2d"),gr=cx2.createLinearGradient(0,0,0,256);
+    gr.addColorStop(0.00,"#7e7e7e");      // Zenit: dunkler, gibt dem Himmel Tiefe
+    gr.addColorStop(0.30,"#a6a6a6");
+    gr.addColorStop(0.62,"#d4d4d4");
+    gr.addColorStop(0.88,"#f2f2f2");
     gr.addColorStop(1.00,"#ffffff");      // Horizont: volle Himmelsfarbe
-    cx2.fillStyle=gr;cx2.fillRect(0,0,2,64);
+    cx2.fillStyle=gr;cx2.fillRect(0,0,4,256);
+    (function dither(){
+      var id=cx2.getImageData(0,0,4,256),d=id.data;
+      for(var i=0;i<d.length;i+=4){
+        var n=(((i*2654435761)>>>8)%7)-3;
+        d[i]+=n;d[i+1]+=n;d[i+2]+=n;}
+      cx2.putImageData(id,0,0);
+    })();
     var gt=new THREE.CanvasTexture(cv);gt.needsUpdate=true;
     /* ⚠️ RADIUS 880 WAR ZU GROSS. Die Spielkamera hat far = 600 — die Kuppel lag
        damit komplett hinter der fernen Ebene und wurde weggeschnitten. Im Spiel
@@ -3601,14 +3617,26 @@ setTimeout(function baueVerkehr(){
 
     var grp=new THREE.Group();grp.userData.nieAusblenden=1;scene.add(grp);
     var puffG=new THREE.SphereGeometry(1,7,5);
+    /* ⚠️ 0,9 DECKKRAFT liess die Wolken als harte weisse Klumpen stehen; 0,76
+       gibt ihnen Luft, ohne sie verschwinden zu lassen. */
     var puffM=new THREE.MeshBasicMaterial({color:0xf4fbff,fog:false,
-                                           transparent:true,opacity:0.9,depthWrite:false});
-    var NB=15,NP=6,inst=new THREE.InstancedMesh(puffG,puffM,NB*NP);
+                                           transparent:true,opacity:0.76,depthWrite:false});
+    /* ⚠️ 15 BALLEN AUF 95…165 m HOEHE — von oben reichlich, auf AUGENHOEHE aber
+       ein fast leerer Himmel: aus der Ego-Sicht liegt fast alles davon ueber dem
+       Bildrand. 22 Ballen, und ein Teil davon tiefer und naeher, fuellen auch den
+       Bereich ueber dem Horizont. Kostet keinen einzigen Zeichenaufruf mehr —
+       es ist dieselbe InstancedMesh, nur mit mehr Instanzen. */
+    var NB=22,NP=6,inst=new THREE.InstancedMesh(puffG,puffM,NB*NP);
     inst.frustumCulled=false;inst.renderOrder=-9;inst.userData.nieAusblenden=1;
     var M5=new THREE.Matrix4(),Q5=new THREE.Quaternion(),P5=new THREE.Vector3(),S5=new THREE.Vector3();
     function r5(i,k){var x=Math.sin(i*12.9898+k*78.233)*43758.5453;return x-Math.floor(x);}
     for(var b=0;b<NB;b++){
-      var ba=b/NB*6.283+r5(b,1)*0.4, br2=180+r5(b,2)*240, bh=95+r5(b,3)*70;
+      /* Jeder dritte Ballen haengt tiefer und naeher — das ist der Teil, den man
+         von der Strasse aus ueberhaupt sieht. */
+      var tief=(b%3===0);
+      var ba=b/NB*6.283+r5(b,1)*0.4;
+      var br2=tief?(120+r5(b,2)*160):(180+r5(b,2)*240);
+      var bh=tief?(58+r5(b,3)*34):(95+r5(b,3)*70);
       var bx=Math.cos(ba)*br2, bz=Math.sin(ba)*br2, gr2=16+r5(b,4)*16;
       for(var q=0;q<NP;q++){
         var qa=q/NP*6.283+r5(b*7+q,5)*0.8, qd=gr2*(0.25+r5(b*7+q,6)*0.75);
