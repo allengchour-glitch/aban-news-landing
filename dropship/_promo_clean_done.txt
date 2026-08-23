@@ -22778,3 +22778,4 @@ gid://shopify/Product/15510836707713	bereinigt
 gid://shopify/Product/15510836740481	bereinigt
 gid://shopify/Product/15510836773249	bereinigt
 gid://shopify/Product/15510836838785	bereinigt
+gid://shopify/Product/15510858301825	bereinigt
