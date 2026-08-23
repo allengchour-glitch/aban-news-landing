@@ -542,3 +542,8 @@ gid://shopify/Product/15431530054017	CHF 16.92	1 Varianten	Vintage Baseball-Cap 
 gid://shopify/Product/15431535886721	CHF 16.92	1 Varianten	Baseball-Cap «Mama» · Mintgrün
 gid://shopify/Product/15431535919489	CHF 16.92	1 Varianten	Vintage-Cap «Tuesday» · Washed Grau
 gid://shopify/Product/15431535952257	CHF 16.92	1 Varianten	5-Panel Cap «Sprint» · Nylon Schwarz
+gid://shopify/Product/15431535985025	CHF 16.84	1 Varianten	Baseball-Cap «L.A.» · Hellblau
+gid://shopify/Product/15431536017793	CHF 15.73	1 Varianten	Baseball-Cap «Classic» · Rot, Baumwolle
+gid://shopify/Product/15431536050561	CHF 16.26	1 Varianten	Bucket Hat «Banana» · Schwarz, Print
+gid://shopify/Product/15431536083329	CHF 16.25	1 Varianten	Cord-Bucket-Hat «Manchester» · Navy
+gid://shopify/Product/15431536116097	CHF 17.07	1 Varianten	Denim-Cap «Bleu» · Washed Hellblau
