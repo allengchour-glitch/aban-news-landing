@@ -115,3 +115,16 @@
 15447883645313	einheitlich:185x85cm	Schal in Seiden-Optik mit UV-Schutz für Strand & Freizeit
 15447883710849	einheitlich:65x180cm	Kaschmirähnlicher Schal mit Totem-Muster
 15447883841921	einheitlich:100x40cm	Vielseitiger Dreiecksschal mit Bindebändern
+15447883972993	einheitlich:100x40cm	Leichter Strick-Schal aus Eisseide
+15447884267905	einheitlich:70x70cm	Quadratisches Halstuch mit UV-Schutz
+15447884398977	einheitlich:180x50cm	Plissierter Schal in Seiden-Optik mit Rautenmuster
+15447884890497	einheitlich:110x110cm	Vielseitiger Chiffon-Schal mit Blumenmuster
+15447885316481	einheitlich:70x70cm	Retro Karo-Halstuch mit Sonnenschutz
+15447885742465	einheitlich:130x150cm	Ethno Strick-Poncho mit Quasten
+15447886004609	einheitlich:130x30cm	Gehäkelter Dreiecksschal im Ethno-Stil
+15447886266753	einheitlich:190x70cm	Geknitterter Baumwoll-Leinen Schal im Distressed-Look
+15447887282561	einheitlich:180x88cm	Schal mit Katzenmuster im Koreanischen Stil
+15447888593281	einheitlich:200x68cm	Vielseitiger warmer Schal aus Faux-Kaschmir
+15447889478017	einheitlich:180X70cm	Farbverlauf Satin Crinkle Schal
+15447892361601	einheitlich:185x80cm	Retro Colorblock Blumen-Schal
+15447892787585	einheitlich:70x180cm	Bohemian Herbstschal aus Jacquard, Kaschmir-Optik
