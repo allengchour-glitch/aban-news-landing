@@ -504,3 +504,5 @@ tier-pflege-unterwegs	ok	28	Pflege & Unterwegs
 blitzversand-highlights	ok	28	⚡ Blitzversand-Highlights
 werkzeug-maschinen	http-429	0	🔧 Werkzeug & Maschinen
 hype-jetzt	ok	12	🔥 Gerade im Trend
+hoodies-sweatshirts	unveroeffentlicht	0	🔥 Hoodies & Sweatshirts
+tshirts-polos	unveroeffentlicht	0	👕 T-Shirts, Polos & Longsleeves

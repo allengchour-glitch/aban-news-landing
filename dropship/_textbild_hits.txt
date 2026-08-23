@@ -10141,3 +10141,7 @@ gid://shopify/Product/15498888085889	9->3	Kosmetikbeutel
 gid://shopify/Product/15498896736641	27->0	Herrenarmband aus Titanstahl mit Kreuz-Anhänger
 gid://shopify/Product/15498897162625	17->0	Sternenklare Zirkon-Armband für Redmi Watch
 gid://shopify/Product/15499784814977	108->0	Sportliche Sneaker
+gid://shopify/Product/15500108398977	14->0	Kissen für Yoga
+gid://shopify/Product/15500109742465	15->0	Goldkette für Frauen
+gid://shopify/Product/15500110365057	90->0	Kosmetik-Stiftsatz
+gid://shopify/Product/15500110463361	40->0	Luxus-Halskette mit Tiermotiven
