@@ -693,3 +693,4 @@ gid://shopify/Product/15510311797121	CJ-CJLY293076101AZ	Polo-Langarmkleid mit 3/
 gid://shopify/Product/15510311993729	CJ-CJLY293074301AZ	Maxikleid Ärmellos mit Blumenmuster
 gid://shopify/Product/15510312124801	CJ-CJLY293073201AZ	Elegantes Bodycon Kleid mit Halbrock und langen Ärmeln
 gid://shopify/Product/15510312190337	CJ-CJLY293071401AZ	Langes Leinenkleid mit Spaghettiträgern
+gid://shopify/Product/15510525575553	CJ-CJLY293010901AZ	Trägerloses Backless Etuikleid
