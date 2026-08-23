@@ -992,3 +992,36 @@ gid://shopify/Product/15448020255105	zugeordnet	25	Samt Off-Shoulder Langarmshir
 gid://shopify/Product/15448020418945	zugeordnet	12	Vintage Slim-Fit Top mit Froschknöpfen
 gid://shopify/Product/15448020746625	zugeordnet	50	V-Neck Langarmshirt mit 3D-Effekt
 gid://shopify/Product/15448020943233	zugeordnet	20	V-Ausschnitt Top mit Ballonärmeln
+gid://shopify/Product/15448021303681	zugeordnet	2	Kaftan mit Schmetterlingsrücken
+gid://shopify/Product/15448021565825	zugeordnet	9	Off-Shoulder Mesh Langarmshirt
+gid://shopify/Product/15448021926273	zugeordnet	12	Strickkleid mit Aushöhlungen und langen Ärmeln
+gid://shopify/Product/15448022188417	zugeordnet	28	V-Neck Langarm-Pullover mit lockerem Print
+gid://shopify/Product/15448022712705	zugeordnet	2	Cardigan mit Lochmuster und Bindedetail
+gid://shopify/Product/15448022974849	zugeordnet	2	Langes Strickjäckchen mit Lochmuster
+gid://shopify/Product/15448023138689	zugeordnet	4	Lockerer Strickpullover mit Schmetterlings-Patchwork
+gid://shopify/Product/15448023302529	zugeordnet	6	Luftiger Strick-Cardigan mit Lochmuster
+gid://shopify/Product/15448023466369	zugeordnet	6	Kurzes Strick-Top mit langen Ärmeln
+gid://shopify/Product/15448023761281	zugeordnet	48	V-Ausschnitt Langarmshirt mit Print
+gid://shopify/Product/15448024580481	zugeordnet	25	Mesh Langarm-Top mit Camisole
+gid://shopify/Product/15448025268609	zugeordnet	36	Pullover mit V-Ausschnitt und Spitze
+gid://shopify/Product/15448025530753	zugeordnet	4	Off-Shoulder Langarmshirt mit Schnürung
+gid://shopify/Product/15448025825665	zugeordnet	12	Langarm Yoga-Top mit Kordelzug
+gid://shopify/Product/15448025891201	zugeordnet	4	Sexy Hollow Out Shirt mit Dreiviertelärmeln
+gid://shopify/Product/15448026022273	zugeordnet	8	Retro Tie-Dye Langarmshirt
+gid://shopify/Product/15448026579329	zugeordnet	6	Sonnen-Schutzshirt mit breiter Krempe
+gid://shopify/Product/15448026743169	bild-urls-tot
+gid://shopify/Product/15448026907009	bild-urls-tot
+gid://shopify/Product/15448027070849	bild-urls-tot
+gid://shopify/Product/15448027169153	bild-urls-tot
+gid://shopify/Product/15448027300225	bild-urls-tot
+gid://shopify/Product/15448027627905	bild-urls-tot
+gid://shopify/Product/15448027791745	bild-urls-tot
+gid://shopify/Product/15448028053889	bild-urls-tot
+gid://shopify/Product/15448028217729	bild-urls-tot
+gid://shopify/Product/15448028381569	bild-urls-tot
+gid://shopify/Product/15448028545409	bild-urls-tot
+gid://shopify/Product/15448028643713	bild-urls-tot
+gid://shopify/Product/15448029331841	bild-urls-tot
+gid://shopify/Product/15448029495681	bild-urls-tot
+gid://shopify/Product/15448029757825	bild-urls-tot
+gid://shopify/Product/15448030183809	bild-urls-tot

@@ -687,3 +687,9 @@ gid://shopify/Product/15509382365569	CJ-6C39FE34-128F-478F-869B-B2E1BE3A6439	Kü
 gid://shopify/Product/15509382562177	CJ-4ACCB7BD-EF9C-4969-A86A-F7F072E5BD60	Back- und Dekorationsset für Torten
 gid://shopify/Product/15509382660481	CJ-EE0DA616-EC0D-4774-889A-BD7F9933F1FB	Kaffeekapsel-Drehständer (24 Kapseln)
 gid://shopify/Product/15509383512449	CJ-1416335068099645440	Elektrischer Weinöffner mit USB-Ladekabel
+gid://shopify/Product/15510311010689	CJ-CJLY293077801AZ	Ärmelloses Maxi-Kleid mit V-Ausschnitt und Print
+gid://shopify/Product/15510311174529	CJ-CJYD293077701AZ	Geblümtes Rippstoff-Nachtkleid mit Rüschen
+gid://shopify/Product/15510311797121	CJ-CJLY293076101AZ	Polo-Langarmkleid mit 3/4-Ärmeln
+gid://shopify/Product/15510311993729	CJ-CJLY293074301AZ	Maxikleid Ärmellos mit Blumenmuster
+gid://shopify/Product/15510312124801	CJ-CJLY293073201AZ	Elegantes Bodycon Kleid mit Halbrock und langen Ärmeln
+gid://shopify/Product/15510312190337	CJ-CJLY293071401AZ	Langes Leinenkleid mit Spaghettiträgern
