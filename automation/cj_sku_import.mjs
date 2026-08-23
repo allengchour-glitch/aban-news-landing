@@ -39,6 +39,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 // bei der viermal kopierten Farbtabelle und bei publishVerified()).
 import { chf, kosten, gewicht } from './cj_preis.mjs';
 import { titelMitMenge } from './stueckzahl.mjs';
+import { dubletteFinden, slugMerken } from './cj_dublette.mjs';
 
 async function cj(path) {
   for (let a = 0; a < 6; a++) {
@@ -177,6 +178,12 @@ for (const item of ITEMS) {
   const norm = x => x.toLowerCase().replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue').replace(/ß/g,'ss').replace(/[^a-z0-9]+/g,' ').trim();
   const dq = await sgql(t, `query($q:String!){products(first:10,query:$q){edges{node{id title}}}}`, { q: `title:"${title.replace(/"/g, '').split(' ').slice(0,3).join(' ')}*" status:active` });
   if ((dq.data?.products?.edges||[]).some(e => norm(e.node.title) === norm(title))) { console.log('= Titel existiert (norm):', title); fs.appendFileSync(LEDGER, 'cj:' + pid + '\n'); continue; }
+  // ⚠️ HANDLE-WACHE (23.08.2026). Die Titel-Suche oben ist nicht verlaesslich: Shopify
+  // tokenisiert Bindestriche nicht, «Keramik Futternapf» findet «Keramik-Futternapf» nicht.
+  // Der Handle-Stamm ist bei beiden Schreibweisen identisch — siehe automation/cj_dublette.mjs.
+  const dublette = await dubletteFinden(sgql, t, title);
+  if (dublette) { console.log('= skip(dup-handle):', title.slice(0,44), '≈', String(dublette).slice(0,40)); fs.appendFileSync(LEDGER, 'cj:' + pid + '\n'); continue; }
+  slugMerken(title);
   const IMGLEDGER = 'dropship/cj_niche_img_seen.txt';
   const imgSeen = new Set(fs.existsSync(IMGLEDGER) ? fs.readFileSync(IMGLEDGER, 'utf8').split('\n').filter(Boolean) : []);
   const imgKey = (imgs[0]||'').split('?')[0].split('/').pop();

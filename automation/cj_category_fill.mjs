@@ -73,6 +73,7 @@ const kosten=(usd,grams)=>{const u=parseFloat((''+usd).split('--')[0])||0;
 import { FARBEN as DECOLOR, deColor } from './farben_de.mjs';
 import { titelMitMenge } from './stueckzahl.mjs';
 import { SIZESET, SORDER } from './cj_groessen.mjs';
+import { slugStamm, laufSlugs } from './cj_dublette.mjs';
 // Grössen kommen aus automation/cj_groessen.mjs — dort und NUR dort ergänzen.
 // ⚠️ CJ stellt der Farbe oft seinen Artikelcode voran: «A039 Black», «E7916 White»,
 // «Ts3018 Pink» — und der stand danach im Farb-Dropdown, wo die Kundin ihn anklicken MUSS
@@ -441,13 +442,12 @@ async function publishVerified(t,pid,title){
 }
 // ⚠️ 20.08.2026: Der Slug-Stamm wird an EINER Stelle gebildet. Die Handle-Wache muss exakt
 // so kürzen wie der Handle-Bau — sonst sucht sie nach einem Stamm, den es im Shop nie gibt.
-const slugStamm=t=>t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')
-  .replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,46);
+// slugStamm und laufSlugs kommen aus automation/cj_dublette.mjs — dort und NUR dort aendern.
 // Slugs, die DIESER Lauf schon vergeben hat. Shopifys `query:`-Suche liest den Suchindex,
 // der Sekunden bis Minuten nachhinkt: die beiden «DIY Digital-Ölgemälde nach Zahlen …» vom
 // 20.08. entstanden 47 Sekunden auseinander im selben Lauf — die zweite Prüfung sah die
 // erste noch nicht. Der lokale Merker kennt sie sofort.
-const laufSlugs=new Set();
+
 const SET=`mutation($i:ProductSetInput!){productSet(synchronous:true,input:$i){product{id}userErrors{message}}}`;
 const MED=`mutation($id:ID!,$m:[CreateMediaInput!]!){productCreateMedia(productId:$id,media:$m){mediaUserErrors{message}}}`;
 
@@ -987,7 +987,14 @@ for(const [cat,label] of grp.cats){
    if(dupSlug.length>8){
      const hq=await sgql(st,`query($q:String!){products(first:25,query:$q){edges{node{handle title}}}}`,
                          {q:`handle:${dupSlug}* status:active`});
-     const treffer=(hq.data?.products?.edges||[]).find(e=>new RegExp('^'+dupSlug+'-\\d+$').test(e.node.handle));
+     // ⚠️ VIERTER AKT (23.08.2026): Das Muster verlangte ZIFFERN als Suffix — aber der
+     // Handle-Bau haengt `String(pid).slice(-6)` an, und CJs pid ist nicht immer eine Zahl.
+     // Bei einer UUID-pid endet der Handle auf HEX («…-10-teilig-c71e9b»), und die Wache
+     // sah ihn nicht. So entstanden «Make-up Pinselset, 10-teilig» und «Make-up Pinselset
+     // (10-teilig)» — beide aktiv, beide CHF 15.90, beide im Google-Kanal.
+     // Das Suffix darf keinen Bindestrich enthalten; «…-erhohte-position» bleibt damit
+     // weiterhin ein ANDERES Produkt (die Regel von 20.08. gilt unveraendert).
+     const treffer=(hq.data?.products?.edges||[]).find(e=>new RegExp('^'+dupSlug+'-[0-9a-z]{4,10}$').test(e.node.handle));
      if(treffer){
        console.log('  skip(dup-handle)',title.slice(0,40),'≈',treffer.node.title.slice(0,40));
        fs.appendFileSync(LEDGER,'cj:'+p.pid+'\n'); done.add(String(p.pid)); continue;

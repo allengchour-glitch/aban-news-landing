@@ -42,6 +42,7 @@ import { chf, kosten, gewicht } from './cj_preis.mjs';
 import { FARBEN as DECOLOR, deColor } from './farben_de.mjs';
 import { titelMitMenge } from './stueckzahl.mjs';
 import { SIZESET, SORDER } from './cj_groessen.mjs';
+import { dubletteFinden, slugMerken } from './cj_dublette.mjs';
 // Grössen kommen aus automation/cj_groessen.mjs — dort und NUR dort ergänzen.
 // ⚠️ CJ stellt der Farbe oft seinen Artikelcode voran: «A039 Black», «E7916 White»,
 // «Ts3018 Pink» — und der stand danach im Farb-Dropdown, wo die Kundin ihn anklicken MUSS
@@ -337,6 +338,12 @@ for(const p of cand){
  // Dubletten-Wache: gleicher Titel schon aktiv? → überspringen (Lieferant listet gleiche Artikel mehrfach)
  const dq=await sgql(st,`query($q:String!){products(first:1,query:$q){edges{node{id}}}}`,{q:`title:"${title.replace(/"/g,'')}" status:active`});
  if(dq.data?.products?.edges?.length){console.log('  skip(dup-titel)',title.slice(0,40));continue;}
+ // ⚠️ HANDLE-WACHE (23.08.2026). Die exakte Titel-Suche darueber findet nur identische
+ // Schreibweisen; «Make-up Pinselset, 10-teilig» und «Make-up Pinselset (10-teilig)» sind
+ // fuer sie zwei Produkte. Der Handle-Stamm ist derselbe — automation/cj_dublette.mjs.
+ const dublette=await dubletteFinden(sgql,st,title);
+ if(dublette){console.log('  skip(dup-handle)',title.slice(0,40),'≈',String(dublette).slice(0,40));continue;}
+ slugMerken(title);
  const r=await sgql(st,SET,{i:input}); const e=r.data?.productSet?.userErrors||[]; const pid=r.data?.productSet?.product?.id;
  if(e.length||!pid){console.log('  ✗',title.slice(0,30),JSON.stringify(e).slice(0,80));continue;}
  const media=imgs.slice(1).map((u,i)=>({originalSource:u,mediaContentType:'IMAGE',alt:(title+' – Bild '+(i+2)+' | LuxeStyle').slice(0,120)}));
