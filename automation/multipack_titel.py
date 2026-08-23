@@ -34,14 +34,73 @@ LEDGER = "dropship/_multipack_titel.txt"
 # schlimmer als gar keine.
 MENGE = re.compile(r'(?:Verkauf\s+in\s+B[üu]ndeln\s+zu|Lieferumfang\s*:?|Beutel\s+à|Set\s+à|'
                    r'Packung\s+(?:mit|à)|Inhalt\s*:?)\s*(\d{1,4})\s*(?:St[üu]ck|Stk)\b', re.I)
+# ⚠️ 23.08.2026 — ZWEI WEITERE KLASSEN aus dem Katalog-Audit §1.8.
+# (a) «Dose à N Stück» und «Lieferumfang: N Sets» — die Reparatur vom 26.07. kannte nur
+#     «Beutel à». Der wertvollste Fall ist ein Besteckset mit «Lieferumfang: 50 Sets»:
+#     als «· 50 Sets» schreiben, NICHT «50 Stück» — das wären 200 Teile.
+# (b) «N-teilig» bei Produkten, die sich im Titel «Set» nennen, ohne die Teilezahl zu
+#     nennen. ⚠️ NUR, wenn im ganzen Text GENAU EINE Teilezahl steht. Bei 19 von 64
+#     Kandidaten ist sie eine Auswahl («4-, 6-, 8- oder 14-teilig») oder ein Bauteil
+#     («60-teiliges Schraubendreher-Set INNERHALB eines Reparatur-Sets») — eine Titelzahl
+#     wäre dort eine Falschaussage im Google-Feed.
+DOSE = re.compile(r'(?:Dose|Box|Glas|Eimer|Karton)\s+à\s*(\d{1,4})\s*(?:St[üu]ck|Stk)\b', re.I)
+SETS = re.compile(r'Lieferumfang\s*:?\s*(\d{1,4})\s*Sets?\b', re.I)
+TEILIG = re.compile(r'(\d{1,3})\s*[- ]?teilig', re.I)
+# ⚠️ HARTER STOPP. Zwei CH-Lager-Artikel tragen «Lieferumfang: 1 Stück» UND «📦 Verkauf in
+# Bündeln zu 10 Stück» — Letzteres ist eine Fortura-Grosshandelsnotiz zur Gebindegrösse,
+# die Bilder zeigen EINEN Stab. Heute rettet uns nur die Reihenfolge im Text (der
+# Lieferumfang steht zufällig zuerst). Wer «· 10 Stück» schreibt, verspricht das Zehnfache.
+EINZELSTUECK = re.compile(r'Lieferumfang\s*:?\s*1\s*(?:St[üu]ck|Stk)\b', re.I)
+IST_SET = re.compile(r'\bSets?\b', re.I)
+
 # Trägt der Titel die Menge schon, ist nichts zu tun.
-SCHON_DA = re.compile(r'·\s*\d+\s*St|\d+\s*St[üu]ck|\d+[- ]?teilig|\d+er[- ]?(?:Set|Pack|Packung)|'
+# ⚠️ 23.08.2026 erweitert. Der Probelauf wollte «… – 196 Teile, Sportwagen» zu
+# «· 196-teilig» ergaenzen und «…, 100 Stk.» zu «· 100 Stück» — die Zahl stand jeweils
+# schon da, nur in einer Schreibweise, die dieses Muster nicht kannte. Eine doppelte
+# Mengenangabe im Titel ist schlimmer als keine.
+SCHON_DA = re.compile(r'·\s*\d+\s*St|\d+\s*St[üu]ck|\d+\s*Stk\b|\d+[- ]?teilig|'
+                      r'\d+\s*Teile\b|\d+\s*[- ]?in[- ]?1\b|\d+\s*Sets?\b|'
+                      r'\d+er[- ]?(?:Set|Pack|Packung)|'
                       r'\bSet\s+à\s*\d+|\(\s*\d+\s*(?:St|x)\b', re.I)
 # ⚠️ «Ballonhose», «Ballonärmel» und «Weinglas» sind Fashion- und Glaswörter, keine Mengen —
 # an genau dieser Verwechslung hing der Lauf vom 26.07. Hier wird ohnehin nur der
 # Beschreibungstext ausgewertet, aber die Zahl muss plausibel sein.
 def plausibel(n):
     return 2 <= n <= 500
+
+
+def norm(w):
+    return (w.lower().replace("ä", "a").replace("ö", "o").replace("ü", "u")
+            .replace("ß", "ss"))
+
+
+def teilezahl(html, titel):
+    """Teilezahl NUR, wenn sie diesem Produkt gehört und eindeutig ist.
+
+    Zwei Fehlgriffe des Probelaufs, beide echt und beide teuer:
+    · «36-, 38-, 39- oder 41-teiliges Set» — eine AUSWAHL. Das Muster findet nur die 41
+      (nur dort steht «teilig»), die Eindeutigkeitsprüfung sah also einen sauberen Fall.
+      Erkannt wird die Aufzählung deshalb an der Form «N-, N…» VOR dem Treffer.
+    · «Das 60-teilige Schraubendreher-Set» in einem «Reparatur-Set für Elektronik» — die
+      Zahl gehört einem BAUTEIL. Deshalb muss auf «N-teilig» ein Wort folgen, das auch im
+      Titel steht; «Handtuchhalter-Set» und «Boston Shaker Set» bestehen das, «Schrauben-
+      dreher-Set» nicht.
+    """
+    titelworte = {norm(w) for w in re.findall(r'[A-Za-zÄÖÜäöüß]{5,}', titel)}
+    treffer = set()
+    for m in TEILIG.finditer(html):
+        davor = html[max(0, m.start() - 40):m.start()]
+        if re.search(r'\d+\s*[-–]\s*,|\d+\s*[-–]\s*(?:oder|bis)\b', davor):
+            return None                       # Auswahl, keine feste Menge
+        danach = html[m.end():m.end() + 48]
+        if not any(norm(w) in titelworte
+                   for w in re.findall(r'[A-Za-zÄÖÜäöüß]{5,}', danach)):
+            continue                          # gehoert einem Bauteil, nicht dem Produkt
+        treffer.add(int(m.group(1)))
+    if len(treffer) != 1:
+        return None
+    z = treffer.pop()
+    return z if 2 <= z <= 200 else None
 
 
 def gql(q, v=None):
@@ -67,19 +126,50 @@ def main():
     aufgaben = []
     for zeile in open(EXPORT):
         p = json.loads(zeile)
-        if p["status"] != "ACTIVE":
+        # Ein Bulk-Export mischt Produkt-, Varianten- und Publikationszeilen. Nur die
+        # Produktzeilen tragen `status` — alles andere wird uebersprungen.
+        if p.get("status") != "ACTIVE" or "title" not in p:
             continue
         t = p["title"]
-        if SCHON_DA.search(t):
+        # ⚠️ Der frische Export trägt das Feld `description`, der alte `descriptionHtml`.
+        # Wer nur eines liest, bekommt bei der falschen Quelle lautlos «0 Kandidaten».
+        html = re.sub(r'<[^>]+>', ' ',
+                      p.get("descriptionHtml") or p.get("description") or "")
+        if EINZELSTUECK.search(html):
+            continue                          # Einzelstueck — jede Buendelzahl ist Gebinde
+        n = einheit = None
+        # ⚠️ «Sets» ZUERST. Das Besteckset sagt «Lieferumfang: 50 Sets📦 Verkauf in Bündeln
+        # zu 50 Stück» — greift das Stück-Muster zuerst, entsteht «· 50 Stück», und das
+        # sind 200 Teile. Die genauere Einheit hat Vorrang vor der allgemeineren.
+        if SETS.search(html):
+            n, einheit = int(SETS.search(html).group(1)), "Sets"
+        elif MENGE.search(html) or DOSE.search(html):
+            m = MENGE.search(html) or DOSE.search(html)
+            n, einheit = int(m.group(1)), "Stück"
+        elif IST_SET.search(t):
+            n, einheit = teilezahl(html, t), None
+            if n:
+                einheit = "teilig"
+        if n is None or not plausibel(n):
             continue
-        html = re.sub(r'<[^>]+>', ' ', p.get("descriptionHtml") or "")
-        m = MENGE.search(html)
-        if not m:
+        # ⚠️ SCHON_DA gilt NICHT fuer «Sets». Das «Besteckset aus Holz, 4-teilig» wurde
+        # dadurch uebersprungen — die 4 sind die Teile JE Set, geliefert werden 50 Sets
+        # (also 200 Teile). Eine vorhandene Zahl anderer Bedeutung ist keine Mengenangabe.
+        if einheit != "Sets" and SCHON_DA.search(t):
             continue
-        n = int(m.group(1))
-        if not plausibel(n):
+        # ⚠️ Universelle Wache gegen die doppelte Angabe: Steht die ZAHL schon irgendwo im
+        # Titel, ist die Menge dort bereits ausgedrueckt — «24er Make-up Pinsel-Set»,
+        # «38-in-1 Schraubenzieher-Set», «… – 196 Teile». Jede Schreibweise einzeln ins
+        # Muster zu schreiben, hat im Probelauf dreimal nicht gereicht.
+        if re.search(r'(?<!\d)' + str(n) + r'(?!\d)', t):
             continue
-        neu = f"{t} · {n} Stück"
+        # Bei kleinen Sets zaehlt der Titel die Teile oft schon auf: «Herren-Set «Costa» ·
+        # Kapuzen-Shirt + Jogger», «Schmuck-Set «Trio» · 925 Silber (Kette · Ohrringe ·
+        # Armband)». Ein «· 2-teilig» dahinter erklaert nichts mehr und macht den Titel nur
+        # laenger — die Hausregel zielt auf Buendel, die wie EIN Stueck AUSSEHEN.
+        if einheit == "teilig" and n <= 4 and re.search(r'[+&(]', t):
+            continue
+        neu = f"{t} · {n}-teilig" if einheit == "teilig" else f"{t} · {n} {einheit}"
         if len(neu) > 255:
             continue
         aufgaben.append((p["id"], t, neu, n,
@@ -87,7 +177,7 @@ def main():
 
     print(f"Bündel ohne Stückzahl im Titel: {len(aufgaben)}", flush=True)
     for _, t, neu, n, preis in sorted(aufgaben, key=lambda x: -x[3])[:16 if DRY else 6]:
-        print(f"   CHF {preis:>6.2f}  {t[:44]:<46} → «… · {n} Stück»", flush=True)
+        print(f"   CHF {preis:>6.2f}  {t[:44]:<46} → «{neu[-24:]}»", flush=True)
     if DRY or not aufgaben:
         return
 
