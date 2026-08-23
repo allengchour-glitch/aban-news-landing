@@ -1198,7 +1198,23 @@ Nach der Grössen-Reparatur fielen zwei weitere Klassen im selben Feld auf:
    «Amber-30X50cm». Die Kundin sieht neun Einträge im Farb-Dropdown und kann nicht ahnen,
    dass sich vier davon nur in der Ringgrösse unterscheiden. `automation/mass_im_farbwert.py`
    legt eine ZWEITE Option an («Grösse» · «Speicher» · «Inhalt») — es löscht nichts, jede
-   Variante behält ihre Angabe in zwei Feldern statt in einem.
+   Variante behält ihre Angabe in zwei Feldern statt in einem. **105 Produkte getrennt**
+   (70× Grösse, 20× Speicher, 15× Inhalt), 0 Kollisionen.
+3. **Dasselbe Mass in JEDEM Farbwert** («Blue-30X30cm · Yellow-30X30cm · Green-30X30cm»,
+   83 Produkte). Das ist keine Wahl, sondern eine Produkteigenschaft — sie steht in jedem
+   Dropdown-Eintrag im Weg und gehört in den TITEL. **76 Produkte** bereinigt, live:
+   «Kugeliges Zierkissen im nordischen Stil · 30 × 30 cm», Farbliste 7 saubere Werte.
+   ⚠️ **Ohne Einheit wird nichts in den Titel geschrieben.** «45x45» ist bei einem
+   Kissenbezug fast sicher Zentimeter — «fast sicher» ist die Sorte Vermutung, an der dieses
+   Projekt schon Geld verloren hat. Diese 6 bleiben unberührt: hässlich, aber wahr.
+
+**DIE GEGENPROBE, die diesen ganzen Tag absichert** — frischer Bulk-Export vorher/nachher:
+vorher 45'860 Produkte / 386'600 Varianten · nachher 46'724 / 395'479 ·
+**Produkte mit WENIGER Varianten: 0**. Damit ist belegt, dass keines der drei Werkzeuge
+irgendwo Varianten verschmolzen hat — genau das Risiko, gegen das die Kollisionswachen
+gebaut sind. Vorher hatte ich nur Stichproben, und eine Stichprobe beweist bei 45'000
+Produkten nichts. **Wer massenhaft an Optionswerten schreibt, zählt hinterher die
+Varianten — vollständig, nicht stichprobenweise.**
 - ⚠️ **`productOptionsCreate(variantStrategy: CREATE)` legt das KARTESISCHE PRODUKT an.**
   Bei einem Kissenbezug mit 21 Farben × 4 Massen wären aus 21 echten Varianten **84**
   geworden — erfundene Ware, die es beim Lieferanten nicht gibt, mit leeren SKUs und
