@@ -7322,6 +7322,172 @@ function updBrunnen(dt,now){var B=window._brunnen;if(!B)return;
     if(sq.mesh.visible&&Math.hypot(sq.x-B.x,sq.z-B.z)<3.4){B.cd=25;
       sims.forEach(function(s2){s2.needs.spass=Math.min(100,s2.needs.spass+14);});
       if(typeof hearts==="function")hearts(B.x,B.z);simEmoji(sq,"✨");beep(720,.08,"sine",.04);hint("⛲ Erfrischung am Brunnen! +Laune");if(MPs)netSend({t:"brunnen",si:q});break;}}}}
+/* ═══════════ 🦆 AMBIENTE: Enten, Fahnen, Falter, Nachthimmel ═══════════════════
+   Vier kleine, staendig sichtbare Bewegungen — zusammen unter zehn Zeichenaufrufe:
+   * ENTEN auf dem Seepark-See (3 InstancedMesh fuer 5 Enten). Wer ans Ufer tritt,
+     lockt sie an — Brunnen-Muster: Host entscheidet, Gast bekommt die Nachricht.
+     Zaehlt fuer Tages-Mission und Erfolg (stats.enten).
+   * FAHNEN mit echtem Wellen im Stoff (Vertex-Sinus), Windstaerke haengt am Wetter.
+     Standorte OHNE Bodenabdruck: Spitze des Aussichtsturms (window._turm) und Dach
+     des Spielstands am Sportplatz — kein freiPlatz-Risiko, nichts kann kollidieren.
+   * FALTER tags ueber den Wiesen (1 InstancedMesh, 22 Stueck), Fluegelschlag ueber
+     die X-Skalierung der Instanzmatrix.
+   * NACHTS Gluehwuermchen im Seepark (1 Points) und alle 14…40 s eine Sternschnuppe.
+   ⚠️ Alles nieAusblenden (der Sichtbarkeits-Index wird EINMAL gebaut und kennt spaete
+   Objekte nicht) — nur die Sternschnuppe bewegt ihr Objekt selbst und traegt _bewegt,
+   alle anderen animieren Instanzmatrizen oder Vertices bei stehender Objektmatrix,
+   die darf _einfrieren() gefahrlos einfrieren. */
+var ENTEN=(function(){
+  var N=5,SEE={x:0,z:146};
+  var teile=[new THREE.InstancedMesh(new THREE.SphereGeometry(0.30,8,6),new THREE.MeshStandardMaterial({color:0xf2ead2,roughness:0.8}),N),
+             new THREE.InstancedMesh(new THREE.SphereGeometry(0.15,7,6),new THREE.MeshStandardMaterial({color:0x3f7a3a,roughness:0.7}),N),
+             new THREE.InstancedMesh(new THREE.ConeGeometry(0.07,0.16,5),new THREE.MeshStandardMaterial({color:0xe8a13a,roughness:0.6}),N)];
+  teile.forEach(function(t){t.userData.nieAusblenden=true;t.castShadow=true;scene.add(t);});
+  var enten=[];
+  for(var i=0;i<N;i++)enten.push({a:i/N*6.283,r:4.5+i*1.3,sp:(0.10+0.05*(i%3))*(i%2?1:-1),x:SEE.x,z:SEE.z,rot:0});
+  return {SEE:SEE,teile:teile,enten:enten,ziel:null,zielT:0,cd:6};
+})();
+function updEnten(dt,now){
+  var E=ENTEN,q9=new THREE.Quaternion(),eu=new THREE.Euler(),M=new THREE.Matrix4(),
+      P=new THREE.Vector3(),SC=new THREE.Vector3();
+  if(E.zielT>0)E.zielT-=dt;
+  for(var i=0;i<E.enten.length;i++){var en=E.enten[i];
+    if(E.ziel&&E.zielT>0){
+      /* zum Ufer schwimmen — aber IM Wasser bleiben (See-Rand liegt bei ~11…16) */
+      var zx=E.ziel.x-E.SEE.x,zz=E.ziel.z-E.SEE.z,zl=Math.hypot(zx,zz)||1;
+      var tx=E.SEE.x+zx/zl*Math.min(10.5,zl),tz=E.SEE.z+zz/zl*Math.min(10.5,zl);
+      var dx=tx-en.x+Math.sin(i*2.1)*0.9,dz=tz-en.z+Math.cos(i*1.7)*0.9,dl=Math.hypot(dx,dz);
+      if(dl>0.4){en.x+=dx/dl*1.5*dt;en.z+=dz/dl*1.5*dt;en.rot=Math.atan2(dx,dz);}
+      en.a=Math.atan2(en.z-E.SEE.z,en.x-E.SEE.x);en.r=Math.hypot(en.x-E.SEE.x,en.z-E.SEE.z);
+    }else{
+      en.a+=en.sp*dt;
+      en.x=E.SEE.x+Math.cos(en.a)*en.r;en.z=E.SEE.z+Math.sin(en.a)*en.r;
+      en.rot=Math.atan2(Math.cos(en.a)*(en.sp>0?1:-1),-Math.sin(en.a)*(en.sp>0?1:-1));
+    }
+    var bob=Math.sin(now*0.003+i*1.9)*0.03,sr=Math.sin(en.rot),cr=Math.cos(en.rot);
+    eu.set(0,en.rot,0);q9.setFromEuler(eu);
+    P.set(en.x,0.24+bob,en.z);SC.set(1,0.85,1.3);M.compose(P,q9,SC);E.teile[0].setMatrixAt(i,M);
+    P.set(en.x+sr*0.30,0.50+bob,en.z+cr*0.30);SC.set(1,1,1);M.compose(P,q9,SC);E.teile[1].setMatrixAt(i,M);
+    eu.set(1.35,en.rot,0,"YXZ");q9.setFromEuler(eu);
+    P.set(en.x+sr*0.46,0.48+bob,en.z+cr*0.46);M.compose(P,q9,SC);E.teile[2].setMatrixAt(i,M);
+  }
+  E.teile.forEach(function(t){t.instanceMatrix.needsUpdate=true;});
+  /* Fuettern — exakt das Brunnen-Muster: der Host entscheidet, der Gast hoert zu */
+  E.cd-=dt;
+  if((!MPs||mpHost)&&E.cd<=0){for(var q=0;q<sims.length;q++){var sq=sims[q];
+    var d9=Math.hypot(sq.x-E.SEE.x,sq.z-E.SEE.z);
+    if(sq.mesh.visible&&d9>12&&d9<17){E.cd=30;E.ziel={x:sq.x,z:sq.z};E.zielT=8;
+      stats.enten=(stats.enten||0)+1;
+      if(typeof hearts==="function")hearts(sq.x,sq.z);simEmoji(sq,"🦆");
+      beep(660,.08,"sine",.04);hint("🦆 Die Enten kommen angeschwommen!");
+      if(MPs)netSend({t:"enten",x:sq.x,z:sq.z,si:q});break;}}}
+}
+var FAHNEN=(function(){
+  function tex(zeichnen){var cv=document.createElement("canvas");cv.width=64;cv.height=40;
+    zeichnen(cv.getContext("2d"));var t=new THREE.CanvasTexture(cv);return t;}
+  var stadt=tex(function(c){c.fillStyle="#2f6fb8";c.fillRect(0,0,64,40);
+    c.fillStyle="#fff";c.fillRect(24,18,16,12);
+    c.beginPath();c.moveTo(20,18);c.lineTo(32,8);c.lineTo(44,18);c.closePath();c.fill();});
+  var sport=tex(function(c){for(var i=0;i<4;i++){c.fillStyle=i%2?"#fff":"#2e8b45";c.fillRect(0,i*10,64,10);}});
+  var F={liste:[],stadt:stadt,sport:sport,sportOk:false,turmOk:false};
+  F.fahne=function(x,y,z,t,b,h){
+    var mast=new THREE.Mesh(new THREE.CylinderGeometry(0.035,0.05,1.5+h,6),stdMat(0x4a4f55,0.5));
+    mast.position.set(x,y+(1.5+h)/2,z);mast.userData.nieAusblenden=true;scene.add(mast);
+    var g=new THREE.PlaneGeometry(b,h,8,3);g.translate(b/2,0,0);
+    var m=new THREE.Mesh(g,new THREE.MeshStandardMaterial({map:t,side:THREE.DoubleSide,roughness:0.85}));
+    m.position.set(x+0.05,y+1.5+h/2-0.15,z);m.userData.nieAusblenden=true;scene.add(m);
+    F.liste.push({g:g,b:b,basis:g.attributes.position.array.slice(),ph:F.liste.length*2.4});
+  };
+  return F;
+})();
+function updFahnen(dt,now){
+  var F=FAHNEN;
+  /* Spaet bauen: der Spielstand steht sofort fest, der Turm existiert erst,
+     wenn sein GLB geladen ist und window._turm gesetzt hat. */
+  if(!F.sportOk){F.fahne(53,5.65,180.4,F.sport,1.5,0.95);F.sportOk=true;}
+  if(!F.turmOk&&window._turm){F.fahne(window._turm.x,window._turm.y+0.1,window._turm.z,F.stadt,1.6,1.0);F.turmOk=true;}
+  var wind=(wetter==="regen"?7:4);
+  for(var f=0;f<F.liste.length;f++){var fl=F.liste[f],pa=fl.g.attributes.position.array,ba=fl.basis;
+    for(var v=0;v<pa.length;v+=3){var u=ba[v]/fl.b;
+      pa[v+2]=Math.sin(u*4-now*0.004*wind+fl.ph)*0.16*u;
+      pa[v+1]=ba[v+1]+Math.sin(u*3-now*0.005*wind+fl.ph)*0.05*u;}
+    fl.g.attributes.position.needsUpdate=true;}
+}
+var FALTER=(function(){
+  var N=22,im=new THREE.InstancedMesh(new THREE.PlaneGeometry(0.34,0.26),
+    new THREE.MeshBasicMaterial({color:0xe8973a,side:THREE.DoubleSide}),N);
+  im.userData.nieAusblenden=true;scene.add(im);
+  var sd=11,rnd=function(){sd=(sd*16807)%2147483647;return sd/2147483647;},L=[];
+  while(L.length<N){
+    var x=(rnd()-0.5)*200,z=(rnd()-0.5)*200;
+    if(Math.hypot(x,z)>105)continue;
+    if(Math.hypot(x,z-146)<22)continue;              /* See */
+    if(z>-100&&z<-82&&x<82)continue;                 /* Fluss */
+    L.push({hx:x,hz:z,x:x,z:z,y:0.7+rnd()*0.8,a:rnd()*6.283,ph:rnd()*6.283,sp:0.5+rnd()*0.5});
+  }
+  return {im:im,L:L};
+})();
+function updFalter(dt,now){
+  var hh=uhrzeit/60,d=Math.max(0,Math.sin((hh-5.75)/14*Math.PI));
+  var an=d>0.2&&wetter!=="regen"&&wetter!=="schnee";
+  if(FALTER.im.visible!==an)FALTER.im.visible=an;
+  if(!an)return;
+  var M=new THREE.Matrix4(),q9=new THREE.Quaternion(),eu=new THREE.Euler(),
+      P=new THREE.Vector3(),SC=new THREE.Vector3();
+  for(var i=0;i<FALTER.L.length;i++){var b=FALTER.L[i];
+    b.a+=Math.sin(now*0.0007+b.ph)*0.05;
+    if(Math.hypot(b.x-b.hx,b.z-b.hz)>6)b.a=Math.atan2(b.hx-b.x,b.hz-b.z);
+    b.x+=Math.sin(b.a)*b.sp*dt;b.z+=Math.cos(b.a)*b.sp*dt;
+    var fl=0.3+Math.abs(Math.sin(now*0.02+b.ph))*0.7;
+    eu.set(-0.3,b.a,0);q9.setFromEuler(eu);
+    P.set(b.x,b.y+Math.sin(now*0.004+b.ph)*0.25,b.z);SC.set(fl,1,1);
+    M.compose(P,q9,SC);FALTER.im.setMatrixAt(i,M);}
+  FALTER.im.instanceMatrix.needsUpdate=true;
+}
+var NACHT=(function(){
+  var n=36,pos=new Float32Array(n*3),basis=[];
+  var sd=29,rnd=function(){sd=(sd*16807)%2147483647;return sd/2147483647;};
+  for(var i=0;i<n;i++){var x=-24+rnd()*48,z=118+rnd()*54,y=0.4+rnd()*1.3;
+    pos[i*3]=x;pos[i*3+1]=y;pos[i*3+2]=z;basis.push([x,y,z,rnd()*6.283]);}
+  var g=new THREE.BufferGeometry();g.setAttribute("position",new THREE.BufferAttribute(pos,3));
+  var wm=new THREE.Points(g,new THREE.PointsMaterial({color:0xd8ff9a,size:0.34,map:rauchTex,
+    transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false}));
+  wm.userData.nieAusblenden=true;wm.frustumCulled=false;wm.visible=false;scene.add(wm);
+  var st=new THREE.Mesh(new THREE.PlaneGeometry(4,0.1),
+    new THREE.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:0,fog:false,
+      blending:THREE.AdditiveBlending,depthWrite:false}));
+  st.visible=false;st._bewegt=true;st.userData.nieAusblenden=true;st.frustumCulled=false;scene.add(st);
+  return {wm:wm,g:g,basis:basis,st:st,v:new THREE.Vector3(),lauf:0,naechste:16,frame:0};
+})();
+function updNachtHimmel(dt,now){
+  var N9=NACHT,hh=uhrzeit/60,d=Math.max(0,Math.sin((hh-5.75)/14*Math.PI));
+  var zielO=(d<0.08&&wetter!=="regen")?0.8:0;
+  var mo=N9.wm.material;mo.opacity+=(zielO-mo.opacity)*Math.min(1,dt*1.5);
+  N9.wm.visible=mo.opacity>0.03;
+  if(N9.wm.visible&&!((++N9.frame)&1)){
+    var pa=N9.g.attributes.position.array;
+    for(var i=0;i<N9.basis.length;i++){var b=N9.basis[i];
+      pa[i*3]=b[0]+Math.sin(now*0.0006+b[3])*1.2;
+      pa[i*3+1]=b[1]+Math.sin(now*0.0011+b[3]*2)*0.3;
+      pa[i*3+2]=b[2]+Math.cos(now*0.0005+b[3])*1.2;}
+    N9.g.attributes.position.needsUpdate=true;
+    mo.size=0.26+Math.abs(Math.sin(now*0.005))*0.16;
+  }
+  if(d<0.03){
+    if(N9.lauf>0){N9.lauf-=dt;
+      N9.st.position.addScaledVector(N9.v,dt);
+      N9.st.material.opacity=Math.max(0,Math.min(1,N9.lauf*1.6));
+      if(N9.lauf<=0)N9.st.visible=false;
+    }else{N9.naechste-=dt;
+      if(N9.naechste<=0){N9.naechste=14+Math.random()*26;
+        var az=Math.random()*6.283;
+        N9.st.position.set(camTx+Math.cos(az)*230,150+Math.random()*60,camTz+Math.sin(az)*230);
+        N9.v.set(Math.cos(az+2.4)*110,-32,Math.sin(az+2.4)*110);
+        var vn=N9.v.clone().normalize();
+        N9.st.quaternion.setFromUnitVectors(new THREE.Vector3(1,0,0),vn);
+        N9.st.material.opacity=0;N9.st.visible=true;N9.lauf=1.4;}}
+  }else if(N9.st.visible){N9.st.visible=false;N9.lauf=0;}
+}
 // ===================== Katalog =====================
 var GL=THREE.GLTFLoader?new THREE.GLTFLoader():null;
 var MODELS={};
@@ -7486,7 +7652,8 @@ var ACH=[
  ["abnahme1","📋","Abgenommen","Die erste Bauabnahme bestanden",function(){return wohnstufe>=1;}],
  ["abnahme3","🏰","Traumvilla","Wohnstufe Traumvilla erreicht",function(){return wohnstufe>=3;}],
  ["abnahme5","👑","Palastherr","Hoechste Wohnstufe erreicht",function(){return wohnstufe>=5;}],
- ["missmeister","🔥","Serien-Meister","3 Tage in Folge alle Tages-Missionen",function(){return missSerie+(missHeute&&missHeute.bonus?1:0)>=3;}]
+ ["missmeister","🔥","Serien-Meister","3 Tage in Folge alle Tages-Missionen",function(){return missSerie+(missHeute&&missHeute.bonus?1:0)>=3;}],
+ ["enten","🦆","Entenfreund","Die Enten am See besucht",function(){return (stats.enten||0)>=1;}]
 ];
 function hausWert(){var w=0;
   furn.forEach(function(f9){w+=Math.round(f9.def.cost*(1+0.6*((f9.lv||1)-1)));});
@@ -7546,7 +7713,10 @@ var MISS_POOL=[
  ["🪑","Stelle {n} Möbel auf",3,function(){return stats.moebelGekauft||0;}],
  ["🎸","Spiele 1 perfekte Strassenmusik-Show",1,function(){return stats.buskPerfekt||0;}],
  ["😮","Mache {n} Emotes",4,function(){return window._emoteCount||0;}],
- ["🏅","Bestehe 1 Bauabnahme",1,function(){return stats.abnahmen||0;}]
+ ["🏅","Bestehe 1 Bauabnahme",1,function(){return stats.abnahmen||0;}],
+ /* ⚠️ NUR ANS ENDE anfuegen: missHeute speichert den Pool-INDEX im Spielstand —
+    wer mittendrin einfuegt, verdreht die Missionen aller alten Saves. */
+ ["🦆","Besuche die Enten am See",1,function(){return stats.enten||0;}]
 ];
 function missNeu(){
   if(MPs&&!mpHost)return;
@@ -8135,6 +8305,9 @@ function onNetMsg(m){
   else if(m.t==="coupBeute"&&!mpHost){COUP.beute=m.v|0;} /* 🩹 Schwarm-4: Gast zeigt die Host-Beute im Coup-HUD */
   else if(m.t==="coasterStart"){var C9=window._coaster;if(C9&&!C9.faehrt){C9.faehrt=true;C9.v=5;C9.t=0;C9.runden=0;}}
   else if(m.t==="coaster"&&!mpHost){var C8=window._coaster;if(C8){C8.t=m.tt;C8.v=m.v;C8.faehrt=true;}}
+  else if(m.t==="enten"&&!mpHost){ENTEN.ziel={x:m.x,z:m.z};ENTEN.zielT=8;
+    if(typeof hearts==="function")hearts(m.x,m.z);if(sims[m.si])simEmoji(sims[m.si],"🦆");
+    beep(660,.08,"sine",.04);hint("🦆 Die Enten kommen angeschwommen!");}
   else if(m.t==="brunnen"&&!mpHost){var B9=window._brunnen;if(B9)hearts(B9.x,B9.z);if(sims[m.si])simEmoji(sims[m.si],"✨");beep(720,.08,"sine",.04);hint("⛲ Erfrischung am Brunnen! +Laune");}
   else if(m.t==="pickup"&&pickups[m.i]){pickups[m.i].active=m.on;pickups[m.i].mesh.visible=m.on;}
   else if(m.t==="hallo"&&mpHost){
@@ -10979,7 +11152,7 @@ function loop(now){
       _ws.material.opacity+=(_zielO-_ws.material.opacity)*Math.min(1,dt*0.8);
       _ws.visible=_ws.material.opacity>0.02;
     }
-    updHearts(dt);updPlopps(dt);updWetter(dt);updVerkehr(dt);updLandbus(dt);updHafen(dt,now);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);updVerstecken(dt);updTrag(dt);updBankLeute(dt);updFest(dt,now);updImmo(dt);
+    updHearts(dt);updPlopps(dt);updWetter(dt);updVerkehr(dt);updLandbus(dt);updHafen(dt,now);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);updVerstecken(dt);updTrag(dt);updBankLeute(dt);updFest(dt,now);updImmo(dt);updEnten(dt,now);updFahnen(dt,now);updFalter(dt,now);updNachtHimmel(dt,now);
     document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("minimap").style.display=(running&&!buildMode)?"block":"none";
     /* 🩹 Schwarm-6: lief JEDEN Frame mit getComputedStyle/getBoundingClientRect
