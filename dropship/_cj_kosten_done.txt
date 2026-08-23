@@ -857,3 +857,4 @@ gid://shopify/Product/15446064464257	CHF 24.63	2 Varianten	Glitzerndes Highlight
 gid://shopify/Product/15446064726401	CHF 24.72	1 Varianten	Kurkuma & Kojisäure Reinigungspads
 gid://shopify/Product/15446065021313	CHF 23.95	2 Varianten	Photon Gesichts- und Augenmassagegerät
 gid://shopify/Product/15446065611137	CHF 24.25	1 Varianten	Augenpflege-Schlafmaske mit Wärme & Massage
+gid://shopify/Product/15446065873281	CHF 19.51	4 Varianten	Sonnenschutz-Gesichtsmaske mit Krempe
