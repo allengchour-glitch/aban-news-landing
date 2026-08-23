@@ -894,3 +894,6 @@ gid://shopify/Product/15510310125953	ok	Faltbarer, blattloser Ventilator
 gid://shopify/Product/15510332572033	nicht-versendbar	Autom. verstellbare Hantel für Home-Fitness
 gid://shopify/Product/15510332866945	nicht-versendbar	Multifunktionales 6-in-1 Hantelset
 gid://shopify/Product/15510332375425	nicht-versendbar	Verstellbare Hanteln mit Schaumstoff-Verbindungsstange
+gid://shopify/Product/15510332277121	ok	Multifunktionale Türreckstange für Zuhause
+gid://shopify/Product/15510320611713	ok	Wellenförmige Glas-Obstschale
+gid://shopify/Product/15510333456769	nicht-versendbar	Hula Hoop für Indoor-Training, 4.5 kg
