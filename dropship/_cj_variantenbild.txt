@@ -989,3 +989,6 @@ gid://shopify/Product/15448019796353	zugeordnet	2	Gestricktes Langarmhemd mit Fa
 gid://shopify/Product/15448019927425	zugeordnet	30	Samt-Langarmbluse mit V-Ausschnitt
 gid://shopify/Product/15448020091265	zugeordnet	12	Muschel-Muster Strand-Cover-up mit Fransenärmeln
 gid://shopify/Product/15448020255105	zugeordnet	25	Samt Off-Shoulder Langarmshirt
+gid://shopify/Product/15448020418945	zugeordnet	12	Vintage Slim-Fit Top mit Froschknöpfen
+gid://shopify/Product/15448020746625	zugeordnet	50	V-Neck Langarmshirt mit 3D-Effekt
+gid://shopify/Product/15448020943233	zugeordnet	20	V-Ausschnitt Top mit Ballonärmeln
