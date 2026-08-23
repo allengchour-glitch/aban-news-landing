@@ -10149,3 +10149,4 @@ gid://shopify/Product/15500402000257	63->0	Reflektierender Westen
 gid://shopify/Product/15500402295169	9->0	Hündchen-Perlenkette
 gid://shopify/Product/15500409078145	10->1	Retro Lederarmband für Männer
 gid://shopify/Product/15500409241985	45->0	Digitaler Gemälde-Rahmen
+gid://shopify/Product/15500409700737	189->0	Digitalgemälde auf Leinwand
