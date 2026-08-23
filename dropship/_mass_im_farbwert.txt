@@ -103,3 +103,4 @@
 15480830722433	getrennt:Speicher:3	Mini USB-Stick mit Cartoon-Anhänger
 15483933294977	getrennt:Inhalt:6	Wasserdichte Tarnmuster-Tasche
 15483933360513	getrennt:Grösse:4	Hundematte mit Motiv
+15447623958913	einheitlich:30X30cm	Kugeliges Zierkissen im nordischen Stil

@@ -104,7 +104,11 @@ def zerlegen(werte):
             # Wache 1: «001-1» ist eine Modellnummer, keine Ringgrösse.
             return None, "blosse Zahl, aber vorderer Teil ist keine Farbe"
         if len({m for _, m in teile.values()}) < 2:
-            return None, "nur ein Mass — nichts zu trennen"
+            # ⚠️ NICHT «nichts zu tun». Tragen ALLE Werte dasselbe Mass
+            # («Blue-30X30cm · Yellow-30X30cm · Green-30X30cm»), ist es keine Wahl,
+            # sondern eine Produkteigenschaft — sie steht in jedem einzelnen Eintrag des
+            # Dropdowns im Weg. Sie gehoert in den TITEL, nicht in die Farbwahl.
+            return "EINHEITLICH", teile
         return name, teile
     return None, "nicht alle Werte tragen denselben Anhang"
 
@@ -162,6 +166,60 @@ def main():
             print(f"  ⛔ {p['title'][:50]:50} — {teile}", flush=True)
             continue
         vs = p["variants"]["nodes"]
+
+        if name == "EINHEITLICH":
+            neue = {alt: f for alt, (f, _) in teile.items()}
+            if len(set(neue.values())) != len(neue):
+                uebersprungen += 1
+                print(f"  ⛔ {p['title'][:50]:50} — Farbnamen waeren doppelt", flush=True)
+                continue
+            mass = next(iter({m for _, m in teile.values()}))
+            # ⚠️ Ohne EINHEIT wird nichts in den Titel geschrieben. «45x45» ist bei einem
+            # Kissenbezug fast sicher Zentimeter — «fast sicher» ist genau die Sorte
+            # Vermutung, an der dieses Projekt schon mehrfach Geld verloren hat. Solche
+            # Produkte bleiben unberuehrt; die Angabe steht dann weiter im Farbwert, was
+            # haesslich, aber wahr ist.
+            if not re.search(r'(?:cm|mm|GB|TB|ML|L)$', mass, re.I):
+                uebersprungen += 1
+                print(f"  ⛔ {p['title'][:50]:50} — Mass «{mass}» ohne Einheit, "
+                      f"nicht geraten", flush=True)
+                continue
+            # «30X30cm» → «30 × 30 cm»
+            schoen = re.sub(r'^(\d+)\s*[xX×]\s*(\d+)\s*(cm|mm)$',
+                            r'\1 × \2 \3', mass)
+            schoen = re.sub(r'^(\d+)\s*(GB|TB|ML|L)$', r'\1 \2', schoen, flags=re.I)
+            titel = p["title"]
+            # Die Angabe darf nur verschwinden, wenn sie woanders sichtbar bleibt.
+            zahlen = re.findall(r'\d+', mass)
+            if not all(re.search(r'(?<!\d)' + z + r'(?!\d)', titel) for z in zahlen):
+                titel = f"{p['title']} · {schoen}"
+            print(f"  ✂️ {p['title'][:50]:50} → «{mass}» aus {len(neue)} Farbwerten"
+                  + ("" if titel == p["title"] else " · in den Titel"), flush=True)
+            if DRY:
+                ok += 1; continue
+            eingaben = [{"id": v["id"],
+                         "optionValues": [{"optionName": fopt["name"],
+                                           "name": neue[next(s2["value"] for s2 in
+                                                             v["selectedOptions"]
+                                                             if s2["name"] == fopt["name"])]}]}
+                        for v in vs]
+            r = gql('mutation($p:ID!,$v:[ProductVariantsBulkInput!]!){'
+                    'productVariantsBulkUpdate(productId:$p,variants:$v)'
+                    '{userErrors{field message}}}', {"p": p["id"], "v": eingaben})
+            fe = (((r or {}).get("data") or {}).get("productVariantsBulkUpdate") or {}).get("userErrors")
+            if r is None or fe is None or fe:
+                print(f"       ⚠️ nicht bereinigt: "
+                      f"{json.dumps(fe)[:120] if fe else 'keine Antwort'}")
+                uebersprungen += 1; time.sleep(1); continue
+            if titel != p["title"]:
+                gql('mutation($i:ProductInput!){productUpdate(input:$i)'
+                    '{userErrors{message}}}', {"i": {"id": p["id"], "title": titel[:255]}})
+            ok += 1
+            with open(LEDGER, "a") as f:
+                f.write(f"{pid}\teinheitlich:{mass}\t{p['title'][:60]}\n")
+            time.sleep(0.8)
+            continue
+
         paare, doppelt = set(), None
         for v in vs:
             alt = next((s["value"] for s in v["selectedOptions"]
