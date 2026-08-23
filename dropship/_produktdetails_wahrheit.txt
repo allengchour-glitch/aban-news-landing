@@ -2324,3 +2324,10 @@
 15450523632001	material-floskel-entfernt	Vintage Mary Jane Sandalen
 15450525335937	material-floskel-entfernt	Elegante Mary Jane Sandalen mit eckiger Zehenpartie
 15450526220673	material-floskel-entfernt	Retro Star Damen Sneaker
+15450526613889	material-floskel-entfernt	Plateau-Sneaker für Damen
+15450527105409	material-floskel-entfernt	Atmungsaktive Mesh-Sneaker für Damen
+15450527465857	material-floskel-entfernt	Leichte Mesh-Sneaker mit Klettverschluss
+15450528055681	material-floskel-entfernt	Flache Outdoor-Schuhe mit Schleife
+15450529300865	farbe-floskel-entfernt,material-floskel-entfernt	Keilabsatz-Schuhe für Damen mit Reissverschluss
+15450529726849	material-floskel-entfernt	Britische Slip-on Loafer mit Chunky-Absatz
+15450530546049	farbe-floskel-entfernt,material-floskel-entfernt	Damen Colorblock Freizeit-Sneaker
