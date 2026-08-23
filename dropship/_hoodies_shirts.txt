@@ -1,2 +1,57 @@
 gid://shopify/Product/15412830896513	koll-hoodies	Relaxed-Fit Hoodie «Cosy» – mit Fell-Panel & Kordelzug
 gid://shopify/Product/15430498353537	koll-hoodies	Damen Loungewear-Set «Cozy» · Hoodie + Hose
+gid://shopify/Product/15447952327041	koll-hoodies	Colorblock Raglan Hoodie für Eltern und Kinder
+gid://shopify/Product/15448019665281	koll-hoodies	Zweiteiliger Hoodie & Jogginghosen Trainingsanzug
+gid://shopify/Product/15448092443009	koll-hoodies	Patchwork Hoodie Pullover für Damen
+gid://shopify/Product/15448107254145	koll-hoodies	Puffärmel Sweatshirt für Damen
+gid://shopify/Product/15448107319681	koll-hoodies	Lässiges Cropped Sweatshirt mit Laternenärmeln
+gid://shopify/Product/15448107417985	koll-hoodies	Oversized Hoodie mit Bauchtasche
+gid://shopify/Product/15448107680129	koll-hoodies	Fisoew Crewneck Sweatshirt mit halbem Raglanarm
+gid://shopify/Product/15448107843969	koll-hoodies	Fisoew Cropped Sweatshirt Waffelstrick
+gid://shopify/Product/15448509022593	koll-hoodies	Kapuzenpullover Casual Loose Fit
+gid://shopify/Product/15448520360321	koll-hoodies	PU Faux Leder Hoodie mit Stehkragen
+gid://shopify/Product/15448671355265	koll-hoodies	Karierte Fleece-gefütterte Kapuzenjacke für Damen
+gid://shopify/Product/15448676663681	koll-hoodies	Gefütterte kurze Kapuzenjacke im Loose Fit
+gid://shopify/Product/15448701731201	koll-hoodies	Kapuzenjacke im American Style für Paare
+gid://shopify/Product/15448797217153	koll-hoodies	Herren Hoodie mit Rundhals, Heavy Water Washed
+gid://shopify/Product/15449058378113	koll-hoodies	Off-Shoulder Rundhals-Sweatshirt für Damen
+gid://shopify/Product/15449059033473	koll-hoodies	Lässiger Kapuzenpullover für Damen
+gid://shopify/Product/15449068306817	koll-hoodies	Herren Kapuzenpullover · Fleece
+gid://shopify/Product/15449068372353	koll-hoodies	Lässiger Hoodie im Zweiteiler-Look für Herren
+gid://shopify/Product/15449102549377	koll-hoodies	Damen Colorblock Sweatshirt, dick gefüttert
+gid://shopify/Product/15449102745985	koll-hoodies	Patchwork Colorblock Raglan-Sweatshirt für Damen
+gid://shopify/Product/15449103499649	koll-hoodies	Starry Puppy Print Hoodie
+gid://shopify/Product/15449110675841	koll-hoodies	Retro Streifen-Hoodie mit Blumen-Stickerei
+gid://shopify/Product/15449110937985	koll-hoodies	Locker sitzendes Baumwoll-Sweatshirt mit Wachsprint
+gid://shopify/Product/15449110970753	koll-hoodies	Hoodie mit Stickerei im New Chinese-Stil
+gid://shopify/Product/15449114313089	koll-hoodies	Strick-Hoodie mit Kapuze für Herren
+gid://shopify/Product/15449114411393	koll-hoodies	Bestickter Kapuzenpullover im chinesischen Stil
+gid://shopify/Product/15449114771841	koll-hoodies	Herren Hoodie im American Style
+gid://shopify/Product/15449114837377	koll-hoodies	Herren Hoodie und Trainerhosen Set
+gid://shopify/Product/15449114935681	koll-hoodies	Rundhals-Hoodie für Herren
+gid://shopify/Product/15449148064129	koll-hoodies	Oversized Kapuzenpullover im American Style
+gid://shopify/Product/15449150030209	koll-hoodies	Kapuzen-Sweatshirt mit Nieten-Design
+gid://shopify/Product/15449150062977	koll-hoodies	Kapuzen-Sweatshirt mit Lochmuster
+gid://shopify/Product/15449150128513	koll-hoodies	Loose-Fit Hoodie mit Sternenhimmel-Muster
+gid://shopify/Product/15449158517121	koll-hoodies	Vielseitiger Hoodie mit langen Ärmeln
+gid://shopify/Product/15449158615425	koll-hoodies	Kapuzen-Sweatshirt im American Streetwear-Stil
+gid://shopify/Product/15449163694465	koll-hoodies	Lässige Kapuzenjacke für Herren
+gid://shopify/Product/15449164054913	koll-hoodies	Grauer Wende-Hoodie mit Reissverschluss
+gid://shopify/Product/15449165496705	koll-hoodies	Sweatshirt mit Rundhals und langen Quasten
+gid://shopify/Product/15449165791617	koll-hoodies	Herren Hoodie mit Fleecefutter
+gid://shopify/Product/15449436619137	koll-hoodies	Casual Sport-Hoodie
+gid://shopify/Product/15449436914049	koll-hoodies	Einfarbiger Reissverschluss-Hoodie
+gid://shopify/Product/15449439437185	koll-hoodies	Winter-Hoodie mit Taschen
+gid://shopify/Product/15449473646977	koll-hoodies	Polo-Hoodie mit Stickerei
+gid://shopify/Product/15449473876353	koll-hoodies	Tiefdruck-Hoodie für Herren
+gid://shopify/Product/15449474924929	koll-hoodies	Suede-Sweatshirt für Herren
+gid://shopify/Product/15449475613057	koll-hoodies	Winddichter Hoodie-Mantel
+gid://shopify/Product/15449569264001	koll-hoodies	Leichter, bügelfreier Hoodie-Cardigan mit seitlichen Taschen
+gid://shopify/Product/15450839777665	koll-hoodies	XXL Hoodie-Decke mit Taschen für Sie & Ihn
+gid://shopify/Product/15452691136897	koll-hoodies	Herren Hoodie-Jacke ohne Ärmel
+gid://shopify/Product/15454004052353	koll-hoodies	Retro-Hoodie mit Stickerei
+gid://shopify/Product/15455522390401	koll-hoodies	Leichte Linen-Hoodie für Herren
+gid://shopify/Product/15455662637441	koll-hoodies	Fleece-linierte Gradienten-Hoodie
+gid://shopify/Product/15459595190657	koll-hoodies	Striped Hoodie · Herren
+gid://shopify/Product/15472059220353	koll-hoodies	Smart Heiz-Hoodie mit Dual-Control
+gid://shopify/Product/15473060479361	koll-hoodies	Damen Hoodie aus Nerzimitat-Fell
