@@ -50,6 +50,11 @@ elif [ "$A" -gt 1 ]; then
   ps -eo pid,etimes,args --no-headers \
     | awk '$3=="bash" && $4 ~ /fixer_keepalive\.sh$/ {print $2, $1}' \
     | sort -n | head -n -1 | awk '{print $2}' | xargs -r kill 2>/dev/null
+  # ⚠️ Der Ueberlebende ist der AELTESTE — und genau der kann der haengende sein. Die
+  # gerade beendete juengere Instanz hat womoeglich eben erst den Herzschlag geschrieben;
+  # ohne diesen Reset saehe ein toter Aufseher zehn Minuten lang gesund aus. Die Uhr
+  # startet deshalb hier neu.
+  date +%s > /tmp/_fixer_herzschlag
 else
   # ⚠️ «Er laeuft» ist nicht «er arbeitet». Der Aufseher schreibt in jeder Runde (alle 120 s)
   # /tmp/_fixer_herzschlag. Ist der aelter als 10 Minuten, haengt er — am 23.08.2026 stand er
