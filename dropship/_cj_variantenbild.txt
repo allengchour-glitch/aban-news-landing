@@ -1081,3 +1081,15 @@ gid://shopify/Product/15448043061633	bild-urls-tot
 gid://shopify/Product/15448110530945	zugeordnet	30	3D-Print Latzhose mit weitem Bein
 gid://shopify/Product/15448668111233	zugeordnet	41	Cape-Jacke mit abstraktem 3D-Weihnachtsdruck
 gid://shopify/Product/15449150620033	zugeordnet	72	Kapuzenpullover mit Reissverschluss & Print
+gid://shopify/Product/15449435210113	zugeordnet	72	Retro Sweatshirt · Damen
+gid://shopify/Product/15449435832705	zugeordnet	99	Damen-Loose-Sweatshirt mit 3D-Digitaldruck
+gid://shopify/Product/15450837778817	zugeordnet	42	Polo-Shirt gestreift mit Reverskragen
+gid://shopify/Product/15453921542529	zugeordnet	14	Digitaldruck-Midi-Rock Damen
+gid://shopify/Product/15454504845697	zugeordnet	23	Herren-Polo mit 3D-Druck-Muster
+gid://shopify/Product/15454644437377	zugeordnet	96	Slim-Fit Strandhemd mit Blumenmuster
+gid://shopify/Product/15455656968577	zugeordnet	21	Herren Casual Sport-Shirt mit Print
+gid://shopify/Product/15476184187265	zugeordnet	90	Hoodie mit 3D Digital Katzen-Print für Paare
+gid://shopify/Product/15478570058113	zugeordnet	35	Retro Jeans mit Flügel-Stickerei & Strass
+gid://shopify/Product/15478585524609	zugeordnet	25	Regenbogen 3D-Hoodie für Damen
+gid://shopify/Product/15493919113601	zugeordnet	27	Modisches Crew-Neck Sweatshirt mit Print
+gid://shopify/Product/15495730266497	zugeordnet	96	Ärmelloses Midikleid mit 3D-Print
