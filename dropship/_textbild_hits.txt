@@ -10206,3 +10206,4 @@ gid://shopify/Product/15449571361153	28->1	Damen Cuff Washed Wide-Leg Crop-Jeans
 gid://shopify/Product/15450061767041	184->0	Atmungsaktive Kletterschuhe
 gid://shopify/Product/15450068189569	24->0	Wasserdichte Wanderschuhe
 gid://shopify/Product/15452688843137	15->0	Retro Streifen-Langrock mit Polo-Kragen & Seitenschlitz
+gid://shopify/Product/15479417700737	54->0	Adapter für Hochdruckreiniger-Schaumlanze
