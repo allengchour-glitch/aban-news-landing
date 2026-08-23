@@ -205,3 +205,5 @@
 15464043217281	getrennt:Grösse:6	Moskitonetz fürs Bett
 15493059838337	einheitlich:M Free Size	Kurzes V-Neck Kleid im Loose-Fit
 15493837914497	getrennt:Grösse:2	Gestreifter Strickpullover mit Cut-Outs
+15493851644289	getrennt:Grösse:2	Strickkleid mit Jacquard-Ärmeln
+15497461137793	getrennt:Grösse:3	Besticktes Halterneck-Top & Weste Set
