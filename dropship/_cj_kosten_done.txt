@@ -693,3 +693,4 @@ gid://shopify/Product/15443245629825	CHF 24.36	1 Varianten	Cluster-Wimpern «Glu
 gid://shopify/Product/15443245662593	CHF 16.57	3 Varianten	Magnetische Wimpern «Natural» mit Clip
 gid://shopify/Product/15443245728129	CHF 24.86	1 Varianten	Selbstklebende 3D-Wimpern · wiederverwendbar
 gid://shopify/Product/15443245760897	CHF 16.90	3 Varianten	Magnetische Wimpern «Set» · natürlich
+gid://shopify/Product/15443495846273	CHF 78.88	8 Varianten	LED-Projektor «Ambiente» · Stimmungslicht
