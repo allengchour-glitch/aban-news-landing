@@ -636,3 +636,15 @@
 15448080974209	farbe-floskel-entfernt	Elegantes Strickkleid mit A-Linie
 15448081006977	farbe-floskel-entfernt,material-floskel-entfernt	Elegantes V-Neck Pullover-Shirt mit Rüschenärmeln
 15448081039745	material-floskel-entfernt	Herz-Strass Langarmshirt mit Mesh-Ärmeln
+15448081072513	material-floskel-entfernt	Rundhals Langarm-Pullover für Damen
+15448081138049	material-floskel-entfernt	Damen-Top mit Rundhals und Polka-Dots
+15448081170817	farbe-floskel-entfernt,material-floskel-entfernt	Elegantes Langarm-Top mit Tweed-Ärmeln
+15448081334657	farbe-floskel-entfernt,material-floskel-entfernt	Retro-Print Langarmbluse
+15448088281473	material-floskel-entfernt	V-Neck Sport-Shirt Kurzarm – Peach
+15448088347009	material-floskel-entfernt	Sport-Top mit starkem Halt und Polsterung
+15448092344705	farbe-floskel-entfernt,material-floskel-entfernt	Langarmshirt mit Polka Dots
+15448092475777	material-floskel-entfernt	Langarmshirt im Post-Apokalypse-Stil
+15448092574081	material-floskel-entfernt	Lyocell Off-Shoulder Langarmshirt
+15448092672385	live-schon-sauber	Milchseide Langarmshirt mit eckigem Ausschnitt
+15448092705153	farbe-floskel-entfernt	Rotes Langarmshirt mit Spitze
+15448092770689	farbe-floskel-entfernt,material-floskel-entfernt	Langarmshirt mit Blumenprint für Damen
