@@ -937,3 +937,15 @@ gid://shopify/Product/15446271197569	CHF 18.55	1 Varianten	Wurm-Spielzeug-Set f�
 gid://shopify/Product/15446271230337	CHF 132.80	1 Varianten	Hund Agility Wippe aus Holz, Gelb
 gid://shopify/Product/15446271295873	CHF 25.53	3 Varianten	Interaktiver Rollball für Haustiere
 gid://shopify/Product/15446271328641	CHF 25.53	3 Varianten	Interaktiver rollender Ball für Haustiere
+gid://shopify/Product/15446271492481	CHF 25.39	4 Varianten	Interaktiver Hunde-Spielball aus E-TPU
+gid://shopify/Product/15446271525249	CHF 26.25	5 Varianten	Interaktiver Spielball für Haustiere
+gid://shopify/Product/15446271558017	cj-ohne-antwort
+gid://shopify/Product/15446271623553	CHF 20.02	4 Varianten	Smart Interaktiver Ball für Hunde
+gid://shopify/Product/15446271656321	CHF 17.84	1 Varianten	Farbige Tennisbälle für Hunde
+gid://shopify/Product/15446271689089	CHF 21.38	1 Varianten	Kratzbox aus Holz für Katzen
+gid://shopify/Product/15446271721857	CHF 18.14	6 Varianten	Ersatzfedern für Katzenangel
+gid://shopify/Product/15446271754625	CHF 19.50	1 Varianten	Interaktiver Hunde-Spielball mit Seil
+gid://shopify/Product/15446271820161	CHF 22.18	1 Varianten	Interaktiver Hüpfball für Hunde
+gid://shopify/Product/15446271951233	CHF 17.77	2 Varianten	Interaktiver Katzenball mit Federanhängern
+gid://shopify/Product/15446271984001	CHF 18.49	5 Varianten	Cartoon Plüsch-Hundespielzeug mit Quietscher
+gid://shopify/Product/15446272016769	CHF 16.82	7 Varianten	Schnüffel- und Quietsch-Plüschtier für Hunde
