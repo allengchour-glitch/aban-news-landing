@@ -846,3 +846,11 @@ gid://shopify/Product/15446060859777	CHF 17.76	1 Varianten	Azelaic Acid & Niacin
 gid://shopify/Product/15446061220225	CHF 19.31	1 Varianten	4-in-1 Farbwechselnde Foundation
 gid://shopify/Product/15446061547905	CHF 22.40	1 Varianten	OUHOE Schneckencreme – Sanfte Gesichtspflege
 gid://shopify/Product/15446061941121	CHF 18.19	1 Varianten	Retinol Nachtcreme für glatte Haut
+gid://shopify/Product/15446062301569	CHF 18.12	1 Varianten	Elektrische straffende Augencreme 50g
+gid://shopify/Product/15446062596481	CHF 17.72	1 Varianten	2-in-1 Eyelinerstift Bronze
+gid://shopify/Product/15446062924161	CHF 17.72	1 Varianten	2-in-1 Eyelinerstift Champagner
+gid://shopify/Product/15446063284609	CHF 22.84	1 Varianten	Deep Collagen Peptid Intensiv-Ampulle
+gid://shopify/Product/15446063612289	CHF 17.72	1 Varianten	Haftcreme für Zahnprothesen 28g
+gid://shopify/Product/15446063907201	CHF 35.70	1 Varianten	Golden Peptide Collagen Augenmaske
+gid://shopify/Product/15446064202113	CHF 25.35	1 Varianten	Glitzer Spray für Haar und Körper
+gid://shopify/Product/15446064464257	CHF 24.63	2 Varianten	Glitzerndes Highlight Puder für Gesicht & Körper
