@@ -279,3 +279,6 @@ gid://shopify/Product/15509392032129	Transparent
 gid://shopify/Product/15510280143233	Silber
 gid://shopify/Product/15510281060737	Silber
 gid://shopify/Product/15510281486721	Silber
+gid://shopify/Product/15510317171073	Silber
+gid://shopify/Product/15510318186881	Silber
+gid://shopify/Product/15510318481793	Silber
