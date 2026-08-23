@@ -23,6 +23,25 @@
 - Geprueft: 844x390, 915x412, 740x360, 667x375, 812x375, 640x360, 1024x600, 896x414,
   720x320 — jeweils 0 Ueberschneidungen, 0 ueber den Rand.
 
+## 🧱 `bauViele()` — wiederholte Kleinteile instanzieren (2026-08-23)
+- Grep-Anker: `function bauViele`, `window._instGruppen`, `window._instanzen`
+- **Gemessen, nicht geraten:** die teuersten Posten sind nicht die grossen Gebaeude,
+  sondern die WIEDERHOLTEN Kleinteile. `th33_parkzaun_modul` 52x a 35 Meshes = 1820,
+  `th38_weidezaun` 32x a 36 = 1152. Als Instanzen kostet der ganze Zaun so viel wie EIN
+  Modul.
+- `bauViele(datei, hoehe, stellen)` nimmt eine Liste `[x, z, rotY]`, laedt das Modell
+  EINMAL ueber `bau()`, rechnet seine Meshes aus der Vorlage heraus (Gruppen-Matrix
+  invertieren — sonst gehen Hoehenskalierung und Boden-Versatz verloren), setzt sie als
+  InstancedMesh und entfernt die Vorlage, auch aus `_gebaeude`.
+- **⚠️ DIE FALLE, IN DIE ICH GELAUFEN BIN:** `nieAusblenden` heisst IMMER GEZEICHNET.
+  Die Einzelmodule wurden vorher ab 78 m ausgeblendet; als Instanzgruppe liefen Park-
+  und Koppelzaun dauerhaft mit — **Zeichenaufrufe 655 → 790**, Dreiecke fast verdoppelt.
+  Instanzieren allein ist also NICHT automatisch billiger. Jede Gruppe bekommt darum
+  ihre eigene Mitte und ihren Radius (`_instGruppen`) und wird in `lodTakt` als Ganzes
+  auf Entfernung ausgeblendet. Danach **632**.
+- **⚠️ Nur fuer Dinge, deren Lage aus der Geometrie folgt** (Zaunlinien, Alleen, Hecken).
+  Instanzen stehen NICHT in `_gebaeude` und sind fuer th-pruef unsichtbar.
+
 ## 🌳 Die Hecke war keine Hecke — und der billigere Weg war der dichtere (2026-08-23)
 - Grep-Anker: `heckenStellen`, `window._heckeZahl`
 - **Befund auf Augenhoehe:** die Hecke am Grundstueck war eine Reihe einzelner Bloecke.

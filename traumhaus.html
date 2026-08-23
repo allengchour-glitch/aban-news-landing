@@ -4112,6 +4112,62 @@ setTimeout(function baueGebaeude(){
     if(!window._gebaeude)window._gebaeude=[];window._gebaeude.push(w);if(cb)cb(w,root);
     _ladeFertigEins();},undefined,function(){_ladeFertigEins();});}
 
+  /* 🧱 VIELE GLEICHE KOPIEN: EINMAL LADEN, ALS INSTANZEN SETZEN.
+     Gemessen ueber alle `_gebaeude`: die teuersten Posten sind nicht die grossen
+     Gebaeude, sondern die WIEDERHOLTEN Kleinteile. `th33_parkzaun_modul` steht
+     52-mal und bringt je 35 Meshes mit — 1820 Zeichenaufrufe fuer einen Zaun.
+     `th38_weidezaun` 32-mal a 36 Meshes. Als Instanzen kostet der ganze Zaun so
+     viel wie EIN Modul.
+     `stellen` ist eine Liste [x, z, rotY]. Das Modell wird einmal ueber `bau()`
+     geladen; in der Rueckmeldung werden seine Meshes aus der Vorlage
+     herausgerechnet (Gruppen-Matrix invertieren, damit die Hoehenskalierung und
+     der Boden-Versatz erhalten bleiben), als InstancedMesh neu gesetzt, und die
+     Vorlage verschwindet wieder — auch aus `_gebaeude`.
+     ⚠️ `nieAusblenden`, weil der Sichtbarkeits-Index pro OBJEKT entscheidet: eine
+     InstancedMesh liegt im Ursprung, ihre Instanzen ueberall — nach Entfernung
+     ausblenden wuerde den ganzen Zaun auf einmal verschwinden lassen. Das
+     Aussieben uebernimmt das normale Frustum-Culling.
+     ⚠️ Instanzen stehen NICHT in `_gebaeude`, sind fuer th-pruef also unsichtbar.
+     Nur fuer Dinge benutzen, deren Lage aus der Geometrie folgt (Zaunlinien,
+     Alleen) — nicht fuer frei platzierte Einzelstuecke. */
+  function bauViele(file,zielH,stellen){
+    if(!stellen||!stellen.length)return;
+    bau(file,zielH,stellen[0][0],0,stellen[0][1],stellen[0][2]||0,false,function(w){
+      w.updateMatrixWorld(true);
+      var inv=new THREE.Matrix4().copy(w.matrixWorld).invert(),teile=[];
+      w.traverse(function(m){if(m.isMesh&&m.geometry)
+        teile.push({g:m.geometry,mat:m.material,
+                    l:new THREE.Matrix4().multiplyMatrices(inv,m.matrixWorld)});});
+      var mx=0,mz=0;
+      for(var q=0;q<stellen.length;q++){mx+=stellen[q][0];mz+=stellen[q][1];}
+      mx/=stellen.length;mz/=stellen.length;
+      var rad=0;
+      for(var q2=0;q2<stellen.length;q2++)
+        rad=Math.max(rad,Math.hypot(stellen[q2][0]-mx,stellen[q2][1]-mz));
+      var M=new THREE.Matrix4(),T=new THREE.Matrix4(),R=new THREE.Matrix4();
+      teile.forEach(function(t){
+        var im=new THREE.InstancedMesh(t.g,t.mat,stellen.length);
+        for(var i=0;i<stellen.length;i++){var st=stellen[i];
+          R.makeRotationY(st[2]||0);T.makeTranslation(st[0],0,st[1]);
+          M.multiplyMatrices(T,R);M.multiply(t.l);im.setMatrixAt(i,M);}
+        im.instanceMatrix.needsUpdate=true;
+        im.castShadow=true;im.receiveShadow=true;
+        im.userData.nieAusblenden=true;im.userData.datei=file;
+        scene.add(im);
+        /* ⚠️ IMMER GEZEICHNET WAERE EIN RUECKSCHRITT. Gemessen: die Einzelmodule
+           wurden vorher ab 78 m ausgeblendet; als InstancedMesh mit
+           `nieAusblenden` liefen Park- und Koppelzaun dauerhaft mit — die
+           Zeichenaufrufe stiegen von 655 auf 790 und die Dreiecke verdoppelten
+           sich fast. Die Gruppe bekommt darum ihre EIGENE Mitte und ihren
+           eigenen Radius und wird als Ganzes auf Entfernung ausgeblendet. */
+        (window._instGruppen=window._instGruppen||[]).push({m:im,x:mx,z:mz,r:rad});});
+      scene.remove(w);
+      var ix=(window._gebaeude||[]).indexOf(w);if(ix>=0)window._gebaeude.splice(ix,1);
+      var reg=(window._instanzen=window._instanzen||{});
+      reg[file]=(reg[file]||0)+stellen.length;
+    },true);
+  }
+
   /* ═══════════════ 🏗️ QUARTIER-GENERATOR ═══════════════════════════════════════════
      Innerhalb der Ringstrasse ist kein Platz mehr — der Freiflaechen-Solver findet dort
      fuer ein 20x14-Gebaeude keinen einzigen Standort. Neue Viertel entstehen deshalb
@@ -4875,8 +4931,10 @@ setTimeout(function baueGebaeude(){
         if(i%2===0)bau("th33_blumenrabatte.glb",0.9,dx+8,0,PZ-11,0,false,null,true);
         if(i%3===0)bau("th33_wegweiser.glb",3.5,dx-6,0,PZ+11,0.4,false,null,true);}
       bau("th33_parkplan.glb",3.6,PX-118,0,PZ+7,0,false,null,true);
-      for(var z2=0;z2<9;z2++)bau("th33_parkzaun_modul.glb",1.79,PX-128+z2*4.1,0,PZ-56,0,false,null,true);
-      for(var z3=0;z3<9;z3++)bau("th33_parkzaun_modul.glb",1.79,PX-128+z3*4.1,0,PZ+56,0,false,null,true);
+      var pzStellen=[];
+      for(var z2=0;z2<9;z2++)pzStellen.push([PX-128+z2*4.1,PZ-56,0]);
+      for(var z3=0;z3<9;z3++)pzStellen.push([PX-128+z3*4.1,PZ+56,0]);
+      bauViele("th33_parkzaun_modul.glb",1.79,pzStellen);
     },420);
     /* ═══════════ 🏙️ STADTFUELLUNG AUF DEM GRUNDSTUECKSRAND ═══════════════════════
        User: „das bauland kann 1/4 von mitte sein, du kannst der rest fuellen mit
@@ -5177,14 +5235,16 @@ setTimeout(function baueGebaeude(){
          Torluecke im Norden, in der das Hoftor steht. Die Luecke ist 4,90 breit —
          das Tor misst 4,78, ein Modul waeren 2,50: zwei Module weniger, nicht eins. */
       var KX0=18.0, KX1=43.0, KZ0=-186.0, KZ1=-168.0, TOR=30.5;
+      var wzStellen=[];
       for(var x=KX0+1.25;x<KX1;x+=2.5){
-        bau("th38_weidezaun.glb",1.26,x,0,KZ0,0,false,null,true);
-        if(Math.abs(x-TOR)>2.6)bau("th38_weidezaun.glb",1.26,x,0,KZ1,0,false,null,true);
+        wzStellen.push([x,KZ0,0]);
+        if(Math.abs(x-TOR)>2.6)wzStellen.push([x,KZ1,0]);
       }
       for(var z=KZ0+1.25;z<KZ1;z+=2.5){
-        bau("th38_weidezaun.glb",1.26,KX0,0,z,Math.PI/2,false,null,true);
-        bau("th38_weidezaun.glb",1.26,KX1,0,z,Math.PI/2,false,null,true);
+        wzStellen.push([KX0,z,Math.PI/2]);
+        wzStellen.push([KX1,z,Math.PI/2]);
       }
+      bauViele("th38_weidezaun.glb",1.26,wzStellen);
       bau("th38_hoftor.glb",3.04,TOR,0,KZ1,Math.PI,false,null,true);
     })();
     /* 🎢 ACHTERBAHN neben dem Freizeitpark — fahrbar, mit Ego-Perspektive.
@@ -6021,17 +6081,19 @@ setTimeout(function baueGebaeude(){
       /* Geviert am neuen Standort: 30 x 42, symmetrisch um die Kirche.
          N ist hier die SUEDseite (Tor, groesseres z), S die Nordseite. */
       var W=DOM_X-15,O=DOM_X+15,N=DOM_SW+9,S=DOM_NW-13;
+      var fzStellen=[];
       function zaunReihe(x0,z0,n,achse,luecke){
         for(var i=0;i<n;i++){
           if(luecke&&luecke.indexOf(i)>=0)continue;
-          if(achse==="x")bau("th33_parkzaun_modul.glb",1.8,x0+2+i*4,0,z0,0,false,null,true);
-          else            bau("th33_parkzaun_modul.glb",1.8,x0,0,z0+2+i*4,Math.PI/2,false,null,true);
+          if(achse==="x")fzStellen.push([x0+2+i*4,z0,0]);
+          else            fzStellen.push([x0,z0+2+i*4,Math.PI/2]);
         }
       }
       zaunReihe(W,N,7,"x",[3]);        /* Nordseite, Haupttor in der Mitte */
       zaunReihe(W,S,7,"x",null);       /* Suedseite */
       zaunReihe(W,S,11,"z",[5]);       /* Westseite, Nebentor */
       zaunReihe(O,S,11,"z",null);      /* Ostseite */
+      bauViele("th33_parkzaun_modul.glb",1.8,fzStellen);
       /* Torpfeiler am Haupttor */
       [W+11.5,W+16.5].forEach(function(px){   /* Tor liegt bei W+14 (Modul-Luecke 3) */
         var pf=new THREE.Mesh(new THREE.BoxGeometry(1.0,3.2,1.0),betMat(0xcfc7b6,0.9));
@@ -11205,6 +11267,14 @@ function lodTakt(px,pz){
     var e=_lodKlein[i],dx=e.x-px,dz=e.z-pz;
     var sicht=(dx*dx+dz*dz)<(e.nah?SEHRNAH:NAH);
     if(e.m.visible!==sicht)e.m.visible=sicht;
+  }
+  /* Instanzgruppen (Zaunlinien, Hecke): als GANZES ausblenden, gemessen an ihrer
+     eigenen Mitte plus Ausdehnung — sonst haengt die Entscheidung am Ursprung. */
+  var G=window._instGruppen;
+  if(G)for(var g=0;g<G.length;g++){
+    var q=G[g],qx=q.x-px,qz=q.z-pz,gr=78+q.r;
+    var s2=(qx*qx+qz*qz)<gr*gr;
+    if(q.m.visible!==s2)q.m.visible=s2;
   }
 }
 
