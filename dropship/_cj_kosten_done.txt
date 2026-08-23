@@ -694,3 +694,10 @@ gid://shopify/Product/15443245662593	CHF 16.57	3 Varianten	Magnetische Wimpern �
 gid://shopify/Product/15443245728129	CHF 24.86	1 Varianten	Selbstklebende 3D-Wimpern · wiederverwendbar
 gid://shopify/Product/15443245760897	CHF 16.90	3 Varianten	Magnetische Wimpern «Set» · natürlich
 gid://shopify/Product/15443495846273	CHF 78.88	8 Varianten	LED-Projektor «Ambiente» · Stimmungslicht
+gid://shopify/Product/15443495879041	CHF 20.82	1 Varianten	Sonnenuntergang-Projektor «Sunset» · Stimmungslich
+gid://shopify/Product/15443496108417	CHF 20.74	4 Varianten	Kabellose Kopfhörer «AirBeat» · Bluetooth TWS
+gid://shopify/Product/15443496141185	CHF 24.70	2 Varianten	Kabellose Kopfhörer «SoundPods» · Bluetooth TWS
+gid://shopify/Product/15443496173953	CHF 20.94	1 Varianten	Kabellose Kopfhörer «BassBuds» · Bluetooth TWS
+gid://shopify/Product/15443496206721	CHF 20.94	4 Varianten	Kabellose Kopfhörer «FlowPods» · Bluetooth TWS
+gid://shopify/Product/15443496239489	CHF 40.07	4 Varianten	Kabellose Kopfhörer «EchoBuds» · Bluetooth TWS
+gid://shopify/Product/15443496731009	CHF 31.02	1 Varianten	Aroma-Diffuser «Mist» · Luftbefeuchter mit LED
