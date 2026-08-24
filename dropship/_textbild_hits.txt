@@ -12644,3 +12644,6 @@ gid://shopify/Product/15500402295169	9->0	Hündchen-Perlenkette
 gid://shopify/Product/15500405342593	183->0	Digitaler Gemäldefarben-Set
 gid://shopify/Product/15500409045377	23->0	Digitaler Ölgemälde-Kolorierer
 gid://shopify/Product/15500409700737	189->0	Digitalgemälde auf Leinwand
+gid://shopify/Product/15500484968833	21->0	Mini-Staubsauger
+gid://shopify/Product/15500508299649	85->0	Ärmelloses bedrucktes Freizeitkleid mit V-Ausschnitt
+gid://shopify/Product/15500509512065	101->0	Herren Hemd Leinen-Optik Langarm Casual
