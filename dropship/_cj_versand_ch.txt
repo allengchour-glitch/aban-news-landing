@@ -915,3 +915,4 @@ gid://shopify/Product/15510921445761	nicht-versendbar	Rechteckiger Blumenkasten 
 gid://shopify/Product/15510924886401	ok	U-förmiges Schwangerschaftskissen für Rücken und Seite
 gid://shopify/Product/15510925836673	nicht-versendbar	Küchenregal aus Edelstahl
 gid://shopify/Product/15510929441153	nicht-versendbar	Manueller Wurstfüller aus Edelstahl, 6 Pfund
+gid://shopify/Product/15510927344001	ok	Reisetasche aus Echtleder für Herren
