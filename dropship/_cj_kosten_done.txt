@@ -1457,3 +1457,52 @@ gid://shopify/Product/15447884104065	CHF 17.56	6 Varianten	Gestreifter Plissee-S
 gid://shopify/Product/15447884267905	CHF 17.45	19 Varianten	Quadratisches Halstuch mit UV-Schutz · 70 × 70 cm
 gid://shopify/Product/15447884398977	CHF 17.36	10 Varianten	Plissierter Schal in Seiden-Optik mit Rautenmuster
 gid://shopify/Product/15447884530049	CHF 18.91	13 Varianten	Wollschal einfarbig für Damen
+gid://shopify/Product/15447884661121	CHF 19.45	1 Varianten	Cape-Jacke im Retro-Ethno-Stil
+gid://shopify/Product/15447884792193	CHF 17.05	3 Varianten	Eleganter Faux-Kaschmir Schal für jede Jahreszeit
+gid://shopify/Product/15447884890497	CHF 18.10	15 Varianten	Vielseitiger Chiffon-Schal mit Blumenmuster · 110 
+gid://shopify/Product/15447885087105	CHF 17.53	1 Varianten	Quadratisches Tuch in Seiden-Optik mit Cashew-Must
+gid://shopify/Product/15447885185409	CHF 18.90	8 Varianten	Organza Schal mit Quasten
+gid://shopify/Product/15447885316481	CHF 17.51	9 Varianten	Retro Karo-Halstuch mit Sonnenschutz · 70 × 70 cm
+gid://shopify/Product/15447885480321	CHF 17.45	16 Varianten	Vielseitiger Vintage-Halsschal
+gid://shopify/Product/15447885742465	CHF 26.47	10 Varianten	Ethno Strick-Poncho mit Quasten · 130 × 150 cm
+gid://shopify/Product/15447886004609	CHF 18.01	3 Varianten	Gehäkelter Dreiecksschal im Ethno-Stil · 130 × 30 
+gid://shopify/Product/15447886266753	CHF 17.45	8 Varianten	Geknitterter Baumwoll-Leinen Schal im Distressed-L
+gid://shopify/Product/15447886561665	CHF 21.05	3 Varianten	Cape-Schal mit Perlen und Quasten
+gid://shopify/Product/15447886758273	CHF 18.62	1 Varianten	Gestricktes Cape mit Quasten
+gid://shopify/Product/15447886987649	CHF 17.37	6 Varianten	Schal in Seiden-Optik mit Magnetverschluss
+gid://shopify/Product/15447887282561	CHF 17.05	6 Varianten	Schal mit Katzenmuster im Koreanischen Stil · 180 
+gid://shopify/Product/15447887675777	CHF 17.60	12 Varianten	Minimalistischer Taschenschal
+gid://shopify/Product/15447887970689	CHF 34.07	5 Varianten	Hut, Handschuhe & Schal 3-in-1 Set
+gid://shopify/Product/15447888265601	CHF 20.97	3 Varianten	Top Perspective Häkel-Schultertuch
+gid://shopify/Product/15447888593281	CHF 17.87	15 Varianten	Vielseitiger warmer Schal aus Faux-Kaschmir · 200 
+gid://shopify/Product/15447888855425	CHF 17.72	3 Varianten	Warmer Faux-Kaschmir Schal
+gid://shopify/Product/15447889084801	CHF 17.61	8 Varianten	Kurzer Cardigan aus Chiffon mit UV-Schutz
+gid://shopify/Product/15447889478017	CHF 17.33	9 Varianten	Farbverlauf Satin Crinkle Schal · 180 × 70 cm
+gid://shopify/Product/15447889740161	CHF 17.37	16 Varianten	Sonnen-Cape im Retro-Stil
+gid://shopify/Product/15447889969537	CHF 18.55	9 Varianten	Warmer Schal aus Fuchsfell und Rexkaninchenfell
+gid://shopify/Product/15447890264449	CHF 17.45	7 Varianten	Kaschmir-Schal für Damen
+gid://shopify/Product/15447890493825	CHF 17.45	1 Varianten	Weisser Maxirock mit Spitzen-Overlay
+gid://shopify/Product/15447890821505	CHF 17.37	15 Varianten	Leichter Schal mit Wasserwellenmuster
+gid://shopify/Product/15447891050881	CHF 16.89	18 Varianten	Kapuzen-Schal mit Kordelzug für Damen
+gid://shopify/Product/15447891214721	CHF 29.18	1 Varianten	Eleganter Seidenschal mit Blumenmuster
+gid://shopify/Product/15447891378561	CHF 19.45	1 Varianten	Quadratisches Tuch in Seiden-Optik mit Vintage 3D-
+gid://shopify/Product/15447891542401	CHF 16.84	19 Varianten	Crinkled Satin Schal – Seidig Glatt
+gid://shopify/Product/15447891673473	CHF 17.37	10 Varianten	Cashew-Jacquard-Schal mit Quasten
+gid://shopify/Product/15447891771777	CHF 17.45	60 Varianten	Kopftuch im Ethno-Stil
+gid://shopify/Product/15447891902849	CHF 17.03	13 Varianten	Jacquard Schal mit Cashew-Muster und Quasten
+gid://shopify/Product/15447892099457	CHF 17.53	21 Varianten	Paisley Jacquard Schal mit Quasten
+gid://shopify/Product/15447892230529	CHF 19.23	4 Varianten	Eleganter vielseitiger quadratischer Schal
+gid://shopify/Product/15447892361601	CHF 17.37	4 Varianten	Retro Colorblock Blumen-Schal · 185 × 80 cm
+gid://shopify/Product/15447892492673	CHF 20.08	1 Varianten	Jacquard Cashew Fransen-Schal für Damen
+gid://shopify/Product/15447892656513	CHF 18.02	4 Varianten	Gebets-Schal mit Ethno-Muster
+gid://shopify/Product/15447892787585	CHF 20.51	6 Varianten	Bohemian Herbstschal aus Jacquard, Kaschmir-Optik 
+gid://shopify/Product/15447892885889	CHF 18.17	10 Varianten	Warmer Jacquard-Poncho mit Quasten · 200 × 65 cm
+gid://shopify/Product/15447893049729	CHF 17.13	15 Varianten	Retro-Schal mit Quasten, vielseitig tragbar
+gid://shopify/Product/15447893180801	CHF 18.62	6 Varianten	Geometrischer Jacquard Schal mit Quasten · 200 × 7
+gid://shopify/Product/15447893311873	CHF 18.62	6 Varianten	Bestickter Quasten-Schal für Damen · 200 × 70 cm
+gid://shopify/Product/15447893475713	CHF 17.87	1 Varianten	Personalisierbarer Schal mit Sutra-Text
+gid://shopify/Product/15447893737857	CHF 19.53	1 Varianten	Kuscheliger Kapuzen-Poncho im Tier-Look
+gid://shopify/Product/15447893901697	CHF 19.23	1 Varianten	Halloween-Umhang «Kleiner Teufel» aus Flanell
+gid://shopify/Product/15447894098305	CHF 18.62	2 Varianten	Bestickter Schal im koreanischen Stil · 200 × 70 c
+gid://shopify/Product/15447894294913	CHF 17.45	21 Varianten	Seidenmaske mit Halsbedeckung für Damen
+gid://shopify/Product/15447894458753	CHF 19.08	5 Varianten	Seidene UV-Schutzmaske mit Katzenohren

@@ -1306,3 +1306,20 @@ gid://shopify/Product/15448108335489	zugeordnet	18	Nahtloser Body Shaper mit Bau
 gid://shopify/Product/15448108401025	zugeordnet	10	Nahtloser Body mit Bauch- und Po-Formung
 gid://shopify/Product/15448108433793	zugeordnet	15	Nahtloser Body mit Bauch- und Po-Kontrolle
 gid://shopify/Product/15448108630401	zugeordnet	20	Jumpsuit mit V-Ausschnitt und kurzen Ärmeln
+gid://shopify/Product/15448108827009	zugeordnet	28	Shapewear Bodysuit mit verstellbaren Trägern
+gid://shopify/Product/15448108958081	zugeordnet	12	Body Shaper mit BH und Bauchkontrolle
+gid://shopify/Product/15448108990849	zugeordnet	12	Fajas Colombianas Body Shaper mit Bauchkontrolle
+gid://shopify/Product/15448109023617	zugeordnet	18	Taillenformer mit BH und doppelter Bauchkontrolle
+gid://shopify/Product/15448109056385	zugeordnet	24	Figurbetonter, rückenfreier Badeanzug mit Rüschen
+gid://shopify/Product/15448109089153	zugeordnet	24	High Compression Shapewear mit Frontreissverschluss
+gid://shopify/Product/15448109121921	zugeordnet	21	Fajas Colombianas Postpartum Shapewear
+gid://shopify/Product/15448109154689	zugeordnet	6	Jumpsuit mit V-Ausschnitt und Tiermuster
+gid://shopify/Product/15448109187457	zugeordnet	25	Leichter Leinen-Jumpsuit mit weitem Bein
+gid://shopify/Product/15448109220225	zugeordnet	18	Nahtloser Body Shaper mit Rundhals und Bauchkontrolle
+gid://shopify/Product/15448109318529	zugeordnet	21	Taillenformer Korsett-Top mit Stahlstäben
+gid://shopify/Product/15448109351297	zugeordnet	15	Formiva Shapewear OutdoorFun Ganzkörper-Body
+gid://shopify/Product/15448109449601	zugeordnet	8	Shapewear Bodysuit mit Bauchkontrolle
+gid://shopify/Product/15448109613441	zugeordnet	14	Figurformender Jumpsuit mit Bauchkontrolle
+gid://shopify/Product/15448109646209	zugeordnet	8	Jumpsuit mit Polo-Kragen und kurzen Hosen
+gid://shopify/Product/15448109842817	zugeordnet	18	Shapewear Bodysuit mit Bauchkontrolle – Beige
+gid://shopify/Product/15448110104961	zugeordnet	16	Fajas Colombianas Bauchkontrolle Body Shaper
