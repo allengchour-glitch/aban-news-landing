@@ -949,3 +949,17 @@ gid://shopify/Product/15446271820161	CHF 22.18	1 Varianten	Interaktiver Hüpfbal
 gid://shopify/Product/15446271951233	CHF 17.77	2 Varianten	Interaktiver Katzenball mit Federanhängern
 gid://shopify/Product/15446271984001	CHF 18.49	5 Varianten	Cartoon Plüsch-Hundespielzeug mit Quietscher
 gid://shopify/Product/15446272016769	CHF 16.82	7 Varianten	Schnüffel- und Quietsch-Plüschtier für Hunde
+gid://shopify/Product/15446272082305	CHF 17.34	1 Varianten	Rundes Sound-Puzzle-Spielzeug für Haustiere
+gid://shopify/Product/15446272115073	CHF 22.81	1 Varianten	Futterspendendes Schnüffelspielzeug mit Sound
+gid://shopify/Product/15446272311681	CHF 74.87	15 Varianten	Scooter Baby Can Sit
+gid://shopify/Product/15446272606593	CHF 86.10	14 Varianten	Faltbarer Handwagen
+gid://shopify/Product/15446272639361	CHF 139.44	15 Varianten	LED Laser Offroad-Scheinwerfer
+gid://shopify/Product/15446272672129	CHF 23.46	2 Varianten	LED-Fahrradtasche mit Fernbedienung
+gid://shopify/Product/15446272737665	CHF 22.38	2 Varianten	LED-Velo-Blinklicht mit smarter Richtungsanzeige
+gid://shopify/Product/15446272770433	CHF 22.38	1 Varianten	LED-Sportweste für Outdoor-Aktivitäten
+gid://shopify/Product/15446272803201	CHF 17.96	3 Varianten	Velo-Rücklicht mit langer Akkulaufzeit
+gid://shopify/Product/15446272835969	CHF 20.08	1 Varianten	Gebogenes, lichtempfindliches Rücklicht
+gid://shopify/Product/15446272934273	CHF 31.12	6 Varianten	Minimalistische Nachttisch-Pendelleuchte
+gid://shopify/Product/15446272967041	CHF 19.61	1 Varianten	Smartes Induktions-Bremslicht fürs Velo
+gid://shopify/Product/15446272999809	CHF 19.92	1 Varianten	WEST BIKING Velo-Fernbedienungs-Blinker
+gid://shopify/Product/15446273065345	CHF 25.15	1 Varianten	Velo-Rücklicht mit Bewegungssensor
