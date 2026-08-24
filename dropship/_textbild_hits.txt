@@ -12578,3 +12578,5 @@ gid://shopify/Product/15496270610817	95->0	12-teiliges Pinselset im PU-Köcher
 gid://shopify/Product/15496302952833	95->0	11 Meerjungfrauen Make-up Pinsel Set
 gid://shopify/Product/15496303346049	107->0	Beauty and the Beast Makeup Pinselset
 gid://shopify/Product/15496303739265	62->2	Dicke Tatami Balkonkissen
+gid://shopify/Product/15496304165249	25->0	Tischtennis-Schläger für Training (Anfänger)
+gid://shopify/Product/15496319828353	37->0	MOCUTE-050 Bluetooth Gamepad für Mobilgeräte
