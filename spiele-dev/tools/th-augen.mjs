@@ -38,6 +38,15 @@ const STELL = `function(x,z,r){
         var a=w/12*6.283, px=x+Math.cos(a)*d, pz=z+Math.sin(a)*d;
         if(freiPlatz(px,pz,2)){gx=px;gz=pz;weg=d;break suche;}}}}
   var s=sims[0];s.x=gx;s.z=gz;s.rot=r;
+  /* ⚠️ Die Ego-Kamera schaut entlang Math.PI + camA — NICHT entlang sim.rot.
+     Deshalb zeigten mehrere Fotos die Gegenrichtung, egal was rot war. Der
+     Blickwinkel dieses Werkzeugs ist Welt-Yaw (0 = +z) und wird hier in camA
+     uebersetzt. */
+  camA=r-Math.PI;
+  /* ⚠️ _hide friert die Figur ein — OHNE das laeuft die Spiel-KI zwischen
+     Setzen und Foto weiter, dreht die Figur um und das Bild zeigt die
+     Gegenrichtung. Genau so entstanden mehrere Fotos der falschen Seite. */
+  s._hide=true;
   followSim=s;camTx=gx;camTz=gz;
   return {x:+gx.toFixed(1),z:+gz.toFixed(1),weg:weg,wetter:wetter,uhr:+uhrzeit.toFixed(0)};}`
 
