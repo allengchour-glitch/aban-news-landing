@@ -12568,3 +12568,5 @@ gid://shopify/Product/15495192052097	37->0	Milan Mesh Quarzuhr für Damen
 gid://shopify/Product/15495194083713	19->0	Anti-Rutsch Yoga-Matte Wildlederoptik
 gid://shopify/Product/15495195132289	34->3	Elastischer Sofaüberzug – Modern & Minimalistisch
 gid://shopify/Product/15495214432641	18->0	Katzenjagdversteck
+gid://shopify/Product/15495230161281	30->0	Chunky-Heel Plateau Mary Jane Lackleder Schuhe
+gid://shopify/Product/15495230652801	62->0	Keile Sandalen für Damen
