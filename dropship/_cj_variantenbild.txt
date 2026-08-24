@@ -1265,3 +1265,22 @@ gid://shopify/Product/15448105517441	zugeordnet	41	Trendiges Rundhals-Sweatshirt
 gid://shopify/Product/15448105615745	zugeordnet	8	Unifarbenes Kapuzen-Sweatshirt mit Kordelzug
 gid://shopify/Product/15448105648513	zugeordnet	30	Kapuzenpullover mit langen Ärmeln und Taschen
 gid://shopify/Product/15448105681281	zugeordnet	30	Loose-Fit Kapuzenjacke mit Reissverschluss
+gid://shopify/Product/15448105779585	zugeordnet	63	Retro Harajuku Hoodie für Damen und Herren
+gid://shopify/Product/15448105910657	zugeordnet	20	Damen Rollkragen Loose-fit Fleece-Pullover
+gid://shopify/Product/15448105976193	zugeordnet	10	Western-Stil Hoodie mit Schriftzug-Print
+gid://shopify/Product/15448106041729	zugeordnet	6	Lässiger Hoodie mit überschnittenen Ärmeln
+gid://shopify/Product/15448106140033	zugeordnet	48	Retro-Weihnachts-Hoodie mit 3D-Print und Taschen
+gid://shopify/Product/15448106172801	zugeordnet	15	Lässiger Pullover mit Geometrischem Muster
+gid://shopify/Product/15448106205569	zugeordnet	16	Gepolsterte Half-Zip Jacke für Damen
+gid://shopify/Product/15448106238337	zugeordnet	60	Halloween Kapuzenpullover mit Totenkopf-Print
+gid://shopify/Product/15448106271105	zugeordnet	36	Colorblock Rundhals-Sweatshirt für Damen
+gid://shopify/Product/15448106336641	zugeordnet	81	3D Digital Print Freizeit-Sweatshirt für Damen
+gid://shopify/Product/15448106369409	bild-urls-tot
+gid://shopify/Product/15448106434945	bild-urls-tot
+gid://shopify/Product/15448106467713	bild-urls-tot
+gid://shopify/Product/15448106533249	zugeordnet	35	Unisex Hoodie mit Kapuze
+gid://shopify/Product/15448106598785	zugeordnet	42	Hoodie «Colorful Cherry Blossom»
+gid://shopify/Product/15448106664321	zugeordnet	6	Sweatshirt Kirschblüten-Muster
+gid://shopify/Product/15448106697089	zugeordnet	25	Sweatshirt mit Rundhals und Schleifendetail
+gid://shopify/Product/15448106729857	zugeordnet	16	Lässiger V-Neck Pullover mit langen Ärmeln
+gid://shopify/Product/15448106762625	zugeordnet	24	Retro Henley Langarm-Sweatshirt

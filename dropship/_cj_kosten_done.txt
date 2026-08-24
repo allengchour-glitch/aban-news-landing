@@ -1310,3 +1310,72 @@ gid://shopify/Product/15447625433473	CHF 20.11	3 Varianten	Hohlweb-Kissen im Bam
 gid://shopify/Product/15447625630081	CHF 17.69	1 Varianten	Samt-Kissenbezug mit Rüschenmuster
 gid://shopify/Product/15447625793921	CHF 17.37	1 Varianten	Kissenbezüge aus gewaschener Baumwolle (2er-Set)
 gid://shopify/Product/15447625957761	CHF 24.22	1 Varianten	Tencel-Leinen Kissenbezug im Landhausstil
+gid://shopify/Product/15447626219905	CHF 23.19	1 Varianten	4-teiliges professionelles Haarbürsten-Set
+gid://shopify/Product/15447626449281	CHF 26.69	1 Varianten	Ionen-Haartrockner mit Diffusor, 2200W
+gid://shopify/Product/15447626678657	CHF 35.07	1 Varianten	Keramik-Haarglätter mit LCD & Ionen-Kontrolle
+gid://shopify/Product/15447626875265	CHF 19.23	6 Varianten	Glättbürste mit Digitalanzeige
+gid://shopify/Product/15447627137409	CHF 25.15	2 Varianten	2-in-1 Mini Glätteisen für Pony & kurze Haare
+gid://shopify/Product/15447627334017	CHF 25.15	9 Varianten	Vollautomatischer 32mm Lockenstab mit Negativ-Ione
+gid://shopify/Product/15447627497857	CHF 27.58	1 Varianten	Profi-Haartrockner mit Ionen-Funktion, faltbar
+gid://shopify/Product/15447627760001	CHF 31.46	2 Varianten	Kabelloser Spliss-Trimmer für langes Haar
+gid://shopify/Product/15447627989377	CHF 29.04	1 Varianten	Sandelholz Massagekamm für Haar und Kopfhaut
+gid://shopify/Product/15447628251521	CHF 20.22	3 Varianten	Kabelloser Mini-Haarglätter und Lockenstab für Her
+gid://shopify/Product/15447628480897	CHF 19.23	4 Varianten	Glättender Haarkamm
+gid://shopify/Product/15447628710273	CHF 66.84	3 Varianten	Föhn-Bürste mit Konstanttemperatur
+gid://shopify/Product/15447628874113	CHF 27.60	1 Varianten	Glätteisen & Lockenstab 3-in-1 Keramik
+gid://shopify/Product/15447629103489	CHF 21.97	1 Varianten	Farbiger Acetat-Haarkamm mit Luftkissen
+gid://shopify/Product/15447629332865	CHF 18.98	1 Varianten	Haarfärbekamm Einweg 10-Farben
+gid://shopify/Product/15447629529473	CHF 22.16	2 Varianten	Glätteisen & Lockenstab 2-in-1
+gid://shopify/Product/15447629758849	CHF 22.32	3 Varianten	Lockenstab für Damen, Gradient Purple oder Champag
+gid://shopify/Product/15447629955457	CHF 28.59	15 Varianten	5-in-1 Warmluftstyler & Lockenstab
+gid://shopify/Product/15447630152065	CHF 25.75	1 Varianten	Elektrischer Haarschneider mit LCD-Anzeige
+gid://shopify/Product/15447630348673	CHF 29.78	1 Varianten	Kabelloser Glättkamm für Zuhause
+gid://shopify/Product/15447630512513	CHF 18.62	3 Varianten	Kabelloser Keramik-Glättkamm mit LCD
+gid://shopify/Product/15447630741889	CHF 23.10	1 Varianten	Ionen Haarglätter-Bürste für Bart & Haar
+gid://shopify/Product/15447630872961	CHF 21.39	2 Varianten	Automatischer Lockenstab mit Ionen-Funktion
+gid://shopify/Product/15447631069569	CHF 32.01	1 Varianten	Automatischer Lockenstab für langes Haar
+gid://shopify/Product/15447631298945	CHF 28.44	1 Varianten	Haarglätter mit Kalt- & Heissluft
+gid://shopify/Product/15447631528321	CHF 26.69	1 Varianten	Automatischer Spliss-Entferner
+gid://shopify/Product/15447631724929	CHF 41.95	4 Varianten	Rotierender Keramik-Lockenstab
+gid://shopify/Product/15447631987073	CHF 20.07	6 Varianten	Kabelloser Glätt- & Lockenstab mit Kaltluft
+gid://shopify/Product/15447632150913	CHF 29.39	3 Varianten	3-in-1 Lockenstab & Glätteisen
+gid://shopify/Product/15447632347521	CHF 42.52	1 Varianten	Smarte Körperanalysewaage mit App-Synchronisierung
+gid://shopify/Product/15447632576897	CHF 29.92	1 Varianten	Kabelloser Glätteisen & Lockenstab
+gid://shopify/Product/15447632740737	CHF 25.45	10 Varianten	Profi-Haarglätter mit Negativ-Ionen-Pflege
+gid://shopify/Product/15447632937345	CHF 35.56	1 Varianten	Hals- und Gesichts-Massagegerät mit 3 Modi
+gid://shopify/Product/15447633068417	CHF 34.59	1 Varianten	3-in-1 Hals- & Gesichtsmassagegerät mit Vibration
+gid://shopify/Product/15447633330561	CHF 32.32	1 Varianten	3-in-1 Ultraschall-Gesichtsspatel für Tiefenreinig
+gid://shopify/Product/15447633494401	CHF 164.03	2 Varianten	Grosser Katzenbaum All-in-One Hochhaus-Design
+gid://shopify/Product/15447633691009	CHF 108.29	2 Varianten	Filz-Katzenbaum mit Kratz-, Schlaf- & Spielturm
+gid://shopify/Product/15447633822081	CHF 18.24	7 Varianten	Kratzbaum und Bett für Katzen aus Karton
+gid://shopify/Product/15447634248065	CHF 147.28	1 Varianten	TOOCAT Klettergerüst Butter Bär
+gid://shopify/Product/15447634477441	CHF 25.11	2 Varianten	Kühlende Rattan-Matte für Katzen
+gid://shopify/Product/15447634706817	CHF 118.98	1 Varianten	Weihnachtsbaum Katzen-Kratzbaum mit Sisal
+gid://shopify/Product/15447634903425	CHF 142.85	5 Varianten	Doppellagiges Katzenbett aus Rattan
+gid://shopify/Product/15447635100033	CHF 64.19	4 Varianten	All-in-one Katzenbaum und Katzenbett
+gid://shopify/Product/15447635329409	CHF 58.28	3 Varianten	Wolken-Kratzbaum mit U-förmiger Liegefläche
+gid://shopify/Product/15447635591553	CHF 93.53	1 Varianten	Platzsparender Kratzbaum mit Liegefläche
+gid://shopify/Product/15447635788161	CHF 257.76	12 Varianten	Green Song Kratzbaum mit Liegeflächen
+gid://shopify/Product/15447635984769	CHF 124.50	4 Varianten	Sternenhimmel Katzenbett – Geborgenheit für jede J
+gid://shopify/Product/15447636181377	CHF 204.91	1 Varianten	Macaron Katzenbaum MKL-3: Kletterturm & Bett
+gid://shopify/Product/15447636377985	CHF 153.25	2 Varianten	Kratzbaum «Lion Dance» für kleine Wohnungen
+gid://shopify/Product/15447636607361	CHF 193.63	1 Varianten	Zeze 4-Jahreszeiten Katzenvilla mit Klettergerüst
+gid://shopify/Product/15447636771201	CHF 112.99	1 Varianten	Miao Xianer Katzenbaum aus Holz
+gid://shopify/Product/15447637000577	CHF 43.26	6 Varianten	Doppelstöckiges Katzenhaus aus Massivholz
+gid://shopify/Product/15447637197185	CHF 129.51	1 Varianten	Miao Xianer Katzen-Kletterbaum „Springende Pflanze
+gid://shopify/Product/15447637557633	CHF 35.54	4 Varianten	Kratzbaum-Katzenbett mit Schublade
+gid://shopify/Product/15447637787009	CHF 92.39	3 Varianten	Kuscheliges Katzenzelt «Norwegian Cottage»
+gid://shopify/Product/15447637950849	CHF 43.10	1 Varianten	Erhöhtes Haustierbett mit atmungsaktivem Netz
+gid://shopify/Product/15447638868353	CHF 36.11	8 Varianten	Kuscheliges Katzensofa mit Cord-Fleece
+gid://shopify/Product/15447639097729	CHF 52.66	1 Varianten	Winter Outdoor Katzenhaus mit Wärmekissen
+gid://shopify/Product/15447639916929	CHF 106.79	1 Varianten	Erhöhtes Hundebett XL für grosse Hunde, Grau
+gid://shopify/Product/15447640113537	CHF 119.78	1 Varianten	Erhöhtes Hundebett für grosse Hunde, XL, Grau
+gid://shopify/Product/15447640670593	CHF 132.60	1 Varianten	Erhöhtes Hundebett mit UV-Schutz-Dach
+gid://shopify/Product/15447864508801	CHF 25.80	2 Varianten	3-in-1 Ladestation mit Uhr & Wireless Charging
+gid://shopify/Product/15447864934785	CHF 25.30	1 Varianten	Kabelloses Magsafe Auto-Ladegerät
+gid://shopify/Product/15447865098625	CHF 16.90	3 Varianten	Lithium-Akku-Ladegerät
+gid://shopify/Product/15447865295233	CHF 25.75	4 Varianten	200W GaN Ladegerät für Mobilgeräte & Laptops
+gid://shopify/Product/15447865491841	CHF 29.63	1 Varianten	Xingrui Digital-Schnellladegerät Schwarz
+gid://shopify/Product/15447865622913	CHF 20.85	2 Varianten	Li-ion Akku & USB-Ladegerät für Taschenlampen
+gid://shopify/Product/15447865819521	CHF 20.22	10 Varianten	65W GaN Ladegerät mit US-Stecker
+gid://shopify/Product/15447866081665	CHF 18.01	4 Varianten	PD 20W Universal Reiseadapter
