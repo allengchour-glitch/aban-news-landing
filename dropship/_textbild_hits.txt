@@ -12600,3 +12600,4 @@ gid://shopify/Product/15496593932673	79->1	5D Diamond Painting: Blauer Truck
 gid://shopify/Product/15496595669377	33->0	Calm Tide – DIY Digital Malset
 gid://shopify/Product/15496611758465	28->0	Handgewobener Baumwoll-Kissenbezug
 gid://shopify/Product/15496613888385	22->1	Automatischer Plüschball für Haustiere
+gid://shopify/Product/15496704098689	24->0	Fitness-Gurt mit Druckunterstützung
