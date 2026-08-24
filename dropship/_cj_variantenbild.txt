@@ -1326,3 +1326,14 @@ gid://shopify/Product/15448110104961	zugeordnet	16	Fajas Colombianas Bauchkontro
 gid://shopify/Product/15448110203265	zugeordnet	30	Nahtloser Jumpsuit mit bedeckter Brust
 gid://shopify/Product/15448110236033	zugeordnet	36	Khakifarbener weiter Jumpsuit für den Sommer
 gid://shopify/Product/15448110334337	zugeordnet	21	Ärmelloser Leinen-Mix Jumpsuit für Damen
+gid://shopify/Product/15448110367105	zugeordnet	25	Colorblock Sport-Bikini Einteiler
+gid://shopify/Product/15448110399873	zugeordnet	8	Eleganter Plissée Jumpsuit mit weitem Bein
+gid://shopify/Product/15448110498177	zugeordnet	12	Eleganter Jumpsuit mit Cut-Out und 3/4-Ärmeln
+gid://shopify/Product/15448110727553	zugeordnet	8	Eleganter Jumpsuit mit Plisseeärmeln
+gid://shopify/Product/15448110989697	zugeordnet	10	Neckholder-Playsuit mit Volant, Crinkle-Optik
+gid://shopify/Product/15448111055233	zugeordnet	21	Formender U-Neck Bodysuit aus Strick
+gid://shopify/Product/15448111219073	zugeordnet	10	Damen Denim Latzhose im Workwear-Stil
+gid://shopify/Product/15448111284609	zugeordnet	8	Halter-Body mit V-Ausschnitt
+gid://shopify/Product/15448111350145	zugeordnet	14	Eleganter Bodycon Jumpsuit mit V-Ausschnitt
+gid://shopify/Product/15448111415681	zugeordnet	18	Eleganter Skinny Jumpsuit mit Reissverschluss
+gid://shopify/Product/15448111481217	zugeordnet	16	Eleganter Jumpsuit mit Spaghettiträgern und Rückenmasche
