@@ -12560,3 +12560,4 @@ gid://shopify/Product/15495065076097	109->0	Memory Foam Gel Lendenkissen f체r B�
 gid://shopify/Product/15495087882625	14->0	Multifunktionaler Haarschneider
 gid://shopify/Product/15495115276673	39->1	Nagelmodellage-Gel
 gid://shopify/Product/15495126483329	45->0	Britische Stiefeletten f체r M채dchen
+gid://shopify/Product/15495140442497	56->0	Rundes LED-R체cklicht f체r Velos
