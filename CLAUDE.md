@@ -1232,6 +1232,56 @@ eingerichteten Vorrang-Fenster, in dem der ganze Grind pausiert.
 4. ⚠️ Ein `[ "$stand" -ge 5 ]` bricht mit «integer expression expected» ab, wenn die Datei
    LEER ist: `: > datei` hinterlässt keine 0, `cat` gelingt, und `|| echo 0` feuert nie.
 
+## 💸 Der «Normalpreis» war nie der Preis — 57 Streichpreise entfernt (2026-08-24)
+Das dritte Audit belegte mit der eigenen Aktenlage, dass die Streichpreise der Eigenmarke
+KONSTRUIERT waren: `dropship/PRODUKT-PIPELINE.md` (30.05.) führt dieselben Produkte
+SKU-identisch zum heutigen «Aktionspreis» — der durchgestrichene Wert (×1.55/1.65/1.70)
+wurde nie verlangt. PBV Art. 16 verlangt einen tatsächlich verlangten, befristeten
+Vergleichspreis; dieser lief 96 Tage, 28 von 36 Produkten standen im Google-Kanal.
+- `automation/streichpreis_entfernen.py`: 57 compareAtPrice auf null, Verkaufspreis
+  unangetastet, live geprüft, WebFetch-Gegenprobe. Ausnahme 15431914783105 (Thomas Sabo,
+  mögliche echte UVP) → Betreiber.
+- **`streichpreise.py` STILLGELEGT**: es hat 8 Fantasiewerte AUFGERUNDET (38.93→39.90)
+  statt sie zu hinterfragen — sein eigener Docstring wusste, dass sie konstruiert sind.
+  **Ein unbelegter Streichpreis wird entfernt, nie gerundet.**
+- Quellenfix durch Nichtstun: kein Importer schreibt compareAtPrice (Grep: 0 Treffer).
+- ⚠️ Shopifys Suchfilter `variants.compare_at_price:>0` ist WIRKUNGSLOS (der Gegentest
+  mit einem erfundenen Feldnamen liefert dieselbe Trefferliste) — Kandidaten kommen nur
+  aus dem Bulk-Export, live je Produkt nachgeprüft.
+
+## 📐 Titel gegen den eigenen Text: 4K bei nativ 720p, 20'000 mAh bei 10'000 (2026-08-24)
+Titel und Beschreibung stehen im SELBEN Google-Feed-Datensatz — ein Widerspruch ist dort
+maschinell lesbar (Misrepresentation-Klasse), im einzigen Kanal mit Verkäufen. Repariert:
+4 «4K»-Beamer (einer nativ 720p = ein Neuntel der Pixel), 3 Fantasie-Lumen (99'000'000
+Lumen für CHF 23.90), 2 Powerbanks (Titel 20'000, Text 10'000 — «intern» rettet nichts,
+die Zellkapazität liegt IMMER über der abgebbaren), die 100'000-mAh-Behauptung.
+- **CJ als Beleg taugt hier nicht: der Lieferant WIEDERHOLT die Fantasiezahl nur** — er
+  ist ihre Quelle. Physik entscheidet (370 Wh im Plastikgehäuse für CHF 17.90).
+- **7 Handles trugen die falsche Aussage weiter** (4k-…, 20000-lumen-…) — dieselbe Klasse
+  wie die Blutzucker-URLs: Wer eine Aussage aus einem Feld entfernt, prüft ALLE Felder.
+  Neu gebaut, Eindeutigkeitsnummer behalten, je eine 301.
+- Quellenfix `automation/technik_plausibel.mjs` in allen DREI Importern (fünfte
+  Geschwister-Wiederholung): native Auflösung schlägt Titel-Auflösung, Text-mAh schlägt
+  Titel-mAh, >30'000 mAh oder >20'000 Lumen (bzw. >5'000 am USB-Akku) → Produkt verworfen.
+- Titel-Bild-Klasse: «10 Zoll FPV Traverse Maschine» für CHF 96.90 zeigte ein NACKTES
+  Rahmen-Kit — die Groq-Beschreibung erfand einen «10-Zoll-Bildschirm» (10 Zoll ist die
+  Propellergrösse). Jetzt «Rahmen-Kit · ohne Elektronik». «S6 Blau Dual-Kamera» verriet
+  nirgends, dass es eine DROHNE ist.
+
+## 🧴 «creme» ist eine Farbe — sechs Kollektionsregeln auf Vollwörter (2026-08-24)
+`TITLE CONTAINS "gie"` holte **109 Fremdtreffer** in die Garten-Werkzeuge (TechnoloGIE,
+LeGIErung, MaGIE, EnerGIE, ReGIEstuhl); «wein» traf weinrot und WildschWEIN; «matte»
+Auto-Fussmatten und MATTEl (Barbie als DRAFT in der Camping-Kollektion); «creme» hängte
+Sofabezüge, Teppiche und eine Dirndlbluse in die GESICHTSPFLEGE — creme als Farbwort.
+Alle sechs Regelwerke auf Vollwörter (gartenschere, weinglas, blumentopf, schlafmatte,
+gesichtscreme …), danach gegen die PRODUKTLISTE geprüft, nicht nur gezählt.
+- ⚠️ Restrauschen dokumentiert: «MilchGIESSKANNE» fällt in die Gartenwerkzeuge — dieselbe
+  Falle eine Ebene tiefer. Einzelfälle, keine Klassen; CONTAINS kann nicht mehr.
+- Und die Erinnerung, die diesen Tag geprägt hat: **Zwischen Audit-Messung und Reparatur
+  arbeiten PARALLELE Läufe.** Der Diffuser-Guide, das Impressum, der Footer und der
+  Wochenend-Fix im Lieferdatum waren beim Anfassen schon repariert — zweimal fast doppelt
+  geschrieben. Vor jeder Reparatur den LIVE-Stand lesen, nicht den Bericht.
+
 ## 🧱 «Fertig» ist nicht «hat gearbeitet» — der Queue-Runner lief leer (2026-08-23)
 Zweiter Akt derselben Lehre am selben Tag. Morgens fehlten `cj_queue_runner.sh` die
 Zugangsdaten, es starb in Zeile 5; ich habe sie ergänzt, den Start gesehen, ins Log geschaut —
