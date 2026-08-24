@@ -1271,3 +1271,9 @@ gid://shopify/Product/15447615406465	CHF 20.96	6 Varianten	Casual Commuter Umhä
 gid://shopify/Product/15447615668609	cj-ohne-antwort
 gid://shopify/Product/15447615865217	CHF 18.32	4 Varianten	Faltbare, wasserdichte Sport-Brusttasche
 gid://shopify/Product/15447616061825	CHF 23.21	5 Varianten	Freizeit-Umhängetasche
+gid://shopify/Product/15447616323969	CHF 52.31	3 Varianten	Punk Motorrad-Seiten-Taschen
+gid://shopify/Product/15447616618881	CHF 18.87	5 Varianten	Schulter- und Umhängetasche
+gid://shopify/Product/15447616881025	CHF 17.70	5 Varianten	Einfache Umhängetasche
+gid://shopify/Product/15447617012097	CHF 20.96	1 Varianten	Ma Deng Workwear M16 Umhängetasche
+gid://shopify/Product/15447617208705	CHF 18.17	4 Varianten	Blauer Kissenbezug mit Zierquaste
+gid://shopify/Product/15447617470849	CHF 25.69	60 Varianten	Samt-Lendenkissenbezug ohne Füllung (6er-Set)
