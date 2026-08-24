@@ -12511,3 +12511,10 @@ gid://shopify/Product/15479812489601	10->0	Herren Zehensteg-Sandalen
 gid://shopify/Product/15480411914625	84->2	Auto-Sitzkissen Winter
 gid://shopify/Product/15480460149121	67->0	4G Kinder Smartwatch mit GPS & Videoanruf
 gid://shopify/Product/15480460837249	88->0	Anti-Rutsch-Sitzkissen aus Seide
+gid://shopify/Product/15480571724161	47->0	MP3-Player mit Diktiergerät und USB-Speicher
+gid://shopify/Product/15481254936961	24->3	DT88 Smart-Armband
+gid://shopify/Product/15481256116609	21->1	Mi Band 5 Fitness-Tracker
+gid://shopify/Product/15481384599937	16->0	Grossmembran-Kondensatormikrofon für K-Song & Aufnahme
+gid://shopify/Product/15481681838465	15->3	Kabelloses Ansteckmikrofon für Mobilgeräte
+gid://shopify/Product/15481765233025	45->2	Rhythmuslicht-Modul mit Scrolling-Display
+gid://shopify/Product/15481800098177	70->0	Smart Bluetooth Ring für iPhone und Android
