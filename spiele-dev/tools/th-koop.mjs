@@ -73,7 +73,10 @@ const TUN = `function(was,a,b,c){
   else if(was==="wandT")doPlaceWall(a,b,c===0?0:1,arguments[4]);
   return true;}`
 
-mitSonden(datei, { koop: SONDE, koopWatch: WATCH, zustand: ZUSTAND, tun: TUN, zelle: ZELLE }, tmp)
+const BALLP = `function(was,a,b){
+  if(was==="setz"){BALL.x=a;BALL.z=155;BALL.vx=b;BALL.vz=0;BALL.torCd=0;return 1;}
+  return {x:+BALL.x.toFixed(2),z:+BALL.z.toFixed(2),stand:BALL.stand.slice()};}`
+mitSonden(datei, { koop: SONDE, koopWatch: WATCH, zustand: ZUSTAND, tun: TUN, zelle: ZELLE, ball: BALLP }, tmp)
 koopServer()
 
 const browser = await chromium.launch({ executablePath: CHROMIUM,
@@ -239,6 +242,28 @@ for (let i = 0; i < 12; i++) { await gast.waitForTimeout(400); await host.evalua
 const zh = await zelle(host, 9, 9, 0), zg = await zelle(gast, 9, 9, 0)
 pruef.push({ titel: 'Streit Boden (9|9)', ok: zh.b === zg.b, vorher: 'Host ' + zh.b, jetzt: 'Gast ' + zg.b })
 pruef.push({ titel: 'Streit Wand (9|9)', ok: zh.w === zg.w, vorher: 'Host ' + zh.w, jetzt: 'Gast ' + zg.w })
+
+/* ── Ball-Sync: der Host schiesst, der Gast muss den Ball rollen sehen ────── */
+const ballVon = async (p) => await p.evaluate(() => { try { return window.__th.ball() } catch (e) { return null } })
+const gVor = await ballVon(gast)
+await host.evaluate(() => window.__th.ball('setz', 40, 6))
+let gNach = gVor, hNach = null
+for (let i = 0; i < 15; i++) {
+  await gast.waitForTimeout(500); await host.evaluate(() => 1)
+  gNach = await ballVon(gast); hNach = await ballVon(host)
+  if (gNach && gVor && Math.abs(gNach.x - gVor.x) > 0.5) break
+}
+pruef.push({ titel: 'Ball rollt beim Gast', ok: !!(gNach && gVor && Math.abs(gNach.x - gVor.x) > 0.5),
+  vorher: gVor ? 'x ' + gVor.x : '-', jetzt: gNach ? 'x ' + gNach.x + ' (Host x ' + (hNach ? hNach.x : '?') + ')' : '-' })
+/* Tor vom Host aus erzwingen — der Stand muss zuverlaessig beim Gast ankommen */
+await host.evaluate(() => window.__th.ball('setz', 33, -8))
+let torOk = false, gStand = null
+for (let i = 0; i < 20; i++) {
+  await gast.waitForTimeout(500); await host.evaluate(() => 1)
+  const g = await ballVon(gast)
+  if (g && (g.stand[0] + g.stand[1]) > 0) { torOk = true; gStand = g.stand; break }
+}
+pruef.push({ titel: 'Tor-Stand beim Gast', ok: torOk, vorher: '0:0', jetzt: gStand ? gStand[0] + ':' + gStand[1] : 'nie angekommen' })
 
 /* ── Wiedereinstieg: Gast faellt raus und kommt MITTEN im Spiel zurueck ────
    Der haeufigste echte Koop-Fall (Handy sperrt, Tab weg, Funkloch) — und der,

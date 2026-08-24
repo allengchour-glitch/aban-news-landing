@@ -42,6 +42,25 @@
 - **⚠️ Sonden sind Template-Literale:** Backticks in KOMMENTAREN innerhalb der Sonde
   beenden das Literal — SyntaxError weit weg von der eigentlichen Stelle.
 
+## ⚽ Fussball auf dem Sportplatz — das Koop-Spielzeug (2026-08-24)
+- Grep-Anker: `var BALL=`, `function updBall`, `function tor(`, `m.t==="ball"`, `m.t==="tor"`
+- **Mechanik:** hineinlaufen schiesst (Richtung Spieler→Ball, 7,5 m/s), Reibung, Abprall an
+  den Seitenlinien, Tor zwischen den Pfosten (|z−155| < 2,4 an x 31/75) → Feuerwerk,
+  Jingle, Stand als „Blau : Rot". `stats.tore`/`stats.schuesse`; Mission + Erfolg
+  „Torjäger" (NUR hinten angefuegt — Missionen speichern den Pool-Index).
+- **Koop:** Host simuliert (er kennt die Gast-Position aus dem Steer-Kanal und erkennt
+  deren Schuesse mit), sendet den Ball alle 0,25 s per netFast — NUR solange er rollt —
+  und Tore per netSend. Der Gast zieht mit `netAnnehmen`/`netZiel` nach, demselben
+  Zwischenschritt-Verfahren wie bei den Figuren.
+- **End-to-end im Zwei-Seiten-Test belegt:** Ball rollt beim Gast (x 53 → 46,65 waehrend
+  der Host bei 40,59 war — das Nachziehen laeuft), Tor-Stand kommt an (0:0 → 0:1).
+  `th-koop` prueft jetzt NEUN Dinge.
+- **⚠️ IIFE-Sperre gilt auch fuer Spielobjekte:** `page.evaluate(() => BALL.x)` wirft
+  ReferenceError — BALL lebt im Spiel-Abschluss. Zugriff NUR ueber eine `mitSonden`-Sonde.
+- **⚠️ Der Loopback-Beitritt hat Glueckssträhnen:** 1 Verbindung in 3 Laeufen war diesmal
+  die Quote (je 6 Versuche). Nicht als Regression deuten — der Lauf, der verbindet,
+  liefert stabile Ergebnisse.
+
 ## 🍦🪁 Eiswagen + Drachen (2026-08-23)
 - Grep-Anker: `var EIS=`, `var DRACHEN=`, `m.t==="eis"`, `eisJingle`
 - **Eiswagen am Seepark (27|133):** Standort GESUCHT, nicht geschaetzt — gegen alle 1843
