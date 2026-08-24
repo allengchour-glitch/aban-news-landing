@@ -12629,3 +12629,9 @@ gid://shopify/Product/15499156980097	8->1	Leder Loafer mit Quasten für Herren
 gid://shopify/Product/15499305517441	10->3	Moderner chinesischer Teppich
 gid://shopify/Product/15499445961089	64->0	Wärmesohlen für Damen und Herren
 gid://shopify/Product/15499528208769	11->0	Kopfkissen für Nackenmassage
+gid://shopify/Product/15499808702849	25->0	Frosted Herrenschuhe Outdoor Casual Bergsteigen
+gid://shopify/Product/15499987779969	154->0	Tierabwehr-Kragen
+gid://shopify/Product/15499988861313	47->0	Paradiesbild
+gid://shopify/Product/15499989582209	51->0	Farbenfrohes Hasenbild
+gid://shopify/Product/15499991744897	132->0	Katze und Schmetterling
+gid://shopify/Product/15500071764353	176->1	Japanisch inspirierter Teller aus New Bone China
