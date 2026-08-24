@@ -1776,3 +1776,13 @@ gid://shopify/Product/15447942300033	CHF 18.55	7 Varianten	Strick-Cape-Schal fü
 gid://shopify/Product/15447942594945	CHF 18.02	7 Varianten	Ofenhandschuh & Topfuntersetzer-Set mit Mops-Print
 gid://shopify/Product/15447943020929	CHF 17.07	4 Varianten	Blumen-Snapback-Cap im Vintage-Stil
 gid://shopify/Product/15447943381377	CHF 17.53	5 Varianten	Retro Wollmütze im britischen Stil
+gid://shopify/Product/15447943643521	CHF 18.78	1 Varianten	Wasserdichter Fischerhut aus Bambusgeflecht
+gid://shopify/Product/15447943774593	CHF 37.24	1 Varianten	Rotlicht-Photon Haarpflegekappe
+gid://shopify/Product/15447943840129	CHF 20.70	2 Varianten	Vielseitiger Sonnenhut aus Stroh
+gid://shopify/Product/15447943971201	CHF 18.02	3 Varianten	Fischerhut mit gewellter Krempe
+gid://shopify/Product/15447944135041	CHF 17.69	4 Varianten	Breitkrempiger Sonnenhut aus Baumwolle
+gid://shopify/Product/15447944298881	CHF 17.18	2 Varianten	Breitkrempiger Sonnenhut im Korea-Stil
+gid://shopify/Product/15447944429953	CHF 17.20	3 Varianten	Winddichte Lei Feng Mütze mit Blättermuster
+gid://shopify/Product/15447944561025	CHF 16.80	4 Varianten	Baseball Cap mit Spitze & Schmetterling
+gid://shopify/Product/15447944692097	CHF 17.99	3 Varianten	Retro Colorblock Jazz Hut
+gid://shopify/Product/15447944823169	CHF 17.69	5 Varianten	Kariertes Kopftuch mit Spitze und Bindeband
