@@ -12651,3 +12651,6 @@ gid://shopify/Product/15500526092673	20->3	Puzzel-Kugel für Hunde
 gid://shopify/Product/15500896436609	20->0	Vintage Kontinental Strickkissenbezug in Beige
 gid://shopify/Product/15500911444353	36->0	Mini-Elektrokessel
 gid://shopify/Product/15500911903105	158->0	Tarnfarbener 50L Outdoor Rucksack
+gid://shopify/Product/15500928450945	19->0	Doppelfunktiger USB-Ladegerät
+gid://shopify/Product/15500934840705	8->0	Kissen mit englischem Buchstaben-Design
+gid://shopify/Product/15500936020353	17->1	USB-Kamm-Aromatherapie-Ofen
