@@ -12649,3 +12649,5 @@ gid://shopify/Product/15500508299649	85->0	Ärmelloses bedrucktes Freizeitkleid 
 gid://shopify/Product/15500509512065	101->0	Herren Hemd Leinen-Optik Langarm Casual
 gid://shopify/Product/15500526092673	20->3	Puzzel-Kugel für Hunde
 gid://shopify/Product/15500896436609	20->0	Vintage Kontinental Strickkissenbezug in Beige
+gid://shopify/Product/15500911444353	36->0	Mini-Elektrokessel
+gid://shopify/Product/15500911903105	158->0	Tarnfarbener 50L Outdoor Rucksack
