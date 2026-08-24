@@ -12537,3 +12537,7 @@ gid://shopify/Product/15491160703361	90->1	Casual Schuhe · Herren
 gid://shopify/Product/15491507683713	26->1	Halskette mit Buchstaben-Anhänger, vergoldet
 gid://shopify/Product/15493075075457	48->0	Magnetische Handyhalterung für Velo
 gid://shopify/Product/15493576524161	24->0	4-in-1 Elektrischer Nagelclipper für die ganze Familie
+gid://shopify/Product/15493705728385	105->0	Pailletten-Mesh-Rock im Celebrity-Stil
+gid://shopify/Product/15493750489473	82->3	Elektrische Mückenklatsche mit UV-Licht
+gid://shopify/Product/15493808193921	93->0	Ganzjahres-Plüsch-Sofabezug
+gid://shopify/Product/15493845156225	23->0	Elegantes ärmelloses Ballkleid
