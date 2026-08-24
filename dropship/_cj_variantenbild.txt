@@ -1224,3 +1224,24 @@ gid://shopify/Product/15448102633857	zugeordnet	20	Elegante Satinbluse mit Schle
 gid://shopify/Product/15448102732161	zugeordnet	66	Lässiges Hemd mit Revers und 3/4-Ärmeln
 gid://shopify/Product/15448102764929	zugeordnet	6	Damen Bluse mit Rüschen und Puffärmeln
 gid://shopify/Product/15448102797697	zugeordnet	4	Damen Puffärmel-Top mit Rüschensaum
+gid://shopify/Product/15448102896001	zugeordnet	8	Damen Bluse mit Blumenmuster und kurzen Ärmeln
+gid://shopify/Product/15448102994305	zugeordnet	25	Langarmbluse mit Klappentaschen und Reverskragen
+gid://shopify/Product/15448103027073	zugeordnet	8	Gestreifte Kurzarmbluse mit Schleife
+gid://shopify/Product/15448103125377	zugeordnet	45	V-Ausschnitt Bluse mit Knöpfen
+gid://shopify/Product/15448103158145	zugeordnet	8	Vielseitiges Denim-Hemd für Damen
+gid://shopify/Product/15448103223681	zugeordnet	90	Bluse mit Blumenmuster, locker geschnitten
+gid://shopify/Product/15448103321985	zugeordnet	6	Doppellagiges Baumwollhemd
+gid://shopify/Product/15448103354753	zugeordnet	60	Leichte Baumwoll-Leinen Cardigan Bluse
+gid://shopify/Product/15448103420289	zugeordnet	8	Loose Shirt mit 3/4-Ärmeln
+gid://shopify/Product/15448103813505	zugeordnet	16	Damen Sommerhemd mit Geometermuster
+gid://shopify/Product/15448103846273	zugeordnet	20	Kapuzenpullover · Modell 2
+gid://shopify/Product/15448103944577	zugeordnet	30	Glitzer-Hoodie mit Lebkuchenmann-Motiv
+gid://shopify/Product/15448103977345	bild-urls-tot
+gid://shopify/Product/15448104010113	zugeordnet	16	Gefüttertes Kapuzen-Sweatshirt für Damen
+gid://shopify/Product/15448104042881	zugeordnet	30	Kapuzenpullover für Damen
+gid://shopify/Product/15448104075649	zugeordnet	48	Lockeres Kapuzenpullover für Damen
+gid://shopify/Product/15448104141185	zugeordnet	24	Kapuzenpullover mit Kordelzug · Modell 2
+gid://shopify/Product/15448104173953	zugeordnet	48	Damen Hoodie im Dark-Style
+gid://shopify/Product/15448104206721	zugeordnet	24	V-Ausschnitt Strickpullover für Damen · Modell 2
+gid://shopify/Product/15448104239489	zugeordnet	40	Winter Hoodie für Damen
+gid://shopify/Product/15448104305025	zugeordnet	18	Unisex Kapuzenpullover mit Kordelzug
