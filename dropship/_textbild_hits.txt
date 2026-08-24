@@ -12534,3 +12534,4 @@ gid://shopify/Product/15490725020033	54->0	Ölgemälde
 gid://shopify/Product/15490725151105	16->0	Digitales Malen nach Zahlen: Individuelles Porträt
 gid://shopify/Product/15490775646593	62->0	Armband mit unregelmässigen schwarzen Achatperlen
 gid://shopify/Product/15491160703361	90->1	Casual Schuhe · Herren
+gid://shopify/Product/15491507683713	26->1	Halskette mit Buchstaben-Anhänger, vergoldet
