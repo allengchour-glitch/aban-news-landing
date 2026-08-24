@@ -1877,3 +1877,5 @@ gid://shopify/Product/15447958880641	CHF 25.45	30 Varianten	Partnerlook-Outfits 
 gid://shopify/Product/15447959077249	CHF 19.51	31 Varianten	Ferien-Look Partner-Hemd mit Blättermuster
 gid://shopify/Product/15447959241089	CHF 23.56	54 Varianten	Baumwoll-Sweatshirt mit Rundhals und langen Ärmeln
 gid://shopify/Product/15447959404929	CHF 22.46	49 Varianten	Chenille-Baumwolljacke mit Reissverschluss
+gid://shopify/Product/15447959568769	CHF 18.47	22 Varianten	Partnerlook Bikini blau-weiss gestreift
+gid://shopify/Product/15447959699841	CHF 22.32	30 Varianten	Weihnachts-Pullover für Damen
