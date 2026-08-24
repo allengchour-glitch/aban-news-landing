@@ -44,9 +44,17 @@ LEDGER = "dropship/_seiten_versandtext.txt"
 
 # Nur Seiten, auf denen Versand überhaupt Thema ist. Ein Blogartikel über Jade-Roller soll
 # nicht angefasst werden, bloss weil dort einmal «5–7 Tage» steht.
-VERSANDSEITEN = re.compile(r'^(versand|versand-lieferung|versand-lieferzeit|versand-lieferzeiten|'
-                           r'faq|faq-haufig-gestellte-fragen|rueckgabe|widerruf|agb|'
-                           r'30-tage-garantie|garantie|tracking)$')
+# ⚠️ 24.08.2026: Der Anker war zu eng. `faq` traf exakt — die beiden VEROEFFENTLICHTEN
+# Seiten heissen aber `faq-luxestyle` und `faq-en`. Der Lauf vom 12.08. reparierte drei
+# FAQ-Seiten, die heute alle UNVEROEFFENTLICHT sind, und liess die zwei sichtbaren stehen:
+# «CHF 4.90 für CH · 9.90 EUR für DE/AT … mit Code SHIP50» und «Flat CHF 4.90 within
+# Switzerland» — live sind es CHF 7.00, und es gibt genau EINEN Markt (Switzerland, ['CH']),
+# DE/AT koennen gar nicht auschecken. Der Kopfkommentar dieser Datei nennt CHF 4.90
+# ausdruecklich als falsch; die Seiten, auf denen es stand, hat er nie erreicht.
+# Jetzt praefixbasiert: jede Seite, deren Handle mit einem dieser Woerter BEGINNT.
+VERSANDSEITEN = re.compile(r'^(versand|faq|rueckgabe|widerruf|agb|'
+                           r'30-tage-garantie|garantie|tracking|lieferung|shipping|returns)'
+                           r'(-[a-z0-9-]+)?$')
 
 SCHWELLE = re.compile(r'(ab\s*CHF\s*)(65|49)(?![0-9.,])')
 PREIS = re.compile(r'CHF\s*4\.90(?![0-9])')

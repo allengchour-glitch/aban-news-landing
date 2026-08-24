@@ -35,6 +35,22 @@ def gql(q, v=None):
     return {}
 
 
+def alle(art, feld):
+    """Alle Seiten/Artikel, paginiert. Ohne das liest der Waechter nur die ersten 100."""
+    cur, raus = None, []
+    while True:
+        nach = ', after:"%s"' % cur if cur else ""
+        d = gql("query{ %s(first:100%s){ nodes{ handle isPublished body } "
+                "pageInfo{ hasNextPage endCursor } } }" % (art, nach))
+        blk = d.get("data", {}).get(feld, {}) or {}
+        raus.extend(blk.get("nodes", []) or [])
+        pi = blk.get("pageInfo") or {}
+        if not pi.get("hasNextPage"):
+            return raus
+        cur = pi.get("endCursor")
+        if not cur:
+            return raus
+
 def main():
     d = gql("""query{ codeDiscountNodes(first:100){ nodes{ codeDiscount{
              ... on DiscountCodeBasic { title status codes(first:5){ nodes{ code } } }
@@ -55,8 +71,11 @@ def main():
 
     funde = []
     for art, feld in (("pages", "pages"), ("articles", "articles")):
-        d = gql("query{ %s(first:100){ nodes{ handle isPublished body } } }" % art)
-        for n in d.get("data", {}).get(feld, {}).get("nodes", []):
+        # ⚠️ 24.08.2026: Stand hier ohne Paginierung als `first:100`. Der Shop hat 221
+        # Seiten — `faq-luxestyle` steht auf Platz 105, also hat dieser Waechter 121 Seiten
+        # NIE gesehen, und genau dort stand der abgelaufene Code LAUNCH30. Ein Waechter, der
+        # nur den Anfang der Liste liest, meldet «0 Fundstellen» und sieht dabei gesund aus.
+        for n in alle(art, feld):
             if not n.get("isPublished"):
                 continue
             for code in tot:

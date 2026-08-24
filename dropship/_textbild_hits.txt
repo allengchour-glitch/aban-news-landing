@@ -10937,3 +10937,34 @@ gid://shopify/Product/15504105570689	159->0	Herren Strickjacke verdickt
 gid://shopify/Product/15504105603457	10->0	Leder-Uhrenarmband mit geradem Anschluss
 gid://shopify/Product/15504105734529	113->0	Herren Strick-Cardigan – Locker & Dick
 gid://shopify/Product/15504105832833	24->0	Ultraschall Mückenabwehr Armbanduhr
+gid://shopify/Product/15504106029441	8->1	D18 Smart-Armband mit Herzfrequenzmesser
+gid://shopify/Product/15504106258817	28->2	Floh- und Zeckenhalsband für Katze
+gid://shopify/Product/15504106291585	32->1	Golfschwung Korrektur- und Trainingsseil
+gid://shopify/Product/15504106422657	8->0	Sushi-Boot aus Bambus im japanischen Stil
+gid://shopify/Product/15504106553729	106->1	Japanische Untersetzer aus Holz
+gid://shopify/Product/15504106619265	33->0	Pizzaroller und Teiglocher
+gid://shopify/Product/15504106684801	15->0	Halsband, Leine & Fliege – Lila Tupfen
+gid://shopify/Product/15504111665537	13->1	Klemmbausteine: Kreatives Auto-Modell (264 Teile)
+gid://shopify/Product/15504111862145	36->0	Reflektierendes Outdoor-Halsband mit Leine
+gid://shopify/Product/15504111894913	15->0	Fitness Armtrainer für Hand- und Unterarmkraft
+gid://shopify/Product/15504111927681	34->2	Feder-Servierplatte
+gid://shopify/Product/15504112845185	11->0	Halsband & Leine Set aus Denim mit Fliege
+gid://shopify/Product/15504113631617	13->1	Plateau-Pantoletten für Damen
+gid://shopify/Product/15504113893761	46->0	Holzbearbeitung 35MM Lochöffner
+gid://shopify/Product/15504113992065	40->0	Ratschen-Schraubendreher-Set RT-1639
+gid://shopify/Product/15504114221441	30->3	Holzbearbeitung Lochstanzer-Set
+gid://shopify/Product/15504114614657	11->0	Powerbank mit Kabel – leicht & schnell
+gid://shopify/Product/15504114712961	118->0	Leichte Sportsandalen mit Klettverschluss
+gid://shopify/Product/15504114975105	9->0	Handdampfglätter – Faltbar & Portabel
+gid://shopify/Product/15504115696001	75->0	Elegante High Heels mit Fersenriemen
+gid://shopify/Product/15504116449665	157->0	Mala Halskette mit 108 Natursteinperlen
+gid://shopify/Product/15504116777345	68->0	Vielseitiges Armband im geometrischen Stil
+gid://shopify/Product/15504117236097	9->1	UV-Maniküre-Gerät
+gid://shopify/Product/15504117498241	26->0	Titanstahl-Ring mit Emaille und grossem Edelstein
+gid://shopify/Product/15504117760385	35->0	Business Lederschuhe mit Höhenerhöhung
+gid://shopify/Product/15504117858689	32->1	Reise-Organizer für Kosmetik & mehr
+gid://shopify/Product/15504118088065	114->2	Vielseitige, rutschfeste Herrenschuhe
+gid://shopify/Product/15504118284673	10->2	Wäschekorb mit Netzabdeckung
+gid://shopify/Product/15504118317441	129->0	Luminous Wasserdichte Automatische Kalender-Skelettuhr
+gid://shopify/Product/15504119333249	80->0	Herrenuhr «Luminous Earth Starry»
+gid://shopify/Product/15504119497089	23->0	Drehbarer Becherhalter für Einwegbecher
