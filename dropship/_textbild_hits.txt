@@ -12561,3 +12561,10 @@ gid://shopify/Product/15495087882625	14->0	Multifunktionaler Haarschneider
 gid://shopify/Product/15495115276673	39->1	Nagelmodellage-Gel
 gid://shopify/Product/15495126483329	45->0	Britische Stiefeletten für Mädchen
 gid://shopify/Product/15495140442497	56->0	Rundes LED-Rücklicht für Velos
+gid://shopify/Product/15495141949825	28->1	BANGE Herren Rucksack – Business & Reisen
+gid://shopify/Product/15495187595649	52->0	Multifunktions-Abisolierzange 5-in-1
+gid://shopify/Product/15495190577537	59->0	Keramik Haarglättbürste
+gid://shopify/Product/15495192052097	37->0	Milan Mesh Quarzuhr für Damen
+gid://shopify/Product/15495194083713	19->0	Anti-Rutsch Yoga-Matte Wildlederoptik
+gid://shopify/Product/15495195132289	34->3	Elastischer Sofaüberzug – Modern & Minimalistisch
+gid://shopify/Product/15495214432641	18->0	Katzenjagdversteck
