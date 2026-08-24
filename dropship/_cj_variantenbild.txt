@@ -1172,3 +1172,28 @@ gid://shopify/Product/15448080777601	bild-urls-tot
 gid://shopify/Product/15448080843137	zugeordnet	10	Locker geschnittenes Langarmshirt für Damen
 gid://shopify/Product/15448080941441	zugeordnet	24	Glitzer-Mesh Langarmshirt
 gid://shopify/Product/15448081039745	zugeordnet	16	Herz-Strass Langarmshirt mit Mesh-Ärmeln
+gid://shopify/Product/15448081072513	zugeordnet	15	Rundhals Langarm-Pullover für Damen
+gid://shopify/Product/15448081105281	zugeordnet	28	Strick-Cardigan für Herbst und Winter
+gid://shopify/Product/15448081138049	zugeordnet	6	Damen-Top mit Rundhals und Polka-Dots
+gid://shopify/Product/15448081203585	zugeordnet	5	Strick-Cardigan mit Lochmuster · Modell 2
+gid://shopify/Product/15448081269121	zugeordnet	18	Chiffonbluse mit Schriftzug-Print
+gid://shopify/Product/15448081301889	zugeordnet	60	Vielseitiges Langarmhemd mit Reverskragen
+gid://shopify/Product/15448088281473	zugeordnet	30	V-Neck Sport-Shirt Kurzarm – Peach
+gid://shopify/Product/15448088314241	zugeordnet	12	U-Ausschnitt Slimming Sport-BH
+gid://shopify/Product/15448088347009	zugeordnet	48	Sport-Top mit starkem Halt und Polsterung
+gid://shopify/Product/15448088379777	zugeordnet	25	Dopamine Fitness-BH mit herausnehmbaren Pads
+gid://shopify/Product/15448088412545	zugeordnet	24	Sportliches Camisole für Sommer-Workouts
+gid://shopify/Product/15448088445313	zugeordnet	24	Yoga-Sport-BH mit dünnen Trägern
+gid://shopify/Product/15448088478081	zugeordnet	25	Wellen-Strickweste mit Ruffle-Details
+gid://shopify/Product/15448089624961	zugeordnet	24	Slim-Fit Sporttop mit Reissverschluss – Peach Gold
+gid://shopify/Product/15448092279169	zugeordnet	8	Elegante V-Neck Bluse mit Rüschen & Laternenärmeln
+gid://shopify/Product/15448092311937	zugeordnet	56	Bedrucktes Langarmshirt mit Reverskragen
+gid://shopify/Product/15448092377473	zugeordnet	3	Retro V-Neck Besticktes Langarm-Top
+gid://shopify/Product/15448092443009	zugeordnet	4	Patchwork Hoodie Pullover für Damen
+gid://shopify/Product/15448092475777	zugeordnet	9	Langarmshirt im Post-Apokalypse-Stil
+gid://shopify/Product/15448092508545	zugeordnet	9	Mesh-Cardigan mit Laternenärmeln
+gid://shopify/Product/15448092541313	zugeordnet	6	Elegantes Spitzen-Top mit langen Ärmeln
+gid://shopify/Product/15448092574081	zugeordnet	4	Lyocell Off-Shoulder Langarmshirt
+gid://shopify/Product/15448092606849	zugeordnet	24	Gestreiftes Langarmshirt im Color-Blocking-Stil
+gid://shopify/Product/15448092672385	zugeordnet	55	Milchseide Langarmshirt mit eckigem Ausschnitt
+gid://shopify/Product/15448092737921	zugeordnet	9	Langarm-Baselayer Top für Damen Slim-Fit

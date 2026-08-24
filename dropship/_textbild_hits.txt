@@ -10213,3 +10213,4 @@ gid://shopify/Product/15493933629825	24->0	Herren Sweatshirt mit Stehkragen
 gid://shopify/Product/15495722533249	78->0	Trägerloses Spitzenkleid für Damen
 gid://shopify/Product/15497429057921	39->1	Bequeme Baby-Sportschuhe mit Klettverschluss
 gid://shopify/Product/15497432498561	11->0	Klassische, wasserdichte Quarzuhr mit Datumsanzeige
+gid://shopify/Product/15500508299649	85->0	Ärmelloses bedrucktes Freizeitkleid mit V-Ausschnitt
