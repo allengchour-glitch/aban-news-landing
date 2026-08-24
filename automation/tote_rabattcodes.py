@@ -11,7 +11,7 @@ Fehlermeldung: ein Kaufabbruch, den niemand je bemerkt hätte.
 
 Meldet nur, ändert nichts (der Ersatztext braucht eine Entscheidung: welcher Code passt?).
 """
-import json, os, subprocess, sys
+import json, os, re, subprocess, sys
 
 SHOP = "au3j0y-hq.myshopify.com"
 TOK = os.environ.get("SHOPIFY_ADMIN_TOKEN") or open("/tmp/cj_shop_token.txt").read().strip()
@@ -53,10 +53,12 @@ def alle(art, feld):
 
 def main():
     d = gql("""query{ codeDiscountNodes(first:100){ nodes{ codeDiscount{
-             ... on DiscountCodeBasic { title status codes(first:5){ nodes{ code } } }
+             ... on DiscountCodeBasic { title status codes(first:5){ nodes{ code } }
+               minimumRequirement{ ... on DiscountMinimumSubtotal{
+                 greaterThanOrEqualToSubtotal{ amount } } } }
              ... on DiscountCodeBxgy  { title status codes(first:5){ nodes{ code } } }
              ... on DiscountCodeFreeShipping { title status codes(first:5){ nodes{ code } } } } } } }""")
-    tot = {}
+    tot, schwelle = {}, {}
     for n in d.get("data", {}).get("codeDiscountNodes", {}).get("nodes", []):
         c = n.get("codeDiscount") or {}
         if c.get("status") in ("EXPIRED",):
@@ -64,6 +66,12 @@ def main():
                 # Sehr kurze Codes würden in normalem Text zufällig treffen.
                 if len(x["code"]) >= 5:
                     tot[x["code"]] = c.get("title") or ""
+        elif c.get("status") == "ACTIVE":
+            mn = ((c.get("minimumRequirement") or {})
+                  .get("greaterThanOrEqualToSubtotal") or {}).get("amount")
+            for x in (c.get("codes") or {}).get("nodes", []):
+                if len(x["code"]) >= 5 and mn:
+                    schwelle[x["code"]] = float(mn)
     if not tot:
         print("FERTIG: keine abgelaufenen Codes im Shop.")
         return
@@ -78,12 +86,50 @@ def main():
         for n in alle(art, feld):
             if not n.get("isPublished"):
                 continue
+            body = n.get("body") or ""
             for code in tot:
-                if code in (n.get("body") or ""):
-                    funde.append((art, n["handle"], code))
-    for art, h, code in funde:
-        print(f"  ⚠️ {art[:-1]} /{h} bewirbt den abgelaufenen Code {code}")
-    print(f"FERTIG: {len(funde)} Fundstelle(n).")
+                if code in body:
+                    funde.append((art, n["handle"], f"bewirbt den abgelaufenen Code {code}"))
+            # ⚠️ 24.08.2026 (BUNDLE20-Lehre): Ein AKTIVER Code mit falsch beworbener
+            # Schwelle fiel bisher durch jedes Raster — drei Ratgeber rechneten Koerbe
+            # vor, die die 80er-Schwelle nie erreichen («Wellness-Box CHF 79.80 mit
+            # BUNDLE20»: 20 Rappen zu wenig), einer nannte «ab CHF 60». Deshalb wird
+            # jede Zahl NEBEN einem aktiven Code gegen dessen minimumRequirement geprueft:
+            #   a) «ab CHF X» in Code-Naehe, X != Schwelle → falsche Schwelle beworben
+            #   b) «CHF Y … mit CODE» mit Y < Schwelle → vorgerechneter Korb, der den
+            #      Code nicht einloesen kann
+            for code, mn in schwelle.items():
+                for m in re.finditer(re.escape(code), body):
+                    # ⚠️ Blosse NAEHE reicht nicht: Der erste Entwurf pruefte ±160 Zeichen
+                    # und meldete 52 Fehltreffer — «Gratis-Versand ab CHF 50» steht fast
+                    # immer im selben Absatz wie WELCOME10, «ab CHF 24.90» war ein
+                    # Produktpreis, «ab CHF 80» die Schwelle des NACHBAR-Codes in derselben
+                    # Liste. Geprueft wird nur der SATZ des Codes: vorwaerts bis zum
+                    # naechsten Satz-/Listenende, und Versand-Saetze sind ausgenommen.
+                    rest = body[m.end():m.end() + 120]
+                    satz = re.split(r"</li>|</p>|<h\d|(?<=[a-z0-9»])\.\s", rest)[0]
+                    if re.search(r"[Vv]ersand|[Gg]ratis|kostenlos|[Ll]ieferung", satz):
+                        satz = ""
+                    for z in re.finditer(r"ab\s*CHF\s*(\d+(?:\.\d+)?)", satz):
+                        if abs(float(z.group(1)) - mn) > 0.005:
+                            funde.append((art, n["handle"],
+                                f"bewirbt {code} mit «ab CHF {z.group(1)}», Schwelle ist CHF {mn:g}"))
+                    um = body[max(0, m.start() - 160):m.end()]
+                    # [^<] statt [^.]: «= CHF 44.80. Mit Code BUNDLE20» hat einen Satzpunkt
+                    # zwischen Betrag und Code — der echte Fund von heute waere sonst durch-
+                    # gerutscht. Versand-/Gratis-Betraege im Zwischenstueck sind ausgenommen.
+                    for z in re.finditer(r"CHF\s*(\d+(?:\.\d+)?)([^<]{0,60})[Mm]it\s+(?:[Cc]ode\s+)?(?:<[^>]+>)?" + re.escape(code), um):
+                        # Das Wort «Versand/Gratis» steht oft VOR dem Betrag
+                        # («Gratis-Versand ab CHF 50. Mit Code …») — 30 Zeichen davor mitpruefen.
+                        if re.search(r"[Vv]ersand|[Gg]ratis|kostenlos",
+                                     um[max(0, z.start() - 30):z.end()]):
+                            continue
+                        if float(z.group(1)) < mn:
+                            funde.append((art, n["handle"],
+                                f"rechnet {code} auf einen Korb von CHF {z.group(1)} vor — Schwelle ist CHF {mn:g}"))
+    for art, h, was in sorted(set(funde)):
+        print(f"  ⚠️ {art[:-1]} /{h} {was}")
+    print(f"FERTIG: {len(set(funde))} Fundstelle(n).")
     return 0
 
 
