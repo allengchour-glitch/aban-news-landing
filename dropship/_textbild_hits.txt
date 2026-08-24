@@ -12617,3 +12617,5 @@ gid://shopify/Product/15497437184385	25->0	Einfarbige One-Strap Sandalen für Ou
 gid://shopify/Product/15497440985473	121->0	DIY Digital Ölgemälde Blumenlandschaft
 gid://shopify/Product/15497443410305	17->1	Herz-Armband mit Kleeblatt-Zirkon
 gid://shopify/Product/15497449243009	63->0	Sitzsack Bezug "Lazy Sofa"
+gid://shopify/Product/15497492365697	14->1	Multifunktionaler Werkzeughaken für Gürtel
+gid://shopify/Product/15497533686145	23->1	Sicherheits-Schuhe
