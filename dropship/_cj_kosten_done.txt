@@ -1820,3 +1820,4 @@ gid://shopify/Product/15447949640065	CHF 16.80	12 Varianten	Baseball Cap mit Son
 gid://shopify/Product/15447949738369	CHF 17.34	4 Varianten	Verwaschene Baseball-Cap für Damen
 gid://shopify/Product/15447949836673	CHF 17.07	5 Varianten	Gestrickte Baseballkappe mit Ohrenriemen
 gid://shopify/Product/15447949934977	CHF 29.72	1 Varianten	Baseball Cap für Damen und Herren
+gid://shopify/Product/15447950066049	CHF 29.72	1 Varianten	Baseball Cap für Pferdeliebhaber
