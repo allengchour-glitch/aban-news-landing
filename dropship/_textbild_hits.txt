@@ -12647,3 +12647,5 @@ gid://shopify/Product/15500409700737	189->0	Digitalgemälde auf Leinwand
 gid://shopify/Product/15500484968833	21->0	Mini-Staubsauger
 gid://shopify/Product/15500508299649	85->0	Ärmelloses bedrucktes Freizeitkleid mit V-Ausschnitt
 gid://shopify/Product/15500509512065	101->0	Herren Hemd Leinen-Optik Langarm Casual
+gid://shopify/Product/15500526092673	20->3	Puzzel-Kugel für Hunde
+gid://shopify/Product/15500896436609	20->0	Vintage Kontinental Strickkissenbezug in Beige
