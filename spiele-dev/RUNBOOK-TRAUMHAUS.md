@@ -23,6 +23,25 @@
 - Geprueft: 844x390, 915x412, 740x360, 667x375, 812x375, 640x360, 1024x600, 896x414,
   720x320 — jeweils 0 Ueberschneidungen, 0 ueber den Rand.
 
+## 🍦🪁 Eiswagen + Drachen (2026-08-23)
+- Grep-Anker: `var EIS=`, `var DRACHEN=`, `m.t==="eis"`, `eisJingle`
+- **Eiswagen am Seepark (27|133):** Standort GESUCHT, nicht geschaetzt — gegen alle 1843
+  Szene-Kaesten (auch prozedurale Baenke/Promenade, die `_gebaeude` fehlen), gegen die
+  Strassenbaender und ausserhalb des Wassers; von sieben Treffern der stadtzugewandte.
+  Kauf per Naehe (<3,5 m): 3 $, Jingle, Herzen, `stats.eis`, Erfolg „Schleckmaul";
+  Brunnen-Muster fuer Koop. Der Wagen steht MIT `fest` in `_gebaeude` — th-pruef prueft
+  ihn mit, der Aufraeumer laesst ihn stehen. Kollider via `addSolid`.
+- **⚠️ `freiPlatz` IST IN DER SONDEN-EBENE NICHT SICHTBAR** (anderer Abschluss). Eine
+  Sonde, die es aufruft, wirft ReferenceError — und `th-augen` hat seine
+  Standort-Suche deshalb still uebersprungen (typeof-Guard). Fuer Platzsuchen aus
+  Sonden: Szene-Kaesten selbst schneiden + `window._bandFrei`.
+- **⚠️ FLACHE DAECHER SIND AUF AUGENHOEHE UNSICHTBAR** — eine Ebene von der Kante ist
+  eine Linie. Fuer Staende/Schirme: flacher Kegel statt Plane.
+- **Drachen ueber dem Sportplatz:** 2 Stueck, Achterbahnen am Himmel, Schnur mit
+  Durchhang (Linie, 8 Punkte), flatternder Schwanz (Linie, 6 Punkte). Nur die
+  Drachen-MESHES tragen `_bewegt`; die Linien haben stehende Matrizen und aendern nur
+  Geometrie — friert `_einfrieren()` gefahrlos ein. 6 Zeichenaufrufe gesamt.
+
 ## 🦆 Ambiente-Paket: Enten, Fahnen, Falter, Nachthimmel (2026-08-23)
 - Grep-Anker: `var ENTEN=`, `var FAHNEN=`, `var FALTER=`, `var NACHT=`, `m.t==="enten"`
 - **Enten** (5, auf 3 InstancedMesh): kreisen auf dem Seepark-See; wer ans Ufer tritt

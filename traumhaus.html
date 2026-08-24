@@ -7488,6 +7488,105 @@ function updNachtHimmel(dt,now){
         N9.st.material.opacity=0;N9.st.visible=true;N9.lauf=1.4;}}
   }else if(N9.st.visible){N9.st.visible=false;N9.lauf=0;}
 }
+/* ── 🍦 EISWAGEN am Seepark ──────────────────────────────────────────────────
+   Standort (27|133) ist GESUCHT, nicht geschaetzt: gegen alle 1843 Szene-Kaesten
+   (auch die prozeduralen Baenke und die Promenade, die in `_gebaeude` fehlen),
+   gegen die Strassenbaender und ausserhalb des Wassers geprueft — von sieben
+   freien Plaetzen der stadtzugewandte. Wer naeher als 3,5 m herantritt, kauft
+   fuer 3 $ eine Runde: Jingle, Herzen, stats.eis (Erfolg „Schleckmaul").
+   Brunnen-Muster fuer Koop. Der Wagen steht in `_gebaeude` mit `fest` — so
+   prueft th-pruef ihn mit, aber der Aufraeumer schiebt ihn nicht weg. */
+var EIS=(function(){
+  var X=27,Z=133,g=new THREE.Group();
+  var korb=new THREE.Mesh(new THREE.BoxGeometry(1.9,1.0,1.1),stdMat(0xf6f1e4,0.75));
+  korb.position.y=0.75;korb.castShadow=true;g.add(korb);
+  [[-0.62],[0.62]].forEach(function(w){
+    var rad=new THREE.Mesh(new THREE.CylinderGeometry(0.28,0.28,0.12,10),stdMat(0x3a3f47,0.6));
+    rad.rotation.x=Math.PI/2;rad.position.set(w[0],0.28,0.62);g.add(rad);});
+  [[-0.8],[0.8]].forEach(function(px){
+    var st=new THREE.Mesh(new THREE.CylinderGeometry(0.035,0.035,1.3,6),stdMat(0x8a5a34,0.6));
+    st.position.set(px[0],1.85,0);g.add(st);});
+  var cv=document.createElement("canvas");cv.width=64;cv.height=32;
+  var c2=cv.getContext("2d");
+  for(var i=0;i<8;i++){c2.fillStyle=i%2?"#fff":"#d84a5a";c2.fillRect(i*8,0,8,32);}
+  /* ⚠️ Ein FLACHES Dach ist auf Augenhoehe unsichtbar — man sieht die Ebene
+     von der Kante. Ein flacher Kegel liest sich aus jedem Winkel als
+     gestreifter Schirm. */
+  var dach=new THREE.Mesh(new THREE.ConeGeometry(1.35,0.55,10),
+    new THREE.MeshStandardMaterial({map:new THREE.CanvasTexture(cv),roughness:0.85}));
+  dach.position.y=2.62;dach.castShadow=true;g.add(dach);
+  var kugel=new THREE.Mesh(new THREE.SphereGeometry(0.14,8,6),stdMat(0xf2c4d0,0.5));
+  kugel.position.set(0.4,1.42,0.3);g.add(kugel);
+  var tuete=new THREE.Mesh(new THREE.ConeGeometry(0.11,0.3,7),stdMat(0xd8a86a,0.7));
+  tuete.rotation.x=Math.PI;tuete.position.set(0.4,1.2,0.3);g.add(tuete);
+  g.position.set(X,0,Z);g.rotation.y=-0.6;
+  g.userData.datei="eiswagen(prozedural)";g.userData.fest=true;
+  g.userData.nieAusblenden=true;scene.add(g);
+  if(!window._gebaeude)window._gebaeude=[];window._gebaeude.push(g);
+  addSolid(X,Z,2.1,1.4);
+  return {x:X,z:Z,cd:8};
+})();
+function eisJingle(){
+  beep(784,.10,"square",.03);
+  setTimeout(function(){beep(988,.10,"square",.03);},130);
+  setTimeout(function(){beep(1175,.16,"square",.03);},260);
+}
+function updEis(dt,now){
+  EIS.cd-=dt;
+  if((!MPs||mpHost)&&EIS.cd<=0){for(var q=0;q<sims.length;q++){var sq=sims[q];
+    if(!sq.mesh.visible||Math.hypot(sq.x-EIS.x,sq.z-EIS.z)>=3.5)continue;
+    if(geld<3){EIS.cd=10;hint("🍦 Eis kostet 3 $ — zu wenig Geld");break;}
+    EIS.cd=25;geld-=3;geldSend();stats.eis=(stats.eis||0)+1;updHUD();
+    if(typeof hearts==="function")hearts(EIS.x,EIS.z);simEmoji(sq,"🍦");
+    eisJingle();hint("🍦 Eine Kugel für alle! −3 $");
+    if(MPs)netSend({t:"eis",si:q});break;}}
+}
+/* ── 🪁 DRACHEN ueber dem Sportplatz ─────────────────────────────────────────
+   Zwei Drachen in Achterbahnen am Himmel, Schnur mit Durchhang bis zum Rasen,
+   flatternder Schwanz. Nur die Drachen-MESHES bewegen ihre Objektmatrix und
+   tragen _bewegt; Schnur und Schwanz sind Linien mit stehender Matrix, deren
+   GEOMETRIE sich aendert — das friert _einfrieren() gefahrlos ein. */
+var DRACHEN=(function(){
+  function drachenTex(f1,f2){var cv=document.createElement("canvas");cv.width=cv.height=32;
+    var c=cv.getContext("2d");c.fillStyle=f1;c.fillRect(0,0,32,32);
+    c.fillStyle=f2;c.beginPath();c.moveTo(16,0);c.lineTo(32,16);c.lineTo(16,32);c.closePath();c.fill();
+    c.strokeStyle="#3a3330";c.lineWidth=1.5;
+    c.beginPath();c.moveTo(16,0);c.lineTo(16,32);c.moveTo(0,16);c.lineTo(32,16);c.stroke();
+    return new THREE.CanvasTexture(cv);}
+  var L=[];
+  [[40,149,"#d84a5a","#f2c040",0],[66,162,"#2f6fb8","#8ad0f0",2.6]].forEach(function(k){
+    var m=new THREE.Mesh(new THREE.PlaneGeometry(1.1,1.5),
+      new THREE.MeshStandardMaterial({map:drachenTex(k[2],k[3]),side:THREE.DoubleSide,roughness:0.8}));
+    m._bewegt=true;m.userData.nieAusblenden=true;scene.add(m);
+    function linie(farbe,n){
+      var g=new THREE.BufferGeometry();
+      g.setAttribute("position",new THREE.BufferAttribute(new Float32Array(n*3),3));
+      var l=new THREE.Line(g,new THREE.LineBasicMaterial({color:farbe}));
+      l.userData.nieAusblenden=true;l.frustumCulled=false;scene.add(l);return l;}
+    L.push({ax:k[0],az:k[1],ph:k[4],m:m,schnur:linie(0x5a5248,8),schwanz:linie(0xe8973a,6),lx:k[0],lz:k[1]});
+  });
+  return L;
+})();
+function updDrachen(dt,now){
+  var t=now*0.001;
+  for(var i=0;i<DRACHEN.length;i++){var d=DRACHEN[i];
+    var kx=d.ax+Math.sin(t*0.55+d.ph)*5.5,
+        kz=d.az+Math.sin(t*0.31+d.ph*1.3)*2.5,
+        ky=11+Math.sin(t*0.8+d.ph)*1.8;
+    var vx=kx-d.lx,vz=kz-d.lz;d.lx=kx;d.lz=kz;
+    d.m.position.set(kx,ky,kz);
+    d.m.rotation.set(-0.35,Math.atan2(vx,vz),Math.max(-0.6,Math.min(0.6,vx*3)));
+    var sp=d.schnur.geometry.attributes.position.array;
+    for(var p=0;p<8;p++){var u=p/7,sag=Math.sin(u*Math.PI)*1.6;
+      sp[p*3]=d.ax+(kx-d.ax)*u;sp[p*3+1]=ky*u-sag*(1-u*0.4);sp[p*3+2]=d.az+(kz-d.az)*u;}
+    d.schnur.geometry.attributes.position.needsUpdate=true;
+    var tp=d.schwanz.geometry.attributes.position.array;
+    for(var w=0;w<6;w++){var v=w/5;
+      tp[w*3]=kx-Math.sin(d.m.rotation.y)*v*1.6+Math.sin(t*4+w)*0.25*v;
+      tp[w*3+1]=ky-0.8-v*1.4+Math.sin(t*5+w*1.4)*0.2*v;
+      tp[w*3+2]=kz-Math.cos(d.m.rotation.y)*v*1.6+Math.cos(t*4.5+w)*0.25*v;}
+    d.schwanz.geometry.attributes.position.needsUpdate=true;}
+}
 // ===================== Katalog =====================
 var GL=THREE.GLTFLoader?new THREE.GLTFLoader():null;
 var MODELS={};
@@ -7653,7 +7752,8 @@ var ACH=[
  ["abnahme3","🏰","Traumvilla","Wohnstufe Traumvilla erreicht",function(){return wohnstufe>=3;}],
  ["abnahme5","👑","Palastherr","Hoechste Wohnstufe erreicht",function(){return wohnstufe>=5;}],
  ["missmeister","🔥","Serien-Meister","3 Tage in Folge alle Tages-Missionen",function(){return missSerie+(missHeute&&missHeute.bonus?1:0)>=3;}],
- ["enten","🦆","Entenfreund","Die Enten am See besucht",function(){return (stats.enten||0)>=1;}]
+ ["enten","🦆","Entenfreund","Die Enten am See besucht",function(){return (stats.enten||0)>=1;}],
+ ["schleckmaul","🍦","Schleckmaul","3 Eis am Seepark gekauft",function(){return (stats.eis||0)>=3;}]
 ];
 function hausWert(){var w=0;
   furn.forEach(function(f9){w+=Math.round(f9.def.cost*(1+0.6*((f9.lv||1)-1)));});
@@ -8305,6 +8405,8 @@ function onNetMsg(m){
   else if(m.t==="coupBeute"&&!mpHost){COUP.beute=m.v|0;} /* 🩹 Schwarm-4: Gast zeigt die Host-Beute im Coup-HUD */
   else if(m.t==="coasterStart"){var C9=window._coaster;if(C9&&!C9.faehrt){C9.faehrt=true;C9.v=5;C9.t=0;C9.runden=0;}}
   else if(m.t==="coaster"&&!mpHost){var C8=window._coaster;if(C8){C8.t=m.tt;C8.v=m.v;C8.faehrt=true;}}
+  else if(m.t==="eis"&&!mpHost){if(typeof hearts==="function")hearts(EIS.x,EIS.z);
+    if(sims[m.si])simEmoji(sims[m.si],"🍦");eisJingle();hint("🍦 Eine Kugel für alle! −3 $");}
   else if(m.t==="enten"&&!mpHost){ENTEN.ziel={x:m.x,z:m.z};ENTEN.zielT=8;
     if(typeof hearts==="function")hearts(m.x,m.z);if(sims[m.si])simEmoji(sims[m.si],"🦆");
     beep(660,.08,"sine",.04);hint("🦆 Die Enten kommen angeschwommen!");}
@@ -11152,7 +11254,7 @@ function loop(now){
       _ws.material.opacity+=(_zielO-_ws.material.opacity)*Math.min(1,dt*0.8);
       _ws.visible=_ws.material.opacity>0.02;
     }
-    updHearts(dt);updPlopps(dt);updWetter(dt);updVerkehr(dt);updLandbus(dt);updHafen(dt,now);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);updVerstecken(dt);updTrag(dt);updBankLeute(dt);updFest(dt,now);updImmo(dt);updEnten(dt,now);updFahnen(dt,now);updFalter(dt,now);updNachtHimmel(dt,now);
+    updHearts(dt);updPlopps(dt);updWetter(dt);updVerkehr(dt);updLandbus(dt);updHafen(dt,now);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);updVerstecken(dt);updTrag(dt);updBankLeute(dt);updFest(dt,now);updImmo(dt);updEnten(dt,now);updFahnen(dt,now);updFalter(dt,now);updNachtHimmel(dt,now);updEis(dt,now);updDrachen(dt,now);
     document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("minimap").style.display=(running&&!buildMode)?"block":"none";
     /* 🩹 Schwarm-6: lief JEDEN Frame mit getComputedStyle/getBoundingClientRect
