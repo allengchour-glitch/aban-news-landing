@@ -1381,3 +1381,26 @@ gid://shopify/Product/15448115413377	zugeordnet	11	Rückenbetonender Einteiler m
 gid://shopify/Product/15448115544449	zugeordnet	15	Damen Yoga Jumpsuit mit Mock-Neck
 gid://shopify/Product/15448115609985	zugeordnet	9	Damen trägerloser Yoga-Einteiler
 gid://shopify/Product/15448115642753	zugeordnet	10	Spitzen-Body mit Blumenmuster
+gid://shopify/Product/15448115708289	zugeordnet	20	Yoga Bodysuit Shorts-Stil
+gid://shopify/Product/15448115773825	bild-urls-tot
+gid://shopify/Product/15448115839361	zugeordnet	12	Taillierter Kurzarm-Body
+gid://shopify/Product/15448115937665	zugeordnet	9	Kurzer Yoga Jumpsuit mit Überkreuzträgern
+gid://shopify/Product/15448116003201	zugeordnet	65	Eleganter ärmelloser Jumpsuit mit weitem Bein
+gid://shopify/Product/15448116035969	zugeordnet	9	Kurzer Yoga-Jumpsuit mit Reissverschluss
+gid://shopify/Product/15448116068737	zugeordnet	65	Nahtloser V-Ausschnitt Yoga Jumpsuit
+gid://shopify/Product/15448116101505	zugeordnet	48	Ärmelloser Jumpsuit mit V-Ausschnitt – S-Beige White
+gid://shopify/Product/15448116134273	zugeordnet	15	Figurbetonter Einteiler mit Blumenprint
+gid://shopify/Product/15448116167041	zugeordnet	20	Nahtloser Body mit Po-Lifting-Effekt
+gid://shopify/Product/15448494440833	zugeordnet	6	UV400 Sonnenbrille mit dickem Rahmen
+gid://shopify/Product/15448494473601	zugeordnet	8	Trendige kleine quadratische Sonnenbrille
+gid://shopify/Product/15448494571905	zugeordnet	4	Sonnenhut für Outdoor-Abenteuer
+gid://shopify/Product/15448494604673	zugeordnet	3	Retro Sonnenhut für Herbst und Winter
+gid://shopify/Product/15448494670209	zugeordnet	3	Handgestrickter Raffia Strohhut mit flacher Krone
+gid://shopify/Product/15448495063425	zugeordnet	15	Partnerlook Pullover für Mutter und Tochter
+gid://shopify/Product/15448495194497	zugeordnet	20	Luftiges Sporttop mit Kordelzug
+gid://shopify/Product/15448495260033	zugeordnet	3	Eleganter Strick-Pullover mit Zopfmuster
+gid://shopify/Product/15448495292801	zugeordnet	21	High-Impact Push-Up Sport-BH
+gid://shopify/Product/15448495325569	bild-urls-tot
+gid://shopify/Product/15448495391105	zugeordnet	24	Sport-Yoga-Set mit Shorts und Bra
+gid://shopify/Product/15448495423873	zugeordnet	36	Nahtloses Cross-Back Yoga-Set für Damen
+gid://shopify/Product/15448495456641	zugeordnet	8	Designer-Stil Polka-Dot Spitze Camisole

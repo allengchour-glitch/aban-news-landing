@@ -1686,3 +1686,25 @@ gid://shopify/Product/15447924507009	CHF 22.32	10 Varianten	Warme, wasserdichte 
 gid://shopify/Product/15447924638081	CHF 17.45	3 Varianten	Warme Winter-Skihandschuhe mit Touchscreen
 gid://shopify/Product/15447924867457	CHF 17.12	6 Varianten	Gefütterte Strickhandschuhe mit Touchscreen-Funkti
 gid://shopify/Product/15447925064065	CHF 17.87	5 Varianten	Kaschmir-Handschuhe mit halben Fingern und Blumenm
+gid://shopify/Product/15447925227905	CHF 18.92	2 Varianten	USB-beheizbare, wasserdichte Wildleder-Fingerhands
+gid://shopify/Product/15447925358977	CHF 17.45	6 Varianten	Winter Handschuhe in Kaschmir-Optik für Damen
+gid://shopify/Product/15447925522817	CHF 17.72	6 Varianten	Winter Fleece-gefütterte Ski-Handschuhe
+gid://shopify/Product/15447925752193	CHF 19.78	1 Varianten	Unisex Touchscreen-Handschuhe
+gid://shopify/Product/15447925916033	CHF 20.67	20 Varianten	Warme Touchscreen-Handschuhe für Ski und Velo
+gid://shopify/Product/15447926079873	CHF 22.09	3 Varianten	USB Beheizbare Halbfinger-Handschuhe
+gid://shopify/Product/15447926243713	CHF 20.97	4 Varianten	Warme, winddichte Kaschmir-Fäustlinge
+gid://shopify/Product/15447926342017	CHF 19.01	8 Varianten	Katzenpfoten-Handschuhe Plüsch
+gid://shopify/Product/15447926473089	CHF 17.84	1 Varianten	Halbfinger-Fitnesshandschuhe für Krafttraining
+gid://shopify/Product/15447926636929	CHF 21.87	24 Varianten	Damen-Handschuhe aus Schafsleder, Touchscreen
+gid://shopify/Product/15447926833537	CHF 20.27	3 Varianten	Unisex Lederhandschuhe Winter
+gid://shopify/Product/15447926931841	CHF 27.38	30 Varianten	Elegante Damen-Handschuhe aus Lammleder
+gid://shopify/Product/15447927062913	CHF 17.37	1 Varianten	Transparente extra lange Mesh-Handschuhe
+gid://shopify/Product/15447927226753	CHF 37.61	1 Varianten	Winter-Geschenkset für Kinder
+gid://shopify/Product/15447927390593	CHF 17.38	3 Varianten	Winddichte Fleece-Handschuhe für Touchscreens
+gid://shopify/Product/15447927521665	CHF 17.13	5 Varianten	Eisseide-Sonnenschutzhandschuhe Touchscreen UV-Sch
+gid://shopify/Product/15447927849345	CHF 27.70	3 Varianten	Unisex Leder-Winterhandschuhe
+gid://shopify/Product/15447928045953	CHF 25.94	1 Varianten	Unisex Strickhandschuhe mit Touchscreen-Funktion
+gid://shopify/Product/15447928177025	CHF 26.37	1 Varianten	Unisex Strickhandschuhe mit Touchscreen
+gid://shopify/Product/15447928340865	CHF 20.53	9 Varianten	Bunte Tierpfoten-Cosplay-Handschuhe
+gid://shopify/Product/15447928406401	CHF 17.20	6 Varianten	Warme, weiche Handschuhe für Damen
+gid://shopify/Product/15447928832385	CHF 17.56	7 Varianten	Warme Plüsch-Handschuhe für Damen
