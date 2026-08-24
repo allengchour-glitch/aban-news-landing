@@ -12501,3 +12501,5 @@ gid://shopify/Product/15448026907009	999->0	Elegantes Off-Shoulder Langarm-Top m
 gid://shopify/Product/15476000227713	71->2	Reinigungsschwamm für Gemüseschneider
 gid://shopify/Product/15476000489857	26->0	Enganliegender Minirock für Damen
 gid://shopify/Product/15476127367553	80->2	Herren Hoodie mit 3D Digitaldruck
+gid://shopify/Product/15477467971969	11->0	Faltbares Outdoor-Zelt für 1-4 Personen
+gid://shopify/Product/15478470279553	61->0	Lederarmband mit Faltschliesse und Doppelknopf
