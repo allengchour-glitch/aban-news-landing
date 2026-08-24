@@ -1,4 +1,22 @@
-"""Räumt die Streichpreise auf: krumme Werte runden, Schein-Rabatte entfernen.
+"""⛔ STILLGELEGT (24.08.2026) — dieses Skript hat das Problem VERSCHOENERT statt geloest.
+
+Das dritte Audit hat belegt, dass die Streichpreise dieses Shops NIE verlangte Preise
+waren: dropship/PRODUKT-PIPELINE.md (30.05.) fuehrt dieselben Produkte SKU-identisch zum
+heutigen «Aktionspreis» — der durchgestrichene Wert war von Anfang an konstruiert
+(x1.55/1.65/1.70, steht unten im alten Kopftext dieses Skripts selbst). PBV Art. 16
+verlangt einen tatsaechlich verlangten Vergleichspreis; dieses Skript hat 8 solcher
+Fantasiewerte stattdessen AUFGERUNDET (38.93 → 39.90) und damit huebscher gemacht.
+
+Alle 57 Streichpreise der Eigenmarke sind am 24.08. entfernt
+(automation/streichpreis_entfernen.py, Ledger dropship/_streichpreis_entfernt.txt);
+kein Importer schreibt compareAtPrice (Grep ueber automation/: 0 Treffer) — die Klasse
+waechst nicht nach. Sollten je wieder Streichpreise gesetzt werden, gilt:
+NUR mit belegtem frueherem Preis, mit Enddatum (Tag sale-bis-JJJJ-MM-TT) und
+Selbstabraeumer. Ein unbelegter Wert wird ENTFERNT, nie gerundet.
+"""
+raise SystemExit("streichpreise.py ist stillgelegt — siehe Kopfkommentar (24.08.2026)")
+
+_ALT = """Räumt die Streichpreise auf: krumme Werte runden, Schein-Rabatte entfernen.
 
 DER BEFUND (12.08.2026): Der Katalog ist bei den VERKAUFSpreisen erstaunlich diszipliniert —
 94,98 % enden auf .90, es gibt im ganzen Shop nur vier verschiedene Endungen und keinen
@@ -22,6 +40,7 @@ Preise ohne kaufmännischen Grund zu ändern. Hier geht es nur um den Streichpre
 
 DRY=1 meldet nur.
 """
+
 import json, os, subprocess, time
 
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
