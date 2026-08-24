@@ -1221,3 +1221,6 @@ gid://shopify/Product/15448102404481	zugeordnet	20	Uni-Damenbluse mit genähtem 
 gid://shopify/Product/15448102437249	zugeordnet	30	Lässiges Polo-Shirt mit Kragen-Tasche
 gid://shopify/Product/15448102601089	zugeordnet	55	Baumwoll-Leinen Top mit Rundhals und 3/4-Ärmeln
 gid://shopify/Product/15448102633857	zugeordnet	20	Elegante Satinbluse mit Schleife
+gid://shopify/Product/15448102732161	zugeordnet	66	Lässiges Hemd mit Revers und 3/4-Ärmeln
+gid://shopify/Product/15448102764929	zugeordnet	6	Damen Bluse mit Rüschen und Puffärmeln
+gid://shopify/Product/15448102797697	zugeordnet	4	Damen Puffärmel-Top mit Rüschensaum
