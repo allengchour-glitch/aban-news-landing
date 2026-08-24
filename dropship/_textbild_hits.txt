@@ -10679,3 +10679,8 @@ gid://shopify/Product/15503259271553	19->1	Plüschiger Kissenbezug mit Tiermotiv
 gid://shopify/Product/15503259337089	21->0	Multifunktionales LED Stimmungslicht mit Wecker
 gid://shopify/Product/15503259369857	107->0	Häkelnadel-Set mit Soft-Griff, 8-teilig
 gid://shopify/Product/15503259632001	53->0	Schmuck-Set für Reparaturen und Herstellung
+gid://shopify/Product/15503259664769	12->0	Atmungsaktiver Freizeit-Sneaker für Herren
+gid://shopify/Product/15503259828609	89->2	Handgemachter Quasten-Kissenbezug
+gid://shopify/Product/15503259959681	163->1	Grünes Plissee-Kissen für Sofa
+gid://shopify/Product/15503259992449	12->0	Fast Drainage Outdoor-Fitnessschuhe
+gid://shopify/Product/15503260025217	58->0	Solar-Strassenleuchte mit Farbwarnlicht
