@@ -1742,3 +1742,11 @@ gid://shopify/Product/15447933714817	CHF 16.80	1 Varianten	Nahtlose Sommerstrüm
 gid://shopify/Product/15447933878657	CHF 19.02	1 Varianten	4er-Set Socken mit Früchtemotiven
 gid://shopify/Product/15447934140801	CHF 17.20	7 Varianten	Nahtlose, hauchdünne Feinstrumpfhose
 gid://shopify/Product/15447934304641	CHF 20.08	9 Varianten	Reflektierende Outdoor Velo-Socken
+gid://shopify/Product/15447934468481	CHF 27.69	3 Varianten	Retro Patchwork Socken für Damen
+gid://shopify/Product/15447934632321	CHF 64.75	2 Varianten	Personalisierbare Jacquard Socken
+gid://shopify/Product/15447934828929	CHF 26.65	9 Varianten	Overknee-Strümpfe in Leder-Optik
+gid://shopify/Product/15447935058305	CHF 26.69	6 Varianten	3er-Pack Ultra-Soft Sheer Tights
+gid://shopify/Product/15447935222145	CHF 26.69	6 Varianten	3er-Pack Sheer Tights 40D mit T-Crotch
+gid://shopify/Product/15447935385985	CHF 26.69	8 Varianten	3 Paar 20D Ultra-Sheer Strumpfhosen mit Shaping-To
+gid://shopify/Product/15447935517057	CHF 31.19	8 Varianten	6 Paar 20D Ultra Sheer Tights mit Shaping-Höschent
+gid://shopify/Product/15447935648129	CHF 30.29	10 Varianten	6 Paar Plus Size Strumpfhosen für Damen
