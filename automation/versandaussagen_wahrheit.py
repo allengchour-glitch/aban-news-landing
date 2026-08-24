@@ -158,8 +158,15 @@ STIL = ('style="background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;'
 def kopfblock(w):
     return (f'<p class="ls-liefer" data-tier="{w}" {STIL}>📦 <strong>Lieferzeit</strong> '
             f'Schweiz: <strong>{SPANNE[w]} Werktage</strong> '
-            f'<span style="opacity:.7;">· {WEGNAME[w]} · Versand nur in die Schweiz und '
-            f'nach Liechtenstein</span></p>\n')
+            # ⚠️ 24.08.2026: «und nach Liechtenstein» entfernt. Der Checkout kennt genau
+            # EINEN Markt (Switzerland, ['CH']) — ein echter Test mit Lieferland LI gab
+            # {"shipping_rates":[]} (FEHLERSUCHE-14-08.json). Die LI-Formel stammt aus der
+            # alten Versandrichtlinie und war hier unbesehen als «die Wahrheit» uebernommen;
+            # ausgerollt wurde sie nie (100 zuletzt angefasste Produkte: 0 Treffer). «Nur
+            # Schweiz» bleibt auch dann wahr, wenn der Betreiber LI spaeter freischaltet —
+            # die umgekehrte Zusage waere ein Versprechen, das der Checkout heute bricht.
+            f'<span style="opacity:.7;">· {WEGNAME[w]} · Versand nur in die '
+            f'Schweiz</span></p>\n')
 
 
 def regeln(w):
