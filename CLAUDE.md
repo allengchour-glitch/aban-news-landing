@@ -2156,3 +2156,15 @@ gender/kategorie passend zu Smart-Collection-Regeln. **IMMER erst CJ-IMPORT-LOG 
   **sortOrder=CREATED_DESC** → neue CJ-Importe erscheinen automatisch oben. Bestseller/Premium bleiben BEST_SELLING.
 - **Google-Scorecard CH = «Great»** (Versand/Rückgabe/HD-Bilder grün); einzige Lücke «Images per offer» →
   Fortura-Bild-Backfill arbeitet sie ab. Alt-kuratierte 1-Bild-Produkte (~500, keine Lieferanten-Quelle) = Rest.
+
+## 👁️ Der Text-Wächter kann keine Elektroden sehen (2026-08-24)
+Der Bildgrössen-Durchgang (Kontaktbögen über 687 Kandidaten) fand nebenbei, was kein Text-Muster
+finden KANN: **2 Nunchaku als «Haushalt/Organizer» getaggt** («Dark Night Warrior Doppelstock»,
+«Doppel-Baton Performance Stick» — WG Art. 4 → DRAFT `waffengesetz-verboten`) und **7 Strom-
+Halsbänder**, deren deutscher Text den Wirkmechanismus KOMPLETT verschweigt. `tierschutz_geraet.json`
+(20.08.) hängt zu Recht an der Wirkmechanik — aber diese Geräte nennen sie nirgends; verraten hat
+sie nur das BILD: Blitz-Symbol auf der Fernbedienung, Elektroden-Paar + Prüflampe im Zubehör,
+Kontaktstifte am Empfänger (`dropship/_tierschutz_halsband.txt`). **Regel: Text-Wächter und
+Kontaktbogen sind KOMPLEMENTÄR — wo der Lieferant den Mechanismus verschweigt, entscheidet das
+Foto.** Fehltreffer dabei: «Verstellbares Trainingshalsband» ist ein normales Halsband mit Leine.
+Dazu ein Bob-Marley-Wandteppich (Persönlichkeitsrecht) → aus Google, Tag `lizenz-risiko`.
