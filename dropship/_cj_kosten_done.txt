@@ -1379,3 +1379,81 @@ gid://shopify/Product/15447865491841	CHF 29.63	1 Varianten	Xingrui Digital-Schne
 gid://shopify/Product/15447865622913	CHF 20.85	2 Varianten	Li-ion Akku & USB-Ladegerät für Taschenlampen
 gid://shopify/Product/15447865819521	CHF 20.22	10 Varianten	65W GaN Ladegerät mit US-Stecker
 gid://shopify/Product/15447866081665	CHF 18.01	4 Varianten	PD 20W Universal Reiseadapter
+gid://shopify/Product/15447866311041	CHF 18.67	18 Varianten	30W GaN Schnellladegerät mit einziehbaren Steckern
+gid://shopify/Product/15447866507649	CHF 20.22	3 Varianten	Tragbares magnetisches Wireless-Ladegerät mit Kabe
+gid://shopify/Product/15447866704257	CHF 17.87	3 Varianten	4-in-1 Auto-Ladegerät mit ausziehbaren Kabeln
+gid://shopify/Product/15447866900865	CHF 23.50	1 Varianten	Drohnen-Akku-Ladegerät mit USB-Adapter
+gid://shopify/Product/15447867163009	CHF 19.63	2 Varianten	Magnetisches kabelloses Desktop-Ladegerät mit Stän
+gid://shopify/Product/15447867359617	CHF 23.21	2 Varianten	Elektrischer Lift-Ständer mit Wireless Charging
+gid://shopify/Product/15447867588993	CHF 27.17	3 Varianten	3-in-1 Faltbarer Magnetischer Wireless Charger
+gid://shopify/Product/15447867687297	CHF 19.63	2 Varianten	3-in-1 faltbarer Ladeständer mit MagSafe
+gid://shopify/Product/15447867949441	CHF 22.91	1 Varianten	Ladedock für PlayStation Portal
+gid://shopify/Product/15447868146049	CHF 19.08	2 Varianten	Organizer mit Wireless Charger
+gid://shopify/Product/15447868309889	CHF 22.46	1 Varianten	10-Port Multi-USB Ladegerät, 60W
+gid://shopify/Product/15447868440961	CHF 21.71	12 Varianten	50W Multi-Port Ladegerät mit Lüfter
+gid://shopify/Product/15447868670337	CHF 37.39	4 Varianten	Universal USB-Ladegerät für Mobiltelefone
+gid://shopify/Product/15447869587841	CHF 47.65	2 Varianten	Tragbarer Akku-Gürtel mit USB-Display
+gid://shopify/Product/15447869981057	cj-ohne-antwort
+gid://shopify/Product/15447870112129	CHF 26.56	1 Varianten	66W Schnellladegerät Typ B
+gid://shopify/Product/15447870308737	CHF 26.61	1 Varianten	Magnetische Powerbank Weiss
+gid://shopify/Product/15447870538113	CHF 23.10	1 Varianten	4er-Set 18650 Li-ion Akkus, 3000mAh
+gid://shopify/Product/15447870800257	CHF 20.53	1 Varianten	8W Solar Faltpanel für Outdoor-Stromversorgung
+gid://shopify/Product/15447871029633	CHF 49.35	1 Varianten	Faltbares 36W Solarpanel für Outdoor
+gid://shopify/Product/15447871226241	CHF 19.79	1 Varianten	Ersatz-Akku für BXM-10 Systemkamera
+gid://shopify/Product/15447871422849	CHF 26.94	6 Varianten	Kleine Powerbank mit Schnellladefunktion
+gid://shopify/Product/15447871652225	cj-ohne-antwort
+gid://shopify/Product/15447871848833	CHF 21.75	1 Varianten	2er-Pack 18650 Li-ion Akkus 3000mAh
+gid://shopify/Product/15447872045441	CHF 25.80	1 Varianten	18650 Li-ion Akku, 3.7V, 3000mAh, 10er-Pack
+gid://shopify/Product/15447872209281	CHF 17.54	5 Varianten	9V Multimeter Li-ion Akku, wiederaufladbar
+gid://shopify/Product/15447872438657	CHF 20.45	1 Varianten	CR1225 Lithium-Knopfzellen 3V, 5 Stück
+gid://shopify/Product/15447872602497	cj-ohne-antwort
+gid://shopify/Product/15447872831873	CHF 18.31	1 Varianten	10er-Pack LR1130 AG10 Alkaline Knopfzellen
+gid://shopify/Product/15447873028481	CHF 18.31	4 Varianten	CR2032 Lithium Knopfzelle 3V
+gid://shopify/Product/15447873159553	CHF 19.98	1 Varianten	Akku für ferngesteuertes UAV 4
+gid://shopify/Product/15447873356161	CHF 41.87	2 Varianten	Hochleistungs-Lithium-Ionen-Akku für Staubsauger
+gid://shopify/Product/15447873552769	CHF 17.05	7 Varianten	AA Lithium-Akku, 1.5V, USB-C, 3800mWh
+gid://shopify/Product/15447873749377	CHF 17.54	1 Varianten	Drohnen-Akku
+gid://shopify/Product/15447873945985	CHF 26.88	3 Varianten	Ersatz-Akku für Elektrowerkzeuge (Nickel)
+gid://shopify/Product/15447874208129	CHF 22.16	8 Varianten	FPV-Softbag-Lithium-Akku für Crossing Machine
+gid://shopify/Product/15447874371969	CHF 28.13	3 Varianten	Akku für Fernsteuerung TX16, TX12 & Boxer
+gid://shopify/Product/15447874568577	CHF 18.76	1 Varianten	Nanohawk 435HV 1S 300mAh Lipo Akku
+gid://shopify/Product/15447874797953	CHF 29.33	2 Varianten	Hochleistungs-Akku für Modellflugzeuge (850mAh, 4S
+gid://shopify/Product/15447874961793	CHF 24.25	2 Varianten	GNB 650mAh 3S 11.1V 80C LiPo Akku
+gid://shopify/Product/15447875158401	CHF 44.07	1 Varianten	HDMI Adapter für Amazon Fire TV Stick
+gid://shopify/Product/15447875355009	CHF 62.34	1 Varianten	Dimmbarer Kosmetikspiegel mit Akku
+gid://shopify/Product/15447875584385	CHF 24.34	1 Varianten	Pushbao Dual-Band WiFi Adapter für TV/Projektor
+gid://shopify/Product/15447875715457	CHF 32.99	3 Varianten	Wireless Screen Device 5G
+gid://shopify/Product/15447875912065	CHF 18.58	2 Varianten	Wasserhahnfilter aus Edelstahl
+gid://shopify/Product/15447876174209	CHF 20.82	6 Varianten	Fitness Smart Armband mit Schrittzähler und LED
+gid://shopify/Product/15447876370817	CHF 26.18	6 Varianten	Multifunktionaler Unisex Schrittzähler
+gid://shopify/Product/15447876567425	CHF 30.08	21 Varianten	Smart Ring mit Fitness- und Gesundheits-Tracking
+gid://shopify/Product/15447876862337	CHF 26.79	3 Varianten	G69 Armband für Herzfrequenz & Blutsauerstoff
+gid://shopify/Product/15447877091713	CHF 17.94	8 Varianten	Smartwatch mit Bluetooth-Telefonie & Gesundheits-T
+gid://shopify/Product/15447877353857	CHF 21.71	1 Varianten	Auto-Clicker für Mobiltelefone
+gid://shopify/Product/15447877583233	CHF 18.17	2 Varianten	TV-Fernbedienung Ersatz
+gid://shopify/Product/15447877747073	CHF 21.92	3 Varianten	GPS Anti-Verlust Tracker für Auto & Handy
+gid://shopify/Product/15447878041985	CHF 37.39	13 Varianten	Smarter Vorhang-Controller
+gid://shopify/Product/15447878271361	CHF 29.18	2 Varianten	Roboterarm-Drohnen-Halterung
+gid://shopify/Product/15447878500737	CHF 24.25	2 Varianten	Wandhalterung für Game-Konsolen aus Aluminium
+gid://shopify/Product/15447878762881	CHF 81.86	4 Varianten	Babyphone mit HD-Kamera und App-Zugriff
+gid://shopify/Product/15447880335745	CHF 18.55	1 Varianten	Retro-Schal mit Kaschmir-Gefühl
+gid://shopify/Product/15447881974145	CHF 17.69	7 Varianten	Dreieckiger Strickschal mit Lochmuster
+gid://shopify/Product/15447882137985	CHF 17.66	8 Varianten	Baumwoll-Leinen Gestreifter Jacquard Schal · 190 ×
+gid://shopify/Product/15447882301825	CHF 16.82	39 Varianten	Quadratisches Baumwoll-Seidentuch mit Blumenmuster
+gid://shopify/Product/15447882432897	CHF 20.37	56 Varianten	Damen-Cape mit Ethno-Muster und Wärme-Funktion · 1
+gid://shopify/Product/15447882596737	CHF 18.01	16 Varianten	Multifunktionaler Halswärmer für jede Jahreszeit ·
+gid://shopify/Product/15447882695041	CHF 17.61	1 Varianten	Kaschmir-Gefühl Cape-Schal mit Pferdemotiv
+gid://shopify/Product/15447882891649	CHF 17.66	6 Varianten	Gestreifter Strick-Schal für Damen · 100 × 41 cm
+gid://shopify/Product/15447883022721	CHF 18.01	5 Varianten	Vielseitiger Schal mit abnehmbarem Kragen · 110 × 
+gid://shopify/Product/15447883153793	CHF 17.20	4 Varianten	Vintage Ombre Schal in Seiden-Optik · 170 × 10 cm
+gid://shopify/Product/15447883317633	CHF 17.72	4 Varianten	Dreieckstuch mit Cutout und Quasten · 90 × 35 cm
+gid://shopify/Product/15447883383169	CHF 17.30	3 Varianten	Gedruckter Baumwoll-Leinen Schal für Herbst/Winter
+gid://shopify/Product/15447883514241	CHF 17.20	1 Varianten	Multifunktionaler Halsschal für klimatisierte Räum
+gid://shopify/Product/15447883645313	CHF 18.61	29 Varianten	Schal in Seiden-Optik mit UV-Schutz für Strand & F
+gid://shopify/Product/15447883710849	CHF 17.87	14 Varianten	Kaschmirähnlicher Schal mit Totem-Muster · 65 × 18
+gid://shopify/Product/15447883841921	CHF 17.61	7 Varianten	Vielseitiger Dreiecksschal mit Bindebändern · 100 
+gid://shopify/Product/15447883972993	CHF 17.69	9 Varianten	Leichter Strick-Schal aus Eisseide · 100 × 40 cm
+gid://shopify/Product/15447884104065	CHF 17.56	6 Varianten	Gestreifter Plissee-Schal aus Baumwoll-Leinen
+gid://shopify/Product/15447884267905	CHF 17.45	19 Varianten	Quadratisches Halstuch mit UV-Schutz · 70 × 70 cm
+gid://shopify/Product/15447884398977	CHF 17.36	10 Varianten	Plissierter Schal in Seiden-Optik mit Rautenmuster
+gid://shopify/Product/15447884530049	CHF 18.91	13 Varianten	Wollschal einfarbig für Damen
