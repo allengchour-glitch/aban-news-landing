@@ -291,3 +291,5 @@ gid://shopify/Product/15496604582273	Schwarz
 gid://shopify/Product/15510920462721	Silber
 gid://shopify/Product/15510920593793	Silber
 gid://shopify/Product/15510926393729	Schwarz
+gid://shopify/Product/15510930456961	Silber
+gid://shopify/Product/15510930620801	Weiss
