@@ -12584,3 +12584,6 @@ gid://shopify/Product/15496331198849	11->0	Interaktives Plüschtier mit Sound f�
 gid://shopify/Product/15496332575105	11->1	Physischer Gaming-Griff fürs Smartphone
 gid://shopify/Product/15496358166913	26->0	Plüschiges Katzenpfoten-Kissen
 gid://shopify/Product/15496358265217	38->0	HSP Unlimited 1:16 Rally Reifen
+gid://shopify/Product/15496371667329	86->0	Woyouqu Elektro-Kochtopf 1.8L
+gid://shopify/Product/15496372158849	28->1	Faltbare Reise-Sporttasche für Outdoor
+gid://shopify/Product/15496379761025	19->0	Claude Monet «Seerosen» – Malen nach Zahlen
