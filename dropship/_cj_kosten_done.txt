@@ -1277,3 +1277,8 @@ gid://shopify/Product/15447616881025	CHF 17.70	5 Varianten	Einfache Umhängetasc
 gid://shopify/Product/15447617012097	CHF 20.96	1 Varianten	Ma Deng Workwear M16 Umhängetasche
 gid://shopify/Product/15447617208705	CHF 18.17	4 Varianten	Blauer Kissenbezug mit Zierquaste
 gid://shopify/Product/15447617470849	CHF 25.69	60 Varianten	Samt-Lendenkissenbezug ohne Füllung (6er-Set)
+gid://shopify/Product/15447617700225	CHF 20.47	60 Varianten	Samt-Lendenkissenhülle, 4er-Set
+gid://shopify/Product/15447618060673	CHF 56.47	7 Varianten	Ergonomisches Lendenkissen für Büro & unterwegs
+gid://shopify/Product/15447618453889	CHF 17.37	18 Varianten	Sofa Kissenbezug «Quiet Years»
+gid://shopify/Product/15447618716033	CHF 29.37	1 Varianten	Geister Kissenbezug-Set aus Plüsch
+gid://shopify/Product/15447618978177	CHF 17.30	18 Varianten	Kissenbezug mit Quasten
