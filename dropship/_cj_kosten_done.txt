@@ -1070,3 +1070,98 @@ gid://shopify/Product/15447566385537	CHF 37.53	12 Varianten	L106 Pro 8K Drohne m
 gid://shopify/Product/15447566549377	CHF 16.90	1 Varianten	Faltbare Drohne mit Hindernisvermeidung
 gid://shopify/Product/15447566582145	cj-ohne-antwort
 gid://shopify/Product/15447566844289	CHF 21.71	1 Varianten	Kabellose Seilwinden-Fernbedienung
+gid://shopify/Product/15447567040897	CHF 22.65	2 Varianten	Li-ion Akku & Ladegerät Set 3000mAh
+gid://shopify/Product/15447567303041	CHF 21.75	2 Varianten	Li-ion Akku & USB-Ladegerät Set 3000mAh
+gid://shopify/Product/15447567335809	CHF 17.21	3 Varianten	Nebelmaschinen-Fernbedienung
+gid://shopify/Product/15447567466881	CHF 20.85	2 Varianten	Akku-Ladegerät mit 2 Li-Ion Akkus 3.7V 3000mAh
+gid://shopify/Product/15447567532417	CHF 18.17	3 Varianten	Multi-Frequenz Garagentor-Fernbedienung
+gid://shopify/Product/15447567729025	CHF 28.88	8 Varianten	Notfallradio mit Solar- und Handkurbel
+gid://shopify/Product/15447567794561	CHF 26.94	1 Varianten	Universal Smart Ring Fernbedienung
+gid://shopify/Product/15447567958401	CHF 63.36	2 Varianten	18650 Li-ion Akku 3000mAh, 3.7V, wiederaufladbar
+gid://shopify/Product/15447568023937	CHF 18.92	2 Varianten	Bluetooth Auto-Clicker für Live-Streams
+gid://shopify/Product/15447568253313	CHF 39.62	4 Varianten	Smarter Rollladen- & Jalousienmotor
+gid://shopify/Product/15447568482689	CHF 19.53	1 Varianten	Universal-Abwurfmodul für Drohnen
+gid://shopify/Product/15447568744833	CHF 41.71	4 Varianten	RC Fernsteuerung für Modellautos & Boote
+gid://shopify/Product/15447568908673	CHF 35.82	1 Varianten	Funksteckdosen-Set mit 5 Steckdosen & 2 Fernbedien
+gid://shopify/Product/15447569170817	CHF 25.21	6 Varianten	Anti-Verlust Locator für Karten
+gid://shopify/Product/15447569367425	CHF 58.41	1 Varianten	Akku für elektrische Relaxsessel, 2500 mAh
+gid://shopify/Product/15447569465729	CHF 73.06	1 Varianten	ELRS 3-in-1 Flugsteuerung mit Empfänger
+gid://shopify/Product/15447569596801	CHF 30.05	1 Varianten	9V Alkaline Batterien, 12er-Pack
+gid://shopify/Product/15447569891713	CHF 49.78	1 Varianten	Dual Gyroskop
+gid://shopify/Product/15447570186625	CHF 26.52	1 Varianten	Körperanalysewaage mit Bluetooth
+gid://shopify/Product/15447570416001	cj-ohne-antwort
+gid://shopify/Product/15447571104129	CHF 19.32	5 Varianten	Wiederaufladbares Batterie-Set Nr. 5 & Nr. 7
+gid://shopify/Product/15447571661185	CHF 17.77	1 Varianten	3D-Druck Mondlicht-Platine, zwei Farben, Touch
+gid://shopify/Product/15447572054401	CHF 20.28	1 Varianten	MK2A Heizbett-Plattform aus Aluminium
+gid://shopify/Product/15447572218241	CHF 39.47	4 Varianten	BLTouch Auto-Leveling Sensor Upgrade-Kit
+gid://shopify/Product/15447572513153	CHF 31.71	2 Varianten	Prusa Mini Magnetisches Heizbett mit PEI-Platte
+gid://shopify/Product/15447572775297	CHF 35.70	2 Varianten	Prusa Mini Magnet-Heizbett mit PEI-Platte
+gid://shopify/Product/15447574380929	CHF 40.25	1 Varianten	Seiden PLA Filament Regenbogen 1.75mm, 1kg
+gid://shopify/Product/15447574872449	CHF 46.91	2 Varianten	ASA-CF Filament, Carbonfaserverstärkt
+gid://shopify/Product/15447575069057	CHF 40.37	2 Varianten	Seiden-PLA Filament 1.75mm, 1.1kg, Glanz-Finish
+gid://shopify/Product/15447575331201	CHF 45.14	2 Varianten	PETG-CF Filament, Carbonfaserverstärkt
+gid://shopify/Product/15447575986561	CHF 17.75	2 Varianten	Notizbuch aus geprägtem Kunstleder, extra dick
+gid://shopify/Product/15447576183169	CHF 19.53	23 Varianten	Heissprägefolie für Leder & Kunststoff
+gid://shopify/Product/15447577264513	CHF 49.24	1 Varianten	Mikrojet-Reispapier für Kunstreproduktionen
+gid://shopify/Product/15447577461121	CHF 21.97	1 Varianten	Mattschwarze PVC-Etiketten A4, selbstklebend
+gid://shopify/Product/15447577657729	CHF 26.34	1 Varianten	Thermisches Etikettenpapier
+gid://shopify/Product/15447578018177	CHF 26.02	8 Varianten	E3DV6 J-Head Remote Extruder-Kit
+gid://shopify/Product/15447578476929	CHF 30.92	1 Varianten	Mini-Thermodrucker für Mobiltelefone
+gid://shopify/Product/15447579066753	CHF 21.79	36 Varianten	Geburtsstein-Armband mit Süsswasserperle
+gid://shopify/Product/15447579263361	CHF 19.08	2 Varianten	Retro-Magnetarmband für Paare
+gid://shopify/Product/15447579525505	CHF 17.37	1 Varianten	Magnetarmband aus gebürsteter Bronze
+gid://shopify/Product/15447579754881	CHF 18.92	4 Varianten	Kupfer Magnetarmband für Damen
+gid://shopify/Product/15447579918721	CHF 19.04	1 Varianten	Retro Cat-Eye Kupferarmband
+gid://shopify/Product/15447580082561	CHF 19.51	1 Varianten	Magnetarmband aus Rotkupfer
+gid://shopify/Product/15447580344705	CHF 18.02	1 Varianten	Retro Totem Magnet Armband aus Kupfer
+gid://shopify/Product/15447580541313	CHF 19.10	2 Varianten	Kupfer-Fusskettchen, unisex, verstellbar
+gid://shopify/Product/15447580770689	CHF 19.43	1 Varianten	Kupfer-Magnetarmband mit Arabeskenmuster
+gid://shopify/Product/15447581098369	CHF 17.69	2 Varianten	Magnetisches Kupferarmband mit Drachen-Phönix-Moti
+gid://shopify/Product/15447581327745	CHF 17.25	1 Varianten	Kupferarmband mit Magnetverschluss
+gid://shopify/Product/15447581557121	CHF 17.37	11 Varianten	Magnetisches Kupferarmband im Antik-Stil
+gid://shopify/Product/15447581753729	CHF 19.92	1 Varianten	Kupferarmband mit Zirkonia und Unendlichkeits-Symb
+gid://shopify/Product/15447581917569	CHF 19.04	3 Varianten	Dreilagiges Magnetarmband aus Rotkupfer
+gid://shopify/Product/15447582114177	CHF 17.31	4 Varianten	Kupfer Armreif & Ring Set mit Magneten
+gid://shopify/Product/15447582441857	CHF 17.30	1 Varianten	Perlen-Armband mit Quaste aus Titanstahl
+gid://shopify/Product/15447582736769	CHF 17.07	1 Varianten	Gebürstetes Edelstahl-Armband für Damen
+gid://shopify/Product/15447582900609	CHF 16.90	47 Varianten	Edelstahl-Anhänger: Sternzeichen und Monate
+gid://shopify/Product/15447583064449	CHF 19.77	2 Varianten	Geflochtenes Kupferarmband mit Seil-Muster
+gid://shopify/Product/15447583326593	CHF 17.66	1 Varianten	Doppelschlange Armreif aus Edelstahl
+gid://shopify/Product/15447583555969	CHF 18.92	1 Varianten	Verstellbarer Ring aus reinem Kupfer
+gid://shopify/Product/15447583752577	CHF 18.74	1 Varianten	Verstellbarer Vintage-Kupferring in Rot
+gid://shopify/Product/15447583949185	CHF 19.06	9 Varianten	Eleganter Zirkonring im Old Money Stil
+gid://shopify/Product/15447584113025	CHF 17.05	1 Varianten	Rhinestone-Lotusring im Retro-Stil
+gid://shopify/Product/15447584309633	CHF 25.28	1 Varianten	Verstellbarer Offener Ring mit Wassertropfen-Desig
+gid://shopify/Product/15447584506241	CHF 17.61	3 Varianten	Vintage Oval Ring mit Zirkonia
+gid://shopify/Product/15447584833921	CHF 16.83	5 Varianten	Mehrreihiger Zirkonia-Ring
+gid://shopify/Product/15447585030529	CHF 20.06	1 Varianten	Geometrischer Mehrschicht-Fingerring
+gid://shopify/Product/15447585194369	CHF 20.97	50 Varianten	Multifunktionaler Smart-Ring
+gid://shopify/Product/15447585489281	CHF 28.58	1 Varianten	Eleganter Topasring aus 925er Silber
+gid://shopify/Product/15447585685889	CHF 35.90	4 Varianten	Luxuriöser Diamantring aus S925 Sterlingsilber
+gid://shopify/Product/15447585882497	CHF 18.77	3 Varianten	Eleganter Metallring mit Diamantbesatz
+gid://shopify/Product/15447586144641	CHF 21.97	3 Varianten	Edelstahlring mit Buchstaben
+gid://shopify/Product/15447586374017	CHF 16.97	1 Varianten	Halskette mit runden Diamant-Anhängern
+gid://shopify/Product/15447586603393	CHF 29.63	2 Varianten	Minimalistische Halskette aus reinem Kupfer
+gid://shopify/Product/15447586931073	CHF 19.78	6 Varianten	Taktische Sportuhr mit vielen Funktionen
+gid://shopify/Product/15447587160449	CHF 25.45	9 Varianten	Business Herrenuhr, Lederarmband, Multifunktion
+gid://shopify/Product/15447587357057	CHF 34.38	2 Varianten	Tonneau Skelett Quarz Armbanduhr
+gid://shopify/Product/15447587586433	CHF 18.47	1 Varianten	Hip-Hop Uhren-, Armband- & Halsketten-Set
+gid://shopify/Product/15447587815809	CHF 17.72	6 Varianten	Quarzuhr mit Edelstahlarmband und Datumsanzeige
+gid://shopify/Product/15447588077953	CHF 18.02	3 Varianten	Herren-Quarzuhr mit Kalender und Edelstahlarmband
+gid://shopify/Product/15447588274561	CHF 20.37	6 Varianten	Minimalistische Herrenuhr
+gid://shopify/Product/15447588438401	CHF 21.42	10 Varianten	Elegante Quarzuhr mit Diamanten für Herren
+gid://shopify/Product/15447589028225	CHF 19.37	1 Varianten	Elegante Quarzuhr mit Silikonarmband
+gid://shopify/Product/15447589486977	CHF 18.62	6 Varianten	Minimalistische Armbanduhr im Koreanischen Stil
+gid://shopify/Product/15447589650817	CHF 18.55	6 Varianten	Hollowed-out Casual Chic Minimalist Unisex Watch
+gid://shopify/Product/15447589814657	CHF 21.27	6 Varianten	Herren Business Quarzuhr
+gid://shopify/Product/15447590011265	CHF 18.77	6 Varianten	Quarz-Kalenderuhr für Damen und Herren
+gid://shopify/Product/15447590142337	CHF 26.94	1 Varianten	Retro-Stil Quarzuhr für Herren
+gid://shopify/Product/15447590371713	CHF 30.67	2 Varianten	Herrenuhr mit Strasssteinen und Quarzwerk
+gid://shopify/Product/15447590502785	CHF 25.15	1 Varianten	Retro-Digitaluhr mit Multifunktionsanzeige
+gid://shopify/Product/15447590732161	CHF 22.32	4 Varianten	Damen-Quarzuhr – schlankes Design mit Metallband
+gid://shopify/Product/15447590961537	CHF 22.46	6 Varianten	Retro-Herrenuhr mit Leuchtfunktion
+gid://shopify/Product/15447591223681	CHF 40.12	3 Varianten	Herren Business Uhr – Multifunktional
+gid://shopify/Product/15447591420289	CHF 22.46	5 Varianten	Wasserdichte Quarzuhr für Erwachsene
+gid://shopify/Product/15447591649665	CHF 21.71	4 Varianten	Retro-Uhr mit Kalender für Herren
+gid://shopify/Product/15447591911809	CHF 35.60	3 Varianten	Sportliche Herrenuhr mit Silikonarmband
+gid://shopify/Product/15447592108417	CHF 70.06	2 Varianten	Mondphasen-Sonnenuhr-Taschenuhr mit Klappdeckel
