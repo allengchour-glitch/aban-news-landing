@@ -1241,3 +1241,33 @@ gid://shopify/Product/15447607148929	CHF 58.09	10 Varianten	Outdoor Shell Jacke 
 gid://shopify/Product/15447607443841	CHF 59.61	24 Varianten	Leichte Leinenjacke für Herren
 gid://shopify/Product/15447607673217	CHF 21.45	51 Varianten	Outdoor Sportshirt mit UV-Schutz
 gid://shopify/Product/15447607968129	CHF 20.74	60 Varianten	UV-Schutz Shirt für Outdoor-Sport
+gid://shopify/Product/15447608066433	CHF 29.57	12 Varianten	Cord-Mantel für Herren · wattiert, Casual
+gid://shopify/Product/15447608263041	CHF 38.51	35 Varianten	Herren Kunstfelljacke, British Style
+gid://shopify/Product/15447608590721	CHF 62.52	19 Varianten	Herren Plus-Size Fleece-Jacke mit Revers
+gid://shopify/Product/15447608885633	CHF 23.81	4 Varianten	Multifunktionale Sporttasche mit Nass-/Trockenfach
+gid://shopify/Product/15447609246081	CHF 26.98	3 Varianten	Outdoor Wander- und Kletterrucksack
+gid://shopify/Product/15447609475457	CHF 35.25	1 Varianten	Wasserdichter Business Rucksack
+gid://shopify/Product/15447609704833	CHF 46.07	1 Varianten	Motorrad-Hecktasche, Grau
+gid://shopify/Product/15447609966977	CHF 81.01	2 Varianten	Retro Canvas Rucksack (Gross/Klein)
+gid://shopify/Product/15447610229121	CHF 27.66	2 Varianten	Vertikale Oxford Crossbody Bag
+gid://shopify/Product/15447610458497	CHF 18.77	6 Varianten	Corduroy Rucksack im Preppy-Stil
+gid://shopify/Product/15447610982785	CHF 79.48	1 Varianten	Multifunktionaler Rucksack mit doppelten Schulterg
+gid://shopify/Product/15447611310465	CHF 32.94	5 Varianten	Multifunktionale, wasserdichte Umhängetasche
+gid://shopify/Product/15447611539841	CHF 37.10	1 Varianten	Vintage Sport- & Reisetasche
+gid://shopify/Product/15447611769217	CHF 115.83	1 Varianten	Reisetasche aus Crazy Horse Leder
+gid://shopify/Product/15447612260737	CHF 21.75	4 Varianten	Grosser Campus Rucksack mit Laptopfach
+gid://shopify/Product/15447612522881	CHF 40.86	2 Varianten	Outdoor Canvas Rucksack – wasserdicht
+gid://shopify/Product/15447612653953	CHF 19.92	2 Varianten	Plaid Umhängetasche, Crossbody und Bauchtasche
+gid://shopify/Product/15447612883329	CHF 18.62	4 Varianten	Sportliche Umhängetasche für Alltag und Freizeit
+gid://shopify/Product/15447613145473	CHF 19.37	1 Varianten	Wasserdichte Crossbody Bag für Herren
+gid://shopify/Product/15447613309313	CHF 40.15	1 Varianten	Business Rucksack mit Nass-Trocken-Trennung
+gid://shopify/Product/15447613768065	CHF 26.24	3 Varianten	Taktischer 511 Outdoor Rucksack 45L
+gid://shopify/Product/15447614161281	CHF 18.32	3 Varianten	Wasserabweisende Herren Tote Bag
+gid://shopify/Product/15447614390657	CHF 27.83	3 Varianten	Grosser Outdoor-Rucksack für Herren mit USB
+gid://shopify/Product/15447614554497	CHF 50.26	3 Varianten	Tier-Print Rucksack mit viel Stauraum
+gid://shopify/Product/15447614783873	CHF 34.55	1 Varianten	Business-Rucksack mit grosser Kapazität
+gid://shopify/Product/15447615046017	CHF 21.27	4 Varianten	Minimalistische Crossbody Bag für Herren
+gid://shopify/Product/15447615406465	CHF 20.96	6 Varianten	Casual Commuter Umhängetasche
+gid://shopify/Product/15447615668609	cj-ohne-antwort
+gid://shopify/Product/15447615865217	CHF 18.32	4 Varianten	Faltbare, wasserdichte Sport-Brusttasche
+gid://shopify/Product/15447616061825	CHF 23.21	5 Varianten	Freizeit-Umhängetasche
