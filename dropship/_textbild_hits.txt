@@ -11094,3 +11094,5 @@ gid://shopify/Product/15504228352385	103->1	Chunky Fashion Quarzuhr
 gid://shopify/Product/15504228712833	21->0	iPhone 12
 gid://shopify/Product/15504229335425	17->1	Lederjacke im Korean Style für Herren
 gid://shopify/Product/15504229958017	63->0	Herren Kapuzen-Windbreaker wasserdicht
+gid://shopify/Product/15504280387969	30->0	Herren Strickjacke "Light Luxury British Slim"
+gid://shopify/Product/15504281174401	41->0	Saugfähige Cartoon Katzen Bodenmatte
