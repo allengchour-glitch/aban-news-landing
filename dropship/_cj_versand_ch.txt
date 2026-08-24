@@ -911,3 +911,5 @@ gid://shopify/Product/15510785491329	nicht-versendbar	K18MAX Faltbare GPS-Drohne
 gid://shopify/Product/15510800171393	nicht-versendbar	Outdoor Real CS Wasserbomben-Tasche 36 Zoll
 gid://shopify/Product/15510811705729	nicht-versendbar	Gestreifter Rollkoffer mit Aluminiumrahmen
 gid://shopify/Product/15510880682369	ok	Wanderrucksack 24L
+gid://shopify/Product/15510921445761	nicht-versendbar	Rechteckiger Blumenkasten für Balkon
+gid://shopify/Product/15510924886401	ok	U-förmiges Schwangerschaftskissen für Rücken und Seite
