@@ -12335,3 +12335,6 @@ gid://shopify/Product/15510712353153	58->0	Fahrrad-Hundeleine
 gid://shopify/Product/15510785327489	118->0	32 L strapazierreicher Wanderrucksack – grosses Volumen
 gid://shopify/Product/15510785458561	31->0	12-teiliges Make-up Pinselset · 12 Stück
 gid://shopify/Product/15510785556865	17->3	Faltbarer Wanderrucksack mit Reissverschluss
+gid://shopify/Product/15510791946625	39->0	Multifunktionaler Minimalistischer Rucksack
+gid://shopify/Product/15510792274305	20->0	Vintage Laptop Rucksack
+gid://shopify/Product/15510799548801	42->0	Unisex Fashion Rucksack
