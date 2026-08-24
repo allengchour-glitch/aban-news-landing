@@ -12594,3 +12594,9 @@ gid://shopify/Product/15496428159361	37->0	Elektrischer Schaumstoff-Flieger
 gid://shopify/Product/15496497922433	9->2	Rutschfester Sofaüberzug aus Polyester
 gid://shopify/Product/15496511717761	82->0	Hot Red Cat's Eye Press-on Nägel
 gid://shopify/Product/15496518009217	11->0	HD Wireless Arcade Game Konsole
+gid://shopify/Product/15496537244033	49->1	Agenda 365 Tage Notizbuch A5
+gid://shopify/Product/15496538882433	13->2	Taktischer Tarn-Rucksack 60L – wasserdicht
+gid://shopify/Product/15496593932673	79->1	5D Diamond Painting: Blauer Truck
+gid://shopify/Product/15496595669377	33->0	Calm Tide – DIY Digital Malset
+gid://shopify/Product/15496611758465	28->0	Handgewobener Baumwoll-Kissenbezug
+gid://shopify/Product/15496613888385	22->1	Automatischer Plüschball für Haustiere
