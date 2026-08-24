@@ -12601,3 +12601,10 @@ gid://shopify/Product/15496595669377	33->0	Calm Tide – DIY Digital Malset
 gid://shopify/Product/15496611758465	28->0	Handgewobener Baumwoll-Kissenbezug
 gid://shopify/Product/15496613888385	22->1	Automatischer Plüschball für Haustiere
 gid://shopify/Product/15496704098689	24->0	Fitness-Gurt mit Druckunterstützung
+gid://shopify/Product/15497295593857	38->0	Tastatur und Maus
+gid://shopify/Product/15497360408961	11->0	Reisschale aus Keramik mit Hühnchen-Motiv
+gid://shopify/Product/15497360671105	78->1	Etagere aus Bambus, 3-stöckig
+gid://shopify/Product/15497427353985	77->0	Samtiges Hundehalsband oder Leine
+gid://shopify/Product/15497429057921	39->1	Bequeme Baby-Sportschuhe mit Klettverschluss
+gid://shopify/Product/15497429975425	48->0	Wasserfester Flüssig-Eyeliner Schwarz
+gid://shopify/Product/15497431286145	17->2	Street Canvas Rucksack
