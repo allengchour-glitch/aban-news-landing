@@ -1759,3 +1759,20 @@ gid://shopify/Product/15447936467329	CHF 17.49	1 Varianten	Samt-Strumpfhose mit 
 gid://shopify/Product/15447936598401	CHF 17.72	2 Varianten	Overknee-Socken mit doppelseitigem Print
 gid://shopify/Product/15447936762241	CHF 23.98	6 Varianten	Kuschelige Bären-Socken für Damen
 gid://shopify/Product/15447936893313	CHF 17.18	26 Varianten	Aurora Nahtlose Ultra-Dünne Strumpfhose
+gid://shopify/Product/15447937057153	CHF 17.05	4 Varianten	Overknee-Spitzenstrümpfe
+gid://shopify/Product/15447937188225	CHF 19.92	2 Varianten	Japanische JK-Style Strumpfhose mit Muster
+gid://shopify/Product/15447939318145	CHF 19.53	28 Varianten	Vintage Jacquard-Schal mit Knopfverschluss
+gid://shopify/Product/15447940268417	CHF 16.86	28 Varianten	Leichter Seiden-Baumwollschal
+gid://shopify/Product/15447940825473	CHF 18.61	13 Varianten	Eleganter Schal mit Schmetterlingsdruck und UV-Sch
+gid://shopify/Product/15447941054849	CHF 18.30	30 Varianten	Atmungsaktiver Baumwoll-Schal
+gid://shopify/Product/15447941251457	CHF 23.21	14 Varianten	Kaschmir Baby Halswärmer · 35 × 19 cm
+gid://shopify/Product/15447941316993	CHF 19.63	6 Varianten	Geraffter Pullover-Schal für Damen
+gid://shopify/Product/15447941480833	CHF 22.32	54 Varianten	Kreativ bedruckter Schal und Kopftuch für Damen · 
+gid://shopify/Product/15447941677441	CHF 16.86	99 Varianten	Ethno-Strandtuch mit vielseitigem Design · 90 × 18
+gid://shopify/Product/15447941841281	CHF 17.04	1 Varianten	Dreieckstuch zum Binden mit Blumenmuster
+gid://shopify/Product/15447941972353	CHF 18.74	3 Varianten	Eleganter Schal aus Arctic Velvet
+gid://shopify/Product/15447942136193	CHF 18.62	17 Varianten	Elegantes Chiffon-Tuch mit Magnetverschluss
+gid://shopify/Product/15447942300033	CHF 18.55	7 Varianten	Strick-Cape-Schal für Damen
+gid://shopify/Product/15447942594945	CHF 18.02	7 Varianten	Ofenhandschuh & Topfuntersetzer-Set mit Mops-Print
+gid://shopify/Product/15447943020929	CHF 17.07	4 Varianten	Blumen-Snapback-Cap im Vintage-Stil
+gid://shopify/Product/15447943381377	CHF 17.53	5 Varianten	Retro Wollmütze im britischen Stil
