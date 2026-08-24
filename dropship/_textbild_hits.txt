@@ -10211,3 +10211,5 @@ gid://shopify/Product/15479452270977	23->0	Damen-Sandalen aus Wildlederimitat
 gid://shopify/Product/15480460149121	77->0	4G Kinder Smartwatch mit GPS & Videoanruf
 gid://shopify/Product/15493933629825	24->0	Herren Sweatshirt mit Stehkragen
 gid://shopify/Product/15495722533249	78->0	Trägerloses Spitzenkleid für Damen
+gid://shopify/Product/15497429057921	39->1	Bequeme Baby-Sportschuhe mit Klettverschluss
+gid://shopify/Product/15497432498561	11->0	Klassische, wasserdichte Quarzuhr mit Datumsanzeige
