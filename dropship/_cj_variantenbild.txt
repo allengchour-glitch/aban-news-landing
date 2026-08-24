@@ -1245,3 +1245,23 @@ gid://shopify/Product/15448104173953	zugeordnet	48	Damen Hoodie im Dark-Style
 gid://shopify/Product/15448104206721	zugeordnet	24	V-Ausschnitt Strickpullover für Damen · Modell 2
 gid://shopify/Product/15448104239489	zugeordnet	40	Winter Hoodie für Damen
 gid://shopify/Product/15448104305025	zugeordnet	18	Unisex Kapuzenpullover mit Kordelzug
+gid://shopify/Product/15448104337793	zugeordnet	90	Sweatshirt mit 3D-Digitaldruck im China-Stil
+gid://shopify/Product/15448104370561	zugeordnet	100	Elegantes Langarm-Sweatshirt für Damen
+gid://shopify/Product/15448104468865	zugeordnet	70	Lässiger Damen Cardigan mit Reissverschluss
+gid://shopify/Product/15448104534401	zugeordnet	56	Trendiger Hoodie mit Kapuze und Kordelzug
+gid://shopify/Product/15448104567169	zugeordnet	81	Damen Pullover Sweatshirt mit Print
+gid://shopify/Product/15448104632705	zugeordnet	24	Bedruckter Zip-Up Hoodie – Locker geschnitten
+gid://shopify/Product/15448104763777	zugeordnet	54	V-Neck Pullover im Retro-Stil
+gid://shopify/Product/15448104862081	zugeordnet	24	Strickpullover mit Stehkragen für Damen
+gid://shopify/Product/15448104960385	zugeordnet	55	Kapuzenjacke mit Reissverschluss
+gid://shopify/Product/15448105156993	zugeordnet	10	Plüsch-Kapuzenjacke mit Reissverschluss
+gid://shopify/Product/15448105288065	zugeordnet	15	Off-Shoulder Sweatshirt mit Tunnelzug
+gid://shopify/Product/15448105353601	zugeordnet	25	Bedruckter Hoodie für Damen
+gid://shopify/Product/15448105386369	zugeordnet	90	Off-Shoulder Sweatshirt mit Blumenmuster
+gid://shopify/Product/15448105419137	zugeordnet	100	Oversized Jacquard Hoodie für Damen
+gid://shopify/Product/15448105451905	zugeordnet	25	Lässiger Hoodie mit Knopfleiste
+gid://shopify/Product/15448105484673	zugeordnet	12	Unifarbenes Crewneck Sweatshirt im Relaxed Fit
+gid://shopify/Product/15448105517441	zugeordnet	41	Trendiges Rundhals-Sweatshirt für Damen
+gid://shopify/Product/15448105615745	zugeordnet	8	Unifarbenes Kapuzen-Sweatshirt mit Kordelzug
+gid://shopify/Product/15448105648513	zugeordnet	30	Kapuzenpullover mit langen Ärmeln und Taschen
+gid://shopify/Product/15448105681281	zugeordnet	30	Loose-Fit Kapuzenjacke mit Reissverschluss

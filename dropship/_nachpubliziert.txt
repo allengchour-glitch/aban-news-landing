@@ -241,3 +241,4 @@ gid://shopify/Product/15510329295233	tie-dye-kurzarmhemd-fur-herren-602400	Tie-D
 gid://shopify/Product/15510329328001	mochi-keramik-futternapf-fur-katzen-631104	Mochi Keramik Futternapf für Katzen
 gid://shopify/Product/15510334046593	graceful-square-toe-sandalen-mit-absatz-094400	Graceful Square Toe Sandalen mit Absatz
 gid://shopify/Product/15510800728449	damen-shorts-mit-print-und-seitlichem-tunnelzu-972224	Damen Shorts mit Print und seitlichem Tunnelzug
+gid://shopify/Product/15510920987009	retro-mehrschichtiges-holzregal-628600	Retro Mehrschichtiges Holzregal
