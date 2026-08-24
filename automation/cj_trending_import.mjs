@@ -7,6 +7,7 @@
 import fs from 'node:fs';
 import { produktSaeubern } from './marken_filter.mjs';
 import { echoVomLieferanten } from './titel_sprache.mjs';
+import { technikWache } from './technik_plausibel.mjs';
 import { googleKategorie } from './google_kategorie.mjs';
 const SHOP='au3j0y-hq.myshopify.com',API='2025-01';
 const CID=process.env.SHOPIFY_CLIENT_ID,CSEC=process.env.SHOPIFY_CLIENT_SECRET;
@@ -313,7 +314,12 @@ for(const p of cand){
   // 📦 Stückzahl aus dem englischen Lieferantennamen mitnehmen — sonst sieht ein
   // Multipack aus wie ein Einzelstück (Regel vom 26.07.2026). Eine Quelle:
   // automation/stueckzahl.mjs.
- const title= titelMitMenge(g.title.replace(/ß/g,'ss').replace(/ẞ/g,'SS'), p.productNameEn, 70);
+ let title= titelMitMenge(g.title.replace(/ß/g,'ss').replace(/ẞ/g,'SS'), p.productNameEn, 70);
+ // Technik-Plausibilitaet — siehe automation/technik_plausibel.mjs (24.08.2026).
+ { const tw=technikWache(title, g.html||'');
+   if(tw.verwerfen){ console.log('  skip(technik)', tw.grund, title.slice(0,40)); continue; }
+   if(tw.grund) console.log('  technik-korrigiert', tw.grund);
+   title=tw.title; }
  if(DRY){console.log(`  [DRY] CHF${chf(p.sellPrice, p.productWeight||p.variantWeight)} | ${title} | listed ${p.listedNum}`);total++;continue;}
  const slug=title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,46)+'-'+String(p.pid).slice(-6);
  const html=`${g.html}\n${TRUST}`.replace(/ß/g,'ss').replace(/ẞ/g,'SS');

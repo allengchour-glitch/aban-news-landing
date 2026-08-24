@@ -9,6 +9,7 @@ import fs from 'node:fs';
 import { catTags } from './cat_tags.mjs';
 import { produktSaeubern } from './marken_filter.mjs';
 import { echoVomLieferanten } from './titel_sprache.mjs';
+import { technikWache } from './technik_plausibel.mjs';
 import { medizinZweck } from './medizin_zweck.mjs';
 import { tierschutzGeraet } from './tierschutz_geraet.mjs';
 const SHOP = 'au3j0y-hq.myshopify.com', API = '2025-01';
@@ -173,7 +174,12 @@ for (const item of ITEMS) {
   // 📦 Stückzahl aus dem englischen Lieferantennamen mitnehmen — sonst sieht ein
   // Multipack aus wie ein Einzelstück (Regel vom 26.07.2026). Eine Quelle:
   // automation/stueckzahl.mjs.
-  const title = titelMitMenge(g.title.replace(/ß/g,'ss').replace(/ẞ/g,'SS'), d.productNameEn, 70);
+  let title = titelMitMenge(g.title.replace(/ß/g,'ss').replace(/ẞ/g,'SS'), d.productNameEn, 70);
+  // Technik-Plausibilitaet — siehe automation/technik_plausibel.mjs (24.08.2026).
+  { const tw=technikWache(title, g.html||'');
+    if(tw.verwerfen){ console.log('  skip(technik)', tw.grund, title.slice(0,40)); continue; }
+    if(tw.grund) console.log('  technik-korrigiert', tw.grund);
+    title=tw.title; }
   // Titel-Wache inkl. Umlaut-Normalisierung (Geraet==Gerät-Falle 2026-07-08) + Bild-Wache (GEHIRN 2)
   const norm = x => x.toLowerCase().replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue').replace(/ß/g,'ss').replace(/[^a-z0-9]+/g,' ').trim();
   const dq = await sgql(t, `query($q:String!){products(first:10,query:$q){edges{node{id title}}}}`, { q: `title:"${title.replace(/"/g, '').split(' ').slice(0,3).join(' ')}*" status:active` });

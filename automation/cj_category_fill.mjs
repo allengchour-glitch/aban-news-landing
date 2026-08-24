@@ -17,6 +17,7 @@ import { heikelZweck } from './heikel_zweck.mjs';
 // und die Runner deuteten den RC≠0 wie immer als Punktemangel und schliefen. Die Funktion
 // war korrekt exportiert und gegen 8'629 Titel geprüft; nur der Import wurde vergessen.
 import { echoVomLieferanten } from './titel_sprache.mjs';
+import { technikWache } from './technik_plausibel.mjs';
 const SHOP='au3j0y-hq.myshopify.com',API='2025-01';
 const CID=process.env.SHOPIFY_CLIENT_ID,CSEC=process.env.SHOPIFY_CLIENT_SECRET;
 const CJT=(process.env.CJ_TOKEN||'').trim();
@@ -740,7 +741,13 @@ for(const [cat,label] of grp.cats){
    // Einzelstück und der Preis wirkt absurd — genau die Beschwerde vom 26.07.2026
    // («sonst fragen leute zu teuer für ballon»). Damals wurden 15 Ballon-Produkte von HAND
    // korrigiert; der Importer legte am nächsten Tag neue an. Jetzt an der Quelle.
-   const title=titelMitMenge(g.title.replace(/ß/g,'ss').replace(/ẞ/g,'SS'), nm, 70);
+   let title=titelMitMenge(g.title.replace(/ß/g,'ss').replace(/ẞ/g,'SS'), nm, 70);
+   // Technik-Plausibilitaet (24.08.2026): 4K-Titel bei nativ 720p, 20'000-mAh-Titel bei
+   // 10'000 im Text, 99-Mio-Lumen — Regeln und Belege in automation/technik_plausibel.mjs.
+   { const tw=technikWache(title, g.html||'');
+     if(tw.verwerfen){ console.log('  skip(technik)', tw.grund, title.slice(0,40)); continue; }
+     if(tw.grund) console.log('  technik-korrigiert', tw.grund);
+     title=tw.title; }
    // ⚕️ MEDIZINISCHE ZWECKBESTIMMUNG (14.08.2026). Acht im August angelegte Geräte standen
    // aktiv im Google-Kanal, obwohl sie nach MepV eine Konformitätsbewertung brauchen — ein
    // Temperaturpflaster mit 38-°C-Alarm für kranke Kinder, zwei Elektrostimulations-
