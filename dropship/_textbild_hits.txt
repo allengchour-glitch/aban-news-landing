@@ -12489,3 +12489,10 @@ gid://shopify/Product/15510930686337	20->1	Doppelarmband mit Naturstein und Meta
 gid://shopify/Product/15510957785473	84->0	PS2 Konsolen-Netzteil (Modell 70000)
 gid://shopify/Product/15510958309761	61->0	Maniküre Übungshand aus Silikon
 gid://shopify/Product/15511015522689	78->0	Geblümtes A-Linien Maxikleid
+gid://shopify/Product/15511016014209	38->2	Ärmelloses Plisseekleid mit Blumenmuster
+gid://shopify/Product/15511016243585	44->3	Wanderrucksack für Outdoor und Kurztrips
+gid://shopify/Product/15511016309121	8->0	Unisex Business Rucksack Grossraum
+gid://shopify/Product/15511016407425	89->3	Wasserdichter Outdoor-Rucksack unter 20L
+gid://shopify/Product/15511016440193	96->1	Business Crossbody Rucksack
+gid://shopify/Product/15511016636801	15->0	Freizeit-Reisetasche mit Laptopfach
+gid://shopify/Product/15511019979137	101->0	4-in-1 Picknick-Kochset aus Aluminium
