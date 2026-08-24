@@ -12505,3 +12505,4 @@ gid://shopify/Product/15477467971969	11->0	Faltbares Outdoor-Zelt für 1-4 Perso
 gid://shopify/Product/15478470279553	61->0	Lederarmband mit Faltschliesse und Doppelknopf
 gid://shopify/Product/15478618227073	37->0	V-Ausschnitt Kleid mit Bastgürtel
 gid://shopify/Product/15479417700737	54->0	Adapter für Hochdruckreiniger-Schaumlanze
+gid://shopify/Product/15479452270977	23->0	Damen-Sandalen aus Wildlederimitat
