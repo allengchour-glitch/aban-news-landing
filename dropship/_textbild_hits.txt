@@ -11292,3 +11292,6 @@ gid://shopify/Product/15506281922945	33->0	Multifunktionaler Knoblauchstampfer a
 gid://shopify/Product/15506282283393	53->0	Faltbares Dreiecks-Spülbeckenregal
 gid://shopify/Product/15506282840449	64->0	Chef-Messer-Set aus Edelstahl · 6-teilig
 gid://shopify/Product/15506283364737	83->2	Atmungsaktive, faltbare Haustiertasche
+gid://shopify/Product/15506283757953	19->0	Sternen-Symphonie Pailletten-Stickerei Mesh-Stoff
+gid://shopify/Product/15506285166977	8->0	Hängender Wasser- oder Futterspender für Haustiere
+gid://shopify/Product/15506285461889	88->0	Multifunktionale Brusttasche für Sport und Reise
