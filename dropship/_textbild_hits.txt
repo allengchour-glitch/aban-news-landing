@@ -12496,3 +12496,4 @@ gid://shopify/Product/15511016407425	89->3	Wasserdichter Outdoor-Rucksack unter 
 gid://shopify/Product/15511016440193	96->1	Business Crossbody Rucksack
 gid://shopify/Product/15511016636801	15->0	Freizeit-Reisetasche mit Laptopfach
 gid://shopify/Product/15511019979137	101->0	4-in-1 Picknick-Kochset aus Aluminium
+gid://shopify/Product/15448930517377	999->0	Hair Stick für perfekt gestylte Haare
