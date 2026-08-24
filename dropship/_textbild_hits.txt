@@ -12640,3 +12640,4 @@ gid://shopify/Product/15500112200065	47->2	Farben-Füller-Set
 gid://shopify/Product/15500201394561	34->0	Magischer Baum
 gid://shopify/Product/15500201820545	178->0	Rose-Bogen-Malerei
 gid://shopify/Product/15500256313729	52->0	Leinen-Kanvas-Rolle
+gid://shopify/Product/15500402295169	9->0	Hündchen-Perlenkette
