@@ -1868,3 +1868,4 @@ gid://shopify/Product/15447957340545	CHF 17.40	12 Varianten	Partnerlook T-Shirt 
 gid://shopify/Product/15447957504385	CHF 20.98	92 Varianten	Partnerlook Langarmkleid mit Print
 gid://shopify/Product/15447957733761	CHF 16.84	34 Varianten	Familien-T-Shirt im Partnerlook · Kurzarm mit Brus
 gid://shopify/Product/15447957864833	CHF 16.97	24 Varianten	Partnerlook T-Shirt für die ganze Familie
+gid://shopify/Product/15447957963137	CHF 17.52	36 Varianten	Cartoon Mutter-Tochter T-Shirt

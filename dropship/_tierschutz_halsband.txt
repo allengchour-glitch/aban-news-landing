@@ -7,3 +7,4 @@
 15504150331777	DRAFT	zwei vorstehende Kontaktstifte am Empfaenger
 15496333754753	DRAFT	E-Collar mit Fernbedienung (Blatt-4-Fund)
 # aktiv belassen (keine Elektroden sichtbar, Text nur vib/ton/ultraschall): 15448882708865 15448947491201 15453793026433 15484426486145 15496021606785 15496498479489 15496506704257 15496508342657 15496508440961 15504197353857 15497436004737 15453793026433 15497436397953(Fehltreffer: normales Halsband)
+15501918667137	AKTIV-UNKLAR	Automatik-Anti-Bell (Pfoten-Gehaeuse), Mechanismus weder in Text noch Bild belegt — Betreiber-Review
