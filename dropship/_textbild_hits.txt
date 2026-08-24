@@ -11042,3 +11042,6 @@ gid://shopify/Product/15504172876161	35->0	Frucht-Servierplatte mit Glasabdeckun
 gid://shopify/Product/15504173007233	12->0	Business Rucksack wasserdicht 20-35L
 gid://shopify/Product/15504173564289	39->3	Retro Rucksack für Herren im College-Stil
 gid://shopify/Product/15504173597057	127->0	Manueller Gemüseschneider aus Edelstahl
+gid://shopify/Product/15504173728129	26->3	Outdoor Camping Küchenmesser mit Scheide
+gid://shopify/Product/15504173859201	9->0	USB Nasenhaartrimmer aus Aluminium
+gid://shopify/Product/15504174023041	30->3	Motorrad Gepäcktasche
