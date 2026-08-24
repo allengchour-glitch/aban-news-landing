@@ -10676,3 +10676,6 @@ gid://shopify/Product/15503258943873	52->0	Ausziehbarer Diebstahlschutz mit Stah
 gid://shopify/Product/15503259140481	76->1	Kopfteil-Kissen aus Technologie-Stoff
 gid://shopify/Product/15503259238785	9->2	Dreirohr-Lufthorn für LKW, 12/24V
 gid://shopify/Product/15503259271553	19->1	Plüschiger Kissenbezug mit Tiermotiven
+gid://shopify/Product/15503259337089	21->0	Multifunktionales LED Stimmungslicht mit Wecker
+gid://shopify/Product/15503259369857	107->0	Häkelnadel-Set mit Soft-Griff, 8-teilig
+gid://shopify/Product/15503259632001	53->0	Schmuck-Set für Reparaturen und Herstellung
