@@ -32398,3 +32398,86 @@ gid://shopify/Product/15427284402561	pod	1	Kissen «Feierabig»
 gid://shopify/Product/15427284468097	pod	1	Mauspad «Es Git Nu Eis Zueri»
 gid://shopify/Product/15427284533633	pod	1	Kissen «Fondue»
 gid://shopify/Product/15427284500865	pod	1	Tasche «Gruezi»
+gid://shopify/Product/15427284337025	pod	1	Tasche «Gaell»
+gid://shopify/Product/15427284795777	pod	1	Tasche «Heidi»
+gid://shopify/Product/15427284730241	pod	1	Kissen «Gopfertami»
+gid://shopify/Product/15427284697473	pod	1	Tasche «Haerzlech»
+gid://shopify/Product/15427284763009	pod	1	Mauspad «Fondue»
+gid://shopify/Product/15427284664705	pod	1	Mauspad «Feierabig»
+gid://shopify/Product/15427284631937	pod	1	Kissen «Gaell»
+gid://shopify/Product/15427284599169	pod	1	Tasche «Haeee»
+gid://shopify/Product/15427284828545	pod	1	Kissen «Gruezi»
+gid://shopify/Product/15427284861313	pod	1	Mauspad «Gaell»
+gid://shopify/Product/15427284894081	pod	1	Tasche «Hoi»
+gid://shopify/Product/15427284959617	pod	1	Kissen «Haeee»
+gid://shopify/Product/15427284926849	pod	1	Mauspad «Gopfertami»
+gid://shopify/Product/15427285057921	pod	1	Tasche «Merci»
+gid://shopify/Product/15427285025153	pod	1	Mauspad «Gruezi»
+gid://shopify/Product/15427285090689	pod	1	Mauspad «Haeee»
+gid://shopify/Product/15427285156225	pod	1	Stofftasche zum Selbstgestalten
+gid://shopify/Product/15427284992385	pod	1	Tasche «Matterhorn»
+gid://shopify/Product/15428286513537	direkt	1	Auto Rücksitz-Organizer: Mehr Stauraum & Ordnung im Nu.
+gid://shopify/Product/15427285123457	pod	1	Kissen zum Selbstgestalten
+gid://shopify/Product/15428299194753	direkt	1	Kompakter Klappgrill – Grillvergnügen für unterwegs.
+gid://shopify/Product/15428299161985	direkt	1	Kraftvoller Grillreiniger – Für mühelos saubere Roste.
+gid://shopify/Product/15428299260289	direkt	1	Outdoor Gusseisenpfanne – Saftiges Fleisch mit Grillstreifen.
+gid://shopify/Product/15428300112257	direkt	1	Akku-Handsauger für Auto & Heim – Mühelose Sauberkeit.
+gid://shopify/Product/15428415422849	direkt	1	2-in-1 Display-Reiniger – Spray + Mikrofaser für Handy & Tablet
+gid://shopify/Product/15428415226241	direkt	1	Reise-Tasche Wasserdicht XL – mit Schultergurt & Schuhfach
+gid://shopify/Product/15428421386625	direkt	1	Kreuz-Halskette Gold · Edelstahl-Anhänger
+gid://shopify/Product/15428421353857	direkt	1	Layering-Halsketten Set · Gliederkette Gold & Silber
+gid://shopify/Product/15428421419393	direkt	1	Armband «Just Breathe» · Edelstahl mit Gravur
+gid://shopify/Product/15428421452161	direkt	1	Tennis-Armband Bunt · Zirkonia funkelnd
+gid://shopify/Product/15428421681537	direkt	1	Stern-Ohrringe Gold · 4-Zack
+gid://shopify/Product/15428427940225	direkt	1	Statement-Ring Zirkonia · Grosser Kristall
+gid://shopify/Product/15428427972993	direkt	1	Ring «You Light Up My Life» · Leucht-Stein
+gid://shopify/Product/15428428005761	direkt	1	Herz-Ring Roségold · Zirkonia verziert
+gid://shopify/Product/15428428038529	direkt	1	Breiter Ring Silber · Floral durchbrochen
+gid://shopify/Product/15428421714305	direkt	1	Tropfen-Ohrringe Emaille · Schwarz-Weiss Retro
+gid://shopify/Product/15428428071297	direkt	1	Ring Blauer Stein · elegant gefasst
+gid://shopify/Product/15428428104065	direkt	1	Ring Schwarz · Regenbogen-Kristall
+gid://shopify/Product/15428428136833	direkt	1	Stapelring-Set Gold · Mix (Herz & Welle)
+gid://shopify/Product/15428428169601	direkt	1	Siegelring Marmor · Gold-Optik
+gid://shopify/Product/15428429578625	direkt	1	Isolier-Trinkflasche Edelstahl · mit Trage-Hülle
+gid://shopify/Product/15428429513089	direkt	1	Retro Flammen-Tischlampe LED · aufladbar
+gid://shopify/Product/15428429611393	direkt	1	Vakuumierer kabellos · Lebensmittel frisch halten
+gid://shopify/Product/15428497015169	direkt	1	Edelstahl Coffee-to-go Becher · auslaufsicher
+gid://shopify/Product/15428497047937	direkt	1	Canvas-Shopper Tote · gross & nachhaltig
+gid://shopify/Product/15429975343489	direkt	1	Partner-Halskette «Soulmate» · magnetischer Herz-Anhänger (2 Hälften)
+gid://shopify/Product/15428497080705	direkt	1	Edelstahl Seifenschale · ohne Bohren, rostfrei
+gid://shopify/Product/15429975409025	direkt	1	Paar-Armband «Herzstein» · Naturstein mit Herz-Anhänger
+gid://shopify/Product/15429976031617	direkt	1	Partner-Ring «Chain» · Titanstahl, 18K vergoldet (Unisex)
+gid://shopify/Product/15429988614529	direkt	1	Partner-Ring «Bär» · Vintage Edelstahl, Unisex
+gid://shopify/Product/15429988516225	direkt	1	Partner-Kette «Wolfszahn» · Edelstahl-Anhänger für Sie & Ihn
+gid://shopify/Product/15429988745601	direkt	1	Partner-Ring-Set «Sword of Love» · Herz & Schwert (2 Ringe)
+gid://shopify/Product/15429994217857	pod	1	Mr & Mrs Tassen-Set · 2 Tassen zur Hochzeit 💍
+gid://shopify/Product/15429994283393	pod	1	Her King & His Queen Tassen-Set · 2 Tassen für Verliebte 👑
+gid://shopify/Product/15429994316161	pod	1	Hubby & Wifey Tassen-Set · 2 Tassen mit Herz ❤️
+gid://shopify/Product/15429994185089	pod	1	King & Queen Tassen-Set · 2 Tassen für Paare 👑
+gid://shopify/Product/15429997724033	pod	1	King & Queen Partner-Shirts · Couple T-Shirts 👑
+gid://shopify/Product/15429997822337	pod	1	Mr & Mrs Partner-Shirts · Couple T-Shirts zur Hochzeit 💍
+gid://shopify/Product/15429997920641	pod	1	Hubby & Wifey Partner-Shirts · Couple T-Shirts mit Herz ❤️
+gid://shopify/Product/15430231032193	direkt	1	RGB-Wandlampe «Halo» · kabellos, Fernbedienung, ohne Bohren 💡
+gid://shopify/Product/15430233555329	direkt	1	Bambus-Besteckorganizer · Schubladen-Ordnung nachhaltig
+gid://shopify/Product/15430233588097	direkt	1	Weekender-Reisetasche «Voyage» · faltbar, mit Extra-Fach 🧳
+gid://shopify/Product/15429997855105	pod	1	Her King & His Queen Partner-Shirts · Couple T-Shirts 👑
+gid://shopify/Product/15430230901121	direkt	1	Aroma-Diffuser «Persimmon» · Kaki-Frucht-Design mit Licht 🍂
+gid://shopify/Product/15430236504449	direkt	1	Solar-Gartenleuchte «Lumio» · Aluminium, automatisch ☀️
+gid://shopify/Product/15430237061505	direkt	1	Auto-Duft-Clip «Woody» · edler Holz-Lufterfrischer 🌿
+gid://shopify/Product/15430238634369	direkt	1	Dusch-Organizer-Set «Aqua» · 5-teilig, Edelstahl, ohne Bohren 🚿
+gid://shopify/Product/15430245515649	direkt	1	Transportbox «PetGo» · für Hund & Katze, belüftet, flugtauglich 🐾
+gid://shopify/Product/15430291849601	direkt	1	Leoparden-Plüschtier «Leo» · realistisch & weich (32 cm) 🐆
+gid://shopify/Product/15430245548417	direkt	1	Folien-Spender «TripleRoll» · 3-in-1 für Folie & Küchenrolle 🧻
+gid://shopify/Product/15430292078977	direkt	1	Holz-Lesezähler «Leseheld» · Montessori-Tier-Tracker 🦊
+gid://shopify/Product/15430344311169	direkt	1	Wide-Leg Midi-Rock «Studio» · fliessend, Freigrösse
+gid://shopify/Product/15430344409473	direkt	1	Polka-Dot Wickel-Rock «Dolce» · High-Waist, asymmetrisch
+gid://shopify/Product/15430344442241	direkt	1	Damen High-Heel-Sandalette «Capri» · offene Spitze
+gid://shopify/Product/15430344507777	direkt	1	Damen Beach-Slides «Maré» · Slip-on
+gid://shopify/Product/15430344606081	direkt	1	Herren High-Top-Sneaker «Brooklyn» · Mesh, atmungsaktiv
+gid://shopify/Product/15430344573313	direkt	1	Damen Komfort-Sandalen «Estate» · Elastik-Riemen
+gid://shopify/Product/15430344638849	direkt	1	Herren Leder-Sandalen «Adriano» · Vollnarbenleder
+gid://shopify/Product/15430344671617	direkt	1	Herren Sport-Sneaker «Velocità» · Mesh, Wide-Toe
+gid://shopify/Product/15430344704385	direkt	1	Herren Trainingsschuhe «Forza» · Gym & Weightlifting
+gid://shopify/Product/15430345458049	direkt	1	Premium Schultertasche «Como» · geräumig, Tragegurt
+gid://shopify/Product/15430345425281	direkt	1	Echtleder-Henkeltasche «Milano» · weiches Rindsleder
+gid://shopify/Product/15430345490817	direkt	1	Moissanite-Kette «Aurora» · 925 Silber, GRA-zertifiziert
