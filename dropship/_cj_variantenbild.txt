@@ -1415,3 +1415,6 @@ gid://shopify/Product/15448504074625	zugeordnet	30	Waffelstrick Kapuzenpullover 
 gid://shopify/Product/15448504238465	zugeordnet	9	Damen Oversized Fleece-Sweatshirt mit Kapuze
 gid://shopify/Product/15448504304001	zugeordnet	4	Hoodie mit Print und langen Ärmeln
 gid://shopify/Product/15448504336769	zugeordnet	42	Unifarbener Kapuzenpullover für Damen
+gid://shopify/Product/15448080679297	zugeordnet	6	Elegantes Spitzen-Langarmshirt mit Puffärmeln
+gid://shopify/Product/15448103780737	zugeordnet	20	Langarm-Shirt für Frühling und Sommer
+gid://shopify/Product/15448106107265	zugeordnet	60	Pullover mit Kettendetail und Rundhalsausschnitt
