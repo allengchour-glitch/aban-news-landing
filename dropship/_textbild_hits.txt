@@ -10539,3 +10539,60 @@ gid://shopify/Product/15503121875329	49->0	USB Aroma Diffusor mit dimmbarer Vulk
 gid://shopify/Product/15503121940865	61->0	Malen nach Zahlen: Elefanten im Sonnenuntergang
 gid://shopify/Product/15503122071937	17->2	LED-Lupenleuchte mit Klemme
 gid://shopify/Product/15503122170241	49->0	Handgeschmiedetes Kochmesser mit Holzgriff
+gid://shopify/Product/15503122366849	76->0	Modische Sandalen aus Rindsleder mit Klettverschluss
+gid://shopify/Product/15503122432385	183->0	Recyceltes PU-Leder, zweifarbig geprägt
+gid://shopify/Product/15503122497921	97->1	Porenreiniger gegen Mitesser
+gid://shopify/Product/15503122694529	62->1	Atmungsaktiver Dämpfungs-Sneaker für Herren
+gid://shopify/Product/15503122891137	19->0	Baby Shower Massagebürsten-Set aus Wolle
+gid://shopify/Product/15503122989441	9->1	Herren Outdoor Freizeit Slipper aus Leder
+gid://shopify/Product/15503124332929	33->0	3-in-1 Wireless Charger für Handy, Kopfhörer & Uhr
+gid://shopify/Product/15503124365697	76->0	Ergonomisches Lendenkissen aus Memory-Schaum
+gid://shopify/Product/15503124431233	63->1	Handgefertigte Herrenschuhe aus Rindsleder
+gid://shopify/Product/15503124464001	144->0	Häkelnadel-Set mit Etui, 36 Teile
+gid://shopify/Product/15503124496769	48->2	Baumwoll-Kissenbezug
+gid://shopify/Product/15503124562305	13->0	GPS-Tracker mit Gesundheitsfunktionen
+gid://shopify/Product/15503124726145	86->0	Weiche Casual-Leder Sneaker für Herren
+gid://shopify/Product/15503124758913	78->1	Knochenschall-Kopfhörer 5.0 Stereo
+gid://shopify/Product/15503124824449	26->3	8-in-1 Multifunktions-Düse für Auto & Garten
+gid://shopify/Product/15503124922753	8->0	Herren Suede Loafers
+gid://shopify/Product/15503125021057	9->0	Faltbare LED-Leuchtbrille
+gid://shopify/Product/15503125184897	22->0	Holzmaserungs-Roller
+gid://shopify/Product/15503125250433	30->0	Halbrundes Fusskissen für Büro & Zuhause
+gid://shopify/Product/15503125283201	150->0	3.0 Metall-USB-Stick 32 GB
+gid://shopify/Product/15503125447041	25->0	Scheiben-Demontagewerkzeug für Fahrzeuge
+gid://shopify/Product/15503125512577	18->0	Kabelloses Headset für diverse Anlässe
+gid://shopify/Product/15503125578113	9->0	Brillen-Schraubenzieher-Set, 8-teilig
+gid://shopify/Product/15503125610881	20->0	N3 Smart Nail Chip
+gid://shopify/Product/15503125643649	11->0	Nordische Kissenhülle mit Geometrie-Muster
+gid://shopify/Product/15503125807489	16->1	Leichte Outdoor-Sneaker für Teenager
+gid://shopify/Product/15503126233473	9->0	Mehrreihiges C-Armband mit Zirkonia
+gid://shopify/Product/15503126299009	29->0	Küchenutensilien-Set aus Edelstahl
+gid://shopify/Product/15503126331777	18->0	Punk Lederarmband aus Edelstahl
+gid://shopify/Product/15503126528385	48->0	Asymmetrisches Kettenarmband mit Perlen
+gid://shopify/Product/15503126561153	100->0	Vintage Besteck-Set, 3-teilig, handgeschmiedet
+gid://shopify/Product/15503126692225	18->1	Edelstahl Ölfiltertopf mit Sieb
+gid://shopify/Product/15503126856065	17->0	Offener Armreif, vergoldet
+gid://shopify/Product/15503127216513	12->0	Eleganter Zirkonia Ring mit Vier-Krappenfassung
+gid://shopify/Product/15503127445889	17->0	Kinder Barfussschuhe – leicht und rutschfest
+gid://shopify/Product/15503127675265	16->2	Baby Sportschuhe mit weicher Sohle
+gid://shopify/Product/15503127904641	30->0	Kinder Sportschuhe für Jungen
+gid://shopify/Product/15503128002945	93->0	Wasserdichte Leucht-Armbanduhr mit grossem Zifferblatt
+gid://shopify/Product/15503128265089	45->0	Vulkan Aroma Diffuser mit Flammen- & Quallen-Effekt
+gid://shopify/Product/15503128330625	12->1	LED Wecker mit Spiegel & Kalender
+gid://shopify/Product/15503128592769	85->0	Atmungsaktive Mesh-Sportschuhe für Damen und Herren
+gid://shopify/Product/15503128625537	52->3	Multifunktionale Quarzuhr «Green Water Ghost»
+gid://shopify/Product/15503131378049	11->0	Interaktives Katzenspielzeug mit Ball und Versteck
+gid://shopify/Product/15503131804033	16->0	WLAN-Überwachungskamera 360° mit Nachtsicht
+gid://shopify/Product/15503131869569	22->0	Erhöhter Keramik-Futternapf für Haustiere
+gid://shopify/Product/15503131902337	69->3	Kupferfarbene Quarzuhr im Gothic-Stil
+gid://shopify/Product/15503132131713	54->0	Umhängetasche Leisure Messenger
+gid://shopify/Product/15503132262785	66->0	Wasserdichte Outdoor Sportuhr Herren
+gid://shopify/Product/15503132328321	26->0	Trendige Umhängetasche aus Oxford-Gewebe
+gid://shopify/Product/15503132688769	22->1	Gigabit WLAN-Router für Zuhause
+gid://shopify/Product/15503132983681	22->0	Multifunktionales Erste-Hilfe-Beinholster
+gid://shopify/Product/15503133245825	52->1	Kamera-Umhängetasche aus Canvas
+gid://shopify/Product/15503133311361	26->0	Futterautomat mit Kamera für Kleintiere
+gid://shopify/Product/15503133344129	48->0	Wasserdichte Kamera-Umhängetasche
+gid://shopify/Product/15503133409665	68->3	Verstellbarer Hundenapf mit Hebefunktion
+gid://shopify/Product/15503133671809	8->0	Roddy Ricch Fussmatte
+gid://shopify/Product/15503134130561	77->0	Etuikleid mit One-Shoulder-Träger und Spitze
