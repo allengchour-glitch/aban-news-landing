@@ -12637,3 +12637,6 @@ gid://shopify/Product/15499991744897	132->0	Katze und Schmetterling
 gid://shopify/Product/15500071764353	176->1	Japanisch inspirierter Teller aus New Bone China
 gid://shopify/Product/15500108398977	14->0	Kissen für Yoga
 gid://shopify/Product/15500112200065	47->2	Farben-Füller-Set
+gid://shopify/Product/15500201394561	34->0	Magischer Baum
+gid://shopify/Product/15500201820545	178->0	Rose-Bogen-Malerei
+gid://shopify/Product/15500256313729	52->0	Leinen-Kanvas-Rolle
