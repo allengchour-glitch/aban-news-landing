@@ -1197,3 +1197,27 @@ gid://shopify/Product/15448092574081	zugeordnet	4	Lyocell Off-Shoulder Langarmsh
 gid://shopify/Product/15448092606849	zugeordnet	24	Gestreiftes Langarmshirt im Color-Blocking-Stil
 gid://shopify/Product/15448092672385	zugeordnet	55	Milchseide Langarmshirt mit eckigem Ausschnitt
 gid://shopify/Product/15448092737921	zugeordnet	9	Langarm-Baselayer Top für Damen Slim-Fit
+gid://shopify/Product/15448092836225	zugeordnet	80	Loose Langarmshirt im Retro-Look
+gid://shopify/Product/15448092934529	zugeordnet	65	Besticktes V-Neck Shirt aus Baumwoll-Leinen
+gid://shopify/Product/15448093000065	zugeordnet	25	Gestreiftes Langarmshirt für vielseitige Looks
+gid://shopify/Product/15448093032833	zugeordnet	42	Retro Sweatshirt mit geometrischem Muster
+gid://shopify/Product/15448093065601	zugeordnet	36	Langarmhemd mit Peter-Pan-Kragen aus Baumwoll-Leinen
+gid://shopify/Product/15448093098369	zugeordnet	4	Elegantes Langarm-Spitzentop für Damen
+gid://shopify/Product/15448093131137	bild-urls-tot
+gid://shopify/Product/15448093163905	zugeordnet	16	Damen Langarm-Bodysuit mit Herz-Print
+gid://shopify/Product/15448093196673	zugeordnet	80	Lässiges Langarmshirt mit Print für Damen
+gid://shopify/Product/15448096506241	zugeordnet	16	V-Ausschnitt Camisole mit Spitze
+gid://shopify/Product/15448101519745	zugeordnet	9	Spitzenbesticktes Patchwork-Hemd für Damen
+gid://shopify/Product/15448101585281	zugeordnet	18	Leichtes Baumwoll-Leinen Hemd für den Sommer
+gid://shopify/Product/15448101618049	bild-urls-tot
+gid://shopify/Product/15448101683585	zugeordnet	64	Damen Plissiertes Langarmhemd aus Baumwoll-Leinen
+gid://shopify/Product/15448101945729	zugeordnet	10	Elegante Bluse mit Spitzen-Einsätzen
+gid://shopify/Product/15448102044033	zugeordnet	10	Vintage Bluse aus Doppel-Baumwollgarn
+gid://shopify/Product/15448102076801	zugeordnet	20	Western-Hemd mit Fransen aus Wildlederimitat
+gid://shopify/Product/15448102240641	zugeordnet	12	Figurbetontes Kurzarmhemd mit V-Ausschnitt
+gid://shopify/Product/15448102306177	zugeordnet	30	Casual Halter Top für Damen
+gid://shopify/Product/15448102371713	zugeordnet	8	Elegante Damenbluse mit Rüschen und Spitze
+gid://shopify/Product/15448102404481	zugeordnet	20	Uni-Damenbluse mit genähtem Kragen
+gid://shopify/Product/15448102437249	zugeordnet	30	Lässiges Polo-Shirt mit Kragen-Tasche
+gid://shopify/Product/15448102601089	zugeordnet	55	Baumwoll-Leinen Top mit Rundhals und 3/4-Ärmeln
+gid://shopify/Product/15448102633857	zugeordnet	20	Elegante Satinbluse mit Schleife
