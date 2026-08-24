@@ -10936,3 +10936,4 @@ gid://shopify/Product/15504105111937	18->0	Filter-Schwamm für Katzen-Wasserspen
 gid://shopify/Product/15504105570689	159->0	Herren Strickjacke verdickt
 gid://shopify/Product/15504105603457	10->0	Leder-Uhrenarmband mit geradem Anschluss
 gid://shopify/Product/15504105734529	113->0	Herren Strick-Cardigan – Locker & Dick
+gid://shopify/Product/15504105832833	24->0	Ultraschall Mückenabwehr Armbanduhr
