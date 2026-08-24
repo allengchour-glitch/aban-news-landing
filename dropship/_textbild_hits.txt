@@ -12332,3 +12332,6 @@ gid://shopify/Product/15510711697793	24->0	Halsband- und Leinen-Set für mittelg
 gid://shopify/Product/15510711730561	41->0	Warme Winter-Lederstiefel für Herren
 gid://shopify/Product/15510712254849	12->0	Freihändige Hunde-Laufleine mit Bauchtasche
 gid://shopify/Product/15510712353153	58->0	Fahrrad-Hundeleine
+gid://shopify/Product/15510785327489	118->0	32 L strapazierreicher Wanderrucksack – grosses Volumen
+gid://shopify/Product/15510785458561	31->0	12-teiliges Make-up Pinselset · 12 Stück
+gid://shopify/Product/15510785556865	17->3	Faltbarer Wanderrucksack mit Reissverschluss
