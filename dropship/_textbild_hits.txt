@@ -10885,3 +10885,36 @@ gid://shopify/Product/15504081355137	18->0	Modernes Kissenbezug-Set, Rot-Weiss
 gid://shopify/Product/15504081453441	50->0	USB Fusselrasierer
 gid://shopify/Product/15504081846657	37->0	Glätteisen & Lockenstab 2-in-1 Kamm
 gid://shopify/Product/15504081879425	71->1	Kissenbezug aus Baumwolle mit Streifen
+gid://shopify/Product/15504082076033	19->0	Kabelloser Lockenstab mit Automatikfunktion
+gid://shopify/Product/15504082108801	22->0	Android 11.0 Dual-Band WiFi TV Box
+gid://shopify/Product/15504082174337	23->2	Kabelloser 2-in-1 Glätt- und Lockenstab mit USB
+gid://shopify/Product/15504082633089	8->0	Kleiner Heizlüfter “Little Sun”
+gid://shopify/Product/15504082665857	10->2	Baby Lauflernschuhe aus Rindsleder
+gid://shopify/Product/15504082895233	63->0	Industrie-WLAN-Router für alle Netze
+gid://shopify/Product/15504083091841	37->0	Multifunktionale LED Spiegel Uhr
+gid://shopify/Product/15504083157377	12->0	Fluffy Splint Haarwurzel-Dauerwelle
+gid://shopify/Product/15504083353985	8->0	Glätteisen mit Kaltwindfunktion
+gid://shopify/Product/15504083386753	8->1	Atmungsaktive Anti-Rutsch Sandalen für Kinder
+gid://shopify/Product/15504083452289	27->0	Shell-toe Non-Slip Toddler Shoes mit Klettverschluss
+gid://shopify/Product/15504083681665	28->0	Hundehalsband mit kreativem Design
+gid://shopify/Product/15504088007041	47->0	Drehbarer Outdoor-Organizer mit 4 Fächern
+gid://shopify/Product/15504088170881	10->0	Desktop Organizer mit 3 Schubladen oder Maskenbox
+gid://shopify/Product/15504088203649	26->3	Sofa-Kissenbezug aus Baumwolle und PU-Leder
+gid://shopify/Product/15504088301953	89->0	Chenille Sofaüberwurf mit Streifenmuster
+gid://shopify/Product/15504088629633	45->0	Halsband für Welpen und kleine Hunde
+gid://shopify/Product/15504088859009	9->0	Trendige Canvas-Tasche im koreanischen Stil
+gid://shopify/Product/15504089022849	41->0	Sofa-Kissenbezug "Four Seasons"
+gid://shopify/Product/15504089219457	18->0	USB Leuchthalsband für Hunde, verschiedene Grössen
+gid://shopify/Product/15504089317761	114->0	Elastischer Sofaüberzug mit Pflanzenmuster
+gid://shopify/Product/15504089416065	8->1	LED Kosmetiktasche mit Licht
+gid://shopify/Product/15504090366337	50->3	Reise-Rucksack für Herren aus Canvas
+gid://shopify/Product/15504090497409	59->0	Thermorucksack mit Isolierung
+gid://shopify/Product/15504090595713	196->0	Ultraleichter 10L Velo-Rucksack
+gid://shopify/Product/15504090759553	20->0	Halsband & Leine mit Schleife für Haustiere
+gid://shopify/Product/15504090956161	32->0	Duschtemperaturanzeige für Regendusche
+gid://shopify/Product/15504091283841	46->0	Kreuzstich-Set "Leuchtturm"
+gid://shopify/Product/15504097116545	9->2	Leinenkleid ärmellos mit Taillengürtel
+gid://shopify/Product/15504097149313	11->0	Diamond Painting Werkzeug-Set mit Metallspitzen
+gid://shopify/Product/15504097280385	50->1	Gerüschtes Mini-Kleid mit eckigem Ausschnitt
+gid://shopify/Product/15504097378689	115->1	Figurbetontes Freizeitkleid mit Reissverschluss
+gid://shopify/Product/15504097739137	19->0	DIY Diamond Painting «Kuh»
