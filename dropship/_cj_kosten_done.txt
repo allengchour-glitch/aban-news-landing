@@ -1724,3 +1724,15 @@ gid://shopify/Product/15447930503553	CHF 23.50	3 Varianten	Outdoor Schwimmhandsc
 gid://shopify/Product/15447930732929	CHF 18.76	10 Varianten	Lange PU-Lederhandschuhe für Damen
 gid://shopify/Product/15447930831233	CHF 16.90	16 Varianten	Kinder-Handschuhe Cartoon – Winddicht & Warm
 gid://shopify/Product/15447931060609	CHF 17.30	7 Varianten	Fleece-gefütterte Kinder-Handschuhe
+gid://shopify/Product/15447931388289	CHF 23.39	4 Varianten	Warme Lederhandschuhe für Damen
+gid://shopify/Product/15447931617665	CHF 17.49	4 Varianten	Strickhandschuhe mit Strass und Touchscreen-Funkti
+gid://shopify/Product/15447931748737	CHF 16.90	1 Varianten	Glitzernde Netzstrümpfe mit Strass
+gid://shopify/Product/15447932043649	CHF 16.82	1 Varianten	Anti-Rutsch Basketballsocken
+gid://shopify/Product/15447932207489	CHF 21.98	6 Varianten	Vintage Mid-Calf Socken im Magazin-Stil
+gid://shopify/Product/15447932338561	CHF 23.79	2 Varianten	Zwei Paar Socken: Spitze & Boot
+gid://shopify/Product/15447932436865	CHF 18.68	5 Varianten	Pilates Anti-Rutsch Socken für Damen
+gid://shopify/Product/15447932567937	CHF 17.34	3 Varianten	Kompressionssocken aus Bambusfaser
+gid://shopify/Product/15447932764545	CHF 17.99	3 Varianten	Kompressions-Beinstulpen (6 Paar)
+gid://shopify/Product/15447932928385	CHF 19.51	2 Varianten	Seidenstrumpf-Schlafsack, extra lang & blickdicht
+gid://shopify/Product/15447933059457	CHF 16.88	17 Varianten	Mid-Calf Yoga Socken für Damen
+gid://shopify/Product/15447933157761	CHF 28.44	30 Varianten	Kaschmir-Socken für Kinder, einfarbig
