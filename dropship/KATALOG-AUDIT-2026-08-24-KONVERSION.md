@@ -113,3 +113,22 @@ Der Shop hat **13 bezahlte Bestellungen** (#1003–#1015, live gezählt 07:29 UT
 - **Tatsächliche CJ-Lieferausfallquote** der beworbenen Ware (hype-jetzt, Startseiten-Reihen): der in 3.2 skizzierte Mess-Wächter existiert nicht; heute ist unbekannt, ob das Risiko 0,1 % oder 20 % beträgt.
 - **Sachaussagen jenseits von Auflösung/Lumen/mAh/Stückzahl** (Watt, Ah, Kapazitäten von Kühlboxen, dpi etc.) — dieselbe Fantasiezahl-Klasse ist dort ungeprüft.
 - **Der Thomas-Sabo-Nebenbefund** (ACTIVE mit «nicht-verifiziert-lieferbar» im Google-Kanal) ist durch 3.3 grösstenteils erklärt (verifiziert lagernd, tracked+DENY), aber der BigBuy-Doppeltest CH-Lieferbarkeit wurde für dieses Einzelstück nicht wiederholt — letzter Abgleich 18.07.
+
+---
+
+## 6. Abarbeitungsstand (24.08.2026, gleiche Session)
+
+| Befund | Stand |
+|---|---|
+| 2.1/2.3/2.4 Streichpreise | ✅ 57 entfernt (`streichpreis_entfernen.py`), Thomas Sabo offen (UVP-Frage, Betreiber) |
+| 2.2 4K-Beamer | ✅ 4 Titel + 7 Handles (301) korrigiert |
+| 2.5 streichpreise.py | ✅ stillgelegt (raise beim Start) |
+| 2.6 Fantasie-Lumen | ✅ 3 Zahlen gestrichen |
+| 2.7 Powerbank-Titel | ✅ 2 auf 10'000 mAh, «Mini» weg |
+| 2.8 100'000 mAh | ✅ aus dem Text; CJ wiederholt die Zahl nur (Quelle, kein Beleg) |
+| 2.9 Breil-Ring | ✅ 3 Varianten auf DENY |
+| 2.10–2.12, 2.14, 2.15 Kollektionsregeln | ✅ 6 Regelwerke auf Vollwörter; 2.15 live verschärft bestätigt (creme = Farbe) |
+| 2.13 Kaugummi | ✅ Titel «40 Stangen à 16 Stück» |
+| Titel-Bild (FPV, S6, Rucksack) | ✅ korrigiert; Ventilator-Farbe OFFEN (CJ-Budget) |
+| Quellenfix Importer | ✅ `technik_plausibel.mjs` in allen drei Importern |
+| 2.16 EN-Fossil | ⏸️ Betreiber-Entscheid |

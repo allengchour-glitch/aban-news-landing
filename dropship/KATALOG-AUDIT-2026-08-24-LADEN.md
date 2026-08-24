@@ -203,3 +203,21 @@ Sechs von neun Zahlen des Finders waren **zu niedrig**, zwei Befunde ganz falsch
 - **Ob `/pages/terms-en` und `/pages/agb-luxestyle` irgendwo verlinkt sind**, wurde nicht geklärt — beide sind veröffentlicht und damit erreichbar, das genügte für die Befunde.
 - **Das Theme wurde nicht einzeln nach Datenschutzaussagen durchsucht** (nur die gerenderte Seite per WebFetch).
 - **Keine Mutation, kein Commit** — alles ausschliesslich lesend.
+
+---
+
+## Abarbeitungsstand (24.08.2026)
+
+| Befund | Stand |
+|---|---|
+| BUNDLE20-Ratgeber | ✅ 2 Reststellen korrigiert (2 waren live schon sauber) |
+| FAQ CHF 4.90 / LAUNCH30 / DE-AT-Zusagen | ✅ beide Seiten auf die kanonischen Aussagen |
+| Wächter-Lücken (faq-Anker, Paginierung) | ✅ beide Quellen repariert |
+| Datenschutz ohne Staat (China) | ✅ Abschnitt in /policies/privacy-policy, WebFetch-verifiziert |
+| Footer-Links auf Policy-Fassungen | ✅ (war beim Schreiben schon umgehängt — anderer Lauf) |
+| EU-ODR-Verweise | ✅ agb-luxestyle + terms-en; Impressum war schon sauber; Wächter `veraltete_verweise.py` neu |
+| «24 Stunden»-Zusage Produktseite | ✅ auf «1–3 Werktage, in den Lieferzeiten enthalten» |
+| Versandseiten-Fussnote (1-3 Tage vs. 1–2 Gesamtzeit) | ⛔ Änderung vom Betreiber abgelehnt — nicht angefasst |
+| Wochentag im Lieferdatum | ✅ bereits im Theme gefixt (parallele Session, Sa+2/So+1) |
+| 4 AGB-Fassungen | ⏸️ Betreiber: konsolidieren oder Scope write_legal_policies |
+| Liechtenstein (13 Texte vs. Checkout) | ⏸️ Betreiber: LI dem Markt hinzufügen ist die bessere Reparatur |
