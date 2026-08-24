@@ -12526,3 +12526,4 @@ gid://shopify/Product/15483935621505	25->0	Hitzebeständige Pfannenunterlage
 gid://shopify/Product/15484697969025	116->1	Ultrafeine Reinigungstücher
 gid://shopify/Product/15484711108993	31->1	USB Stick Ice Cream (32GB / 64GB)
 gid://shopify/Product/15485321412993	53->0	Herren Hemd Kurzarm Sommer Casual
+gid://shopify/Product/15485579428225	11->1	Handgemachte Cat's Eye Nägel zum Aufkleben
