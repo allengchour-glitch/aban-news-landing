@@ -12558,3 +12558,5 @@ gid://shopify/Product/15494854541697	14->2	Personalisiertes Zirkon-Armband mit H
 gid://shopify/Product/15494892978561	121->0	American Retro Langarmshirt für Herren
 gid://shopify/Product/15495065076097	109->0	Memory Foam Gel Lendenkissen für Bürostuhl
 gid://shopify/Product/15495087882625	14->0	Multifunktionaler Haarschneider
+gid://shopify/Product/15495115276673	39->1	Nagelmodellage-Gel
+gid://shopify/Product/15495126483329	45->0	Britische Stiefeletten für Mädchen
