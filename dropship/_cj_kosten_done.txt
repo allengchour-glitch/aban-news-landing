@@ -1711,3 +1711,16 @@ gid://shopify/Product/15447928832385	CHF 17.56	7 Varianten	Warme Plüsch-Handsch
 gid://shopify/Product/15447903273345	CHF 19.63	1 Varianten	Punk-Gürtel für Damen – Silber
 gid://shopify/Product/15447904256385	CHF 16.80	1 Varianten	Vintage Gürtel mit Türkis-Schnalle
 gid://shopify/Product/15447929028993	CHF 16.94	3 Varianten	Damen Strickhandschuhe aus weichem Polyester
+gid://shopify/Product/15447929192833	CHF 52.39	4 Varianten	Wärme-Kompressionshandschuhe mit Ferninfrarot
+gid://shopify/Product/15447929356673	CHF 22.16	6 Varianten	Einweghandschuhe einzeln verpackt
+gid://shopify/Product/15447929389441	CHF 23.80	54 Varianten	Elegante Damenbluse mit Rüschen und Knopfleiste
+gid://shopify/Product/15447929487745	CHF 20.37	3 Varianten	Damen-Handschuhe aus echtem Leder
+gid://shopify/Product/15447929651585	CHF 18.61	32 Varianten	Kurze Velo-Handschuhe für Damen
+gid://shopify/Product/15447929815425	CHF 18.76	18 Varianten	Warme, wasserdichte Kinder-Winterhandschuhe
+gid://shopify/Product/15447929979265	CHF 30.01	1 Varianten	Enger Lederhandschuh für Damen
+gid://shopify/Product/15447930143105	CHF 18.25	2 Varianten	Wasserdichte Thermo-Skihandschuhe
+gid://shopify/Product/15447930306945	CHF 21.71	60 Varianten	Warme Touchscreen-Handschuhe aus Rindsleder
+gid://shopify/Product/15447930503553	CHF 23.50	3 Varianten	Outdoor Schwimmhandschuhe rutschfest
+gid://shopify/Product/15447930732929	CHF 18.76	10 Varianten	Lange PU-Lederhandschuhe für Damen
+gid://shopify/Product/15447930831233	CHF 16.90	16 Varianten	Kinder-Handschuhe Cartoon – Winddicht & Warm
+gid://shopify/Product/15447931060609	CHF 17.30	7 Varianten	Fleece-gefütterte Kinder-Handschuhe
