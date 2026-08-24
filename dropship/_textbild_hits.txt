@@ -12624,3 +12624,8 @@ gid://shopify/Product/15497645523329	27->0	7-lagiger Dokumenten-Organizer mit Do
 gid://shopify/Product/15497711321473	14->1	Geschenkset: Quarzuhr, Portemonnaie & Accessoires
 gid://shopify/Product/15498674307457	33->0	Mobiles Reinigungsgerät für Obst und Gemüse
 gid://shopify/Product/15499048616321	37->3	Schwan Diamond Painting 5D Stickerei
+gid://shopify/Product/15499052712321	131->1	DIY Stickset mit Pflanzen- und Blumenmotiven
+gid://shopify/Product/15499156980097	8->1	Leder Loafer mit Quasten für Herren
+gid://shopify/Product/15499305517441	10->3	Moderner chinesischer Teppich
+gid://shopify/Product/15499445961089	64->0	Wärmesohlen für Damen und Herren
+gid://shopify/Product/15499528208769	11->0	Kopfkissen für Nackenmassage
