@@ -1216,3 +1216,28 @@ gid://shopify/Product/15447601971585	CHF 18.29	35 Varianten	Herren Hemd Langarm 
 gid://shopify/Product/15447602168193	CHF 20.62	14 Varianten	Gestreiftes Kurzarmhemd aus Eisseide für Herren
 gid://shopify/Product/15447602364801	CHF 24.55	60 Varianten	Herren Leinenhemd Langarm
 gid://shopify/Product/15447602561409	CHF 18.46	60 Varianten	Hawaiihemd für Herren – Atmungsaktiv & Stylisch
+gid://shopify/Product/15447602758017	CHF 20.22	30 Varianten	Herren Hemd Kurzarm mit Reverskragen
+gid://shopify/Product/15447603020161	CHF 23.21	9 Varianten	Herren Kurzarmhemd im Plaid-Muster
+gid://shopify/Product/15447603216769	CHF 19.61	18 Varianten	Y2K Loose Fit Kurzarm-Top für Herren
+gid://shopify/Product/15447603413377	CHF 20.22	60 Varianten	Leinenhemd Kurzarm Loose-Fit für Herren
+gid://shopify/Product/15447603609985	CHF 20.37	5 Varianten	Trendiges Langarmhemd im Loose Fit
+gid://shopify/Product/15447603806593	CHF 19.63	56 Varianten	Casual Loose-fit T-Shirt mit zwei Taschen
+gid://shopify/Product/15447603937665	CHF 19.23	54 Varianten	Herren Jacquard Polo-Shirt mit Reissverschluss
+gid://shopify/Product/15447604101505	CHF 28.13	15 Varianten	Legeres Hemd mit Streifen
+gid://shopify/Product/15447604265345	CHF 28.44	48 Varianten	Leinenhemd für Herren
+gid://shopify/Product/15447604461953	CHF 20.67	15 Varianten	Gestreiftes Kurzarmhemd für Herren · Modell 2
+gid://shopify/Product/15447604658561	CHF 18.76	28 Varianten	Polo-Shirt Kurzarm Slim-Fit Piqué-Baumwolle
+gid://shopify/Product/15447604855169	CHF 23.65	20 Varianten	Herren Windbreaker Laufjacke mit Stehkragen
+gid://shopify/Product/15447605051777	CHF 25.59	1 Varianten	Leinenhemd im China-Stil für Herren
+gid://shopify/Product/15447605313921	CHF 21.12	60 Varianten	Oxford Langarmhemd für Herren, Baumwolle, bügelfre
+gid://shopify/Product/15447605510529	CHF 25.15	12 Varianten	Leinenhemd langärmlig für Herren
+gid://shopify/Product/15447605739905	CHF 18.47	15 Varianten	Herren ärmelloses V-Neck Tanktop
+gid://shopify/Product/15447606002049	CHF 20.97	30 Varianten	Herren Hemd Leinen-Optik Langarm Loose Fit
+gid://shopify/Product/15447606198657	CHF 19.53	30 Varianten	Jacquard Polo-Shirt mit Reverskragen
+gid://shopify/Product/15447606428033	CHF 20.97	36 Varianten	Herren Langarmhemd mit Revers
+gid://shopify/Product/15447606657409	CHF 19.63	42 Varianten	Leinenhemd Kurzarm für Herren
+gid://shopify/Product/15447606821249	CHF 55.70	12 Varianten	Lederjacke mit abnehmbarem Futter
+gid://shopify/Product/15447607148929	CHF 58.09	10 Varianten	Outdoor Shell Jacke für Herren
+gid://shopify/Product/15447607443841	CHF 59.61	24 Varianten	Leichte Leinenjacke für Herren
+gid://shopify/Product/15447607673217	CHF 21.45	51 Varianten	Outdoor Sportshirt mit UV-Schutz
+gid://shopify/Product/15447607968129	CHF 20.74	60 Varianten	UV-Schutz Shirt für Outdoor-Sport
