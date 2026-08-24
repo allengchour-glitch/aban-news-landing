@@ -12654,3 +12654,6 @@ gid://shopify/Product/15500911903105	158->0	Tarnfarbener 50L Outdoor Rucksack
 gid://shopify/Product/15500928450945	19->0	Doppelfunktiger USB-Ladegerät
 gid://shopify/Product/15500934840705	8->0	Kissen mit englischem Buchstaben-Design
 gid://shopify/Product/15500936020353	17->1	USB-Kamm-Aromatherapie-Ofen
+gid://shopify/Product/15500959973761	89->1	Herren Kurzarmhemd mit Revers und Blumenprint
+gid://shopify/Product/15500967674241	30->0	Silikon-Popcorn-Maschine
+gid://shopify/Product/15500971639169	23->0	Plüsch-Sitzkissen mit Rückenlehne
