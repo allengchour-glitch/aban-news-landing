@@ -12535,3 +12535,5 @@ gid://shopify/Product/15490725151105	16->0	Digitales Malen nach Zahlen: Individu
 gid://shopify/Product/15490775646593	62->0	Armband mit unregelmässigen schwarzen Achatperlen
 gid://shopify/Product/15491160703361	90->1	Casual Schuhe · Herren
 gid://shopify/Product/15491507683713	26->1	Halskette mit Buchstaben-Anhänger, vergoldet
+gid://shopify/Product/15493075075457	48->0	Magnetische Handyhalterung für Velo
+gid://shopify/Product/15493576524161	24->0	4-in-1 Elektrischer Nagelclipper für die ganze Familie
