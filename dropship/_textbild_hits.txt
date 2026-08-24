@@ -11096,3 +11096,4 @@ gid://shopify/Product/15504229335425	17->1	Lederjacke im Korean Style für Herre
 gid://shopify/Product/15504229958017	63->0	Herren Kapuzen-Windbreaker wasserdicht
 gid://shopify/Product/15504280387969	30->0	Herren Strickjacke "Light Luxury British Slim"
 gid://shopify/Product/15504281174401	41->0	Saugfähige Cartoon Katzen Bodenmatte
+gid://shopify/Product/15504287465857	16->0	Herren-Rollkragen-Shirt mit Kristallknopf
