@@ -12635,3 +12635,5 @@ gid://shopify/Product/15499988861313	47->0	Paradiesbild
 gid://shopify/Product/15499989582209	51->0	Farbenfrohes Hasenbild
 gid://shopify/Product/15499991744897	132->0	Katze und Schmetterling
 gid://shopify/Product/15500071764353	176->1	Japanisch inspirierter Teller aus New Bone China
+gid://shopify/Product/15500108398977	14->0	Kissen für Yoga
+gid://shopify/Product/15500112200065	47->2	Farben-Füller-Set
