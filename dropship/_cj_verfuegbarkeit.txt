@@ -19144,3 +19144,5 @@ gid://shopify/Product/15448644256129	ok
 gid://shopify/Product/15448644190593	ok
 gid://shopify/Product/15448644157825	ok
 gid://shopify/Product/15448644092289	ok
+gid://shopify/Product/15448644026753	ok
+gid://shopify/Product/15448643993985	ok
