@@ -910,3 +910,4 @@ gid://shopify/Product/15510327820673	ok	Grosse Vintage-Herrenhandtasche aus Lede
 gid://shopify/Product/15510785491329	nicht-versendbar	K18MAX Faltbare GPS-Drohne mit Fernbedienung
 gid://shopify/Product/15510800171393	nicht-versendbar	Outdoor Real CS Wasserbomben-Tasche 36 Zoll
 gid://shopify/Product/15510811705729	nicht-versendbar	Gestreifter Rollkoffer mit Aluminiumrahmen
+gid://shopify/Product/15510880682369	ok	Wanderrucksack 24L

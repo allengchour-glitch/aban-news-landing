@@ -1282,3 +1282,31 @@ gid://shopify/Product/15447618060673	CHF 56.47	7 Varianten	Ergonomisches Lendenk
 gid://shopify/Product/15447618453889	CHF 17.37	18 Varianten	Sofa Kissenbezug «Quiet Years»
 gid://shopify/Product/15447618716033	CHF 29.37	1 Varianten	Geister Kissenbezug-Set aus Plüsch
 gid://shopify/Product/15447618978177	CHF 17.30	18 Varianten	Kissenbezug mit Quasten
+gid://shopify/Product/15447619273089	CHF 16.90	39 Varianten	Chenille Kissenbezug – verschiedene Farben und Grö
+gid://shopify/Product/15447619600769	CHF 18.77	4 Varianten	Elastischer Antirutsch-Sofabezug mit Streifenmuste
+gid://shopify/Product/15447619928449	CHF 19.23	8 Varianten	Kissenhülle mit floraler Stickerei
+gid://shopify/Product/15447620288897	CHF 18.92	8 Varianten	Vielseitiges Jacquard Zierkissen mit Geometrie-Mus
+gid://shopify/Product/15447620616577	CHF 19.08	8 Varianten	Kissenbezug mit Blumenmuster im französischen Stil
+gid://shopify/Product/15447621009793	CHF 18.92	6 Varianten	Jacquard Zierkissen mit Blumenmuster
+gid://shopify/Product/15447621337473	CHF 18.92	10 Varianten	Minimalistischer Jacquard Kissenbezug, nordischer 
+gid://shopify/Product/15447621665153	CHF 17.05	8 Varianten	Chenille Zierkissen, einfarbig
+gid://shopify/Product/15447622058369	CHF 18.47	18 Varianten	Sternen Jacquard Kissenbezug
+gid://shopify/Product/15447622320513	CHF 23.15	1 Varianten	Elastischer Sitzkissenbezug für Stühle und Sofas
+gid://shopify/Product/15447622484353	CHF 40.16	14 Varianten	Vintage Sofakissen im französischen Stil
+gid://shopify/Product/15447622648193	CHF 18.77	8 Varianten	Kissenbezug Modern Minimalistisch
+gid://shopify/Product/15447622877569	CHF 37.64	8 Varianten	Mittelalterlicher Zierkissenbezug
+gid://shopify/Product/15447623139713	CHF 18.92	25 Varianten	Naicai Kissenbezug aus Lammwolle
+gid://shopify/Product/15447623303553	CHF 19.08	1 Varianten	Besticktes Kissen aus Baumwoll-Leinen
+gid://shopify/Product/15447623467393	CHF 42.32	1 Varianten	2er-Set Samt-Knotenkissen, Blumenform
+gid://shopify/Product/15447623696769	CHF 17.78	4 Varianten	Sofa Kissenbezug mit Hund-Motiv
+gid://shopify/Product/15447623958913	CHF 17.67	7 Varianten	Kugeliges Zierkissen im nordischen Stil · 30 × 30 
+gid://shopify/Product/15447624188289	CHF 17.37	16 Varianten	Minimalistisches Kissen aus Samt
+gid://shopify/Product/15447624417665	CHF 17.79	5 Varianten	Kissenbezug mit maritimen Stickereien, 45x45 cm
+gid://shopify/Product/15447624548737	CHF 23.91	1 Varianten	Kopfkissen für Massageliege
+gid://shopify/Product/15447624810881	CHF 26.45	3 Varianten	Cloud Bread Nackenkissen
+gid://shopify/Product/15447625007489	CHF 17.74	60 Varianten	Samt Kissenbezug für Lendenkissen (2er-Set)
+gid://shopify/Product/15447625204097	CHF 18.02	5 Varianten	Kissenbezug mit Ethno-Muster
+gid://shopify/Product/15447625433473	CHF 20.11	3 Varianten	Hohlweb-Kissen im Bambus-Look
+gid://shopify/Product/15447625630081	CHF 17.69	1 Varianten	Samt-Kissenbezug mit Rüschenmuster
+gid://shopify/Product/15447625793921	CHF 17.37	1 Varianten	Kissenbezüge aus gewaschener Baumwolle (2er-Set)
+gid://shopify/Product/15447625957761	CHF 24.22	1 Varianten	Tencel-Leinen Kissenbezug im Landhausstil
