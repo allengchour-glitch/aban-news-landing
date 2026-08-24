@@ -23,6 +23,25 @@
 - Geprueft: 844x390, 915x412, 740x360, 667x375, 812x375, 640x360, 1024x600, 896x414,
   720x320 — jeweils 0 Ueberschneidungen, 0 ueber den Rand.
 
+## 🕊️🎉 Tauben + Wimpelketten auf dem Wochenmarkt (2026-08-24)
+- Grep-Anker: `var TAUBEN=`, `var WIMPEL=`, `updTauben`, `updWimpel`
+- **Tauben** (7, drei InstancedMesh: Koerper/Kopf/Schwanz) picken in der propfreien
+  Tasche um (148|15) westlich des Brunnens; kommt eine Figur naeher als 2,8 m,
+  flattern sie im Bogen zu einem neuen Fleck. Verifiziert per Sonde: Laufen ✔,
+  4 von 7 im Flug beim Aufscheuchen ✔.
+- **⚠️ Im Bild nachgesehen:** 0x9aa2b2 las sich als „weisse Schneebaelle" — Voegel
+  brauchen DUNKLE Toene und den Schwanzkegel, sonst stimmt die Silhouette nicht.
+- **Wimpelketten** (3 Schnuere quer ueber die Marktgasse, 21 Faehnchen in ZWEI
+  InstancedMesh nach Farbe): Aufhaengung an den STANDDAECHERN — kein Bodenabdruck,
+  kein Platzierungsrisiko. Schnuere sind statische Catenary-Linien, nur die
+  Faehnchen schwingen (Instanzmatrizen, Wind am Wetter).
+- **⚠️ th-augen: die Ego-Kamera schaut entlang Math.PI + camA, NICHT entlang sim.rot.**
+  Deshalb zeigten mehrere Fotos die Gegenrichtung, egal welcher Blickwinkel uebergeben
+  wurde. Das Werkzeug setzt jetzt camA (Welt-Yaw, 0 = +z) und friert die Figur mit
+  `_hide` ein — sonst dreht die Spiel-KI sie zwischen Setzen und Foto wieder weg.
+- **⚠️ Sonden sind Template-Literale:** Backticks in KOMMENTAREN innerhalb der Sonde
+  beenden das Literal — SyntaxError weit weg von der eigentlichen Stelle.
+
 ## 🍦🪁 Eiswagen + Drachen (2026-08-23)
 - Grep-Anker: `var EIS=`, `var DRACHEN=`, `m.t==="eis"`, `eisJingle`
 - **Eiswagen am Seepark (27|133):** Standort GESUCHT, nicht geschaetzt — gegen alle 1843

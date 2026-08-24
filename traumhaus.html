@@ -7587,6 +7587,102 @@ function updDrachen(dt,now){
       tp[w*3+2]=kz-Math.cos(d.m.rotation.y)*v*1.6+Math.cos(t*4.5+w)*0.25*v;}
     d.schwanz.geometry.attributes.position.needsUpdate=true;}
 }
+/* ── 🕊️ TAUBEN auf dem Wochenmarkt ───────────────────────────────────────────
+   Sieben Tauben picken auf dem freien Pflaster westlich des Brunnens (Tasche um
+   148|15 — der einzige propfreie Teil des Platzes). Kommt eine Spielfigur naeher
+   als 2,8 m, flattern sie in einem Bogen zu einem neuen Fleck. Zwei
+   InstancedMesh, die Objektmatrix steht — nur Instanzmatrizen aendern sich,
+   _einfrieren() darf zugreifen. */
+var TAUBEN=(function(){
+  var N=7,H={x:148,z:15,r:4.5};
+  /* ⚠️ IM BILD NACHGESEHEN: mit 0x9aa2b2 lasen sich die Voegel als weisse
+     Schneebaelle. Deutlich dunkler, und ein flacher Schwanz-Kegel macht die
+     Silhouette erst zur Taube. */
+  var koerper=new THREE.InstancedMesh(new THREE.SphereGeometry(0.16,7,5),
+    new THREE.MeshStandardMaterial({color:0x6f7688,roughness:0.85}),N);
+  var kopf=new THREE.InstancedMesh(new THREE.SphereGeometry(0.08,6,5),
+    new THREE.MeshStandardMaterial({color:0x454c5e,roughness:0.8}),N);
+  var schwanz=new THREE.InstancedMesh(new THREE.ConeGeometry(0.09,0.26,4),
+    new THREE.MeshStandardMaterial({color:0x565e70,roughness:0.85}),N);
+  [koerper,kopf,schwanz].forEach(function(t){t.userData.nieAusblenden=true;t.castShadow=true;scene.add(t);});
+  var sd=41,rnd=function(){sd=(sd*16807)%2147483647;return sd/2147483647;},L=[];
+  for(var i=0;i<N;i++)L.push({x:H.x+(rnd()-0.5)*7,z:H.z+(rnd()-0.5)*6,
+    a:rnd()*6.28,ph:rnd()*6.28,st:"geh",t:0,ax:0,az:0,zx:0,zz:0});
+  return {H:H,koerper:koerper,kopf:kopf,schwanz:schwanz,L:L};
+})();
+function updTauben(dt,now){
+  var T=TAUBEN,M=new THREE.Matrix4(),q9=new THREE.Quaternion(),eu=new THREE.Euler(),
+      P=new THREE.Vector3(),SC=new THREE.Vector3(1,1,1);
+  for(var i=0;i<T.L.length;i++){var b=T.L[i],fy=0;
+    if(b.st==="geh"){
+      b.a+=Math.sin(now*0.0009+b.ph)*0.06;
+      b.x+=Math.sin(b.a)*0.22*dt;b.z+=Math.cos(b.a)*0.22*dt;
+      if(Math.hypot(b.x-T.H.x,b.z-T.H.z)>T.H.r)b.a=Math.atan2(T.H.x-b.x,T.H.z-b.z);
+      for(var q=0;q<sims.length;q++){var sq=sims[q];
+        if(sq.mesh.visible&&Math.hypot(sq.x-b.x,sq.z-b.z)<2.8){
+          b.st="flug";b.t=0;b.ax=b.x;b.az=b.z;
+          var wa=Math.random()*6.283;
+          b.zx=T.H.x+Math.cos(wa)*T.H.r*0.9;b.zz=T.H.z+Math.sin(wa)*T.H.r*0.9;
+          break;}}
+    }else{
+      b.t+=dt/1.6;
+      if(b.t>=1){b.st="geh";b.x=b.zx;b.z=b.zz;}
+      else{b.x=b.ax+(b.zx-b.ax)*b.t;b.z=b.az+(b.zz-b.az)*b.t;
+        fy=Math.sin(b.t*Math.PI)*2.4;
+        b.a=Math.atan2(b.zx-b.ax,b.zz-b.az);}
+    }
+    var pick=(b.st==="geh")?Math.max(0,Math.sin(now*0.006+b.ph*3))*-0.07:0;
+    var flat=(b.st==="flug")?Math.sin(now*0.03)*0.15:0;
+    eu.set(flat,b.a,0);q9.setFromEuler(eu);
+    P.set(b.x,0.14+fy,b.z);SC.set(1,0.9,1.25);M.compose(P,q9,SC);T.koerper.setMatrixAt(i,M);
+    SC.set(1,1,1);
+    P.set(b.x+Math.sin(b.a)*0.16,0.30+fy+pick,b.z+Math.cos(b.a)*0.16);
+    M.compose(P,q9,SC);T.kopf.setMatrixAt(i,M);
+    /* Schwanz: flacher Kegel nach hinten-oben */
+    eu.set(1.9,b.a,0,"YXZ");q9.setFromEuler(eu);
+    P.set(b.x-Math.sin(b.a)*0.20,0.20+fy,b.z-Math.cos(b.a)*0.20);
+    M.compose(P,q9,SC);T.schwanz.setMatrixAt(i,M);}
+  T.koerper.instanceMatrix.needsUpdate=true;T.kopf.instanceMatrix.needsUpdate=true;
+  T.schwanz.instanceMatrix.needsUpdate=true;
+}
+/* ── 🎉 WIMPELKETTEN ueber der Marktgasse ────────────────────────────────────
+   Drei Schnuere quer ueber die Gasse, aufgehaengt an den STANDDAECHERN
+   (Nordreihe z 24, Suedreihe z 29,5, Dachhoehe 2,43) — kein Bodenabdruck,
+   kein Platzierungsrisiko. Die Schnuere sind statische Catenary-Linien,
+   nur die Faehnchen schwingen (Instanzmatrizen, Wind haengt am Wetter). */
+var WIMPEL=(function(){
+  var X=[136,142,148],Z0=24.2,Z1=29.3,Y=2.35,SAG=0.45,PRO=7;
+  X.forEach(function(x){
+    var g=new THREE.BufferGeometry(),pt=new Float32Array(10*3);
+    for(var p=0;p<10;p++){var u=p/9;
+      pt[p*3]=x;pt[p*3+1]=Y-Math.sin(u*Math.PI)*SAG;pt[p*3+2]=Z0+(Z1-Z0)*u;}
+    g.setAttribute("position",new THREE.BufferAttribute(pt,3));
+    var l=new THREE.Line(g,new THREE.LineBasicMaterial({color:0x5a5248}));
+    l.userData.nieAusblenden=true;l.frustumCulled=false;scene.add(l);});
+  var form=new THREE.Shape();
+  form.moveTo(-0.11,0);form.lineTo(0.11,0);form.lineTo(0,-0.28);form.closePath();
+  var tri=new THREE.ShapeGeometry(form);
+  var farben=[0xd84a5a,0xf2c040],teile=[],stellen=[[],[]];
+  X.forEach(function(x,xi){
+    for(var f=0;f<PRO;f++){var u=(f+1)/(PRO+1);
+      stellen[(xi*PRO+f)%2].push([x,Y-Math.sin(u*Math.PI)*SAG,Z0+(Z1-Z0)*u,f]);}});
+  farben.forEach(function(farbe,fi){
+    var im=new THREE.InstancedMesh(tri,
+      new THREE.MeshBasicMaterial({color:farbe,side:THREE.DoubleSide}),stellen[fi].length);
+    im.userData.nieAusblenden=true;scene.add(im);
+    teile.push({im:im,st:stellen[fi]});});
+  return teile;
+})();
+function updWimpel(dt,now){
+  var wind=(wetter==="regen"?2.4:1.4),M=new THREE.Matrix4(),q9=new THREE.Quaternion(),
+      eu=new THREE.Euler(),P=new THREE.Vector3(),SC=new THREE.Vector3(1,1,1);
+  for(var t=0;t<WIMPEL.length;t++){var w=WIMPEL[t];
+    for(var i=0;i<w.st.length;i++){var st=w.st[i];
+      eu.set(Math.sin(now*0.0025*wind+st[3]*0.9+t)*0.4,0,Math.sin(now*0.003*wind+st[3])*0.15);
+      q9.setFromEuler(eu);P.set(st[0],st[1],st[2]);
+      M.compose(P,q9,SC);w.im.setMatrixAt(i,M);}
+    w.im.instanceMatrix.needsUpdate=true;}
+}
 // ===================== Katalog =====================
 var GL=THREE.GLTFLoader?new THREE.GLTFLoader():null;
 var MODELS={};
@@ -11254,7 +11350,7 @@ function loop(now){
       _ws.material.opacity+=(_zielO-_ws.material.opacity)*Math.min(1,dt*0.8);
       _ws.visible=_ws.material.opacity>0.02;
     }
-    updHearts(dt);updPlopps(dt);updWetter(dt);updVerkehr(dt);updLandbus(dt);updHafen(dt,now);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);updVerstecken(dt);updTrag(dt);updBankLeute(dt);updFest(dt,now);updImmo(dt);updEnten(dt,now);updFahnen(dt,now);updFalter(dt,now);updNachtHimmel(dt,now);updEis(dt,now);updDrachen(dt,now);
+    updHearts(dt);updPlopps(dt);updWetter(dt);updVerkehr(dt);updLandbus(dt);updHafen(dt,now);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);updVerstecken(dt);updTrag(dt);updBankLeute(dt);updFest(dt,now);updImmo(dt);updEnten(dt,now);updFahnen(dt,now);updFalter(dt,now);updNachtHimmel(dt,now);updEis(dt,now);updDrachen(dt,now);updTauben(dt,now);updWimpel(dt,now);
     document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("minimap").style.display=(running&&!buildMode)?"block":"none";
     /* 🩹 Schwarm-6: lief JEDEN Frame mit getComputedStyle/getBoundingClientRect
