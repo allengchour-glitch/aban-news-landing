@@ -12573,3 +12573,8 @@ gid://shopify/Product/15495230652801	62->0	Keile Sandalen für Damen
 gid://shopify/Product/15495722533249	78->0	Trägerloses Spitzenkleid für Damen
 gid://shopify/Product/15495748452737	21->2	Samt-Kissenhülle mit Geometrischem Muster
 gid://shopify/Product/15495896007041	128->0	3-teiliges Badematten-Set, einfarbig
+gid://shopify/Product/15496264810881	53->1	Ladegerät für Xiaomi M365 E-Scooter
+gid://shopify/Product/15496270610817	95->0	12-teiliges Pinselset im PU-Köcher
+gid://shopify/Product/15496302952833	95->0	11 Meerjungfrauen Make-up Pinsel Set
+gid://shopify/Product/15496303346049	107->0	Beauty and the Beast Makeup Pinselset
+gid://shopify/Product/15496303739265	62->2	Dicke Tatami Balkonkissen
