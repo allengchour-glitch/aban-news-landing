@@ -1323,3 +1323,6 @@ gid://shopify/Product/15448109613441	zugeordnet	14	Figurformender Jumpsuit mit B
 gid://shopify/Product/15448109646209	zugeordnet	8	Jumpsuit mit Polo-Kragen und kurzen Hosen
 gid://shopify/Product/15448109842817	zugeordnet	18	Shapewear Bodysuit mit Bauchkontrolle – Beige
 gid://shopify/Product/15448110104961	zugeordnet	16	Fajas Colombianas Bauchkontrolle Body Shaper
+gid://shopify/Product/15448110203265	zugeordnet	30	Nahtloser Jumpsuit mit bedeckter Brust
+gid://shopify/Product/15448110236033	zugeordnet	36	Khakifarbener weiter Jumpsuit für den Sommer
+gid://shopify/Product/15448110334337	zugeordnet	21	Ärmelloser Leinen-Mix Jumpsuit für Damen

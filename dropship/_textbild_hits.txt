@@ -10328,3 +10328,6 @@ gid://shopify/Product/15502484111745	12->0	Mood Repair Rouge Puder
 gid://shopify/Product/15502484341121	194->3	5D Diamond Painting Schmetterling
 gid://shopify/Product/15502484406657	11->0	Wäsche-Trocknerball aus Filz
 gid://shopify/Product/15502484504961	9->0	Love Highlight Puder
+gid://shopify/Product/15502484963713	28->0	Lidschatten-Palette – 9 matte & schimmernde Erdtöne
+gid://shopify/Product/15502485422465	16->0	Wimpern- & Augenbrauenserum
+gid://shopify/Product/15502486733185	75->0	Seidenband-Set für DIY-Haarschmuck & Textilien

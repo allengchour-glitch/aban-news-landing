@@ -1506,3 +1506,12 @@ gid://shopify/Product/15447893901697	CHF 19.23	1 Varianten	Halloween-Umhang «Kl
 gid://shopify/Product/15447894098305	CHF 18.62	2 Varianten	Bestickter Schal im koreanischen Stil · 200 × 70 c
 gid://shopify/Product/15447894294913	CHF 17.45	21 Varianten	Seidenmaske mit Halsbedeckung für Damen
 gid://shopify/Product/15447894458753	CHF 19.08	5 Varianten	Seidene UV-Schutzmaske mit Katzenohren
+gid://shopify/Product/15447894688129	CHF 17.13	4 Varianten	UV-Schutz Gesichtsmaske
+gid://shopify/Product/15447894819201	CHF 17.51	6 Varianten	Ice Silk Gesichtsmaske mit UV-Schutz
+gid://shopify/Product/15447894983041	CHF 19.30	2 Varianten	UV-Schutz Gesichtsmaske aus Maulbeerseide
+gid://shopify/Product/15447895114113	CHF 17.05	29 Varianten	UV-Schutz Gesichtsmaske mit Ohrenschlaufen
+gid://shopify/Product/15447895310721	CHF 17.05	5 Varianten	UV-Schutz Facekini mit breiter Krempe
+gid://shopify/Product/15447895736705	CHF 25.04	5 Varianten	Gefütterte Thermo-Gesichtsmaske für kalte Tage
+gid://shopify/Product/15447895933313	CHF 23.50	6 Varianten	Taktische Halbgesichtsmaske «Scorpion»
+gid://shopify/Product/15447896097153	CHF 26.39	1 Varianten	Halb Gesichtsmaske Winddicht Staubdicht Atmungsakt
+gid://shopify/Product/15447896195457	CHF 17.45	14 Varianten	Multifunktionaler Jacquard Schal
