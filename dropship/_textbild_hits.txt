@@ -12619,3 +12619,8 @@ gid://shopify/Product/15497443410305	17->1	Herz-Armband mit Kleeblatt-Zirkon
 gid://shopify/Product/15497449243009	63->0	Sitzsack Bezug "Lazy Sofa"
 gid://shopify/Product/15497492365697	14->1	Multifunktionaler Werkzeughaken für Gürtel
 gid://shopify/Product/15497533686145	23->1	Sicherheits-Schuhe
+gid://shopify/Product/15497566847361	8->0	RC Segelflugzeug FX-820 (Jäger-Serie)
+gid://shopify/Product/15497645523329	27->0	7-lagiger Dokumenten-Organizer mit Doppelclip
+gid://shopify/Product/15497711321473	14->1	Geschenkset: Quarzuhr, Portemonnaie & Accessoires
+gid://shopify/Product/15498674307457	33->0	Mobiles Reinigungsgerät für Obst und Gemüse
+gid://shopify/Product/15499048616321	37->3	Schwan Diamond Painting 5D Stickerei
