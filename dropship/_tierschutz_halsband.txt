@@ -1,0 +1,9 @@
+# 2026-08-24 Bildpruefung Anti-Bell/Trainingshalsbaender (TSchV Art. 76)
+15477429404033	DRAFT	Fernbedienung mit Blitz-Symbol (Stromstoss-Modus)
+15502301462913	DRAFT	Elektroden-Paar + Pruefstab im Zubehoer
+15501061652865	DRAFT	Elektroden + Prueflampe im Set
+15506163663233	DRAFT	Fernbedienung mit Blitz-Symbol
+15509370798465	DRAFT	Zaun-Empfaenger mit 3 Kontaktelektroden
+15504150331777	DRAFT	zwei vorstehende Kontaktstifte am Empfaenger
+15496333754753	DRAFT	E-Collar mit Fernbedienung (Blatt-4-Fund)
+# aktiv belassen (keine Elektroden sichtbar, Text nur vib/ton/ultraschall): 15448882708865 15448947491201 15453793026433 15484426486145 15496021606785 15496498479489 15496506704257 15496508342657 15496508440961 15504197353857 15497436004737 15453793026433 15497436397953(Fehltreffer: normales Halsband)
