@@ -1736,3 +1736,9 @@ gid://shopify/Product/15447932764545	CHF 17.99	3 Varianten	Kompressions-Beinstul
 gid://shopify/Product/15447932928385	CHF 19.51	2 Varianten	Seidenstrumpf-Schlafsack, extra lang & blickdicht
 gid://shopify/Product/15447933059457	CHF 16.88	17 Varianten	Mid-Calf Yoga Socken für Damen
 gid://shopify/Product/15447933157761	CHF 28.44	30 Varianten	Kaschmir-Socken für Kinder, einfarbig
+gid://shopify/Product/15447933354369	CHF 21.20	2 Varianten	10 Paar unsichtbare Socken für Damen
+gid://shopify/Product/15447933550977	CHF 20.51	2 Varianten	10 Paar Damen Füsslinge Seidig Glatt
+gid://shopify/Product/15447933714817	CHF 16.80	1 Varianten	Nahtlose Sommerstrümpfe mit Sternen & Tattoo-Print
+gid://shopify/Product/15447933878657	CHF 19.02	1 Varianten	4er-Set Socken mit Früchtemotiven
+gid://shopify/Product/15447934140801	CHF 17.20	7 Varianten	Nahtlose, hauchdünne Feinstrumpfhose
+gid://shopify/Product/15447934304641	CHF 20.08	9 Varianten	Reflektierende Outdoor Velo-Socken
