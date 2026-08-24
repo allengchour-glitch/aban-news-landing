@@ -1708,3 +1708,6 @@ gid://shopify/Product/15447928177025	CHF 26.37	1 Varianten	Unisex Strickhandschu
 gid://shopify/Product/15447928340865	CHF 20.53	9 Varianten	Bunte Tierpfoten-Cosplay-Handschuhe
 gid://shopify/Product/15447928406401	CHF 17.20	6 Varianten	Warme, weiche Handschuhe für Damen
 gid://shopify/Product/15447928832385	CHF 17.56	7 Varianten	Warme Plüsch-Handschuhe für Damen
+gid://shopify/Product/15447903273345	CHF 19.63	1 Varianten	Punk-Gürtel für Damen – Silber
+gid://shopify/Product/15447904256385	CHF 16.80	1 Varianten	Vintage Gürtel mit Türkis-Schnalle
+gid://shopify/Product/15447929028993	CHF 16.94	3 Varianten	Damen Strickhandschuhe aus weichem Polyester
