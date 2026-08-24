@@ -12657,3 +12657,7 @@ gid://shopify/Product/15500936020353	17->1	USB-Kamm-Aromatherapie-Ofen
 gid://shopify/Product/15500959973761	89->1	Herren Kurzarmhemd mit Revers und Blumenprint
 gid://shopify/Product/15500967674241	30->0	Silikon-Popcorn-Maschine
 gid://shopify/Product/15500971639169	23->0	Plüsch-Sitzkissen mit Rückenlehne
+gid://shopify/Product/15500983239041	129->0	DIY Ölgemälde "Schöne Tiere" (40x50cm)
+gid://shopify/Product/15500983370113	125->0	DIY Malen nach Zahlen: Waldfluss-Landschaft
+gid://shopify/Product/15500984975745	162->0	3-in-1 Wireless Powerbank 10000 mAh
+gid://shopify/Product/15501000376705	102->0	British Retro Freizeit-Lederschuhe
