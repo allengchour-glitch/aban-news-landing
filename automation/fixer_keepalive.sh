@@ -332,6 +332,19 @@ while true; do
       echo "$(date -u +%H:%M) tote-rabattcodes geprüft"
     fi
   fi
+  # VERALTETE VERWEISE, einmal täglich: Behördenlinks und Alt-Domains überleben in
+  # Rechtstexten, die nie wieder jemand liest. Am 24.08.2026 verwiesen das Impressum und
+  # zwei AGB-Fassungen auf die EU-ODR-Plattform — abgeschaltet seit 20.07.2025. tote_links
+  # prüft nur /products/-Links, tote_rabattcodes nur Codes; für VERWEISE gab es keinen
+  # Wächter. Meldet nur (dropship/VERALTETE-VERWEISE.md); Rechtstexte schreibt niemand blind um.
+  VV=/tmp/veraltete_verweise.log
+  if [ -f "$REPO/automation/veraltete_verweise.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$VV" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid python3 automation/veraltete_verweise.py >> "$VV" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) veraltete-verweise geprüft"
+    fi
+  fi
   # TOTE LINKS, einmal täglich: Ratgeber-Seiten verlinken Produkte, die inzwischen gelöscht
   # oder gedraftet sind. Am 20.08.2026 waren es 61 Links auf 25 veröffentlichten Seiten — jeder
   # Google-Besucher, der auf eine Empfehlung klickte, landete auf 404. Neue tote Links entstehen
