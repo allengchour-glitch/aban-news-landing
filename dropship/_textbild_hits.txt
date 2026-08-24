@@ -12661,3 +12661,4 @@ gid://shopify/Product/15500983239041	129->0	DIY Ölgemälde "Schöne Tiere" (40x
 gid://shopify/Product/15500983370113	125->0	DIY Malen nach Zahlen: Waldfluss-Landschaft
 gid://shopify/Product/15500984975745	162->0	3-in-1 Wireless Powerbank 10000 mAh
 gid://shopify/Product/15501000376705	102->0	British Retro Freizeit-Lederschuhe
+gid://shopify/Product/15501026296193	20->0	Rosegold-Keramik-Uhr
