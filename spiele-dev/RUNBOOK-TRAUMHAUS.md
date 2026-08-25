@@ -696,10 +696,18 @@ mit künstlichem dt treiben. Genau dafür sind sie exponiert.
 * **Eine Wartezeit sieht im Testbrowser aus wie ein Stillstand.** Der Landbus stand über
   42 s Wanduhr unbewegt — sein `wartet` zählte in der Zeit von 4,5 auf 2,7. Bei
   `dt = min(0.05, …)` und ~1 fps dauert eine 6-Sekunden-Pause rund zwei Minuten.
-* **Die Bank steht auf der 240°-Radialstraße** (−66\|−137, also r ≈ 152). Seit die
-  Wendemarke des Landbusses aus der Welt gelesen wird, kehrt er dort bei r = 148 um statt
-  bei 193 — er fährt nicht mehr durch das Gebäude, aber seine Strecke ist 45 m kürzer.
-  Seine Haltestelle (r = 132) bedient er weiter. Offen für eine spätere Runde.
+* **Die Zubringer-Speichen sind echte Straßen — und keine Platzsuche kennt sie.** Sie
+  haben keine Kollider, also sehen weder `wegVonStrasse` noch `viertelPasst` noch der
+  Freiflächen-Solver sie. Querschnitt der 240°-Speiche bei r = 170: Asphalt `#4a4a53` von
+  q −3 bis +3, Mittellinie auf q 0, Kiesbankett bei q ±4,5. Die **Bank** stand mit 11,3 m
+  Abstand zur Mittellinie bei 10,7 m eigener Halbbreite darauf — ihre Wand im Fahrstreifen,
+  der Strahl von oben traf bei r = 150 ihr Dach auf 4,23 m. Um 9 m **senkrecht zur Speiche**
+  verschoben (+7,8 \| −4,5): Abstand jetzt 20,3 m, und die Wendemarke des Landbusses geht
+  von 148 zurück auf 193. Wer dort draußen etwas hinstellt, misst den Abstand zur Speiche
+  von Hand: `|x·sin θ − z·cos θ|` bei θ = 60° bzw. 240°.
+* **Absolute Koordinaten für Zubehör machen jedes Verschieben zur Falle.** `BANK_POSTEN`
+  hielt die drei Schalterplätze als Weltkoordinaten — beim Verschieben der Bank wäre das
+  Personal auf dem alten Grundstück stehen geblieben. Jetzt relativ zu `window._bankPos`.
 
 ## 🎯 Sollwerte einer sauberen Szene
 
