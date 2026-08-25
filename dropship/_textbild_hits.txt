@@ -12864,3 +12864,4 @@ gid://shopify/Product/15449431540097	82->0	Kühlendes Pet-Bett für Sommer
 gid://shopify/Product/15449432686977	14->0	Haarpflege-Essenz
 gid://shopify/Product/15449432850817	37->2	Faltbarer Wärmekuschel-Platz für Hunde & Katzen
 gid://shopify/Product/15449434521985	51->0	Retro-Hoodie mit 3D-Muster
+gid://shopify/Product/15449464865153	46->3	Drehbare Gewürzregal
