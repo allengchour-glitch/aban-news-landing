@@ -365,7 +365,12 @@ while true; do
   BG=/tmp/bild_gross.log
   if [ -f "$REPO/automation/bild_gross_nachladen.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$BG" 2>/dev/null || echo 0) ))
-    if [ "$ALTER" -gt 86400 ]; then
+    # ⚠️ 25.08.2026: Lief der Lauf ins leere CJ-Tagesbudget («0 bearbeitet»), verschenkt das
+    # 24-h-Gate einen ganzen Tag — dann reicht 2 h Abstand fuer den naechsten Versuch
+    # (Punkte fliessen nach; der Lauf selbst stoppt bei 16900500 sauber).
+    GATE=86400
+    tail -3 "$BG" 2>/dev/null | grep -q "Tagesbudget erschoepft" && GATE=7200
+    if [ "$ALTER" -gt "$GATE" ]; then
       ( cd "$REPO" && CAP=150 setsid python3 automation/bild_gross_nachladen.py >> "$BG" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) bild-gross-nachladen gestartet"
     fi
