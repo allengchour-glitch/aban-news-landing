@@ -850,3 +850,28 @@ kaputtgemacht.
 ⚠️ **Zwei Werkzeuge, nicht eins.** `th-strassen.mjs` sieht keine Gebäude ineinander,
 `th-3d.mjs` sieht keine Fahrbahnen. Wer etwas verschiebt, fährt **beide** — sonst kauft man
 sich eine Verbesserung mit einem größeren Fehler, wie in #2313 geschehen.
+
+## 2026-08-25 · 🧭 GTA-GPS: Wegpunkt auf der Weltkarte
+
+**Was:** Tipp auf die grosse Karte setzt einen 📍 Wegpunkt (Tipp auf den Wegpunkt löscht ihn).
+Lila Route (GTA-Stil) auf Radar + Weltkarte, Distanzanzeige unter dem Radar, Leuchtsäule +
+pulsierender Ring am Ziel, Ankunft (<8 m) räumt alles weg (`stats.gpsZiele`, Erfolg `navigator`).
+
+**Wie:** A* auf 4-m-Raster (−300..250 / −210..280, 138×123 Zellen, Binärheap).
+Kosten: Strasse 1 (`gpsStrasse` — von `wegVonStrasse`-Bändern abgeleitet), Wiese 3 →
+Route folgt Strassen, schneidet nur die letzten Meter querfeldein. Gesperrt: `imBau()`,
+See (r 26 um 0/146), Fluss-Band z −97..−84 (ausser Brücken x=±78/−112), Meer x<−233.
+Der Zellen-Cache wird **pro Lauf frisch** gebaut (Spieler baut/reisst ab → nie stale).
+Pflege im 8x/s-Radar-Takt (`updMinimap`): verbrauchte Punkte abwerfen, bei >16 m Abweichung
+neu rechnen, Ring pulsiert. Wegpunkt ist **persönlich** — im Koop kein Netz-Sync nötig.
+
+**Fallen:**
+- Der Karten-Canvas ist CSS-skaliert → Klick mit `getBoundingClientRect` auf Canvas-Pixel
+  umrechnen, sonst landet der Wegpunkt daneben.
+- Leuchtsäule/Ring: `_bewegt=true` (sonst friert `_einfrieren` sie fest) + `frustumCulled=false`;
+  MeshBasic = nachts ungedimmt, genau richtig.
+- `drawBigMap` merkt sich die Transformation in `_bigTrafo` — Route/Klick nutzen dieselbe
+  Quelle wie die Zeichnung, kann nie auseinanderlaufen.
+
+**Werkzeug:** `spiele-dev/tools/th-gps.mjs` (10 Checks: Pfad sauber, Strassen-Anteil,
+Beam/Ring, Ankunft, Screenshots `gps-bigmap.png`/`gps-radar.png`).
