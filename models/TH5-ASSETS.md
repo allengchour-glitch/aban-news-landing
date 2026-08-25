@@ -2256,7 +2256,28 @@ herausgerechnet — das ist bis auf `th_frau`, `th_mann`, `th_monstera` vollstä
 | `th24` | 5 | Zoo: Gehege, Voliere, Streichelzoo, Aquarienhaus, Eingang |
 | … | | dazu `th2` (19 Miniaturen, s. o.), `th31` (14 Waffen-Props, bewusst ungenutzt) |
 
-**⚠️ Warum das nicht einfach eingebaut werden kann: die Karte ist voll.** Gemessen in
+**⚠️ KORREKTUR (gemessen, nachdem die Liste oben schon stand): der größere Teil davon
+ist gar kein ungehobener Schatz, sondern eine ÜBERHOLTE FRÜHERE CHARGE.** Ich wollte
+einen Leuchtturm aus `th15` an die Westküste setzen — und fand beim Nachmessen, dass dort
+schon einer steht: `th45_leuchtturm` bei (−131\|58), mitsamt Kaimauern, Hafenkran,
+Containern, Fischerboot, Segelboot, Strandkörben und Rettungsturm. Die Gegenprobe über
+alle Themen:
+
+| Thema | gebaut | liegt ungenutzt daneben |
+|---|---|---|
+| Leuchtturm, Hafen, Kran | `th45_*` | `th15_*` (10) |
+| Klinik | `th49_klinik` | `th9_krankenhaus` |
+| Schule | `th42_schule` | `th10_schule` |
+| Bahnhof | `th41_bahnhof` | `th10_bahnhof` |
+| Villen | `th47_villa_*` | `th22_villa`, `th22_bungalow` |
+| Baustelle | `th46_*` | `th21_*` (11) |
+| Fahrzeuge | `th37_*`, `th40_bus` | `th40_*` (7) |
+
+**Wirklich neue Themen sind nur:** `th25` Flughafen (9), `th24` Zoo (5), `th12` Nachtleben
+(5), `th14` Nachtclub-Innenleben (12), `th29` Winter (6) und einzelne `th9`-Stücke
+(Museum, Hotel, Mall). Das sind rund 40 Modelle, nicht 185 — der Rest ist Archiv.
+
+**⚠️ Und die Karte ist voll.** Gemessen in
 dieser Session — ein Viertel mit den fünf `th12`-Bauten bräuchte ein Netto-Rechteck von
 rund **122 × 71 m** (bei Zielhöhe 9 ist allein die Bowlingbahn 49 × 39 m). Der
 Freiflächen-Solver findet für 96 × 180 schon heute nur mit Mühe einen Platz, und die
