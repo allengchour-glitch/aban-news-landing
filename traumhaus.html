@@ -8179,7 +8179,12 @@ var MISS_POOL=[
  /* ⚠️ NUR ANS ENDE anfuegen: missHeute speichert den Pool-INDEX im Spielstand —
     wer mittendrin einfuegt, verdreht die Missionen aller alten Saves. */
  ["🦆","Besuche die Enten am See",1,function(){return stats.enten||0;}],
- ["⚽","Schiesse 1 Tor auf dem Sportplatz",1,function(){return stats.tore||0;}]
+ ["⚽","Schiesse 1 Tor auf dem Sportplatz",1,function(){return stats.tore||0;}],
+ /* ⚠️ `stats.einkaeufe` wurde hochgezaehlt und NIRGENDS gelesen — der Kommentar am
+    Einkaufs-Knopf behauptete sogar "zaehlt als Erfolg", und den gab es nicht. Statt
+    eines weiteren Erfolgs (davon kamen gerade zwei dazu) bekommt der Laden eine
+    Tagesmission: der Knopf hat damit einen Grund, und der Zaehler einen Leser. */
+ ["🛍️","Kaufe {n}× im Laden ein",2,function(){return stats.einkaeufe||0;}]
 ];
 function missNeu(){
   if(MPs&&!mpHost)return;
@@ -10965,7 +10970,7 @@ document.getElementById("markthalleBtn").onclick=function(){ /* 🥕 Markthalle:
   hint("🥕 "+e9+" Ernten verkauft: +"+erloes+" $ (Marktpreis!)");
   sims.forEach(function(s8){simEmoji(s8,"🤑");});
   beep(700,.09,"triangle",.05);setTimeout(function(){beep(950,.12,"triangle",.06);},120);updHUD();};
-document.getElementById("shopBtn").onclick=function(){ /* 🛒 Einkauf: kostet Geld, hebt Laune + zaehlt als Erfolg */
+document.getElementById("shopBtn").onclick=function(){ /* 🛒 Einkauf: kostet Geld, hebt Laune, zaehlt fuer die Tagesmission */
   if(geld<60){hint("💰 Zu wenig Geld — 60 $ noetig!");return;}
   geld-=60;geldSend();stats.einkaeufe=(stats.einkaeufe||0)+1;
   sims.forEach(function(s9){s9.needs.spass=Math.min(100,(s9.needs.spass||100)+15);simEmoji(s9,"🛍️");});
