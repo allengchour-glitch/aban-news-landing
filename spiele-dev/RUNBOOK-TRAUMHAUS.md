@@ -762,6 +762,24 @@ bei Misserfolg `null`, und dann baut das Viertel *gar nicht* — genau der Zusta
 Wer das wirklich lösen will, braucht mehr Platz, nicht mehr Prüfungen: entweder eine
 Lücke im Gebirgsgürtel (r 210…290) oder kleinere Viertel.
 
+**Nachtrag — kleineres Viertel hat funktioniert.** `viertelMass()` nimmt das **breiteste
+einzelne Bauwerk** als Quermaß. Bei Gewerbe Ost war das die Parkgarage mit 54,7 m; sie
+allein machte das Netto-Rechteck 46 m halbbreit, und damit fand der Solver keinen Ort, der
+Landstraße *und* Gebirge meidet. `bau()` skaliert über die **Höhe**: 11 → 7 macht aus
+54,7 × 37,0 ein 34,8 × 23,5 (zwei Ebenen statt drei), das Viertel wird 20 m schmaler — und
+der Solver findet (252\|0). Alle 13 Bauten und Fahrzeuge stehen, **34 Mesh-Positionen von
+der Landstraße weg**, Belagstreffer gesamt 139 → 122. Am äußeren Rand streift noch eine
+Bergflanke die Bodenplatte (86,7 m bei x ≈ 290), die Bauzeilen bei x 232 und 271 sind frei.
+**Merksatz: ein einziges übergroßes Modell kann ein ganzes Viertel heimatlos machen.**
+
+### Zwei Fehlanzeigen aus derselben Runde (beide geprüft, beide sauber)
+* **Alle 97 Katalog-Einträge lassen sich bauen.** Mit `geld` und `wohnstufe` auf Maximum
+  jeden Eintrag auf ein freies Feld gesetzt: 78 gebaut, 15 gehen als Bau/Farbe einen
+  anderen Weg, 4 Sonderfälle. Der Hund meldet sich synchron nicht — er lädt sein Modell
+  über `loadTH("hund", …)` erst asynchron; **Testartefakt, kein Fehler.**
+* **Alle 85 Knöpfe haben einen Handler** (direkt oder über einen Vorfahren). Kein toter
+  Bedienknopf.
+
 ## 🎯 Sollwerte einer sauberen Szene
 
 | Messwert | Soll |

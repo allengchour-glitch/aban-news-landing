@@ -4510,7 +4510,13 @@ setTimeout(function baueGebaeude(){
          15x11 statt 31.7x25.8, Polizeiwache 16x12 statt 32.3x25.4. Der Reihen-
          Generator setzte sie danach viel zu eng — zwei Bauten ueberlappten sich
          um 10.7 m, und entzerren() bekam es nicht mehr auf. */
-      bauten:[{file:"th20_parkgarage.glb",h:11,w:54.7,d:37.0},
+      /* ⚠️ Die Parkgarage bestimmte im Alleingang die Breite des ganzen Viertels:
+         `viertelMass` nimmt das breiteste Bauwerk, und mit 54,7 m war das Netto-Rechteck
+         46 m halbbreit. Damit fand der Solver keinen Ort, der Landstrasse UND Gebirge
+         meidet, und fiel auf den alten Platz zurueck — mit 34 Mesh-Positionen im Belag.
+         `bau()` skaliert ueber die HOEHE: 11 -> 7 macht aus 54,7 x 37,0 ein 34,8 x 23,5.
+         Zwei Ebenen statt drei, und das Viertel wird 20 m schmaler. */
+      bauten:[{file:"th20_parkgarage.glb",h:7,w:34.8,d:23.5},
               {file:"th22_garage.glb",h:3.4,w: 5.9,d: 8.0},
               /* ⚠️ th23_bank.glb gehoerte urspruenglich hierher, steht aber seit Charge 50
                  als ausgebaute Bank mit Personal und Koop-Ueberfall im Suedbezirk
