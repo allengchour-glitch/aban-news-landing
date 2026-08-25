@@ -660,6 +660,27 @@ mit künstlichem dt treiben. Genau dafür sind sie exponiert.
   gemessen wurde. **Auf einen Zustand warten, nicht auf eine Uhr** — oder die Dauer auf
   beiden Seiten abkürzen.
 
+* **`inSolid()` ist ein WAND-Test, kein Volumen-Test.** Liegt der Punkt mehr als 0,55 m
+  von jeder Kante entfernt, gibt es `false` — damit die Figur in Räumen laufen kann. Für
+  die Frage „steht hier ein Gebäude?" ist das die falsche Frage: ein Wagen mitten in der
+  Seilbahn-Talstation galt als „frei". Dafür gibt es jetzt `imBau(x,z)` — die volle
+  Grundfläche, ohne Tür- und Wandausnahmen.
+* **Gegen etwas prüfen, das asynchron entsteht, braucht eine Wiederholung, keinen
+  Zeitpunkt.** Ein Ausweich-Schritt bei 20 s änderte nichts, drei feste Zeitpunkte
+  (20/40/60 s) halfen mal und mal nicht: der Kollider der Talstation entsteht erst, wenn
+  *ihr* Modell geladen ist, und wann das ist, hängt an der Last. Ein Lauf hatte den Wagen
+  danach frei, der nächste unverändert im Gebäude. Alle 2 s bis 95 s prüfen kostet nichts
+  und ist reproduzierbar.
+* **Wer etwas verschiebt, prüft alles am Zielort — nicht nur das, wovor er ausweicht.**
+  Der Sportwagen wich der Talstation aus und parkte prompt im Lieferwagen (103 Meshpaare).
+* **Ein zweiter `entzerren()`-Lauf ist schon einmal gemessen und verworfen worden.** Der
+  Kommentar an der 14-s-Zeile versprach ihn („wie beim Entwirrer braucht es einen zweiten,
+  späten Lauf") — 250 Zeilen weiter steht, warum es ihn nicht gibt: er schob **18 Objekte
+  zurück in Straßenkorridore**, und `freiRaeumen()` bekam sie wegen der 26-m-Schubgrenze
+  nicht alle heraus. Eine Überschneidung im Gewerbegebiet ist das kleinere Übel. Der
+  falsche Kommentar ist korrigiert — er hätte fast dazu geführt, die Entscheidung
+  rückgängig zu machen, ohne sie zu kennen.
+
 ## 🎯 Sollwerte einer sauberen Szene
 
 | Messwert | Soll |
