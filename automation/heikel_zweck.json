@@ -89,7 +89,7 @@
   {
    "n": "ch-verbotene-waffe",
    "alle": [
-    "Nunchak|Tonfa|Schlagring|Wurfstern|Schmetterlings-?(?:messer|schwert)|Butterfly-?Messer|Balisong|Springmesser|Teleskopschlagstock|Totschl[äa]ger|Wurfmesser"
+    "Nunchak|Tonfa|Schlagring|Wurfstern|Schmetterlings-?(?:messer|schwert)|Butterfly-?Messer|Balisong|Springmesser|Teleskopschlagstock|Totschl[äa]ger|Wurfmesser|Doppel-?Baton|Nunchucks?"
    ],
    "warum": "Art. 4 Abs. 1 Bst. c und d WG nennen diese Gegenstände ausdrücklich, nach Art. 5 ist bereits das ANBIETEN verboten, und die Aufzählung im Gesetz ist nicht abschliessend. ⚠️ Ein Schmetterlingsmesser-Trainer ist nur dann zulässig, wenn die Klinge stumpf, ungeschliffen UND gelocht ist — das Live-Listing bot ausdrücklich auch «spitze Klinge ohne Öffnung» an."
   },
@@ -123,6 +123,14 @@
     "Bauklotz|Bausteine?\\b|Baukasten|Klemmbaustein|Building\\s?Block|Nachbildung|Replika|Softair|Airsoft|Blaster|Schaumstoff-?Dart"
    ],
    "warum": "Faengt die naechste Nachbildung ab, die eine noch unbekannte Modellbezeichnung traegt: ein Schusswaffen-Nomen PLUS Bausatz-/Nachbildungs-Kontext. Der Kontext ist Pflicht, weil «Gewehr»/«Pistole» allein im Fliesstext von Werkzeug, Deko und Kostuemen vorkommt. Bewusst NICHT im Kontext: das Wort «Modell» — es steht in unzaehligen Beschreibungen als «Modell: XY» und haette die Regel wertlos gemacht. Panzer-, Kampfjet- und Militaerfahrzeug-Modelle sind KEIN Treffer und sollen es nicht sein: das ist Modellbau, keine tragbare Schusswaffe (14 solche Bausaetze standen am 20.08. im Katalog und wurden bewusst gelassen). Ebenso kein Treffer: «Samurai-Baustein-Set» (Figur) und «Washed Machete Jeans» (eine Waschung)."
+  },
+  {
+   "n": "ch-verbotene-waffe-getarnt",
+   "_": "25.08.2026: Zwei Nunchaku standen ACTIVE als «Haushalt/Organizer» — «Dark Night Warrior Doppelstock» und «Doppel-Baton Performance Stick». Der Lieferant nennt die Waffe nie beim Namen; gefunden nur per Kontaktbogen (Bild). Tarnnamen brauchen einen zweiten Anker, sonst träfe «Doppelstock» die Langlauf-Doppelstock-Technik bei Skistöcken. «Doppelstöckig» (Katzenhäuser) matcht wegen des Umlauts ohnehin nicht.",
+   "alle": [
+    "Doppelstock\\b|Kampf(?:sport)?-?st(?:ock|äbe|öcke)\\b|Two-?Section-?(?:Stick|Staff)|Performance-?Stick",
+    "Kampfsport|Martial|Nunchak|Warrior|Selbstverteidigung|Kette verbunden|Seil verbunden|Schwungtechnik"
+   ]
   }
  ]
 }
