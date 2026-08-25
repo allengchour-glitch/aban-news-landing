@@ -9226,10 +9226,19 @@ function findPath(sx,sy,tx,ty){
       seen[nk]=1;prev[nk]=fkey(cur[0],cur[1]);q.push([nx,ny]);}}
   return null;}
 function simGrid(s){return [Math.round(s.x/CS+GW/2-0.5),Math.round(s.z/CS+GH/2-0.5)];}
-function findFurnFor(need){
-  var best=null;
+/* ⚠️ Hier stand `break` beim ERSTEN Treffer — und `furn` ist schlicht die Reihenfolge,
+   in der gebaut wurde. Mit 18 Spass-Moebeln im Katalog benutzte ein Bewohner also
+   immer dasselbe Stueck: das zuerst gestellte. Designer-Sofa, Schaukelstuhl,
+   Dartscheibe, Konsole, Schach — alles spaeter Gekaufte war Deko, an die nie jemand
+   ging. Und weil die Entfernung gar nicht vorkam, lief der Bewohner quer durchs Haus
+   am freien Sessel vorbei zum Sofa von ganz frueher. Jetzt das NAECHSTE freie Stueck. */
+function findFurnFor(need,s){
+  var best=null,bd=1e9;
+  var px=s?s.x:0,pz=s?s.z:0;
   for(var i=0;i<furn.length;i++){var f=furn[i];
-    if(f.def.use&&f.def.use.need===need&&!f.busy){best=f;break;}}
+    if(!f.def.use||f.def.use.need!==need||f.busy)continue;
+    var d=Math.hypot(cx(f.gx)-px,cz(f.gy)-pz);
+    if(d<bd){bd=d;best=f;}}
   return best;}
 var NEEDS=[["hunger","🍽️"],["energie","😴"],["spass","🎉"],["hygiene","🚿"]];
 function simThink(s,si){
@@ -9249,7 +9258,7 @@ function simThink(s,si){
      nachts ins Bett, tagsueber ab und zu ein zufaelliges Moebel ansteuern. */
   if(spaet&&!crime.on){worst="energie";wv=40;}
   else if(Math.random()<0.001){worst=["hunger","spass","hygiene"][(Math.random()*3)|0];wv=40;}
-  if(wv<55){var f=findFurnFor(worst);
+  if(wv<55){var f=findFurnFor(worst,s);
     if(f){var g0=simGrid(s),tcell=useCell(f);
       var path=findPath(g0[0],g0[1],tcell[0],tcell[1]);
       if(path){s.state="walk";s.path=path;s.target=f;f.busy=true;

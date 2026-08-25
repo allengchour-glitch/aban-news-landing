@@ -605,6 +605,14 @@ mit künstlichem dt treiben. Genau dafür sind sie exponiert.
   die 72-m-Fahrt zum Markt am meisten und die 335-m-Fahrt zum Freizeitpark am wenigsten.
   Wer eine Formel an eine Restgröße hängt, hängt sie an das Gegenteil des Aufwands.
 
+* **`break` beim ersten Treffer macht alle späteren Käufe zu Deko.** `findFurnFor(need)`
+  lief über `furn` — die reine Baureihenfolge — und nahm den ersten passenden Eintrag.
+  Bei 18 Spaß-Möbeln im Katalog benutzte ein Bewohner damit **immer dasselbe Stück**:
+  das zuerst gestellte. Gemessen an sechs Sesseln quer über das Grundstück, angesteuert
+  von fünf Standorten: alt **1** verschiedenes Möbel bei 61,0 m mittlerem Weg, neu **5**
+  bei 4,8 m. Der schlimmste Fall lief 107 m an fünf freien Sesseln vorbei. Wo mehrere
+  gleichwertige Ziele infrage kommen, gehört die Entfernung in die Auswahl.
+
 ## 🎯 Sollwerte einer sauberen Szene
 
 | Messwert | Soll |
