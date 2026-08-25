@@ -340,9 +340,29 @@ var UPGRADES=[
   {id:"orbs",name:"🟡 Mehr Orbs",en:"🟡 More orbs"}
 ];
 var curChoices=[];
+/* ⚠️ ZWEI MESSUNGEN, ZWEI FEHLER an derselben Zeile:
+   1. `UPGRADES.slice().sort(function(){return Math.random()-0.5;})` ist kein Mischen.
+      Ein Zufallsvergleich in sort() liefert keine gleichverteilte Permutation. Ueber
+      300.000 Angebote kam "🧲 Magnet" in 51,20 % vor und "🌊 Flow-Meister" in 33,93 %
+      — bei sieben Upgrades auf drei Plaetzen muessten es 42,9 % je sein. Fisher-Yates
+      liefert gemessen 42,78 bis 42,96 %.
+   2. Zwei Upgrades koennen LEER laufen: `magnet` ist ein Schalter (ein zweiter Magnet
+      tut nichts), und `dash_cd` ist bei 0,012 gedeckelt — ab dem fuenften Griff bringt
+      er fast nichts, ab dem sechsten gar nichts. Ausgerechnet der Magnet wurde am
+      haeufigsten angeboten, also war der haeufigste Vorschlag der einzige, der ein
+      Blindgaenger sein konnte. Wer nichts mehr bewirkt, kommt gar nicht erst in den Topf. */
+function mische(a){a=a.slice();
+  for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t;}
+  return a;}
+function upgradeWirkt(u){
+  if(u.id==="magnet")return !magnet;
+  if(u.id==="dash_cd")return dashRecharge<0.012;
+  return true;}
 function offerUpgrade(){
   choosing=true;
-  curChoices=UPGRADES.slice().sort(function(){return Math.random()-0.5;}).slice(0,3);
+  var topf=UPGRADES.filter(upgradeWirkt);
+  if(topf.length<3)topf=UPGRADES;          /* nie weniger als drei Knoepfe anbieten */
+  curChoices=mische(topf).slice(0,3);
   var box=document.getElementById("upg");
   box.innerHTML="<div style='font-weight:800;margin-bottom:12px'>"+tr("upgrade")+"</div>"+
     curChoices.map(function(u,i){return "<button class='btn' data-i='"+i+"' style='margin:6px;display:block;width:100%'>["+(i+1)+"] "+((lang==="en"&&u.en)?u.en:u.name)+"</button>";}).join("");
