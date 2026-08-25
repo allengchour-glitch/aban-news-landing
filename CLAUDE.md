@@ -2180,3 +2180,14 @@ gehören an `product/query?pid=`, `CJXX…0001` ist eine Varianten-SKU (vierstel
 nicht der 2-Ziffern+2-Buchstaben-Fall). Die Vier-Formen-Falle gilt für JEDEN neuen CJ-Leser.
 (2) Eine Quittung «ohne Antwort» ist keine Endstation — dahinter kann die teuerste
 Fehlerklasse des Shops stecken. Der Backfill quittiert solche Fälle künftig besser gar nicht.
+
+## 💾 Der Container stellt beim Restart einen ALTEN Snapshot her (2026-08-25, 2×)
+Zweimal binnen zwei Stunden: uptime wenige Minuten, /tmp-Skripte weg, Repo «behind 167»,
+CJ-Ledger ~300 Zeilen älter — der Neustart restauriert nicht den letzten Stand, sondern
+einen älteren Disk-Snapshot. **Gepushtes überlebt, alles Lokale fällt zurück.** Deshalb:
+(1) nach JEDEM Commit sofort pushen — ein lokaler Commit ist hier keine Sicherung;
+(2) nach einem Restart `bash automation/repo_vorspulen.sh` (Reset auf origin + Ledger-UNION,
+    lässt bewusst gelöschte `cj-ohne-antwort`-Quittungen draussen — die Union hat sie einmal
+    wiederbelebt, Zombie-Ledger-Klasse); (3) der merge-basierte Autocommitter übersteht das
+    Muster sauber — sein fetch+merge vor dem Push hat nichts Neueres überschrieben.
+Erkennungszeichen im Keepalive: CJ-Zahl FÄLLT und der Push meldet non-fast-forward.
