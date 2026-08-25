@@ -4439,6 +4439,16 @@ setTimeout(function baueGebaeude(){
        Zeilen 109,9 m Front plus vier Luecken = 149,9 m. Mit 150/12 blieben 122 m nutzbar,
        und die letzten drei Haeuser fielen mit "passt nicht mehr" hinten runter — was
        niemand sah, weil das Viertel ohnehin nicht gebaut wurde. 180/10 gibt 152 m. */
+    /* ⚠️ OFFEN, GEMESSEN, NICHT BEHOBEN: die westliche Bauzeile (x ~ 189) liegt auf der
+       LANDSTRASSE — bei z=+-60 ist r = 198, mitten im Belagsband 196…204. Parkgarage,
+       Polizeiwache, Post, Eckhaus und Cafe stehen mit zusammen 34 Mesh-Positionen darin
+       (`node spiele-dev/tools/th-strassen.mjs`).
+       Ein Verschieben des WUNSCHORTS bringt nichts: mit x=236 versucht, gemessen —
+       `viertelOrt()` findet dort keinen Platz und legt das Viertel bei ~216 ab, wo die
+       Zeile noch naeher am Ring liegt (Post 3 -> 18 Mesh-Positionen). Der richtige Weg
+       ist, `viertelPasst()` die Landstrasse und die sechs Zubringer beizubringen — das
+       verschiebt aber auch den Bauernhof, dessen Aecker, Zaeune, Traktor und Heuballen
+       auf festen Koordinaten liegen. Das ist eine eigene Runde wert. */
     var _go = viertel({name:"Gewerbe Ost",x:172,z:0,w:96,d:180,achse:"z",boden:"platz",
       anschluss:[112,0],abstand:13,luecke:10,rand:14,
       /* ⚠️ GEMESSEN statt geschaetzt — die th37-Zeilen unten machen es seit Charge 37
@@ -4533,7 +4543,13 @@ setTimeout(function baueGebaeude(){
        ist per Strasse angebunden; aus reinem Gewerbe wird damit ein gemischtes
        Quartier, was ohnehin lebendiger ist. Damit die vier Haeuser hineinpassen,
        ruecken `luecke` und `rand` von 16 auf 12 bzw. 14 zusammen. */
-    viertel({name:"Sportpark Sued",x:0,z:216,w:180,d:84,achse:"x",boden:"rasen",
+    /* ⚠️ GEMESSEN: auf z=216 lag die suedliche Bauzeile (z ~ 195) AUF DER
+       LANDSTRASSE. Der Ring hat dort echten Belag — Querschnitt bei 90 Grad:
+       Asphalt #4a4a53 von r=196 bis 204. Schwimmbad, Fitnessstudio und
+       Basketballplatz standen mit zusammen 50 Mesh-Positionen darin.
+       z 216 -> 236 schiebt die Suedzeile auf z ~ 215: bei x=0 sind das r=215,
+       bei x=+-40 r=219 — in beiden Faellen mehr als 10 m Luft zum Belagsrand. */
+    viertel({name:"Sportpark Sued",x:0,z:236,w:180,d:84,achse:"x",boden:"rasen",
       /* 🐛 anschluss war [0,146] — die SEEMITTE. Der Verbinder endete als Asphalt-
          zunge samt Mittelstreifen und Laterne mitten im Wasser (User: „wasser?").
          Jetzt endet er am Suedufer (Wasserradius ~20 + Sandring). */

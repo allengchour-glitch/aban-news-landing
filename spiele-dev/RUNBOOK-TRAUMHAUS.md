@@ -709,6 +709,48 @@ mit künstlichem dt treiben. Genau dafür sind sie exponiert.
   hielt die drei Schalterplätze als Weltkoordinaten — beim Verschieben der Bank wäre das
   Personal auf dem alten Grundstück stehen geblieben. Jetzt relativ zu `window._bankPos`.
 
+### 🛣️ Was auf welcher Fahrbahn steht — `spiele-dev/tools/th-strassen.mjs`
+
+Straßen sind Flächen, keine Modelle, und Kollider haben sie auch nicht (sonst könnte
+niemand darauf fahren). Damit sind sie für `wegVonStrasse`, `viertelPasst` und jeden
+Freiflächen-Solver unsichtbar. Das hat in einer Session **fünf Mal** zugeschlagen: 16
+Ampelmasten und 9 Laternen im Belag (#2297), der Bauernhof in der Buswende und die vier
+Ostviertel-Wagen in der Seilbahnstation (#2308), die Bank auf der Zubringerstraße (#2310)
+— und jetzt drei Viertel auf der Landstraße. Das Werkzeug prüft **alle** Klassen:
+
+| Klasse | Mitte | halbe Belagsbreite | Länge |
+|---|---|---|---|
+| Hauptstraße | z ±58 | 8,05 | x ±102 |
+| Querstraße | x ±78 | 5,05 | z ±69 |
+| Stadtring | x ±112 · z 118/−100 | 4,5 | siehe Werkzeug |
+| **Zubringer** | 30°, 60°, 120°, 240°, 300°, 330° | 4,5 | r 123…193 |
+| **Landstraße** | Ring r 200 | 4,5 | rundum |
+
+Drei Filter, jeder davon in einem Fehlversuch gelernt:
+* **`STRASSENBAND` liefert die falschen Halbbreiten** (überall 8,0 = Schutzband inkl.
+  Gehweg). Die echten stehen in der Bordstein-Geometrie.
+* **Nach oben filtern** (`max.y < 0,45`) — sonst zählt jede Markierung mit.
+* **Nach unten filtern** (`min.y > 2` überspringen) — der erste Lauf meldete 193 Treffer
+  auf der Landstraße, allesamt die **Bergstation der Seilbahn**, die bei r = 202 auf 47 m
+  Höhe über der Straße thront.
+
+**⚠️ Die Landstraße ist nur abschnittsweise gepflastert.** Querschnitte: bei 90° und 280°
+echter Asphalt (`#4a4a53`, r 196…204, bei 280° sogar mit Gehweg), bei 180° ist dort
+**Meer**, bei 0° und 225° steht **Gebirge** darauf. Ein Treffer im Band ist erst dann ein
+Fehler, wenn dort auch Belag liegt.
+
+**Behoben:** der Sportpark lag mit Schwimmbad, Fitnessstudio und Basketballplatz auf dem
+gepflasterten Abschnitt bei 90°. z 216 → 236 bringt alle sechs Bauten auf r 215…266.
+Landstraßen-Treffer 120 → 80.
+
+**Offen, gemessen, bewusst nicht behoben:** Gewerbe Ost (34 Mesh-Positionen) und der
+Bauernhof-Stall (14) liegen weiter auf dem Ring. Den **Wunschort zu verschieben hilft
+nicht** — mit x = 236 versucht: `viertelOrt()` findet dort keinen Platz und legt das
+Viertel bei ~216 ab, wo es *näher* am Ring liegt (Post 3 → 18 Treffer). Der richtige Weg
+ist, `viertelPasst()` die Landstraße und die Zubringer beizubringen — das verschiebt aber
+auch den Bauernhof, dessen Äcker, Zäune, Traktor und Heuballen auf festen Koordinaten
+liegen. Eigene Runde.
+
 ## 🎯 Sollwerte einer sauberen Szene
 
 | Messwert | Soll |
