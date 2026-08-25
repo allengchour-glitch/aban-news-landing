@@ -8445,6 +8445,24 @@ function missTxt(){
     return (m.done?"✅":"▫️")+m.e+" "+m.tx;}).join(" · ")
     +(missHeute.bonus?" 🏆":"")+(missSerie+(missHeute.bonus?1:0)>=2?" 🔥"+(missSerie+(missHeute.bonus?1:0))+" Tage":"");
 }
+/* 🎯 GTA-Missions-Marker: feste Orte der Tagesmissionen (Pool-Index → Ort, gemessen im Code):
+   Fische/Kochen/Tanzen/Ernten/Moebel/Abnahme = Zuhause (Grundstueck-Mitte), Stunt-Rampe
+   (-64,28, baueRampe), Enten-See (0,146), Fussball (53,155, BALL-Anstoss), Laden (-24,74).
+   Fehlt ein Eintrag (Emotes, Strassenmusik 17-21 Uhr), ist die Mission ortlos — kein Marker.
+   📦 Lieferung zeigt aufs eigene Auto (dort einsteigen), sonst Zuhause. */
+var MISS_ORTE={0:[0,0],1:[0,0],2:[0,0],4:[-64,28],5:[0,0],6:[0,0],9:[0,0],10:[0,146],11:[53,155],12:[-24,74]};
+function missZiele(){
+  if(!missHeute)return [];
+  var out=[],belegt={};
+  missHeute.liste.forEach(function(m){
+    if(m.done)return;
+    var o=MISS_ORTE[m.i];
+    if(m.i===3){var a=window.autoRec;o=a?[a.mesh.position.x,a.mesh.position.z]:[0,0];}
+    if(!o)return;
+    var k=o[0]+"_"+o[1],x=o[0]+(belegt[k]||0)*7; /* zwei Heim-Missionen: Marker nebeneinander */
+    belegt[k]=(belegt[k]||0)+1;
+    out.push({x:x,z:o[1],e:m.e,tx:m.tx});});
+  return out;}
 /* 🌅 Tagesabschluss: kompakte Karte beim Tageswechsel — Geldbilanz von gestern,
    Missionsstand, Serie, Abnahme-Countdown. Tap oder 7 s blendet sie aus. */
 function tagesReport(){
@@ -10996,6 +11014,13 @@ function updMinimap(dt){
     var dxw=wp9[0]-Cc,dzw=wp9[1]-Cc,drw=Math.sqrt(dxw*dxw+dzw*dzw);
     if(drw>Cc-9){var kw=(Cc-9)/(drw||1);wp9=[Cc+dxw*kw,Cc+dzw*kw];}
     c.font="13px system-ui";c.fillText("📍",wp9[0],wp9[1]);}
+  // 🎯 Missions-Marker auch auf dem Radar (gelber Punkt, am Rand angeklebt wie die Orte)
+  var mz9=missZiele();
+  for(var mj=0;mj<mz9.length;mj++){var ms9=S(mz9[mj].x,mz9[mj].z);
+    var dxm=ms9[0]-Cc,dzm=ms9[1]-Cc,drm=Math.sqrt(dxm*dxm+dzm*dzm);
+    if(drm>Cc-9){var km=(Cc-9)/(drm||1);ms9=[Cc+dxm*km,Cc+dzm*km];c.globalAlpha=0.6;}
+    c.beginPath();c.arc(ms9[0],ms9[1],6,0,6.283);c.fillStyle="rgba(255,204,40,.9)";c.fill();
+    c.font="9px system-ui";c.fillText(mz9[mj].e,ms9[0],ms9[1]);c.globalAlpha=1;}
   // Polizei
   c.fillStyle="#ff3020";for(var q=0;q<polizei.length;q++){var s3=S(polizei[q].mesh.position.x,polizei[q].mesh.position.z);c.beginPath();c.arc(s3[0],s3[1],2.6,0,6.283);c.fill();}
   // Koop-Partner
@@ -11068,6 +11093,12 @@ function drawBigMap(){
   // Koop-Partner
   if(MPs){var pa=sims[1-meinSi()];if(pa){var pp=S(pa.x,pa.z);
     c.beginPath();c.arc(pp[0],pp[1],6,0,6.283);c.fillStyle="#3ad0ff";c.fill();c.strokeStyle="#fff";c.lineWidth=2;c.stroke();}}
+  // 🎯 Missions-Marker (gelb wie in GTA) — Tipp in der Naehe rastet ein und setzt das GPS
+  var mz=missZiele();
+  for(var mi=0;mi<mz.length;mi++){var mq=S(mz[mi].x,mz[mi].z);
+    c.beginPath();c.arc(mq[0],mq[1],11,0,6.283);c.fillStyle="rgba(255,204,40,.92)";c.fill();
+    c.lineWidth=2.5;c.strokeStyle="#7a5500";c.stroke();
+    c.font="14px system-ui";c.textAlign="center";c.textBaseline="middle";c.fillText(mz[mi].e,mq[0],mq[1]);}
   // 🧭 Wegpunkt zuoberst
   if(GPS.aktiv){var wq=S(GPS.x,GPS.z);
     c.beginPath();c.arc(wq[0],wq[1],8,0,6.283);c.fillStyle="#a040f0";c.fill();
@@ -11180,6 +11211,11 @@ document.getElementById("bigmap").addEventListener("click",function(e){
   var mx=(e.clientX-r.left)*this.width/r.width,my=(e.clientY-r.top)*this.height/r.height;
   var wx=_bigTrafo.X0+(mx-_bigTrafo.ox)/_bigTrafo.sc,wz=_bigTrafo.Z0+(my-_bigTrafo.oy)/_bigTrafo.sc;
   if(GPS.aktiv&&Math.hypot(wx-GPS.x,wz-GPS.z)<14){gpsWeg();hint("📍 Wegpunkt entfernt");drawBigMap();return;}
+  var mzK=missZiele();                       // 🎯 Tipp nahe einem Missions-Marker rastet ein
+  for(var s9=0;s9<mzK.length;s9++){
+    if(Math.hypot(wx-mzK[s9].x,wz-mzK[s9].z)<16){
+      if(gpsSetz(mzK[s9].x,mzK[s9].z)){hint("🎯 Route zur Mission: "+mzK[s9].e+" "+mzK[s9].tx);drawBigMap();}
+      return;}}
   if(gpsSetz(wx,wz))drawBigMap();});
 function bigMapOpen(){var w=document.getElementById("bigmapWrap");if(!w)return;
   drawBigMap();w.style.display="flex";}
