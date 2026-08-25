@@ -772,6 +772,17 @@ der Landstraße weg**, Belagstreffer gesamt 139 → 122. Am äußeren Rand strei
 Bergflanke die Bodenplatte (86,7 m bei x ≈ 290), die Bauzeilen bei x 232 und 271 sind frei.
 **Merksatz: ein einziges übergroßes Modell kann ein ganzes Viertel heimatlos machen.**
 
+**Und derselbe Hebel beim Bauernhof — nur über die Länge.** Mit `w = 170` reichte sein
+Netto-Rechteck bis (−105\|−167), also **r = 199**: mitten im Band, und der Stall stand mit
+14 Mesh-Positionen im Belag. Mit `w = 120` liegt die nächste Ecke bei (−80\|−167), r = 185
+— 15 m Luft. Die sechs Bauten passen weiter (längere Zeile: 20 + 6 + 6 = 32 m Front plus
+zwei Lücken = 72 von 80 nutzbaren Metern), der Hof **bleibt auf seinem Wunschort**, und
+seine Äcker liegen unverändert dort, wo sie immer lagen.
+
+**Damit steht kein einziges Gebäude mehr auf einer Fahrbahn.** Belagstreffer gesamt
+154 → 102; was übrig ist, ist Dekoration (die Viertelslaternen des Hofs am Westende,
+Bäume, Findlinge) und die zehn Seilbahnstützen, die auf ihrer eigenen Linie stehen.
+
 ### Zwei Fehlanzeigen aus derselben Runde (beide geprüft, beide sauber)
 * **Alle 97 Katalog-Einträge lassen sich bauen.** Mit `geld` und `wohnstufe` auf Maximum
   jeden Eintrag auf ein freies Feld gesetzt: 78 gebaut, 15 gehen als Bau/Farbe einen
