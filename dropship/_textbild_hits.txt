@@ -12773,3 +12773,6 @@ gid://shopify/Product/15509134770561	92->1	Hawaiihemd mit Stehkragen und Streife
 gid://shopify/Product/15509347991937	86->0	Bequeme Denim-Sneaker für Damen
 gid://shopify/Product/15509370372481	12->2	Sonnenblumen-Wandspiegel aus Makramee
 gid://shopify/Product/15509385314689	22->2	Bergemagnet D25mm mit Ringschraube
+gid://shopify/Product/15509396193665	86->0	Luftbefeuchter in Holzoptik mit LED-Licht
+gid://shopify/Product/15509421162881	41->1	Transparenter Kosmetik Organizer mit Schubladen
+gid://shopify/Product/15509421425025	12->2	Freizeit-Umhängetasche aus Canvas
