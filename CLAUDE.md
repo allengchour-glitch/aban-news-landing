@@ -2168,3 +2168,15 @@ Kontaktstifte am Empfänger (`dropship/_tierschutz_halsband.txt`). **Regel: Text
 Kontaktbogen sind KOMPLEMENTÄR — wo der Lieferant den Mechanismus verschweigt, entscheidet das
 Foto.** Fehltreffer dabei: «Verstellbares Trainingshalsband» ist ein normales Halsband mit Leine.
 Dazu ein Bob-Marley-Wandteppich (Persönlichkeitsrecht) → aus Google, Tag `lizenz-risiko`.
+
+## 👻 «cj-ohne-antwort» hiess in Wahrheit «removed from shelves» (2026-08-25)
+Der Kosten-Backfill hatte 54 Produkte als «cj-ohne-antwort» quittiert. Nachgeprüft mit den
+RICHTIGEN Endpoints sind **36 davon bei CJ abgekündigt** («Product has been removed from
+shelves») — aktive Shop-Ware ohne bestellbaren Lieferanten, die Klasse von Bestellung #1008.
+Alle DRAFT + Tag `cj-abgekuendigt` (`dropship/_cj_abgekuendigt.txt`), Rest kennt CJ weiterhin
+(transiente Ausfälle), 1 unklar. **Zwei Lehren:** (1) Mein erster Sweep meldete alle 54 als
+«not found», weil er jede SKU an `productSku=` schickte — numerische SKUs sind PIDs und
+gehören an `product/query?pid=`, `CJXX…0001` ist eine Varianten-SKU (vierstelliger Anhang,
+nicht der 2-Ziffern+2-Buchstaben-Fall). Die Vier-Formen-Falle gilt für JEDEN neuen CJ-Leser.
+(2) Eine Quittung «ohne Antwort» ist keine Endstation — dahinter kann die teuerste
+Fehlerklasse des Shops stecken. Der Backfill quittiert solche Fälle künftig besser gar nicht.

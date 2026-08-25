@@ -1978,3 +1978,73 @@ gid://shopify/Product/15447979491713	CHF 20.18	20 Varianten	Neckholder Jacquard-
 gid://shopify/Product/15447979622785	CHF 19.63	24 Varianten	Bandeau-Top mit Taillenschnürung
 gid://shopify/Product/15447979819393	CHF 18.32	20 Varianten	Yoga Tanktop für Damen
 gid://shopify/Product/15447979983233	CHF 18.47	24 Varianten	Nahtloser Sport-BH mit hoher Elastizität
+gid://shopify/Product/15447980147073	CHF 19.74	9 Varianten	Halterneck Off-Shoulder Top mit Raffung
+gid://shopify/Product/15447980310913	CHF 17.72	20 Varianten	Sport-BH mit dünnen Trägern
+gid://shopify/Product/15447980474753	CHF 18.62	4 Varianten	Vintage Camisole mit Wellenmuster
+gid://shopify/Product/15447980638593	CHF 18.13	15 Varianten	Doppelträger-Tanktop mit asymmetrischem Saum
+gid://shopify/Product/15447980802433	CHF 18.79	4 Varianten	Halterneck-Top mit Rüschen
+gid://shopify/Product/15447980966273	CHF 19.37	4 Varianten	One-Shoulder Tanktop mit Rüschen
+gid://shopify/Product/15447981097345	CHF 19.76	3 Varianten	Satin-Camisole mit Neckholder
+gid://shopify/Product/15447981261185	CHF 18.35	35 Varianten	Sommerliches Tanktop-Kleid mit U-Ausschnitt
+gid://shopify/Product/15447981457793	CHF 19.37	4 Varianten	Asymmetrisches Halterneck Top
+gid://shopify/Product/15447981654401	CHF 20.96	40 Varianten	Gepolstertes Sport-Top für Damen
+gid://shopify/Product/15447981719937	CHF 20.82	10 Varianten	Retro Chiffon Top mit Blumenmuster
+gid://shopify/Product/15447981851009	CHF 17.72	20 Varianten	Sommerliches Jacquard-Top mit Spitzenbesatz
+gid://shopify/Product/15447982014849	CHF 21.42	4 Varianten	Ärmelloses Colorblock Camisole Top
+gid://shopify/Product/15447982145921	CHF 18.77	20 Varianten	Ärmelloses Camisole mit V-Ausschnitt und Reissvers
+gid://shopify/Product/15447982440833	CHF 20.37	15 Varianten	Carmen-Chiffonbluse mit Rüschensaum
+gid://shopify/Product/15447982571905	CHF 21.27	8 Varianten	Neckholder-Top mit Rüschensaum
+gid://shopify/Product/15447982899585	CHF 19.92	4 Varianten	Retro Metallic Gestreiftes Camisole Top
+gid://shopify/Product/15447983063425	CHF 20.08	3 Varianten	Kariertes Spitzen-Cami mit V-Ausschnitt
+gid://shopify/Product/15447983194497	CHF 19.08	6 Varianten	Ärmelloses Top im Business-Casual-Stil
+gid://shopify/Product/15447983325569	CHF 20.37	6 Varianten	Spitzenbesetztes V-Neck Top
+gid://shopify/Product/15447984243073	CHF 22.46	6 Varianten	Mesh-Top mit 3D-Blumen
+gid://shopify/Product/15447984406913	CHF 17.67	3 Varianten	Blaues Spaghetti-Top mit Blumenmuster
+gid://shopify/Product/15447984472449	CHF 17.99	3 Varianten	Zebra-Print V-Neck Mesh Camisole
+gid://shopify/Product/15447984636289	CHF 18.44	21 Varianten	Spitzenverziertes Trägertop mit integrierten Pads
+gid://shopify/Product/15447984832897	CHF 18.31	4 Varianten	Sternenprint Tanktop für Damen
+gid://shopify/Product/15447984996737	CHF 18.32	5 Varianten	Satin-Top mit Spitzenbesatz
+gid://shopify/Product/15447985160577	CHF 17.87	45 Varianten	Ärmelloses Henley-Top im lässigen Stil
+gid://shopify/Product/15447985357185	CHF 53.51	3 Varianten	Trägerloser BH mit 3D-Effekt und Bindebändern
+gid://shopify/Product/15447985521025	CHF 21.69	9 Varianten	Damen Satin Bandeau-Top
+gid://shopify/Product/15447985717633	CHF 18.47	20 Varianten	Retro Polka-Dot Halter Top für Damen
+gid://shopify/Product/15447985881473	CHF 18.02	15 Varianten	Trägertop für den Sommer
+gid://shopify/Product/15447986012545	CHF 17.68	20 Varianten	Tanktop mit integrierten Polstern für Damen
+gid://shopify/Product/15447986176385	CHF 41.80	6 Varianten	Figurbetonendes Tanktop mit U-Ausschnitt
+gid://shopify/Product/15447986405761	CHF 18.92	40 Varianten	Pailletten-Top mit Spaghettiträgern
+gid://shopify/Product/15447986569601	cj-ohne-antwort
+gid://shopify/Product/15447986733441	cj-ohne-antwort
+gid://shopify/Product/15447986831745	cj-ohne-antwort
+gid://shopify/Product/15447986864513	cj-ohne-antwort
+gid://shopify/Product/15447986995585	cj-ohne-antwort
+gid://shopify/Product/15447987224961	cj-ohne-antwort
+gid://shopify/Product/15447987356033	cj-ohne-antwort
+gid://shopify/Product/15447987487105	cj-ohne-antwort
+gid://shopify/Product/15447987650945	cj-ohne-antwort
+gid://shopify/Product/15447987814785	CHF 44.70	2 Varianten	Gerüschtes Neckholder-Top mit V-Ausschnitt
+gid://shopify/Product/15447987945857	cj-ohne-antwort
+gid://shopify/Product/15447988076929	cj-ohne-antwort
+gid://shopify/Product/15447988240769	cj-ohne-antwort
+gid://shopify/Product/15447988568449	CHF 17.13	4 Varianten	Outdoor-Velo- und Laufweste mit Handyfach
+gid://shopify/Product/15447988699521	CHF 18.47	20 Varianten	Rundhals Strickweste für Damen
+gid://shopify/Product/15447988830593	CHF 20.67	3 Varianten	Gefaltete Blumenprint Rüschenbluse mit Bändern
+gid://shopify/Product/15447988896129	CHF 19.46	4 Varianten	Ärmellose Strickweste
+gid://shopify/Product/15447989059969	CHF 19.78	18 Varianten	Elegante Blazer-Weste für Damen
+gid://shopify/Product/15447989191041	CHF 19.11	6 Varianten	Elegante V-Neck Leinen-Weste
+gid://shopify/Product/15447989322113	CHF 17.16	35 Varianten	Geripptes High-Neck Tanktop für Damen
+gid://shopify/Product/15447989453185	CHF 18.82	4 Varianten	Hollow Out Strickweste für Damen
+gid://shopify/Product/15447989617025	CHF 19.63	4 Varianten	Luftige Strickweste für Frühling & Sommer
+gid://shopify/Product/15447989780865	CHF 18.95	6 Varianten	Blumige Strickweste im Vintage-Stil
+gid://shopify/Product/15447989911937	CHF 19.46	3 Varianten	Billiard Print Strickweste für Damen
+gid://shopify/Product/15447990043009	CHF 19.61	4 Varianten	Elegantes ärmelloses Top mit Schleifendetail
+gid://shopify/Product/15447990206849	CHF 20.24	3 Varianten	Figurbetonte Bandeau-Spitzencorsage
+gid://shopify/Product/15447990403457	CHF 19.37	3 Varianten	Damen Spitzen Tube Top mit offener Rückenpartie
+gid://shopify/Product/15447990632833	CHF 21.42	9 Varianten	Preppy Strickweste für Damen
+gid://shopify/Product/15447990763905	CHF 17.21	25 Varianten	Sommerliches Slimming-Top mit Halbkragen
+gid://shopify/Product/15447990960513	CHF 17.51	42 Varianten	Ärmelloses Schnür-Top für Damen
+gid://shopify/Product/15447991026049	CHF 29.04	18 Varianten	Leichte Luxus-Weste im italienischen Stil
+gid://shopify/Product/15447991189889	CHF 22.16	12 Varianten	Kurzes Plissée-Top mit Rundhals
+gid://shopify/Product/15447991320961	CHF 21.27	42 Varianten	Softshell-Weste mit Stehkragen
+gid://shopify/Product/15447991484801	CHF 23.21	4 Varianten	Rundhals Strickweste mit Holzknöpfen
+gid://shopify/Product/15447991648641	CHF 18.64	4 Varianten	Figurbetonte Jeans-Weste mit Rundhals
+gid://shopify/Product/15447991779713	CHF 22.45	24 Varianten	Ärmellose Strickweste für Damen
