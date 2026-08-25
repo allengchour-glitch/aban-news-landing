@@ -607,6 +607,6 @@
 #done frog eye mask plush sleep
 #done funny animal sleep mask plush
 # Hype-Recherche 25.08.2026: drei Trend-Themen ohne Katalog-Kandidaten (Startseiten-Reihe)
-search:ice roller face
-search:scalp massager
-search:ems face lifting device
+#done search:ice roller face
+#done search:scalp massager
+#done search:ems face lifting device
