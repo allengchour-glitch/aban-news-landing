@@ -1452,3 +1452,7 @@ gid://shopify/Product/15448526782849	zugeordnet	16	Jumpsuit mit geometrischem Pr
 gid://shopify/Product/15448526848385	zugeordnet	15	Bedruckter V-Ausschnitt Langarm Jumpsuit
 gid://shopify/Product/15448527044993	zugeordnet	8	Sexy Bikini Jumpsuit mit tiefem V
 gid://shopify/Product/15448527077761	zugeordnet	20	Einteiliger Bikini mit Blütenknospen-Design
+gid://shopify/Product/15448527176065	zugeordnet	15	Einteiliger Badeanzug mit Muster
+gid://shopify/Product/15448527372673	zugeordnet	18	Eleganter Jumpsuit mit weitem Bein – S-Black
+gid://shopify/Product/15448530780545	zugeordnet	10	Damen Jumpsuit mit weitem Bein und Print
+gid://shopify/Product/15448531075457	zugeordnet	9	Einteiliger Damen-Badeanzug

@@ -17,7 +17,6 @@ gid://shopify/Product/15408458170753	keine-cj-referenz
 gid://shopify/Product/15408458236289	keine-cj-referenz
 gid://shopify/Product/15408458563969	keine-cj-referenz
 gid://shopify/Product/15411554910593	CHF 27.71	1 Varianten	Aromadiffusor Holzmaserung
-gid://shopify/Product/15411554320769	cj-ohne-antwort
 gid://shopify/Product/15411555533185	CHF 56.96	1 Varianten	Smartwatch Pro 1.78″ AMOLED – Herzfrequenz, Fitnes
 gid://shopify/Product/15411556614529	CHF 41.27	1 Varianten	Rugged Smartwatch X5 – 5 ATM Wasserdicht, GPS, Blu
 gid://shopify/Product/15411563823489	CHF 38.88	1 Varianten	Outdoor Bluetooth Speaker Solar – RGB-Licht, Wasse
@@ -34,7 +33,6 @@ gid://shopify/Product/15412302020993	CHF 16.66	1 Varianten	Vintage Baseball-Cap 
 gid://shopify/Product/15412302414209	CHF 19.23	1 Varianten	Reise-Rucksack mit Kettengriff – kompakt, vegan-Le
 gid://shopify/Product/15412302446977	CHF 27.24	1 Varianten	Hunde-Snackball Intelligenzspielzeug – verstellbar
 gid://shopify/Product/15412302512513	CHF 15.81	1 Varianten	Regenschirm mit Handy-Halterung – freihändig, 8 St
-gid://shopify/Product/15412304707969	cj-ohne-antwort
 gid://shopify/Product/15412304773505	CHF 21.71	1 Varianten	Profi Messerschärfer – Präzisions-Schleifer für sc
 gid://shopify/Product/15412304806273	CHF 18.79	1 Varianten	Elegante Umhängetasche in Lack-Optik – Crossbody, 
 gid://shopify/Product/15412304871809	CHF 27.55	1 Varianten	Komfort-Fahrradsattel XXL – extrabreit, gefedert, 
@@ -43,9 +41,7 @@ gid://shopify/Product/15412306215297	CHF 28.47	1 Varianten	Augenmassagegerät mi
 gid://shopify/Product/15412306608513	CHF 28.10	1 Varianten	16-in-1 Gemüseschneider – Multi-Hobel, Würfler & S
 gid://shopify/Product/15412306772353	CHF 24.60	1 Varianten	Reise-Schallzahnbürste – 4 Modi, Magnetschwebe-Mot
 gid://shopify/Product/15412307100033	CHF 28.95	1 Varianten	LED-Fahrradrucksack mit Blinker – Funk-Fernbedienu
-gid://shopify/Product/15412307165569	cj-ohne-antwort
 gid://shopify/Product/15412307657089	CHF 19.53	1 Varianten	XXL Leselupe mit LED-Licht – 5× & 10× Vergrösserun
-gid://shopify/Product/15412307689857	cj-ohne-antwort
 gid://shopify/Product/15412307853697	CHF 30.29	1 Varianten	Silikon-Abtropfmatte XL – rutschfest & hitzebestän
 gid://shopify/Product/15412361593217	CHF 18.32	1 Varianten	3D-Druck Nachttischlampe – warmes Nachtlicht & Dek
 gid://shopify/Product/15412405272961	CHF 41.11	1 Varianten	All-in-One Elektro-Kochtopf – Keramik-Beschichtung
@@ -55,7 +51,6 @@ gid://shopify/Product/15412433256833	CHF 29.18	1 Varianten	Handliches Massageger
 gid://shopify/Product/15412447543681	CHF 21.27	1 Varianten	Auto-Schnellladegerät PD – ausziehbares Kabel, für
 gid://shopify/Product/15412463108481	CHF 16.66	1 Varianten	Polarisierte Sonnenbrille – blendfrei, UV-Schutz, 
 gid://shopify/Product/15412476445057	CHF 37.67	1 Varianten	Flötenkessel 2L – Edelstahl-Wasserkessel mit Pfeif
-gid://shopify/Product/15412658667905	cj-ohne-antwort
 gid://shopify/Product/15412659978625	CHF 16.49	1 Varianten	Mini USB-Taschenlampe – Edelstahl, wiederaufladbar
 gid://shopify/Product/15412677607809	CHF 21.40	1 Varianten	Elektrischer Krallenschleifer für Hund & Katze – l
 gid://shopify/Product/15412678328705	CHF 20.97	1 Varianten	Smart-Anzuchtset mit LED-Pflanzenlampe – 12 Zellen
@@ -191,7 +186,6 @@ gid://shopify/Product/15421171859841	CHF 21.29	1 Varianten	Statement-Ohrringe «
 gid://shopify/Product/15421171892609	CHF 15.90	5 Varianten	Sommer-Armband «Évil» · Schmetterling & Nazar-Auge
 gid://shopify/Product/15421226746241	CHF 15.49	1 Varianten	Glücks-Halskette «Fortune» · Hufeisen & Kreuz mit 
 gid://shopify/Product/15421328359809	CHF 30.88	4 Varianten	Doppel-Ring «Duo» · S925 Silber mit Zirkonia & Top
-gid://shopify/Product/15421328425345	cj-ohne-antwort
 gid://shopify/Product/15421364896129	CHF 30.20	2 Varianten	Boho-Jeansjacke «Dentelle» · Denim mit Spitzen-Pan
 gid://shopify/Product/15421364928897	CHF 20.22	25 Varianten	Fransen-Minirock «Santa Fe» · Wildleder-Optik, 2-l
 gid://shopify/Product/15421414113665	CHF 17.75	14 Varianten	Zehensteg-Sandalen «Riva» · flach, mit Metall-Deta
@@ -475,13 +469,11 @@ gid://shopify/Product/15429997855105	keine-cj-referenz
 gid://shopify/Product/15429997920641	keine-cj-referenz
 gid://shopify/Product/15430230901121	CHF 24.82	2 Varianten	Aroma-Diffuser «Persimmon» · Kaki-Frucht-Design mi
 gid://shopify/Product/15430231032193	CHF 23.09	4 Varianten	RGB-Wandlampe «Halo» · kabellos, Fernbedienung, oh
-gid://shopify/Product/15430233555329	cj-ohne-antwort
 gid://shopify/Product/15430233588097	CHF 26.48	3 Varianten	Weekender-Reisetasche «Voyage» · faltbar, mit Extr
 gid://shopify/Product/15430236504449	CHF 33.80	1 Varianten	Solar-Gartenleuchte «Lumio» · Aluminium, automatis
 gid://shopify/Product/15430237061505	CHF 17.04	3 Varianten	Auto-Duft-Clip «Woody» · edler Holz-Lufterfrischer
 gid://shopify/Product/15430238634369	keine-cj-referenz
 gid://shopify/Product/15430245515649	CHF 86.97	6 Varianten	Transportbox «PetGo» · für Hund & Katze, belüftet,
-gid://shopify/Product/15430245548417	cj-ohne-antwort
 gid://shopify/Product/15430291849601	CHF 20.67	1 Varianten	Leoparden-Plüschtier «Leo» · realistisch & weich (
 gid://shopify/Product/15430292078977	CHF 16.98	3 Varianten	Holz-Lesezähler «Leseheld» · Montessori-Tier-Track
 gid://shopify/Product/15430344311169	CHF 19.08	6 Varianten	Wide-Leg Midi-Rock «Studio» · fliessend, Freigröss
@@ -637,7 +629,6 @@ gid://shopify/Product/15433463562625	CHF 22.96	1 Varianten	Mechanische Tastatur 
 gid://shopify/Product/15433463595393	CHF 26.65	1 Varianten	Mechanische Tastatur im Kirschblüten-Design
 gid://shopify/Product/15433463628161	CHF 27.91	1 Varianten	Gaming Tastatur & Maus Set RGB LED USB für PC & Ko
 gid://shopify/Product/15433463660929	CHF 24.70	1 Varianten	Over-Ear Gaming Headset mit Mikrofon & 3.5mm Klink
-gid://shopify/Product/15433463693697	cj-ohne-antwort
 gid://shopify/Product/15433463726465	CHF 41.08	1 Varianten	Kabellose mechanische Gaming-Tastatur, Bluetooth/2
 gid://shopify/Product/15433463759233	CHF 41.08	1 Varianten	Kabellose mechanische Gaming-Tastatur, 68 Tasten
 gid://shopify/Product/15433463792001	CHF 41.08	1 Varianten	K68 Kabellose Mechanische 60% Gaming-Tastatur, Gra
@@ -686,8 +677,6 @@ gid://shopify/Product/15443243729281	CHF 26.31	1 Varianten	Zirkonia-Ohrringe «F
 gid://shopify/Product/15443243762049	CHF 26.76	3 Varianten	Malachit-Armband «Vintage» · grüner Naturstein
 gid://shopify/Product/15443245433217	CHF 17.73	4 Varianten	Press-on-Nails «Handmade» · wiederverwendbar
 gid://shopify/Product/15443245465985	CHF 19.37	3 Varianten	Press-on-Nails «French» · zum Aufkleben
-gid://shopify/Product/15443245498753	cj-ohne-antwort
-gid://shopify/Product/15443245531521	cj-ohne-antwort
 gid://shopify/Product/15443245597057	CHF 16.50	1 Varianten	Cluster-Wimpern «Volumen» 30D/40D
 gid://shopify/Product/15443245629825	CHF 24.36	1 Varianten	Cluster-Wimpern «Glue-Free» 80 Stück
 gid://shopify/Product/15443245662593	CHF 16.57	3 Varianten	Magnetische Wimpern «Natural» mit Clip
@@ -702,7 +691,6 @@ gid://shopify/Product/15443496206721	CHF 20.94	4 Varianten	Kabellose Kopfhörer 
 gid://shopify/Product/15443496239489	CHF 40.07	4 Varianten	Kabellose Kopfhörer «EchoBuds» · Bluetooth TWS
 gid://shopify/Product/15443496731009	CHF 31.02	1 Varianten	Aroma-Diffuser «Mist» · Luftbefeuchter mit LED
 gid://shopify/Product/15443496763777	CHF 31.02	1 Varianten	Aroma-Diffuser «Zen» · Luftbefeuchter mit LED
-gid://shopify/Product/15443496796545	cj-ohne-antwort
 gid://shopify/Product/15443496829313	CHF 43.92	1 Varianten	Mini-Drohne «AeroX» · mit HD-Kamera
 gid://shopify/Product/15443496894849	CHF 40.16	1 Varianten	Powerbank «ChargeGo» · Schnellladen
 gid://shopify/Product/15443496927617	CHF 27.69	6 Varianten	Fitness-Tracker «ActiveBand» · Herzfrequenz & Schr
@@ -721,8 +709,6 @@ gid://shopify/Product/15443500302721	CHF 37.10	1 Varianten	Mini-Drohne «SkyCam�
 gid://shopify/Product/15443500368257	CHF 36.20	1 Varianten	Mini-Drohne «AeroX» · faltbar
 gid://shopify/Product/15443500466561	CHF 44.93	1 Varianten	Mini-Drohne «Nimbus» · mit HD-Kamera
 gid://shopify/Product/15443500597633	CHF 34.80	1 Varianten	Mini-Drohne «FalconEye» · faltbar
-gid://shopify/Product/15443500695937	cj-ohne-antwort
-gid://shopify/Product/15443501580673	cj-ohne-antwort
 gid://shopify/Product/15443502006657	CHF 46.35	2 Varianten	Smartwatch «FitPro» · Fitness & Anrufe
 gid://shopify/Product/15443502072193	CHF 38.73	5 Varianten	Fitness-Tracker «StepGo» · Herzfrequenz & Schritte
 gid://shopify/Product/15443502104961	CHF 47.04	2 Varianten	Smartwatch «SmartOne» · Fitness & Anrufe
@@ -749,9 +735,6 @@ gid://shopify/Product/15445277933953	CHF 28.41	1 Varianten	280W UV/LED Nagellamp
 gid://shopify/Product/15445279474049	CHF 21.38	2 Varianten	UV/LED Lichthärtungsgerät für Gelnägel
 gid://shopify/Product/15445281046913	CHF 25.08	1 Varianten	LED Licht Nagelpflegegerät
 gid://shopify/Product/15445281833345	CHF 44.83	1 Varianten	LED Halbmondleuchte für den Nageltisch
-gid://shopify/Product/15445282750849	cj-ohne-antwort
-gid://shopify/Product/15445283602817	cj-ohne-antwort
-gid://shopify/Product/15445285863809	cj-ohne-antwort
 gid://shopify/Product/15445297136001	CHF 18.78	1 Varianten	Nail Art Pen World Cup
 gid://shopify/Product/15445298774401	CHF 17.05	1 Varianten	Nagelpflege-Stift-Set
 gid://shopify/Product/15445299364225	CHF 19.63	1 Varianten	Gel Nagellack Stifte Set
@@ -786,10 +769,7 @@ gid://shopify/Product/15445804941697	CHF 25.66	1 Varianten	Make-up Pinsel 0622
 gid://shopify/Product/15445816476033	CHF 22.11	1 Varianten	Fruchtiges Apfelparfum für Sie & Ihn
 gid://shopify/Product/15445827223937	CHF 22.11	1 Varianten	Sandelholz Parfum für Herren
 gid://shopify/Product/15445831057793	CHF 17.72	1 Varianten	Star Glitter Make-up Stick 15g
-gid://shopify/Product/15445833449857	cj-ohne-antwort
-gid://shopify/Product/15445833613697	cj-ohne-antwort
 gid://shopify/Product/15445833646465	CHF 22.20	1 Varianten	Xipu Floral Damenparfum (100ml)
-gid://shopify/Product/15445833744769	cj-ohne-antwort
 gid://shopify/Product/15445833875841	CHF 22.29	1 Varianten	Wasserfester Lippenstift & Lipliner-Set
 gid://shopify/Product/15445834006913	CHF 22.11	1 Varianten	Unisex Eau de Parfum mit Blüten- & Fruchtduft
 gid://shopify/Product/15445834039681	CHF 22.11	1 Varianten	Eau de Toilette Orange Wood Tone (100ml)
@@ -799,32 +779,25 @@ gid://shopify/Product/15445834465665	CHF 17.72	1 Varianten	Glitzer Make-up Stick
 gid://shopify/Product/15445834498433	CHF 22.11	1 Varianten	Wild Man Sandalwood Eau de Parfum
 gid://shopify/Product/15445834531201	CHF 22.20	1 Varianten	Elegantes, blumiges Eau de Parfum (100ml)
 gid://shopify/Product/15445834629505	CHF 17.19	1 Varianten	Peel-off Lip Gloss Kakao 3ml
-gid://shopify/Product/15445834727809	cj-ohne-antwort
-gid://shopify/Product/15445834793345	cj-ohne-antwort
 gid://shopify/Product/15446014886273	CHF 34.20	2 Varianten	Antihaft-Milchtopf aus dreischichtigem Edelstahl
 gid://shopify/Product/15446015148417	CHF 138.16	4 Varianten	Manueller Slow Cooker für Schmorgerichte
 gid://shopify/Product/15446015738241	CHF 21.15	2 Varianten	Schneidebrett aus massivem Teakholz
 gid://shopify/Product/15446016065921	CHF 21.32	1 Varianten	4-teiliges Multifunktions-Kochtopf-Set
-gid://shopify/Product/15446016393601	cj-ohne-antwort
 gid://shopify/Product/15446016557441	CHF 17.72	10 Varianten	Edelstahl-Bratpfanne mit Wabenstruktur
 gid://shopify/Product/15446016852353	CHF 36.17	1 Varianten	Pro Diamant Roll-Messerschärfer
-gid://shopify/Product/15446017180033	cj-ohne-antwort
 gid://shopify/Product/15446017933697	CHF 36.42	1 Varianten	Kartoffel-Spiralschneider aus Edelstahl
 gid://shopify/Product/15446018326913	CHF 46.08	6 Varianten	Wokpfanne aus reinem Titan
 gid://shopify/Product/15446018654593	CHF 29.27	4 Varianten	Handgeschmiedeter Wok für authentisches Braten
 gid://shopify/Product/15446019015041	CHF 21.27	1 Varianten	Antihaft-Bratpfannen-Set aus Maifanit
 gid://shopify/Product/15446019408257	CHF 34.65	1 Varianten	Multifunktionaler Mini-Elektrokocher mit Antihaftb
 gid://shopify/Product/15446019801473	CHF 23.91	1 Varianten	Silikon-Abtropfmatte für Geschirr
-gid://shopify/Product/15446020161921	cj-ohne-antwort
 gid://shopify/Product/15446020424065	CHF 63.35	1 Varianten	Elektrischer Fleischwolf mit 5L Edelstahl-Schüssel
 gid://shopify/Product/15446020686209	CHF 42.78	2 Varianten	3er-Set Bambus-Schneidebretter
 gid://shopify/Product/15446021144961	CHF 39.58	1 Varianten	Elektrischer Mini-Hot Pot mit Dampfgarer 1.8L
 gid://shopify/Product/15446021570945	CHF 80.12	1 Varianten	Profi Zitruspresse – Manuell & Effizient
-gid://shopify/Product/15446021833089	cj-ohne-antwort
 gid://shopify/Product/15446022193537	CHF 54.77	1 Varianten	Schneidebrett Lovewood mit Schachbrettmuster
 gid://shopify/Product/15446022619521	CHF 35.77	1 Varianten	Kartoffelpresse mit Hebel – Edelstahl
 gid://shopify/Product/15446022947201	CHF 26.56	1 Varianten	Pancake Dispenser mit Dosierskala
-gid://shopify/Product/15446023274881	cj-ohne-antwort
 gid://shopify/Product/15446023635329	CHF 22.65	1 Varianten	Zitruspresse aus Metall
 gid://shopify/Product/15446023668097	CHF 35.15	1 Varianten	Damast Kochmesser mit Hammerschlag-Finish
 gid://shopify/Product/15446023897473	CHF 25.35	1 Varianten	Fleischzartmacher aus Edelstahl
@@ -875,7 +848,6 @@ gid://shopify/Product/15446072754561	CHF 18.63	1 Varianten	DR Snail Collagen
 gid://shopify/Product/15446073082241	CHF 18.28	1 Varianten	Tunmate Shea Butter 237g
 gid://shopify/Product/15446073377153	CHF 18.68	1 Varianten	EELHOE Hand- und Fusspflegespray
 gid://shopify/Product/15446073737601	CHF 18.95	1 Varianten	Ximonth Nagelpflege-Pflaster
-gid://shopify/Product/15446266315137	cj-ohne-antwort
 gid://shopify/Product/15446266446209	CHF 31.73	2 Varianten	Mechanische Hand Skulptur Controller-Halter
 gid://shopify/Product/15446266675585	CHF 18.92	1 Varianten	Bluetooth Gamecontroller für Android-Smartphones
 gid://shopify/Product/15446266773889	CHF 35.15	1 Varianten	Bluetooth Wireless Gaming Controller
@@ -885,7 +857,6 @@ gid://shopify/Product/15446266872193	CHF 32.61	1 Varianten	Kabelloser Bluetooth 
 gid://shopify/Product/15446266904961	CHF 28.13	4 Varianten	Programmierbarer Bluetooth Game Controller
 gid://shopify/Product/15446266937729	CHF 24.70	3 Varianten	Rocker Iron Head für Gamecontroller
 gid://shopify/Product/15446266970497	CHF 20.25	1 Varianten	Wireless Controller Ladestation mit LED-Anzeige
-gid://shopify/Product/15446267036033	cj-ohne-antwort
 gid://shopify/Product/15446267068801	CHF 23.50	5 Varianten	X3 Game Controller mit Kühlfunktion
 gid://shopify/Product/15446267101569	CHF 44.70	1 Varianten	Kabelloser Elite Gaming Controller
 gid://shopify/Product/15446267134337	CHF 43.21	4 Varianten	Kabellose Gamecontroller-Ladestation
@@ -916,12 +887,10 @@ gid://shopify/Product/15446268379521	CHF 36.44	2 Varianten	Video-Buch mit Hardco
 gid://shopify/Product/15446268412289	CHF 19.63	6 Varianten	Handheld Game TV Spielkonsole
 gid://shopify/Product/15446268477825	CHF 18.25	2 Varianten	Ghost Cat Universal Joystick-Griff
 gid://shopify/Product/15446268510593	CHF 41.09	1 Varianten	HDMI Scanline Generator für Retro-Gaming
-gid://shopify/Product/15446270443905	cj-ohne-antwort
 gid://shopify/Product/15446270542209	CHF 19.33	2 Varianten	2er-Pack unzerstörbares Zeitungs-Hundespielzeug
 gid://shopify/Product/15446270574977	CHF 17.68	1 Varianten	Robustes Baumwoll-Seilspielzeug für Hunde
 gid://shopify/Product/15446270607745	CHF 17.77	1 Varianten	6er-Pack Katzenminze-Spielzeug – Q-Tip-Sticks
 gid://shopify/Product/15446270640513	CHF 19.58	1 Varianten	Weihnachts-Hundespielzeug-Set mit Sound (6-teilig)
-gid://shopify/Product/15446270706049	cj-ohne-antwort
 gid://shopify/Product/15446270738817	CHF 17.48	1 Varianten	Beissfester Zahnungsstick für Haustiere
 gid://shopify/Product/15446270771585	CHF 23.91	1 Varianten	Interaktiver Ball mit Seilen für Hunde
 gid://shopify/Product/15446270804353	CHF 23.26	1 Varianten	Chase Buddy Spielball mit Seilen
@@ -939,7 +908,6 @@ gid://shopify/Product/15446271295873	CHF 25.53	3 Varianten	Interaktiver Rollball
 gid://shopify/Product/15446271328641	CHF 25.53	3 Varianten	Interaktiver rollender Ball für Haustiere
 gid://shopify/Product/15446271492481	CHF 25.39	4 Varianten	Interaktiver Hunde-Spielball aus E-TPU
 gid://shopify/Product/15446271525249	CHF 26.25	5 Varianten	Interaktiver Spielball für Haustiere
-gid://shopify/Product/15446271558017	cj-ohne-antwort
 gid://shopify/Product/15446271623553	CHF 20.02	4 Varianten	Smart Interaktiver Ball für Hunde
 gid://shopify/Product/15446271656321	CHF 17.84	1 Varianten	Farbige Tennisbälle für Hunde
 gid://shopify/Product/15446271689089	CHF 21.38	1 Varianten	Kratzbox aus Holz für Katzen
@@ -970,7 +938,6 @@ gid://shopify/Product/15446273229185	CHF 23.91	1 Varianten	Beckenboden- und Hüf
 gid://shopify/Product/15446273261953	CHF 35.70	1 Varianten	Pedal-Widerstandsband mit 4 Tubes
 gid://shopify/Product/15446273294721	CHF 161.57	1 Varianten	Verstellbare Gewichtsweste für Training
 gid://shopify/Product/15446273393025	CHF 96.99	1 Varianten	Verstellbarer Mini-Stepper für Hände und Füsse
-gid://shopify/Product/15446273622401	cj-ohne-antwort
 gid://shopify/Product/15446273851777	CHF 309.61	1 Varianten	Heimtrainer-Spin-Bike für Indoor-Training
 gid://shopify/Product/15446273884545	CHF 42.18	2 Varianten	Pilates Bar Set mit 6 Widerstandsbändern
 gid://shopify/Product/15446273917313	CHF 55.96	2 Varianten	Rechteckiger Pool für Outdoor & Wildnis
@@ -978,8 +945,6 @@ gid://shopify/Product/15446273950081	CHF 23.99	6 Varianten	Bluetooth Grip Ring H
 gid://shopify/Product/15446274048385	CHF 49.55	1 Varianten	Verstellbarer Speed Arm Trainer für Zuhause
 gid://shopify/Product/15446274638209	CHF 96.46	6 Varianten	Garderobenständer «Baum» – Metall, minimalistisch
 gid://shopify/Product/15446274670977	CHF 17.47	4 Varianten	Handliche Isoliertasche für unterwegs
-gid://shopify/Product/15446274703745	cj-ohne-antwort
-gid://shopify/Product/15446274736513	cj-ohne-antwort
 gid://shopify/Product/15446274802049	CHF 17.37	3 Varianten	Nussbaumfarbenes Massivholz-Tablett
 gid://shopify/Product/15446274834817	CHF 18.39	2 Varianten	Magnetischer Brillenhalter für Sonnenblende
 gid://shopify/Product/15446274867585	CHF 18.59	9 Varianten	Urne für Haustiere
@@ -989,10 +954,7 @@ gid://shopify/Product/15446274965889	CHF 19.51	1 Varianten	Transparente, wasserd
 gid://shopify/Product/15446275031425	CHF 24.92	4 Varianten	Biologisch abbaubare Tierurne für Asche
 gid://shopify/Product/15446275064193	CHF 30.92	4 Varianten	Ausziehbares Schuhregal aus Karbonstahl
 gid://shopify/Product/15446275096961	CHF 20.58	6 Varianten	Farb- und Pigmentstifthalter
-gid://shopify/Product/15446275129729	cj-ohne-antwort
-gid://shopify/Product/15446275162497	cj-ohne-antwort
 gid://shopify/Product/15446275195265	CHF 17.94	4 Varianten	Samt-Armband-Aufbewahrungsbeutel
-gid://shopify/Product/15446275260801	cj-ohne-antwort
 gid://shopify/Product/15446275293569	CHF 26.40	5 Varianten	Schachbrett-Schneidebrett aus Kautschuk- und Ebenh
 gid://shopify/Product/15446275326337	CHF 21.56	1 Varianten	Selbstklebende Leinen-Wandverkleidung
 gid://shopify/Product/15446275359105	CHF 75.47	2 Varianten	Edelstahl-Fritteuse mit Sichtfenster
@@ -1010,8 +972,6 @@ gid://shopify/Product/15446276571521	CHF 17.61	2 Varianten	Panda Handtuch
 gid://shopify/Product/15446276800897	CHF 51.90	1 Varianten	Gärkorb-Set mit Zubehör für Sauerteigbrot
 gid://shopify/Product/15446276997505	CHF 46.05	1 Varianten	Gärkörbchen-Set für Sauerteigbrot, rund, 9 Zoll
 gid://shopify/Product/15446277325185	CHF 87.38	2 Varianten	Grosses Einzelbecken für die Küche
-gid://shopify/Product/15446277357953	cj-ohne-antwort
-gid://shopify/Product/15446277456257	cj-ohne-antwort
 gid://shopify/Product/15446277489025	CHF 20.22	2 Varianten	Schmetterling Badewannenkissen mit Saugnäpfen
 gid://shopify/Product/15446277521793	CHF 17.21	4 Varianten	Wandmontierter WC-Papierhalter aus Aluminium
 gid://shopify/Product/15446277587329	CHF 20.61	3 Varianten	5 Core Plektren-Set, 12 Stück
@@ -1043,7 +1003,6 @@ gid://shopify/Product/15447562420609	CHF 34.11	1 Varianten	Mini-Rakete mit Ferns
 gid://shopify/Product/15447562486145	CHF 28.18	1 Varianten	10er-Pack 12V DC Auto-Ladeadapter für Stirnlampen
 gid://shopify/Product/15447562617217	CHF 30.59	1 Varianten	ZQ-K26 Rotes Doppeltes Elektrisches Gerät
 gid://shopify/Product/15447562715521	CHF 29.55	1 Varianten	AC Wandladegerät für Stirnlampen und Taschenlampen
-gid://shopify/Product/15447562846593	cj-ohne-antwort
 gid://shopify/Product/15447563010433	CHF 39.76	1 Varianten	Doppel-Schnellladegerät für Makita 18V Akkus
 gid://shopify/Product/15447563043201	CHF 55.08	1 Varianten	A19-4.3 Screen – Grau – Dual Battery
 gid://shopify/Product/15447563174273	CHF 33.53	1 Varianten	Multi-Ladegerät für Milwaukee M18 Li-ion Akkus
@@ -1053,13 +1012,11 @@ gid://shopify/Product/15447563534721	CHF 27.98	1 Varianten	Rotes Schaumstoff-Flu
 gid://shopify/Product/15447563633025	CHF 26.93	1 Varianten	7-in-1 Kabelloses Schnellladegerät
 gid://shopify/Product/15447563764097	CHF 27.98	1 Varianten	Blaues Schaumstoff-Flugzeug mit Elektromotor
 gid://shopify/Product/15447563895169	CHF 23.80	20 Varianten	Universal 320W GaN Hochleistungs-Ladegerät
-gid://shopify/Product/15447563993473	cj-ohne-antwort
 gid://shopify/Product/15447564222849	CHF 21.75	2 Varianten	USB-Ladegerät für 18650 Li-ion Akkus
 gid://shopify/Product/15447564321153	CHF 30.59	1 Varianten	ZQ-K26 Blaues Doppelelektrogerät
 gid://shopify/Product/15447564452225	CHF 22.20	2 Varianten	Wiederaufladbare CR123A Li-ion Akkus mit USB-Ladeg
 gid://shopify/Product/15447564550529	CHF 41.41	1 Varianten	X2 Dual-Elektro-Display (2.8 Zoll)
 gid://shopify/Product/15447564714369	CHF 22.76	1 Varianten	E88-E99 Ersatzakku 3er-Set
-gid://shopify/Product/15447564845441	cj-ohne-antwort
 gid://shopify/Product/15447564976513	CHF 22.65	2 Varianten	4er-Pack CR123A Li-Ion Akkus mit USB-Ladegerät
 gid://shopify/Product/15447565205889	CHF 22.20	2 Varianten	4er-Pack 16340 Li-Ion Akkus mit USB-Ladegerät
 gid://shopify/Product/15447565304193	CHF 68.26	3 Varianten	Quadrocopter mit Hindernisvermeidung
@@ -1068,7 +1025,6 @@ gid://shopify/Product/15447565861249	CHF 24.61	9 Varianten	Faltbarer HD-Quadroco
 gid://shopify/Product/15447566320001	CHF 22.20	2 Varianten	USB Li-ion Ladegerät für 3.7V Akkus
 gid://shopify/Product/15447566385537	CHF 37.53	12 Varianten	L106 Pro 8K Drohne mit optischem Fluss
 gid://shopify/Product/15447566549377	CHF 16.90	1 Varianten	Faltbare Drohne mit Hindernisvermeidung
-gid://shopify/Product/15447566582145	cj-ohne-antwort
 gid://shopify/Product/15447566844289	CHF 21.71	1 Varianten	Kabellose Seilwinden-Fernbedienung
 gid://shopify/Product/15447567040897	CHF 22.65	2 Varianten	Li-ion Akku & Ladegerät Set 3000mAh
 gid://shopify/Product/15447567303041	CHF 21.75	2 Varianten	Li-ion Akku & USB-Ladegerät Set 3000mAh
@@ -1089,7 +1045,6 @@ gid://shopify/Product/15447569465729	CHF 73.06	1 Varianten	ELRS 3-in-1 Flugsteue
 gid://shopify/Product/15447569596801	CHF 30.05	1 Varianten	9V Alkaline Batterien, 12er-Pack
 gid://shopify/Product/15447569891713	CHF 49.78	1 Varianten	Dual Gyroskop
 gid://shopify/Product/15447570186625	CHF 26.52	1 Varianten	Körperanalysewaage mit Bluetooth
-gid://shopify/Product/15447570416001	cj-ohne-antwort
 gid://shopify/Product/15447571104129	CHF 19.32	5 Varianten	Wiederaufladbares Batterie-Set Nr. 5 & Nr. 7
 gid://shopify/Product/15447571661185	CHF 17.77	1 Varianten	3D-Druck Mondlicht-Platine, zwei Farben, Touch
 gid://shopify/Product/15447572054401	CHF 20.28	1 Varianten	MK2A Heizbett-Plattform aus Aluminium
@@ -1201,7 +1156,6 @@ gid://shopify/Product/15447598825857	CHF 23.48	9 Varianten	Polka-Dot Halterneck-
 gid://shopify/Product/15447599153537	CHF 24.70	18 Varianten	Gestreiftes Langarm-Kleid mit Reverskragen
 gid://shopify/Product/15447599350145	CHF 20.67	35 Varianten	Elegantes trägerloses A-Linien-Kleid
 gid://shopify/Product/15447599546753	CHF 21.87	21 Varianten	Patchwork Off-Shoulder Maxi-Kleid aus Baumwolle
-gid://shopify/Product/15447599808897	cj-ohne-antwort
 gid://shopify/Product/15447599972737	CHF 25.99	6 Varianten	Voluminöses Mini-Kleid mit Puffärmeln
 gid://shopify/Product/15447600103809	CHF 21.69	9 Varianten	Sommerliches Neckholder-Kleid mit tiefem V-Ausschn
 gid://shopify/Product/15447600365953	CHF 18.01	20 Varianten	Loose-Fit Tunic mit kurzen Ärmeln
@@ -1268,7 +1222,6 @@ gid://shopify/Product/15447614554497	CHF 50.26	3 Varianten	Tier-Print Rucksack m
 gid://shopify/Product/15447614783873	CHF 34.55	1 Varianten	Business-Rucksack mit grosser Kapazität
 gid://shopify/Product/15447615046017	CHF 21.27	4 Varianten	Minimalistische Crossbody Bag für Herren
 gid://shopify/Product/15447615406465	CHF 20.96	6 Varianten	Casual Commuter Umhängetasche
-gid://shopify/Product/15447615668609	cj-ohne-antwort
 gid://shopify/Product/15447615865217	CHF 18.32	4 Varianten	Faltbare, wasserdichte Sport-Brusttasche
 gid://shopify/Product/15447616061825	CHF 23.21	5 Varianten	Freizeit-Umhängetasche
 gid://shopify/Product/15447616323969	CHF 52.31	3 Varianten	Punk Motorrad-Seiten-Taschen
@@ -1393,7 +1346,6 @@ gid://shopify/Product/15447868309889	CHF 22.46	1 Varianten	10-Port Multi-USB Lad
 gid://shopify/Product/15447868440961	CHF 21.71	12 Varianten	50W Multi-Port Ladegerät mit Lüfter
 gid://shopify/Product/15447868670337	CHF 37.39	4 Varianten	Universal USB-Ladegerät für Mobiltelefone
 gid://shopify/Product/15447869587841	CHF 47.65	2 Varianten	Tragbarer Akku-Gürtel mit USB-Display
-gid://shopify/Product/15447869981057	cj-ohne-antwort
 gid://shopify/Product/15447870112129	CHF 26.56	1 Varianten	66W Schnellladegerät Typ B
 gid://shopify/Product/15447870308737	CHF 26.61	1 Varianten	Magnetische Powerbank Weiss
 gid://shopify/Product/15447870538113	CHF 23.10	1 Varianten	4er-Set 18650 Li-ion Akkus, 3000mAh
@@ -1401,12 +1353,10 @@ gid://shopify/Product/15447870800257	CHF 20.53	1 Varianten	8W Solar Faltpanel f�
 gid://shopify/Product/15447871029633	CHF 49.35	1 Varianten	Faltbares 36W Solarpanel für Outdoor
 gid://shopify/Product/15447871226241	CHF 19.79	1 Varianten	Ersatz-Akku für BXM-10 Systemkamera
 gid://shopify/Product/15447871422849	CHF 26.94	6 Varianten	Kleine Powerbank mit Schnellladefunktion
-gid://shopify/Product/15447871652225	cj-ohne-antwort
 gid://shopify/Product/15447871848833	CHF 21.75	1 Varianten	2er-Pack 18650 Li-ion Akkus 3000mAh
 gid://shopify/Product/15447872045441	CHF 25.80	1 Varianten	18650 Li-ion Akku, 3.7V, 3000mAh, 10er-Pack
 gid://shopify/Product/15447872209281	CHF 17.54	5 Varianten	9V Multimeter Li-ion Akku, wiederaufladbar
 gid://shopify/Product/15447872438657	CHF 20.45	1 Varianten	CR1225 Lithium-Knopfzellen 3V, 5 Stück
-gid://shopify/Product/15447872602497	cj-ohne-antwort
 gid://shopify/Product/15447872831873	CHF 18.31	1 Varianten	10er-Pack LR1130 AG10 Alkaline Knopfzellen
 gid://shopify/Product/15447873028481	CHF 18.31	4 Varianten	CR2032 Lithium Knopfzelle 3V
 gid://shopify/Product/15447873159553	CHF 19.98	1 Varianten	Akku für ferngesteuertes UAV 4
@@ -1580,7 +1530,6 @@ gid://shopify/Product/15447905993089	CHF 26.70	1 Varianten	Schwarzer Ledergürte
 gid://shopify/Product/15447906091393	CHF 17.72	14 Varianten	Atmungsaktiver Taillengürtel für Damen
 gid://shopify/Product/15447906189697	CHF 28.56	8 Varianten	Infrarot-Wärmegurt für Taille & Unterleib
 gid://shopify/Product/15447906386305	CHF 26.70	1 Varianten	2-in-1 Wendegürtel für Damen
-gid://shopify/Product/15447906550145	cj-ohne-antwort
 gid://shopify/Product/15447906681217	CHF 20.94	1 Varianten	Taillenkette "Butterfly & Waterdrop"
 gid://shopify/Product/15447906779521	CHF 31.39	1 Varianten	Faltbarer LED-Lichtgurt für die Schönheitspflege
 gid://shopify/Product/15447906910593	CHF 18.35	5 Varianten	Eleganter Ledergürtel mit Metallschnalle A
@@ -1672,7 +1621,6 @@ gid://shopify/Product/15447922213249	CHF 17.02	8 Varianten	Dicke Thermo-Daunen- 
 gid://shopify/Product/15447922344321	CHF 18.01	2 Varianten	UV-Schutz Handschuhe, dünn & lang
 gid://shopify/Product/15447922540929	CHF 17.87	10 Varianten	Dual-Use Colorblock Strickhandschuhe im Maillard-S
 gid://shopify/Product/15447922803073	CHF 26.79	30 Varianten	Warme Lederhandschuhe mit Fleecefutter
-gid://shopify/Product/15447922999681	cj-ohne-antwort
 gid://shopify/Product/15447923196289	CHF 29.18	2 Varianten	Reithandschuhe aus Leder für Damen
 gid://shopify/Product/15447923294593	CHF 17.85	8 Varianten	Warme Strickhandschuhe mit Touchscreen-Funktion
 gid://shopify/Product/15447923491201	CHF 17.04	4 Varianten	Wollmischung Fingerlose Strickhandschuhe
@@ -1796,9 +1744,7 @@ gid://shopify/Product/15447945740673	CHF 17.34	6 Varianten	Quilted Leopard Print
 gid://shopify/Product/15447945871745	CHF 23.22	28 Varianten	Unisex Baseball Cap – Atmungsaktiv & Leicht
 gid://shopify/Product/15447946035585	CHF 17.67	2 Varianten	Kinder Strohhut mit Schleife
 gid://shopify/Product/15447946199425	CHF 17.34	3 Varianten	PU-Leder Schirmmütze im Retro-Stil
-gid://shopify/Product/15447946363265	cj-ohne-antwort
 gid://shopify/Product/15447946527105	CHF 17.92	3 Varianten	PU-Leder Newsboy-Mütze mit Ketten-Details
-gid://shopify/Product/15447946658177	cj-ohne-antwort
 gid://shopify/Product/15447946822017	CHF 17.21	3 Varianten	Japanischer Sonnenhut mit breiter Krempe
 gid://shopify/Product/15447946953089	CHF 16.80	4 Varianten	Distressed NYC Patchwork Baseball Cap
 gid://shopify/Product/15447947116929	CHF 16.92	9 Varianten	Verstellbarer Fischerhut mit breiter Krempe
@@ -2012,19 +1958,7 @@ gid://shopify/Product/15447985881473	CHF 18.02	15 Varianten	Trägertop für den 
 gid://shopify/Product/15447986012545	CHF 17.68	20 Varianten	Tanktop mit integrierten Polstern für Damen
 gid://shopify/Product/15447986176385	CHF 41.80	6 Varianten	Figurbetonendes Tanktop mit U-Ausschnitt
 gid://shopify/Product/15447986405761	CHF 18.92	40 Varianten	Pailletten-Top mit Spaghettiträgern
-gid://shopify/Product/15447986569601	cj-ohne-antwort
-gid://shopify/Product/15447986733441	cj-ohne-antwort
-gid://shopify/Product/15447986831745	cj-ohne-antwort
-gid://shopify/Product/15447986864513	cj-ohne-antwort
-gid://shopify/Product/15447986995585	cj-ohne-antwort
-gid://shopify/Product/15447987224961	cj-ohne-antwort
-gid://shopify/Product/15447987356033	cj-ohne-antwort
-gid://shopify/Product/15447987487105	cj-ohne-antwort
-gid://shopify/Product/15447987650945	cj-ohne-antwort
 gid://shopify/Product/15447987814785	CHF 44.70	2 Varianten	Gerüschtes Neckholder-Top mit V-Ausschnitt
-gid://shopify/Product/15447987945857	cj-ohne-antwort
-gid://shopify/Product/15447988076929	cj-ohne-antwort
-gid://shopify/Product/15447988240769	cj-ohne-antwort
 gid://shopify/Product/15447988568449	CHF 17.13	4 Varianten	Outdoor-Velo- und Laufweste mit Handyfach
 gid://shopify/Product/15447988699521	CHF 18.47	20 Varianten	Rundhals Strickweste für Damen
 gid://shopify/Product/15447988830593	CHF 20.67	3 Varianten	Gefaltete Blumenprint Rüschenbluse mit Bändern
@@ -2048,3 +1982,13 @@ gid://shopify/Product/15447991320961	CHF 21.27	42 Varianten	Softshell-Weste mit 
 gid://shopify/Product/15447991484801	CHF 23.21	4 Varianten	Rundhals Strickweste mit Holzknöpfen
 gid://shopify/Product/15447991648641	CHF 18.64	4 Varianten	Figurbetonte Jeans-Weste mit Rundhals
 gid://shopify/Product/15447991779713	CHF 22.45	24 Varianten	Ärmellose Strickweste für Damen
+gid://shopify/Product/15447991943553	CHF 19.63	3 Varianten	Retro Strickweste mit Knopfleiste
+gid://shopify/Product/15447992074625	CHF 18.02	20 Varianten	Elegantes ärmelloses Top mit Lochstickerei
+gid://shopify/Product/15447992304001	CHF 20.81	40 Varianten	Denim-Weste für Frühling und Sommer
+gid://shopify/Product/15447992467841	CHF 18.95	35 Varianten	Modische Strickweste mit V-Ausschnitt
+gid://shopify/Product/15447992598913	CHF 28.13	36 Varianten	V-Ausschnitt Strickpullover aus Wolle
+gid://shopify/Product/15447992729985	CHF 21.49	9 Varianten	Fleece Cardigan Weste für Damen
+gid://shopify/Product/15447992828289	CHF 20.82	6 Varianten	Retro PU-Weste für Damen
+gid://shopify/Product/15447992992129	CHF 20.37	4 Varianten	Ärmelloses Jeans-Top mit V-Ausschnitt
+gid://shopify/Product/15447993090433	CHF 32.91	16 Varianten	Merino Woll-Cardigan Weste
+gid://shopify/Product/15447993254273	CHF 19.58	30 Varianten	Asymmetrisches ärmelloses Top mit eckigem Ausschni

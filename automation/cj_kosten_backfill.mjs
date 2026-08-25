@@ -178,7 +178,16 @@ async function main() {
         // ⚠️ NICHT quittieren, wenn CJ nur gedrosselt hat — sonst ist das Produkt fuer
         // immer abgehakt, ohne je gefragt worden zu sein.
         if (j.gedrosselt) { ohne++; await sleep(2000); continue; }
-        ohne++; fs.appendFileSync(LEDGER, `${p.id}\tcj-ohne-antwort\n`); await sleep(1200); continue;
+        // ⚠️ 25.08.2026 — Hinter «ohne Antwort» steckte die teuerste Fehlerklasse: Von 54
+        // so quittierten Produkten waren 36 bei CJ ABGEKÜNDIGT («Product has been removed
+        // from shelves», Code 1602002) — aktive Shop-Ware ohne bestellbaren Lieferanten
+        // (#1008-Klasse). Abkündigung wird jetzt EIGENS quittiert, damit der tägliche
+        // Blick ins Ledger sie findet; alles andere bleibt UNQUITTIERT und wird beim
+        // nächsten Lauf erneut gefragt (ein transienter Ausfall ist keine Endstation).
+        if (j.code === 1602002 || /removed from shelves/i.test(String(j.message||''))) {
+          ohne++; fs.appendFileSync(LEDGER, `${p.id}\tcj-abgekuendigt-pruefen\n`); await sleep(1200); continue;
+        }
+        ohne++; await sleep(1200); continue;
       }
       // Die Variantenabfrage liefert eine LISTE, die Produktabfrage ein Objekt.
       const d = Array.isArray(j.data) ? (j.data[0] || {}) : (j.data || {});
