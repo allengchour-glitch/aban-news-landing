@@ -12846,3 +12846,5 @@ gid://shopify/Product/15512243962241	11->0	Atmungsaktiver Mid-Calf Freizeitschuh
 gid://shopify/Product/15512244879745	23->0	Warme, wasserdichte Freizeitschuhe für Herren
 gid://shopify/Product/15512245567873	21->0	Champagnerfarbene Casual-Schuhe aus Nubukleder
 gid://shopify/Product/15512246681985	17->0	Herren Slipper mit wärmendem Futter
+gid://shopify/Product/15412902855041	36->1	Mondstein-Blütenring «Fleur» – zarter Statement-Ring
+gid://shopify/Product/15430408438145	17->1	Herren Sling-Tasche «Ranger» · Crazy-Horse-Echtleder
