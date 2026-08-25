@@ -2191,3 +2191,9 @@ einen älteren Disk-Snapshot. **Gepushtes überlebt, alles Lokale fällt zurück
     wiederbelebt, Zombie-Ledger-Klasse); (3) der merge-basierte Autocommitter übersteht das
     Muster sauber — sein fetch+merge vor dem Push hat nichts Neueres überschrieben.
 Erkennungszeichen im Keepalive: CJ-Zahl FÄLLT und der Push meldet non-fast-forward.
+
+## ⏱️ Keepalive ausgedünnt (User-Ja, 25.08.2026)
+Zwei Stunden-Routinen feuerten versetzt = Session-Wake alle ~20–40 Min. Die durable Routine
+`trig_01DBsWkRtnrmimnU4sbXGTBQ` läuft jetzt **alle 2 h** (:14), die Umgebungs-Routine
+`trig_01Uy3zVefXbzCZn9Dr2qvkwh` bleibt stündlich — spart ~30 % Routine-Turns, das
+idempotente `engine_keepalive.sh` deckt weiterhin alles ab.
