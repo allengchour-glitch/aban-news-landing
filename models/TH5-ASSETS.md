@@ -2058,6 +2058,50 @@ viel gerade da ist, schwankt von Lauf zu Lauf.
 ---
 
 ---
+
+### Vierte Runde: was auf der **Fahrbahn** steht, findet keine Modellprüfung
+
+Alle bisherigen Prüfungen vergleichen Modelle gegen Modelle. Die Straße ist aber kein Modell,
+sondern eine Fläche — und darauf stand eine Menge. Ein Sweep über alle statischen Meshes gegen
+die echten Fahrbahnbänder brachte **33 Stellen**, davon nach den Korrekturen unten noch 11, und
+von denen sind 3 laufende Tiere und 6 liegen ≤ 0,5 m innerhalb einer Kante.
+
+**Die Halbbreiten aus `STRASSENBAND` sind zu groß für diese Frage.** Dort steht überall 8,0 —
+das ist das *Schutzband* inklusive Gehweg, richtig für `wegVonStrasse`, falsch für „steht das
+im Belag?". Die echten Werte stehen in der Bordstein-Geometrie: **Hauptstraße 8,05** (16 m
+breit, Mitte z = ±58), **Querstraße 5,05** (10 m, Mitte x = ±78), **Ring 4,5** (9 m). Und die
+Bänder sind endlich: Hauptstraße x ±102 (`RL` 204), Querstraße z ±69. Mit ±228 gemessen zählt
+die halbe Landschaft als Straße — 164 statt 86 Funde, fast alles Ufer und Wiese.
+
+**Bewegliches vorher ausschließen.** `verkehr`, `busRec`, `fussg`, `npcs`, `sims`, `polizei` —
+ohne diese Liste sind zwei Drittel der Funde fahrende Autos, die dort hingehören. Rehe und
+Hasen laufen ebenfalls über die Straße; die bleiben als Rauschen stehen.
+
+**Kronen dürfen drüber.** Für die Frage „passt hier eine Parktasche hin?" zählt nur, was in die
+Höhe eines Autos hineinragt: `bb.min.y > 2.0` aussortieren. Ohne diesen Filter meldet der Streifen
+z = 68 auf ganzer Länge „belegt" (Allee-Kronen) und man verschiebt endlos im Kreis.
+
+Gefunden und behoben:
+
+| Was | Stand auf | Ursache |
+|---|---|---|
+| **16 Ampelmasten** | 1,75 m im Hauptstraßen-Belag | ein Versatz 6,3 für **beide** Achsen. Passt zur 10-m-Querstraße, nicht zur 16-m-Hauptstraße. Jetzt quer 6,1 / längs 9,1 |
+| **9 Laternen** | 0,65 m im Belag bzw. 3 m in der Querstraße | Versatz 4,6 stammte aus der 10-m-Zeit; die äußeren bei x = ±75 lagen in der Zufahrt |
+| **Lampionschnur des Stadtfests** | quer über die Kreuzung (−78\|58) | **der See ist umgezogen, das Fest nicht.** Der See lag bei (−90\|80), liegt jetzt als Seepark bei (0\|146) — die Masten standen weiter am alten Ufer, das inzwischen Fahrbahn ist |
+| **Bahnschranke Nord** | im Ring-Belag (z 115,2) | zwischen Gleis (z 112) und Ringkante (113,5) sind 1,5 m; auf dieser Seite gehört die Schranke **vor** die Einmündung (124,5) |
+| **Parktasche Nord + Lieferwagen** | Tasche bis auf die Mittellinie der Zufahrt, Wagen 0,45 m im Belag | Tasche ist 16 m breit und stand auf x = 70, also 54…78 |
+| **Ufersteine** | zufällig auf der Ringstraße | `ux = -118 + random*196` würfelt quer über alle Straßen — und bei **jedem Laden woanders** |
+
+Die letzte Zeile ist die unangenehmste Sorte: ein Fehler, der sich beim Nachschauen wegwürfelt.
+`Math.random()` in einer Platzierung heißt, dass die Messung ihn nur manchmal sieht.
+
+**Wo der neue Ort herkommt, ist Teil der Korrektur.** Die Parktasche nicht „irgendwo weiter
+links" hinsetzen: den Streifen x = −100…100 bei z = 68 durchmessen, Kronen ausgenommen — genau
+**x = 93…100** ist frei, überall sonst steht der Lattenzaun der Vorgärten bei z ≈ 67,3 in der
+Tasche. Der erste Versuch (x = 61) war messbar besser als vorher und trotzdem falsch.
+
+---
+
 ## 🎡 Freizeitpark-Quartier in `traumhaus.html` — fertiger Einbau
 
 **Das Quartier gibt es schon** (`viertel({name:"Freizeitpark", x:-190, z:158, w:170, d:92 …})`,
