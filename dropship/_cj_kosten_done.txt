@@ -2069,3 +2069,4 @@ gid://shopify/Product/15448008655233	CHF 18.77	24 Varianten	Bedrucktes Kurzarm-T
 gid://shopify/Product/15448008786305	CHF 20.10	30 Varianten	Elegantes Kurzarm-Top mit V-Ausschnitt und Spitze
 gid://shopify/Product/15448008884609	CHF 19.77	1 Varianten	Floraler Spitzen-Cardigan für den Strand
 gid://shopify/Product/15448009048449	CHF 20.09	30 Varianten	Fransen T-Shirt mit Rundhals und Halbarm
+gid://shopify/Product/15448009212289	CHF 26.25	4 Varianten	T-Shirt "To God Be The Glory" Goldprint

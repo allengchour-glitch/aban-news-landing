@@ -12842,3 +12842,4 @@ gid://shopify/Product/15512183636353	32->0	Antirutsch-Matte für Uhrenreparature
 gid://shopify/Product/15512184586625	9->0	Alkoholmeter-Set für Selbstgebranntes
 gid://shopify/Product/15512185766273	29->0	Spatz Silikonform für Kerzen und Gips
 gid://shopify/Product/15512243601793	146->1	Machinelike Gold Herrenarmband mit Mesh-Design
+gid://shopify/Product/15512243962241	11->0	Atmungsaktiver Mid-Calf Freizeitschuh für Herren
