@@ -8101,6 +8101,11 @@ var ACH=[
  ["autodieb","🚗","Autodieb","Ein fahrendes Auto geklaut",function(){return (stats.autosGeklaut||0)>=1;}],
  ["fluchtprofi","🏁","Fluchtprofi","Der Polizei entkommen",function(){return (stats.entkommen||0)>=1;}],
  ["umlackierer","🎨","Umlackierer","Auto in der Einfahrt versteckt (Fahndung getilgt)",function(){return (stats.lackiert||0)>=1;}],
+ /* ⚠️ Die beiden Aufgaben, die es NUR zu zweit gibt, hatten als einzige keinen
+    Erfolg — obwohl selbst das Verstecken einen hat. Ihre Zaehler `stats.coups` und
+    `stats.sperrgut` wurden hochgezaehlt und nirgends gelesen: tote Zahlen. */
+ ["tresorknacker","🏦","Tresorknacker","Einen Bank-Coup zu zweit geschafft",function(){return (stats.coups||0)>=1;}],
+ ["schwerlast","📦","Schwerlast","3× Sperrgut zu zweit getragen",function(){return (stats.sperrgut||0)>=3;}],
  ["reich","🤑","Wohlhabend","10.000 $ besessen",function(){return geld>=10000;}],
  /* 🏅 Die Wohnstufen sind der rote Faden des Spiels — sie gehoeren in die Erfolge,
     sonst ist der Aufstieg nach der Meldung wieder unsichtbar. */
@@ -8766,6 +8771,7 @@ function onNetMsg(m){
   else if(m.t==="emote")onEmote(m.si,m.k);
   else if(m.t==="ping")onPing(m.x,m.z);
   else if(m.t==="tragReq"&&mpHost){if(!TRAGM)startTrag();}          /* Gast bittet, Host armiert */
+  else if(m.t==="tragStop"&&mpHost){if(TRAGM)tragEnde(false);}      /* Gast bittet um Abbruch */
   else if(m.t==="trag"){if(m.on){if(!mpHost)tragArm(m.x,m.z);}else{if(TRAGM){scene.remove(TRAGM.g);scene.remove(TRAGM.ring);TRAGM=null;
     var th=document.getElementById("tragHud");if(th)th.style.display="none";}
     if(m.ok)hint("📦 Geschafft! Das Sperrgut steht.");}}
@@ -9008,7 +9014,14 @@ function tragArm(x,z){                                  /* auf beiden Seiten ide
   TRAGM.g.position.set(x,0,z);scene.add(TRAGM.g);scene.add(TRAGM.ring);
   document.getElementById("tragHud").style.display="block";}
 function startTrag(){
-  if(TRAGM){tragEnde(false);return;}                    /* Knopf = Abbruch */
+  if(TRAGM){
+    /* ⚠️ Der Abbruch lief LOKAL. `tragEnde()` schickt seine Nachricht nur, wenn mpHost —
+       drueckte der GAST den Knopf, verschwand seine Kiste, die des Hosts blieb stehen.
+       Und zurueckholen konnte er sie nicht: der Host reagiert auf `tragReq` nur, wenn er
+       selbst KEINE Kiste hat. Der Auftrag steckte damit fest, bis der Host abbrach.
+       Jetzt bittet der Gast, und der Host beendet fuer beide. */
+    if(MPs&&!mpHost){netSend({t:"tragStop"});hint("📦 Abbruch angefragt …");return;}
+    tragEnde(false);return;}                            /* Knopf = Abbruch */
   if(!MPs){hint("🤝 Sperrgut geht nur zu zweit — lade jemanden in deine Runde ein.");return;}
   if(!mpHost){netSend({t:"tragReq"});hint("📦 Anfrage an den Gastgeber …");return;}
   tragArm(TRAG_VON[0],TRAG_VON[1]);
@@ -9550,6 +9563,17 @@ function autoFahr(dt){
     m.position.z=Math.max(-405,Math.min(405,m.position.z));
     m.position.y=(a.homeY||0.01)+Math.abs(Math.sin(performance.now()*0.02))*0.03+carAirY; // Wanken + Sprunghoehe
   }else{carLean*=0.85;m.position.y=(a.homeY||0.01)+carAirY;window._carKmh=Math.round((window._carKmh||0)*0.8);}
+  /* ⚠️ Der KOERPER des Fahrers blieb stehen, wo er eingestiegen ist — nur unsichtbar
+     geschaltet. Fuer den Host faellt das nicht auf, `spielerPos()` nimmt beim Fahren
+     das Auto. Fuer den GAST schon: `updCoup` fragt den Partner ueber
+     `sims[1-meinSi()]`, also ueber genau diesen zurueckgelassenen Koerper. Faehrt der
+     Host zur Bank und startet den Coup, ist fuer ihn `ichDa` wahr (Auto an der Bank),
+     fuer den Gast `duDa` falsch (Koerper am Parkplatz) — der Gast bricht ab, der Host
+     macht weiter. Dasselbe gilt fuer die Minikarte und jede Entfernungsfrage.
+     `aussteigen()` setzt den Koerper ohnehin ans Auto; jetzt ist er die ganze Fahrt
+     ueber dort. Der Zustand "faehrt" haelt zusaetzlich simThink davon ab, den
+     unsichtbaren Koerper von sich aus loslaufen zu lassen. */
+  if(sims[0]){sims[0].x=m.position.x;sims[0].z=m.position.z;sims[0].state="faehrt";}
   // Rampe + Sprungphysik laufen IMMER (auch ohne Lenk-Input — sonst friert der Flug ein)
   var RP=window._rampe;
   if(RP){RP.cd-=dt;
@@ -10497,7 +10521,11 @@ function simEmojiRoh(mesh,txt){
 }
 
 var COUP={phase:0,t:0,beute:0};
-function coupZone(){return window._bankPos||{x:172,z:-20};}
+/* Der Ersatzwert galt noch fuer die Zeit, als die Bank im Viertel "Gewerbe Ost"
+   stehen sollte — dort steht sie seit Charge 50 nicht mehr, und das Viertel selbst
+   ist inzwischen nach (212|0) gewandert. Greift der Ersatz (Modell nicht geladen),
+   zeigte der Coup damit auf freies Feld. Jetzt auf den echten Bauplatz der Bank. */
+function coupZone(){return window._bankPos||{x:-66,z:-137};}
 function coupFluchtZone(){return {x:25,z:97};}                  /* Bahnhofs-Parkplatz (vergroessert) */
 function coupBtnUpd(){
   var b=document.getElementById("coupBtn");if(!b)return;

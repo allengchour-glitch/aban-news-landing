@@ -103,6 +103,12 @@
   der Magnet als häufigster Vorschlag. Was nichts mehr bewirkt, gehört vor dem Ziehen
   aus dem Topf gefiltert.
 
+- **`pgrep -f <muster>` findet die eigene Warteschleife.** `until ! pgrep -f th-koop.mjs;
+  do sleep 60; done` endet nie: die Bash-Zeile der Schleife enthält das Muster selbst und
+  matcht mit. Der Lauf war längst fertig, die Schleife lief weiter. Entweder auf den
+  Programmpfad ankern (`pgrep -f '^/opt/node22/bin/node .*th-koop'` — die Bash-Zeile
+  beginnt mit `/bin/bash` und fällt raus) oder auf die Prozess-ID des Laufs warten.
+
 ## ⚠️⚠️ TEURE LEHRE: Workflow-Output im geteilten Working-Tree NICHT verwerfen (2026-07-11)
 - Der grosse Lebenspfad-Workflow (w80x0609d, 25 Agenten, 7 Batches) lief ~2,5 h im Hintergrund und
   schrieb seine Fixes UNCOMMITTET in lebenspfad.html. Ich hielt das fuer eine fremde Parallel-Session
