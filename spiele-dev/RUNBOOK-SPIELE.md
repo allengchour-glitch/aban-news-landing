@@ -86,6 +86,23 @@
   „ist dran" brauchen ein dunkles Pill-Backdrop (`rgba(38,52,72,.42)` + Text-Schatten),
   sonst weiß-auf-hell unlesbar (Gemini-Vision-Befund 2026-07-11).
 
+- **Stations-Spiele leiten beim Direktbesuch um.** `neon-flug.html` (und die anderen
+  Fusion-Stationen) prüfen `window.parent===window && !/[?&]station=1/` und ersetzen die
+  Seite dann durch `neon-wildnis.html`. Eine Sonde lädt also eine ganz andere Seite,
+  findet ihren Hook nicht — und meldet **keinen** Fehler, weil nichts abstürzt. Beim
+  Testen immer **`?station=1`** anhängen.
+- **`arr.sort(function(){return Math.random()-0.5;})` ist kein Mischen.** Ein
+  Zufallsvergleich in `sort()` liefert keine gleichverteilte Permutation. Gemessen in
+  `neon-flug.html` über 300.000 Upgrade-Angebote: „🧲 Magnet" **51,20 %**,
+  „🌊 Flow-Meister" **33,93 %** — bei sieben Upgrades auf drei Plätzen müssten es je
+  42,9 % sein. Fisher-Yates liefert 42,78…42,96 %. Derselbe Fehler steckte in den
+  Traumhaus-Lieferzielen. Wer *ein* Element will, zieht einen Index; wer mischt, nimmt
+  Fisher-Yates.
+- **Aufgebrauchte Upgrades weiter anbieten.** `magnet` ist ein Schalter, `dash_cd` ist
+  bei 0,012 gedeckelt — beide konnten als Blindgänger im Angebot stehen, ausgerechnet
+  der Magnet als häufigster Vorschlag. Was nichts mehr bewirkt, gehört vor dem Ziehen
+  aus dem Topf gefiltert.
+
 ## ⚠️⚠️ TEURE LEHRE: Workflow-Output im geteilten Working-Tree NICHT verwerfen (2026-07-11)
 - Der grosse Lebenspfad-Workflow (w80x0609d, 25 Agenten, 7 Batches) lief ~2,5 h im Hintergrund und
   schrieb seine Fixes UNCOMMITTET in lebenspfad.html. Ich hielt das fuer eine fremde Parallel-Session
