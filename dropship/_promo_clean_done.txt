@@ -23688,3 +23688,4 @@ gid://shopify/Product/15515088060801	bereinigt
 gid://shopify/Product/15515088290177	bereinigt
 gid://shopify/Product/15515088880001	bereinigt
 gid://shopify/Product/15515089207681	bereinigt
+gid://shopify/Product/15515200881025	bereinigt
