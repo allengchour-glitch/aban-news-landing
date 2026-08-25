@@ -44,7 +44,10 @@ HEIKEL = re.compile(
     r'shisha|wasserpfeife|bong\b|vape|e-?zigarette|tabak|zigarre|grinder\b|cbd\b', re.I)
 CODE = re.compile(r'\b[A-Z]{2,}\d{3,}\b|\b[A-Z0-9]{8,}\b|\bUS Size\b|\bYards\b|Generation \d')
 SPERR = {"nicht-bewerben", "nur-onlineshop", "waffengesetz-verboten", "medizinprodukt-pruefen",
-         "18plus", "raucher", "erotik", "kostuem", "kostüm", "refurbished"}
+         "18plus", "raucher", "erotik", "kostuem", "kostüm", "refurbished",
+         # 25.08.2026: Marken-/Lizenzrisiko ist ein GEWOLLTER Google-Ausschluss (NYX-Palette,
+         # Marley-Wandteppich) — ohne diese Tags haette der Schliesser sie wieder publiziert.
+         "marken-pruefen", "lizenz-risiko", "tierschutz-pruefen"}
 KLINGE = re.compile(r"\b(messer|klinge\w*|dolch|machete|axt|beil|schwert|katana)", re.I)
 KLINGE_AUSN = re.compile(r"jeans|kleid|hose|shirt|hoodie|wasch|deko|figur|anhänger|"
                          r"halskette|ohrring|spielzeug|plüsch|kostüm", re.I)
