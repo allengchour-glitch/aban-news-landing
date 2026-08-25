@@ -42,6 +42,14 @@
 - **⚠️ Sonden sind Template-Literale:** Backticks in KOMMENTAREN innerhalb der Sonde
   beenden das Literal — SyntaxError weit weg von der eigentlichen Stelle.
 
+## 🔢 Anzeigetafel zeigt den Spielstand live (2026-08-24)
+- Grep-Anker: `var ANZEIGE=`, `function anzeigeUpd`
+- Canvas-Display (3,6 x 1,35 m) haengt 5 cm vor der GEMESSENEN Front des
+  th44_spielstand (x 50,35…55,65, Paneel um z 179,5, Front zur kleinen z-Seite),
+  rotY pi. Neu gezeichnet NUR bei Torereignissen (tor() auf dem Host, m.t==="tor"
+  beim Gast) — ein Zeichenaufruf, sonst keine Kosten.
+- Im Bild belegt: nach erzwungenem Tor steht „0 : 1" lesbar auf der Tafel.
+
 ## ⚽ Fussball auf dem Sportplatz — das Koop-Spielzeug (2026-08-24)
 - Grep-Anker: `var BALL=`, `function updBall`, `function tor(`, `m.t==="ball"`, `m.t==="tor"`
 - **Mechanik:** hineinlaufen schiesst (Richtung Spieler→Ball, 7,5 m/s), Reibung, Abprall an
