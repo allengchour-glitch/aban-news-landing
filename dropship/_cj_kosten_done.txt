@@ -2112,3 +2112,10 @@ gid://shopify/Product/15448040735105	CHF 21.71	3 Varianten	Kurz geschnittene Lan
 gid://shopify/Product/15448040898945	CHF 21.87	2 Varianten	Chiffon-Bluse mit 3D-Blumen und Perlen
 gid://shopify/Product/15448041062785	CHF 19.63	32 Varianten	Sommerliches Langarmshirt mit 3D-Print
 gid://shopify/Product/15448041193857	CHF 26.93	3 Varianten	Elegantes Kurzarm-Strickshirt mit Rundhals
+gid://shopify/Product/15448041259393	CHF 18.32	3 Varianten	Kurzarm-Stricktop mit Rundhalsausschnitt
+gid://shopify/Product/15448041423233	CHF 17.38	4 Varianten	Graues Strick-T-Shirt mit Bindedetail
+gid://shopify/Product/15448041619841	CHF 25.92	3 Varianten	Bodycon Camisole mit Spitze
+gid://shopify/Product/15448041783681	CHF 17.36	4 Varianten	Fransen-Weste aus Chenille
+gid://shopify/Product/15448041914753	CHF 66.64	4 Varianten	Kurzarm-Cardigan-Bluse mit kleinem Revers
+gid://shopify/Product/15448042045825	CHF 18.15	10 Varianten	Gestreiftes Kurzarmhemd mit Revers
+gid://shopify/Product/15448042209665	CHF 17.85	4 Varianten	Colorblock Strickpullover mit Prinzessinnenärmeln
