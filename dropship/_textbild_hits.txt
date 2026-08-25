@@ -12869,3 +12869,6 @@ gid://shopify/Product/15449569460609	62->0	Blumen-Kardigan für Damen
 gid://shopify/Product/15449571361153	28->1	Damen Cuff Washed Wide-Leg Crop-Jeans
 gid://shopify/Product/15449596985729	23->0	Personalisierte Magnetkugel-Uhr
 gid://shopify/Product/15454003069313	144->2	Retro-Lederportemonnaie Herren
+gid://shopify/Product/15454078796161	76->0	Mini-Makeup-Pinsel-Set
+gid://shopify/Product/15454106321281	11->0	Schutzhelm aus Polycarbonat
+gid://shopify/Product/15454116938113	14->0	Nordic Tischlampe mit weichem Licht
