@@ -1881,3 +1881,8 @@ gid://shopify/Product/15447959568769	CHF 18.47	22 Varianten	Partnerlook Bikini b
 gid://shopify/Product/15447959699841	CHF 22.32	30 Varianten	Weihnachts-Pullover für Damen
 gid://shopify/Product/15447959863681	CHF 20.71	60 Varianten	Freizeit-Hoodie-Set für Damen
 gid://shopify/Product/15447959994753	CHF 20.36	6 Varianten	Sportliches Fleece-Set mit Schriftzug-Print
+gid://shopify/Product/15447960158593	CHF 22.76	72 Varianten	Kinder-Outfit im chinesischen Stil
+gid://shopify/Product/15447960355201	CHF 20.51	20 Varianten	Sportlicher Patchwork-Trainingsanzug für Damen
+gid://shopify/Product/15447960486273	CHF 21.71	23 Varianten	Weihnachts-Familienoutfits mit Prints
+gid://shopify/Product/15447960682881	CHF 18.02	63 Varianten	Koreanische Familien-Outfits für Eltern und Kinder
+gid://shopify/Product/15447960846721	CHF 26.93	16 Varianten	Eltern-Kind Baumwoll-Set für Herbst
