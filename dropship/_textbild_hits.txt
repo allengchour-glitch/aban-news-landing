@@ -12745,3 +12745,5 @@ gid://shopify/Product/15504178282881	11->0	CD & Schallplatten Halterung Holz
 gid://shopify/Product/15505980064129	17->3	Business-Freizeit Umhängetasche
 gid://shopify/Product/15506109825409	21->0	Repellent Nylon Umhängetasche für Herren
 gid://shopify/Product/15506162516353	21->1	Bubble Letter Armreif personalisierbar
+gid://shopify/Product/15506240504193	61->3	Halsband aus Rindsleder
+gid://shopify/Product/15506241814913	19->0	Sommerliche Sandalen mit eckiger Kappe
