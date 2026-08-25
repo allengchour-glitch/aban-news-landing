@@ -49,10 +49,13 @@
 - **Loesung fuer die rotationssymmetrischen** (Karussell, Kettenkarussell, Teetassen):
   ganze Gruppe um Y drehen, Rate = Fahrt-Bahn (Karussell 3 U/18 s usw.), damit Plattform
   und Fahrgast nicht sichtbar auseinanderlaufen.
-- **⚠️ RIESENRAD/PIRATENSCHIFF BEWUSST AUSGELASSEN:** horizontale Achse bzw. Schwingen —
-  Ganzkoerper-Y-Drehung waere sichtbar falsch, und die Modelle sind flache Mesh-Suppen
-  ohne benannten Rotor (gemessen). Wer das will, muss die Rotor-Meshes per Heuristik
-  (Achsnaehe + Hoehe) in eine Untergruppe heben.
+- **RIESENRAD DREHT JETZT AUCH** (`riesenradRotor`): der Rotor wurde aus dem Modell
+  HERAUSGEMESSEN — Radebene bei |dz| < 1,8 um die Achse (Hoehe 14,2), Beine/Streben bei
+  dz ±3,1, Achszylinder laenger 2,5 in z. 402 Meshes per `attach()` in eine SZENEN-Gruppe
+  an der Weltachse gehoben (nicht Kind der Modellgruppe — deren rotY wuerde die Achse
+  verdrehen), Drehung um Welt-Z mit Bahn-Rate (1 U/26 s). Gondeln drehen starr mit und
+  stehen oben kopfueber — im Bild bei rot=PI geprueft: offene Plattenkaesten, nicht
+  ablesbar. **PIRATENSCHIFF bleibt bewusst stehen** (Schwingen, kein trennbarer Pivot).
 - **⚠️ `_bewegt` auf der Gruppe** — sonst friert `_einfrieren()` die Matrix nach 9 s ein
   und die Drehung endet still. Verifiziert: `matrixAutoUpdate` nach 55 s noch aktiv,
   Rotationsdeltas passen zu den Raten.

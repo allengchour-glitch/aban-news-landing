@@ -10408,9 +10408,43 @@ function fahrtAussteigen(){
    ⚠️ `_bewegt` auf der Gruppe, sonst friert _einfrieren() ihre Matrix ein und
    die Drehung endet nach 9 Sekunden still. */
 var _drehRaten={karussell:1.047,kettenkarussell:1.005,teetassen:0.558};
+/* ── 🎡 RIESENRAD: der Rotor wird aus dem Modell HERAUSGEMESSEN ──────────────
+   Das Modell ist eine flache Mesh-Suppe, aber die Vermessung liefert eine
+   saubere Trennung: die Radebene liegt (in WELT-Koordinaten dieser Instanz)
+   bei |dz| < 1,8 um die Achse (Gruppenmitte, Hoehe 14,2) — Kranz, Speichen,
+   Gondelplatten und die Lichterringe, zusammen 392+ Meshes. Beine und
+   Querstreben stehen bei dz ±3,1, die Achszylinder sind laenger als 2,5 in z
+   und rotationssymmetrisch: alles davon bleibt stehen.
+   Der Rotor ist eine SZENEN-Gruppe an der Weltachse (nicht Kind der
+   Modellgruppe — deren rotY wuerde die Achse verdrehen); `attach()` uebernimmt
+   die Meshes unter Erhalt ihrer Welttransformation. Gedreht wird um Welt-Z,
+   mit der Rate der Fahrt-Bahn (1 Umdrehung / 26 s).
+   ⚠️ Die Gondeln drehen STARR mit und stehen oben kopfueber — bei diesem
+   Low-Poly-Modell (offene Plattenkaesten) ist das aus Spielhoehe nicht
+   ablesbar; im Bild geprueft, bevor es blieb. */
+function riesenradRotor(f){
+  var W=f.w;W.updateMatrixWorld(true);
+  var AX=W.position.x,AY=14.2,AZ=W.position.z;
+  var rotor=new THREE.Group();rotor.position.set(AX,AY,AZ);
+  rotor._bewegt=true;rotor.userData.nieAusblenden=true;scene.add(rotor);
+  var kandidaten=[];
+  W.traverse(function(n){
+    if(!n.isMesh||!n.geometry)return;
+    var b=new THREE.Box3().setFromObject(n);
+    if(!isFinite(b.min.x)||b.min.y<0.8)return;
+    var dz=(b.min.z+b.max.z)/2-AZ, sz=b.max.z-b.min.z;
+    if(Math.abs(dz)>1.8||sz>2.5)return;
+    kandidaten.push(n);});
+  for(var i=0;i<kandidaten.length;i++)rotor.attach(kandidaten[i]);
+  f.rotor=rotor;f.rotorN=kandidaten.length;
+}
 function updFahrgeschaefte(dt){
   if(typeof FAHRTEN==="undefined")return;
-  for(var i=0;i<FAHRTEN.length;i++){var f=FAHRTEN[i],r=_drehRaten[f.typ];
+  for(var i=0;i<FAHRTEN.length;i++){var f=FAHRTEN[i];
+    if(f.typ==="riesenrad"&&f.w){
+      if(!f.rotor)riesenradRotor(f);
+      f.rotor.rotation.z+=0.2417*dt;continue;}
+    var r=_drehRaten[f.typ];
     if(!r||!f.w)continue;
     if(!f.w._bewegt){f.w._bewegt=true;}
     f.w.rotation.y+=r*dt;}
