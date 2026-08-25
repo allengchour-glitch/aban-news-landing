@@ -42,6 +42,15 @@
 - **⚠️ Sonden sind Template-Literale:** Backticks in KOMMENTAREN innerhalb der Sonde
   beenden das Literal — SyntaxError weit weg von der eigentlichen Stelle.
 
+## 🏁 Anpfiff: Spielstand-Reset am Mittelkreis (2026-08-25)
+- Grep-Anker: `function anpfiff`, `anpfT`, `m.t==="anpfiff"`
+- Liegt der Ball auf dem Anstosspunkt und stellt sich eine Figur an den MITTELKREIS
+  (|dist−6| < 0,7 — bewusst AUSSERHALB des 1,15-m-Schussradius, sonst kickt man den
+  Ball weg statt anzupfeifen), laeuft ein 2-s-Countdown → Pfiff, Stand 0:0, Tafel neu.
+  Host entscheidet, `{t:"anpfiff"}` an den Gast. Nur aktiv, wenn ein Stand > 0:0 da ist.
+- **⚠️ Testen mit dt-Deckel im Kopf:** 2 s Spielzeit sind im Software-Renderer ~40 s
+  Wanduhr — fuer Proben `BALL.anpfT` direkt hochsetzen.
+
 ## 🔢 Anzeigetafel zeigt den Spielstand live (2026-08-24)
 - Grep-Anker: `var ANZEIGE=`, `function anzeigeUpd`
 - Canvas-Display (3,6 x 1,35 m) haengt 5 cm vor der GEMESSENEN Front des

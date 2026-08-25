@@ -7712,7 +7712,7 @@ var BALL=(function(){
   var m=new THREE.Mesh(new THREE.SphereGeometry(0.42,12,10),
     new THREE.MeshStandardMaterial({map:new THREE.CanvasTexture(cv),roughness:0.55}));
   m.castShadow=true;m._bewegt=true;m.userData.nieAusblenden=true;scene.add(m);
-  return {m:m,x:53,z:155,vx:0,vz:0,cd:0,sendT:0,stand:[0,0],torCd:0,net:null,netV:null,netT:0};
+  return {m:m,x:53,z:155,vx:0,vz:0,cd:0,sendT:0,stand:[0,0],torCd:0,net:null,netV:null,netT:0,anpfT:0};
 })();
 function ballReset(){BALL.x=53;BALL.z=155;BALL.vx=0;BALL.vz=0;}
 /* ── 🔢 ANZEIGETAFEL: der Spielstand steht LIVE auf dem th44_spielstand ───────
@@ -7768,6 +7768,20 @@ function updBall(dt,now){
     var imTor=Math.abs(B.z-CZ9)<TORW;
     if(B.x<X0){if(imTor&&B.torCd<=0)tor(1);else{B.x=X0;B.vx=Math.abs(B.vx)*0.7;}}
     if(B.x>X1){if(imTor&&B.torCd<=0)tor(0);else{B.x=X1;B.vx=-Math.abs(B.vx)*0.7;}}
+    /* 🏁 ANPFIFF: neues Spiel, wie auf einem echten Platz. Liegt der Ball auf
+       dem Anstosspunkt und stellt sich eine Figur an den MITTELKREIS (Radius 6,
+       Toleranz 0,6 — bewusst ausserhalb des 1,15-m-Schussradius, sonst kickt
+       man den Ball weg, statt anzupfeifen), zaehlt zwei Sekunden ein Countdown.
+       Dann: Pfiff, Stand 0:0, Tafel neu. Nur sinnvoll, wenn ueberhaupt ein
+       Stand da ist. */
+    if(B.stand[0]+B.stand[1]>0&&Math.abs(B.x-53)<0.5&&Math.abs(B.z-155)<0.5&&!B.vx&&!B.vz){
+      var amKreis=false;
+      for(var k9=0;k9<sims.length;k9++){var sk=sims[k9];
+        if(sk.mesh.visible&&Math.abs(Math.hypot(sk.x-53,sk.z-155)-6)<0.7){amKreis=true;break;}}
+      if(amKreis){B.anpfT+=dt;
+        if(B.anpfT>=2){anpfiff();}}
+      else B.anpfT=0;
+    }else B.anpfT=0;
     /* Netz: Ball nur senden, wenn er lebt — sonst ist Stille billiger */
     if(MPs&&mpHost){B.sendT-=dt;
       if(B.sendT<=0&&(B.vx||B.vz)){B.sendT=0.25;netFast({t:"ball",x:+B.x.toFixed(2),z:+B.z.toFixed(2)});}}
@@ -7776,6 +7790,13 @@ function updBall(dt,now){
   var hop=sp>4?Math.abs(Math.sin(now*0.012))*0.22*(sp/8):0;
   B.m.position.set(B.x,0.42+hop,B.z);
   B.m.rotation.x+=B.vz*dt*2.4;B.m.rotation.z-=B.vx*dt*2.4;
+}
+function anpfiff(){
+  BALL.stand=[0,0];BALL.anpfT=0;anzeigeUpd();
+  beep(880,.12,"square",.05);setTimeout(function(){beep(880,.12,"square",.05);},180);
+  setTimeout(function(){beep(1175,.22,"square",.05);},360);
+  hint("🏁 Anpfiff — neues Spiel!");
+  if(MPs&&mpHost)netSend({t:"anpfiff"});
 }
 function tor(seite){
   var B=BALL;B.torCd=3;
@@ -8627,6 +8648,8 @@ function onNetMsg(m){
   else if(m.t==="coasterStart"){var C9=window._coaster;if(C9&&!C9.faehrt){C9.faehrt=true;C9.v=5;C9.t=0;C9.runden=0;}}
   else if(m.t==="coaster"&&!mpHost){var C8=window._coaster;if(C8){C8.t=m.tt;C8.v=m.v;C8.faehrt=true;}}
   else if(m.t==="ball"&&!mpHost){netAnnehmen(BALL,{x:m.x,z:m.z},performance.now());}
+  else if(m.t==="anpfiff"&&!mpHost){BALL.stand=[0,0];anzeigeUpd();
+    beep(880,.12,"square",.05);hint("🏁 Anpfiff — neues Spiel!");}
   else if(m.t==="tor"&&!mpHost){BALL.stand=m.st;anzeigeUpd();ballReset();BALL.net=null;BALL.netV=null;
     if(typeof launchFirework==="function")launchFirework(m.tx,155);
     beep(660,.09,"square",.05);hint("⚽ TOOOR! Stand "+m.st[0]+" : "+m.st[1]);}
