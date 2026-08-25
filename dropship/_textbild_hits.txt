@@ -12747,3 +12747,13 @@ gid://shopify/Product/15506109825409	21->0	Repellent Nylon Umhängetasche für H
 gid://shopify/Product/15506162516353	21->1	Bubble Letter Armreif personalisierbar
 gid://shopify/Product/15506240504193	61->3	Halsband aus Rindsleder
 gid://shopify/Product/15506241814913	19->0	Sommerliche Sandalen mit eckiger Kappe
+gid://shopify/Product/15506281070977	17->0	Kabelloser Mini-Zerkleinerer für Knoblauch & mehr
+gid://shopify/Product/15506283364737	25->2	Atmungsaktive, faltbare Haustiertasche
+gid://shopify/Product/15506299191681	130->0	Sandalen mit niedrigem Absatz und eckiger Zehenpartie
+gid://shopify/Product/15506327208321	53->2	Vintage High-Rise Denim Boots
+gid://shopify/Product/15506417615233	12->0	Santa's Magic Touch – DIY Digital Painting Kit
+gid://shopify/Product/15506447171969	62->2	Buntes Häkelnadel-Set für Weiche Keramik
+gid://shopify/Product/15506704892289	100->0	Sommerliches Maxi-Kleid mit V-Ausschnitt und Blumenprint
+gid://shopify/Product/15506706661761	9->1	Wandmontierter Küchenmischer (warm/kalt)
+gid://shopify/Product/15506814173569	8->0	Smarte Keramik-Waagschale für Haustiere
+gid://shopify/Product/15506876400001	107->0	Acryl-Leinwandbild "Landschaft" zum Selbermalen
