@@ -5436,6 +5436,12 @@ setTimeout(function baueGebaeude(){
             var min=bb.min[achse],max=bb.max[achse],breite=max-min;
             if(kante!==null&&min<kante+LUECKE){
               var schub=(kante+LUECKE)-min;
+              /* ⚠️ Kollider MITZIEHEN. freiRaeumen() und entwirren() tun das
+                 laengst (solidsMitziehen), entzerren() nicht — hier blieb an der
+                 alten Stelle eine unsichtbare Wand stehen, waehrend man durch das
+                 sichtbare Haus hindurchlief. Der Nachzieh-Lauf kolliderNachziehen()
+                 hilft nicht: der feuert einmal bei 4 s, entzerren() laeuft bei 14 s. */
+              solidsMitziehen(bb,achse==="x"?schub:0,achse==="z"?schub:0);
               b.w.position[achse]+=schub;window._nachRuecken(b.w);
               max+=schub;}
             kante=max;});
@@ -5448,7 +5454,10 @@ setTimeout(function baueGebaeude(){
             var ik=seite>0?bb.min[quer]-mitte:mitte-bb.max[quer];
             if(ik<innen)noetig=Math.max(noetig,innen-ik);});
           if(noetig>0)reihe.forEach(function(b){
+            var bb3=new THREE.Box3().setFromObject(b.w);
+            solidsMitziehen(bb3,quer==="x"?seite*noetig:0,quer==="z"?seite*noetig:0);
             b.w.position[quer]+=seite*noetig;window._nachRuecken(b.w);});});});
+      gridNeu();                      /* verschobene Kollider ins Raster zurueck */
       window._entzerrt=(window._entzerrt||0)+1;
     }
     /* 🐛 entzerren() lief nur EINMAL bei 14 s. Modelle, die spaeter fertig laden,
@@ -8342,7 +8351,11 @@ function removeFurnAt(gx,gy,ohneGeld){
       /* 🐛 Schwarm-Befund: die Villa-Vorlage kostete 3500, ihre Einzelteile brachten beim
          Abriss aber ~9500 zurueck — beliebig oft wiederholbar. Gestempelte Teile sind mit
          gratis=1 markiert und zahlen nichts zurueck. */
-      if(!ohneGeld&&!f.gratis){geld+=Math.round(f.def.cost*(1+0.6*((f.lv||1)-1))*0.5);geldSend();}
+      /* Gratis-Moebel zahlen nur zurueck, was wirklich hineingesteckt wurde:
+         die Haelfte der bezahlten Aufwertungen (siehe edUp). */
+      if(!ohneGeld){
+        if(f.gratis){if(f.bezahlt){geld+=Math.round(f.bezahlt*0.5);geldSend();}}
+        else{geld+=Math.round(f.def.cost*(1+0.6*((f.lv||1)-1))*0.5);geldSend();}}
       furn.splice(i,1);updHUD();return true;}}
   return false;}
 function furnCells(f){var s=f.def.size||[1,1],w=s[0],d=s[1];
@@ -8437,12 +8450,13 @@ function editVerschiebe(nx,ny){
   furn.splice(_ix,1);
   netSend({t:"del",x:ox,y:oy});
   doPlaceFurn(id,nx,ny,rot,false,undefined,lv0);
-  _restoreLvWachs(furn[furn.length-1],lv0,aw,f9.gratis);
+  _restoreLvWachs(furn[furn.length-1],lv0,aw,f9.gratis,f9.bezahlt);
   editHide();hint("↔️ Umgestellt!");beep(620,.07,"triangle",.05);
   return true;}
-function _restoreLvWachs(rec,lv0,alteWachs,gratis9){ /* 🩹 Schwarm-P1: Verschieben/Drehen loeschte Stufe (Lv2/3→1) und Wachstums-Fortschritt */
+function _restoreLvWachs(rec,lv0,alteWachs,gratis9,bez9){ /* 🩹 Schwarm-P1: Verschieben/Drehen loeschte Stufe (Lv2/3→1) und Wachstums-Fortschritt */
   if(!rec)return;
-  if(gratis9){rec.gratis=1;if(MPs)netSend({t:"furnG",fid:rec.fid});} /* 🩹 Schwarm-4/7: Villa-Moebel blieben sonst nach Umstellen/Drehen verkaufbar — Flag auch zum Partner */
+  if(gratis9){rec.gratis=1;if(MPs)netSend({t:"furnG",fid:rec.fid});}
+  if(bez9)rec.bezahlt=bez9;   /* sonst verfaellt beim Drehen/Verschieben, was fuers Aufwerten bezahlt wurde */ /* 🩹 Schwarm-4/7: Villa-Moebel blieben sonst nach Umstellen/Drehen verkaufbar — Flag auch zum Partner */
   if(lv0&&lv0>1)rec.lv=lv0;
   if(alteWachs!==undefined&&(rec.grow||rec.beet)){rec.wachs=alteWachs;
     var scU=0.06+alteWachs*0.94;
@@ -8457,7 +8471,7 @@ document.getElementById("edRot").onclick=function(){
   if(f9.mesh)scene.remove(f9.mesh);if(f9.plight)scene.remove(f9.plight);
   furn.splice(_ir,1);netSend({t:"del",x:gx,y:gy});
   doPlaceFurn(id,gx,gy,nr,false,undefined,lv0);
-  editSel=furn[furn.length-1];_restoreLvWachs(editSel,lv0,aw,f9.gratis);editShow(editSel);beep(560,.06,"triangle",.04);};
+  editSel=furn[furn.length-1];_restoreLvWachs(editSel,lv0,aw,f9.gratis,f9.bezahlt);editShow(editSel);beep(560,.06,"triangle",.04);};
 document.getElementById("edUp").onclick=function(){
   var f9=editSel;if(!f9)return;
   var lv0=f9.lv||1;
@@ -8470,9 +8484,21 @@ document.getElementById("edUp").onclick=function(){
   if(f9.mesh)scene.remove(f9.mesh);if(f9.plight)scene.remove(f9.plight);
   furn.splice(_iu,1);netSend({t:"del",x:gx,y:gy});
   var alteWachs=f9.wachs;
-  /* 🩹 Schwarm-4: gratis-Flag hier BEWUSST nicht mitnehmen — fuers Aufwerten wurde echtes Geld
-     bezahlt, der spaetere Verkauf ist damit kein Gratis-Exploit mehr. */
+  /* ⚠️ NACHGERECHNET — der Kommentar hier stimmte nicht. Er lautete: "gratis-Flag
+     bewusst nicht mitnehmen, fuers Aufwerten wurde echtes Geld bezahlt, der
+     spaetere Verkauf ist damit kein Gratis-Exploit mehr." Die Zahlen sagen etwas
+     anderes: Aufwerten kostet cost*0,6, der Verkauf einer Stufe-2-Ware zahlt
+     cost*(1+0,6*1)*0,5 = cost*0,8. Pro Moebel, das NIE bezahlt wurde (Villa-
+     Vorlage, gratis=1), bleiben also +0,2*cost haengen — beim Designer-Sofa
+     (cost 1400) sind das 280 $, und die Vorlage stempelt 31 Stueck. Beliebig
+     wiederholbar, weil die Flaeche nach dem Verkauf wieder frei ist.
+     Richtig ist: das Flag BLEIBT, und stattdessen wird gemerkt, was tatsaechlich
+     an Aufwertungen bezahlt wurde — der Verkauf gibt davon die Haelfte zurueck. */
+  var _warGratis=!!f9.gratis, _bezahlt=(f9.bezahlt||0)+kost;
   doPlaceFurn(id,gx,gy,rot,false,undefined,lv0+1);
+  if(furn.length){var _neu=furn[furn.length-1];
+    if(_warGratis)_neu.gratis=1;
+    _neu.bezahlt=_bezahlt;}
   editSel=furn[furn.length-1];
   if(editSel){editSel.lv=lv0+1; // Stufe sicherstellen (auch bei Grow/Beet)
     if(alteWachs!==undefined&&(editSel.grow||editSel.beet)){editSel.wachs=alteWachs; // Fortschritt retten
@@ -8489,7 +8515,7 @@ document.getElementById("edSell").onclick=function(){
   if(removeFurnAt(gx,gy)){netSend({t:"del",x:gx,y:gy});hint("💰 Verkauft (50% zurück)");}};
 document.getElementById("edX").onclick=editHide;
 function snapshot(){return {gw:GW,gh:GH,floors:floors,walls:Object.keys(walls).reduce(function(a,k){a[k]=walls[k].co?{t:walls[k].type,c:walls[k].co}:walls[k].type;return a;},{}),
-  furn:furn.map(function(f){return {id:f.id,x:f.gx,y:f.gy,r:f.rot,fid:f.fid,lv:f.lv||1,w:f.wachs||0,g:f.gratis?1:0};}),
+  furn:furn.map(function(f){return {id:f.id,x:f.gx,y:f.gy,r:f.rot,fid:f.fid,lv:f.lv||1,w:f.wachs||0,g:f.gratis?1:0,b:f.bezahlt||0};}),
   gb:window._gratisBau||null, /* 🩹 Schwarm-4: Gratis-Flags der Villa-Vorlage mitspeichern — sonst zahlte der Abriss nach jedem Neuladen wieder aus (Geld-Duplikation) */au:window.autoRec?{id:window.autoRec.id,x:window.autoRec.gx,y:window.autoRec.gy}:null,hu:haustier?{x:haustier.gx||10,y:haustier.gy||10}:null,qb:questBusy,we:wetter,mo:MODUS,tm:missHeute,sms:missSerie,spf:sprintFertig,tq:teamIdx,tb:teamBase,tbg:teamBasis,im:immo,geld:geld,tag:tag,uhr:uhrzeit,rom:romantik,li:liebe,ve:verlobt,he:verheiratet,sk:skills,st:stats,ac:achDone,qi:questIdx,ki:kinder.map(function(k){return {n:k.name,a:k.alter,b:k.baby};}),
   /* 🐛 Schwarm-Befunde: Diese Werte lagen nur in Laufzeit-Variablen und fehlten im
      Spielstand. Folgen: der Fortschritt der Endlos-Auftraege fiel bei jedem Neuladen
@@ -8521,6 +8547,7 @@ function loadSnapshot(sn){
   (sn.furn||[]).forEach(function(f){applyFurn(f.id,f.x+mx9,f.y+my9,f.r,f.fid,f.lv);
     var rec9=furn[furn.length-1];
     if(rec9&&f.g)rec9.gratis=1;
+    if(rec9&&f.b)rec9.bezahlt=f.b;   /* bezahlte Aufwertungen ueberleben das Neuladen */
     if(rec9&&(rec9.grow||rec9.beet)&&f.w){rec9.wachs=f.w;
       var scL=0.06+f.w*0.94;
       if(rec9.grow&&rec9.krauts)rec9.krauts.forEach(function(kr9,k9){kr9.scale.setScalar(scL*(0.85+(k9%3)*0.1));});
@@ -9423,7 +9450,21 @@ document.getElementById("hornBtn").onclick=function(){if(fahren){beep(340,.18,"s
   npcs.forEach(function(n){if(n.mesh)npcEmoji(n,"😠");});fussg.forEach(function(p){/*erschreckt*/});}};
 // ---- Polizei-Jagd (nach Autoklau) ----
 var polizei=[],wanted=0,wantedEntkomm=0;
-function spielerPos(){return fahren&&driveCar?{x:driveCar.mesh.position.x,z:driveCar.mesh.position.z}:{x:sims[0].x,z:sims[0].z};}
+/* ⚠️ GEMESSEN: hier stand hart `sims[0]` — beim GAST also die Figur des Hosts.
+   Der Rest der Datei richtet sich nach `meinSi()` (Minimap, Ego-Kamera), nur
+   diese Funktion war der Ausreisser, und sie hat 12 Aufrufer. Folgen beim Gast:
+     * updCoup: `me=spielerPos()` und `partner=sims[1-meinSi()]` waren DIESELBE
+       Figur — `ichDa` und `duDa` rechneten dieselbe Zahl, der Gast wurde nie
+       gefragt, ob er selbst an der Bank steht.
+     * die Innenraum-Knoepfe (Laden, Werkstatt, Fahrgeschaeft, Coup) erschienen,
+       wenn der HOST danebenstand, nicht er selbst.
+     * die LOD-Ausblendung zentrierte auf den Host: lief der weg, blendete dem
+       Gast die Welt um die eigene Figur herum aus.
+   Beim Host bleibt alles wie vorher (meinSi() ist dort 0), und fahren/driveCar
+   kann ohnehin nur der Host. */
+function spielerPos(){
+  if(fahren&&driveCar)return {x:driveCar.mesh.position.x,z:driveCar.mesh.position.z};
+  var _s=sims[meinSi()]||sims[0];return {x:_s.x,z:_s.z};}
 function mkPolizeiAuto(schnell){
   var gg=new THREE.Group();
   var korpus=new THREE.Mesh(new THREE.BoxGeometry(3.6,1,1.7),stdMat(schnell?0x1a1a22:0x2a3a6a,0.5));korpus.position.y=0.7;korpus.castShadow=true;gg.add(korpus);
@@ -11078,8 +11119,16 @@ document.getElementById("soloBtn").onclick=function(){
     var _nb=document.getElementById("netBadge");if(_nb)_nb.style.display="none";
     var _lb=document.getElementById("mpLobby");if(_lb)_lb.style.display="none";}
   var sv=null;try{sv=localStorage.getItem(SAVE);}catch(e){}
-  if(sv){try{localStorage.setItem(SAVE+"_bak",sv);}catch(_){} /* 🩹 Schwarm-P1: rollendes Backup — kaputter Save wurde sonst still vom 6s-Autosave überschrieben */
-    try{loadSnapshot(JSON.parse(sv));}catch(e2){alert("⚠️ Spielstand beschädigt — starte frisch. Backup liegt unter th_save1_bak.");}
+  if(sv){
+    /* ⚠️ ERST PRUEFEN, DANN SICHERN. Vorher wurde der ROHSTRING sofort nach
+       th_save1_bak kopiert und erst danach geparst — bei einem beschaedigten
+       Spielstand ueberschrieb also genau der Fehlerfall das letzte GUTE Backup,
+       und der Hinweistext schickte den Spieler zu einer Kopie desselben Schrotts.
+       Das rollende Backup bleibt (Schwarm-P1), nur die Reihenfolge stimmt jetzt. */
+    var _snap=null;try{_snap=JSON.parse(sv);}catch(_p){_snap=null;}
+    if(!_snap){alert("⚠️ Spielstand beschädigt — starte frisch. Das letzte gute Backup liegt unter th_save1_bak.");}
+    else{try{localStorage.setItem(SAVE+"_bak",sv);}catch(_){}
+      try{loadSnapshot(_snap);}catch(e2){alert("⚠️ Spielstand beschädigt — starte frisch. Backup liegt unter th_save1_bak.");}}
     applySaison();rollWetter();startGame();return;}
   /* Frisches Spiel: erst den Modus waehlen (User: „viele mods"). Overlay wird
      per JS gebaut, damit kein HTML-Umbau noetig ist. */
