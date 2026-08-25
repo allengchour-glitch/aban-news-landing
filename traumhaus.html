@@ -8147,7 +8147,12 @@ var GL=THREE.GLTFLoader?new THREE.GLTFLoader():null;
 var MODELS={};
 function loadTH(id,cb){if(MODELS[id]){cb(MODELS[id]);return;}
   if(!GL){cb(null);return;}
-  GL.load("/models/th_"+id+".glb",function(g){
+  /* ⚠️ Der Katalog lud STARR `models/th_<id>.glb`. Damit waren 31 fertige Moebelmodelle
+     aus den Chargen 2 und 11 unerreichbar — sie liegen seit Langem im Repo, und kein
+     Spieler hat sie je gesehen. Ein optionales `datei:` am Katalogeintrag oeffnet sie,
+     ohne einen der 78 bestehenden Namen anzufassen. */
+  var _d9=null;try{var _e9=defOf(id);if(_e9&&_e9.datei)_d9=_e9.datei;}catch(e){}
+  GL.load("/models/"+(_d9||("th_"+id+".glb")),function(g){
     g.scene.traverse(function(n){if(n.isMesh){n.castShadow=true;n.receiveShadow=true;if(n.material)n.material.envMapIntensity=0.4;}});
     MODELS[id]=g.scene;cb(g.scene);},undefined,function(){cb(null);});}
 // use: Bedürfnis-Typ + Pose + Sitz/Liege-Offset (nach Rotation gedreht)
@@ -8194,7 +8199,17 @@ var KATALOG={
   {id:"chinahocker",n:"⭐ China-Hocker",e:"🪑",cost:150,size:[1,1],norm:1,zielH:0.45,use:{need:"hunger",pose:"sit",off:[0,0],dur:5}},
   {id:"boombox",n:"⭐ Ghettoblaster",e:"📻",cost:280,size:[1,1],norm:1,zielH:0.4,use:{need:"spass",pose:"stand",off:[0,1],dur:6}},
   {id:"radio",n:"⭐ Vintage-Radio",e:"📻",cost:220,size:[1,1],norm:1,zielH:0.3,use:{need:"spass",pose:"stand",off:[0,1],dur:5}},
-  {id:"dartscheibe",n:"⭐ Dartscheibe",e:"🎯",cost:180,size:[1,1],norm:1,zielH:0.5,use:{need:"spass",pose:"stand",off:[0,1],dur:7}}],
+  {id:"dartscheibe",n:"⭐ Dartscheibe",e:"🎯",cost:180,size:[1,1],norm:1,zielH:0.5,use:{need:"spass",pose:"stand",off:[0,1],dur:7}},
+  /* 🆕 Charge-11-Modelle: sie lagen seit Langem ungenutzt im Repo, weil loadTH() starr
+     `th_<id>.glb` lud. Masse GEMESSEN aus der geladenen Box, nicht geschaetzt:
+     Bett 1,62 x 1,10 x 2,12 · Sofa 2,13 x 0,82 x 0,90 · Esstisch 1,50 x 0,92 x 1,92.
+     `norm` skaliert auf die Zelle, `zielH` deckelt die Hoehe. */
+  {id:"bett_hotel",n:"⭐ Hotelbett",e:"🛏️",cost:1150,size:[1,2],datei:"th11_bett.glb",norm:1,zielH:1.1,
+   use:{need:"energie",pose:"lie",off:[0,0],dur:14}},
+  {id:"sofa_lounge",n:"⭐ Lounge-Sofa",e:"🛋️",cost:1250,size:[2,1],datei:"th11_sofa.glb",norm:1,zielH:0.85,
+   use:{need:"spass",pose:"sit",off:[0,0],dur:8}},
+  {id:"esstisch",n:"⭐ Esstisch mit Stühlen",e:"🍽️",cost:780,size:[1,1],datei:"th11_esstisch_stuehle.glb",norm:1,zielH:0.95,
+   use:{need:"hunger",pose:"sit",off:[0,0],dur:7}}],
  kueche:[
   {id:"kueche",n:"Küchenzeile",e:"🍳",cost:850,size:[2,1],korr:0.85},
   {id:"herd",n:"Herd",e:"🔥",cost:420,size:[1,1],use:{need:"hunger",pose:"stand",off:[0,1],dur:6}},
@@ -8202,7 +8217,10 @@ var KATALOG={
   {id:"mikrowelle",n:"⭐ Mikrowelle",e:"🍛",cost:280,size:[1,1],norm:1,zielH:0.35,use:{need:"hunger",pose:"stand",off:[0,1],dur:4}},
   {id:"teeservice",n:"⭐ Teeservice",e:"🫖",cost:160,size:[1,1],norm:1,zielH:0.2},
   {id:"messingtopf",n:"⭐ Messingtopf",e:"🍲",cost:140,size:[1,1],norm:1,zielH:0.3},
-  {id:"holzschale",n:"⭐ Holzschale",e:"🥣",cost:120,size:[1,1],norm:1,zielH:0.15}],
+  {id:"holzschale",n:"⭐ Holzschale",e:"🥣",cost:120,size:[1,1],norm:1,zielH:0.15},
+  /* 🆕 gemessen 3,24 x 2,23 x 0,71 — die breiteste Zeile im Katalog, darum [2,1]. */
+  {id:"kuechenzeile_gr",n:"⭐ Große Küchenzeile",e:"🍽️",cost:1450,size:[2,1],datei:"th11_kuechenzeile.glb",norm:1,zielH:2.2,
+   use:{need:"hunger",pose:"stand",off:[0,1],dur:6}}],
  bad:[
   {id:"toilette",n:"Toilette",e:"🚽",cost:260,size:[1,1],use:{need:"hygiene",pose:"sit",off:[0,0],dur:4}},
   {id:"dusche",n:"Dusche",e:"🚿",cost:480,size:[1,1],use:{need:"hygiene",pose:"stand",off:[0,0],dur:6}},
@@ -8244,7 +8262,15 @@ var KATALOG={
  buero:[
   {id:"schreibtisch",n:"Schreibtisch",e:"🖥️",cost:420,size:[1,1],use:{need:"spass",pose:"sit",off:[0,0],dur:7}},
   {id:"laptop",n:"⭐ Laptop",e:"💻",cost:520,size:[1,1],norm:1,zielH:0.25},
-  {id:"schreiblampe",n:"⭐ Schreibtischlampe",e:"💡",cost:160,size:[1,1],norm:1,zielH:0.45,light:1}],
+  {id:"schreiblampe",n:"⭐ Schreibtischlampe",e:"💡",cost:160,size:[1,1],norm:1,zielH:0.45,light:1},
+  /* 🆕 gemessen: Schreibtisch 1,60 x 1,29 x 0,81 · Buerostuhl 0,64 x 1,00 x 0,64 ·
+     Aktenregal 2,02 x 1,82 x 0,90. Das Buero war mit drei Eintraegen die duennste
+     Kategorie im ganzen Katalog. */
+  {id:"schreibtisch_gr",n:"⭐ Chef-Schreibtisch",e:"🗄️",cost:890,size:[1,1],datei:"th11_schreibtisch.glb",norm:1,zielH:1.25,
+   use:{need:"spass",pose:"sit",off:[0,0],dur:8}},
+  {id:"buerostuhl",n:"⭐ Bürostuhl",e:"💺",cost:340,size:[1,1],datei:"th11_buerostuhl.glb",norm:1,zielH:1.0,
+   use:{need:"spass",pose:"sit",off:[0,0],dur:6}},
+  {id:"ladenregal",n:"⭐ Aktenregal",e:"🗃️",cost:460,size:[1,1],datei:"th11_ladenregal.glb",norm:1,zielH:1.8}],
  garten:[
   {id:"auto_kombi",n:"Kombi",e:"🚙",cost:2400,size:[1,2],car:1},
   {id:"auto_flitzer",n:"Flitzer",e:"🏎️",cost:4800,size:[1,2],car:1},

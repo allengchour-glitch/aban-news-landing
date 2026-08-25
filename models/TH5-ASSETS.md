@@ -2206,6 +2206,34 @@ passen. Jetzt `process.env.TH_REPO || <default>`.
 
 ---
 
+
+### Ungenutzte Möbelmodelle — der Katalog konnte sie gar nicht ansprechen
+
+`loadTH(id)` lud **starr** `models/th_<id>.glb`. Damit waren **31 fertige Möbelmodelle**
+aus den Chargen 2 und 11 unerreichbar: sie liegen seit Langem im Repo, und kein Spieler
+hat sie je gesehen. Ein optionales `datei:` am Katalogeintrag öffnet sie, ohne einen der
+78 bestehenden Namen anzufassen.
+
+**Erst messen, dann eintragen.** Alle 27 Kandidaten geladen und ihre Boxen ausgelesen —
+das trennt die zwei Gruppen sauber:
+
+| Gruppe | Maßstab | Meshes | Urteil |
+|---|---|---|---|
+| `th2_*` (19 Möbel) | **Miniaturen** — ein Bett misst 0,57 × 0,37 × 1,13 | 1…10 | hochskaliert zu klobig (das Ecksofa hat **2** Meshes) — nicht übernommen |
+| `th11_*` (12 Stück) | **maßstabsgetreu** — Bett 1,62 × 1,10 × 2,12 | 16…81 | übernommen |
+
+Sieben davon sind jetzt im Katalog: Hotelbett, Lounge-Sofa, Esstisch mit Stühlen (Wohnen),
+große Küchenzeile (Küche), Chef-Schreibtisch, Bürostuhl, Aktenregal (Büro — vorher die mit
+drei Einträgen dünnste Kategorie). Übersprungen wurden Aufzug, Rolltreppe, Treppenlauf und
+Empfangstheke: die gehören in ein Kaufhaus, nicht in ein Wohnhaus.
+
+Nachgemessen nach dem Platzieren: alle sieben sitzen mit Unterkante auf 0 und passen in
+ihre Zellen (`norm` skaliert auf die Zellgröße, `zielH` deckelt die Höhe) — Hotelbett
+1,62 × 1,10 × 2,12 in 1×2, große Küchenzeile 3,20 × 2,20 × 0,70 in 2×1. Keine 404,
+0 JS-Fehler.
+
+---
+
 ## 🎡 Freizeitpark-Quartier in `traumhaus.html` — fertiger Einbau
 
 **Das Quartier gibt es schon** (`viertel({name:"Freizeitpark", x:-190, z:158, w:170, d:92 …})`,
