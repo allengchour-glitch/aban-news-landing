@@ -12677,3 +12677,11 @@ gid://shopify/Product/15501942489473	17->1	Casual Chic Ärmelloses Kleid mit 3D-
 gid://shopify/Product/15502049313153	88->1	Malen nach Zahlen – Paris
 gid://shopify/Product/15502066418049	162->3	Kreuzstich-Set: Europäische Szene fürs Schlafzimmer
 gid://shopify/Product/15502188675457	16->0	Kabelloser 2-in-1 Glätteisen & Lockenstab
+gid://shopify/Product/15502267318657	18->2	Reise-Organizer Set (7-teilig)
+gid://shopify/Product/15502303953281	42->0	Glitzernde Schuhe mit Schleife
+gid://shopify/Product/15502306673025	82->0	Halskühlgurt für Sport & Freizeit
+gid://shopify/Product/15502391804289	14->0	Faltbarer Teleskop-Ventilator mit Powerbank
+gid://shopify/Product/15502484341121	194->3	5D Diamond Painting Schmetterling
+gid://shopify/Product/15502591066497	52->0	Digitales Thermo-Hygrometer für Innenräume
+gid://shopify/Product/15502601978241	31->0	Herren Martin Boots Mid-Top
+gid://shopify/Product/15502606467457	29->0	Laptop-Umhängetasche aus weichem PU-Leder
