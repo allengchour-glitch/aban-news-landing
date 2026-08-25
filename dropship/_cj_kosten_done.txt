@@ -2070,3 +2070,6 @@ gid://shopify/Product/15448008786305	CHF 20.10	30 Varianten	Elegantes Kurzarm-To
 gid://shopify/Product/15448008884609	CHF 19.77	1 Varianten	Floraler Spitzen-Cardigan für den Strand
 gid://shopify/Product/15448009048449	CHF 20.09	30 Varianten	Fransen T-Shirt mit Rundhals und Halbarm
 gid://shopify/Product/15448009212289	CHF 26.25	4 Varianten	T-Shirt "To God Be The Glory" Goldprint
+gid://shopify/Product/15448009343361	CHF 19.92	3 Varianten	Figurbetontes Off-Shoulder Top mit Metall-Details
+gid://shopify/Product/15448009507201	CHF 21.87	4 Varianten	Kurzes Slim-fit Bandeau-Top für Damen
+gid://shopify/Product/15448009703809	CHF 17.85	9 Varianten	V-Neck T-Shirt mit Blumenprint
