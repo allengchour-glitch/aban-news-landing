@@ -1418,3 +1418,15 @@ gid://shopify/Product/15448504336769	zugeordnet	42	Unifarbener Kapuzenpullover f
 gid://shopify/Product/15448080679297	zugeordnet	6	Elegantes Spitzen-Langarmshirt mit Puffärmeln
 gid://shopify/Product/15448103780737	zugeordnet	20	Langarm-Shirt für Frühling und Sommer
 gid://shopify/Product/15448106107265	zugeordnet	60	Pullover mit Kettendetail und Rundhalsausschnitt
+gid://shopify/Product/15448112038273	zugeordnet	20	Gerippter Langarm-Jumpsuit für Damen
+gid://shopify/Product/15448507416961	zugeordnet	30	Kapuzen-Sweatshirt mit Bauchtasche für Haustiere
+gid://shopify/Product/15448507974017	zugeordnet	20	Gemütlicher Hoodie mit Rundhals für Damen
+gid://shopify/Product/15448508662145	bild-urls-tot
+gid://shopify/Product/15448508727681	zugeordnet	6	Gestreifter Cardigan Hoodie für Damen
+gid://shopify/Product/15448508760449	zugeordnet	36	Kuscheliger Flanell-Hoodie für Damen
+gid://shopify/Product/15448508793217	zugeordnet	35	Flanell Hoodie für Damen
+gid://shopify/Product/15448508858753	zugeordnet	8	Gestreifter Business Casual Hoodie für Damen
+gid://shopify/Product/15448508891521	bild-urls-tot
+gid://shopify/Product/15448509022593	zugeordnet	12	Kapuzenpullover Casual Loose Fit
+gid://shopify/Product/15448509153665	zugeordnet	24	Samt-Kapuzenpullover für Damen und Herren
+gid://shopify/Product/15448509383041	zugeordnet	98	Gefüttertes Kapuzen-Sweatshirt für Damen – Black-Hoodie
