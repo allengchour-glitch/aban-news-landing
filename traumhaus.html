@@ -1831,6 +1831,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
      Modell bleibt sichtbar stehen. Genau deshalb blieben die Ueberschneidungen trotz
      Entzerrung bestehen. Jede spaete Verschiebung muss die Matrix selbst nachziehen. */
   window._nachRuecken=function(o){o.updateMatrix();o.updateMatrixWorld(true);};
+  window._spaetEinfrieren=_spaetEinfrieren;   /* fuer den lade-gekoppelten zweiten Lauf */
   if(document.readyState==="complete")setTimeout(_spaetEinfrieren,9000);
   else window.addEventListener("load",function(){setTimeout(_spaetEinfrieren,9000);});
   if(document.readyState==="complete")setTimeout(_streuStart,60);
@@ -4158,6 +4159,20 @@ setTimeout(function baueGebaeude(){
     clearTimeout(window._ladeFinalT);
     window._ladeFinalT=setTimeout(function(){
       if(window._freiRaeumen){try{window._freiRaeumen();window._entwirren();}catch(e){}}
+      /* ⚠️ GEMESSEN: `_spaetEinfrieren()` laeuft EINMAL bei 9 s — alles, was danach
+         fertig laedt, behaelt matrixAutoUpdate=true fuer immer. Nach der Wiederbelebung
+         der drei Viertel waren das 456 Objekte mit 14'563 Knoten, deren Weltmatrix in
+         JEDEM Bild neu gerechnet wird: Tennishalle, Eishalle, Basketballplatz,
+         Gewaechshaus, Riesenrad, Doppelhaeuser, Berghuette. Genau die Last, die der
+         Kommentar am ersten Lauf als groesste CPU-Bremse auf dem Handy benennt.
+         Der zweite Lauf haengt an der LETZTEN GLB-Ladung, nicht an einer Uhr, und
+         kommt 4 s nach dem Aufraeumen — sonst friert er Bauten ein, die entwirren()
+         gerade noch verschiebt.
+         ⚠️ `_spaetEinfrieren` ruft zuerst `_bewegtMarkieren()`: alles Animierte muss
+         dort (oder per `_bewegt`/`userData.animiert`) angemeldet sein, sonst steht es
+         ab hier still. Genau das war der Fehler, den Charge #2303 am Freizeitpark
+         behoben hat. Nach jeder neuen Animation hier gegenmessen. */
+      if(window._spaetEinfrieren)setTimeout(window._spaetEinfrieren,4000);
     },2500);
   }
   function bau(file,zielH,x,y,z,rotY,center,cb,ohneSchutz){
@@ -4487,7 +4502,11 @@ setTimeout(function baueGebaeude(){
         var _t9=setInterval(function(){
           var alle=window._goWagen||[];
           alle.forEach(function(q){
-            for(var n9=0;n9<8&&!frei9(q,alle);n9++)q.w.position.z+=q.dir*6;});},2000);
+            var vor9=q.w.position.z;
+            for(var n9=0;n9<8&&!frei9(q,alle);n9++)q.w.position.z+=q.dir*6;
+            /* Nach dem zweiten Einfrier-Lauf ist matrixAutoUpdate aus — eine reine
+               Positionszuweisung waere dann nur noch eine Zahl ohne Bild. */
+            if(q.w.position.z!==vor9&&window._nachRuecken)window._nachRuecken(q.w);});},2000);
         setTimeout(function(){clearInterval(_t9);},95000);})();
       /* Die Stadthaeuser haengen am Ostviertel, ihre Kartenmarke stand aber fest auf
          (172|60) — also 60 m noerdlich des WUNSCH-Orts. Gleicher Versatz, echte Lage. */

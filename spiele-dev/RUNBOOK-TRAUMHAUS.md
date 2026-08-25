@@ -681,6 +681,26 @@ mit künstlichem dt treiben. Genau dafür sind sie exponiert.
   falsche Kommentar ist korrigiert — er hätte fast dazu geführt, die Entscheidung
   rückgängig zu machen, ohne sie zu kennen.
 
+* **`_spaetEinfrieren()` lief nur einmal bei 9 s** — alles, was danach fertig lädt,
+  behält `matrixAutoUpdate = true` für immer. Nach der Wiederbelebung der drei Viertel
+  waren das **456 Objekte mit 14 563 Knoten**, deren Weltmatrix in jedem Bild neu
+  gerechnet wird: Tennishalle, Eishalle, Basketballplatz, Gewächshaus, Riesenrad,
+  Doppelhäuser, Berghütte. Genau die Last, die der Kommentar am ersten Lauf als größte
+  CPU-Bremse auf dem Handy benennt. Der zweite Lauf hängt jetzt an der **letzten
+  GLB-Ladung**, nicht an einer Uhr.
+  ⚠️ Er ruft zuerst `_bewegtMarkieren()`: **alles Animierte muss dort angemeldet sein**,
+  sonst steht es ab da still — genau der Fehler, den #2303 am Freizeitpark behoben hat.
+  Gegenprobe nach der Umstellung: von 16 beweglichen Dingen bewegen sich 14; die zwei
+  Ausnahmen sind erklärt (der Achterbahn-Zug fährt nur mit Fahrgast, der Landbus wartete
+  an der Haltestelle).
+* **Eine Wartezeit sieht im Testbrowser aus wie ein Stillstand.** Der Landbus stand über
+  42 s Wanduhr unbewegt — sein `wartet` zählte in der Zeit von 4,5 auf 2,7. Bei
+  `dt = min(0.05, …)` und ~1 fps dauert eine 6-Sekunden-Pause rund zwei Minuten.
+* **Die Bank steht auf der 240°-Radialstraße** (−66\|−137, also r ≈ 152). Seit die
+  Wendemarke des Landbusses aus der Welt gelesen wird, kehrt er dort bei r = 148 um statt
+  bei 193 — er fährt nicht mehr durch das Gebäude, aber seine Strecke ist 45 m kürzer.
+  Seine Haltestelle (r = 132) bedient er weiter. Offen für eine spätere Runde.
+
 ## 🎯 Sollwerte einer sauberen Szene
 
 | Messwert | Soll |
