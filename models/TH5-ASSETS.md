@@ -2102,6 +2102,71 @@ Tasche. Der erste Versuch (x = 61) war messbar besser als vorher und trotzdem fa
 
 ---
 
+
+### Fünfte Runde: drei ganze Viertel fehlten — und niemand hat es gemerkt
+
+`viertel({...})` legt ein komplettes Quartier an: Bodenplatte, Erschließungsstraße mit
+Trottoir, zwei Bauzeilen, Laternen, Bäume, Kollider. Schlägt der Platztest fehl, gibt es ein
+`console.warn` und `return null` — **kein sichtbarer Hinweis im Spiel.** Gemessen (Wrapper mit
+`userData.datei` durchzählen): von den geplanten Bauten stand **keiner** in der Welt.
+
+| Viertel | fehlende Bauten |
+|---|---|
+| Gewerbe Ost | Parkgarage, Post, Polizeiwache, Apotheke, Garage + 4 Stadthäuser + 4 Fahrzeuge |
+| Sportpark Süd | Schwimmbad, Tennishalle, Fitnessstudio, Eishalle, Basketballplatz, Kletterhalle |
+| Bauernhof | Scheune, Stall, Silo, Gewächshaus, Windrad, Wassertank |
+
+Beim Bauernhof war das im Spiel sichtbar, ohne dass es jemand zugeordnet hätte: **Äcker mit
+Saatreihen, Zaun, Traktor und Heuballen standen da, nur kein einziges Hofgebäude.** Die
+Dekoration wird nämlich außerhalb von `viertel()` gesetzt und ist deshalb nicht mit
+ausgefallen. Dazu zeigten drei Kartenmarken und drei Lieferziele auf leere Wiese.
+
+**Die Ursache ist ein zu grober Test, nicht zu wenig Platz.** `viertelFrei` prüfte das
+BRUTTO-Rechteck (`w × d`) plus 6 m. Die Blocker lagen jedes Mal am äußersten Rand:
+
+* **Bauernhof** (−40\|−196, 170×90): Arztpraxis (−6\|−152) und Bank (−66\|−137) — beide
+  45…59 m nördlich der nächsten Hofstelle. Die Bank hatte eine frühere Charge dort
+  hingesetzt, um den Koop-Coup zu reparieren; **sie hat dabei ein Viertel gelöscht.**
+* **Sportpark Süd** (0\|216, 180×84): zwei 10×3-Kollider auf z = 174 — **1,5 m** in die
+  Bruttokante, 10 m vom nächsten Bauplatz.
+* **Gewerbe Ost** (172\|0): Kirche und zwei Marktreihen — die liegen wirklich im Baustreifen.
+
+Ein Viertel belegt aber nur seine zwei Bauzeilen: längs von `rand` bis `länge − rand`, quer
+`setback ± halbe Gebäudetiefe`. Der Rest ist Bodenplatte, Laternen und Bäume — und Bäume
+räumt `entwirren()` ohnehin beiseite. Geprüft wird darum das **Netto**-Rechteck; passt der
+Wunschort trotzdem nicht, weicht das Viertel in 10-m-Schritten aus, **zuerst längs der eigenen
+Straße**, damit es bei seinen Feldern und seinem Anschluss bleibt. Ergebnis: Bauernhof und
+Sportpark bauen am Wunschort, Gewerbe Ost 40 m weiter östlich.
+
+**Was ein bewegliches Viertel nach sich zieht**, ist die eigentliche Arbeit:
+
+1. Die vier Wagen am Bordstein waren auf `x = 172` hart verdrahtet und hätten 40 m westlich
+   auf freiem Feld geparkt. Sie hängen jetzt an `_go.x/_go.z`.
+2. Kartenmarke und Lieferziel werden am Ende von `viertel()` auf die **tatsächliche** Lage
+   gesetzt. Vorher standen beide fest im Quelltext.
+3. **Zwei Banken.** `th23_bank.glb` gehörte ursprünglich nach Gewerbe Ost, steht seit
+   Charge 50 aber ausgebaut mit Personal und Coup im Südbezirk. Solange das Viertel nicht
+   gebaut wurde, fiel das nicht auf — sobald es baut, gewinnt bei `window._bankPos` die Bank,
+   die zufällig zuletzt fertig lädt, und der Coup läuft womöglich auf die leere. Aus der Liste
+   entfernt.
+4. **Die Seilbahnstation hatte keinen Kollider.** Ein 20 m breites Gebäude, das in *keiner*
+   Freiflächenprüfung vorkommt — der Generator setzte `th37_eckhaus` prompt 2,41 m tief
+   hinein (37 Meshpaare), und die Spielfigur lief hindurch. Größe aus der geladenen Box,
+   nicht geschätzt.
+5. `d` 150 → 180 und `luecke` 12 → 10: die längere Zeile braucht 109,9 m Front plus vier
+   Lücken = 149,9 m, nutzbar waren 122. Drei Häuser fielen mit „passt nicht mehr" hinten
+   runter — auch das sah niemand, weil ohnehin nichts gebaut wurde.
+
+Nachher gemessen: 25 Bauten und Fahrzeuge zusätzlich in der Welt, **0 Überschneidungen** in
+beiden neuen Vierteln (3D, Mesh für Mesh), Marken und Lieferziele auf den echten Koordinaten,
+0 JS-Fehler.
+
+> **Merksatz:** ein `console.warn` ist kein Fehlerbild. Wenn eine Funktion bei Misserfolg
+> stillschweigend nichts baut, muss die Prüfung zählen, was **steht** — nicht, ob der Code
+> gelaufen ist.
+
+---
+
 ## 🎡 Freizeitpark-Quartier in `traumhaus.html` — fertiger Einbau
 
 **Das Quartier gibt es schon** (`viertel({name:"Freizeitpark", x:-190, z:158, w:170, d:92 …})`,
