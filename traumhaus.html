@@ -5442,7 +5442,15 @@ setTimeout(function baueGebaeude(){
        der Hof gewandert, haetten die Gebaeude auf der Wiese und die Aecker allein
        dagestanden. Genau dieser Fall (Deko ohne Bau) war 2298 der sichtbare Befund, nur
        andersherum. */
-    var _bh = viertel({name:"Bauernhof",x:-40,z:-196,w:170,d:90,achse:"x",boden:"kies",
+    /* ⚠️ w 170 -> 120. Nachgerechnet: mit 170 reichte das Netto-Rechteck bis
+       (-105|-167), das ist r = 199 — mitten im Band der Landstrasse, und der Stall
+       stand mit 14 Mesh-Positionen im Belag. Mit 120 liegt die naechste Ecke bei
+       (-80|-167), r = 185: 15 m Luft. Die sechs Bauten passen weiter (laengere Zeile
+       braucht 20+6+6 = 32 m Front plus zwei Luecken = 72 von 80 nutzbaren Metern).
+       Der Hof bleibt damit auf seinem Wunschort — und seine Aecker liegen weiter dort,
+       wo sie immer lagen. Die Kiesflaeche wird kleiner als das Feld drumherum; das ist
+       fuer einen Hof eher richtiger als eine Schotterplatte bis zum Horizont. */
+    var _bh = viertel({name:"Bauernhof",x:-40,z:-196,w:120,d:90,achse:"x",boden:"kies",
       anschluss:[-40,-100],abstand:16,luecke:20,rand:20,
       bauten:[{file:"th18_scheune.glb",h:10,w:20,d:14},
               {file:"th18_stall.glb",h:5.5,w:16,d:11},
