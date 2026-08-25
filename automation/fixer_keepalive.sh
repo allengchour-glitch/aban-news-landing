@@ -358,6 +358,18 @@ while true; do
       echo "$(date -u +%H:%M) tote-links geprüft"
     fi
   fi
+  # BILD-ZU-KLEIN-NACHLAUF, einmal täglich: 642 aktive Produkte hatten am 25.08.2026 KEIN
+  # Bild >=500x500 (Merchant-Vorwarnung «Image too small»). Der Lauf holt CJs Originale nach
+  # (Masse aus dem Dateikopf, nur READY wird uebernommen, FAILED wird geloescht) und quittiert
+  # «kein-grosses-bild-bei-cj» als ehrliche Endstation. Stoppt selbst bei CJ-Code 16900500.
+  BG=/tmp/bild_gross.log
+  if [ -f "$REPO/automation/bild_gross_nachladen.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$BG" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && CAP=150 setsid python3 automation/bild_gross_nachladen.py >> "$BG" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) bild-gross-nachladen gestartet"
+    fi
+  fi
   # LEERE KOLLEKTIONEN, einmal täglich: Am 21.08.2026 waren 14 im Onlineshop veröffentlichte
   # Kollektionen für Besucherinnen komplett leer (0 kaufbare Produkte) und 3 weitere hatten
   # genau eines — darunter die Kampagnenseite `tiktok-viral` und `picknick-strand` mitten in
