@@ -919,3 +919,4 @@ gid://shopify/Product/15510927344001	ok	Reisetasche aus Echtleder für Herren
 gid://shopify/Product/15510970335617	ok	Retro Reisetasche aus Leder für Herren
 gid://shopify/Product/15512183112065	ok	Stativ-Querstange für Kamera & Handy
 gid://shopify/Product/15512272372097	ok	Gusseisen Topf Crèmeweiss
+gid://shopify/Product/15512302780801	ok	Vielseitiger Trolley Rucksack für Geschäftsreisen
