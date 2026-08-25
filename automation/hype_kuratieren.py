@@ -36,14 +36,18 @@ TAG = "hype-jetzt"
 HANDLE = "hype-jetzt"
 LEDGER = "dropship/_hype_verlauf.txt"
 
-QUELLE = "Web-Recherche 23.08.2026 (Trendtrack/CJ/eprolo August-Listen: Beauty-Geräte weiterhin stärkstes Signal, Snail/Serum und Blush-Balms bestätigt, «aesthetic living»/Ordnung bestätigt, Shapewear bestätigt; NEU für den Herbstanfang: Kerzenwärmer & Aroma-Diffusoren, Haustier-Fellpflege, Mini-Beutelverschliesser)"
+QUELLE = "Web-Recherche 25.08.2026 (Trendtrack/eprolo/CJ-Spätaugust: Beauty-Geräte weiterhin stärkstes Signal — NEU dazu Ice Roller, Kopfhaut-Massage, EMS-Gesichtstoner; Snail/Serum, Blush-Balms, «aesthetic living», Kerzenwärmer/Diffusoren bestätigt. Supplements/Olivenöl bewusst NICHT: Lebensmittel-/Heilversprechen-Klasse)"
 THEMEN = {
     # ⚠️ «IPL» ohne Wortgrenze steckt in «L-IPL-iner»: der erste Lauf setzte einen
     # «Peel-Off Lipliner» als Beauty-GERÄT auf die Startseite. Dieselbe Falle wie «rock» in
     # «GT Line ROCK» aus dem Projektgedächtnis — bei Abkürzungen immer \b.
+    # 25.08.: Spätaugust-Listen ergänzen Ice Roller, Kopfhaut-Massage und EMS-GESICHTS-Toner.
+    # ⚠️ «EMS» allein bleibt draussen — EMS-Bauchtrainer ist Fitness (Abgrenzung im
+    # medizin_zweck-Gedächtnis); nur mit Gesichts-Anker. «Scalp» braucht Massage-Anker.
     "Beauty-Gerät": re.compile(
         r'\bIPL\b|Mikrostrom|LED-Maske|Gesichtsreinigungsb[üu]rste|Dermaroller|Gua Sha|'
-        r'Jade Roller|Haarentfernungs', re.I),
+        r'Jade Roller|Haarentfernungs|Ice[- ]?Roller|Eisroller|'
+        r'Kopfhaut[- ]?Massage|Scalp[- ]?Massag|EMS[- ]?(?:Gesicht|Face)|Face[- ]?(?:EMS|Toner)', re.I),
     "Hautpflege-Serum": re.compile(
         r'Schneckencreme|Snail|Serum|Ampullen|Retinol|Hyalurons[äa]ure', re.I),
     "Mini-Beamer": re.compile(r'Mini-?\s?(?:Beamer|Projektor)|Smart Mini Beamer', re.I),
