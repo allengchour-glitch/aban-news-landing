@@ -811,6 +811,23 @@ das schlimmere Übel als eines am Straßenrand — die Reihenfolge stimmt so.
 * **Alle 85 Knöpfe haben einen Handler** (direkt oder über einen Vorfahren). Kein toter
   Bedienknopf.
 
+### 📱 HUD auf dem Handy — geprüft, sauber (2026-08-25)
+
+Handy-Tauglichkeit ist die oberste Design-Regel, also einmal nachgesehen statt vermutet.
+Bei **740×360, 915×412 und 667×375** (Querformat): 9 sichtbare HUD-Elemente, **keine
+Überlappung**, **nichts außerhalb des Bildschirms**. Die zwei gemeldeten Treffer sind
+bauartbedingt — der Erfolgs-Toast parkt bei y = −66 außerhalb und fährt nur zum Anzeigen
+ein, und der Joystick-Knopf liegt naturgemäß in seiner Basis.
+
+**Zwei Messfallen, beide selbst gebaut:**
+* **`offsetParent` ist bei `position: fixed` null.** Wer damit auf Sichtbarkeit filtert,
+  sortiert genau die Elemente aus, um die es geht — der erste Lauf fand *ein* HUD-Element
+  statt neun. Sichtbarkeit über `display` / `visibility` / `opacity` und die tatsächliche
+  Rechteckgröße prüfen.
+* **Im Hochformat zeigt das Spiel „Dreh dein Handy quer!"** und blendet das HUD aus. Ein
+  Messlauf bei 360×740 vermisst also diesen Hinweis, nicht die Bedienoberfläche. Für
+  HUD-Messungen immer Querformat.
+
 ## 🎯 Sollwerte einer sauberen Szene
 
 Stand 2026-08-25, alles nachgemessen. **„Soll 0" stand hier für Werte, die nie 0 waren** —
