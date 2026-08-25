@@ -2234,6 +2234,51 @@ ihre Zellen (`norm` skaliert auf die Zellgröße, `zielH` deckelt die Höhe) —
 
 ---
 
+
+### 📦 Inventur: 185 Welt-Modelle sind im Spiel nirgends erwähnt (2026-08-25)
+
+Alle `models/th*.glb` gegen den Quelltext geprüft (Katalog-Schema `th_<id>.glb`
+herausgerechnet — das ist bis auf `th_frau`, `th_mann`, `th_monstera` vollständig genutzt).
+Übrig bleiben **185 Welt-Modelle**, die kein Code je lädt. Ganze Themensätze:
+
+| Satz | Anzahl | Inhalt |
+|---|---|---|
+| `th14` | 12 | Nachtclub-Innenleben: DJ-Pult, Discokugel, Tanzfläche, Pokertisch, Spielautomat, Neonschild |
+| `th21` | 11 | Baustelle: Betonmischer, Bauzaun, Baucontainer, Bagger, Gerüst, Rohbau |
+| `th15` | 10 | Hafen: Leuchtturm, Kai, Frachtschiff, Containerkran, Fischerhütte, Fähranleger |
+| `th9` | 10 | Großstadt: Krankenhaus, Stadion, Mall, Hotel, Museum, Wolkenkratzer, Wasserturm |
+| `th25` | 9 | Flughafen: Tower, Terminal, Hangar, Landebahn, Flugzeug, Fluggastbrücke |
+| `th10` | 8 | Öffentlich: Bibliothek, Sporthalle, Restaurant, Schule, Rathaus, Kino |
+| `th22` | 8 | Wohnen: Villa, Bungalow, Plattenbau, Altbau-Module, Balkon, Dachterrasse |
+| `th40` | 7 | Fahrzeuge: Postauto, Müllwagen, Kleinbus, Wohnmobil, Pritsche |
+| `th29` | 6 | Winter: Eisbahn, Weihnachtsbude, Christbaum, Rodelhang, Skiliftmast |
+| `th12` | 5 | Nachtleben: Theater, Nachtclub, Bowlingbahn, Spielhalle, Casino |
+| `th24` | 5 | Zoo: Gehege, Voliere, Streichelzoo, Aquarienhaus, Eingang |
+| … | | dazu `th2` (19 Miniaturen, s. o.), `th31` (14 Waffen-Props, bewusst ungenutzt) |
+
+**⚠️ Warum das nicht einfach eingebaut werden kann: die Karte ist voll.** Gemessen in
+dieser Session — ein Viertel mit den fünf `th12`-Bauten bräuchte ein Netto-Rechteck von
+rund **122 × 71 m** (bei Zielhöhe 9 ist allein die Bowlingbahn 49 × 39 m). Der
+Freiflächen-Solver findet für 96 × 180 schon heute nur mit Mühe einen Platz, und die
+Landstraße (r 200) plus Gebirgsgürtel (r 210…290) schließen den Ring nach außen ab.
+
+Gemessene Maße der `th12`-Kandidaten, damit sie niemand neu ermitteln muss:
+
+```
+th12_theater      40,0 x 13,70 x 40,8   970 Meshes
+th12_casino       43,0 x 12,47 x 40,6   576
+th12_bowlingbahn  36,0 x  6,60 x 28,4   268
+th12_nachtclub    30,0 x 10,44 x 25,4   295
+th12_spielhalle   28,0 x  5,72 x 22,4   214
+```
+
+**Wer diese Sätze nutzen will, braucht zuerst Platz** — die Karte vergrößern, ein
+bestehendes Viertel ersetzen, oder die Bauten einzeln als Landmarken setzen (wie die Bank
+im Südbezirk). Ein weiteres Viertel „danebenquetschen" endet an denselben Randbedingungen,
+die in dieser Session viermal gemessen wurden.
+
+---
+
 ## 🎡 Freizeitpark-Quartier in `traumhaus.html` — fertiger Einbau
 
 **Das Quartier gibt es schon** (`viertel({name:"Freizeitpark", x:-190, z:158, w:170, d:92 …})`,
