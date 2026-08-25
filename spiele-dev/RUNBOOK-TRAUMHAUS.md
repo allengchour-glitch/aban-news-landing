@@ -628,6 +628,35 @@ mit künstlichem dt treiben. Genau dafür sind sie exponiert.
   bei 4,8 m. Der schlimmste Fall lief 107 m an fünf freien Sesseln vorbei. Wo mehrere
   gleichwertige Ziele infrage kommen, gehört die Entfernung in die Auswahl.
 
+* **Ein Knopf, zwei Rollen — und nur eine Seite darf senden.** `startTrag()` haengt auf
+  BEIDEN Seiten am selben Knopf und bedeutet „Abbruch", sobald eine Kiste unterwegs ist.
+  `tragEnde()` schickt seine Nachricht aber nur mit `if(MPs&&mpHost)`. Drueckte der GAST,
+  verschwand nur seine eigene Kiste; die des Hosts blieb, und zurueckholen konnte er sie
+  nicht, weil der Host auf `tragReq` nur reagiert, wenn er selbst KEINE Kiste hat. Der
+  Auftrag steckte fest, bis der Host abbrach. Zum Vergleich: `endeVerstecken()` sendet
+  bei `if(MPs&&!gefunden)` — ohne Host-Bedingung. Es war also ein Versehen, kein Entwurf.
+* **Der Koerper des Fahrers bleibt stehen, wo er eingestiegen ist.** Beim Einsteigen wird
+  nur `sims[0].mesh.visible=false` gesetzt; die Figur selbst bleibt am Parkplatz — deshalb
+  muss `aussteigen()` sie ans Auto teleportieren. Solo faellt das nie auf, weil
+  `spielerPos()` beim Fahren das Auto liefert. Im Koop schon: `updCoup` fragt den Partner
+  ueber `sims[1-meinSi()]`, also ueber diesen Koerper. Faehrt der Host zur Bank und
+  startet den Coup, ist fuer ihn `ichDa` wahr und fuer den Gast `duDa` falsch — der Gast
+  bricht ab, der Host laeuft weiter. Wer eine Figur „unsichtbar parkt", muss sie
+  mitfuehren, sonst rechnet die Gegenseite mit einer Leiche.
+* **Zaehler ohne Leser.** `stats.coups` (Bank-Coup) und `stats.sperrgut` wurden
+  hochgezaehlt und nirgends gelesen — die beiden einzigen Aufgaben, die es NUR zu zweit
+  gibt, hatten als einzige keinen Erfolg. Nach jeder neuen Aktion pruefen, ob ihr Zaehler
+  irgendwo ankommt.
+
+* **Im Testbrowser läuft die Spieluhr 20-mal langsamer als die Wanduhr.** `loop()`
+  rechnet mit `dt = Math.min(0.05, …)`, der Software-Renderer liefert rund ein Bild pro
+  Sekunde — pro Sekunde Wartezeit rücken also 0,05 s Spielzeit vor. Die 12 s von
+  Coup-Phase 1 sind damit gut vier Minuten, und jede `min(1, dt*k)`-Nachführung kriecht
+  (die Sperrgut-Kiste holt mit k = 3,5 nur 17,5 % des Abstands pro Sekunde auf). Zwei
+  frisch geschriebene Prüfungen meldeten deswegen „kommt nicht an", wo nur zu früh
+  gemessen wurde. **Auf einen Zustand warten, nicht auf eine Uhr** — oder die Dauer auf
+  beiden Seiten abkürzen.
+
 ## 🎯 Sollwerte einer sauberen Szene
 
 | Messwert | Soll |
