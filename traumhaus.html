@@ -10364,6 +10364,28 @@ function fahrtAussteigen(){
   if(egoMode)egoToggle();
   camTx=zk.x;camTz=zk.z;camRT=30;updCam();
   hint("🎡 Ausgestiegen — hat es Spass gemacht?");}
+/* ── 🎠 FAHRGESCHAEFTE DREHEN SICH — auch ohne Fahrgast ─────────────────────
+   Bisher stand der ganze Freizeitpark still: updFahrt bewegt nur die KAMERA,
+   die Modelle selbst haben sich nie geruehrt, nicht einmal waehrend der Fahrt.
+   Die Modelle sind flache Mesh-Suppen ohne benannten Rotor (gemessen: Cube001,
+   Cone, …) — aber Karussell, Kettenkarussell und Teetassen sind
+   ROTATIONSSYMMETRISCH um ihre Hochachse: das ganze Modell um Y zu drehen ist
+   dort physikalisch korrekt. Die Drehrate entspricht jeweils der Fahrt-Bahn
+   (Karussell 3 Umdrehungen/18 s usw.), damit Plattform und Fahrgast nicht
+   sichtbar auseinanderlaufen.
+   ⚠️ RIESENRAD UND PIRATENSCHIFF BEWUSST AUSGELASSEN: das Rad dreht um eine
+   horizontale Achse, das Schiff schwingt — eine Ganzkoerper-Y-Drehung waere
+   dort sichtbar falsch. Ohne trennbaren Rotor im Modell bleibt es stehen.
+   ⚠️ `_bewegt` auf der Gruppe, sonst friert _einfrieren() ihre Matrix ein und
+   die Drehung endet nach 9 Sekunden still. */
+var _drehRaten={karussell:1.047,kettenkarussell:1.005,teetassen:0.558};
+function updFahrgeschaefte(dt){
+  if(typeof FAHRTEN==="undefined")return;
+  for(var i=0;i<FAHRTEN.length;i++){var f=FAHRTEN[i],r=_drehRaten[f.typ];
+    if(!r||!f.w)continue;
+    if(!f.w._bewegt){f.w._bewegt=true;}
+    f.w.rotation.y+=r*dt;}
+}
 function updFahrt(dt){
   if(!_fahrt)return;
   _fahrt.t+=dt/_fahrt.art.dauer;
@@ -11694,7 +11716,7 @@ function loop(now){
       _ws.material.opacity+=(_zielO-_ws.material.opacity)*Math.min(1,dt*0.8);
       _ws.visible=_ws.material.opacity>0.02;
     }
-    updHearts(dt);updPlopps(dt);updWetter(dt);updVerkehr(dt);updLandbus(dt);updHafen(dt,now);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);updVerstecken(dt);updTrag(dt);updBankLeute(dt);updFest(dt,now);updImmo(dt);updEnten(dt,now);updFahnen(dt,now);updFalter(dt,now);updNachtHimmel(dt,now);updEis(dt,now);updDrachen(dt,now);updTauben(dt,now);updWimpel(dt,now);updBall(dt,now);
+    updHearts(dt);updPlopps(dt);updWetter(dt);updVerkehr(dt);updLandbus(dt);updHafen(dt,now);updAmpel(dt);updFussg(dt,now);updRauch(dt);updWasser(dt,now);updZug(dt);updHeli(dt,now);updVoegel(dt,now);updTiere(dt,now);updBallon(dt,now);updFireworks(dt,now);updBrunnen(dt,now);updPartnerMark(dt,now);updPings(dt,now);updPickups(dt,now);updLiefer(dt);updVerstecken(dt);updTrag(dt);updBankLeute(dt);updFest(dt,now);updImmo(dt);updEnten(dt,now);updFahnen(dt,now);updFalter(dt,now);updNachtHimmel(dt,now);updEis(dt,now);updDrachen(dt,now);updTauben(dt,now);updWimpel(dt,now);updBall(dt,now);updFahrgeschaefte(dt);
     document.getElementById("joy").style.display=(running&&!buildMode)?"block":"none";
     document.getElementById("minimap").style.display=(running&&!buildMode)?"block":"none";
     /* 🩹 Schwarm-6: lief JEDEN Frame mit getComputedStyle/getBoundingClientRect

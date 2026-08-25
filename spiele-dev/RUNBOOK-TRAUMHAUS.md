@@ -42,6 +42,21 @@
 - **⚠️ Sonden sind Template-Literale:** Backticks in KOMMENTAREN innerhalb der Sonde
   beenden das Literal — SyntaxError weit weg von der eigentlichen Stelle.
 
+## 🎠 Fahrgeschaefte drehen sich (2026-08-25)
+- Grep-Anker: `updFahrgeschaefte`, `_drehRaten`
+- **Befund:** der ganze Freizeitpark stand still — `updFahrt` bewegt nur die KAMERA,
+  die Modelle ruehrten sich nie, nicht einmal waehrend der Fahrt.
+- **Loesung fuer die rotationssymmetrischen** (Karussell, Kettenkarussell, Teetassen):
+  ganze Gruppe um Y drehen, Rate = Fahrt-Bahn (Karussell 3 U/18 s usw.), damit Plattform
+  und Fahrgast nicht sichtbar auseinanderlaufen.
+- **⚠️ RIESENRAD/PIRATENSCHIFF BEWUSST AUSGELASSEN:** horizontale Achse bzw. Schwingen —
+  Ganzkoerper-Y-Drehung waere sichtbar falsch, und die Modelle sind flache Mesh-Suppen
+  ohne benannten Rotor (gemessen). Wer das will, muss die Rotor-Meshes per Heuristik
+  (Achsnaehe + Hoehe) in eine Untergruppe heben.
+- **⚠️ `_bewegt` auf der Gruppe** — sonst friert `_einfrieren()` die Matrix nach 9 s ein
+  und die Drehung endet still. Verifiziert: `matrixAutoUpdate` nach 55 s noch aktiv,
+  Rotationsdeltas passen zu den Raten.
+
 ## 🏁 Anpfiff: Spielstand-Reset am Mittelkreis (2026-08-25)
 - Grep-Anker: `function anpfiff`, `anpfT`, `m.t==="anpfiff"`
 - Liegt der Ball auf dem Anstosspunkt und stellt sich eine Figur an den MITTELKREIS
