@@ -82,3 +82,14 @@
 2026-08-23	Haarglätter & Styler	gid://shopify/Product/15451915518337	Kabelloser Diamant Haarglätter
 2026-08-23	Kerzenwärmer & Duft	gid://shopify/Product/15508399620481	Aromatherapie-Diffusor Holzoptik mit Fernbedienung
 2026-08-23	Kerzenwärmer & Duft	gid://shopify/Product/15496534786433	Hollow Aroma Diffuser Ultraschall-Luftbefeuchter
+2026-08-25	Beauty-Gerät	gid://shopify/Product/15508398244225	IPL Laser Haarentfernungsgerät klappbar
+2026-08-25	Beauty-Gerät	gid://shopify/Product/15508447789441	Gesichtsreinigungsbürste mit Vibration
+2026-08-25	Hautpflege-Serum	gid://shopify/Product/15509395407233	WNP 3 Hyaluronsäure Serum Ultra-Hydrating Vials
+2026-08-25	Mini-Beamer	gid://shopify/Product/15481692160385	Mini-Beamer 720p
+2026-08-25	Ordnung & Aesthetic	gid://shopify/Product/15508464337281	Schmuck-Organizer mit Faltwand
+2026-08-25	Shapewear	gid://shopify/Product/15448109089153	High Compression Shapewear mit Frontreissverschluss
+2026-08-25	Shapewear	gid://shopify/Product/15448109023617	Taillenformer mit BH und doppelter Bauchkontrolle
+2026-08-25	Haarglätter & Styler	gid://shopify/Product/15504073326977	Kabelloser USB Haarglätter
+2026-08-25	Kerzenwärmer & Duft	gid://shopify/Product/15508364296577	3D Glas Aroma Diffusor mit Farblicht
+2026-08-25	Kerzenwärmer & Duft	gid://shopify/Product/15508399128961	USB Aroma Diffuser mit 7 LED Farben
+2026-08-25	Haustier-Fellpflege	gid://shopify/Product/15510836674945	Selbstreinigende Haustierbürste
