@@ -2082,3 +2082,10 @@ gid://shopify/Product/15448035459457	CHF 22.46	3 Varianten	Crop-Bluse mit Spitzk
 gid://shopify/Product/15448035688833	CHF 23.50	3 Varianten	Retro Besticktes Shirt mit Puffärmeln
 gid://shopify/Product/15448035950977	CHF 20.37	5 Varianten	Damen Leinenhemd Langarm – Luftig & Lässig
 gid://shopify/Product/15448036213121	CHF 20.82	35 Varianten	Corduroy Hemd mit V-Ausschnitt
+gid://shopify/Product/15448036442497	CHF 18.72	10 Varianten	Langarmshirt mit Herz-Stickerei und Streifenmuster
+gid://shopify/Product/15448036704641	CHF 21.71	12 Varianten	Lässige bedruckte Patchwork-Bluse für Damen
+gid://shopify/Product/15448036802945	CHF 19.19	30 Varianten	Rundhals-Bluse mit Rüschen und kurzen Ärmeln
+gid://shopify/Product/15448036934017	CHF 19.92	20 Varianten	Bluse mit Spitze und langen Ärmeln
+gid://shopify/Product/15448037130625	CHF 20.97	30 Varianten	V-Neck Bluse mit Rüschen und Puffärmeln
+gid://shopify/Product/15448037294465	CHF 18.92	20 Varianten	Lässige Leinenbluse mit V-Ausschnitt
+gid://shopify/Product/15448037425537	CHF 20.67	18 Varianten	Jeans-Top mit Revers und Trägern
