@@ -12713,3 +12713,5 @@ gid://shopify/Product/15503121940865	61->0	Malen nach Zahlen: Elefanten im Sonne
 gid://shopify/Product/15503122170241	49->0	Handgeschmiedetes Kochmesser mit Holzgriff
 gid://shopify/Product/15503122432385	183->0	Recyceltes PU-Leder, zweifarbig geprägt
 gid://shopify/Product/15503122891137	19->0	Baby Shower Massagebürsten-Set aus Wolle
+gid://shopify/Product/15503128592769	31->0	Atmungsaktive Mesh-Sportschuhe für Damen und Herren
+gid://shopify/Product/15503131804033	16->0	WLAN-Überwachungskamera 360° mit Nachtsicht
