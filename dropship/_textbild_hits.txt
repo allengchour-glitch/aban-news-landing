@@ -12673,3 +12673,7 @@ gid://shopify/Product/15501846315393	30->1	Stainless Steel Cocktail-Set
 gid://shopify/Product/15501851099521	84->0	Weitwinkelmirror für Innenausstattung
 gid://shopify/Product/15501902152065	91->0	Luftbett für draussen
 gid://shopify/Product/15501919519105	80->0	Keramik-Teller für Hunde und Katzen
+gid://shopify/Product/15501942489473	17->1	Casual Chic Ärmelloses Kleid mit 3D-Print
+gid://shopify/Product/15502049313153	88->1	Malen nach Zahlen – Paris
+gid://shopify/Product/15502066418049	162->3	Kreuzstich-Set: Europäische Szene fürs Schlafzimmer
+gid://shopify/Product/15502188675457	16->0	Kabelloser 2-in-1 Glätteisen & Lockenstab
