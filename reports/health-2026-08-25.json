@@ -1,8 +1,8 @@
 {
-  "ts": "2026-08-25T11:28:25.350Z",
+  "ts": "2026-08-25T23:28:24.641Z",
   "ai": {
     "groq": "down",
-    "gemini": "live",
+    "gemini": "down",
     "together": "kein Key",
     "deepseek": "down",
     "openrouter": "kein Key",
@@ -28,10 +28,8 @@
     "image_gen_free": "erreichbar"
   },
   "summary": {
-    "ai_live": [
-      "gemini"
-    ],
-    "ai_live_count": 1,
+    "ai_live": [],
+    "ai_live_count": 0,
     "automation_ok": true
   }
 }
