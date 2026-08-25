@@ -239,7 +239,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
 <canvas id="minimap" width="156" height="156" style="position:fixed;left:10px;top:calc(120px + env(safe-area-inset-top));z-index:14;display:none;border-radius:50%;border:3px solid rgba(255,255,255,.75);box-shadow:0 4px 14px rgba(0,0,0,.35);background:#3a5a34;cursor:pointer"></canvas>
 <!-- 🗺️ Grosse Karte (User: „map ist noch zu klein") — Tipp auf das Radar oeffnet die ganze Welt -->
 <div id="bigmapWrap" style="position:fixed;inset:0;z-index:60;display:none;background:rgba(12,16,12,.86);backdrop-filter:blur(3px);align-items:center;justify-content:center;flex-direction:column;gap:8px;padding:10px">
-  <div style="color:#fff;font-weight:900;font-size:1.05rem;text-shadow:0 2px 6px #000">🗺️ Weltkarte</div>
+  <div style="color:#fff;font-weight:900;font-size:1.05rem;text-shadow:0 2px 6px #000">🗺️ Weltkarte <span style="font-weight:700;font-size:.8rem;opacity:.85">· Tipp auf die Karte = 📍 GPS-Wegpunkt</span></div>
   <canvas id="bigmap" width="920" height="554" style="max-width:97vw;max-height:78vh;border-radius:16px;border:3px solid rgba(255,255,255,.75);box-shadow:0 12px 40px rgba(0,0,0,.6);background:#3a5a34"></canvas>
   <button id="bigmapClose" style="border:0;background:#ffdf7a;color:#3a2b06;font-weight:900;border-radius:14px;padding:12px 30px;font-size:1rem;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.4)">Schliessen</button>
 </div>
@@ -8340,7 +8340,8 @@ var ACH=[
  ["missmeister","🔥","Serien-Meister","3 Tage in Folge alle Tages-Missionen",function(){return missSerie+(missHeute&&missHeute.bonus?1:0)>=3;}],
  ["enten","🦆","Entenfreund","Die Enten am See besucht",function(){return (stats.enten||0)>=1;}],
  ["schleckmaul","🍦","Schleckmaul","3 Eis am Seepark gekauft",function(){return (stats.eis||0)>=3;}],
- ["torjaeger","⚽","Torjäger","3 Tore auf dem Sportplatz geschossen",function(){return (stats.tore||0)>=3;}]
+ ["torjaeger","⚽","Torjäger","3 Tore auf dem Sportplatz geschossen",function(){return (stats.tore||0)>=3;}],
+ ["navigator","🧭","Navigator","Mit dem GPS-Wegpunkt ein Ziel erreicht",function(){return (stats.gpsZiele||0)>=1;}]
 ];
 function hausWert(){var w=0;
   furn.forEach(function(f9){w+=Math.round(f9.def.cost*(1+0.6*((f9.lv||1)-1)));});
@@ -10949,6 +10950,17 @@ function updMinimap(dt){
   var pcx=(fahren&&driveCar)?driveCar.mesh.position.x:me.x,pcz=(fahren&&driveCar)?driveCar.mesh.position.z:me.z;
   var head=(fahren&&driveCar)?carRot:(me.rot||0);
   function S(wx,wz){return [Cc+(wx-pcx)*sc,Cc+(wz-pcz)*sc];}
+  /* 🧭 GPS pflegen (laeuft im 8x/s-Radar-Takt mit): verbrauchte Punkte abwerfen,
+     bei Abweichung von der Linie neu rechnen, Ankunft erkennen, Ring pulsieren */
+  if(GPS.aktiv&&GPS.pfad){
+    while(GPS.pfad.length>1&&Math.hypot(GPS.pfad[0][0]-pcx,GPS.pfad[0][1]-pcz)<6)GPS.pfad.shift();
+    if(Math.hypot(GPS.x-pcx,GPS.z-pcz)<8){
+      gpsWeg();hint("🧭 Ziel erreicht!");beep(1180,.08,"sine",.05);
+      stats.gpsZiele=(stats.gpsZiele||0)+1;}
+    else if(Math.hypot(GPS.pfad[0][0]-pcx,GPS.pfad[0][1]-pcz)>16){
+      var _nf=gpsRoute(pcx,pcz,GPS.x,GPS.z);if(_nf)GPS.pfad=_nf;}
+    if(GPS.aktiv&&GPS.ring){GPS.ring.rotation.z+=0.08;
+      GPS.ring.scale.setScalar(1+0.12*Math.sin(performance.now()*0.004));}}
   c.clearRect(0,0,W,W);
   c.save();c.beginPath();c.arc(Cc,Cc,Cc-1,0,6.283);c.clip();
   c.fillStyle="#3a5a34";c.fillRect(0,0,W,W);
@@ -10960,6 +10972,12 @@ function updMinimap(dt){
   var yN=S(0,-SZ-12)[1],yS=S(0,SZ+12)[1],xW=S(-RX,0)[0],xE=S(RX,0)[0];
   c.beginPath();c.moveTo(0,yN);c.lineTo(W,yN);c.moveTo(0,yS);c.lineTo(W,yS);
   c.moveTo(xW,0);c.lineTo(xW,W);c.moveTo(xE,0);c.lineTo(xE,W);c.stroke();
+  // 🧭 GPS-Route (lila, wie in GTA) — beginnt beim Spieler
+  if(GPS.aktiv&&GPS.pfad&&GPS.pfad.length){
+    c.strokeStyle="#c05aff";c.lineWidth=3.5;c.lineJoin="round";c.lineCap="round";
+    c.beginPath();var g0=S(pcx,pcz);c.moveTo(g0[0],g0[1]);
+    for(var gp=0;gp<GPS.pfad.length;gp++){var gs=S(GPS.pfad[gp][0],GPS.pfad[gp][1]);c.lineTo(gs[0],gs[1]);}
+    c.stroke();c.lineJoin="miter";c.lineCap="butt";}
   // Verkehr
   c.fillStyle="#dcdce0";for(var i=0;i<verkehr.length;i++){var p=verkehr[i].mesh.position,s2=S(p.x,p.z);c.fillRect(s2[0]-1.5,s2[1]-1.5,3,3);}
   if(busRec){var bs=S(busRec.pos,busRec.z);c.fillStyle="#f0c030";c.fillRect(bs[0]-2,bs[1]-2,4,4);}
@@ -10973,6 +10991,11 @@ function updMinimap(dt){
     if(dr>Cc-9){var k9=(Cc-9)/(dr||1);sp8=[Cc+dxr*k9,Cc+dzr*k9];outs=true;}
     if(outs)c.globalAlpha=0.55;
     c.fillText(P9[2],sp8[0],sp8[1]);c.globalAlpha=1;}
+  // 🧭 Wegpunkt-Symbol — ausserhalb wie die Orte an den Rand geklebt
+  if(GPS.aktiv){var wp9=S(GPS.x,GPS.z);
+    var dxw=wp9[0]-Cc,dzw=wp9[1]-Cc,drw=Math.sqrt(dxw*dxw+dzw*dzw);
+    if(drw>Cc-9){var kw=(Cc-9)/(drw||1);wp9=[Cc+dxw*kw,Cc+dzw*kw];}
+    c.font="13px system-ui";c.fillText("📍",wp9[0],wp9[1]);}
   // Polizei
   c.fillStyle="#ff3020";for(var q=0;q<polizei.length;q++){var s3=S(polizei[q].mesh.position.x,polizei[q].mesh.position.z);c.beginPath();c.arc(s3[0],s3[1],2.6,0,6.283);c.fill();}
   // Koop-Partner
@@ -10982,7 +11005,12 @@ function updMinimap(dt){
   c.save();c.translate(Cc,Cc);c.rotate(Math.atan2(Math.cos(head),Math.sin(head))+Math.PI/2);
   c.fillStyle="#ffffff";c.strokeStyle="#123a6a";c.lineWidth=1.5;
   c.beginPath();c.moveTo(0,-7);c.lineTo(4.5,5);c.lineTo(0,2);c.lineTo(-4.5,5);c.closePath();c.fill();c.stroke();
-  c.restore();}
+  c.restore();
+  // 🧭 Distanz zum Wegpunkt unter dem Radar-Pfeil
+  if(GPS.aktiv){var dTxt=Math.round(Math.hypot(GPS.x-pcx,GPS.z-pcz));
+    c.font="900 11px system-ui";c.textAlign="center";c.textBaseline="middle";
+    c.strokeStyle="rgba(0,0,0,.65)";c.lineWidth=3;c.fillStyle="#e0b0ff";
+    c.strokeText("📍 "+dTxt+" m",Cc,W-12);c.fillText("📍 "+dTxt+" m",Cc,W-12);}}
 /* ── 🗺️ GROSSE WELTKARTE ──────────────────────────────────────────────
    Das Radar zeigt nur ~135 m. Die Welt reicht aber vom Meer (x −250) bis zu den
    Ost-Villen (x +130) und vom Kathedralen-Viertel (z −110) bis zum Bahnhof (z +115).
@@ -10993,6 +11021,7 @@ function drawBigMap(){
   var c=cv.getContext("2d"),W=cv.width,H=cv.height;
   var X0=-300,X1=250,Z0=-210,Z1=280;   /* die neuen Viertel liegen weit ausserhalb des Rings */
   var sc=Math.min(W/(X1-X0),H/(Z1-Z0)),ox=(W-(X1-X0)*sc)/2,oy=(H-(Z1-Z0)*sc)/2;
+  _bigTrafo={sc:sc,ox:ox,oy:oy,X0:X0,Z0:Z0}; /* 🧭 fuers Ruecktransformieren des Karten-Tipps */
   function S(wx,wz){return [ox+(wx-X0)*sc,oy+(wz-Z0)*sc];}
   c.fillStyle="#3f6238";c.fillRect(0,0,W,H);
   // Meer + Strand
@@ -11016,6 +11045,12 @@ function drawBigMap(){
   c.fillStyle="rgba(70,58,50,.8)";
   for(var i=0;i<WORLD_SOLIDS.length;i++){var s=WORLD_SOLIDS[i],p1=S(s.x-s.hw,s.z-s.hd);
     c.fillRect(p1[0],p1[1],Math.max(2,s.hw*2*sc),Math.max(2,s.hd*2*sc));}
+  // 🧭 GPS-Route (lila, wie in GTA)
+  if(GPS.aktiv&&GPS.pfad&&GPS.pfad.length){
+    c.strokeStyle="#c05aff";c.lineWidth=4;c.lineJoin="round";c.lineCap="round";
+    c.beginPath();var q0=S(GPS.pfad[0][0],GPS.pfad[0][1]);c.moveTo(q0[0],q0[1]);
+    for(var gi=1;gi<GPS.pfad.length;gi++){var qq=S(GPS.pfad[gi][0],GPS.pfad[gi][1]);c.lineTo(qq[0],qq[1]);}
+    c.stroke();c.lineJoin="miter";c.lineCap="butt";}
   // Orte
   c.textAlign="center";c.textBaseline="middle";
   /* Beschriftung abwechselnd ueber/unter dem Symbol — im Suedviertel stehen die Orte dicht */
@@ -11033,7 +11068,119 @@ function drawBigMap(){
   // Koop-Partner
   if(MPs){var pa=sims[1-meinSi()];if(pa){var pp=S(pa.x,pa.z);
     c.beginPath();c.arc(pp[0],pp[1],6,0,6.283);c.fillStyle="#3ad0ff";c.fill();c.strokeStyle="#fff";c.lineWidth=2;c.stroke();}}
+  // 🧭 Wegpunkt zuoberst
+  if(GPS.aktiv){var wq=S(GPS.x,GPS.z);
+    c.beginPath();c.arc(wq[0],wq[1],8,0,6.283);c.fillStyle="#a040f0";c.fill();
+    c.lineWidth=2.5;c.strokeStyle="#fff";c.stroke();
+    c.font="20px system-ui";c.textAlign="center";c.textBaseline="middle";c.fillText("📍",wq[0],wq[1]-16);}
 }
+/* ── 🧭 GTA-GPS: Wegpunkt auf der Karte ───────────────────────────────
+   Tipp auf die grosse Karte setzt einen 📍 Wegpunkt (Tipp auf den Wegpunkt loescht ihn).
+   Ein A* auf einem 4-m-Raster sucht den Weg: Strassenzellen kosten 1, Wiese 3,
+   Gebaeude (imBau), See (r26 um 0/146), Fluss-Band (ausser an den Bruecken x=±78/−112)
+   und das Meer (x<−233) sind gesperrt. So folgt die lila Linie wie in GTA den
+   Strassen und schneidet nur die letzten Meter querfeldein. Der Wegpunkt ist
+   persoenlich — im Koop hat jeder Spieler sein eigenes GPS, darum kein Netz-Sync. */
+var GPS={aktiv:false,x:0,z:0,pfad:null,beam:null,ring:null};
+var _gpsX0=-300,_gpsZ0=-210,_gpsCell=4,_gpsNX=138,_gpsNZ=123,_gpsFrei=null;
+function gpsStrasse(x,z){
+  var SZr=GH*CS/2+12;
+  if(Math.abs(x)<RL/2+6&&(Math.abs(z-SZr)<5||Math.abs(z+SZr)<5))return true;   // Hauptstrassen
+  if(Math.abs(z)<124&&(Math.abs(x-RX)<4.5||Math.abs(x+RX)<4.5))return true;    // Querstrassen
+  if(z>-104&&z<122&&(Math.abs(x-112)<4.5||Math.abs(x+112)<4.5))return true;    // Ring senkrecht
+  if(Math.abs(x)<118&&(Math.abs(z-118)<4.5||Math.abs(z+100)<4.5))return true;  // Ring waagrecht
+  if(Math.abs(x)<4&&z>118&&z<150)return true;                                  // Seepark-Stich
+  return false;}
+function gpsGesperrt(x,z){
+  if(x<-233)return true;                                       // Meer (der Strand bleibt frei)
+  if(Math.hypot(x,z-146)<26)return true;                       // Seepark-See
+  if(z>-97&&z<-84&&x<82&&Math.abs(x+78)>7&&Math.abs(x+112)>7&&Math.abs(x-78)>7)return true; // Fluss, Bruecken frei
+  return imBau(x,z);}
+function _gpsFreiAt(ix,iz){
+  if(ix<0||iz<0||ix>=_gpsNX||iz>=_gpsNZ)return false;
+  var k=ix+iz*_gpsNX,v=_gpsFrei[k];
+  if(!v){v=gpsGesperrt(_gpsX0+(ix+0.5)*_gpsCell,_gpsZ0+(iz+0.5)*_gpsCell)?2:1;_gpsFrei[k]=v;}
+  return v===1;}
+function gpsRoute(sx,sz,tx,tz){
+  /* Cache pro Lauf frisch — der Spieler kann zwischendurch gebaut/abgerissen haben */
+  _gpsFrei=new Int8Array(_gpsNX*_gpsNZ);
+  function C(x,z){return [Math.max(0,Math.min(_gpsNX-1,Math.floor((x-_gpsX0)/_gpsCell))),
+                          Math.max(0,Math.min(_gpsNZ-1,Math.floor((z-_gpsZ0)/_gpsCell)))];}
+  function naheFrei(c){                          // Spirale bis 10 Zellen (Ziel mitten im Gebaeude)
+    if(_gpsFreiAt(c[0],c[1]))return c;
+    for(var r=1;r<=10;r++)for(var dx=-r;dx<=r;dx++)for(var dz=-r;dz<=r;dz++){
+      if(Math.max(Math.abs(dx),Math.abs(dz))!==r)continue;
+      if(_gpsFreiAt(c[0]+dx,c[1]+dz))return [c[0]+dx,c[1]+dz];}
+    return null;}
+  var cS=naheFrei(C(sx,sz)),cZ=naheFrei(C(tx,tz));
+  if(!cS||!cZ)return null;
+  var N=_gpsNX*_gpsNZ,best=new Float32Array(N),von=new Int32Array(N);
+  for(var i=0;i<N;i++){best[i]=1e30;von[i]=-1;}
+  var hIdx=[],hF=[];                              // Binaerheap (offene Liste)
+  function push(f,k){hIdx.push(k);hF.push(f);var j=hF.length-1;
+    while(j>0){var p=(j-1)>>1;if(hF[p]<=hF[j])break;
+      var t=hF[p];hF[p]=hF[j];hF[j]=t;t=hIdx[p];hIdx[p]=hIdx[j];hIdx[j]=t;j=p;}}
+  function pop(){var k=hIdx[0],l=hIdx.length-1;
+    hIdx[0]=hIdx[l];hF[0]=hF[l];hIdx.pop();hF.pop();var j=0,n=hF.length;
+    while(true){var a=2*j+1,b=2*j+2,m=j;
+      if(a<n&&hF[a]<hF[m])m=a;if(b<n&&hF[b]<hF[m])m=b;
+      if(m===j)break;var t=hF[m];hF[m]=hF[j];hF[j]=t;t=hIdx[m];hIdx[m]=hIdx[j];hIdx[j]=t;j=m;}
+    return k;}
+  var startK=cS[0]+cS[1]*_gpsNX,zielK=cZ[0]+cZ[1]*_gpsNX;
+  function H(k){var dx=(k%_gpsNX)-cZ[0],dz=Math.floor(k/_gpsNX)-cZ[1];return Math.sqrt(dx*dx+dz*dz);}
+  best[startK]=0;push(H(startK),startK);
+  var NB=[[1,0,1],[-1,0,1],[0,1,1],[0,-1,1],[1,1,1.414],[1,-1,1.414],[-1,1,1.414],[-1,-1,1.414]];
+  var runden=0;
+  while(hF.length&&runden++<60000){
+    var k=pop();if(k===zielK)break;
+    var ix=k%_gpsNX,iz=(k-ix)/_gpsNX;
+    for(var nb=0;nb<8;nb++){var nx=ix+NB[nb][0],nz=iz+NB[nb][1];
+      if(!_gpsFreiAt(nx,nz))continue;
+      var wx=_gpsX0+(nx+0.5)*_gpsCell,wz=_gpsZ0+(nz+0.5)*_gpsCell;
+      var g=best[k]+NB[nb][2]*(gpsStrasse(wx,wz)?1:3);
+      var nk=nx+nz*_gpsNX;
+      if(g<best[nk]-1e-6){best[nk]=g;von[nk]=k;push(g+H(nk),nk);}}}
+  if(von[zielK]<0&&zielK!==startK)return null;
+  var pfad=[],k2=zielK;
+  while(k2>=0){var jx=k2%_gpsNX,jz=(k2-jx)/_gpsNX;
+    pfad.push([_gpsX0+(jx+0.5)*_gpsCell,_gpsZ0+(jz+0.5)*_gpsCell]);
+    if(k2===startK)break;k2=von[k2];}
+  pfad.reverse();pfad.push([tx,tz]);              // exakter Zielpunkt ans Ende
+  return pfad;}
+function gpsWeg(){
+  GPS.aktiv=false;GPS.pfad=null;
+  if(GPS.beam)GPS.beam.visible=false;
+  if(GPS.ring)GPS.ring.visible=false;}
+function gpsSetz(x,z){
+  var me=sims[meinSi()];if(!me)return false;
+  var px=(fahren&&driveCar)?driveCar.mesh.position.x:me.x,
+      pz=(fahren&&driveCar)?driveCar.mesh.position.z:me.z;
+  var pf=gpsRoute(px,pz,x,z);
+  if(!pf){hint("🧭 Kein Weg dorthin gefunden");return false;}
+  GPS.aktiv=true;GPS.x=x;GPS.z=z;GPS.pfad=pf;
+  if(!GPS.beam){ /* GTA-Leuchtsaeule am Ziel — einmal gebaut, danach nur versetzt.
+                    _bewegt schuetzt vor _einfrieren, MeshBasic ist nachts ungedimmt. */
+    var bm=new THREE.Mesh(new THREE.CylinderGeometry(1.1,1.1,64,10,1,true),
+      new THREE.MeshBasicMaterial({color:0xb060ff,transparent:true,opacity:0.32,
+        blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide}));
+    bm._bewegt=true;bm.frustumCulled=false;scene.add(bm);GPS.beam=bm;
+    var rg=new THREE.Mesh(new THREE.RingGeometry(1.6,2.6,24),
+      new THREE.MeshBasicMaterial({color:0xc080ff,transparent:true,opacity:0.75,
+        blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide}));
+    rg.rotation.x=-Math.PI/2;rg._bewegt=true;scene.add(rg);GPS.ring=rg;}
+  GPS.beam.position.set(x,32,z);GPS.beam.visible=true;
+  GPS.ring.position.set(x,0.06,z);GPS.ring.visible=true;
+  stats.gpsGesetzt=(stats.gpsGesetzt||0)+1;
+  hint("📍 Wegpunkt gesetzt — folge der lila Linie");beep(880,.06,"sine",.04);
+  return true;}
+var _bigTrafo=null;
+document.getElementById("bigmap").addEventListener("click",function(e){
+  if(!_bigTrafo)return;
+  var r=this.getBoundingClientRect();
+  var mx=(e.clientX-r.left)*this.width/r.width,my=(e.clientY-r.top)*this.height/r.height;
+  var wx=_bigTrafo.X0+(mx-_bigTrafo.ox)/_bigTrafo.sc,wz=_bigTrafo.Z0+(my-_bigTrafo.oy)/_bigTrafo.sc;
+  if(GPS.aktiv&&Math.hypot(wx-GPS.x,wz-GPS.z)<14){gpsWeg();hint("📍 Wegpunkt entfernt");drawBigMap();return;}
+  if(gpsSetz(wx,wz))drawBigMap();});
 function bigMapOpen(){var w=document.getElementById("bigmapWrap");if(!w)return;
   drawBigMap();w.style.display="flex";}
 document.getElementById("minimap").addEventListener("click",bigMapOpen);
