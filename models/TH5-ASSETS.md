@@ -2167,6 +2167,45 @@ beiden neuen Vierteln (3D, Mesh für Mesh), Marken und Lieferziele auf den echte
 
 ---
 
+
+### Sechste Runde: zeigen Karte und Lieferaufträge auf etwas, das existiert?
+
+Nach der fünften Runde die naheliegende Anschlussfrage — und ein Werkzeug dafür:
+`node spiele-dev/tools/th-marken.mjs [grenze]` prüft **jede** Kartenmarke und **jedes**
+Lieferziel gegen die geladene Welt.
+
+**⚠️ Ein Maß reicht nicht.** Der erste Anlauf maß nur den Abstand zum nächsten Modell
+(`userData.datei`) und meldete prompt zwei Treffer, die beide falsch waren: die **Achterbahn**
+(101,5 m) ist ein Catmull-Rom-Rundkurs aus Tubes und trägt gar kein `userData.datei` — ihre
+Station steht exakt auf der Marke. Dasselbe für die **Kathedrale**. Deshalb zählt zusätzlich
+der Abstand zum nächsten **Kollider**; verdächtig ist eine Marke erst, wenn *beide* Maße weit
+sind. Damit blieb von 24 Marken und 9 Lieferzielen genau eine übrig: **„Meer"** — offenes
+Wasser, dort steht planmäßig nichts. Steht als begründete Ausnahme im Werkzeug.
+
+Ein echter Fund war es trotzdem: die Marke **„Seilbahn"** stand auf (155\|86), ungefähr der
+Mitte des Seils zwischen Tal- und Bergstation — 95 m von der Talstation entfernt, also genau
+dort, wo man *nicht* einsteigen kann. Sie wird jetzt aus `TAL` abgeleitet und sitzt auf der
+Station (0 m), statt beim nächsten Verschieben wieder zurückzubleiben.
+
+Zwei Nebenbefunde aus derselben Runde, beide zunächst als Fehler verdächtigt und **widerlegt**:
+
+* **613 der 896 GLB-Dateien werden nie angefordert** — sieht nach totem Material aus, ist aber
+  eine Fehlmessung: Möbel laden ihr Modell erst beim Bauen (`loadTH(id)` →
+  `models/th_<id>.glb`), und gemessen wurde auf einem leeren Grundstück. Der Rest sind
+  Asset-Pakete der Nachbarspiele (`lp_`, `nw_`, `mn_`, `sv_` …) und die bewusst ungenutzten
+  `th31_`-Waffenprops.
+* Alle **97 Katalog-Einträge** haben ihre Modelldatei. Fehlte eine, wäre das Möbel gekauft,
+  belegte Rasterzellen und zählte für die Wohnstufe — wäre aber **unsichtbar**, weil `loadTH`
+  im Fehlerfall still `cb(null)` liefert. Der Abgleich ist ein Zweizeiler und lohnt nach jeder
+  Katalog-Erweiterung.
+
+**Werkzeug-Falle nebenbei behoben:** `th-lib.mjs` hatte `REPO` fest auf
+`/home/user/aban-news-landing`. Wer in einem eigenen git-worktree arbeitet, misst damit die
+Datei der Nachbarsession und wundert sich über Ergebnisse, die nicht zu seinen Änderungen
+passen. Jetzt `process.env.TH_REPO || <default>`.
+
+---
+
 ## 🎡 Freizeitpark-Quartier in `traumhaus.html` — fertiger Einbau
 
 **Das Quartier gibt es schon** (`viertel({name:"Freizeitpark", x:-190, z:158, w:170, d:92 …})`,
