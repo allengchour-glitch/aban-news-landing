@@ -5437,6 +5437,14 @@ setTimeout(function baueGebaeude(){
          Wohnhaus. Ergebnis: 165 m Fahrstrecke von Osten ueber „Gewerbe Ost" hinweg
          zur Bergstation auf 40 m Hoehe. */
       var TAL={x:228,z:24},BERG={x:129,z:156};
+      /* Die Kartenmarke "Seilbahn" stand fest auf (155|86) — das ist ungefaehr die
+         Mitte des Seils zwischen Tal- und Bergstation, also der Punkt, an dem man
+         gerade NICHT einsteigen kann (95 m von der Talstation, 34,8 m bis zum
+         naechsten Kollider). Eine Marke soll dorthin fuehren, wo die Fahrt beginnt;
+         und sie wird aus TAL abgeleitet, damit sie beim naechsten Verschieben der
+         Station nicht wieder zurueckbleibt. */
+      if(typeof WORLD_POIS!=="undefined")WORLD_POIS.forEach(function(P){
+        if(P[3]==="Seilbahn"){P[0]=TAL.x;P[1]=TAL.z;}});
       var TALY=0,BERGY=40;                       // Bahnsteighoehen
       var SEILH=8;                               // Seil haengt 8 m ueber dem Bahnsteig
       var laenge=Math.hypot(BERG.x-TAL.x,BERG.z-TAL.z);

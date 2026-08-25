@@ -12,7 +12,9 @@ import { spawn, execSync } from 'node:child_process'
 import { readFileSync, writeFileSync, unlinkSync, existsSync } from 'node:fs'
 import { join } from 'node:path'
 
-export const REPO = '/home/user/aban-news-landing'
+/* Der Pfad laesst sich per TH_REPO ueberschreiben — mehrere Sessions arbeiten in
+   eigenen git-worktrees, und ohne das misst das Werkzeug die Datei der Nachbarsession. */
+export const REPO = process.env.TH_REPO || '/home/user/aban-news-landing'
 export const PORT = 8899
 export const CHROMIUM = '/opt/pw-browsers/chromium'
 
