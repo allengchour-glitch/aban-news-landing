@@ -4285,25 +4285,78 @@ setTimeout(function baueGebaeude(){
       if(breite>quer)quer=breite;});
     var hl=Math.max(12,laenge/2-(cfg.rand||14)), hq=setback+quer/2;
     return laengs?{hw:hl,hd:hq}:{hw:hq,hd:hl};}
-  function viertelPasst(cfg,x,z){
+  /* ⚠️ FAHRBAHNEN HABEN KEINE KOLLIDER — sonst koennte niemand darauf fahren. Damit
+     waren sie fuer diesen Solver unsichtbar, und die wiederbelebten Viertel landeten
+     prompt darauf: der Sportpark mit Schwimmbad, Fitnessstudio und Basketballplatz auf
+     der Landstrasse (gemessen mit `spiele-dev/tools/th-strassen.mjs`), Gewerbe Ost mit
+     Parkgarage, Post und Polizeiwache ebenso. Geprueft werden die Baender, die weit
+     draussen liegen — drinnen raeumt `wegVonStrasse` je Objekt auf.
+     Grosszuegig gerechnet: halbe Belagsbreite 4,5 plus 6 m Reserve. */
+  function aufFahrbahn(x0,x1,z0,z1){
+    var SPEICHEN=[30,60,120,240,300,330], RAD0=123, RAD1=193, H=10.5, RINGR=200;
+    /* Ecken und Mitten des Rechtecks abtasten — ein Viertel ist gross gegen 10 m. */
+    for(var px=x0;px<=x1;px+=8)for(var pz=z0;pz<=z1;pz+=8){
+      var r=Math.hypot(px,pz);
+      if(Math.abs(r-RINGR)<H)return true;
+      if(r>=RAD0-H&&r<=RAD1+H)
+        for(var g=0;g<SPEICHEN.length;g++){
+          var a9=SPEICHEN[g]*Math.PI/180;
+          if(Math.abs(px*Math.sin(a9)-pz*Math.cos(a9))<H&&
+             px*Math.cos(a9)+pz*Math.sin(a9)>0)return true;}}
+    return false;}
+  /* ⚠️ UND DAS GELAENDE. Der erste Anlauf mit der Strassenpruefung schob Gewerbe Ost
+     und den Bauernhof prompt in den Gebirgsguertel — gemessen 112,6 m bzw. 74,2 m Fels
+     innerhalb der Grundflaeche, waehrend die Bauten auf y=0 stehen. Berge sind wie
+     Strassen: kein Kollider, keine Pruefung kennt sie. Statt Strahlen zu schiessen
+     (teuer und zur Ladezeit heikel) werden die Boxen der grossen Erhebungen EINMAL
+     eingesammelt: hoeher als 20 m und breiter als 30 m ist in dieser Welt ein Berg.
+     Hohe Haeuser faenden sich hier zwar auch wieder — die sind aber ohnehin Kollider,
+     also aendert das nichts. */
+  var _bergBoxen=null;
+  function bergBoxen(){
+    if(_bergBoxen)return _bergBoxen;
+    _bergBoxen=[];
+    scene.traverse(function(o){
+      if(!o.isMesh||!o.geometry)return;
+      var bb=new THREE.Box3().setFromObject(o);
+      if(!isFinite(bb.min.y)||bb.max.y<20)return;
+      var bw=bb.max.x-bb.min.x, bd=bb.max.z-bb.min.z, gr=Math.max(bw,bd);
+      if(gr>900||gr<30)return;
+      _bergBoxen.push([bb.min.x,bb.max.x,bb.min.z,bb.max.z]);});
+    return _bergBoxen;}
+  function imBerg(x0,x1,z0,z1){
+    var B=bergBoxen();
+    for(var i=0;i<B.length;i++){var b=B[i];
+      if(b[1]>x0&&b[0]<x1&&b[3]>z0&&b[2]<z1)return true;}
+    return false;}
+  function viertelPasst(cfg,x,z,strassen){
     var m=viertelMass(cfg);
     /* Das Meer: der Solver kennt nur Kollider, und Wasser hat keine. */
     if(x-m.hw<-118&&Math.abs(z)<170)return false;
+    if(strassen&&aufFahrbahn(x-m.hw,x+m.hw,z-m.hd,z+m.hd))return false;
+    if(strassen&&imBerg(x-m.hw,x+m.hw,z-m.hd,z+m.hd))return false;
     for(var i=0;i<VIERTEL.length;i++){var v=VIERTEL[i];
       if(Math.abs(x-v.x)<m.hw+v.w/2+8&&Math.abs(z-v.z)<m.hd+v.d/2+8)return false;}
     for(var q=0;q<WORLD_SOLIDS.length;q++){var s2=WORLD_SOLIDS[q];
       if(Math.abs(x-s2.x)<m.hw+s2.hw+6&&Math.abs(z-s2.z)<m.hd+s2.hd+6)return false;}
     return true;}
   function viertelOrt(cfg){
-    if(viertelPasst(cfg,cfg.x,cfg.z))return [cfg.x,cfg.z,0];
-    var laengs=cfg.achse==="x";
-    for(var d=10;d<=120;d+=10){
-      /* Zuerst laengs der eigenen Strasse ausweichen — dort bleibt das Viertel in
-         seiner Umgebung (Felder, Anschluss, Kartenmarke) statt querfeldein zu wandern. */
-      var kand=laengs?[[cfg.x+d,cfg.z],[cfg.x-d,cfg.z],[cfg.x,cfg.z+d],[cfg.x,cfg.z-d]]
-                     :[[cfg.x,cfg.z+d],[cfg.x,cfg.z-d],[cfg.x+d,cfg.z],[cfg.x-d,cfg.z]];
-      for(var k=0;k<kand.length;k++)
-        if(viertelPasst(cfg,kand[k][0],kand[k][1]))return [kand[k][0],kand[k][1],d];}
+    /* ⚠️ ZWEI DURCHGAENGE, und der zweite ist kein Schoenheitsfehler. Erst wird ein Ort
+       gesucht, der auch KEINE Fahrbahn beruehrt; findet sich keiner, gilt wieder die
+       alte, mildere Bedingung. Sonst waere aus der Strassenpruefung ein Rueckschritt
+       geworden: `viertelOrt` liefert bei Misserfolg null, und dann baut das Viertel
+       ueberhaupt nicht — genau der Zustand, den Charge 2298 behoben hat (drei Viertel
+       fehlten still in der Welt). Lieber ein Viertel am Strassenrand als keines. */
+    for(var streng=1;streng>=0;streng--){
+      if(viertelPasst(cfg,cfg.x,cfg.z,streng))return [cfg.x,cfg.z,0];
+      var laengs=cfg.achse==="x";
+      for(var d=10;d<=120;d+=10){
+        /* Zuerst laengs der eigenen Strasse ausweichen — dort bleibt das Viertel in
+           seiner Umgebung (Felder, Anschluss, Kartenmarke) statt querfeldein zu wandern. */
+        var kand=laengs?[[cfg.x+d,cfg.z],[cfg.x-d,cfg.z],[cfg.x,cfg.z+d],[cfg.x,cfg.z-d]]
+                       :[[cfg.x,cfg.z+d],[cfg.x,cfg.z-d],[cfg.x+d,cfg.z],[cfg.x-d,cfg.z]];
+        for(var k=0;k<kand.length;k++)
+          if(viertelPasst(cfg,kand[k][0],kand[k][1],streng))return [kand[k][0],kand[k][1],d];}}
     return null;}
   function viertel(cfg){
     var VW=cfg.w,VD=cfg.d,laengs=cfg.achse==="x";
@@ -5378,7 +5431,12 @@ setTimeout(function baueGebaeude(){
     /* 🚜 BAUERNHOF-VIERTEL weit draussen auf dem Feld (User: „bauernhaeuser farm staelle
        windmuehle weit weg aufs feld wie farm etc., wie in richtiger landschaft"). Der Hof
        stand bisher zwischen Ringstrasse und Hochhaeusern — das passt nicht zusammen. */
-    viertel({name:"Bauernhof",x:-40,z:-196,w:170,d:90,achse:"x",boden:"kies",
+    /* ⚠️ Rueckgabewert merken: seit viertel() bei belegtem Wunschort ausweicht, muss die
+       Deko mit. Aecker, Zaun, Traktor und Heuballen lagen auf FESTEN Koordinaten — waere
+       der Hof gewandert, haetten die Gebaeude auf der Wiese und die Aecker allein
+       dagestanden. Genau dieser Fall (Deko ohne Bau) war 2298 der sichtbare Befund, nur
+       andersherum. */
+    var _bh = viertel({name:"Bauernhof",x:-40,z:-196,w:170,d:90,achse:"x",boden:"kies",
       anschluss:[-40,-100],abstand:16,luecke:20,rand:20,
       bauten:[{file:"th18_scheune.glb",h:10,w:20,d:14},
               {file:"th18_stall.glb",h:5.5,w:16,d:11},
@@ -5386,9 +5444,10 @@ setTimeout(function baueGebaeude(){
               {file:"th18_gewaechshaus.glb",h:4.2,w:14,d:9},
               {file:"th18_windrad.glb",h:22,w:6,d:6,tuer:false},
               {file:"th18_wassertank.glb",h:4,w:4,d:4,tuer:false}]});
+    var BHDX=(_bh?_bh.x:-40)+40, BHDZ=(_bh?_bh.z:-196)+196;   /* Versatz zum Wunschort */
     /* Felder + Zaun + Geraete rund um den Hof */
     (function felder(){
-      var FX=-40,FZ=-196;
+      var FX=-40+BHDX,FZ=-196+BHDZ;
       [[-64,-34],[-30,-34],[6,-34],[42,-34],[-64,32],[-30,32],[6,32],[42,32]].forEach(function(f,i){
         var ackerM=new THREE.MeshStandardMaterial({color:i%2?0x8a6b46:0x7d6140,roughness:1,envMapIntensity:0.12});
         var a=new THREE.Mesh(new THREE.PlaneGeometry(30,26),ackerM);
@@ -5411,25 +5470,26 @@ setTimeout(function baueGebaeude(){
        zielHoehe/Bauteilhoehe. Mit 1,30 statt 1,26 beim Weidezaun waeren die Module
        3 % breiter als das Raster von 2,50 und die Koppel haette Spalten. */
     (function hofausbau(){
-      var SUED=-211, NORD=-181;                       // beidseits der Viertelstrasse (z=-196)
+      var SUED=-211+BHDZ, NORD=-181+BHDZ;             // beidseits der Viertelstrasse (z=-196)
+      var HX=function(x){return x+BHDX;};              /* alle x des Hofausbaus mitziehen */
       /* Wirtschaftsgebaeude suedlich der Strasse, Schauseite nach +z zur Fahrbahn.
          Ein Modell zeigt bei rotY = 0 nach -z, die Strasse liegt hier bei groesserem z. */
       /* Hofplatz vor den drei Bauten: ohne befestigte Vorflaeche stehen sie auf der
          Wiese wie abgestellt. Die Nordkante stoesst an das Strassenband (z = -200,5). */
       var hp=new THREE.Mesh(new THREE.PlaneGeometry(46,10),betMat(0x9c9384,0.98));
-      hp.rotation.x=-Math.PI/2;hp.position.set(11,0.002,-205);hp.receiveShadow=true;scene.add(hp);
-      bau("th38_scheune.glb",     9.60, -4,0,SUED, Math.PI,false,null,true);
-      bau("th38_silo.glb",       11.20, 12,0,SUED, 0,      false,null,true);
-      bau("th38_huehnerstall.glb",2.23, 26,0,SUED, Math.PI,false,null,true);
-      addSolid(-4,SUED,15.6,10.7); addSolid(12,SUED,5.6,5.4); addSolid(26,SUED,3.8,3.9);
+      hp.rotation.x=-Math.PI/2;hp.position.set(HX(11),0.002,-205+BHDZ);hp.receiveShadow=true;scene.add(hp);
+      bau("th38_scheune.glb",     9.60, HX(-4),0,SUED, Math.PI,false,null,true);
+      bau("th38_silo.glb",       11.20, HX(12),0,SUED, 0,      false,null,true);
+      bau("th38_huehnerstall.glb",2.23, HX(26),0,SUED, Math.PI,false,null,true);
+      addSolid(HX(-4),SUED,15.6,10.7); addSolid(HX(12),SUED,5.6,5.4); addSolid(HX(26),SUED,3.8,3.9);
       /* Geraete noerdlich der Strasse */
-      bau("th38_traktor.glb",     2.49, -2,0,NORD,-Math.PI/2,false,null,true);  // Front auf +x -> zeigt nach +z
-      bau("th38_heuballen.glb",   2.26,  8,0,NORD+3,0.30,   false,null,true);
-      bau("th38_futtertrog.glb",  0.72, 24,0,-178, 0,       false,null,true);
+      bau("th38_traktor.glb",     2.49, HX(-2),0,NORD,-Math.PI/2,false,null,true);  // Front auf +x -> zeigt nach +z
+      bau("th38_heuballen.glb",   2.26,  HX(8),0,NORD+3,0.30,   false,null,true);
+      bau("th38_futtertrog.glb",  0.72, HX(24),0,-178+BHDZ, 0,  false,null,true);
       /* Koppel: geschlossenes Rechteck aus Weidezaun-Modulen im Raster 2,50, mit
          Torluecke im Norden, in der das Hoftor steht. Die Luecke ist 4,90 breit —
          das Tor misst 4,78, ein Modul waeren 2,50: zwei Module weniger, nicht eins. */
-      var KX0=18.0, KX1=43.0, KZ0=-186.0, KZ1=-168.0, TOR=30.5;
+      var KX0=18.0+BHDX, KX1=43.0+BHDX, KZ0=-186.0+BHDZ, KZ1=-168.0+BHDZ, TOR=30.5+BHDX;
       var wzStellen=[];
       for(var x=KX0+1.25;x<KX1;x+=2.5){
         wzStellen.push([x,KZ0,0]);

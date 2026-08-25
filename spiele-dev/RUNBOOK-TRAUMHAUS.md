@@ -743,13 +743,24 @@ Fehler, wenn dort auch Belag liegt.
 gepflasterten Abschnitt bei 90°. z 216 → 236 bringt alle sechs Bauten auf r 215…266.
 Landstraßen-Treffer 120 → 80.
 
-**Offen, gemessen, bewusst nicht behoben:** Gewerbe Ost (34 Mesh-Positionen) und der
-Bauernhof-Stall (14) liegen weiter auf dem Ring. Den **Wunschort zu verschieben hilft
-nicht** — mit x = 236 versucht: `viertelOrt()` findet dort keinen Platz und legt das
-Viertel bei ~216 ab, wo es *näher* am Ring liegt (Post 3 → 18 Treffer). Der richtige Weg
-ist, `viertelPasst()` die Landstraße und die Zubringer beizubringen — das verschiebt aber
-auch den Bauernhof, dessen Äcker, Zäune, Traktor und Heuballen auf festen Koordinaten
-liegen. Eigene Runde.
+**Nachtrag — `viertelPasst()` kennt jetzt Straßen UND Berge, hilft aber wenig.** Beides
+ist eingebaut (Landstraße, sechs Zubringer, und Erhebungen über 20 m / breiter als 30 m),
+dazu zieht die Bauernhof-Dekoration jetzt mit dem Viertel mit. Der Weg dahin ist die
+Lehre:
+
+1. **Nur die Straßenprüfung**: Landstraßen-Treffer 80 → 40, alle Gebäude runter vom Belag.
+   Aber Gewerbe Ost landete auf **112,6 m** und der Bauernhof auf **74,2 m** Fels — Berge
+   sind wie Straßen: kein Kollider, keine Prüfung kennt sie.
+2. **Mit Geländeprüfung**: beide finden im 120-m-Umkreis keinen Ort, der Straße *und* Berg
+   meidet, und fallen auf die milde Bedingung zurück — also auf ihre alten Plätze. Netto
+   bleibt vom Straßengewinn nur der Sportpark (139 statt 154 Treffer gesamt).
+
+**Der zweite Durchgang ist kein Schönheitsfehler, sondern Pflicht:** `viertelOrt()` liefert
+bei Misserfolg `null`, und dann baut das Viertel *gar nicht* — genau der Zustand, den
+#2298 behoben hat. Lieber ein Viertel am Straßenrand als keines.
+
+Wer das wirklich lösen will, braucht mehr Platz, nicht mehr Prüfungen: entweder eine
+Lücke im Gebirgsgürtel (r 210…290) oder kleinere Viertel.
 
 ## 🎯 Sollwerte einer sauberen Szene
 
