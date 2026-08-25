@@ -4220,15 +4220,59 @@ setTimeout(function baueGebaeude(){
      Damit kann jeder neue STL-Schwung sauber platziert werden, ohne dass wieder etwas
      auf der Fahrbahn oder in einem anderen Haus landet. */
   var VIERTEL=[];
-  function viertelFrei(x,z,w,d){                        // gegen bereits gesetzte Viertel + Welt
+  /* ⚠️ GEMESSEN: `viertelFrei` prueft das BRUTTO-Rechteck (w x d) plus 6 m. Damit sind
+     drei Viertel still ausgefallen — "Gewerbe Ost", "Sportpark Sued" und "Bauernhof"
+     meldeten nur ein console.warn und bauten NICHTS. Die Blocker lagen jedes Mal am
+     aeussersten Rand und nie dort, wo das Viertel wirklich baut:
+       Bauernhof (-40|-196, 170x90): Arztpraxis (-6|-152) und Bank (-66|-137) —
+         beide 45..59 m noerdlich der Hofgebaeude. Der Hof war damit weg, seine
+         Felder, Zaeune, Traktor und Heuballen aber nicht: die stehen ohne viertel()
+         auf dem Acker. Im Spiel lagen also Aecker ohne Scheune.
+       Sportpark Sued (0|216, 180x84): zwei 10x3-Kollider auf z=174 — 1,5 m in die
+         Bruttokante hinein, 10 m vom naechsten Bauplatz entfernt.
+       Gewerbe Ost (172|0, 96x150): Kirche (131|16) und zwei Marktreihen — die liegen
+         tatsaechlich im Baustreifen, das Viertel passt dort wirklich nicht.
+     Ein Viertel belegt aber nur seine zwei Bauzeilen: laengs von rand bis laenge-rand,
+     quer setback +- halbe Gebaeudetiefe. Alles andere ist Bodenplatte, Laternen und
+     Baeume — und Baeume raeumt entwirren() ohnehin beiseite. Geprueft wird darum das
+     NETTO-Rechteck; passt der Wunschort trotzdem nicht, weicht das Viertel in 10-m-
+     Schritten aus, zuerst laengs der eigenen Strasse. */
+  function viertelMass(cfg){
+    var laengs=cfg.achse==="x", laenge=laengs?cfg.w:cfg.d;
+    var TO=9/2+2.2/2+0.2;                                /* wie im Generator */
+    var setback=TO+(cfg.abstand===undefined?10:cfg.abstand);
+    var quer=0;
+    (cfg.bauten||[]).forEach(function(b){
+      var breite=laengs?(b.d||8):(b.w||10);              /* Ausdehnung QUER zur Strasse */
+      if(breite>quer)quer=breite;});
+    var hl=Math.max(12,laenge/2-(cfg.rand||14)), hq=setback+quer/2;
+    return laengs?{hw:hl,hd:hq}:{hw:hq,hd:hl};}
+  function viertelPasst(cfg,x,z){
+    var m=viertelMass(cfg);
+    /* Das Meer: der Solver kennt nur Kollider, und Wasser hat keine. */
+    if(x-m.hw<-118&&Math.abs(z)<170)return false;
     for(var i=0;i<VIERTEL.length;i++){var v=VIERTEL[i];
-      if(Math.abs(x-v.x)<(w+v.w)/2+8&&Math.abs(z-v.z)<(d+v.d)/2+8)return false;}
+      if(Math.abs(x-v.x)<m.hw+v.w/2+8&&Math.abs(z-v.z)<m.hd+v.d/2+8)return false;}
     for(var q=0;q<WORLD_SOLIDS.length;q++){var s2=WORLD_SOLIDS[q];
-      if(Math.abs(x-s2.x)<w/2+s2.hw+6&&Math.abs(z-s2.z)<d/2+s2.hd+6)return false;}
+      if(Math.abs(x-s2.x)<m.hw+s2.hw+6&&Math.abs(z-s2.z)<m.hd+s2.hd+6)return false;}
     return true;}
+  function viertelOrt(cfg){
+    if(viertelPasst(cfg,cfg.x,cfg.z))return [cfg.x,cfg.z,0];
+    var laengs=cfg.achse==="x";
+    for(var d=10;d<=120;d+=10){
+      /* Zuerst laengs der eigenen Strasse ausweichen — dort bleibt das Viertel in
+         seiner Umgebung (Felder, Anschluss, Kartenmarke) statt querfeldein zu wandern. */
+      var kand=laengs?[[cfg.x+d,cfg.z],[cfg.x-d,cfg.z],[cfg.x,cfg.z+d],[cfg.x,cfg.z-d]]
+                     :[[cfg.x,cfg.z+d],[cfg.x,cfg.z-d],[cfg.x+d,cfg.z],[cfg.x-d,cfg.z]];
+      for(var k=0;k<kand.length;k++)
+        if(viertelPasst(cfg,kand[k][0],kand[k][1]))return [kand[k][0],kand[k][1],d];}
+    return null;}
   function viertel(cfg){
-    var VX=cfg.x,VZ=cfg.z,VW=cfg.w,VD=cfg.d,laengs=cfg.achse==="x";
-    if(!viertelFrei(VX,VZ,VW,VD)){console.warn("Viertel "+cfg.name+" hat keinen Platz");return null;}
+    var VW=cfg.w,VD=cfg.d,laengs=cfg.achse==="x";
+    var ort=viertelOrt(cfg);
+    if(!ort){console.warn("Viertel "+cfg.name+" hat keinen Platz");return null;}
+    var VX=ort[0],VZ=ort[1];
+    if(ort[2])console.warn("Viertel "+cfg.name+": Wunschort belegt, "+ort[2]+" m ausgewichen nach "+VX+"|"+VZ);
     var g={name:cfg.name,x:VX,z:VZ,w:VW,d:VD,bauten:[],laengs:laengs};VIERTEL.push(g);
     /* 1) Grundflaeche */
     var bodenM=cfg.boden==="platz"?betMat(0xc6c0b2,0.93)
@@ -4338,12 +4382,27 @@ setTimeout(function baueGebaeude(){
         var tx=laengs?VX+to:VX+o3,tz=laengs?VZ+o3:VZ+to;
         if(laengs){tx=VX+to;tz=VZ+o3;}else{tx=VX+o3;tz=VZ+to;}
         if(window._baum2)window._baum2(tx,tz,0.8+((t2*3)%3)*0.14);});}
+    /* 6) Kartenmarke und Lieferziel an die TATSAECHLICHE Lage haengen. Beide standen
+       fest im Quelltext. Beim Bauernhof zeigten sie jahrelang auf einen Acker, weil
+       das Viertel ueberhaupt nicht gebaut wurde — der Lieferauftrag "Bauernhof" fuehrte
+       auf ein leeres Feld. Und seit ein Viertel ausweichen kann, laufen sie ihm sonst
+       davon. */
+    (function marke(){
+      function passt(n){return n===cfg.name||cfg.name.indexOf(n)===0||n.indexOf(cfg.name)===0;}
+      if(typeof WORLD_POIS!=="undefined")WORLD_POIS.forEach(function(P){
+        if(passt(P[3])){P[0]=VX;P[1]=VZ;}});
+      if(typeof LIEFERZIELE!=="undefined")LIEFERZIELE.forEach(function(L){
+        if(passt(L[0])){L[1]=VX;L[2]=VZ;}});})();
     return g;}
   /* ═══ Neue Viertel ausserhalb der Ringstrasse (der Generator setzt Strasse, Trottoir,
      Belag, Bebauung mit Mindestabstand, Laternen, Baeume und Kollider selbst) ═══ */
   setTimeout(function(){
-    var _go = viertel({name:"Gewerbe Ost",x:172,z:0,w:96,d:150,achse:"z",boden:"platz",
-      anschluss:[112,0],abstand:13,luecke:12,rand:14,
+    /* d 150 -> 180 und luecke 12 -> 10: nachgerechnet braucht die laengere der beiden
+       Zeilen 109,9 m Front plus vier Luecken = 149,9 m. Mit 150/12 blieben 122 m nutzbar,
+       und die letzten drei Haeuser fielen mit "passt nicht mehr" hinten runter — was
+       niemand sah, weil das Viertel ohnehin nicht gebaut wurde. 180/10 gibt 152 m. */
+    var _go = viertel({name:"Gewerbe Ost",x:172,z:0,w:96,d:180,achse:"z",boden:"platz",
+      anschluss:[112,0],abstand:13,luecke:10,rand:14,
       /* ⚠️ GEMESSEN statt geschaetzt — die th37-Zeilen unten machen es seit Charge 37
          richtig, die aelteren th20/th22/th23 standen noch mit Phantasiewerten da:
          Parkgarage 20x15 statt real 54.7x37, Bank 16x12 statt 33.9x26.6, Post
@@ -4352,7 +4411,11 @@ setTimeout(function baueGebaeude(){
          um 10.7 m, und entzerren() bekam es nicht mehr auf. */
       bauten:[{file:"th20_parkgarage.glb",h:11,w:54.7,d:37.0},
               {file:"th22_garage.glb",h:3.4,w: 5.9,d: 8.0},
-              {file:"th23_bank.glb",h:9,w:33.9,d:26.6},
+              /* ⚠️ th23_bank.glb gehoerte urspruenglich hierher, steht aber seit Charge 50
+                 als ausgebaute Bank mit Personal und Koop-Ueberfall im Suedbezirk
+                 (-66|-137). Solange dieses Viertel nicht gebaut wurde, fiel das nicht auf;
+                 jetzt gaebe es ZWEI Banken — und `window._bankPos` haette die gewonnen,
+                 die zufaellig zuletzt fertig laedt. Der Coup lief dann auf die leere. */
               {file:"th23_post.glb",h:8,w:31.7,d:25.8},
               {file:"th23_apotheke.glb",h:7,w:18.9,d:16.3},
               {file:"th23_polizeiwache.glb",h:8.5,w:32.3,d:25.4},
@@ -4371,7 +4434,14 @@ setTimeout(function baueGebaeude(){
        ["th37_kombi.glb",      1.70,-3.2,-18, Math.PI/2],
        ["th37_sportwagen.glb", 1.18, 3.2, 16,-Math.PI/2],
        ["th37_lieferwagen.glb",2.50, 3.2, 44,-Math.PI/2]].forEach(function(C){
-        bau(C[0],C[1],172+C[2],0,C[3],C[4],false,null,true);});
+        /* ⚠️ x war hart 172, z absolut. Seit viertel() bei belegtem Wunschort ausweicht,
+           stimmt das nicht mehr — die vier Wagen parkten sonst 40 m westlich des
+           Viertels auf freiem Feld. Sie haengen jetzt an der TATSAECHLICHEN Lage. */
+        bau(C[0],C[1],_go.x+C[2],0,_go.z+C[3],C[4],false,null,true);});
+      /* Die Stadthaeuser haengen am Ostviertel, ihre Kartenmarke stand aber fest auf
+         (172|60) — also 60 m noerdlich des WUNSCH-Orts. Gleicher Versatz, echte Lage. */
+      if(typeof WORLD_POIS!=="undefined")WORLD_POIS.forEach(function(P){
+        if(P[3]==="Stadthaeuser Ost"){P[0]=_go.x;P[1]=_go.z+60;}});
     }
     /* 🏙️ STADTVIERTEL SUEDOST — die Stadthaeuser und Fahrzeuge aus Charge 37.
        Sie lagen bisher nur in models/, im Spiel sah sie niemand. Standort so
@@ -5401,10 +5471,19 @@ setTimeout(function baueGebaeude(){
         po.position.set(wx,BERGY+0.85,wz);scene.add(po);}
       /* Stationen */
       var talG=null;
+      /* ⚠️ GEMESSEN: die beiden Stationen hatten KEINEN Kollider. Ein 20 m breites
+         Gebaeude, das in keiner Freiflaechenpruefung vorkommt — der Quartier-Generator
+         hat das Ostviertel deshalb genau darauf gesetzt (th37_eckhaus steckte 2,41 m
+         tief in der Talstation, 37 Meshpaare) und die Spielfigur lief hindurch. Die
+         Groesse kommt aus der GELADENEN Box, nicht aus einer Schaetzung. */
+      function stationSolid(w,x,z){
+        var bb=new THREE.Box3().setFromObject(w);
+        addSolid(x,z,bb.max.x-bb.min.x,bb.max.z-bb.min.z);}
       bau("th26_seilbahn_station.glb",9.5,TAL.x,TALY,TAL.z,winkel,false,function(w){
-        talG=w;w.userData.fest=1;FAHRTEN.push({typ:"seilbahn",w:w,name:"th26_seilbahn_station.glb"});},true);
+        talG=w;w.userData.fest=1;FAHRTEN.push({typ:"seilbahn",w:w,name:"th26_seilbahn_station.glb"});
+        stationSolid(w,TAL.x,TAL.z);},true);
       bau("th26_seilbahn_station.glb",9.5,BERG.x,BERGY+0.3,BERG.z,winkel+Math.PI,false,
-        function(w){w.userData.fest=1;},true);
+        function(w){w.userData.fest=1;stationSolid(w,BERG.x,BERG.z);},true);
       /* Stuetzen auf gerechneter Gelaendehoehe, jede genau unter dem Seil */
       var seilM=new THREE.MeshStandardMaterial({color:0x3c4148,roughness:0.5,metalness:0.6});
       /* Stuetzenpunkte aus derselben Suche: alle fuenf stehen auf freiem Grund und
