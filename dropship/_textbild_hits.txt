@@ -12771,3 +12771,5 @@ gid://shopify/Product/15508464271745	33->0	Wickeltasche mit Nass- und Trockenfac
 gid://shopify/Product/15508644168065	114->0	Wasserdichte Outdoor-Reisetasche für Laptops
 gid://shopify/Product/15509134770561	92->1	Hawaiihemd mit Stehkragen und Streifenmuster
 gid://shopify/Product/15509347991937	86->0	Bequeme Denim-Sneaker für Damen
+gid://shopify/Product/15509370372481	12->2	Sonnenblumen-Wandspiegel aus Makramee
+gid://shopify/Product/15509385314689	22->2	Bergemagnet D25mm mit Ringschraube

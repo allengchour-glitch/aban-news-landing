@@ -1879,3 +1879,5 @@ gid://shopify/Product/15447959241089	CHF 23.56	54 Varianten	Baumwoll-Sweatshirt 
 gid://shopify/Product/15447959404929	CHF 22.46	49 Varianten	Chenille-Baumwolljacke mit Reissverschluss
 gid://shopify/Product/15447959568769	CHF 18.47	22 Varianten	Partnerlook Bikini blau-weiss gestreift
 gid://shopify/Product/15447959699841	CHF 22.32	30 Varianten	Weihnachts-Pullover für Damen
+gid://shopify/Product/15447959863681	CHF 20.71	60 Varianten	Freizeit-Hoodie-Set für Damen
+gid://shopify/Product/15447959994753	CHF 20.36	6 Varianten	Sportliches Fleece-Set mit Schriftzug-Print
