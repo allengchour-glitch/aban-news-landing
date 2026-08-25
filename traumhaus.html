@@ -560,6 +560,16 @@ function inSolid(x,z){
       if(d9.a==="x"&&Math.abs(dx-(d9.at-s.x))<inner+0.15&&Math.abs(dz-(d9.c-s.z))<d9.w/2)continue;}
     return true;}
   return false;}
+/* ⚠️ `inSolid()` ist ein WAND-Test, kein Volumen-Test: liegt der Punkt mehr als 0,55 m
+   von jeder Kante entfernt, gibt es `false` — damit die Figur in Raeumen laufen kann.
+   Fuer die Frage "steht hier ein Gebaeude?" ist das die falsche Frage, und sie kostete
+   schon einen Anlauf: ein Wagen mitten in der Seilbahn-Talstation galt als "frei".
+   Dafuer gibt es imBau(): die volle Grundflaeche, ohne Tuer- und Wandausnahmen. */
+function imBau(x,z){
+  var b=SOLID_GRID[solidKey(x,z)];if(!b)return false;
+  for(var i=0;i<b.length;i++){var s=b[i];
+    if(Math.abs(x-s.x)<=s.hw&&Math.abs(z-s.z)<=s.hd)return true;}
+  return false;}
 /* Rotationssicher: bei rotY≈±90° Breite/Tiefe tauschen */
 /* 🛣️ STRASSEN-SCHUTZ (User-Screenshot: Baeume und Baenke standen mitten auf der Fahrbahn).
    Statt ~96 Einzelkoordinaten nachzupflegen prueft jede Platzierung selbst, ob sie in einem
@@ -3899,6 +3909,19 @@ function updLandbus(dt){
     else{
       var vor=b.pos;
       b.pos+=b.rdir*9.0*dt;
+      /* ⚠️ GEMESSEN: die Wendemarke war fest RAD_R1 = 193 — und seit das
+         Bauernhof-Viertel wirklich gebaut wird, endet die Speiche 240 Grad IM
+         STALL. Der Strahl von oben trifft bei r = 200 ein Dach auf 4,31 m, die
+         3D-Pruefung meldete 193 Meshpaare Bus x th18_stall. Die Marke wird darum
+         aus der Welt gelesen statt geraten: bis zum ersten Kollider auf der
+         eigenen Speiche, eine halbe Buslaenge davor. Alle 4 s neu, weil Bauten
+         nach dem Laden noch gerueckt werden. */
+      b._maxT=(b._maxT||0)-dt;
+      if(b._max===undefined||b._maxT<=0){
+        b._maxT=4; b._max=RAD_R1;
+        for(var r9=RAD_R0+12;r9<=RAD_R1;r9+=2){
+          if(inSolid(ca*r9,sa*r9)){b._max=Math.max(RAD_R0+20,r9-9);break;}}}
+      if(b.pos>b._max){b.pos=b._max;b.rdir=-1;}
       if(b.pos>RAD_R1){b.pos=RAD_R1;b.rdir=-1;}
       if(b.pos<RAD_R0){b.pos=RAD_R0;b.rdir= 1;}
       /* 🩹 Schwarm-6: vor>=HP war nach dem Halt SOFORT wieder wahr (der Bus
@@ -4437,7 +4460,35 @@ setTimeout(function baueGebaeude(){
         /* ⚠️ x war hart 172, z absolut. Seit viertel() bei belegtem Wunschort ausweicht,
            stimmt das nicht mehr — die vier Wagen parkten sonst 40 m westlich des
            Viertels auf freiem Feld. Sie haengen jetzt an der TATSAECHLICHEN Lage. */
-        bau(C[0],C[1],_go.x+C[2],0,_go.z+C[3],C[4],false,null,true);});
+        bau(C[0],C[1],_go.x+C[2],0,_go.z+C[3],C[4],false,function(w9){
+          (window._goWagen=window._goWagen||[]).push({w:w9,dir:C[3]<0?-1:1});},true);});
+      /* ⚠️ GEMESSEN: nach dem Umzug des Viertels nach (212|0) stand der Sportwagen in
+         der SEILBAHN-TALSTATION (2,14 m, 50 Meshpaare). Die vier Wagen sind kein Teil
+         von `g.bauten` und werden mit ohneSchutz gesetzt — weder `wegVonStrasse` noch
+         `entzerren()` fassen sie an. Sie ruecken darum nach dem Laden selbst zur Seite,
+         solange sie in einem Kollider stehen.
+         ⚠️ NICHT auf feste Zeitpunkte setzen. Der erste Versuch prueft einmal bei 20 s
+         und aenderte nichts, drei feste Zeitpunkte (20/40/60 s) halfen mal und mal
+         nicht: die Talstation bekommt ihren Kollider erst, wenn IHR Modell geladen ist,
+         und wann das ist, haengt an der Netz- und Rechnerlast. Ein Lauf hatte den Wagen
+         danach bei z=46 (frei), der naechste unveraendert bei z=16 (in der Station).
+         Wer gegen etwas prueft, das asynchron entsteht, braucht eine WIEDERHOLUNG statt
+         eines Zeitpunkts. Alle 2 s bis 95 s, das kostet vier Rasterabfragen. */
+      (function(){
+        /* ⚠️ Und der Platz muss auch gegen die ANDEREN drei Wagen frei sein. Der erste
+           Anlauf prueft nur gegen Gebaeude — der Sportwagen wich der Talstation aus und
+           parkte prompt im Lieferwagen (103 Meshpaare). Wer etwas verschiebt, muss alles
+           pruefen, was am Zielort schon steht, nicht nur das, wovor er ausweicht. */
+        function frei9(q,alle){
+          if(imBau(q.w.position.x,q.w.position.z))return false;
+          for(var i9=0;i9<alle.length;i9++){var o9=alle[i9];if(o9===q)continue;
+            if(Math.hypot(o9.w.position.x-q.w.position.x,o9.w.position.z-q.w.position.z)<7)return false;}
+          return true;}
+        var _t9=setInterval(function(){
+          var alle=window._goWagen||[];
+          alle.forEach(function(q){
+            for(var n9=0;n9<8&&!frei9(q,alle);n9++)q.w.position.z+=q.dir*6;});},2000);
+        setTimeout(function(){clearInterval(_t9);},95000);})();
       /* Die Stadthaeuser haengen am Ostviertel, ihre Kartenmarke stand aber fest auf
          (172|60) — also 60 m noerdlich des WUNSCH-Orts. Gleicher Versatz, echte Lage. */
       if(typeof WORLD_POIS!=="undefined")WORLD_POIS.forEach(function(P){
@@ -5586,10 +5637,19 @@ setTimeout(function baueGebaeude(){
       gridNeu();                      /* verschobene Kollider ins Raster zurueck */
       window._entzerrt=(window._entzerrt||0)+1;
     }
-    /* 🐛 entzerren() lief nur EINMAL bei 14 s. Modelle, die spaeter fertig laden,
-       waren da noch nicht vermessen und blieben verkeilt — im Viertel „Gewerbe Ost"
-       ueberlappten zwei Hallen um 10.7 m. Wie beim Entwirrer braucht es einen
-       zweiten, spaeten Lauf. */
+    /* 🐛 entzerren() laeuft nur EINMAL bei 14 s. Modelle, die spaeter fertig laden,
+       sind da noch nicht vermessen und bleiben verkeilt — im Viertel „Gewerbe Ost"
+       ueberlappten zwei Hallen um 10,7 m.
+       ⚠️ HIER STAND: „Wie beim Entwirrer braucht es einen zweiten, spaeten Lauf."
+       DAS IST FALSCH, und der Satz hat schon einmal jemanden in die Falle gefuehrt.
+       Der zweite Lauf existierte, wurde GEMESSEN und wieder entfernt: er schob 18
+       Objekte zurueck in Strassenkorridore (entzerren kennt nur Reihen, keine
+       Fahrbahnen), und freiRaeumen() bekam sie wegen der 26-m-Schubgrenze nicht alle
+       heraus. Die Begruendung steht bei den spaeten Laeufen weiter unten
+       (`setTimeout(function(){freiRaeumen();entwirren();},32000)`), zusammen mit dem
+       Satz, der zaehlt: eine Ueberschneidung im Gewerbegebiet ist das kleinere Uebel
+       als 18 Bauten auf der Fahrbahn. Wer hier einen zweiten Lauf ergaenzen will,
+       misst vorher BEIDE Zahlen. */
     setTimeout(entzerren,14000);
     /* 🧩 GLOBALER ENTWIRRER (User: „viele stl ueberkreuzung? passe es an?").
        entzerren() oben raeumt nur INNERHALB eines Viertels auf. Gemessen blieben
