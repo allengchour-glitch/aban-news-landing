@@ -136,3 +136,17 @@ for S in cj_queue_runner autocommit reel_engine_runner social_autopilot \
 done
 
 echo "STAND: $(zaehle cj_runner) CJ-Runner, Aufseher=$(zaehle fixer_keepalive.sh)"
+
+# 💾 Snapshot-Rewind-Erkennung (25.08.2026, 4× an einem Morgen): Der Container stellt beim
+# Restart einen ALTEN Disk-Snapshot her — der Baum faellt hinter origin zurueck, die
+# CJ-Zahl SINKT, jeder Push waere non-fast-forward. Erkennung braucht ERST einen fetch:
+# die origin-Ref des Snapshots ist selbst veraltet und meldet ohne fetch "up to date".
+find .git -name "*.lock" -delete 2>/dev/null
+if timeout 60 git fetch -q origin claude/luxestyle-status-tztnn1 2>/dev/null; then
+  hinten=$(git rev-list --count HEAD..origin/claude/luxestyle-status-tztnn1 2>/dev/null || echo 0)
+  if [ "${hinten:-0}" -gt 5 ]; then
+    echo "REWIND erkannt ($hinten hinter origin) — repo_vorspulen"
+    git checkout origin/claude/luxestyle-status-tztnn1 -- automation/repo_vorspulen.sh 2>/dev/null
+    bash automation/repo_vorspulen.sh 2>&1 | tail -2
+  fi
+fi
