@@ -1992,3 +1992,6 @@ gid://shopify/Product/15447992828289	CHF 20.82	6 Varianten	Retro PU-Weste für D
 gid://shopify/Product/15447992992129	CHF 20.37	4 Varianten	Ärmelloses Jeans-Top mit V-Ausschnitt
 gid://shopify/Product/15447993090433	CHF 32.91	16 Varianten	Merino Woll-Cardigan Weste
 gid://shopify/Product/15447993254273	CHF 19.58	30 Varianten	Asymmetrisches ärmelloses Top mit eckigem Ausschni
+gid://shopify/Product/15447993418113	CHF 18.14	20 Varianten	Sommerliches Floral-Print Tanktop
+gid://shopify/Product/15447993581953	CHF 19.07	5 Varianten	Damen Polka-Dot Print Top Ärmellos
+gid://shopify/Product/15447993745793	CHF 17.37	5 Varianten	Schwarze ärmellose Weste mit Rundhalsausschnitt

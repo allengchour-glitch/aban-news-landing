@@ -12803,3 +12803,4 @@ gid://shopify/Product/15510697607553	32->0	Klinkenbuchse für E-Gitarre & Bass
 gid://shopify/Product/15510711697793	24->0	Halsband- und Leinen-Set für mittelgrosse Hunde
 gid://shopify/Product/15510917087617	97->2	Digital bedrucktes V-Neck Freizeitkleid für Damen
 gid://shopify/Product/15510918365569	119->0	Bequeme Plateau-Sandalen für Damen
+gid://shopify/Product/15510919807361	18->0	Industrielle Multifunktionszange
