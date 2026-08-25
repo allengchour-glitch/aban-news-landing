@@ -12669,3 +12669,7 @@ gid://shopify/Product/15501657702785	41->1	Lithium-Akkus für RC-Fahrzeuge
 gid://shopify/Product/15501658325377	82->3	USB AA Ni-MH Akkus, 2 Stück
 gid://shopify/Product/15501660881281	10->0	Akku für DJI Mavic Pro Drohne
 gid://shopify/Product/15501683196289	93->0	Solar-Ladegerät für draussen
+gid://shopify/Product/15501846315393	30->1	Stainless Steel Cocktail-Set
+gid://shopify/Product/15501851099521	84->0	Weitwinkelmirror für Innenausstattung
+gid://shopify/Product/15501902152065	91->0	Luftbett für draussen
+gid://shopify/Product/15501919519105	80->0	Keramik-Teller für Hunde und Katzen
