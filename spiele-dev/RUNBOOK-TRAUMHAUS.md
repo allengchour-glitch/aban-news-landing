@@ -893,3 +893,25 @@ werden 7 m nebeneinander versetzt (sonst stapeln die Marker).
 auf den Marker: Weltkoordinate → Canvas-Pixel → CSS-Pixel (Canvas ist per max-width skaliert,
 `getBoundingClientRect`-Umrechnung Pflicht), 3 px daneben geklickt → rastet trotzdem ein.
 `done`-Missionen verschwinden aus `missZiele()` (verifiziert).
+
+## 2026-08-25 · 🛣️ Strassennetz-Ausbau: GPS + Karte + Radar kennen jetzt die GANZE Welt
+
+**Befund (User: „strasse ausbauen"):** Asphalt + Verkehr fuer Landstrasse (r 200), 6 Zubringer
+und 5 Viertel-Verbinder existierten laengst — aber (a) das GPS-Raster endete bei z=280
+(Freizeitpark 330 / Bauernhof −241 = unerreichbar), (b) `gpsStrasse` kannte nur die Innenstadt
+(Routen nach draussen schnitten querfeldein), (c) die Weltkarte zeichnete weder Landstrasse
+noch Sued-Viertel (Z1=280 mitten im Sportpark).
+
+**Fix:** Raster −300..250 / **−260..392** (138×163). Neue gemeinsame Tabellen
+`_GPS_ZUB` (6 Zubringer-Winkel) + `_GPS_VERB` (Verbinder als ["z",x,z0,z1]/["x",z,x0,x1]:
+Gewerbe Ost, Sportpark, Freizeitpark-L, Bauernhof, Strandzufahrt) — EINE Quelle fuer
+GPS-Kosten UND Karten-/Radar-Zeichnung. Ring-Erkennung `|hypot−200|<5` mit Meer-Sektor-
+Aussparung (126°..234°, wie `landstrasse()` sie baut). Karte: Z-Grenzen −240..345, Ring als
+`arc()` mit Luecke, See-Kreis (0,146) erklaert die Verbinder-Luecke.
+
+**Gemessen (th-netz.mjs, 13/13):** Route Marktplatz→Freizeitpark endet exakt (60,330),
+29 Punkte auf dem Sued-Verbinder, 80 % Strassen-Anteil; Bauernhof (−40,−196) erreichbar;
+Meer-Sektor bleibt Nicht-Strasse. **Falle:** Wer neue Strassen baut, muss `_GPS_VERB`/
+`gpsStrasse` NACHFUEHREN — sonst routet das GPS daran vorbei (genau der Fehler, der hier
+behoben wurde). Naechster echter Ausbau-Kandidat: Achterbahn (−190,212) hat als einziges
+Ziel KEINEN Asphalt (Waldsaum/Berge vorher vermessen!).
