@@ -23659,3 +23659,5 @@ gid://shopify/Product/15513086165377	bereinigt
 gid://shopify/Product/15513087312257	bereinigt
 gid://shopify/Product/15513088622977	bereinigt
 gid://shopify/Product/15513089311105	bereinigt
+gid://shopify/Product/15513182503297	bereinigt
+gid://shopify/Product/15513272779137	bereinigt
