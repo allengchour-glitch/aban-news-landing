@@ -1995,3 +1995,5 @@ gid://shopify/Product/15447993254273	CHF 19.58	30 Varianten	Asymmetrisches ärme
 gid://shopify/Product/15447993418113	CHF 18.14	20 Varianten	Sommerliches Floral-Print Tanktop
 gid://shopify/Product/15447993581953	CHF 19.07	5 Varianten	Damen Polka-Dot Print Top Ärmellos
 gid://shopify/Product/15447993745793	CHF 17.37	5 Varianten	Schwarze ärmellose Weste mit Rundhalsausschnitt
+gid://shopify/Product/15447993876865	CHF 18.01	20 Varianten	Retro Polka-Dot Tanktop mit eckigem Ausschnitt
+gid://shopify/Product/15447994007937	CHF 36.34	5 Varianten	Elegante Chenille-Weste mit Streifenmuster

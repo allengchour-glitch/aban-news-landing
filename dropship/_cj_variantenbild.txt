@@ -1457,3 +1457,4 @@ gid://shopify/Product/15448527372673	zugeordnet	18	Eleganter Jumpsuit mit weitem
 gid://shopify/Product/15448530780545	zugeordnet	10	Damen Jumpsuit mit weitem Bein und Print
 gid://shopify/Product/15448531075457	zugeordnet	9	Einteiliger Damen-Badeanzug
 gid://shopify/Product/15448531337601	zugeordnet	9	Figurbetonter Jumpsuit mit U-Ausschnitt
+gid://shopify/Product/15448531632513	zugeordnet	40	Kapuzen-Jumpsuit mit V-Ausschnitt und Taschen
