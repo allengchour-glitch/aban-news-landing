@@ -6961,7 +6961,16 @@ setTimeout(function baueGebaeude(){
      Die Tuer liegt im Modell auf Blender +y, in three.js also -z; rotY = pi
      dreht sie nach Norden, zur Stadt hin. */
   (function bankAusbau(){
-    var BX=-66, BZ=-137, BH=5.7;
+    /* ⚠️ GEMESSEN: auf (-66|-137) stand die Bank AUF DER ZUBRINGERSTRASSE. Die Speiche
+       240 Grad traegt dort echten Belag — Querschnitt bei r=170: Asphalt #4a4a53 von
+       q -3 bis +3, Mittellinie auf q 0, Kiesbankett bei q +-4,5. Die Bank lag 11,3 m
+       von der Mittellinie bei 10,7 m eigener Halbbreite, ihre Wand also im Fahrstreifen;
+       der Strahl von oben traf bei r=150 ihr Dach auf 4,23 m. Seit der Landbus seine
+       Wendemarke aus der Welt liest, kehrte er deswegen bei r=148 statt 193 um.
+       Verschoben um 9 m SENKRECHT zur Speiche (+7,8 | -4,5): der Abstand zur Mittellinie
+       steigt damit auf 20,3 m — 10,7 Halbbreite + 4,5 halbe Fahrbahn + Reserve. Das
+       Behoerdenviertel mit der Klinik (-6|-152) bleibt beisammen. */
+    var BX=-58.2, BZ=-141.5, BH=5.7;
     bau("th23_bank.glb",BH,BX,0,BZ,Math.PI,false,function(w){
       w.userData.fest=true; window._bankObj=w;
       window._bankPos={x:BX,z:BZ}; bankPersonal();},true);
@@ -10591,13 +10600,19 @@ addEventListener("orientationchange",function(){setTimeout(layoutLinkeSpalte,260
    userData (la/ra = Arme) — beim Ueberfall gehen die Haende hoch, genau wie in
    der Panik-Animation der Passanten (rotation.x = -2.4). */
 var BANK_LEUTE=[];
-var BANK_POSTEN=[[-71.5,-143.6],[-67.8,-143.6],[-64.2,-143.6]];
+/* ⚠️ Die drei Schalterplaetze standen als ABSOLUTE Koordinaten hier — beim Verschieben
+   der Bank waere das Personal auf dem alten Grundstueck stehen geblieben. Jetzt relativ
+   zur tatsaechlichen Lage (`window._bankPos`, gesetzt beim Laden des Modells). */
+var BANK_POSTEN_REL=[[-5.5,-6.6],[-1.8,-6.6],[1.8,-6.6]];
+function bankPosten(){
+  var b=window._bankPos||{x:-58.2,z:-141.5};
+  return BANK_POSTEN_REL.map(function(o){return [b.x+o[0],b.z+o[1]];});}
 function bankPersonal(){
   if(BANK_LEUTE.length)return;
   var F=[{skin:0xf0c090,hair:0x2a2a34,top:0x2a3a6e,bottom:0x1a2340,dress:false,longHair:false},
          {skin:0xffd9b8,hair:0x8a5a2a,top:0x7a3a5a,bottom:0x2a2a38,dress:true, longHair:true },
          {skin:0xd9a06a,hair:0x1a1a24,top:0x3a5a4a,bottom:0x2a2a38,dress:false,longHair:false}];
-  BANK_POSTEN.forEach(function(p,i){
+  bankPosten().forEach(function(p,i){
     var m=mkBewohner(F[i]);
     m.position.set(p[0],0.20,p[1]);
     m.rotation.y=Math.PI;                 /* Blick nach +z: zu den Kunden und zur Tuer */
