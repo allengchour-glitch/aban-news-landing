@@ -779,9 +779,29 @@ Netto-Rechteck bis (−105\|−167), also **r = 199**: mitten im Band, und der S
 zwei Lücken = 72 von 80 nutzbaren Metern), der Hof **bleibt auf seinem Wunschort**, und
 seine Äcker liegen unverändert dort, wo sie immer lagen.
 
-**Damit steht kein einziges Gebäude mehr auf einer Fahrbahn.** Belagstreffer gesamt
-154 → 102; was übrig ist, ist Dekoration (die Viertelslaternen des Hofs am Westende,
-Bäume, Findlinge) und die zehn Seilbahnstützen, die auf ihrer eigenen Linie stehen.
+**Belagstreffer gesamt 154 → 102** — und dann die Quittung dafür, dass ich nur *ein*
+Werkzeug laufen ließ.
+
+### ⚠️ Nach jedem Verschieben BEIDE Werkzeuge laufen lassen
+
+Der Zuschnitt-Trick brachte Gewerbe Ost auf (252\|0) und die Straßenzahl auf 102 — die
+nächste 3D-Prüfung meldete dort aber **`th23_polizeiwache` 19,70 m tief in der
+Seilbahn-Talstation, 499 Meshpaare**, der größte Fehler der ganzen Karte. `th-strassen.mjs`
+kann das nicht sehen, `th-3d.mjs` schon; ich hatte nach dem Verschieben nur das erste
+laufen lassen.
+
+**Ursache:** `viertelPasst()` prüft `WORLD_SOLIDS` — aber Kollider entstehen im
+`bau()`-Callback, also **nach** dem Modell-Download, während die Viertel sofort gesetzt
+werden. Die Talstation existierte für den Solver schlicht noch nicht. Große Bauten mit
+fester Adresse gehören darum zusätzlich in `SPAETE_SPERREN` (Maße aus der geladenen Box).
+
+Dazu prüft die Suche jetzt in **drei** Stufen statt zwei: Straßen + Berge → nur Berge →
+nur das Nötigste. Vorher schaltete die Rückfallstufe *beides* ab, ein Viertel ohne
+straßenfreien Platz durfte also wieder im Gebirge landen — der viel schlimmere Fehler.
+
+**Preis, offen benannt:** Gewerbe Ost findet jetzt nur noch (172\|−80); Parkgarage und Post
+streifen dort die Landstraße, Belagstreffer 102 → 130. Ein Gebäude *in* einem Gebäude ist
+das schlimmere Übel als eines am Straßenrand — die Reihenfolge stimmt so.
 
 ### Zwei Fehlanzeigen aus derselben Runde (beide geprüft, beide sauber)
 * **Alle 97 Katalog-Einträge lassen sich bauen.** Mit `geld` und `wohnstufe` auf Maximum
