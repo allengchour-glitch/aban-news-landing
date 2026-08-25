@@ -12742,3 +12742,6 @@ gid://shopify/Product/15504157376897	18->0	Donut Plüschkissen
 gid://shopify/Product/15504172876161	35->0	Frucht-Servierplatte mit Glasabdeckung
 gid://shopify/Product/15504178217345	76->0	BBQ-Grillnetz mit Clip, 430er Edelstahl
 gid://shopify/Product/15504178282881	11->0	CD & Schallplatten Halterung Holz
+gid://shopify/Product/15505980064129	17->3	Business-Freizeit Umhängetasche
+gid://shopify/Product/15506109825409	21->0	Repellent Nylon Umhängetasche für Herren
+gid://shopify/Product/15506162516353	21->1	Bubble Letter Armreif personalisierbar
