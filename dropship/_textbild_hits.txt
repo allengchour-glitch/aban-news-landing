@@ -12766,3 +12766,8 @@ gid://shopify/Product/15508412891521	47->0	Keramik Futternapf für Katze und Hun
 gid://shopify/Product/15508415283585	16->0	Resin-Armband für Apple Watch (verschiedene Farben)
 gid://shopify/Product/15508418101633	13->1	Hundeleine – reissfest und reflektierend
 gid://shopify/Product/15508421050753	13->0	Uhrenbox aus Ebenholz für eine Uhr
+gid://shopify/Product/15508423836033	41->1	Peep-Toe Plateau-Sandalen mit hohem Absatz
+gid://shopify/Product/15508464271745	33->0	Wickeltasche mit Nass- und Trockenfach
+gid://shopify/Product/15508644168065	114->0	Wasserdichte Outdoor-Reisetasche für Laptops
+gid://shopify/Product/15509134770561	92->1	Hawaiihemd mit Stehkragen und Streifenmuster
+gid://shopify/Product/15509347991937	86->0	Bequeme Denim-Sneaker für Damen
