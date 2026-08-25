@@ -875,3 +875,21 @@ neu rechnen, Ring pulsiert. Wegpunkt ist **persönlich** — im Koop kein Netz-S
 
 **Werkzeug:** `spiele-dev/tools/th-gps.mjs` (10 Checks: Pfad sauber, Strassen-Anteil,
 Beam/Ring, Ankunft, Screenshots `gps-bigmap.png`/`gps-radar.png`).
+
+## 2026-08-25 · 🎯 Missions-Marker auf Karte + Radar (GTA-Stil)
+
+**Was:** Die 3 Tagesmissionen zeigen ihre Orte als **gelbe Marker** auf Weltkarte + Radar
+(Rand-Klebe-Logik wie die Orte). Tipp auf die Karte **in ≤16 m Nähe eines Markers rastet ein**
+und setzt das GPS exakt auf den Missions-Ort (Hint „🎯 Route zur Mission: …").
+
+**Orts-Tabelle `MISS_ORTE`** (Pool-Index → [x,z], im Code nachgemessen): Heim-Missionen
+(Fische/Kochen/Tanzen/Ernten/Möbel/Abnahme) = Grundstück-Mitte (0,0), Stunt-Rampe (−64,28,
+`baueRampe`), Enten-See (0,146), Fussball (53,155, BALL-Anstoss), Laden (−24,74).
+**Ortlos** (kein Marker): Emotes (überall), Strassenmusik (17–21 Uhr, überall).
+📦 Lieferung zeigt aufs **eigene Auto** (`autoRec`), sonst Zuhause. Mehrere Heim-Missionen
+werden 7 m nebeneinander versetzt (sonst stapeln die Marker).
+
+**Werkzeug:** `spiele-dev/tools/th-missmap.mjs` (8 Checks) — inkl. **echtem `page.mouse.click`**
+auf den Marker: Weltkoordinate → Canvas-Pixel → CSS-Pixel (Canvas ist per max-width skaliert,
+`getBoundingClientRect`-Umrechnung Pflicht), 3 px daneben geklickt → rastet trotzdem ein.
+`done`-Missionen verschwinden aus `missZiele()` (verifiziert).
