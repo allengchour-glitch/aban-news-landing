@@ -7706,6 +7706,32 @@ var BALL=(function(){
   return {m:m,x:53,z:155,vx:0,vz:0,cd:0,sendT:0,stand:[0,0],torCd:0,net:null,netV:null,netT:0};
 })();
 function ballReset(){BALL.x=53;BALL.z=155;BALL.vx=0;BALL.vz=0;}
+/* ── 🔢 ANZEIGETAFEL: der Spielstand steht LIVE auf dem th44_spielstand ───────
+   Das Modell ist GEMESSEN 5,3 m breit (x 50,35…55,65), ein duennes Paneel um
+   z 179,5, Front zum Feld auf der kleinen z-Seite. Das Display haengt 5 cm
+   davor und schaut nach -z (rotY pi). Eine Canvas-Textur, neu gezeichnet nur
+   bei Torereignissen — kostet einen Zeichenaufruf und sonst nichts. */
+var ANZEIGE=(function(){
+  var cv=document.createElement("canvas");cv.width=256;cv.height=96;
+  var tx=new THREE.CanvasTexture(cv);
+  var m=new THREE.Mesh(new THREE.PlaneGeometry(3.6,1.35),
+    new THREE.MeshBasicMaterial({map:tx}));
+  m.position.set(53,4.25,179.14);m.rotation.y=Math.PI;
+  m.userData.nieAusblenden=true;scene.add(m);
+  return {cv:cv,tx:tx};
+})();
+function anzeigeUpd(){
+  var c=ANZEIGE.cv.getContext("2d");
+  c.fillStyle="#181f2c";c.fillRect(0,0,256,96);
+  c.strokeStyle="#3a4658";c.lineWidth=3;c.strokeRect(4,4,248,88);
+  c.textAlign="center";c.textBaseline="middle";
+  c.fillStyle="#7aa8e8";c.font="bold 20px sans-serif";c.fillText("BLAU",52,24);
+  c.fillStyle="#e88a7a";c.fillText("ROT",204,24);
+  c.fillStyle="#f4f2ec";c.font="bold 48px sans-serif";
+  c.fillText(BALL.stand[0]+" : "+BALL.stand[1],128,62);
+  ANZEIGE.tx.needsUpdate=true;
+}
+anzeigeUpd();
 function updBall(dt,now){
   var B=BALL,X0=31,X1=75,Z0=141,Z1=169,TORW=2.4,CZ9=155;
   if(MPs&&!mpHost){
@@ -7744,7 +7770,7 @@ function updBall(dt,now){
 }
 function tor(seite){
   var B=BALL;B.torCd=3;
-  B.stand[seite]++;
+  B.stand[seite]++;anzeigeUpd();
   if(typeof stats!=="undefined"){stats.tore=(stats.tore||0)+1;}
   var tx=seite?31:75;
   if(typeof launchFirework==="function")launchFirework(tx,155);
@@ -8574,7 +8600,7 @@ function onNetMsg(m){
   else if(m.t==="coasterStart"){var C9=window._coaster;if(C9&&!C9.faehrt){C9.faehrt=true;C9.v=5;C9.t=0;C9.runden=0;}}
   else if(m.t==="coaster"&&!mpHost){var C8=window._coaster;if(C8){C8.t=m.tt;C8.v=m.v;C8.faehrt=true;}}
   else if(m.t==="ball"&&!mpHost){netAnnehmen(BALL,{x:m.x,z:m.z},performance.now());}
-  else if(m.t==="tor"&&!mpHost){BALL.stand=m.st;ballReset();BALL.net=null;BALL.netV=null;
+  else if(m.t==="tor"&&!mpHost){BALL.stand=m.st;anzeigeUpd();ballReset();BALL.net=null;BALL.netV=null;
     if(typeof launchFirework==="function")launchFirework(m.tx,155);
     beep(660,.09,"square",.05);hint("⚽ TOOOR! Stand "+m.st[0]+" : "+m.st[1]);}
   else if(m.t==="eis"&&!mpHost){if(typeof hearts==="function")hearts(EIS.x,EIS.z);
