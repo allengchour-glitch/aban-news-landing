@@ -813,10 +813,23 @@ das schlimmere Übel als eines am Straßenrand — die Reihenfolge stimmt so.
 
 ## 🎯 Sollwerte einer sauberen Szene
 
-| Messwert | Soll |
-|---|---|
-| Objekte im Straßenkorridor | 0 |
-| Größte Überschneidung | ≈ 6,3 m (Bergstation ↔ oberste Seilbahnstütze, gewollt) |
-| Fehlende Modelle (404) | 0 |
-| JS-Fehler | 0 |
-| Zeichenaufrufe | < 2000 |
+Stand 2026-08-25, alles nachgemessen. **„Soll 0" stand hier für Werte, die nie 0 waren** —
+das macht die Tabelle als Warnlampe unbrauchbar, weil jeder Blick darauf einen Alarm
+zeigt. Jetzt steht der gemessene Ist-Wert daneben; wer eine Zahl steigen sieht, hat etwas
+kaputtgemacht.
+
+| Messwert | Soll | Ist | Werkzeug |
+|---|---|---|---|
+| Objekte auf dem Belag | fällt, nicht steigt | **130** | `th-strassen.mjs` |
+| davon **Gebäude** | so wenig wie möglich | Parkgarage + Post (Ostviertel an der Landstraße) | ″ |
+| Größte Überschneidung | ≈ 8,2 m (zusammengefasste Hochhaus-Module, bauartbedingt) | **8,20 m** | `th-3d.mjs` |
+| Echte Überschneidungen | fällt, nicht steigt | **≈ 62–68** (schwankt, `entwirren()` ist zeitabhängig) | ″ |
+| Marken/Lieferziele ohne Ziel | 0 | **0** (Ausnahme „Meer") | `th-marken.mjs` |
+| Fehlende Modelle (404) | 0 | **0** | jeder Ladelauf |
+| JS-Fehler | 0 | **0** | jeder Ladelauf |
+| Zeichenaufrufe | < 2000 | **618** | `renderer.info.render.calls` |
+| Nicht eingefrorene Objekte | nur Bewegliches | **239** (alle mit `_bewegt`) | Probe auf `matrixAutoUpdate` |
+
+⚠️ **Zwei Werkzeuge, nicht eins.** `th-strassen.mjs` sieht keine Gebäude ineinander,
+`th-3d.mjs` sieht keine Fahrbahnen. Wer etwas verschiebt, fährt **beide** — sonst kauft man
+sich eine Verbesserung mit einem größeren Fehler, wie in #2313 geschehen.
