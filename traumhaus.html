@@ -4329,16 +4329,37 @@ setTimeout(function baueGebaeude(){
     for(var i=0;i<B.length;i++){var b=B[i];
       if(b[1]>x0&&b[0]<x1&&b[3]>z0&&b[2]<z1)return true;}
     return false;}
+  /* ⚠️ WAS SPAETER LAEDT, GIBT ES FUER DIESEN SOLVER NICHT. Kollider entstehen im
+     bau()-Callback, also nach dem Modell-Download — die Viertel werden aber sofort
+     gesetzt. Gemessen und teuer bezahlt: nachdem das Ostviertel (Charge um #2313) auf
+     (252|0) rueckte, stand die Polizeiwache 19,7 m tief in der Seilbahn-Talstation,
+     499 Meshpaare, der groesste Fehler der ganzen Karte — und `viertelPasst` haette ihn
+     verhindert, wenn es den Kollider schon gegeben haette.
+     Grosse Bauten mit fester Adresse gehoeren darum HIER hinein, nicht nur in ihren
+     eigenen bau()-Aufruf. Masse aus der geladenen Box, nicht geschaetzt. */
+  var SPAETE_SPERREN=[{x:228,z:24,hw:15,hd:16},     /* Seilbahn-Talstation */
+                      {x:129,z:156,hw:15,hd:16}];   /* Seilbahn-Bergstation */
+  function aufSperre(x0,x1,z0,z1){
+    for(var i=0;i<SPAETE_SPERREN.length;i++){var q=SPAETE_SPERREN[i];
+      if(q.x+q.hw+6>x0&&q.x-q.hw-6<x1&&q.z+q.hd+6>z0&&q.z-q.hd-6<z1)return true;}
+    return false;}
   function viertelPasst(cfg,x,z,strassen){
     var m=viertelMass(cfg);
     /* Das Meer: der Solver kennt nur Kollider, und Wasser hat keine. */
     if(x-m.hw<-118&&Math.abs(z)<170)return false;
-    if(strassen&&aufFahrbahn(x-m.hw,x+m.hw,z-m.hd,z+m.hd))return false;
-    if(strassen&&imBerg(x-m.hw,x+m.hw,z-m.hd,z+m.hd))return false;
+    /* DREI Stufen statt zwei: 2 = Strassen und Berge meiden, 1 = nur Berge, 0 = nur
+       das Noetigste. Vorher schaltete die Rueckfallstufe BEIDES ab — ein Viertel, das
+       keinen strassenfreien Platz fand, durfte damit auch wieder im Gebirge landen,
+       obwohl das der viel schlimmere Fehler ist. */
+    if(strassen>=2&&aufFahrbahn(x-m.hw,x+m.hw,z-m.hd,z+m.hd))return false;
+    if(strassen>=1&&imBerg(x-m.hw,x+m.hw,z-m.hd,z+m.hd))return false;
     for(var i=0;i<VIERTEL.length;i++){var v=VIERTEL[i];
       if(Math.abs(x-v.x)<m.hw+v.w/2+8&&Math.abs(z-v.z)<m.hd+v.d/2+8)return false;}
     for(var q=0;q<WORLD_SOLIDS.length;q++){var s2=WORLD_SOLIDS[q];
       if(Math.abs(x-s2.x)<m.hw+s2.hw+6&&Math.abs(z-s2.z)<m.hd+s2.hd+6)return false;}
+    /* Gilt in BEIDEN Durchgaengen — ein Viertel in einem Gebaeude ist nie das
+       kleinere Uebel, anders als ein Viertel am Strassenrand. */
+    if(aufSperre(x-m.hw,x+m.hw,z-m.hd,z+m.hd))return false;
     return true;}
   function viertelOrt(cfg){
     /* ⚠️ ZWEI DURCHGAENGE, und der zweite ist kein Schoenheitsfehler. Erst wird ein Ort
@@ -4347,7 +4368,7 @@ setTimeout(function baueGebaeude(){
        geworden: `viertelOrt` liefert bei Misserfolg null, und dann baut das Viertel
        ueberhaupt nicht — genau der Zustand, den Charge 2298 behoben hat (drei Viertel
        fehlten still in der Welt). Lieber ein Viertel am Strassenrand als keines. */
-    for(var streng=1;streng>=0;streng--){
+    for(var streng=2;streng>=0;streng--){
       if(viertelPasst(cfg,cfg.x,cfg.z,streng))return [cfg.x,cfg.z,0];
       var laengs=cfg.achse==="x";
       for(var d=10;d<=120;d+=10){
