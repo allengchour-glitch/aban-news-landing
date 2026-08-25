@@ -12868,3 +12868,4 @@ gid://shopify/Product/15449464865153	46->3	Drehbare Gewürzregal
 gid://shopify/Product/15449569460609	62->0	Blumen-Kardigan für Damen
 gid://shopify/Product/15449571361153	28->1	Damen Cuff Washed Wide-Leg Crop-Jeans
 gid://shopify/Product/15449596985729	23->0	Personalisierte Magnetkugel-Uhr
+gid://shopify/Product/15454003069313	144->2	Retro-Lederportemonnaie Herren
