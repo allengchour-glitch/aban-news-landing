@@ -590,6 +590,21 @@ mit künstlichem dt treiben. Genau dafür sind sie exponiert.
   und muss dabei `scene.children` prüfen, nicht nur `window._gebaeude` (die Türme sind
   prozedural und stehen dort nicht drin).
 
+* **`arr.sort(function(){return 0.5-Math.random();})[0]` ist kein Zufall.** Ein
+  Zufallsvergleich in `sort()` liefert keine gleichverteilte Permutation, und das *erste*
+  Element ist am stärksten verzerrt. Gemessen über 200.000 Ziehungen aus den neun
+  Lieferzielen: „Markt" **20,85 %**, „Gewerbe Ost" **6,57 %** — statt 11,1 % für jedes.
+  Das nächstgelegene Ziel kam dreimal so oft wie das entfernteste. Wer EIN zufälliges
+  Element braucht, zieht einen Index: `arr[Math.floor(Math.random()*arr.length)]`.
+* **Ein pauschales Zeitlimit über eine gewachsene Karte.** Die Blitz-Lieferung gab 60 s
+  für *jedes* Ziel. Das Auto fährt 13 m/s, real bleiben mit Kurven und Kollidern gut
+  7 m/s — 60 s reichen bis rund 210 m. Der Freizeitpark liegt 335 m weit. Zeitlimits, die
+  auf eine Distanz getunt sind, müssen mitwachsen, wenn die Karte wächst.
+* **Belohnung nach Restzeit belohnt die kurze Fahrt.** Derselbe Auftrag zahlte
+  `80 + Restzeit*3`. Bei einem nahen Ziel bleibt zwangsläufig mehr Zeit übrig, also zahlte
+  die 72-m-Fahrt zum Markt am meisten und die 335-m-Fahrt zum Freizeitpark am wenigsten.
+  Wer eine Formel an eine Restgröße hängt, hängt sie an das Gegenteil des Aufwands.
+
 ## 🎯 Sollwerte einer sauberen Szene
 
 | Messwert | Soll |

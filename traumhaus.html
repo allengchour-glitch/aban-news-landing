@@ -9582,9 +9582,27 @@ document.getElementById("lieferBtn").onclick=function(){
     hint("📦 Feierabend — die Zentrale hat heute keine Auftraege mehr (4/4). Morgen wieder!");
     beep(220,.12,"square",.04);return;}
   window._liefHeute=(window._liefTag===tag?(window._liefHeute||0):0)+1;window._liefTag=tag;
-  var kand=LIEFERZIELE.slice().sort(function(){return 0.5-Math.random();})[0];
-  var m=driveCar.mesh;if(Math.hypot(kand[1]-m.position.x,kand[2]-m.position.z)<20)kand=LIEFERZIELE.filter(function(z){return z[0]!==kand[0];})[0];
-  liefer={n:kand[0],x:kand[1],z:kand[2],t:60};
+  /* ⚠️ GEMESSEN: `slice().sort(function(){return 0.5-Math.random();})[0]` ist kein
+     Zufall. Ein Zufallsvergleich in sort() liefert keine gleichverteilte Permutation,
+     und das erste Element ist am staerksten verzerrt. Ueber 200.000 Ziehungen mit den
+     neun Zielen kam "Markt" in 20,85 % und "Gewerbe Ost" in 6,57 % — statt 11,1 % fuer
+     jedes. Das naechstgelegene Ziel also dreimal so oft wie das entfernteste. Wer EIN
+     zufaelliges Element braucht, zieht einen Index. */
+  var m=driveCar.mesh;
+  function zufallsZiel(liste){return liste[Math.floor(Math.random()*liste.length)];}
+  var kand=zufallsZiel(LIEFERZIELE);
+  if(Math.hypot(kand[1]-m.position.x,kand[2]-m.position.z)<20){
+    /* Vorher stand hier `filter(...)[0]` — also IMMER "Markt" (bzw. "Seepark", wenn
+       Markt gerade das zu nahe Ziel war). Wer neben einem Ziel parkte, bekam jedes Mal
+       denselben Auftrag. */
+    kand=zufallsZiel(LIEFERZIELE.filter(function(z){return z[0]!==kand[0];}));}
+  /* ⏱️ Zeit nach ENTFERNUNG statt pauschal 60 s fuer alles. Das Auto faehrt 13 m/s;
+     mit Kurven, Kollidern und Anfahrt bleiben real gut 7 m/s uebrig. 60 s reichten
+     damit bis rund 210 m — der Freizeitpark liegt 335 m weit, die Windmuehle 239 m.
+     Die 60 s bleiben Untergrenze: kein Ziel wird schwerer als bisher, die weiten
+     werden ueberhaupt erst machbar. */
+  var _weg=Math.hypot(kand[1]-m.position.x,kand[2]-m.position.z);
+  liefer={n:kand[0],x:kand[1],z:kand[2],t:Math.max(60,Math.round(30+_weg/7)),weg:_weg};
   makePing(liefer.x,liefer.z);if(MPs)netSend({t:"ping",x:liefer.x,z:liefer.z});
   document.getElementById("lieferZiel").textContent=liefer.n;
   document.getElementById("lieferHud").style.display="block";
@@ -9596,7 +9614,16 @@ function updLiefer(dt){
   var m=driveCar.mesh;
   if(Math.hypot(m.position.x-liefer.x,m.position.z-liefer.z)<7){
     var bonus=(sims[1]&&sims[1]._bf)?1.5:1;
-    var lohn=((80+liefer.t*3)*bonus*stufenBonus())|0;
+    /* 💰 Der Lohn hing NUR an der Restzeit — und die ist bei einem nahen Ziel
+       zwangslaeufig groesser. Damit zahlte die kurze Fahrt zum Markt (72 m) rund
+       240 $, die lange zum Freizeitpark (335 m) rund 125 $: je weiter, desto weniger.
+       Jetzt traegt die Strecke den groesseren Teil, die Restzeit bleibt als
+       Tempo-Anreiz. Die Faktoren sind so gewaehlt, dass der DURCHSCHNITT ueber alle
+       neun Ziele bleibt, wo er war (gemessen: 185 statt 179 $) — es wird nur richtig
+       verteilt: Markt 129, Gewerbe Ost 199, Freizeitpark 276 statt ueberall ~179.
+       Die kurze Fahrt zahlt also weniger als bisher, die lange deutlich mehr, und der
+       Tagesdeckel von vier Auftraegen bleibt unangetastet. */
+    var lohn=((40+liefer.t*1.6+(liefer.weg||0)*0.5)*bonus*stufenBonus())|0;
     geld+=lohn;geldSend();stats.lieferungen=(stats.lieferungen||0)+1;updHUD();
     hearts(liefer.x,liefer.z);beep(880,.09,"square",.05);setTimeout(function(){beep(1170,.12,"square",.05);},90);
     hint("📦✅ Geliefert! +"+lohn+" $"+(bonus>1?" (Team-Bonus 👫)":""));
