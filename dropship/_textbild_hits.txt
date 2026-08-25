@@ -12804,3 +12804,41 @@ gid://shopify/Product/15510711697793	24->0	Halsband- und Leinen-Set für mittelg
 gid://shopify/Product/15510917087617	97->2	Digital bedrucktes V-Neck Freizeitkleid für Damen
 gid://shopify/Product/15510918365569	119->0	Bequeme Plateau-Sandalen für Damen
 gid://shopify/Product/15510919807361	18->0	Industrielle Multifunktionszange
+gid://shopify/Product/15510923936129	64->0	Silikon-Reinigungsbürste mit Ladefunktion
+gid://shopify/Product/15510927671681	22->0	Drehbares Vorratsglas für Küche & Bar
+gid://shopify/Product/15510928032129	9->0	Anti-Schling Napf mit Saugnapf
+gid://shopify/Product/15510928851329	53->0	Doppelseitige Bratpfanne aus Aluminium
+gid://shopify/Product/15511019979137	101->0	4-in-1 Picknick-Kochset aus Aluminium
+gid://shopify/Product/15511053402497	119->0	Männer-Holzuhr – wasserdicht, 44,5 mm, Schwarz/Braun/Blau/Gr
+gid://shopify/Product/15511053631873	57->0	Atmungsaktiver Mesh Sportschuh für Herren
+gid://shopify/Product/15511685431681	49->0	Kabelloses Ladegerät – kompakt & schnell
+gid://shopify/Product/15511793566081	15->0	Wasserdichte Schultertasche für Reise & Alltag
+gid://shopify/Product/15511793631617	22->0	Dunkelgrüne, matte Nagelsticker im Schachbrettmuster
+gid://shopify/Product/15511794057601	24->0	Leichter Business Laptop Rucksack (bis 15.6 Zoll)
+gid://shopify/Product/15511795204481	89->0	Wasserdichte Kameratasche, personalisierbar
+gid://shopify/Product/15511795466625	33->0	Retro Motorradtaschen, grosses Fassungsvermögen
+gid://shopify/Product/15511795761537	31->0	Motorrad-Seitenkoffer aus PU-Leder
+gid://shopify/Product/15511796089217	34->1	Grosses Multifunktions‑USB‑Rucksack (36‑55 L)
+gid://shopify/Product/15511796449665	54->3	Multifunktionale Sporttasche
+gid://shopify/Product/15511837475201	37->3	Retro Maxikleid mit Blumenmuster
+gid://shopify/Product/15511869194625	11->0	Mini USB Zitrus- & Fruchtsaftpresse
+gid://shopify/Product/15511870570881	42->0	Doppelter Abtropfkorb mit Sieb
+gid://shopify/Product/15511870931329	23->1	Hydrating Repair Nachtcreme gegen Falten
+gid://shopify/Product/15511871324545	114->1	Pore Clear Black Mud Film Clean Maske
+gid://shopify/Product/15511871717761	9->0	Pomegranate Amino Acid Feuchtigkeits-Reiniger
+gid://shopify/Product/15511871816065	95->0	Titan Faltbarer Holzofen
+gid://shopify/Product/15511943217537	17->2	Memory Foam Lendenkissen für Sofa & Auto
+gid://shopify/Product/15511944298881	47->1	Kreatives Kugel-Kissen im marokkanischen Stil
+gid://shopify/Product/15511985881473	40->1	Digitaler Messbecher mit LCD-Anzeige
+gid://shopify/Product/15511986241921	18->0	Kupfer Pfannenset mit Zubehör
+gid://shopify/Product/15511986766209	40->0	Elektrischer Fischschuppen-Entferner
+gid://shopify/Product/15511987061121	29->0	Sushi DIY Set für zuhause
+gid://shopify/Product/15512020451713	27->0	Keramik Futternapf für Katzen und Hunde
+gid://shopify/Product/15512149328257	156->0	Silk Strick Polo Kurzarm für Herren
+gid://shopify/Product/15512149721473	9->0	Crystal Silk Polo-Shirt für Sport und Freizeit
+gid://shopify/Product/15512182260097	8->1	Stimmgerät für Violine, Cello und Bass
+gid://shopify/Product/15512183374209	28->0	Fenster- und Türsicherung mit Kabelschloss
+gid://shopify/Product/15512183636353	32->0	Antirutsch-Matte für Uhrenreparaturen
+gid://shopify/Product/15512184586625	9->0	Alkoholmeter-Set für Selbstgebranntes
+gid://shopify/Product/15512185766273	29->0	Spatz Silikonform für Kerzen und Gips
+gid://shopify/Product/15512243601793	146->1	Machinelike Gold Herrenarmband mit Mesh-Design

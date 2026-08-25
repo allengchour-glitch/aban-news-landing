@@ -1997,3 +1997,75 @@ gid://shopify/Product/15447993581953	CHF 19.07	5 Varianten	Damen Polka-Dot Print
 gid://shopify/Product/15447993745793	CHF 17.37	5 Varianten	Schwarze ärmellose Weste mit Rundhalsausschnitt
 gid://shopify/Product/15447993876865	CHF 18.01	20 Varianten	Retro Polka-Dot Tanktop mit eckigem Ausschnitt
 gid://shopify/Product/15447994007937	CHF 36.34	5 Varianten	Elegante Chenille-Weste mit Streifenmuster
+gid://shopify/Product/15447994171777	CHF 18.46	36 Varianten	Elegantes V-Neck Tanktop für den Sommer
+gid://shopify/Product/15447994335617	CHF 19.78	15 Varianten	Kurze Anzugweste für Damen
+gid://shopify/Product/15447994466689	CHF 20.97	18 Varianten	Elegante Slim-Fit Weste mit Split-Panel
+gid://shopify/Product/15447994630529	CHF 18.01	5 Varianten	V-Neck Strickweste für Damen, Einheitsgrösse
+gid://shopify/Product/15447994794369	CHF 20.66	44 Varianten	Yoga Tanktop mit Kreuzträgern
+gid://shopify/Product/15447994925441	CHF 24.70	3 Varianten	Gerippte Strickweste für Damen
+gid://shopify/Product/15447995056513	CHF 23.80	5 Varianten	3D-Strick-Slip-Weste
+gid://shopify/Product/15447995154817	CHF 20.20	15 Varianten	Elegante Kaschmir-Weste für Damen
+gid://shopify/Product/15447995318657	CHF 24.55	5 Varianten	Kurzes Jacquard-Gilet mit Blumenmuster
+gid://shopify/Product/15447995482497	CHF 19.78	5 Varianten	Tassel-Tanktop im Off-Shoulder-Stil
+gid://shopify/Product/15447995679105	CHF 20.82	35 Varianten	Ärmelloses Casual Top für Damen
+gid://shopify/Product/15447995908481	CHF 21.42	5 Varianten	Retro Fransenweste mit Goldstickerei
+gid://shopify/Product/15447996203393	CHF 19.58	4 Varianten	Chunky-Knit Strickweste mit Kapuze
+gid://shopify/Product/15447996400001	CHF 19.78	4 Varianten	Elegante ärmellose Weste
+gid://shopify/Product/15447996694913	CHF 20.82	24 Varianten	Elegante Weste mit Rüschensaum
+gid://shopify/Product/15447996957057	CHF 19.20	4 Varianten	Gestreiftes Stricktop für den Alltag
+gid://shopify/Product/15447997251969	CHF 19.36	4 Varianten	Knit-Weste im koreanischen Casual-Stil
+gid://shopify/Product/15447998366081	CHF 21.99	4 Varianten	Elegante A-Linien Weste mit Rundhals
+gid://shopify/Product/15447998726529	CHF 19.43	12 Varianten	Elegante Damen-Anzugweste
+gid://shopify/Product/15447998988673	CHF 19.78	10 Varianten	Ärmellose Chiffon-Weste im Korea-Stil
+gid://shopify/Product/15447999316353	CHF 19.27	20 Varianten	Ärmelloses Top aus Baumwoll-Leinen-Mix
+gid://shopify/Product/15447999545729	CHF 18.64	6 Varianten	Elegante asymmetrische Mesh-Weste
+gid://shopify/Product/15447999807873	CHF 20.53	5 Varianten	Ärmelloses Cropped-Top im French-Stil
+gid://shopify/Product/15448000135553	CHF 19.74	40 Varianten	Damen-Plüschweste, doppelseitig tragbar
+gid://shopify/Product/15448000397697	CHF 21.27	12 Varianten	V-Neck Weste aus Baumwoll-Leinen-Mix
+gid://shopify/Product/15448000659841	CHF 22.32	4 Varianten	Ärmellose Blazer-Weste mit Knopfleiste
+gid://shopify/Product/15448000921985	CHF 23.05	21 Varianten	Elegante Anzugweste im koreanischen Stil
+gid://shopify/Product/15448001216897	CHF 19.43	24 Varianten	Künstlerische Weste aus Baumwoll-Leinen-Mix
+gid://shopify/Product/15448001479041	CHF 24.54	6 Varianten	Damen Patchwork Anzugweste
+gid://shopify/Product/15448001773953	CHF 20.94	10 Varianten	Taillierte Weste für Anzüge
+gid://shopify/Product/15448002068865	CHF 19.63	12 Varianten	Baumwoll-Leinen Weste im Retro-Stil
+gid://shopify/Product/15448002331009	CHF 19.11	4 Varianten	Legeres Strick-Gilet für Damen
+gid://shopify/Product/15448002593153	CHF 18.47	24 Varianten	Eleganter Damen-Cardigan ohne Ärmel
+gid://shopify/Product/15448002822529	CHF 18.79	12 Varianten	Fransige Weste ohne Knöpfe
+gid://shopify/Product/15448002986369	CHF 18.64	4 Varianten	Athletic Chic Camisole Damen-Top
+gid://shopify/Product/15448003084673	CHF 17.53	16 Varianten	Ärmelloses V-Neck Top mit Knopfleiste
+gid://shopify/Product/15448003248513	CHF 22.75	3 Varianten	Fleece-Rollkragenweste für Damen
+gid://shopify/Product/15448003346817	CHF 19.78	4 Varianten	Y2K Lace Camisole Top mit Polka Dots
+gid://shopify/Product/15448003477889	CHF 18.14	12 Varianten	Kurze Leinen-Weste für Damen
+gid://shopify/Product/15448003608961	CHF 26.93	20 Varianten	Damen Sport-Tanktop mit integrierten BH-Pads
+gid://shopify/Product/15448003805569	CHF 20.25	29 Varianten	Sport-BH mit Polsterung und schönem Rückendesign
+gid://shopify/Product/15448003936641	CHF 21.71	44 Varianten	Retro Colorblock Strickweste für Damen
+gid://shopify/Product/15448004067713	CHF 16.80	20 Varianten	Elegante Damenweste mit Blumenmuster
+gid://shopify/Product/15448004198785	CHF 17.53	3 Varianten	Vesthoodie im japanischen Stil
+gid://shopify/Product/15448004297089	CHF 19.74	4 Varianten	Cardigan mit Plüschtaschen
+gid://shopify/Product/15448004428161	CHF 21.40	3 Varianten	Hollowed-Out Tank Dress Stricktop
+gid://shopify/Product/15448004559233	CHF 21.71	24 Varianten	Corduroy-Weste für Herren mit Patchwork
+gid://shopify/Product/15448004690305	CHF 31.27	30 Varianten	Rundhals T-Shirt aus Eisseide
+gid://shopify/Product/15448004821377	CHF 19.78	16 Varianten	Kurzarm-Top mit Rundhals und Lochstickerei
+gid://shopify/Product/15448004919681	CHF 67.09	8 Varianten	Seiden-Top mit Schleifendetail für Damen
+gid://shopify/Product/15448005083521	CHF 22.09	8 Varianten	Ärmellose Strickweste mit V-Ausschnitt
+gid://shopify/Product/15448005247361	CHF 17.72	30 Varianten	Ärmelloses V-Neck Top in Unifarben
+gid://shopify/Product/15448005411201	CHF 21.27	5 Varianten	Off-Shoulder Denim-Look Top mit Bindedetail
+gid://shopify/Product/15448006394241	CHF 18.30	25 Varianten	Ärmelloses Top mit Spitze und Falten
+gid://shopify/Product/15448006525313	CHF 18.77	50 Varianten	Off-Shoulder Batwing-Top mit Taillenschnürung
+gid://shopify/Product/15448006689153	CHF 46.48	12 Varianten	Kurzarm-Stricktop mit überschnittenen Schultern
+gid://shopify/Product/15448006885761	CHF 18.77	10 Varianten	Figurbetontes Mesh-Shirt mit kurzen Ärmeln
+gid://shopify/Product/15448007016833	CHF 23.14	4 Varianten	Khakifarbenes Loose-Fit Damen-Shirt
+gid://shopify/Product/15448007147905	CHF 20.08	20 Varianten	Halter-Neck V-Shirt für Damen
+gid://shopify/Product/15448007278977	CHF 18.62	20 Varianten	Kurze Bluse mit Knopf-Taschen
+gid://shopify/Product/15448007410049	CHF 19.23	9 Varianten	U-Boot-Neck Camisole mit Kontrastträgern
+gid://shopify/Product/15448007573889	CHF 19.63	96 Varianten	Damen Print-Top mit 3D-Effekt
+gid://shopify/Product/15448007672193	CHF 19.92	4 Varianten	Jacquard Plissee Top mit Puffärmeln
+gid://shopify/Product/15448007803265	CHF 19.92	48 Varianten	Gestreiftes Kurzarmshirt im Casual-Look
+gid://shopify/Product/15448007999873	CHF 17.72	8 Varianten	Bikini-Set mit Print-Trägern
+gid://shopify/Product/15448008163713	CHF 19.37	28 Varianten	Asymmetrisches Kurzarm-Shirt mit U-Boot-Ausschnitt
+gid://shopify/Product/15448008327553	CHF 19.78	20 Varianten	Elegante Off-Shoulder Chiffonbluse mit Rüschen
+gid://shopify/Product/15448008491393	CHF 20.22	15 Varianten	Retro-Shirt mit Rüschen und lockerer Passform
+gid://shopify/Product/15448008655233	CHF 18.77	24 Varianten	Bedrucktes Kurzarm-T-Shirt mit Rundhals
+gid://shopify/Product/15448008786305	CHF 20.10	30 Varianten	Elegantes Kurzarm-Top mit V-Ausschnitt und Spitze
+gid://shopify/Product/15448008884609	CHF 19.77	1 Varianten	Floraler Spitzen-Cardigan für den Strand
+gid://shopify/Product/15448009048449	CHF 20.09	30 Varianten	Fransen T-Shirt mit Rundhals und Halbarm
