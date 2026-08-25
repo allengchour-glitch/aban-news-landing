@@ -915,3 +915,20 @@ Meer-Sektor bleibt Nicht-Strasse. **Falle:** Wer neue Strassen baut, muss `_GPS_
 `gpsStrasse` NACHFUEHREN — sonst routet das GPS daran vorbei (genau der Fehler, der hier
 behoben wurde). Naechster echter Ausbau-Kandidat: Achterbahn (−190,212) hat als einziges
 Ziel KEINEN Asphalt (Waldsaum/Berge vorher vermessen!).
+
+## 2026-08-25 · 🚸 Hauptkreuzungen schöner (User-Screenshot „strasse hier schöner machen")
+
+**Gemessene Fehler + Fixes (alle 4 Hauptkreuzungen ±78/±58):**
+1. **Zebra endete mitten auf der Fahrbahn:** `zebra()` war für die 10-m-Querstrasse
+   geschrieben (8 Streifen × 1,15 = 9,2 m) und wurde unverändert für die **16-m-Hauptstrasse**
+   benutzt. Fix: `n=quer?13:8` → Spannweite 14,4 m (per th-flaeche.mjs nachgemessen).
+2. **Stumpfe Grasecken:** Gehwegbänder endeten vor den Zebras, Rasen lief spitz an den
+   Asphalt. Fix: Viertelkreis-Eckplatten (r 4,6) an allen 16 Ecken — 4 InstancedMeshes
+   (eine je Quadrant-Ausrichtung, thetaStart aus sin/cos-Vorzeichen, weil rotation.x=-π/2
+   lokal +y auf Welt −z dreht), y=0.065 knapp über den Gehwegbändern (kein Z-Streit).
+
+**Neues Werkzeug `th-flaeche.mjs`:** listet flache Boden-Meshes (<0,3 m) in einem Weltbereich
+mit Weltbox/Farbe/Geometrie — Markierungen sind namenlose Planes, von oben findet man den
+Verursacher sonst nie. Damit auch geklärt: der „graue Balken im Rasen" (User-Bild) ist ein
+>30 cm hohes 3D-Objekt (Tischtennisplatte o. ä.), kein verirrter Markierungs-Plane.
+Vorher/Nachher: `spiele-dev/screenshots/kreuzung-vorher.png` / `kreuzung-final.png`.
