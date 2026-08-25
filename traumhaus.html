@@ -10990,6 +10990,14 @@ function updMinimap(dt){
   var yN=S(0,-SZ-12)[1],yS=S(0,SZ+12)[1],xW=S(-RX,0)[0],xE=S(RX,0)[0];
   c.beginPath();c.moveTo(0,yN);c.lineTo(W,yN);c.moveTo(0,yS);c.lineTo(W,yS);
   c.moveTo(xW,0);c.lineTo(xW,W);c.moveTo(xE,0);c.lineTo(xE,W);c.stroke();
+  // 🛣️ Aussennetz auch im Radar: Landstrasse (r 200), Zubringer, Viertel-Verbinder
+  var c9=S(0,0);
+  c.beginPath();c.arc(c9[0],c9[1],200*sc,234*0.01745,126*0.01745+6.283);c.stroke();
+  for(var zb9=0;zb9<_GPS_ZUB.length;zb9++){var zw=_GPS_ZUB[zb9],p8=S(zw[0]*118,zw[1]*118),q8=S(zw[0]*204,zw[1]*204);
+    c.beginPath();c.moveTo(p8[0],p8[1]);c.lineTo(q8[0],q8[1]);c.stroke();}
+  for(var vb8=0;vb8<_GPS_VERB.length;vb8++){var vw=_GPS_VERB[vb8],pA,pB;
+    if(vw[0]==="z"){pA=S(vw[1],vw[2]);pB=S(vw[1],vw[3]);}else{pA=S(vw[2],vw[1]);pB=S(vw[3],vw[1]);}
+    c.beginPath();c.moveTo(pA[0],pA[1]);c.lineTo(pB[0],pB[1]);c.stroke();}
   // 🧭 GPS-Route (lila, wie in GTA) — beginnt beim Spieler
   if(GPS.aktiv&&GPS.pfad&&GPS.pfad.length){
     c.strokeStyle="#c05aff";c.lineWidth=3.5;c.lineJoin="round";c.lineCap="round";
@@ -11044,7 +11052,8 @@ function updMinimap(dt){
 function drawBigMap(){
   var cv=document.getElementById("bigmap");if(!cv)return;
   var c=cv.getContext("2d"),W=cv.width,H=cv.height;
-  var X0=-300,X1=250,Z0=-210,Z1=280;   /* die neuen Viertel liegen weit ausserhalb des Rings */
+  var X0=-300,X1=250,Z0=-240,Z1=345;   /* bis Bauernhof (z −241) und Freizeitpark (z 330) —
+                                          mit 280 endete die Karte mitten im Sportpark */
   var sc=Math.min(W/(X1-X0),H/(Z1-Z0)),ox=(W-(X1-X0)*sc)/2,oy=(H-(Z1-Z0)*sc)/2;
   _bigTrafo={sc:sc,ox:ox,oy:oy,X0:X0,Z0:Z0}; /* 🧭 fuers Ruecktransformieren des Karten-Tipps */
   function S(wx,wz){return [ox+(wx-X0)*sc,oy+(wz-Z0)*sc];}
@@ -11060,6 +11069,16 @@ function drawBigMap(){
   road(-78,-112,-78,112,10);road(78,-112,78,112,10);
   road(-112,-112,-112,112,9);road(112,-112,112,112,9);
   road(-232,-112,-232,112,0);
+  // 🛣️ Landstrasse (Ring r 200, Meer-Sektor 126°..234° ausgespart) + 6 Zubringer + Verbinder
+  var ct=S(0,0),D9=Math.PI/180;
+  c.lineWidth=Math.max(2,8*sc);
+  c.beginPath();c.arc(ct[0],ct[1],200*sc,234*D9,126*D9+6.283);c.stroke();
+  for(var zb=0;zb<_GPS_ZUB.length;zb++){var zv=_GPS_ZUB[zb];
+    road(zv[0]*118,zv[1]*118,zv[0]*204,zv[1]*204,8);}
+  for(var vb9=0;vb9<_GPS_VERB.length;vb9++){var vv=_GPS_VERB[vb9];
+    if(vv[0]==="z")road(vv[1],vv[2],vv[1],vv[3],8);else road(vv[2],vv[1],vv[3],vv[1],8);}
+  // Seepark-See (erklaert die Luecke zwischen Stich und Sportpark-Verbinder)
+  var se=S(0,146);c.fillStyle="#2c6a8e";c.beginPath();c.arc(se[0],se[1],20*sc,0,6.283);c.fill();
   // Eisenbahnbruecke (z=-30) ueber das Meer
   c.strokeStyle="#8a7f72";c.setLineDash([6,4]);road(-250,-30,132,-30,4);c.setLineDash([]);
   // Grundstueck
@@ -11113,7 +11132,19 @@ function drawBigMap(){
    Strassen und schneidet nur die letzten Meter querfeldein. Der Wegpunkt ist
    persoenlich — im Koop hat jeder Spieler sein eigenes GPS, darum kein Netz-Sync. */
 var GPS={aktiv:false,x:0,z:0,pfad:null,beam:null,ring:null};
-var _gpsX0=-300,_gpsZ0=-210,_gpsCell=4,_gpsNX=138,_gpsNZ=123,_gpsFrei=null;
+/* Raster deckt die GANZE Welt: Bauernhof reicht bis z −241, der Freizeitpark bis z ~385 —
+   mit dem alten Ende bei 280 konnte das GPS dorthin gar keine Route legen. */
+var _gpsX0=-300,_gpsZ0=-260,_gpsCell=4,_gpsNX=138,_gpsNZ=163,_gpsFrei=null;
+/* 🛣️ Aussennetz (gemessen aus dem Bau-Code): 6 Zubringer-Winkel (landstrasse()) und die
+   Viertel-Verbinder aus anbindung() — ["z",xMitte,z0,z1] laeuft laengs z, ["x",zMitte,x0,x1]
+   laengs x. Eine Tabelle fuer GPS-Kosten UND Karten-/Radar-Zeichnung, damit nichts auseinanderlaeuft. */
+var _GPS_ZUB=[30,60,120,240,300,330].map(function(g){var a=g*Math.PI/180;return [Math.cos(a),Math.sin(a)];});
+var _GPS_VERB=[
+  ["x",0,112,172],      // Gewerbe Ost (anschluss 112|0 -> Viertel 172|0)
+  ["z",0,172,236],      // Sportpark Sued (Suedufer 0|172 -> 0|236)
+  ["x",216,0,60],["z",60,216,330], // Freizeitpark (L-Weg 0|216 -> 60|216 -> 60|330)
+  ["z",-40,-196,-100],  // Bauernhof (-40|-100 -> -40|-196)
+  ["x",-30,-134,-78]];  // Strandzufahrt (K-Korridor)
 function gpsStrasse(x,z){
   var SZr=GH*CS/2+12;
   if(Math.abs(x)<RL/2+6&&(Math.abs(z-SZr)<5||Math.abs(z+SZr)<5))return true;   // Hauptstrassen
@@ -11121,6 +11152,13 @@ function gpsStrasse(x,z){
   if(z>-104&&z<122&&(Math.abs(x-112)<4.5||Math.abs(x+112)<4.5))return true;    // Ring senkrecht
   if(Math.abs(x)<118&&(Math.abs(z-118)<4.5||Math.abs(z+100)<4.5))return true;  // Ring waagrecht
   if(Math.abs(x)<4&&z>118&&z<150)return true;                                  // Seepark-Stich
+  var rr=Math.hypot(x,z);                                                      // Landstrasse (Ring r 200)
+  if(Math.abs(rr-200)<5&&!(x<-118&&Math.abs(z)<184))return true;               // Meer-Sektor ausgespart
+  if(rr>116&&rr<205)for(var zi=0;zi<_GPS_ZUB.length;zi++){var w9=_GPS_ZUB[zi]; // 6 Zubringer (radial)
+    if(Math.abs(-x*w9[1]+z*w9[0])<4.5&&x*w9[0]+z*w9[1]>116)return true;}
+  for(var vi=0;vi<_GPS_VERB.length;vi++){var v9=_GPS_VERB[vi];                 // Viertel-Verbinder
+    if(v9[0]==="z"){if(Math.abs(x-v9[1])<4&&z>=v9[2]&&z<=v9[3])return true;}
+    else{if(Math.abs(z-v9[1])<4&&x>=v9[2]&&x<=v9[3])return true;}}
   return false;}
 function gpsGesperrt(x,z){
   if(x<-233)return true;                                       // Meer (der Strand bleibt frei)
