@@ -2184,10 +2184,14 @@ var _NM=Math.round(RL/10);for(var ms=0;ms<_NM;ms++){var _dx=-RL/2+5+ms*10;if(!_d
   // Zebrastreifen an den Kreuzungen (Fussgaenger queren die Hauptstrassen)
   var zMat=new THREE.MeshStandardMaterial({color:0xcfcfc6,roughness:0.85});zMat.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(zMat);
   function zebra(x,z,quer){ // quer=true: Strasse laeuft in X (Nord/Sued) -> Streifen laengs (in X), gestapelt ueber die Fahrbahnbreite (Z)
-    var n=8;for(var st9=0;st9<n;st9++){
+    /* ⚠️ GEMESSEN (User-Screenshot „strasse hier schoener machen"): die Funktion war
+       fuer die 10-m-Querstrasse geschrieben (8 Streifen x 1,15 = 9,2 m) und wurde
+       unveraendert fuer die 16-m-Hauptstrasse benutzt — dort endete der Zebrastreifen
+       mitten auf der Fahrbahn. quer=true (ueber die Hauptstrasse) braucht 13 Streifen. */
+    var n=quer?13:8;for(var st9=0;st9<n;st9++){
       var w9=quer?4.8:0.62,d9=quer?0.62:4.8; // Streifen laengs zur Fahrtrichtung
       var p=new THREE.Mesh(new THREE.PlaneGeometry(w9,d9),zMat);
-      p.rotation.x=-Math.PI/2;var off9=(st9-(n-1)/2)*1.15; // gleichmaessig ueber die 10-breite Fahrbahn
+      p.rotation.x=-Math.PI/2;var off9=(st9-(n-1)/2)*1.15;
       p.position.set(x+(quer?0:off9),0.008,z+(quer?off9:0));
       p.receiveShadow=true;scene.add(p);}}
   // Alle 4 Arme jeder Kreuzung, nah an der Ecke (echtes Stadtbild)
@@ -2527,6 +2531,23 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
        HELLER als die texturierte Fahrbahn — im Screenshot lasen sich die Flicken
        wie graue Render-Fehler statt wie Ausbesserungen. Wer sie will, muss die
        Strassentextur mitgeben, nicht nur eine Farbe. */
+    /* ── Eck-Trottoirs (User-Screenshot „strasse hier schoener machen"): die
+       Gehwegbaender enden stumpf vor den Zebras, die Rasenecke lief spitz bis an
+       den Asphalt. Viertelkreis-Platten runden die vier Ecken jeder Hauptkreuzung —
+       vier InstancedMeshes (eine je Quadrant-Ausrichtung) = 4 Zeichenaufrufe.
+       y=0.065 liegt knapp UEBER den Gehwegbaendern (0.05..0.06) — kein Z-Streit. */
+    var eckM=new THREE.MeshStandardMaterial({color:0xd4d1c8,roughness:0.9});eckM.envMapIntensity=0.15;
+    /* CircleGeometry-Sektor: nach rotation.x=-PI/2 wird lokal +y zu Welt -z, darum
+       thetaStart je Ziel-Quadrant (E0=x-Seite, E1=z-Seite) aus sin/cos-Vorzeichen. */
+    var _eckStart={"1,-1":0,"-1,-1":Math.PI/2,"-1,1":Math.PI,"1,1":-Math.PI/2};
+    [[1,-1],[-1,-1],[-1,1],[1,1]].forEach(function(E){
+      var g=new THREE.CircleGeometry(4.6,10,_eckStart[E[0]+","+E[1]],Math.PI/2);
+      var inst=new THREE.InstancedMesh(g,eckM,4);
+      [[RX,SZd],[RX,-SZd],[-RX,SZd],[-RX,-SZd]].forEach(function(K,ki){
+        dm.position.set(K[0]+E[0]*5,0.065,K[1]+E[1]*8);   /* Fahrbahnkanten: Quer ±5, Haupt ±8 */
+        dm.rotation.set(-Math.PI/2,0,0);dm.updateMatrix();inst.setMatrixAt(ki,dm.matrix);});
+      dm.rotation.set(0,0,0);
+      inst.receiveShadow=true;scene.add(inst);});
   })();
   var _qMat=stdMat(0xd8d8cc,0.75);_qMat.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(_qMat);
   /* ⚠️ Hier lag eine gestrichelte Mittellinie auf z=-58 — genau unter der
