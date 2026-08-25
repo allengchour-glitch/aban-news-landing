@@ -1394,7 +1394,14 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       [-94.6,-86.4].forEach(function(uz){
         var u=new THREE.Mesh(new THREE.PlaneGeometry(200,3.4),uM);
         u.rotation.x=-Math.PI/2;u.position.set(-20,-0.014,uz);u.receiveShadow=true;scene.add(u);});
+      /* ⚠️ GEMESSEN: ux wuerfelt ueber -118..78 und traf damit auch die Ringstrasse
+         (Mitte x=-112, Asphalt +-4,5) und die Ost-Zufahrt — es lagen Findlinge auf
+         dem Belag, und zwar bei jedem Laden woanders (Math.random). Wer eine Fahrbahn
+         trifft, wird auf die nachstliegende Seite daneben gesetzt. */
+      function _weg(v,mitte,rand){var d=v-mitte;if(Math.abs(d)>=rand)return v;
+        return mitte+(d<0?-rand:rand);}
       for(var i=0;i<22;i++){var ux=-118+Math.random()*196,uz2=(Math.random()<0.5?-94.4:-86.6)+(Math.random()-0.5)*1.4;
+        ux=_weg(_weg(_weg(ux,-112,6.2),-78,6.2),78,6.2);
         var k=0.3+Math.random()*0.5;
         var st=new THREE.Mesh(new THREE.DodecahedronGeometry(k,0),new THREE.MeshStandardMaterial({color:i%2?0x6a6558:0x565043,roughness:1}));
         st.position.set(ux,k*0.4,uz2);st.rotation.set(Math.random()*3,Math.random()*6,Math.random()*3);st.castShadow=true;scene.add(st);}
@@ -2825,7 +2832,10 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
     b.scale.setScalar(k||1);b.position.set(x,0,z);scene.add(b);}
   [[-33,-SZ-20,1.1],[-8,-SZ-4.5,0.9],[16,-SZ-20,1.2],[40,-SZ-4.2,1],[-40,SZ+20,1.1],[8,SZ+4,1.3],[42,SZ+20,0.9],[-(RX+8.5),-SZ+8,1.2],[RX+8.5,SZ-4,1.1]].forEach(function(p){baum(p[0],p[1],p[2]);}); // von der verbreiterten Strasse auf Gruenstreifen/Aussenseite
   // Laternen an der Hauptstrasse (emissive Kugeln, Bloom uebernimmt das Leuchten)
-  [[-30,SZ+4.6],[0,SZ+4.6],[30,SZ+4.6],[-30,-SZ-4.6],[30,-SZ-4.6]].forEach(function(p){ // Laternen an die Gehwegkante — Lauflinie frei
+  /* ⚠️ 4,6 -> 2,9: gleicher Messfehler wie beim zweiten Laternensatz weiter unten —
+     +-50,6 liegt 0,65 m INNERHALB der Fahrbahn (Bordstein 49,95), nicht an der
+     Gehwegkante. 2,9 trifft die Mitte der Gehweg-Platte (47,8..50,0). */
+  [[-30,SZ+2.9],[0,SZ+2.9],[30,SZ+2.9],[-30,-SZ-2.9],[30,-SZ-2.9]].forEach(function(p){ // Lauflinie bleibt frei
     var lg=new THREE.Group();
     var mast=new THREE.Mesh(new THREE.CylinderGeometry(0.07,0.09,3.1,7),stdMat(0x3a3a42,0.5));mast.position.y=1.55;lg.add(mast);
     var kopf=new THREE.Mesh(new THREE.SphereGeometry(0.2,10,8),
@@ -3327,8 +3337,13 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
       glow.rotation.x=-Math.PI/2;glow.position.y=0.14;lg.add(glow);
       window._lampGlows.push(gm);
       lg.position.set(x,0,z);scene.add(lg);}
-    [-75,-55,15,55,75].forEach(function(lx){lamp(lx,SZ+4.6);});
-    [-75,-55,-15,15,55,75].forEach(function(lx){lamp(lx,-SZ-4.6);});
+    /* ⚠️ GEMESSEN: 4,6 ergab z=+-50,6 — der Bordstein der 16 m breiten Hauptstrasse
+       liegt aber bei 49,95. Die Laternen standen also 0,65 m im Asphalt, auf dem
+       Parkstreifen. 2,9 setzt sie auf die Mitte der Gehweg-Platte (47,8..50,0). */
+    /* ⚠️ Und +-75 lag 3 m INNERHALB der Querstrasse (Mitte x=+-78, Asphalt bis 5,05).
+       68 haelt 10 m Abstand und bleibt auf der Gehweg-Platte der Hauptstrasse. */
+    [-68,-55,15,55,68].forEach(function(lx){lamp(lx,SZ+2.9);});
+    [-68,-55,-15,15,55,68].forEach(function(lx){lamp(lx,-SZ-2.9);});
     [-30,0,30].forEach(function(lz){lamp(RX-7.7,lz);lamp(-(RX-7.7),lz);}); // an der Gehweg-Kante, nicht auf der Fahrbahn
   })();
   // ---- Ampeln an den Kreuzungen ----
@@ -3340,11 +3355,20 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
       var li=new THREE.Mesh(new THREE.CircleGeometry(0.13,10),new THREE.MeshBasicMaterial({color:l[2]})); // Basic: auch mittags klar ablesbar
       li.position.set(0,4+l[1],0.19);g.add(li);mats[l[0]]=li.material;});
     g.position.set(x,0,z);g.rotation.y=rot9||0;scene.add(g);
-    if(!window._ampeln)window._ampeln=[];window._ampeln.push({rot:mats.rot,gelb:mats.gelb,gruen:mats.gruen,grp:grp||0});}
-  // 4 Masten je Kreuzung, jeweils der Anfahrt zugewandt (grp0=x-Verkehr, grp1=z-Verkehr)
+    if(!window._ampeln)window._ampeln=[];window._ampeln.push({rot:mats.rot,gelb:mats.gelb,gruen:mats.gruen,grp:grp||0,x:x,z:z});}
+  /* 4 Masten je Kreuzung, jeweils der Anfahrt zugewandt (grp0=x-Verkehr, grp1=z-Verkehr).
+     ⚠️ GEMESSEN: alle 16 Masten standen auf der FAHRBAHN. Der Versatz war auf beiden
+     Achsen 6,3 — das passt zur 10 m breiten Querstrasse (Bordstein 5,05, Gehweg-
+     Platte 5,0..7,2), aber die Hauptstrasse ist 16 m breit: ihr Bordstein liegt bei
+     8,05, ihre Gehweg-Platte bei 8,0..10,2. 6,3 lag also 1,75 m INNERHALB des
+     Asphalts, mitten in der Kreuzungsecke, und die Autos fuhren durch die Masten
+     hindurch (Ampeln sind kein Kollider). Die Achsen brauchen darum verschiedene
+     Abstaende: quer 6,1 (Mitte Querstrassen-Gehweg), laengs 9,1 (Mitte Hauptstrassen-
+     Gehweg). Beide Ecken liegen damit auf einer echten Platte, und der Mast steht
+     knapp HINTER der Haltelinie (die liegt bei 5,6 bzw. 8,6). */
   [[RX,SZ+12],[RX,-SZ-12],[-RX,SZ+12],[-RX,-SZ-12]].forEach(function(K){
-    ampel(K[0]-6.3,K[1]+6.3,0,-Math.PI/2);ampel(K[0]+6.3,K[1]-6.3,0,Math.PI/2);
-    ampel(K[0]-6.3,K[1]-6.3,1,0);ampel(K[0]+6.3,K[1]+6.3,1,Math.PI);});
+    ampel(K[0]-6.1,K[1]+9.1,0,-Math.PI/2);ampel(K[0]+6.1,K[1]-9.1,0,Math.PI/2);
+    ampel(K[0]-6.1,K[1]-9.1,1,0);ampel(K[0]+6.1,K[1]+9.1,1,Math.PI);});
 })();
 // Putz-Struktur auf alle Nachbarhaus-Waende (getoent je Hausfarbe)
 /* ⚠️ `textures/th/putz.jpg` ist ein FOTO und nicht kachelbar. Mit Wiederholung
@@ -3523,7 +3547,16 @@ setTimeout(function baueVerkehr(){
     var padMat=new THREE.MeshStandardMaterial({color:0x44444c,roughness:0.95});
     var lineMat=new THREE.MeshStandardMaterial({color:0xcfcfc6,roughness:0.8});lineMat.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(lineMat);
     // [x, z, noseRotY, faceZ(+1 Nase Richtung +z)]
-    var PADS=[[70,SZ+22,Math.PI/2],[48,-(SZ+22),-Math.PI/2],[-58,-(SZ+22),-Math.PI/2]]; // Nordpad weg von der Marktflaeche (x28-52)
+    /* ⚠️ GEMESSEN: das Nordpad stand auf x=70. Die Tasche ist 16 m breit, reichte
+       also von 54 bis 78 — genau bis auf die Mittellinie der Ost-Zufahrt (x=78), und
+       der Lieferwagen in der rechten Tasche (70+3,4=73,4) stand 0,45 m im Asphalt und
+       mit dem Rest auf dem Gehweg. Der neue Ort ist GEMESSEN: die Streifensuche
+       ueber x=-100..100 bei z=68 (Baumkronen und Ausleger ausgenommen, die duerfen
+       drueber) meldet als einzigen komplett freien Bereich x=93..100 — ueberall
+       sonst steht der Lattenzaun der Vorgaerten bei z~67,3 in der Tasche. 95 setzt
+       sie auf 87..103, gut 15 m oestlich der Zufahrt und noch an der Nordstrasse
+       (die reicht bis x=102). */
+    var PADS=[[95,SZ+22,Math.PI/2],[48,-(SZ+22),-Math.PI/2],[-58,-(SZ+22),-Math.PI/2]]; // Nordpad weg von Marktflaeche (x28-52) UND Zufahrt (x=78)
     PADS.forEach(function(P){
       var px=P[0],pz=P[1],rot=P[2];
       var pad=new THREE.Mesh(new THREE.PlaneGeometry(16,5.2),padMat);
@@ -3816,7 +3849,13 @@ function baueSchranken(){
       gew.position.x=-0.6;arm.add(gew);
       arm.position.set(0,2.0,0);arm.rotation.z=-Math.PI/2;   /* Start: offen (senkrecht) */
       g.add(arm);
-      g.position.set(gx+seite*6.5,0,112+seite*3.2);
+      /* ⚠️ GEMESSEN: 112+3.2 = 115,2 liegt IM Asphalt der Ringstrasse (Mitte z=118,
+         Belag 113,5..122,5) — der Schrankenbaum wuchs dort aus der Fahrbahn. Der
+         Ring laeuft hier nur 6 m hinter dem Gleis, zwischen Schiene und Ringkante
+         bleiben 1,5 m: auf dieser Seite passt keine Schranke ans Gleis. Sie gehoert
+         darum VOR die Einmuendung, also hinter den Ring (z=124,5 -> 6,5 vom Ring,
+         2 m ausserhalb des Belags). Die Sued-Schranke bleibt bei 108,8. */
+      g.position.set(gx+seite*6.5,0,seite>0?124.5:108.8);
       g.rotation.y=seite>0?Math.PI:0;
       scene.add(g);
       G.push({arm:arm,lampen:lampen,gx:gx});});});
@@ -7251,14 +7290,22 @@ function updFireworks(dt,now){var F=window._fw;if(!F)return;
 // ---- Abend-Stadtfest am See (19:30–22:30): Lampions, Extra-Feuerwerk, Spass fuer Besucher ----
 setTimeout(function baueFest(){
   var g=new THREE.Group();var LF=[0xff5a6a,0xffd23a,0x3ad0ff,0x8aff6a,0xff9a2a,0xd06aff];
-  [[-72,64],[-84,60]].forEach(function(p){var mast=new THREE.Mesh(new THREE.CylinderGeometry(0.07,0.09,3.4,7),new THREE.MeshStandardMaterial({color:0x5a4a38,roughness:0.8}));
+  /* ⚠️ GEMESSEN: die beiden Masten standen auf (-72|64) und (-84|60) — das ist
+     mitten auf der Hauptstrasse (Mitte z=58, Asphalt bis 66,05) und quer ueber die
+     West-Zufahrt (x=-78). Die Lampionschnur hing also ueber einer Kreuzung, und die
+     Masten wuchsen aus dem Belag. Grund steht 6000 Zeilen weiter oben: der See lag
+     frueher bei (-90|80) und wurde als Seepark nach (0|146) verlegt — das Fest „am
+     See" ist dort geblieben, wo der See NICHT mehr ist. Jetzt steht es an der
+     Uferpromenade (Ring um (0|146), Gehweg r+1,6..r+4,4); die Masten stehen knapp
+     ausserhalb davon, die Schnur spannt ueber den Weg. */
+  [[17.2,156.5],[9.8,163.0]].forEach(function(p){var mast=new THREE.Mesh(new THREE.CylinderGeometry(0.07,0.09,3.4,7),new THREE.MeshStandardMaterial({color:0x5a4a38,roughness:0.8}));
     mast.position.set(p[0],1.7,p[1]);g.add(mast);});
   var lamps=[];
-  for(var i=0;i<9;i++){var t=i/8;var lx=-72+(-84+72)*t,lz=64+(60-64)*t,ly=3.2-Math.sin(t*Math.PI)*0.7;
+  for(var i=0;i<9;i++){var t=i/8;var lx=17.2+(9.8-17.2)*t,lz=156.5+(163.0-156.5)*t,ly=3.2-Math.sin(t*Math.PI)*0.7;
     var la=new THREE.Mesh(new THREE.SphereGeometry(0.22,8,7),new THREE.MeshStandardMaterial({color:LF[i%6],emissive:LF[i%6],emissiveIntensity:0.2,roughness:0.4}));
     la.position.set(lx,ly,lz);g.add(la);lamps.push(la.material);}
   g.visible=false;scene.add(g);
-  window._fest={grp:g,lamps:lamps,x:-78,z:64,hintTag:0,cd:0};
+  window._fest={grp:g,lamps:lamps,x:13.5,z:159.7,hintTag:0,cd:0};   /* Mitte der Schnur, jetzt am See */
 },0);
 // ---- Stunt-Rampe: mit Schwung drueber = Airtime-Punkte ----
 setTimeout(function baueRampe(){
