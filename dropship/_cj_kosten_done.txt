@@ -2136,3 +2136,7 @@ gid://shopify/Product/15448043487617	CHF 18.00	6 Varianten	V-Neck Langarmshirt m
 gid://shopify/Product/15448043520385	CHF 19.35	9 Varianten	Ärmelloses Off-Shoulder Top mit U-Boot-Ausschnitt
 gid://shopify/Product/15448043553153	CHF 26.65	9 Varianten	Leinen-Weste mit Revers, ärmellos, atmungsaktiv
 gid://shopify/Product/15448043585921	CHF 21.71	3 Varianten	Retro Plissiertes Camisole
+gid://shopify/Product/15448043618689	CHF 17.30	20 Varianten	Chiffon-Bluse im Boyfriend-Stil
+gid://shopify/Product/15448043651457	CHF 20.67	5 Varianten	One Shoulder Cropped Blouse mit Ballonärmeln
+gid://shopify/Product/15448043749761	CHF 20.37	25 Varianten	Damen T-Shirt mit ausgestellten Ärmeln
+gid://shopify/Product/15448043782529	CHF 20.37	4 Varianten	Weisse Bluse mit flatterndem Kragen
