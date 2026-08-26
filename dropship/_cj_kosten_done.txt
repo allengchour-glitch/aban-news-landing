@@ -2133,3 +2133,4 @@ gid://shopify/Product/15448043323777	CHF 19.78	20 Varianten	Elegante Satin-Bluse
 gid://shopify/Product/15448043389313	CHF 18.62	90 Varianten	Langarmbluse mit Gürtel und 3D-Effekt
 gid://shopify/Product/15448043422081	CHF 20.24	8 Varianten	Sommer Bluse mit Print
 gid://shopify/Product/15448043487617	CHF 18.00	6 Varianten	V-Neck Langarmshirt mit Print
+gid://shopify/Product/15448043520385	CHF 19.35	9 Varianten	Ärmelloses Off-Shoulder Top mit U-Boot-Ausschnitt
