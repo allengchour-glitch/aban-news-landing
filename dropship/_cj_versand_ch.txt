@@ -923,3 +923,4 @@ gid://shopify/Product/15512302780801	ok	Vielseitiger Trolley Rucksack für Gesch
 gid://shopify/Product/15516108587393	nicht-versendbar	Golf Bag Rucksack mit Balltasche
 gid://shopify/Product/15516203123073	ok	American Retro Heavy Oil Wax Canvas Rucksack
 gid://shopify/Product/15516234678657	ok	Personalisierte Retro-Handtasche für Herren
+gid://shopify/Product/15516664332673	ok	LED Pixel Smart Display Rucksack
