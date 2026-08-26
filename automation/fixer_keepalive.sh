@@ -350,6 +350,20 @@ while true; do
   # Google-Besucher, der auf eine Empfehlung klickte, landete auf 404. Neue tote Links entstehen
   # bei JEDEM Draft-Lauf (keine-lieferanten-ref, Dubletten, Sperr-Tags), ohne dass die Texte
   # davon erfahren. Meldet nur; das Umhängen braucht eine Entscheidung.
+  # BILD QUADRATISCH AUFFÜLLEN, einmal täglich: 618 aktive Produkte tragen `bild-zu-klein`,
+  # weil kein Bild 500×500 auf BEIDEN Kanten erreicht. Bei 293 davon ist die LÄNGERE Kante
+  # längst ≥ 500 (633×497 — drei Pixel zu wenig). Der Lauf ergänzt an den kurzen Seiten Rand
+  # in der gemessenen Randfarbe des Bildes; das Foto selbst wird nicht gestreckt und nicht
+  # hochskaliert. Ist auch die längere Kante < 500, bleibt der Tag stehen — dort hilft nur
+  # besseres Quellmaterial, und CJ hat keines (618 Quittungen in _bild_gross_cj.txt).
+  BQ=/tmp/bild_quadrat.log
+  if [ -f "$REPO/automation/bild_quadrat_auffuellen.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$BQ" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && CAP=60 setsid python3 automation/bild_quadrat_auffuellen.py >> "$BQ" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) bild-quadrat gestartet"
+    fi
+  fi
   TL=/tmp/tote_links.log
   if [ -f "$REPO/automation/tote_links.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$TL" 2>/dev/null || echo 0) ))
