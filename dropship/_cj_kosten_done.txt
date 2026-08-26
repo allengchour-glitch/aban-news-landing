@@ -2140,3 +2140,11 @@ gid://shopify/Product/15448043618689	CHF 17.30	20 Varianten	Chiffon-Bluse im Boy
 gid://shopify/Product/15448043651457	CHF 20.67	5 Varianten	One Shoulder Cropped Blouse mit Ballonärmeln
 gid://shopify/Product/15448043749761	CHF 20.37	25 Varianten	Damen T-Shirt mit ausgestellten Ärmeln
 gid://shopify/Product/15448043782529	CHF 20.37	4 Varianten	Weisse Bluse mit flatterndem Kragen
+gid://shopify/Product/15448043815297	CHF 22.16	6 Varianten	Besticktes Jacquard-Top mit Rüschen und V-Ausschni
+gid://shopify/Product/15448043848065	CHF 20.97	36 Varianten	V-Ausschnitt Bluse mit Rüschen und ausgestellten Ä
+gid://shopify/Product/15448043880833	CHF 20.67	16 Varianten	Kariertes Kurzarmhemd mit Knopfleiste
+gid://shopify/Product/15448043913601	CHF 18.47	20 Varianten	Ärmelloses Shirt mit Kordelzug
+gid://shopify/Product/15448043946369	CHF 22.16	6 Varianten	Chiffonbluse mit Rüschensaum
+gid://shopify/Product/15448043979137	CHF 21.71	5 Varianten	Damen Rollkragen Off-Shoulder Langarm-Top
+gid://shopify/Product/15448044011905	CHF 17.87	18 Varianten	Bauchfreundliches Langarmshirt mit Rüschen
+gid://shopify/Product/15448044110209	CHF 20.22	6 Varianten	Elegante Chiffonbluse mit One-Shoulder-Design
