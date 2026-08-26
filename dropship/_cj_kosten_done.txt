@@ -1705,7 +1705,6 @@ gid://shopify/Product/15447936205185	CHF 18.61	5 Varianten	Beinwärmer mit Stern
 gid://shopify/Product/15447936336257	CHF 18.77	1 Varianten	Grüne Britisch-Karierte Strumpfhose
 gid://shopify/Product/15447936467329	CHF 17.49	1 Varianten	Samt-Strumpfhose mit Pflanzenmuster
 gid://shopify/Product/15447936598401	CHF 17.72	2 Varianten	Overknee-Socken mit doppelseitigem Print
-<<<<<<< Updated upstream
 gid://shopify/Product/15447936762241	CHF 23.98	6 Varianten	Kuschelige Bären-Socken für Damen
 gid://shopify/Product/15447936893313	CHF 17.18	26 Varianten	Aurora Nahtlose Ultra-Dünne Strumpfhose
 gid://shopify/Product/15447937057153	CHF 17.05	4 Varianten	Overknee-Spitzenstrümpfe
@@ -2074,9 +2073,6 @@ gid://shopify/Product/15448009212289	CHF 26.25	4 Varianten	T-Shirt "To God Be Th
 gid://shopify/Product/15448009343361	CHF 19.92	3 Varianten	Figurbetontes Off-Shoulder Top mit Metall-Details
 gid://shopify/Product/15448009507201	CHF 21.87	4 Varianten	Kurzes Slim-fit Bandeau-Top für Damen
 gid://shopify/Product/15448009703809	CHF 17.85	9 Varianten	V-Neck T-Shirt mit Blumenprint
-<<<<<<< HEAD
-=======
->>>>>>> origin/claude/luxestyle-status-tztnn1
 gid://shopify/Product/15448034935169	CHF 25.15	18 Varianten	Langarm-Shirt mit geradem Schnitt
 gid://shopify/Product/15448035230081	CHF 20.22	30 Varianten	Elegante Langarm-Strickjacke für Damen
 gid://shopify/Product/15448035459457	CHF 22.46	3 Varianten	Crop-Bluse mit Spitzkragen und Herz-Cutout
@@ -2123,5 +2119,3 @@ gid://shopify/Product/15448042209665	CHF 17.85	4 Varianten	Colorblock Strickpull
 gid://shopify/Product/15448042307969	CHF 17.87	7 Varianten	Langarm-Top mit Bambusstruktur und UV-Schutz
 gid://shopify/Product/15448042406273	CHF 19.04	6 Varianten	Elegantes Kurzarm-Shirt mit Holzohr-Rüschen
 gid://shopify/Product/15448042570113	CHF 23.36	2 Varianten	Elegante Bluse mit Puffärmeln und Raffung
-=======
->>>>>>> Stashed changes
