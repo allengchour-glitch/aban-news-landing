@@ -12879,3 +12879,4 @@ gid://shopify/Product/15449098584449	29->1	Keramik-Aschenbecher: Modern & Minima
 gid://shopify/Product/15449102516609	45->1	Kapuzenpullover im Ethno-Stil mit Print für Damen
 gid://shopify/Product/15449110610305	42->2	Kapuzenpullover mit Leo- und Sternenprint
 gid://shopify/Product/15449149440385	16->3	Pullover-Top mit Pflanzen- und Blumenmuster
+gid://shopify/Product/15450644840833	77->1	Elegante Leder-Mules mit Schnalle
