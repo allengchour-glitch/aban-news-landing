@@ -12889,3 +12889,8 @@ gid://shopify/Product/15453777232257	19->0	Fussball-Schiedsrichter-Uhr
 gid://shopify/Product/15454192697729	8->1	Haarformer mit Tourmalin-Keramik
 gid://shopify/Product/15454248468865	112->0	Urbaner Rucksack für Outdoor
 gid://shopify/Product/15454384521601	9->2	Elegante Damen T-back Strumpfanzug
+gid://shopify/Product/15454502715777	43->2	Wanderschuhe für Damen und Herren
+gid://shopify/Product/15454504845697	93->0	Herren-Polo mit 3D-Druck-Muster
+gid://shopify/Product/15454578016641	29->0	Hochtaillierte Leisure Yogahose Damen
+gid://shopify/Product/15454649483649	65->0	Automatikuhr mit Goldgehäuse
+gid://shopify/Product/15454852350337	10->0	Smarte Bremslicht fürs Fahrrad
