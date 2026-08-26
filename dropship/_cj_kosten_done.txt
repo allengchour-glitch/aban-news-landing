@@ -2148,3 +2148,11 @@ gid://shopify/Product/15448043946369	CHF 22.16	6 Varianten	Chiffonbluse mit Rüs
 gid://shopify/Product/15448043979137	CHF 21.71	5 Varianten	Damen Rollkragen Off-Shoulder Langarm-Top
 gid://shopify/Product/15448044011905	CHF 17.87	18 Varianten	Bauchfreundliches Langarmshirt mit Rüschen
 gid://shopify/Product/15448044110209	CHF 20.22	6 Varianten	Elegante Chiffonbluse mit One-Shoulder-Design
+gid://shopify/Product/15448044142977	CHF 19.23	8 Varianten	Freizeit-Langarmshirt für Damen
+gid://shopify/Product/15448044208513	CHF 19.53	15 Varianten	V-Ausschnitt Baumwoll-Leinen Bluse
+gid://shopify/Product/15448044241281	CHF 25.30	3 Varianten	Peplum-Bluse mit Froschknöpfen und Puffärmeln
+gid://shopify/Product/15448044306817	CHF 21.30	5 Varianten	Elegante Langarmbluse mit Stickerei
+gid://shopify/Product/15448044339585	CHF 19.78	21 Varianten	3D Blumen Print Kurzarm-Top
+gid://shopify/Product/15448044372353	CHF 19.08	42 Varianten	Gestreifte V-Neck Bluse mit 3/4-Ärmeln
+gid://shopify/Product/15448044405121	CHF 26.56	6 Varianten	Rückenfreies Camisole mit Spitze
+gid://shopify/Product/15448075829633	CHF 18.01	96 Varianten	Weihnachts-T-Shirt für Damen mit Aufdruck
