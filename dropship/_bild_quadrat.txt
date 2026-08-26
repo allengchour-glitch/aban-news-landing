@@ -292,4 +292,3 @@
 15469970850177	306x665 -> 665x665	Neongrüner Petticoat
 15516215509377	586x420 -> 586x586	Leder-Leine für Haustiere
 15517321101697	427x800 -> 800x800	Kabelloser Bluetooth Lautsprecher
-15517321101697	800x800 -> 800x800	Kabelloser Bluetooth Lautsprecher

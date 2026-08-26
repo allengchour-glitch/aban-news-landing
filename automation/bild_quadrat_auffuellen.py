@@ -142,6 +142,24 @@ def main():
             if max(w, h) < 500:
                 uebersprungen += 1
                 continue                      # nicht heilbar, Tag bleibt
+            # ⚠️ VERALTETER TAG (26.08.): Manche Produkte tragen `bild-zu-klein` noch, obwohl
+            # laengst ein Bild >= 500x500 auf BEIDEN Kanten vorliegt — etwa weil ein spaeterer
+            # Backfill ein grosses Bild nachgeliefert hat. Hier darf NICHTS hochgeladen werden:
+            # der erste Lauf legte fuer ein 800x800-Produkt eine identische Kopie an. Richtig
+            # ist, das grosse Bild nach vorn zu holen und den Tag zu entfernen.
+            if w >= 500 and h >= 500:
+                if DRY:
+                    print(f"DRY {pid} Tag veraltet ({w}x{h}) — nur umsortieren  {p['title'][:40]}", flush=True)
+                    getan += 1; continue
+                sgql('''mutation($id:ID!,$m:[MoveInput!]!){ productReorderMedia(id:$id, moves:$m){ userErrors{message} }}''',
+                     {"id": p["id"], "m": [{"id": best["id"], "newPosition": "0"}]})
+                sgql('''mutation($id:ID!,$t:[String!]!){ tagsRemove(id:$id, tags:$t){ userErrors{message} }}''',
+                     {"id": p["id"], "t": ["bild-zu-klein"]})
+                with open(LEDGER, "a") as f:
+                    f.write(f"{pid}\ttag-veraltet {w}x{h}\t{p['title'][:50]}\n")
+                done.add(pid); getan += 1
+                print(f"TAG-WEG {pid} {w}x{h} war schon gross  {p['title'][:40]}", flush=True)
+                continue
             roh = hole(best["image"]["url"])
             if not roh:
                 continue
