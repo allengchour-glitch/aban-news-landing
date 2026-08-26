@@ -289,3 +289,7 @@
 15513556287873	440x599 -> 599x599	A-Linien-Kleid in frischem Stil für grosse Grössen
 15515087405441	338x555 -> 555x555	Leichtes Polyester Kleid
 15515290861953	510x496 -> 510x510	Weinkühler-Stab aus Edelstahl
+15469970850177	306x665 -> 665x665	Neongrüner Petticoat
+15516215509377	586x420 -> 586x586	Leder-Leine für Haustiere
+15517321101697	427x800 -> 800x800	Kabelloser Bluetooth Lautsprecher
+15517321101697	800x800 -> 800x800	Kabelloser Bluetooth Lautsprecher
