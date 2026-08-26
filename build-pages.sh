@@ -27,6 +27,12 @@ mkdir -p _site
 # (suchmaschine.html) immer alle neuen Seiten findet. Tolerant; bricht den Build nicht ab.
 ( command -v python3 >/dev/null 2>&1 && python3 tools/build_search_index.py ) || echo "build_search_index übersprungen"
 
+# Neue Seiten in die sitemap.xml nachtragen + Dubletten entfernen. Es gibt keinen
+# Generator, der die Sitemap neu baut — ohne diesen Schritt fehlen neue Rubriken
+# bei Google (gemessen 2026-08-26: 21 Minispiele + 8 Märkte + 6 Seiten fehlten).
+# Tolerant; bricht den Build nicht ab.
+( command -v python3 >/dev/null 2>&1 && python3 tools/sitemap_luecken.py --fix ) || echo "sitemap_luecken übersprungen"
+
 # Kaufberater-Pillar-Hub (kaufberater-schweiz.html) aus allen *-kaufen-schweiz.html neu bauen
 # (Pillar-Cluster-SEO: alle Ratgeber ≤2 Klicks von der Startseite). Tolerant.
 ( command -v python3 >/dev/null 2>&1 && python3 tools/build_kaufberater_hub.py ) || echo "build_kaufberater_hub übersprungen"
