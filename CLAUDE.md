@@ -2191,6 +2191,12 @@ einen älteren Disk-Snapshot. **Gepushtes überlebt, alles Lokale fällt zurück
     wiederbelebt, Zombie-Ledger-Klasse); (3) der merge-basierte Autocommitter übersteht das
     Muster sauber — sein fetch+merge vor dem Push hat nichts Neueres überschrieben.
 Erkennungszeichen im Keepalive: CJ-Zahl FÄLLT und der Push meldet non-fast-forward.
+**Nachtrag 26.08. (Rewinds laufen ~stündlich weiter):** (4) Der Snapshot stellt auch ALTE
+/tmp-Kopien wieder her — textbild_fix.py vom 10.08. lief wieder ohne Gepr-Quittung und lud
+dieselben 500 Bildsätze endlos neu. `engine_keepalive.sh` spiegelt deshalb jetzt bei jedem
+Lauf `automation/*.py` nach /tmp (Repo-Fassung gewinnt, cmp-geprüft). (5) Ein blockierter
+Tracking-Ref («cannot lock ref … expected Y») gehört zum Muster; `repo_vorspulen.sh` löst
+ihn selbst (`update-ref -d` + Fetch-Retry).
 
 ## ⏱️ Keepalive ausgedünnt (User-Ja, 25.08.2026)
 Zwei Stunden-Routinen feuerten versetzt = Session-Wake alle ~20–40 Min. Die durable Routine
