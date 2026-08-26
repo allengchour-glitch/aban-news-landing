@@ -606,12 +606,12 @@
 #done search:cat scratcher cardboard lounge
 #done frog eye mask plush sleep
 #done funny animal sleep mask plush
-# Hype-Recherche 25.08.2026: drei Trend-Themen ohne Katalog-Kandidaten (Startseiten-Reihe)
-#done search:ice roller face
-#done search:scalp massager
-#done search:ems face lifting device
-# User 26.08.2026 «coole aschenbecher» (AliExpress-Ad Taschen-Aschenbecher): KEINE Marken-Imitate (Marlboro!), Tags raucher+18plus, NICHT in Google-Kanal
-search:portable pocket ashtray with lid
-search:smokeless ashtray air purifier usb
-search:creative ashtray ceramic design
-search:car ashtray led cup holder
+# September-Trends (AutoDS-Liste 26.08.2026) — 6 Kataloglücken, CH-Herbst/Winter passend.
+# NICHT aufgenommen: Dinosaurier-Greifautomat (Spielzeug = RAUS_TYP der Startreihe),
+# Cowboyhut-Rucksack (Novelty, passt nicht zur Marke).
+search:heated foot warmer slippers usb
+search:self stirring mug electric
+search:salad jar container to go leakproof
+search:portable folding seat stool wearable
+search:electric car windshield deicer defroster
+search:microwave splatter cover collapsible
