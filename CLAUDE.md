@@ -2203,3 +2203,15 @@ Zwei Stunden-Routinen feuerten versetzt = Session-Wake alle ~20–40 Min. Die du
 `trig_01DBsWkRtnrmimnU4sbXGTBQ` läuft jetzt **alle 2 h** (:14), die Umgebungs-Routine
 `trig_01Uy3zVefXbzCZn9Dr2qvkwh` bleibt stündlich — spart ~30 % Routine-Turns, das
 idempotente `engine_keepalive.sh` deckt weiterhin alles ab.
+
+## 📰 Der Ratgeber-Generator lief am 04. UND 05.07. — 11 Themen standen doppelt (2026-08-26)
+250 veröffentlichte Ratgeber, darunter 11 Paare mit gleichem Thema an zwei Tagen
+(Hautpflege, Ohrringe, Geschenkideen, Herrenuhr, Rucksack, Kopfhörer, Halskette, Katzen,
+Sneaker, Ringgrösse; dazu Edelstahl 07/06). Zwei fast gleiche Artikel kannibalisieren sich
+bei Google. **Gewinner = die längere Fassung** (durchweg der 05.07.-Lauf, 7–8k Zeichen
+gegen 5–6k); Verlierer je **301 auf den Gewinner + unpubliziert, nichts gelöscht** —
+Link-Equity fliesst weiter. Ledger `dropship/_blog_dubletten.txt`, alle 22 URLs live geprüft.
+⚠️ Titel-Jaccard allein log fünfmal: «E-Scooter kaufen» vs «Dashcam kaufen» und
+«Gaming-Setup» vs «Nähzubehör» teilen nur Boilerplate («kaufen: worauf achten», «für
+Einsteiger: Grundausstattung») — erst der Inhaltsvergleich entscheidet. Themenvarianten
+(«Geschenkideen SCHWEIZ», «EdelstahlSCHMUCK VS. SILBER») bleiben bewusst stehen.
