@@ -2312,3 +2312,22 @@ seit jeher dort steht.
 - ⚠️ Unser eigenes Admin-Token kann Menüs über **GraphQL** lesen und schreiben; die
   REST-Route `/menus.json` lehnt mit «Scope undefined for API access: menus» ab. Ein
   Scope-Fehler auf einem Weg heisst nicht, dass die Fähigkeit fehlt.
+
+## 🎠 16 Kacheln im Raster = acht Reihen Scrollen auf dem Handy (2026-08-26)
+Betreiber schickte einen Handy-Screenshot der Sektion «Elektronik & Technik — nach Typ
+shoppen» mit der Frage «karusell?». Berechtigt: Nachdem beide Kachel-Sektionen von 7 bzw.
+11 auf **je 16** aufgefüllt wurden, war das 2-spaltige Raster auf dem Handy **acht Reihen
+lang** — die Besucherin scrollt an einem Grossteil der Startseite vorbei, bevor die nächste
+Sektion kommt. `carousel_on_mobile` auf beiden Sektionen aktiviert: dieselben 16 Kategorien
+stehen jetzt in EINER wischbaren Reihe.
+- ⚠️ **`layout_type: 'carousel'` wäre die falsche Schraube gewesen.** Die Sektion rechnet
+  dort `max_items = columns + 2` — aus 16 Kacheln würden **6**. Nur `carousel_on_mobile`
+  behält alle 16 und lässt den Desktop im Raster.
+- **Gegenprobe im ausgelieferten HTML, nicht im Screenshot:** Das Raster trägt jetzt
+  `hidden--mobile`, darunter steht `resource-list hidden--desktop resource-list__carousel`
+  mit `slideshow-component` und `--slide-0 … --slide-15` — zweimal, für beide Sektionen.
+  Ein Screenshot vom eigenen Ausgang beweist gar nichts (Bot-Cache-Lehre 19.08.), die
+  gerenderten Klassen schon.
+- ⚠️ Der erste Blick ins HTML zeigte nur `resource-list--grid` und sah nach «wirkungslos»
+  aus. Der Mobil-Block steht rund **50'000 Zeichen weiter hinten** in derselben Sektion —
+  wer nur die ersten paar Kilobyte prüft, hält eine funktionierende Änderung für gescheitert.
