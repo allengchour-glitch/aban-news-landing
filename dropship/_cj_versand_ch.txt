@@ -921,3 +921,4 @@ gid://shopify/Product/15512183112065	ok	Stativ-Querstange für Kamera & Handy
 gid://shopify/Product/15512272372097	ok	Gusseisen Topf Crèmeweiss
 gid://shopify/Product/15512302780801	ok	Vielseitiger Trolley Rucksack für Geschäftsreisen
 gid://shopify/Product/15516108587393	nicht-versendbar	Golf Bag Rucksack mit Balltasche
+gid://shopify/Product/15516203123073	ok	American Retro Heavy Oil Wax Canvas Rucksack
