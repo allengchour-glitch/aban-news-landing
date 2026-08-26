@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Suche — alle Inhalte von abannews.com durchsuchen | aban</title>
-<meta name="description" content="Durchsuche alle Inhalte von abannews.com: KI-Ratgeber, Tools, Kaufberater und mehr. Schnelle Volltextsuche, sofort Ergebnisse — plus Marktplatz-Suche für Jobs, Angebote &amp; Inserate.">
+<title>Recherche — trouvez tout sur abannews.com | aban</title>
+<meta name="description" content="Cherchez dans tous les guides IA, outils et explications d'abannews.com. Recherche plein texte rapide, résultats immédiats.">
 <meta name="theme-color" content="#d97706">
 <meta name="robots" content="index,follow">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="canonical" href="https://abannews.com/suchmaschine.html">
+<link rel="canonical" href="https://abannews.com/fr/recherche.html">
 <link rel="alternate" hreflang="de" href="https://abannews.com/suchmaschine.html">
 <link rel="alternate" hreflang="en" href="https://abannews.com/en/search.html">
 <link rel="alternate" hreflang="fr" href="https://abannews.com/fr/recherche.html">
 <link rel="alternate" hreflang="it" href="https://abannews.com/it/ricerca.html">
 <link rel="alternate" hreflang="x-default" href="https://abannews.com/suchmaschine.html">
-<meta property="og:title" content="aban-Suche — alle Inhalte durchsuchen">
-<meta property="og:description" content="Schnelle Volltextsuche über alle Ratgeber, Tools und Kaufberater von abannews.com.">
+<meta property="og:title" content="Recherche aban — trouvez tout">
+<meta property="og:description" content="Recherche plein texte rapide dans tous les guides IA et outils d'abannews.com.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://abannews.com/og-image.png">
 <style>
@@ -63,25 +63,24 @@ footer{max-width:680px;margin:0 auto;padding:18px;font-size:.78rem;color:var(--m
 </head>
 <body>
 <div class="top">
-  <a class="brand" href="/">aban</a>
-  <span class="lnk"><a href="/marktplatz.html">Marktplatz</a><a href="/suche.html">Angebote &amp; Jobs</a><a href="/">Newsletter</a><a href="/en/search.html">EN</a><a href="/fr/recherche.html">FR</a><a href="/it/ricerca.html">IT</a></span>
+  <a class="brand" href="/fr/">aban</a>
+  <span class="lnk"><a href="/fr/">Accueil</a><a href="/fr/branchen.html">L'IA par secteur</a><a href="/suchmaschine.html">DE</a><a href="/en/search.html">EN</a><a href="/it/ricerca.html">IT</a></span>
 </div>
 
 <div class="hero">
-  <div class="logo"><span class="a">aban</span><span class="n">-Suche</span></div>
-  <p class="tag">Durchsuche alle Ratgeber, KI-Tools und Kaufberater von abannews.com.</p>
+  <div class="logo"><span class="a">aban</span><span class="n">-Recherche</span></div>
+  <p class="tag">Cherchez dans tous les guides IA, outils et explications d'abannews.com.</p>
   <form class="box" id="f" role="search" onsubmit="return false">
     <span class="ic">🔎</span>
-    <input id="q" type="search" autocomplete="off" autofocus placeholder="Wonach suchst du? z. B. DSGVO, Laptop, Prompt, Velo …" aria-label="Suchbegriff">
-    <button id="go" type="submit">Suchen</button>
+    <input id="q" type="search" autocomplete="off" autofocus placeholder="Que cherchez-vous ? p. ex. RGPD, ordinateur, prompt …" aria-label="Terme de recherche">
+    <button id="go" type="submit">Chercher</button>
   </form>
-  <p class="hint">Produkte, Jobs &amp; Inserate? → <a href="/suche.html">Marktplatz-Suche</a></p>
 </div>
 
 <div class="chips" id="chips" hidden></div>
 <div class="results"><div class="cnt" id="cnt" hidden></div><div id="list"></div></div>
 
-<footer>aban news · durchsucht <span id="total">…</span> eigene Seiten · <a href="/">Start</a> · <a href="/impressum.html">Impressum</a></footer>
+<footer>aban news · recherche dans <span id="total">…</span> pages · <a href="/fr/">Accueil</a> · <a href="/impressum.html">Mentions légales</a></footer>
 
 <script>
 (function(){
@@ -92,8 +91,7 @@ footer{max-width:680px;margin:0 auto;padding:18px;font-size:.78rem;color:var(--m
   function hi(text,terms){var out=esc(text);terms.forEach(function(t){if(t.length<2)return;
     out=out.replace(new RegExp("("+t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","ig"),"<mark>$1</mark>")});return out}
   /* Kategorie-Kuerzel aus dem Index (build_search_index.py) -> Anzeigename */
-  var KAT={ki:"KI-Guide",kauf:"Kaufberater",vgl:"Vergleich",markt:"Markt",rechner:"Rechner",
-           tool:"Werkzeug",thema:"Thema",spiel:"Spiel",dossier:"Dossier",hype:"Hype-Watch"};
+  var KAT={ki:"Guide IA",kauf:"Guide d'achat",vgl:"Comparatif",markt:"Marché",rechner:"Calculateur",tool:"Outil",thema:"Thème",spiel:"Jeu",dossier:"Dossier",hype:"Hype watch"};
   var KATFOLGE=["ki","kauf","vgl","rechner","markt","tool","thema","spiel","dossier","hype"];
   var filter="";
   /* Der Slug traegt bei diesen Seiten die Bedeutung ("3d-drucker-kaufen-schweiz").
@@ -115,8 +113,7 @@ footer{max-width:680px;margin:0 auto;padding:18px;font-size:.78rem;color:var(--m
      380 Seiten genau davon handeln — sie schreiben durchgehend „IA". Dasselbe gilt
      für „künstliche Intelligenz" gegen „KI" und „artificial intelligence" gegen „AI".
      Wer den ausgeschriebenen Begriff tippt, landete in einer Sackgasse. */
-  var SYN={"künstliche":["ki"],"kuenstliche":["ki"],"intelligenz":["ki"],"artificial":["ai"],
-           "intelligence":["ai"]};
+  var SYN={"intelligence":["ia"],"artificielle":["ia"],"ki":["ia"],"ai":["ia"]};
   /* Einmal beim Laden vorrechnen statt bei jedem Tastendruck ueber 1396 Eintraege. */
   function vorbereiten(idx){idx.forEach(function(it){
     it._t=beide(it.t);it._d=beide(it.d);it._s=beide(slug(it.u))});return idx}
@@ -132,7 +129,7 @@ footer{max-width:680px;margin:0 auto;padding:18px;font-size:.78rem;color:var(--m
     var box=$("#chips");if(!box)return;
     if(!alle.length){box.hidden=true;box.innerHTML="";return}
     var z={};alle.forEach(function(x){var k=x.it.k||"";if(k)z[k]=(z[k]||0)+1});
-    var teile=['<button class="chip" data-k="" aria-pressed="'+(filter?"false":"true")+'">Alle <span class="n">'+alle.length+'</span></button>'];
+    var teile=['<button class="chip" data-k="" aria-pressed="'+(filter?"false":"true")+'">Tout <span class="n">'+alle.length+'</span></button>'];
     KATFOLGE.forEach(function(k){if(!z[k])return;
       teile.push('<button class="chip" data-k="'+k+'" aria-pressed="'+(filter===k?"true":"false")+'">'+KAT[k]+' <span class="n">'+z[k]+'</span></button>')});
     box.hidden=teile.length<2;box.innerHTML=teile.join("");
@@ -147,7 +144,7 @@ footer{max-width:680px;margin:0 auto;padding:18px;font-size:.78rem;color:var(--m
       return aus});
     var roh=q.toLowerCase().split(/\s+/).filter(Boolean);   /* fuers Hervorheben */
     if(!q){list.innerHTML="";cnt.hidden=true;var cb=$("#chips");if(cb){cb.hidden=true;cb.innerHTML=""}return}
-    if(!ready){cnt.hidden=false;cnt.textContent="Lade Index …";return}
+    if(!ready){cnt.hidden=false;cnt.textContent="Chargement de l'index …";return}
     var alle=IDX.map(function(it){return {it:it,s:score(it,terms)}}).filter(function(x){return x.s>0})
       .sort(function(a,b){return b.s-a.s});
     /* Ein Filter, der auf 0 Treffer zeigt, ist eine Sackgasse: dann automatisch zurueck auf „Alle". */
@@ -158,16 +155,16 @@ footer{max-width:680px;margin:0 auto;padding:18px;font-size:.78rem;color:var(--m
     /* Die ECHTE Trefferzahl, nicht die Laenge der gekappten Liste — sonst stand
        „40+ Treffer" neben einem Chip, der 279 meldet. */
     var ges=filter?alle.filter(function(x){return x.it.k===filter}).length:alle.length;
-    cnt.textContent=ges?(ges+" Treffer für „"+q+"“"+(filter?" in "+KAT[filter]:"")
-      +(ges>hits.length?" · die besten "+hits.length:"")):"";
-    if(!hits.length){list.innerHTML='<div class="empty">Nichts gefunden für „'+esc(q)+'“.<br>Vielleicht im <a href="/suche.html?q='+encodeURIComponent(q)+'">Marktplatz</a> suchen?</div>';return}
+    cnt.textContent=ges?(ges+" résultats pour « "+q+" »"+(filter?" dans "+KAT[filter]:"")
+      +(ges>hits.length?" · les meilleurs "+hits.length:"")):"";
+    if(!hits.length){list.innerHTML='<div class="empty">Aucun résultat pour « '+esc(q)+' ».</div>';return}
     list.innerHTML=hits.map(function(x){var it=x.it;
       return '<a class="res" href="'+esc(it.u)+'"><div class="u">abannews.com'+esc(it.u)+'</div><div class="t">'+hi(it.t,roh)+(it.k&&KAT[it.k]?'<span class="badge">'+KAT[it.k]+'</span>':'')+'</div>'+(it.d?'<div class="d">'+hi(it.d,roh)+'</div>':'')+'</a>'}).join("")
   }
   var t;qi.addEventListener("input",function(){clearTimeout(t);t=setTimeout(function(){render(qi.value);writeUrl()},120)});
   $("#f").addEventListener("submit",function(){render(qi.value);writeUrl()});
   function writeUrl(){var q=qi.value.trim();try{history.replaceState(null,"",q?("?q="+encodeURIComponent(q)):location.pathname)}catch(e){}}
-  fetch("/data/site-index.json").then(function(r){return r.json()}).then(function(d){IDX=vorbereiten(d||[]);ready=true;
+  fetch("/data/site-index-fr.json").then(function(r){return r.json()}).then(function(d){IDX=vorbereiten(d||[]);ready=true;
     var tot=$("#total");if(tot)tot.textContent=IDX.length;
     var uq=new URLSearchParams(location.search).get("q");if(uq){qi.value=uq}render(qi.value)})
     .catch(function(){cnt.hidden=false;cnt.textContent="Index nicht erreichbar."});

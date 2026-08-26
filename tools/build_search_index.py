@@ -11,9 +11,12 @@
 #  21 Minispiele, 7 Dossiers, 5 Hype-Watch. Wer eine neue Rubrik als Unterordner
 #  anlegt, muss sie hier eintragen, sonst existiert sie für die Suche nicht.
 #
-#  Ausgeschlossen: noindex-Seiten, /archive/ (alte Ausgaben), _site/,
-#  node_modules/ sowie en/ fr/ it/ — die Übersetzungen brauchen eine eigene
-#  Suche in ihrer Sprache, gemischte Treffer wären für beide Seiten Rauschen.
+#  Ausgeschlossen: noindex-Seiten, /archive/ (alte Ausgaben), _site/, node_modules/.
+#
+#  SPRACHEN: en/ fr/ it/ bekommen je einen EIGENEN Index (site-index-en.json …).
+#  Gemischte Treffer wären für beide Seiten Rauschen — wer auf /fr/ sucht, will
+#  keine deutschen Seiten. Die Dateinamen dort sind aus dem Deutschen abgeleitet
+#  (ki-*), der Inhalt ist übersetzt; die Kategorie-Erkennung greift deshalb auch.
 #  Aufruf:  python3 tools/build_search_index.py
 # =============================================================================
 
@@ -22,6 +25,13 @@ import json, re, os, glob
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "data", "site-index.json")
 SKIP = {"404.html", "google.html"}
+
+# Sprachordner -> (Index-Datei, Unterordner mit Kategorie)
+SPRACHEN = {
+    "en": [("maerkte", "markt"), ("dossier", "dossier")],
+    "fr": [],
+    "it": [],
+}
 
 # Inhalts-Unterordner mit ihrem Kategorie-Kürzel (Reihenfolge = Anzeige-Reihenfolge)
 UNTERORDNER = [
@@ -47,9 +57,21 @@ def kategorie_root(name):
     return ""
 
 
-def pick(html, pat):
+def pick(html, pat, gruppe=1):
     m = re.search(pat, html, re.I | re.S)
-    return (m.group(1).strip() if m else "")
+    return (m.group(gruppe).strip() if m else "")
+
+
+# ⚠️ GEMESSEN 2026-08-26: das alte Muster war content=["\'](.*?)["\'] — es akzeptierte
+# JEDES Anführungszeichen als Ende. Bei content="L'IA pour les pizzerias …" endete der
+# Treffer damit am Apostroph, und die Beschreibung war "L". Betroffen: 364 von 380
+# französischen und 364 von 377 italienischen Seiten — also fast der gesamte Text, auf
+# dem die neue Sprachsuche sucht. Die Rückreferenz \1 erzwingt dasselbe Zeichen zum
+# Schliessen; deutsche Seiten waren zufällig unauffällig, weil sie kaum Apostrophe haben.
+# Das Anführungszeichen als eigene Zeichenklasse — so bleibt der Ausdruck lesbar,
+# statt in verschachtelten Escapes zu ertrinken.
+Q = "[\"']"
+DESC = '<meta[^>]+name=' + Q + 'description' + Q + '[^>]+content=(' + Q + ')(.*?)\\1'
 
 
 def eintrag(path, url, kat):
@@ -64,7 +86,7 @@ def eintrag(path, url, kat):
     title = re.sub(r"\s+", " ", title).strip()
     if not title:
         return None
-    desc = pick(html, r'<meta[^>]+name=["\']description["\'][^>]+content=["\'](.*?)["\']')
+    desc = pick(html, DESC, 2)
     desc = re.sub(r"\s+", " ", desc.replace("&amp;", "&")).strip()
     e = {"u": url, "t": title[:120], "d": desc[:180]}
     if kat:
@@ -72,30 +94,48 @@ def eintrag(path, url, kat):
     return e
 
 
-def main():
-    entries, proK = [], {}
-    for path in sorted(glob.glob(os.path.join(ROOT, "*.html"))):
+def sammeln(basis, unterordner):
+    """Alle Seiten eines Bereichs: Top-Ebene + genannte Unterordner."""
+    treffer, proK = [], {}
+    verz = os.path.join(ROOT, basis) if basis else ROOT
+    prefix = "/" + basis + "/" if basis else "/"
+    for path in sorted(glob.glob(os.path.join(verz, "*.html"))):
         name = os.path.basename(path)
         if name in SKIP:
             continue
-        e = eintrag(path, "/" + name, kategorie_root(name))
+        e = eintrag(path, prefix + name, kategorie_root(name))
         if e:
-            entries.append(e)
+            treffer.append(e)
             proK[e.get("k", "seite")] = proK.get(e.get("k", "seite"), 0) + 1
-    for ordner, kat in UNTERORDNER:
-        for path in sorted(glob.glob(os.path.join(ROOT, ordner, "*.html"))):
+    for ordner, kat in unterordner:
+        for path in sorted(glob.glob(os.path.join(verz, ordner, "*.html"))):
             name = os.path.basename(path)
             if name in SKIP:
                 continue
-            e = eintrag(path, "/" + ordner + "/" + name, kat)
+            e = eintrag(path, prefix + ordner + "/" + name, kat)
             if e:
-                entries.append(e)
+                treffer.append(e)
                 proK[kat] = proK.get(kat, 0) + 1
-    os.makedirs(os.path.dirname(OUT), exist_ok=True)
-    json.dump(entries, open(OUT, "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
+    return treffer, proK
+
+
+def schreiben(datei, eintraege, proK, was):
+    os.makedirs(os.path.dirname(datei), exist_ok=True)
+    json.dump(eintraege, open(datei, "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
     verteilung = "  ".join(f"{k}:{v}" for k, v in sorted(proK.items(), key=lambda x: -x[1]))
-    print(f"✔ {len(entries)} Seiten → data/site-index.json ({os.path.getsize(OUT)/1024:.0f} KB)")
-    print(f"  {verteilung}")
+    print(f"✔ {len(eintraege):5} Seiten → {os.path.relpath(datei, ROOT)} "
+          f"({os.path.getsize(datei)/1024:.0f} KB)  {was}")
+    if verteilung:
+        print(f"        {verteilung}")
+
+
+def main():
+    entries, proK = [], {}
+    entries, proK = sammeln("", UNTERORDNER)
+    schreiben(OUT, entries, proK, "deutsch")
+    for sprache, unter in SPRACHEN.items():
+        e2, k2 = sammeln(sprache, unter)
+        schreiben(os.path.join(ROOT, "data", f"site-index-{sprache}.json"), e2, k2, sprache)
 
 
 if __name__ == "__main__":

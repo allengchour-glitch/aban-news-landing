@@ -78,6 +78,62 @@ for (const schreibweise of ['überwachungskamera', 'ueberwachungskamera', 'uberw
     r.treffer[0] ? r.treffer[0].u : 'kein Treffer')
 }
 
+/* ── 🌍 SPRACHSUCHEN (en/fr/it) ─────────────────────────────────────────
+   Bis 2026-08-26 hatten die 1233 uebersetzten Seiten gar keine Suche. Jede
+   Sprachseite muss ihren EIGENEN Index laden — ein deutscher Treffer auf /fr/
+   waere fuer beide Seiten Rauschen. */
+const SPRACHEN = [
+  { code: 'en', datei: '/en/search.html', wort: 'prompt', knopf: 'Search', min: 400 },
+  { code: 'fr', datei: '/fr/recherche.html', wort: 'prompt', knopf: 'Chercher', min: 350 },
+  { code: 'it', datei: '/it/ricerca.html', wort: 'prompt', knopf: 'Cerca', min: 350 },
+]
+for (const S of SPRACHEN) {
+  await page.goto(`http://127.0.0.1:${PORT}${S.datei}`, { waitUntil: 'networkidle' })
+  const lang = await page.getAttribute('html', 'lang')
+  const tot = +(await page.textContent('#total'))
+  check(`${S.code}: Seite laedt eigenen Index`, lang === S.code && tot >= S.min, `lang=${lang}, ${tot} Seiten`)
+  check(`${S.code}: Knopf uebersetzt`, (await page.textContent('#go')).trim() === S.knopf, await page.textContent('#go'))
+  await page.fill('#q', S.wort)
+  await page.waitForTimeout(320)
+  const t = await page.evaluate(() => [...document.querySelectorAll('.res')].map((a) => a.getAttribute('href')))
+  check(`${S.code}: findet Treffer`, t.length > 0, t.length + ' Treffer')
+  check(`${S.code}: nur Seiten dieser Sprache`, t.length > 0 && t.every((u) => u.startsWith('/' + S.code + '/')),
+    t.filter((u) => !u.startsWith('/' + S.code + '/')).slice(0, 2).join(', ') || 'alle korrekt')
+  const wechsel = await page.evaluate(() => [...document.querySelectorAll('.lnk a')].map((a) => a.getAttribute('href')))
+  check(`${S.code}: Sprachumschalter vollstaendig`,
+    ['/suchmaschine.html', '/en/search.html', '/fr/recherche.html', '/it/ricerca.html']
+      .filter((u) => u !== S.datei).every((u) => wechsel.includes(u)), wechsel.join(' '))
+}
+
+/* ── Synonyme: der ausgeschriebene Begriff muss finden, was die Seiten abkuerzen.
+   GEMESSEN vor dem Einbau: „intelligence" auf /fr/ = 0 Treffer, obwohl 374 der
+   380 Seiten davon handeln (sie schreiben „IA"). Dasselbe fuer EN/DE. */
+const SYNTEST = [
+  { datei: '/fr/recherche.html', wort: 'intelligence artificielle', min: 100 },
+  { datei: '/en/search.html', wort: 'artificial intelligence', min: 100 },
+  { datei: '/suchmaschine.html', wort: 'künstliche intelligenz', min: 100 },
+]
+for (const T of SYNTEST) {
+  await page.goto(`http://127.0.0.1:${PORT}${T.datei}`, { waitUntil: 'networkidle' })
+  await page.fill('#q', T.wort)
+  await page.waitForTimeout(320)
+  const n = await page.evaluate(() => document.querySelectorAll('.res').length)
+  const zahl = await page.textContent('#cnt')
+  check(`Synonym „${T.wort}" findet Seiten`, n > 0, zahl.trim() || '0 Treffer')
+}
+
+/* ── Beschreibungen: der Apostroph-Bug im Index-Generator schnitt 364 von 380
+   franzoesischen und 364 von 377 italienischen Beschreibungen auf "L" zusammen —
+   genau der Text, auf dem die neue Sprachsuche sucht. */
+for (const sprache of ['fr', 'it', 'en']) {
+  /* ⚠️ IDX liegt im Modul-Scope der Seite und ist von aussen NICHT sichtbar —
+     der erste Anlauf las es per page.evaluate und starb. Die Index-Datei selbst
+     ist ein statisches JSON und die ehrlichere Quelle. */
+  const idx = await page.evaluate((s) => fetch('/data/site-index-' + s + '.json').then((r) => r.json()), sprache)
+  const kurz = idx.filter((x) => (x.d || '').length < 20).length
+  check(`${sprache}: keine abgeschnittenen Beschreibungen`, kurz === 0, `${kurz} zu kurz von ${idx.length}`)
+}
+
 check('0 JS-Fehler', fehler.length === 0, fehler.join(' | '))
 console.log(`\n${fehl === 0 ? '🎉 SUCHE BESTANDEN' : '💥 SUCHE FEHLGESCHLAGEN'} — ${ok} ok, ${fehl} Fehler`)
 await browser.close()
