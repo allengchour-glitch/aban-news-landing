@@ -12873,3 +12873,9 @@ gid://shopify/Product/15454078796161	76->0	Mini-Makeup-Pinsel-Set
 gid://shopify/Product/15454106321281	11->0	Schutzhelm aus Polycarbonat
 gid://shopify/Product/15454116938113	14->0	Nordic Tischlampe mit weichem Licht
 gid://shopify/Product/15454162059649	999->0	Streifen-Sneaker für Herren und Damen
+gid://shopify/Product/15447952327041	63->0	Colorblock Raglan Hoodie für Eltern und Kinder
+gid://shopify/Product/15448937136513	76->0	Katzenbett "Moonlight" – Transparente Raumkapsel
+gid://shopify/Product/15449098584449	29->1	Keramik-Aschenbecher: Modern & Minimalistisch
+gid://shopify/Product/15449102516609	45->1	Kapuzenpullover im Ethno-Stil mit Print für Damen
+gid://shopify/Product/15449110610305	42->2	Kapuzenpullover mit Leo- und Sternenprint
+gid://shopify/Product/15449149440385	16->3	Pullover-Top mit Pflanzen- und Blumenmuster
