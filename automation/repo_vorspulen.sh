@@ -11,7 +11,13 @@ B=claude/luxestyle-status-tztnn1
 S=$(mktemp -d)
 cp dropship/*.txt "$S"/ 2>/dev/null
 find .git -name "*.lock" -delete 2>/dev/null
-timeout 60 git fetch origin "$B" || exit 1
+# Snapshot kann einen Tracking-Ref hinterlassen, dessen erwarteter Stand nicht mehr
+# existiert («cannot lock ref … is at X but expected Y», 26.08.) — Ref loeschen,
+# fetch legt ihn frisch an.
+timeout 60 git fetch origin "$B" || {
+  git update-ref -d "refs/remotes/origin/$B" 2>/dev/null
+  timeout 60 git fetch origin "$B" || exit 1
+}
 git stash -u >/dev/null 2>&1
 git reset --hard "origin/$B" || exit 1
 python3 - "$S" <<'EOF'
