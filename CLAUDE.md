@@ -2331,3 +2331,17 @@ stehen jetzt in EINER wischbaren Reihe.
 - ⚠️ Der erste Blick ins HTML zeigte nur `resource-list--grid` und sah nach «wirkungslos»
   aus. Der Mobil-Block steht rund **50'000 Zeichen weiter hinten** in derselben Sektion —
   wer nur die ersten paar Kilobyte prüft, hält eine funktionierende Änderung für gescheitert.
+
+## 🖼️ 294 zu kleine Hauptbilder quadratisch geheilt — und eine Kopie zu viel (2026-08-26)
+Von 618 Produkten mit `bild-zu-klein` waren **293 auf der längeren Kante bereits ≥ 500 px**
+(633×497 scheitert an drei Pixeln). `automation/bild_quadrat_auffuellen.py` füllt sie an den
+kurzen Seiten mit der **gemessenen Randfarbe** auf — kein Strecken, kein Hochskalieren.
+Stand: **294 geheilt, noch 325 getaggt** — bei denen ist auch die längere Kante unter 500,
+da hilft nur besseres Quellmaterial, und CJ hat keines (618 Quittungen in `_bild_gross_cj.txt`).
+- ⚠️ **Ein Produkt bekam eine identische Kopie**: Der Batch hatte 427×800 → 800×800 geheilt,
+  ein zweiter Lauf sah das neue 800×800 als grösstes Bild und füllte es nochmals auf
+  («800x800 -> 800x800»). Behoben: Ist das beste Bild schon ≥ 500 auf BEIDEN Kanten, wird
+  **nichts hochgeladen** — dann ist nur der Tag veraltet, und richtig ist umsortieren +
+  Tag entfernen. Die Kopie wurde gelöscht, das Ledger entdoppelt.
+  **Regel: Wer ein abgeleitetes Bild anlegt, muss prüfen, ob er sein eigenes Ergebnis
+  vor sich hat.** Sonst wächst mit jedem Lauf eine Generation Kopien nach.
