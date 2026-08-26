@@ -93,3 +93,19 @@
 2026-08-25	Kerzenwärmer & Duft	gid://shopify/Product/15508364296577	3D Glas Aroma Diffusor mit Farblicht
 2026-08-25	Kerzenwärmer & Duft	gid://shopify/Product/15508399128961	USB Aroma Diffuser mit 7 LED Farben
 2026-08-25	Haustier-Fellpflege	gid://shopify/Product/15510836674945	Selbstreinigende Haustierbürste
+2026-08-26	Beauty-Gerät	gid://shopify/Product/15497445638529	Elektrischer Kopfhautmassage-Roller
+2026-08-26	Beauty-Gerät	gid://shopify/Product/15500162531713	Elektrischer Kopfhaut-Massagekamm mit Rotlicht
+2026-08-26	Hautpflege-Serum	gid://shopify/Product/15500460360065	Retinol Anti-Faltencreme
+2026-08-26	Hautpflege-Serum	gid://shopify/Product/15508355481985	Hyaluronsäure Hautpflege 5er-Set
+2026-08-26	Ordnung & Aesthetic	gid://shopify/Product/15496390607233	8-teiliges Make-up Pinselset mit Aufbewahrungsbox
+2026-08-26	Ordnung & Aesthetic	gid://shopify/Product/15412899643777	Reise-Kulturbeutel «Voyage» – XL Hänge-Organizer
+2026-08-26	Shapewear	gid://shopify/Product/15448109121921	Fajas Colombianas Postpartum Shapewear
+2026-08-26	Shapewear	gid://shopify/Product/15448109220225	Nahtloser Body Shaper mit Rundhals und Bauchkontrolle
+2026-08-26	Ladestation 3-in-1	gid://shopify/Product/15497472475521	3-in-1 Wireless Ladestation für Apple Geräte
+2026-08-26	Ladestation 3-in-1	gid://shopify/Product/15506272223617	3-in-1 Wireless Ladestation für Uhr & Kopfhörer
+2026-08-26	Haarglätter & Styler	gid://shopify/Product/15497433350529	Multifunktionaler Lockenstab mit Keramikbeschichtung
+2026-08-26	Haarglätter & Styler	gid://shopify/Product/15502143160705	Glätteisen und Lockenstab 2-in-1 mit Thermostat
+2026-08-26	Kerzenwärmer & Duft	gid://shopify/Product/15503128265089	Vulkan Aroma Diffuser mit Flammen- & Quallen-Effekt
+2026-08-26	Kerzenwärmer & Duft	gid://shopify/Product/15411554320769	Aroma Diffuser Holzoptik 400ml – Ultraschall Luftbefeuchter mit 7 LED-Farben
+2026-08-26	Hoodie-Decke	gid://shopify/Product/15450839777665	XXL Hoodie-Decke mit Taschen für Sie & Ihn
+2026-08-26	Hoodie-Decke	gid://shopify/Product/15448107417985	Oversized Hoodie mit Bauchtasche
