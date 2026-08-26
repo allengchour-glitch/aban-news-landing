@@ -2123,3 +2123,4 @@ gid://shopify/Product/15448042701185	CHF 19.17	5 Varianten	Kurzarm-Kleid mit Sch
 gid://shopify/Product/15448042865025	CHF 22.43	3 Varianten	Ärmellose Bluse mit doppelten Rüschen
 gid://shopify/Product/15448042963329	CHF 35.75	3 Varianten	Gestreifte Bluse mit Peter-Pan-Kragen
 gid://shopify/Product/15448043028865	CHF 51.57	8 Varianten	Bluse mit Blütenprint, Rüschen und Schleife
+gid://shopify/Product/15448043061633	CHF 20.35	10 Varianten	Kurzarm-T-Shirt mit gebürsteter Textur
