@@ -135,6 +135,15 @@ for S in cj_queue_runner autocommit reel_engine_runner social_autopilot \
   fi
 done
 
+# ── 3b. Python-Reiniger des Aufsehers nach /tmp spiegeln, Repo-Fassung gewinnt.
+# Der Snapshot-Rewind stellt ALTE /tmp-Kopien wieder her (26.08.: textbild_fix.py vom
+# 10.08. lief wieder ohne Gepr-Quittung und lud dieselben 500 Bildsaetze endlos neu).
+# Der Aufseher startet /tmp/$p.py — also muss die Repo-Fassung dorthin, bei jedem Lauf.
+for P in "$REPO_AUTO"/*.py; do
+  Z="/tmp/$(basename "$P")"
+  cmp -s "$P" "$Z" 2>/dev/null || cp "$P" "$Z" 2>/dev/null
+done
+
 echo "STAND: $(zaehle cj_runner) CJ-Runner, Aufseher=$(zaehle fixer_keepalive.sh)"
 
 # 💾 Snapshot-Rewind-Erkennung (25.08.2026, 4× an einem Morgen): Der Container stellt beim
