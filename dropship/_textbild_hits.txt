@@ -12909,3 +12909,4 @@ gid://shopify/Product/15458991604097	21->0	Weiche Babyschuhe Innen Non-Slip
 gid://shopify/Product/15465843589505	42->3	Abstrakte Cape-Jacke für Herren
 gid://shopify/Product/15465843949953	64->1	Kapuzen-Cardigan mit 3D Digitalprint für Herren
 gid://shopify/Product/15465885630849	30->0	V-Neck Strickpullover mit Buchstaben-Design
+gid://shopify/Product/15466070802817	82->0	Messer- und Scheren-Set aus Edelstahl
