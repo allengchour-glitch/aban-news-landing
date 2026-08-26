@@ -301,3 +301,4 @@ gid://shopify/Product/15516217868673	Silber
 gid://shopify/Product/15516218098049	Silber
 gid://shopify/Product/15516218130817	Silber
 gid://shopify/Product/15516303491457	Schwarz
+gid://shopify/Product/15517430972801	Gold
