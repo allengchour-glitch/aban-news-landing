@@ -609,9 +609,9 @@
 # September-Trends (AutoDS-Liste 26.08.2026) — 6 Kataloglücken, CH-Herbst/Winter passend.
 # NICHT aufgenommen: Dinosaurier-Greifautomat (Spielzeug = RAUS_TYP der Startreihe),
 # Cowboyhut-Rucksack (Novelty, passt nicht zur Marke).
-search:heated foot warmer slippers usb
-search:self stirring mug electric
-search:salad jar container to go leakproof
-search:portable folding seat stool wearable
-search:electric car windshield deicer defroster
-search:microwave splatter cover collapsible
+#done search:heated foot warmer slippers usb
+#done search:self stirring mug electric
+#done search:salad jar container to go leakproof
+#done search:portable folding seat stool wearable
+#done search:electric car windshield deicer defroster
+#done search:microwave splatter cover collapsible
