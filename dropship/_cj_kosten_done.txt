@@ -2135,3 +2135,4 @@ gid://shopify/Product/15448043422081	CHF 20.24	8 Varianten	Sommer Bluse mit Prin
 gid://shopify/Product/15448043487617	CHF 18.00	6 Varianten	V-Neck Langarmshirt mit Print
 gid://shopify/Product/15448043520385	CHF 19.35	9 Varianten	Ärmelloses Off-Shoulder Top mit U-Boot-Ausschnitt
 gid://shopify/Product/15448043553153	CHF 26.65	9 Varianten	Leinen-Weste mit Revers, ärmellos, atmungsaktiv
+gid://shopify/Product/15448043585921	CHF 21.71	3 Varianten	Retro Plissiertes Camisole
