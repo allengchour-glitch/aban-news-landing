@@ -70,6 +70,21 @@ if (st.pfad && st.pfad.length) {
   const l2 = st.pfad[st.pfad.length - 1]
   check('Route endet am Bauernhof', Math.hypot(l2[0] + 40, l2[1] + 196) < 2, `Ende (${l2[0].toFixed(0)},${l2[1].toFixed(0)})`)
 } else check('Route endet am Bauernhof', false, 'kein Pfad')
+await S('weg')
+
+/* 5: Achterbahn-Stich (neu gebauter Asphalt) */
+check('Achterbahn-Stich West (-150,173) ist Strasse', await S('strasse', -150, 173))
+check('Achterbahn-Stich Sued (-190,190) ist Strasse', await S('strasse', -190, 190))
+check('Route zur Achterbahn moeglich', await S('setz', -190, 207) === true)
+st = await S('stand')
+if (st.pfad && st.pfad.length) {
+  const l3 = st.pfad[st.pfad.length - 1]
+  check('Route endet an der Station', Math.hypot(l3[0] + 190, l3[1] - 207) < 2, `Ende (${l3[0].toFixed(0)},${l3[1].toFixed(0)})`)
+  const stich = st.pfad.filter((p) => (Math.abs(p[1] - 173) < 6 && p[0] < -100) || (Math.abs(p[0] + 190) < 6 && p[1] > 170)).length
+  check('Route benutzt den Stich', stich >= 15, stich + ' Punkte auf dem Stich')
+} else { check('Route endet an der Station', false, 'kein Pfad'); check('Route benutzt den Stich', false) }
+const anteilA = await S('anteil')
+check('Achterbahn-Route folgt Strassen', anteilA > 0.5, 'Anteil=' + (anteilA * 100).toFixed(0) + '%')
 
 check('0 JS-Fehler', jsFehler.length === 0, jsFehler.join(' | ') || '')
 console.log(`\n${fehl === 0 ? '🎉 NETZ BESTANDEN' : '💥 NETZ FEHLGESCHLAGEN'} — ${ok} ok, ${fehl} Fehler`)

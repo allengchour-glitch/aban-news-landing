@@ -5155,6 +5155,9 @@ setTimeout(function baueGebaeude(){
           var lng2=wx*zc2+wz*zs2, qur2=Math.abs(-wx*zs2+wz*zc2);
           if(lng2>104&&lng2<216&&qur2<9){aufZub=true;break;}}
         if(aufZub)continue;
+        /* 🎢 Achterbahn-Stich (L-Weg Landstrasse -> Station): kein Baum auf die Fahrbahn */
+        if(wz>164&&wz<182&&wx>-198&&wx<-88)continue;
+        if(wx>-199&&wx<-181&&wz>164&&wz<212)continue;
         var FE=window._felder||[];                             // nicht in die Felder
         var imFeld=false;
         for(var f9=0;f9<FE.length;f9++)
@@ -5611,6 +5614,28 @@ setTimeout(function baueGebaeude(){
       window._coaster={kurve:kurve,zug:zugG,t:0,v:0,CX:CX,CZ:CZ,faehrt:false,mit:false};
       addSolid(CX,CZ-22,13,6,{a:"z",at:CZ-19.2,c:CX,w:6});   /* Station solide, Zugang offen */
     })();
+    /* 🎢🛣️ ACHTERBAHN-STICH (User: „strasse ausbauen / verbessere mehr"): die Achterbahn
+       war das einzige Ziel der Karte ganz ohne Asphalt. L-Weg von der Landstrasse
+       (Kreuzung mit dem 120°-Zubringer bei ~(-100|173)) nach Westen und dann suedlich
+       vor die Station. Korridor VOR dem Bau live vermessen: keine Berge, Viertel,
+       Gebaeude oder Felder im Band — nur Waldsaum-Baeume, die jetzt ausgespart werden.
+       Stil wie die Landstrasse: 8,4 m Asphalt, Bankett beidseits, gestrichelte Mitte. */
+    (function achterbahnStich(){
+      var A=betMat(0x4a4a53,0.92), B=betMat(0x9a9384,0.98);
+      var D=new THREE.MeshStandardMaterial({color:0xd8d8cc,roughness:0.8});
+      function platte(w,d,x,z,mat,y){
+        var p=new THREE.Mesh(new THREE.PlaneGeometry(w,d),mat);
+        p.rotation.x=-Math.PI/2;p.position.set(x,y,z);p.receiveShadow=true;scene.add(p);}
+      /* Segment A: z=173, x -194.2..-96 (Ost-Ende ueberlappt die Ring-Fahrbahn = Einmuendung) */
+      platte(98.2,8.4,-145.1,173,A,0.012);
+      platte(98.2,1.5,-145.1,173-5.0,B,0.008);platte(98.2,1.5,-145.1,173+5.0,B,0.008);
+      /* Segment B: x=-190, z 168.8..205 + Vorplatz an der Station */
+      platte(8.4,36.2,-190,186.9,A,0.0125);
+      platte(1.5,36.2,-190-5.0,186.9,B,0.008);platte(1.5,36.2,-190+5.0,186.9,B,0.008);
+      platte(11,5,-190,207.3,A,0.0125);
+      for(var mx=-183;mx<=-102;mx+=9)platte(3,0.28,mx,173,D,0.022);
+      for(var mz=178;mz<202;mz+=9)platte(0.28,3,-190,mz,D,0.022);
+    })();
     /* 🚡 SEILBAHN auf den Hausberg — die drei th26-Modelle (Station, Stuetze, Gondel)
        lagen ungenutzt im Repo. Route und Hoehen sind aus der Bergkette oben gerechnet,
        nicht geschaetzt: Berg Nr. 5 steht bei (121.5, 174.9), Grundradius 51.75, Hoehe 75,
@@ -5844,6 +5869,8 @@ setTimeout(function baueGebaeude(){
       K.push(["Zubringer O","z", RX,-100,118,7.2]);
       K.push(["Strandzufahrt","x",-30,-134,-78,5.6]);
       K.push(["Seepark-Stich","z",0,118,146,4.6]);
+      K.push(["Achterbahn-Stich w","x",173,-196,-92,5.4]);
+      K.push(["Achterbahn-Stich s","z",-190,169,210,5.4]);
       return K;})();
     window._KORRIDORE=KORRIDORE;
     /* Groesste Ueberlappung einer Box mit irgendeinem Korridor. */
@@ -11165,7 +11192,8 @@ var _GPS_VERB=[
   ["z",0,172,236],      // Sportpark Sued (Suedufer 0|172 -> 0|236)
   ["x",216,0,60],["z",60,216,330], // Freizeitpark (L-Weg 0|216 -> 60|216 -> 60|330)
   ["z",-40,-196,-100],  // Bauernhof (-40|-100 -> -40|-196)
-  ["x",-30,-134,-78]];  // Strandzufahrt (K-Korridor)
+  ["x",-30,-134,-78],   // Strandzufahrt (K-Korridor)
+  ["x",173,-194,-96],["z",-190,169,207]]; // Achterbahn-Stich (L-Weg zur Station)
 function gpsStrasse(x,z){
   var SZr=GH*CS/2+12;
   if(Math.abs(x)<RL/2+6&&(Math.abs(z-SZr)<5||Math.abs(z+SZr)<5))return true;   // Hauptstrassen
