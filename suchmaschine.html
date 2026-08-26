@@ -42,6 +42,16 @@ a{color:var(--amber-dk);text-decoration:none}
 .res .t{font-size:1.05rem;font-weight:700;color:#1a3aa0;margin:1px 0 3px}
 .res .d{font-size:.9rem;color:var(--ink2)}
 .empty{text-align:center;color:var(--muted);padding:24px 0}
+/* Kategorie-Filter: bei 1396 Seiten liefert ein Wort wie „KI" hunderte Treffer —
+   die Chips grenzen auf eine Rubrik ein, die Zahl zeigt die Treffer darin. */
+.chips{display:flex;flex-wrap:wrap;gap:7px;max-width:680px;margin:0 auto 4px;padding:0 18px}
+.chip{font:inherit;font-size:.82rem;border:1px solid var(--line);background:var(--card);color:var(--ink2);
+  border-radius:999px;padding:5px 12px;cursor:pointer;transition:background .12s,border-color .12s,color .12s}
+.chip:hover{border-color:#e3d4b6}
+.chip[aria-pressed="true"]{background:var(--amber);border-color:var(--amber);color:#fff}
+.chip .n{opacity:.65;font-variant-numeric:tabular-nums}
+.badge{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.02em;text-transform:uppercase;
+  background:var(--cream);color:var(--amber-dk);border-radius:5px;padding:1px 6px;margin-left:6px;vertical-align:2px}
 mark{background:#fef3c7;color:inherit;padding:0 1px;border-radius:2px}
 footer{max-width:680px;margin:0 auto;padding:18px;font-size:.78rem;color:var(--muted);text-align:center}
 </style>
@@ -63,6 +73,7 @@ footer{max-width:680px;margin:0 auto;padding:18px;font-size:.78rem;color:var(--m
   <p class="hint">Produkte, Jobs &amp; Inserate? → <a href="/suche.html">Marktplatz-Suche</a></p>
 </div>
 
+<div class="chips" id="chips" hidden></div>
 <div class="results"><div class="cnt" id="cnt" hidden></div><div id="list"></div></div>
 
 <footer>aban news · durchsucht <span id="total">…</span> eigene Seiten · <a href="/">Start</a> · <a href="/impressum.html">Impressum</a></footer>
@@ -75,23 +86,73 @@ footer{max-width:680px;margin:0 auto;padding:18px;font-size:.78rem;color:var(--m
   function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
   function hi(text,terms){var out=esc(text);terms.forEach(function(t){if(t.length<2)return;
     out=out.replace(new RegExp("("+t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","ig"),"<mark>$1</mark>")});return out}
-  function score(it,terms){var t=(it.t||"").toLowerCase(),d=(it.d||"").toLowerCase(),s=0;
-    terms.forEach(function(w){if(t.indexOf(w)>=0)s+=5;if(d.indexOf(w)>=0)s+=1;if(t.indexOf(w)===0)s+=3});return s}
+  /* Kategorie-Kuerzel aus dem Index (build_search_index.py) -> Anzeigename */
+  var KAT={ki:"KI-Guide",kauf:"Kaufberater",vgl:"Vergleich",markt:"Markt",rechner:"Rechner",
+           tool:"Werkzeug",thema:"Thema",spiel:"Spiel",dossier:"Dossier",hype:"Hype-Watch"};
+  var KATFOLGE=["ki","kauf","vgl","rechner","markt","tool","thema","spiel","dossier","hype"];
+  var filter="";
+  /* Der Slug traegt bei diesen Seiten die Bedeutung ("3d-drucker-kaufen-schweiz").
+     Er wird aus der URL gelesen statt in den Index geschrieben — kostet keine Bytes. */
+  function slug(u){return (u||"").replace(/\.html$/,"").replace(/[\/-]/g," ").toLowerCase()}
+  /* 🇨🇭 UMLAUTE. 1231 der 1396 Seiten haben Umlaute im Titel oder Text — wer auf einer
+     Tastatur ohne sie tippt (oder es einfach weglaesst), fand sie vorher nicht.
+     Jeder Text wird in ZWEI Schreibweisen abgelegt, getrennt durch \u0000, damit ein
+     Suchwort nie ueber die Grenze hinweg trifft:
+       fold  „über" -> „ueber"  (deckt „über" und „ueber" ab)
+       plain „über" -> „uber"   (deckt „uber" ab)
+     Die Suchbegriffe werden gleich behandelt; ein Treffer in einer der beiden reicht. */
+  function fold(s){return String(s||"").toLowerCase()
+    .replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss")}
+  function plain(s){return String(s||"").toLowerCase()
+    .replace(/ä/g,"a").replace(/ö/g,"o").replace(/ü/g,"u").replace(/ß/g,"ss")}
+  function beide(s){return fold(s)+"\u0000"+plain(s)}
+  /* Einmal beim Laden vorrechnen statt bei jedem Tastendruck ueber 1396 Eintraege. */
+  function vorbereiten(idx){idx.forEach(function(it){
+    it._t=beide(it.t);it._d=beide(it.d);it._s=beide(slug(it.u))});return idx}
+  function drin(h,w){return h.indexOf(w[0])>=0||h.indexOf(w[1])>=0}
+  function score(it,terms){var s=0;
+    terms.forEach(function(w){
+      if(drin(it._t,w))s+=5;
+      if(drin(it._d,w))s+=1;
+      if(drin(it._s,w))s+=2;
+      if(it._t.indexOf(w[0])===0)s+=3});
+    return s}
+  function chipsBauen(alle,q,terms){
+    var box=$("#chips");if(!box)return;
+    if(!alle.length){box.hidden=true;box.innerHTML="";return}
+    var z={};alle.forEach(function(x){var k=x.it.k||"";if(k)z[k]=(z[k]||0)+1});
+    var teile=['<button class="chip" data-k="" aria-pressed="'+(filter?"false":"true")+'">Alle <span class="n">'+alle.length+'</span></button>'];
+    KATFOLGE.forEach(function(k){if(!z[k])return;
+      teile.push('<button class="chip" data-k="'+k+'" aria-pressed="'+(filter===k?"true":"false")+'">'+KAT[k]+' <span class="n">'+z[k]+'</span></button>')});
+    box.hidden=teile.length<2;box.innerHTML=teile.join("");
+    Array.prototype.forEach.call(box.querySelectorAll(".chip"),function(b){
+      b.addEventListener("click",function(){filter=b.dataset.k;render(qi.value)})});
+  }
   function render(q){
-    q=q.trim();var terms=q.toLowerCase().split(/\s+/).filter(Boolean);
-    if(!q){list.innerHTML="";cnt.hidden=true;return}
+    q=q.trim();var terms=q.toLowerCase().split(/\s+/).filter(Boolean).map(function(w){return [fold(w),plain(w)]});
+    var roh=q.toLowerCase().split(/\s+/).filter(Boolean);   /* fuers Hervorheben */
+    if(!q){list.innerHTML="";cnt.hidden=true;var cb=$("#chips");if(cb){cb.hidden=true;cb.innerHTML=""}return}
     if(!ready){cnt.hidden=false;cnt.textContent="Lade Index …";return}
-    var hits=IDX.map(function(it){return {it:it,s:score(it,terms)}}).filter(function(x){return x.s>0})
-      .sort(function(a,b){return b.s-a.s}).slice(0,40);
-    cnt.hidden=false;cnt.textContent=hits.length?(hits.length+" Treffer für „"+q+"“"):"";
+    var alle=IDX.map(function(it){return {it:it,s:score(it,terms)}}).filter(function(x){return x.s>0})
+      .sort(function(a,b){return b.s-a.s});
+    /* Ein Filter, der auf 0 Treffer zeigt, ist eine Sackgasse: dann automatisch zurueck auf „Alle". */
+    if(filter&&!alle.some(function(x){return x.it.k===filter}))filter="";
+    chipsBauen(alle,q,terms);
+    var hits=(filter?alle.filter(function(x){return x.it.k===filter}):alle).slice(0,40);
+    cnt.hidden=false;
+    /* Die ECHTE Trefferzahl, nicht die Laenge der gekappten Liste — sonst stand
+       „40+ Treffer" neben einem Chip, der 279 meldet. */
+    var ges=filter?alle.filter(function(x){return x.it.k===filter}).length:alle.length;
+    cnt.textContent=ges?(ges+" Treffer für „"+q+"“"+(filter?" in "+KAT[filter]:"")
+      +(ges>hits.length?" · die besten "+hits.length:"")):"";
     if(!hits.length){list.innerHTML='<div class="empty">Nichts gefunden für „'+esc(q)+'“.<br>Vielleicht im <a href="/suche.html?q='+encodeURIComponent(q)+'">Marktplatz</a> suchen?</div>';return}
     list.innerHTML=hits.map(function(x){var it=x.it;
-      return '<a class="res" href="'+esc(it.u)+'"><div class="u">abannews.com'+esc(it.u)+'</div><div class="t">'+hi(it.t,terms)+'</div>'+(it.d?'<div class="d">'+hi(it.d,terms)+'</div>':'')+'</a>'}).join("")
+      return '<a class="res" href="'+esc(it.u)+'"><div class="u">abannews.com'+esc(it.u)+'</div><div class="t">'+hi(it.t,roh)+(it.k&&KAT[it.k]?'<span class="badge">'+KAT[it.k]+'</span>':'')+'</div>'+(it.d?'<div class="d">'+hi(it.d,roh)+'</div>':'')+'</a>'}).join("")
   }
   var t;qi.addEventListener("input",function(){clearTimeout(t);t=setTimeout(function(){render(qi.value);writeUrl()},120)});
   $("#f").addEventListener("submit",function(){render(qi.value);writeUrl()});
   function writeUrl(){var q=qi.value.trim();try{history.replaceState(null,"",q?("?q="+encodeURIComponent(q)):location.pathname)}catch(e){}}
-  fetch("/data/site-index.json").then(function(r){return r.json()}).then(function(d){IDX=d||[];ready=true;
+  fetch("/data/site-index.json").then(function(r){return r.json()}).then(function(d){IDX=vorbereiten(d||[]);ready=true;
     var tot=$("#total");if(tot)tot.textContent=IDX.length;
     var uq=new URLSearchParams(location.search).get("q");if(uq){qi.value=uq}render(qi.value)})
     .catch(function(){cnt.hidden=false;cnt.textContent="Index nicht erreichbar."});
