@@ -12886,3 +12886,4 @@ gid://shopify/Product/15453760586113	38->3	Leopard-Schmuck-Set mit Strass
 gid://shopify/Product/15453761634689	14->0	Damenkleid 'Zuerst Kaffee' Kartoon-Muster mit Getränken
 gid://shopify/Product/15453775331713	44->0	Atmungsaktive Sneaker Damen
 gid://shopify/Product/15453777232257	19->0	Fussball-Schiedsrichter-Uhr
+gid://shopify/Product/15454192697729	8->1	Haarformer mit Tourmalin-Keramik

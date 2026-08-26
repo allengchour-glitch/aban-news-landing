@@ -2289,3 +2289,26 @@ Shopify**, neue Reihen sind also gar nicht möglich. Drei Hebel ohne Limit-Verst
 - ⚠️ `themeFilesUpsert` mit einem 300-KB-Body sprengt die Kommandozeile
   («Argument list too long») → Payload in eine Datei schreiben und `--data-binary @datei`.
 Sicherung der neuen Fassung: `theme_backup/index.json.mehr-inhalt-26-08`.
+
+## 🏷️ «Schweiz» ist zweideutig — CH-LAGER und SCHWEIZER EDITION sind zwei Dinge (2026-08-26)
+Betreiber: «shop nach kategorie mehr, zb ch lieferant statt schweiz odr so». Genau getroffen:
+Die Startseiten-Kachel **«Schweiz 🇨🇭»** führte auf `erste-august` — das sind Schweizer
+**Designs** (Edelweiss, Matterhorn, 266 Artikel). Wer «Schweiz» anklickt, erwartet aber
+Schweizer **Lieferung**. Und das echte CH-Lager (`blitzversand-schweiz`, **2'942 Artikel,
+Lieferung 1–2 Tage**) stand **in keinem einzigen Menüpunkt** — das stärkste
+Vertrauensargument des Shops war über die Navigation nicht erreichbar, während «EU-Lager»
+seit jeher dort steht.
+- Startseite: eine Kachel wurde zwei — **«🇨🇭 CH-Lager · 1–2 Tage»** und
+  **«Schweizer Editionen 🇨🇭»**. Jede sagt jetzt, wohin sie führt.
+- Hauptmenü: «🇨🇭 Ab Schweizer Lager · 1–2 Tage» als ERSTER Punkt unter Highlights.
+- **«WM 2026» war seit Juli tot** — die Kollektion dahinter heisst «Fussball & Fanshop»
+  (90 Artikel) und ist ganzjährig richtig. Nur die BESCHRIFTUNG war veraltet, nicht das
+  Ziel. Dieselbe Klasse wie der Handle `erste-august` mit dem Titel «Schweizer Editionen»:
+  **Ein Handle erzählt die Vergangenheit, der Titel die Gegenwart — beurteilt wird der Titel.**
+- «Sommer & Kühlung» → **«Herbst & Übergang»** (Ende August in der Schweiz), Ventilatoren
+  bleiben als Unterpunkt; neu Jacken, Strick, Hoodies, Mützen, Kuschel-/Heizdecken.
+- ⚠️ `menuUpdate` ersetzt den GANZEN Baum — 94 Punkte vorher eingelesen, 100 nachher live
+  nachgezählt. Ohne diese Gegenprobe hätte ein unvollständiger Lesevorgang das Menü geleert.
+- ⚠️ Unser eigenes Admin-Token kann Menüs über **GraphQL** lesen und schreiben; die
+  REST-Route `/menus.json` lehnt mit «Scope undefined for API access: menus» ab. Ein
+  Scope-Fehler auf einem Weg heisst nicht, dass die Fähigkeit fehlt.
