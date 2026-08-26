@@ -932,3 +932,24 @@ mit Weltbox/Farbe/Geometrie — Markierungen sind namenlose Planes, von oben fin
 Verursacher sonst nie. Damit auch geklärt: der „graue Balken im Rasen" (User-Bild) ist ein
 >30 cm hohes 3D-Objekt (Tischtennisplatte o. ä.), kein verirrter Markierungs-Plane.
 Vorher/Nachher: `spiele-dev/screenshots/kreuzung-vorher.png` / `kreuzung-final.png`.
+
+## 2026-08-25 · 🎢🛣️ Achterbahn-Stich: das letzte Ziel ohne Asphalt ist angebunden
+
+**Was:** L-Weg von der Landstrasse (Kreuzung mit dem 120°-Zubringer, ~(−100|173)) nach
+Westen (z=173) und südlich (x=−190) bis vor die Achterbahn-Station, mit Vorplatz.
+Landstrassen-Stil: 8,4 m Asphalt, Bankett beidseits, gestrichelte Mittellinie.
+
+**Vorgehen (Messen-vor-Bauen, hat sich ausgezahlt):** Korridor VORHER live vermessen
+(`_trasse_mess`-Einmalsonde): 0 Berge, 0 Viertel, 0 Gebäude, 0 Felder, 0 Solids — nur
+9 Instanz-Teile (Waldsaum). Der „Gebäude-Block am Strassenende" im Screenshot entpuppte
+sich per Nachmessung als die **Achterbahn-Station selbst mit parkiertem Zug** (korrekt).
+
+**Nachgeführt (die Falle aus dem Netz-Ausbau-Eintrag!):** K-Korridore (`Achterbahn-Stich w/s`,
+freiRaeumen/entwirren), Waldsaum-Aussparung (2 Bänder, Bäume 9→3, Rest Leitpfosten),
+`_GPS_VERB` (GPS-Kosten + Karte + Radar automatisch). 
+
+**Bilanz:** th-netz 19/19 (Route zur Station endet exakt (−190|207), 86 % Strassen-Anteil,
+31 Punkte auf dem Stich) · th-strassen **119** Stellen (vorher 130 — gefallen ✓) ·
+th-pruef BESTANDEN · 0 JS-Fehler. Bild: `spiele-dev/screenshots/achterbahn-stich.png`.
+Hinweis: die 4 „th39_leitplanke in th20_parkgarage (142,−148)"-Kandidaten stammen aus
+Nachbar-Session-Bestand im Gewerbe Ost (weit weg von dieser Trasse) — dort nicht angefasst.
