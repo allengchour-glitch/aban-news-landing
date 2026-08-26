@@ -953,3 +953,38 @@ freiRaeumen/entwirren), Waldsaum-Aussparung (2 Bänder, Bäume 9→3, Rest Leitp
 th-pruef BESTANDEN · 0 JS-Fehler. Bild: `spiele-dev/screenshots/achterbahn-stich.png`.
 Hinweis: die 4 „th39_leitplanke in th20_parkgarage (142,−148)"-Kandidaten stammen aus
 Nachbar-Session-Bestand im Gewerbe Ost (weit weg von dieser Trasse) — dort nicht angefasst.
+
+## 2026-08-26 · 🚗 Verkehr auf dem Achterbahn-Stich — und ein Handy-Bug, den erst der Test zeigte
+
+**Was:** Zwei Wagen pendeln jetzt zwischen Landstrassen-Einmündung und Stationsvorplatz.
+Neuer Routen-Typ `axis:"stich"`: `pos` ist die **Bogenlänge** auf einem L-Weg mit
+**gerundeter Ecke** (R=5) — ohne Bogen säße im Knick ein Rotationssprung (gemessen jetzt
+2,86°/0,25 m, also glatt). Spur wird aus der Fahrtrichtung gerechnet (`rechts = (−fz, fx)`,
+dieselbe Konvention wie die Hauptstrassen), darum wechselt der Wagen beim Wenden von
+selbst die Seite. `STICH`/`stichPkt` liegen bewusst auf der Ebene von `updVerkehr` —
+in `baueVerkehr` deklariert hätten sie nur zufällig übers globale Objekt funktioniert.
+
+**🐛 Der eigentliche Fund — `_AN` war kleiner als `ROUTEN.length`:** Die Zuteilung läuft
+über `i % ROUTEN.length`, die Wagenzahl war fest 24 (Handy) / 40. Mit 26 Routen bekamen
+**auf dem Handy die Routen 24 und 25 keinen einzigen Wagen** — die neue Strasse wäre genau
+auf dem Gerät leer geblieben, auf dem der User spielt (`_mobil` = Bildschirm < 820 px, das
+trifft auch das Test-Viewport, darum meldete th-stich „0 Wagen"). Fix:
+`_AN = Math.max(24|40, ROUTEN.length)` — wer eine Strecke ergänzt, bekommt automatisch
+einen Wagen darauf. **Regel: eine neue Route ohne Wagenzahl-Prüfung ist stille Kulisse.**
+
+**Zwei Nachträge zum Stich aus #2326:**
+- `th-strassen.mjs` kannte den neuen L-Weg **nicht** → zwei Bänder ergänzt. Erster Lauf fand
+  prompt einen Felsbrocken bei (−108,4|177) auf dem Belagsrand.
+- Ursache war `freiPlatz()` — die gemeinsame Quelle **aller** Streu-Objekte (Bäume, Felsen,
+  Blumen, Heuballen). In #2326 war nur der Waldsaum ausgespart. Jetzt beide Bänder mit
+  Kronen-Reserve (11 m wie bei den Hauptstrassen) → Stich-Band **0 Treffer**.
+
+**⚠️ „Stellen auf dem Belag" ist verrauscht:** fünf Läufe auf praktisch gleichem Code ergaben
+**119 / 134 / 114 / 132 / 123** (`entwirren()` ist zeitabhängig). Die Zahl taugt für Trends
+über viele Läufe, **nicht** als Vorher/Nachher-Beweis einer einzelnen Runde — dafür das
+**Band-Detail** lesen (z. B. „Achterbahn-Stich: 0"). Fahrende Autos zählt das Werkzeug
+ohnehin nicht mit (`markiere(verkehr)`).
+
+**Werkzeug:** `spiele-dev/tools/th-stich.mjs` (9 Checks: Zuteilung, Asphaltband, Rechtsverkehr,
+Ecke ohne Sprung, 60 s simuliert per direktem `updVerkehr`-Tick — umgeht die dt-Deckelung).
+Bild: `spiele-dev/screenshots/stich-verkehr.png`.

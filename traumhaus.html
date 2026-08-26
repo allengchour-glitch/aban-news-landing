@@ -1311,6 +1311,13 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     if(z>88&&z<118&&Math.abs(x)<80)return false;                               // Bahnhofsviertel
     if(z>62&&z<110&&x>-58&&x<8)return false;                                   // Altstadt-Suedviertel
     if(Math.abs(z+90.5)<10&&x>-122&&x<82)return false;                         // Fluss im Norden
+    /* 🎢 Achterbahn-Stich (#2326). GEMESSEN: th-strassen fand nach dem Bau einen
+       Felsbrocken bei (-108,4|177) auf dem Belagsrand. Der Waldsaum wurde damals
+       ausgespart, `freiPlatz` — die gemeinsame Quelle ALLER Streu-Objekte
+       (Baeume, Felsen, Blumen, Heuballen) — aber nicht. Wie bei den Hauptstrassen
+       mit Kronen-Reserve statt nur halber Belagsbreite. */
+    if(Math.abs(z-173)<11+pad&&x>-200&&x<-96)return false;
+    if(Math.abs(x+190)<11+pad&&z>163&&z<211)return false;
     for(var q=0;q<WORLD_SOLIDS.length;q++){var sq=WORLD_SOLIDS[q];
       if(Math.abs(x-sq.x)<sq.hw+2.5+pad&&Math.abs(z-sq.z)<sq.hd+2.5+pad)return false;}
     return true;}
@@ -3442,6 +3449,27 @@ document.addEventListener("DOMContentLoaded",function(){});
     hint("\uD83C\uDFE0\u2705 Haus gekauft! Ab morgen: +150 $ Miete pro Tag");};})();
 // ---- Verkehr: 6 fahrende Autos + Bus-Linie mit Haltestelle ----
 var verkehr=[],busRec=null;
+/* 🎢 ACHTERBAHN-STICH ALS FAHRSTRECKE. Der Stich bekam in #2326 Asphalt, aber
+   keinen Verkehr — genau die Luecke, die die Zubringer bis #2324 hatten: eine
+   Strasse, auf der nie jemand faehrt, liest sich als Kulisse.
+   `pos` ist hier die BOGENLAENGE ab der Landstrasse. Die Ecke ist mit R=5 GERUNDET:
+   ohne Bogen saesse im Knick ein Rotationssprung, der Wagen stuende einen Frame quer.
+   Beide Enden sind Wendepunkte an sichtbaren Orten (Einmuendung / Stationsvorplatz) —
+   dieselbe Entscheidung wie bei den Zubringern, ein Umblenden faellt dort sofort auf. */
+var STICH={x0:-104,z0:173,cx:-190,cz:173,z1:205,R:5};
+STICH.la=Math.abs((STICH.cx+STICH.R)-STICH.x0);   /* Westast bis zum Bogen (81 m) */
+STICH.bo=STICH.R*Math.PI/2;                       /* Viertelkreis (7,85 m) */
+STICH.lb=STICH.z1-(STICH.cz+STICH.R);             /* Suedast bis zum Vorplatz (27 m) */
+STICH.len=STICH.la+STICH.bo+STICH.lb;
+/* Liefert [x,z,fx,fz] der MITTELLINIE — die Spurversetzung rechnet updVerkehr aus
+   der Fahrtrichtung, damit der Wagen beim Wenden von selbst die Spur wechselt. */
+function stichPkt(s){
+  if(s<=STICH.la)return [STICH.x0-s,STICH.z0,-1,0];
+  if(s<=STICH.la+STICH.bo){
+    var t9=(s-STICH.la)/STICH.R, ph9=-Math.PI/2-t9;
+    return [STICH.cx+STICH.R+STICH.R*Math.cos(ph9), STICH.cz+STICH.R+STICH.R*Math.sin(ph9),
+            Math.sin(ph9),-Math.cos(ph9)];}
+  return [STICH.cx,STICH.cz+STICH.R+(s-STICH.la-STICH.bo),0,1];}
 /* Wagen-Lader mit Cache je DATEI. `loadTH` kann nur Ids der Form th_<id>.glb —
    die Charge-37-Modelle heissen anders. */
 function ladeWagen(datei,cb){
@@ -3493,13 +3521,20 @@ setTimeout(function baueVerkehr(){
        Kreuzungen und damit im Bild — ein Sprung faellt dort sofort auf. */
     {axis:"radial",gr: 30,dir: 1,speed:6.6},{axis:"radial",gr: 60,dir:-1,speed:7.4},
     {axis:"radial",gr:120,dir: 1,speed:6.9},{axis:"radial",gr:240,dir:-1,speed:7.1},
-    {axis:"radial",gr:300,dir: 1,speed:7.8},{axis:"radial",gr:330,dir:-1,speed:6.3}];
+    {axis:"radial",gr:300,dir: 1,speed:7.8},{axis:"radial",gr:330,dir:-1,speed:6.3},
+    {axis:"stich",dir: 1,speed:6.2},{axis:"stich",dir:-1,speed:5.6}];
   var TINT=[0xffffff,0xd84a3a,0x3a6ad8,0x4aa05a,0xe8c43a,0x8a5ac8];
     /* 📱 Jedes Auto ist ein GLB-Klon mit ~8k Dreiecken — 34 Stueck sind ~270k. Auf dem Handy
      darum 20 statt 34; die Strassen wirken trotzdem belebt. */
   /* 40 statt 34: mit den sechs Zubringer-Routen sind es jetzt 24 Routen, und
      bei 34 Wagen waere auf jeder zweiten Strecke keiner unterwegs gewesen. */
-  var _AN=(typeof _mobil!=="undefined"&&_mobil)?24:40;
+  /* ⚠️ GEMESSEN: `_AN` war fest 24 (Handy) bzw. 40 — die Zuteilung laeuft aber ueber
+     `i % ROUTEN.length`. Mit 26 Routen bekamen auf dem HANDY die Routen 24 und 25
+     damit KEINEN Wagen: die neue Achterbahn-Strecke waere genau auf dem Geraet leer
+     geblieben, auf dem der User spielt (th-stich.mjs meldete "0 Wagen").
+     Die Wagenzahl ist ab jetzt mindestens die Routenzahl — wer eine Strecke ergaenzt,
+     bekommt automatisch einen Wagen darauf, statt eine stille Kulisse zu bauen. */
+  var _AN=Math.max((typeof _mobil!=="undefined"&&_mobil)?24:40, ROUTEN.length);
   /* 🚗 VIER MODELLE STATT EINEM. Vorher fuhren alle 34 Wagen als derselbe
      `auto_kombi`, nur in sechs Farbtoenen — aus jeder Perspektive dieselbe
      Silhouette (User: „autos sind gar nicht schoen"). Die vier Wagen aus
@@ -3533,6 +3568,8 @@ setTimeout(function baueVerkehr(){
         ? ((_pr+0.5)/_np)*6.283185*r.r + ((i*53)%97)          // ueber den Umfang verteilen
         :(r.axis==="radial")
         ? RAD_R0+((_pr+0.5)/_np)*(RAD_R1-RAD_R0)              // ueber die Laenge verteilen
+        :(r.axis==="stich")
+        ? ((_pr+0.5)/_np)*STICH.len                           // ueber den L-Weg verteilen
         : -150+((_pr+0.5)/_np)*300+((i*37)%17)-8;
       m.userData.nieAusblenden=true; /* 🩹 Schwarm-7: LOD registrierte Kleinteile der FAHRENDEN Wagen an ihrer Ladeposition — unterwegs verschwanden Raeder/Anbauteile */
       var rec={mesh:m,route:r,pos:_start,homeY:-b2.min.y+0.01,speed:r.speed*(0.82+((i*13)%9)*0.045)};
@@ -3963,8 +4000,8 @@ function updVerkehr(dt){
     var _pv=v.pos;
     /* Auf dem Zubringer gilt nicht die feste Routenrichtung, sondern die
        aktuelle Fahrtrichtung des Wagens — er wendet an beiden Enden. */
-    if(v.route.axis==="radial"&&v.rdir===undefined)v.rdir=v.route.dir;
-    var rd=(v.route.axis==="radial")?v.rdir:v.route.dir;
+    if((v.route.axis==="radial"||v.route.axis==="stich")&&v.rdir===undefined)v.rdir=v.route.dir;
+    var rd=(v.route.axis==="radial"||v.route.axis==="stich")?v.rdir:v.route.dir;
     v.pos+=rd*(v.speed||v.route.speed)*dt;
     if(v.route.axis==="ring"){                 // Ring: Bogenlaenge umlaufend
       var U=6.283185*v.route.r;
@@ -3972,6 +4009,9 @@ function updVerkehr(dt){
     }else if(v.route.axis==="radial"){         // Zubringer: an den Enden wenden
       if(v.pos>RAD_R1){v.pos=RAD_R1;v.rdir=-1;rd=-1;}
       if(v.pos<RAD_R0){v.pos=RAD_R0;v.rdir= 1;rd= 1;}
+    }else if(v.route.axis==="stich"){          // Achterbahn-Stich: Einmuendung <-> Vorplatz
+      if(v.pos>STICH.len){v.pos=STICH.len;v.rdir=-1;rd=-1;}
+      if(v.pos<0){v.pos=0;v.rdir= 1;rd= 1;}
     }else{
       var lim=(v.route.axis==="x"?GW*CS/2:GH*CS/2)+80; // weit außerhalb der Sicht umkehren
       if(v.pos>lim)v.pos=-lim;if(v.pos<-lim)v.pos=lim;
@@ -3979,7 +4019,7 @@ function updVerkehr(dt){
     /* 🚦 Verkehrsregeln: an Rot/Gelb vor der Haltelinie stehen bleiben UND Abstand zum
        Vordermann halten. Vorher wurde die Position hart auf die Haltelinie geklemmt —
        Autos sprangen dadurch und fuhren ineinander. */
-    if(v.route.axis!=="ring"&&ampRed(v.route.axis)){
+    if(v.route.axis!=="ring"&&v.route.axis!=="stich"&&ampRed(v.route.axis)){
       var ctrs=v.route.axis==="x"?[RX,-RX]:[GH*CS/2+12,-(GH*CS/2+12)],off=v.route.axis==="x"?9.5:11;
       for(var ci=0;ci<2;ci++){var sl=ctrs[ci]-v.route.dir*off;
         if(v.route.dir>0){if(_pv<=sl&&v.pos>sl)v.pos=sl;}
@@ -3994,7 +4034,7 @@ function updVerkehr(dt){
       /* ⚠️ Auf dem Zubringer nur gegen Wagen abstandhalten, die in DIESELBE
          Richtung fahren — der Gegenverkehr liegt auf der anderen Spur und
          wuerde den Wagen sonst grundlos ausbremsen. */
-      if(v.route.axis==="radial"&&o.rdir!==v.rdir)continue;
+      if((v.route.axis==="radial"||v.route.axis==="stich")&&o.rdir!==v.rdir)continue;
       var gap=(o.pos-v.pos)*rd;
       if(gap>0&&gap<7.5){v.pos=o.pos-rd*7.5;break;}}
     var px,pz,fx=0,fz=0;
@@ -4017,6 +4057,15 @@ function updVerkehr(dt){
       var off9=-rd*2.6;
       px=ca9*v.pos+(-sa9)*off9; pz=sa9*v.pos+ca9*off9;
       fx=ca9*rd; fz=sa9*rd;
+      v.mesh.position.set(px,v.homeY,pz);
+      v.mesh.rotation.y=Math.atan2(-fz,fx);
+    }
+    else if(v.route.axis==="stich"){
+      /* Spur RECHTS der Mittellinie: rechts = (-fz, fx) — dieselbe Konvention wie
+         auf den Hauptstrassen (wer nach Osten faehrt, liegt beim groesseren z). */
+      var sp9=stichPkt(v.pos);
+      fx=sp9[2]*rd; fz=sp9[3]*rd;
+      px=sp9[0]-fz*2.6; pz=sp9[1]+fx*2.6;
       v.mesh.position.set(px,v.homeY,pz);
       v.mesh.rotation.y=Math.atan2(-fz,fx);
     }
