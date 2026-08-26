@@ -36,7 +36,7 @@ TAG = "hype-jetzt"
 HANDLE = "hype-jetzt"
 LEDGER = "dropship/_hype_verlauf.txt"
 
-QUELLE = "Web-Recherche 25.08.2026 (Trendtrack/eprolo/CJ-Spätaugust: Beauty-Geräte weiterhin stärkstes Signal — NEU dazu Ice Roller, Kopfhaut-Massage, EMS-Gesichtstoner; Snail/Serum, Blush-Balms, «aesthetic living», Kerzenwärmer/Diffusoren bestätigt. Supplements/Olivenöl bewusst NICHT: Lebensmittel-/Heilversprechen-Klasse)"
+QUELLE = "Web-Recherche 26.08.2026 (CJ-Viral-Liste + easync/selltrend: Sunset-Lampen von zwei Quellen unabhängig, Heatless-Curls-Sets und Oversized-/Decken-Hoodies für den Herbst, Mini-Beamer/3-in-1-Ladestationen/Haustier-Fellpflege bestätigt; 25.08.-Stand — Ice Roller, Kopfhaut-Massage, EMS-Gesichtstoner, Snail/Serum, Blush-Balms, «aesthetic living» — läuft weiter. Supplements/Olivenöl bewusst NICHT: Lebensmittel-/Heilversprechen-Klasse)"
 THEMEN = {
     # ⚠️ «IPL» ohne Wortgrenze steckt in «L-IPL-iner»: der erste Lauf setzte einen
     # «Peel-Off Lipliner» als Beauty-GERÄT auf die Startseite. Dieselbe Falle wie «rock» in
@@ -88,6 +88,18 @@ THEMEN = {
         r'T[üu]tenverschlie|Vakuumierer', re.I),
     "Hals-Ventilator": re.compile(
         r'(?:Hals|Nacken|Neck)[- ]?(?:Ventilator|Fan|K[üu]hler)|Tragbarer Mini-?Ventilator', re.I),
+    # Neu 26.08.: Sunset-Lampen («sunset glow» auf Wand/Decke) nennen zwei August-Listen
+    # unabhängig; Heatless-Curls-Sets (Locken ohne Hitze) und Decken-/Oversized-Hoodies
+    # tragen den Herbst. ⚠️ «Oversized» allein träfe halbe Damenmode → Hoodie-Anker Pflicht;
+    # «Lockenwickler» bleibt mit Heatless/Seide/Set verankert, sonst greift jede Drogerie-Rolle.
+    "Sunset-Lampe": re.compile(
+        r'Sunset[- ]?(?:Lampe|Lamp|Projekt)|Sonnenuntergangs?[- ]?(?:lampe|projektor|licht)', re.I),
+    "Heatless Curls": re.compile(
+        r'Heatless[- ]?(?:Curl|Locken)|Locken ohne Hitze|Seiden?[- ]?Lockenwickler|'
+        r'Lockenwickler[- ]?(?:Set|Band)|Curling[- ]?(?:Rod|Ribbon)', re.I),
+    "Hoodie-Decke": re.compile(
+        r'Oversized?[- ]?Hoodie|Hoodie[- ]?Decke|Decken[- ]?Hoodie|Wearable Blanket|'
+        r'Sherpa[- ]?Hoodie|Doppelseitig(?:er)?[- ]?Hoodie', re.I),
 }
 # Warengruppen, die schon einmal aus der Startreihe genommen wurden.
 RAUS_TYP = {"Spielzeug & Spiele", "Partydeko & Ballone", "Kostüme & Verkleidung"}
