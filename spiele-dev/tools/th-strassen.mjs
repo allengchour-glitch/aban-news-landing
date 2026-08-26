@@ -47,7 +47,12 @@ const sonde = `function(MINH){
          {n:"Stadtring Ost",     a:"x",c: 112,h:4.5,von:-93.5,bis:111.5},
          {n:"Stadtring West",    a:"x",c:-112,h:4.5,von:-93.5,bis:111.5},
          {n:"Stadtring Sued",    a:"z",c: 118,h:4.5,von:-105.5,bis:105.5},
-         {n:"Stadtring Nord",    a:"z",c:-100,h:4.5,von:-105.5,bis:105.5}];
+         {n:"Stadtring Nord",    a:"z",c:-100,h:4.5,von:-105.5,bis:105.5},
+         /* 🎢 Achterbahn-Stich (#2326) — der neue L-Weg wurde bis hierher gar nicht
+            ueberwacht: ein Werkzeug, das Objekte auf Fahrbahnen findet, muss jede
+            neue Fahrbahn kennen, sonst waechst genau dort unbemerkt etwas zu. */
+         {n:"Achterbahn-Stich West", a:"z",c:173, h:4.2,von:-194.2,bis:-100},
+         {n:"Achterbahn-Stich Sued", a:"x",c:-190,h:4.2,von:169,   bis:205}];
   /* Zubringer: die sechs Winkel stehen als Routen im Spiel (axis:"radial") */
   var SPEICHEN=[30,60,120,240,300,330], RAD0=123, RAD1=193, SPH=4.5;
   var RINGR=200, RINGH=4.5;                     /* Landstrasse: Spuren 197,5 / 202,5 */
