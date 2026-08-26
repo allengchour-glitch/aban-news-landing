@@ -27,6 +27,11 @@ mkdir -p _site
 # (suchmaschine.html) immer alle neuen Seiten findet. Tolerant; bricht den Build nicht ab.
 ( command -v python3 >/dev/null 2>&1 && python3 tools/build_search_index.py ) || echo "build_search_index übersprungen"
 
+# Suchseiten fuer en/ fr/ it/ aus suchmaschine.html erzeugen — drei handgepflegte
+# Kopien wuerden garantiert auseinanderdriften. Bricht LAUT ab, wenn sich die
+# deutsche Vorlage geaendert hat (dann Skript und Vorlage abgleichen). Tolerant.
+( command -v python3 >/dev/null 2>&1 && python3 tools/build_suche_sprachen.py ) || echo "build_suche_sprachen übersprungen"
+
 # Neue Seiten in die sitemap.xml nachtragen + Dubletten entfernen. Es gibt keinen
 # Generator, der die Sitemap neu baut — ohne diesen Schritt fehlen neue Rubriken
 # bei Google (gemessen 2026-08-26: 21 Minispiele + 8 Märkte + 6 Seiten fehlten).
