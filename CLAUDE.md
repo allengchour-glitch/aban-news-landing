@@ -2215,3 +2215,23 @@ Link-Equity fliesst weiter. Ledger `dropship/_blog_dubletten.txt`, alle 22 URLs 
 «Gaming-Setup» vs «Nähzubehör» teilen nur Boilerplate («kaufen: worauf achten», «für
 Einsteiger: Grundausstattung») — erst der Inhaltsvergleich entscheidet. Themenvarianten
 («Geschenkideen SCHWEIZ», «EdelstahlSCHMUCK VS. SILBER») bleiben bewusst stehen.
+## 🔗 «Gelöscht» war in Wahrheit «umbenannt» — 301 ist kein toter Link (2026-08-26)
+Der Tote-Links-Wächter meldete `/products/outdoor-solar-powerbank-**20000mah**-…` als
+GELÖSCHT. Das Produkt lebt: Am 24.08. wurde sein Handle korrigiert (Titel behauptete
+20'000 mAh, der eigene Text sagte 10'000) — mitsamt pflichtgemässer 301. Für Besucherinnen
+war der Link also nie tot, er machte einen Umweg. **Ein Wächter, der «umbenannt» nicht von
+«gelöscht» unterscheidet, produziert einen Dauerbefund — und ein Bericht mit Dauerbefund
+wird nicht mehr gelesen.**
+- `automation/interne_links_nachziehen.py` (im Aufseher VOR `tote_links.py`): fragt für
+  jeden nicht mehr existierenden Handle `urlRedirects(query:"path:…")` und schreibt den Link
+  direkt aufs Ziel um — **nur wenn das Ziel ACTIVE ist**. Ohne Weiterleitung wird nichts
+  angefasst: das ist ein echter toter Link und braucht eine ERSATZ-Entscheidung, keine Automatik.
+- ⚠️ Der Umweg ist nicht harmlos: **Shopify lehnt eine Weiterleitung auf eine Weiterleitung
+  ab** (Lehre 21.08.). Ein zweiter Handle-Wechsel bräche die Kette also wirklich.
+- **Regel: Wer einen Handle ändert, zieht die internen Links nach.** Die 301 rettet den
+  Besucher, nicht die Datenlage.
+Zweiter Fund desselben Laufs: Vier veröffentlichte SEO-Texte verlinkten die Herren-Halskette
+«Fenrir» — vom Viability-Guard als `keine-lieferanten-ref` gedraftet, also **nicht bestellbar**.
+Nicht veröffentlicht (unlieferbare Bestellung ist teurer als ein 404), sondern auf die
+Kollektion **`wasserfester-schmuck`** umgehängt: thematisch exakt (Edelstahl, wasserfest),
+7 aktive Stücke, und eine Kollektion kann nie 404 werden. Danach: **0 tote Links.**

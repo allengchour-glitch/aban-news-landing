@@ -354,8 +354,13 @@ while true; do
   if [ -f "$REPO/automation/tote_links.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$TL" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
-      ( cd "$REPO" && setsid python3 automation/tote_links.py >> "$TL" 2>&1 9>&- & )
-      echo "$(date -u +%H:%M) tote-links geprüft"
+      # ZUERST die umbenannten Handles nachziehen, DANN pruefen. Sonst meldet der Waechter
+      # jeden Handle-Wechsel (Messversprechen-Fix, Handle-Kuerzung) taeglich als «GELÖSCHT»,
+      # obwohl eine 301 greift und das Produkt lebt — ein Bericht mit Dauerbefund wird nicht
+      # mehr gelesen. Das Nachziehen ist rein mechanisch (301-Ziel muss ACTIVE sein);
+      # ein ECHTER toter Link bleibt liegen und gehoert dem Bericht.
+      ( cd "$REPO" && setsid sh -c 'python3 automation/interne_links_nachziehen.py; python3 automation/tote_links.py' >> "$TL" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) interne-links nachgezogen + tote-links geprüft"
     fi
   fi
   # BILD-ZU-KLEIN-NACHLAUF, einmal täglich: 642 aktive Produkte hatten am 25.08.2026 KEIN
