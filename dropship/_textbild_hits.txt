@@ -12880,3 +12880,4 @@ gid://shopify/Product/15449102516609	45->1	Kapuzenpullover im Ethno-Stil mit Pri
 gid://shopify/Product/15449110610305	42->2	Kapuzenpullover mit Leo- und Sternenprint
 gid://shopify/Product/15449149440385	16->3	Pullover-Top mit Pflanzen- und Blumenmuster
 gid://shopify/Product/15450644840833	77->1	Elegante Leder-Mules mit Schnalle
+gid://shopify/Product/15451641414017	37->3	Metall-Schutzhülle für Golf Auto Schlüssel
