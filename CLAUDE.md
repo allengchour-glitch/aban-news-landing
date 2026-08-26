@@ -2261,3 +2261,31 @@ ohne Wasserzeichen) braucht ein Browser-Login — die Cloud-Session hat keinen B
 Ware, die wir nie in der Hand hatten, ist genau die Misrepresentation-Klasse, die wir seit
 dem 24.08. abräumen (4K-Beamer mit 720p-Panel). Ein erfundener Produktclip ist schlimmer als
 gar keiner.
+
+## 🏠 Mehr auf die Startseite — ohne eine einzige neue Sektion (2026-08-26)
+Betreiber: «hauptseite mehr sachen rein». Die Startseite steht am **25-Sektionen-Limit von
+Shopify**, neue Reihen sind also gar nicht möglich. Drei Hebel ohne Limit-Verstoss:
+1. **Sieben Produktreihen zeigten nur EINE Zeile** (`max_products:5` bei `columns:5`) —
+   auf 10 gehoben. Damit stehen 11 der 12 Reihen auf zwei Zeilen; einzige Ausnahme bleibt
+   `pl_trends` (Hype-Reihe, bewusst 6 grosse Karten bei 3 Spalten).
+2. **Die beiden Kachel-Sektionen waren halb leer** (`cl_tech` 7/16, `cl_trends` 11/16) →
+   beide auf 16 gefüllt. Neu sichtbar sind dabei die grössten fehlenden Kategorien:
+   **Herren-Mode (5'123 Artikel hatte KEINE Fläche auf der Startseite)**, Taschen, Uhren,
+   Haustierwelt, Kinder & Baby, Kleider, Gaming, Drohnen, Beleuchtung, Reise-Gadgets,
+   Handyhüllen, Halterungen, Audio, Nachtlicht.
+3. **Karussell** von 12 auf 18 Kategorien.
+- ⚠️ **Jede Kachel vorher live geprüft** (HTTP 200 **und** Kollektionsbild vorhanden).
+  `werkzeug-maschinen` und `elektronik-laden`/`elektronik-audio` fielen dabei raus: 200,
+  aber **kein Bild** — eine Kachel ohne Bild sieht aus wie ein Ladefehler.
+- ⚠️ **Fast einen richtigen Eintrag «repariert»:** Die Kachel «Schweiz 🇨🇭» zeigt auf
+  `erste-august` — ich hielt das Ende August für eine Leiche. Die Kollektion heisst in
+  Wahrheit **«Schweizer Editionen»** (266 Artikel) und ist ganzjährig richtig. Der Handle
+  erzählt die Vergangenheit, der Titel die Gegenwart. Aus `cl_trends` wurde der Handle
+  trotzdem entfernt (dort stand er ein zweites Mal, direkt neben Halloween).
+- ⚠️ **Nach dem Theme-Schreiben antwortet die Startseite zweimal mit HTTP 500** — das ist
+  der kalte Edge-Cache, kein Fehler: dritter Abruf 200, danach 6 von 6 auf 200 mit 0,4 s.
+  Nicht in Panik zurückrollen; erst mehrfach messen (dieselbe Klasse wie der 500er-Schreck
+  vom 25.08.).
+- ⚠️ `themeFilesUpsert` mit einem 300-KB-Body sprengt die Kommandozeile
+  («Argument list too long») → Payload in eine Datei schreiben und `--data-binary @datei`.
+Sicherung der neuen Fassung: `theme_backup/index.json.mehr-inhalt-26-08`.
