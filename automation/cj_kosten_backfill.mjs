@@ -99,7 +99,18 @@ async function main() {
   if (!TOK || !CJT) { console.log('PAUSE (Token fehlt)'); return; }
   const erledigt = new Set(fs.existsSync(LEDGER)
     ? fs.readFileSync(LEDGER, 'utf8').split('\n').map(l => l.split('\t')[0]).filter(Boolean) : []);
-  let cursor = null, geprueft = 0, gesetzt = 0, ohne = 0;
+  // ⚠️ CURSOR PERSISTENT (26.08.2026). Vorher startete JEDER Lauf bei Produkt 1
+  // (`cursor = null`). Mit 46'000 aktiven Produkten und einer Abfrage, die je Seite 50
+  // Produkte MIT bis zu 100 Varianten holt, ist Shopifys Punktebudget nach wenigen
+  // hundert Produkten leer — der Lauf endete mit «PAUSE (Shopify antwortet nicht)» und
+  // begann beim naechsten Mal WIEDER vorne. Im Log stand deshalb tagelang
+  // «0 Produkte mit Einkaufspreis, 950 geprüft»: Er lief, arbeitete aber nur die laengst
+  // erledigten ersten Seiten erneut ab und erreichte die 44'000 unbearbeiteten nie.
+  // Der Zeiger liegt im REPO, nicht in /tmp — ein Container-Wipe wuerfe ihn sonst weg
+  // (dieselbe Lehre wie beim Textbild-Reiniger).
+  const ZEIGER = 'dropship/_cj_kosten_cursor.txt';
+  let cursor = fs.existsSync(ZEIGER) ? (fs.readFileSync(ZEIGER, 'utf8').trim() || null) : null;
+  let geprueft = 0, gesetzt = 0, ohne = 0;
   while (gesetzt + ohne < LIMIT) {
     const q = await sgql(`query($c:String){products(first:50,after:$c,query:"status:active"){pageInfo{hasNextPage endCursor}
       nodes{id title variants(first:100){nodes{id sku inventoryItem{id unitCost{amount}}}}}}}`, { c: cursor });
@@ -235,8 +246,15 @@ async function main() {
       await sleep(1200);
       if (gesetzt + ohne >= LIMIT) break;
     }
-    if (!pr.pageInfo.hasNextPage) { console.log(`FERTIG: ${gesetzt} Produkte bekamen Kosten, ${ohne} ohne CJ-Referenz.`); return; }
+    if (!pr.pageInfo.hasNextPage) {
+      // Runde durch: Zeiger loeschen, damit der naechste Lauf die taeglich neu
+      // hinzugekommenen Produkte wieder von vorne mitnimmt.
+      if (fs.existsSync(ZEIGER)) fs.unlinkSync(ZEIGER);
+      console.log(`FERTIG: ${gesetzt} Produkte bekamen Kosten, ${ohne} ohne CJ-Referenz.`);
+      return;
+    }
     cursor = pr.pageInfo.endCursor;
+    fs.writeFileSync(ZEIGER, cursor);
   }
   console.log(`PAUSE (Tagesmenge erreicht): ${gesetzt} Produkte mit Einkaufspreis, ${ohne} ohne CJ-Referenz, ${geprueft} geprüft.`);
 }
