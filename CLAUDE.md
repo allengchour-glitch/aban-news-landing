@@ -2235,3 +2235,29 @@ Zweiter Fund desselben Laufs: Vier veröffentlichte SEO-Texte verlinkten die Her
 Nicht veröffentlicht (unlieferbare Bestellung ist teurer als ein 404), sondern auf die
 Kollektion **`wasserfester-schmuck`** umgehängt: thematisch exakt (Edelstahl, wasserfest),
 7 aktive Stücke, und eine Kollektion kann nie 404 werden. Danach: **0 tote Links.**
+
+## 📺 Sieben Dropshipping-Videos, ein Nenner — und was davon für DIESEN Shop gilt (2026-08-26)
+Der Betreiber schickte sieben YouTube-Links (Malva AI «FREE & UNLIMITED AI Video Generator»,
+Ac Hampton «Copying A $100k/Mo Store With AI», Jordan Bown «How To Actually Start Dropshipping
+In 2026», CeboEcom «AI dropshipping for 24 hours», Austin Rabin «$262k in 30 days with branded
+Shopify A.I.», AutoDS «Top 10 Products September 2026», Ecom with Simo «$1,152,935 with
+CLAUDE CODE»). ⚠️ **YouTube blockt unsere Rechenzentrums-IP** (302 auf google.com/sorry) —
+Titel/Kanal gehen über `youtube.com/oembed`, Inhalte nur über Web-Suche und Herstellerseiten.
+**Der gemeinsame Nenner ist eine ANDERE Geschäftsform als unsere:** KI baut eine *gebrandete
+Ein-Produkt-/Nischen-Seite*, dann bezahlte Anzeigen. Wir sind das Gegenteil — 46'000 Produkte,
+kein Markenfokus, keine laufende Kampagne. «Store klonen» ist hier also kein Rezept, sondern
+eine Beschreibung dessen, was wir NICHT sind. Übertragbar ist genau zweierlei:
+1. **Social Proof** — der Hebel, den alle sieben zuerst nennen. Gemessen: von 300 aktiven
+   Produkten haben **12 (4 %)** überhaupt eine Bewertung. Das Reviews-Ledger zählt 10'470
+   Einträge, davon ~6'900 «keine» — CJ hat für den Grossteil schlicht keine Kommentare.
+2. **Saison-Vorlauf.** Die AutoDS-Liste für September ist konkret und prüfbar; sechs davon
+   fehlten im Katalog komplett (Fusswärmer, Rührbecher, Salat-to-go, Sitzhocker,
+   Scheiben-Enteiser, Mikrowellenhaube) → in `cj_search_queue.txt`. **Nicht aufgenommen:**
+   Dinosaurier-Greifautomat (Spielzeug steht auf der RAUS-Liste der Startreihe) und
+   Cowboyhut-Rucksack (Novelty).
+**NICHT übernommen und warum:** (a) Der Gratis-Videogenerator (Wan 2.6, 15 Clips/Tag, 1080p,
+ohne Wasserzeichen) braucht ein Browser-Login — die Cloud-Session hat keinen Browser; und
+`dropship/_SOCIAL_STOPP` ist gesetzt, Social ruht auf Betreiber-Entscheid. (b) KI-Video von
+Ware, die wir nie in der Hand hatten, ist genau die Misrepresentation-Klasse, die wir seit
+dem 24.08. abräumen (4K-Beamer mit 720p-Panel). Ein erfundener Produktclip ist schlimmer als
+gar keiner.
