@@ -2119,3 +2119,6 @@ gid://shopify/Product/15448041783681	CHF 17.36	4 Varianten	Fransen-Weste aus Che
 gid://shopify/Product/15448041914753	CHF 66.64	4 Varianten	Kurzarm-Cardigan-Bluse mit kleinem Revers
 gid://shopify/Product/15448042045825	CHF 18.15	10 Varianten	Gestreiftes Kurzarmhemd mit Revers
 gid://shopify/Product/15448042209665	CHF 17.85	4 Varianten	Colorblock Strickpullover mit Prinzessinnenärmeln
+gid://shopify/Product/15448042307969	CHF 17.87	7 Varianten	Langarm-Top mit Bambusstruktur und UV-Schutz
+gid://shopify/Product/15448042406273	CHF 19.04	6 Varianten	Elegantes Kurzarm-Shirt mit Holzohr-Rüschen
+gid://shopify/Product/15448042570113	CHF 23.36	2 Varianten	Elegante Bluse mit Puffärmeln und Raffung
