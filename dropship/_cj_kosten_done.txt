@@ -2160,3 +2160,5 @@ gid://shopify/Product/15448075862401	CHF 19.07	30 Varianten	Bowknot Camisole V-N
 gid://shopify/Product/15448075895169	CHF 17.05	10 Varianten	V-Neck Ärmelloses Slim Fit Top
 gid://shopify/Product/15448075927937	CHF 19.16	3 Varianten	Gepunktetes Bandeau-Top
 gid://shopify/Product/15448076059009	CHF 19.68	4 Varianten	Elegantes Neckholder-Top mit Perlenknöpfen
+gid://shopify/Product/15448076484993	CHF 22.76	5 Varianten	Spitzentop mit tiefem V-Ausschnitt
+gid://shopify/Product/15448076681601	CHF 19.78	3 Varianten	Elfenbeinfarbenes Camisole-Top mit Spitze
