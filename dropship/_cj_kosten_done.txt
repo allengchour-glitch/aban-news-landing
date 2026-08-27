@@ -2561,3 +2561,73 @@ gid://shopify/Product/15448533008769	CHF 19.92	30 Varianten	Colorblock Badeanzug
 gid://shopify/Product/15448533270913	CHF 18.73	5 Varianten	Einteiliger Mesh-Badeanzug für Damen
 gid://shopify/Product/15448533598593	CHF 17.37	2 Varianten	Damen Langarm V-Ausschnitt Badeanzug
 gid://shopify/Product/15448533860737	CHF 17.01	3 Varianten	Kurzer Jumpsuit mit Knopfleiste
+gid://shopify/Product/15448534122881	CHF 20.67	5 Varianten	Grosser Einteiler mit Karomuster
+gid://shopify/Product/15448534352257	CHF 20.19	25 Varianten	Eleganter ärmelloser Jumpsuit mit weitem Bein – S-
+gid://shopify/Product/15448534614401	CHF 19.74	4 Varianten	Eleganter Off-Shoulder Jumpsuit mit Plissees
+gid://shopify/Product/15448534876545	CHF 19.04	4 Varianten	Eleganter ärmelloser Jumpsuit mit Spitze
+gid://shopify/Product/15448535105921	CHF 17.37	3 Varianten	Einteiliger figurbetonter Badeanzug im Kleid-Stil
+gid://shopify/Product/15448535302529	CHF 17.01	3 Varianten	Kurzarm-Body mit Cityscape-Muster
+gid://shopify/Product/15448535499137	CHF 22.32	5 Varianten	Eleganter Workwear-Jumpsuit mit Gürtel
+gid://shopify/Product/15448535695745	CHF 22.16	20 Varianten	V-Ausschnitt Ärmelloser Jumpsuit mit weitem Bein
+gid://shopify/Product/15448535925121	CHF 20.67	42 Varianten	Ärmelloser Jumpsuit im Ethno-Stil
+gid://shopify/Product/15448536121729	CHF 21.57	30 Varianten	Ärmelloser Leinen-Mix Jumpsuit
+gid://shopify/Product/15448536383873	CHF 19.63	10 Varianten	Casual Resort Jumpsuit mit weitem Bein – S-Brick R
+gid://shopify/Product/15448536613249	CHF 23.50	24 Varianten	Ärmelloser Denim-Jumpsuit mit Taschen
+gid://shopify/Product/15448536875393	CHF 26.20	15 Varianten	High-Waist Yoga Zweiteiler
+gid://shopify/Product/15448537170305	CHF 23.06	15 Varianten	Figurbetontes Off-Shoulder Jumpsuit
+gid://shopify/Product/15448537399681	CHF 22.76	5 Varianten	Eleganter bedruckter Jumpsuit mit Schnürung
+gid://shopify/Product/15448537629057	CHF 21.87	42 Varianten	Jumpsuit Set: One-Shoulder Top & Jogger Hose
+gid://shopify/Product/15448537923969	CHF 20.22	25 Varianten	Sportlicher Bikini-Einteiler
+gid://shopify/Product/15448538186113	CHF 20.67	20 Varianten	Jumpsuit mit verstellbaren Trägern und Taschen
+gid://shopify/Product/15448538415489	CHF 20.49	10 Varianten	Bohemian Jumpsuit mit Print
+gid://shopify/Product/15448538644865	CHF 49.18	4 Varianten	Figurformender Jeans-Jumpsuit mit hohem Bund
+gid://shopify/Product/15448538874241	CHF 22.32	20 Varianten	Ärmelloser Jumpsuit mit Anzugkragen
+gid://shopify/Product/15448539136385	CHF 26.33	40 Varianten	Bequemer Denim Jumpsuit mit weitem Bein
+gid://shopify/Product/15448539398529	CHF 18.92	49 Varianten	Eleganter Damen Jumpsuit mit Spitze und Taschen
+gid://shopify/Product/15448539693441	CHF 21.57	40 Varianten	Kurzer Jumpsuit mit V-Ausschnitt
+gid://shopify/Product/15448539922817	CHF 21.27	15 Varianten	Eleganter Casual Jumpsuit mit weitem Bein
+gid://shopify/Product/15448540184961	CHF 21.71	42 Varianten	Eleganter ärmelloser Jumpsuit mit Trägern
+gid://shopify/Product/15448540447105	CHF 19.67	10 Varianten	Sommerlicher Denim-Jumpsuit mit weiten Taschen
+gid://shopify/Product/15448540643713	CHF 22.46	15 Varianten	Ärmelloser Jumpsuit mit V-Ausschnitt und Print
+gid://shopify/Product/15448540938625	CHF 24.25	18 Varianten	Boho Neckholder Jumpsuit mit weitem Bein
+gid://shopify/Product/15448541233537	CHF 22.76	18 Varianten	Ärmelloser Jumpsuit mit geradem Bein
+gid://shopify/Product/15448541495681	CHF 22.15	20 Varianten	Eleganter Jumpsuit mit Taillenschnürung
+gid://shopify/Product/15448541823361	CHF 22.16	18 Varianten	Eleganter Halterneck Jumpsuit
+gid://shopify/Product/15448542118273	CHF 24.70	24 Varianten	Off-Shoulder Jumpsuit mit Stehkragen
+gid://shopify/Product/15448542478721	CHF 20.22	40 Varianten	Jumpsuit mit weitem Bein und Rüschensaum
+gid://shopify/Product/15448542708097	CHF 26.98	5 Varianten	Ärmelloser Denim-Overall mit weitem Bein
+gid://shopify/Product/15448543003009	CHF 24.70	30 Varianten	Denim Jumpsuit schulterfrei mit Bindebändern
+gid://shopify/Product/15448544117121	CHF 21.87	18 Varianten	Ärmelloser Leinen-Jumpsuit mit V-Ausschnitt
+gid://shopify/Product/15448546017665	CHF 24.25	4 Varianten	Eleganter Spitzen-Jumpsuit mit Print
+gid://shopify/Product/15448546312577	CHF 18.62	5 Varianten	Jumpsuit mit Spaghettiträgern
+gid://shopify/Product/15448546967937	CHF 23.21	30 Varianten	Ärmelloser Jumpsuit mit weitem Bein – XS-White
+gid://shopify/Product/15448547852673	CHF 22.32	60 Varianten	Kurzarm-Jumpsuit mit weitem Bein
+gid://shopify/Product/15448548376961	CHF 18.39	75 Varianten	Casual Romper-Set mit Spaghettiträger-Top
+gid://shopify/Product/15448548868481	CHF 20.67	4 Varianten	Französisches A-Linien Kleid mit Lochstickerei
+gid://shopify/Product/15448549261697	CHF 19.82	3 Varianten	Trägerloses Nachthemd mit Spitze – auch für Drauss
+gid://shopify/Product/15448549687681	CHF 20.08	25 Varianten	Loungewear-Kleid-Set mit Rundhals und 3/4-Ärmeln
+gid://shopify/Product/15448550146433	CHF 30.82	4 Varianten	Ärmelloses A-Linien-Kleid aus Leinenmix
+gid://shopify/Product/15448550441345	CHF 22.76	45 Varianten	Langes A-Linien Kleid mit Quasten
+gid://shopify/Product/15448550867329	CHF 25.63	6 Varianten	Jeans-Look Top mit Tupfenkleid
+gid://shopify/Product/15448551326081	CHF 21.71	42 Varianten	V-Ausschnitt Laternenärmel Maxikleid
+gid://shopify/Product/15448551719297	CHF 21.42	30 Varianten	Midilanges Damen-Strickkleid mit halbem Reissversc
+gid://shopify/Product/15448552178049	CHF 20.97	20 Varianten	Damen Off-Shoulder Puffärmel Midikleid
+gid://shopify/Product/15448552505729	CHF 23.34	12 Varianten	Wickelkleid mit Taillierung und Plissees
+gid://shopify/Product/15448552833409	CHF 35.75	6 Varianten	Leinenkleid mit Schnürung und V-Ausschnitt
+gid://shopify/Product/15448553161089	CHF 49.18	2 Varianten	High-Waist Halterneck A-Linien Kleid
+gid://shopify/Product/15448553488769	CHF 25.30	4 Varianten	Gestreiftes ärmelloses Midikleid
+gid://shopify/Product/15448553849217	CHF 38.13	4 Varianten	Spitzen-Häkelkleid mit Taillenbetonung
+gid://shopify/Product/15448554176897	CHF 22.30	35 Varianten	Figurbetontes Trägerloses Spitzenkleid
+gid://shopify/Product/15448554504577	CHF 20.37	70 Varianten	Gemustertes Langarmkleid mit Rundhals
+gid://shopify/Product/15448554865025	CHF 21.71	80 Varianten	Maxikleid mit Rundhals und 3/4-Ärmeln
+gid://shopify/Product/15448555094401	CHF 20.54	3 Varianten	Strickkleid mit V-Ausschnitt und Schlitz
+gid://shopify/Product/15448555291009	CHF 28.13	7 Varianten	Weisses Strickkleid für den Strandurlaub
+gid://shopify/Product/15448555553153	CHF 58.41	2 Varianten	Pailletten One-Shoulder Meerjungfrauenkleid
+gid://shopify/Product/15448567972225	CHF 18.15	24 Varianten	Gym Therapy T-Shirt für junge Erwachsene
+gid://shopify/Product/15448573346177	CHF 23.80	6 Varianten	Yoga-Jumpsuit mit Reissverschluss und kurzem Arm
+gid://shopify/Product/15448573378945	CHF 24.70	12 Varianten	Gemustertes Sommerkleid mit Stickereien
+gid://shopify/Product/15448573444481	CHF 23.19	3 Varianten	Eleganter Spitzen-Jumpsuit mit transparenten Detai
+gid://shopify/Product/15448573510017	CHF 20.22	99 Varianten	Trägerjumpsuit mit Blumenprint
+gid://shopify/Product/15448573575553	CHF 22.01	8 Varianten	Geblümter Jumpsuit mit Puffärmeln
+gid://shopify/Product/15448573608321	CHF 25.58	4 Varianten	Casual Damen Badeanzug
+gid://shopify/Product/15448573673857	CHF 20.22	7 Varianten	Damen Jumpsuit mit digitalem Print
