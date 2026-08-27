@@ -339,7 +339,15 @@ var renderer=new THREE.WebGLRenderer({antialias:true});
 /* 📱 Handy: Pixelratio auf 1.5 deckeln. Auf einem 3x-Display rendert die Szene sonst
    9x so viele Pixel wie noetig — die teuerste Einzelbremse auf dem Telefon. */
 var _mobil=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)||Math.min(screen.width,screen.height)<820;
-renderer.setPixelRatio(Math.min(devicePixelRatio,_mobil?1.35:1.6));  /* 2.0 kostet 56% mehr Pixel als 1.6 und bringt kaum sichtbar mehr */renderer.setSize(W,H);
+/* 📱 DYNAMISCHE AUFLOESUNG. Der feste Deckel war eine Wette auf das Geraet: 1,35 ist
+   fuer ein aktuelles Telefon zu wenig und fuer ein aelteres zu viel — und welches davor
+   sitzt, weiss der Code nicht. `_rrMax` bleibt die Obergrenze, aber die Schleife misst
+   ihre eigene Bildzeit und geht herunter, wenn sie sie nicht haelt (siehe `_rrRegel`).
+   Die Fuellrate ist auf schwachen Geraeten die groesste Einzelbremse, und sie ist die
+   einzige, die sich stufenlos regeln laesst. */
+var _rrMax=Math.min(devicePixelRatio,_mobil?1.35:1.6);
+var _rrStufen=[_rrMax,_rrMax*0.8,_rrMax*0.62,_rrMax*0.5], _rrIdx=0;
+renderer.setPixelRatio(_rrMax);renderer.setSize(W,H);
 /* 📱 PCFSoftShadowMap ist der teuerste Schattenfilter (mehrere Texture-Lookups pro Pixel).
    Auf dem Handy reicht der einfache PCF-Filter — sichtbar kaum ein Unterschied, spuerbar
    guenstiger. */
@@ -12237,7 +12245,9 @@ function stampVilla(){
   hint("🏰 Riesen-Villa gebaut — geh rein! (7 Zimmer, voll möbliert)");}
 function loop(now){
   requestAnimationFrame(loop);
-  var dt=Math.min(0.05,(now-last)/1000);last=now;
+  var _roh=(now-last)/1000;                 /* echte Bildzeit — dt ist gedeckelt */
+  var dt=Math.min(0.05,_roh);last=now;
+  _rrRegel(_roh);
   if(running){
     for(var _li=0;_li<nachtLampen.length;_li++){var _L=nachtLampen[_li];var _t=_L._ti||0; /* 💡 weiches Ein-/Ausfaden der Strassenbeleuchtung */
       if(Math.abs(_L.intensity-_t)>0.01){_L.intensity+=(_t-_L.intensity)*Math.min(1,dt*1.6);
@@ -12478,8 +12488,30 @@ function loop(now){
   if(running||(++_menuTakt%5===0))renderer.render(scene,camera);
 }
 var _menuTakt=0;
+/* 📱 Aufloesung nachregeln. Gemessen wird die ECHTE Bildzeit (`now-last`), nicht `dt` —
+   das ist auf 0,05 gedeckelt und koennte ein 900-ms-Bild gar nicht anzeigen. Genau
+   dieser Deckel hat in diesem Projekt schon mehrfach Messungen verdorben.
+   Gleitender Mittelwert, damit ein einzelner Ruckler (Modell laedt fertig, Schatten
+   werden neu gebaut) nicht sofort die Aufloesung senkt. Herunter ab 33 ms (unter
+   30 Bildern/s), hinauf erst unter 20 ms — die Luecke dazwischen verhindert Pendeln.
+   Zwischen zwei Aenderungen mindestens 4 s, denn `setPixelRatio`+`setSize` legt den
+   Zeichenpuffer neu an und ruckelt selbst. */
+var _rrMit=0, _rrSperre=0;
+function _rrRegel(roh){
+  if(!running||roh<=0||roh>1.5)return;      /* Ladepausen nicht als Ruckeln werten */
+  _rrMit=_rrMit?_rrMit*0.92+roh*0.08:roh;
+  if((_rrSperre-=roh)>0)return;
+  var neu=_rrIdx;
+  if(_rrMit>0.033&&_rrIdx<_rrStufen.length-1)neu=_rrIdx+1;
+  else if(_rrMit<0.020&&_rrIdx>0)neu=_rrIdx-1;
+  if(neu===_rrIdx)return;
+  _rrIdx=neu;_rrSperre=4;_rrMit=0;
+  renderer.setPixelRatio(_rrStufen[_rrIdx]);renderer.setSize(W,H);
+  window._rrStand=+_rrStufen[_rrIdx].toFixed(3);}
 requestAnimationFrame(loop);
-addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);});
+addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();
+  renderer.setPixelRatio(_rrStufen[_rrIdx]);   /* sonst faellt die geregelte Stufe beim Drehen zurueck */
+  renderer.setSize(W,H);});
 window.__CAM=function(x,z,r,b){followSim=null;camTx=x;camTz=z;camRT=r;camR=r;camB=b;updCam();};
 /* 🚀 ENTFERNUNGS-AUSBLENDUNG. Gemessen: 21 671 Meshes, davon 1001 pro Frame
    gezeichnet — der Grossteil sind kleine Requisiten (Blumen, Zaunlatten, Moebel),
