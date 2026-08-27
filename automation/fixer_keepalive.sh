@@ -379,7 +379,11 @@ while true; do
   if [ -f "$REPO/automation/wahlversprechen.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$WV" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
-      ( cd "$REPO" && CAP=6000 setsid python3 automation/wahlversprechen.py >> "$WV" 2>&1 9>&- & )
+      # ⚠️ MIT FIX=1, aber bewusst eng: Der Lauf fasst NUR reine Absaetze und eindeutige
+      # Listenpunkte an, nie einen Absatz mit Auszeichnung, und schreibt jede Streichung ins
+      # Ledger. Erste Charge am 27.08.: 500 geprueft, 89 gemeldet, 28 bereinigt — die uebrigen
+      # 61 tragen eine zweite Aussage und bleiben fuer eine Hand liegen.
+      ( cd "$REPO" && CAP=6000 FIX=1 setsid python3 automation/wahlversprechen.py >> "$WV" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) wahlversprechen geprüft"
     fi
   fi
