@@ -2162,3 +2162,40 @@ gid://shopify/Product/15448075927937	CHF 19.16	3 Varianten	Gepunktetes Bandeau-T
 gid://shopify/Product/15448076059009	CHF 19.68	4 Varianten	Elegantes Neckholder-Top mit Perlenknöpfen
 gid://shopify/Product/15448076484993	CHF 22.76	5 Varianten	Spitzentop mit tiefem V-Ausschnitt
 gid://shopify/Product/15448076681601	CHF 19.78	3 Varianten	Elfenbeinfarbenes Camisole-Top mit Spitze
+gid://shopify/Product/15448076910977	CHF 17.72	40 Varianten	Elegantes ärmelloses Slimming Top
+gid://shopify/Product/15448076943745	CHF 17.72	5 Varianten	Ärmelloses V-Neck Top für Damen
+gid://shopify/Product/15448076976513	CHF 20.37	21 Varianten	Yoga Tanktop mit überkreuztem Rücken
+gid://shopify/Product/15448077009281	CHF 19.01	8 Varianten	Rückenfreies Ultra-Kurzes Neckholder-Top
+gid://shopify/Product/15448077042049	CHF 19.33	3 Varianten	Korsett-Top mit Rosenprint und Schleife
+gid://shopify/Product/15448077074817	CHF 19.48	10 Varianten	Samt-Camisole mit Schnürung
+gid://shopify/Product/15448077140353	CHF 18.38	10 Varianten	V-Neck Camisole mit Wellenkante
+gid://shopify/Product/15448077173121	CHF 23.21	3 Varianten	Keel Slim Fit Print-Top
+gid://shopify/Product/15448077205889	CHF 18.02	32 Varianten	Besticktes, asymmetrisches Rüschen-Top für Damen
+gid://shopify/Product/15448077238657	CHF 17.68	20 Varianten	Tanktop mit integrierten Brustpolstern
+gid://shopify/Product/15448077271425	CHF 19.08	90 Varianten	Damen Camisole mit Knöpfen
+gid://shopify/Product/15448077304193	CHF 19.92	3 Varianten	Neckholder-Top mit Schnürung und Quasten
+gid://shopify/Product/15448077336961	CHF 23.80	1 Varianten	Damen Tanktop mit tiefem V-Ausschnitt
+gid://shopify/Product/15448077402497	CHF 20.69	4 Varianten	Gepunktetes Chiffon Halterneck Top
+gid://shopify/Product/15448077435265	CHF 19.75	3 Varianten	Neckholder Top mit Retro-Leopardenprint
+gid://shopify/Product/15448077468033	CHF 23.94	1 Varianten	Mehrlagige bunte Perlen-Choker-Körperkette
+gid://shopify/Product/15448077500801	CHF 25.43	1 Varianten	Body Chain Top mit Perlen – Rosarot
+gid://shopify/Product/15448077533569	CHF 24.84	1 Varianten	Festival Bustier mit bunten Perlen
+gid://shopify/Product/15448077566337	CHF 20.67	1 Varianten	Glitzerndes Dekolleté-Kettentop
+gid://shopify/Product/15448077599105	CHF 20.06	1 Varianten	Bikini-Top mit Pailletten und Halskette
+gid://shopify/Product/15448077664641	CHF 24.84	1 Varianten	Glitzerndes Bustier mit mehreren Lagen
+gid://shopify/Product/15448077697409	CHF 23.21	1 Varianten	Perlen-Bodychain Neckholder-Top
+gid://shopify/Product/15448077730177	CHF 18.30	1 Varianten	Punk Geometric Gemstone Suspender Top
+gid://shopify/Product/15448077762945	CHF 20.36	1 Varianten	Perlen-BH-Kette im Resort-Stil
+gid://shopify/Product/15448077795713	CHF 19.06	1 Varianten	Pailletten Body Chain Top
+gid://shopify/Product/15448077861249	CHF 19.92	3 Varianten	Blumenprint Camisole im Beach Style
+gid://shopify/Product/15448077894017	CHF 23.05	3 Varianten	Retro-Spitzen-Patchwork-Camisole
+gid://shopify/Product/15448077959553	CHF 18.02	15 Varianten	Gestricktes Slim-Fit Tanktop
+gid://shopify/Product/15448078025089	CHF 29.91	19 Varianten	Sportliches Tanktop mit Racerback für Damen
+gid://shopify/Product/15448078057857	CHF 28.12	39 Varianten	Yoga Tanktop mit Spaghettiträgern
+gid://shopify/Product/15448078123393	CHF 20.22	6 Varianten	Schwarzes Neckholder-Top mit Knopfdetails
+gid://shopify/Product/15448078188929	CHF 20.22	3 Varianten	Himbeerrotes Polka-Dot Camisole
+gid://shopify/Product/15448078221697	CHF 19.37	5 Varianten	Sommerliches Spitzen-Camisole
+gid://shopify/Product/15448078254465	CHF 20.08	24 Varianten	Spitzenbesetzte Bluse mit Blumenmuster
+gid://shopify/Product/15448078287233	CHF 18.10	4 Varianten	Yoga Top mit Reissverschluss, Langarm
+gid://shopify/Product/15448078320001	CHF 17.13	4 Varianten	Yoga Tanktop mit Shaping-Effekt
+gid://shopify/Product/15448078352769	CHF 16.97	4 Varianten	Kurzes Yoga Sport Top mit Rundhals
