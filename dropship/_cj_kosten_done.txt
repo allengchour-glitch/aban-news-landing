@@ -2706,3 +2706,39 @@ gid://shopify/Product/15448586617217	CHF 28.28	8 Varianten	Halterneck-Patchwork-
 <<<<<<< HEAD
 =======
 >>>>>>> origin/claude/luxestyle-status-tztnn1
+gid://shopify/Product/15448589074817	CHF 57.98	5 Varianten	Ärmelloses Etuikleid mit U-Boot-Ausschnitt
+gid://shopify/Product/15448589140353	CHF 19.04	2 Varianten	Schürze mit Blumenmuster im französischen Stil
+gid://shopify/Product/15448589173121	CHF 19.14	3 Varianten	Künstlerische Schürze aus Baumwolle
+gid://shopify/Product/15448589205889	CHF 19.23	28 Varianten	Raglan-Top aus Baumwoll-Leinen mit Knopftaschen
+gid://shopify/Product/15448589238657	CHF 21.42	4 Varianten	Elegantes A-Linien Midikleid mit eckigem Ausschnit
+gid://shopify/Product/15448589271425	CHF 74.40	6 Varianten	Jacquard-Seidenkleid mit A-Linie
+gid://shopify/Product/15448589304193	CHF 24.70	3 Varianten	Geblümtes Chiffon-Kleid mit Rüschen
+gid://shopify/Product/15448589468033	CHF 24.70	24 Varianten	Etuikleid mit Rüschenärmeln und Strass-Details
+gid://shopify/Product/15448589599105	CHF 20.06	3 Varianten	Elegantes Neckholder-Kleid für Damen
+gid://shopify/Product/15448589730177	CHF 20.54	3 Varianten	Ärmelloses Strickkleid mit Ajour-Muster
+gid://shopify/Product/15448589894017	CHF 21.71	18 Varianten	Ärmelloses Midikleid mit Libellen-Print
+gid://shopify/Product/15448589992321	CHF 22.01	20 Varianten	Off-Shoulder A-Linien-Kleid mit Schleife
+gid://shopify/Product/15448590057857	CHF 23.50	6 Varianten	Polo-Strickpullover mit Denim-Einsatz
+gid://shopify/Product/15448590123393	CHF 22.01	5 Varianten	Eleganter Strick-Cardigan mit V-Ausschnitt
+gid://shopify/Product/15448590188929	CHF 21.87	5 Varianten	Gestreifter Strick-Cardigan
+gid://shopify/Product/15448590254465	CHF 47.69	8 Varianten	Woll-Cardigan mit Revers und Doppelreissverschluss
+gid://shopify/Product/15448590320001	CHF 19.78	11 Varianten	Flauschiger Oversized Strick-Cardigan
+gid://shopify/Product/15448590352769	CHF 22.76	56 Varianten	Eleganter Herbst/Winter Pullover für Damen
+gid://shopify/Product/15448590385537	CHF 21.12	8 Varianten	Lockerer Pullover mit Rundhals und Knöpfen
+gid://shopify/Product/15448590418305	CHF 20.97	8 Varianten	V-Neck Pullover mit lockerer Passform
+gid://shopify/Product/15448590483841	CHF 24.25	30 Varianten	Jacquard Strickpullover für Herren
+gid://shopify/Product/15448590549377	CHF 19.21	72 Varianten	Lockerer Strick-Pullover mit V-Ausschnitt
+gid://shopify/Product/15448590614913	CHF 22.16	30 Varianten	Damen Strickpullover mit Herzmuster-Reissverschlus
+gid://shopify/Product/15448590647681	CHF 22.01	42 Varianten	Strickpullover mit Rollkragen und Knopfleiste
+gid://shopify/Product/15448590680449	CHF 22.01	42 Varianten	Damen Strickpullover mit Rollkragen und Knöpfen
+gid://shopify/Product/15448590713217	CHF 17.72	92 Varianten	V-Ausschnitt Strickjacke Langarm
+gid://shopify/Product/15448590745985	CHF 22.01	48 Varianten	Hoodie Strickpullover mit Kordelzug
+gid://shopify/Product/15448590778753	CHF 22.16	18 Varianten	Damen Strickjacke mit Knopfleiste und langen Ärmel
+gid://shopify/Product/15448590844289	CHF 22.16	18 Varianten	V-Ausschnitt Strick-Cardigan für Damen
+gid://shopify/Product/15448590909825	CHF 21.11	35 Varianten	Rundhals-Strickpullover für Damen
+gid://shopify/Product/15448590975361	CHF 20.29	35 Varianten	Leichtes Kurzarm-Strickshirt für Damen
+gid://shopify/Product/15448591008129	CHF 22.79	25 Varianten	V-Ausschnitt Strickjacke mit Streifen
+gid://shopify/Product/15448591139201	CHF 20.50	10 Varianten	Oversized Strick-Shirt mit V-Ausschnitt
+gid://shopify/Product/15448591270273	CHF 21.14	5 Varianten	Boho Strick-Cardigan für den Sommer
+gid://shopify/Product/15448591401345	CHF 20.67	60 Varianten	Gehäkelter Pullover mit Dreiviertelärmeln
+gid://shopify/Product/15448591434113	CHF 20.67	6 Varianten	Strickpullover mit Rückenausschnitt
