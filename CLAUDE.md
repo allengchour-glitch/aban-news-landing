@@ -1207,6 +1207,39 @@ eingerichteten Vorrang-Fenster, in dem der ganze Grind pausiert.
   `cj_variantenbild` und `cj_bild_backfill` ruhen im Fenster jetzt mit.
   **NICHT pausiert wird `cj_fulfill_runner`** — der bearbeitet echte Kundenbestellungen.
 
+## 🖼️ Drei Kategorie-Kacheln zeigten eine Massgrafik, ein schwarzes Rechteck und Fremdtext (2026-08-27)
+Auf der Startseite bebildern die Kachelreihen ganze Kategorien — dort stand:
+
+| Kachel | vorher | jetzt |
+|---|---|---|
+| Handy-Zubehör (977 Artikel) | Reinigungsspray mit **Massbemassung «2,7 cm / 9 cm»** | 3-in-1-Ladestation mit Uhr, Handy, Kopfhörer |
+| Computer & Zubehör (355) | schwarzes Mauspad = **schwarzes Rechteck** | mechanische Retro-Tastatur auf Holztisch |
+| Beamer & Heimkino (65) | Beamer mit Overlay **«Product parameter information»** | Mini-Beamer im Wohnzimmer |
+
+Ausgewählt per Kontaktbogen (24 Bestseller je Kollektion auf ein Blatt, dann ansehen) — dieselbe
+Methode wie bei den Fremdtext-Hauptbildern: kein Algorithmus, sondern hinsehen.
+- ⚠️ **Der CDN-Dateiname beweist NICHTS über den Inhalt.** Nach `collectionUpdate` meldete
+  Shopify für zwei der drei Kollektionen den ALTEN Dateinamen zurück — ich hielt das schon für
+  eine fehlgeschlagene Zuweisung. Shopify behält den Namensplatz der Kollektion und tauscht nur
+  den Inhalt aus. Bewiesen hat es erst der Blick auf das heruntergeladene Bild.
+- ⚠️ Nebenbefund, NICHT repariert: In **Computer & Zubehör stehen fünf Smartwatches** unter den
+  ersten 24 Bestsellern. Eine Smartwatch ist kein Computerzubehör — die Regel der Kollektion
+  gehört überprüft (dieselbe Klasse wie «creme» als Farbwort in der Gesichtspflege).
+
+## ✅ Der Google-Kanal-Schwund ist gestoppt — 78 → 4 (2026-08-27)
+Nachgezählt gegen LIVE, seit dem 20.08. (also nach dem `publishVerified()`-Fix in allen drei
+Importern): **6'464 neue aktive Produkte, davon 4 ohne Erklärung nicht bei Google.** Der
+gleiche Wächter meldete für den Zeitraum ab 15.08. noch 78 von 11'101 — die Quelle ist also
+dicht, der Rest war Altbestand.
+Von den 4 sind 2 nachpubliziert (Lidschatten-Palette, Business-Midikleid) und 2 bleiben draussen.
+- ⚠️ **Bei einem stimmt das Urteil, nicht aber die Begründung.** Das «Boya BY-PM500 USB-Mikrofon»
+  wird als «Code im Titel» abgewiesen — `BY-PM500` ist aber die **Modellbezeichnung einer echten
+  Marke**, kein Lieferantencode (dieselbe Unterscheidung wie UV400/TR90/RF433). Draussen bleibt
+  es trotzdem, aber aus einem anderen Grund: Ob CJ echte Boya-Ware liefert oder eine Nachahmung,
+  lässt sich von hier nicht belegen — und Markenware unklarer Herkunft in den einzigen Kanal zu
+  stellen, der verkauft, ist die teurere Seite des Irrtums. Ein richtiges Ergebnis aus einem
+  falschen Grund ist kein erledigter Fall.
+
 ## 🔁 Derselbe Fehler 30-mal gemeldet ist keine Diagnose (2026-08-27)
 Bei leerem CJ-Tagesbudget schrieb `cj_category_fill.mjs` in zehn Minuten **2'846 Logzeilen**:
 Die Seitenschleife brach beim Fehler ab, die äussere KATEGORIE-Schleife lief aber weiter und
