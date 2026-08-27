@@ -3,181 +3,67 @@
 Alle unten haben **eine** Variante ohne Option. Der Text stammt aus dem
 CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
 
-- `15516058616193` · Halsband & Leine Set mit Spitze & Schleife
-  - «…in verschiedenen Farben…»
-- `15516059992449` · Corgi Spezial-Geschirr für Brust und Rücken
-  - «…Erhältlich in vier Farben…»
-- `15516060483969` · Reflektierendes Nylon-Brustgeschirr mit Leuchtstreifen
+- `15397218320769` · Silikon Baby-Lätzchen 5er-Set · BPA-frei, Spülmaschinenfest
+  - «…in unterschiedlichen Farben…»
+- `15412302512513` · Regenschirm mit Handy-Halterung – freihändig, 8 Streben, UV-beschichte
+  - «…Mehrere Farben zur Auswahl…»
+- `15427150578049` · Schweiz-Poster «Bähnli» · Vintage Travel-Kunstdruck
   - «…in verschiedenen Grössen…»
-- `15516060713345` · Hunde-Leine aus Baumwolle und Leder
-  - «…Erhältlich in Hellblau und Beige Verfügbar in den Grössen…»
-- `15516066611585` · Retro Canvas Rucksack mit Kordelzug
-  - «…in verschiedenen Farben…»
-- `15516066939265` · Laptop Rucksack Polyester
+- `15427150643585` · Schweiz-Poster «Alpen-Panorama» · Berg-Kunstdruck
   - «…in verschiedenen Grössen…»
-- `15516068774273` · Sporttasche für Outdoor & Gym
-  - «…in verschiedenen Farben…»
-- `15516099740033` · Kompakte magnetische PD20W Powerbank
-  - «…In verschiedenen Farben…»
-- `15516100919681` · LED-Halsband für Haustiere
+- `15427150774657` · Schweiz-Poster «Edelweiss» · Botanischer Kunstdruck
   - «…in verschiedenen Grössen…»
-- `15516103082369` · Multifunktionale, reflektierende Leine
+- `15427151004033` · Schweiz-Poster «Fondue» · Retro-Küchen-Kunstdruck
+  - «…in verschiedenen Grössen…»
+- `15427152970113` · Schweiz-Poster «Chalet» · Winter-Berg-Kunstdruck
+  - «…in verschiedenen Grössen…»
+- `15427166568833` · Schweiz-Poster «Edelweiss & Enzian» · Art-Nouveau-Druck
+  - «…in verschiedenen Grössen…»
+- `15427167355265` · Schweiz-Poster «Alpenkuh» · Kunstdruck mit Blumenkranz
+  - «…in verschiedenen Grössen…»
+- `15427167945089` · Schweiz-Poster «Alpsee» · See-Spiegelung-Kunstdruck
+  - «…in verschiedenen Grössen…»
+- `15427170828673` · Schweiz-Poster «Matterhorn» · Sonnenuntergang-Kunstdruck
+  - «…in verschiedenen Grössen…»
+- `15433460384129` · Aluminium Mauspad, doppelseitig, rund & eckig
+  - «…in verschiedenen Grössen…»
+- `15433460711809` · Rutschfeste Filz-Schreibtischunterlage für Gaming & Büro
+  - «…in verschiedenen Grössen…»
+- `15433461039489` · 3-teiliges Gaming-Bettwäsche-Set mit Gamepad-Design
+  - «…in verschiedenen Grössen…»
+- `15433462219137` · Gepolsterter Velo-Sattelbezug aus Silikon und Memory Foam
   - «…in verschiedenen Farben…»
-- `15516103147905` · Wasserdichte Sportuhr mit Dual-Display für Paare
-  - «…in verschiedenen Farben…»
-- `15516103311745` · PP Zügel mit weichem Kissen
-  - «…Erhältlich in Rot, Blau und Schwarz sowie in den Grössen…»
-- `15516103967105` · Verstellbares Hunde-Geschirr mit Leine, Nylon
-  - «…in verschiedenen Farben…»
-- `15516109177217` · Freizeit-Laptop-Rucksack
-  - «…in verschiedenen Ausführungen…»
-- `15516109472129` · Motorrad-Rucksack mit grosser Kapazität
-  - «…in verschiedenen Farben…»
-- `15516110422401` · Multifunktionale Reisetasche mit grossem Fassungsvermögen
-  - «…in verschiedenen Farben…»
-- `15516110913921` · Herren Umhängetasche – Lässiger Brustbeutel
-  - «…in verschiedenen Farben…»
-- `15516156035457` · Reflektierende Seil-Leine für grosse Hunde
+- `15433462808961` · Grosses Gaming Mauspad Neon Lightning, rutschfest
+  - «…in verschiedenen Grössen…»
+- `15433462972801` · Mechanische 60% Gaming Tastatur mit RGB, DE-Layout
   - «…Wählen Sie aus…»
-- `15516157084033` · Reflektierende Outdoor-Hundeleine
+- `15433464250753` · Faltbarer Joystick mit Display-Fernbedienung
   - «…in verschiedenen Farben…»
-- `15516157280641` · Doppelte Hundeleine, verhedderungsfrei
-  - «…Erhältlich in Grau und passend für kleine bis mittelgrosse…»
-- `15516157477249` · Personalisiertes taktisches Hundehalsband
-  - «…in verschiedenen Grössen…»
-- `15516158361985` · Truelove Hundegeschirr, reflektierend, gepolstert
-  - «…in verschiedenen Grössen…»
-- `15516162457985` · Wasserdichter Outdoor Rucksack mit Nass-/Trockenfach
-  - «…Wählen Sie aus…»
-- `15516162621825` · Multifunktionaler Reiserucksack
-  - «…in verschiedenen Farben…»
-- `15516164194689` · Grosser Schulrucksack für alle Stufen
-  - «…in verschiedenen Farben…»
-- `15516168520065` · Forge Longquan Küchenmesser handgefertigt
-  - «…Wählen Sie aus…»
-- `15516169208193` · Knochen-, Fleisch- und Fischmesser
-  - «…Verfügbar in zwei Grössen…»
-- `15516197618049` · Geflochtenes Baumwollhalsband für Haustiere
-  - «…in verschiedenen Grössen…»
-- `15516198011265` · Reflektierende, automatische Hundeleine
-  - «…in verschiedenen Farben…»
-- `15516198830465` · Halsband- und Leinen-Set aus weichem Leder
-  - «…Erhältlich in den Farben Grau und Pink Verfügbar in drei Grössen…»
-- `15516199027073` · Hundegeschirr mit Leine und Fliege
-  - «…in verschiedenen Grössen…»
-- `15516199223681` · Gstältli mit Leine Gänseblümchen-Stickerei
-  - «…in verschiedenen Grössen…»
-- `15516202926465` · Reise-Rucksack Canvas & Leder
-  - «…in verschiedenen Farben…»
-- `15516204302721` · Leder Rucksack für Herren, 16 Zoll
-  - «…in verschiedenen Ausführungen…»
-- `15516206727553` · Schneidebrett aus Silikon, verschiedene Grössen
-  - «…in verschiedenen Farben…»
-- `15516207153537` · Thermobeker Edelstahl 600ml
-  - «…Erhältlich in vier farben…»
-- `15516207350145` · Fuguang Trinkflasche mit Strohhalm
-  - «…Erhältlich in Grau, Grün und Gelb Grosse…»
-- `15516207907201` · Grosse Isolierflasche mit Strohhalm und Henkel
-  - «…In verschiedenen Farben…»
-- `15516215411073` · Smart-Armband mit Farbdisplay & Zyklus-Erinnerung
-  - «…in verschiedenen Farben…»
-- `15516215443841` · Hundeleine aus Leder mit Kettendetail
-  - «…in verschiedenen Farben…»
-- `15516215509377` · Leder-Leine für Haustiere
-  - «…Erhältlich in zwei Grössen…»
-- `15516215771521` · Wasserdichte Multifunktions-Leine aus PVC
-  - «…In verschiedenen Farben…»
-- `15516215837057` · Samtenes Haustierhalsband mit Zugseil
-  - «…Wählen Sie aus…»
-- `15516215935361` · Samt-Halsband und Leine für Haustiere
-  - «…in verschiedenen Grössen…»
-- `15516216656257` · Grosser taktischer Tarn-Rucksack
-  - «…in verschiedenen Farben…»
-- `15516216689025` · Sportrucksack für Basketball & Fussball
-  - «…in verschiedenen Farben…»
-- `15516216852865` · Saber Business-Rucksack für Laptop
-  - «…in verschiedenen Farben…»
-- `15516217082241` · Keramikmesser-Set mit schwarzer Klinge, 5-teilig
-  - «…in verschiedenen Grössen…»
-- `15516217344385` · Keramikgriff im europäischen Stil
-  - «…Verfügbar in zwei Grössen…»
-- `15516217934209` · Armband mit Stern- und Mondanhänger
-  - «…in verschiedenen Grössen…»
-- `15516218098049` · Runder Ehering aus 925 Sterling Silber
-  - «…in verschiedenen Grössen…»
-- `15516218229121` · Herren Business Chronograph Kalenderuhr
-  - «…in verschiedenen Farben…»
-- `15516218261889` · Naiton NEKTOM Herren Quarzuhr – 30M Wasserdicht
-  - «…in verschiedenen Ausführungen…»
-- `15516218491265` · Mechanische Herrenuhr mit Leuchtzeiger und Kalender
-  - «…in verschiedenen Farben…»
-- `15516218720641` · Rucksack mit Wirbelsäulenschutz
-  - «…in verschiedenen Farben…»
-- `15516218786177` · Reise-Rucksack für Schüler mit grossem Fassungsvermögen
-  - «…in verschiedenen Farben…»
-- `15516218884481` · Brusttasche für Herren im Camouflage-Look
-  - «…in verschiedenen Farben…»
-- `15516218917249` · Grosser Eisseiden-Kissenbezug
-  - «…in verschiedenen Farben…»
-- `15516219048321` · Qianjinmingyuan Sanfte Maniküre
-  - «…in verschiedenen Grössen…»
-- `15516219081089` · Cat Eye 3D-Blumen-Nagelset
-  - «…Erhältlich in der Farbe «195 Sunset Glow» und verschiedenen Grössen…»
-- `15516219113857` · New Year White And Red Cat's Eye Nägel
-  - «…in verschiedenen Grössen…»
-- `15516219179393` · Handgemachte Blac Peach Herz Nagelsticker
+- `15446021144961` · Elektrischer Mini-Hot Pot mit Dampfgarer 1.8L
   - «…Wählen Sie zwischen…»
-- `15516219310465` · Handgemachte Maillard-Nägel mit Goldrand
-  - «…in verschiedenen Grössen…»
-- `15516219441537` · High Power UV/LED Nagellampe, 268W
-  - «…In verschiedenen Farben…»
-- `15516219638145` · USB-Heizkissen mit Graphen-Technologie
+- `15446270869889` · Scooby-Doo Quietschbälle für Hunde, 8er-Set
   - «…in verschiedenen Farben…»
-- `15516219703681` · Minimalistisches Kissen mit geometrischem Muster
-  - «…in verschiedenen Farben…»
-- `15516233105793` · Gstältli-Set für Katzen und Hunde
-  - «…Erhältlich in den Farben Lila, Pink und Off-White Verfügbar in drei Gr…»
-- `15516233171329` · Hundeleine – reissfest & stylisch
-  - «…in verschiedenen Grössen…»
-- `15516233269633` · Multifunktionale, reflektierende Doppel-Hundeleine
-  - «…in verschiedenen Farben…»
-- `15516233367937` · Küchen-Timer mit Countdown-Funktion
-  - «…in verschiedenen Farben…»
-- `15516233433473` · Einfaches Lederhalsband für Hunde
-  - «…in verschiedenen Grössen…»
-- `15516233499009` · Lederhalsband für mittelgrosse bis grosse Hunde
-  - «…in verschiedenen Farben…»
-- `15516233597313` · Metall-Armband für Apple Watch
-  - «…in verschiedenen Farben…»
-- `15516233630081` · Leuchthundeleine mit Rollautomatik
-  - «…in verschiedenen Farben…»
-- `15516233662849` · Geflochtenes Nylon-Armband für Smartwatch
-  - «…in verschiedenen Grössen…»
-- `15516233761153` · Doppelführleine für Hunde
-  - «…Erhältlich in drei Grössen und drei attraktiven Farben…»
-- `15516233892225` · Taktische Outdoor-Hundeweste mit Leinen
-  - «…in verschiedenen Grössen…»
-- `15516233957761` · LED Leucht-Brustgeschirr explosionsgeschützt
+- `15446271754625` · Interaktiver Hunde-Spielball mit Seil
   - «…Wählen Sie aus…»
-- `15516234580353` · Kalier Fotorucksack – wasserdichtes Canvas
+- `15446275326337` · Selbstklebende Leinen-Wandverkleidung
   - «…in verschiedenen Farben…»
-- `15516234645889` · Retro Canvas Rucksack für Herren (20-35L)
-  - «…in verschiedenen Farben…»
-- `15516234744193` · Multifunktionaler, wasserdichter Velo-Rucksack
-  - «…in verschiedenen Farben…»
-- `15516234776961` · Sport-Rucksack 30L
-  - «…in verschiedenen Farben…»
-- `15516234809729` · Grosser Freizeitrucksack für Studierende
-  - «…in verschiedenen Farben…»
-- `15516234842497` · Business Laptoptasche aus Oxford-Stoff
-  - «…in verschiedenen Grössen…»
-- `15516235071873` · Nordische Eisen-Obstschale
+- `15447577461121` · Mattschwarze PVC-Etiketten A4, selbstklebend
   - «…in verschiedenen Ausführungen…»
-- `15516235334017` · Handgeschmiedetes Fisch- und Filetiermesser
+- `15447579525505` · Magnetarmband aus gebürsteter Bronze
   - «…in verschiedenen Ausführungen…»
-- `15517321200001` · Home Touch Button Tragbarer Bluetooth-Lautsprecher
-  - «…Wählen Sie aus…»
-- `15517430579585` · Vergoldetes Jade Armband mit Glückswolken
+- `15447584113025` · Rhinestone-Lotusring im Retro-Stil
   - «…in verschiedenen Grössen…»
-- `15517432709505` · Nackenkissen mit Schaumstoffpartikeln
+- `15447600628097` · Locker sitzendes Kapuzen-Sweatshirt mit Spitze
+  - «…in verschiedenen Grössen…»
+- `15447605051777` · Leinenhemd im China-Stil für Herren
+  - «…Verfügbar in vier Farben…»
+- `15447623303553` · Besticktes Kissen aus Baumwoll-Leinen
+  - «…Erhältlich in verschiedenen Ausführungen und Grössen…»
+- `15447623467393` · 2er-Set Samt-Knotenkissen, Blumenform
+  - «…in verschiedenen Farben…»
+- `15447625630081` · Samt-Kissenbezug mit Rüschenmuster
+  - «…in verschiedenen Ausführungen…»
+- `15447910973825` · Taucherbrille mit Antibeschlag-Gläsern
   - «…Wählen Sie aus…»
+- `15447919395201` · Quadratische Doppelsteg-Sonnenbrille aus Metall
+  - «…in verschiedenen Farben…»
