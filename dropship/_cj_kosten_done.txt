@@ -3058,3 +3058,10 @@ gid://shopify/Product/15448620237185	CHF 38.13	4 Varianten	Gerade Jeans mit Farb
 gid://shopify/Product/15448620564865	CHF 17.94	40 Varianten	Vielseitige Jeans für Frühling und Herbst
 gid://shopify/Product/15448620859777	CHF 25.00	10 Varianten	Vintage Wide-leg Jeans mit hohem Bund
 gid://shopify/Product/15448621252993	CHF 23.21	4 Varianten	Trendy Ripped Straight-leg Wide-leg Jeans
+gid://shopify/Product/15448621613441	CHF 26.79	5 Varianten	Damen Bootcut Jeans mit geradem Bein
+gid://shopify/Product/15448621908353	CHF 22.16	5 Varianten	Straight-Leg Jeans im Street-Style
+gid://shopify/Product/15448622236033	CHF 20.96	35 Varianten	High Waist Straight Jeans mit weitem Bein
+gid://shopify/Product/15448622563713	CHF 22.61	5 Varianten	Retro Schlagjeans für Damen
+gid://shopify/Product/15448622858625	CHF 18.55	6 Varianten	Retro Blue High Waist Straight Leg Jeans
+gid://shopify/Product/15448623186305	CHF 22.61	60 Varianten	Slim Straight-Leg Jeans im koreanischen Stil
+gid://shopify/Product/15448623579521	CHF 22.16	35 Varianten	Blumenprint Wide-Leg Hose im Vintage-Stil
