@@ -3084,3 +3084,6 @@ gid://shopify/Product/15448628593025	CHF 24.45	5 Varianten	High Waist Wide Leg J
 gid://shopify/Product/15448628920705	CHF 24.45	5 Varianten	Weisse High-Waist Cropped Jeans mit geradem Bein
 gid://shopify/Product/15448629150081	CHF 25.43	5 Varianten	Patchwork Denim Jeans im Western-Stil
 gid://shopify/Product/15448629444993	CHF 21.80	5 Varianten	High-Waist Straight-Leg Hose
+gid://shopify/Product/15448629739905	CHF 18.91	15 Varianten	High-Waist Stretch-Denim Shorts mit Rissen
+gid://shopify/Product/15448630100353	CHF 20.53	9 Varianten	Loose-Fit High-Waist Denim Capris
+gid://shopify/Product/15448630395265	CHF 22.94	2 Varianten	Plus-Size Cropped Jeans mit Ripped Details
