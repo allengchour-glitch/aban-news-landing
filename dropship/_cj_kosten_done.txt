@@ -2446,3 +2446,20 @@ gid://shopify/Product/15448113447297	CHF 18.62	12 Varianten	Leopard-Print Eintei
 gid://shopify/Product/15448113578369	CHF 20.22	25 Varianten	Eleganter Jumpsuit mit weitem Bein und V-Ausschnit
 gid://shopify/Product/15448113906049	CHF 22.44	5 Varianten	Eleganter Damen Jumpsuit mit Reissverschluss
 gid://shopify/Product/15448114037121	CHF 21.87	24 Varianten	Minimalistischer, plissierter Jumpsuit
+gid://shopify/Product/15448115347841	CHF 22.00	9 Varianten	Nahtloser Einteiler mit ausgestelltem Bein
+gid://shopify/Product/15448115380609	CHF 19.23	15 Varianten	Nahtloser Casual Jumpsuit mit Thong-Boden
+gid://shopify/Product/15448115413377	CHF 20.22	11 Varianten	Rückenbetonender Einteiler mit Aushöhlung
+gid://shopify/Product/15448115446145	CHF 22.46	5 Varianten	Sexy Lace Slim-Fit Yoga Jumpsuit
+gid://shopify/Product/15448115478913	CHF 20.22	3 Varianten	High-Elastic Yoga-Einteiler mit V-Ausschnitt
+gid://shopify/Product/15448115544449	CHF 18.62	23 Varianten	Damen Yoga Jumpsuit mit Mock-Neck
+gid://shopify/Product/15448115577217	CHF 21.12	2 Varianten	Boho-Jumpsuit mit Neckholder, weites Bein
+gid://shopify/Product/15448115609985	CHF 18.62	9 Varianten	Damen trägerloser Yoga-Einteiler
+gid://shopify/Product/15448115642753	CHF 20.53	10 Varianten	Spitzen-Body mit Blumenmuster
+gid://shopify/Product/15448115708289	CHF 20.08	20 Varianten	Yoga Bodysuit Shorts-Stil
+gid://shopify/Product/15448115773825	CHF 20.37	14 Varianten	Capri-Schwimmanzug mit Farbverlauf
+gid://shopify/Product/15448115806593	CHF 19.78	4 Varianten	Gestreifter Halterneck Jumpsuit
+gid://shopify/Product/15448115839361	CHF 20.22	12 Varianten	Taillierter Kurzarm-Body
+gid://shopify/Product/15448115872129	CHF 18.76	3 Varianten	Sommerlicher Off-Shoulder Bodycon Jumpsuit Shorts
+gid://shopify/Product/15448115937665	CHF 19.37	9 Varianten	Kurzer Yoga Jumpsuit mit Überkreuzträgern
+gid://shopify/Product/15448115970433	CHF 20.22	3 Varianten	Sportlicher Yoga-Body ohne Polsterung
+gid://shopify/Product/15448116003201	CHF 20.22	65 Varianten	Eleganter ärmelloser Jumpsuit mit weitem Bein

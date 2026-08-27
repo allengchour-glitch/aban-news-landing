@@ -1207,6 +1207,31 @@ eingerichteten Vorrang-Fenster, in dem der ganze Grind pausiert.
   `cj_variantenbild` und `cj_bild_backfill` ruhen im Fenster jetzt mit.
   **NICHT pausiert wird `cj_fulfill_runner`** — der bearbeitet echte Kundenbestellungen.
 
+## 💾 Ein Reparaturmechanismus auf der Platte, die zurückgedreht wird, repariert nichts (2026-08-27)
+Der Container stellt beim Restart einen **festen alten Disk-Snapshot vom 24.08. 15:36** her —
+erkennbar daran, dass das CJ-Ledger jedes Mal auf **exakt 45'149** fällt und der Baum 621
+Commits hinter origin steht. Dagegen wurde am **25.08. 03:38** eine Selbsterkennung in
+`engine_keepalive.sh` eingebaut: fetch, Abstand zu origin messen, `repo_vorspulen.sh` starten.
+**Sie hat noch kein einziges Mal ausgelöst — und kann es nicht.** Der Snapshot ist ÄLTER als
+der Einbau. Nach einem Rewind liegt die Fassung vom 24.08. auf der Platte, und die läuft dann;
+die Erkennung existiert in diesem Moment gar nicht. Jede weitere Verbesserung an dieser Stelle
+hätte dasselbe Schicksal, egal wie gut sie ist.
+**Regel: Wer einen Rückfall heilen will, muss den Heiler ausserhalb des Rückfalls lagern.**
+Selbstheilung im zurückgedrehten Bereich ist Selbsttäuschung — dieselbe Denkfigur wie «eine
+Wache kann sich nicht auf sich selbst verlassen» (Lehre 0f), nur eine Ebene tiefer: dort war
+der wartende Prozess das Problem, hier ist es der wiederhergestellte Datenträger.
+- Der einzige Ort ausserhalb des Snapshots ist der **Routinen-Prompt** (er liegt beim Dienst,
+  nicht auf der Platte). Beide Keepalive-Routinen holen das Skript deshalb jetzt ZUERST frisch
+  von origin, bevor sie es starten:
+  `git fetch -q origin <branch>; git checkout -q origin/<branch> -- automation/engine_keepalive.sh automation/repo_vorspulen.sh; bash automation/engine_keepalive.sh`
+  Ohne Rewind ist das ein No-op; mit Rewind ist es der ganze Unterschied.
+- ⚠️ Das steht in Spannung zur eigenen Hausregel «die Prüflogik gehört ins Skript, nicht in den
+  Routinentext». Sie gilt weiter für die LOGIK — hier steht im Text nur der **Bootstrap**, also
+  die drei Zeilen, die das Skript überhaupt erst in seiner aktuellen Fassung erreichbar machen.
+- ⚠️ `git checkout origin/<branch> -- <datei>` überschreibt lokale, noch nicht committete
+  Änderungen an genau diesen zwei Dateien. Wer an ihnen arbeitet, committet vor dem nächsten
+  Routinenlauf — was ohnehin die Hausregel ist.
+
 ## 🧮 Shopify prüft die ANGEFRAGTE Menge, nicht die verbrauchte (2026-08-27)
 Der Kosten-Backfill kam seit Tagen über wenige Seiten nicht hinaus und endete mit
 «PAUSE (Shopify antwortet nicht)». Gemessen an der echten Abfrage:
