@@ -1247,6 +1247,26 @@ Ringe durchblättert, fand dazwischen einen Abdeckstift und eine Wanderhose.
   alle acht sauber. **Nach einer Tag-Änderung am OBJEKT gegenprüfen, nicht über die Suche** —
   sonst repariert man ein zweites Mal, was längst stimmt.
 
+## 📝 317 Ratgeber — und keiner zum einzigen Wort, das Besucher bringt (2026-08-27)
+Die Trichter-Messung zeigte: **36 von 147 Suchsitzungen landen auf dem Rizinusöl-Wickel-Set.**
+Danach nachgezählt: **317 Blogartikel, 306 veröffentlicht — davon 0 zu Rizinusöl oder Wickeln.**
+Wir schreiben also fleissig über Sommerkleider und Duftkerzen und schweigen zu dem einen Thema,
+für das uns Google tatsächlich schickt.
+Geschrieben und veröffentlicht: `/blogs/ratgeber/rizinusoel-wickel-anwendung-anleitung` —
+Öl-Auswahl (kaltgepresst/unraffiniert/Glas), Material (Bio-Baumwolle innen, PUL aussen),
+Ablauf, Pflege, Gegenanzeigen, mit Link auf das Produkt und die Kollektion.
+- ⚠️ **Ohne ein einziges Heilversprechen**, und das ausdrücklich im Text: «kein Medizinprodukt,
+  behandelt keine Krankheit, ersetzt keinen Arztbesuch». Rizinusöl-Wickel werden im Netz breit
+  mit Organ- und Heilaussagen beworben — genau die Klasse, die hier schon zweimal teuer war
+  (Blutzucker-Armbänder, MepV-Geräte). Ein Ratgeber, der die Grenze selbst zieht, ist
+  langlebiger als einer, den später jemand entschärfen muss.
+- **Die Methode ist übertragbar und kostet nichts:** ShopifyQL nach `landing_page_path` mit
+  `referrer_source = search` fragen, die Treffer gegen die Artikelliste halten, und für jedes
+  Thema OHNE Ratgeber einen schreiben. Der Beweis liegt vor: Die Produktseite rankt bereits
+  ohne SEO-Titel — die Nische trägt, wir haben sie nur nie bedient.
+- ⚠️ Live über WebFetch gegengeprüft (nicht über die eigene IP, die den Bot-Cache sieht):
+  HTTP 200, alle acht Zwischentitel da, Produktlink vorhanden.
+
 ## 💸 Wo das Geld wirklich verloren geht — 30 Tage gemessen (2026-08-27)
 Auf «mach dass ich Geld verdiene» habe ich zuerst gemessen statt gearbeitet. ShopifyQL
 (`shopifyqlQuery`, Feld `tableData{columns{name} rows}` — NICHT `rowData`/`unformattedData`,
