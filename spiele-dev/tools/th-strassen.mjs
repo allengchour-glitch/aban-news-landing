@@ -53,6 +53,40 @@ const sonde = `function(MINH){
             neue Fahrbahn kennen, sonst waechst genau dort unbemerkt etwas zu. */
          {n:"Achterbahn-Stich West", a:"z",c:173, h:4.2,von:-194.2,bis:-100},
          {n:"Achterbahn-Stich Sued", a:"x",c:-190,h:4.2,von:169,   bis:205}];
+  /* ⚠️ DIE STRASSEN IN DEN VIERTELN FEHLTEN — und genau dort stand der Fehler.
+     Die Zoo-Viertelstrasse lief durch die Windmuehle (#2345), und dieses Werkzeug
+     meldete sauber, weil seine Bandtabelle nur die grossen Achsen kannte. Viertel
+     wandern ausserdem (viertelOrt weicht aus), feste Eintraege waeren also schon
+     nach der naechsten Verschiebung falsch. Darum aus der Welt gelesen:
+       * die Erschliessungsstrasse laeuft auf der MITTELACHSE des Viertels,
+         halbe Belagsbreite SW/2 = 4,5, ueber die ganze Laenge;
+       * der Anschluss ist ein L-Weg aus zwei achsenparallelen Abschnitten
+         (segment(ax,az,VX,az) dann segment(VX,az,VX,VZ)), beide ebenfalls 4,5. */
+  try{
+    var VV=(window._viertelSolver||{}).VIERTEL||[];
+    VV.forEach(function(g){
+      var laenge=g.laengs?g.w:g.d;
+      B.push(g.laengs
+        ? {n:"Viertelstr. "+g.name, a:"z",c:g.z,h:4.5,von:g.x-laenge/2,bis:g.x+laenge/2}
+        : {n:"Viertelstr. "+g.name, a:"x",c:g.x,h:4.5,von:g.z-laenge/2,bis:g.z+laenge/2});
+      var an=g.cfg&&g.cfg.anschluss; if(!an)return;
+      var ax=an[0],az=an[1];
+      function seg(x1,z1,x2,z2,tag){
+        var waag=Math.abs(x2-x1)>Math.abs(z2-z1);
+        var v=waag?Math.min(x1,x2):Math.min(z1,z2), b2=waag?Math.max(x1,x2):Math.max(z1,z2);
+        if(b2-v<1)return;
+        B.push(waag?{n:"Anschluss "+g.name+tag,a:"z",c:z1,h:4.5,von:v,bis:b2}
+                   :{n:"Anschluss "+g.name+tag,a:"x",c:x1,h:4.5,von:v,bis:b2});}
+      /* ⚠️ MUSS DIE REIHENFOLGE DES SPIELS SPIEGELN. viertel() legt den letzten
+         Schenkel auf die eigene Strasse des Viertels — bei laengs also erst in z,
+         dann in x. Wer hier die alte Reihenfolge stehen laesst, misst eine Strasse,
+         die es nicht mehr gibt: der Anschluss des Vergnuegungsviertels meldete danach
+         42 Treffer auf einem Weg, der laengst woanders verlief. */
+      if(Math.abs(g.x-ax)>2&&Math.abs(g.z-az)>2){
+        if(g.laengs){seg(ax,az,ax,g.z," 1");seg(ax,g.z,g.x,g.z," 2");}
+        else        {seg(ax,az,g.x,az," 1");seg(g.x,az,g.x,g.z," 2");}}
+      else seg(ax,az,g.x,g.z,"");});
+  }catch(e){}
   /* Zubringer: die sechs Winkel stehen als Routen im Spiel (axis:"radial") */
   var SPEICHEN=[30,60,120,240,300,330], RAD0=123, RAD1=193, SPH=4.5;
   var RINGR=200, RINGH=4.5;                     /* Landstrasse: Spuren 197,5 / 202,5 */
