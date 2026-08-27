@@ -1264,3 +1264,25 @@ Richtig ist `for(w=1;w<16;w++) if(w%4===0) continue;`.
 **Die Achsen behalten bewusst den Vorrang** (sie kommen je Radius zuerst), damit ein Viertel
 weiter längs seiner eigenen Straße ausweicht und Felder, Anschluss und Kartenmarke in der
 Nähe bleiben. Suchradius 120 → 200 m.
+
+### ⚠️ Ein Test mit festen Zielkoordinaten besteht auch, wenn das Ziel weggezogen ist
+`th-netz.mjs` routete auf **fest verdrahtete** Koordinaten. Nachdem der Bauernhof durch den
+Geländefix nach (−40|−246) gezogen war, routete der Test unverändert nach (−40|−196) — eine
+leere Wiese — und meldete **grün**. Er hätte einen unerreichbaren Bauernhof nicht bemerkt.
+
+Behoben: die Ziele kommen jetzt aus `window._viertelSolver.VIERTEL`, und eine Schleife prüft
+**jedes** Viertel an seinem tatsächlichen Ort (die drei bisherigen Ziele waren handverlesen;
+ein neues Viertel wäre nie aufgefallen). 19 → 23 Prüfungen.
+
+Verifiziert nach dem Umzug von Gewerbe Ost auf (250|−78), r = 262 — also **außerhalb** der
+Landstraße:
+
+| Viertel | Ort | Route | Rest |
+|---|---|---|---|
+| Gewerbe Ost | 250\|−78 (r 262) | 101 Punkte | 0,0 m |
+| Sportpark Süd | 0\|246 | 62 | 0,0 m |
+| Freizeitpark | 60\|340 (r 345) | 76 | 0,0 m |
+| Bauernhof | −40\|−246 | 132 | 0,0 m |
+
+Alle vier per GPS erreichbar, Straßenanteil 72–82 %, und `LIEFERZIELE` folgt den Umzügen
+(`marke()` schreibt `WORLD_POIS` und `LIEFERZIELE` mit).

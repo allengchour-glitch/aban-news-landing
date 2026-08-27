@@ -17,6 +17,12 @@ const TMP = 'spiele-dev/tools/_netz_probe.html'
 mitSonden('traumhaus.html', {
   netz: `function(was,a,b){
     if(was==="strasse")return gpsStrasse(a,b);
+    /* Die Viertel WANDERN — viertelOrt() weicht aus, wenn der Wunschort belegt ist.
+       Feste Zielkoordinaten im Test bestehen dann weiter, pruefen aber eine leere
+       Wiese. Genau das ist passiert: der Bauernhof zog nach (-40|-246), der Test
+       routete unveraendert nach (-40|-196) und meldete gruen. */
+    if(was==="viertel"){var V=(window._viertelSolver||{}).VIERTEL||[];
+      var t={};V.forEach(function(g){t[g.name]=[g.x,g.z];});return t;}
     if(was==="tp"){var me=sims[meinSi()];me.x=a;me.z=b;return true;}
     if(was==="setz")return gpsSetz(a,b);
     if(was==="stand")return {aktiv:GPS.aktiv,x:GPS.x,z:GPS.z,pfad:GPS.pfad?GPS.pfad.slice():null};
@@ -45,13 +51,18 @@ check('Freizeitpark-Verbinder (60,300) ist Strasse', await S('strasse', 60, 300)
 check('Bauernhof-Verbinder (-40,-150) ist Strasse', await S('strasse', -40, -150))
 check('Wiese (50,50) bleibt Wiese', !(await S('strasse', 50, 50)))
 
+/* ⚠️ ZIELE AUS DER WELT LESEN, NICHT AUS DEM TEST. Siehe Kommentar in der Sonde. */
+const ORTE = await S('viertel')
+const ziel = (n, ersatz) => ORTE[n] || ersatz
+
 /* 3: Route quer durch die halbe Welt zum Freizeitpark */
 await S('tp', 26, 67)
-check('Route zum Freizeitpark moeglich', await S('setz', 60, 330) === true)
+const [fpX, fpZ] = ziel('Freizeitpark', [60, 330])
+check('Route zum Freizeitpark moeglich', await S('setz', fpX, fpZ) === true, `Ziel ${fpX}|${fpZ}`)
 let st = await S('stand')
 if (st.pfad && st.pfad.length) {
   const l = st.pfad[st.pfad.length - 1]
-  check('Route endet am Freizeitpark', Math.hypot(l[0] - 60, l[1] - 330) < 2, `Ende (${l[0].toFixed(0)},${l[1].toFixed(0)})`)
+  check('Route endet am Freizeitpark', Math.hypot(l[0] - fpX, l[1] - fpZ) < 2, `Ende (${l[0].toFixed(0)},${l[1].toFixed(0)})`)
   const verb = st.pfad.filter((p) => Math.abs(p[0] - 60) < 6 && p[1] > 220).length
   check('Route benutzt den Sued-Verbinder', verb >= 10, verb + ' Punkte auf x~60/z>220')
 } else { check('Route endet am Freizeitpark', false, 'kein Pfad'); check('Route benutzt den Sued-Verbinder', false) }
@@ -64,13 +75,28 @@ await page.evaluate(() => document.getElementById('bigmapClose').click())
 await S('weg')
 
 /* 4: Route in den Norden zum Bauernhof */
-check('Route zum Bauernhof moeglich', await S('setz', -40, -196) === true)
+const [bhX, bhZ] = ziel('Bauernhof', [-40, -196])
+check('Route zum Bauernhof moeglich', await S('setz', bhX, bhZ) === true, `Ziel ${bhX}|${bhZ}`)
 st = await S('stand')
 if (st.pfad && st.pfad.length) {
   const l2 = st.pfad[st.pfad.length - 1]
-  check('Route endet am Bauernhof', Math.hypot(l2[0] + 40, l2[1] + 196) < 2, `Ende (${l2[0].toFixed(0)},${l2[1].toFixed(0)})`)
+  check('Route endet am Bauernhof', Math.hypot(l2[0] - bhX, l2[1] - bhZ) < 2, `Ende (${l2[0].toFixed(0)},${l2[1].toFixed(0)})`)
 } else check('Route endet am Bauernhof', false, 'kein Pfad')
 await S('weg')
+
+/* 5: JEDES Viertel an seinem tatsaechlichen Ort — die drei oben sind handverlesen,
+   und ein neues Viertel faellt sonst nie auf. "Gewerbe Ost" liegt seit der Ringsuche
+   bei r = 262, also ausserhalb der Landstrasse; erreichbar muss es trotzdem sein. */
+for (const [name, [zx, zz]] of Object.entries(ORTE)) {
+  await S('tp', 26, 67)
+  const ok = await S('setz', zx, zz) === true
+  const s5 = await S('stand'), pf = (s5.pfad || [])
+  const e5 = pf.length ? pf[pf.length - 1] : null
+  const rest = e5 ? Math.hypot(e5[0] - zx, e5[1] - zz) : Infinity
+  check(`Viertel "${name}" per GPS erreichbar`, ok && rest < 2,
+        `${zx}|${zz} (r=${Math.round(Math.hypot(zx, zz))}), ${pf.length} Punkte, Rest ${rest.toFixed(1)} m`)
+  await S('weg')
+}
 
 /* 5: Achterbahn-Stich (neu gebauter Asphalt) */
 check('Achterbahn-Stich West (-150,173) ist Strasse', await S('strasse', -150, 173))
