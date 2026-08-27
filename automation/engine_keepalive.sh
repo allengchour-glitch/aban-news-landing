@@ -68,8 +68,25 @@ else
     echo "AUFSEHER haengt (Herzschlag kalt) → neu gestartet"
     ps -eo pid,args --no-headers \
       | awk '$2=="bash" && $3 ~ /fixer_keepalive\.sh$/ {print $1}' | xargs -r kill 2>/dev/null
-    sleep 2
+    # ⚠️ WARTEN, BIS DER ALTE WIRKLICH WEG IST (27.08.2026). Nach `kill` plus zwei Sekunden
+    # lief der haengende Aufseher noch — und der Ersatz trat mit seiner EIGENEN Wache wieder
+    # ab («Supervisor laeuft bereits — dieser Start endet»). Ergebnis: NULL Aufseher, und
+    # damit standen alle taeglichen Qualitaets-Waechter, bis eine Stunde spaeter der naechste
+    # Routinenlauf den Nullstand bemerkte. Eine Selbstwache, die den Vorgaenger noch sieht,
+    # verhindert genau den Ersatz, den man gerade herbeifuehren will.
+    for _ in $(seq 15); do
+      [ "$(zaehle 'fixer_keepalive.sh')" -eq 0 ] && break
+      sleep 1
+    done
+    if [ "$(zaehle 'fixer_keepalive.sh')" -gt 0 ]; then
+      ps -eo pid,args --no-headers \
+        | awk '$2=="bash" && $3 ~ /fixer_keepalive\.sh$/ {print $1}' | xargs -r kill -9 2>/dev/null
+      sleep 2
+    fi
     starte fixer_keepalive bash automation/fixer_keepalive.sh
+    # Gegenprobe: ein Start, der sich selbst abmeldet, ist kein Start.
+    sleep 2
+    [ "$(zaehle 'fixer_keepalive.sh')" -eq 0 ] && echo "⚠️ AUFSEHER-Ersatz ist sofort wieder ausgestiegen"
   else
     echo "AUFSEHER laeuft"
   fi

@@ -1207,6 +1207,26 @@ eingerichteten Vorrang-Fenster, in dem der ganze Grind pausiert.
   `cj_variantenbild` und `cj_bild_backfill` ruhen im Fenster jetzt mit.
   **NICHT pausiert wird `cj_fulfill_runner`** — der bearbeitet echte Kundenbestellungen.
 
+## 🕳️ Der Ersatz trat ab, weil er den Vorgänger noch sah — NULL Aufseher (2026-08-27)
+Der Herzschlag-Wächter erkannte einen hängenden Aufseher korrekt, tötete ihn und startete den
+Ersatz nach zwei Sekunden. Der alte Prozess lief da noch — und die **Selbstwache des Ersatzes**
+meldete «Supervisor läuft bereits — dieser Start endet». Ergebnis im Log: `Aufseher=0`.
+Damit standen ALLE täglichen Qualitäts-Wächter still, bis eine Stunde später der nächste
+Routinenlauf den Nullstand bemerkte und neu startete.
+**Eine Selbstwache, die den Vorgänger noch sieht, verhindert genau den Ersatz, den man gerade
+herbeiführen will.** Sie ist richtig gebaut (sie soll Doppelstarts abwehren) — falsch war der
+Zeitpunkt: Ein Ersatz darf erst starten, wenn der Vorgänger WIRKLICH weg ist, nicht wenn der
+Tötungsbefehl abgesetzt wurde.
+- Jetzt: bis zu 15 Sekunden warten, bis kein Aufseher mehr in der Prozessliste steht; danach
+  `kill -9`; erst dann starten.
+- Und eine **Gegenprobe direkt danach**: Steht zwei Sekunden nach dem Start wieder 0, wird das
+  gemeldet («Ersatz ist sofort wieder ausgestiegen»). Ohne sie sieht ein fehlgeschlagener
+  Ersatz genauso aus wie ein gelungener — dieselbe Lehre wie «‹Läuft› ist nicht ‹arbeitet›»,
+  nur noch eine Stufe früher: **‹gestartet› ist nicht ‹läuft›.**
+- ⚠️ Gefunden wurde es nur, weil die Abschlusszeile die Zahl NENNT (`STAND: … Aufseher=0`).
+  Hätte dort «AUFSEHER neu gestartet» gestanden und sonst nichts, wäre der Nullstand unsichtbar
+  gewesen. Eine Statusmeldung gehört an das ERGEBNIS geknüpft, nicht an die Absicht.
+
 ## 🖼️ Drei Kategorie-Kacheln zeigten eine Massgrafik, ein schwarzes Rechteck und Fremdtext (2026-08-27)
 Auf der Startseite bebildern die Kachelreihen ganze Kategorien — dort stand:
 
