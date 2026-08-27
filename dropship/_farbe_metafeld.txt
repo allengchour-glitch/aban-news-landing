@@ -305,3 +305,4 @@ gid://shopify/Product/15517430972801	Gold
 gid://shopify/Product/15517549396353	Transparent
 gid://shopify/Product/15517569220993	Transparent
 gid://shopify/Product/15517583868289	Gold
+gid://shopify/Product/15518354145665	Schwarz
