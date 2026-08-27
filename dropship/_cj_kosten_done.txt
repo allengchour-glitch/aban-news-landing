@@ -3028,3 +3028,14 @@ gid://shopify/Product/15448611389825	CHF 26.65	8 Varianten	Asymmetrischer Batik-
 gid://shopify/Product/15448611422593	CHF 21.39	4 Varianten	Ausgestellter Jupe mit Spitze und Gummibund
 gid://shopify/Product/15448611455361	CHF 21.10	5 Varianten	Midi-Rock mit Blumenstickerei und Spitze
 gid://shopify/Product/15448611586433	CHF 19.03	40 Varianten	Blumenmuster High Waist Skort mit Shorts
+gid://shopify/Product/15448611881345	CHF 19.86	30 Varianten	Leichter Skort mit Taschen
+gid://shopify/Product/15448612340097	CHF 20.74	40 Varianten	Damen Maxirock mit Print und Taschen
+gid://shopify/Product/15448612831617	CHF 17.37	24 Varianten	High-Waisted Midi-Rock mit Digitalprint
+gid://shopify/Product/15448613192065	CHF 21.71	12 Varianten	A-Linien Minirock mit hohem Bund
+gid://shopify/Product/15448613552513	CHF 19.98	10 Varianten	Spitzen Minirock mit hoher Taille
+gid://shopify/Product/15448613945729	CHF 26.34	16 Varianten	A-Linien Midirock für grosse Grössen
+gid://shopify/Product/15448614240641	CHF 22.16	6 Varianten	Chiffon-Puffrock mit Polka Dots
+gid://shopify/Product/15448614568321	CHF 23.21	4 Varianten	Gepunkteter Midirock im Koreanischen Stil
+gid://shopify/Product/15448614994305	CHF 26.94	4 Varianten	Red-Ear Straight-Leg Jeans mit Blumenmuster
+gid://shopify/Product/15448615321985	CHF 21.34	36 Varianten	High-Waist Tencel Jeans mit weitem Bein
+gid://shopify/Product/15448615649665	CHF 21.57	5 Varianten	Amerikanische Loose Fit High-Waist Flared Jeans
