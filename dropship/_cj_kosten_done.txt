@@ -3039,3 +3039,9 @@ gid://shopify/Product/15448614568321	CHF 23.21	4 Varianten	Gepunkteter Midirock 
 gid://shopify/Product/15448614994305	CHF 26.94	4 Varianten	Red-Ear Straight-Leg Jeans mit Blumenmuster
 gid://shopify/Product/15448615321985	CHF 21.34	36 Varianten	High-Waist Tencel Jeans mit weitem Bein
 gid://shopify/Product/15448615649665	CHF 21.57	5 Varianten	Amerikanische Loose Fit High-Waist Flared Jeans
+gid://shopify/Product/15448616272257	CHF 20.60	24 Varianten	High-Waist Bootcut Jeans im Vintage-Stil
+gid://shopify/Product/15448616567169	CHF 20.53	8 Varianten	Patchwork Wide Leg Distressed Jeans
+gid://shopify/Product/15448616862081	CHF 19.37	5 Varianten	High-Waist Loose-Fit Jeans im Retro-Look
+gid://shopify/Product/15448617058689	CHF 39.78	5 Varianten	Weisse Wide-Leg Jeans aus Lyocell-Faser
+gid://shopify/Product/15448617222529	CHF 38.53	5 Varianten	Weisse Cropped Jeans aus Lyocell
+gid://shopify/Product/15448617484673	CHF 22.16	18 Varianten	Fashionable Stretchy Flare Jeans für Damen
