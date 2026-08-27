@@ -2954,3 +2954,77 @@ gid://shopify/Product/15448605589889	CHF 16.90	8 Varianten	High-Elastic Butt-Lif
 gid://shopify/Product/15448605884801	CHF 20.82	69 Varianten	Damen Leggings mit Tier-Print für Frühling & Herbs
 gid://shopify/Product/15448606048641	CHF 18.17	50 Varianten	High-Waist Fitness Leggings mit Taschen
 gid://shopify/Product/15448606212481	CHF 19.92	4 Varianten	High-Waist Samthose mit Spitze
+gid://shopify/Product/15448606343553	CHF 19.23	74 Varianten	High-Waist Yoga Leggings
+gid://shopify/Product/15448606507393	CHF 19.35	15 Varianten	Gerippte Strickhose für Damen
+gid://shopify/Product/15448606671233	CHF 19.37	5 Varianten	Gefütterte Leggings mit Bauchstütze
+gid://shopify/Product/15448606769537	CHF 20.67	4 Varianten	Schwangerschafts-Leggings mit Bauchstütze
+gid://shopify/Product/15448607031681	CHF 25.13	55 Varianten	Fliesender Tanzrock
+gid://shopify/Product/15448607195521	CHF 19.55	10 Varianten	Elegante, figurbetonte Jupe mit Schlitz
+gid://shopify/Product/15448607326593	CHF 19.15	20 Varianten	Maxirock A-Linie mit Bindegürtel
+gid://shopify/Product/15448607392129	CHF 20.08	30 Varianten	Eleganter Faltenrock mit Raffung
+gid://shopify/Product/15448607424897	CHF 47.09	6 Varianten	Langer, vielseitiger Damenrock mit leichter Dehnun
+gid://shopify/Product/15448607490433	CHF 52.45	4 Varianten	Gepunktetes Midikleid in Beige
+gid://shopify/Product/15448607523201	CHF 23.00	20 Varianten	High-Waist Tennis-Minirock mit Falten
+gid://shopify/Product/15448607621505	CHF 22.32	4 Varianten	Damen Midi-Rock mit Print und Gürtel
+gid://shopify/Product/15448607654273	CHF 25.90	5 Varianten	Khaki High-Waist Plissée-Midi-Jupe
+gid://shopify/Product/15448607687041	CHF 22.16	5 Varianten	Blauer Jeansrock mit elastischem Bund
+gid://shopify/Product/15448607752577	CHF 20.37	40 Varianten	Retro Plaid Midi-Jupe für Strand und Freizeit
+gid://shopify/Product/15448607818113	CHF 20.37	9 Varianten	Satin A-Linien Jupe mit Taschen
+gid://shopify/Product/15448607850881	CHF 20.22	15 Varianten	Samtrock mit Rüschensaum und Seitenschlitz
+gid://shopify/Product/15448607883649	CHF 19.47	35 Varianten	Schlankheits-Midirock in A-Linie
+gid://shopify/Product/15448607916417	CHF 21.57	6 Varianten	Boho A-Linien Jupe mit Blumenmuster
+gid://shopify/Product/15448607949185	CHF 21.71	2 Varianten	Eleganter A-Linien-Maxirock in Weiss
+gid://shopify/Product/15448607981953	CHF 28.76	7 Varianten	Bedrucktes 2-teiliges A-Linien-Set mit V-Ausschnit
+gid://shopify/Product/15448608113025	CHF 25.30	4 Varianten	Vintage Stufenrock mit Stickerei und Schleife
+gid://shopify/Product/15448608145793	CHF 23.36	30 Varianten	Yoga Sport Maxirock mit Taschen
+gid://shopify/Product/15448608178561	CHF 23.05	59 Varianten	Atmungsaktiver Sport-Minirock
+gid://shopify/Product/15448608211329	CHF 21.42	25 Varianten	Commuter Slimming Jupe mit Taschen
+gid://shopify/Product/15448608276865	CHF 19.78	56 Varianten	Knielanger A-Linien-Rock mit Taschen
+gid://shopify/Product/15448608309633	CHF 61.65	6 Varianten	Merino Twist-Top & Seiden-Midi-Jupe Palmprint
+gid://shopify/Product/15448608375169	CHF 20.82	24 Varianten	Atmungsaktiver Yoga Skort – schnelltrocknend & fig
+gid://shopify/Product/15448608407937	CHF 17.64	6 Varianten	Yoga-Rockhose-Set für grosse Grössen
+gid://shopify/Product/15448608506241	CHF 19.08	20 Varianten	Langes Damen-Leopardenkleid mit elastischem Bund
+gid://shopify/Product/15448608539009	CHF 21.42	4 Varianten	Asymmetrischer Polka-Dot A-Linien Rock
+gid://shopify/Product/15448608571777	CHF 20.37	9 Varianten	Midlanger A-Linien Rock aus Baumwoll-Leinen-Mix
+gid://shopify/Product/15448608637313	CHF 24.86	12 Varianten	Eleganter A-Linien Midirock
+gid://shopify/Product/15448608801153	CHF 27.05	2 Varianten	Vielseitiger A-Linien-Jupe aus Ramie
+gid://shopify/Product/15448608932225	CHF 20.37	12 Varianten	Midilanger A-Linien Plisseerock mit Kordelzug
+gid://shopify/Product/15448608997761	CHF 18.85	16 Varianten	A-Linien Jupe mit hoher Taille
+gid://shopify/Product/15448609030529	CHF 22.45	14 Varianten	High-Waist Midirock mit Blumenmuster
+gid://shopify/Product/15448609063297	CHF 21.27	5 Varianten	Maxirock aus Tüll mit 3D-Blumenstickerei
+gid://shopify/Product/15448609096065	CHF 18.47	6 Varianten	Figurbetonter A-Linien Rock mit Schlitz
+gid://shopify/Product/15448609161601	CHF 18.77	16 Varianten	Eleganter A-Linien Midirock – Schwarz
+gid://shopify/Product/15448609259905	CHF 19.78	4 Varianten	Eleganter Plisseerock für Damen
+gid://shopify/Product/15448609292673	CHF 20.35	10 Varianten	A-Linien Utility-Rock mit asymmetrischem Saum
+gid://shopify/Product/15448609325441	CHF 22.00	8 Varianten	Eleganter Midirock aus Wolle mit hohem Bund
+gid://shopify/Product/15448609358209	CHF 48.73	4 Varianten	A-Linien Rock mit Blumenmuster
+gid://shopify/Product/15448609423745	CHF 19.08	12 Varianten	High Waist Mini-Jeansrock mit Rüschen
+gid://shopify/Product/15448609456513	CHF 62.16	6 Varianten	Taillenhoher Leinenrock mit geradem Schnitt
+gid://shopify/Product/15448609522049	CHF 23.95	5 Varianten	Maxikleid mit V-Ausschnitt und Plisseefalten
+gid://shopify/Product/15448609587585	CHF 74.10	4 Varianten	Midi-Faltenrock aus Seide mit A-Linie
+gid://shopify/Product/15448609620353	CHF 20.84	4 Varianten	A-Linien Rock mit Farbverlauf-Print
+gid://shopify/Product/15448609685889	CHF 19.53	4 Varianten	A-Linien Midi-Jupe mit Stufen und Blumenmuster
+gid://shopify/Product/15448609784193	CHF 17.69	16 Varianten	High-Waist Cake Skirt mit Rüschen
+gid://shopify/Product/15448609816961	CHF 21.54	3 Varianten	Gehäkelter Bikini-Wickelrock mit Perlen
+gid://shopify/Product/15448609849729	CHF 23.82	10 Varianten	Satin Jupe im New Chinese-Style
+gid://shopify/Product/15448609915265	CHF 19.96	10 Varianten	Plissierter Midi-Jupe mit Farbverlauf
+gid://shopify/Product/15448610111873	CHF 18.57	25 Varianten	Midi-Mesh-Rock im A-Linien-Schnitt
+gid://shopify/Product/15448610144641	CHF 18.62	5 Varianten	Wickel-Shorts mit Paisley-Print
+gid://shopify/Product/15448610210177	CHF 19.16	28 Varianten	Sportlicher Tennis-Jupe mit Anti-Expositions-Desig
+gid://shopify/Product/15448610275713	CHF 20.22	8 Varianten	Vielseitiger Minirock mit Polka Dots
+gid://shopify/Product/15448610406785	CHF 21.27	10 Varianten	Midirock mit Tunnelzug und grossen Taschen
+gid://shopify/Product/15448610472321	CHF 18.77	18 Varianten	Sportlicher Faux-Zweiteiler Skirt für Damen
+gid://shopify/Product/15448610537857	CHF 19.19	12 Varianten	Luftiger Anti-Expositions-Rock mit hoher Taille
+gid://shopify/Product/15448610603393	CHF 21.42	80 Varianten	Satin-Midi-Rock mit hohem Bund und Schlitz
+gid://shopify/Product/15448610636161	CHF 19.08	90 Varianten	High-waist Minirock mit Falten und Karomuster
+gid://shopify/Product/15448610701697	CHF 18.65	20 Varianten	Boho A-Linien Jupe mit hoher Taille
+gid://shopify/Product/15448610734465	CHF 19.82	25 Varianten	Elegantes A-Linien-Kleid mit Taschen
+gid://shopify/Product/15448610800001	CHF 20.22	5 Varianten	Bohemian Patchwork Maxirock
+gid://shopify/Product/15448610865537	CHF 38.73	1 Varianten	A-Linien-Jupe im chinesischen Stil
+gid://shopify/Product/15448610931073	CHF 21.27	8 Varianten	Stretch-Jeansrock mit Knopfleiste
+gid://shopify/Product/15448611062145	CHF 20.67	1 Varianten	Asymmetrischer Mesh-Jupe
+gid://shopify/Product/15448611291521	CHF 17.51	16 Varianten	Ballett-inspirierter Minirock
+gid://shopify/Product/15448611389825	CHF 26.65	8 Varianten	Asymmetrischer Batik-Rock mit Spitze
+gid://shopify/Product/15448611422593	CHF 21.39	4 Varianten	Ausgestellter Jupe mit Spitze und Gummibund
+gid://shopify/Product/15448611455361	CHF 21.10	5 Varianten	Midi-Rock mit Blumenstickerei und Spitze
+gid://shopify/Product/15448611586433	CHF 19.03	40 Varianten	Blumenmuster High Waist Skort mit Shorts
