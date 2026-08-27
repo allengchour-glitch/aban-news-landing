@@ -3065,3 +3065,10 @@ gid://shopify/Product/15448622563713	CHF 22.61	5 Varianten	Retro Schlagjeans fü
 gid://shopify/Product/15448622858625	CHF 18.55	6 Varianten	Retro Blue High Waist Straight Leg Jeans
 gid://shopify/Product/15448623186305	CHF 22.61	60 Varianten	Slim Straight-Leg Jeans im koreanischen Stil
 gid://shopify/Product/15448623579521	CHF 22.16	35 Varianten	Blumenprint Wide-Leg Hose im Vintage-Stil
+gid://shopify/Product/15448623939969	CHF 21.19	5 Varianten	Casual High Waist Jeans mit Rissen
+gid://shopify/Product/15448624234881	CHF 24.55	12 Varianten	High-Waist Flared Jeans im Vintage-Look
+gid://shopify/Product/15448624529793	CHF 20.35	7 Varianten	Patchwork Bootcut Jeans
+gid://shopify/Product/15448624890241	CHF 19.91	5 Varianten	High-Rise Slightly Flared Denim Jeans
+gid://shopify/Product/15448625185153	CHF 22.46	4 Varianten	Leopard Chiffon Hose mit weitem Bein
+gid://shopify/Product/15448625512833	CHF 24.81	5 Varianten	Mid-Stretch Skinny Jeans – Knöchellang
+gid://shopify/Product/15448625840513	CHF 20.82	6 Varianten	Damen Ripped Denim Shorts im Thin Style
