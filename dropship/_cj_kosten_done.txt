@@ -2156,3 +2156,7 @@ gid://shopify/Product/15448044339585	CHF 19.78	21 Varianten	3D Blumen Print Kurz
 gid://shopify/Product/15448044372353	CHF 19.08	42 Varianten	Gestreifte V-Neck Bluse mit 3/4-Ärmeln
 gid://shopify/Product/15448044405121	CHF 26.56	6 Varianten	Rückenfreies Camisole mit Spitze
 gid://shopify/Product/15448075829633	CHF 18.01	96 Varianten	Weihnachts-T-Shirt für Damen mit Aufdruck
+gid://shopify/Product/15448075862401	CHF 19.07	30 Varianten	Bowknot Camisole V-Neck Top
+gid://shopify/Product/15448075895169	CHF 17.05	10 Varianten	V-Neck Ärmelloses Slim Fit Top
+gid://shopify/Product/15448075927937	CHF 19.16	3 Varianten	Gepunktetes Bandeau-Top
+gid://shopify/Product/15448076059009	CHF 19.68	4 Varianten	Elegantes Neckholder-Top mit Perlenknöpfen
