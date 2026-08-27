@@ -1223,3 +1223,44 @@ Transparenz. Die Schranke bleibt.
 
 **Merke:** derselbe Verdacht an derselben Stelle heißt nicht derselbe Befund. Auch die
 zweite Prüfung war eine Messung wert — und sie war negativ.
+
+## 2026-08-27 · 🔍 Ein Kreuz ist keine Fläche — alle vier Viertel stehen sauber
+
+`viertelOrt()` suchte nur in **vier Richtungen** vom Wunschort aus. Alles Diagonale lag damit
+außerhalb der Suche, egal wie weit sie reicht. Gemessen mit `th-viertel.mjs`, das beide
+Suchen nebeneinander fährt:
+
+| „Gewerbe Ost", Stufe-2-Platz gesucht | Ergebnis |
+|---|---|
+| Kreuz, 4 Richtungen (wie bisher) | **keiner in 260 m** |
+| Ring, 16 Richtungen | **(250\|−78), 110 m** |
+
+Die Welt war nie zu eng — **die Suche war es**. Damit ist die alte Notiz „das Viertel passt
+einfach nirgends hin, nur Teilen hilft" zum **zweiten** Mal widerlegt (zuvor schon wegen der
+Berg-Hüllbox). Beide Male sah es nach einem geometrischen Zwang aus, beide Male war es ein
+Fehler im Prüfwerkzeug des Solvers.
+
+**Ergebnis — erstmals alle vier Viertel auf Stufe 2:**
+
+| | vorher | nachher |
+|---|---|---|
+| Objekte auf dem Belag (3 Läufe) | 117 / 108 / 108 | **96 / 84 / 98** |
+| Landstraße | 61 | **25** |
+| Zubringer 330° | 16 | **2** |
+| echte 3D-Überschneidungen | 67 | **57** |
+
+Die beiden geräumten Bänder sind genau die, die `th-viertel.mjs` als Blocker benannt hatte —
+das ist die Ursachenkette, nicht nur eine Korrelation. Die Streubereiche der drei Läufe je
+Seite überschneiden sich **nicht** (min. vorher 108 > max. nachher 98); beim vorigen Versuch
+taten sie das, und dort war die Differenz folgerichtig kein Ergebnis.
+
+### ⚠️ `w+=2` überspringt ausgerechnet die 45-Grad-Diagonalen
+Erster Anlauf: Achsen plus `for(w=1;w<16;w+=2)`. Das sind die acht **ungeraden** Achtel —
+zusammen mit den vier Achsen 12 von 16 Richtungen, und es fehlen genau `w = 2, 6, 10, 14`,
+also 45°/135°/225°/315°. Der Platz für Gewerbe Ost liegt bei 45°. Das Viertel landete
+deshalb 170 m entfernt statt 110 m, und es sah trotzdem nach Erfolg aus („Stufe 2: ja").
+Richtig ist `for(w=1;w<16;w++) if(w%4===0) continue;`.
+
+**Die Achsen behalten bewusst den Vorrang** (sie kommen je Radius zuerst), damit ein Viertel
+weiter längs seiner eigenen Straße ausweicht und Felder, Anschluss und Kartenmarke in der
+Nähe bleiben. Suchradius 120 → 200 m.

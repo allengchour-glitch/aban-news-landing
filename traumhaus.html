@@ -4504,11 +4504,28 @@ setTimeout(function baueGebaeude(){
     for(var streng=2;streng>=0;streng--){
       if(viertelPasst(cfg,cfg.x,cfg.z,streng))return [cfg.x,cfg.z,0];
       var laengs=cfg.achse==="x";
-      for(var d=10;d<=120;d+=10){
-        /* Zuerst laengs der eigenen Strasse ausweichen — dort bleibt das Viertel in
-           seiner Umgebung (Felder, Anschluss, Kartenmarke) statt querfeldein zu wandern. */
+      /* ⚠️ EIN KREUZ IST KEINE FLAECHE. Gesucht wurde nur in VIER Richtungen — damit
+         liegt alles Diagonale ausserhalb der Suche, egal wie weit sie reicht. Gemessen
+         mit `spiele-dev/tools/th-viertel.mjs`: fuer "Gewerbe Ost" fand das Kreuz auf
+         260 m KEINEN strassenfreien Ort, ein Ringtest mit 16 Richtungen aber einen bei
+         (250|-78), nur 110 m entfernt. Die Welt war nie zu eng — die Suche war es.
+         Genau daraus stammt die alte Notiz "das Viertel passt einfach nirgends hin, nur
+         Teilen hilft"; sie war zweimal falsch (vorher schon wegen der Berg-Huellbox).
+         Die Achsen behalten ihren Vorrang: sie kommen je Radius ZUERST dran, damit ein
+         Viertel weiter laengs seiner eigenen Strasse ausweicht (Felder, Anschluss,
+         Kartenmarke bleiben in der Naehe) und erst danach diagonal. */
+      for(var d=10;d<=200;d+=10){
         var kand=laengs?[[cfg.x+d,cfg.z],[cfg.x-d,cfg.z],[cfg.x,cfg.z+d],[cfg.x,cfg.z-d]]
                        :[[cfg.x,cfg.z+d],[cfg.x,cfg.z-d],[cfg.x+d,cfg.z],[cfg.x-d,cfg.z]];
+        /* ⚠️ `w+=2` waere hier falsch: das laesst nur die UNGERADEN Achtel uebrig und
+           ueberspringt ausgerechnet die vier 45-Grad-Diagonalen (w = 2, 6, 10, 14).
+           Gemessen: genau dort lag der Platz fuer "Gewerbe Ost" (250|-78, 110 m) — mit
+           dem Zweierschritt landete es stattdessen 170 m entfernt. Also alle Achtel
+           ausser den Achsen, die oben schon drin sind. */
+        for(var w=1;w<16;w++){
+          if(w%4===0)continue;                         /* 0/90/180/270 stehen schon oben */
+          var a9=w*Math.PI/8;
+          kand.push([Math.round(cfg.x+Math.cos(a9)*d),Math.round(cfg.z+Math.sin(a9)*d)]);}
         for(var k=0;k<kand.length;k++)
           if(viertelPasst(cfg,kand[k][0],kand[k][1],streng))return [kand[k][0],kand[k][1],d];}}
     return null;}
