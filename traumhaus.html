@@ -4861,6 +4861,26 @@ setTimeout(function baueGebaeude(){
               {file:"th12_nachtclub.glb",  h:8, w:23.0,d:19.4},
               {file:"th12_spielhalle.glb", h:6, w:29.4,d:23.5},
               {file:"th12_theater.glb",    h:10,w:29.2,d:29.8}]});
+    /* 🦓 ZOO. Die fuenf th24-Modelle waren die zweite Gruppe aus der Inventur, die nie
+       aufgestellt wurde. Drei Gehege statt einem: der Reihen-Generator setzt jeden
+       Eintrag EINMAL, also steht die Kiste dreimal in der Liste — sonst ist ein Zoo
+       ein Eingang, eine Voliere und viel Platz.
+       ⚠️ MASSE GEMESSEN (`th-mass.mjs`). Bei 9 m Hoehe ist das Aquarienhaus 36,2 x 44 m,
+       und die 44 m Tiefe bestimmen im Alleingang die Breite des Netto-Rechtecks
+       (`viertelMass` nimmt den tiefsten Bau quer zur Strasse). Auf 7 m skaliert sind es
+       28,2 x 34,2. Der Streichelzoo ist nativ nur 3 m hoch — auf 5 m gezogen waere er
+       33,6 x 30 m gross, groesser als das Aquarium; deshalb 3,5 m.
+       Laengere Bauzeile: 98,7 m Front plus drei Luecken = 134,7 m, passt in die
+       142 m Netto-Laenge. */
+    viertel({name:"Zoo",x:-200,z:-200,w:170,d:100,achse:"x",boden:"kies",
+      anschluss:[-100,-246],abstand:12,luecke:12,rand:14,
+      bauten:[{file:"th24_zoo_eingang.glb", h:7,  w:26.0,d:16.6},
+              {file:"th24_gehege.glb",      h:4,  w:13.2,d:10.7},
+              {file:"th24_voliere.glb",     h:8,  w:21.0,d:21.0},
+              {file:"th24_gehege.glb",      h:4,  w:13.2,d:10.7},
+              {file:"th24_streichelzoo.glb",h:3.5,w:23.5,d:21.0},
+              {file:"th24_gehege.glb",      h:4,  w:13.2,d:10.7},
+              {file:"th24_aquarienhaus.glb",h:7,  w:28.2,d:34.2}]});
     /* 🌲 WALDSAUM. Zwischen Ringstrasse und Gebirge lag eine einzige flache
        gruene Flaeche — 90 m Nichts zwischen dem letzten Haus und dem ersten
        Felsen. Ein Waldguertel am Bergfuss schliesst die Luecke und gibt der
