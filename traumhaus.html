@@ -4487,7 +4487,21 @@ setTimeout(function baueGebaeude(){
      Grosse Bauten mit fester Adresse gehoeren darum HIER hinein, nicht nur in ihren
      eigenen bau()-Aufruf. Masse aus der geladenen Box, nicht geschaetzt. */
   var SPAETE_SPERREN=[{x:228,z:24,hw:15,hd:16},     /* Seilbahn-Talstation */
-                      {x:129,z:156,hw:15,hd:16}];   /* Seilbahn-Bergstation */
+                      {x:129,z:156,hw:15,hd:16},    /* Seilbahn-Bergstation */
+                      /* 🌬️ Windmuehle (-136|-196). GEMESSEN und nur mit dem AUGE gefunden:
+                         die Viertelstrasse des Zoos lief auf z = -200 (Belag -204,5..-195,5)
+                         quer durch den Muehlenturm (z -199,2..-192,8). Vier Werkzeuge
+                         meldeten sauber — `th-strassen` kennt nur die grossen Baender, nicht
+                         die Strassen INNERHALB eines Viertels, und `viertelPasst` sieht nur
+                         WORLD_SOLIDS. Die Muehle hat aber gar keinen Kollider (0 im Umkreis
+                         von 12 m), also war sie fuer den Solver nicht vorhanden — dieselbe
+                         Klasse wie Fahrbahnen und Berge.
+                         ⚠️ Der Kollider fehlt mit gutem Grund: das Lieferziel "Windmühle"
+                         liegt auf (-136|-196), also IM Bauwerk. Ein Kollider dort machte das
+                         Ziel unerreichbar. Deshalb hier eine Sperre fuer den Solver statt
+                         eines Kolliders fuer die Welt. Masse aus der Box inkl. Fluegel
+                         (z -204,1..-187,9). */
+                      {x:-136,z:-196,hw:8,hd:10}];  /* Windmuehle + Fluegel */
   function aufSperre(x0,x1,z0,z1){
     for(var i=0;i<SPAETE_SPERREN.length;i++){var q=SPAETE_SPERREN[i];
       if(q.x+q.hw+6>x0&&q.x-q.hw-6<x1&&q.z+q.hd+6>z0&&q.z-q.hd-6<z1)return true;}
