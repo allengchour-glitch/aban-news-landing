@@ -1247,6 +1247,49 @@ Ringe durchblättert, fand dazwischen einen Abdeckstift und eine Wanderhose.
   alle acht sauber. **Nach einer Tag-Änderung am OBJEKT gegenprüfen, nicht über die Suche** —
   sonst repariert man ein zweites Mal, was längst stimmt.
 
+## 💸 Wo das Geld wirklich verloren geht — 30 Tage gemessen (2026-08-27)
+Auf «mach dass ich Geld verdiene» habe ich zuerst gemessen statt gearbeitet. ShopifyQL
+(`shopifyqlQuery`, Feld `tableData{columns{name} rows}` — NICHT `rowData`/`unformattedData`,
+die gibt es nicht):
+
+| Quelle | Sitzungen | Warenkorb | Kasse | Kaufrate |
+|---|---:|---:|---:|---:|
+| direct | 818 | 5 | 2 | 0,2 % |
+| social | 232 | 1 | **0** | **0 %** |
+| **search** | **147** | **4** | **2** | **1,4 %** |
+| gesamt | 1'207 | 10 | 4 | 0,3 % |
+
+- **Nur Suchtraffic verkauft.** 147 Sitzungen bringen so viele Kassengänge wie 818 direkte.
+  **Social hat in 30 Tagen aus 232 Sitzungen NULL Bestellungen gebracht** — der Autopilot
+  erzeugt Reichweite ohne Kaufabsicht. Das ist die härteste Zahl dieses Monats.
+- **Die ganze organische Suche hängt an EINER Seite:** 36 von 147 Suchsitzungen landen auf
+  `/products/rizinusol-wickel-set-mit-bio-ol-323457`. Ein Viertel, aus 48'700 Produkten.
+  Sie hatte KEINEN SEO-Titel und rankte trotzdem — die Nische («Rizinusöl-Wickel») trägt.
+- Nützliche ShopifyQL-Spalten: `sessions`, `sessions_with_cart_additions`,
+  `sessions_that_completed_checkout`, gruppierbar nach `referrer_source` und
+  `landing_page_path`. `sum()` gibt es NICHT, `add_to_carts`/`orders` auch nicht.
+
+## 🏷️ 135 von 800 Produkten versprechen eine Auswahl, die es nicht gibt (2026-08-27)
+Ausgerechnet auf der Seite mit dem meisten Suchtraffic stand «Das Set ist in verschiedenen
+Grössen erhältlich» — bei **einer** Variante. Die Kundin sucht die Grössenwahl, findet keine
+und geht; **keine Statistik weist das je als Kaufabbruch aus.** Über 800 geprüfte Neuimporte:
+**135 Treffer, 17 %.** Ursache immer dieselbe wie beim Organizer und beim Federarmband:
+**Der Text beschreibt das CJ-Listing mit zwölf Varianten, angelegt wird bei uns eine.**
+`automation/wahlversprechen.py` (täglich im Aufseher) meldet; `FIX=1` repariert eng begrenzt.
+- **Nur reine Absätze und eindeutige Listenpunkte werden angefasst.** Der Trockentest zeigte
+  sofort, warum: Bei «Ein <strong>schöner</strong> Ring, erhältlich in Gold- oder
+  Stahlfarben.» sieht ein Textknoten-Verfahren nur «Ring, erhältlich in …», hält das für
+  einen ganzen Satz, löscht es — und übrig bleibt «Ein schöner». Genau der Fehler der
+  Wearable-Reparatur vom 21.08. Absätze mit Auszeichnung werden deshalb NUR GEMELDET.
+- **Zwei Grenzwerte, aus dem Trockentest hergeleitet:** Ein Satz fällt ab 45 % Trefferanteil,
+  ein Listenpunkt ab 30 %. Grund: Die Regex trifft nur die Ankündigung («in verschiedenen
+  Farben»), nicht die Aufzählung dahinter («: Grün, Gelb, Pink, Weiss, Grau») — am Satzmass
+  gemessen wäre ein Listenpunkt, der nichts anderes sagt, nie gefallen.
+- ⚠️ **Was bewusst stehen bleibt:** «Erhältlich in verschiedenen Farben, lässt es sich optimal
+  an den Stil anpassen.» trägt eine zweite Aussage. Die Klausel herauszuschneiden ergäbe
+  «lässt es sich optimal anpassen.» — kein deutscher Satz. Solche Fälle bleiben im Bericht
+  für eine Hand. **Ein falscher Satz ist ärgerlich, ein halber ist peinlich.**
+
 ## 💥 CJ liefert SPANNEN, und wir lasen immer die billigste Zahl (2026-08-27)
 Beim Nachsehen, was die Startseite gerade zeigt, fiel der «Mehrzweck-Organizer fürs Pult»
 auf: Titel Schreibtisch, Bild ein 12-fächriges Regal. CJ gefragt (pid 2511301329441606400):
