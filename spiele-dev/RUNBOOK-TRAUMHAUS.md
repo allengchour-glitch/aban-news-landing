@@ -1286,3 +1286,33 @@ Landstraße:
 
 Alle vier per GPS erreichbar, Straßenanteil 72–82 %, und `LIEFERZIELE` folgt den Umzügen
 (`marke()` schreibt `WORLD_POIS` und `LIEFERZIELE` mit).
+
+## 2026-08-27 · 📏 `th-3d.mjs` sortierte nach Grundriss — ganz oben stand das sauberste Bauwerk
+
+Die Liste war nach der **2D-Überdeckung** geordnet. Für **gestapelte** Bauten ist das aber das
+ganze Grundstück. Dauerhaft an der Spitze stand darum
+`th7_hochhaus_modul × th7_hochhaus_modul, 8,20 m` — und das ist ein **korrekt gestapeltes
+Hochhaus**: Module bei y 0–6, 6–12, 12–18, 18–24 plus Dach bei 24–27,6, sauber aufeinander.
+Die 13 Mesh-Paare sind ein Gesims, das ein paar Zentimeter ins Modul darüber ragt. Wer die
+Liste von oben las, jagte zuerst das sauberste Bauwerk der Karte.
+
+Die richtige Frage ist nicht „wie viel Grundfläche teilen sie sich", sondern **„wie tief steckt
+das eine im anderen"** — das kleinste der drei Achsenüberlappungen, davon das größte Meshpaar.
+Danach wird jetzt sortiert und gemeldet (`ECHT 1.39m tief (Grundriss 6.34m)`).
+
+**Neue Rangliste (nach dieser Session):**
+
+| Tiefe | Paar | Bewertung |
+|---|---|---|
+| 1,39 m | Seilbahn-Station × Seilbahn-Stütze (ab y 40,3) | Mast trifft Stationsdach — konstruktiv |
+| 1,17 m | Ahorn × Birke | Baumkronen, kosmetisch |
+| 0,91 m | Haus × Ahorn | Krone am Dach |
+| 0,76 m | Windmühlenturm × Flügel | konstruktiv |
+| 0,66 m | Bushaltestelle × Bus | Bus steht an der Haltestelle |
+
+Damit hat die Karte **keine Gebäude-in-Gebäude-Stelle über 1,4 m** mehr — zum Vergleich: die
+Polizeiwache steckte einmal **19,7 m** in der Seilbahn-Talstation (#2315).
+
+⚠️ Die Zahl „echte Überschneidungen" (56) ist **unverändert** — es wurde nur die Reihenfolge
+und die gemeldete Größe korrigiert. Eine Kennzahl, die man nicht nach Schwere ordnen kann,
+ist als Frühwarnung wertlos: 56 kleine Baumkronen und ein 19,7-m-Fehler ergeben dieselbe Zahl.

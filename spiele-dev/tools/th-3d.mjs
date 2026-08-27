@@ -102,20 +102,35 @@ const zeilen = await page.evaluate(([aArg, bArg]) => {
   L.push('2D-Funde: ' + paare.length)
   const cache = new Map()
   const hol = o => { if (!cache.has(o.w)) cache.set(o.w, meshes(o.w)); return cache.get(o.w) }
+  /* ⚠️ NACH EINDRINGTIEFE SORTIEREN, NICHT NACH GRUNDRISS. Die Liste war nach der
+     2D-Ueberdeckung geordnet — und die ist fuer GESTAPELTE Bauten das ganze Grundstueck.
+     Ganz oben stand darum dauerhaft "th7_hochhaus_modul x th7_hochhaus_modul, 8,20 m":
+     ein korrekt gestapeltes Hochhaus (Module bei y 0-6, 6-12, 12-18, 18-24 plus Dach),
+     bei dem nur ein Gesims ein paar Zentimeter in das Modul darueber ragt. Wer die Liste
+     von oben liest, jagt zuerst das sauberste Bauwerk der Karte.
+     Die Frage ist nicht "wie viel Grundflaeche teilen sie sich", sondern "wie tief steckt
+     das eine im anderen" — also das KLEINSTE der drei Achsenueberlappungen, und davon das
+     groesste Meshpaar. Fuer den gestapelten Turm sind das Zentimeter, fuer die
+     Polizeiwache in der Seilbahnstation waren es 19,7 m. */
   let echt = 0, luft = 0
+  const zeilen = []
   paare.forEach(p => {
     const am = hol(p.a), bm = hol(p.b)
-    let tiefste = null, n = 0
+    let tiefste = null, n = 0, tiefe = 0
     for (const m of am) for (const q of bm) if (schnitt3(m, q)) {
       n++
       const y = Math.max(m.y0, q.y0)
       if (tiefste === null || y < tiefste) tiefste = y
+      const d = Math.min(ueb(m, q, 'x'), ueb(m, q, 'y'), ueb(m, q, 'z'))
+      if (d > tiefe) tiefe = d
     }
-    if (n) { echt++; L.push('ECHT  ' + p.m2.toFixed(2) + 'm 2D   ' + n + ' Mesh-Paare   ab y ' +
-                            tiefste.toFixed(2) + '   ' + p.a.d + ' x ' + p.b.d) }
-    else { luft++; L.push('LUFT  ' + p.m2.toFixed(2) + 'm 2D   uebereinander, kein Kontakt   ' +
-                          p.a.d + ' x ' + p.b.d) }
+    if (n) { echt++; zeilen.push({ t: tiefe, s: 'ECHT  ' + tiefe.toFixed(2) + 'm tief  (Grundriss ' +
+                            p.m2.toFixed(2) + 'm)   ' + n + ' Mesh-Paare   ab y ' +
+                            tiefste.toFixed(2) + '   ' + p.a.d + ' x ' + p.b.d }) }
+    else { luft++; zeilen.push({ t: -1, s: 'LUFT  ' + p.m2.toFixed(2) + 'm 2D   uebereinander, kein Kontakt   ' +
+                          p.a.d + ' x ' + p.b.d }) }
   })
+  zeilen.sort((x, y) => y.t - x.t).forEach(z => L.push(z.s))
   L.push('=> ' + echt + ' echt, ' + luft + ' nur 2D (Vordach/Krone/Ausleger)')
   return L
 }, [aArg, bArg])
