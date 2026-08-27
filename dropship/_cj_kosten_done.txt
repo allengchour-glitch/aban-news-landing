@@ -3196,3 +3196,5 @@ gid://shopify/Product/15448647664001	CHF 19.04	3 Varianten	Elegante, figurbetont
 gid://shopify/Product/15448647696769	CHF 18.47	54 Varianten	Bootcut Yoga-Hose für Damen
 gid://shopify/Product/15448647795073	CHF 19.78	4 Varianten	Gepunktete Yoga-Tights für Damen
 gid://shopify/Product/15448647827841	CHF 18.10	26 Varianten	Nahtlose High Waist Yoga-Hose
+gid://shopify/Product/15448647860609	CHF 18.14	12 Varianten	High-Waist Hose mit weitem Bein und Kordelzug
+gid://shopify/Product/15448647893377	CHF 19.16	16 Varianten	Damen Bootcut Jeanshose mit engem Schnitt
