@@ -2199,3 +2199,80 @@ gid://shopify/Product/15448078254465	CHF 20.08	24 Varianten	Spitzenbesetzte Blus
 gid://shopify/Product/15448078287233	CHF 18.10	4 Varianten	Yoga Top mit Reissverschluss, Langarm
 gid://shopify/Product/15448078320001	CHF 17.13	4 Varianten	Yoga Tanktop mit Shaping-Effekt
 gid://shopify/Product/15448078352769	CHF 16.97	4 Varianten	Kurzes Yoga Sport Top mit Rundhals
+gid://shopify/Product/15448078418305	CHF 18.15	4 Varianten	Atmungsaktives Taillenbetontes Top für Frauen
+gid://shopify/Product/15448078451073	CHF 17.05	10 Varianten	Geripptes Tanktop für Damen
+gid://shopify/Product/15448078483841	CHF 17.69	30 Varianten	Off-Shoulder Kurzarmshirt
+gid://shopify/Product/15448078516609	CHF 17.21	10 Varianten	Slim Fit Rundhals-Shirt mit kurzen Ärmeln
+gid://shopify/Product/15448078549377	CHF 17.21	10 Varianten	Geripptes Slim Fit T-Shirt mit eckigem Ausschnitt
+gid://shopify/Product/15448078582145	CHF 19.08	20 Varianten	Lässiges Kurzarm-Top im Loose-Fit
+gid://shopify/Product/15448078647681	CHF 20.37	15 Varianten	Gestreiftes Langarmshirt im Loose Fit
+gid://shopify/Product/15448078680449	CHF 20.82	20 Varianten	Kapuzen-Sweatshirt mit Polka-Dot-Print
+gid://shopify/Product/15448078745985	CHF 21.87	25 Varianten	Lässiger Kapuzenpullover im Zweiteiler-Look
+gid://shopify/Product/15448078778753	CHF 20.37	12 Varianten	Rundhals-Top mit ausgestellten Ärmeln
+gid://shopify/Product/15448078811521	CHF 21.87	20 Varianten	Loose-fit Sweatshirt mit Reissverschluss
+gid://shopify/Product/15448078844289	CHF 20.67	8 Varianten	Gestreifter Mock-Zweiteiler Hoodie
+gid://shopify/Product/15448078909825	CHF 20.97	25 Varianten	Kapuzen-Sweatshirt für Damen, lockere Passform
+gid://shopify/Product/15448079368577	CHF 19.41	3 Varianten	Strand-Kimono mit V-Ausschnitt & Seitenschlitz
+gid://shopify/Product/15448080613761	CHF 19.08	15 Varianten	Chiffon-Top mit Puffärmeln und Rundhals
+gid://shopify/Product/15448080646529	CHF 18.17	6 Varianten	Chiffon-Bluse mit Polka Dots und Mesh
+gid://shopify/Product/15448080679297	CHF 19.53	6 Varianten	Elegantes Spitzen-Langarmshirt mit Puffärmeln
+gid://shopify/Product/15448080712065	CHF 31.82	1 Varianten	Gestreifter Fluffy Woll-Cardigan (Slim-Fit)
+gid://shopify/Product/15448080744833	CHF 22.76	25 Varianten	Off-Shoulder Langarmshirt mit Spitze
+gid://shopify/Product/15448080777601	CHF 18.96	10 Varianten	Elegantes Langarmshirt mit Spitze V-Ausschnitt
+gid://shopify/Product/15448080810369	CHF 18.62	5 Varianten	Langarm-Shirt mit Rundhalsausschnitt
+gid://shopify/Product/15448080843137	CHF 20.37	10 Varianten	Locker geschnittenes Langarmshirt für Damen
+gid://shopify/Product/15448080908673	CHF 19.23	5 Varianten	Gemustertes Langarmshirt mit Rundhalsausschnitt
+gid://shopify/Product/15448080941441	CHF 18.96	24 Varianten	Glitzer-Mesh Langarmshirt
+gid://shopify/Product/15448080974209	CHF 18.15	4 Varianten	Elegantes Strickkleid mit A-Linie
+gid://shopify/Product/15448081006977	CHF 19.01	4 Varianten	Elegantes V-Neck Pullover-Shirt mit Rüschenärmeln
+gid://shopify/Product/15448081039745	CHF 18.95	16 Varianten	Herz-Strass Langarmshirt mit Mesh-Ärmeln
+gid://shopify/Product/15448081072513	CHF 18.10	15 Varianten	Rundhals Langarm-Pullover für Damen
+gid://shopify/Product/15448081105281	CHF 20.22	28 Varianten	Strick-Cardigan für Herbst und Winter
+gid://shopify/Product/15448081138049	CHF 18.44	6 Varianten	Damen-Top mit Rundhals und Polka-Dots
+gid://shopify/Product/15448081170817	CHF 18.02	5 Varianten	Elegantes Langarm-Top mit Tweed-Ärmeln
+gid://shopify/Product/15448081203585	CHF 18.77	5 Varianten	Strick-Cardigan mit Lochmuster · Modell 2
+gid://shopify/Product/15448081269121	CHF 18.62	18 Varianten	Chiffonbluse mit Schriftzug-Print
+gid://shopify/Product/15448081301889	CHF 20.37	60 Varianten	Vielseitiges Langarmhemd mit Reverskragen
+gid://shopify/Product/15448081334657	CHF 19.53	5 Varianten	Retro-Print Langarmbluse
+gid://shopify/Product/15448088281473	CHF 20.66	30 Varianten	V-Neck Sport-Shirt Kurzarm – Peach
+gid://shopify/Product/15448088314241	CHF 21.20	12 Varianten	U-Ausschnitt Slimming Sport-BH
+gid://shopify/Product/15448088347009	CHF 22.02	48 Varianten	Sport-Top mit starkem Halt und Polsterung
+gid://shopify/Product/15448088379777	CHF 22.10	25 Varianten	Dopamine Fitness-BH mit herausnehmbaren Pads
+gid://shopify/Product/15448088412545	CHF 22.18	24 Varianten	Sportliches Camisole für Sommer-Workouts
+gid://shopify/Product/15448088445313	CHF 21.28	24 Varianten	Yoga-Sport-BH mit dünnen Trägern
+gid://shopify/Product/15448088478081	CHF 19.54	25 Varianten	Wellen-Strickweste mit Ruffle-Details
+gid://shopify/Product/15448089624961	CHF 23.82	24 Varianten	Slim-Fit Sporttop mit Reissverschluss – Peach Gold
+gid://shopify/Product/15448092279169	CHF 21.71	8 Varianten	Elegante V-Neck Bluse mit Rüschen & Laternenärmeln
+gid://shopify/Product/15448092311937	CHF 19.68	56 Varianten	Bedrucktes Langarmshirt mit Reverskragen
+gid://shopify/Product/15448092344705	CHF 18.02	5 Varianten	Langarmshirt mit Polka Dots
+gid://shopify/Product/15448092377473	CHF 20.09	3 Varianten	Retro V-Neck Besticktes Langarm-Top
+gid://shopify/Product/15448092443009	CHF 26.79	4 Varianten	Patchwork Hoodie Pullover für Damen
+gid://shopify/Product/15448092475777	CHF 43.21	9 Varianten	Langarmshirt im Post-Apokalypse-Stil
+gid://shopify/Product/15448092508545	CHF 18.32	9 Varianten	Mesh-Cardigan mit Laternenärmeln
+gid://shopify/Product/15448092541313	CHF 23.21	6 Varianten	Elegantes Spitzen-Top mit langen Ärmeln
+gid://shopify/Product/15448092574081	CHF 21.10	4 Varianten	Lyocell Off-Shoulder Langarmshirt
+gid://shopify/Product/15448092606849	CHF 19.92	24 Varianten	Gestreiftes Langarmshirt im Color-Blocking-Stil
+gid://shopify/Product/15448092672385	CHF 17.37	60 Varianten	Milchseide Langarmshirt mit eckigem Ausschnitt
+gid://shopify/Product/15448092705153	CHF 21.47	4 Varianten	Rotes Langarmshirt mit Spitze
+gid://shopify/Product/15448092737921	CHF 21.42	9 Varianten	Langarm-Baselayer Top für Damen Slim-Fit
+gid://shopify/Product/15448092770689	CHF 18.14	4 Varianten	Langarmshirt mit Blumenprint für Damen
+gid://shopify/Product/15448092803457	CHF 20.37	6 Varianten	Grünes Polka-Dot V-Neck Langarmshirt
+gid://shopify/Product/15448092836225	CHF 20.08	80 Varianten	Loose Langarmshirt im Retro-Look
+gid://shopify/Product/15448092934529	CHF 19.23	65 Varianten	Besticktes V-Neck Shirt aus Baumwoll-Leinen
+gid://shopify/Product/15448093000065	CHF 19.53	25 Varianten	Gestreiftes Langarmshirt für vielseitige Looks
+gid://shopify/Product/15448093032833	CHF 19.23	42 Varianten	Retro Sweatshirt mit geometrischem Muster
+gid://shopify/Product/15448093065601	CHF 19.08	36 Varianten	Langarmhemd mit Peter-Pan-Kragen aus Baumwoll-Lein
+gid://shopify/Product/15448093098369	CHF 18.92	12 Varianten	Elegantes Langarm-Spitzentop für Damen
+gid://shopify/Product/15448093131137	CHF 23.94	2 Varianten	Chiffon Halter Top mit Laternenärmeln
+gid://shopify/Product/15448093163905	CHF 17.87	16 Varianten	Damen Langarm-Bodysuit mit Herz-Print
+gid://shopify/Product/15448093196673	CHF 19.08	80 Varianten	Lässiges Langarmshirt mit Print für Damen
+gid://shopify/Product/15448096506241	CHF 20.37	16 Varianten	V-Ausschnitt Camisole mit Spitze
+gid://shopify/Product/15448101519745	CHF 34.11	9 Varianten	Spitzenbesticktes Patchwork-Hemd für Damen
+gid://shopify/Product/15448101552513	CHF 31.27	1 Varianten	Farblich abgestimmtes Hemd mit Revers und Tailleng
+gid://shopify/Product/15448101585281	CHF 19.53	18 Varianten	Leichtes Baumwoll-Leinen Hemd für den Sommer
+gid://shopify/Product/15448101618049	CHF 19.53	20 Varianten	Langärmliges Damenhemd mit Knopfleiste
+gid://shopify/Product/15448101683585	CHF 19.78	64 Varianten	Damen Plissiertes Langarmhemd aus Baumwoll-Leinen
+gid://shopify/Product/15448101945729	CHF 19.92	10 Varianten	Elegante Bluse mit Spitzen-Einsätzen
+gid://shopify/Product/15448101978497	CHF 22.32	4 Varianten	Lässiges Denim-Langarmshirt mit V-Ausschnitt
+gid://shopify/Product/15448102011265	CHF 20.08	6 Varianten	Strukturierte Bluse mit Rüschenmanschetten
+gid://shopify/Product/15448102044033	CHF 18.62	10 Varianten	Vintage Bluse aus Doppel-Baumwollgarn
