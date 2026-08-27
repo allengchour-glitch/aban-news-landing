@@ -1207,6 +1207,37 @@ eingerichteten Vorrang-Fenster, in dem der ganze Grind pausiert.
   `cj_variantenbild` und `cj_bild_backfill` ruhen im Fenster jetzt mit.
   **NICHT pausiert wird `cj_fulfill_runner`** — der bearbeitet echte Kundenbestellungen.
 
+## 🧮 Shopify prüft die ANGEFRAGTE Menge, nicht die verbrauchte (2026-08-27)
+Der Kosten-Backfill kam seit Tagen über wenige Seiten nicht hinaus und endete mit
+«PAUSE (Shopify antwortet nicht)». Gemessen an der echten Abfrage:
+
+| | |
+|---|---:|
+| requestedQueryCost | **149** |
+| actualQueryCost | 23 |
+| currentlyAvailable im Eimer | **129** |
+
+**Shopify drosselt gegen die ANGEFRAGTE Zahl.** Die Abfrage verbrauchte 23 Punkte, wurde
+aber gegen 149 geprüft — und der Eimer stand durch die vier Grind-Runner dauerhaft knapp
+darunter. Die Abfrage passte also fast nie hinein, obwohl sie fast nichts kostete.
+Teuer war ein einziges Feld: `variants(first:100)` auf 50 Produkten. Gebraucht wird auf der
+Seite aber nur die **erste** Variante (sie beantwortet «hat schon Kosten?» und liefert die
+SKU). Jetzt `variantsCount` + `variants(first:1)` = **44 Punkte**; die vollständige Liste
+holt `variantenVon()` nur für die Produkte, die wirklich Arbeit brauchen.
+Ergebnis im Probelauf: **24 von 25** Produkten bekamen Kosten — vorher 1 von 50.
+- **Regel: `first:` ist ein Preisschild, keine Obergrenze.** Wer 100 anfragt und 3 bekommt,
+  zahlt trotzdem für 100. Vor jeder Paginierung `extensions.cost` einmal ausdrucken.
+- **Drosselung verbraucht keinen Versuch mehr.** Acht Drosselungen hintereinander sind bei
+  einem geteilten Eimer der Normalfall — der Lauf gab dann auf. Vierte Wiederholung
+  derselben Lehre (Shopify `Throttled`, CJ QPS 1600200, CJ-Eimer): **eine Warteanweisung
+  ist kein Abbruchgrund.**
+- ⚠️ **Die Abbruchmeldung nannte den falschen Grund.** Nach dem Drosselungs-Abbruch stand
+  im Log trotzdem «PAUSE (Tagesmenge erreicht)» — ein gescheiterter Lauf las sich wie ein
+  erledigter. Beide Zeilen standen direkt untereinander, und keine widersprach der anderen.
+- ⚠️ **Und eine Stellschraube, die nirgends ankommt:** Der Aufseher startet den Lauf mit
+  `CAP=900`, das Skript las nur `LIMIT` und blieb bei 400. Im Startbefehl sah es aus wie
+  eine Wirkung. Beide Namen gelten jetzt.
+
 ## 🫀 «Läuft» ist nicht «arbeitet» — drei Motoren-Lehren an einem Tag (2026-08-23)
 1. **Der Aufseher stand 72 Minuten still, während beide Stunden-Routinen «AUFSEHER laeuft»
    meldeten.** Er lebte, arbeitete aber nicht. Von aussen war bisher nur «0 Instanzen» und
