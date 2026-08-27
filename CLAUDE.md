@@ -1247,6 +1247,25 @@ Ringe durchblättert, fand dazwischen einen Abdeckstift und eine Wanderhose.
   alle acht sauber. **Nach einer Tag-Änderung am OBJEKT gegenprüfen, nicht über die Suche** —
   sonst repariert man ein zweites Mal, was längst stimmt.
 
+## 🎫 Das Alter der Token-Datei ist kein Beweis für ein gültiges Token (2026-08-27)
+`shop_token_refresh.sh` erneuert das Shopify-Token, wenn die Datei älter als 12 Stunden ist.
+Nach einem Snapshot-Rewind kommt aber ein **längst abgelaufenes Token in einer frisch
+aussehenden Datei** zurück — die Altersregel springt nicht an. Folge: **159 Python-Wächter
+lesen genau diese eine Datei** und melden stundenlang «Shopify antwortet nicht». Das sieht
+aus wie ein Netzproblem und ist ein alter Zettel.
+Heute gemessen: Token um 17:50 erneuert, um 18:40 ungültig — 50 Minuten. Nur ein Rewind
+erklärt das, und genau den überdeckt die Altersregel.
+- Geprüft statt gerechnet: Ist die Datei jung, wird trotzdem einmal `{shop{id}}` abgefragt
+  (1 Punkt, ein paar hundert Millisekunden). Nur wer antwortet, darf bleiben.
+- **Die Reparatur gehört an EINE Stelle, nicht an 159.** Der erste Impuls war, den neuen
+  Bild-Wächter sich selbst ein Token holen zu lassen — das hilft ihm und keinem der anderen.
+  Richtig ist der eine Erneuerer, den alle bedienen.
+- ⚠️ Und er wurde als `/tmp/shop_token_refresh.sh` aufgerufen, obwohl er im Repo liegt —
+  also genau die Fassung, die der Rewind zurückdreht. Der Aufseher nimmt jetzt die
+  Repo-Fassung (dieselbe Regel wie bei `autocommit.sh`, Lehre 23.08.).
+- **Regel: Ein Zeitstempel ist eine Quittung, kein Nachweis.** Wo geprüft werden kann, ob
+  etwas funktioniert, wird geprüft — nicht gerechnet, wie alt es ist.
+
 ## ⏱️ Die 45-Sekunden-Pause war geraten — jetzt gemessen (2026-08-27)
 Sechs CJ-Abfragen im Abstand von 15 s, während keine eigene Engine lief:
 
