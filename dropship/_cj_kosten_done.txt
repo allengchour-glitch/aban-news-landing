@@ -2470,3 +2470,27 @@ gid://shopify/Product/15448116134273	CHF 19.37	15 Varianten	Figurbetonter Eintei
 gid://shopify/Product/15448116167041	CHF 19.37	20 Varianten	Nahtloser Body mit Po-Lifting-Effekt
 gid://shopify/Product/15448116199809	CHF 23.21	5 Varianten	Off-Shoulder Jumpsuit mit Rüschensaum
 gid://shopify/Product/15448116265345	CHF 20.22	5 Varianten	Damen Jumpsuit mit Print und Spaghettiträgern
+gid://shopify/Product/15448494440833	CHF 18.17	6 Varianten	UV400 Sonnenbrille mit dickem Rahmen
+gid://shopify/Product/15448494473601	CHF 17.37	8 Varianten	Trendige kleine quadratische Sonnenbrille
+gid://shopify/Product/15448494571905	CHF 17.72	4 Varianten	Sonnenhut für Outdoor-Abenteuer
+gid://shopify/Product/15448494604673	CHF 19.23	3 Varianten	Retro Sonnenhut für Herbst und Winter
+gid://shopify/Product/15448494670209	CHF 27.97	3 Varianten	Handgestrickter Raffia Strohhut mit flacher Krone
+gid://shopify/Product/15448494866817	CHF 19.37	6 Varianten	Unisex Hoodie für Herbst und Winter
+gid://shopify/Product/15448495063425	CHF 20.09	15 Varianten	Partnerlook Pullover für Mutter und Tochter
+gid://shopify/Product/15448495194497	CHF 21.29	20 Varianten	Luftiges Sporttop mit Kordelzug
+gid://shopify/Product/15448495260033	CHF 19.37	3 Varianten	Eleganter Strick-Pullover mit Zopfmuster
+gid://shopify/Product/15448495292801	CHF 22.02	21 Varianten	High-Impact Push-Up Sport-BH
+gid://shopify/Product/15448495325569	CHF 23.62	20 Varianten	Integriertes Sport-Tanktop für Damen
+gid://shopify/Product/15448495391105	CHF 22.10	24 Varianten	Sport-Yoga-Set mit Shorts und Bra
+gid://shopify/Product/15448495423873	CHF 21.29	36 Varianten	Nahtloses Cross-Back Yoga-Set für Damen
+gid://shopify/Product/15448495456641	CHF 17.22	8 Varianten	Designer-Stil Polka-Dot Spitze Camisole
+gid://shopify/Product/15448496079233	CHF 19.30	72 Varianten	Unisex Baumwoll T-Shirt mit überschnittenen Ärmeln
+gid://shopify/Product/15448496112001	CHF 18.59	9 Varianten	Sexy Tanktop mit tiefem V-Ausschnitt
+gid://shopify/Product/15448496144769	CHF 17.79	10 Varianten	Trendiges Unisex Langarmshirt im American Style
+gid://shopify/Product/15448496308609	CHF 22.02	25 Varianten	Sportliches Langarm-Shrug für Yoga & Tanz
+gid://shopify/Product/15448496341377	CHF 24.80	20 Varianten	Langarm-Shirt mit Kordelzug für Yoga & Sport
+gid://shopify/Product/15448501059969	CHF 23.51	9 Varianten	Tailliertes Langarmshirt mit Puffärmeln – Braun
+gid://shopify/Product/15448501780865	CHF 20.53	5 Varianten	Elegante Langarm-Bluse aus Baumwolle
+gid://shopify/Product/15448501813633	CHF 19.53	24 Varianten	Shirt mit Karree-Ausschnitt und ausgestellten Ärme
+gid://shopify/Product/15448501846401	CHF 18.77	40 Varianten	Kurze Bluse mit Puffärmeln und Schnürung
+gid://shopify/Product/15448501879169	CHF 19.08	3 Varianten	Sportlich-legeres T-Shirt mit Knopfleiste
