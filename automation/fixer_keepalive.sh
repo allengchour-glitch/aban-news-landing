@@ -371,6 +371,18 @@ while true; do
   # Produkte. Titel-, SKU- und Bild-URL-Vergleich sehen das alle nicht; der BILDINHALT schon.
   # HASHCAP begrenzt die Downloads je Lauf — der Ledger waechst ueber die Tage in den
   # Katalog hinein, statt 46'000 Bilder auf einmal zu ziehen.
+  # 🏷️ WAHLVERSPRECHEN, einmal täglich (nur melden). 135 von 800 geprüften Neuimporten
+  # versprechen im Text eine Auswahl, die das Produkt nicht hat — die Kundin sucht die
+  # Grössen-/Farbwahl, findet keine und geht. Betrifft auch die Seite mit dem meisten
+  # Suchtraffic (Rizinusöl-Wickel-Set, 36 von 147 Suchsitzungen im Monat).
+  WV=/tmp/wahlversprechen.log
+  if [ -f "$REPO/automation/wahlversprechen.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$WV" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && CAP=6000 setsid python3 automation/wahlversprechen.py >> "$WV" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) wahlversprechen geprüft"
+    fi
+  fi
   BD=/tmp/bilddubletten.log
   if [ -f "$REPO/automation/bilddubletten.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$BD" 2>/dev/null || echo 0) ))

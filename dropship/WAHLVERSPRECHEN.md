@@ -1,0 +1,275 @@
+# Text verspricht eine Auswahl, das Produkt hat keine
+
+Alle unten haben **eine** Variante ohne Option. Der Text stammt aus dem
+CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
+
+- `15506107531649` · Zirkon-Armband mit 26 Buchstaben für Damen
+  - «…Erhältlich in Stahl- und Goldfarben…»
+- `15506108580225` · Unisex Lederarmband mit Edelstahlschnalle
+  - «…in verschiedenen Grössen…»
+- `15506109596033` · Keramik Wassernapf schräg für Haustiere
+  - «…in verschiedenen Ausführungen…»
+- `15506110185857` · Magnetisches Kupferarmband mit Zirkonia
+  - «…in verschiedenen Farben…»
+- `15506110382465` · Keramik-Futternapf für Haustiere mit Nackenschutz
+  - «…Erhältlich in verschiedenen Formen und Farben…»
+- `15506110448001` · Retro Rucksack für Alltag und Reisen
+  - «…in verschiedenen Farben…»
+- `15506110513537` · Hip-Hop Ring mit fünf Reihen Zirkonia
+  - «…in verschiedenen Grössen…»
+- `15506138890625` · Zirkon-Tropfenring für Damen
+  - «…Erhältlich in Gold- oder Stahlfarben…»
+- `15506138956161` · Leichter, wasserdichter Tennisrucksack für Kinder
+  - «…in verschiedenen Farben…»
+- `15506139185537` · Crossbody Bag im Street Style
+  - «…in verschiedenen Farben…»
+- `15506139677057` · Keramik Futternapf für Katzen, Doppel-Napf
+  - «…in verschiedenen Farben…»
+- `15506140561793` · Hängender Keramik-Futternapf, schräg, kippsicher
+  - «…in verschiedenen Farben…»
+- `15506142462337` · Fressnapf Keramik «Bär» für Nackenschutz
+  - «…Erhältlich in Blau und Pink Erhältlich in zwei Grössen…»
+- `15506142560641` · Handheld Tablet Tasche – Wasserfest & Robust
+  - «…in verschiedenen Farben…»
+- `15506145575297` · Leuchthalsband für Hunde mit LED-Beleuchtung
+  - «…In verschiedenen Grössen…»
+- `15506162975105` · Smartes LED-Hundegeschirr mit App-Steuerung
+  - «…in verschiedenen Grössen…»
+- `15506163532161` · Taktisches Hundehalsband, reissfest
+  - «…in verschiedenen Grössen…»
+- `15506164154753` · Verstellbare Hundeleine mit Neopren-Griff
+  - «…in verschiedenen Grössen…»
+- `15506165465473` · Wolframring mit Stufenfacetten und roter Beschichtung
+  - «…in verschiedenen Grössen…»
+- `15506174247297` · Weihnachts-Maniküre im Cat's Eye-Stil
+  - «…Wählen Sie aus…»
+- `15506174542209` · Retro Exquisite Feeling Manicure
+  - «…in verschiedenen Grössen…»
+- `15506186764673` · LED Schmuck-Geschenkbox
+  - «…in verschiedenen Farben…»
+- `15506186928513` · Elegante Geschenkbox aus Lederimitat
+  - «…in verschiedenen Farben…»
+- `15506187059585` · Smartwatch mit Bluetooth-Telefonie und Gesundheitsmonitor
+  - «…in verschiedenen Farben…»
+- `15506187157889` · Geflochtener Korb für Windeln & Co.
+  - «…in verschiedenen Farben…»
+- `15506187682177` · Märchenhafte, handbemalte Fake Nails
+  - «…in verschiedenen Grössen…»
+- `15506187846017` · Edelstahl-Schneidebrett, faltbar
+  - «…In verschiedenen Grössen…»
+- `15506187878785` · Mechanical Princess Press-on Nägel
+  - «…in verschiedenen Grössen…»
+- `15506188075393` · Long Ladder Kunstnägel
+  - «…in verschiedenen Grössen…»
+- `15506188861825` · Handgefertigte, abnehmbare Nägel im Kühlen Weiss
+  - «…Wählen Sie aus…»
+- `15506198036865` · Geschenkbox im Ethno-Stil mit Blumenmuster
+  - «…Wählen Sie zwischen…»
+- `15506198299009` · Doppelstöckiger Aufbewahrungskorb für Snacks & Früchte
+  - «…in verschiedenen Ausführungen…»
+- `15506198790529` · Handbemalte Mandarinente French Magic Mirror
+  - «…in verschiedenen Grössen…»
+- `15506198954369` · Reise Kompressionsbeutel 3er-Set
+  - «…in verschiedenen Farben…»
+- `15506199642497` · Doppellagige Kühltasche für Outdoor und Picknick
+  - «…in verschiedenen Farben…»
+- `15506200560001` · Ofenabdeckung UV-beständig
+  - «…in verschiedenen Grössen…»
+- `15506201248129` · Handgemachte Fake Nails – langanhaltende Maniküre
+  - «…in verschiedenen Grössen…»
+- `15506201379201` · Camellia Serie – Abnehmbare Nagelsticker
+  - «…Wählen Sie aus…»
+- `15506201575809` · Superweisse ablösbare Nagel-Patches
+  - «…In verschiedenen Grössen…»
+- `15506202165633` · Winter Plüsch Sofaüberwurf
+  - «…in verschiedenen Grössen…»
+- `15506222514561` · Kissenbezug mit modernem Löwen-Design
+  - «…in verschiedenen Ausführungen…»
+- `15506222776705` · DIY Weihnachtskissen-Stickset aus Wolle
+  - «…Wählen Sie aus…»
+- `15506223399297` · Chenille Sofakissenbezug im Bohème-Stil
+  - «…in verschiedenen Farben…»
+- `15506223661441` · Lammfell-Sofaauflage für den Winter
+  - «…in verschiedenen Grössen…»
+- `15506223694209` · Baumwollstoff mit japanisch-koreanischem Muster
+  - «…Wählen Sie aus…»
+- `15506223923585` · Geometrisches Jacquard Flanell Sofakissen
+  - «…in verschiedenen Grössen…»
+- `15506239488385` · Halsband oder Leine mit grünem Karomuster
+  - «…in verschiedenen Grössen…»
+- `15506239750529` · Hundehalsband Lychee-Muster, Anti-Strangulation
+  - «…in verschiedenen Grössen…»
+- `15506240504193` · Halsband aus Rindsleder
+  - «…in verschiedenen Farben…»
+- `15506240799105` · Paisley Halsband & Leine Set
+  - «…in verschiedenen Grössen…»
+- `15506241716609` · Hundeleine mit LED-Licht, ausziehbar
+  - «…Erhältlich in Schwarz-Grau und Grau-Weiss Speziell für grosse…»
+- `15506242208129` · Automatischer Lockenstab mit Keramikbeschichtung
+  - «…in verschiedenen Farben…»
+- `15506261901697` · Kissenbezug mit Landschaftsmuster
+  - «…in verschiedenen Grössen…»
+- `15506262131073` · Jacquard-Kissenhülle mit chinesischem Tusche-Motiv
+  - «…in verschiedenen Grössen…»
+- `15506262294913` · Canvas Rucksack mit Bären-Anhänger
+  - «…in verschiedenen Farben…»
+- `15506262589825` · Nordisches Kissen mit Streifenmuster
+  - «…in verschiedenen Grössen…»
+- `15506262753665` · Bestickter Kissenbezug mit Quasten
+  - «…in verschiedenen Farben…»
+- `15506263310721` · Brusttasche Oxford-Stoff wasserdicht
+  - «…in verschiedenen Farben…»
+- `15506271043969` · Sitzkissen Wildleder-Optik, 40x40cm
+  - «…in verschiedenen Farben…»
+- `15506271207809` · Kopfteil-Schutzhülle aus Baumwoll-Leinen
+  - «…in verschiedenen Farben…»
+- `15506271568257` · Blau-weisses Patchwork Kissen für Sofa
+  - «…Wählen Sie zwischen…»
+- `15506271797633` · Blau-weisse Patchwork Kissenhülle
+  - «…in verschiedenen Grössen…»
+- `15506271961473` · Lordosenkissen für Wohn- und Bürobereich
+  - «…in verschiedenen Grössen…»
+- `15506272977281` · Seiden Jacquard Kissenhülle mit Lotusblatt
+  - «…in verschiedenen Grössen…»
+- `15506274058625` · Handgewobener Korb aus karbonisiertem Holz
+  - «…in verschiedenen Grössen…»
+- `15506275238273` · Keramik-Topf im nordischen Stil
+  - «…in verschiedenen Grössen…»
+- `15506280415617` · Extrahoher 304 Edelstahl Suppentopf, 20-28cm
+  - «…in verschiedenen Grössen…»
+- `15506280644993` · Roter Keramiktopf für Gasherd
+  - «…in verschiedenen Grössen…»
+- `15506280677761` · Faltbare Aufbewahrungstasche für Kleiderschrank
+  - «…in verschiedenen Farben…»
+- `15506280907137` · Kleine Reise-Kulturtasche für Kosmetik
+  - «…in verschiedenen Farben…»
+- `15506281890177` · Multifunktionale Reise-Kosmetiktasche mit Blumenmuster
+  - «…Wählen Sie aus…»
+- `15506282054017` · IQO Ilum One Schutzhülle
+  - «…in verschiedenen Ausführungen…»
+- `15506282742145` · Multifunktionaler ausziehbarer Aufbewahrungskorb
+  - «…Erhältlich in Grau oder Milchweiss sowie in zwei Grössen…»
+- `15506283364737` · Atmungsaktive, faltbare Haustiertasche
+  - «…in verschiedenen Farben…»
+- `15506283626881` · Handgeschmiedetes 7-Zoll-Küchenmesser
+  - «…in verschiedenen Ausführungen…»
+- `15506285166977` · Hängender Wasser- oder Futterspender für Haustiere
+  - «…Wählen Sie zwischen…»
+- `15506285330817` · Keramik-Futternapf mit Halskrause
+  - «…in verschiedenen Ausführungen…»
+- `15506286084481` · Ballon-Dekoration für Hochzeiten & Feiern
+  - «…Wählen Sie aus…»
+- `15506286903681` · Hunde- & Katzennapf „Rice Cream Cake“
+  - «…Erhältlich in der Farbe „Cream Cake“ und in der Grösse…»
+- `15506287624577` · Beheizbarer Futternapf mit Temperaturkontrolle
+  - «…Erhältlich in Armeegrün, Weiss und Blau Kompakte Grösse…»
+- `15506288083329` · Verstellbarer Futterbar für Hunde und Katzen
+  - «…Erhältlich in zwei Grössen und Farben…»
+- `15506289230209` · Kupfer Magnetarmband – schlicht & poliert
+  - «…in verschiedenen Ausführungen…»
+- `15506289295745` · Silikonarmband für Apple Watch
+  - «…in verschiedenen Farben…»
+- `15506290180481` · Halsband und Leine für Welpen und kleine Hunde
+  - «…in verschiedenen Grössen…»
+- `15506290409857` · Kupfer-Zirkon Armband mit Teufelsauge
+  - «…in verschiedenen Ausführungen…»
+- `15506290999681` · Kupfer-Magnetarmband im Retro-Stil
+  - «…in verschiedenen Ausführungen…»
+- `15506291097985` · Hundehalsband & Leine Set im INS-Wind-Design
+  - «…in verschiedenen Grössen…»
+- `15506291392897` · Halsband für grosse Hunde, Zinklegierung
+  - «…in verschiedenen Grössen…»
+- `15506291786113` · Kupferarmband mit doppelreihigen Magnetkugeln
+  - «…in verschiedenen Ausführungen…»
+- `15506292310401` · Halsband- und Leinen-Set aus Samt
+  - «…in verschiedenen Grössen…»
+- `15506292441473` · Titanstahl-Adlerring mit Edelstein
+  - «…Erhältlich in verschiedenen Farben und Grössen…»
+- `15506292736385` · Marmor-Halsband-Set Roségold für Hunde
+  - «…in verschiedenen Grössen…»
+- `15506292801921` · Vintage Blumen- und Blätterring
+  - «…in verschiedenen Grössen…»
+- `15506292932993` · Reflektierendes Geschirr für Hunde
+  - «…in verschiedenen Grössen…»
+- `15506293490049` · Herren Business-Freizeit Multifunktionsuhr
+  - «…in verschiedenen Farben…»
+- `15506294014337` · Leuchtender Uhren-Skalenring
+  - «…in verschiedenen Farben…»
+- `15506295456129` · Rosenstrauss Bausteine Geschenkbox
+  - «…Wählen Sie aus…»
+- `15506295751041` · Kreative Bausteine für Kinder
+  - «…Wählen Sie aus…»
+- `15506295849345` · Wasserdichte Herrenuhr mit Stahlband, dünn
+  - «…in verschiedenen Farben…»
+- `15506296635777` · Nude Mandel-Maniküre zum Aufkleben
+  - «…in verschiedenen Grössen…»
+- `15506296734081` · DIY Bausteine Dinosaurier-Set
+  - «…Wählen Sie zwischen…»
+- `15506297225601` · Handgemachte, wiederverwendbare Nagel-Patches
+  - «…in verschiedenen Grössen…»
+- `15506297520513` · Faszienrolle Muskelentspannung
+  - «…in verschiedenen Farben…»
+- `15506297651585` · Cartoon Kissen für Bett und Sofa
+  - «…Wählen Sie aus…»
+- `15506297684353` · Anpressnägel «Gentle White» mit Cat's Eye Effekt
+  - «…Wählen Sie aus…»
+- `15506297913729` · Bucheriti Cat's Eye Press-on Nägel
+  - «…in verschiedenen Grössen…»
+- `15506298306945` · Panda Kissen oder Plüsch-Kissen für Ihr Zuhause
+  - «…Wählen Sie zwischen…»
+- `15506298372481` · Dunkelgrüne, handgemachte Nagelspitzen
+  - «…in verschiedenen Grössen…»
+- `15506298765697` · Natur Latex Nackenkissen für Erwachsene
+  - «…in verschiedenen Grössen…»
+- `15506298831233` · Bucheriti Nagelsticker Kurz Hellviolett
+  - «…in verschiedenen Grössen…»
+- `15506299322753` · Gestrickter Kissenbezug mit Füllung
+  - «…in verschiedenen Grössen…»
+- `15506299388289` · Sunset Afterglow Retro-Nägel
+  - «…in verschiedenen Grössen…»
+- `15506299748737` · Vibrations-Heizkissen für Büro und Zuhause
+  - «…in verschiedenen Farben…»
+- `15506302599553` · Make-up Set für Kinder-Bühnenauftritte
+  - «…in verschiedenen Ausführungen…»
+- `15506324128129` · Halsband für Hunde mit Rose Gold Schnalle
+  - «…in verschiedenen Grössen…»
+- `15506324357505` · Halsband Baumwolle mit Rosenschnalle
+  - «…in verschiedenen Grössen…»
+- `15506325307777` · Grosser LCD-Bildschirm Auto-Navigator
+  - «…Erhältlich in 7, 9 oder 10.1 Zoll Bildschirmgrösse…»
+- `15506326454657` · Halsband für AirTag mit Reflektor
+  - «…in verschiedenen Farben…»
+- `15506327044481` · Halloween Haustier-Kopfbedeckung & Halsband
+  - «…in verschiedenen Grössen…»
+- `15506407948673` · Halsband aus Lederimitat, verschiedene Farben
+  - «…in verschiedenen Grössen…»
+- `15506408243585` · Faltbarer Einkaufstrolley mit vier Rädern
+  - «…Erhältlich in verschiedenen Farben und zwei Grössen…»
+- `15506409193857` · Halsband mit Leopardenmuster für Hunde
+  - «…in verschiedenen Grössen…»
+- `15506410176897` · Blätter-Spitzen-Halsband für Haustiere
+  - «…in verschiedenen Grössen…»
+- `15506410373505` · Rattan-Optik Aufbewahrungskorb 3er-Set mit Deckel
+  - «…in verschiedenen Grössen…»
+- `15506410668417` · Hängender Organizer mit Wochenetiketten
+  - «…in verschiedenen Farben…»
+- `15506411192705` · Haltungskorrektur-Gurt für Jugendliche
+  - «…in verschiedenen Grössen…»
+- `15506413158785` · Samtiges Hundehalsband Taro-Lila
+  - «…in verschiedenen Grössen…»
+- `15506413683073` · Faltbarer Magnet-Kartenhalter mit Ständer
+  - «…in verschiedenen Farben…»
+- `15506413977985` · Halsband aus weichem Cord
+  - «…in verschiedenen Grössen…»
+- `15506414371201` · Mondkuchen-Aufbewahrungsbox aus Acryl
+  - «…in verschiedenen Farben…»
+- `15506414436737` · Halsband Lila Tupfen
+  - «…in verschiedenen Grössen…»
+- `15506414666113` · Halsband für Hunde, einfarbig, PU-Leder
+  - «…in verschiedenen Grössen…»
+- `15506415387009` · Dunkelgraues Samthalsband mit Metallschnalle
+  - «…in verschiedenen Grössen…»
+- `15506415976833` · PU-Halsband für Hunde und Katzen
+  - «…in verschiedenen Grössen…»
+- `15506416206209` · Gesichtsdampfer für Zuhause
+  - «…in verschiedenen Farben…»
