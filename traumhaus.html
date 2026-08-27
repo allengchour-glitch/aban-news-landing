@@ -1330,6 +1330,15 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     for(var q=0;q<WORLD_SOLIDS.length;q++){var sq=WORLD_SOLIDS[q];
       if(Math.abs(x-sq.x)<sq.hw+2.5+pad&&Math.abs(z-sq.z)<sq.hd+2.5+pad)return false;}
     return true;}
+  /* `freiPlatz` ist die gemeinsame Quelle ALLER Streu-Objekte und kennt als einzige
+     Stelle die Sperrflaechen, die sonst nirgends stehen: See samt Promenade,
+     Bahnhofsviertel, Altstadt-Suedviertel, Fluss, Kirchhof, Klinik, Achterbahn-Stich.
+     Sie lag in einem eigenen Gueltigkeitsbereich — eine Sonde sah sie nicht.
+     ⚠️ Das ist teuer geworden: ein Suchlauf nach freien Plaetzen prueft `freiPlatz`
+     mit `typeof ... === "function" &&`, und wenn die Funktion fehlt, faellt die
+     Pruefung STILL aus. Der Scan meldete daraufhin Plaetze mitten im See als frei.
+     Ein fehlender Test, der sich als bestandener Test ausgibt. */
+  window._freiPlatz=freiPlatz;
   /* In Haeppchen ueber mehrere Frames: alles auf einmal blockierte den Hauptthread
      so lange, dass die Seite beim Start sekundenlang stand. */
   function streu(n,radMin,radMax,fn,pad){
@@ -1907,7 +1916,14 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
 var wetter="sonne";
 var SAISON=[["🌸 Frühling",0xb8e0a0],["☀️ Sommer",0xaecf7d],["🍂 Herbst",0xe8c088],["❄️ Winter",0xdfe8f2]]; // gruener Tint gegen Stroh-Look
 function calcSaison(){return Math.floor((tag-1)/5)%4;}
-function applySaison(){rasen.material.color.setHex(SAISON[calcSaison()][1]);}
+/* ❄️ Der Winter faerbte bisher nur den Rasen um. Jetzt haengt auch der Wintermarkt
+   daran (Aufbau weiter unten, `_winterTeile`) — er steht nur in Saison 3 und ist die
+   restlichen 15 Tage unsichtbar. Die Liste kann beim ersten Aufruf noch leer sein:
+   applySaison() laeuft schon beim Laden, die Modelle treffen Sekunden spaeter ein.
+   Darum setzt auch der bau()-Rueckruf die Sichtbarkeit selbst. */
+function applySaison(){rasen.material.color.setHex(SAISON[calcSaison()][1]);
+  var w9=calcSaison()===3, T9=window._winterTeile;
+  if(T9)for(var i9=0;i9<T9.length;i9++)T9[i9].visible=w9;}
 var sterneGeo=new THREE.BufferGeometry(),sternePos=new Float32Array(420*3);
 for(var st5=0;st5<420;st5++){var sa5=Math.random()*6.283,sr5=150+Math.random()*160;
   sternePos[st5*3]=Math.cos(sa5)*sr5;sternePos[st5*3+1]=60+Math.random()*110;sternePos[st5*3+2]=Math.sin(sa5)*sr5;}
@@ -4881,6 +4897,39 @@ setTimeout(function baueGebaeude(){
               {file:"th24_streichelzoo.glb",h:3.5,w:23.5,d:21.0},
               {file:"th24_gehege.glb",      h:4,  w:13.2,d:10.7},
               {file:"th24_aquarienhaus.glb",h:7,  w:28.2,d:34.2}]});
+    /* ❄️ WINTERMARKT + RODELHANG (th29). Die sechs Modelle lagen seit ihrer Charge
+       ungenutzt im Repo; sie passen in kein Viertel, sondern gehoeren an die Saison.
+       Sichtbar nur in Saison 3 (`applySaison`), also fuenf von zwanzig Spieltagen.
+
+       ⚠️ ORTE GESUCHT, NICHT GERATEN — und der erste Suchlauf war WERTLOS. Er prueft
+       `freiPlatz()`, die einzige Stelle, die See, Bahnhofsviertel, Altstadt, Fluss,
+       Kirchhof und Klinik kennt. Die Funktion liegt aber in einem eigenen
+       Gueltigkeitsbereich, war fuer die Sonde `undefined`, und der Test stand als
+       `typeof ... === "function" &&` da — er fiel STILL aus. Ergebnis: 68 angeblich
+       freie Plaetze, darunter welche mitten im See. Mit `window._freiPlatz` und ohne
+       den stillen Zweig bleiben 9 (Radius 16 m) bzw. 1 (Radius 22 m).
+       Ein fehlender Test, der sich als bestandener ausgibt, ist schlimmer als keiner.
+
+       Beide Orte liegen ausserhalb von |x|,|z| <= 130 — `autoKollider` fasst sie
+       deshalb nicht an, und ein unsichtbarer Markt hinterlaesst keine unsichtbaren
+       Waende. Das ist kein Zufall, sondern der Grund fuer die Ortswahl. */
+    (function wintermarkt(){
+      window._winterTeile=[];
+      var W9=function(){return calcSaison()===3;};
+      function wbau(f,h,x,z,rot){
+        bau(f,h,x,0,z,rot||0,false,function(g){
+          g.visible=W9();window._winterTeile.push(g);},true);}
+      var MX=-40, MZ=160;                      /* naechster freier Platz (R 16 m) am Markt */
+      wbau("th29_christbaum.glb",     9,   MX,      MZ,      0);
+      wbau("th29_weihnachtsbude.glb", 3.6, MX-8.5,  MZ+3.5,  Math.PI/2);
+      wbau("th29_weihnachtsbude.glb", 3.6, MX+8.5,  MZ+3.5, -Math.PI/2);
+      wbau("th29_weihnachtsbude.glb", 3.6, MX,      MZ-8.5,  0);
+      wbau("th29_eisbahn_freiluft.glb",1.2,MX,      MZ+11,   0);
+      wbau("th29_schneemaenner.glb",  2,   MX-7,    MZ-6,    0.6);
+      var HX=180, HZ=-160;                     /* einziger freier Platz mit R 22 m */
+      wbau("th29_rodelhang.glb",      8,   HX,      HZ,      0);
+      wbau("th29_skiliftmast.glb",    9,   HX,      HZ-18,   0);
+    })();
     /* 🌲 WALDSAUM. Zwischen Ringstrasse und Gebirge lag eine einzige flache
        gruene Flaeche — 90 m Nichts zwischen dem letzten Haus und dem ersten
        Felsen. Ein Waldguertel am Bergfuss schliesst die Luecke und gibt der

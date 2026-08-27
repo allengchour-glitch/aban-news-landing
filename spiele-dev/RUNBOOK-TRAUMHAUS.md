@@ -1389,3 +1389,45 @@ Längere Bauzeile: 98,7 m Front + drei Lücken = 134,7 m, passt in die 142 m Net
 (th12 ×5, th24 ×5). Offen: th25 Flughafen (9 — braucht eine eigene Landebahn-Logik, passt
 nicht in den Reihen-Generator), th14 Club-Interieur (12 — Innenräume, kein Viertel),
 th29 Winter (6 — saisonal).
+
+## 2026-08-27 · ❄️ Wintermarkt — und ein Suchlauf, der still nichts prüfte
+
+Die sechs **th29**-Modelle passen in kein Viertel, sondern an die **Saison**: `applySaison()`
+färbte bisher nur den Rasen um, jetzt hängt auch der Wintermarkt daran. Sichtbar in Saison 3,
+also **fünf von zwanzig Spieltagen**. Verifiziert: Tag 1 → alle acht Teile versteckt,
+Tag 16 → alle acht sichtbar.
+
+* **Wintermarkt (−40|160)** — Christbaum, drei Weihnachtsbuden, Eisbahn, Schneemänner.
+* **Rodelhang + Skiliftmast (180|−160)** — der einzige freie Platz mit 22 m Radius.
+
+### ⚠️ Der erste Suchlauf war wertlos — 68 „freie" Plätze, darunter der See
+Der Scan prüfte `freiPlatz()`, die **einzige** Stelle, die See samt Promenade,
+Bahnhofsviertel, Altstadt-Südviertel, Fluss, Kirchhof, Klinik und Achterbahn-Stich kennt.
+Die Funktion liegt in einem eigenen Gültigkeitsbereich und war für die Sonde `undefined` —
+und der Test stand als `typeof freiPlatz === "function" && !freiPlatz(...)` da. Fehlt die
+Funktion, **fällt die Prüfung still aus und der Platz gilt als frei**.
+
+| | angeblich frei | tatsächlich frei |
+|---|---|---|
+| Radius 16 m | 68 | **9** |
+| Radius 22 m | 42 | **1** |
+
+Faktor 7. Der vermeintlich beste Platz (30|130) liegt 34 m vom Seemittelpunkt entfernt — die
+Sperrzone reicht bei diesem Radius bis 46 m. **Ein fehlender Test, der sich als bestandener
+ausgibt, ist schlimmer als gar keiner.** `window._freiPlatz` ist jetzt exportiert, und in
+Sonden gehört statt des stillen `&&`-Zweigs ein `throw`.
+
+### Warum genau diese zwei Orte
+Beide liegen außerhalb von |x|,|z| ≤ 130 — das ist die Reichweite von `autoKollider()`
+(Zeile „`if(Math.abs(v.x)>130||Math.abs(v.z)>130)return;`"). Ein Markt, der acht von
+zwanzig Tagen unsichtbar ist, hinterlässt dort **keine unsichtbaren Wände**. Wer die Teile
+näher an die Stadt holt, muss die Kollider mit der Saison mitschalten.
+
+### Verifiziert
+`th-3d`: **0 th29-Treffer**, tiefste Überschneidung unverändert 1,39 m ·
+`th-strassen`: **0 th29-Treffer** auf einer Fahrbahn, Gesamt 79 ·
+Saison-Umschaltung an Tag 1 und Tag 16 gemessen.
+
+**Stand der Inventur:** von den ~40 ungenutzten Modellen stehen jetzt **16** (th12 ×5,
+th24 ×5, th29 ×6). Offen: th25 Flughafen (9, braucht Landebahn-Logik) und th14
+Club-Interieur (12, Innenräume).
