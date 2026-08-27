@@ -3178,3 +3178,7 @@ gid://shopify/Product/15448645435777	CHF 22.76	21 Varianten	Fashionable Damen Sh
 gid://shopify/Product/15448645534081	CHF 20.53	5 Varianten	Capri-Jeans mit Shaping-Effekt
 gid://shopify/Product/15448645566849	CHF 19.92	35 Varianten	Elegante Cargo Denim Shorts für Damen
 gid://shopify/Product/15448645632385	CHF 18.29	93 Varianten	Freizeit-Shorts für Damen mit Kordelzug
+gid://shopify/Product/15448645665153	CHF 19.63	35 Varianten	Luftige Caprihose mit Taschen für den Sommer
+gid://shopify/Product/15448645697921	CHF 18.47	5 Varianten	Stylishe Slim-Fit Denim Shorts für Damen
+gid://shopify/Product/15448645763457	CHF 21.42	12 Varianten	Curvy Denim Shorts mit hoher Taille
+gid://shopify/Product/15448645796225	CHF 19.78	40 Varianten	Boho-Chic Latz-Shorts für Damen
