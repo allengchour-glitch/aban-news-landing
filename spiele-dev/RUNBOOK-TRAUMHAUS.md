@@ -1512,3 +1512,46 @@ Zahlenprüfung nicht fanden.
 **Verifiziert nach der Korrektur:** `th-3d` einziger Mühlen-Eintrag = eigene Flügel am eigenen
 Turm (0,76 m, konstruktiv) · `th-strassen` 0 th24-Treffer, Gesamt 84 · `th-netz` alle sechs
 Viertel erreichbar · Foto zeigt die Mühle frei auf der Wiese.
+
+## 2026-08-27 · 🛤️ `th-strassen.mjs` kennt jetzt auch die Straßen IN den Vierteln
+
+Die Lücke aus #2345 geschlossen. Die Bandtabelle kannte nur die großen Achsen; **jede
+Viertelstraße und jeder Anschlussweg fehlte** — und genau dort stand die Windmühle. Die
+Bänder werden jetzt **aus der Welt gelesen** (`_viertelSolver.VIERTEL`), nicht fest
+eingetragen: Viertel wandern, feste Werte wären nach der nächsten Verschiebung falsch.
+
+* Viertelstraße = Mittelachse des Viertels, halbe Belagsbreite 4,5, über die ganze Länge.
+* Anschluss = L-Weg aus zwei achsenparallelen Abschnitten.
+
+**Sofortbefund: 143 Objekte auf Wegen, die vorher unsichtbar waren** — mehr als der bis
+dahin bekannte Gesamtstand (84).
+
+### 🔴 Der Anschluss lief durch die eigenen Häuser
+`Anschluss Vergnügungsviertel` meldete **41 Mesh-Positionen** in Casino und Spielhalle.
+Ursache: `viertel()` zog den L-Weg **immer erst in x, dann in z**. Bei einem *längs*-Viertel
+(Straße läuft in x) liegt der letzte Schenkel damit **quer** zur Straße und schneidet die
+Bauzeilen — er läuft zwangsläufig auf der Mittelachse `VX`, und dort steht ein Haus.
+
+**Behoben:** die Reihenfolge richtet sich jetzt nach der Achse. Der letzte Schenkel liegt auf
+der **eigenen Straße** des Viertels, der Weg mündet in sie ein statt sie zu kreuzen. Für
+*quer*-Viertel war die alte Reihenfolge bereits richtig.
+
+| Anschluss | vorher | nachher |
+|---|---|---|
+| Vergnügungsviertel | **41** | **0** (nicht mehr gelistet) |
+| Freizeitpark, 2. Schenkel | 7 | **0** |
+| Zoo, 2. Schenkel | 12 | **1** |
+
+### ⚠️ Werkzeug und Spiel müssen dieselbe Reihenfolge kennen
+Nach der Korrektur im Spiel meldete das Werkzeug erst **42** statt weniger — es modellierte
+noch die **alte** Schenkel-Reihenfolge und maß damit eine Straße, die es nicht mehr gibt.
+Wer die eine Seite ändert, ändert die andere mit.
+
+### Was bleibt (geprüft, kein Fehler)
+`Viertelstr. Gewerbe Ost (19)` sind die **vier absichtlich am Bordstein geparkten Wagen**
+(`th37_lieferwagen/kombi/limousine/sportwagen`) — sie stehen dort mit `ohneSchutz:true`, weil
+sie genau dorthin gehören. Eine Zahl in dieser Liste ist erst dann ein Fehler, wenn das
+Objekt dort nicht hingehört.
+
+**Verifiziert:** 6 Viertel, 0 nicht auf Stufe 2 · alle sechs per GPS erreichbar
+(Vergnügungsviertel jetzt in 48 statt 50 Punkten) · `th-netz` 25 ok, 0 Fehler.

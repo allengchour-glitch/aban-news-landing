@@ -4624,9 +4624,19 @@ setTimeout(function baueGebaeude(){
             var str=new THREE.Mesh(new THREE.PlaneGeometry(waag?3:0.28,waag?0.28:3),mM);
             str.rotation.x=-Math.PI/2;
             str.position.set(mx+(waag?off:0),0.005,mz+(waag?0:off));scene.add(str);}}
-        /* Erst in einer Achse, dann in der anderen — Knick auf Hoehe des Viertels */
+        /* ⚠️ DIE REIHENFOLGE DER BEIDEN SCHENKEL ENTSCHEIDET, OB DER WEG DURCH DIE
+           BAUZEILEN GEHT. Vorher immer erst in x, dann in z — der letzte Schenkel lag
+           damit bei einem laengs-Viertel (Strasse in x) quer zur Strasse und schnitt
+           die Bauzeilen. GEMESSEN mit `spiele-dev/tools/th-strassen.mjs`, das die
+           Viertelstrassen seit dieser Runde kennt: der Anschluss des
+           Vergnuegungsviertels lief mit 41 Mesh-Positionen durch Casino und
+           Spielhalle, danach noch mit 9 durch den Nachtclub.
+           Der letzte Schenkel gehoert auf die EIGENE STRASSE des Viertels — dann
+           muendet der Weg in sie ein, statt sie zu kreuzen. Fuer quer-Viertel war die
+           alte Reihenfolge schon richtig; jetzt entscheidet die Achse. */
         if(Math.abs(VX-ax)>2&&Math.abs(VZ-az)>2){
-          segment(ax,az,VX,az);segment(VX,az,VX,VZ);}
+          if(laengs){segment(ax,az,ax,VZ);segment(ax,VZ,VX,VZ);}   /* Strasse laeuft in x */
+          else      {segment(ax,az,VX,az);segment(VX,az,VX,VZ);}}  /* Strasse laeuft in z */
         else segment(ax,az,VX,VZ);
       })();}
     /* 4) Bebauung: zwei Reihen laengs der Strasse. Je Seite ein eigener Laufcursor —
@@ -4885,7 +4895,7 @@ setTimeout(function baueGebaeude(){
        Sportpark. Dessen Strasse laeuft auf der Mittelachse bei z = 236, das Ostende bei
        x = 90 — daher der kurze Anschluss dorthin statt quer ueber Land. */
     viertel({name:"Vergnuegungsviertel",x:160,z:220,w:150,d:90,achse:"x",boden:"platz",
-      anschluss:[90,236],abstand:12,luecke:12,rand:14,
+      anschluss:[80,236],abstand:12,luecke:12,rand:14,
       bauten:[{file:"th12_bowlingbahn.glb",h:6, w:32.7,d:25.8},
               {file:"th12_casino.glb",     h:8, w:27.6,d:26.0},
               {file:"th12_nachtclub.glb",  h:8, w:23.0,d:19.4},
