@@ -32,6 +32,11 @@ mkdir -p _site
 # deutsche Vorlage geaendert hat (dann Skript und Vorlage abgleichen). Tolerant.
 ( command -v python3 >/dev/null 2>&1 && python3 tools/build_suche_sprachen.py ) || echo "build_suche_sprachen übersprungen"
 
+# Rechtslinks (Impressum/Datenschutz) auf oeffentlichen Seiten sicherstellen. Vor dem
+# 27.08.2026 fehlten sie auf 98 Seiten — Rechnern, Vorlagen und Minispielen. Vollbild-
+# Seiten (body overflow:hidden) und noindex-Werkzeuge bleiben bewusst aussen vor. Tolerant.
+( command -v python3 >/dev/null 2>&1 && python3 tools/rechtslinks_footer.py --fix ) || echo "rechtslinks_footer übersprungen"
+
 # Neue Seiten bekommen den Such-Link in der Fusszeile. Ohne diesen Schritt ist eine
 # frisch angelegte Seite eine Sackgasse — die Suche deckt 2632 Seiten ab, war aber
 # vor dem 27.08.2026 von nur 10 Seiten aus verlinkt. Tolerant.
