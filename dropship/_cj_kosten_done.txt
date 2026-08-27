@@ -3080,3 +3080,6 @@ gid://shopify/Product/15448627315073	CHF 21.71	8 Varianten	High Waist Straight L
 gid://shopify/Product/15448627577217	CHF 20.94	6 Varianten	High-Waist Wide-Leg Jeans aus Denim
 gid://shopify/Product/15448627937665	CHF 25.51	5 Varianten	Graue Acid Wash Flare Jeans für Damen
 gid://shopify/Product/15448628232577	CHF 24.00	5 Varianten	High Waist Skinny Jeans mit Stretch
+gid://shopify/Product/15448628593025	CHF 24.45	5 Varianten	High Waist Wide Leg Jeans
+gid://shopify/Product/15448628920705	CHF 24.45	5 Varianten	Weisse High-Waist Cropped Jeans mit geradem Bein
+gid://shopify/Product/15448629150081	CHF 25.43	5 Varianten	Patchwork Denim Jeans im Western-Stil
