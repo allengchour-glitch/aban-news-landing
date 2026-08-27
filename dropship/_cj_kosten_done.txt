@@ -3055,3 +3055,5 @@ gid://shopify/Product/15448619450753	CHF 27.88	4 Varianten	Straight-Leg Jeans mi
 gid://shopify/Product/15448619680129	CHF 21.69	6 Varianten	Jeans mit Print und Kettendetail, bodenlang
 gid://shopify/Product/15448619942273	CHF 41.23	4 Varianten	Used-Look Jeans mit leicht ausgestelltem Bein
 gid://shopify/Product/15448620237185	CHF 38.13	4 Varianten	Gerade Jeans mit Farbverlauf
+gid://shopify/Product/15448620564865	CHF 17.94	40 Varianten	Vielseitige Jeans für Frühling und Herbst
+gid://shopify/Product/15448620859777	CHF 25.00	10 Varianten	Vintage Wide-leg Jeans mit hohem Bund
