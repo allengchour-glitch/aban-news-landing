@@ -1590,3 +1590,48 @@ eigener Fall: sie gehören zu einem Viertel und müssen dessen Anschluss ausspar
 
 **Verifiziert:** 6 Viertel, 0 nicht auf Stufe 2 · Zoo per GPS in 134 Punkten erreichbar ·
 `th-netz` 25 ok · `th-3d` 56 echt (unverändert).
+
+## 2026-08-27 · 🌳 `freiPlatz()` kennt die Viertelwege — und beide Seiten lesen dieselbe Quelle
+
+`freiPlatz()` ist die gemeinsame Quelle aller Streu-Objekte, kannte aber die
+Viertelstraßen und Anschlusswege nicht — daher 12 Baumkronen auf dem Bauernhof-Anschluss
+(#2347). Behoben über `window._aufViertelWeg(x,z,pad)`.
+
+| | vorher | nachher |
+|---|---|---|
+| Baumkronen auf dem Bauernhof-Anschluss | 12 | **3** |
+| Anschluss Zoo | 1 | **0** |
+
+Die verbleibenden **3** sind die, die vor Millisekunde 260 gestreut wurden: die Viertel
+entstehen in `setTimeout(…, 260)`, das Streuen startet bei 60 ms und läuft in Häppchen
+weiter. Der weitaus größte Teil fällt in die Zeit, in der die Wege schon stehen — ein Rest
+bleibt prinzipbedingt.
+
+### ⚠️ EINE Herleitung, nicht zwei
+Der Weg dahin ist die eigentliche Lehre:
+1. Die Bänder fehlten ganz → die Zoo-Straße lief durch die Windmühle, alles grün (#2345).
+2. Das Werkzeug bekam **seine eigene Kopie** der Geometrie (#2346).
+3. Der Generator änderte die Schenkel-Reihenfolge → das Werkzeug maß eine Straße, **die es
+   nicht mehr gab**: 42 Treffer auf einem Phantom, und der Fix sah aus wie ein Rückschritt.
+
+**Zwei Herleitungen derselben Sache gehen auseinander, sobald eine sich ändert.**
+`window._viertelBaender()` im Spiel ist jetzt die einzige; `freiPlatz()` und
+`th-strassen.mjs` lesen beide von dort.
+
+### Was bewusst offen bleibt
+* `Viertelstr. Freizeitpark (14)` — Parklaternen, Wegweiser, Parkplan. Kommen **nicht** aus
+  `freiPlatz()`, sondern aus dem Ausstattungs-Code des Freizeitparks, der die eigene Straße
+  nicht ausspart.
+* `Anschluss Bauernhof (8× th18_gewaechshaus)` — aus `hofausbau()`, feste Offsets.
+* `Anschluss Freizeitpark 1 (8× th19_eishalle)` — ein **Sportpark**-Bau auf dem Anschluss
+  des Nachbarviertels.
+* `Viertelstr. Gewerbe Ost (19)` — **kein Fehler**, die absichtlich geparkten Wagen.
+
+Alle vier brauchen dieselbe Behandlung wie `freiPlatz()`: den eigenen Weg aussparen. Das ist
+je Stelle ein eigener Eingriff, kein gemeinsamer Schalter.
+
+### ⚠️ Backticks in Sonden — vier Mal an einem Tag
+Sonden stehen in Template-Literalen. Ein `` `bezeichner` `` im Kommentar **beendet das
+Literal** und der Lauf stirbt mit „Unexpected identifier". Passiert in `th-viertel`,
+`th-netz`, `th-strassen` (zweimal). In Sondenquelltext keine Backticks — auch nicht in
+Kommentaren.

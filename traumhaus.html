@@ -1329,6 +1329,11 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     if(Math.abs(x+190)<11+pad&&z>163&&z<211)return false;
     for(var q=0;q<WORLD_SOLIDS.length;q++){var sq=WORLD_SOLIDS[q];
       if(Math.abs(x-sq.x)<sq.hw+2.5+pad&&Math.abs(z-sq.z)<sq.hd+2.5+pad)return false;}
+    /* 🛣️ Viertelstrassen und Anschlusswege. Die entstehen erst 260 ms nach dem Laden,
+       das Streuen laeuft aber in Haeppchen ueber viele Bilder weiter — der weitaus
+       groesste Teil faellt also in die Zeit, in der die Wege schon stehen. Vorher
+       gestreute Objekte bleiben ungeschuetzt; das ist der Rest, den th-strassen findet. */
+    if(window._aufViertelWeg&&window._aufViertelWeg(x,z,pad))return false;
     return true;}
   /* `freiPlatz` ist die gemeinsame Quelle ALLER Streu-Objekte und kennt als einzige
      Stelle die Sperrflaechen, die sonst nirgends stehen: See samt Promenade,
@@ -4564,6 +4569,40 @@ setTimeout(function baueGebaeude(){
      laesst sich nicht nachmessen, WARUM ein Viertel dort steht, wo es steht; genau das
      hat in frueheren Runden zu geratenen Diagnosen gefuehrt.
      Nur lesende Hilfsmittel, kein Spielzustand (`spiele-dev/tools/th-viertel.mjs`). */
+  /* 🛣️ DIE WEGE EINES VIERTELS ALS BAENDER — EINE Quelle fuer Spiel und Werkzeug.
+     `freiPlatz()` kannte die Viertelstrassen nicht; darum standen 12 Baumkronen auf dem
+     Bauernhof-Anschluss und sechs Parklaternen auf der Freizeitpark-Strasse (#2347).
+     `th-strassen.mjs` hatte dieselbe Luecke und baute sich nach dem Schliessen eine
+     eigene Kopie der Geometrie — die nach der naechsten Aenderung im Generator prompt
+     falsch war (gemessen: 42 Treffer auf einem Weg, den es nicht mehr gab, #2346).
+     Deshalb steht die Herleitung jetzt genau HIER, und beide Seiten lesen sie. */
+  function viertelBaender(){
+    var B=[];
+    for(var i=0;i<VIERTEL.length;i++){var g=VIERTEL[i];
+      var laenge=g.laengs?g.w:g.d;
+      B.push(g.laengs?{n:"Viertelstr. "+g.name,a:"z",c:g.z,h:4.5,von:g.x-laenge/2,bis:g.x+laenge/2}
+                     :{n:"Viertelstr. "+g.name,a:"x",c:g.x,h:4.5,von:g.z-laenge/2,bis:g.z+laenge/2});
+      var an=g.cfg&&g.cfg.anschluss; if(!an)continue;
+      var ax=an[0],az=an[1];
+      var legs=(Math.abs(g.x-ax)>2&&Math.abs(g.z-az)>2)
+        ? (g.laengs?[[ax,az,ax,g.z],[ax,g.z,g.x,g.z]]:[[ax,az,g.x,az],[g.x,az,g.x,g.z]])
+        : [[ax,az,g.x,g.z]];
+      for(var k=0;k<legs.length;k++){var L=legs[k];
+        var waag=Math.abs(L[2]-L[0])>Math.abs(L[3]-L[1]);
+        var von=waag?Math.min(L[0],L[2]):Math.min(L[1],L[3]);
+        var bis=waag?Math.max(L[0],L[2]):Math.max(L[1],L[3]);
+        if(bis-von<1)continue;
+        B.push(waag?{n:"Anschluss "+g.name+" "+(k+1),a:"z",c:L[1],h:4.5,von:von,bis:bis}
+                   :{n:"Anschluss "+g.name+" "+(k+1),a:"x",c:L[0],h:4.5,von:von,bis:bis});}}
+    return B;}
+  /* pad = Reserve (Kronen ragen ueber den Stamm hinaus), wie bei den Hauptstrassen. */
+  window._aufViertelWeg=function(x,z,pad){
+    var B=viertelBaender();
+    for(var i=0;i<B.length;i++){var b=B[i];
+      var q=b.a==="z"?z:x, l=b.a==="z"?x:z;
+      if(Math.abs(q-b.c)<b.h+(pad||0)&&l>b.von-(pad||0)&&l<b.bis+(pad||0))return b.n;}
+    return null;};
+  window._viertelBaender=viertelBaender;
   window._viertelSolver={VIERTEL:VIERTEL,mass:viertelMass,passt:viertelPasst,ort:viertelOrt,
                          fahrbahn:aufFahrbahn,berg:imBerg,sperre:aufSperre,
                          boxen:bergBoxen,gitter:bergGitter};
