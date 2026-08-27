@@ -27,7 +27,51 @@ ENV: HASHCAP=400 (Bilder je Lauf) · SEIT=JJJJ-MM-TT · FIX=1 · DRY=1
 """
 import json, os, subprocess, sys, time, hashlib, re
 
-TOK = open('/tmp/cj_shop_token.txt').read().strip()
+def _token():
+    """Erst die Datei, bei Ablauf selbst holen.
+
+    ⚠️ Der Snapshot-Rewind stellt /tmp/cj_shop_token.txt auf einen ALTEN, laengst
+    abgelaufenen Stand zurueck (Token gelten ~24 h). Ein Waechter, der nur liest, meldet
+    dann «Shopify blieb stumm» und tut den ganzen Tag nichts — obwohl nur der Zettel alt
+    war. Deshalb holt er sich bei Bedarf selbst einen (Client-Credentials-Grant).
+    """
+    t = ''
+    try:
+        t = open('/tmp/cj_shop_token.txt').read().strip()
+    except Exception:
+        pass
+    if t:
+        r = subprocess.run(['curl', '-s', '--max-time', '30',
+                            'https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json',
+                            '-H', 'X-Shopify-Access-Token: ' + t, '-H', 'Content-Type: application/json',
+                            '-d', '{"query":"query{shop{id}}"}'], capture_output=True, text=True)
+        if '"shop"' in r.stdout:
+            return t
+    cid = os.environ.get('SHOPIFY_CLIENT_ID'); cs = os.environ.get('SHOPIFY_CLIENT_SECRET')
+    if not (cid and cs):
+        for z in open('/tmp/secrets_env.sh', errors='ignore') if os.path.exists('/tmp/secrets_env.sh') else []:
+            m = re.match(r'\s*(?:export\s+)?(SHOPIFY_CLIENT_ID|SHOPIFY_CLIENT_SECRET)=[\'"]?([^\'"\s]+)', z)
+            if m:
+                if m.group(1).endswith('ID'): cid = m.group(2)
+                else: cs = m.group(2)
+    if not (cid and cs):
+        return t
+    r = subprocess.run(['curl', '-s', '--max-time', '30',
+                        'https://au3j0y-hq.myshopify.com/admin/oauth/access_token',
+                        '-H', 'Content-Type: application/json',
+                        '-d', json.dumps({'client_id': cid, 'client_secret': cs,
+                                          'grant_type': 'client_credentials'})], capture_output=True, text=True)
+    try:
+        n = json.loads(r.stdout).get('access_token')
+    except Exception:
+        n = None
+    if n:
+        open('/tmp/cj_shop_token.txt', 'w').write(n)
+        print('Shopify-Token war abgelaufen — neu geholt.')
+        return n
+    return t
+
+TOK = _token()
 URL = 'https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json'
 LEDGER = 'dropship/_bildhash.txt'
 BERICHT = 'dropship/BILD-DUBLETTEN.md'
