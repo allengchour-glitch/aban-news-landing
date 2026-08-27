@@ -245,3 +245,4 @@ gid://shopify/Product/15510920987009	retro-mehrschichtiges-holzregal-628600	Retr
 gid://shopify/Product/15515871150465	anti-verlust-hunde-leine-605800	Anti-Verlust Hunde-Leine
 gid://shopify/Product/15516170551681	uhrenreparaturwerkzeug-5e5e07	Uhrenreparaturwerkzeug
 gid://shopify/Product/15516304441729	elegantes-business-midikleid-mit-ruschenarmeln-616900	Elegantes Business-Midikleid mit Rüschenärmeln
+gid://shopify/Product/15517968597377	reflektierende-hunde-leine-fur-kleine-bis-gros-227968	Reflektierende Hunde-Leine für kleine bis grosse Hunde
