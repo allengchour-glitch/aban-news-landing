@@ -4834,6 +4834,33 @@ setTimeout(function baueGebaeude(){
                  Blechdosen, Budengewehre mit Korkkugel. `tuer:false`, weil man
                  an die Theke tritt und nicht hineingeht. */
               {file:"th37_schiessbude.glb",h:3.3,w:5.2,d:3.2,tuer:false}]});
+    /* 🎰 VERGNUEGUNGSVIERTEL. Die fuenf th12-Bauten (Bowlingbahn, Casino, Nachtclub,
+       Spielhalle, Theater) lagen seit ihrer Charge fertig im Repo und waren nie
+       platziert — die Inventur nannte sie unter den rund 40 wirklich ungenutzten
+       Modellen. Bisher scheiterte das an zwei Dingen, die inzwischen behoben sind:
+       `viertelOrt()` suchte nur in vier Richtungen, und `imBerg()` sperrte per
+       Huellbox ein Viertel der Karte.
+       ⚠️ MASSE GEMESSEN, nicht geschaetzt (`th-mass.mjs`): bei voller Hoehe ist die
+       Bowlingbahn 43,6 x 34,4 m und das Theater 35 x 35,7 — damit waere das
+       Netto-Rechteck so breit, dass der Solver wieder keinen Platz faende (genau die
+       Parkgaragen-Falle). Auf 6-10 m Hoehe skaliert bleiben 32,7 x 25,8 bzw.
+       29,2 x 29,8, und das laengere der beiden Bauzeilen misst 91,3 m Front plus
+       zwei Luecken = 115,3 m — passt in die 122 m Netto-Laenge.
+       Der Anschluss zeigt auf die Bauernhof-Strasse (die laeuft auf dessen
+       Mittelachse), nicht auf einen Viertelrand — sonst endet der Verbinder im Acker. */
+    /* ⚠️ WUNSCHORT GESUCHT, NICHT GERATEN. Der erste Versuch (120|-250) landete nach
+       170 m Ausweichen bei (290|-250) — r = 383, mit einem 270 m langen Verbinder quer
+       durchs Feld. Ein Rasterscan mit `viertelPasst(...,2)` ueber die ganze Karte fand
+       57 gueltige Plaetze; der stadtnaechste ist (160|220) mit r = 272, direkt neben dem
+       Sportpark. Dessen Strasse laeuft auf der Mittelachse bei z = 236, das Ostende bei
+       x = 90 — daher der kurze Anschluss dorthin statt quer ueber Land. */
+    viertel({name:"Vergnuegungsviertel",x:160,z:220,w:150,d:90,achse:"x",boden:"platz",
+      anschluss:[90,236],abstand:12,luecke:12,rand:14,
+      bauten:[{file:"th12_bowlingbahn.glb",h:6, w:32.7,d:25.8},
+              {file:"th12_casino.glb",     h:8, w:27.6,d:26.0},
+              {file:"th12_nachtclub.glb",  h:8, w:23.0,d:19.4},
+              {file:"th12_spielhalle.glb", h:6, w:29.4,d:23.5},
+              {file:"th12_theater.glb",    h:10,w:29.2,d:29.8}]});
     /* 🌲 WALDSAUM. Zwischen Ringstrasse und Gebirge lag eine einzige flache
        gruene Flaeche — 90 m Nichts zwischen dem letzten Haus und dem ersten
        Felsen. Ein Waldguertel am Bergfuss schliesst die Luecke und gibt der
