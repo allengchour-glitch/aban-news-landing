@@ -3092,3 +3092,14 @@ gid://shopify/Product/15448630952321	CHF 23.66	14 Varianten	Cropped Wide-Leg Jea
 gid://shopify/Product/15448631214465	CHF 17.49	15 Varianten	Denim-Look Leggings mit hohem Bund
 gid://shopify/Product/15448631542145	CHF 22.16	5 Varianten	Vielseitige Cropped Jeans mit hohem Stretch
 gid://shopify/Product/15448631804289	CHF 21.27	4 Varianten	High-Waist Loose-Fit Jeans (Washed)
+gid://shopify/Product/15448632099201	CHF 23.80	4 Varianten	High-Waist Straight-Leg Jeans für Damen
+gid://shopify/Product/15448632459649	CHF 19.78	10 Varianten	Glitzernde Studded Hose mit Strass-Applikationen
+gid://shopify/Product/15448632885633	CHF 29.78	12 Varianten	Loose-Fit Workwear Jeans mit Metallschnalle
+gid://shopify/Product/15448633082241	CHF 21.85	8 Varianten	Vintage Cropped Jeans mit Hohem Bund
+gid://shopify/Product/15448633377153	CHF 20.15	7 Varianten	High-Waist Wide-Leg Jeans mit Strass
+gid://shopify/Product/15448633639297	CHF 23.36	5 Varianten	High-Waist Straight-Leg Jeans im American Style
+gid://shopify/Product/15448633999745	CHF 22.16	1 Varianten	High-Waist Slim-Fit Horseshoe Jeans
+gid://shopify/Product/15448634261889	CHF 25.02	5 Varianten	High Waist Flare Jeans mit Blumen-Stickerei
+gid://shopify/Product/15448634458497	CHF 24.41	5 Varianten	High-Waist Straight-Leg Jeans mit Knopfleiste
+gid://shopify/Product/15448634687873	CHF 19.53	5 Varianten	High-Waisted Jeans für Damen
+gid://shopify/Product/15448634884481	CHF 20.82	8 Varianten	High-Waist Jeans mit weitem Bein und Fransen
