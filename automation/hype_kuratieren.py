@@ -357,8 +357,17 @@ def main():
         d = gql('query($id:ID!){node(id:$id){... on Product{tags status}}}', {"id": gid})
         knoten = (d.get("data") or {}).get("node") or {}
         live_tags = knoten.get("tags") or []
-        if AUSGEMUSTERT in live_tags or knoten.get("status") != "ACTIVE":
-            print(f"   übersprungen (live): {t[:48]}", flush=True)
+        # ⚠️ DEN GRUND NENNEN (27.08.2026). Beide Fälle druckten dieselbe Zeile
+        # «übersprungen (live)» — dabei heisst der eine «wurde nach einer Bildprüfung
+        # dauerhaft aussortiert» und der andere «steht nicht mehr aktiv im Shop». Wer das
+        # Log liest, kann sonst nicht unterscheiden, ob die Reihe an der Bildqualität oder
+        # am Katalog scheitert. Dieselbe Klasse wie «PAUSE (Tagesmenge erreicht)» beim
+        # Kosten-Backfill: eine Meldung, die den falschen Grund nennt, ist schlimmer als keine.
+        if AUSGEMUSTERT in live_tags:
+            print(f"   übersprungen (Bild zu schwach): {t[:48]}", flush=True)
+            continue
+        if knoten.get("status") != "ACTIVE":
+            print(f"   übersprungen (nicht aktiv: {knoten.get('status')}): {t[:48]}", flush=True)
             continue
         # ⚠️ AUCH DEN TAG SELBST LIVE PRÜFEN (teuer gelernt 15.08.): Der Export ist älter als
         # die Reihe, also fehlt `hype-jetzt` dort bei allem, was nach dem Export aufgenommen

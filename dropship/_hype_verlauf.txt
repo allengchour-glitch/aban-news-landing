@@ -109,3 +109,11 @@
 2026-08-26	Kerzenwärmer & Duft	gid://shopify/Product/15411554320769	Aroma Diffuser Holzoptik 400ml – Ultraschall Luftbefeuchter mit 7 LED-Farben
 2026-08-26	Hoodie-Decke	gid://shopify/Product/15450839777665	XXL Hoodie-Decke mit Taschen für Sie & Ihn
 2026-08-26	Hoodie-Decke	gid://shopify/Product/15448107417985	Oversized Hoodie mit Bauchtasche
+2026-08-27	Smoothie-Mixer	gid://shopify/Product/15450850328961	Tragbarer Mixer für frische Drinks
+2026-08-27	Smoothie-Mixer	gid://shopify/Product/15493810291073	Soja-Milch & Smoothie Maker
+2026-08-27	Karaoke-Mikrofon	gid://shopify/Product/15481380536705	Kabelloses Ansteckmikrofon mit Ladebox
+2026-08-27	Karaoke-Mikrofon	gid://shopify/Product/15449010569601	Mini Karaoke Maschine mit kabellosen Mikros
+2026-08-27	Ringlicht	gid://shopify/Product/15480830755201	Selfie Stick Stativ mit LED-Ringlicht
+2026-08-27	Ringlicht	gid://shopify/Product/15451638661505	Full-HD Webcam mit Ringlicht und Mikrofon
+2026-08-27	Futterautomat	gid://shopify/Product/15448949195137	Smarter Futterautomat mit Timer
+2026-08-27	Futterautomat	gid://shopify/Product/15448949260673	Automatischer Futterspender

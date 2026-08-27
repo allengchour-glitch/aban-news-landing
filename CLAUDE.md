@@ -1247,6 +1247,45 @@ Ringe durchblättert, fand dazwischen einen Abdeckstift und eine Wanderhose.
   alle acht sauber. **Nach einer Tag-Änderung am OBJEKT gegenprüfen, nicht über die Suche** —
   sonst repariert man ein zweites Mal, was längst stimmt.
 
+## 💥 CJ liefert SPANNEN, und wir lasen immer die billigste Zahl (2026-08-27)
+Beim Nachsehen, was die Startseite gerade zeigt, fiel der «Mehrzweck-Organizer fürs Pult»
+auf: Titel Schreibtisch, Bild ein 12-fächriges Regal. CJ gefragt (pid 2511301329441606400):
+
+```
+sellPrice      "4.41-12.22"
+productWeight  "1600.00-5000.00"        12 Varianten (4/6/9/12/15 Fächer × braun/klar)
+```
+
+**CJ antwortet bei Mehr-Varianten-Produkten mit SPANNEN.** Unser Helfer las
+`('' + usd).split('--')[0]` — das sucht ZWEI Bindestriche und trennt deshalb **nie**;
+`parseFloat` bricht am ersten Bindestrich ab und liefert **4.41** und **1600**. Also
+durchgehend die billigste und leichteste Variante, für ein Produkt, bei dem CJ irgendeine
+der zwölf schicken kann.
+
+| | Ware | Gewicht | Kosten | bei VK 39.90 |
+|---|---:|---:|---:|---:|
+| angenommen (untere Grenze) | $4.41 | 1,6 kg | CHF 34.10 | **+5.80** |
+| möglich (obere Grenze) | $12.22 | 5,0 kg | CHF 96.90 | **−57.00** |
+
+`obereGrenze()` in `automation/cj_preis.mjs` nimmt jetzt das Maximum — für Preis, Kosten,
+Fracht UND das Shopify-Gewicht. Dasselbe Produkt käme neu auf CHF 124.90.
+- **Die Richtung ist Absicht:** Ein zu hoher Preis kostet einen Verkauf, ein zu tiefer kostet
+  Geld bei JEDEM Verkauf. Bei einem Ein-Varianten-Listing ist nicht feststellbar, welche
+  Ausführung CJ schickt — dann muss die teure angenommen werden.
+- ⚠️ **Der Trennausdruck `split('--')` war nie ein Tippfehler mit Folgen für einen Fall.**
+  Er steht in `kosten`, `chf` und (als `parseFloat`) in `fracht` und `gewicht`, also in allen
+  vier Rechnungen und damit in allen vier Importern. Wie viele Produkte betroffen sind, ist
+  OFFEN: erkennbar sind sie an einer einzigen «Default Title»-Variante bei einem CJ-Produkt
+  mit Spanne — das braucht je Produkt eine CJ-Abfrage.
+- Der Organizer selbst ist aus der Startseiten-Reihe genommen (`tagsRemove hype-jetzt`) und
+  trägt `preis-pruefen-cj-spanne`. **Neu bepreist habe ich ihn NICHT** — das trifft beworbene
+  Ware und ist eine Betreiber-Entscheidung (dieselbe Linie wie bei den 200 Varianten am 20.08.).
+- Nebenbei aus dem Text genommen: Er versprach «Modelle mit vier, sechs, neun, zwölf oder
+  fünfzehn Fächern, in Retro-Braun oder Pure Clear» — bei **einer** Variante ohne Auswahl.
+  Dieselbe Klasse wie die Pflanzenlampe in fünf Kleidergrössen (23.08.) und das Federarmband
+  mit vier Artikeln im Bildsatz (heute früh): **Der Text beschreibt das CJ-Listing, nicht das,
+  was wir verkaufen.**
+
 ## 🤖 Der Shop antwortet KI-Agenten «wir liefern in 55 Länder» — er liefert in eines (2026-08-27)
 Shopify hat mit der Summer-'26-Edition das **Universal Commerce Protocol (UCP)** auf JEDEM
 Store standardmässig eingeschaltet: KI-Einkaufsagenten (Google, Amazon, Meta, Microsoft,
