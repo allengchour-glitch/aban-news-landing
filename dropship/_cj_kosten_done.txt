@@ -3052,3 +3052,5 @@ gid://shopify/Product/15448618631553	CHF 29.18	4 Varianten	Denim-Shorts mit Spit
 gid://shopify/Product/15448618926465	CHF 21.87	5 Varianten	High-Waist Straight-Leg Jeans mit Nieten
 gid://shopify/Product/15448619188609	CHF 20.97	5 Varianten	Elegante Denim Shorts mit Aufschlag
 gid://shopify/Product/15448619450753	CHF 27.88	4 Varianten	Straight-Leg Jeans mit Nieten
+gid://shopify/Product/15448619680129	CHF 21.69	6 Varianten	Jeans mit Print und Kettendetail, bodenlang
+gid://shopify/Product/15448619942273	CHF 41.23	4 Varianten	Used-Look Jeans mit leicht ausgestelltem Bein
