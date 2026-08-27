@@ -30,13 +30,23 @@ const tmp = '_augen_tmp.html'
    Hinweis haette ich es fuer einen Grafikfehler halten koennen. `freiPlatz`
    kennt die Grundrisse; ist der Wunschpunkt belegt, wird spiralfoermig nach
    aussen gesucht und die tatsaechlich benutzte Stelle gemeldet. */
+/* ⚠️ DIESE PRUEFUNG WAR STILL TOT. Sie stand als
+     `if(typeof freiPlatz==="function" && !freiPlatz(x,z,2))`
+   da — und `freiPlatz` liegt in einem eigenen Gueltigkeitsbereich des Spiels und ist
+   fuer eine Sonde `undefined` (nachgemessen). Der erste Operand war also immer false,
+   der ganze Ausweich-Zweig lief NIE, und das Werkzeug stellte die Figur weiter
+   klaglos in Gebaeude — genau der Fehler, den der Kommentar oben als behoben
+   beschreibt. Jetzt ueber `window._freiPlatz`, und wenn die fehlt, fliegt der Lauf
+   auf die Nase statt ein falsches Bild zu liefern. */
 const STELL = `function(x,z,r){
   var gx=x,gz=z,weg=0;
-  if(typeof freiPlatz==="function"&&!freiPlatz(x,z,2)){
+  var fp=window._freiPlatz;
+  if(typeof fp!=="function")throw new Error("freiPlatz fehlt — Standort waere ungeprueft");
+  if(!fp(x,z,2)){
     suche: for(var d=3;d<=30;d+=3){
       for(var w=0;w<12;w++){
         var a=w/12*6.283, px=x+Math.cos(a)*d, pz=z+Math.sin(a)*d;
-        if(freiPlatz(px,pz,2)){gx=px;gz=pz;weg=d;break suche;}}}}
+        if(fp(px,pz,2)){gx=px;gz=pz;weg=d;break suche;}}}}
   var s=sims[0];s.x=gx;s.z=gz;s.rot=r;
   /* ⚠️ Die Ego-Kamera schaut entlang Math.PI + camA — NICHT entlang sim.rot.
      Deshalb zeigten mehrere Fotos die Gegenrichtung, egal was rot war. Der
