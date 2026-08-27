@@ -3173,3 +3173,8 @@ gid://shopify/Product/15448644878721	CHF 18.77	90 Varianten	Bequeme Shorts mit K
 gid://shopify/Product/15448644977025	CHF 19.19	5 Varianten	Elegante Jacquard-Shorts mit hoher Taille
 gid://shopify/Product/15448645206401	CHF 21.40	3 Varianten	Sexy Slim-Fit Denim-Style Shorts mit Schleife
 gid://shopify/Product/15448645304705	CHF 18.02	55 Varianten	Leichte Leinen-Shorts mit Taschen
+gid://shopify/Product/15448645370241	CHF 17.13	55 Varianten	Stylishe Yoga-Shorts für Damen
+gid://shopify/Product/15448645435777	CHF 22.76	21 Varianten	Fashionable Damen Shorts mit Ripped Edges
+gid://shopify/Product/15448645534081	CHF 20.53	5 Varianten	Capri-Jeans mit Shaping-Effekt
+gid://shopify/Product/15448645566849	CHF 19.92	35 Varianten	Elegante Cargo Denim Shorts für Damen
+gid://shopify/Product/15448645632385	CHF 18.29	93 Varianten	Freizeit-Shorts für Damen mit Kordelzug
