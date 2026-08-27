@@ -3194,3 +3194,4 @@ gid://shopify/Product/15448647565697	CHF 17.72	8 Varianten	High-Waist Yoga Hose 
 gid://shopify/Product/15448647631233	CHF 18.39	3 Varianten	Feuchtigkeitsableitende Yoga-Pants
 gid://shopify/Product/15448647664001	CHF 19.04	3 Varianten	Elegante, figurbetonte Fingerless-Hose
 gid://shopify/Product/15448647696769	CHF 18.47	54 Varianten	Bootcut Yoga-Hose für Damen
+gid://shopify/Product/15448647795073	CHF 19.78	4 Varianten	Gepunktete Yoga-Tights für Damen
