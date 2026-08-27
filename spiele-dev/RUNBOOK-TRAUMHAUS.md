@@ -492,6 +492,13 @@ bleibt, hält den anderen auf.
 
 ## 🔧 Werkzeuge — nicht jedes Mal neu bauen
 
+* **`th-tempo.mjs`** — wohin die Bildzeit geht: Aufteilung Rendern/Rest, Zeichenaufrufe,
+  Dreiecke, Objekte, Meshes, `matrixAutoUpdate`, Lichter, Materialien. ⚠️ Absolute fps aus
+  diesem Container sind **kein Gerätewert** (SwiftShader, 85,8 % native Rasterizer-Zeit) —
+  nur Anzahlen und Verhältnisse übertragen. Für CPU-Fragen Leinwand auf 280×170.
+* **`th-viertel.mjs`** — warum ein Viertel dort steht, wo es steht: Strengestufe je Viertel
+  und der *Grund* der Ablehnung (Fahrbahn mit Bandname, Berg mit Boxkoordinaten, Kollider).
+
 ```bash
 # Gesamtprüfung: Straßenkorridore, Überschneidungen, 404, JS-Fehler, Zeichenaufrufe
 /opt/node22/bin/node spiele-dev/tools/th-pruef.mjs
@@ -988,3 +995,136 @@ ohnehin nicht mit (`markiere(verkehr)`).
 **Werkzeug:** `spiele-dev/tools/th-stich.mjs` (9 Checks: Zuteilung, Asphaltband, Rechtsverkehr,
 Ecke ohne Sprung, 60 s simuliert per direktem `updVerkehr`-Tick — umgeht die dt-Deckelung).
 Bild: `spiele-dev/screenshots/stich-verkehr.png`.
+
+## 2026-08-27 · 🐢 „das Spiel laggt sehr" — gemessen statt geraten
+
+User-Meldung ohne Zusatz. Vier Verdächtige der Reihe nach gemessen; **drei waren falsch**,
+und zwei davon hätten sich „offensichtlich" angefühlt. Neues Werkzeug:
+`spiele-dev/tools/th-tempo.mjs` (Bildzeit-Aufteilung, Zeichenaufrufe, Objekte, Lichter).
+
+**Was die Szene wirklich ist:** 51 520 Objekte · 48 471 Meshes · 622 Zeichenaufrufe ·
+310 000 Dreiecke · **17 Lichter, davon 15 PointLights** · alles MeshStandardMaterial.
+Die Zeichenaufrufe und Dreiecke sind unauffällig — das Problem war die Beleuchtung.
+
+| Verdacht | gemessen | Ergebnis |
+|---|---|---|
+| Zu viele Pixel im Menü | 2,46 → 9,27 Bilder/s | ✅ **behoben** (3,8×), s. u. |
+| `matrixAutoUpdate` auf 48 307 Objekten | 212 ms → 213 ms | ❌ **nichts**, verworfen |
+| Zu viele Punktlichter | 1010 ms → 763 ms | ✅ **behoben** (+25 % Bilder) |
+| Kleinere Leinwand im Koop-Test | 1,5 / 2,5 Bilder/s | ❌ allein zu wenig |
+
+### ⚠️ Dieser Container kann die Bildrate eines Geräts NICHT messen
+SwiftShader, reiner Software-Rasterizer. Im CPU-Profil sind **85,8 % der Proben
+`(program)`**, also nativer Rasterizer. Zwei Punkte (682 000 px → 1,10/s, 42 625 px →
+3,89/s) ergeben das Modell **≈ 213 ms fest + 1,0 µs je Pixel**. Nutzbar sind deshalb nur
+*Anzahlen* (Objekte, Aufrufe, Lichter, Matrizen) und *Verhältnisse* — nie absolute fps als
+Gerätewert. Für CPU-Fragen die Leinwand klein machen (280×170), dann dominiert die
+Füllrate nicht mehr.
+
+### 💡 LAMP_MAX — nur die nächsten Punktlichter brennen
+three.js wertet **jedes** Punktlicht für **jeden** Bildpunkt jedes MeshStandardMaterial
+aus; eine Licht-Auswahl je Objekt gibt es nicht. Bei Reichweite 16–18 m und decay 2 trägt
+alles Ferne praktisch nichts bei. Gemessene Kurve (volle Leinwand, je 7 s):
+
+| aktive Lichter | 4 | 6 | 8 | 10 | alle 15 |
+|---|---|---|---|---|---|
+| ms je Bild | 719 | **763** | 800 | 862 | 1010 |
+
+Rund **26 ms je Licht**. Gewählt: **6** — deckt genau den Innenlicht-Cluster der Altstadt
+(vier Lichter im Umkreis von ~25 m) plus Pavillon ab.
+* ⚠️ **Die ANZAHL muss konstant bleiben.** three.js schlüsselt sein Shader-Programm nach
+  der Zahl der Lichter je Art — schwankt sie, wird bei jedem Wechsel neu übersetzt.
+  Darum immer genau `LAMP_MAX` sichtbar, nie „alle im Umkreis".
+* ⚠️ **`nachtLampen` ist NICHT die Liste aller Lichter.** Sie hält nur die sechs, die die
+  Tag/Nacht-Logik fadet; in der Szene stehen 15. Der erste Anlauf kappte `nachtLampen` auf
+  sechs — `6 > 6` ist falsch, die Bedingung feuerte nie, und der A/B-Vergleich verglich
+  **zwei identische Stände** und meldete folgerichtig „kein Unterschied". Beinahe als
+  „Lichter sind nicht das Problem" abgehakt. **Erst prüfen, dass die Änderung greift,
+  dann ihre Wirkung messen.**
+
+### 🔋 Im Menü nicht die ganze Welt zeichnen
+`.overlay` liegt mit `rgba(...,.94)…(.97)` über dem Bild — sichtbar sind 3–6 % des
+3D-Hintergrunds, die Kamera steht still. Gezeichnet wurde trotzdem jedes Bild:
+Startbildschirm, Modus-Wähler, Intro **und die ganze Koop-Lobby**. Jetzt jedes fünfte
+(`_menuTakt`). A/B im selben Prozess, je 6 Proben: **2,46 → 9,27 Bilder/s**. Die Leinwand
+behält ihr letztes Bild, der Hintergrund bleibt also sichtbar, nur nicht flüssig.
+
+### ❌ Teilbaum-Frost: gebaut, gemessen, verworfen (nicht wiederholen)
+`_einfrieren()` läuft nur über `scene.children`. Das sieht nach einem Fehler aus — three.js
+steigt trotzdem in jedes Kind ab, und jedes Kind mit `matrixAutoUpdate=true` rechnet seine
+lokale Matrix neu. 48 307 von 51 520 blieben so auf Auto-Update. Der Frost über den ganzen
+Teilbaum brachte:
+* `matrixAutoUpdate` **48 307 → 7 000** (−86 %),
+* Bildzeit (CPU isoliert, 280×170) **212 ms → 213 ms**, also nichts,
+* aber **724 Objekte weniger, die sich in 12 s bewegten** — er legte Animationen still.
+
+48 000 `updateMatrix()` sind zusammen wenige Millisekunden. Die Matrizen waren nie die
+Bremse. Der Kommentar im Code sprach von „über 2000 Objekte" — die Welt ist seither um das
+25-Fache gewachsen, die Zahl blieb stehen. **Eine Zahl im Kommentar ist kein Messwert.**
+
+## 2026-08-27 · 🏔️ Eine Hüllbox ist kein Berg — warum zwei Viertel „nirgends hinpassten"
+
+Neues Werkzeug: **`spiele-dev/tools/th-viertel.mjs`** — sagt je Viertel, auf welcher
+Strengestufe es gelandet ist und **woran** die strengere gescheitert ist (Fahrbahn mit
+Bandnamen, Berg mit Boxkoordinaten, Kollider mit Position). Dafür hält `viertel()` jetzt
+`cfg` + Wunschort am Gruppenobjekt fest, und `window._viertelSolver` gibt den Solver für
+Sonden frei.
+
+**Erstbefund und Ursache:** Gewerbe Ost und Bauernhof fielen auf Stufe 0 durch — dort ist
+auch die Straßenprüfung aus, deshalb standen sie auf der Landstraße. Beide scheiterten auf
+Stufe 1 an **genau einer Box: `[-204..338 | -694..-152]`, 542 × 542 m**. Das ist kein
+Gipfel, sondern die Hüllbox einer ganzen **Bergkette** (ein Mesh, 1296 Vertices); zwei
+weitere messen 362 und 318 m. Ihre Box ist zum größten Teil Luft zwischen den Gipfeln und
+sperrte ein Viertel der Karte.
+
+Die frühere Notiz „das Viertel passt einfach nirgends hin, nur Teilen hilft" war damit
+**falsch** — es war kein geometrischer Zwang, sondern ein Messfehler im Solver. Ebenso
+falsch war der Kommentar „der richtige Weg wäre, `viertelPasst()` die Landstraße
+beizubringen": die kannte sie zu dem Zeitpunkt längst.
+
+**Behoben:** Das Gelände wird gerastert (`bergGitter()`, 12-m-Zellen). Jedes Dreieck über
+`BERG_H = 10` markiert die Zellen, die es wirklich überdeckt — rund 4500 Dreiecke, einmal
+beim ersten Aufruf. Ergebnis: **Bauernhof jetzt auf Stufe 2** bei (−40|−246), also frei von
+Landstraße *und* Fels. Von vier Vierteln sind noch **Gewerbe Ost** auf Stufe 2 offen (72 × 152 m
+netto, scheitert an Landstraße + Zubringer 330°).
+
+### ⚠️ Zwei Messfallen in diesem Werkzeug (beide zuerst hineingelaufen)
+1. **Die eigenen Häuser zählen nicht.** Das Viertel aus `VIERTEL` zu nehmen genügt nicht —
+   seine Bauten stehen als Kollider in `WORLD_SOLIDS` und blockieren genau den Ort, an dem
+   es schon steht. Der erste Lauf meldete für **alle vier** Viertel „nein: Kollider" auf
+   Stufe 0, also auch dort, wo sie unbestritten stehen.
+2. **„Berg" allein ist keine Auskunft.** `bergBoxen()` sammelt alles über 20 m Höhe und
+   30 m Breite — hohe Häuser landen darin genauso wie Fels. Ohne die Box im Klartext wäre
+   die Bergkette nie aufgefallen.
+
+### ⚠️ Straßenbelegung schwankt von Lauf zu Lauf
+Drei Läufe auf demselben Stand: **125 / 122 / 136**. Wer eine Änderung mit *einem* Lauf
+bewertet, misst `entwirren()`-Zufall. Der Geländefix ergab 125 / 127 / 117 — die Differenz
+zum Ausgangsstand liegt **innerhalb der Streuung**, ist also kein Ergebnis. Für Aussagen
+über die Straßenbelegung mindestens drei Läufe je Seite, besser den *Inhalt* eines Bandes
+vergleichen statt der Gesamtzahl.
+
+## 2026-08-27 · 🤝 Koop-Vollprüfung: erster grüner Lauf
+
+Die beiden Zwei-Spieler-Aufträge (Sperrgut, Bank-Coup) waren als `--voll` ausgeliefert und
+hatten **noch nie einen grünen Lauf**. Jetzt: **19 von 20 Prüfungen an, 1 nicht prüfbar.**
+Sperrgut komplett (Ruf, Kiste bei beiden, Folgen, Lohn +450, Abbruch), Coup komplett
+(Start, Alarm, Beute 2918 identisch, Ende, Auszahlung). Vorhersage des Gasts gegen die
+Wahrheit des Hosts: **Mittel 0,43 m, größter 0,56 m**, nach dem Loslassen 0,23 m. 0 JS-Fehler.
+
+**Was den Beitritt reparierte — und was nicht.** Der Kopfkommentar sagte „scheitert bei
+Load 4". Diese Last ist aber **der Test selbst**: der Container lag vorher bei 0,14 und
+stieg erst mit den beiden Seiten über 4. Zwei Versuche:
+* Fenster 900×560 → 480×300 (¹⁄₃ der Pixel): **allein zu wenig**, gemessen 1,5 bzw.
+  2,5 Bilder/s. `screen` bleibt dabei groß, sonst schaltet `_mobil` (prüft `screen`, nicht
+  das Fenster) heimlich auf Handy-Bedienung um.
+* Menü nicht mehr voll rendern (`_menuTakt`, s. o.): **damit gelang der Beitritt im ersten
+  Versuch.** Der WebRTC-Handshake braucht auf *beiden* Seiten Bilder.
+
+### ⚠️ Die Uhr braucht 260 Runden, nicht 20 — Fehlalarm im eigenen Werkzeug
+`Host-Uhr -> Gast` meldete rot (480 → 480). Kein Spielfehler: der Gast führt seine Uhr
+**nicht selbst** (`if(!MPs||mpHost)`), er wartet auf `t:"uhr"` — und das geht nur alle acht
+Sim-Takte raus (`netTick%8===0`). Ein Sim-Takt ist 0,35 s *Spielzeit*, bei `dt=0,05` also
+sieben Bilder; acht Takte sind 56 Bilder und bei 1,5 Bildern/s rund **37 Sekunden**. Die
+Prüfung wartete 8 s. `probe()` hat jetzt einen `runden`-Parameter, die Uhr bekommt 260.
+Genau die Falle, vor der der Kopfkommentar dieses Werkzeugs warnt — im Werkzeug selbst.

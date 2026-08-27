@@ -379,6 +379,7 @@ if(THREE.RGBELoader&&renderer.capabilities.isWebGL2){try{new THREE.RGBELoader().
 var hemi=new THREE.HemisphereLight(0xdfeeff,0x6a8a58,0.42);scene.add(hemi);
 // Warme Strassenlaternen-Lichtpools — nur nachts an (Intensitaet im Tag/Nacht-Loop gesetzt)
 var nachtLampen=[];   /* Die Laternen werden weiter unten gebaut — sie brauchen GW/RX/wegVonStrasse */
+var LAMP_MAX=6;       /* 💡 gleichzeitig brennende Punktlichter — siehe Auswahl in loop() */
 
 var sun=new THREE.DirectionalLight(0xfff0d0,1.12);sun.position.set(26,38,18);scene.add(sun);
 scene.add(sun.target);   /* das Ziel muss in der Szene haengen, sonst wandert die Schatten-Box nicht mit */
@@ -1761,6 +1762,20 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
      Haeuser, Baeume, Laternen und Zaeune nie bewegen. Nach dem Aufbau werden alle Objekte
      eingefroren, die keine Animation haben; bewegte Dinge (Autos, Bewohner, Zug, Achterbahn,
      Wasser, Rauch) melden sich vorher per _bewegt an. */
+  /* ⚠️ NICHT DEN GANZEN TEILBAUM EINFRIEREN — gemessen, verworfen, nicht wiederholen.
+     Diese Schleife laeuft nur ueber `scene.children`, und das sieht nach einem Fehler
+     aus: three.js steigt trotzdem in jedes Kind ab, und jedes Kind mit
+     matrixAutoUpdate=true rechnet seine lokale Matrix in jedem Bild neu. Von den
+     51 520 Objekten der Szene blieben so 48 307 auf Auto-Update, eingefroren waren
+     rund 3 100 — sechs Prozent. Der Teilbaum-Frost wurde gebaut und gemessen
+     (`spiele-dev/tools/th-tempo.mjs`):
+       * matrixAutoUpdate 48 307 -> 7 000, also 86 % weniger,
+       * Bildzeit auf kleiner Leinwand (CPU-Anteil isoliert): 212 ms -> 213 ms,
+       * dafuer bewegten sich 724 Objekte nicht mehr, die vorher animiert waren.
+     48 000 `updateMatrix()`-Aufrufe sind zusammen wenige Millisekunden — die Matrizen
+     waren nie die Bremse. Der Frost kostet Animation und bringt nichts Messbares.
+     Wer hier wieder ansetzt, misst ZUERST (th-tempo.mjs), statt der Plausibilitaet zu
+     folgen. Die echte Bremse waren die Punktlichter, siehe LAMP_MAX. */
   function _einfrieren(){
     var n=0;
     scene.children.forEach(function(o){
@@ -4382,22 +4397,54 @@ setTimeout(function baueGebaeude(){
      eingesammelt: hoeher als 20 m und breiter als 30 m ist in dieser Welt ein Berg.
      Hohe Haeuser faenden sich hier zwar auch wieder — die sind aber ohnehin Kollider,
      also aendert das nichts. */
-  var _bergBoxen=null;
-  function bergBoxen(){
-    if(_bergBoxen)return _bergBoxen;
-    _bergBoxen=[];
+  /* ⚠️ EINE HUELLBOX IST KEIN BERG. Der erste Anlauf nahm je Mesh die Box3 — und drei
+     der Gebirgs-Meshes sind KETTEN, nicht Gipfel: eines misst 542 x 542 m (1296
+     Vertices), zwei weitere 362 und 318 m. Ihre Huellbox ist zum groessten Teil Luft
+     zwischen den Gipfeln, sperrt aber ein Viertel der Karte.
+     GEMESSEN mit `spiele-dev/tools/th-viertel.mjs`: Gewerbe Ost UND Bauernhof
+     scheiterten beide an genau EINER Box [-204..338 | -694..-152] und fielen deshalb
+     auf Stufe 0 durch — wo dann auch die Strassenpruefung aus ist. Das sah nach einem
+     geometrischen Zwang aus ("das Viertel passt einfach nirgends hin") und war ein
+     Messfehler im Solver.
+     Jetzt wird das Gelaende GERASTERT: jedes Dreieck, das ueber BERG_H liegt, markiert
+     die Zellen, die es wirklich ueberdeckt. Rund 4500 Dreiecke, einmal beim ersten
+     Aufruf — billiger als Strahlen und ungleich genauer als die Box. */
+  var BERG_ZELL=12, BERG_H=10;
+  var _bergGitter=null, _bergBoxen=null;
+  function bergGitter(){
+    if(_bergGitter)return _bergGitter;
+    _bergGitter={};_bergBoxen=[];
+    var pA=new THREE.Vector3(),pB=new THREE.Vector3(),pC=new THREE.Vector3();
     scene.traverse(function(o){
-      if(!o.isMesh||!o.geometry)return;
+      if(!o.isMesh||!o.geometry||!o.geometry.attributes||!o.geometry.attributes.position)return;
       var bb=new THREE.Box3().setFromObject(o);
       if(!isFinite(bb.min.y)||bb.max.y<20)return;
       var bw=bb.max.x-bb.min.x, bd=bb.max.z-bb.min.z, gr=Math.max(bw,bd);
-      if(gr>900||gr<30)return;
-      _bergBoxen.push([bb.min.x,bb.max.x,bb.min.z,bb.max.z]);});
-    return _bergBoxen;}
+      if(gr>900||gr<30)return;                       /* 1040 m = Boden/Himmel, kein Berg */
+      _bergBoxen.push([bb.min.x,bb.max.x,bb.min.z,bb.max.z]);
+      o.updateWorldMatrix(true,false);
+      var pos=o.geometry.attributes.position, idx=o.geometry.index;
+      var n=idx?idx.count:pos.count;
+      for(var i=0;i+2<n;i+=3){
+        var a=idx?idx.getX(i):i, b=idx?idx.getX(i+1):i+1, c=idx?idx.getX(i+2):i+2;
+        pA.fromBufferAttribute(pos,a).applyMatrix4(o.matrixWorld);
+        pB.fromBufferAttribute(pos,b).applyMatrix4(o.matrixWorld);
+        pC.fromBufferAttribute(pos,c).applyMatrix4(o.matrixWorld);
+        if(Math.max(pA.y,pB.y,pC.y)<BERG_H)continue;  /* flacher Fuss zaehlt nicht */
+        var tx0=Math.min(pA.x,pB.x,pC.x),tx1=Math.max(pA.x,pB.x,pC.x);
+        var tz0=Math.min(pA.z,pB.z,pC.z),tz1=Math.max(pA.z,pB.z,pC.z);
+        for(var cx=Math.floor(tx0/BERG_ZELL);cx<=Math.floor(tx1/BERG_ZELL);cx++)
+          for(var cz=Math.floor(tz0/BERG_ZELL);cz<=Math.floor(tz1/BERG_ZELL);cz++)
+            _bergGitter[cx+","+cz]=1;}});
+    return _bergGitter;}
+  /* Bleibt fuer Werkzeuge erhalten: die groben Huellboxen sind zum Anzeigen noch
+     brauchbar, fuer die Entscheidung aber ausdruecklich nicht mehr zustaendig. */
+  function bergBoxen(){bergGitter();return _bergBoxen;}
   function imBerg(x0,x1,z0,z1){
-    var B=bergBoxen();
-    for(var i=0;i<B.length;i++){var b=B[i];
-      if(b[1]>x0&&b[0]<x1&&b[3]>z0&&b[2]<z1)return true;}
+    var G=bergGitter();
+    for(var cx=Math.floor(x0/BERG_ZELL);cx<=Math.floor(x1/BERG_ZELL);cx++)
+      for(var cz=Math.floor(z0/BERG_ZELL);cz<=Math.floor(z1/BERG_ZELL);cz++)
+        if(G[cx+","+cz])return true;
     return false;}
   /* ⚠️ WAS SPAETER LAEDT, GIBT ES FUER DIESEN SOLVER NICHT. Kollider entstehen im
      bau()-Callback, also nach dem Modell-Download — die Viertel werden aber sofort
@@ -4449,13 +4496,25 @@ setTimeout(function baueGebaeude(){
         for(var k=0;k<kand.length;k++)
           if(viertelPasst(cfg,kand[k][0],kand[k][1],streng))return [kand[k][0],kand[k][1],d];}}
     return null;}
+  /* Der Solver steckt in einem eigenen Gueltigkeitsbereich — von aussen (und damit von
+     jeder Sonde) waren VIERTEL und die Prueffunktionen unsichtbar. Ohne diesen Griff
+     laesst sich nicht nachmessen, WARUM ein Viertel dort steht, wo es steht; genau das
+     hat in frueheren Runden zu geratenen Diagnosen gefuehrt.
+     Nur lesende Hilfsmittel, kein Spielzustand (`spiele-dev/tools/th-viertel.mjs`). */
+  window._viertelSolver={VIERTEL:VIERTEL,mass:viertelMass,passt:viertelPasst,ort:viertelOrt,
+                         fahrbahn:aufFahrbahn,berg:imBerg,sperre:aufSperre,
+                         boxen:bergBoxen,gitter:bergGitter};
   function viertel(cfg){
     var VW=cfg.w,VD=cfg.d,laengs=cfg.achse==="x";
     var ort=viertelOrt(cfg);
     if(!ort){console.warn("Viertel "+cfg.name+" hat keinen Platz");return null;}
     var VX=ort[0],VZ=ort[1];
     if(ort[2])console.warn("Viertel "+cfg.name+": Wunschort belegt, "+ort[2]+" m ausgewichen nach "+VX+"|"+VZ);
-    var g={name:cfg.name,x:VX,z:VZ,w:VW,d:VD,bauten:[],laengs:laengs};VIERTEL.push(g);
+    /* `cfg` bleibt am Viertel haengen: ohne den Bauplan laesst sich spaeter nicht mehr
+       nachrechnen, WARUM der Solver hier gelandet ist (`spiele-dev/tools/th-viertel.mjs`).
+       Der Wunschort ist dabei die wichtigste Zahl — die tatsaechliche Position verraet
+       nicht, ob 0 m oder 120 m ausgewichen wurde. */
+    var g={name:cfg.name,x:VX,z:VZ,w:VW,d:VD,bauten:[],laengs:laengs,cfg:cfg,wx:cfg.x,wz:cfg.z};VIERTEL.push(g);
     /* 1) Grundflaeche */
     var bodenM=cfg.boden==="platz"?betMat(0xc6c0b2,0.93)
               :cfg.boden==="kies"?betMat(0x9c9384,0.98)
@@ -12183,6 +12242,35 @@ function loop(now){
     for(var _li=0;_li<nachtLampen.length;_li++){var _L=nachtLampen[_li];var _t=_L._ti||0; /* 💡 weiches Ein-/Ausfaden der Strassenbeleuchtung */
       if(Math.abs(_L.intensity-_t)>0.01){_L.intensity+=(_t-_L.intensity)*Math.min(1,dt*1.6);
         if(_L._heads)for(var _hk=0;_hk<_L._heads.length;_hk++)_L._heads[_hk].emissiveIntensity=_L.intensity/9;}}
+    /* 💡 NUR DIE NAECHSTEN PUNKTLICHTER BRENNEN LASSEN. Jedes Punktlicht wird von
+       MeshStandardMaterial fuer JEDEN Bildpunkt jedes Objekts ausgewertet — three.js
+       kennt keine Licht-Auswahl je Objekt. Bei 15 Lampen und ueber 48 000 Meshes ist
+       das auf einem Handy die teuerste Rechnung des ganzen Bildes, und die
+       Innenlichter brennen laut Tageslogik auch mittags schwach weiter.
+       Die Lampen haben decay 2 und Reichweite 16-18 m: was weiter weg ist, traegt
+       ohnehin praktisch nichts bei. Also brennen die LAMP_MAX naechsten, der Rest ist
+       unsichtbar.
+       ⚠️ Die ANZAHL bleibt dabei absichtlich konstant. three.js baut sein Shader-
+       Programm nach der Zahl der Lichter je Art; schwankt sie, wird bei jedem Wechsel
+       neu uebersetzt — ein Ruckler, der schlimmer waere als das Problem. */
+    window._lampTakt=(window._lampTakt||0)-dt;
+    if(window._lampTakt<=0){window._lampTakt=0.5;
+      /* ⚠️ NICHT `nachtLampen` NEHMEN. Die Liste haelt nur die sechs Lampen, die die
+         Tag/Nacht-Logik faded — im Bild stehen aber 15 Punktlichter (gemessen mit
+         `spiele-dev/tools/th-tempo.mjs`). Der erste Anlauf kappte `nachtLampen` auf
+         sechs und war damit ein Nichts-Tuer: 6 > 6 ist falsch, die Bedingung feuerte
+         nie. Der A/B-Vergleich verglich zwei identische Staende und meldete
+         folgerichtig "kein Unterschied". Gesucht sind ALLE Punktlichter der Szene. */
+      var _pl=window._punktLichter;
+      if(!_pl){_pl=[];scene.traverse(function(o){if(o.isPointLight)_pl.push(o);});
+        window._punktLichter=_pl;}
+      if(_pl.length>LAMP_MAX){
+        var _cx=camera.position.x,_cz=camera.position.z,_wp=new THREE.Vector3();
+        for(var _lj=0;_lj<_pl.length;_lj++){var _M=_pl[_lj];
+          _M.getWorldPosition(_wp);          /* manche haengen an bewegten Objekten */
+          _M._d=(_wp.x-_cx)*(_wp.x-_cx)+(_wp.z-_cz)*(_wp.z-_cz);}
+        var _nah=_pl.slice().sort(function(a,b){return a._d-b._d;});
+        for(var _lk=0;_lk<_nah.length;_lk++)_nah[_lk].visible=(_lk<LAMP_MAX);}}
     if(window._seeZug){var _z=window._seeZug;_z.x+=_z.dir*_z.speed*dt; /* 🚂 Brücken-Zug pendelt (eigener Global — _zug gehört dem Stadt-Zug) */
       if(_z.x<_z.min){_z.x=_z.min;_z.dir=1;}else if(_z.x>_z.max){_z.x=_z.max;_z.dir=-1;}
       _z.g.position.x=_z.x;_z.g.rotation.y=_z.dir<0?0:Math.PI;}
@@ -12375,8 +12463,21 @@ function loop(now){
   }
   if(!_lodBereit&&performance.now()>4000){lodAufbau();autoKollider();kolliderNachziehen();}
   else if(_lodBereit&&(++_lodTick%8===0)){var _p=spielerPos();lodTakt(_p.x,_p.z);}
-  renderer.render(scene,camera);
+  /* 🔋 IM MENUE NICHT DIE GANZE WELT NEU ZEICHNEN. `.overlay` liegt mit
+     rgba(...,.94)…(.97) ueber dem ganzen Bild — vom 3D-Hintergrund sind hoechstens
+     drei bis sechs Prozent zu sehen, und die Kamera steht dabei still. Gezeichnet
+     wurde trotzdem jedes Bild: Startbildschirm, Modus-Waehler, Intro und im
+     Online-Spiel die gesamte Wartezeit in der Lobby.
+     GEMESSEN (A/B im selben Prozess, je sechs Proben): 2,46 -> 9,27 Bilder/s im
+     Menue, also das 3,8-fache. Das Rendern war dort rund drei Viertel des
+     Bildbudgets. Auf dem Handy ist das Akku; im Koop ist es die Verbindung, denn
+     der WebRTC-Handshake braucht auf BEIDEN Seiten Bilder.
+     Jedes fuenfte Bild genuegt — der Hintergrund bleibt sichtbar (die Leinwand
+     behaelt ihr letztes Bild), er ist nur nicht mehr fluessig. Sobald `running`
+     steht, wird wieder jedes Bild gezeichnet. */
+  if(running||(++_menuTakt%5===0))renderer.render(scene,camera);
 }
+var _menuTakt=0;
 requestAnimationFrame(loop);
 addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);});
 window.__CAM=function(x,z,r,b){followSim=null;camTx=x;camTz=z;camRT=r;camR=r;camB=b;updCam();};

@@ -35,6 +35,7 @@
  */
 import { chromium } from 'playwright'
 import { spawn, execSync } from 'node:child_process'
+import { readFileSync } from 'node:fs'
 import { mitSonden, aufraeumen, REPO, CHROMIUM } from './th-lib.mjs'
 
 const datei = (process.argv[2] && process.argv[2] !== '--voll') ? process.argv[2] : 'traumhaus.html'
@@ -139,7 +140,21 @@ const browser = await chromium.launch({ executablePath: CHROMIUM,
          '--disable-background-timer-throttling',
          '--disable-backgrounding-occluded-windows',
          '--disable-renderer-backgrounding'] })
-const ctx = await browser.newContext({ viewport: { width: 900, height: 560 } })
+/* ⚠️ KLEINES FENSTER, GROSSER BILDSCHIRM — und beides aus einem gemessenen Grund.
+   Der Beitritt scheiterte in diesem Container reihenweise; im Kopfkommentar stand
+   dazu "bei Load 4". Diese Last ist aber NICHT die Umgebung, sondern der Test selbst:
+   der Container lag vor dem Start bei 0,14 und stieg erst mit den beiden Seiten auf
+   ueber 4. Der Software-Renderer zahlt pro Pixel, und 900x560 sind 504 000 Pixel —
+   zweimal. Der WebRTC-Handshake braucht auf JEDER Seite Bilder.
+   ⚠️ Das allein reichte NICHT: mit 480x300 lagen die Seiten immer noch bei 1,5 bzw.
+   2,5 Bildern/s. Die Pixel waren nicht der Engpass, sondern dass im Menue die ganze
+   3D-Welt hinter der fast deckenden Overlay-Flaeche neu gezeichnet wurde (behoben in
+   traumhaus.html, `_menuTakt`). Beides zusammen macht den Beitritt zuverlaessig.
+   `screen` bleibt trotzdem gross: `_mobil` im Spiel prueft `screen`, nicht das
+   Fenster. Ohne diesen zweiten Wert schaltete der Test heimlich auf die
+   Handy-Bedienung um und haette etwas anderes gemessen als das Spiel am Rechner. */
+const ctx = await browser.newContext({ viewport: { width: 480, height: 300 },
+                                       screen: { width: 1280, height: 900 } })
 ctx.setDefaultTimeout(150000)
 await ctx.route('**/*.glb', (r) => r.abort())
 
@@ -187,8 +202,23 @@ async function beitreten(code) {
   return false
 }
 
+/* Die Bildrate ist in diesem Test keine Nebensache, sondern die Waehrung: alles,
+   was ueber das Netz geht, braucht auf beiden Seiten Bilder. Wer sie nicht kennt,
+   deutet jede Zeitueberschreitung als Netzfehler. */
+const bildrate = async (p, ms = 1500) => p.evaluate((t) => new Promise((res) => {
+  let n = 0; const t0 = performance.now()
+  ;(function f() { n++
+    if (performance.now() - t0 < t) requestAnimationFrame(f)
+    else res(+(n / ((performance.now() - t0) / 1000)).toFixed(1)) })()
+}), ms)
+
 let code = await raumAuf()
 console.log(`Raum-Code: ${code}`)
+{
+  const [bh, bg] = await Promise.all([bildrate(host), bildrate(gast)])
+  const last = readFileSync('/proc/loadavg', 'utf8').split(' ')[0]
+  console.log(`Bildrate vor dem Beitritt: Host ${bh}/s · Gast ${bg}/s   (Last ${last})`)
+}
 let verbunden = await beitreten(code)
 /* ⚠️ BEIM WIEDERHOLEN MUSS DER HOST MIT. Ein leichter Neuversuch (nur der Gast
    geht ueber "Abbrechen" zurueck) klingt sparsamer, war aber schlechter:
@@ -270,11 +300,18 @@ console.log(`\n  JS-Fehler: ${fehler.length}${fehler.length ? '\n   ' + fehler.s
 const z = async (p) => await p.evaluate(() => window.__th.zustand())
 const tun = async (p, ...a) => await p.evaluate((x) => window.__th.tun.apply(null, x), a)
 const pruef = []
-async function probe(titel, wer, aktion, feld, erwartet) {
+/* ⚠️ `runden` ist kein Komfortwert. Die meisten Nachrichten gehen sofort raus, die
+   Uhr aber nur alle acht Sim-Takte (`netTick%8===0`), und ein Sim-Takt sind 0,35 s
+   SPIELZEIT — bei dt=0,05 also sieben Bilder. Acht Takte sind 56 Bilder, und bei den
+   1,5 Bildern pro Sekunde dieses Renderers rund 37 Sekunden. Mit den 20 Runden
+   (8 s) fuer alle Pruefungen meldete die Uhr zuverlaessig "kommt nicht an" — der
+   Gast fuehrt seine Uhr NICHT selbst (`if(!MPs||mpHost)`), er wartet nur. Ein
+   Fehlalarm derselben Sorte, vor der der Kopfkommentar warnt, im eigenen Werkzeug. */
+async function probe(titel, wer, aktion, feld, erwartet, runden = 20) {
   const vorher = await z(wer === gast ? host : gast)
   await aktion()
   let jetzt = vorher, ok = false
-  for (let i = 0; i < 20 && !ok; i++) {
+  for (let i = 0; i < runden && !ok; i++) {
     await gast.waitForTimeout(400); await host.evaluate(() => 1)
     jetzt = await z(wer === gast ? host : gast)
     ok = erwartet(vorher[feld], jetzt[feld])
@@ -285,7 +322,7 @@ await probe('Gast baut Boden -> Host', gast, () => tun(gast, 'boden', 5, 5), 'b'
 await probe('Gast baut Wand  -> Host', gast, () => tun(gast, 'wand', 5, 5, 0), 'w', (v, n) => n > v)
 await probe('Host baut Boden -> Gast', host, () => tun(host, 'boden', 7, 7), 'b', (v, n) => n > v)
 await probe('Host +500 Geld  -> Gast', host, () => tun(host, 'geld', 500), 'geld', (v, n) => n >= v + 500)
-await probe('Host-Uhr        -> Gast', host, async () => {}, 'uhr', (v, n) => n !== v)
+await probe('Host-Uhr        -> Gast', host, async () => {}, 'uhr', (v, n) => n !== v, 260)
 
 /* ── Streitfall: BEIDE greifen im selben Moment dieselbe Zelle an ──────────
    Hier leben die echten Koop-Fehler. Enden die Seiten mit verschiedenen
