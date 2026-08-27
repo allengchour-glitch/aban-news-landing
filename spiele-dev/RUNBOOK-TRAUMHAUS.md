@@ -1353,3 +1353,39 @@ Ausprobieren umkreist — er gehört bei jedem neuen Viertel an den Anfang, nich
 ⚠️ Die Landstraße schwankte im Verlauf 25 → 39 → 29. Das ist **nicht** das neue Viertel: die
 Treffer sind Seilbahn-Masten, Baumkronen und Felsen. Bei dieser Kennzahl immer erst den
 **Inhalt** des Bandes ansehen, bevor man eine Änderung dafür verantwortlich macht.
+
+## 2026-08-27 · 🦓 Zoo — sechstes Viertel, zehn Archivmodelle stehen jetzt
+
+Die fünf **th24**-Modelle waren die zweite Gruppe aus der Inventur, die nie aufgestellt
+wurde. Steht bei **(−200|−200)**, r = 283, **0 m ausgewichen**, angebunden ans Westende der
+Bauernhof-Straße.
+
+### Drei Gehege statt einem
+Der Reihen-Generator setzt jeden `bauten`-Eintrag **einmal**. `th24_gehege` steht deshalb
+dreimal in der Liste — sonst ist ein Zoo ein Eingang, eine Voliere und viel Platz.
+
+### ⚠️ Der tiefste Bau bestimmt die Breite des ganzen Viertels
+`viertelMass` nimmt bei `achse:"x"` das größte `d` aller Bauten. Bei 9 m Höhe ist das
+Aquarienhaus **36,2 × 44 m** — die 44 m Tiefe hätten das Netto-Rechteck im Alleingang
+aufgebläht (dieselbe Mechanik wie bei der Parkgarage). Auf 7 m skaliert: 28,2 × 34,2.
+
+Und eine neue Variante derselben Falle: der **Streichelzoo ist nativ nur 3 m hoch**. Weil
+`bau()` über die Höhe skaliert, wäre er auf 5 m gezogen **33,6 × 30 m** — größer als das
+Aquarium, obwohl er das kleinste Modell ist. Auf 3,5 m sind es 23,5 × 21.
+**Bei flachen Modellen die Zielhöhe besonders vorsichtig wählen: ein Meter mehr Höhe ist
+dort ein Drittel mehr Grundfläche.**
+
+Längere Bauzeile: 98,7 m Front + drei Lücken = 134,7 m, passt in die 142 m Netto-Länge.
+
+### Verifiziert
+| Werkzeug | Ergebnis |
+|---|---|
+| `th-viertel` | **6 Viertel, 0 nicht auf Stufe 2**, Zoo 0 m ausgewichen |
+| `th-3d` | **0 th24-Treffer**, tiefste Überschneidung unverändert 1,39 m |
+| `th-strassen` | **0 th24-Treffer** auf einer Fahrbahn, Gesamt 93 (Bereich 84–98) |
+| `th-netz` | alle sechs Viertel erreichbar, Zoo in 136 Punkten |
+
+**Stand der Inventur:** von den rund 40 wirklich ungenutzten Modellen stehen jetzt **10**
+(th12 ×5, th24 ×5). Offen: th25 Flughafen (9 — braucht eine eigene Landebahn-Logik, passt
+nicht in den Reihen-Generator), th14 Club-Interieur (12 — Innenräume, kein Viertel),
+th29 Winter (6 — saisonal).
