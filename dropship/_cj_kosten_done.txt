@@ -3072,3 +3072,11 @@ gid://shopify/Product/15448624890241	CHF 19.91	5 Varianten	High-Rise Slightly Fl
 gid://shopify/Product/15448625185153	CHF 22.46	4 Varianten	Leopard Chiffon Hose mit weitem Bein
 gid://shopify/Product/15448625512833	CHF 24.81	5 Varianten	Mid-Stretch Skinny Jeans – Knöchellang
 gid://shopify/Product/15448625840513	CHF 20.82	6 Varianten	Damen Ripped Denim Shorts im Thin Style
+gid://shopify/Product/15448626135425	CHF 23.36	10 Varianten	Bootcut Jeans im American Vintage Design
+gid://shopify/Product/15448626430337	CHF 37.37	8 Varianten	Starry Hot Rhinestone Retro Jeans
+gid://shopify/Product/15448626758017	CHF 24.11	20 Varianten	Vintage Capri-Jeans mit weitem Bein
+gid://shopify/Product/15448627052929	CHF 21.31	4 Varianten	Ripped Denim Jeans im Vintage-Look
+gid://shopify/Product/15448627315073	CHF 21.71	8 Varianten	High Waist Straight Leg Jeans
+gid://shopify/Product/15448627577217	CHF 20.94	6 Varianten	High-Waist Wide-Leg Jeans aus Denim
+gid://shopify/Product/15448627937665	CHF 25.51	5 Varianten	Graue Acid Wash Flare Jeans für Damen
+gid://shopify/Product/15448628232577	CHF 24.00	5 Varianten	High Waist Skinny Jeans mit Stretch
