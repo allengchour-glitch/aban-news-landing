@@ -86,14 +86,22 @@ const sonden = {
       for(var s=2;s>=0;s--){
         var g0=grund(cfg,g.x,g.z,s);
         zeile.stufen[s]=g0?("nein: "+g0):"ja";}
-      zeile.stufe2Ort=null;
+      zeile.stufe2Ort=null;zeile.ringOrt=null;
       var laengs=cfg.achse==="x", W=g.wx, Z=g.wz;
       if(W!==undefined){
+        /* (a) wie das Spiel sucht: ein KREUZ aus vier Richtungen */
         if(!grund(cfg,W,Z,2))zeile.stufe2Ort=[W,Z,0];
-        else for(var d=10;d<=120&&!zeile.stufe2Ort;d+=10){
+        else for(var d=10;d<=260&&!zeile.stufe2Ort;d+=10){
           var kand=laengs?[[W+d,Z],[W-d,Z],[W,Z+d],[W,Z-d]]:[[W,Z+d],[W,Z-d],[W+d,Z],[W-d,Z]];
           for(var k=0;k<kand.length;k++)
-            if(!grund(cfg,kand[k][0],kand[k][1],2)){zeile.stufe2Ort=[kand[k][0],kand[k][1],d];break;}}}
+            if(!grund(cfg,kand[k][0],kand[k][1],2)){zeile.stufe2Ort=[kand[k][0],kand[k][1],d];break;}}
+        /* (b) zum Vergleich eine FLAECHE: Ringe mit 16 Richtungen. Findet (b) etwas,
+           wo (a) nichts findet, dann ist nicht die Welt zu eng, sondern die Suche. */
+        if(!grund(cfg,W,Z,2))zeile.ringOrt=[W,Z,0];
+        else for(var rd=10;rd<=260&&!zeile.ringOrt;rd+=10){
+          for(var w=0;w<16&&!zeile.ringOrt;w++){
+            var a9=w*Math.PI/8, rx=Math.round(W+Math.cos(a9)*rd), rz=Math.round(Z+Math.sin(a9)*rd);
+            if(!grund(cfg,rx,rz,2))zeile.ringOrt=[rx,rz,rd];}}}
       VIERTEL.splice(i0,0,g);
       raus.push(zeile);});
     return raus;}`
@@ -110,7 +118,8 @@ for (const r of rows) {
   const s2 = r.stufen['2'] === 'ja'
   console.log(`${s2 ? '✅' : '⚠️ '} ${r.name.padEnd(18)} steht ${String(r.ort[0]).padStart(5)}|${String(r.ort[1]).padStart(5)}   netto ${r.netto[0]}x${r.netto[1]}`)
   for (const s of ['2', '1', '0']) console.log(`      Stufe ${s}: ${r.stufen[s]}`)
-  if (r.stufe2Ort) console.log(`      Stufe-2-Platz vom Wunschort aus: ${r.stufe2Ort[0]}|${r.stufe2Ort[1]} (${r.stufe2Ort[2]} m)`)
+  console.log(`      Stufe-2-Platz, Kreuzsuche (alt, nur 4 Richtungen): ${r.stufe2Ort ? `${r.stufe2Ort[0]}|${r.stufe2Ort[1]} (${r.stufe2Ort[2]} m)` : 'keiner in 260 m'}`)
+  console.log(`      Stufe-2-Platz, Ringsuche (wie im Spiel, 16 Ri.): ${r.ringOrt ? `${r.ringOrt[0]}|${r.ringOrt[1]} (${r.ringOrt[2]} m)` : 'keiner in 260 m'}`)
 }
 const schlecht = rows.filter(r => r.stufen['2'] !== 'ja')
 console.log(`\n${rows.length} Viertel, davon ${schlecht.length} nicht auf Stufe 2: ${schlecht.map(r => r.name).join(', ') || '—'}`)
