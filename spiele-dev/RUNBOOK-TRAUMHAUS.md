@@ -1171,3 +1171,32 @@ Spieler.
 `lodTakt()` blendet nur **kleine** Meshes aus (Radius ≤ 2,2 m) — ab 78 m, Winziges (< 0,55 m)
 schon ab 34 m. Alles Größere ist **immer sichtbar**; Häuser und Bäume werden nie auf Distanz
 ausgeblendet. Das ist bewusst so und nach obiger Messung auch richtig.
+
+## 2026-08-27 · 🖥️ Der Rechner-Pfad war nie gemessen — 44 390 Schattenwerfer
+
+### ⚠️ Die `screen`-Falle, zum zweiten Mal
+`_mobil` prüft `Math.min(screen.width, screen.height) < 820`, und Playwright setzt `screen`
+standardmäßig auf das **Fenster**. Mit dem 1100×620-Standard von `spielOeffnen()` ist
+620 < 820 — **jede Messung lief im Handy-Modus**, ohne dass es jemand gemerkt hätte: Schatten
+aus, `_schattenSparen()` aktiv, Pixel-Deckel 1,35. Dieselbe Falle hatte `th-koop.mjs` schon
+einmal; sie sitzt jetzt in **`th-lib.mjs`** (`spielOeffnen(..., {screen})`), damit sie nicht
+in jedem Werkzeug neu entsteht. `th-tempo.mjs` **meldet den Modus in Zeile 1** und misst mit
+`--desktop` den Rechner-Pfad.
+
+### 💡 `_schattenSparen()` lief genau dort nicht, wo es gebraucht wurde
+Die Funktion war auf `if(!_mobil)return;` beschränkt. Am Handy sind die Schatten aber
+ohnehin komplett aus (`_schattenAn = !_mobil`) — sie lief also praktisch **nie**, und auf dem
+einzigen Pfad, der wirklich eine Shadow-Map rendert, sparte sie nichts.
+
+| Rechner-Pfad | Schattenwerfer | ms je Bild |
+|---|---|---|
+| vorher | **44 390** | 730 |
+| nachher | 7 460 | **494** (+47 % Bilder) |
+
+Zwei Läufe je Seite, abwechselnd im selben Prozess. Die halbe Welt wurde jedes Bild ein
+zweites Mal in eine 2048er Shadow-Map gerendert. Häuser und Figuren behalten ihre Schatten
+(≥ 2,5 m hoch, ≥ 1,2 m breit); es fallen Fensterrahmen, Gesimse, Zaunlatten und Streuwerk weg.
+
+**Lehre:** eine Optimierung hinter `if(_mobil)` ist wertlos, wenn der Handy-Pfad die teure
+Sache ohnehin abschaltet. Vor jeder solchen Schranke prüfen, **welcher Pfad die Kosten
+wirklich trägt** — und das Werkzeug muss sagen, welchen Pfad es gerade misst.

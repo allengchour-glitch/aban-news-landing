@@ -1818,8 +1818,16 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
      keine Schatten mehr. Jeder Schattenwerfer wird ein zweites Mal in die Shadow-Map
      gerendert — bei ~2000 Objekten ist das nach der Fuellrate die zweitgroesste Bremse.
      Haeuser und Figuren behalten ihre Schatten, die Szene bleibt plastisch. */
+  /* ⚠️ GILT AUCH AM RECHNER — die Handy-Schranke hier war teuer. Am Handy sind die
+     Schatten ohnehin ganz aus (`_schattenAn`), also lief diese Funktion praktisch nie:
+     genau dort, wo die Shadow-Map wirklich gerendert wird, sparte sie nichts.
+     GEMESSEN (`node spiele-dev/tools/th-tempo.mjs --desktop`): auf dem Rechner-Pfad
+     standen **44 390 Schattenwerfer** in einer 2048er Shadow-Map — die halbe Welt ein
+     zweites Mal, jedes Bild. Mit dieser Funktion bleiben 7 460 uebrig, und die Bildzeit
+     faellt von 730 auf 494 ms (+47 % Bilder, zwei Laeufe je Seite).
+     Haeuser und Figuren behalten ihre Schatten (>= 2,5 m hoch, >= 1,2 m breit), es
+     fallen Fensterrahmen, Gesimse, Zaunlatten und Streuwerk weg. */
   function _schattenSparen(){
-    if(!(typeof _mobil!=="undefined"&&_mobil))return;
     var aus=0;
     scene.children.forEach(function(o){
       if(o._bewegt)return;
