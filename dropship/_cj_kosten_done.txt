@@ -2421,3 +2421,4 @@ gid://shopify/Product/15448109449601	CHF 26.70	10 Varianten	Shapewear Bodysuit m
 gid://shopify/Product/15448109613441	CHF 23.99	14 Varianten	Figurformender Jumpsuit mit Bauchkontrolle
 gid://shopify/Product/15448109646209	CHF 20.37	8 Varianten	Jumpsuit mit Polo-Kragen und kurzen Hosen
 gid://shopify/Product/15448109842817	CHF 21.30	18 Varianten	Shapewear Bodysuit mit Bauchkontrolle – Beige
+gid://shopify/Product/15448111808897	CHF 20.96	4 Varianten	Eleganter Slim-Fit Jumpsuit mit hohem Bund
