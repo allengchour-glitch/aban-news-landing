@@ -2463,3 +2463,10 @@ gid://shopify/Product/15448115872129	CHF 18.76	3 Varianten	Sommerlicher Off-Shou
 gid://shopify/Product/15448115937665	CHF 19.37	9 Varianten	Kurzer Yoga Jumpsuit mit Überkreuzträgern
 gid://shopify/Product/15448115970433	CHF 20.22	3 Varianten	Sportlicher Yoga-Body ohne Polsterung
 gid://shopify/Product/15448116003201	CHF 20.22	65 Varianten	Eleganter ärmelloser Jumpsuit mit weitem Bein
+gid://shopify/Product/15448116035969	CHF 19.92	9 Varianten	Kurzer Yoga-Jumpsuit mit Reissverschluss
+gid://shopify/Product/15448116068737	CHF 19.78	65 Varianten	Nahtloser V-Ausschnitt Yoga Jumpsuit
+gid://shopify/Product/15448116101505	CHF 20.53	48 Varianten	Ärmelloser Jumpsuit mit V-Ausschnitt – S-Beige Whi
+gid://shopify/Product/15448116134273	CHF 19.37	15 Varianten	Figurbetonter Einteiler mit Blumenprint
+gid://shopify/Product/15448116167041	CHF 19.37	20 Varianten	Nahtloser Body mit Po-Lifting-Effekt
+gid://shopify/Product/15448116199809	CHF 23.21	5 Varianten	Off-Shoulder Jumpsuit mit Rüschensaum
+gid://shopify/Product/15448116265345	CHF 20.22	5 Varianten	Damen Jumpsuit mit Print und Spaghettiträgern
