@@ -1555,3 +1555,38 @@ Objekt dort nicht hingehört.
 
 **Verifiziert:** 6 Viertel, 0 nicht auf Stufe 2 · alle sechs per GPS erreichbar
 (Vergnügungsviertel jetzt in 48 statt 50 Punkten) · `th-netz` 25 ok, 0 Fehler.
+
+## 2026-08-27 · 🌬️ Nachtrag: die Sperre allein hat die Windmühle NICHT freigeräumt
+
+**Korrektur zu #2345.** Dort steht „lässt der Mühle 5,5 m Luft" — das galt für die
+*Viertelstraße*. Der **Anschlussweg** legte sich danach mit seinem letzten Schenkel (auf
+`z = VZ`, also Straßenhöhe) über genau die freigeräumte Strecke und lief wieder durch den
+Turm. Sichtbar wurde das erst, seit `th-strassen.mjs` die Anschlusswege kennt (#2346):
+`Anschluss Zoo 2 (1) bd_windmill_tower`.
+
+> **Eine Sperre verschiebt das Viertel, nicht seinen Weg.** `SPAETE_SPERREN` wirkt in
+> `viertelPasst()` auf das Netto-Rechteck; der Anschluss wird davon unabhängig gezogen.
+
+**Behoben:** Zoo-Wunschort z −200 → −230, gelandet bei (−200|−250). Straßenhöhe damit 54 m
+von der Mühle (z −196) entfernt. **Kein einziger Zoo-Eintrag mehr in der Straßenliste.**
+
+### 📋 Was auf Viertel- und Anschlusswegen noch steht (gemessen, triagiert, offen)
+Der Befund aus #2346 ist damit **nicht** abgearbeitet. Reihenfolge nach Schwere:
+
+| Weg | Treffer | Bewertung |
+|---|---|---|
+| Anschluss Bauernhof | 23 | 8× `th18_gewaechshaus` + 12 Baumkronen — **echter Fehler** |
+| Anschluss Freizeitpark 1 | 11 | 8× `th19_eishalle` (ein Sportpark-Bau!) — **echter Fehler** |
+| Viertelstr. Freizeitpark | 14 | Parklaternen/Wegweiser/Parkplan **auf** dem Belag statt am Rand |
+| Anschluss Gewerbe Ost 1 | 5 | Obelisk + zwei Schmiedelaternen bei (140\|−4) |
+| Anschluss Sportpark Süd | 1 | eine Baumkrone |
+| **Viertelstr. Gewerbe Ost** | 19 | **kein Fehler** — die vier absichtlich am Bordstein geparkten Wagen |
+
+Die Streu-Objekte (Kronen, Laternen) kommen aus `freiPlatz()`, das die Viertel- und
+Anschlusswege **nicht** kennt — dieselbe Lücke wie in der Bandtabelle, eine Ebene tiefer.
+Der saubere Weg ist, `freiPlatz()` dieselben Bänder beizubringen, die `th-strassen.mjs`
+jetzt aus `_viertelSolver.VIERTEL` liest. Die Gebäude (Gewächshäuser, Eishalle) sind ein
+eigener Fall: sie gehören zu einem Viertel und müssen dessen Anschluss aussparen.
+
+**Verifiziert:** 6 Viertel, 0 nicht auf Stufe 2 · Zoo per GPS in 134 Punkten erreichbar ·
+`th-netz` 25 ok · `th-3d` 56 echt (unverändert).

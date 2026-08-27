@@ -4912,7 +4912,15 @@ setTimeout(function baueGebaeude(){
        33,6 x 30 m gross, groesser als das Aquarium; deshalb 3,5 m.
        Laengere Bauzeile: 98,7 m Front plus drei Luecken = 134,7 m, passt in die
        142 m Netto-Laenge. */
-    viertel({name:"Zoo",x:-200,z:-200,w:170,d:100,achse:"x",boden:"kies",
+    /* ⚠️ NACHTRAG ZU #2345: die Sperre allein genuegte NICHT. Sie schob die
+       Viertelstrasse westlich an der Windmuehle vorbei — der ANSCHLUSSWEG lief danach
+       aber mit seinem letzten Schenkel (auf z = VZ, also der Strassenhoehe) genau ueber
+       die freigeraeumte Strecke und wieder durch den Turm. Gemeldet als
+       "Anschluss Zoo 2 (1) bd_windmill_tower", sichtbar erst, seit th-strassen die
+       Anschlusswege kennt (#2346). Eine Sperre verschiebt das Viertel, nicht seinen Weg.
+       Darum liegt die Strassenhoehe jetzt bei z = -230: 34 m Abstand zur Muehle (z -196),
+       mehr als die halbe Belagsbreite von 4,5 je Seite braucht. */
+    viertel({name:"Zoo",x:-200,z:-230,w:170,d:100,achse:"x",boden:"kies",
       anschluss:[-100,-246],abstand:12,luecke:12,rand:14,
       bauten:[{file:"th24_zoo_eingang.glb", h:7,  w:26.0,d:16.6},
               {file:"th24_gehege.glb",      h:4,  w:13.2,d:10.7},
