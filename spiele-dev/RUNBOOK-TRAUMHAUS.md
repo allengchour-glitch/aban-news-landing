@@ -1128,3 +1128,46 @@ Sim-Takte raus (`netTick%8===0`). Ein Sim-Takt ist 0,35 s *Spielzeit*, bei `dt=0
 sieben Bilder; acht Takte sind 56 Bilder und bei 1,5 Bildern/s rund **37 Sekunden**. Die
 Prüfung wartete 8 s. `probe()` hat jetzt einen `runden`-Parameter, die Uhr bekommt 260.
 Genau die Falle, vor der der Kopfkommentar dieses Werkzeugs warnt — im Werkzeug selbst.
+
+## 2026-08-27 · 📱 Dynamische Auflösung — und warum Distanz-Culling nichts bringt
+
+### ✅ `_rrRegel()`: die Schleife misst ihre eigene Bildzeit
+Der feste Deckel `min(devicePixelRatio, _mobil?1.35:1.6)` war eine **Wette auf das Gerät** —
+für ein aktuelles Telefon zu wenig, für ein älteres zu viel, und welches davorsitzt weiß der
+Code nicht. Jetzt bleibt `_rrMax` die Obergrenze, aber es gibt vier Stufen
+(`1 · 0,8 · 0,62 · 0,5 ×`), und die Schleife regelt selbst.
+
+* Gemessen wird die **echte** Bildzeit `(now-last)`, **nicht `dt`** — `dt` ist auf 0,05
+  gedeckelt und könnte ein 900-ms-Bild gar nicht darstellen. Genau dieser Deckel hat in
+  diesem Projekt schon mehrfach Messungen verdorben.
+* Gleitender Mittelwert (0,92/0,08), damit ein einzelner Ruckler (Modell lädt fertig) nicht
+  sofort die Auflösung senkt.
+* Herunter ab **33 ms**, hinauf erst unter **20 ms** — die Lücke verhindert Pendeln.
+  Zwischen zwei Änderungen mindestens **4 s**, denn `setPixelRatio`+`setSize` legt den
+  Zeichenpuffer neu an und ruckelt selbst.
+* ⚠️ Der `resize`-Handler muss `setPixelRatio` **mitsetzen**, sonst fällt die geregelte
+  Stufe beim Drehen des Handys auf `_rrMax` zurück.
+
+Verifiziert: der Container geht auf Stufe 3 (1100×620 → 550×310) und **bleibt** dort
+(Mittelwert 381 ms, kein Pendeln über 40 s). **1,29 → 2,94 Bilder/s.** Auf einem schnellen
+Gerät bleibt der Mittelwert unter 20 ms, dort ändert sich nichts.
+
+**Gesamtstand dieser Runde im selben Werkzeug: 952 ms → 344 ms je Bild.** ⚠️ Wieviel davon
+auf einem echten Gerät ankommt, sagt dieser Container nicht — auf einem schnellen Telefon
+greift nur die Lichtkappung, die Auflösungsregelung bleibt untätig.
+
+### ❌ Distanz-Culling ganzer Gruppen: gemessen, verworfen
+Naheliegende Idee: der Nebel endet bei 340–360 m, alles dahinter ist ohnehin
+Hintergrundfarbe — also ganze Gebäudegruppen ausblenden und `projectObject` spart sich den
+Teilbaum. **Vorher gemessen:** 1163 Gruppen decken 39 597 der 48 468 Meshes ab, aber jenseits
+der Nebelgrenze liegen nur **29 Gruppen mit 255 Meshes — 0,5 %**. Die bebaute Welt ist
+dichter als der Nebelradius. Nicht gebaut.
+
+⚠️ `scene.fog.far` ist **nicht konstant**: `max(340, camR*9.5)`, hängt also am Zoom. Wer hier
+doch etwas baut, liest den Wert zur Laufzeit und misst vom **Kamera**standort, nicht vom
+Spieler.
+
+### Was das LOD heute tut (und was nicht)
+`lodTakt()` blendet nur **kleine** Meshes aus (Radius ≤ 2,2 m) — ab 78 m, Winziges (< 0,55 m)
+schon ab 34 m. Alles Größere ist **immer sichtbar**; Häuser und Bäume werden nie auf Distanz
+ausgeblendet. Das ist bewusst so und nach obiger Messung auch richtig.
