@@ -3083,3 +3083,4 @@ gid://shopify/Product/15448628232577	CHF 24.00	5 Varianten	High Waist Skinny Jea
 gid://shopify/Product/15448628593025	CHF 24.45	5 Varianten	High Waist Wide Leg Jeans
 gid://shopify/Product/15448628920705	CHF 24.45	5 Varianten	Weisse High-Waist Cropped Jeans mit geradem Bein
 gid://shopify/Product/15448629150081	CHF 25.43	5 Varianten	Patchwork Denim Jeans im Western-Stil
+gid://shopify/Product/15448629444993	CHF 21.80	5 Varianten	High-Waist Straight-Leg Hose

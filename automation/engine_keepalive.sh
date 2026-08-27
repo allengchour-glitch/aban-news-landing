@@ -32,9 +32,19 @@ zaehle() { ps -eo args --no-headers | awk -v s="$1" '$1=="bash" && index($0,s)' 
 # Das ist die `pgrep -f`-Falle von Lehre 1 in neuer Verkleidung — diesmal nicht im eigenen
 # Aufruf, sondern in fremden Kindprozessen. Der Aufseher wird deshalb ueberall mit DEM
 # Muster gezaehlt, mit dem er auch beendet wird.
+# ⚠️ KORREKTUR ZUR ANNAHME VON HEUTE FRUEH: Nicht das lose Muster war schuld an
+# «13 Instanzen». Die Treffer sind ECHT — es sind aber keine zweiten Aufseher, sondern
+# FORKS DES EINEN. Bash forkt fuer jedes `( … & )` und jedes `$(…)` einen Subshell, und
+# ein Subshell BEHAELT die Kommandozeile des Elternprozesses. Belegt am 27.08.:
+#   PID 7846 SID 7846  ← der echte Aufseher
+#   PID 8033 SID 7846, PID 8246 SID 7846, … (13 weitere, alle SID 7846)
+# Alle haben PPID 1 (der Aufseher laeuft per setsid), sehen also aus wie eigenstaendige
+# Prozesse. Das alte Abraeumen hat damit die ARBEITENDEN Subshells des laufenden Aufsehers
+# erschlagen. Unterschieden wird jetzt an der SITZUNG: der per setsid gestartete Aufseher
+# ist Sitzungsfuehrer (pid == sid), seine Forks sind es nie.
 aufseher_pids() {
-  ps -eo pid,etimes,args --no-headers \
-    | awk '$3=="bash" && $4 ~ /fixer_keepalive\.sh$/ {print $2, $1}' | sort -n
+  ps -eo pid,sid,etimes,args --no-headers \
+    | awk '$1==$2 && $4=="bash" && $5 ~ /fixer_keepalive\.sh$/ {print $3, $1}' | sort -n
 }
 zaehle_aufseher() { aufseher_pids | grep -c . ; }
 
@@ -54,6 +64,10 @@ starte() {  # starte <logname> <befehl…>
 A=$(zaehle_aufseher)
 if [ "$A" -eq 0 ]; then
   echo "AUFSEHER neu gestartet"
+  # ⚠️ Uhr mitgeben: der frische Aufseher schreibt seinen ersten Herzschlag erst am Ende
+  # der ersten Runde. Bliebe die alte, kalte Zeit stehen, wuerde ihn der naechste Lauf
+  # als «haengend» toeten, bevor er je einen schreiben konnte.
+  date +%s > /tmp/_fixer_herzschlag
   starte fixer_keepalive bash automation/fixer_keepalive.sh
 elif [ "$A" -gt 1 ]; then
   # ⚠️ 21.08.2026: Der Aufseher hat eine EIGENE Wache gegen Doppelstarts (flock plus
@@ -96,10 +110,23 @@ else
         | awk '$2=="bash" && $3 ~ /fixer_keepalive\.sh$/ {print $1}' | xargs -r kill -9 2>/dev/null
       sleep 2
     fi
+    date +%s > /tmp/_fixer_herzschlag
     starte fixer_keepalive bash automation/fixer_keepalive.sh
     # Gegenprobe: ein Start, der sich selbst abmeldet, ist kein Start.
-    sleep 2
-    [ "$(zaehle_aufseher)" -eq 0 ] && echo "⚠️ AUFSEHER-Ersatz ist sofort wieder ausgestiegen"
+    # ⚠️ UND DANN NOCHMAL VERSUCHEN (27.08.2026). Die Gegenprobe hat beim ersten Ernstfall
+    # sofort angeschlagen: «Ersatz ist sofort wieder ausgestiegen», Aufseher=0. Grund war
+    # die flock-Sperre — sie war zum Startzeitpunkt noch von einem sterbenden Kind gehalten
+    # (dieselbe Klasse wie der geerbte Deskriptor von textbild_fix.py, im Aufseher oben
+    # dokumentiert); Sekunden spaeter hielt sie niemand mehr. Eine Wache, die den Fehlschlag
+    # nur MELDET, laesst den Shop trotzdem eine Stunde ohne Qualitaets-Waechter stehen.
+    # Also: bis zu dreimal nachfassen, mit wachsender Pause.
+    for versuch in 1 2 3; do
+      sleep $((versuch * 5))
+      [ "$(zaehle_aufseher)" -gt 0 ] && break
+      echo "⚠️ AUFSEHER-Ersatz ausgestiegen — Versuch $versuch"
+      starte fixer_keepalive bash automation/fixer_keepalive.sh
+    done
+    [ "$(zaehle_aufseher)" -eq 0 ] && echo "⛔ AUFSEHER laesst sich nicht starten (Sperre? /tmp/fixer_keepalive.log lesen)"
   else
     echo "AUFSEHER laeuft"
   fi

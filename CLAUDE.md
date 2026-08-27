@@ -1247,7 +1247,42 @@ Ringe durchblättert, fand dazwischen einen Abdeckstift und eine Wanderhose.
   alle acht sauber. **Nach einer Tag-Änderung am OBJEKT gegenprüfen, nicht über die Suche** —
   sonst repariert man ein zweites Mal, was längst stimmt.
 
+## ⛔ KORREKTUR: es waren FORKS des einen Aufsehers, nicht Zählfehler (2026-08-27, abends)
+Der Eintrag direkt darunter deutete «13 Instanzen» als Zählfehler durch ein zu loses Muster.
+**Das war falsch, und die Diagnose kostete beinahe den Aufseher selbst.** Mit `sid` abgefragt:
+
+```
+PID 7846  SID 7846  ← der echte Aufseher
+PID 8033  SID 7846      PID 8246 SID 7846      … 13 weitere, ALLE SID 7846
+```
+
+Die Treffer sind echte Prozesse — aber **Forks desselben Aufsehers**. Bash forkt für jedes
+`( … & )` und jedes `$(…)` einen Subshell, und **ein Subshell behält die Kommandozeile des
+Elternprozesses**. Weil der Aufseher per `setsid` läuft, haben seine Forks zudem PPID 1 und
+sehen damit aus wie eigenständige Prozesse. Der Aufseher startet in jeder Runde Dutzende
+Wächter — also flackern in jeder Runde Dutzende scheinbarer «Instanzen».
+**Das Abräumen hat damit die ARBEITENDEN Subshells des laufenden Aufsehers erschlagen** —
+mitten im Starten seiner Wächter. Die Wache gegen Doppelstarts war selbst der Störer.
+- Unterschieden wird jetzt an der **Sitzung**: Der per `setsid` gestartete Aufseher ist
+  Sitzungsführer (`pid == sid`), seine Forks sind es nie.
+- **Regel: Die Kommandozeile identifiziert ein PROGRAMM, nicht einen PROZESS.** Wer
+  «läuft das genau einmal?» beantworten will, braucht ein Merkmal, das ein Fork nicht erbt —
+  Sitzung, Lockdatei, PID-Datei. Vierte Fassung von Lehre 1, und die erste, die den
+  eigenen Zähler betrifft statt ein fremdes Muster.
+- ⚠️ **Und ein zweiter Fehler im selben Atemzug:** Der Herzschlag-Wächter tötete einen
+  FRISCH gestarteten Aufseher. Der schreibt seinen ersten Herzschlag erst am Ende der ersten
+  Runde; bis dahin galt die alte, kalte Zeit — also «hängt». Beim Start wird die Uhr jetzt
+  mitgesetzt. **Eine Frist muss beim Start beginnen, nicht beim letzten Lebenszeichen des
+  Vorgängers.**
+- ⚠️ Die Gegenprobe von heute Mittag hat sich sofort bewährt («Ersatz ist sofort wieder
+  ausgestiegen», Aufseher=0) — aber nur GEMELDET. Sie fasst jetzt dreimal mit wachsender
+  Pause nach: Ein Fehlschlag, der nur im Log steht, lässt den Shop trotzdem eine Stunde
+  ohne Qualitäts-Wächter stehen.
+
 ## 🔢 Zähler und Töter benutzten verschiedene Muster — «13 Instanzen», eine real (2026-08-27)
+> ⚠️ **Dieser Eintrag ist in der URSACHE überholt** — siehe die Korrektur direkt darüber.
+> Die Vereinheitlichung von Zähler und Töter bleibt trotzdem richtig; falsch war die
+> Erklärung, der lose Zähler habe fremde Prozesse mitgezählt.
 Direkt nach der Ersatz-Reparatur meldete `engine_keepalive.sh`: **«AUFSEHER: 13 Instanzen →
 12 beendet»**. Nachgezählt lief genau EINE, und das Aufseher-Log kannte für den ganzen Tag
 nur drei Startzeilen. Die Ursache steckt im Skript selbst: **gezählt** wurde mit dem losen
