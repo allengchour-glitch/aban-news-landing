@@ -1247,6 +1247,46 @@ Ringe durchblättert, fand dazwischen einen Abdeckstift und eine Wanderhose.
   alle acht sauber. **Nach einer Tag-Änderung am OBJEKT gegenprüfen, nicht über die Suche** —
   sonst repariert man ein zweites Mal, was längst stimmt.
 
+## 🤖 Der Shop antwortet KI-Agenten «wir liefern in 55 Länder» — er liefert in eines (2026-08-27)
+Shopify hat mit der Summer-'26-Edition das **Universal Commerce Protocol (UCP)** auf JEDEM
+Store standardmässig eingeschaltet: KI-Einkaufsagenten (Google, Amazon, Meta, Microsoft,
+Perplexity …) lesen den Katalog und bauen Warenkörbe. Live geprüft, nicht nachgelesen:
+`luxestyle.ch/.well-known/ucp` liefert gültiges JSON, Protokoll **2026-04-08**, mit
+`catalog.search`, `cart`, `checkout`, `order` und den Zahlarten Google Pay / Shop Pay / Karte.
+**Der Kanal ist also seit Wochen offen, ohne dass ihn jemand angesehen hat.**
+Der Katalog selbst antwortet gut: «Damen Armband Silber Geschenk» → 925-Silber-Armbänder,
+«Kaffeemaschine» → Kaffeemaschinen, «Hundeleine» → Hundeleinen. Titel und Texte sind auf
+Deutsch, die Arbeit der letzten Wochen zahlt sich dort aus.
+**Aber die Richtlinien-Auskunft ist falsch.** Auf «shipping» antwortet der Shop dem Agenten:
+> *The store ships to the following locations: Rest of world, AD, AL, AT, AU, … CH, DE, … US, VA*
+
+55+ Länder. **Live gegengeprüft gibt es genau EINEN aktiven Markt: «Switzerland», Regionen
+`['CH']`** — niemand ausserhalb der Schweiz kann überhaupt auschecken.
+Die Quelle ist die schlafende Versandzone «International / Rest of World» (CHF 15, aktiv),
+die am 14.08. bewusst NICHT angefasst wurde, weil sie ohne freigeschalteten Markt
+wirkungslos sei. **Das stimmt für den Checkout und stimmt nicht mehr für die Auskunft.**
+Ein Agent in Deutschland baut jetzt einen Warenkorb, den niemand bezahlen kann.
+- ⚠️ **NICHT von mir geändert.** Versandzonen greifen in den Checkout, und die
+  Hands-off-Warnung vom 14.08. stand aus gutem Grund da. Das ist eine Betreiber-Entscheidung:
+  entweder die internationale Zone entfernen (dann stimmt die Auskunft) oder einen Markt
+  freischalten (dann stimmt das Versprechen). Beides ist besser als der heutige Widerspruch.
+- ⚠️ Der Richtlinien-Dienst antwortet **nur auf Englisch**: «shipping» und «return policy»
+  liefern Text, «Versand» und «Datenschutz» liefern `[]`. Das ist Shopifys Index, nicht unser
+  Text — aber es heisst, dass ein deutschsprachiger Agent zu Versand und Rückgabe **gar nichts**
+  erfährt. Der Shop hat die Antworten, der Kanal findet sie nicht.
+
+## ⛔ Meine ersten drei Agenten-Abfragen waren falsch gebaut (2026-08-27)
+Ich fragte den MCP-Endpunkt mit `{"query": "Armband"}` und bekam für «Armband»,
+«Kaffeemaschine» und «Hundeleine» **dreimal dieselben zehn Produkte** — Sneaker, Brotkasten,
+Keramikteller. Ich war eine Minute davon entfernt, «der Shop antwortet Agenten auf jede Frage
+mit demselben Zufallsregal» zu melden.
+Das Schema verlangt aber `{"catalog": {"query": …}}`. Ein unbekannter Parameter wird still
+ignoriert, und der Endpunkt liefert dann seine Standardliste — **ein leerer oder generischer
+Treffer sieht genauso aus wie ein kaputter Dienst.**
+**Regel: Bevor eine fremde Schnittstelle für defekt erklärt wird, wird ihr Schema gelesen**
+(`tools/list`) — und die Gegenprobe gemacht, dass ein bekannt-guter Fall funktioniert. Genau
+die Reihenfolge, die beim Bild-Dubletten-Wächter heute schon einmal nötig war.
+
 ## 🎫 Das Alter der Token-Datei ist kein Beweis für ein gültiges Token (2026-08-27)
 `shop_token_refresh.sh` erneuert das Shopify-Token, wenn die Datei älter als 12 Stunden ist.
 Nach einem Snapshot-Rewind kommt aber ein **längst abgelaufenes Token in einer frisch
