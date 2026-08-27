@@ -1207,6 +1207,46 @@ eingerichteten Vorrang-Fenster, in dem der ganze Grind pausiert.
   `cj_variantenbild` und `cj_bild_backfill` ruhen im Fenster jetzt mit.
   **NICHT pausiert wird `cj_fulfill_runner`** — der bearbeitet echte Kundenbestellungen.
 
+## 🖥️ «monitor» steckt in «Monitoring» — 19 von 23 Treffern waren keine (2026-08-27)
+Der Kachel-Befund («fünf Smartwatches unter Computer & Zubehör») führte auf eine
+Kollektionsregel `TITLE CONTAINS "monitor"`. Nachgezählt gegen die PRODUKTLISTE, nicht gegen
+die Zahl:
+
+| | |
+|---|---:|
+| Treffer der Regel | 98 |
+| davon aktiv | 23 |
+| davon echtes Computerzubehör | **4** |
+
+Die 19 anderen: elf Smartwatches/Armbänder mit «Gesundheits**monitoring**», dazu Babyfon,
+Türspion mit LCD-Monitor, Luftqualitäts**monitor**, FPV-Monitor, Wildtierkamera «für
+**Monitoring**». Echte PC-Bildschirme (Dell, Philips, Acer …) sind allesamt DRAFT — die Regel
+holte also **keinen einzigen aktiven Monitor** herein, nur Zubehör und Rauschen.
+Ersetzt durch vier Wörter, die tatsächlich Computerzubehör bezeichnen: `monitor-erhöhung`,
+`monitor-lichtleiste`, `monitor-halter`, `monitorständer` → 4 aktive Treffer, 0 Fehltreffer.
+**Dieselbe Regel stand ein zweites Mal in `pc-homeoffice`** — gleiche Reparatur, gleiche
+Gegenprobe. Nichts wurde verwaist: die entfernten Artikel wohnen weiter in
+`smartwatches-wearables`, `baby-kleinkind`, `elektronik-gadgets`.
+- Sechste Wiederholung der Substring-Falle nach IPL/led-in-Leder/ski-in-Skincare/
+  auto-in-Automatik/creme-als-Farbe. **Kurze Wörter, die als Fremdwort-Endung vorkommen,
+  taugen nie als alleinige CONTAINS-Regel.**
+
+## 💍 Ein Concealer-Stick und eine Wanderhose lagen in der Ringe-Kategorie (2026-08-27)
+Auf derselben Spur: `sub-ringe` hängt an `TAG = ring`, und **acht aktive Produkte trugen den
+Tag ohne Ring zu sein** — drei **Contouring**-Sticks, vier Smartwatches mit
+«Gesundheitsmonito**ring**», eine Mammut-Hose «Base Jump So **Touring**». Wer im Shop
+Ringe durchblättert, fand dazwischen einen Abdeckstift und eine Wanderhose.
+- Entfernt mit **`tagsRemove`** (nie `productUpdate(tags:)` — das ersetzt die ganze Liste),
+  Ledger `dropship/_ring_tag_falsch.txt`.
+- **Die Quelle ist nicht `cat_tags.mjs`** — dessen Regel ist mit `\bring\b` korrekt verankert
+  und setzt ohnehin `schmuck`/`damen`, nicht `ring`. Kein aktuelles Skript schreibt diesen Tag.
+  Belegt ist nur: **das jüngste betroffene Produkt stammt vom 09.08.**, seither kam keines
+  dazu. «Versiegt» ist damit wahrscheinlich, nicht bewiesen.
+- ⚠️ **Shopifys Suchindex hinkt nach.** Direkt nach dem Entfernen meldete `tag:ring
+  status:active` die Produkte weiter (322 → 320 statt 314). Am Produkt selbst abgefragt waren
+  alle acht sauber. **Nach einer Tag-Änderung am OBJEKT gegenprüfen, nicht über die Suche** —
+  sonst repariert man ein zweites Mal, was längst stimmt.
+
 ## 🔢 Zähler und Töter benutzten verschiedene Muster — «13 Instanzen», eine real (2026-08-27)
 Direkt nach der Ersatz-Reparatur meldete `engine_keepalive.sh`: **«AUFSEHER: 13 Instanzen →
 12 beendet»**. Nachgezählt lief genau EINE, und das Aufseher-Log kannte für den ganzen Tag
