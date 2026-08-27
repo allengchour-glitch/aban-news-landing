@@ -927,3 +927,4 @@ gid://shopify/Product/15516664332673	ok	LED Pixel Smart Display Rucksack
 gid://shopify/Product/15517322412417	nicht-versendbar	Mini Gitarren- und Bassverstärker für Zuhause
 gid://shopify/Product/15517554377089	nicht-versendbar	Teppanyaki Steakgrill mit doppelseitiger Heizplatte
 gid://shopify/Product/15517575479681	ok	Brusttasche "Krokodil" aus Leder
+gid://shopify/Product/15517646094721	ok	Smartwatch 4G mit Dual-Kamera & Herzfrequenz

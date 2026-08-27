@@ -2742,3 +2742,70 @@ gid://shopify/Product/15448591139201	CHF 20.50	10 Varianten	Oversized Strick-Shi
 gid://shopify/Product/15448591270273	CHF 21.14	5 Varianten	Boho Strick-Cardigan für den Sommer
 gid://shopify/Product/15448591401345	CHF 20.67	60 Varianten	Gehäkelter Pullover mit Dreiviertelärmeln
 gid://shopify/Product/15448591434113	CHF 20.67	6 Varianten	Strickpullover mit Rückenausschnitt
+gid://shopify/Product/15448591466881	CHF 21.00	35 Varianten	V-Ausschnitt Pullover Slim Fit
+gid://shopify/Product/15448591532417	CHF 19.97	4 Varianten	Boho Mesh Stricktop mit Sternen
+gid://shopify/Product/15448591630721	CHF 21.12	15 Varianten	Eleganter Long Cardigan für Damen
+gid://shopify/Product/15448591663489	CHF 21.21	30 Varianten	Vielseitiger V-Pullover für Herbst & Winter
+gid://shopify/Product/15448591761793	CHF 21.60	4 Varianten	Strick-Cardigan mit Lochmuster
+gid://shopify/Product/15448591860097	CHF 21.16	20 Varianten	Rundhals Strickpullover mit Knopfleiste
+gid://shopify/Product/15448591892865	CHF 21.12	70 Varianten	Strick-Cardigan im Retro-Look
+gid://shopify/Product/15448591958401	CHF 20.67	12 Varianten	Lockerer Strick-Cardigan mit Fledermausärmeln
+gid://shopify/Product/15448592089473	CHF 21.87	5 Varianten	Eleganter Damen-Cardigan mit Lochmuster
+gid://shopify/Product/15448592286081	CHF 20.82	4 Varianten	Pullover mit Knopfleiste und Puffärmeln
+gid://shopify/Product/15448592417153	CHF 18.32	98 Varianten	Strickpullover mit Fledermausärmeln
+gid://shopify/Product/15448592515457	CHF 20.97	2 Varianten	Cardigan mit Farbblock-Plaid und Puffärmeln
+gid://shopify/Product/15448592580993	CHF 20.82	4 Varianten	Grauer Damen Pullover mit Rundhals
+gid://shopify/Product/15448592613761	CHF 20.97	4 Varianten	Fair Isle Strickpullover mit langen Ärmeln
+gid://shopify/Product/15448592646529	CHF 17.87	3 Varianten	Slim-Fit Strickpullover mit V-Ausschnitt
+gid://shopify/Product/15448592777601	CHF 20.08	30 Varianten	Strickpullover mit Rundhalsausschnitt für Damen
+gid://shopify/Product/15448592810369	CHF 28.13	6 Varianten	V-Ausschnitt Strickpullover im French-Style
+gid://shopify/Product/15448592843137	CHF 19.53	55 Varianten	Eleganter Rollkragenpullover aus Wolle
+gid://shopify/Product/15448592908673	CHF 22.32	45 Varianten	Kurzer Strick-Cardigan mit V-Ausschnitt
+gid://shopify/Product/15448593006977	CHF 20.08	12 Varianten	Pailletten-Pullover mit Rundhals
+gid://shopify/Product/15448593039745	CHF 21.71	96 Varianten	Hooded Drawstring Sweater aus Strick
+gid://shopify/Product/15448593105281	CHF 22.46	54 Varianten	Strick-Hoodie mit Reissverschluss
+gid://shopify/Product/15448593138049	CHF 22.16	21 Varianten	Strickpullover mit Rüschenärmeln und Knöpfen
+gid://shopify/Product/15448593203585	CHF 24.25	2 Varianten	Kuscheliger Zopfstrick-Pullover für Damen
+gid://shopify/Product/15448593236353	CHF 21.27	28 Varianten	Grobstick-Pullover mit V-Ausschnitt
+gid://shopify/Product/15448593269121	CHF 26.59	2 Varianten	Dicker Strickpullover mit Puppenkragen
+gid://shopify/Product/15448593432961	CHF 22.66	16 Varianten	Strickpullover mit Rundhals und langen Ärmeln
+gid://shopify/Product/15448593564033	CHF 20.97	12 Varianten	Kuscheliger Strickpullover mit Ballonärmeln
+gid://shopify/Product/15448593760641	CHF 24.70	12 Varianten	Strick-Cardigan für Damen
+gid://shopify/Product/15448593826177	CHF 23.36	4 Varianten	Casual Langarm-Pullunder für Damen
+gid://shopify/Product/15448593858945	CHF 22.16	5 Varianten	Strickpullover Rundhals Loose-Fit
+gid://shopify/Product/15448593924481	CHF 22.16	3 Varianten	Eleganter Colorblock Strickpullover mit Rundhals
+gid://shopify/Product/15448593957249	CHF 21.42	5 Varianten	Elegantes Langarmshirt mit Reverskragen
+gid://shopify/Product/15448594055553	CHF 21.42	20 Varianten	Strick-Cardigan mit 3D-Blumen und Stickereien
+gid://shopify/Product/15448594088321	CHF 21.57	4 Varianten	V-Neck Colorblock Strickpullover für Damen
+gid://shopify/Product/15448594186625	CHF 21.42	60 Varianten	Damen Rollkragen Strickpullover – Loose Fit
+gid://shopify/Product/15448594284929	CHF 23.21	30 Varianten	Strick-Cardigan mit Reverskragen und Farbblöcken
+gid://shopify/Product/15448594317697	CHF 27.54	6 Varianten	Damen Strickpullover mit Reverskragen
+gid://shopify/Product/15448594383233	CHF 21.27	8 Varianten	Strickpullover mit Laternenärmeln
+gid://shopify/Product/15448594416001	CHF 19.78	28 Varianten	Eleganter Strickpullover mit Rollkragen
+gid://shopify/Product/15448594514305	CHF 20.67	64 Varianten	Leichter Cardigan mit Taschen
+gid://shopify/Product/15448594612609	CHF 22.20	4 Varianten	Gestreifter Strick-Cardigan Grün-Weiss
+gid://shopify/Product/15448594710913	CHF 22.01	64 Varianten	Polo-Rollkragenpullover für Damen
+gid://shopify/Product/15448594907521	CHF 21.11	90 Varianten	Damen Pullover Rundhals Loose Fit
+gid://shopify/Product/15448595038593	CHF 21.88	100 Varianten	Hooded Pullover Sweater für Damen
+gid://shopify/Product/15448595169665	CHF 17.72	6 Varianten	Vielseitiger, weicher Damenpullover
+gid://shopify/Product/15448595267969	CHF 19.37	50 Varianten	Dünner Langarm V-Pullover
+gid://shopify/Product/15448595300737	CHF 23.06	5 Varianten	Colorblock Strickpullover mit Rundhals für Damen
+gid://shopify/Product/15448595333505	CHF 22.46	12 Varianten	Eleganter Strickpullover mit Spitzen-Puffärmeln
+gid://shopify/Product/15448595366273	CHF 18.73	6 Varianten	Herren Rollkragenpullover aus Modal
+gid://shopify/Product/15448595431809	CHF 27.05	30 Varianten	Long Cardigan mit Oversize-Passform und Taschen
+gid://shopify/Product/15448595497345	CHF 21.00	15 Varianten	Ärmelloses Kaschmir-Stricktop mit figurbetontem Sc
+gid://shopify/Product/15448595562881	CHF 22.28	6 Varianten	Gerippter Rundhals-Pullover für Herbst/Winter
+gid://shopify/Product/15448595595649	CHF 35.90	1 Varianten	Gepolsterter Cardigan im koreanischen Stil
+gid://shopify/Product/15448595628417	CHF 18.86	80 Varianten	Unifarbener Oversize Rollkragenpullover für Damen
+gid://shopify/Product/15448595661185	CHF 21.12	3 Varianten	Herz-Pullover mit Rundhals und ausgestellten Ärmel
+gid://shopify/Product/15448595726721	CHF 18.17	84 Varianten	Damen Rollkragenpullover aus Strick
+gid://shopify/Product/15448595759489	CHF 23.19	9 Varianten	Strick-Cardigan mit Rundhals und Knöpfen
+gid://shopify/Product/15448595890561	CHF 24.78	5 Varianten	Boho-Chic Resort-Set mit weitem Bein
+gid://shopify/Product/15448595923329	CHF 17.21	15 Varianten	Gestreiftes Strick-Pyjama-Set mit Shorts
+gid://shopify/Product/15448595988865	CHF 21.27	72 Varianten	Regenbogen Tie-Dye Top & Weite Hose Set
+gid://shopify/Product/15448596054401	CHF 27.62	3 Varianten	Pyjama-Set aus Eisseide mit Spitze
+gid://shopify/Product/15448596087169	CHF 21.71	10 Varianten	Gestreifter Casual Anzug mit V-Ausschnitt
+gid://shopify/Product/15448596119937	CHF 21.71	75 Varianten	Shirt-Set mit Digitaldruck
+gid://shopify/Product/15448596185473	CHF 27.50	12 Varianten	Nahtloses Farbblock Yoga-Set
+gid://shopify/Product/15448596218241	CHF 29.31	20 Varianten	Sport-Outfit Set: BH, Tanktop & High-Waist Legging
+gid://shopify/Product/15448596349313	CHF 26.42	36 Varianten	Matte Sport Yoga-Set mit Shorts und BH
