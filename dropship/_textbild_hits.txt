@@ -12923,3 +12923,4 @@ gid://shopify/Product/15470076920193	191->0	Ticketsabroller Metall
 gid://shopify/Product/15470077837697	123->3	Katzen-Duschkabinen-Vorhang
 gid://shopify/Product/15470352138625	42->1	Wasserdichte Möbelabdeckung
 gid://shopify/Product/15470741848449	149->0	Leichtes Hundegeschirr mit Leine
+gid://shopify/Product/15472257663361	8->1	Elektrischer Dosenöffner für die Küche
