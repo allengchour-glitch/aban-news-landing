@@ -1273,7 +1273,10 @@ die gibt es nicht):
 Ausgerechnet auf der Seite mit dem meisten Suchtraffic stand «Das Set ist in verschiedenen
 Grössen erhältlich» — bei **einer** Variante. Die Kundin sucht die Grössenwahl, findet keine
 und geht; **keine Statistik weist das je als Kaufabbruch aus.** Über 800 geprüfte Neuimporte:
-**135 Treffer, 17 %.** Ursache immer dieselbe wie beim Organizer und beim Federarmband:
+**135 Treffer, 17 %** — aber NUR bei den Neuimporten der letzten Tage. Der Gegenlauf über
+**3'000 ältere Produkte fand 32 (rund 1 %)**. Meine erste Hochrechnung auf «~8’000 Produkte»
+war damit falsch: Die Klasse wächst mit dem täglichen Grind nach, der Altbestand ist weitgehend
+sauber. **Eine Stichprobe aus den jüngsten Importen ist keine Stichprobe des Katalogs.** Ursache immer dieselbe wie beim Organizer und beim Federarmband:
 **Der Text beschreibt das CJ-Listing mit zwölf Varianten, angelegt wird bei uns eine.**
 `automation/wahlversprechen.py` (täglich im Aufseher) meldet; `FIX=1` repariert eng begrenzt.
 - **Nur reine Absätze und eindeutige Listenpunkte werden angefasst.** Der Trockentest zeigte
