@@ -1247,6 +1247,43 @@ Ringe durchblättert, fand dazwischen einen Abdeckstift und eine Wanderhose.
   alle acht sauber. **Nach einer Tag-Änderung am OBJEKT gegenprüfen, nicht über die Suche** —
   sonst repariert man ein zweites Mal, was längst stimmt.
 
+## ⏱️ Die 45-Sekunden-Pause war geraten — jetzt gemessen (2026-08-27)
+Sechs CJ-Abfragen im Abstand von 15 s, während keine eigene Engine lief:
+
+| Zeit | remaining | usedToday |
+|---|---:|---:|
+| 17:41:49 | 531 | 109'540 |
+| 17:42:05 | 565 | 109'550 |
+| 17:42:52 | 535 | 109'580 |
+| 17:43:08 | 569 | 109'590 |
+
+Daraus zwei harte Zahlen, die vorher niemand hatte:
+- **Eine `product/query` kostet genau 10 Punkte** (usedToday steigt je Abfrage um 10).
+- **Der Eimer füllt mit rund 2,75 Punkten/Sekunde nach** (~165/min) — er PENDELT, er läuft
+  nicht leer und nicht voll.
+Die feste Pause von 45 s im Kosten-Backfill holt damit ~124 Punkte = 12 Produkte — wartet
+aber auch dann volle 45 s, wenn schon 15 Punkte da sind. Gewartet wird jetzt genau so lange,
+bis 60 Punkte (sechs Abfragen) beisammen sind: 3 s im besten, 22 s im schlechtesten Fall.
+- ⚠️ **`usedToday` (107'210) liegt weit über `total` (63'387).** Das «Tagesbudget» ist also
+  keine Obergrenze, sondern ein Zähler; die Obergrenze ist der Eimer. Damit ist auch klar,
+  warum das Vorrang-Fenster 16:00–17:30 wenig bringt: Es gibt keinen Reset, auf den man sich
+  stellen könnte — es gibt nur einen Fluss, den man teilt.
+
+## 🩹 Ich habe eine Datei bearbeitet, die gar nicht mehr die aktuelle war (2026-08-27)
+Mitten in der Arbeit an `cj_kosten_backfill.mjs` fiel auf: Die morgens eingebauten Fixes
+(`variantsCount`, `shopifyStumm`) waren **weg** — `grep -c` fand 0. Erster Verdacht: Der
+Commit ist nie angekommen. Falsch. **`git log --oneline -1` zeigte 845424692 — den
+Snapshot-Commit vom 24.08. 15:36.** Der Container war zwischen zwei Keepalive-Läufen
+zurückgefallen, und ich hatte ohne Nachsehen weitergeschrieben. Meine Änderung landete in
+der ALTEN Fassung und war nach dem Vorspulen weg; die Fixes von origin kamen unversehrt
+zurück.
+**Regel für die eigene Arbeitsweise: Vor jeder Code-Änderung `git log --oneline -1` und
+`git status` lesen.** Die Rewind-Erkennung des Keepalive läuft am ENDE seines Laufs — im
+Fenster dazwischen sieht ein rückgefallener Baum völlig normal aus. Ein `grep`, das etwas
+nicht findet, ist kein Beweis, dass es nie da war; es kann auch die falsche Datei sein.
+⚠️ Und das ist teurer als es klingt: Hätte ich die verlorene Änderung nicht bemerkt, hätte
+ich sie ein zweites Mal «neu» gebaut — oder schlimmer, ihr Fehlen als neuen Befund gemeldet.
+
 ## 🖼️ Der Dateiname ist verschieden, die BYTES sind es nicht (2026-08-27)
 Der Betreiber schickte einen Screenshot der Startseite: **«Armband mit Diamantherz» und
 «Armband ‹Hohles Herz› mit Zirkonia» nebeneinander — gleicher Preis (CHF 21.90), gleiches

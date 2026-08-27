@@ -3134,3 +3134,42 @@ gid://shopify/Product/15448642519425	CHF 18.77	40 Varianten	High-Waist Yoga Shor
 gid://shopify/Product/15448642748801	CHF 22.19	25 Varianten	Atmungsaktiver Yoga Skort mit Taschen
 gid://shopify/Product/15448642781569	CHF 21.18	4 Varianten	Gerüschte Yoga- und Fitness-Shorts für Damen
 gid://shopify/Product/15448642847105	CHF 22.45	12 Varianten	Damen Radhose mit Polster
+gid://shopify/Product/15448642912641	CHF 19.23	96 Varianten	Eng anliegende Yoga-Shorts für Damen
+gid://shopify/Product/15448642945409	CHF 17.90	44 Varianten	High-Waist Workout Shorts mit Po-Lifting-Effekt
+gid://shopify/Product/15448643010945	CHF 19.92	95 Varianten	Loose-fit Yoga & Fitness Shorts für Damen
+gid://shopify/Product/15448643043713	CHF 20.67	6 Varianten	Sexy Low-Rise Denim Shorts mit Ripped-Details
+gid://shopify/Product/15448643076481	CHF 16.97	6 Varianten	Nahtlose Ultra-dünne Damen Feinstrümpfe
+gid://shopify/Product/15448643142017	CHF 21.12	26 Varianten	A-Linien Denim Shorts mit Fransen
+gid://shopify/Product/15448643174785	CHF 17.87	20 Varianten	High-Waist Yoga Leggings Capri
+gid://shopify/Product/15448643240321	CHF 20.82	25 Varianten	High-Waist Weite-Bein Shorts
+gid://shopify/Product/15448643338625	CHF 21.71	15 Varianten	Trendige Washed Denim Shorts mit Rissen
+gid://shopify/Product/15448643371393	CHF 19.53	15 Varianten	Blumige Patchwork Low-Rise Shorts für Damen
+gid://shopify/Product/15448643469697	CHF 18.61	95 Varianten	High-Waist Faltenrock mit Anti-Expositions-Design
+gid://shopify/Product/15448643502465	CHF 22.66	24 Varianten	Leichte Capri Culottes mit hoher Taille
+gid://shopify/Product/15448643600769	CHF 24.75	8 Varianten	Polyester Damen-Shorts
+gid://shopify/Product/15448643666305	CHF 18.41	12 Varianten	Gehäkelte Strand-Shorts mit Kordelzug
+gid://shopify/Product/15448643699073	CHF 17.42	16 Varianten	Weite High-Waist Shorts für zierliche Figuren
+gid://shopify/Product/15448643731841	CHF 20.08	18 Varianten	High-Waisted Cargo Shorts für Damen
+gid://shopify/Product/15448643764609	CHF 17.87	25 Varianten	Retro Sportshorts im American Style
+gid://shopify/Product/15448643797377	CHF 19.37	8 Varianten	Trendige A-Linie Hot Pants aus Denim
+gid://shopify/Product/15448643862913	CHF 23.21	2 Varianten	Sexy Samt-Hotpants mit hoher Taille
+gid://shopify/Product/15448643928449	CHF 17.87	44 Varianten	Sportliche Viertellange Shorts für Damen
+gid://shopify/Product/15448643993985	CHF 19.53	48 Varianten	Retro Chic Cropped Culottes Plus Size
+gid://shopify/Product/15448644026753	CHF 17.30	15 Varianten	High-Waist Yoga Shorts im Zweiteiler-Look
+gid://shopify/Product/15448644092289	CHF 16.88	18 Varianten	Leopard-Print Yoga Shorts
+gid://shopify/Product/15448644157825	CHF 18.47	27 Varianten	Nahtlose High-Waist Yoga-Hose für Damen
+gid://shopify/Product/15448644190593	CHF 19.53	30 Varianten	Retro Capri Shorts mit Schneeflocken-Textur
+gid://shopify/Product/15448644256129	CHF 20.22	9 Varianten	Gestreifte High-Waist Denim Shorts in Übergrössen
+gid://shopify/Product/15448644288897	CHF 20.82	30 Varianten	Business-Freizeit Shorts für Damen
+gid://shopify/Product/15448644321665	CHF 19.45	32 Varianten	Leichte Outdoor-Shorts für Damen
+gid://shopify/Product/15448644419969	CHF 20.67	40 Varianten	High-Waist Cropped Shorts mit weitem Bein
+gid://shopify/Product/15448644452737	CHF 18.92	4 Varianten	Mesh Sportshorts mit Seitenbogen
+gid://shopify/Product/15448644518273	CHF 21.27	60 Varianten	Weite Denim-Shorts für Damen
+gid://shopify/Product/15448644583809	CHF 20.67	16 Varianten	Denim Capri Shorts für Damen
+gid://shopify/Product/15448644649345	CHF 19.63	12 Varianten	Sommer High-Waist Shorts im Zweiteiler-Look
+gid://shopify/Product/15448644714881	CHF 18.32	20 Varianten	Sport-Shorts mit Kordelzug
+gid://shopify/Product/15448644780417	CHF 18.44	35 Varianten	Freizeit-Shorts mit weitem Bein und Print
+gid://shopify/Product/15448644878721	CHF 18.77	90 Varianten	Bequeme Shorts mit Kordelzug für Damen
+gid://shopify/Product/15448644977025	CHF 19.19	5 Varianten	Elegante Jacquard-Shorts mit hoher Taille
+gid://shopify/Product/15448645206401	CHF 21.40	3 Varianten	Sexy Slim-Fit Denim-Style Shorts mit Schleife
+gid://shopify/Product/15448645304705	CHF 18.02	55 Varianten	Leichte Leinen-Shorts mit Taschen

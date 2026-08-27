@@ -204,10 +204,21 @@ async function main() {
       // Abbruchgrund — sie sagt nur, wie lange zu warten ist.
       // Das ECHTE Tagesende meldet CJ mit Fehlercode 16900500 und dem Klartext
       // «Insufficient API points ... Remaining: 0» — das wird unten abgefangen.
+      // ⚠️ 45 SEKUNDEN WAREN GERATEN — jetzt gemessen (27.08.2026).
+      // Sechs Abfragen im Abstand von 15 s, waehrend keine eigene Engine lief:
+      //   usedToday stieg je Abfrage um genau 10  → EINE product/query kostet 10 Punkte.
+      //   remaining pendelte 531 · 565 · 555 · 545 · 535 · 569 bei laufendem Verbrauch
+      //   → Nachfluss rund 2,75 Punkte/Sekunde (~165/min).
+      // Eine feste Pause von 45 s holt ~124 Punkte = 12 Produkte, wartet aber auch dann
+      // 45 s, wenn schon 15 Punkte da sind. Gewartet wird jetzt genau so lange, bis ein
+      // Puffer von 60 Punkten (sechs Abfragen) beisammen ist.
+      const NACHFLUSS = 2.75;                 // Punkte je Sekunde, gemessen
+      const PUFFER = 60;
       const rest = j?.pointsInfo?.remaining;
       if (typeof rest === 'number' && rest < 20) {
-        console.log(`  Eimer leer (${rest}) — 45 s warten`);
-        await sleep(45000);
+        const warten = Math.min(45000, Math.max(3000, Math.ceil((PUFFER - rest) / NACHFLUSS) * 1000));
+        console.log(`  Eimer knapp (${rest}) — ${Math.round(warten / 1000)} s warten`);
+        await sleep(warten);
       }
       if (!j.result) {
         // ⚠️ Nur DAS ist das echte Tagesende: Code 16900500 mit «Insufficient API points».
