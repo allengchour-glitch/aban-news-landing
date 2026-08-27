@@ -83,3 +83,5 @@ gid://shopify/Product/15503260025217	publiziert	Solar-Strassenleuchte mit Farbwa
 gid://shopify/Product/15503292793217	publiziert	In-Ear Gaming-Kopfhörer mit Mikrofon
 gid://shopify/Product/15510800728449	publiziert	Damen Shorts mit Print und seitlichem Tunnelzug
 gid://shopify/Product/15516170551681	publiziert	Uhrenreparaturwerkzeug
+gid://shopify/Product/15508422623617	publiziert	Lidschatten-Palette Mystic Petals Midnight Orchid
+gid://shopify/Product/15516304441729	publiziert	Elegantes Business-Midikleid mit Rüschenärmeln
