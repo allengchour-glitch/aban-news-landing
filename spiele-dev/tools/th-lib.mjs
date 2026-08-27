@@ -48,10 +48,16 @@ export function mitSonden(quelldatei, sonden, zieldatei) {
    bekommt andere Zahlen als bei 60 s — das hat schon zu falschen Befunden gefuehrt
    ("16 Objekte auf der Strasse" bei 557 statt 640 geladenen Modellen). */
 export async function spielOeffnen(datei, opt = {}) {
-  const { warten = 55000, starten = true, viewport = { width: 1100, height: 620 } } = opt
+  /* ⚠️ `screen` MUSS mitgegeben werden koennen. Das Spiel entscheidet ueber `_mobil`
+     per `Math.min(screen.width, screen.height) < 820`, und Playwright setzt `screen`
+     sonst auf das FENSTER — mit dem 1100x620-Standard ist 620 < 820, also lief jede
+     Messung ungewollt im Handy-Modus (Schatten aus, Pixel-Deckel 1,35). Dieselbe Falle
+     hatte th-koop.mjs schon einmal; sie gehoert hierher, nicht in jedes Werkzeug. */
+  const { warten = 55000, starten = true, viewport = { width: 1100, height: 620 },
+          screen = null } = opt
   serverStarten()
   const browser = await chromium.launch({ executablePath: CHROMIUM })
-  const page = await browser.newPage({ viewport })
+  const page = await browser.newPage(screen ? { viewport, screen } : { viewport })
   const jsFehler = [], fehlend = []
   page.on('pageerror', (e) => jsFehler.push(String(e).slice(0, 200)))
   page.on('response', (r) => { if (r.status() === 404) fehlend.push(r.url().split('/').pop()) })
