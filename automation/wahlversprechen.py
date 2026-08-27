@@ -38,7 +38,11 @@ WAHL = re.compile(
     r'|w[äa]hlen Sie (?:zwischen|aus)'
     r'|zur Auswahl stehen'
     r'|(?:Modelle|Ausf[üu]hrungen) mit .{0,40}(?:oder|und) .{0,25}(?:F[äa]chern|St[üu]ck|Gr[öo]ssen)'
-    r'|erh[äa]ltlich in .{0,30}(?:und|oder) .{0,30}(?:Farben?|Gr[öo]ssen?)', re.I)
+    r'|erh[äa]ltlich in .{0,30}(?:und|oder) .{0,30}(?:Farben?|Gr[öo]ssen?)'
+    # «Verfügbar in zwei Grössen: S und M» — an einem Produkt mit EINER Variante ist die
+    # Zahl die Ankuendigung einer Wahl, nicht eine Eigenschaft (gefunden am Keramik-Napf).
+    r'|(?:verf[üu]gbar|erh[äa]ltlich) in (?:zwei|drei|vier|f[üu]nf|sechs|\d+) '
+    r'(?:Gr[öo]ssen|Farben|Ausf[üu]hrungen|Varianten|Modellen)', re.I)
 
 def gql(q, v=None):
     gedrosselt, i = 0, 0
@@ -105,6 +109,88 @@ if treffer:
 elif os.path.exists(BERICHT):
     os.remove(BERICHT)
 
+# ── REPARATUR (nur mit FIX=1) ────────────────────────────────────────────────────────────
+# ⚠️ SATZWEISE, NIE MIT ROHEM REGEX (Lehre 21.08.: der erste Wearable-Entwurf hinterliess
+# «Es misst praezise Ihr die Herzfrequenz» und Saetze, die klein anfingen). Und nur dort, wo
+# das Wahlversprechen den Satz TRAEGT — sonst bleibt der Satz stehen und wird gemeldet.
+GRENZE = 0.45          # Anteil, den die Fundstelle am SATZ haben muss, damit der Satz faellt
+# ⚠️ Fuer LISTENPUNKTE gilt ein tieferer Wert. Grund: Die Regex trifft nur die Ankuendigung
+# («in verschiedenen Farben»), nicht die angehaengte Aufzaehlung («: Gruen, Gelb, Pink,
+# Weiss, Grau») — der Anteil sinkt dadurch unter die Satz-Grenze, obwohl der ganze Punkt
+# nichts anderes sagt. Ein Listenpunkt ist kurz und hat in aller Regel genau eine Aussage.
+GRENZE_LI = 0.30
+
+def saetze(t):
+    """Text in Saetze zerlegen, Trennzeichen behalten."""
+    teile, start = [], 0
+    for m in re.finditer(r'[.!?](?:\s|$)', t):
+        teile.append(t[start:m.end()]); start = m.end()
+    if start < len(t):
+        teile.append(t[start:])
+    return teile
+
+def bereinige(html):
+    """Gibt (neues_html, was_entfernt) zurueck. Faellt nichts weg: (html, [])."""
+    weg = []
+    # 1) Listenpunkte, die NUR das Versprechen sind — der ganze Punkt faellt.
+    def li(m):
+        inhalt = re.sub(r'<[^>]+>', ' ', m.group(1))
+        inhalt = re.sub(r'\s+', ' ', inhalt).strip()
+        f = WAHL.search(inhalt)
+        if f and len(f.group(0)) / max(len(inhalt), 1) >= GRENZE_LI:
+            weg.append('• ' + inhalt[:60]); return ''
+        return m.group(0)
+    neu = re.sub(r'<li[^>]*>(.*?)</li>', li, html, flags=re.S)
+
+    # 2) Fliesstext NUR in REINEN Absaetzen — solchen ohne innere Tags.
+    # ⚠️ WARUM SO ENG (Trockentest 27.08.2026): Bei «Ein <strong>schöner</strong> Ring,
+    # erhältlich in Gold- oder Stahlfarben.» sieht ein Textknoten-Verfahren nur den Rest
+    # «Ring, erhältlich in Gold- oder Stahlfarben.» — haelt ihn fuer einen ganzen Satz,
+    # loescht ihn und hinterlaesst «Ein schöner». Genau der Fehler, den die Wearable-
+    # Reparatur am 21.08. schon einmal gemacht hat. Ein Absatz mit Auszeichnung wird
+    # deshalb NICHT angefasst, sondern nur gemeldet — lieber ein falscher Satz stehen
+    # als ein halber.
+    def absatz(m):
+        innen = m.group(1)
+        raus = []
+        for s_ in saetze(innen):
+            k = re.sub(r'\s+', ' ', s_).strip()
+            f = WAHL.search(k)
+            if f and k and len(f.group(0)) / len(k) >= GRENZE:
+                weg.append(k[:70]); continue
+            raus.append(s_)
+        rest = ''.join(raus)
+        return '' if not rest.strip() else m.group(0).replace(innen, rest)
+    neu = re.sub(r'<p[^>]*>([^<>]*)</p>', absatz, neu)
+
+    neu = re.sub(r'<li[^>]*>\s*</li>', '', neu)
+    neu = re.sub(r'<(p|ul|ol)[^>]*>\s*</\1>', '', neu)
+    neu = re.sub(r'[ \t]{2,}', ' ', neu)
+    return neu, weg
+
+gefixt = 0
+if FIX and treffer:
+    with open(LEDGER, 'a') as led:
+        for pid, t, stelle in treffer:
+            if pid in erledigt:
+                continue
+            d = gql('query($i:ID!){product(id:$i){descriptionHtml}}', {'i': 'gid://shopify/Product/' + pid})
+            h = ((d.get('data') or {}).get('product') or {}).get('descriptionHtml') or ''
+            if not h:
+                continue
+            neu, weg = bereinige(h)
+            if not weg or neu == h:
+                continue          # traegt den Satz nicht -> bleibt stehen und wird gemeldet
+            r = gql('mutation($i:ProductInput!){productUpdate(input:$i){product{id} userErrors{message}}}',
+                    {'i': {'id': 'gid://shopify/Product/' + pid, 'descriptionHtml': neu}})
+            if (r.get('data') or {}).get('productUpdate', {}).get('userErrors'):
+                continue
+            led.write(f'{pid}\t{" | ".join(weg)[:120]}\t{t[:50]}\n'); led.flush()
+            gefixt += 1
+            if gefixt % 25 == 0:
+                print(f'   {gefixt} Texte bereinigt', flush=True)
+    print(f'{gefixt} Texte bereinigt (Ledger {LEDGER})')
+
 # ⚠️ FERTIG haengt an der ZAHL DER PRUEFUNGEN, nicht an der Zahl der Befunde — ein
 # Melde-Waechter wird sonst nie fertig und der Aufseher startet ihn endlos neu (Lehre 21.08.).
-print(f'FERTIG: {gesehen} geprueft, {len(treffer)} gemeldet.')
+print(f'FERTIG: {gesehen} geprueft, {len(treffer)} gemeldet, {gefixt} bereinigt.')
