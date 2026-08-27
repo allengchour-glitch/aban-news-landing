@@ -3107,3 +3107,4 @@ gid://shopify/Product/15448635081089	CHF 24.95	6 Varianten	Straight-Leg Jeans mi
 gid://shopify/Product/15448635277697	CHF 20.97	7 Varianten	Bestickte Denim-Shorts mit Welpen-Design
 gid://shopify/Product/15448635507073	CHF 19.08	20 Varianten	Irregular Design Straight-Leg Jeans
 gid://shopify/Product/15448635736449	CHF 25.00	15 Varianten	Retro Faux Two-piece Wide-leg Jeans
+gid://shopify/Product/15448635998593	CHF 21.42	20 Varianten	High-Elasticity Slim-Fit Jeans für Damen
