@@ -3087,3 +3087,8 @@ gid://shopify/Product/15448629444993	CHF 21.80	5 Varianten	High-Waist Straight-L
 gid://shopify/Product/15448629739905	CHF 18.91	15 Varianten	High-Waist Stretch-Denim Shorts mit Rissen
 gid://shopify/Product/15448630100353	CHF 20.53	9 Varianten	Loose-Fit High-Waist Denim Capris
 gid://shopify/Product/15448630395265	CHF 22.94	2 Varianten	Plus-Size Cropped Jeans mit Ripped Details
+gid://shopify/Product/15448630657409	CHF 24.81	5 Varianten	High Waist Straight Leg Jeans im Vintage Look
+gid://shopify/Product/15448630952321	CHF 23.66	14 Varianten	Cropped Wide-Leg Jeans mit hoher Taille
+gid://shopify/Product/15448631214465	CHF 17.49	15 Varianten	Denim-Look Leggings mit hohem Bund
+gid://shopify/Product/15448631542145	CHF 22.16	5 Varianten	Vielseitige Cropped Jeans mit hohem Stretch
+gid://shopify/Product/15448631804289	CHF 21.27	4 Varianten	High-Waist Loose-Fit Jeans (Washed)

@@ -12916,3 +12916,6 @@ gid://shopify/Product/15469944209793	12->0	Neon Tutu
 gid://shopify/Product/15469970653569	31->0	Tutu Regenbogen
 gid://shopify/Product/15469977633153	12->0	Kostüm Hexe schwarz-weiss
 gid://shopify/Product/15469979074945	59->0	Zylinder schwarz
+gid://shopify/Product/15470010696065	47->1	Halskette mit Totenköpfen
+gid://shopify/Product/15470013743489	16->0	Wurfbeutel / Konfettitasche
+gid://shopify/Product/15470018888065	86->0	Tischdecke Boneshine Fever
