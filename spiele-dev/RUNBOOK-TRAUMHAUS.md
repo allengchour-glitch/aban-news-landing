@@ -1200,3 +1200,26 @@ zweites Mal in eine 2048er Shadow-Map gerendert. Häuser und Figuren behalten ih
 **Lehre:** eine Optimierung hinter `if(_mobil)` ist wertlos, wenn der Handy-Pfad die teure
 Sache ohnehin abschaltet. Vor jeder solchen Schranke prüfen, **welcher Pfad die Kosten
 wirklich trägt** — und das Werkzeug muss sagen, welchen Pfad es gerade misst.
+
+## 2026-08-27 · 📊 Stand nach der Lag-Runde (beide Pfade, verifiziert)
+
+Gemessen auf `main` nach #2334/#2335/#2336, `th-tempo.mjs` je Pfad:
+
+| Pfad | vorher | nachher | was greift |
+|---|---|---|---|
+| 📱 Handy | 952 ms | **350 ms** | Lichtkappung, dynamische Auflösung |
+| 🖥️ Rechner | 730 ms | **493 ms** | Lichtkappung, Schattenwerfer |
+
+⚠️ Beides sind Zahlen aus dem Software-Rasterizer, **keine Gerätewerte**. Übertragbar ist
+die Richtung, nicht der Faktor: auf einem schnellen Gerät bleibt die Auflösungsregelung
+untätig (so gewollt), und der Anteil der Füllrate ist dort viel kleiner.
+
+### ❌ `_opakSchalten()` auf dem Rechner: gemessen, nichts, nicht gebaut
+Nach dem Schattenfund lag der Verdacht nahe, dass die zweite `if(!_mobil) return;`-Funktion
+dasselbe Problem hat. Gemessen (zwei Läufe je Seite, Rechner-Pfad): **490 vs. 495 ms**, und
+sie schaltet nur **14** Materialien um (487 → 473 transparente). Anders als bei den Schatten
+ist der Handy-Pfad hier nicht der, der die Kosten trägt — die Szene hat schlicht kaum
+Transparenz. Die Schranke bleibt.
+
+**Merke:** derselbe Verdacht an derselben Stelle heißt nicht derselbe Befund. Auch die
+zweite Prüfung war eine Messung wert — und sie war negativ.
