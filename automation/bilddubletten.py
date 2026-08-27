@@ -1,0 +1,197 @@
+#!/usr/bin/env python3
+"""bilddubletten.py — findet Produkt-Dubletten am BILDINHALT.
+
+WARUM (27.08.2026, Betreiber-Screenshot): Auf der Startseite standen «Armband mit
+Diamantherz» und «Armband ‹Hohles Herz› mit Zirkonia» nebeneinander — gleicher Preis,
+gleiches Foto, zwei Produkte. Keine der bestehenden Wachen konnte das sehen:
+  · Titelvergleich  → die Titel sind verschieden.
+  · SKU-Vergleich   → CJ vergibt je Listing eine eigene SKU (…1630600 / …1603000).
+  · Handle-Vergleich → verschiedene Titel ergeben verschiedene Slugs.
+  · Bild-URL-Vergleich → CJ lädt dasselbe Foto je Listing unter NEUER CDN-URL hoch;
+    genau daran ist der `imgKey`-Dedup am 26.07. gescheitert («0 bild-identische»).
+Der Inhalt ist aber gleich: alle fünf Bilder beider Produkte hatten dieselbe MD5-Summe.
+**Der Dateiname ist verschieden, die Bytes sind es nicht.** Darauf prüft dieser Wächter.
+
+VERFAHREN (billig sieben, teuer bestätigen):
+  1. Nur das HAUPTBILD jedes aktiven Produkts wird geladen und gehasht — einmal.
+     Das Ergebnis steht im Ledger und wird nur neu geholt, wenn sich die Bild-URL ändert.
+  2. Nur für Verdachtsgruppen (gleicher Hash) werden ALLE Medien beider Produkte gehasht.
+     Erst ab ZWEI gemeinsamen Bildern gilt es als Dublette — ein einzelnes gemeinsames
+     Bild kann ein generisches Verpackungs- oder Grössenbild sein.
+
+STANDARD IST MELDEN. `FIX=1` draftet die JÜNGERE Fassung (die ältere hat Bewertungen,
+Links und Verkaufshistorie) mit Tag `duplikat-auto-draft` — nie löschen, nie beide.
+⚠️ Tags NUR mit tagsAdd; `productUpdate(input:{tags:…})` ersetzt die ganze Liste.
+
+ENV: HASHCAP=400 (Bilder je Lauf) · SEIT=JJJJ-MM-TT · FIX=1 · DRY=1
+"""
+import json, os, subprocess, sys, time, hashlib, re
+
+TOK = open('/tmp/cj_shop_token.txt').read().strip()
+URL = 'https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json'
+LEDGER = 'dropship/_bildhash.txt'
+BERICHT = 'dropship/BILD-DUBLETTEN.md'
+GETAN = 'dropship/_bilddubletten_gedraftet.txt'
+HASHCAP = int(os.environ.get('HASHCAP', '400'))
+SEIT = os.environ.get('SEIT', '')
+FIX = os.environ.get('FIX') == '1'
+
+def gql(q, v=None):
+    # Drosselung ist eine Warteanweisung, kein Abbruchgrund (Lehre 21./27.08.).
+    gedrosselt = 0
+    i = 0
+    while i < 8:
+        r = subprocess.run(['curl', '-s', '--max-time', '60', URL,
+                            '-H', 'X-Shopify-Access-Token: ' + TOK,
+                            '-H', 'Content-Type: application/json',
+                            '-d', json.dumps({'query': q, 'variables': v or {}})],
+                           capture_output=True, text=True)
+        try:
+            d = json.loads(r.stdout)
+            if d.get('data'):
+                return d
+            if 'THROTTLED' in json.dumps(d.get('errors') or ''):
+                gedrosselt += 1
+                time.sleep(3)
+                if gedrosselt < 30:
+                    continue          # verbraucht keinen Versuch
+        except Exception:
+            pass
+        i += 1
+        time.sleep(2.5)
+    return {}
+
+def hol(url):
+    r = subprocess.run(['curl', '-sL', '--max-time', '25', url.split('?')[0]], capture_output=True)
+    return r.stdout if len(r.stdout) > 800 else None
+
+def basis(url):
+    return url.split('?')[0].split('/')[-1]
+
+# ── Ledger: pid \t bild-dateiname \t md5
+bekannt = {}
+if os.path.exists(LEDGER):
+    for z in open(LEDGER, errors='ignore'):
+        t = z.rstrip('\n').split('\t')
+        if len(t) >= 3:
+            bekannt[t[0]] = (t[1], t[2])
+
+abfrage = 'status:active' + (f' created_at:>={SEIT}' if SEIT else '')
+cur, alle = None, []
+while True:
+    d = gql('''query($c:String,$q:String!){products(first:100,after:$c,query:$q){
+                 pageInfo{hasNextPage endCursor}
+                 nodes{id title createdAt featuredImage{url}
+                       variants(first:1){nodes{sku price}}}}}''', {'c': cur, 'q': abfrage})
+    p = (d.get('data') or {}).get('products')
+    if not p:
+        print('PAUSE (Shopify blieb stumm) — Ledger bleibt gueltig, naechster Lauf macht weiter.')
+        sys.exit(0)
+    alle += p['nodes']
+    if not p['pageInfo']['hasNextPage']:
+        break
+    cur = p['pageInfo']['endCursor']
+print(f'{len(alle)} aktive Produkte')
+
+neu = 0
+log = open(LEDGER, 'a')
+for a in alle:
+    pid = a['id'].split('/')[-1]
+    u = (a.get('featuredImage') or {}).get('url')
+    if not u:
+        continue
+    b = basis(u)
+    if bekannt.get(pid, ('', ''))[0] == b:
+        continue                      # unveraendert -> nicht erneut laden
+    if neu >= HASHCAP:
+        break
+    roh = hol(u)
+    if roh is None:
+        continue                      # Netzfehler ist keine Erledigung
+    h = hashlib.md5(roh).hexdigest()
+    bekannt[pid] = (b, h)
+    log.write(f'{pid}\t{b}\t{h}\n'); log.flush()
+    neu += 1
+log.close()
+print(f'{neu} Hauptbilder neu gehasht ({len(bekannt)} im Ledger)')
+
+# ── Gruppen bilden, aber nur ueber Produkte, die JETZT aktiv sind.
+aktiv = {a['id'].split('/')[-1]: a for a in alle}
+gruppen = {}
+for pid, (b, h) in bekannt.items():
+    if pid in aktiv:
+        gruppen.setdefault(h, []).append(pid)
+kand = {h: v for h, v in gruppen.items() if len(v) > 1}
+print(f'{len(kand)} Verdachtsgruppen (gleiches Hauptbild)')
+
+def medien(pid):
+    d = gql('query($i:ID!){product(id:$i){media(first:15){nodes{... on MediaImage{image{url}}}}}}',
+            {'i': 'gid://shopify/Product/' + pid})
+    n = ((d.get('data') or {}).get('product') or {}).get('media', {}).get('nodes', [])
+    s = set()
+    for m in n:
+        if not m.get('image'):
+            continue
+        roh = hol(m['image']['url'])
+        if roh:
+            s.add(hashlib.md5(roh).hexdigest())
+    return s
+
+befunde = []
+for h, pids in kand.items():
+    saetze = {p: medien(p) for p in pids}
+    # Erst ab ZWEI gemeinsamen Bildern: ein einzelnes gemeinsames Foto kann ein
+    # generisches Verpackungs-/Groessenbild sein und beweist nichts.
+    for i in range(len(pids)):
+        for j in range(i + 1, len(pids)):
+            a, b = pids[i], pids[j]
+            gem = saetze[a] & saetze[b]
+            if len(gem) >= 2:
+                befunde.append((a, b, len(gem), len(saetze[a]), len(saetze[b])))
+
+def zeile(pid):
+    a = aktiv[pid]
+    v = (a['variants']['nodes'] or [{}])[0]
+    return f"{pid} · {a['createdAt'][:10]} · CHF {v.get('price')} · {v.get('sku')} · {a['title'][:60]}"
+
+if befunde:
+    with open(BERICHT, 'w') as f:
+        f.write('# Bild-identische Produkte\n\n')
+        f.write('Gefunden am Bild**inhalt** (MD5), nicht an Titel, SKU oder Bild-URL — die\n'
+                'drei taeuschen bei CJ-Doppellistings alle drei.\n\n')
+        for a, b, gem, na, nb in befunde:
+            f.write(f'- **{gem} gemeinsame Bilder** ({na} bzw. {nb} insgesamt)\n')
+            f.write(f'  - {zeile(a)}\n  - {zeile(b)}\n')
+    print(f'⚠️ {len(befunde)} bild-identische Paare -> {BERICHT}')
+    for a, b, gem, na, nb in befunde:
+        print(f'   {gem} gemeinsam:\n     {zeile(a)}\n     {zeile(b)}')
+elif os.path.exists(BERICHT):
+    os.remove(BERICHT)          # ein Bericht ohne Befund wird nicht gelesen
+
+gedraftet = 0
+if FIX and befunde:
+    schon = set()
+    if os.path.exists(GETAN):
+        schon = {z.split('\t')[0] for z in open(GETAN, errors='ignore')}
+    with open(GETAN, 'a') as led:
+        for a, b, gem, na, nb in befunde:
+            # Die AELTERE Fassung bleibt: sie traegt Bewertungen, interne Links und
+            # Verkaufshistorie. Gedraftet wird die juengere.
+            paar = sorted([a, b], key=lambda p: aktiv[p]['createdAt'])
+            weg = paar[1]
+            if weg in schon:
+                continue
+            r = gql('mutation($i:ProductInput!){productUpdate(input:$i){product{status} userErrors{message}}}',
+                    {'i': {'id': 'gid://shopify/Product/' + weg, 'status': 'DRAFT'}})
+            if (r.get('data') or {}).get('productUpdate', {}).get('userErrors'):
+                continue
+            gql('mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}',
+                {'id': 'gid://shopify/Product/' + weg, 't': ['duplikat-auto-draft']})
+            led.write(f'{weg}\tbildgleich mit {paar[0]} ({gem} Bilder)\t{aktiv[weg]["title"][:60]}\n')
+            led.flush(); gedraftet += 1
+    print(f'{gedraftet} juengere Dubletten gedraftet (Tag duplikat-auto-draft)')
+
+# ⚠️ FERTIG heisst «nichts mehr zu TUN», nicht «nichts mehr zu SEHEN» (Lehre 21.08.).
+# Gemeldete Paare sind ein Rueckstand im Bericht, keine offene Arbeit — sonst startet der
+# Aufseher diesen Lauf endlos neu.
+print(f'FERTIG: {neu} gehasht, {len(befunde)} Paare gemeldet, {gedraftet} gedraftet.')

@@ -1247,6 +1247,52 @@ Ringe durchblättert, fand dazwischen einen Abdeckstift und eine Wanderhose.
   alle acht sauber. **Nach einer Tag-Änderung am OBJEKT gegenprüfen, nicht über die Suche** —
   sonst repariert man ein zweites Mal, was längst stimmt.
 
+## 🖼️ Der Dateiname ist verschieden, die BYTES sind es nicht (2026-08-27)
+Der Betreiber schickte einen Screenshot der Startseite: **«Armband mit Diamantherz» und
+«Armband ‹Hohles Herz› mit Zirkonia» nebeneinander — gleicher Preis (CHF 21.90), gleiches
+Foto, zwei Produkte.** Beide am selben Tag importiert. Keine bestehende Wache konnte das sehen:
+
+| Wache | warum sie versagt |
+|---|---|
+| Titelvergleich | die Titel sind verschieden |
+| SKU-Vergleich | CJ vergibt je Listing eine eigene SKU (…1630600 / …1603000) |
+| Handle-Vergleich | verschiedene Titel → verschiedene Slugs |
+| Bild-**URL**-Vergleich | CJ lädt dasselbe Foto je Listing unter NEUER CDN-URL hoch |
+
+**Der Eintrag vom 26.07. («0 haben ein bild-identisches Hauptbild») war deshalb irreführend.**
+Er stimmt für den Dateinamen — aber **alle fünf Bilder beider Produkte hatten dieselbe
+MD5-Summe.** Bild-Dedup ist nicht tot, es wurde nur am falschen Merkmal versucht.
+- Wächter `automation/bilddubletten.py`, täglich im Aufseher. **Billig sieben, teuer
+  bestätigen:** gehasht wird nur das HAUPTBILD, und nur einmal (Ledger `_bildhash.txt`,
+  neu geladen erst wenn sich die Bild-URL ändert). Alle Medien werden nur für
+  Verdachtsgruppen gehasht, und **erst ab ZWEI gemeinsamen Bildern** gilt es als Dublette —
+  ein einzelnes gemeinsames Foto kann ein generisches Verpackungsbild sein.
+- **In beide Richtungen kontrolliert, bevor er scharf ging:** das bekannte Paar → 5 von 5
+  Bildern gemeinsam (schlägt an); das echte dritte Armband «Hohles Zirkon Herz» → 0
+  gemeinsam (schlägt nicht an). Ein Wächter, der nur Positive findet, ist ein Alarm.
+- ⚠️ **Mein erster Lauf meldete «0 Dubletten» und war wertlos** — er filterte auf
+  `status:active`, und ich hatte den einen bekannten Fall Minuten vorher selbst gedraftet.
+  **Ein Negativbefund, der den einzigen bekannten Fall ausschliesst, beweist nichts.**
+- `FIX=1` draftet die JÜNGERE Fassung (die ältere trägt Bewertungen, interne Links,
+  Verkaufshistorie), Tag `duplikat-auto-draft`, nie löschen. Standard ist MELDEN.
+
+## 🧾 Was der Screenshot sonst noch zeigte (2026-08-27)
+- **Eine dauerhafte englische Gravur, die nirgends stand.** Beide Armbänder tragen fest
+  eingraviert «Thank you for being my Unbiological Sister». Wer das Stück für sich selbst
+  kauft, bekommt einen Satz über eine nicht-leibliche Schwester. Titel und Text nennen die
+  Gravur jetzt im Wortlaut. **Text IM Bild ist eine Produkteigenschaft** — der
+  Fremdtext-Wächter sucht ihn, um ihn zu VERSTECKEN; manchmal muss er stattdessen in die
+  Beschreibung.
+- **«Diamantherz» war falsch** — der eigene Text nennt Zirkonia auf Kupfer.
+- **Neun Bilder von VIER Artikeln auf einem Produkt mit EINER Variante.** Das
+  «Color-Block Edelstahl-Federarmband» zeigte Datenblätter mit drei verschiedenen
+  Lieferantennummern (JDB0305033-PS · JDB0108005 · JDB0204032) — Perlenarmband, gedrehter
+  Reif, Gliederkette, Sternenband. Die Kundin konnte nicht wissen, was sie bekommt.
+  Sauberes Produktfoto nach vorn, die drei fremden Datenblätter entfernt.
+  ⚠️ **Diese Klasse ist NICHT automatisiert.** Sie zu finden hiesse, Artikelnummern aus
+  Bildern zu lesen und zu vergleichen — das kann der Textbild-Wächter nicht. Er sieht nur,
+  DASS Text im Bild ist, nicht WELCHE Nummer darin steht.
+
 ## ⛔ KORREKTUR: es waren FORKS des einen Aufsehers, nicht Zählfehler (2026-08-27, abends)
 Der Eintrag direkt darunter deutete «13 Instanzen» als Zählfehler durch ein zu loses Muster.
 **Das war falsch, und die Diagnose kostete beinahe den Aufseher selbst.** Mit `sid` abgefragt:

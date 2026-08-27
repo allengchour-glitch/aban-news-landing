@@ -364,6 +364,19 @@ while true; do
       echo "$(date -u +%H:%M) bild-quadrat gestartet"
     fi
   fi
+  # 🖼️ BILD-DUBLETTEN, einmal täglich. Anlass: Betreiber-Screenshot vom 27.08.2026 —
+  # zwei Armbaender nebeneinander auf der Startseite, gleicher Preis, GLEICHES FOTO, zwei
+  # Produkte. Titel-, SKU- und Bild-URL-Vergleich sehen das alle nicht; der BILDINHALT schon.
+  # HASHCAP begrenzt die Downloads je Lauf — der Ledger waechst ueber die Tage in den
+  # Katalog hinein, statt 46'000 Bilder auf einmal zu ziehen.
+  BD=/tmp/bilddubletten.log
+  if [ -f "$REPO/automation/bilddubletten.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$BD" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && HASHCAP=600 setsid python3 automation/bilddubletten.py >> "$BD" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) bild-dubletten geprüft"
+    fi
+  fi
   TL=/tmp/tote_links.log
   if [ -f "$REPO/automation/tote_links.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$TL" 2>/dev/null || echo 0) ))
