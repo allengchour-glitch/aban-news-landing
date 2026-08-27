@@ -3,10 +3,6 @@
 Alle unten haben **eine** Variante ohne Option. Der Text stammt aus dem
 CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
 
-- `15397218320769` · Silikon Baby-Lätzchen 5er-Set · BPA-frei, Spülmaschinenfest
-  - «…in unterschiedlichen Farben…»
-- `15412302512513` · Regenschirm mit Handy-Halterung – freihändig, 8 Streben, UV-beschichte
-  - «…Mehrere Farben zur Auswahl…»
 - `15427150578049` · Schweiz-Poster «Bähnli» · Vintage Travel-Kunstdruck
   - «…in verschiedenen Grössen…»
 - `15427150643585` · Schweiz-Poster «Alpen-Panorama» · Berg-Kunstdruck
@@ -53,10 +49,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…in verschiedenen Ausführungen…»
 - `15447584113025` · Rhinestone-Lotusring im Retro-Stil
   - «…in verschiedenen Grössen…»
-- `15447600628097` · Locker sitzendes Kapuzen-Sweatshirt mit Spitze
-  - «…in verschiedenen Grössen…»
-- `15447605051777` · Leinenhemd im China-Stil für Herren
-  - «…Verfügbar in vier Farben…»
 - `15447623303553` · Besticktes Kissen aus Baumwoll-Leinen
   - «…Erhältlich in verschiedenen Ausführungen und Grössen…»
 - `15447623467393` · 2er-Set Samt-Knotenkissen, Blumenform
@@ -67,3 +59,295 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Wählen Sie aus…»
 - `15447919395201` · Quadratische Doppelsteg-Sonnenbrille aus Metall
   - «…in verschiedenen Farben…»
+- `15448834867585` · Devil's Claws Press On Nails, Violett Glitzer
+  - «…in verschiedenen Grössen…»
+- `15448834965889` · 24er Set Halloween Press-On Nägel
+  - «…in verschiedenen Grössen…»
+- `15448834998657` · Rote und weisse Herz-Kunstnägel, lang, eckig
+  - «…in verschiedenen Grössen…»
+- `15448835064193` · Glitzer-Schmetterling Fake Nails, lang & eckig
+  - «…in verschiedenen Grössen…»
+- `15448835162497` · Grüne Sternchen Kunstnägel, lang
+  - «…in verschiedenen Grössen…»
+- `15448835195265` · Aurora White Fake Nails – Lange Wasserrohr-Form
+  - «…in verschiedenen Grössen…»
+- `15448835228033` · Lange Kleeblatt-Press-on-Nägel (24 Stück)
+  - «…in verschiedenen Grössen…»
+- `15448835293569` · Aurora Powder Fake Nails – Lang & Glänzend
+  - «…in verschiedenen Grössen…»
+- `15448835326337` · Press On Nails zum Valentinstag, Weinrot Herz
+  - «…in verschiedenen Grössen…»
+- `15448835359105` · 24 Stk. Press-On Nägel mit französischem Blumendesign
+  - «…in verschiedenen Grössen…»
+- `15448835490177` · Künstliche Nägel mit Schleifchen-Design
+  - «…in verschiedenen Grössen…»
+- `15448835522945` · 24 Stk. lange Fake Nails mit Wasserrohr-Design
+  - «…in verschiedenen Grössen…»
+- `15448835555713` · Pearl Love Star Künstliche Nägel, lang, eckig
+  - «…in verschiedenen Grössen…»
+- `15448835686785` · Künstliche Nägel mit Schmetterlings-Design
+  - «…in verschiedenen Grössen…»
+- `15448835785089` · Lange Blumen-Press-on-Nägel
+  - «…in verschiedenen Grössen…»
+- `15448835883393` · Blaue Schmetterlings-Kunstnägel, lang
+  - «…in verschiedenen Grössen…»
+- `15448835948929` · Minimalistische Press-On Nägel mit Kreisen
+  - «…in verschiedenen Grössen…»
+- `15448835981697` · Diamond Snake Press-On Nägel
+  - «…in verschiedenen Grössen…»
+- `15448836211073` · 24 Stk. Blumen & Schmetterling Press-On Nägel
+  - «…in verschiedenen Grössen…»
+- `15448836309377` · Erdbeer-Schleifen-Kunstnägel, lang, eckig
+  - «…in verschiedenen Grössen…»
+- `15448836374913` · Künstliche Nägel mit Blumen- & Schmetterlingsdesign
+  - «…in verschiedenen Grössen…»
+- `15448836440449` · Künstliche Nägel Kirsch-Schleife, lang
+  - «…in verschiedenen Grössen…»
+- `15448836571521` · 24er Set Diamant-Schmetterling-Kunstnägel
+  - «…in verschiedenen Grössen…»
+- `15448836637057` · Bärchen-Schleifen-Press-On-Nägel, lang
+  - «…in verschiedenen Grössen…»
+- `15448836702593` · 24 Stk. Bowknot Press-On Nägel
+  - «…in verschiedenen Grössen…»
+- `15448836800897` · Blaue Schmetterlings-Press-On Nägel
+  - «…in verschiedenen Grössen…»
+- `15448881496449` · Bluetooth Sprach-Fernbedienung Infrarot
+  - «…in verschiedenen Ausführungen…»
+- `15448882839937` · Bluetooth Ring Fernbedienung
+  - «…Wählen Sie zwischen…»
+- `15448899322241` · Kupfer-Flechtkette im Vintage-Stil
+  - «…in verschiedenen Ausführungen…»
+- `15448903418241` · Mechanische Taschenuhr «Sternenhimmel»
+  - «…in verschiedenen Farben…»
+- `15448903483777` · Transparente Retro-Skelett-Taschenuhr
+  - «…Erhältlich in zwei Varianten…»
+- `15448904499585` · Skelett-Taschenuhr mit Mechanik
+  - «…Erhältlich in vier Farben…»
+- `15448904728961` · Mechanische Skelett-Herrenuhr
+  - «…in verschiedenen Ausführungen…»
+- `15448905253249` · Trendige Herren-Elektronikuhr
+  - «…in verschiedenen Farben…»
+- `15448905449857` · Herrenuhr im Mechanik-Stil mit Loch-Detail
+  - «…in verschiedenen Farben…»
+- `15448906334593` · Mechanische Herrenuhr mit Leuchtanzeige
+  - «…in verschiedenen Farben…»
+- `15448908497281` · Personalisierte Retro Drachen Herrenuhr
+  - «…in verschiedenen Ausführungen…»
+- `15448909382017` · Taktische Sportuhr mit Dual-Display
+  - «…in verschiedenen Farben…»
+- `15448909840769` · Multifunktionale Retro-Herrenuhr mit Temperatur
+  - «…Wählen Sie aus…»
+- `15448910102913` · Multifunktionale Sportuhr
+  - «…Wählen Sie aus…»
+- `15448910299521` · Wasserdichte Multifunktions-Digitaluhr für Studierende
+  - «…in verschiedenen Farben…»
+- `15448910922113` · Fitness-Smartwatch mit Herzfrequenz-Tracking · für alle Altersgruppen
+  - «…in verschiedenen Ausführungen…»
+- `15448911446401` · Nylon-Canvas-Armband für Smartwatches
+  - «…in verschiedenen Farben…»
+- `15448911643009` · Vielseitige elektronische Herrenuhr
+  - «…in verschiedenen Farben…»
+- `15448911741313` · Schnellverschluss-Armband High Shan Ye
+  - «…in verschiedenen Grössen…»
+- `15448912757121` · Quarz-Uhr mit Leuchtzeigern und Kalender
+  - «…in verschiedenen Ausführungen…»
+- `15448913510785` · Wasserdichter Outdoor-Rucksack (60L)
+  - «…in verschiedenen Farben…»
+- `15448913543553` · Business-Reisetasche (20-35L)
+  - «…Erhältlich in vier Farben…»
+- `15448914264449` · Faltbarer Wanderrucksack 20-35L
+  - «…in verschiedenen Farben…»
+- `15448914493825` · Leichter Outdoor-Rucksack
+  - «…in verschiedenen Farben…»
+- `15448914657665` · Multifunktionale Sporttasche mit zwei Griffen
+  - «…in verschiedenen Farben…»
+- `15448915280257` · Vakuum-Kompressions-Rucksack für Reisen
+  - «…in verschiedenen Farben…»
+- `15448915771777` · Grosser wasserabweisender Reise-Rucksack
+  - «…in verschiedenen Farben…»
+- `15448916001153` · Sportliche, minimalistische Crossbody Bag für Herren
+  - «…in verschiedenen Farben…»
+- `15448916754817` · Bookwind Reise- und Sporttasche
+  - «…Erhältlich in zwei Grössen…»
+- `15448918163841` · Taktische Crossbody Bag
+  - «…Erhältlich in vier Farben…»
+- `15448918524289` · Herren Umhängetasche aus echtem Crazy Horse Leder
+  - «…in verschiedenen Farben…»
+- `15448919081345` · Retro-Brusttasche aus Rindsleder
+  - «…Erhältlich in drei Farben…»
+- `15448919146881` · Leichte Crossbody Bag mit grosser Kapazität
+  - «…In verschiedenen Farben…»
+- `15448919441793` · Leder-Brusttasche für Herren
+  - «…Erhältlich in Schwarz und Kaffeebraun Grosse…»
+- `15448919605633` · Faltbare Tasche im japanischen Stil
+  - «…Erhältlich in vier Farben…»
+- `15448920588673` · Kissenhülle "Summer Ocean Surf" bestickt
+  - «…Erhältlich in zwei Grössen…»
+- `15448920818049` · Jacquard Kissenhülle mit Elster und Blumen
+  - «…in verschiedenen Grössen…»
+- `15448920883585` · Sofaüberzug «Chenille» kratzfest & rutschfest
+  - «…Erhältlich in drei Farben…»
+- `15448920916353` · Runder Teppich im Ethno-Stil
+  - «…in verschiedenen Grössen…»
+- `15448920949121` · Recyceltes Sofa-Kissen für Haustiere, wasserdicht
+  - «…in verschiedenen Grössen…»
+- `15448921211265` · Atmungsaktive Decke aus reiner Baumwolle
+  - «…in verschiedenen Farben…»
+- `15448921276801` · Sofa-Kissen im japanischen Stil aus Baumwoll-Leinen-Mix
+  - «…in verschiedenen Grössen…»
+- `15448921407873` · Sofa-Sitzkissenbezug aus Chenille
+  - «…in verschiedenen Grössen…»
+- `15448921964929` · Chenille Sofaüberwurf für alle Jahreszeiten
+  - «…in verschiedenen Farben…»
+- `15448921997697` · Cremefarbener Plüsch-Sofabezug für Herbst/Winter
+  - «…in verschiedenen Grössen…»
+- `15448922390913` · Wasserfester Sofa-Schutz für alle Jahreszeiten
+  - «…in verschiedenen Grössen…»
+- `15448922489217` · Bettkissen mit schräger Ablage
+  - «…Erhältlich in drei Farben…»
+- `15448922587521` · Elastischer Sofabezug in Cremefarben
+  - «…Erhältlich in verschiedenen Grössen und dezenten Farben…»
+- `15448922653057` · Warmer Plüsch-Sofabezug – rutschfest und einfarbig
+  - «…in verschiedenen Grössen…»
+- `15448922718593` · Chenille Sofaüberzug Fischgrat-Muster
+  - «…Erhältlich in verschiedenen Grössen und attraktiven Farben…»
+- `15448922784129` · Minimalistischer Fleece-Sofabezug für alle Jahreszeiten
+  - «…in verschiedenen Grössen…»
+- `15448922816897` · Sofa-Sitzkissenbezug aus Polyester – rutschfest
+  - «…in verschiedenen Grössen…»
+- `15448922882433` · Wabi-Sabi Kissenhülle Schwarz-Weiss
+  - «…in verschiedenen Ausführungen…»
+- `15448923079041` · Chenille Kissenbezug mit Kontraststreifen
+  - «…Erhältlich in verschiedenen Grössen und Farben…»
+- `15448924062081` · Plüsch Kissenbezug für den Winter
+  - «…in verschiedenen Farben…»
+- `15448924356993` · Stretch-Sofabezug für Schlafsofas mit Rocksaum
+  - «…Erhältlich in drei Grössen…»
+- `15448925110657` · Osterhasen-Kissenbezug mit Frottee-Stickerei
+  - «…Wählen Sie aus…»
+- `15448925372801` · Corduroy Sofa-Kissen, rutschfest
+  - «…Wählen Sie aus…»
+- `15448925569409` · Boho-Kissenbezug mit Stickerei und Quasten
+  - «…in verschiedenen Ausführungen…»
+- `15448925634945` · Rutschfeste Fussmatte für den Eingangsbereich
+  - «…in verschiedenen Farben…»
+- `15448925700481` · Schmutzfangmatte für Aussenbereiche
+  - «…Wählen Sie aus…»
+- `15448925766017` · Nordischer Plüsch-Sofabezug, rutschfest
+  - «…in verschiedenen Grössen…»
+- `15448925798785` · Elastischer Sofabezug ohne Armlehnen
+  - «…Erhältlich in zwei Grössen…»
+- `15448925962625` · Chenille Kissenhülle oder Kissen mit Füllung
+  - «…Wählen Sie zwischen…»
+- `15448926355841` · Sommerliches Eisseiden-Seitenschläferkissen
+  - «…Erhältlich in zwei Grössen…»
+- `15448926552449` · Ergonomisches Kissen für Kinder und Jugendliche
+  - «…in verschiedenen Ausführungen…»
+- `15448926716289` · Schwangerschaftskissen mit Taillenstütze
+  - «…in verschiedenen Farben…»
+- `15448926781825` · U-förmiges Samt-Schwangerschaftskissen
+  - «…Erhältlich in verschiedenen Farben und Grössen…»
+- `15448926945665` · Ergonomisches Nackenkissen aus Schaumstoff
+  - «…in verschiedenen Farben…»
+- `15448927076737` · Memory Foam Sitz- und Rückenkissen
+  - «…in verschiedenen Farben…»
+- `15448927273345` · Nackenkissen für Wimpern- und Brauenbehandlungen
+  - «…in verschiedenen Farben…»
+- `15448927699329` · Zierkissen mit Blumenmuster im französischen Stil
+  - «…in verschiedenen Grössen…»
+- `15448928027009` · Tencel Kissenbezug, einfarbig
+  - «…Erhältlich in Hellgrau und in der Grösse…»
+- `15448928125313` · Seidenkissenbezug 22 Momme, beidseitig
+  - «…in verschiedenen Grössen…»
+- `15448928190849` · Sofa Kissen Abstrakt Geometrisch
+  - «…in verschiedenen Grössen…»
+- `15448928289153` · Halbrundes Memory Foam Kissen
+  - «…in verschiedenen Farben…»
+- `15448928354689` · Auto Nackenkissen aus Nappaleder
+  - «…in verschiedenen Farben…»
+- `15448928518529` · Kissenhülle Modernes Design
+  - «…Wählen Sie zwischen…»
+- `15448928682369` · Sitzkissen für langen Bürostuhl-Komfort
+  - «…in verschiedenen Farben…»
+- `15448928747905` · Beheizbares Nacken- & Lendenkissen mit Massage
+  - «…in verschiedenen Ausführungen…»
+- `15448928780673` · Hotel Daunenkissen Gänse- und Entenfedern
+  - «…Wählen Sie zwischen…»
+- `15448928878977` · Memory Foam Nackenkissen
+  - «…In verschiedenen Farben…»
+- `15448928911745` · Nackenkissen mit Buchweizenfüllung und Baumwollbezug
+  - «…Wählen Sie aus…»
+- `15448928977281` · Nackenstützkissen aus Bambusfaser & Memory Foam
+  - «…Erhältlich in zwei Grössen…»
+- `15448930353537` · Kabelloser Haarglätter mit USB-Ladefunktion
+  - «…Erhältlich in Weiss, Grau und Rot Jede Farbe…»
+- `15448930681217` · Kabelloses 2-in-1 Glätteisen & Lockenstab mit LCD
+  - «…in verschiedenen Farben…»
+- `15448932548993` · Kabelloser 2-in-1 Haarglätter und Lockenstab mit Ionen
+  - «…Wählen Sie zwischen…»
+- `15448937070977` · Ganzjahres Katzenhöhle
+  - «…Erhältlich in verschiedenen Grössen und attraktiven Farben…»
+- `15448937595265` · Kuscheliges Winterbett für Katzen
+  - «…Erhältlich in drei Farben und drei Grössen…»
+- `15448937726337` · Geflochtenes Katzenbett mit Kratzbaum
+  - «…in verschiedenen Ausführungen…»
+- `15448938021249` · Kompakter Kratzbaum mit Kuschelnest
+  - «…in verschiedenen Ausführungen…»
+- `15448938054017` · Holz-Katzenbaum «Weltraumkapsel»
+  - «…Erhältlich in zwei Ausführungen…»
+- `15448938545537` · Ganzjahres-Katzenbaum mit integriertem Bett
+  - «…in verschiedenen Ausführungen…»
+- `15448938840449` · Holz-Katzenbaum mit integriertem Katzenbett
+  - «…in verschiedenen Ausführungen…»
+- `15448939004289` · Kompakter Katzenbaum mit Kratzpilz
+  - «…in verschiedenen Ausführungen…»
+- `15448939168129` · Kratzbrett und Katzenhöhle – TV-Design
+  - «…Erhältlich in zwei Grössen…»
+- `15448940085633` · Kokosnussbaum Kratz- und Kletterturm
+  - «…in verschiedenen Ausführungen…»
+- `15448940872065` · Gestreiftes Katzensofa – Plüsch & Rutschfest
+  - «…Erhältlich in Rosarot oder Gelb-Grün Verfügbar in den Grössen…»
+- `15448940970369` · Glückskatzenbett – Atmungsaktiv und Warm
+  - «…in verschiedenen Farben…»
+- `15448941330817` · Erhöhtes, atmungsaktives Haustierbett
+  - «…Erhältlich in vier Grössen…»
+- `15448941789569` · Hunde- und Katzenbett, abnehmbar & waschbar
+  - «…in verschiedenen Grössen…»
+- `15448941986177` · Haustier-Sofabett mit Wärmefunktion
+  - «…Erhältlich in vier Farben und sechs Grössen…»
+- `15448942641537` · Katzenminze Fisch-Kicker Spielzeug, 3er-Pack
+  - «…in verschiedenen Farben…»
+- `15448945164673` · Aufblasbarer Wurfball für Hunde und Katzen
+  - «…Verfügbar in drei Grössen…»
+- `15448945230209` · Smartes Roll- und Zahnspielzeug für Haustiere
+  - «…in verschiedenen Ausführungen…»
+- `15448945361281` · Golden Retriever Spielball-Set, kaubeständig
+  - «…Erhältlich in drei Grössen…»
+- `15448946377089` · Automatischer Tennisballwerfer für Hunde
+  - «…in verschiedenen Ausführungen…»
+- `15448947949953` · Haustier Zelt- und Höhlenbett
+  - «…Erhältlich in zwei Grössen…»
+- `15448949195137` · Smarter Futterautomat mit Timer
+  - «…Wählen Sie zwischen…»
+- `15448949358977` · Reise-Trinkflasche für Haustiere mit Futterfach
+  - «…in verschiedenen Farben…»
+- `15448950210945` · Anti-Schling Napf Kugelform Silikon XL
+  - «…In verschiedenen Farben…»
+- `15448950407553` · Futterbehälter luftdicht mit Messbecher
+  - «…in verschiedenen Grössen…»
+- `15448950571393` · Smarter Snack-Futterautomat für Katzen & Hunde
+  - «…Wählen Sie zwischen…»
+- `15448951030145` · Keramik-Futternapf für Hunde und Katzen
+  - «…Wählen Sie zwischen…»
+- `15448951128449` · Anti-Rutsch Schleckschale für Hunde und Katzen
+  - «…in verschiedenen Farben…»
+- `15448951390593` · Futter- und Wasserspender-Kombination
+  - «…in verschiedenen Ausführungen…»
+- `15448951423361` · Futter- und Wasserspender für Katzen
+  - «…in verschiedenen Farben…»
+- `15448951980417` · Skihelm-Überzug mit integriertem Visier
+  - «…in verschiedenen Farben…»
+- `15448952308097` · Retro Velohelm für City & Outdoor
+  - «…in verschiedenen Farben…»
+- `15448952832385` · LED Velohelm für Damen und Herren
+  - «…in verschiedenen Grössen…»

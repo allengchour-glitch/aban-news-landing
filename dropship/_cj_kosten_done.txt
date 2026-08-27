@@ -3189,3 +3189,8 @@ gid://shopify/Product/15448647369089	CHF 17.87	96 Varianten	Nahtlose Strick-Tie-
 gid://shopify/Product/15448647401857	CHF 19.08	42 Varianten	Camo Shark Yoga Pants
 gid://shopify/Product/15448647434625	CHF 18.46	12 Varianten	Shapewear Leggings mit Bauchkontrolle
 gid://shopify/Product/15448647467393	CHF 21.12	21 Varianten	High-Waist Slim-Fit Jeans mit leicht ausgestelltem
+gid://shopify/Product/15448647532929	CHF 19.08	28 Varianten	High-Waist Yoga Pants
+gid://shopify/Product/15448647565697	CHF 17.72	8 Varianten	High-Waist Yoga Hose mit Mesh-Taschen
+gid://shopify/Product/15448647631233	CHF 18.39	3 Varianten	Feuchtigkeitsableitende Yoga-Pants
+gid://shopify/Product/15448647664001	CHF 19.04	3 Varianten	Elegante, figurbetonte Fingerless-Hose
+gid://shopify/Product/15448647696769	CHF 18.47	54 Varianten	Bootcut Yoga-Hose für Damen
