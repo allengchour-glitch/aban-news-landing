@@ -3122,3 +3122,15 @@ gid://shopify/Product/15448638980481	CHF 21.27	20 Varianten	Camo Cargo Hose für
 gid://shopify/Product/15448639242625	CHF 24.45	5 Varianten	High-Waist Flare Jeans mit Goldknöpfen
 gid://shopify/Product/15448639603073	CHF 20.22	63 Varianten	Caprihose mit weitem Bein und Gummizug
 gid://shopify/Product/15448639897985	CHF 22.02	95 Varianten	High-Waist Yoga Shorts für Damen
+gid://shopify/Product/15448640192897	CHF 19.84	36 Varianten	High-Waist Yoga Shorts mit Bauchkontrolle
+gid://shopify/Product/15448640520577	CHF 20.93	24 Varianten	High-Waist Yoga Shorts «Peach Butt»
+gid://shopify/Product/15448640848257	CHF 20.65	30 Varianten	High-Waist Yoga Shorts – Nahtloses Tragegefühl
+gid://shopify/Product/15448641012097	CHF 16.88	12 Varianten	High-Waist Capri Yoga-Hose mit Bauchkontrolle
+gid://shopify/Product/15448641208705	CHF 17.96	4 Varianten	High-Waist Yoga Shorts mit Farbblock
+gid://shopify/Product/15448641470849	CHF 17.72	15 Varianten	High Waist Shorts mit weitem Bein und Rüschen
+gid://shopify/Product/15448641864065	CHF 17.79	36 Varianten	Nahtlose High-Waist Tie-Dye Yoga Shorts
+gid://shopify/Product/15448642191745	CHF 17.61	30 Varianten	High-Waist Yoga Leggings mit Taschen
+gid://shopify/Product/15448642519425	CHF 18.77	40 Varianten	High-Waist Yoga Shorts mit Taschen
+gid://shopify/Product/15448642748801	CHF 22.19	25 Varianten	Atmungsaktiver Yoga Skort mit Taschen
+gid://shopify/Product/15448642781569	CHF 21.18	4 Varianten	Gerüschte Yoga- und Fitness-Shorts für Damen
+gid://shopify/Product/15448642847105	CHF 22.45	12 Varianten	Damen Radhose mit Polster
