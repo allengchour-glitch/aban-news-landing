@@ -1207,6 +1207,30 @@ eingerichteten Vorrang-Fenster, in dem der ganze Grind pausiert.
   `cj_variantenbild` und `cj_bild_backfill` ruhen im Fenster jetzt mit.
   **NICHT pausiert wird `cj_fulfill_runner`** — der bearbeitet echte Kundenbestellungen.
 
+## 🔢 Zähler und Töter benutzten verschiedene Muster — «13 Instanzen», eine real (2026-08-27)
+Direkt nach der Ersatz-Reparatur meldete `engine_keepalive.sh`: **«AUFSEHER: 13 Instanzen →
+12 beendet»**. Nachgezählt lief genau EINE, und das Aufseher-Log kannte für den ganzen Tag
+nur drei Startzeilen. Die Ursache steckt im Skript selbst: **gezählt** wurde mit dem losen
+`zaehle` (`$1=="bash" && index($0,s)` — der Name darf IRGENDWO in der Kommandozeile stehen),
+**beendet** dagegen mit einem strengen Muster (`$4 ~ /fixer_keepalive\.sh$/`, also der
+Skriptname als argv2). Zwei Muster für dieselbe Frage geben zwei Antworten.
+Der lose Zähler ist für die CJ-Runner nötig (`exec` löscht dort den Wrapper-Namen, siehe
+Lehre 0d) — für den Aufseher trifft er zusätzlich jeden fremden Kindprozess, in dessen
+Kommandozeile der Name vorkommt. Das ist die `pgrep -f`-Falle von Lehre 1 in neuer
+Verkleidung: nicht mehr im EIGENEN Aufruf, sondern in fremden.
+- Der Aufseher wird jetzt mit **demselben** Muster gezählt, mit dem er beendet wird
+  (`aufseher_pids()` / `zaehle_aufseher()`); der lose `zaehle` bleibt für die Runner.
+- ⚠️ **Ehrlich bleibt offen, WELCHE Prozesse den losen Zähler aufgebläht haben.** Der Spitzenwert
+  war nach Sekunden vorbei und liess sich nicht mehr einfangen; sechs Stichproben über 20
+  Sekunden zeigten je genau eine Instanz. Die Reparatur ist trotzdem richtig — zwei Muster für
+  dieselbe Frage sind auch dann ein Fehler, wenn man den Einzelfall nicht mehr nachstellen kann.
+- **Und der Schaden wäre nicht harmlos gewesen:** Hätte die Tötungsliste dieselbe lose Suche
+  benutzt, wären fremde Prozesse mit abgeräumt worden. Die Rettung war ausgerechnet die
+  Uneinheitlichkeit — kein Grund, sie zu behalten.
+- ⚠️ Nebenbefund: **`automation/engines_up.sh` startet den Aufseher ebenfalls** (Zeile 75), wird
+  aber von nichts mehr aufgerufen. Ein zweiter, schlafender Starter — dieselbe Klasse wie
+  `cj_gaps_import.mjs`: harmlos, solange ihn niemand weckt.
+
 ## 🕳️ Der Ersatz trat ab, weil er den Vorgänger noch sah — NULL Aufseher (2026-08-27)
 Der Herzschlag-Wächter erkannte einen hängenden Aufseher korrekt, tötete ihn und startete den
 Ersatz nach zwei Sekunden. Der alte Prozess lief da noch — und die **Selbstwache des Ersatzes**

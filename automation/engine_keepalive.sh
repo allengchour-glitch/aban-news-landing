@@ -23,6 +23,21 @@ REPO_AUTO=/home/user/aban-news-landing/automation
 # zaehle <muster> — argv-basiert. Die eigene bash -c-Hülle hat argv1="-c" und matcht nie.
 zaehle() { ps -eo args --no-headers | awk -v s="$1" '$1=="bash" && index($0,s)' | wc -l; }
 
+# ⚠️ ZAEHLER UND TOETER MUESSEN DASSELBE MUSTER BENUTZEN (27.08.2026).
+# `zaehle` ist absichtlich lose (`index($0,s)`), weil der CJ-Wrapper seinen Namen per `exec`
+# verliert und nur noch als argv2 auftaucht. Fuer den Aufseher wurde damit GEZAEHLT, aber mit
+# einem strengen Muster (`$4 ~ /fixer_keepalive\.sh$/`) GETOETET — zwei Fragen, zwei Antworten.
+# Am 27.08. meldete der Zaehler «13 Instanzen → 12 beendet», waehrend nur EINE echte lief:
+# der lose Zaehler trifft jeden Prozess, in dessen Kommandozeile der Name irgendwo vorkommt.
+# Das ist die `pgrep -f`-Falle von Lehre 1 in neuer Verkleidung — diesmal nicht im eigenen
+# Aufruf, sondern in fremden Kindprozessen. Der Aufseher wird deshalb ueberall mit DEM
+# Muster gezaehlt, mit dem er auch beendet wird.
+aufseher_pids() {
+  ps -eo pid,etimes,args --no-headers \
+    | awk '$3=="bash" && $4 ~ /fixer_keepalive\.sh$/ {print $2, $1}' | sort -n
+}
+zaehle_aufseher() { aufseher_pids | grep -c . ; }
+
 starte() {  # starte <logname> <befehl…>
   # ⚠️ ANHÄNGEN, nicht überschreiben. Mit `>` löschte jeder Neustart die Begründung des
   # vorigen Todes — der Aufseher stand am 20.08. mehrfach still, und das Log war jedes Mal
@@ -36,7 +51,7 @@ starte() {  # starte <logname> <befehl…>
 
 # ── 1. Der Aufseher zuerst. Er startet ALLE täglichen Qualitäts-Wächter; steht er still,
 #       stehen sie alle still, und keine andere Routine merkt es (Lehre 0c).
-A=$(zaehle 'fixer_keepalive.sh')
+A=$(zaehle_aufseher)
 if [ "$A" -eq 0 ]; then
   echo "AUFSEHER neu gestartet"
   starte fixer_keepalive bash automation/fixer_keepalive.sh
@@ -48,9 +63,7 @@ elif [ "$A" -gt 1 ]; then
   # auf sich selbst verlassen. Zwei Aufseher bedeuten doppelte Wächter-Starts und doppelte
   # Shopify-Last. Hier wird von AUSSEN aufgeräumt — der älteste bleibt.
   echo "AUFSEHER: $A Instanzen → $((A-1)) beendet (aelteste bleibt)"
-  ps -eo pid,etimes,args --no-headers \
-    | awk '$3=="bash" && $4 ~ /fixer_keepalive\.sh$/ {print $2, $1}' \
-    | sort -n | head -n -1 | awk '{print $2}' | xargs -r kill 2>/dev/null
+  aufseher_pids | head -n -1 | awk '{print $2}' | xargs -r kill 2>/dev/null
   # ⚠️ Der Ueberlebende ist der AELTESTE — und genau der kann der haengende sein. Die
   # gerade beendete juengere Instanz hat womoeglich eben erst den Herzschlag geschrieben;
   # ohne diesen Reset saehe ein toter Aufseher zehn Minuten lang gesund aus. Die Uhr
@@ -75,10 +88,10 @@ else
     # Routinenlauf den Nullstand bemerkte. Eine Selbstwache, die den Vorgaenger noch sieht,
     # verhindert genau den Ersatz, den man gerade herbeifuehren will.
     for _ in $(seq 15); do
-      [ "$(zaehle 'fixer_keepalive.sh')" -eq 0 ] && break
+      [ "$(zaehle_aufseher)" -eq 0 ] && break
       sleep 1
     done
-    if [ "$(zaehle 'fixer_keepalive.sh')" -gt 0 ]; then
+    if [ "$(zaehle_aufseher)" -gt 0 ]; then
       ps -eo pid,args --no-headers \
         | awk '$2=="bash" && $3 ~ /fixer_keepalive\.sh$/ {print $1}' | xargs -r kill -9 2>/dev/null
       sleep 2
@@ -86,7 +99,7 @@ else
     starte fixer_keepalive bash automation/fixer_keepalive.sh
     # Gegenprobe: ein Start, der sich selbst abmeldet, ist kein Start.
     sleep 2
-    [ "$(zaehle 'fixer_keepalive.sh')" -eq 0 ] && echo "⚠️ AUFSEHER-Ersatz ist sofort wieder ausgestiegen"
+    [ "$(zaehle_aufseher)" -eq 0 ] && echo "⚠️ AUFSEHER-Ersatz ist sofort wieder ausgestiegen"
   else
     echo "AUFSEHER laeuft"
   fi
@@ -161,7 +174,7 @@ for P in "$REPO_AUTO"/*.py; do
   cmp -s "$P" "$Z" 2>/dev/null || cp "$P" "$Z" 2>/dev/null
 done
 
-echo "STAND: $(zaehle cj_runner) CJ-Runner, Aufseher=$(zaehle fixer_keepalive.sh)"
+echo "STAND: $(zaehle cj_runner) CJ-Runner, Aufseher=$(zaehle_aufseher)"
 
 # 💾 Snapshot-Rewind-Erkennung (25.08.2026, 4× an einem Morgen): Der Container stellt beim
 # Restart einen ALTEN Disk-Snapshot her — der Baum faellt hinter origin zurueck, die
