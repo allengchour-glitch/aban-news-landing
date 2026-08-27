@@ -2884,3 +2884,73 @@ gid://shopify/Product/15448601133441	CHF 25.80	3 Varianten	High-Waist Flared Leg
 gid://shopify/Product/15448601166209	CHF 21.38	12 Varianten	Leggings mit Polka-Dots und Patchwork-Design
 gid://shopify/Product/15448601231745	CHF 21.87	8 Varianten	Weisse Stretch-Jeans mit geradem Bein
 gid://shopify/Product/15448601264513	CHF 27.60	4 Varianten	High-Waist Capri Leggings mit Schlitz
+gid://shopify/Product/15448601297281	CHF 17.70	50 Varianten	High Waist Skirted Leggings 2-in-1
+gid://shopify/Product/15448601330049	CHF 20.67	15 Varianten	Figurformender Yoga Skort mit Mesh-Einsätzen
+gid://shopify/Product/15448601526657	CHF 18.46	20 Varianten	Winter Leggings mit Pfirsichpo-Effekt
+gid://shopify/Product/15448602083713	CHF 18.02	5 Varianten	Leggings mit Kokosnuss-Knöpfen im Asia-Stil
+gid://shopify/Product/15448602149249	CHF 19.37	9 Varianten	Bequeme Unterhose
+gid://shopify/Product/15448602182017	CHF 23.36	5 Varianten	Leggings mit hohem Bund und Quasten
+gid://shopify/Product/15448602214785	CHF 23.14	35 Varianten	Bequeme Capri-Leggings für Damen
+gid://shopify/Product/15448602247553	CHF 20.97	65 Varianten	Nahtlose Jacquard Yoga Leggings für Damen
+gid://shopify/Product/15448602280321	CHF 19.23	36 Varianten	Leichte Leinen-Baumwollhose mit geradem Bein
+gid://shopify/Product/15448602378625	CHF 20.08	6 Varianten	Damen Anti-Rutsch Leggings für Sport & Fitness
+gid://shopify/Product/15448602411393	CHF 19.23	48 Varianten	Leggings aus Eisseide mit hohem Bund
+gid://shopify/Product/15448602444161	CHF 19.78	45 Varianten	Freizeit-Hosen mit Schnürung am Knöchel
+gid://shopify/Product/15448602509697	CHF 21.87	96 Varianten	High-Waist Leggings mit Fleece-Futter
+gid://shopify/Product/15448602542465	CHF 20.97	52 Varianten	High-Waist Cropped Leggings für Damen
+gid://shopify/Product/15448602575233	CHF 19.08	72 Varianten	Umstands-Capri-Leggings mit hohem Bund
+gid://shopify/Product/15448602608001	CHF 21.42	5 Varianten	Leggings mit Spitze und Patchwork
+gid://shopify/Product/15448602640769	CHF 19.53	5 Varianten	Elegante High-Waist Cropped Hose mit Spitze
+gid://shopify/Product/15448602673537	CHF 20.26	16 Varianten	Nahtlose Tummy-Control Leggings
+gid://shopify/Product/15448602739073	CHF 20.22	54 Varianten	High-Waist Business Freizeithose für Damen
+gid://shopify/Product/15448602771841	CHF 19.12	2 Varianten	Retro Pentagram Jacquard Leggings
+gid://shopify/Product/15448602804609	CHF 21.24	24 Varianten	Damen Leggings mit farbigen 3D-Blumenprints
+gid://shopify/Product/15448602870145	CHF 18.73	5 Varianten	High-Waist Leggings für Damen
+gid://shopify/Product/15448602935681	CHF 19.01	6 Varianten	Leggings mit Mesh-Einsätzen und Cutouts
+gid://shopify/Product/15448602968449	CHF 20.39	25 Varianten	High-Waist Shapewear Shorts mit Bauchkontrolle
+gid://shopify/Product/15448603001217	CHF 19.78	4 Varianten	High-Waist Yoga Leggings mit Shaping-Effekt – Schw
+gid://shopify/Product/15448603033985	CHF 22.16	4 Varianten	High-Waist Capri Leggings aus Denim
+gid://shopify/Product/15448603066753	CHF 21.42	16 Varianten	High-Waist Yoga Leggings mit Shaping-Effekt – S-Bl
+gid://shopify/Product/15448603099521	CHF 20.37	4 Varianten	Luftige High-Waist-Hose mit Quasten
+gid://shopify/Product/15448603132289	CHF 19.92	9 Varianten	Po-formende Sport Leggings für Damen
+gid://shopify/Product/15448603230593	CHF 18.73	4 Varianten	Umstands-Leggings mit hoher Taille und ausgestellt
+gid://shopify/Product/15448603263361	CHF 19.19	3 Varianten	Gestreifte Mid-Rise Stretch Flare Leggings
+gid://shopify/Product/15448603296129	CHF 19.63	6 Varianten	Spicy Girl High-Waist Patchwork Mesh Hose
+gid://shopify/Product/15448603361665	CHF 17.66	34 Varianten	Dünne High-Waist Yoga Leggings mit weitem Bein
+gid://shopify/Product/15448603394433	CHF 19.99	8 Varianten	High-Waist Flared Pants mit Bauchkontrolle
+gid://shopify/Product/15448603427201	CHF 17.73	24 Varianten	Glänzende Leggings in Leder-Optik
+gid://shopify/Product/15448603459969	CHF 18.17	60 Varianten	3D Digital-Print Yoga Leggings für Damen
+gid://shopify/Product/15448603492737	CHF 17.61	6 Varianten	Leggings für Mädchen aus Baumwolle
+gid://shopify/Product/15448603525505	CHF 19.54	3 Varianten	High-Waist Leggings mit ausgestelltem Bein
+gid://shopify/Product/15448603591041	CHF 19.48	5 Varianten	High-Waist Leggings mit Rippstruktur
+gid://shopify/Product/15448603656577	CHF 18.61	4 Varianten	Gestrickte Leggings mit gerafftem Bund
+gid://shopify/Product/15448603820417	CHF 22.16	20 Varianten	Patchwork Leggings mit Kontrastfarben
+gid://shopify/Product/15448603853185	CHF 19.08	18 Varianten	Fitness Leggings mit Shaping-Effekt
+gid://shopify/Product/15448603918721	CHF 22.32	40 Varianten	Nahtlose High-Waist Leggings
+gid://shopify/Product/15448603951489	CHF 21.71	20 Varianten	Elegante Flared Pants mit Schlangenprint
+gid://shopify/Product/15448603984257	CHF 17.57	4 Varianten	Gestreifte Slimming Leggings mit Kordelzug
+gid://shopify/Product/15448604082561	CHF 18.32	20 Varianten	High-Waist Shaping Leggings für Damen
+gid://shopify/Product/15448604180865	CHF 17.63	12 Varianten	High-Elastic Leggings für Figurformung
+gid://shopify/Product/15448604344705	CHF 20.85	46 Varianten	Elegante High-Waist Business-Hose mit Knopfdetails
+gid://shopify/Product/15448604377473	CHF 17.45	6 Varianten	Kurze Leggings in Leder-Optik
+gid://shopify/Product/15448604410241	CHF 22.01	8 Varianten	Gerade geschnittene Jeans mit Blumenprint
+gid://shopify/Product/15448604443009	CHF 17.87	3 Varianten	Vielseitige Ultra-Slim Leggings
+gid://shopify/Product/15448604574081	CHF 19.16	99 Varianten	Retro 3D Digitalprint Yoga Leggings für Damen
+gid://shopify/Product/15448604672385	CHF 18.02	25 Varianten	Yoga Fitness Leggings Cropped
+gid://shopify/Product/15448604705153	CHF 17.72	35 Varianten	Athletic Outdoor Leggings mit Taschen
+gid://shopify/Product/15448604737921	CHF 19.54	10 Varianten	Elegante Flared Shorts für Damen
+gid://shopify/Product/15448604803457	CHF 19.23	15 Varianten	Ethno-Flare-Leggings mit Streifenmuster
+gid://shopify/Product/15448604868993	CHF 18.02	35 Varianten	Leggings mit 3D-Prägemuster
+gid://shopify/Product/15448604934529	CHF 18.62	16 Varianten	High-Waist Yoga Leggings mit Shaping-Effekt – M-Gr
+gid://shopify/Product/15448604967297	CHF 18.47	9 Varianten	Leggings mit Blumenmuster und Stretchbund
+gid://shopify/Product/15448605065601	CHF 20.37	14 Varianten	Gefütterte Leggings mit Schleife für Mädchen
+gid://shopify/Product/15448605131137	CHF 21.11	4 Varianten	High-Waist Haremshose mit Schlitz und Bindebündche
+gid://shopify/Product/15448605163905	CHF 20.19	3 Varianten	Leggings mit Print-Buchstaben
+gid://shopify/Product/15448605196673	CHF 18.70	54 Varianten	Sport Leggings mit Mesh und Seitentaschen
+gid://shopify/Product/15448605229441	CHF 28.88	2 Varianten	Leggings mit Spitzenbund und Daunenfüllung
+gid://shopify/Product/15448605327745	CHF 28.82	5 Varianten	Merino-Leggings für Damen
+gid://shopify/Product/15448605458817	CHF 16.90	2 Varianten	Leggings im Denim-Look mit Leopardenmuster
+gid://shopify/Product/15448605589889	CHF 16.90	8 Varianten	High-Elastic Butt-Lifting Leggings
+gid://shopify/Product/15448605884801	CHF 20.82	69 Varianten	Damen Leggings mit Tier-Print für Frühling & Herbs
+gid://shopify/Product/15448606048641	CHF 18.17	50 Varianten	High-Waist Fitness Leggings mit Taschen
+gid://shopify/Product/15448606212481	CHF 19.92	4 Varianten	High-Waist Samthose mit Spitze
