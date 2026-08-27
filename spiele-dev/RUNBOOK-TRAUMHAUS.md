@@ -1431,3 +1431,43 @@ Saison-Umschaltung an Tag 1 und Tag 16 gemessen.
 **Stand der Inventur:** von den ~40 ungenutzten Modellen stehen jetzt **16** (th12 ×5,
 th24 ×5, th29 ×6). Offen: th25 Flughafen (9, braucht Landebahn-Logik) und th14
 Club-Interieur (12, Innenräume).
+
+## 2026-08-27 · 🕳️ `typeof x === "function" &&` — die Prüfung, die sich als bestanden ausgibt
+
+Nach dem Wintermarkt-Fund alle Sonden auf dasselbe Muster durchsucht. **Gemessen**, was eine
+Sonde im IIFE-Scope des Spiels wirklich sieht:
+
+| Bezeichner | in der Sonde |
+|---|---|
+| `freiPlatz` | **undefined** |
+| `window._freiPlatz` | function |
+| `zielFrei` | function |
+| `bergBoxen` | **undefined** |
+| `_mobil`, `_lodBereit`, `inSolid`, `imBau` | vorhanden |
+
+### 🔴 `th-augen.mjs` stellte die Kamera weiter in Gebäude
+Der Kopfkommentar des Werkzeugs beschreibt den Fehler als behoben: *„Beim ersten Versuch
+stand die Figur bei (0|96) IM Bahnhofsgebäude."* Der Ausweich-Zweig stand als
+`if(typeof freiPlatz === "function" && !freiPlatz(x,z,2))` da — und weil der erste Operand
+**immer false** ist, lief er **nie**. Jedes Foto seit Einführung des Werkzeugs konnte aus
+einer Wand stammen, ohne Hinweis.
+
+**Beweis nach der Korrektur** (`window._freiPlatz`, plus `throw`, wenn sie fehlt):
+
+```
+th-augen.mjs 0 96 0   →   ⚠️ 0/96 war belegt -> 9/80.4 (18 m)
+```
+
+Diese Zeile war vorher unerreichbar.
+
+### Die Regel
+In einer Sonde ist `typeof x === "function" && x(...)` **kein Schutz, sondern eine
+Tarnkappe**: fehlt `x`, verschwindet die Prüfung lautlos und der Lauf meldet grün. Wo eine
+Prüfung das Ergebnis trägt, gehört ein `throw` hin — `th-viertel.mjs` wirft jetzt, wenn
+`_viertelSolver` unvollständig ist, statt eine leere Bergliste auszuweisen.
+
+Harmlos und deshalb belassen: `th-koop.mjs` (`zielFrei` ist vorhanden) und `th-tempo.mjs`
+(`_mobil`/`_lodBereit` werden nur *gemeldet*, sie steuern nichts).
+
+Was das Spiel exportiert, damit Sonden nicht raten müssen: `window._viertelSolver`,
+`window._freiPlatz`, `window._spaetEinfrieren`, `window._nachRuecken`, `window._bankPos`.

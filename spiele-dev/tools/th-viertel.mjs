@@ -31,7 +31,12 @@ const tmp = '_viertel_tmp.html'
 
 const sonden = {
   vDiag: `function(){
-    var S=window._viertelSolver, VIERTEL=S.VIERTEL, viertelMass=S.mass,
+    var S=window._viertelSolver;
+    /* Kein stiller Rueckfall: fehlt ein Teil des Solvers, ist jede Zahl hier geraten.
+       Lieber laut scheitern als eine leere Bergliste ausweisen. */
+    if(!S||!S.VIERTEL||!S.mass||!S.fahrbahn||!S.berg||!S.sperre||!S.boxen)
+      throw new Error("_viertelSolver unvollstaendig — Diagnose waere wertlos");
+    var VIERTEL=S.VIERTEL, viertelMass=S.mass,
         aufFahrbahn=S.fahrbahn, imBerg=S.berg, aufSperre=S.sperre, bergBoxen=S.boxen;
     var raus=[];
     /* ⚠️ "Berg" allein ist keine Auskunft. bergBoxen() sammelt ALLES ueber 20 m Hoehe
@@ -40,7 +45,7 @@ const sonden = {
        an seinem eigenen Hochhaus. Dasselbe gilt fuer die Fahrbahn: Ring, Zubringer und
        Landstrasse sind verschiedene Probleme mit verschiedenen Auswegen. */
     function welcherBerg(x,z,m){
-      var B=(typeof bergBoxen==="function")?bergBoxen():[];
+      var B=bergBoxen();
       var x0=x-m.hw,x1=x+m.hw,z0=z-m.hd,z1=z+m.hd,tr=[];
       for(var i=0;i<B.length;i++){var b=B[i];
         if(b[1]>x0&&b[0]<x1&&b[3]>z0&&b[2]<z1)
