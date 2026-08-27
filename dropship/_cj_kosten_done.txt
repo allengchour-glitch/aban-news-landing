@@ -3182,3 +3182,7 @@ gid://shopify/Product/15448645665153	CHF 19.63	35 Varianten	Luftige Caprihose mi
 gid://shopify/Product/15448645697921	CHF 18.47	5 Varianten	Stylishe Slim-Fit Denim Shorts für Damen
 gid://shopify/Product/15448645763457	CHF 21.42	12 Varianten	Curvy Denim Shorts mit hoher Taille
 gid://shopify/Product/15448645796225	CHF 19.78	40 Varianten	Boho-Chic Latz-Shorts für Damen
+gid://shopify/Product/15448647172481	CHF 18.02	54 Varianten	High Waist Yoga Pants – Hüftstraffend & Schnelltro
+gid://shopify/Product/15448647205249	CHF 18.02	55 Varianten	High-Waist Shaping Leggings
+gid://shopify/Product/15448647303553	CHF 20.60	3 Varianten	Retro Gelbe Low-Waist Stretch Hose für Damen
+gid://shopify/Product/15448647369089	CHF 17.87	96 Varianten	Nahtlose Strick-Tie-Dye-Yogahose für Damen
