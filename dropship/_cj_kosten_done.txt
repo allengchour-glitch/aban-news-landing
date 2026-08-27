@@ -3188,3 +3188,4 @@ gid://shopify/Product/15448647303553	CHF 20.60	3 Varianten	Retro Gelbe Low-Waist
 gid://shopify/Product/15448647369089	CHF 17.87	96 Varianten	Nahtlose Strick-Tie-Dye-Yogahose für Damen
 gid://shopify/Product/15448647401857	CHF 19.08	42 Varianten	Camo Shark Yoga Pants
 gid://shopify/Product/15448647434625	CHF 18.46	12 Varianten	Shapewear Leggings mit Bauchkontrolle
+gid://shopify/Product/15448647467393	CHF 21.12	21 Varianten	High-Waist Slim-Fit Jeans mit leicht ausgestelltem
