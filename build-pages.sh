@@ -32,6 +32,11 @@ mkdir -p _site
 # deutsche Vorlage geaendert hat (dann Skript und Vorlage abgleichen). Tolerant.
 ( command -v python3 >/dev/null 2>&1 && python3 tools/build_suche_sprachen.py ) || echo "build_suche_sprachen übersprungen"
 
+# Neue Seiten bekommen den Such-Link in der Fusszeile. Ohne diesen Schritt ist eine
+# frisch angelegte Seite eine Sackgasse — die Suche deckt 2632 Seiten ab, war aber
+# vor dem 27.08.2026 von nur 10 Seiten aus verlinkt. Tolerant.
+( command -v python3 >/dev/null 2>&1 && python3 tools/such_link_footer.py --fix ) || echo "such_link_footer übersprungen"
+
 # Tote interne Links melden (bricht den Build NICHT ab — der Bericht soll sichtbar
 # sein, aber ein einzelner Tippfehler darf kein Deploy verhindern). Stand nach der
 # Einfuehrung: 0 tote Ziele bei 54'161 geprueften Links.
