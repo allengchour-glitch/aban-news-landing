@@ -1471,3 +1471,44 @@ Harmlos und deshalb belassen: `th-koop.mjs` (`zielFrei` ist vorhanden) und `th-t
 
 Was das Spiel exportiert, damit Sonden nicht raten müssen: `window._viertelSolver`,
 `window._freiPlatz`, `window._spaetEinfrieren`, `window._nachRuecken`, `window._bankPos`.
+
+## 2026-08-27 · 👁️ Vier grüne Werkzeuge — und die Straße lief trotzdem durch die Windmühle
+
+Nach dem Zoo (#2342) habe ich zum ersten Mal **hingesehen** statt nur gemessen
+(`th-augen.mjs`, seit #2344 wieder funktionsfähig). Das erste Foto vom Bauernhof-Weg zeigte
+die **Windmühle mitten auf der Fahrbahn**.
+
+Nachgerechnet, nicht nur betrachtet:
+
+| | |
+|---|---|
+| Zoo-Viertelstraße | x −285…−115 bei **z = −200**, Belag −204,5…−195,5 |
+| `bd_windmill_tower` | x −139,5…−132,7, **z −199,2…−192,8** |
+
+Der Turm stand mit 3,7 m im Belag. **Alle vier Werkzeuge meldeten sauber**, und jedes aus
+einem anderen guten Grund:
+
+* `th-strassen.mjs` kennt nur die großen Bänder (Haupt-, Quer-, Ring-, Zubringer-,
+  Landstraße) — **nicht die Straßen INNERHALB eines Viertels**. Das ist die Lücke.
+* `th-3d.mjs` vergleicht Objekt gegen Objekt; eine Fahrbahn ist eine Fläche ohne Kollider.
+* `th-netz.mjs` prüft Erreichbarkeit, nicht Sauberkeit.
+* `viertelPasst()` sieht nur `WORLD_SOLIDS` — und die Mühle hat **0 Kollider im Umkreis von
+  12 m**. Für den Solver existierte sie nicht: dieselbe Klasse wie Fahrbahnen und Berge.
+
+**Behoben** über `SPAETE_SPERREN` (Maße aus der Box inkl. Flügel, z −204,1…−187,9). Der Zoo
+rückt damit auf (−230|−200); seine Straße endet bei x = −145 und lässt der Mühle 5,5 m Luft.
+
+### ⚠️ Warum die Mühle KEINEN Kollider bekommt
+Das Lieferziel **„Windmühle" liegt auf (−136|−196)** — also *im* Bauwerk. Ein Kollider dort
+machte das Ziel unerreichbar. Deshalb eine Sperre für den **Solver** statt eines Kolliders
+für die **Welt**. Wer das je ändert, muss zuerst das Lieferziel verschieben.
+
+### Die Lehre
+Vier grüne Werkzeuge sind kein Beweis, sondern vier beantwortete Fragen. Keines von ihnen
+stellte die Frage „steht etwas auf einer **Viertelstraße**". **Nach jedem neuen Viertel ein
+Foto aus Augenhöhe** — das kostet 90 Sekunden und hat hier gefunden, was 20 Minuten
+Zahlenprüfung nicht fanden.
+
+**Verifiziert nach der Korrektur:** `th-3d` einziger Mühlen-Eintrag = eigene Flügel am eigenen
+Turm (0,76 m, konstruktiv) · `th-strassen` 0 th24-Treffer, Gesamt 84 · `th-netz` alle sechs
+Viertel erreichbar · Foto zeigt die Mühle frei auf der Wiese.
