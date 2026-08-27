@@ -1316,3 +1316,40 @@ Polizeiwache steckte einmal **19,7 m** in der Seilbahn-Talstation (#2315).
 ⚠️ Die Zahl „echte Überschneidungen" (56) ist **unverändert** — es wurde nur die Reihenfolge
 und die gemeldete Größe korrigiert. Eine Kennzahl, die man nicht nach Schwere ordnen kann,
 ist als Frühwarnung wertlos: 56 kleine Baumkronen und ein 19,7-m-Fehler ergeben dieselbe Zahl.
+
+## 2026-08-27 · 🎰 Vergnügungsviertel — die ersten der ~40 ungenutzten Modelle stehen
+
+Die fünf **th12**-Bauten (Bowlingbahn, Casino, Nachtclub, Spielhalle, Theater) lagen seit
+ihrer Charge fertig im Repo und waren nie platziert. Der Grund dafür ist heute weg: bis zu
+dieser Session suchte `viertelOrt()` nur in vier Richtungen und `imBerg()` sperrte per
+Hüllbox ein Viertel der Karte. **Fünftes Viertel, alle fünf auf Stufe 2.**
+
+### Maße gemessen, dann skaliert (die Parkgaragen-Falle)
+Bei voller Höhe ist die Bowlingbahn **43,6 × 34,4 m**, das Theater 35 × 35,7. Damit wäre das
+Netto-Rechteck so breit, dass der Solver wieder keinen Platz fände — genau der Fehler, der
+Gewerbe Ost jahrelang heimatlos machte. Auf 6–10 m Höhe skaliert (`bau()` skaliert über die
+**Höhe**) bleiben 32,7 × 25,8 bzw. 29,2 × 29,8. Längere Bauzeile: 91,3 m Front + 2 Lücken =
+115,3 m, passt in die 122 m Netto-Länge.
+
+### ⚠️ Wunschort gesucht, nicht geraten
+Erster Versuch (120|−250) landete nach **170 m Ausweichen** bei (290|−250) — r = 383, mit
+einem 270 m langen Verbinder quer durchs Feld. Statt einen zweiten Ort zu raten: Rasterscan
+mit `viertelPasst(cfg,x,z,2)` über die ganze Karte, 20-m-Schritte. **57 gültige Plätze**, der
+stadtnächste ist **(160|220), r = 272**, direkt neben dem Sportpark. Dort steht es jetzt mit
+**0 m Ausweichen**.
+
+Der Scan ist drei Zeilen in einer Sonde und beantwortet die Frage, die man sonst durch
+Ausprobieren umkreist — er gehört bei jedem neuen Viertel an den Anfang, nicht ans Ende.
+
+### Verifiziert (alle drei Werkzeuge, wie es die Regel verlangt)
+* `th-viertel.mjs`: 5 Viertel, **0 nicht auf Stufe 2**, Vergnügungsviertel 0 m ausgewichen.
+* `th-3d.mjs`: tiefste Überschneidung unverändert 1,39 m (Seilbahn), **kein th12-Modell** in
+  der Liste.
+* `th-strassen.mjs`: **0 th12-Treffer** auf irgendeiner Fahrbahn, Gesamt 91 (Bereich 84–98).
+* `th-netz.mjs`: per GPS erreichbar in **48 Punkten** — die kürzeste Route aller fünf Viertel.
+  Der Anschluss zeigt auf die Sportpark-Straße (Mittelachse z = 236, Ostende x = 90), nicht
+  auf einen Viertelrand — sonst endet der Verbinder im Rasen.
+
+⚠️ Die Landstraße schwankte im Verlauf 25 → 39 → 29. Das ist **nicht** das neue Viertel: die
+Treffer sind Seilbahn-Masten, Baumkronen und Felsen. Bei dieser Kennzahl immer erst den
+**Inhalt** des Bandes ansehen, bevor man eine Änderung dafür verantwortlich macht.
