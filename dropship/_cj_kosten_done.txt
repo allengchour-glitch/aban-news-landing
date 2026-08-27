@@ -3186,3 +3186,5 @@ gid://shopify/Product/15448647172481	CHF 18.02	54 Varianten	High Waist Yoga Pant
 gid://shopify/Product/15448647205249	CHF 18.02	55 Varianten	High-Waist Shaping Leggings
 gid://shopify/Product/15448647303553	CHF 20.60	3 Varianten	Retro Gelbe Low-Waist Stretch Hose für Damen
 gid://shopify/Product/15448647369089	CHF 17.87	96 Varianten	Nahtlose Strick-Tie-Dye-Yogahose für Damen
+gid://shopify/Product/15448647401857	CHF 19.08	42 Varianten	Camo Shark Yoga Pants
+gid://shopify/Product/15448647434625	CHF 18.46	12 Varianten	Shapewear Leggings mit Bauchkontrolle
