@@ -36,7 +36,7 @@ TAG = "hype-jetzt"
 HANDLE = "hype-jetzt"
 LEDGER = "dropship/_hype_verlauf.txt"
 
-QUELLE = "Web-Recherche 26.08.2026 (CJ-Viral-Liste + easync/selltrend: Sunset-Lampen von zwei Quellen unabhängig, Heatless-Curls-Sets und Oversized-/Decken-Hoodies für den Herbst, Mini-Beamer/3-in-1-Ladestationen/Haustier-Fellpflege bestätigt; 25.08.-Stand — Ice Roller, Kopfhaut-Massage, EMS-Gesichtstoner, Snail/Serum, Blush-Balms, «aesthetic living» — läuft weiter. Supplements/Olivenöl bewusst NICHT: Lebensmittel-/Heilversprechen-Klasse)"
+QUELLE = "Web-Recherche 27.08.2026 (CJ «20 Viral TikTok Products 2026» + sellthetrend September-Liste: tragbare Smoothie-Mixer, Karaoke-/Ansteckmikrofone, Ringlichter, Tierhaar-Fusselrollen und Futterautomaten neu aufgenommen; Sunset-Lampe, Mini-Beamer, 3-in-1-Ladestation, Heatless Curls, Snail/Serum, LED-Maske und Haustier-Fellpflege von beiden Quellen bestaetigt. Hals-Ventilator laeuft aus (Herbstanfang CH). Seifenblasenpistole bewusst NICHT: faellt unter Spielzeug (RAUS_TYP). Supplements/Lebensmittel weiterhin NICHT: Heilversprechen-Klasse)"
 THEMEN = {
     # ⚠️ «IPL» ohne Wortgrenze steckt in «L-IPL-iner»: der erste Lauf setzte einen
     # «Peel-Off Lipliner» als Beauty-GERÄT auf die Startseite. Dieselbe Falle wie «rock» in
@@ -97,6 +97,32 @@ THEMEN = {
     "Heatless Curls": re.compile(
         r'Heatless[- ]?(?:Curl|Locken)|Locken ohne Hitze|Seiden?[- ]?Lockenwickler|'
         r'Lockenwickler[- ]?(?:Set|Band)|Curling[- ]?(?:Rod|Ribbon)', re.I),
+    # Neu 27.08.: CJs eigene «20 Viral TikTok Products 2026» und die September-Liste von
+    # sellthetrend nennen uebereinstimmend tragbare Mixer, Mini-/Karaoke-Mikrofone, Ringlichter
+    # und Haustier-Helfer (Fusselrolle, Futterautomat). Der Hals-Ventilator laeuft dafuer aus —
+    # Ende August ist in der Schweiz Herbstanfang; er verliert seinen Tag von selbst.
+    # ⚠️ «Mixer» allein ist eine Falle: Tattoo-Mixer (aus dem Shaker-Fehlgriff vom 21.08.),
+    # Handmixer, DJ-Mixer → Smoothie/tragbar/Becher ist Pflicht-Anker.
+    "Smoothie-Mixer": re.compile(
+        r'Smoothie[- ]?(?:Mixer|Maker|Becher|Blender)|Mixbecher|'
+        r'Tragbarer?[- ]?(?:Mini-?)?(?:Mixer|Blender)|Standmixer[- ]?to[- ]?go', re.I),
+    # ⚠️ «Mikrofon» allein traefe Studio-, PC- und Konferenzmikrofone → Karaoke/Anstecker
+    # als Anker. «Mini» allein sowieso nicht.
+    "Karaoke-Mikrofon": re.compile(
+        r'Karaoke|Ansteckmikrofon|Ansteck[- ]?Mikro|Funkmikrofon|Lavalier|'
+        r'Mini-?Mikrofon(?:[- ]?Set)?', re.I),
+    # ⚠️ «Ring» steckt in «MonitoRING» und «ContouRING» (Tag-Fehlgriff vom 27.08.) —
+    # deshalb nur die vollstaendigen Woerter, nie «Ring» allein.
+    "Ringlicht": re.compile(r'Ringlicht|Ring[- ]?Light|Selfie[- ]?(?:Licht|Ring)|'
+                            r'Beauty[- ]?Ringleuchte', re.I),
+    # ⚠️ «Roller» allein trifft Ice Roller, Jade Roller, Farbroller und Tretroller →
+    # Fussel/Tierhaar als Pflicht-Anker.
+    "Tierhaar-Fusselrolle": re.compile(
+        r'Fusselrolle|Fusselb[üu]rste|Tierhaarentferner|Tierhaar[- ]?(?:Rolle|B[üu]rste)|'
+        r'Pet[- ]?Hair[- ]?Remover', re.I),
+    "Futterautomat": re.compile(
+        r'Futterautomat|Futterspender|Automatischer?[- ]?(?:Futter|Napf)|'
+        r'Wasserspender[- ]?(?:f[üu]r )?(?:Katze|Hund|Haustier)', re.I),
     "Hoodie-Decke": re.compile(
         r'Oversized?[- ]?Hoodie|Hoodie[- ]?Decke|Decken[- ]?Hoodie|Wearable Blanket|'
         r'Sherpa[- ]?Hoodie|Doppelseitig(?:er)?[- ]?Hoodie', re.I),

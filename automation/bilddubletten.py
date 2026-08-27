@@ -203,8 +203,19 @@ for h, pids in kand.items():
         for j in range(i + 1, len(pids)):
             a, b = pids[i], pids[j]
             gem = saetze[a] & saetze[b]
-            if len(gem) >= 2:
-                befunde.append((a, b, len(gem), len(saetze[a]), len(saetze[b])))
+            klein = min(len(saetze[a]), len(saetze[b])) or 1
+            anteil = len(gem) / klein
+            # ⚠️ «ZWEI GEMEINSAME BILDER» WAR ZU SCHWACH (erster Volllauf, 27.08.2026).
+            # Zubehoer-FAMILIEN teilen sich Fotos, ohne dasselbe Produkt zu sein: «USB-Ladegeraet
+            # fuer 18650», «Akku & Ladegeraet Set» und «Akku & Ladegeraet fuer Taschenlampen»
+            # zeigen dieselbe Ladeschale — drei echte Artikel. Und ein 18650-Einzelakku teilte
+            # 2 von 8 Bildern mit einem 10er-Pack. Entschieden wird deshalb nach dem ANTEIL am
+            # kleineren Bildsatz, nicht nach der blossen Zahl:
+            #   >= 0.8  → Dublette (Prusa-Heizbett: 5 von 5)
+            #   >= 0.5  → Bildfamilie, nur melden (Ladegeraet-Trio: 3 von 5)
+            #   darunter → gemeinsames Verpackungs-/Groessenbild, kein Befund
+            if anteil >= 0.5:
+                befunde.append((a, b, len(gem), len(saetze[a]), len(saetze[b]), anteil))
 
 def zeile(pid):
     a = aktiv[pid]
@@ -216,12 +227,13 @@ if befunde:
         f.write('# Bild-identische Produkte\n\n')
         f.write('Gefunden am Bild**inhalt** (MD5), nicht an Titel, SKU oder Bild-URL — die\n'
                 'drei taeuschen bei CJ-Doppellistings alle drei.\n\n')
-        for a, b, gem, na, nb in befunde:
-            f.write(f'- **{gem} gemeinsame Bilder** ({na} bzw. {nb} insgesamt)\n')
+        for a, b, gem, na, nb, anteil in sorted(befunde, key=lambda x: -x[5]):
+            art = 'DUBLETTE' if anteil >= 0.8 else 'Bildfamilie — von Hand ansehen'
+            f.write(f'- **{art}** · {gem} gemeinsame Bilder ({na} bzw. {nb} insgesamt, {anteil:.0%})\n')
             f.write(f'  - {zeile(a)}\n  - {zeile(b)}\n')
     print(f'⚠️ {len(befunde)} bild-identische Paare -> {BERICHT}')
-    for a, b, gem, na, nb in befunde:
-        print(f'   {gem} gemeinsam:\n     {zeile(a)}\n     {zeile(b)}')
+    for a, b, gem, na, nb, anteil in sorted(befunde, key=lambda x: -x[5]):
+        print(f'   {gem} gemeinsam ({anteil:.0%}):\n     {zeile(a)}\n     {zeile(b)}')
 elif os.path.exists(BERICHT):
     os.remove(BERICHT)          # ein Bericht ohne Befund wird nicht gelesen
 
@@ -231,7 +243,9 @@ if FIX and befunde:
     if os.path.exists(GETAN):
         schon = {z.split('\t')[0] for z in open(GETAN, errors='ignore')}
     with open(GETAN, 'a') as led:
-        for a, b, gem, na, nb in befunde:
+        for a, b, gem, na, nb, anteil in befunde:
+            if anteil < 0.8:
+                continue              # Bildfamilie: melden ja, draften nein
             # Die AELTERE Fassung bleibt: sie traegt Bewertungen, interne Links und
             # Verkaufshistorie. Gedraftet wird die juengere.
             paar = sorted([a, b], key=lambda p: aktiv[p]['createdAt'])
