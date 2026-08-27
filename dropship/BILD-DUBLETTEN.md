@@ -564,9 +564,45 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **DUBLETTE** · 6 gemeinsame Bilder (6 bzw. 6 insgesamt, 100%)
   - 15454303879553 · 2026-07-13 · CHF 33.90 · CJ-2508210620141618900 · Männer Armbanduhr mit Leuchtfunktion
   - 15454350377345 · 2026-07-13 · CHF 33.90 · CJ-CJJX246371101AZ · Mechanische Herrenuhr «Sternenhimmel» mit Leuchtzeigern
+- **DUBLETTE** · 5 gemeinsame Bilder (5 bzw. 5 insgesamt, 100%)
+  - 15454508188033 · 2026-07-13 · CHF 28.90 · CJ-2504120416111606600 · LED-Weste für Hunde
+  - 15459760275841 · 2026-07-17 · CHF 28.90 · CJ-2408240444391609200 · Leuchtfühlerkette für Hunde mit Ladekabel
 - **DUBLETTE** · 8 gemeinsame Bilder (8 bzw. 8 insgesamt, 100%)
   - 15454652924289 · 2026-07-13 · CHF 15.90 · CJ-2512170116211630500 · Faltmesser aus Damaskus-Stahl
   - 15455005540737 · 2026-07-14 · CHF 15.90 · CJ-CJYD265031001AZ · Damast-Steckmesser für Früchte
+- **DUBLETTE** · 9 gemeinsame Bilder (9 bzw. 9 insgesamt, 100%)
+  - 15454894850433 · 2026-07-14 · CHF 15.90 · CJ-CJCJ226029801AZ · Wärmendes Hunde-Kleid aus Baumwolle
+  - 15458625225089 · 2026-07-16 · CHF 15.90 · CJ-2501030842481613700 · Hundemantel aus Baumwolle mit dicker Fleece-Innenseite
+- **DUBLETTE** · 15 gemeinsame Bilder (15 bzw. 15 insgesamt, 100%)
+  - 15455269683585 · 2026-07-14 · CHF 15.90 · CJ-CJFT240242901AZ · Katzen Futternapf mit erhöhtem Rahmen
+  - 15455515246977 · 2026-07-14 · CHF 15.90 · CJ-2506150626541603700 · Ceramic-Höhenverstellbarer Tischrahmen mit Quadratischer Kat
+- **DUBLETTE** · 6 gemeinsame Bilder (6 bzw. 9 insgesamt, 100%)
+  - 15455324602753 · 2026-07-14 · CHF 15.90 · CJ-CJYD295659601AZ · Robuster Hundeauslaufleine für Kleine, Mittelgrosse & Grossh
+  - 15455372968321 · 2026-07-14 · CHF 15.90 · CJ-2606260735131630100 · Nylon-Doppelleine P-Form für 2 Hunde
+- **DUBLETTE** · 8 gemeinsame Bilder (8 bzw. 8 insgesamt, 100%)
+  - 15455766479233 · 2026-07-15 · CHF 27.90 · CJ-2607150336401638100 · 7-teiliges kabelloses Elektrobürsten-Set
+  - 15455766905217 · 2026-07-15 · CHF 27.90 · CJ-CJYD298501901AZ · Mehrkopf-Reinigungbürste kabellos
+- **DUBLETTE** · 5 gemeinsame Bilder (5 bzw. 5 insgesamt, 100%)
+  - 15459991486849 · 2026-07-17 · CHF 24.90 · CJ-2607170727561637200 · Fussmassage-Pad
+  - 15460190159233 · 2026-07-17 · CHF 24.90 · CJ-CJJT299052501AZ · Fussmassagepad mit Zehen-Pressplatte
+- **DUBLETTE** · 4 gemeinsame Bilder (4 bzw. 4 insgesamt, 100%)
+  - 15467097194881 · 2026-07-22 · CHF 15.90 · CJ-CJSL299864601AZ · Handgewobenes Wickelarmband aus Leder
+  - 15467097358721 · 2026-07-22 · CHF 15.90 · CJ-2607220810411631900 · Handgewobenes Lederarmband mit Naturstein
+- **DUBLETTE** · 9 gemeinsame Bilder (9 bzw. 9 insgesamt, 100%)
+  - 15467098145153 · 2026-07-22 · CHF 15.90 · CJ-2607220655181637700 · S925 Sterling Silber Kite-Ohrringe
+  - 15467098243457 · 2026-07-22 · CHF 15.90 · CJ-CJST299816701AZ · Kite-Ohrringe aus 925er Sterling Silber
+- **DUBLETTE** · 3 gemeinsame Bilder (3 bzw. 3 insgesamt, 100%)
+  - 15469939949953 · 2026-07-23 · CHF 49.90 · fortura-49565 · Kostüm Wonderwoman Classic
+  - 15469941195137 · 2026-07-23 · CHF 51.50 · fortura-58022 · Kostüm Wonderwoman Classic
+- **DUBLETTE** · 1 gemeinsame Bilder (1 bzw. 1 insgesamt, 100%)
+  - 15469949026689 · 2026-07-23 · CHF 45.00 · fortura-932005 · Hemd Geister neon
+  - 15469951451521 · 2026-07-23 · CHF 48.00 · fortura-932007 · Hemd Geister neon
+- **DUBLETTE** · 5 gemeinsame Bilder (5 bzw. 5 insgesamt, 100%)
+  - 15469953810817 · 2026-07-23 · CHF 34.90 · fortura-948769 · Kostüm 70er Jahre Flower Power
+  - 15469955088769 · 2026-07-23 · CHF 34.90 · fortura-94876-1 · Kostüm 60er Jahre Flower Power
+- **DUBLETTE** · 2 gemeinsame Bilder (2 bzw. 2 insgesamt, 100%)
+  - 15469970555265 · 2026-07-23 · CHF 32.00 · fortura-OR40032S-M · Tutu Pink
+  - 15469975830913 · 2026-07-23 · CHF 31.90 · fortura-OR40032116-140 · Tutu Pink Kindergrösse 116/140
 - **DUBLETTE** · 5 gemeinsame Bilder (6 bzw. 7 insgesamt, 83%)
   - 15448852300161 · 2026-07-04 · CHF 33.90 · CJ-2062418986272808961 · Lampen-Effekt-Ventilator Grün
   - 15448852693377 · 2026-07-04 · CHF 33.90 · CJ-2062418951755964418 · Blauer Lampen-Ventilator (Akku)
@@ -855,6 +891,9 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
   - 15450214924673 · 2026-07-06 · CHF 15.90 · CJ-2606190347421604800 · Sportlenkradbezug
   - 15450258899329 · 2026-07-07 · CHF 15.90 · CJ-2604230421281634600 · Sport-Design Lenkradbezug 38 cm
+- **DUBLETTE** · 4 gemeinsame Bilder (6 bzw. 5 insgesamt, 80%)
+  - 15458673656193 · 2026-07-16 · CHF 64.90 · CJ-2607151117471623500 · Tiefes Induktions-Wok mit Antihaft-Effekt für zu Hause
+  - 15458674344321 · 2026-07-16 · CHF 91.90 · CJ-2607151255041600400 · Induktions-Pfanne ohne Antihaft-Beschichtung
 - **Bildfamilie — von Hand ansehen** · 6 gemeinsame Bilder (8 bzw. 8 insgesamt, 75%)
   - 15448827199873 · 2026-07-04 · CHF 36.90 · CJ-2037766339821154306 · DR-MEINAIER Süssholz-Serum Anti-Aging LSF 50
   - 15448827593089 · 2026-07-04 · CHF 15.90 · CJ-2033471318793572354 · Lakritz-Wurzel Anti-Aging Serum LSF 50
