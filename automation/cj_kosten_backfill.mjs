@@ -22,7 +22,11 @@ const SHOP = 'au3j0y-hq.myshopify.com';
 const TOK = (fs.existsSync('/tmp/cj_shop_token.txt') ? fs.readFileSync('/tmp/cj_shop_token.txt', 'utf8') : '').trim();
 const CJT = (() => { try { return JSON.parse(fs.readFileSync('/tmp/cj_token.json', 'utf8')).accessToken; } catch { return ''; } })();
 const LEDGER = 'dropship/_cj_kosten_done.txt';
-const LIMIT = parseInt(process.env.LIMIT || '400', 10);
+// ⚠️ Der Aufseher startet diesen Lauf mit `CAP=900` — dieselbe Schraube, die die
+// Bild-Laeufe kennen. Dieses Skript las aber nur LIMIT und blieb deshalb still bei 400:
+// eine Stellschraube, die nirgends ankommt, sieht im Startbefehl aus wie eine Wirkung.
+// Beide Namen gelten jetzt, LIMIT hat Vorrang.
+const LIMIT = parseInt(process.env.LIMIT || process.env.CAP || '400', 10);
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 const kosten = (usd, grams) => {
@@ -40,6 +44,11 @@ async function sgql(q, v) {
   // teilen. Ergebnis: Der Backfill kam an einem ganzen Tag über 17 Produkte nicht hinaus,
   // und das eigens reservierte Vorrang-Fenster (16:00–17:30) verpuffte.
   // Shopify füllt mit 100 Punkten/Sekunde auf; wer wartet, kommt durch.
+  // ⚠️ Drosselung verbraucht KEINEN Versuch (27.08.2026). Vorher zaehlte sie mit: acht
+  // Drosselungen hintereinander — bei einem Eimer, den vier Grind-Runner staendig
+  // leeren, der Normalfall — und der Lauf gab auf. Warten ist die Antwort auf eine
+  // Warteanweisung; nur ECHTE Ausfaelle (Netz, Fehlermeldung) zaehlen gegen die acht.
+  let gedrosseltFolge = 0;
   for (let i = 0; i < 8; i++) {
     try {
       const r = await fetch(`https://${SHOP}/admin/api/2024-10/graphql.json`, {
@@ -57,6 +66,7 @@ async function sgql(q, v) {
         const fehlt = st ? Math.max(0, (j.extensions.cost.requestedQueryCost || 100) - st.currentlyAvailable) : 100;
         const wartenMs = Math.min(20000, 1000 + (fehlt / (st?.restoreRate || 100)) * 1000);
         await sleep(wartenMs);
+        if (++gedrosseltFolge < 30) i--;   // Warteanweisung, kein Fehlversuch
         continue;
       }
     } catch {}
@@ -95,6 +105,15 @@ async function cj(pfad) {
   return { result: false, gedrosselt: true, message: 'CJ nach 8 Versuchen ohne verwertbare Antwort' };
 }
 
+// Vollstaendige Variantenliste EINES Produkts — nur fuer Produkte geholt, die noch keine
+// Kosten tragen. Ein Einzelprodukt mit 250 Varianten kostet ~7 Punkte; ueber die Seite
+// gerechnet waeren es 149. Faellt die Abfrage aus, wird das Produkt spaeter erneut geprueft
+// (kein Ledger-Eintrag) — ein Ausfall ist keine Erledigung.
+async function variantenVon(id) {
+  const r = await sgql(`query($id:ID!){product(id:$id){variants(first:250){nodes{id sku inventoryItem{id unitCost{amount}}}}}}`, { id });
+  return r.data?.product?.variants?.nodes || [];
+}
+
 async function main() {
   if (!TOK || !CJT) { console.log('PAUSE (Token fehlt)'); return; }
   const erledigt = new Set(fs.existsSync(LEDGER)
@@ -110,17 +129,26 @@ async function main() {
   // (dieselbe Lehre wie beim Textbild-Reiniger).
   const ZEIGER = 'dropship/_cj_kosten_cursor.txt';
   let cursor = fs.existsSync(ZEIGER) ? (fs.readFileSync(ZEIGER, 'utf8').trim() || null) : null;
-  let geprueft = 0, gesetzt = 0, ohne = 0;
+  let geprueft = 0, gesetzt = 0, ohne = 0, shopifyStumm = false;
   while (gesetzt + ohne < LIMIT) {
+    // ⚠️ DIE SEITENABFRAGE WAR ZU TEUER (27.08.2026). Sie holte je Produkt bis zu 100
+    // Varianten und kostete damit 149 Punkte ANGEFRAGT (tatsaechlich verbraucht: 23).
+    // Shopify prueft gegen die ANGEFRAGTE Zahl, und der Eimer stand durch die uebrigen
+    // Engines bei ~129 — die Abfrage passte also fast nie hinein, der Lauf endete nach
+    // wenigen Seiten mit «Shopify antwortet nicht». Jetzt wird auf der Seite nur die
+    // ERSTE Variante gelesen (sie genuegt fuer «hat schon Kosten?» und fuer die SKU):
+    // 44 Punkte statt 149. Die vollstaendige Variantenliste holt `variantenVon()` nur
+    // fuer die Produkte, die wirklich Arbeit brauchen.
     const q = await sgql(`query($c:String){products(first:50,after:$c,query:"status:active"){pageInfo{hasNextPage endCursor}
-      nodes{id title variants(first:100){nodes{id sku inventoryItem{id unitCost{amount}}}}}}}`, { c: cursor });
+      nodes{id title variantsCount{count} variants(first:1){nodes{id sku inventoryItem{id unitCost{amount}}}}}}}`, { c: cursor });
     const pr = q.data?.products;
-    if (!pr) { console.log('PAUSE (Shopify antwortet nicht)'); break; }
+    if (!pr) { console.log('PAUSE (Shopify antwortet nicht)'); shopifyStumm = true; break; }
     for (const p of pr.nodes) {
       geprueft++;
       if (erledigt.has(p.id)) continue;
-      const vs = p.variants.nodes;
-      if (vs.some(v => v.inventoryItem?.unitCost)) { erledigt.add(p.id); continue; }   // hat schon Kosten
+      if (p.variants.nodes.some(v => v.inventoryItem?.unitCost)) { erledigt.add(p.id); continue; }   // hat schon Kosten
+      const vs = (p.variantsCount?.count || 1) > 1 ? await variantenVon(p.id) : p.variants.nodes;
+      if (!vs.length) continue;
       // ⚠️ DIE SKU HAT VIER FORMEN (live gezählt 20.08.2026), ein Muster reicht nicht:
       //   CJ-2501090747091600500          → Zahlen-pid       → product/query?pid=
       //   CJ-EC52E079-9BEF-4475-...       → UUID-pid         → product/query?pid=
@@ -256,6 +284,11 @@ async function main() {
     cursor = pr.pageInfo.endCursor;
     fs.writeFileSync(ZEIGER, cursor);
   }
-  console.log(`PAUSE (Tagesmenge erreicht): ${gesetzt} Produkte mit Einkaufspreis, ${ohne} ohne CJ-Referenz, ${geprueft} geprüft.`);
+  // ⚠️ Eine Abbruchmeldung darf nicht den falschen Grund nennen. Bis zum 27.08. stand
+  // im Log IMMER «Tagesmenge erreicht» — auch wenn der Lauf in Wahrheit an Shopifys
+  // Drosselung gescheitert war (beide Zeilen direkt untereinander). Wer das Log liest,
+  // haelt einen gescheiterten Lauf fuer einen erledigten.
+  const grund = shopifyStumm ? 'Shopify blieb stumm' : 'Tagesmenge erreicht';
+  console.log(`PAUSE (${grund}): ${gesetzt} Produkte mit Einkaufspreis, ${ohne} ohne CJ-Referenz, ${geprueft} geprüft.`);
 }
 main();
