@@ -32,6 +32,11 @@ mkdir -p _site
 # deutsche Vorlage geaendert hat (dann Skript und Vorlage abgleichen). Tolerant.
 ( command -v python3 >/dev/null 2>&1 && python3 tools/build_suche_sprachen.py ) || echo "build_suche_sprachen übersprungen"
 
+# Tote interne Links melden (bricht den Build NICHT ab — der Bericht soll sichtbar
+# sein, aber ein einzelner Tippfehler darf kein Deploy verhindern). Stand nach der
+# Einfuehrung: 0 tote Ziele bei 54'161 geprueften Links.
+( command -v python3 >/dev/null 2>&1 && python3 tools/link_check.py ) || true
+
 # Neue Seiten in die sitemap.xml nachtragen + Dubletten entfernen. Es gibt keinen
 # Generator, der die Sitemap neu baut — ohne diesen Schritt fehlen neue Rubriken
 # bei Google (gemessen 2026-08-26: 21 Minispiele + 8 Märkte + 6 Seiten fehlten).
