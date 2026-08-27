@@ -2703,3 +2703,6 @@ gid://shopify/Product/15448586224001	CHF 21.71	20 Varianten	Etuikleid mit Tüll-
 gid://shopify/Product/15448586289537	CHF 23.95	5 Varianten	Chiffonkleid mit V-Ausschnitt und Rüschenärmeln
 gid://shopify/Product/15448586453377	CHF 21.27	20 Varianten	Etuikleid mit V-Ausschnitt & ausgestellten Ärmeln
 gid://shopify/Product/15448586617217	CHF 28.28	8 Varianten	Halterneck-Patchwork-Kleid Floral
+<<<<<<< HEAD
+=======
+>>>>>>> origin/claude/luxestyle-status-tztnn1
