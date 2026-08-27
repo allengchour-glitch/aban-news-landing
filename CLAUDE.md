@@ -1207,6 +1207,24 @@ eingerichteten Vorrang-Fenster, in dem der ganze Grind pausiert.
   `cj_variantenbild` und `cj_bild_backfill` ruhen im Fenster jetzt mit.
   **NICHT pausiert wird `cj_fulfill_runner`** — der bearbeitet echte Kundenbestellungen.
 
+## 🔁 Derselbe Fehler 30-mal gemeldet ist keine Diagnose (2026-08-27)
+Bei leerem CJ-Tagesbudget schrieb `cj_category_fill.mjs` in zehn Minuten **2'846 Logzeilen**:
+Die Seitenschleife brach beim Fehler ab, die äussere KATEGORIE-Schleife lief aber weiter und
+probierte jede der rund 30 Kategorien einzeln durch — je eine sinnlose CJ-Anfrage plus 700 ms
+Pause. Der eine echte Grund verschwand unter seinen eigenen Wiederholungen.
+- **Ein erschöpftes Tagesbudget gilt für den GANZEN Lauf, nicht für eine Kategorie.** Nur
+  `16900500` bricht jetzt alles ab; ein transienter Fehler lässt die nächste Kategorie weiter zu.
+- ⚠️ **Und dabei fiel dieselbe Falle in neuer Verkleidung auf:** Bei fehlendem CJ-Token
+  (`1600002 access token cannot be empty`) scheiterte JEDE Kategorie — der Lauf endete trotzdem
+  mit «FERTIG: 0» und **Exit 0**, und `cj_queue_runner.sh` quittierte die Gruppe als ERLEDIGT.
+  Für das leere Budget wird genau das seit dem 23.08. eigens abgefangen (`grep 16900500`), aber
+  eine Fehlerliste kennt immer nur die Fehler, die schon einmal weh getan haben.
+  **Der Runner darf sich nicht auf eine Fehlerliste verlassen:** Konnte KEINE einzige Kategorie
+  gelesen werden, endet der Lauf jetzt mit `ABBRUCH` und **Exit 3** — dann greift der ohnehin
+  vorhandene `RC != 0`-Zweig und die Gruppe bleibt offen.
+- Das ist die dritte Fassung derselben Lehre: **«FERTIG» heisst «nichts mehr zu TUN», nicht
+  «der Lauf ist zu Ende gelaufen».** Ein Lauf, der nichts lesen konnte, hat nichts erledigt.
+
 ## 💾 Ein Reparaturmechanismus auf der Platte, die zurückgedreht wird, repariert nichts (2026-08-27)
 Der Container stellt beim Restart einen **festen alten Disk-Snapshot vom 24.08. 15:36** her —
 erkennbar daran, dass das CJ-Ledger jedes Mal auf **exakt 45'149** fällt und der Baum 621

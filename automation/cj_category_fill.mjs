@@ -665,7 +665,15 @@ const grp=GROUPS[process.env.GRP||'nagel']; if(!grp){console.error('unknown GRP'
 const done=new Set(fs.existsSync(LEDGER)?fs.readFileSync(LEDGER,'utf8').split('\n').map(s=>s.replace('cj:','').trim()).filter(Boolean):[]);
 const st=DRY?null:await shTok();
 let total=0;
+// ⚠️ Ein erschoepftes Tagesbudget gilt fuer den GANZEN Lauf, nicht fuer eine Kategorie
+// (27.08.2026). Vorher brach nur die Seitenschleife ab, und die aeussere Schleife
+// probierte JEDE weitere Kategorie einzeln durch — bei leerem Eimer rund 30 sinnlose
+// CJ-Anfragen je Gruppe, 2'800 Logzeilen in zehn Minuten und ein Log, in dem der
+// eine echte Grund unter Wiederholungen verschwindet. Nur 16900500 bricht alles ab;
+// ein transienter Fehler laesst die naechste Kategorie weiter zu.
+let budgetLeer=false, catsOk=0, catsFehler=0, letzterFehler='';
 for(const [cat,label] of grp.cats){
+ if(budgetLeer) break;
  if(total>=CAP)break; let got=0; const perCat=PERCAT||Math.ceil(CAP/3);
  // SEITEN-ZEIGER JE KATEGORIE (2026-08-10). Vorher begann jeder Lauf wieder bei Seite 1 und
  // paginierte bis MAXPAGE — also wurden dieselben, längst abgegrasten Seiten immer wieder
@@ -690,7 +698,9 @@ for(const [cat,label] of grp.cats){
   // ersten Anlauf am 10.08. ist genau das mit vier Kategorien passiert.
   if(!list.length){
     if(Number(j.code)===200){ letzteSeite=0; }          // wirklich am Ende -> neu von vorn
-    else { console.log(`  ⛔ CJ-Fehler ${j.code}: ${String(j.message||'').slice(0,60)} — Zeiger bleibt`); zeigerBehalten=true; }
+    else { console.log(`  ⛔ CJ-Fehler ${j.code}: ${String(j.message||'').slice(0,60)} — Zeiger bleibt`); zeigerBehalten=true;
+           letzterFehler=`${j.code}: ${String(j.message||'').slice(0,60)}`;
+           if(Number(j.code)===16900500||/Insufficient API points/i.test(String(j.message||''))) budgetLeer=true; }
     break;
   }
   for(const p of list){
@@ -1081,7 +1091,19 @@ for(const [cat,label] of grp.cats){
  // die Schleife mit `break` verlassen, ein Schreibbefehl am Schleifenende käme dann nie dran.
  // Genau daran scheiterte der erste Anlauf (alle Zeiger blieben auf 21 stehen).
  // letzteSeite===0 bedeutet «Kategorie war zu Ende» -> wieder bei Seite 1 beginnen.
+ if(zeigerBehalten) catsFehler++; else catsOk++;
  if(!zeigerBehalten){ try{ fs.writeFileSync(zFile, String(letzteSeite===0?1:letzteSeite+1)); }catch{} }
  console.log(`${label}: total ${total}${zeigerBehalten?' (Zeiger unveraendert — CJ-Fehler)':` (Zeiger → Seite ${letzteSeite===0?1:letzteSeite+1})`}`);
+}
+// ⚠️ EIN LAUF, DER KEINE EINZIGE KATEGORIE LESEN KONNTE, IST NICHT FERTIG (27.08.2026).
+// Ein fehlender CJ-Token («1600002 access token cannot be empty») liess jede Kategorie
+// scheitern, der Lauf endete trotzdem mit «FERTIG: 0» und Exit 0 — und der Queue-Runner
+// quittierte die Gruppe als ERLEDIGT, obwohl nichts geholt wurde. Genau die Falle, die
+// fuer das leere Punktebudget schon eigens abgefangen wird, nur mit anderem Fehlercode.
+// Der Runner darf sich nicht auf eine Fehlerliste verlassen: Exit != 0 sagt ihm, dass
+// hier nichts quittiert werden darf.
+if(catsOk===0 && catsFehler>0){
+  console.log(`\nABBRUCH: keine einzige Kategorie lesbar (${catsFehler} Fehler, zuletzt ${letzterFehler}) — Gruppe bleibt offen.`);
+  process.exit(3);
 }
 console.log(`\nFERTIG: ${total} ${grp.type}${DRY?' [DRY]':''}.`);
