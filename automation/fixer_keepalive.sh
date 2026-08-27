@@ -375,7 +375,7 @@ while true; do
   if [ -f "$REPO/automation/bilddubletten.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$BD" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
-      ( cd "$REPO" && HASHCAP=600 setsid python3 automation/bilddubletten.py >> "$BD" 2>&1 9>&- & )
+      ( cd "$REPO" && HASHCAP=4000 setsid python3 automation/bilddubletten.py >> "$BD" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) bild-dubletten geprüft"
     fi
   fi

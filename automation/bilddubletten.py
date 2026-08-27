@@ -26,6 +26,7 @@ Links und Verkaufshistorie) mit Tag `duplikat-auto-draft` — nie löschen, nie 
 ENV: HASHCAP=400 (Bilder je Lauf) · SEIT=JJJJ-MM-TT · FIX=1 · DRY=1
 """
 import json, os, subprocess, sys, time, hashlib, re
+import concurrent.futures as cf
 
 def _token():
     """Erst die Datei, bei Ablauf selbst holen.
@@ -120,8 +121,14 @@ if os.path.exists(LEDGER):
         if len(t) >= 3:
             bekannt[t[0]] = (t[1], t[2])
 
+# ⚠️ SEITE FUER SEITE HASHEN, nicht erst alles laden (27.08.2026). Die erste Fassung holte
+# ALLE aktiven Produkte (465 Seiten bei 46'500 Artikeln) und begann erst danach zu hashen —
+# minutenlang passierte sichtbar nichts, und ein Shopify-Aussetzer auf Seite 400 warf die
+# ganze Vorarbeit weg. Jetzt wird jede Seite sofort abgearbeitet: Der Ledger waechst von der
+# ersten Sekunde an, und ein Abbruch kostet hoechstens die angefangene Seite.
 abfrage = 'status:active' + (f' created_at:>={SEIT}' if SEIT else '')
-cur, alle = None, []
+cur, alle, neu = None, [], 0
+log = open(LEDGER, 'a')
 while True:
     d = gql('''query($c:String,$q:String!){products(first:100,after:$c,query:$q){
                  pageInfo{hasNextPage endCursor}
@@ -130,34 +137,40 @@ while True:
     p = (d.get('data') or {}).get('products')
     if not p:
         print('PAUSE (Shopify blieb stumm) — Ledger bleibt gueltig, naechster Lauf macht weiter.')
-        sys.exit(0)
+        break
     alle += p['nodes']
+    # ⚠️ Die Bilder liegen auf Shopifys CDN, nicht hinter der Admin-API — fuer sie gilt kein
+    # Punktebudget und keine Drosselung. Sequentiell schaffte der Lauf 1,1 Bilder/s, also
+    # rund 12 Stunden fuer den ganzen Katalog. Sechs parallele Abrufe kuerzen das auf
+    # Stunden; die Admin-Abfragen selbst bleiben streng seriell.
+    offen = []
+    for a in p['nodes']:
+        if neu + len(offen) >= HASHCAP:
+            break                     # weiterpaginieren (fuer die Gruppen), aber nicht laden
+        pid = a['id'].split('/')[-1]
+        u = (a.get('featuredImage') or {}).get('url')
+        if not u:
+            continue
+        b = basis(u)
+        if bekannt.get(pid, ('', ''))[0] == b:
+            continue                  # unveraendert -> nicht erneut laden
+        offen.append((pid, b, u))
+    if offen:
+        with cf.ThreadPoolExecutor(max_workers=6) as pool:
+            for (pid, b, u), roh in zip(offen, pool.map(lambda t: hol(t[2]), offen)):
+                if roh is None:
+                    continue          # Netzfehler ist keine Erledigung
+                h = hashlib.md5(roh).hexdigest()
+                bekannt[pid] = (b, h)
+                log.write(f'{pid}\t{b}\t{h}\n')
+                neu += 1
+        log.flush()
+        print(f'  {neu} gehasht ({len(alle)} Produkte gesehen)', flush=True)
     if not p['pageInfo']['hasNextPage']:
         break
     cur = p['pageInfo']['endCursor']
-print(f'{len(alle)} aktive Produkte')
-
-neu = 0
-log = open(LEDGER, 'a')
-for a in alle:
-    pid = a['id'].split('/')[-1]
-    u = (a.get('featuredImage') or {}).get('url')
-    if not u:
-        continue
-    b = basis(u)
-    if bekannt.get(pid, ('', ''))[0] == b:
-        continue                      # unveraendert -> nicht erneut laden
-    if neu >= HASHCAP:
-        break
-    roh = hol(u)
-    if roh is None:
-        continue                      # Netzfehler ist keine Erledigung
-    h = hashlib.md5(roh).hexdigest()
-    bekannt[pid] = (b, h)
-    log.write(f'{pid}\t{b}\t{h}\n'); log.flush()
-    neu += 1
 log.close()
-print(f'{neu} Hauptbilder neu gehasht ({len(bekannt)} im Ledger)')
+print(f'{len(alle)} aktive Produkte gesehen · {neu} Hauptbilder neu gehasht ({len(bekannt)} im Ledger)')
 
 # ── Gruppen bilden, aber nur ueber Produkte, die JETZT aktiv sind.
 aktiv = {a['id'].split('/')[-1]: a for a in alle}
