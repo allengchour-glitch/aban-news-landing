@@ -12926,3 +12926,4 @@ gid://shopify/Product/15470741848449	149->0	Leichtes Hundegeschirr mit Leine
 gid://shopify/Product/15472257663361	8->1	Elektrischer Dosenöffner für die Küche
 gid://shopify/Product/15473433543041	70->0	3-teiliges Blumen-Patchwork-Set
 gid://shopify/Product/15490725118337	74->0	Digitales Malen nach Zahlen – Eigenes Motiv
+gid://shopify/Product/15493861179777	196->0	Digitales Malset: Ölmalerei nach Zahlen
