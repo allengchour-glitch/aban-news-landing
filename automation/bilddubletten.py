@@ -214,7 +214,15 @@ for h, pids in kand.items():
             #   >= 0.8  → Dublette (Prusa-Heizbett: 5 von 5)
             #   >= 0.5  → Bildfamilie, nur melden (Ladegeraet-Trio: 3 von 5)
             #   darunter → gemeinsames Verpackungs-/Groessenbild, kein Befund
-            if anteil >= 0.5:
+            # ⚠️ DIE ZWEI-BILDER-SCHWELLE WAR RICHTIG UND ICH HABE SIE WEGGENOMMEN
+            # (28.08.2026). Beim Umstieg auf den ANTEIL ist die harte Bedingung «mindestens
+            # zwei gemeinsame Bilder» entfallen — und bei Produkten mit nur EINEM Bild ist
+            # der Anteil zwangslaeufig 100 %. Ergebnis im ersten Volllauf: «Schweiz-Magnet
+            # Matterhorn» und «Schweiz-Sticker Matterhorn» galten als Dublette, ebenso
+            # Magnet/Tasche/Kissen/Mauspad «Gruezi» — eine ganze Motivfamilie, vier echte
+            # Produkte, die sich EIN Motivfoto teilen. Beide Bedingungen gelten jetzt
+            # zusammen: mindestens zwei gemeinsame Bilder UND ein hoher Anteil.
+            if len(gem) >= 2 and anteil >= 0.5:
                 befunde.append((a, b, len(gem), len(saetze[a]), len(saetze[b]), anteil))
 
 def zeile(pid):
@@ -228,7 +236,7 @@ if befunde:
         f.write('Gefunden am Bild**inhalt** (MD5), nicht an Titel, SKU oder Bild-URL — die\n'
                 'drei taeuschen bei CJ-Doppellistings alle drei.\n\n')
         for a, b, gem, na, nb, anteil in sorted(befunde, key=lambda x: -x[5]):
-            art = 'DUBLETTE' if anteil >= 0.8 else 'Bildfamilie — von Hand ansehen'
+            art = 'DUBLETTE' if (anteil >= 0.8 and gem >= 3) else 'Bildfamilie — von Hand ansehen'
             f.write(f'- **{art}** · {gem} gemeinsame Bilder ({na} bzw. {nb} insgesamt, {anteil:.0%})\n')
             f.write(f'  - {zeile(a)}\n  - {zeile(b)}\n')
     print(f'⚠️ {len(befunde)} bild-identische Paare -> {BERICHT}')
@@ -244,7 +252,7 @@ if FIX and befunde:
         schon = {z.split('\t')[0] for z in open(GETAN, errors='ignore')}
     with open(GETAN, 'a') as led:
         for a, b, gem, na, nb, anteil in befunde:
-            if anteil < 0.8:
+            if anteil < 0.8 or gem < 3:
                 continue              # Bildfamilie: melden ja, draften nein
             # Die AELTERE Fassung bleibt: sie traegt Bewertungen, interne Links und
             # Verkaufshistorie. Gedraftet wird die juengere.
