@@ -3367,3 +3367,73 @@ gid://shopify/Product/15448659591553	CHF 19.23	8 Varianten	Eleganter Damenblazer
 gid://shopify/Product/15448659624321	CHF 19.23	8 Varianten	Body mit Spitze und Wimpern-Bordüre
 gid://shopify/Product/15448659657089	CHF 19.92	20 Varianten	Gestreiftes Off-Shoulder Top für Damen
 gid://shopify/Product/15448659755393	CHF 20.48	5 Varianten	Rundhals-Spitzentop
+gid://shopify/Product/15448659788161	CHF 21.27	5 Varianten	Strick-Top mit Kreuzkragen und Metallknopf
+gid://shopify/Product/15448659853697	CHF 20.96	36 Varianten	Chiffon Bluse mit Rüschen und ausgestellten Ärmeln
+gid://shopify/Product/15448659886465	CHF 18.62	56 Varianten	Kurzarm-Top mit Jacquard-Print und schräger Schult
+gid://shopify/Product/15448659919233	CHF 22.91	4 Varianten	Damen Halterneck Top mit Spitze und Rüschen
+gid://shopify/Product/15448660017537	CHF 20.08	60 Varianten	Eleganter Samt-Blazer mit V-Ausschnitt
+gid://shopify/Product/15448660050305	CHF 19.37	5 Varianten	Lavendelfarbenes Langarm-Top mit Spitze
+gid://shopify/Product/15448660115841	CHF 18.77	96 Varianten	Damen Kurzbluse mit Rundhals und Knopfleiste
+gid://shopify/Product/15448660181377	CHF 23.80	4 Varianten	Ärmelloser Leinen-Blazer für Damen
+gid://shopify/Product/15448660214145	CHF 17.87	3 Varianten	Kurzes Top im 3D-Look für Damen
+gid://shopify/Product/15448660279681	CHF 26.93	1 Varianten	Plissiertes Langarm-Shirt mit Bubi-Ärmeln
+gid://shopify/Product/15448660312449	CHF 20.82	4 Varianten	Elegante Langarm-Bluse mit Blumenmuster
+gid://shopify/Product/15448660345217	CHF 22.91	24 Varianten	Langarm Sportshirt Loose Fit
+gid://shopify/Product/15448660377985	CHF 20.91	12 Varianten	Ärmelloses Sommer-Tanktop mit Häkel-Detail
+gid://shopify/Product/15448660410753	CHF 18.01	24 Varianten	Locker geschnittener Langarm-Blazer
+gid://shopify/Product/15448660541825	CHF 19.92	36 Varianten	Leinen-Top mit V-Ausschnitt und Knöpfen
+gid://shopify/Product/15448660738433	CHF 19.92	30 Varianten	V-Neck T-Shirt mit Spitze und Knöpfen
+gid://shopify/Product/15448660869505	CHF 21.27	6 Varianten	T-Shirt mit Cartoon-Print und kurzen Ärmeln
+gid://shopify/Product/15448661000577	CHF 18.92	9 Varianten	Trägerloses Top mit Resort-Print
+gid://shopify/Product/15448661066113	CHF 19.92	18 Varianten	Gestreifter Strickpullover mit Rundhals
+gid://shopify/Product/15448661131649	CHF 22.45	7 Varianten	Elegante Chiffon-Cami mit 3D-Effekt
+gid://shopify/Product/15448661262721	CHF 25.30	30 Varianten	Nahtlose Yoga-Jacke mit Reissverschluss
+gid://shopify/Product/15448661459329	CHF 22.46	95 Varianten	Halter-Top Yoga Tank mit Polsterung
+gid://shopify/Product/15448661623169	CHF 20.97	85 Varianten	Nahtloses, feuchtigkeitsableitendes Yoga-Top
+gid://shopify/Product/15448661787009	CHF 19.00	20 Varianten	Kurzarm-Shirt mit V-Ausschnitt und Rüschen
+gid://shopify/Product/15448661983617	CHF 17.69	2 Varianten	Strick-Weste mit Lochmuster
+gid://shopify/Product/15448662114689	CHF 20.37	4 Varianten	Damen Slim-Fit Denim Tube Top
+gid://shopify/Product/15448662311297	CHF 20.82	30 Varianten	Corduroy V-neck Button-down Shirt
+gid://shopify/Product/15448662442369	CHF 20.53	48 Varianten	Patchwork Tassel Fransen T-Shirt
+gid://shopify/Product/15448662606209	CHF 21.71	20 Varianten	Rollkragen Strickweste für Damen
+gid://shopify/Product/15448662737281	CHF 19.30	4 Varianten	Romantisches Spitzen-Top mit Blumenmuster
+gid://shopify/Product/15448662901121	CHF 21.27	6 Varianten	V-Neck Camisole mit Rüschen
+gid://shopify/Product/15448662999425	CHF 19.92	30 Varianten	Ärmellose Bluse mit V-Ausschnitt und Schnürung
+gid://shopify/Product/15448663163265	CHF 18.92	15 Varianten	Damen Top mit Rundhals und Raffärmeln
+gid://shopify/Product/15448663392641	CHF 19.53	5 Varianten	Doppellagiges Mesh Neckholder Top für Damen
+gid://shopify/Product/15448663654785	CHF 19.37	30 Varianten	Rollkragen-Langarmshirt im Casual Fit
+gid://shopify/Product/15448663949697	CHF 19.51	40 Varianten	Ärmellose Blazer-Weste mit drei Knöpfen
+gid://shopify/Product/15448664211841	CHF 20.82	48 Varianten	Locker geschnittenes Shirt mit Spitze und Quasten
+gid://shopify/Product/15448664441217	CHF 19.37	18 Varianten	Ärmelloses Off-Shoulder Top mit Lochmuster
+gid://shopify/Product/15448664605057	CHF 18.02	25 Varianten	Nahtloses, atmungsaktives Workout-Top
+gid://shopify/Product/15448664736129	CHF 20.82	50 Varianten	Eleganter Freizeit-Blazer für Damen
+gid://shopify/Product/15448664932737	CHF 68.34	6 Varianten	Eleganter doppelseitiger Wollmantel
+gid://shopify/Product/15448665063809	CHF 24.70	20 Varianten	Wildleder-Samt-Blazer mit Pattentaschen
+gid://shopify/Product/15448665227649	CHF 82.85	6 Varianten	Kaschmir-Mantel mit Kapuze
+gid://shopify/Product/15448665424257	CHF 60.46	21 Varianten	Midilanger Wollmantel mit Gürtel
+gid://shopify/Product/15448665489793	CHF 23.90	6 Varianten	Mid-length Wollmantel für Damen – Herbst/Winter
+gid://shopify/Product/15448665620865	CHF 47.77	6 Varianten	Eleganter Colorblock-Kunstpelzmantel
+gid://shopify/Product/15448665653633	CHF 53.02	4 Varianten	Eleganter Wollmantel im koreanischen Stil
+gid://shopify/Product/15448665686401	CHF 20.08	5 Varianten	Eleganter Rollkragen-Mantel mit Schalkragen
+gid://shopify/Product/15448665719169	CHF 50.31	3 Varianten	Doppelter Wollmantel mit Taillierung
+gid://shopify/Product/15448665850241	CHF 24.84	1 Varianten	Colorblock Strickjacke im Oversize-Look
+gid://shopify/Product/15448666014081	CHF 21.88	18 Varianten	Eleganter Wollmantel für Damen
+gid://shopify/Product/15448666145153	CHF 21.88	30 Varianten	Eleganter Wollmischmantel für Damen
+gid://shopify/Product/15448666276225	CHF 26.11	30 Varianten	Wollmantel mit Revers und Taillengürtel
+gid://shopify/Product/15448666308993	CHF 25.04	5 Varianten	Gepolsterter Blazer aus Wollmischung
+gid://shopify/Product/15448666341761	CHF 22.56	31 Varianten	Eleganter Wollmantel mit Revers und Knöpfen
+gid://shopify/Product/15448666407297	CHF 34.09	30 Varianten	Eleganter Wollmantel mit Revers und Bindegürtel
+gid://shopify/Product/15448666472833	CHF 80.65	3 Varianten	Eleganter Wollmantel im Retro-Stil
+gid://shopify/Product/15448666538369	CHF 31.51	4 Varianten	Eleganter kurzer Woll-Blend Mantel
+gid://shopify/Product/15448666636673	CHF 29.50	4 Varianten	Eleganter Kunstpelzmantel für Damen
+gid://shopify/Product/15448666669441	CHF 18.92	40 Varianten	Doppelseitiger Fleece-Rollkragenmantel
+gid://shopify/Product/15448666734977	CHF 22.61	10 Varianten	Damen Plüsch-Jacke mit Reissverschluss
+gid://shopify/Product/15448666800513	CHF 18.77	5 Varianten	Designer Slimming Spicy Girl Top
+gid://shopify/Product/15448666833281	CHF 19.63	18 Varianten	Doppelgesichtiger Wollmantel mit Puppenkragen
+gid://shopify/Product/15448666866049	CHF 31.97	16 Varianten	Eleganter Strick-Cardigan mit Schnürdetails
+gid://shopify/Product/15448666898817	CHF 68.66	9 Varianten	Eleganter Mid-Long Wollmantel für Damen
+gid://shopify/Product/15448666964353	CHF 76.24	4 Varianten	Eleganter doppelseitiger Wollmantel für Damen
+gid://shopify/Product/15448666997121	CHF 80.39	4 Varianten	Eleganter Doubleface-Wollmantel für Damen
+gid://shopify/Product/15448667029889	CHF 19.78	15 Varianten	Mid-langer Wollmantel für Herbst & Winter
+gid://shopify/Product/15448667062657	CHF 27.62	15 Varianten	Chenille Wollmantel mit schmaler Passform
+gid://shopify/Product/15448667160961	CHF 49.16	3 Varianten	Langer Mantel mit Reverskragen und Schlitz
