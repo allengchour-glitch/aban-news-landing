@@ -4609,3 +4609,13 @@ gid://shopify/Product/15448915935617	CHF 77.63	1 Varianten	Leder Aktentasche fü
 gid://shopify/Product/15448916001153	CHF 12.33	1 Varianten	Sportliche, minimalistische Crossbody Bag für Herr
 gid://shopify/Product/15448916033921	CHF 27.27	1 Varianten	Taktische Brusttasche für Trail Running
 gid://shopify/Product/15448916132225	CHF 19.89	1 Varianten	Kleine Umhängetasche im Street-Style
+gid://shopify/Product/15448916197761	CHF 18.60	4 Varianten	Grosse Tragetasche mit Gittermuster
+gid://shopify/Product/15448916230529	CHF 31.70	1 Varianten	Herren Umhängetasche aus Vollnarbenleder
+gid://shopify/Product/15448916263297	CHF 13.89	1 Varianten	Aufbewahrungstasche für Steam Deck
+gid://shopify/Product/15448916361601	CHF 13.21	1 Varianten	Schicke Crossbody Bag
+gid://shopify/Product/15448916394369	CHF 12.82	1 Varianten	Erste-Hilfe-Organizer-Tasche
+gid://shopify/Product/15448916427137	CHF 73.67	1 Varianten	Crossbody Bag aus Vollleder
+gid://shopify/Product/15448916492673	CHF 23.20	1 Varianten	Minimalistische Crossbody Bag aus Baumwoll-Canvas
+gid://shopify/Product/15448916525441	CHF 31.70	1 Varianten	Brust- und Hüfttasche aus Leder
+gid://shopify/Product/15448916558209	CHF 23.43	1 Varianten	Herren Umhängetasche aus echtem Leder
+gid://shopify/Product/15448916623745	CHF 25.13	1 Varianten	Herren-Gürteltasche aus echtem Vollnarbenleder

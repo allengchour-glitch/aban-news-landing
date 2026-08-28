@@ -28,7 +28,10 @@ geprüft, mit Quittung, und mit `DRY=1` erst zum Lesen.
 
 ENV: SEIT=JJJJ-MM-TT (Default: die letzten 7 Tage)
 """
-import json, os, subprocess, time, datetime, re
+import json, os, subprocess, sys, time, datetime, re
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from google_sperrliste import gesperrte_ids, id_zahl, ausschluss_tag
 
 SHOP = "au3j0y-hq.myshopify.com"
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
@@ -36,12 +39,13 @@ BERICHT = "dropship/GOOGLE-KANAL-LUECKE.md"
 SEIT = os.environ.get("SEIT") or (
     datetime.date.today() - datetime.timedelta(days=7)).isoformat()
 
-# Tags, die einen Ausschluss ERKLÄREN — solche Produkte sind kein Befund.
-SPERR = {"nicht-bewerben", "nur-onlineshop", "waffengesetz-verboten", "medizinprodukt-pruefen",
-         "18plus", "raucher", "erotik", "kostuem", "kostüm", "refurbished",
-         # 25.08.2026: Marken-/Lizenzrisiko ist ein GEWOLLTER Google-Ausschluss (NYX-Palette,
-         # Marley-Wandteppich) — ohne diese Tags haette der Schliesser sie wieder publiziert.
-         "marken-pruefen", "lizenz-risiko", "tierschutz-pruefen"}
+# Tags, die einen Ausschluss ERKLÄREN, liegen seit dem 28.08.2026 in
+# automation/google_sperrliste.py (`AUSSCHLUSS_TAGS` / `ausschluss_tag`). Die Menge stand
+# hier UND im Schliesser wortgleich; sie ist am 28.08. auseinandergelaufen, weil elf am
+# Produkt begründete Ausschluss-Tags (verdeckte-ueberwachung, google-policy-flag,
+# nicht-google-bewerben, gmc-adult-pull …) in keiner der beiden standen — dieser Wächter
+# hat 142 bewusste Ausschlüsse als unerklärte Lücke gemeldet, darunter zwölf versteckte
+# Kameras. NEUE AUSSCHLUSS-TAGS NUR DORT EINTRAGEN.
 # Dieselbe Hausregel wie in den Importern: Klingen gehören nicht in den Google-Kanal.
 KLINGE = re.compile(r"\b(messer|klinge\w*|dolch|machete|axt|beil|schwert|katana)", re.I)
 KLINGE_AUSN = re.compile(r"jeans|kleid|hose|shirt|hoodie|wasch|deko|figur|anhänger|"
@@ -62,20 +66,43 @@ LEDGER = [("dropship/_google_kanal_gesaeubert.txt", None),
 
 def gesaeubert():
     """Produkt-ID -> Grund, aus allen Saeuberungs-Ledgern."""
-    raus = {}
+    raus, unlesbar = {}, []
     for pfad, nur in LEDGER:
         if not os.path.exists(pfad):
             continue
         for zeile in open(pfad, encoding="utf-8", errors="replace"):
-            teile = zeile.rstrip("\n").split("\t")
-            if not teile or not teile[0].strip():
+            z = zeile.rstrip("\n")
+            if not z.strip():
                 continue
-            grund = teile[1] if len(teile) > 1 else "gesaeubert"
+            # ⚠️ 28.08.2026 — DIE ID WIRD MIT EINEM MUSTER GEZOGEN, NICHT ÜBER SPALTEN.
+            # `_google_kanal_gesaeubert.txt` ist zur Hälfte gewachsen: 88 Zeilen sind mit
+            # Tabulator getrennt, 45 mit « | ». Das alte split("\t") ergab bei den 45 als
+            # erstes Feld die GANZE Zeile, split("/")[-1] war dann
+            # «15413739684225 | Sommerkleid … | Sperr-Tag …», isdigit() war falsch — die
+            # Zeile fiel LAUTLOS weg. Der Wächter kannte 88 statt 133 IDs, und 44 der 45
+            # fehlten tatsächlich im Google-Kanal: ihr dokumentierter Grund war für das
+            # Werkzeug nicht vorhanden. Ein Ledger, das einen Formatwechsel still
+            # schluckt, ist schlimmer als keins — es sieht vollständig aus.
+            if z.lstrip().startswith("#"):
+                continue                        # Kommentarzeile, keine Quittung
+            m = re.search(r"/Product/(\d+)", z) or re.match(r"\s*(\d{10,})\b", z)
+            if not m:
+                unlesbar.append((pfad, z[:90]))
+                continue
+            # Der Grund steht je nach Format an anderer Stelle: bei Tabulator-Zeilen im
+            # ersten Feld (ID \t Grund \t Titel), bei den «|»-Zeilen erst hinter dem Titel
+            # (ID | Titel | Grund). Gefiltert wird nur auf dem Tabulator-Format
+            # («bleibt-draussen:…»), sonst wird der ganze Rest als Begruendung uebernommen.
+            rest = z[m.end():].strip(" \t|")
+            grund = rest.split("\t")[0].strip() if "\t" in rest else rest.strip()
+            grund = grund or "gesaeubert"
             if nur and not grund.startswith(nur):
                 continue
-            pid = teile[0].strip().split("/")[-1]
-            if pid.isdigit():
-                raus.setdefault(pid, grund)
+            raus.setdefault(m.group(1), grund)
+    if unlesbar:
+        print(f"  ⚠️ {len(unlesbar)} Ledger-Zeilen ohne erkennbare Produkt-ID:", flush=True)
+        for pf, z in unlesbar[:5]:
+            print(f"     {pf}: {z}", flush=True)
     return raus
 
 
@@ -104,7 +131,17 @@ def gql(q, v=None):
 
 def main():
     raus = gesaeubert()
-    print(f"Saeuberungs-Ledger: {len(raus)} bewusst entfernte Produkte bekannt", flush=True)
+    # ⚠️ 28.08.2026 — DAS MERCHANT-LEDGER FEHLTE HIER GANZ. 16 Produkte, die GOOGLE SELBST
+    # als Richtlinienverstoss gemeldet hat (google-gesperrt-adult/-cbd/-notlage), galten
+    # diesem Wächter als unerklärte Lücke; der Schliesser, der tatsächlich publiziert,
+    # hatte denselben blinden Fleck. Genau dafür wurde google_sperrliste.py am 14.08.
+    # gebaut — nachdem gfeed_restore.py und google_kanal_nachziehen.py alle 16 schon
+    # einmal zurückgeholt hatten. Gerettet hat uns bisher nur ein FEHLER: das 7-Tage-
+    # Fenster verdeckte sie. Eine Sicherung aus einem Fehler ist keine Sicherung.
+    for pid in gesperrte_ids():
+        raus.setdefault(pid, "google-gesperrt (Merchant-Ledger)")
+    print(f"Saeuberungs-Ledger + Merchant-Sperrliste: {len(raus)} bewusst entfernte "
+          f"Produkte bekannt", flush=True)
     cur, ges, treffer = None, 0, []
     while True:
         d = gql('query($c:String){ products(first:30, after:$c, '
@@ -130,9 +167,8 @@ def main():
                 continue                       # gar nicht im Shop -> anderes Thema
             if p["id"].split("/")[-1] in raus:
                 continue                       # bewusst gesaeubert (Grund im Ledger)
-            tg = {t.lower() for t in p["tags"]}
-            if tg & SPERR or any(t.startswith("google-kanal-") for t in tg):
-                continue                       # Ausschluss ist erklaert
+            if ausschluss_tag(p["tags"]):
+                continue                       # Ausschluss ist erklaert (Sperrliste)
             t = p["title"] or ""
             if KLINGE.search(t) and not KLINGE_AUSN.search(t):
                 continue                       # Hausregel Klingen

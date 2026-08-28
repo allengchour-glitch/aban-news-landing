@@ -24,7 +24,7 @@ const CJT=(process.env.CJ_TOKEN||'').trim();
 const GK=(fs.existsSync('/tmp/gemini_key')?fs.readFileSync('/tmp/gemini_key','utf8'):process.env.GEMINI_API_KEY||'').trim();
 const DRY=process.env.DRY==='1', CAP=parseInt(process.env.CAP||'40',10);
 const LEDGER='dropship/cj_niche_done.txt';
-const PUBS=['301970915713','301971014017','302032716161','302566834561','302872297857','302994456961'].map(id=>({publicationId:`gid://shopify/Publication/${id}`}));
+import { publishVerified as _publishVerified, PUBS, GOOGLE_PUB } from './cj_publish.mjs';
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 const chf=(usd,grams)=>{const u=parseFloat((''+usd).split('--')[0])||0;
  // 2026-08-03: China→CH-Fracht REAL ~CHF 15 (Order #1011: $15.77) — MUSS in den Preis, sonst Verlust bei billiger Ware!
@@ -440,20 +440,14 @@ const KLINGE=/\b(messer|klinge\w*|dolch|machete|axt|beil|schwert|katana)/i;
 const KLINGE_AUSN=/jeans|kleid|hose|shirt|hoodie|wasch|deko|figur|anhänger|halskette|ohrring|spielzeug|plüsch|kostüm/i;
 function pubsFuer(title){
  if(KLINGE.test(title||'')&&!KLINGE_AUSN.test(title||''))
-  return PUBS.filter(p=>!p.publicationId.endsWith('302872297857'));
+  return PUBS.filter(p=>!p.publicationId.endsWith(GOOGLE_PUB));
  return PUBS;
 }
-// Publizieren MIT Quittung: erst wenn Shopify keine Fehler meldet, gilt es als erledigt.
-async function publishVerified(t,pid,title){
- for(let i=0;i<3;i++){
-  const r=await sgql(t,PUB,{id:pid,p:pubsFuer(title)});
-  const errs=r?.data?.publishablePublish?.userErrors;
-  if(Array.isArray(errs)&&errs.length===0)return true;
-  await sleep(2000*(i+1));
- }
- console.log('  ⚠️ Publizieren fehlgeschlagen',pid);
- return false;
-}
+// Publizieren + Quittung liegen seit 28.08.2026 in automation/cj_publish.mjs — es gab
+// drei Fassungen dieser Funktion, und alle drei lasen nur die ANTWORT der Mutation
+// statt des Zustands (Google fiel still aus, userErrors blieb leer).
+const publishVerified = (tok, pid, title) => _publishVerified(sgql, tok, pid, pubsFuer(title));
+
 // ⚠️ 20.08.2026: Der Slug-Stamm wird an EINER Stelle gebildet. Die Handle-Wache muss exakt
 // so kürzen wie der Handle-Bau — sonst sucht sie nach einem Stamm, den es im Shop nie gibt.
 // slugStamm und laufSlugs kommen aus automation/cj_dublette.mjs — dort und NUR dort aendern.
@@ -498,7 +492,6 @@ async function variantenBilder(st,pid,bilder){
  }
  return n;
 }
-const PUB=`mutation($id:ID!,$p:[PublicationInput!]!){publishablePublish(id:$id,input:$p){userErrors{message}}}`;
 // CJ-Produktvideo via Staged-Upload anhängen (externe URLs nimmt Shopify nicht an) — 2026-07-06
 // Wartet, bis Shopify mindestens ein Bild fertig verarbeitet hat. Gibt false zurück, wenn
 // nach mehreren Anläufen keines READY ist — dann sind sie FAILED oder die Quelle war tot.

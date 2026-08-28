@@ -15,19 +15,13 @@ const CJT=(process.env.CJ_TOKEN||'').trim();
 const GK=(fs.existsSync('/tmp/gemini_key')?fs.readFileSync('/tmp/gemini_key','utf8'):process.env.GEMINI_API_KEY||'').trim();
 const DRY=process.env.DRY==='1', CAP=parseInt(process.env.CAP||'40',10);
 const LEDGER='dropship/cj_niche_done.txt';
-// Publiziert und PRUEFT die Quittung: erst wenn Shopify keine userErrors meldet, gilt es.
-async function publishVerified(st, pid, klinge){
- const ziel = klinge?PUBS.filter(x=>!x.publicationId.endsWith('302872297857')):PUBS;
- for(let i=0;i<3;i++){
-  const r=await sgql(st,PUB,{id:pid,p:ziel});
-  const errs=r?.data?.publishablePublish?.userErrors;
-  if(Array.isArray(errs)&&errs.length===0) return true;
-  await new Promise(s=>setTimeout(s,2000*(i+1)));
- }
- console.log('  ⚠️ Publizieren fehlgeschlagen',pid);
- return false;
-}
-const PUBS=['301970915713','301971014017','302032716161','302566834561','302872297857','302994456961'].map(id=>({publicationId:`gid://shopify/Publication/${id}`}));
+// Publizieren + Quittung liegen seit 28.08.2026 in automation/cj_publish.mjs — es gab
+// drei Fassungen dieser Funktion, und alle drei lasen nur die ANTWORT der Mutation
+// statt des Zustands. Ergebnis: am 27./28.08. erneut Produkte in 5 von 6 Kanaelen.
+import { publishVerified as _publishVerified, PUBS, GOOGLE_PUB } from './cj_publish.mjs';
+const publishVerified = (tok, pid, klinge) => _publishVerified(
+  sgql, tok, pid,
+  klinge ? PUBS.filter(x => !x.publicationId.endsWith(GOOGLE_PUB)) : PUBS);
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 // ⚠️ 22.08.2026 — DIESER IMPORTER IGNORIERTE DAS GEWICHT und rechnete mit einer pauschalen
 // Fracht-Lücke von CHF 8, also der Fracht eines LEICHTEN Artikels. Gemessen sind $6.34 ·
@@ -177,7 +171,6 @@ async function shTok(){const r=await fetch(`https://${SHOP}/admin/oauth/access_t
 async function sgql(t,q,v){const r=await fetch(`https://${SHOP}/admin/api/${API}/graphql.json`,{method:'POST',headers:{'Content-Type':'application/json','X-Shopify-Access-Token':t},body:JSON.stringify({query:q,variables:v})});return r.json();}
 const SET=`mutation($i:ProductSetInput!){productSet(synchronous:true,input:$i){product{id}userErrors{message}}}`;
 const MED=`mutation($id:ID!,$m:[CreateMediaInput!]!){productCreateMedia(productId:$id,media:$m){mediaUserErrors{message}}}`;
-const PUB=`mutation($id:ID!,$p:[PublicationInput!]!){publishablePublish(id:$id,input:$p){userErrors{message}}}`;
 // CJ-Produktvideo via Staged-Upload anhängen (externe URLs nimmt Shopify nicht an) — 2026-07-06
 async function attachVideo(st,productId,vurl,cjpid){
  try{

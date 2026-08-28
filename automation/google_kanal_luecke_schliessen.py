@@ -28,6 +28,9 @@ Ohne IDS liest es die IDs aus dem Bericht des Wächters.
 """
 import json, os, re, subprocess, sys, time
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from google_sperrliste import gesperrte_ids, id_zahl, ausschluss_tag
+
 SHOP = "au3j0y-hq.myshopify.com"
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
 GOOG = "gid://shopify/Publication/302872297857"
@@ -43,11 +46,13 @@ HEIKEL = re.compile(
     r'messer|dolch|machete|waffe|munition|armbrust|'
     r'shisha|wasserpfeife|bong\b|vape|e-?zigarette|tabak|zigarre|grinder\b|cbd\b', re.I)
 CODE = re.compile(r'\b[A-Z]{2,}\d{3,}\b|\b[A-Z0-9]{8,}\b|\bUS Size\b|\bYards\b|Generation \d')
-SPERR = {"nicht-bewerben", "nur-onlineshop", "waffengesetz-verboten", "medizinprodukt-pruefen",
-         "18plus", "raucher", "erotik", "kostuem", "kostüm", "refurbished",
-         # 25.08.2026: Marken-/Lizenzrisiko ist ein GEWOLLTER Google-Ausschluss (NYX-Palette,
-         # Marley-Wandteppich) — ohne diese Tags haette der Schliesser sie wieder publiziert.
-         "marken-pruefen", "lizenz-risiko", "tierschutz-pruefen"}
+# ⚠️ 28.08.2026 — DIE SPERR-MENGE STAND HIER UND IM WÄCHTER WORTGLEICH und war in beiden
+# unvollständig: elf am Produkt begründete Ausschluss-Tags fehlten (verdeckte-ueberwachung,
+# google-policy-flag, nicht-google-bewerben, gmc-adult-pull, messer-nicht-bewerben …), und
+# `google-gesperrt-*` — von GOOGLE SELBST gemeldete Verstösse — fiel durch beide Prüfungen
+# hindurch, obwohl `google_sperrliste.py` seit dem 14.08. genau dafür existiert. Dieses
+# Skript publiziert; ohne den Riegel hätte es zwölf versteckte Kameras und die 16
+# Merchant-Fälle in den einzigen Kanal gestellt, der verkauft. Liste jetzt an EINER Stelle.
 KLINGE = re.compile(r"\b(messer|klinge\w*|dolch|machete|axt|beil|schwert|katana)", re.I)
 KLINGE_AUSN = re.compile(r"jeans|kleid|hose|shirt|hoodie|wasch|deko|figur|anhänger|"
                          r"halskette|ohrring|spielzeug|plüsch|kostüm", re.I)
@@ -88,11 +93,15 @@ def lieferantenref(sku):
     return bool(re.match(r'^(CJ|bb|fortura|LX|LXSCH)', s, re.I))
 
 
+# Einmal geladen, nicht je Produkt: das Merchant-Ledger ist die zweite Quelle neben dem
+# Tag am Produkt (ein Tag kann versehentlich entfernt werden, die Ledger-Zeile bleibt).
+GESPERRT = gesperrte_ids()
+
+
 def urteil(p):
     """Gibt None zurück, wenn das Produkt publiziert werden darf, sonst den Grund."""
     titel = p.get("title") or ""
     typ = p.get("productType") or ""
-    tags = {t.strip().lower() for t in (p.get("tags") or [])}
     vs = (p.get("variants") or {}).get("nodes") or []
     sku = (vs[0].get("sku") if vs else "") or ""
     bilder = (p.get("mediaCount") or {}).get("count") or 0
@@ -100,8 +109,11 @@ def urteil(p):
         preis = float(p["priceRangeV2"]["minVariantPrice"]["amount"])
     except Exception:
         preis = 0.0
-    if tags & SPERR:
-        return "Sperr-Tag: " + ", ".join(sorted(tags & SPERR))
+    if id_zahl(p.get("id")) in GESPERRT:
+        return "von Google gemeldeter Verstoss (Merchant-Sperrliste)"
+    grund = ausschluss_tag(p.get("tags"))
+    if grund:
+        return "Sperr-Tag: " + grund
     if HEIKEL.search(titel) or HEIKEL.search(typ):
         return "heikle Ware"
     if KLINGE.search(titel) and not KLINGE_AUSN.search(titel):

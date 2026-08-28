@@ -8,40 +8,7 @@ Das ist nicht nur eine Lücke, sondern eine Falschaussage: ein Artikel mit Namen
 
 | Ratgeber | verspricht | Preis | kein Produkt zu |
 |---|---|---|---|
-| [Fitness ohne Gym: 5 effektive Übungen für zuh](/blogs/ratgeber/fitness-ohne-gym-5-effektive-ubungen-fur-zuhause-2026) | Premium Yogamatte 6mm | CHF 39.90 | `Yogamatte` |
-| [Silk Pillowcase: Bringt sie wirklich was? Der](/blogs/ratgeber/silk-pillowcase-bringt-sie-wirklich-was-dermatologen-test-2026) | Aroma Diffuser für besseren Schlaf | CHF 44.90 | `Diffuser` |
 | [Baby schläft nicht? 7 Tipps die wirklich helf](/blogs/ratgeber/baby-schlaft-nicht-7-tipps-die-wirklich-helfen) | Leiser Baby Nagelschneider | CHF 29.90 | `Nagelschneider` |
-| [Home Office: 5 Lifehacks gegen Augenschmerzen](/blogs/ratgeber/home-office-5-lifehacks-gegen-augenschmerzen-amp-kopfweh) | Blue Light Brille | CHF 34.90 | `Brille` |
-| [Home Office: 5 Lifehacks gegen Augenschmerzen](/blogs/ratgeber/home-office-5-lifehacks-gegen-augenschmerzen-amp-kopfweh) | Aroma Diffuser Bambus | CHF 44.90 | `Diffuser` |
-| [Adventskalender für Erwachsene 2026: Der ehrl](/blogs/ratgeber/adventskalender-erwachsene-vergleich-2026) | Adventskalender DELUXE 2026 | CHF 99.90 | `Adventskalender` |
-| [Adventskalender für Erwachsene 2026: Der ehrl](/blogs/ratgeber/adventskalender-erwachsene-vergleich-2026) | Adventskalender LuxeStyle Premium | CHF 149.90 | `Adventskalender` |
-| [Adventskalender für Erwachsene 2026: Der ehrl](/blogs/ratgeber/adventskalender-erwachsene-vergleich-2026) | Beauty Adventskalender 2026 | CHF 79.90 | `Adventskalender` |
-| [Adventskalender für Erwachsene 2026: Der ehrl](/blogs/ratgeber/adventskalender-erwachsene-vergleich-2026) | Selfcare-Box Wellness | CHF 74.90 | `Selfcare` |
-| [Adventskalender für Erwachsene 2026: Der ehrl](/blogs/ratgeber/adventskalender-erwachsene-vergleich-2026) | Soja-Duftkerzen 4er-Set | CHF 19.90 | `Duftkerzen` |
-| [Akupressurmatte Anwendung: So nutzt du die Ma](/blogs/ratgeber/akupressurmatte-anwendung-wirkung) | Akupressur-Matte Premium Set | CHF 49.90 | `Akupressur` |
-| [Akupressurmatte Anwendung: So nutzt du die Ma](/blogs/ratgeber/akupressurmatte-anwendung-wirkung) | Premium Ätherische Öle Set 6er | CHF 29.90 | `Ätherische` |
-| [Akupressurmatte Anwendung: So nutzt du die Ma](/blogs/ratgeber/akupressurmatte-anwendung-wirkung) | Himalaya Salzkristall-Lampe | CHF 24.90 | `Salzkristall` |
-| [Akupressurmatte Anwendung: So nutzt du die Ma](/blogs/ratgeber/akupressurmatte-anwendung-wirkung) | Faszienrolle Premium 3er-Set | CHF 44.90 | `Faszienrolle` |
-| [Akupressurmatte Anwendung: So nutzt du die Ma](/blogs/ratgeber/akupressurmatte-anwendung-wirkung) | Recovery-Set Premium | CHF 129.90 | `Recovery` |
-| [Akupressurmatte Anwendung: So nutzt du die Ma](/blogs/ratgeber/akupressurmatte-anwendung-wirkung) | Akupressur-Matte Premium Set | CHF 49.90. | `Akupressur` |
-| [Hyaluron Vitamin C Serum richtig anwenden: Di](/blogs/ratgeber/anti-aging-serum-hyaluron-vitamin-c-routine) | Augencreme Premium mit Koffein + Retinol | CHF 24.90. | `Augencreme` |
-| [Hyaluron Vitamin C Serum richtig anwenden: Di](/blogs/ratgeber/anti-aging-serum-hyaluron-vitamin-c-routine) | veganes Gesichtsmasken 7-Tage-Set mit Pflanze | CHF 19.90 | `Pflanzenextrakten` |
-| [Hyaluron Vitamin C Serum richtig anwenden: Di](/blogs/ratgeber/anti-aging-serum-hyaluron-vitamin-c-routine) | Premium Beauty-Komplett-Set | CHF 99.90 | `Beauty` |
-| [Bluetooth Kopfhörer mit ANC: Der ehrliche Kau](/blogs/ratgeber/bluetooth-kopfhoerer-anc-kaufratgeber) | Bluetooth Kopfhörer ANC | CHF 69.90 | `Bluetooth` |
-| [Bluetooth Kopfhörer mit ANC: Der ehrliche Kau](/blogs/ratgeber/bluetooth-kopfhoerer-anc-kaufratgeber) | In-Ear Kopfhörer ANC | CHF 49.90 | `Kopfhörer` |
-| [Bluetooth Kopfhörer mit ANC: Der ehrliche Kau](/blogs/ratgeber/bluetooth-kopfhoerer-anc-kaufratgeber) | Blue Light Brille | CHF 34.90 | `Brille` |
-| [Bluetooth Kopfhörer mit ANC: Der ehrliche Kau](/blogs/ratgeber/bluetooth-kopfhoerer-anc-kaufratgeber) | Bluetooth Speaker 360° | CHF 54.90 | `Bluetooth` |
-| [Bluetooth Speaker wasserdicht: Der Outdoor-Ra](/blogs/ratgeber/bluetooth-speaker-wasserdicht-outdoor-guide) | Bluetooth Speaker 360° mit IPX7 | CHF 54.90 | `Bluetooth` |
-| [Bluetooth Speaker wasserdicht: Der Outdoor-Ra](/blogs/ratgeber/bluetooth-speaker-wasserdicht-outdoor-guide) | Bambus-Picknick-Set für 4 Personen | CHF 94.90 | `Picknick` |
-| [Bluetooth Speaker wasserdicht: Der Outdoor-Ra](/blogs/ratgeber/bluetooth-speaker-wasserdicht-outdoor-guide) | Bluetooth Speaker 360° mit IPX7 und 24h Akku | CHF 54.90. | `Bluetooth` |
-| [Wolldecke aus Cashmere richtig pflegen – plus](/blogs/ratgeber/cashmere-decke-pflege-einrichtungstipps) | Cashmere-Look Wolldecke 180×130 im Jacquard-N | CHF 59.90 | `Wolldecke` |
-| [Wolldecke aus Cashmere richtig pflegen – plus](/blogs/ratgeber/cashmere-decke-pflege-einrichtungstipps) | Himalaya Salzkristall-Lampe | CHF 24.90 | `Salzkristall` |
-| [Wolldecke aus Cashmere richtig pflegen – plus](/blogs/ratgeber/cashmere-decke-pflege-einrichtungstipps) | Lavendel-Pillow-Spray | CHF 39.90 | `Lavendel` |
-| [Sojawachs Duftkerzen Ratgeber: Soja vs. Paraf](/blogs/ratgeber/duftkerzen-sojawachs-vs-paraffin-ratgeber) | Soja-Duftkerzen 4er-Set Vintage in Rose &amp; | CHF 19.90 | `Duftkerzen` |
-| [Sojawachs Duftkerzen Ratgeber: Soja vs. Paraf](/blogs/ratgeber/duftkerzen-sojawachs-vs-paraffin-ratgeber) | handgeschnitzte Himalaya Salzkristall-Lampe | CHF 24.90 | `handgeschnitzte` |
-| [Sojawachs Duftkerzen Ratgeber: Soja vs. Paraf](/blogs/ratgeber/duftkerzen-sojawachs-vs-paraffin-ratgeber) | Cashmere-Look Wolldecke im Nordic-Style | CHF 59.90 | `Wolldecke` |
-| [Sojawachs Duftkerzen Ratgeber: Soja vs. Paraf](/blogs/ratgeber/duftkerzen-sojawachs-vs-paraffin-ratgeber) | Beauty-Bundle mit Jade Roller, Salzkristall-L | CHF 49.90. | `Salzkristall` |
-| [Sojawachs Duftkerzen Ratgeber: Soja vs. Paraf](/blogs/ratgeber/duftkerzen-sojawachs-vs-paraffin-ratgeber) | Soja-Duftkerzen 4er-Set in Rose &amp; Lavende | CHF 19.90 | `Duftkerzen` |
 | [Leder pflegen: Anleitung für langlebige Echtl](/blogs/ratgeber/echtleder-accessoires-pflegen-anleitung) | Gentleman's Premium Gift Box | CHF 299.90 | `Gentleman's` |
 
 ## Ratgeber ohne einen einzigen kaufbaren Produktlink

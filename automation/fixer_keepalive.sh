@@ -381,6 +381,21 @@ while true; do
   # (`unauthorized_client`); der einzige Weg, der heute funktioniert, ist der Upload von Hand
   # über tiktokstudio/upload. Das Werkzeug legt also nur das fertige Material bereit.
   # ⚠️ Es fasst kein Produkt zweimal an (eigenes Ledger + reels_seed.csv) — Doppelpost-Verbot.
+  # RATGEBER OHNE WARE, einmal täglich: meldet veröffentlichte Ratgeber, die Ware mit NAMEN
+  # und PREIS bewerben, zu der es nichts Aktives gibt — und solche ohne einen einzigen
+  # kaufbaren Produktlink. Die Klasse waechst nach: jedes Mal, wenn ein Waechter ein Produkt
+  # draftet (keine-lieferanten-ref, Dubletten, Medizinprodukte), wird ein Ratgeber, der es
+  # bewirbt, zur Falschaussage. Gemessen am 28.08.: der Ratgeber mit dem zweitmeisten
+  # Suchverkehr des Shops (77 Sitzungen) fuehrte auf KEIN kaufbares Produkt.
+  # ⚠️ MELDET NUR. Ein automatisch untergeschobener Ersatzartikel ist ein Koederwechsel.
+  ROW=/tmp/ratgeber_ohne_ware.log
+  if [ -f "$REPO/automation/ratgeber_ohne_ware.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$ROW" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid python3 automation/ratgeber_ohne_ware.py >> "$ROW" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) ratgeber-ohne-ware geprüft"
+    fi
+  fi
   TTK=/tmp/tiktok_karussell.log
   if [ -f "$REPO/automation/tiktok_karussell.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$TTK" 2>/dev/null || echo 0) ))
