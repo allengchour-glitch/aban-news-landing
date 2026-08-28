@@ -20,6 +20,82 @@ in der App wählen lassen. Für Einzel-Posts der Standard-Weg, bis die API frei 
 **Content-Nachschub:** cj_video_reel_engine baut Reels aus CJ-Produktvideos — praktisch unendlich,
 Ledger verhindern jede Wiederholung (plattformübergreifend). 29 ready in reels_seed.csv.
 
+## 🎬 Zwölf Werkzeuge riefen ein `ffmpeg` auf, das es nicht gibt (2026-08-28)
+Auftrag des Betreibers: «statt ads mach geile tiktok post, karusell» und «videos schneiden und so».
+Beim Bauen des Videoschnitts stellte sich heraus: **`/usr/bin/ffmpeg` existiert im Container nicht** —
+und **zwölf** Werkzeuge dieses Repos rufen es nackt auf (`reel/make_reel.sh`, `product_slideshow`,
+`enhance_clips`, `make_montage`, `freegen_video`, `render_image_posts`, `dropship/ads/*`).
+Der Reel-Motor meldete dabei ununterbrochen **«FERTIG. neue Reels: 0 | gescannt: 1203»** und sah
+gesund aus. **Dritte Wiederholung der Lehre vom 23.08.: ein Lauf, der sein Ende erreicht, hat
+deswegen noch nichts getan.** Zu prüfen ist die Zahl der ERZEUGTEN Einheiten, nicht das Wort FERTIG.
+- Das vollständige **ffmpeg 7.0.2 liegt längst da**, als Beigabe von `imageio_ffmpeg`
+  (`/usr/local/lib/python3*/dist-packages/imageio_ffmpeg/binaries/ffmpeg-linux-*`). **Ein Symlink
+  repariert alle zwölf**, statt zwölf Dateien anzufassen — dieselbe Geschwister-Logik wie bei der
+  viermal kopierten Farbtabelle. Steht in `engine_keepalive.sh`, weil der Rewind /usr/local/bin leert.
+- `ffprobe` bringt die Beigabe NICHT mit. Die zehn Skripte, die es rufen, fragen in genau **zwei**
+  Formen und beide nur nach der **Dauer** → `automation/ffprobe_ersatz.py` liest sie aus `ffmpeg -i`.
+  ⚠️ Ehrliche Grenze: die Variante `-select_streams a:0` will die Dauer der TONSPUR, der Ersatz
+  gibt die des CONTAINERS — bei reinen Musikdateien dasselbe, bei einem Video mit kürzerer
+  Tonspur zu lang.
+
+## 🖼️ TikTok-Karussell: was auf dem Slide steht, muss der Shop belegen (2026-08-28)
+`automation/tiktok_karussell.py` baut mehrseitige Foto-Posts (1080×1920), `tiktok_video.py`
+schneidet daraus ein 9:16-Video — **clean ohne Ton** (Standardweg: Trend-Sound in der App) und
+eine Musik-Fassung. Täglich im Aufseher. **Beide POSTEN NICHTS** — die Content-Posting-API steht
+weiter in Review, der Upload läuft von Hand über tiktokstudio/upload.
+Auf den Slides steht ausschliesslich, was im Shop steht: Titel und Preis. Kein Nutzenversprechen,
+keine Lieferzeit (es gab sieben widersprüchliche — eine achte im Social-Post wäre die nächste),
+kein Streichpreis (am 24.08. als konstruiert entfernt), nur WELCOME10 (bis 2027 gültig geprüft).
+- ⚠️ **Wirkversprechen im TITEL schliessen ein Produkt aus.** «Wimpern**wachstums**serum» und
+  «Serum **gegen Pigmentflecken**» stehen im Shop; sie zu BEWERBEN ist etwas anderes.
+- ⚠️ **Die Bildreihenfolge des Lieferanten ist keine Qualitätsreihenfolge.** Der erste Probelauf
+  machte eine CJ-Infografik (Pfeile, Comic-Wolken, 899×685 PNG) zum Hauptslide — die Klasse
+  «montierter Fremdtext» vom 21.08. Gemessen an drei Beispielen trennt das FORMAT die Sorten:
+  **JPG + nahezu quadratisch (800² / 1500² / 1920²) = Studiofoto · PNG oder schiefes Format
+  (899×685, 470×485, 745×806) = Grafik oder Collage.** Das ist eine Heuristik, kein Beweis — sie
+  sortiert um und verwirft nur zu kleine Bilder (< 700 px Kante; eine 330-px-Miniatur ist als
+  1080er Slide unbrauchbar).
+- ⚠️ Der OCR-Ledger `_hauptbild_ohne_text.txt` taugt hier NICHT als Filter: von sechs
+  Hype-Produkten steht genau **eines** drin — die neue Ware ist noch ungeprüft.
+- **Der Preis gehört gross auf den ersten Slide**, nicht der Titel. Grund steht in der eigenen
+  Auswertung: eine Caption mit Preis-Anker schlug die generische Fassung 20:1.
+
+## 📏 Drei Zahlen, die aus der eigenen Annahme stammten (2026-08-28)
+Alle drei am selben Werkzeug, alle drei nur durch Nachmessen gefunden:
+1. **Videodauer gerechnet statt gemessen.** `len(slides) × SEK` meldete 16,8 s für ein **13,8 s**
+   langes Video — `zoompan` liefert ohne `-r` nämlich 25 fps statt 30. Folge: die Musik-Ausblendung
+   lag hinter dem Ende und griff nie. Jetzt wird die Dauer aus der fertigen Datei gelesen.
+2. **`hash()` ist in Python je Prozess zufällig** (PYTHONHASHSEED). Mein Kommentar behauptete
+   «derselbe Slug → dieselbe Musik», zwei Läufe gaben zwei Stücke. `zlib.crc32` ist stabil.
+   Ein Kommentar, der etwas anderes behauptet als der Code tut, ist schlimmer als keiner.
+3. **Ken Burns beschneidet die Ränder.** Zoom bis 1.12 schnitt oben und unten je ~6 % weg — genau
+   dort stehen Wortmarke und Slide-Zähler, «LUXESTYLE» war im Standbild angeschnitten. Bei 1.045
+   sind es 37 px und alles bleibt stehen. **Ein Zoomwert ist erst geprüft, wenn man den am
+   stärksten gezoomten EINZELBILD angesehen hat**, nicht den ersten Frame.
+
+## 💾 Der Rewind frisst genau das, was noch nicht committet ist (2026-08-28)
+Mitten in dieser Arbeit verschwanden `tiktok_video.py`, `ffprobe_ersatz.py` und ein fertiger
+Keepalive-Block. Der erste Verdacht fiel auf den Auto-Committer — **falsch**, der addiert nur
+`dropship/`. Es war der Snapshot-Rewind: alles vor ~21:45 überlebte (die committeten Slides und
+`tiktok_karussell.py`), alles danach nicht. Die Commits selbst waren nie weg, sie standen nur
+vier Schritte zurück im Log — `git log -3` sah deshalb nach Verlust aus, `git reflog` zeigte alles.
+**Regel verschärft: nicht «am Turn-Ende committen», sondern JEDE fertige Datei sofort.** Und bei
+scheinbarem Verlust erst `git reflog` lesen, bevor man etwas neu schreibt.
+⚠️ Der Auto-Committer hält dabei die Index-Sperre; ein `git commit` scheitert dann mit
+«index.lock: File exists». Das ist kein Fehler, sondern Gleichzeitigkeit — mit ein paar Sekunden
+Abstand wiederholen, nicht die Sperre löschen.
+
+## 📱 TikTok: Ads-Konnektor ≠ Posten (2026-08-28)
+Der Betreiber meldete den Konnektor `business-api.tiktok.com/open_mcp/tt-ads-mcp-flat` als
+verbunden. Nachgeprüft: `ListConnectors` sagt `installState: connected`, `enabledInChat: true` —
+aber **`ToolSearch` findet null TikTok-Werkzeuge**, und die Laufzeit meldet «TikTok_Ads requires
+authentication». Eine Cloud-Session ist nicht interaktiv und kann die OAuth-Freigabe nicht
+durchklicken; das muss in Cowork/Claude Desktop geschehen.
+**Und selbst danach: die Ads-API kann keine Beiträge veröffentlichen.** Kampagnen und Zahlen ja,
+Reels und Fotos nein — dafür braucht es die Content-Posting-API, und die antwortete auf den Klick
+des Betreibers mit `error=unauthorized_client&error_type=client_key`. **Zwei getrennte Baustellen;
+ein verbundener Ads-Konnektor ist kein Fortschritt beim Posten.**
+
 ## 🔥 DAUERAUFTRAG: Hype-Produkte recherchieren und die Startseite frisch halten
 **User 2026-08-12, wörtlich:** «informiere dich immer über neuste hype produkte und so und mache
 auch in startseite ganz gross irgendwo paar coolen produkten, aber wen hype vorbei produkt ändern.»
