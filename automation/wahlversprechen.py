@@ -120,6 +120,23 @@ GRENZE = 0.45          # Anteil, den die Fundstelle am SATZ haben muss, damit de
 # nichts anderes sagt. Ein Listenpunkt ist kurz und hat in aller Regel genau eine Aussage.
 GRENZE_LI = 0.30
 
+# ⚠️ DIE AUFZAEHLUNG GEHOERT ZUM VERSPRECHEN (28.08.2026). «Es ist in verschiedenen Grössen
+# erhältlich, darunter 21×26 cm, 25×30 cm, 30×80 cm.» — die Regex trifft nur die Ankuendigung
+# (34 von 110 Zeichen, 31 %) und der Satz blieb stehen, obwohl er NICHTS anderes sagt. Folgt
+# auf den Treffer eine Aufzaehlung mit ausdruecklichem Marker, zaehlt sie mit. Nur mit Marker —
+# ohne ihn koennte hinter dem Komma ein zweiter Aussagesatz stehen (Lehre vom Haustier-Halsband:
+# «…, lässt es sich optimal an den Stil anpassen» traegt eine zweite Aussage und bleibt).
+# ⚠️ Zwischen Treffer und Aufzaehlung stehen oft ein bis zwei Woerter: die Regex trifft
+# «in verschiedenen Grössen», im Satz folgt aber « erhältlich, darunter …». Bis zu zwei
+# kurze Woerter sind deshalb erlaubt — mehr nicht, sonst frisst die Regel halbe Saetze.
+AUFZAEHLUNG = re.compile(r'^\s*(?:\w+\s*){0,2}[,:]\s*(?:darunter|z\.?\s?B\.?|etwa|wie|n[äa]mlich)\b', re.I)
+
+def treffer_anteil(satz, f):
+    ende = f.end()
+    if AUFZAEHLUNG.match(satz[ende:]):
+        ende = len(satz.rstrip('.!? '))
+    return (ende - f.start()) / max(len(satz), 1)
+
 def saetze(t):
     """Text in Saetze zerlegen, Trennzeichen behalten."""
     teile, start = [], 0
@@ -156,7 +173,7 @@ def bereinige(html):
         for s_ in saetze(innen):
             k = re.sub(r'\s+', ' ', s_).strip()
             f = WAHL.search(k)
-            if f and k and len(f.group(0)) / len(k) >= GRENZE:
+            if f and k and treffer_anteil(k, f) >= GRENZE:
                 weg.append(k[:70]); continue
             raus.append(s_)
         rest = ''.join(raus)
