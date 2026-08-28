@@ -327,6 +327,20 @@ while true; do
       echo "$(date -u +%H:%M) hype-reviews Lauf gestartet"
     fi
   fi
+  # RATGEBER-RÜCKVERWEIS, einmal täglich: Die veröffentlichten Ratgeber holen Google-Besucher
+  # und verlinken von dort auf Produkte — der Weg zurück fehlte am 28.08.2026 bei 67 von 67
+  # Produkten. Wer über Google direkt auf der PRODUKTSEITE landet (beim Rizinusöl-Set 43 von
+  # 391 Sitzungen in 30 Tagen, die zweitgrösste Landeseite des Shops), findet dort keine
+  # Antwort auf «wie wende ich das an» — obwohl der Shop genau diesen Text besitzt. Der Lauf
+  # hängt NUR an; jeder neue Ratgeber erzeugt neue Lücken, deshalb täglich.
+  RV=/tmp/ratgeber_rueckverweis.log
+  if [ -f "$REPO/automation/ratgeber_rueckverweis.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$RV" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid env FIX=1 python3 automation/ratgeber_rueckverweis.py >> "$RV" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) ratgeber-rueckverweis gestartet"
+    fi
+  fi
   # TOTE RABATTCODES, einmal täglich: abgelaufene Aktionscodes überleben in zeitlosen
   # Ratgeber-Texten weiter. Am 20.08.2026 bewarben SECHS veröffentlichte Seiten Codes, die
   # seit Juni tot waren (PAPA25, LAUNCH30, GENTLEMAN30, PARENTBUNDLE) — darunter drei

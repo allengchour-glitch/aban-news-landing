@@ -130,6 +130,36 @@ live belegt an 15411554910593). `automation/versandaussagen_wahrheit.py`, Ledger
   Rechtstexte gehen nur per GraphQL `shopPolicyUpdate` — und dessen Input nimmt `type`
   (`SHIPPING_POLICY`), **nicht** `id`. Ohne Live-Gegenprobe hätte der Lauf als erledigt gegolten.
 
+## 🔗 Die Ratgeber verlinken auf Produkte — die Produkte auf nichts (2026-08-28)
+Gemessen an den Landeseiten der letzten 30 Tage ist die **zweitgrösste Landeseite des ganzen
+Shops eine Produktseite**: `/products/rizinusol-wickel-set-mit-bio-ol-323457` mit **43 von 391
+Sitzungen** — mehr als jede Kollektion, mehr als jeder Ratgeber. Davon **1 Warenkorb, 0 Kasse**.
+307 veröffentlichte Ratgeber verlinken auf 71 Produkte. Zurück verlinkten **0 von 67** aktiven.
+Der Weg ist also einbahnig: Der Ratgeber holt den Google-Besucher und schickt ihn auf die
+Produktseite — und dort steht eine vierzeilige Beschreibung ohne die Antwort auf «wie wende ich
+das an», obwohl der Shop genau diesen Text besitzt und selbst geschrieben hat.
+- `automation/ratgeber_rueckverweis.py` (täglich im Aufseher, `FIX=1`): hängt einen Block
+  «📖 Passend dazu im Ratgeber: …» vor den Trust-Baustein. **Nur anhängen, nie ersetzen**;
+  Beschreibung unmittelbar vor dem Schreiben LIVE lesen (parallele Textläufe, Lehre 15.08.);
+  idempotent über einen vorhandenen `/blogs/…`-Link im Text. 67 gesetzt, live gegengeprüft.
+- Jeder neue Ratgeber erzeugt neue Lücken — deshalb täglich, nicht einmalig.
+- ⚠️ **Und die Zahl richtig lesen:** 43 Sitzungen sind nicht viel, aber es sind die einzigen
+  mit Kaufabsicht. Social brachte im selben Zeitraum 232 Sitzungen und **0 Bestellungen**,
+  Suche 147 Sitzungen und 2 Kassengänge. Wer Geld verdienen will, verbessert die Suchseiten.
+
+## ⛔ `productUpdate(input:{seo:{…}})` LÖSCHT das nicht mitgeschickte SEO-Feld (2026-08-28)
+Dem Rizinusöl-Set fehlte als einzigem der 67 die SEO-Beschreibung. Ich habe sie mit
+`seo:{description:"…"}` gesetzt — und die Antwort gab **`title: null`** zurück: der vorhandene
+SEO-Titel «Rizinusöl-Wickel-Set mit Bio-Öl · Bauch- & Halswickel» war weg. Auf der wichtigsten
+Suchseite des Shops. Sofort aus der eigenen Abfrage von Minuten zuvor wiederhergestellt.
+**`seo` ist ein ERSETZENDES Objekt, genau wie `tags:`** (Lehre 20.08.). Es gibt kein
+`seoTitleUpdate`; wer ein Teilfeld setzen will, **liest erst beide Felder und schickt beide
+zurück**. Dieselbe Frage gehört vor jedes verschachtelte `input:`-Objekt gestellt: ersetzt es,
+oder ergänzt es? Bei Shopify ist die Antwort bisher jedes Mal «ersetzt».
+⚠️ Gerettet hat es nur, dass ich die Mutation mit `product{seo{title description}}` abgefragt
+und die Antwort GELESEN habe. Ohne das Rückfeld wäre der Titel still verschwunden — genau die
+Klasse, die bei `publishablePublish` 85 Produkte aus dem Google-Kanal gehalten hat.
+
 ## 🔗 61 tote Links in den SEO-Ratgebern — der teuerste stille Verlust (2026-08-20)
 Die veröffentlichten Ratgeber sind gebaut, um Google-Besucher anzuziehen — und genau dort führten
 **61 Links auf 25 Seiten** ins Nichts: auf gelöschte Produkte oder auf DRAFTs (für Besucherinnen
