@@ -12928,3 +12928,4 @@ gid://shopify/Product/15473433543041	70->0	3-teiliges Blumen-Patchwork-Set
 gid://shopify/Product/15490725118337	74->0	Digitales Malen nach Zahlen – Eigenes Motiv
 gid://shopify/Product/15493861179777	196->0	Digitales Malset: Ölmalerei nach Zahlen
 gid://shopify/Product/15493908103553	179->0	Digitales Malset: Leinwand zum Ausmalen
+gid://shopify/Product/15495065076097	82->0	Memory Foam Gel Lendenkissen für Bürostuhl
