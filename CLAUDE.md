@@ -130,6 +130,35 @@ live belegt an 15411554910593). `automation/versandaussagen_wahrheit.py`, Ledger
   Rechtstexte gehen nur per GraphQL `shopPolicyUpdate` — und dessen Input nimmt `type`
   (`SHIPPING_POLICY`), **nicht** `id`. Ohne Live-Gegenprobe hätte der Lauf als erledigt gegolten.
 
+## 📧 Klaviyo ist von HIER aus erreichbar — 31 Vorlagen zeigten auf die tote Domain (2026-08-28)
+Der Eintrag vom 21.08. sagt, nur der Betreiber könne die Klaviyo-Sache lösen, weil «der Konnektor
+eine Anmeldung verlangt». **Das war falsch, und es hat eine Woche gekostet.** Der Klaviyo-Konnektor
+ist installiert und in der Sitzung aktiv (`ListConnectors` → `enabledInChat: true`); ein
+`get_account_details` beantwortet die Frage in Sekunden. **Vor «nur der Betreiber kann das» gehört
+EIN Versuch.**
+Gefunden und behoben:
+- **Im Konto steht `website_url: https://luxestyle.com.co`** — die tote Domain. Das ist die QUELLE:
+  Klaviyo baut sie in neue Vorlagen ein. Dafür gibt es keinen Schreib-Endpunkt → Betreiber-Klick.
+  (Nebenbei: `preferred_currency: USD` und `locale: de-DE` bei einem Schweizer Shop.)
+- **45 Vorkommen der toten Domain in 31 von 45 Vorlagen** ersetzt — darunter Back-in-Stock,
+  Win-Back, Post-Purchase, alle Warenkorb-Stufen und die Absenderadresse `alleng@luxestyle.com.co`
+  in einer Fusszeile. **10 von 11 Flows sind live**, das lief also die ganze Zeit.
+- **«Gratis-Versand ab CHF 65»** (richtig: 50) und **«14 Tage Rückgabe»** (richtig: 30) in der
+  Broadcast-Vorlage — beide auch im Klartext-Feld, das man leicht übersieht.
+- **«30 Tage Geld-zurück bedingungslos»** in der Welcome-V2-Vorlage → «30 Tage Rückgaberecht ·
+  Ausnahmen siehe Rückgaberichtlinie». «Bedingungslos» deckt die Richtlinie nicht (personalisierte
+  Ware, Hygiene, getragen) — dieselbe Klasse wie der POD-Fund von heute.
+- **«WELCOME10 · ab CHF 30»** → «ohne Mindestbestellwert». Live geprüft: der Code hat einen
+  Mindestwert von 0.01, also keinen. Eine erfundene Hürde kostet genau die kleinen Bestellungen.
+⚠️ **Beinahe-Fehlmeldung, die zeigt warum man nachprüft:** In der Flash-Sale-Vorlage steht Code
+**FLASH25 mit Mindestwert CHF 40**. Meine Liste der Rabattcodes (`codeDiscountNodes(first:30)`)
+enthielt ihn NICHT — ich war einen Satz davon entfernt, ihn als toten Code zu melden. Gezielt
+abgefragt (`codeDiscountNodeByCode`) ist er **ACTIVE mit exakt diesen CHF 40**. Die Liste war
+unvollständig, nicht die Vorlage falsch. **Eine Abwesenheit in einer gedeckelten Liste ist kein
+Beweis für Nichtexistenz** — dieselbe Falle wie `productsCount` bei 10'000.
+⚠️ Nicht angefasst und nur gemeldet: die Lieferzeit «7–14 Tage» in vielen Vorlagen (weicht von den
+vier Stufen ab) und zwei englische USA15-Kampagnen (der Shop liefert nur in die Schweiz).
+
 ## 📐 «Wir tauschen kostenlos» stand auf der Seite, zu der POD-Käufer geschickt werden (2026-08-28)
 Nachdem die POD-Produkte den Rückgabe-Ausschluss bekommen hatten, blieb eine Stelle übrig:
 Die Produktseite blendet für Kleidung die **Grössen-Seite** ein (`pages['groessentabelle']`),
