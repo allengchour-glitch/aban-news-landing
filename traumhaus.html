@@ -997,8 +997,21 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       var rad=(i===5)?51.75:hoch*(0.40+((i%4)*0.045));
       var bx=Math.cos(a)*r,bz=Math.sin(a)*r;
       if(bx<-150&&Math.abs(bz)<170)continue;      // Westen ist offenes Meer
+      /* ⚠️ DER HAUSBERG IST NICHT VERHANDELBAR — er wurde von der Sperrliste geloescht.
+         Berg 5 ist ueberall im Code eigens behandelt: fester Radius r = 213, feste Hoehe 75,
+         fester Fussradius 51,75 und ein eigenes Flag an bergGeo(). Auf ihm steht die
+         BERGSTATION DER SEILBAHN. Die Sportpark-Sperrzone [0,216,110,60] erwischt ihn
+         trotzdem: |121,4 - 0| = 121,4 < 110 + 51,75*0,9 = 156,6 und |175 - 216| = 41 <
+         60 + 46,6 = 106,6 -> `continue`, der Berg entsteht nie.
+         GEMESSEN: kein Gelaende bei (121|175), kein Gelaende unter der Station, und die
+         Bergstation steht auf y 40,3 … 49,8 — sie schwebt in 40 m Hoehe ueber dem Nichts.
+         Naechstes Gelaende: 76 m entfernt und 5 m hoch.
+         Die Sperrliste soll verhindern, dass ZUFAELLIGE Berge in Viertel wachsen; der
+         Hausberg ist keiner davon. Umgekehrt weichen die Viertel dem Gelaende inzwischen
+         selbst aus (`imBerg` rastert es, seit die Huellbox-Falle behoben ist) — und die
+         Berge entstehen frueher als die Viertel, also kann der Sportpark ausweichen. */
       var sperr=false;
-      for(var qs=0;qs<QSPERR.length;qs++){var Q=QSPERR[qs];
+      if(i!==5)for(var qs=0;qs<QSPERR.length;qs++){var Q=QSPERR[qs];
         if(Math.abs(bx-Q[0])<Q[2]+rad*0.9&&Math.abs(bz-Q[1])<Q[3]+rad*0.9){sperr=true;break;}}
       if(sperr)continue;
       /* Das Hoehenfeld liefert y = 0 am Fuss (der Kegel lieferte -hoch/2), der
@@ -1335,6 +1348,16 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     if(Math.abs(x+190)<11+pad&&z>163&&z<211)return false;
     for(var q=0;q<WORLD_SOLIDS.length;q++){var sq=WORLD_SOLIDS[q];
       if(Math.abs(x-sq.x)<sq.hw+2.5+pad&&Math.abs(z-sq.z)<sq.hd+2.5+pad)return false;}
+    /* 🛣️ LANDSTRASSE UND ZUBRINGER. Sie fehlten hier — `freiPlatz` kannte Haupt-,
+       Quer- und Ringstrasse, Fluss, Kirchhof und Klinik, aber nicht den Ring bei r = 200
+       und nicht die sechs Speichen. Aufgefallen beim Waldsaum (#2366): dort musste
+       `_viertelSolver.fahrbahn` zusaetzlich gefragt werden, weil `freiPlatz` allein die
+       Baeume nicht von der Landstrasse hielt. Statt das an jeder Streu-Stelle zu
+       wiederholen, steht es jetzt hier — an der gemeinsamen Quelle.
+       Wie bei den Viertelwegen gilt: der Solver entsteht erst bei 260 ms, frueh
+       gestreute Objekte bleiben ungeschuetzt. */
+    var _S8=window._viertelSolver;
+    if(_S8&&_S8.fahrbahn&&_S8.fahrbahn(x-pad,x+pad,z-pad,z+pad))return false;
     /* 🛣️ Viertelstrassen und Anschlusswege. Die entstehen erst 260 ms nach dem Laden,
        das Streuen laeuft aber in Haeppchen ueber viele Bilder weiter — der weitaus
        groesste Teil faellt also in die Zeit, in der die Wege schon stehen. Vorher
