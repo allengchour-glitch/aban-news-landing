@@ -327,6 +327,20 @@ while true; do
       echo "$(date -u +%H:%M) hype-reviews Lauf gestartet"
     fi
   fi
+  # GOOGLE-ATTRIBUT `size`, einmal täglich: Google verlangt es bei Bekleidung und Schuhen;
+  # fehlt es, wird das Angebot in Shopping-Ergebnissen beschnitten — im einzigen Kanal mit
+  # belegten Verkäufen. Am 28.08.2026 trug KEIN geprüftes Kleid ein `size`, obwohl alle eine
+  # saubere Grössen-Option haben. `cj_category_fill.mjs` schreibt es seither selbst mit;
+  # `cj_sku_import` und `cj_trending_import` schreiben gar keine Varianten-Attribute — für
+  # deren Ware ist DIESER Lauf der Schreiber beim nächsten Produkt.
+  GS=/tmp/google_size_metafeld.log
+  if [ -f "$REPO/automation/google_size_metafeld.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$GS" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid env FIX=1 CAP=1200 python3 automation/google_size_metafeld.py >> "$GS" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) google-size Nachtrag gestartet"
+    fi
+  fi
   # RATGEBER-RÜCKVERWEIS, einmal täglich: Die veröffentlichten Ratgeber holen Google-Besucher
   # und verlinken von dort auf Produkte — der Weg zurück fehlte am 28.08.2026 bei 67 von 67
   # Produkten. Wer über Google direkt auf der PRODUKTSEITE landet (beim Rizinusöl-Set 43 von

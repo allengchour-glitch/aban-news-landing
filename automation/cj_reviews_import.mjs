@@ -150,7 +150,12 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
       ['query/productSku', '/product/query', { productSku: sku }],   // die gespeicherten SKUs sind meist Produkt-SKUs
       ['query/variantSku', '/product/query', { variantSku: sku }],
       ['list/productSku', '/product/list', { productSku: sku, pageSize: 5 }],
-      ['list/keyWords', '/product/list', { keyWords: sku, pageSize: 5 }],
+      // ⛔ KEINE Stichwortsuche mehr (28.08.2026). `/product/list?keyWords=<SKU>` durchsucht
+      // den KATALOGTEXT — findet es die SKU dort nicht, liefert es trotzdem den bestplatzierten
+      // Treffer. Gemessen: für drei völlig verschiedene Produkte (Holzpuzzle, Magnet-Bausteine,
+      // Schmuckbox) kam DIESELBE pid 2608281223371621100 zurück. Folgenlos blieb es nur, weil
+      // dieses Produkt 0 Kommentare hat — hätte es welche, wären FREMDE Bewertungen unter
+      // unsere Ware gelaufen. Eine falsche pid ist viel schlimmer als keine.
     ];
     for (const [label, path, params] of strategies) {
       const r = await cjGet(ctok, path, params);

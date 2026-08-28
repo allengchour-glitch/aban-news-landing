@@ -130,6 +130,48 @@ live belegt an 15411554910593). `automation/versandaussagen_wahrheit.py`, Ledger
   Rechtstexte gehen nur per GraphQL `shopPolicyUpdate` — und dessen Input nimmt `type`
   (`SHIPPING_POLICY`), **nicht** `id`. Ohne Live-Gegenprobe hätte der Lauf als erledigt gegolten.
 
+## 📏 Google verlangt `size` — geschrieben hat es nie jemand (2026-08-28)
+Der Google-Kanal ist der einzige mit belegten Verkäufen, und für Bekleidung und Schuhe verlangt
+Google das Attribut **`size`**. Von den geprüften Kleidern trug **keines** eines, obwohl alle
+eine saubere `Grösse`-Option mit S/M/L/XL haben. Ein Audit vom 14.08. hatte die Lücke schon
+benannt; repariert wurde damals nur die OPTIONSSTRUKTUR (die Grösse steckte im Farbwert) — das
+Attribut selbst schrieb danach niemand.
+- `automation/google_size_metafeld.py` (täglich im Aufseher, `FIX=1 CAP=1200`) trägt es je
+  VARIANTE nach — dieselbe Begründung wie bei `color` (Lehre 14.08.): im Feed ist jede Variante
+  ein eigenes Angebot, ein Produktfeld gäbe allen dieselbe Grösse. Erste Läufe: **7'391
+  Varianten-Grössen** auf 405 Produkten.
+- Quellenfix in `cj_category_fill.mjs` (`groesseSauber`). ⚠️ `cj_sku_import` und
+  `cj_trending_import` schreiben **gar keine** Varianten-Attribute (weder color noch size) —
+  für deren Ware ist der tägliche Lauf der Schreiber. Bewusst so, statt die Logik ein drittes
+  Mal zu kopieren.
+- **Nur Bekleidung und Schuhe.** Eine Lampe mit «Grösse»-Option (30 cm / 40 cm) bekommt keine.
+- **`size_system`/`size_type` bleiben leer** — die Ware ist asiatisch konfektioniert, ein
+  behauptetes «EU» wäre eine Falschangabe.
+- Zu Recht verworfen: «25x150cm», «7,6 × 7,6 cm» (Deko-Masse), «S M», «L XL» (mehrdeutig).
+- ⚠️ **Eigener Fehler, vor dem Schreiblauf gefunden:** Der Probelauf schrieb den Seiten-Zeiger
+  fort, ohne etwas ins Ledger einzutragen — der spätere Schreiblauf hätte genau die eben
+  gefundenen 300 Lücken übersprungen. **Ein Anzeigemodus darf keinen Fortschritt merken.**
+
+## ⛔ Eine Stichwortsuche als pid-Rückfall importiert FREMDE Bewertungen (2026-08-28)
+Der Betreiber lieferte die Judge.me-Token (liegen in `/tmp/judgeme.env`, NIE ins öffentliche
+Repo). Der erste Probelauf zeigte sofort einen Defekt in `cj_reviews_import.mjs`: Nach drei
+exakten Strategien fiel `resolvePid()` auf `/product/list?keyWords=<SKU>` zurück — eine Suche
+im KATALOGTEXT. Findet sie die SKU nicht, liefert sie trotzdem den bestplatzierten Treffer.
+Gemessen kam für **drei völlig verschiedene Produkte dieselbe pid 2608281223371621100** zurück
+(3D-Holzpuzzle, Magnet-Bausteine, Schmuckbox). Folgenlos blieb es nur, weil dieses Produkt 0
+Kommentare hat — hätte es welche, wären fremde Bewertungen unter unsere Ware gelaufen. Das ist
+erfundener Sozialbeweis, auch wenn jede einzelne Bewertung echt ist. Strategie ersatzlos
+entfernt: **eine falsche pid ist viel schlimmer als keine.**
+**Der Stand der Bewertungen, gemessen statt vermutet:** Judge.me hält **1'187 veröffentlichte
+Bewertungen auf 216 Produkten**, und die Shopify-Metafelder sind sauber synchronisiert
+(Stichprobe 40 von 40). Die Sterne fehlen also nicht wegen kaputter Technik, sondern wegen
+**Abdeckung**: 216 von 49'000 Produkten sind 0,4 % — dass von 31 Seiten mit Besuchern genau
+eine eine Bewertung trägt, ist rechnerisch zu erwarten, kein Defekt.
+⚠️ 673 der 1'187 Bewertungen sind nicht deutsch (englisch/kyrillisch). Sie sind echt und
+bleiben unangetastet — Kundentext wird nicht umgeschrieben.
+⚠️ Der Ausbau der Abdeckung wartet auf CJ-Punkte: Der Probelauf lief in Code **16900500**
+(echtes Tagesende, kein Eimer-Tief). Der Import ist damit auf morgen vertagt.
+
 ## 📉 307 Ratgeber, 13 Sitzungen im Monat — die Content-Strategie trägt nicht (2026-08-28)
 Nach den Landeseiten der letzten 30 Tage gezählt: **Produktseiten 572 Sitzungen auf 229 Seiten,
 Ratgeber 13 Sitzungen auf 3 Seiten.** Veröffentlicht sind **307** Ratgeber, davon **297 älter

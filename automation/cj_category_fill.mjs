@@ -173,7 +173,12 @@ function buildFashion(d){
    &&eff.every(c=>istCode(c)||LETTERSIZE.test(c));
  const zaehlOpt=useC&&!codeOpt&&eff.length>=2&&eff.every(istZaehl);
  // Steht in JEDEM Wert «Color», ist es doch eine Farbwahl — nur unbenannt: «Farbton N».
- const nurFarbe=zaehlOpt&&eff.every(c=>/colou?r/i.test(c));
+ // Was als Konfektionsgrösse in den Google-Feed darf. Bewusst eng: Massangaben («25x150cm»),
+// Modellnummern und kombinierte Etiketten («S M») sind KEINE Grösse — eine falsche Angabe ist
+// schlechter als keine (dieselbe Regel wie bei farbeSauber und beim Material).
+const GROESSE_OK=/^(?:[0-9]?X{0,5}(?:S|M|L)|XXS|XS|[0-9]{1,3}(?:[.,][05])?|[0-9]{2,3}\s?cm|[0-9]{1,2}\s?(?:Y|J(?:ahre)?|M(?:onate)?)|EU\s?[0-9]{2}|US\s?[0-9]{1,2}|UK\s?[0-9]{1,2}|One\s?Size|Einheitsgr[\u00f6o]sse|Freie\s?Gr[\u00f6o]sse)$/i;
+const groesseSauber=w=>!!w&&GROESSE_OK.test(String(w).trim());
+const nurFarbe=zaehlOpt&&eff.every(c=>/colou?r/i.test(c));
  const cName=(codeOpt||(zaehlOpt&&!nurFarbe))?'Ausführung':'Farbe';
  const cMap=(codeOpt||zaehlOpt)
    ?new Map(colors.map((c,i)=>[c,(nurFarbe?'Farbton ':'Modell ')+(i+1)])):sMap;
@@ -199,6 +204,14 @@ function buildFashion(d){
   const gFarbe=(!codeOpt&&!zaehlOpt&&sMap)?(sMap.get(v.color)||v.color):v.color;
   if(useC&&colors.length>1&&farbeSauber(gFarbe))
     vmf.push({namespace:'mm-google-shopping',key:'color',value:gFarbe,type:'single_line_text_field'});
+  // 📏 UND DIE GRÖSSE GENAUSO (28.08.2026). Google verlangt bei Bekleidung und Schuhen das
+  // Attribut `size`; ohne das wird das Angebot in Shopping-Ergebnissen beschnitten — im
+  // einzigen Kanal mit belegten Verkäufen. Dieselbe Begründung wie bei color: an die
+  // VARIANTE, weil jede im Feed ein eigenes Angebot ist. ⚠️ `size_system`/`size_type`
+  // bleiben leer — die Ware ist asiatisch konfektioniert, ein «EU» wäre eine Falschangabe.
+  const gGroesse=useS?(v.size||sizes[0]):null;
+  if(gGroesse&&groesseSauber(gGroesse))
+    vmf.push({namespace:'mm-google-shopping',key:'size',value:gGroesse,type:'single_line_text_field'});
   const sku=('CJ-'+(v.sku||'')).slice(0,70);
   // 🎨 DAS BILD DER VARIANTE MITNEHMEN (14.08.2026). CJ liefert zu jeder Variante ein
   // `variantImage` — im SELBEN Aufruf, der schon geholt wird, also ohne einen einzigen
