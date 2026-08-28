@@ -1774,3 +1774,49 @@ Treffer wären hier das schlechtere Spiel.**
 Wer es besser lösen will, lässt die **Bauzeile des Sportparks eine Lücke** für den Anschluss,
 statt den Anschluss außen herum zu führen. Das ist der allgemeine Fall aus #2346, den der
 Generator noch nicht kann.
+
+## 2026-08-28 · ✈️ Flughafen — der letzte große Posten aus der Inventur steht
+
+Neun **th25**-Modelle, die in keinen Reihen-Generator passen, weil eine **Landebahn**
+dazugehört. Zweiteilig gelöst: Gebäude als Viertel, Bahn und Vorfeld daneben — beide an der
+**echten** Viertelmitte (`_fh.x/_fh.z`), nicht am Wunschort.
+
+* **Viertel (300|−260)**, r = 397, 0 m ausgewichen: Terminal (40,8×27,2), Hangar (37,4×27,7),
+  Tower (h 22), Radarturm (h 18).
+* **Landebahn**: 8 Module à 17,6 m = **141 m**, parallel zur Viertelstraße bei `FZ+62`.
+* **Vorfeld**: Flugzeug, Fluggastbrücke, Tank- und Gepäckwagen.
+
+### ⚠️ `viertelMass` prüft nur die Bauzeilen — die Landebahn ist für den Solver unsichtbar
+Das Netto-Rechteck (82 × 67,3) deckt nur die Gebäudereihen ab. Alles, was daneben liegt —
+Bahn, Vorfeld, Flugzeug — sieht `viertelPasst()` **nicht**. `cfg.d` vergrößert nur die
+Bodenfläche, nicht die Prüfung.
+
+Der Rasterscan prüft deshalb **zwei** Dinge: `viertelPasst(cfg,x,z,2)` **und** zusätzlich den
+Streifen der Bahn (`z+50…z+74`) gegen `freiPlatz`, Fahrbahnen und Gelände. **18 Plätze**
+erfüllen beides, alle weit draußen — der nächste ist (300|−260). Für einen Flughafen passt
+das; für ein Stadtviertel wäre es ein Warnsignal.
+
+Der erste Wunsch (−200|60) lag im **Meer-Sektor** (`x−hw < −118` bei `|z| < 170`); das Viertel
+landete auf der Landstraße. Erst messen, dann setzen.
+
+### ⚠️ Vorfeld gehört auf die Außenseite der Bahn
+Erster Anlauf: Vorfeld zwischen Bauzeile und Bahn. Dort sind aber nur **5,7 m** frei (Bauten
+bis 47,5 m von der Mitte, Bahn ab 53 m) — die 17,4 m tiefe Fluggastbrücke steckte 0,25 m im
+Hangar (25 Meshpaare). Außen ist Platz.
+
+**Die verbliebene Überschneidung ist konstruktiv:** `fluggastbruecke × flugzeug`, 0,13 m ab
+Höhe 2,57 m — eine Brücke, die am Flugzeug andockt. Wie Windmühlenflügel am Turm (0,76 m)
+oder Bus an der Haltestelle (0,66 m).
+
+### Verifiziert
+| Werkzeug | Ergebnis |
+|---|---|
+| `th-viertel` | **7 Viertel, 0 nicht auf Stufe 2**, Flughafen 0 m ausgewichen |
+| `th-strassen` | **0 th25-Treffer** auf irgendeiner Fahrbahn, Gesamt 139 |
+| `th-3d` | einziger th25-Eintrag = Brücke am Flugzeug (konstruktiv) |
+| `th-netz` | **38 ok**, erreichbar in 147 Punkten, beide Anschluss-Schenkel sind Straße |
+| Foto | Hangar, Terminal, Tower, Radarmast, Flugzeug — stimmiges Bild |
+
+**Stand der Inventur:** von den rund 40 ungenutzten Modellen stehen jetzt **25** (th12 ×5,
+th24 ×5, th29 ×6, th25 ×9). Offen bleibt nur noch **th14 Club-Interieur (12)** — Innenräume,
+die kein Viertel brauchen, sondern begehbare Gebäude.
