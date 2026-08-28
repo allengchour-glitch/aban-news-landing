@@ -642,6 +642,27 @@ while true; do
       echo "$(date -u +%H:%M) tierschutz_guard gestartet"
     fi
   fi
+  # 🔎 VERDECKTE ÜBERWACHUNG + WAFFEN, einmal täglich über die Neuimporte der letzten 3 Tage.
+  # ⚠️ 28.08.2026 — DER WÄCHTER STAND IN KEINER STARTLISTE. `grep -c ueberwachung_waffen_guard`
+  # ergab in fixer_keepalive.sh UND engine_keepalive.sh je 0; sein Ledger stammte vom 14.08.,
+  # seither sind 5'421 neue aktive Produkte entstanden. Dieselbe Lücke wie beim Aufseher selbst
+  # (Lehre 19.08.: «Wer startet DICH neu?»). Gefunden wurden dabei zwei ACTIVE Geräte im
+  # Google-Kanal, die genau deshalb monatelang niemand gesehen hätte: ein Diktiergerät im
+  # Armbanduhr-Gehäuse und eine WLAN-Minikamera mit «diskreter Audioaufnahme».
+  # Er liest LIVE (SEIT=…), nicht aus /tmp/export.jsonl — der Export ist ein Schnappschuss vom
+  # 12.08. und kennt keinen einzigen dieser Fälle. Unbeaufsichtigt nimmt er nur aus dem
+  # Google-Kanal und setzt ein Tag; auf DRAFT setzt er ausschliesslich die handverlesenen,
+  # bildgeprüften Fälle aus dem festen BILDGEPRUEFT-Verzeichnis im Skript — er kann also nicht
+  # von sich aus neue Ware draften.
+  UW=/tmp/ueberwachung_waffen_guard.log
+  if [ -f "$REPO/automation/ueberwachung_waffen_guard.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$UW" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && SEIT=$(date -u -d '3 days ago' +%F) EXPORT=/nonexistent setsid python3 \
+          automation/ueberwachung_waffen_guard.py >> "$UW" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) ueberwachung_waffen_guard gestartet"
+    fi
+  fi
   # 🏷️ BILD-ALT-TEXTE der Neuimporte, einmal täglich über die letzten Tage (20.08.2026).
   # Warum zusätzlich zu `alt_text_backfill.mjs` weiter unten: der sortiert CREATED_AT
   # ABSTEIGEND und merkt sich einen Cursor. Neue Produkte entstehen aber genau VORNE in
