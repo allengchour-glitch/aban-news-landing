@@ -1,18 +1,36 @@
 {
- "zeit": "2026-08-28 17:18:10",
- "zeit_utc": "2026-08-28T15:18:10Z",
- "hinweise": [],
- "fassung": "4b5467f",
- "schritte": 2,
+ "zeit": "2026-08-28 17:33:17",
+ "zeit_utc": "2026-08-28T15:33:17Z",
+ "hinweise": [
+  "1 Tipps lagen in einer Tabu-Zone (Shop/Echtgeld) und wurden blockiert."
+ ],
+ "fassung": "254b84d",
+ "schritte": 17,
  "gleiche_ansicht": 0,
  "unbekannt_am_stueck": 0,
  "zaehler": {
-  "task:kalibrieren": 1,
-  "task:lebenszeichen": 1
+  "taps": 10,
+  "task:ansichten-sammeln": 8,
+  "ansicht-gesammelt": 5,
+  "zwischendurch-gehandelt": 3,
+  "rule:dialog-schliessen": 3,
+  "task:spiel-im-vordergrund": 2,
+  "rule:ladebildschirm-abwarten": 2,
+  "task:bauen-und-aufwerten": 1,
+  "tabu-blockiert": 1,
+  "task:forschung": 1,
+  "task:truppe-1-aufwerten": 1,
+  "task:tagesziele": 1
  },
  "vorlagen_offen": 32,
- "vorlagen_veraltet": [],
+ "vorlagen_veraltet": [
+  {
+   "vorlage": "ui/btn_abholen.png",
+   "gesucht": 36,
+   "bester_wert": 0.37
+  }
+ ],
  "verworfene_vorlagen": [],
  "verdaechtige_regeln": {},
- "bild": "austausch/lauf.png"
+ "bild": null
 }
