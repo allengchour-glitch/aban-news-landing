@@ -149,6 +149,18 @@ Datei in /tmp anzulegen hilft also grundsätzlich nicht — es braucht einen Ort
   schon Shop-Admin ist — der käme ohnehin an dieselben Daten.
 - ⚠️ Beim Aufräumen: die Mutation heisst `metafieldsDelete(metafields:[MetafieldIdentifierInput!])`.
   `metafieldDelete` und `MetafieldsDeleteInput` gibt es nicht.
+- **Alle Geheimnisse drin, EINES bewusst nicht:** `judgeme`, `cj`, `tiktok`, `dienste`
+  (Gemini/Groq/DeepSeek/Printful) und `meta` liegen im Tresor; der Aufseher legt die
+  /tmp-Dateien daraus zurück und leitet die Einzelwert-Dateien ab, die die Social-Poster
+  erwarten (`meta_page_token` usw.).
+  ⚠️ **`SHOPIFY_CLIENT_ID/SECRET` gehören NICHT hinein — der Tresor IST ein Shop-Metafeld.**
+  Man braucht sie, um ihn zu öffnen; sie darin abzulegen wäre der Schlüssel im
+  abgeschlossenen Schrank. Sie gehören in die Umgebungs-Einstellungen des Kontos, den
+  einzigen Ort, den weder Rewind noch Container-Wechsel erreicht. **Jeder Tresor hat diese
+  eine Grenze: das Geheimnis, das ihn aufsperrt, kann nicht in ihm liegen.**
+- Ganze Kette geprüft: `cj_creds.env`, `tt_creds.env`, `meta_page_token` gelöscht →
+  wiederhergestellt → **CJ-Anmeldung antwortet mit code 200 und Token**. Nicht nur die Datei
+  ist wieder da, die Zugangsdaten funktionieren.
 
 **Was sich damit NICHT lösen liess, belegt statt vermutet:**
 - **Judge.me-Einstellungen:** zehn Sondierungen (`settings/update`, `blocklists`,

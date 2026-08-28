@@ -333,11 +333,26 @@ while true; do
   # Bewertungs-Import endete als No-op. Sie liegen jetzt in einem Shop-Metafeld
   # (`ls_tresor`, Definition ausdrücklich mit storefront:NONE) und werden hier zurückgelegt.
   # Ins Repo dürfen sie nicht — es ist öffentlich.
-  if [ ! -s /tmp/judgeme.env ] && [ -f "$REPO/automation/tresor.py" ]; then
-    if ( cd "$REPO" && python3 automation/tresor.py env judgeme /tmp/judgeme.env >/dev/null 2>&1 ); then
-      echo "$(date -u +%H:%M) judgeme.env aus dem Tresor wiederhergestellt"
+  if [ -f "$REPO/automation/tresor.py" ]; then
+    for PAAR in "judgeme:/tmp/judgeme.env" "cj:/tmp/cj_creds.env" "tiktok:/tmp/tt_creds.env" "dienste:/tmp/dienste.env" "meta:/tmp/meta.env"; do
+      NAME="${PAAR%%:*}"; ZIEL="${PAAR#*:}"
+      [ -s "$ZIEL" ] && continue
+      if ( cd "$REPO" && python3 automation/tresor.py env "$NAME" "$ZIEL" >/dev/null 2>&1 ); then
+        echo "$(date -u +%H:%M) $ZIEL aus dem Tresor wiederhergestellt"
+      fi
+    done
+    # ⚠️ Die Einzelwert-Dateien, die die Social-Poster erwarten, aus meta.env ableiten.
+    if [ -s /tmp/meta.env ]; then
+      . /tmp/meta.env 2>/dev/null
+      [ -n "$META_PAGE_TOKEN" ] && [ ! -s /tmp/meta_page_token ] && printf %s "$META_PAGE_TOKEN" > /tmp/meta_page_token && chmod 600 /tmp/meta_page_token
+      [ -n "$META_APP_SECRET" ] && [ ! -s /tmp/meta_app_secret ] && printf %s "$META_APP_SECRET" > /tmp/meta_app_secret && chmod 600 /tmp/meta_app_secret
+      [ -n "$META_IG_ID" ] && [ ! -s /tmp/meta_ig_id ] && printf %s "$META_IG_ID" > /tmp/meta_ig_id
     fi
   fi
+  # ⚠️ SHOPIFY_CLIENT_ID/SECRET liegen bewusst NICHT im Tresor: Der Tresor IST ein Shop-Metafeld,
+  # man braucht sie also, um ihn überhaupt zu öffnen. Sie im Tresor abzulegen wäre ein Schlüssel,
+  # der im abgeschlossenen Schrank liegt. Sie gehören in die Umgebungs-Einstellungen des Kontos —
+  # das ist der einzige Ort, den weder Rewind noch Container-Wechsel erreicht.
   # ECHTE CJ-BEWERTUNGEN, einmal täglich: Von 31 Produkten mit Besuchern hatte am 28.08.2026
   # genau EINES eine Bewertung — nicht wegen kaputter Technik (Judge.me hält 1'193 Bewertungen
   # auf 216 Produkten, die Shopify-Metafelder sind synchron), sondern wegen Abdeckung: 216 von
