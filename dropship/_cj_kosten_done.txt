@@ -3229,3 +3229,70 @@ gid://shopify/Product/15448651071873	CHF 20.22	10 Varianten	Damen Veloshorts mit
 gid://shopify/Product/15448651104641	CHF 22.16	30 Varianten	Figurbetonte Yoga-Hose für Damen
 gid://shopify/Product/15448651170177	CHF 18.44	3 Varianten	Damen Caprihose mit tiefem Bund und Patchwork
 gid://shopify/Product/15448651202945	CHF 18.92	54 Varianten	Legging Tights · Damen
+gid://shopify/Product/15448651235713	CHF 34.11	5 Varianten	Bauchkontroll-Shapewear für Yoga & Radsport
+gid://shopify/Product/15448651268481	CHF 19.92	25 Varianten	High-Waist Leggings mit Leopardenmuster
+gid://shopify/Product/15448651366785	CHF 19.08	80 Varianten	High-Waist Slimming Yoga Pants
+gid://shopify/Product/15448651432321	CHF 18.77	10 Varianten	Karierte Colorblock Leggings für Damen
+gid://shopify/Product/15448651465089	CHF 18.32	4 Varianten	Atmungsaktive Kompressions-Yogahose mit Shaping-Ef
+gid://shopify/Product/15448651497857	CHF 18.62	39 Varianten	Sport-Leggings für Damen
+gid://shopify/Product/15448651530625	CHF 18.32	5 Varianten	Schwarze Slim-Fit Leggings für Damen
+gid://shopify/Product/15448651596161	CHF 20.22	10 Varianten	Drapey Slimming Cropped Hose
+gid://shopify/Product/15448651628929	CHF 20.67	24 Varianten	Fitness- und Yogahose für Damen
+gid://shopify/Product/15448651661697	CHF 23.19	10 Varianten	Freizeit-Hose mit weitem Bein – Schwarz
+gid://shopify/Product/15448651727233	CHF 20.53	10 Varianten	High-Waist Straight Leg Hose für Damen
+gid://shopify/Product/15448651792769	CHF 18.61	4 Varianten	Sportliche Wide-Leg Hose für Damen
+gid://shopify/Product/15448651825537	CHF 19.78	36 Varianten	Corduroy Loose-Fit Hose mit elastischem Bund
+gid://shopify/Product/15448651891073	CHF 25.13	3 Varianten	Gepunktete Cropped Hose mit Schnürung
+gid://shopify/Product/15448651923841	CHF 19.30	90 Varianten	High-Waist Hose im eleganten, minimalistischen Sti
+gid://shopify/Product/15448651956609	CHF 19.55	48 Varianten	Weite Cordhose für Herren
+gid://shopify/Product/15448651989377	CHF 23.21	30 Varianten	Weite Hose mit hohem Bund
+gid://shopify/Product/15448652087681	CHF 19.23	30 Varianten	Weite Utility Hose mit hohem Bund
+gid://shopify/Product/15448652120449	CHF 22.02	3 Varianten	Vintage Weite Hose mit Elastischem Bund und Karomu
+gid://shopify/Product/15448652153217	CHF 25.35	3 Varianten	High-Waist Wide-Leg Anzughose
+gid://shopify/Product/15448652251521	CHF 25.35	3 Varianten	High-Waist Wide Leg Stoffhose
+gid://shopify/Product/15448652284289	CHF 19.92	16 Varianten	Weite Freizeithose aus Baumwoll-Mix
+gid://shopify/Product/15448652349825	CHF 19.53	30 Varianten	Weite Sommerhose mit Elastikbund
+gid://shopify/Product/15448652513665	CHF 26.04	8 Varianten	Weite Gothic-Hose mit Elastikbund
+gid://shopify/Product/15448652579201	CHF 19.78	28 Varianten	Corduroy Straight-Leg Hose für Damen
+gid://shopify/Product/15448652644737	CHF 23.36	55 Varianten	Retro Cordhose für Damen
+gid://shopify/Product/15448652677505	CHF 25.45	12 Varianten	Retro Cropped Wide Leg Jeans
+gid://shopify/Product/15448652743041	CHF 25.35	3 Varianten	Schwarze High-Waist Wide-Leg Hose mit weitem Bein
+gid://shopify/Product/15448652775809	CHF 20.37	5 Varianten	Gestreifte Hose mit weitem Bein und Schleifengürte
+gid://shopify/Product/15448652841345	CHF 20.60	3 Varianten	Hellegraue Slimming Wide Leg Hose
+gid://shopify/Product/15448652874113	CHF 19.37	15 Varianten	Gestreifte Wide-Leg Hose für Damen
+gid://shopify/Product/15448652939649	CHF 21.51	12 Varianten	Weite Freizeithose mit Polka Dots
+gid://shopify/Product/15448653005185	CHF 19.35	5 Varianten	Gestreifte Wide-Leg Hose im Yamamoto-Stil
+gid://shopify/Product/15448653103489	CHF 21.19	15 Varianten	High-Waist Loose Fit Stoffhose
+gid://shopify/Product/15448653169025	CHF 24.70	15 Varianten	Patchwork Wide-Leg Hose mit Reissverschlüssen
+gid://shopify/Product/15448653267329	CHF 21.42	16 Varianten	High-Waist Wide Leg Hose
+gid://shopify/Product/15448653300097	CHF 22.16	28 Varianten	Satin Cargo Hose für Damen im Western-Stil
+gid://shopify/Product/15448653365633	CHF 19.78	5 Varianten	Patchwork Casual Hose für Damen
+gid://shopify/Product/15448653398401	CHF 19.78	56 Varianten	Atmungsaktive Yoga-Hose mit weitem Bein
+gid://shopify/Product/15448653463937	CHF 31.45	9 Varianten	Retro-Freizeithose mit weitem Bein und Kordelzug
+gid://shopify/Product/15448653496705	CHF 18.92	20 Varianten	Retro Cargo Hose für Damen im Street Style
+gid://shopify/Product/15448653562241	CHF 20.37	60 Varianten	Cordhose im Loose Fit mit weitem Bein
+gid://shopify/Product/15448653627777	CHF 21.71	96 Varianten	Weite Freizeithose mit Digitaldruck
+gid://shopify/Product/15448653693313	CHF 20.40	30 Varianten	Elegante High Waist Hose mit weitem Bein
+gid://shopify/Product/15448653758849	CHF 19.78	24 Varianten	Freizeit-Hose mit weitem Bein – Reddish Brown
+gid://shopify/Product/15448653922689	CHF 19.08	25 Varianten	Bestickte weiter geschnittene Spitzenhose
+gid://shopify/Product/15448653988225	CHF 21.90	24 Varianten	Bestickte Retro Samthosen mit weitem Bein
+gid://shopify/Product/15448654020993	CHF 26.65	8 Varianten	Weite Freizeithose mit hohem Bund
+gid://shopify/Product/15448654053761	CHF 20.22	14 Varianten	Elegante Palazzo Hose mit weitem Bein
+gid://shopify/Product/15448654086529	CHF 22.46	20 Varianten	High-Waist Wide Leg Hose mit Spitze
+gid://shopify/Product/15448654152065	CHF 19.53	48 Varianten	High-Waist Wide-Leg Hose für Damen
+gid://shopify/Product/15448654184833	CHF 19.37	45 Varianten	High-Waist Hose mit asymmetrischem Saum
+gid://shopify/Product/15448654217601	CHF 19.37	5 Varianten	Gestreifte High-Waist Wide Leg Hose für Damen
+gid://shopify/Product/15448654283137	CHF 20.37	36 Varianten	Loose-Fit Wide Leg Hose mit Kordelzug
+gid://shopify/Product/15448654348673	CHF 19.25	20 Varianten	High-Waist Wide Leg Stoffhose – Grau
+gid://shopify/Product/15448654381441	CHF 23.80	35 Varianten	Semi-transparente Mesh-Haremshose
+gid://shopify/Product/15448654512513	CHF 22.61	9 Varianten	High-Rise Bootcut Hose im Motorrad-Stil
+gid://shopify/Product/15448654610817	CHF 20.22	25 Varianten	Gestreifte Wide-Leg Hose mit weitem Bein
+gid://shopify/Product/15448654676353	CHF 21.12	63 Varianten	High-Waist Relaxed Fit Hose mit weitem Bein
+gid://shopify/Product/15448654741889	CHF 39.96	8 Varianten	Weite Freizeithose mit elastischem Bund
+gid://shopify/Product/15448654774657	CHF 20.08	30 Varianten	High-Waist Plissée Hose mit weitem Bein
+gid://shopify/Product/15448654840193	CHF 18.77	10 Varianten	Retro-Bloomers mit Spitze
+gid://shopify/Product/15448654872961	CHF 19.23	25 Varianten	Weite Polka-Dot Hose mit Elastikbund
+gid://shopify/Product/15448654938497	CHF 19.78	40 Varianten	Karierte High-Waist Hose für Damen
+gid://shopify/Product/15448654971265	CHF 23.21	60 Varianten	Elegante High-Waist Wide-Leg Hose für Damen
+gid://shopify/Product/15448655004033	CHF 18.92	18 Varianten	Bequeme Tie-Dye Hose mit weitem Bein
+gid://shopify/Product/15448655036801	CHF 20.97	40 Varianten	Weite Hose mit überkreuztem Bund
