@@ -12942,3 +12942,6 @@ gid://shopify/Product/15496611758465	28->0	Handgewobener Baumwoll-Kissenbezug
 gid://shopify/Product/15497432433025	21->0	Digitales Malen nach Zahlen: Eigenes Ölbild
 gid://shopify/Product/15497461137793	20->0	Besticktes Halterneck-Top & Weste Set
 gid://shopify/Product/15500201034113	80->0	Farbenprächtige Bildervielfalt
+gid://shopify/Product/15500405244289	97->0	Digital Gemälde
+gid://shopify/Product/15500409241985	37->0	Digitaler Gemälde-Rahmen
+gid://shopify/Product/15500410978689	142->0	Digitaler Gemälde-Druck

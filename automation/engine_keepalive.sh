@@ -58,6 +58,24 @@ sperre_frei() {  # Rueckgabe 0 = Sperre ist frei. Die Subshell gibt sie beim End
   ( exec 9>/tmp/fixer_keepalive.lock; flock -n 9 ) 2>/dev/null
 }
 
+# ⚠️ DIE URSACHE ALLER «AUFSEHER-Ersatz ausgestiegen»-Meldungen (28.08.2026, endlich belegt).
+# `fuser -v /tmp/fixer_keepalive.lock` nannte als Halter: **PID 6013, Kommando `sleep`**.
+# fixer_keepalive.sh macht `exec 9>lock` — dieser Deskriptor wird an JEDES Kind vererbt, auch
+# an ein simples `sleep` in seiner Schleife. Das Abraeumen killt aber nur, was in argv
+# `fixer_keepalive.sh` heisst; das `sleep` heisst `sleep`, ueberlebt und haelt die Sperre bis
+# zum Ende seiner Wartezeit. Der frische Aufseher scheitert am flock und tritt ab — genau die
+# Meldung, die den ganzen Tag auftauchte und die ich zweimal falsch gedeutet habe (erst
+# eigenes timeout, dann fehlende Wartelogik).
+# Deshalb wird der HALTER getoetet, nicht der Name: fuser -k trifft exakt die Prozesse mit
+# offenem Deskriptor auf die Sperrdatei, und nichts sonst. Die taeglichen Waechter sind davon
+# nicht betroffen, sie werden mit `9>&-` gestartet (Deskriptor geschlossen).
+sperre_freiraeumen() {
+  if command -v fuser >/dev/null 2>&1; then
+    fuser -k /tmp/fixer_keepalive.lock >/dev/null 2>&1
+    sleep 1
+  fi
+}
+
 aufseher_ersetzen() {
   ps -eo pid,args --no-headers \
     | awk '$2=="bash" && $3 ~ /fixer_keepalive\.sh$/ {print $1}' | xargs -r kill 2>/dev/null
@@ -74,6 +92,7 @@ aufseher_ersetzen() {
   # scheitert am flock und beendet sich mit «Supervisor laeuft bereits» — im Log genau so
   # belegt. Das kostete jedes Mal einen «ausgestiegen»-Versuch. Gewartet wird deshalb auf
   # die SPERRE, nicht auf die Prozessliste: auf das, was der Start tatsaechlich braucht.
+  sperre_frei || sperre_freiraeumen
   for _ in $(seq 20); do sperre_frei && break; sleep 1; done
   date +%s > /tmp/_fixer_herzschlag
   starte fixer_keepalive bash automation/fixer_keepalive.sh
@@ -109,6 +128,7 @@ if [ "$A" -eq 0 ]; then
   # frische Aufseher scheitert daran und tritt ab. Genau so passiert um 17:08 nach dem
   # Abraeumen: «aelterer Supervisor laeuft weiterhin (PID 2274 tritt ab)», Ergebnis 0
   # Aufseher. Derselbe Fehler stand eine Verzweigung weiter schon in aufseher_ersetzen.
+  sperre_frei || sperre_freiraeumen
   for _ in $(seq 20); do sperre_frei && break; sleep 1; done
   # ⚠️ Uhr mitgeben: der frische Aufseher schreibt seinen ersten Herzschlag erst am Ende
   # der ersten Runde. Bliebe die alte, kalte Zeit stehen, wuerde ihn der naechste Lauf

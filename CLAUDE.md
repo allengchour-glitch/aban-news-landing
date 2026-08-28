@@ -130,6 +130,28 @@ live belegt an 15411554910593). `automation/versandaussagen_wahrheit.py`, Ledger
   Rechtstexte gehen nur per GraphQL `shopPolicyUpdate` — und dessen Input nimmt `type`
   (`SHIPPING_POLICY`), **nicht** `id`. Ohne Live-Gegenprobe hätte der Lauf als erledigt gegolten.
 
+## 🛑 Ein `sleep` hielt die Sperre — die Ursache aller «ausgestiegen»-Meldungen (2026-08-28)
+Heute Abend eskalierte das bekannte «AUFSEHER-Ersatz ausgestiegen» zu **Aufseher = 0**: Alle
+vier Versuche endeten mit «Supervisor läuft bereits», obwohl kein Aufseher lief. Damit standen
+sämtliche täglichen Wächter still. `fuser -v /tmp/fixer_keepalive.lock` nannte den Halter:
+**PID 6013, Kommando `sleep`.**
+`fixer_keepalive.sh` macht `exec 9>lock`, und dieser Deskriptor wird an **jedes Kind** vererbt —
+auch an ein simples `sleep` in seiner Schleife. Das Abräumen killt aber nur, was in argv
+`fixer_keepalive.sh` heisst. Das `sleep` heisst `sleep`, überlebt jeden Kill und hält die Sperre
+bis zum Ende seiner Wartezeit. Der frische Aufseher scheitert am `flock -n` und tritt ab.
+**Ich habe diese Meldung heute zweimal falsch gedeutet** — erst als Folge meines eigenen
+`timeout`, dann als fehlende Wartelogik. Beide Male plausibel, beide Male falsch. Erst die Frage
+«WER hält die Sperre?» statt «warum scheitert der Start?» hat es beantwortet.
+**Regel: Wer eine Sperre freigeben will, tötet den HALTER, nicht den Namen.**
+`sperre_freiraeumen()` benutzt `fuser -k` auf die Sperrdatei — das trifft exakt die Prozesse mit
+offenem Deskriptor und nichts sonst. Die täglichen Wächter sind nicht betroffen, sie werden mit
+`9>&-` gestartet (Deskriptor geschlossen) — genau dafür steht diese Zeile dort seit Wochen.
+⚠️ Und die allgemeine Form: **Ein geerbter Deskriptor trägt die Sperre weiter, egal wie das Kind
+heisst.** Jede Prozess-Suche nach Namen geht daran vorbei. Dieselbe Familie wie «`exec` löscht
+den Namen, nach dem die Wächter suchen» (20.08.) und «forks sind keine Instanzen» (25.08.) —
+dreimal derselbe Denkfehler: den Prozess über seinen Namen zu identifizieren statt über das,
+was er tatsächlich hält oder tut.
+
 ## 🚧 76 Seiten mit Besuchern führen ins Leere — jetzt ein täglicher Wächter (2026-08-28)
 Die 17 rankenden 404-Seiten von heute waren nur der Ausschnitt, den Semrush sieht. Shopifys
 EIGENE Sitzungsdaten zeigen mehr: **von 234 Produkt-Landeseiten mit Verkehr in 60 Tagen sind 76
