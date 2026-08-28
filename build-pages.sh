@@ -37,6 +37,10 @@ mkdir -p _site
 # Seiten (body overflow:hidden) und noindex-Werkzeuge bleiben bewusst aussen vor. Tolerant.
 ( command -v python3 >/dev/null 2>&1 && python3 tools/rechtslinks_footer.py --fix ) || echo "rechtslinks_footer übersprungen"
 
+# Vollbild-Spiele (body overflow:hidden) koennen keine Fusszeile tragen und bekommen
+# ihre Rechtslinks als kleine Ecke bzw. im Startbildschirm. Tolerant.
+( command -v python3 >/dev/null 2>&1 && python3 tools/spiele_rechtslinks.py --fix ) || echo "spiele_rechtslinks übersprungen"
+
 # Neue Seiten bekommen den Such-Link in der Fusszeile. Ohne diesen Schritt ist eine
 # frisch angelegte Seite eine Sackgasse — die Suche deckt 2632 Seiten ab, war aber
 # vor dem 27.08.2026 von nur 10 Seiten aus verlinkt. Tolerant.
