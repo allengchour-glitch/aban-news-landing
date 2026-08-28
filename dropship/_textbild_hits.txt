@@ -12940,3 +12940,4 @@ gid://shopify/Product/15496596947329	128->0	DIY Digital Painting Kit "Italian Ca
 gid://shopify/Product/15496597930369	113->0	Cabin Life – Malen nach Zahlen Set
 gid://shopify/Product/15496611758465	28->0	Handgewobener Baumwoll-Kissenbezug
 gid://shopify/Product/15497432433025	21->0	Digitales Malen nach Zahlen: Eigenes Ölbild
+gid://shopify/Product/15497461137793	20->0	Besticktes Halterneck-Top & Weste Set
