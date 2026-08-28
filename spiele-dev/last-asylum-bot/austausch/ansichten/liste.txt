@@ -2,3 +2,5 @@
 01-04070305.png	2026-08-14 23:18:41	Schritt 0	bekannt	{}
 01-09090a0a.png	2026-08-23 18:55:36	Schritt 3	bekannt	{'task:kalibrieren': 1, 'task:lebenszeichen': 1, 'task:ansichten-sammeln': 1}
 02-03030403.png	2026-08-23 18:57:40	Schritt 9	bekannt	{'task:ansichten-sammeln': 3, 'taps': 2, 'task:kalibrieren': 1}
+03-03030403.png	2026-08-23 18:58:49	Schritt 11	bekannt	{'task:ansichten-sammeln': 4, 'taps': 3, 'ansicht-gesammelt': 2}
+04-09090909.png	2026-08-28 17:19:32	Schritt 3	bekannt	{'task:kalibrieren': 1, 'task:lebenszeichen': 1, 'task:ansichten-sammeln': 1}
