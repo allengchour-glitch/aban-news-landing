@@ -1,53 +1,58 @@
 {
- "zeit": "2026-08-28 20:08:51",
- "zeit_utc": "2026-08-28T18:08:51Z",
+ "zeit": "2026-08-28 20:25:03",
+ "zeit_utc": "2026-08-28T18:25:03Z",
  "hinweise": [
   "1 Tipps lagen in einer Tabu-Zone (Shop/Echtgeld) und wurden blockiert."
  ],
- "fassung": "741d1a0",
- "schritte": 159,
+ "fassung": "7799f28",
+ "schritte": 173,
  "gleiche_ansicht": 0,
  "unbekannt_am_stueck": 0,
  "zaehler": {
-  "taps": 102,
-  "task:ansichten-sammeln": 67,
-  "drags": 64,
-  "task:spiel-im-vordergrund": 21,
-  "ansicht-gesammelt": 20,
+  "taps": 108,
+  "task:ansichten-sammeln": 73,
+  "drags": 72,
+  "task:spiel-im-vordergrund": 23,
+  "ansicht-gesammelt": 21,
   "rule:spiel-update-bestaetigen": 14,
-  "task:lebenszeichen": 11,
+  "task:lebenszeichen": 12,
   "zwischendurch-gehandelt": 9,
+  "task:objekte-lernen": 9,
   "wirkungslos": 8,
-  "task:objekte-lernen": 8,
-  "swipes": 5,
-  "task:basis-rundgang": 5
+  "task:basis-rundgang": 6,
+  "task:sammeln": 6
  },
  "vorlagen_offen": 32,
  "vorlagen_veraltet": [
   {
    "vorlage": "ui/btn_abholen.png",
-   "gesucht": 386,
+   "gesucht": 414,
    "bester_wert": 0.46
   },
   {
    "vorlage": "ui/btn_abholen_orange.png",
-   "gesucht": 250,
+   "gesucht": 278,
    "bester_wert": 0.812
   },
   {
    "vorlage": "ui/close_x_hell.png",
-   "gesucht": 154,
+   "gesucht": 168,
    "bester_wert": 0.858
   },
   {
    "vorlage": "nav/lupe.png",
-   "gesucht": 38,
+   "gesucht": 42,
    "bester_wert": 0.37
   },
   {
    "vorlage": "sammeln/suchen.png",
-   "gesucht": 38,
+   "gesucht": 42,
    "bester_wert": 0.515
+  },
+  {
+   "vorlage": "nav/startseite.png",
+   "gesucht": 30,
+   "bester_wert": 0.624
   },
   {
    "vorlage": "ui/btn_bestaetigen.png",
@@ -55,12 +60,12 @@
    "bester_wert": 0.55
   },
   {
-   "vorlage": "nav/startseite.png",
+   "vorlage": "sammeln/versammlung_einleiten.png",
    "gesucht": 27,
-   "bester_wert": 0.624
+   "bester_wert": 0.4
   }
  ],
  "verworfene_vorlagen": [],
  "verdaechtige_regeln": {},
- "bild": null
+ "bild": "austausch/lauf.png"
 }
