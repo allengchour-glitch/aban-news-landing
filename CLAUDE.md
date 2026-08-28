@@ -1247,6 +1247,21 @@ Ringe durchblättert, fand dazwischen einen Abdeckstift und eine Wanderhose.
   alle acht sauber. **Nach einer Tag-Änderung am OBJEKT gegenprüfen, nicht über die Suche** —
   sonst repariert man ein zweites Mal, was längst stimmt.
 
+## ✅ LX1013: beide Pakete zugestellt — der Stillstand war keiner (2026-08-28)
+Die Nachkontrolle Tag 4 ist erledigt und der Fall geschlossen. CJ `logistic/getTrackInfo`:
+beide Sendungen **`Delivered`, 26.08. um 11:07 in der Schweiz**, letzte Meile DPD (CH).
+Der Verlauf: 25.08. 17:35 an DPD übergeben → 26.08. 03:08 Verteilzentrum → 08:07 in
+Zustellung → 11:07 zugestellt. Shopify steht auf **FULFILLED** mit beiden Nummern.
+**Das CJ-Ticket (`dropship/LX1013-CJ-TICKET.md`) wird NICHT gebraucht** — es war richtig,
+es vorzubereiten und nicht abzusenden. Ein Paket, das «Arrived Courier Facility» meldet,
+steht nicht fest; es ist unterwegs. Vier Tage Geduld haben eine Reklamation erspart, die
+beim Lieferanten Aufwand und Vertrauen gekostet hätte.
+- ⚠️ Auslesefalle für den nächsten Mal: Das Feld heisst **`routes`** (nicht `trackList`) und
+  ist **absteigend** sortiert — die jüngste Station steht an Position 0. Wer `[-4:]` nimmt,
+  liest die ÄLTESTEN Einträge und hält ein zugestelltes Paket für eines, das in Shanghai
+  liegt. Genau das ist mir hier zuerst passiert. Der Status steht ausserdem fertig in
+  `trackingStatus`; `trackStatus` (ohne «ing») gibt es nicht und liefert `None`.
+
 ## ⚖️ 108 Produkte verlieren Geld in JEDEM Fall — sechs davon dreistellig (2026-08-28)
 Mit 10'417 hinterlegten Einkaufspreisen war die Frage erstmals messbar statt geschätzt.
 Über 48'985 aktive Produkte:
