@@ -4234,3 +4234,83 @@ gid://shopify/Product/15448875827585	CHF 21.26	12 Varianten	Titan-Armband für A
 gid://shopify/Product/15448875860353	CHF 19.92	3 Varianten	Smartes Sportarmband mit Herzfrequenzmessung · 1,4
 gid://shopify/Product/15448875925889	CHF 18.06	8 Varianten	Lederarmband für Apple Watch
 gid://shopify/Product/15448875991425	CHF 32.91	4 Varianten	Smartes Sportarmband mit Herzmessung
+gid://shopify/Product/15448876056961	CHF 19.80	8 Varianten	Vintage Metall-Leder Armband für Apple Watch
+gid://shopify/Product/15448876122497	CHF 54.77	3 Varianten	Smart Reminder Armband mit Bluetooth
+gid://shopify/Product/15448876220801	CHF 37.44	44 Varianten	Pinkycolor Silikonarmband für Apple Watch
+gid://shopify/Product/15448876253569	CHF 17.30	5 Varianten	Y68 Smartwatch mit Bluetooth
+gid://shopify/Product/15448876286337	CHF 17.83	8 Varianten	Smart Bluetooth Armband mit Herzfrequenzmessung
+gid://shopify/Product/15448876351873	CHF 17.43	2 Varianten	Antistatik-Armband für Herren und Damen
+gid://shopify/Product/15448876417409	CHF 40.25	1 Varianten	Pulsmesser Dual-Modus Armband für Sport
+gid://shopify/Product/15448876548481	CHF 25.40	4 Varianten	Smartwatch mit Farb-Touchscreen & Blutsauerstoffme
+gid://shopify/Product/15448876679553	CHF 24.23	6 Varianten	Smartes Gesundheits-Armband mit Farbdisplay
+gid://shopify/Product/15448876745089	CHF 30.03	1 Varianten	T1 Smart Bluetooth Sportarmband mit Farbdisplay
+gid://shopify/Product/15448876777857	CHF 39.83	1 Varianten	C33 Smart-Armband mit Körperfett-Messung
+gid://shopify/Product/15448876810625	CHF 29.56	3 Varianten	Smart-Armband mit HD-Farbdisplay
+gid://shopify/Product/15448876876161	CHF 18.20	22 Varianten	Uhrenarmband aus Edelstahl, dreireihig
+gid://shopify/Product/15448876941697	CHF 61.01	1 Varianten	Pulsmessgerät für diverse Sportarten
+gid://shopify/Product/15448877007233	CHF 42.59	1 Varianten	Sport Armband mit Pulsmesser für Gruppentraining
+gid://shopify/Product/15448877105537	CHF 24.97	2 Varianten	Dual-Screen Smart Armband
+gid://shopify/Product/15448877171073	CHF 16.94	25 Varianten	Zweifarbiges Silikonarmband für Apple Watch
+gid://shopify/Product/15448877203841	CHF 36.51	1 Varianten	Smartwatch mit Herzfrequenzmessung · Damen, Armban
+gid://shopify/Product/15448877269377	CHF 16.87	12 Varianten	Smartwatch-Armband aus Leder-Nylon
+gid://shopify/Product/15448877334913	CHF 46.16	1 Varianten	Smart-Armband mit Pulsmesser
+gid://shopify/Product/15448877400449	CHF 22.08	2 Varianten	T-förmiges Lederarmband für Smartwatch
+gid://shopify/Product/15448877433217	CHF 27.03	3 Varianten	C114 Smartwatch mit Herzfrequenzmessung
+gid://shopify/Product/15448877465985	CHF 19.30	28 Varianten	Smart Slim Resin Armband für Apple Watch
+gid://shopify/Product/15448877531521	CHF 17.51	11 Varianten	Harz-Metall-Denim-Ketten-Armband für Smartwatches
+gid://shopify/Product/15448877597057	CHF 24.13	4 Varianten	Smart-Armband mit Schritt- & Schlafüberwachung
+gid://shopify/Product/15448877629825	CHF 34.56	8 Varianten	P10 Smart Health Armband
+gid://shopify/Product/15448877662593	CHF 50.45	4 Varianten	Kinder Smartwatch mit GPS und Videoanruf
+gid://shopify/Product/15448877760897	CHF 31.87	3 Varianten	Smartwatch ZX18 – Fitness-Tracker für Damen und He
+gid://shopify/Product/15448877826433	CHF 72.09	1 Varianten	GPS SOS Armband mit Herzfrequenz- und Sturzalarm
+gid://shopify/Product/15448877859201	CHF 26.22	5 Varianten	Smart-Armband E58 mit Herzfrequenz-Messung
+gid://shopify/Product/15448877924737	CHF 18.64	4 Varianten	Smartes Sport-Armband mit Farbdisplay
+gid://shopify/Product/15448877990273	CHF 27.91	4 Varianten	Smartwatch mit Bluetooth-Anruf- und Musikfunktion
+gid://shopify/Product/15448878023041	CHF 24.13	10 Varianten	Smartwatch mit Herzfrequenzmessung · schlicht, 4 F
+gid://shopify/Product/15448878121345	CHF 17.12	11 Varianten	Sportuhr mit Silikonarmband
+gid://shopify/Product/15448878154113	CHF 19.46	1 Varianten	Smart Bracelet mit atmungsaktivem Metallarmband
+gid://shopify/Product/15448878219649	CHF 25.29	1 Varianten	Smartes Sport-Armband mit Schrittzähler
+gid://shopify/Product/15448878285185	CHF 46.43	2 Varianten	Bluetooth-Blutsauerstoff-Tracker fürs Handgelenk
+gid://shopify/Product/15448878317953	CHF 27.34	4 Varianten	Pedometer Sport-Armbanduhr
+gid://shopify/Product/15448878383489	CHF 19.65	3 Varianten	Smartes Fitness Armband mit Pulsmesser
+gid://shopify/Product/15448878416257	CHF 36.12	7 Varianten	Smartwatch mit Fitness-Tracking & Bluetooth-Anrufe
+gid://shopify/Product/15448878449025	CHF 21.86	8 Varianten	Smartwatch mit Anruf- & Musiksteuerung
+gid://shopify/Product/15448878514561	CHF 44.11	1 Varianten	Multifunktionale Outdoor Smartwatch mit Taschenlam
+gid://shopify/Product/15448878580097	CHF 23.80	8 Varianten	Multifunktionale Drei-Zeitzonen-Kalenderuhr
+gid://shopify/Product/15448878645633	CHF 19.23	2 Varianten	Smartwatch mit Bluetooth-Telefonie & Fitness-Track
+gid://shopify/Product/15448878711169	CHF 22.46	3 Varianten	Smartwatch & Bluetooth Earbuds Set mit Dual-Armban
+gid://shopify/Product/15448878743937	CHF 24.11	2 Varianten	Smartwatch mit Bluetooth-Anrufen und Fitness-Track
+gid://shopify/Product/15448878907777	CHF 22.32	6 Varianten	Smartwatch mit Schrittzähler und Nachrichten
+gid://shopify/Product/15448879202689	CHF 23.95	2 Varianten	Smartwatch Multi-Armband-Kit
+gid://shopify/Product/15448879464833	CHF 20.96	3 Varianten	4G Smartwatch für Kinder (Android)
+gid://shopify/Product/15448879595905	CHF 19.63	5 Varianten	SKMEI Multifunktions-Studentenuhr für Herren
+gid://shopify/Product/15448879825281	CHF 26.20	9 Varianten	Smarte Sportuhr mit Bluetooth-Anrufen & Gesundheit
+gid://shopify/Product/15448880054657	CHF 59.63	2 Varianten	4G Smartwatch für Kinder mit Bluetooth
+gid://shopify/Product/15448880251265	CHF 20.22	4 Varianten	Coole leuchtende, wasserdichte Digitaluhr
+gid://shopify/Product/15448880480641	CHF 60.82	1 Varianten	Smart Armband mit Herzfrequenzmessung
+gid://shopify/Product/15448880644481	CHF 75.89	2 Varianten	Fitness-Smartwatch mit Herzfrequenz-Tracking · Bus
+gid://shopify/Product/15448880742785	CHF 32.32	4 Varianten	Smart Armband für Herzfrequenz & Schlaf
+gid://shopify/Product/15448880841089	CHF 18.29	24 Varianten	Leder-Uhrenarmband im Vintage-Stil
+gid://shopify/Product/15448880939393	CHF 37.09	3 Varianten	Intelligentes Wecker-Armband mit Vibrationsalarm
+gid://shopify/Product/15448881004929	CHF 59.48	1 Varianten	Fitzap3 Anti-Ermüdungs-Smartwatch
+gid://shopify/Product/15448881037697	CHF 23.06	3 Varianten	Magnetisches Uhrenarmband aus Titan
+gid://shopify/Product/15448881201537	CHF 16.90	1 Varianten	Infrarot-Universalfernbedienung mit 12 Tasten (2.4
+gid://shopify/Product/15448881267073	CHF 23.26	2 Varianten	Strobe Licht-Set mit Fernbedienung
+gid://shopify/Product/15448881299841	CHF 26.40	1 Varianten	Universal Smart Home Fernbedienung
+gid://shopify/Product/15448881365377	CHF 19.78	2 Varianten	Anti-Verlust Locator für iPhone
+gid://shopify/Product/15448881398145	CHF 29.14	1 Varianten	M98 Y10 4K HD Android 13 TV Box
+gid://shopify/Product/15448881496449	CHF 16.89	1 Varianten	Bluetooth Sprach-Fernbedienung Infrarot
+gid://shopify/Product/15448881561985	CHF 18.89	1 Varianten	Google Smart Voice Universal Fernbedienung
+gid://shopify/Product/15448881627521	CHF 76.19	4 Varianten	KM7 SE Android 11 TV Box
+gid://shopify/Product/15448881693057	CHF 20.77	2 Varianten	6-in-1 Kabel-Controller mit Makro-Programmierung
+gid://shopify/Product/15448881791361	CHF 22.37	4 Varianten	Strobe Light Set mit Fernbedienung
+gid://shopify/Product/15448881889665	CHF 31.20	1 Varianten	LED Dimmer Wireless RF Controller
+gid://shopify/Product/15448881955201	CHF 16.81	1 Varianten	Klimaanlagen-Fernbedienung
+gid://shopify/Product/15448881987969	CHF 18.00	8 Varianten	LED Nachttischlampe Musiknote
+gid://shopify/Product/15448882151809	CHF 18.46	6 Varianten	Bluetooth Lenkrad-Controller
+gid://shopify/Product/15448882184577	CHF 17.18	1 Varianten	Ersatz-Fernbedienung für SKY Q Set-Top-Box
+gid://shopify/Product/15448882250113	CHF 18.77	3 Varianten	Infrarot-Fernbedienung für Smartphones
+gid://shopify/Product/15448882315649	CHF 21.17	4 Varianten	iTag Bluetooth-Itemfinder
+gid://shopify/Product/15448882413953	CHF 19.40	1 Varianten	16-in-1 Universal Garagentor-Fernbedienung
+gid://shopify/Product/15448882643329	CHF 17.94	3 Varianten	Universal-Funkfernbedienung · RF433
+gid://shopify/Product/15448882839937	CHF 31.82	1 Varianten	Bluetooth Ring Fernbedienung
