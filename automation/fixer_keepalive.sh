@@ -374,6 +374,24 @@ while true; do
   # die Seite Verkehr hatte. Der Lauf legt NUR bei eindeutig gleichartigem aktivem Produkt
   # (Ähnlichkeit >= 0.70) selbst eine Weiterleitung an, alles andere kommt in den Bericht.
   # ⚠️ Er veröffentlicht NIE ein Draft — jedes hat einen Grund im Tag.
+  # TIKTOK-KARUSSELL + VIDEO, einmal täglich: baut aus der Trend-Kollektion einen
+  # mehrseitigen Foto-Post (Slides 1080x1920) und schneidet daraus ein 9:16-Video —
+  # einmal ohne Ton (für den TikTok-Trend-Sound) und einmal mit eigener Musik.
+  # ⚠️ Es POSTET NICHTS. TikToks Content-Posting-API steht für diesen Shop weiter in Review
+  # (`unauthorized_client`); der einzige Weg, der heute funktioniert, ist der Upload von Hand
+  # über tiktokstudio/upload. Das Werkzeug legt also nur das fertige Material bereit.
+  # ⚠️ Es fasst kein Produkt zweimal an (eigenes Ledger + reels_seed.csv) — Doppelpost-Verbot.
+  TTK=/tmp/tiktok_karussell.log
+  if [ -f "$REPO/automation/tiktok_karussell.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$TTK" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid bash -c '
+          MODUS=produkt ANZAHL=1 python3 automation/tiktok_karussell.py
+          MODUS=top ANZAHL=1 SLIDES=7 SLUGZEIT=$(date -u +%m%d) python3 automation/tiktok_karussell.py
+          python3 automation/tiktok_video.py' >> "$TTK" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) tiktok-karussell gebaut"
+    fi
+  fi
   TLS=/tmp/tote_landeseiten.log
   if [ -f "$REPO/automation/tote_landeseiten.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$TLS" 2>/dev/null || echo 0) ))
