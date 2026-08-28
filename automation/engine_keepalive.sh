@@ -48,6 +48,32 @@ aufseher_pids() {
 }
 zaehle_aufseher() { aufseher_pids | grep -c . ; }
 
+# ⚠️ EINE Routine fuer den Ersatz, von BEIDEN Zweigen benutzt (28.08.2026). Die sorgfaeltige
+# Fassung (warten bis der Alte wirklich weg ist, danach Gegenprobe und Nachfassen) stand nur
+# im Herzschlag-Zweig. Als der Versions-Zweig dazukam, hat er sie NICHT geerbt — und prompt
+# stand wieder NULL Aufseher da, weil der Ersatz an der flock-Sperre des Sterbenden abprallte.
+# Dieselbe Geschwister-Lehre wie bei publishVerified() und der Farbtabelle: Wer eine Logik
+# baut, sucht ihre Zwillinge — oder macht daraus EINE Stelle.
+aufseher_ersetzen() {
+  ps -eo pid,args --no-headers \
+    | awk '$2=="bash" && $3 ~ /fixer_keepalive\.sh$/ {print $1}' | xargs -r kill 2>/dev/null
+  for _ in $(seq 15); do [ "$(zaehle_aufseher)" -eq 0 ] && break; sleep 1; done
+  if [ "$(zaehle_aufseher)" -gt 0 ]; then
+    ps -eo pid,args --no-headers \
+      | awk '$2=="bash" && $3 ~ /fixer_keepalive\.sh$/ {print $1}' | xargs -r kill -9 2>/dev/null
+    sleep 2
+  fi
+  date +%s > /tmp/_fixer_herzschlag
+  starte fixer_keepalive bash automation/fixer_keepalive.sh
+  for versuch in 1 2 3; do
+    sleep $((versuch * 5))
+    [ "$(zaehle_aufseher)" -gt 0 ] && return 0
+    echo "⚠️ AUFSEHER-Ersatz ausgestiegen — Versuch $versuch"
+    starte fixer_keepalive bash automation/fixer_keepalive.sh
+  done
+  [ "$(zaehle_aufseher)" -eq 0 ] && echo "⛔ AUFSEHER laesst sich nicht starten (Sperre? /tmp/fixer_keepalive.log lesen)"
+}
+
 starte() {  # starte <logname> <befehl…>
   # ⚠️ ANHÄNGEN, nicht überschreiben. Mit `>` löschte jeder Neustart die Begründung des
   # vorigen Todes — der Aufseher stand am 20.08. mehrfach still, und das Log war jedes Mal
@@ -93,53 +119,21 @@ else
   HB=/tmp/_fixer_herzschlag
   if [ -f "$HB" ] && [ $(( $(date +%s) - $(cat "$HB" 2>/dev/null || echo 0) )) -gt 600 ]; then
     echo "AUFSEHER haengt (Herzschlag kalt) → neu gestartet"
-    ps -eo pid,args --no-headers \
-      | awk '$2=="bash" && $3 ~ /fixer_keepalive\.sh$/ {print $1}' | xargs -r kill 2>/dev/null
-    # ⚠️ WARTEN, BIS DER ALTE WIRKLICH WEG IST (27.08.2026). Nach `kill` plus zwei Sekunden
-    # lief der haengende Aufseher noch — und der Ersatz trat mit seiner EIGENEN Wache wieder
-    # ab («Supervisor laeuft bereits — dieser Start endet»). Ergebnis: NULL Aufseher, und
-    # damit standen alle taeglichen Qualitaets-Waechter, bis eine Stunde spaeter der naechste
-    # Routinenlauf den Nullstand bemerkte. Eine Selbstwache, die den Vorgaenger noch sieht,
-    # verhindert genau den Ersatz, den man gerade herbeifuehren will.
-    for _ in $(seq 15); do
-      [ "$(zaehle_aufseher)" -eq 0 ] && break
-      sleep 1
-    done
-    if [ "$(zaehle_aufseher)" -gt 0 ]; then
-      ps -eo pid,args --no-headers \
-        | awk '$2=="bash" && $3 ~ /fixer_keepalive\.sh$/ {print $1}' | xargs -r kill -9 2>/dev/null
-      sleep 2
-    fi
-    date +%s > /tmp/_fixer_herzschlag
-    starte fixer_keepalive bash automation/fixer_keepalive.sh
-    # Gegenprobe: ein Start, der sich selbst abmeldet, ist kein Start.
-    # ⚠️ UND DANN NOCHMAL VERSUCHEN (27.08.2026). Die Gegenprobe hat beim ersten Ernstfall
-    # sofort angeschlagen: «Ersatz ist sofort wieder ausgestiegen», Aufseher=0. Grund war
-    # die flock-Sperre — sie war zum Startzeitpunkt noch von einem sterbenden Kind gehalten
-    # (dieselbe Klasse wie der geerbte Deskriptor von textbild_fix.py, im Aufseher oben
-    # dokumentiert); Sekunden spaeter hielt sie niemand mehr. Eine Wache, die den Fehlschlag
-    # nur MELDET, laesst den Shop trotzdem eine Stunde ohne Qualitaets-Waechter stehen.
-    # Also: bis zu dreimal nachfassen, mit wachsender Pause.
-    for versuch in 1 2 3; do
-      sleep $((versuch * 5))
-      [ "$(zaehle_aufseher)" -gt 0 ] && break
-      echo "⚠️ AUFSEHER-Ersatz ausgestiegen — Versuch $versuch"
-      starte fixer_keepalive bash automation/fixer_keepalive.sh
-    done
-    [ "$(zaehle_aufseher)" -eq 0 ] && echo "⛔ AUFSEHER laesst sich nicht starten (Sperre? /tmp/fixer_keepalive.log lesen)"
-  elif [ -f /tmp/_fixer_version ] \
-       && [ "$(md5sum "$REPO_AUTO/fixer_keepalive.sh" 2>/dev/null | cut -d' ' -f1)" != "$(cat /tmp/_fixer_version)" ]; then
-    # ⚠️ Der Aufseher laeuft — aber mit einer ANDEREN Fassung als der im Repo. Ein laufender
-    # bash-Prozess liest seinen Schleifenrumpf nicht neu; neu eingetragene Waechter wuerden
-    # sonst nie starten (beobachtet 28.08.: bilddubletten und wahlversprechen standen im
-    # Skript und liefen stundenlang nicht). Kein Zeitstempel-Vergleich — `git reset --hard`
-    # beim Vorspulen erneuert die mtime, ohne dass sich der Inhalt aendert.
+    aufseher_ersetzen
+  elif [ "$(md5sum "$REPO_AUTO/fixer_keepalive.sh" 2>/dev/null | cut -d' ' -f1)" != "$(cat /tmp/_fixer_version 2>/dev/null)" ]; then
+    # ⚠️ Ein laufender bash-Prozess parst seinen Schleifenrumpf EINMAL. Wer einen neuen
+    # Waechter in fixer_keepalive.sh eintraegt, hat ihn erst nach dessen Neustart wirklich
+    # registriert — am 28.08. standen `bilddubletten` und `wahlversprechen` stundenlang im
+    # Skript und liefen nie. Der Aufseher legt beim Start die Pruefsumme seines eigenen
+    # Skripts nach /tmp/_fixer_version; weicht sie ab, laeuft eine alte Fassung.
+    # ⚠️ Eine FEHLENDE Datei zaehlt als Abweichung: Ein Aufseher, der vor dem Einbau
+    # gestartet wurde, schreibt sie nie — mit `[ -f … ]` waere die Bedingung genau in dem
+    # Fall falsch gewesen, fuer den sie gebaut ist.
+    # ⚠️ KEIN Zeitstempel-Vergleich: `git reset --hard` beim Snapshot-Vorspulen erneuert die
+    # mtime jeder Datei, ohne dass sich der Inhalt aendert — das gaebe bei jedem Rueckfall
+    # einen Fehlalarm. Ein Zeitstempel ist eine Quittung, kein Nachweis.
     echo "AUFSEHER laeuft mit alter Fassung → Neustart"
-    ps -eo pid,args --no-headers \
-      | awk '$2=="bash" && $3 ~ /fixer_keepalive\.sh$/ {print $1}' | xargs -r kill 2>/dev/null
-    for _ in $(seq 15); do [ "$(zaehle_aufseher)" -eq 0 ] && break; sleep 1; done
-    date +%s > /tmp/_fixer_herzschlag
-    starte fixer_keepalive bash automation/fixer_keepalive.sh
+    aufseher_ersetzen
   else
     echo "AUFSEHER laeuft"
   fi
