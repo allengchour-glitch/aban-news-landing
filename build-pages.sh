@@ -46,6 +46,11 @@ mkdir -p _site
 # vor dem 27.08.2026 von nur 10 Seiten aus verlinkt. Tolerant.
 ( command -v python3 >/dev/null 2>&1 && python3 tools/such_link_footer.py --fix ) || echo "such_link_footer übersprungen"
 
+# Fremde Einbettungen unterhalb des ersten Bildschirms verzoegert laden. Ohne diesen
+# Schritt laedt eine neue Seite ihr Newsletter-iframe bei jedem Aufruf mit, obwohl es
+# rund 26 Bildschirme weiter unten sitzt. Tolerant.
+( command -v python3 >/dev/null 2>&1 && python3 tools/lazy_embeds.py --fix ) || echo "lazy_embeds übersprungen"
+
 # Tote interne Links melden (bricht den Build NICHT ab — der Bericht soll sichtbar
 # sein, aber ein einzelner Tippfehler darf kein Deploy verhindern). Stand nach der
 # Einfuehrung: 0 tote Ziele bei 54'161 geprueften Links.
