@@ -1742,3 +1742,35 @@ Aufruf. Der Test macht es jetzt so (`messe`).
 
 **Werkzeug:** `spiele-dev/tools/th-enten.mjs` (11 Checks: allein vs. zu zweit, Zieldauer,
 Wartezeit, Laune-Differenz, Ziel liegt zwischen beiden, leerer Ring löst nichts aus).
+
+## 2026-08-28 · 🏟️ Der Freizeitpark-Anschluss endete 30 m im Rasen — und warum die Eishalle bleibt
+
+Der Anschluss zeigte auf **(0|216)**; der Kommentar darüber nannte das „die Mittelachse des
+Sportparks". Der steht aber auf **z = 246** — er weicht beim Setzen aus, die Zahl zog nie
+nach. Dieselbe Veraltung wie in `_GPS_VERB` (#2355), nur eine Ebene höher. Der Verbindungsweg
+endete also 30 m vor der Straße, die er treffen sollte.
+
+**Korrigiert auf (0|246).** Routenanteil 88 %, `th-netz` 35 ok, `th-3d` 57, 6 Viertel auf
+Stufe 2.
+
+### ❌ Die Eishalle bleibt — gemessen, nicht übersehen
+Der Weg muss von der Sportpark-Straße nach Norden und kreuzt dabei dessen **Nordzeile**; dort
+steht `th19_eishalle` mit 8 Mesh-Positionen. Beide Ausweichrouten gemessen:
+
+| Anschluss | Straßentreffer | Routenanteil | `th-3d` |
+|---|---|---|---|
+| (0\|216) bisher, stale | 11 | 90 % | 56 |
+| **(0\|246) neu** | **11** | **88 %** | **57** |
+| (88\|246) | 11 | unverändert | — |
+| (−88\|246) | **1** | **43 %** ❌ | **60** ❌ |
+
+Die Westseite räumt die Straße frei und **zerstört dafür die Wegführung**: das GPS findet den
+Park dann nicht mehr über Asphalt (5 statt 46 Routenpunkte auf den Bändern). **Weniger
+Treffer wären hier das schlechtere Spiel.**
+
+> Zwei Kennzahlen können sich widersprechen. Dann gewinnt die, die der Spieler merkt — eine
+> Route, die über die Wiese führt, fällt auf; ein Gebäude am Straßenrand nicht.
+
+Wer es besser lösen will, lässt die **Bauzeile des Sportparks eine Lücke** für den Anschluss,
+statt den Anschluss außen herum zu führen. Das ist der allgemeine Fall aus #2346, den der
+Generator noch nicht kann.

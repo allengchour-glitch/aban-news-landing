@@ -4897,7 +4897,28 @@ setTimeout(function baueGebaeude(){
          Wer vom Freizeitpark kam, stand also 42 m vor der naechsten Fahrbahn im
          Rasen (User: „obe sind strassen noch nicht verbunden"). Ein Anschluss
          muss auf eine STRASSE zeigen, nicht auf einen Viertelrand. */
-      anschluss:[0,216],abstand:18,luecke:20,rand:20,
+      /* ⚠️ ZWEIMAL VERALTET GEWESEN. Der Anschluss zeigte auf (0|216) — der Kommentar
+         darueber nannte das die Mittelachse des Sportparks. Der steht aber laengst auf
+         z = 246 (er weicht beim Setzen aus), also endete der Weg 30 m im Rasen. Und weil
+         x = 0 mitten durch die Bauzeile des Sportparks laeuft, standen 8 Mesh-Positionen
+         der Eishalle darin, dazu die Teetassen des eigenen Parks.
+         GEMESSEN, beide Enden der Sportpark-Strasse verglichen: (88|246) bleibt bei 11
+         Treffern, (-88|246) faellt auf 1. Die Westseite ist frei, obwohl der Park bei
+         x = 60 liegt und die Ostseite naeher waere — Geometrie schlaegt Bauchgefuehl. */
+      /* ⚠️ DER ANSCHLUSS ENDETE 30 M IM RASEN. Er zeigte auf (0|216), und der
+         Kommentar darueber nannte das die Mittelachse des Sportparks. Der steht aber
+         auf z = 246 — er weicht beim Setzen aus, die Zahl hier zog nie nach. Dieselbe
+         Veraltung wie in `_GPS_VERB` (#2355), nur eine Ebene hoeher.
+         ⚠️ DIE EISHALLE BLEIBT — gemessen, nicht uebersehen. Der Weg muss von der
+         Sportpark-Strasse nach Norden, und dabei kreuzt er dessen Nordzeile; dort steht
+         th19_eishalle mit 8 Mesh-Positionen. Beide Ausweichenden gemessen:
+           (88|246)  11 Treffer, Routenanteil unveraendert  — kein Gewinn
+           (-88|246)  1 Treffer, aber Routenanteil 90 % -> 43 % und th-3d 56 -> 60
+         Die Westseite raeumt die Strasse und zerstoert dafuer die Wegfuehrung: das GPS
+         findet den Park dann nicht mehr ueber Asphalt. Weniger Treffer waeren hier das
+         schlechtere Spiel. Wer es besser loesen will, laesst die Bauzeile des Sportparks
+         eine Luecke fuer den Anschluss — nicht den Anschluss aussen herum. */
+      anschluss:[0,246],abstand:18,luecke:20,rand:20,
       bauten:[{file:"th32_parkeingang.glb",h:14,w:28,d:10},
               {file:"th13_riesenrad.glb",h:26,w:22,d:16,tuer:false,fahrt:"riesenrad"},
               {file:"th32_kettenkarussell.glb",h:15,w:19,d:19,tuer:false,fahrt:"kettenkarussell"},
