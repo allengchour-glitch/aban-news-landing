@@ -38,6 +38,16 @@ TOK = open("/tmp/cj_shop_token.txt").read().strip()
 BERICHT = "dropship/GOOGLE-KANAL-LUECKE.md"
 SEIT = os.environ.get("SEIT") or (
     datetime.date.today() - datetime.timedelta(days=7)).isoformat()
+# ⚠️ 28.08.2026 — DAS FENSTER IST DER GRÖSSTE BLINDE FLECK DIESES WÄCHTERS.
+# Er prüft per Vorgabe nur die letzten sieben Tage. Am 28.08. lagen 572 von 574 Lücken
+# ausserhalb davon — der tägliche Lauf meldet also dauerhaft «fast nichts», während der
+# Rückstand vollständig erhalten bleibt und mit jedem Tag wächst. Das ist dieselbe Klasse
+# wie «FERTIG heisst: nichts mehr zu TUN, nicht: nichts mehr zu SEHEN» (21.08.).
+# VOLL=1 prüft den GANZEN aktiven Katalog. Das dauert bei ~49'000 Produkten lange und
+# gehört deshalb NICHT in den Aufseher (ein Lauf, der eine Stunde braucht, ist in diesem
+# Container kein Lauf, Lehre 28.08.) — von Hand starten, etwa einmal im Monat.
+VOLL = os.environ.get("VOLL") == "1"
+FILTER = "status:active" if VOLL else f"status:active created_at:>={SEIT}"
 
 # Tags, die einen Ausschluss ERKLÄREN, liegen seit dem 28.08.2026 in
 # automation/google_sperrliste.py (`AUSSCHLUSS_TAGS` / `ausschluss_tag`). Die Menge stand
@@ -144,11 +154,11 @@ def main():
           f"Produkte bekannt", flush=True)
     cur, ges, treffer = None, 0, []
     while True:
-        d = gql('query($c:String){ products(first:30, after:$c, '
-                'query:"status:active created_at:>=' + SEIT + '"){ '
+        d = gql('query($c:String,$f:String){ products(first:30, after:$c, '
+                'query:$f){ '
                 'pageInfo{hasNextPage endCursor} nodes{ id title tags '
                 'resourcePublications(first:8){ nodes{ isPublished publication{ name } } } } } }',
-                {"c": cur})
+                {"c": cur, "f": FILTER})
         # ⚠️ Eine gescheiterte Abfrage ist KEIN Befund. Sie darf weder einen Bericht
         # erzeugen noch FERTIG melden — sonst meldet der Waechter erfundene Luecken
         # (beim Bau dieses Skripts genau so passiert: eine leere Antwort haette ALLE
@@ -178,12 +188,20 @@ def main():
         cur = pg["pageInfo"]["endCursor"]
         time.sleep(0.8)
 
-    print(f"Geprueft: {ges} aktive Produkte seit {SEIT}", flush=True)
+    bereich = "der GANZE aktive Katalog" if VOLL else f"aktive Produkte seit {SEIT}"
+    print(f"Geprueft: {ges} — {bereich}", flush=True)
+    if not VOLL:
+        print("  ⚠️ Dieser Lauf sieht NUR das Zeitfenster. Aeltere Luecken bleiben "
+              "unsichtbar — fuer den Rueckstand einmalig mit VOLL=1 starten.", flush=True)
     if treffer:
         with open(BERICHT, "w", encoding="utf-8") as f:
             f.write("# Ware, die NUR im Google-Kanal fehlt\n\n")
-            f.write(f"Stand {datetime.date.today().isoformat()} · geprüft seit {SEIT} · "
+            f.write(f"Stand {datetime.date.today().isoformat()} · "
+                    f"{'ganzer aktiver Katalog' if VOLL else 'geprüft seit ' + SEIT} · "
                     f"{ges} aktive Produkte\n\n")
+            if not VOLL:
+                f.write("⚠️ Nur das Zeitfenster geprüft — ältere Lücken stehen hier NICHT. "
+                        "Für den Rückstand `VOLL=1 python3 automation/google_kanal_luecke.py`.\n\n")
             f.write("Google & YouTube ist der einzige Kanal mit belegten Verkäufen. Diese "
                     "Produkte stehen im Online Store, tragen **kein** Sperr-Tag, sind in "
                     "keinem Säuberungs-Ledger vermerkt und fallen nicht unter die "
