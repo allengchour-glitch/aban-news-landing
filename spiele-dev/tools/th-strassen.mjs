@@ -91,7 +91,29 @@ const sonde = `function(MINH){
   try{markiere(polizei);}catch(e){}
   try{if(busRec&&busRec.mesh)busRec.mesh.traverse(function(c){beweglich.add(c);});}catch(e){}
   var w=new THREE.Vector3(), bb=new THREE.Box3(), karte={};
+  /* ⚠️ INSTANZIERTES WAR UNSICHTBAR — und das ist kein Randfall. GEMESSEN: 212
+     InstancedMeshes mit zusammen 6991 Instanzen (Parkzaun, Weidezaun, Landebahn,
+     Waldsaum). getWorldPosition() liefert fuer sie die Position des TRAEGERS, und
+     der steht im Ursprung; Box3.setFromObject() ebenso. Dieses Werkzeug hat sie
+     deshalb entweder alle bei (0|0) einsortiert oder gar nicht gesehen — 647 Instanzen
+     standen unbemerkt auf Fahrbahnen, darunter 288 Parkzaun-Module auf dem
+     Anschluss von Gewerbe Ost.
+     Jede Instanz wird jetzt einzeln geprueft. Die Hoehe kommt aus der Geometrie-Box
+     (fuer alle Instanzen gleich), die Lage aus der Instanzmatrix. */
+  var _M=new THREE.Matrix4(), _gb=new THREE.Box3();
   scene.traverse(function(o){
+    if(o.isInstancedMesh&&o.geometry&&!beweglich.has(o)){
+      if(!o.geometry.boundingBox)o.geometry.computeBoundingBox();
+      _gb.copy(o.geometry.boundingBox);
+      var ghy=_gb.max.y, ggr=Math.max(_gb.max.x-_gb.min.x,_gb.max.z-_gb.min.z);
+      if(ghy<MINH||ggr>60||_gb.min.y>2)return;
+      var di=String((o.userData&&o.userData.datei)||o.name||"(instanziert)");
+      for(var ii=0;ii<o.count;ii++){
+        o.getMatrixAt(ii,_M);w.setFromMatrixPosition(_M).applyMatrix4(o.matrixWorld);
+        var bi=bandVon(w.x,w.z); if(!bi)continue;
+        var ki=Math.round(w.x/3)+"|"+Math.round(w.z/3)+"|"+bi;
+        if(!karte[ki])karte[ki]={band:bi,x:w.x,z:w.z,hoch:ghy,d:di};}
+      return;}
     if(!o.isMesh||!o.geometry||beweglich.has(o))return;
     o.getWorldPosition(w);
     var band=bandVon(w.x,w.z); if(!band)return;
