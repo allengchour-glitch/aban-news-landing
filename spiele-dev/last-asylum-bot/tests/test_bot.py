@@ -2908,6 +2908,61 @@ class TestFluchtwegWirdNichtGebremst(unittest.TestCase):
 
 
 
+class TestFrischGeschnitteneVorlagen(unittest.TestCase):
+    """Vorlagen aus den gesammelten Ansichten - halbe Groesse, Faktor 2.0.
+
+    Der Bot legt seine Ansichten in halber Kantenlaenge ab. Lange schien das
+    ein Sackgassen-Material zu sein: eine halb so grosse Vorlage trifft den
+    echten Bildschirm nicht. Gemessen trifft sie doch - hochskaliert mit 0.963
+    beim Zurueck-Pfeil. Damit lassen sich fehlende Vorlagen sofort schneiden,
+    statt auf ein Vollbild zu warten.
+
+    Am 28.08. brachte das den Beweis, dass 'bauen-und-aufwerten' ins Leere
+    lief: bau/upgrade_knopf.png traf den echten Upgrade-Knopf im Gebaeude-Ring
+    nur mit 0.53 bis 0.67 bei Schwelle 0.86.
+    """
+
+    HALBE = ("bau/upgrade_knopf.png", "tasche/ausdauer_50.png", "tasche/verwenden.png")
+
+    def cfg(self):
+        return Config.load(os.path.join(ROOT, "config", "last-asylum.json"))
+
+    def test_halbe_vorlagen_haben_ihren_faktor(self):
+        skalen = self.cfg().template_skalen
+        fehlt = [n for n in self.HALBE if abs(skalen.get(n, 1.0) - 2.0) > 0.01]
+        self.assertEqual(fehlt, [],
+                         f"ohne Faktor 2.0 trifft eine halbe Vorlage nie: {fehlt}")
+
+    def test_vorlagen_treffen_die_echten_bildschirme(self):
+        faelle = [
+            ("bau/upgrade_knopf.png", "10-04030303.png", 0.86),
+            ("tasche/ausdauer_50.png", "24-04070305.png", 0.86),
+            ("tasche/verwenden.png", "24-04070305.png", 0.86),
+        ]
+        cfg = self.cfg()
+        for name, ansicht, schwelle in faelle:
+            pfad = os.path.join(ROOT, "austausch", "ansichten", ansicht)
+            if not os.path.exists(pfad):
+                self.skipTest(f"{ansicht} liegt nicht vor")
+            schirm = Image.load(pfad)
+            tpl = Image.load(os.path.join(ROOT, "templates", *name.split("/")))
+            wert = matcher.find(schirm, tpl, threshold=0.0,
+                                scale=cfg.scale_for_template(name, schirm.width)).score
+            self.assertGreaterEqual(wert, schwelle,
+                                    f"{name} trifft {ansicht} nur mit {wert:.3f}")
+
+    def test_ausdauer_wird_begrenzt_eingesetzt(self):
+        """Voll aufdrehen heisst nicht, den ganzen Vorrat in einem Zug zu verbrennen."""
+        with open(os.path.join(ROOT, "config", "last-asylum.json"), encoding="utf-8") as fh:
+            roh = json.load(fh)
+        t = next((x for x in roh["tasks"] if x["name"] == "ausdauer-einsetzen"), None)
+        self.assertIsNotNone(t, "die Aufgabe muss es geben")
+        wiederholungen = [a["repeat"]["times"] for a in t["do"] if "repeat" in a]
+        self.assertTrue(wiederholungen, "der Verbrauch muss begrenzt sein")
+        self.assertLessEqual(max(wiederholungen), 3,
+                             "hoechstens ein paar Flaeschchen je Durchgang")
+
+
 class TestKeineBlindtippsInAufgaben(unittest.TestCase):
     """Der Nutzer sieht es sofort: "drueckst zu viel blind und macht fast nix".
 

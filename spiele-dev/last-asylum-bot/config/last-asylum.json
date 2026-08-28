@@ -885,6 +885,31 @@
       ]
     },
     {
+      "name": "kampf-erneut-herausfordern",
+      "priority": 150,
+      "cooldown": 300,
+      "_zweck": "Nach einer Niederlage in der Kampagne steht unten rechts 'Erneut herausfordern'. Der Nutzer will immer angreifen, also wird wieder angetreten. ABKUEHLZEIT 300 SEKUNDEN mit Absicht: die gesammelte Ansicht 21-01010102.png zeigt eine Niederlage bei Stufe 28-16 - wer dieselbe Stufe im Sekundentakt neu angeht, verliert nur schneller. Zwischen zwei Versuchen sollen die Aufwert-Aufgaben (Heldenlevel, Ausruestung, Technologie, alle drei auf demselben Bildschirm angeboten) etwas bewirkt haben. Der Knopf ist ORANGE, kostet aber kein Geld - das ist an der Beschriftung nachgesehen, nicht an der Farbe geraten.",
+      "match": {
+        "template": "kampf/erneut_herausfordern.png",
+        "threshold": 0.86,
+        "optional": true
+      },
+      "do": [
+        {
+          "log": "Niederlage - erneut herausfordern"
+        },
+        {
+          "tap_match": {}
+        },
+        {
+          "sleep": [
+            2.0,
+            3.0
+          ]
+        }
+      ]
+    },
+    {
       "name": "blauer-knopf-generisch",
       "priority": 144,
       "cooldown": 120,
@@ -2825,10 +2850,10 @@
     },
     {
       "name": "bauen-und-aufwerten",
-      "every": 14400,
+      "every": 3600,
       "at_start": true,
       "priority": 150,
-      "_zweck": "Folgt dem Bau-Vorschlag des Spiels unten links. Bei hohem Gebiet-Level laufen Bauten tagelang - haeufiger als alle vier Stunden nachzusehen bringt nichts. Der orange 'Sofort'-Knopf (Diamanten) wird bewusst nicht angetippt.",
+      "_zweck": "Folgt dem Bau-Vorschlag des Spiels unten links. Bei hohem Gebiet-Level laufen Bauten tagelang - haeufiger als alle vier Stunden nachzusehen bringt nichts. Der orange 'Sofort'-Knopf (Diamanten) wird bewusst nicht angetippt. TAKT 14400 auf 3600 (Nutzer: 'auto aufwerten, stark werden'). WICHTIG, am 28.08. nachgemessen: bau/upgrade_knopf.png traf den echten Upgrade-Knopf im Gebaeude-Ring nur mit 0.53 bis 0.67 - die Aufgabe lief also ins Leere. Neu geschnitten aus austausch/ansichten/10-04030303.png, trifft jetzt mit 1.000. Fuer den letzten Schritt (Bestaetigen) legt die Aufgabe ein Vollbild ab.",
       "do": [
         {
           "log": "Bau-Vorschlag des Spiels umsetzen"
@@ -2859,6 +2884,18 @@
               2.0,
               3.0
             ]
+          }
+        },
+        {
+          "ausschnitt": {
+            "datei": "austausch/aufwerten-fenster.png",
+            "region": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "mindestabstand": 7200
           }
         },
         {
@@ -3089,10 +3126,10 @@
     },
     {
       "name": "truppe-1-aufwerten",
-      "every": 3600,
+      "every": 1800,
       "at_start": true,
-      "priority": 140,
-      "_zweck": "Hauptziel Kampfkraft: im Helden-Menue die Ausruestung von Team 1 hochziehen. Der orange 'Verbessern'-Knopf wird mehrfach gedrueckt - solange Kristalle und Kraeuter reichen, steigt das Level. Fehlt held/team1.png noch, arbeitet der Bot auf dem Helden, der gerade offen ist.",
+      "priority": 145,
+      "_zweck": "Hauptziel Kampfkraft: im Helden-Menue die Ausruestung von Team 1 hochziehen. Der orange 'Verbessern'-Knopf wird mehrfach gedrueckt - solange Kristalle und Kraeuter reichen, steigt das Level. Fehlt held/team1.png noch, arbeitet der Bot auf dem Helden, der gerade offen ist. TAKT 3600 auf 1800 und Prioritaet 145 (Nutzer: 'mache truppe 1 sehr stark'). held/team1.png fehlt noch - ohne die Vorlage arbeitet der Bot auf dem Helden, der gerade offen ist, und das ist nicht zwingend Team 1. Darum legt die Aufgabe jetzt ein Vollbild des Helden-Menues ab; daraus laesst sich die Vorlage schneiden.",
       "do": [
         {
           "log": "Truppe 1: Ausruestung verbessern"
@@ -3111,6 +3148,18 @@
               3.5
             ],
             "optional": true
+          }
+        },
+        {
+          "ausschnitt": {
+            "datei": "austausch/held-menue.png",
+            "region": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "mindestabstand": 7200
           }
         },
         {
@@ -6829,6 +6878,113 @@
           }
         }
       ]
+    },
+    {
+      "name": "ausdauer-einsetzen",
+      "every": 3600,
+      "at_start": false,
+      "priority": 118,
+      "_zweck": "Ausdauer-Flaeschchen aus der Tasche einsetzen, damit gleich danach Monster und Diebe angegriffen werden koennen. HISTORIE: bis zum 28.08. galt das Gegenteil ('nicht verbrauchen, die sind fuer den Krieg'); der Nutzer hat das an diesem Tag ausdruecklich umgedreht. HOECHSTENS ZWEI pro Durchgang, also rund 100 Ausdauer je Stunde - voll aufdrehen heisst nicht, den ganzen Vorrat in einem Zug zu verbrennen. Fuer den Weg braucht es tasche/ausdauer_50.png und tasche/verwenden.png; beide sind aus einer gesammelten Ansicht geschnitten und stehen darum in template_skalen auf 2.0.",
+      "do": [
+        {
+          "log": "Ausdauer nachfuellen - danach wird angegriffen"
+        },
+        {
+          "tap_template": {
+            "template": "nav/tasche.png",
+            "region": [
+              0.7,
+              0.6,
+              1.0,
+              1.0
+            ],
+            "after": [
+              2.0,
+              3.0
+            ],
+            "optional": true
+          }
+        },
+        {
+          "tap_template": {
+            "template": "schutz/reiter_spezial.png",
+            "threshold": 0.86,
+            "after": [
+              1.5,
+              2.5
+            ],
+            "optional": true
+          }
+        },
+        {
+          "repeat": {
+            "times": 2,
+            "do": [
+              {
+                "tap_template": {
+                  "template": "tasche/ausdauer_50.png",
+                  "threshold": 0.86,
+                  "after": [
+                    1.0,
+                    1.6
+                  ],
+                  "optional": true
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "tasche/verwenden.png",
+                  "threshold": 0.86,
+                  "after": [
+                    1.2,
+                    1.8
+                  ],
+                  "optional": true
+                }
+              },
+              {
+                "tap_template": {
+                  "template": "ui/popup_close.png",
+                  "threshold": 0.84,
+                  "optional": true
+                }
+              },
+              {
+                "sleep": [
+                  0.8,
+                  1.2
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "wenn": {
+            "match": {
+              "template": "ui/back_arrow.png",
+              "threshold": 0.85,
+              "region": [
+                0.0,
+                0.0,
+                0.3,
+                0.15
+              ]
+            },
+            "dann": [
+              {
+                "tap_match": {}
+              },
+              {
+                "sleep": [
+                  0.8,
+                  1.2
+                ]
+              }
+            ],
+            "sonst": []
+          }
+        }
+      ]
     }
   ],
   "_diamanten": "DIAMANTEN-REGEL (User 2026-07-31): 'bis 50 pro Klick' ist erlaubt. ABER der Bot kann Zahlen auf Knoepfen NICHT lesen - fuer ihn sieht '2 Spenden' aus wie '50 Spenden' oder '500 Spenden'. Deshalb tippt er von sich aus nur Knoepfe an, die REINE RESSOURCEN kosten (blauer Spenden-Knopf, Kraeuter). Der Diamanten-Knopf steht als eigene Aufgabe bereit, ist aber AUS - wer ihn einschaltet, akzeptiert, dass die Kosten mit jeder Spende steigen und der Bot das nicht bemerkt. Ebenso bleibt 'Sofort' beim Gebaeude-Upgrade (vierstellig) unangetastet. Echtgeld ist ohnehin komplett tabu, siehe tabu_regionen.",
@@ -6859,7 +7015,7 @@
   "_selbstlernen": "Der Bot entdeckt Sammel-Objekte selbst: die Aufgabe 'objekte-lernen' macht zwei Aufnahmen im Abstand weniger Sekunden. Alles, was sich dazwischen aendert und rundlich in Knopfgroesse ist, ist einsammelbar (Ertrags-Blasen tauchen auf und verschwinden, der Rest des Bildes steht still). Die Ausschnitte landen in templates/gelernt/blasen/ und werden von der Regel 'gelernte-objekte-einsammeln' per Muster sofort mitbenutzt - ohne Konfigurationsaenderung. So kommen auch Blasen-Sorten dazu, die nie jemand von Hand geschnitten hat.",
   "_routine": "TAGESROUTINE: Die Takte sind so gewaehlt, dass die Aufgaben zusammen deutlich unter der verfuegbaren Zeit bleiben. Sonst stauen sie sich und die reaktiven Regeln - Belohnungen, Ertrags-Blasen, Dialoge - kommen kaum noch dran. Faustregel beim Aendern: die Summe aus Laufzeit mal Haeufigkeit sollte rund die Haelfte des Tages nicht ueberschreiten.",
   "_selbstoptimierung": "Der Bot wertet alle zwoelf Stunden seine eigenen Protokolle aus und zieht die Takte nach: Aufgaben, die wiederholt leer laufen, werden seltener aufgerufen, sehr ergiebige oefter. Aenderungen sind auf Faktor zwei je Durchgang begrenzt und bleiben zwischen 5 Minuten und 24 Stunden. Die neuen Takte schreibt er in diese Datei zurueck.",
-  "_ausdauer": "AUSDAUER-REGEL (User): Monster jagen, bis die Ausdauer alle ist - aber die Ausdauer-Fläschchen NICHT verbrauchen, die werden fuer den Krieg gebraucht. Der Bot fuellt Ausdauer nie nach: er tippt weder das Plus neben der Ausdauer-Anzeige noch ein Fläschchen in der Tasche an. Geht die Ausdauer aus, oeffnet das Spiel einen Nachfuell-Dialog - den schliessen die Dialog-Regeln (Prioritaet 199/200), bevor die generische Gruen-Knopf-Regel (145) ihn bestaetigen koennte. Wichtig fuer dich: schneide NIE ein Template von einem 'Benutzen' oder 'Bestaetigen' aus einem Ausdauer-Dialog. Der Falkenturm zieht aus demselben Topf: 'Schnelle Ausfuehrung' kostet 40 bis 50 Ausdauer auf einmal. Die Aufgabe 'falkenturm-quests' steht deshalb auf AUS - sonst waere die Ausdauer weg, bevor der Bot ueberhaupt zum Sammeln oder zu den Monstern kommt. NACHGEMESSEN 28.08.: die generische Blau-Knopf-Regel (144) fand das 'Verwenden' beim ausgewaehlten Ausdauer-Flaeschchen punktgenau - sie haette die Flaeschchen also verbraucht. Sie ist jetzt gesperrt, solange der Spezial-Reiter der Tasche sichtbar ist.",
+  "_ausdauer": "AUSDAUER-REGEL (Nutzer, Stand 28.08. — UMGEDREHT): Ausdauer-Flaeschchen SOLLEN eingesetzt werden, damit Monster und Diebe angegriffen werden koennen ('verbrauche ausdauer poison fuer diebe angriff oder monster etc., immer angreifen'). Vorher galt das Gegenteil ('nicht verbrauchen, die sind fuer den Krieg') - diese aeltere Regel ist hiermit aufgehoben. Eingesetzt wird bewusst und begrenzt: die Aufgabe 'ausdauer-einsetzen' nimmt hoechstens zwei Flaeschchen je Durchgang, also rund 100 Ausdauer pro Stunde. Die generische Blau-Knopf-Regel bleibt trotzdem gesperrt, solange der Spezial-Reiter der Tasche sichtbar ist: gewollt verbrauchen ja, versehentlich nein - sonst tippt sie irgendwann auch das Flaeschchen mit dem falschen Wert an. Der Falkenturm zieht aus demselben Topf ('Schnelle Ausfuehrung' kostet 40 bis 50 auf einmal); die Aufgabe 'falkenturm-quests' bleibt aus, bis ihre Vorlagen da sind.",
   "_on_unknown": "Fluchtweg aus unbekannten Bildschirmen, in dieser Reihenfolge: Dialog schliessen (beide X-Varianten), dann zurueck ueber den Pfeil oben links, ersatzweise die Android-Taste, zuletzt ein Tipp ins freie Gelaende. Ohne die Zurueck-Stufe blieb der Bot in Untermenues haengen, sobald dort keine Vorlage passte.",
   "ui_skala": 1.0,
   "festgefahren_schritte": 15,
@@ -6885,5 +7041,12 @@
   "_tabu": "Die Zone deckt nur den Einkaufswagen und die Diamanten-Anzeige ganz oben rechts ab. Sie reichte bis 0.145 hinunter und hat damit das Schliesskreuz der Dialoge mit verdeckt - das sitzt bei y 0.10 bis 0.11. Im Lauf vom 31.07. war das Ergebnis: 'Tipp in Tabu-Zone blockiert ... grund=ui/popup_close.png', danach 'Regel dialog-schliessen bewirkt nichts - stillgelegt'. Der Bot kam aus keinem Dialog mehr heraus. Eine Tabu-Zone muss so eng wie moeglich sein: was sie zu viel abdeckt, faellt nicht als Fehler auf, sondern als lahmgelegte Regel.",
   "_soldaten": "T8 (S8) ist noch gesperrt; hoechste freie Stufe ist S7. Sobald S8 offen ist, reicht es, die Vorlage kaserne/stufe_t8.png zu schneiden - die Aufgabe waehlt dann von selbst die hoechste Stufe. Der orange Knopf 'Jetzt trainieren' kuerzt gegen Bezahlung ab und wird nicht benutzt.",
   "_blasen": "Ertrags-Blasen liegen AUF der Karte und wandern mit, sobald die Kamera schwenkt - die Bedienung am Rand bleibt stehen. Daran unterscheidet man beides. Gesammelt wird nur zwischen x=0.11 und x=0.89: links liegt die Symbolspalte (x um 0.07), rechts Allianz, Nachricht und Tasche (x um 0.92), und die haben denselben hellen Ring wie eine Blase. Verloren geht dadurch nichts - der Rundgang schwenkt in acht Richtungen, also kommt jede Blase irgendwann in den Bereich.",
-  "_zahlen_lesen": "Der Bot kann keine Zahlen lesen. Fuer 'nur beitreten, wenn Stufe und Macht nicht zu hoch sind' braucht es aber genau das: im Versammlungs-Fenster stehen 'Lv120' und 'Empf. Macht: 6,783,000'. Machbar waere es - das Spiel benutzt eine feste Schrift, also liessen sich die zehn Ziffern einmal als Vorlagen schneiden und mit dem vorhandenen Vergleicher aneinandergereiht lesen. Dafuer braucht es einen Screenshot in voller Aufloesung (1440 breit), auf dem die Ziffern gross und klar stehen. Damit liesse sich zugleich die Ausdauer-Reserve umsetzen (Falkenturm nur oberhalb einer Schwelle) und die eigene Macht gegen die empfohlene halten."
+  "_zahlen_lesen": "Der Bot kann keine Zahlen lesen. Fuer 'nur beitreten, wenn Stufe und Macht nicht zu hoch sind' braucht es aber genau das: im Versammlungs-Fenster stehen 'Lv120' und 'Empf. Macht: 6,783,000'. Machbar waere es - das Spiel benutzt eine feste Schrift, also liessen sich die zehn Ziffern einmal als Vorlagen schneiden und mit dem vorhandenen Vergleicher aneinandergereiht lesen. Dafuer braucht es einen Screenshot in voller Aufloesung (1440 breit), auf dem die Ziffern gross und klar stehen. Damit liesse sich zugleich die Ausdauer-Reserve umsetzen (Falkenturm nur oberhalb einer Schwelle) und die eigene Macht gegen die empfohlene halten.",
+  "template_skalen": {
+    "bau/upgrade_knopf.png": 2.0,
+    "tasche/ausdauer_50.png": 2.0,
+    "tasche/verwenden.png": 2.0,
+    "kampf/erneut_herausfordern.png": 2.0
+  },
+  "_vorlagen_halbe_groesse": "Diese drei Vorlagen sind aus den GESAMMELTEN Ansichten geschnitten, und die legt der Bot in halber Kantenlaenge ab (720 statt 1440). Damit sie auf dem echten Bildschirm passen, stehen sie in template_skalen auf 2.0. NACHGEMESSEN: ein so geschnittener Zurueck-Pfeil trifft das Vollbild mit 0.963 - der Umweg funktioniert also. Wer eine davon neu schneidet, muss den Faktor mitpflegen: aus einem Vollbild geschnitten gehoert sie auf 1.0."
 }
