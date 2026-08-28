@@ -4407,3 +4407,5 @@ gid://shopify/Product/15448894734721	CHF 28.49	5 Varianten	Ovales Zirkon-Armband
 gid://shopify/Product/15448895095169	CHF 26.69	4 Varianten	Crushed Ice Blau Cubic Zirkonia Armreif
 gid://shopify/Product/15448895259009	CHF 28.49	1 Varianten	Regenbogen-Armband mit Zirkonia, 18K vergoldet
 gid://shopify/Product/15448895390081	CHF 27.59	5 Varianten	Eisblau Zirkonia Armreif – Korean Ins Style
+gid://shopify/Product/15448901419393	CHF 23.99	1 Varianten	Zirkon-Blumenohrringe im europäischen Stil
+gid://shopify/Product/15448901452161	CHF 28.49	4 Varianten	Silberne Zirkon-Ohrringe mit Quasten
