@@ -20,6 +20,38 @@ in der App wählen lassen. Für Einzel-Posts der Standard-Weg, bis die API frei 
 **Content-Nachschub:** cj_video_reel_engine baut Reels aus CJ-Produktvideos — praktisch unendlich,
 Ledger verhindern jede Wiederholung (plattformübergreifend). 29 ready in reels_seed.csv.
 
+## 🔪 Die Klingen-Hausregel lief an fast jeder Klinge vorbei (2026-08-28)
+Aus dem 40-Agenten-Audit, und der einzige Befund daraus, den ich sofort selbst nachgeprüft habe.
+`\b(messer|klinge\w*|dolch|machete|axt|beil|schwert|katana)` steht in **fünf** Dateien —
+allen drei CJ-Importern plus `google_kanal_luecke(_schliessen).py`. Empirisch getestet:
+
+| Titel | alte Regel |
+|---|---|
+| Küchenmesser · Taschenmesser · Klappmesser · Jagdmesser · Obstmesser · Brotmesser | **trifft NICHT** |
+| «Messer für die Küche» · «Survival-Messer» | trifft |
+
+`\b` verlangt eine Wortgrenze VOR «messer» — im Deutschen steht dort aber ein Buchstabe.
+Die Hausregel griff also nur bei freistehendem oder bindestrich-getrenntem «Messer», und die
+Importer publizierten alles andere in den Google-Kanal.
+**Sechste Fassung der Substring-Familie — erstmals in der Gegenrichtung:** nicht ein zu kurzes
+Wort trifft zu viel (IPL, led, ski, auto, monitor), sondern eine zu strenge Wortgrenze zu wenig.
+**Bei deutschen Zusammensetzungen gehört die Wortgrenze ans ENDE, nie an den Anfang.**
+- Neu: `(?<![\wäöüß])[\wäöüß]*(messer|…)(?![\wäöüß])`. Weil das Klingenwort am ENDE stehen
+  muss, fallen **«Messerblock» und «Messerschärfer»** korrekt NICHT darunter — Zubehör bleibt
+  im Kanal. ⚠️ Meine eigene Testerwartung war hier falsch, nicht die Regel.
+- ⚠️ **`…messer` ist auch die Endung für MESSGERÄTE.** Ohne Ausnahmeliste (Herzfrequenz-,
+  Winkel-, Reifendruck-, Entfernungsmesser) fiele ein Pulsmesser unter die Waffenregel.
+- ⚠️ **Die Belastung war KLEINER als der Agent nahelegte** — nachgezählt, nicht übernommen:
+  Taschen-, Klapp- und Survivalmesser sind über `google-kanal-klinge-outdoor` bereits draussen;
+  im Google-Kanal stehen vier Damast-/Küchenmesser-Sets und ein «Outdoor-Obstmesser».
+  **Küchenbesteck ist bei Google zulässig** (die Hausregel vom 12.08. hielt ausdrücklich fest,
+  dass Cuttermesser KEIN Richtlinienverstoss sind). Sie wurden deshalb NICHT entfernt — Ware aus
+  dem einzigen verkaufenden Kanal zu werfen kostet Geld und war hier nicht geboten.
+- ⚠️ **Und die Lehre über den Agenten:** Seine Formulierung «die Hausregel ist tot» stimmte im
+  Mechanismus und übertrieb die Folge. Ein Agentenbefund ist ein Hinweis, kein Beleg — die
+  Gegenprobe kostete zwei Abfragen und hat die Reaktion von «hunderte Klingen entfernen» auf
+  «Regel reparieren» korrigiert.
+
 ## 🎯 Wo das Geld liegt — 90 Tage gemessen, und ein Ratgeber ohne Ware (2026-08-28)
 Betreiber: «mache alles automatisch … für viele verkäufe». Also zuerst gemessen, wo Verkäufe
 überhaupt herkommen. ShopifyQL über 60 Tage:
