@@ -4570,3 +4570,8 @@ gid://shopify/Product/15448913674625	CHF 34.58	1 Varianten	Minimalistischer Pend
 gid://shopify/Product/15448913707393	CHF 43.21	4 Varianten	Business Rucksack mit Vakuum-Kompressionsbeutel
 gid://shopify/Product/15448913805697	CHF 21.70	2 Varianten	Filz-Rucksack für Outdoor-Aktivitäten
 gid://shopify/Product/15448913838465	CHF 28.44	1 Varianten	Business Umhängetasche mit USB-Anschluss
+gid://shopify/Product/15448913871233	CHF 43.00	1 Varianten	Lederrucksack für Herren
+gid://shopify/Product/15448913936769	CHF 85.56	1 Varianten	Wasserabweisende Canvas Tragetasche
+gid://shopify/Product/15448913969537	CHF 20.22	1 Varianten	Wanderrucksack für Outdoor und Freizeit
+gid://shopify/Product/15448914067841	CHF 28.26	1 Varianten	Reise-Rucksack für Geschäftsreisen
+gid://shopify/Product/15448914166145	CHF 37.21	1 Varianten	Leichter, multifunktionaler Rucksack mit grossem V
