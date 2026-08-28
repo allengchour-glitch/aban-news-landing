@@ -20,6 +20,28 @@
 cd /home/user/aban-news-landing || exit 1
 REPO_AUTO=/home/user/aban-news-landing/automation
 
+# --- ffmpeg/ffprobe bereitstellen (28.08.2026) ------------------------------------------
+# ZWOELF Werkzeuge dieses Repos rufen `ffmpeg` NACKT auf (reel/make_reel.sh, product_slideshow,
+# enhance_clips, make_montage, freegen_video, render_image_posts, dropship/ads/*). Im Container
+# gibt es kein /usr/bin/ffmpeg — der Reel-Motor meldete deshalb «FERTIG. neue Reels: 0 |
+# gescannt: 1203» und sah dabei gesund aus. Dieselbe Klasse wie beim Queue-Runner: ein Lauf,
+# der sein Ende erreicht, hat deswegen noch nichts getan.
+# Das vollstaendige ffmpeg 7.0.2 liegt als Beigabe von imageio_ffmpeg im Python-Baum. EIN
+# Symlink repariert alle zwoelf, statt zwoelf Dateien anzufassen. Der Snapshot-Rewind loescht
+# /usr/local/bin — deshalb steht das HIER und nicht in einem einmaligen Befehl.
+FFMPEG_BEIGABE=$(ls -1 /usr/local/lib/python3*/dist-packages/imageio_ffmpeg/binaries/ffmpeg-linux-* 2>/dev/null | head -1)
+if [ -n "$FFMPEG_BEIGABE" ] && [ ! -x /usr/local/bin/ffmpeg ]; then
+  ln -sf "$FFMPEG_BEIGABE" /usr/local/bin/ffmpeg
+  echo "$(date -u +%H:%M) ffmpeg bereitgestellt"
+fi
+# ffprobe bringt die Beigabe NICHT mit; zehn Render-Skripte fragen damit ausschliesslich die
+# Dauer ab. Der Ersatz liest sie aus `ffmpeg -i`. Grenzen stehen im Kopf der Datei.
+if [ ! -x /usr/local/bin/ffprobe ] && [ -f "$REPO_AUTO/ffprobe_ersatz.py" ]; then
+  printf '#!/bin/sh\nexec python3 %s/ffprobe_ersatz.py "$@"\n' "$REPO_AUTO" > /usr/local/bin/ffprobe
+  chmod +x /usr/local/bin/ffprobe
+  echo "$(date -u +%H:%M) ffprobe-Ersatz bereitgestellt"
+fi
+
 # zaehle <muster> — argv-basiert. Die eigene bash -c-Hülle hat argv1="-c" und matcht nie.
 zaehle() { ps -eo args --no-headers | awk -v s="$1" '$1=="bash" && index($0,s)' | wc -l; }
 
