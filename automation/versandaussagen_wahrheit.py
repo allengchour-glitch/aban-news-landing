@@ -199,12 +199,22 @@ def regeln(w):
               f'🇨🇭 Schweiz {s} Werktage'))
     # 7) POD-Zeile: «Versand aus EU-Produktion · Lieferung CH ca. 5–10 Werktage».
     #    EU ist hier der PRODUKTIONSORT und bleibt stehen — das Ziel ist korrekt die Schweiz.
-    #    Die Spanne kommt hier aus dem SATZ (Druck auf Bestellung), nicht aus den Tags: der
-    #    Satz belegt den Bezugsweg besser als ein fehlender Tag (35 solcher Produkte tragen
-    #    keinen POD-Tag, sind aber offensichtlich Druckware).
+    # ⚠️ 28.08.2026 KORRIGIERT: Diese Regel setzte die Spanne FEST auf die POD-Stufe (7–14),
+    #    mit der Begruendung, der Satz belege den Bezugsweg besser als ein fehlender Tag.
+    #    Nachgezaehlt tragen die Zeile 107 aktive Produkte: 82 sind echte Druckware
+    #    (Tag `fertig-*`, Printful) — dort stimmt 7–14. Die uebrigen 25 sind `cj-real`
+    #    (Grillreiniger, Vakuumierer, Ringe, Ohrringe) und damit Direktversand: sie
+    #    verkuendeten dadurch 7–14 UND 10–20 auf DERSELBEN Seite. Die Spanne kommt jetzt
+    #    aus der Tag-Einstufung des Produkts (`s`) wie in allen anderen Regeln auch.
+    #    Ein `fertig-*`-Tag ergibt in weg() ohnehin "pod", die Druckware bleibt also bei 7–14.
     r.append((re.compile(r'(Versand aus EU-Produktion\s*·\s*Lieferung )CH(\s*ca\.\s*)'
                          r'\d{1,2}\s*[–-]\s*\d{1,2}\s*Werktage'),
-              lambda m, _s=SPANNE["pod"]: f'{m.group(1)}Schweiz{m.group(2)}{_s} Werktage'))
+              lambda m, _s=s: f'{m.group(1)}Schweiz{m.group(2)}{_s} Werktage'))
+    # 7b) dieselbe Zeile, bereits auf «Schweiz» umgestellt, aber mit falscher Spanne:
+    #     genau der Zustand, den 7) bis heute erzeugt hat.
+    r.append((re.compile(r'(Versand aus EU-Produktion\s*·\s*Lieferung Schweiz\s*ca\.\s*)'
+                         r'\d{1,2}\s*[–-]\s*\d{1,2}\s*Werktage'),
+              lambda m, _s=s: f'{m.group(1)}{_s} Werktage'))
     # 8) «Versand: aus EU-Lager · 3–7 Tage · gratis ab CHF 50» (9x, BigBuy-Markenware mit EAN:
     #    Swatch, Folli Follie, Thomas Sabo, Bombata — das EU-Lager ist belegt, nur die
     #    Zeitspanne war zu optimistisch). Spanne aus dem Satz (EU-Lager), nicht aus den Tags.
