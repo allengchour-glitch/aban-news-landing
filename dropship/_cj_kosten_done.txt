@@ -4591,3 +4591,21 @@ gid://shopify/Product/15448914919809	CHF 14.03	1 Varianten	Leichter Wanderrucksa
 gid://shopify/Product/15448915018113	CHF 54.13	1 Varianten	Rock Biker Hosenträger im Postapokalypse-Stil
 gid://shopify/Product/15448915083649	CHF 36.63	1 Varianten	Leichter Rucksack für Pendler und Reisen
 gid://shopify/Product/15448915116417	CHF 30.26	1 Varianten	Outdoor 45L Taktischer Rucksack
+gid://shopify/Product/15448915214721	CHF 20.64	1 Varianten	Wasserdichter Wanderrucksack mit grossem Fassungsv
+gid://shopify/Product/15448915280257	CHF 37.00	1 Varianten	Vakuum-Kompressions-Rucksack für Reisen
+gid://shopify/Product/15448915313025	CHF 14.66	1 Varianten	Retro Umhängetasche für Herren
+gid://shopify/Product/15448915378561	CHF 26.71	1 Varianten	Faltbare Picknick-Kühltasche mit grossem Fassungsv
+gid://shopify/Product/15448915411329	CHF 41.38	1 Varianten	Elegante Umhängetasche aus Echtleder für Herren
+gid://shopify/Product/15448915444097	CHF 59.47	1 Varianten	Retro Lederrucksack für Herren und Studenten
+gid://shopify/Product/15448915509633	CHF 34.98	1 Varianten	Multifunktionaler Outdoor Rucksack
+gid://shopify/Product/15448915640705	CHF 32.53	1 Varianten	Wasserdichter Oxford-Stoff Angelrucksack
+gid://shopify/Product/15448915673473	CHF 34.27	1 Varianten	Business Rucksack für Herren
+gid://shopify/Product/15448915739009	CHF 44.07	1 Varianten	Velo-Rucksack mit Hartschale
+gid://shopify/Product/15448915771777	CHF 28.80	1 Varianten	Grosser wasserabweisender Reise-Rucksack
+gid://shopify/Product/15448915804545	CHF 31.42	1 Varianten	Business Rucksack mit USB-Port
+gid://shopify/Product/15448915870081	CHF 92.60	1 Varianten	Lederrucksack «Outdoor»
+gid://shopify/Product/15448915902849	CHF 21.25	1 Varianten	Nylon Camouflage Taktischer Rucksack
+gid://shopify/Product/15448915935617	CHF 77.63	1 Varianten	Leder Aktentasche für Herren
+gid://shopify/Product/15448916001153	CHF 12.33	1 Varianten	Sportliche, minimalistische Crossbody Bag für Herr
+gid://shopify/Product/15448916033921	CHF 27.27	1 Varianten	Taktische Brusttasche für Trail Running
+gid://shopify/Product/15448916132225	CHF 19.89	1 Varianten	Kleine Umhängetasche im Street-Style
