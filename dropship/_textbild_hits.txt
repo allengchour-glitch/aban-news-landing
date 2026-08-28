@@ -12935,3 +12935,6 @@ gid://shopify/Product/15496510407041	96->0	Malen nach Zahlen: Wald-Idylle
 gid://shopify/Product/15496511291777	172->1	Malen nach Zahlen: Anmutige Tänzerin
 gid://shopify/Product/15496511586689	81->0	Diamond Painting «Elefant Multicolor» 40x50cm
 gid://shopify/Product/15496529478017	9->2	S10 SMRC FPV Quadcopter mit 2MP WiFi Kamera
+gid://shopify/Product/15496594719105	130->0	DIY Digital Painting Kit "Kali Beach At Night"
+gid://shopify/Product/15496596947329	128->0	DIY Digital Painting Kit "Italian Cafe"
+gid://shopify/Product/15496597930369	113->0	Cabin Life – Malen nach Zahlen Set
