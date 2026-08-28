@@ -4966,6 +4966,28 @@ setTimeout(function baueGebaeude(){
               {file:"th12_nachtclub.glb",  h:8, w:23.0,d:19.4},
               {file:"th12_spielhalle.glb", h:6, w:29.4,d:23.5},
               {file:"th12_theater.glb",    h:10,w:29.2,d:29.8}]});
+    /* 🎭 EINGANGS-AUSSTATTUNG AUS th14. Von den zwoelf Club-Modellen sind genau ZWEI
+       fuer draussen gemacht: Neonschild und Samtkordel. Die anderen zehn (Pokertisch,
+       Roulette, DJ-Pult, Discokugel, Tanzflaeche, Spielautomat, Automatenreihe,
+       Casinobar, Kartentisch, Kronleuchter) sind INNENRAEUME — und ein begehbares
+       Clubgebaeude gibt es nicht: die `*_offen.glb` der Altstadt sind offene Hallen,
+       die Viertel-Bauten dagegen geschlossene Modelle, bei denen `tuer` nur eine
+       Luecke im KOLLIDER erzeugt. Wer hineingeht, steht im Inneren einer geschlossenen
+       Huelle. Die zehn bleiben deshalb bewusst im Archiv, bis es entweder ein offenes
+       Clubmodell oder einen echten Innenraum gibt — sie hier zu verstecken waere
+       schlechter als sie liegen zu lassen.
+       ⚠️ Positionen aus der WELT gelesen (nicht aus dem Wunsch, #2353): Nachtclub steht
+       auf (155,2|198,8) mit Tuer nach Norden bei z = 209, Casino auf (112,8|237,8) mit
+       Tuer nach Sueden bei z = 224,3. Die Viertelstrasse belegt z 215,5…224,5 — die
+       Moebel bleiben davor bzw. dahinter, sonst stehen sie auf der Fahrbahn. */
+    setTimeout(function clubDeko(){
+      bau("th14_neonschild_gross.glb",4,  149.5,0,208.5,0,      false,null,true);
+      bau("th14_samtkordel.glb",     1.1, 152.0,0,210.5,0,      false,null,true);
+      bau("th14_samtkordel.glb",     1.1, 158.5,0,210.5,0,      false,null,true);
+      bau("th14_neonschild_gross.glb",4,  106.5,0,226.5,Math.PI,false,null,true);
+      bau("th14_samtkordel.glb",     1.1, 109.5,0,226.0,0,      false,null,true);
+      bau("th14_samtkordel.glb",     1.1, 116.0,0,226.0,0,      false,null,true);
+    },1100);
     /* 🦓 ZOO. Die fuenf th24-Modelle waren die zweite Gruppe aus der Inventur, die nie
        aufgestellt wurde. Drei Gehege statt einem: der Reihen-Generator setzt jeden
        Eintrag EINMAL, also steht die Kiste dreimal in der Liste — sonst ist ein Zoo

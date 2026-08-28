@@ -1820,3 +1820,31 @@ oder Bus an der Haltestelle (0,66 m).
 **Stand der Inventur:** von den rund 40 ungenutzten Modellen stehen jetzt **25** (th12 ×5,
 th24 ×5, th29 ×6, th25 ×9). Offen bleibt nur noch **th14 Club-Interieur (12)** — Innenräume,
 die kein Viertel brauchen, sondern begehbare Gebäude.
+
+## 2026-08-28 · 🎭 th14: zwei von zwölf stehen — und warum die anderen zehn liegen bleiben
+
+Von den zwölf Club-Modellen sind genau **zwei** für draußen gemacht: `th14_neonschild_gross`
+und `th14_samtkordel`. Sie stehen jetzt an den Eingängen von **Nachtclub** (155,2|198,8, Tür
+nach Norden bei z = 209) und **Casino** (112,8|237,8, Tür nach Süden bei z = 224,3).
+
+⚠️ Positionen **aus der Welt gelesen**, nicht aus dem Wunsch (#2353), und die Viertelstraße
+belegt z 215,5…224,5 — die Möbel bleiben davor bzw. dahinter, sonst stünden sie auf der
+Fahrbahn. Verifiziert: **0 th14 auf einer Fahrbahn, 0 Überschneidungen**.
+
+### ❌ Die anderen zehn bleiben bewusst im Archiv
+Pokertisch, Roulette, DJ-Pult, Discokugel, Tanzfläche, Spielautomat, Automatenreihe,
+Casinobar, Kartentisch, Kronleuchter sind **Innenräume** — und ein begehbares Clubgebäude
+gibt es nicht:
+
+* Die `*_offen.glb` der Altstadt (Markthalle, Stadthaus, Laden, Werkstatt) sind **offene
+  Hallen**; dort passt kein Casino hinein.
+* Die Viertel-Bauten sind **geschlossene Modelle**. Das `tuer`-Flag erzeugt nur eine 3,2 m
+  breite **Lücke im Kollider** (`addSolid(bx,bz,bw+1,bd+1,tuer)`) — wer hineingeht, steht im
+  Inneren einer geschlossenen Hülle, nicht in einem Raum.
+
+Sie dort zu verstecken wäre schlechter, als sie liegen zu lassen. Was es bräuchte: entweder
+ein offenes Clubmodell (`th12_nachtclub_offen`) oder ein echtes Innenraum-System mit
+Übergang — beides eine eigene Runde mit neuer Mechanik, keine Platzierung.
+
+**Stand der Inventur:** von den rund 40 ungenutzten Modellen stehen jetzt **27**. Die
+restlichen 10 sind kein Nachziehen mehr, sondern eine Design-Entscheidung.
