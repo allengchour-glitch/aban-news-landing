@@ -1247,6 +1247,32 @@ Ringe durchblättert, fand dazwischen einen Abdeckstift und eine Wanderhose.
   alle acht sauber. **Nach einer Tag-Änderung am OBJEKT gegenprüfen, nicht über die Suche** —
   sonst repariert man ein zweites Mal, was längst stimmt.
 
+## 🖼️ 55 Dubletten gedraftet — der Bild-Vergleich hat geliefert (2026-08-28)
+Der Wächter ist über alle **49'001 aktiven Produkte** gelaufen (23'732 Hauptbilder im Ledger),
+fand **113 Verdachtsgruppen**, davon nach der teuren Bestätigung **188 Paare: 133 Dubletten,
+55 Bildfamilien**. Gedraftet sind bisher **55**, Tag `duplikat-auto-draft`, Ledger im Repo.
+Das Muster ist eindeutig und erklärt, warum keine bestehende Wache es sah:
+
+| Preis | Import 04.07. | Import 09./10.07. | Bilder |
+|---:|---|---|---|
+| 15.90 | Contouring- und Concealer-Stick | Kontur- & Abdeckstift Naturton | 7/7 |
+| 15.90 | Schimmernder 3D Lidschatten | Schimmernde 3D-Augenfarbe | 7/7 |
+| 15.90 | Matter Lipliner | Matte Lippenkonturenstift | 7/7 |
+| 15.90 | DIY Nail Art Doodle Pen | Nagelkunst-Stift | 7/7 |
+
+**Dieselben CJ-Artikel, sechs Tage später ein zweites Mal importiert und ANDERS ÜBERSETZT.**
+Titel, SKU und Bild-URL unterscheiden sich alle drei — nur die Bytes der Bilder nicht.
+- **Gegenprobe an acht Stichproben:** jeweils gedraftetes Produkt = DRAFT, Zwilling = ACTIVE.
+  Genau das ist das Risiko beim Draften von Gruppen, und es hält.
+- **Bildfamilien bleiben unberührt** — Bellevue-Damenuhren (Ø 40 mm / Ø 35 mm, 67 %), das
+  18650-Ladegerät-Trio (60 %), Fortura-Tutus in zwei Grössen. Echte Artikel, gemeinsame
+  Katalogfotos. Die Trennlinie bei 80 % Anteil UND drei gemeinsamen Bildern trägt.
+- ⚠️ **Das Draften brauchte ein eigenes Skript** (`bilddubletten_draften.py`): Der FIX-Modus
+  des Wächters paginiert vor dem ersten Draft zehn Minuten lang alle 49'000 Produkte — und der
+  Container fiel dreimal genau in dieser Phase auf den Snapshot zurück. Der Bericht enthält
+  alles Nötige; ihn zu lesen dauert Sekunden. **Ein Lauf, der eine Stunde braucht, ist in
+  dieser Umgebung kein Lauf.**
+
 ## ✅ LX1013: beide Pakete zugestellt — der Stillstand war keiner (2026-08-28)
 Die Nachkontrolle Tag 4 ist erledigt und der Fall geschlossen. CJ `logistic/getTrackInfo`:
 beide Sendungen **`Delivered`, 26.08. um 11:07 in der Schweiz**, letzte Meile DPD (CH).
