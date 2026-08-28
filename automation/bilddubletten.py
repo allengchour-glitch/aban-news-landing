@@ -251,13 +251,30 @@ if FIX and befunde:
     if os.path.exists(GETAN):
         schon = {z.split('\t')[0] for z in open(GETAN, errors='ignore')}
     with open(GETAN, 'a') as led:
+        # ⚠️ PAARWEISE DRAFTEN IST NICHT SICHER (28.08.2026). Ein Produkt kann in MEHREREN
+        # Paaren stecken (A~B und A~C — im Bericht steht 15447564222849 zweimal). Wer jedes
+        # Paar einzeln entscheidet, kann A in einem Paar behalten und im naechsten draften —
+        # im schlimmsten Fall bleibt von einer Dreiergruppe KEINES aktiv. Deshalb werden erst
+        # die zusammenhaengenden Gruppen gebildet und je Gruppe genau das AELTESTE behalten.
+        eltern = {}
+        def wurzel(x):
+            while eltern.get(x, x) != x: x = eltern[x]
+            return x
         for a, b, gem, na, nb, anteil in befunde:
-            if anteil < 0.8 or gem < 3:
-                continue              # Bildfamilie: melden ja, draften nein
-            # Die AELTERE Fassung bleibt: sie traegt Bewertungen, interne Links und
-            # Verkaufshistorie. Gedraftet wird die juengere.
-            paar = sorted([a, b], key=lambda p: aktiv[p]['createdAt'])
-            weg = paar[1]
+            if anteil < 0.8 or gem < 3: continue
+            ra, rb = wurzel(a), wurzel(b)
+            if ra != rb: eltern[rb] = ra
+        gruppen = {}
+        for a, b, gem, na, nb, anteil in befunde:
+            if anteil < 0.8 or gem < 3: continue
+            for x in (a, b): gruppen.setdefault(wurzel(x), set()).add(x)
+        zu_draften = []
+        for mitglieder in gruppen.values():
+            nach_alter = sorted(mitglieder, key=lambda p: aktiv[p]['createdAt'])
+            behalten = nach_alter[0]
+            for x in nach_alter[1:]:
+                zu_draften.append((x, behalten))
+        for weg, behalten in zu_draften:
             if weg in schon:
                 continue
             r = gql('mutation($i:ProductInput!){productUpdate(input:$i){product{status} userErrors{message}}}',
@@ -266,7 +283,7 @@ if FIX and befunde:
                 continue
             gql('mutation($id:ID!,$t:[String!]!){tagsAdd(id:$id,tags:$t){userErrors{message}}}',
                 {'id': 'gid://shopify/Product/' + weg, 't': ['duplikat-auto-draft']})
-            led.write(f'{weg}\tbildgleich mit {paar[0]} ({gem} Bilder)\t{aktiv[weg]["title"][:60]}\n')
+            led.write(f'{weg}\tbildgleich mit {behalten}\t{aktiv[weg]["title"][:60]}\n')
             led.flush(); gedraftet += 1
     print(f'{gedraftet} juengere Dubletten gedraftet (Tag duplikat-auto-draft)')
 
