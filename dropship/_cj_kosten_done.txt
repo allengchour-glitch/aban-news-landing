@@ -4619,3 +4619,4 @@ gid://shopify/Product/15448916492673	CHF 23.20	1 Varianten	Minimalistische Cross
 gid://shopify/Product/15448916525441	CHF 31.70	1 Varianten	Brust- und Hüfttasche aus Leder
 gid://shopify/Product/15448916558209	CHF 23.43	1 Varianten	Herren Umhängetasche aus echtem Leder
 gid://shopify/Product/15448916623745	CHF 25.13	1 Varianten	Herren-Gürteltasche aus echtem Vollnarbenleder
+gid://shopify/Product/15448916689281	CHF 16.50	1 Varianten	Leichte Crossbody Bag für Herren
