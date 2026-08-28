@@ -130,6 +130,41 @@ live belegt an 15411554910593). `automation/versandaussagen_wahrheit.py`, Ledger
   Rechtstexte gehen nur per GraphQL `shopPolicyUpdate` — und dessen Input nimmt `type`
   (`SHIPPING_POLICY`), **nicht** `id`. Ohne Live-Gegenprobe hätte der Lauf als erledigt gegolten.
 
+## 🕳️ 17 rankende Seiten waren 404 — 12'320 Suchen im Monat ins Nichts (2026-08-28)
+Die Semrush-Rangliste (100 Begriffe) gegen den LIVE-Status geprüft: **17 von 60 rankenden
+Produkt-URLs sind DRAFT** — für Besucherinnen ein 404. Google zeigt sie trotzdem, jemand
+klickt, und landet auf nichts. Zusammen **12'320 Suchen im Monat**, angeführt vom
+Mini-GPS-Tracker mit **3'600**.
+**Alle 17 sind ZU RECHT gedraftet** — das war die erste Prüfung, nicht die letzte: viermal
+`keine-lieferanten-ref`, viermal `nicht-lieferbar-ch`, dreimal `ausverkauft-lieferant`, dazu
+`bb-versand-unrentabel`, `lager-unbekannt-draft`, `duplikat-auto-draft` — und beim GPS-Tracker
+`verdeckte-ueberwachung` + `abhoergeraet-pruefen`. **Kein einziges wurde veröffentlicht.** Die
+Regel vom 20.08. gilt unverändert: ein 404 ist ärgerlich, eine unlieferbare Bestellung teuer.
+**Gelöst mit 16 Weiterleitungen** auf kaufbare Ware:
+- **Markenanfragen gehen auf die KATEGORIE, nicht auf eine fremde Marke.** «cerave moisturizing
+  cream» auf eine Aloe-Vera-Creme umzubiegen wäre ein Köderwechsel — CeraVe, Casio, Chanel,
+  L'Oréal, Armani, Paul Hewitt zeigen deshalb auf `/collections/hautpflege`, `herren-uhren`,
+  `parfum-duefte`, `uhren`.
+- **Sachanfragen gehen auf das gleiche Produkt**, sofern es aktiv und kaufbar ist
+  (Trinkbrunnen, Selfie-Stick, Trinkrucksack, Holz-Armbanduhr, Kofferraum-Organizer,
+  LED-Gesichtsmaske, ANC-Kopfhörer, GPS-Tracker).
+- ⚠️ **Beim GPS-Tracker war das Ziel die eigentliche Arbeit.** Das Original ist wegen verdeckter
+  Überwachung gedraftet; das Ziel musste ein OFFEN verkaufter Anti-Verlust-Tracker sein, keiner
+  mit denselben Tags. Die Ziel-Prüfung schliesst Risiko-Tags deshalb ausdrücklich aus.
+- ⚠️ **Fünf Ziele wurden von den eigenen Prüfungen abgelehnt** — und das war richtig: zwei
+  Handles hatte ich aus der gekürzten Ausgabe GERATEN und sie existierten nicht, zwei
+  Kollektionen (`beleuchtung-lampen`, `yoga`) sind selbst Weiterleitungen (Lehre 21.08.:
+  Shopify lehnt eine Weiterleitung auf eine Weiterleitung ab), eine gab es nicht. Nach dem
+  Auflösen der Endziele nachgeholt.
+- **Eine bleibt bewusst offen:** «LA Dodgers Cap» — es gibt weder eine Cap-Kollektion noch ein
+  aktives Cap-Produkt. Auf etwas Unverwandtes umzubiegen wäre schlechter als der 404.
+⚠️ **Korrektur an meiner eigenen Zahl von heute Nachmittag:** Ich hatte den POD-Cluster mit
+«~1'470 Suchen/Monat» beziffert — das war die nach TRAFFIC sortierte Top-40-Liste. Nach VOLUMEN
+sortiert sind es «t shirt bedrucken» 4'400, «t shirt personnalisé» 2'900, «t-shirt bedrucken»
+2'900, «tasse bedrucken» 1'600 und ein Dutzend weitere: zusammen rund **19'200 Suchen im
+Monat**. Eine Sortierung ist eine Auswahl — wer nach Traffic sortiert, sieht nicht die
+Nachfrage, sondern nur das, was schon ankommt.
+
 ## 🔎 Der Bewertungs-Import stand an einer ungefangenen Drosselung (2026-08-28)
 Auf «judge me go» hin breit gestartet — und der Lauf meldete **«0 Produkte zu prüfen. Nichts zu
 tun.»**, bei 10'507 Ledger-Einträgen und ~45'000 aktiven CJ-Produkten. Die Auswahlschleife ist
