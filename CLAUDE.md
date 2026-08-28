@@ -130,6 +130,46 @@ live belegt an 15411554910593). `automation/versandaussagen_wahrheit.py`, Ledger
   Rechtstexte gehen nur per GraphQL `shopPolicyUpdate` — und dessen Input nimmt `type`
   (`SHIPPING_POLICY`), **nicht** `id`. Ohne Live-Gegenprobe hätte der Lauf als erledigt gegolten.
 
+## 🔍 Wofür der Shop WIRKLICH rankt — erste echte Suchdaten (2026-08-28)
+Bis heute war nur bekannt, wer ankommt, nie wonach gesucht wurde. Semrush (Datenbank CH) zeigt
+einen einzigen Cluster mit Nachfrage UND Platzierung — und es sind ausgerechnet die
+POD-Produkte, nicht die 49'000 CJ-Artikel:
+| Suchbegriff | Position | Volumen/Monat |
+|---|---:|---:|
+| **t shirt selbst gestalten** | **15** | **590** |
+| t shirt personalisieren | 75 | 320 |
+| t shirt gestalten | 73 | 260 |
+| foto auf kissen | 56 | 140 |
+| beutel bedrucken | 70 | 90 |
+Zusammen ~1'470 Suchen/Monat, beim grössten Begriff **Seite 2**. Der übrige Katalog rankt auf
+Position 30–90, also ab Seite 4: «handstaubsauger» (5'400 Suchen) auf 74, «led maske» (720) auf
+77. Das ist erwartbar — dieselbe CJ-Ware führen tausend andere Shops; ein Gestaltungswerkzeug
+ist eigenes Angebot. Dazu passt die Kostenseite: POD druckt Printful in Europa, und bei #1015
+waren **87 % der Kosten Fracht** — genau der Posten, den POD nicht hat.
+Vollständig: `dropship/SUCHDATEN-2026-08-28.md`.
+⚠️ Die Marken-Treffer auf Seite 2–3 (CeraVe 1'000 Suchen auf 22, Casio, Chanel, Nike) sind
+**BigBuy-Altware**, stillgelegt seit 10.07. Vor jeder Arbeit daran den Lieferstatus klären —
+sonst optimiert man Nachfrage auf unlieferbare Ware.
+⚠️ Und die Einordnung ehrlich: Das Rizinusöl-Set, die zweitgrösste Landeseite mit 43 Sitzungen,
+taucht in den Suchdaten **gar nicht** auf. Sein Verkehr kommt also nicht aus der Google-Suche;
+woher, ist offen. Eine Landeseiten-Zahl erklärt nicht die Quelle.
+
+## 🧵 Der T-Shirt-Editor lud seine Vorschau von einer Fremddomain (2026-08-28)
+Die Editor-Vorschauen für Schwarz und Navy zeigten auf **abannews.com** — eine Domain, die
+niemand mehr pflegt, während dieses Projekt mit `luxestyle.com.co` schon eine verloren hat
+(Klaviyo-Fund 21.08.). Sie antworteten zwar mit 200, aber die bestrankende Seite des Shops
+hing damit an einem fremden Ausfallpunkt. Über den vorgeschriebenen Weg
+(`upload_to_shopify_cdn.mjs`, URL aus der Antwort, nie geraten) auf das Shopify-CDN geholt.
+- **Nebenwirkung, die den Aufwand allein schon lohnt:** Shopify hat die Bilder von je **1,2 MB
+  auf 35 KB** gerechnet — 34-fach kleiner, auf genau der Seite mit der besten Platzierung.
+- Pflicht-QA nach jeder POD-Änderung gelaufen: **30 Editor-Produkte, 0 Befunde.** Live
+  gegengeprüft (WebFetch): kein abannews-Verweis mehr, Editor und Warenkorb-Knopf intakt.
+- ⚠️ Die Dateien heissen `.jpg`, sind aber PNG. Shopify liefert sie trotzdem als `image/jpeg`
+  aus — kein Fehler, aber wer nach Dateiendungen filtert, sucht daneben.
+- ⚠️ `pod_editor_qa.mjs` nimmt **kein** `SHOPIFY_ADMIN_TOKEN`, es holt sich selbst eines über
+  `SHOPIFY_CLIENT_ID/SECRET`. Ohne die Variablen scheitert es mit einem JSON-Parse-Fehler auf
+  einer HTML-Seite — was wie ein kaputtes Werkzeug aussieht und keins ist.
+
 ## 📏 Google verlangt `size` — geschrieben hat es nie jemand (2026-08-28)
 Der Google-Kanal ist der einzige mit belegten Verkäufen, und für Bekleidung und Schuhe verlangt
 Google das Attribut **`size`**. Von den geprüften Kleidern trug **keines** eines, obwohl alle
