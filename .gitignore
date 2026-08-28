@@ -53,3 +53,8 @@ dist/
 game/assets/*.glb
 bigbuy_key.txt
 printful_key.txt
+
+# TikTok-Karussell-Videos: NICHT versionieren. Sie sind in Sekunden aus den Slides im selben
+# Ordner neu gebaut (automation/tiktok_video.py), wiegen aber 2-3 MB je Stueck — bei taeglichem
+# Lauf waeren das rund 1,7 GB im Jahr in einem oeffentlichen Repo. Die Slides sind die Quelle.
+social/tiktok/**/*.mp4
