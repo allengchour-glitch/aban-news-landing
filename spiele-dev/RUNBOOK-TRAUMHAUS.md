@@ -1955,3 +1955,40 @@ Die Sperrliste der Berge (`[[60,330,…],[0,216,…],[172,0,…]]`) nennt ebenfa
 wirkt aber, **bevor** die Viertel entstehen, und seit `imBerg()` das Gelände rastert weichen
 die Viertel den Bergen aus statt umgekehrt. Nicht angefasst — die Reihenfolge macht die
 Veraltung harmlos.
+
+## 2026-08-28 · 🐌 „Ruckelt am Handy" — das Einfrieren erreichte nur die oberste Ebene
+
+**Befund (User-Meldung, dann gemessen):** `_einfrieren()` lief nur über `scene.children`.
+Gemessen im Querformat: **3 568 Objekte eingefroren — aber 54 765 Nachfahren blieben offen**
+und komponierten ihre Matrix in **jedem Bild** neu. Das Runbook nannte hier einmal 239; der
+Wert war längst überholt, ohne dass es jemand bemerkt hatte.
+
+| | vorher | nachher |
+|---|---|---|
+| nicht eingefrorene Meshes | **53 370** | **5 629** (−90 %) |
+
+Die verbliebenen 5 629 sind die beweglichen Teilbäume (Bewohner samt Armen, Autos, Fussgänger,
+Gondeln) — sie **müssen** offen bleiben. Das tiefe Einfrieren **betritt `_bewegt`-Teilbäume gar
+nicht erst**, deshalb ist es sicher.
+
+**⚠️ Zweiter Fehler, dabei gefunden:** `_bewegt = true` NACH dem Einfrieren zu setzen wirkt
+**nicht** — die Marke wird nur beim Einfrieren gelesen. Das **Karussell drehte sich in den
+Daten** (`rotation +0,367` in 4 s) **und stand sichtbar still**, weil `matrixAutoUpdate` false
+blieb. Dafür gibt es jetzt `window._auftauen(obj)`, das beides setzt. Karussell und Teetassen
+drehen seitdem sichtbar.
+
+**⚠️ Falle beim Nachmessen (drei Fehlalarme):**
+- `sims[0]` ist der **Spieler** — ohne Eingabe steht er zu Recht.
+- `ENTEN.teile[0]` ist der Instanz-**Container**; die Enten stecken in seinen Instanzmatrizen.
+- Ein Kind **auf der Drehachse** behält seine Weltposition — dafür die Rotation der Weltmatrix
+  ansehen, nicht die Position.
+Und: **Mia steht auch im unveränderten Code still** — gegen `origin/main` gegengemessen, bevor
+etwas „repariert" wurde.
+
+**Werkzeug:** `spiele-dev/tools/th-leistung.mjs` — geräteunabhängige Kennzahlen (Zeichenaufrufe,
+Dreiecke, Materialien, nicht eingefrorene Objekte, Reichweite des Einfrierens) plus Bewegungs-
+Gegenprobe. **Die Bildrate dieses Containers ist wertlos** (Software-Rendering) — nur diese
+Zahlen zählen.
+
+**Noch offen (gemessen, nicht behoben):** 9 308 Materialien, 6 126 Schattenwerfer, 17 Lichter.
+Das sind die nächsten Hebel, wenn es weiter ruckelt.

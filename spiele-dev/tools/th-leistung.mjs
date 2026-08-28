@@ -1,0 +1,133 @@
+/* th-leistung.mjs — misst, was das Spiel den Grafikchip kostet.
+ *
+ * ⚠️ Die BILDRATE hier ist wertlos: dieser Container rendert in Software.
+ * Aussagekräftig sind die geräteunabhängigen Zahlen — Zeichenaufrufe, Dreiecke,
+ * Texturen, Programme, bewegte Objekte. Genau die entscheiden auf dem Handy.
+ */
+import { mitSonden, spielOeffnen, aufraeumen } from './th-lib.mjs'
+
+const TMP = 'spiele-dev/tools/_leistung_probe.html'
+mitSonden('traumhaus.html', {
+  leistung: `function(was){
+    if(was==="info"){var r=renderer.info;
+      var lichter=0,meshes=0,inst=0,instTeile=0,transparent=0,schatten=0,bewegt=0,mats={};
+      scene.traverse(function(o){
+        if(o.isLight)lichter++;
+        if(o.isInstancedMesh){inst++;instTeile+=o.count;}
+        else if(o.isMesh)meshes++;
+        if(o.isMesh){
+          if(o.castShadow)schatten++;
+          if(o.matrixAutoUpdate)bewegt++;
+          var m=o.material;(Array.isArray(m)?m:[m]).forEach(function(mm){
+            if(!mm)return; if(mm.transparent)transparent++;
+            mats[mm.uuid]=1;});}
+      });
+      return {zeichenaufrufe:r.render.calls, dreiecke:r.render.triangles,
+        geometrien:r.memory.geometries, texturen:r.memory.textures,
+        programme:renderer.info.programs?renderer.info.programs.length:0,
+        lichter:lichter, meshes:meshes, instanzMeshes:inst, instanzTeile:instTeile,
+        transparenteMeshes:transparent, schattenwerfer:schatten,
+        nichtEingefroren:bewegt, materialien:Object.keys(mats).length,
+        schattenkarte:renderer.shadowMap.enabled?sun.shadow.mapSize.width:0,
+        pixelVerhaeltnis:renderer.getPixelRatio(),
+        mobil:(typeof _mobil!=="undefined")?_mobil:null};}
+    if(was==="weltpos"){ /* Weltposition der beweglichen Dinge — bewegt sie sich WIRKLICH? */
+      var V=new THREE.Vector3(),aus={};
+      function w(name,o){if(!o)return;o.getWorldPosition(V);aus[name]=[+V.x.toFixed(3),+V.y.toFixed(3),+V.z.toFixed(3)];}
+      w("auto0",(verkehr[0]||{}).mesh); w("auto1",(verkehr[1]||{}).mesh);
+      /* ⚠️ Drei Sonden waren falsch, nicht der Code:
+         - sims[0] ist der SPIELER: ohne Eingabe steht er zu Recht. Mia (sims[1])
+           laeuft von selbst.
+         - ENTEN.teile[0] ist der Instanz-CONTAINER, der sich nie bewegt; die Enten
+           stecken in seinen Instanzmatrizen.
+         - Ein Kind auf der Drehachse behaelt seine Weltposition, auch wenn es dreht —
+           dafuer muss man die Rotation der Weltmatrix ansehen. */
+      w("mia",(sims[1]||{}).mesh);
+      var M0=new THREE.Matrix4();ENTEN.teile[0].getMatrixAt(0,M0);
+      aus.ente=[+M0.elements[12].toFixed(3),+M0.elements[14].toFixed(3)];
+      var F=(typeof FAHRTEN!=="undefined")?FAHRTEN:[];
+      var rr=F.filter(function(f){return f.typ==="riesenrad";})[0];
+      if(rr&&rr.rotor){aus.riesenradRotor=[+rr.rotor.rotation.z.toFixed(4)];
+        if(rr.rotor.children[0]){rr.rotor.children[0].getWorldPosition(V);
+          aus.riesenradGondel=[+V.x.toFixed(3),+V.y.toFixed(3),+V.z.toFixed(3)];}}
+      var ka=F.filter(function(f){return f.typ==="karussell";})[0];
+      if(ka&&ka.w&&ka.w.children[0]){var e=ka.w.children[0].matrixWorld.elements;
+        aus.karussellDrehung=[+e[0].toFixed(4),+e[2].toFixed(4)];}
+      if(window._zug&&window._zug.mesh)w("zug",window._zug.mesh);
+      return aus;}
+    if(was==="beweger"){ /* Zustand aller Systeme, die sich bewegen sollen */
+      function zu(o){return o?{auto:o.matrixAutoUpdate,bewegt:!!o._bewegt,top:o.parent===scene}:null;}
+      return {
+        verkehr: (verkehr||[]).slice(0,3).map(function(v){return zu(v.mesh);}),
+        bus: zu(typeof busRec!=="undefined"&&busRec?busRec.mesh:null),
+        sims: (sims||[]).map(function(s2){return zu(s2.mesh);}),
+        fussg: (typeof fussg!=="undefined"?fussg:[]).slice(0,2).map(function(f){return zu(f.mesh);}),
+        zug: zu((window._zug||{}).mesh), heli: zu((window._heli||{}).mesh),
+        coasterZug: zu((window._coaster||{}).zug),
+        entenTeile: (ENTEN.teile||[]).map(zu)
+      };}
+    if(was==="fahrt"){ /* Drehen die Fahrgeschaefte auch SICHTBAR? */
+      if(typeof FAHRTEN==="undefined")return "keine FAHRTEN";
+      return FAHRTEN.filter(function(f){return f.w;}).map(function(f){
+        var m=f.w.matrixWorld.elements;
+        return {typ:f.typ, rot:+f.w.rotation.y.toFixed(3),
+                autoUpdate:f.w.matrixAutoUpdate, bewegt:!!f.w._bewegt,
+                m0:+m[0].toFixed(4), m2:+m[2].toFixed(4)};});}
+    if(was==="frost"){ /* Wie tief greift das Einfrieren wirklich? */
+      var oben=0,obenFrei=0,tief=0,tiefFrei=0;
+      scene.children.forEach(function(o){
+        oben++; if(o.matrixAutoUpdate)obenFrei++;
+        o.traverse(function(c){if(c===o)return;tief++;if(c.matrixAutoUpdate)tiefFrei++;});});
+      return {topLevel:oben, topLevelOffen:obenFrei, nachfahren:tief, nachfahrenOffen:tiefFrei,
+              gemeldet:window._eingefroren||0};}
+    if(was==="teuerste"){ /* Welche Objekte kosten die meisten Dreiecke? */
+      var L=[];
+      scene.traverse(function(o){
+        if(!o.isMesh||!o.geometry||!o.geometry.attributes.position)return;
+        var n=o.geometry.index?o.geometry.index.count/3:o.geometry.attributes.position.count/3;
+        if(o.isInstancedMesh)n*=o.count;
+        if(n>3000)L.push({n:Math.round(n), name:(o.name||(o.userData&&o.userData.datei)||o.geometry.type),
+          inst:o.isInstancedMesh?o.count:0, sichtbar:o.visible});});
+      L.sort(function(a,b){return b.n-a.n;});return L.slice(0,14);}
+    return null;}`,
+}, TMP)
+
+const { browser, page, jsFehler } = await spielOeffnen(TMP, { warten: 55000, viewport: { width: 844, height: 390 } })
+const info = await page.evaluate(() => window.__th.leistung('info'))
+console.log('=== Geräteunabhängige Kennzahlen (Querformat 844×390) ===')
+for (const [k, v] of Object.entries(info)) console.log(`  ${k.padEnd(20)} ${v}`)
+console.log('=== Bewegt sich nach dem tiefen Einfrieren noch alles? ===')
+const w1 = await page.evaluate(() => window.__th.leistung('weltpos'))
+await new Promise(r => setTimeout(r, 5000))
+const w2 = await page.evaluate(() => window.__th.leistung('weltpos'))
+let stillstand = 0
+for (const k of Object.keys(w1)) {
+  const d = w1[k].reduce((a, v, i) => a + Math.abs(v - w2[k][i]), 0)
+  const bewegt = d > 0.002
+  if (!bewegt) stillstand++
+  console.log(`  ${bewegt ? '✅' : '❌ STEHT'} ${k.padEnd(18)} Δ ${d.toFixed(3)}`)
+}
+console.log(stillstand ? `  💥 ${stillstand} stehen still` : '  🎉 alles bewegt sich')
+console.log('\n=== Zustand der beweglichen Systeme ===')
+const bw = await page.evaluate(() => window.__th.leistung('beweger'))
+console.log(JSON.stringify(bw, null, 1).slice(0, 1600))
+console.log('\n=== Fahrgeschaefte: dreht die Weltmatrix mit? ===')
+const f1 = await page.evaluate(() => window.__th.leistung('fahrt'))
+await new Promise(r => setTimeout(r, 4000))
+const f2 = await page.evaluate(() => window.__th.leistung('fahrt'))
+if (Array.isArray(f1)) f1.forEach((a, i) => {
+  const b = f2[i]
+  const rotDelta = (b.rot - a.rot).toFixed(3)
+  const matDelta = Math.abs(b.m0 - a.m0) + Math.abs(b.m2 - a.m2)
+  console.log(`  ${a.typ.padEnd(16)} rotation ${rotDelta > 0 ? '+' + rotDelta : rotDelta} · Weltmatrix ${matDelta > 0.0001 ? 'dreht mit ✅' : 'STEHT ❌'} · autoUpdate=${b.autoUpdate} _bewegt=${b.bewegt}`)
+})
+else console.log('  ', f1)
+console.log('\n=== Reichweite des Einfrierens ===')
+const f = await page.evaluate(() => window.__th.leistung('frost'))
+for (const [k, v] of Object.entries(f)) console.log(`  ${k.padEnd(18)} ${v}`)
+console.log('\n=== Teuerste Objekte (Dreiecke) ===')
+for (const o of await page.evaluate(() => window.__th.leistung('teuerste')))
+  console.log(`  ${String(o.n).padStart(8)}  ${o.name}${o.inst ? ' ×' + o.inst : ''}${o.sichtbar ? '' : ' (unsichtbar)'}`)
+console.log('\nJS-Fehler:', jsFehler.length)
+await browser.close()
+aufraeumen(TMP)
