@@ -2103,3 +2103,38 @@ Der Kommentar oben enthielt `` `getWorldPosition()` `` — das beendet das Templ
 der Lauf stirbt mit „Unexpected identifier". Die Regel steht seit #2348 im Runbook; ich habe
 sie selbst wieder gebrochen. Sie gilt auch für Kommentare **über** dem Sondenblock, sobald sie
 innerhalb der Backticks stehen.
+
+## 2026-08-28 · 🌲 Der Waldsaum kannte sechs Ausnahmen — und die halben Straßen nicht
+
+Direkte Folge aus #2365: seit die Werkzeuge Instanzen sehen, war der Waldsaum als größter
+Instanz-Streuer zu prüfen. Sein Filter hatte **sechs handgeschriebene Ausnahmen**
+(Zubringer, Achterbahn-Stich, Felder, Fels, Viertel, gedachte Zufahrtsschneise) — aber
+`freiPlatz()` rief er **nie** auf, und Stadtring, Haupt- und Querstraßen, Fluss und
+Landstraße kamen nicht vor.
+
+**Behoben** über die gemeinsamen Quellen statt einer siebten Sonderregel:
+`window._freiPlatz(wx,wz,3)`, `window._aufViertelWeg(wx,wz,2)` und
+`_viertelSolver.fahrbahn(...)` — letzteres, weil **`freiPlatz` selbst** Landstraße und
+Zubringer nicht kennt (dieselbe Lücke eine Ebene tiefer, hier nicht behoben, aber notiert).
+
+| `th-strassen`, Gesamt | Lauf 1 | Lauf 2 | Mittel |
+|---|---|---|---|
+| ohne Waldfix | 233 | 245 | 239 |
+| **mit Waldfix** | **205** | **212** | **208,5** |
+
+Die Bereiche überschneiden sich **nicht** — rund **13 % weniger** belegte Positionen.
+
+### 🔴 Mein eigenes Prüfskript war falsch — und hätte fast den Befund verdreht
+Zwischendurch meldete eine Ad-hoc-Sonde „19 Baumkronen auf dem Stadtring", alle bei x ≈ ±112
+und z zwischen −250 und +222. Der Stadtring existiert aber nur für **z −108…126**; meine
+Sonde prüfte `|(|x|−112)| < 4,5` **ohne Längsbegrenzung**. `th-strassen.mjs` und `freiPlatz`
+haben diese Grenzen (`von`/`bis` in der Bandtabelle) — die 19 waren erfunden, und meine
+„Vorher"-Zahl von 46 damit ebenfalls.
+
+> Eine schnell hingeschriebene Sonde ist kein Ersatz für das Werkzeug. Das Werkzeug trägt die
+> Sonderfälle, die man beim Nachbauen vergisst — hier die Längsbegrenzung jedes Bandes.
+
+Der Befund hat nur überlebt, weil ich am Ende mit `th-strassen.mjs` selbst gemessen habe statt
+mit meiner Nachbildung.
+
+**Verifiziert:** 7 Viertel auf Stufe 2 · `th-netz` 38 ok · `th-3d` 59.

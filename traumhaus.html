@@ -5656,6 +5656,27 @@ setTimeout(function baueGebaeude(){
             var dx2=wx-v2.x*t, dz2=wz-v2.z*t;
             if(Math.hypot(dx2,dz2)<9)frei=false;}}
         if(!frei)continue;
+        /* ⚠️ SECHS HANDGESCHRIEBENE AUSNAHMEN — UND DIE HAELFTE DER STRASSEN FEHLTE.
+           Oben stehen Zubringer, Achterbahn-Stich, Felder, Fels, Viertel und eine
+           gedachte Zufahrtsschneise. Stadtring, Haupt- und Querstrassen, Fluss und
+           Landstrasse kamen nie vor — und weil der Wald ein InstancedMesh ist, hat es
+           auch kein Werkzeug gemeldet (bis #2365: getWorldPosition liefert fuer
+           Instanzen den Ursprung des Traegers).
+           GEMESSEN nach dem Sehendmachen: 132 Stellen mit instanziertem Objekt auf
+           einer Fahrbahn, davon 39 auf dem Stadtring und 30 auf Zubringern.
+           `freiPlatz()` kennt all das an EINER Stelle — dieselbe Quelle, aus der auch
+           das Einzel-Streuwerk kommt. Eine siebte Sonderregel waere der falsche Weg. */
+        if(window._freiPlatz&&!window._freiPlatz(wx,wz,3))continue;
+        if(window._aufViertelWeg&&window._aufViertelWeg(wx,wz,2))continue;
+        /* ⚠️ UND `freiPlatz` HAT DIESELBE LUECKE EINE EBENE TIEFER: sie kennt Haupt-,
+           Quer- und Ringstrasse, Fluss und Kirchhof — aber weder die LANDSTRASSE
+           (r = 200) noch die sechs ZUBRINGER. Gemessen: nach dem freiPlatz-Filter
+           standen immer noch 40 von 772 Waldinstanzen auf einer Fahrbahn, fast alle
+           auf Landstrasse und Zubringern. Genau die kennt der Viertel-Solver
+           (`aufFahrbahn`), also wird er hier mitgefragt.
+           Der Wald waechst dadurch etwas weiter aussen an — das ist der Sinn. */
+        var _S9=window._viertelSolver;
+        if(_S9&&_S9.fahrbahn&&_S9.fahrbahn(wx-2,wx+2,wz-2,wz+2))continue;
         kand.push([wx,wz,i]);
         if(kand.length>=900)break;
       }
