@@ -233,8 +233,11 @@ AUFB_TITEL = [
      r'reinigungsb[üu]rste|\bputz\w*|fleckenentferner', "Home & Garden > Household Supplies > Household Cleaning Supplies"),
     (r'\brasierer\b|epilierer|haartrimmer|haarschneider|massageger[äa]t|gua\s?sha|nagelknipser|'
      r'zahnb[üu]rste\b|fussmassage|zahncreme|mundsp[üu]lung', "Health & Beauty > Personal Care"),
-    (r'\bwlan\b|\bwifi\b|steckdose\w*|\bventilator\w*|\bkamera\b|powerbank|ladeger[äa]t|ladestation|'
-     r'bluetooth|kopfh[öo]rer|\busb\b|projektor|\blautsprecher\b|entfeuchter', "Electronics"),
+    # ⚠️ «Android TV Box» traf die Aufbewahrungsregel `\w*box\b` — «Box» heisst hier Gerät.
+    # «Storage» ist bei Google AUFBEWAHRUNG, nicht Datenspeicher.
+    (r'\bwlan\b|wi-?fi|steckdose\w*|\bventilator\w*|\bkamera\b|powerbank|ladeger[äa]t|ladestation|'
+     r'bluetooth|kopfh[öo]rer|\busb\b|projektor|\blautsprecher\b|entfeuchter|\bhdmi\b|tv-?box|'
+     r'\btastatur\w*|keycaps?|\bssd\b|\bnvme\b|\bm\.2\b|router\b', "Electronics"),
     (r'werkzeugtasche|werkzeugbox|werkzeugbeutel|werkzeugkoffer', "Hardware > Hardware Accessories > Tool Storage & Organization"),
     (r'\bbohrer\b|schraubendreher|\bzange\b|\bhammer\b|werkzeug\w*|\bs[äa]ge\b|cuttermesser|akkuschrauber', "Hardware > Tools"),
     (r'tischdecke|bettw[äa]sche|kissenbezug|\bvorhang\w*|picknickdecke|tischl[äa]ufer|duvet', "Home & Garden > Linens & Bedding"),
@@ -256,6 +259,77 @@ AUFB_STORAGE = re.compile(
 # wäre der genaue FALSCHE (Kühltasche, Instrumententasche, Reisetasche).
 AUFB_BAG = re.compile(r'\w*tasche\w*|\w*beutel\b|\w*koffer\b|hardcase|trolley', re.I)
 
+# ─────────────────────────────────────────────────────────────────────────────
+# (4) DAS NOMEN BESTIMMT DIE PRODUKTART, NICHT DIE WARENGRUPPE (28.08.2026)
+# Wortgleich mit `automation/google_kategorie.mjs` — die Regeln stehen bewusst in BEIDEN
+# Dateien identisch, weil ein Backfill mit alten Regeln genau das rückgängig machen würde,
+# was der Importer richtig anlegt (dieselbe Geschwister-Falle wie bei Farbtabelle,
+# Preisformel und publishVerified()). Beide Fassungen wurden gegen dieselben 4'972 Produkte
+# getestet und liefern Zeile für Zeile dasselbe Ergebnis.
+#
+# Vier Warengruppen vergaben ihre Kategorie BLANKO: «Spass-Elektronik» → Electronics
+# (378 Holzpuzzle und Klemmbausteine), «Basteln & DIY» → Arts & Crafts (fertige Teppiche,
+# Sofabezüge, Vorhänge, Bettwäsche), «Spielzeug & Spiele» → Toys (Kissenbezüge, nur weil
+# «Plüsch» im Titel steht), «Gaming-Zubehör» → Konsolenzubehör (ein Karton-Brettspiel).
+#
+# ⚠️ DIE GEGENRICHTUNG IST GENAUSO TEUER — diese Titel sind RICHTIG eingeordnet und dürfen
+# nicht angefasst werden: «Twill-Baumwollstoff für Bettwäsche & Vorhänge» (Meterware),
+# «Dehnbare Yoga-Hose aus Ice Silk» (trotz Titel Meterware: Varianten «100 X 165CM -75D»),
+# «DIY Malen nach Zahlen – Mein Kleid» (Bildmotiv), «DMC Kreuzstich-Set Pullover-Tier Hase»
+# (Stickset), «Hohle Druckknöpfe-Set für Jeans» (Nähzubehör). Dafür sperrt ROHSTOFF.
+# ⚠️ `\bstoff\b` genügt nicht — «Baumwollstoff», «Leinenstoff» sind Zusammensetzungen.
+# ⚠️ Der Regressionstest fing drei eigene Fehlgriffe ab: `^plüsch \w+` machte aus 194
+# «Plüsch Kostüm»/«Plüsch Maske»/«Plüsch Angler Hut» Kuscheltiere; `\w*teppich\w*` zog den
+# WANDteppich zu den Bodenteppichen; eine allgemeine Kleidungs-Rückfallregel machte aus
+# «Sneaker Schaumreiniger» einen Schuh.
+# ─────────────────────────────────────────────────────────────────────────────
+ROHSTOFF = re.compile(r'\w*stoff\w*|meterware|\bfabric\b|malen nach zahlen|\bgarn\b|n[äa]hen|'
+                      r'zum\s+(besticken|bemalen|selbstgestalten)|besticken|druckkn[öo]pfe|'
+                      r'reissverschluss|imitat f[üu]r|\bdiy\b|kreuzstich\w*|stickset|strickset|'
+                      r'h[äa]kelset|bastelset|makramee', re.I)
+ROHSTOFF_AUSNAHME = re.compile(r'schaumstoff|kunststoff|werkstoff|farbstoff|polsterstoff|klebstoff|treibstoff', re.I)
+
+def ist_rohstoff(titel):
+    if not ROHSTOFF.search(titel):
+        return False
+    return bool(ROHSTOFF.search(ROHSTOFF_AUSNAHME.sub("", titel)))
+
+BAUSPIEL = re.compile(r'klemmbaustein\w*|bauklotz|baukl[öo]tz\w*|magnet-?bausteine|\bbaustein\w*|'
+                      r'\bbaukasten\b|modellbausatz|\bbausatz\b|\bbausets?\b', re.I)
+PUZZLE = re.compile(r'\bpuzzle\w*|3d-?holzpuzzle|holzpuzzle', re.I)
+# RC-/Roboter-Bausätze bleiben absichtlich unberührt: das sind Grenzfälle, die ich nicht rate.
+RC_WORT = re.compile(r'\brc\b|ferngesteuert\w*|\bdrohne\w*|hubschrauber|quadrocopter|\broboter\b|'
+                     r'elektronisch\w*|programmierbar\w*|\bsolar\b', re.I)
+
+HEIMTEXTIL = [
+    (r'duschvorhang\w*', "Home & Garden > Bathroom Accessories > Shower Curtains"),
+    (r'badteppich\w*|badematte\w*|badevorleger', "Home & Garden > Bathroom Accessories > Bath Mats & Rugs"),
+    (r'wandteppich\w*|wandbehang\w*', "Home & Garden > Decor > Artwork > Decorative Tapestries"),
+    (r'\w*teppich\w*', "Home & Garden > Decor > Rugs"),
+    (r'sofa-?bezug|sofa-?[üu]berwurf|couch-?bezug|sesselbezug|sofahusse|\bhusse\w*', "Home & Garden > Decor > Slipcovers"),
+    (r'kissenbezug\w*|kissenh[üu]lle\w*|zierkissen|dekokissen', "Home & Garden > Decor > Throw Pillows"),
+    (r'\bvorhang\w*|\bvorh[äa]nge\b|gardine\w*', "Home & Garden > Decor > Window Treatments"),
+    (r'bettw[äa]sche\w*|bettbezug|spannbettlaken|bettlaken|duvetbezug|tagesdecke', "Home & Garden > Linens & Bedding > Bedding"),
+    (r'tischdecke\w*|tischl[äa]ufer', "Home & Garden > Linens & Bedding > Table Linens"),
+]
+HEIMTEXTIL = [(re.compile(r, re.I), z) for r, z in HEIMTEXTIL]
+KLEIDUNG_NOMEN = [
+    (r'\w*sneaker\w*|\w*halbschuh\w*|\blauflernschuhe\b|\bstiefel\w*|\bsandale\w*|\bpumps\b|winter-?schuhe',
+     "Apparel & Accessories > Shoes"),
+    (r'\bt-?shirt\w*|\bpolohemd\w*|\bhemd\b|\bbluse\w*|\bpullover\b|\bpulli\b|\bhoodie\w*|'
+     r'\bsweatshirt\w*|\bcardigan\w*|strickjacke\w*|\bmantel\b|\bdaunenjacke\w*',
+     "Apparel & Accessories > Clothing"),
+]
+KLEIDUNG_NOMEN = [(re.compile(r, re.I), z) for r, z in KLEIDUNG_NOMEN]
+BRETTSPIEL = re.compile(r'brettspiel\w*|kartenspiel\w*|w[üu]rfelspiel\w*|gesellschaftsspiel\w*', re.I)
+PLUESCHTIER = re.compile(r'pl[üu]schtier\w*|kuscheltier\w*|pl[üu]schfigur\w*|stofftier\w*', re.I)
+PLUESCH_NICHT = re.compile(r'rucksack|kost[üu]m\w*|\bmaske\w*|\bhut\b|\bm[üu]tze\w*|hausschuh\w*|'
+                           r'pantoffel\w*|\bdecke\b|kissen\w*|\btasche\w*|aufbewahrung\w*|beanbag|sitzsack', re.I)
+BLANKO_TYP = ("Spass-Elektronik", "Basteln & DIY", "Spielzeug & Spiele", "Gaming-Zubehör")
+# Hülle/Halter/Ständer: das Zubehör zum Gerät bleibt Aufbewahrung, nicht Elektronik.
+HUELLE = re.compile(r'\w*h[üu]lle\b|\bhalter\b|\bhalterung\b|\w*st[äa]nder\b|\w*etui\b|'
+                    r'erh[öo]hung|aufbewahrung\w*', re.I)
+
 def kategorie(titel, tags, typ=None):
     titel = titel or ""
     t = {x.lower() for x in tags}
@@ -269,16 +343,42 @@ def kategorie(titel, tags, typ=None):
             return "Animals & Pet Supplies > Pet Supplies > Cat Supplies > Cat Toys"
         return "Animals & Pet Supplies > Pet Supplies"
 
+    # (4) Das Nomen sticht die Warengruppe — aber nie bei Rohmaterial (siehe ROHSTOFF).
+    roh = ist_rohstoff(titel)
+    ist_pet = any(x in t for x in PET_TAGS) or bool(PET_TITEL.search(titel))
+    if typ in BLANKO_TYP and not roh and not ist_pet:
+        for muster, pfad in HEIMTEXTIL:
+            if muster.search(titel):
+                return pfad
+        for muster, pfad in KLEIDUNG_NOMEN:
+            if muster.search(titel):
+                return pfad
+        if BRETTSPIEL.search(titel):
+            return "Toys & Games > Games > Board Games"
+        if not RC_WORT.search(titel):
+            if PUZZLE.search(titel):
+                return "Toys & Games > Puzzles"
+            if BAUSPIEL.search(titel):
+                return "Toys & Games > Toys > Building Toys"
+
     for muster, pfad in VORRANG:
         if muster.search(titel):
             return pfad
+
+    # Ein Plüschtier ist Spielzeug, kein Babyartikel — «Plüsch Bush Baby Galagos» ist eine
+    # Affenart, «Plüsch Adler Baby» das Jungtier des Motivs.
+    if PLUESCHTIER.search(titel) and not PLUESCH_NICHT.search(titel):
+        return "Toys & Games > Toys > Dolls, Playsets & Toy Figures > Stuffed Animals"
 
     # (1) Sammelkorb «Aufbewahrung & Organizer»: der Titel entscheidet, nicht die Warengruppe.
     ist_aufb = typ == AUFB_TYP or "aufbewahrung" in t or "organizer" in t
     if ist_aufb:
         for muster, pfad in AUFB_TITEL:
-            if muster.search(titel):
-                return pfad
+            if not muster.search(titel):
+                continue
+            if pfad == "Electronics" and HUELLE.search(titel):
+                continue          # Zubehör zum Gerät bleibt Aufbewahrung
+            return pfad
         if AUFB_STORAGE.search(titel):
             return "Home & Garden > Household Supplies > Storage & Organization"
         if AUFB_BAG.search(titel):
@@ -293,6 +393,12 @@ def kategorie(titel, tags, typ=None):
         sperre = AUSNAHMEN.get(tag)
         if sperre and sperre.search(titel):
             continue
+        # (4b) «Leuchtendes Hai-T-Shirt für Kinder» wurde über den Tag `beleuchtung` zum
+        # Beleuchtungsartikel. Steht ein Kleidungs-NOMEN daneben, gewinnt das Nomen.
+        if tag == "beleuchtung" and not roh:
+            for muster, ziel in KLEIDUNG_NOMEN:
+                if muster.search(titel):
+                    return ziel
         return pfad
     # ⚠️ Auch die Warengruppe irrt. Unter «Spielzeug & Spiele» stehen acht Kleidungsstücke —
     # «Plüschjacke», «Plüschmütze Panda», «Baby-Schuhe mit Plüschfutter». Das Wort «Plüsch»
