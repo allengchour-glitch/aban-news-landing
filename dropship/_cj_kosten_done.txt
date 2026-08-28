@@ -3946,3 +3946,83 @@ gid://shopify/Product/15448826675585	CHF 18.01	2 Varianten	Jojoba Gesichts-Reini
 gid://shopify/Product/15448826708353	CHF 20.85	1 Varianten	Kameliensqualan Gesichtsöl
 gid://shopify/Product/15448826773889	CHF 24.99	1 Varianten	Selbstbräunungstropfen mit Hyaluronsäure
 gid://shopify/Product/15448826806657	CHF 24.00	2 Varianten	Dreamy Eau de Parfum Floral 30ml
+gid://shopify/Product/15448826872193	CHF 24.45	4 Varianten	Blumig-fruchtiges Eau de Parfum (50ml)
+gid://shopify/Product/15448826970497	CHF 27.83	1 Varianten	Langanhaltendes Unisex Parfum mit natürlichen Inha
+gid://shopify/Product/15448827036033	CHF 27.83	1 Varianten	Eau de Toilette für Herren – Frisch & Subtil
+gid://shopify/Product/15448827068801	CHF 20.85	2 Varianten	Haarserum Kapseln mit Argan-, Macadamia- und Avoca
+gid://shopify/Product/15448827134337	CHF 46.41	1 Varianten	Natürliches Agarwood-Ätherisches Öl
+gid://shopify/Product/15448827199873	cj-abgekuendigt-pruefen
+gid://shopify/Product/15448827494785	cj-abgekuendigt-pruefen
+gid://shopify/Product/15448827593089	cj-abgekuendigt-pruefen
+gid://shopify/Product/15448827756929	CHF 17.59	1 Varianten	Tunmate Marokkanisches Arganöl
+gid://shopify/Product/15448827888001	CHF 17.59	1 Varianten	Tunmate Rizinusöl
+gid://shopify/Product/15448828051841	CHF 17.59	1 Varianten	Tunmate Batana Haaröl
+gid://shopify/Product/15448828182913	CHF 17.59	1 Varianten	Tunmate Teebaum Haaröl
+gid://shopify/Product/15448828313985	cj-abgekuendigt-pruefen
+gid://shopify/Product/15448828674433	CHF 17.72	1 Varianten	Glanz-Haaröl für geschmeidiges Haar
+gid://shopify/Product/15448828707201	CHF 17.72	1 Varianten	Rosmarin Haaröl – Kräftigendes Haarwachstum
+gid://shopify/Product/15448828838273	CHF 18.32	1 Varianten	Haarmaske & Batana-Öl Pflegeset
+gid://shopify/Product/15448828903809	CHF 18.17	1 Varianten	Rizinusöl Roll-On für Haarwachstum & Pflege
+gid://shopify/Product/15448828969345	CHF 42.42	1 Varianten	Rosmarin Minze Haarwuchs-Fluid & Kopfhautmassage
+gid://shopify/Product/15448829067649	CHF 28.49	1 Varianten	Essence Öl: Anti-Repair, nährend & festigend
+gid://shopify/Product/15448829264257	CHF 19.08	4 Varianten	U-förmiges portables Nagel-Lichttherapiegerät
+gid://shopify/Product/15448829460865	CHF 31.70	1 Varianten	Elektrisches Nagelfeilen-Set für Maniküre
+gid://shopify/Product/15448829526401	CHF 22.79	1 Varianten	UV-Lampe «Sun 19s» für schnelles Nageldesign
+gid://shopify/Product/15448829985153	CHF 21.17	2 Varianten	Nagel Phototherapie Lampe 90W mit Timer
+gid://shopify/Product/15448830345601	CHF 18.26	1 Varianten	Nagelverlängerungs-Set mit Lichthärtungsgerät
+gid://shopify/Product/15448830509441	CHF 62.52	8 Varianten	Nagellichttherapiegerät 96W Kabellos
+gid://shopify/Product/15448830837121	CHF 19.96	10 Varianten	Nagelverlängerungs-Gel-Set
+gid://shopify/Product/15448831033729	CHF 18.14	2 Varianten	Tragbare UV/LED Lichthärtungslampe für Nägel
+gid://shopify/Product/15448831197569	CHF 26.67	8 Varianten	Nageldesign Lichthärtungsgerät
+gid://shopify/Product/15448831394177	CHF 53.95	1 Varianten	High-Power Nagel-Trockner für Hände und Füsse
+gid://shopify/Product/15448831426945	CHF 20.40	10 Varianten	Sun X7Max Nagel-Phototherapiegerät 180W
+gid://shopify/Product/15448831525249	CHF 32.34	1 Varianten	Wiederaufladbarer Nagelfräser
+gid://shopify/Product/15448831656321	CHF 68.53	4 Varianten	Nagellack Poliermaschine
+gid://shopify/Product/15448831721857	CHF 30.99	4 Varianten	Nagel Phototherapie LED-Trockner 96W
+gid://shopify/Product/15448831820161	CHF 30.34	3 Varianten	UV/LED Lichthärtungsgerät für beide Hände, 96W
+gid://shopify/Product/15448832180609	CHF 18.90	3 Varianten	Handgemachte Wearable Nails – Blau-Pinker Farbverl
+gid://shopify/Product/15448832278913	CHF 19.37	1 Varianten	Handgemachte 3D-Modellage zum Aufkleben
+gid://shopify/Product/15448832377217	CHF 18.47	10 Varianten	DIY Nagel-Accessoires Set
+gid://shopify/Product/15448832409985	CHF 17.33	1 Varianten	Mini Floral DIY Nagelsticker-Set
+gid://shopify/Product/15448832475521	CHF 21.42	1 Varianten	Massagegerät gegen Augenringe
+gid://shopify/Product/15448832508289	CHF 17.18	4 Varianten	Handgemachte French Nails mit Zirkon & Kristall
+gid://shopify/Product/15448832606593	CHF 16.90	3 Varianten	Phantom Lila Cat-Eye Press-on Nägel
+gid://shopify/Product/15448832672129	CHF 23.94	4 Varianten	Handgemachte Kunstnägel in Himmelblau
+gid://shopify/Product/15448832704897	CHF 26.34	4 Varianten	Elektrischer Nagelfräser mit bürstenlosem Motor
+gid://shopify/Product/15448832770433	CHF 17.18	1 Varianten	Nagelpflege-Stift
+gid://shopify/Product/15448832803201	CHF 18.55	2 Varianten	Nail Art Graffiti Stifte Set
+gid://shopify/Product/15448832868737	CHF 17.04	12 Varianten	Handgemachte Press-On Nägel «Purple Buccellati»
+gid://shopify/Product/15448832999809	CHF 17.61	8 Varianten	Kaffee-Leopardenprint Cat-Eye Nägel
+gid://shopify/Product/15448833196417	CHF 17.69	4 Varianten	Handgemachte Luxus-Nagelsticker
+gid://shopify/Product/15448833458561	CHF 17.49	1 Varianten	Nagel- und Nagelhautpflegeöl Stift
+gid://shopify/Product/15448833622401	CHF 23.21	1 Varianten	Elektrischer Hornhautentferner für Füsse
+gid://shopify/Product/15448833655169	CHF 30.67	1 Varianten	Tragbares elektrisches Nagelbohrer-Set
+gid://shopify/Product/15448833786241	CHF 32.88	1 Varianten	Nagelstaubsauger 80W
+gid://shopify/Product/15448833851777	CHF 36.80	1 Varianten	Elektrische Nagelfeile USB, tragbar
+gid://shopify/Product/15448833917313	CHF 22.39	6 Varianten	Elektrischer Nagelpolierer
+gid://shopify/Product/15448833982849	CHF 22.63	2 Varianten	Nagelpilz-Reparaturserum
+gid://shopify/Product/15448834048385	CHF 19.37	3 Varianten	Dreamy Gradient Ocean Nail Art
+gid://shopify/Product/15448834113921	CHF 18.36	1 Varianten	DIY Nail Art Doodle Pen
+gid://shopify/Product/15448834146689	CHF 18.44	4 Varianten	Handgemachte Nagelspitzen (mittel)
+gid://shopify/Product/15448834179457	CHF 23.99	1 Varianten	Aufklebe-Nägel mit Cat-Eye-Effekt, holografisch
+gid://shopify/Product/15448834244993	CHF 32.99	1 Varianten	Press On Nails T037 – Pink Gem-Embedded · 10 Stück
+gid://shopify/Product/15448834310529	CHF 30.29	1 Varianten	Press On Nails T071 mit rosa Edelsteinen
+gid://shopify/Product/15448834343297	CHF 23.99	1 Varianten	Press-on Nägel
+gid://shopify/Product/15448834408833	CHF 30.29	1 Varianten	Press On Nails T076 – Schwarz-Weiss 3D
+gid://shopify/Product/15448834474369	CHF 23.99	1 Varianten	Press On Nails Leopard-Print mit Glitzer
+gid://shopify/Product/15448834507137	CHF 23.66	4 Varianten	Island Elf: Französische 3D-Blumen & Insekten Näge
+gid://shopify/Product/15448834539905	CHF 17.64	4 Varianten	Herz-Muster 3D Nagel-Kunst Mandelform
+gid://shopify/Product/15448834605441	CHF 18.02	4 Varianten	Handgemachte weinrote lange Nagelspitzen
+gid://shopify/Product/15448834670977	CHF 17.99	4 Varianten	3D-Relief Nageldesign für tragbare Maniküre
+gid://shopify/Product/15448834703745	CHF 18.77	4 Varianten	Handbemalte Samt Cat-Eye-Ohrringe
+gid://shopify/Product/15448834736513	CHF 17.58	1 Varianten	Schimmernder Thermo-Gel Nagellack
+gid://shopify/Product/15448834802049	CHF 21.03	27 Varianten	Cat-Eye Gel Stift für Nagelkunst
+gid://shopify/Product/15448834834817	cj-abgekuendigt-pruefen
+gid://shopify/Product/15448834867585	CHF 24.72	1 Varianten	Devil's Claws Press On Nails, Violett Glitzer
+gid://shopify/Product/15448834965889	cj-abgekuendigt-pruefen
+gid://shopify/Product/15448834998657	CHF 24.36	1 Varianten	Rote und weisse Herz-Kunstnägel, lang, eckig
+gid://shopify/Product/15448835064193	CHF 24.36	1 Varianten	Glitzer-Schmetterling Fake Nails, lang & eckig
+gid://shopify/Product/15448835162497	CHF 24.36	1 Varianten	Grüne Sternchen Kunstnägel, lang
+gid://shopify/Product/15448835195265	CHF 24.36	1 Varianten	Aurora White Fake Nails – Lange Wasserrohr-Form
+gid://shopify/Product/15448835228033	CHF 24.36	1 Varianten	Lange Kleeblatt-Press-on-Nägel (24 Stück)
+gid://shopify/Product/15448835293569	CHF 24.36	1 Varianten	Aurora Powder Fake Nails – Lang & Glänzend
