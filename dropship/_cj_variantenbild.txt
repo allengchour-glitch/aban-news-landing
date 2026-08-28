@@ -1517,3 +1517,8 @@ gid://shopify/Product/15448591958401	zugeordnet	12	Lockerer Strick-Cardigan mit 
 gid://shopify/Product/15448592286081	zugeordnet	4	Pullover mit Knopfleiste und Puffärmeln
 gid://shopify/Product/15448592417153	zugeordnet	98	Strickpullover mit Fledermausärmeln
 gid://shopify/Product/15448592613761	zugeordnet	4	Fair Isle Strickpullover mit langen Ärmeln
+gid://shopify/Product/15448592646529	zugeordnet	3	Slim-Fit Strickpullover mit V-Ausschnitt
+gid://shopify/Product/15448592777601	zugeordnet	30	Strickpullover mit Rundhalsausschnitt für Damen
+gid://shopify/Product/15448592843137	zugeordnet	55	Eleganter Rollkragenpullover aus Wolle
+gid://shopify/Product/15448592908673	zugeordnet	45	Kurzer Strick-Cardigan mit V-Ausschnitt
+gid://shopify/Product/15448593006977	zugeordnet	12	Pailletten-Pullover mit Rundhals
