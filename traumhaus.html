@@ -4886,7 +4886,7 @@ setTimeout(function baueGebaeude(){
     /* Der Park passt an der alten Stelle nicht mehr (das Meer reicht bis x=-132 und
        die Nachbarviertel sind nah). Deshalb suedlich hinter den Sportpark, wo 240x110
        frei sind — angebunden ueber dessen Zufahrt. */
-    viertel({name:"Freizeitpark",x:60,z:330,w:330,d:110,achse:"x",boden:"kies",
+    var _fp = viertel({name:"Freizeitpark",x:60,z:330,w:330,d:110,achse:"x",boden:"kies",
       /* ⚠️ Der Anschluss zeigte auf (0|258) — das ist die NORDKANTE des Sportparks,
          nicht dessen Strasse. Die verlaeuft auf seiner Mittelachse bei z = 216.
          Wer vom Freizeitpark kam, stand also 42 m vor der naechsten Fahrbahn im
@@ -5530,7 +5530,15 @@ setTimeout(function baueGebaeude(){
     },1400);
     /* Park-Ausstattung entlang der Hauptachse: Wegweiser, Plan, Beete, Laternen */
     setTimeout(function parkDeko(){
-      var PX=60,PZ=330;
+      /* ⚠️ DER WUNSCHORT IST NICHT DER STANDORT. Hier stand fest `PZ=330` — der
+         Wunschort des Viertels. `viertelOrt()` weicht aber aus, und der Freizeitpark
+         steht tatsaechlich auf z = 340. Die Ausstattung blieb 10 m zurueck, und die
+         Laternenreihe bei PZ+9 landete damit 1 m neben der Viertelstrasse (z = 340),
+         also mitten auf dem Belag: 6 Parklaternen, 6 Wegweiser, 2 Parkplaene, gemeldet
+         als "Viertelstr. Freizeitpark (14)" von `spiele-dev/tools/th-strassen.mjs`.
+         Dieselbe Falle hatte der Bauernhof schon einmal — dort loesen es BHDX/BHDZ.
+         Wer Ausstattung an ein Viertel haengt, nimmt dessen ECHTE Mitte, nie den Wunsch. */
+      var PX=(_fp?_fp.x:60), PZ=(_fp?_fp.z:330);
       for(var i=0;i<6;i++){
         var dx=PX-110+i*44;
         bau("th33_parklaterne.glb",5.4,dx,0,PZ-9,0,false,null,true);
