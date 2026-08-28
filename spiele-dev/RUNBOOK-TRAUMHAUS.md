@@ -1664,3 +1664,58 @@ gar nicht. **Vor dem Auswerten prüfen, dass überhaupt etwas gemessen wurde**
 Zoo-Standort und ohne Änderung an ihm. Verdacht: die dokumentierte Nichtdeterminiertheit von
 `entzerren()`, das überlappende Bauten auseinanderschiebt, ohne die Straße zu kennen. Erst
 messen (mehrere Läufe), dann urteilen.
+
+## 2026-08-28 · 🧭 Das GPS kannte die Straßen nicht mehr — dritte Herleitung derselben Wege
+
+Der Bauernhof-Anschluss zeigte auf **(−40|−100)**, dieselbe x-Achse wie das Viertel. Damit
+fällt `viertel()` in den Einzelschenkel-Zweig und zieht einen reinen z-Weg auf der
+Mittelachse **quer durch die eigenen Bauzeilen** — 8 Mesh-Positionen in den Gewächshäusern.
+
+**Ort gemessen statt geraten.** Ein Korridor-Scan über x = −100…60 zählte die Objekte
+zwischen z −100 und −246 je Kandidat, dann am echten Werkzeug nachgeprüft:
+
+| Anschluss-x | Korridor-Scan | `th-strassen` | läuft durch |
+|---|---|---|---|
+| −40 (bisher) | 387 | **12** | eigene Gewächshäuser |
+| 15 | 242 | 18 | Klinikareal (Notaufnahme, Rettungswagen) |
+| −25 | 33 | 10 | Klinik |
+| **60** | **15** | **5** | Fels am Wegrand |
+
+Gewählt: **60**. Der Weg wird länger, ist dafür frei von Gebäuden. Die drei verbliebenen
+41-m-Objekte sind Fels neben der Trasse — dokumentiert, nicht behoben.
+
+### 🔴 `_GPS_VERB` war für JEDES Viertel veraltet
+Beim Nachmessen fiel auf: `th-netz` meldete weiter „Bauernhof-Verbinder (−40|−150) ist
+Straße", obwohl dort kein Asphalt mehr liegt. Grund: eine **dritte** handgepflegte Liste
+derselben Wege — neben dem Generator und der Bandtabelle von `th-strassen`.
+
+| `_GPS_VERB` sagte | tatsächlich |
+|---|---|
+| Gewerbe Ost bis x 172 | **250** |
+| Sportpark bis z 236 | **246** |
+| Freizeitpark bis z 330 | **340** |
+| Bauernhof bis z −196 | **−246** |
+
+Viertel weichen beim Setzen aus; die Liste zog nie nach. Das GPS routete also seit Langem
+über Korridore ohne Belag. Jetzt kommt sie aus `_viertelBaender()` und wird nach **jedem**
+`viertel()`-Aufruf nachgezogen (`_gpsNachziehen`). Nur Wege ohne Viertel (Strandzufahrt,
+Achterbahn-Stich) bleiben fest.
+
+⚠️ **Andere Achsen-Schreibweise:** in `_GPS_VERB` heißt `"x"` *läuft in x* (bei z = Wert), in
+den Bändern heißt `a:"z"` dasselbe. Beim Umschreiben tauschen.
+
+| | vorher | nachher |
+|---|---|---|
+| `_GPS_VERB`-Einträge | 8 (4 davon falsch) | **20** |
+| Zoo- und Vergnügungs­viertel-Straße im Raster | nein | **ja** |
+| Streckenanteil Freizeitpark-Route | 75–80 % | **90 %** |
+| `th-netz`-Prüfungen | 25 | **35** |
+
+### Und wieder ein Test, der veraltete Geometrie behauptete
+Drei `th-netz`-Prüfungen wurden rot — **zu Recht**, aber nicht wegen eines Fehlers: sie
+prüften fest verdrahtete Punkte einer früheren Wegführung, während das Raster jetzt
+*richtiger* ist als vorher. Dieselbe Falle wie #2339. Sie leiten ihre Prüfpunkte jetzt aus
+`_viertelBaender()` ab: je Anschluss-Band dessen Mittelpunkt.
+
+**Verifiziert:** 6 Viertel, 0 nicht auf Stufe 2 · `th-netz` 35 ok, 0 Fehler · `th-3d` 56 echt ·
+`th-strassen` Bauernhof-Anschluss 12 → 5, Gesamt 137.

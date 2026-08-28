@@ -4603,6 +4603,10 @@ setTimeout(function baueGebaeude(){
       if(Math.abs(q-b.c)<b.h+(pad||0)&&l>b.von-(pad||0)&&l<b.bis+(pad||0))return b.n;}
     return null;};
   window._viertelBaender=viertelBaender;
+  /* Nach JEDEM neuen Viertel die GPS-Korridore nachziehen — ein Viertel, das ausweicht,
+     verschiebt damit auch seinen Eintrag im Navigationsraster. Genau das ist frueher
+     unterblieben und hat die Liste fuer alle vier Viertel veralten lassen. */
+  window._gpsNachziehen=function(){try{if(window._gpsVerbNeu)window._gpsVerbNeu();}catch(e){}};
   window._viertelSolver={VIERTEL:VIERTEL,mass:viertelMass,passt:viertelPasst,ort:viertelOrt,
                          fahrbahn:aufFahrbahn,berg:imBerg,sperre:aufSperre,
                          boxen:bergBoxen,gitter:bergGitter};
@@ -4617,6 +4621,7 @@ setTimeout(function baueGebaeude(){
        Der Wunschort ist dabei die wichtigste Zahl — die tatsaechliche Position verraet
        nicht, ob 0 m oder 120 m ausgewichen wurde. */
     var g={name:cfg.name,x:VX,z:VZ,w:VW,d:VD,bauten:[],laengs:laengs,cfg:cfg,wx:cfg.x,wz:cfg.z};VIERTEL.push(g);
+    if(window._gpsNachziehen)window._gpsNachziehen();   /* Navigationsraster mitziehen */
     /* 1) Grundflaeche */
     var bodenM=cfg.boden==="platz"?betMat(0xc6c0b2,0.93)
               :cfg.boden==="kies"?betMat(0x9c9384,0.98)
@@ -5812,7 +5817,17 @@ setTimeout(function baueGebaeude(){
        wo sie immer lagen. Die Kiesflaeche wird kleiner als das Feld drumherum; das ist
        fuer einen Hof eher richtiger als eine Schotterplatte bis zum Horizont. */
     var _bh = viertel({name:"Bauernhof",x:-40,z:-196,w:120,d:90,achse:"x",boden:"kies",
-      anschluss:[-40,-100],abstand:16,luecke:20,rand:20,
+      /* ⚠️ DER ANSCHLUSS LIEF DURCH DIE EIGENE BAUZEILE. Er zeigte auf (-40|-100) —
+         dieselbe x-Achse wie das Viertel. Damit faellt viertel() in den Einzelschenkel-
+         Zweig und zieht einen reinen z-Weg auf der Mittelachse quer durch die Reihen:
+         8 Mesh-Positionen in den Gewaechshaeusern (`th-strassen.mjs`, seit #2346).
+         Der Anschlusspunkt muss NEBEN die Bauzeile, dann laeuft der letzte Schenkel
+         auf der eigenen Strasse. GEMESSEN statt geraten: ein Korridor-Scan ueber
+         x = -100..60 zaehlte die Objekte zwischen z -100 und -246 je Kandidat —
+         x = -40 (heute) 387, x = 15 durchs Klinikareal 242, x = -25 33, x = 60 nur 15.
+         Am echten Werkzeug nachgeprueft: 12 -> 18 (x=15) -> 10 (x=-25) -> 5 (x=60).
+         Der Weg wird dadurch laenger; er ist dafuer frei. */
+      anschluss:[60,-100],abstand:16,luecke:20,rand:20,
       bauten:[{file:"th18_scheune.glb",h:10,w:20,d:14},
               {file:"th18_stall.glb",h:5.5,w:16,d:11},
               {file:"th18_silo.glb",h:12,w:6,d:6,tuer:false},
@@ -11503,13 +11518,28 @@ var _gpsX0=-300,_gpsZ0=-260,_gpsCell=4,_gpsNX=138,_gpsNZ=163,_gpsFrei=null;
    Viertel-Verbinder aus anbindung() — ["z",xMitte,z0,z1] laeuft laengs z, ["x",zMitte,x0,x1]
    laengs x. Eine Tabelle fuer GPS-Kosten UND Karten-/Radar-Zeichnung, damit nichts auseinanderlaeuft. */
 var _GPS_ZUB=[30,60,120,240,300,330].map(function(g){var a=g*Math.PI/180;return [Math.cos(a),Math.sin(a)];});
-var _GPS_VERB=[
-  ["x",0,112,172],      // Gewerbe Ost (anschluss 112|0 -> Viertel 172|0)
-  ["z",0,172,236],      // Sportpark Sued (Suedufer 0|172 -> 0|236)
-  ["x",216,0,60],["z",60,216,330], // Freizeitpark (L-Weg 0|216 -> 60|216 -> 60|330)
-  ["z",-40,-196,-100],  // Bauernhof (-40|-100 -> -40|-196)
+/* ⚠️ HIER STANDEN DIE VIERTEL-VERBINDER VON HAND — UND SIE WAREN ALLE VERALTET.
+   Eingetragen war Gewerbe Ost bis x 172 (steht auf 250), Sportpark bis z 236 (246),
+   Freizeitpark bis 330 (340), Bauernhof bis -196 (-246). Viertel weichen beim Setzen
+   aus (`viertelOrt`), die Liste zog nie nach. Das GPS routete also ueber Korridore, wo
+   laengst kein Asphalt mehr liegt — sichtbar wurde es erst, als der gezeichnete
+   Bauernhof-Weg verschoben wurde und th-netz weiter "Verbinder ist Strasse" meldete.
+   Das ist die DRITTE Herleitung derselben Wege gewesen (neben dem Generator und der
+   Bandtabelle von th-strassen). Sie kommt jetzt aus `_viertelBaender()` wie die
+   anderen; hier bleiben nur die Wege, die zu keinem Viertel gehoeren.
+   ⚠️ Andere Achsen-Schreibweise: hier heisst "x" LAEUFT IN x (bei z = Wert), in den
+   Baendern heisst a:"z" dasselbe. Beim Umschreiben tauschen. */
+var _GPS_VERB_FEST=[
   ["x",-30,-134,-78],   // Strandzufahrt (K-Korridor)
   ["x",173,-194,-96],["z",-190,169,207]]; // Achterbahn-Stich (L-Weg zur Station)
+var _GPS_VERB=_GPS_VERB_FEST.slice();
+window._gpsVerbNeu=function(){
+  var A=_GPS_VERB;A.length=0;
+  for(var i=0;i<_GPS_VERB_FEST.length;i++)A.push(_GPS_VERB_FEST[i]);
+  var B=window._viertelBaender?window._viertelBaender():[];
+  for(var j=0;j<B.length;j++){var b=B[j];
+    A.push(b.a==="z"?["x",b.c,b.von,b.bis]:["z",b.c,b.von,b.bis]);}
+  return A.length;};
 function gpsStrasse(x,z){
   var SZr=GH*CS/2+12;
   if(Math.abs(x)<RL/2+6&&(Math.abs(z-SZr)<5||Math.abs(z+SZr)<5))return true;   // Hauptstrassen
