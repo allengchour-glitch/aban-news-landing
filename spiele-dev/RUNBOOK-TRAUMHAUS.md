@@ -2202,3 +2202,35 @@ Wer den Berg wieder sperrt, holt die Station in die Luft zurück.
 Das ist das dokumentierte Artefakt des Werkzeugs: es prüft gegen **alle** Viertel, der Sportpark
 wurde aber **vor** dem Freizeitpark gesetzt. Alle sieben bleiben per GPS erreichbar (`th-netz`
 39 ok).
+
+## 2026-08-28 · 💡 Sechs Lichter rechneten den ganzen Tag mit, ohne zu leuchten
+
+**Befund:** `updLampPool()` setzte tagsüber nur die **Intensität** auf 0 — `visible` blieb
+`true`. three.js sammelt aber **alle sichtbaren** Lichter ein und schreibt sie in den Shader
+jedes Materials. Sechs Punktlichter liefen damit in **jedem Pixel** mit, ohne etwas
+beizutragen, den ganzen Spieltag über.
+
+| Lichter im Shader (tagsüber) | vorher | nachher |
+|---|---|---|
+| | **8** | **2** (Himmel + Sonne) |
+
+Die ganze Welt nutzt `MeshStandardMaterial` — jedes Licht kostet dort eine volle
+PBR-Auswertung pro Pixel. Vier Mal weniger Beleuchtungsarbeit auf der ganzen Fläche.
+
+**Bewusste Nebenwirkung:** Ändert sich die Zahl sichtbarer Lichter, baut three.js die Shader
+neu. Das passiert jetzt **zweimal pro Spieltag** (Abend/Morgen) statt dauerhaft in jedem Bild.
+
+**Gegenprobe:** Nacht erzwungen → 8 Laternen sichtbar mit Intensität, an den richtigen Orten;
+Tag → 0 sichtbar. Ohne diese Prüfung wäre „Licht aus" von „Licht kaputt" nicht zu unterscheiden.
+
+**⚠️ Messfalle:** Der erste Lauf nach dem Fix meldete weiterhin 6 wirkungslose Lichter — die
+Messung lief, **bevor `updLampPool` das erste Mal getickt hatte**. Erst der erzwungene Tick
+zeigt den Zustand.
+
+**Gemessen, NICHT geändert (mit Begründung):**
+- **Schatten sind auf dem Handy aus** (`renderer.shadowMap.enabled = false`) — die 6 126
+  `castShadow`-Marken kosten dort **nichts**. Kein Hebel.
+- **55 349 Materialien bei nur 2 153 verschiedenen Signaturen** (53 271 wären teilbar). Das ist
+  vor allem Speicher, kaum Bildzeit: pro Bild werden nur ~760 Materialien gezeichnet. Zusammen-
+  legen ist riskant, weil `_envMats` (Nachtdämpfung) und `_glasMats` (Fensterlicht) Materialien
+  gezielt einzeln verändern — eine geteilte Instanz würde dann viele Objekte auf einmal treffen.
