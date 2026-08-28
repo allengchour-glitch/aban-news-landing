@@ -3476,3 +3476,68 @@ gid://shopify/Product/15448673845633	CHF 18.77	6 Varianten	Kurze Daunenjacke fü
 gid://shopify/Product/15448673878401	CHF 22.50	16 Varianten	Kurze Thermo-Steppjacke für Damen
 gid://shopify/Product/15448673943937	CHF 20.53	36 Varianten	Damen Daunen-Baumwollweste
 gid://shopify/Product/15448673976705	CHF 55.15	30 Varianten	Kurze Daunenjacke mit Kapuze
+gid://shopify/Product/15448674009473	CHF 41.66	20 Varianten	Kurzer Daunenmantel mit Reissverschluss
+gid://shopify/Product/15448674042241	CHF 26.04	12 Varianten	Wende-Steppjacke mit Patchwork-Karo
+gid://shopify/Product/15448674075009	CHF 40.12	4 Varianten	Dunkelbrauner Vintage Baumwollmantel
+gid://shopify/Product/15448674107777	CHF 59.03	24 Varianten	Doppelseitige Stehkragenjacke für Damen
+gid://shopify/Product/15448674173313	CHF 24.70	15 Varianten	Gefütterte Daunenjacke mit V-Ausschnitt
+gid://shopify/Product/15448674206081	CHF 34.48	25 Varianten	Kurze Winterjacke mit Kapuze
+gid://shopify/Product/15448674238849	CHF 20.97	20 Varianten	Gefütterte Kapuzenjacke für Damen
+gid://shopify/Product/15448674304385	CHF 19.08	24 Varianten	Gefütterter Damen-Baumwollmantel mit Kragen
+gid://shopify/Product/15448674337153	CHF 19.53	12 Varianten	Leichte, gefütterte Baumwolljacke für Damen
+gid://shopify/Product/15448674402689	CHF 47.77	12 Varianten	Extra dicke Daunenjacke im Patchwork-Stil
+gid://shopify/Product/15448674435457	CHF 64.49	3 Varianten	Gepolsterter Wintermantel für Damen
+gid://shopify/Product/15448674664833	CHF 25.90	8 Varianten	Retro Wintermantel mit Fleece-Futter
+gid://shopify/Product/15448674730369	CHF 52.38	20 Varianten	Eleganter kurzer Daunenmantel mit Kunstfell
+gid://shopify/Product/15448674861441	CHF 20.97	10 Varianten	Kurze wattierte Jacke mit Karomuster
+gid://shopify/Product/15448674926977	CHF 33.58	15 Varianten	Knielanger, wattierter Baumwollmantel mit Kapuze
+gid://shopify/Product/15448674992513	CHF 39.20	20 Varianten	Langer gesteppter Baumwollmantel mit Kragen
+gid://shopify/Product/15448675156353	CHF 18.73	40 Varianten	Kurzer Wende-Shearling-Mantel für Damen
+gid://shopify/Product/15448675254657	CHF 41.16	9 Varianten	Eleganter Daunenmantel, knielang
+gid://shopify/Product/15448675451265	CHF 30.23	4 Varianten	Kurze Biker-Jacke aus Lederimitat und Fell
+gid://shopify/Product/15448675516801	CHF 22.46	84 Varianten	Leichte, kurze Daunenjacke für Damen
+gid://shopify/Product/15448675746177	CHF 27.58	25 Varianten	Vielseitiger Baumwollmantel mit Pelzkragen
+gid://shopify/Product/15448675811713	CHF 19.50	10 Varianten	Eleganter Half-Zip Pullover mit Stehkragen
+gid://shopify/Product/15448675910017	CHF 36.43	18 Varianten	Gepolsterter Mid-Length Mantel mit abnehmbarer Kap
+gid://shopify/Product/15448676008321	CHF 31.66	16 Varianten	Gefütterter Damen-Mantel im Casual-Look
+gid://shopify/Product/15448676073857	CHF 23.95	4 Varianten	Damen Freizeitjacke mit Reissverschluss
+gid://shopify/Product/15448676303233	CHF 33.72	25 Varianten	Gefütterte Daunenjacke für Damen
+gid://shopify/Product/15448676434305	CHF 20.37	25 Varianten	Kurze Daunenjacke im Koreanstyle für Damen
+gid://shopify/Product/15448676663681	CHF 27.59	20 Varianten	Gefütterte kurze Kapuzenjacke im Loose Fit
+gid://shopify/Product/15448676794753	CHF 41.19	36 Varianten	Winter Corduroy Cotton Coat
+gid://shopify/Product/15448676958593	CHF 24.17	4 Varianten	Winterjacke aus Lederimitat mit Fleecefutter
+gid://shopify/Product/15448677089665	CHF 19.23	42 Varianten	Leichte kurze Baumwoll-Liner-Jacke für Damen
+gid://shopify/Product/15448677220737	CHF 53.64	3 Varianten	Gefütterte Jacke mit Kunstfellkragen
+gid://shopify/Product/15448677286273	CHF 19.90	24 Varianten	Vielseitige kurze Baumwoll-Steppjacke Damen
+gid://shopify/Product/15448677351809	CHF 45.10	27 Varianten	Damen-Daunenmantel, mittellang, Weiss
+gid://shopify/Product/15448677515649	CHF 21.79	35 Varianten	Kurze Stehkragen-Pufferjacke für Damen
+gid://shopify/Product/15448677548417	CHF 25.85	12 Varianten	Kurze Daunenjacke mit Stehkragen
+gid://shopify/Product/15448701403521	CHF 19.92	15 Varianten	Langarm-Top mit ausgestellten Ärmeln
+gid://shopify/Product/15448701534593	CHF 20.53	12 Varianten	Luftige Retro-Bluse aus Baumwolle
+gid://shopify/Product/15448701731201	CHF 29.25	6 Varianten	Kapuzenjacke im American Style für Paare
+gid://shopify/Product/15448701927809	CHF 18.76	15 Varianten	KING QUEEN Couple Hoodie
+gid://shopify/Product/15448702615937	CHF 19.08	15 Varianten	Street-Style Hoodie mit langen Ärmeln
+gid://shopify/Product/15448702910849	CHF 20.06	32 Varianten	Trendiger Loose Fit Hoodie aus Plüschbaumwolle
+gid://shopify/Product/15448703271297	CHF 20.78	5 Varianten	Boho Strick-Cardigan mit Rautenmuster
+gid://shopify/Product/15448703467905	CHF 22.99	40 Varianten	Rundhals-Cardigan mit Goldknöpfen
+gid://shopify/Product/15448703500673	CHF 22.46	20 Varianten	Strickpullover locker geschnitten
+gid://shopify/Product/15448703566209	CHF 20.82	42 Varianten	Strickpullover mit Rollkragen und Spitze
+gid://shopify/Product/15448703664513	CHF 20.97	15 Varianten	V-Ausschnitt Strickpullover mit Ballonärmeln
+gid://shopify/Product/15448703730049	CHF 19.53	2 Varianten	Pullover mit Polokragen für Herbst/Winter
+gid://shopify/Product/15448703795585	CHF 22.76	78 Varianten	Strick-Cardigan mit Reverskragen
+gid://shopify/Product/15448703926657	CHF 22.01	64 Varianten	Damen Strickpullover mit Polo-Kragen & Half-Zip
+gid://shopify/Product/15448703959425	CHF 18.02	20 Varianten	Strickpullover mit langen Ärmeln
+gid://shopify/Product/15448704024961	CHF 23.10	4 Varianten	Gestreifter Strick-Cardigan für Damen
+gid://shopify/Product/15448704188801	CHF 22.01	60 Varianten	Damen Pullover mit Reissverschluss und Reverskrage
+gid://shopify/Product/15448704352641	CHF 21.11	72 Varianten	V-Neck Strickpullover für Herbst & Winter
+gid://shopify/Product/15448704450945	CHF 20.67	5 Varianten	Eleganter Strickpullover mit Lochmuster
+gid://shopify/Product/15448704516481	CHF 22.76	70 Varianten	Lockerer Strickpullover mit Rundhals
+gid://shopify/Product/15448704549249	CHF 21.42	42 Varianten	Wollpullover Rollkragen Reversible
+gid://shopify/Product/15448704614785	CHF 20.22	8 Varianten	Strick-Weste mit Aushöhlungen
+gid://shopify/Product/15448704680321	CHF 22.16	32 Varianten	Strick-Cardigan mit Lochmuster und Schnürung
+gid://shopify/Product/15448704745857	CHF 26.79	1 Varianten	Roter Grobstrick-Pullover mit V-Ausschnitt
+gid://shopify/Product/15448704778625	CHF 19.37	7 Varianten	Kurzer Strickpullover mit Rollkragen und Schlitz
+gid://shopify/Product/15448704811393	CHF 22.32	3 Varianten	Warmer Strick-Cardigan
+gid://shopify/Product/15448704844161	CHF 22.42	10 Varianten	Langarm-Pullover mit Bindedetail
+gid://shopify/Product/15448704909697	CHF 20.67	1 Varianten	Gestreifter Strickpullover mit weiten Ärmeln
+gid://shopify/Product/15448705040769	CHF 30.80	30 Varianten	Lässiger Pullover mit extra-langen Ärmeln
