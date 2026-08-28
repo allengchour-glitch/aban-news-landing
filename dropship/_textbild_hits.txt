@@ -12925,3 +12925,4 @@ gid://shopify/Product/15470352138625	42->1	Wasserdichte Möbelabdeckung
 gid://shopify/Product/15470741848449	149->0	Leichtes Hundegeschirr mit Leine
 gid://shopify/Product/15472257663361	8->1	Elektrischer Dosenöffner für die Küche
 gid://shopify/Product/15473433543041	70->0	3-teiliges Blumen-Patchwork-Set
+gid://shopify/Product/15490725118337	74->0	Digitales Malen nach Zahlen – Eigenes Motiv
