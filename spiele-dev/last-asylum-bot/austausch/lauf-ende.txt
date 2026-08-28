@@ -1,0 +1,32 @@
+﻿# Der Bot-Lauf ist beendet. Steht hier ein frischer Zeitpunkt,
+# laeuft der Bot NICHT mehr.
+zeit:      2026-08-29 00:17:38
+rechner:   MSI
+rueckgabe: 0
+
+# letzte Protokollzeilen:
+{"ts": 1787955244.6488621, "level": "info", "msg": "Umgebung: nach rechts unten", "quelle": "Aufgabe 'umgebung-abfahren'"}
+{"ts": 1787955293.0455132, "ev": "vergleich", "template": "ui/ladebildschirm.png", "score": 0.2605, "schwelle": 0.8, "treffer": false}
+{"ts": 1787955293.4792356, "ev": "vergleich", "template": "ui/btn_abholen_orange.png", "score": 0.2378, "schwelle": 0.85, "treffer": false}
+{"ts": 1787955302.1502054, "ev": "vergleich", "template": "ui/btn_abholen.png", "score": 0.2818, "schwelle": 0.85, "treffer": false}
+{"ts": 1787955302.385273, "ev": "vergleich", "template": "ui/popup_close.png", "score": 0.5486, "schwelle": 0.86, "treffer": false}
+{"ts": 1787955302.819634, "level": "info", "msg": "Umgebung: nach oben", "quelle": "Aufgabe 'umgebung-abfahren'"}
+{"ts": 1787955364.515759, "level": "info", "msg": "Umgebung: nach unten", "quelle": "Aufgabe 'umgebung-abfahren'"}
+{"ts": 1787955429.1179385, "level": "info", "msg": "Zurueck in die Stadt", "quelle": "Aufgabe 'umgebung-abfahren'"}
+{"ts": 1787955430.1639712, "ev": "vergleich", "template": "nav/startseite.png", "score": 0.624, "schwelle": 0.86, "treffer": false}
+{"ts": 1787955430.4457119, "ev": "vergleich", "template": "nav/burg.png", "score": 0.9082, "schwelle": 0.86, "treffer": true}
+{"ts": 1787955433.258757, "ev": "vergleich", "template": "ui/ladebildschirm.png", "score": 0.3471, "schwelle": 0.8, "treffer": false}
+{"ts": 1787955448.3624973, "ev": "vergleich", "template": "ui/btn_abholen_orange.png", "score": 0.2363, "schwelle": 0.85, "treffer": false}
+{"ts": 1787955448.85813, "ev": "vergleich", "template": "ui/btn_abholen.png", "score": 0.4771, "schwelle": 0.85, "treffer": false}
+{"ts": 1787955449.0953968, "ev": "vergleich", "template": "ui/popup_close.png", "score": 0.5285, "schwelle": 0.86, "treffer": false}
+{"ts": 1787955449.7740433, "ev": "aufgabe", "aufgabe": "umgebung-abfahren", "tipps": 2}
+{"ts": 1787955452.8954709, "ev": "vergleich", "template": "ui/ladebildschirm.png", "score": 0.3405, "schwelle": 0.8, "treffer": false}
+{"ts": 1787955453.6618507, "ev": "vergleich", "template": "ui/btn_abholen_orange.png", "score": 0.2363, "schwelle": 0.85, "treffer": false}
+{"ts": 1787955454.2298071, "ev": "vergleich", "template": "ui/btn_abholen.png", "score": 0.4771, "schwelle": 0.85, "treffer": false}
+{"ts": 1787955454.4481752, "ev": "vergleich", "template": "ui/popup_close.png", "score": 0.5323, "schwelle": 0.86, "treffer": false}
+{"ts": 1787955454.788223, "ev": "vergleich", "template": "ui/close_x_hell.png", "score": 0.6517, "schwelle": 0.86, "treffer": false}
+{"ts": 1787955454.7907324, "level": "info", "msg": "â–¶ Aufgabe: selbst-aktualisieren"}
+{"ts": 1787955454.7909653, "level": "info", "msg": "Nach einer neuen Fassung schauen", "quelle": "Aufgabe 'selbst-aktualisieren'"}
+{"ts": 1787955457.9376273, "level": "info", "msg": "Neue Fassung geholt (5328491 -> 0b9d87e) - Neustart"}
+{"ts": 1787955457.9378765, "level": "info", "msg": "Gestoppt: neue Fassung geholt"}
+{"ts": 1787955457.9381363, "level": "info", "msg": "Bilanz: Schritte=36 taps=31 drags=16 task:ansichten-sammeln=13 rule:spiel-update-bestaetigen=5 task:spiel-im-vordergrund=3 task:lebenszeichen=2 task:selbst-aktualisieren=2 ansicht-gesammelt=2 swipes=2 wirkungslos=2 task:kalibrieren=1 task:bauen-und-aufwerten=1 task:forschung=1 task:truppe-1-aufwerten=1 task:tagesziele=1 regel-stillgelegt=1 stuck=1 task:allianz-geschenke=1 task:basis-rundgang=1 ausschnitt=1 rule:ladebildschirm-abwarten=1 task:events=1 rule:spiel-beenden-abbrechen=1 zwischendurch-gehandelt=1 task:selbstbericht=1 task:umgebung-abfahren=1 selbst-aktualisiert=1"}
