@@ -3,6 +3,9 @@
 Gefunden am Bild**inhalt** (MD5), nicht an Titel, SKU oder Bild-URL — die
 drei taeuschen bei CJ-Doppellistings alle drei.
 
+- **DUBLETTE** · 3 gemeinsame Bilder (3 bzw. 14 insgesamt, 100%)
+  - 15428421452161 · 2026-06-12 · CHF 18.90 · CJ-CJSL293135501AZ · Tennis-Armband Bunt · Zirkonia funkelnd
+  - 15495190544769 · 2026-08-12 · CHF 17.90 · CJ-2606120755051601100 · Vintage Eulen-Fusskettchen aus Legierung
 - **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (2 bzw. 2 insgesamt, 100%)
   - 15469970555265 · 2026-07-23 · CHF 32.00 · fortura-OR40032S-M · Tutu Pink
   - 15469975830913 · 2026-07-23 · CHF 31.90 · fortura-OR40032116-140 · Tutu Pink Kindergrösse 116/140
@@ -18,9 +21,21 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **DUBLETTE** · 6 gemeinsame Bilder (6 bzw. 6 insgesamt, 100%)
   - 15487652102529 · 2026-08-05 · CHF 19.90 · CJ-2608050555221618900 · Liebes-Geburtsstein-Ring mit Gravur
   - 15489427603841 · 2026-08-06 · CHF 19.90 · CJ-2608050514071601600 · Engel Flügel Ring
+- **DUBLETTE** · 6 gemeinsame Bilder (6 bzw. 6 insgesamt, 100%)
+  - 15496120205697 · 2026-08-12 · CHF 18.90 · CJ-CJYD285034901AZ · Damen Peep-Toe Sandalen mit Lochmuster
+  - 15496120238465 · 2026-08-12 · CHF 18.90 · CJ-CJYD285032801AZ · Hohe Sandalen mit Ausschnitt
 - **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
   - 15490725347713 · 2026-08-07 · CHF 16.90 · CJ-1423334511374110720 · Digitales Ölbild
   - 15490725413249 · 2026-08-07 · CHF 16.90 · CJ-1423333969784606720 · Digitales Ölgemälde zum Ausmalen
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15490725347713 · 2026-08-07 · CHF 16.90 · CJ-1423334511374110720 · Digitales Ölbild
+  - 15493908693377 · 2026-08-11 · CHF 16.90 · CJ-1423330685350973440 · Digitales Leinwandbild, personalisierbar
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15490725413249 · 2026-08-07 · CHF 16.90 · CJ-1423333969784606720 · Digitales Ölgemälde zum Ausmalen
+  - 15493908693377 · 2026-08-11 · CHF 16.90 · CJ-1423330685350973440 · Digitales Leinwandbild, personalisierbar
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 6 insgesamt, 80%)
+  - 15495120486785 · 2026-08-12 · CHF 15.90 · CJ-1433319879871696896 · DIY Diamond Painting Set – Quadratische Steine
+  - 15495120585089 · 2026-08-12 · CHF 16.90 · CJ-1433316211676024832 · DIY Diamond Painting: Vier Bilder in Serie
 - **Bildfamilie — von Hand ansehen** · 6 gemeinsame Bilder (8 bzw. 8 insgesamt, 75%)
   - 15448827199873 · 2026-07-04 · CHF 36.90 · CJ-2037766339821154306 · DR-MEINAIER Süssholz-Serum Anti-Aging LSF 50
   - 15448827593089 · 2026-07-04 · CHF 15.90 · CJ-2033471318793572354 · Lakritz-Wurzel Anti-Aging Serum LSF 50
@@ -42,9 +57,33 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 8 insgesamt, 75%)
   - 15490725020033 · 2026-08-07 · CHF 16.90 · CJ-1424770435689615360 · Ölgemälde
   - 15490725249409 · 2026-08-07 · CHF 16.90 · CJ-1423585496004694016 · Digitales Ölbild zum Ausmalen
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 4 insgesamt, 75%)
+  - 15490725020033 · 2026-08-07 · CHF 16.90 · CJ-1424770435689615360 · Ölgemälde
+  - 15493861441921 · 2026-08-11 · CHF 16.90 · CJ-1424771374517456896 · Digitales Ölgemälde nach Zahlen – personalisierbar
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 8 insgesamt, 75%)
   - 15490725151105 · 2026-08-07 · CHF 16.90 · CJ-1424767673627185152 · Digitales Malen nach Zahlen: Individuelles Porträt
   - 15490725249409 · 2026-08-07 · CHF 16.90 · CJ-1423585496004694016 · Digitales Ölbild zum Ausmalen
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 4 insgesamt, 75%)
+  - 15490725151105 · 2026-08-07 · CHF 16.90 · CJ-1424767673627185152 · Digitales Malen nach Zahlen: Individuelles Porträt
+  - 15493861441921 · 2026-08-11 · CHF 16.90 · CJ-1424771374517456896 · Digitales Ölgemälde nach Zahlen – personalisierbar
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (8 bzw. 4 insgesamt, 75%)
+  - 15490725249409 · 2026-08-07 · CHF 16.90 · CJ-1423585496004694016 · Digitales Ölbild zum Ausmalen
+  - 15493861441921 · 2026-08-11 · CHF 16.90 · CJ-1424771374517456896 · Digitales Ölgemälde nach Zahlen – personalisierbar
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 4 insgesamt, 75%)
+  - 15493861572993 · 2026-08-11 · CHF 16.90 · CJ-1424770879514087424 · Digitales Malen nach Zahlen
+  - 15493861704065 · 2026-08-11 · CHF 16.90 · CJ-1424769335880192000 · Digitales Leinwandbild zum Ausmalen
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 8 insgesamt, 75%)
+  - 15493861572993 · 2026-08-11 · CHF 16.90 · CJ-1424770879514087424 · Digitales Malen nach Zahlen
+  - 15493908431233 · 2026-08-11 · CHF 16.90 · CJ-1423587446100201472 · Digitales Malen nach Zahlen: Eigenes Motiv
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 8 insgesamt, 75%)
+  - 15493861704065 · 2026-08-11 · CHF 16.90 · CJ-1424769335880192000 · Digitales Leinwandbild zum Ausmalen
+  - 15493908431233 · 2026-08-11 · CHF 16.90 · CJ-1423587446100201472 · Digitales Malen nach Zahlen: Eigenes Motiv
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 4 insgesamt, 75%)
+  - 15496251113857 · 2026-08-12 · CHF 16.90 · CJ-1421062964181602304 · DIY Malen nach Zahlen Set «Lost My Heart»
+  - 15496251212161 · 2026-08-12 · CHF 16.90 · CJ-1421062189216829440 · Malen nach Zahlen: Kleiner klarer Bach
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 4 insgesamt, 75%)
+  - 15496379859329 · 2026-08-13 · CHF 16.90 · CJ-1419596709167763456 · Hungry Eyes Malen nach Zahlen DIY-Set
+  - 15496380023169 · 2026-08-13 · CHF 16.90 · CJ-1419595356789936128 · Haus am See im Mondlicht – Malen nach Zahlen
 - **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (8 bzw. 3 insgesamt, 67%)
   - 15448647958913 · 2026-07-04 · CHF 16.90 · CJ-CJJS29447410001 · Vier Jahreszeiten Yoga-Hose mit Print
   - 15448648089985 · 2026-07-04 · CHF 16.90 · CJ-CJJS29447640001 · Vier Jahreszeiten Yoga-Pants mit Print
@@ -90,6 +129,24 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **Bildfamilie — von Hand ansehen** · 4 gemeinsame Bilder (6 bzw. 6 insgesamt, 67%)
   - 15453465969025 · 2026-07-10 · CHF 60.50 · bb-S0800557 · Damenuhr Bellevue B42-2 (Ø 40 mm)
   - 15453474881921 · 2026-07-10 · CHF 60.50 · bb-S0800555 · Damenuhr Bellevue B39 (Ø 35 mm)
+- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (3 bzw. 3 insgesamt, 67%)
+  - 15490724725121 · 2026-08-07 · CHF 15.90 · CJ-1433996325439016960 · Diamant Malerei 5D
+  - 15495119765889 · 2026-08-12 · CHF 15.90 · CJ-1434054573760319488 · Diamond Painting: Kreuzstich-Set
+- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (3 bzw. 3 insgesamt, 67%)
+  - 15490724725121 · 2026-08-07 · CHF 15.90 · CJ-1433996325439016960 · Diamant Malerei 5D
+  - 15495119995265 · 2026-08-12 · CHF 15.90 · CJ-1433997816035938304 · DIY 5D Diamond Painting Schlafzimmer Deko
+- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (3 bzw. 3 insgesamt, 67%)
+  - 15490724725121 · 2026-08-07 · CHF 15.90 · CJ-1433996325439016960 · Diamant Malerei 5D
+  - 15495120257409 · 2026-08-12 · CHF 15.90 · CJ-1433997139230461952 · DIY Diamond Painting Set «Schlafzimmer-Deko»
+- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (3 bzw. 3 insgesamt, 67%)
+  - 15495119765889 · 2026-08-12 · CHF 15.90 · CJ-1434054573760319488 · Diamond Painting: Kreuzstich-Set
+  - 15495119995265 · 2026-08-12 · CHF 15.90 · CJ-1433997816035938304 · DIY 5D Diamond Painting Schlafzimmer Deko
+- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (3 bzw. 3 insgesamt, 67%)
+  - 15495119765889 · 2026-08-12 · CHF 15.90 · CJ-1434054573760319488 · Diamond Painting: Kreuzstich-Set
+  - 15495120257409 · 2026-08-12 · CHF 15.90 · CJ-1433997139230461952 · DIY Diamond Painting Set «Schlafzimmer-Deko»
+- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (3 bzw. 3 insgesamt, 67%)
+  - 15495119995265 · 2026-08-12 · CHF 15.90 · CJ-1433997816035938304 · DIY 5D Diamond Painting Schlafzimmer Deko
+  - 15495120257409 · 2026-08-12 · CHF 15.90 · CJ-1433997139230461952 · DIY Diamond Painting Set «Schlafzimmer-Deko»
 - **Bildfamilie — von Hand ansehen** · 5 gemeinsame Bilder (8 bzw. 8 insgesamt, 62%)
   - 15448827199873 · 2026-07-04 · CHF 36.90 · CJ-2037766339821154306 · DR-MEINAIER Süssholz-Serum Anti-Aging LSF 50
   - 15448827494785 · 2026-07-04 · CHF 27.90 · CJ-2037764087679721473 · Süssholz-Gesichtsserum mit Vitamin C & Retinol
@@ -111,3 +168,15 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (6 bzw. 6 insgesamt, 50%)
   - 15452715221377 · 2026-07-10 · CHF 52.90 · bb-S0800572 · Damenuhr Bellevue H28
   - 15452715254145 · 2026-07-10 · CHF 52.90 · bb-S0800573 · Damenuhr Bellevue H6
+- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (5 bzw. 4 insgesamt, 50%)
+  - 15454002971009 · 2026-07-12 · CHF 15.90 · CJ-1599322210488037376 · Digitalölmalerei rahmenlose Landschaftsdekoration
+  - 15496251343233 · 2026-08-12 · CHF 16.90 · CJ-1420565025722077184 · Malen nach Zahlen – Set «Der Wunderbaum»
+- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (6 bzw. 4 insgesamt, 50%)
+  - 15454056710529 · 2026-07-12 · CHF 15.90 · CJ-1624224484330844160 · Digitales Ölbild rahmenlos im Blumenstil
+  - 15496251343233 · 2026-08-12 · CHF 16.90 · CJ-1420565025722077184 · Malen nach Zahlen – Set «Der Wunderbaum»
+- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (5 bzw. 4 insgesamt, 50%)
+  - 15496251048321 · 2026-08-12 · CHF 25.90 · CJ-BC236048-F847-41B9-941E-C6813DBDE127 · Bild mit Blumenlandschaft
+  - 15496251343233 · 2026-08-12 · CHF 16.90 · CJ-1420565025722077184 · Malen nach Zahlen – Set «Der Wunderbaum»
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (6 bzw. 7 insgesamt, 50%)
+  - 15454107566465 · 2026-07-12 · CHF 14.90 · CJ-70ECF0C8-6741-47C7-84F0-BFC38E96BA85 · Einfacher Feldfahrer-Helm
+  - 15495026049409 · 2026-08-11 · CHF 19.90 · CJ-183522B1-5D64-486D-A04D-96B251BCB7DB · Leichter taktischer Helm
