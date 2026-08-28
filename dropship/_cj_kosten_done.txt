@@ -4517,3 +4517,15 @@ gid://shopify/Product/15448910725505	CHF 18.32	1 Varianten	Partneruhr im Casual-
 gid://shopify/Product/15448910791041	CHF 19.78	1 Varianten	Keramik-Damenuhr mit minimalistischem Design
 gid://shopify/Product/15448910856577	CHF 19.78	4 Varianten	Wasserdichte Outdoor-Sportuhr mit Leuchtfunktion
 gid://shopify/Product/15448910889345	CHF 18.47	8 Varianten	Multifunktionale Sportuhr für Studierende
+gid://shopify/Product/15448910922113	CHF 37.39	1 Varianten	Fitness-Smartwatch mit Herzfrequenz-Tracking · für
+gid://shopify/Product/15448911020417	CHF 26.79	1 Varianten	Bluetooth MP3-Player mit Touchscreen
+gid://shopify/Product/15448911053185	CHF 17.94	1 Varianten	Multifunktionale Outdoor-Survival-Uhr
+gid://shopify/Product/15448911151489	CHF 20.67	1 Varianten	Sportliche Multifunktionsuhr mit Doppelanzeige
+gid://shopify/Product/15448911184257	CHF 19.37	1 Varianten	Qinglu Outdoor Sportuhr
+gid://shopify/Product/15448911249793	CHF 20.94	1 Varianten	Magnetisches Milanaise-Armband für Smartwatches
+gid://shopify/Product/15448911315329	CHF 26.20	1 Varianten	Smartwatch mit Bluetooth-Anrufen & Gesundheits-Tra
+gid://shopify/Product/15448911348097	CHF 19.37	1 Varianten	Wasserdichte Jugend-Digitaluhr mit Alarm
+gid://shopify/Product/15448911413633	CHF 19.53	1 Varianten	Wasserdichte Multifunktions-Sportuhr für Herren
+gid://shopify/Product/15448911446401	CHF 20.22	1 Varianten	Nylon-Canvas-Armband für Smartwatches
+gid://shopify/Product/15448911511937	CHF 17.76	1 Varianten	Retro-Sportuhr für Herren, wasserdicht, leuchtend
+gid://shopify/Product/15448911577473	CHF 20.53	1 Varianten	Multifunktionale Sportuhr mit Dual-Display
