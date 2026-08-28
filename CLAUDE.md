@@ -130,6 +130,30 @@ live belegt an 15411554910593). `automation/versandaussagen_wahrheit.py`, Ledger
   Rechtstexte gehen nur per GraphQL `shopPolicyUpdate` — und dessen Input nimmt `type`
   (`SHIPPING_POLICY`), **nicht** `id`. Ohne Live-Gegenprobe hätte der Lauf als erledigt gegolten.
 
+## 🧹 Die Ware ohne `cj-real` durchgezählt — und es war weniger als befürchtet (2026-08-28)
+Nachdem die POD-Produkte durch fünf Raster gefallen waren, lag die Frage nahe, wie viel andere
+Ware es genauso getroffen hat. **4'015 aktive Produkte tragen kein `cj-real`** (2'409 Fortura,
+155 BigBuy, der Rest Eigenware und POD). Alle vier bekannten Klassen durchgezählt:
+| Klasse | Treffer |
+|---|---:|
+| Gratis-Versand «ab CHF 65» | **0** |
+| USA-/EU-Lieferzusage | **0** |
+| toter Rabattcode im Text | **0** |
+| **«Produktdetails» doppelt** | **53** |
+| **vertauschte Schweizer Flagge** | **1** |
+Die grossen Läufe haben also weiter gegriffen als der POD-Befund vermuten liess — nur der
+Doppelblock und ein Einzelfall blieben. Beide behoben, Gegenprobe über alle 4'015: **0 und 0**.
+- Repariert wieder mit dem vorhandenen `produktdetails_vereinen.py` auf einem frischen
+  LIVE-Mini-Export (eigenes Ledger `_produktdetails_nichtcj.txt`), nicht mit neuer Logik.
+- ⚠️ **«🇭🇨 Schweizer Shop»** — die beiden Regional-Indikatoren waren vertauscht (H+C statt
+  C+H). Das ist kein Land; im Browser erscheint gar keine Flagge, nur zwei Buchstabenkästchen,
+  ausgerechnet neben der Zeile, die Schweizer Herkunft beweisen soll. **Ein Flaggen-Emoji ist
+  ein Buchstabenpaar** — bei einer Prüfung fällt nur auf, dass «etwas Fremdes» dasteht, nicht
+  was; deshalb gehört jeder Fund einzeln angesehen statt gemustert ersetzt.
+**Und die ehrliche Einordnung: Mein Verdacht war grösser als der Befund.** Ich hatte nach dem
+POD-Fund mit einer breiten Altlast gerechnet; gemessen sind es 54 Produkte von 4'015. Die
+Messung war trotzdem richtig — ohne sie wäre die Vermutung stehengeblieben.
+
 ## 🔁 Ein Rewind spult die DATEIEN vor — die laufenden Motoren nicht (2026-08-28)
 Der Rewind-Zweig in `engine_keepalive.sh` erkennt den Rückfall und ruft `repo_vorspulen.sh`.
 Danach ist die Datei aktuell — **der laufende Prozess nicht**. Node liest sein Skript genau
