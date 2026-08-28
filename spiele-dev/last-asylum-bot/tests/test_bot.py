@@ -2908,6 +2908,63 @@ class TestFluchtwegWirdNichtGebremst(unittest.TestCase):
 
 
 
+class TestNeueSpielziele(unittest.TestCase):
+    """Die Ansagen vom 29.08. - jede einzeln nachpruefbar."""
+
+    def cfg(self):
+        with open(os.path.join(ROOT, "config", "last-asylum.json"), encoding="utf-8") as fh:
+            return json.load(fh)
+
+    def aufgabe(self, name):
+        t = next((x for x in self.cfg()["tasks"] if x["name"] == name), None)
+        self.assertIsNotNone(t, f"Aufgabe '{name}' gibt es nicht")
+        return t
+
+    def test_truhen_oeffnen_nur_kisten(self):
+        """'nur kiste oeffnen' - der allgemeine Verwenden-Knopf ist zu unspezifisch.
+
+        Er tippt, was gerade ausgewaehlt ist, und in der Tasche steht neben den
+        Truhen auch alles andere.
+        """
+        self.assertNotIn("btn_benutzen", json.dumps(self.aufgabe("truhen-oeffnen")["do"]),
+                         "die Aufgabe darf nur Truhen oeffnen")
+
+    def test_belohnungen_werden_oft_geholt(self):
+        for name, hoechstens in (("tagesziele", 3600), ("events", 3600),
+                                 ("allianz-geschenke", 1800)):
+            t = self.aufgabe(name)
+            self.assertLessEqual(t["every"], hoechstens,
+                                 f"{name} holt Belohnungen zu selten")
+
+    def test_versammlung_ist_eingeschaltet(self):
+        """Ausdrueckliche Ansage: automatisch an Versammlungen teilnehmen."""
+        t = self.aufgabe("versammlung-beitreten")
+        self.assertTrue(t.get("enabled", True))
+        self.assertLessEqual(t["every"], 300,
+                             "eine Versammlung steht nur etwa eine Minute offen")
+
+    def test_chat_oeffnet_an_gemessener_stelle(self):
+        """Kein Blindtipp: die Stelle ist an einem echten Bildschirm ausgemessen."""
+        t = self.aufgabe("allianz-chat")
+        punkte = [a["tap"] for a in t["do"] if "tap" in a]
+        self.assertTrue(punkte, "ohne Einstieg kommt die Aufgabe nicht in den Chat")
+        self.assertIn("AUSGEMESSEN", t["_zweck"],
+                      "eine feste Stelle braucht den Beleg, woher sie stammt")
+
+    def test_material_fuer_die_fehlenden_wege_wird_geholt(self):
+        """Was fehlt, muss der Bot selbst fotografieren - sonst bleibt es liegen."""
+        erwartet = {
+            "versammlung-beitreten": "allianz-fenster.png",
+            "allianz-chat": "chat-fenster.png",
+            "zuflucht": "zuflucht-eingang.png",
+            "truppe-1-aufwerten": "held-menue.png",
+            "monster-jagen": "monster-weg.png",
+        }
+        for name, datei in erwartet.items():
+            self.assertIn(datei, json.dumps(self.aufgabe(name)["do"]),
+                          f"{name} muss {datei} in voller Aufloesung ablegen")
+
+
 class TestFrischGeschnitteneVorlagen(unittest.TestCase):
     """Vorlagen aus den gesammelten Ansichten - halbe Groesse, Faktor 2.0.
 

@@ -1645,10 +1645,10 @@
     },
     {
       "name": "tagesziele",
-      "every": 7200,
+      "every": 3600,
       "at_start": true,
-      "priority": 130,
-      "_zweck": "Tagesziel-Kalender oeffnen und alle Belohnungen abholen, einmal oben und nach einem Wisch nochmal weiter unten in der Liste.",
+      "priority": 132,
+      "_zweck": "Tagesziel-Kalender oeffnen und alle Belohnungen abholen, einmal oben und nach einem Wisch nochmal weiter unten in der Liste. TAKT auf 3600 s, Prioritaet 132 (Nutzer 29.08.: 'belohnungen sofort holen', 'alle gratis belohnungen holen').",
       "do": [
         {
           "log": "Tagesziele: alle Belohnungen abholen"
@@ -1812,10 +1812,10 @@
     },
     {
       "name": "truhen-oeffnen",
-      "every": 5400,
+      "every": 2700,
       "at_start": true,
-      "priority": 108,
-      "_zweck": "Tasche -> Spezial: Truhen und Beutekisten oeffnen. Der orange 'Alles abholen' im Beute-Fenster raeumt gleich alles ab. Braucht tasche/truhe.png (die Kiste im Spezial-Reiter) und ui/btn_alles_abholen.png. Holt beim ersten Mal ausserdem austausch/tasche-spezial.png in voller Aufloesung: aus dem halbierten Sammelbild laesst sich kein Merkmal schneiden, und ohne ein Merkmal fuer 'Ausdauer' bleibt die Sperre gegen das Verbrauchen der Flaeschchen grob.",
+      "priority": 126,
+      "_zweck": "Tasche -> Spezial: Truhen und Beutekisten oeffnen. Der orange 'Alles abholen' im Beute-Fenster raeumt gleich alles ab. Braucht tasche/truhe.png (die Kiste im Spezial-Reiter) und ui/btn_alles_abholen.png. Holt beim ersten Mal ausserdem austausch/tasche-spezial.png in voller Aufloesung: aus dem halbierten Sammelbild laesst sich kein Merkmal schneiden, und ohne ein Merkmal fuer 'Ausdauer' bleibt die Sperre gegen das Verbrauchen der Flaeschchen grob. TAKT auf 2700 s, Prioritaet 126 (Nutzer 29.08.: 'belohnungen sofort holen', 'alle gratis belohnungen holen'). 'NUR KISTE OEFFNEN' (Nutzer 29.08.): der Schritt auf ui/btn_benutzen.png ist raus. Er tippt einen allgemeinen Verwenden-Knopf und unterscheidet nicht, was gerade ausgewaehlt ist - in der Tasche steht neben den Truhen auch alles andere. Truhen oeffnen und 'Alles abholen' reichen.",
       "do": [
         {
           "log": "Kisten oeffnen"
@@ -1879,16 +1879,6 @@
                   "template": "tasche/truhe.png",
                   "optional": true,
                   "threshold": 0.87,
-                  "after": [
-                    1.2,
-                    2.0
-                  ]
-                }
-              },
-              {
-                "tap_template": {
-                  "template": "ui/btn_benutzen.png",
-                  "optional": true,
                   "after": [
                     1.2,
                     2.0
@@ -2016,10 +2006,10 @@
     },
     {
       "name": "allianz-geschenke",
-      "every": 3600,
+      "every": 1800,
       "at_start": true,
-      "priority": 120,
-      "_zweck": "Allianz-Menue: Hilfe geben, Truhen und Geschenke abholen. Hilfe kostet nichts und beschleunigt alle in der Allianz.",
+      "priority": 128,
+      "_zweck": "Allianz-Menue: Hilfe geben, Truhen und Geschenke abholen. Hilfe kostet nichts und beschleunigt alle in der Allianz. TAKT auf 1800 s, Prioritaet 128 (Nutzer 29.08.: 'belohnungen sofort holen', 'alle gratis belohnungen holen').",
       "do": [
         {
           "log": "Allianz: Hilfe geben, Truhen und Geschenke abholen"
@@ -2203,10 +2193,10 @@
     },
     {
       "name": "allianz-technologie-spenden",
-      "every": 14400,
+      "every": 7200,
       "at_start": true,
-      "priority": 105,
-      "_zweck": "Allianz -> Allianz-Forschung -> empfohlene Technologie -> mit RESSOURCEN spenden (blauer Knopf, kostet nur Kraeuter). Ist der blaue Knopf ausgegraut, weil Limit oder Vorrat erschoepft ist, trifft die Vorlage ihn nicht mehr - genau so soll es sein. Braucht allianz/forschung.png und allianz/spenden_ressourcen.png (den AKTIVEN blauen Knopf schneiden, nicht den grauen).",
+      "priority": 110,
+      "_zweck": "Allianz -> Allianz-Forschung -> empfohlene Technologie -> mit RESSOURCEN spenden (blauer Knopf, kostet nur Kraeuter). Ist der blaue Knopf ausgegraut, weil Limit oder Vorrat erschoepft ist, trifft die Vorlage ihn nicht mehr - genau so soll es sein. Braucht allianz/forschung.png und allianz/spenden_ressourcen.png (den AKTIVEN blauen Knopf schneiden, nicht den grauen). TAKT auf 7200 s, Prioritaet 110 (Nutzer 29.08.: 'belohnungen sofort holen', 'alle gratis belohnungen holen').",
       "do": [
         {
           "log": "Allianz-Technologie: mit Ressourcen spenden"
@@ -4353,10 +4343,22 @@
       "every": 1800,
       "at_start": true,
       "priority": 125,
-      "_zweck": "In die Zuflucht wechseln und alles einsammeln (Kraeuter, Geschenke, Offline-Einnahmen). Die Regeln oben erledigen das Einsammeln, sobald der Bildschirm sichtbar ist. Fuer den Wechsel braucht es nav/zuflucht.png (der Umschalter am linken Bildrand). 03.08.: der Ersatzpunkt im tap_first war geraten (1 Stelle(n) entfernt) - ein blinder Tipp an den aeussersten linken Bildrand, ohne dass je jemand nachgesehen haette, was dort liegt. Solange nav/zuflucht.png fehlt, laeuft die Aufgabe lieber sauber leer als blind zu tippen. AUS seit 03.08.: nav/zuflucht.png fehlt. Mit dem geratenen Ersatz-Punkt tippte die Aufgabe blind an den linken Bildrand, ohne Ersatz-Punkt bliebe sie stehen - beides nichts wert. Der Ansichten-Sammler liefert den Bildschirm, dann Vorlage schneiden und wieder anschalten.",
+      "_zweck": "In die Zuflucht wechseln und alles einsammeln (Kraeuter, Geschenke, Offline-Einnahmen). Die Regeln oben erledigen das Einsammeln, sobald der Bildschirm sichtbar ist. Fuer den Wechsel braucht es nav/zuflucht.png (der Umschalter am linken Bildrand). 03.08.: der Ersatzpunkt im tap_first war geraten (1 Stelle(n) entfernt) - ein blinder Tipp an den aeussersten linken Bildrand, ohne dass je jemand nachgesehen haette, was dort liegt. Solange nav/zuflucht.png fehlt, laeuft die Aufgabe lieber sauber leer als blind zu tippen. AUS seit 03.08.: nav/zuflucht.png fehlt. Mit dem geratenen Ersatz-Punkt tippte die Aufgabe blind an den linken Bildrand, ohne Ersatz-Punkt bliebe sie stehen - beides nichts wert. Der Ansichten-Sammler liefert den Bildschirm, dann Vorlage schneiden und wieder anschalten. Nutzer 29.08.: 'so schnell wie moeglich zuflucht upgraden bis 30'. Die Aufgabe bleibt AUS, weil nav/zuflucht.png fehlt und ich nicht raten will, welches Symbol am linken Rand der Umschalter ist - die Symbolspalte in austausch/ansichten/12-04030403.png zeigt Burg, Wagen, Fragezeichen, Falke und Werkzeug, keines davon eindeutig. Sobald ein Vollbild mit offener Zuflucht da ist, wird geschnitten und eingeschaltet.",
       "do": [
         {
           "log": "Zuflucht besuchen und abernten"
+        },
+        {
+          "ausschnitt": {
+            "datei": "austausch/zuflucht-eingang.png",
+            "region": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "mindestabstand": 7200
+          }
         },
         {
           "tap_first": {
@@ -4450,10 +4452,10 @@
     },
     {
       "name": "events",
-      "every": 7200,
+      "every": 3600,
       "at_start": true,
-      "priority": 115,
-      "_zweck": "Die beiden Event-Symbole am rechten Bildrand oeffnen und abholen, was abholbar ist. Fuer die taeglich wechselnden Reiter gibt es zusaetzlich die Regel 'vorfall-durchklappern'.",
+      "priority": 131,
+      "_zweck": "Die beiden Event-Symbole am rechten Bildrand oeffnen und abholen, was abholbar ist. Fuer die taeglich wechselnden Reiter gibt es zusaetzlich die Regel 'vorfall-durchklappern'. TAKT auf 3600 s, Prioritaet 131 (Nutzer 29.08.: 'belohnungen sofort holen', 'alle gratis belohnungen holen').",
       "do": [
         {
           "log": "Events durchgehen und alle Belohnungen holen"
@@ -4706,22 +4708,34 @@
     },
     {
       "name": "allianz-chat",
-      "every": 21600,
-      "priority": 70,
+      "every": 3600,
+      "priority": 115,
       "do": [
         {
           "log": "Allianz-Chat: Admin-Nachricht senden"
         },
         {
-          "tap_first": {
-            "of": [
-              "chat/oeffnen.png",
-              "nav/chat.png"
+          "tap": [
+            0.5,
+            0.94
+          ]
+        },
+        {
+          "sleep": [
+            2.5,
+            3.5
+          ]
+        },
+        {
+          "ausschnitt": {
+            "datei": "austausch/chat-fenster.png",
+            "region": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
             ],
-            "after": [
-              2.5,
-              3.5
-            ]
+            "mindestabstand": 7200
           }
         },
         {
@@ -4864,7 +4878,8 @@
           ]
         }
       ],
-      "_zweck": "Schreibt eine Admin-Nachricht in den Allianz-Chat. Pruefe beim ersten Lauf, ob der blaue Plus-Knopf wirklich sendet - falls er nur Anhaenge oeffnet, schneide den echten Sende-Knopf neu nach chat/senden.png."
+      "_zweck": "Schreibt eine Admin-Nachricht in den Allianz-Chat. Pruefe beim ersten Lauf, ob der blaue Plus-Knopf wirklich sendet - falls er nur Anhaenge oeffnet, schneide den echten Sende-Knopf neu nach chat/senden.png. 29.08.: chat/oeffnen.png und nav/chat.png fehlen beide, die Aufgabe kam also nie ueber den ersten Schritt hinaus. Der Chat-Streifen liegt in der Stadtansicht fest unten in der Mitte - an austausch/ansichten/12-04030403.png AUSGEMESSEN: Mitte bei x=0.50, y=0.94. Das ist kein geratener Blindtipp, sondern eine nachgesehene Stelle. Ein Vollbild des Chats wird mitgenommen, damit der Rest des Weges sauber geschnitten werden kann. Takt 21600 auf 3600, Prioritaet 70 auf 115 (Nutzer: 'auch bei chat mitmachen').",
+      "at_start": true
     },
     {
       "name": "chat-schatz-holen",
@@ -5312,8 +5327,8 @@
     },
     {
       "name": "sammeln",
-      "every": 900,
-      "priority": 90,
+      "every": 600,
+      "priority": 95,
       "do": [
         {
           "log": "Sammel-Truppen losschicken (alle freien Maersche)"
@@ -5440,7 +5455,7 @@
           }
         }
       ],
-      "_zweck": "Wichtigste Dauerquelle: alle 15 Minuten nachsehen, ob ein Marsch-Platz frei geworden ist, und bis zu vier Trupps losschicken. Ist kein Platz frei, findet der Bot die Knoepfe nicht und der Versuch verpufft folgenlos.",
+      "_zweck": "Wichtigste Dauerquelle: alle 15 Minuten nachsehen, ob ein Marsch-Platz frei geworden ist, und bis zu vier Trupps losschicken. Ist kein Platz frei, findet der Bot die Knoepfe nicht und der Versuch verpufft folgenlos. TAKT auf 600 s, Prioritaet 95 (Nutzer 29.08.: 'belohnungen sofort holen', 'alle gratis belohnungen holen').",
       "at_start": true
     },
     {
@@ -6781,9 +6796,9 @@
     {
       "name": "versammlung-beitreten",
       "every": 300,
-      "priority": 150,
-      "enabled": false,
-      "_zweck": "Ruft jemand aus der Allianz eine Versammlung aus, moeglichst mitmachen: das ist die ergiebigste Art zu kaempfen und kostet nur Ausdauer. Weg: Allianz -> Versammlungs-liste -> offene Versammlung -> blauer 'Beitreten' -> bestaetigen -> zurueck. STEHT AUF AUS, und zwar nicht wegen der Vorlagen: der Bot kann die Stufe des Ziels und die empfohlene Macht nicht lesen (siehe _zahlen_lesen). Ohne das traete er auch Versammlungen bei, die zu stark sind - dabei gehen die Truppen verloren, und das kostet mehr als der Ertrag bringt. Erst einschalten, wenn das Zahlenlesen steht.",
+      "priority": 190,
+      "enabled": true,
+      "_zweck": "Ruft jemand aus der Allianz eine Versammlung aus, moeglichst mitmachen: das ist die ergiebigste Art zu kaempfen und kostet nur Ausdauer. Weg: Allianz -> Versammlungs-liste -> offene Versammlung -> blauer 'Beitreten' -> bestaetigen -> zurueck. STEHT AUF AUS, und zwar nicht wegen der Vorlagen: der Bot kann die Stufe des Ziels und die empfohlene Macht nicht lesen (siehe _zahlen_lesen). Ohne das traete er auch Versammlungen bei, die zu stark sind - dabei gehen die Truppen verloren, und das kostet mehr als der Ertrag bringt. Erst einschalten, wenn das Zahlenlesen steht. EINGESCHALTET am 29.08. auf ausdrueckliche Ansage ('nehme automatisch an versammlungen teil'). Der Grund fuer das Aus bleibt bestehen und sei hier festgehalten: der Bot kann die Stufe des Ziels nicht lesen, tritt also auch zu starken Versammlungen bei. Praktisch aendert das Einschalten vorerst nichts - allianz/versammlung_liste.png, allianz/versammlung_offen.png und allianz/beitreten.png fehlen alle drei. Darum holt die Aufgabe jetzt ein Vollbild des Allianz-Fensters; daraus schneide ich die drei.",
       "do": [
         {
           "log": "Offene Versammlungen der Allianz pruefen"
@@ -6806,6 +6821,18 @@
               2.0,
               3.0
             ]
+          }
+        },
+        {
+          "ausschnitt": {
+            "datei": "austausch/allianz-fenster.png",
+            "region": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "mindestabstand": 3600
           }
         },
         {
