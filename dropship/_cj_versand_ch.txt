@@ -929,3 +929,5 @@ gid://shopify/Product/15517554377089	nicht-versendbar	Teppanyaki Steakgrill mit 
 gid://shopify/Product/15517575479681	ok	Brusttasche "Krokodil" aus Leder
 gid://shopify/Product/15517646094721	ok	Smartwatch 4G mit Dual-Kamera & Herzfrequenz
 gid://shopify/Product/15518577918337	ok	Smartwatch mit Herzfrequenzmesser & Schrittzähler
+gid://shopify/Product/15518599610753	ok	Tennis-Badminton-Tasche (2er-Pack) · 2 Stück
+gid://shopify/Product/15518618386817	ok	X300 H1 Smartwatch mit Runddisplay
