@@ -4266,12 +4266,24 @@ setTimeout(function baueTiere(){
     ladeTier(fa[0],fa[1],function(w){if(!w)return;scene.add(w);
       window._tiere.land.push({mesh:w,x:-94+i*4,z:-32-i*3,head:i*2.1,sp:fa[2],turnT:3+i,walkT:i,yaw:Math.PI,home:{x:-93,z:-33,r:7}});});});
   /* Zweite Herde in der neuen Koppel des Bauernhof-Viertels (Charge 38). Eine leere
-     Koppel liest sich als vergessener Zaun — erst die Tiere machen sie zur Weide. */
-  [["an_cow.glb",1.15,0.4],["an_cow.glb",1.15,0.35],["an_pig.glb",0.7,0.5],
-   ["an_chicken.glb",0.4,0.7],["an_chicken.glb",0.4,0.75]].forEach(function(fa,i){
-    ladeTier(fa[0],fa[1],function(w){if(!w)return;scene.add(w);
-      window._tiere.land.push({mesh:w,x:23+i*3,z:-183+i*2.5,head:i*1.3,sp:fa[2],
-        turnT:2.5+i,walkT:i*0.7,yaw:Math.PI,home:{x:30.5,z:-177,r:9}});});});
+     Koppel liest sich als vergessener Zaun — erst die Tiere machen sie zur Weide.
+     ⚠️ ERST WARTEN, DANN SETZEN. Die Koordinaten standen fest auf (30,5|-177) — dem
+     WUNSCHORT des Bauernhofs. Der weicht beim Setzen aus und steht auf z = -246, die
+     Koppel also auf z = -227; die Herde stand 50 m daneben. Dieselbe Falle wie bei der
+     Park-Ausstattung des Freizeitparks. `baueTiere` laeuft bei 0 ms, die Viertel
+     entstehen bei 260 ms — darum hier ein eigener spaeter Lauf, der die ECHTE Lage
+     liest. Der Versatz stammt aus `hofausbau`: Koppelmitte = (30,5+BHDX | -177+BHDZ). */
+  setTimeout(function koppelHerde(){
+    var bh=null,V=(window._viertelSolver||{}).VIERTEL||[];
+    for(var b=0;b<V.length;b++)if(V[b].name==="Bauernhof")bh=V[b];
+    var BHDX=(bh?bh.x:-40)+40, BHDZ=(bh?bh.z:-196)+196;
+    var KX=30.5+BHDX, KZ=-177+BHDZ;
+    [["an_cow.glb",1.15,0.4],["an_cow.glb",1.15,0.35],["an_pig.glb",0.7,0.5],
+     ["an_chicken.glb",0.4,0.7],["an_chicken.glb",0.4,0.75]].forEach(function(fa,i){
+      ladeTier(fa[0],fa[1],function(w){if(!w)return;scene.add(w);
+        window._tiere.land.push({mesh:w,x:KX-7.5+i*3,z:KZ-6+i*2.5,head:i*1.3,sp:fa[2],
+          turnT:2.5+i,walkT:i*0.7,yaw:Math.PI,home:{x:KX,z:KZ,r:9}});});});
+  },1200);
 },0);
 // ---- Echte Gebaeude (Kenney/CC0 bd_*.glb aus der Repo-Bibliothek) ----
 setTimeout(function baueGebaeude(){
@@ -7982,7 +7994,20 @@ function updTiere(dt,now){var M9=window._muehle;if(M9)M9.rotation.z+=dt*1.1;
     if(an.home&&Math.hypot(an.x-an.home.x,an.z-an.home.z)>an.home.r)an.head=Math.atan2(an.home.x-an.x,an.home.z-an.z);
     var _anx=an.x+Math.sin(an.head)*an.sp*dt,_anz=an.z+Math.cos(an.head)*an.sp*dt; /* 🐄 nicht durch Gebaeude */
     if(inSolid(_anx,_anz))an.head+=2.4+Math.random();else{an.x=_anx;an.z=_anz;}
-    var lim=108;if(Math.abs(an.x)>lim||Math.abs(an.z)>lim){an.head+=Math.PI;an.x=Math.max(-lim,Math.min(lim,an.x));an.z=Math.max(-lim,Math.min(lim,an.z));}
+    /* ⚠️ DIE WELTGRENZE GALT AUCH FUER ORTSGEBUNDENE TIERE — und die Koppel des
+       Bauernhofs liegt bei z = -227, weit ausserhalb. Die fuenf Koppel-Tiere steuerten
+       also seit Einfuehrung des Viertels auf ihr `home` zu und wurden bei z = -108 hart
+       geklemmt: eine Reihe Kuehe und Huehner, die fuer immer an einer unsichtbaren
+       Wand im offenen Feld stehen (gemessen: alle fuenf exakt auf z = -108).
+       Wer ein `home` hat, wird von dort gehalten; die Grenze gilt nur fuer die frei
+       umherziehenden Tiere der Innenstadt. */
+    if(an.home){
+      var _hr=an.home.r+8;
+      if(Math.hypot(an.x-an.home.x,an.z-an.home.z)>_hr){
+        an.x=an.home.x+(an.x-an.home.x)*_hr/Math.hypot(an.x-an.home.x,an.z-an.home.z);
+        an.z=an.home.z+(an.z-an.home.z)*_hr/Math.hypot(an.x-an.home.x,an.z-an.home.z);}
+    }else{
+      var lim=108;if(Math.abs(an.x)>lim||Math.abs(an.z)>lim){an.head+=Math.PI;an.x=Math.max(-lim,Math.min(lim,an.x));an.z=Math.max(-lim,Math.min(lim,an.z));}}
     an.walkT+=dt*8*an.sp;an.mesh.position.set(an.x,Math.abs(Math.sin(an.walkT))*(an.hop||0.04),an.z);an.mesh.rotation.y=an.head+(an.yaw||0);
     var lg=an.mesh.userData.legs;if(lg){var sw=Math.sin(an.walkT)*0.5;lg[0].rotation.x=sw;lg[3].rotation.x=sw;lg[1].rotation.x=-sw;lg[2].rotation.x=-sw;}}}
 // ---- Heißluftballon, der über die Stadt zieht ----
