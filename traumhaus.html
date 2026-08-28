@@ -543,7 +543,13 @@ var WORLD_POIS=[
   [-33,86,"🏛️","Altstadt"],[68,68,"🌳","Grosser Park"],[96,14,"⛲","Brunnen-Park"],
   [98,-30,"🛝","Spielplatz"],[0,102,"🚉","Bahnhof"],[26,67,"🏪","Marktplatz"],
   [96,-33,"🏰","Villen Ost"],[-96,18,"🏰","Villen West"],[10,139,"⛵","Seepark"],[-232,0,"🌊","Meer"],
-  [172,0,"🏢","Gewerbe Ost"],[0,216,"🏟️","Sportpark"],[60,330,"🎡","Freizeitpark"],[-190,212,"🎢","Achterbahn"],[155,86,"🚡","Seilbahn"],[-74.5,148,"🌷","Kurpark"],[172,60,"🏙️","Stadthaeuser Ost"]];
+  [172,0,"🏢","Gewerbe Ost"],[0,216,"🏟️","Sportpark"],[60,330,"🎡","Freizeitpark"],[-190,212,"🎢","Achterbahn"],[155,86,"🚡","Seilbahn"],[-74.5,148,"🌷","Kurpark"],[172,60,"🏙️","Stadthaeuser Ost"],
+  /* Die drei Viertel dieser Charge hatten keine Marke — sie standen in der Welt, aber
+     auf der Karte war dort nichts, und kein Lieferauftrag fuehrte hin. Ein Viertel, das
+     man nicht findet, ist so gut wie nicht gebaut.
+     Die Koordinaten hier sind nur der Startwert: `marke()` in `viertel()` schreibt die
+     ECHTE Lage hinein, sobald das Viertel steht (Namensgleichheit genuegt). */
+  [160,220,"🎰","Vergnuegungsviertel"],[-200,-250,"🦓","Zoo"],[300,-260,"✈️","Flughafen"]];
 var WORLD_SOLIDS=[];
 /* Gitter-Index (16 m Zellen): inSolid lief linear ueber ALLE Kollider und wird pro
    Bewegungsschritt jedes Bewohners/Autos gerufen. Mit den Landschafts-Hindernissen
@@ -10387,7 +10393,13 @@ document.getElementById("exitCar").onclick=aussteigen;
 document.getElementById("nitroBtn").onclick=function(){if(fahren){nitro=1.6;beep(180,.3,"sawtooth",.05);var b=this;b.style.transform="scale(1.2)";setTimeout(function(){b.style.transform="";},200);}};
 // ---- Blitz-Lieferung: 60s-Fahrjob (Beifahrer = +50% Team-Bonus) ----
 var liefer=null;
-var LIEFERZIELE=[["Markt",26,67],["Seepark",10,139],["Spielplatz",98,-30],["Bauernhof",-40,-196],["Windmühle",-136,-196],["Brunnen-Park",96,14],["Sportpark",0,216],["Freizeitpark",60,330],["Gewerbe Ost",172,0]];
+/* ⚠️ Die drei neuen Viertel fehlten hier — der Lieferauftrag schickte einen nie zum
+   Vergnuegungsviertel, zum Zoo oder zum Flughafen, obwohl sie erreichbar sind. Der Lohn
+   waechst mit der Strecke (`lohn = (40 + t*1,6 + weg*0,5) * bonus`), lange Ziele zahlen
+   sich also selbst. Die Koordinaten sind Startwerte; `marke()` zieht sie auf die echte
+   Lage nach, sobald das Viertel steht. */
+var LIEFERZIELE=[["Markt",26,67],["Seepark",10,139],["Spielplatz",98,-30],["Bauernhof",-40,-196],["Windmühle",-136,-196],["Brunnen-Park",96,14],["Sportpark",0,216],["Freizeitpark",60,330],["Gewerbe Ost",172,0],
+  ["Vergnuegungsviertel",160,220],["Zoo",-200,-250],["Flughafen",300,-260]];
 document.getElementById("lieferBtn").onclick=function(){
   if(!fahren||liefer)return;
   /* 💰 Die Lieferung war die einzige UNGEDECKELTE Geldquelle: ~120-260 $ pro Minute,
