@@ -246,3 +246,4 @@ gid://shopify/Product/15515871150465	anti-verlust-hunde-leine-605800	Anti-Verlus
 gid://shopify/Product/15516170551681	uhrenreparaturwerkzeug-5e5e07	Uhrenreparaturwerkzeug
 gid://shopify/Product/15516304441729	elegantes-business-midikleid-mit-ruschenarmeln-616900	Elegantes Business-Midikleid mit Rüschenärmeln
 gid://shopify/Product/15517968597377	reflektierende-hunde-leine-fur-kleine-bis-gros-227968	Reflektierende Hunde-Leine für kleine bis grosse Hunde
+gid://shopify/Product/15518560551297	bohemian-exotik-rock-im-resort-stil-632700	Bohemian Exotik-Rock im Resort-Stil
