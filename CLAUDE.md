@@ -130,6 +130,25 @@ live belegt an 15411554910593). `automation/versandaussagen_wahrheit.py`, Ledger
   Rechtstexte gehen nur per GraphQL `shopPolicyUpdate` — und dessen Input nimmt `type`
   (`SHIPPING_POLICY`), **nicht** `id`. Ohne Live-Gegenprobe hätte der Lauf als erledigt gegolten.
 
+## 📐 «Wir tauschen kostenlos» stand auf der Seite, zu der POD-Käufer geschickt werden (2026-08-28)
+Nachdem die POD-Produkte den Rückgabe-Ausschluss bekommen hatten, blieb eine Stelle übrig:
+Die Produktseite blendet für Kleidung die **Grössen-Seite** ein (`pages['groessentabelle']`),
+und dort stand unwidersprochen «🔄 Falsche Grösse bestellt? Kein Problem. Schreib uns an
+info@luxestyle.ch und **wir tauschen kostenlos**» — eine noch stärkere Zusage als die 30 Tage
+Rückgabe. Genau dorthin schickt die Seite jemanden, der ein Shirt mit eigenem Motiv bestellt:
+**keine Rückgabe, kein Umtausch, und die Grösse ist die grösste Unsicherheit beim Kauf.**
+Die Zusage für normale Ware bleibt unangetastet — sie stimmt dort. Ergänzt wurde nur die
+Ausnahme, direkt unter dem Umtausch-Absatz. Live gegengeprüft: beide Aussagen stehen jetzt
+nebeneinander, jede an ihrer Stelle.
+**Nebenbefund aus derselben Prüfung: die Auswahl sagt «2XL», die Tabelle sagte «XXL».**
+Dieselbe Grösse, zwei Schreibweisen auf einem Bildschirm. Nachgezählt über 200 aktive
+Damen-Produkte: **XXL 21×, 2XL 20×** — der Katalog selbst benutzt beide fast gleich oft, «XXXL»
+dagegen kein einziges Mal (dort heisst es 3XL). Die Tabelle zeigt jetzt «XXL / 2XL».
+**Lehre: Eine Zusage lebt nicht nur auf der Produktseite.** Sie steht im Theme, in der
+Richtlinie, in verlinkten Shop-Seiten — und die verlinkte Seite erreicht kein Produkt-Textlauf.
+Wer eine Aussage einschränkt, muss der Verlinkung folgen (dieselbe Klasse wie «der Textlauf
+erreicht das Theme nie», 20.08.).
+
 ## 🕳️ 17 rankende Seiten waren 404 — 12'320 Suchen im Monat ins Nichts (2026-08-28)
 Die Semrush-Rangliste (100 Begriffe) gegen den LIVE-Status geprüft: **17 von 60 rankenden
 Produkt-URLs sind DRAFT** — für Besucherinnen ein 404. Google zeigt sie trotzdem, jemand
