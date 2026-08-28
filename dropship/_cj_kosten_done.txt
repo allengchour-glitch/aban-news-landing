@@ -4505,3 +4505,4 @@ gid://shopify/Product/15448909840769	CHF 27.09	1 Varianten	Multifunktionale Retr
 gid://shopify/Product/15448909906305	CHF 22.46	3 Varianten	Multifunktionale Business-Armbanduhr für Herren
 gid://shopify/Product/15448910004609	CHF 20.67	1 Varianten	Multifunktionale Business Herrenuhr
 gid://shopify/Product/15448910102913	CHF 24.41	1 Varianten	Multifunktionale Sportuhr
+gid://shopify/Product/15448910168449	CHF 23.21	1 Varianten	Qians Casual Holzarmbanduhr
