@@ -4493,3 +4493,5 @@ gid://shopify/Product/15448908628353	CHF 26.81	5 Varianten	Multifunktionale Herr
 gid://shopify/Product/15448908693889	CHF 29.63	7 Varianten	Automatische Business-Armbanduhr
 gid://shopify/Product/15448908792193	CHF 18.95	4 Varianten	Smart-Armband mit Farbdisplay
 gid://shopify/Product/15448908988801	CHF 19.53	5 Varianten	Wasserdichte Leuchtende Armbanduhr
+gid://shopify/Product/15448909152641	CHF 24.53	15 Varianten	Smartes Unisex-Armband mit Herzfrequenzmessung
+gid://shopify/Product/15448909218177	CHF 18.32	6 Varianten	Wasserdichte Multifunktions-Elektronikuhr
