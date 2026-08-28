@@ -51,6 +51,11 @@ mkdir -p _site
 # rund 26 Bildschirme weiter unten sitzt. Tolerant.
 ( command -v python3 >/dev/null 2>&1 && python3 tools/lazy_embeds.py --fix ) || echo "lazy_embeds übersprungen"
 
+# Seiten ohne eingehenden Link melden (nur Bericht, keine Aenderung): eine Seite,
+# auf die nichts verweist, findet nur, wer die Adresse kennt.
+( command -v python3 >/dev/null 2>&1 && python3 tools/verwaiste_seiten.py >/dev/null || true ) 2>/dev/null
+( command -v python3 >/dev/null 2>&1 && python3 tools/verwaiste_seiten.py | head -8 ) || true
+
 # Tote interne Links melden (bricht den Build NICHT ab — der Bericht soll sichtbar
 # sein, aber ein einzelner Tippfehler darf kein Deploy verhindern). Stand nach der
 # Einfuehrung: 0 tote Ziele bei 54'161 geprueften Links.
