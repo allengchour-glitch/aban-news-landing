@@ -20,6 +20,71 @@ in der App wählen lassen. Für Einzel-Posts der Standard-Weg, bis die API frei 
 **Content-Nachschub:** cj_video_reel_engine baut Reels aus CJ-Produktvideos — praktisch unendlich,
 Ledger verhindern jede Wiederholung (plattformübergreifend). 29 ready in reels_seed.csv.
 
+## 🎯 Wo das Geld liegt — 90 Tage gemessen, und ein Ratgeber ohne Ware (2026-08-28)
+Betreiber: «mache alles automatisch … für viele verkäufe». Also zuerst gemessen, wo Verkäufe
+überhaupt herkommen. ShopifyQL über 60 Tage:
+| Quelle | Sitzungen | Kassengänge |
+|---|---:|---:|
+| direct | 18'482 | 6 |
+| **social** | **6'060** | **0** |
+| **search** | **480** | **4** |
+**6'060 Social-Sitzungen, null Kassengänge.** Und die grösste Einzel-Landeseite,
+`/collections/viral-hits` mit 527 Sitzungen, bezieht **493 davon aus Social** — die Seite ist
+nicht kaputt, ihr Verkehr ist wertlos. Gut, dass ich das VOR der «Optimierung» gemessen habe.
+Suchverkehr landet auf genau **vier** Seiten. Eine davon ist ein Ratgeber:
+`/blogs/ratgeber/faszienrolle-uebungen-anleitung` — **77 Sitzungen, 0 Warenkörbe**. Er verlinkte
+sechsmal eine Kollektion und **kein einziges Produkt**. Jetzt führt er auf drei aktive
+Faszienrollen mit CJ-SKU (live gegengeprüft).
+- ⚠️ **Korrektur an meiner eigenen Aussage von gestern:** Ich hatte die 307 Ratgeber als
+  Null-Hebel abgeschrieben (13 Sitzungen/Monat). Über 90 Tage bringt DIESER eine 77 — meine
+  30-Tage-Messung war zu kurz. **Ein Nullbefund über ein zu kurzes Fenster ist kein Nullbefund.**
+- `automation/ratgeber_ohne_ware.py` (täglich, MELDET NUR) findet zwei Klassen: Ratgeber, die
+  Ware mit NAMEN und PREIS bewerben, die es nicht gibt, und Ratgeber ohne einen kaufbaren
+  Produktlink. Die Klasse wächst nach — jedes Mal, wenn ein Wächter ein Produkt draftet, wird
+  ein Ratgeber, der es bewirbt, zur Falschaussage.
+- ⚠️ **Kein Auto-Fix.** Die erste Fassung hängte das meistverkaufte Produkt einer verlinkten
+  Kollektion an und schlug unter einem DUFTKERZEN-Ratgeber einen **Vakuumierer** vor, unter
+  einem AKUPRESSUR-Ratgeber einen **Luftventil-Halter**. Köderwechsel, dieselbe Lehre wie bei
+  den toten Landeseiten. Die Reparatur ist die WARE oder der TEXT.
+
+## ⛔ Shopifys `title:`-Filter liefert NICHTS — ich habe einen ganzen Befund darauf gebaut (2026-08-28)
+Ich meldete «der Shop hat keine einzige Faszienrolle» und leitete daraus einen Einkaufsauftrag
+ab. **Falsch.** `products(query:"status:active AND title:Faszienrolle")` gibt `[]` zurück —
+`products(query:"Faszienrolle")` findet sie sofort. Gegenprobe an bekannter Ware:
+`title:Sonnenbrille` → **0 Treffer**, obwohl eine Polaroid-Sonnenbrille in der Verkehrsliste
+steht. Der Filter schweigt, statt zu scheitern.
+**Die Wahrheit war eine andere und eine bessere:** «Faszienroller für Muskeln» und
+«Verstellbare Teleskop-Faszienrolle» sind AKTIV. Die im Ratgeber namentlich beworbenen
+«Faszienrolle Premium 3er-Set CHF 44.90», «Akupressur-Matte Premium Set CHF 49.90» und
+«Recovery-Set Premium CHF 129.90» existieren ebenfalls — alle **DRAFT mit `keine-lieferanten-ref`
+und `sku: null`**. Der Viability-Guard hat sie zu Recht gedraftet: dahinter steht kein Lieferant.
+⚠️ **NICHT veröffentlichen** — das ist die #1008-Klasse (bezahlt, nie lieferbar).
+**Regel, dritte Fassung nach `variant_price:<5` und `variants.compare_at_price:>0`: Ein leeres
+Ergebnis aus einem Shopify-Suchfilter ist erst ein Befund, wenn derselbe Filter an bekannt
+vorhandener Ware anschlägt.** Der Gegentest kostet eine Abfrage.
+
+## 🧪 Vier Fehler an einem Werkzeug — und wie der Trockenlauf sie fing (2026-08-28)
+Der Ratgeber-Wächter brauchte vier Anläufe. Jeder Fehler ist eine eigene Lehre:
+1. **Thema aus dem Titel geraten.** «erstes Wort vor dem Doppelpunkt» ergab «Dunkeln»,
+   «schläft», «Minuten», «ultimative», «Office» — **25 von 25 Ratgebern gemeldet.**
+   Ein Melder, der alles meldet, meldet nichts. Aus einem Titelwort folgt kein Sortiment.
+2. **Erfolg gemeldet, wo alles scheiterte.** Der Lauf schrieb «✔ 12 ergänzt» und 12
+   Ledger-Zeilen, während Shopify JEDE Mutation mit «Type mismatch on variable $b
+   (String! / HTML)» ablehnte. Geprüft wurden nur `userErrors` — der Fehler stand eine Ebene
+   höher. Die 12 Quittungen mussten gelöscht werden, sonst wären die Ratgeber für immer
+   übersprungen. **Ein Schreiber muss die Antwort lesen, und zwar beide Fehlerebenen.**
+3. **Berechtigungsfehler als «keine Daten» verschluckt.** `publishedOnCurrentPublication`
+   braucht `read_product_listings`; die ganze Abfrage kam `null` zurück, mein `gql` gab `{}`
+   und der Lauf meldete zufrieden «0 ergänzt». `gql` druckt `errors` jetzt.
+4. **Der Nachfilter war zu streng.** Shopify sucht auch in Beschreibung und Tags — mein
+   `wort in titel` verwarf alle Treffer: «Duftkerzen» fand «Duftkerze im Aluminiumgehäuse»
+   nicht, «Beauty» keinen der drei zurückgelieferten Beauty-Artikel. Gemeldet wird jetzt NUR,
+   wenn die Suche **gar nichts** findet.
+**Falschalarme über die vier Fassungen: 46 → 35 → 11 → 2.** Der Fortschritt kam jedes Mal
+daher, den Alarm konservativer zu machen, nie die Suche cleverer. **Bei einem Melder liegt die
+Beweislast beim Alarm: lieber einen Fall übersehen als einen erfinden** — ein Bericht mit
+Falschalarmen wird nach dem zweiten nicht mehr gelesen.
+
 ## 🌐 Ein Browser, den diese Session wirklich bedienen kann (2026-08-28)
 Betreiber: «baue eine tool das du alles selber machen kannst». Der gemeinsame Nenner fast aller
 offenen Punkte ist dieselbe Sache — eine Seite, auf der jemand **eingeloggt klicken** muss:
