@@ -4994,6 +4994,47 @@ setTimeout(function baueGebaeude(){
               {file:"th24_streichelzoo.glb",h:3.5,w:23.5,d:21.0},
               {file:"th24_gehege.glb",      h:4,  w:13.2,d:10.7},
               {file:"th24_aquarienhaus.glb",h:7,  w:28.2,d:34.2}]});
+    /* ✈️ FLUGHAFEN. Der letzte grosse Posten aus der Inventur: neun th25-Modelle, die in
+       keinen Reihen-Generator passen, weil eine LANDEBAHN dazugehoert. Zweiteilig geloest —
+       Gebaeude als Viertel, Bahn und Vorfeld daneben, beide an der ECHTEN Viertelmitte.
+       ⚠️ MASSE GEMESSEN (`th-mass.mjs`): Terminal 40,8x27,2 · Hangar 37,4x27,7 ·
+       Tower 7,5x7,5 (h 22) · Radarturm 8,7x4,9 (h 18). Laengere Bauzeile
+       Terminal+Tower = 48,3 m plus eine Luecke, passt in die 82 m Netto-Laenge.
+       ⚠️ UND EINE LUECKE IM SOLVER, die man kennen muss: `viertelMass` prueft nur das
+       Netto-Rechteck der BAUZEILEN (hier 82 x 67,3). Alles, was daneben liegt — Bahn,
+       Vorfeld, Flugzeug — ist fuer `viertelPasst()` unsichtbar und muss von Hand
+       geprueft werden (th-strassen + th-3d). Die Bahn liegt darum bewusst auf der
+       gleichen Achse wie die Viertelstrasse, nur weiter aussen. */
+    /* ⚠️ ORT GESUCHT, NICHT GERATEN. Der erste Wunsch (-200|60) liegt im Meer-Sektor
+       (`viertelPasst` verwirft x-hw < -118 bei |z| < 170); das Viertel landete auf der
+       Landstrasse. Ein Rasterscan prueft hier ZWEI Dinge — das Netto-Rechteck ueber
+       `viertelPasst(...,2)` UND zusaetzlich den Streifen der Landebahn (z+50..z+74),
+       den der Solver nicht sieht. 18 Plaetze erfuellen beides, alle weit draussen;
+       der naechste ist (300|-260), r = 397. Fuer einen Flughafen ist das passend.
+       Anschluss ans Suedende der Gewerbe-Ost-Strasse (x = 250, endet bei z = -168). */
+    var _fh = viertel({name:"Flughafen",x:300,z:-260,w:110,d:100,achse:"x",boden:"platz",
+      anschluss:[250,-168],abstand:14,luecke:14,rand:14,
+      bauten:[{file:"th25_terminal.glb", h:12,w:40.8,d:27.2},
+              {file:"th25_hangar.glb",   h:14,w:37.4,d:27.7},
+              {file:"th25_tower.glb",    h:22,w: 7.5,d: 7.5},
+              {file:"th25_radarturm.glb",h:18,w: 8.7,d: 4.9}]});
+    if(_fh)setTimeout(function flughafenFeld(){
+      var FX=_fh.x, FZ=_fh.z;                 /* ECHTE Mitte, nicht der Wunsch (#2353) */
+      /* Landebahn: acht Module a 17,6 m = 141 m, parallel zur Viertelstrasse, so weit
+         aussen, dass sie die Bauzeile (bis 47,5 m von der Mitte) nicht beruehrt. */
+      var BAHN=FZ+62, stellen=[];
+      for(var i=0;i<8;i++)stellen.push([FX-61.6+i*17.6,BAHN,0]);
+      bauViele("th25_landebahn_modul.glb",0.4,stellen);
+      /* ⚠️ VORFELD AUF DIE AUSSENSEITE DER BAHN. Der erste Anlauf legte es zwischen
+         Bauzeile und Landebahn — dort sind aber nur 5,7 m frei (die Bauten reichen bis
+         47,5 m von der Mitte, die Bahn beginnt bei 53 m), und die 17,4 m tiefe
+         Fluggastbruecke steckte prompt 0,25 m im Hangar (`th-3d.mjs`, 25 Meshpaare).
+         Aussen ist Platz. */
+      bau("th25_flugzeug.glb",       8,  FX-20,0,BAHN+22, 0,   false,null,true);
+      bau("th25_fluggastbruecke.glb",6,  FX-20,0,BAHN+34, 0,   false,null,true);
+      bau("th25_tankwagen.glb",      3,  FX+4, 0,BAHN+20, 1.57,false,null,true);
+      bau("th25_gepaeckwagen.glb",   2.2,FX+12,0,BAHN+26, 1.57,false,null,true);
+    },900);
     /* ❄️ WINTERMARKT + RODELHANG (th29). Die sechs Modelle lagen seit ihrer Charge
        ungenutzt im Repo; sie passen in kein Viertel, sondern gehoeren an die Saison.
        Sichtbar nur in Saison 3 (`applySaison`), also fuenf von zwanzig Spieltagen.
