@@ -1635,3 +1635,32 @@ Sonden stehen in Template-Literalen. Ein `` `bezeichner` `` im Kommentar **beend
 Literal** und der Lauf stirbt mit „Unexpected identifier". Passiert in `th-viertel`,
 `th-netz`, `th-strassen` (zweimal). In Sondenquelltext keine Backticks — auch nicht in
 Kommentaren.
+
+## 2026-08-27 · 🎡 Der Wunschort ist nicht der Standort — Park-Ausstattung 10 m daneben
+
+`parkDeko()` des Freizeitparks stand fest auf `var PX=60, PZ=330` — dem **Wunschort** des
+Viertels. `viertelOrt()` weicht aber aus, und der Park steht tatsächlich auf **z = 340**. Die
+Ausstattung blieb 10 m zurück, und die Laternenreihe bei `PZ+9` landete damit **1 m neben der
+Viertelstraße**, also mitten auf dem Belag.
+
+| `Viertelstr. Freizeitpark` | vorher | nachher |
+|---|---|---|
+| 6× Parklaterne, 6× Wegweiser, 2× Parkplan | **14** | **0** |
+
+Behoben mit `var PX=(_fp?_fp.x:60), PZ=(_fp?_fp.z:330)` — dieselbe Lösung, die der Bauernhof
+seit #2314 mit `BHDX/BHDZ` hat. **Wer Ausstattung an ein Viertel hängt, nimmt dessen echte
+Mitte, nie den Wunsch.** Das gilt für jeden weiteren `setTimeout`-Block, der Koordinaten aus
+einem `viertel({…})`-Aufruf abschreibt.
+
+### ⚠️ Leere Ausgabe ist kein Ergebnis
+Der erste Messlauf schrieb eine **leere Datei**, und die Prüfzeile daneben meldete
+folgerichtig „geräumt" — der Fix sah perfekt aus. Tatsächlich war nur der
+`node_modules/playwright`-Symlink nach einem Container-Neustart weg, das Werkzeug startete
+gar nicht. **Vor dem Auswerten prüfen, dass überhaupt etwas gemessen wurde**
+(`wc -l`), sonst ist jede Änderung erfolgreich.
+
+### 📌 Beobachtung für die nächste Runde
+`Viertelstr. Zoo (5) th24_aquarienhaus (−150,4|−251,8)` taucht neu auf — bei **unverändertem**
+Zoo-Standort und ohne Änderung an ihm. Verdacht: die dokumentierte Nichtdeterminiertheit von
+`entzerren()`, das überlappende Bauten auseinanderschiebt, ohne die Straße zu kennen. Erst
+messen (mehrere Läufe), dann urteilen.
