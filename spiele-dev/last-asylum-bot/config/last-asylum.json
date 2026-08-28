@@ -1342,28 +1342,6 @@
                         0.85
                       ]
                     }
-                  ],
-                  "fallback": [
-                    [
-                      0.5,
-                      0.95
-                    ],
-                    [
-                      0.22,
-                      0.93
-                    ],
-                    [
-                      0.35,
-                      0.16
-                    ],
-                    [
-                      0.12,
-                      0.7
-                    ],
-                    [
-                      0.86,
-                      0.44
-                    ]
                   ]
                 }
               },
@@ -1541,28 +1519,6 @@
                         0.85
                       ]
                     }
-                  ],
-                  "fallback": [
-                    [
-                      0.5,
-                      0.95
-                    ],
-                    [
-                      0.22,
-                      0.93
-                    ],
-                    [
-                      0.35,
-                      0.16
-                    ],
-                    [
-                      0.12,
-                      0.7
-                    ],
-                    [
-                      0.86,
-                      0.44
-                    ]
                   ]
                 }
               },
@@ -1791,28 +1747,6 @@
                         0.85
                       ]
                     }
-                  ],
-                  "fallback": [
-                    [
-                      0.5,
-                      0.95
-                    ],
-                    [
-                      0.22,
-                      0.93
-                    ],
-                    [
-                      0.35,
-                      0.16
-                    ],
-                    [
-                      0.12,
-                      0.7
-                    ],
-                    [
-                      0.86,
-                      0.44
-                    ]
                   ]
                 }
               },
@@ -2017,28 +1951,6 @@
                         0.85
                       ]
                     }
-                  ],
-                  "fallback": [
-                    [
-                      0.5,
-                      0.95
-                    ],
-                    [
-                      0.22,
-                      0.93
-                    ],
-                    [
-                      0.35,
-                      0.16
-                    ],
-                    [
-                      0.12,
-                      0.7
-                    ],
-                    [
-                      0.86,
-                      0.44
-                    ]
                   ]
                 }
               },
@@ -2226,28 +2138,6 @@
                         0.85
                       ]
                     }
-                  ],
-                  "fallback": [
-                    [
-                      0.5,
-                      0.95
-                    ],
-                    [
-                      0.22,
-                      0.93
-                    ],
-                    [
-                      0.35,
-                      0.16
-                    ],
-                    [
-                      0.12,
-                      0.7
-                    ],
-                    [
-                      0.86,
-                      0.44
-                    ]
                   ]
                 }
               },
@@ -2419,28 +2309,6 @@
                         0.85
                       ]
                     }
-                  ],
-                  "fallback": [
-                    [
-                      0.5,
-                      0.95
-                    ],
-                    [
-                      0.22,
-                      0.93
-                    ],
-                    [
-                      0.35,
-                      0.16
-                    ],
-                    [
-                      0.12,
-                      0.7
-                    ],
-                    [
-                      0.86,
-                      0.44
-                    ]
                   ]
                 }
               },
@@ -2518,28 +2386,6 @@
                         0.85
                       ]
                     }
-                  ],
-                  "fallback": [
-                    [
-                      0.5,
-                      0.95
-                    ],
-                    [
-                      0.22,
-                      0.93
-                    ],
-                    [
-                      0.35,
-                      0.16
-                    ],
-                    [
-                      0.12,
-                      0.7
-                    ],
-                    [
-                      0.86,
-                      0.44
-                    ]
                   ]
                 }
               },
@@ -2698,28 +2544,6 @@
                         0.85
                       ]
                     }
-                  ],
-                  "fallback": [
-                    [
-                      0.5,
-                      0.95
-                    ],
-                    [
-                      0.22,
-                      0.93
-                    ],
-                    [
-                      0.35,
-                      0.16
-                    ],
-                    [
-                      0.12,
-                      0.7
-                    ],
-                    [
-                      0.86,
-                      0.44
-                    ]
                   ]
                 }
               },
@@ -2797,28 +2621,6 @@
                         0.85
                       ]
                     }
-                  ],
-                  "fallback": [
-                    [
-                      0.5,
-                      0.95
-                    ],
-                    [
-                      0.22,
-                      0.93
-                    ],
-                    [
-                      0.35,
-                      0.16
-                    ],
-                    [
-                      0.12,
-                      0.7
-                    ],
-                    [
-                      0.86,
-                      0.44
-                    ]
                   ]
                 }
               },
@@ -2979,28 +2781,6 @@
                               0.85
                             ]
                           }
-                        ],
-                        "fallback": [
-                          [
-                            0.5,
-                            0.95
-                          ],
-                          [
-                            0.22,
-                            0.93
-                          ],
-                          [
-                            0.35,
-                            0.16
-                          ],
-                          [
-                            0.12,
-                            0.7
-                          ],
-                          [
-                            0.86,
-                            0.44
-                          ]
                         ]
                       }
                     },
@@ -3269,28 +3049,6 @@
                         0.85
                       ]
                     }
-                  ],
-                  "fallback": [
-                    [
-                      0.5,
-                      0.95
-                    ],
-                    [
-                      0.22,
-                      0.93
-                    ],
-                    [
-                      0.35,
-                      0.16
-                    ],
-                    [
-                      0.12,
-                      0.7
-                    ],
-                    [
-                      0.86,
-                      0.44
-                    ]
                   ]
                 }
               },
@@ -3477,28 +3235,6 @@
                         0.85
                       ]
                     }
-                  ],
-                  "fallback": [
-                    [
-                      0.5,
-                      0.95
-                    ],
-                    [
-                      0.22,
-                      0.93
-                    ],
-                    [
-                      0.35,
-                      0.16
-                    ],
-                    [
-                      0.12,
-                      0.7
-                    ],
-                    [
-                      0.86,
-                      0.44
-                    ]
                   ]
                 }
               },
@@ -3651,28 +3387,6 @@
                         0.85
                       ]
                     }
-                  ],
-                  "fallback": [
-                    [
-                      0.5,
-                      0.95
-                    ],
-                    [
-                      0.22,
-                      0.93
-                    ],
-                    [
-                      0.35,
-                      0.16
-                    ],
-                    [
-                      0.12,
-                      0.7
-                    ],
-                    [
-                      0.86,
-                      0.44
-                    ]
                   ]
                 }
               },
@@ -3748,43 +3462,23 @@
             "after": [
               2.5,
               3.5
-            ],
-            "fallback": [
-              [
-                0.5,
-                0.95
-              ],
-              [
-                0.22,
-                0.93
-              ],
-              [
-                0.35,
-                0.16
-              ],
-              [
-                0.12,
-                0.7
-              ],
-              [
-                0.86,
-                0.44
-              ]
             ]
           }
         },
         {
           "wenn": {
             "match": {
-              "template": "nav/welt.png",
-              "threshold": 0.86,
-              "region": [
-                0.7,
-                0.85,
-                1.0,
-                1.0
-              ],
-              "optional": true
+              "not": {
+                "template": "ui/back_arrow.png",
+                "threshold": 0.85,
+                "region": [
+                  0.0,
+                  0.0,
+                  0.3,
+                  0.15
+                ],
+                "optional": true
+              }
             },
             "dann": [
               {
@@ -3795,6 +3489,37 @@
                     0.0,
                     1.0,
                     0.13
+                  ],
+                  "mindestabstand": 1800
+                }
+              }
+            ]
+          }
+        },
+        {
+          "wenn": {
+            "match": {
+              "not": {
+                "template": "ui/back_arrow.png",
+                "threshold": 0.85,
+                "region": [
+                  0.0,
+                  0.0,
+                  0.3,
+                  0.15
+                ],
+                "optional": true
+              }
+            },
+            "dann": [
+              {
+                "ausschnitt": {
+                  "datei": "austausch/leiste-unten.png",
+                  "region": [
+                    0.0,
+                    0.86,
+                    1.0,
+                    1.0
                   ],
                   "mindestabstand": 1800
                 }
@@ -4537,28 +4262,6 @@
             "after": [
               2.5,
               3.5
-            ],
-            "fallback": [
-              [
-                0.5,
-                0.95
-              ],
-              [
-                0.22,
-                0.93
-              ],
-              [
-                0.35,
-                0.16
-              ],
-              [
-                0.12,
-                0.7
-              ],
-              [
-                0.86,
-                0.44
-              ]
             ]
           }
         },
@@ -4792,28 +4495,6 @@
                         0.85
                       ]
                     }
-                  ],
-                  "fallback": [
-                    [
-                      0.5,
-                      0.95
-                    ],
-                    [
-                      0.22,
-                      0.93
-                    ],
-                    [
-                      0.35,
-                      0.16
-                    ],
-                    [
-                      0.12,
-                      0.7
-                    ],
-                    [
-                      0.86,
-                      0.44
-                    ]
                   ]
                 }
               },
@@ -4936,28 +4617,6 @@
                         0.85
                       ]
                     }
-                  ],
-                  "fallback": [
-                    [
-                      0.5,
-                      0.95
-                    ],
-                    [
-                      0.22,
-                      0.93
-                    ],
-                    [
-                      0.35,
-                      0.16
-                    ],
-                    [
-                      0.12,
-                      0.7
-                    ],
-                    [
-                      0.86,
-                      0.44
-                    ]
                   ]
                 }
               },
@@ -5009,10 +4668,6 @@
             "of": [
               "chat/oeffnen.png",
               "nav/chat.png"
-            ],
-            "fallback": [
-              0.5,
-              0.963
             ],
             "after": [
               2.5,
@@ -5123,28 +4778,6 @@
                         0.85
                       ]
                     }
-                  ],
-                  "fallback": [
-                    [
-                      0.5,
-                      0.95
-                    ],
-                    [
-                      0.22,
-                      0.93
-                    ],
-                    [
-                      0.35,
-                      0.16
-                    ],
-                    [
-                      0.12,
-                      0.7
-                    ],
-                    [
-                      0.86,
-                      0.44
-                    ]
                   ]
                 }
               },
@@ -5198,10 +4831,6 @@
             "of": [
               "chat/oeffnen.png",
               "nav/chat.png"
-            ],
-            "fallback": [
-              0.5,
-              0.963
             ],
             "after": [
               2.5,
@@ -5320,28 +4949,6 @@
                         0.85
                       ]
                     }
-                  ],
-                  "fallback": [
-                    [
-                      0.5,
-                      0.95
-                    ],
-                    [
-                      0.22,
-                      0.93
-                    ],
-                    [
-                      0.35,
-                      0.16
-                    ],
-                    [
-                      0.12,
-                      0.7
-                    ],
-                    [
-                      0.86,
-                      0.44
-                    ]
                   ]
                 }
               },
@@ -5613,28 +5220,6 @@
                         0.85
                       ]
                     }
-                  ],
-                  "fallback": [
-                    [
-                      0.5,
-                      0.95
-                    ],
-                    [
-                      0.22,
-                      0.93
-                    ],
-                    [
-                      0.35,
-                      0.16
-                    ],
-                    [
-                      0.12,
-                      0.7
-                    ],
-                    [
-                      0.86,
-                      0.44
-                    ]
                   ]
                 }
               },
@@ -5711,28 +5296,6 @@
             "after": [
               3.0,
               4.5
-            ],
-            "fallback": [
-              [
-                0.5,
-                0.95
-              ],
-              [
-                0.22,
-                0.93
-              ],
-              [
-                0.35,
-                0.16
-              ],
-              [
-                0.12,
-                0.7
-              ],
-              [
-                0.86,
-                0.44
-              ]
             ]
           }
         },
@@ -5833,9 +5396,9 @@
     },
     {
       "name": "monster-jagen",
-      "every": 2700,
-      "priority": 92,
-      "_zweck": "Weltkarte -> Lupe -> Reiter 'Ressourcen-Monster' -> Suchen -> Angreifen, bis die Ausdauer aufgebraucht ist. Ist keine mehr da, findet der Bot den Angriffs-Knopf nicht mehr oder das Spiel meldet es per Dialog - beides beendet den Durchgang folgenlos. Nachgefuellt wird NIE, siehe _ausdauer. Braucht sammeln/reiter_monster.png und sammeln/angreifen.png.",
+      "every": 1200,
+      "priority": 120,
+      "_zweck": "Weltkarte -> Lupe -> Reiter 'Ressourcen-Monster' -> Suchen -> Angreifen, bis die Ausdauer aufgebraucht ist. Ist keine mehr da, findet der Bot den Angriffs-Knopf nicht mehr oder das Spiel meldet es per Dialog - beides beendet den Durchgang folgenlos. Nachgefuellt wird NIE, siehe _ausdauer. Braucht sammeln/reiter_monster.png und sammeln/angreifen.png. TAKT 1200 statt 2700 und Prioritaet 120 (Nutzer: 'immer Monster angreifen'). Bringt allerdings erst etwas, wenn die Vorlagen des Wegs treffen: am 28.08. verfehlten im Protokoll ALLE - nav/welt 0.47, nav/lupe 0.32, sammeln/suchen 0.29, kampf/kampf 0.16 - und sammeln/reiter_monster.png sowie sammeln/angreifen.png fehlen ganz.",
       "do": [
         {
           "log": "Monster jagen, solange Ausdauer da ist"
@@ -5867,28 +5430,6 @@
             "after": [
               3.0,
               4.5
-            ],
-            "fallback": [
-              [
-                0.5,
-                0.95
-              ],
-              [
-                0.22,
-                0.93
-              ],
-              [
-                0.35,
-                0.16
-              ],
-              [
-                0.12,
-                0.7
-              ],
-              [
-                0.86,
-                0.44
-              ]
             ]
           }
         },
@@ -5989,14 +5530,51 @@
             1.5
           ]
         }
-      ]
+      ],
+      "at_start": true
     },
     {
       "name": "zurueck-in-die-basis",
-      "every": 1800,
-      "priority": 50,
-      "_zweck": "Aufraeum-Aufgabe: zurueck in die Basis, falls der Bot in einer anderen Ansicht haengengeblieben ist. Nimmt 'Startseite', 'Gebiet' oder die Burg - je nachdem, was sichtbar ist.",
+      "every": 300,
+      "priority": 210,
+      "_zweck": "Bringt den Bot deterministisch an die Oberflaeche zurueck: bis zu viermal den Zurueck-Pfeil oben links, dann Startseite/Gebiet/Burg. Der Pfeil ist die verlaesslichste Vorlage im ganzen Satz (gemessen 1.000) und liegt in einem winzigen Suchfenster, das kostet fast nichts. WARUM SO WICHTIG: seit die Blindtipps raus sind, kommt keine Aufgabe mehr aus einem Untermenue heraus - und am 28.08. verfehlte im Protokoll JEDE Navigations-Vorlage ihr Ziel (nav/welt 0.47 bei Schwelle 0.86, nav/lupe 0.32 bei 0.88), weil der Bot in einer Unteransicht stand. Prioritaet 210 und alle fuenf Minuten: lieber einmal zu oft nach Hause als eine halbe Stunde in einem Menue.",
       "do": [
+        {
+          "log": "Zurueck an die Oberflaeche"
+        },
+        {
+          "repeat": {
+            "times": 4,
+            "do": [
+              {
+                "wenn": {
+                  "match": {
+                    "template": "ui/back_arrow.png",
+                    "threshold": 0.85,
+                    "region": [
+                      0.0,
+                      0.0,
+                      0.3,
+                      0.15
+                    ]
+                  },
+                  "dann": [
+                    {
+                      "tap_match": {}
+                    },
+                    {
+                      "sleep": [
+                        0.5,
+                        0.9
+                      ]
+                    }
+                  ],
+                  "sonst": []
+                }
+              }
+            ]
+          }
+        },
         {
           "tap_first": {
             "of": [
@@ -6032,34 +5610,13 @@
               }
             ],
             "after": [
-              2.5,
-              3.5
-            ],
-            "fallback": [
-              [
-                0.5,
-                0.95
-              ],
-              [
-                0.22,
-                0.93
-              ],
-              [
-                0.35,
-                0.16
-              ],
-              [
-                0.12,
-                0.7
-              ],
-              [
-                0.86,
-                0.44
-              ]
+              1.5,
+              2.5
             ]
           }
         }
-      ]
+      ],
+      "at_start": true
     },
     {
       "name": "nachrichten",
@@ -6147,28 +5704,6 @@
                         0.85
                       ]
                     }
-                  ],
-                  "fallback": [
-                    [
-                      0.5,
-                      0.95
-                    ],
-                    [
-                      0.22,
-                      0.93
-                    ],
-                    [
-                      0.35,
-                      0.16
-                    ],
-                    [
-                      0.12,
-                      0.7
-                    ],
-                    [
-                      0.86,
-                      0.44
-                    ]
                   ]
                 }
               },
@@ -6312,28 +5847,6 @@
             "after": [
               2.5,
               3.5
-            ],
-            "fallback": [
-              [
-                0.5,
-                0.95
-              ],
-              [
-                0.22,
-                0.93
-              ],
-              [
-                0.35,
-                0.16
-              ],
-              [
-                0.12,
-                0.7
-              ],
-              [
-                0.86,
-                0.44
-              ]
             ]
           }
         },
@@ -7060,28 +6573,6 @@
             "after": [
               2.0,
               3.0
-            ],
-            "fallback": [
-              [
-                0.5,
-                0.95
-              ],
-              [
-                0.22,
-                0.93
-              ],
-              [
-                0.35,
-                0.16
-              ],
-              [
-                0.12,
-                0.7
-              ],
-              [
-                0.86,
-                0.44
-              ]
             ]
           }
         }
@@ -7221,20 +6712,6 @@
                   0.85
                 ]
               }
-            ],
-            "fallback": [
-              [
-                0.5,
-                0.95
-              ],
-              [
-                0.22,
-                0.93
-              ],
-              [
-                0.35,
-                0.16
-              ]
             ]
           }
         }
@@ -7263,12 +6740,6 @@
                   0.95
                 ]
               }
-            ],
-            "fallback": [
-              [
-                0.94,
-                0.79
-              ]
             ],
             "after": [
               2.0,
@@ -7342,20 +6813,6 @@
                   0.85
                 ]
               }
-            ],
-            "fallback": [
-              [
-                0.5,
-                0.95
-              ],
-              [
-                0.22,
-                0.93
-              ],
-              [
-                0.35,
-                0.16
-              ]
             ]
           }
         }

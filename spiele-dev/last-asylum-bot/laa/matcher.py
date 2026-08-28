@@ -26,7 +26,7 @@ COARSE_WIDTH = 180  # Zielbreite des Grob-Durchlaufs
 MAX_SAMPLES = 64  # Stichproben-Pixel im Grob-Durchlauf (nur ohne numpy)
 CANDIDATES = 6  # so viele Grob-Treffer werden fein nachgerechnet
 SICHER_GENUG = 0.97  # ab hier lohnt kein weiterer Kandidat mehr
-REFINE_PIXEL = 20000  # ab so vielen Pixeln vergleicht der Feinlauf nur Stichproben
+REFINE_PIXEL = 10000  # ab so vielen Pixeln vergleicht der Feinlauf nur Stichproben
 
 
 class Match(NamedTuple):
@@ -372,9 +372,13 @@ def _refine_numpy(sub: Image, tpl: Image, x0, x1, y0, y1):  # pragma: no cover -
     # 0.973 -> 0.979). Kleinere Vorlagen bleiben unangetastet (s = 1) und
     # werden weiterhin exakt gerechnet.
     #
-    # 10000 statt 20000 waere mit 4.19 s nochmal deutlich schneller, verschob
-    # die Werte aber schon um bis zu 0.036 - zu viel neben Schwellen wie 0.86,
-    # und belegt ist das nur an EINEM echten Bildschirm.
+    # 20000 war die erste, vorsichtige Wahl; 10000 verschiebt die Werte um bis
+    # zu 0.036. Am 28.08. lagen erstmals echte Messwerte vom Geraet vor
+    # (austausch/lauf-ende.txt): der hoechste FEHLSCHLAG ueber einen ganzen
+    # Lauf war 0.605 bei Schwelle 0.86, echte Treffer lagen bei 0.973 und
+    # 1.000. Mit 0.036 Spielraum bleiben zwischen Fehlschlag und Schwelle immer
+    # noch mehr als zwei Zehntel - die Schranke steht also sicher, und 10000
+    # ist deutlich schneller.
     schritt = 1
     if th * tw > REFINE_PIXEL:
         schritt = int(math.ceil(math.sqrt(th * tw / float(REFINE_PIXEL))))

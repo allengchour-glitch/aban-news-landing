@@ -1359,50 +1359,6 @@ class TestNachmessenVerbrauch(unittest.TestCase):
             shutil.rmtree(ordner, ignore_errors=True)
 
 
-class TestErsatzPunkt(unittest.TestCase):
-    """Jedes tap_first braucht einen Ausweg - solange die Aufgabe laeuft.
-
-    Der Test verlangte den Ersatz-Punkt bisher ausnahmslos. Das ist einen
-    Schritt zu weit: ein GERATENER Ersatz-Punkt ist schlechter als keiner. Bei
-    'zuflucht' zeigte er auf x=0.02, den aeussersten linken Bildrand, ohne dass
-    je jemand nachgesehen haette, was dort liegt - und der Bot lernt aus solchen
-    Blindtipps auch noch vermeintliche Auswege.
-
-    Der Ausweg fuer abgeschaltete Aufgaben ist, dass sie nicht laufen. Der Test
-    prueft darum nur, was tatsaechlich laeuft.
-    """
-
-    def test_alle_laufenden_tap_first_haben_einen_ersatz_punkt(self):
-        import json as _json
-
-        with open(os.path.join(ROOT, "config", "last-asylum.json"), encoding="utf-8") as fh:
-            roh = _json.load(fh)
-        ohne = []
-
-        def pruefe(knoten, wo):
-            if isinstance(knoten, dict):
-                if "tap_first" in knoten and not knoten["tap_first"].get("fallback"):
-                    ohne.append(wo)
-                for k, v in knoten.items():
-                    pruefe(v, f"{wo}>{k}")
-            elif isinstance(knoten, list):
-                for v in knoten:
-                    pruefe(v, wo)
-
-        for gruppe in ("rules", "tasks"):
-            for eintrag in roh.get(gruppe, []):
-                if not eintrag.get("enabled", True):
-                    continue          # laeuft nicht, kann also nirgends steckenbleiben
-                pruefe(eintrag, f"{gruppe}:{eintrag.get('name')}")
-        for gruppe in ("on_unknown", "on_stuck"):
-            pruefe(roh.get(gruppe, []), gruppe)
-        self.assertEqual(
-            ohne, [],
-            "ohne Ersatz-Punkt bleibt der Bot stehen, wenn keine Vorlage passt: "
-            + ", ".join(ohne),
-        )
-
-
 class TestGeraeteWahl(unittest.TestCase):
     """Bei zwei gemeldeten Geräten muss der Bot selbst eines nehmen.
 
@@ -2950,6 +2906,71 @@ class TestFluchtwegWirdNichtGebremst(unittest.TestCase):
         eng._tap_abs(100, 150, "Punkt")
         self.assertEqual(dev.taps, [], "die Tabu-Zone darf die Flucht nicht aushebeln")
 
+
+
+class TestKeineBlindtippsInAufgaben(unittest.TestCase):
+    """Der Nutzer sieht es sofort: "drueckst zu viel blind und macht fast nix".
+
+    Verfehlte eine Navigations-Vorlage ihr Ziel, tippte 'tap_first' bisher auf
+    eine Liste fester Punkte - und wartete danach 2,5 bis 3,5 Sekunden. Im
+    Protokoll vom 28.08. verfehlte auf dem Weg zu den Monstern JEDE Vorlage
+    (nav/welt 0.47, nav/lupe 0.32, sammeln/suchen 0.29, kampf/kampf 0.16), also
+    tippte der Bot die ganze Zeit ins Leere und brauchte lange dafuer. An 31
+    Stellen sind die Blindtipps raus; herauskommen aus einem Untermenue ist
+    jetzt Sache von 'zurueck-in-die-basis' ueber den Zurueck-Pfeil.
+
+    Diese Klasse ersetzt TestErsatzPunkt, der frueher das GEGENTEIL verlangte:
+    jedes tap_first brauche einen Ersatz-Punkt, sonst bleibe der Bot stehen.
+    Die Sorge war berechtigt und ist nicht verschwunden - sie wird nur anders
+    beantwortet: nicht mit geratenen Punkten, sondern mit dem Zurueck-Pfeil
+    (gemessen 1.000, winziges Suchfenster) und dem Notausgang on_stuck, der
+    seine Ersatz-Punkte ausdruecklich behaelt. Schon der alte Test raeumte in
+    seiner eigenen Beschreibung ein, dass ein geratener Ersatz-Punkt schlechter
+    ist als keiner: bei 'zuflucht' zeigte einer auf x=0.02, den aeussersten
+    Bildrand, ohne dass je jemand nachgesehen haette, was dort liegt.
+    """
+
+    def config(self):
+        with open(os.path.join(ROOT, "config", "last-asylum.json"), encoding="utf-8") as fh:
+            return json.load(fh)
+
+    @staticmethod
+    def _blind(knoten, wo, treffer):
+        if isinstance(knoten, dict):
+            tf = knoten.get("tap_first")
+            if isinstance(tf, dict) and "fallback" in tf:
+                treffer.append(wo)
+            for wert in knoten.values():
+                TestKeineBlindtippsInAufgaben._blind(wert, wo, treffer)
+        elif isinstance(knoten, list):
+            for wert in knoten:
+                TestKeineBlindtippsInAufgaben._blind(wert, wo, treffer)
+
+    def test_aufgaben_und_regeln_tippen_nicht_blind(self):
+        cfg = self.config()
+        treffer = []
+        for t in cfg["tasks"]:
+            self._blind(t["do"], f"Aufgabe {t['name']}", treffer)
+        for r in cfg["rules"]:
+            self._blind(r["do"], f"Regel {r['name']}", treffer)
+        self.assertEqual(sorted(set(treffer)), [],
+                         f"hier wird noch blind getippt: {sorted(set(treffer))}")
+
+    def test_notausgang_darf_weiter_blind_tippen(self):
+        """Ohne jeden Blindtipp kaeme ein festgefahrener Bot nie wieder frei."""
+        cfg = self.config()
+        treffer = []
+        self._blind(cfg.get("on_stuck", []), "on_stuck", treffer)
+        self._blind(cfg.get("on_unknown", []), "on_unknown", treffer)
+        self.assertTrue(treffer, "der Notausgang braucht seine Ersatz-Punkte")
+
+    def test_zurueck_in_die_basis_nimmt_den_pfeil(self):
+        """Das ist der Ersatz fuer die Blindtipps - und er muss vorn stehen."""
+        cfg = self.config()
+        t = next(x for x in cfg["tasks"] if x["name"] == "zurueck-in-die-basis")
+        self.assertIn("ui/back_arrow.png", json.dumps(t["do"]))
+        self.assertGreaterEqual(t["priority"], 200)
+        self.assertLessEqual(t["every"], 600)
 
 
 class TestAusdauerFlaeschchenBleibenLiegen(unittest.TestCase):
