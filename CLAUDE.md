@@ -130,6 +130,29 @@ live belegt an 15411554910593). `automation/versandaussagen_wahrheit.py`, Ledger
   Rechtstexte gehen nur per GraphQL `shopPolicyUpdate` — und dessen Input nimmt `type`
   (`SHIPPING_POLICY`), **nicht** `id`. Ohne Live-Gegenprobe hätte der Lauf als erledigt gegolten.
 
+## 🔐 Auf die Sperre warten, nicht auf die Prozessliste (2026-08-28)
+Der Aufseher-Ersatz meldete seit Tagen «AUFSEHER-Ersatz ausgestiegen — Versuch 1/2/3» und kam
+trotzdem am Ende zum Ziel. Ich hatte zuerst auf mein eigenes `timeout` getippt (siehe Eintrag
+darüber) — das war ein anderer Fehler. Die Ursache stand im frischen Log wörtlich:
+**«Supervisor läuft bereits — dieser Start endet.»**
+Ablauf: `aufseher_ersetzen()` killt den alten Aufseher und wartet, bis `zaehle_aufseher` 0
+meldet. Diese Zählung zählt **Session-Leader** — und das ist richtig so, sie stammt aus der
+Fork-Lehre vom 25.08. Der Leader ist dann tatsächlich weg. Die **flock-Sperre** ist es aber
+nicht: `fixer_keepalive.sh` macht `exec 9>…; flock -n 9`, und ein solcher Deskriptor wird an
+JEDES Kind vererbt — eine noch laufende Arbeits-Subshell des Sterbenden hält sie weiter. Der
+neue Aufseher startet, scheitert am `flock -n`, beendet sich brav, und erst der zweite Versuch
+fünf Sekunden später gelingt.
+**Regel: Gewartet wird auf die Bedingung, die der nächste Schritt tatsächlich braucht.** Der
+Start braucht keine leere Prozessliste, er braucht eine freie Sperre — also wird die Sperre
+geprüft (`( exec 9>datei; flock -n 9 )` in einer Subshell, die sie sofort wieder freigibt).
+Die Prozessliste war nur ein Stellvertreter dafür, und ein Stellvertreter kann danebenliegen.
+⚠️ Das ist dieselbe Denkfigur wie beim PID-Überlauf (0e) und bei `ps -o etimes`: nicht nach
+einem Namen fragen, der die Sache nur vertritt, sondern nach der Sache selbst.
+⚠️ Und die eigene Fehlspur ehrlich: Ich hatte im Zyklus davor geschrieben, die Frage sei nicht
+beantwortbar, weil der Rewind das Log gefressen hat. Das stimmte für die ALTEN Zyklen — der
+nächste Ausfall schrieb den Beleg neu. **Ein verlorenes Log heisst «noch nicht wieder
+aufgetreten», nicht «nicht aufklärbar».**
+
 ## ⏱️ Den Aufseher-Start abschneiden heisst, ihn zu töten (2026-08-28)
 Ich habe `engine_keepalive.sh` in `timeout 150` gewickelt — der Routine-Text sagt, es soll
 schlicht laufen. Als der `git fetch` davor einmal langsam war, lief die Zeit ab, das ganze

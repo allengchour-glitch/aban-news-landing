@@ -54,6 +54,10 @@ zaehle_aufseher() { aufseher_pids | grep -c . ; }
 # stand wieder NULL Aufseher da, weil der Ersatz an der flock-Sperre des Sterbenden abprallte.
 # Dieselbe Geschwister-Lehre wie bei publishVerified() und der Farbtabelle: Wer eine Logik
 # baut, sucht ihre Zwillinge — oder macht daraus EINE Stelle.
+sperre_frei() {  # Rueckgabe 0 = Sperre ist frei. Die Subshell gibt sie beim Ende sofort zurueck.
+  ( exec 9>/tmp/fixer_keepalive.lock; flock -n 9 ) 2>/dev/null
+}
+
 aufseher_ersetzen() {
   ps -eo pid,args --no-headers \
     | awk '$2=="bash" && $3 ~ /fixer_keepalive\.sh$/ {print $1}' | xargs -r kill 2>/dev/null
@@ -63,6 +67,14 @@ aufseher_ersetzen() {
       | awk '$2=="bash" && $3 ~ /fixer_keepalive\.sh$/ {print $1}' | xargs -r kill -9 2>/dev/null
     sleep 2
   fi
+  # ⚠️ Der Leader ist weg, die SPERRE aber noch belegt (28.08.2026). fixer_keepalive.sh
+  # macht `exec 9>…; flock -n 9`, und ein solcher Deskriptor wird an JEDES Kind vererbt —
+  # solange eine Arbeits-Subshell des sterbenden Aufsehers lebt, haelt sie die Sperre.
+  # Die Zaehlung sieht 0 (sie zaehlt Session-Leader, richtig so), der neue Aufseher startet,
+  # scheitert am flock und beendet sich mit «Supervisor laeuft bereits» — im Log genau so
+  # belegt. Das kostete jedes Mal einen «ausgestiegen»-Versuch. Gewartet wird deshalb auf
+  # die SPERRE, nicht auf die Prozessliste: auf das, was der Start tatsaechlich braucht.
+  for _ in $(seq 20); do sperre_frei && break; sleep 1; done
   date +%s > /tmp/_fixer_herzschlag
   starte fixer_keepalive bash automation/fixer_keepalive.sh
   for versuch in 1 2 3; do
