@@ -72,6 +72,21 @@ def _token():
         return n
     return t
 
+# ⚠️ SELBSTSPERRE (28.08.2026). Der Aufseher startet diesen Lauf einmal taeglich, und ein
+# Lauf von Hand kann daneben liegen — heute liefen zwei Instanzen gleichzeitig ueber 49'000
+# Produkte und teilten sich Shopifys Punkte, waehrend beide denselben Ledger schrieben.
+# Der Zeitstempel-Riegel des Aufsehers greift dagegen nicht: Er sieht nur seinen eigenen Start.
+# Eine Sperre im Skript schuetzt JEDEN Aufrufweg — dieselbe Lehre wie beim Aufseher selbst
+# («Selbstpruefung ist die erste Verteidigung, nie die einzige», aber hier ist sie die
+# richtige Stelle, weil es genau einen Prozess geben soll).
+import fcntl
+_sperre = open('/tmp/bilddubletten.lock', 'w')
+try:
+    fcntl.flock(_sperre, fcntl.LOCK_EX | fcntl.LOCK_NB)
+except OSError:
+    print('laeuft bereits — dieser Start endet.')
+    sys.exit(0)
+
 TOK = _token()
 URL = 'https://au3j0y-hq.myshopify.com/admin/api/2024-10/graphql.json'
 LEDGER = 'dropship/_bildhash.txt'
