@@ -1848,3 +1848,37 @@ ein offenes Clubmodell (`th12_nachtclub_offen`) oder ein echtes Innenraum-System
 
 **Stand der Inventur:** von den rund 40 ungenutzten Modellen stehen jetzt **27**. Die
 restlichen 10 sind kein Nachziehen mehr, sondern eine Design-Entscheidung.
+
+## 2026-08-28 · ❌ Viertelwege in `KORRIDORE`: gebaut, gemessen, verworfen
+
+Naheliegend nach #2348: `freiRaeumen()` räumt Objekte aus Straßenkorridoren, kennt aber nur
+die großen Achsen. Die Viertelwege in `KORRIDORE` einzutragen (aus `_viertelBaender()`, mit
+6-m-Grenze, damit nur Kleinzeug bewegt wird) sollte den Rest der Liste aus #2347 aufräumen.
+
+**Gemessen: der Räumlauf bewegt damit nichts.** `window._freigeraeumt` meldet
+`{verschoben: 0, steckengeblieben: 0}` — obwohl 20 Viertelkorridore in der Tabelle stehen.
+
+Der Grund liegt in der Zusammensetzung der Treffer:
+
+| Was noch auf Viertelwegen steht | warum `freiRaeumen()` es nicht anfasst |
+|---|---|
+| `th19_eishalle`, Gewächshäuser | Gebäude, > 6 m — von der Grenze ausgenommen |
+| Fels (41 m), Bergboxen | Gelände, nicht in `window._gebaeude` |
+| Baumkronen, Blumen | prozedurales Streuwerk, ebenfalls nicht in `_gebaeude` |
+| Obelisk, Schmiedelaternen | mit `fest()` gesetzt → `userData.fest`, absichtlich unbeweglich |
+| 4 geparkte Wagen | **absichtlich am Bordstein** |
+
+### 🔴 Und die einzige messbare Wirkung war eine Regression
+Ohne Schutz schob der erweiterte Räumlauf die **vier absichtlich am Bordstein geparkten
+Wagen** von Gewerbe Ost von der Fahrbahn — 19 Mesh-Positionen, die genau dorthin gehören
+(der Code sagt das ausdrücklich: „Wagen am Bordstein … `wegVonStrasse` würde sie von der
+Fahrbahn schieben, auf die sie gerade gehören"). `Viertelstr. Gewerbe Ost` fiel von 19 auf 0,
+und das sah in der Kennzahl wie ein Erfolg aus.
+
+**Ein Automatismus darf eine bewusste Platzierung nicht überstimmen.** Der Versuch, das über
+`ohneSchutz` zu schützen, war zu grob: das Flag heißt nur „überspring `wegVonStrasse`" und
+gilt auch für Bahn-Zubehör und Deko — 18 Treffer wären damit fälschlich ausgenommen worden.
+
+Verworfen. Der verbliebene Rest auf Viertelwegen ist **kein Streuwerk-Problem**, sondern
+besteht aus Gebäuden, Gelände und Absicht. Wer ihn angeht, muss an die jeweilige Quelle
+(Bauzeile aussparen, Anschluss anders führen) — nicht an einen Räumlauf.
