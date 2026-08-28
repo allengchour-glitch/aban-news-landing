@@ -928,3 +928,4 @@ gid://shopify/Product/15517322412417	nicht-versendbar	Mini Gitarren- und Bassver
 gid://shopify/Product/15517554377089	nicht-versendbar	Teppanyaki Steakgrill mit doppelseitiger Heizplatte
 gid://shopify/Product/15517575479681	ok	Brusttasche "Krokodil" aus Leder
 gid://shopify/Product/15517646094721	ok	Smartwatch 4G mit Dual-Kamera & Herzfrequenz
+gid://shopify/Product/15518577918337	ok	Smartwatch mit Herzfrequenzmesser & Schrittzähler
