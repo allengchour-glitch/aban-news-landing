@@ -130,6 +130,27 @@ live belegt an 15411554910593). `automation/versandaussagen_wahrheit.py`, Ledger
   Rechtstexte gehen nur per GraphQL `shopPolicyUpdate` — und dessen Input nimmt `type`
   (`SHIPPING_POLICY`), **nicht** `id`. Ohne Live-Gegenprobe hätte der Lauf als erledigt gegolten.
 
+## 🔎 Der Bewertungs-Import stand an einer ungefangenen Drosselung (2026-08-28)
+Auf «judge me go» hin breit gestartet — und der Lauf meldete **«0 Produkte zu prüfen. Nichts zu
+tun.»**, bei 10'507 Ledger-Einträgen und ~45'000 aktiven CJ-Produkten. Die Auswahlschleife ist
+richtig gebaut (sie blättert, bis sie LIMIT UNerledigte hat), aber `sgql` hatte **weder
+Wiederholung noch Drosselungs-Behandlung**: Eine einzige `Throttled`-Antwort beim Durchblättern
+der erledigten Seiten liess `data` fehlen, die Schleife brach ab — und das sah aus wie ein
+leerer Katalog. Genau so stand dieser Import vermutlich wochenlang still.
+Behoben (8 Versuche, Wartezeit aus `throttleStatus`), und «stumm» wird jetzt von «keine Seiten
+mehr» unterschieden. Danach erreichte der Lauf sofort frische Ware.
+⚠️ **Eigene Fehlaussage im selben Zug korrigiert:** Ich hatte gemeldet «CJ-Punkte sind zurück»,
+weil `product/query?pid=x` mit 1602001 «Product not found» antwortete statt mit 16900500. Das
+war ein Trugschluss — die **Gültigkeitsprüfung läuft VOR der Punkteprüfung**, ein erfundener
+pid beweist also gar nichts. Mit einer gültigen pid sagt CJ klar: «Used today: 110'370,
+Remaining: 0». **Ein Negativtest muss den Pfad nehmen, den die echte Anfrage nimmt.**
+**Vorrang-Fenster geteilt:** Der Bewertungs-Import läuft ab jetzt im selben Fenster wie der
+Kosten-Backfill (16:00–17:30 UTC). Begründung nach der eigenen Regel «erst fragen, wem eine
+CJ-Engine das Budget wegnimmt»: Es ist der Grind — und der steht messbar auf dem Plateau
+(«total 0», «skip(dup-titel)», Rotation ausgeschöpft). Punkte für das 46'749-ste Produkt
+bringen nachweislich nichts; Sozialbeweis auf den Seiten mit Verkehr kann etwas bringen.
+Und weil der Kommentar-Abruf gratis ist, zahlt sich jeder einmal aufgelöste pid dauerhaft aus.
+
 ## 💬 CJs Kommentar-Abruf ist GRATIS — nur der pid-Nachschlag kostet (2026-08-28)
 Der Bewertungs-Import kam nie über eine Handvoll Produkte, weil er bei CJ-Code **16900500** den
 ganzen Lauf mit `process.exit(0)` beendete. Direkt nachgemessen, zwei Aufrufe in derselben

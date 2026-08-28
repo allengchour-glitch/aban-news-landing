@@ -182,11 +182,20 @@ STD=$(date -u +%H); MIN=$(date -u +%M)
 if [ "$STD" = "16" ] || { [ "$STD" = "17" ] && [ "$MIN" -lt 30 ]; }; then VORRANG=1; fi
 
 if [ "$VORRANG" = "1" ]; then
-  echo "VORRANG-FENSTER (16:00-17:30 UTC): CJ-Punkte gehoeren dem Kosten-Backfill"
+  echo "VORRANG-FENSTER (16:00-17:30 UTC): CJ-Punkte gehoeren Kosten-Backfill + Bewertungen"
   # Der Aufseher überspringt einen Lauf, dessen Log seit weniger als einer Stunde auf PAUSE
   # steht. Hat der Backfill kurz vor 16:00 wegen leerer Punkte pausiert, verlöre er dadurch
   # das halbe Vorrang-Fenster — also die Kühlung hier gezielt ablaufen lassen.
   [ -f /tmp/cj_kosten_backfill.log ] && touch -d '2 hours ago' /tmp/cj_kosten_backfill.log
+  # ⚠️ 28.08.2026: Der Bewertungs-Import teilt sich das Fenster. Begründung nach der Regel
+  # «erst fragen, WEM eine neue CJ-Engine das Budget wegnimmt» — es ist der Grind, und der
+  # steht messbar auf dem Plateau: Die Runner melden seit Tagen «total 0» und
+  # «skip(dup-titel)», die Rotation ist ausgeschöpft. Dagegen hat von 31 Produkten mit
+  # echten Besuchern genau EINES eine Bewertung. Punkte für das 46'749-ste Produkt bringen
+  # nachweislich nichts; Punkte für Sozialbeweis auf Seiten mit Verkehr können etwas bringen.
+  # ⚠️ Der pid-Nachschlag kostet 10 Punkte, der Kommentar-Abruf NICHTS — jede einmal
+  # aufgelöste pid steht dauerhaft im Cache. Das Fenster zahlt sich also über die Zeit aus.
+  [ -f /tmp/cj_reviews_import.log ] && touch -d '25 hours ago' /tmp/cj_reviews_import.log
   ps -eo pid,args --no-headers | grep "[c]j_runner_template" | awk '{print $1}' | xargs -r kill 2>/dev/null
 else
 

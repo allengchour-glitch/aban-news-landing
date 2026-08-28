@@ -55,10 +55,27 @@ if (!JM_TOKEN) { console.log('Kein JUDGEME_PRIVATE_TOKEN → No-op.'); process.e
 if (!ADMIN_TOKEN && !(CID && CSEC)) { console.log('Keine Shopify-Creds → No-op.'); process.exit(0); }
 
 // ── Shopify ──
+// ⚠️ Eine Drosselung ist kein Katalog-Ende (28.08.2026). Ohne Wiederholung reichte EINE
+// «Throttled»-Antwort beim Durchblättern: `data` fehlt, die Auswahlschleife bricht ab, und der
+// Lauf meldete «0 Produkte zu prüfen. Nichts zu tun.» — obwohl 45'000 Produkte offen sind.
+// Genau so blieb der Bewertungs-Import wochenlang stehen. Shopify füllt mit 100 Punkten/s auf;
+// gewartet wird die Differenz, statt aufzugeben. Dieselbe Lehre wie beim Kosten-Backfill.
 async function sgql(tok, q, v) {
-  const r = await fetch(`https://${SHOP}/admin/api/${SHOP_API}/graphql.json`, { method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': tok }, body: JSON.stringify({ query: q, variables: v }) });
-  return r.json();
+  for (let versuch = 0; versuch < 8; versuch++) {
+    let j;
+    try {
+      const r = await fetch(`https://${SHOP}/admin/api/${SHOP_API}/graphql.json`, { method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': tok }, body: JSON.stringify({ query: q, variables: v }) });
+      j = await r.json();
+    } catch { await sleep(2000); continue; }
+    const gedrosselt = (j?.errors || []).some(e => e?.extensions?.code === 'THROTTLED');
+    if (!gedrosselt) return j;
+    const kosten = j?.extensions?.cost || {};
+    const ts = kosten.throttleStatus || {};
+    const fehlt = (kosten.requestedQueryCost || 100) - (ts.currentlyAvailable || 0);
+    await sleep(Math.min(20000, Math.max(2000, (fehlt / (ts.restoreRate || 100)) * 1000 + 1000)));
+  }
+  return {};
 }
 async function sWorks(t) { try { const r = await sgql(t, '{shop{name}}'); return !!r?.data?.shop?.name; } catch { return false; } }
 async function sCC() { const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ client_id: CID, client_secret: CSEC, grant_type: 'client_credentials' }) }); const j = await r.json().catch(() => ({})); return j.access_token || null; }
@@ -153,7 +170,8 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
   while (prods.length < LIMIT) {
     const pr = await sgql(stok, `query($q:String!,$n:Int!,$a:String){ products(first:$n, query:$q, after:$a){ pageInfo{hasNextPage endCursor} edges{ node{ id title handle variants(first:1){ edges{ node{ sku } } } } } } }`, { q, n: Math.min(250, LIMIT), a: after });
     const conn = pr?.data?.products;
-    if (!conn) break;
+    // Stumm ≠ fertig: ohne diese Unterscheidung sah ein Ausfall wie ein leerer Katalog aus.
+    if (!conn) { console.log('Shopify antwortet nicht — Auswahl unvollständig, PAUSE.'); break; }
     prods.push(...conn.edges.map(e => e.node).filter(p => !done.has(numId(p.id))));
     if (!conn.pageInfo.hasNextPage) break;
     after = conn.pageInfo.endCursor;
