@@ -1,71 +1,81 @@
 {
- "zeit": "2026-08-28 20:25:03",
- "zeit_utc": "2026-08-28T18:25:03Z",
+ "zeit": "2026-08-28 20:42:24",
+ "zeit_utc": "2026-08-28T18:42:24Z",
  "hinweise": [
   "1 Tipps lagen in einer Tabu-Zone (Shop/Echtgeld) und wurden blockiert."
  ],
- "fassung": "7799f28",
- "schritte": 173,
+ "fassung": "d23303d",
+ "schritte": 198,
  "gleiche_ansicht": 0,
  "unbekannt_am_stueck": 0,
  "zaehler": {
-  "taps": 108,
-  "task:ansichten-sammeln": 73,
+  "taps": 126,
+  "task:ansichten-sammeln": 83,
   "drags": 72,
-  "task:spiel-im-vordergrund": 23,
+  "task:spiel-im-vordergrund": 26,
   "ansicht-gesammelt": 21,
-  "rule:spiel-update-bestaetigen": 14,
-  "task:lebenszeichen": 12,
-  "zwischendurch-gehandelt": 9,
-  "task:objekte-lernen": 9,
+  "rule:spiel-update-bestaetigen": 16,
+  "task:lebenszeichen": 13,
+  "task:objekte-lernen": 11,
+  "zwischendurch-gehandelt": 10,
   "wirkungslos": 8,
-  "task:basis-rundgang": 6,
-  "task:sammeln": 6
+  "task:sammeln": 7,
+  "swipes": 6
  },
  "vorlagen_offen": 32,
  "vorlagen_veraltet": [
   {
    "vorlage": "ui/btn_abholen.png",
-   "gesucht": 414,
+   "gesucht": 483,
    "bester_wert": 0.46
   },
   {
    "vorlage": "ui/btn_abholen_orange.png",
-   "gesucht": 278,
+   "gesucht": 315,
    "bester_wert": 0.812
   },
   {
    "vorlage": "ui/close_x_hell.png",
-   "gesucht": 168,
+   "gesucht": 194,
    "bester_wert": 0.858
   },
   {
    "vorlage": "nav/lupe.png",
-   "gesucht": 42,
+   "gesucht": 46,
    "bester_wert": 0.37
   },
   {
    "vorlage": "sammeln/suchen.png",
-   "gesucht": 42,
+   "gesucht": 46,
    "bester_wert": 0.515
   },
   {
-   "vorlage": "nav/startseite.png",
-   "gesucht": 30,
-   "bester_wert": 0.624
-  },
-  {
    "vorlage": "ui/btn_bestaetigen.png",
-   "gesucht": 28,
+   "gesucht": 39,
    "bester_wert": 0.55
   },
   {
+   "vorlage": "nav/startseite.png",
+   "gesucht": 34,
+   "bester_wert": 0.624
+  },
+  {
    "vorlage": "sammeln/versammlung_einleiten.png",
-   "gesucht": 27,
+   "gesucht": 34,
    "bester_wert": 0.4
+  },
+  {
+   "vorlage": "held/reiter_upgrade.png",
+   "gesucht": 32,
+   "bester_wert": 0.328
+  },
+  {
+   "vorlage": "held/aufwerten.png",
+   "gesucht": 32,
+   "bester_wert": 0.409
   }
  ],
  "verworfene_vorlagen": [],
  "verdaechtige_regeln": {},
- "bild": "austausch/lauf.png"
+ "bild": null
 }
