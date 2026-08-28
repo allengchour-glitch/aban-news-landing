@@ -98,3 +98,9 @@ gid://shopify/Product/15500975309185	publiziert	Retro T-Riemen Sandalen mit rund
 gid://shopify/Product/15500985041281	publiziert	Unisex Badeschuhe
 gid://shopify/Product/15500990710145	publiziert	Cat's Eye Nails: Abnehmbare Sticker in Mint
 gid://shopify/Product/15500990742913	publiziert	PGG Nackenmassagegerät der 2. Generation
+gid://shopify/Product/15501054902657	publiziert	Bedrucktes Mini-Kleid mit V-Ausschnitt und Spitze
+gid://shopify/Product/15501054935425	publiziert	Kissenbezug Loop getuftet
+gid://shopify/Product/15501061980545	publiziert	Stabmixer-Aufsatz für Küchenmaschine
+gid://shopify/Product/15501062013313	publiziert	Halskette für Hunde, Edelstahl, 14mm
+gid://shopify/Product/15517968597377	publiziert	Reflektierende Hunde-Leine für kleine bis grosse Hunde
+gid://shopify/Product/15518560551297	publiziert	Bohemian Exotik-Rock im Resort-Stil
