@@ -1,42 +1,42 @@
 {
- "zeit": "2026-08-28 18:51:07",
- "zeit_utc": "2026-08-28T16:51:07Z",
+ "zeit": "2026-08-28 19:06:15",
+ "zeit_utc": "2026-08-28T17:06:15Z",
  "hinweise": [
   "1 Tipps lagen in einer Tabu-Zone (Shop/Echtgeld) und wurden blockiert."
  ],
- "fassung": "d91f96c",
- "schritte": 88,
+ "fassung": "02c3428",
+ "schritte": 96,
  "gleiche_ansicht": 0,
  "unbekannt_am_stueck": 0,
  "zaehler": {
-  "taps": 49,
-  "task:ansichten-sammeln": 36,
-  "drags": 32,
-  "ansicht-gesammelt": 14,
-  "task:spiel-im-vordergrund": 12,
-  "task:lebenszeichen": 6,
-  "rule:spiel-update-bestaetigen": 6,
-  "zwischendurch-gehandelt": 5,
+  "taps": 66,
+  "task:ansichten-sammeln": 40,
+  "drags": 40,
+  "ansicht-gesammelt": 15,
+  "task:spiel-im-vordergrund": 13,
+  "wirkungslos": 7,
+  "task:lebenszeichen": 7,
+  "rule:spiel-update-bestaetigen": 7,
+  "zwischendurch-gehandelt": 6,
   "task:objekte-lernen": 4,
   "rule:dialog-schliessen": 3,
-  "swipes": 3,
-  "task:basis-rundgang": 3
+  "swipes": 3
  },
  "vorlagen_offen": 32,
  "vorlagen_veraltet": [
   {
    "vorlage": "ui/btn_abholen.png",
-   "gesucht": 211,
-   "bester_wert": 0.402
+   "gesucht": 228,
+   "bester_wert": 0.412
   },
   {
    "vorlage": "ui/btn_abholen_orange.png",
-   "gesucht": 133,
+   "gesucht": 150,
    "bester_wert": 0.812
   },
   {
    "vorlage": "ui/close_x_hell.png",
-   "gesucht": 86,
+   "gesucht": 94,
    "bester_wert": 0.783
   }
  ],
