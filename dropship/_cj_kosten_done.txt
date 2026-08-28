@@ -4495,3 +4495,7 @@ gid://shopify/Product/15448908792193	CHF 18.95	4 Varianten	Smart-Armband mit Far
 gid://shopify/Product/15448908988801	CHF 19.53	5 Varianten	Wasserdichte Leuchtende Armbanduhr
 gid://shopify/Product/15448909152641	CHF 24.53	15 Varianten	Smartes Unisex-Armband mit Herzfrequenzmessung
 gid://shopify/Product/15448909218177	CHF 18.32	6 Varianten	Wasserdichte Multifunktions-Elektronikuhr
+gid://shopify/Product/15448909283713	CHF 18.32	8 Varianten	Wasserdichte Sportuhr mit Leuchtfunktion
+gid://shopify/Product/15448909382017	CHF 21.27	1 Varianten	Taktische Sportuhr mit Dual-Display
+gid://shopify/Product/15448909414785	CHF 21.61	9 Varianten	Herrenuhr Quarzwerk Lederarmband
+gid://shopify/Product/15448909545857	CHF 23.36	12 Varianten	Multifunktionale Elektronische Herrenuhr
