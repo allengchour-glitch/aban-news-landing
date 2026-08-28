@@ -1,32 +1,32 @@
 ﻿# Der Bot-Lauf ist beendet. Steht hier ein frischer Zeitpunkt,
 # laeuft der Bot NICHT mehr.
-zeit:      2026-08-28 20:44:26
+zeit:      2026-08-28 21:15:21
 rechner:   MSI
 rueckgabe: 1
 
 # letzte Protokollzeilen:
-{"ts": 1787942567.0066264, "ev": "aufgabe", "aufgabe": "ansichten-sammeln", "tipps": 0}
-{"ts": 1787942569.9510818, "ev": "vergleich", "template": "ui/ladebildschirm.png", "score": 0.2407, "schwelle": 0.8, "treffer": false}
-{"ts": 1787942570.4933143, "ev": "vergleich", "template": "ui/btn_abholen_orange.png", "score": 0.3336, "schwelle": 0.85, "treffer": false}
-{"ts": 1787942587.422035, "ev": "vergleich", "template": "ui/btn_abholen.png", "score": 0.292, "schwelle": 0.85, "treffer": false}
-{"ts": 1787942587.7048285, "ev": "vergleich", "template": "ui/popup_close.png", "score": 0.5883, "schwelle": 0.86, "treffer": false}
-{"ts": 1787942588.216957, "ev": "vergleich", "template": "ui/close_x_hell.png", "score": 0.605, "schwelle": 0.86, "treffer": false}
-{"ts": 1787942588.2206383, "level": "info", "msg": "â–¶ Aufgabe: monster-jagen"}
-{"ts": 1787942588.221903, "level": "info", "msg": "Monster jagen, solange Ausdauer da ist", "quelle": "Aufgabe 'monster-jagen'"}
-{"ts": 1787942589.3254936, "ev": "vergleich", "template": "nav/welt.png", "score": 0.4702, "schwelle": 0.86, "treffer": false}
-{"ts": 1787942589.927718, "ev": "vergleich", "template": "nav/gebiet.png", "score": 0.2349, "schwelle": 0.86, "treffer": false}
-{"ts": 1787942593.258791, "level": "info", "msg": "âœ“ spiel-update-bestaetigen (0.75)"}
-{"ts": 1787942593.2590396, "level": "info", "msg": "Hinweis mit einzelnem Bestaetigen-Knopf - annehmen", "quelle": "Regel 'spiel-update-bestaetigen'"}
-{"ts": 1787942597.3648837, "ev": "vergleich", "template": "nav/lupe.png", "score": 0.3785, "schwelle": 0.88, "treffer": false}
-{"ts": 1787942600.3779953, "ev": "vergleich", "template": "sammeln/suchen.png", "score": 0.2709, "schwelle": 0.86, "treffer": false}
-{"ts": 1787942603.0476303, "ev": "vergleich", "template": "kampf/kampf.png", "score": 0.1586, "schwelle": 0.86, "treffer": false}
-{"ts": 1787942605.206162, "ev": "vergleich", "template": "ui/popup_close.png", "score": 0.5202, "schwelle": 0.84, "treffer": false}
-{"ts": 1787942607.0459468, "ev": "vergleich", "template": "nav/lupe.png", "score": 0.3208, "schwelle": 0.88, "treffer": false}
-{"ts": 1787942609.7911432, "ev": "vergleich", "template": "sammeln/suchen.png", "score": 0.2884, "schwelle": 0.86, "treffer": false}
-{"ts": 1787942612.3778436, "ev": "vergleich", "template": "kampf/kampf.png", "score": 0.2551, "schwelle": 0.86, "treffer": false}
-{"ts": 1787942614.4012237, "ev": "vergleich", "template": "ui/popup_close.png", "score": 0.5841, "schwelle": 0.84, "treffer": false}
-{"ts": 1787942616.539549, "ev": "vergleich", "template": "ui/ladebildschirm.png", "score": 0.2718, "schwelle": 0.8, "treffer": false}
-{"ts": 1787942632.923077, "ev": "vergleich", "template": "ui/btn_abholen_orange.png", "score": 0.2375, "schwelle": 0.85, "treffer": false}
-{"ts": 1787942633.4931517, "ev": "vergleich", "template": "ui/btn_abholen.png", "score": 0.2948, "schwelle": 0.85, "treffer": false}
-{"ts": 1787942633.692959, "ev": "vergleich", "template": "ui/popup_close.png", "score": 0.4985, "schwelle": 0.86, "treffer": false}
-{"ts": 1787942635.379675, "ev": "vergleich", "template": "nav/lupe.png", "score": 0.3208, "schwelle": 0.88, "treffer": false}
+{"ts": 1787944155.1605513, "level": "info", "msg": "Umgebung: nach links oben", "quelle": "Aufgabe 'umgebung-abfahren'"}
+{"ts": 1787944201.7953668, "level": "info", "msg": "Umgebung: nach rechts", "quelle": "Aufgabe 'umgebung-abfahren'"}
+{"ts": 1787944247.2868495, "ev": "vergleich", "template": "ui/ladebildschirm.png", "score": 0.3369, "schwelle": 0.8, "treffer": false}
+{"ts": 1787944247.7529428, "ev": "vergleich", "template": "ui/btn_abholen_orange.png", "score": 0.237, "schwelle": 0.85, "treffer": false}
+{"ts": 1787944248.1876254, "ev": "vergleich", "template": "ui/btn_abholen.png", "score": 0.32, "schwelle": 0.85, "treffer": false}
+{"ts": 1787944248.3671875, "ev": "vergleich", "template": "ui/popup_close.png", "score": 0.5226, "schwelle": 0.86, "treffer": false}
+{"ts": 1787944248.7841995, "level": "info", "msg": "Umgebung: weiter nach rechts", "quelle": "Aufgabe 'umgebung-abfahren'"}
+{"ts": 1787944300.1456997, "ev": "vergleich", "template": "ui/ladebildschirm.png", "score": 0.2566, "schwelle": 0.8, "treffer": false}
+{"ts": 1787944300.7382786, "ev": "vergleich", "template": "ui/btn_abholen_orange.png", "score": 0.237, "schwelle": 0.85, "treffer": false}
+{"ts": 1787944301.2890046, "ev": "vergleich", "template": "ui/btn_abholen.png", "score": 0.32, "schwelle": 0.85, "treffer": false}
+{"ts": 1787944301.483495, "ev": "vergleich", "template": "ui/popup_close.png", "score": 0.5226, "schwelle": 0.86, "treffer": false}
+{"ts": 1787944301.95484, "level": "info", "msg": "Umgebung: nach rechts unten", "quelle": "Aufgabe 'umgebung-abfahren'"}
+{"ts": 1787944354.456284, "ev": "vergleich", "template": "ui/ladebildschirm.png", "score": 0.337, "schwelle": 0.8, "treffer": false}
+{"ts": 1787944371.1894932, "ev": "vergleich", "template": "ui/btn_abholen_orange.png", "score": 0.237, "schwelle": 0.85, "treffer": false}
+{"ts": 1787944390.1234548, "ev": "vergleich", "template": "ui/btn_abholen.png", "score": 0.32, "schwelle": 0.85, "treffer": false}
+{"ts": 1787944405.7918375, "ev": "vergleich", "template": "ui/popup_close.png", "score": 0.5226, "schwelle": 0.86, "treffer": false}
+{"ts": 1787944406.241667, "level": "info", "msg": "Umgebung: nach oben", "quelle": "Aufgabe 'umgebung-abfahren'"}
+{"ts": 1787944455.6620648, "ev": "vergleich", "template": "ui/ladebildschirm.png", "score": 0.337, "schwelle": 0.8, "treffer": false}
+{"ts": 1787944456.2358127, "ev": "vergleich", "template": "ui/btn_abholen_orange.png", "score": 0.237, "schwelle": 0.85, "treffer": false}
+{"ts": 1787944456.739299, "ev": "vergleich", "template": "ui/btn_abholen.png", "score": 0.32, "schwelle": 0.85, "treffer": false}
+{"ts": 1787944456.9272518, "ev": "vergleich", "template": "ui/popup_close.png", "score": 0.5226, "schwelle": 0.86, "treffer": false}
+{"ts": 1787944457.3556678, "level": "info", "msg": "Umgebung: nach unten", "quelle": "Aufgabe 'umgebung-abfahren'"}
+{"ts": 1787944501.0692477, "level": "info", "msg": "Zurueck in die Stadt", "quelle": "Aufgabe 'umgebung-abfahren'"}
+{"ts": 1787944503.3704603, "ev": "vergleich", "template": "nav/startseite.png", "score": 0.3693, "schwelle": 0.86, "treffer": false}
+{"ts": 1787944516.3665786, "ev": "vergleich", "template": "nav/burg.png", "score": 0.3924, "schwelle": 0.86, "treffer": false}
