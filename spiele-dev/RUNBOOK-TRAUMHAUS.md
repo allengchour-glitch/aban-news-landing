@@ -1992,3 +1992,41 @@ Zahlen zählen.
 
 **Noch offen (gemessen, nicht behoben):** 9 308 Materialien, 6 126 Schattenwerfer, 17 Lichter.
 Das sind die nächsten Hebel, wenn es weiter ruckelt.
+
+## 2026-08-28 · ✅ Korrektur meiner eigenen Notiz: der Teilbaum-Frost ist sauber
+
+In #2334 steht „**Teilbaum-Frost: gebaut, gemessen, verworfen**" — mit zwei Gründen: kein
+Tempogewinn, und **724 Objekte bewegten sich danach nicht mehr**. Die Nachbar-Session hat den
+Frost in #2361 erneut gebaut und gemergt. Also nachgemessen, weil ich als Einziger die
+Vergleichszahl hatte.
+
+### Der Animationsverlust ist behoben — mein Einwand gilt nicht mehr
+Drei **gepaarte** Läufe auf `main`, Weltmatrizen aller ~58 600 Objekte zweimal im Abstand von
+12 s abgetastet:
+
+| | ohne Frost | mit Frost | Differenz |
+|---|---|---|---|
+| Lauf A | 6298 | 6225 | −73 |
+| Lauf 1 | 6293 | 6450 | **+157** |
+| Lauf 2 | 6483 | 6269 | −214 |
+
+**Das Vorzeichen kippt.** Die Streuung innerhalb eines Arms (~190) ist größer als jeder
+Unterschied zwischen ihnen — gegenüber **−724 bei meiner damaligen Fassung**. Der Unterschied
+ist ihr `_auftauen(o)`: es schaltet `matrixAutoUpdate` wieder **ein**, wenn ein Objekt später
+beweglich wird. Meine Fassung setzte nur `_bewegt` und ließ die Matrix stillstehen — genau
+der Karussell-Fall, den sie beschreiben.
+
+### Der fehlende Tempogewinn ist hier kein Gegenbeweis
+CPU-Anteil isoliert (280×170, damit die Füllrate nicht dominiert), zwei gepaarte Läufe:
+**200 ms ohne, 203 ms mit** — Vorzeichen kippt erneut (196/210). Deckt sich mit meiner Messung
+von #2334 (212/213).
+
+⚠️ **Daraus folgt aber nicht, dass die Änderung nichts bringt.** Dieser Container verbringt
+**85,8 %** der Bildzeit in nativem SwiftShader-Code; eine JS-seitige Ersparnis von wenigen
+Millisekunden liegt unter der Rauschgrenze und ist hier grundsätzlich nicht auflösbar. Auf
+einem Telefon — kein Software-Rasterizer, JS um ein Vielfaches langsamer — können 54 765
+eingesparte Matrix-Kompositionen je Bild sehr wohl zählen.
+
+**Fazit:** die Notiz „verworfen" in #2334 gilt für **meine** Fassung, nicht für die in `main`.
+Wer sie liest, soll den Frost nicht rückbauen. Was bleibt: der Frost ist **kein** Risiko für
+Animationen (gemessen), und sein Nutzen ist von hier aus **nicht messbar** — nicht widerlegt.
