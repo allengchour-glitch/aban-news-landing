@@ -1664,3 +1664,26 @@ gar nicht. **Vor dem Auswerten prüfen, dass überhaupt etwas gemessen wurde**
 Zoo-Standort und ohne Änderung an ihm. Verdacht: die dokumentierte Nichtdeterminiertheit von
 `entzerren()`, das überlappende Bauten auseinanderschiebt, ohne die Straße zu kennen. Erst
 messen (mehrere Läufe), dann urteilen.
+
+## 2026-08-28 · 🦆👫 Enten füttern zu zweit — der erste echte Koop-Anreiz am See
+
+**Was:** Stehen BEIDE Spieler gleichzeitig im Uferring des Seeparks (r 12–17), kommt der
+ganze Schwarm: doppelte Laune (+18 statt +8), Enten bleiben 12 s statt 8, kürzere Wartezeit
+(20 s statt 30), eigener Hinweis, zweiter Ton — und `stats.entenKoop` plus Erfolg
+**🦆 Entenpaar**.
+
+**Der Kern der Änderung:** Die Fütter-Schleife brach beim **ersten** Bewohner im Ring ab
+(`break`) — ob der andere danebenstand, war der Szene egal. Jetzt wird gezählt, und das
+Ziel ist die **Mitte zwischen beiden**, damit die Enten zwischen sie schwimmen.
+
+**Muster beibehalten:** Host entscheidet, Gast hört zu (wie Brunnen/Tor). Die Netz-Nachricht
+trägt jetzt `zwei` und `wer` (alle beteiligten Bewohner), damit der Gast dieselbe Meldung
+und beide Emojis sieht.
+
+**⚠️ Falle beim Messen (gekostet: ein Fehlschlag):** Laune zwischen zwei getrennten
+`page.evaluate`-Aufrufen zu vergleichen ist wertlos — die Spielschleife läuft weiter und
+hebt `needs.spass` in der Zwischenzeit auf 100. Setzen, ticken und lesen muss in EINEN
+Aufruf. Der Test macht es jetzt so (`messe`).
+
+**Werkzeug:** `spiele-dev/tools/th-enten.mjs` (11 Checks: allein vs. zu zweit, Zieldauer,
+Wartezeit, Laune-Differenz, Ziel liegt zwischen beiden, leerer Ring löst nichts aus).
