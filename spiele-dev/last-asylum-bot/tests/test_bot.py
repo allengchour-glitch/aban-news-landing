@@ -2525,6 +2525,38 @@ class TestLebenszeichen(unittest.TestCase):
             self.assertEqual(belege["ui/knopf.png"]["kleinster_treffer"], 0.91)
             self.assertEqual(belege["ui/knopf.png"]["groesster_fehlschlag"], 0.62)
 
+    def test_geaenderte_und_geloeschte_vorlagen_werden_nicht_uebernommen(self):
+        """Der Bot darf beitragen, aber nichts wegnehmen.
+
+        Der erste Versuch nahm alles ("git add templates") und richtete prompt
+        Schaden an: die Windows-Kopie war aelter, also loeschte der Commit eine
+        Vorlage aus dem Repository und ersetzte vier durch schlechtere -
+        nav/held.png passte danach mit 0.9995 mitten in nav/nachricht.png.
+        """
+        import subprocess
+        with tempfile.TemporaryDirectory() as ordner:
+            eng = self.bau(ordner)
+            ziel = os.path.join(ordner, "templates", "nav")
+            os.makedirs(ziel, exist_ok=True)
+            noise(20, 20, 5).save(os.path.join(ziel, "alt.png"))
+            noise(20, 20, 6).save(os.path.join(ziel, "weg.png"))
+            subprocess.run(["git", "-C", ordner, "add", "-A"], check=True)
+            subprocess.run(["git", "-C", ordner, "commit", "-qm", "vorlagen"], check=True)
+            # Jetzt so tun, als waere die Windows-Kopie aelter/schlechter:
+            noise(20, 20, 7).save(os.path.join(ziel, "alt.png"))   # veraendert
+            os.remove(os.path.join(ziel, "weg.png"))               # geloescht
+            noise(20, 20, 8).save(os.path.join(ziel, "neu.png"))   # neu
+            eng.run_actions([{"lebenszeichen": {}}], "test")
+            vorgemerkt = subprocess.run(
+                ["git", "-C", ordner, "diff", "--cached", "--name-only"],
+                capture_output=True).stdout.decode()
+            self.assertIn("templates/nav/neu.png", vorgemerkt,
+                          "neue Vorlagen sollen mit")
+            self.assertNotIn("templates/nav/alt.png", vorgemerkt,
+                             "eine geaenderte Vorlage darf die bessere nicht ueberschreiben")
+            self.assertNotIn("templates/nav/weg.png", vorgemerkt,
+                             "der Bot darf keine Vorlage aus dem Repository loeschen")
+
     def test_alter_zaehlt_nach_dem_bericht_nicht_nach_der_datei(self):
         """git schreibt beim Pull Dateien neu - die Dateizeit luegt danach.
 
@@ -2918,6 +2950,48 @@ class TestFluchtwegWirdNichtGebremst(unittest.TestCase):
         eng._tap_abs(100, 150, "Punkt")
         self.assertEqual(dev.taps, [], "die Tabu-Zone darf die Flucht nicht aushebeln")
 
+
+
+class TestAusdauerFlaeschchenBleibenLiegen(unittest.TestCase):
+    """Der Nutzer hat es ausdruecklich verboten: die Flaeschchen sind fuer den Krieg.
+
+    Am 28.08. sammelte der Bot selbst den Beleg ein, dass er sie trotzdem
+    verbraucht haette: in der Tasche, Reiter Spezial, steht beim ausgewaehlten
+    Ausdauer-Flaeschchen ein blaues 'Verwenden' - und die generische
+    Blau-Knopf-Regel fand es punktgenau.
+    """
+
+    TASCHE = os.path.join(ROOT, "austausch", "ansichten", "24-04070305.png")
+    ANDERS = os.path.join(ROOT, "austausch", "allianz-geschenk.png")
+
+    def regel(self):
+        cfg = Config.load(os.path.join(ROOT, "config", "last-asylum.json"))
+        treffer = [r for r in cfg.rules if r.name == "blauer-knopf-generisch"]
+        if not treffer:
+            self.skipTest("die Regel gibt es nicht mehr")
+        return cfg, treffer[0]
+
+    def _greift(self, cfg, regel, pfad, skala):
+        if not os.path.exists(pfad):
+            self.skipTest(f"{os.path.basename(pfad)} liegt nicht vor")
+        schirm = Image.load(pfad)
+        eng = Engine(cfg, FakeDevice([schirm], loop=True), logger=quiet(),
+                     sleep=lambda s: None, seed=1)
+        eng._scale = skala   # die gesammelten Ansichten liegen halbiert vor
+        return eng.evaluate(regel.match, schirm)
+
+    def test_blauer_knopf_greift_nicht_in_der_tasche(self):
+        cfg, regel = self.regel()
+        self.assertFalse(
+            self._greift(cfg, regel, self.TASCHE, 0.5),
+            "auf dem Ausdauer-Bildschirm haette die Regel 'Verwenden' getippt")
+
+    def test_blauer_knopf_greift_sonst_weiter(self):
+        """Die Sperre darf die Regel nicht ueberall lahmlegen."""
+        cfg, regel = self.regel()
+        self.assertTrue(
+            self._greift(cfg, regel, self.ANDERS, 1.0),
+            "auf dem Allianz-Geschenk steht ein blaues 'Los' - das gehoert getippt")
 
 
 class TestBerichtsAufgabenStehenVorn(unittest.TestCase):
@@ -3395,8 +3469,33 @@ class TestFarbschrankenSindGemessen(unittest.TestCase):
                              encoding="utf-8"))
         return next(r for r in cfg["rules"] if r["name"] == name)
 
+    def farbknopf(self, name):
+        """Die Farbknopf-Angaben einer Regel - egal wie tief sie eingebettet sind.
+
+        Eine Bedingung kann in 'all'/'any'/'not' stecken. Frueher griff dieser
+        Test starr auf match["farbknopf"] zu und ging kaputt, sobald eine Regel
+        eine zweite Bedingung dazubekam - der Test brach also an einer
+        Verbesserung, nicht an einem Fehler.
+        """
+        gefunden = []
+
+        def suche(knoten):
+            if isinstance(knoten, dict):
+                if isinstance(knoten.get("farbknopf"), dict):
+                    gefunden.append(knoten["farbknopf"])
+                for wert in knoten.values():
+                    suche(wert)
+            elif isinstance(knoten, list):
+                for wert in knoten:
+                    suche(wert)
+
+        suche(self.regel(name)["match"])
+        if not gefunden:
+            self.skipTest(f"Regel '{name}' prueft keinen Farbknopf mehr")
+        return gefunden[0]
+
     def test_blauer_knopf_mit_schrift_wird_erkannt(self):
-        k = self.regel("blauer-knopf-generisch")["match"]["farbknopf"]
+        k = self.farbknopf("blauer-knopf-generisch")
         bild = self.knopf(k["rgb"])
         treffer = matcher.find_color_button(
             bild, k["rgb"], tolerance=k["tolerance"], min_w=k["min_w"], max_w=k["max_w"],
@@ -3406,7 +3505,7 @@ class TestFarbschrankenSindGemessen(unittest.TestCase):
                         f"{k['min_fuellung']} Fuellung nicht")
 
     def test_rote_abzeichen_mit_zahl_werden_erkannt(self):
-        k = self.regel("roter-punkt-pruefen")["match"]["farbknopf"]
+        k = self.farbknopf("roter-punkt-pruefen")
         for ziffern in (0, 1, 2):
             with self.subTest(ziffern=ziffern):
                 treffer = matcher.find_color_button(
@@ -3421,7 +3520,7 @@ class TestFarbschrankenSindGemessen(unittest.TestCase):
         """Die Rechnung dahinter - damit niemand wieder 0.9 hinschreibt."""
         import math
         for name in ("roter-punkt-pruefen",):
-            k = self.regel(name)["match"]["farbknopf"]
+            k = self.farbknopf(name)
             self.assertLess(k["min_fuellung"], math.pi / 4,
                             f"{name}: mehr als {math.pi/4:.3f} kann ein Kreis nicht sein")
 

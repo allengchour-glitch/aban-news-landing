@@ -888,27 +888,38 @@
       "name": "blauer-knopf-generisch",
       "priority": 144,
       "cooldown": 25,
-      "_zweck": "Blau ist im Spiel entweder eine Handlung ('Los' bei Arena und Koenigsstadtkampf, 'Versammeln' beim Monster) oder 'Abbrechen'. Beides ist ungefaehrlich - schlimmstenfalls bricht der Bot etwas ab. Damit kommt er aus Event-Popups heraus, ohne dass es dafuer je eine Vorlage braucht. Der untere Rand ist ausgenommen: dort liegt das Angebots-Banner. Am 31.07. griff die Regel sechzehnmal hintereinander mit einem Fuellgrad von nur 0.59 - das war kein Knopf, sondern eine blaeuliche Flaeche. Ein echter Knopf ist fast vollstaendig ausgefuellt, deshalb jetzt 0.78 und mindestens 18 Prozent Bildbreite. NACHGEMESSEN 03.08.: min_fuellung stand auf 0.78 - unerreichbar. Ein blauer Knopf mit weisser Beschriftung kommt gemessen hoechstens auf 0.69, die Schrift belegt den Rest. Die 0.78 waren gegen eine Vorstellung gesetzt, nicht gegen einen Knopf; die Regel konnte also nur bei UNbeschrifteten blauen Flaechen greifen - genau das Gegenteil des Gemeinten. Jetzt 0.65: unter dem gemessenen Knopf-Wert, aber ueber dem Fehltreffer von 0.59 am 31.07.",
+      "_zweck": "Blau ist im Spiel entweder eine Handlung ('Los' bei Arena und Koenigsstadtkampf, 'Versammeln' beim Monster) oder 'Abbrechen'. Beides ist ungefaehrlich - schlimmstenfalls bricht der Bot etwas ab. Damit kommt er aus Event-Popups heraus, ohne dass es dafuer je eine Vorlage braucht. Der untere Rand ist ausgenommen: dort liegt das Angebots-Banner. Am 31.07. griff die Regel sechzehnmal hintereinander mit einem Fuellgrad von nur 0.59 - das war kein Knopf, sondern eine blaeuliche Flaeche. Ein echter Knopf ist fast vollstaendig ausgefuellt, deshalb jetzt 0.78 und mindestens 18 Prozent Bildbreite. NACHGEMESSEN 03.08.: min_fuellung stand auf 0.78 - unerreichbar. Ein blauer Knopf mit weisser Beschriftung kommt gemessen hoechstens auf 0.69, die Schrift belegt den Rest. Die 0.78 waren gegen eine Vorstellung gesetzt, nicht gegen einen Knopf; die Regel konnte also nur bei UNbeschrifteten blauen Flaechen greifen - genau das Gegenteil des Gemeinten. Jetzt 0.65: unter dem gemessenen Knopf-Wert, aber ueber dem Fehltreffer von 0.59 am 31.07. NACHGEMESSEN 28.08. an austausch/ansichten/24-04070305.png: in der Tasche, Reiter Spezial, steht bei ausgewaehltem Ausdauer-Flaeschchen ein blaues 'Verwenden' - und diese Regel findet es punktgenau (x=226 y=544 w=268 h=74 im halben Bild). Sie haette also Ausdauer-Flaeschchen verbraucht, was der Nutzer ausdruecklich verboten hat (siehe _ausdauer). Darum die Sperre auf den Spezial-Reiter: der trifft dort mit 0.984 und ist damit ein verlaesslicher Melder fuer 'die Tasche ist offen'. Entwarnung dagegen bei den Aufgaben: ui/btn_benutzen.png kommt auf diesem Bildschirm nur auf 0.390 und tasche/truhe.png auf 0.526 - beide weit unter ihrer Schwelle, die tippen dort also nichts an.",
       "match": {
-        "farbknopf": {
-          "rgb": [
-            58,
-            142,
-            230
-          ],
-          "tolerance": 40,
-          "min_w": 0.18,
-          "max_w": 0.75,
-          "min_h": 0.02,
-          "max_h": 0.07,
-          "region": [
-            0.0,
-            0.25,
-            1.0,
-            0.88
-          ],
-          "min_fuellung": 0.65
-        }
+        "all": [
+          {
+            "farbknopf": {
+              "rgb": [
+                58,
+                142,
+                230
+              ],
+              "tolerance": 40,
+              "min_w": 0.18,
+              "max_w": 0.75,
+              "min_h": 0.02,
+              "max_h": 0.07,
+              "region": [
+                0.0,
+                0.25,
+                1.0,
+                0.88
+              ],
+              "min_fuellung": 0.65
+            }
+          },
+          {
+            "not": {
+              "template": "schutz/reiter_spezial.png",
+              "threshold": 0.86,
+              "optional": true
+            }
+          }
+        ]
       },
       "do": [
         {
@@ -1845,7 +1856,7 @@
       "every": 5400,
       "at_start": true,
       "priority": 108,
-      "_zweck": "Tasche -> Spezial: Truhen und Beutekisten oeffnen. Der orange 'Alles abholen' im Beute-Fenster raeumt gleich alles ab. Braucht tasche/truhe.png (die Kiste im Spezial-Reiter) und ui/btn_alles_abholen.png.",
+      "_zweck": "Tasche -> Spezial: Truhen und Beutekisten oeffnen. Der orange 'Alles abholen' im Beute-Fenster raeumt gleich alles ab. Braucht tasche/truhe.png (die Kiste im Spezial-Reiter) und ui/btn_alles_abholen.png. Holt beim ersten Mal ausserdem austausch/tasche-spezial.png in voller Aufloesung: aus dem halbierten Sammelbild laesst sich kein Merkmal schneiden, und ohne ein Merkmal fuer 'Ausdauer' bleibt die Sperre gegen das Verbrauchen der Flaeschchen grob.",
       "do": [
         {
           "log": "Kisten oeffnen"
@@ -1874,6 +1885,29 @@
             "after": [
               1.5,
               2.5
+            ]
+          }
+        },
+        {
+          "wenn": {
+            "match": {
+              "template": "schutz/reiter_spezial.png",
+              "threshold": 0.86,
+              "optional": true
+            },
+            "dann": [
+              {
+                "ausschnitt": {
+                  "datei": "austausch/tasche-spezial.png",
+                  "region": [
+                    0.0,
+                    0.05,
+                    1.0,
+                    0.55
+                  ],
+                  "mindestabstand": 43200
+                }
+              }
             ]
           }
         },
@@ -7356,7 +7390,7 @@
   "_selbstlernen": "Der Bot entdeckt Sammel-Objekte selbst: die Aufgabe 'objekte-lernen' macht zwei Aufnahmen im Abstand weniger Sekunden. Alles, was sich dazwischen aendert und rundlich in Knopfgroesse ist, ist einsammelbar (Ertrags-Blasen tauchen auf und verschwinden, der Rest des Bildes steht still). Die Ausschnitte landen in templates/gelernt/blasen/ und werden von der Regel 'gelernte-objekte-einsammeln' per Muster sofort mitbenutzt - ohne Konfigurationsaenderung. So kommen auch Blasen-Sorten dazu, die nie jemand von Hand geschnitten hat.",
   "_routine": "TAGESROUTINE: Die Takte sind so gewaehlt, dass die Aufgaben zusammen deutlich unter der verfuegbaren Zeit bleiben. Sonst stauen sie sich und die reaktiven Regeln - Belohnungen, Ertrags-Blasen, Dialoge - kommen kaum noch dran. Faustregel beim Aendern: die Summe aus Laufzeit mal Haeufigkeit sollte rund die Haelfte des Tages nicht ueberschreiten.",
   "_selbstoptimierung": "Der Bot wertet alle zwoelf Stunden seine eigenen Protokolle aus und zieht die Takte nach: Aufgaben, die wiederholt leer laufen, werden seltener aufgerufen, sehr ergiebige oefter. Aenderungen sind auf Faktor zwei je Durchgang begrenzt und bleiben zwischen 5 Minuten und 24 Stunden. Die neuen Takte schreibt er in diese Datei zurueck.",
-  "_ausdauer": "AUSDAUER-REGEL (User): Monster jagen, bis die Ausdauer alle ist - aber die Ausdauer-Fläschchen NICHT verbrauchen, die werden fuer den Krieg gebraucht. Der Bot fuellt Ausdauer nie nach: er tippt weder das Plus neben der Ausdauer-Anzeige noch ein Fläschchen in der Tasche an. Geht die Ausdauer aus, oeffnet das Spiel einen Nachfuell-Dialog - den schliessen die Dialog-Regeln (Prioritaet 199/200), bevor die generische Gruen-Knopf-Regel (145) ihn bestaetigen koennte. Wichtig fuer dich: schneide NIE ein Template von einem 'Benutzen' oder 'Bestaetigen' aus einem Ausdauer-Dialog. Der Falkenturm zieht aus demselben Topf: 'Schnelle Ausfuehrung' kostet 40 bis 50 Ausdauer auf einmal. Die Aufgabe 'falkenturm-quests' steht deshalb auf AUS - sonst waere die Ausdauer weg, bevor der Bot ueberhaupt zum Sammeln oder zu den Monstern kommt.",
+  "_ausdauer": "AUSDAUER-REGEL (User): Monster jagen, bis die Ausdauer alle ist - aber die Ausdauer-Fläschchen NICHT verbrauchen, die werden fuer den Krieg gebraucht. Der Bot fuellt Ausdauer nie nach: er tippt weder das Plus neben der Ausdauer-Anzeige noch ein Fläschchen in der Tasche an. Geht die Ausdauer aus, oeffnet das Spiel einen Nachfuell-Dialog - den schliessen die Dialog-Regeln (Prioritaet 199/200), bevor die generische Gruen-Knopf-Regel (145) ihn bestaetigen koennte. Wichtig fuer dich: schneide NIE ein Template von einem 'Benutzen' oder 'Bestaetigen' aus einem Ausdauer-Dialog. Der Falkenturm zieht aus demselben Topf: 'Schnelle Ausfuehrung' kostet 40 bis 50 Ausdauer auf einmal. Die Aufgabe 'falkenturm-quests' steht deshalb auf AUS - sonst waere die Ausdauer weg, bevor der Bot ueberhaupt zum Sammeln oder zu den Monstern kommt. NACHGEMESSEN 28.08.: die generische Blau-Knopf-Regel (144) fand das 'Verwenden' beim ausgewaehlten Ausdauer-Flaeschchen punktgenau - sie haette die Flaeschchen also verbraucht. Sie ist jetzt gesperrt, solange der Spezial-Reiter der Tasche sichtbar ist.",
   "_on_unknown": "Fluchtweg aus unbekannten Bildschirmen, in dieser Reihenfolge: Dialog schliessen (beide X-Varianten), dann zurueck ueber den Pfeil oben links, ersatzweise die Android-Taste, zuletzt ein Tipp ins freie Gelaende. Ohne die Zurueck-Stufe blieb der Bot in Untermenues haengen, sobald dort keine Vorlage passte.",
   "ui_skala": 1.0,
   "festgefahren_schritte": 15,

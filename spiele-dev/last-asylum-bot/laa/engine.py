@@ -1589,12 +1589,22 @@ class Engine:
             # Vorlagen, die am PC geschnitten wurden, liegen sonst NUR dort.
             # Die Selbstbericht-Zahl "0 offen" bei 31 im Repository fehlenden
             # Vorlagen kam genau daher: der Bot hatte sie, das Repository nicht.
-            # Geht die Windows-Kopie verloren, ist die Handarbeit weg - und von
-            # hier aus laesst sich keine Schwelle nachpruefen, die man nicht
-            # sieht. templates/entdeckt und templates/gelernt sind ohnehin
-            # per .gitignore aussen vor.
+            # Geht die Windows-Kopie verloren, ist die Handarbeit weg.
+            #
+            # NUR NEUE Dateien, ausdruecklich keine geaenderten oder geloeschten.
+            # Der erste Versuch nahm alles ("git add templates") und richtete
+            # prompt Schaden an: die Windows-Kopie war aelter, also loeschte der
+            # Commit hud/quest_vorschlag.png aus dem Repository und ersetzte
+            # vier Vorlagen durch schlechtere - nav/held.png passte danach mit
+            # 0.9995 mitten in nav/nachricht.png. Der Bot darf beitragen, aber
+            # nichts wegnehmen. (templates/entdeckt und templates/gelernt sind
+            # per .gitignore ohnehin aussen vor.)
             if spec.get("vorlagen_sichern", True):
-                git("add", "--", "templates")
+                neue = git("ls-files", "--others", "--exclude-standard", "--", "templates")
+                pfade = [z for z in neue.stdout.decode("utf-8", "replace").splitlines()
+                         if z.strip()]
+                if pfade:
+                    git("add", "--", *pfade[:200])
             eingetragen = git("commit", "-m",
                               f"Lebenszeichen {bericht['zeit']} - Schritt {self.steps}")
             if eingetragen.returncode != 0:
