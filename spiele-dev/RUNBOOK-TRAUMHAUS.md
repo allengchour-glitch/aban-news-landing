@@ -1882,3 +1882,39 @@ gilt auch für Bahn-Zubehör und Deko — 18 Treffer wären damit fälschlich au
 Verworfen. Der verbliebene Rest auf Viertelwegen ist **kein Streuwerk-Problem**, sondern
 besteht aus Gebäuden, Gelände und Absicht. Wer ihn angeht, muss an die jeweilige Quelle
 (Bauzeile aussparen, Anschluss anders führen) — nicht an einen Räumlauf.
+
+## 2026-08-28 · 🐄 Fünf Tiere standen seit Charge 38 an einer unsichtbaren Wand
+
+Beim Blick auf den Zoo fiel auf, dass Gehege ohne Tiere nur Zäune sind — und beim Nachsehen,
+wie das Spiel Tiere ortsgebunden hält (`home:{x,z,r}`), kam ein echter Fehler heraus.
+
+**Zwei Ursachen, beide in dieser Session schon einmal dagewesen:**
+
+1. **Wunschort statt Standort.** Die Koppel-Herde hing fest auf `home:{x:30.5,z:-177}` — dem
+   Wunschort des Bauernhofs. Der steht auf **z = −246**, die Koppel (aus `hofausbau`, mit
+   `BHDZ`) also auf **z = −227**. Die Herde war 50 m daneben angesetzt. Dieselbe Falle wie
+   bei der Park-Ausstattung des Freizeitparks (#2353).
+2. **Eine Weltgrenze, die auch für Ortsgebundene galt.** `updTiere()` klemmt Landtiere hart
+   auf `lim = 108`. Die Koppel liegt weit dahinter — die Tiere steuerten also auf ihr `home`
+   zu und wurden bei **z = −108** festgehalten. Gemessen: **alle fünf exakt auf z = −108**,
+   eine Reihe Kühe und Hühner im offenen Feld, seit das Bauernhof-Viertel existiert.
+
+**Behoben:**
+* Die Herde entsteht in einem eigenen späten Lauf (1200 ms) und liest die **echte** Lage aus
+  `_viertelSolver.VIERTEL`; Koppelmitte = `(30,5+BHDX | −177+BHDZ)` wie in `hofausbau`.
+  `baueTiere` läuft bei 0 ms, die Viertel entstehen erst bei 260 ms — deshalb der eigene Lauf.
+* Wer ein `home` hat, wird **von dort** gehalten (weich auf `r+8` zurückgeholt) statt von der
+  Weltgrenze; `lim = 108` gilt nur noch für die frei umherziehenden Tiere der Innenstadt.
+
+| | vorher | nachher |
+|---|---|---|
+| Abstand der Koppel-Tiere zu ihrem `home` | ~120 m (alle auf z = −108) | **1,2–7,7 m** bei r = 9 |
+
+**Verifiziert:** 7 Viertel auf Stufe 2 · `th-netz` 38 ok · `th-3d` 58 · Foto zeigt den
+Koppelzaun mit Schwein davor.
+
+### Die Regel dahinter, zum dritten Mal in dieser Session
+Jede Stelle, die Koordinaten aus einem `viertel({…})`-Aufruf abschreibt, veraltet, sobald das
+Viertel ausweicht — und ausweichen ist der Normalfall, nicht die Ausnahme. Betroffen waren
+bisher: `_GPS_VERB` (#2355), `parkDeko` (#2353), der Freizeitpark-Anschluss (#2356) und jetzt
+die Koppel-Herde. **Wer an ein Viertel anbaut, liest `_viertelSolver.VIERTEL`.**
