@@ -1506,3 +1506,10 @@ gid://shopify/Product/15448590909825	zugeordnet	35	Rundhals-Strickpullover für 
 gid://shopify/Product/15448590975361	zugeordnet	35	Leichtes Kurzarm-Strickshirt für Damen
 gid://shopify/Product/15448591008129	zugeordnet	25	V-Ausschnitt Strickjacke mit Streifen
 gid://shopify/Product/15448591139201	zugeordnet	10	Oversized Strick-Shirt mit V-Ausschnitt
+gid://shopify/Product/15448591401345	zugeordnet	24	Gehäkelter Pullover mit Dreiviertelärmeln
+gid://shopify/Product/15448591434113	zugeordnet	6	Strickpullover mit Rückenausschnitt
+gid://shopify/Product/15448591466881	zugeordnet	35	V-Ausschnitt Pullover Slim Fit
+gid://shopify/Product/15448591630721	zugeordnet	15	Eleganter Long Cardigan für Damen
+gid://shopify/Product/15448591663489	zugeordnet	30	Vielseitiger V-Pullover für Herbst & Winter
+gid://shopify/Product/15448591860097	zugeordnet	20	Rundhals Strickpullover mit Knopfleiste
+gid://shopify/Product/15448591892865	zugeordnet	70	Strick-Cardigan im Retro-Look

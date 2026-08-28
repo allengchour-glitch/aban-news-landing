@@ -327,6 +327,21 @@ while true; do
       echo "$(date -u +%H:%M) hype-reviews Lauf gestartet"
     fi
   fi
+  # ECHTE CJ-BEWERTUNGEN, einmal täglich: Von 31 Produkten mit Besuchern hatte am 28.08.2026
+  # genau EINES eine Bewertung — nicht wegen kaputter Technik (Judge.me hält 1'193 Bewertungen
+  # auf 216 Produkten, die Shopify-Metafelder sind synchron), sondern wegen Abdeckung: 216 von
+  # 49'000 sind 0,4 %. Der Lauf holt AUSSCHLIESSLICH echte Kundenkommentare vom Lieferanten
+  # (≥4★, Mindestlänge) — erfundene Bewertungen sind ausgeschlossen.
+  # ⚠️ Er braucht JUDGEME_PRIVATE_TOKEN aus /tmp/judgeme.env. Die Datei liegt in /tmp und
+  # überlebt den Snapshot-Rewind NICHT; fehlt sie, endet der Lauf sauber als No-op.
+  RV2=/tmp/cj_reviews_import.log
+  if [ -f "$REPO/automation/cj_reviews_import.mjs" ] && [ -f /tmp/judgeme.env ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$RV2" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid sh -c '. /tmp/judgeme.env; . /tmp/cj_creds.env 2>/dev/null; . /tmp/secrets_env.sh 2>/dev/null; LIMIT=120 MIN_SCORE=4 PER=6 /opt/node22/bin/node automation/cj_reviews_import.mjs' >> "$RV2" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) cj-bewertungen gestartet"
+    fi
+  fi
   # GOOGLE-ATTRIBUT `size`, einmal täglich: Google verlangt es bei Bekleidung und Schuhen;
   # fehlt es, wird das Angebot in Shopping-Ergebnissen beschnitten — im einzigen Kanal mit
   # belegten Verkäufen. Am 28.08.2026 trug KEIN geprüftes Kleid ein `size`, obwohl alle eine

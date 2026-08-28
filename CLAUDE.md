@@ -130,6 +130,32 @@ live belegt an 15411554910593). `automation/versandaussagen_wahrheit.py`, Ledger
   Rechtstexte gehen nur per GraphQL `shopPolicyUpdate` — und dessen Input nimmt `type`
   (`SHIPPING_POLICY`), **nicht** `id`. Ohne Live-Gegenprobe hätte der Lauf als erledigt gegolten.
 
+## 💬 CJs Kommentar-Abruf ist GRATIS — nur der pid-Nachschlag kostet (2026-08-28)
+Der Bewertungs-Import kam nie über eine Handvoll Produkte, weil er bei CJ-Code **16900500** den
+ganzen Lauf mit `process.exit(0)` beendete. Direkt nachgemessen, zwei Aufrufe in derselben
+Minute:
+| Endpunkt | Antwort |
+|---|---|
+| `product/query` | **16900500** «Insufficient API points. Used today: 110020, Remaining: 0, Required: 10» |
+| `product/productComments` | **code 200**, 5 Kommentare |
+Der Kommentar-Abruf kostet also **nichts**; nur der SKU→pid-Nachschlag kostet 10 Punkte. Der
+Abbruch riss damit die kostenlose Arbeit mit in den Abgrund — dieselbe Klasse wie «eine
+Warteanweisung ist kein Abbruchgrund», nur eine Stufe feiner: **hier war nicht einmal der
+ganze Dienst erschöpft, sondern EIN Endpunkt.**
+- **pid-Zwischenspeicher** `dropship/_cj_pid_cache.json`: einmal aufgelöst, gilt dauerhaft.
+  Danach sind Bewertungen für dieses Produkt für immer punktefrei abrufbar.
+- Bei leeren Punkten wird ein Produkt **nicht mehr quittiert** («pid unbekannt und keine Punkte
+  → später erneut»). Eine Ledger-Zeile wäre eine Lüge und hätte es für immer übersprungen —
+  dieselbe Falle wie beim Kosten-Backfill am 20.08.
+- Erster Lauf nach dem Umbau: **6 echte deutsche Bewertungen** für das Tutu-Kleid, mit 0
+  Punkten. Judge.me 1'187 → **1'193**, das Produkt zeigt live **4,67 ★ aus 6**.
+- Täglich im Aufseher (`LIMIT=120`). ⚠️ Braucht `/tmp/judgeme.env` — die Datei liegt in /tmp
+  und **überlebt den Rewind nicht**; sie war heute schon einmal weg. Ohne sie endet der Lauf
+  als sauberes No-op. **Dauerlösung wäre, die Judge.me-Token in den Umgebungs-Einstellungen zu
+  hinterlegen** (dieselbe Empfehlung wie für die übrigen Schlüssel, Regel 15).
+⚠️ Und was NICHT gemacht wird: Die 673 englisch-/russischsprachigen Bestandsbewertungen bleiben
+unangetastet. Kundentext wird nicht umgeschrieben, auch nicht übersetzt.
+
 ## 🧹 Die Ware ohne `cj-real` durchgezählt — und es war weniger als befürchtet (2026-08-28)
 Nachdem die POD-Produkte durch fünf Raster gefallen waren, lag die Frage nahe, wie viel andere
 Ware es genauso getroffen hat. **4'015 aktive Produkte tragen kein `cj-real`** (2'409 Fortura,
