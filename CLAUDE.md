@@ -130,6 +130,29 @@ live belegt an 15411554910593). `automation/versandaussagen_wahrheit.py`, Ledger
   Rechtstexte gehen nur per GraphQL `shopPolicyUpdate` — und dessen Input nimmt `type`
   (`SHIPPING_POLICY`), **nicht** `id`. Ohne Live-Gegenprobe hätte der Lauf als erledigt gegolten.
 
+## 🇭🇷 Die bestrankende Seite trug die KROATISCHE Flagge (2026-08-28)
+Nachdem die Suchdaten die POD-Produkte als einziges rankendes Gut ausgewiesen hatten, habe ich
+die Seite gelesen wie eine Kundin — und drei Fehler gefunden, die dort seit Monaten stehen:
+1. **«🇭🇷 LuxeStyle»** unter der Beschreibung. Kroatien, in einem Shop, der an jeder anderen
+   Stelle mit «🇨🇭 Schweizer Shop» wirbt. Betroffen: das T-Shirt und die Tasse zum
+   Selbstgestalten — beides aktive Ware, das T-Shirt die Seite mit der besten Platzierung.
+2. **«Produktdetails» zweimal untereinander** bei **14 von 30** POD-Produkten, mit
+   widersprüchlichem Inhalt («Muster: Bedruckt» gegen «Muster: Print», Material nur im einen).
+   Exakt die Klasse vom 11./12.08. — die POD-Ware ist damals durchs Raster gefallen, weil die
+   Läufe auf `tag:cj-real` und einen Voll-Export zielten.
+3. **Vier POD-Entwürfe versprachen weiterhin «🇺🇸 USA: 6–12 Tage»** — die unerfüllbare Zusage
+   vom 14.08. (es gibt genau EINEN aktiven Markt, Schweiz). Sie standen im Entwurf, also
+   unsichtbar; der Autopilot schaltet Entwürfe aber laufend aktiv, also war es eine gestellte
+   Falle. Auf die POD-Wahrheit gesetzt: «Schweiz 7–14 Werktage · Druck auf Bestellung».
+**Lehre: Ein Reinigungslauf, der auf einen Tag und einen Voll-Export zielt, lässt genau die
+Ware stehen, die anders getaggt ist.** Die POD-Produkte sind 30 Stück unter 49'000 — und
+ausgerechnet die einzigen mit belegter Suchnachfrage. Repariert wurde mit dem VORHANDENEN
+`produktdetails_vereinen.py`, gefüttert mit einem frischen LIVE-Mini-Export der 30 Produkte
+(eigenes Ledger `_produktdetails_pod.txt`) — nicht mit neu erfundener Logik.
+⚠️ Der Voll-Export unter `/tmp/export.jsonl` ist vom **12.08.** Wer ihn heute noch als Quelle
+nimmt, prüft einen Katalog, den es nicht mehr gibt.
+Nach jeder POD-Änderung Pflicht-QA gelaufen: **30 Editor-Produkte, 0 Befunde** (zweimal).
+
 ## 🔍 Wofür der Shop WIRKLICH rankt — erste echte Suchdaten (2026-08-28)
 Bis heute war nur bekannt, wer ankommt, nie wonach gesucht wurde. Semrush (Datenbank CH) zeigt
 einen einzigen Cluster mit Nachfrage UND Platzierung — und es sind ausgerechnet die
