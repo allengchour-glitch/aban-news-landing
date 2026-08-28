@@ -1,80 +1,23 @@
 {
- "zeit": "2026-08-28 20:42:24",
- "zeit_utc": "2026-08-28T18:42:24Z",
- "hinweise": [
-  "1 Tipps lagen in einer Tabu-Zone (Shop/Echtgeld) und wurden blockiert."
- ],
- "fassung": "d23303d",
- "schritte": 198,
+ "zeit": "2026-08-28 20:57:34",
+ "zeit_utc": "2026-08-28T18:57:34Z",
+ "hinweise": [],
+ "fassung": "d1624a3",
+ "schritte": 6,
  "gleiche_ansicht": 0,
  "unbekannt_am_stueck": 0,
  "zaehler": {
-  "taps": 126,
-  "task:ansichten-sammeln": 83,
-  "drags": 72,
-  "task:spiel-im-vordergrund": 26,
-  "ansicht-gesammelt": 21,
-  "rule:spiel-update-bestaetigen": 16,
-  "task:lebenszeichen": 13,
-  "task:objekte-lernen": 11,
-  "zwischendurch-gehandelt": 10,
-  "wirkungslos": 8,
-  "task:sammeln": 7,
-  "swipes": 6
+  "drags": 8,
+  "taps": 4,
+  "task:ansichten-sammeln": 3,
+  "task:spiel-im-vordergrund": 1,
+  "task:basis-rundgang": 1,
+  "rule:spiel-update-bestaetigen": 1,
+  "zwischendurch-gehandelt": 1,
+  "task:lebenszeichen": 1
  },
  "vorlagen_offen": 32,
- "vorlagen_veraltet": [
-  {
-   "vorlage": "ui/btn_abholen.png",
-   "gesucht": 483,
-   "bester_wert": 0.46
-  },
-  {
-   "vorlage": "ui/btn_abholen_orange.png",
-   "gesucht": 315,
-   "bester_wert": 0.812
-  },
-  {
-   "vorlage": "ui/close_x_hell.png",
-   "gesucht": 194,
-   "bester_wert": 0.858
-  },
-  {
-   "vorlage": "nav/lupe.png",
-   "gesucht": 46,
-   "bester_wert": 0.37
-  },
-  {
-   "vorlage": "sammeln/suchen.png",
-   "gesucht": 46,
-   "bester_wert": 0.515
-  },
-  {
-   "vorlage": "ui/btn_bestaetigen.png",
-   "gesucht": 39,
-   "bester_wert": 0.55
-  },
-  {
-   "vorlage": "nav/startseite.png",
-   "gesucht": 34,
-   "bester_wert": 0.624
-  },
-  {
-   "vorlage": "sammeln/versammlung_einleiten.png",
-   "gesucht": 34,
-   "bester_wert": 0.4
-  },
-  {
-   "vorlage": "held/reiter_upgrade.png",
-   "gesucht": 32,
-   "bester_wert": 0.328
-  },
-  {
-   "vorlage": "held/aufwerten.png",
-   "gesucht": 32,
-   "bester_wert": 0.409
-  }
- ],
+ "vorlagen_veraltet": [],
  "verworfene_vorlagen": [],
  "verdaechtige_regeln": {},
  "bild": null
