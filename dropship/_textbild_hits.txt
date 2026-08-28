@@ -12930,3 +12930,4 @@ gid://shopify/Product/15493861179777	196->0	Digitales Malset: Ölmalerei nach Za
 gid://shopify/Product/15493908103553	179->0	Digitales Malset: Leinwand zum Ausmalen
 gid://shopify/Product/15495065076097	82->0	Memory Foam Gel Lendenkissen für Bürostuhl
 gid://shopify/Product/15495748452737	21->2	Samt-Kissenhülle mit Geometrischem Muster
+gid://shopify/Product/15496319631745	10->0	Xbox360 Kabelgebundener Game Controller
