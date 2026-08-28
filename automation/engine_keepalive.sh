@@ -102,11 +102,27 @@ starte() {  # starte <logname> <befehl…>
 A=$(zaehle_aufseher)
 if [ "$A" -eq 0 ]; then
   echo "AUFSEHER neu gestartet"
+  # ⚠️ AUCH HIER auf die SPERRE warten, nicht nur beim Ersetzen (28.08.2026). «Kein Aufseher
+  # in der Prozessliste» heisst nicht «die Sperre ist frei»: `fixer_keepalive.sh` macht
+  # `exec 9>…; flock -n 9`, und dieser Deskriptor wird an jedes Kind vererbt. Solange eine
+  # Arbeits-Subshell des eben gestorbenen Aufsehers lebt, haelt sie die Sperre weiter — der
+  # frische Aufseher scheitert daran und tritt ab. Genau so passiert um 17:08 nach dem
+  # Abraeumen: «aelterer Supervisor laeuft weiterhin (PID 2274 tritt ab)», Ergebnis 0
+  # Aufseher. Derselbe Fehler stand eine Verzweigung weiter schon in aufseher_ersetzen.
+  for _ in $(seq 20); do sperre_frei && break; sleep 1; done
   # ⚠️ Uhr mitgeben: der frische Aufseher schreibt seinen ersten Herzschlag erst am Ende
   # der ersten Runde. Bliebe die alte, kalte Zeit stehen, wuerde ihn der naechste Lauf
   # als «haengend» toeten, bevor er je einen schreiben konnte.
   date +%s > /tmp/_fixer_herzschlag
   starte fixer_keepalive bash automation/fixer_keepalive.sh
+  # Und nachsehen, ob er wirklich steht — ein Start ist keine Quittung.
+  for versuch in 1 2 3; do
+    sleep $((versuch * 5))
+    [ "$(zaehle_aufseher)" -gt 0 ] && break
+    echo "⚠️ AUFSEHER-Start ausgestiegen — Versuch $versuch"
+    for _ in $(seq 10); do sperre_frei && break; sleep 1; done
+    starte fixer_keepalive bash automation/fixer_keepalive.sh
+  done
 elif [ "$A" -gt 1 ]; then
   # ⚠️ 21.08.2026: Der Aufseher hat eine EIGENE Wache gegen Doppelstarts (flock plus
   # Laufzeit-Vergleich) — sie hat trotzdem zwei Instanzen 12 Minuten nebeneinander laufen
@@ -233,5 +249,26 @@ if timeout 60 git fetch -q origin claude/luxestyle-status-tztnn1 2>/dev/null; th
     echo "REWIND erkannt ($hinten hinter origin) — repo_vorspulen"
     git checkout origin/claude/luxestyle-status-tztnn1 -- automation/repo_vorspulen.sh 2>/dev/null
     bash automation/repo_vorspulen.sh 2>&1 | tail -2
+    # ⚠️ VORSPULEN ALLEIN REICHT NICHT (28.08.2026). Der Rewind stellt den Stand vom 24.08.
+    # her, und die laufenden Motoren haben ihren Code beim START geladen — Node liest die
+    # Datei genau einmal. Nach dem Vorspulen ist die DATEI aktuell, der laufende Prozess aber
+    # nicht: er arbeitet weiter mit dem Snapshot-Code und sieht dabei kerngesund aus, also
+    # startet ihn auch niemand neu. Belegt an `cj_kosten_backfill.mjs`: die Datei trug den
+    # Ehrlichkeits-Fix vom 27.08. («Shopify blieb stumm»), im Log stand er bei 170 Zeilen
+    # KEIN einziges Mal — der laufende Prozess kannte ihn nicht.
+    # Deshalb: nach einem echten Rewind alle Dauerläufer abräumen und das Skript EINMAL neu
+    # ausführen, damit es sie aus dem frischen Stand wieder hochfährt.
+    if [ -z "$KEEPALIVE_NACH_REWIND" ]; then
+      echo "  → Motoren werden aus dem frischen Stand neu gestartet"
+      rm -f /tmp/_fixer_version
+      ps -eo pid,args --no-headers \
+        | awk '$2=="bash" && $3 ~ /fixer_keepalive\.sh$/ {print $1}' | xargs -r kill 2>/dev/null
+      ps -eo pid,args --no-headers \
+        | awk '$0 ~ /cj_runner|cj_queue_runner|reel_engine_runner|social_autopilot|website_hygiene_runner|fortura_img_runner|autocommit\.sh/ {print $1}' \
+        | xargs -r kill 2>/dev/null
+      sleep 3
+      KEEPALIVE_NACH_REWIND=1 exec bash "$0"
+    fi
+    echo "  (Motoren wurden in diesem Lauf bereits neu gestartet)"
   fi
 fi

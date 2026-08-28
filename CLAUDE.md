@@ -130,6 +130,33 @@ live belegt an 15411554910593). `automation/versandaussagen_wahrheit.py`, Ledger
   Rechtstexte gehen nur per GraphQL `shopPolicyUpdate` — und dessen Input nimmt `type`
   (`SHIPPING_POLICY`), **nicht** `id`. Ohne Live-Gegenprobe hätte der Lauf als erledigt gegolten.
 
+## 🔁 Ein Rewind spult die DATEIEN vor — die laufenden Motoren nicht (2026-08-28)
+Der Rewind-Zweig in `engine_keepalive.sh` erkennt den Rückfall und ruft `repo_vorspulen.sh`.
+Danach ist die Datei aktuell — **der laufende Prozess nicht**. Node liest sein Skript genau
+EINMAL beim Start; ein Motor, der vor dem Rewind lief, arbeitet danach unbegrenzt mit dem Code
+vom 24.08. weiter und sieht dabei kerngesund aus, also startet ihn auch niemand neu.
+**Belegt an `cj_kosten_backfill.mjs`:** Die Datei trägt seit dem 27.08. eine ehrliche
+Abbruchmeldung («Shopify blieb stumm» statt «Tagesmenge erreicht»). Im Log stand sie bei 170
+Zeilen **kein einziges Mal** — stattdessen zwölfmal «Tagesmenge erreicht: 0 gesetzt, 0 geprüft».
+Der laufende Prozess kannte den Fix nicht. Ich hätte das Log beinahe als «Tagesbudget aus»
+gelesen; in Wahrheit lief dort seit Tagen alter Code.
+**Regel: Nach einem Rewind gehören die Motoren neu gestartet, nicht nur die Dateien.** Der
+Zweig räumt jetzt Aufseher, Runner und /tmp-Engines ab und führt das Skript einmal neu aus
+(`KEEPALIVE_NACH_REWIND` verhindert eine Schleife). **Und allgemeiner: Ein Log ist ein Zeugnis
+über den Code, der LIEF — nicht über den, der auf der Platte liegt.** Wer eine Meldung im Log
+vermisst, die im Skript steht, hat einen Prozess aus einer anderen Fassung vor sich.
+
+## 🔐 Die Sperren-Falle stand in ZWEI Verzweigungen (2026-08-28, Nachtrag)
+Der Fix von heute Nachmittag (auf die flock-Sperre warten statt auf die Prozessliste) landete
+nur in `aufseher_ersetzen()`. Der Zweig «kein Aufseher gefunden → neu starten» hatte denselben
+Fehler: Nach dem Abräumen um 17:08 startete er sofort, der frische Aufseher lief in die noch
+gehaltene Sperre und trat ab — Ergebnis **0 Aufseher**, im Log wörtlich «älterer Supervisor
+läuft weiterhin (PID 2274 tritt ab)». Jetzt wartet auch dieser Zweig auf die Sperre und prüft
+danach nach, ob wirklich einer steht; ein Start ist keine Quittung.
+⚠️ Dritte Wiederholung der Geschwister-Lehre an einem Tag (nach Farbtabelle/`publishVerified`
+und der Preisformel): **Wer eine Bedingung repariert, sucht dieselbe Bedingung in den
+Nachbarzweigen** — sie steht fast nie nur an einer Stelle.
+
 ## ↩️ «30 Tage Rückgabe» auf Ware, die niemand zurücknehmen kann (2026-08-28)
 `templates/product.json` setzt auf **jeder** Produktseite die Trustzeile «↩️ 30 Tage Rückgabe» —
 für Lagerware richtig. Die Rückgaberichtlinie schliesst «personalisierte, individuell
