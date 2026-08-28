@@ -9,6 +9,18 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **DUBLETTE** · 3 gemeinsame Bilder (3 bzw. 14 insgesamt, 100%)
   - 15428421452161 · 2026-06-12 · CHF 18.90 · CJ-CJSL293135501AZ · Tennis-Armband Bunt · Zirkonia funkelnd
   - 15495190544769 · 2026-08-12 · CHF 17.90 · CJ-2606120755051601100 · Vintage Eulen-Fusskettchen aus Legierung
+- **DUBLETTE** · 5 gemeinsame Bilder (5 bzw. 6 insgesamt, 100%)
+  - 15430491275649 · 2026-06-14 · CHF 44.90 · CJLY293294401AZ · Damen Chiffon-Kleid «Capri» · Resort, fliessend
+  - 15509360411009 · 2026-08-22 · CHF 29.90 · CJ-CJLY293294401AZ · Luftiges Chiffon-Kleid mit Leoparden-Print
+- **DUBLETTE** · 5 gemeinsame Bilder (5 bzw. 7 insgesamt, 100%)
+  - 15430491373953 · 2026-06-14 · CHF 54.90 · CJLY293259701AZ · Damen A-Linien-Kleid «Fiorella» · Neckholder, bestickt
+  - 15509363687809 · 2026-08-22 · CHF 39.90 · CJ-CJLY293259701AZ · A-Linien Kleid mit Neckholder und Stickerei
+- **DUBLETTE** · 5 gemeinsame Bilder (5 bzw. 15 insgesamt, 100%)
+  - 15430491439489 · 2026-06-14 · CHF 32.90 · CJLY293250501AZ · Damen Sommerkleid «Bloom» · Träger, Print
+  - 15509363949953 · 2026-08-22 · CHF 21.90 · CJ-CJLY293250501AZ · Bodycon Trägerkleid mit Blumenmuster
+- **DUBLETTE** · 5 gemeinsame Bilder (5 bzw. 5 insgesamt, 100%)
+  - 15430491668865 · 2026-06-14 · CHF 34.90 · CJLY293241101AZ · Damen Kleid «Aria» · Cut-out, einfarbig
+  - 15509372240257 · 2026-08-22 · CHF 23.90 · CJ-CJLY293241101AZ · Etuikleid mit hohem Bund und Cut-Outs
 - **DUBLETTE** · 4 gemeinsame Bilder (4 bzw. 4 insgesamt, 100%)
   - 15449469485441 · 2026-07-06 · CHF 48.90 · CJ-1388690499426193408 · Game Joystick mit Rocker
   - 15496385331585 · 2026-08-13 · CHF 45.90 · CJ-1388685376935301120 · 7-in-1 Arcade Stick für diverse Konsolen
@@ -51,9 +63,15 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **DUBLETTE** · 9 gemeinsame Bilder (9 bzw. 9 insgesamt, 100%)
   - 15500959318401 · 2026-08-16 · CHF 18.90 · CJ-CJDS276571901AZ · Langes Poloshirt
   - 15502485586305 · 2026-08-17 · CHF 18.90 · CJ-CJDS273885001AZ · Seidenweiches, knitterarmes Hemd mit Kühl-Effekt
+- **DUBLETTE** · 9 gemeinsame Bilder (9 bzw. 9 insgesamt, 100%)
+  - 15502066155905 · 2026-08-17 · CHF 19.90 · CJ-CJDS274241401AZ · Herren Hemd mit Vier-Wege-Stretch und Polka-Dots
+  - 15509388132737 · 2026-08-22 · CHF 24.90 · CJ-CJDS245989601AZ · Gepunktetes Hemd im Colour-Blocking-Design
 - **DUBLETTE** · 4 gemeinsame Bilder (4 bzw. 4 insgesamt, 100%)
   - 15506163204481 · 2026-08-20 · CHF 14.90 · CJ-2603040448091638300 · Personalisiertes Armband mit zwei Initialen
   - 15506163433857 · 2026-08-20 · CHF 14.90 · CJ-2603040439561638600 · Buchstaben-Armband personalisierbar
+- **DUBLETTE** · 8 gemeinsame Bilder (9 bzw. 14 insgesamt, 89%)
+  - 15509346910593 · 2026-08-22 · CHF 21.90 · CJ-1502491686205927424 · Retro-Lederarmband mit Schnellverschluss
+  - 15509347139969 · 2026-08-22 · CHF 20.90 · CJ-1389456377319133184 · Dünnes Armband aus italienischem Echtleder
 - **DUBLETTE** · 7 gemeinsame Bilder (8 bzw. 8 insgesamt, 88%)
   - 15493908431233 · 2026-08-11 · CHF 16.90 · CJ-1423587446100201472 · Digitales Malen nach Zahlen: Eigenes Motiv
   - 15501383500161 · 2026-08-16 · CHF 16.90 · CJ-1423586854946607104 · Digital Bild malen
@@ -163,6 +181,21 @@ drei taeuschen bei CJ-Doppellistings alle drei.
   - 15501060997505 · 2026-08-16 · CHF 14.90 · CJ-C9BCA813-B77D-44D0-8CAC-CB1BF2A05B1F · Malen nach Zahlen – Brechende Welle
   - 15501382123905 · 2026-08-16 · CHF 14.90 · CJ-43EF5CF4-06A6-4A9C-95CA-2DF809DDF503 · Herbstlandschaft
 - **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15501060997505 · 2026-08-16 · CHF 14.90 · CJ-C9BCA813-B77D-44D0-8CAC-CB1BF2A05B1F · Malen nach Zahlen – Brechende Welle
+  - 15508421738881 · 2026-08-21 · CHF 19.90 · CJ-03564307-ADB0-40D4-83EB-7977A0F790A8 · Malen nach Zahlen – Hundefamilie
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15501060997505 · 2026-08-16 · CHF 14.90 · CJ-C9BCA813-B77D-44D0-8CAC-CB1BF2A05B1F · Malen nach Zahlen – Brechende Welle
+  - 15508421804417 · 2026-08-21 · CHF 19.90 · CJ-69A59676-ABFC-4364-A299-27CA7AD71ADF · Malen nach Zahlen: Millenniumseule
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15501060997505 · 2026-08-16 · CHF 14.90 · CJ-C9BCA813-B77D-44D0-8CAC-CB1BF2A05B1F · Malen nach Zahlen – Brechende Welle
+  - 15508421837185 · 2026-08-21 · CHF 19.90 · CJ-EA9AD859-2BBE-48D2-A9E1-FDD28F09F1D4 · Malen nach Zahlen: Löwenmotiv 40x50cm
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15501060997505 · 2026-08-16 · CHF 14.90 · CJ-C9BCA813-B77D-44D0-8CAC-CB1BF2A05B1F · Malen nach Zahlen – Brechende Welle
+  - 15508421968257 · 2026-08-21 · CHF 19.90 · CJ-DF8E01F8-B532-465C-96E2-4274DFC8B099 · Malen nach Zahlen: Amsterdam bei Nacht
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15501060997505 · 2026-08-16 · CHF 14.90 · CJ-C9BCA813-B77D-44D0-8CAC-CB1BF2A05B1F · Malen nach Zahlen – Brechende Welle
+  - 15508422066561 · 2026-08-21 · CHF 19.90 · CJ-315BF7FF-F705-4A15-AD1F-A3BCE22A0BCC · Malen nach Zahlen – Rote Blumen
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
   - 15501061063041 · 2026-08-16 · CHF 14.90 · CJ-821E9AE7-FEF5-4739-ABCA-92E5E667B5FB · Malen nach Zahlen: Johann Sebastian Bach
   - 15501061128577 · 2026-08-16 · CHF 14.90 · CJ-4495A29E-EBD7-463A-BFCD-5422A90C1F52 · Panda im Schaukelstuhl
 - **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
@@ -172,14 +205,104 @@ drei taeuschen bei CJ-Doppellistings alle drei.
   - 15501061063041 · 2026-08-16 · CHF 14.90 · CJ-821E9AE7-FEF5-4739-ABCA-92E5E667B5FB · Malen nach Zahlen: Johann Sebastian Bach
   - 15501382123905 · 2026-08-16 · CHF 14.90 · CJ-43EF5CF4-06A6-4A9C-95CA-2DF809DDF503 · Herbstlandschaft
 - **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15501061063041 · 2026-08-16 · CHF 14.90 · CJ-821E9AE7-FEF5-4739-ABCA-92E5E667B5FB · Malen nach Zahlen: Johann Sebastian Bach
+  - 15508421738881 · 2026-08-21 · CHF 19.90 · CJ-03564307-ADB0-40D4-83EB-7977A0F790A8 · Malen nach Zahlen – Hundefamilie
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15501061063041 · 2026-08-16 · CHF 14.90 · CJ-821E9AE7-FEF5-4739-ABCA-92E5E667B5FB · Malen nach Zahlen: Johann Sebastian Bach
+  - 15508421804417 · 2026-08-21 · CHF 19.90 · CJ-69A59676-ABFC-4364-A299-27CA7AD71ADF · Malen nach Zahlen: Millenniumseule
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15501061063041 · 2026-08-16 · CHF 14.90 · CJ-821E9AE7-FEF5-4739-ABCA-92E5E667B5FB · Malen nach Zahlen: Johann Sebastian Bach
+  - 15508421837185 · 2026-08-21 · CHF 19.90 · CJ-EA9AD859-2BBE-48D2-A9E1-FDD28F09F1D4 · Malen nach Zahlen: Löwenmotiv 40x50cm
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15501061063041 · 2026-08-16 · CHF 14.90 · CJ-821E9AE7-FEF5-4739-ABCA-92E5E667B5FB · Malen nach Zahlen: Johann Sebastian Bach
+  - 15508421968257 · 2026-08-21 · CHF 19.90 · CJ-DF8E01F8-B532-465C-96E2-4274DFC8B099 · Malen nach Zahlen: Amsterdam bei Nacht
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15501061063041 · 2026-08-16 · CHF 14.90 · CJ-821E9AE7-FEF5-4739-ABCA-92E5E667B5FB · Malen nach Zahlen: Johann Sebastian Bach
+  - 15508422066561 · 2026-08-21 · CHF 19.90 · CJ-315BF7FF-F705-4A15-AD1F-A3BCE22A0BCC · Malen nach Zahlen – Rote Blumen
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
   - 15501061128577 · 2026-08-16 · CHF 14.90 · CJ-4495A29E-EBD7-463A-BFCD-5422A90C1F52 · Panda im Schaukelstuhl
   - 15501061226881 · 2026-08-16 · CHF 14.90 · CJ-939F0C00-304E-4E55-84AC-25998EEF2C55 · Malen nach Zahlen – Herbstbrücke
 - **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
   - 15501061128577 · 2026-08-16 · CHF 14.90 · CJ-4495A29E-EBD7-463A-BFCD-5422A90C1F52 · Panda im Schaukelstuhl
   - 15501382123905 · 2026-08-16 · CHF 14.90 · CJ-43EF5CF4-06A6-4A9C-95CA-2DF809DDF503 · Herbstlandschaft
 - **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15501061128577 · 2026-08-16 · CHF 14.90 · CJ-4495A29E-EBD7-463A-BFCD-5422A90C1F52 · Panda im Schaukelstuhl
+  - 15508421738881 · 2026-08-21 · CHF 19.90 · CJ-03564307-ADB0-40D4-83EB-7977A0F790A8 · Malen nach Zahlen – Hundefamilie
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15501061128577 · 2026-08-16 · CHF 14.90 · CJ-4495A29E-EBD7-463A-BFCD-5422A90C1F52 · Panda im Schaukelstuhl
+  - 15508421804417 · 2026-08-21 · CHF 19.90 · CJ-69A59676-ABFC-4364-A299-27CA7AD71ADF · Malen nach Zahlen: Millenniumseule
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15501061128577 · 2026-08-16 · CHF 14.90 · CJ-4495A29E-EBD7-463A-BFCD-5422A90C1F52 · Panda im Schaukelstuhl
+  - 15508421837185 · 2026-08-21 · CHF 19.90 · CJ-EA9AD859-2BBE-48D2-A9E1-FDD28F09F1D4 · Malen nach Zahlen: Löwenmotiv 40x50cm
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15501061128577 · 2026-08-16 · CHF 14.90 · CJ-4495A29E-EBD7-463A-BFCD-5422A90C1F52 · Panda im Schaukelstuhl
+  - 15508421968257 · 2026-08-21 · CHF 19.90 · CJ-DF8E01F8-B532-465C-96E2-4274DFC8B099 · Malen nach Zahlen: Amsterdam bei Nacht
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15501061128577 · 2026-08-16 · CHF 14.90 · CJ-4495A29E-EBD7-463A-BFCD-5422A90C1F52 · Panda im Schaukelstuhl
+  - 15508422066561 · 2026-08-21 · CHF 19.90 · CJ-315BF7FF-F705-4A15-AD1F-A3BCE22A0BCC · Malen nach Zahlen – Rote Blumen
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
   - 15501061226881 · 2026-08-16 · CHF 14.90 · CJ-939F0C00-304E-4E55-84AC-25998EEF2C55 · Malen nach Zahlen – Herbstbrücke
   - 15501382123905 · 2026-08-16 · CHF 14.90 · CJ-43EF5CF4-06A6-4A9C-95CA-2DF809DDF503 · Herbstlandschaft
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15501061226881 · 2026-08-16 · CHF 14.90 · CJ-939F0C00-304E-4E55-84AC-25998EEF2C55 · Malen nach Zahlen – Herbstbrücke
+  - 15508421738881 · 2026-08-21 · CHF 19.90 · CJ-03564307-ADB0-40D4-83EB-7977A0F790A8 · Malen nach Zahlen – Hundefamilie
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15501061226881 · 2026-08-16 · CHF 14.90 · CJ-939F0C00-304E-4E55-84AC-25998EEF2C55 · Malen nach Zahlen – Herbstbrücke
+  - 15508421804417 · 2026-08-21 · CHF 19.90 · CJ-69A59676-ABFC-4364-A299-27CA7AD71ADF · Malen nach Zahlen: Millenniumseule
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15501061226881 · 2026-08-16 · CHF 14.90 · CJ-939F0C00-304E-4E55-84AC-25998EEF2C55 · Malen nach Zahlen – Herbstbrücke
+  - 15508421837185 · 2026-08-21 · CHF 19.90 · CJ-EA9AD859-2BBE-48D2-A9E1-FDD28F09F1D4 · Malen nach Zahlen: Löwenmotiv 40x50cm
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15501061226881 · 2026-08-16 · CHF 14.90 · CJ-939F0C00-304E-4E55-84AC-25998EEF2C55 · Malen nach Zahlen – Herbstbrücke
+  - 15508421968257 · 2026-08-21 · CHF 19.90 · CJ-DF8E01F8-B532-465C-96E2-4274DFC8B099 · Malen nach Zahlen: Amsterdam bei Nacht
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15501061226881 · 2026-08-16 · CHF 14.90 · CJ-939F0C00-304E-4E55-84AC-25998EEF2C55 · Malen nach Zahlen – Herbstbrücke
+  - 15508422066561 · 2026-08-21 · CHF 19.90 · CJ-315BF7FF-F705-4A15-AD1F-A3BCE22A0BCC · Malen nach Zahlen – Rote Blumen
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15501382123905 · 2026-08-16 · CHF 14.90 · CJ-43EF5CF4-06A6-4A9C-95CA-2DF809DDF503 · Herbstlandschaft
+  - 15508421738881 · 2026-08-21 · CHF 19.90 · CJ-03564307-ADB0-40D4-83EB-7977A0F790A8 · Malen nach Zahlen – Hundefamilie
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15501382123905 · 2026-08-16 · CHF 14.90 · CJ-43EF5CF4-06A6-4A9C-95CA-2DF809DDF503 · Herbstlandschaft
+  - 15508421804417 · 2026-08-21 · CHF 19.90 · CJ-69A59676-ABFC-4364-A299-27CA7AD71ADF · Malen nach Zahlen: Millenniumseule
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15501382123905 · 2026-08-16 · CHF 14.90 · CJ-43EF5CF4-06A6-4A9C-95CA-2DF809DDF503 · Herbstlandschaft
+  - 15508421837185 · 2026-08-21 · CHF 19.90 · CJ-EA9AD859-2BBE-48D2-A9E1-FDD28F09F1D4 · Malen nach Zahlen: Löwenmotiv 40x50cm
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15501382123905 · 2026-08-16 · CHF 14.90 · CJ-43EF5CF4-06A6-4A9C-95CA-2DF809DDF503 · Herbstlandschaft
+  - 15508421968257 · 2026-08-21 · CHF 19.90 · CJ-DF8E01F8-B532-465C-96E2-4274DFC8B099 · Malen nach Zahlen: Amsterdam bei Nacht
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15501382123905 · 2026-08-16 · CHF 14.90 · CJ-43EF5CF4-06A6-4A9C-95CA-2DF809DDF503 · Herbstlandschaft
+  - 15508422066561 · 2026-08-21 · CHF 19.90 · CJ-315BF7FF-F705-4A15-AD1F-A3BCE22A0BCC · Malen nach Zahlen – Rote Blumen
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15508421738881 · 2026-08-21 · CHF 19.90 · CJ-03564307-ADB0-40D4-83EB-7977A0F790A8 · Malen nach Zahlen – Hundefamilie
+  - 15508421804417 · 2026-08-21 · CHF 19.90 · CJ-69A59676-ABFC-4364-A299-27CA7AD71ADF · Malen nach Zahlen: Millenniumseule
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15508421738881 · 2026-08-21 · CHF 19.90 · CJ-03564307-ADB0-40D4-83EB-7977A0F790A8 · Malen nach Zahlen – Hundefamilie
+  - 15508421837185 · 2026-08-21 · CHF 19.90 · CJ-EA9AD859-2BBE-48D2-A9E1-FDD28F09F1D4 · Malen nach Zahlen: Löwenmotiv 40x50cm
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15508421738881 · 2026-08-21 · CHF 19.90 · CJ-03564307-ADB0-40D4-83EB-7977A0F790A8 · Malen nach Zahlen – Hundefamilie
+  - 15508421968257 · 2026-08-21 · CHF 19.90 · CJ-DF8E01F8-B532-465C-96E2-4274DFC8B099 · Malen nach Zahlen: Amsterdam bei Nacht
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15508421738881 · 2026-08-21 · CHF 19.90 · CJ-03564307-ADB0-40D4-83EB-7977A0F790A8 · Malen nach Zahlen – Hundefamilie
+  - 15508422066561 · 2026-08-21 · CHF 19.90 · CJ-315BF7FF-F705-4A15-AD1F-A3BCE22A0BCC · Malen nach Zahlen – Rote Blumen
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15508421804417 · 2026-08-21 · CHF 19.90 · CJ-69A59676-ABFC-4364-A299-27CA7AD71ADF · Malen nach Zahlen: Millenniumseule
+  - 15508421837185 · 2026-08-21 · CHF 19.90 · CJ-EA9AD859-2BBE-48D2-A9E1-FDD28F09F1D4 · Malen nach Zahlen: Löwenmotiv 40x50cm
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15508421804417 · 2026-08-21 · CHF 19.90 · CJ-69A59676-ABFC-4364-A299-27CA7AD71ADF · Malen nach Zahlen: Millenniumseule
+  - 15508421968257 · 2026-08-21 · CHF 19.90 · CJ-DF8E01F8-B532-465C-96E2-4274DFC8B099 · Malen nach Zahlen: Amsterdam bei Nacht
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15508421804417 · 2026-08-21 · CHF 19.90 · CJ-69A59676-ABFC-4364-A299-27CA7AD71ADF · Malen nach Zahlen: Millenniumseule
+  - 15508422066561 · 2026-08-21 · CHF 19.90 · CJ-315BF7FF-F705-4A15-AD1F-A3BCE22A0BCC · Malen nach Zahlen – Rote Blumen
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15508421837185 · 2026-08-21 · CHF 19.90 · CJ-EA9AD859-2BBE-48D2-A9E1-FDD28F09F1D4 · Malen nach Zahlen: Löwenmotiv 40x50cm
+  - 15508421968257 · 2026-08-21 · CHF 19.90 · CJ-DF8E01F8-B532-465C-96E2-4274DFC8B099 · Malen nach Zahlen: Amsterdam bei Nacht
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15508421837185 · 2026-08-21 · CHF 19.90 · CJ-EA9AD859-2BBE-48D2-A9E1-FDD28F09F1D4 · Malen nach Zahlen: Löwenmotiv 40x50cm
+  - 15508422066561 · 2026-08-21 · CHF 19.90 · CJ-315BF7FF-F705-4A15-AD1F-A3BCE22A0BCC · Malen nach Zahlen – Rote Blumen
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15508421968257 · 2026-08-21 · CHF 19.90 · CJ-DF8E01F8-B532-465C-96E2-4274DFC8B099 · Malen nach Zahlen: Amsterdam bei Nacht
+  - 15508422066561 · 2026-08-21 · CHF 19.90 · CJ-315BF7FF-F705-4A15-AD1F-A3BCE22A0BCC · Malen nach Zahlen – Rote Blumen
 - **DUBLETTE** · 4 gemeinsame Bilder (6 bzw. 5 insgesamt, 80%)
   - 15501095829889 · 2026-08-16 · CHF 14.90 · CJ-AB25E9C1-012C-42B5-9F5C-D354EC46D31C · Bilderbuchbaum
   - 15506283921793 · 2026-08-20 · CHF 14.90 · CJ-1397398890512257024 · Yellow Mountain – Malen nach Zahlen
@@ -411,6 +534,9 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 4 insgesamt, 75%)
   - 15502064353665 · 2026-08-17 · CHF 16.90 · CJ-A547373D-4C37-4017-8419-715C093A569D · XXL Diamond Painting – Die Pfauen
   - 15502064812417 · 2026-08-17 · CHF 30.90 · CJ-C4E4F372-E253-4600-AAF7-6484B1A56D65 · XXXL Diamond Painting «Buddha»
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 4 insgesamt, 75%)
+  - 15508412072321 · 2026-08-21 · CHF 20.90 · CJ-BC6C30CD-C9D4-4F09-A5CF-1251BE0EBA71 · Diamond Painting «Lila Funkel-Mandala»
+  - 15508412203393 · 2026-08-21 · CHF 19.90 · CJ-AC14CD79-A3A1-447E-822B-7BD3589499FB · Pferde-Spektakel Diamond Painting Set
 - **Bildfamilie — von Hand ansehen** · 9 gemeinsame Bilder (13 bzw. 13 insgesamt, 69%)
   - 15502064943489 · 2026-08-17 · CHF 18.90 · CJ-CJDS186315101AZ · Bügelfreies Stretch-Hemd für Herren
   - 15504198631809 · 2026-08-19 · CHF 17.90 · CJ-CJDS261997601AZ · Elastisches Herrenhemd – bügelfrei & knitterarm
@@ -543,6 +669,9 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 6 insgesamt, 60%)
   - 15494984434049 · 2026-08-11 · CHF 16.90 · CJ-1397414771954946048 · Tribal Dance - Malen nach Zahlen
   - 15497441608065 · 2026-08-14 · CHF 16.90 · CJ-1399187902361112576 · DIY Malen nach Zahlen Set – Herbstmotiv
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15494984434049 · 2026-08-11 · CHF 16.90 · CJ-1397414771954946048 · Tribal Dance - Malen nach Zahlen
+  - 15508421640577 · 2026-08-21 · CHF 19.90 · CJ-8F85AB24-47E0-427F-A4C6-EB3808E4DE22 · Malen nach Zahlen – Abstrakte Frauen
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (7 bzw. 5 insgesamt, 60%)
   - 15496380875137 · 2026-08-13 · CHF 18.90 · CJ-731EC05A-709A-4941-AD1E-3FE74AD7C77D · Malen nach Zahlen Set – Alaska Berglandschaft
   - 15499992465793 · 2026-08-15 · CHF 14.90 · CJ-20333BEA-3184-44E8-A94D-2EB837C2742A · Vogelbilder DIY Gemälde
@@ -579,3 +708,9 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (6 bzw. 12 insgesamt, 50%)
   - 15495112688001 · 2026-08-12 · CHF 36.90 · CJ-2501190620211628100 · Man Pair Kalender Quarz-Uhr mit Diamanten
   - 15497494167937 · 2026-08-14 · CHF 36.90 · CJ-1751826853603581952 · Outside The Watch Business Quarzuhr
+- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (4 bzw. 6 insgesamt, 50%)
+  - 15503287484801 · 2026-08-18 · CHF 20.90 · CJ-9E242742-C1D5-470E-82C2-12FFF4B10F27 · Hundehalsband- und Leinen-Set «Red Cowboy»
+  - 15510332735873 · 2026-08-23 · CHF 20.90 · CJ-4CDBB5E6-C216-47EA-844B-4DF586114897 · Denim-Hundeleine, verschiedene Grössen
+- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (4 bzw. 9 insgesamt, 50%)
+  - 15508412203393 · 2026-08-21 · CHF 19.90 · CJ-AC14CD79-A3A1-447E-822B-7BD3589499FB · Pferde-Spektakel Diamond Painting Set
+  - 15508412400001 · 2026-08-21 · CHF 19.90 · CJ-1856525F-1583-4642-9590-199F2C0CD0CD · Diamond Painting „Feuer des Löwen“
