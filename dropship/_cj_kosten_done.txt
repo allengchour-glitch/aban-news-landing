@@ -3827,3 +3827,80 @@ gid://shopify/Product/15448800723329	CHF 17.44	1 Varianten	Contouring- und Conce
 gid://shopify/Product/15448800788865	CHF 16.91	1 Varianten	Peel-off Lip Liner Dunkelbraun
 gid://shopify/Product/15448800854401	CHF 17.57	1 Varianten	3D Lidschatten Rose Gold
 gid://shopify/Product/15448800985473	CHF 17.44	1 Varianten	2-in-1 Eyeliner Golden Tiger's Eye
+gid://shopify/Product/15448801018241	CHF 17.57	1 Varianten	Schimmernder 3D Lidschatten Skin Tone
+gid://shopify/Product/15448801083777	CHF 16.91	1 Varianten	Peel-off Lip Liner Hellbraun
+gid://shopify/Product/15448801149313	CHF 17.18	1 Varianten	Augenbrauengel
+gid://shopify/Product/15448801214849	CHF 17.44	1 Varianten	Concealer im natürlichen Farbton
+gid://shopify/Product/15448801313153	CHF 18.10	1 Varianten	2-in-1 Farbwechsel-Foundation Stick
+gid://shopify/Product/15448801378689	CHF 18.10	1 Varianten	Multifunktionale Make-up-Palette
+gid://shopify/Product/15448801509761	CHF 17.44	1 Varianten	Matter Lipliner
+gid://shopify/Product/15448801575297	CHF 17.44	1 Varianten	Light Skin Concealer
+gid://shopify/Product/15448801673601	CHF 17.21	1 Varianten	Volumen & Schwung Mascara Schwarz
+gid://shopify/Product/15448801771905	CHF 17.49	1 Varianten	Jaysuing Mushroom Head Air Cushion
+gid://shopify/Product/15448802001281	CHF 19.89	1 Varianten	Multifunktionale 9-Farben Lidschatten-Palette
+gid://shopify/Product/15448802066817	CHF 20.76	1 Varianten	Chamäleon Glitzer Flüssig-Lidschatten
+gid://shopify/Product/15448802132353	CHF 34.25	6 Varianten	Tri-Color Lidschatten Palette & Highlighter Balm
+gid://shopify/Product/15448802165121	CHF 21.21	12 Varianten	PHOFAY Lidschattenstift
+gid://shopify/Product/15448802296193	CHF 31.12	15 Varianten	16-Farben Lidschatten-Palette Matt & Schimmer
+gid://shopify/Product/15448802328961	CHF 18.47	1 Varianten	QIBEST Diamond Liquid Lidschatten
+gid://shopify/Product/15448802361729	CHF 16.90	2 Varianten	Glitzernder, seidiger Lidschatten
+gid://shopify/Product/15448802427265	CHF 18.01	2 Varianten	Lidschatten-Palette für ausdrucksstarke Augen
+gid://shopify/Product/15448802460033	CHF 17.05	3 Varianten	Doppelter Seidiger Lidschatten-Stick
+gid://shopify/Product/15448802492801	CHF 17.87	1 Varianten	54er Aquarell-Set für kreatives Make-up
+gid://shopify/Product/15448802558337	CHF 16.90	1 Varianten	2-in-1 Eyeliner für seidig-glatte Linien
+gid://shopify/Product/15448802623873	CHF 17.37	1 Varianten	High-Gloss Multi-Palette für Augen & Wangen
+gid://shopify/Product/15448802656641	CHF 17.49	3 Varianten	Wasserdichter Soft Fog Matter Flüssig-Lidschatten
+gid://shopify/Product/15448802722177	CHF 16.86	2 Varianten	3-in-1 Lidschatten, Blush & Highlighter Palette
+gid://shopify/Product/15448802754945	CHF 17.21	5 Varianten	Multicolour Lidschatten-Palette
+gid://shopify/Product/15448802787713	CHF 17.72	1 Varianten	Shimmer Matte Lidschatten-Palette
+gid://shopify/Product/15448802853249	CHF 19.42	4 Varianten	Blush Mud Schimmer Puder
+gid://shopify/Product/15448802886017	CHF 16.84	1 Varianten	9 Farben Matte Lidschatten-Palette
+gid://shopify/Product/15448802951553	CHF 27.69	7 Varianten	Explorer Lidschatten-Palette mit zwölf Farben
+gid://shopify/Product/15448803017089	CHF 17.84	2 Varianten	Lidschatten-Palette: 16 Farben Schimmer & Matt
+gid://shopify/Product/15448803049857	CHF 23.66	2 Varianten	Lidschatten-Palette «Red Fox Plate»
+gid://shopify/Product/15448803082625	CHF 16.93	3 Varianten	Double-headed Smudger Pearlescent Eyeliner
+gid://shopify/Product/15448803180929	CHF 16.97	5 Varianten	Haaransatz Puder wasserfest
+gid://shopify/Product/15448803246465	CHF 17.72	1 Varianten	72 Farben Langanhaltendes Lidschatten-Buch
+gid://shopify/Product/15448803312001	CHF 24.70	2 Varianten	Multicolor Make-up Palette für Damen
+gid://shopify/Product/15448803377537	CHF 16.80	3 Varianten	Duo Lidschatten & Lippenstift Kit
+gid://shopify/Product/15448803508609	CHF 22.74	1 Varianten	Vitamin E Feuchtigkeitsspendendes Lip Oil Set (6 S
+gid://shopify/Product/15448803574145	CHF 23.37	1 Varianten	Fruchtiger Lipgloss, 8er-Pack
+gid://shopify/Product/15448803639681	CHF 22.92	1 Varianten	Abziehbare Lippenfarbe Matt
+gid://shopify/Product/15448803803521	CHF 22.74	1 Varianten	Shuguang Lip Honey Frucht-Geschmack
+gid://shopify/Product/15448803869057	CHF 17.37	10 Varianten	2-in-1 Lipgloss & Lippenöl
+gid://shopify/Product/15448803934593	CHF 19.50	6 Varianten	Matter Abzieh-Lip Stain
+gid://shopify/Product/15448804000129	CHF 24.99	1 Varianten	3er Set Farbwechsel Lippenstifte
+gid://shopify/Product/15448804065665	CHF 24.72	2 Varianten	Matte Samt Lippenstift-Set (10 Farben)
+gid://shopify/Product/15448804295041	CHF 20.30	4 Varianten	Hydrating Lip Gloss mit Hyaluronsäure
+gid://shopify/Product/15448804557185	CHF 24.54	1 Varianten	Farbveränderndes Lip Oil mit Glitzer
+gid://shopify/Product/15448804753793	CHF 16.90	4 Varianten	Farbwechselnder feuchtigkeitsspendender Lippenbals
+gid://shopify/Product/15448804983169	CHF 17.13	8 Varianten	Matter, langanhaltender Flüssiglippenstift
+gid://shopify/Product/15448805245313	CHF 19.50	6 Varianten	Fruchtiges Glanz-Lippenöl
+gid://shopify/Product/15448805540225	CHF 19.50	5 Varianten	Langanhaltender Peel-Off Lipliner
+gid://shopify/Product/15448805769601	CHF 19.95	6 Varianten	Lip-Plumper für vollere Lippen
+gid://shopify/Product/15448805998977	CHF 20.40	2 Varianten	CALLCALL LING Velvet Matte Liquid Lipstick Set
+gid://shopify/Product/15448806261121	CHF 21.75	2 Varianten	6er Set matter Flüssig-Lippenstifte
+gid://shopify/Product/15448806457729	CHF 17.05	3 Varianten	Party Lippenstift
+gid://shopify/Product/15448806883713	CHF 20.57	1 Varianten	Zahnschmuck-Set für strahlendes Lächeln
+gid://shopify/Product/15448807113089	CHF 17.05	1 Varianten	Farbenfrohes langanhaltendes Lipliner-Set
+gid://shopify/Product/15448807276929	CHF 23.66	15 Varianten	Gouqi Lippenstift Lip Glaze
+gid://shopify/Product/15448807539073	CHF 21.27	11 Varianten	Matter Lipliner für weiche Lippen
+gid://shopify/Product/15448807735681	CHF 17.05	1 Varianten	Tearing Lip Liner Pen Set
+gid://shopify/Product/15448808030593	CHF 18.62	6 Varianten	5-teiliges Lip Glaze Lippenstift-Set
+gid://shopify/Product/15448808358273	CHF 17.11	1 Varianten	6 matte Lipliner im Set
+gid://shopify/Product/15448808587649	CHF 18.91	1 Varianten	Samtiger Lipgloss-Stift
+gid://shopify/Product/15448808849793	CHF 17.37	1 Varianten	Feuchtigkeitsspendendes Glitter Lipgloss Set · 10-
+gid://shopify/Product/15448809079169	CHF 22.76	1 Varianten	PHOFAY Shiny Lip Plumper Gloss
+gid://shopify/Product/15448809374081	CHF 16.90	1 Varianten	12 matte Lippenstifte & Liner Set
+gid://shopify/Product/15448809668993	CHF 24.00	1 Varianten	Antihaft-Wimpernpinzette mit Präzisionsspitze
+gid://shopify/Product/15448809996673	CHF 19.50	8 Varianten	DIY Wimpern Extensions Kit – 280er Cluster
+gid://shopify/Product/15448810586497	CHF 20.42	5 Varianten	Seiden-Gesichtsmaske mit UV-Schutz
+gid://shopify/Product/15448810815873	CHF 18.17	4 Varianten	UV-Schutzmaske aus Maulbeerseide
+gid://shopify/Product/15448811143553	CHF 20.22	5 Varianten	Farbwechsel-Sturmhaube für Outdoor-Cycling
+gid://shopify/Product/15448811438465	CHF 35.75	4 Varianten	PU-Haube für den ganzen Kopf
+gid://shopify/Product/15448812028289	CHF 20.45	1 Varianten	Winter-Gesichtsmaske für Outdoor-Aktivitäten
+gid://shopify/Product/15448812388737	CHF 21.75	2 Varianten	Sportmaske mit Aktivkohlefilter
+gid://shopify/Product/15448813011329	CHF 24.90	1 Varianten	Halbgesichts-Atemschutzmaske PRO
+gid://shopify/Product/15448813339009	CHF 35.71	1 Varianten	Vollgesichtsmaske mit 15-in-1 Filtersystem
+gid://shopify/Product/15448813699457	CHF 18.55	1 Varianten	Sonnenschutz Reithelm Motorrad Ice Silk Gesichtsma
+gid://shopify/Product/15448814027137	CHF 28.05	1 Varianten	Atemschutzmaske 16in1 mit Filter
