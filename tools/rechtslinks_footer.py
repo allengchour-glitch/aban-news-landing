@@ -28,6 +28,11 @@ TEXTE = {
     "it": ("/it/ricerca.html", "Ricerca", "Note legali", "Privacy"),
 }
 DEUTSCH = ("/suchmaschine.html", "Suche", "Impressum", "Datenschutz")
+# ⚠️ GEMESSEN nach dem ersten Lauf: die Pruefung war '<a href="/impressum.html"' —
+# mrr.html verlinkt sein Impressum aber ABSOLUT (https://abannews.com/impressum, ohne
+# .html) und galt deshalb als "fehlt". Ergebnis war ein zweiter, ueberfluessiger
+# Linksatz. Erkannt wird jetzt jede Schreibweise.
+HAT_IMPRESSUM = re.compile(r'href="[^"]*(?:/|^)impressum(?:\.html)?"', re.I)
 NOINDEX = re.compile(r'<meta[^>]+name=["\']robots["\'][^>]*noindex', re.I)
 # ⚠️ VOLLBILD-SEITEN AUSNEHMEN. Der erste Durchlauf hängte auch an traumhaus.html und
 # 17 weitere Spiele eine Fusszeile — deren `body` hat `overflow:hidden`, die Zeile wäre
@@ -74,7 +79,7 @@ def main():
             if name in {"404.html", "google.html"}:
                 continue
             html = open(pfad, encoding="utf-8", errors="ignore").read()
-            if '<a href="/impressum.html"' in html:
+            if HAT_IMPRESSUM.search(html):
                 continue
             if NOINDEX.search(html):
                 uebersprungen += 1
@@ -90,8 +95,13 @@ def main():
                 i = html.rfind("</footer>")
                 if i < 0:
                     continue
-                j = html.rfind("</div>", 0, i)
-                if j > html.rfind("<div", 0, i) - 1 and j > i - 400:
+                # ⚠️ Das </div> muss INNERHALB der Fusszeile liegen. Der erste Lauf
+                # suchte nur "irgendein </div> vor </footer>" — in minispiele/index.html
+                # landeten die Links dadurch im Spiele-Raster (<div class="grid">), das
+                # JavaScript anschliessend neu befuellt. Die Zeile war damit weg.
+                fo = html.rfind("<footer", 0, i)
+                j = html.rfind("</div>", fo, i) if fo >= 0 else -1
+                if j > fo:
                     stelle, trenner = j, " · "
                 else:
                     stelle, trenner = i, " "
