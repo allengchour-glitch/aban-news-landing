@@ -4566,3 +4566,5 @@ gid://shopify/Product/15448913478017	CHF 29.78	1 Varianten	Cyber-Style Mecha Uni
 gid://shopify/Product/15448913510785	CHF 28.46	1 Varianten	Wasserdichter Outdoor-Rucksack (60L)
 gid://shopify/Product/15448913543553	CHF 21.29	1 Varianten	Business-Reisetasche (20-35L)
 gid://shopify/Product/15448913609089	CHF 37.44	1 Varianten	39L Taktischer Militär-Rucksack
+gid://shopify/Product/15448913674625	CHF 34.58	1 Varianten	Minimalistischer Pendler-Rucksack für 15-Zoll-Lapt
+gid://shopify/Product/15448913707393	CHF 43.21	4 Varianten	Business Rucksack mit Vakuum-Kompressionsbeutel
