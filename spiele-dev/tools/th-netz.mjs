@@ -21,6 +21,7 @@ mitSonden('traumhaus.html', {
        Feste Zielkoordinaten im Test bestehen dann weiter, pruefen aber eine leere
        Wiese. Genau das ist passiert: der Bauernhof zog nach (-40|-246), der Test
        routete unveraendert nach (-40|-196) und meldete gruen. */
+    if(was==="baender")return (window._viertelBaender?window._viertelBaender():[]);
     if(was==="viertel"){var V=(window._viertelSolver||{}).VIERTEL||[];
       var t={};V.forEach(function(g){t[g.name]=[g.x,g.z];});return t;}
     if(was==="tp"){var me=sims[meinSi()];me.x=a;me.z=b;return true;}
@@ -47,8 +48,20 @@ const c30 = Math.cos(Math.PI / 6), s30 = Math.sin(Math.PI / 6)
 check('Ring Ost (0,200) ist Strasse', await S('strasse', 0, 200))
 check('Ring im Meer-Sektor (-200,0) ist KEINE Strasse', !(await S('strasse', -200, 0)))
 check('Zubringer 30 Grad (r 160) ist Strasse', await S('strasse', c30 * 160, s30 * 160))
-check('Freizeitpark-Verbinder (60,300) ist Strasse', await S('strasse', 60, 300))
-check('Bauernhof-Verbinder (-40,-150) ist Strasse', await S('strasse', -40, -150))
+/* ⚠️ PRUEFPUNKTE AUS DER WELT, NICHT AUS DEM TEST. Hier standen (60,300) und
+   (-40,-150) fest — beides Korridore aus einer frueheren Wegfuehrung. Nachdem der
+   Generator die Schenkel-Reihenfolge geaendert hatte und der Bauernhof-Anschluss
+   umgezogen war, meldeten beide rot, obwohl das Navigationsraster jetzt RICHTIGER ist
+   als vorher. Dieselbe Falle wie bei den fest verdrahteten Zielkoordinaten (#2339).
+   Jetzt wird je Anschluss-Band sein Mittelpunkt geprueft. */
+const BAENDER = await S('baender')
+const anschluesse = BAENDER.filter((b) => String(b.n).startsWith('Anschluss'))
+check('Anschluss-Baender vorhanden', anschluesse.length >= 4, anschluesse.length + ' Baender')
+for (const b of anschluesse) {
+  const m = (b.von + b.bis) / 2
+  const [px, pz] = b.a === 'z' ? [m, b.c] : [b.c, m]
+  check(`${b.n} ist Strasse`, await S('strasse', px, pz), `Mitte ${px.toFixed(0)}|${pz.toFixed(0)}`)
+}
 check('Wiese (50,50) bleibt Wiese', !(await S('strasse', 50, 50)))
 
 /* ⚠️ ZIELE AUS DER WELT LESEN, NICHT AUS DEM TEST. Siehe Kommentar in der Sonde. */
@@ -63,9 +76,14 @@ let st = await S('stand')
 if (st.pfad && st.pfad.length) {
   const l = st.pfad[st.pfad.length - 1]
   check('Route endet am Freizeitpark', Math.hypot(l[0] - fpX, l[1] - fpZ) < 2, `Ende (${l[0].toFixed(0)},${l[1].toFixed(0)})`)
-  const verb = st.pfad.filter((p) => Math.abs(p[0] - 60) < 6 && p[1] > 220).length
-  check('Route benutzt den Sued-Verbinder', verb >= 10, verb + ' Punkte auf x~60/z>220')
-} else { check('Route endet am Freizeitpark', false, 'kein Pfad'); check('Route benutzt den Sued-Verbinder', false) }
+  /* Der Sued-Verbinder liegt nicht mehr fest auf x~60 — sein Band sagt, wo er ist. */
+  const fpB = BAENDER.filter((b) => String(b.n).includes('Freizeitpark'))
+  const verb = st.pfad.filter((p) => fpB.some((b) => {
+    const q = b.a === 'z' ? p[1] : p[0], l = b.a === 'z' ? p[0] : p[1]
+    return Math.abs(q - b.c) < 8 && l > b.von && l < b.bis
+  })).length
+  check('Route benutzt die Freizeitpark-Wege', verb >= 10, verb + ' Punkte auf den Baendern')
+} else { check('Route endet am Freizeitpark', false, 'kein Pfad'); check('Route benutzt die Freizeitpark-Wege', false) }
 const anteil = await S('anteil')
 check('Route folgt Strassen', anteil > 0.5, 'Anteil=' + (anteil * 100).toFixed(0) + '%')
 await S('karte')
