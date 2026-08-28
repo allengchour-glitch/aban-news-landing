@@ -1537,6 +1537,55 @@ sauber. **16 tragen eine getarnte SKU** (der Wächter MELDET sie nur, er draftet
 draftet. Er meldet sie nur. Die Registrierung im Aufseher ändert also nichts am Verkauf —
 sie macht den Befund täglich sichtbar. Das ist weniger, als es zuerst klang.
 
+## 🧮 Der widerlegte Frachtboden lebte im Backfill weiter — 2'746 Scheinverluste (2026-08-28)
+Ein Audit meldete **3'325 aktive Produkte unter Einstand**. Die Zahl war sauber gemessen
+(frischer Bulk-Export, Median-Regel gegen Ausreisser, Einzelfälle live bestätigt) — und
+trotzdem zu **86 % falsch**, weil die zugrundeliegende Kostenzahl falsch war.
+**`cj_kosten_backfill.mjs` trug seine EIGENE `kosten()`** mit `Math.max(15, 3.4+16.3·kg)`.
+Der Boden 15 ist seit dem 23.08. widerlegt (CJ live: 20 g → CHF 4.34 · 270 g → CHF 8.17);
+korrigiert wurde damals nur `cj_preis.mjs`. **Sechste Wiederholung der Geschwister-Lehre**
+nach Farbtabelle, Grössenmenge, `publishVerified()`, Preisformel und `technik_plausibel`.
+- Der Boden greift **nur unterhalb von (15−3.4)/16.3 = 712 g** — also genau dort, wo der
+  halbe Modekatalog liegt. Über 712 g sind beide Formeln identisch.
+- **Nachgerechnet über den ganzen Katalog:** von 3'325 Rohtreffern sind **2'746 in Wahrheit
+  kostendeckend** (Median-Aufblähung CHF 7.85, maximal CHF 10.00), **476 überleben**,
+  103 sind mangels Gewicht nicht bewertbar. Der Flaggschiff-Fall des Audits, der
+  «Vielseitige Häkel-Cardigan» (235 g), steht bei VK 14.90 gegen **wahre Kosten CHF 12.23** —
+  **+2.67 Gewinn statt −5.10 Verlust**.
+- **Die Signatur ist im Datenbestand direkt sichtbar** und war der Beweis: 1'892 Produkte
+  haben Geschwistervarianten mit VERSCHIEDENEN Gewichten unter 712 g, aber IDENTISCHEN
+  Kosten — die Fracht stand also konstant auf dem Boden. Nur 78 zeigen das Gegenteil.
+  Gegenprobe exakt: bei der «Leichten Baumwolljacke» steigen die Kosten erst bei **720 g**
+  von 19.53 auf 19.66 — genau dort, wo der lineare Teil die 15 überholt.
+- **Zweiter Fehler in die GEGENrichtung, an derselben Stelle:** `.split('--')` sucht ZWEI
+  Bindestriche und trennt deshalb NIE. Bei CJs Spannen («4.41-12.22» / «1600.00-5000.00»)
+  bricht `parseFloat` am ersten Bindestrich ab und nimmt die **billigste und leichteste**
+  Variante → CHF 33.45 statt 95.90. Echte Verluste blieben dadurch unsichtbar.
+  `obereGrenze()` in `cj_preis.mjs` ist genau dagegen gebaut.
+- Behoben: der Backfill importiert jetzt `kosten` UND `gewicht` aus `cj_preis.mjs`.
+  Bestand: `automation/kosten_boden15_korrigieren.py` rechnet die alte Fracht heraus und die
+  richtige hinein — **ohne einen einzigen CJ-Punkt**, denn Kosten und Gewicht stehen beide
+  in Shopify. 40 Produkte korrigiert und live gegengeprüft, **3'820 offen**.
+  ⚠️ Es fasst **nur Produkte aus `_cj_kosten_done.txt`** an: nur für die ist BELEGT, dass
+  dieser Lauf ihre Kosten geschrieben hat. Eine Kostenzahl aus dem Importer ist bereits
+  richtig — wer sie «korrigiert», macht sie kaputt.
+- ⚠️ **Bewusst NICHT im Aufseher registriert.** Ein neuer Massen-Schreiber ist genau die
+  Klasse, die am 15.08. 149 Produkte beschädigt hat; das gehört entschieden, nicht nebenbei
+  gestartet.
+**Die Lehre über diesen Fall hinaus: eine Zahl, die ein eigenes Skript berechnet hat, ist
+kein Messwert.** Der Audit hat die Kostenspalte wie eine Beobachtung gelesen und daraus die
+Preise beurteilt — dabei war sie das Ergebnis genau der Formel, die zu prüfen war. Vor jeder
+Auswertung eines Feldes gehört die Frage: **wer hat das geschrieben, mit welcher Fassung?**
+⚠️ **Und was standhält:** Die 36 schweren Fälle (Kratzbäume, Hundebetten, 5–13 kg) sind
+davon UNBERÜHRT — über 712 g rechnen beide Formeln gleich. Sie bleiben echt.
+**Dazu ein Fund, der schwerer wiegt als der Preis:** CJ liefert für den Kratzbaum «Lion
+Dance» (13,25 kg) auf `logistic/freightCalculate` **`Success` mit NULL Versandoptionen** —
+die Ware ist gar nicht in die Schweiz lieferbar (#1008-Klasse). Die Kostenzahl CHF 278.93 ist
+damit eine Hochrechnung für eine Sendung, die es nicht geben kann; die Frachtregression war
+auf 20 g–1250 g gefittet und wird hier **zehnfach extrapoliert**. Der Rest der schweren Ware
+konnte nicht geprüft werden — CJs Tagesbudget war erschöpft (`remaining 0`).
+→ Offen: `cj_versand_ch_guard.py` über die schwere Ware laufen lassen, sobald Punkte da sind.
+
 ## ⛔ KORREKTUR: «Fracht mindestens CHF 15» war ein Zirkelschluss (2026-08-23)
 **Der Eintrag direkt darunter ist in seiner Kernaussage FALSCH** und bleibt nur stehen, damit
 der Denkfehler nachvollziehbar ist. CJ live nach Frachtquoten gefragt (CN→CH, je 1 Stück):

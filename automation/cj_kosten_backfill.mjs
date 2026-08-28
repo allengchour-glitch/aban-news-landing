@@ -17,6 +17,7 @@
  * der Ledger bleibt gültig und der nächste Lauf macht weiter.
  */
 import fs from 'node:fs';
+import { kosten, gewicht } from './cj_preis.mjs';
 
 const SHOP = 'au3j0y-hq.myshopify.com';
 const TOK = (fs.existsSync('/tmp/cj_shop_token.txt') ? fs.readFileSync('/tmp/cj_shop_token.txt', 'utf8') : '').trim();
@@ -29,12 +30,35 @@ const LEDGER = 'dropship/_cj_kosten_done.txt';
 const LIMIT = parseInt(process.env.LIMIT || process.env.CAP || '400', 10);
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-const kosten = (usd, grams) => {
-  const u = parseFloat(('' + usd).split('--')[0]) || 0;
-  const kg = (parseFloat(grams) || 0) / 1000;
-  const freight = Math.max(15, 3.4 + 16.3 * kg);
-  return (u * 0.9 + freight).toFixed(2);
-};
+// ⚠️ 28.08.2026 — DIESE DATEI HATTE IHRE EIGENE KOSTENRECHNUNG, UND SIE WAR DIE ALTE.
+// Sie stand hier woertlich so:
+//     const freight = Math.max(15, 3.4 + 16.3 * kg);
+//     const u = parseFloat(('' + usd).split('--')[0]) || 0;
+// Beides ist seit dem 23.08. bzw. 27.08. in `cj_preis.mjs` widerlegt — die Korrektur ist
+// dort eingebaut worden und hier NIE angekommen. Sechste Wiederholung der Geschwister-Lehre
+// nach Farbtabelle, Groessenmenge, publishVerified(), Preisformel und technik_plausibel.
+//
+// ZWEI FEHLER IN ENTGEGENGESETZTE RICHTUNGEN:
+// 1. BODEN 15 statt 5. Der Boden greift nur unterhalb von (15−3.4)/16.3 = 712 g — genau
+//    dort, wo der halbe Modekatalog liegt. Jede Kostenzahl leichter Ware war um
+//    15 − max(5, 3.4+16.3·kg) zu hoch, bei sehr leichter Ware um volle CHF 10.
+//    Nachgemessen am Bestand: von 3'325 Produkten, die dadurch als «unter Einstand»
+//    galten, sind 2'746 in Wahrheit KOSTENDECKEND (Median-Aufblaehung CHF 7.85).
+//    Beispiel «Vielseitiger Haekel-Cardigan» (235 g): geschrieben CHF 20.00, wahr
+//    CHF 12.23 — bei VK 14.90 also +2.67 Gewinn statt −5.10 Verlust.
+//    ⚠️ Der Boden 15 war selbst ein Zirkelschluss (Eintrag 23.08.): er wurde aus
+//    Kostenzahlen «belegt», die mit ihm gerechnet worden waren. CJ live gefragt:
+//    20 g → CHF 4.34 · 270 g → CHF 8.17. Es gibt keine Untergrenze von 15.
+// 2. `.split('--')` sucht ZWEI Bindestriche und trennt deshalb NIE. Bei CJs Spannen
+//    ("4.41-12.22" / "1600.00-5000.00") bricht parseFloat am ersten Bindestrich ab und
+//    nimmt die BILLIGSTE und LEICHTESTE Variante — die Kosten werden also zu NIEDRIG
+//    angesetzt, echte Verluste bleiben unsichtbar. `obereGrenze()` in cj_preis.mjs ist
+//    genau dagegen gebaut und nimmt die obere Grenze, weil sie nie beschoenigt.
+//
+// Die Signatur ist identisch (usd, grams) → String mit zwei Nachkommastellen, der
+// Aufruf unten bleibt deshalb unveraendert. `gewicht()` kommt gleich mit: es liest
+// Spannen richtig und liefert ein leeres Objekt statt eines ungueltigen `weight: 0`.
+// NEUE PREIS- ODER KOSTENREGELN GEHOEREN AUSSCHLIESSLICH IN cj_preis.mjs.
 
 async function sgql(q, v) {
   // ⚠️ 21.08.2026: DROSSELUNG IST KEIN FEHLER, SONDERN EINE WARTEANWEISUNG.
@@ -249,8 +273,11 @@ async function main() {
       // weggeworfen — dasselbe Muster wie im Importer. Es wird jetzt mitgeschrieben:
       // damit beantwortet dieser Lauf nebenbei die Frage «welche Ware ist schwer?»
       // fuer den ALTBESTAND, ohne eine einzige zusaetzliche CJ-Abfrage.
-      const gGramm = Number(gew) || 0;
-      const messung = gGramm > 0 ? { measurement: { weight: { value: gGramm, unit: 'GRAMS' } } } : {};
+      // ⚠️ `Number(gew)` liefert bei einer Spanne ("1600.00-5000.00") NaN → 0, also KEIN
+      // Gewicht und eine Fracht, die mit 0 g rechnet. `gewicht()` liest die Spanne und
+      // nimmt die obere Grenze — dieselbe Quelle, die auch `kosten()` benutzt.
+      const messung = gewicht(gew);
+      const gGramm = messung.measurement?.weight?.value || 0;
       // Die Abfrage liefert ALLE Varianten des Produkts mit je eigenem Preis und Gewicht.
       // Wo sich die Shopify-Variante ueber ihre SKU wiederfinden laesst, bekommt sie IHRE
       // Zahl statt der des ersten Eintrags — bei Groessen-/Farbstaffeln ist das der
@@ -264,9 +291,10 @@ async function main() {
         const kern = (v.sku || '').replace(/^cj-/i, '').split('-')[0].toUpperCase();
         const e = proSku.get(kern);
         const vp = e ? (e.variantSellPrice ?? e.variantSugSellPrice) : null;
-        const vg = e ? Number(e.variantWeight) || 0 : 0;
+        const vmess = e ? gewicht(e.variantWeight) : {};
+        const vg = vmess.measurement?.weight?.value || 0;
         const vc = vp != null ? kosten(vp, vg || gGramm) : c;
-        const vm = vg > 0 ? { measurement: { weight: { value: vg, unit: 'GRAMS' } } } : messung;
+        const vm = vg > 0 ? vmess : messung;
         return { id: v.id, inventoryItem: { cost: vc, ...vm } };
       });
       let n = 0;
