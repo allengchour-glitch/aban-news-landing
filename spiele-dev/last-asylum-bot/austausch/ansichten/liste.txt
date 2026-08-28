@@ -4,3 +4,5 @@
 02-03030403.png	2026-08-23 18:57:40	Schritt 9	bekannt	{'task:ansichten-sammeln': 3, 'taps': 2, 'task:kalibrieren': 1}
 03-03030403.png	2026-08-23 18:58:49	Schritt 11	bekannt	{'task:ansichten-sammeln': 4, 'taps': 3, 'ansicht-gesammelt': 2}
 04-09090909.png	2026-08-28 17:19:32	Schritt 3	bekannt	{'task:kalibrieren': 1, 'task:lebenszeichen': 1, 'task:ansichten-sammeln': 1}
+05-09090909.png	2026-08-28 17:21:33	Schritt 1	bekannt	{'task:ansichten-sammeln': 1}
+06-00000000.png	2026-08-28 17:22:46	Schritt 4	bekannt	{'task:ansichten-sammeln': 2, 'rule:ladebildschirm-abwarten': 2, 'ansicht-gesammelt': 1}
