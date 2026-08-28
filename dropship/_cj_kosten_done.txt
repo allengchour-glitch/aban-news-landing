@@ -4568,3 +4568,5 @@ gid://shopify/Product/15448913543553	CHF 21.29	1 Varianten	Business-Reisetasche 
 gid://shopify/Product/15448913609089	CHF 37.44	1 Varianten	39L Taktischer Militär-Rucksack
 gid://shopify/Product/15448913674625	CHF 34.58	1 Varianten	Minimalistischer Pendler-Rucksack für 15-Zoll-Lapt
 gid://shopify/Product/15448913707393	CHF 43.21	4 Varianten	Business Rucksack mit Vakuum-Kompressionsbeutel
+gid://shopify/Product/15448913805697	CHF 21.70	2 Varianten	Filz-Rucksack für Outdoor-Aktivitäten
+gid://shopify/Product/15448913838465	CHF 28.44	1 Varianten	Business Umhängetasche mit USB-Anschluss
