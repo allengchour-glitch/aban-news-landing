@@ -1481,3 +1481,28 @@ gid://shopify/Product/15448539693441	zugeordnet	40	Kurzer Jumpsuit mit V-Ausschn
 gid://shopify/Product/15448539922817	zugeordnet	15	Eleganter Casual Jumpsuit mit weitem Bein
 gid://shopify/Product/15448540184961	zugeordnet	42	Eleganter ärmelloser Jumpsuit mit Trägern
 gid://shopify/Product/15448540447105	zugeordnet	10	Sommerlicher Denim-Jumpsuit mit weiten Taschen
+gid://shopify/Product/15448540643713	zugeordnet	15	Ärmelloser Jumpsuit mit V-Ausschnitt und Print
+gid://shopify/Product/15448583537025	zugeordnet	10	Gestreifter ärmelloser Leinen-Playsuit
+gid://shopify/Product/15448584880513	bild-urls-tot
+gid://shopify/Product/15448589468033	zugeordnet	24	Etuikleid mit Rüschenärmeln und Strass-Details
+gid://shopify/Product/15448589894017	zugeordnet	18	Ärmelloses Midikleid mit Libellen-Print
+gid://shopify/Product/15448589992321	zugeordnet	20	Off-Shoulder A-Linien-Kleid mit Schleife
+gid://shopify/Product/15448590057857	zugeordnet	6	Polo-Strickpullover mit Denim-Einsatz
+gid://shopify/Product/15448590254465	zugeordnet	8	Woll-Cardigan mit Revers und Doppelreissverschluss
+gid://shopify/Product/15448590320001	zugeordnet	11	Flauschiger Oversized Strick-Cardigan
+gid://shopify/Product/15448590352769	zugeordnet	56	Eleganter Herbst/Winter Pullover für Damen
+gid://shopify/Product/15448590385537	zugeordnet	8	Lockerer Pullover mit Rundhals und Knöpfen
+gid://shopify/Product/15448590418305	zugeordnet	8	V-Neck Pullover mit lockerer Passform
+gid://shopify/Product/15448590483841	zugeordnet	30	Jacquard Strickpullover für Herren
+gid://shopify/Product/15448590549377	zugeordnet	72	Lockerer Strick-Pullover mit V-Ausschnitt
+gid://shopify/Product/15448590614913	zugeordnet	30	Damen Strickpullover mit Herzmuster-Reissverschluss
+gid://shopify/Product/15448590647681	zugeordnet	42	Strickpullover mit Rollkragen und Knopfleiste
+gid://shopify/Product/15448590680449	zugeordnet	42	Damen Strickpullover mit Rollkragen und Knöpfen
+gid://shopify/Product/15448590713217	zugeordnet	92	V-Ausschnitt Strickjacke Langarm
+gid://shopify/Product/15448590745985	zugeordnet	48	Hoodie Strickpullover mit Kordelzug
+gid://shopify/Product/15448590778753	zugeordnet	18	Damen Strickjacke mit Knopfleiste und langen Ärmeln
+gid://shopify/Product/15448590844289	zugeordnet	18	V-Ausschnitt Strick-Cardigan für Damen
+gid://shopify/Product/15448590909825	zugeordnet	35	Rundhals-Strickpullover für Damen
+gid://shopify/Product/15448590975361	zugeordnet	35	Leichtes Kurzarm-Strickshirt für Damen
+gid://shopify/Product/15448591008129	zugeordnet	25	V-Ausschnitt Strickjacke mit Streifen
+gid://shopify/Product/15448591139201	zugeordnet	10	Oversized Strick-Shirt mit V-Ausschnitt
