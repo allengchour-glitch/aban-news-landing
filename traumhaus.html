@@ -1335,6 +1335,16 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     if(Math.abs(x+190)<11+pad&&z>163&&z<211)return false;
     for(var q=0;q<WORLD_SOLIDS.length;q++){var sq=WORLD_SOLIDS[q];
       if(Math.abs(x-sq.x)<sq.hw+2.5+pad&&Math.abs(z-sq.z)<sq.hd+2.5+pad)return false;}
+    /* 🛣️ LANDSTRASSE UND ZUBRINGER. Sie fehlten hier — `freiPlatz` kannte Haupt-,
+       Quer- und Ringstrasse, Fluss, Kirchhof und Klinik, aber nicht den Ring bei r = 200
+       und nicht die sechs Speichen. Aufgefallen beim Waldsaum (#2366): dort musste
+       `_viertelSolver.fahrbahn` zusaetzlich gefragt werden, weil `freiPlatz` allein die
+       Baeume nicht von der Landstrasse hielt. Statt das an jeder Streu-Stelle zu
+       wiederholen, steht es jetzt hier — an der gemeinsamen Quelle.
+       Wie bei den Viertelwegen gilt: der Solver entsteht erst bei 260 ms, frueh
+       gestreute Objekte bleiben ungeschuetzt. */
+    var _S8=window._viertelSolver;
+    if(_S8&&_S8.fahrbahn&&_S8.fahrbahn(x-pad,x+pad,z-pad,z+pad))return false;
     /* 🛣️ Viertelstrassen und Anschlusswege. Die entstehen erst 260 ms nach dem Laden,
        das Streuen laeuft aber in Haeppchen ueber viele Bilder weiter — der weitaus
        groesste Teil faellt also in die Zeit, in der die Wege schon stehen. Vorher

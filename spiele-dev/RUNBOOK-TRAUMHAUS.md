@@ -2138,3 +2138,25 @@ Der Befund hat nur überlebt, weil ich am Ende mit `th-strassen.mjs` selbst geme
 mit meiner Nachbildung.
 
 **Verifiziert:** 7 Viertel auf Stufe 2 · `th-netz` 38 ok · `th-3d` 59.
+
+## 2026-08-28 · 🛣️ `freiPlatz()` kennt jetzt auch Landstraße und Zubringer
+
+Der offene Punkt aus #2366: dort musste der Waldsaum `_viertelSolver.fahrbahn` **zusätzlich**
+fragen, weil `freiPlatz` allein die Bäume nicht von der Landstraße hielt. Statt das an jeder
+Streu-Stelle zu wiederholen, steht es jetzt an der gemeinsamen Quelle.
+
+`freiPlatz` kannte Haupt-, Quer- und Ringstraße, Fluss, Kirchhof und Klinik — aber nicht den
+Ring bei r = 200 und nicht die sechs Speichen.
+
+| `th-strassen`, Gesamt | Lauf 1 | Lauf 2 | Mittel |
+|---|---|---|---|
+| ohne | 201 | 208 | 204,5 |
+| **mit** | **156** | **155** | **155,5** |
+
+**−24 %**, die Bereiche liegen weit auseinander. Zusammen mit #2366 (239 → 208,5) ist die
+Straßenbelegung damit von rund 239 auf 155 gefallen.
+
+⚠️ Gleiche Einschränkung wie bei den Viertelwegen: der Solver entsteht erst bei 260 ms, früh
+gestreute Objekte bleiben ungeschützt. Das ist der Rest, den das Werkzeug weiter findet.
+
+**Verifiziert:** 7 Viertel auf Stufe 2 · `th-netz` 38 ok · `th-3d` 58.
