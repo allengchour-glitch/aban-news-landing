@@ -2030,3 +2030,34 @@ eingesparte Matrix-Kompositionen je Bild sehr wohl zählen.
 **Fazit:** die Notiz „verworfen" in #2334 gilt für **meine** Fassung, nicht für die in `main`.
 Wer sie liest, soll den Frost nicht rückbauen. Was bleibt: der Frost ist **kein** Risiko für
 Animationen (gemessen), und sein Nutzen ist von hier aus **nicht messbar** — nicht widerlegt.
+
+## 2026-08-28 · 🦊 Tiere in die Zoo-Gehege — der Kreis zum Koppel-Fund
+
+Der Zoo (#2342) bestand aus Zäunen und leeren Flächen. Dieselbe Begründung wie bei der
+Bauernhof-Koppel — *„eine leere Koppel liest sich als vergessener Zaun"* — gilt für ein
+Gehege genauso. Möglich wurde es erst durch den `home`-Fix aus #2360.
+
+**Neun Tiere, alle innerhalb ihres Radius:**
+
+| Ort | Tiere | Radius | gemessener Abstand |
+|---|---|---|---|
+| 3 × `th24_gehege` | Wildschwein, Reh, Fuchs (je 2) | 4 | 1,7–3,7 m |
+| `th24_streichelzoo` | 3 × Hase | 6 | 4,1–4,5 m |
+
+Exotische Modelle gibt es nicht — also **Heimattierpark statt Safari**. Ehrlicher als nichts,
+und die Modelle sind da (`an_boar`, `an_deer`, `an_fox`, `an_rabbit`).
+
+### ⚠️ Drei Zeitfallen, die hier zusammenkommen
+1. **Erst bei 15 s setzen.** `entzerren()` rückt die Bauzeilen bei **14 s** noch zurecht. Wer
+   vorher die Gehege ausliest, bindet die Tiere an eine Position, die es danach nicht mehr
+   gibt.
+2. **Lage aus `zoo.bauten[].w.position`**, nicht aus eigener Rechnung — eine eigene wäre die
+   nächste Wunschort-Falle (viermal getroffen, siehe #2360).
+3. **`freiRaeumen()` (15,5 s) fasst sie nicht an**, weil Tiere nicht über `bau()` laufen und
+   damit nicht in `window._gebaeude` stehen. Geprüft, nicht gehofft.
+
+`ladeTier` liegt in `baueTiere` und war von außen unerreichbar — jetzt als `window._ladeTier`
+verfügbar, damit spätere Läufe Tiere nachsetzen können.
+
+**Verifiziert:** 7 Viertel auf Stufe 2 · `th-netz` 38 ok · `th-3d` 57 · Foto zeigt Füchse
+hinter dem Gehegezaun.
