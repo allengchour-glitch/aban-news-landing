@@ -257,8 +257,17 @@ if ($LASTEXITCODE -ne 0) {
 
 # -------------------------------------------------------- Konfiguration pruefen
 Schritt "Konfiguration und Templates"
-& $python bot.py check
-if ($LASTEXITCODE -ne 0) { Abbruch "Konfiguration ist fehlerhaft" @("bot.py check meldet einen Fehler") }
+# Die Ausgabe mitschneiden, nicht nur den Rueckgabewert: am 28.08. um 21:23
+# brach der Start mit "Konfiguration ist fehlerhaft" ab, und im hochgeladenen
+# Vermerk stand als einziger Hinweis "bot.py check meldet einen Fehler" - also
+# genau das, was man ohnehin schon wusste. Zwei Minuten spaeter lief es wieder,
+# und der Grund war nicht mehr zu ermitteln.
+$pruefung = & $python bot.py check 2>&1 | ForEach-Object { "$_" }
+$pruefung | ForEach-Object { Write-Host $_ }
+if ($LASTEXITCODE -ne 0) {
+    $letzte = @($pruefung | Where-Object { $_ -and $_.Trim() } | Select-Object -Last 12)
+    Abbruch "Konfiguration ist fehlerhaft" $letzte
+}
 if ($NurPruefen) { Write-Host "`nFertig (nur geprueft)." -ForegroundColor Cyan; exit 0 }
 
 # --------------------------------------------------------------- ADB aufspueren

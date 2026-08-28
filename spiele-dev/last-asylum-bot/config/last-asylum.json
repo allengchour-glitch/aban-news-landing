@@ -887,8 +887,8 @@
     {
       "name": "blauer-knopf-generisch",
       "priority": 144,
-      "cooldown": 25,
-      "_zweck": "Blau ist im Spiel entweder eine Handlung ('Los' bei Arena und Koenigsstadtkampf, 'Versammeln' beim Monster) oder 'Abbrechen'. Beides ist ungefaehrlich - schlimmstenfalls bricht der Bot etwas ab. Damit kommt er aus Event-Popups heraus, ohne dass es dafuer je eine Vorlage braucht. Der untere Rand ist ausgenommen: dort liegt das Angebots-Banner. Am 31.07. griff die Regel sechzehnmal hintereinander mit einem Fuellgrad von nur 0.59 - das war kein Knopf, sondern eine blaeuliche Flaeche. Ein echter Knopf ist fast vollstaendig ausgefuellt, deshalb jetzt 0.78 und mindestens 18 Prozent Bildbreite. NACHGEMESSEN 03.08.: min_fuellung stand auf 0.78 - unerreichbar. Ein blauer Knopf mit weisser Beschriftung kommt gemessen hoechstens auf 0.69, die Schrift belegt den Rest. Die 0.78 waren gegen eine Vorstellung gesetzt, nicht gegen einen Knopf; die Regel konnte also nur bei UNbeschrifteten blauen Flaechen greifen - genau das Gegenteil des Gemeinten. Jetzt 0.65: unter dem gemessenen Knopf-Wert, aber ueber dem Fehltreffer von 0.59 am 31.07. NACHGEMESSEN 28.08. an austausch/ansichten/24-04070305.png: in der Tasche, Reiter Spezial, steht bei ausgewaehltem Ausdauer-Flaeschchen ein blaues 'Verwenden' - und diese Regel findet es punktgenau (x=226 y=544 w=268 h=74 im halben Bild). Sie haette also Ausdauer-Flaeschchen verbraucht, was der Nutzer ausdruecklich verboten hat (siehe _ausdauer). Darum die Sperre auf den Spezial-Reiter: der trifft dort mit 0.984 und ist damit ein verlaesslicher Melder fuer 'die Tasche ist offen'. Entwarnung dagegen bei den Aufgaben: ui/btn_benutzen.png kommt auf diesem Bildschirm nur auf 0.390 und tasche/truhe.png auf 0.526 - beide weit unter ihrer Schwelle, die tippen dort also nichts an.",
+      "cooldown": 120,
+      "_zweck": "Blau ist im Spiel entweder eine Handlung ('Los' bei Arena und Koenigsstadtkampf, 'Versammeln' beim Monster) oder 'Abbrechen'. Beides ist ungefaehrlich - schlimmstenfalls bricht der Bot etwas ab. Damit kommt er aus Event-Popups heraus, ohne dass es dafuer je eine Vorlage braucht. Der untere Rand ist ausgenommen: dort liegt das Angebots-Banner. Am 31.07. griff die Regel sechzehnmal hintereinander mit einem Fuellgrad von nur 0.59 - das war kein Knopf, sondern eine blaeuliche Flaeche. Ein echter Knopf ist fast vollstaendig ausgefuellt, deshalb jetzt 0.78 und mindestens 18 Prozent Bildbreite. NACHGEMESSEN 03.08.: min_fuellung stand auf 0.78 - unerreichbar. Ein blauer Knopf mit weisser Beschriftung kommt gemessen hoechstens auf 0.69, die Schrift belegt den Rest. Die 0.78 waren gegen eine Vorstellung gesetzt, nicht gegen einen Knopf; die Regel konnte also nur bei UNbeschrifteten blauen Flaechen greifen - genau das Gegenteil des Gemeinten. Jetzt 0.65: unter dem gemessenen Knopf-Wert, aber ueber dem Fehltreffer von 0.59 am 31.07. NACHGEMESSEN 28.08. an austausch/ansichten/24-04070305.png: in der Tasche, Reiter Spezial, steht bei ausgewaehltem Ausdauer-Flaeschchen ein blaues 'Verwenden' - und diese Regel findet es punktgenau (x=226 y=544 w=268 h=74 im halben Bild). Sie haette also Ausdauer-Flaeschchen verbraucht, was der Nutzer ausdruecklich verboten hat (siehe _ausdauer). Darum die Sperre auf den Spezial-Reiter: der trifft dort mit 0.984 und ist damit ein verlaesslicher Melder fuer 'die Tasche ist offen'. Entwarnung dagegen bei den Aufgaben: ui/btn_benutzen.png kommt auf diesem Bildschirm nur auf 0.390 und tasche/truhe.png auf 0.526 - beide weit unter ihrer Schwelle, die tippen dort also nichts an. ABKUEHLZEIT 25 auf 120 Sekunden (28.08.): austausch/ansichten/26-04070305.png zeigt die Tagesquests - vier blaue 'Los' untereinander, jedes fuehrt woanders hin, und der naechste Bildschirm hat wieder eines. Mit 25 Sekunden Abkuehlzeit haengt der Bot in so einer Kette fest und wandert nur noch durch Menues; die Stilllege-Bremse greift dabei nie, weil sich das Bild ja jedes Mal aendert. Als Notausgang aus einem Event-Popup reicht ein Griff alle zwei Minuten voellig.",
       "match": {
         "all": [
           {
@@ -5398,7 +5398,7 @@
       "name": "monster-jagen",
       "every": 1200,
       "priority": 120,
-      "_zweck": "Weltkarte -> Lupe -> Reiter 'Ressourcen-Monster' -> Suchen -> Angreifen, bis die Ausdauer aufgebraucht ist. Ist keine mehr da, findet der Bot den Angriffs-Knopf nicht mehr oder das Spiel meldet es per Dialog - beides beendet den Durchgang folgenlos. Nachgefuellt wird NIE, siehe _ausdauer. Braucht sammeln/reiter_monster.png und sammeln/angreifen.png. TAKT 1200 statt 2700 und Prioritaet 120 (Nutzer: 'immer Monster angreifen'). Bringt allerdings erst etwas, wenn die Vorlagen des Wegs treffen: am 28.08. verfehlten im Protokoll ALLE - nav/welt 0.47, nav/lupe 0.32, sammeln/suchen 0.29, kampf/kampf 0.16 - und sammeln/reiter_monster.png sowie sammeln/angreifen.png fehlen ganz.",
+      "_zweck": "Weltkarte -> Lupe -> Reiter 'Ressourcen-Monster' -> Suchen -> Angreifen, bis die Ausdauer aufgebraucht ist. Ist keine mehr da, findet der Bot den Angriffs-Knopf nicht mehr oder das Spiel meldet es per Dialog - beides beendet den Durchgang folgenlos. Nachgefuellt wird NIE, siehe _ausdauer. Braucht sammeln/reiter_monster.png und sammeln/angreifen.png. TAKT 1200 statt 2700 und Prioritaet 120 (Nutzer: 'immer Monster angreifen'). Bringt allerdings erst etwas, wenn die Vorlagen des Wegs treffen: am 28.08. verfehlten im Protokoll ALLE - nav/welt 0.47, nav/lupe 0.32, sammeln/suchen 0.29, kampf/kampf 0.16 - und sammeln/reiter_monster.png sowie sammeln/angreifen.png fehlen ganz. Legt direkt nach dem Sprung in die Weltansicht austausch/monster-weg.png in voller Aufloesung ab. Die gesammelten Ansichten sind halbiert, daraus laesst sich keine Vorlage schneiden - und ohne Vorlagen fuer Lupe, Monster-Reiter und Angreifen passiert auf diesem Weg gar nichts. Dieses eine Vollbild zeigt, wo der Bot in dem Moment wirklich steht.",
       "do": [
         {
           "log": "Monster jagen, solange Ausdauer da ist"
@@ -5431,6 +5431,18 @@
               3.0,
               4.5
             ]
+          }
+        },
+        {
+          "ausschnitt": {
+            "datei": "austausch/monster-weg.png",
+            "region": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "mindestabstand": 3600
           }
         },
         {

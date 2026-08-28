@@ -3915,6 +3915,21 @@ class TestStartskriptWirdBewacht(unittest.TestCase):
                          "git nur ueber Git-Text/Git-MitZeitlimit aufrufen: "
                          + "; ".join(verdaechtig))
 
+    def test_abbruch_nennt_den_echten_grund(self):
+        """"bot.py check meldet einen Fehler" sagt nur, was man schon weiss.
+
+        Am 28.08. um 21:23 brach der Start genau damit ab, zwei Minuten spaeter
+        lief es wieder - und der Grund war nicht mehr zu ermitteln. Die Ausgabe
+        der Pruefung gehoert in den Vermerk.
+        """
+        text = "\n".join(self.skript())
+        stelle = text.index("bot.py check")
+        rund = text[stelle - 200:stelle + 600]
+        self.assertIn("$pruefung", rund,
+                      "die Ausgabe von 'bot.py check' muss mitgeschnitten werden")
+        self.assertIn("Abbruch \"Konfiguration ist fehlerhaft\" $letzte", rund,
+                      "und im Abbruch-Vermerk landen")
+
     def test_ende_des_laufs_wird_vermerkt(self):
         """Ein angehaltener Bot sah von aussen aus wie ein laufender.
 
