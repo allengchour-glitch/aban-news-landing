@@ -3296,3 +3296,74 @@ gid://shopify/Product/15448654938497	CHF 19.78	40 Varianten	Karierte High-Waist 
 gid://shopify/Product/15448654971265	CHF 23.21	60 Varianten	Elegante High-Waist Wide-Leg Hose für Damen
 gid://shopify/Product/15448655004033	CHF 18.92	18 Varianten	Bequeme Tie-Dye Hose mit weitem Bein
 gid://shopify/Product/15448655036801	CHF 20.97	40 Varianten	Weite Hose mit überkreuztem Bund
+gid://shopify/Product/15448655069569	CHF 20.53	40 Varianten	Multi-Pocket Yoga Pants
+gid://shopify/Product/15448655135105	CHF 18.32	22 Varianten	Bootcut Hose mit V-Bund
+gid://shopify/Product/15448655266177	CHF 17.84	15 Varianten	High-Waist Bootcut Sporthose für Damen
+gid://shopify/Product/15448655298945	CHF 18.47	5 Varianten	Weite Freizeithose mit Kontrastbund
+gid://shopify/Product/15448655397249	CHF 21.57	8 Varianten	Low-Rise Scissor Cut Jeans für Damen
+gid://shopify/Product/15448655430017	CHF 19.76	40 Varianten	Weite Freizeithose mit Kordelzug
+gid://shopify/Product/15448655462785	CHF 20.08	4 Varianten	Damen Pinstripe Wide Leg Hose
+gid://shopify/Product/15448655495553	CHF 19.21	3 Varianten	Camo Low-Waist Slim-Fit Hose für Frauen
+gid://shopify/Product/15448655561089	CHF 19.08	25 Varianten	Weite Freizeithose aus Baumwoll-Leinen-Mix
+gid://shopify/Product/15448655659393	CHF 24.67	5 Varianten	Figurformende Stretchy Jeans mit weitem Bein
+gid://shopify/Product/15448655692161	CHF 41.25	5 Varianten	Bedruckte Twill-Hose mit weitem Bein
+gid://shopify/Product/15448655724929	CHF 52.12	4 Varianten	Smoke Grey Washed Denim Jeans Straight Tube
+gid://shopify/Product/15448655757697	CHF 19.73	40 Varianten	Flowing Floral Wide-Leg Hose für Damen
+gid://shopify/Product/15448655823233	CHF 26.79	5 Varianten	High Waist Plissée Hose mit Nadelstreifen
+gid://shopify/Product/15448655856001	CHF 26.79	10 Varianten	Asymmetrische Wide Leg Hose
+gid://shopify/Product/15448655888769	CHF 23.66	5 Varianten	High Waist Palazzo Hose mit weitem Bein
+gid://shopify/Product/15448655921537	CHF 19.37	40 Varianten	Harem Wide Leg Hose mit Tunnelzug
+gid://shopify/Product/15448656019841	CHF 19.51	35 Varianten	High-Waist Wide Leg Hose – Orange
+gid://shopify/Product/15448656052609	CHF 20.97	12 Varianten	Leinenhose Loose Fit Cropped
+gid://shopify/Product/15448656216449	CHF 29.46	8 Varianten	Retro Patchwork Plaid Wide Leg Pants
+gid://shopify/Product/15448656347521	CHF 20.36	48 Varianten	Loose Fit High Waist Stoffhose
+gid://shopify/Product/15448656511361	CHF 19.30	48 Varianten	High-Waist Hose mit weitem Bein und Kordelzug – Br
+gid://shopify/Product/15448656609665	CHF 20.22	16 Varianten	Weite Hose mit hohem Bund für kleine Grössen
+gid://shopify/Product/15448656642433	CHF 18.77	30 Varianten	High-Waist Athletic Wide-Leg Hose
+gid://shopify/Product/15448656675201	CHF 19.92	5 Varianten	Elegante weite Hose mit ausgestelltem Bein
+gid://shopify/Product/15448656707969	CHF 19.23	48 Varianten	Loose Fit Stoffhose mit Taschen
+gid://shopify/Product/15448656740737	CHF 20.66	15 Varianten	Retro Loose Fit Hose
+gid://shopify/Product/15448656806273	CHF 20.08	6 Varianten	High-Waist Shaping Yoga Pants
+gid://shopify/Product/15448656871809	CHF 47.53	20 Varianten	Kurzer Wollmantel mit Puppenkragen
+gid://shopify/Product/15448656904577	CHF 17.53	16 Varianten	Blazer mit Blumenmuster und Spitze
+gid://shopify/Product/15448656937345	CHF 29.30	30 Varianten	Slim-Fit Sportjacke mit Stehkragen
+gid://shopify/Product/15448656970113	CHF 20.22	32 Varianten	Langes Hemdblusenkleid im Vintage-Stil
+gid://shopify/Product/15448657002881	CHF 22.76	3 Varianten	Tarnmuster Special Agent Captain Kostüm
+gid://shopify/Product/15448657035649	CHF 68.71	3 Varianten	Elegante bordeauxrote Wollweste für Damen
+gid://shopify/Product/15448657101185	CHF 19.92	25 Varianten	Figurformender Badeanzug
+gid://shopify/Product/15448657265025	CHF 22.76	4 Varianten	Locker sitzender Langarm-Strickpullover mit Tasche
+gid://shopify/Product/15448657396097	CHF 20.22	8 Varianten	Rundhals-Pullover mit Cut-Outs und Strass
+gid://shopify/Product/15448657527169	CHF 18.62	70 Varianten	Damen Langarm-Top mit Knöpfen in Übergrössen
+gid://shopify/Product/15448657625473	CHF 22.80	4 Varianten	Elegante Bluse mit Laternenärmeln und Blumenmuster
+gid://shopify/Product/15448657691009	CHF 24.70	5 Varianten	Lange ärmellose Weste mit Taillengürtel
+gid://shopify/Product/15448657723777	CHF 25.42	4 Varianten	Retro Fransen-Top für Damen
+gid://shopify/Product/15448657756545	CHF 63.95	4 Varianten	Commuter Cardigan Plus-Size Langarmshirt
+gid://shopify/Product/15448657789313	CHF 71.72	6 Varianten	Leinen-Blazer mit Pailletten und Stehkragen
+gid://shopify/Product/15448657822081	CHF 24.75	4 Varianten	Oversized Trenchcoat aus Baumwolle
+gid://shopify/Product/15448657854849	CHF 20.08	30 Varianten	Asymmetrisches Off-Shoulder Top
+gid://shopify/Product/15448657887617	CHF 19.53	5 Varianten	Damen Halterneck Crop Top mit 3D-Print
+gid://shopify/Product/15448657920385	CHF 21.12	12 Varianten	Eleganter Strickpullover mit Farbblock
+gid://shopify/Product/15448657953153	CHF 18.92	20 Varianten	Midi-Shawl-Mantel für Damen
+gid://shopify/Product/15448658018689	CHF 20.82	56 Varianten	Damen Freizeit-Top mit langen Ärmeln und Paneel-De
+gid://shopify/Product/15448658051457	CHF 19.78	20 Varianten	Chiffon-Top mit Blumenmuster und V-Ausschnitt
+gid://shopify/Product/15448658084225	CHF 19.06	20 Varianten	Gestreiftes Strick-Top mit Holzperlen-Trägern
+gid://shopify/Product/15448658116993	CHF 19.53	20 Varianten	Damen V-Neck Top mit Rüschen und ausgestellten Ärm
+gid://shopify/Product/15448658280833	CHF 20.37	20 Varianten	Satin V-Ausschnitt Langarm-Shirt mit Knoten
+gid://shopify/Product/15448658477441	CHF 17.99	35 Varianten	Ärmelloses Tanktop für Damen
+gid://shopify/Product/15448658772353	CHF 59.63	3 Varianten	Kurzer Blazer mit Dreiviertel-Ärmeln für Damen
+gid://shopify/Product/15448659001729	CHF 20.22	5 Varianten	Damen Freizeit-Top mit Rundhals und 7/8-Ärmeln
+gid://shopify/Product/15448659034497	CHF 20.00	4 Varianten	Vielseitiger Häkel-Cardigan für Damen
+gid://shopify/Product/15448659100033	CHF 19.53	56 Varianten	Blazer-Top mit Blumenmuster und Spitzenbesatz
+gid://shopify/Product/15448659165569	CHF 17.94	35 Varianten	Besticktes Leinen-Baumwoll-Shirt
+gid://shopify/Product/15448659198337	CHF 25.45	7 Varianten	Retro Mock-Neck Top aus Ramie
+gid://shopify/Product/15448659263873	CHF 20.53	3 Varianten	Gestreiftes Halterneck-Top mit Knoten
+gid://shopify/Product/15448659329409	CHF 20.37	60 Varianten	Relaxed Polo-Shirt mit Umschlagkragen
+gid://shopify/Product/15448659362177	CHF 20.37	30 Varianten	Langarmshirt mit Rundhals
+gid://shopify/Product/15448659427713	CHF 20.37	54 Varianten	Samt-Blazer mit weitem Ausschnitt
+gid://shopify/Product/15448659460481	CHF 17.86	5 Varianten	Damen Mesh-Top mit Tupfenärmeln
+gid://shopify/Product/15448659526017	CHF 20.22	5 Varianten	V-Neck Cardigan mit Lochmuster
+gid://shopify/Product/15448659558785	CHF 19.16	24 Varianten	V-Ausschnitt Pullover mit Woll-Optik
+gid://shopify/Product/15448659591553	CHF 19.23	8 Varianten	Eleganter Damenblazer im europäischen Stil
+gid://shopify/Product/15448659624321	CHF 19.23	8 Varianten	Body mit Spitze und Wimpern-Bordüre
+gid://shopify/Product/15448659657089	CHF 19.92	20 Varianten	Gestreiftes Off-Shoulder Top für Damen
+gid://shopify/Product/15448659755393	CHF 20.48	5 Varianten	Rundhals-Spitzentop
