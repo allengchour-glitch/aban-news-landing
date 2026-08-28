@@ -2061,3 +2061,45 @@ verfügbar, damit spätere Läufe Tiere nachsetzen können.
 
 **Verifiziert:** 7 Viertel auf Stufe 2 · `th-netz` 38 ok · `th-3d` 57 · Foto zeigt Füchse
 hinter dem Gehegezaun.
+
+## 2026-08-28 · 🕳️ `InstancedMesh` war für alle Kartenwerkzeuge unsichtbar
+
+Beim Nachrechnen der Flughafen-Ausdehnung ergab die Messung `x −15…321` — unmöglich für ein
+Viertel bei x = 300. Die Ursache ist grundsätzlich:
+
+> `Box3.setFromObject()` und `getWorldPosition()` liefern für einen `InstancedMesh` die Lage
+> des **Trägers**, nicht die der Instanzen. Der Träger steht im Ursprung.
+
+**Gemessen: 212 InstancedMeshes mit zusammen 6991 Instanzen** (Parkzaun 1820, Weidezaun 1152,
+Landebahn 512, Waldsaum u. a.). Alle davon waren für `th-strassen.mjs`, `th-3d.mjs` und
+`freiRaeumen()` entweder unsichtbar oder pauschal bei (0|0) einsortiert.
+
+### Was dahinter lag
+`th-strassen.mjs` prüft jetzt **jede Instanz einzeln** (Lage aus der Instanzmatrix, Höhe aus
+der Geometrie-Box). Ergebnis in vergleichbaren Läufen: **137 → 232** belegte Positionen.
+
+| Band | vorher | jetzt | was neu sichtbar wurde |
+|---|---|---|---|
+| Anschluss Gewerbe Ost | 5 | **23** | 18× instanziertes Streuwerk |
+| Zubringer 30° | 8 | **21** | 16× Streuwerk |
+| Hauptstraße Nord | 5 | **15** | 10× Streuwerk |
+| Stadtring Süd | 2 | **12** | Streuwerk |
+| Zubringer 330° | 1 | **14** | Streuwerk |
+
+Die neu sichtbaren Treffer sind fast durchweg **instanziertes Streuwerk** (Bäume, Büsche;
+Höhen 1,6–4,6 m). Es entsteht über einen anderen Weg als das Einzel-Streuwerk und respektiert
+`freiPlatz()` offenbar nicht — **das ist der nächste Fund, nicht dieser.**
+
+✅ Die **Landebahn** erscheint korrekt *nicht*: 0,4 m hoch, damit unter `MINH = 0,45` — wie
+Fahrbahnmarkierungen. Der Flach-Filter tut, was er soll.
+
+### ⚠️ `th-3d.mjs` ist weiterhin blind
+Dort wäre ein Instanz-für-Instanz-Vergleich bei 6991 Instanzen teuer; das braucht eine eigene
+Runde mit einer Rasterung. **Bis dahin gilt: `th-3d` sieht kein instanziertes Objekt** — eine
+grüne Meldung dort schließt Überschneidungen mit Zäunen, Wald und Landebahn nicht aus.
+
+### Und zum fünften Mal: keine Backticks in Sonden
+Der Kommentar oben enthielt `` `getWorldPosition()` `` — das beendet das Template-Literal, und
+der Lauf stirbt mit „Unexpected identifier". Die Regel steht seit #2348 im Runbook; ich habe
+sie selbst wieder gebrochen. Sie gilt auch für Kommentare **über** dem Sondenblock, sobald sie
+innerhalb der Backticks stehen.
