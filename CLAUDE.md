@@ -130,6 +130,26 @@ live belegt an 15411554910593). `automation/versandaussagen_wahrheit.py`, Ledger
   Rechtstexte gehen nur per GraphQL `shopPolicyUpdate` — und dessen Input nimmt `type`
   (`SHIPPING_POLICY`), **nicht** `id`. Ohne Live-Gegenprobe hätte der Lauf als erledigt gegolten.
 
+## 📉 307 Ratgeber, 13 Sitzungen im Monat — die Content-Strategie trägt nicht (2026-08-28)
+Nach den Landeseiten der letzten 30 Tage gezählt: **Produktseiten 572 Sitzungen auf 229 Seiten,
+Ratgeber 13 Sitzungen auf 3 Seiten.** Veröffentlicht sind **307** Ratgeber, davon **297 älter
+als 30 Tage** (64 aus dem Mai, 59 aus dem Juni, 174 aus dem Juli) — an fehlender Indexierzeit
+liegt es nicht. Das sind rund **0,04 Sitzungen pro Artikel und Monat**. Bilanz mit allen Zahlen:
+`dropship/RATGEBER-BILANZ.md`.
+**Noch mehr Ratgeber zu schreiben ist damit ein Null-Hebel** — dieselbe Klasse wie die schon
+belegten «mehr Produkte» und «mehr Social-Posts». Was trägt, sind die Produktseiten und damit
+die Google-Gratis-Einträge; Arbeit an Produktdaten zahlt dort ein, Arbeit an Blogtexten nicht.
+⚠️ **Und die Korrektur an meiner eigenen Begründung von heute Morgen:** Ich habe den
+Rückverweis-Lauf damit begründet, «die Ratgeber holen Google-Besucher und schicken sie auf die
+Produktseite». Das ist **falsch** — sie holen fast niemanden. Der Lauf bleibt richtig, aber aus
+dem anderen Grund: Er beantwortet die Frage der Besucherin, die über die PRODUKTSEITE
+hereinkommt, mit einem Text, den der Shop längst besitzt. Ich hatte die Wirkungsrichtung
+angenommen statt sie zu messen — und die Messung stand die ganze Zeit im selben Bericht.
+⚠️ Zurückziehen sollte man die 307 trotzdem nicht: Sie kosten wenig, tragen jetzt die
+Rückverweise, und ein Rückzug zerrisse die internen Links erneut. Die Empfehlung gilt für NEUE.
+⚠️ Kostenlos sind sie aber nicht — sie haben 61 tote Produktlinks, mehrere abgelaufene
+Rabattcodes und eine siebte Lieferzeit erzeugt, jeder Fund mit eigenem Wächter.
+
 ## 🔐 Auf die Sperre warten, nicht auf die Prozessliste (2026-08-28)
 Der Aufseher-Ersatz meldete seit Tagen «AUFSEHER-Ersatz ausgestiegen — Versuch 1/2/3» und kam
 trotzdem am Ende zum Ziel. Ich hatte zuerst auf mein eigenes `timeout` getippt (siehe Eintrag
