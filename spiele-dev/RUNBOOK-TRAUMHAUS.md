@@ -1918,3 +1918,40 @@ Jede Stelle, die Koordinaten aus einem `viertel({…})`-Aufruf abschreibt, veral
 Viertel ausweicht — und ausweichen ist der Normalfall, nicht die Ausnahme. Betroffen waren
 bisher: `_GPS_VERB` (#2355), `parkDeko` (#2353), der Freizeitpark-Anschluss (#2356) und jetzt
 die Koppel-Herde. **Wer an ein Viertel anbaut, liest `_viertelSolver.VIERTEL`.**
+
+## 2026-08-28 · 🗺️ Drei Viertel standen in der Welt, aber nicht auf der Karte
+
+Systematische Nachsuche nach der Wunschort-Falle (viermal getroffen: `_GPS_VERB`, `parkDeko`,
+Freizeitpark-Anschluss, Koppel-Herde). Ergebnis: **alle bestehenden Marken folgen korrekt** —
+`marke()` in `viertel()` schreibt die echte Lage in `WORLD_POIS` und `LIEFERZIELE`, sobald der
+Name passt. Gemessen: sieben von sieben mit Abstand 0 m.
+
+**Die Lücke war eine andere:** die drei Viertel dieser Charge — **Vergnügungsviertel, Zoo,
+Flughafen** — standen in **keiner der beiden Listen**. Sie existierten in der Welt, waren per
+GPS erreichbar, aber auf der Karte war dort nichts und **kein Lieferauftrag führte je hin**.
+
+> Ein Viertel, das man nicht findet, ist so gut wie nicht gebaut.
+
+Ergänzt: 🎰 Vergnügungsviertel · 🦓 Zoo · ✈️ Flughafen — als Kartenmarke **und** als Lieferziel.
+Die eingetragenen Koordinaten sind nur Startwerte; `marke()` zieht sie nach.
+
+⚠️ Der Lieferlohn wächst mit der Strecke (`lohn = (40 + t·1,6 + weg·0,5) · bonus`), lange Ziele
+zahlen sich also selbst — der Flughafen (r = 397) ist nur wenig weiter als der Freizeitpark
+(r = 345), der längst Ziel war.
+
+**Verifiziert:** 7 von 7 Vierteln mit Marke und Lieferziel, je 0 m Abstand · `th-netz` 38 ok ·
+`th-missmap` 8 ok.
+
+### Wer ein Viertel hinzufügt, braucht drei Einträge
+1. `viertel({…})` — die Welt.
+2. `WORLD_POIS` — die Karte.
+3. `LIEFERZIELE` — die Aufträge.
+
+Nur der erste ist offensichtlich. Die beiden anderen fallen erst auf, wenn jemand das Viertel
+sucht — und ohne Marke sucht niemand.
+
+### ❌ `QSPERR` ist veraltet, aber folgenlos
+Die Sperrliste der Berge (`[[60,330,…],[0,216,…],[172,0,…]]`) nennt ebenfalls Wunschorte. Sie
+wirkt aber, **bevor** die Viertel entstehen, und seit `imBerg()` das Gelände rastert weichen
+die Viertel den Bergen aus statt umgekehrt. Nicht angefasst — die Reihenfolge macht die
+Veraltung harmlos.
