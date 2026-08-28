@@ -97,6 +97,13 @@ fehlt() {
 # zwei Supervisoren nebeneinander laufen, weil die Sperre zwischen Eltern und Kindern
 # hin und her ging. Der Schiedsrichter über die kleinere PID bleibt als zweite Wache
 # bestehen; die Ursache ist aber diese Zeile.
+# 🔖 EIGENE FASSUNG QUITTIEREN (28.08.2026). Ein laufender Aufseher liest sein Skript
+# NICHT neu — der Schleifenrumpf ist beim ersten Durchlauf geparst. Wer einen neuen Waechter
+# einträgt, hat ihn deshalb erst nach dem naechsten Neustart wirklich registriert; heute
+# standen `bilddubletten` und `wahlversprechen` stundenlang im Skript und liefen nie.
+# Der Zeitstempel taugt nicht als Erkennung: `git reset --hard` beim Snapshot-Vorspulen
+# setzt die mtime neu, ohne dass sich der Inhalt geaendert haben muss. Also die PRÜFSUMME.
+md5sum "$0" 2>/dev/null | cut -d' ' -f1 > /tmp/_fixer_version
 exec 9>/tmp/fixer_keepalive.lock
 flock -n 9 || { echo "$(date -u +%H:%M) Supervisor läuft bereits — dieser Start endet."; exit 0; }
 while true; do

@@ -127,6 +127,19 @@ else
       starte fixer_keepalive bash automation/fixer_keepalive.sh
     done
     [ "$(zaehle_aufseher)" -eq 0 ] && echo "⛔ AUFSEHER laesst sich nicht starten (Sperre? /tmp/fixer_keepalive.log lesen)"
+  elif [ -f /tmp/_fixer_version ] \
+       && [ "$(md5sum "$REPO_AUTO/fixer_keepalive.sh" 2>/dev/null | cut -d' ' -f1)" != "$(cat /tmp/_fixer_version)" ]; then
+    # ⚠️ Der Aufseher laeuft — aber mit einer ANDEREN Fassung als der im Repo. Ein laufender
+    # bash-Prozess liest seinen Schleifenrumpf nicht neu; neu eingetragene Waechter wuerden
+    # sonst nie starten (beobachtet 28.08.: bilddubletten und wahlversprechen standen im
+    # Skript und liefen stundenlang nicht). Kein Zeitstempel-Vergleich — `git reset --hard`
+    # beim Vorspulen erneuert die mtime, ohne dass sich der Inhalt aendert.
+    echo "AUFSEHER laeuft mit alter Fassung → Neustart"
+    ps -eo pid,args --no-headers \
+      | awk '$2=="bash" && $3 ~ /fixer_keepalive\.sh$/ {print $1}' | xargs -r kill 2>/dev/null
+    for _ in $(seq 15); do [ "$(zaehle_aufseher)" -eq 0 ] && break; sleep 1; done
+    date +%s > /tmp/_fixer_herzschlag
+    starte fixer_keepalive bash automation/fixer_keepalive.sh
   else
     echo "AUFSEHER laeuft"
   fi

@@ -1247,6 +1247,50 @@ Ringe durchblättert, fand dazwischen einen Abdeckstift und eine Wanderhose.
   alle acht sauber. **Nach einer Tag-Änderung am OBJEKT gegenprüfen, nicht über die Suche** —
   sonst repariert man ein zweites Mal, was längst stimmt.
 
+## ⚖️ 108 Produkte verlieren Geld in JEDEM Fall — sechs davon dreistellig (2026-08-28)
+Mit 10'417 hinterlegten Einkaufspreisen war die Frage erstmals messbar statt geschätzt.
+Über 48'985 aktive Produkte:
+
+| | Zahl | Anteil der Produkte mit Kostendaten |
+|---|---:|---:|
+| unter Warenkosten (ohne Versanderlös) | 3'314 | 31 % |
+| **Verlust AUCH mit dem Versanderlös von CHF 7** | **108** | **1 %** |
+| Verlust mit «2+ Artikel −10 %» | 3'680 | 35 % |
+
+**Die 31 % sind KEIN Alarm** — «Kosten» ist die konservative Definition (Ware + volle Fracht),
+die CHF 7 Versand des Kunden sind Erlös und nicht darin enthalten. Bei einer Einzelbestellung
+tragen sich diese Artikel. Die eine Zahl, die zählt, ist die mittlere: **108 Artikel kosten in
+jedem Szenario Geld.**
+Und es sind ausnahmslos SCHWERE Waren — Kratzbäume, Spin-Bike, Angelruten-Ständer,
+Gewichtsweste. Genau das, was das Frachtmodell vorhersagt.
+- **Gegengeprüft, bevor gehandelt wurde:** Das Spin-Bike wiegt live **17 kg**. Fracht nach der
+  gemessenen Regression `3,84 + 16,42·kg` = CHF 283 — die hinterlegten CHF 309.61 sind also
+  echt und kein Parsing-Artefakt. Bei VK 84.90 kostet **ein einziger Verkauf CHF 218**, also
+  mehr als der GESAMTE Umsatz des Shops bisher (CHF 227.22 aus 7 Bestellungen).
+- **Sechs Extremfälle (Verlust > CHF 100) auf DRAFT** mit Tag `marge-verlust-draft`, Ledger
+  `dropship/_marge_verlust_draft.txt`. Das ist Risikoware im Wortsinn, nicht eine Preisfeinheit —
+  dieselbe Behandlung wie bei Waffen und Medizinprodukten: nie löschen, jederzeit zurückholbar.
+- ⚠️ **Die übrigen 102 bleiben AKTIV.** Sie neu zu bepreisen trifft beworbene Ware und ist eine
+  Betreiber-Entscheidung (dieselbe Linie wie bei den 200 Varianten am 20.08.). Vollständige
+  Liste nach Verlusthöhe: `dropship/MARGE-VERLUST.md`.
+- **Die Lehre für den Einkauf:** Nicht der Preis entscheidet über Gewinn, sondern das GEWICHT.
+  Ein Kratzbaum ist bei jedem Verkaufspreis unter CHF 200 ein Verlustgeschäft, ein Armband bei
+  CHF 15.90 ein Gewinn. Der Importer sollte schwere Ware gar nicht erst anlegen — offen.
+
+## 🔖 Ein laufender Aufseher liest sein Skript nicht neu (2026-08-28)
+`bilddubletten` und `wahlversprechen` standen seit gestern Abend im `fixer_keepalive.sh` —
+und liefen **nie**. Kein `/tmp/bilddubletten.log`, kein Eintrag im Aufseher-Log. Der Grund ist
+banal und leicht zu übersehen: **Ein laufender bash-Prozess parst seinen Schleifenrumpf einmal.**
+Wer einen Wächter einträgt, hat ihn erst nach dem nächsten Neustart des Aufsehers registriert —
+und der wird nur neu gestartet, wenn er tot ist oder sein Herzschlag kalt.
+- Der Aufseher schreibt beim Start die **Prüfsumme seines eigenen Skripts** nach
+  `/tmp/_fixer_version`; `engine_keepalive.sh` vergleicht sie mit der Repo-Fassung und startet
+  ihn bei Abweichung neu.
+- ⚠️ **Kein Zeitstempel-Vergleich.** `git reset --hard` beim Snapshot-Vorspulen erneuert die
+  mtime jeder Datei, ohne dass sich der Inhalt geändert hat — die Uhr hätte bei jedem Rückfall
+  einen Fehlalarm ausgelöst. Dieselbe Lehre wie beim Token: **ein Zeitstempel ist eine Quittung,
+  kein Nachweis.**
+
 ## 📝 317 Ratgeber — und keiner zum einzigen Wort, das Besucher bringt (2026-08-27)
 Die Trichter-Messung zeigte: **36 von 147 Suchsitzungen landen auf dem Rizinusöl-Wickel-Set.**
 Danach nachgezählt: **317 Blogartikel, 306 veröffentlicht — davon 0 zu Rizinusöl oder Wickeln.**
