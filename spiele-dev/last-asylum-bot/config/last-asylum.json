@@ -6176,8 +6176,8 @@
     {
       "name": "selbst-optimieren",
       "every": 43200,
-      "priority": 30,
-      "_zweck": "Eigene Protokolle auswerten und die Takte anpassen - siehe _selbstoptimierung.",
+      "priority": 225,
+      "_zweck": "Eigene Protokolle auswerten und die Takte anpassen - siehe _selbstoptimierung. PRIORITAET 225: liest nur die eigenen Protokolle. Mit 30 stand sie an letzter Stelle - der Bot hat seine Takte nie nachgezogen.",
       "do": [
         {
           "log": "Eigene Protokolle auswerten und Takte nachziehen"
@@ -6237,8 +6237,8 @@
       "name": "selbst-aktualisieren",
       "every": 1800,
       "at_start": false,
-      "priority": 100,
-      "_zweck": "Neue Fassung des Bots holen. Kam Code an, beendet sich der Bot - die Start-Schleife bringt ihn eine Minute spaeter mit der neuen Fassung zurueck. So braucht keine Verbesserung einen Handgriff am PC.",
+      "priority": 238,
+      "_zweck": "Neue Fassung des Bots holen. Kam Code an, beendet sich der Bot - die Start-Schleife bringt ihn eine Minute spaeter mit der neuen Fassung zurueck. So braucht keine Verbesserung einen Handgriff am PC. PRIORITAET 238: mit 100 stand die Aufgabe hinter allen langen Rundgaengen und kam praktisch nie dran - jede Verbesserung erreichte den laufenden Bot erst beim naechsten Neustart von Hand. Sie kostet ein 'git pull'. Kommt neuer Code an, steigt der Bot aus und die Startschleife hebt ihn mit der neuen Fassung wieder hoch; was kuerzlich lief, wiederholt er dank zustand.json nicht.",
       "do": [
         {
           "log": "Nach einer neuen Fassung schauen"
@@ -7088,8 +7088,8 @@
       "name": "selbstbericht",
       "every": 21600,
       "at_start": true,
-      "priority": 96,
-      "_zweck": "Nennt die fehlenden Vorlagen in der Reihenfolge, in der sie am meisten blockieren - samt der Aufgaben, die daran haengen. So sieht man im laufenden Fenster, welcher Ausschnitt am meisten bringt.",
+      "priority": 230,
+      "_zweck": "Nennt die fehlenden Vorlagen in der Reihenfolge, in der sie am meisten blockieren - samt der Aufgaben, die daran haengen. So sieht man im laufenden Fenster, welcher Ausschnitt am meisten bringt. PRIORITAET 230: kostet nichts ausser Nachdenken ueber die eigenen Zaehler und gehoert darum nicht hinter die Rundgaenge.",
       "do": [
         {
           "selbstbericht": {

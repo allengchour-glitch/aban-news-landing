@@ -418,9 +418,19 @@ class Engine:
         # zuverlaessig traf und jetzt hundertmal hintereinander danebenliegt,
         # ist veraltet - nicht fehlend. Ohne diese Zaehlung sieht das niemand:
         # der Bot ueberspringt den Schritt einfach still.
-        gesucht, traf, bestwert = self._vorlagen_zaehler.get(name, (0, 0, 0.0))
-        self._vorlagen_zaehler[name] = (gesucht + 1, traf + (1 if getroffen else 0),
-                                        max(bestwert, wert))
+        # Kleinster Treffer und groesster Fehlschlag getrennt: nur aus diesen
+        # beiden Zahlen laesst sich eine Schwelle begruenden. Liegen sie weit
+        # auseinander, steht die Schwelle sicher; beruehren sie sich, ist die
+        # Vorlage nicht trennscharf - und ein Nachjustieren waere geraten.
+        gesucht, traf, bestwert, kleinster, groesster = self._vorlagen_zaehler.get(
+            name, (0, 0, 0.0, 1.0, 0.0))
+        self._vorlagen_zaehler[name] = (
+            gesucht + 1,
+            traf + (1 if getroffen else 0),
+            max(bestwert, wert),
+            min(kleinster, wert) if getroffen else kleinster,
+            groesster if getroffen else max(groesster, wert),
+        )
         if getroffen:
             self._knapp.pop(name, None)
             return bester
@@ -1020,7 +1030,8 @@ class Engine:
         """
         grenze = int(ab if ab is not None else self.VERDACHT_AB)
         raus = []
-        for name, (gesucht, traf, bestwert) in self._vorlagen_zaehler.items():
+        for name, (gesucht, traf, bestwert, _kleinster, _groesster) in \
+                self._vorlagen_zaehler.items():
             if gesucht >= grenze and traf == 0:
                 raus.append((name, gesucht, round(bestwert, 3)))
         raus.sort(key=lambda e: -e[1])
@@ -1380,6 +1391,36 @@ class Engine:
         umgebung["GCM_INTERACTIVE"] = "never"
         return umgebung
 
+    def _schwellen_belege(self, hoechstens: int = 12) -> Dict[str, Any]:
+        """Womit sich Schwellen begruenden lassen - fuer den Blick von aussen.
+
+        `bot.py lernen` kann das aus den Protokollen ableiten, aber die liegen
+        auf dem PC und sind per .gitignore ausgeschlossen; von hier aus ist
+        also nie zu sehen, ob eine Schwelle sitzt. Und automatisch anwenden
+        darf der Bot sie nicht: `--anwenden` schreibt in die Konfiguration, und
+        eine geaenderte Datei blockiert danach jedes 'git pull --ff-only' - der
+        Bot bekaeme nie wieder eine neue Fassung.
+
+        Also nur die Belege melden: kleinster Treffer und groesster
+        Fehlschlag. Liegen sie weit auseinander, sitzt die Schwelle; beruehren
+        sie sich, ist die Vorlage nicht trennscharf.
+        """
+        raus = []
+        for name, (gesucht, traf, _best, kleinster, groesster) in self._vorlagen_zaehler.items():
+            if gesucht < 3:
+                continue
+            raus.append((gesucht, name, traf, kleinster, groesster))
+        raus.sort(key=lambda e: -e[0])
+        return {
+            name: {
+                "gesucht": gesucht,
+                "traf": traf,
+                "kleinster_treffer": round(kleinster, 3) if traf else None,
+                "groesster_fehlschlag": round(groesster, 3) if traf < gesucht else None,
+            }
+            for gesucht, name, traf, kleinster, groesster in raus[:hoechstens]
+        }
+
     @staticmethod
     def _alter_des_berichts(ziel: str) -> float:
         """Wie alt ist das Lebenszeichen wirklich - in Sekunden.
@@ -1529,6 +1570,7 @@ class Engine:
             ],
             "verworfene_vorlagen": sorted(self._verworfen),
             "verdaechtige_regeln": {k: v for k, v in self._folgenlos.items() if v >= 2},
+            "schwellen_belege": self._schwellen_belege(),
             "bild": bild_name,
         }
         try:

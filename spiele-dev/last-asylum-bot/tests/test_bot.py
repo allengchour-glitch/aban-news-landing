@@ -2501,6 +2501,30 @@ class TestLebenszeichen(unittest.TestCase):
             self.assertIn("templates/allianz/neu.png", vorgemerkt,
                           f"die Vorlage muss mitgesichert werden, vorgemerkt: {vorgemerkt!r}")
 
+    def test_bericht_liefert_die_belege_fuer_schwellen(self):
+        """Von aussen war nie zu sehen, ob eine Schwelle sitzt.
+
+        `bot.py lernen` kann das ableiten, aber nur aus den Protokollen auf dem
+        PC - und die sind per .gitignore ausgeschlossen. Selbst anwenden darf
+        der Bot die Vorschlaege nicht: das schreibt in die Konfiguration und
+        blockiert danach jedes 'git pull --ff-only'. Also die Belege melden.
+        """
+        with tempfile.TemporaryDirectory() as ordner:
+            eng = self.bau(ordner)
+            eng._vorlagen_zaehler = {
+                "ui/knopf.png": (10, 4, 0.97, 0.91, 0.62),   # sitzt: 0.91 gegen 0.62
+                "ui/selten.png": (2, 0, 0.30, 1.0, 0.30),    # zu wenig Belege
+            }
+            eng.run_actions([{"lebenszeichen": {"hochladen": False}}], "test")
+            d = json.load(open(os.path.join(ordner, "austausch", "lauf.json"),
+                               encoding="utf-8"))
+            belege = d["schwellen_belege"]
+            self.assertIn("ui/knopf.png", belege)
+            self.assertNotIn("ui/selten.png", belege,
+                             "aus zwei Vergleichen laesst sich nichts ableiten")
+            self.assertEqual(belege["ui/knopf.png"]["kleinster_treffer"], 0.91)
+            self.assertEqual(belege["ui/knopf.png"]["groesster_fehlschlag"], 0.62)
+
     def test_alter_zaehlt_nach_dem_bericht_nicht_nach_der_datei(self):
         """git schreibt beim Pull Dateien neu - die Dateizeit luegt danach.
 
@@ -2922,12 +2946,26 @@ class TestBerichtsAufgabenStehenVorn(unittest.TestCase):
             f"das Lebenszeichen (Prioritaet {melder}) darf nicht hinter langen "
             f"Sofortstart-Aufgaben stehen: {zu_hoch}")
 
-    def test_ansichten_sammeln_verhungert_nicht(self):
-        """Die Vorlagen-Sammlung kostet einen Fingerabdruck - sie darf nicht warten."""
+    # Aufgaben, die NICHT durchs Spiel laufen, sondern nur Buch fuehren oder
+    # lernen. Sie kosten Sekundenbruchteile; hinter den Rundgaengen zu stehen
+    # kostet sie dagegen Stunden.
+    BUCHFUEHRUNG = ("lebenszeichen", "ansichten-sammeln", "selbst-aktualisieren",
+                    "selbstbericht", "selbst-optimieren")
+
+    def test_buchfuehrung_verhungert_nicht(self):
+        """Billige Aufgaben hinter teuren Rundgaengen kommen praktisch nie dran.
+
+        'selbst-aktualisieren' stand auf 100 - jede Verbesserung erreichte den
+        laufenden Bot damit erst beim naechsten Neustart von Hand.
+        'selbst-optimieren' stand auf 30, also an letzter Stelle: der Bot hat
+        seine eigenen Takte nie nachgezogen, obwohl das Werkzeug dafuer da ist.
+        """
         aufg = self.aufgaben()
-        self.assertGreaterEqual(
-            aufg["ansichten-sammeln"]["priority"], 200,
-            "mit niedriger Prioritaet sammelt sie stundenlang gar nichts")
+        zu_tief = [(n, aufg[n]["priority"]) for n in self.BUCHFUEHRUNG
+                   if aufg[n]["priority"] < 200]
+        self.assertEqual(
+            zu_tief, [],
+            f"diese Aufgaben fuehren nur Buch und muessen vorn stehen: {zu_tief}")
 
 
 class TestZiffernSatzMussVollstaendigSein(unittest.TestCase):
