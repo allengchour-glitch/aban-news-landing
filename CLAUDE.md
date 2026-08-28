@@ -130,6 +130,28 @@ live belegt an 15411554910593). `automation/versandaussagen_wahrheit.py`, Ledger
   Rechtstexte gehen nur per GraphQL `shopPolicyUpdate` — und dessen Input nimmt `type`
   (`SHIPPING_POLICY`), **nicht** `id`. Ohne Live-Gegenprobe hätte der Lauf als erledigt gegolten.
 
+## ↩️ «30 Tage Rückgabe» auf Ware, die niemand zurücknehmen kann (2026-08-28)
+`templates/product.json` setzt auf **jeder** Produktseite die Trustzeile «↩️ 30 Tage Rückgabe» —
+für Lagerware richtig. Die Rückgaberichtlinie schliesst «personalisierte, individuell
+angefertigte oder nach deinen Wünschen gestaltete Artikel» aber ausdrücklich aus. Damit las
+jede Kundin, die ein T-Shirt gestaltete, eine Zusage, die für genau dieses Produkt nicht gilt —
+und erfuhr es erst nach dem Kauf. Von 30 POD-Produkten erwähnte **keines** die Ausnahme, fünf
+wiederholten die 30-Tage-Zusage sogar im eigenen Text.
+- Die globale Theme-Zeile bleibt (für normale Ware stimmt sie). Die **Ausnahme gehört dorthin,
+  wo sie gilt**: alle 30 POD-Produkte tragen jetzt einen Hinweis mit Verweis auf die Richtlinie
+  — und ausdrücklich, dass bei Druckfehlern, Beschädigung oder Falschlieferung ersetzt wird
+  (der gesetzliche Mängelanspruch bleibt, das sagt die Richtlinie selbst).
+- **Vorher zu sagen ist besser als zu überraschen.** Eine Rückgabe, die man erst an der Kasse
+  verliert, ist ein Vertrauensschaden; ein offener Satz vorher ist keiner.
+- **Nebenbefund derselben Wurzel: vier POD-Entwürfe warben mit «Gratis-Versand ab CHF 65»** —
+  der falschen Schwelle, die am 11.08. in zwölf Importern korrigiert wurde. Auf 50 gesetzt.
+**Lehre, heute zum zweiten Mal: Die POD-Ware fällt durch JEDES Raster.** Doppelblock, falsche
+Flagge, USA-Lieferzusage, CHF-65-Schwelle, fehlende Rückgabe-Ausnahme — fünf Fehlerklassen, alle
+in früheren Läufen shopweit behoben, alle bei den 30 POD-Produkten stehengeblieben, weil die
+Läufe auf `tag:cj-real` und einen Voll-Export zielten. **Wer eine Klasse shopweit repariert,
+prüft danach die Ware, die anders getaggt ist** — hier ausgerechnet die einzige mit belegter
+Suchnachfrage. Alles live gegengeprüft, Pflicht-QA dreimal: 30 Editor-Produkte, 0 Befunde.
+
 ## 🇭🇷 Die bestrankende Seite trug die KROATISCHE Flagge (2026-08-28)
 Nachdem die Suchdaten die POD-Produkte als einziges rankendes Gut ausgewiesen hatten, habe ich
 die Seite gelesen wie eine Kundin — und drei Fehler gefunden, die dort seit Monaten stehen:
