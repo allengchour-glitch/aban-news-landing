@@ -2160,3 +2160,45 @@ Straßenbelegung damit von rund 239 auf 155 gefallen.
 gestreute Objekte bleiben ungeschützt. Das ist der Rest, den das Werkzeug weiter findet.
 
 **Verifiziert:** 7 Viertel auf Stufe 2 · `th-netz` 38 ok · `th-3d` 58.
+
+## 2026-08-28 · 🚡 Die Seilbahn-Bergstation schwebte in 40 m Höhe über dem Nichts
+
+Gefunden von einem Agenten-Fan-out (48 Sucher, 51 davon am Nutzungslimit gestorben — **ein
+einziger** kam durch und meldete genau das hier). Nachgerechnet und gemessen, nicht geglaubt.
+
+`QSPERR` hält zufällige Berge aus den Vierteln. **Berg 5 ist aber kein zufälliger:** überall im
+Code eigens behandelt — fester Radius r = 213, feste Höhe 75, fester Fußradius 51,75, eigenes
+Flag an `bergGeo()`. Auf ihm steht die **Bergstation der Seilbahn**.
+
+Die Sportpark-Sperrzone `[0, 216, 110, 60]` erwischt ihn trotzdem:
+
+```
+|121,4 − 0|   = 121,4 < 110 + 51,75·0,9 = 156,6   ✔
+|175 − 216|   =    41 <  60 + 46,6      = 106,6   ✔   → continue
+```
+
+**Gemessen vorher:** kein Gelände bei (121|175), kein Gelände unter der Station, Bergstation auf
+**y 40,3 … 49,8** — sie hing in der Luft. Nächstes Gelände 76 m entfernt und 5 m hoch.
+
+**Nachher:** Hausberg steht (121|175, 69 m), `imBerg` unter der Station **true**.
+
+### Der Preis, offen benannt
+Die Berge entstehen **vor** den Vierteln, also weichen die Viertel dem neuen Berg aus:
+
+| | vorher | nachher |
+|---|---|---|
+| Sportpark Süd | 0\|246 | **−14\|250** |
+| Vergnügungsviertel | 160\|220 | **250\|220** |
+| `th-strassen` Gesamt | 155 | **182** |
+
+Die +27 sind 15 Baumkronen auf der Parkstraße und **15× `th19_kletterhalle`** — eine
+Sportpark-Halle, die durch den Umzug auf den Freizeitpark-Anschluss geriet. Das ist dieselbe
+Klasse wie die Eishalle in #2356 (Anschluss kreuzt die Bauzeile des Nachbarn), nur stärker.
+
+**Ein Gebäude, das 40 m über dem Boden schwebt, wiegt schwerer als Streuwerk am Straßenrand.**
+Wer den Berg wieder sperrt, holt die Station in die Luft zurück.
+
+⚠️ `th-viertel.mjs` meldet den Sportpark seither als „nicht auf Stufe 2: Viertel Freizeitpark".
+Das ist das dokumentierte Artefakt des Werkzeugs: es prüft gegen **alle** Viertel, der Sportpark
+wurde aber **vor** dem Freizeitpark gesetzt. Alle sieben bleiben per GPS erreichbar (`th-netz`
+39 ok).
