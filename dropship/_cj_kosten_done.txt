@@ -3437,3 +3437,42 @@ gid://shopify/Product/15448666997121	CHF 80.39	4 Varianten	Eleganter Doubleface-
 gid://shopify/Product/15448667029889	CHF 19.78	15 Varianten	Mid-langer Wollmantel für Herbst & Winter
 gid://shopify/Product/15448667062657	CHF 27.62	15 Varianten	Chenille Wollmantel mit schmaler Passform
 gid://shopify/Product/15448667160961	CHF 49.16	3 Varianten	Langer Mantel mit Reverskragen und Schlitz
+gid://shopify/Product/15448671814017	CHF 23.06	5 Varianten	Damen Freizeit-Baumwolljacke mit Knöpfen
+gid://shopify/Product/15448671945089	CHF 27.83	48 Varianten	Leichter Daunenmantel mit Kapuze
+gid://shopify/Product/15448672043393	CHF 23.20	25 Varianten	Gefütterte Damen-Pufferjacke mit Kapuze
+gid://shopify/Product/15448672076161	CHF 29.17	15 Varianten	Damen Steppjacke mit grossem Fellkragen
+gid://shopify/Product/15448672108929	CHF 19.21	18 Varianten	Leichte Steppjacke mit Stehkragen für Damen
+gid://shopify/Product/15448672141697	CHF 30.06	3 Varianten	Gerippte Baumwoll-Steppjacke im Street-Style
+gid://shopify/Product/15448672174465	CHF 25.15	20 Varianten	Gefütterter Baumwollmantel mit Prinzessinnenärmeln
+gid://shopify/Product/15448672207233	CHF 50.52	3 Varianten	Strickjacke mit Kapuze
+gid://shopify/Product/15448672240001	CHF 20.53	42 Varianten	Kurze, locker geschnittene Daunenbaumwolljacke
+gid://shopify/Product/15448672305537	CHF 30.71	48 Varianten	Gefütterter Kapuzen-Cardigan, mittellang
+gid://shopify/Product/15448672371073	CHF 24.41	3 Varianten	Gepolsterte Baumwolljacke mit Rundhals
+gid://shopify/Product/15448672403841	CHF 20.63	24 Varianten	Kurze, locker geschnittene Damen-Steppjacke
+gid://shopify/Product/15448672469377	CHF 26.92	20 Varianten	Gefütterter Damen-Mantel im Slim-Fit
+gid://shopify/Product/15448672534913	CHF 31.87	12 Varianten	Gefütterter Wintermantel für Damen
+gid://shopify/Product/15448672633217	CHF 19.51	12 Varianten	Gepolsterte Weste für Damen
+gid://shopify/Product/15448672665985	CHF 31.20	25 Varianten	Gefütterter Damen-Mantel mit grossem Kunstfellkrag
+gid://shopify/Product/15448672731521	CHF 27.42	1 Varianten	Warme Damen-Steppjacke im japanischen Stil
+gid://shopify/Product/15448672764289	CHF 27.42	1 Varianten	Warme Haori Jacke im japanischen Stil
+gid://shopify/Product/15448672797057	CHF 20.67	3 Varianten	Gefütterte Damenjacke mit Blumenmuster
+gid://shopify/Product/15448672829825	CHF 20.82	30 Varianten	Gepolsterte Langarm-Baumwolljacke mit Rundhals
+gid://shopify/Product/15448672862593	CHF 29.25	42 Varianten	Gefütterte Herrenjacke mit Stehkragen
+gid://shopify/Product/15448672895361	CHF 22.72	12 Varianten	Kurze Kapuzenjacke mit Polyester-Füllung
+gid://shopify/Product/15448672928129	CHF 20.22	60 Varianten	Vielseitige, schlankmachende Wattierte Jacke
+gid://shopify/Product/15448672993665	CHF 29.78	72 Varianten	Leichte Daunenjacke für Herbst und Winter
+gid://shopify/Product/15448673026433	CHF 41.59	3 Varianten	Gefütterte Jeansjacke mit Fleece-Futter
+gid://shopify/Product/15448673059201	CHF 22.76	18 Varianten	Gefütterte Damen-Freizeitjacke mit langen Ärmeln
+gid://shopify/Product/15448673157505	CHF 55.36	34 Varianten	Kurze Daunenjacke für Damen
+gid://shopify/Product/15448673288577	CHF 19.51	15 Varianten	Gefütterter Coral Fleece Loungewear-Hoodie
+gid://shopify/Product/15448673419649	CHF 29.62	12 Varianten	Kurze, locker geschnittene Pufferjacke
+gid://shopify/Product/15448673550721	CHF 23.95	48 Varianten	Damen-Steppjacke mit Rautenmuster
+gid://shopify/Product/15448673616257	CHF 23.66	15 Varianten	Gepolsterte Baumwolljacke für den Winter
+gid://shopify/Product/15448673649025	CHF 32.58	7 Varianten	Gefütterter Kapuzenmantel – schlicht & vielseitig
+gid://shopify/Product/15448673681793	CHF 33.12	4 Varianten	Gefütterte Baumwolljacke für Damen
+gid://shopify/Product/15448673747329	CHF 20.60	20 Varianten	Gepolsterte Baumwolljacke mit Blumenmuster
+gid://shopify/Product/15448673812865	CHF 82.01	6 Varianten	Gefütterter Daunenmantel mit Kapuze
+gid://shopify/Product/15448673845633	CHF 18.77	6 Varianten	Kurze Daunenjacke für Damen – Kaffeebraun
+gid://shopify/Product/15448673878401	CHF 22.50	16 Varianten	Kurze Thermo-Steppjacke für Damen
+gid://shopify/Product/15448673943937	CHF 20.53	36 Varianten	Damen Daunen-Baumwollweste
+gid://shopify/Product/15448673976705	CHF 55.15	30 Varianten	Kurze Daunenjacke mit Kapuze
