@@ -1,0 +1,32 @@
+﻿# Der Bot-Lauf ist beendet. Steht hier ein frischer Zeitpunkt,
+# laeuft der Bot NICHT mehr.
+zeit:      2026-08-28 17:19:39
+rechner:   MSI
+rueckgabe: 2
+
+# letzte Protokollzeilen:
+{"ts": 1787930250.9959562, "level": "info", "msg": "Selbst vermessene Vorlagen", "vorlagen": "events/spezielles_event.png=1.2, events/wertvolles_event.png=0.9, hud/bubble_holz.png=1.3, nav/burg.png=1.3, nav/lupe.png=1.3, tasche/truhe.png=1.3, ui/btn_abholen.png=1.08, ui/btn_abholen_orange.png=0.66, ui/btn_benutzen.png=1.34, ui/close_x_hell.png=0.45, zuflucht/kraut.png=0.55"}
+{"ts": 1787930256.004673, "ev": "vergleich", "template": "ui/ladebildschirm.png", "score": 0.0703, "schwelle": 0.8, "treffer": false}
+{"ts": 1787930256.6728344, "ev": "vergleich", "template": "ui/btn_abholen_orange.png", "score": 0.2086, "schwelle": 0.85, "treffer": false}
+{"ts": 1787930257.3126926, "ev": "vergleich", "template": "ui/btn_abholen.png", "score": 0.2648, "schwelle": 0.85, "treffer": false}
+{"ts": 1787930257.574798, "ev": "vergleich", "template": "ui/popup_close.png", "score": 0.331, "schwelle": 0.86, "treffer": false}
+{"ts": 1787930257.9598331, "ev": "vergleich", "template": "ui/close_x_hell.png", "score": 0.4011, "schwelle": 0.86, "treffer": false}
+{"ts": 1787930257.9617205, "level": "info", "msg": "â–¶ Aufgabe: kalibrieren"}
+{"ts": 1787930257.9619772, "level": "info", "msg": "Groesse der Oberflaeche pruefen", "quelle": "Aufgabe 'kalibrieren'"}
+{"ts": 1787930275.8890984, "level": "info", "msg": "Kalibrierung: zu wenig Belege im Bild - spaeter erneut", "belege": 0, "noetig": 3}
+{"ts": 1787930275.8894093, "ev": "aufgabe", "aufgabe": "kalibrieren", "tipps": 0}
+{"ts": 1787930282.501472, "ev": "vergleich", "template": "ui/ladebildschirm.png", "score": 0.315, "schwelle": 0.8, "treffer": false}
+{"ts": 1787930283.2499034, "ev": "vergleich", "template": "ui/btn_abholen_orange.png", "score": 0.2269, "schwelle": 0.85, "treffer": false}
+{"ts": 1787930283.977461, "ev": "vergleich", "template": "ui/btn_abholen.png", "score": 0.2618, "schwelle": 0.85, "treffer": false}
+{"ts": 1787930284.2144713, "ev": "vergleich", "template": "ui/popup_close.png", "score": 0.4777, "schwelle": 0.86, "treffer": false}
+{"ts": 1787930284.7209184, "ev": "vergleich", "template": "ui/close_x_hell.png", "score": 0.597, "schwelle": 0.86, "treffer": false}
+{"ts": 1787930284.7235277, "level": "info", "msg": "â–¶ Aufgabe: lebenszeichen"}
+{"ts": 1787930296.2032285, "ev": "aufgabe", "aufgabe": "lebenszeichen", "tipps": 0}
+{"ts": 1787930302.1585333, "ev": "vergleich", "template": "ui/ladebildschirm.png", "score": 0.315, "schwelle": 0.8, "treffer": false}
+{"ts": 1787930319.0168707, "ev": "vergleich", "template": "ui/btn_abholen_orange.png", "score": 0.2145, "schwelle": 0.85, "treffer": false}
+{"ts": 1787930327.2206268, "ev": "vergleich", "template": "ui/btn_abholen.png", "score": 0.2618, "schwelle": 0.85, "treffer": false}
+{"ts": 1787930342.2518044, "ev": "vergleich", "template": "ui/popup_close.png", "score": 0.4777, "schwelle": 0.86, "treffer": false}
+{"ts": 1787930356.8503988, "ev": "vergleich", "template": "ui/close_x_hell.png", "score": 0.597, "schwelle": 0.86, "treffer": false}
+{"ts": 1787930371.2452195, "level": "info", "msg": "â–¶ Aufgabe: ansichten-sammeln"}
+{"ts": 1787930372.290048, "level": "info", "msg": "Neue Ansicht abgelegt (4/60)", "datei": "04-09090909.png"}
+{"ts": 1787930376.7679648, "ev": "aufgabe", "aufgabe": "ansichten-sammeln", "tipps": 0}
