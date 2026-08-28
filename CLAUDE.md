@@ -130,6 +130,37 @@ live belegt an 15411554910593). `automation/versandaussagen_wahrheit.py`, Ledger
   Rechtstexte gehen nur per GraphQL `shopPolicyUpdate` — und dessen Input nimmt `type`
   (`SHIPPING_POLICY`), **nicht** `id`. Ohne Live-Gegenprobe hätte der Lauf als erledigt gegolten.
 
+## 🔐 Tresor: Zugangsdaten überleben den Rewind jetzt (2026-08-28)
+**Die Einsicht, die das löst:** Nicht `/tmp` ist das Problem — es ist der Zeitpunkt. Der Snapshot
+steht auf dem 24.08. 15:36; eine Datei von DAVOR überlebt jeden Rückfall (deshalb ist
+`/tmp/secrets_env.sh` vom 02.08. noch da), alles DANACH ist weg. Die Judge.me-Token vom 28.08.
+waren binnen Stunden verschwunden, und der tägliche Bewertungs-Import endete als No-op. Eine neue
+Datei in /tmp anzulegen hilft also grundsätzlich nicht — es braucht einen Ort ausserhalb der Platte.
+`automation/tresor.py` legt sie in ein **Shop-Metafeld** (`ls_tresor`). Das liegt bei Shopify,
+überlebt Rewind und Container-Wechsel, und ins öffentliche Repo kommt nichts.
+- **Die Definition ist ausdrücklich mit `access:{storefront:NONE}` angelegt** — von der API
+  bestätigt zurückgemeldet, nicht bloss als Standard angenommen. `metafieldStorefrontVisibilities`
+  gibt es in 2024-10 nicht mehr; Storefront-Zugriff läuft über die Definition.
+- Der Aufseher legt `/tmp/judgeme.env` daraus zurück, sobald sie fehlt. Kreislauf geprüft: Datei
+  gelöscht → wiederhergestellt → Judge.me antwortet (1'193 Bewertungen).
+- `env` legt die Datei mit `os.open(..., 0o600)` an, BEVOR geschrieben wird — sonst stünde der
+  Inhalt einen Moment mit Standardrechten da.
+- ⚠️ **Das ist kein Passwortmanager.** Es schützt gegen Datenverlust, nicht gegen jemanden, der
+  schon Shop-Admin ist — der käme ohnehin an dieselben Daten.
+- ⚠️ Beim Aufräumen: die Mutation heisst `metafieldsDelete(metafields:[MetafieldIdentifierInput!])`.
+  `metafieldDelete` und `MetafieldsDeleteInput` gibt es nicht.
+
+**Was sich damit NICHT lösen liess, belegt statt vermutet:**
+- **Judge.me-Einstellungen:** zehn Sondierungen (`settings/update`, `blocklists`,
+  `request_scheduling`, PUT/PATCH/POST auf `/settings` …) — **alle 404**. Die öffentliche API hat
+  keinen Schreib-Endpunkt. Bleibt ein Klick.
+- **Klaviyo `website_url`:** der Konnektor bietet Lese-Endpunkte und `update_email_template`, aber
+  keinen für die Konto-Kontaktdaten. Bleibt ein Klick — und es ist die QUELLE der toten Domain.
+- **Google Merchant, TikTok-Review:** kein Konnektor bzw. Anmeldung nötig.
+**Regel daraus: «Nur der Betreiber kann das» ist eine Behauptung, die man erst nach einem Versuch
+aufstellen darf** — bei Klaviyo hat sie eine Woche gekostet (der Konnektor war die ganze Zeit
+aktiv). Bei Judge.me stimmt sie, aber jetzt mit zehn Belegen statt einem Gefühl.
+
 ## 📧 Klaviyo ist von HIER aus erreichbar — 31 Vorlagen zeigten auf die tote Domain (2026-08-28)
 Der Eintrag vom 21.08. sagt, nur der Betreiber könne die Klaviyo-Sache lösen, weil «der Konnektor
 eine Anmeldung verlangt». **Das war falsch, und es hat eine Woche gekostet.** Der Klaviyo-Konnektor
