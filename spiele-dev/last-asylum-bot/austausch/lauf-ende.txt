@@ -1,0 +1,32 @@
+﻿# Der Bot-Lauf ist beendet. Steht hier ein frischer Zeitpunkt,
+# laeuft der Bot NICHT mehr.
+zeit:      2026-08-28 21:21:02
+rechner:   MSI
+rueckgabe: 1
+
+# letzte Protokollzeilen:
+{"ts": 1787944786.262264, "level": "info", "msg": "Gelerntes uebernommen", "datei": "gelernt.json", "groessen": 12, "takte": 0}
+{"ts": 1787944792.0146213, "level": "info", "msg": "Startbild abgelegt", "datei": "shots\\20260828-211951-start.png"}
+{"ts": 1787944792.0165033, "level": "info", "msg": "Selbst vermessene Vorlagen", "vorlagen": "events/spezielles_event.png=1.2, events/wertvolles_event.png=0.9, hud/bubble_holz.png=1.3, nav/burg.png=1.3, nav/held.png=1, nav/lupe.png=1.3, tasche/truhe.png=1.3, ui/btn_abholen.png=1.08, ui/btn_abholen_orange.png=0.66, ui/btn_benutzen.png=1.34, ui/close_x_hell.png=0.45, zuflucht/kraut.png=0.55"}
+{"ts": 1787944795.6673923, "ev": "vergleich", "template": "ui/ladebildschirm.png", "score": 0.315, "schwelle": 0.8, "treffer": false}
+{"ts": 1787944796.3844404, "ev": "vergleich", "template": "ui/btn_abholen_orange.png", "score": 0.2083, "schwelle": 0.85, "treffer": false}
+{"ts": 1787944797.1221797, "ev": "vergleich", "template": "ui/btn_abholen.png", "score": 0.2618, "schwelle": 0.85, "treffer": false}
+{"ts": 1787944797.3991601, "ev": "vergleich", "template": "ui/popup_close.png", "score": 0.4777, "schwelle": 0.86, "treffer": false}
+{"ts": 1787944797.9290638, "ev": "vergleich", "template": "ui/close_x_hell.png", "score": 0.597, "schwelle": 0.86, "treffer": false}
+{"ts": 1787944797.931323, "level": "info", "msg": "â–¶ Aufgabe: ansichten-sammeln"}
+{"ts": 1787944798.0891392, "ev": "aufgabe", "aufgabe": "ansichten-sammeln", "tipps": 0}
+{"ts": 1787944802.6799104, "ev": "vergleich", "template": "ui/ladebildschirm.png", "score": 0.315, "schwelle": 0.8, "treffer": false}
+{"ts": 1787944803.3614624, "ev": "vergleich", "template": "ui/btn_abholen_orange.png", "score": 0.2083, "schwelle": 0.85, "treffer": false}
+{"ts": 1787944804.0768218, "ev": "vergleich", "template": "ui/btn_abholen.png", "score": 0.2618, "schwelle": 0.85, "treffer": false}
+{"ts": 1787944804.3706694, "ev": "vergleich", "template": "ui/popup_close.png", "score": 0.4777, "schwelle": 0.86, "treffer": false}
+{"ts": 1787944804.9683707, "ev": "vergleich", "template": "ui/close_x_hell.png", "score": 0.597, "schwelle": 0.86, "treffer": false}
+{"ts": 1787944804.9715712, "level": "info", "msg": "â–¶ Aufgabe: spiel-im-vordergrund"}
+{"ts": 1787944806.9954355, "level": "info", "msg": "Spiel ist nicht im Vordergrund - wird gestartet", "quelle": "Aufgabe 'spiel-im-vordergrund'>sonst"}
+{"ts": 1787944808.561932, "level": "info", "msg": "App gestartet", "paket": "com.phs.global"}
+{"ts": 1787944820.6084428, "level": "error", "msg": "Der Bildschirm kommt LEER an - der Bot sieht nichts. Bei BlueStacks: Einstellungen -> Grafik -> Renderer auf DirectX bzw. OpenGL umstellen und 'Erweiterter Grafikmodus' ausschalten, dann neu starten. Pruefen mit: bot.py capture -o shots\\test.png"}
+{"ts": 1787944821.6034424, "ev": "vergleich", "template": "ui/ladebildschirm.png", "score": -1.0, "schwelle": 0.8, "treffer": false}
+{"ts": 1787944830.8997307, "ev": "vergleich", "template": "ui/btn_abholen_orange.png", "score": -1.0, "schwelle": 0.85, "treffer": false}
+{"ts": 1787944839.6647708, "ev": "vergleich", "template": "ui/btn_abholen.png", "score": -1.0, "schwelle": 0.85, "treffer": false}
+{"ts": 1787944849.0156987, "ev": "vergleich", "template": "ui/popup_close.png", "score": -1.0, "schwelle": 0.86, "treffer": false}
+{"ts": 1787944857.5049016, "ev": "aufgabe", "aufgabe": "spiel-im-vordergrund", "tipps": 0}
+{"ts": 1787944861.6796274, "ev": "vergleich", "template": "ui/ladebildschirm.png", "score": 0.0652, "schwelle": 0.8, "treffer": false}
