@@ -3541,3 +3541,69 @@ gid://shopify/Product/15448704811393	CHF 22.32	3 Varianten	Warmer Strick-Cardiga
 gid://shopify/Product/15448704844161	CHF 22.42	10 Varianten	Langarm-Pullover mit Bindedetail
 gid://shopify/Product/15448704909697	CHF 20.67	1 Varianten	Gestreifter Strickpullover mit weiten Ärmeln
 gid://shopify/Product/15448705040769	CHF 30.80	30 Varianten	Lässiger Pullover mit extra-langen Ärmeln
+gid://shopify/Product/15448705171841	CHF 21.12	15 Varianten	Gestrickter Rollkragen-Pullover im American Style
+gid://shopify/Product/15448705728897	CHF 21.55	32 Varianten	Damen Strickpullover mit Rundhals und langen Ärmel
+gid://shopify/Product/15448705827201	CHF 21.71	63 Varianten	Damen Rollkragenpullover – Locker & Vielseitig
+gid://shopify/Product/15448705859969	CHF 20.22	3 Varianten	Colorblock Pullover Strickpullover für Damen
+gid://shopify/Product/15448705958273	CHF 23.47	3 Varianten	Gestreifter Retro-Pullover mit Rundhals
+gid://shopify/Product/15448706154881	CHF 21.68	3 Varianten	Gestreifter Strickpullover für Damen
+gid://shopify/Product/15448706384257	CHF 23.04	3 Varianten	Colorblock Pullover mit Rundhals
+gid://shopify/Product/15448706515329	CHF 22.32	6 Varianten	Vintage Strick-Cardigan für Damen
+gid://shopify/Product/15448706613633	CHF 22.16	18 Varianten	Loose-knit Pullover mit V-Ausschnitt
+gid://shopify/Product/15448706679169	CHF 23.50	36 Varianten	Strick-Cardigan mit Rundhalsausschnitt
+gid://shopify/Product/15448706744705	CHF 21.27	4 Varianten	Pullover mit Color Blocking für Damen
+gid://shopify/Product/15448706941313	CHF 19.23	20 Varianten	Strick-Cardigan für Damen – Weiss
+gid://shopify/Product/15448707170689	CHF 27.00	19 Varianten	Vintage Langarm-Top im japanischen Stil
+gid://shopify/Product/15448707367297	CHF 20.97	8 Varianten	Vintage Pullover im koreanischen Stil
+gid://shopify/Product/15448707596673	CHF 21.42	8 Varianten	Ombre Colorblock Strickpullover für Damen
+gid://shopify/Product/15448707727745	CHF 23.93	32 Varianten	Strickpullover aus Merinowolle
+gid://shopify/Product/15448707760513	CHF 22.91	9 Varianten	Gehäkelter Floral-Pullover mit Farbblöcken
+gid://shopify/Product/15448707858817	CHF 17.94	10 Varianten	Dünner Strick-Cardigan mit Bischofsärmeln
+gid://shopify/Product/15448709923201	CHF 22.15	6 Varianten	Damen Jeansrock mit Knopfleiste
+gid://shopify/Product/15448710087041	CHF 19.90	12 Varianten	Utility-Maxirock mit Kordelzug für den Sommer
+gid://shopify/Product/15448710185345	CHF 24.22	11 Varianten	Leichter Sonnen-Schutzrock mit Schlitz
+gid://shopify/Product/15448710349185	CHF 21.53	6 Varianten	A-Linien Jeanskleid mit Knopfleiste
+gid://shopify/Product/15448710447489	CHF 22.45	20 Varianten	Faltiger Yoga- und Sportrock im Zweiteiler-Look
+gid://shopify/Product/15448710513025	CHF 19.23	6 Varianten	Eleganter Business-Bleistiftrock mit Polka Dots
+gid://shopify/Product/15448710545793	CHF 18.65	95 Varianten	Boho-A-Linien-Rock mit hoher Taille
+gid://shopify/Product/15448710578561	CHF 30.41	4 Varianten	Pailletten-Quasten-Rock in Olivgrün
+gid://shopify/Product/15448710676865	CHF 18.58	18 Varianten	Asymmetrischer Midi-Rock mit Rüschen
+gid://shopify/Product/15448710742401	CHF 20.82	8 Varianten	Eleganter Bodycon Maxirock für den Sommer
+gid://shopify/Product/15448710775169	CHF 22.76	16 Varianten	Elegantes asymmetrisches Maxikleid mit Polka Dots
+gid://shopify/Product/15448710840705	CHF 18.47	12 Varianten	Vielseitiger High-Waist Yoga-Sportrock
+gid://shopify/Product/15448710873473	CHF 19.53	66 Varianten	High-Waist Tennisrock für Yoga & Fitness
+gid://shopify/Product/15448710971777	CHF 18.77	42 Varianten	Atmungsaktiver floraler Sommerrock
+gid://shopify/Product/15448711004545	CHF 21.42	4 Varianten	Maxirock mit Rüschen und Print
+gid://shopify/Product/15448711070081	CHF 22.16	3 Varianten	Mehrstufiger Tüllrock mit Perlen und Print
+gid://shopify/Product/15448711201153	CHF 19.23	20 Varianten	Langes A-Linien Abendkleid aus Modal
+gid://shopify/Product/15448711299457	CHF 19.23	25 Varianten	Eleganter Satin-Fishtail-Rock mit hoher Taille
+gid://shopify/Product/15448711332225	CHF 18.91	8 Varianten	Patchwork Twill A-Linien Rock
+gid://shopify/Product/15448711397761	CHF 19.50	4 Varianten	A-Linien Maxirock mit hoher Taille und Spitze
+gid://shopify/Product/15448711528833	CHF 26.20	28 Varianten	Plissierter Chiffon-Rock für Damen
+gid://shopify/Product/15448711692673	CHF 20.22	30 Varianten	Retro Minirock aus Wildlederimitat mit Quasten
+gid://shopify/Product/15448711889281	CHF 20.12	18 Varianten	V-Ausschnitt Kleid mit Leo-Print
+gid://shopify/Product/15448712020353	CHF 22.91	35 Varianten	Midi-Jupe mit Volants im Casual-Stil
+gid://shopify/Product/15448712184193	CHF 23.66	24 Varianten	Langer Bodycon-Jeansrock mit Spitze
+gid://shopify/Product/15448712249729	CHF 25.15	1 Varianten	Weisser Midirock mit Lochstickerei
+gid://shopify/Product/15448712282497	CHF 21.97	6 Varianten	Asymmetrischer Maxirock mit Blumenprint
+gid://shopify/Product/15448712380801	CHF 20.22	25 Varianten	Elegante Straight Flare Hose mit hoher Taille
+gid://shopify/Product/15448712413569	CHF 23.95	25 Varianten	Locker geschnittenes Langarmhemd aus Baumwolle
+gid://shopify/Product/15448712446337	CHF 19.53	54 Varianten	Freizeit-Langarmshirt mit Reverskragen
+gid://shopify/Product/15448712577409	CHF 21.27	10 Varianten	Kurzarmhemd mit Farbblock-Design
+gid://shopify/Product/15448712642945	CHF 22.61	96 Varianten	Herren Kurzarm Oxford Hemd aus Baumwolle
+gid://shopify/Product/15448712675713	CHF 18.92	72 Varianten	Luftiges Ombre Kurzarmhemd im Resort-Stil
+gid://shopify/Product/15448712741249	CHF 27.06	16 Varianten	Freizeit-Übergangsjacke für Herren
+gid://shopify/Product/15448712774017	CHF 19.37	35 Varianten	Freizeitjacke für Frühling und Herbst
+gid://shopify/Product/15448712839553	CHF 31.42	12 Varianten	Leinenhemd im Old-Money-Stil
+gid://shopify/Product/15448712872321	CHF 23.36	20 Varianten	Vielseitiges Kurzarmhemd für Herren
+gid://shopify/Product/15448713003393	CHF 21.38	25 Varianten	Herren Langarmhemd mit Mandarin Kragen
+gid://shopify/Product/15448713101697	CHF 20.22	36 Varianten	Herren Freizeithemd mit Revers
+gid://shopify/Product/15448713200001	CHF 20.08	12 Varianten	Gestreiftes Langarmhemd mit Reverskragen
+gid://shopify/Product/15448713232769	CHF 19.78	42 Varianten	Kurzarm-Freizeithemd aus Leinenmix
+gid://shopify/Product/15448713363841	CHF 19.08	36 Varianten	Herren Polo-Shirt Kurzarm Heavyweight
+gid://shopify/Product/15448713494913	CHF 18.47	5 Varianten	Gestreiftes Kurzarmhemd für Herren
+gid://shopify/Product/15448713625985	CHF 22.76	20 Varianten	Gestreiftes Kurzarmhemd für Herren – Schwarz
+gid://shopify/Product/15448713724289	CHF 21.27	48 Varianten	Herren Langarmhemd Casual – diverse Farben
+gid://shopify/Product/15448713757057	CHF 20.67	6 Varianten	Herren Langarmhemd mit Kubakragen
+gid://shopify/Product/15448713822593	CHF 22.45	21 Varianten	Business Hemd Langarm Slim-Fit Gestreift
+gid://shopify/Product/15448713855361	CHF 22.32	16 Varianten	Herren Strickjacke Kurzarm Gestreift
