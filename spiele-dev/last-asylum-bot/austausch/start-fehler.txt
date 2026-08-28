@@ -1,0 +1,5 @@
+﻿# Der Start ist abgebrochen. Diese Datei sagt wo.
+zeit:   2026-08-28 21:22:23
+rechner: MSI
+grund:  Konfiguration ist fehlerhaft
+hinweis: bot.py check meldet einen Fehler
