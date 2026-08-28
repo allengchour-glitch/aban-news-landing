@@ -130,6 +130,27 @@ live belegt an 15411554910593). `automation/versandaussagen_wahrheit.py`, Ledger
   Rechtstexte gehen nur per GraphQL `shopPolicyUpdate` — und dessen Input nimmt `type`
   (`SHIPPING_POLICY`), **nicht** `id`. Ohne Live-Gegenprobe hätte der Lauf als erledigt gegolten.
 
+## ⏱️ Den Aufseher-Start abschneiden heisst, ihn zu töten (2026-08-28)
+Ich habe `engine_keepalive.sh` in `timeout 150` gewickelt — der Routine-Text sagt, es soll
+schlicht laufen. Als der `git fetch` davor einmal langsam war, lief die Zeit ab, das ganze
+Prozessbündel bekam SIGTERM, und gemessen standen danach **0 Aufseher und 0 CJ-Runner**. Das
+Skript war mitten in der Arbeit: Der alte Aufseher war schon abgeräumt, die Runner noch nicht
+gestartet — es hatte die Zeile «STAND: …» nie erreicht. Ein Abbruch trifft dieses Skript also
+im denkbar schlechtesten Moment, weil es zuerst aufräumt und erst danach startet.
+**Regel: `engine_keepalive.sh` NIE in ein kurzes `timeout` wickeln.** Wenn ein Zeitlimit sein
+muss, gehört es an das Werkzeug (Bash-`timeout`-Parameter, mehrere Minuten), nicht in die
+Kommandozeile. Ein Wächter, den man beim Aufräumen unterbricht, hinterlässt weniger als er
+vorfand.
+⚠️ Und die Selbstkorrektur dazu: Ich hatte im Zyklus davor angekündigt nachzusehen, «warum der
+Vorgänger so lange zum Sterben braucht». Diese Frage war falsch gestellt — die Meldungen
+«AUFSEHER-Ersatz ausgestiegen — Versuch 2/3» stammen aus Läufen, deren Beleg nicht mehr
+existiert (siehe nächster Absatz). Belegt ist nur der Abbruch-Schaden.
+⚠️ **`/tmp/fixer_keepalive.log` liegt auf der Platte, die zurückgedreht wird.** Nach dem Rewind
+springt es von 24.08. 15:26 direkt auf heute — alle Startbanner und Todesursachen dazwischen
+sind weg. Eine Fehlersuche über einen Rewind hinweg ist damit unmöglich, und ein Log, das
+lückenlos aussieht, kann trotzdem Tage verloren haben. Wer aus diesem Log schliesst, prüft
+zuerst, ob ein Zeitsprung darin steht.
+
 ## 🔗 Die Ratgeber verlinken auf Produkte — die Produkte auf nichts (2026-08-28)
 Gemessen an den Landeseiten der letzten 30 Tage ist die **zweitgrösste Landeseite des ganzen
 Shops eine Produktseite**: `/products/rizinusol-wickel-set-mit-bio-ol-323457` mit **43 von 391

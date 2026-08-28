@@ -4512,3 +4512,8 @@ gid://shopify/Product/15448910365057	CHF 20.22	1 Varianten	Quadratische Digitalu
 gid://shopify/Product/15448910397825	CHF 19.53	1 Varianten	Leichte, wasserdichte Sportuhr mit Leuchtanzeige
 gid://shopify/Product/15448910496129	CHF 26.79	1 Varianten	Trendige Herrenuhr aus Legierung
 gid://shopify/Product/15448910594433	CHF 20.53	1 Varianten	Herren Armbanduhr – Stilvoll & Vielseitig
+gid://shopify/Product/15448910659969	CHF 22.76	1 Varianten	Multifunktionale Sportuhr im Tonneau-Design
+gid://shopify/Product/15448910725505	CHF 18.32	1 Varianten	Partneruhr im Casual-Stil
+gid://shopify/Product/15448910791041	CHF 19.78	1 Varianten	Keramik-Damenuhr mit minimalistischem Design
+gid://shopify/Product/15448910856577	CHF 19.78	4 Varianten	Wasserdichte Outdoor-Sportuhr mit Leuchtfunktion
+gid://shopify/Product/15448910889345	CHF 18.47	8 Varianten	Multifunktionale Sportuhr für Studierende
