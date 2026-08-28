@@ -1,66 +1,19 @@
 {
-  "ts": "2026-08-27T23:28:05.725Z",
+  "ts": "2026-08-28T17:28:08.197Z",
   "platforms": {
     "tiktok": {
       "result": "SOUND_DIAG",
       "reason": "Sound-Panel-Screenshots erstellt",
       "file": "mw-statement-ohrringe-onyx-geom.mp4",
-      "vor_min": 90859
+      "vor_min": 91939
     },
     "campaign": {
       "result": "WIZARD_DIAG",
-      "vor_min": 89700
+      "vor_min": 90780
     },
     "meta": {
-      "index": 14,
-      "item": "Das gibt es so kaum in der Schweiz 🇨🇭 Leinen-Set «Lino»",
-      "ig": {
-        "error": "IG publish",
-        "detail": {
-          "error": {
-            "message": "Media ID is not available",
-            "type": "OAuthException",
-            "code": 9007,
-            "error_subcode": 2207027,
-            "is_transient": false,
-            "error_user_title": "Kann nicht veröffentlicht werden",
-            "error_user_msg": "Die Medien können noch nicht veröffentlicht werden. Bitte warte noch einen Moment.",
-            "fbtrace_id": "AAEsE2Fn-MDIuvvEyrJjxvk"
-          }
-        }
-      },
-      "fb": {
-        "ok": "122133451401350792"
-      },
-      "tt": {
-        "skipped": "kein Video"
-      },
-      "insights": {
-        "ts": "2026-08-27T23:28",
-        "ig": {
-          "posts": 12,
-          "eng": 9,
-          "avg": 1,
-          "top": {
-            "eng": 1,
-            "cap": "Lueg mau das aa 😍 Statement-Ohrringe «O"
-          }
-        },
-        "fb": {
-          "posts": 12,
-          "eng": 0,
-          "avg": 0,
-          "top": {
-            "eng": 0,
-            "cap": "Das gibt es so kaum in der Schweiz 🇨🇭 "
-          }
-        }
-      },
-      "replies": {
-        "ig": 0,
-        "fb": 0,
-        "skipped": 0
-      }
+      "result": "WORKER_NICHT_ERREICHBAR",
+      "detail": "TimeoutError: The operation was aborted due to timeout"
     }
   },
   "duplicates": [],
