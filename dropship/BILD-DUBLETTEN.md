@@ -51,6 +51,9 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **DUBLETTE** · 9 gemeinsame Bilder (9 bzw. 9 insgesamt, 100%)
   - 15500959318401 · 2026-08-16 · CHF 18.90 · CJ-CJDS276571901AZ · Langes Poloshirt
   - 15502485586305 · 2026-08-17 · CHF 18.90 · CJ-CJDS273885001AZ · Seidenweiches, knitterarmes Hemd mit Kühl-Effekt
+- **DUBLETTE** · 4 gemeinsame Bilder (4 bzw. 4 insgesamt, 100%)
+  - 15506163204481 · 2026-08-20 · CHF 14.90 · CJ-2603040448091638300 · Personalisiertes Armband mit zwei Initialen
+  - 15506163433857 · 2026-08-20 · CHF 14.90 · CJ-2603040439561638600 · Buchstaben-Armband personalisierbar
 - **DUBLETTE** · 7 gemeinsame Bilder (8 bzw. 8 insgesamt, 88%)
   - 15493908431233 · 2026-08-11 · CHF 16.90 · CJ-1423587446100201472 · Digitales Malen nach Zahlen: Eigenes Motiv
   - 15501383500161 · 2026-08-16 · CHF 16.90 · CJ-1423586854946607104 · Digital Bild malen
@@ -111,6 +114,9 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 6 insgesamt, 80%)
   - 15495120486785 · 2026-08-12 · CHF 15.90 · CJ-1433319879871696896 · DIY Diamond Painting Set – Quadratische Steine
   - 15495120585089 · 2026-08-12 · CHF 16.90 · CJ-1433316211676024832 · DIY Diamond Painting: Vier Bilder in Serie
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 6 insgesamt, 80%)
+  - 15496403157377 · 2026-08-13 · CHF 16.90 · CJ-1415139307299147776 · Landschaftsmalerei nach Zahlen für Erwachsene & Kinder
+  - 15506881511809 · 2026-08-20 · CHF 15.90 · CJ-1397734556987166720 · DIY Digital-Ölgemälde nach Zahlen – Blumen & Landschaft
 - **DUBLETTE** · 4 gemeinsame Bilder (6 bzw. 5 insgesamt, 80%)
   - 15496405123457 · 2026-08-13 · CHF 16.90 · CJ-1415135727716536320 · DIY Digital Painting: Moderne Landschaft
   - 15500926255489 · 2026-08-16 · CHF 17.90 · CJ-6023CE65-E64F-4B48-8749-342EF5328D63 · Malen nach Zahlen Landschaft mit Rahmen
@@ -175,6 +181,9 @@ drei taeuschen bei CJ-Doppellistings alle drei.
   - 15501061226881 · 2026-08-16 · CHF 14.90 · CJ-939F0C00-304E-4E55-84AC-25998EEF2C55 · Malen nach Zahlen – Herbstbrücke
   - 15501382123905 · 2026-08-16 · CHF 14.90 · CJ-43EF5CF4-06A6-4A9C-95CA-2DF809DDF503 · Herbstlandschaft
 - **DUBLETTE** · 4 gemeinsame Bilder (6 bzw. 5 insgesamt, 80%)
+  - 15501095829889 · 2026-08-16 · CHF 14.90 · CJ-AB25E9C1-012C-42B5-9F5C-D354EC46D31C · Bilderbuchbaum
+  - 15506283921793 · 2026-08-20 · CHF 14.90 · CJ-1397398890512257024 · Yellow Mountain – Malen nach Zahlen
+- **DUBLETTE** · 4 gemeinsame Bilder (6 bzw. 5 insgesamt, 80%)
   - 15501882261889 · 2026-08-17 · CHF 15.90 · CJ-DBB1341E-E781-44DF-9467-351E2722B506 · Malen nach Zahlen - Boote
   - 15502046527873 · 2026-08-17 · CHF 15.90 · CJ-9C47D14E-339D-4F83-841B-E4FC8532F260 · Malen nach Zahlen – Papagei
 - **DUBLETTE** · 4 gemeinsame Bilder (6 bzw. 5 insgesamt, 80%)
@@ -192,6 +201,9 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **DUBLETTE** · 4 gemeinsame Bilder (9 bzw. 5 insgesamt, 80%)
   - 15501865550209 · 2026-08-17 · CHF 25.90 · CJ-1402453587325489152 · Elektrische Pinselreiniger
   - 15501865681281 · 2026-08-17 · CHF 21.90 · CJ-1400740131811495936 · Reinigungstank für Make-up-Bürsten
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 9 insgesamt, 80%)
+  - 15504173400449 · 2026-08-19 · CHF 42.90 · CJ-1398488623166394368 · Nylon Rucksack für Business & Freizeit
+  - 15507779912065 · 2026-08-20 · CHF 47.90 · CJ-59B535D2-6359-480A-BB34-CD071C428664 · Grosse 18-Zoll-Laptoptasche aus Nylon
 - **Bildfamilie — von Hand ansehen** · 6 gemeinsame Bilder (8 bzw. 8 insgesamt, 75%)
   - 15448827199873 · 2026-07-04 · CHF 36.90 · CJ-2037766339821154306 · DR-MEINAIER Süssholz-Serum Anti-Aging LSF 50
   - 15448827593089 · 2026-07-04 · CHF 15.90 · CJ-2033471318793572354 · Lakritz-Wurzel Anti-Aging Serum LSF 50
@@ -399,6 +411,9 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (4 bzw. 4 insgesamt, 75%)
   - 15502064353665 · 2026-08-17 · CHF 16.90 · CJ-A547373D-4C37-4017-8419-715C093A569D · XXL Diamond Painting – Die Pfauen
   - 15502064812417 · 2026-08-17 · CHF 30.90 · CJ-C4E4F372-E253-4600-AAF7-6484B1A56D65 · XXXL Diamond Painting «Buddha»
+- **Bildfamilie — von Hand ansehen** · 9 gemeinsame Bilder (13 bzw. 13 insgesamt, 69%)
+  - 15502064943489 · 2026-08-17 · CHF 18.90 · CJ-CJDS186315101AZ · Bügelfreies Stretch-Hemd für Herren
+  - 15504198631809 · 2026-08-19 · CHF 17.90 · CJ-CJDS261997601AZ · Elastisches Herrenhemd – bügelfrei & knitterarm
 - **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (8 bzw. 3 insgesamt, 67%)
   - 15448647958913 · 2026-07-04 · CHF 16.90 · CJ-CJJS29447410001 · Vier Jahreszeiten Yoga-Hose mit Print
   - 15448648089985 · 2026-07-04 · CHF 16.90 · CJ-CJJS29447640001 · Vier Jahreszeiten Yoga-Pants mit Print
@@ -471,9 +486,33 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **Bildfamilie — von Hand ansehen** · 4 gemeinsame Bilder (6 bzw. 6 insgesamt, 67%)
   - 15499781702017 · 2026-08-15 · CHF 15.90 · CJ-2412300112351620300 · Schwarzes Kopfstützenkissen
   - 15502587625857 · 2026-08-17 · CHF 15.90 · CJ-1677596975652417536 · Black Eight Billiards Plüschkissen
+- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (3 bzw. 3 insgesamt, 67%)
+  - 15500201820545 · 2026-08-15 · CHF 15.90 · CJ-D6305DF2-5526-4A3A-B564-6D8922025E14 · Rose-Bogen-Malerei
+  - 15503120597377 · 2026-08-18 · CHF 15.90 · CJ-E8912192-92E6-4C6D-9215-F309AFC58D6C · Diamond Painting „Baum“
+- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (3 bzw. 3 insgesamt, 67%)
+  - 15500201820545 · 2026-08-15 · CHF 15.90 · CJ-D6305DF2-5526-4A3A-B564-6D8922025E14 · Rose-Bogen-Malerei
+  - 15503121351041 · 2026-08-18 · CHF 15.90 · CJ-5CBE4975-2AE7-4B62-A300-B044135C8EFE · Rote Blumen Malerei
+- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (3 bzw. 3 insgesamt, 67%)
+  - 15503117681025 · 2026-08-18 · CHF 15.90 · CJ-B79B345D-DEFE-4515-9342-B24DE988121A · Schiff auf See Gemälde
+  - 15503120335233 · 2026-08-18 · CHF 15.90 · CJ-B51FC4A8-87D2-4970-808C-19FEBF3CB8A2 · Schiff Malen nach Zahlen
+- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (3 bzw. 3 insgesamt, 67%)
+  - 15503120597377 · 2026-08-18 · CHF 15.90 · CJ-E8912192-92E6-4C6D-9215-F309AFC58D6C · Diamond Painting „Baum“
+  - 15503121351041 · 2026-08-18 · CHF 15.90 · CJ-5CBE4975-2AE7-4B62-A300-B044135C8EFE · Rote Blumen Malerei
 - **Bildfamilie — von Hand ansehen** · 4 gemeinsame Bilder (6 bzw. 6 insgesamt, 67%)
   - 15501882261889 · 2026-08-17 · CHF 15.90 · CJ-DBB1341E-E781-44DF-9467-351E2722B506 · Malen nach Zahlen - Boote
   - 15502048428417 · 2026-08-17 · CHF 15.90 · CJ-7D8AE4F8-4387-464C-A7C6-F5C72660F3A3 · Malen nach Zahlen – Winterlandschaft
+- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (3 bzw. 3 insgesamt, 67%)
+  - 15503116304769 · 2026-08-18 · CHF 15.90 · CJ-4C7F1F20-A6D0-41F5-9CC4-49297A3289D5 · Buntes Hunde-Gemälde
+  - 15503116403073 · 2026-08-18 · CHF 15.90 · CJ-E37B78E9-AF9D-430B-9963-8C96BCCF0AE4 · Diamond Painting „Schneelandschaft“
+- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (3 bzw. 3 insgesamt, 67%)
+  - 15503117353345 · 2026-08-18 · CHF 15.90 · CJ-10D81A8B-9903-4963-89B3-E594C768E21D · Diamond Painting „Liebespaar“
+  - 15503120269697 · 2026-08-18 · CHF 15.90 · CJ-D9C58B62-36B4-45C1-872E-6B7D30470B6E · Malen nach Zahlen: Mädchen mit Blumen
+- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (3 bzw. 3 insgesamt, 67%)
+  - 15503117353345 · 2026-08-18 · CHF 15.90 · CJ-10D81A8B-9903-4963-89B3-E594C768E21D · Diamond Painting „Liebespaar“
+  - 15503121580417 · 2026-08-18 · CHF 15.90 · CJ-54389E3D-2E04-4096-89A3-1E5C9C2FF808 · Vogel-Malerei-Set
+- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (3 bzw. 3 insgesamt, 67%)
+  - 15503120269697 · 2026-08-18 · CHF 15.90 · CJ-D9C58B62-36B4-45C1-872E-6B7D30470B6E · Malen nach Zahlen: Mädchen mit Blumen
+  - 15503121580417 · 2026-08-18 · CHF 15.90 · CJ-54389E3D-2E04-4096-89A3-1E5C9C2FF808 · Vogel-Malerei-Set
 - **Bildfamilie — von Hand ansehen** · 5 gemeinsame Bilder (8 bzw. 8 insgesamt, 62%)
   - 15448827199873 · 2026-07-04 · CHF 36.90 · CJ-2037766339821154306 · DR-MEINAIER Süssholz-Serum Anti-Aging LSF 50
   - 15448827494785 · 2026-07-04 · CHF 27.90 · CJ-2037764087679721473 · Süssholz-Gesichtsserum mit Vitamin C & Retinol
@@ -483,9 +522,18 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (9 bzw. 5 insgesamt, 60%)
   - 15454003462529 · 2026-07-12 · CHF 15.90 · CJ-1597823739163586560 · Öl-Gemälde-Kit für Wohnzimmer und Schlafzimmer
   - 15499991024001 · 2026-08-15 · CHF 14.90 · CJ-FDE4AF41-CB43-489A-BB6D-9BA161F973CB · DIY-Malset „Tiger“ ohne Rahmen
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (9 bzw. 5 insgesamt, 60%)
+  - 15454003462529 · 2026-07-12 · CHF 15.90 · CJ-1597823739163586560 · Öl-Gemälde-Kit für Wohnzimmer und Schlafzimmer
+  - 15506284609921 · 2026-08-20 · CHF 14.90 · CJ-1397380197384327168 · DIY Leinwandbild: Rote Rose als Digital Painting
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15497431908737 · 2026-08-14 · CHF 16.90 · CJ-1400264189557215232 · Artsy Peacock DIY Digital Painting Set
+  - 15506284609921 · 2026-08-20 · CHF 14.90 · CJ-1397380197384327168 · DIY Leinwandbild: Rote Rose als Digital Painting
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
   - 15497709519233 · 2026-08-14 · CHF 16.90 · CJ-1396774748372996096 · Digitales Malset: Sternzeichen-Landschaft
   - 15499991024001 · 2026-08-15 · CHF 14.90 · CJ-FDE4AF41-CB43-489A-BB6D-9BA161F973CB · DIY-Malset „Tiger“ ohne Rahmen
+- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
+  - 15499991024001 · 2026-08-15 · CHF 14.90 · CJ-FDE4AF41-CB43-489A-BB6D-9BA161F973CB · DIY-Malset „Tiger“ ohne Rahmen
+  - 15506284609921 · 2026-08-20 · CHF 14.90 · CJ-1397380197384327168 · DIY Leinwandbild: Rote Rose als Digital Painting
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 5 insgesamt, 60%)
   - 15454058250625 · 2026-07-12 · CHF 15.90 · CJ-1397505371513425920 · Water Lambo DIY-Zahlen-Mal-Set
   - 15454115660161 · 2026-07-12 · CHF 15.90 · CJ-CJHB115784901AZ · DIY Ölmalerei Wandkunst
