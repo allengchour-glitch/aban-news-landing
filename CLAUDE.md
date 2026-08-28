@@ -130,6 +130,27 @@ live belegt an 15411554910593). `automation/versandaussagen_wahrheit.py`, Ledger
   Rechtstexte gehen nur per GraphQL `shopPolicyUpdate` — und dessen Input nimmt `type`
   (`SHIPPING_POLICY`), **nicht** `id`. Ohne Live-Gegenprobe hätte der Lauf als erledigt gegolten.
 
+## 🚧 76 Seiten mit Besuchern führen ins Leere — jetzt ein täglicher Wächter (2026-08-28)
+Die 17 rankenden 404-Seiten von heute waren nur der Ausschnitt, den Semrush sieht. Shopifys
+EIGENE Sitzungsdaten zeigen mehr: **von 234 Produkt-Landeseiten mit Verkehr in 60 Tagen sind 76
+nicht mehr kaufbar und haben keine Weiterleitung.** Die grösste hatte **83 Sitzungen** — mehr
+als die Rizinusöl-Seite, die ich heute Morgen als zweitgrösste Landeseite bezeichnet habe.
+`automation/tote_landeseiten.py` (täglich im Aufseher, `FIX=1`) macht daraus einen Dauerlauf:
+ShopifyQL-Sitzungen → Live-Status je Handle → Weiterleitung, wenn ein eindeutig gleichartiges
+aktives Produkt existiert; sonst Bericht.
+**Warum es wiederkommt und deshalb einen Wächter braucht:** Die täglichen Wächter draften
+laufend Ware (Viability, Dubletten, Medizinprodukte, Merchant-Sperre). Keiner von ihnen weiss,
+ob die Seite Besucher hatte — der Verlust entsteht als Nebenwirkung einer richtigen Reparatur.
+- ⚠️ **Die Ähnlichkeitsschwelle war im ersten Anlauf zu locker (0.45) und schlug Unsinn vor:**
+  «Smaragd-Anhänger Halskette» → «**LEOPARD**-Anhänger Halskette mit Smaragd» (0.50) und
+  «Herren **Piqué**-Poloshirt» → «**Kurzarm**-Poloshirt» (0.48). Ein einziges Wort im Ziel
+  verschiebt die Ware. Auf **0.70** angehoben; übrig blieben zwei saubere Fälle, die anderen 74
+  gehen in den Bericht. **Ein halbwegs passender Ersatz ist ein Köderwechsel — und der ist
+  schlimmer als der 404, den er ersetzt.**
+- Der Lauf veröffentlicht NIE ein Draft und leitet NIE auf eine fremde Marke um.
+- Er sieht mehr als eine Ranking-Abfrage, weil er nicht fragt «wofür ranken wir», sondern
+  **«wo kamen Menschen an»**. Das ist die ehrlichere Frage.
+
 ## 🔐 Tresor: Zugangsdaten überleben den Rewind jetzt (2026-08-28)
 **Die Einsicht, die das löst:** Nicht `/tmp` ist das Problem — es ist der Zeitpunkt. Der Snapshot
 steht auf dem 24.08. 15:36; eine Datei von DAVOR überlebt jeden Rückfall (deshalb ist

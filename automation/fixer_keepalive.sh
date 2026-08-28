@@ -368,6 +368,20 @@ while true; do
       echo "$(date -u +%H:%M) cj-bewertungen gestartet"
     fi
   fi
+  # TOTE LANDESEITEN, einmal täglich: Seiten, auf denen tatsächlich Besucher ankamen, die aber
+  # nicht mehr kaufbar sind. Am 28.08.2026 waren das 76 von 234 — 12'320 Suchen im Monat allein
+  # bei den rankenden. Die täglichen Wächter draften laufend Ware; keiner von ihnen weiss, ob
+  # die Seite Verkehr hatte. Der Lauf legt NUR bei eindeutig gleichartigem aktivem Produkt
+  # (Ähnlichkeit >= 0.70) selbst eine Weiterleitung an, alles andere kommt in den Bericht.
+  # ⚠️ Er veröffentlicht NIE ein Draft — jedes hat einen Grund im Tag.
+  TLS=/tmp/tote_landeseiten.log
+  if [ -f "$REPO/automation/tote_landeseiten.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$TLS" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid env FIX=1 python3 automation/tote_landeseiten.py >> "$TLS" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) tote-landeseiten geprüft"
+    fi
+  fi
   # GOOGLE-ATTRIBUT `size`, einmal täglich: Google verlangt es bei Bekleidung und Schuhen;
   # fehlt es, wird das Angebot in Shopping-Ergebnissen beschnitten — im einzigen Kanal mit
   # belegten Verkäufen. Am 28.08.2026 trug KEIN geprüftes Kleid ein `size`, obwohl alle eine
