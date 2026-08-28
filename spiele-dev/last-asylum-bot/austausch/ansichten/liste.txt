@@ -22,3 +22,5 @@
 20-04070305.png	2026-08-28 19:08:37	Schritt 102	bekannt	{'taps': 67, 'task:ansichten-sammeln': 43, 'drags': 40}
 21-01010102.png	2026-08-28 19:11:46	Schritt 104	bekannt	{'taps': 68, 'task:ansichten-sammeln': 44, 'drags': 40}
 22-04030403.png	2026-08-28 19:21:29	Schritt 108	bekannt	{'taps': 71, 'drags': 48, 'task:ansichten-sammeln': 45}
+23-04030403.png	2026-08-28 19:37:46	Schritt 131	bekannt	{'taps': 83, 'task:ansichten-sammeln': 56, 'drags': 48}
+24-04070305.png	2026-08-28 19:39:52	Schritt 133	bekannt	{'taps': 88, 'task:ansichten-sammeln': 57, 'drags': 48}
