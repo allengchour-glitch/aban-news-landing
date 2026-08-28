@@ -18,6 +18,7 @@ der bereits Admin-Zugriff auf den Shop hat — der käme an dieselben Daten auch
 
   tresor.py setzen <name> <schluessel>=<wert> [...]   speichern
   tresor.py holen  <name>                             als KEY=WERT ausgeben
+  tresor.py loeschen <name>                           Eintrag entfernen
   tresor.py env    <name> <zieldatei>                 als `export KEY=WERT` schreiben (chmod 600)
   tresor.py liste                                     gespeicherte Namen zeigen (OHNE Werte)
 """
@@ -95,6 +96,20 @@ def main():
         zurueck = lesen(name) or {}
         print(f"gespeichert unter «{name}»: {len(zurueck)} Schlüssel ({', '.join(sorted(zurueck))})")
         return 0
+
+    if befehl == "loeschen":
+        # ⚠️ Die Mutation heisst metafieldsDelete und nimmt MetafieldIdentifierInput —
+        # metafieldDelete und MetafieldsDeleteInput gibt es nicht (teuer gesucht 28.08.).
+        name = sys.argv[2]
+        d = gql('mutation($m:[MetafieldIdentifierInput!]!)'
+                '{metafieldsDelete(metafields:$m){userErrors{field message}}}',
+                {"m": [{"ownerId": SHOP_GID, "namespace": NS, "key": name}]})
+        ue = ((d.get("data") or {}).get("metafieldsDelete") or {}).get("userErrors") or []
+        if ue or "errors" in d:
+            print("FEHLER:", str(ue or d["errors"])[:200], file=sys.stderr)
+            sys.exit(1)
+        print(f"«{name}» aus dem Tresor entfernt.")
+        return
 
     if befehl == "holen":
         daten = lesen(sys.argv[2])

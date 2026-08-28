@@ -20,6 +20,38 @@ in der App wählen lassen. Für Einzel-Posts der Standard-Weg, bis die API frei 
 **Content-Nachschub:** cj_video_reel_engine baut Reels aus CJ-Produktvideos — praktisch unendlich,
 Ledger verhindern jede Wiederholung (plattformübergreifend). 29 ready in reels_seed.csv.
 
+## 🌐 Ein Browser, den diese Session wirklich bedienen kann (2026-08-28)
+Betreiber: «baue eine tool das du alles selber machen kannst». Der gemeinsame Nenner fast aller
+offenen Punkte ist dieselbe Sache — eine Seite, auf der jemand **eingeloggt klicken** muss:
+TikTok-Upload, Klaviyo-Kontodaten, Google Merchant, Judge.me-Einstellungen. Für keine gibt es
+einen Schreib-Endpunkt (bei Judge.me in zehn Sondierungen belegt). `automation/browser.mjs`.
+**Das Hindernis und die Lösung, beide gemessen:**
+| Weg | Ergebnis |
+|---|---|
+| Chromium direkt | `ERR_CONNECTION_RESET` (auch example.com) |
+| Chromium über `--proxy-server` | `ERR_CERT_AUTHORITY_INVALID` |
+| **curl mit `--cacert /root/.ccr/ca-bundle.crt`** | **tiktok.com 200 · example.com 200** |
+Der MITM-CA steckt im NSS-Store, den ein frisches Playwright-Profil nicht liest — und
+`certutil` gibt es hier nicht. Also wird **jede Browser-Anfrage abgefangen und durch curl
+geschickt**: der Browser rendert, curl transportiert. Live geprüft an app.judge.me — Logo, CSS,
+Icons, Cookie-Banner, alles da.
+- ⚠️ **TLS wird NICHT abgeschaltet.** `ignoreHTTPSErrors` wäre der bequeme Weg und ist genau
+  der, den man nicht nimmt; curl prüft gegen das Bundle, das die Umgebung selbst bereitstellt.
+- ⚠️ **`route.fulfill` nimmt nur EINEN Wert je Kopfzeile** — eine Anmeldung schickt aber mehrere
+  `Set-Cookie`. Sie werden ausgelesen und über `ctx.addCookies()` eingelegt. Ohne diesen Umweg
+  gäbe es überhaupt keine Sitzung, und der ganze Zweck des Werkzeugs wäre dahin.
+- ⚠️ **Kein `-L`.** Weiterleitungen folgt der BROWSER, nicht curl — sonst fehlen die
+  Zwischenschritte, und genau dort werden die Cookies gesetzt.
+- **Sitzungen liegen im Tresor** (`browser_<dienst>`, base64 — der Tresor speichert
+  Schlüssel=Wert-Paare, eine storageState-JSON ginge roh kaputt). Damit überlebt eine einmal
+  hergestellte Anmeldung den Rewind. Kreislauf geprüft: surfen → sichern → löschen → laden.
+  `tresor.py loeschen <name>` gibt es jetzt auch.
+- ⚠️ **EHRLICHE GRENZE 1: 2FA kann diese Session nicht.** Der Betreiber meldet sich EINMAL an,
+  danach lebt die Sitzung im Tresor. Passwörter werden nirgends gespeichert.
+- ⚠️ **EHRLICHE GRENZE 2: TikTok wehrt Automatisierung aktiv ab.** tiktok.com lädt mit 200 und
+  richtigem Titel, die App zeigt aber «Something went wrong». Für den Upload bleibt der Weg
+  über den PC-Browser des Betreibers. Judge.me und Klaviyo rendern dagegen sauber.
+
 ## 🎬 Zwölf Werkzeuge riefen ein `ffmpeg` auf, das es nicht gibt (2026-08-28)
 Auftrag des Betreibers: «statt ads mach geile tiktok post, karusell» und «videos schneiden und so».
 Beim Bauen des Videoschnitts stellte sich heraus: **`/usr/bin/ffmpeg` existiert im Container nicht** —
