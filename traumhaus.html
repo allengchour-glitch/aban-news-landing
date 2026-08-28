@@ -4279,6 +4279,7 @@ setTimeout(function baueTiere(){
       var b2=new THREE.Box3().setFromObject(root);root.position.y=-b2.min.y;
       root.traverse(function(n){if(n.isMesh){n.castShadow=true;if(n.material)n.material.envMapIntensity=0.3;}});
       var w=new THREE.Group();w.userData.nieAusblenden=true;w._bewegt=true;w.add(root);cb(w);},undefined,function(){cb(null);});} /* 🩹 Schwarm-4: Tiere wandern — nie LOD/einfrieren */
+  window._ladeTier=ladeTier;   /* auch spaetere Laeufe brauchen ihn (Zoo-Gehege) */
   window._tiere.land.forEach(function(rec,i){var dog=i%2===0;
     ladeTier(dog?"an_dog.glb":"an_cat.glb",dog?0.72:0.5,function(w){if(!w)return;
       scene.remove(rec.mesh);rec.mesh=w;rec.yaw=Math.PI;scene.add(w);});});
@@ -5052,6 +5053,42 @@ setTimeout(function baueGebaeude(){
               {file:"th24_streichelzoo.glb",h:3.5,w:23.5,d:21.0},
               {file:"th24_gehege.glb",      h:4,  w:13.2,d:10.7},
               {file:"th24_aquarienhaus.glb",h:7,  w:28.2,d:34.2}]});
+    /* 🦊 TIERE IN DIE GEHEGE. Ein Zoo aus Zaeunen und leeren Flaechen liest sich als
+       Baustelle — dieselbe Begruendung, mit der die Koppel des Bauernhofs ihre Herde
+       bekam („eine leere Koppel liest sich als vergessener Zaun").
+       Das Spiel hat keine exotischen Modelle, aber Wildschwein, Reh, Fuchs und Hase —
+       also ein Heimattierpark statt Safari. Ehrlicher als nichts.
+       ⚠️ ERST BEI 15 s. `entzerren()` rueckt die Bauzeilen bei 14 s noch zurecht; wer
+       vorher die Gehege ausliest, bindet die Tiere an eine Position, die es danach nicht
+       mehr gibt. Und die Lage kommt aus `zoo.bauten[].w.position`, nicht aus einer
+       eigenen Rechnung — die waere die naechste Wunschort-Falle.
+       `freiRaeumen()` (15,5 s) fasst sie nicht an: Tiere laufen nicht ueber `bau()` und
+       stehen darum nicht in `window._gebaeude`. */
+    setTimeout(function zooTiere(){
+      var V=(window._viertelSolver||{}).VIERTEL||[], zoo=null;
+      for(var i=0;i<V.length;i++)if(V[i].name==="Zoo")zoo=V[i];
+      if(!zoo||!window._ladeTier||!window._tiere)return;
+      var geh=[],streichel=null;
+      (zoo.bauten||[]).forEach(function(b){
+        var d=(b.w&&b.w.userData&&b.w.userData.datei)||"";
+        if(String(d).indexOf("th24_gehege")>=0)geh.push(b.w);
+        if(String(d).indexOf("th24_streichelzoo")>=0)streichel=b.w;});
+      /* Gehege ist 13,2 x 10,7 — Radius 4 haelt die Tiere sichtbar drinnen. */
+      var ART=[["an_boar.glb",0.85,0.45],["an_deer.glb",1.05,0.50],["an_fox.glb",0.55,0.70]];
+      geh.forEach(function(w,gi){
+        var a=ART[gi%ART.length], gx=w.position.x, gz=w.position.z;
+        [0,1].forEach(function(k){
+          window._ladeTier(a[0],a[1],function(m){if(!m)return;scene.add(m);
+            window._tiere.land.push({mesh:m,x:gx+(k?2.2:-2.2),z:gz+(k?1.6:-1.6),
+              head:k*2.1,sp:a[2],turnT:2+k,walkT:k,yaw:Math.PI,home:{x:gx,z:gz,r:4}});});});});
+      /* Streichelzoo (23,5 x 21): Hasen, die man auch anfassen wuerde. */
+      if(streichel){var sx=streichel.position.x, sz=streichel.position.z;
+        [0,1,2].forEach(function(k){
+          window._ladeTier("an_rabbit.glb",0.42,function(m){if(!m)return;scene.add(m);
+            window._tiere.land.push({mesh:m,x:sx-3+k*3,z:sz-2+k*2,head:k*1.4,sp:1.6,
+              turnT:1.5+k,walkT:k,yaw:Math.PI,hop:0.18,home:{x:sx,z:sz,r:6}});});});}
+      window._zooTiere=geh.length*2+(streichel?3:0);
+    },15000);
     /* ✈️ FLUGHAFEN. Der letzte grosse Posten aus der Inventur: neun th25-Modelle, die in
        keinen Reihen-Generator passen, weil eine LANDEBAHN dazugehoert. Zweiteilig geloest —
        Gebaeude als Viertel, Bahn und Vorfeld daneben, beide an der ECHTEN Viertelmitte.
