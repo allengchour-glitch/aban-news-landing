@@ -1,19 +1,12 @@
 {
- "zeit": "2026-08-28 20:57:34",
- "zeit_utc": "2026-08-28T18:57:34Z",
+ "zeit": "2026-08-28 21:16:53",
+ "zeit_utc": "2026-08-28T19:16:53Z",
  "hinweise": [],
- "fassung": "d1624a3",
- "schritte": 6,
+ "fassung": "83f90c4",
+ "schritte": 1,
  "gleiche_ansicht": 0,
  "unbekannt_am_stueck": 0,
  "zaehler": {
-  "drags": 8,
-  "taps": 4,
-  "task:ansichten-sammeln": 3,
-  "task:spiel-im-vordergrund": 1,
-  "task:basis-rundgang": 1,
-  "rule:spiel-update-bestaetigen": 1,
-  "zwischendurch-gehandelt": 1,
   "task:lebenszeichen": 1
  },
  "vorlagen_offen": 32,

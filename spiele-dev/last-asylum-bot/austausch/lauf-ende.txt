@@ -1,32 +1,19 @@
 ﻿# Der Bot-Lauf ist beendet. Steht hier ein frischer Zeitpunkt,
 # laeuft der Bot NICHT mehr.
-zeit:      2026-08-28 21:15:21
+zeit:      2026-08-28 21:17:02
 rechner:   MSI
 rueckgabe: 1
 
 # letzte Protokollzeilen:
-{"ts": 1787944155.1605513, "level": "info", "msg": "Umgebung: nach links oben", "quelle": "Aufgabe 'umgebung-abfahren'"}
-{"ts": 1787944201.7953668, "level": "info", "msg": "Umgebung: nach rechts", "quelle": "Aufgabe 'umgebung-abfahren'"}
-{"ts": 1787944247.2868495, "ev": "vergleich", "template": "ui/ladebildschirm.png", "score": 0.3369, "schwelle": 0.8, "treffer": false}
-{"ts": 1787944247.7529428, "ev": "vergleich", "template": "ui/btn_abholen_orange.png", "score": 0.237, "schwelle": 0.85, "treffer": false}
-{"ts": 1787944248.1876254, "ev": "vergleich", "template": "ui/btn_abholen.png", "score": 0.32, "schwelle": 0.85, "treffer": false}
-{"ts": 1787944248.3671875, "ev": "vergleich", "template": "ui/popup_close.png", "score": 0.5226, "schwelle": 0.86, "treffer": false}
-{"ts": 1787944248.7841995, "level": "info", "msg": "Umgebung: weiter nach rechts", "quelle": "Aufgabe 'umgebung-abfahren'"}
-{"ts": 1787944300.1456997, "ev": "vergleich", "template": "ui/ladebildschirm.png", "score": 0.2566, "schwelle": 0.8, "treffer": false}
-{"ts": 1787944300.7382786, "ev": "vergleich", "template": "ui/btn_abholen_orange.png", "score": 0.237, "schwelle": 0.85, "treffer": false}
-{"ts": 1787944301.2890046, "ev": "vergleich", "template": "ui/btn_abholen.png", "score": 0.32, "schwelle": 0.85, "treffer": false}
-{"ts": 1787944301.483495, "ev": "vergleich", "template": "ui/popup_close.png", "score": 0.5226, "schwelle": 0.86, "treffer": false}
-{"ts": 1787944301.95484, "level": "info", "msg": "Umgebung: nach rechts unten", "quelle": "Aufgabe 'umgebung-abfahren'"}
-{"ts": 1787944354.456284, "ev": "vergleich", "template": "ui/ladebildschirm.png", "score": 0.337, "schwelle": 0.8, "treffer": false}
-{"ts": 1787944371.1894932, "ev": "vergleich", "template": "ui/btn_abholen_orange.png", "score": 0.237, "schwelle": 0.85, "treffer": false}
-{"ts": 1787944390.1234548, "ev": "vergleich", "template": "ui/btn_abholen.png", "score": 0.32, "schwelle": 0.85, "treffer": false}
-{"ts": 1787944405.7918375, "ev": "vergleich", "template": "ui/popup_close.png", "score": 0.5226, "schwelle": 0.86, "treffer": false}
-{"ts": 1787944406.241667, "level": "info", "msg": "Umgebung: nach oben", "quelle": "Aufgabe 'umgebung-abfahren'"}
-{"ts": 1787944455.6620648, "ev": "vergleich", "template": "ui/ladebildschirm.png", "score": 0.337, "schwelle": 0.8, "treffer": false}
-{"ts": 1787944456.2358127, "ev": "vergleich", "template": "ui/btn_abholen_orange.png", "score": 0.237, "schwelle": 0.85, "treffer": false}
-{"ts": 1787944456.739299, "ev": "vergleich", "template": "ui/btn_abholen.png", "score": 0.32, "schwelle": 0.85, "treffer": false}
-{"ts": 1787944456.9272518, "ev": "vergleich", "template": "ui/popup_close.png", "score": 0.5226, "schwelle": 0.86, "treffer": false}
-{"ts": 1787944457.3556678, "level": "info", "msg": "Umgebung: nach unten", "quelle": "Aufgabe 'umgebung-abfahren'"}
-{"ts": 1787944501.0692477, "level": "info", "msg": "Zurueck in die Stadt", "quelle": "Aufgabe 'umgebung-abfahren'"}
-{"ts": 1787944503.3704603, "ev": "vergleich", "template": "nav/startseite.png", "score": 0.3693, "schwelle": 0.86, "treffer": false}
-{"ts": 1787944516.3665786, "ev": "vergleich", "template": "nav/burg.png", "score": 0.3924, "schwelle": 0.86, "treffer": false}
+{"ts": 1787944603.3103654, "level": "info", "msg": "Gelerntes uebernommen", "datei": "gelernt.json", "groessen": 12, "takte": 0}
+{"ts": 1787944607.2083082, "level": "info", "msg": "Startbild abgelegt", "datei": "shots\\20260828-211646-start.png"}
+{"ts": 1787944607.2158384, "level": "info", "msg": "Selbst vermessene Vorlagen", "vorlagen": "events/spezielles_event.png=1.2, events/wertvolles_event.png=0.9, hud/bubble_holz.png=1.3, nav/burg.png=1.3, nav/held.png=1, nav/lupe.png=1.3, tasche/truhe.png=1.3, ui/btn_abholen.png=1.08, ui/btn_abholen_orange.png=0.66, ui/btn_benutzen.png=1.34, ui/close_x_hell.png=0.45, zuflucht/kraut.png=0.55"}
+{"ts": 1787944610.0129845, "ev": "vergleich", "template": "ui/ladebildschirm.png", "score": 0.2565, "schwelle": 0.8, "treffer": false}
+{"ts": 1787944610.689958, "ev": "vergleich", "template": "ui/btn_abholen_orange.png", "score": 0.237, "schwelle": 0.85, "treffer": false}
+{"ts": 1787944611.796102, "ev": "vergleich", "template": "ui/btn_abholen.png", "score": 0.4106, "schwelle": 0.85, "treffer": false}
+{"ts": 1787944612.0670674, "ev": "vergleich", "template": "ui/popup_close.png", "score": 0.5226, "schwelle": 0.86, "treffer": false}
+{"ts": 1787944612.5575266, "ev": "vergleich", "template": "ui/close_x_hell.png", "score": 0.6448, "schwelle": 0.86, "treffer": false}
+{"ts": 1787944612.559579, "level": "info", "msg": "â–¶ Aufgabe: lebenszeichen"}
+{"ts": 1787944617.7950528, "level": "warn", "msg": "Lebenszeichen nicht hochgeladen - Commit zurueckgenommen", "grund": "To https://github.com/allengchour-glitch/aban-news-landing.git\n ! [rejected]        claude/last-asylum-android-bot-mi4cvn -> claude/last-asylum-android-bot-mi4c"}
+{"ts": 1787944617.7951887, "ev": "aufgabe", "aufgabe": "lebenszeichen", "tipps": 0}
+{"ts": 1787944621.4832053, "ev": "vergleich", "template": "ui/ladebildschirm.png", "score": 0.3144, "schwelle": 0.8, "treffer": false}
