@@ -4575,3 +4575,19 @@ gid://shopify/Product/15448913936769	CHF 85.56	1 Varianten	Wasserabweisende Canv
 gid://shopify/Product/15448913969537	CHF 20.22	1 Varianten	Wanderrucksack für Outdoor und Freizeit
 gid://shopify/Product/15448914067841	CHF 28.26	1 Varianten	Reise-Rucksack für Geschäftsreisen
 gid://shopify/Product/15448914166145	CHF 37.21	1 Varianten	Leichter, multifunktionaler Rucksack mit grossem V
+gid://shopify/Product/15448914231681	CHF 26.77	1 Varianten	Grosse Kleidersack-Reisetasche
+gid://shopify/Product/15448914264449	CHF 11.76	1 Varianten	Faltbarer Wanderrucksack 20-35L
+gid://shopify/Product/15448914329985	CHF 26.95	1 Varianten	Business Rucksack mit viel Stauraum
+gid://shopify/Product/15448914395521	CHF 22.55	1 Varianten	Reise-Rucksack für Herren
+gid://shopify/Product/15448914428289	CHF 33.83	1 Varianten	Business Commuter Rucksack Grosses Volumen
+gid://shopify/Product/15448914493825	CHF 18.80	1 Varianten	Leichter Outdoor-Rucksack
+gid://shopify/Product/15448914592129	CHF 15.96	1 Varianten	Freizeit-Schultertasche
+gid://shopify/Product/15448914657665	CHF 45.07	1 Varianten	Multifunktionale Sporttasche mit zwei Griffen
+gid://shopify/Product/15448914723201	CHF 10.77	1 Varianten	Leichte Outdoor-Sporttasche
+gid://shopify/Product/15448914788737	CHF 48.98	1 Varianten	Vakuum-Kompressions-Reiserucksack für Herren
+gid://shopify/Product/15448914821505	cj-abgekuendigt-pruefen
+gid://shopify/Product/15448914887041	CHF 20.14	1 Varianten	Business Schultertasche
+gid://shopify/Product/15448914919809	CHF 14.03	1 Varianten	Leichter Wanderrucksack 36-55L
+gid://shopify/Product/15448915018113	CHF 54.13	1 Varianten	Rock Biker Hosenträger im Postapokalypse-Stil
+gid://shopify/Product/15448915083649	CHF 36.63	1 Varianten	Leichter Rucksack für Pendler und Reisen
+gid://shopify/Product/15448915116417	CHF 30.26	1 Varianten	Outdoor 45L Taktischer Rucksack

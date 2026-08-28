@@ -53,10 +53,27 @@ Der tägliche Bewertungs-Import verschickt selbst KEINE Mails und darf weiterlau
 alten Snapshot her und `/tmp` wird mitgedreht — die Token waren am 28.08. schon einmal weg. Ohne
 sie endet der tägliche Bewertungs-Import als No-op.
 
-## 5. TikTok: Freigabe der App «luxe» nachfassen
-> Prüfe im TikTok-Developer-Portal den Review-Status der App «luxe» (Client-Key awhvghmn5q2oh91i,
-> seit 18.08. in Review für Login Kit + Content Posting API). Bei Freigabe Bescheid geben.
-> ⚠️ Das Client-Secret stand einmal in einem Chat — im Portal rotieren lassen.
+## 5. TikTok freischalten — ein Klick und ein Einfügen  ⭐
+Die App scheint freigegeben: Der Client-Credentials-Endpunkt stellt am 28.08. wieder ein Token
+aus, und der Autorisierungs-Endpunkt leitet auf die normale Anmeldung statt auf
+`unauthorized_client`. Was fehlt, ist nur die Zustimmung des Kontos.
+
+> Öffne diesen Link in Chrome, angemeldet als **@luxestyle.ch**, und stimme zu:
+>
+> https://www.tiktok.com/v2/auth/authorize/?client_key=awhvghmn5q2oh91i&scope=user.info.basic%2Cvideo.upload%2Cvideo.publish&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A8723%2Fcallback&state=38ce638386c0c27c&code_challenge=4cfe9849883ce49b886de34175547496ad79cbd4b1b9ace203753f0a6b347773&code_challenge_method=S256
+>
+> Danach landet der Browser auf einer **Fehlerseite** — das ist richtig, dort lauscht nichts.
+> Der Code steht in der **Adresszeile** nach `code=`. Kopiere alles bis zum nächsten `&`
+> (das Ende `*1` gehört dazu) und schick ihn mir.
+
+Ich tausche ihn dann hier ein (`tiktok_anmeldung.mjs fertig <code>`); der Refresh-Token landet
+im Tresor und `tiktok_reel_post.mjs` kann ohne weitere Anmeldung posten.
+
+⚠️ **Der Code ist einmalig und nur Minuten gültig.** Wenn zu viel Zeit vergeht, sag Bescheid —
+ich erzeuge einen frischen Link. Der Verifier dazu liegt im Tresor, der Austausch klappt also
+auch aus einer anderen Sitzung.
+⚠️ Das Client-Secret stand einmal in einem Chat — im Portal rotieren lassen. Danach die neuen
+Werte an mich, ich lege sie in den Tresor.
 
 ## 6. Aufräumen: hängende Sitzung und offengelegter Webhook
 > In der Claude-Sitzungsübersicht hängt «Weekly billing audit» seit dem 26. Juli auf einer
