@@ -31,6 +31,44 @@ mitSonden('traumhaus.html', {
         schattenkarte:renderer.shadowMap.enabled?sun.shadow.mapSize.width:0,
         pixelVerhaeltnis:renderer.getPixelRatio(),
         mobil:(typeof _mobil!=="undefined")?_mobil:null};}
+    if(was==="nacht"){ /* Nacht erzwingen und pruefen, ob die Laternen wirklich leuchten */
+      window._dorfNacht=true;window._lampPoolT=0;
+      camTx=0;camTz=58;                    /* Kamera an eine Laternenkette */
+      updLampPool(0.5);
+      var P=(window._lampPool||[]);
+      return {an:P.filter(function(L){return L.visible;}).length,
+              hell:P.filter(function(L){return L.intensity>0;}).length,
+              orte:P.filter(function(L){return L.visible;}).slice(0,3)
+                    .map(function(L){return [Math.round(L.position.x),Math.round(L.position.z)];})};}
+    if(was==="tag"){ /* zurueck auf Tag */
+      window._dorfNacht=false;window._lampPoolT=0;updLampPool(0.5);
+      var P2=(window._lampPool||[]);
+      return {an:P2.filter(function(L){return L.visible;}).length};}
+    if(was==="detail"){
+      var lichter=[],matTyp={},matGleich={},schattenAn=renderer.shadowMap.enabled;
+      scene.traverse(function(o){
+        if(o.isLight){var pool=(window._lampPool||[]).indexOf(o)>=0;
+          lichter.push({typ:o.type,an:o.visible,int:+(o.intensity||0).toFixed(2),
+            pool:pool, name:o.name||"", eltern:o.parent===scene?"scene":(o.parent.name||o.parent.type),
+            pos:[Math.round(o.position.x),Math.round(o.position.z)]});}
+        if(o.isMesh){var m=o.material;(Array.isArray(m)?m:[m]).forEach(function(mm){
+          if(!mm)return;matTyp[mm.type]=(matTyp[mm.type]||0)+1;
+          /* Wie viele Materialien sind INHALTLICH gleich? Signatur aus den Werten,
+             die den Zustandswechsel bestimmen. */
+          var sig=[mm.type,mm.color&&mm.color.getHexString(),mm.map?mm.map.uuid:0,
+                   mm.transparent?1:0,mm.roughness,mm.metalness,mm.side,mm.opacity].join("|");
+          matGleich[sig]=(matGleich[sig]||0)+1;});}
+      });
+      var mehrfach=Object.keys(matGleich).filter(function(k){return matGleich[k]>1;});
+      mehrfach.sort(function(a,b){return matGleich[b]-matGleich[a];});
+      var aktiv=lichter.filter(function(l){return l.an;});
+      var leer=aktiv.filter(function(l){return l.int===0;});
+      return {schattenAn:schattenAn, lichterGesamt:lichter.length,
+        imShader:aktiv.length, davonWirkungslos:leer.length, lichter:lichter,
+        materialTypen:matTyp,
+        verschiedeneSignaturen:Object.keys(matGleich).length,
+        top5Dubletten:mehrfach.slice(0,5).map(function(k){return matGleich[k]+"x "+k.slice(0,52);}),
+        einsparbar:mehrfach.reduce(function(a,k){return a+matGleich[k]-1;},0)};}
     if(was==="weltpos"){ /* Weltposition der beweglichen Dinge — bewegt sie sich WIRKLICH? */
       var V=new THREE.Vector3(),aus={};
       function w(name,o){if(!o)return;o.getWorldPosition(V);aus[name]=[+V.x.toFixed(3),+V.y.toFixed(3),+V.z.toFixed(3)];}
@@ -96,7 +134,24 @@ const { browser, page, jsFehler } = await spielOeffnen(TMP, { warten: 55000, vie
 const info = await page.evaluate(() => window.__th.leistung('info'))
 console.log('=== Geräteunabhängige Kennzahlen (Querformat 844×390) ===')
 for (const [k, v] of Object.entries(info)) console.log(`  ${k.padEnd(20)} ${v}`)
-console.log('=== Bewegt sich nach dem tiefen Einfrieren noch alles? ===')
+console.log('=== Laternen: Tag/Nacht-Gegenprobe ===')
+const nacht = await page.evaluate(() => window.__th.leistung('nacht'))
+console.log('  Nacht  — sichtbar:', nacht.an, '· mit Intensität:', nacht.hell, '· Orte:', JSON.stringify(nacht.orte))
+const tag = await page.evaluate(() => window.__th.leistung('tag'))
+console.log('  Tag    — sichtbar:', tag.an)
+console.log((nacht.an === 8 && nacht.hell === 8 && tag.an === 0) ? '  ✅ Laternen schalten korrekt' : '  ❌ Schaltverhalten falsch')
+
+console.log('\n=== Lichter, Schatten, Materialien ===')
+const d = await page.evaluate(() => window.__th.leistung('detail'))
+console.log('  Schatten aktiv:', d.schattenAn)
+console.log(`  Lichter gesamt ${d.lichterGesamt} · im Shader aktiv ${d.imShader} · davon wirkungslos (Intensität 0) ${d.davonWirkungslos}`)
+d.lichter.filter(l => l.an && l.int === 0).forEach(l =>
+  console.log(`    wirkungslos: ${l.typ} pool=${l.pool} eltern=${l.eltern} pos=${l.pos}`))
+console.log('    Pool-Lichter:', JSON.stringify(d.lichter.filter(l => l.pool).map(l => (l.an?'an':'aus')+'/'+l.int)))
+console.log('  Material-Typen:', JSON.stringify(d.materialTypen))
+console.log('  verschiedene Signaturen:', d.verschiedeneSignaturen, '· einsparbar:', d.einsparbar)
+d.top5Dubletten.forEach(x => console.log('   ', x))
+console.log('\n=== Bewegt sich nach dem tiefen Einfrieren noch alles? ===')
 const w1 = await page.evaluate(() => window.__th.leistung('weltpos'))
 await new Promise(r => setTimeout(r, 5000))
 const w2 = await page.evaluate(() => window.__th.leistung('weltpos'))

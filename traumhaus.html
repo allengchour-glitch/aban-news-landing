@@ -669,15 +669,23 @@ function updLampPool(dt){
   if(!window._lampPool||!window._lampPos)return;
   window._lampPoolT-=dt;if(window._lampPoolT>0)return;window._lampPoolT=0.25;
   var an=window._dorfNacht?1:0;
-  if(!an){for(var z=0;z<window._lampPool.length;z++)window._lampPool[z].intensity=0;return;}
+  /* ⚠️ GEMESSEN 2026-08-28: tagsueber wurde nur die INTENSITAET auf 0 gesetzt, `visible`
+     blieb true. three.js sammelt aber alle SICHTBAREN Lichter ein — sechs Punktlichter
+     liefen damit im Shader JEDES Pixels mit, ohne etwas beizutragen, den ganzen Tag lang.
+     `visible=false` nimmt sie ganz aus der Beleuchtungsrechnung.
+     Nebenwirkung, bewusst in Kauf genommen: aendert sich die Zahl sichtbarer Lichter, baut
+     three.js die Shader neu. Das passiert genau zweimal pro Spieltag (Abend/Morgen) statt
+     dauerhaft in jedem Bild. */
+  if(!an){for(var z=0;z<window._lampPool.length;z++){
+    window._lampPool[z].intensity=0;window._lampPool[z].visible=false;}return;}
   var cx=camTx,cz=camTz,P=window._lampPos,best=[];
   for(var i=0;i<P.length;i++){var d=(P[i][0]-cx)*(P[i][0]-cx)+(P[i][1]-cz)*(P[i][1]-cz);
     if(best.length<8){best.push([d,i]);best.sort(function(a,b){return a[0]-b[0];});}
     else if(d<best[7][0]){best[7]=[d,i];best.sort(function(a,b){return a[0]-b[0];});}}
   for(var k=0;k<window._lampPool.length;k++){
     var L=window._lampPool[k];
-    if(k<best.length){var p2=P[best[k][1]];L.position.set(p2[0],6.6,p2[1]);L.intensity=3.4;}
-    else L.intensity=0;}}
+    if(k<best.length){var p2=P[best[k][1]];L.position.set(p2[0],6.6,p2[1]);L.intensity=3.4;L.visible=true;}
+    else {L.intensity=0;L.visible=false;}}}
 function addSolidRot(x,z,w,d,rotY,door){
   /* 🩹 Schwarm-7: JS-Rest behaelt das Vorzeichen — (-PI/2 % PI) = -PI/2, der
      Betragsvergleich sah PI statt 0 und vertauschte Breite/Tiefe NICHT. */
