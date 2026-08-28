@@ -53,27 +53,28 @@ Der tägliche Bewertungs-Import verschickt selbst KEINE Mails und darf weiterlau
 alten Snapshot her und `/tmp` wird mitgedreht — die Token waren am 28.08. schon einmal weg. Ohne
 sie endet der tägliche Bewertungs-Import als No-op.
 
-## 5. TikTok freischalten — ein Klick und ein Einfügen  ⭐
-Die App scheint freigegeben: Der Client-Credentials-Endpunkt stellt am 28.08. wieder ein Token
-aus, und der Autorisierungs-Endpunkt leitet auf die normale Anmeldung statt auf
-`unauthorized_client`. Was fehlt, ist nur die Zustimmung des Kontos.
+## 5. TikTok: NICHT freigegeben — weiter warten
+**Am 28.08.2026 gegengeprüft, Ergebnis eindeutig:** Der Autorisierungs-Link antwortet mit
+`error=unauthorized_client&error_type=client_key`. Die App «luxe» (Client-Key awhvghmn5q2oh91i)
+ist seit dem 18.08. in Review und noch nicht durch.
 
-> Öffne diesen Link in Chrome, angemeldet als **@luxestyle.ch**, und stimme zu:
->
-> https://www.tiktok.com/v2/auth/authorize/?client_key=awhvghmn5q2oh91i&scope=user.info.basic%2Cvideo.upload%2Cvideo.publish&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A8723%2Fcallback&state=38ce638386c0c27c&code_challenge=4cfe9849883ce49b886de34175547496ad79cbd4b1b9ace203753f0a6b347773&code_challenge_method=S256
->
-> Danach landet der Browser auf einer **Fehlerseite** — das ist richtig, dort lauscht nichts.
-> Der Code steht in der **Adresszeile** nach `code=`. Kopiere alles bis zum nächsten `&`
-> (das Ende `*1` gehört dazu) und schick ihn mir.
+⚠️ **Nicht weiter probieren.** Jeder Versuch endet gleich, und wiederholte fehlgeschlagene
+Autorisierungen bringen nichts. Auf die Freigabe-Mail warten.
 
-Ich tausche ihn dann hier ein (`tiktok_anmeldung.mjs fertig <code>`); der Refresh-Token landet
-im Tresor und `tiktok_reel_post.mjs` kann ohne weitere Anmeldung posten.
+⚠️ **Zwei Signale, die NICHT als Freigabe taugen** (beide führten mich in die Irre):
+- Der Client-Credentials-Endpunkt stellt ein Token aus — dieser Grant läuft auf APP-Ebene und
+  braucht keine Review. Er sagt nichts über die Nutzer-Autorisierung.
+- Der Autorisierungs-Endpunkt leitet auf die Anmeldeseite statt sofort auf einen Fehler. Das
+  ist der normale erste Schritt; `unauthorized_client` kommt erst NACH der Anmeldung.
 
-⚠️ **Der Code ist einmalig und nur Minuten gültig.** Wenn zu viel Zeit vergeht, sag Bescheid —
-ich erzeuge einen frischen Link. Der Verifier dazu liegt im Tresor, der Austausch klappt also
-auch aus einer anderen Sitzung.
-⚠️ Das Client-Secret stand einmal in einem Chat — im Portal rotieren lassen. Danach die neuen
-Werte an mich, ich lege sie in den Tresor.
+Wenn die Mail da ist: einfach Bescheid geben. Das Werkzeug steht bereit
+(`automation/tiktok_anmeldung.mjs start`) — dann ist es ein Klick und ein Einfügen, ohne
+lokalen Server. Der Refresh-Token landet im Tresor.
+
+Bis dahin läuft der Browser-Weg unverändert: tiktok.com/tiktokstudio/upload, Video aus
+`reels_seed.csv` laden, Caption mitgeben, Trend-Sound in der App wählen.
+
+⚠️ Das Client-Secret stand einmal in einem Chat — im Portal rotieren lassen, neue Werte an mich.
 
 ## 6. Aufräumen: hängende Sitzung und offengelegter Webhook
 > In der Claude-Sitzungsübersicht hängt «Weekly billing audit» seit dem 26. Juli auf einer

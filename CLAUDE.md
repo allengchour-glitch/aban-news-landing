@@ -173,6 +173,27 @@ ob die Seite Besucher hatte — der Verlust entsteht als Nebenwirkung einer rich
 - Er sieht mehr als eine Ranking-Abfrage, weil er nicht fragt «wofür ranken wir», sondern
   **«wo kamen Menschen an»**. Das ist die ehrlichere Frage.
 
+## ⛔ TikTok: zwei Signale, die KEINE Freigabe sind (2026-08-28)
+Ich habe heute geschlossen, die App «luxe» sei freigegeben, und den Betreiber den Login klicken
+lassen. **Falsch** — die Antwort war `error=unauthorized_client&error_type=client_key`, also
+genau der Stand, den das Gedächtnis seit dem 18.08. beschreibt.
+Die beiden Signale, auf die ich hereingefallen bin:
+1. **`grant_type=client_credentials` liefert ein Token.** Dieser Grant läuft auf APP-Ebene und
+   braucht keine Review. Dass die App existiert und ihre Zugangsdaten stimmen, sagt nichts
+   darüber, ob ein NUTZER sie autorisieren darf.
+2. **Der Autorisierungs-Endpunkt leitet mit 302 auf die Anmeldeseite** statt direkt auf einen
+   Fehler. Das ist der normale erste Schritt jedes OAuth-Flusses; `unauthorized_client` kommt
+   erst NACH der Anmeldung, im Rücksprung.
+**Regel: Ein Endpunkt, der antwortet, beweist nur, dass er antwortet.** Wer eine Freigabe prüfen
+will, muss den Pfad gehen, an dem die Freigabe hängt — hier den vollständigen Nutzer-Fluss. Das
+ist dieselbe Lehre wie heute Mittag bei CJ, wo `pid=x` mit «Product not found» antwortete statt
+mit dem Punktefehler: **ein Negativtest muss den Weg der echten Anfrage nehmen.** Zweimal am
+selben Tag derselbe Fehler, einmal harmlos, einmal mit einem unnötigen Klick des Betreibers.
+✅ Nützlich bleibt trotzdem: `automation/tiktok_anmeldung.mjs` braucht keinen lokalen Webserver
+(der Code steht in der Adresszeile, auch wenn auf Port 8723 nichts lauscht), PKCE mit
+**hex**-SHA256, und der Verifier liegt im Tresor — der Austausch klappt also auch aus einer
+anderen Sitzung. Sobald die Freigabe-Mail kommt, ist es ein Klick und ein Einfügen.
+
 ## 🔐 Tresor: Zugangsdaten überleben den Rewind jetzt (2026-08-28)
 **Die Einsicht, die das löst:** Nicht `/tmp` ist das Problem — es ist der Zeitpunkt. Der Snapshot
 steht auf dem 24.08. 15:36; eine Datei von DAVOR überlebt jeden Rückfall (deshalb ist
