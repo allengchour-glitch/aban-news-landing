@@ -4545,3 +4545,10 @@ gid://shopify/Product/15448912363905	CHF 18.77	1 Varianten	Aromatherapie-Uhrenar
 gid://shopify/Product/15448912396673	CHF 32.61	1 Varianten	Sportliche Herrenuhr für Training & Outdoor
 gid://shopify/Product/15448912462209	CHF 37.39	1 Varianten	Multifunktionales Sport-Armband mit Herzfrequenzme
 gid://shopify/Product/15448912494977	CHF 43.21	1 Varianten	F600 Fitness-Smartwatch mit Aktivitäts-Tracking
+gid://shopify/Product/15448912560513	CHF 18.32	1 Varianten	Quarz-Herrenuhr mit Datumsanzeige
+gid://shopify/Product/15448912626049	CHF 41.87	1 Varianten	Sport-Armband für Fitbit Inspire HR
+gid://shopify/Product/15448912658817	CHF 25.45	1 Varianten	Nautilus Herrenuhr mit Stahlarmband
+gid://shopify/Product/15448912724353	CHF 19.37	1 Varianten	Sportliche Multifunktionsuhr mit transparentem Ban
+gid://shopify/Product/15448912757121	CHF 19.53	1 Varianten	Quarz-Uhr mit Leuchtzeigern und Kalender
+gid://shopify/Product/15448912789889	CHF 70.68	1 Varianten	Vakuum-Kompressionsrucksack
+gid://shopify/Product/15448912855425	CHF 38.42	1 Varianten	45L Taktischer Rucksack für Outdoor & Bergsteigen
