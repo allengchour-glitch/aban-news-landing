@@ -1798,14 +1798,32 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
      waren nie die Bremse. Der Frost kostet Animation und bringt nichts Messbares.
      Wer hier wieder ansetzt, misst ZUERST (th-tempo.mjs), statt der Plausibilitaet zu
      folgen. Die echte Bremse waren die Punktlichter, siehe LAMP_MAX. */
+  /* Ein einzelnes Objekt wieder beweglich machen. NUR `_bewegt` zu setzen genuegt
+     NICHT: die Marke wirkt allein beim Einfrieren. Wer sie spaeter setzt, muss auch
+     matrixAutoUpdate wieder einschalten — sonst dreht sich das Objekt in den Daten,
+     waehrend die Weltmatrix steht. Genau das war beim Karussell der Fall (gemessen:
+     rotation +0.367 in 4 s, Weltmatrix unveraendert). */
+  function _auftauen(o){if(!o)return;o._bewegt=true;o.matrixAutoUpdate=true;}
+  window._auftauen=_auftauen;
   function _einfrieren(){
-    var n=0;
+    var n=0,tief=0;
     scene.children.forEach(function(o){
       if(o._bewegt||o.isLight||o.isCamera)return;
       if(o.userData&&o.userData.animiert)return;
       o.updateMatrixWorld(true);
-      o.matrixAutoUpdate=false;n++;});
-    window._eingefroren=n;}
+      o.matrixAutoUpdate=false;n++;
+      /* ⚠️ GEMESSEN 2026-08-28 (User: „ruckelt am Handy"): das Einfrieren endete hier —
+         bei den DIREKTEN Kindern der Szene. 3568 Objekte wurden eingefroren, aber
+         54'765 Nachfahren blieben offen und komponierten ihre Matrix in JEDEM Bild neu.
+         Bewegliche Teilbaeume werden gar nicht erst betreten, ihre Innenteile bleiben
+         also frei (Arme der Bewohner, Raeder, Gondeln). */
+      (function frost(x){
+        for(var i=0;i<x.children.length;i++){var c=x.children[i];
+          if(c._bewegt)continue;
+          c.matrixAutoUpdate=false;tief++;
+          frost(c);}})(o);
+    });
+    window._eingefroren=n;window._eingefrorenTief=tief;}
   function _bewegtMarkieren(){
     [window._seeZug&&window._seeZug.g,window._coaster&&window._coaster.zug].forEach(function(o){if(o)o._bewegt=true;});
     /* 🩹 Schwarm-4: Stadt-Zug, Heli, Ballon, Tiere, Muenzen/Geschenke, Auto, Hund und Kinder
@@ -11180,7 +11198,8 @@ function updFahrgeschaefte(dt){
       f.rotor.rotation.z+=0.2417*dt;continue;}
     var r=_drehRaten[f.typ];
     if(!r||!f.w)continue;
-    if(!f.w._bewegt){f.w._bewegt=true;}
+    /* ⚠️ `_bewegt=true` allein reicht nach dem Einfrieren nicht — siehe _auftauen(). */
+    if(!f.w._bewegt&&window._auftauen)window._auftauen(f.w);
     f.w.rotation.y+=r*dt;}
 }
 function updFahrt(dt){
