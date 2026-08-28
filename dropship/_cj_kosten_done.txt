@@ -3607,3 +3607,72 @@ gid://shopify/Product/15448713724289	CHF 21.27	48 Varianten	Herren Langarmhemd C
 gid://shopify/Product/15448713757057	CHF 20.67	6 Varianten	Herren Langarmhemd mit Kubakragen
 gid://shopify/Product/15448713822593	CHF 22.45	21 Varianten	Business Hemd Langarm Slim-Fit Gestreift
 gid://shopify/Product/15448713855361	CHF 22.32	16 Varianten	Herren Strickjacke Kurzarm Gestreift
+gid://shopify/Product/15448713888129	CHF 19.92	36 Varianten	Herren Leinenhemd mit Revers – Locker geschnitten
+gid://shopify/Product/15448713953665	CHF 31.42	6 Varianten	Slim-Fit T-Shirt mit Kreuz-Print
+gid://shopify/Product/15448714117505	CHF 29.78	4 Varianten	Punk Tie-Dye Weste mit mattem Finish
+gid://shopify/Product/15448714215809	CHF 19.30	24 Varianten	Vintage Cropped T-Shirt aus Baumwolle
+gid://shopify/Product/15448714314113	CHF 25.30	5 Varianten	Herren Strickpullover im Häkel-Look
+gid://shopify/Product/15448714346881	CHF 18.17	20 Varianten	T-Shirt mit Karpfen-Print und Feder-Cape
+gid://shopify/Product/15448714510721	CHF 23.21	25 Varianten	Denim Patch Reversmantel
+gid://shopify/Product/15448714609025	CHF 18.02	18 Varianten	Herren Strickjacke – Freizeit & Alltag
+gid://shopify/Product/15448714674561	CHF 19.78	8 Varianten	Hawaiihemd mit Farbblock-Muster
+gid://shopify/Product/15448714740097	CHF 19.53	48 Varianten	Leinenhemd Kurzarm mit Stehkragen
+gid://shopify/Product/15448714838401	CHF 20.67	81 Varianten	Kurzarmhemd mit Print für Herren
+gid://shopify/Product/15448714969473	CHF 23.95	8 Varianten	Sonnenschutz Kapuzenweste für Herren
+gid://shopify/Product/15448715133313	CHF 19.23	30 Varianten	Ice-Silk Kurzarm-Polohemd für Herren
+gid://shopify/Product/15448715198849	CHF 21.27	24 Varianten	Herren Waffelstrick Langarm Cardigan
+gid://shopify/Product/15448715329921	CHF 21.71	30 Varianten	Herren Waffelpiqué Langarm Cardigan
+gid://shopify/Product/15448715559297	CHF 20.37	6 Varianten	Hemd mit Kettenmuster
+gid://shopify/Product/15448715657601	CHF 19.78	24 Varianten	V-Ausschnitt Langarmshirt für Herren
+gid://shopify/Product/15448715723137	CHF 19.92	30 Varianten	Leinenhemd Langarm – Lässig & Bequem
+gid://shopify/Product/15448715755905	CHF 19.63	18 Varianten	Loose-fit Camouflage Pullover mit langen Ärmeln
+gid://shopify/Product/15448715788673	CHF 19.92	42 Varianten	Kurzarm Cargo Hemd mit Reverskragen
+gid://shopify/Product/15448715886977	CHF 22.91	15 Varianten	Herren Strickpullover mit Streifenmuster
+gid://shopify/Product/15448716018049	CHF 23.80	10 Varianten	Gestreiftes Langarmhemd für Herren
+gid://shopify/Product/15448716050817	CHF 19.01	8 Varianten	Gestreiftes Kurzarmhemd für Herren – Blau
+gid://shopify/Product/15448716116353	CHF 19.08	20 Varianten	Gestreiftes Strick-T-Shirt mit halbem Reissverschl
+gid://shopify/Product/15448716214657	CHF 27.24	25 Varianten	Retro Langarmhemd für Herren
+gid://shopify/Product/15448716509569	CHF 20.22	5 Varianten	Polo-Shirt für Herren mit Textur und Knöpfen
+gid://shopify/Product/15448716673409	CHF 20.94	24 Varianten	Herren Kurzarmhemd aus Baumwoll-Leinen
+gid://shopify/Product/15448716771713	CHF 20.22	10 Varianten	Gestreiftes Freizeit-Oberteil für Herren
+gid://shopify/Product/15448716902785	CHF 25.45	18 Varianten	Freizeitjacke für Herren
+gid://shopify/Product/15448716935553	CHF 55.26	6 Varianten	Gefütterte Winterjacke mit Umlegekragen
+gid://shopify/Product/15448717033857	CHF 41.84	25 Varianten	Herren Zweireiher Sakko mit Revers
+gid://shopify/Product/15448717099393	CHF 51.23	40 Varianten	Herren Slim Fit Sakko Business/Casual
+gid://shopify/Product/15448717197697	CHF 22.76	24 Varianten	Herren Retro-Hemd mit Brusttasche
+gid://shopify/Product/15448717296001	CHF 25.92	18 Varianten	Herren Trenchcoat, mittellang
+gid://shopify/Product/15448717394305	CHF 23.50	6 Varianten	Herren-Übergangsjacke mit Revers und Taschen
+gid://shopify/Product/15448717492609	CHF 23.66	6 Varianten	Legere Herren-Übergangsjacke mit Revers
+gid://shopify/Product/15448717623681	CHF 33.90	18 Varianten	Corduroy-Jeansjacke für Herren mit Kaninchenhaar
+gid://shopify/Product/15448717656449	CHF 22.01	5 Varianten	Herren Business-Weste mit V-Ausschnitt
+gid://shopify/Product/15448717689217	CHF 29.92	5 Varianten	Herren Sakko Slim Fit
+gid://shopify/Product/15448717787521	CHF 20.82	10 Varianten	Herren Sommerhemd mit Polster-Schultern
+gid://shopify/Product/15448717820289	CHF 24.25	5 Varianten	Herren-Weste, zweireihig, einfarbig
+gid://shopify/Product/15448717853057	CHF 25.30	7 Varianten	Herren Übergangsjacke mit Revers und Blumenprint
+gid://shopify/Product/15448717918593	CHF 23.93	20 Varianten	Vielseitige Strickjacke für Herren
+gid://shopify/Product/15448718049665	CHF 35.60	32 Varianten	Herren Übergangs-Trenchcoat im Retro-Stil
+gid://shopify/Product/15448718180737	CHF 48.09	15 Varianten	Gestreifter Business-Anzug für Herren
+gid://shopify/Product/15448718344577	CHF 26.94	5 Varianten	Herren Anzug, Slim Fit, Dunkelblau
+gid://shopify/Product/15448718442881	CHF 18.32	40 Varianten	Retro Steampunk Weste für Herren
+gid://shopify/Product/15448718541185	CHF 19.92	24 Varianten	Herren Cord-Strickjacke mit Stehkragen
+gid://shopify/Product/15448718639489	CHF 31.46	91 Varianten	Doppelreihiger Casual Blazer für Herren
+gid://shopify/Product/15448718672257	CHF 29.64	20 Varianten	Stylische Slim-Fit Übergangsjacke für Herren
+gid://shopify/Product/15448718737793	CHF 37.97	19 Varianten	Gefütterte Baumwolljacke für Herren
+gid://shopify/Product/15448718803329	CHF 19.23	4 Varianten	Ultraleichte Velo- und Outdoor-Handy-Weste
+gid://shopify/Product/15448718967169	CHF 32.16	10 Varianten	Herren Loose-Fit Bestickte Jacke
+gid://shopify/Product/15448719032705	CHF 38.13	10 Varianten	Herren Sakko „Ananas“ – ultradünn & lässig
+gid://shopify/Product/15448719098241	CHF 50.07	12 Varianten	Herren Slim-Fit Stehkragen-Jacke
+gid://shopify/Product/15448719163777	CHF 69.83	12 Varianten	Kurze Shearling-Jacke für Herren mit Fellfutter
+gid://shopify/Product/15448719196545	CHF 18.59	35 Varianten	Herren Cord-Hemd Langarm
+gid://shopify/Product/15448719262081	CHF 34.11	8 Varianten	Herren Slim-Fit Lederjacke mit Reverskragen
+gid://shopify/Product/15448719360385	CHF 23.95	45 Varianten	Freizeit-Sakko mit Digitaldruck
+gid://shopify/Product/15448719425921	CHF 36.69	4 Varianten	Wintermantel für Herren – Braun, lässig & warm
+gid://shopify/Product/15448719655297	CHF 19.92	35 Varianten	Business-Casual Anzug Colorblock für junge Männer
+gid://shopify/Product/15448719786369	CHF 18.90	18 Varianten	Business Casual Mantel
+gid://shopify/Product/15448719982977	CHF 20.53	30 Varianten	Herren Strick-Cardigan-Weste
+gid://shopify/Product/15448720048513	CHF 18.02	63 Varianten	Kimono Jacke für Herren
+gid://shopify/Product/15448720146817	CHF 55.66	10 Varianten	Bestickte Freizeitjacke für Herren
+gid://shopify/Product/15448720310657	CHF 24.93	10 Varianten	V-Neck Strickpullover im Retro-Stil
+gid://shopify/Product/15448720343425	CHF 30.82	50 Varianten	Leichter Herren Cardigan aus reiner Wolle
+gid://shopify/Product/15448720441729	CHF 69.77	12 Varianten	Herren Kaschmir-Kurzmantel Doubleface
+gid://shopify/Product/15448720540033	CHF 26.20	27 Varianten	Herren Retro Übergangsjacke mit Revers
