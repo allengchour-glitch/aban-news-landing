@@ -8,3 +8,5 @@
 06-00000000.png	2026-08-28 17:22:46	Schritt 4	bekannt	{'task:ansichten-sammeln': 2, 'rule:ladebildschirm-abwarten': 2, 'ansicht-gesammelt': 1}
 07-03030403.png	2026-08-28 17:23:55	Schritt 7	bekannt	{'task:ansichten-sammeln': 3, 'taps': 3, 'ansicht-gesammelt': 2}
 08-02040202.png	2026-08-28 17:25:51	Schritt 10	bekannt	{'taps': 7, 'task:ansichten-sammeln': 5, 'ansicht-gesammelt': 3}
+09-02010201.png	2026-08-28 17:33:05	Schritt 16	bekannt	{'taps': 10, 'task:ansichten-sammeln': 8, 'ansicht-gesammelt': 4}
+10-04030303.png	2026-08-28 17:37:20	Schritt 20	bekannt	{'taps': 12, 'task:ansichten-sammeln': 10, 'ansicht-gesammelt': 5}
