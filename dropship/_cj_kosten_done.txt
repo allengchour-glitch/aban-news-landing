@@ -4544,3 +4544,4 @@ gid://shopify/Product/15448912331137	CHF 54.99	1 Varianten	H10 Dual-Kamera Sport
 gid://shopify/Product/15448912363905	CHF 18.77	1 Varianten	Aromatherapie-Uhrenarmband aus Metall
 gid://shopify/Product/15448912396673	CHF 32.61	1 Varianten	Sportliche Herrenuhr für Training & Outdoor
 gid://shopify/Product/15448912462209	CHF 37.39	1 Varianten	Multifunktionales Sport-Armband mit Herzfrequenzme
+gid://shopify/Product/15448912494977	CHF 43.21	1 Varianten	F600 Fitness-Smartwatch mit Aktivitäts-Tracking
