@@ -348,7 +348,7 @@ for(const p of cand){
  const media=imgs.slice(1).map((u,i)=>({originalSource:u,mediaContentType:'IMAGE',alt:(title+' – Bild '+(i+2)+' | LuxeStyle').slice(0,120)}));
  if(media.length)await sgql(st,MED,{id:pid,m:media});
  // Hausregel 12.08.: Klingen (auch Küchenmesser) nie in den Google-Kanal.
- const klinge=/\b(messer|klinge\w*|dolch|machete|axt|beil|schwert|katana)/i.test(title)
+ const klinge=/(?<![\wäöüß])[\wäöüß]*(messer|klinge\w*|dolch|machete|schwert|katana|axt|beil)(?![\wäöüß])/i.test(title)
    &&!/jeans|kleid|hose|shirt|hoodie|wasch|deko|figur|anhänger|halskette|ohrring|spielzeug|plüsch|kostüm/i.test(title);
  // ⚠️ MIT QUITTUNG (22.08.2026): Frueher wurde die Antwort nie gelesen — faellt eine
  // einzelne Publikation aus, fehlt das Produkt still in genau diesem Kanal. Belegt am

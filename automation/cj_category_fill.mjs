@@ -436,7 +436,7 @@ async function sgql(t,q,v){
 }
 // Hausregel 12.08.: Klingen (auch Küchenmesser) NIE in den Google-Kanal — kein Richtlinien-
 // verstoss, aber Sperr-Risiko. Fashion-/Deko-Fehltreffer (Machete-Jeans, Katana-Figur) bleiben drin.
-const KLINGE=/\b(messer|klinge\w*|dolch|machete|axt|beil|schwert|katana)/i;
+const KLINGE=/(?<![\wäöüß])[\wäöüß]*(messer|klinge\w*|dolch|machete|schwert|katana|axt|beil)(?![\wäöüß])/i;
 const KLINGE_AUSN=/jeans|kleid|hose|shirt|hoodie|wasch|deko|figur|anhänger|halskette|ohrring|spielzeug|plüsch|kostüm/i;
 function pubsFuer(title){
  if(KLINGE.test(title||'')&&!KLINGE_AUSN.test(title||''))
