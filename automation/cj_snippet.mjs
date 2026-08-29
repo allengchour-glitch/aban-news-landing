@@ -27,10 +27,18 @@ const HEIKEL = /\b(blutzucker|blutdruck|ekg|harnsäure|heilt|therapie|krebs|diab
 const FREMDMARKE = /\b([A-ZÄÖÜ][a-zäöüß]+ ){5,}/;
 const MAXLEN = 155;   // darüber schneidet Google ab
 
+// ⚠️ NUMERISCHE Entities mitentschlüsseln. Der erste Live-Import nach dem Einbau schrieb
+// «Gefrostete PU-Oberfl&#228;che» ins Google-Snippet: die Liste kannte `&amp;` und `&quot;`,
+// aber nicht `&#228;` (ä). CJ-Beschreibungen sind voll davon. Eine Auslassungsliste von
+// Entities ist immer unvollständig — die Zahlenform muss allgemein aufgelöst werden.
+const ENTITY = { amp: '&', nbsp: ' ', quot: '"', apos: "'", lt: '<', gt: '>',
+                 auml: 'ä', ouml: 'ö', uuml: 'ü', Auml: 'Ä', Ouml: 'Ö', Uuml: 'Ü',
+                 szlig: 'ß', eacute: 'é', egrave: 'è', agrave: 'à', deg: '°', euro: '€' };
 const nurText = (s) => (s || '')
   .replace(/<[^>]+>/g, ' ')
-  .replace(/&amp;/g, '&').replace(/&nbsp;/g, ' ').replace(/&quot;/g, '"')
-  .replace(/&#39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+  .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
+  .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(parseInt(d, 10)))
+  .replace(/&([a-zA-Z]+);/g, (m, n) => (n in ENTITY ? ENTITY[n] : m))
   .replace(/\s+/g, ' ').trim();
 
 function ersterSatz(html) {

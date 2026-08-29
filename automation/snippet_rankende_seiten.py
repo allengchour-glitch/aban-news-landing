@@ -25,8 +25,20 @@ deshalb mitgelesen und unverändert mitgeschickt; sonst wäre er nach dem Lauf l
 ⚠️ NUR die rankenden Seiten (`dropship/_rankings_semrush.csv`). Über 46'000 Produkte zu
 laufen wäre möglich, aber der Nutzen entsteht dort, wo Google die Seite schon zeigt.
 
+ZWEITER MODUS `MODUS=katalog` (29.08.2026): Semrush zeigt für luxestyle.ch **keine einzige
+Platzierung auf Seite 1** — die Kassengänge aus der Suche stammen also aus dem langen
+Schwanz, aus Anfragen, die kein Ranking-Werkzeug verfolgt. Damit ist JEDE Produktseite ein
+Los, und ein Baustein-Snippet verschenkt es. Der Katalogmodus geht den Bestand in Tagesraten
+durch (Cursor + Ledger, `CAP` je Lauf), damit er sich nicht mit dem CJ-Grind um Shopifys
+Eimer prügelt.
+
+⚠️ Ein Massen-Schreiber ist die Klasse, die am 15.08. 149 Produkte beschädigt hat. Deshalb:
+schreibt NUR in ein leeres oder Baustein-Feld, nimmt den Satz WÖRTLICH aus demselben
+Produkt, fasst die Beschreibung selbst nie an, und ist durch `CAP` gedeckelt.
+
 Nutzung:  DRY=1 python3 automation/snippet_rankende_seiten.py
           python3 automation/snippet_rankende_seiten.py
+          MODUS=katalog CAP=300 python3 automation/snippet_rankende_seiten.py
 """
 import html, json, os, re, sys, time, urllib.request
 
@@ -137,10 +149,83 @@ def baue(titel, beschreibung):
     return s, None
 
 
+CURSOR = 'dropship/_snippet_katalog_cursor.txt'
+
+
+def schreibe(n):
+    """Setzt das Snippet eines Produkts. Gibt (gesetzt, grund) zurueck."""
+    alt = n['seo']['description'] or ''
+    if alt and not FLOSKEL.search(alt):
+        return False, 'hat schon eigenen Text'
+    neu, grund = baue(n['title'], n['descriptionHtml'])
+    if not neu:
+        return False, grund
+    if DRY:
+        print(f'  {n["title"][:40]:42} → {neu[:70]}')
+        return False, 'DRY'
+    # ⚠️ seo-Titel MITSCHICKEN — das seo-Objekt wird komplett ersetzt.
+    r = gql("""mutation($p:ProductInput!){productUpdate(input:$p){
+                product{id} userErrors{field message}}}""",
+            {'p': {'id': n['id'],
+                   'seo': {'title': n['seo']['title'], 'description': neu}}})
+    e = (r.get('productUpdate') or {}).get('userErrors') or []
+    if e:
+        return False, str(e)
+    return True, neu
+
+
+def katalog(fertig):
+    """Geht den aktiven Katalog in Tagesraten durch."""
+    cur = None
+    if os.path.exists(CURSOR):
+        cur = (open(CURSOR, encoding='utf-8').read().strip() or None)
+    gesetzt = geprueft = 0
+    leer_in_folge = 0
+    while gesetzt < CAP:
+        nach = json.dumps(cur) if cur else 'null'
+        d = gql('{products(first:50,after:%s,query:"status:active"){pageInfo{hasNextPage endCursor}'
+                ' nodes{id title status seo{title description} descriptionHtml}}}' % nach)
+        p = d.get('products')
+        if not p:
+            # Stumme Antwort ist KEIN Katalogende (Lehre 21.08.) — Pause statt FERTIG.
+            print('PAUSE (Shopify antwortete nicht) — kein Fortschritt vermerkt')
+            return
+        for n in p['nodes']:
+            geprueft += 1
+            h = n['id'].rsplit('/', 1)[-1]
+            if h in fertig:
+                continue
+            ok, grund = schreibe(n)
+            if DRY and grund == 'DRY':
+                gesetzt += 1          # sonst begrenzt CAP den Trockenlauf nicht
+            if ok:
+                gesetzt += 1
+                with open(LEDGER, 'a', encoding='utf-8') as f:
+                    f.write(f'{h}\t{grund}\n')
+                time.sleep(0.35)
+            if gesetzt >= CAP:
+                break
+        cur = p['pageInfo']['endCursor']
+        with open(CURSOR, 'w', encoding='utf-8') as f:
+            f.write(cur or '')
+        if not p['pageInfo']['hasNextPage']:
+            print(f'Katalog einmal durch — Cursor zurueckgesetzt. {gesetzt} gesetzt.')
+            os.path.exists(CURSOR) and os.remove(CURSOR)
+            return
+        leer_in_folge = 0 if gesetzt else leer_in_folge + 1
+        if leer_in_folge > 60:      # 3000 Produkte ohne einen einzigen Treffer
+            print(f'{geprueft} geprueft, nichts zu tun in diesem Abschnitt.')
+            return
+    print(f'{gesetzt} Snippet(s) gesetzt (von {geprueft} geprueft) — Tagesrate erreicht.')
+
+
 def main():
     fertig = set()
     if os.path.exists(LEDGER):
         fertig = {l.split('\t')[0] for l in open(LEDGER, encoding='utf-8') if l.strip()}
+
+    if os.environ.get('MODUS') == 'katalog':
+        return katalog(fertig)
 
     handles = []
     for z in open(QUELLE, encoding='utf-8'):
