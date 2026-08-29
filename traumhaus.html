@@ -9732,7 +9732,10 @@ function komboEnde(){
     if(KOMBO._neuerRekord)txt="🏆 NEUER REKORD! "+KOMBO.n+" in Folge"+(KOMBO.verdient>0?" · +"+KOMBO.verdient+" $ extra":"");
     hint(txt);
     if(KOMBO._neuerRekord&&typeof launchFirework==="function"&&sims&&sims[0])launchFirework(sims[0].x,sims[0].z);}
-  KOMBO.n=0;KOMBO.t=0;KOMBO.verdient=0;KOMBO._neuerRekord=false;komboHudUpd();}
+  var stark=KOMBO.n>=5;
+  KOMBO.n=0;KOMBO.t=0;KOMBO.verdient=0;KOMBO._neuerRekord=false;komboHudUpd();
+  /* Erst zuruecksetzen, dann einladen — sonst laeuft die alte Kette in die neue Runde. */
+  if(stark)hetzeEinladung();}
 function komboTakt(dt){
   if(KOMBO.n<=0)return;
   KOMBO.t-=dt;
@@ -9781,7 +9784,24 @@ function komboHudUpd(){
    verdiene). Waere es anders, waere die beste Strategie, sie endlos zu wiederholen —
    und das Spiel darum herum waere egal. Der Reiz ist der Rekord, nicht die Kasse. */
 var HETZE={an:false,t:0,dauer:90,punkte:0,best:0,kette:0,_piep:0};
+/* Die Einladung. Sie erscheint GENAU EINMAL und nur, wenn gerade eine starke Serie
+   geendet hat: dann ist die Spielerin warm, es passiert nichts anderes, und die Frage
+   "noch neunzig Sekunden?" trifft den Moment. Ausserhalb dieses Fensters waere ein
+   Fenster mitten im Spiel eine Zumutung — darum die drei harten Bedingungen. */
+function hetzeEinladung(){
+  if(stats.hetzeEinladung)return false;
+  if(HETZE.an||(stats.hetzen||0)>0)return false;
+  stats.hetzeEinladung=1;
+  var e=document.getElementById("hetzeErg");
+  if(e)e.innerHTML='<div style="font-size:1.4rem;font-weight:900">🏁 Lust auf eine Hetze?</div>'+
+    '<div style="font-size:.92rem;margin-top:9px;line-height:1.45">Neunzig Sekunden, in denen <b>jeder Verdienst zaehlt</b>. '+
+    'Die Serie multipliziert mit \u2014 je l\u00e4nger die Kette, desto mehr Punkte. Am Ende steht dein Rekord.<br>'+
+    '<small style="color:#8a7a5a">Sp\u00e4ter jederzeit \u00fcber den 🏆-Knopf.</small></div>';
+  var b=document.getElementById("hetzeNochmal");if(b)b.textContent="🏁 Los";
+  var p1=document.getElementById("hetzePanel");if(p1)p1.style.display="flex";
+  return true;}
 function hetzeStart(){
+  var b0=document.getElementById("hetzeNochmal");if(b0)b0.textContent="🔁 Nochmal";
   HETZE.an=true;HETZE.t=HETZE.dauer;HETZE.punkte=0;HETZE.kette=0;HETZE._piep=99;
   /* Jede Hetze faengt bei null an — sonst startet man mit einer vorgewaermten Serie
      und der Rekord haengt daran, was VOR dem Startknopf passiert ist. */
@@ -9806,6 +9826,11 @@ function hetzeEnde(){
   HETZE.an=false;HETZE.t=0;
   var rek=HETZE.punkte>HETZE.best;
   if(rek)HETZE.best=HETZE.punkte;
+  /* Zaehler fuer die Ziele — erst dadurch taucht die Hetze ueberhaupt in der
+     Erfolgsliste auf, und damit auch in "Am naechsten dran". */
+  stats.hetzen=(stats.hetzen||0)+1;
+  if(HETZE.punkte>(stats.hetzeBest||0))stats.hetzeBest=HETZE.punkte;
+  if(HETZE.kette>(stats.hetzeKette||0))stats.hetzeKette=HETZE.kette;
   hetzeHudUpd();
   var e=document.getElementById("hetzeErg");
   if(e)e.innerHTML='<div style="font-size:1.5rem;font-weight:900">'+(rek?"🏆 NEUER REKORD!":"🏁 Hetze vorbei")+'</div>'+
@@ -9888,7 +9913,13 @@ var ACH=[
  ["schleckmaul","🍦","Schleckmaul","3 Eis am Seepark gekauft",function(){return (stats.eis||0)>=3;}],
  ["torjaeger","⚽","Torjäger","3 Tore auf dem Sportplatz geschossen",function(){return (stats.tore||0)>=3;}],
  ["navigator","🧭","Navigator","Mit dem GPS-Wegpunkt ein Ziel erreicht",function(){return (stats.gpsZiele||0)>=1;}],
- ["entenpaar","🦆","Entenpaar","Zu zweit am See gefüttert",function(){return (stats.entenKoop||0)>=1;}]
+ ["entenpaar","🦆","Entenpaar","Zu zweit am See gefüttert",function(){return (stats.entenKoop||0)>=1;}],
+ /* 🏁 Die Hetze lag hinter einem unbeschrifteten Emoji-Knopf — ohne eigene Ziele
+    findet sie niemand, und was niemand findet, ist nichts wert. Ueber diese drei
+    Eintraege steht sie in der Erfolgsliste UND in "Am naechsten dran". */
+ ["hetzer","🏁","Auf Zeit","Eine 90-Sekunden-Hetze gespielt",function(){return (stats.hetzen||0)>=1;}],
+ ["hetzeprofi","⏱️","Rekordjäger","5 Hetzen gespielt",function(){return (stats.hetzen||0)>=5;}],
+ ["hetzekoenig","💸","Goldene Neunzig","1000 $ in einer einzigen Hetze",function(){return (stats.hetzeBest||0)>=1000;}]
 ];
 /* 🎯 DER LETZTE METER. Vierzig Erfolge lagen im Menue — und alle sahen gleich weit
    weg aus, weil keiner einen Zwischenstand trug. "5 Ernten" liest sich bei 0 exakt wie
@@ -9920,7 +9951,9 @@ var ACHFORT={
  abnahme5:[function(){return wohnstufe;},5,"Wohnstufe"],
  missmeister:[function(){return missSerie+(missHeute&&missHeute.bonus?1:0);},3,"Tag"],
  schleckmaul:[function(){return stats.eis||0;},3,"Eis"],
- torjaeger:[function(){return stats.tore||0;},3,"Tor"]
+ torjaeger:[function(){return stats.tore||0;},3,"Tor"],
+ hetzeprofi:[function(){return stats.hetzen||0;},5,"Hetze"],
+ hetzekoenig:[function(){return stats.hetzeBest||0;},1000,null]
 };
 /* Dieselbe Lehre wie bei checkAch: eine werfende Bedingung darf nicht den ganzen
    Rest mitreissen. Hier kostet ein Fehler genau einen Balken. */
