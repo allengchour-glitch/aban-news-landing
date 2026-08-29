@@ -4832,3 +4832,52 @@ gid://shopify/Product/15448932516225	CHF 14.91	1 Varianten	High-Crown Fluffy Dua
 gid://shopify/Product/15448932548993	CHF 22.16	1 Varianten	Kabelloser 2-in-1 Haarglätter und Lockenstab mit I
 gid://shopify/Product/15448932614529	CHF 12.68	1 Varianten	Kabelloser Negative-Ionen Haarglätter mit Sprühfun
 gid://shopify/Product/15448932647297	CHF 15.73	1 Varianten	Handlicher 10mm Lockenstab für kleine Wellen
+gid://shopify/Product/15448932942209	cj-abgekuendigt-pruefen
+gid://shopify/Product/15448933958017	CHF 18.71	1 Varianten	Curling Iron mit negativen Ionen für Wasserwellen
+gid://shopify/Product/15448934023553	CHF 16.33	1 Varianten	Warmluftbürste für Locken und Glätten
+gid://shopify/Product/15448934056321	CHF 30.10	1 Varianten	Wasserdichte Gesichtsreinigungsbürste mit 5 Aufsät
+gid://shopify/Product/15448934220161	CHF 58.65	1 Varianten	Kabellose Ionen-Glättbürste mit 12 Heizstufen
+gid://shopify/Product/15448934252929	CHF 32.68	1 Varianten	Mitesser-Entferner-Set aus Edelstahl, 7-teilig
+gid://shopify/Product/15448934318465	CHF 53.25	1 Varianten	Elektrischer Folienrasierer für Männer
+gid://shopify/Product/15448934351233	CHF 14.57	1 Varianten	Satin Lockenwickler ohne Hitze
+gid://shopify/Product/15448934416769	CHF 16.30	1 Varianten	Seiden-Satin-Haube für Locken & Wellen
+gid://shopify/Product/15448934515073	CHF 16.33	1 Varianten	Seiden-Satin-Haarhaube für die Nacht
+gid://shopify/Product/15448934547841	CHF 16.38	1 Varianten	Schwarze Satin-Schlafhaube für Locken & Glanz
+gid://shopify/Product/15448934613377	CHF 14.57	1 Varianten	Satin Lockenwickler für Hitzefreie Wellen
+gid://shopify/Product/15448934941057	CHF 16.31	1 Varianten	Seiden-Satin Schlafhaube für alle Haartypen
+gid://shopify/Product/15448934973825	CHF 18.64	1 Varianten	Mikrofaser Haarhandtuch Turban 3er-Set
+gid://shopify/Product/15448935006593	CHF 17.26	1 Varianten	Microneedling Derma Roller 0.25 mm
+gid://shopify/Product/15448935104897	CHF 50.57	1 Varianten	Photon Gesichtsmaske
+gid://shopify/Product/15448935170433	CHF 27.43	1 Varianten	Rotlicht-Gesichtsmaske für weichere Haut
+gid://shopify/Product/15448935235969	CHF 15.32	1 Varianten	Nano-Ionen Gesichtsbedampfer
+gid://shopify/Product/15448935367041	CHF 58.45	1 Varianten	Photonen-Gesichtsmaske für Hautverjüngung
+gid://shopify/Product/15448935793025	CHF 49.30	1 Varianten	Hautpflege-Gerät mit Photonentechnologie
+gid://shopify/Product/15448935858561	CHF 14.14	1 Varianten	Nano-Ionen Gesichts- und Augenspray
+gid://shopify/Product/15448936022401	CHF 36.41	1 Varianten	Automatisches Sprudelbad-Gerät
+gid://shopify/Product/15448936317313	CHF 30.77	1 Varianten	Kabellose LED Silikonmaske für zuhause
+gid://shopify/Product/15448936415617	CHF 16.72	1 Varianten	Sauerstoff-Infusionsgerät für Zuhause
+gid://shopify/Product/15448936513921	CHF 88.20	1 Varianten	Gesichtsdampfer für umfassende Pflege
+gid://shopify/Product/15448936612225	CHF 27.82	1 Varianten	Multifunktionaler Hals- und Dekolleté-Massager
+gid://shopify/Product/15448936644993	CHF 19.16	1 Varianten	Gesichtsdampfer mit Warm- und Kaltfunktion
+gid://shopify/Product/15448936710529	CHF 20.63	2 Varianten	Aroma Diffuser mit farbigem Flammen-Effekt
+gid://shopify/Product/15448936743297	CHF 29.22	5 Varianten	7-Farben LED Lichttherapie Maske
+gid://shopify/Product/15448936808833	CHF 24.51	1 Varianten	Multifunktionaler Haarschneider für Herren
+gid://shopify/Product/15448936841601	CHF 25.74	1 Varianten	5-in-1 Haarschneider-Set für Herren
+gid://shopify/Product/15448936939905	CHF 8.31	1 Varianten	Pilz Luftbefeuchter mit Umgebungslicht
+gid://shopify/Product/15448936972673	CHF 9.48	1 Varianten	Bluetooth Schlafmaske für lange Wimpern
+gid://shopify/Product/15448937005441	CHF 92.75	1 Varianten	LED-Photonenmaske mit Hals- und Hautpflege
+gid://shopify/Product/15448937070977	CHF 35.48	1 Varianten	Ganzjahres Katzenhöhle
+gid://shopify/Product/15448937136513	CHF 66.85	1 Varianten	Katzenbett "Moonlight" – Transparente Raumkapsel
+gid://shopify/Product/15448937267585	CHF 79.96	1 Varianten	Kompakter U-förmiger Kratzbaum mit Sisal
+gid://shopify/Product/15448937398657	CHF 53.72	1 Varianten	Kratzbaum Kaktus mit Katzenhöhle
+gid://shopify/Product/15448937431425	CHF 68.69	1 Varianten	Kuscheliges All-Season Haustierzelt
+gid://shopify/Product/15448937496961	CHF 72.38	1 Varianten	Kokosnussbaum Katzenbett mit Klettergerüst
+gid://shopify/Product/15448937562497	CHF 103.04	1 Varianten	Katzenbett aus Holz für kleine Hunde
+gid://shopify/Product/15448937595265	CHF 20.88	1 Varianten	Kuscheliges Winterbett für Katzen
+gid://shopify/Product/15448937660801	CHF 336.95	1 Varianten	Massivholz-Kratzbaum für Katzen
+gid://shopify/Product/15448937726337	CHF 25.05	1 Varianten	Geflochtenes Katzenbett mit Kratzbaum
+gid://shopify/Product/15448937824641	CHF 200.61	1 Varianten	Sisal-Kratzbaum mit Liegefläche für Katzen
+gid://shopify/Product/15448937890177	CHF 54.93	1 Varianten	Katzenbaum mit Kratzstamm Kaktus
+gid://shopify/Product/15448937955713	CHF 194.61	1 Varianten	Massivholz-Katzenbaum mit Rattan-Bett
+gid://shopify/Product/15448938021249	CHF 116.25	1 Varianten	Kompakter Kratzbaum mit Kuschelnest
+gid://shopify/Product/15448938054017	CHF 336.34	1 Varianten	Holz-Katzenbaum «Weltraumkapsel»
