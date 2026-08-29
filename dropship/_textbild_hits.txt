@@ -13127,3 +13127,4 @@ gid://shopify/Product/15516233236865	20->1	Armband für Smartwatch – geflochte
 gid://shopify/Product/15516233302401	41->0	Kreativer Wecker aus Aluminium, leuchtend
 gid://shopify/Product/15516233597313	52->3	Metall-Armband für Apple Watch
 gid://shopify/Product/15516233761153	123->1	Doppelführleine für Hunde
+gid://shopify/Product/15516234023297	95->2	Elegantes Pailletten-Abendkleid mit Schlitz
