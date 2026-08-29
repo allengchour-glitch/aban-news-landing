@@ -6423,8 +6423,14 @@ setTimeout(function baueGebaeude(){
       var sock=new THREE.Mesh(new THREE.CylinderGeometry(15,21,sockH,7),felsSockelM);
       sock.position.set(BERG.x,BERGY-sockH/2,BERG.z);sock.rotation.y=winkel;
       sock.scale.z=1.5;                                   // laengs zur Bahn gestreckt
+      /* TRAEGT: der Felssockel und die Platte darauf sind der Boden der Bergstation.
+         Wer sie nicht kennt, haelt Berghuette, Gipfelkreuz und Felsen fuer schwebend —
+         genau das meldete th-boden.mjs, weil beide keine geladenen Modelle sind und
+         darum nicht in window._gebaeude stehen. */
+      sock.userData.traegt=1;
       sock.receiveShadow=true;sock.castShadow=true;scene.add(sock);
       var gel=new THREE.Mesh(new THREE.BoxGeometry(24,0.3,34),stdMat(0x8f9aa6,0.8));
+      gel.userData.traegt=1;
       gel.position.set(BERG.x,BERGY+0.15,BERG.z);gel.rotation.y=winkel;
       gel.receiveShadow=true;scene.add(gel);
       /* Gelaender rundum — sonst wirkt die Aussichtsplattform ungesichert */

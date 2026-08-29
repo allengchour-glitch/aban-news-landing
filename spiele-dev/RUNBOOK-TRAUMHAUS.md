@@ -2852,3 +2852,35 @@ Sportpark seinen Wunschplatz (0|246 statt −14|250, 10 m statt 20 m Ausweichweg
 braucht dort nur **einen** Anschluss statt zwei. Es gibt eine Sache weniger zu prüfen,
 nicht eine Prüfung weniger, die besteht. Dasselbe erklärt die 28 Stellen weniger auf
 dem Belag.
+
+## th-boden vollständig: drei Wasserflächen, tragende Bauteile, Aufgesetztes
+
+Die erste Fassung prüfte **eine** Wasserfläche über `_seeUfer`. `window._wasser`
+führt aber drei:
+
+| | Ausdehnung | |
+|---|---|---|
+| Meer | x −332 … −132, z ±170 | 68 000 m² |
+| Fluss | x −120 … 80, z −94 … −87 | 1 400 m² |
+| Seepark-See | x ±13,7, z 133 … 161 | 759 m² |
+
+Meer und Fluss waren blinde Flecken. Beide sind sauber — aber das weiss man erst,
+seit es geprüft wird. Brücken, Stege, Boote und Pontons dürfen über Wasser sein.
+
+### Zwei Regeln, damit die Ausgabe bei heiler Welt leer ist
+
+Ein Werkzeug, dessen Normalzustand „6 Meldungen, alle erklärbar" ist, taugt nicht als
+Wächter — beim siebten schaut niemand hin. Also zwei fehlende Fälle nachgetragen:
+
+* **Tragende Bauteile sind nicht immer geladene Modelle.** Der Felssockel und die
+  Platte der Bergstation sind prozedurale Meshes und stehen nicht in `_gebaeude`;
+  Berghütte, Gipfelkreuz und die beiden Felsen darauf galten deshalb als schwebend.
+  Beide tragen jetzt `userData.traegt = 1`, und das Werkzeug sammelt sie mit ein.
+* **Aufgesetztes.** Die Windmühlenflügel sitzen auf halber Turmhöhe — der Träger ragt
+  also *höher* als die Unterkante des Teils und fällt durch die „steht darauf"-Regel.
+  Neue Bedingung: umschliesst einer der beiden den anderen im Grundriss, sitzt er auf
+  ihm. Das deckt Rotoren auf Masten und Schilder an Wänden ab.
+
+**Stand: 0 im Fels, 0 schwebend, 0 im Wasser — bei 54 benannten Ausnahmen.** Die
+Ausnahmen werden gezählt und angezeigt, nicht stillschweigend weggefiltert; sinkt die
+Zahl unerwartet, ist auch das ein Signal.
