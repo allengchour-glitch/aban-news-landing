@@ -5062,3 +5062,9 @@ gid://shopify/Product/15448953520513	CHF 31.07	4 Varianten	Kletter-, Höhlen- un
 gid://shopify/Product/15448953684353	CHF 9.45	5 Varianten	Kinder-Velohelm für Skate & Roller
 gid://shopify/Product/15448953782657	CHF 10.57	7 Varianten	Vielseitiger Outdoor-Fahrradhelm (verstellbar) · G
 gid://shopify/Product/15448953815425	CHF 12.03	7 Varianten	Vielseitiger Outdoor-Fahrradhelm · Grösse L Adjust
+gid://shopify/Product/15448953880961	CHF 12.34	21 Varianten	Plum Scooter Helm für Outdoor-Sport
+gid://shopify/Product/15448954110337	CHF 15.96	9 Varianten	Retro-Halbschalenhelm für E-Motorräder
+gid://shopify/Product/15448954208641	CHF 21.80	10 Varianten	Velo- und Skates-Helm für Erwachsene und Kinder
+gid://shopify/Product/15448954470785	CHF 20.11	28 Varianten	Kinder Velohelm mit Cartoon-Motiven
+gid://shopify/Product/15448954536321	CHF 20.83	16 Varianten	Winter-Velohelm mit Anti-Beschlag Visier
+gid://shopify/Product/15448954569089	CHF 9.69	2 Varianten	Velo-Sturmhaube mit UV-Schutz
