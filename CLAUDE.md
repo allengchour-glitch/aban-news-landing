@@ -508,6 +508,39 @@ ebenso verwirrend: drei bedruckbare T-Shirts zu drei Preisen.
 - **Lehre: Bevor man eine rankende Seite optimiert, prüft man, ob sie gegen die eigenen
   Geschwister antritt.** Sonst verbessert man eine Seite, deren Problem woanders liegt.
 
+## 🧱 Der zweite Baustein fand sich erst im Ergebnis — nicht in der Liste (2026-08-29)
+Der Katalogmodus des Snippet-Laufs schrieb bei fünf Produkten
+**«🛍️ Das könnte dir auch gefallen: Damenmode · Bestseller Grösse: XS, S, M …»** als
+Google-Suchergebnis — darunter zwei POD-Seiten, die bestplatzierten des Shops. Meine
+Bausteinliste kannte Versand- und Trust-Blöcke, aber keinen QUERVERWEIS-Block.
+**Alle eigenen Wachen meldeten dabei «0 auffällig».** Gefunden habe ich es nur, weil ich
+eine Stichprobe der geschriebenen Texte GELESEN habe statt sie zu zählen.
+- **Zweite Fassung derselben Lehre vom selben Tag** (Versandhinweis vor dem Produkttext,
+  Versandzeile in der Merkmalsliste): **Eine Liste bekannter Bausteine ist immer
+  unvollständig. Den nächsten findet man nicht in der Liste, sondern im Ergebnis** — also
+  gehört nach jedem Massenlauf eine gelesene Stichprobe, nicht nur eine Prüfsumme.
+- Behoben in BEIDEN Wachen (`snippet_rankende_seiten.py` und `cj_snippet.mjs` — der
+  Importer hätte den Fehler sonst bei jedem neuen Produkt neu angelegt).
+- Die fünf stehen jetzt bewusst auf dem Baustein: ihr Beschreibungstext besteht nur aus
+  Bausteinen, es gibt nichts Echtes zu zitieren. **Ein langweiliges Suchergebnis ist besser
+  als ein falsches.**
+- ⚠️ **Und eine Falle im eigenen Prüfwerkzeug:** Meine Nachkontrolle las den LEDGER, nicht
+  den Shop — sie meldete die fünf noch als kaputt, obwohl sie live längst repariert waren.
+  Ein Ledger hält fest, was einmal geschrieben wurde, nicht was jetzt gilt.
+
+## ✅ Der Importer-Fix ist an einem echten Import belegt — samt einem Folgefehler (2026-08-29)
+Um 12:06 legte der Grind das erste Produkt nach dem Einbau von `cj_snippet.mjs` an:
+«Neue horizontale Herrentasche» trägt einen echten Suchergebnis-Text, alles davor den
+Baustein. Damit ist die Quellenkorrektur nicht behauptet, sondern gemessen.
+**Und genau dieser eine Live-Fall zeigte einen Fehler, den kein Test gefunden hatte:**
+im Snippet stand «Gefrostete PU-**Oberfl&#228;che**». Meine Entschlüsselung kannte `&amp;`
+und `&quot;`, aber nicht die ZAHLENFORM `&#228;` — und CJ-Beschreibungen sind voll davon.
+**Eine Aufzählungsliste von HTML-Entities ist immer unvollständig; die Zahlenform muss
+allgemein aufgelöst werden** (`&#NNN;` und `&#xHH;`). Der Python-Zweig war nie betroffen,
+weil er `html.unescape` benutzt — die Standardbibliothek kennt alle.
+**Lehre: Ein Quellenfix gilt erst, wenn ein echtes Erzeugnis davon vorliegt.** Vier
+Testfälle liefen sauber durch; der erste echte Import hatte trotzdem einen Fehler.
+
 ## 📉 Der Shop rankt auf KEINER Seite 1 — und verkauft trotzdem über die Suche (2026-08-29)
 Gegenprobe zu allem SEO-Aufwand: Semrush, Datenbank `ch`, Filter Position < 11 →
 **ERROR 50 :: NOTHING FOUND**. Für keinen einzigen Suchbegriff steht luxestyle.ch auf
