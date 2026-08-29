@@ -147,6 +147,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
   <div class="panel" id="stufeBox" style="cursor:pointer;max-width:46vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"></div>
 </div>
 <div id="komboHud" style="display:none;position:fixed;left:0;top:calc(58px + env(safe-area-inset-top));z-index:13;background:rgba(24,28,40,.86);color:#fff;padding:7px 14px;border-radius:14px;min-width:104px;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,.34);pointer-events:none"></div>
+<div id="hetzeHud" style="display:none;position:fixed;left:0;top:calc(58px + env(safe-area-inset-top));z-index:13;background:rgba(40,26,14,.88);color:#fff;padding:7px 14px;border-radius:14px;min-width:118px;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,.34);pointer-events:none"></div>
 <div id="netBadge">🌐 verbunden</div>
 <button id="modeBtn">🔨 Bauen</button>
 <button id="kircheBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;cursor:pointer;color:#fff;background:linear-gradient(90deg,#e07ac0,#b04a90)">💒 Kirchlich heiraten · 800 $</button>
@@ -266,7 +267,17 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
       <button id="achClose" style="border:0;background:#e8e0d0;border-radius:10px;width:36px;height:36px;font-size:1rem;cursor:pointer">✕</button>
     </div>
     <div id="questTxt" style="margin-top:10px;padding:9px 12px;border-radius:10px;background:#fff4dc;border:1px dashed #d8a84a;font-size:.85rem;color:#7a5a20"></div>
+    <button id="hetzeBtn" style="margin-top:10px;width:100%;border:0;border-radius:12px;padding:12px;min-height:44px;font-weight:900;font-size:.95rem;cursor:pointer;color:#fff;background:linear-gradient(90deg,#e8a33d,#d4802a)"></button>
     <div id="achList" style="margin-top:10px;display:flex;flex-direction:column;gap:6px"></div>
+  </div>
+</div>
+<div id="hetzePanel" style="position:fixed;inset:0;z-index:29;display:none;align-items:center;justify-content:center;background:rgba(30,25,20,.66)">
+  <div style="background:#fffdf6;border:3px solid #e8b04a;border-radius:18px;padding:20px 22px;text-align:center;max-width:340px;width:88vw">
+    <div id="hetzeErg" style="color:#5a4a30"></div>
+    <div style="display:flex;gap:10px;margin-top:15px">
+      <button id="hetzeNochmal" style="flex:1;border:0;border-radius:12px;padding:13px 10px;min-height:44px;font-weight:900;font-size:1rem;cursor:pointer;color:#fff;background:linear-gradient(90deg,#e8a33d,#d4802a)">🔁 Nochmal</button>
+      <button id="hetzeZu" style="border:0;border-radius:12px;padding:13px 16px;min-height:44px;font-weight:800;cursor:pointer;background:#e8e0d0">Schluss</button>
+    </div>
   </div>
 </div>
 <div id="mg" style="position:fixed;inset:0;z-index:28;display:none;align-items:center;justify-content:center;flex-direction:column;background:rgba(20,15,30,.82)">
@@ -9710,6 +9721,9 @@ function verdiene(betrag,zaehlt){
   var b=Math.round(betrag*m);
   geld+=b;if(typeof geldSend==="function")geldSend();
   if(zaehlt!==false)KOMBO.verdient+=b-betrag;
+  /* Die Hetze vergibt KEIN eigenes Geld — sie zaehlt nur, was ohnehin verdient wird.
+     So kann keine Runde die Wirtschaft aufblasen, egal wie oft man sie spielt. */
+  if(zaehlt!==false&&HETZE.an)HETZE.punkte+=b;
   updHUD();
   return b;}
 function komboEnde(){
@@ -9718,7 +9732,10 @@ function komboEnde(){
     if(KOMBO._neuerRekord)txt="🏆 NEUER REKORD! "+KOMBO.n+" in Folge"+(KOMBO.verdient>0?" · +"+KOMBO.verdient+" $ extra":"");
     hint(txt);
     if(KOMBO._neuerRekord&&typeof launchFirework==="function"&&sims&&sims[0])launchFirework(sims[0].x,sims[0].z);}
-  KOMBO.n=0;KOMBO.t=0;KOMBO.verdient=0;KOMBO._neuerRekord=false;komboHudUpd();}
+  var stark=KOMBO.n>=5;
+  KOMBO.n=0;KOMBO.t=0;KOMBO.verdient=0;KOMBO._neuerRekord=false;komboHudUpd();
+  /* Erst zuruecksetzen, dann einladen — sonst laeuft die alte Kette in die neue Runde. */
+  if(stark)hetzeEinladung();}
 function komboTakt(dt){
   if(KOMBO.n<=0)return;
   KOMBO.t-=dt;
@@ -9755,6 +9772,98 @@ function komboHudUpd(){
     '<span style="font-weight:900;color:#ffd166">x'+komboMult().toFixed(2).replace(/0$/,"")+'</span>'+
     '</div><div style="margin-top:4px;height:5px;border-radius:3px;background:rgba(255,255,255,.25);overflow:hidden">'+
     '<div style="height:100%;width:'+(anteil*100).toFixed(0)+'%;background:'+(eng?"#ff6b5a":"#ffd166")+
+    ';transition:width .12s linear"></div></div>';
+  el.style.animation=eng?"komboPuls .6s infinite":"none";}
+/* 🏁 DIE HETZE — die Runde, die man sofort noch einmal spielt.
+   Die Serie belohnt Tempo, der letzte Meter zeigt das naechste Ziel. Beides laeuft
+   aber unbegrenzt weiter; es gibt keinen Moment, an dem etwas ZU ENDE ist und man
+   entscheidet, ob man noch eine spielt. Genau dieser Moment fehlte. Neunzig Sekunden,
+   ein Punktestand, ein persoenlicher Rekord — und der Knopf "Nochmal" direkt daneben,
+   damit zwischen Ende und naechstem Start kein einziger Umweg liegt.
+   ⚠️ Die Hetze zahlt NICHTS aus. Sie zaehlt nur, was man ohnehin verdient (siehe
+   verdiene). Waere es anders, waere die beste Strategie, sie endlos zu wiederholen —
+   und das Spiel darum herum waere egal. Der Reiz ist der Rekord, nicht die Kasse. */
+var HETZE={an:false,t:0,dauer:90,punkte:0,best:0,kette:0,_piep:0};
+/* Die Einladung. Sie erscheint GENAU EINMAL und nur, wenn gerade eine starke Serie
+   geendet hat: dann ist die Spielerin warm, es passiert nichts anderes, und die Frage
+   "noch neunzig Sekunden?" trifft den Moment. Ausserhalb dieses Fensters waere ein
+   Fenster mitten im Spiel eine Zumutung — darum die drei harten Bedingungen. */
+function hetzeEinladung(){
+  if(stats.hetzeEinladung)return false;
+  if(HETZE.an||(stats.hetzen||0)>0)return false;
+  stats.hetzeEinladung=1;
+  var e=document.getElementById("hetzeErg");
+  if(e)e.innerHTML='<div style="font-size:1.4rem;font-weight:900">🏁 Lust auf eine Hetze?</div>'+
+    '<div style="font-size:.92rem;margin-top:9px;line-height:1.45">Neunzig Sekunden, in denen <b>jeder Verdienst zaehlt</b>. '+
+    'Die Serie multipliziert mit \u2014 je l\u00e4nger die Kette, desto mehr Punkte. Am Ende steht dein Rekord.<br>'+
+    '<small style="color:#8a7a5a">Sp\u00e4ter jederzeit \u00fcber den 🏆-Knopf.</small></div>';
+  var b=document.getElementById("hetzeNochmal");if(b)b.textContent="🏁 Los";
+  var p1=document.getElementById("hetzePanel");if(p1)p1.style.display="flex";
+  return true;}
+function hetzeStart(){
+  var b0=document.getElementById("hetzeNochmal");if(b0)b0.textContent="🔁 Nochmal";
+  HETZE.an=true;HETZE.t=HETZE.dauer;HETZE.punkte=0;HETZE.kette=0;HETZE._piep=99;
+  /* Jede Hetze faengt bei null an — sonst startet man mit einer vorgewaermten Serie
+     und der Rekord haengt daran, was VOR dem Startknopf passiert ist. */
+  KOMBO.n=0;KOMBO.t=0;KOMBO.verdient=0;KOMBO._neuerRekord=false;komboHudUpd();
+  var p1=document.getElementById("hetzePanel");if(p1)p1.style.display="none";
+  var p2=document.getElementById("achPanel");if(p2)p2.style.display="none";
+  hint("🏁 Hetze laeuft — "+HETZE.dauer+" Sekunden, jeder Verdienst zaehlt!");
+  if(typeof beep==="function")beep(660,.11,"square",.05);
+  hetzeHudUpd();}
+function hetzeTakt(dt){
+  if(!HETZE.an)return;
+  if(KOMBO.n>HETZE.kette)HETZE.kette=KOMBO.n;
+  HETZE.t-=dt;
+  /* Die letzten fuenf Sekunden tickt es hoerbar — das ist der Teil, in dem man
+     noch schnell etwas versucht. */
+  var sek=Math.ceil(HETZE.t);
+  if(sek<=5&&sek>0&&sek<HETZE._piep){HETZE._piep=sek;
+    if(typeof beep==="function")beep(880,.06,"triangle",.045);}
+  if(HETZE.t<=0){hetzeEnde();return;}
+  hetzeHudUpd();}
+function hetzeEnde(){
+  HETZE.an=false;HETZE.t=0;
+  var rek=HETZE.punkte>HETZE.best;
+  if(rek)HETZE.best=HETZE.punkte;
+  /* Zaehler fuer die Ziele — erst dadurch taucht die Hetze ueberhaupt in der
+     Erfolgsliste auf, und damit auch in "Am naechsten dran". */
+  stats.hetzen=(stats.hetzen||0)+1;
+  if(HETZE.punkte>(stats.hetzeBest||0))stats.hetzeBest=HETZE.punkte;
+  if(HETZE.kette>(stats.hetzeKette||0))stats.hetzeKette=HETZE.kette;
+  hetzeHudUpd();
+  var e=document.getElementById("hetzeErg");
+  if(e)e.innerHTML='<div style="font-size:1.5rem;font-weight:900">'+(rek?"🏆 NEUER REKORD!":"🏁 Hetze vorbei")+'</div>'+
+    '<div style="font-size:2.1rem;font-weight:900;color:#d4802a;margin:8px 0">'+HETZE.punkte+' $</div>'+
+    '<div style="font-size:.9rem">l\u00e4ngste Serie dabei: <b>'+HETZE.kette+'</b>'+
+    (rek?"":' · Rekord: <b>'+HETZE.best+' $</b>')+'</div>';
+  var p3=document.getElementById("hetzePanel");if(p3)p3.style.display="flex";
+  if(typeof beep==="function")beep(rek?1040:440,.18,"triangle",.06);
+  if(rek&&typeof launchFirework==="function"&&sims&&sims[0])launchFirework(sims[0].x,sims[0].z);}
+function hetzeHudUpd(){
+  var el=document.getElementById("hetzeHud");if(!el)return;
+  if(!HETZE.an){el.style.display="none";return;}
+  el.style.display="block";
+  /* ⚠️ Dieselbe Regel wie beim Serien-Balken: Unterkante MESSEN, nicht raten. Hier
+     kommt eine Stufe dazu — liegt der Serien-Balken da, geht die Hetze darunter;
+     verschwindet er mitten in der Runde, rutscht sie in derselben Bildfolge hoch. */
+  var ob=document.getElementById("komboHud"),kopf=document.getElementById("hud"),oben=0;
+  if(ob&&ob.style.display!=="none"){var b1=ob.getBoundingClientRect();if(b1.height>0)oben=b1.bottom;}
+  if(!oben&&kopf&&getComputedStyle(kopf).display!=="none"){var b2=kopf.getBoundingClientRect();if(b2.height>0)oben=b2.bottom;}
+  if(oben)el.style.top=Math.round(oben+8)+"px";
+  var l0=8,r0=window.innerWidth-8;
+  var rad=document.getElementById("minimap");
+  if(rad&&getComputedStyle(rad).display!=="none"){
+    var rb=rad.getBoundingClientRect(),eb=el.getBoundingClientRect();
+    if(eb.bottom>rb.top&&eb.top<rb.bottom)l0=Math.max(l0,rb.right+10);}
+  var br=el.offsetWidth||130;
+  el.style.left=Math.round(Math.max(8,l0+(r0-l0-br)/2))+"px";
+  var s1=Math.max(0,HETZE.t),anteil=Math.max(0,Math.min(1,s1/HETZE.dauer)),eng=s1<=10;
+  el.innerHTML='<div style="display:flex;align-items:center;gap:9px;justify-content:center">'+
+    '<span style="font-size:1.05rem;font-weight:900">🏁 '+Math.ceil(s1)+'s</span>'+
+    '<span style="font-weight:900;color:#ffd166">'+HETZE.punkte+' $</span>'+
+    '</div><div style="margin-top:4px;height:5px;border-radius:3px;background:rgba(255,255,255,.25);overflow:hidden">'+
+    '<div style="height:100%;width:'+(anteil*100).toFixed(0)+'%;background:'+(eng?"#ff6b5a":"#e8a33d")+
     ';transition:width .12s linear"></div></div>';
   el.style.animation=eng?"komboPuls .6s infinite":"none";}
 var achDone={};
@@ -9804,7 +9913,13 @@ var ACH=[
  ["schleckmaul","🍦","Schleckmaul","3 Eis am Seepark gekauft",function(){return (stats.eis||0)>=3;}],
  ["torjaeger","⚽","Torjäger","3 Tore auf dem Sportplatz geschossen",function(){return (stats.tore||0)>=3;}],
  ["navigator","🧭","Navigator","Mit dem GPS-Wegpunkt ein Ziel erreicht",function(){return (stats.gpsZiele||0)>=1;}],
- ["entenpaar","🦆","Entenpaar","Zu zweit am See gefüttert",function(){return (stats.entenKoop||0)>=1;}]
+ ["entenpaar","🦆","Entenpaar","Zu zweit am See gefüttert",function(){return (stats.entenKoop||0)>=1;}],
+ /* 🏁 Die Hetze lag hinter einem unbeschrifteten Emoji-Knopf — ohne eigene Ziele
+    findet sie niemand, und was niemand findet, ist nichts wert. Ueber diese drei
+    Eintraege steht sie in der Erfolgsliste UND in "Am naechsten dran". */
+ ["hetzer","🏁","Auf Zeit","Eine 90-Sekunden-Hetze gespielt",function(){return (stats.hetzen||0)>=1;}],
+ ["hetzeprofi","⏱️","Rekordjäger","5 Hetzen gespielt",function(){return (stats.hetzen||0)>=5;}],
+ ["hetzekoenig","💸","Goldene Neunzig","1000 $ in einer einzigen Hetze",function(){return (stats.hetzeBest||0)>=1000;}]
 ];
 /* 🎯 DER LETZTE METER. Vierzig Erfolge lagen im Menue — und alle sahen gleich weit
    weg aus, weil keiner einen Zwischenstand trug. "5 Ernten" liest sich bei 0 exakt wie
@@ -9836,7 +9951,9 @@ var ACHFORT={
  abnahme5:[function(){return wohnstufe;},5,"Wohnstufe"],
  missmeister:[function(){return missSerie+(missHeute&&missHeute.bonus?1:0);},3,"Tag"],
  schleckmaul:[function(){return stats.eis||0;},3,"Eis"],
- torjaeger:[function(){return stats.tore||0;},3,"Tor"]
+ torjaeger:[function(){return stats.tore||0;},3,"Tor"],
+ hetzeprofi:[function(){return stats.hetzen||0;},5,"Hetze"],
+ hetzekoenig:[function(){return stats.hetzeBest||0;},1000,null]
 };
 /* Dieselbe Lehre wie bei checkAch: eine werfende Bedingung darf nicht den ganzen
    Rest mitreissen. Hier kostet ein Fehler genau einen Balken. */
@@ -10505,7 +10622,8 @@ function snapshot(){return {gw:GW,gh:GH,floors:floors,walls:Object.keys(walls).r
   bkT:window._buskTag,bkH:window._buskHeute,
   anC:window._angelCd,
   kb:KOMBO.best||0,   /* 🔥 der eigene Serien-Rekord — das, was man schlagen will */
-  an:_achNah};}      /* 🎯 schon ausgesprochene "nur noch eins"-Anstupser */
+  an:_achNah,       /* 🎯 schon ausgesprochene "nur noch eins"-Anstupser */
+  hz:HETZE.best||0};}  /* 🏁 bester Hetze-Punktestand */      /* 🎯 schon ausgesprochene "nur noch eins"-Anstupser */
 function loadSnapshot(sn){
   var mx9=Math.round((GW-(sn.gw||18))/2),my9=Math.round((GH-(sn.gh||14))/2); // alte Saves mittig einpassen
   (sn.furn||[]).forEach(function(f9){var m9=/^f(\d+)/.exec(f9.fid||"");if(m9)fidC=Math.max(fidC,+m9[1]+1);}); // fid-Zaehler fortsetzen
@@ -10558,6 +10676,7 @@ function loadSnapshot(sn){
   if(sn.anC!==undefined)window._angelCd=sn.anC;
   if(sn.kb!==undefined)KOMBO.best=sn.kb|0;
   if(sn.an)_achNah=sn.an;
+  if(sn.hz!==undefined)HETZE.best=sn.hz|0;
   kinder.slice().forEach(function(k){scene.remove(k.mesh);});kinder=[];
   (sn.ki||[]).forEach(function(kd){var nk=spawnKind(kd.b);if(nk){nk.name=kd.n;nk.alter=kd.a;}});
   updHUD();}
@@ -13305,7 +13424,14 @@ document.getElementById("achBtn").onclick=function(){
   document.getElementById("questTxt").innerHTML=(nz?"🎯 <b>Am naechsten dran:</b> "+nz.a[1]+" "+nz.a[2]+" · "+nz.s.ist+"/"+nz.s.soll+" (noch "+nz.s.rest+")<br>":"")+(MPs?"🤝 <b>Koop-Team-Aufgabe:</b> "+teamTxt()+"<br>":"")+"📜 <b>Stadt-Auftrag:</b> "+questTxt()+(missHeute?"<br>"+missTxt():"");
   var w2=hausWert();
   document.getElementById("hausWertTxt").textContent=prestigeName(w2)+" · "+w2+" $ · "+done+"/"+ACH.length;
+  var hb=document.getElementById("hetzeBtn");
+  if(hb)hb.textContent="🏁 "+HETZE.dauer+"-Sekunden-Hetze starten"+(HETZE.best>0?"  ·  Rekord "+HETZE.best+" $":"");
   document.getElementById("achPanel").style.display="flex";};
+/* Der Weg von "vorbei" zu "laeuft wieder" ist EIN Tipp — kein Menue dazwischen.
+   Genau daran haengt, ob man noch eine Runde spielt. */
+document.getElementById("hetzeBtn").onclick=hetzeStart;
+document.getElementById("hetzeNochmal").onclick=hetzeStart;
+document.getElementById("hetzeZu").onclick=function(){document.getElementById("hetzePanel").style.display="none";};
 document.getElementById("achClose").onclick=function(){document.getElementById("achPanel").style.display="none";};
 /* Ein Tipp auf die Kopfzeile erklaert die drei Kriterien — ohne Menue, ohne Text-
    wand, direkt dort wo das Ziel steht. */
@@ -13722,7 +13848,7 @@ function loop(now){
        ⚠️ Die ANZAHL bleibt dabei absichtlich konstant. three.js baut sein Shader-
        Programm nach der Zahl der Lichter je Art; schwankt sie, wird bei jedem Wechsel
        neu uebersetzt — ein Ruckler, der schlimmer waere als das Problem. */
-    komboTakt(dt);          /* 🔥 Serien-Uhr laeuft nur im Spiel, nicht im Baumodus-Menue */
+    komboTakt(dt);hetzeTakt(dt);          /* 🔥 Serien-Uhr laeuft nur im Spiel, nicht im Baumodus-Menue */
     window._lampTakt=(window._lampTakt||0)-dt;
     if(window._lampTakt<=0){window._lampTakt=0.5;
       /* ⚠️ NICHT `nachtLampen` NEHMEN. Die Liste haelt nur die sechs Lampen, die die
