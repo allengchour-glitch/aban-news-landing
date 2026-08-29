@@ -4774,3 +4774,61 @@ gid://shopify/Product/15448928780673	CHF 149.79	1 Varianten	Hotel Daunenkissen G
 gid://shopify/Product/15448928813441	CHF 36.64	1 Varianten	Bambusfaser Memory Foam Kissen
 gid://shopify/Product/15448928878977	CHF 32.80	1 Varianten	Memory Foam Nackenkissen
 gid://shopify/Product/15448928911745	CHF 52.31	1 Varianten	Nackenkissen mit Buchweizenfüllung und Baumwollbez
+gid://shopify/Product/15448928977281	CHF 32.35	1 Varianten	Nackenstützkissen aus Bambusfaser & Memory Foam
+gid://shopify/Product/15448929042817	CHF 17.28	1 Varianten	Samt Kissenbezug mit Kranich-Stickerei
+gid://shopify/Product/15448929075585	CHF 25.96	1 Varianten	Boka Variations Vintage Zierkissen
+gid://shopify/Product/15448929141121	CHF 9.38	1 Varianten	Nackenkissen zylindrisch, ergonomisch
+gid://shopify/Product/15448929206657	CHF 13.22	1 Varianten	Reisekissen Flugzeug faltbar Memory Foam
+gid://shopify/Product/15448929239425	CHF 11.03	1 Varianten	Jacquard Baumwoll-Kissenbezüge (2er-Set)
+gid://shopify/Product/15448929403265	CHF 23.74	1 Varianten	Mini Haarglättungsbürste kabellos
+gid://shopify/Product/15448929436033	CHF 16.12	1 Varianten	Kabelloser USB-Glätt- und Lockenkamm
+gid://shopify/Product/15448929468801	CHF 61.15	1 Varianten	Glätteisen mit Kaltluftfunktion
+gid://shopify/Product/15448929567105	CHF 36.99	1 Varianten	Kabellose Ionen-Glättbürste mit LCD-Anzeige
+gid://shopify/Product/15448929698177	CHF 8.45	1 Varianten	Bounce Curl Styling-Kamm für Locken
+gid://shopify/Product/15448929796481	CHF 25.55	1 Varianten	2-in-1 Warmluftbürste & Lockenstab
+gid://shopify/Product/15448929829249	CHF 11.61	1 Varianten	Kabelloser Glätt- und Lockenstab mit Anionen
+gid://shopify/Product/15448929862017	CHF 14.59	1 Varianten	Ionen-Glättbürste mit LCD-Anzeige
+gid://shopify/Product/15448929960321	CHF 14.78	1 Varianten	Haarglätter mit LCD-Anzeige & Temperaturkontrolle
+gid://shopify/Product/15448929993089	CHF 17.91	1 Varianten	Multifunktionaler Warmluft-Styler 2-in-1
+gid://shopify/Product/15448930058625	CHF 19.19	1 Varianten	Kabelloser Mini-Haarglätter für Pony & Kurzhaar
+gid://shopify/Product/15448930091393	CHF 54.44	1 Varianten	Mini Dampf-Haarglätter für Locken & Glätten
+gid://shopify/Product/15448930124161	CHF 12.56	1 Varianten	Kabelloser Ionen-Glättbürste
+gid://shopify/Product/15448930189697	CHF 25.36	1 Varianten	Kabelloser Anionen-Haarglätter
+gid://shopify/Product/15448930255233	CHF 11.81	1 Varianten	Kabelloser Anionen-Glättkamm mit Akku
+gid://shopify/Product/15448930353537	CHF 15.00	1 Varianten	Kabelloser Haarglätter mit USB-Ladefunktion
+gid://shopify/Product/15448930386305	CHF 14.86	1 Varianten	Kabelloser Anionen-Glättkamm
+gid://shopify/Product/15448930451841	CHF 23.38	1 Varianten	Anion-Haarstyler für Glätte und Locken
+gid://shopify/Product/15448930517377	CHF 8.10	1 Varianten	Hair Stick für perfekt gestylte Haare
+gid://shopify/Product/15448930550145	CHF 8.10	1 Varianten	Temporäres Haarfarbspray 30ml
+gid://shopify/Product/15448930615681	CHF 15.75	1 Varianten	Kabelloser Glättungs-Kamm mit Kaltluft-Funktion
+gid://shopify/Product/15448930681217	CHF 17.58	1 Varianten	Kabelloses 2-in-1 Glätteisen & Lockenstab mit LCD
+gid://shopify/Product/15448930746753	CHF 19.41	6 Varianten	Mobiles 2-in-1 Glätteisen & Lockenstab
+gid://shopify/Product/15448930812289	CHF 19.72	5 Varianten	Kabelloser Lockenstab mit USB-Ladefunktion
+gid://shopify/Product/15448930877825	CHF 58.76	1 Varianten	Kabelloser 2-in-1 Glätt- und Stylingkamm
+gid://shopify/Product/15448930976129	CHF 39.79	1 Varianten	2-in-1 Haartrockner & Glätteisen
+gid://shopify/Product/15448931041665	CHF 25.17	1 Varianten	Profi-Haarglätter mit Touchscreen
+gid://shopify/Product/15448931074433	CHF 37.66	1 Varianten	Kabelloser Glättkamm mit Anionen-Haarpflege
+gid://shopify/Product/15448931139969	CHF 41.33	1 Varianten	Golden Rice Dampfglättbürste für hydratisiertes Ha
+gid://shopify/Product/15448931271041	CHF 37.36	1 Varianten	Kabellose 2-in-1 Glättbürste mit USB-Ladefunktion
+gid://shopify/Product/15448931303809	CHF 89.26	1 Varianten	2-in-1 Haarglätter mit Ionen-Technologie
+gid://shopify/Product/15448931369345	CHF 26.52	1 Varianten	Kabelloses 2-in-1 Glätteisen & Lockenstab
+gid://shopify/Product/15448931434881	CHF 19.34	1 Varianten	Anion-Roller Comb für glattes oder lockiges Haar
+gid://shopify/Product/15448931467649	CHF 18.87	1 Varianten	Elektrische rotierende Warmluftbürste
+gid://shopify/Product/15448931533185	CHF 50.37	1 Varianten	2-in-1 Warmluft-Haarglätter für nasses & trockenes
+gid://shopify/Product/15448931598721	CHF 13.65	27 Varianten	3-in-1 Warmluftbürste für vielseitiges Styling
+gid://shopify/Product/15448931697025	CHF 17.30	1 Varianten	Kabelloser 2-in-1 Ionen-Haarstyler
+gid://shopify/Product/15448931729793	CHF 24.36	4 Varianten	Glätteisen mit Lockenfunktion und Kaltluft
+gid://shopify/Product/15448931795329	CHF 28.49	5 Varianten	Kabelloses, portables Glätteisen
+gid://shopify/Product/15448931828097	CHF 17.31	3 Varianten	Kabelloser Glättkamm mit Schnellheizfunktion
+gid://shopify/Product/15448931893633	CHF 14.00	6 Varianten	Glättbürste & Lockenstab 2-in-1
+gid://shopify/Product/15448931926401	CHF 20.22	5 Varianten	Kabelloser 2-in-1 Glätt- und Lockenstab
+gid://shopify/Product/15448932057473	CHF 17.37	1 Varianten	Satin-Schlafhaube für alle Haartypen
+gid://shopify/Product/15448932188545	CHF 28.41	1 Varianten	Profi Haarschneider & Barttrimmer für Herren
+gid://shopify/Product/15448932221313	CHF 28.68	1 Varianten	Lockenstab 38mm mit Ionen-Technologie
+gid://shopify/Product/15448932286849	CHF 15.84	1 Varianten	Elektrische Haarglättungsbürste für Haar & Bart
+gid://shopify/Product/15448932319617	cj-abgekuendigt-pruefen
+gid://shopify/Product/15448932385153	CHF 31.97	1 Varianten	Automatischer Lockenstab mit Verbrühschutz
+gid://shopify/Product/15448932516225	CHF 14.91	1 Varianten	High-Crown Fluffy Dual-Use Heating Red-Light Hair 
+gid://shopify/Product/15448932548993	CHF 22.16	1 Varianten	Kabelloser 2-in-1 Haarglätter und Lockenstab mit I
+gid://shopify/Product/15448932614529	CHF 12.68	1 Varianten	Kabelloser Negative-Ionen Haarglätter mit Sprühfun
+gid://shopify/Product/15448932647297	CHF 15.73	1 Varianten	Handlicher 10mm Lockenstab für kleine Wellen
