@@ -4670,3 +4670,43 @@ gid://shopify/Product/15448920883585	CHF 35.10	1 Varianten	Sofaüberzug «Chenil
 gid://shopify/Product/15448920916353	CHF 99.22	1 Varianten	Runder Teppich im Ethno-Stil
 gid://shopify/Product/15448920949121	CHF 35.74	1 Varianten	Recyceltes Sofa-Kissen für Haustiere, wasserdicht
 gid://shopify/Product/15448921145729	CHF 37.46	1 Varianten	Sitzkissen für Gartenbank und Lounger
+gid://shopify/Product/15448921211265	CHF 31.66	1 Varianten	Atmungsaktive Decke aus reiner Baumwolle
+gid://shopify/Product/15448921276801	CHF 31.00	1 Varianten	Sofa-Kissen im japanischen Stil aus Baumwoll-Leine
+gid://shopify/Product/15448921375105	CHF 37.49	1 Varianten	Sofa Kissenhülle aus Chenille, rutschfest
+gid://shopify/Product/15448921407873	CHF 34.73	1 Varianten	Sofa-Sitzkissenbezug aus Chenille
+gid://shopify/Product/15448921440641	CHF 22.45	1 Varianten	Sitzkissen für Relax- und Schaukelstuhl
+gid://shopify/Product/15448921473409	CHF 22.44	1 Varianten	Chenille-Sofakissen, rutschfest & universell
+gid://shopify/Product/15448921571713	CHF 11.91	1 Varianten	Minimalistischer Teppich, schmutzabweisend
+gid://shopify/Product/15448921604481	CHF 11.15	1 Varianten	Mini Yoga Matte aus Naturkautschuk mit Druck
+gid://shopify/Product/15448921768321	CHF 14.97	1 Varianten	Rutschfestes, saugfähiges Yoga-Matten-Handtuch
+gid://shopify/Product/15448921866625	CHF 8.50	1 Varianten	Ultra-leichtes, aufblasbares Yoga Balance Pad
+gid://shopify/Product/15448921964929	CHF 65.39	1 Varianten	Chenille Sofaüberwurf für alle Jahreszeiten
+gid://shopify/Product/15448921997697	CHF 63.39	1 Varianten	Cremefarbener Plüsch-Sofabezug für Herbst/Winter
+gid://shopify/Product/15448922063233	CHF 76.14	1 Varianten	Winter Plüsch Chenille Sofaüberwurf mit Blumenmust
+gid://shopify/Product/15448922096001	CHF 82.89	1 Varianten	Mid-Century Modern Luxe Winter Plüsch-Sofadecke
+gid://shopify/Product/15448922227073	CHF 21.49	1 Varianten	Memory Foam Sitzkissen für Stuhl und Autositz
+gid://shopify/Product/15448922292609	CHF 7.05	1 Varianten	Aufblasbares Outdoor-Sitzkissen, feuchtigkeitsbest
+gid://shopify/Product/15448922325377	CHF 11.49	1 Varianten	Samt Stuhlhusse, halbrund, kleines Flügeldesign
+gid://shopify/Product/15448922390913	CHF 58.83	1 Varianten	Wasserfester Sofa-Schutz für alle Jahreszeiten
+gid://shopify/Product/15448922489217	CHF 43.86	1 Varianten	Bettkissen mit schräger Ablage
+gid://shopify/Product/15448922587521	CHF 18.61	1 Varianten	Elastischer Sofabezug in Cremefarben
+gid://shopify/Product/15448922653057	CHF 45.37	1 Varianten	Warmer Plüsch-Sofabezug – rutschfest und einfarbig
+gid://shopify/Product/15448922718593	CHF 15.79	1 Varianten	Chenille Sofaüberzug Fischgrat-Muster
+gid://shopify/Product/15448922784129	CHF 17.63	1 Varianten	Minimalistischer Fleece-Sofabezug für alle Jahresz
+gid://shopify/Product/15448922816897	CHF 25.27	1 Varianten	Sofa-Sitzkissenbezug aus Polyester – rutschfest
+gid://shopify/Product/15448922882433	CHF 9.45	1 Varianten	Wabi-Sabi Kissenhülle Schwarz-Weiss
+gid://shopify/Product/15448922915201	CHF 26.43	1 Varianten	Festlicher Sofakissenbezug mit Tiermotiven
+gid://shopify/Product/15448923013505	CHF 9.00	1 Varianten	Retro Kissenbezug mit botanischem Jacquard-Muster
+gid://shopify/Product/15448923242881	CHF 57.10	1 Varianten	Sofa-Kissenbezug im schottischen Stil
+gid://shopify/Product/15448923406721	CHF 86.97	1 Varianten	Chenille Sofakissenbezug im Landhausstil
+gid://shopify/Product/15448923537793	CHF 14.92	1 Varianten	Bambusfaser Kissenbezüge, 2er-Set
+gid://shopify/Product/15448923734401	CHF 13.93	1 Varianten	Seerosen Kissenbezug in Grün
+gid://shopify/Product/15448923898241	CHF 12.00	1 Varianten	Chenille Kissenbezug mit breitem Rand
+gid://shopify/Product/15448924062081	CHF 13.31	1 Varianten	Plüsch Kissenbezug für den Winter
+gid://shopify/Product/15448924225921	cj-abgekuendigt-pruefen
+gid://shopify/Product/15448924356993	CHF 16.89	1 Varianten	Stretch-Sofabezug für Schlafsofas mit Rocksaum
+gid://shopify/Product/15448924488065	CHF 11.12	1 Varianten	Plüsch Kissenbezug für Sofa und Deko
+gid://shopify/Product/15448924684673	CHF 28.70	1 Varianten	Luxuriöser Plüsch Kissenbezug
+gid://shopify/Product/15448924815745	CHF 8.66	1 Varianten	Retro Kissenhülle im französischen Stil
+gid://shopify/Product/15448924946817	CHF 36.46	1 Varianten	Samt-Sofakissenbezug für Herbst und Winter
+gid://shopify/Product/15448925110657	CHF 9.89	1 Varianten	Osterhasen-Kissenbezug mit Frottee-Stickerei
