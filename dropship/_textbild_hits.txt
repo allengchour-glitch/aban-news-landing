@@ -13294,3 +13294,32 @@ gid://shopify/Product/15518617600385	45->1	L15 Smart Armbanduhr
 gid://shopify/Product/15518617928065	20->0	Katzen-Geschirr mit Leine
 gid://shopify/Product/15518618190209	60->0	Pferdezaumzeug, anpassbar
 gid://shopify/Product/15518618386817	31->1	X300 H1 Smartwatch mit Runddisplay
+gid://shopify/Product/15518628807041	24->1	Trendiger Reiserucksack für Uni und Freizeit
+gid://shopify/Product/15518628905345	61->2	Trendiger Rucksack mit grossem Fassungsvermögen
+gid://shopify/Product/15518629069185	9->0	Multifunktionale Nylon-Umhängetasche für Herren
+gid://shopify/Product/15518807753089	17->0	Ear Clip Bluetooth Kopfhörer mit Geräuschreduktion
+gid://shopify/Product/15518808539521	88->0	Kabellose In-Ear Kopfhörer mit Geräuschunterdrückung
+gid://shopify/Product/15518808703361	13->0	In-Ear Wireless Bluetooth Headset Cool Mecha
+gid://shopify/Product/15518808867201	31->0	Smart Power Bank Headset mit Multimedia Display
+gid://shopify/Product/15519657460097	11->0	Elegante Sandalette mit Blumen-Motiv
+gid://shopify/Product/15519798985089	19->0	High Gloss Rouge Duo für natürliche Konturen
+gid://shopify/Product/15519822905729	41->0	Halskette für Hunde, 32mm, Edelstahl
+gid://shopify/Product/15519823036801	144->0	P-Kette für Hunde aus Edelstahl
+gid://shopify/Product/15519823331713	34->0	GW33 Smartwatch mit Bluetooth-Anruffunktion
+gid://shopify/Product/15519823626625	8->1	Quarzuhr für Damen in Silber-Roségold
+gid://shopify/Product/15519823659393	19->0	Uhrenarmband-Entferner aus Metall
+gid://shopify/Product/15519824085377	43->0	Hunde-Regenschirm mit Leine
+gid://shopify/Product/15519828836737	44->0	Hundehalskette "Bold Diameter" für grosse Hunde
+gid://shopify/Product/15519829098881	9->2	Sport-Smartwatch mit Touchscreen
+gid://shopify/Product/15519829557633	74->0	Elegantes A-Linien Midikleid mit Riemchendesign
+gid://shopify/Product/15519829918081	25->0	Elegantes ärmelloses Kleid im French-Style
+gid://shopify/Product/15519829983617	22->0	Bequemes Casual-Kleid mit asymmetrischem Schnitt
+gid://shopify/Product/15519830475137	33->0	Roll-up Rucksack mit grossem Fassungsvermögen
+gid://shopify/Product/15519830638977	14->0	Kinder Puzzle Baustein Set – 172 Teile
+gid://shopify/Product/15519830835585	157->0	Reise-Rucksack aus Canvas
+gid://shopify/Product/15519830868353	60->0	Business Rucksack – wasserdicht & erweiterbar
+gid://shopify/Product/15519830933889	9->1	Computer-Rucksack aus Rindsleder
+gid://shopify/Product/15519831032193	31->0	Beheizbares Tassenpad
+gid://shopify/Product/15519831064961	8->0	Tragbarer Campingkocher mit Grillfunktion
+gid://shopify/Product/15519831097729	17->0	Kabellose Ladetasse mit Henkel
+gid://shopify/Product/15519831163265	12->0	USB Heizuntersetzer
