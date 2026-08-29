@@ -7941,6 +7941,40 @@ setTimeout(function baueGebaeude(){
     for(var b=0;b<4;b++)
       fest("th45_strandkorb.glb",2.61,-127,0,-46-b*7,-Math.PI/2);
     fest("th45_rettungsturm.glb",4.09,-129,0,-72,-Math.PI/2);
+    /* ⛴️ FAEHR- UND FRACHTKAI, noerdlich des Leuchtturms (z 58).
+       GEMESSEN entlang der Kueste (x -145…-118): der Streifen ist von z -73 bis
+       -8 und wieder ab z 61 frei — 89 m bis zur Landstrasse, die den Kuestenstreifen
+       bei z ~150 quert. Der Hafen hoerte bei z 48 auf.
+       Benutzt werden die th15-Modelle, die es im th45-Satz NICHT gibt: der th45-Hafen
+       hat Kaimauer, Kran, Container, Leuchtturm und zwei Boote — aber keinen Anleger,
+       kein Frachtschiff, kein Bootshaus und keine Fischerhuette. Von den 144 unbenutzten
+       th-Modellen im Repo sind das genau die, die hier etwas hinzufuegen statt zu
+       verdoppeln. (th15_leuchtturm, _hafenkran-Aequivalente und _segelboot bleiben
+       liegen — die gibt es schon.) */
+    for(var q9=0;q9<4;q9++) fest("th15_kaimauer_modul.glb",2.62,KX,0,64+q9*8,Math.PI/2);
+    fest("th15_faehranleger.glb",3.40,KX-8,0,100,Math.PI/2);
+    fest("th15_steg.glb",1.10,KX-7,0,70,Math.PI/2);
+    fest("th15_fischerhuette.glb",4.60,-125,0,72,-Math.PI/2);
+    addSolid(-125,72,4,4);
+    /* ⚠️ GEMESSEN: auf x -125 endete das Bootshaus bei -118,8 und lag damit 0,4 m
+       im Sperrband der West-Ringstrasse (Mitte -112, halbe Sperrbreite 7,2, also ab
+       -119,2). -127,5 haelt die Ostkante auf -121,3. */
+    fest("th15_bootshaus.glb",5.60,-127.5,0,116,-Math.PI/2);
+    addSolid(-127.5,116,5,5);
+    /* Das Frachtschiff liegt LAENGS am Anleger und wiegt sich wie die anderen Boote.
+       Tiefgang: die Wasseroberflaeche liegt auf y -0,04.
+       ⚠️ ZWEIMAL NACHGEMESSEN. Quer zum Kai (rotY = pi/2) ist das Schiff 32 m lang in
+       x — es reichte damit von -173 bis -141 und steckte 0,90 m im Anleger (th-3d:
+       190 Meshpaare). Ausserdem lag sein Westende bei x -170 / z 102 im Ring der
+       LANDSTRASSE (r 200 ± 4,5); die ist im Meer-Sektor zwar nicht gepflastert, aber
+       th-strassen meldet den Streifen zu Recht als verdaechtig.
+       Laengs (rotY = 0) liegt es wie ein Frachter am Kai: Box x -157…-149, z 76…108.
+       Groesster Radius hypot(157,108) = 190,6 — 5 m vor dem Ring, und 1,4 m Luft zum
+       Anleger, dessen Westende auf -147,6 liegt. */
+    bau("th15_frachtschiff.glb",13.0,-153,-0.9,92,0,false,function(w){
+      w.userData.fest=true; w.userData.nieAusblenden=true; w._bewegt=true;
+      if(window._boote)window._boote.push({w:w,y0:-0.9,x0:-153,per:1.7,ph:4.2,
+                                           kurs:null,pos:92,dir:1});},true);
   })();
   /* 🎟️ Kassenhaeuschen am Freizeitpark-Eingang. Das Tor `th32_parkeingang` steht
      seit Charge 32 da, aber niemand verkauft dort etwas — dieselbe Luecke wie die
