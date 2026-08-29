@@ -5286,3 +5286,4 @@ gid://shopify/Product/15448985010561	CHF 10.75	2 Varianten	Seifenblasenpistole f
 gid://shopify/Product/15448985108865	CHF 8.54	3 Varianten	Game Grip Zubehör für Switch2
 gid://shopify/Product/15448985731457	keine-cj-referenz
 gid://shopify/Product/15448988221825	CHF 24.19	5 Varianten	Herren Vintage Distressed Jeans
+gid://shopify/Product/15448988451201	CHF 19.47	12 Varianten	Loose Straight-Leg Jeans für Herren
