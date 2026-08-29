@@ -75,6 +75,7 @@ import { FARBEN as DECOLOR, deColor } from './farben_de.mjs';
 import { titelMitMenge } from './stueckzahl.mjs';
 import { SIZESET, SORDER } from './cj_groessen.mjs';
 import { slugStamm, laufSlugs } from './cj_dublette.mjs';
+import { snippet } from './cj_snippet.mjs';   // Google-Suchergebnis-Text, EINE Quelle
 // Grössen kommen aus automation/cj_groessen.mjs — dort und NUR dort ergänzen.
 // ⚠️ CJ stellt der Farbe oft seinen Artikelcode voran: «A039 Black», «E7916 White»,
 // «Ts3018 Pink» — und der stand danach im Farb-Dropdown, wo die Kundin ihn anklicken MUSS
@@ -856,7 +857,7 @@ for(const [cat,label] of grp.cats){
           ...(med?['medizinprodukt-pruefen','medizin-zweck-'+med.grund]:[]),
           ...(tsch?['tierschutz-tschv76','tierschutz-'+tsch.grund]:[])],
     descriptionHtml:html,
-    seo:{title:(title+' | LuxeStyle CH').slice(0,70),description:(`${title} – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.`).slice(0,320)},
+    seo:{title:(title+' | LuxeStyle CH').slice(0,70),description:snippet(html,title).slice(0,320)},
     productOptions, variants,
     files:[{originalSource:imgs[0],contentType:'IMAGE',alt:(title+' | LuxeStyle').slice(0,120)}]};
    // Google-Merchant-Attribute für ALLE Produkte (2026-07-11 «google merchant sachen auch»): gender + age_group

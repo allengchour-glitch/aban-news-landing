@@ -38,6 +38,7 @@ import { FARBEN as DECOLOR, deColor } from './farben_de.mjs';
 import { titelMitMenge } from './stueckzahl.mjs';
 import { SIZESET, SORDER } from './cj_groessen.mjs';
 import { dubletteFinden, slugMerken } from './cj_dublette.mjs';
+import { snippet } from './cj_snippet.mjs';   // Google-Suchergebnis-Text, EINE Quelle
 // Grössen kommen aus automation/cj_groessen.mjs — dort und NUR dort ergänzen.
 // ⚠️ CJ stellt der Farbe oft seinen Artikelcode voran: «A039 Black», «E7916 White»,
 // «Ts3018 Pink» — und der stand danach im Farb-Dropdown, wo die Kundin ihn anklicken MUSS
@@ -322,7 +323,7 @@ for(const p of cand){
  const variants=fash?fash.variants:[{optionValues:[{optionName:'Variante',name:'Standard'}],price:chf(p.sellPrice, p.productWeight||p.variantWeight),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false,cost:kosten(p.sellPrice, p.productWeight||p.variantWeight),...gewicht(p.productWeight||p.variantWeight)},inventoryPolicy:'CONTINUE'}];
  const input={title,handle:slug,productType:'Trend-Gadget',vendor:'LuxeStyle',status:'ACTIVE',
   tags:VIDEO_ONLY?['trend','viral','video-hit','cj-video','cj-real','dropship','neu']:['trend','viral','video-hit','cj-real','dropship','neu'],descriptionHtml:html,
-  seo:{title:(title+' | LuxeStyle CH').slice(0,70),description:(`${title} – der Trend-Hit bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.`).slice(0,320)},
+  seo:{title:(title+' | LuxeStyle CH').slice(0,70),description:snippet(html,title).slice(0,320)},
   // Google-Felder gehören in den Importer (15.08.2026, Muster «condition» vom 11.08.):
   // cj_sku_import hatte dieselbe Lücke — jeder Import ohne diese Felder senkt die
   // Feed-Abdeckung, die ein Backfill zuvor teuer gehoben hat.

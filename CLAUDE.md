@@ -532,6 +532,11 @@ plus ein konkretes Merkmal — **wörtlich, nichts erfunden**. 50 Seiten gesetzt
   mitgelesen und unverändert mitgeschickt, sonst wäre er nach dem Lauf leer.
 - **Nicht angefasst:** Hallux-Valgus-Schiene (Krankheitsname plus Wirkaussage gehört nicht
   ins Suchergebnis) und der Mini-Fotodrucker (fremder Markenname).
+- **Quelle korrigiert, sonst holt der Grind die Reparatur bis morgen wieder ein:** Alle DREI
+  CJ-Importer schrieben den Baustein bei jedem neuen Produkt. Die Rechnung liegt jetzt EINMAL
+  in **`automation/cj_snippet.mjs`** (sechste Geschwister-Zusammenlegung nach Farbtabelle,
+  Preisformel, Grössenmenge, `publishVerified()` und `technik_plausibel`). Taugt der Text
+  nicht, kommt der Baustein zurück — ein langweiliges Suchergebnis ist besser als ein falsches.
 - ⚠️ **Ein zu kleiner Ausschnitt der Daten kostet genau den wichtigsten Fall.** Meine
   Ranking-Liste war nach Volumen sortiert und bei 140 abgeschnitten — der Beistelltisch auf
   Position 16 hat nur 70 Suchen und fiel deshalb heraus. **Wer nach Volumen sortiert,

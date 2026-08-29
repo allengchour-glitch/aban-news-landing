@@ -34,6 +34,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 import { chf, kosten, gewicht } from './cj_preis.mjs';
 import { titelMitMenge } from './stueckzahl.mjs';
 import { dubletteFinden, slugMerken } from './cj_dublette.mjs';
+import { snippet } from './cj_snippet.mjs';   // Google-Suchergebnis-Text, EINE Quelle
 
 async function cj(path) {
   for (let a = 0; a < 6; a++) {
@@ -213,7 +214,7 @@ for (const item of ITEMS) {
     status: (med || tsch) ? 'DRAFT' : 'ACTIVE',
     tags: tagsFinal,
     descriptionHtml: (g.html + '\n<p>🚚 Gratis-Versand ab CHF 50 · 30 Tage Rückgabe · 🇨🇭 LuxeStyle</p>').replace(/ß/g, 'ss').replace(/ẞ/g, 'SS'),
-    seo: { title: (title + ' | LuxeStyle CH').slice(0, 70), description: `${title} – der Trend-Hit bei LuxeStyle Schweiz.`.slice(0, 320) },
+    seo: { title: (title + ' | LuxeStyle CH').slice(0, 70), description: snippet(g.html, title).slice(0, 320) },
     productOptions: [{ name: 'Variante', values: [{ name: 'Standard' }] }],
     variants: [{ optionValues: [{ optionName: 'Variante', name: 'Standard' }], price: chf(d.sellPrice, d.variants?.[0]?.variantWeight), inventoryItem: { sku: ('CJ-' + pid).slice(0, 70), tracked: false, cost: kosten(d.sellPrice, d.variants?.[0]?.variantWeight), ...gewicht(d.variants?.[0]?.variantWeight) }, inventoryPolicy: 'CONTINUE' }],
     // ⚠️ GOOGLE-FELDER GEHÖREN IN DEN IMPORTER, nicht in einen Backfill (15.08.2026: die 30
