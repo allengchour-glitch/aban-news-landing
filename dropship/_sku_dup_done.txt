@@ -698,3 +698,5 @@ gid://shopify/Product/15510641443201	CJ-7C866B2B-8EC3-428F-9631-58709EC9A593	Man
 gid://shopify/Product/15510641541505	CJ-DEA7DE7F-B060-4B0B-A735-C25FD683AB2D	Schneidebrett aus amerikanischem Nussholz
 gid://shopify/Product/15512266047873	CJ-CJLY292664201AZ	Elegantes Off-Shoulder Etuikleid
 gid://shopify/Product/15512313790849	CJ-CJYD292633701AZ	Elegantes Satin-Abendkleid mit Mesh-Details
+gid://shopify/Product/15519837913473	CJ-29F500EB-1562-45AA-9084-28A263A8EB21	Outdoor Smartwatch für iOS & Android
+gid://shopify/Product/15519837979009	CJ-B4E01F46-09AD-4B90-A430-38A0590747B9	Smartwatch mit Farbdisplay und Sportfunktionen
