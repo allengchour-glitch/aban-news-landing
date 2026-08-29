@@ -4057,3 +4057,44 @@ Zwei neue Fragen, beide als **Strahl von oben**, weil eine Hüllbox das nicht be
 > gefunden, an denen sechs grüne Häkchen vorbeigelaufen sind.
 
 Belegbilder im Repo: `spiele-dev/screenshots/club-aussen.png` und `club-innen.png`.
+
+---
+
+## 2026-08-29 · Die Bedienung im Querformat vermessen statt angeschaut
+
+Der User spielt auf dem Handy im **Querformat (844 × 390)**. Dort ist es eng, und schon
+einmal lag eine Ecken-Plakette genau auf dem Joystick — gefunden nur, weil jemand
+hingeschaut hat. `th-hud.mjs` (neu) misst das jetzt: Rechtecke aller sichtbaren
+Bedienelemente, Elemente ausserhalb des Bildes, Tippziele unter 44 px.
+
+### Befund: ein einziger
+
+**Der Bauen-Knopf war 38 px hoch** — das einzige Bedienelement unter dem üblichen
+Fingermass. Die Landscape-Regel setzte `min-height:38px` bewusst, weil zwischen Radar
+und Joystick nur eine schmale Lücke bleibt.
+
+Diese Begründung gilt aber nicht mehr: `layoutLinkeSpalte()` **misst** die Lücke und
+setzt den Knopf **neben das Radar**, wenn er nicht dazwischen passt (deshalb stand er
+gemessen bei x = 138 statt bei den 12 px aus dem CSS). Also darf er wieder 44 px hoch
+sein — passt er nicht mehr in die Lücke, weicht er von selbst zur Seite aus. Regel und
+Messung widersprechen sich nicht.
+
+Danach: 844×390, 740×360, 932×430, 390×844, 1024×768 — **überall 0 Ziele unter 44 px,
+0 Elemente ausserhalb des Bildes.**
+
+### ⚠️ Drei Fehler im Werkzeug, alle beim Messen aufgeflogen
+
+1. **Der Viewport war nie gesetzt.** Ich gab `breite`/`hoehe` mit — die Option heisst
+   `viewport`. Das Werkzeug mass stillschweigend im 1100 × 620-Standard weiter und
+   meldete Elemente bei x = 1100 in einem angeblich 844 breiten Bild. Dazu gehört
+   `screen`: das Spiel entscheidet über `_mobil` daran, nicht am Fenster.
+
+2. **Container sind keine Überdeckung.** Der erste Lauf meldete zwölfmal
+   „#wrap über X" — `#wrap` ist eine bildschirmfüllende Ebene und liegt unter allem.
+
+3. **⚠️ „Überdeckung" ist überhaupt die falsche Frage.** Zwei Kästen dürfen sich
+   überlappen; was zählt, ist **wer den Tipp bekommt**. Jetzt misst das Werkzeug
+   `elementFromPoint` in der Mitte jedes Bedienelements. Damit fielen alle
+   Fehlalarme von selbst weg — und in Hochkant zeigt sich sauber, dass `#rotHint`
+   („dreh dein Handy") **alle** Ziele abfängt. Fängt ein und dasselbe Element alle ab,
+   ist es die gewollte Sperrschicht und kein Befund; das meldet das Werkzeug jetzt so.

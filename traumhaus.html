@@ -47,7 +47,14 @@ canvas{display:block}
   /* Linke Spalte quer: Geld, Pokal(64), Radar(120..238), Bauen, Joystick(unten).
      Zwischen Radar-Unterkante und Joystick-Oberkante bleiben nur ~50 px — Bauen sitzt
      genau dort, kleiner und kompakter. */
-  #modeBtn:not(.building){bottom:calc(126px + env(safe-area-inset-bottom)) !important;left:calc(12px + env(safe-area-inset-left)) !important;padding:7px 12px !important;font-size:.8rem !important;min-height:38px !important}
+  /* ⚠️ min-height 38 -> 44. 38px war die Antwort auf die enge Luecke zwischen Radar
+     und Joystick — die gibt es aber nicht mehr: layoutLinkeSpalte() misst die Luecke
+     und setzt den Knopf NEBEN das Radar, wenn er nicht dazwischen passt. Damit darf er
+     wieder 44px hoch sein, das uebliche Mindestmass fuer einen Finger (gemessen mit
+     th-hud.mjs: er war das einzige Bedienelement unter 44px). Passt er nicht mehr in
+     die Luecke, weicht er von selbst zur Seite aus — die Regel und die Messung
+     widersprechen sich also nicht. */
+  #modeBtn:not(.building){bottom:calc(126px + env(safe-area-inset-bottom)) !important;left:calc(12px + env(safe-area-inset-left)) !important;padding:9px 14px !important;font-size:.85rem !important;min-height:44px !important}
   #geld{max-width:40vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   #minimap{width:118px !important;height:118px !important}
   /* 🩹 Schwarm-7: der piBar-Fix galt nur unter 380px — bei 381…620px Hoehe lag
