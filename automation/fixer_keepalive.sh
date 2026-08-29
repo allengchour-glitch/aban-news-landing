@@ -429,6 +429,30 @@ while true; do
       echo "$(date -u +%H:%M) ratgeber-ohne-ware geprüft"
     fi
   fi
+  # RANKENDE SEITEN, einmal taeglich. Zwei Dinge, die nur dort zaehlen, wo Google uns
+  # schon zeigt — dem einzigen Kanal mit belegten Verkaeufen:
+  # (1) tote_rankings.py: rankt eine Adresse, die es nicht mehr zu kaufen gibt und die
+  #     auch keine 301 auffaengt? Jeder Draft-Lauf kann so eine Seite still toeten.
+  #     ⚠️ MELDET NUR. Welcher Ersatz richtig ist, haengt am Produkt; ein Draft wird nie
+  #     veroeffentlicht, um einen Link zu retten (nicht bestellbar = teurer als ein 404).
+  # (2) snippet_rankende_seiten.py: setzt den Suchergebnis-Text aus dem ersten Satz der
+  #     Beschreibung. Schreibt nur bei Bausteintext, laesst eigene Texte in Ruhe.
+  TRK=/tmp/tote_rankings.log
+  if [ -f "$REPO/automation/tote_rankings.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$TRK" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid python3 automation/tote_rankings.py >> "$TRK" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) tote-rankings geprüft"
+    fi
+  fi
+  SNP=/tmp/snippet_rankende.log
+  if [ -f "$REPO/automation/snippet_rankende_seiten.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$SNP" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid python3 automation/snippet_rankende_seiten.py >> "$SNP" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) snippet-rankende gestartet"
+    fi
+  fi
   # KOSTENWAHRHEIT, einmal täglich: `cj_kosten_backfill.mjs` trug bis zum 28.08. eine eigene
   # Frachtrechnung mit `max(15, …)` — ein Boden, der seit dem 23.08. widerlegt ist (CJ live:
   # 20 g → CHF 4.34). Unterhalb von 712 g bläht er jede Kostenzahl um bis zu CHF 10 auf.
