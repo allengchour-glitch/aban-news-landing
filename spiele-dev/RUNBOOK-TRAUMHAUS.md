@@ -3114,6 +3114,31 @@ anderen Modellen. Eine wachsende Stadt baut an mehreren Stellen. Aber sie ist ei
 *dieses Modell* fehlt. Ob die *Sache* fehlt, beantwortet allein eine Suche nach der
 Sache — hier hätte ein Blick in `window._baukran` oder ein `grep -i baustelle` genügt.
 
+## 2026-08-28 · 🔦 Deckkraft 0 heisst nicht „wird nicht gezeichnet"
+
+**Dieselbe Fehlerklasse wie bei den Punktlichtern (#2368), nur eine Ebene tiefer:** Die 17
+Laternen-Lichtkegel bekommen tagsüber `opacity = 0` — und wurden trotzdem **additiv gemischt**,
+voller Blend-Aufwand für ein unsichtbares Ergebnis. `material.visible = false` nimmt sie ganz
+aus der Renderliste.
+
+| transparente Zeichnungen (tagsüber) | vorher | nachher |
+|---|---|---|
+| | 9 | **6** |
+
+**Ehrlich zur Grösse:** das sind drei kleine Flächen — ein sauberer, aber kleiner Gewinn. Der
+Wert liegt im Muster: **überall, wo etwas per Deckkraft oder Intensität „ausgeschaltet" wird,
+lohnt die Frage, ob es auch wirklich aus der Renderliste fliegt.**
+
+**Gegenprobe:** nachts werden die Kegel wieder gezeichnet (3 von 17 im Bild, der Rest liegt
+ausserhalb — korrekt).
+
+**Ebenfalls gemessen, NICHT geändert:** fünf **kartengrosse** halbtransparente Bodenebenen
+(r 90 … 537, `depthWrite:false`) liegen übereinander — Gelände-, Platz-, Strassen- und
+Wasser-Overlays. Das ist mehrfaches Überzeichnen des ganzen Bildes und auf dem Handy der
+grösste verbliebene Füllraten-Posten. Vier davon haben `opacity:1`, brauchen `transparent:true`
+aber für die Alpha-Kanäle ihrer Texturen. Ein Umbau auf `alphaTest` würde weiche Übergänge zu
+harten Kanten machen — nur mit Bildvergleich anzugehen.
+
 ## Ein Viertel aller Wände der Stadt war tot
 
 Gesucht war eigentlich etwas anderes: durch welche Gebäude läuft man hindurch?

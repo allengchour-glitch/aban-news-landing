@@ -13317,7 +13317,11 @@ function loop(now){
       nachtLampen.forEach(function(L){L._ti=nacht9?(L._max?L._max*7:9):(L._max?L._max*1.6:0);}); /* 💡 Innenlichter brennen auch tagsueber schwach (Raeume ohne Fenster) */ /* 💡 Ziel — weiches Faden im Frame-Loop (schwacher Rand via decay 2 bleibt physisch) */
       if(window._lampKopf)window._lampKopf.emissiveIntensity=nacht9?2.6:0;
       if(window._flMat)window._flMat.opacity=nacht9?0.15:1; // Wiesenblumen nachts fast unsichtbar
-      (window._lampGlows||[]).forEach(function(gm){gm.opacity=nacht9?0.26:0;}); // Laternen-Lichtpools
+      /* ⚠️ GEMESSEN 2026-08-28: Deckkraft 0 heisst NICHT „wird nicht gezeichnet". Die 17
+         Lichtkegel wurden tagsueber weiterhin additiv gemischt — voller Blend-Aufwand fuer
+         ein unsichtbares Ergebnis. `material.visible` nimmt sie ganz aus der Renderliste.
+         Dieselbe Falle wie bei den Punktlichtern (#2368). */
+      (window._lampGlows||[]).forEach(function(gm){gm.opacity=nacht9?0.26:0;gm.visible=nacht9;}); // Laternen-Lichtpools
       (window._markMats||[]).forEach(function(mm){mm.color.setHex(nacht9?0x8f949b:0xcfcfc6);}); // Markierungen dimmen mit (aber lesbar)
     }
     if(camAT!==null){camA+=(camAT-camA)*Math.min(1,dt*6);
