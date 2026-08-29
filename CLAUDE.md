@@ -391,6 +391,36 @@ Jetzt zieht der Aufseher sie alle 20 Minuten selbst nach. Die Schichtung ist dam
   nehmen» fast immer falsch.** Beide Seiten wurden behalten und einzeln gegengeprüft
   (`OHNE_AUFSEHER` 2×, `zaehle_aufseher` 8×, Motoren-Block 1×, Token-Vorrang 1×).
 
+## 📡 Verdeckte Überwachung und ein Holster standen auf Instagram (2026-08-29)
+Der Google-Lücken-Wächter meldete drei Produkte, die nur bei Google fehlen. Nachgesehen: Alle
+drei gehören dort **zu Recht** nicht hin — eine Mini-Überwachungskamera, ein getarntes
+Aufnahmegerät im Armbanduhr-Design (beide `verdeckte-ueberwachung`) und ein Neopren-Achselholster
+(`waffe-pruefen`, laut eigenem Text «für taktische Einsätze entwickelt»). Die Tags standen längst
+in `google_sperrliste.py`; mein lokaler Stand war nur veraltet.
+**Der eigentliche Befund lag daneben: Alle drei standen auf TikTok, Facebook/Instagram und
+Pinterest.** Diese Plattformen verbieten verdeckte Überwachungstechnik und Waffenzubehör ebenso
+wie Google — die Praxis dieses Projekts hatte aber immer nur den Google-Kanal behandelt.
+Aus allen drei Werbekanälen genommen, Online Store und Shop unangetastet, live gegengeprüft.
+**Die Abwägung war einseitig:** Diese Kanäle haben in 60 Tagen **null** Kassengänge erzeugt, ein
+Verstoss kostet dort aber im schlimmsten Fall das Konto.
+**Regel: Eine Warengruppe, die aus dem Google-Kanal fliegt, gehört auch aus den übrigen
+Werbekanälen — die Verbote sind dieselben.** Nur der Online Store ist etwas anderes: dort
+verkauft der Betreiber auf eigene Rechnung und Verantwortung.
+
+## 🔭 Ein veralteter Remote-Zeiger sieht aus wie verlorene Arbeit (2026-08-29)
+Ich habe heute eine halbe Stunde lang geglaubt, ein Snapshot-Rewind habe gepushte Arbeit von
+origin gelöscht — die Klingenregel, der Aufseher-Schalter, sieben Änderungen, alles «weg».
+**Nichts davon stimmte.** `git show origin/<branch>:<datei>` liest den **lokalen
+Remote-Tracking-Zeiger**, nicht den Server. Der Rewind hatte diesen Zeiger auf einen alten Stand
+zurückgedreht; ein `git fetch` zeigte sofort, dass auf origin alles unversehrt lag.
+**Regel: Vor jeder Aussage über den Fernstand ein `git fetch`.** Ohne das ist «origin hat es
+nicht» eine Aussage über die eigene Festplatte. Dieselbe Familie wie der stille Suchfilter, der
+wie ein leerer Katalog aussieht, und wie `git log -3`, das einen Commit vier Schritte zurück
+verschwinden lässt.
+⚠️ Und die zweite Hälfte der Lehre: Ich habe den Alarm dem Betreiber gegenüber ausgesprochen,
+bevor ich ihn geprüft hatte. **Ein Verlustbefund gehört erst gemeldet, wenn er gegen die Quelle
+gehalten wurde** — sonst erzeugt er Aufregung, die niemand braucht.
+
 ## 🔥 DAUERAUFTRAG: Hype-Produkte recherchieren und die Startseite frisch halten
 **User 2026-08-12, wörtlich:** «informiere dich immer über neuste hype produkte und so und mache
 auch in startseite ganz gross irgendwo paar coolen produkten, aber wen hype vorbei produkt ändern.»
