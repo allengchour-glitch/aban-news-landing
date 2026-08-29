@@ -32,21 +32,47 @@ const sonde = `function(){
        * Was ueber einem ANDEREN Bauwerk sitzt, steht nicht in der Luft, sondern auf
          etwas Gebautem: Terrasse, Sockel, unteres Stockwerk.
        * Was an einem Seil haengt, ebenso. */
-  var IM_WASSER_ERLAUBT=/schwan|ente|boot|ruderboot|steg|floss/i;
+  /* ⚠️ ES GIBT DREI WASSERFLAECHEN, nicht eine. 'window._wasser' fuehrt sie alle:
+     das Meer (x -332…-132, z ±170), einen Fluss (x -120…80, z -94…-87) und den
+     Seepark-See. Die erste Fassung prueft nur den See ueber '_seeUfer' — Meer und
+     Fluss waren blinde Flecken. Bruecken, Stege und Boote duerfen ueber Wasser sein. */
+  var IM_WASSER_ERLAUBT=/schwan|ente|boot|ruderboot|steg|floss|bruecke|brueck|ponton|leuchtturm|hafen|kran|anleger|mole/i;
   var AM_SEIL=/gondel/i;
   var kaesten=[];
   G.forEach(function(w){ if(!w||!w.parent)return;
     var b=new THREE.Box3().setFromObject(w);
     if(isFinite(b.min.x))kaesten.push(b); });
+  /* Nicht alles Tragende ist ein geladenes Modell: der Felssockel und die Platte der
+     Bergstation sind prozedurale Meshes und stehen nicht in _gebaeude. Sie melden
+     sich ueber userData.traegt. */
+  var wurzel=null;
+  for(var nn=G[0];nn;nn=nn.parent)if(nn.isScene)wurzel=nn;
+  if(wurzel)wurzel.traverse(function(o){
+    if(!o.isMesh||!(o.userData&&o.userData.traegt))return;
+    var b=new THREE.Box3().setFromObject(o);
+    if(isFinite(b.min.x))kaesten.push(b);});
   function traegtEtwas(b){                     /* liegt ein anderes Bauwerk darunter? */
     for(var i=0;i<kaesten.length;i++){var k=kaesten[i];
       if(k===b)continue;
-      if(k.max.y>b.min.y+0.5)continue;         /* nicht darunter */
       if(k.max.x<b.min.x||k.min.x>b.max.x)continue;
       if(k.max.z<b.min.z||k.min.z>b.max.z)continue;
-      return true;}
+      if(k.max.y<=b.min.y+0.5)return true;      /* steht darauf */
+      /* AUFGESETZT: ein Rotor auf einem Mast, ein Schild an einer Wand. Der Traeger
+         ragt dann HOEHER als die Unterkante des Teils, umschliesst es aber im
+         Grundriss. Ohne diese Regel meldete das Werkzeug die Windmuehlenfluegel als
+         schwebend — sie sitzen auf halber Turmhoehe. */
+      if(k.min.x<=b.min.x&&k.max.x>=b.max.x&&k.min.z<=b.min.z&&k.max.z>=b.max.z)return true;
+      if(b.min.x<=k.min.x&&b.max.x>=k.max.x&&b.min.z<=k.min.z&&b.max.z>=k.max.z)return true;}
     return false;}
-  var bb=new THREE.Box3(), R={fels:[],schwebt:[],wasser:[],geprueft:0,erklaert:0};
+  /* Die uebrigen Wasserflaechen als Rechtecke — der See selbst wird ueber _seeUfer
+     geprueft, weil seine Uferlinie organisch ist und kein Rechteck. */
+  var W=[];
+  (window._wasser||[]).forEach(function(w){
+    var b=new THREE.Box3().setFromObject(w.mesh);
+    if(!isFinite(b.min.x))return;
+    if(b.min.x>-20&&b.max.x<20&&b.min.z>130&&b.max.z<165)return;   /* das ist der See */
+    W.push({min:b.min,max:b.max,name:(b.max.x-b.min.x)>150?"Meer":"Fluss"});});
+  var bb=new THREE.Box3(), R={fels:[],schwebt:[],wasser:[],geprueft:0,erklaert:0,flaechen:W.length+1};
   G.forEach(function(w){
     if(!w||!w.parent)return;
     var d=(w.userData&&w.userData.datei)||"(ohne Datei)";
@@ -65,10 +91,17 @@ const sonde = `function(){
     else if(bb.min.y-hoch>2.0){
       if(AM_SEIL.test(d)||traegtEtwas(bb.clone())){R.erklaert++;}
       else {e.hoehe=+(bb.min.y-hoch).toFixed(2); R.schwebt.push(e);}}
+    var nass=null;
     if(U){var a=Math.atan2(mz-146,mx), r=Math.hypot(mx,mz-146);
-      if(r<U(a)){
-        if(IM_WASSER_ERLAUBT.test(d))R.erklaert++;
-        else R.wasser.push({was:d,bei:e.bei,vomUfer:+(U(a)-r).toFixed(1)});}}
+      if(r<U(a))nass="Seepark-See, "+(U(a)-r).toFixed(1)+" m vom Ufer";}
+    if(!nass&&W)for(var q=0;q<W.length;q++){var wb=W[q];
+      /* Mitte deutlich INNERHALB der Flaeche — Uferbebauung soll nicht mitzaehlen. */
+      if(mx>wb.min.x+2&&mx<wb.max.x-2&&mz>wb.min.z+2&&mz<wb.max.z-2){
+        nass=wb.name+", "+Math.min(mx-wb.min.x,wb.max.x-mx,mz-wb.min.z,wb.max.z-mz).toFixed(1)+" m vom Rand";
+        break;}}
+    if(nass){
+      if(IM_WASSER_ERLAUBT.test(d))R.erklaert++;
+      else R.wasser.push({was:d,bei:e.bei,wo:nass});}
   });
   R.fels.sort(function(a,b){return b.tiefe-a.tiefe;});
   R.schwebt.sort(function(a,b){return b.hoehe-a.hoehe;});
@@ -81,7 +114,7 @@ await browser.close()
 aufraeumen('_boden.html')
 
 if (R.fehler) { console.log('⚠️ ' + R.fehler); process.exit(1) }
-console.log(`${R.geprueft} Bauwerke geprueft · ${R.erklaert} erklaert (auf etwas Gebautem, am Seil, Wasservogel)\n`)
+console.log(`${R.geprueft} Bauwerke geprueft gegen Gelaende und ${R.flaechen} Wasserflaechen · ${R.erklaert} erklaert (auf etwas Gebautem, am Seil, Wasservogel, Bruecke)\n`)
 const zeig = (titel, liste, feld, einheit) => {
   if (!liste.length) { console.log(`✅ ${titel}: keins`); return }
   console.log(`⚠️  ${titel}: ${liste.length}`)
@@ -93,5 +126,5 @@ zeig('Im Fels', R.fels, 'tiefe', 'm tief')
 zeig('Schwebt', R.schwebt, 'hoehe', 'm hoch')
 if (!R.wasser.length) console.log('✅ Im Wasser: keins')
 else { console.log(`⚠️  Im Wasser: ${R.wasser.length}`)
-       R.wasser.forEach(e => console.log(`    ${e.vomUfer} m vom Ufer  ${e.bei}  ${e.was}`)) }
+       R.wasser.forEach(e => console.log(`    ${e.bei.padStart(14)}  ${e.wo}  ${e.was}`)) }
 console.log('\nJS-Fehler:', jsFehler.length)
