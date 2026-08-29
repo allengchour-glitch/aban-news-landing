@@ -158,14 +158,61 @@ WIRKVERSPRECHEN = re.compile(
 # Katalogauszug. Ein Wort mit zehn oder mehr Zeichen ist im Deutschen fast immer das Grundwort
 # der Zusammensetzung («Gesichtsreinigungsbürste», «Figurformendes») — teilen sich zwei Titel
 # eines, ist es dieselbe Warenart.
+# ⚠️ Die Zehn-Zeichen-Regel allein REICHT NICHT — am selben Tag nachgemessen: sie fing die drei
+# «Gesichtsreinigungsbürsten», liess aber VIER Aroma-Diffusoren und ZWEI Katzenbrunnen stehen.
+# «Diffuser» hat acht Zeichen, und «Trinkbrunnen»/«Katzenbrunnen» sind verschiedene Wörter für
+# dieselbe Ware. Deshalb zusätzlich ein kleines Warenart-Lexikon.
+# ⚠️ Ein Lexikon ist IMMER unvollständig (Lehre 29.08. über Bausteinlisten) — es ersetzt die
+# Längenregel nicht, es ergänzt sie. Aufgenommen wird nur, was in der Reihe schon kollidiert ist.
+WARENART = {
+    'diffuser':        r'diffusor|diffuser|luftbefeuchter|vernebler',
+    'tierbrunnen':     r'(trink|katzen|haustier|wasser)brunnen|pet fountain',
+    'reinigungsbuerste': r'reinigungsb[üu]rste|gesichtsb[üu]rste',
+    'haarstyler':      r'lockenstab|gl[äa]tteisen|haargl[äa]tter|styling[- ]?b[üu]rste|warmluftb[üu]rste',
+    'ladestation':     r'ladestation|ladeger[äa]t|wireless charger|induktionslader',
+    'massagegeraet':   r'massageger[äa]t|massagepistole|massager',
+    # ⚠️ «Aufbewahrungsbox» NICHT aufnehmen — sie ist bei vielen Produkten Zubehör,
+    # nicht die Ware: «8-teiliges Make-up Pinselset mit Aufbewahrungsbox» ist ein
+    # Pinselset. Getroffen wird nur, was SELBST ein Organizer ist.
+    'organizer':       r'organizer|sortierbox|schubladeneinsatz',
+    'rucksack':        r'rucksack|backpack',
+    'smartwatch':      r'smartwatch|fitness[- ]?tracker|smart[- ]?armband',
+}
+_WARENART = {k: re.compile(v, re.I) for k, v in WARENART.items()}
+
+def warenart(titel):
+    """Grobe Warenart eines Titels, oder None."""
+    for name, muster in _WARENART.items():
+        if muster.search(titel or ''):
+            return name
+    return None
+
+# ⚠️ Lange Wörter sind im Deutschen NICHT immer Grundwörter — es gibt auch lange ADJEKTIVE.
+# «Elektrischer Kopfhautmassage-Roller» und «Elektrischer Kopfhaut-Massagekamm» wurden über
+# «elektrischer» als gleiche Ware erkannt. Das Urteil stimmte, der Grund nicht: an einer anderen
+# Stelle hätte dasselbe Wort zwei völlig verschiedene Geräte verschmolzen.
+LANGE_ADJEKTIVE = re.compile(
+    r'^(elektrisch|multifunktional|automatisch|selbstreinigend|hochwertig|verstellbar|'
+    r'wasserdicht|wiederaufladbar|professionell|tragbar|faltbar|kabellos|klappbar|'
+    r'aufblasbar|rutschfest|atmungsaktiv|antihaft|dekorativ|praktisch|hochaufl[öo]send)',
+    re.I)
+
 def _grundwoerter(titel):
-    return {w for w in re.findall(r'[A-Za-zÄÖÜäöüß]{10,}', titel or '')}
+    return {w for w in re.findall(r'[A-Za-zÄÖÜäöüß]{10,}', titel or '')
+            if not LANGE_ADJEKTIVE.match(w)}
 
 def gleiche_warenart(titel, schon_gewaehlt):
-    """True, wenn der Titel ein langes Grundwort mit einem bereits gewählten teilt."""
-    w = {x.lower() for x in _grundwoerter(titel)}
+    """True, wenn der Titel dieselbe Ware bezeichnet wie ein bereits gewählter.
+
+    Zwei Wege, weil keiner allein reicht: das Lexikon fängt bekannte Kollisionen
+    unabhängig von der Wortlänge, die Längenregel alles Übrige.
+    """
+    art = warenart(titel)
+    lang = {x.lower() for x in _grundwoerter(titel)}
     for anderer in schon_gewaehlt:
-        if w & {x.lower() for x in _grundwoerter(anderer)}:
+        if art and warenart(anderer) == art:
+            return True
+        if lang & {x.lower() for x in _grundwoerter(anderer)}:
             return True
     return False
 
