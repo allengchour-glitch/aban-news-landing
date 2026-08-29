@@ -5042,8 +5042,40 @@ setTimeout(function baueGebaeude(){
       /* 🐛 Die im cfg angegebenen Masse sind Schaetzwerte — die geladenen Modelle sind oft
          breiter. Der Generator merkt sich darum jedes Gebaeude und rueckt sie nach dem
          Laden anhand der ECHTEN Bounding-Box auseinander (siehe entzerren()). */
+      /* 🧱 KOLLIDER AUF DAS ECHTE MASS NACHZIEHEN. Der Kasten unten entsteht aus
+         `bw`/`bd` — und der Kommentar drueber sagt es selbst: das sind SCHAETZWERTE
+         aus dem cfg. `entzerren()` rueckt die Gebaeude danach anhand der echten
+         Bounding-Box auseinander; der Kollider blieb bisher auf der Schaetzung sitzen.
+         GEMESSEN (th-kasten.mjs): von 6634 blockierenden Rasterpunkten liegen 3798 an
+         Stellen, an denen auf Brusthoehe nichts steht — und 61 der 117 betroffenen
+         Kaesten haben eine TUER, sind also gemeinte Gebaeude. Beim Bank-Kasten
+         (26 x 21) sind es 91 von 91 Punkten; der Blick auf Augenhoehe zeigt dort Wiese.
+         ⚠️ NUR VERKLEINERN, und nur INNERHALB des alten Rechtecks. Zwei Gruende:
+           * Vergroessern ist Sache von `kolliderNachziehen` — das laeuft ohnehin
+             danach und faengt alles, was ueber die Huellbox ragt (Traufen, Rampen).
+           * Das neue Rechteck bleibt so eine Teilmenge des alten, und damit stimmen
+             die Zellen, in die `addSolid` den Kasten schon einsortiert hat. Ein
+             verschobener Kasten ausserhalb seiner Zellen blockiert NICHTS mehr. */
+      var _s9=null;
       bau(b.file,b.h,bx,0,bz,rot,false,function(w9){
         g.bauten.push({w:w9,soll:{x:bx,z:bz}});
+        if(_s9){
+          var bb9=new THREE.Box3().setFromObject(w9);
+          if(isFinite(bb9.min.x)&&isFinite(bb9.max.x)&&isFinite(bb9.min.z)&&isFinite(bb9.max.z)){
+            var ax0=_s9.x-_s9.hw, ax1=_s9.x+_s9.hw, az0=_s9.z-_s9.hd, az1=_s9.z+_s9.hd;
+            var nx0=Math.max(bb9.min.x-0.5,ax0), nx1=Math.min(bb9.max.x+0.5,ax1);
+            var nz0=Math.max(bb9.min.z-0.5,az0), nz1=Math.min(bb9.max.z+0.5,az1);
+            if(nx1-nx0>2&&nz1-nz0>2&&(nx1-nx0<2*_s9.hw-0.2||nz1-nz0<2*_s9.hd-0.2)){
+              _s9.x=(nx0+nx1)/2; _s9.hw=(nx1-nx0)/2;
+              _s9.z=(nz0+nz1)/2; _s9.hd=(nz1-nz0)/2;
+              /* Die Tuer wandert auf die neue Wandflucht — sonst liegt die Luecke
+                 neben dem Haus und man kommt nicht mehr hinein. */
+              if(_s9.door){ var d9=_s9.door;
+                if(d9.a==="z"){d9.at=_s9.z-seite*_s9.hd; d9.c=_s9.x;}
+                else          {d9.at=_s9.x-seite*_s9.hw; d9.c=_s9.z;} }
+            }
+          }
+        }
         /* 🎡 Fahrgeschaeft: die Lage steht ERST hier fest — viertel() setzt sie
            prozedural und entzerren() rueckt sie danach noch. Wir merken uns das
            Wrapper-Objekt und lesen die Position beim Einsteigen frisch aus. */
@@ -5055,7 +5087,7 @@ setTimeout(function baueGebaeude(){
       if(b.tuer!==false){
         tuer=laengs?{a:"z",at:bz-seite*(bd/2+0.5),c:bx,w:3.2}
                    :{a:"x",at:bx-seite*(bw/2+0.5),c:bz,w:3.2};}
-      addSolid(bx,bz,bw+1,bd+1,tuer);
+      _s9=addSolid(bx,bz,bw+1,bd+1,tuer);
       /* Zugangsweg von der Gehwegkante zum Eingang */
       var wl=setback-TO;
       var weg=new THREE.Mesh(new THREE.PlaneGeometry(laengs?2.2:wl,laengs?wl:2.2),betMat(0xcfc8b8,0.92));

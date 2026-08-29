@@ -119,6 +119,8 @@ const sonde = `function(){
         if(!etwasDa(x,z)){nLeer++; leer++; if(!bsp)bsp=(+x.toFixed(1))+"|"+(+z.toFixed(1));}}}
     if(nLeer>0)orte.push({mitte:(+w.x.toFixed(1))+"|"+(+w.z.toFixed(1)),
       mass:(+(w.hw*2).toFixed(1))+"x"+(+(w.hd*2).toFixed(1)),
+      flaeche:Math.round(w.hw*2*w.hd*2),
+      tuer:!!w.door,
       leer:nLeer, ges:nGes, anteil:Math.round(nLeer/Math.max(1,nGes)*100), bsp:bsp});}
   orte.sort(function(a,b){return b.leer-a.leer;});
 
@@ -166,9 +168,26 @@ else { console.log(`❌ SELBSTPROBE FEHLGESCHLAGEN: der Test-Kollider bei ${P.or
 
 if (!R.leer) console.log('✅ Ueberall, wo man blockiert wird, steht auch etwas')
 else {
+  /* ⚠️ SORTIEREN, NICHT NUR ZAEHLEN. "3801 leere Punkte" ist eine Zahl, keine
+     Handlungsanweisung. Zwei Gruppen stecken darin, und sie brauchen Gegensaetzliches:
+       * HAUSGROSSE Kaesten (bis 400 m2) mit leeren Raendern sind zu gross geraten —
+         ein Haus hat eine Wand, und daneben ist Vorgarten.
+       * FLAECHEN-Kaesten (darueber) sind handgesetzte Sperren um ein ganzes Areal:
+         Bergstation, Rummelplatz, Zoo. Ob eine Wiese dort gesperrt sein SOLL, ist eine
+         Entwurfsfrage und keine, die eine Messung beantwortet.
+     Eine Tuer im Kasten ist das zweite Zeichen: sie wird nur fuer BEGEHBARE Gebaeude
+     gesetzt. Ein Kasten mit Tuer meint ein Haus, keine Absperrung. */
+  const HAUS = 400
+  const haus = R.orte.filter((e) => e.flaeche <= HAUS)
+  const flaeche = R.orte.filter((e) => e.flaeche > HAUS)
+  const hausLeer = haus.reduce((a, e) => a + e.leer, 0)
+  const flaecheLeer = flaeche.reduce((a, e) => a + e.leer, 0)
+  console.log(`   ${haus.length} hausgrosse Kaesten (bis ${HAUS} m2) mit ${hausLeer} leeren Punkten`)
+  console.log(`   ${flaeche.length} Flaechen-Kaesten (darueber) mit ${flaecheLeer} leeren Punkten`)
+  console.log(`   davon mit Tuer (= gemeintes Gebaeude): ${R.orte.filter((e) => e.tuer).length}\n`)
   console.log(`⚠️  ${R.orte.length} Kaesten blockieren an Stellen, an denen nichts steht:`)
   for (const e of R.orte.slice(0, 20)) {
-    console.log(`   ${String(e.leer).padStart(4)} von ${String(e.ges).padStart(4)} Punkten (${String(e.anteil).padStart(3)} %)  Kasten ${e.mitte.padStart(13)} ${e.mass.padStart(11)}  z. B. bei ${e.bsp}`)
+    console.log(`   ${String(e.leer).padStart(4)} von ${String(e.ges).padStart(4)} (${String(e.anteil).padStart(3)} %)  ${String(e.flaeche).padStart(5)} m2${e.tuer ? ' Tuer' : '    '}  Kasten ${e.mitte.padStart(13)} ${e.mass.padStart(11)}  z. B. ${e.bsp}`)
   }
   if (R.orte.length > 20) console.log(`   … und ${R.orte.length - 20} weitere`)
 }
