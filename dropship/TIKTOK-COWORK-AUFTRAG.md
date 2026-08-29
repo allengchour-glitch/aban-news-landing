@@ -1,19 +1,44 @@
 # TikTok posten — Auftrag für Cowork
 
-> # ⛔ ZUERST DIES — sonst nicht posten
+> # ⛔ AUFGABE 0 — ZUERST, sonst nicht posten
 >
 > **Im TikTok-Profil steht kein Link.** Der letzte Slide jedes Beitrags sagt aber
 > «Link in Bio». Wer jetzt postet, schickt jede Zuschauerin ins Leere.
+> Gemessen: 560 Follower · 66 Videos · kein Bio-Link · kein Business-Konto.
 >
-> **So ist es in 2 Minuten behoben** (in der TikTok-App, als @luxestyle.ch):
-> 1. Profil → **☰** → *Einstellungen und Datenschutz* → *Konto*
-> 2. **Zu Business-Konto wechseln** — Kategorie z. B. «Shopping & Einzelhandel».
->    Das ist der springende Punkt: Auf einem PRIVATkonto gibt TikTok das
->    Website-Feld erst ab 1'000 Followern frei, das Konto hat 560. Ein Business-Konto bekommt es sofort.
-> 3. *Profil bearbeiten* → **Website** → `https://luxestyle.ch`
+> ## Weg A — klickbarer Link (das Ziel)
+> In der TikTok-App, angemeldet als **@luxestyle.ch** (NICHT @192aban):
+> 1. Profil → **☰** oben rechts → *Einstellungen und Datenschutz*
+> 2. **Ganz nach oben scrollen.** Der allererste Eintrag der Liste heisst
+>    **«Konto»** (Personen-Symbol). Nicht der Kontowechsler unten, nicht
+>    «Support», nicht «Verifizierung».
+> 3. Darin: **«Zu Business-Konto wechseln»** — je nach App-Version liegt es
+>    eine Ebene tiefer unter *Konto verwalten*. Kategorie: *Shopping & Einzelhandel*.
+> 4. Zurück aufs Profil → **Profil bearbeiten** → Feld **Website** →
+>    `https://luxestyle.ch` → speichern.
 >
-> Danach diesen Auftrag einmal neu erzeugen lassen — der Block hier
-> verschwindet dann von selbst, und die Beitraege sind freigegeben.
+> **Geht auch am Computer:** tiktok.com öffnen, als @luxestyle.ch anmelden,
+> oben rechts aufs Profilbild → *Einstellungen* → *Konto*. Dort steht derselbe
+> Punkt, und am grossen Bildschirm ist er leichter zu finden.
+>
+> ℹ️ Der übliche Grund gegen ein Business-Konto trifft hier NICHT zu: Es darf nur
+> die Commercial Music Library nutzen — genau das schreibt Schritt 5 unten ohnehin
+> vor. Der Wechsel ist gratis und jederzeit umkehrbar.
+>
+> ## Weg B — falls «Zu Business-Konto wechseln» partout nicht auffindbar ist
+> Dann wenigstens die Adresse in den Bio-TEXT, denn dort steht sie bisher gar
+> nicht. Profil → **Profil bearbeiten** → **Bio** → exakt das hier einsetzen
+> (zwei Zeilen, passt in die 80 Zeichen):
+>
+> ```
+> Wasserfester Schmuck & Mode aus der Schweiz
+> luxestyle.ch · -10% mit WELCOME10
+> ```
+> Nicht klickbar, aber sichtbar und abtippbar. **Weg B ersetzt Weg A nicht** —
+> er macht den Schaden nur kleiner, bis der echte Link steht.
+>
+> Danach diesen Auftrag einmal neu erzeugen lassen: Steht ein Link im Profil,
+> verschwindet dieser Block von selbst und die Beiträge sind freigegeben.
 
 **Automatisch fortgeschrieben.** Alle Dateien liegen öffentlich auf dem Shopify-CDN;
 Cowork kann sie direkt herunterladen, es braucht keinen Repo-Zugriff.
