@@ -2582,3 +2582,62 @@ Ruckler**: 3 730 Geometrien und 2 042 Materialien weniger heisst entsprechend
 weniger Puffer-Uploads und Shader-Programmsuchen — genau das, was auf einem echten
 Telefon beim ersten Blick in einen neuen Stadtteil hakt. Ein Bildratengewinn wird
 hier **nicht** behauptet; er wäre mit diesem Messgerät gar nicht nachweisbar.
+
+## 1664 Materialien für Autoscheiben, die nie jemand anfasst
+
+Nach dem Parse-Cache blieben 7 258 Materialien, davon **5 184 exakte Zwillinge**.
+Die grösste Gruppe: 1 664-mal `ccd1db / rauh 0,25 / metallisch 0,8 / keine Textur`.
+`th-material.mjs` (neu) fand sie, `th-masse.mjs` ordnete sie keiner Modelldatei zu —
+sie hingen an Gruppen ohne `userData.datei`, also am Verkehr.
+
+Die Ursache stand im Verkehrsaufbau:
+
+```js
+var m=tpl.clone(true);
+m.traverse(function(n){if(n.isMesh&&n.material){n.material=n.material.clone();
+  if(i>=WAGEN.length && /lack/i.test(n.material.name||""))
+    n.material.color.lerp(new THREE.Color(TINT[i%TINT.length]),0.42);}});
+```
+
+`clone(true)` **teilt** Materialien — das ist der Sinn. Die Zeile darunter klonte
+dann aber **jedes** Material **jedes** Wagens, um am Ende nur die Lackteile
+umzufärben, und auch die erst ab dem fünften Wagen. Verglasung, Chrom, Reifen und
+Leuchten wurden pro Fahrzeug einzeln angelegt und nie angerührt.
+
+Jetzt wird geklont, was auch bemalt wird. Gegengemessen, damit die Autos ihre Farben
+behalten: **26 Wagen, 216 Lack-Meshes, 16 verschiedene Lackfarben — vorher wie
+nachher identisch.**
+
+### Zwei weitere Warteschlangen gefunden
+
+`ladeWagen` und `loadTH` hatten zwar einen Cache (`MODELS[…]`), aber **keine
+Warteschlange**: wer im selben Takt zwölf Limousinen anfordert, startet zwölf
+`GL.load`, weil `MODELS` erst beim **ersten** Rückruf gefüllt ist. Beide laufen
+jetzt über `window._glbVorlage` (Cache + Warteschlange, ohne Klon — die Aufrufer
+klonen selbst).
+
+Dazu legt `_matVereinheitlichen` gleich eingestellte Modell-Materialien über
+Dateigrenzen hinweg zusammen. **⚠️ Der Material-*Name* gehört in den Schlüssel** —
+der Verkehr sucht sein Lackmaterial über `/lack/i.test(m.name)`; ein gleich
+eingestelltes Material aus einer anderen Datei hätte die Autos still entfärbt.
+
+### Gemessen
+
+| | vor #2377 | nach #2377 | jetzt |
+|---|---|---|---|
+| Material-Objekte | 9 300 | 7 258 | **3 616** |
+| davon Zwillinge | — | 5 184 | **1 553** |
+| Geometrien (Rechner) | 16 498 | 12 768 | **8 890** |
+| reines Rendern (Rechner) | — | 92,4 ms (88,8 … 103,1) | **77,6 ms (76,8 … 85)** |
+| Bildzeit (Rechner) | 621 ms | 617 ms | **592 ms** |
+| th-3d | | 56 echt / 67 nur 2D | 56 echt / **65** nur 2D |
+| th-netz | | 39 ok | 39 ok |
+
+Diesmal **ist** die Renderzeit messbar gefallen, und die Streubereiche überlappen
+sich nicht (76,8 … 85 gegen 88,8 … 103,1). Die restlichen 87 % Bildzeit bleiben der
+Software-Rasterizer dieses Containers; über die Bildrate auf einem echten Telefon
+sagt auch diese Messung nichts.
+
+Die grösste verbleibende Zwillingsgruppe sind 390 Fensterscheiben `a8c8dc`. Die
+**dürfen** nicht zusammengelegt werden: `dorfFenster` sammelt nur einen Teil von
+ihnen ein, damit nachts nicht jedes Fenster der Stadt gleichzeitig leuchtet.
