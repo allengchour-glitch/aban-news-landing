@@ -5344,3 +5344,6 @@ gid://shopify/Product/15449058083201	CHF 15.14	96 Varianten	Freizeit-Kapuzenpull
 gid://shopify/Product/15449058181505	CHF 16.13	36 Varianten	Unisex Hoodie mit Haustier-Tasche
 gid://shopify/Product/15449058279809	CHF 15.55	8 Varianten	Kapuzen-Shirt im Punk-Stil
 gid://shopify/Product/15449058345345	CHF 13.05	5 Varianten	Damen Colorblock Pullover mit Rundhals und Tasche
+gid://shopify/Product/15449058378113	CHF 29.03	12 Varianten	Off-Shoulder Rundhals-Sweatshirt für Damen
+gid://shopify/Product/15449058509185	CHF 13.39	10 Varianten	Damen-Cardigan mit Spitze und Reissverschluss
+gid://shopify/Product/15449058640257	CHF 17.82	8 Varianten	Digitaler Fleece-Pullover mit Print
