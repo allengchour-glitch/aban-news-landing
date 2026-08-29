@@ -1875,6 +1875,8 @@ oder Bus an der Haltestelle (0,66 m).
 **Stand der Inventur:** von den rund 40 ungenutzten Modellen stehen jetzt **25** (th12 ×5,
 th24 ×5, th29 ×6, th25 ×9). Offen bleibt nur noch **th14 Club-Interieur (12)** — Innenräume,
 die kein Viertel brauchen, sondern begehbare Gebäude.
+*(Nachtrag 2026-08-29: erledigt — der Spielclub bei (126|102) stellt alle zwölf auf,
+siehe den Abschnitt „Zwölf Modelle hatten nie einen Raum" am Ende dieser Datei.)*
 
 ## 2026-08-28 · 🎭 th14: zwei von zwölf stehen — und warum die anderen zehn liegen bleiben
 
@@ -3695,3 +3697,57 @@ der Schaden heisst nicht „Standbild", sondern „ein toter Erfolg reisst alle 
 Ein Backtick in einem Kommentar **innerhalb** der Sonde — `` `checkAch()` `` als Zitat
 gemeint — brach den Lauf mit „Unexpected identifier 'checkAch'". **Elftes Mal.** In Sonden
 gehören Anführungszeichen, auch in Kommentare.
+
+## 2026-08-29 · 🎰 Zwölf Modelle hatten nie einen Raum — das erste betretbare Haus
+
+Aus der Inventur blieb ein Posten offen: **th14, zwölf Innenraum-Modelle** (Bar,
+Poker-, Roulette-, Kartentisch, Tanzfläche, Discokugel, DJ-Pult, Kronleuchter,
+Spielautomat, Automatenreihe, Neonschild, Samtkordel). Sie lagen seit Langem im Repo
+und hat nie jemand gesehen. Es fehlte **nicht die Einrichtung, sondern der Raum**.
+
+Jetzt steht ein **Spielclub** bei (126|102) aus demselben `th34`-Baukasten wie die
+Häuserzeile daneben: 16 × 12 m, ein Geschoss, Flachdach, Tür nach Süden, Kollider mit
+Türlücke. Wände 4,00 m im x-Raster, Geschoss 3,00 m, Ecken auf (±8|±6).
+
+### Was gemessen wurde, statt geraten
+
+| | Messung | Ergebnis |
+|---|---|---|
+| Platz | `_viertelSolver.passt(cfg,x,z,2)` über x 90…140 / z 100…140 | 117 freie Stellen; **(126\|102)** die straßennächste (17 m) |
+| Gelände | `_bergHoehe` über den Grundriss | 0,00 … 0,00 — eben |
+| Türseite | Fahrbahn-Abstand in vier Richtungen | Süd 18 m, Ost 31, Nord 39, West 55 → Eingang nach Süden |
+| Maßstab | Bounding-Box jedes th14-Modells | alle bereits in Metern (Bar 4,72 × 2,45, Tanzfläche 6 × 6) |
+
+Weil `bau()` **über die Höhe** skaliert, steht als `zielH` die *gemessene Eigenhöhe* —
+so bleibt der Maßstab 1:1. Nur zwei Ausnahmen, beide mit Grund: die Tanzfläche auf
+5 × 5 (0,125 statt 0,15), damit an der Ostwand ein Gang für die Automaten bleibt, und
+das 7,85 m hohe Neonschild auf 3,2 m, weil das Haus 3 m hoch ist.
+
+### ⚠️ Die Platzsuche kennt den See nicht
+
+Die drei nächstgelegenen Treffer überhaupt waren **(2|128)**, **(-12|128)** und
+**(2|142)** — alle **im Seepark-See**. `viertelPasst` prüft Kollider, Straßen und Berge,
+aber kein Wasser; das ist eine dokumentierte Lücke, an der schon der erste Wurf der
+Baukasten-Zeile gescheitert ist (Haus im Wasser). Erst ein zusätzlicher Test gegen die
+eine Uferlinie `window._seeUfer(winkel)` hat sie aussortiert — 223 Treffer wurden 130.
+
+> Wieder Regel 9, andersherum: es gibt **eine** Quelle für das Ufer, aber die Platzsuche
+> fragt sie nicht. Wer neu baut, muss sie selbst fragen.
+
+### Neues Werkzeug `th-club.mjs` (Prüfung 19)
+
+Der Club ist das erste Haus, dessen **Innenraum** zählt — damit zählen Fehler, die
+draußen niemand sieht. Fünf Fragen: alle zwölf Teile da · jedes innerhalb der Wände ·
+keine zwei auf demselben Fleck · Hängendes zwischen 2,0 und 3,0 m · `inSolid` in der
+Türlücke falsch bei dichten Wänden ringsum.
+
+⚠️ Die letzte Frage misst man am leichtesten falsch: `inSolid` ist nur in der äußeren
+Schale (0,55 m) wahr. Wer mitten im Raum tastet, bekommt überall „frei" und hält eine
+massive Wand für eine Tür. Darum wird auf der **Wandflucht** getastet.
+
+⚠️ Und die Überschneidungsprüfung braucht die **Höhe** mit: ohne sie meldet die
+Discokugel die Tanzfläche unter sich als Konflikt.
+
+**Erster Lauf, ein echter Befund:** der Kronleuchter hing bis **1,80 m** herunter — über
+dem Pokertisch fällt das nicht auf, beim Vorbeigehen schon. Auf 0,90 m gekürzt,
+Unterkante jetzt 2,10 m. Danach alle fünf Prüfungen grün, 0 JS-Fehler.
