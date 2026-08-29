@@ -1,7 +1,24 @@
 # TikTok posten — Auftrag für Cowork
 
+> # ⛔ ZUERST DIES — sonst nicht posten
+>
+> **Im TikTok-Profil steht kein Link.** Der letzte Slide jedes Beitrags sagt aber
+> «Link in Bio». Wer jetzt postet, schickt jede Zuschauerin ins Leere.
+>
+> **So ist es in 2 Minuten behoben** (in der TikTok-App, als @luxestyle.ch):
+> 1. Profil → **☰** → *Einstellungen und Datenschutz* → *Konto*
+> 2. **Zu Business-Konto wechseln** — Kategorie z. B. «Shopping & Einzelhandel».
+>    Das ist der springende Punkt: Auf einem PRIVATkonto gibt TikTok das
+>    Website-Feld erst ab 1'000 Followern frei, das Konto hat 560. Ein Business-Konto bekommt es sofort.
+> 3. *Profil bearbeiten* → **Website** → `https://luxestyle.ch`
+>
+> Danach diesen Auftrag einmal neu erzeugen lassen — der Block hier
+> verschwindet dann von selbst, und die Beitraege sind freigegeben.
+
 **Automatisch fortgeschrieben.** Alle Dateien liegen öffentlich auf dem Shopify-CDN;
 Cowork kann sie direkt herunterladen, es braucht keinen Repo-Zugriff.
+
+**Profil am 2026-08-29 gemessen:** 560 Follower · 66 Videos · 266 Likes · Bio-Link: **keiner**
 
 ## So vorgehen (gilt für jeden Beitrag)
 1. **Zuerst das Profil ansehen:** tiktok.com/@luxestyle.ch — steht das Produkt dort schon,
@@ -24,7 +41,7 @@ Cowork kann sie direkt herunterladen, es braucht keinen Repo-Zugriff.
 
 ```
 Hyaluronsäure Hautpflege 5er-Set · CHF 21.90
-Jetzt im Shop 🇨🇭 luxestyle.ch — Link in Bio
+Jetzt im Shop 🇨🇭 luxestyle.ch
 Code WELCOME10 für −10%
 
 #fyp #schweiz #luxestyle #beauty #selfcare #skincare
@@ -50,7 +67,7 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hyaluronsaure-hautpflege-
 
 ```
 Lockenstab für einfache Stylings · CHF 53.90
-Jetzt im Shop 🇨🇭 luxestyle.ch — Link in Bio
+Jetzt im Shop 🇨🇭 luxestyle.ch
 Code WELCOME10 für −10%
 
 #fyp #schweiz #luxestyle #beauty #selfcare
@@ -73,7 +90,7 @@ Code WELCOME10 für −10%
 
 ```
 Schmuck-Organizer mit Faltwand · CHF 21.90
-Jetzt im Shop 🇨🇭 luxestyle.ch — Link in Bio
+Jetzt im Shop 🇨🇭 luxestyle.ch
 Code WELCOME10 für −10%
 
 #fyp #schweiz #luxestyle #ordnung #interior
@@ -106,7 +123,7 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/schmuck-organizer-mit-fal
 4. Elektrischer Kopfhaut-Massagekamm mit Rotlicht · CHF 21.90
 5. 3-in-1 Wireless Ladestation für Apple Geräte · CHF 23.90
 
-Alles auf luxestyle.ch — Link in Bio
+Alles auf luxestyle.ch
 Code WELCOME10 für −10%
 
 #fyp #schweiz #luxestyle #beauty #selfcare #skincare #gadgets
@@ -140,7 +157,7 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/top-5-unter-40-0829-clean
 4. IPL Laser Haarentfernungsgerät klappbar · CHF 44.90
 5. 3D Glas Aroma Diffusor mit Farblicht · CHF 26.90
 
-Alles auf luxestyle.ch — Link in Bio
+Alles auf luxestyle.ch
 Code WELCOME10 für −10%
 
 #fyp #schweiz #luxestyle #petsoftiktok #hund #katze #beauty
@@ -167,7 +184,7 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/top-5-unter-50-0828-clean
 
 ```
 Vakuumierer kabellos · Lebensmittel frisch halten · CHF 26.90
-Jetzt im Shop 🇨🇭 luxestyle.ch — Link in Bio
+Jetzt im Shop 🇨🇭 luxestyle.ch
 Code WELCOME10 für −10%
 
 #fyp #schweiz #luxestyle #gadgets #kitchenhacks

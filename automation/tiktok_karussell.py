@@ -42,6 +42,13 @@ import time
 
 from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageEnhance
 
+# ⚠️ «Link in Bio» wird nicht behauptet, sondern am Profil GEPRUEFT:
+# das Konto hat keinen Bio-Link (kein Business-Konto, 560 Follower — TikTok
+# gibt das Website-Feld auf Privatkonten erst ab 1'000 frei). Siehe
+# automation/tiktok_biolink.py. Faellt die Abfrage aus, greift die
+# vorsichtige Fassung ohne die Zusage.
+from tiktok_biolink import cta_zeile, cta_slide
+
 HIER = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HIER)
 SHOP = "au3j0y-hq.myshopify.com"
@@ -327,7 +334,9 @@ def slide_cta(titelzeile):
         d.text((B / 2, y), z, font=schrift, fill=CREME, anchor="mm")
         y += 92
     d.text((B / 2, y + 90), "luxestyle.ch", font=f(SANSB, 62), fill=GOLD, anchor="mm")
-    d.text((B / 2, y + 176), "Link in Bio", font=f(SANS, 40), fill=WEISS, anchor="mm")
+    _cta = cta_slide()
+    if _cta:
+        d.text((B / 2, y + 176), _cta, font=f(SANS, 40), fill=WEISS, anchor="mm")
     d.rounded_rectangle([190, y + 250, B - 190, y + 366], radius=58, outline=GOLD, width=3)
     d.text((B / 2, y + 308), "Code  WELCOME10  ·  −10%",
            font=f(SANSB, 40), fill=WEISS, anchor="mm")
@@ -394,7 +403,7 @@ def bau_produkt(p, benutzt):
     slides.append(slide_cta(titel))
     slug = re.sub(r"[^a-z0-9]+", "-", p["handle"].lower())[:46].strip("-")
     cap = (f"{titel} · {preis}\n"
-           f"Jetzt im Shop 🇨🇭 luxestyle.ch — Link in Bio\n"
+           f"{cta_zeile()}\n"
            f"Code WELCOME10 für −10%\n\n{hashtags(p.get('tags') or [])}")
     return slug, slides, cap, [p["handle"]]
 
@@ -427,7 +436,7 @@ def bau_top(kandidaten):
                       for i, (p, _) in enumerate(tmp, 1))
     alle_tags = [t for p, _ in tmp for t in (p.get("tags") or [])]
     cap = (f"{hook} 🇨🇭\n\n{liste}\n\n"
-           f"Alles auf luxestyle.ch — Link in Bio\nCode WELCOME10 für −10%\n\n"
+           f"{cta_zeile('Alles auf ')}\nCode WELCOME10 für −10%\n\n"
            f"{hashtags(alle_tags)}")
     return slug, slides, cap, [p["handle"] for p, _ in tmp]
 

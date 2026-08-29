@@ -27,6 +27,7 @@ import os
 import re
 import subprocess
 import sys
+from tiktok_biolink import bio_link, profil
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASIS = os.path.join(ROOT, "social", "tiktok")
@@ -121,9 +122,43 @@ def main():
     for (slug, n), u in slides.items():
         proSlug.setdefault(slug, {})[n] = u
 
-    aus = ["# TikTok posten — Auftrag für Cowork", "",
+    # ⚠️ 29.08.2026 — DER ABSCHLUSS-SLIDE SAGT «Link in Bio», UND IM BIO IST KEINER.
+    # Live gemessen: @luxestyle.ch hat 560 Follower, 66 Videos, 266 Likes und KEINEN
+    # bioLink; `commerceUser: false` heisst Privatkonto, und dort gibt TikTok das
+    # Website-Feld erst ab 1'000 Followern frei. Jeder Beitrag verwies damit auf etwas,
+    # das es nicht gibt — dieselbe Klasse wie das Popup, das auf eine Liste schrieb, die
+    # kein Flow las. Die Captions sind bereinigt; die Zeile steht aber im BILD des
+    # Abschluss-Slides und laesst sich dort nicht ueberschreiben.
+    # Deshalb wird das Posten GESPERRT, solange kein Bio-Link existiert. Das ist die
+    # bessere Richtung: den Link nachzutragen macht die Zusage wahr UND schliesst das
+    # Loch im Trichter — 66 Videos ohne klickbaren Link erklaeren einen Teil davon,
+    # warum Social in 60 Tagen null Kassengaenge gebracht hat.
+    # Sobald ein Link im Profil steht, verschwindet dieser Block von selbst.
+    _u = profil() or {}
+    _st = _u.get("stats") or {}
+    _link = bio_link()
+    kopf = []
+    if not _link:
+        kopf = ["> # ⛔ ZUERST DIES — sonst nicht posten", ">",
+                "> **Im TikTok-Profil steht kein Link.** Der letzte Slide jedes Beitrags sagt aber",
+                "> «Link in Bio». Wer jetzt postet, schickt jede Zuschauerin ins Leere.", ">",
+                "> **So ist es in 2 Minuten behoben** (in der TikTok-App, als @luxestyle.ch):",
+                "> 1. Profil → **☰** → *Einstellungen und Datenschutz* → *Konto*",
+                "> 2. **Zu Business-Konto wechseln** — Kategorie z. B. «Shopping & Einzelhandel».",
+                ">    Das ist der springende Punkt: Auf einem PRIVATkonto gibt TikTok das",
+                ">    Website-Feld erst ab 1'000 Followern frei, das Konto hat "
+                + f"{_st.get('followerCount', '?')}. Ein Business-Konto bekommt es sofort.",
+                "> 3. *Profil bearbeiten* → **Website** → `https://luxestyle.ch`",
+                ">", "> Danach diesen Auftrag einmal neu erzeugen lassen — der Block hier",
+                "> verschwindet dann von selbst, und die Beitraege sind freigegeben.", ""]
+
+    aus = ["# TikTok posten — Auftrag für Cowork", ""] + kopf + [
            "**Automatisch fortgeschrieben.** Alle Dateien liegen öffentlich auf dem Shopify-CDN;",
            "Cowork kann sie direkt herunterladen, es braucht keinen Repo-Zugriff.", "",
+           f"**Profil am {__import__('datetime').date.today().isoformat()} gemessen:** "
+           f"{_st.get('followerCount','?')} Follower · {_st.get('videoCount','?')} Videos · "
+           f"{_st.get('heartCount','?')} Likes · Bio-Link: "
+           + (f"`{_link}`" if _link else "**keiner**"), "",
            "## So vorgehen (gilt für jeden Beitrag)",
            "1. **Zuerst das Profil ansehen:** tiktok.com/@luxestyle.ch — steht das Produkt dort schon,",
            "   diesen Beitrag ÜBERSPRINGEN und melden. Doppelposts sind ausdrücklich verboten.",

@@ -847,6 +847,49 @@ verschwinden lässt.
 bevor ich ihn geprüft hatte. **Ein Verlustbefund gehört erst gemeldet, wenn er gegen die Quelle
 gehalten wurde** — sonst erzeugt er Aufregung, die niemand braucht.
 
+## 🔗 66 TikTok-Videos sagen «Link in Bio» — im Bio ist keiner (2026-08-29)
+Auf «mache es mit cowork und browser» erst geprüft, was von hier überhaupt geht — und dabei
+fiel der Gedächtnis-Eintrag vom 28.08. («TikTok ist von hier nicht lesbar»). Er galt der
+gerenderten APP. **Die Profildaten stehen serverseitig im HTML**, im Block
+`__UNIVERSAL_DATA_FOR_REHYDRATION__`; ein `curl` mit Browser-User-Agent liefert 367 KB, darin
+`followerCount`, `videoCount`, `signature`, `bioLink`. Zum ersten Mal harte Zahlen:
+
+| | |
+|---|---:|
+| Follower | **560** |
+| folgt | 910 |
+| Videos | **66** |
+| Likes insgesamt | **266** — also **4 je Video** |
+| Bio-Link | **KEINER** |
+| `commerceUser` | **false** (Privatkonto) |
+
+**Alle sechs vorbereiteten Beiträge tragen die Zeile «Link in Bio» — und der Abschluss-Slide
+trägt sie EINGEBRANNT IM BILD.** Dieselbe Klasse wie das Popup, das auf eine Liste schrieb,
+die kein Flow las: Der Trichter ist nicht schwach, er ist durchtrennt. 66 Videos ohne
+klickbaren Link erklären einen Teil davon, warum Social in 60 Tagen **null Kassengänge**
+gebracht hat.
+- **Quelle repariert:** `automation/tiktok_biolink.py` liest den echten Bio-Link (15 Min
+  zwischengespeichert); `tiktok_karussell.py` baut die CTA-Zeile und den Slide-Text daraus.
+  Ist ein Link da, heisst es «Link in Bio»; ist keiner da, nennt die Caption nur die Domain.
+  ⚠️ **Ein Netzfehler darf die Zusage NICHT einschalten** — bei Ausfall gilt die vorsichtige
+  Fassung. Eine Zusage, die vielleicht stimmt, ist schlimmer als eine Zeile, die sicher stimmt.
+- **Die sechs Bestands-Captions bereinigt** (0 tragen die Zusage noch).
+- **Der Slide liess sich nicht bereinigen — also wurde die Bedingung umgedreht.** Sechs Bilder
+  neu zu rendern, um eine gute CTA zu LÖSCHEN, ist die falsche Richtung. Der Auftrag sperrt
+  jetzt das Posten, solange kein Bio-Link existiert, und nennt den 2-Minuten-Weg: **auf ein
+  Business-Konto wechseln**, dann gibt TikTok das Website-Feld sofort frei (auf Privatkonten
+  erst ab 1'000 Followern). Sobald der Link steht, verschwindet der Sperrblock von selbst.
+- ⚠️ **Der Ads-Konnektor ist KEIN Ersatz für den Profilblick:** `identity_get` zeigt
+  `luxestyle.ch` als BC-autorisierte Identität mit `can_push_video: true`, aber
+  `tt_video_list_get` gibt für BEIDE Identitäten leer zurück — er listet nur
+  Spark-Ads-freigegebene Videos. «Das Profil hat 0 Videos» wäre die Fehlmeldung gewesen;
+  tatsächlich sind es 66.
+- ⚠️ Und die ehrliche Grenze zur Anfrage: **Cowork und ein angemeldeter Browser stehen dieser
+  Session nicht zur Verfügung.** `list_environments` kennt nur Cloud-Umgebungen, keine
+  `remote_cowork`; und selbst eine frisch erzeugte Cloud-Sitzung hätte die TikTok-Anmeldung
+  des Betreibers nicht. Der Upload bleibt Handarbeit — was diese Session tun kann, ist das
+  Material so vorzubereiten, dass es beim Einfügen stimmt.
+
 ## 📱 TikTok «Profil pushen»: das Tor ist EIN Klick — und drei Korrekturen am Gedächtnis (2026-08-29)
 Auf «tiktok profil push» hin den Stand gemessen statt aus dem Gedächtnis geantwortet. Drei
 Einträge waren überholt:
