@@ -111,19 +111,35 @@ einzeln am Produkt abgefragt, nicht aus einem Bericht übernommen):
 - Multifunktionaler Messerhalter mit Wellenmuster
 - Diamant-Messerschärfer mit festem Winkel
 
-**Dafür spricht:** Es ist Küchenware, kein Waffenzubehör — vier von fünf sind sogar reines
-Zubehör ohne Klinge. Google erlaubt Küchenmesser; die Hausregel dieses Projekts hält seit dem
-12.08. ausdrücklich fest, dass Küchenbesteck **kein** Richtlinienverstoss ist. Google ist der
-einzige Kanal mit belegten Verkäufen — was dort fehlt, ist ein verschenkter Gratis-Eintrag.
+**Warum sie überhaupt draussen waren — das hat sich heute Abend geklärt, und es war ein
+Fehler von uns, keine Richtlinie.** Der Lauf, der solche Lücken schliesst, prüft den Titel gegen
+eine Wortliste, und in dieser Liste stand ein ungeankertes `messer`. Über alle **49'270 aktiven
+Produkte** gemessen trifft dieses eine Wort **403 Titel — 73 davon sind gar keine Klinge**:
+Messerschärfer, magnetische Messerhalter, Wetzsteine, dazu Pulsmesser, Herzfrequenzmesser,
+Höhenmesser und ein Mixer «mit 6 Messern». Dieselbe Liste hielt ausserdem **54 Waffelstrick-
+Pullover** für Waffen und **268 Augen-, Schlaf- und Gesichtsmasken** für Kostüm-Masken.
+Die Liste ist repariert (verankert, 22 Gegenproben, 0 Abweichungen); die gepflegte Klingenregel
+lehnt echte Messer weiterhin ab.
 
-**Dagegen spricht:** Ein Fehlgriff im Google-Kanal riskiert die Merchant-Sperre, also genau den
-Kanal, der als einziger verkauft. Die Wortliste, die sie draussen hält, ist bewusst grob.
+**Damit steht die Frage anders:** Es gibt keinen Richtlinien-Grund, diese fünf draussen zu
+lassen. Google erlaubt Küchenmesser ausdrücklich, und vier der fünf sind reines Zubehör ganz
+ohne Klinge. Google ist der einzige Kanal mit belegten Verkäufen — jedes Produkt, das dort
+fehlt, ist ein verschenkter Gratis-Eintrag.
+
+**Warum ich sie trotzdem nicht selbst publiziert habe:** Ein Fehlgriff im Google-Kanal riskiert
+die Merchant-Sperre, also genau den Kanal, der als einziger verkauft. Deshalb läuft der
+Publizier-Schritt bewusst NICHT automatisch mit den täglichen Wächtern. Ein Wort von dir genügt.
 
 **Zwei Fälle aus derselben Meldung habe ich selbst entschieden**, weil sie eindeutig waren:
 Eine **«Retro Schwertabdeckung»** bleibt draussen — das ist eine Scheide für ein Schwert, also
-Waffenzubehör; die Regel hätte sie am Vormittag noch durchgelassen, das ist repariert. Ein
-Deko-Kissen mit **«Schwertblatt»**-Muster (Schwertblatt = Bogenhanf, eine Pflanze) ist dagegen
-jetzt drin. Beides live gegengeprüft.
+Waffenzubehör; die alte Regel hätte sie durchgelassen, das ist repariert. Ein Deko-Kissen mit
+**«Schwertblatt»**-Muster (Schwertblatt = Bogenhanf, eine Pflanze) ist dagegen jetzt drin.
+Beides live gegengeprüft.
+
+⚠️ **Eine Absage war nur zufällig richtig, und das gehört dazugesagt:** Die «LED-Gesichtsmaske»
+blieb draussen, weil das Wort «Maske» in der Liste stand. Der Grund, den ich am 22.08. notiert
+hatte («Therapie» im Text), steht im TEXT — geprüft wird aber der TITEL. Sie ist damit ebenfalls
+eine offene Frage, keine getroffene Entscheidung.
 
 ## 6. Drei Anmeldewege, drei Ziele — von 1'324 Kundinnen hat EINE eingewilligt  ⭐⭐
 
