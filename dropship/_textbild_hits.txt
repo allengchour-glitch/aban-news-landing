@@ -13328,3 +13328,18 @@ gid://shopify/Product/15519833489793	11->0	UFO 2 AIR Hundeleine, einziehbar
 gid://shopify/Product/15519833522561	50->0	Sportliche wasserdichte Uhr
 gid://shopify/Product/15519833620865	44->0	Intelligenz-Knotenseil für Hunde
 gid://shopify/Product/15519833751937	9->0	Herzfrequenz-Tracker für iPhone
+gid://shopify/Product/15519833784705	13->0	Hundeleine für Training & Tracking
+gid://shopify/Product/15519834014081	14->2	Halsband, Leine und Kotbeutel-Set für Welpen
+gid://shopify/Product/15519834145153	57->1	Uhrenarmband aus Leder für Damen und Herren
+gid://shopify/Product/15519834276225	31->0	Hundegeschirr-Set aus Webstoff mit Leine
+gid://shopify/Product/15519834374529	51->0	Reflektierendes Brustgeschirr für kleine bis mittelgrosse Hu
+gid://shopify/Product/15519834440065	63->0	Teddy's Fund Brustgeschirr im Westen-Stil
+gid://shopify/Product/15519834734977	14->1	Hundegeschirr mit Leine für Spaziergänge
+gid://shopify/Product/15519835357569	21->0	Sportwagen-Modell aus kleinen Bausteinen
+gid://shopify/Product/15519835586945	19->2	Elegantes ärmelloses Damen-Shirt mit Schleife
+gid://shopify/Product/15519835619713	10->0	Ärmelloses Top mit Schnürung
+gid://shopify/Product/15519837553025	51->0	Hundegeschirr im Westen-Stil
+gid://shopify/Product/15519837684097	20->0	LED-Sattelgeschirr für Hunde
+gid://shopify/Product/15519837782401	57->1	Pulsmessendes Fitness-Armband K1
+gid://shopify/Product/15519837815169	23->0	Katzengeschirr im Westen-Stil
+gid://shopify/Product/15519838306689	44->0	Smartwatch mit SIM, Kamera und Bluetooth
