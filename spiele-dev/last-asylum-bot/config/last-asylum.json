@@ -1864,7 +1864,7 @@
                     1.0,
                     0.55
                   ],
-                  "mindestabstand": 43200
+                  "mindestabstand": 1800
                 }
               }
             ]
@@ -2885,7 +2885,7 @@
               1.0,
               1.0
             ],
-            "mindestabstand": 7200
+            "mindestabstand": 1800
           }
         },
         {
@@ -3149,7 +3149,7 @@
               1.0,
               1.0
             ],
-            "mindestabstand": 7200
+            "mindestabstand": 1800
           }
         },
         {
@@ -4357,7 +4357,7 @@
               1.0,
               1.0
             ],
-            "mindestabstand": 7200
+            "mindestabstand": 1800
           }
         },
         {
@@ -4735,7 +4735,7 @@
               1.0,
               1.0
             ],
-            "mindestabstand": 7200
+            "mindestabstand": 1800
           }
         },
         {
@@ -5506,7 +5506,7 @@
               1.0,
               1.0
             ],
-            "mindestabstand": 3600
+            "mindestabstand": 1800
           }
         },
         {
@@ -5611,9 +5611,9 @@
     },
     {
       "name": "zurueck-in-die-basis",
-      "every": 300,
+      "every": 120,
       "priority": 210,
-      "_zweck": "Bringt den Bot deterministisch an die Oberflaeche zurueck: bis zu viermal den Zurueck-Pfeil oben links, dann Startseite/Gebiet/Burg. Der Pfeil ist die verlaesslichste Vorlage im ganzen Satz (gemessen 1.000) und liegt in einem winzigen Suchfenster, das kostet fast nichts. WARUM SO WICHTIG: seit die Blindtipps raus sind, kommt keine Aufgabe mehr aus einem Untermenue heraus - und am 28.08. verfehlte im Protokoll JEDE Navigations-Vorlage ihr Ziel (nav/welt 0.47 bei Schwelle 0.86, nav/lupe 0.32 bei 0.88), weil der Bot in einer Unteransicht stand. Prioritaet 210 und alle fuenf Minuten: lieber einmal zu oft nach Hause als eine halbe Stunde in einem Menue.",
+      "_zweck": "Bringt den Bot deterministisch an die Oberflaeche zurueck: bis zu viermal den Zurueck-Pfeil oben links, dann Startseite/Gebiet/Burg. Der Pfeil ist die verlaesslichste Vorlage im ganzen Satz (gemessen 1.000) und liegt in einem winzigen Suchfenster, das kostet fast nichts. WARUM SO WICHTIG: seit die Blindtipps raus sind, kommt keine Aufgabe mehr aus einem Untermenue heraus - und am 28.08. verfehlte im Protokoll JEDE Navigations-Vorlage ihr Ziel (nav/welt 0.47 bei Schwelle 0.86, nav/lupe 0.32 bei 0.88), weil der Bot in einer Unteransicht stand. Prioritaet 210 und alle fuenf Minuten: lieber einmal zu oft nach Hause als eine halbe Stunde in einem Menue. TAKT 300 auf 120 (29.08.): die beiden Vollbilder von 16:28 und 16:29 zeigen beide 'Taegliche Aufgaben' - dazwischen liefen 'bauen-und-aufwerten' und 'versammlung-beitreten' ins Leere, weil ihre Vorlagen auf einem Vollbild-Dialog nichts finden. Seit die Blindtipps raus sind, kommt keine Aufgabe mehr von selbst aus so einem Fenster heraus; das ist ausdruecklich Sache dieser Aufgabe. Sie kostet einen Schritt und zwei winzige Suchfenster - haeufiger ist billiger als Aufgaben, die auf dem falschen Bildschirm verpuffen.",
       "do": [
         {
           "log": "Zurueck an die Oberflaeche"
@@ -6832,7 +6832,7 @@
               1.0,
               1.0
             ],
-            "mindestabstand": 3600
+            "mindestabstand": 1800
           }
         },
         {
