@@ -20,6 +20,49 @@ in der App wählen lassen. Für Einzel-Posts der Standard-Weg, bis die API frei 
 **Content-Nachschub:** cj_video_reel_engine baut Reels aus CJ-Produktvideos — praktisch unendlich,
 Ledger verhindern jede Wiederholung (plattformübergreifend). 29 ready in reels_seed.csv.
 
+## 🚦 Sechs rankende Adressen aufgefangen — und ein Ziel, das es nicht gibt (2026-08-29)
+
+`tote_rankings.py` meldete 7 Adressen, für die Google uns zeigt und die zu einem 404 führen —
+zusammen **~1'110 Suchen im Monat**. Alle sieben DRAFT, alle zu Recht (fehlende Lieferanten-Ref,
+BigBuy-Altware). Vor dem Handeln beide Gegenproben gemacht, die der Fehlalarm vom Vormittag
+gelehrt hat: **keine** hatte bereits eine Weiterleitung, und jedes Ziel wurde einzeln auf
+aktive Ware geprüft.
+
+| Adresse | Suchen/Mt. | Ziel |
+|---|---:|---|
+| Cap «New Era» LA Dodgers | 210 | `/collections/caps-huete` |
+| R36S Retro Handheld | 170 | `/collections/gaming` |
+| Nike Court Vapor | 170 | `/collections/damen-schuhe` |
+| Valentino Born In Roma | 140 | `/collections/parfum-duefte` |
+| Cup-Holder mit Phone-Mount | — | `/collections/auto-halterungen` |
+| L'Oréal Concealer | — | `/collections/make-up` |
+| **Nagel-Kabelschellen «OBO Bettermann»** | **170** | **bleibt offen** |
+
+Markenanfragen gehen auf die KATEGORIE, nie auf eine fremde Marke (Hausregel 28.08.) — die
+Kundin sucht Nike und bekommt Damenschuhe zu sehen, nicht ein anderes Markenprodukt untergejubelt.
+**Die Kabelschellen bleiben bewusst ohne Ziel:** `handwerkzeug` hat **0 aktive Produkte**,
+`elektrowerkzeug` führt Winkelschleifer-Zubehör, `bohren-saegen` Sägeblätter. Auf etwas
+Unverwandtes umzubiegen ist schlechter als der 404, den es ersetzt.
+- ⚠️ **Die Aktenlage war überholt:** Der Eintrag vom 28.08. hielt fest, für die Dodgers-Cap gebe
+  es «weder eine Cap-Kollektion noch ein aktives Cap-Produkt». Heute existiert `caps-huete` mit
+  197 Produkten, 29 von 30 der Stichprobe aktiv. **Ein «gibt es nicht» aus dem Gedächtnis ist
+  ein Befund von damals — vor dem Handeln neu fragen.**
+
+**⚠️ ZWEI eigene Prüffehler auf dem Weg, beide vor dem Schreiben gefangen:**
+1. `products(first:30, query:"status:active")` — **`products` auf einer Kollektion nimmt kein
+   `query`.** Die Abfrage scheiterte, mein `.get()` gab `None`, und das Skript meldete für ALLE
+   acht Ziele «GIBT ES NICHT». Beinahe hätte ich daraus geschlossen, der Shop habe keine
+   Kategorien mehr. Vierte Fassung derselben Lehre: **ein Nullergebnis aus einer kaputten
+   Abfrage ist kein Befund.** Status wird jetzt aus dem Feld `status` der Produkte gezählt.
+2. **Der Publikations-Kanal heisst nicht überall gleich.** Über die rohe Admin-API meldet er
+   sich als **«Online Store»**, über das Shopify-MCP-Werkzeug als **«Onlineshop»** — derselbe
+   Kanal, lokalisierter Anzeigename. Mein Vergleich auf «Onlineshop» meldete daraufhin alle
+   acht Kollektionen als NICHT VERÖFFENTLICHT. **Ein Anzeigename ist keine Kennung** — wer auf
+   ihn vergleicht, prüft die Sprache des Clients, nicht den Zustand des Shops. Dieselbe Familie
+   wie «eine PID ist ein Name, kein Zeitstempel».
+- Live gegengeprüft, nicht nur am Ursprung: drei Stichproben antworten mit **301** auf das
+  jeweilige Ziel.
+
 ## 🗡️ Die reparierte Klingenregel hätte eine Schwertscheide bei Google publiziert (2026-08-29)
 
 Der Google-Lücken-Wächter meldete 7 Produkte. Sechs davon sind Klingen-ZUBEHÖR (Messerblock,
