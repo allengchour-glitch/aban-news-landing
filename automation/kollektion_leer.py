@@ -36,6 +36,9 @@ bestehenden Text-/Ad-/Google-Links sind endgültig verloren.
 die Ware ist nicht bestellbar. Ein leeres Regal ist ärgerlich, eine unlieferbare Bestellung teuer.
 """
 import json, os, subprocess, sys
+import os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from shop_kanal import im_onlineshop_liste
 
 SHOP = "au3j0y-hq.myshopify.com"
 TOK = os.environ.get("SHOPIFY_ADMIN_TOKEN") or open("/tmp/cj_shop_token.txt").read().strip()
@@ -85,8 +88,7 @@ def main():
             return 1
         for n in d["nodes"]:
             gesamt += 1
-            if not any(x["publication"]["name"] == "Online Store" and x["isPublished"]
-                       for x in n["resourcePublicationsV2"]["nodes"]):
+            if not im_onlineshop_liste(n["resourcePublicationsV2"]["nodes"]):
                 continue
             kandidaten.append(n)
         if not d["pageInfo"]["hasNextPage"]:

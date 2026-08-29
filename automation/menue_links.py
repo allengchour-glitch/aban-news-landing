@@ -24,6 +24,9 @@ Meldet nur, ändert nichts: Ob ein Menüpunkt entfernt oder die Kollektion gefü
 eine Entscheidung über die Navigation.
 """
 import json, os, subprocess, time
+import os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from shop_kanal import im_onlineshop
 
 SHOP = "au3j0y-hq.myshopify.com"
 TOK = open("/tmp/cj_shop_token.txt").read().strip()
@@ -99,7 +102,7 @@ def main():
                 befund.append((h, "existiert nicht")); continue
             pubs = {n["publication"]["name"]: n["isPublished"]
                     for n in c["resourcePublications"]["nodes"]}
-            if not pubs.get("Online Store"):
+            if not im_onlineshop(pubs):
                 befund.append((h, "nicht im Online Store veroeffentlicht -> 404"))
             elif c["productsCount"]["count"] == 0:
                 befund.append((h, "veroeffentlicht, aber LEER"))

@@ -20,6 +20,43 @@ in der App wählen lassen. Für Einzel-Posts der Standard-Weg, bis die API frei 
 **Content-Nachschub:** cj_video_reel_engine baut Reels aus CJ-Produktvideos — praktisch unendlich,
 Ledger verhindern jede Wiederholung (plattformübergreifend). 29 ready in reels_seed.csv.
 
+## 🏷️ Eine Startseiten-Kachel führte auf eine Kollektion mit NULL kaufbaren Produkten (2026-08-29)
+
+Nach der Härtung der Kanal-Prüfung lief `kollektion_leer.py` sauber durch — 508 Kollektionen,
+355 im Onlineshop, **0 leere, 1 dünne**. Diese eine hat es in sich: **«Angebote & Deals»
+(`angebote`) — `productsCount` meldet 351, aktiv sind über 300 geprüfte Produkte hinweg NULL.**
+Und sie steht als **Kachel 9 von 16** in der Startseiten-Reihe `cl_trends`.
+
+**Die Ursache ist die eigene Reparatur vom 24.08.:** Die Smart-Regel lautet `IS_PRICE_REDUCED` —
+die Kollektion lebt von Streichpreisen. An jenem Tag habe ich **57 konstruierte Streichpreise
+entfernt**, weil die eigene Aktenlage belegte, dass die durchgestrichenen Werte nie verlangt
+wurden (PBV Art. 16). Damit war die Reparatur richtig — und hat eine Startseiten-Kachel
+ausgehöhlt, ohne dass es jemandem auffiel.
+**Das ist die Klasse «eine Reparatur erzeugt eine Nebenwirkung an einer Stelle, die sie nicht
+kennt»** — dieselbe wie die toten Landeseiten, die entstehen, wenn ein Wächter Ware draftet.
+- **Die Kachel zeigt jetzt `make-up` «Make-up & Kosmetik»** — 300 von 300 geprüften Produkten
+  aktiv, eigenes Kollektionsbild vorhanden (ohne Bild sieht eine Kachel aus wie ein Ladefehler,
+  Lehre 27.08.). Am Ursprung gegengeprüft: 16 Kacheln, 25 Sektionen unverändert; live
+  ausgeliefert: `/collections/make-up` steht drin, `/collections/angebote` nicht mehr.
+- ⚠️ **Die Kollektion selbst bleibt veröffentlicht und unverändert.** Sie zu «füllen» hiesse,
+  genau die erfundenen Streichpreise neu zu erfinden, die am 24.08. entfernt wurden — das wäre
+  die teuerste denkbare Reparatur. Und sie heilt sich selbst: Sobald es einen ECHTEN Rabatt
+  gibt, greift `IS_PRICE_REDUCED` wieder. **Eine leere Kollektion ist kein Fehler, wenn ihre
+  Regel stimmt; falsch war nur, sie auf der Startseite zu bewerben.**
+- ⚠️ `menue_links.py` hätte sie NIE gemeldet: Es prüft `productsCount == 0`, und der Zähler
+  steht bei 351, **weil er Entwürfe mitzählt**. Dieselbe Zählfalle wie beim
+  Kategorien-Verzeichnis (22.08.). **Wer wissen will, ob eine Kollektion für Kundinnen etwas
+  hergibt, zählt Produkte mit `status == ACTIVE` — nie `productsCount`.**
+
+**Und die Härtung, die den Lauf überhaupt erst möglich machte:** Drei Wächter
+(`google_kanal_luecke`, `kollektion_leer`, `menue_links`) verglichen im Code auf den
+Kanal-Anzeigenamen **«Online Store»**. Über das Shopify-MCP-Werkzeug heisst derselbe Kanal
+**«Onlineshop»**. Ein Sprachwechsel des Clients hätte alle drei stillschweigend melden lassen,
+NICHTS sei veröffentlicht — ein Massen-Fehlalarm über den gesamten Katalog.
+`automation/shop_kanal.py` kennt jetzt beide Schreibweisen, an EINER Stelle erweiterbar.
+Gegenprobe: `menue_links` meldet 100 Menüeinträge / 82 Kollektionen, alle in Ordnung;
+`kollektion_leer` findet 355 veröffentlichte Kollektionen. Wären die Namen falsch, stünde dort 0.
+
 ## 🚦 Sechs rankende Adressen aufgefangen — und ein Ziel, das es nicht gibt (2026-08-29)
 
 `tote_rankings.py` meldete 7 Adressen, für die Google uns zeigt und die zu einem 404 führen —

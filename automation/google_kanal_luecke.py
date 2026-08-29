@@ -31,6 +31,7 @@ ENV: SEIT=JJJJ-MM-TT (Default: die letzten 7 Tage)
 import json, os, subprocess, sys, time, datetime, re
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from shop_kanal import im_onlineshop
 from google_sperrliste import gesperrte_ids, id_zahl, ausschluss_tag
 
 SHOP = "au3j0y-hq.myshopify.com"
@@ -175,7 +176,7 @@ def main():
                     for n in p["resourcePublications"]["nodes"]}
             if pubs.get("Google & YouTube"):
                 continue
-            if not pubs.get("Online Store"):
+            if not im_onlineshop(pubs):
                 continue                       # gar nicht im Shop -> anderes Thema
             if p["id"].split("/")[-1] in raus:
                 continue                       # bewusst gesaeubert (Grund im Ledger)
