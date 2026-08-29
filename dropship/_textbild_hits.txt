@@ -13117,3 +13117,10 @@ gid://shopify/Product/15516219113857	35->3	New Year White And Red Cat's Eye Näg
 gid://shopify/Product/15516219244929	9->0	UV Semi-Cured Gel-Nagelsticker
 gid://shopify/Product/15516219277697	14->1	Elektrische Nagelfeile & Polierer
 gid://shopify/Product/15516219474305	107->0	Chenille Kissenbezug, gesteppt
+gid://shopify/Product/15516219507073	34->0	Maniküre AB Diamond 3-teiliges Set
+gid://shopify/Product/15516219572609	8->0	Nagel Phototherapiegerät
+gid://shopify/Product/15516219703681	37->0	Minimalistisches Kissen mit geometrischem Muster
+gid://shopify/Product/15516219769217	50->0	Kabelloses Gaming Mauspad mit Schnellladefunktion
+gid://shopify/Product/15516232974721	12->0	Smart-Armband mit integriertem Bluetooth-Headset
+gid://shopify/Product/15516233171329	50->0	Hundeleine – reissfest & stylisch
+gid://shopify/Product/15516233236865	20->1	Armband für Smartwatch – geflochten, schmal
