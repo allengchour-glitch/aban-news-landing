@@ -6269,6 +6269,85 @@ setTimeout(function baueGebaeude(){
       /* Vorplatz-Deko sparsam: je eine Laterne zwischen den Häusern */
       bau("th4_laterne_modern.glb",5.2,-74,0,139,0,false,null,true);
       bau("th4_laterne_modern.glb",5.2,50,0,139,0,false,null,true);
+
+      /* ═══ 🎰 SPIELCLUB — das erste Haus, das man BETRETEN kann ══════════════════
+         Zwölf th14-Modelle (Bar, Pokertisch, Roulette, Kartentisch, Tanzflaeche,
+         Discokugel, DJ-Pult, Kronleuchter, Spielautomat, Automatenreihe, Neonschild,
+         Samtkordel) lagen seit Langem im Repo und hat nie jemand gesehen: es fehlte
+         nicht die Einrichtung, sondern der RAUM. Genau darum steht hier ein Haus aus
+         demselben th34-Baukasten wie die Zeile darueber — nur groesser und mit einem
+         Innenraum, den der Kollider offenlaesst.
+
+         ⚠️ ALLE ZAHLEN GEMESSEN, NICHT GERATEN:
+          * Platz: die Platzsuche (_viertelSolver.passt, Stufe 2) ueber x 90..140 /
+            z 100..140 ergab 117 freie Stellen; (126|102) ist davon die
+            strassennaechste (17 m). Gelaende dort 0,00 bis 0,00 — eben.
+          * Der SEE ist in der Platzsuche NICHT enthalten (dokumentierte Luecke).
+            Die naechstgelegenen Treffer ueberhaupt lagen bei (2|128) und (-12|142) —
+            mitten im Seepark-See. Erst ein zusaetzlicher Test gegen window._seeUfer
+            hat sie aussortiert; ohne ihn stuende der Club im Wasser.
+          * Modellmasse: alle th14-Teile liegen bereits in Metern vor (Bar 4,72 x 2,45,
+            Tanzflaeche 6 x 6, Pokertisch 3,89 breit). bau() skaliert ueber die HOEHE —
+            als zielH steht deshalb die GEMESSENE Eigenhoehe, damit der Massstab 1:1
+            bleibt. Nur zwei Ausnahmen mit Grund: die Tanzflaeche auf 5 x 5 (0,125
+            statt 0,15), damit an der Ostwand ein Gang fuer die Automaten bleibt, und
+            das 7,85 m hohe Neonschild auf 3,2 m, weil das Haus 3 m hoch ist.
+          * Raster des Baukastens: Wand 4,00 in x, Geschoss 3,00 in y, aussen ist -z
+            bei rot 0. Aussenmass 16 x 12, Ecken auf (+-8|+-6).
+
+         ⚠️ Der Eingang zeigt nach SUEDEN, weil dort die Strasse liegt (18 m; nach
+         Norden 39, Osten 31, Westen 55). Die Tuerluecke im Kollider sitzt auf
+         derselben Flucht, und der Gang davor (x 126,3..129,7 bis z 101) bleibt in der
+         Moeblierung frei — sonst steht man beim Eintreten im Roulettetisch. */
+      (function spielclub(){
+        /* ⚠️ x 126 -> 128: DIE PLATZSUCHE PRUEFT DEN PUNKT, NICHT DEN GRUNDRISS.
+           (126|102) ist frei — das Haus ist aber 16 m breit, seine Westwand steht
+           also auf x 118. "Ring O" laeuft entlang z mit Mitte x 112 und halber
+           Breite 7,2, belegt also x 104,8…119,2. Ergebnis: th-pruef meldete zehn
+           Bauteile im Strassenkorridor, bis zu 1,2 m tief — der Club stand mit der
+           Westflanke auf der Ringstrasse.
+           Mit CX 128 liegt die Westwand auf x 120 und damit 0,8 m neben der
+           Korridorkante. Der Eingang zeigt weiter nach Sueden zur Strasse; die
+           Verschiebung laeuft quer dazu, der Abstand zur Tuer bleibt gleich.
+           Alles im Club haengt an CX/CZ und wandert mit. */
+        var CX=128, CZ=102;
+        var VOLL="th34_wand_voll.glb", FEN="th34_wand_fenster.glb", F2="th34_wand_fenster2.glb";
+        /* Suedseite = Eingang (rot 0, Aussenseite -z), Tuer auf dx +2 */
+        [[VOLL,-6],[VOLL,-2],["th34_wand_tuer.glb",2],[VOLL,6]]
+          .forEach(function(m){modul(m[0],CX+m[1],0,CZ-6,0);});
+        [[FEN,-6],[VOLL,-2],[VOLL,2],[FEN,6]]
+          .forEach(function(m){modul(m[0],CX+m[1],0,CZ+6,Math.PI);});      // Nordseite
+        [-4,0,4].forEach(function(dz){modul(dz===0?F2:VOLL,CX-8,0,CZ+dz,Math.PI/2);});   // West
+        [-4,0,4].forEach(function(dz){modul(VOLL,CX+8,0,CZ+dz,-Math.PI/2);});            // Ost
+        [[-8,-6],[8,-6],[-8,6],[8,6]].forEach(function(e){modul("th34_ecke.glb",CX+e[0],0,CZ+e[1],0);});
+        /* Flachdach: 4 x 3 Module a 4 m ueber dem Innenraum */
+        [-6,-2,2,6].forEach(function(dx){[-4,0,4].forEach(function(dz){
+          modul("th34_dach_flach.glb",CX+dx,3,CZ+dz,0);});});
+        /* Kollider mit Tuerluecke auf der Suedflucht — sonst ist das Haus zwar
+           begehbar, aber auch von allen Seiten durchlaufbar (th-mauern). */
+        addSolid(CX,CZ,17,13,{a:"z",at:CZ-6.2,c:CX+2,w:2.4});
+
+        /* Einrichtung. ohneSchutz=true bei allen Innenteilen: wegVonStrasse() wuerde
+           sie sonst verschieben, und drinnen ist keine Strasse. */
+        function drin(datei,h,x,z,rot,y){bau(datei,h,x,y||0,z,rot||0,false,null,true);}
+        drin("th14_casinobar.glb",     2.45, CX-5.6, CZ+3.0, Math.PI/2);
+        drin("th14_pokertisch.glb",    0.95, CX-4.7, CZ-3.4, 0);
+        drin("th14_roulettetisch.glb", 1.12, CX-1.2, CZ-3.2, 0);
+        drin("th14_kartentisch.glb",   0.94, CX-5.0, CZ-0.7, 0);
+        drin("th14_tanzflaeche.glb",   0.125,CX+2.5, CZ+2.5, 0);
+        drin("th14_dj_pult.glb",       1.36, CX-2.4, CZ+4.4, Math.PI);
+        [-4.4,-2.5].forEach(function(dz){drin("th14_automatenreihe.glb",2.17,CX+6.4,CZ+dz,-Math.PI/2);});
+        [0.5,2.4,4.3].forEach(function(dz){drin("th14_spielautomat.glb",1.88,CX+6.7,CZ+dz,-Math.PI/2);});
+        /* Haengendes: Anker ist die UNTERKANTE (bau setzt min.y auf y), also
+           Deckenhoehe 3,0 minus Eigenhoehe — sonst haengt es im Dach oder im Kopf. */
+        drin("th14_discokugel.glb",  0.80, CX+2.5, CZ+2.5, 0, 3.0-0.80);
+        /* ⚠️ 1,20 m gemessen -> Unterkante 1,80 m, also auf Kopfhoehe. Ueber einem
+           Tisch faellt das nicht auf, beim Vorbeigehen schon. 0,90 laesst 2,10 m frei. */
+        drin("th14_kronleuchter.glb",0.90, CX-4.7, CZ-3.4, 0, 3.0-0.90);
+        /* Draussen: Schild ueber der Tuer, Kordel davor. */
+        bau("th14_neonschild_gross.glb",3.2,CX+2,3.0,CZ-6.3,0,false,null,true);
+        [-1.8,1.8].forEach(function(dx){bau("th14_samtkordel.glb",0.97,CX+2+dx,0,CZ-7.6,0,false,null,true);});
+      })();
     })();
     /* 🚜 BAUERNHOF-VIERTEL weit draussen auf dem Feld (User: „bauernhaeuser farm staelle
        windmuehle weit weg aufs feld wie farm etc., wie in richtiger landschaft"). Der Hof
@@ -6610,12 +6689,12 @@ setTimeout(function baueGebaeude(){
         return [BERG.x+lx*Math.cos(winkel)+lz*Math.sin(winkel),
                 BERG.z-lx*Math.sin(winkel)+lz*Math.cos(winkel)];}
       /* 🧱 Die Huette war das einzige echte GEBAEUDE der Karte, durch das man
-         hindurchlief (th-mauern: 13 ohne Kollider, davon 12 Gittermasten, Schaukel,
+         hindurchlief (th-mauern: 13 ohne Kollider, davon Gittermasten, Schaukel,
          Spielturm, Kran, Flugzeug — alles zu Recht offen).
          ⚠️ Kollider sind 2D (x/z, ohne Hoehe) — ein Kollider hier sperrt also auch
-         den Hang darunter. Genau so macht es aber schon die Bergstation zwei Zeilen
-         weiter oben (stationSolid), und die steht auf derselben Terrasse. Also
-         dasselbe Mittel, kein neuer Praezedenzfall.
+         den Hang darunter. Genau so macht es aber schon die Bergstation weiter oben
+         (stationSolid), und die steht auf derselben Terrasse. Dasselbe Mittel, kein
+         neuer Praezedenzfall.
          ⚠️ NICHT dasselbe fuer die drei Weihnachtsbuden: die haengen an wbau() und
          sind mit visible=W9() saisonal. Ein fester Kollider waere im Sommer eine
          unsichtbare Wand auf dem Marktplatz — schlimmer als das Hindurchlaufen.
