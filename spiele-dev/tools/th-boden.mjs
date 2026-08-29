@@ -36,7 +36,7 @@ const sonde = `function(){
      das Meer (x -332…-132, z ±170), einen Fluss (x -120…80, z -94…-87) und den
      Seepark-See. Die erste Fassung prueft nur den See ueber '_seeUfer' — Meer und
      Fluss waren blinde Flecken. Bruecken, Stege und Boote duerfen ueber Wasser sein. */
-  var IM_WASSER_ERLAUBT=/schwan|ente|boot|ruderboot|steg|floss|bruecke|brueck|ponton|leuchtturm|hafen|kran|anleger|mole/i;
+  var IM_WASSER_ERLAUBT=/schwan|ente|boot|ruderboot|steg|floss|bruecke|brueck|ponton|leuchtturm|hafen|kran|anleger|mole|schiff|faehre/i;
   var AM_SEIL=/gondel/i;
   var kaesten=[];
   G.forEach(function(w){ if(!w||!w.parent)return;

@@ -2884,3 +2884,49 @@ Wächter — beim siebten schaut niemand hin. Also zwei fehlende Fälle nachgetr
 **Stand: 0 im Fels, 0 schwebend, 0 im Wasser — bei 54 benannten Ausnahmen.** Die
 Ausnahmen werden gezählt und angezeigt, nicht stillschweigend weggefiltert; sinkt die
 Zahl unerwartet, ist auch das ein Signal.
+
+## Fähr- und Frachtkai — aus dem, was ungenutzt im Repo lag
+
+`models/` enthält 896 `.glb`. Für Traumhaus sind 530 davon `th*`; **235 kommen in
+`traumhaus.html` nicht vor**. Davon abziehen: die 77 `th_*` des Möbelkatalogs (die
+lädt `loadTH(id)` über einen zur Laufzeit gebauten Namen, ein Textfund findet sie
+nicht) und die 14 `th31_*` — Waffenrequisiten, die auf Wunsch ungenutzt bleiben.
+Bleiben **144 wirklich unbenutzte Modelle.**
+
+Der grösste zusammenhängende Satz darunter ist `th15_*`, ein Hafen. **Die Küste hat
+aber schon einen** (`th45_*`: Kaimauer, Hafenkran, Container, Leuchtturm,
+Fischerboot, Segelboot). Ein zweiter wäre eine Verdopplung. Genommen wurden darum nur
+die fünf Stücke, die es im th45-Satz **nicht** gibt: Anleger, Frachtschiff,
+Bootshaus, Fischerhütte, Steg — plus vier Kaimauer-Module, die den Kai nach Norden
+verlängern.
+
+Ort aus der Messung: entlang x −145 … −118 ist der Küstenstreifen von z −73 bis −8
+und wieder **ab z 61** frei; der th45-Hafen endet bei z 48, sein Leuchtturm steht auf
+z 58. Der neue Kai läuft von z 61 bis 121.
+
+### Drei Korrekturen, alle von den Werkzeugen gefunden
+
+* **Bootshaus** auf x −125 endete bei −118,8 und lag damit **0,4 m im Sperrband der
+  West-Ringstrasse** (Mitte −112, halbe Sperrbreite 7,2, also ab −119,2). → x −127,5.
+* **Frachtschiff** quer zum Kai (`rotY = π/2`) ist 32 m lang in x, reichte von −173
+  bis −141 und steckte **0,90 m im Anleger** (th-3d: 190 Meshpaare). Sein Westende
+  lag ausserdem bei x −170 / z 102 im Ring der **Landstrasse** (r 200 ± 4,5) — dort
+  im Meer-Sektor zwar unbefestigt, aber th-strassen meldet den Streifen zu Recht.
+  → längs vertäut (`rotY = 0`) bei (−153|92): Box x −158,6 … −147,7, z 75,9 … 108.
+  Grösster Radius `hypot(158,6; 108)` = 191,9 — 3,6 m vor dem Ring, 0,1 m Luft zum
+  Anleger.
+* **`th-boden`** kannte „schiff" nicht und hätte den Frachter als Fehler im Wasser
+  gemeldet. Regex ergänzt.
+
+### Gemessen
+
+| | vorher | nachher |
+|---|---|---|
+| Bauwerke | 769 | **778** |
+| th-boden | 0 / 0 / 0 | 0 / 0 / 0 |
+| th-strassen · Stellen auf dem Belag | 147 | **147** |
+| th-3d | 56 echt / 66 nur 2D | 58 echt / 67 nur 2D |
+| th-netz | 38 ok | 38 ok, 0 Fehler |
+
+Die zwei zusätzlichen th-3d-Funde sind Kaimauer-Module, die sich planmässig die
+Kante teilen — dieselbe Sorte wie beim vorhandenen Hafen.
