@@ -508,6 +508,38 @@ ebenso verwirrend: drei bedruckbare T-Shirts zu drei Preisen.
 - **Lehre: Bevor man eine rankende Seite optimiert, prüft man, ob sie gegen die eigenen
   Geschwister antritt.** Sonst verbessert man eine Seite, deren Problem woanders liegt.
 
+## 📉 Der Shop rankt auf KEINER Seite 1 — und verkauft trotzdem über die Suche (2026-08-29)
+Gegenprobe zu allem SEO-Aufwand: Semrush, Datenbank `ch`, Filter Position < 11 →
+**ERROR 50 :: NOTHING FOUND**. Für keinen einzigen Suchbegriff steht luxestyle.ch auf
+Seite 1. Die besten Plätze sind **13** (eine englische URL zu gedrafteter Markenware) und
+**15** (T-Shirt selbst gestalten). Alles andere liegt zwischen 20 und 96.
+**Und gleichzeitig ist die Suche der einzige Kanal mit Kassengängen.** Daraus folgt zwingend:
+Die Verkäufe kommen NICHT aus den sichtbaren Rankings, sondern aus dem **langen Schwanz** —
+sehr spezifischen Anfragen, die Semrush gar nicht verfolgt. Dazu passt, dass der grösste
+Einzeltreffer der Shopify-Daten (`rizinusol-wickel-set…`) in den Semrush-Rankings **nicht
+vorkommt**.
+- **Folgerung für die Arbeitsteilung:** Eine Seite von Position 60 auf Seite 1 zu schieben,
+  ist bei 47'000 Dropship-Produkten aussichtslos. Was zahlt, ist **Breite**: dass jedes
+  Produkt so heisst, wie die Kundin es nennt, und im Suchergebnis einen Satz über sich
+  selbst zeigt. Genau deshalb gehört die Snippet-Rechnung in den IMPORTER und nicht nur in
+  einen Backfill über 65 Seiten.
+- **Sechs Kollektionen ranken ebenfalls** («ohrenringe» 390, «beamer zuhause» 320,
+  «camping liegestuhl» 260, «schmuck set» 210, «dogger jacke damen» 170, «deko lampe» 140).
+  Kategorieseiten schlagen Produktseiten bei generischen Begriffen — drei trugen denselben
+  Baustein-Snippet («kuratierte Premium-Auswahl, Gratis-Versand ab CHF 50»), jetzt je ein
+  Satz aus dem eigenen Kollektionstext. Bei zweien fehlte der gesuchte Begriff auch im
+  SEO-Titel («Deko-Lampen», «Beamer für zuhause») — beides durch den Text gedeckt.
+- ⚠️ `collectionUpdate(input:{seo:{…}})` ersetzt das SEO-Objekt genauso wie bei Produkten.
+  Titel und Beschreibung wurden beide gelesen und beide zurückgeschickt; die Antwort wurde
+  auf beide Felder geprüft, nicht nur auf `userErrors`.
+- ⚠️ **EHRLICHE GRENZE: ShopifyQL ist mit diesem Token nicht lesbar.** `FROM sessions SHOW
+  sessions SINCE -60d` parst sauber und liefert **null Zeilen** — auch mit ausdrücklichem
+  Datumsbereich; `FROM orders` und `FROM products` sind gar keine gültigen Datensätze für
+  ihn. Frühere Sessions haben diese Zahlen über die Shopify-MCP-Werkzeuge gelesen, die hier
+  nicht angehängt sind. **Ein leeres Ergebnis ist hier kein Nullbefund über den Verkehr,
+  sondern eine fehlende Berechtigung** — dieselbe Falle wie beim stillen `title:`-Filter.
+  Wer Verkehrszahlen braucht, nimmt die MCP-Werkzeuge, nicht dieses Token.
+
 ## 🔤 Das meistgesuchte Wort des Shops stand in keinem Titel (2026-08-29)
 Der Begriff mit dem grössten Volumen, für den luxestyle.ch überhaupt auftaucht, ist
 **«handstaubsauger» — 5'400 Suchen im Monat**. Das Produkt hiess «Handlicher
