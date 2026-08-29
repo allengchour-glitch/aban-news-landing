@@ -21,6 +21,8 @@ mitSonden('traumhaus.html', {
       return true;}
     if(was==="done"){missHeute.liste[a].done=true;return true;}
     if(was==="ziele")return missZiele();
+    if(was==="deckung")return MISS_POOL.map(function(p,i){
+      return {i:i,e:p[0],tx:p[1],hatOrt:!!MISS_ORTE[i]};});
     if(was==="trafo")return _bigTrafo;
     if(was==="karte"){bigMapOpen();return true;}
     if(was==="gps")return {aktiv:GPS.aktiv,x:GPS.x,z:GPS.z,n:GPS.pfad?GPS.pfad.length:0};
@@ -35,6 +37,24 @@ const check = (name, gut, detail) => {
   console.log((gut ? '  ✅ ' : '  ❌ ') + name + (detail ? ' — ' + detail : ''))
   gut ? ok++ : fehl++
 }
+
+/* ⚠️ JEDE MISSION BRAUCHT EINEN ORT — oder einen Grund, keinen zu haben. Ohne
+   Marker weiss der Spieler nicht, wohin; ohne diese Pruefung faellt eine neu
+   eingefuegte Mission ohne Ort niemandem auf. Zwei Ausnahmen sind belegt:
+   Emotes gehen ueberall, Strassenmusik auch (nur 17-21 Uhr, das steht seit
+   #2417 im Missionstext). Die Lieferungen (3) bekommen ihren Ort dynamisch
+   vom geparkten Auto. */
+const OHNE_ORT_ERLAUBT = { 7: 'Strassenmusik — ueberall, nur 17-21 Uhr (steht im Text)',
+                           8: 'Emotes — ueberall moeglich' }
+const deck = await S('deckung')
+const ortlos = deck.filter((d) => !d.hatOrt && d.i !== 3 && !OHNE_ORT_ERLAUBT[d.i])
+check('Jede Mission hat einen Ort (oder einen belegten Grund)', ortlos.length === 0,
+      ortlos.length ? ortlos.map((d) => `${d.i} ${d.e} ${d.tx}`).join(' | ')
+                    : `${deck.length} Missionen, ${Object.keys(OHNE_ORT_ERLAUBT).length} bewusst ortlos`)
+/* Und umgekehrt: eine Ausnahme, die es nicht mehr braucht, gehoert weg. */
+const unnoetig = Object.keys(OHNE_ORT_ERLAUBT).filter((i) => (deck[+i] || {}).hatOrt)
+check('Keine ueberfluessige Ausnahme in der Liste', unnoetig.length === 0,
+      unnoetig.length ? 'hat jetzt doch einen Ort: ' + unnoetig.join(', ') : '')
 
 await S('setzMiss')
 await S('tp', 26, 67) // Marktplatz — freier Startpunkt fuer die Route
