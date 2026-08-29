@@ -62,15 +62,6 @@ Yoga-Bolster halbrund Baumwolle  ·  **~390 Suchen/Monat** betroffen
 Lichtwecker Sunrise · Sanft aufwachen mit Lichtsimulation  ·  **~390 Suchen/Monat** betroffen
 - «tageslichtwecker» — Position 67, 390/Monat
 
-## /collections/sub-ohrringe  — **FEHLT**
-  ·  **~390 Suchen/Monat** betroffen
-- «ohrenringe» — Position 67, 390/Monat
-
-## /collections/schmuck-sets  — **FEHLT**
-  ·  **~380 Suchen/Monat** betroffen
-- «schmuck set» — Position 59, 210/Monat
-- «schmuckset» — Position 47, 170/Monat
-
 ## /products/herrenuhr-casio-world-time-illuminator-rot-43-mm-bb702629  — **DRAFT**
 Herrenuhr Casio WORLD TIME ILLUMINATOR Rot (Ø 43 mm)  ·  **~320 Suchen/Monat** betroffen
 - «casio illuminator» — Position 21, 320/Monat
@@ -79,17 +70,9 @@ Herrenuhr Casio WORLD TIME ILLUMINATOR Rot (Ø 43 mm)  ·  **~320 Suchen/Monat**
 Herrenparfüm Armani Code Parfum EDP 125 ml  ·  **~320 Suchen/Monat** betroffen
 - «armani code parfum herren» — Position 34, 320/Monat
 
-## /collections/beamer-heimkino  — **FEHLT**
-  ·  **~320 Suchen/Monat** betroffen
-- «beamer zuhause» — Position 64, 320/Monat
-
 ## /products/trinkrucksack-hydration-2l-trinkblase  — **DRAFT**
 Trinkrucksack Hydration · 2L Trinkblase  ·  **~260 Suchen/Monat** betroffen
 - «trinkrucksack» — Position 26, 260/Monat
-
-## /collections/camping-outdoor  — **FEHLT**
-  ·  **~260 Suchen/Monat** betroffen
-- «camping liegestuhl» — Position 50, 260/Monat
 
 ## /products/paul-hewitt-damenuhr-s0352150  — **DRAFT**
 Paul Hewitt Damenuhr  ·  **~210 Suchen/Monat** betroffen
@@ -115,10 +98,6 @@ Nagel-Kabelschellen «OBO Bettermann» · Set  ·  **~170 Suchen/Monat** betroff
 Damenparfüm Chanel EDP Chance Eau Tendre (50 ml)  ·  **~170 Suchen/Monat** betroffen
 - «chance chanel eau tendre» — Position 29, 170/Monat
 
-## /collections/damen-jacken-maentel  — **FEHLT**
-  ·  **~170 Suchen/Monat** betroffen
-- «dogger jacke damen» — Position 52, 170/Monat
-
 ## /products/smart-sportuhr-mit-herzfrequenz-blutdruckmessu-600600  — **FEHLT**
   ·  **~140 Suchen/Monat** betroffen
 - «uhr mit blutdruckmessung» — Position 54, 140/Monat
@@ -138,8 +117,4 @@ Damenparfüm Valentino Born In Roma Donna EDP 30 ml  ·  **~140 Suchen/Monat** b
 ## /products/cup-holder-halter-mit-phone-mount  — **DRAFT**
 Cup-Holder Halter mit Phone-Mount  ·  **~140 Suchen/Monat** betroffen
 - «cup holder» — Position 43, 140/Monat
-
-## /collections/sub-beleuchtung  — **FEHLT**
-  ·  **~140 Suchen/Monat** betroffen
-- «deko lampe» — Position 67, 140/Monat
 
