@@ -508,6 +508,47 @@ ebenso verwirrend: drei bedruckbare T-Shirts zu drei Preisen.
 - **Lehre: Bevor man eine rankende Seite optimiert, prüft man, ob sie gegen die eigenen
   Geschwister antritt.** Sonst verbessert man eine Seite, deren Problem woanders liegt.
 
+## 🔤 Das meistgesuchte Wort des Shops stand in keinem Titel (2026-08-29)
+Der Begriff mit dem grössten Volumen, für den luxestyle.ch überhaupt auftaucht, ist
+**«handstaubsauger» — 5'400 Suchen im Monat**. Das Produkt hiess «Handlicher
+Akku-Staubsauger»: das Wort, das die Kundin eintippt, kam im Titel nicht vor. Deutsch bildet
+Zusammensetzungen (Hund+Napf, Ingwer+Reibe), und wer das Produkt anders zerlegt, wird nicht
+gefunden — «Erhöhte Futternäpfe für Hunde» gegen «hundenapf erhöht», «Keramik-Reibe für
+Ingwer & Knoblauch» gegen «ingwerreibe». `automation/wortluecke_rankings.py` meldet solche
+Lücken; **umbenannt wird nur von Hand.**
+- **Umbenannt (3), jedes Mal mit Beleg aus dem Produkttext:** Handstaubsauger
+  («kabellose, handliche Staubsauger … Blasen, Saugen und Pumpen»), Erhöhter Hundenapf
+  («robuster Eisenrahmen … beiden Edelstahl-Näpfe»), Ingwerreibe («zerkleinert Ingwer,
+  Knoblauch & Co.»).
+- **Der POD-Bereich war die grösste Einzellücke: ~6'700 Suchen/Monat auf «bedrucken»**
+  («t shirt bedrucken» 4'400, «tasse bedrucken» 1'600, «badetuch bedrucken lassen» 590,
+  «jutebeutel bedrucken» 170, «hoodie bedrucken» 170) — unsere Titel sagten durchweg
+  «selbst gestalten». **Beides ist wahr**, also steht jetzt beides im Titel; der vorhandene
+  Begriff bleibt, damit die bestehende Position 15 nicht verloren geht.
+- ⚠️ **Nicht umbenannt, und das ist der wichtigere Teil:** «katzentrinkbrunnen» →
+  «Trinkbrunnen für Haustiere» bleibt, weil der Lieferantentext **Katzen nirgends nennt** —
+  das Produkt auf Katzen zu verengen wäre eine unbelegte Behauptung. «bluetooth tastatur» →
+  «K68 Kabellose … Tastatur» bleibt, weil «kabellos» auch 2,4-GHz-Funk sein kann.
+  «atmungsaktive schuhe» → «Sneaker» ist bereits das genauere Wort.
+  **Regel: Nur umbenennen, wenn der Produkttext das gesuchte Wort BELEGT.**
+- ⚠️ Der TITEL wird geändert, der HANDLE nicht — sonst wäre jeder bestehende Link ein 404.
+  `productUpdate` mit nur `title` lässt Handle und Tags unberührt; nachgeprüft wurde es
+  trotzdem bei jedem einzelnen.
+- ⚠️ Geschrieben wird nur, wenn der LIVE-Titel noch exakt der erwartete ist (Lehre 23.08.:
+  neun Produkte trugen längst einen besseren Titel, zwei meiner Übersetzungen wären
+  schlechter gewesen). Nach den POD-Titeln lief `pod_editor_qa.mjs` — 30 Produkte, 0 Befunde.
+- **Und was NICHT lohnt, jetzt belegt:** Von den 307 Ratgebern rankt in Semrushs Schweizer
+  Datenbank **kein einziger** für irgendeinen Begriff. Die 249 Ratgeber ohne kaufbaren
+  Produktlink sind damit kein Suchmaschinen-Thema — die Reparatur lohnt nur dort, wo
+  Shopify echten Verkehr misst (Faszienrolle, 77 Sitzungen). ⚠️ «Kein Semrush-Ranking»
+  heisst nicht «kein Verkehr»: Semrush verfolgt nur eine Stichprobe, der lange Schwanz ist
+  darin unsichtbar.
+- Nebenbei repariert: Der Ratgeber «Baby schläft nicht» bewarb einen «Leisen Baby
+  Nagelschneider — CHF 29.90», den es nicht gibt. Ersetzt durch das **tatsächlich
+  vorhandene** «Tragbare Baby Beauty- und Pflegeset» (CHF 15.90), dessen Text ausdrücklich
+  einen «Baby-Nagelknipser» enthält — kein Köderwechsel, sondern derselbe Zweck zum echten
+  Preis. Die beiden anderen Preise im selben Absatz wurden gegengeprüft und stimmen.
+
 ## 🔎 Die 50 Seiten, die Google zeigt, sagten im Suchergebnis nichts (2026-08-29)
 Von 65 aktiven Adressen, für die luxestyle.ch in Googles Top 100 steht, trugen **50** als
 Meta-Beschreibung nur den Baustein «<Produktname> – bei LuxeStyle Schweiz. Gratis-Versand
