@@ -450,6 +450,39 @@ dort steht ausdrücklich: Mittel, nicht Selbstzweck.
   Befund.** Dritte Wiederholung nach dem stillen Shopify-Suchfilter und dem veralteten
   Remote-Zeiger — es ist dieselbe Falle in drei Gewändern.
 
+## 🎯 Semrush zeigt, wo der Shop wirklich steht — und der Hebel ist das EIGENE Produkt (2026-08-29)
+Nachdem die technische SEO-Bremse ausgeschlossen war, die Gegenfrage mit echten Daten:
+Wofür rankt luxestyle.ch überhaupt? `resource_organic`, Datenbank `ch`:
+Der Shop steht in Googles Top 100 für Dutzende Begriffe — aber fast alle auf **Position 15 bis 90**,
+also unsichtbar (Traffic-Spalte 0). Ein Cluster sticht heraus:
+| Suchbegriff | Volumen/Mt. | Position |
+|---|---:|---:|
+| **t shirt selbst gestalten** | **590** | **15** |
+| t shirt personalisieren | 320 | 75 |
+| t shirt gestalten | 260 | 73 |
+| foto auf kissen | 140 | 56 |
+| beutel bedrucken | 90 | 70 |
+| t shirt drucken schweiz | 70 | 90 |
+Zusammen rund **1'400 Suchen im Monat**, alle auf den Selbstgestalten-Editor. **Das ist das
+einzige Produkt im Shop, das niemand sonst hat** — keine CJ-Ware, die tausend andere ebenfalls
+listen. Genau das, was nach der SEO-Prüfung als Einziges ranken kann. Und Position 15 ist
+Seite 2: der kürzeste Weg zu echtem Verkehr im ganzen Katalog.
+**Was fehlte, war eine deutsche Zusammensetzungsfalle:** Der Titel hiess «T-Shirt zum
+Selbst**gestalten**» — ein Wort. Gesucht wird «selbst gestalten» in ZWEI Wörtern. «Personalisieren»
+(320/Mt.) und «bedrucken» kamen im Text überhaupt nicht vor.
+- Titel jetzt «T-Shirt selbst gestalten · dein Foto oder Motiv», dazu ein Abschnitt «So gestaltest
+  du dein Shirt» mit den echten Begriffen. **Handle unverändert** (keine 301 nötig).
+- ⚠️ **Jede Aussage gegen den Bestandstext geprüft:** gedruckt wird in EUROPA, geliefert in die
+  Schweiz. «In der Schweiz gedruckt» wäre der Suchbegriff `t shirt drucken schweiz` gewesen —
+  und eine Falschaussage. Steht deshalb nicht da.
+- ⚠️ `productUpdate(seo:)` ERSETZT das ganze Objekt. Beide Felder wurden gelesen und
+  zurückgesendet; ohne das hätte der Lauf den SEO-Titel gelöscht (derselbe Fehler wie am 28.08.).
+**Weitere Fundstellen für später, nach Volumen:** `handstaubsauger` 5'400 (Pos. 74),
+`led maske` 720 (Pos. 77), `business reiserucksack` 590 (Pos. 70), `ohrenringe` 390 (Pos. 67),
+`armani code parfum herren` 320 (Pos. 34), `casio illuminator` 320 (Pos. 21),
+`beistelltisch acryl` 70 (**Pos. 16**), `holzspiegel` 140 (**Pos. 17**).
+Die beiden letzten stehen ebenfalls knapp vor Seite 1.
+
 ## 🔥 DAUERAUFTRAG: Hype-Produkte recherchieren und die Startseite frisch halten
 **User 2026-08-12, wörtlich:** «informiere dich immer über neuste hype produkte und so und mache
 auch in startseite ganz gross irgendwo paar coolen produkten, aber wen hype vorbei produkt ändern.»
