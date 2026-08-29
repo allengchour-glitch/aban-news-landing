@@ -31,6 +31,50 @@ mitSonden('traumhaus.html', {
         schattenkarte:renderer.shadowMap.enabled?sun.shadow.mapSize.width:0,
         pixelVerhaeltnis:renderer.getPixelRatio(),
         mobil:(typeof _mobil!=="undefined")?_mobil:null};}
+    if(was==="versteckt"){ /* Welche Gebaeude sind absichtlich unsichtbar — VOR meiner Pruefung? */
+      var G=window._gebaeude||[],aus=[],box=new THREE.Box3(),V=new THREE.Vector3();
+      /* Sichtpruefung kurz aussetzen und den Rohzustand ablesen */
+      var alt=renderer.shadowMap.enabled;renderer.shadowMap.enabled=true;
+      G.forEach(function(w,i){if(!w.visible){box.setFromObject(w);box.getCenter(V);
+        aus.push({i:i,d:(w.userData&&w.userData.datei)||w.name||"?",
+                  x:Math.round(V.x),z:Math.round(V.z),
+                  nie:!!(w.userData&&w.userData.nieAusblenden)});}});
+      renderer.shadowMap.enabled=alt;
+      return {unsichtbar:aus.length, liste:aus.slice(0,10)};}
+    if(was==="gebaeude"){ /* Wie viele Meshes stecken in den geladenen Gebaeuden? */
+      var G=window._gebaeude||[],gesamt=0,gross=[],box=new THREE.Box3(),V=new THREE.Vector3();
+      G.forEach(function(w){var n=0;w.traverse(function(c){if(c.isMesh)n++;});gesamt+=n;
+        if(n>=40){box.setFromObject(w);box.getCenter(V);
+          gross.push({n:n,d:(w.userData&&w.userData.datei)||w.name||"?",
+                      x:Math.round(V.x),z:Math.round(V.z)});}});
+      gross.sort(function(a,b){return b.n-a.n;});
+      /* Wie weit ist der Bestand vom Spieler entfernt? */
+      var me=sims[meinSi()],nah=0,fern=0;
+      G.forEach(function(w){box.setFromObject(w);box.getCenter(V);
+        var d=Math.hypot(V.x-me.x,V.z-me.z);
+        if(d<120)nah++;else fern++;});
+      return {gruppen:G.length, meshesInGebaeuden:gesamt,
+              naeherAls120m:nah, weiterWeg:fern,
+              groesste:gross.slice(0,6)};}
+    if(was==="sicht"){ /* Wie viel Szene laeuft pro Bild ueberhaupt durch die Pruefung? */
+      var sichtbar=0,unsichtbar=0,tiefe=0,maxTiefe=0,culled=0,nichtCulled=0;
+      var unsichtbareTeilbaeume=0,darunter=0;
+      (function lauf(o,d){
+        if(d>maxTiefe)maxTiefe=d;
+        for(var i=0;i<o.children.length;i++){var c=o.children[i];tiefe++;
+          if(!c.visible){unsichtbar++;
+            /* Ein unsichtbarer Teilbaum wird von three.js gar nicht erst betreten —
+               das ist der billigste Fall. Zaehlen, wie viel dadurch wegfaellt. */
+            var n=0;c.traverse(function(){n++;});
+            unsichtbareTeilbaeume++;darunter+=n-1;continue;}
+          sichtbar++;
+          if(c.isMesh){if(c.frustumCulled)culled++;else nichtCulled++;}
+          lauf(c,d+1);}
+      })(scene,0);
+      return {sichtbareKnoten:sichtbar, unsichtbareKnoten:unsichtbar,
+              unsichtbareTeilbaeume:unsichtbareTeilbaeume, dahinterVerborgen:darunter,
+              maxTiefe:maxTiefe,
+              meshMitCulling:culled, meshOhneCulling:nichtCulled};}
     if(was==="nacht"){ /* Nacht erzwingen und pruefen, ob die Laternen wirklich leuchten */
       window._dorfNacht=true;window._lampPoolT=0;
       camTx=0;camTz=58;                    /* Kamera an eine Laternenkette */
@@ -134,7 +178,22 @@ const { browser, page, jsFehler } = await spielOeffnen(TMP, { warten: 55000, vie
 const info = await page.evaluate(() => window.__th.leistung('info'))
 console.log('=== Geräteunabhängige Kennzahlen (Querformat 844×390) ===')
 for (const [k, v] of Object.entries(info)) console.log(`  ${k.padEnd(20)} ${v}`)
-console.log('=== Laternen: Tag/Nacht-Gegenprobe ===')
+console.log('=== Absichtlich unsichtbare Gebaeude ===')
+const vs = await page.evaluate(() => window.__th.leistung('versteckt'))
+console.log('  aktuell unsichtbar:', vs.unsichtbar)
+vs.liste.forEach(x => console.log(`    ${x.d} @ ${x.x}|${x.z}${x.nie ? ' (nieAusblenden)' : ''}`))
+
+console.log('\n=== Die geladenen Gebaeude ===')
+const gb = await page.evaluate(() => window.__th.leistung('gebaeude'))
+console.log(`  ${gb.gruppen} Gruppen mit zusammen ${gb.meshesInGebaeuden} Meshes`)
+console.log(`  naeher als 120 m: ${gb.naeherAls120m} · weiter weg: ${gb.weiterWeg}`)
+gb.groesste.forEach(g => console.log(`    ${String(g.n).padStart(5)} Meshes  ${g.d} @ ${g.x}|${g.z}`))
+
+console.log('\n=== Was laeuft pro Bild durch die Szene? ===')
+const si = await page.evaluate(() => window.__th.leistung('sicht'))
+for (const [k, v] of Object.entries(si)) console.log(`  ${k.padEnd(24)} ${v}`)
+
+console.log('\n=== Laternen: Tag/Nacht-Gegenprobe ===')
 const nacht = await page.evaluate(() => window.__th.leistung('nacht'))
 console.log('  Nacht  — sichtbar:', nacht.an, '· mit Intensität:', nacht.hell, '· Orte:', JSON.stringify(nacht.orte))
 const tag = await page.evaluate(() => window.__th.leistung('tag'))

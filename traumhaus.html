@@ -13240,6 +13240,7 @@ function loop(now){
      Jedes fuenfte Bild genuegt — der Hintergrund bleibt sichtbar (die Leinwand
      behaelt ihr letztes Bild), er ist nur nicht mehr fluessig. Sobald `running`
      steht, wird wieder jedes Bild gezeichnet. */
+  gruppenSicht();
   if(running||(++_menuTakt%5===0))renderer.render(scene,camera);
 }
 var _menuTakt=0;
@@ -13501,6 +13502,52 @@ function lodAufbau(){
   });
   _lodBereit=true;
   return _lodKlein.length;
+}
+/* ═══════ 👁️ GRUPPEN-SICHTPRUEFUNG ═══════════════════════════════════════════
+   GEMESSEN 2026-08-28 (User: „ruckelt am Handy"): 769 geladene Gebaeude enthalten
+   41'348 Meshes — 85 % der ganzen Szene. three.js prueft JEDES davon einzeln gegen
+   das Sichtfeld: 48'653 Kugeltests pro Bild, um am Ende 841 Dinge zu zeichnen. Ein
+   Theater mit 970 Meshes steht 250 m weit weg und wird trotzdem Mesh fuer Mesh
+   geprueft, weil GRUPPEN in three.js nicht gecullt werden.
+   Hier wird stattdessen EINE Kugel je Gebaeude getestet. Liegt sie ausserhalb des
+   Sichtfelds, wird die Gruppe unsichtbar — und three.js betritt den ganzen Teilbaum
+   gar nicht erst.
+   ⚠️ Die Kugel wird EINMAL berechnet: die Gebaeude sind eingefroren und bewegen
+   sich nie. Ein Neuberechnen pro Bild waere teurer als das Problem.
+   ⚠️ NUR wenn Schatten AUS sind (Handy). Mit Schatten kann ein Haus ausserhalb des
+   Bildes seinen Schatten INS Bild werfen — dann darf es nicht verschwinden. */
+var _gsKugeln=null,_gsFrustum=new THREE.Frustum(),_gsM=new THREE.Matrix4();
+function gruppenSicht(){
+  if(renderer.shadowMap.enabled)return;                 /* siehe Kommentar oben */
+  var G=window._gebaeude;
+  if(!G||!G.length)return;
+  if(!_gsKugeln||_gsKugeln.length!==G.length){
+    if(!_lodBereit)return;                              /* erst wenn alles geladen ist */
+    _gsKugeln=[];var b=new THREE.Box3();
+    for(var i=0;i<G.length;i++){
+      var w=G[i];
+      if(w.userData&&w.userData.nieAusblenden){_gsKugeln.push(null);continue;}
+      b.setFromObject(w);
+      if(!isFinite(b.min.x)){_gsKugeln.push(null);continue;}
+      var k=new THREE.Sphere();b.getBoundingSphere(k);
+      k.radius+=2;                                      /* kleine Reserve gegen Flackern */
+      _gsKugeln.push(k);}
+  }
+  _gsM.multiplyMatrices(camera.projectionMatrix,camera.matrixWorldInverse);
+  _gsFrustum.setFromProjectionMatrix(_gsM);
+  /* ⚠️ NUR AUSBLENDEN, NIE EINBLENDEN. Der erste Anlauf setzte `visible` schlicht auf
+     das Pruefergebnis — und schaltete damit acht Gebaeude wieder AN, die ein anderes
+     System bewusst versteckt hatte: Christbaum, drei Weihnachtsbuden, Eisbahn,
+     Schneemaenner, Rodelhang und Skiliftmast. Im Sommer stand ploetzlich ein Skilift
+     auf der Wiese (im Bildvergleich aufgefallen, im Diff unsichtbar).
+     Jetzt merkt sich die Pruefung, was SIE selbst versteckt hat (`_gsAus`), und ruehrt
+     fremde Entscheidungen nicht an. */
+  for(var j=0;j<G.length;j++){
+    var w=G[j],ku=_gsKugeln[j];if(!ku)continue;
+    if(_gsFrustum.intersectsSphere(ku)){
+      if(w._gsAus){w.visible=true;w._gsAus=false;}      /* nur zurueckholen, was ich nahm */
+    }else if(w.visible){w.visible=false;w._gsAus=true;}
+  }
 }
 function lodTakt(px,pz){
   if(!_lodBereit)return;
