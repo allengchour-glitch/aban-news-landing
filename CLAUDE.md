@@ -874,6 +874,24 @@ Einträge waren überholt:
   clientseitig, WebFetch bekommt nur die Hülle («TikTok - Make Your Day»). Schritt 1 des
   Cowork-Auftrags — vor jedem Upload das Profil ANSEHEN — bleibt deshalb Handarbeit.
 
+**⛔ ERGEBNIS DESSELBEN ABENDS: die App ist NICHT freigegeben.** Der Betreiber hat den Link
+geklickt, der Rücksprung lautet wörtlich
+`&error=unauthorized_client&error_type=client_key&logid=2026082920443016EF4906E0DEFC6C7DC8`
+(29.08.2026, 20:44 UTC). Damit ist es zum ersten Mal **belegt statt vermutet** — und genau so,
+wie die Lehre vom 28.08. es vorschreibt: nicht am App-Token, nicht an der 302, sondern am
+vollständigen Nutzer-Fluss gemessen. **Elf Tage in Review** (eingereicht 18.08.).
+- `error_type=client_key` sagt, dass der CLIENT-KEY nicht autorisiert ist, nicht der Nutzer.
+  Der Redirect (`http://localhost:8723/callback`) und die Scopes stimmen mit der Einreichung
+  überein — es bleibt die Review.
+- ⚠️ **NICHT weiter probieren.** Jeder Versuch endet gleich; der Nutzen des Tests ist
+  aufgebraucht, sobald man ihn EINMAL sauber gemacht hat.
+- **Was jetzt hilft, ist keine weitere Anfrage, sondern ein Blick ins Portal.** Elf Tage sind
+  lang genug, dass eine Ablehnung möglich ist, die niemand gelesen hat — der Status steht in
+  developers.tiktok.com beim App-Eintrag, nicht in unserer API-Antwort. Steht in
+  COWORK-AUFTRAEGE.
+- Der Weg über den Browser (tiktokstudio/upload) ist damit weiterhin der einzige, der heute
+  funktioniert — Material dafür liegt fertig in `dropship/TIKTOK-COWORK-AUFTRAG.md`.
+
 ## 🔇 Der Wächter hat seine eigene Alarmanlage abgestellt (2026-08-29)
 Der Google-Kanal-Wächter meldete abends **«Keine Lücke: alle neuen Produkte ohne Sperrgrund
 stehen im Google-Kanal»** — und löschte seinen Bericht. Meine Direktabfrage am Produkt sagte

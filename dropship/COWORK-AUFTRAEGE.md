@@ -287,34 +287,34 @@ Sie liegen derzeit nur unter `/tmp/judgeme.env`. Der Container stellt regelmäss
 Snapshot her und `/tmp` wird mitgedreht — die Token waren am 28.08. schon einmal weg. Ohne sie
 endet der tägliche Bewertungs-Import als No-op.
 
-## 16. TikTok-Posting-API: ein Klick von dir entscheidet es  ⭐ (Stand 29.08., 22:30)
+## 16. TikTok-Posting-API: NICHT freigegeben — GEMESSEN am 29.08., 20:44
 
-> **Öffne den Anmeldelink, den ich dir im Chat gebe, während du als @luxestyle.ch angemeldet
-> bist, und stimme zu.** Der Browser landet danach auf einer Fehlerseite — das ist richtig, dort
-> lauscht nichts. Kopiere aus der ADRESSZEILE alles nach `code=` bis zum nächsten `&` (das Ende
-> `*1` gehört dazu) und schick es mir. Den Rest mache ich.
+> **Du hast es heute geklickt, das Ergebnis ist eindeutig.** Der Rücksprung lautete
+> `error=unauthorized_client&error_type=client_key`
+> (logid `2026082920443016EF4906E0DEFC6C7DC8`). Die App «luxe» ist weiterhin in Review.
 
-**Was heute gemessen wurde, statt es aus alten Notizen zu übernehmen:**
+**Warum dieser Klick trotzdem richtig war:** Es ist der EINZIGE gültige Test. Der App-Token
+(`client_credentials`) läuft auf App-Ebene und braucht keine Review — er funktioniert seit
+Wochen und beweist nichts. Und dass der Autorisierungs-Endpunkt auf die Anmeldeseite leitet,
+ist der normale erste Schritt jedes OAuth-Flusses. `unauthorized_client` kommt erst NACH der
+Zustimmung zurück. Vorher war es eine Vermutung, jetzt ist es belegt.
 
-| | |
-|---|---|
-| Client-Key | **Produktions-Key** `awhvghmn5q2oh91i` der App «luxe» — nicht mehr der Sandbox-Key |
-| App-Token (`client_credentials`) | funktioniert — **beweist aber nichts** über die Freigabe |
-| Nutzer-Token im Tresor | **fehlt** — es kam nie eine Nutzer-Freigabe zustande |
+⚠️ **Bitte nicht weiter probieren.** Jeder weitere Versuch endet gleich; der Nutzen ist
+aufgebraucht.
 
-Damit ist klar, woran es hängt: **nicht an fehlenden Zugangsdaten, sondern an einer einzigen
-Nutzer-Autorisierung.** Ob die App aus der Review ist, lässt sich NUR so feststellen — der
-App-Token läuft auf App-Ebene und braucht keine Review, und dass der Autorisierungs-Endpunkt
-auf die Anmeldeseite leitet, ist der normale erste Schritt. `unauthorized_client` käme erst
-NACH deiner Zustimmung zurück.
+> **Das eine, was jetzt hilft — 2 Minuten:** Öffne
+> **developers.tiktok.com/app/7648584035840903189** und sieh beim App-Eintrag nach, welchen
+> Status die Review hat. **Elf Tage** sind lang genug, dass eine Ablehnung oder eine Rückfrage
+> vorliegen kann, die per Mail kam und untergegangen ist. Unsere API-Antwort sagt darüber
+> nichts — `error_type=client_key` heisst nur «dieser Key darf nicht», nicht warum.
+> Melde mir, was dort steht.
 
-Zwei Ausgänge, beide nützlich:
-- **Es klappt** → Refresh-Token in den Tresor, `tiktok_reel_post.mjs` geht in Rotation, und der
-  Upload läuft ohne dich.
-- **`unauthorized_client`** → die App ist noch in Review. Dann wissen wir es sicher statt zu
-  vermuten, und es bleibt beim Weg über Punkt 12 (Upload von Hand).
-
+⚠️ **Nicht die App «LuxeStyle Poster» anfassen** — das ist das KURZDRAMA-Portal
+(`/portal/drama/`, verlangt Unternehmensverifizierung), eine andere Baustelle.
 ⚠️ Das Client-Secret stand einmal in einem Chat — im Portal rotieren lassen, neue Werte an mich.
+
+**Bis dahin läuft alles über Punkt 12** (Upload von Hand über tiktokstudio). Das Material ist
+heute gegen den Live-Shop geprüft: 6 Beiträge, 0 gesperrt.
 
 **Was der Ads-Konnektor über das Profil verrät** (neu, 29.08.): `luxestyle.ch` ist dort als
 BC-autorisierte Identität hinterlegt (`can_push_video: true`). Die Videoliste über die Ads-API
