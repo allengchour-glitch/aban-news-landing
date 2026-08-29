@@ -4506,3 +4506,51 @@ echte und falsche stecken. Das Werkzeug ist entsprechend beschriftet und **nicht
 Verwertbar aus dieser Runde ist trotzdem eine Zahl: **`_gebaeude` ist nicht die Welt.**
 186 Kollider stehen 4289 Wand-Meshes gegenüber, aber nur 198 `_gebaeude`-Gruppen. Wer
 gegen die Gruppenliste misst, misst einen Ausschnitt.
+
+## 2026-08-29 · 🚧 Vier Fragestellungen für einen Befund — und eine Selbstprobe, die versagte
+
+Der Befund war seit zwei Runden benannt: **Kollider blockieren dort, wo nichts steht.**
+Drei Anläufe hatten ihn nicht messen können. Der vierte konnte es — weil er aufhörte,
+einen Stellvertreter zu messen.
+
+| Fragestellung | Woran sie scheiterte |
+|---|---|
+| „Ist der Kasten grösser als sein Bauwerk?" gegen `_gebaeude` | Die Wandmodule des Clubs sind **0,42 m** dick und fielen durch den Mindestmass-Filter; „75 Kästen ohne Bauwerk" standen voller Reihenhäuser, die nicht als Gruppe geführt sind |
+| dieselbe Frage gegen Szenen-Meshes, Zuordnung „Mitte im Kasten" | Bei einem **langen, schmalen** Kasten liegt fast jede Mesh-Mitte draussen → 31 m „Überhang" |
+| dieselbe Frage mit der Zuordnung **aus `kolliderNachziehen`** | Deren Filter sind zum **Wachsen** gebaut und lassen Grosses und Hohes absichtlich aus. Für die Gegenrichtung zählen sie zu wenig — die Schule kam auf „4,2 × 0,8" |
+| **„Wo wird man blockiert, obwohl dort nichts steht?"** | ✅ braucht **keine Zuordnung**: für jeden Punkt mit `inSolid` prüfen, ob auf Brusthöhe (0,3…2,0 m) Geometrie liegt |
+
+> Der Fehler war dreimal derselbe: **ein Stellvertreter statt der Sache.** „Kasten grösser
+> als Haus" ist eine Hilfsgrösse; was die Spielerin merkt, ist die Wand, gegen die sie
+> läuft. Die Hilfsgrösse braucht eine Zuordnung und damit eine Heuristik — die Sache
+> selbst braucht keine.
+
+### ⚠️ Die Selbstprobe hat den fünften Fehler gefangen
+
+Der erste Lauf der neuen Fassung meldete **0 von 6634** — und das sah gut aus. Die
+eingebaute Selbstprobe setzt aber einen Kollider **ins leere Feld** bei (0|−420) und
+verlangt, dass er gefunden wird. Ergebnis: **0 von 32 leeren Punkten** — die Prüfung
+konnte gar nicht „nein" sagen. Ursache: irgendein Landschafts-Mesh spannt seine
+achsenparallele Hüllbox über hunderte Meter und reicht über 0,3 m; damit war *„da steht
+etwas"* überall wahr. Mit der Grenze `bx/bz > 40` (wie in `kolliderNachziehen`) besteht
+die Selbstprobe (**32/32**) — und erst dann ist die Zahl darunter etwas wert.
+
+### Das Ergebnis
+
+| | |
+|---|---|
+| Rasterpunkte abgetastet | 8127 |
+| davon blockierend (`inSolid`) | **6634** |
+| davon **ohne Geometrie** an der Stelle | **3801 (57 %)** über **117 Kästen** |
+
+**Ein Fall visuell bestätigt** (`spiele-dev/screenshots/kasten-leer.png`): der
+Bank-Kollider (26 × 21 um −58,2|−141,5) blockiert an 91 von 91 Punkten; der Blick auf
+Augenhöhe bei (−76|−155) zeigt **offene Wiese** vor der Seitenwand, der gemeldete Punkt
+liegt mehrere Meter davor im Gras. `th-augen` meldet den ersten Treffer erst nach 320 m.
+
+⚠️ **Die 3801 sind eine Messung, keine Fehlerliste.** Die grössten Posten sind grosse
+handgesetzte **Flächen**-Kollider (Bergstation 42 × 50, Rummel 32 × 24, Zoo 29 × 35).
+Bei einem Berggipfel *kann* das Absicht sein; bei einem Bankvorplatz ist es keine. Die
+Prüfung liegt darum vor, ist selbstgetestet — und steht **noch nicht im Tor**, bis die
+grossen Flächen einzeln beurteilt sind. Das ist der nächste Schritt, und er ist jetzt
+zum ersten Mal auf einer belastbaren Zahl gegründet.
