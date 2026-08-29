@@ -6320,9 +6320,30 @@ setTimeout(function baueGebaeude(){
         [-4,0,4].forEach(function(dz){modul(dz===0?F2:VOLL,CX-8,0,CZ+dz,Math.PI/2);});   // West
         [-4,0,4].forEach(function(dz){modul(VOLL,CX+8,0,CZ+dz,-Math.PI/2);});            // Ost
         [[-8,-6],[8,-6],[-8,6],[8,6]].forEach(function(e){modul("th34_ecke.glb",CX+e[0],0,CZ+e[1],0);});
-        /* Flachdach: 4 x 3 Module a 4 m ueber dem Innenraum */
+        /* ⚠️ DACH: ZWEI FEHLER, DIE ERST DAS BILD GEZEIGT HAT (th-augen/th-blick).
+           (1) Die Wandmodule sind 2,75 m hoch, nicht 3,00 — das Geschossraster 3,00
+               geht erst mit der 0,25 m dicken `th34_decke` auf. Ohne sie klaffte
+               ringsum ein 0,25-m-Spalt zwischen Wandkrone und Dach: von aussen ein
+               weisser Rand, von innen Tageslicht durch die Decke. Genau so macht es
+               das Stadthaus in der Zeile daneben (decke auf y 2,75) — nachgesehen,
+               nicht geraten.
+           (2) `th34_dach_flach` ist 4,10 x 0,92 x 4,10: ein Feld MIT UMLAUFENDER
+               ATTIKA. In einer Reihe (Stadthaus, 3 Stueck) ergibt das eine saubere
+               Dachkante; als 4x3-Block bringt jedes Modul seine eigene Bruestung mit
+               und das Dach sah aus wie zwoelf nebeneinandergestellte Tabletts.
+           Beides loest EINE Lage `th34_decke` auf 2,75: sie schliesst den Spalt, ist
+           die Decke des Raums und zugleich das Flachdach (Oberkante 3,00). */
         [-6,-2,2,6].forEach(function(dx){[-4,0,4].forEach(function(dz){
-          modul("th34_dach_flach.glb",CX+dx,3,CZ+dz,0);});});
+          modul("th34_decke.glb",CX+dx,2.75,CZ+dz,0);});});
+        /* ⚠️ UND EIN FUSSBODEN. Der erste Blick von innen (th-blick mit r 5) zeigte
+           einen Clubraum mit RASEN — Discokugel, Pokertisch und Tanzflaeche standen
+           auf der Wiese, und am Ostrand schnitt sogar das gelbe Feld durch den Raum.
+           Keine der sechs Messungen konnte das sehen: sie fragen nach Lage, Groesse
+           und Decke, nicht nach dem, worauf man steht.
+           Dieselbe Platte wie oben, nur auf -0,20 gesetzt: Oberkante 0,05 — eine
+           Schwelle ueber dem Gras, ohne dass die Einrichtung einsinkt. */
+        [-6,-2,2,6].forEach(function(dx){[-4,0,4].forEach(function(dz){
+          modul("th34_decke.glb",CX+dx,-0.20,CZ+dz,0);});});
         /* Kollider mit Tuerluecke auf der Suedflucht — sonst ist das Haus zwar
            begehbar, aber auch von allen Seiten durchlaufbar (th-mauern). */
         addSolid(CX,CZ,17,13,{a:"z",at:CZ-6.2,c:CX+2,w:2.4});
@@ -6339,11 +6360,14 @@ setTimeout(function baueGebaeude(){
         [-4.4,-2.5].forEach(function(dz){drin("th14_automatenreihe.glb",2.17,CX+6.4,CZ+dz,-Math.PI/2);});
         [0.5,2.4,4.3].forEach(function(dz){drin("th14_spielautomat.glb",1.88,CX+6.7,CZ+dz,-Math.PI/2);});
         /* Haengendes: Anker ist die UNTERKANTE (bau setzt min.y auf y), also
-           Deckenhoehe 3,0 minus Eigenhoehe — sonst haengt es im Dach oder im Kopf. */
-        drin("th14_discokugel.glb",  0.80, CX+2.5, CZ+2.5, 0, 3.0-0.80);
-        /* ⚠️ 1,20 m gemessen -> Unterkante 1,80 m, also auf Kopfhoehe. Ueber einem
-           Tisch faellt das nicht auf, beim Vorbeigehen schon. 0,90 laesst 2,10 m frei. */
-        drin("th14_kronleuchter.glb",0.90, CX-4.7, CZ-3.4, 0, 3.0-0.90);
+           Deckenhoehe minus Eigenhoehe.
+           ⚠️ DIE DECKE LIEGT AUF 2,75, NICHT AUF 3,00. Das Geschossraster ist 3,00,
+           die WAND aber nur 2,75 hoch — und die Decke haengt an der Wand, nicht am
+           Raster. Mit 3,00 gerechnet steckte die Discokugel mit ihren obersten 25 cm
+           IM Dach. Der erste Lauf von th-club hat das nicht gemeldet, weil das
+           Werkzeug dieselbe falsche Deckenhoehe benutzte wie der Bau. */
+        drin("th14_discokugel.glb",  0.60, CX+2.5, CZ+2.5, 0, 2.75-0.60);
+        drin("th14_kronleuchter.glb",0.60, CX-4.7, CZ-3.4, 0, 2.75-0.60);
         /* Draussen: Schild ueber der Tuer, Kordel davor. */
         bau("th14_neonschild_gross.glb",3.2,CX+2,3.0,CZ-6.3,0,false,null,true);
         [-1.8,1.8].forEach(function(dx){bau("th14_samtkordel.glb",0.97,CX+2+dx,0,CZ-7.6,0,false,null,true);});
