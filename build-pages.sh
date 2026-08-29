@@ -61,6 +61,10 @@ mkdir -p _site
 # Einfuehrung: 0 tote Ziele bei 54'161 geprueften Links.
 ( command -v python3 >/dev/null 2>&1 && python3 tools/link_check.py ) || true
 
+# Verzeichnis-Adressen, die ins Leere laufen (/vergleich/ war 404 mit 197 Seiten
+# dahinter). Meldet nur; entweder index.html anlegen oder Regel in _redirects.
+( command -v python3 >/dev/null 2>&1 && python3 tools/verzeichnis_urls.py ) || true
+
 # Neue Seiten in die sitemap.xml nachtragen + Dubletten entfernen. Es gibt keinen
 # Generator, der die Sitemap neu baut — ohne diesen Schritt fehlen neue Rubriken
 # bei Google (gemessen 2026-08-26: 21 Minispiele + 8 Märkte + 6 Seiten fehlten).
