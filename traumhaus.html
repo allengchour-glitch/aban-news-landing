@@ -9806,6 +9806,77 @@ var ACH=[
  ["navigator","🧭","Navigator","Mit dem GPS-Wegpunkt ein Ziel erreicht",function(){return (stats.gpsZiele||0)>=1;}],
  ["entenpaar","🦆","Entenpaar","Zu zweit am See gefüttert",function(){return (stats.entenKoop||0)>=1;}]
 ];
+/* 🎯 DER LETZTE METER. Vierzig Erfolge lagen im Menue — und alle sahen gleich weit
+   weg aus, weil keiner einen Zwischenstand trug. "5 Ernten" liest sich bei 0 exakt wie
+   bei 4. Genau dieser Unterschied ist aber der Antrieb: ein Ziel, dem EINS fehlt, zieht;
+   ein Ziel ohne Zahl ist Deko. Darum hier zu jedem zaehlbaren Erfolg der Stand — als
+   Balken im Menue und, sobald nur noch eins fehlt, als Anstupser mitten im Spiel.
+   Die Tabelle steht bewusst NEBEN dem ACH-Feld, nicht darin: so bleiben die vierzig
+   Bedingungen unangetastet, und ein Erfolg ohne sinnvollen Zwischenstand
+   (verlobt? ja/nein) braucht schlicht keinen Eintrag.
+   Aufbau [Stand-Funktion, Ziel, Wort]. Ohne Wort: nur Balken, kein Anstupser —
+   "nur noch 1 $ bis Wohlhabend" waere Hohn statt Ansporn. */
+var ACHFORT={
+ einrichter:[function(){return stats.moebelGekauft||0;},10,"Möbel"],
+ chef:[function(){return skills.arbeit.lv||1;},3,"Karriere-Level"],
+ verliebt:[function(){return Math.round(liebe||0);},60,null],
+ grossfamilie:[function(){return kinder.length;},3,"Kind"],
+ gaertner:[function(){return stats.ernten||0;},5,"Ernte"],
+ bankraeuber:[function(){return skills.krimi.lv||1;},2,"Ganoven-Level"],
+ angler:[function(){return stats.fische||0;},5,"Fisch"],
+ lieferheld:[function(){return stats.lieferungen||0;},5,"Lieferung"],
+ stuntpilot:[function(){return stats.stunts||0;},10,"Sprung"],
+ suchmeister:[function(){return stats.versteckt||0;},3,"Fund beim Verstecken"],
+ immohai:[function(){return typeof immo!=="undefined"?immo.length:0;},3,"Haus"],
+ ehrenbuerger:[function(){return stats.quests||0;},3,"Stadt-Auftrag"],
+ langfinger:[function(){return stats.diebstahl||0;},3,"Diebstahl"],
+ schwerlast:[function(){return stats.sperrgut||0;},3,"Sperrgut-Transport"],
+ reich:[function(){return Math.round(geld);},10000,null],
+ abnahme3:[function(){return wohnstufe;},3,"Wohnstufe"],
+ abnahme5:[function(){return wohnstufe;},5,"Wohnstufe"],
+ missmeister:[function(){return missSerie+(missHeute&&missHeute.bonus?1:0);},3,"Tag"],
+ schleckmaul:[function(){return stats.eis||0;},3,"Eis"],
+ torjaeger:[function(){return stats.tore||0;},3,"Tor"]
+};
+/* Dieselbe Lehre wie bei checkAch: eine werfende Bedingung darf nicht den ganzen
+   Rest mitreissen. Hier kostet ein Fehler genau einen Balken. */
+function achStand(id){
+  var e=ACHFORT[id];if(!e)return null;
+  var ist=0;
+  try{ ist=e[0]()|0; }catch(x){ return null; }
+  if(!(ist>0))ist=0;
+  if(ist>e[1])ist=e[1];
+  return {ist:ist,soll:e[1],wort:e[2],rest:e[1]-ist};}
+/* Der am weitesten fortgeschrittene offene Erfolg — das, was man als naechstes holt. */
+function naechstesZiel(){
+  var best=null;
+  for(var zi=0;zi<ACH.length;zi++){
+    var za=ACH[zi];if(achDone[za[0]])continue;
+    var zs=achStand(za[0]);if(!zs||zs.rest<=0)continue;
+    var zq=zs.ist/zs.soll;
+    if(!best||zq>best.q||(zq===best.q&&zs.rest<best.s.rest))best={q:zq,s:zs,a:za};}
+  return best;}
+var _achNah={};
+/* Der Anstupser feuert genau EINMAL pro Erfolg. Bei 0,35 s Takt waere er sonst
+   Dauerzustand — und damit Tapete statt Antrieb. Er ueberlebt darum auch den
+   Neustart (im Spielstand), sonst begruesst dasselbe Ziel einen nach jedem Laden neu. */
+function achNahPruef(a2){
+  if(_achNah[a2[0]])return;
+  var s=achStand(a2[0]);
+  if(!s||!s.wort||s.rest!==1)return;
+  _achNah[a2[0]]=1;
+  hint("🎯 Nur noch 1 "+s.wort+" bis „"+a2[2]+"“!");
+  if(typeof beep==="function")beep(700,.08,"triangle",.045);}
+function achNahOffen(){
+  for(var k in _achNah)if(_achNah[k]&&!achDone[k])return true;
+  return false;}
+/* Solange ein Ziel auf dem letzten Meter steht, traegt der Pokal einen Ring — der
+   Hinweis verschwindet nach Sekunden, das Ziel bleibt. */
+function achBtnGlanz(){
+  var b=document.getElementById("achBtn");if(!b)return;
+  var nah=achNahOffen();
+  b.style.animation=nah?"komboPuls 1.1s infinite":"none";
+  b.style.boxShadow=(nah?"0 0 0 3px rgba(232,163,61,.9),":"")+"0 4px 12px rgba(60,40,10,.15)";}
 function hausWert(){var w=0;
   furn.forEach(function(f9){w+=Math.round(f9.def.cost*(1+0.6*((f9.lv||1)-1)));});
   w+=Object.keys(walls).length*30+Object.keys(floors).length*10;
@@ -10059,7 +10130,9 @@ function checkAch(){
     var ok2=false;
     try{ ok2=!!a2[4](); }
     catch(e2){ if(!_achLaut[a2[0]]){_achLaut[a2[0]]=1;console.warn("Erfolgs-Bedingung wirft:",a2[0],e2);} }
-    if(ok2){achDone[a2[0]]=1;achToast(a2);}}}
+    if(ok2){achDone[a2[0]]=1;achToast(a2);_achNah[a2[0]]=0;}
+    else achNahPruef(a2);}
+  achBtnGlanz();}
 function achToast(a2){
   var t=document.getElementById("achToast");
   document.getElementById("achToastTxt").innerHTML=a2[1]+" <b>"+a2[2]+"</b><br><small>"+a2[3]+"</small>";
@@ -10431,7 +10504,8 @@ function snapshot(){return {gw:GW,gh:GH,floors:floors,walls:Object.keys(walls).r
   cpT:window._coupTag,cpH:window._coupHeute,lfT:window._liefTag,lfH:window._liefHeute,ws:wohnstufe,na:naechsteAbnahme,
   bkT:window._buskTag,bkH:window._buskHeute,
   anC:window._angelCd,
-  kb:KOMBO.best||0};}   /* 🔥 der eigene Serien-Rekord — das, was man schlagen will */
+  kb:KOMBO.best||0,   /* 🔥 der eigene Serien-Rekord — das, was man schlagen will */
+  an:_achNah};}      /* 🎯 schon ausgesprochene "nur noch eins"-Anstupser */
 function loadSnapshot(sn){
   var mx9=Math.round((GW-(sn.gw||18))/2),my9=Math.round((GH-(sn.gh||14))/2); // alte Saves mittig einpassen
   (sn.furn||[]).forEach(function(f9){var m9=/^f(\d+)/.exec(f9.fid||"");if(m9)fidC=Math.max(fidC,+m9[1]+1);}); // fid-Zaehler fortsetzen
@@ -10483,6 +10557,7 @@ function loadSnapshot(sn){
   if(sn.bkT!==undefined)window._buskTag=sn.bkT;if(sn.bkH!==undefined)window._buskHeute=sn.bkH;
   if(sn.anC!==undefined)window._angelCd=sn.anC;
   if(sn.kb!==undefined)KOMBO.best=sn.kb|0;
+  if(sn.an)_achNah=sn.an;
   kinder.slice().forEach(function(k){scene.remove(k.mesh);});kinder=[];
   (sn.ki||[]).forEach(function(kd){var nk=spawnKind(kd.b);if(nk){nk.name=kd.n;nk.alter=kd.a;}});
   updHUD();}
@@ -13212,10 +13287,22 @@ document.getElementById("achBtn").onclick=function(){
   var done=0;
   ACH.forEach(function(a3){var ok3=!!achDone[a3[0]];if(ok3)done++;
     var d3=document.createElement("div");
-    d3.style.cssText="display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:10px;background:"+(ok3?"#f0f8e8":"#f5f2ea")+";opacity:"+(ok3?"1":"0.55");
-    d3.innerHTML="<span style='font-size:1.4rem'>"+(ok3?a3[1]:"🔒")+"</span><span><b>"+a3[2]+"</b><br><small style='color:#8a7a5a'>"+a3[3]+"</small></span>"+(ok3?"<span style='margin-left:auto;color:#5ab86a;font-weight:800'>✓</span>":"");
+    /* Ein Ziel mit Zwischenstand ist kein verschlossenes Ziel mehr — darum sind die
+       gezaehlten heller als die reinen Ja/Nein-Marken, und das mit dem letzten Meter
+       steht voll da. Vorher lagen alle 40 gleich blass nebeneinander. */
+    var st3=ok3?null:achStand(a3[0]);
+    var kl3=ok3?1:(st3?(st3.rest===1?0.95:0.72):0.55);
+    d3.style.cssText="display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:10px;background:"+(ok3?"#f0f8e8":(st3&&st3.rest===1?"#fdf1dd":"#f5f2ea"))+";opacity:"+kl3;
+    var bar3=st3?("<div style='margin-top:5px;display:flex;align-items:center;gap:7px'>"+
+      "<div style='flex:1;min-width:60px;height:6px;border-radius:3px;background:rgba(120,110,80,.22);overflow:hidden'>"+
+      "<div style='height:100%;width:"+Math.round(st3.ist/st3.soll*100)+"%;background:"+(st3.rest===1?"#e8a33d":"#8fb86a")+"'></div></div>"+
+      "<small style='color:#8a7a5a;font-weight:800;white-space:nowrap'>"+st3.ist+"/"+st3.soll+"</small></div>"):"";
+    d3.innerHTML="<span style='font-size:1.4rem'>"+(ok3?a3[1]:"🔒")+"</span><span style='flex:1;min-width:0'><b>"+a3[2]+"</b><br><small style='color:#8a7a5a'>"+a3[3]+"</small>"+bar3+"</span>"+(ok3?"<span style='margin-left:auto;color:#5ab86a;font-weight:800'>✓</span>":"");
     lst.appendChild(d3);});
-  document.getElementById("questTxt").innerHTML=(MPs?"🤝 <b>Koop-Team-Aufgabe:</b> "+teamTxt()+"<br>":"")+"📜 <b>Stadt-Auftrag:</b> "+questTxt()+(missHeute?"<br>"+missTxt():"");
+  /* Ganz oben steht, was am naechsten liegt — sonst muss man vierzig Eintraege
+     durchsehen, um zu erkennen, wofuer sich der naechste Handgriff lohnt. */
+  var nz=naechstesZiel();
+  document.getElementById("questTxt").innerHTML=(nz?"🎯 <b>Am naechsten dran:</b> "+nz.a[1]+" "+nz.a[2]+" · "+nz.s.ist+"/"+nz.s.soll+" (noch "+nz.s.rest+")<br>":"")+(MPs?"🤝 <b>Koop-Team-Aufgabe:</b> "+teamTxt()+"<br>":"")+"📜 <b>Stadt-Auftrag:</b> "+questTxt()+(missHeute?"<br>"+missTxt():"");
   var w2=hausWert();
   document.getElementById("hausWertTxt").textContent=prestigeName(w2)+" · "+w2+" $ · "+done+"/"+ACH.length;
   document.getElementById("achPanel").style.display="flex";};
