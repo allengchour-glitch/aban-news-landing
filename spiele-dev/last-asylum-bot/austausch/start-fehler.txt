@@ -1,0 +1,16 @@
+﻿# Der Start ist abgebrochen. Diese Datei sagt wo.
+zeit:   2026-08-29 14:56:07
+rechner: MSI
+grund:  Konfiguration ist fehlerhaft
+hinweis:   File "C:\Users\allen\bot-asylum\spiele-dev\last-asylum-bot\bot.py", line 633, in main
+hinweis:     return args.func(args)
+hinweis:            ~~~~~~~~~^^^^^^
+hinweis:   File "C:\Users\allen\bot-asylum\spiele-dev\last-asylum-bot\bot.py", line 118, in cmd_check
+hinweis:     print(f"\n\u25cb {len(cfg.offene_templates)} optionale Templates fehlen noch "
+hinweis:     ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+hinweis:           "(die Schritte werden ³bersprungen, bis du sie schneidest):")
+hinweis:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+hinweis:   File "C:\Users\allen\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
+hinweis:     return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+hinweis:            ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+hinweis: UnicodeEncodeError: 'charmap' codec can't encode character '\u25cb' in position 2: character maps to <undefined>
