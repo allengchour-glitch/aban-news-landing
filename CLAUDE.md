@@ -20,6 +20,57 @@ in der App wählen lassen. Für Einzel-Posts der Standard-Weg, bis die API frei 
 **Content-Nachschub:** cj_video_reel_engine baut Reels aus CJ-Produktvideos — praktisch unendlich,
 Ledger verhindern jede Wiederholung (plattformübergreifend). 29 ready in reels_seed.csv.
 
+## 👯 Der ganze Klaviyo-Flow-Satz existierte ZWEIMAL — jeder Käufer bekam alles doppelt (2026-08-29)
+
+Nach dem Willkommens-Fund die naheliegende Gegenfrage: Hören noch mehr Flows auf denselben
+Auslöser? Antwort: **fast alle.** Am 01.06. wurde der komplette Flow-Satz als «· EN/US» geklont —
+die Klone sind aber **komplett auf Deutsch** in einem Shop, der nur in die Schweiz liefert.
+
+| Auslöser | Flow A (bleibt) | Flow B (jetzt Entwurf) |
+|---|---|---|
+| Liste `T2VHfu` | Welcome Series | E-Mail Welcome-Serie · Welcome Series · EN/US |
+| Metrik `XhnJPv` Checkout Started | Abandoned Checkout | **Abandoned Cart · EN/US** |
+| Metrik `W7XTVD` Placed Order | Post-Purchase · Order + Review | **Post-Purchase Review · EN/US** |
+| Segment `VqjAXC` Win-Back | At-Risk Win-Back · 15% Off | **Win-Back · EN/US** |
+
+**Live gemessen bedeutete das: Jeder Käufer bekam ZWEI Bestellbestätigungen und ZWEI
+Bewertungs-Anfragen; jeder abgebrochene Warenkorb löste FÜNF Mails aus.** Die Screenshot-Mail
+des Betreibers von heute Morgen war also nicht nur inhaltlich kaputt, sie kam auch doppelt.
+**Live-Flows 10 → 5, jeder Auslöser jetzt genau einmal belegt** (nachgezählt, nicht angenommen).
+
+**Und in der einen Serie, die tatsächlich einen Verkauf erzeugt hat, steckten drei Fehler:**
+- **`from_label: "Aban"`** auf beiden Warenkorb-Mails — die fremde Marke, dieselbe wie in den
+  Willkommens-Zwillingen. Wer bei LuxeStyle einkauft, bekam die Erinnerung von «Aban».
+- **`reply_to_email: allengchour@gmail.com`** — die **private Gmail-Adresse des Betreibers** stand
+  als Antwortadresse auf Kundenmails. Jetzt `info@luxestyle.ch`.
+- **Betreff siezte, der Text duzte.** «Ihr Einkauf wartet» stand über «Du hast etwas vergessen 👀».
+  Erst den Vorlagentext gelesen, DANN den Betreff angeglichen — nicht umgekehrt geraten.
+- ⚠️ Im EN/US-Klon war zusätzlich eine dritte Mail **`live` mit dem Betreff «Email #3 Subject»** —
+  ein unfertiger Platzhalter, der an echte Kundinnen ging. Im deutschen Zwilling steht dieselbe
+  Stufe auf `draft`. **Ein Klon erbt nicht den Status seiner Vorlage.**
+
+**Der Win-Back-Flow versprach drei verschiedene Rabatte in EINER Mail:**
+| Stelle | Aussage |
+|---|---|
+| Betreff | «**CHF 15** sparen mit **BACK15**» |
+| Fliesstext | «schenken wir dir **10 %**» |
+| Code im Kasten | **WELCOME10** — ein ANDERER Code |
+| live geprüft | BACK15 = **15 %**, **Mindestbestellwert CHF 50** |
+
+Wer BACK15 bei CHF 50 einlöst, spart **CHF 7.50** — halb so viel wie der Betreff verspricht, und
+die CHF-50-Hürde stand nirgends. Neues Template, alles auf die live geprüfte Wahrheit gebracht.
+Das ist die **Umkehrung** des Funds vom 28.08. («WELCOME10 ab CHF 30» — eine erfundene Hürde);
+hier wurde eine **echte Hürde verschwiegen**. Beide Richtungen kosten Vertrauen.
+
+**Die Lehre: Ein Flow-Klon ist kein Backup, sondern ein zweiter Absender.** Wer in Klaviyo einen
+Flow dupliziert, verdoppelt nicht die Vorlage, sondern den VERSAND — und weil beide Klone auf
+demselben Auslöser hängen, merkt es niemand an der Oberfläche. **Vor jeder Aussage über einen
+Flow gehört die Frage: hängt noch jemand am selben Auslöser?** `get_flows_triggered_by_list` /
+`…_by_segment` beantworten das für Listen und Segmente; bei Metriken hilft nur
+`definition.triggers` je Flow.
+⚠️ **Die Bezeichnung `trigger_type` lügt dabei:** Win-Back und VIP melden «Added to List», ihr
+`definition.triggers` sagt aber `{"type":"segment"}`. Wer nach Listen sucht, findet sie nie.
+
 ## 📭 Popup schrieb in Liste A, die Willkommens-Flows lauschten auf Liste B (2026-08-29)
 
 Nach dem toten Link in der Klaviyo-Mail die Gegenfrage gestellt: Senden die Flows überhaupt?
