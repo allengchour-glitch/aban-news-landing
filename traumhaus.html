@@ -7453,7 +7453,23 @@ setTimeout(function baueGebaeude(){
       var zb=new THREE.Mesh(new THREE.CircleGeometry(1.5,20),new THREE.MeshStandardMaterial({color:0xf4ecd8,emissive:0xffe8a8,emissiveIntensity:0,roughness:0.4}));
       zb.position.set(0,15.5,2.63);g.add(zb);dorfFenster.push(zb.material);
       g.position.set(DOM_X-12.5,0,DOM_Z-6.5);scene.add(g);  /* Campanile westlich neben dem Chor */
-      addSolid(-68.5,-84,5.2,5.2,null); /* 🛣️ war -70.5 → ragte in die West-Laengsstrasse (-83..-73) */
+      /* ⚠️ DIESER KOLLIDER STAND 200 m NEBEN SEINEM TURM. Er lautete
+         `addSolid(-68.5,-84,5.2,5.2)` — der Campanile steht aber, eine Zeile darueber,
+         auf `DOM_X-12.5 | DOM_Z-6.5`, also (133,5|-28,5). Zwei Befunde aus einem Fehler:
+           * GEMESSEN bei (-68,5|-84): ein Kasten 5,2 x 5,2 mit NULL Meshes darin,
+             naechstes Gebaeude 13 m weg — eine unsichtbare Wand auf freiem Feld
+             (th-kasten.mjs, 16 von 20 Punkten blockieren dort ins Leere).
+           * GEMESSEN am Turm (133,5|-28,5): 12 Meshes bis 36,7 m Hoehe, naechster
+             Kollider 12,4 m entfernt, `inSolid` in der Turmmitte FALSCH — man laeuft
+             durch einen 36-m-Glockenturm hindurch.
+         Der alte Kommentar ("war -70.5 -> ragte in die West-Laengsstrasse") zeigt, dass
+         hier schon einmal jemand an der falschen Stelle nachgebessert hat: verschoben
+         wurde ein Kasten, der ohnehin am falschen Ort lag.
+         ⚠️ Und darum steht jetzt DERSELBE AUSDRUCK wie bei der Turmplatzierung, keine
+         zweite Zahlenreihe — sonst laufen sie beim naechsten Verschieben des Doms
+         wieder auseinander (Regel 9). 5,8 statt 5,2: der Sockelkranz ist das breiteste
+         Teil des Schafts. */
+      addSolid(DOM_X-12.5,DOM_Z-6.5,5.8,5.8,null);
     })();
     /* 🌳 WOHNSTRASSEN-BEGRUENUNG. Die Haeuser haben Vorgaerten mit Zaun und Hecke,
        aber der Streifen zwischen Gehwegkante und Gartenzaun war kahles Gras — die
