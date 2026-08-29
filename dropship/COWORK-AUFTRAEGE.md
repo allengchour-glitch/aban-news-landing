@@ -158,6 +158,30 @@ CHF 7.50 bekommen — und von der CHF-50-Hürde stand nichts drin. Ist korrigier
 > nach 7 Tagen stehen. Ich habe es NICHT selbst entschieden: welche Bestätigung deine Kundin
 > sehen soll, ist Markenauftritt, keine Technik.
 
+## 3e. Fünf Küchen-Zubehörteile: rein in den Google-Kanal oder nicht?  ⭐ (NEU 29.08.)
+> Sag mir Ja oder Nein — den Rest mache ich.
+
+Diese fünf stehen im Shop, sind einwandfrei, und fehlen **nur** bei Google:
+
+- Xinzuo Magnetischer Messerblock aus Akazienholz
+- Abtropfgestell mit Geschirr- und Messerhalter
+- Bambus-Käsebrett-Set mit Messern
+- Multifunktionaler Messerhalter mit Wellenmuster
+- Diamant-Messerschärfer mit festem Winkel
+
+**Dafür spricht:** Es ist Küchenware, kein Waffenzubehör. Google erlaubt Küchenmesser; die
+Hausregel dieses Projekts hält seit dem 12.08. ausdrücklich fest, dass Küchenbesteck **kein**
+Richtlinienverstoss ist. Google ist der einzige Kanal mit belegten Verkäufen — jedes Produkt,
+das dort fehlt, ist ein Gratis-Eintrag, den wir verschenken.
+
+**Dagegen spricht:** Ein Fehlgriff im Google-Kanal riskiert die Merchant-Sperre, also genau den
+Kanal, der als einziger verkauft. Die Wortliste, die sie draussen hält, ist bewusst grob.
+
+**Nicht dabei, und das ist wichtig:** Eine «Retro Schwertabdeckung» aus derselben Meldung habe
+ich draussen gelassen — das ist eine Scheide für ein Schwert, also Waffenzubehör. Die Regel
+hätte sie heute Morgen noch durchgelassen; das ist repariert. Ein Deko-Kissen mit
+«Schwertblatt»-Muster (Schwertblatt = Bogenhanf, also eine Pflanze) ist dagegen jetzt drin.
+
 ## 4. Google Merchant Center: Zielland auf Schweiz
 > Öffne das Google Merchant Center für luxestyle.ch und stelle Ziel- bzw. Versandland des Feeds
 > auf **nur Schweiz**. Melde mir danach, wie viele Artikel «Missing shipping info» verlieren.
