@@ -117,6 +117,13 @@
       .step{border-right:0;border-bottom:1px solid var(--line)}.step:last-child{border-bottom:0}
       .hnav .lk{display:none}.row{flex-direction:column}.row .btn{width:100%}
     }
+  /* Unter 380px schrumpft die Kopfzeile zwar (flex-shrink), ihr Knopf aber nicht:
+     gemessen lief die Seite bei 320px um 24px (en) bzw. 17px (fr) waagerecht ueber.
+     Umbrechen duerfen, nicht muessen. */
+  @media(max-width:380px){
+    header .wrap{flex-wrap:wrap;row-gap:.45rem}
+    .hnav{justify-content:flex-end}
+  }
   @media (hover:none) and (pointer:coarse){.tab{min-height:44px;padding:.55rem 1rem}.lang a{min-height:38px;display:inline-flex;align-items:center}.btn--sm{min-height:40px}}
     .intl-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.55rem 1rem;background:var(--amber-lt);border:1px solid #f6d9ad;border-radius:12px;padding:.6rem .9rem;margin:1rem 0 0;font-size:.9rem;color:var(--amber-dk);line-height:1.45}
     .intl-bar b{color:var(--ink)}
@@ -232,7 +239,7 @@
   <section class="sec" style="padding-top:0">
     <div class="wrap">
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:8px;align-items:center;border-radius:16px;overflow:hidden;background:radial-gradient(120% 120% at 30% 20%,#1c1814,#0f0d0a);border:1px solid #2a241c">
-        <div><canvas data-aban3d data-shape="globe" data-points="150" data-color="#f0a93a" data-speed="0.7" style="display:block;width:100%;height:260px;touch-action:none" aria-label="Animazione 3D interattiva – trascina per ruotare"></canvas></div>
+        <div><canvas role="img" data-aban3d data-shape="globe" data-points="150" data-color="#f0a93a" data-speed="0.7" style="display:block;width:100%;height:260px;touch-action:none" aria-label="Animazione 3D interattiva – trascina per ruotare"></canvas></div>
         <div style="padding:22px 26px;color:#f3ede1">
           <span class="eyebrow" style="color:#f0a93a">Fatto in casa · 0 librerie esterne</span>
           <h2 style="color:#fff;margin:.3rem 0 .5rem">Veri grafici 3D — direttamente nel browser</h2>

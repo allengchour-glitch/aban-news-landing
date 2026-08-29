@@ -58,7 +58,12 @@
     .lang a{padding:.34rem .6rem;color:var(--muted);text-decoration:none}.lang a.on{background:var(--ink);color:#fff}
     @media(max-width:1560px){.hnav .lk--lo{display:none}}
     @media(max-width:1400px){.hnav{gap:.95rem;font-size:.89rem}}
-    @media(max-width:820px){.hnav .lk{display:none}.hnav .lk--keep{display:inline}}
+    /* ⚠️ 820 -> 1040: DIE LUECKE ZWISCHEN DEN HALTEPUNKTEN. Die Links verschwanden
+       erst ab 820px, die Kopfzeile braucht aber rund 1040px. Dazwischen lief die
+       Seite waagerecht ueber — gemessen +185px bei 840, +125 bei 900, +25 bei 1000,
+       erst ab 1040 sauber. Das trifft Tablets quer und kleine Notebooks.
+       Dieselbe Sorte Fehler wie im Kommentar darunter, dort nur fuers Handy geloest. */
+    @media(max-width:1040px){.hnav .lk{display:none}.hnav .lk--keep{display:inline}}
     /* Unter ~600px brach nichts um (flex-wrap:nowrap + white-space:nowrap) — die Zeile
        wurde 619px breit und die ganze Seite bekam horizontales Scrollen auf dem Handy. */
     @media(max-width:600px){
@@ -68,6 +73,17 @@
       .lang{font-size:.72rem}.lang a{padding:.3rem .45rem}
       .hide-xs{display:none}
       .hnav .btn--sm{padding:.5rem .8rem;font-size:.85rem}
+    }
+    /* ⚠️ Unter 375px lief die Seite weiterhin waagerecht ueber (+47px bei 320,
+       +27 bei 340, +7 bei 360). Die Kopfzeile SCHRUMPFTE zwar (flex-shrink), ihr
+       Knopf aber nicht: nav.hnav endete bei 300, der Knopf darin bei 367.
+       Umbrechen statt schrumpfen — nichts wird versteckt, die Kopfzeile wird auf
+       sehr schmalen Geraeten zweizeilig. */
+    @media(max-width:380px){
+      /* Nur umbrechen DUERFEN, nicht umbrechen MUESSEN: ohne erzwungene volle
+         Breite bleibt die Kopfzeile einzeilig, wo sie passt. */
+      header .wrap{flex-wrap:wrap;row-gap:.45rem}
+      .hnav{justify-content:flex-end}
     }
     /* Schnell-Link-Leiste — alle wichtigen Ziele, auf dem Handy horizontal scrollbar */
     .quicklinks{background:#fff;border-bottom:1px solid var(--line)}
@@ -871,7 +887,7 @@
     <div class="footbar">
       <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
       <span class="footbar-links"><a href="/suchmaschine.html">Suche</a>
-      <span class="footbar-links"><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></span>
+      <a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></span>
     </div>
   </div>
 </footer>
