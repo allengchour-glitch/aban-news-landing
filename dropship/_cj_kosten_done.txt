@@ -5416,3 +5416,9 @@ gid://shopify/Product/15449065750913	CHF 29.22	8 Varianten	Vintage Distressed Je
 gid://shopify/Product/15449065816449	CHF 33.66	18 Varianten	Legere Baumwoll-Übergangsjacke mit Reissverschluss
 gid://shopify/Product/15449065881985	CHF 20.22	10 Varianten	Lässige Oversized-Jacke mit Revers für Herren
 gid://shopify/Product/15449065947521	CHF 26.04	10 Varianten	Herren Kunstlederjacke mit Fleece-Futter
+gid://shopify/Product/15449066013057	CHF 18.75	36 Varianten	Winter Herren Fleece-gefütterte Jacke mit Kapuze
+gid://shopify/Product/15449066045825	CHF 59.00	15 Varianten	Kariertes Cord-Sakko für Herren
+gid://shopify/Product/15449066111361	CHF 15.33	15 Varianten	Vielseitige Multipocket Weste für Herren
+gid://shopify/Product/15449066176897	CHF 34.19	35 Varianten	Herren Fleece-gefütterte Arbeitsjacke
+gid://shopify/Product/15449066242433	CHF 25.15	10 Varianten	Herren Anti-Pilling Strickjacke mit Reissverschlus
+gid://shopify/Product/15449066307969	CHF 50.04	5 Varianten	Herren Canvas-Jacke, rohweiss
