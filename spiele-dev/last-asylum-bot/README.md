@@ -189,6 +189,19 @@ python3 bot.py find templates/ui/btn_abholen.png --image shots/menue.png --thres
   gefunden → mit `bot.py find --threshold 0.6` messen, was tatsächlich herauskommt.
 * Templates aus einem **1440 px breiten** Screenshot passen auch auf andere Auflösungen —
   `base_width` in der Konfiguration sorgt für die Umrechnung.
+* **Die gesammelten Ansichten taugen als Quelle — auch halbiert.** `austausch/ansichten/`
+  füllt sich von selbst, aber in halber Kantenlänge (720 statt 1440). Das sah lange nach einer
+  Sackgasse aus: eine halb so grosse Vorlage trifft den echten Bildschirm nicht. Gemessen trifft
+  sie doch — ein so geschnittener Zurück-Pfeil kommt hochskaliert auf **0.963**. Trag die
+  Vorlage dafür in `template_skalen` mit **2.0** ein; `scale_for_template` multipliziert den
+  Faktor auf die Bildschirm-Skalierung, damit passt dieselbe Datei auf halbe wie auf volle
+  Bilder. Wer sie später aus einem Vollbild neu schneidet, muss den Faktor auf 1.0 zurücksetzen.
+* **Prüfe jede frisch geschnittene Vorlage gegen einen ZWEITEN Bildschirm**, nicht nur gegen
+  ihre Quelle — dort trifft sie immer mit 1.000, das sagt nichts. Aussagekräftig ist der höchste
+  Wert auf allen anderen gesammelten Ansichten: liegt er unter 0.65 und der echte Treffer über
+  0.97, sitzt die Schwelle 0.86 sicher dazwischen. So fiel am 29.08. auf, dass
+  `bau/upgrade_knopf.png` den echten Upgrade-Knopf nur mit 0.53 bis 0.67 traf — die Aufgabe
+  `bauen-und-aufwerten` hatte deshalb **nie** ein Gebäude aufgewertet.
 
 ### Die offene Liste
 
@@ -465,12 +478,14 @@ bleiben.
   prüft jetzt, dass keine Sperrzone in den Bereich `[0, 0, 0.30, 0.15]` ragt.
 * Deine eine Aufgabe dabei: **schneide nie ein Template von einem Knopf mit Preisschild**
   (CHF/EUR/USD). Dann kann auch nichts schiefgehen.
-* **Ausdauer-Fläschchen bleiben liegen.** Der Bot jagt Monster, bis die Ausdauer alle ist,
-  füllt sie aber nie nach — weder über das Plus neben der Anzeige noch über ein Fläschchen aus
-  der Tasche. Geht sie aus, öffnet das Spiel einen Nachfüll-Dialog; den **schliessen** die
-  Dialog-Regeln (Priorität 199/200), bevor die generische Grün-Knopf-Regel (145) ihn bestätigen
-  könnte. Ein Test hält diese Reihenfolge fest. Schneide entsprechend **nie** ein Template von
-  einem `Benutzen` oder `Bestätigen` aus einem Ausdauer-Dialog.
+* **Ausdauer-Fläschchen werden eingesetzt — seit dem 29.08., vorher galt das Gegenteil.**
+  Der Nutzer hat die Regel an dem Tag ausdrücklich umgedreht: die Fläschchen sollen für
+  Angriffe verbraucht werden. Die Aufgabe `ausdauer-einsetzen` nimmt **höchstens zwei pro
+  Durchgang** (rund 100 Ausdauer die Stunde) und arbeitet dafür mit zwei eigenen Vorlagen,
+  `tasche/ausdauer_50.png` und `tasche/verwenden.png`. Die generische Blau-Knopf-Regel bleibt
+  trotzdem gesperrt, solange der Spezial-Reiter der Tasche sichtbar ist: **gewollt verbrauchen
+  ja, versehentlich nein.** Der Unterschied ist wichtig — dieselbe Regel hätte vorher jedes
+  beliebige Fläschchen angetippt, auch das falsche.
 * **Diamanten: der Bot kann Preise nicht lesen.** Für die Bildsuche sieht `2 Spenden` genauso
   aus wie `50 Spenden` oder `500 Spenden` — nur die Ziffern unterscheiden sich, und die sind
   bewusst nicht Teil der Vorlagen. Eine Obergrenze „bis 50 Diamanten pro Klick" liesse sich
@@ -611,6 +626,8 @@ lass den Bot darüberlaufen und schau, welche Regel greift.
 | Bot tippt daneben | `base_width` stimmt nicht mit der Screenshot-Breite überein |
 | Bot hängt in einem Menü | `on_unknown` / `on_stuck` greifen nach 5 bzw. 300 s; die Screenshots dazu landen in `shots/` |
 | `screencap: unerwartetes Format` | seltene ROM — dann liefert `adb exec-out screencap -p` PNG, das wird automatisch erkannt |
+| **Bot meldet sich gar nicht mehr, ohne Fehler** | Erst `austausch/lauf-ende.txt` und `austausch/start-fehler.txt` im Repository ansehen — dort steht Zeitpunkt, Rückgabewert und die letzten Protokollzeilen. Genau so wurde am 29.08. ein halbtägiger Ausfall aufgeklärt: `bot.py check` starb an einem `○` in der cp1252-Konsole, das Startskript brach ab, die Neustart-Schleife versuchte es alle 60 s erneut. Seitdem stellt `bot.py` seine Ausgabe zuerst auf UTF-8 (`errors="replace"`) um. |
+| **`-Dauerlauf` läuft trotzdem nur einmal** | Ohne die `.cmd` im Autostart-Ordner startet den Bot niemand neu. Der Dauerlauf legt sie inzwischen selbst an; prüfen mit `Test-Path (Join-Path ([Environment]::GetFolderPath("Startup")) "last-asylum-bot.cmd")`. |
 
 Alle unbekannten Bildschirme landen als PNG in `shots/` — genau die sind die Vorlage für
 die nächsten Templates.
@@ -629,5 +646,5 @@ laa/engine.py          die Schleife: sehen → entscheiden → tippen
 laa/log.py             Konsole + JSONL
 config/last-asylum.json  die echte Konfiguration
 templates/             die Bild-Vorlagen
-tests/test_bot.py      52 Tests, laufen ohne Handy
+tests/test_bot.py      die Testreihe, laeuft ohne Handy (`python3 tests/test_bot.py`)
 ```
