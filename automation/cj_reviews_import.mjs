@@ -55,10 +55,27 @@ if (!JM_TOKEN) { console.log('Kein JUDGEME_PRIVATE_TOKEN → No-op.'); process.e
 if (!ADMIN_TOKEN && !(CID && CSEC)) { console.log('Keine Shopify-Creds → No-op.'); process.exit(0); }
 
 // ── Shopify ──
+// ⚠️ Eine Drosselung ist kein Katalog-Ende (28.08.2026). Ohne Wiederholung reichte EINE
+// «Throttled»-Antwort beim Durchblättern: `data` fehlt, die Auswahlschleife bricht ab, und der
+// Lauf meldete «0 Produkte zu prüfen. Nichts zu tun.» — obwohl 45'000 Produkte offen sind.
+// Genau so blieb der Bewertungs-Import wochenlang stehen. Shopify füllt mit 100 Punkten/s auf;
+// gewartet wird die Differenz, statt aufzugeben. Dieselbe Lehre wie beim Kosten-Backfill.
 async function sgql(tok, q, v) {
-  const r = await fetch(`https://${SHOP}/admin/api/${SHOP_API}/graphql.json`, { method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': tok }, body: JSON.stringify({ query: q, variables: v }) });
-  return r.json();
+  for (let versuch = 0; versuch < 8; versuch++) {
+    let j;
+    try {
+      const r = await fetch(`https://${SHOP}/admin/api/${SHOP_API}/graphql.json`, { method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': tok }, body: JSON.stringify({ query: q, variables: v }) });
+      j = await r.json();
+    } catch { await sleep(2000); continue; }
+    const gedrosselt = (j?.errors || []).some(e => e?.extensions?.code === 'THROTTLED');
+    if (!gedrosselt) return j;
+    const kosten = j?.extensions?.cost || {};
+    const ts = kosten.throttleStatus || {};
+    const fehlt = (kosten.requestedQueryCost || 100) - (ts.currentlyAvailable || 0);
+    await sleep(Math.min(20000, Math.max(2000, (fehlt / (ts.restoreRate || 100)) * 1000 + 1000)));
+  }
+  return {};
 }
 async function sWorks(t) { try { const r = await sgql(t, '{shop{name}}'); return !!r?.data?.shop?.name; } catch { return false; } }
 async function sCC() { const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ client_id: CID, client_secret: CSEC, grant_type: 'client_credentials' }) }); const j = await r.json().catch(() => ({})); return j.access_token || null; }
@@ -77,11 +94,34 @@ async function cjToken() {
   try { fs.writeFileSync(TOKEN_FILE, JSON.stringify({ accessToken: j.data.accessToken, exp: Date.now() + 14 * 864e5 })); } catch {}
   return j.data.accessToken;
 }
+// ── pid-Zwischenspeicher ──────────────────────────────────────────────────────────────
+// Ein SKU→pid-Nachschlag kostet 10 CJ-Punkte, der Kommentar-Abruf danach nichts. Ohne
+// Zwischenspeicher zahlt jeder Lauf denselben Nachschlag erneut — bei ~110'000 Punkten
+// Tagesverbrauch ist das der Grund, warum der Import nie über eine Handvoll Produkte kam.
+// Einmal aufgelöste pids gelten dauerhaft; sie ändern sich beim Lieferanten nicht.
+let punkteLeer = false;
+const PID_CACHE = 'dropship/_cj_pid_cache.json';
+let pidCache = {};
+try { pidCache = JSON.parse(fs.readFileSync(PID_CACHE, 'utf8')); } catch {}
+function pidMerken(sku, pid) {
+  if (!sku || !pid || pidCache[sku] === pid) return;
+  pidCache[sku] = pid;
+  try { fs.writeFileSync(PID_CACHE, JSON.stringify(pidCache, null, 0)); } catch {}
+}
+
 async function cjGet(tok, path, params) {
   const qs = new URLSearchParams(params).toString();
   const r = await fetch(`${CJ_BASE}${path}?${qs}`, { headers: { 'CJ-Access-Token': tok } });
   const j = await r.json().catch(() => ({}));
-  if (j?.code === 16900500) { console.log('CJ-Punkte aufgebraucht → Abbruch (kein Ledger-Schreiben mehr).'); process.exit(0); }
+  // ⚠️ FRÜHER: process.exit(0) bei 16900500 — der ganze Lauf endete. Das war zu grob
+  // (28.08.2026): Gemessen meldet `product/query` «Insufficient API points, Remaining: 0»,
+  // während `productComments` im SELBEN Moment Code 200 mit Kommentaren liefert. Der
+  // Kommentar-Abruf kostet also nichts; nur der pid-Nachschlag kostet 10 Punkte. Ein Abbruch
+  // riss damit die kostenlose Arbeit mit in den Abgrund.
+  if (j?.code === 16900500) {
+    if (!punkteLeer) console.log('CJ-Punkte für pid-Nachschläge aufgebraucht — es geht nur noch mit zwischengespeicherten pids weiter.');
+    punkteLeer = true;
+  }
   return j;
 }
 
@@ -130,7 +170,8 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
   while (prods.length < LIMIT) {
     const pr = await sgql(stok, `query($q:String!,$n:Int!,$a:String){ products(first:$n, query:$q, after:$a){ pageInfo{hasNextPage endCursor} edges{ node{ id title handle variants(first:1){ edges{ node{ sku } } } } } } }`, { q, n: Math.min(250, LIMIT), a: after });
     const conn = pr?.data?.products;
-    if (!conn) break;
+    // Stumm ≠ fertig: ohne diese Unterscheidung sah ein Ausfall wie ein leerer Katalog aus.
+    if (!conn) { console.log('Shopify antwortet nicht — Auswahl unvollständig, PAUSE.'); break; }
     prods.push(...conn.edges.map(e => e.node).filter(p => !done.has(numId(p.id))));
     if (!conn.pageInfo.hasNextPage) break;
     after = conn.pageInfo.endCursor;
@@ -146,11 +187,20 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
   const DEBUG = process.env.DEBUG === '1';
   // CJ-pid robust auflösen: mehrere Strategien (manche SKUs sind Varianten-, andere Produkt-SKUs).
   async function resolvePid(sku) {
+    if (pidCache[sku]) return { pid: pidCache[sku], via: 'cache' };
+    // Ohne Punkte ist ein Nachschlag zwecklos — dann lieber sauber überspringen, statt das
+    // Produkt fälschlich als «keine pid» ins Ledger zu schreiben und nie wieder anzusehen.
+    if (punkteLeer) return null;
     const strategies = [
       ['query/productSku', '/product/query', { productSku: sku }],   // die gespeicherten SKUs sind meist Produkt-SKUs
       ['query/variantSku', '/product/query', { variantSku: sku }],
       ['list/productSku', '/product/list', { productSku: sku, pageSize: 5 }],
-      ['list/keyWords', '/product/list', { keyWords: sku, pageSize: 5 }],
+      // ⛔ KEINE Stichwortsuche mehr (28.08.2026). `/product/list?keyWords=<SKU>` durchsucht
+      // den KATALOGTEXT — findet es die SKU dort nicht, liefert es trotzdem den bestplatzierten
+      // Treffer. Gemessen: für drei völlig verschiedene Produkte (Holzpuzzle, Magnet-Bausteine,
+      // Schmuckbox) kam DIESELBE pid 2608281223371621100 zurück. Folgenlos blieb es nur, weil
+      // dieses Produkt 0 Kommentare hat — hätte es welche, wären FREMDE Bewertungen unter
+      // unsere Ware gelaufen. Eine falsche pid ist viel schlimmer als keine.
     ];
     for (const [label, path, params] of strategies) {
       const r = await cjGet(ctok, path, params);
@@ -159,7 +209,7 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
       const listed = d?.list || d?.content || (Array.isArray(d) ? d : null);
       const pid = d?.pid || d?.productId || (Array.isArray(listed) ? (listed[0]?.pid || listed[0]?.productId) : null);
       if (DEBUG) console.log(`    [DEBUG] ${label}(${sku}) → ${r?.result === false ? 'result:false ' + (r?.message || '') : (pid || 'kein pid')}`);
-      if (pid) return { pid, via: label };
+      if (pid) { pidMerken(sku, pid); return { pid, via: label }; }
     }
     return null;
   }
@@ -173,7 +223,15 @@ const done = new Set(fs.existsSync(LEDGER) ? fs.readFileSync(LEDGER, 'utf8').spl
     try {
       const resolved = await resolvePid(cjSku);
       const cjpid = resolved?.pid;
-      if (!cjpid) { console.log(`· ${p.handle}: keine CJ-pid für ${cjSku} → skip`); if (!DRY) { try { fs.appendFileSync(LEDGER, pidNum + '\n'); } catch {} } continue; }
+      if (!cjpid) {
+        // ⚠️ Nur quittieren, wenn CJ das Produkt WIRKLICH nicht kennt. Fehlten bloss die
+        // Punkte, wäre die Ledger-Zeile eine Lüge und das Produkt für immer übersprungen —
+        // dieselbe Falle wie beim Kosten-Backfill am 20.08. («falsch quittierte Zeilen»).
+        if (punkteLeer) { console.log(`· ${p.handle}: pid unbekannt und keine Punkte → später erneut`); continue; }
+        console.log(`· ${p.handle}: keine CJ-pid für ${cjSku} → skip`);
+        if (!DRY) { try { fs.appendFileSync(LEDGER, pidNum + '\n'); } catch {} }
+        continue;
+      }
       if (DEBUG) console.log(`    [DEBUG] ${p.handle}: pid ${cjpid} via ${resolved.via}`);
       const cr = await cjGet(ctok, '/product/productComments', { pid: cjpid, pageNum: 1, pageSize: 30 });
       await sleep(CJ_SLEEP);

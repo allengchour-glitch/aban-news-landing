@@ -36,14 +36,18 @@ TAG = "hype-jetzt"
 HANDLE = "hype-jetzt"
 LEDGER = "dropship/_hype_verlauf.txt"
 
-QUELLE = "Web-Recherche 23.08.2026 (Trendtrack/CJ/eprolo August-Listen: Beauty-Geräte weiterhin stärkstes Signal, Snail/Serum und Blush-Balms bestätigt, «aesthetic living»/Ordnung bestätigt, Shapewear bestätigt; NEU für den Herbstanfang: Kerzenwärmer & Aroma-Diffusoren, Haustier-Fellpflege, Mini-Beutelverschliesser)"
+QUELLE = "Web-Recherche 27.08.2026 (CJ «20 Viral TikTok Products 2026» + sellthetrend September-Liste: tragbare Smoothie-Mixer, Karaoke-/Ansteckmikrofone, Ringlichter, Tierhaar-Fusselrollen und Futterautomaten neu aufgenommen; Sunset-Lampe, Mini-Beamer, 3-in-1-Ladestation, Heatless Curls, Snail/Serum, LED-Maske und Haustier-Fellpflege von beiden Quellen bestaetigt. Hals-Ventilator laeuft aus (Herbstanfang CH). Seifenblasenpistole bewusst NICHT: faellt unter Spielzeug (RAUS_TYP). Supplements/Lebensmittel weiterhin NICHT: Heilversprechen-Klasse)"
 THEMEN = {
     # ⚠️ «IPL» ohne Wortgrenze steckt in «L-IPL-iner»: der erste Lauf setzte einen
     # «Peel-Off Lipliner» als Beauty-GERÄT auf die Startseite. Dieselbe Falle wie «rock» in
     # «GT Line ROCK» aus dem Projektgedächtnis — bei Abkürzungen immer \b.
+    # 25.08.: Spätaugust-Listen ergänzen Ice Roller, Kopfhaut-Massage und EMS-GESICHTS-Toner.
+    # ⚠️ «EMS» allein bleibt draussen — EMS-Bauchtrainer ist Fitness (Abgrenzung im
+    # medizin_zweck-Gedächtnis); nur mit Gesichts-Anker. «Scalp» braucht Massage-Anker.
     "Beauty-Gerät": re.compile(
         r'\bIPL\b|Mikrostrom|LED-Maske|Gesichtsreinigungsb[üu]rste|Dermaroller|Gua Sha|'
-        r'Jade Roller|Haarentfernungs', re.I),
+        r'Jade Roller|Haarentfernungs|Ice[- ]?Roller|Eisroller|'
+        r'Kopfhaut[- ]?Massage|Scalp[- ]?Massag|EMS[- ]?(?:Gesicht|Face)|Face[- ]?(?:EMS|Toner)', re.I),
     "Hautpflege-Serum": re.compile(
         r'Schneckencreme|Snail|Serum|Ampullen|Retinol|Hyalurons[äa]ure', re.I),
     "Mini-Beamer": re.compile(r'Mini-?\s?(?:Beamer|Projektor)|Smart Mini Beamer', re.I),
@@ -84,6 +88,44 @@ THEMEN = {
         r'T[üu]tenverschlie|Vakuumierer', re.I),
     "Hals-Ventilator": re.compile(
         r'(?:Hals|Nacken|Neck)[- ]?(?:Ventilator|Fan|K[üu]hler)|Tragbarer Mini-?Ventilator', re.I),
+    # Neu 26.08.: Sunset-Lampen («sunset glow» auf Wand/Decke) nennen zwei August-Listen
+    # unabhängig; Heatless-Curls-Sets (Locken ohne Hitze) und Decken-/Oversized-Hoodies
+    # tragen den Herbst. ⚠️ «Oversized» allein träfe halbe Damenmode → Hoodie-Anker Pflicht;
+    # «Lockenwickler» bleibt mit Heatless/Seide/Set verankert, sonst greift jede Drogerie-Rolle.
+    "Sunset-Lampe": re.compile(
+        r'Sunset[- ]?(?:Lampe|Lamp|Projekt)|Sonnenuntergangs?[- ]?(?:lampe|projektor|licht)', re.I),
+    "Heatless Curls": re.compile(
+        r'Heatless[- ]?(?:Curl|Locken)|Locken ohne Hitze|Seiden?[- ]?Lockenwickler|'
+        r'Lockenwickler[- ]?(?:Set|Band)|Curling[- ]?(?:Rod|Ribbon)', re.I),
+    # Neu 27.08.: CJs eigene «20 Viral TikTok Products 2026» und die September-Liste von
+    # sellthetrend nennen uebereinstimmend tragbare Mixer, Mini-/Karaoke-Mikrofone, Ringlichter
+    # und Haustier-Helfer (Fusselrolle, Futterautomat). Der Hals-Ventilator laeuft dafuer aus —
+    # Ende August ist in der Schweiz Herbstanfang; er verliert seinen Tag von selbst.
+    # ⚠️ «Mixer» allein ist eine Falle: Tattoo-Mixer (aus dem Shaker-Fehlgriff vom 21.08.),
+    # Handmixer, DJ-Mixer → Smoothie/tragbar/Becher ist Pflicht-Anker.
+    "Smoothie-Mixer": re.compile(
+        r'Smoothie[- ]?(?:Mixer|Maker|Becher|Blender)|Mixbecher|'
+        r'Tragbarer?[- ]?(?:Mini-?)?(?:Mixer|Blender)|Standmixer[- ]?to[- ]?go', re.I),
+    # ⚠️ «Mikrofon» allein traefe Studio-, PC- und Konferenzmikrofone → Karaoke/Anstecker
+    # als Anker. «Mini» allein sowieso nicht.
+    "Karaoke-Mikrofon": re.compile(
+        r'Karaoke|Ansteckmikrofon|Ansteck[- ]?Mikro|Funkmikrofon|Lavalier|'
+        r'Mini-?Mikrofon(?:[- ]?Set)?', re.I),
+    # ⚠️ «Ring» steckt in «MonitoRING» und «ContouRING» (Tag-Fehlgriff vom 27.08.) —
+    # deshalb nur die vollstaendigen Woerter, nie «Ring» allein.
+    "Ringlicht": re.compile(r'Ringlicht|Ring[- ]?Light|Selfie[- ]?(?:Licht|Ring)|'
+                            r'Beauty[- ]?Ringleuchte', re.I),
+    # ⚠️ «Roller» allein trifft Ice Roller, Jade Roller, Farbroller und Tretroller →
+    # Fussel/Tierhaar als Pflicht-Anker.
+    "Tierhaar-Fusselrolle": re.compile(
+        r'Fusselrolle|Fusselb[üu]rste|Tierhaarentferner|Tierhaar[- ]?(?:Rolle|B[üu]rste)|'
+        r'Pet[- ]?Hair[- ]?Remover', re.I),
+    "Futterautomat": re.compile(
+        r'Futterautomat|Futterspender|Automatischer?[- ]?(?:Futter|Napf)|'
+        r'Wasserspender[- ]?(?:f[üu]r )?(?:Katze|Hund|Haustier)', re.I),
+    "Hoodie-Decke": re.compile(
+        r'Oversized?[- ]?Hoodie|Hoodie[- ]?Decke|Decken[- ]?Hoodie|Wearable Blanket|'
+        r'Sherpa[- ]?Hoodie|Doppelseitig(?:er)?[- ]?Hoodie', re.I),
 }
 # Warengruppen, die schon einmal aus der Startreihe genommen wurden.
 RAUS_TYP = {"Spielzeug & Spiele", "Partydeko & Ballone", "Kostüme & Verkleidung"}
@@ -315,8 +357,17 @@ def main():
         d = gql('query($id:ID!){node(id:$id){... on Product{tags status}}}', {"id": gid})
         knoten = (d.get("data") or {}).get("node") or {}
         live_tags = knoten.get("tags") or []
-        if AUSGEMUSTERT in live_tags or knoten.get("status") != "ACTIVE":
-            print(f"   übersprungen (live): {t[:48]}", flush=True)
+        # ⚠️ DEN GRUND NENNEN (27.08.2026). Beide Fälle druckten dieselbe Zeile
+        # «übersprungen (live)» — dabei heisst der eine «wurde nach einer Bildprüfung
+        # dauerhaft aussortiert» und der andere «steht nicht mehr aktiv im Shop». Wer das
+        # Log liest, kann sonst nicht unterscheiden, ob die Reihe an der Bildqualität oder
+        # am Katalog scheitert. Dieselbe Klasse wie «PAUSE (Tagesmenge erreicht)» beim
+        # Kosten-Backfill: eine Meldung, die den falschen Grund nennt, ist schlimmer als keine.
+        if AUSGEMUSTERT in live_tags:
+            print(f"   übersprungen (Bild zu schwach): {t[:48]}", flush=True)
+            continue
+        if knoten.get("status") != "ACTIVE":
+            print(f"   übersprungen (nicht aktiv: {knoten.get('status')}): {t[:48]}", flush=True)
             continue
         # ⚠️ AUCH DEN TAG SELBST LIVE PRÜFEN (teuer gelernt 15.08.): Der Export ist älter als
         # die Reihe, also fehlt `hype-jetzt` dort bei allem, was nach dem Export aufgenommen

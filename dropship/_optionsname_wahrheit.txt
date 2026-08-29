@@ -1,0 +1,42 @@
+# 2026-08-28 — Optionsname «Farbe» trug keine Farbe: nur der NAME umbenannt,
+# kein Optionswert und keine Variante angefasst (Variantenzahl vorher=nachher).
+15428299260289	Farbe->Grösse	Outdoor Gusseisenpfanne
+15446268379521	Farbe->Grösse	Video-Buch Hardcover
+15455081398657	Farbe->Grösse	Camping-Automatik-Airbett
+15470077018497	Farbe->Grösse	Duschvorhang Polyester
+15470078329217	Farbe->Grösse	Boho-Tüllvorhang
+15472257433985	Farbe->Grösse	Faltbarer Kleiderständer
+15483934605697	Farbe->Grösse	LED Werbe-Display
+15447625433473	Farbe->Grösse	Hohlweb-Kissen Bambus-Look
+15450848002433	Farbe->Grösse	Jungen Freizeit-Set (Konfektion in cm)
+15453776019841	Farbe->Grösse	Zip-Lock Aufbewahrungsbeutel
+15450018283905	Farbe->Absatzhöhe	Hochzeitsschuhe (Text: «zwei Absatzhöhen von 5 cm und 7 cm»)
+15450829619585	Farbe->Länge	Brasilianisches Echthaar (Text: «Längen von 8 bis 30 Zoll», EINE Farbe 1b)
+15454414471553	Farbe->Fassungsvermögen	Keramik-Topf
+15446275359105	Farbe->Fassungsvermögen	Edelstahl-Fritteuse 3L/5L
+15454473060737	Farbe->Leistung	Turtle-Basking-Lampe 70/80/100W
+15447567958401	Farbe->Stückzahl	18650 Li-ion Akku 50/100PCS
+15480483643777	Farbe->Speicher	USB-Stick Wunschflasche
+15480485052801	Farbe->Speicher	USB-Stick Flaschenöffner
+15480485708161	Farbe->Speicher	USB-Stick Schlüssel-Design
+15480566350209	Farbe->Speicher	Speicherkarte
+15448848302465	Farbe->Speicher	Retro Arcade HD Spielkonsole
+15448848597377	Farbe->Speicher & Zubehör	X2 Ultra HD Konsole (128GB / 128GB Charging Handle)
+15448881627521	Farbe->Speicher & Stecker	KM7 SE TV Box (2GB/32GB EU|US|UK|AU)
+15447632740737	Farbe->Plattenbreite & Stecker	Haarglätter 0.4Inches-US
+15473059692929	Farbe->Plattenbreite & Stecker	Haarglätter 5CM-EU
+15474676433281	Farbe->Ringgrösse	Personalisierter Zirkonring US7-US13
+15448953127297	Grösse & Farbe->Farbe	Short Track Helm (Werte sind NUR Farben)
+15448953782657	Grösse & Farbe->Farbe	Outdoor-Fahrradhelm (Grösse steht im Titel)
+15453923967361	Grösse & Farbe->Farbe	Säulenschuhe Mädchen
+15453924327809	Grösse & Farbe->Farbe	Retro-Lauflernschuhe
+15450847969665	Farbe->Inhalt	Augenpflege 10ml
+15428299161985	Farbe->Inhalt	Grillreiniger 120ml
+15450851901825	Farbe->Inhalt	Hautpflege-Set 120ml
+15483793736065	Farbe->Stückzahl	Gel-Pads
+15451641282945	Farbe->Stückzahl	Auto-Rücksitzhaken
+15478583492993	Farbe->Stückzahl	Keramik-Hotpot
+15449430524289	Farbe->Stückzahl	Magnetische Bausteine Kids
+15450834698625	Farbe->Stückzahl	Magnetische Bausteine Kinder
+15447574872449	Farbe->Menge	ASA-CF Filament 250g/1000g
+15447575331201	Farbe->Menge	PETG-CF Filament 250g/1000g

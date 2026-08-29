@@ -103,7 +103,7 @@ def main():
     produkte = []
     for i in range(0, len(ids), 100):
         d = gql('query($ids:[ID!]!){nodes(ids:$ids){... on Product{id title status '
-                'seo{description} metafield(namespace:"mm-google-shopping",key:"color"){value} '
+                'seo{title description} metafield(namespace:"mm-google-shopping",key:"color"){value} '
                 'priceRangeV2{minVariantPrice{amount}}}}}', {"ids": ids[i:i + 100]})
         produkte += [n for n in ((d.get("data") or {}).get("nodes") or []) if n]
         time.sleep(0.3)
@@ -143,11 +143,11 @@ def main():
             neu = f"{p['title']} · {zusatz}"
             if len(neu) > 255:
                 continue
-            aufgaben.append((p["id"], p["title"], neu, quelle))
+            aufgaben.append((p["id"], p["title"], neu, quelle, p))
 
     print(f"Kollisionen durch MEINE Kürzung: {len(aufgaben)} Titel zu trennen", flush=True)
     print(f"schon vorher titelgleich (fremd, nicht angefasst): {fremd} Gruppen", flush=True)
-    for _, alt, neu, q in aufgaben[:14 if DRY else 6]:
+    for _, alt, neu, q, _p in aufgaben[:14 if DRY else 6]:
         print(f"   [{q:<6}] {alt[:48]:<50} → «… · {neu.rsplit(' · ', 1)[1]}»", flush=True)
     if DRY or not aufgaben:
         return
@@ -157,11 +157,25 @@ def main():
         done = {l.split("\t")[0] for l in open(LEDGER)}
     f = open(LEDGER, "a")
     n = 0
-    for gid, alt, neu, q in aufgaben:
+    for gid, alt, neu, q, p in aufgaben:
         if gid in done:
             continue
+        eingabe = {"id": gid, "title": neu}
+        # Der Titel allein macht das Produkt unterscheidbar, die SEO-Beschreibung NICHT — sie
+        # trägt weiter den alten Namen und ist damit wortgleich mit dem Schwesterprodukt.
+        # Nur spiegeln, wenn ihr eigener Teil zeichengenau der ALTE Titel ist; einen selbst
+        # geschriebenen Text fassen wir nicht an. ⚠️ seo{} ersetzt das ganze Objekt → beide
+        # Felder zurücksenden, sonst löscht der Schreibvorgang den SEO-Titel.
+        seo_alt = p.get("seo") or {}
+        sd = seo_alt.get("description") or ""
+        rest = sd[len(alt):] if sd.startswith(alt) else ""
+        if rest and re.match(r'\s*[–—-]\s', rest):
+            seo_neu = {"description": neu + rest}
+            if seo_alt.get("title"):
+                seo_neu["title"] = seo_alt["title"]
+            eingabe["seo"] = seo_neu
         r = gql('mutation($i:ProductInput!){productUpdate(input:$i){userErrors{message}}}',
-                {"i": {"id": gid, "title": neu}})
+                {"i": eingabe})
         if ((r.get("data") or {}).get("productUpdate") or {}).get("userErrors"):
             continue
         n += 1

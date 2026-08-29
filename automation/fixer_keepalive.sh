@@ -97,6 +97,13 @@ fehlt() {
 # zwei Supervisoren nebeneinander laufen, weil die Sperre zwischen Eltern und Kindern
 # hin und her ging. Der Schiedsrichter über die kleinere PID bleibt als zweite Wache
 # bestehen; die Ursache ist aber diese Zeile.
+# 🔖 EIGENE FASSUNG QUITTIEREN (28.08.2026). Ein laufender Aufseher liest sein Skript
+# NICHT neu — der Schleifenrumpf ist beim ersten Durchlauf geparst. Wer einen neuen Waechter
+# einträgt, hat ihn deshalb erst nach dem naechsten Neustart wirklich registriert; heute
+# standen `bilddubletten` und `wahlversprechen` stundenlang im Skript und liefen nie.
+# Der Zeitstempel taugt nicht als Erkennung: `git reset --hard` beim Snapshot-Vorspulen
+# setzt die mtime neu, ohne dass sich der Inhalt geaendert haben muss. Also die PRÜFSUMME.
+md5sum "$0" 2>/dev/null | cut -d' ' -f1 > /tmp/_fixer_version
 exec 9>/tmp/fixer_keepalive.lock
 flock -n 9 || { echo "$(date -u +%H:%M) Supervisor läuft bereits — dieser Start endet."; exit 0; }
 while true; do
@@ -152,7 +159,10 @@ while true; do
   fi
   # ZUERST das Shopify-Token frisch halten. Es ist nur ~24 h gültig; läuft es ab, scheitern ALLE
   # Reiniger lautlos («keine Daten») und der Supervisor startet sie endlos ins Leere.
-  [ -f /tmp/shop_token_refresh.sh ] && bash /tmp/shop_token_refresh.sh
+  # Repo-Fassung hat Vorrang: der Snapshot-Rewind stellt unter /tmp alte Staende her.
+  if [ -f "$REPO/automation/shop_token_refresh.sh" ]; then bash "$REPO/automation/shop_token_refresh.sh"
+  elif [ -f /tmp/shop_token_refresh.sh ]; then bash /tmp/shop_token_refresh.sh; fi
+
   # ── MOTOREN SELBST AM LEBEN HALTEN (29.08.2026) ─────────────────────────────────────
   # Bis heute hing die ganze Motorenschicht an der stuendlichen Routine: Nur SIE rief
   # engine_keepalive.sh auf. Antwortet die Session eine Weile nicht — Turn-Reaping,
@@ -350,6 +360,122 @@ while true; do
       echo "$(date -u +%H:%M) hype-reviews Lauf gestartet"
     fi
   fi
+  # TRESOR: Zugangsdaten nach einem Snapshot-Rewind zurückholen. /tmp wird mitgedreht — eine
+  # Datei von NACH dem Snapshot (24.08. 15:36) ist danach weg, eine ältere überlebt. Die
+  # Judge.me-Token vom 28.08. waren so schon nach Stunden verschwunden, und der tägliche
+  # Bewertungs-Import endete als No-op. Sie liegen jetzt in einem Shop-Metafeld
+  # (`ls_tresor`, Definition ausdrücklich mit storefront:NONE) und werden hier zurückgelegt.
+  # Ins Repo dürfen sie nicht — es ist öffentlich.
+  if [ -f "$REPO/automation/tresor.py" ]; then
+    for PAAR in "judgeme:/tmp/judgeme.env" "cj:/tmp/cj_creds.env" "tiktok:/tmp/tt_creds.env" "dienste:/tmp/dienste.env" "meta:/tmp/meta.env"; do
+      NAME="${PAAR%%:*}"; ZIEL="${PAAR#*:}"
+      [ -s "$ZIEL" ] && continue
+      if ( cd "$REPO" && python3 automation/tresor.py env "$NAME" "$ZIEL" >/dev/null 2>&1 ); then
+        echo "$(date -u +%H:%M) $ZIEL aus dem Tresor wiederhergestellt"
+      fi
+    done
+    # ⚠️ Die Einzelwert-Dateien, die die Social-Poster erwarten, aus meta.env ableiten.
+    if [ -s /tmp/meta.env ]; then
+      . /tmp/meta.env 2>/dev/null
+      [ -n "$META_PAGE_TOKEN" ] && [ ! -s /tmp/meta_page_token ] && printf %s "$META_PAGE_TOKEN" > /tmp/meta_page_token && chmod 600 /tmp/meta_page_token
+      [ -n "$META_APP_SECRET" ] && [ ! -s /tmp/meta_app_secret ] && printf %s "$META_APP_SECRET" > /tmp/meta_app_secret && chmod 600 /tmp/meta_app_secret
+      [ -n "$META_IG_ID" ] && [ ! -s /tmp/meta_ig_id ] && printf %s "$META_IG_ID" > /tmp/meta_ig_id
+    fi
+  fi
+  # ⚠️ SHOPIFY_CLIENT_ID/SECRET liegen bewusst NICHT im Tresor: Der Tresor IST ein Shop-Metafeld,
+  # man braucht sie also, um ihn überhaupt zu öffnen. Sie im Tresor abzulegen wäre ein Schlüssel,
+  # der im abgeschlossenen Schrank liegt. Sie gehören in die Umgebungs-Einstellungen des Kontos —
+  # das ist der einzige Ort, den weder Rewind noch Container-Wechsel erreicht.
+  # ECHTE CJ-BEWERTUNGEN, einmal täglich: Von 31 Produkten mit Besuchern hatte am 28.08.2026
+  # genau EINES eine Bewertung — nicht wegen kaputter Technik (Judge.me hält 1'193 Bewertungen
+  # auf 216 Produkten, die Shopify-Metafelder sind synchron), sondern wegen Abdeckung: 216 von
+  # 49'000 sind 0,4 %. Der Lauf holt AUSSCHLIESSLICH echte Kundenkommentare vom Lieferanten
+  # (≥4★, Mindestlänge) — erfundene Bewertungen sind ausgeschlossen.
+  # ⚠️ Er braucht JUDGEME_PRIVATE_TOKEN aus /tmp/judgeme.env. Die Datei liegt in /tmp und
+  # überlebt den Snapshot-Rewind NICHT; fehlt sie, endet der Lauf sauber als No-op.
+  RV2=/tmp/cj_reviews_import.log
+  if [ -f "$REPO/automation/cj_reviews_import.mjs" ] && [ -f /tmp/judgeme.env ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$RV2" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid sh -c '. /tmp/judgeme.env; . /tmp/cj_creds.env 2>/dev/null; . /tmp/secrets_env.sh 2>/dev/null; LIMIT=120 MIN_SCORE=4 PER=6 /opt/node22/bin/node automation/cj_reviews_import.mjs' >> "$RV2" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) cj-bewertungen gestartet"
+    fi
+  fi
+  # TOTE LANDESEITEN, einmal täglich: Seiten, auf denen tatsächlich Besucher ankamen, die aber
+  # nicht mehr kaufbar sind. Am 28.08.2026 waren das 76 von 234 — 12'320 Suchen im Monat allein
+  # bei den rankenden. Die täglichen Wächter draften laufend Ware; keiner von ihnen weiss, ob
+  # die Seite Verkehr hatte. Der Lauf legt NUR bei eindeutig gleichartigem aktivem Produkt
+  # (Ähnlichkeit >= 0.70) selbst eine Weiterleitung an, alles andere kommt in den Bericht.
+  # ⚠️ Er veröffentlicht NIE ein Draft — jedes hat einen Grund im Tag.
+  # TIKTOK-KARUSSELL + VIDEO, einmal täglich: baut aus der Trend-Kollektion einen
+  # mehrseitigen Foto-Post (Slides 1080x1920) und schneidet daraus ein 9:16-Video —
+  # einmal ohne Ton (für den TikTok-Trend-Sound) und einmal mit eigener Musik.
+  # ⚠️ Es POSTET NICHTS. TikToks Content-Posting-API steht für diesen Shop weiter in Review
+  # (`unauthorized_client`); der einzige Weg, der heute funktioniert, ist der Upload von Hand
+  # über tiktokstudio/upload. Das Werkzeug legt also nur das fertige Material bereit.
+  # ⚠️ Es fasst kein Produkt zweimal an (eigenes Ledger + reels_seed.csv) — Doppelpost-Verbot.
+  # RATGEBER OHNE WARE, einmal täglich: meldet veröffentlichte Ratgeber, die Ware mit NAMEN
+  # und PREIS bewerben, zu der es nichts Aktives gibt — und solche ohne einen einzigen
+  # kaufbaren Produktlink. Die Klasse waechst nach: jedes Mal, wenn ein Waechter ein Produkt
+  # draftet (keine-lieferanten-ref, Dubletten, Medizinprodukte), wird ein Ratgeber, der es
+  # bewirbt, zur Falschaussage. Gemessen am 28.08.: der Ratgeber mit dem zweitmeisten
+  # Suchverkehr des Shops (77 Sitzungen) fuehrte auf KEIN kaufbares Produkt.
+  # ⚠️ MELDET NUR. Ein automatisch untergeschobener Ersatzartikel ist ein Koederwechsel.
+  ROW=/tmp/ratgeber_ohne_ware.log
+  if [ -f "$REPO/automation/ratgeber_ohne_ware.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$ROW" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid python3 automation/ratgeber_ohne_ware.py >> "$ROW" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) ratgeber-ohne-ware geprüft"
+    fi
+  fi
+  TTK=/tmp/tiktok_karussell.log
+  if [ -f "$REPO/automation/tiktok_karussell.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$TTK" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid bash -c '
+          MODUS=produkt ANZAHL=1 python3 automation/tiktok_karussell.py
+          MODUS=top ANZAHL=1 SLIDES=7 SLUGZEIT=$(date -u +%m%d) python3 automation/tiktok_karussell.py
+          python3 automation/tiktok_video.py' >> "$TTK" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) tiktok-karussell gebaut"
+    fi
+  fi
+  TLS=/tmp/tote_landeseiten.log
+  if [ -f "$REPO/automation/tote_landeseiten.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$TLS" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid env FIX=1 python3 automation/tote_landeseiten.py >> "$TLS" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) tote-landeseiten geprüft"
+    fi
+  fi
+  # GOOGLE-ATTRIBUT `size`, einmal täglich: Google verlangt es bei Bekleidung und Schuhen;
+  # fehlt es, wird das Angebot in Shopping-Ergebnissen beschnitten — im einzigen Kanal mit
+  # belegten Verkäufen. Am 28.08.2026 trug KEIN geprüftes Kleid ein `size`, obwohl alle eine
+  # saubere Grössen-Option haben. `cj_category_fill.mjs` schreibt es seither selbst mit;
+  # `cj_sku_import` und `cj_trending_import` schreiben gar keine Varianten-Attribute — für
+  # deren Ware ist DIESER Lauf der Schreiber beim nächsten Produkt.
+  GS=/tmp/google_size_metafeld.log
+  if [ -f "$REPO/automation/google_size_metafeld.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$GS" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid env FIX=1 CAP=1200 python3 automation/google_size_metafeld.py >> "$GS" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) google-size Nachtrag gestartet"
+    fi
+  fi
+  # RATGEBER-RÜCKVERWEIS, einmal täglich: Die veröffentlichten Ratgeber holen Google-Besucher
+  # und verlinken von dort auf Produkte — der Weg zurück fehlte am 28.08.2026 bei 67 von 67
+  # Produkten. Wer über Google direkt auf der PRODUKTSEITE landet (beim Rizinusöl-Set 43 von
+  # 391 Sitzungen in 30 Tagen, die zweitgrösste Landeseite des Shops), findet dort keine
+  # Antwort auf «wie wende ich das an» — obwohl der Shop genau diesen Text besitzt. Der Lauf
+  # hängt NUR an; jeder neue Ratgeber erzeugt neue Lücken, deshalb täglich.
+  RV=/tmp/ratgeber_rueckverweis.log
+  if [ -f "$REPO/automation/ratgeber_rueckverweis.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$RV" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && setsid env FIX=1 python3 automation/ratgeber_rueckverweis.py >> "$RV" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) ratgeber-rueckverweis gestartet"
+    fi
+  fi
   # TOTE RABATTCODES, einmal täglich: abgelaufene Aktionscodes überleben in zeitlosen
   # Ratgeber-Texten weiter. Am 20.08.2026 bewarben SECHS veröffentlichte Seiten Codes, die
   # seit Juni tot waren (PAPA25, LAUNCH30, GENTLEMAN30, PARENTBUNDLE) — darunter drei
@@ -382,12 +508,77 @@ while true; do
   # Google-Besucher, der auf eine Empfehlung klickte, landete auf 404. Neue tote Links entstehen
   # bei JEDEM Draft-Lauf (keine-lieferanten-ref, Dubletten, Sperr-Tags), ohne dass die Texte
   # davon erfahren. Meldet nur; das Umhängen braucht eine Entscheidung.
+  # BILD QUADRATISCH AUFFÜLLEN, einmal täglich: 618 aktive Produkte tragen `bild-zu-klein`,
+  # weil kein Bild 500×500 auf BEIDEN Kanten erreicht. Bei 293 davon ist die LÄNGERE Kante
+  # längst ≥ 500 (633×497 — drei Pixel zu wenig). Der Lauf ergänzt an den kurzen Seiten Rand
+  # in der gemessenen Randfarbe des Bildes; das Foto selbst wird nicht gestreckt und nicht
+  # hochskaliert. Ist auch die längere Kante < 500, bleibt der Tag stehen — dort hilft nur
+  # besseres Quellmaterial, und CJ hat keines (618 Quittungen in _bild_gross_cj.txt).
+  BQ=/tmp/bild_quadrat.log
+  if [ -f "$REPO/automation/bild_quadrat_auffuellen.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$BQ" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && CAP=60 setsid python3 automation/bild_quadrat_auffuellen.py >> "$BQ" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) bild-quadrat gestartet"
+    fi
+  fi
+  # 🖼️ BILD-DUBLETTEN, einmal täglich. Anlass: Betreiber-Screenshot vom 27.08.2026 —
+  # zwei Armbaender nebeneinander auf der Startseite, gleicher Preis, GLEICHES FOTO, zwei
+  # Produkte. Titel-, SKU- und Bild-URL-Vergleich sehen das alle nicht; der BILDINHALT schon.
+  # HASHCAP begrenzt die Downloads je Lauf — der Ledger waechst ueber die Tage in den
+  # Katalog hinein, statt 46'000 Bilder auf einmal zu ziehen.
+  # 🏷️ WAHLVERSPRECHEN, einmal täglich (nur melden). 135 von 800 geprüften Neuimporten
+  # versprechen im Text eine Auswahl, die das Produkt nicht hat — die Kundin sucht die
+  # Grössen-/Farbwahl, findet keine und geht. Betrifft auch die Seite mit dem meisten
+  # Suchtraffic (Rizinusöl-Wickel-Set, 36 von 147 Suchsitzungen im Monat).
+  WV=/tmp/wahlversprechen.log
+  if [ -f "$REPO/automation/wahlversprechen.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$WV" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      # ⚠️ MIT FIX=1, aber bewusst eng: Der Lauf fasst NUR reine Absaetze und eindeutige
+      # Listenpunkte an, nie einen Absatz mit Auszeichnung, und schreibt jede Streichung ins
+      # Ledger. Erste Charge am 27.08.: 500 geprueft, 89 gemeldet, 28 bereinigt — die uebrigen
+      # 61 tragen eine zweite Aussage und bleiben fuer eine Hand liegen.
+      ( cd "$REPO" && CAP=6000 FIX=1 setsid python3 automation/wahlversprechen.py >> "$WV" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) wahlversprechen geprüft"
+    fi
+  fi
+  BD=/tmp/bilddubletten.log
+  if [ -f "$REPO/automation/bilddubletten.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$BD" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && HASHCAP=4000 setsid python3 automation/bilddubletten.py >> "$BD" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) bild-dubletten geprüft"
+    fi
+  fi
   TL=/tmp/tote_links.log
   if [ -f "$REPO/automation/tote_links.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$TL" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ]; then
-      ( cd "$REPO" && setsid python3 automation/tote_links.py >> "$TL" 2>&1 9>&- & )
-      echo "$(date -u +%H:%M) tote-links geprüft"
+      # ZUERST die umbenannten Handles nachziehen, DANN pruefen. Sonst meldet der Waechter
+      # jeden Handle-Wechsel (Messversprechen-Fix, Handle-Kuerzung) taeglich als «GELÖSCHT»,
+      # obwohl eine 301 greift und das Produkt lebt — ein Bericht mit Dauerbefund wird nicht
+      # mehr gelesen. Das Nachziehen ist rein mechanisch (301-Ziel muss ACTIVE sein);
+      # ein ECHTER toter Link bleibt liegen und gehoert dem Bericht.
+      ( cd "$REPO" && setsid sh -c 'python3 automation/interne_links_nachziehen.py; python3 automation/tote_links.py' >> "$TL" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) interne-links nachgezogen + tote-links geprüft"
+    fi
+  fi
+  # BILD-ZU-KLEIN-NACHLAUF, einmal täglich: 642 aktive Produkte hatten am 25.08.2026 KEIN
+  # Bild >=500x500 (Merchant-Vorwarnung «Image too small»). Der Lauf holt CJs Originale nach
+  # (Masse aus dem Dateikopf, nur READY wird uebernommen, FAILED wird geloescht) und quittiert
+  # «kein-grosses-bild-bei-cj» als ehrliche Endstation. Stoppt selbst bei CJ-Code 16900500.
+  BG=/tmp/bild_gross.log
+  if [ -f "$REPO/automation/bild_gross_nachladen.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$BG" 2>/dev/null || echo 0) ))
+    # ⚠️ 25.08.2026: Lief der Lauf ins leere CJ-Tagesbudget («0 bearbeitet»), verschenkt das
+    # 24-h-Gate einen ganzen Tag — dann reicht 2 h Abstand fuer den naechsten Versuch
+    # (Punkte fliessen nach; der Lauf selbst stoppt bei 16900500 sauber).
+    GATE=86400
+    tail -3 "$BG" 2>/dev/null | grep -q "Tagesbudget erschoepft" && GATE=7200
+    if [ "$ALTER" -gt "$GATE" ]; then
+      ( cd "$REPO" && CAP=150 setsid python3 automation/bild_gross_nachladen.py >> "$BG" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) bild-gross-nachladen gestartet"
     fi
   fi
   # LEERE KOLLEKTIONEN, einmal täglich: Am 21.08.2026 waren 14 im Onlineshop veröffentlichte
@@ -515,6 +706,27 @@ while true; do
       ( cd "$REPO" && SEIT=$(date -u -d '3 days ago' +%F) setsid python3 \
           automation/tierschutz_guard.py >> "$TS" 2>&1 9>&- & )
       echo "$(date -u +%H:%M) tierschutz_guard gestartet"
+    fi
+  fi
+  # 🔎 VERDECKTE ÜBERWACHUNG + WAFFEN, einmal täglich über die Neuimporte der letzten 3 Tage.
+  # ⚠️ 28.08.2026 — DER WÄCHTER STAND IN KEINER STARTLISTE. `grep -c ueberwachung_waffen_guard`
+  # ergab in fixer_keepalive.sh UND engine_keepalive.sh je 0; sein Ledger stammte vom 14.08.,
+  # seither sind 5'421 neue aktive Produkte entstanden. Dieselbe Lücke wie beim Aufseher selbst
+  # (Lehre 19.08.: «Wer startet DICH neu?»). Gefunden wurden dabei zwei ACTIVE Geräte im
+  # Google-Kanal, die genau deshalb monatelang niemand gesehen hätte: ein Diktiergerät im
+  # Armbanduhr-Gehäuse und eine WLAN-Minikamera mit «diskreter Audioaufnahme».
+  # Er liest LIVE (SEIT=…), nicht aus /tmp/export.jsonl — der Export ist ein Schnappschuss vom
+  # 12.08. und kennt keinen einzigen dieser Fälle. Unbeaufsichtigt nimmt er nur aus dem
+  # Google-Kanal und setzt ein Tag; auf DRAFT setzt er ausschliesslich die handverlesenen,
+  # bildgeprüften Fälle aus dem festen BILDGEPRUEFT-Verzeichnis im Skript — er kann also nicht
+  # von sich aus neue Ware draften.
+  UW=/tmp/ueberwachung_waffen_guard.log
+  if [ -f "$REPO/automation/ueberwachung_waffen_guard.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$UW" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 86400 ]; then
+      ( cd "$REPO" && SEIT=$(date -u -d '3 days ago' +%F) EXPORT=/nonexistent setsid python3 \
+          automation/ueberwachung_waffen_guard.py >> "$UW" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) ueberwachung_waffen_guard gestartet"
     fi
   fi
   # 🏷️ BILD-ALT-TEXTE der Neuimporte, einmal täglich über die letzten Tage (20.08.2026).

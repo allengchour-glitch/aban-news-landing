@@ -75,9 +75,20 @@ LIEFCODE = re.compile(r'^[A-Za-z]{2,}\d{3,}[A-Za-z]*$')
 # Vorangestellter Schluessel samt Trenner: «JJF328204 Red-Dad 3XL» / «JJF91889color-Kid 3to4Y»
 PREFIX   = re.compile(r'^[A-Za-z]{2,}\d{3,}[A-Za-z]*(?=[\s-])[\s-]+')
 DEFITEM  = re.compile(r'(?:\s*-\s*Default Item)+\s*$', re.I)
+# ⚠️ 29.08.2026 — «3 style», «4 style», «12 style»: CJs Nummerierung fuer Muster oder Ausfuehrung.
+# Fuer die Kundin steht im Auswahlfeld dann «Farbe: 3 style» — eine Angabe, die nichts sagt.
+# Gefunden am «Wasserdichten Dry Bag mit Blumenprint» (8 von 8 Werten), auf den seit heute die
+# zweitgroesste Suchseite des Shops weiterleitet. Die BAD-Regel unten kannte das Muster nicht,
+# der Reiniger fasste solche Optionen also gar nicht erst an.
+# ⚠️ Die Nummer wird BEHALTEN, nicht weggeworfen: sie unterscheidet die Ausfuehrungen und ist
+# die einzige Information, die es dazu gibt. Aus «3 style» wird «Muster 3» — geraten wird nichts.
+STYLENR  = re.compile(r'^\s*(\d{1,3})\s*style\s*$', re.I)
 
 def clean(v):
     o = v or ''
+    m = STYLENR.match(o)
+    if m:
+        return f'Muster {m.group(1)}'
     n = DEFITEM.sub('', o)
     n = PREFIX.sub('', n)
     # einzeln stehende Schluessel-Tokens entfernen — aber nur, wenn danach noch etwas bleibt
@@ -101,7 +112,7 @@ sc=fx=0
 # Item-Default Item» und «Army  Green» trugen kein Codemuster, also fasste der Reiniger das
 # ganze Auswahlfeld nicht an. 77 Produkte mit doppelten Leerzeichen blieben so stehen.
 BAD=re.compile(r'^[A-Z]{2,}\d{2,}|^[A-Z0-9]{7,}$|US Size|\bYards\b|Generation \d|About \d+mm|Surface-'
-               r'|Default Item|\S\s{2,}\S')
+               r'|Default Item|\S\s{2,}\S|^\d{1,3}\s*style\s*$')
 while True:
     d=gql('query($c:String){products(first:60,after:$c,query:"status:ACTIVE"){pageInfo{hasNextPage endCursor} nodes{id options{id name optionValues{id name}}}}}',{"c":cur})
     pg=(d.get("data") or {}).get("products")

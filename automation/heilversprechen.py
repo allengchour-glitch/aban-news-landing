@@ -70,7 +70,20 @@ KRANKHEIT = re.compile(
     # «Zahnreinigers» im Medizin-Zweck-Guard).
     r'Migr[äa]ne|Dekubitus|Druckgeschw[üu]r\w*|Wundliegen|'
     r'ADHS|ADHD|Autismus|autistisch\w*|Aufmerksamkeitsst[öo]rung\w*|'
-    r'Angstzust[äa]nd\w*|Angstst[öo]rung\w*|Karpaltunnel\w*|Skoliose|Osteoporose)\b',
+    r'Angstzust[äa]nd\w*|Angstst[öo]rung\w*|Karpaltunnel\w*|Skoliose|Osteoporose|'
+    # 28.08.2026 nachgetragen, alle fünf aus echten Fundstellen:
+    #  • Akne: Acne vulgaris ist eine Hauterkrankung (ICD L70) und stand in KEINER der drei
+    #    Listen — 44 Produkte nennen sie, die Klasse war damit völlig unsichtbar.
+    #  • Rosazea: «Rosacea» stand schon oben — die DEUTSCHE Schreibweise nicht. Genau daran
+    #    ist 15501877903745 vorbeigerutscht («reduziert Falten, Rosazea»). Eine Krankheit hat
+    #    mehr als eine Schreibweise; beide gehören in die Liste.
+    #  • Sodbrennen/Reflux: Keilkissen-Set 15449599738241 «um Sodbrennen zu lindern».
+    #  • Fieber: die Schlafmaske «Lindert Fieber» stand seit dem 12.08. namentlich OBEN IM
+    #    DOCSTRING dieser Datei als Beispiel — und war trotzdem live, weil das Wort nur in der
+    #    Beschreibung stand, nie in der Regex. Ein Beispiel in der Doku ist kein Muster.
+    #    ⚠️ «Fieber» steckt in «PTC-Fieber» (chinesische Heizangabe einer Glättbürste, 14.08.);
+    #    das ist ungefährlich, weil im selben Satz zusätzlich ein WIRKWORT stehen muss.
+    r'Akne\w*|Rosazea|Sodbrennen|Reflux|Fieber)\b',
     re.I)
 # Ein Krankheitsname allein ist keine Heilaussage — es braucht ein Wirkversprechen dazu.
 WIRKWORT = re.compile(r'\b(?:heilt|kuriert|therapiert|lindert|bek[äa]mpft|beseitigt|'
@@ -88,12 +101,25 @@ WIRKWORT = re.compile(r'\b(?:heilt|kuriert|therapiert|lindert|bek[äa]mpft|besei
                       # Indikationsformel IST ein Wirkversprechen; sie feuert nur zusammen
                       # mit einem Krankheitsnamen im selben Satz.
                       r'Ob\s+bei|ideal\s+bei|perfekt\s+bei|speziell\s+bei|Einsatz\s+bei|'
-                      r'Anwendung\s+bei|empfohlen\s+bei)\b'
+                      r'Anwendung\s+bei|empfohlen\s+bei|'
+                      # 28.08.2026: Der Rückenstabilisator 15449429279105 führte «Passt für
+                      # Hohlkreuz, Skoliose, Schulter-Rundung» — «Skoliose» stand längst in
+                      # KRANKHEIT, der Satz hatte nur kein bekanntes Wirkwort. Eine Krankheit
+                      # als blosser Aufzählungspunkt IST eine Indikation.
+                      r'passt\s+f[üu]r|geeignet\s+bei|Stabilit[äa]t\s+bei|Schutz\s+bei)\b'
                       # ⚠️ Die Wortgrenze am ANFANG frisst geklebte Wirkwörter: der
                       # CJ-Text schrieb «Schlafkissenmasken|lindert» ohne Leerzeichen,
                       # und \blindert\b greift mitten im Wort nicht mehr. Spiegelbild
                       # der Genitiv-Falle («Zahnreinigers») am Wortende.
-                      r'|\w*lindert\b|\w*heilt\b', re.I)
+                      r'|\w*lindert\b|\w*heilt\b'
+                      # ⚠️ 28.08.2026: Die Liste kannte nur die FINITE Form. «um Sodbrennen zu
+                      # LINDERN» (Keilkissen 15449599738241) rutschte durch, weil nur «lindert»
+                      # dastand — im Deutschen steht das Wirkwort nach «um … zu» aber im
+                      # Infinitiv, und genau so formulieren die CJ-Übersetzungen fast immer.
+                      # Dieselbe Beugungsfalle wie «Zahnreinigers» (Genitiv) und
+                      # «Ischiasbeschwerden» (Kompositum): das Wortende ist beweglich.
+                      # \b vorne ist Pflicht — ohne sie trifft «linder» das Wort «Zylinder».
+                      r'|\blinder\w*|\bheilen\b|\bbehandeln\b|\bbek[äa]mpfen\b|\bbeseitigen\b', re.I)
 # Diese stehen für sich allein — dafür braucht es keinen Krankheitsnamen.
 STARK = re.compile(r'\b(?:medizinisch\s+(?:bewiesen|nachgewiesen)|klinisch\s+(?:bewiesen|getestet)|'
                    r'empfohlen\s+von\s+(?:Chiropraktikern|[ÄA]rzten|Physiotherapeuten)|'
@@ -123,7 +149,20 @@ KEIN_HEILVERSPRECHEN = re.compile(r'kompatib|geeignet\s+f[üu]r|Option\s+f[üu]r
                                   r'Erscheinungsbild|Aussehen\s+von|passend\s+f[üu]r|'
                                   r'nicht\s+geeignet|Brillentr[äa]ger|'
                                   r'\bHund\w*|\bH[üu]ndin|\bKatze\w*|\bK[äa]tzchen|Haustier\w*|'
-                                  r'Vierbeiner|\bWelpe\w*|\bTierarzt|\bTiere\b', re.I)
+                                  r'Vierbeiner|\bWelpe\w*|\bTierarzt|\bTiere\b|'
+                                  # 28.08.2026, zusammen mit «Akne» eingeführt — ohne diese vier
+                                  # würde die KORREKTE Fassung bestraft: «für zu Akne NEIGENDE
+                                  # Haut» (15502557151617) ist die Formel, die ein Kosmetikum
+                                  # verwenden MUSS; «KASCHIERT Akneflecken» / «DECKT Aknenarben AB»
+                                  # (Concealer, Grundierung) sind Abdeckung statt Wirkung; und
+                                  # «Akne am Kinn VORZUBEUGEN» steht in einem KATZENnapf.
+                                  r'neigend\w*|kaschier\w*|abdeck\w*|deckt\s|vorbeug\w*|vorzubeugen|'
+                                  # ⚠️ Und ein ALTER Fehltreffer, der beim Nachmessen am
+                                  # 28.08.2026 auffiel: STARK enthält «heilt\s+\w», damit
+                                  # «heilt Krampfadern» für sich allein steht. Damit traf es
+                                  # 15500912820609 «Papier-Tape … der sich selbst HEILT und
+                                  # verdeckt» — eine Materialeigenschaft, kein Heilversprechen.
+                                  r'selbst\s*heilend|selbstheilend|sich\s+selbst\s+heilt|self[- ]?healing', re.I)
 
 
 def ist_heilaussage(satz):

@@ -52,10 +52,23 @@ GOOGLE = "gid://shopify/Publication/302872297857"
 
 # ── Rauchzubehör ──────────────────────────────────────────────────────────────
 RAUCH_TITEL = re.compile(
-    r'Aschenbecher|Zigaretten(?:etui|halter|spitze|schachtel)|Zigarrenetui|'
+    r'Aschenbecher|Zigarett\w*|Zigarr\w*|Zigarill\w*|Schnupftabak\w*|'
     r'Kohleanz[üu]nder|Shisha|Wasserpfeife|\bBong\b|\bGrinder\b|Feuerzeug|'
+    r'Pfeifenreiniger|Humidor\w*|Tabakpfeif\w*|'
     r'Vape\b|E-Zigarette|Tabak(?:beutel|dose)?', re.I)
 # «Anzünder» allein ist ein Grillanzünder; erst mit Kohle wird es Shisha.
+# ⚠️ 28.08.2026 — WARUM DIE STÄMME statt der Wortliste: Am 21.–26.08. legte der Grind NEUN
+# Rauchzubehör-Artikel an, alle ACTIVE im Google-Kanal, sieben davon mit productType
+# «Werkzeug & Heimwerken» (Tags heimwerken/neu/werkzeug) — die Warengruppen-Prüfung oben
+# (`typ.startswith("raucher")`) läuft an dieser Tarnung vorbei, und der Tag-Test ebenso.
+# Die alte Titel-Liste hätte nur VIER der neun gefangen: «Zigaretten(?:etui|halter|spitze|
+# schachtel)» verlangt einen der vier Suffixe, «Zigarrenetui» das Wort ganz — deshalb rutschten
+# «Zigarrenbohrer», «Zigarren-Lüftungsnadel», «Zigarren-Clip», «Zigarrenanzünder» und der
+# «Zigaretten-Brecher» durch. Ein Stamm (Zigarr\w*/Zigarett\w*) kennt jede Zusammensetzung,
+# die der nächste Import erfindet; eine Suffixliste kennt nur die vier, die man schon gesehen hat.
+# BEWUSST OHNE Kostüm-/Deko-Ausnahme: Ein Fasnachts-Plastikzigarre aus dem Google-Kanal zu
+# nehmen kostet ein Listing, ein übersehener Zigarrenbohrer kostet nach Googles
+# «Prohibited Content» das ganze Konto — der einzige Kanal mit belegten Verkäufen.
 
 # ── Waffen ────────────────────────────────────────────────────────────────────
 # Ein Klingen-Nomen ist Pflicht. «Machete» allein trifft die «Washed Machete Jeans».
@@ -65,7 +78,12 @@ KLINGE = re.compile(
     r'(?:Klapp|Survival|Jagd|Taktisch\w*|Outdoor|Wurf|Bajonett|Karambit)[- ]?Messer|'
     r'Messer.{0,30}(?:Klinge|Klingen)|(?:Gezackte|Feststehende|D2-)\s*Klinge|'
     r'Schlagring|Teleskopschlagstock|Butterflymesser|'
-    r'Gewehrriemen|Waffenriemen|Pistolenholster|Schulterholster', re.I)
+    r'Gewehrriemen|Waffenriemen|Pistolenholster|Schulterholster|Achselholster', re.I)
+# «Achselholster» ergänzt 28.08.2026: CJ nennt 1775498255665737728 im Original
+# «Neoprene Hidden Armpit Holster / 腋下枪套 … glock枪包» (Glock-Pistolentasche) und die
+# Produktbilder zeigen eine Pistole samt Magazintasche — der deutsche Titel «Neopren-
+# Achselholster» und der Text («taktische Einsätze») nennen die Waffe nirgends mehr.
+# Der Artikel stand als productType «Taschen» im Google-Kanal.
 # In der Schweiz nach WG Art. 4 verboten — nicht nur ein Google-Problem.
 VERBOTEN = re.compile(r'Butterfly[- ]?Messer|Schmetterlingsmesser|Butterflymesser|'
                       r'Schlagring|Teleskopschlagstock|Wurfstern', re.I)

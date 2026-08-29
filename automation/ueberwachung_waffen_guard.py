@@ -126,7 +126,7 @@ def gql(query, variables=None):
 M = json.load(open(MUSTER, encoding="utf-8"))
 SPERRE = [(s["n"], re.compile(s["re"], re.I)) for s in M["sperre_titel"]]
 TREFFER = [(t["n"], [re.compile(r, re.I) for r in t["alle"]]) for t in M["treffer"]]
-VERBOTEN_REGEL = {"ch-verbotene-waffe", "elektroschock-gegen-menschen"}
+VERBOTEN_REGEL = {"ch-verbotene-waffe", "ch-verbotene-waffe-getarnt", "elektroschock-gegen-menschen"}
 
 
 def heikel(titel, text):

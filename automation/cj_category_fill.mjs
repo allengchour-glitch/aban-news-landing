@@ -24,7 +24,7 @@ const CJT=(process.env.CJ_TOKEN||'').trim();
 const GK=(fs.existsSync('/tmp/gemini_key')?fs.readFileSync('/tmp/gemini_key','utf8'):process.env.GEMINI_API_KEY||'').trim();
 const DRY=process.env.DRY==='1', CAP=parseInt(process.env.CAP||'40',10);
 const LEDGER='dropship/cj_niche_done.txt';
-const PUBS=['301970915713','301971014017','302032716161','302566834561','302872297857','302994456961'].map(id=>({publicationId:`gid://shopify/Publication/${id}`}));
+import { publishVerified as _publishVerified, PUBS, GOOGLE_PUB } from './cj_publish.mjs';
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 const chf=(usd,grams)=>{const u=parseFloat((''+usd).split('--')[0])||0;
  // 2026-08-03: China→CH-Fracht REAL ~CHF 15 (Order #1011: $15.77) — MUSS in den Preis, sonst Verlust bei billiger Ware!
@@ -173,7 +173,12 @@ function buildFashion(d){
    &&eff.every(c=>istCode(c)||LETTERSIZE.test(c));
  const zaehlOpt=useC&&!codeOpt&&eff.length>=2&&eff.every(istZaehl);
  // Steht in JEDEM Wert «Color», ist es doch eine Farbwahl — nur unbenannt: «Farbton N».
- const nurFarbe=zaehlOpt&&eff.every(c=>/colou?r/i.test(c));
+ // Was als Konfektionsgrösse in den Google-Feed darf. Bewusst eng: Massangaben («25x150cm»),
+// Modellnummern und kombinierte Etiketten («S M») sind KEINE Grösse — eine falsche Angabe ist
+// schlechter als keine (dieselbe Regel wie bei farbeSauber und beim Material).
+const GROESSE_OK=/^(?:[0-9]?X{0,5}(?:S|M|L)|XXS|XS|[0-9]{1,3}(?:[.,][05])?|[0-9]{2,3}\s?cm|[0-9]{1,2}\s?(?:Y|J(?:ahre)?|M(?:onate)?)|EU\s?[0-9]{2}|US\s?[0-9]{1,2}|UK\s?[0-9]{1,2}|One\s?Size|Einheitsgr[\u00f6o]sse|Freie\s?Gr[\u00f6o]sse)$/i;
+const groesseSauber=w=>!!w&&GROESSE_OK.test(String(w).trim());
+const nurFarbe=zaehlOpt&&eff.every(c=>/colou?r/i.test(c));
  const cName=(codeOpt||(zaehlOpt&&!nurFarbe))?'Ausführung':'Farbe';
  const cMap=(codeOpt||zaehlOpt)
    ?new Map(colors.map((c,i)=>[c,(nurFarbe?'Farbton ':'Modell ')+(i+1)])):sMap;
@@ -199,6 +204,14 @@ function buildFashion(d){
   const gFarbe=(!codeOpt&&!zaehlOpt&&sMap)?(sMap.get(v.color)||v.color):v.color;
   if(useC&&colors.length>1&&farbeSauber(gFarbe))
     vmf.push({namespace:'mm-google-shopping',key:'color',value:gFarbe,type:'single_line_text_field'});
+  // 📏 UND DIE GRÖSSE GENAUSO (28.08.2026). Google verlangt bei Bekleidung und Schuhen das
+  // Attribut `size`; ohne das wird das Angebot in Shopping-Ergebnissen beschnitten — im
+  // einzigen Kanal mit belegten Verkäufen. Dieselbe Begründung wie bei color: an die
+  // VARIANTE, weil jede im Feed ein eigenes Angebot ist. ⚠️ `size_system`/`size_type`
+  // bleiben leer — die Ware ist asiatisch konfektioniert, ein «EU» wäre eine Falschangabe.
+  const gGroesse=useS?(v.size||sizes[0]):null;
+  if(gGroesse&&groesseSauber(gGroesse))
+    vmf.push({namespace:'mm-google-shopping',key:'size',value:gGroesse,type:'single_line_text_field'});
   const sku=('CJ-'+(v.sku||'')).slice(0,70);
   // 🎨 DAS BILD DER VARIANTE MITNEHMEN (14.08.2026). CJ liefert zu jeder Variante ein
   // `variantImage` — im SELBEN Aufruf, der schon geholt wird, also ohne einen einzigen
@@ -423,24 +436,18 @@ async function sgql(t,q,v){
 }
 // Hausregel 12.08.: Klingen (auch Küchenmesser) NIE in den Google-Kanal — kein Richtlinien-
 // verstoss, aber Sperr-Risiko. Fashion-/Deko-Fehltreffer (Machete-Jeans, Katana-Figur) bleiben drin.
-const KLINGE=/\b(messer|klinge\w*|dolch|machete|axt|beil|schwert|katana)/i;
+const KLINGE=/(?<![\wäöüß])[\wäöüß]*(messer|klinge\w*|dolch|machete|schwert|katana|axt|beil)(?![\wäöüß])/i;
 const KLINGE_AUSN=/jeans|kleid|hose|shirt|hoodie|wasch|deko|figur|anhänger|halskette|ohrring|spielzeug|plüsch|kostüm/i;
 function pubsFuer(title){
  if(KLINGE.test(title||'')&&!KLINGE_AUSN.test(title||''))
-  return PUBS.filter(p=>!p.publicationId.endsWith('302872297857'));
+  return PUBS.filter(p=>!p.publicationId.endsWith(GOOGLE_PUB));
  return PUBS;
 }
-// Publizieren MIT Quittung: erst wenn Shopify keine Fehler meldet, gilt es als erledigt.
-async function publishVerified(t,pid,title){
- for(let i=0;i<3;i++){
-  const r=await sgql(t,PUB,{id:pid,p:pubsFuer(title)});
-  const errs=r?.data?.publishablePublish?.userErrors;
-  if(Array.isArray(errs)&&errs.length===0)return true;
-  await sleep(2000*(i+1));
- }
- console.log('  ⚠️ Publizieren fehlgeschlagen',pid);
- return false;
-}
+// Publizieren + Quittung liegen seit 28.08.2026 in automation/cj_publish.mjs — es gab
+// drei Fassungen dieser Funktion, und alle drei lasen nur die ANTWORT der Mutation
+// statt des Zustands (Google fiel still aus, userErrors blieb leer).
+const publishVerified = (tok, pid, title) => _publishVerified(sgql, tok, pid, pubsFuer(title));
+
 // ⚠️ 20.08.2026: Der Slug-Stamm wird an EINER Stelle gebildet. Die Handle-Wache muss exakt
 // so kürzen wie der Handle-Bau — sonst sucht sie nach einem Stamm, den es im Shop nie gibt.
 // slugStamm und laufSlugs kommen aus automation/cj_dublette.mjs — dort und NUR dort aendern.
@@ -485,7 +492,6 @@ async function variantenBilder(st,pid,bilder){
  }
  return n;
 }
-const PUB=`mutation($id:ID!,$p:[PublicationInput!]!){publishablePublish(id:$id,input:$p){userErrors{message}}}`;
 // CJ-Produktvideo via Staged-Upload anhängen (externe URLs nimmt Shopify nicht an) — 2026-07-06
 // Wartet, bis Shopify mindestens ein Bild fertig verarbeitet hat. Gibt false zurück, wenn
 // nach mehreren Anläufen keines READY ist — dann sind sie FAILED oder die Quelle war tot.
@@ -665,7 +671,15 @@ const grp=GROUPS[process.env.GRP||'nagel']; if(!grp){console.error('unknown GRP'
 const done=new Set(fs.existsSync(LEDGER)?fs.readFileSync(LEDGER,'utf8').split('\n').map(s=>s.replace('cj:','').trim()).filter(Boolean):[]);
 const st=DRY?null:await shTok();
 let total=0;
+// ⚠️ Ein erschoepftes Tagesbudget gilt fuer den GANZEN Lauf, nicht fuer eine Kategorie
+// (27.08.2026). Vorher brach nur die Seitenschleife ab, und die aeussere Schleife
+// probierte JEDE weitere Kategorie einzeln durch — bei leerem Eimer rund 30 sinnlose
+// CJ-Anfragen je Gruppe, 2'800 Logzeilen in zehn Minuten und ein Log, in dem der
+// eine echte Grund unter Wiederholungen verschwindet. Nur 16900500 bricht alles ab;
+// ein transienter Fehler laesst die naechste Kategorie weiter zu.
+let budgetLeer=false, catsOk=0, catsFehler=0, letzterFehler='';
 for(const [cat,label] of grp.cats){
+ if(budgetLeer) break;
  if(total>=CAP)break; let got=0; const perCat=PERCAT||Math.ceil(CAP/3);
  // SEITEN-ZEIGER JE KATEGORIE (2026-08-10). Vorher begann jeder Lauf wieder bei Seite 1 und
  // paginierte bis MAXPAGE — also wurden dieselben, längst abgegrasten Seiten immer wieder
@@ -690,7 +704,9 @@ for(const [cat,label] of grp.cats){
   // ersten Anlauf am 10.08. ist genau das mit vier Kategorien passiert.
   if(!list.length){
     if(Number(j.code)===200){ letzteSeite=0; }          // wirklich am Ende -> neu von vorn
-    else { console.log(`  ⛔ CJ-Fehler ${j.code}: ${String(j.message||'').slice(0,60)} — Zeiger bleibt`); zeigerBehalten=true; }
+    else { console.log(`  ⛔ CJ-Fehler ${j.code}: ${String(j.message||'').slice(0,60)} — Zeiger bleibt`); zeigerBehalten=true;
+           letzterFehler=`${j.code}: ${String(j.message||'').slice(0,60)}`;
+           if(Number(j.code)===16900500||/Insufficient API points/i.test(String(j.message||''))) budgetLeer=true; }
     break;
   }
   for(const p of list){
@@ -1081,7 +1097,19 @@ for(const [cat,label] of grp.cats){
  // die Schleife mit `break` verlassen, ein Schreibbefehl am Schleifenende käme dann nie dran.
  // Genau daran scheiterte der erste Anlauf (alle Zeiger blieben auf 21 stehen).
  // letzteSeite===0 bedeutet «Kategorie war zu Ende» -> wieder bei Seite 1 beginnen.
+ if(zeigerBehalten) catsFehler++; else catsOk++;
  if(!zeigerBehalten){ try{ fs.writeFileSync(zFile, String(letzteSeite===0?1:letzteSeite+1)); }catch{} }
  console.log(`${label}: total ${total}${zeigerBehalten?' (Zeiger unveraendert — CJ-Fehler)':` (Zeiger → Seite ${letzteSeite===0?1:letzteSeite+1})`}`);
+}
+// ⚠️ EIN LAUF, DER KEINE EINZIGE KATEGORIE LESEN KONNTE, IST NICHT FERTIG (27.08.2026).
+// Ein fehlender CJ-Token («1600002 access token cannot be empty») liess jede Kategorie
+// scheitern, der Lauf endete trotzdem mit «FERTIG: 0» und Exit 0 — und der Queue-Runner
+// quittierte die Gruppe als ERLEDIGT, obwohl nichts geholt wurde. Genau die Falle, die
+// fuer das leere Punktebudget schon eigens abgefangen wird, nur mit anderem Fehlercode.
+// Der Runner darf sich nicht auf eine Fehlerliste verlassen: Exit != 0 sagt ihm, dass
+// hier nichts quittiert werden darf.
+if(catsOk===0 && catsFehler>0){
+  console.log(`\nABBRUCH: keine einzige Kategorie lesbar (${catsFehler} Fehler, zuletzt ${letzterFehler}) — Gruppe bleibt offen.`);
+  process.exit(3);
 }
 console.log(`\nFERTIG: ${total} ${grp.type}${DRY?' [DRY]':''}.`);

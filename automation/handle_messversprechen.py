@@ -70,7 +70,7 @@ def main():
                     {'q': f'status:active AND handle:*{begriff}*', 'c': cur})
             p = r['data']['products']
             for n in p['nodes']:
-                if re.search(rf'(^|-){begriff}(-|$)', n['handle'], re.I) and n['id'] not in fertig:
+                if re.search(rf'(^|-){begriff}[a-z]*(-|$)', n['handle'], re.I) and n['id'] not in fertig:
                     kand[n['id']] = n
             if not p['pageInfo']['hasNextPage']: break
             cur = p['pageInfo']['endCursor']; time.sleep(0.4)
@@ -81,11 +81,14 @@ def main():
     for n in list(kand.values())[:CAP]:
         alt = n['handle']
         # Die Eindeutigkeitsnummer des Importers am Ende erhalten
-        m = re.search(r'-(\d{4,})$', alt)
-        nummer = m.group(1) if m else ''
+        # Die Eindeutigkeitsnummer ist NICHT immer rein numerisch: der Importer haengt auch
+        # Hex-Suffixe an (…-e49535, …-88195c, …-bab88a). Ein Muster nur auf Ziffern verwarf sie
+        # und haette den Handle ohne Eindeutigkeitsteil neu gebaut = Kollisionsgefahr.
+        m = re.search(r'-([a-z0-9]{4,})$', alt, re.I)
+        nummer = m.group(1) if (m and re.search(r'\d', m.group(1))) else ''
         neu = slug(n['title'])[:60].strip('-')
         if nummer: neu = f"{neu}-{nummer}"
-        if any(re.search(rf'(^|-){b}(-|$)', neu, re.I) for b in BEGRIFFE):
+        if any(re.search(rf'(^|-){b}[a-z]*(-|$)', neu, re.I) for b in BEGRIFFE):
             print(f"  ! {n['title'][:44]} — Begriff steht im TITEL, nicht nur in der URL")
             titel_schuld += 1
             continue

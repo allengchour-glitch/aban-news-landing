@@ -29,6 +29,11 @@ MARKE_BILD=/tmp/_autopilot_letztes_bild
 MARKE_REEL=/tmp/_autopilot_letztes_reel
 
 exec 9>/tmp/social_autopilot.lock
+# ⚠️ `9>&-` ist KEIN Beiwerk (29.08.2026). `exec 9>lock` wird an JEDES Kind vererbt —
+# auch an `sleep`. Stirbt die Schleife, haelt der verwaiste sleep die flock-Sperre bis
+# zu zwei Stunden weiter, und jeder Neustart beendet sich mit «laeuft bereits», waehrend
+# der Motor in Wahrheit still steht. Live nachgewiesen: /tmp/social_autopilot.lock wurde
+# von `sleep 900` (PID 2193) gehalten, /tmp/website_hygiene.lock von `sleep 7200`.
 flock -n 9 || { echo "$(date -u +%H:%M) Autopilot läuft bereits — dieser Start endet."; exit 0; }
 
 faellig() {                              # $1 = Markendatei, $2 = Mindestabstand in Sekunden
@@ -41,7 +46,7 @@ while true; do
   if [ -z "$TOKEN" ]; then
     echo "kein-token" > /tmp/meta_token_status
     echo "$(date -u +%H:%M) ⚠️ /tmp/meta_page_token fehlt — es wird nichts gepostet."
-    sleep 1800; continue
+    sleep 1800 9>&-; continue
   fi
   ANTWORT=$(curl -s --max-time 20 \
     "https://graph.facebook.com/v21.0/me?fields=id&access_token=$TOKEN")
@@ -50,7 +55,7 @@ while true; do
     # Laut und mit Grund — ein stiller Abbruch wäre von «nichts zu posten» nicht zu unterscheiden.
     echo "$(date -u +%H:%M) ⚠️ Meta-Token ungültig: $(printf '%s' "$ANTWORT" | head -c 160)"
     echo "$(date -u +%H:%M)    → neues Nutzer-Token nötig; ohne App-Secret ist keine Verlängerung möglich."
-    sleep 1800; continue
+    sleep 1800 9>&-; continue
   fi
   echo "gueltig $(date -u +%FT%TZ)" > /tmp/meta_token_status
 
@@ -79,5 +84,5 @@ while true; do
     fi
   fi
 
-  sleep 900
+  sleep 900 9>&-
 done

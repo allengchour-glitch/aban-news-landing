@@ -152,7 +152,11 @@ const AUFB_TITEL = [
   [/duschkopf|duschschlauch|handtuchhalter|wc-?sitz|toiletten\w*|seifenspender|zahnb[üu]rstenhalter|duschvorhang|wasserhahn|lotionspender/i, 'Home & Garden > Bathroom Accessories'],
   [/bodenwischer|wischmopp|\bmopp\w*|kehrschaufel|m[üu]llbeutel|\bschwamm\w*|fusselentferner|reinigungsb[üu]rste|\bputz\w*|fleckenentferner/i, 'Home & Garden > Household Supplies > Household Cleaning Supplies'],
   [/\brasierer\b|epilierer|haartrimmer|haarschneider|massageger[äa]t|gua\s?sha|nagelknipser|zahnb[üu]rste\b|fussmassage|zahncreme|mundsp[üu]lung/i, 'Health & Beauty > Personal Care'],
-  [/\bwlan\b|\bwifi\b|steckdose\w*|\bventilator\w*|\bkamera\b|powerbank|ladeger[äa]t|ladestation|bluetooth|kopfh[öo]rer|\busb\b|projektor|\blautsprecher\b|entfeuchter/i, 'Electronics'],
+  // ⚠️ «TV Box» traf die Aufbewahrungsregel `\w*box\b` — «Box» heisst hier Gerät.
+  // «Storage» heisst bei Google AUFBEWAHRUNG, nicht Datenspeicher; ein SSD-GEHÄUSE
+  // gehört zu Electronics, eine Festplatten-HÜLLE bleibt Aufbewahrung. Deshalb die
+  // Hüllen-Sperre in HUELLE weiter unten.
+  [/\bwlan\b|wi-?fi|steckdose\w*|\bventilator\w*|\bkamera\b|powerbank|ladeger[äa]t|ladestation|bluetooth|kopfh[öo]rer|\busb\b|projektor|\blautsprecher\b|entfeuchter|\bhdmi\b|tv-?box|\btastatur\w*|keycaps?|\bssd\b|\bnvme\b|\bm\.2\b|router\b/i, 'Electronics'],
   [/werkzeugtasche|werkzeugbox|werkzeugbeutel|werkzeugkoffer/i, 'Hardware > Hardware Accessories > Tool Storage & Organization'],
   [/\bbohrer\b|schraubendreher|\bzange\b|\bhammer\b|werkzeug\w*|\bs[äa]ge\b|cuttermesser|akkuschrauber/i, 'Hardware > Tools'],
   [/tischdecke|bettw[äa]sche|kissenbezug|\bvorhang\w*|picknickdecke|tischl[äa]ufer|duvet/i, 'Home & Garden > Linens & Bedding'],
@@ -164,11 +168,88 @@ const AUFB_TITEL = [
 ];
 // Erst wenn nichts davon greift, darf «Aufbewahrung» die Antwort sein — und nur, wenn der
 // Titel das auch sagt.
+// Hülle, Tasche, Halter, Ständer: das Zubehör zum Gerät ist Aufbewahrung, nicht Elektronik.
+// «EVA Tastatur-Aufbewahrungstasche» und «Festplatten-Hülle» müssen dort bleiben.
+// ⚠️ `\w*tasche\w*` stand hier zuerst mit drin und schob die «Bluetooth Ohrhörer-Tasche»
+// von Electronics nach «Luggage & Bags». Die «EVA Tastatur-Aufbewahrungstasche» wird schon
+// über `aufbewahrung` gefangen — das genügt.
+const HUELLE = /\w*h[üu]lle\b|\bhalter\b|\bhalterung\b|\w*st[äa]nder\b|\w*etui\b|erh[öo]hung|aufbewahrung\w*/i;
 const AUFB_STORAGE = /aufbewahrungs?\w*|\baufbewahrung\b|organizer|organisator|kleiderb[üu]gel|schuhbox|schuhschrank|w[äa]schekorb|kleidersack|schmucktablett|\w*box(en)?\b|\w*k[öo]rb(e)?\b|\w*kist(e|en)\b|beh[äa]lter|\bschublade\w*|\w*etui\b|\w*haken\b|hakenleiste|\bhalter\b|\w*st[äa]nder\b|\bhalterung\b|\w*spender\b|\bf[äa]cher\b|\btray\b|\w*ablage\b|garderobe|b[üu]cherst[üu]tze|schl[üu]sselbrett|\w*kasten\b|k[äa]stchen|\w*dose\b|\w*tablett\b|\bsafe\b|\btresor\b|abfalleimer|m[üu]lleimer|kassette|\w*h[üu]lle\b/i;
 // Zuletzt: irgendeine Tasche. «Luggage & Bags» ist der grobe RICHTIGE Vorfahr,
 // «Handbags» wäre der genaue FALSCHE (Kühltasche, Instrumententasche, Reisetasche).
 const AUFB_BAG = /\w*tasche\w*|\w*beutel\b|\w*koffer\b|hardcase|trolley/i;
 const AUFB_TYP = 'Aufbewahrung & Organizer';
+
+// ─────────────────────────────────────────────────────────────────────────────
+// (4) DAS NOMEN BESTIMMT DIE PRODUKTART, NICHT DIE WARENGRUPPE (28.08.2026)
+//
+// Ein Katalog-Audit fand vier Warengruppen, die ihre Kategorie BLANKO vergeben — der Artikel
+// selbst wird nicht gefragt. Live nachgewiesen und repariert:
+//   «Spass-Elektronik»  → Electronics: 378 Holzpuzzle, Klemmbausteine und Modellbausätze
+//                         standen als Elektronik im Feed. Ein Holzpuzzle hat kein Bauteil.
+//   «Basteln & DIY»     → Arts & Crafts: 16 fertige Teppiche, Sofabezüge, Vorhänge,
+//                         Duschvorhänge und Bettwäsche-Sets; dazu Cardigan und Pullover.
+//   «Spielzeug & Spiele»→ Toys: 14 Kissenbezüge, Sofaüberwürfe und ein Zimmerteppich, alle
+//                         nur deshalb, weil «Plüsch» im Titel steht. «Plüsch» ist hier das
+//                         MATERIAL, nicht die Produktart — dieselbe Falle wie «creme» als
+//                         Farbe und «led» in «Leder». Nur «Plüschtier»/«Kuscheltier» ist Spielzeug.
+//   «Gaming-Zubehör»    → Video Game Console Accessories: ein Karton-Brettspiel.
+// Dazu: das Adjektiv «leuchtend» in «Leuchtendes Hai-T-Shirt für Kinder» erzeugte über den
+// Tag `beleuchtung` die Kategorie «Home & Garden > Lighting» — für ein Baumwoll-T-Shirt.
+//
+// ⚠️ DIE GEGENRICHTUNG IST GENAUSO TEUER. Bei folgenden Titeln ist die alte Kategorie RICHTIG
+// und darf NICHT angefasst werden — alle live geprüft und deshalb hier als Ausnahme verankert:
+//   «Twill-Baumwollstoff für Bettwäsche & Vorhänge», «Leinen-Baumwollstoff für Vorhänge und
+//   Kissen», «Stoff für Schuhe, Taschen und Deko» → Meterware, Arts & Crafts stimmt.
+//   «Dehnbare Yoga-Hose aus Ice Silk» → trotz des Titels Meterware (Varianten «100 X 165CM
+//   -75D ice silk», Text: «ideal für die HERSTELLUNG von Kleidungsstücken»).
+//   «Kissenbezug mit Innenkissen» → Rohling zum Besticken/Bemalen, Arts & Crafts stimmt.
+//   «DIY Malen nach Zahlen – Mein Kleid» → «Kleid» ist das Bildmotiv.
+//   «Hohle Druckknöpfe-Set für Jeans», «Microfaser Wildlederimitat für Schuhe» → Nähzubehör.
+// Deshalb sperrt ROHSTOFF alle diese Regeln. ⚠️ `\bstoff\b` reicht dafür NICHT — deutsche
+// Zusammensetzungen: «Baumwollstoff», «Leinenstoff». Es muss `\w*stoff\w*` sein.
+// ─────────────────────────────────────────────────────────────────────────────
+const ROHSTOFF = /\w*stoff\w*|meterware|\bfabric\b|malen nach zahlen|\bgarn\b|n[äa]hen|zum\s+(besticken|bemalen|selbstgestalten)|besticken|druckkn[öo]pfe|reissverschluss|imitat f[üu]r|\bdiy\b|kreuzstich\w*|stickset|strickset|h[äa]kelset|bastelset|makramee/i;
+// «Schaumstoff», «Kunststoff» und «Polsterstoff» sind Materialangaben eines FERTIGEN Artikels
+// und dürfen die Sperre nicht auslösen.
+const ROHSTOFF_AUSNAHME = /schaumstoff|kunststoff|werkstoff|farbstoff|polsterstoff|klebstoff|treibstoff/i;
+function istRohstoff(ti) {
+  if (!ROHSTOFF.test(ti)) return false;
+  const rest = ti.replace(ROHSTOFF_AUSNAHME, '');
+  return ROHSTOFF.test(rest);
+}
+
+// Bau- und Puzzlespielzeug. RC/Elektronik-Wörter im selben Titel bleiben absichtlich
+// unberührt: ein «RC Drift Sportwagen Bausatz» ist ein Grenzfall, den ich nicht rate.
+const BAUSPIEL = /klemmbaustein\w*|bauklotz|baukl[öo]tz\w*|magnet-?bausteine|\bbaustein\w*|\bbaukasten\b|modellbausatz|\bbausatz\b|\bbausets?\b/i;
+const PUZZLE   = /\bpuzzle\w*|3d-?holzpuzzle|holzpuzzle/i;
+const RC_WORT  = /\brc\b|ferngesteuert\w*|\bdrohne\w*|hubschrauber|quadrocopter|\broboter\b|elektronisch\w*|programmierbar\w*|\bsolar\b/i;
+
+// Fertige Heimtextilien. Das Nomen trägt die Produktart.
+const HEIMTEXTIL = [
+  [/duschvorhang\w*/i,                                   'Home & Garden > Bathroom Accessories > Shower Curtains'],
+  [/badteppich\w*|badematte\w*|badevorleger/i,           'Home & Garden > Bathroom Accessories > Bath Mats & Rugs'],
+  [/wandteppich\w*|wandbehang\w*/i,                    'Home & Garden > Decor > Artwork > Decorative Tapestries'],
+  [/\w*teppich\w*/i,                                     'Home & Garden > Decor > Rugs'],
+  [/sofa-?bezug|sofa-?[üu]berwurf|couch-?bezug|sesselbezug|sofahusse|\bhusse\w*/i, 'Home & Garden > Decor > Slipcovers'],
+  [/kissenbezug\w*|kissenh[üu]lle\w*|zierkissen|dekokissen/i, 'Home & Garden > Decor > Throw Pillows'],
+  [/\bvorhang\w*|\bvorh[äa]nge\b|gardine\w*/i,           'Home & Garden > Decor > Window Treatments'],
+  [/bettw[äa]sche\w*|bettbezug|spannbettlaken|bettlaken|duvetbezug|tagesdecke/i, 'Home & Garden > Linens & Bedding > Bedding'],
+  [/tischdecke\w*|tischl[äa]ufer/i,                      'Home & Garden > Linens & Bedding > Table Linens'],
+];
+// Kleidungsstücke. Bewusst nur eindeutige Nomen — «Set», «Anzug», «Top» sind zu mehrdeutig.
+const KLEIDUNG = [
+  [/\w*sneaker\w*|\w*halbschuh\w*|\blauflernschuhe\b|\bstiefel\w*|\bsandale\w*|\bpumps\b|winter-?schuhe/i, 'Apparel & Accessories > Shoes'],
+  [/\bt-?shirt\w*|\bpolohemd\w*|\bhemd\b|\bbluse\w*|\bpullover\b|\bpulli\b|\bhoodie\w*|\bsweatshirt\w*|\bcardigan\w*|strickjacke\w*|\bmantel\b|\bdaunenjacke\w*/i, 'Apparel & Accessories > Clothing'],
+];
+// «Baby» ist nicht immer eine Altersgruppe: «Plüsch Bush Baby Galagos» ist eine Affenart,
+// «Plüsch Adler Baby» das Jungtier des Motivs. Steht ein Spielzeugwort daneben, gilt Spielzeug.
+// ⚠️ Der erste Entwurf hatte hier zusätzlich `^pl[üu]sch\s+\w+`. Der Regressionstest über
+// 4'972 Produkte zeigte 194 Fehltreffer: «Plüsch Kostüm Einhorn», «Plüsch Maske Hase»,
+// «Plüsch Angler Hut» — «Plüsch» ist auch dort nur der Stoff. Nur das zusammengesetzte
+// Nomen taugt. Und ein «Plüschtier-Rucksack» ist ein Rucksack, kein Kuscheltier.
+const PLUESCHTIER = /pl[üu]schtier\w*|kuscheltier\w*|pl[üu]schfigur\w*|stofftier\w*/i;
+const PLUESCH_NICHT = /rucksack|kost[üu]m\w*|\bmaske\w*|\bhut\b|\bm[üu]tze\w*|hausschuh\w*|pantoffel\w*|\bdecke\b|kissen\w*|\btasche\w*|aufbewahrung\w*|beanbag|sitzsack/i;
 
 export function googleKategorie(title, tags, productType) {
   const ti = title || '';
@@ -182,12 +263,35 @@ export function googleKategorie(title, tags, productType) {
     return 'Animals & Pet Supplies > Pet Supplies';
   }
 
+  // (4) Das Nomen sticht die Warengruppe — aber nie bei Rohmaterial (siehe ROHSTOFF oben).
+  const roh = istRohstoff(ti);
+  const BLANKO = ['Spass-Elektronik', 'Basteln & DIY', 'Spielzeug & Spiele', 'Gaming-Zubehör'];
+  if (BLANKO.includes(productType) && !roh && !istPet) {
+    for (const [muster, pfad] of HEIMTEXTIL) if (muster.test(ti)) return pfad;
+    for (const [muster, pfad] of KLEIDUNG)   if (muster.test(ti)) return pfad;
+    if (/brettspiel\w*|kartenspiel\w*|w[üu]rfelspiel\w*|gesellschaftsspiel\w*/i.test(ti))
+      return 'Toys & Games > Games > Board Games';
+    if (!RC_WORT.test(ti)) {
+      if (PUZZLE.test(ti))   return 'Toys & Games > Puzzles';
+      if (BAUSPIEL.test(ti)) return 'Toys & Games > Toys > Building Toys';
+    }
+  }
+  // Ein Plüschtier ist Spielzeug, kein Babyartikel — auch wenn «Baby» im Titel steht
+  // («Plüsch Bush Baby Galagos» ist eine Affenart). Nach VORRANG, damit ein
+  // «Plüschtier-Rucksack» ein Rucksack bleibt.
+  if (PLUESCHTIER.test(ti) && !PLUESCH_NICHT.test(ti))
+    return 'Toys & Games > Toys > Dolls, Playsets & Toy Figures > Stuffed Animals';
+
   for (const [muster, pfad] of VORRANG) if (muster.test(ti)) return pfad;
 
   // (1) Sammelkorb «Aufbewahrung & Organizer»: der Titel entscheidet, nicht die Warengruppe.
   const istAufb = productType === AUFB_TYP || t.has('aufbewahrung') || t.has('organizer');
   if (istAufb) {
-    for (const [muster, pfad] of AUFB_TITEL) if (muster.test(ti)) return pfad;
+    for (const [muster, pfad] of AUFB_TITEL) {
+      if (!muster.test(ti)) continue;
+      if (pfad === 'Electronics' && HUELLE.test(ti)) continue;   // Zubehör bleibt Aufbewahrung
+      return pfad;
+    }
     if (AUFB_STORAGE.test(ti)) return 'Home & Garden > Household Supplies > Storage & Organization';
     if (AUFB_BAG.test(ti))     return 'Luggage & Bags';
   }
@@ -197,6 +301,15 @@ export function googleKategorie(title, tags, productType) {
     if (!t.has(tag)) continue;
     // (2) Ein Regal ist keine Handtasche: bei Aufbewahrungs-Signal zählt der Taschen-Tag nicht.
     if (istAufb && (tag === 'kategorie-tasche' || tag === 'damen-taschen' || tag === 'aufbewahrung')) continue;
+    // (4b) Das Adjektiv «leuchtend» erzeugte den Tag `beleuchtung` und machte aus dem
+    // «Leuchtenden Hai-T-Shirt für Kinder» einen Beleuchtungsartikel. Steht im selben Titel
+    // ein Kleidungs-NOMEN, gewinnt das Nomen. Bewusst nur für diesen einen Tag: eine
+    // allgemeine Kleidungs-Rückfallregel machte im Regressionstest aus einem «Sneaker
+    // Schaumreiniger» einen Schuh und schob 25 Kinderkleider aus «Baby & Toddler».
+    if (tag === 'beleuchtung' && !roh) {
+      const k = KLEIDUNG.find(([m]) => m.test(ti));
+      if (k) return k[1];
+    }
     return pfad;
   }
   if (SAMMELKORB.has(productType)) return null;
