@@ -14,14 +14,82 @@ import os, re, glob, html
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 
-def label_of(path):
+def titel_of(path):
+    """Voller Seitentitel ohne Marken-Suffix."""
     s = open(path, encoding="utf-8", errors="ignore").read(4000)
     m = re.search(r"<title>(.*?)</title>", s, re.S)
     t = html.unescape(m.group(1)).strip() if m else os.path.basename(path)
-    # vor dem ersten Gedankenstrich / Pipe abschneiden
-    t = re.split(r"\s+[—–-]\s+|\s*\|\s*", t)[0].strip()
-    t = re.sub(r"\s*\(20\d\d\)\s*$", "", t).strip()
-    return t
+    t = re.split(r"\s*\|\s*", t)[0].strip()
+    return re.sub(r"\s*\(20\d\d\)\s*$", "", t).strip()
+
+
+def label_of(path):
+    # vor dem ersten Gedankenstrich abschneiden
+    t = re.split(r"\s+[—–-]\s+", titel_of(path))[0].strip()
+    return re.sub(r"\s*\(20\d\d\)\s*$", "", t).strip()
+
+
+def ueberschriften(path):
+    """Alle Zwischenueberschriften einer Seite, ohne Nummerierung."""
+    s = open(path, encoding="utf-8", errors="ignore").read()
+    out = []
+    for m in re.finditer(r"<h2[^>]*>(.*?)</h2>", s, re.I | re.S):
+        t = html.unescape(re.sub(r"<[^>]+>", "", m.group(1))).strip()
+        t = re.sub(r"^\d+[.)]\s*", "", t).strip()
+        if len(t) > 3:
+            out.append(t)
+    return out
+
+
+def eindeutig(items):
+    """Zwei Seiten koennen denselben Kurz-Titel haben — "KI fuer Wintergartenbau"
+    stand zweimal untereinander im Hub, in den uebersetzten Huben bis zu 18-mal
+    (die deutschen Slug-Varianten fallen in der Uebersetzung zusammen). Fuer
+    Leserinnen sind zwei identische Zeilen nicht unterscheidbar.
+
+    Stufe 1 gibt kollidierenden Eintraegen ihren Untertitel zurueck. Reicht das
+    nicht (die Uebersetzung hat beiden Varianten denselben Titel gegeben, obwohl
+    die Texte verschieden sind), haengt Stufe 2 die erste Zwischenueberschrift an,
+    die die Seite NICHT mit ihren Kollisionspartnern teilt. Ein fest gewaehltes
+    "erstes H2" taugt dafuer nicht: die Seiten beginnen alle mit demselben
+    Standard-Abschnitt ("Worum es hier nicht geht")."""
+    def gruppiere(paare):
+        z = {}
+        for lbl, *_ in paare:
+            z[lbl] = z.get(lbl, 0) + 1
+        return z
+
+    z = gruppiere(items)
+    stufe1 = [((voll if z[lbl] > 1 and voll and voll != lbl else lbl), href, path, lbl)
+              for lbl, href, voll, path in items]
+
+    z2 = gruppiere(stufe1)
+    gruppen = {}
+    for lbl, _href, path, _kurz in stufe1:
+        if z2[lbl] > 1:
+            gruppen.setdefault(lbl, []).append(path)
+    kopf = {}
+    for lbl, pfade in gruppen.items():
+        hs = {p: ueberschriften(p) for p in pfade}
+        for p in pfade:
+            andere = set()
+            for q in pfade:
+                if q != p:
+                    andere |= set(hs[q])
+            eigen = next((h for h in hs[p] if h not in andere), "")
+            kopf[p] = eigen
+
+    out = []
+    for lbl, href, path, kurz in stufe1:
+        eigen = kopf.get(path)
+        if eigen:
+            # Der Untertitel aus Stufe 1 unterscheidet hier nichts mehr (beide
+            # Seiten tragen denselben) — also zurueck auf den kurzen Titel, damit
+            # die Zeile nicht auf 160 Zeichen anwaechst.
+            lbl = kurz + " \u00b7 " + eigen
+        out.append((lbl, href))
+    return out
+
 
 CONF = [
     dict(lang="de", glob="ki-fuer-*.html", base="/", out="branchen.html",
@@ -89,7 +157,8 @@ CONF = [
 
 def build(cfg):
     files = sorted(glob.glob(cfg["glob"]))
-    items = sorted(((label_of(f), "/" + f) for f in files), key=lambda x: x[0].lower())
+    items = eindeutig(sorted(((label_of(f), "/" + f, titel_of(f), f) for f in files),
+                             key=lambda x: x[0].lower()))
     n = len(items)
     cards = "\n".join(f'    <li><a href="{href}">{html.escape(lbl)}</a></li>' for lbl, href in items)
     navlinks = "\n".join(f'      <a href="{h}">{t}</a>' for h, t in cfg["nav"])
