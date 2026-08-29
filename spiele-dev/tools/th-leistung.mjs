@@ -31,6 +31,40 @@ mitSonden('traumhaus.html', {
         schattenkarte:renderer.shadowMap.enabled?sun.shadow.mapSize.width:0,
         pixelVerhaeltnis:renderer.getPixelRatio(),
         mobil:(typeof _mobil!=="undefined")?_mobil:null};}
+    if(was==="glowsNacht"){ /* Gegenprobe: nachts muessen die Kegel wieder da sein */
+      var G=window._lampGlows||[];
+      G.forEach(function(gm){gm.opacity=0.26;gm.visible=true;});
+      var t=[];scene.traverse(function(o){if(o.isMesh&&o.material&&G.indexOf(o.material)>=0)t.push(o);});
+      var gez=0,ges=[];
+      t.forEach(function(o){ges.push([o,o.onBeforeRender]);o.onBeforeRender=function(){gez++;};});
+      renderer.render(scene,camera);
+      ges.forEach(function(x){x[0].onBeforeRender=x[1];});
+      G.forEach(function(gm){gm.opacity=0;gm.visible=false;});   /* zurueck auf Tag */
+      return {nachtsGezeichnet:gez, kegel:t.length};}
+    if(was==="glows"){
+      var G=window._lampGlows||[];
+      /* Die Liste enthaelt MATERIALIEN, nicht Meshes — Traeger dazu suchen */
+      var traeger=[];scene.traverse(function(o){if(o.isMesh&&o.material&&G.indexOf(o.material)>=0)traeger.push(o);});
+      return {materialien:G.length, meshes:traeger.length,
+              sichtbar:traeger.filter(function(m){return m.visible;}).length,
+              deckkraft0:G.filter(function(m){return (m.opacity||0)===0;}).length};}
+    if(was==="durchsicht"){ /* Transparente Flaechen: wie viele werden WIRKLICH gezeichnet? */
+      var liste=[],gesetzt=[];
+      var haken=function(){var m=this.material;
+        if(m&&m.transparent)liste.push({
+          farbe:m.color?"#"+m.color.getHexString():"?",
+          hatTextur:!!m.map, y:+this.position.y.toFixed(3),
+          renderOrder:this.renderOrder, nie:!!(this.userData&&this.userData.nieAusblenden),
+          n:this.name||(this.userData&&this.userData.datei)||this.geometry.type,
+          op:+(m.opacity||0).toFixed(2), tief:!!m.depthWrite,
+          misch:m.blending===THREE.AdditiveBlending?"additiv":"normal",
+          flaeche:this.geometry.boundingSphere?Math.round(this.geometry.boundingSphere.radius):0,
+          elt:(this.parent&&((this.parent.userData&&this.parent.userData.datei)||this.parent.name))||""});};
+      scene.traverse(function(o){if(o.isMesh&&o.visible){gesetzt.push([o,o.onBeforeRender]);o.onBeforeRender=haken;}});
+      renderer.render(scene,camera);
+      gesetzt.forEach(function(x){x[0].onBeforeRender=x[1];});
+      liste.sort(function(a,b){return b.flaeche-a.flaeche;});
+      return {transparentGezeichnet:liste.length, liste:liste};}
     if(was==="upd"){ /* CPU-Kosten je Aktualisierungsfunktion, 60 Durchlaeufe */
       var N=60,aus=[],now=performance.now();
       function miss(name,fn){
@@ -231,7 +265,18 @@ const { browser, page, jsFehler } = await spielOeffnen(TMP, { warten: 55000, vie
 const info = await page.evaluate(() => window.__th.leistung('info'))
 console.log('=== Geräteunabhängige Kennzahlen (Querformat 844×390) ===')
 for (const [k, v] of Object.entries(info)) console.log(`  ${k.padEnd(20)} ${v}`)
-console.log('=== CPU-Kosten je Aktualisierung (Mittel aus 60 Läufen) ===')
+const gl = await page.evaluate(() => window.__th.leistung('glows'))
+const gn = await page.evaluate(() => window.__th.leistung('glowsNacht'))
+console.log('=== Laternen-Lichtkegel ===')
+console.log(`  nachts gezeichnet: ${gn.nachtsGezeichnet} von ${gn.kegel}`)
+console.log(`  ${gl.materialien} Materialien · ${gl.meshes} Meshes · ${gl.sichtbar} sichtbar · ${gl.deckkraft0} mit Deckkraft 0`)
+
+console.log('\n=== Transparente Flaechen im Bild ===')
+const tr = await page.evaluate(() => window.__th.leistung('durchsicht'))
+console.log('  transparent gezeichnet:', tr.transparentGezeichnet)
+tr.liste.forEach(x => console.log(`    r${String(x.flaeche).padStart(4)} y=${String(x.y).padStart(7)} ${x.misch.padEnd(7)} op=${x.op} tiefe=${x.tief} ${x.hatTextur?'Textur':'Farbe '+x.farbe} · ${x.n}`))
+
+console.log('\n=== CPU-Kosten je Aktualisierung (Mittel aus 60 Läufen) ===')
 const up = await page.evaluate(() => window.__th.leistung('upd'))
 up.forEach(x => console.log(`  ${String(x.ms).padStart(8)} ms  ${x.n}`))
 
