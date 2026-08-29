@@ -4994,3 +4994,49 @@ gemessene Position durch feste `top:58px` ersetzt → „Uhr liegt unter dem Ser
 `.catch(() => {})` dahinter — Closure-Variable, wirft immer, wurde immer verschluckt, tat
 nie etwas. Ein leeres `catch` um einen Testschritt ist kein Schutz, sondern eine
 abgeschaltete Behauptung. Ersatzlos entfernt.
+
+## 2026-08-29 · 🎏 Ein Feature, das niemand findet, ist nichts wert
+
+**Der Befund — an der eigenen Arbeit.** Die Hetze war fertig, geprüft, gemergt. Und
+erreichbar über einen **unbeschrifteten Emoji-Knopf** (🏆, 48×48 px, ohne Text), eine
+Menü-Ebene tief. Beim Entwickeln fällt das nie auf, weil man den Weg selbst gebaut hat.
+Gemessen: `#achBtn` trägt kein Label, wird nirgends erklärt, und die Hetze steht erst
+im geöffneten Panel. Ein Spieler, der nie auf den Pokal tippt, hätte nie erfahren, dass
+es sie gibt.
+
+**Zwei Wege hinein — beide ohne ein neues Element in der Kopfzeile.**
+
+1. **Drei Ziele** (`hetzer`, `hetzeprofi`, `hetzekoenig`). Damit steht die Hetze in der
+   Erfolgsliste **und** in „Am nächsten dran" — zwei bestehende Anzeigen, die sie
+   von selbst bewerben. `hetzeEnde` schreibt dafür `stats.hetzen`, `stats.hetzeBest`,
+   `stats.hetzeKette`.
+2. **Eine Einladung, genau einmal**, ausgelöst am Ende einer Serie von **≥ 5**. Drei
+   harte Bedingungen (`stats.hetzeEinladung` leer · keine Runde gespielt · keine laufend),
+   sonst wäre ein Fenster mitten im Spiel eine Zumutung. Sie nutzt das vorhandene
+   `hetzePanel`: nur Inhalt und Knopfbeschriftung wechseln („🏁 Los" statt „🔁 Nochmal").
+
+**Reihenfolge zählt:** `komboEnde` merkt sich `stark=KOMBO.n>=5` **vor** dem Zurücksetzen
+und lädt erst danach ein — sonst liest die Einladung die schon geleerte Kette.
+
+**Und ein Fehler im eigenen Text, vor dem Ausliefern gefunden:** die Einladung versprach
+„Die Serie zählt doppelt so viel wie sonst". Das ist schlicht falsch — die Serie wirkt in
+der Hetze genau wie sonst. Korrigiert zu „Die Serie multipliziert mit". Es gibt jetzt eine
+Prüfung, die genau diesen Satz bewacht (`!/doppelt/`), damit die Zusage nicht
+zurückkommt. **Ein Spielhinweis ist eine Zusage; eine falsche Zusage ist ein Fehler wie
+jeder andere.**
+
+**Geprüft:** `spiele-dev/tools/th-einladung.mjs` — 20/20, davon 6 Gegenproben.
+Zwei Sabotagen dagegengehalten: Einmaligkeits-Schutz entfernt → „kommt kein zweites Mal"
+rot; Schwelle von 5 auf 1 gesenkt → **beide** Kurzserien-Gegenproben rot. Bestandsprüfer
+grün: `th-erfolge` („kein Erfolg beim Start erfüllt", „jeder gelesene Zähler wird auch
+geschrieben"), `th-hetze` 27/27, `th-meter` 25/25, `th-serie` 14/14, `th-speichern`,
+`th-hud`, `th-lint`.
+
+### Die Falle in dieser Runde: „Fenster offen" ist kein Beleg
+
+Die Gegenprobe *„wer die Hetze kennt, wird nicht eingeladen"* schlug fehl — und zwar
+zu Recht rot, aber aus dem falschen Grund: nach einer gelaufenen Runde steht das
+**Ergebnis**-Fenster offen, im selben `hetzePanel`. Der Test las `display==="flex"` und
+nannte das „Einladung". → **Ein geteiltes Element braucht ein inhaltliches
+Unterscheidungsmerkmal**, nicht nur seinen Sichtbarkeitszustand: erst schliessen, dann
+fragen, und zusätzlich auf den Text prüfen (`!/Lust auf/`).
