@@ -541,6 +541,42 @@ weil er `html.unescape` benutzt — die Standardbibliothek kennt alle.
 **Lehre: Ein Quellenfix gilt erst, wenn ein echtes Erzeugnis davon vorliegt.** Vier
 Testfälle liefen sauber durch; der erste echte Import hatte trotzdem einen Fehler.
 
+## 💸 TikTok-Werbung: CHF 500 ausgegeben, EIN Kauf — erstmals gemessen (2026-08-29)
+Der Ads-Konnektor ist endlich freigegeben (bis dahin scheiterte es an der OAuth-Freigabe, die
+eine Cloud-Session nicht durchklicken kann). Damit liess sich zum ersten Mal die Frage
+beantworten, die dieses Projekt seit Monaten mitschleppt. `report/integrated/get`, Lifetime,
+beide Werbekonten:
+
+| Kampagne | Ausgabe | Impressionen | Klicks | **Käufe** |
+|---|---:|---:|---:|---:|
+| LuxeStyle CH Conversion Juli 2026 | CHF 332.18 | 231'385 | 409 | **0** |
+| Wasserfest CH Juni | CHF 147.36 | 71'799 | 643 | **1** |
+| Sommer-Highlights 2026 | CHF 17.81 | 19'106 | 123 | **0** |
+| Vatertag-Test-1 | CHF 2.64 | 1'880 | 12 | **0** |
+| **Summe** | **CHF 499.99** | **324'170** | **1'187** | **1** |
+
+**CHF 500 für einen einzigen Kauf.** Zum Vergleich: Der Shop hat in seiner gesamten Geschichte
+**CHF 227.22 Umsatz aus 7 Bestellungen** gemacht — die Werbeausgaben sind **mehr als doppelt so
+hoch wie der gesamte Umsatz**, und die Marge je Bestellung liegt bei CHF 3–5.
+- ⚠️ **Diese Aussage hängt NICHT am Pixel.** Man könnte einwenden, TikTok zähle Käufe zu
+  niedrig. Muss man nicht: Shopifys eigene Zahl für den GESAMTEN Umsatz aller Zeiten
+  (CHF 227.22) liegt unter der Hälfte der Werbeausgabe. Selbst wenn JEDE Bestellung des Shops
+  von TikTok käme, wäre die Rechnung negativ. **Wo ein Beleg von einer strittigen Messung
+  abhängt, sucht man den zweiten Weg, der ohne sie auskommt.**
+- ⚠️ **Und das Wichtigste: Zwei dieser Kampagnen stehen weiterhin auf `ENABLE`** und laufen nur
+  deshalb nicht, weil das Guthaben leer ist (`CAMPAIGN_STATUS_BUDGET_EXCEED`) — darunter
+  «Wasserfest CH Juni» mit **CHF 30/Tag**. Wer das Konto auflädt, startet sie unbeabsichtigt.
+  Das steht als Punkt 1 in `dropship/COWORK-AUFTRAEGE.md`. **Nicht von dieser Session
+  pausiert:** Kampagnen und Budget sind Betreibersache (die drei User-Klicks aus §10), und es
+  fliesst gerade ohnehin kein Geld — ein Alarm ist hier richtiger als eine Handlung.
+- **Die Zahl stützt, was die Kanalmessung längst sagte** (social 6'063 Sitzungen → 0
+  Kassengänge, Suche 480 → 4): Reichweite war nie der Engpass. 324'170 Impressionen sind der
+  bisher teuerste Beweis dafür.
+- **Lehre über die Werkzeuge:** Diese Zahl lag zwei Monate lang hinter EINEM fehlenden
+  OAuth-Klick. Wo ein Konnektor «connected» meldet, aber keine Werkzeuge liefert, fehlt die
+  Freigabe — und dahinter kann eine Antwort liegen, die eine ganze Strategie umwirft.
+  **Ein nicht freigegebener Konnektor ist kein Randproblem, sondern ein blinder Fleck.**
+
 ## 📧 Der Klaviyo-Fix vom 28.08. hat die VORLAGEN repariert — nicht die Mails (2026-08-29)
 Der Betreiber schickte einen Screenshot: eine Bewertungs-Mail von gestern, Knopf «Jetzt
 bewerten» → **`luxestyle.com.co` · ERR_CONNECTION_CLOSED**. Also genau der Fehler, den der

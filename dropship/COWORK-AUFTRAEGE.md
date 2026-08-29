@@ -24,9 +24,22 @@ Entscheidungen, dann Handarbeit, dann Hygiene.
 | **Wasserfest CH Juni** | Shopify-Konto (7641101648701554704) | **CHF 30/Tag** | 01.07. |
 | LuxeStyle CH Conversion Juli 2026 | LuxeStyle CH Ads (7646349875793182738) | ohne Deckel | 06.07. |
 
-**Warum das zählt:** TikTok hat in 60 Tagen **6'063 Sitzungen und 0 Kassengänge** gebracht; die
-frühere Kampagne machte 19'000 Impressionen und **0 Käufe**. CHF 30/Tag in eine Juni-Kampagne,
-die seit zwei Monaten niemand angesehen hat, ist der teuerste Weg, das noch einmal zu bestätigen.
+**Warum das zählt — jetzt zum ersten Mal mit Zahlen, nicht mit Vermutung.** Der freigegebene
+Konnektor erlaubte am 29.08. die Lifetime-Auswertung beider Werbekonten:
+
+| Kampagne | Ausgabe | Impressionen | Klicks | **Käufe** |
+|---|---:|---:|---:|---:|
+| Conversion Juli 2026 | CHF 332.18 | 231'385 | 409 | **0** |
+| Wasserfest CH Juni | CHF 147.36 | 71'799 | 643 | **1** |
+| Sommer-Highlights 2026 | CHF 17.81 | 19'106 | 123 | **0** |
+| Vatertag-Test-1 | CHF 2.64 | 1'880 | 12 | **0** |
+| **Summe** | **CHF 499.99** | **324'170** | **1'187** | **1** |
+
+**CHF 500 für einen Kauf.** Der Shop hat in seiner GESAMTEN Geschichte CHF 227.22 Umsatz aus
+7 Bestellungen gemacht — die Werbung hat also mehr als das Doppelte des Gesamtumsatzes gekostet,
+bei einer Marge von CHF 3–5 pro Bestellung.
+ℹ️ Man könnte einwenden, der Pixel zähle zu niedrig. Darauf kommt es nicht an: Selbst wenn JEDE
+Bestellung des Shops von TikTok käme, stünden CHF 227 Umsatz gegen CHF 500 Ausgabe.
 → **Sag mir ein Wort, dann pausiere ich beide.** Ich habe es NICHT von mir aus getan: Kampagnen
 und Budget sind deine Entscheidung, und es fliesst gerade ohnehin kein Geld.
 
