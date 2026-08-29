@@ -5408,3 +5408,6 @@ gid://shopify/Product/15449065292161	CHF 20.08	25 Varianten	Herren Slim-Fit Kapu
 gid://shopify/Product/15449065324929	CHF 11.29	18 Varianten	Mönchskutte für Cosplay und Bühne
 gid://shopify/Product/15449065357697	CHF 25.27	14 Varianten	Herren Hoodie mit Doppelreissverschluss
 gid://shopify/Product/15449065423233	CHF 17.99	15 Varianten	Freizeitjacke für Herren – Frühling/Herbst
+gid://shopify/Product/15449065488769	CHF 22.14	25 Varianten	Strick-Cardigan für Herren
+gid://shopify/Product/15449065554305	CHF 16.15	15 Varianten	Tweed-Gilet im Retro-Look für Herren
+gid://shopify/Product/15449065652609	CHF 24.34	24 Varianten	Freizeitjacke mit Reverskragen
