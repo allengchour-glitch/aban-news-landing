@@ -931,3 +931,4 @@ gid://shopify/Product/15517646094721	ok	Smartwatch 4G mit Dual-Kamera & Herzfreq
 gid://shopify/Product/15518577918337	ok	Smartwatch mit Herzfrequenzmesser & Schrittzähler
 gid://shopify/Product/15518599610753	ok	Tennis-Badminton-Tasche (2er-Pack) · 2 Stück
 gid://shopify/Product/15518618386817	ok	X300 H1 Smartwatch mit Runddisplay
+gid://shopify/Product/15519838765441	nicht-versendbar	Kugelbahn-Bausatz für Kinder
