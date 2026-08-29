@@ -2930,3 +2930,54 @@ z 58. Der neue Kai läuft von z 61 bis 121.
 
 Die zwei zusätzlichen th-3d-Funde sind Kaimauer-Module, die sich planmässig die
 Kante teilen — dieselbe Sorte wie beim vorhandenen Hafen.
+
+## Eine Baustelle — und zweimal am Mass gescheitert
+
+Elf `th21_*` lagen unbenutzt im Repo, und nichts Vergleichbares gab es: eine Stadt,
+die ständig wächst, hatte keine einzige Baustelle.
+
+### `bau()` skaliert über die HÖHE — das ist die Falle
+
+`th21_rohbau` ist kein Häuschen. Auf 9 m Höhe misst er **33,8 × 33,8 m** im Grundriss.
+Der erste Versuch stellte ihn auf einen 24 × 18 m grossen Platz bei (150|50) — gemessen
+lagen **alle elf Teile innerhalb seiner Box**: Zaun, Bagger, Container, alles.
+
+Ort dann aus der Messung, ein Raster über x −160 … 200 / z −200 … 200 gegen
+`_freiPlatz`, `_aufViertelWeg`, alle Gebäudekästen und `WORLD_SOLIDS`:
+
+| Grundfläche | freie Plätze | nächster |
+|---|---|---|
+| 24 × 18 m | 54 | (−40\|140) am Kurpark, 146 m |
+| 24 × 24 m | 45 | (120\|−110), 163 m |
+| **32 × 32 m** | **21** | **234 m draussen** |
+
+**Die Innenstadt ist voll.** Genommen wurde (180|150) aus der 32er-Liste: Ostflanke
+zwischen Stadt und Vergnügungsviertel, also dort, wo die Stadt wächst.
+
+### Zweiter Fehlschlag: der Hof war schmaler als die Maschinen
+
+Rohbau auf 6,5 m ergab 24,4 × 24,4 und liess zwischen Zaunlinie und Südfassade nur
+7,3 m — Bagger und Radlader standen **auf** dem Zaun, der Baucontainer ragte 0,8 m
+darüber hinaus. Auf 6,0 m (22,5 × 22,5) mit Mitte auf BZ + 4,5 bleiben 8,75 m Hof; der
+Container steht quer (längs ist er 8,6 m tief, der Hof 8,35 m).
+
+### Und wann man aufhört
+
+Zwei Restkontakte von 0,04 m (Mischer am Zaun) und 0,04 m (Container am Zaun) wollte
+ich noch wegschieben. Auf der neuen Position berührte der Mischer den Radlader mit
+0,13 m und das Gerüst mit 0,07 m — **schlechter als vorher**. Zurückgestellt. Auf
+einem Bauhof stehen Maschinen an der Absperrung, und unter 0,2 m ist das Kontakt,
+keine Durchdringung.
+
+### Gemessen
+
+| | vorher | nachher |
+|---|---|---|
+| Bauwerke | 778 | **804** |
+| th-boden | 0 / 0 / 0 | **0 / 0 / 0** |
+| th-strassen · Stellen auf dem Belag | 147 | 148 |
+| th-3d | 58 echt / 67 nur 2D | 58 echt / 66 nur 2D |
+| th-netz | 38 ok | 38 ok, 0 Fehler |
+
+Die verbleibenden th21-Funde in th-3d: Materialstapel an der Rohbauwand (0,15 m) und
+Mischer am Zaun (0,04 m). Kein th21-Teil auf einer Strasse.
