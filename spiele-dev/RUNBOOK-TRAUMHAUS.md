@@ -3758,3 +3758,57 @@ Den Deckel trotzdem stehen lassen — er hält genau diesen Zustand.
   der Test hätte 24-mal dieselbe Stunde gemessen und grün gemeldet.
 * **Keine Backticks in Sonden-Quelltext.** Ein `uhrzeit` in Rückwärtsstrichen im
   Kommentar beendete das Template-Literal. Die alte Falle, wieder hineingetappt.
+
+---
+
+## 2026-08-29 · Der Dauerbefund war ein Kamin — und der erste Selbsttest zu schwach
+
+`th-pruef` meldete bei jedem Lauf denselben einen Treffer:
+
+```
+• Steckt in einem Bau  1     ? (41, 133)  100 % in  ?
+```
+
+Beide Namen `?`, also nie jemand nachgegangen. Nachgesehen, was dort steht:
+
+| | Box | Grösse |
+|---|---|---|
+| **klein** | 40,2 / 7,0 / 132,7 → 41,0 / 9,3 / 133,5 | 0,8 × 0,8 m, 2,3 m hoch |
+| **gross** | 38,0 / 6,0 / 131,8 → 42,0 / 7,7 / 136,2 | 4,0 × 4,4 m, erstes Mesh **„Giebel"** |
+
+Ein Aufbau auf einem Dach: 0,73 m tief im Dach, 1,6 m darüber. **Richtig gebaut,
+trotzdem jedes Mal rot.**
+
+Die Absicht stand längst im Kommentar des Tests — *„ein Baum, eine Hecke, ein **Dach**
+oder ein Gerüst ist kein GEHÄUSE"*. Nur greift `KEIN_GEHAEUSE` hier nicht: die Gruppe hat
+weder Namen noch `userData.datei`, der Name steckt eine Ebene tiefer im Mesh.
+
+### ⚠️ Nicht über die Mesh-Namen lösen
+
+Der naheliegende Fix — bei namenloser Gruppe auf die Mesh-Namen ausweichen — wäre falsch:
+**fast jedes Haus hat ein Mesh namens „Dach"**. Dann wäre kein Gebäude mehr ein Gehäuse
+und der Test still. Eine Prüfung, die nichts mehr findet, sieht aus wie Erfolg.
+
+Geometrisch statt namentlich: ragt **mehr als die Hälfte der Höhe** des kleinen Objekts
+über die Oberkante des grossen hinaus, sitzt es oben auf. Ein 2 m hohes Bauzaunfeld in
+einer 10 m hohen Wand ragt zu 0 % heraus und bleibt gemeldet.
+
+### ⚠️ Der erste Selbsttest hat die Sabotage überlebt
+
+Fünf Fälle prüfen jetzt bei **jedem Lauf**, dass die Regel noch unterscheidet — und die
+Entscheidung steckt in *einer* Funktion, die Test und Auswertung gemeinsam benutzen, damit
+der Test nicht eine Abschrift prüft.
+
+Gegenprobe: Regel testweise auf „ragt überhaupt heraus" aufgeweicht → **Selbsttest blieb
+grün.** Keiner der ersten vier Fälle ragte ein *wenig* heraus, und genau diese Grenze
+bewacht der Faktor 0,5. Fünfter Fall nachgereicht (3,2 m hoher Pfosten, der 0,2 m aus
+einem 3 m hohen Bau schaut, steckt zu 94 % drin → muss gemeldet bleiben). Damit:
+
+```
+richtige Regel     ✔ 5/5
+sabotierte Regel   ✖ 4/5  ← „Pfosten, der nur knapp herausschaut" erwartet true, war false
+```
+
+**Regel: Eine Ausnahme, die den Test stillstellt statt ihn zu schärfen, fällt nie auf —
+„0 Befunde" sieht aus wie Erfolg. Jede Ausnahme braucht einen Fall, der ohne sie kippt,
+und der Selbsttest muss beweisen, dass er rot werden kann.**
