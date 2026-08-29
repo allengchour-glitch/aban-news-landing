@@ -890,6 +890,39 @@ gebracht hat.
   des Betreibers nicht. Der Upload bleibt Handarbeit — was diese Session tun kann, ist das
   Material so vorzubereiten, dass es beim Einfügen stimmt.
 
+## 🖥️ Der Browser dieser Session kann TikTok LESEN, aber nicht BEDIENEN (2026-08-29)
+Auf «mach das du posten kannst» den QR-Weg durchgespielt — er ist der einzige, der ohne
+Passwort und ohne 2FA auskommt: Der Betreiber scannt, die Sitzung landet im Tresor. Die Seite
+`tiktok.com/login` rendert in `browser.mjs` **einwandfrei**, mit allen Anmeldeknöpfen inklusive
+«Use QR code»; der QR-Code wird sauber dargestellt. Damit ist der Gedächtnis-Eintrag vom 28.08.
+(«TikTok zeigt Something went wrong») **überholt** — aber die Sache funktioniert trotzdem nicht.
+**Der Beweis steckt in einer Zahl, nicht in einer Fehlermeldung:** Vier Aufnahmen über zwei
+Minuten zeigten denselben QR-Code, **byte-identisch (43'232 Bytes)**. Eine lebende Seite
+erneuert ihn nach rund einer Minute oder meldet «abgelaufen». Sie tat weder das eine noch das
+andere. Danach: `tiktokstudio/upload` fällt auf die Anmeldemaske zurück, 12 Cookies, **kein
+`sessionid`**.
+- **Die Erklärung, die dazu passt:** Der QR-Login lebt von einer Dauerabfrage im Hintergrund —
+  das Handy meldet die Bestätigung an TikTok, und die SEITE muss das durch wiederholtes
+  Nachfragen mitbekommen. `browser.mjs` schickt zwar jede Anfrage durch curl, aber sobald eine
+  davon scheitert, ruft es `route.abort()`, und das JavaScript stellt die Abfrage ein. Die
+  Seite steht dann still und sieht dabei völlig normal aus.
+- **Die schärfere Formulierung, die den Wert des Werkzeugs richtig beschreibt:** Es kann
+  **lesen**, was der Server ausliefert — genau damit wurden heute die Profildaten geholt
+  (560 Follower, 66 Videos, kein Bio-Link). Es kann **nicht bedienen**, was laufende
+  Hintergrund-Abfragen braucht: Anmeldung, Upload, alles Interaktive.
+  **«Die Seite lädt» und «die Seite lebt» sind zwei verschiedene Aussagen** — dieselbe Familie
+  wie «ein Lauf, der sein Ende erreicht, hat deswegen noch nichts getan» und «ein Endpunkt,
+  der antwortet, beweist nur, dass er antwortet».
+- ⚠️ **Nicht weiter daran bauen, ohne den Nutzen zu prüfen.** Selbst mit funktionierender
+  Abfrage wäre der Weg fraglich: TikToks Anmeldung nutzt Geräte-Fingerprinting und signierte
+  Parameter, und der Upload läuft über dasselbe interaktive Gerüst. Der Aufwand gehört erst
+  investiert, wenn kein einfacherer Weg mehr offen ist — offen sind zwei: die
+  Content-Posting-API (in Review) und die Unternehmensverifizierung.
+- ⚠️ Und der Umgang mit dem Betreiber: Ich habe ihn zweimal scannen lassen, bevor ich die
+  stehengebliebene Byte-Zahl bemerkt habe. **Wenn eine Oberfläche nicht reagiert, prüft man
+  zuerst, ob sie überhaupt noch spricht** — statt den Menschen die Handlung wiederholen zu
+  lassen.
+
 ## 🔓 Das Website-Feld gibt es im Privatkonto GAR NICHT — und was dann half (2026-08-29)
 Nachtrag zum Bio-Link. Meine Wegbeschreibung «Einstellungen → Konto → Zu Business-Konto
 wechseln» stammte aus einer älteren App-Fassung: Der Betreiber hat den Bildschirm gezeigt, und
