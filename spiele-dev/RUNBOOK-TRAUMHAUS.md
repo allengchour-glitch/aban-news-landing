@@ -3463,3 +3463,40 @@ schweigend hinzunehmen hiesse, vier Einträge nicht geprüft zu haben und trotzd
 erscheinen" zu melden.
 
 `spiele-dev/tools/th-katalog.mjs` (neu), aufgenommen in `th-alle.mjs`.
+
+## Stecken die Bewohner fest? — und warum die Spielzeit hier siebenmal langsamer läuft
+
+`th-koop.mjs` prüft zwei Spielerwege im Mehrspielermodus. Die Bewohner (`sims`) und die
+Besucher (`npcs`) hat nie jemand beobachtet. Ein NPC, der in einer Ecke hängenbleibt oder
+mitten in einem Haus steht, erzeugt kein Fehlerbild — er steht einfach da.
+
+`spiele-dev/tools/th-bewohner.mjs` (neu) misst über 60 s den zurückgelegten Weg und, für
+jede Probe, ob jemand in einem Kollider steht.
+
+### Vier Anläufe, vier verschiedene Gründe, warum nichts gemessen wurde
+
+1. **Der Playwright-Symlink war weg** — Regel 11 der Liste oben, ein Container-Neustart.
+2. **„2 verfolgt, 0 Besucher"** — der Besucher-Pool hängt an der Tageszeit (8 … 12 Uhr
+   Postbote, 13 … 18 Uhr Nachbarin und Händler; sonst ist der Pool **leer**). Bei ~2
+   Bildern/s wandert die Spielzeit während der Messung aus dem Fenster. Jetzt wird die Uhr
+   bei jedem Takt auf 9 Uhr gesetzt.
+3. **Immer noch 0 Besucher.** Der Grund ist allgemein wichtig: **das `dt` der Spielschleife
+   ist gedeckelt** — sonst zerrisse die Physik bei zwei Bildern je Sekunde. Gemessen: in
+   **45 s Echtzeit fällt `npcTimer` nur von 20 auf 13,5**. Spielzeit läuft hier rund
+   **siebenmal langsamer** als Echtzeit; der erste Besucher käme nach zweieinhalb Minuten.
+   Wer auf so eine Uhr wartet, misst eine leere Welt und meldet „alles in Ordnung".
+   → Zähler anstossen (`npcTimer = 0.1`), und erneut, sobald wieder Platz ist.
+4. **„Max hat sich 0 m bewegt".** `meinSi()` liefert im Einzelspieler 0, und `simDefs[0]`
+   ist Max — die **Spielfigur**. Sie steht still, weil die Sonde keine Taste drückt.
+
+Dazu ein Fehler in der Auswertung statt in der Messung: der Kopfkommentar beschrieb längst,
+dass Schlafen, Arbeiten und Warten legitime Stillstände sind — **die Auswertung wandte es
+nicht an** und meldete Mia im Zustand `work` als Befund.
+
+### Ergebnis
+
+**Niemand steckt fest, niemand steht in einer Wand.** 4 verfolgt, 2 Besucher kommen an und
+laufen ihren Zyklus, Mias Stillstand ist durch `work` erklärt, die Spielfigur ausgenommen.
+
+> **Merke für jeden zeitgesteuerten Test hier:** Spielzeit ≠ Echtzeit. Wer auf einen
+> Spiel-Timer wartet, wartet etwa siebenmal so lange wie gedacht — oder stösst ihn an.
