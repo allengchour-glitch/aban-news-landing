@@ -2407,3 +2407,33 @@ dadurch 20 m nach Süden (z 340 → 360), das Vergnügungsviertel von (250|220) 
 | th-3d · echte Durchdringungen | 58 | **56** |
 | th-3d · nur 2D | 74 | **67** |
 | th-netz | 39 ok, 0 Fehler | 39 ok, 0 Fehler |
+
+## Die Uferlinie gab es dreimal — die Enten wateten an Land
+
+Dieselbe Klasse wie die Seilbahn, nur am See. Die Uferlinie war an drei Stellen
+abgeleitet:
+
+1. `seeR(a) = 13 + sin(3a)*1.8 + cos(5a+1.3)*1.2 + sin(2a+0.7)*0.9` im Weltaufbau — die Wahrheit,
+2. eine **Zeichen für Zeichen identische Kopie** `rad()` in `seePromenade`,
+3. eine **Schätzung** im Enten-Code: `/* zum Ufer schwimmen — aber IM Wasser bleiben (See-Rand liegt bei ~11…16) */`.
+
+Echt sind **9,1 … 16,9 m**. Die Schätzung war an den engen Stellen fast 2 m zu
+grosszügig, und der Code hielt sich mit `Math.min(10.5, zl)` genau daran fest.
+
+Gemessen, mit dem Fütterziel in der engsten Richtung des Sees (93,5°, Ufer dort
+9,37 m):
+
+| | vorher | nachher |
+|---|---|---|
+| Proben an Land | **4133 von 6000 (68,9 %)** | **0** |
+| tiefste Landung | **1,71 m im Gras** | — |
+| ohne Fütterung (freies Kreisen) | 32 von 3000 (1,1 %), bis 0,33 m | 0 |
+
+Der äusserste Ring (`r = 4.5 + i*1.3` → 9,7) lag von Haus aus jenseits des engsten
+Ufers; das Füttern machte es nur sichtbar.
+
+Jetzt gibt es `window._seeUfer` — eine Uferlinie, drei Nutzer. Der Enten-Ring wird
+auf `_ufer(a) − 1.0` gestaucht, das Fütterziel auf `_ufer(a) − 1.4` gekappt. Die
+Herde schwimmt damit nicht mehr auf einem Kreis, sondern in der Form des Sees.
+
+`spiele-dev/tools/th-see.mjs` (neu) hält den Fall fest.
