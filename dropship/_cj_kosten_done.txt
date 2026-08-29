@@ -5250,3 +5250,7 @@ gid://shopify/Product/15448962630017	cj-abgekuendigt-pruefen
 gid://shopify/Product/15448962695553	cj-abgekuendigt-pruefen
 gid://shopify/Product/15448962761089	cj-abgekuendigt-pruefen
 gid://shopify/Product/15448962892161	cj-abgekuendigt-pruefen
+gid://shopify/Product/15448963056001	CHF 41.47	1 Varianten	Kochmesser & Küchenschere Set, 2-teilig
+gid://shopify/Product/15448963252609	cj-abgekuendigt-pruefen
+gid://shopify/Product/15448963416449	cj-abgekuendigt-pruefen
+gid://shopify/Product/15448963645825	CHF 10.34	1 Varianten	Manueller Eisraspler für Zuhause
