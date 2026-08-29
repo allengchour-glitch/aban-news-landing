@@ -47438,3 +47438,4 @@ gid://shopify/Product/15520303808897	gid://shopify/MediaImage/70715754348929
 gid://shopify/Product/15520304333185	gid://shopify/MediaImage/70715756577153
 gid://shopify/Product/15520305054081	gid://shopify/MediaImage/70715760017793
 gid://shopify/Product/15520305742209	gid://shopify/MediaImage/70715764605313
+gid://shopify/Product/15520324616577	gid://shopify/MediaImage/70716073607553
