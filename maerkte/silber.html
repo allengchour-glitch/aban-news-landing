@@ -54,7 +54,18 @@
     .hnav a.lk{color:var(--muted);text-decoration:none}.hnav a.lk:hover{color:var(--ink)}.hnav a.lk[aria-current=page]{color:var(--ink);font-weight:700}
     .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:.78rem;font-weight:800}
     .lang a{padding:.34rem .6rem;color:var(--muted);text-decoration:none}.lang a.on{background:var(--ink);color:#fff}
-    @media(max-width:820px){.hnav .lk{display:none}.hnav .lk--keep{display:inline}}
+    /* 820 -> 1040: die Links verschwanden erst ab 820px, die Kopfzeile braucht aber
+       rund 1040px. Dazwischen lief die Seite waagerecht ueber (gemessen +185px bei
+       840, +125 bei 900, +25 bei 1000). Betrifft Tablets quer und kleine Notebooks. */
+    @media(max-width:1040px){.hnav .lk{display:none}.hnav .lk--keep{display:inline}}
+    /* Unter 380px schrumpft die Kopfzeile zwar (flex-shrink), ihr Knopf aber nicht:
+       gemessen endete nav.hnav bei 300, der Knopf darin bei 367 — die Seite lief
+       waagerecht ueber. Umbrechen DUERFEN, nicht muessen: ohne erzwungene volle
+       Breite bleibt die Zeile einzeilig, wo sie passt. */
+    @media(max-width:380px){
+      header .wrap{flex-wrap:wrap;row-gap:.45rem}
+      .hnav{justify-content:flex-end}
+    }
 
     /* hero */
     .hero{position:relative;overflow:hidden;background:

@@ -54,7 +54,18 @@
     .hnav a.lk{color:var(--muted);text-decoration:none}.hnav a.lk:hover{color:var(--ink)}.hnav a.lk[aria-current=page]{color:var(--ink);font-weight:700}
     .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:.78rem;font-weight:800}
     .lang a{padding:.34rem .6rem;color:var(--muted);text-decoration:none}.lang a.on{background:var(--ink);color:#fff}
-    @media(max-width:820px){.hnav .lk{display:none}.hnav .lk--keep{display:inline}}
+    /* 820 -> 1040: die Links verschwanden erst ab 820px, die Kopfzeile braucht aber
+       rund 1040px. Dazwischen lief die Seite waagerecht ueber (gemessen +185px bei
+       840, +125 bei 900, +25 bei 1000). Betrifft Tablets quer und kleine Notebooks. */
+    @media(max-width:1040px){.hnav .lk{display:none}.hnav .lk--keep{display:inline}}
+    /* Unter 380px schrumpft die Kopfzeile zwar (flex-shrink), ihr Knopf aber nicht:
+       gemessen endete nav.hnav bei 300, der Knopf darin bei 367 — die Seite lief
+       waagerecht ueber. Umbrechen DUERFEN, nicht muessen: ohne erzwungene volle
+       Breite bleibt die Zeile einzeilig, wo sie passt. */
+    @media(max-width:380px){
+      header .wrap{flex-wrap:wrap;row-gap:.45rem}
+      .hnav{justify-content:flex-end}
+    }
     /* Unter ~600px brach nichts um — die Kopfzeile lief ueber den Viewport hinaus
        und die ganze Seite bekam horizontales Scrollen auf dem Handy. */
     @media(max-width:600px){
@@ -307,7 +318,7 @@
 <p data-aban-was style="max-width:760px;margin:14px auto 0;padding:10px 14px;background:#fef3c7;border:1px solid #fde9c8;border-radius:10px;color:#374151;font-size:.92rem;line-height:1.5;text-align:left">💡 <strong style="color:#1f2937">Was macht das?</strong> Zeigt aktuelle Kurse von Krypto und Aktien mit Umrechner und 30-Tage-Charts.</p>
 
   <!-- LIVE-TICKER -->
-  <div class="ticker" aria-label="Live-Kursticker">
+  <div class="ticker" role="marquee" aria-label="Live-Kursticker">
     <div class="ticker-track" id="tickerTrack"><span class="tk" style="color:var(--muted)">Lade Ticker …</span></div>
   </div>
 
@@ -372,7 +383,7 @@
       <div style="margin-top:18px">
         <h3 style="margin:0 0 8px">3D: Tagesbewegungen</h3>
         <div style="border-radius:14px;overflow:hidden;background:radial-gradient(120% 120% at 50% 25%,#1c1814,#0f0d0a);border:1px solid #2a241c">
-          <canvas id="mkt-chart" data-aban3d data-shape="bars" data-labels="1" data-color="#f0a93a" data-speed="0.5" style="display:block;width:100%;height:220px;touch-action:none" aria-label="3D-Diagramm der 24-Stunden-Veränderungen"></canvas>
+          <canvas role="img" id="mkt-chart" data-aban3d data-shape="bars" data-labels="1" data-color="#f0a93a" data-speed="0.5" style="display:block;width:100%;height:220px;touch-action:none" aria-label="3D-Diagramm der 24-Stunden-Veränderungen"></canvas>
         </div>
         <p style="font-size:.8rem;color:var(--muted);margin:.4rem 0 0">Live-24h-Veränderung (%) der wichtigsten Werte — echte Kurse, hoch = Plus, runter = Minus. Keine Anlageberatung.</p>
       </div>
@@ -602,7 +613,7 @@
     <div class="footbar">
       <span>© 2026 aban news · Allen Chour, Belp (CH)</span>
       <span class="footbar-links"><a href="/suchmaschine.html">Suche</a>
-      <span class="footbar-links"><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></span>
+      <a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></span>
     </div>
   </div>
 </footer>
