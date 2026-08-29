@@ -135,10 +135,34 @@ while true; do
   # Entschieden wird jetzt nach LAUFZEIT (etimes, Sekunden seit Start). Die ist monoton und
   # kennt keinen Überlauf. Die PID bleibt nur noch Schiedsrichter bei exakt gleicher Laufzeit —
   # dort genügt sie, weil beide Seiten dieselbe Antwort erhalten.
-  aeltere=$(ps -eo pid,etimes,args --no-headers \
-    | awk -v me=$$ -v mysec="$(ps -o etimes= -p $$ | tr -d ' ')" \
-      '$3=="bash" && $4 ~ /fixer_keepalive\.sh$/ && $1 != me \
-       && ($2 > mysec || ($2 == mysec && $1 < me)) {n++} END{print n+0}')
+  # ⚠️ 29.08.2026 — ZWEI FALLEN IN DIESEN VIER ZEILEN, beide gemessen statt vermutet.
+  #
+  # 1. EIN LEERES `mysec` KIPPT DEN VERGLEICH VON ZAHLEN AUF ZEICHENKETTEN. `mysec` kommt aus
+  #    `ps -o etimes= -p $$`; scheitert dieser Aufruf einmal (Last, Fork-Grenze), ist die
+  #    Variable leer, und awk vergleicht `$2 > ""` als STRING — das ist für jede Laufzeit wahr.
+  #    Dann gilt JEDER andere Supervisor als älter. Sichtbar wurde es an der Logzeile «älterer
+  #    Supervisor ist inzwischen weg — PID 30992 übernimmt»: **55-mal an einem Tag, immer mit
+  #    DERSELBEN PID**, während durchgehend genau ein Aufseher lief (Laufzeit 8,7 h,
+  #    Herzschlag 78 s). Es wurde also nie etwas übernommen.
+  #    Harmlos war nur der Zweig, der zufällig zog. Der andere hätte `exit 0` ausgeführt und
+  #    einen gesunden Aufseher beendet, weil ein `ps` nichts zurückgab — dieselbe Klasse wie
+  #    «eine PID ist ein Name, kein Zeitstempel» (20.08.), nur eine Ebene tiefer: **eine
+  #    fehlgeschlagene Messung darf nicht als Messwert weiterlaufen.**
+  #    Jetzt: Ist `mysec` keine Zahl, wird die Prüfung diese Runde ÜBERSPRUNGEN. Die
+  #    flock-Sperre trägt ohnehin; dieses Netz darf nie selbst zur Ursache werden.
+  #
+  # 2. FORKS TRAGEN DIE KOMMANDOZEILE DES ELTERNPROZESSES. Am 27.08. wurde dafür in
+  #    `engine_keepalive.sh` die Sitzungs-Regel eingeführt (nur `pid == sid` ist ein echter
+  #    Aufseher) — **hier fehlte sie**, dieselbe Lehre am Geschwister-Ort unangewandt.
+  #    Der per `setsid` gestartete Aufseher ist Sitzungsführer, seine Forks sind es nie.
+  mysec="$(ps -o etimes= -p $$ | tr -d ' ')"
+  case "$mysec" in
+    ''|*[!0-9]*) aeltere=0 ;;          # Messung fehlgeschlagen -> KEIN Befund
+    *) aeltere=$(ps -eo pid,sid,etimes,args --no-headers \
+         | awk -v me=$$ -v mysec="$mysec" \
+           '$1==$2 && $4=="bash" && $5 ~ /fixer_keepalive\.sh$/ && $1 != me \
+            && ($3+0 > mysec+0 || ($3+0 == mysec+0 && $1 < me)) {n++} END{print n+0}') ;;
+  esac
   # ⚠️ NICHT SOFORT ABTRETEN. Die erste Fassung dieser Regel beendete den jüngeren
   # Supervisor auf der Stelle — und wenn der ältere Sekunden später starb, lief GAR KEINER
   # mehr. Genau das geschah am 14.08. um 01:22. Deshalb wird nach einer Pause noch einmal
@@ -147,10 +171,14 @@ while true; do
   # ist nur noch das Netz darunter und darf deshalb nie zur Ursache eines Ausfalls werden.
   if [ "$aeltere" -gt 0 ]; then
     sleep 5
-    aeltere=$(ps -eo pid,etimes,args --no-headers \
-      | awk -v me=$$ -v mysec="$(ps -o etimes= -p $$ | tr -d ' ')" \
-        '$3=="bash" && $4 ~ /fixer_keepalive\.sh$/ && $1 != me \
-         && ($2 > mysec || ($2 == mysec && $1 < me)) {n++} END{print n+0}')
+    mysec="$(ps -o etimes= -p $$ | tr -d ' ')"
+    case "$mysec" in
+      ''|*[!0-9]*) aeltere=0 ;;
+      *) aeltere=$(ps -eo pid,sid,etimes,args --no-headers \
+           | awk -v me=$$ -v mysec="$mysec" \
+             '$1==$2 && $4=="bash" && $5 ~ /fixer_keepalive\.sh$/ && $1 != me \
+              && ($3+0 > mysec+0 || ($3+0 == mysec+0 && $1 < me)) {n++} END{print n+0}') ;;
+    esac
     if [ "$aeltere" -gt 0 ]; then
       echo "$(date -u +%H:%M) älterer Supervisor läuft weiterhin (PID $$ tritt ab)"
       exit 0

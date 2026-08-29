@@ -890,6 +890,36 @@ gebracht hat.
   des Betreibers nicht. Der Upload bleibt Handarbeit — was diese Session tun kann, ist das
   Material so vorzubereiten, dass es beim Einfügen stimmt.
 
+## 📢 «55-mal übernommen» — und es lief die ganze Zeit derselbe Aufseher (2026-08-29)
+Im Aufseher-Log stand dreimal in 18 Minuten «älterer Supervisor ist inzwischen weg — PID 30992
+übernimmt». Das sah nach einem instabilen Motor aus. Nachgemessen lief aber **genau EIN**
+Aufseher, PID 30992, seit **8,7 Stunden**, Herzschlag 78 Sekunden alt — kerngesund. Und die
+Zeile stand an diesem Tag **55-mal** im Log, jedes Mal mit derselben PID. Es wurde also nie
+etwas übernommen.
+**Die Ursache steckt in vier Zeilen und ist eine Typfalle:**
+```
+awk -v mysec="$(ps -o etimes= -p $$)" '… ($2 > mysec || …)'
+```
+Scheitert dieses `ps` ein einziges Mal (Last, Fork-Grenze), ist `mysec` **leer** — und awk
+vergleicht dann `$2 > ""` als **Zeichenkette** statt als Zahl. Das ist für jede Laufzeit wahr,
+also gilt jeder andere Aufseher als älter. Gegenprobe gemessen: mit leerem `mysec` zählt die
+alte Regel **einen älteren Aufseher, den es nicht gibt**; mit der neuen ist es 0.
+- ⚠️ **Harmlos war nur der Zweig, der zufällig zog.** Findet die Wiederholung nach 5 Sekunden
+  den Phantom-Aufseher noch, führt der andere Zweig `exit 0` aus — **ein gesunder Aufseher
+  beendet sich, weil ein `ps` nichts zurückgab.** Und mit ihm stehen alle täglichen Wächter.
+  Dieselbe Klasse wie «eine PID ist ein Name, kein Zeitstempel» (20.08.), nur eine Ebene
+  tiefer: **eine fehlgeschlagene Messung darf nicht als Messwert weiterlaufen.** Jetzt wird
+  bei nicht-numerischem `mysec` die Prüfung übersprungen — die flock-Sperre trägt ohnehin,
+  und dieses Netz darf nie selbst zur Ursache werden.
+- ⚠️ **Und die Geschwister-Lehre, schon wieder:** Am 27.08. wurde für genau dieses Problem die
+  Sitzungs-Regel eingeführt (nur `pid == sid` ist ein echter Aufseher, Forks erben die
+  Kommandozeile) — **in `engine_keepalive.sh`. Im Aufseher selbst fehlte sie.** Zwei Stellen,
+  dieselbe Frage, eine Antwort. Jetzt beide.
+- **Die Logzeile war der einzige Hinweis, und sie war irreführend.** Sie meldete eine ABSICHT
+  («übernimmt») statt eines Ergebnisses. Wer sie liest, sucht nach einem Ausfall, den es nicht
+  gibt — und übersieht beim 56. Mal den echten. **Eine Meldung, die sich täglich dutzendfach
+  wiederholt, ist entweder ein Befund oder ein Fehler in der Meldung.**
+
 ## 🖥️ Der Browser dieser Session kann TikTok LESEN, aber nicht BEDIENEN (2026-08-29)
 Auf «mach das du posten kannst» den QR-Weg durchgespielt — er ist der einzige, der ohne
 Passwort und ohne 2FA auskommt: Der Betreiber scannt, die Sitzung landet im Tresor. Die Seite
