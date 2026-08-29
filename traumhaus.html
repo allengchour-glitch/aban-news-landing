@@ -984,6 +984,10 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
         col[v2*3]=c0;col[v2*3+1]=c1;col[v2*3+2]=c2;
       }
       g2.setAttribute("color",new THREE.BufferAttribute(col,3));
+      /* Die Hoehenfunktion mitgeben. Bisher hat jeder, der auf einem Berg etwas
+         absetzen wollte, sie NACHGEBAUT — und die Nachbauten wichen ab (siehe
+         _bergHoehe weiter unten). Sie ist hier ohnehin schon gerechnet. */
+      g2.userData.hoehe=H;
       return g2;
     }
     var QSPERR=[[60,330,200,80],[0,216,110,60],[-190,212,80,60],[172,0,70,90],
@@ -1031,7 +1035,14 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       /* Fuss melden. Ein Berg der Hoehe 97 hat 80 m Basisradius — seine Sohle
          reicht damit bis r 132 nach innen, weit vor die Bergmitte. Wer spaeter
          etwas ins Vorland setzt, braucht diese Zahl, sonst steht es im Fels. */
-      (window._berge=window._berge||[]).push({x:bx,z:bz,r:rad*1.38});}
+      (window._berge=window._berge||[]).push({x:bx,z:bz,r:rad*1.38,
+        /* Weltkoordinaten -> lokale Berg-Koordinaten. Der Mesh ist um rotation.y
+           gedreht, also muss die Probe GEGEN diese Drehung zuruecktransformieren.
+           three.js Ry(t): x_w = cos t * x_l + sin t * z_l, z_w = -sin t * x_l + cos t * z_l. */
+        hoehe:(function(mx,mz,rot,fy,Hf){var c=Math.cos(-rot),s=Math.sin(-rot);
+          return function(wx,wz){var dx=wx-mx,dz=wz-mz;
+            var h=Hf(c*dx+s*dz,-s*dx+c*dz); return h>0?fy+h:0;};
+        })(bx,bz,berg.rotation.y,fussY,berg.geometry.userData.hoehe)});}
     /* ═══ 🏔️ DER GROSSE BERG — begehbar, befahrbar ═══════════════════════════════
      Der Wunsch war: EIN richtig grosser Berg, den man selbst besteigen kann, mit
      Gehweg und Fahrweg. Das geht nur, wenn die Spielfigur ihre Hoehe aus dem
@@ -1064,6 +1075,20 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
      Die Sperre muss die Anlage samt Tribuenen und Auslauf umfassen, nicht nur
      die Rasenflaeche. */
   window.SPORTFELD={x:53,z:155,w:70,d:56};
+  /* 🏔️ EINE Geländeprobe für die ganze Welt: der grosse Berg UND die 34 Kettenberge.
+     ⚠️ WARUM DAS NOETIG WURDE: die Seilbahn hat ihre Gelaendehoehen mit einer
+     EIGENEN Formel gerechnet — `y(d) = -6 + 75*(1 - d/51.75)`, ein runder Kegel.
+     Berg Nr. 5 ist aber keiner: `bergGeo` staucht den Grundriss laengs des Grats
+     um `streck` (fuer diesen Seed 1,4835) und quer um 0,92 und dreht ihn dann noch
+     um `rotation.y` = 3,5 rad. Beides fehlte in der Nachbildung. Die zweite
+     Ableitung derselben Form ging darum ueberall daneben — und zwar in eine
+     Richtung: die Nachbildung war zu FLACH, also steckte alles im Hang.
+     Wer eine Gelaendehoehe braucht, fragt ab jetzt hier und leitet nichts nach. */
+  window._bergHoehe=function(x,z){
+    var h=window.gelaendeH?window.gelaendeH(x,z):0, B=window._berge||[];
+    for(var i=0;i<B.length;i++){ if(!B[i].hoehe)continue;
+      var v=B[i].hoehe(x,z); if(v>h)h=v; }
+    return h;};
   window.gelaendeH=function(x,z){
     /* ⚠️ Erste Fassung war H = hoch*(1-r/rad)^exp — also rotationssymmetrisch,
        und damit exakt das, was als „Kegel" bemaengelt wurde. Die Form muss aus
@@ -6197,11 +6222,23 @@ setTimeout(function baueGebaeude(){
        Kegels auf flachem Grund. Die Stuetzen stehen auf der so berechneten Hoehe,
        damit keine in der Luft haengt oder im Hang steckt. */
     (function seilbahn(){
-      var BX=121.5,BZ=174.9,BRAD=51.75,BHOCH=75,BFUSS=-6;
-      function bergH(x,z){                       // Gelaendehoehe auf dem Hausberg
-        var d=Math.hypot(x-BX,z-BZ);
-        if(d>=BRAD)return 0;
-        return Math.max(0,BFUSS+BHOCH*(1-d/BRAD));}
+      /* ⚠️ HIER STAND DIE ZWEITE ABLEITUNG DES BERGS — und sie war falsch:
+           var BX=121.5,BZ=174.9,BRAD=51.75,BHOCH=75,BFUSS=-6;
+           bergH(x,z) = max(0, -6 + 75*(1 - hypot(x-BX,z-BZ)/51.75))
+         Das ist ein RUNDER Kegel. Berg Nr. 5 ist elliptisch (streck 1,4835 laengs
+         des Grats, 0,92 quer) und zusaetzlich um rotation.y = 3,5 rad gedreht.
+         Nachgerechnet gegen das echte Hoehenfeld (gleicher Seed, gleiche Formel):
+           Stuetze t=0,78 (150,8|127,0):  angenommen  0,00 m  —  echt 10,63 m
+           Stuetze t=0,90 (138,9|142,8):  angenommen 16,08 m  —  echt 30,48 m
+           Bergstation (129|156):         angenommen 39,53 m  —  echt 46,72 m
+         Die Nachbildung war ueberall zu flach, nie zu hoch. Folge: die oberen
+         zwei Stuetzen steckten 10,6 bzw. 14,4 m im Hang, und die Bergstation lag
+         mit ihrer Terrasse unter der Gelaendeoberflaeche — man sah vom 9,5 m hohen
+         Haus nur noch das Dach aus dem Fels ragen. (th-3d meldete das als
+         staerkste Durchdringung der Karte: Station x Stuetze, 1,39 m tief,
+         72 Meshpaare, ab y 40,3.)
+         Jetzt fragt die Seilbahn dieselbe Funktion, aus der der Berg entsteht. */
+      var bergH=window._bergHoehe;
       /* Der Kegel steigt mit 75 m auf 51.75 m Radius, also rund 55 Grad. Auf so einem
          Hang schwebt JEDE grosszuegige Terrasse als Betonklotz ueber der Wiese (erste
          Fassung, im Screenshot geprueft). Die Bergstation steht deshalb auf einer
@@ -6215,7 +6252,16 @@ setTimeout(function baueGebaeude(){
          Platz dieser Groesse — die Station ist mit 17 x 27.5 m groesser als jedes
          Wohnhaus. Ergebnis: 165 m Fahrstrecke von Osten ueber „Gewerbe Ost" hinweg
          zur Bergstation auf 40 m Hoehe. */
-      var TAL={x:228,z:24},BERG={x:129,z:156};
+      /* ⚠️ BERG WAR (129|156) — 20 m neben dem Gipfel, wo der Hang mit rund 50 Grad
+         steht. Die Terrasse ist 24 x 34 m und liegt mit ihrer LANGEN Seite im
+         Gefaelle: zwischen Berg- und Talkante lagen dort 65,5 - 22,2 = 43 Hoehenmeter.
+         Egal wie man den Bahnsteig legt, eine der beiden Kanten ist falsch — bei
+         y 40 steckte die Bergkante 25 m im Fels, bei y 66 waeren die Stuetzen auf
+         bis zu 49 m gewachsen. Loesung ist keine neue Hoehe, sondern ein neuer Ort:
+         25 m weiter talwaerts auf derselben Seilachse liegt die Terrasse auf
+         -1,1 … 41,3 m, die Bergkante also GENAU auf Bahnsteighoehe. Die Talseite
+         traegt der Felssockel — wofuer er da ist. */
+      var TAL={x:228,z:24},BERG={x:144,z:136};
       /* Die Kartenmarke "Seilbahn" stand fest auf (155|86) — das ist ungefaehr die
          Mitte des Seils zwischen Tal- und Bergstation, also der Punkt, an dem man
          gerade NICHT einsteigen kann (95 m von der Talstation, 34,8 m bis zum
@@ -6224,12 +6270,21 @@ setTimeout(function baueGebaeude(){
          Station nicht wieder zurueckbleibt. */
       if(typeof WORLD_POIS!=="undefined")WORLD_POIS.forEach(function(P){
         if(P[3]==="Seilbahn"){P[0]=TAL.x;P[1]=TAL.z;}});
-      var TALY=0,BERGY=40;                       // Bahnsteighoehen
+      var TALY=0,BERGY=40;                       // BERGY wird unten aus dem Gelaende gesetzt
       var SEILH=8;                               // Seil haengt 8 m ueber dem Bahnsteig
       var laenge=Math.hypot(BERG.x-TAL.x,BERG.z-TAL.z);
       var qx=(BERG.z-TAL.z)/laenge,qz=-(BERG.x-TAL.x)/laenge;   // Querrichtung fuer Berg-/Talspur
       var SPUR=2.6;                              // Abstand der beiden Seile
       var winkel=Math.atan2(BERG.x-TAL.x,BERG.z-TAL.z);
+      /* Bahnsteighoehe = hoechster Punkt UNTER der eigenen Terrasse. Tiefer waere
+         Fels auf dem Bahnsteig, hoeher waere unnoetige Stuetzenlaenge. Gemessen
+         ueber ein 7 x 9 Raster der 24 x 34 m Platte, in ihrer eigenen Drehung. */
+      var BGELmax=0,BGELmin=1e9;
+      for(var tu=-12;tu<=12;tu+=4)for(var tv=-17;tv<=17.01;tv+=4.25){
+        var tgh=bergH(BERG.x+tu*Math.cos(winkel)+tv*Math.sin(winkel),
+                      BERG.z-tu*Math.sin(winkel)+tv*Math.cos(winkel));
+        if(tgh>BGELmax)BGELmax=tgh; if(tgh<BGELmin)BGELmin=tgh;}
+      BERGY=Math.round((BGELmax+0.6)*10)/10;
       function amSeil(t,spur){                   // Punkt auf dem Seil, t=0 Tal .. 1 Berg
         var o=spur*SPUR/2;
         return new THREE.Vector3(TAL.x+(BERG.x-TAL.x)*t+qx*o,
@@ -6240,8 +6295,13 @@ setTimeout(function baueGebaeude(){
       var felsSockelM=new THREE.MeshStandardMaterial({color:0x7d7468,roughness:1,flatShading:true,envMapIntensity:0.2});
       /* Die Station ist 17 x 27 m gross (gemessen: Modell 20.6 x 11.5 x 33.3, auf 9.5 m
          Hoehe skaliert) — der Sockel muss diese Grundflaeche wirklich tragen. */
-      var sock=new THREE.Mesh(new THREE.CylinderGeometry(15,21,BERGY+2,7),felsSockelM);
-      sock.position.set(BERG.x,BERGY-(BERGY+2)/2,BERG.z);sock.rotation.y=winkel;
+      /* ⚠️ Der Sockel war BERGY+2 hoch und reichte damit IMMER bis y -1 hinunter —
+         eine Zahl aus der Zeit, als hier gar kein Berg stand. Er muss nur die Luft
+         unter der Talkante der Terrasse fuellen; alles darunter steckt im Hang und
+         kostet nur Dreiecke und Schattenflaeche. */
+      var sockH=Math.max(8,BERGY-BGELmin+3);
+      var sock=new THREE.Mesh(new THREE.CylinderGeometry(15,21,sockH,7),felsSockelM);
+      sock.position.set(BERG.x,BERGY-sockH/2,BERG.z);sock.rotation.y=winkel;
       sock.scale.z=1.5;                                   // laengs zur Bahn gestreckt
       sock.receiveShadow=true;sock.castShadow=true;scene.add(sock);
       var gel=new THREE.Mesh(new THREE.BoxGeometry(24,0.3,34),stdMat(0x8f9aa6,0.8));
@@ -6275,7 +6335,10 @@ setTimeout(function baueGebaeude(){
       var seilM=new THREE.MeshStandardMaterial({color:0x3c4148,roughness:0.5,metalness:0.6});
       /* Stuetzenpunkte aus derselben Suche: alle fuenf stehen auf freiem Grund und
          nicht auf Fahrbahn oder Trottoir. */
-      [0.2,0.42,0.62,0.78,0.9].forEach(function(t){
+      /* ⚠️ t=0,9 lag 16 m vor der Bergstation — bei 27,5 m langem Stationshaus
+         stand der Mast IM Gebaeude (th-3d: staerkste Durchdringung der Karte,
+         1,39 m tief, 72 Meshpaare). Vier Stuetzen bis t=0,76 halten 33 m Abstand. */
+      [0.18,0.38,0.58,0.76].forEach(function(t){
         var m=amSeil(t,0),gy=bergH(m.x,m.z);
         bau("th26_seilbahn_stuetze.glb",Math.max(6,m.y-gy),m.x,gy,m.z,winkel,false,
           /* bau() skaliert gleichmaessig ueber die Hoehe — bei 15 m Mast wird der
