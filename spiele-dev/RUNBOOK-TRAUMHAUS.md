@@ -2312,3 +2312,37 @@ nicht kann:
 | th-3d stärkster Fund | Station × Stütze | Ahorn × Birke, 1,17 m |
 | th-netz | 39 ok | 39 ok |
 | th-viertel | 7 Viertel | 7 Viertel |
+
+## Ein Werkzeug, das die AUSDEHNUNG prüft, nicht die Position
+
+`th-strassen` fragt `bandVon(o.position.x, o.position.z)` — den **Mittelpunkt**.
+Ein 106 m langer Bordstein längs der Querstrasse hat seinen Mittelpunkt bei z = 0,
+im freien Feld. Zusätzlich greift dort `gr > 60` (der Filter gegen Himmelskuppel und
+zusammengefasste Häuserzeilen). Zwei unabhängige Gründe, warum genau die Bauteile
+unsichtbar sind, die per Konstruktion lang und dünn sind: Bordsteine, Erdstreifen,
+Gehwege, Randmarkierungen.
+
+`spiele-dev/tools/th-belag.mjs` (neu) testet stattdessen die Bounding-Box gegen die
+Fahrbahnrechtecke — aber nur für **lange, dünne, flache** Teile (Schmalseite ≤ 3 m,
+Langseite ≥ 20 m, Oberkante ≤ 1 m) und nur **quer** zur jeweiligen Strasse. Längs ist
+erlaubt: dort gehört das Zubehör hin.
+
+Erster Lauf: **24 Treffer.**
+
+* **16 × 3,05 m** — Bordstein (`BoxGeometry 0.26×106`) und Erdstreifen
+  (`PlaneGeometry 0.7×106`) der beiden Querstrassen ragten an allen vier Kreuzungen
+  über den Asphalt der Hauptstrasse. Der **Gehweg** daneben war längst korrigiert
+  (`2*SZ9+14` = 106 → `2*(SZ9+12)-16` = 100, Ende ±53 → ±50, Fahrbahnkante ±49,95) —
+  Bordstein und Erdstreifen sind bei der Änderung stehengeblieben. Ein halb
+  durchgeführter Fix, sichtbar nur mit dem richtigen Messgerät.
+* **4 × 2,05 m** — die Parkstreifen-Segmente `[[-58,26],[-18,26],[22,26],[62,26]]`
+  sind gleichmässig verteilt, aber **nicht mittig**: die Mitte von −58 und 62 liegt
+  bei +2. Das östliche Segment reichte bis x = 75 und lag in der Querstrasse Ost
+  (Kante 72,95), während es im Westen 1,95 m zu früh aufhörte. Jetzt
+  `[[-60,25.6],[-20,25.6],[20,25.6],[60,25.6]]`, und die Stellplatz-Striche teilen
+  ihr Segment auf (`seg[1]/n`) statt in festen 5,2-m-Schritten darüber hinauszulaufen.
+* **4 × 0,05 m** — exaktes Anstossen von Gehweg an Fahrbahnkante. Kein Fehler; die
+  Schwelle des Werkzeugs steht darum auf 0,1 m.
+
+Nach der Korrektur: **0 Treffer.** `th-netz` 39 ok, `th-strassen` unverändert
+(es sieht flaches Zubehör ohnehin nicht — `MINH`).
