@@ -3313,3 +3313,56 @@ Eine harmlose Asymmetrie bleibt und ist dokumentiert: bei einem *frischen* Spiel
 
 Der Test schreibt nichts in den `localStorage`; die Änderung lebt nur im Browser des
 Laufs.
+
+## Ein Tor für dreissig Werkzeuge
+
+In `spiele-dev/tools` liegen über dreissig Messgeräte, und **keines kennt die anderen**.
+Wer etwas an `traumhaus.html` ändert, müsste wissen, welche davon das berühren könnte —
+und weiss es nicht. Genau daran ist in dieser Datei schon mehrfach etwas kaputtgegangen,
+das ein *vorhandenes* Werkzeug sofort gemeldet hätte:
+
+* Der Hausberg begrub 18 Bauwerke, nachdem die Seilbahn repariert war (#2382).
+* Die Weihnachtsbuden standen im Sommer auf der Wiese, nachdem die Gruppen-Sichtprüfung
+  eingebaut war (Nachbar-Sitzung, #2379).
+
+`spiele-dev/tools/th-alle.mjs` (neu) fährt fünfzehn Prüfungen ab und sagt in einer Zeile
+je Prüfung, ob sie hält. Es ersetzt die Einzelwerkzeuge nicht — wer einen Fehler *sucht*,
+ruft das betroffene direkt auf und liest dessen Ausgabe.
+
+```
+✅ Netz (Wege, Marken, Anschluesse)                   38/0   123 s
+✅ Boden (Fels, Luft, Wasser)             keins/keins/keins    66 s
+✅ Belag (Zubehoer quer auf Fahrbahn)                    0    62 s
+✅ Laternen (Untergrund)                             174/0    59 s
+✅ See (Enten im Wasser)                                 0    57 s
+✅ Linien (Sperr- gegen Leitlinie)                 4 Lagen    56 s
+✅ Viertel (Platz und Stufe)                           7/0    91 s
+✅ Licht (Zahl der Punktlichter)                 0 Wechsel    86 s
+✅ LOD (Flackern an der Grenze)                          0    63 s
+✅ Bewegt (Animationen angemeldet)                      37    91 s
+✅ Speichern (Umweg verlustfrei)            0 Unterschiede    64 s
+✅ Flimmern (bei stiller Kamera)            0 Lichtwechsel    84 s
+✅ Gleis (was liegt auf den Schienen)                    2    59 s
+✅ Mauern (durchlaufbare Gebaeude)                13 offen    66 s
+✅ Koop (kommen alle an)                            9 Wege   160 s
+
+15 von 15 halten · 20 min gesamt
+```
+
+`--schnell` lässt nur die Kernreihe laufen (neun Prüfungen, rund zehn Minuten).
+
+### Der erste Lauf meldete zwei Fehlschläge — beide waren meine Schwellen
+
+**Gleis: 3 statt 2.** Das dritte Bauteil war das **Schotterbett**, das dort hingehört.
+Die Dokumentation des Werkzeugs behauptete längst, es sei ausgenommen — der Filter prüfte
+`bb.max.y <= 0.05`, und der Messwert liegt *genau* auf 0,05. Eine Schwelle, die auf dem
+Messwert selbst liegt, ist keine Schwelle: mal rutschte das Bett durch, mal nicht. Jetzt
+0,06, und zusätzlich an seiner Form erkannt (über 100 m lang, unter 3 m breit, flach).
+
+**Koop: Rückgabe 1.** Einzeln aufgerufen sofort wieder grün, mit „alle 9 geprüften
+kommen an". Als fünfzehnter Browserstart nach achtzehn Minuten fiel er aus, ohne dass an
+der Welt etwas war. Das Tor macht deshalb **genau einen** Wiederholungsversuch und sagt
+es im Bericht — wer zweimal scheitert, hat ein echtes Problem.
+
+Beide Male galt dieselbe Regel wie den ganzen Tag: **erst prüfen, ob das Messgerät recht
+hat, dann der Welt glauben.**
