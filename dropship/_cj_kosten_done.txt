@@ -5317,3 +5317,8 @@ gid://shopify/Product/15449042813313	CHF 39.09	20 Varianten	Damen Fleece Cardiga
 gid://shopify/Product/15449043173761	CHF 12.34	8 Varianten	Bedrucktes Damen Sweatshirt mit Rundhals
 gid://shopify/Product/15449043435905	CHF 13.99	10 Varianten	Chinesischer Baumwollpullover für Mädchen
 gid://shopify/Product/15449044779393	CHF 15.04	10 Varianten	Trendiger Loose-Fit Dual-Zip Cardigan Hoodie
+gid://shopify/Product/15449055232385	CHF 28.18	4 Varianten	Vielseitiger Farbblock Rollkragenpullover aus Woll
+gid://shopify/Product/15449055265153	CHF 16.95	8 Varianten	Hoodie mit Patchwork-Print für Damen
+gid://shopify/Product/15449055854977	CHF 23.66	98 Varianten	Kapuzen-Sweatshirt-Set, Fleece-gefüttert · Modell 
+gid://shopify/Product/15449056215425	CHF 14.97	5 Varianten	Off-Shoulder Pullover Sweatshirt mit 3D-Effekt
+gid://shopify/Product/15449056346497	CHF 22.17	21 Varianten	Vintage Colorblock T-Shirt für Damen
