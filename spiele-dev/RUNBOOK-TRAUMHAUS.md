@@ -4849,3 +4849,48 @@ Messfehler in diesem Strang; behoben mit einem Index ohne Höhenfenster.
 Und weil das kein Zufall bleiben darf, hat auch die neue Frage jetzt ihre **eigene
 Selbstprobe**: der Test-Kollider im leeren Feld muss als *inhaltslos* erkannt werden.
 Zwei Selbstproben, zwei Richtungen — beide bestehen.
+
+## 2026-08-29 · 🌙 Die Nacht war taghell — und die Zahl stand seit jeher in einer Zeile
+
+Regel 11 auf etwas angewandt, das nie jemand gesehen hat: **die Stadt bei Nacht.** An der
+Beleuchtung wurde viel gemessen — Lampenzahl, Shader-Neubauten, Flimmern — aber nie ein
+Bild gemacht. Das erste zeigte: **HUD 22:01 mit Mondsymbol, `_dorfNacht` wahr — und eine
+taghelle Szene.**
+
+⚠️ **Erst geprüft, ob nur die Überblendung noch läuft** (die Falle der Vorrunden):
+
+| Zeitpunkt | Himmel | Sonne | Hemisphäre | Belichtung |
+|---|---|---|---|---|
+| Tag | `#7da0b7` | 0,58 | 0,596 | 0,81 |
+| Nacht (nach 5 s) | `#131c30` | **0,20** | **0,48** | 0,62 |
+
+Die Umschaltung funktioniert also. Der Fehler steckte im **Verhältnis**:
+
+```js
+sun.intensity = 0.20 + dayA*0.72;      // nachts 0,20 von 0,92  =  22 %
+hemi.intensity = 0.48 + dayA*0.22;     // nachts 0,48 von 0,70  =  69 %   ← hier
+```
+
+Die Sonne geht auf ein Fünftel herunter, das **Hemisphärenlicht nur auf zwei Drittel** —
+und die Hemisphäre beleuchtet alles gleichmässig, sie bestimmt, wie hell die Welt
+aussieht. Himmel und Nebel wurden Nacht, der Boden nicht.
+
+**Behoben:** `hemi.intensity = 0.26 + dayA*0.44`. Nachts 0,26 statt 0,48 (halb so hell),
+**tagsüber unverändert 0,70** — bei `dayA = 1` ergibt die neue Formel exakt denselben Wert
+wie die alte. Der Tag ist damit nachweislich nicht angefasst.
+
+Belegbilder: `spiele-dev/screenshots/nacht-vorher.png` / `nacht-nachher.png`. Im
+Nachher-Bild liest sich die Szene als Nacht, und die **Laternenkegel sind auf der Strasse
+zu sehen** — vorher gingen sie im hellen Boden unter. Schwarz wird es nicht; auf dem Handy
+muss man sich noch zurechtfinden.
+
+> ⚠️ **Das ist eine Geschmacksentscheidung, keine Fehlerbehebung** — und sie hängt an
+> genau **einer Zahl**. Wer die Nacht wieder heller will, ändert die `0.26`.
+
+### ⚠️ Nebenbei: mein erstes Nachtbild war aus dem falschen Grund hell
+
+Die erste Sonde rief `window.__ZEIT(...)` — **die Funktion gibt es nicht**; der
+dokumentierte Haken heisst `window.__th.zeit(min)`. Dass das Bild trotzdem 22:01 zeigte,
+lag daran, dass die Spielzeit von selbst dorthin gelaufen war. Der Befund stimmte am Ende,
+aber er stimmte **zufällig** — und wäre die Uhr nicht zufällig dort gewesen, hätte ich ein
+Tagbild als Nachtbild gemeldet. Vor dem Messen nachsehen, ob der Haken existiert.

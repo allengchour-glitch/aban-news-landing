@@ -13693,7 +13693,16 @@ function loop(now){
     var wDim=wetter==="sonne"?1:0.62;
     /* 🌙 Nachts war die Stadt praktisch schwarz (User: „man sieht nichts"). Mondlicht,
        Grundhelligkeit und Belichtung bekommen einen deutlich hoeheren Nacht-Sockel. */
-    sun.intensity=(0.20+dayA*0.72)*wDim;hemi.intensity=0.48+dayA*0.22;
+    /* ⚠️ DIE NACHT WAR TAGHELL — gemessen, nachdem ich zum ersten Mal ein Bild davon
+       gemacht habe (Regel 11). Himmel und Nebel schalten sauber um (#7da0b7 -> #131c30,
+       Belichtung 0,81 -> 0,62), aber Boden, Waende und Baeume blieben hell. Der Grund
+       stand in dieser Zeile: die SONNE faellt nachts auf 0,20 von 0,92 (22 %), das
+       HEMISPHAERENLICHT aber nur auf 0,48 von 0,70 — also 69 %. Und die Hemisphaere
+       beleuchtet alles gleichmaessig; sie bestimmt, wie hell die Welt aussieht.
+       Jetzt 0,26 + dayA*0,44: nachts 0,26 statt 0,48 (halb so hell), TAGSUEBER
+       unveraendert 0,70 — dayA = 1 ergibt exakt denselben Wert wie vorher. Wer die
+       Nacht wieder heller will, aendert genau die 0,26. */
+    sun.intensity=(0.20+dayA*0.72)*wDim;hemi.intensity=0.26+dayA*0.44;
     hemi.groundColor.setRGB(0.24+dayA*0.17,0.34+dayA*0.20,0.30+dayA*0.04); // nachts blau-grau statt oliv
     var warm=Math.max(0,1-dayA*1.8); // 1 bei Daemmerung/Nacht, 0 bei hohem Sonnenstand
     sun.color.setHex(0xfff0d0);if(warm>0)sun.color.lerp(new THREE.Color(0xff8a3a),warm*0.8);
