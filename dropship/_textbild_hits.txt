@@ -13355,3 +13355,7 @@ gid://shopify/Product/15520141181313	8->0	Präzisionslehre für Holzbearbeitungs
 gid://shopify/Product/15520142492033	124->0	Kreuzhalterung für optische Achsen, Doppelloch
 gid://shopify/Product/15520142623105	26->0	Emery Jade Sägeblatt mit Loch
 gid://shopify/Product/15520142754177	32->0	Jadeholz-Schleifmaschine T30
+gid://shopify/Product/15519899877761	9->0	LED Crossbody-Bauchtasche für Herren
+gid://shopify/Product/15520152748417	10->0	High Heel Sandalen mit Schleife & Glitzer
+gid://shopify/Product/15520154943873	9->1	High Heel Sandalen mit spitzer Zehenkappe
+gid://shopify/Product/15520155140481	13->1	Stiletto-Sandalen mit Knöchelriemen
