@@ -4101,3 +4101,81 @@ räumt hinter sich auf (`TANZ.on=false`, `cancelAnimationFrame`, Overlay zu).
 
 **Gemessen:** th-club 8/8 · th-netz 38 ok · th-marken: Marke *und* Lieferziel „Spielclub"
 liegen **3,1 m** an einem echten Modell (0 verdächtige Marken) · 0 JS-Fehler.
+
+## 2026-08-29 · 🌲 Der Wald war für jedes Werkzeug unsichtbar — und 30 s sind zu früh
+
+Ausgangspunkt war wieder ein Bild (Regel 11): der Blick auf die Baustelle (180|150)
+zeigte Fichten dicht an der Fassade. Kein vorhandenes Werkzeug fragt danach — `th-boden`
+prüft Bauwerke gegen Gelände, `th-belag` Zubehör gegen Fahrbahnen, `th-mauern` Gebäude
+gegen Kollider. **Ein Baum im Wohnzimmer fällt durch alle Raster.**
+
+### Der Wald hatte keinen Namen
+
+Gemessen: **208 InstancedMeshes in der Szene, davon 38 ohne `userData.datei`** mit
+zusammen **2923 Instanzen**. Die grosse Gruppe darin ist der Wald — bis zu 900 Bäume, die
+kein Werkzeug sehen konnte. Dieselbe Klasse wie #2365 (Instanzen unsichtbar für `th-3d`),
+nur eine Ebene tiefer. Zwei Zeilen beheben es:
+
+```js
+st.userData.datei="wald_baum_stamm(prozedural)";
+kr.userData.datei="wald_baum_krone(prozedural)";
+st.userData.satz=kr.userData.satz=kand.map(...);
+```
+
+Ergebnis mit dem neuen `th-baeume.mjs`: **818 Pflanzen geprüft (118 einzeln, 700
+instanziert) gegen 186 Kollider — und keiner der 700 Waldbäume steht in einem Gebäude.**
+Der `_freiPlatz`-Filter im Wald-Generator hält. Alle 19 Funde sind handgesetzte
+Einzelpflanzen; `th-echt` (Mesh statt Kasten) zeigt, dass die meisten davon
+**Kollider-Überhang** sind und nicht Durchdringung. Das Werkzeug ist deshalb bewusst
+**noch nicht** in `th-alle` eingetragen — erst müssen die 19 beurteilt sein.
+
+### ⚠️ Der grössere Fund: 30 s sind zu früh
+
+Zwei Läufe meldeten denselben Ahorn an zwei Stellen. Statt zu raten, ein Protokoll:
+Fingerabdruck aller **festen** `_gebaeude` alle 4 s über 300 s.
+
+> **Die Zahl der Bauwerke steht früh — aber es gibt genau EINE späte Änderung: bei 116 s
+> rücken Objekte noch einmal.** Davor und danach nichts.
+
+Derselbe Ahorn stand bei 28 s auf (−10,4|107,6) und danach auf (−12|102); das
+Bahnsteigdach daneben war ebenfalls gewandert. **Jede Messung bei 26…55 s kann einen
+Zustand protokollieren, den die Welt gleich wieder verlässt.** Der Beweis am Ende:
+dieselbe Prüfung meldet vor dem Einschwingen **20**, danach **19** Pflanzen im Gebäude.
+
+Neu in `th-lib.mjs`: **`warteAufRuhe(page)`** — wartet auf Ruhe statt auf eine Frist.
+
+### ⚠️ Drei Selbst-Widerlegungen auf dem Weg dorthin
+
+1. **Teilstring-Muster.** `/baum|eiche|obst|weide/` fand „str**eich**elzoo",
+   „**obst**stand" und „**weide**zaun" — **1152 Phantom-Pflanzen** und zwei von acht
+   Häusern in der Fundliste waren Unsinn. Jetzt wird der Name am Unterstrich zerlegt und
+   jedes Stück gegen eine feste Liste geprüft.
+2. **Der Backslash, den das Template-Literal frisst.** In der Sonde wurde aus
+   `/\(.*\)$/` ein `/(.*)$/` — das passt auf ALLES und löschte jeden Dateinamen.
+   Ergebnis: „0 Pflanzen geprüft". Nur die Nullprüfung (Regel 3) hat es gefangen, sonst
+   wäre daraus ein grünes „keine Pflanze steht im Gebäude" geworden. **Verwandt mit
+   Regel 1 (Backtick), gleiche Ursache: das Literal liest mit. In Sonden kein Regex mit
+   Sonderzeichen — reines Zeichen-Handwerk.**
+3. **Was sich bewegen soll, gehört nicht in den Fingerabdruck.** Der erste Ruhe-Test nahm
+   alle `_gebaeude` und meldete nach 216 s „nicht ruhig" — Zug, Bus, Heli, Ballon und
+   Tiere stehen dort mit drin. Und der zweite meldete „ruhig nach 28 s": drei gleiche
+   Proben im 4-s-Takt liegen bequem in der **Stille vor dem Umbau**. Ein Ruhefenster,
+   das kürzer ist als die Pause zwischen zwei Umbauten, misst die Pause.
+
+### ⚠️ Und `_ladeOffen === 0` ist NICHT „alles gebaut"
+
+Der Schlusslauf hängt im Spiel an der letzten GLB-Ladung
+(`_ladeFertigEins` → 2,5 s → `freiRaeumen`/`entwirren` → 4 s → `_spaetEinfrieren`) — das
+klang nach dem perfekten Signal. **Gemessen: der Zähler steht schon bei 28 s auf 0, der
+letzte Umbau kam bei 116 s.** `bau()` zählt nur, was GERADE lädt; die Welt baut sich aber
+in `setTimeout`-Stufen über Minuten auf, und zwischen zwei Stufen ist der Zähler sauber
+0. Er ist notwendig, nicht hinreichend. `warteAufRuhe` verlangt darum beides: Zähler auf
+0, Ruhefenster **und** `minSekunden: 150` (gemessen gegen den letzten Wechsel bei 116 s,
+34 s Reserve).
+
+**Kosten, offen gesagt:** ein Lauf mit dieser Wartezeit dauert rund **3 statt 2 Minuten**.
+Darum benutzt sie bisher **nur `th-baeume`**, wo die Position der Messwert selbst ist.
+Die übrigen Werkzeuge messen weiter bei 26…55 s; wo sie Positionen melden, können das
+Zwischenstände sein. **Das ist eine bekannte Grenze, keine behobene Sache** — alle auf
+`warteAufRuhe` umzustellen verdreifacht die Laufzeit des Tors und wäre eine Entscheidung,
+die Rechenzeit kostet.

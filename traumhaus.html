@@ -5996,6 +5996,16 @@ setTimeout(function baueGebaeude(){
       st.instanceMatrix.needsUpdate=true; kr.instanceMatrix.needsUpdate=true;
       if(kr.instanceColor)kr.instanceColor.needsUpdate=true;
       st.castShadow=kr.castShadow=true; st.userData.nieAusblenden=kr.userData.nieAusblenden=1;
+      /* ⚠️ EINEN NAMEN GEBEN, SONST IST DER WALD FUER JEDES WERKZEUG UNSICHTBAR.
+         Gemessen: 208 InstancedMeshes in der Szene, davon 38 ohne `userData.datei` mit
+         zusammen 2923 Instanzen — die grosse Gruppe darin ist dieser Wald. Ein
+         Werkzeug, das nach Pflanzen sucht, fand darum 118 einzelne Baeume und KEINEN
+         einzigen der bis zu 900 Waldbaeume, und meldete trotzdem eine Zahl. Dieselbe
+         Klasse wie #2365 (Instanzen unsichtbar fuer th-3d), nur eine Ebene tiefer.
+         Die Schreibweise ist die vorhandene: `eiswagen(prozedural)`. */
+      st.userData.datei="wald_baum_stamm(prozedural)";
+      kr.userData.datei="wald_baum_krone(prozedural)";
+      st.userData.satz=kr.userData.satz=kand.map(function(w9){return [w9[0],w9[1],0];});
       /* ⚠️ InstancedMesh-Falle: three.js cullt gegen die Bounding-Sphere der EINEN
          Geometrie am Objektursprung — nicht gegen die Instanzen. Der ganze Wald
          verschwand darum, sobald die Kamera nicht zufaellig Richtung Weltmitte
