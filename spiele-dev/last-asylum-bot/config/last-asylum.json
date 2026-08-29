@@ -5864,14 +5864,14 @@
     },
     {
       "name": "lebenszeichen",
-      "_zweck": "Schreibt austausch/lauf.json plus austausch/lauf.png und laedt beides hoch. Von aussen sah ein abgestuerzter Bot bisher genauso aus wie ein zufriedener: gar nichts. Steht der Zeitstempel still, ist der Bot stehengeblieben - und das Bild zeigt, vor welchem Bildschirm. Zahlen alle 10 Minuten, Bild hoechstens stuendlich (ein Bild wiegt hundertmal so viel). at_start sorgt dafuer, dass gleich nach dem Start ein Bild da ist; der Mindestabstand verhindert, dass eine Absturzschleife im Minutentakt Commits erzeugt. ACHTUNG PRIORITAET: Am 22.08. lief der Bot 48 Minuten, ohne ein einziges Lebenszeichen zu schreiben - von aussen sah das aus wie tot. Grund war nicht das Hochladen, sondern die Reihenfolge: 16 Aufgaben stehen auf Sofortstart, jeder Schritt fuehrt genau EINE davon aus, und zwar die mit der hoechsten Prioritaet. Mit 95 stand das Lebenszeichen an 22. Stelle - hinter jedem langen Rundgang durch das Spiel. Die Aufgabe kostet Sekundenbruchteile und ihr ganzer Wert ist Rechtzeitigkeit; sie gehoert darum nach vorn.",
-      "every": 900,
+      "_zweck": "Schreibt austausch/lauf.json plus austausch/lauf.png und laedt beides hoch. Von aussen sah ein abgestuerzter Bot bisher genauso aus wie ein zufriedener: gar nichts. Steht der Zeitstempel still, ist der Bot stehengeblieben - und das Bild zeigt, vor welchem Bildschirm. Zahlen alle 10 Minuten, Bild hoechstens stuendlich (ein Bild wiegt hundertmal so viel). at_start sorgt dafuer, dass gleich nach dem Start ein Bild da ist; der Mindestabstand verhindert, dass eine Absturzschleife im Minutentakt Commits erzeugt. ACHTUNG PRIORITAET: Am 22.08. lief der Bot 48 Minuten, ohne ein einziges Lebenszeichen zu schreiben - von aussen sah das aus wie tot. Grund war nicht das Hochladen, sondern die Reihenfolge: 16 Aufgaben stehen auf Sofortstart, jeder Schritt fuehrt genau EINE davon aus, und zwar die mit der hoechsten Prioritaet. Mit 95 stand das Lebenszeichen an 22. Stelle - hinter jedem langen Rundgang durch das Spiel. Die Aufgabe kostet Sekundenbruchteile und ihr ganzer Wert ist Rechtzeitigkeit; sie gehoert darum nach vorn. TAKT 900 auf 600 und Mindestabstand 600 auf 300 (29.08.): der Ausfall nach 00:17 fiel erst Stunden spaeter auf. Je enger der Puls, desto frueher sieht man von aussen, dass er aussetzt. Das Bild bleibt stuendlich - das ist der teure Teil, die Zahlen wiegen fast nichts.",
+      "every": 600,
       "at_start": true,
       "priority": 240,
       "do": [
         {
           "lebenszeichen": {
-            "mindestabstand": 600,
+            "mindestabstand": 300,
             "bild_abstand": 3600,
             "bild_faktor": 0.35
           }

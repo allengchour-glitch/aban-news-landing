@@ -23,7 +23,10 @@ param(
     # Notausgang: startet ohne das Holen des neuen Standes. Wenn das Update je
     # der Grund sein sollte, dass gar nichts mehr laeuft, kommt man hiermit
     # sofort wieder ins Spiel.
-    [switch]$UeberspringeUpdate
+    [switch]$UeberspringeUpdate,
+    # Der Dauerlauf legt sich die Neustart-Schleife selbst an, falls sie fehlt.
+    # Wer das nicht will, gibt -OhneAutostart an.
+    [switch]$OhneAutostart
 )
 
 # Bewusst NICHT "Stop": das Skript ruft ueberall native Befehle (python, adb,
@@ -481,6 +484,33 @@ if (Test-Path $auftrag) {
         Gut "$($erledigt.Count) Auftrag/Auftraege erledigt und hochgeladen."
     } else {
         Warnung "$($erledigt.Count) Auftrag/Auftraege erledigt - Hochladen ging nicht."
+    }
+}
+
+# ------------------------------------------------- Neustart-Schleife sicherstellen
+# Ohne diese Schleife ist "Dauerlauf" nur ein Versprechen: endet der Bot - durch
+# ein Selbst-Update, einen Absturz, einen abgerissenen ADB - startet ihn niemand
+# neu, und von aussen sieht das aus wie ein toter Bot. Genau das war am 29.08.
+# nach 00:17 der Fall: sauberes Selbst-Update, Rueckgabe 0, danach nichts mehr.
+# Die Schleife steckt in einer .cmd im Autostart-Ordner und braucht keine
+# Administratorrechte. Angelegt wird sie nur beim Dauerlauf, sie ist mit
+# 'autostart-einrichten.ps1 -Entfernen' wieder weg, und -OhneAutostart schaltet
+# das Anlegen ab.
+if ($Scharf -and $Dauerlauf -and -not $OhneAutostart) {
+    Schritt "Neustart-Schleife"
+    $starter = Join-Path ([Environment]::GetFolderPath("Startup")) "last-asylum-bot.cmd"
+    if (Test-Path $starter) {
+        Gut "Neustart-Schleife liegt bereit ($starter)"
+    } else {
+        Warnung "Keine Neustart-Schleife gefunden - wird angelegt."
+        $einrichter = Join-Path $PSScriptRoot "autostart-einrichten.ps1"
+        if (Test-Path $einrichter) {
+            & powershell -NoProfile -ExecutionPolicy Bypass -File $einrichter
+            if (Test-Path $starter) { Gut "Neustart-Schleife angelegt" }
+            else { Warnung "Anlegen hat nicht geklappt - der Bot laeuft trotzdem, aber nur bis zum naechsten Ende." }
+        } else {
+            Warnung "autostart-einrichten.ps1 fehlt - keine Schleife moeglich."
+        }
     }
 }
 

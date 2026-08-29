@@ -1685,6 +1685,28 @@ class Engine:
             self.log.debug("Schon auf dem neuesten Stand")
             return
         self.bump("selbst-aktualisiert")
+
+        # Nur neu starten, wenn sich wirklich etwas am BOT geaendert hat. Der
+        # Bot laedt selbst staendig Bilder und Berichte nach austausch/ hoch;
+        # holt er sich beim naechsten Mal die eigenen Dateien zurueck, waere ein
+        # Neustart pure Ausfallzeit. Und die ist nicht klein: 60 Sekunden
+        # Wartezeit der Neustart-Schleife plus Update, Pruefung, ADB und
+        # Kalibrierung - zusammen zwei bis drei Minuten, in denen nicht gespielt
+        # wird. Bei einem Tag mit vielen Aenderungen laeppert sich das.
+        try:
+            geaendert = subprocess.run(
+                ["git", "-C", wurzel, "diff", "--name-only", alt, neu],
+                capture_output=True, timeout=60, env=umgebung)
+            dateien = [z for z in geaendert.stdout.decode("utf-8", "replace").splitlines()
+                       if z.strip()]
+        except Exception:
+            dateien = []
+        if dateien and all("/austausch/" in f or f.startswith("austausch/") for f in dateien):
+            self.log.info(
+                f"Neue Fassung geholt ({alt[:7]} -> {neu[:7]}) - nur Austausch-Dateien, "
+                "kein Neustart noetig", anzahl=len(dateien))
+            return
+
         self.log.info(f"Neue Fassung geholt ({alt[:7]} -> {neu[:7]}) - Neustart")
         raise StopRun("neue Fassung geholt")
 

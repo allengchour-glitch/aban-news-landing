@@ -2908,6 +2908,46 @@ class TestFluchtwegWirdNichtGebremst(unittest.TestCase):
 
 
 
+class TestDurchlaufenOhnePause(unittest.TestCase):
+    """Der Bot soll nicht stehenbleiben - das ist die Ansage vom 29.08.
+
+    Am 29.08. endete ein Lauf um 00:17 mit einem sauberen Selbst-Update
+    (Rueckgabe 0) und danach kam nichts mehr. Ohne Neustart-Schleife ist
+    'Dauerlauf' nur ein Versprechen: endet der Bot, startet ihn niemand neu.
+    """
+
+    def skript(self):
+        pfad = os.path.join(ROOT, "start-windows.ps1")
+        if not os.path.exists(pfad):
+            self.skipTest("start-windows.ps1 liegt nicht vor")
+        return open(pfad, encoding="utf-8").read()
+
+    def test_dauerlauf_sorgt_selbst_fuer_die_neustart_schleife(self):
+        text = self.skript()
+        self.assertIn("Neustart-Schleife", text)
+        self.assertIn("last-asylum-bot.cmd", text,
+                      "die Schleife liegt als .cmd im Autostart-Ordner")
+        self.assertIn("autostart-einrichten.ps1", text,
+                      "angelegt wird sie ueber das vorhandene Werkzeug, nicht doppelt")
+        self.assertIn("$OhneAutostart", text, "es braucht einen Ausschalter")
+
+    def test_kein_neustart_wegen_bloss_neuer_bilder(self):
+        """Der Bot laedt selbst staendig Bilder hoch - die zurueckzuholen ist
+        kein Grund, zwei bis drei Minuten Spielzeit zu verlieren."""
+        quelle = open(os.path.join(ROOT, "laa", "engine.py"), encoding="utf-8").read()
+        stelle = quelle.index("def _selbst_aktualisieren")
+        block = quelle[stelle:stelle + 4000]
+        self.assertIn("diff", block, "es muss geprueft werden, WAS sich geaendert hat")
+        self.assertIn("austausch/", block)
+
+    def test_puls_ist_eng_genug(self):
+        with open(os.path.join(ROOT, "config", "last-asylum.json"), encoding="utf-8") as fh:
+            roh = json.load(fh)
+        t = next(x for x in roh["tasks"] if x["name"] == "lebenszeichen")
+        self.assertLessEqual(t["every"], 600,
+                             "ein Aussetzer soll binnen zehn Minuten auffallen")
+
+
 class TestNeueSpielziele(unittest.TestCase):
     """Die Ansagen vom 29.08. - jede einzeln nachpruefbar."""
 
