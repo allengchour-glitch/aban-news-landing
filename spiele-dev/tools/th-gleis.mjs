@@ -30,7 +30,14 @@ const sonde = `function(){
     var breit=bb.max.x-bb.min.x, tief=bb.max.z-bb.min.z;
     var ist=(tief<0.4&&breit>100);                   /* die Schiene selbst */
     if(ist){schienen.push([+bb.min.z.toFixed(2),+bb.max.z.toFixed(2),+bb.min.y.toFixed(2),+bb.max.y.toFixed(2)]);return;}
-    if(bb.max.y<=0.05)return;                        /* Schotterbett und flache Belagsplatten */
+    /* ⚠️ NICHT AUF EINER FLIESSKOMMA-KANTE FILTERN. Das Schotterbett hat Oberkante
+       exakt 0,05 und rutschte mal durch, mal nicht — th-alle meldete das Gleis
+       darum abwechselnd mit 2 und 3 Bauteilen. Eine Schwelle, die genau auf dem
+       Messwert liegt, ist keine Schwelle. Jetzt 0,06, und das Bett zusaetzlich an
+       seiner Form erkannt: ueber 100 m lang, unter 3 m breit, flach.
+       Es GEHOERT unter die Schienen. */
+    if(bb.max.y<0.06)return;                         /* flache Belagsplatten */
+    if(breit>100&&tief<3&&bb.max.y<0.3)return;       /* das Schotterbett selbst */
     if(tief<0.7&&breit>3&&breit<4&&bb.max.y<0.2)return;   /* die Schwellen selbst */
     var kette=o,d=null;while(kette&&kette!==scene){if(kette.userData&&kette.userData.datei)d=kette.userData.datei;kette=kette.parent;}
     function ueber(band){var t=Math.min(bb.max.z,band[1])-Math.max(bb.min.z,band[0]);return t>0.02?+t.toFixed(2):0;}
