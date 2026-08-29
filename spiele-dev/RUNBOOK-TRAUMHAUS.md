@@ -3071,6 +3071,49 @@ schon zweimal Schiffbruch erlitten (unsichtbarer Landbus, verschwindende Tiere).
 Code macht es richtig: Objekte mit `nieAusblenden` bekommen gar keine Kugel, und er
 stellt nur wieder her, was er selbst versteckt hat (`_gsAus`). Kein Defekt.
 
+## Bewegt sich alles, was sich bewegen soll? — und eine Korrektur
+
+`_spaetEinfrieren()` setzt `matrixAutoUpdate = false` auf allem, was nicht vorher als
+bewegt angemeldet wurde. Wer eine Animation einbaut und die Anmeldung vergisst, bekommt
+kein Fehlerbild — das Ding steht einfach still. So ist der Freizeitpark schon einmal
+erstarrt (Charge #2303); der Kommentar dort verlangt ausdrücklich, **nach jeder neuen
+Animation gegenzumessen**. Diese Sitzung hat ein Frachtschiff hinzugefügt, also war das
+fällig.
+
+`spiele-dev/tools/th-bewegt.mjs` (neu) liest die Animationslisten (`verkehr`, `_boote`,
+`_tiere`, `FAHRTEN`, Baukran, Hafenkran, Leuchtturm, Brücken-Zug) und vergleicht
+Position und Drehung über 30 s. **37 angemeldete Bewegliche, alle bewegen sich.**
+
+### Das Werkzeug musste erst ehrlich werden — zum zweiten Mal in dieser Sitzung
+
+Erster Lauf: „Hafenkran und Leuchtturm bewegen sich nicht." Beides falsch. Die
+**Laufkatze** des Krans und der **Lichtkegel** des Leuchtturms sind eigene Objekte, die
+`updHafen()` beim ersten Takt anlegt und unter `userData.katze` / `userData.strahl`
+ablegt — beide korrekt mit `_bewegt` angemeldet. Der Turm selbst steht völlig richtig
+still. Wer nur den Wrapper misst, meldet gesunde Technik als Defekt.
+
+Jetzt zählt je Eintrag die grösste Bewegung über das Objekt **und alles, was als
+`Object3D` an seinem `userData` hängt`. Ausserdem fehlte `_baukran` ganz in der Liste.
+
+### Die Korrektur: es gab schon eine Baustelle
+
+Beim Nachsehen, wofür `window._baukran` steht, kam heraus: `baustelleAusbau()` baut seit
+Langem eine Baustelle bei **(−36|102)** — `th46_rohbau`, `th46_baukran`,
+Fassadengerüst. Die Behauptung in der vorigen Runde, es gebe „nichts Vergleichbares in
+der Welt — keine einzige Baustelle", war **falsch**.
+
+Der Denkfehler ist die Signatur dieser ganzen Sitzung, diesmal von mir selbst: aus
+**„diese Modelle sind unbenutzt"** wurde **„die Sache fehlt"**. Die th46-Modelle sind
+sehr wohl benutzt — ich hatte nur nach th21 gesucht.
+
+Die zweite Baustelle bleibt: 221 m von der ersten entfernt, im anderen Stadtteil, mit
+anderen Modellen. Eine wachsende Stadt baut an mehreren Stellen. Aber sie ist eine
+**Ergänzung, keine Erstausstattung**, und der Kommentar im Code sagt das jetzt.
+
+**Regel für die nächste Materialsuche:** „Modell X ist unbenutzt" beantwortet nur, ob
+*dieses Modell* fehlt. Ob die *Sache* fehlt, beantwortet allein eine Suche nach der
+Sache — hier hätte ein Blick in `window._baukran` oder ein `grep -i baustelle` genügt.
+
 ## 2026-08-28 · 🔦 Deckkraft 0 heisst nicht „wird nicht gezeichnet"
 
 **Dieselbe Fehlerklasse wie bei den Punktlichtern (#2368), nur eine Ebene tiefer:** Die 17
