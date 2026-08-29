@@ -65,6 +65,38 @@ die Signale untereinander auf. Ich habe die beiden anderen auf eigene SEO-Merkma
 Der POD-Editor ist das einzige Produkt des Shops, das kein anderer hat — und damit das einzige,
 das überhaupt ranken kann.
 
+## G. Was in den Mails steht und nicht stimmt  (NEU 29.08.)
+> Der tote Link ist repariert (13 Live-Nachrichten, siehe unten). Beim Durchgehen sind
+> Aussagen aufgefallen, die eine Entscheidung von dir brauchen — ich habe sie NICHT
+> eigenmächtig umgeschrieben, weil es Zusagen an Kundinnen sind.
+
+**1. Die VIP-Mail verspricht ein Programm, das es nicht gibt.** Wer CHF 500 überschreitet,
+bekommt: «Code VIP10 automatisch angewendet», «Gratis Versand ohne Mindestbestellwert»,
+«Geburtstags-Geschenk CHF 30», «Early Access 48h», «Founder-Tier: 15% · Concierge».
+Live existieren im Shop nur: Bundle 2+ −10 %, Mengenrabatt ab 3, Gratis-Versand ab CHF 49.
+→ Entweder das Programm einrichten oder die Zusagen aus der Mail nehmen.
+
+**2. Win-Back: Betreff und Inhalt widersprechen sich.** Betreff «CHF 15 sparen mit BACK15»,
+im Text steht «10 %» mit Code **WELCOME10**. Eine der beiden Angaben ist falsch.
+
+**3. Die Warenkorb-Mails führen auf die STARTSEITE, nicht in den Warenkorb.** Eine
+Rückhol-Mail, die den Korb nicht wiederherstellt, verschenkt ihren einzigen Zweck. Klaviyo
+kann das über `{{ event.extra.checkout_url }}`.
+
+**4. Die «EN/US»-Flows sind Dubletten der deutschen** — mit deutschen Betreffzeilen. Eine
+Kundin kann dieselbe Bestellbestätigung ZWEIMAL bekommen (Flow «Post-Purchase · Order +
+Review» und «Post-Purchase Review · EN/US» laufen beide live). → Einen davon abschalten.
+
+**5. Eine live geschaltete Mail heisst «Email #3 Subject».** Im Flow «Abandoned Cart · EN/US»
+steht eine dritte Mail mit unausgefülltem Platzhalter-Betreff auf `live`. → Abschalten oder
+fertig schreiben.
+
+**6. In der Bestellbestätigung habe ich drei Aussagen korrigiert** (weil sie derselben Klasse
+angehören wie schon entschiedene Fälle) — sag Bescheid, falls du eine davon anders willst:
+«30 Tage Geld-zurück — bedingungslos» → «30 Tage Rückgaberecht · Ausnahmen siehe
+Rückgaberichtlinie» · «unseren Schweizer-Premium-Lieferanten» → «unseren Lieferanten»
+(die Ware kommt von CJ) · die feste Angabe «Versand 7-14 Werktage» → die echten Stufen.
+
 ## D. 45 rankende Markenseiten ohne Ware — Entscheidung nötig  (NEU 29.08.)
 > Entscheide, ob die toten BigBuy-Markenseiten auf eine passende KATEGORIE umgeleitet werden
 > sollen (z. B. «Trainingsanzug Adidas» → Herren-Sportbekleidung) oder ob sie 404 bleiben.

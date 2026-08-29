@@ -541,6 +541,42 @@ weil er `html.unescape` benutzt — die Standardbibliothek kennt alle.
 **Lehre: Ein Quellenfix gilt erst, wenn ein echtes Erzeugnis davon vorliegt.** Vier
 Testfälle liefen sauber durch; der erste echte Import hatte trotzdem einen Fehler.
 
+## 📧 Der Klaviyo-Fix vom 28.08. hat die VORLAGEN repariert — nicht die Mails (2026-08-29)
+Der Betreiber schickte einen Screenshot: eine Bewertungs-Mail von gestern, Knopf «Jetzt
+bewerten» → **`luxestyle.com.co` · ERR_CONNECTION_CLOSED**. Also genau der Fehler, den der
+Eintrag vom 28.08. als behoben führt («45 Vorkommen in 31 von 45 Vorlagen ersetzt»).
+**Die Vorlagen waren tatsächlich sauber. Die Mails nicht.**
+**DIE URSACHE — und sie entwertet den ganzen damaligen Lauf:** Ein Klaviyo-Flow benutzt nicht
+die Vorlage aus der Bibliothek, sondern eine **eigene Kopie**, die beim Bearbeiten des Flows
+entsteht (Name mit Zeitstempel-Präfix, z. B. «2026-06-01 14:52 LuxeStyle · Nach-Kauf Review»).
+Wer die Bibliothek repariert, ändert an den versendeten Mails **nichts**.
+- ⚠️ **Diese Kopien erscheinen in KEINER Auflistung.** `list_email_templates` gibt sie nicht
+  zurück, und auch ein `filter=any(id,[…])` auf ihre IDs liefert **leer** — obwohl
+  `get_email_template` sie einzeln ausliefert. **Ein Listen-basierter Durchgang kann sie
+  grundsätzlich nicht finden.** Der Weg führt nur über die FLOWS: Flow → Aktion →
+  `definition.data.message.template_id`.
+- **Gefunden: 8 von 13 Live-Nachrichten trugen die tote Domain** — darunter die
+  **Bestellbestätigung, die jeder Käufer bekommt**, die **erste Willkommens-Mail**, beide
+  Warenkorb-Abbrecher, Win-Back und die VIP-Mail. Alle 13 zeigen jetzt auf die korrigierten
+  Bibliotheks-Vorlagen; jede Reparatur wurde am NEU entstandenen Snapshot gegengeprüft.
+- ⚠️ **Die Templates-API verweigert das Schreiben auf eine Flow-Kopie** («Template with id
+  '…' does not exist» — beim GET aber vorhanden). Repariert wird über `update_flow_action`
+  mit einem anderen `template_id`; Klaviyo legt daraufhin selbst eine frische Kopie an.
+- ⚠️ **`update_flow_action` ERSETZT die Aktion.** Fehlt `definition.links`, antwortet die API
+  «You cannot change the links of an action» — die Verkettung des Flows muss unverändert
+  mitgeschickt werden. Ebenso jedes Feld der Nachricht: was man weglässt, wird genullt.
+- ⚠️ **Gegengeprüft wird der NEUE Snapshot, nicht die Bibliotheks-Vorlage.** Nur er ist das,
+  was verschickt wird — dieselbe Lehre wie «ein Ledger sagt, was einmal geschrieben wurde».
+**Die allgemeine Lehre: Ein System, das Vorlagen KOPIERT, hat zwei Wahrheiten — und die
+sichtbare ist die falsche.** Wo etwas «Vorlage» heisst, gehört vor jeder Reparatur die Frage:
+Liest der Versender diese Datei zur Laufzeit, oder hat er sich eine Kopie gezogen?
+Dieselbe Familie wie «ein Log ist ein Zeugnis über den Code, der LIEF» (28.08.) und «ein
+laufender Aufseher liest sein Skript nicht neu».
+⚠️ **Und die Selbstkritik: Der Eintrag vom 28.08. meldete Vollzug, ohne eine einzige
+verschickte Mail geprüft zu haben.** Belegt war nur, dass die Vorlagen geändert wurden. Ein
+Screenshot des Betreibers hat es aufgedeckt, kein eigener Wächter. **Wer eine Aussenwirkung
+repariert, prüft die Aussenwirkung** — nicht das Feld, das er angefasst hat.
+
 ## 📉 Der Shop rankt auf KEINER Seite 1 — und verkauft trotzdem über die Suche (2026-08-29)
 Gegenprobe zu allem SEO-Aufwand: Semrush, Datenbank `ch`, Filter Position < 11 →
 **ERROR 50 :: NOTHING FOUND**. Für keinen einzigen Suchbegriff steht luxestyle.ch auf
