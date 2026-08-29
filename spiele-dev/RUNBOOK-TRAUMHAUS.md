@@ -2234,3 +2234,81 @@ zeigt den Zustand.
   vor allem Speicher, kaum Bildzeit: pro Bild werden nur ~760 Materialien gezeichnet. Zusammen-
   legen ist riskant, weil `_envMats` (Nachtdämpfung) und `_glasMats` (Fensterlicht) Materialien
   gezielt einzeln verändern — eine geteilte Instanz würde dann viele Objekte auf einmal treffen.
+
+## Die Seilbahn rechnete mit einem Berg, den es nicht gibt
+
+`seilbahn()` hatte den Hausberg **nachgebaut** statt ihn zu fragen:
+
+```js
+var BX=121.5,BZ=174.9,BRAD=51.75,BHOCH=75,BFUSS=-6;
+function bergH(x,z){ var d=Math.hypot(x-BX,z-BZ);
+  if(d>=BRAD)return 0; return Math.max(0,BFUSS+BHOCH*(1-d/BRAD)); }
+```
+
+Das ist ein **runder** Kegel. Berg Nr. 5 ist keiner. `bergGeo` staucht den Grundriss
+längs des Grats um `streck` und quer um 0,92:
+
+```js
+var streck=1.35+rnd(seed,4)*0.55;                    // Seed 16 -> 1,4835
+var ul=(gcs*ux+gsn*uz)/streck, uq=(-gsn*ux+gcs*uz)*0.92;
+```
+
+und der Mesh wird danach noch um `berg.rotation.y = (5*0.7)%6.283 = 3,5 rad` gedreht.
+Beides fehlte in der Nachbildung. Nachgerechnet mit demselben Seed:
+
+| Ort | angenommen | echt | Differenz |
+|---|---|---|---|
+| Stütze t=0,78 (150,8\|127,0) | 0,00 m | 10,63 m | **10,6 m im Hang** |
+| Stütze t=0,90 (138,9\|142,8) | 16,08 m | 30,48 m | **14,4 m im Hang** |
+| Bergstation (129\|156) | 39,53 m | 46,72 m | **6,7 m im Fels** |
+
+Die Nachbildung war **überall zu flach, nie zu hoch** — die Stauchung verkleinert
+den effektiven Abstand zur Bergmitte, also ist der echte Berg an jeder Stelle höher
+und breiter als der angenommene.
+
+### Warum kein Werkzeug es gefunden hat
+
+`th-3d` vergleicht Modell gegen Modell. Das Gelände ist ein einziges grosses Mesh
+ohne Dateinamen und fällt aus der Prüfung. `th-3d` hat den Folgefehler trotzdem
+gemeldet — die oberste Stütze steckte im Stationshaus (1,39 m tief, 72 Meshpaare,
+stärkster Fund der ganzen Karte) — aber die Ursache stand ein Stockwerk tiefer.
+
+### Die Regel
+
+Es gibt jetzt **eine** Geländeprobe für die ganze Welt:
+
+```js
+window._bergHoehe(x,z)   // grosser Berg + alle 34 Kettenberge, echtes Höhenfeld
+```
+
+`bergGeo` hängt seine Höhenfunktion an die Geometrie (`g2.userData.hoehe`), der
+Berg-Eintrag in `window._berge` trägt sie in Weltkoordinaten (inklusive
+Rücktransformation von `rotation.y`). **Wer eine Geländehöhe braucht, fragt hier —
+und leitet nichts nach.**
+
+### Bahnsteighöhe ist kein Parameter, sondern ein Messwert
+
+`BERGY` war fest 40. Auf einem 50-Grad-Hang liegen zwischen Berg- und Talkante einer
+24 × 34 m grossen Terrasse über 40 Höhenmeter — jede feste Zahl ist an einer der
+beiden Kanten falsch. Beim alten Standort (129|156) reichte das Gelände von 22,2 bis
+65,5 m: bei y 40 steckte die Bergkante 25 m im Fels, bei y 66 wären die Stützen auf
+49 m gewachsen.
+
+Gelöst nicht mit einer neuen Höhe, sondern mit einem neuen Ort: 25 m talwärts auf
+derselben Seilachse (144|136) liegt das Gelände unter der Terrasse bei −1,1 … 41,3 m.
+`BERGY` wird jetzt aus einem 7 × 9-Raster der eigenen Grundfläche gemessen
+(`BGELmax + 0,6` = 41,9), und der Felssockel ist nur noch so tief wie nötig
+(`BERGY − BGELmin + 3`) statt immer bis y −1.
+
+### Gemessen
+
+`spiele-dev/tools/th-seilbahn.mjs` (neu) — Modell gegen **Gelände**, was `th-3d`
+nicht kann:
+
+| | vorher | nachher |
+|---|---|---|
+| Teile im Fels | 3 (6,7 / 10,6 / 14,4 m) | **0** |
+| th-3d Station × Stütze | 1,39 m tief, 72 Meshpaare | **weg** |
+| th-3d stärkster Fund | Station × Stütze | Ahorn × Birke, 1,17 m |
+| th-netz | 39 ok | 39 ok |
+| th-viertel | 7 Viertel | 7 Viertel |
