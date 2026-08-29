@@ -1,4 +1,4 @@
-# Aufträge für Claude Cowork — Stand 28.08.2026, 21:00 UTC
+# Aufträge für Claude Cowork — Stand 29.08.2026, 05:30 UTC
 
 Diese Aufgaben lassen sich aus der Cloud-Session **nicht** erledigen: Es sind Klicks in fremden
 Web-Konsolen, für die es keinen Schreib-Endpunkt gibt. Mit Cowork + «Claude in Chrome» bzw.
@@ -7,9 +7,45 @@ Web-Konsolen, für die es keinen Schreib-Endpunkt gibt. Mit Cowork + «Claude in
 ⚠️ **Keine Zugangsdaten in den Auftragstext schreiben.** Vorher im Browser bei den jeweiligen
 Diensten anmelden — Cowork soll die bereits offene Sitzung benutzen.
 
-⚠️ Reihenfolge nach Wirkung. 1 und 2 sind die einzigen mit direktem Geldbezug.
+⚠️ Reihenfolge nach Wirkung. **A, 1 und 2 haben direkten Geldbezug** — der Rest ist Hygiene.
 
 ---
+
+## A. Gratis-Versand-Balken zeigt die falsche Schwelle  ⭐⭐ (NEU 29.08.)
+> Öffne im Shopify-Adminbereich das MAIN-Theme «Horizon · LuxeStyle + Email-Popup (Claude)»,
+> bearbeite `layout/theme.liquid` und ändere die eine Zeile `var SCHWELLE=5000;` auf
+> **`var SCHWELLE=4900;`**. Sonst nichts. Bestätige mir den neuen Wert.
+
+**Warum:** Der Automatik-Rabatt «Gratis-Versand ab CHF 49» ist live ACTIVE (am 29.08. abgefragt).
+Der Balken im Warenkorb rechnet aber gegen CHF 50 und sagt einem Korb mit CHF 49.90
+**«noch CHF 0.10 bis Gratis-Versand»** — obwohl der Kunde ihn längst hat. Die Anzeige redet ihm
+aus, was er bekommt, und zwar an der teuersten Stelle des Ablaufs.
+**221 aktive Produkte kosten CHF 49.00–49.99**, darunter das Abendkleid «Sirène» (141 Sitzungen,
+**9 Warenkörbe, 0 Kassengänge** in 60 Tagen) und die Slim Wallet (5,0★, bestbewertet).
+Die Zusage «ab CHF 50» in allen Texten bleibt wahr (49 < 50) und muss NICHT angefasst werden.
+⚠️ Nicht von der Session geändert: Theme + Checkout-Ökonomie sind Betreiber-Entscheidung, und
+die Kette 45/49/50/65 ist bewusst gebaut. Geändert wird hier NUR die Anzeige.
+
+## B. Instagram: etwas postet an der Sperre vorbei  (NEU 29.08.)
+> Öffne die Meta Business Suite für die Seite «LuxeStyle CH» (1049840534888592) und die
+> verbundene Instagram-Seite @luxestyle.ch. Sieh unter **Planer / Geplante Beiträge** nach, ob
+> dort automatische oder geplante Posts eingerichtet sind, und ob eine fremde App
+> Veröffentlichungsrechte hat (Einstellungen → Business-Integrationen). Melde mir, was du findest.
+
+**Warum:** Der Stopp-Riegel im Repo wirkt nachweislich — das Autopilot-Log sagt bei jedem Lauf
+«es wird NICHTS gepostet». Trotzdem entfernt die Dubletten-Wache **seit dem 19.08. jeden Tag
+2–5 Duplikate** vom Profil, und ihre eigene Ausgabe lautet «⚠️ externer Poster war wieder aktiv».
+Es postet also etwas ausserhalb dieser Session. Was, lässt sich nur im Meta-Konto sehen.
+⚠️ Nichts löschen — nur nachsehen und berichten.
+
+## C. TikTok-Ads-Konnektor freigeben  (NEU 29.08.)
+> Öffne in Claude die Konnektor-Einstellungen, wähle **TikTok Ads** und schliesse die
+> Anmeldung (OAuth) ab.
+
+**Warum:** Der Konnektor ist eingetragen (`installState: connected`), aber die Freigabe fehlt —
+eine Cloud-Session ist nicht interaktiv und kann sie nicht durchklicken.
+⚠️ **Das schaltet KEIN Posten frei.** Es ist die Werbe-API: Kampagnen und Zahlen. Reels und Fotos
+brauchen die Content-Posting-API, und die steht weiter in Review (Punkt 5).
 
 ## 1. Klaviyo: die Quelle der toten Domain abstellen  ⭐
 > Öffne in Chrome die Klaviyo-Konsole (Konto XWqMAD, LuxeStyle CH).
@@ -101,12 +137,3 @@ Bis dahin läuft der Browser-Weg unverändert: tiktok.com/tiktokstudio/upload, V
 - ✅ 16 Weiterleitungen von rankenden 404-Seiten auf kaufbare Ware (28.08.).
 - ✅ POD-Produkte: Rückgabe-Ausnahme, falsche Flagge, Doppelblock, USA-Lieferzusage (28.08.).
 
-## 🛒 Gratis-Versand-Balken zeigt die falsche Schwelle (29.08.2026)
-**Eine Zahl im Theme, 221 Produkte betroffen.**
-`layout/theme.liquid` → `var SCHWELLE=5000;` → auf **4900** ändern.
-Grund: Der Automatik-Rabatt «Gratis-Versand ab CHF 49» ist live ACTIVE (geprüft 29.08.).
-Der Balken rechnet aber gegen CHF 50 und sagt einem Korb mit CHF 49.90 «noch CHF 0.10 bis
-Gratis-Versand» — obwohl der Kunde ihn schon hat. 221 aktive Produkte kosten CHF 49.00–49.99,
-darunter das Abendkleid «Sirène» (9 Warenkörbe, 0 Kassengänge in 60 Tagen) und die Slim Wallet (5,0★).
-Die Zusage «ab CHF 50» in allen Texten bleibt wahr und muss NICHT geändert werden.
-⚠️ Nicht von der Session geändert: Theme + Checkout-Ökonomie sind Betreiber-Entscheidung.
