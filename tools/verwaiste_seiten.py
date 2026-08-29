@@ -16,7 +16,12 @@
 import os, re, sys, collections, urllib.parse
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-NICHT_SCANNEN = {"node_modules", "_site", ".git", "_manuscripts", "spiele-dev", "dropship", "data"}
+NICHT_SCANNEN = {"node_modules", "_site", ".git", "_manuscripts", "spiele-dev", "dropship", "data",
+                 # Vorschau-Dateien aus der Videoproduktion, kein Teil des Auftritts
+                 "video-prototypes"}
+# Seiten, die BEWUSST ohne eingehenden Link leben. links.html ist die
+# Link-in-Bio-Seite: sie wird aus Social-Profilen aufgerufen, nicht aus dem Auftritt.
+GEWOLLT_OHNE_LINK = {"/links.html"}
 LINK = re.compile(r'href\s*=\s*(["\'])(.*?)\1', re.I)
 # ⚠️ Die EIGENE Domain ist NICHT extern. Der erste Lauf meldete sechs englische
 # Werkzeug-Seiten als verwaist — sie sind laengst verlinkt, aber per absolutem
@@ -60,7 +65,18 @@ def main():
                 continue
             if ziel in alle:
                 eingehend[ziel] += 1
-    verwaist = sorted(s for s in alle if not eingehend[s])
+    # Eine Seite, die auf eine ANDERE URL kanonisiert, ist eine erklaerte Dublette —
+    # sie BRAUCHT keine eingehenden Links (gefunden an presse.html -> press.html).
+    def dublette(pfad):
+        try:
+            h = open(os.path.join(ROOT, pfad.lstrip("/")), encoding="utf-8", errors="ignore").read(4000)
+        except Exception:
+            return False
+        m = re.search(r'<link[^>]+rel=["\']canonical["\'][^>]+href=["\']([^"\']+)', h, re.I)
+        return bool(m and m.group(1).rstrip("/").split("/")[-1] != pfad.split("/")[-1])
+
+    verwaist = sorted(s for s in alle
+                      if not eingehend[s] and s not in GEWOLLT_OHNE_LINK and not dublette(s))
     print(f"{len(alle)} Seiten · {len(verwaist)} ohne eingehenden Link")
     if not verwaist:
         return 0

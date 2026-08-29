@@ -45,6 +45,12 @@ def seiten():
                 continue
             if re.search(r'<meta[^>]+name=["\']robots["\'][^>]*noindex', html, re.I):
                 continue
+            # ⚠️ Eine Seite, die auf eine ANDERE URL kanonisiert, ist eine erklaerte
+            # Dublette — sie in die Sitemap zu schreiben widerspricht der eigenen
+            # Angabe. Gefunden an presse.html, das auf press.html zeigt.
+            m = re.search(r'<link[^>]+rel=["\']canonical["\'][^>]+href=["\']([^"\']+)', html, re.I)
+            if m and m.group(1).rstrip("/").split("/")[-1] not in ("", name):
+                continue
             raus.append((d + "/" + name if d else name, d))
     return raus
 
