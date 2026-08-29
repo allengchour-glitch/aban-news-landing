@@ -4751,6 +4751,60 @@ Zahlenreihe — sonst laufen sie beim nächsten Verschieben des Doms wieder ause
 > Kandidat kostet eine Messung von zwei Minuten. Das ist der Unterschied zu den vier
 > Runden davor, in denen dieselbe Liste noch aus Messfehlern bestand.
 
+---
+
+## 2026-08-29 · 🔥 Die Serie — die kurze Schleife, die gefehlt hat
+
+Alles im Spiel belohnte über **Tage**: Tagesmissionen, Tages-Serie, Skill-Stufen, Erfolge.
+Was fehlte, war ein Grund, **jetzt gleich** noch etwas zu tun.
+
+Die Serie schliesst das. Jede belohnte Handlung verlängert sie und hebt den
+Multiplikator — und die Uhr wird dabei **knapper statt grosszügiger**:
+
+| Kette | Multiplikator | Fenster |
+|---:|---|---:|
+| 1 | ×1,125 | 28,6 s |
+| 6 | ×1,75 | 21,6 s |
+| 12 | ×2,5 | 14,0 s |
+| 13 | ×2,5 (gedeckelt) | 14,0 s |
+
+Wer bei ×2 steht, hat achtzehn Sekunden, nicht dreissig. Genau das erzeugt das
+„schnell noch eins".
+
+### Ein Ort statt dreissig
+
+An **30 Stellen** wurde Geld vergeben. Der Multiplikator dort überall einzubauen hätte
+dreissig Varianten desselben Gedankens ergeben. Stattdessen `verdiene(betrag)` — ein
+Ort, der den Faktor anwendet, auszahlt, die Kette verlängert und das HUD nachzieht.
+**16 Stellen** laufen jetzt darüber.
+
+⚠️ Bewusst NICHT umgestellt: Miete, Post-Geschenke, Glücksspiel, der Tages-Login-Bonus
+und Möbel-Rückerstattungen. Eine Serie soll belohnen, was man **tut** — nicht, was
+einem zufällt. Sonst tickt sie im Leerlauf weiter und ist nichts mehr wert.
+
+### ⚠️ Zweimal Position geraten, zweimal danebengelegen
+
+Der Balken sass fest auf `top:58px`, mittig zentriert. Gemessen:
+
+* **Hochformat:** 43 × 39 px auf der Stufen-Anzeige — dort bricht die Kopfzeile auf zwei
+  Reihen um, 58 px stimmt nur im Querformat.
+* Nach dem Fix (Unterkante der Kopfzeile abfragen): jetzt lag er auf dem **Radar** —
+  bei 390 px Breite liegt die Fenstermitte mitten im Radar.
+
+Beides gelöst wie `layoutLinkeSpalte` es längst vormacht: **messen statt annehmen.** Der
+Balken fragt die Kopfzeile nach ihrer Unterkante und den freien Streifen rechts vom Radar
+ab. Fünf Formate (844×390, 390×844, 1100×620, 320×700, 932×430): keine Überdeckung.
+
+### Geprüft
+
+`th-serie.mjs` (neu) spielt die Kette durch — 14 Prüfungen: Multiplikator steigt, ist
+gedeckelt, Fenster wird knapper und fällt nicht unter 14 s, Anzeige stimmt, Aufschlag
+wird ausgezahlt (+1128 $ bei 13 Gliedern), abgelaufene Uhr beendet die Serie, Rekord
+überlebt und steht im Spielstand.
+
+`th-speichern` weiter grün (der Rekord ist in beiden Richtungen ergänzt),
+`th-pruef` bestanden, `th-zahlen` 0 NaN.
+
 ## 2026-08-29 · 🎡 Fünf Kandidaten, kein Fehler — und daraus wird die Prüfung
 
 Nächste fünf Einträge der Liste gemessen, jeder mit der Frage *was steht in diesem

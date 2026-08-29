@@ -131,6 +131,7 @@ canvas{display:block}
 #chatToggle{position:fixed;left:calc(150px + env(safe-area-inset-left));bottom:calc(10px + env(safe-area-inset-bottom));z-index:14;display:none;border:2px solid #e8b04a;background:rgba(255,253,246,.94);border-radius:50%;width:48px;height:48px;font-size:1.2rem;cursor:pointer}
 #chatToggle.blink{animation:cblink 1s infinite}
 @keyframes cblink{50%{box-shadow:0 0 0 6px rgba(255,209,102,.5)}}
+@keyframes komboPuls{50%{transform:scale(1.07)}}
 #netBadge{position:fixed;top:calc(60px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:11;background:rgba(90,150,90,.9);color:#fff;border-radius:20px;padding:4px 14px;font-size:.8rem;font-weight:800;display:none}
 .hide{display:none!important}
 input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-size:16px}
@@ -145,6 +146,7 @@ input[type=text]{padding:11px;border-radius:10px;border:2px solid #b8cee0;font-s
   <div class="panel needs" id="needsBox"></div>
   <div class="panel" id="stufeBox" style="cursor:pointer;max-width:46vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"></div>
 </div>
+<div id="komboHud" style="display:none;position:fixed;left:0;top:calc(58px + env(safe-area-inset-top));z-index:13;background:rgba(24,28,40,.86);color:#fff;padding:7px 14px;border-radius:14px;min-width:104px;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,.34);pointer-events:none"></div>
 <div id="netBadge">🌐 verbunden</div>
 <button id="modeBtn">🔨 Bauen</button>
 <button id="kircheBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(190px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:40px;padding:12px 20px;font-weight:900;cursor:pointer;color:#fff;background:linear-gradient(90deg,#e07ac0,#b04a90)">💒 Kirchlich heiraten · 800 $</button>
@@ -9683,6 +9685,78 @@ var geld=5000,tag=1,uhrzeit=8*60; // Minuten
 var liebe=30,verlobt=false,verheiratet=false,loveEvT=0;
 var skills={arbeit:{lv:1,xp:0},liebe:{lv:1,xp:0},krimi:{lv:0,xp:0}};
 var stats={ernten:0,coupsOk:0,buskPerfekt:0,growSold:0,moebelGekauft:0};
+/* 🔥 SERIE — die kurze Schleife.
+   Alles im Spiel belohnte bisher ueber TAGE: Tagesmissionen, Tages-Serie, Skill-Stufen,
+   Erfolge. Was fehlte, war der Grund, JETZT noch etwas zu tun. Die Serie schliesst das:
+   jede belohnte Handlung verlaengert sie, hebt den Multiplikator — und die Uhr wird
+   dabei KNAPPER statt grosszuegiger. Wer bei x2 steht, hat vierzehn Sekunden, nicht
+   dreissig; genau das erzeugt das "schnell noch eins".
+   Der Multiplikator ist gedeckelt (x2,5), damit die Wirtschaft nicht kippt, und greift
+   nur auf VERDIENTES Geld — nicht auf Verkaeufe oder Rueckerstattungen. */
+var KOMBO={n:0,t:0,best:0,verdient:0};
+function komboFenster(n){return Math.max(14,30-n*1.4);}   /* Sekunden, sinkt mit der Kette */
+function komboMult(){return 1+Math.min(KOMBO.n,12)*0.125;} /* x1,0 … x2,5 */
+function komboPlus(){
+  KOMBO.n++;KOMBO.t=komboFenster(KOMBO.n);
+  if(KOMBO.n>KOMBO.best){KOMBO.best=KOMBO.n;KOMBO._neuerRekord=true;}
+  komboHudUpd();
+  if(KOMBO.n===3||KOMBO.n===6||KOMBO.n===9||KOMBO.n===12)
+    beep(520+KOMBO.n*40,.09,"triangle",.05);
+  return komboMult();}
+/* Der EINE Ort, an dem Verdienst vergeben wird — sonst muesste der Multiplikator an
+   dreissig Stellen stehen und waere ueberall anders. */
+function verdiene(betrag,zaehlt){
+  var m=(zaehlt===false)?1:komboPlus();
+  var b=Math.round(betrag*m);
+  geld+=b;if(typeof geldSend==="function")geldSend();
+  if(zaehlt!==false)KOMBO.verdient+=b-betrag;
+  updHUD();
+  return b;}
+function komboEnde(){
+  if(KOMBO.n>=3){
+    var txt="🔥 Serie zu Ende: "+KOMBO.n+" in Folge"+(KOMBO.verdient>0?" · +"+KOMBO.verdient+" $ extra":"");
+    if(KOMBO._neuerRekord)txt="🏆 NEUER REKORD! "+KOMBO.n+" in Folge"+(KOMBO.verdient>0?" · +"+KOMBO.verdient+" $ extra":"");
+    hint(txt);
+    if(KOMBO._neuerRekord&&typeof launchFirework==="function"&&sims&&sims[0])launchFirework(sims[0].x,sims[0].z);}
+  KOMBO.n=0;KOMBO.t=0;KOMBO.verdient=0;KOMBO._neuerRekord=false;komboHudUpd();}
+function komboTakt(dt){
+  if(KOMBO.n<=0)return;
+  KOMBO.t-=dt;
+  if(KOMBO.t<=0){komboEnde();return;}
+  komboHudUpd();}
+function komboHudUpd(){
+  var el=document.getElementById("komboHud");if(!el)return;
+  if(KOMBO.n<=0){el.style.display="none";return;}
+  var f=komboFenster(KOMBO.n),anteil=Math.max(0,Math.min(1,KOMBO.t/f));
+  el.style.display="block";
+  /* ⚠️ HOEHE MESSEN, NICHT RATEN. Fest auf 58 px gesetzt lag der Balken im Hochformat
+     43 x 39 px auf der Stufen-Anzeige: dort bricht die Kopfzeile auf zwei Reihen um.
+     Dieselbe Falle und dieselbe Loesung wie bei layoutLinkeSpalte — die Unterkante der
+     Kopfzeile wird abgefragt und der Balken darunter gesetzt. */
+  var kopf=document.getElementById("hud");
+  if(kopf&&getComputedStyle(kopf).display!=="none"){
+    var kb=kopf.getBoundingClientRect();
+    if(kb.height>0)el.style.top=Math.round(kb.bottom+8)+"px";}
+  /* ⚠️ UND WAAGERECHT GENAUSO. Mittig zentriert lag der Balken im Hochformat auf dem
+     Radar (390 px breit: Radar 10…172, Mitte 133). Also nicht die Fensterbreite
+     zentrieren, sondern den FREIEN Streifen rechts vom Radar — gemessen, nicht geraten. */
+  var l0=8,r0=el.offsetParent?window.innerWidth-8:window.innerWidth-8;
+  var rad=document.getElementById("minimap");
+  if(rad&&getComputedStyle(rad).display!=="none"){
+    var rb=rad.getBoundingClientRect(),eb=el.getBoundingClientRect();
+    /* nur ausweichen, wenn der Balken auf Radarhoehe liegt */
+    if(eb.bottom>rb.top&&eb.top<rb.bottom)l0=Math.max(l0,rb.right+10);}
+  var br=el.offsetWidth||124;
+  el.style.left=Math.round(Math.max(8,l0+(r0-l0-br)/2))+"px";
+  /* Ab x2 wird der Balken rot und pulst — die letzten Sekunden soll man spueren. */
+  var eng=anteil<0.34;
+  el.innerHTML='<div style="display:flex;align-items:center;gap:8px">'+
+    '<span style="font-size:1.05rem;font-weight:900">🔥 '+KOMBO.n+'</span>'+
+    '<span style="font-weight:900;color:#ffd166">x'+komboMult().toFixed(2).replace(/0$/,"")+'</span>'+
+    '</div><div style="margin-top:4px;height:5px;border-radius:3px;background:rgba(255,255,255,.25);overflow:hidden">'+
+    '<div style="height:100%;width:'+(anteil*100).toFixed(0)+'%;background:'+(eng?"#ff6b5a":"#ffd166")+
+    ';transition:width .12s linear"></div></div>';
+  el.style.animation=eng?"komboPuls .6s infinite":"none";}
 var achDone={};
 var ACH=[
  ["start","🏠","Einzug","Das erste Möbelstück platziert",function(){return stats.moebelGekauft>=1;}],
@@ -9835,7 +9909,7 @@ function missCheck(){
     try{ wert9=MISS_POOL[m.i][3](); }
     catch(em){ if(!_achLaut["m"+m.i]){_achLaut["m"+m.i]=1;console.warn("Missions-Zaehler wirft:",m.i,em);} }
     if(wert9!==null&&wert9-m.basis>=m.ziel){m.done=true;neu=true;
-      geld+=180;geldSend();hint("🎯 Mission geschafft: "+m.e+" "+m.tx+"  +180 $");
+      verdiene(180);hint("🎯 Mission geschafft: "+m.e+" "+m.tx+"  +180 $");
       if(typeof launchFirework==="function"&&sims&&sims[0])launchFirework(sims[0].x,sims[0].z);
       beep(700,.1,"triangle",.05);}
     if(!m.done)alle=false;});
@@ -10356,7 +10430,8 @@ function snapshot(){return {gw:GW,gh:GH,floors:floors,walls:Object.keys(walls).r
   em:window._emoteCount||0, /* 🩹 Schwarm-4: Basiswert der Emote-Team-Aufgabe (tb) wird gespeichert, der Zaehler fehlte — nach Host-Reload zaehlte die Aufgabe zu wenig */
   cpT:window._coupTag,cpH:window._coupHeute,lfT:window._liefTag,lfH:window._liefHeute,ws:wohnstufe,na:naechsteAbnahme,
   bkT:window._buskTag,bkH:window._buskHeute,
-  anC:window._angelCd};}
+  anC:window._angelCd,
+  kb:KOMBO.best||0};}   /* 🔥 der eigene Serien-Rekord — das, was man schlagen will */
 function loadSnapshot(sn){
   var mx9=Math.round((GW-(sn.gw||18))/2),my9=Math.round((GH-(sn.gh||14))/2); // alte Saves mittig einpassen
   (sn.furn||[]).forEach(function(f9){var m9=/^f(\d+)/.exec(f9.fid||"");if(m9)fidC=Math.max(fidC,+m9[1]+1);}); // fid-Zaehler fortsetzen
@@ -10407,6 +10482,7 @@ function loadSnapshot(sn){
   naechsteAbnahme=(sn.na!==undefined&&sn.na>0)?sn.na:(sn.tag||tag)+4;
   if(sn.bkT!==undefined)window._buskTag=sn.bkT;if(sn.bkH!==undefined)window._buskHeute=sn.bkH;
   if(sn.anC!==undefined)window._angelCd=sn.anC;
+  if(sn.kb!==undefined)KOMBO.best=sn.kb|0;
   kinder.slice().forEach(function(k){scene.remove(k.mesh);});kinder=[];
   (sn.ki||[]).forEach(function(kd){var nk=spawnKind(kd.b);if(nk){nk.name=kd.n;nk.alter=kd.a;}});
   updHUD();}
@@ -10628,7 +10704,7 @@ function endeVerstecken(gefunden){
   document.getElementById("hideHud").style.display="none";
   var mia=sims[1];if(mia)mia._hide=false;
   if(MPs&&!gefunden)netSend({t:"hide",on:0,found:0}); // Gast auch bei Abbruch befreien
-  if(gefunden){geld+=100;geldSend();stats.versteckt=(stats.versteckt||0)+1;
+  if(gefunden){verdiene(100);stats.versteckt=(stats.versteckt||0)+1;
     sims.forEach(function(s2){s2.needs.spass=Math.min(100,s2.needs.spass+16);});
     if(mia)hearts(mia.x,mia.z);simEmoji(sims[0],"🎉");if(mia)simEmoji(mia,"😆");
     beep(880,.09,"square",.05);setTimeout(function(){beep(1170,.12,"square",.05);},90);
@@ -10707,7 +10783,7 @@ function tragEnde(ok){
   scene.remove(TRAGM.g);scene.remove(TRAGM.ring);TRAGM=null;
   var h=document.getElementById("tragHud");if(h)h.style.display="none";
   if(ok){
-    geld+=TRAG_LOHN;geldSend();stats.sperrgut=(stats.sperrgut||0)+1;
+    verdiene(TRAG_LOHN);stats.sperrgut=(stats.sperrgut||0)+1;
     sims.forEach(function(s){s.needs.spass=Math.min(100,s.needs.spass+12);});
     hint("📦 Geschafft! Das Sperrgut steht — +"+TRAG_LOHN+" $.");
     beep(760,.1,"triangle",.06);setTimeout(function(){beep(1040,.15,"triangle",.07);},130);
@@ -10758,7 +10834,7 @@ setTimeout(function bauePickups(){
     pickups.push({mesh:g,x:p[0],z:p[1],gift:gift,reward:reward,active:true,ph:i*1.3});});
 },0);
 function collectPickup(i){var pk=pickups[i];if(!pk||!pk.active)return;pk.active=false;pk.mesh.visible=false;
-  geld+=pk.reward;geldSend();updHUD();
+  verdiene(pk.reward);
   beep(880,.07,"square",.05);setTimeout(function(){beep(1180,.1,"square",.05);},80);
   hint((pk.gift?"🎁 Geschenk":"💰 Münze")+" gefunden! +"+pk.reward+" $");
   if(pk.gift&&typeof hearts==="function")hearts(pk.x,pk.z);
@@ -11054,7 +11130,7 @@ function finishCrime(){
   var chance=0.55+lv*0.07+(crime.accomplice?0.15:0)-job.risk*0.5+(crime.mgBonus||0);crime.mgBonus=0;
   var ok=Math.random()<chance;
   var beute=Math.round(job.base*(1+lv*0.4)*(crime.accomplice?1.7:1));
-  if(ok){geld+=beute;stats.coupsOk++;
+  if(ok){verdiene(beute);stats.coupsOk++;
     crimeScene(true,job,beute);
     skillXp("krimi",2);}
   else{polizeiPending=true;wantedPlus(1);var strafe=Math.min(geld,Math.round(beute*0.6)+100);geld-=strafe;
@@ -11126,7 +11202,7 @@ function updBeete(dt){
       for(var si2=0;si2<sims.length;si2++){var s5=sims[si2];
         if(s5.mesh.visible&&Math.hypot(s5.x-cx(f3.gx),s5.z-cz(f3.gy))<2.4){
           f3.wachs=0;f3.sprossen.forEach(function(sp6){sp6.scale.setScalar(0.05);sp6.material.color.setHex(0x3a8a3a);});
-          var ertrag=Math.round((35+skills.arbeit.lv*8)*stufenBonus());geld+=ertrag;stats.ernten++;stats.ernteLager=(stats.ernteLager||0)+1;geldSend(); /* 🩹 Schwarm-4: Lager (verkaufbar) getrennt von der Lebenszeit-Statistik */
+          var ertrag=Math.round((35+skills.arbeit.lv*8)*stufenBonus());verdiene(ertrag);stats.ernten++;stats.ernteLager=(stats.ernteLager||0)+1;geldSend(); /* 🩹 Schwarm-4: Lager (verkaufbar) getrennt von der Lebenszeit-Statistik */
           s5.needs.hunger=Math.min(100,s5.needs.hunger+12);
           simEmoji(s5,"🥕");hint("🥕 Ernte! +"+ertrag+" $");updHUD();break;}}}
   }}
@@ -11256,7 +11332,7 @@ function autoFahr(dt){
   if(carVY>0||carAirY>0){carVY-=24*dt;carAirY=Math.max(0,carAirY+carVY*dt);carAirT+=dt;
     m.position.y=(a.homeY||0.01)+carAirY;
     if(carAirY<=0&&carVY<0){carVY=0;
-      if(carAirT>0.3){var pkt=(carAirT*80)|0;geld+=pkt;geldSend();stats.stunts=(stats.stunts||0)+1;updHUD();
+      if(carAirT>0.3){var pkt=(carAirT*80)|0;verdiene(pkt);stats.stunts=(stats.stunts||0)+1;
         beep(760,.09,"square",.05);setTimeout(function(){beep(1020,.1,"square",.05);},80);
         hint("🛹 AIRTIME "+carAirT.toFixed(1)+"s! +"+pkt+" $");}
       carAirT=0;}}
@@ -11337,7 +11413,7 @@ function updLiefer(dt){
        Die kurze Fahrt zahlt also weniger als bisher, die lange deutlich mehr, und der
        Tagesdeckel von vier Auftraegen bleibt unangetastet. */
     var lohn=((40+liefer.t*1.6+(liefer.weg||0)*0.5)*bonus*stufenBonus())|0;
-    geld+=lohn;geldSend();stats.lieferungen=(stats.lieferungen||0)+1;updHUD();
+    verdiene(lohn);stats.lieferungen=(stats.lieferungen||0)+1;
     hearts(liefer.x,liefer.z);beep(880,.09,"square",.05);setTimeout(function(){beep(1170,.12,"square",.05);},90);
     hint("📦✅ Geliefert! +"+lohn+" $"+(bonus>1?" (Team-Bonus 👫)":""));
     liefer=null;document.getElementById("lieferHud").style.display="none";return;}
@@ -11425,7 +11501,7 @@ function updWork(dt){
     if(window.autoRec){window.autoRec.state="heim";window.autoRec.mesh.position.set(70,0.01,GH*CS/2+11);window.autoRec.mesh.visible=true;}
     var lohn=2*(100+skills.arbeit.lv*40);
     lohn=Math.round(lohn*stufenBonus());   /* 🏅 die Abnahme verspricht „+12 % Einnahmen" — galt vorher nur fuer die Miete */
-    geld+=lohn;skillXp("arbeit",1);
+    verdiene(lohn);skillXp("arbeit",1);
     sims.forEach(function(s2,i){
       if(i>0){s2.state="idle";s2.mesh.visible=true;s2.x=cx(2+i*2);s2.z=cz(GH-1);s2.pose="stand";}
       s2.needs.hunger=Math.max(10,s2.needs.hunger-18);s2.needs.energie=Math.max(10,s2.needs.energie-20);
@@ -11682,7 +11758,7 @@ function npcAct(n){
   else if(n.typ==="buergermeister"){
     if(questBusy){
       var rw=questIdx<QUESTS.length?QUESTS[questIdx][3]:(ensurePQ(),window._pq.rw);
-      geld+=rw;stats.quests=(stats.quests||0)+1;questIdx++;questBusy=false;window._pq=null;
+      verdiene(rw);stats.quests=(stats.quests||0)+1;questIdx++;questBusy=false;window._pq=null;
       hint("🎖️ Bürgermeister: „Großartig!“ +"+rw+" $ — Neuer Auftrag: "+questTxt());
       npcEmoji(n,"💰");beep(700,.1,"triangle",.06);setTimeout(function(){beep(940,.16,"triangle",.07);},140);
       geldSend();netSend({t:"quest",i:questIdx});}
@@ -11956,7 +12032,7 @@ function npcAnsprechen(){
   if(!f.stand){f.stand=true;setTimeout(function(){f.stand=false;},3500);}       // bleibt kurz stehen
   if(Math.random()<0.35){
     var a=NPC_AUFTRAEGE[(Math.random()*NPC_AUFTRAEGE.length)|0];
-    geld+=Math.round(a[1]*stufenBonus());geldSend();updHUD();
+    verdiene(Math.round(a[1]*stufenBonus()));
     hint("💬 „"+a[0]+"“  → +"+a[1]+" $");
     beep(700,.09,"sine",.05);setTimeout(function(){beep(920,.11,"sine",.05);},110);
     stats.gespraeche=(stats.gespraeche||0)+1;
@@ -12902,7 +12978,7 @@ document.getElementById("markthalleBtn").onclick=function(){ /* 🥕 Markthalle:
      (Erfolg „Grüner Daumen", Team-Aufgabe „6 Ernten") und wurde hier faelschlich genullt. */
   var e9=stats.ernteLager||0;if(e9<=0){hint("🌱 Erst ernten — dann verkaufen!");return;}
   var erloes=Math.round(e9*45*(1+skills.arbeit.lv*0.15));
-  erloes=Math.round(erloes*stufenBonus());geld+=erloes;
+  erloes=Math.round(erloes*stufenBonus());verdiene(erloes);
   /* 🩹 Schwarm-6: der Endlos-Auftrag "Verkaufe X Ernten am Markt" prueft einen
      Zaehler, der hier nie stieg (growSold zaehlt nur den DISKRETEN Nachtdeal
      und speist den Gauner-Erfolg — Marktverkaeufe duerfen den nicht ausloesen).
@@ -13019,7 +13095,7 @@ function angelResult(ms){
 function angelEnd(){
   ANGEL.on=false;clearTimeout(ANGEL.tmr);
   document.getElementById("angel").style.display="none";
-  if(ANGEL.geldSum>0){geld+=Math.round(ANGEL.geldSum*stufenBonus());geldSend();updHUD();}
+  if(ANGEL.geldSum>0){verdiene(Math.round(ANGEL.geldSum*stufenBonus()));}
   sims.forEach(function(s2){s2.needs.spass=Math.min(100,s2.needs.spass+8+ANGEL.fang*4);});
   window._angelCd=uhrzeit;
   hint(ANGEL.fang>0?"🎣 "+ANGEL.fang+" Fisch"+(ANGEL.fang>1?"e":"")+" gefangen · +"+ANGEL.geldSum+" $":"🌊 Heute beißt nichts …");}
@@ -13036,7 +13112,7 @@ document.getElementById("angelQuit").onclick=function(){
   ANGEL.on=false;clearTimeout(ANGEL.tmr);document.getElementById("angel").style.display="none";
   /* 🐛 Schwarm-Befund: hier wurde die Beute ausgezahlt, aber _angelCd nie gesetzt —
      man konnte sofort wieder anfangen und beliebig Geld farmen. */
-  if(ANGEL.geldSum>0){geld+=ANGEL.geldSum;geldSend();updHUD();window._angelCd=uhrzeit;}};
+  if(ANGEL.geldSum>0){verdiene(ANGEL.geldSum);window._angelCd=uhrzeit;}};
 var KOCH={on:false,seq:[],pos:0,round:0,hits:0,total:0,tmr:null};
 var ZUTATEN=["🥕","🍅","🧀","🥩","🧅","🌶️"];
 function kochStart(){
@@ -13099,7 +13175,7 @@ function taschendieb(n9){
   mgStart("🤏 Taschendiebstahl","Ruhige Hand — dreimal sauber treffen, sonst fliegst du auf!",function(avg){
     if(avg>=0.65){
       var beute9=Math.round((25+Math.random()*55)*(1+skills.krimi.lv*0.25));
-      geld+=beute9;if(MPs&&!mpHost)netSend({t:"dieb"});else stats.diebstahl=(stats.diebstahl||0)+1;skillXp("krimi",1);
+      verdiene(beute9);if(MPs&&!mpHost)netSend({t:"dieb"});else stats.diebstahl=(stats.diebstahl||0)+1;skillXp("krimi",1);
       geldSend();updHUD();
       if(Math.random()<0.12){polizeiPending=true;wantedPlus(1);npcTimer=Math.min(npcTimer,5);
         hint("🤏 +"+beute9+" $ … aber jemand hat es GESEHEN! 🚨");}
@@ -13212,7 +13288,7 @@ document.getElementById("buskBtn").onclick=function(){
   if(window._buskTag===tag&&(window._buskHeute||0)>=3){hint("🎸 Für heute ist das Publikum durch — morgen wieder!");return;}
   mgStart("🎸 Straßenmusik","Triff den Takt — je genauer, desto mehr Trinkgeld!",function(avg){
     var verdienst=Math.round(30+avg*170*(1+skills.liebe.lv*0.1));
-    geld+=verdienst;geldSend();
+    verdiene(verdienst);
     sims.forEach(function(s2){s2.needs.spass=Math.min(100,s2.needs.spass+10);});
     window._buskHeute=(window._buskTag===tag?(window._buskHeute||0):0)+1;window._buskTag=tag;
     if(avg>=0.99){if(MPs&&!mpHost)netSend({t:"busk"});else stats.buskPerfekt++;}
@@ -13559,6 +13635,7 @@ function loop(now){
        ⚠️ Die ANZAHL bleibt dabei absichtlich konstant. three.js baut sein Shader-
        Programm nach der Zahl der Lichter je Art; schwankt sie, wird bei jedem Wechsel
        neu uebersetzt — ein Ruckler, der schlimmer waere als das Problem. */
+    komboTakt(dt);          /* 🔥 Serien-Uhr laeuft nur im Spiel, nicht im Baumodus-Menue */
     window._lampTakt=(window._lampTakt||0)-dt;
     if(window._lampTakt<=0){window._lampTakt=0.5;
       /* ⚠️ NICHT `nachtLampen` NEHMEN. Die Liste haelt nur die sechs Lampen, die die
