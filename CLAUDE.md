@@ -847,6 +847,80 @@ verschwinden lässt.
 bevor ich ihn geprüft hatte. **Ein Verlustbefund gehört erst gemeldet, wenn er gegen die Quelle
 gehalten wurde** — sonst erzeugt er Aufregung, die niemand braucht.
 
+## 🔇 Der Wächter hat seine eigene Alarmanlage abgestellt (2026-08-29)
+Der Google-Kanal-Wächter meldete abends **«Keine Lücke: alle neuen Produkte ohne Sperrgrund
+stehen im Google-Kanal»** — und löschte seinen Bericht. Meine Direktabfrage am Produkt sagte
+gleichzeitig, dass fünf Küchen-Zubehörteile weiter fehlen. Einer von beiden irrte, und es war
+der Wächter.
+**Die Kette:** Der SCHLIESSER (`google_kanal_luecke_schliessen.py`) schreibt bei jedem Nein eine
+Quittung `bleibt-draussen:<Grund>`. Der WÄCHTER liest dieses Ledger und hält jede solche Zeile
+für eine Erklärung. Die meisten Gründe sind ausserhalb des Schliessers belegt und vom Wächter
+unabhängig nachprüfbar — ein Sperr-Tag am Produkt, die Klingen-Hausregel, eine Heilaussage im
+Titel. **Einer ist es nicht: «heikle Ware» ist das Urteil seiner EIGENEN Wortliste.**
+Damit verschwanden fünf Produkte aus dem Bericht, die ausdrücklich als offene
+BETREIBER-Entscheidung in `dropship/COWORK-AUFTRAEGE.md` stehen.
+- **Regel: Ein Werkzeug darf seine eigene Vermutung nicht als Erklärung akzeptieren.** Dieselbe
+  Familie wie das Zombie-Ledger (25.08.) und «ein Kommentar ist ein Datum, kein Beweis» (29.08.).
+  Solche Fälle werden jetzt weder verschwiegen noch als Fehler gemeldet, sondern in einem
+  EIGENEN Berichtsabschnitt geführt, bis ein Mensch entscheidet.
+- ⚠️ **Und die Wurzel darunter: `HEIKEL` im Schliesser ist eine ZWEITE, gröbere Kopie der
+  Klingenregel** — sie trägt ein nacktes `messer|dolch|machete` und läuft **VOR** `ist_klinge`,
+  beschattet die gepflegte Regel also vollständig. «Messerblock», «Messerhalter» und
+  «Messerschärfer» fallen dadurch heraus, obwohl die Hausregel seit dem 12.08. ausdrücklich
+  sagt, dass Küchenbesteck und erst recht Zubehör bei Google zulässig sind.
+  **Die Geschwister-Lehre in ihrer gemeinsten Form: Die Regel wurde gestern an EINE Stelle
+  zusammengelegt — und derselbe Gedanke lebte unter einem ANDEREN NAMEN in derselben Datei
+  weiter.** Ein Grep nach «klinge» findet ihn nicht; nur das Lesen der Entscheidungsreihenfolge.
+- Die zusammengelegte Regel selbst ist in Ordnung und jetzt geprüft:
+  `automation/klingenregel_test.py`, **28 Fälle in beide Richtungen, 0 Abweichungen** — zu jedem
+  Sperrfall ein Gegenfall. Eine Regel, aus der fünf Dateien lesen und die über den einzigen
+  verkaufenden Kanal entscheidet, war bis heute ungeprüft.
+
+## 🏷️ Drei Alarme an einem Abend, alle drei falsch — ein Tag-Name ist eine Behauptung (2026-08-29)
+Beim Aufräumen der Startseite habe ich dreimal hintereinander etwas gemeldet, das es nicht gab.
+Jedes Mal hat erst der Blick auf die EINZELNEN Objekte statt auf die Zahl es aufgelöst:
+| Alarm | was wirklich war |
+|---|---|
+| «18 von 26 Startseiten-Produkten sind Kostüm/Party» | Der Tag heisst `kostuem-accessoire` — dahinter stehen **Crossbody-Taschen, Samt-Handtaschen, Halsketten**. Fortura ist ein Fasnachts-Grosshandel und taggt normale Mode so. Echter Fall: **einer**. |
+| «16 aktive BigBuy-Produkte mit `nicht-verifiziert-lieferbar` und `ghost-sale-schutz-bb-draft` stehen im Google-Kanal» | Alle 16 sind **`tracked:true` + `DENY` + Bestand > 0**. Der Geisterverkauf-Schutz vom 10.07. greift; der Tag-Name benennt die Schutzmassnahme, nicht ein offenes Risiko. |
+| «68 von 69 toten Landeseiten haben eine 301, eine fehlt» | Shopify speichert Prozentzeichen **klein** (`%f0%9f…` statt `%F0%9F…`). Es sind 69 von 69. |
+**Regel: Ein Tag-Name ist eine Behauptung über ein Produkt, keine Tatsache über es.** Bevor aus
+einer Tag-Zählung ein Befund wird, gehören die Titel gelesen und ein Feld geprüft, das der Tag
+nicht selbst gesetzt hat (`tracked`, `inventoryPolicy`, der Bestand).
+⚠️ Der Schaden wäre nicht theoretisch gewesen: Ich war einen Schritt davon entfernt, **16 aktive
+Markenprodukte im einzigen verkaufenden Kanal zu draften**.
+
+## 🖼️ Das grössere Bild war ein Kostümfoto mit blutigem Totenkopf (2026-08-29)
+Ein Startseiten-Produkt hatte ein Hauptbild mit 450×733 px und ein zweites mit 920×1170 — auf
+beiden Kanten grösser. Nach Zahlen wäre «das grössere nach vorn» die richtige Reparatur gewesen.
+**Angesehen war es ein Sensenmann-Kostüm mit blutigem Totenkopf-Stab**, auf dem die beworbene
+Halskette kaum zu erkennen ist. Vierte Bestätigung der Lehre vom 21.08.: **NIE blind ein anderes
+Bild nach vorn — erst den ganzen Bildsatz ANSEHEN.** Der eigentliche Befund lag daneben: Das
+Produkt ist ein Halloween-Kostümartikel und stand in der Premium-Reihe «Ab Schweizer Lager»
+(Hausregel 11.08.: kein Kostüm in der Startreihe) — `blitz-front` entfernt, Produkt bleibt im Shop.
+
+## 💉 «Anti-Aging Facelift» an einem Jadestein — 27 Treffer, 3 echte (2026-08-29)
+Scan über **49'270 aktive Produkte** nach chirurgischen Zusagen im Titel. Die Ausbeute ist der
+eigentliche Lehrsatz: **27 Regex-Treffer, 3 echte Fälle.**
+- **«Jade Roller & Gua Sha Premium Set · Anti-Aging Facelift»** — ein Facelift ist eine Operation.
+  Der EIGENE Text des Produkts behauptet ihn nirgends («rollt morgendliche Schwellungen weg»,
+  «betont Wangenknochen und Kieferlinie»). Genau die Misrepresentation-Klasse vom 24.08.: Titel
+  gegen eigenen Text. Neuer Titel aus diesem Text, Handle + 301.
+- **«Dauerhafte Haarentfernung: IPL …»** — IPL für zuhause entfernt Haare nicht dauerhaft, und
+  der eigene Text sagt zur Dauer gar nichts. Das Produkt steht im **Google-Kanal**. Es wurde
+  **keine Ersatzzusage** gesetzt, auch nicht «dauerhafte Reduktion» — belegt ist keine davon.
+  **Wo nichts belegt ist, wird nichts behauptet, auch nichts Schwächeres.**
+- ⚠️ **Und der Fund, der drei Feldprüfungen überlebt hat:** Titel, Handle und SEO waren korrigiert
+  — dann zeigte ein WebFetch der fertigen Seite, dass der **Beschreibungstext den alten Titel als
+  Überschrift weiterträgt**. Die Liste der Felder steht seit dem 21.08. im Gedächtnis und nennt
+  die Beschreibung ausdrücklich; ich habe sie trotzdem übersprungen. **Eine Aussenwirkung prüft
+  man an der Aussenwirkung** — drei richtige Feldprüfungen ersetzen keinen Blick auf die Seite.
+- **Die 24 anderen wurden bewusst NICHT angefasst:** «Po-Lifting-Effekt» bei Shapewear ist ein
+  optischer Formeffekt, «Wimpernlifting» der eingeführte Name einer Kosmetikbehandlung,
+  Zahnaufhellungs-Streifen sind eine erlaubte Kosmetikkategorie, und Beauty-Geräte mit
+  «Lifting-Effekt» fallen unter die Hausregel vom 12.08. **Ein breites Suchmuster ist ein Netz,
+  kein Urteil** — die Beweislast liegt beim Alarm.
+
 ## 🔡 Shopify schreibt Prozentzeichen klein — meine Prüfung meldete eine Lücke, die es nicht gab (2026-08-29)
 Beim Nachzählen der 69 Weiterleitungen auf tote Landeseiten meldete meine eigene Kontrolle
 **«68 mit 301, 1 ohne»**. Der angeblich offene Fall war der Aroma-Diffuser, dessen Handle mit
