@@ -4849,3 +4849,54 @@ Messfehler in diesem Strang; behoben mit einem Index ohne Höhenfenster.
 Und weil das kein Zufall bleiben darf, hat auch die neue Frage jetzt ihre **eigene
 Selbstprobe**: der Test-Kollider im leeren Feld muss als *inhaltslos* erkannt werden.
 Zwei Selbstproben, zwei Richtungen — beide bestehen.
+
+## 2026-08-29 · 🎯 Der letzte Meter — vierzig Ziele hatten keine Zahl
+
+**Der Befund.** Die Serie (Abschnitt davor) gibt einen Grund, **jetzt** etwas zu tun.
+Was weiter fehlte: ein Grund, **dieses** zu tun. Die 40 Erfolge lagen im Pokal-Menü,
+alle gleich blass, alle ohne Zwischenstand. „5 Ernten“ liest sich bei 0 exakt wie bei 4 —
+und genau dieser Unterschied ist der ganze Antrieb. Ein Ziel, dem **eins** fehlt, zieht;
+ein Ziel ohne Zahl ist Deko.
+
+**Was gebaut wurde** (`traumhaus.html`, direkt nach dem `ACH`-Feld):
+
+| Teil | Was er tut |
+|---|---|
+| `ACHFORT` | Tabelle `id: [Stand-Funktion, Ziel, Wort]` für die 20 zählbaren Erfolge |
+| `achStand(id)` | `{ist, soll, wort, rest}`, gedeckelt, `try/catch` — ein Fehler kostet einen Balken, nicht alle |
+| `achNahPruef(a)` | Anstupser „🎯 Nur noch 1 Ernte bis ‚Grüner Daumen‘!“ — **einmal** pro Erfolg |
+| `achNahOffen()` / `achBtnGlanz()` | Ring am 🏆-Knopf, solange ein Ziel auf dem letzten Meter steht |
+| `naechstesZiel()` | der am weitesten fortgeschrittene offene Erfolg → Kopfzeile des Menüs |
+| Balken im Menü | gesperrte Ziele mit Stand sind heller (0,72), das mit Rest 1 fast voll (0,95) + warmer Grund |
+
+**Zwei bewusste Entscheidungen.**
+- Die Tabelle steht **neben** dem `ACH`-Feld, nicht darin: so bleiben die 40 Bedingungen
+  unangetastet, und ein Ja/Nein-Ziel (`verlobt`) braucht schlicht keinen Eintrag.
+- Ziele **ohne Wort** (`reich`, `verliebt`) bekommen einen Balken, aber nie einen
+  Anstupser — „nur noch 1 $ bis Wohlhabend“ wäre Hohn statt Ansporn.
+- `_achNah` liegt im Spielstand (`an`), sonst begrüsst einen dasselbe Ziel nach jedem Laden neu.
+
+**Geprüft:** `spiele-dev/tools/th-meter.mjs` — 25/25, davon 4 Gegenproben.
+Zwei Sabotagen dagegengehalten: `rest` fest auf 99 → **9 Fehler**; nur die Menü-Balken
+abgeschaltet → **genau die 2 Anzeige-Prüfungen** rot, der Rest grün. Der Prüfer misst also
+das Feature und nicht sich selbst. Bestandsprüfer grün: `th-erfolge`, `th-serie`,
+`th-speichern`, `th-hud` (0 Überlappungen), `th-pruef`, `th-lint`.
+
+### Drei Fallen, in die der Prüfer lief (nicht das Spiel)
+
+1. **`geld`, `liebe`, `achDone` sind Closure-Variablen, keine `window`-Globals.**
+   `page.evaluate(() => { geld = 9999 })` wirft `ReferenceError`, `achDone.x = 1` ebenso.
+   → Dieselbe Falle wie bei `WORLD_SOLIDS` (Regel 2 oben). Alles über eine Sonde setzen.
+2. **Chrome normalisiert `rgba()` mit Leerzeichen.** Geschrieben `rgba(232,163,61,.9)`,
+   ausgelesen `rgba(232, 163, 61, 0.9)`. Ein Regex `/232,163,61/` findet nichts und
+   meldet „Ring fehlt“, obwohl der Ring da ist.
+3. **Die Spielschleife funkt zwischen zwei Prüfschritten dazwischen.** `checkAch()` läuft
+   alle 0,35 s weiter und setzte zwischen „Ring an“ und „Ring aus“ einen neuen Anstupser
+   (`bankraeuber`, Ganoven-Level 1/2). Die Gegenprobe mass danach die Schleife, nicht die
+   Logik. → **Setzen und Ablesen in EINEM Sonden-Aufruf**, dann kann nichts dazwischen.
+   Ebenso: Zähler, die auf Ziele einzahlen (`geld`, `liebe`), im Reset nullstellen —
+   sonst gewinnt „Wohlhabend“ mit 9999/10000 jeden Vergleich und der Test misst Zufall.
+
+**Und eine im eigenen Werkzeug:** ein blindes `replace("ring1.anim)", …)` traf die
+**erste** Fundstelle — `.test(ring1.anim)` statt des Detail-Arguments — und verbog damit
+die Behauptung selbst. Bei mehrdeutigen Mustern zeilengenau ersetzen, nicht per Textsuche.
