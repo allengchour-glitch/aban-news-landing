@@ -3366,3 +3366,45 @@ es im Bericht — wer zweimal scheitert, hat ein echtes Problem.
 
 Beide Male galt dieselbe Regel wie den ganzen Tag: **erst prüfen, ob das Messgerät recht
 hat, dann der Welt glauben.**
+
+## Erscheint jeder Katalog-Eintrag? — und zweimal daneben gemessen
+
+Wer im Baumodus etwas kauft, das nie sichtbar wird, verliert Geld für nichts und sieht
+keinen Fehler. Der Katalog hat **104 Einträge in 7 Gruppen**, keine doppelten Bezeichner,
+keinen ohne Preis. Geprüft war er nie.
+
+### Erster Versuch: nach Dateien suchen — 11 falsche Treffer
+
+Die naheliegende Prüfung ist ein HTTP-Test auf `th_<id>.glb`. Sie meldete **11 fehlende
+Dateien** — darunter `wand`, `fenster`, `tuer` und vier Bodenbeläge. Die haben nie eine
+Datei gehabt: Wände laufen über `applyWall`/`buildWallMesh`, Böden über `applyFloor`, und
+`applyFurn()` hat mehrere prozedurale Zweige (`def.car`, `def.grow` …), die Möbel aus
+Quadern bauen.
+
+**Aus „keine Datei" folgt nicht „kaputt".** Die richtige Frage ist nicht, ob eine Datei
+existiert, sondern ob **etwas erscheint, wenn man den Eintrag hinstellt** — das gilt für
+beide Wege gleichermassen.
+
+### Zweiter Versuch: 53 falsche Treffer, weil die Frist geraten war
+
+Also jeden Eintrag wirklich hinstellen und nachsehen, ob ein Mesh mit Geometrie entstand.
+Nach fest gewählten 12 Sekunden meldete der Test **53 von 89 als unsichtbar** — und alle
+53 trugen ein ⭐ im Namen. Das ist zu sauber für einen echten Befund: es waren die über
+`loadTH` geladenen Modelle, die noch unterwegs waren, während die prozeduralen sofort
+dastanden. Gemessen wurde die Ladezeit, nicht die Vollständigkeit.
+
+**Nicht auf eine Frist warten, sondern auf Ruhe.** Jetzt alle 3 s nachsehen und erst
+urteilen, wenn die Zahl dreimal gleich bleibt. Gemessen: nach 3 s fehlten 53, nach 6 s
+noch **eines**, nach 9 s **keines**.
+
+### Ergebnis
+
+**Jeder Eintrag erscheint.** 89 hingestellt (ohne Wände, Fenster, Türen, Böden — die
+laufen über andere Wege), 85 davon in der Möbelliste und alle mit Mesh; die
+Auto-Varianten gehen nach `window.autoRec` (vorhanden), der Hund hat seinen eigenen Weg.
+
+⚠️ Die vier, die *nicht* in `furn` landen, werden jetzt **namentlich ausgewiesen**. Sie
+schweigend hinzunehmen hiesse, vier Einträge nicht geprüft zu haben und trotzdem „alle
+erscheinen" zu melden.
+
+`spiele-dev/tools/th-katalog.mjs` (neu), aufgenommen in `th-alle.mjs`.
