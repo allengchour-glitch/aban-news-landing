@@ -2641,3 +2641,32 @@ sagt auch diese Messung nichts.
 Die grösste verbleibende Zwillingsgruppe sind 390 Fensterscheiben `a8c8dc`. Die
 **dürfen** nicht zusammengelegt werden: `dorfFenster` sammelt nur einen Teil von
 ihnen ein, damit nachts nicht jedes Fenster der Stadt gleichzeitig leuchtet.
+
+## 2026-08-28 · 👁️ 48 653 Sichtprüfungen pro Bild, um 841 Dinge zu zeichnen
+
+**Befund:** 769 geladene Gebäude enthalten **41 348 Meshes — 85 % der ganzen Szene**.
+three.js cullt **Gruppen nicht**, prüft also jedes Mesh einzeln gegen das Sichtfeld. Ein
+Theater mit 970 Meshes steht 250 m weit weg und wurde Mesh für Mesh geprüft.
+
+**Fix `gruppenSicht()`:** EINE Kugel je Gebäude, einmal berechnet (die Bauten sind eingefroren
+und bewegen sich nie). Liegt sie ausserhalb des Sichtfelds → Gruppe unsichtbar, three.js
+betritt den Teilbaum gar nicht erst.
+
+| pro Bild | vorher | nachher |
+|---|---|---|
+| durchlaufene Knoten | 51 936 | **12 941** |
+| Mesh-Sichtprüfungen | 48 653 | **11 278** |
+| verborgen hinter unsichtbaren Gruppen | 580 | **45 858** |
+
+**⚠️ Nur wenn Schatten AUS sind** (Handy). Mit Schatten kann ein Haus ausserhalb des Bildes
+seinen Schatten **ins** Bild werfen — dann darf es nicht verschwinden.
+
+**⚠️ NUR AUSBLENDEN, NIE EINBLENDEN — der Fehler, der fast durchging.** Der erste Anlauf setzte
+`visible` schlicht auf das Prüfergebnis und schaltete damit **acht saisonal versteckte Bauten
+wieder an**: Christbaum, drei Weihnachtsbuden, Eisbahn, Schneemänner, Rodelhang, Skiliftmast.
+**Im Sommer stand ein Skilift auf der Wiese.** Im Diff unsichtbar — nur der Bildvergleich gegen
+`origin/main` hat es gezeigt. Jetzt merkt sich die Prüfung mit `_gsAus`, was **sie selbst**
+versteckt hat, und rührt fremde Entscheidungen nicht an.
+
+**Werkzeug:** `spiele-dev/tools/th-sicht.mjs` (5 Checks, darunter „saisonale Bauten bleiben
+versteckt" und „fremde Verstecke unangetastet" — genau die Regression von oben).
