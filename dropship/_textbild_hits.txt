@@ -12993,3 +12993,65 @@ gid://shopify/Product/15512414355841	30->1	Smart-Armband mit Touchscreen und Her
 gid://shopify/Product/15512415109505	8->0	Elegantes ärmelloses A-Linien-Kleid für Damen
 gid://shopify/Product/15512491000193	82->2	Bedrucktes Langarm-Kleid in grossen Grössen
 gid://shopify/Product/15512491196801	13->2	Casual Damen-Midi-Kleid mit Rundhals
+gid://shopify/Product/15512491393409	25->0	Damen A-Linien Wave-Neck Backless Kleid mit Bindebändern
+gid://shopify/Product/15512492278145	17->3	Sommerliches ärmelloses U-Neck Minikleid
+gid://shopify/Product/15512493162881	31->0	Vintage Messenger Bag aus Canvas und Leder
+gid://shopify/Product/15512493523329	43->0	Eleganter Business Rucksack (Unisex)
+gid://shopify/Product/15512705859969	93->0	High-Waist Rock mit schmeichelhaftem Schnitt
+gid://shopify/Product/15512710250881	60->0	Asymmetrischer Plisseerock mit Schlitz
+gid://shopify/Product/15512711725441	33->0	Elegantes V-Neck Strickkleid mit Wickelfront
+gid://shopify/Product/15512718344577	60->3	Elegantes ärmelloses Leinenkleid mit Schnürung
+gid://shopify/Product/15513554911617	25->0	Zweiteiliges Sweater-Cape Kleid-Set
+gid://shopify/Product/15513557762433	53->0	Business Rucksack mit Zahlenschloss & USB-Port
+gid://shopify/Product/15513558712705	22->0	Retro A-Linien Midikleid mit Polka Dots
+gid://shopify/Product/15513561530753	99->0	Trägerloses Chiffonkleid mit Rüschensaum
+gid://shopify/Product/15513563922817	105->0	Chiffon Maxi-Kleid mit Spitze
+gid://shopify/Product/15513773703553	50->0	A-Linien Maxikleid mit Rundhals
+gid://shopify/Product/15513774981505	54->0	Halterneck Maxikleid mit Blumenmuster
+gid://shopify/Product/15513778782593	19->0	Ärmelloses Casual-Kleid aus Eisseiden-Crêpe
+gid://shopify/Product/15513782485377	21->0	Retro A-Linien Midikleid mit Schlitz
+gid://shopify/Product/15513785434497	25->2	Florales Slim-Fit Trägerkleid für Damen
+gid://shopify/Product/15513795625345	33->0	Leder-Reise-Rucksack für Herren
+gid://shopify/Product/15513796870529	47->0	Multifunktionaler Oxford Rucksack 20-35L
+gid://shopify/Product/15514113802625	120->3	Freizeitkleid mit Rüschen
+gid://shopify/Product/15515089207681	14->0	Geblümtes A-Linien Midikleid mit V-Ausschnitt
+gid://shopify/Product/15515290698113	8->1	Hydrating Facial Care Reiseset (4-teilig) · 4 Stück
+gid://shopify/Product/15515290861953	62->0	Weinkühler-Stab aus Edelstahl
+gid://shopify/Product/15515291681153	98->0	Tulpentüllen-Set mit Spritzbeuteln & Cupcake-Förmchen · 100 
+gid://shopify/Product/15515292467585	20->3	Tragbarer USB-Mixer für Smoothies
+gid://shopify/Product/15515645444481	10->0	One-Shoulder Plisseekleid
+gid://shopify/Product/15515645837697	69->2	Handgemachte Nägel mit Kirschrot Cat Eye
+gid://shopify/Product/15515870658945	18->0	Haustier Zugseil Set aus Polyester, verschleissfest
+gid://shopify/Product/15516008644993	20->0	Edelstahl-Hundehalskette
+gid://shopify/Product/15516058321281	20->0	Sportuhr mit Countdown und Dualzeit
+gid://shopify/Product/15516059271553	33->3	Smart-Armband mit Touchscreen & Herzfrequenzmesser
+gid://shopify/Product/15516060483969	42->0	Reflektierendes Nylon-Brustgeschirr mit Leuchtstreifen
+gid://shopify/Product/15516060975489	20->0	Smartes Fitness-Armband mit Bluetooth-Kopfhörer
+gid://shopify/Product/15516063629697	12->1	Ärmelloses Bodycon-Kleid mit Rückenausschnitt
+gid://shopify/Product/15516066611585	56->0	Retro Canvas Rucksack mit Kordelzug
+gid://shopify/Product/15516068249985	10->0	Vakuum-Kompressionsrucksack mit grossem Fassungsvermögen
+gid://shopify/Product/15516068446593	19->0	Reisetasche für Business & Freizeit
+gid://shopify/Product/15516069364097	117->0	Handliche Leder-Umhängetasche fürs Smartphone
+gid://shopify/Product/15516069953921	26->0	Drehbarer Tortenständer zum Dekorieren
+gid://shopify/Product/15516100919681	11->2	LED-Halsband für Haustiere
+gid://shopify/Product/15516102689153	32->0	Smart Sports Armband mit Stimmungslicht
+gid://shopify/Product/15516103311745	18->3	PP Zügel mit weichem Kissen
+gid://shopify/Product/15516103377281	82->0	Bluetooth Sport Smartwatch mit Schrittzähler
+gid://shopify/Product/15516103672193	21->0	Niedliche Quarzuhr für Kinder
+gid://shopify/Product/15516104753537	19->0	Leichte Baumwoll-Hundeleine
+gid://shopify/Product/15516106260865	9->1	Arrival V-Neck Kleid – Lässig & Elegant
+gid://shopify/Product/15516108030337	120->0	Sommerliches A-Linien Trägerkleid
+gid://shopify/Product/15516108947841	41->0	Schulrucksack für die 3.-4. Klasse
+gid://shopify/Product/15516109177217	37->1	Freizeit-Laptop-Rucksack
+gid://shopify/Product/15516109472129	14->1	Motorrad-Rucksack mit grosser Kapazität
+gid://shopify/Product/15516110160257	27->0	Trendige Crossbody Bag mit viel Stauraum
+gid://shopify/Product/15516111798657	37->0	Multifunktionaler Grill und Zerkleinerer
+gid://shopify/Product/15516112454017	15->1	Sweettreats Antihaft-Kupferpfanne 24 cm
+gid://shopify/Product/15516114551169	76->0	Automatische Rebound-Küchenschere aus Edelstahl
+gid://shopify/Product/15516115075457	8->2	Grosse Trinkflasche mit Strohhalm für Sport & Fitness
+gid://shopify/Product/15516154233217	12->2	Smart-Armband für Blutdruck- & Temperaturmessung
+gid://shopify/Product/15516154888577	32->0	Kinder Smartwatch mit Anruffunktion
+gid://shopify/Product/15516155380097	10->2	Explosionsgeschütztes Hunde-Geschirr-Set
+gid://shopify/Product/15516155871617	163->0	Silikonarmband für Aquanaut Serie 21mm
+gid://shopify/Product/15516156035457	47->0	Reflektierende Seil-Leine für grosse Hunde
+gid://shopify/Product/15516156395905	25->0	i9L Kinder 4G Videoanruf-Uhr
