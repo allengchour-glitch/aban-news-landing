@@ -28,6 +28,23 @@ import time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
+# Die Ausgabe muss Umlaute und Zeichen wie "○" vertragen - sonst stirbt der Bot
+# an seiner eigenen Meldung. Genau das ist am 29.08. passiert: die Windows-
+# Konsole laeuft auf cp1252, 'bot.py check' druckte das Kreissymbol vor
+# "31 optionale Templates fehlen noch", und Python warf einen
+# UnicodeEncodeError. Rueckgabewert 1, das Startskript brach ab ("Konfiguration
+# ist fehlerhaft"), die Neustart-Schleife versuchte es 60 Sekunden spaeter
+# wieder - und wieder. Der Bot stand einen halben Tag, weil er ein Zeichen
+# nicht drucken konnte.
+#
+# 'errors="replace"' ist Absicht: eine Meldung mit einem Fragezeichen darin ist
+# unendlich viel besser als ein Bot, der daran stirbt.
+for _strom in (sys.stdout, sys.stderr):
+    try:
+        _strom.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:  # sehr alte Fassungen oder umgeleitete Stroeme
+        pass
+
 from laa import matcher  # noqa: E402
 from laa.adb import AdbDevice, DeviceError, FakeDevice, list_devices  # noqa: E402
 from laa.config import Config, ConfigError  # noqa: E402

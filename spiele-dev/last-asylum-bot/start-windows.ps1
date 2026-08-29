@@ -36,6 +36,14 @@ param(
 # minimierten Autostart-Fenster unsichtbar. Der Erfolg jedes Aufrufs wird
 # ohnehin ueber $LASTEXITCODE bzw. den Rueckgabewert geprueft.
 $ErrorActionPreference = "Continue"
+
+# Guertel und Hosentraeger zur Umstellung in bot.py: Python soll seine Ausgabe
+# auch dann als UTF-8 schreiben, wenn ein anderer Einstiegspunkt die Umstellung
+# nicht macht. Die Windows-Konsole laeuft auf cp1252, und ein einziges Zeichen
+# wie "○" hat am 29.08. gereicht, um den Start in eine stille
+# Endlosschleife zu schicken.
+$env:PYTHONUTF8 = "1"
+$env:PYTHONIOENCODING = "utf-8"
 Set-Location -Path $PSScriptRoot
 
 # Gilt fuer JEDEN git-Aufruf in diesem Skript: nie nach Zugangsdaten fragen.

@@ -2908,6 +2908,35 @@ class TestFluchtwegWirdNichtGebremst(unittest.TestCase):
 
 
 
+class TestAusgabeUeberlebtWindowsKonsole(unittest.TestCase):
+    """Der Bot stand einen halben Tag, weil er ein Zeichen nicht drucken konnte.
+
+    Am 29.08. um 14:56 (und schon am 28.08. um 21:23) brach der Start mit
+    "Konfiguration ist fehlerhaft" ab. Der Grund stand erst im Vermerk, seit
+    der die Ausgabe mitschneidet: die Windows-Konsole laeuft auf cp1252,
+    'bot.py check' druckte das Kreissymbol vor "31 optionale Templates fehlen
+    noch", und Python warf einen UnicodeEncodeError. Rueckgabewert 1, Abbruch,
+    Neustart in 60 Sekunden, wieder Abbruch - eine stille Endlosschleife.
+    """
+
+    def test_check_laeuft_auch_mit_cp1252(self):
+        import subprocess
+        umgebung = dict(os.environ, PYTHONIOENCODING="cp1252")
+        lauf = subprocess.run([sys.executable, "bot.py", "check"],
+                              cwd=ROOT, capture_output=True, env=umgebung, timeout=180)
+        self.assertEqual(
+            lauf.returncode, 0,
+            "bot.py check darf an der Zeichenkodierung nicht sterben:\n"
+            + lauf.stderr.decode("utf-8", "replace")[-600:])
+
+    def test_ausgabe_wird_gleich_am_anfang_umgestellt(self):
+        """Vor jeder Ausgabe - sonst erwischt es die erste Zeile trotzdem."""
+        quelle = open(os.path.join(ROOT, "bot.py"), encoding="utf-8").read()
+        self.assertIn('reconfigure(encoding="utf-8", errors="replace")', quelle)
+        self.assertLess(quelle.index("reconfigure"), quelle.index("def "),
+                        "die Umstellung muss vor allen Befehlen stehen")
+
+
 class TestDurchlaufenOhnePause(unittest.TestCase):
     """Der Bot soll nicht stehenbleiben - das ist die Ansage vom 29.08.
 
