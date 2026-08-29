@@ -6300,7 +6300,17 @@ setTimeout(function baueGebaeude(){
          derselben Flucht, und der Gang davor (x 126,3..129,7 bis z 101) bleibt in der
          Moeblierung frei — sonst steht man beim Eintreten im Roulettetisch. */
       (function spielclub(){
-        var CX=126, CZ=102;
+        /* ⚠️ x 126 -> 128: DIE PLATZSUCHE PRUEFT DEN PUNKT, NICHT DEN GRUNDRISS.
+           (126|102) ist frei — das Haus ist aber 16 m breit, seine Westwand steht
+           also auf x 118. "Ring O" laeuft entlang z mit Mitte x 112 und halber
+           Breite 7,2, belegt also x 104,8…119,2. Ergebnis: th-pruef meldete zehn
+           Bauteile im Strassenkorridor, bis zu 1,2 m tief — der Club stand mit der
+           Westflanke auf der Ringstrasse.
+           Mit CX 128 liegt die Westwand auf x 120 und damit 0,8 m neben der
+           Korridorkante. Der Eingang zeigt weiter nach Sueden zur Strasse; die
+           Verschiebung laeuft quer dazu, der Abstand zur Tuer bleibt gleich.
+           Alles im Club haengt an CX/CZ und wandert mit. */
+        var CX=128, CZ=102;
         var VOLL="th34_wand_voll.glb", FEN="th34_wand_fenster.glb", F2="th34_wand_fenster2.glb";
         /* Suedseite = Eingang (rot 0, Aussenseite -z), Tuer auf dx +2 */
         [[VOLL,-6],[VOLL,-2],["th34_wand_tuer.glb",2],[VOLL,6]]
@@ -6678,7 +6688,19 @@ setTimeout(function baueGebaeude(){
       function aufTerrasse(lx,lz){
         return [BERG.x+lx*Math.cos(winkel)+lz*Math.sin(winkel),
                 BERG.z-lx*Math.sin(winkel)+lz*Math.cos(winkel)];}
-      var pH=aufTerrasse(-6.5,-4);  bau("th26_berghuette.glb",4.4,pH[0],BERGY,pH[1],winkel+0.5,false,null,true);
+      /* 🧱 Die Huette war das einzige echte GEBAEUDE der Karte, durch das man
+         hindurchlief (th-mauern: 13 ohne Kollider, davon Gittermasten, Schaukel,
+         Spielturm, Kran, Flugzeug — alles zu Recht offen).
+         ⚠️ Kollider sind 2D (x/z, ohne Hoehe) — ein Kollider hier sperrt also auch
+         den Hang darunter. Genau so macht es aber schon die Bergstation weiter oben
+         (stationSolid), und die steht auf derselben Terrasse. Dasselbe Mittel, kein
+         neuer Praezedenzfall.
+         ⚠️ NICHT dasselbe fuer die drei Weihnachtsbuden: die haengen an wbau() und
+         sind mit visible=W9() saisonal. Ein fester Kollider waere im Sommer eine
+         unsichtbare Wand auf dem Marktplatz — schlimmer als das Hindurchlaufen.
+         WORLD_SOLIDS kennt kein Entfernen, ein saisonaler Kollider geht also nicht. */
+      var pH=aufTerrasse(-6.5,-4);  bau("th26_berghuette.glb",4.4,pH[0],BERGY,pH[1],winkel+0.5,false,
+        function(w){stationSolid(w,pH[0],pH[1]);},true);
       var pK=aufTerrasse(7,-4);     bau("th26_gipfelkreuz.glb",4.2,pK[0],BERGY,pK[1],0,false,null,true);
       var pF=aufTerrasse(7.5,4.5);  bau("th26_felsformation.glb",2.8,pF[0],BERGY,pF[1],1.1,false,null,true);
       var pF2=aufTerrasse(-7,5);    bau("th26_felsformation.glb",2.2,pF2[0],BERGY,pF2[1],2.4,false,null,true);
