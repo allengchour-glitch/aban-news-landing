@@ -12946,3 +12946,5 @@ gid://shopify/Product/15500405244289	97->0	Digital Gemälde
 gid://shopify/Product/15500409241985	37->0	Digitaler Gemälde-Rahmen
 gid://shopify/Product/15500410978689	142->0	Digitaler Gemälde-Druck
 gid://shopify/Product/15508412825985	18->0	Nackenhörnchen mit Memory-Schaum
+gid://shopify/Product/15510924558721	10->1	Smartwatch mit Musik, Bluetooth & Herzfrequenz
+gid://shopify/Product/15510928785793	10->3	Doppelwandiger Abfalleimer aus Edelstahl
