@@ -11,6 +11,19 @@ Diensten anmelden — Cowork soll die bereits offene Sitzung benutzen.
 
 ---
 
+## 0. TikTok posten — Material liegt bereit  📱 (NEU 29.08.)
+> Siehe **`dropship/TIKTOK-COWORK-AUFTRAG.md`** — vier fertige Beiträge, je mit Caption,
+> nummerierten Slide-URLs und einer stummen Videodatei. Alle Dateien liegen öffentlich auf dem
+> Shopify-CDN, es braucht keinen Repo-Zugriff.
+> **Höchstens ein Beitrag pro Tag**, und vor jedem Upload das Profil ansehen.
+
+**Warum über Cowork:** TikToks Content-Posting-API ist weiter in Review (Punkt 5), und der
+Browser der Cloud-Session wird von TikToks Bot-Schutz abgewiesen (die Seite lädt mit 200 und
+zeigt trotzdem «Something went wrong»). Der Upload von Hand über tiktokstudio ist der einzige
+Weg, der heute funktioniert — und den kann Cowork mit der angemeldeten Sitzung ausführen.
+**Alle acht beworbenen Artikel wurden am 29.08. live geprüft: ACTIVE, Preise stimmen mit den
+Captions überein.** Steht ein Produkt später auf DRAFT, den Beitrag NICHT posten.
+
 ## A. Gratis-Versand-Balken zeigt die falsche Schwelle  ⭐⭐ (NEU 29.08.)
 > Öffne im Shopify-Adminbereich das MAIN-Theme «Horizon · LuxeStyle + Email-Popup (Claude)»,
 > bearbeite `layout/theme.liquid` und ändere die eine Zeile `var SCHWELLE=5000;` auf
