@@ -311,3 +311,4 @@ gid://shopify/Product/15450018283905	Rot
 gid://shopify/Product/15500927304065	Roségold
 gid://shopify/Product/15520301711745	Silber
 gid://shopify/Product/15520302006657	Silber
+gid://shopify/Product/15520374096257	Schwarz
