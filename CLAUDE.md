@@ -871,6 +871,27 @@ BETREIBER-Entscheidung in `dropship/COWORK-AUFTRAEGE.md` stehen.
   **Die Geschwister-Lehre in ihrer gemeinsten Form: Die Regel wurde gestern an EINE Stelle
   zusammengelegt — und derselbe Gedanke lebte unter einem ANDEREN NAMEN in derselben Datei
   weiter.** Ein Grep nach «klinge» findet ihn nicht; nur das Lesen der Entscheidungsreihenfolge.
+- **Gemessen über alle 49'270 aktiven Produkte, statt geschätzt** — und drei weitere Muster in
+  derselben Liste waren ebenso ungeankert:
+
+  | Muster in HEIKEL | Treffer | was tatsächlich getroffen wird |
+  |---|---:|---|
+  | `messer\|dolch\|machete` | 403 | **73 sind nach der Klingenregel keine Klinge**: Messerschärfer, magnetische Messerhalter, Wetzsteine, Puls-, Herzfrequenz- und Höhenmesser, ein Mixer «mit 6 Messern» |
+  | `waffe` | 54 | praktisch alles **Waffelstrick**-Kleidung, dazu ein «Waffel-Schalen Maker» |
+  | `maske\b` | 268 | Augen-, Schlaf- und Gesichtsmasken — Beauty, kein Kostüm |
+  | `grinder\b` | 5 | darunter ein **Seifengrinder** |
+
+  Verankert (`waffen?\b`, `(?<![\wäöüß])maske\b`, `(?<![\wäöüß])grinder\b`), Klingenwörter
+  ersatzlos gestrichen — die Klingenfrage beantwortet jetzt ausschliesslich `ist_klinge()`.
+  Gegenprobe: 22 Fälle, 0 Abweichungen, und echte Klingen werden weiterhin abgelehnt.
+  Sechste Fassung der Substring-Familie nach IPL, led-in-Leder, ski-in-Skincare,
+  auto-in-Automatik und monitor-in-Monitoring.
+- ⚠️ **Eine der sechs Absagen war nur zufällig richtig.** Die «LED-Gesichtsmaske» blieb draussen,
+  weil `maske\b` sie traf — der im Gedächtnis notierte Grund («Therapie im Text») steht im TEXT,
+  und der Schliesser prüft nur den TITEL. **Eine Sicherung aus einem Fehler ist keine Sicherung**
+  (dieselbe Formulierung steht seit dem 28.08. im Kopf derselben Datei, über das 7-Tage-Fenster).
+- Die sechs Quittungen `bleibt-draussen:heikle Ware` wurden gelöscht: **nach einer Regel-Änderung
+  ist das alte Erledigt-Zeichen wertlos.** Sie stehen wieder im Bericht.
 - Die zusammengelegte Regel selbst ist in Ordnung und jetzt geprüft:
   `automation/klingenregel_test.py`, **28 Fälle in beide Richtungen, 0 Abweichungen** — zu jedem
   Sperrfall ein Gegenfall. Eine Regel, aus der fünf Dateien lesen und die über den einzigen

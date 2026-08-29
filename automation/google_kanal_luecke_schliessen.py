@@ -40,11 +40,35 @@ DRY = os.environ.get("DRY") == "1"
 
 # Wortgleich mit google_kanal_nachziehen.py — zwei Listen, die auseinanderlaufen, wären
 # eine eigene Fehlerklasse (dieselbe Lehre wie bei der viermal kopierten Farbtabelle).
+# ⚠️ 29.08.2026 — HIER STAND EINE ZWEITE, GRÖBERE KOPIE DER KLINGENREGEL.
+# `messer|dolch|machete` stand ungeankert in dieser Liste, und weil HEIKEL VOR
+# `ist_klinge()` geprüft wird, hat es die gepflegte Regel vollständig beschattet.
+# Gemessen über 49'270 aktive Produkte: 403 Titel treffen das Muster, **73 davon
+# sind nach der Klingenregel gar keine Klinge** — Messerschärfer, magnetische
+# Messerhalter, Wetzsteine, dazu Puls-, Herzfrequenz- und Höhenmesser und ein
+# Mixer «mit 6 Messern». Genau daran hingen die fünf Küchen-Zubehörteile, die
+# der Wächter tagelang als «heikle Ware» quittiert hat.
+# **Die Klingenfrage beantwortet AUSSCHLIESSLICH `ist_klinge()` (klingenregel.json).**
+#
+# Die drei übrigen Muster waren ebenfalls ungeankert, mit demselben deutschen
+# Zusammensetzungs-Problem (gemessen, nicht vermutet):
+#   waffe    → 54 Treffer, praktisch alle **Waffelstrick**-Kleidung und ein
+#              «Waffel-Schalen Maker». Jetzt `waffen?\b` — «Schusswaffe» trifft,
+#              «Waffelstrick» nicht.
+#   maske\b  → 268 Treffer, fast alle Augen-, Schlaf- und Gesichtsmasken
+#              (Beauty). Kostüm-Masken fängt ohnehin `kost[üu]m|halloween`.
+#              Jetzt nur noch das freistehende Wort.
+#   grinder\b→ 5 Treffer, darunter ein **Seifengrinder**. Jetzt vorne verankert;
+#              Tabak-Grinder fängt zusätzlich `tabak`.
+# Sechste Fassung der Substring-Familie nach IPL, led-in-Leder, ski-in-Skincare,
+# auto-in-Automatik und monitor-in-Monitoring.
 HEIKEL = re.compile(
-    r'kost[üu]m|verkleid|fasnacht|halloween|per[üu]cke|maske\b|tutu\b|hexe|vampir|zombie|clown|'
+    r'kost[üu]m|verkleid|fasnacht|halloween|per[üu]cke|(?<![\wäöüß])maske\b|tutu\b|'
+    r'hexe|vampir|zombie|clown|'
     r'dessous|reizw|erotik|18\+|generalüberholt|restauriert|refurb|ersatzteil|ersatzkopf|'
-    r'messer|dolch|machete|waffe|munition|armbrust|'
-    r'shisha|wasserpfeife|bong\b|vape|e-?zigarette|tabak|zigarre|grinder\b|cbd\b', re.I)
+    r'waffen?\b|munition|armbrust|'
+    r'shisha|wasserpfeife|bong\b|vape|e-?zigarette|tabak|zigarre|'
+    r'(?<![\wäöüß])grinder\b|cbd\b', re.I)
 CODE = re.compile(r'\b[A-Z]{2,}\d{3,}\b|\b[A-Z0-9]{8,}\b|\bUS Size\b|\bYards\b|Generation \d')
 # ⚠️ 28.08.2026 — DIE SPERR-MENGE STAND HIER UND IM WÄCHTER WORTGLEICH und war in beiden
 # unvollständig: elf am Produkt begründete Ausschluss-Tags fehlten (verdeckte-ueberwachung,
