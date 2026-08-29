@@ -7,7 +7,7 @@
  * Kopfhoehe; ein Kollider ohne Tuerluecke, der das Haus zwar dicht macht, aber auch
  * unbetretbar. Nichts davon wirft einen Fehler — man merkt es erst beim Hineingehen.
  *
- * Sieben Fragen:
+ * Acht Fragen:
  *   1. Sind alle zwoelf th14-Teile wirklich in der Szene? (ein 404 ist stumm)
  *   2. Liegt jedes Teil INNERHALB der Waende?
  *   3. Ueberlappen sich zwei Einrichtungsteile im Grundriss?
@@ -132,6 +132,29 @@ const sonde = `function(){
     boden.push({wo:o[0]+"|"+o[1], hoehe:tb.length?+tb[0].point.y.toFixed(3):null});});
   raus_ziele=ziele.length;
 
+  /* ⚠️ TUT DER CLUB AUCH ETWAS? Bis hierher war er Kulisse: man kam hinein und
+     konnte nichts tun. Die Tanzflaeche startet jetzt dasselbe Minispiel wie die
+     Stereoanlage zu Hause. Drei Dinge muessen dafuer stimmen, und jedes einzelne
+     faellt lautlos aus, wenn es fehlt:
+       1. window._club existiert (die EINE Quelle fuer Ort und Radius),
+       2. sie zeigt auf die WIRKLICHE Tanzflaeche — nicht auf eine zweite,
+          von Hand hingeschriebene Koordinate, die beim naechsten Umzug zurueckbleibt,
+       3. tanzStart() laesst sich ausloesen und setzt TANZ.on. */
+  var C=window._club||null, spiel={quelle:!!C, versatz:null, startet:null};
+  if(C){
+    var tf=kisten.filter(function(k){return k.name==="tanzflaeche";})[0];
+    if(tf){
+      var mx=(tf.x0+tf.x1)/2, mz=(tf.z0+tf.z1)/2;
+      spiel.versatz=+Math.hypot(mx-C.tanzX,mz-C.tanzZ).toFixed(2);
+      spiel.halb=+Math.max((tf.x1-tf.x0)/2,(tf.z1-tf.z0)/2).toFixed(2);
+      spiel.radius=C.tanzR;}
+    try{
+      if(typeof tanzStart==="function"&&!TANZ.on){tanzStart(); spiel.startet=!!TANZ.on;
+        TANZ.on=false; if(TANZ.raf)cancelAnimationFrame(TANZ.raf);
+        var el=document.getElementById("tanz"); if(el)el.style.display="none";}
+    }catch(e9){spiel.startet=String(e9&&e9.message||e9);}
+  }
+
   /* Begehbarkeit: auf jeder Wandflucht tasten. */
   function fest(x,z){return typeof inSolid==="function"?!!inSolid(x,z):null;}
   var tuer=fest(CX+2,CZ-6.2);
@@ -140,7 +163,7 @@ const sonde = `function(){
   var west=[fest(CX-8.2,CZ-3),fest(CX-8.2,CZ+3)];
   var ost =[fest(CX+8.2,CZ-3),fest(CX+8.2,CZ+3)];
   var innen=[fest(CX,CZ),fest(CX+2,CZ-3),fest(CX-3,CZ+2)];
-  return {gefunden:gefunden,fehlend:fehlend,kisten:kisten,raus:raus,ueber:ueber,haengt:haengt,dach:dach,boden:boden,strahlZiele:raus_ziele,
+  return {gefunden:gefunden,fehlend:fehlend,kisten:kisten,raus:raus,ueber:ueber,haengt:haengt,dach:dach,boden:boden,spiel:spiel,strahlZiele:raus_ziele,
           tuer:tuer,sued:sued,nord:nord,west:west,ost:ost,innen:innen};}`
 
 mitSonden('traumhaus.html', { club: sonde }, '_club.html')
@@ -174,6 +197,18 @@ else { fund++; console.log(`\n❌ ${ohneDach.length} Messpunkte ohne Decke darue
 const ohneBoden = (R.boden || []).filter((b) => b.hoehe === null || b.hoehe < 0.03)
 if (!ohneBoden.length && (R.boden || []).length) console.log(`✅ Unter jedem Messpunkt liegt ein Fussboden (${R.boden.map((b) => b.hoehe).join(', ')} m — Gras waere 0)`)
 else { fund++; console.log(`\n❌ ${ohneBoden.length} Messpunkte ohne Fussboden (man steht auf dem Gelaende): ${ohneBoden.map((b) => b.wo + ' -> ' + b.hoehe).join(', ')}`) }
+
+const SP = R.spiel || {}
+if (SP.quelle && SP.versatz !== null && SP.versatz < 0.3 && SP.startet === true && SP.radius <= SP.halb + 0.3) {
+  console.log(`✅ Die Tanzflaeche ist bedienbar (Quelle stimmt auf ${SP.versatz} m genau, Radius ${SP.radius} bei Halbmass ${SP.halb}, tanzStart greift)`)
+} else {
+  fund++
+  console.log('\n❌ Tanzflaeche als Bedienelement:')
+  console.log(`   window._club vorhanden? ${SP.quelle ? 'ja' : 'NEIN'}`)
+  console.log(`   Versatz Quelle <-> echte Flaeche: ${SP.versatz} m (erlaubt < 0,3)`)
+  console.log(`   Radius ${SP.radius} gegen Halbmass ${SP.halb} (Radius darf nicht groesser sein)`)
+  console.log(`   tanzStart() setzt TANZ.on: ${SP.startet}`)
+}
 
 const dicht = (a) => a.every((v) => v === true)
 const wandOk = dicht(R.nord) && dicht(R.west) && dicht(R.ost) && R.sued.every((v) => v === true)
