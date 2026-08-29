@@ -9573,12 +9573,23 @@ function missNeu(){
     return {i:k,e:p[0],tx:p[1].replace("{n}",p[2]),ziel:p[2],basis:p[3](),done:false};})};
   if(MPs&&mpHost)netSend({t:"tmiss",m:missHeute,ser:missSerie});
 }
+/* Einmal warnen je kaputter Bedingung/je kaputtem Zaehler — nicht 60-mal je Sekunde.
+   Steht vor beiden Nutzern (missCheck und checkAch), damit die Reihenfolge nicht traegt. */
+var _achLaut={};
 function missCheck(){
   if(!missHeute)return;
   var alle=true,neu=false;
   missHeute.liste.forEach(function(m){
     if(m.done)return;
-    if(MISS_POOL[m.i][3]()-m.basis>=m.ziel){m.done=true;neu=true;
+    /* ⚠️ Dieselbe Kette wie in checkAch, eine Zeile daneben im selben Takt: wirft ein
+       Missions-Zaehler, bricht die Schleife ab und ALLE Tages-Missionen des Tages
+       stehen still — auch die, deren Zaehler in Ordnung ist. Gemessen mit
+       th-erfolge.mjs (Missionsprobe): ein kaputter Zaehler an Stelle 0 liess die
+       fertige Mission an Stelle 1 unerledigt. */
+    var wert9=null;
+    try{ wert9=MISS_POOL[m.i][3](); }
+    catch(em){ if(!_achLaut["m"+m.i]){_achLaut["m"+m.i]=1;console.warn("Missions-Zaehler wirft:",m.i,em);} }
+    if(wert9!==null&&wert9-m.basis>=m.ziel){m.done=true;neu=true;
       geld+=180;geldSend();hint("🎯 Mission geschafft: "+m.e+" "+m.tx+"  +180 $");
       if(typeof launchFirework==="function"&&sims&&sims[0])launchFirework(sims[0].x,sims[0].z);
       beep(700,.1,"triangle",.05);}
@@ -9713,9 +9724,23 @@ function prestigeName(w){
   if(w<2500)return "⛺ Hütte";if(w<6000)return "🏠 Zuhause";if(w<12000)return "🏡 Schmuckstück";
   if(w<25000)return "🏰 Traumvilla";if(w<50000)return "🏛️ Anwesen";if(w<100000)return "👑 Palast";
   return "🌟 Legende Stufe "+(Math.floor(Math.log2(w/100000))+1);}
+/* ⚠️ DIE SCHLEIFE MUSS DURCHLAUFEN, AUCH WENN EINE BEDINGUNG WIRFT. Vorher war
+   das eine ungeschuetzte Kette: der erste Fehler beendete die Schleife, und JEDER
+   Erfolg dahinter konnte nie mehr eintreten — ohne eine Zeile in der Konsole und
+   ohne Fehlerbild. Fuer die Spielerin sieht das aus wie eine hohe Huerde, nicht wie
+   ein Fehler. Gemessen mit `spiele-dev/tools/th-erfolge.mjs` (Belastungsprobe): ein
+   kaputter Eintrag an Stelle 0 liess die immer-wahre Marke an Stelle 1 ausfallen.
+   Dass die Bedingungen HEUTE alle sauber sind, ist ein Zustand, keine Eigenschaft —
+   zwei von ihnen tragen bereits einen eigenen `typeof`-Schutz (`immohai`), weil hier
+   schon einmal jemand hineingelaufen ist. Jetzt steht der Schutz einmal fuer alle,
+   und ein Fehler kostet genau einen Erfolg statt aller dahinter. */
 function checkAch(){
   for(var i=0;i<ACH.length;i++){var a2=ACH[i];
-    if(!achDone[a2[0]]&&a2[4]()){achDone[a2[0]]=1;achToast(a2);}}}
+    if(achDone[a2[0]])continue;
+    var ok2=false;
+    try{ ok2=!!a2[4](); }
+    catch(e2){ if(!_achLaut[a2[0]]){_achLaut[a2[0]]=1;console.warn("Erfolgs-Bedingung wirft:",a2[0],e2);} }
+    if(ok2){achDone[a2[0]]=1;achToast(a2);}}}
 function achToast(a2){
   var t=document.getElementById("achToast");
   document.getElementById("achToastTxt").innerHTML=a2[1]+" <b>"+a2[2]+"</b><br><small>"+a2[3]+"</small>";
