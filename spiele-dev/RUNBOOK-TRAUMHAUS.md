@@ -4,6 +4,61 @@
 > ~600 kB in einer einzigen IIFE; ohne diese Karte sucht man lange und tritt in
 > Fallen, die hier schon einmal Stunden gekostet haben.
 
+## ⏱️ Bevor du anfängst — elf Regeln, jede mit ihrem Preis
+
+Diese Liste stammt aus **einer** Sitzung (2026-08-29, PRs #2369–#2396). Jeder Punkt hat
+dort echte Zeit gekostet; die Zahl dahinter ist, wie oft oder was genau.
+
+**Beim Bauen eines Messwerkzeugs**
+
+1. **Kein Backtick in einem Kommentar, der in einer Sonde landet.** Sonden sind
+   Template-Literale; ein `` ` `` darin bricht den Lauf mit „Unexpected identifier".
+   → **zehnmal** an einem Tag hineingetreten. Nutze Anführungszeichen oder baue den Text
+   aus einem Zeilen-Array (`[...].join('\n')`).
+2. **Die Sonde läuft INNERHALB der IIFE.** `WORLD_SOLIDS`, `_lodKlein`, `KATALOG`,
+   `sims`, `snapshot()`, `lodTakt()` sind direkt sichtbar. `window.WORLD_SOLIDS` ist
+   `undefined` — und liefert kein Fehlerbild, sondern eine leere Liste.
+   → dreimal; einmal daraus **144 Phantom-Funde** erzeugt.
+3. **Eine Null in der Ausgabe ist ein Verdacht, kein Ergebnis.** „0 Kollider",
+   „0 Objekte", „0 Zeilen" heisst fast immer: das Werkzeug hat nichts gemessen.
+   Prüfe zuerst, ob überhaupt etwas gemessen wurde (`wc -l`, eine Bezugszahl mit ausgeben).
+4. **Nicht auf eine Frist warten, sondern auf Ruhe.** Feste `waitForTimeout`-Werte messen
+   Ladezeit, nicht Korrektheit. Poll, bis die Zahl sich dreimal nicht ändert.
+   → **53 Phantom-Funde** aus 12 geratenen Sekunden.
+5. **Eine Schwelle, die auf dem Messwert liegt, ist keine Schwelle.** `bb.max.y <= 0.05`
+   bei einem Wert von exakt 0,05 → mal so, mal so. → das Tor meldete abwechselnd 2 und 3.
+
+**Beim Messen der Welt**
+
+6. **Die Hüllbox ist das Dach, nicht die Wand.** Für Kollidermasse zählt, was 0,3 … 2,0 m
+   über der **eigenen Sohle** liegt (nicht absolut — die Berghütte steht auf 43 m).
+   → sonst baut man unsichtbare Mauern unter der Traufe.
+7. **Nicht hinter die Fassade tasten.** Eine Wand ist 0,2 … 0,3 m dick; eine Probe 0,45 m
+   dahinter misst den leeren Innenraum. → „die Kathedrale ist auf allen vier Seiten offen".
+8. **Aus „Modell X ist unbenutzt" folgt nicht „die Sache fehlt".** Erst nach der *Sache*
+   suchen (`grep -i baustelle`), dann nach Modellen. → eine falsche Behauptung in einer
+   bereits gemergten PR (#2386), korrigiert in #2389.
+
+**Beim Ändern des Spiels**
+
+9. **Zwei Stellen, die dasselbe schreiben, laufen auseinander.** Das war die ergiebigste
+   Frage des Tages — sechs echte Fehler aus einer einzigen Prüfung: Bergform (#2370),
+   Uferlinie (#2374), Viertelmass (#2373), Bahnsteigkante (#2375), `light.visible`
+   (#2387), LOD-Schwelle gegen Gruppenprüfung (#2388). Wenn du eine Zahl nachbaust, die
+   es schon gibt: **frag stattdessen die Quelle.**
+10. **`node spiele-dev/tools/th-alle.mjs` vor und nach jeder Änderung** (16 Prüfungen,
+    ~20 min; `--schnell` für die Kernreihe). Zweimal ist hier etwas kaputtgegangen, das
+    ein *vorhandenes* Werkzeug sofort gemeldet hätte.
+11. **Der Worktree fällt bei einem Container-Neustart auf einen alten Commit zurück**
+    (detached HEAD, `node_modules/playwright`-Symlink weg). → **zweimal** fertige,
+    gemessene Arbeit verloren. Darum: **früh committen**, und nach jedem Neustart
+    `git checkout -B <branch> origin/main` plus Symlink neu setzen.
+
+> **Die Regel über den Regeln:** von sechzehn Messwerkzeugen dieser Sitzung haben **acht
+> im ersten Lauf zuerst sich selbst widerlegt**. Bevor du einem Befund glaubst — besonders
+> einem grossen — prüfe, ob das Messgerät recht hat. Die Welt war seltener kaputt als der
+> Blick darauf.
+
 ## 📱 HUD: Bedienelemente paarweise auf Ueberschneidung pruefen (2026-08-23)
 - Messung: alle HUD-Ids bei mehreren Handy-Querformaten holen, PAARWEISE schneiden und
   melden, wenn beide `pointer-events` haben. Genau so faellt auf, was im Bild niemand
