@@ -5068,3 +5068,44 @@ gid://shopify/Product/15448954208641	CHF 21.80	10 Varianten	Velo- und Skates-Hel
 gid://shopify/Product/15448954470785	CHF 20.11	28 Varianten	Kinder Velohelm mit Cartoon-Motiven
 gid://shopify/Product/15448954536321	CHF 20.83	16 Varianten	Winter-Velohelm mit Anti-Beschlag Visier
 gid://shopify/Product/15448954569089	CHF 9.69	2 Varianten	Velo-Sturmhaube mit UV-Schutz
+gid://shopify/Product/15448954634625	CHF 20.15	10 Varianten	Halbhelm für Kinder – UV-Schutz, 4 Jahreszeiten
+gid://shopify/Product/15448954667393	CHF 18.44	4 Varianten	Ganzjahres E-Motorradhelm für Paare
+gid://shopify/Product/15448954732929	CHF 19.22	5 Varianten	Elektroroller-Halbhelm für Damen und Herren
+gid://shopify/Product/15448954798465	CHF 24.44	3 Varianten	Reithelm für Outdoor-Reitsport
+gid://shopify/Product/15448954831233	CHF 46.43	2 Varianten	Skihelm mit Visier
+gid://shopify/Product/15448954896769	CHF 20.37	2 Varianten	Reithelm-Visier für Outdoor-Aktivitäten
+gid://shopify/Product/15448954962305	CHF 30.89	9 Varianten	Reithelm für Erwachsene und Kinder
+gid://shopify/Product/15448955126145	CHF 18.32	4 Varianten	Velohelm für City, Freizeit und Sport
+gid://shopify/Product/15448955191681	CHF 40.28	3 Varianten	Reithelm verstellbar
+gid://shopify/Product/15448955257217	CHF 38.51	2 Varianten	Beheizbare Sturmhaube für Motorradfahrer
+gid://shopify/Product/15448955289985	CHF 17.15	6 Varianten	Velohelm für E-Bikes – vier Jahreszeiten
+gid://shopify/Product/15448955355521	CHF 19.50	30 Varianten	Velohelm mit integriertem Licht
+gid://shopify/Product/15448955453825	CHF 15.62	4 Varianten	Velohelm mit Insektenschutz
+gid://shopify/Product/15448955552129	CHF 12.49	4 Varianten	Velo-Frontlicht aus Aluminiumlegierung
+gid://shopify/Product/15448955584897	CHF 24.34	1 Varianten	Intelligentes Velo-Frontlicht mit Ladefunktion
+gid://shopify/Product/15448955617665	CHF 11.93	7 Varianten	Farbige LED-Speichenlichter für Mountainbikes
+gid://shopify/Product/15448955683201	CHF 11.37	3 Varianten	Velo-Scheinwerfer mit Digitalanzeige & Powerbank
+gid://shopify/Product/15448955715969	CHF 16.87	1 Varianten	LED Tagfahrlicht für Autos (2 Stück)
+gid://shopify/Product/15448955814273	CHF 13.90	3 Varianten	Velo-Rücklicht für mehr Sicherheit
+gid://shopify/Product/15448955879809	CHF 13.23	1 Varianten	Velo-Rücklicht mit Bremslichtfunktion
+gid://shopify/Product/15448955912577	CHF 13.18	1 Varianten	Solar Velo-Licht mit Hupe
+gid://shopify/Product/15448955978113	CHF 20.63	2 Varianten	Devil Eye Fahrrad-Rücklicht mit App-Steuerung
+gid://shopify/Product/15448956043649	CHF 8.44	4 Varianten	Intelligentes, selbstladendes Velo-Rücklicht
+gid://shopify/Product/15448956109185	CHF 36.38	1 Varianten	Velo-Frontlicht mit 3400 Lumen
+gid://shopify/Product/15448956240257	CHF 15.97	1 Varianten	USB-Velo-Rücklicht mit Blinker
+gid://shopify/Product/15448956273025	CHF 10.82	1 Varianten	Intelligentes USB-Rücklicht mit Bremslichtfunktion
+gid://shopify/Product/15448956404097	CHF 9.08	1 Varianten	USB-Fahrradlicht mit bunten LEDs
+gid://shopify/Product/15448956633473	CHF 10.22	1 Varianten	Smartes Velo-Rücklicht mit Bremslichtfunktion
+gid://shopify/Product/15448956666241	CHF 11.78	1 Varianten	LED-Fahrradlicht mit USB-Ladefunktion
+gid://shopify/Product/15448956699009	CHF 14.05	1 Varianten	D Series LED D2SD4S Autoscheinwerfer
+gid://shopify/Product/15448956764545	CHF 13.36	1 Varianten	Intelligentes Velo-Rücklicht mit Bremslichtfunktio
+gid://shopify/Product/15448956797313	CHF 7.94	1 Varianten	USB-Fahrradblinker mit Hupe
+gid://shopify/Product/15448956895617	CHF 13.94	1 Varianten	LED-Stirnlampe zum Laufen & Fischen
+gid://shopify/Product/15448956928385	CHF 24.78	1 Varianten	Tragbarer Reifenfüller mit Digitalanzeige
+gid://shopify/Product/15448956993921	CHF 12.51	1 Varianten	Velo Hupe mit Licht, wasserdicht, USB-Ladefunktion
+gid://shopify/Product/15448957059457	CHF 14.70	1 Varianten	MEROCA Intelligentes Velo-Rücklicht mit Brems-Sens
+gid://shopify/Product/15448957092225	CHF 10.22	1 Varianten	Rückstrahlendes Diebstahlschutz-Rücklicht für Velo
+gid://shopify/Product/15448957157761	CHF 7.92	1 Varianten	Kabelloses Velo-Rücklicht mit Blinker
+gid://shopify/Product/15448957223297	CHF 8.84	1 Varianten	Velo-Scheinwerfer mit Welleninduktion
+gid://shopify/Product/15448957288833	CHF 17.08	1 Varianten	Smart Millimeter Wave Fahrrad-Rücklicht
+gid://shopify/Product/15448957354369	CHF 23.29	1 Varianten	Fahrrad-Leuchtpedale aus Aluminiumlegierung
